@@ -4,61 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 974D2C79FA1
-	for <linux-mediatek@archiver.kernel.org>; Fri, 11 Sep 2026 07:27:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B598FC88E45
+	for <linux-mediatek@archiver.kernel.org>; Fri, 11 Sep 2026 07:36:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=x64dhSbRG3976W/AFnDoWQ3i6kbUl3GlicYHKb29MTc=; b=4y3/0s5DyjoF5B/OZjjya1RhZG
-	KRlVJryShIKMQMWralc8n3JhqorC1LF/fjGVftz7nBtvCGix0CXmLZfRaWeJGS9p+ka5bNlPU6/ks
-	mk6Bs3OmVzttHGyBWDwLCrPHKbR6aiY8IgfNJKYe98lKIqwbhJrUUb90aFyZxRKdH2mEq0ZhG9Y2v
-	2qMSKkqwMnKsibjWeeuy220oE2szbJCvtV0LTmddScEIFeP15SBU1P+eAsnXBrZM19/S7R50Sxido
-	CyqMeVZACoP3X27rLPyU9bHdAPT/UwDlIOaqlGqeDhfSot0u/OqaB59PM/eqfU2WdyvU7uWtpkKb6
-	g6quB5cQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=9uQF0MuyNToaBt9DpafQJxRAVFURVBijgxEMUA/ciAc=; b=H7Ay9zSeENJp2ewmem72gxmb5+
+	gWw4mWm8N5EEBKaAgXQyN+SH1y2uQZHWj6zgdlHqY8ma92ARVbM9+RhIh8Yx4Sc/nNn8KUv3RuHWp
+	nwXoNI8vCJRIwNL+NJ57TdlfYMBAgux5XrcRXZBvCJCEt4inwyUkQOZIz1Z+2ypDPiZGsz+j3nr+r
+	pQLwL9RIO4p/eZ98174z1unfBm5WllOMp/cmJgX3izB/AwCJQWKlgyxOfMkZ6Ue6c13qHCHwncbzN
+	yU+C892W/ag0QXcOrUyXYB4qDPIwndPCiUYLgE4pwzgSgzf0vSbKbmFve6g0x11UCt5656VeqWIWa
+	l1XLfAFw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x4vfV-0000000G1XR-0zjR;
-	Fri, 11 Sep 2026 07:27:29 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1x4voF-0000000G2YY-1WR1;
+	Fri, 11 Sep 2026 07:36:31 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x4vfS-0000000G1Wy-2wP0;
-	Fri, 11 Sep 2026 07:27:26 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id 7483140050;
-	Fri, 11 Sep 2026 07:27:26 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7C95E1F00893;
-	Fri, 11 Sep 2026 07:27:25 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1789111646;
-	bh=x64dhSbRG3976W/AFnDoWQ3i6kbUl3GlicYHKb29MTc=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=XhVJSvK0Wn8UaoKxFrtHGjmyng3OL9S+DoVjRfqoYFJ1H5lsCHwiBTguwrk1HW5pV
-	 H/IjBJcpPHR1ZScHQSQlnY/UEOCBN/9tC0xMZuLYJJqe5z9d9UxXWXMZu5GQWhcQ4z
-	 AJAi5TZlMb+0G2cCp46CT4A26y188MC1AgmclTsgbQ3XAiJvLjnJrJBL3y+TB07Gr8
-	 OaXE05A50TRz9KZbrzojPPcjT6rLNMc4wr0VHA6MO1wdslBwI6oAzK2KxTVBbRa2/j
-	 p6JCZ2DrB3mosPY96c56pGYXsg8lTni7mKcVB975lq0FQm6BCe1TXR+/2HqRZEsRBK
-	 OhvRGjdccornQ==
-Date: Fri, 11 Sep 2026 09:27:23 +0200
-From: Krzysztof Kozlowski <krzk@kernel.org>
-To: Roman Vivchar <rva333@protonmail.com>
-Cc: Yong Wu <yong.wu@mediatek.com>, "Joerg Roedel (AMD)" <joro@8bytes.org>, 
-	Will Deacon <will@kernel.org>, Robin Murphy <robin.murphy@arm.com>, 
-	Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
-	Conor Dooley <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, iommu@lists.linux.dev, linux-mediatek@lists.infradead.org, 
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org
-Subject: Re: [PATCH 1/3] dt-bindings: iommu: mediatek: add mt6572
-Message-ID: <20260911-khaki-squirrel-of-sufficiency-ccd82e@quoll>
-References: <20260909-6572-iommu-v1-0-de261da09fb2@protonmail.com>
- <20260909-6572-iommu-v1-1-de261da09fb2@protonmail.com>
+	id 1x4voC-0000000G2Xj-3XWA;
+	Fri, 11 Sep 2026 07:36:30 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1789112186;
+	bh=fsWO5RfUtrwYBghqZbddt7joHj5CDeK4xYY0+hFA124=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=Qkaji6DEBChYB6Y1WQhTLVJgKyo3Ywqi8KCx2nY3VQm2QuhK6l0yLy/DVuZeBbHf7
+	 Qkg9/u23+zPY1aMuhsNdEnkZ/84v/EInCLzKV/hnd9Ga1Og8FQ9WLKpR86/Dbghy1v
+	 OKo+pptyBeZ7pFKyQYQydwrnBZlKxoM8U6Kk1wx33TeXEIo9K8XLNIIWyGgOn951Q5
+	 HB1s6+cEDdbFopVBRAxAEeJo61OYb3IUwWtM+gqVapJkHRCFfx6h+M3UwP4B9o965U
+	 AwOaXyKI/9gJOD0VBpfQiGL0H8BLP1L5VGAXqJ4k2K44w5jxUunabAzBmcaJieRDLE
+	 iBfpIEDY2850w==
+Received: from [100.64.1.21] (unknown [100.64.1.21])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 77FA917E0260;
+	Fri, 11 Sep 2026 09:36:25 +0200 (CEST)
+Message-ID: <8fc8791a-911b-4c17-b291-5bdd468335ce@collabora.com>
+Date: Fri, 11 Sep 2026 09:36:24 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-In-Reply-To: <20260909-6572-iommu-v1-1-de261da09fb2@protonmail.com>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 2/2] phy: mediatek: phy-mtk-hdmi-mt8195: Fix TMDS clk bit
+ ratio setting
+To: Manivannan Sadhasivam <mani@kernel.org>
+Cc: chunfeng.yun@mediatek.com, p.zabel@pengutronix.de,
+ chunkuang.hu@kernel.org, vkoul@kernel.org, neil.armstrong@linaro.org,
+ matthias.bgg@gmail.com, granquet@baylibre.com, justin.yeh@mediatek.com,
+ dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org, linux-phy@lists.infradead.org,
+ linux-kernel@vger.kernel.org, kernel@collabora.com
+References: <20260701121936.19407-1-angelogioacchino.delregno@collabora.com>
+ <20260701121936.19407-3-angelogioacchino.delregno@collabora.com>
+ <5bmxa4pcwkiemubwfjun3dti4szu66gnxe6yw2pudq3wplpc23@inyswc2bdlhw>
+ <cb72ff50-b62f-47fe-af40-d38558bdff6e@collabora.com>
+ <pptwnkay4jvyom2ihwtice7usgndsw2fnffkbenkg7gyjejure@4y2znrvtmbtg>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
+In-Reply-To: <pptwnkay4jvyom2ihwtice7usgndsw2fnffkbenkg7gyjejure@4y2znrvtmbtg>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260911_003629_046619_752B24A6 
+X-CRM114-Status: GOOD (  11.83  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,18 +83,37 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Sep 09, 2026 at 05:14:05PM +0300, Roman Vivchar wrote:
-> Add compatible string and header file for mt6572 IOMMU support.
+On 9/11/26 07:11, Manivannan Sadhasivam wrote:
+> On Thu, Sep 10, 2026 at 10:39:06AM +0200, AngeloGioacchino Del Regno wrote:
+>> On 9/9/26 17:06, Manivannan Sadhasivam wrote:
+>>> On Wed, Jul 01, 2026 at 02:19:36PM +0200, AngeloGioacchino Del Regno wrote:
+>>>> The comment in the mtk_phy_tmds_clk_ratio() function clearly and
+>>>> correctly explains that the TMDS ratio has to be 1/10 for data
+>>>> rates under 3.4Gbps, and 1/40 over that.
+>>>>
+>>>> Unfortunately though, the TXC_DIV register setting was wrong, as
+>>>> in value 3 means to divide by 8 and, in order to achieve the in
+>>>> spec 1/40 (tmds) data rate, this has to divide by 4 instead!
+>>>> In order to achieve the correct 1/40 (tmds) data rate, this has
+>>>
+>>> This statement is cut-off!
+>>>
+>>
+>> Oh oops. It's just a forgotten line that has to be removed....
+>>
+>> Should I resend or can you simply remove the line
+>> "In order to achieve the correct 1/40 (tmds) data rate, this has"
+>> while applying?
+>>
 > 
-> Signed-off-by: Roman Vivchar <rva333@protonmail.com>
-> ---
->  .../devicetree/bindings/iommu/mediatek,iommu.yaml  |  3 +++
->  .../memory/mediatek,mt6572-memory-port.h           | 26 ++++++++++++++++++++++
->  2 files changed, 29 insertions(+)
+> I do not apply the patches, only Vinod does. It would help if you can just
+> send a next version with this change and tags.
+> 
+> - Mani
+> 
 
-Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
+Sure, will send v2 in a jiffy.
 
-Best regards,
-Krzysztof
-
+Cheers,
+Angelo
 
