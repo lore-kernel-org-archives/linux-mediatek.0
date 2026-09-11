@@ -4,115 +4,97 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7BC6FC88E4C
-	for <linux-mediatek@archiver.kernel.org>; Fri, 11 Sep 2026 07:59:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D0069C88E4C
+	for <linux-mediatek@archiver.kernel.org>; Fri, 11 Sep 2026 08:10:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=PhsZxDO2Z8X2pi0uJMgCQyML9vz9sWK4s5OtsZHAckg=; b=JdzEsdeq0d9O3D7MoYGWVP7QA9
-	wq1hKPVOg8ANLeXpTJYnn+aoCaxUmrxsTakQQe5OtiOGW062Jymk/Dl7QReOp4BknAVkasYGbClj2
-	Ml4rfWh9HEgJAAdsOab0kH2WkdlFQDMJtDfizkc+tE3km1PzrY2b5jwad366MHe569TbEr16ugbXS
-	wG+Fuw8qlKedTtrENuSbE4mmgzkLhLKpLuCXdC+6ydQT9gvl/r5WMUA/Xi465R8da5YPP9R2vG190
-	GvSd0jskKZglOm/lajikJKxa2/3ImxUq6JF3AqOQU67jAuCj2k9z4ruqab/Lu+og7WqjJEgiOdkMh
-	zoi5haJA==;
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=u7Qx43bG49fe/sQM/Uno0+GUNPMxqPw+3RuQb5XIhZY=; b=JvaLyfLqqJwyf6WXQC60avOfsi
+	AFDhEef3Y5DHRTGVApYTkEW3gM9R2xMwM37cDhkRP/rnsvOFdmQQ/KvfYURzko85h2Tk8q8sL1Fza
+	CMjB94EJP5wfiW7/f+fNolPbMsmsowfUihQ+gfaL52hT5F2gSfN1DdU3j0jX60DGcJP2iASM80hf3
+	6O6NhT071FeAX6MLgt/Ps/4KybYjljt9TSeXsGkTDEFnFzUcAEVmimns93o8i5culvYq2LtJO+RsB
+	94ia2MUVdq68kjsch6rZOdLDI0VH8H6MdPNWBXxJv1vmmFT8GJHbNmTGLwjEmxfGVjNfKgaMGXKRG
+	wfzEpA0w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x4wAq-0000000G5Dw-1rIm;
-	Fri, 11 Sep 2026 07:59:52 +0000
-Received: from mail-pl1-x62f.google.com ([2607:f8b0:4864:20::62f])
+	id 1x4wLN-0000000G6HM-3BJk;
+	Fri, 11 Sep 2026 08:10:45 +0000
+Received: from mail-pl1-x62b.google.com ([2607:f8b0:4864:20::62b])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x4wAk-0000000G5Cy-27Oa
+	id 1x4wLL-0000000G6GS-0t8s
 	for linux-mediatek@lists.infradead.org;
-	Fri, 11 Sep 2026 07:59:48 +0000
-Received: by mail-pl1-x62f.google.com with SMTP id d9443c01a7336-2cc891373e0so6311205ad.2
-        for <linux-mediatek@lists.infradead.org>; Fri, 11 Sep 2026 00:59:46 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1789113585; cv=none;
-        d=google.com; s=arc-20260327;
-        b=BmMc2MsZioF77IqeeYtVf2qNnh4WOKAEKWfGXZnUJfd0GN5rhKEm+ZlsysHuZH8TiS
-         ek7dfjG1shyTG828fTE4RoxlMlOTA6Eg2yqtFx4OEeNiq+k1yt6hlLOgNf3Z4A+EY7sY
-         6xnWh5Ewr0IHsoyZfKIx0fqoXk39FrwqE0r80pjDiFliPKeaj+QSFJj2l8ysTXRLVYWr
-         9Bg7uzM8m1Zj6bJ4MDVinPMdvgQXDXc5nlWUZTgFZIVMSXnRvX+HC72HcxuQsLJwEz00
-         4FQXpwR8e7cIumItq2jt1P3njbX8HGYvcTdmPt+Yh8BdfuhJU8PHBhw83Kvy1DNrJBDk
-         rCiw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20260327;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=PhsZxDO2Z8X2pi0uJMgCQyML9vz9sWK4s5OtsZHAckg=;
-        fh=WMooLWomec+a/RtmSQPg6tRBHLpc56KVyJY30XDBNSc=;
-        b=oic44F3ed8c3V1apINja+Fw1/34W9dIYiDvBmIwuWobN3i005OVefTRzYJblUCwilf
-         VmTNhXPM64IEnTUME60d+fY3OZh2bKQVF+IXZ6rW/gJl18QkNPlaa7q1EpYLzjZFwFgp
-         jz8/AZgIAjZNMEJVrgGnVswpncBL6p+LSQiZf4/YKrbIqqQOHlHwUZNc75qp5Ft0WnY/
-         dv2sUiAnWJK9OaIjzc72WIghdZ/MKBJ6VntG5SIYGFWnbYwm+JcL/LJiuVYfhqsf3WIM
-         a5t7R0Z0U99BATLEwCnouYuUtbvONev6/UK0TvDrkU7rmBgGEAcA0z/TelIqXsHB0RBe
-         Av/g==;
-        darn=lists.infradead.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
+	Fri, 11 Sep 2026 08:10:44 +0000
+Received: by mail-pl1-x62b.google.com with SMTP id d9443c01a7336-2d8f265cbe6so6077975ad.0
+        for <linux-mediatek@lists.infradead.org>; Fri, 11 Sep 2026 01:10:42 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1789113585; x=1789718385; darn=lists.infradead.org;
-        h=content-transfer-encoding:content-type:cc:to:subject:message-id
-         :date:from:in-reply-to:references:mime-version:from:to:cc:subject
-         :date:message-id:reply-to:content-type;
-        bh=PhsZxDO2Z8X2pi0uJMgCQyML9vz9sWK4s5OtsZHAckg=;
-        b=YLHx6eJjdc6zWjkhL6vEFft7ArUsl1Lj2zkQE+K0tKJ3xO7CJaXZrhSSazSdEyU4/7
-         kQo2HEscvieTwUMxxaF6Sf4cK6Up7kEHSDWA6KdmRkIotWVyMbiBSKI+3zgBs66cW+Vj
-         iO2EA2VavsqqCS1grVg6wnVQnnjeaVBY+IMBenKJoJ9RXCg9FsqfCt/Atz6rAqZhGQKk
-         3CPt1OstBhYMEhdocLJLOKzYsvFc5UTqRnFoJ3HeY+DVpWlwW3y2+X17nyuUv/h+mYjS
-         dozjPAogwvEsY0cSzMmIZf5b8FILP4fnmSQisjxIFoy43SAXj5pUJXn9186WqNeKdklA
-         rgdg==
+        d=gmail.com; s=20251104; t=1789114242; x=1789719042; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
+        bh=u7Qx43bG49fe/sQM/Uno0+GUNPMxqPw+3RuQb5XIhZY=;
+        b=BZ0cwGOO3ipE2D7NGZ+95zZwfdEcW4mDREUIEr59ir08OJWO+zvJI1rOt5zfy3wbbf
+         /6Ip34i9tRC/Bl6O95cq7BK4pmv7gpDBbMbG7uO57dMBPyEWLOKaLo+XSCsR8EMWbZLz
+         HnYPWEOnkVc/0PsiznrDPO8UES/CL4nas0h/biDAmEY235dF7I716Nh9wxpqaUlVlybh
+         bxA3Jauv2kF/IwpxulscApOboDeOtJ4IA98Zj1RU+Thxux3d6+qhWgPk9mJsyHFotsJh
+         fLRSSsJ2N2509NAxqE/tmmolbb0qkdxVxPHjyrFsVUyQ9j2sp//qeJSTAhoWYNV0r5OH
+         A+bw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1789113585; x=1789718385;
-        h=content-transfer-encoding:content-type:cc:to:subject:message-id
-         :date:from:in-reply-to:references:mime-version:x-gm-gg
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
-         :content-type;
-        bh=PhsZxDO2Z8X2pi0uJMgCQyML9vz9sWK4s5OtsZHAckg=;
-        b=ETUX2LOaabijIjM//DVwYU7FJJ+HBewdBQlM0YSrDNhmP+JuNHq8l71q/h3A6EI03M
-         BXyUbVP8B2RrK+FRGkLDH+OgBP96QF6LVPYrhbG0CenzyG8vYGLWU7PeaIvDiB/AJCUb
-         Rj5rHdE4cvvljJXSO9tf5yAnBJfA8NBjzstqksI/qtYI9jB70s2BxvzArpjD9NGloX8m
-         Br4MuRJE3mQfjeDkaosuww1TvBZF42UgNpYQk2n11s39jaSfUKPHQkO1kvE96zsG7epO
-         Q35CxYFiWBhRq0kcs9o/bt98z0TJQrFoyVJ1kTj93tKEudUsrV2x4AJ6oq/50ZVV959b
-         uGMA==
-X-Forwarded-Encrypted: i=1; AKwUvBySxN0Kxgq5WSb/hkFjxwi2pwwGPiCaqPJGZxdaRXDr4u2zrxBzD0YIsORIwFL9bgaOvE9PfwjyrYl5ktsHaw==@lists.infradead.org
-X-Gm-Message-State: AFuF++kKQXrsoR63KJMBzs2awLt4o1LB33KfZ0yKnHvWyA1whrt9lSMG
-	BI87wlN9XwfVd4+lNS/TJnDWtjYRZVVB/HdLlAhFdvOlzrKwcHIWXKaO5KmpokKn63FRfQ9XjLC
-	U3MUG1E6zMXomCBzIo8Vy7lWa96srmwY=
-X-Gm-Gg: AYBFou2Hlm6/N6pmGKTjakJ0aA+pKXajFRlh143tyAh7p6ASJBce8CIfB3MxEg5BKiu
-	jObXp3HnWyGLfxEljgxfopxA14sO/wlPMfDpOUn8+sXCiMN4ktnw/KSOusxnREjndhoXnS+/sVc
-	H8O/8NHdmKQacbHXonZzqaOyivM4yrdw8dPalBoqIBLHDAAj7OcQ2gDhWayjOys0Ke1QSV1xqN3
-	OnaZO2gRByKt36IRCSdiGpYu70xntEQXuFEr/eDYcK+5HqyvRJBHeQEtrKqio/JIGer/GaMKk7C
-	Ogt4eVpmvIuhggeMni/BdHEzm1Q5Fxp6Z55XLWmiMvzjTFeGhevNX/Z/WANNY5ZHIlaOMuKU4J6
-	mUwgncBKQACot7lhqd/BMAX5DoxLxGSY8i9nkmYyWPVbvsjXOekPEbO6G5ixHcoJvs9vYrorLMU
-	DAiw==
-X-Received: by 2002:a17:903:32ca:b0:2d6:f6ba:263d with SMTP id
- d9443c01a7336-2dd300d2dcamr38221965ad.7.1789113584990; Fri, 11 Sep 2026
- 00:59:44 -0700 (PDT)
+        d=1e100.net; s=20251104; t=1789114242; x=1789719042;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to:content-type;
+        bh=u7Qx43bG49fe/sQM/Uno0+GUNPMxqPw+3RuQb5XIhZY=;
+        b=HszqQhVOJXY+eVPN6S4B99A5fmUtZltUnnXwKOq4EQWPDfMOScFdmTtZsRqmj2GbA4
+         n+V0O2Cv2uTM+lUC9MpzWgF54eE/RIEq4L2F5LP8pJtKbXVx0vY7XLTnwydV9fJlvLaU
+         Dly41qNm1UF8BZl62nsv+mTjjzfTdHrkjimSo0ZNlIKfTNjutbwZxXALvRze8z2Ri/jq
+         jjPL08BsBZ60+B2fO5S75hjwIHAwekj4JIhOEoaK6jGSPQWK1aK2CXeHgJgnGtJrVYMC
+         vk+FhokNk6J1CO6IkVAcuqlBp/R6907o0URYWIdyEg5PSmcLJADl7GMXWH/6bpz4GOA3
+         /INA==
+X-Forwarded-Encrypted: i=1; AKwUvBx2voBBpEWf5PufbViI/rW45hp9aX+CQ9U1XrJs8t90ZX6TY8F1Tub/rwO6VkC7//OKaC/U3ZorNWtLpamacg==@lists.infradead.org
+X-Gm-Message-State: AFuF++k0D8JcZOQ6+jW1J+rBu1yUE8URfrM9hSwN10SAB2p6wosi7e4v
+	mWx/QPxy8H5u/axyNs1D7MSPEBhZzRiAs0rcLbTwS5sJQcyxf6KlfTE=
+X-Gm-Gg: AYBFou0qg1aZ6kW+7TbSnIEaI/xHsXQEqHX+NX43xAUlcPxO2V+Cx4JlvSNkGgf5rZb
+	TWC7h9mpDZR5dOauS8nJUUCcoCMKyujV6p1d5UBoSIn5MYwa410Iv9Vvg50UY6EFLeIPWEtuhgC
+	LukSRstPW9tXu2dXG2oEFzKzCpfcE/YW6BYSizNdYCTEAJTBbEx2GEO5uwbn1VPdwRJJxl8yJ5E
+	GI0yhr7yoMMNOw2619UBOo8Lw+A5FXMEF/XYzBuAUkPkStqTWkcM97Th/aBh/l2SgFva438cJjE
+	QmIDbDpckQPai1c1HAotyx69MMmY4PdCx/0E4Qknf+poNAfsxtq2E3MupxlQ2Y2AMWysLS3o/P3
+	6M14ujUgrwgnMlYjjW9+Q7ozB9cQS426hc5b1hAkGuKbSCt5ncZLpCL/yS7tB43HGQ/YJCjHb/e
+	RPn3Mp447zsmOMlgnGvC6Wz5rhrSWHYSFF8rwhDYCow8Ya1RwXlMg+2C5cJbt8fj0aXBEz5tWlp
+	Qci6LpohbHV
+X-Received: by 2002:a17:90b:3c89:b0:398:ba9e:75ff with SMTP id 98e67ed59e1d1-39d9c35047emr5120013a91.21.1789114241653;
+        Fri, 11 Sep 2026 01:10:41 -0700 (PDT)
+Received: from DL2XHKPB4.dl.net ([103.63.104.162])
+        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-39d994872e0sm3514967a91.8.2026.09.11.01.10.36
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 11 Sep 2026 01:10:40 -0700 (PDT)
+From: Triet Hoang <triet.hoang.dev@gmail.com>
+To: Lee Jones <lee@kernel.org>
+Cc: Chanwoo Choi <cw00.choi@samsung.com>,
+	Krzysztof Kozlowski <krzk@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Aaro Koskinen <aaro.koskinen@iki.fi>,
+	Andreas Kemnade <andreas@kemnade.info>,
+	Kevin Hilman <khilman@baylibre.com>,
+	Roger Quadros <rogerq@kernel.org>,
+	Tony Lindgren <tony@atomide.com>,
+	mfd@lists.linux.dev,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	linux-omap@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	Triet Hoang <triet.hoang.dev@gmail.com>
+Subject: [PATCH v2 RESEND] mfd: Convert to DEFINE_SIMPLE_DEV_PM_OPS()
+Date: Fri, 11 Sep 2026 15:10:22 +0700
+Message-ID: <20260911081022.3475479-1-triet.hoang.dev@gmail.com>
+X-Mailer: git-send-email 2.53.0
 MIME-Version: 1.0
-References: <20260910125742.150902-1-phucduc.bui@gmail.com>
- <20260910125742.150902-3-phucduc.bui@gmail.com> <aqKxadkfX9Tqx8JR@stanley.mountain>
-In-Reply-To: <aqKxadkfX9Tqx8JR@stanley.mountain>
-From: Bui Duc Phuc <phucduc.bui@gmail.com>
-Date: Fri, 11 Sep 2026 14:59:33 +0700
-X-Gm-Features: AcwNN1Wl0GTh-Z2Qm9Mk1VLPm1ruxloX7-jtdmf-ROLjbwYmLn7UVqKFYyP_TdY
-Message-ID: <CAABR9nHCK4X5iZORmHkN_jH62e34H2J_rBLiWLkwcg+5JAJJVg@mail.gmail.com>
-Subject: Re: [PATCH 02/13] ASoC: mediatek: mt8189: Propagate APLL enable errors
-To: Dan Carpenter <error27@gmail.com>
-Cc: Mark Brown <broonie@kernel.org>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	Liam Girdwood <lgirdwood@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, 
-	Cezary Rojewski <cezary.rojewski@intel.com>, Cyril Chao <Cyril.Chao@mediatek.com>, 
-	Kuninori Morimoto <kuninori.morimoto.gx@renesas.com>, cassiogabrielcontato@gmail.com, 
-	linux-sound@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260911_005946_572684_2A49FC7F 
-X-CRM114-Status: UNSURE (   8.47  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260911_011043_253654_356D88B5 
+X-CRM114-Status: GOOD (  14.22  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -127,22 +109,331 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Dan,
+Convert the deprecated SIMPLE_DEV_PM_OPS() to DEFINE_SIMPLE_DEV_PM_OPS()
+and pm_sleep_ptr().
 
+This allows us to drop the __maybe_unused annotations from PM callbacks.
+This is a straightforward cleanup with no functional change intended.
 
->
-> Better to name it err_clear_mux_setting or something.
->
+Signed-off-by: Triet Hoang <triet.hoang.dev@gmail.com>
+---
+Changes in v2:
+- Change commit message prefix from "drivers/mfd: " to "mfd: ".
+- Wrap to 75 ish chars for commit messages.
 
-Thanks for pointing this out, I'll rename the labels accordingly.
+Link to v1: https://lore.kernel.org/all/20260821092508.324787-1-triet.hoang.dev@gmail.com/
+Link to v2: https://lore.kernel.org/all/20260829050228.42638-1-triet.hoang.dev@gmail.com/
+---
+ drivers/mfd/iqs62x.c           | 8 ++++----
+ drivers/mfd/max77843.c         | 8 ++++----
+ drivers/mfd/mt6360-core.c      | 8 ++++----
+ drivers/mfd/rk8xx-i2c.c        | 4 ++--
+ drivers/mfd/rn5t618.c          | 8 ++++----
+ drivers/mfd/ti_am335x_tscadc.c | 8 ++++----
+ drivers/mfd/tps6586x.c         | 8 ++++----
+ drivers/mfd/twl-core.c         | 8 ++++----
+ 8 files changed, 30 insertions(+), 30 deletions(-)
 
->
-> Since you can't test it, it's a bit risky to start caring about
-> errors.
->
+diff --git a/drivers/mfd/iqs62x.c b/drivers/mfd/iqs62x.c
+index ee017617d1d1..bea1ebdca9e7 100644
+--- a/drivers/mfd/iqs62x.c
++++ b/drivers/mfd/iqs62x.c
+@@ -1015,7 +1015,7 @@ static void iqs62x_remove(struct i2c_client *client)
+ 	wait_for_completion(&iqs62x->fw_done);
+ }
+ 
+-static int __maybe_unused iqs62x_suspend(struct device *dev)
++static int iqs62x_suspend(struct device *dev)
+ {
+ 	struct iqs62x_core *iqs62x = dev_get_drvdata(dev);
+ 	int ret;
+@@ -1036,7 +1036,7 @@ static int __maybe_unused iqs62x_suspend(struct device *dev)
+ 				  IQS62X_PWR_SETTINGS_PWR_MODE_HALT);
+ }
+ 
+-static int __maybe_unused iqs62x_resume(struct device *dev)
++static int iqs62x_resume(struct device *dev)
+ {
+ 	struct iqs62x_core *iqs62x = dev_get_drvdata(dev);
+ 	int ret;
+@@ -1051,7 +1051,7 @@ static int __maybe_unused iqs62x_resume(struct device *dev)
+ 				  IQS62X_PWR_SETTINGS_DIS_AUTO, 0);
+ }
+ 
+-static SIMPLE_DEV_PM_OPS(iqs62x_pm, iqs62x_suspend, iqs62x_resume);
++static DEFINE_SIMPLE_DEV_PM_OPS(iqs62x_pm, iqs62x_suspend, iqs62x_resume);
+ 
+ static const struct of_device_id iqs62x_of_match[] = {
+ 	{ .compatible = "azoteq,iqs620a" },
+@@ -1067,7 +1067,7 @@ static struct i2c_driver iqs62x_i2c_driver = {
+ 	.driver = {
+ 		.name = "iqs62x",
+ 		.of_match_table = iqs62x_of_match,
+-		.pm = &iqs62x_pm,
++		.pm = pm_sleep_ptr(&iqs62x_pm),
+ 	},
+ 	.probe = iqs62x_probe,
+ 	.remove = iqs62x_remove,
+diff --git a/drivers/mfd/max77843.c b/drivers/mfd/max77843.c
+index 2a48577b1a79..9ae6715642ae 100644
+--- a/drivers/mfd/max77843.c
++++ b/drivers/mfd/max77843.c
+@@ -173,7 +173,7 @@ static const struct i2c_device_id max77843_id[] = {
+ 	{ },
+ };
+ 
+-static int __maybe_unused max77843_suspend(struct device *dev)
++static int max77843_suspend(struct device *dev)
+ {
+ 	struct i2c_client *i2c = to_i2c_client(dev);
+ 	struct max77693_dev *max77843 = i2c_get_clientdata(i2c);
+@@ -185,7 +185,7 @@ static int __maybe_unused max77843_suspend(struct device *dev)
+ 	return 0;
+ }
+ 
+-static int __maybe_unused max77843_resume(struct device *dev)
++static int max77843_resume(struct device *dev)
+ {
+ 	struct i2c_client *i2c = to_i2c_client(dev);
+ 	struct max77693_dev *max77843 = i2c_get_clientdata(i2c);
+@@ -197,12 +197,12 @@ static int __maybe_unused max77843_resume(struct device *dev)
+ 	return 0;
+ }
+ 
+-static SIMPLE_DEV_PM_OPS(max77843_pm, max77843_suspend, max77843_resume);
++static DEFINE_SIMPLE_DEV_PM_OPS(max77843_pm, max77843_suspend, max77843_resume);
+ 
+ static struct i2c_driver max77843_i2c_driver = {
+ 	.driver	= {
+ 		.name = "max77843",
+-		.pm = &max77843_pm,
++		.pm = pm_sleep_ptr(&max77843_pm),
+ 		.of_match_table = max77843_dt_match,
+ 		.suppress_bind_attrs = true,
+ 	},
+diff --git a/drivers/mfd/mt6360-core.c b/drivers/mfd/mt6360-core.c
+index b9b1036c8ff4..8a97c30cad3f 100644
+--- a/drivers/mfd/mt6360-core.c
++++ b/drivers/mfd/mt6360-core.c
+@@ -583,7 +583,7 @@ static int mt6360_probe(struct i2c_client *client)
+ 	return 0;
+ }
+ 
+-static int __maybe_unused mt6360_suspend(struct device *dev)
++static int mt6360_suspend(struct device *dev)
+ {
+ 	struct i2c_client *i2c = to_i2c_client(dev);
+ 
+@@ -593,7 +593,7 @@ static int __maybe_unused mt6360_suspend(struct device *dev)
+ 	return 0;
+ }
+ 
+-static int __maybe_unused mt6360_resume(struct device *dev)
++static int mt6360_resume(struct device *dev)
+ {
+ 
+ 	struct i2c_client *i2c = to_i2c_client(dev);
+@@ -604,7 +604,7 @@ static int __maybe_unused mt6360_resume(struct device *dev)
+ 	return 0;
+ }
+ 
+-static SIMPLE_DEV_PM_OPS(mt6360_pm_ops, mt6360_suspend, mt6360_resume);
++static DEFINE_SIMPLE_DEV_PM_OPS(mt6360_pm_ops, mt6360_suspend, mt6360_resume);
+ 
+ static const struct of_device_id __maybe_unused mt6360_of_id[] = {
+ 	{ .compatible = "mediatek,mt6360", },
+@@ -615,7 +615,7 @@ MODULE_DEVICE_TABLE(of, mt6360_of_id);
+ static struct i2c_driver mt6360_driver = {
+ 	.driver = {
+ 		.name = "mt6360",
+-		.pm = &mt6360_pm_ops,
++		.pm = pm_sleep_ptr(&mt6360_pm_ops),
+ 		.of_match_table = of_match_ptr(mt6360_of_id),
+ 	},
+ 	.probe = mt6360_probe,
+diff --git a/drivers/mfd/rk8xx-i2c.c b/drivers/mfd/rk8xx-i2c.c
+index 2951b2911a37..161b25fbe146 100644
+--- a/drivers/mfd/rk8xx-i2c.c
++++ b/drivers/mfd/rk8xx-i2c.c
+@@ -251,7 +251,7 @@ static void rk8xx_i2c_shutdown(struct i2c_client *client)
+ 	rk8xx_shutdown(&client->dev);
+ }
+ 
+-static SIMPLE_DEV_PM_OPS(rk8xx_i2c_pm_ops, rk8xx_suspend, rk8xx_resume);
++static DEFINE_SIMPLE_DEV_PM_OPS(rk8xx_i2c_pm_ops, rk8xx_suspend, rk8xx_resume);
+ 
+ static const struct of_device_id rk8xx_i2c_of_match[] = {
+ 	{ .compatible = "rockchip,rk801", .data = &rk801_data },
+@@ -270,7 +270,7 @@ static struct i2c_driver rk8xx_i2c_driver = {
+ 	.driver = {
+ 		.name = "rk8xx-i2c",
+ 		.of_match_table = rk8xx_i2c_of_match,
+-		.pm = &rk8xx_i2c_pm_ops,
++		.pm = pm_sleep_ptr(&rk8xx_i2c_pm_ops),
+ 	},
+ 	.probe = rk8xx_i2c_probe,
+ 	.shutdown  = rk8xx_i2c_shutdown,
+diff --git a/drivers/mfd/rn5t618.c b/drivers/mfd/rn5t618.c
+index 23ca00d2c624..8c68dd16bb9e 100644
+--- a/drivers/mfd/rn5t618.c
++++ b/drivers/mfd/rn5t618.c
+@@ -243,7 +243,7 @@ static void rn5t618_i2c_remove(struct i2c_client *i2c)
+ 	unregister_restart_handler(&rn5t618_restart_handler);
+ }
+ 
+-static int __maybe_unused rn5t618_i2c_suspend(struct device *dev)
++static int rn5t618_i2c_suspend(struct device *dev)
+ {
+ 	struct rn5t618 *priv = dev_get_drvdata(dev);
+ 
+@@ -253,7 +253,7 @@ static int __maybe_unused rn5t618_i2c_suspend(struct device *dev)
+ 	return 0;
+ }
+ 
+-static int __maybe_unused rn5t618_i2c_resume(struct device *dev)
++static int rn5t618_i2c_resume(struct device *dev)
+ {
+ 	struct rn5t618 *priv = dev_get_drvdata(dev);
+ 
+@@ -263,7 +263,7 @@ static int __maybe_unused rn5t618_i2c_resume(struct device *dev)
+ 	return 0;
+ }
+ 
+-static SIMPLE_DEV_PM_OPS(rn5t618_i2c_dev_pm_ops,
++static DEFINE_SIMPLE_DEV_PM_OPS(rn5t618_i2c_dev_pm_ops,
+ 			rn5t618_i2c_suspend,
+ 			rn5t618_i2c_resume);
+ 
+@@ -271,7 +271,7 @@ static struct i2c_driver rn5t618_i2c_driver = {
+ 	.driver = {
+ 		.name = "rn5t618",
+ 		.of_match_table = rn5t618_of_match,
+-		.pm = &rn5t618_i2c_dev_pm_ops,
++		.pm = pm_sleep_ptr(&rn5t618_i2c_dev_pm_ops),
+ 	},
+ 	.probe = rn5t618_i2c_probe,
+ 	.remove = rn5t618_i2c_remove,
+diff --git a/drivers/mfd/ti_am335x_tscadc.c b/drivers/mfd/ti_am335x_tscadc.c
+index 068c25401c6c..81f07a1d780c 100644
+--- a/drivers/mfd/ti_am335x_tscadc.c
++++ b/drivers/mfd/ti_am335x_tscadc.c
+@@ -313,7 +313,7 @@ static int __maybe_unused ti_tscadc_can_wakeup(struct device *dev, void *data)
+ 	return device_may_wakeup(dev);
+ }
+ 
+-static int __maybe_unused tscadc_suspend(struct device *dev)
++static int tscadc_suspend(struct device *dev)
+ {
+ 	struct ti_tscadc_dev *tscadc = dev_get_drvdata(dev);
+ 
+@@ -331,7 +331,7 @@ static int __maybe_unused tscadc_suspend(struct device *dev)
+ 	return 0;
+ }
+ 
+-static int __maybe_unused tscadc_resume(struct device *dev)
++static int tscadc_resume(struct device *dev)
+ {
+ 	struct ti_tscadc_dev *tscadc = dev_get_drvdata(dev);
+ 
+@@ -345,7 +345,7 @@ static int __maybe_unused tscadc_resume(struct device *dev)
+ 	return 0;
+ }
+ 
+-static SIMPLE_DEV_PM_OPS(tscadc_pm_ops, tscadc_suspend, tscadc_resume);
++static DEFINE_SIMPLE_DEV_PM_OPS(tscadc_pm_ops, tscadc_suspend, tscadc_resume);
+ 
+ static const struct ti_tscadc_data tscdata = {
+ 	.adc_feature_name = "TI-am335x-adc",
+@@ -373,7 +373,7 @@ MODULE_DEVICE_TABLE(of, ti_tscadc_dt_ids);
+ static struct platform_driver ti_tscadc_driver = {
+ 	.driver = {
+ 		.name   = "ti_am3359-tscadc",
+-		.pm	= &tscadc_pm_ops,
++		.pm	= pm_sleep_ptr(&tscadc_pm_ops),
+ 		.of_match_table = ti_tscadc_dt_ids,
+ 	},
+ 	.probe	= ti_tscadc_probe,
+diff --git a/drivers/mfd/tps6586x.c b/drivers/mfd/tps6586x.c
+index 3cfd2f02b62f..600186b1e8cb 100644
+--- a/drivers/mfd/tps6586x.c
++++ b/drivers/mfd/tps6586x.c
+@@ -618,7 +618,7 @@ static void tps6586x_i2c_remove(struct i2c_client *client)
+ 		free_irq(client->irq, tps6586x);
+ }
+ 
+-static int __maybe_unused tps6586x_i2c_suspend(struct device *dev)
++static int tps6586x_i2c_suspend(struct device *dev)
+ {
+ 	struct tps6586x *tps6586x = dev_get_drvdata(dev);
+ 
+@@ -628,7 +628,7 @@ static int __maybe_unused tps6586x_i2c_suspend(struct device *dev)
+ 	return 0;
+ }
+ 
+-static int __maybe_unused tps6586x_i2c_resume(struct device *dev)
++static int tps6586x_i2c_resume(struct device *dev)
+ {
+ 	struct tps6586x *tps6586x = dev_get_drvdata(dev);
+ 
+@@ -638,7 +638,7 @@ static int __maybe_unused tps6586x_i2c_resume(struct device *dev)
+ 	return 0;
+ }
+ 
+-static SIMPLE_DEV_PM_OPS(tps6586x_pm_ops, tps6586x_i2c_suspend,
++static DEFINE_SIMPLE_DEV_PM_OPS(tps6586x_pm_ops, tps6586x_i2c_suspend,
+ 			 tps6586x_i2c_resume);
+ 
+ static const struct i2c_device_id tps6586x_id_table[] = {
+@@ -651,7 +651,7 @@ static struct i2c_driver tps6586x_driver = {
+ 	.driver	= {
+ 		.name	= "tps6586x",
+ 		.of_match_table = of_match_ptr(tps6586x_of_match),
+-		.pm	= &tps6586x_pm_ops,
++		.pm	= pm_sleep_ptr(&tps6586x_pm_ops),
+ 	},
+ 	.probe		= tps6586x_i2c_probe,
+ 	.remove		= tps6586x_i2c_remove,
+diff --git a/drivers/mfd/twl-core.c b/drivers/mfd/twl-core.c
+index c024a28b057e..b7d749208131 100644
+--- a/drivers/mfd/twl-core.c
++++ b/drivers/mfd/twl-core.c
+@@ -903,7 +903,7 @@ twl_probe(struct i2c_client *client)
+ 	return status;
+ }
+ 
+-static int __maybe_unused twl_suspend(struct device *dev)
++static int twl_suspend(struct device *dev)
+ {
+ 	struct i2c_client *client = to_i2c_client(dev);
+ 
+@@ -913,7 +913,7 @@ static int __maybe_unused twl_suspend(struct device *dev)
+ 	return 0;
+ }
+ 
+-static int __maybe_unused twl_resume(struct device *dev)
++static int twl_resume(struct device *dev)
+ {
+ 	struct i2c_client *client = to_i2c_client(dev);
+ 
+@@ -923,7 +923,7 @@ static int __maybe_unused twl_resume(struct device *dev)
+ 	return 0;
+ }
+ 
+-static SIMPLE_DEV_PM_OPS(twl_dev_pm_ops, twl_suspend, twl_resume);
++static DEFINE_SIMPLE_DEV_PM_OPS(twl_dev_pm_ops, twl_suspend, twl_resume);
+ 
+ static const struct i2c_device_id twl_ids[] = {
+ 	{ "twl4030", TWL4030_VAUX2 },	/* "Triton 2" */
+@@ -942,7 +942,7 @@ static const struct i2c_device_id twl_ids[] = {
+ /* One Client Driver , 4 Clients */
+ static struct i2c_driver twl_driver = {
+ 	.driver.name	= DRIVER_NAME,
+-	.driver.pm	= &twl_dev_pm_ops,
++	.driver.pm	= pm_sleep_ptr(&twl_dev_pm_ops),
+ 	.id_table	= twl_ids,
+ 	.probe		= twl_probe,
+ 	.remove		= twl_remove,
+-- 
+2.53.0
 
-Fair point =E2=80=94 though ignoring all errors isn't ideal either.
-
-Best regards,
-Phuc
 
