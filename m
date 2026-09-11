@@ -4,72 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 353D7C88E4A
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4CBAEC88E50
 	for <linux-mediatek@archiver.kernel.org>; Fri, 11 Sep 2026 10:43:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=xHKh2ur1SC89+M37Jy0ih6zuudaICpT10+VsOS5BA6Y=; b=x/HPll1HMIRHvABxb7oDbdDfK9
-	3fMYapni/IfmiU3QRy/1XF+wSylLpN1KDLuiMyt1E3PFMDl+F9ylOKy8NtdqGKfvJvtJ5deXBCYKa
-	9ZcxILehezOt4ua7sF9xL8/ugtAO5KYbKhJgDOrhxZmjt98TtyY2uoSePgeQJHVV1/R/7WKllqdYq
-	WSCqWA8zD6t358CoflTbtdCER+B71LvqNvO383GsUk8/CsO49yqXdb7K+Lg8hRwSAbCyfULijxaWF
-	NuGPR2+0IRWh3tXyTsh7qJ3u9GgZmcOwSuhkdYtiuI+DuRqsMH5s6KV3uVWzveU6fw2bQ+NI2w83u
-	mxf6/MYQ==;
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=nGFTkEwYB6tHniCOU10/jNmsJ6sUyQiWxjI5epJSI60=; b=I6mM913VRhT2WkP1eq3JnPc6JB
+	4ZctScA7bAPYwoWICbL8Ej5/p8OgBe8u83HCD2eLpWhqcBcAVW8ehT3Pe3hYyP5VEfy0IFApeG6mO
+	hQzvzPIaeamyo8dbb420uq+2UK/PSy60nMWVla+EvhCi6LUtznxdvdqtFh0Sn2PVKVDg5EsEZKxeD
+	ZeDSg52UVTX0BFL2n0mDs6C+2j5BIDYZMQNH/adzpo8umTHVAM6VVndbtKLqEXRuFrQlC3ufNhm0R
+	s/e8GSLEqbCnc3zjCu+85rq77qW9NYhAmKcXhPLqu++BuwB7czSZucgd4qEyLdy1n+kHQTSUp0VR+
+	C2mixsZA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x4yij-0000000GPYl-0S2e;
+	id 1x4yij-0000000GPZ3-0h32;
 	Fri, 11 Sep 2026 10:43:01 +0000
 Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x4yie-0000000GPY2-2otp
+	id 1x4yif-0000000GPY4-3ZtB
 	for linux-mediatek@bombadil.infradead.org;
 	Fri, 11 Sep 2026 10:42:59 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=infradead.org; s=desiato.20200630; h=Content-Type:Content-Transfer-Encoding
-	:MIME-Version:Message-ID:Date:Subject:CC:To:From:Sender:Reply-To:Content-ID:
-	Content-Description:In-Reply-To:References;
-	bh=xHKh2ur1SC89+M37Jy0ih6zuudaICpT10+VsOS5BA6Y=; b=oA0ljgQ2EFn1+BaVdAEyylYzd2
-	G/V2mgle5XrCGDj79sEtBQAw+1hz612zcByQJiQdFZr7rZ6YU8EaugTDGsv38CG/z/b/UccWeiUWo
-	t52iJ2jjrEbQZO6MP1GelyDX63p/C7YRy1fY0Yw7Y7nfbd/hHEkR10xz8+VIBVU8lnWbly4Y+eAZV
-	+uI3Cgn/bYuFrpfz7eBswBopGXbsf+5aMOJ6S6NCtZYqCqcThdWVsTtKUVC7pBluy7dlMHpTYr/50
-	MLI3UtTBTX5lkSM2bjpGqhfSGV9fnd75EzefY6IJs1uqkzU6ikr2EsrQ0dV88KRvOEsjlCfzNiHDe
-	DzVqn0uw==;
+	:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:
+	Sender:Reply-To:Content-ID:Content-Description;
+	bh=nGFTkEwYB6tHniCOU10/jNmsJ6sUyQiWxjI5epJSI60=; b=F6kcC06kzFB94lDHsHS9ct9p2Z
+	+3az7GKPoN1V4SOQq1e7TGcpHKT8CfxKiCdDoQ2W6JEkexpf7nKH0iJREttAer+7o3iPsjZE88Auw
+	oUyeedB9LC97w9kaytmqrt6HTAIhVeDemhRhDJsrzjt/G6xwSXetGBRwgUQCKQRAS4ItfSC6DR9iy
+	h3J+tAvfqyU090q45+dIFRw5LkSZm92bf9foaI0VoaGujYCQhT9SwNv/mo0taGDhfmn6LF8I7cZ9e
+	3eyyszwSESSfYQxFQfOCUHhiW601kJd0xM7EDWen40Sx9KNJgvRxY2ppJcY6q0RGxTRnv2oemqTvq
+	H3M9ci5g==;
 Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by desiato.infradead.org with esmtps (Exim 4.99.2 #2 (Red Hat Linux))
-	id 1x4yib-00000003TxN-1Djy
+	id 1x4yib-00000003TxR-21ms
 	for linux-mediatek@lists.infradead.org;
-	Fri, 11 Sep 2026 10:42:55 +0000
-X-UUID: 829ae1e2adcd11f1afed4741b24580c9-20260911
+	Fri, 11 Sep 2026 10:42:56 +0000
+X-UUID: 831dfd0cadcd11f1afed4741b24580c9-20260911
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=xHKh2ur1SC89+M37Jy0ih6zuudaICpT10+VsOS5BA6Y=;
-	b=TEtnid3tCh4+fxf9e5ZcwVwGyCdQWamo+H6RoGoVvm0vjVABMHCuz5NKbnzK2QKViTiy0VqF/7ozDUaxGkh6vT3xsHg3xUk6nufOVmX4xAMwNV+Ae8mY+PiyreFNLrZYkhzdOKv4M6/U/3WevHYrKmC2jxbkAqVq8lVhiOZP0MI=;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=nGFTkEwYB6tHniCOU10/jNmsJ6sUyQiWxjI5epJSI60=;
+	b=rqZdzF2Y5Uj5NlmNphAVmQrqESrKGOazZFyQ02x6uYArpst/tdixlc5Mb43gmqrzhlyQKLpIoikyqKDMIwk6KWtF7AQ14bo0ydj4uPWM3tuSy0HDizwUH8NgfNHv2lPf2DYtXtMIFYC8aZyPrGT8Lq1NYLZdRqNQ+QwMsNddTWQ=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.19,REQID:d7bc70c0-22eb-432e-9b07-3479abe09ea2,IP:0,U
+X-CID-O-INFO: VERSION:1.3.19,REQID:588ec619-f147-4eab-ae75-eb9f3f3a3406,IP:0,U
 	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
 	release,TS:0
-X-CID-META: VersionHash:7db8b62,CLOUDID:84b7b4e2-72a5-4ba1-af40-18bbd6ea8ffd,B
-	ulkID:nil,BulkQuantity:0,SF:102|136|836|865|888|898,TC:-5,Content:0|15|50|
-	99,EDM:-3|-100,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:-1,COL:0,OSI
-	:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-META: VersionHash:7db8b62,CLOUDID:e2112f28-9ebf-4787-bb42-3cd26eee85aa,B
+	ulkID:nil,BulkQuantity:0,SF:81|82|102|836|865|888|898,TC:-5,Content:0|15|5
+	0|99,EDM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:-1,COL:0,OSI:0,
+	OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
 X-CID-BVR: 2,SSN|SDN
 X-CID-BAS: 2,SSN|SDN,0,_
 X-CID-FACTOR: TF_CID_SPAM_SNR
 X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: 829ae1e2adcd11f1afed4741b24580c9-20260911
-Received: from mtkmbs09n2.mediatek.inc [(172.21.101.94)] by mailgw01.mediatek.com
+X-UUID: 831dfd0cadcd11f1afed4741b24580c9-20260911
+Received: from mtkmbs14n1.mediatek.inc [(172.21.101.75)] by mailgw01.mediatek.com
 	(envelope-from <chris.lu@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 35934865; Fri, 11 Sep 2026 03:42:39 -0700
+	with ESMTP id 1535101526; Fri, 11 Sep 2026 03:42:40 -0700
 Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
- MTKMBS14N1.mediatek.inc (172.21.101.75) with Microsoft SMTP Server
+ MTKMBS09N1.mediatek.inc (172.21.101.35) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
  15.2.2562.29; Fri, 11 Sep 2026 18:42:37 +0800
 Received: from mtksitap99.mediatek.inc (10.233.130.16) by
  mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.2562.29 via Frontend Transport; Fri, 11 Sep 2026 18:42:36 +0800
+ 15.2.2562.29 via Frontend Transport; Fri, 11 Sep 2026 18:42:37 +0800
 From: Chris Lu <chris.lu@mediatek.com>
 To: Marcel Holtmann <marcel@holtmann.org>, Johan Hedberg
 	<johan.hedberg@gmail.com>, Luiz Von Dentz <luiz.dentz@gmail.com>
@@ -78,16 +78,18 @@ CC: Sean Wang <sean.wang@mediatek.com>, Will Lee <will-cy.Lee@mediatek.com>,
 	<linux-bluetooth@vger.kernel.org>, linux-kernel
 	<linux-kernel@vger.kernel.org>, linux-mediatek
 	<linux-mediatek@lists.infradead.org>, Chris Lu <chris.lu@mediatek.com>
-Subject: [PATCH 0/3] Bluetooth: btmtk: firmware debug event routing and WMT FUNC_CTRL status fixes
-Date: Fri, 11 Sep 2026 18:42:31 +0800
-Message-ID: <20260911104234.2276126-1-chris.lu@mediatek.com>
+Subject: [PATCH 3/3] Bluetooth: btmtksdio, btmtkuart: validate WMT event length before struct access
+Date: Fri, 11 Sep 2026 18:42:34 +0800
+Message-ID: <20260911104234.2276126-4-chris.lu@mediatek.com>
 X-Mailer: git-send-email 2.45.2
+In-Reply-To: <20260911104234.2276126-1-chris.lu@mediatek.com>
+References: <20260911104234.2276126-1-chris.lu@mediatek.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260911_114253_720244_F5C45BAE 
-X-CRM114-Status: GOOD (  12.42  )
+X-CRM114-CacheID: sfid-20260911_114253_877368_3CCACDFB 
+X-CRM114-Status: GOOD (  14.66  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,42 +104,107 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This series bundles three independent MediaTek Bluetooth driver fixes:
+btmtksdio.c and btmtkuart.c cast a received WMT event straight to
+struct btmtk_hci_wmt_evt and read its op/flag fields without checking
+the event is long enough to contain them, unlike btmtk.c. The
+FUNC_CTRL case then further casts to struct btmtk_hci_wmt_evt_funcc
+and reads its 2-byte status field, again without a length check.
+Firmware that sends a short or malformed WMT event makes both drivers
+read past the end of the received SKB.
 
-Patch 1 is a resend of a fix submitted on 25 Aug 2026
-("Bluetooth: btmtk: Route firmware debug event to the diag channel")
-that received no review feedback. There are no code changes since
-that submission; resending it alongside the two related fixes below.
+Mirror btmtk.c: validate the base WMT header with skb_pull_data()
+before touching any of its fields, and when a FUNC_CTRL event turns
+out to be the short, header-only form (a plain enable/disable ack
+with no status word), decode the result from the header's own flag
+byte instead (0 = success, otherwise failure).
 
-Patches 2-3 fix how btmtk_usb_hci_wmt_sync() (and its btmtksdio.c /
-btmtkuart.c counterparts) interpret a WMT FUNC_CTRL event that carries
-only the WMT header and no trailing 2-byte status word. Such an event
-is a normal firmware ack for a plain enable/disable request, with the
-result carried in the header's own flag byte, not a failure as the
-current code assumes:
+Verified setup on MT7920, MT7921, MT7922 and MT7925: no regression.
 
-  - Patch 2 fixes this for btmtk.c, where a bounds check already
-    existed (added by e3ac0d9f1a20) but defaulted to the wrong
-    result.
-  - Patch 3 applies the same fix to btmtksdio.c and btmtkuart.c, which
-    never had a bounds check for this event at all and read 2 bytes
-    past the end of the received SKB whenever firmware sent the short
-    form. While there, it also adds the missing base WMT header length
-    check that btmtk.c already has (skb_pull_data() before touching
-    wmt_evt->whdr.op), since these two files were unconditionally
-    dereferencing that field with no length validation at all.
-
-Chris Lu (3):
-  Bluetooth: btmtk: Route firmware debug event to the diag channel
-  Bluetooth: btmtk: fix wrong status for short WMT FUNC_CTRL events
-  Bluetooth: btmtksdio, btmtkuart: validate WMT event length before
-    struct access
-
- drivers/bluetooth/btmtk.c     |  8 +++++++-
+Fixes: 9aebfd4a2200 ("Bluetooth: mediatek: add support for MediaTek MT7663S and MT7668S SDIO devices")
+Fixes: e0b67035a90b ("Bluetooth: mediatek: update the common setup between MT7622 and other devices")
+Assisted-by: Claude:claude-opus-5
+Signed-off-by: Chris Lu <chris.lu@mediatek.com>
+---
  drivers/bluetooth/btmtksdio.c | 20 +++++++++++++++++++-
- drivers/bluetooth/btmtkuart.c | 19 ++++++++++++++++++-
- 3 files changed, 44 insertions(+), 3 deletions(-)
+ drivers/bluetooth/btmtkuart.c | 20 +++++++++++++++++++-
+ 2 files changed, 38 insertions(+), 2 deletions(-)
 
+diff --git a/drivers/bluetooth/btmtksdio.c b/drivers/bluetooth/btmtksdio.c
+index fe4ca9395aa3..a8ebcd0c005c 100644
+--- a/drivers/bluetooth/btmtksdio.c
++++ b/drivers/bluetooth/btmtksdio.c
+@@ -217,7 +217,14 @@ static int mtk_hci_wmt_sync(struct hci_dev *hdev,
+ 	}
+
+ 	/* Parse and handle the return WMT event */
+-	wmt_evt = (struct btmtk_hci_wmt_evt *)bdev->evt_skb->data;
++	wmt_evt = skb_pull_data(bdev->evt_skb, sizeof(*wmt_evt));
++	if (!wmt_evt) {
++		bt_dev_err(hdev, "WMT event too short (%u bytes)",
++			   bdev->evt_skb->len);
++		err = -EINVAL;
++		goto err_free_skb;
++	}
++
+ 	if (wmt_evt->whdr.op != hdr->op) {
+ 		bt_dev_err(hdev, "Wrong op received %d expected %d",
+ 			   wmt_evt->whdr.op, hdr->op);
+@@ -233,6 +240,17 @@ static int mtk_hci_wmt_sync(struct hci_dev *hdev,
+ 			status = BTMTK_WMT_PATCH_DONE;
+ 		break;
+ 	case BTMTK_WMT_FUNC_CTRL:
++		if (!skb_pull_data(bdev->evt_skb,
++				   sizeof(wmt_evt_funcc->status))) {
++			/* A plain enable/disable request is acked with just
++			 * the WMT header and no trailing status word; the
++			 * result is carried in the header's own flag byte.
++			 */
++			status = wmt_evt->whdr.flag ? BTMTK_WMT_ON_UNDONE :
++						       BTMTK_WMT_ON_DONE;
++			break;
++		}
++
+ 		wmt_evt_funcc = (struct btmtk_hci_wmt_evt_funcc *)wmt_evt;
+ 		if (be16_to_cpu(wmt_evt_funcc->status) == 0x404)
+ 			status = BTMTK_WMT_ON_DONE;
+diff --git a/drivers/bluetooth/btmtkuart.c b/drivers/bluetooth/btmtkuart.c
+index 27aa48ff3ac2..4af6fbbbd302 100644
+--- a/drivers/bluetooth/btmtkuart.c
++++ b/drivers/bluetooth/btmtkuart.c
+@@ -151,7 +151,14 @@ static int mtk_hci_wmt_sync(struct hci_dev *hdev,
+ 	}
+
+ 	/* Parse and handle the return WMT event */
+-	wmt_evt = (struct btmtk_hci_wmt_evt *)bdev->evt_skb->data;
++	wmt_evt = skb_pull_data(bdev->evt_skb, sizeof(*wmt_evt));
++	if (!wmt_evt) {
++		bt_dev_err(hdev, "WMT event too short (%u bytes)",
++			   bdev->evt_skb->len);
++		err = -EINVAL;
++		goto err_free_wc;
++	}
++
+ 	if (wmt_evt->whdr.op != hdr->op) {
+ 		bt_dev_err(hdev, "Wrong op received %d expected %d",
+ 			   wmt_evt->whdr.op, hdr->op);
+@@ -167,6 +174,17 @@ static int mtk_hci_wmt_sync(struct hci_dev *hdev,
+ 			status = BTMTK_WMT_PATCH_DONE;
+ 		break;
+ 	case BTMTK_WMT_FUNC_CTRL:
++		if (!skb_pull_data(bdev->evt_skb,
++				   sizeof(wmt_evt_funcc->status))) {
++			/* A plain enable/disable request is acked with just
++			 * the WMT header and no trailing status word; the
++			 * result is carried in the header's own flag byte.
++			 */
++			status = wmt_evt->whdr.flag ? BTMTK_WMT_ON_UNDONE :
++						       BTMTK_WMT_ON_DONE;
++			break;
++		}
++
+ 		wmt_evt_funcc = (struct btmtk_hci_wmt_evt_funcc *)wmt_evt;
+ 		if (be16_to_cpu(wmt_evt_funcc->status) == 0x404)
+ 			status = BTMTK_WMT_ON_DONE;
 --
 2.45.2
 
