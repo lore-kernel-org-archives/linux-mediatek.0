@@ -4,58 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 02373C79FA1
-	for <linux-mediatek@archiver.kernel.org>; Fri, 11 Sep 2026 06:33:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5AE11C88E4D
+	for <linux-mediatek@archiver.kernel.org>; Fri, 11 Sep 2026 06:33:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
-	From:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=4wptcN8SNVQPyWxXICpL/SUXmC9GdykwCS/+Bxna//4=; b=RNPjibXbdu6IRvcQSQdNrKCOQj
-	BZPjxiHwdWz8FgC1uT3mHe8dnVi5mykn1VOt36ktOuFX7S3b0xqp9RRUb0CTPa1eQOt8/dW8rXxdH
-	gXl26rUddoXGZAaYjIomU71RHfVAKpgHBfIER8eTiE7PJKhQL/fbzRnAqEEBe2a1l5meWg4untQmN
-	dFLAZr1R91SjcthJAAFOfo7Lf3MuWAJ7wZsdAaQ4lMRlmjG0IBwhDVf7bKG2sNliQRrX0pYbyUCR5
-	syBSNs3mUdzrGtZFvoBKGpAdvK7PBcqy3sekMaQIErPGBWU0O4lkx/AQGsFzuXytNuE1cjJLl81wL
-	xyf4UkCg==;
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:
+	References:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:
+	Subject:Date:From:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=4KIoS8Wk3aO2W56jJdGPN5s/0bYew7FSDY+B2h6y7nI=; b=0qkfH8XNuSxSK3GMLpmGDloUmN
+	snyVx0F0BFvVe2dbtfAaOe5LK4eKZJyLSKlf5GdcnL/8JSGR+AROmFtOh0QMiWisRGYVbcCVbQHKv
+	xeYB3Ld31aVliYvPgeCojOj8sagEnyoxLf9F3xLXRAU7hMXfUITz1Sp9eBCepk9T3CKDgASLJdSD0
+	S3L4HP5xVwvejrLj3wJzIkDRNilWcJpQFxCFzR0nuqa2wO/T41oYfqL4Fo/RgeVPM3GEwzw2pnsaX
+	IrWhe/YuVMpEwFbvYHFNYLZg5FIikF1bns5Wk+Fpgfo3W2YfvUtHFTI4cBjTqtHRNemuTL47WWMt0
+	9RAG4Erg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x4upg-0000000FwSB-0cXb;
-	Fri, 11 Sep 2026 06:33:56 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1x4upi-0000000FwUk-0Ahj;
+	Fri, 11 Sep 2026 06:33:58 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x4upe-0000000FwRQ-3g4D;
-	Fri, 11 Sep 2026 06:33:54 +0000
+	id 1x4upf-0000000FwRV-13Kb;
+	Fri, 11 Sep 2026 06:33:55 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id F267160202;
-	Fri, 11 Sep 2026 06:33:53 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id 89370C2BCB8;
+	by sea.source.kernel.org (Postfix) with ESMTP id 363C643E19;
+	Fri, 11 Sep 2026 06:33:54 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPS id B3056C2BCFF;
 	Fri, 11 Sep 2026 06:33:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
 	s=k20201202; t=1789108433;
-	bh=III8deQ/x6mTKRMLEfxp/HqD28xxvlYsZv802tIFQL0=;
-	h=From:Subject:Date:To:Cc:Reply-To:From;
-	b=EoJUWwWHKIZWYsp+7hfY9kX2kW5H3jSkga3GYy0L6BpfXrempyu+924rbRPuHms2i
-	 Eam8no2s0QdOiAUr2WvYXjnWciAbFdYZZmlzSmKCLPLFdUDjWUj+9YNiRZgy2sj8F9
-	 PQd+WOnej9D9ynpiD2qTmZrgkP/KC3rKwHAfte2ar3MJW22PhgKSo3YISJ2YEUWncU
-	 +CBXwCtCvDVQFmM+dOO/4tVyJuBKOFuEYSLyCPQup12XEZU8TRbAtqfpYdHWsQucJC
-	 PtVxVh7bEUl6yRnMT2knByDfAPiz8IrzjNh7/lDu2O5W61s++ibXIrE7+6XP16Cwl7
-	 h3SFpFLcarmSg==
+	bh=HmXNcA1YAnZLx3RPO+XZdE0dPg1yJCRKOMe6ArOea/0=;
+	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To:From;
+	b=r/g3ckjnar/MDHt+ZqIrsuDZhWgjyXrV636yYh8ZfnFuQ+xjkGqFAf6U4iTCJKyBp
+	 qBqXav3n+bojCQgciefQfjjHABg5iN/4Qpx+IzcXBdXjCO0+eKw2RXijySd+FG0mUm
+	 iBp1xc9NmQJkAG4APYT4+YtVXjgMdFRIqjPA04Ruj3w1YvBMVd4n6OU+pOgCrJ30vZ
+	 NAaZhBJHfrQxo0/N5fUChSS81LZrKwAVdKgVPU5NYQQ3p724nXvaGftFv4vrVT5m5/
+	 gSmGy7QHLVRaoC4C9gtKfUTLWjkU5orkgB4nfdiFsm1euRcZOuU72qu8KNA9z94VpV
+	 sXlEr9N2gAlmw==
 Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 62ED8C88E42;
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 96BD8C88E50;
 	Fri, 11 Sep 2026 06:33:53 +0000 (UTC)
 From: Roman Vivchar via B4 Relay <devnull+rva333.protonmail.com@kernel.org>
-Subject: [PATCH v4 0/3] nvmem: add support for the MediaTek mt6323 PMIC
-Date: Fri, 11 Sep 2026 09:32:58 +0300
-Message-Id: <20260911-mt6323-nvmem-v4-0-626dd17531dc@protonmail.com>
+Date: Fri, 11 Sep 2026 09:33:01 +0300
+Subject: [PATCH v4 3/3] ARM: dts: mediatek: mt6323: add EFUSE support
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-X-B4-Tracking: v=1; b=H4sIAAAAAAAC/3XOTQ7CIBAF4Ks0rMXA0NLUlfcwLigOFiPFABKN6
- d2lutD4s3zJm+/NjUQMFiNZVTcSMNto/VhCvaiIHtS4R2p3JRNgIJnknLokBQg6ZoeOMt3Uihk
- wqjOknJwCGnt5cJvtM8dzf0CdZmNuDDYmH66Pvczn3h86c8po3yDvO40NN7A+BZ/86JQ9LrV3Z
- PYzvAvthwBFqI1gKKQqX9Y/BfESWi4+BFEEYI0WHchWwbcwTdMd5gQuckMBAAA=
-X-Change-ID: 20260611-mt6323-nvmem-0c54a0f2fa9f
+Message-Id: <20260911-mt6323-nvmem-v4-3-626dd17531dc@protonmail.com>
+References: <20260911-mt6323-nvmem-v4-0-626dd17531dc@protonmail.com>
+In-Reply-To: <20260911-mt6323-nvmem-v4-0-626dd17531dc@protonmail.com>
 To: Sen Chu <sen.chu@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, 
  Macpaul Lin <macpaul.lin@mediatek.com>, Lee Jones <lee@kernel.org>, 
  Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
@@ -67,14 +64,13 @@ To: Sen Chu <sen.chu@mediatek.com>, Sean Wang <sean.wang@mediatek.com>,
 Cc: Andy Shevchenko <andy@kernel.org>, linux-pm@vger.kernel.org, 
  devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
- Ben Grisdale <bengris32@protonmail.ch>, 
- Conor Dooley <conor.dooley@microchip.com>
+ Ben Grisdale <bengris32@protonmail.ch>
 X-Mailer: b4 0.15.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1789108431; l=2447;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1789108431; l=757;
  i=rva333@protonmail.com; s=20260510; h=from:subject:message-id;
- bh=III8deQ/x6mTKRMLEfxp/HqD28xxvlYsZv802tIFQL0=;
- b=08QpbWtt2VFD+87AueJLzIdq6DQnxc3iPkj08mZppBO4XOonHfpRrRZxT5L3LFSBSKH6Q+GMZ
- 16gF+U2AHR8D9+OeWNN9FJCrrtpCqZDMRi6TccNGNyvWeIrbwPQGHrb
+ bh=8n+fwUrTUb93L9BoRmKvxttEJdPZMxj+kOtwP+JsFd4=;
+ b=CTzhpfAQ2JrxbDwtDeNSwlTRehA3OG/8+Wj29z/uu4TxNqsytlxToaaU8G60P12k1QN0PH0nW
+ fFhYnVZ8CFACnGdt3jae10uvRf8zfys39SxRrT+lwb1fuar3urSgvns
 X-Developer-Key: i=rva333@protonmail.com; a=ed25519;
  pk=zww/nWjBGoQ4POXCG0BV6fx2iuXK6jx77rsKPA5YK5Y=
 X-Endpoint-Received: by B4 Relay for rva333@protonmail.com/20260510 with
@@ -95,64 +91,34 @@ Reply-To: rva333@protonmail.com
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This series adds support for the EFUSE found on the MediaTek mt6323 PMIC.
+From: Roman Vivchar <rva333@protonmail.com>
 
-The previous version of the series for all AUXADC, EFUSE and thermal
-drivers was split after Krzysztof's comment [1].
-    
-Tested on the MediaTek mt6572 and mt8163 SoCs (Ben), both paired with a
-mt6323.
-
-[1]: https://lore.kernel.org/linux-mediatek/20260504-mt6323-v1-0-799b58b355ff@protonmail.com/T/#med30fad67a090be35f549231336b2dec295233f6
+Add the devicetree node for the mt6323 efuse.
 
 Tested-by: Ben Grisdale <bengris32@protonmail.ch> # Amazon Echo Dot (2nd Generation)
 Signed-off-by: Roman Vivchar <rva333@protonmail.com>
-
 ---
-Changes in v4:
-- Rebase onto nvmem/for-next (8f596c13b6b7 ("dt-bindings: nvmem: qfprom: Add compatible for Qualcomm Maili"))
-- Drop device-id/of.h header (Andy)
-- Mediatek -> MediaTek in Kconfig
-- Link to v3: https://patch.msgid.link/20260713-mt6323-nvmem-v3-0-205c39267a24@protonmail.com
+ arch/arm/boot/dts/mediatek/mt6323.dtsi | 4 ++++
+ 1 file changed, 4 insertions(+)
 
-Changes in v3:
-- Rebase onto next-20260708
-- EFUSE driver: Replace 'mod_devicetable.h' with explicit 'device-id/of.h'
-- Drop MFD patch since it's applied
-- Link to v2: https://patch.msgid.link/20260617-mt6323-nvmem-v2-0-4f30e36aa0f4@protonmail.com
+diff --git a/arch/arm/boot/dts/mediatek/mt6323.dtsi b/arch/arm/boot/dts/mediatek/mt6323.dtsi
+index c070f4b0936c..c2d08d29cee7 100644
+--- a/arch/arm/boot/dts/mediatek/mt6323.dtsi
++++ b/arch/arm/boot/dts/mediatek/mt6323.dtsi
+@@ -19,6 +19,10 @@ mt6323_adc: adc {
+ 			#io-channel-cells = <1>;
+ 		};
+ 
++		efuse {
++			compatible = "mediatek,mt6323-efuse";
++		};
++
+ 		mt6323_leds: leds {
+ 			compatible = "mediatek,mt6323-led";
+ 			#address-cells = <1>;
 
-Changes in v2:
-- EFUSE driver: Sort variables in the mt6323_efuse_read (Andy)
-- Link to v1: https://patch.msgid.link/20260611-mt6323-nvmem-v1-0-b5e1b9ce51f2@protonmail.com
-
-Changes after split:
-- EFUSE driver:
-    - Remove 'linux/errno.h' header (Andy)
-    - Remove explicit cast to u16 in the 'mt6323_efuse_read' (Andy)
-    - Reword comment in the 'mt6323_efuse_read'
-    - Capitalize MediaTek in the module description
-- Link to a previous series: https://patch.msgid.link/20260512-mt6323-v2-0-3efcba579e88@protonmail.com
-
----
-Roman Vivchar (3):
-      dt-bindings: mfd: mediatek: mt6397: add mt6323 PMIC EFUSE
-      nvmem: add mt6323 PMIC EFUSE driver
-      ARM: dts: mediatek: mt6323: add EFUSE support
-
- .../devicetree/bindings/mfd/mediatek,mt6397.yaml   | 21 ++++++
- MAINTAINERS                                        |  5 ++
- arch/arm/boot/dts/mediatek/mt6323.dtsi             |  4 ++
- drivers/nvmem/Kconfig                              | 11 +++
- drivers/nvmem/Makefile                             |  2 +
- drivers/nvmem/mt6323-efuse.c                       | 84 ++++++++++++++++++++++
- 6 files changed, 127 insertions(+)
----
-base-commit: 8f596c13b6b7fa9fa35091273c37f9b6e3fc2d0f
-change-id: 20260611-mt6323-nvmem-0c54a0f2fa9f
-
-Best regards,
---  
-Roman Vivchar <rva333@protonmail.com>
+-- 
+2.55.0
 
 
 
