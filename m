@@ -4,67 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2253CC88E4A
-	for <linux-mediatek@archiver.kernel.org>; Fri, 11 Sep 2026 10:48:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BC6A1C88E4D
+	for <linux-mediatek@archiver.kernel.org>; Fri, 11 Sep 2026 11:59:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:References:Cc:To:From:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=11f6SdDiBsLZEK+6xrnQANC+Z+Fp65AqSdwdx2iIhKY=; b=Tjkv01yjF5pFA+JCXh85cNI2kq
-	eeUDM0McsE3cdwFIHBf3IiYKrZK60nCZFnjXFDggryjwaRvr8x7Z7fZ+AJvQfsWMjeMoY/wq3D+bZ
-	LdGPdYtYXx8YDDwWPwHeZpz3an1VxECTp7iOzafb4m73lb1sjPcGItyGXAys46SkI5Fh8zHKphv/k
-	5ERMjUbHkuptAWszqvrQ/gw0qjH8d+J8NzZXIYb+fBCgWjJ9qeOQwZKcGVtJhDZlSrveX+nO0K77D
-	g1Dnh0oq80hn+Mc790lFHC0QVLKNFrZzGceqakrPkFIeRc8QDH9c8W4IB4g6T298V5My2k2OJSElV
-	THWG37Bw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Kohi64dQ4DmaEMK+ZD5A/ULUjFhzKM3yV198CkL0Eeo=; b=WKeUlygvjYxz7SJMLSzOP6kgfJ
+	Ea7s9JeTVtQF95RDvgeZJA4yNI8ZIof8PYsQmVdDscXVWyBJHoF6zym1RKr2Z4BtNeuGQXomFOI8N
+	e57BOABYQ5LHJowZAUOzy09jAXHhNSUwbN3wVpgZw9AeXvZr53CFi87RjxvtYk9Z+llRDA0164PgU
+	93d2ZWc/Gu2lSFYCs7mJhhfyC9RP9kcK+IxAJ0QcJMsoRnKFf06LlrMyzsKqcyOYENj1rvefH9BEB
+	i34MIA6iStwPazTL0msg/oQILZzWZp2Utt0/Y+RwRBykWBYWnDu9uJmITHxWk0usE3nGJRoPi6ugt
+	1sQsmrCg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x4yoO-0000000GQJX-00M3;
-	Fri, 11 Sep 2026 10:48:52 +0000
-Received: from mail.cjdns.fr ([5.135.140.105])
+	id 1x4zue-0000000GYql-2YeF;
+	Fri, 11 Sep 2026 11:59:24 +0000
+Received: from vps0.lunn.ch ([156.67.10.101])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x4yoL-0000000GQI1-0wEU;
-	Fri, 11 Sep 2026 10:48:50 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id 0103741E8BE;
-	Fri, 11 Sep 2026 12:48:37 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cjdns.fr; s=dkim;
-	t=1789123724; h=from:subject:date:message-id:to:cc:mime-version:content-type:
-	 content-transfer-encoding:content-language:in-reply-to:references;
-	bh=11f6SdDiBsLZEK+6xrnQANC+Z+Fp65AqSdwdx2iIhKY=;
-	b=rNCxHeT0mYxpRuViaP9flP64qaNE7U13NSACKvh4kwEmZxhLqJvnHMHn+ZDVGA94hobwD5
-	Wz488/BOmE+sW3/sExZD+3AQn4f42BvPwAczpKRJaTioBufsRF1vRytLB4aeNgho/DF2Eh
-	mmZsHO0P1OXeG2vs2qALwismh3GhVf9kF+1oHVzP5NfOzxTdVekykCevZkO+R/y534nfFh
-	PDWYSu2Gkd/CE1DOZ72CwjSHIbD84VjEJg/2NZDzslRLOwWVNFC8mW5eRX29ZXkI3JEJIq
-	t6/Fh4zTELjtdNRp5Uqa+pOnZ99IuQMZrPl8h4zV9krgQyf6Xs8j8qa3HuEukw==
-Message-ID: <3f0244b6-f557-497a-9e28-bcec63891398@cjdns.fr>
-Date: Fri, 11 Sep 2026 12:48:35 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird Beta
-Subject: Re: [PATCH net-next] net: phy: mediatek: support MT7530 PHYs on
+	id 1x4zuc-0000000GYpa-0UHC;
+	Fri, 11 Sep 2026 11:59:23 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
+	s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
+	References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
+	Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
+	bh=Kohi64dQ4DmaEMK+ZD5A/ULUjFhzKM3yV198CkL0Eeo=; b=LJWkaAISz58qWqwN3J5USwTBy0
+	nDqz9tMtZPPWdDv+LNbrzfhJylQzHihUh3HHb7tR7Vt3HWLVor+DQa1CmlhdqLtKLV9T3fvw8DUMQ
+	qkeNdc05QS9115NWIPVLpEPp/Au8Hgs6+uho90r7lWTapEEht0LE+Uozb9d1CxZBZuCU=;
+Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
+	(envelope-from <andrew@lunn.ch>)
+	id 1x4zuC-004gRj-Iw; Fri, 11 Sep 2026 13:58:56 +0200
+Date: Fri, 11 Sep 2026 13:58:56 +0200
+From: Andrew Lunn <andrew@lunn.ch>
+To: Caleb James DeLisle <cjd@cjdns.fr>
+Cc: netdev@vger.kernel.org, daniel@makrotopia.org, dqfext@gmail.com,
+	SkyLake.Huang@mediatek.com, hkallweit1@gmail.com,
+	linux@armlinux.org.uk, davem@davemloft.net, edumazet@google.com,
+	kuba@kernel.org, pabeni@redhat.com, matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	Matheus Sampaio Queiroga <srherobrine20@gmail.com>
+Subject: Re: [PATCH v2 net-next] net: phy: mediatek: support MT7530 PHYs on
  EN71221 MCM
-From: Caleb James DeLisle <cjd@cjdns.fr>
-To: Daniel Golle <daniel@makrotopia.org>
-Cc: netdev@vger.kernel.org, dqfext@gmail.com, SkyLake.Huang@mediatek.com,
- andrew@lunn.ch, hkallweit1@gmail.com, linux@armlinux.org.uk,
- davem@davemloft.net, edumazet@google.com, kuba@kernel.org,
- pabeni@redhat.com, matthias.bgg@gmail.com,
- angelogioacchino.delregno@collabora.com, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- Matheus Sampaio Queiroga <srherobrine20@gmail.com>
+Message-ID: <8396aeb6-c43e-453e-a7d3-52349b93c528@lunn.ch>
 References: <20260909213250.3184238-1-cjd@cjdns.fr>
- <aqHlfmYa249e3HRM@makrotopia.org>
- <7a3479c8-45cc-4b88-b111-c35d59f370e1@cjdns.fr>
- <aqIOGgVujIKT7H2H@makrotopia.org>
- <f1c898c4-2a84-41e8-ad8d-8c79df3feb47@cjdns.fr>
-Content-Language: en-US
-In-Reply-To: <f1c898c4-2a84-41e8-ad8d-8c79df3feb47@cjdns.fr>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-Last-TLS-Session-Version: TLSv1.3
+ <20260911103910.4123567-1-cjd@cjdns.fr>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20260911103910.4123567-1-cjd@cjdns.fr>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260911_034849_527380_88A0BDDB 
-X-CRM114-Status: GOOD (  10.10  )
+X-CRM114-CacheID: sfid-20260911_045922_153400_177ECB8D 
+X-CRM114-Status: UNSURE (   7.14  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,64 +75,25 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
->>
->> Dumping the PHY register space and comparing it with MT7530 could also
->> help to indentify any better way than relying on the parent DT
->> compatible which *is* a bit of a stretch (but could well be
->> unavoidable, of course).
->
-> I'll give it a shot but I have low confidence in it because AFAIK this 
-> is actually a real MT7530 MCM just like MT7621 but it just happens to 
-> be clocked to a weird PLL frequency.
+> +	/* Clause 22 local data. */
+> +	ret = phy_write(phydev, MII_CTRL1000, 0x1e00);
 
+Didn't i ask for 0x1e00 to be replaced with standard macros?
 
-I just sent a v2 and I didn't find a register that looks obviously like 
-a chip sub-id so I left the check based on the DT. But since I have no 
-documentation on any of this, here are the differences I found in case 
-you or someone else may know something that I don't.
+> +	/* Vendor profile disables 100/1000BASE-T EEE advertisement. */
+> +	ret = phy_write_mmd(phydev, MDIO_MMD_AN, 0x003c, 0x0000);
+> +	if (ret < 0)
+> +		return ret;
 
+And didn't i ask if EEE is broken? We have infrastructure for that,
+please use it.
 
-I dumped the pages (g0-g7,l0-l4,ext,misc,lpi,test,tr) and the 
-MDIO_MMD_VEND(1|2) of non-0 non-active PHYs on MT7621 and EN7526G. The 
-differences that seem potentially relevant are:
+Also, please start a new thread for every version of a patch
+series. The CI tools don't always pick up replies to previous patch
+versions, it thinks it is just ongoing discussion.
 
+    Andrew
 
-MT7621:
-EXT   23 (0x17): 0x0800
-MISC  20 (0x14): 0x0200
-MISC  21 (0x15): 0xffff
-
-EN7526G:
-EXT   23 (0x17): 0x1800
-MISC  20 (0x14): 0xffff
-MISC  21 (0x15): 0x00fe
-
-
-MMD is here: 
-https://docs.google.com/spreadsheets/d/1kzdVxYqu4cTpe6ascNshn5PoCmxrbTkr3bAuWkqKkeg/edit?gid=835011309#gid=835011309 
-with about 16 differences in total.
-
-
-And regarding what's being changed by the patch, the registers, their 
-MT7621 value, and the value set by the driver are as follows:
-
-EXT 0x14 (MTK_PHY_AUX_CTRL_AND_STATUS) -> MT7621 = 0x3a55, EN751221 
-sets 0x3a04
-
-MDIO_MMD_VEND2 0x417 -> MT7521 = 0x7773, EN751221 sets 0x7775
-
-MDIO_MMD_VEND1 0xa6 -> MT7621 = 0x03e0, EN751221 sets 0x0350
-
-MDIO_MMD_VEND1 0x12 -> MT7621 = 0x7210, EN751221 sets 0xd210
-
-The other difference of this implementation is both master/slave 
-negotiation and EEE are unreliable. Maybe these give a hint as to what's 
-different with this implementation - whether it's same silicon different 
-frequency, different package, different FAB run, etc.
-
-
-Thanks,
-
-Caleb
-
+---
+pw-bot: cr
 
