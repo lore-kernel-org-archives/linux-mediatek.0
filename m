@@ -4,109 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4693BC88E41
-	for <linux-mediatek@archiver.kernel.org>; Fri, 11 Sep 2026 03:01:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id ADD65C88E41
+	for <linux-mediatek@archiver.kernel.org>; Fri, 11 Sep 2026 03:28:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
-	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=GgvtkYeJ7+6IrGYwWBRX0B9aKmCQvEgKBdWATeTAwDs=; b=WvSQCdDLM2g2m9SUii6C2j2VeT
-	qAs79k71Kg7w4u9AntCgxaatxeTPTOXX6xrR79VKWCSGXzHrc+MlsYjoG/2CLQQJeG1PIbEJYCMoj
-	FS4QizKfAM8bcgudTC/ScwmYdRuGjTgNi4isrWJyQIwTYwBdzC1QTuZLaAzDbEUaBEZWoXTZibDLA
-	fP4HnL35yGW1lnXNL+pDJeQOmwFljy321tA2LcHVkyVkY/JYn3cAboJU8icI0lHZCnoTRQd9WF/Ik
-	exWQcOdPrZlw83ypMVmQ0FQV9xSxbM70A5vjE5jaAYnYxp4ub5BT++rqGuGtdjBQKP9HP2ip+Pvc1
-	xTAQOKAQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
+	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=S9ZL8gXFgJqiskXHicHGLASvBh5QA9FwPPVdwmC2QNQ=; b=0THhm4TxKQmms8
+	sjwqLU1CrL+thzXQRTXXrmIr4qjiYfveawW4GdsVHtIvng5P0J5Y6AAZlo2axE9WH+A+tKHaTdto/
+	lYGFaF/NKq48VKEkbmrvJyOzJcZinx2W++rVDT1mR9HZCmxEIEu+mApxJGNZVQu+mez6pcQpjNrQm
+	suCPHgU4GcyUnmKkgnoty4d3+d3sGjQVAKQh5ha1tVCE5PA0zvdDQ7V7lw5x2o52sGPs6GtH8lVxW
+	g5DRFb4RueYNCAfqwM0qPgSaXpsXcbmrovCkwDM6WIqZT8YtqGd0aciSpFIR9ELM9WbqJoVtx5Ocd
+	/2DTHsw+KkzI/HfhkWZg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x4rVa-0000000FkDI-0dDq;
-	Fri, 11 Sep 2026 03:00:58 +0000
-Received: from mail-pf1-x42c.google.com ([2607:f8b0:4864:20::42c])
+	id 1x4rvm-0000000FkyI-0ljB;
+	Fri, 11 Sep 2026 03:28:02 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x4rVX-0000000FkCS-1iKS
-	for linux-mediatek@lists.infradead.org;
-	Fri, 11 Sep 2026 03:00:57 +0000
-Received: by mail-pf1-x42c.google.com with SMTP id d2e1a72fcca58-86b32af25f6so399951b3a.2
-        for <linux-mediatek@lists.infradead.org>; Thu, 10 Sep 2026 20:00:54 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1789095654; cv=none;
-        d=google.com; s=arc-20260327;
-        b=Di+B6bn9fPBgIqryWYk06NsiR1u7pVMvvKGWG0jjbjxMJigKS5ZlJDlT30mOUFTLzz
-         geZZMdNk68eDYQpX9l7Jc70a59ZpdyKpszXk6KjJ2LrhhWRvbVVl2UcQy8qCliLvO1v4
-         fKBvv2VWD5ppd4Y8Z1KDAdlB0aowXgjHHhfO7X2a7o1M5VgK70k1oKGhm/DXVCRXRceV
-         Rbeh8faVl9vm42X4AwKVmwTi48WR451lmndIdwhoCSTkXBKt97mw94g5Ntd1DWjdVbzs
-         DIMwgHJqTmSmtm0PCwUAnCX/Czhgb7EtZUiMNMb+3ikx1WFAe3cdcl3HLy0Ru8uzV4pp
-         P0eA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20260327;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:dkim-signature;
-        bh=GgvtkYeJ7+6IrGYwWBRX0B9aKmCQvEgKBdWATeTAwDs=;
-        fh=5rsYRIsvn+Lvyv3jRUg6SiHIxd3EXGBZlCzvyHPTgig=;
-        b=suIZfHmpHGdzEHVyMWetOyXMXJ8x3/yUXHStiJGtlAwY1ti/qNwCXowcp8YG7diIa9
-         wIZtmnLhZ7Q4w5so4CfQa//alOytcwNHcl6KAGPDiOn+rTnO4RFI0nWvCU/gqxrtdIIk
-         pGIOJn3Y10v8e1Zes1w7rxLblrYv0BAXhJso/JHIomVg9DVYXogs3HOtwUn/jLVbDhL2
-         QznDHXaln54dLdLgPeT8zw+JIIleQR0HqPDF0scRzzncimV4z6boZzT1+3lRIyeO/ihA
-         n3S7+6EkFfdrF1dyQ1V8XQVRY9Y04FrLxN9e8CnTZsI48oPkK1AT5cHfNFe28d7pxZeR
-         IQhw==;
-        darn=lists.infradead.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1789095654; x=1789700454; darn=lists.infradead.org;
-        h=content-type:cc:to:subject:message-id:date:from:in-reply-to
-         :references:mime-version:from:to:cc:subject:date:message-id:reply-to
-         :content-type;
-        bh=GgvtkYeJ7+6IrGYwWBRX0B9aKmCQvEgKBdWATeTAwDs=;
-        b=Alf6uNm4PM6p3A1D5giTn5epwxBlcS5cztzN4f37y2rr46n4RfV0GKpKGXsxrQkIWd
-         cN2EmArxZfjgDppxzGImiWJBCJw2uvADCdPWLFztAg8MBpL4nju+2kn6yEjoPhb5McxB
-         BTS5gjUqTNt6fExUudBSWNs7dPefoG9myC51laI9uFK3q4etT/jzXJY1iF5bWfJbtmjE
-         pg9RPmQm3wJNIAciH9zjFck+y8CLQi+MUyNKicOQyccauGGE4S+ZkbNd8sIccq18ciPS
-         l0dM7dTAiibcmamR3/lgjPOjl1NxVcOGDhEf6F+NzeZUvvxFAyKobnY/qAVXafNIxKzV
-         cLfw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1789095654; x=1789700454;
-        h=content-type:cc:to:subject:message-id:date:from:in-reply-to
-         :references:mime-version:x-gm-gg:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to:content-type;
-        bh=GgvtkYeJ7+6IrGYwWBRX0B9aKmCQvEgKBdWATeTAwDs=;
-        b=IGG3S+L3Cyp6Nj0lvueq4A0SvNTOHkP0UCccF2ieyjYR6x7FdTe2a1ovmBfQJkbkkS
-         i49Zop0SHzSWpzR5Cnvbkwqe+aVtKzH6c7+EPVC1mp4PXS0j8HNLpbxLlCqvgKSMrfhk
-         wIZ6u7NKwOsXi6zeJnBS1oZg7owOUfBcpPbVkcKdvMpszT6wFijas6s6QpOBBgHHU+df
-         nJnUL6UJkf7Qus0fP/WR797DG8bUDeDR06qRryqPWmj7gJZ0+bm8qIC8kztolHri7dfL
-         6FjFDeBDgPkH8mb8386aAU8vIswqhF/nuAW2rf9uT7TpunDDLMyT1kw2vmJhIQvRTo+l
-         GBtQ==
-X-Forwarded-Encrypted: i=1; AKwUvBy3mDU6QKXsNqlv/EoRE4mCfB8rq5hU5M7tsGP4wB1+W+ayxz6pTrqmnBKjoKn68ZYDgOYBL8G+gmZ8dUzAQg==@lists.infradead.org
-X-Gm-Message-State: AFuF++lDNehJc//gqSPVS0gDXw/FUI0lhGq72v2d+KNjwnca/hhnHCFI
-	jFwDXstsRy/5uW/RStl9f/8dfmL+tpM18fKoPKgzLmri9oHScno4ZbcKpwchCEoIzisEQve1oXK
-	glxFMYs18MrC8qnU7d18iGYp2Y7rVtbA=
-X-Gm-Gg: AYBFou0S/o5Q3utH5iajfL5sELZqs5TcxcC8Mu5+WY+YQLjE/OI9AWxwOy3deevi49P
-	rhEc+PYSF8yndkI/fCK7qDw+ly5Vd+ybJCX4lF6shgbinEw4Cr+MqD1kyEB4ny9fS6UYZSQr9aX
-	TmBsDiskPm10QNM/yk3xH8nHFf7c8x/GnpVqU3gANvBsx0RgqR7jXice9plstaxswbfjngeXIWa
-	1xPoaNCoAO2zEitHntBtaHXBRIowJjkqHM1CjMsUZ23DfN30BkO+yjQYlIwdJbiB7ORGvFoOnej
-	it0riVs9G0DGp9OuwOBXfkGFn56kOxKlee4eLB1nUq0h9NQXNZRSJps96xPPWWDPnz8S/Mb4YD1
-	+Kw55L/Kp0jnO9D0XkhC51mK0sgdNdN7+oM350cnMYSAqMXmhVgXivYGCn0IIvkFLuwk=
-X-Received: by 2002:a05:6a00:3cd5:b0:857:72f8:dc99 with SMTP id
- d2e1a72fcca58-86b328e7f63mr3298126b3a.26.1789095651223; Thu, 10 Sep 2026
- 20:00:51 -0700 (PDT)
+	id 1x4rvk-0000000Fkxr-1iX6;
+	Fri, 11 Sep 2026 03:28:00 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by tor.source.kernel.org (Postfix) with ESMTP id 2023F601F0;
+	Fri, 11 Sep 2026 03:27:58 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 582441F000FF;
+	Fri, 11 Sep 2026 03:27:52 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1789097277;
+	bh=S9ZL8gXFgJqiskXHicHGLASvBh5QA9FwPPVdwmC2QNQ=;
+	h=From:Subject:Date:To:Cc;
+	b=UOqrtC/iqJPmJBaQBRFzBwLv2zdHHTCN7JJM3aqF+clJQVNp3rZ9AOx0EjRjunjaw
+	 7NpcJfvsx1ZuvJTacqO3mt8h1UTIU2IU1WEVoOKJP5dxq66MNvPGaEcGzccI+tZlOm
+	 JmrpV1AJdiX4EGgBSn2j3jVTccf2vV+HftfOMfRG5peNme1hBwbI7lNxNU76u30LsJ
+	 ZGo+UDKY8vJ5YqmMB9+jobYQrY4pcjFSNclAHQFBZp1YT9yvT7xr1u1wwA52Uti1uN
+	 OF182eHi4oahdRD05RdaTRjERPf9/moY2EqONnE583aypihiZK/Y28EjjebH+NIxY1
+	 Gld69vS5DWuog==
+From: Guo Ren <guoren@kernel.org>
+Subject: [PATCH v2 0/6] riscv: Make IPI_MAX visible and use it consistently
+Date: Fri, 11 Sep 2026 03:27:08 +0000
+Message-Id: <20260911-ipi_max-v2-0-a77826ff189e@kernel.org>
 MIME-Version: 1.0
-References: <20260910114338.142682-1-phucduc.bui@gmail.com> <2a553332-735e-4372-8d75-2ed7d095bfc0@sirena.org.uk>
-In-Reply-To: <2a553332-735e-4372-8d75-2ed7d095bfc0@sirena.org.uk>
-From: Bui Duc Phuc <phucduc.bui@gmail.com>
-Date: Fri, 11 Sep 2026 10:00:39 +0700
-X-Gm-Features: AcwNN1WPfGjfjTJ3UBeJ1SZL5IZMV3aP3IQW-IHMbnVy8yqXjU0IzHMcAxwIYp0
-Message-ID: <CAABR9nGdsKvay_3Cd_Lm0DjU6MiFL0zaC+ftpgQGaX3YtVe+DQ@mail.gmail.com>
-Subject: Re: [PATCH 1/2] ASoC: mediatek: common: Propagate control and DAPM errors
-To: Mark Brown <broonie@kernel.org>
-Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	Liam Girdwood <lgirdwood@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, 
-	Cezary Rojewski <cezary.rojewski@intel.com>, Cyril Chao <Cyril.Chao@mediatek.com>, 
-	Kuninori Morimoto <kuninori.morimoto.gx@renesas.com>, Darren Ye <darren.ye@mediatek.com>, 
-	linux-sound@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
-Content-Type: text/plain; charset="UTF-8"
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260910_200055_478757_74042FFC 
-X-CRM114-Status: GOOD (  12.42  )
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+X-B4-Tracking: v=1; b=H4sIAAx1o2oC/z2M0QqCMBRAf0Xuc5NtjC176j8iwvROb+UmdxqC+
+ O/Ngh4PnHNWSMiECU7FCoxvShRDBn0ooOnr0KGgNjNoqa2slBI00m2oF+G9U4h1661vIdsjo6f
+ le7pcf5zm+wObac93w3McxNRzjv7Ho7LSSWmqUsvKGaOFEt0cGcP5iRzwVUbuYNs+2oEHo6gAA
+ AA=
+X-Change-ID: 20260911-ipi_max-ff71eeadf6fd
+To: Paul Walmsley <pjw@kernel.org>, Palmer Dabbelt <palmer@dabbelt.com>, 
+ Albert Ou <aou@eecs.berkeley.edu>, Alexandre Ghiti <alex@ghiti.fr>, 
+ Daniel Lezcano <daniel.lezcano@kernel.org>, 
+ Thomas Gleixner <tglx@kernel.org>, Radu Rendec <radu@rendec.net>, 
+ Anup Patel <anup@brainfault.org>, Tiffany Lin <tiffany.lin@mediatek.com>, 
+ Andrew-CT Chen <andrew-ct.chen@mediatek.com>, 
+ Yunfei Dong <yunfei.dong@mediatek.com>, 
+ Minghsiu Tsai <minghsiu.tsai@mediatek.com>, 
+ Houlong Wei <houlong.wei@mediatek.com>, 
+ Mauro Carvalho Chehab <mchehab@kernel.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: linux-riscv@lists.infradead.org, linux-kernel@vger.kernel.org, 
+ linux-media@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, 
+ "tip-bot2 for GUO Ren (XuanTie)" <tip-bot2@linutronix.de>, 
+ "GUO Ren (XuanTie)" <guoren@kernel.org>, 
+ Nathan Chancellor <nathan@kernel.org>
+X-Mailer: b4 0.16.0
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -121,33 +86,55 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Mark,
+This series removes the implicit assumption that RISC-V supports exactly
+eight IPI message types.
 
-Thank you for your review.
+Currently, the SBI, CLINT and ACLINT SSWI IPI providers use
+BITS_PER_BYTE when sizing the generic IPI mux, while IMSIC carries a
+separate IMSIC_NR_IPI definition set to 8. These values happen to match
+IPI_MAX today, but neither is the proper source of truth for the number
+of RISC-V IPI message types.
 
->
-> mt8365-afe-pcm.c has:
->
->     {"HW_GAIN1_IN_CH1", "CONNSYS_I2S_CH1", "Hostless FM DL"},
->
-> missing a Switch from the control.  I suspect there's other errors; this
-> really needs to be tested before it can be applied.  Given the general
-> quality of the driver here and the lack of anything constructive we're
-> doing with the errors changes like this have high risk and low reward
-> unless we're actually running the code.
+Move enum ipi_message_type to asm/smp.h so IPI providers can use IPI_MAX
+directly, then replace the BITS_PER_BYTE and IMSIC_NR_IPI uses with
+IPI_MAX.
 
-I agree that these changes should ideally be tested on real hardware.
-Unfortunately, I don't currently have any MTK boards available for
-testing.
+This also makes adding future RISC-V IPI message types independent of
+the current eight-entry assumption.
 
-If these changes cannot be properly tested, I'm also fine with
-dropping this patch.
+A follow-up patch renames the MediaTek VPU mailbox terminator from
+IPI_MAX to IPI_VPU_MAX. That token belongs to the VPU firmware IPI id
+enum and should follow the same prefixed convention as IPI_VPU_INIT
+(and SCP_IPI_MAX on the SCP side), instead of reusing the generic
+IPI_MAX name.
 
-On a related note: do MediaTek or other hardware vendors typically
-provide development boards to independent upstream contributors for
-testing purposes? It would make it much easier for contributors like
-me to properly validate changes like this one.
+---
+GUO Ren (XuanTie) (4):
+      clocksource: clint: Use IPI_MAX for IPI muxing
+      irqchip/aclint-sswi: Use IPI_MAX for IPI muxing
+      irqchip/imsic: Use IPI_MAX instead of IMSIC_NR_IPI
+      media: mtk-vpu: rename IPI_MAX to IPI_VPU_MAX
+
+tip-bot2 for GUO Ren (XuanTie) (2):
+      riscv: smp: Move enum ipi_message_type to asm/smp.h
+      riscv: sbi: Use IPI_MAX for SBI IPI muxing
+
+ arch/riscv/include/asm/smp.h                  | 12 ++++++++++++
+ arch/riscv/kernel/sbi-ipi.c                   |  4 ++--
+ arch/riscv/kernel/smp.c                       | 12 ------------
+ drivers/clocksource/timer-clint.c             |  4 ++--
+ drivers/irqchip/irq-aclint-sswi.c             |  4 ++--
+ drivers/irqchip/irq-riscv-imsic-early.c       |  4 ++--
+ drivers/irqchip/irq-riscv-imsic-state.h       |  1 -
+ drivers/media/platform/mediatek/vpu/mtk_vpu.c | 12 ++++++------
+ drivers/media/platform/mediatek/vpu/mtk_vpu.h |  4 ++--
+ 9 files changed, 28 insertions(+), 29 deletions(-)
+---
+base-commit: 08df884136f1c1197bab2a27814404fd329d9aac
+change-id: 20260911-ipi_max-ff71eeadf6fd
 
 Best regards,
-Phuc
+--  
+GUO Ren (XuanTie) <guoren@kernel.org>
+
 
