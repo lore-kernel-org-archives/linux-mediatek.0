@@ -4,73 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 02D13C88E55
-	for <linux-mediatek@archiver.kernel.org>; Fri, 11 Sep 2026 07:41:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E50EBC79FA1
+	for <linux-mediatek@archiver.kernel.org>; Fri, 11 Sep 2026 07:48:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=VtzYx8SOj9vSV4mcdey89Xnwt2ndYvQMN7wZmCbv0MM=; b=S+DFS1Ics7E/pfeoiEd0SOGNod
-	5Y2hJY82Ax6tDC/pTvcohnAsr77956+ALzPN768FO+/SKOklMHl5E23ejPPvqILPCDd4MHKEdUfTR
-	QTuwIkQ6fcgKapqXno1yI2j6MyZz9B0emT3WjssgbiLWMcUvs7OutD2Ilqa77P96g2n5Jyw0fFLKH
-	4ATGHZPei4nV7zlvTkvhNaVV4zvGYmtGDQ0SvhcEIUNLxPsDZznWPGTa4ZfQSDsE8P/7OOFRZI8Xj
-	ao2IxulbeEIsuBhc+4xDvlVgC29Ycm84r583Cf/Ds7TVkIRtso46w0V5p+hZJ0MGpSHQdR55J+q5y
-	LlkXhpbA==;
+	bh=AUoh5Mqm1EKJCihmab6x9riDOsj2E7Suqmt6ZBKHLcY=; b=w3J+D9Sc7voR9y/R1yss4sHV0+
+	hMY6MYlOEzh2Z0A31GdH9anE4e/MZ+BWikhvwDfO7HHolCWKup7OV4UThF+3a4jokwycWvH/FixGg
+	H+M7P0P029V+uluW35jiRZgNi/o380se1B6Wq3lZunFU2SpzjPsJxT3+2kA75+25MeSxAF0jpJl0w
+	m3WK6LSgTgFrvj3EaUHTDU/bc9Z3WSI04smX4RZ/w/DSRjHPMyfpKSmqgD96q8shWXNnRZv7CN4gA
+	MBFtAUmRFBe2l68BSeRquE83LcuQhRMlUlsotbGP2nQcC9gCBysxcCjJsMluPSxtbD5BawZQxdZPd
+	JW+i7eMg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x4vsZ-0000000G2wk-33gC;
-	Fri, 11 Sep 2026 07:40:59 +0000
+	id 1x4vzN-0000000G42v-2Pqv;
+	Fri, 11 Sep 2026 07:48:01 +0000
 Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x4vsU-0000000G2uK-1Ljc;
-	Fri, 11 Sep 2026 07:40:55 +0000
+	id 1x4vzK-0000000G42L-1uE7;
+	Fri, 11 Sep 2026 07:47:59 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1789112452;
-	bh=0oqwV4n087TkcdE7smt77VXoCFhNFiNEr2EbMxZFD4Q=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=po0tBroqkvLelMZmwCQ9WY3xbdOJ3a40sY2PKdyRNnUl11BmACIbJfP+PbLHdMnS+
-	 ZFTMHhqawslg1E4RjkaQrOpTLVLjNRsD4Ey8HPiYJTc0uFPeS+k4RNM/oTIURRepZY
-	 O61bREKmshLrFzaMw8J7QPi8z00IX5sc4EPSbcQxjHPUuVlJHMYrRhjvHors3rvN+n
-	 acbB3f7u8pRVWgEJwJLU256wcO8EeS7+heaZKdCfDk/gOmCX1xR9k+kk842602Arxm
-	 GXKC7alwI8+SPk3LMmPNnT59vGaGuEWW/9H1XE4vgKb9twl6xP1OdFc3yNqJq+G2Gy
-	 pdvMnP/DiJcxw==
-Received: from IcarusMOD.eternityproject.eu (unknown [100.64.1.21])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	s=mail; t=1789112876;
+	bh=ruI4u/j0531/L6p3OmQduRDVD6eAPgK4O4B88AoufBA=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=fKTBOdIU38tZS6iAx4RsuMRR2ViORWzbPsH7zJy86cIpgB4cIE44WdjoNAB7ftLGg
+	 yCzwD6mJnjfFT+WTcPyUvTIGEWFZdZ+nBiWg0gfNeCmmtCzqBgAfItQf/JjNXFJPJn
+	 Fo8kOgX3+W3tkS4r6kahQdKQBnagoxFo1mrT2q6+0e0pSnPyn+eoIi4VZMDMXFZN2p
+	 E1YNUMCmSiBe+xtyuSLIK2XTt/iI+1PhbvYwQnS0kdaSGR0oVsddaGabEvS/vkySdW
+	 3MHOtl0slIOUkVT0VUw/HDSpvtlkc2tg6FilUKX+tAc3E08DZlcuIuXWqGwwy0J1bQ
+	 YX5GHHosJw7xA==
+Received: from [100.64.1.21] (unknown [100.64.1.21])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange x25519)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id A7E9917E0CA6;
-	Fri, 11 Sep 2026 09:40:51 +0200 (CEST)
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-To: vkoul@kernel.org
-Cc: chunfeng.yun@mediatek.com,
-	p.zabel@pengutronix.de,
-	chunkuang.hu@kernel.org,
-	neil.armstrong@linaro.org,
-	matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com,
-	granquet@baylibre.com,
-	justin.yeh@mediatek.com,
-	dri-devel@lists.freedesktop.org,
-	linux-mediatek@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-phy@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	kernel@collabora.com,
-	Manivannan Sadhasivam <manivannan.sadhasivam@oss.qualcomm.com>
-Subject: [PATCH v2 2/2] phy: mediatek: phy-mtk-hdmi-mt8195: Fix TMDS clk bit ratio setting
-Date: Fri, 11 Sep 2026 09:40:15 +0200
-Message-ID: <20260911074015.9994-3-angelogioacchino.delregno@collabora.com>
-X-Mailer: git-send-email 2.55.0
-In-Reply-To: <20260911074015.9994-1-angelogioacchino.delregno@collabora.com>
-References: <20260911074015.9994-1-angelogioacchino.delregno@collabora.com>
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 6886417E0CA6;
+	Fri, 11 Sep 2026 09:47:55 +0200 (CEST)
+Message-ID: <87408499-de7e-4359-a2ea-d997abd1d0c4@collabora.com>
+Date: Fri, 11 Sep 2026 09:47:54 +0200
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v3 11/12] phy: phy-mtk-dp: Add PHYD Lane EN register mask
+ to SoC data
+To: Manivannan Sadhasivam <mani@kernel.org>
+Cc: chunfeng.yun@mediatek.com, vkoul@kernel.org, neil.armstrong@linaro.org,
+ robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
+ matthias.bgg@gmail.com, chunkuang.hu@kernel.org, p.zabel@pengutronix.de,
+ justin.yeh@mediatek.com, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-phy@lists.infradead.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ dri-devel@lists.freedesktop.org, kernel@collabora.com
+References: <20260707154245.198361-1-angelogioacchino.delregno@collabora.com>
+ <20260707154245.198361-12-angelogioacchino.delregno@collabora.com>
+ <cydeh263kd5o2un27oeplqx2phe7vzhxvk53kr7dbvtplazafv@rs37qtkhguhj>
+ <4e658914-7a17-444b-b20b-8d8b647238b5@collabora.com>
+ <m3fpa2igwmsnsxhhxtg5hubsmxbn2vmzcpo4hwacs66z52x5ll@xrl5kac2qmtk>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
+In-Reply-To: <m3fpa2igwmsnsxhhxtg5hubsmxbn2vmzcpo4hwacs66z52x5ll@xrl5kac2qmtk>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260911_004054_533329_FB5437ED 
-X-CRM114-Status: GOOD (  12.02  )
+X-CRM114-CacheID: sfid-20260911_004758_656214_376BE284 
+X-CRM114-Status: GOOD (  15.73  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,58 +84,70 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The comment in the mtk_phy_tmds_clk_ratio() function clearly and
-correctly explains that the TMDS ratio has to be 1/10 for data
-rates under 3.4Gbps, and 1/40 over that.
+On 9/11/26 07:15, Manivannan Sadhasivam wrote:
+> On Thu, Sep 10, 2026 at 11:05:39AM +0200, AngeloGioacchino Del Regno wrote:
+>> On 9/9/26 19:25, Manivannan Sadhasivam wrote:
+>>> On Tue, Jul 07, 2026 at 05:42:44PM +0200, AngeloGioacchino Del Regno wrote:
+>>>> In preparation for adding support for the eDP PHY found in newer
+>>>> SoCs, transfer the register mask for PHYD_TX_LN_EN to SoC specific
+>>>> data.
+>>>>
+>>>> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+>>>> ---
+>>>>    drivers/phy/mediatek/phy-mtk-dp.c | 13 +++++++++----
+>>>>    1 file changed, 9 insertions(+), 4 deletions(-)
+>>>>
+>>>> diff --git a/drivers/phy/mediatek/phy-mtk-dp.c b/drivers/phy/mediatek/phy-mtk-dp.c
+>>>> index 4603f28d1466..f5aadc5fdc42 100644
+>>>> --- a/drivers/phy/mediatek/phy-mtk-dp.c
+>>>> +++ b/drivers/phy/mediatek/phy-mtk-dp.c
+>>>> @@ -220,6 +220,7 @@ struct mtk_dp_phya_imp_sel {
+>>>>     * @regs_ana_lane:  Register (layout) offsets for ana_lan
+>>>>     * @regs_dig_glb:   Register (layout) offsets for dig_glb
+>>>>     * @regs_dig_lane:  Register (layout) offsets for dig_lan
+>>>> + * @mask_dig_tx_ln: Register mask for PHYD_TX_LN_EN field
+>>>>     * @val_dig_bitrate:IP Version specific register values for Bit Rate setting
+>>>>     * @ana_bias_r:     Internal resistance "R" Selection Settings (global)
+>>>>     * @ana_cktx_imp:   TX Clock Impedance Selection Settings (global)
+>>>> @@ -239,6 +240,9 @@ struct mtk_dp_phy_pdata {
+>>>>    	const u8 *regs_dig_glb;
+>>>>    	const u8 *regs_dig_lane;
+>>>> +	/* Register masks */
+>>>
+>>> Duplicate comment. With this removed,
+>>>
+>>
+>> Sorry but I think you didn't understand what the comments are there: the kerneldoc
+>> is used to describe the structure, of course, but the comments in between are used
+>> as a way to describe (and kind of enforce) the order of members.
+>>
+>> /* Register offsets */
+>> u16 member1;
+>> u16 member2;
+>> ....
+>>
+>> /* Register maps */
+>> const u8 *regs1;
+>> const u8 *regs2;
+>> ...
+>>
+>> /* Register masks */
+>> u32 mask1;
+>> u32 mask2;
+>> ....
+>>
+>> etc.
+>>
+>> Does that make sense now? :-)
+>>
+> 
+> Yes it does. Sorry for the oversight
+> 
+> - Mani
+> 
 
-Unfortunately though, the TXC_DIV register setting was wrong, as
-in value 3 means to divide by 8 and, in order to achieve the in
-spec 1/40 (tmds) data rate, this has to divide by 4 instead!
+No worries, it just happens to everyone from time to time :-)
 
-Add definitions for the TXC_DIV register values clearly explaining
-the meanings (DIV2, DIV4, DIV8), and program the correct, DIV 4,
-value to the register in mtk_phy_tmds_clk_ratio().
-
-This fixes out of spec clocking and, with this change, SoCs using
-the MT8195 class HDMI PHYs can now successfully be configured to
-output 3840x2160@60Hz over HDMI.
-
-Fixes: 45810d486bb4 ("phy: mediatek: add support for phy-mtk-hdmi-mt8195")
-Reviewed-by: Manivannan Sadhasivam <manivannan.sadhasivam@oss.qualcomm.com>
-Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
----
- drivers/phy/mediatek/phy-mtk-hdmi-mt8195.c | 2 +-
- drivers/phy/mediatek/phy-mtk-hdmi-mt8195.h | 3 +++
- 2 files changed, 4 insertions(+), 1 deletion(-)
-
-diff --git a/drivers/phy/mediatek/phy-mtk-hdmi-mt8195.c b/drivers/phy/mediatek/phy-mtk-hdmi-mt8195.c
-index e6ee8e080022..a4bc1268946d 100644
---- a/drivers/phy/mediatek/phy-mtk-hdmi-mt8195.c
-+++ b/drivers/phy/mediatek/phy-mtk-hdmi-mt8195.c
-@@ -36,7 +36,7 @@ mtk_phy_tmds_clk_ratio(struct mtk_hdmi_phy *hdmi_phy, bool enable)
- 	 * clock bit ratio 1:40, under 3.4Gbps, clock bit ratio 1:10
- 	 */
- 	if (enable)
--		mtk_phy_update_field(regs + HDMI20_CLK_CFG, REG_TXC_DIV, 3);
-+		mtk_phy_update_field(regs + HDMI20_CLK_CFG, REG_TXC_DIV, VAL_TXC_DIV4);
- 	else
- 		mtk_phy_clear_bits(regs + HDMI20_CLK_CFG, REG_TXC_DIV);
- }
-diff --git a/drivers/phy/mediatek/phy-mtk-hdmi-mt8195.h b/drivers/phy/mediatek/phy-mtk-hdmi-mt8195.h
-index e26caaf4d104..58800d7659ca 100644
---- a/drivers/phy/mediatek/phy-mtk-hdmi-mt8195.h
-+++ b/drivers/phy/mediatek/phy-mtk-hdmi-mt8195.h
-@@ -17,6 +17,9 @@
- 
- #define HDMI20_CLK_CFG 0x70
- #define REG_TXC_DIV GENMASK(31, 30)
-+#define VAL_TXC_DIV2 1
-+#define VAL_TXC_DIV4 2
-+#define VAL_TXC_DIV8 3
- 
- #define HDMI_1_CFG_0 0x00
- #define RG_HDMITX21_DRV_IBIAS_CLK GENMASK(10, 5)
--- 
-2.55.0
-
+Cheers,
+Angelo
 
