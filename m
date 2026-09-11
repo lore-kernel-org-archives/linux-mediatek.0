@@ -4,64 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8085CC88E41
-	for <linux-mediatek@archiver.kernel.org>; Fri, 11 Sep 2026 06:14:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D7C52C88E42
+	for <linux-mediatek@archiver.kernel.org>; Fri, 11 Sep 2026 06:33:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=9qPNY3Uu4k+FecCTTTG7VYnLoe6+q61r76rTHiKu0vo=; b=2fSjJjjz3KbpVAfV0aFtpEvWQb
-	iQcRT2E3p9tVVPiWVSI15pLTDZc6FxK52ttK+FkVTRwMygxWR6MWHDZnK1qsUZCFF6iRagkvi9cbk
-	4+L3qnF3Fd2dbM4Rx03I6xdTql6QxgLD0GZm+HrYeu6wxxZDU86UAypMvDRVBgn1dnCh1CGKCHv7Q
-	D5BnAC+9uPgWHk3k2LfGB+tkd7Bb0Oer0h572P4fOlvh3ziSZL5mYrtOYCAibt/0rQPZNczdPUQwJ
-	SP/7MSlaRYcYsBp5jYD/7l+nPdxnx+7Wf1Z71kr4KQ3+WaCqSrAMm8LqSgkjTLN5OnDXNHohPoPG3
-	dW4D4zsA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:
+	References:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:
+	Subject:Date:From:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=efoLoxTLZCI9lLVl5KtKc9xjH+8+kvrBAUCLeXNI+r8=; b=2NLUc2IU1fS+D/iPXzVjPpnZss
+	cJJRr1amb8wv4nXmluuOZJVZHDAYCLeeC4dE/fzijW7P6M4pQs/6PcrfzaWMOmWlCDTCrzCtYOpEC
+	ArbSEjBS/84nyF1nJn0lZhLwChPZ2ubZ/7bjf53Yxcs4hwkZaVS5uyn/p6l7Q8+oNd13UGUKYnSDe
+	PncG0N70+7rwP0FJd6uZqJ9Iss1xh9dnYT8yIu4gRyNCEgJDxDND+VkSnpaUhK6yaeonMd1bF8mc8
+	uYAGKxTJIokXDMZ6SPO5h8aqpwUF/G8nAT7f+Q4pg9Dna+gG1RIwzZmhgF5Efj22L70eyzlX3irOP
+	1WSX1aPg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x4uWt-0000000FvGO-2ldE;
-	Fri, 11 Sep 2026 06:14:31 +0000
-Received: from mail-m155101.qiye.163.com ([101.71.155.101])
+	id 1x4uph-0000000FwUY-41pU;
+	Fri, 11 Sep 2026 06:33:57 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x4uWo-0000000FvF4-1fhY;
-	Fri, 11 Sep 2026 06:14:29 +0000
-Received: from seu.edu.cn (unknown [222.191.246.242])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 4d62c4fb7;
-	Fri, 11 Sep 2026 14:09:23 +0800 (GMT+08:00)
-From: Slavin Liu <bolin.liu@seu.edu.cn>
-To: nbd@nbd.name,
-	lorenzo@kernel.org,
-	ryder.lee@mediatek.com,
-	matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com
-Cc: shayne.chen@mediatek.com,
-	sean.wang@mediatek.com,
-	linux-wireless@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	bolin.liu@seu.edu.cn
-Subject: [PATCH RFC net] wifi: mt76: mt7996: guard station-only MLO TX handling
-Date: Fri, 11 Sep 2026 14:09:22 +0800
-Message-Id: <20260911060922.94383-1-bolin.liu@seu.edu.cn>
-X-Mailer: git-send-email 2.34.1
+	id 1x4upf-0000000FwRU-0TTE;
+	Fri, 11 Sep 2026 06:33:55 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by tor.source.kernel.org (Postfix) with ESMTP id 49F7C60218;
+	Fri, 11 Sep 2026 06:33:54 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPS id 95637C2BCFA;
+	Fri, 11 Sep 2026 06:33:53 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1789108433;
+	bh=kvW2wtFi4KgEvcIkbiTYobALqwrfnuma/iDmVJ0C9Wk=;
+	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To:From;
+	b=AYI6nmwPSdYdltjj9GpJ9DAedXZR40+F9HFQWr+AaNt61iydMijzVsKfUYA5YAbFW
+	 ZSCmwpQx1HUJKIrB8h9IUBFyLuQ/NrG//0Jf7Tj9J7fl3D+SCeAxpDNYzy4MQXSKIg
+	 Ep6Jr53Dbaw5GpVH+Cc2sXkagymEY47juQtYZ+yN1741Rrs3J1btw0BenF+kMslNTA
+	 vWrPHtDu+ePgv10hY5oljohWKiaMDDaxG+mrw75WhDFpW+u0zpBCwACfOJsdo2a8ng
+	 urngl0ob5K/ydjJB8GuVZSJvYiowOHGKt8FeG8Mbic3+mqZPKCliI53LI9frWic1qG
+	 Nt5qpllb0y5IQ==
+Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 74DFEC79FA1;
+	Fri, 11 Sep 2026 06:33:53 +0000 (UTC)
+From: Roman Vivchar via B4 Relay <devnull+rva333.protonmail.com@kernel.org>
+Date: Fri, 11 Sep 2026 09:32:59 +0300
+Subject: [PATCH v4 1/3] dt-bindings: mfd: mediatek: mt6397: add mt6323 PMIC
+ EFUSE
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-HM-Tid: 0aa08f15c19903a1kunm3f9087f41c7355
-X-HM-MType: 10
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFITzdXWRgWCB1ZQUpXWS1ZQUlXWQ8JGhUIEh9ZQVlDGUtIVklKGE1IThpDTk9IHlYeHw
-	5VEwETFhoSFyQUDg9ZV1kYEgtZQVlJSUlVSkJKVUlPTVVJT0lZV1kWGg8SFR0UWUFZT0tIVUpLSU
-	hOQ0NVSktLVUtZBg++
-DKIM-Signature: a=rsa-sha256;
-	b=KmpRcIo4HhataD46neMm5mjBpxhLA7cwHRwITzsoQngB8Q1+TReXPqBFyaGZFTPgqSRbkVVrbg1vrq0+2+FY7zL3yA5cifwzEo9cn43y+8+dqpZO2kizTH4Yc4oQl+wQi/yYR+j+qOJ4ljV0JSj/Mhl1jwg9z25jf1SaGhQltDs=; c=relaxed/relaxed; s=default; d=seu.edu.cn; v=1;
-	bh=9qPNY3Uu4k+FecCTTTG7VYnLoe6+q61r76rTHiKu0vo=;
-	h=date:mime-version:subject:message-id:from;
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260910_231428_525374_48E6DECA 
-X-CRM114-Status: UNSURE (   9.61  )
-X-CRM114-Notice: Please train this message.
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Message-Id: <20260911-mt6323-nvmem-v4-1-626dd17531dc@protonmail.com>
+References: <20260911-mt6323-nvmem-v4-0-626dd17531dc@protonmail.com>
+In-Reply-To: <20260911-mt6323-nvmem-v4-0-626dd17531dc@protonmail.com>
+To: Sen Chu <sen.chu@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, 
+ Macpaul Lin <macpaul.lin@mediatek.com>, Lee Jones <lee@kernel.org>, 
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Srinivas Kandagatla <srini@kernel.org>, 
+ Roman Vivchar <rva333@protonmail.com>
+Cc: Andy Shevchenko <andy@kernel.org>, linux-pm@vger.kernel.org, 
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+ Ben Grisdale <bengris32@protonmail.ch>, 
+ Conor Dooley <conor.dooley@microchip.com>
+X-Mailer: b4 0.15.2
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1789108431; l=1581;
+ i=rva333@protonmail.com; s=20260510; h=from:subject:message-id;
+ bh=mlQDk3dan2vmhf7s3FB34YUhH5UJAOcwjjg7f1t51Hs=;
+ b=2CS6utLoEJsNFo8nIKiCYuhbBkQWR9dClbRpPcH4Ei0LFgNuWV/z6WWzhdy2Nzr8ALvDkq/2k
+ cbslbn0KGWuCE+2x9n68+4rJKJ03zOyVLAZ9ML7qu+MKhNSdXlchMHE
+X-Developer-Key: i=rva333@protonmail.com; a=ed25519;
+ pk=zww/nWjBGoQ4POXCG0BV6fx2iuXK6jx77rsKPA5YK5Y=
+X-Endpoint-Received: by B4 Relay for rva333@protonmail.com/20260510 with
+ auth_id=777
+X-Original-From: Roman Vivchar <rva333@protonmail.com>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,43 +89,66 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Reply-To: rva333@protonmail.com
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Pending frames can be retried after their station is no longer
-available. Require a station for both MLO-specific branches and retain
-the existing non-station transmission path for valid vif traffic.
+From: Roman Vivchar <rva333@protonmail.com>
 
-Detected by static analysis and reviewed with AI-assisted source auditing.
+The MediaTek mt6323 PMIC includes an EFUSE used for storing calibration
+data.
 
-Fixes: 7ef0c7ad735b ("wifi: mt76: mt7996: Implement MLD address translation for EAPOL")
-Fixes: 85cd5534a3f2 ("wifi: mt76: mt7996: use correct link_id when filling TXD and TXP")
-Assisted-by: LLM
-Signed-off-by: Slavin Liu <bolin.liu@seu.edu.cn>
+Add the devicetree binding documentation for the MediaTek mt6323 EFUSE.
+
+Reviewed-by: Rob Herring (Arm) <robh@kernel.org>
+Acked-by: Conor Dooley <conor.dooley@microchip.com>
+Signed-off-by: Roman Vivchar <rva333@protonmail.com>
 ---
- drivers/net/wireless/mediatek/mt76/mt7996/mac.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ .../devicetree/bindings/mfd/mediatek,mt6397.yaml    | 21 +++++++++++++++++++++
+ 1 file changed, 21 insertions(+)
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/mac.c b/drivers/net/wireless/mediatek/mt76/mt7996/mac.c
-index 1cba381a78b8..e24dd530486c 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7996/mac.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7996/mac.c
-@@ -1057,7 +1057,7 @@ int mt7996_tx_prepare_skb(struct mt76_dev *mdev, void *txwi_ptr,
- 	if (!wcid)
- 		wcid = &dev->mt76.global_wcid;
+diff --git a/Documentation/devicetree/bindings/mfd/mediatek,mt6397.yaml b/Documentation/devicetree/bindings/mfd/mediatek,mt6397.yaml
+index 3cbc0dc12c31..d2de227ae7a6 100644
+--- a/Documentation/devicetree/bindings/mfd/mediatek,mt6397.yaml
++++ b/Documentation/devicetree/bindings/mfd/mediatek,mt6397.yaml
+@@ -159,6 +159,23 @@ properties:
+     required:
+       - compatible
  
--	if ((is_8023 || ieee80211_is_data_qos(hdr->frame_control)) && sta->mlo &&
-+	if (sta && (is_8023 || ieee80211_is_data_qos(hdr->frame_control)) && sta->mlo &&
- 	    likely(tx_info->skb->protocol != cpu_to_be16(ETH_P_PAE))) {
- 		u8 tid = tx_info->skb->priority & IEEE80211_QOS_CTL_TID_MASK;
++  efuse:
++    type: object
++    unevaluatedProperties: false
++    description:
++      The efuse is responsible for storing calibration data, such as thermal
++      sensor calibration.
++
++    properties:
++      compatible:
++        const: mediatek,mt6323-efuse
++
++      nvmem-layout:
++        $ref: /schemas/nvmem/layouts/nvmem-layout.yaml#
++
++    required:
++      - compatible
++
+   leds:
+     type: object
+     additionalProperties: false
+@@ -307,6 +324,10 @@ examples:
+         interrupt-controller;
+         #interrupt-cells = <2>;
  
-@@ -1097,7 +1097,7 @@ int mt7996_tx_prepare_skb(struct mt76_dev *mdev, void *txwi_ptr,
- 	 * compatible with 802.11 EAPOL frame, we do the translation by
- 	 * software
- 	 */
--	if (tx_info->skb->protocol == cpu_to_be16(ETH_P_PAE) && sta->mlo) {
-+	if (sta && tx_info->skb->protocol == cpu_to_be16(ETH_P_PAE) && sta->mlo) {
- 		struct ieee80211_hdr *hdr = (void *)tx_info->skb->data;
- 		struct ieee80211_bss_conf *link_conf;
- 		struct ieee80211_link_sta *link_sta;
++        efuse {
++          compatible = "mediatek,mt6323-efuse";
++        };
++
+         leds {
+             compatible = "mediatek,mt6323-led";
+             #address-cells = <1>;
+
+-- 
+2.55.0
+
+
 
