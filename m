@@ -4,44 +4,44 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CA948C88E42
-	for <linux-mediatek@archiver.kernel.org>; Fri, 11 Sep 2026 05:15:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2CBB3C88E4D
+	for <linux-mediatek@archiver.kernel.org>; Fri, 11 Sep 2026 05:17:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
 	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Re4OuRwLxErTc9uR7CpD1jNt1FFENy/RKFyXLL/LfjI=; b=Sa6NSWPuSQNmQGvDXLPsVKwmfW
-	1yO/cNAsdFXAkHO3hLhm0MLqzbTLOe+jkqT7m3IYlxMTaEs4aozjnmZwPUPbj8bOClH6H6jcguTa7
-	8tsWrLG3bpefPosS1JaVwpFlIEQe9m4Yrd2NDDQsZ/t3kjy9Wn6QHvH4xu1XYSgTHEnNSLakSJJAo
-	sULT0QYD5+AmLFoV/AsIpEmB4gwrkV/9AxrMgcaSHmsTmB57yx66ZFk0gVWrTVq9u006rNUw2minu
-	9U/Ui3Hi2da6rZaziRPTBkamV5QkHmNnC+tEyMKW4HYRm8KdKxWNLrvDPZQUFj8+gpLb3pXr0uJSu
-	5YgSBYWA==;
+	bh=MyiTj6alOlQUBpvVanvP3WSeuGMqb9NQa3cYxb5z/kE=; b=fG/IZhbbrjgD7vwbeueinPrg4P
+	ykhwjcfcDAPjUep+Xz/f+JQQai8WfuK4B8fELbyl7Et94Ny/A4KgZUNTL9wKYDXu6DGAjQUwuwTl1
+	sgCeq4a61DR4HZT9+QZCeLZXtKYxKFbVb5lJSdSV9N2QWGW9DoeyWSMx2b3Gtx1Ye7/Wn9vESnLVL
+	EGHM9Ls3zO3hQt0ICkjyeeeu6+haGQZTjp9pk+bcUjT4E2YIgmQPhffFHemRpBPbPn9W9ywiX6Sw3
+	fSZKlyWA0oMZgX+AKT78PHiMkclxszfVn4mULdS92tnhgaUgXSsH6JRII8AJZGcT7v5yyKA/XaP4e
+	dlbuocmw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x4tbt-0000000Fqhb-2a6r;
-	Fri, 11 Sep 2026 05:15:37 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1x4tdo-0000000Fr51-2cCi;
+	Fri, 11 Sep 2026 05:17:36 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x4tbs-0000000Fqh3-3N3C;
-	Fri, 11 Sep 2026 05:15:36 +0000
+	id 1x4tdn-0000000Fr40-1LEA;
+	Fri, 11 Sep 2026 05:17:35 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id D612A409FE;
-	Fri, 11 Sep 2026 05:15:35 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 4014D1F000FF;
-	Fri, 11 Sep 2026 05:15:29 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id B574E42DBE;
+	Fri, 11 Sep 2026 05:17:34 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3DD391F000FF;
+	Fri, 11 Sep 2026 05:17:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1789103735;
-	bh=Re4OuRwLxErTc9uR7CpD1jNt1FFENy/RKFyXLL/LfjI=;
+	s=k20260515; t=1789103854;
+	bh=MyiTj6alOlQUBpvVanvP3WSeuGMqb9NQa3cYxb5z/kE=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=IJUV/GsKHHvt9HrUKFv1KLSB1qHKzOiUQX8PYVGxYjP+6GKODDx7yyMP2zHhC8/SW
-	 pczlz20cM18LzibHOMKTJJ8JMfBfaa2hBQDetiD/d6mwq3/zOQ0fxw0D++FV7Ln9r6
-	 +/8mdx3vSyGNbwTtqZIV30bThMaYlkK3LpH8vX7btR4mqJJwU53jOgnmFNMp0CyvlY
-	 cPS5nP6kVuu7BGd5lWQx+YM8Ou8zQUPN0jwZ7XBBXaxFJ51Q/JLhf+QKzF4MpDWD2k
-	 zTnR69WtvBkinYcgt51aN5lJ87ZtRqhRwjJM3oyJeM4UOvtEXGa+bkzfnH+AAMXdzb
-	 6A53O1yu12W8Q==
-Date: Fri, 11 Sep 2026 07:15:26 +0200
+	b=aMmIbpxIlWoNOpEzY53NE/GrzWX+ITjvAwiJ7k5RzH99owz9sqGHfCEeLVJPVvxvv
+	 fRWfuu4jGHGC1Ko9r6fwd+l4+bOy1buyVW6OEnHr8TWj4nk/LxxPj6Fex1qDUHAX5x
+	 +ZZE9k27z55QOAD/QshaCbFnnrRubk6JRkjIQJPK9Rw+Zkt8V+b2Gwb8YnJojhMgKQ
+	 8SvJUxn2oFJGW4K132CNUODpE//NcdEiY5I0E3xjInfVyGt8QTt2dbYRTVJ8781qmp
+	 hNdmRZLdRTQsMtt26u2Ld6uNShYjV0sR5e8h4smj/N0HGDGY5D7z7PCPBjUZYnAEZm
+	 TEX3nnBAlS2xg==
+Date: Fri, 11 Sep 2026 07:17:25 +0200
 From: Manivannan Sadhasivam <mani@kernel.org>
 To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Cc: chunfeng.yun@mediatek.com, vkoul@kernel.org, neil.armstrong@linaro.org, 
@@ -50,18 +50,16 @@ Cc: chunfeng.yun@mediatek.com, vkoul@kernel.org, neil.armstrong@linaro.org,
 	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
 	linux-phy@lists.infradead.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
 	dri-devel@lists.freedesktop.org, kernel@collabora.com
-Subject: Re: [PATCH v3 11/12] phy: phy-mtk-dp: Add PHYD Lane EN register mask
- to SoC data
-Message-ID: <m3fpa2igwmsnsxhhxtg5hubsmxbn2vmzcpo4hwacs66z52x5ll@xrl5kac2qmtk>
-References: <20260707154245.198361-1-angelogioacchino.delregno@collabora.com>
- <20260707154245.198361-12-angelogioacchino.delregno@collabora.com>
- <cydeh263kd5o2un27oeplqx2phe7vzhxvk53kr7dbvtplazafv@rs37qtkhguhj>
- <4e658914-7a17-444b-b20b-8d8b647238b5@collabora.com>
+Subject: Re: [PATCH v4 05/12] phy: phy-mtk-dp: Implement power_on and
+ power_off PHY callbacks
+Message-ID: <woh776xuf7vavnb55lrup6runersvwtw5hkauarjn3rzfuu5sx@n5b5tjt3firs>
+References: <20260910092038.48291-1-angelogioacchino.delregno@collabora.com>
+ <20260910092038.48291-6-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <4e658914-7a17-444b-b20b-8d8b647238b5@collabora.com>
+In-Reply-To: <20260910092038.48291-6-angelogioacchino.delregno@collabora.com>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,63 +74,15 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Sep 10, 2026 at 11:05:39AM +0200, AngeloGioacchino Del Regno wrote:
-> On 9/9/26 19:25, Manivannan Sadhasivam wrote:
-> > On Tue, Jul 07, 2026 at 05:42:44PM +0200, AngeloGioacchino Del Regno wrote:
-> > > In preparation for adding support for the eDP PHY found in newer
-> > > SoCs, transfer the register mask for PHYD_TX_LN_EN to SoC specific
-> > > data.
-> > > 
-> > > Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-> > > ---
-> > >   drivers/phy/mediatek/phy-mtk-dp.c | 13 +++++++++----
-> > >   1 file changed, 9 insertions(+), 4 deletions(-)
-> > > 
-> > > diff --git a/drivers/phy/mediatek/phy-mtk-dp.c b/drivers/phy/mediatek/phy-mtk-dp.c
-> > > index 4603f28d1466..f5aadc5fdc42 100644
-> > > --- a/drivers/phy/mediatek/phy-mtk-dp.c
-> > > +++ b/drivers/phy/mediatek/phy-mtk-dp.c
-> > > @@ -220,6 +220,7 @@ struct mtk_dp_phya_imp_sel {
-> > >    * @regs_ana_lane:  Register (layout) offsets for ana_lan
-> > >    * @regs_dig_glb:   Register (layout) offsets for dig_glb
-> > >    * @regs_dig_lane:  Register (layout) offsets for dig_lan
-> > > + * @mask_dig_tx_ln: Register mask for PHYD_TX_LN_EN field
-> > >    * @val_dig_bitrate:IP Version specific register values for Bit Rate setting
-> > >    * @ana_bias_r:     Internal resistance "R" Selection Settings (global)
-> > >    * @ana_cktx_imp:   TX Clock Impedance Selection Settings (global)
-> > > @@ -239,6 +240,9 @@ struct mtk_dp_phy_pdata {
-> > >   	const u8 *regs_dig_glb;
-> > >   	const u8 *regs_dig_lane;
-> > > +	/* Register masks */
-> > 
-> > Duplicate comment. With this removed,
-> > 
+On Thu, Sep 10, 2026 at 11:20:31AM +0200, AngeloGioacchino Del Regno wrote:
+> Add .power_on() and .power_off() callbacks to mtk_dp_phy_dev_ops
+> to be able to call those with phy_power_on() and phy_power_off()
+> API in the DisplayPort driver to be able to stop using all of
+> those hardcoded register writes in that external driver.
 > 
-> Sorry but I think you didn't understand what the comments are there: the kerneldoc
-> is used to describe the structure, of course, but the comments in between are used
-> as a way to describe (and kind of enforce) the order of members.
-> 
-> /* Register offsets */
-> u16 member1;
-> u16 member2;
-> ....
-> 
-> /* Register maps */
-> const u8 *regs1;
-> const u8 *regs2;
-> ...
-> 
-> /* Register masks */
-> u32 mask1;
-> u32 mask2;
-> ....
-> 
-> etc.
-> 
-> Does that make sense now? :-)
-> 
+> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
-Yes it does. Sorry for the oversight
+Reviewed-by: Manivannan Sadhasivam <manivannan.sadhasivam@oss.qualcomm.com>
 
 - Mani
 
