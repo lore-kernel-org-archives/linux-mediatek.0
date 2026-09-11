@@ -4,88 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 30D5BC79FBB
-	for <linux-mediatek@archiver.kernel.org>; Thu, 10 Sep 2026 21:54:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CD377C88E41
+	for <linux-mediatek@archiver.kernel.org>; Fri, 11 Sep 2026 02:44:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=5yA1J/Oc/mv6lA/Q/2/0pN8xrLK69dfWL8b6vtP2vm0=; b=vSy6r3wUM3ihjA+fOb+d4sjd/A
-	d3l5/JFXLYDAFGxEeYyZUuqJmbkmQuvTddAwnUr4n0caBXk5igCHkPGRScQw6/CQ+ekWwM2GHI5X3
-	OkAZpeHr5NQuneecNG1kcBksB1vQSpOR3AROttelGWI6nJG3NBfkv1ngX3r4CaBFPZK9uPkCLiFkH
-	artaTRaPGiEWTcjBPHnR+g+loDWAFezw0ycqBcfxJhnj3TFxQ5aXrQ4UK5lgWHAU0AG6giFLvGstG
-	dPVRZ+dDelcDlR0njzfmhcpJYn1MmxKeq3uJN0sJUQd934M90uqInN1RZlCS+EkYReAYaT/Sdx3Ui
-	tYLtkCeQ==;
+	bh=OnfCGLquB76g8nW5eb0c7ZCBPmlKDyddEjSpGRtgpT8=; b=OG1Wy7Ele/cb6jMgBhfglcfdZF
+	HYGdS/xVXwRgg02bjQRsJjRt6rARnPyq8ff+EREhMp77iL1YyAZdrDzAYbeqHLAg5gbQUto06G1or
+	qQMwnnJ0oXVafFW5WP3Hn5+u2P+FZrvyY9e74gjxx7QZe7aG/ZZeWHIW+ji/7tEwG2eO6bADluEpH
+	/REy9xPZfGL3oS4+zSMDQ4rInjb+qh4Un5PEckSzBgsmTZPpSSeWKbbZ1ya2wjrUldGBL7KjfnN1F
+	Rem01wU6GdKIXyPMTkYFekXMv9jThFHscR1ojfBlBv3VLr/My8qkpCLHT6eXpof9zDErnDJ3qu0Qm
+	qZUPeMPw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x4mjR-0000000FS4u-2Qdr;
-	Thu, 10 Sep 2026 21:54:57 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1x4rFo-0000000FjOB-3s48;
+	Fri, 11 Sep 2026 02:44:40 +0000
+Received: from out-26.mta0.migadu.com ([2001:41d0:1004:224b::1a] helo=mta0.migadu.com)
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x4mjQ-0000000FS3x-0OH9
-	for linux-mediatek@bombadil.infradead.org;
-	Thu, 10 Sep 2026 21:54:56 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
-	:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:Content-ID:
-	Content-Description:In-Reply-To:References;
-	bh=5yA1J/Oc/mv6lA/Q/2/0pN8xrLK69dfWL8b6vtP2vm0=; b=SzVdxpyogS3cLxs8Mox/1vc+vY
-	QHDfEWQ89Edg416QLN+GN1MpfaeFwcAZ22KpgZX1co1anqkLpS9KRKrHRxonKDZWzsovJd0K3CKli
-	JqXf4uPT/C3LyWwuepteZjda/udDiIVkutsd6QHJmHrsnynZMgTIPpEtQXdrHuPKKesjfioPvT+AX
-	qhtiFQETKimClD/zEW44AXA1c0OEIwVNVDpKgo06aT6wEtsjVPOaZRTvPT8dSQlRF2woJp0AaoxfZ
-	+vXQsmi+ftBLaMbne1xD8oI8+ArpgQZlH/9yOWSJXoYjzgaShR1BEKmG2ar7qWje57ZiwfAy+jBl3
-	pZduTL7w==;
-Received: from mail-qv2-x10.google.com ([2607:f8b0:4864:33::10])
-	by desiato.infradead.org with esmtps (Exim 4.99.2 #2 (Red Hat Linux))
-	id 1x4mjN-00000002zHr-0c7P
+	id 1x4rFk-0000000FjNQ-0x5L
 	for linux-mediatek@lists.infradead.org;
-	Thu, 10 Sep 2026 21:54:54 +0000
-Received: by mail-qv2-x10.google.com with SMTP id 6a1803df08f44-90cdfc6db09so2108326d6.2
-        for <linux-mediatek@lists.infradead.org>; Thu, 10 Sep 2026 14:54:51 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1789077290; x=1789682090; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
-        bh=5yA1J/Oc/mv6lA/Q/2/0pN8xrLK69dfWL8b6vtP2vm0=;
-        b=nY9SCpwelAsGDZzJiGP+WGXYaYsnmUFoQUfJ6/eVorwR6hoS8hD2BYPl9vF28ACeWV
-         5VrQoryxCKh55Xb1uRZ/YFSwxrmAPLyt1ENpUNAFyhcdG20nstSeBhSD+QmEeY+sLU5N
-         qMsrP9LOaJSs2KkdJQBrP7cTidsZvEpREWfCCO4Z3xECAIAVYzgKt8eYgvbOBZHfmTYR
-         X/SuW0PXvu1aMQZTVLM43c5FjEHpKCCwdjdsSOc1UScHwqlRjl4dTCrZDjtQswihg341
-         zBttLBnEr6uO6O+mgJP3OJixooZsoLY1XTjIbnhgy6vJHrl6sv6vT0Yi7cl6GDof7/2o
-         j0BQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1789077290; x=1789682090;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to:content-type;
-        bh=5yA1J/Oc/mv6lA/Q/2/0pN8xrLK69dfWL8b6vtP2vm0=;
-        b=UXK8taXuoNYstqkUocLZWdbxpvfMSkexQjLDjAqFmCWPQhLQCIdMZMfFyJZAZqgyuy
-         9VRCLlMiu1z7OOtAgLXOWxDVPAdiC7bH9Id+yzbJD491bL0oaMy29+7EmNnD/Pf3tN6X
-         VmSDeosWX15qu2M8P9dh7dzWLVZuf6zTQq6Px97n3gmo/0CxFvHOdzxsUUUw2BqFgrSm
-         PTmmCsFyKZY3/cF6afi95xHPLcvR+HRIf83IeXC8qsQhp2x/KF8Es3IWHJ5t7pi/Wt0l
-         cyVVsCtVLVQHRfMLtvtXw1R+H9Ecm8q4qv7vOvKUOslaHHaRW4K2sRNUBqYUNGUk3ZrY
-         8zjw==
-X-Forwarded-Encrypted: i=1; AKwUvByaV5iX1UP3K+UWv/6WUtUUeCxy5x/S6r2UJyk9xdDcRqEUwsPgR7Lm7cl3WAMzG06Ze+tXTByBxpMjD1TZ4g==@lists.infradead.org
-X-Gm-Message-State: AFuF++mzbY+gxVGB3MuTVJRHLqtX78IvVMD7WNFgpY6dXRxFlCVCdvyG
-	U4j/pfpRoYk2yrOmtj1X0REZLxo9G509VV3NWLvYmmDdjlHXjS0NwUA=
-X-Gm-Gg: AYBFou01aondB//p4PpeTZULIvaYe/alnmhxz5tyOrwHfys0ldt7mVttVTo/J/3LRGF
-	XFtgD135yTF8XYCnNmtOZoPb3WQs1QGVHkNGkHocCZ/dw59MFsVDBcpX6M6n3kbV+SNqGEm5jA8
-	94ha7pTv778VYZCHaI0kagkqWfaDCYtl0ErzPCIOGYBQKXp7hxl70dA8F5iR67lOdlhUCzPzBFw
-	4JiHOkNShnqb5wEm618dWSNTyyhO4fNHgXK9CyuGrORdxOcIimbJg8wrVihFLQfQaYYe/8yalEP
-	7HWpdkF0M6y9ruNuu5V2bO2FGJTd9dGt9y7/vf/2laik7SPKjSq10kr8n9q9ZqdhiIFyPz/DHus
-	odyy5BVYE39MZeoRZaqAaJoXKqGg942PWyMCZ/Dn9U7mbzqTABA67I26ZpXYsy0ddF8XxuaYTNI
-	wlkX2wZrelsDuhavYidskEzexIhmjCvSGuis8IKwyUsMfnLY6FIkYrSc6NnwnheflvW9jpzwayx
-	nyuyOeR6QV7VI3iMq2g46Y3JAAm8S/CjYiTGqUBSs6u+LWs4RM/xtkRN2CMErlguNRFm0YyfX/V
-	aaUhOb98eVCD9oQv12qlTlplieqX
-X-Received: by 2002:a05:6214:3d9b:b0:90e:93b2:3205 with SMTP id 6a1803df08f44-912120d689emr17573146d6.22.1789077290445;
-        Thu, 10 Sep 2026 14:54:50 -0700 (PDT)
-Received: from localhost.localdomain ([104.39.73.78])
-        by smtp.gmail.com with ESMTPSA id 6a1803df08f44-9120f496598sm5826736d6.35.2026.09.10.14.54.48
-        (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
-        Thu, 10 Sep 2026 14:54:49 -0700 (PDT)
-From: Myeonghun Pak <mhun512@gmail.com>
+	Fri, 11 Sep 2026 02:44:39 +0000
+X-Envelope-To: linux-mediatek@lists.infradead.org
+DKIM-Signature: a=rsa-sha256; bh=6s7db2mV+TlkzTBdjKbi5IdNEnFyPr3Kh2+StaULis0=;
+ c=simple/simple; d=justthetip.ca;
+ h=from:to:subject:date:message-id:mime-version:content-type; s=key1;
+ t=1789094672; v=1; x=1789699472;
+ b=jmR4bZcdh9NrgUWk1uo/zORoV7q+POewcXMH1/mSHpeNKNEOtYyd40jpb7z2Uk9zGPp4QjyL
+ srb3ro/D1zU9g5f4VfDnD6lJv2WIdWLeQ3szcSxKC1vvC6QyiZHZ3VUQDOJYPixtlxljULnhms0
+ CDhmdJiSLxgvsgE9JH9MAFhbm/i8ZF2xEXSJNrUlp/u7IybV0EC67jtLebpnfdHKVrfg5RHD0J4
+ NN/rb/RmqXxJ0gA7/TjqPOCqcEphj7UgnZv27oj8fHsWJ12sYV73lKtW/58Pe+/HmfhuQGj26SO
+ ZqMQOlNUfaqI83NRSygNajMblCiveyPU0caGq46hVhm1A==
+X-Envelope-To: linux-mediatek@lists.infradead.org
+Received: by smtp.migadu.com with ESMTPS id ea8fa00fd0bba988;
+	Fri, 11 Sep 2026 02:44:32 +0000
+X-Mizu-Trace-ID: ea8fa00fd0bba988
+X-Migadu-Flow: FLOW_OUT
+From: Devin Wittmayer <lucid_duck@justthetip.ca>
 To: Felix Fietkau <nbd@nbd.name>,
 	Lorenzo Bianconi <lorenzo@kernel.org>,
 	Ryder Lee <ryder.lee@mediatek.com>
@@ -94,20 +51,19 @@ Cc: Shayne Chen <shayne.chen@mediatek.com>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
 	linux-wireless@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org,
-	stable@vger.kernel.org,
-	Ijae Kim <ae878000@gmail.com>
-Subject: [PATCH] wifi: mt76: mt7615: restore DBDC state after ext PHY failure
-Date: Thu, 10 Sep 2026 17:54:41 -0400
-Message-ID: <20260910215441.76683-1-mhun512@gmail.com>
-X-Mailer: git-send-email 2.50.1
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org
+Subject: [PATCH wireless] wifi: mt76: mt7925: don't put the band auto marker in TGID
+Date: Thu, 10 Sep 2026 19:44:28 -0700
+Message-ID: <20260911024428.65244-1-lucid_duck@justthetip.ca>
+X-Mailer: git-send-email 2.55.0
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260910_225453_429964_005BC751 
-X-CRM114-Status: GOOD (  11.91  )
+X-CRM114-CacheID: sfid-20260910_194437_644757_2D17FA40 
+X-CRM114-Status: UNSURE (   9.29  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -122,69 +78,45 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-mt7615_register_ext_phy() limits the primary PHY to DBDC capabilities
-before allocating and registering the secondary PHY. If allocation,
-EEPROM override, or PHY registration fails, it returns without restoring
-the primary PHY capabilities. The EEPROM override failure also leaks the
-newly allocated ieee80211_hw.
+band_idx starts out as 0xff, which tells the firmware to pick the band on
+its own. A remain-on-channel grant normally writes a real index over it
+before anything else looks. Two cases never see that: an MLD station
+throws the grant away, and an AP has no association to trigger one.
 
-Route all failures through common labels that free the secondary hardware
-when it was allocated and restore the primary PHY capabilities.
+The TX descriptor reads the same field into a two-bit slot, so the marker
+comes out as 3. Every data frame from those two goes out tagged band 3.
+Beacons are fine, they reach the firmware separately and never build a
+descriptor.
 
-This issue was identified during our ongoing static-analysis research while
-reviewing kernel code.
+Same numbers on an MT7925 and on a Netgear A9000:
 
-Fixes: 0f2173f093b3 ("mt76: mt7615: add support for registering a second wiphy via debugfs")
-Cc: stable@vger.kernel.org
-Co-developed-by: Ijae Kim <ae878000@gmail.com>
-Signed-off-by: Ijae Kim <ae878000@gmail.com>
-Signed-off-by: Myeonghun Pak <mhun512@gmail.com>
+                        stock         patched
+  station, one link     0x00000001    0x00000001
+  station, two links    0x00003001    0x00000001
+  AP                    0x00003013    0x00000013
+  real band index, STA  0x00001001    0x00001001
+  real band index, AP   0x00001013    0x00001013
+
+Only the marker cases move.
+
+Fixes: 0cb349d742d1 ("wifi: mt76: mt7925: update mt7925_mac_link_bss_add for MLO")
+Signed-off-by: Devin Wittmayer <lucid_duck@justthetip.ca>
 ---
- .../net/wireless/mediatek/mt76/mt7615/init.c    | 17 +++++++++++++----
- 1 file changed, 13 insertions(+), 4 deletions(-)
+ drivers/net/wireless/mediatek/mt76/mt7925/mac.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/init.c b/drivers/net/wireless/mediatek/mt76/mt7615/init.c
-index 42e11ba1206ee..02e51b2d42ed8 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7615/init.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7615/init.c
-@@ -542,8 +542,10 @@ int mt7615_register_ext_phy(struct mt7615_dev *dev)
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/mac.c b/drivers/net/wireless/mediatek/mt76/mt7925/mac.c
+index 101f571b0..3b82c9de2 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7925/mac.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7925/mac.c
+@@ -798,7 +798,8 @@ mt7925_mac_write_txwi(struct mt76_dev *dev, __le32 *txwi,
+ 	val = FIELD_PREP(MT_TXD1_WLAN_IDX, wcid->idx) |
+ 	      FIELD_PREP(MT_TXD1_OWN_MAC, omac_idx);
  
- 	mt7615_cap_dbdc_enable(dev);
- 	mphy = mt76_alloc_phy(&dev->mt76, sizeof(*phy), &mt7615_ops, MT_BAND1);
--	if (!mphy)
--		return -ENOMEM;
-+	if (!mphy) {
-+		ret = -ENOMEM;
-+		goto error;
-+	}
+-	if (band_idx)
++	/* 0xff means BAND_AUTO to the firmware, and TGID cannot encode it */
++	if (band_idx && band_idx != 0xff)
+ 		val |= FIELD_PREP(MT_TXD1_TGID, band_idx);
  
- 	phy = mphy->priv;
- 	phy->dev = dev;
-@@ -573,7 +575,7 @@ int mt7615_register_ext_phy(struct mt7615_dev *dev)
- 
- 	ret = mt76_eeprom_override(mphy);
- 	if (ret)
--		return ret;
-+		goto error_free_hw;
- 
- 	/* second phy can only handle 5 GHz */
- 	mphy->cap.has_5ghz = true;
-@@ -591,7 +593,14 @@ int mt7615_register_ext_phy(struct mt7615_dev *dev)
- 	ret = mt76_register_phy(mphy, true, mt76_rates,
- 				ARRAY_SIZE(mt76_rates));
- 	if (ret)
--		ieee80211_free_hw(mphy->hw);
-+		goto error_free_hw;
-+
-+	return 0;
-+
-+error_free_hw:
-+	ieee80211_free_hw(mphy->hw);
-+error:
-+	mt7615_cap_dbdc_disable(dev);
- 
- 	return ret;
- }
--- 
-2.47.1
+ 	txwi[1] = cpu_to_le32(val);
 
