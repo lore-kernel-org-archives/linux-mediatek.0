@@ -4,102 +4,117 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 85CF8C88E56
-	for <linux-mediatek@archiver.kernel.org>; Sat, 12 Sep 2026 18:32:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EE4E6C88E56
+	for <linux-mediatek@archiver.kernel.org>; Sat, 12 Sep 2026 19:08:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=pyGOuWl1kIoFr1BB5GPKM41t/39zE+ryKhiJyT6xB7s=; b=AS1weuf5IlZjvFrGPh/EMNDL+s
-	ZuA/IFYDMrvdnfs1SweHgBoJdrz0x7WtQqRe4rIkme9wMd9yEOOHKWikiprusjSiOJi5OKVmlbgjW
-	1U/E4oybVPRe8jSqn5jrRhfw3lZ/ptZzUZtk33YRTSknhRk+W9OgcfuAdXgWwNM4bBc6w2MmGHOoG
-	YXk9lrQDIsNigWCz9yibEnV0B0648hB9U/oErnOzw6uK+QvQZ1MCe0aeQbCqcQV2NCtiHaM0xrHok
-	LQ8Duw3zPwO07gtR3oFln4ZJ90vXmtG5vJb79TKYDAzOCIpoVjuUIQ/2+WCNgfvYfUnpxmOsTk3BT
-	PWTPEKGg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=frZxPsvBVeqqB8BxzOhZbWb1UNk2/xKGtRE4rwWtWZ0=; b=jvbmsr21Jv4VqSHK9s1QCT6fl6
+	2i816A8KJiNxAn9b/qHGSWQI+u3m6oSERI8zHhLObdWRvT4rcVJM4G+KqYA0ZA6yVd5+kk8uCqhSY
+	0se46cZIcysk3LB2Fq+Sg4/6CcpqepKHEVzvzTEJkzGzTxHkgmnaH3eWSxG7EPTK77AIXQzxksFyc
+	cgFVwuyGQ7T99ZBLX11GgRZxn1mqkimwJyNFZFAv37N6Sw6z9jF6Lj1w7eqLsbKCzah1WuT7nE37j
+	zARJQXOnbYjqLsrEKlbRMC43Kw6DUrbJFRHgFrmsBq1lOcz1SyWnKSucwsd7o1bRd6VcvYtmXpt/d
+	nFM6nnmg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x5SX1-000000014Im-0tm4;
-	Sat, 12 Sep 2026 18:32:55 +0000
-Received: from mail-oi2-x0b.google.com ([2607:f8b0:4864:32::b])
+	id 1x5T4x-000000015Uf-3BY0;
+	Sat, 12 Sep 2026 19:07:59 +0000
+Received: from mail-yw1-x1129.google.com ([2607:f8b0:4864:20::1129])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x5SWx-000000014I1-0c4r
+	id 1x5T4u-000000015Ty-2w9D
 	for linux-mediatek@lists.infradead.org;
-	Sat, 12 Sep 2026 18:32:53 +0000
-Received: by mail-oi2-x0b.google.com with SMTP id 5614622812f47-4bfec71901fso660066b6e.1
-        for <linux-mediatek@lists.infradead.org>; Sat, 12 Sep 2026 11:32:50 -0700 (PDT)
+	Sat, 12 Sep 2026 19:07:57 +0000
+Received: by mail-yw1-x1129.google.com with SMTP id 00721157ae682-857ff9fef54so16191907b3.1
+        for <linux-mediatek@lists.infradead.org>; Sat, 12 Sep 2026 12:07:56 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1789240075; cv=none;
+        d=google.com; s=arc-20260327;
+        b=YXqkNK/v1BwOYa/Jdkh4i/2BNcsjPVSEq6N+wPCsCOo4Xt2TTfDNElh+v3Xm3xDs+R
+         PD2Sop9wgkCkn6PYIQvW5XG1ykZ4+rZ1XzMKLwsM5cV8i+BKKqsQLJkShOc3Lq+avC4Q
+         3ki1O0uPfxKkdaN9dlbq8Uzl1ZrRB78XhQKIqmdCtIfXKFOSXdfxNbLnu9lFpyJ9An0Y
+         FWxLXAFoo65IT34ACWDzsqZcCtH/aL2Tlk1S4hy2NU2YESO0Yvse+60VQewDsAld0SY9
+         78Oa2yPUlmyF+kVOi+wPSZhxtSv2PejotvGlXHqO/IuGf1skp5il0MG6G6LcvsUpXeNn
+         pDcQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20260327;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=frZxPsvBVeqqB8BxzOhZbWb1UNk2/xKGtRE4rwWtWZ0=;
+        fh=zU3tIbCcjEari7OT1WcGlUKIZSbFaOjT+1CLD5B3kiQ=;
+        b=F+JDCFQBOnwu6HN8UOIyInQdNYMF2/Gc6GCpP98nCfak3ub1cDX5+qow5zX3gKTBTs
+         mNjHR0PTso3o53E47ej1h8Gl6/9FCPxdtWbACdmhOyZpm4YP0VxpgnBIHKpMipW+dhay
+         UTfZZctMcM3EuzK2OcCBlPnUOAoNbkVCuqqGUvHcW4ytZ+Y6GvYIBgoIu5J0iiyjU90z
+         8p1416YIM5x3yF+PeOy9xYjWZbR2oIJvOsAUjtO0ztXWU4k7dQJlJQiRollba1wZi8XX
+         s+0AQ/Qt2aH2CqQmqOkT/ZGc8VoXiMvDqu8aqqdf6ybBPTjNdq0PJoobYYN6SgiM90Jy
+         jbZg==;
+        darn=lists.infradead.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1789237970; x=1789842770; darn=lists.infradead.org;
-        h=cc:to:message-id:content-transfer-encoding:content-type
-         :mime-version:subject:date:from:from:to:cc:subject:date:message-id
-         :reply-to:content-type;
-        bh=pyGOuWl1kIoFr1BB5GPKM41t/39zE+ryKhiJyT6xB7s=;
-        b=IJla7Edy4vsICsG7RsUVgAdnkqVDHz+jVGm0ahMPdx8novmxAhsIKl4YwgAdbj+cVY
-         GYJuWCcn9Cl+4vmAP75+JfsaAGyB64jUVWncKB+1GEBvEjdJ0ybcVEfx50ww6Y1kadwK
-         Rr/S+CNEuDKVKEnNrLIntBEFNIfueDTeGXZnM+X5oESLsLpG48HlwKejx8uba/+g1EOt
-         wH0f3HKPBhzSzOBshi8jM3wamcOdtjaun+BwvJoDs+fO21Oi3PUxtujCWl/n66jpmMK/
-         VtieLkYslicn3EZlaLFHqZTT3qiXCEEbFsmPd/5ekMkddidFfhWyc5OAjEDijOCD/5K0
-         kElw==
+        d=gmail.com; s=20251104; t=1789240075; x=1789844875; darn=lists.infradead.org;
+        h=content-transfer-encoding:content-type:cc:to:subject:message-id
+         :date:from:in-reply-to:references:mime-version:from:to:cc:subject
+         :date:message-id:reply-to:content-type;
+        bh=frZxPsvBVeqqB8BxzOhZbWb1UNk2/xKGtRE4rwWtWZ0=;
+        b=hLdi3uB7/ngvwNIWqlhNJrGsXwAhdMTW/S2nTzMLw17pt84Qu+YAtlG1j9fQuLXjv4
+         +nw2e5wBis4K91nbsCyJQC7Mv9f3eRpRwWyETrYFnpbtUSkTionIlkkGSGzuCoRFsNie
+         0BMpCwoHcFJgDDdDB5AUy4mwMNowhNnFFIiQcmwRC67TfLAGqmeN2yk4vG6qDATYzOtC
+         8Gd5aQyT6rpaUPgetc7G4FgaloSl4sOI+VoAzX97icMYTsVR0f73MEXYQFyZTlw4NfVJ
+         VDfRlzKiTNLA0ETk1QfGdWZkL25BKwcIFDbwhPRQULGplwQ+HIJA84MSd48F2UqvEl4y
+         UUfA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1789237970; x=1789842770;
-        h=cc:to:message-id:content-transfer-encoding:content-type
-         :mime-version:subject:date:from:x-gm-gg:x-gm-message-state:from:to
-         :cc:subject:date:message-id:reply-to:content-type;
-        bh=pyGOuWl1kIoFr1BB5GPKM41t/39zE+ryKhiJyT6xB7s=;
-        b=qnZxc7nVWWgC2YZ98yYl97cbiHVKbuASOYx8miGj1o990qib7yOSJJIC52u7JF9g06
-         kCcJBqrCd5SmQWY5bkNf3r/DH5SUiMSib8O26YXdx0HcCPe4X6N2SP851YMP9Rp9Cm0R
-         WXQlpCQ1Gi7D4lwx838J8vuY4KoFjW9MdExirpAKNVrYq+WoiIAvewscBpWFxLOyZIbb
-         QTgLcAYdzAfSAXgy3+o1pLsO4XuLnTXalj7w0tSTwm5KoH4cRI5UKlupLiGLsclKzeeq
-         wnHzGINN3ABtMdrQ5D9fqfSuq8nMBXYjCbv/tzBmTvIQ/3xB1eE988chUdVLIrs10yYs
-         P+sA==
-X-Forwarded-Encrypted: i=1; AKwUvBxZP5VW6h0lKDZ/BCDZ0fUtBGZEnlTQP7xu6ONFwFYiJyl7urzumiui1KUs19l/6mV8gRwgF9kzIlJ+gud5ew==@lists.infradead.org
-X-Gm-Message-State: AFuF++laXg3vrWpGcCkXVfad2JG296m0DwO4CIiDPjMMN84LyRMHkX/O
-	4TlOFQ7czgVd6pD0SpftbGPnz51yJUFEPlc5oJ5+S4T44hLr2qUtV8SW
-X-Gm-Gg: AYBFou3L5shTvtP+afWk/kl+gKZP3mRSzqL6o7DccQURYXjziEgWmPmxKJZmWkThmWK
-	ZUcTASlDYqujD/ZGiAbl/tLyGM5YX8yrKVvZwJfQNrF1sDwqQEj1O7t/KjzIbsa8qC924wYzskf
-	MiWWW34M2mbyGYJeXak3aTEt8Y210OCdNiNqGOfmZHtssZWxPUVWn5P2WZFt4Ep/4rBPFlu2GCB
-	7g4RWQ1MABPnJN3AsdRtDE9PP2SBje+0J8wSFIdOEKuPR2NVtdJVIKUlbSRv8y10Ow9cTrpPbdL
-	SzcAiG9Q/snubUV42DcPzQVJmbMdjICjN6pFR2aZtst9hy5JIX4Pwj9n/CFREO2sQCNSXw3gAcu
-	CJwGWS0RCkMVHKa7MrzQtHH7Xo+FpgB+U8XLSWjrK/f1PCpTBxSDTfs/sMKaI84YJkzSgeUcaCw
-	NYFVmkCd7Nckq8tsolt8YOBZz+UaI0JhFm40/ihkmR77M2HEA8zXLzak8TQhI12i7KUIg=
-X-Received: by 2002:a05:6808:309a:b0:4b2:8dbf:771 with SMTP id 5614622812f47-4c31d65af5dmr8802662b6e.10.1789237969836;
-        Sat, 12 Sep 2026 11:32:49 -0700 (PDT)
-Received: from [192.168.18.164] ([2600:8804:5716:d800::b712])
-        by smtp.gmail.com with ESMTPSA id 5614622812f47-4c330dac382sm5738229b6e.6.2026.09.12.11.32.47
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 12 Sep 2026 11:32:48 -0700 (PDT)
-From: Ryan Brue <ryanbrue.dev@gmail.com>
-Date: Sat, 12 Sep 2026 13:32:40 -0500
-Subject: [PATCH] clk: mediatek: mt8173-mfgtop: do not use the clk API from
- power_on
+        d=1e100.net; s=20251104; t=1789240075; x=1789844875;
+        h=content-transfer-encoding:content-type:cc:to:subject:message-id
+         :date:from:in-reply-to:references:mime-version:x-gm-gg
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+         :content-type;
+        bh=frZxPsvBVeqqB8BxzOhZbWb1UNk2/xKGtRE4rwWtWZ0=;
+        b=Ipq356EN5g7QIAi/6gBcJPx5ocYhL62QKGJAX7ONJYdfsl+eGpyoth0dUJzo9XocGT
+         qP7dUQV3ZgepQ9NGyraRJ3yA9ocvws72ZfN5tWOivD3/XHau9+zMo2AJSqZfNs/2Ohvh
+         9qD/QM4tHelmCugBQppuXD2AVleeJDLkvsXu8RF95w93k0XfI5aLMN0SJSkdrFSofXIH
+         ITp+RfztqVcsXib5isjsB01bCIvFOBgDylKf/7bAEmLFzTU4K6NmM/JnfakkqfvcQRT8
+         FbfZOKPVyxg1tLxHQ252bfeEnXIZgrK4R4CZkePzJaeY4wcrfGC91c2D2lfRFEuMY+mN
+         KPDA==
+X-Forwarded-Encrypted: i=1; AKwUvBx4iG5U5O1dxBOpQqvL/4NWb5a6YW1p9WktZq7HOQoqwLXBpuLIlyii/pctcXfGA3RDeKdF2fQPWBXBHPpY6g==@lists.infradead.org
+X-Gm-Message-State: AFuF++nM61x6idxHW40C0G52Zeexz689sCXAWNdM05NxBJOjtW3d0Fm3
+	Y/CwLJfUUzpoB93/OL5wjT/EaFKYtAwJyzojbK/NmlSfRZgtSx61RmrnuToyYutJyT6X084GC+C
+	unQg6MmNZ8zIX79ELta5Lm4ttrp7UyYA=
+X-Gm-Gg: AYBFou1SOCIkC03qTgSqWN0GMRqNJq+FEgWjklZzNNGazkcyddm3Ja/5/89i83WbE+u
+	eU+FQlELj+DEKlT7ZSOD4/AzXqP7J8uL73cFDBK3bpmWRwJxjfEzP7cOUy0O6909I8mjLVY0JYB
+	KfhujMgEXLWEzVk4sKyVzgAgGE+fSTB4tQIyIYyaVWLFIxC1JSd1dB7GKso8q59tQetkIdYOOjM
+	6zjy6qScIDIvpDt1Qrx80JFmJFolcMMEFkKGPolx1fs+aDYu0031oqe8UvirhTQ2v0bwZVJqyY1
+	WEEdPmCFcU8AvezW9p5rDNzIrQM/B0FG0EAecjk5tafcdZ/T59JL
+X-Received: by 2002:a05:690c:a790:b0:873:5bb2:6c0a with SMTP id
+ 00721157ae682-884b6f29b6bmr21177167b3.52.1789240070580; Sat, 12 Sep 2026
+ 12:07:50 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20260912-mfgtop-no-clk-api-power-on-v1-1-def157ad1277@gmail.com>
-X-B4-Tracking: v=1; b=H4sIAAAAAAAC/yXMSw6CMBAA0KuQWTtJacVEr2JcDHWA8dNpWhQSw
- t2tsHybt0DmJJzhUi2Q+CtZNBTUhwr8QKFnlHsxWGNP5lxbfHf9qBGDon89kaJg1IkTakBq2JC
- jo2udgxLExJ3MW3697c6f9sF+/I+wrj8G4Qv0fgAAAA==
-X-Change-ID: 20260912-mfgtop-no-clk-api-power-on-a5e0a3a43b33
-To: Stephen Boyd <sboyd@kernel.org>, Brian Masney <bmasney+clk@redhat.com>, 
- Jerome Brunet <jbrunet+clk@baylibre.com>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Chen-Yu Tsai <wenst@chromium.org>
-Cc: Brian Masney <bmasney@redhat.com>, linux-clk@vger.kernel.org, 
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, Ryan Brue <ryanbrue.dev@gmail.com>
-X-Mailer: b4 0.16.0
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1789237967; l=5480;
- i=ryanbrue.dev@gmail.com; s=20260906; h=from:subject:message-id;
- bh=kjP5JtckQ81EhZbmB1tB2Jw41rIoGsoQz3j/P8a8WNk=;
- b=EoNfJiuU+dJD/9bK48PUcfIjZmE6xoozgkowDFLKya8/Wm+3V8PyJc4FDLJqz1oB/jWF+Fvz8
- IZaSWfrqN5JBsqIIcVKZ1a3Zk5bsc9O+BY6mG9nN0OjhT8aFCanUqgp
-X-Developer-Key: i=ryanbrue.dev@gmail.com; a=ed25519;
- pk=KsUvVaP//v/2q+ZBuacc7cLbsyEYn+AD71Sn28oZWKo=
+References: <20260906061755.5103-1-sumeet4linux@gmail.com> <20260906061755.5103-5-sumeet4linux@gmail.com>
+ <98a0dbf7-9724-4ccc-8810-645dfe715656@kernel.org>
+In-Reply-To: <98a0dbf7-9724-4ccc-8810-645dfe715656@kernel.org>
+From: Sumeet Pawnikar <sumeet4linux@gmail.com>
+Date: Sun, 13 Sep 2026 00:37:38 +0530
+X-Gm-Features: AcwNN1XqTP8GoNHaMkR4dokovXZ0UiUGTDkYaF2EyUFt2qLbm2siHwKKSL9BVhQ
+Message-ID: <CAJ9orWStxJLN-0Dk2LqmyxEagC_nH-veS7wWrN_kXvb6WEUWiw@mail.gmail.com>
+Subject: Re: [PATCH 4/5] devfreq: Use %pe to print error pointers symbolically
+To: Krzysztof Kozlowski <krzk@kernel.org>
+Cc: rafael@kernel.org, amit.kachhap@gmail.com, daniel.lezcano@kernel.org, 
+	thara.gopinath@gmail.com, talel@amazon.com, hayashi.kunihiko@socionext.com, 
+	mhiramat@kernel.org, mmayer@broadcom.com, viresh.kumar@linaro.org, 
+	sumitg@nvidia.com, peter.griffin@linaro.org, myungjoo.ham@samsung.com, 
+	kyungmin.park@samsung.com, cw00.choi@samsung.com, Frank.Li@nxp.com, 
+	s.hauer@pengutronix.de, matthias.bgg@gmail.com, 
+	angelogioacchino.delregno@collabora.com, sven@kernel.org, j@jannau.net, 
+	marcan@marcan.st, casey.connolly@linaro.org, sre@kernel.org, wens@kernel.org, 
+	t.schramm@manjaro.org, bcm-kernel-feedback-list@broadcom.com, 
+	linux-samsung-soc@vger.kernel.org, kernel@pengutronix.de, imx@lists.linux.dev, 
+	linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
+	linux-arm-msm@vger.kernel.org, linux-pm@vger.kernel.org, 
+	linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260912_113251_232358_584E7E8C 
-X-CRM114-Status: GOOD (  19.81  )
+X-CRM114-CacheID: sfid-20260912_120756_741628_E0BCA1DA 
+X-CRM114-Status: GOOD (  10.35  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -114,145 +129,29 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-clk_mt8173_mfgtop_power_on() calls clk_prepare_enable() on the mfg_26m gate
-that this same driver provides. That is a layering inversion which cannot
-work: clk_core_prepare() calls clk_pm_runtime_get() on the clock provider
--- this driver's own device -- and genpd power transitions run at _noirq
-time, where runtime PM is disabled and pm_runtime_resume_and_get() returns
--EACCES.
+On Sun, Sep 6, 2026 at 12:00=E2=80=AFPM Krzysztof Kozlowski <krzk@kernel.or=
+g> wrote:
+>
+> On 06/09/2026 08:17, Sumeet Pawnikar wrote:
+> >               ret =3D -EPROBE_DEFER;
+> > -             dev_err(dev, "failed to add devfreq device: %ld\n",
+> > -                     PTR_ERR(drv->devfreq));
+> > +             dev_err(dev, "failed to add devfreq device: %pe\n",
+> > +                     drv->devfreq);
+>
+> Instead you should use dev_err_probe and drop the last argument.
+>
+Sure. I'll do this suggested usage of dev_err_probe in different patch
+series for *_probe() functions update.
 
-Measured on mt8173 (amazon-suez) during resume from suspend-to-RAM,
-immediately after the secondary CPUs come back up:
+Planning to post V2 for this original series to use %pe to print the
+error pointers symbolically, reverting the change for dev_err under
+*_porbe() function.
 
-  clk-mt8173-mfgtop 13fff000.clock-controller: 26 MHz clock enable failed: -13
+Thanks,
+Sumeet.
 
-The failure is not survivable, because genpd_sync_power_on() ignores what
-power_on() returns and marks the domain on regardless. The clock is then
-left ungated-but-unprepared, and the next power_off() underflows its
-refcount:
-
-  mfg_26m already disabled
-  mfg_26m already unprepared
-  WARNING: drivers/clk/clk.c:1048 at clk_core_unprepare
-  Workqueue: pm genpd_power_off_work_fn
-    clk_unprepare / clk_mt8173_mfgtop_power_off / _genpd_power_off
-
-Gate the bit with a direct regmap write instead. The vendor driver
-(mtk_mfgsys.c) also drives the four MFG CG bits with raw register writes
-from its power sequencing. The runtime-PM path was never affected, only the
-_noirq transitions of system suspend and resume. mfg_26m stays registered
-as a clock for any consumer that wants it; nothing currently does.
-
-Fixes: ebd0b73d2137 ("clk: mediatek: Add mt8173-mfgtop driver")
-Assisted-by: LLM
-Signed-off-by: Ryan Brue <ryanbrue.dev@gmail.com>
----
- drivers/clk/mediatek/clk-mt8173-mfgtop.c | 39 +++++++++++++++++---------------
- 1 file changed, 21 insertions(+), 18 deletions(-)
-
-diff --git a/drivers/clk/mediatek/clk-mt8173-mfgtop.c b/drivers/clk/mediatek/clk-mt8173-mfgtop.c
-index 5669ca9954dc..fed6fa6100dc 100644
---- a/drivers/clk/mediatek/clk-mt8173-mfgtop.c
-+++ b/drivers/clk/mediatek/clk-mt8173-mfgtop.c
-@@ -30,6 +30,12 @@ static const struct mtk_gate_regs mfg_cg_regs = {
- 	.set_ofs = 0x0004,
- };
- 
-+/*
-+ * The 26 MHz gate, addressed directly rather than through the clk framework.
-+ * See the comment in clk_mt8173_mfgtop_power_on().
-+ */
-+#define MFG_CG_26M	BIT(3)
-+
- #define GATE_MFG(_id, _name, _parent, _shift, _flags)	\
- 	GATE_MTK_FLAGS(_id, _name, _parent, &mfg_cg_regs, _shift, &mtk_clk_gate_ops_setclr, _flags)
- 
-@@ -46,7 +52,6 @@ struct mt8173_mfgtop_data {
- 	struct regmap *regmap;
- 	struct generic_pm_domain genpd;
- 	struct of_phandle_args parent_pd, child_pd;
--	struct clk *clk_26m;
- };
- 
- /* Delay count in clock cycles */
-@@ -66,12 +71,16 @@ struct mt8173_mfgtop_data {
- static int clk_mt8173_mfgtop_power_on(struct generic_pm_domain *domain)
- {
- 	struct mt8173_mfgtop_data *data = container_of(domain, struct mt8173_mfgtop_data, genpd);
--	int ret;
- 
--	/* drives internal power management */
--	ret = clk_prepare_enable(data->clk_26m);
--	if (ret)
--		return ret;
-+	/*
-+	 * Ungate the 26 MHz clock, which drives the block's internal power
-+	 * management. This is a raw write to the gate's CG register, not
-+	 * clk_prepare_enable() on the mfg_26m gate this driver provides: that
-+	 * would call clk_pm_runtime_get() on our own device, and genpd power
-+	 * transitions run at _noirq time, where runtime PM is disabled and
-+	 * that returns -EACCES. mfg_26m stays registered for any consumer.
-+	 */
-+	regmap_write(data->regmap, mfg_cg_regs.clr_ofs, MFG_CG_26M);
- 
- 	/* Power on/off delays for various signals */
- 	regmap_write(data->regmap, MFG_ACTIVE_POWER_CON0,
-@@ -102,8 +111,11 @@ static int clk_mt8173_mfgtop_power_off(struct generic_pm_domain *domain)
- 	/* Magic numbers related to core switch sequence and delays */
- 	regmap_write(data->regmap, 0xec, 0);
- 
--	/* drives internal power management */
--	clk_disable_unprepare(data->clk_26m);
-+	/*
-+	 * Gate the 26 MHz clock again; see power_on() for why this is a raw
-+	 * register write and not clk_disable_unprepare().
-+	 */
-+	regmap_write(data->regmap, mfg_cg_regs.set_ofs, MFG_CG_26M);
- 
- 	return 0;
- }
-@@ -155,16 +167,10 @@ static int clk_mt8173_mfgtop_probe(struct platform_device *pdev)
- 		goto put_pm_runtime;
- 	}
- 
--	data->clk_26m = clk_hw_get_clk(data->clk_data->hws[CLK_MFG_26M], "26m");
--	if (IS_ERR(data->clk_26m)) {
--		ret = dev_err_probe(dev, PTR_ERR(data->clk_26m), "Failed to get 26 MHz clock\n");
--		goto unregister_clks;
--	}
--
- 	ret = of_clk_add_hw_provider(node, of_clk_hw_onecell_get, data->clk_data);
- 	if (ret) {
- 		dev_err_probe(dev, ret, "Failed to add clk OF provider\n");
--		goto put_26m_clk;
-+		goto unregister_clks;
- 	}
- 
- 	data->genpd.name = "mfg-top";
-@@ -197,8 +203,6 @@ static int clk_mt8173_mfgtop_probe(struct platform_device *pdev)
- 	pm_genpd_remove(&data->genpd);
- del_clk_provider:
- 	of_clk_del_provider(node);
--put_26m_clk:
--	clk_put(data->clk_26m);
- unregister_clks:
- 	mtk_clk_unregister_gates(mfg_clks, ARRAY_SIZE(mfg_clks), data->clk_data);
- put_pm_runtime:
-@@ -217,7 +221,6 @@ static void clk_mt8173_mfgtop_remove(struct platform_device *pdev)
- 	of_genpd_del_provider(node);
- 	pm_genpd_remove(&data->genpd);
- 	of_clk_del_provider(node);
--	clk_put(data->clk_26m);
- 	mtk_clk_unregister_gates(mfg_clks, ARRAY_SIZE(mfg_clks), data->clk_data);
- 	of_node_put(data->parent_pd.np);
- }
-
----
-base-commit: df2908090cda368b01ff43709f51890076c56157
-change-id: 20260912-mfgtop-no-clk-api-power-on-a5e0a3a43b33
-
-Best regards,
---  
-Ryan Brue <ryanbrue.dev@gmail.com>
-
+>
+> Best regards,
+> Krzysztof
 
