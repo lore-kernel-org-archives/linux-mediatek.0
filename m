@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BD499C88E59
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BA19CC79FB6
 	for <linux-mediatek@archiver.kernel.org>; Sat, 12 Sep 2026 10:08:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
@@ -12,36 +12,39 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	Content-Transfer-Encoding:Message-Id:Date:MIME-Version:Subject:References:
 	In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=kDo4WJDSzf1M+g0EAwMrNMhWYQlF3hnTKIBGahzgRTo=; b=mFp7DjMY6TF38CHZhS5QLd9fsU
-	mP2l5o0aFxMC8qF/9ho/CZ0ssldarF+t9VlNIECLzk3fDMQC0HuUyDOPAIwMhagJ2muDz6dcDBiOd
-	EVvLOEGpNyLk9mykCrQgtN13enoi/mlSi0uhWQeOE0EmpmtdLslkPzT86jPZABx/lILkEn5xC/kFi
-	QAzH8n5GyA+V8KcBTBVG4EnM+DyVT0TgvNRFFF9qNgkIPlKqSmYZWoFOWMQxUkdBiqRJhUfhSZkAR
-	CE/u/o99U5tkON+K4lnG1MPgx9dm8pl6TU2nVG9LVQ4NKida8VPa74ZQr7GD7PVCAewcAsdeHMlrb
-	mka5AIKw==;
+	bh=kDo4WJDSzf1M+g0EAwMrNMhWYQlF3hnTKIBGahzgRTo=; b=AEGstsCBPJ1ANqxM/gf1qJ3OGa
+	vFEoXm2gPKkCPWlXw3vJiPwHUCeoLryAzOam4HMhIUiKCgjD9m1Ddn1NbnbTW1Sd6WUW4B/4/CwEa
+	bdT5Hzz41ebLBapkzScRKk9q6GUADKhsk1sa0P/5TWifD85xsvERHRPLATVHJyXXxh9Q09AkniMjP
+	Zs28hbfe8DNIDnNAWIY5h5gyqdhJ/NlCdNwBy1Lb4FsVO1EblHIhsEjMSJGMz7xzMBYZqkiftZkyK
+	Wl2h2ZK85gBtH2tw+REnGb1DOBfDfuqLPuV2z9P3zhvpyEUbkm44nnXrMSJgxezy0Lu+p+V9BlLNR
+	fbKHxv9g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x5Kf2-00000000lSL-3gHq;
+	id 1x5Kf3-00000000lSb-0UqJ;
 	Sat, 12 Sep 2026 10:08:41 +0000
-Received: from forward500a.mail.yandex.net ([2a02:6b8:c0e:500:1:45:d181:d500])
+Received: from forward500b.mail.yandex.net ([178.154.239.144])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x5Kez-00000000lQo-21LR
+	id 1x5Kez-00000000lQn-22BN
 	for linux-mediatek@lists.infradead.org;
 	Sat, 12 Sep 2026 10:08:39 +0000
-Received: from mail-nwsmtp-mxback-production-main-529.vla.yp-c.yandex.net (mail-nwsmtp-mxback-production-main-529.vla.yp-c.yandex.net [IPv6:2a02:6b8:c0f:2fa3:0:640:e460:0])
-	by forward500a.mail.yandex.net (postfix) with ESMTPS id C6F19C239E;
+Received: from forward502d.mail.yandex.net (forward502d.mail.yandex.net [IPv6:2a02:6b8:c41:1300:1:45:d181:d502])
+	by forward500b.mail.yandex.net (postfix) with ESMTPS id 9B049C266F;
 	Sat, 12 Sep 2026 13:08:27 +0300 (MSK)
-Received: from mail.yandex.ru (2a02:6b8:c0f:14a2:0:640:fceb:0 [2a02:6b8:c0f:14a2:0:640:fceb:0])
-	by mail-nwsmtp-mxback-production-main-529.vla.yp-c.yandex.net (mxback) with HTTPS id K8OUIlSvf0U0-Dc2uvq2i;
+Received: from mail-nwsmtp-mxback-production-main-17.klg.yp-c.yandex.net (mail-nwsmtp-mxback-production-main-17.klg.yp-c.yandex.net [IPv6:2a02:6b8:c42:83cb:0:640:b499:0])
+	by forward502d.mail.yandex.net (postfix) with ESMTPS id 84173C0114;
+	Sat, 12 Sep 2026 13:08:27 +0300 (MSK)
+Received: from mail.yandex.ru (2a02:6b8:c42:3f21:0:640:a34b:0 [2a02:6b8:c42:3f21:0:640:a34b:0])
+	by mail-nwsmtp-mxback-production-main-17.klg.yp-c.yandex.net (mxback) with HTTPS id v7OToaXbY4Y0-glj0rl06;
 	Sat, 12 Sep 2026 13:08:27 +0300
 X-Yandex-Fwd: 1
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=0upti.me; s=mail;
 	t=1789207707; bh=kDo4WJDSzf1M+g0EAwMrNMhWYQlF3hnTKIBGahzgRTo=;
 	h=Message-Id:References:Date:Cc:Subject:In-Reply-To:To:From;
-	b=EIEkBOV5JYe5oHTPexPnU3wkkFCT4OiEYj8NOdA8h5YmavmN5kJzEgU2sLaSYnABp
-	 1mrzHfeVCfCUU1o4zHe40Iv/DOd/g6u/g2uQd4oG5b+38Ny6WLzO2GW0khRJoLuiG6
-	 p7p0yBb4aDoPClx3TqLNv0iScVRjeyVLV0Uw+Rg8=
-Authentication-Results: mail-nwsmtp-mxback-production-main-529.vla.yp-c.yandex.net; dkim=pass header.i=@0upti.me
-Received: by mail-sendbernar-production-main-26.vla.yp-c.yandex.net (sendbernar) with HTTPS id 609b2ba17fe415fd677a3e7af322d161;
+	b=Ljz45SOw3YK18zD1ANPpWMCubh/PzmP0k8Ulg6ir/0Qanp8g4Urg8JUCJpl7tKwQD
+	 aL7z619YjoHR1wdMbYkCv5QvmRA/UOEtkNkmzmqh3cGL25eBtJknOqOGBqHOeEPtFJ
+	 ULIr1dd4Fh2+a69xJpNFz9bas4NVlw9NkbeR14aU=
+Authentication-Results: mail-nwsmtp-mxback-production-main-17.klg.yp-c.yandex.net; dkim=pass header.i=@0upti.me
+Received: by mail-sendbernar-production-main-65.klg.yp-c.yandex.net (sendbernar) with HTTPS id 93db8e472b59011010e0ea59c1f84888;
 	Sat, 12 Sep 2026 13:08:26 +0300
 From: Ilya K <me@0upti.me>
 To: Ben Greear <greearb@candelatech.com>
@@ -54,11 +57,11 @@ Subject: Re:[bug] Triple whammy of mt7996e bugs on 7.2+
 MIME-Version: 1.0
 X-Mailer: Yamail [ http://yandex.ru ] 5.0
 Date: Sat, 12 Sep 2026 13:08:26 +0300
-Message-Id: <1556871789207706@7dc9deb3-4292-4932-8568-de9b411208d8>
+Message-Id: <1515671789207706@4f731255-7c4d-4276-8f89-37d7691f05c3>
 Content-Transfer-Encoding: 7bit
 Content-Type: text/plain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260912_030837_704693_72562338 
+X-CRM114-CacheID: sfid-20260912_030837_705424_F697BC31 
 X-CRM114-Status: UNSURE (   5.69  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
