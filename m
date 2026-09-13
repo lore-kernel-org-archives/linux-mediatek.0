@@ -4,104 +4,99 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A75F5C88E5C
-	for <linux-mediatek@archiver.kernel.org>; Sun, 13 Sep 2026 21:48:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 47A5FC88E5C
+	for <linux-mediatek@archiver.kernel.org>; Sun, 13 Sep 2026 22:21:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
 	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
 	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
 	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=LiFj+YViXnUILO1Xl8u0yjE4yvh4W8pLQubMdsa1jkQ=; b=biltIqBwwZbMHpYdg171BkX+As
-	eUMzfRXE3TN4ciNAU6UUWLHLqYGr31TEcXBliTkAUGTDJwfm9CnQR3BIlEmVDKPUa+ATpCXNOKpb1
-	lVdLuqtMaC2O6mgRw2eFPHnKgj0gDABck/RpQG4PpRjX8/w0CS6ZlxQ2DbSSRph8EoyDiT+0Asj2y
-	ZYcmsBLO5LcwLM46/vfAnKJ6exs5UDta/u5/oRZT1S+X+87cAAxERWa28fOGuATvZIg4/cL9s0+zZ
-	oNgNh6xLKhmHMQ2MNgQwE22czz/jwm309Pt4TwNWzw2rCG9Pl8QVjt9YFfq6BKUK9PCzGB5mtHDcZ
-	joLR/nUQ==;
+	bh=k3ZJJYWLWAdknGD5xgQyF6oWUgV2YSWXzpw9ViLpMPo=; b=hkzS9WWSQYTduGRwi99tgdWz1v
+	klMtz8F8NlprGIotFYHePtPgQ+djwL59TlHR/DuRimWl3NbSYbw0iba5k3sZipNPwWgOgr8/9MFiS
+	hfSDz05UB4gHut611wgnDx3ZkEIaT/6CZAhINLLHPmzvsO5MDzRNROMP/CiJ5xVhfuDBYXhBaJn3E
+	wpJ6UGdoWY0wTvw39iPklY+pX3z30KNvS6YmZWIiXG+nSC9rfIH+m93WvwrRq4Pl3EVX0LJ9F/IOF
+	LjcpyPqIS7sRvkTK2Iouzam42CuU99ZIN3UvPDKDeREeOTlP6E3jLKJ99sUQ1IwTNSTQzXsEZXCMM
+	j/4ipc0g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x5s3S-000000023iv-3HUJ;
-	Sun, 13 Sep 2026 21:48:07 +0000
+	id 1x5sZp-000000024IC-2aYg;
+	Sun, 13 Sep 2026 22:21:33 +0000
 Received: from mail-oo2-x07.google.com ([2607:f8b0:4864:31::7])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x5s3P-000000023hg-2bYe
+	id 1x5sZn-000000024HW-0XxL
 	for linux-mediatek@lists.infradead.org;
-	Sun, 13 Sep 2026 21:48:05 +0000
-Received: by mail-oo2-x07.google.com with SMTP id 006d021491bc7-6c197ff1f3aso636422eaf.0
-        for <linux-mediatek@lists.infradead.org>; Sun, 13 Sep 2026 14:48:03 -0700 (PDT)
+	Sun, 13 Sep 2026 22:21:32 +0000
+Received: by mail-oo2-x07.google.com with SMTP id 006d021491bc7-6b1bebb3ae8so1110685eaf.1
+        for <linux-mediatek@lists.infradead.org>; Sun, 13 Sep 2026 15:21:30 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1789336082; x=1789940882; darn=lists.infradead.org;
+        d=gmail.com; s=20251104; t=1789338090; x=1789942890; darn=lists.infradead.org;
         h=cc:to:message-id:content-transfer-encoding:content-type
          :mime-version:subject:date:from:from:to:cc:subject:date:message-id
          :reply-to:content-type;
-        bh=LiFj+YViXnUILO1Xl8u0yjE4yvh4W8pLQubMdsa1jkQ=;
-        b=BEboUwQBh5r89AkJFf3H0kxEiisC/i6C76MXq/xq0d9t6ikARt36w6DNG/8LDTdbqx
-         +qhJQwG1Pue6s5oCsWKEZ6VTQIkadZMxxHDWz3EvEn31BtfoHwMGlUUjf1xiQkGbpfLN
-         HIp3KvN29u/AiDsASc7i/Y+WkprCuoAq+Ta6fr85IIYvMzwNxzwaJw/5WEfWHezrtCvP
-         1L7wX/FZJvZs1ZRWYSEnDKYSZMRsyT3D2kEtroqTgsMoIWaKNapDRc2uv/0heo9Joopa
-         P460VCW0/tQRCFJsW3Jr7PYKb8zX9f7Ur77JNBn6447UTkaPs1DjvLX+D94iMJqg77Xi
-         4taw==
+        bh=k3ZJJYWLWAdknGD5xgQyF6oWUgV2YSWXzpw9ViLpMPo=;
+        b=ms3B6d+1Sb/7qPGSY1SyaaCK3JP+SzwhjVFl/nqv0/4IZhtRixyQQ4Pu/Aw0YI+Kvi
+         MSE0Sz+3HWZ6tzkjOlg7bpYAN1c4YdG+8eohF+yVp22TcQME4x8YMJvC3Y/fT3Tq15ZX
+         ic4kqSOuazjsRIl6omQ/6XwHud5EyiXbqcVnLnxjND7U7gmAs5LBxwWDNpA7eD8H7PII
+         gyVMgWBD6w7fjOFnuonxOJGcVt+UzEAcRqgnvEzRieEC/x0g5NlpTaMLv0Lub900bk28
+         ZnI9qaEdcB29k2a8ud+E92LTnQtbGI2vNKzanqwmfCXYNtY3C5d+8F/SWJHmndZiBWJE
+         JODg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1789336082; x=1789940882;
+        d=1e100.net; s=20251104; t=1789338090; x=1789942890;
         h=cc:to:message-id:content-transfer-encoding:content-type
          :mime-version:subject:date:from:x-gm-gg:x-gm-message-state:from:to
          :cc:subject:date:message-id:reply-to:content-type;
-        bh=LiFj+YViXnUILO1Xl8u0yjE4yvh4W8pLQubMdsa1jkQ=;
-        b=qnnpKzGUVGoziJ7zrA46GKzAfgs9HMfl/7vu+EpHLFPVD3G5KG+/7Adb2Pn3Y7RekU
-         uMtGn61BuzmfdlJWEFDlp6cwUsZ9t05tzwbwResZlznkcrBZttUp+LcYhkHP7tosw30F
-         lKf3dAUTzDDn6kIFw76FSQx49W5l5QXXYjure7i1KlG09i6i4pG+CSrLH0+JvqlJvddY
-         6G85x5wc4yDwxAUyJbD4ClnSZWg71TscVmDCgPyknqdkF3W63yW8nGzk1FhuJmFCpppc
-         O363GJxqTigTT6PaGMRclCLm66fp8Cjr0pZ1Yrv6c2QHrIEDUm5WsEv0KvM+NSS0zu+Y
-         Vuzg==
-X-Forwarded-Encrypted: i=1; AKwUvBxpjImvqYXxwR8tqXxKOGrMpQcGi/itxVXhJs2hYJZIEgao9FW2215VedplB+4OsLYMIiV5PdiH93fIhKpcXQ==@lists.infradead.org
-X-Gm-Message-State: AFuF++ly1fFPN+CBW/XTkMIGtfWLrSV3IqCoOVtDtSuRPDxQaU2SWg9l
-	2MgUqpcGvGAle2kyrGdV2dqDU0xOfu+xHy4cqCthgnVlNAXGoTBVCXW4
-X-Gm-Gg: AYBFou1+b2DhthN4JQdPwiQfAFAZjYN63NXLS5sOrdJ7lHSs7zuTE84so6T6+v4HvC4
-	qXMg5YludsqPxPsZRtFyU77QlD5HtvdkiT8EpWTGFPZvrkLDYsOOTvNsrfXNoZMHixuqvr1LzlM
-	JBcyZpmk9hWHNnFb2XJbjHOGG6ASmYPqEls0wgqanZwNfTtsF1XN5Rs0XS1N8JymOtaOEdg9lBM
-	4eIxaVLKkXoYIdB0Cm6ftvOjL3swoKwVxZD1eZ5Q086EnuHVDhcUJNioD3NxqFr7JtmO/H4C71K
-	mg8EQp26vFPAm1WZAE2ZC5KR18hEzA6ID89EFtHUkF7swmPoEAalzDX2Xj6N5wb9RL2sFNxLMoC
-	GY05gQAmM5v/m8dklz2WMn67A3hyVtU2pd9/6vGFJYx0LFX5YBSjBvPgxHyCzkXZ9O1Z8B2Gktq
-	QxOVqM32LNnC+WDfAMhrhGXVKmOqwS+G6oxWgtGc2i0w7oBYi5imMWuSGaVDNPK2hlx/XrqJD6l
-	qnPk1k=
-X-Received: by 2002:a05:6820:2213:b0:6c2:5e92:b599 with SMTP id 006d021491bc7-6c25e92c715mr7185528eaf.4.1789336082388;
-        Sun, 13 Sep 2026 14:48:02 -0700 (PDT)
+        bh=k3ZJJYWLWAdknGD5xgQyF6oWUgV2YSWXzpw9ViLpMPo=;
+        b=iH3oHMKz42esaID+dFt3xIX93RYBQOdHzE+87AA422MhSMziQnmIajsW58+HFqyubL
+         OH9fnYTAjRJnGwPfnnUt8y2O27a/wnrd+FE3kJNYJ7EaVakuaj1e41H5RlVdibfrKoIE
+         ZRXV2LBvvEvUh5K29hxbx97hbMpITcSVgJ+q1hUnQptOhrraH03ZWUTlJqJxquOX9/S9
+         gAFV2fxTbwLYwJOeschkidvHyikrFJvRjbL/OaeVDShUhhEx+VYg3NIWnbCbnMaHPU53
+         Ri3ck7gGorcjl8e5qwoxNSJSmm3xAn73Za5LtcRLcM8Y8HPftAjsr9qfPMParihA/y6y
+         ol2g==
+X-Forwarded-Encrypted: i=1; AKwUvBxlHAHvqiMI0HyEW0t1LySD7g0Yz5bCzYwEnkOMQYHC3MGirY6RSXtnxova/R71Ip2y7WEYahbQUMnh0+58Nw==@lists.infradead.org
+X-Gm-Message-State: AFuF++nd8uALLCSEJVyemxrbX65Gxr75Co2VkkRL+FpxXq83b8c4fLiL
+	P8/BLmDfGHyI+gVQS3gXfThYOZU/i4T6esHNMvtzCUsqZ+PUuGB5R1by
+X-Gm-Gg: AYBFou3FlwonLDoxqarQT+r57rU5eMGcyq7NlpvMu8naqC6z1xa+Z2yHvWp6Sn9psqm
+	GufAv1YzA2PsBnBOBKvqhwa2f2vpFaV5Yiv1dpAhxwS3Evd6tW+jfLa3+/xpMoL36HdC6vyZK5X
+	CVXukAEeu8SR6pQrmubZwsiapM1Alb2bZangAFZkM7xAta57BB+pPjdGUHq6O2VhMc43BJAwHqX
+	cdfSmhUX/QyG4X8ESDFyN5A929N1kd/kgZ4BK3AU9OaeFsD1TKYr+r7QgJsZRgSfCFMeNEwSn6S
+	+Pmo/xJP/O0jLbKPTGu0uA1bNOu/usaLowyU29RwwH7AQPYI4PuEgZvso9/Ufy+bvnvCAD5dv4g
+	TTfb9e58r3gnn7NlyX5w+toPFPcZs6IE+mmxHK3skq0qEvVyitxpHMLbHZyiR4+GpCNUC7lSjJs
+	YgIqe9Rv7V6+vr8LSXtb8+QtYENj6jaq2MNviOFZyt2NpaAIttyhgLXkXtviV/7iSVwKg=
+X-Received: by 2002:a05:6820:571c:20b0:6b6:4f90:a62a with SMTP id 006d021491bc7-6c0ba8280bbmr12189996eaf.11.1789338089833;
+        Sun, 13 Sep 2026 15:21:29 -0700 (PDT)
 Received: from [192.168.18.164] ([2600:8804:5716:d800::b712])
-        by smtp.gmail.com with ESMTPSA id 006d021491bc7-6c0990cc05fsm8928296eaf.3.2026.09.13.14.47.59
+        by smtp.gmail.com with ESMTPSA id 006d021491bc7-6c342ec1ff5sm4343973eaf.14.2026.09.13.15.21.26
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 13 Sep 2026 14:48:01 -0700 (PDT)
+        Sun, 13 Sep 2026 15:21:28 -0700 (PDT)
 From: Ryan Brue <ryanbrue.dev@gmail.com>
-Date: Sun, 13 Sep 2026 16:47:53 -0500
-Subject: [PATCH v2] clk: mediatek: mt8173-mfgtop: do not use the clk API
- from power_on
+Date: Sun, 13 Sep 2026 17:21:25 -0500
+Subject: [PATCH] usb: mtu3: don't run gadget completion callbacks with
+ interrupts disabled
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20260913-mfgtop-no-clk-api-power-on-v2-1-b84771a3d5bd@gmail.com>
-X-B4-Tracking: v=1; b=H4sIAAAAAAAC/42NQQ6CMBAAv0J6dg1tRaIn/mE4lLLAKnSbFlFD+
- LuAH/A4yWRmFhEDYRTXZBYBJ4rEbgV1SITtjGsRqF5ZqFSd04tUMDTtyB4cg+0fYDyB5xcGYAc
- mw9Roc9KV1mIN+IANvff4rfxxfFZ3tONW3IyO4sjhs98nuXl/jSYJEmpsZJabWqo8L9rBUH+0P
- IhyWZYvjqeF0tYAAAA=
-X-Change-ID: 20260912-mfgtop-no-clk-api-power-on-a5e0a3a43b33
-To: Stephen Boyd <sboyd@kernel.org>, Brian Masney <bmasney+clk@redhat.com>, 
- Jerome Brunet <jbrunet+clk@baylibre.com>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Chen-Yu Tsai <wenst@chromium.org>
-Cc: Brian Masney <bmasney@redhat.com>, linux-clk@vger.kernel.org, 
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, Ryan Brue <ryanbrue.dev@gmail.com>
+Message-Id: <20260913-usb-mtu3-gadget-completion-callback-fix-v1-1-e3480004fe23@gmail.com>
+X-B4-Tracking: v=1; b=H4sIAAAAAAAC/yWNywrCMBBFf6XM2oGmEUv8FXGRxzRG0weZpAil/
+ 95Yl+fAPXcDphSI4d5skGgNHOapgrg0YF968oTBVYau7W6tEhILGxxzkei185TRzuMSKdcZWh2
+ j0faDQ/iik/I69KSUFj3U2pKo6vPp8fwzF/Mmm3952PcDXmv8Q4sAAAA=
+X-Change-ID: 20260913-usb-mtu3-gadget-completion-callback-fix-d334f7e99a17
+To: Chunfeng Yun <chunfeng.yun@mediatek.com>, 
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Cc: linux-usb@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, 
+ stable@vger.kernel.org, Ryan Brue <ryanbrue.dev@gmail.com>
 X-Mailer: b4 0.16.0
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1789336079; l=6274;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1789338086; l=3820;
  i=ryanbrue.dev@gmail.com; s=20260906; h=from:subject:message-id;
- bh=nfq4xKN/U3UCWCePBLPoeRZgNdv9ADYvF1h2MfVGoe0=;
- b=vmOHX9MbkBdVuDpyVXNrpAACjzRmh8NFH++7aqIkxLDNaUdOwDwWdteL6obQKE5zRwy2+rwS/
- aywx2+gD5K0DV1qhZwo9lOccQKn78Ow5Vp+8xyhd3YiddwHrJZXr6wv
+ bh=Tg9Kq8vx6MVWyGAb8N8rORP+uP72Obd3DRFlHL5xK4Q=;
+ b=YprVcQaOfoVyeaf75GeW9nCb4J5m5vEY6QpXXbHYMQMmSn3VqJ7Ey/kLrFM279kQOjoN7ouGX
+ GtYBNWkV6EVCWDGlBclQanK+2Ty+CLHAizBVeQxibpvONvTk2OdAOFk
 X-Developer-Key: i=ryanbrue.dev@gmail.com; a=ed25519;
  pk=KsUvVaP//v/2q+ZBuacc7cLbsyEYn+AD71Sn28oZWKo=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260913_144803_682881_1A9157F9 
-X-CRM114-Status: GOOD (  19.53  )
+X-CRM114-CacheID: sfid-20260913_152131_217183_34ABE560 
+X-CRM114-Status: GOOD (  15.89  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -116,154 +111,95 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-clk_mt8173_mfgtop_power_on() calls clk_prepare_enable() on the mfg_26m gate
-that this same driver provides. That is a layering inversion which cannot
-work: clk_core_prepare() calls clk_pm_runtime_get() on the clock provider
--- this driver's own device -- and genpd power transitions run at _noirq
-time, where runtime PM is disabled and pm_runtime_resume_and_get() returns
--EACCES.
+mtu3_irq() is a threaded handler, so it runs in process context, but it
+takes mtu->lock with spin_lock_irqsave(). mtu3_req_complete() then drops
+the lock with a plain spin_unlock() around
+usb_gadget_giveback_request(), which leaves hardware interrupts disabled
+across the gadget function's completion callback.
 
-Measured on mt8173 (amazon-suez) during resume from suspend-to-RAM,
-immediately after the secondary CPUs come back up:
+That breaks any callback that reaches netif_rx(). Since the threaded
+handler is in neither hardirq nor softirq context, netif_rx() takes its
+local_bh_disable()/local_bh_enable() path, and enabling softirqs with
+interrupts disabled is not allowed:
 
-  clk-mt8173-mfgtop 13fff000.clock-controller: 26 MHz clock enable failed: -13
+  WARNING: kernel/softirq.c:430 at __local_bh_enable_ip+0x17c/0x188
+    __local_bh_enable_ip
+    netif_rx
+    rx_complete [u_ether]
+    usb_gadget_giveback_request
+    mtu3_req_complete
+    mtu3_qmu_isr
+    mtu3_irq
+    irq_thread_fn
 
-The failure is not survivable, because genpd_sync_power_on() ignores what
-power_on() returns and marks the domain on regardless. The clock is then
-left ungated-but-unprepared, and the next power_off() underflows its
-refcount:
+With CONFIG_TRACE_IRQFLAGS, __local_bh_enable_ip() ends with an
+unconditional local_irq_enable(), so the plain spin_lock() re-taking
+mtu->lock afterwards runs with interrupts on and is recorded
+SOFTIRQ-ON-W, while mtu3_gadget_queue() takes the same lock from a
+softirq (ncm's tx hrtimer), and lockdep follows up with an inconsistent
+lock state report naming mtu->lock.
 
-  mfg_26m already disabled
-  mfg_26m already unprepared
-  WARNING: drivers/clk/clk.c:1048 at clk_core_unprepare
-  Workqueue: pm genpd_power_off_work_fn
-    clk_unprepare / clk_mt8173_mfgtop_power_off / _genpd_power_off
+The locking was right when mtu3_irq() was a hardirq handler. It stopped
+being right when the handler became threaded without a primary handler;
+dwc3 hit the same thing the same way and fixed it in the controller
+driver, in commit 84918a89d6ef ("usb: dwc3: gadget: Let the interrupt
+handler disable bottom halves.").
 
-Gate the bit with a direct regmap write instead. The vendor driver
-(mtk_mfgsys.c) also drives the four MFG CG bits with raw register writes
-from its power sequencing. The runtime-PM path was never affected, only the
-_noirq transitions of system suspend and resume. mfg_26m stays registered
-as a clock for any consumer that wants it; nothing currently does.
+mtu->lock is never taken in hardirq context: the only handler is
+threaded and has no primary handler, so disabling softirqs is enough.
+Take it with spin_lock_bh() in mtu3_irq(). The completion callback then
+runs with interrupts enabled and softirqs disabled, which is the context
+netif_rx() expects. The other sites keep spin_lock_irqsave(), which is
+strictly stronger and still correct; several of them really can be
+reached from softirq context.
 
-Because the gate is now driven from the domain callbacks, its enable count
-in the clock framework stays 0 while the domain is on. Mark it
-CLK_IGNORE_UNUSED so that clk_disable_unused() does not gate the 26 MHz
-clock under an already-powered domain when a consumer probes before late
-init; the domain callbacks are the only writers.
+Both reports need lockdep to be seen, but the context violation is real:
+netif_rx() wants either hardirq/softirq context or interrupts enabled,
+and mtu3 gives it neither. The fallout on a PROVE_LOCKING kernel is not
+cosmetic either - copying a 21 MB file over USB ethernet hung and reset
+this board repeatedly before this change. Once interrupts have been
+left enabled while the thread holds mtu->lock, the tx hrtimer softirq on
+the same CPU spins on it forever, which is the "CPU0: lock(&mtu->lock);
+<Interrupt> lock(&mtu->lock);" scenario lockdep names. The same copy is
+reliable after it.
 
-Fixes: ebd0b73d2137 ("clk: mediatek: Add mt8173-mfgtop driver")
+Fixes: 13118959cb1a ("usb: mtu3: register mtu3_irq by threaded irq")
+Cc: stable@vger.kernel.org
 Assisted-by: LLM
 Signed-off-by: Ryan Brue <ryanbrue.dev@gmail.com>
 ---
-Changes in v2:
-- Mark mfg_26m CLK_IGNORE_UNUSED: with the gate driven from the domain
-  callbacks its CCF enable count stays 0, so clk_disable_unused() would gate
-  the 26 MHz clock under an already-powered domain if a consumer probed
-  before late init (reported by the Sashiko review of v1). Verified on the
-  Fire HD 10: the gate follows the domain (hardware Y with the GPU active, N
-  after unbind) while the enable count stays 0, and the GPU keeps working.
-- Link to v1: https://patch.msgid.link/20260912-mfgtop-no-clk-api-power-on-v1-1-def157ad1277@gmail.com
----
- drivers/clk/mediatek/clk-mt8173-mfgtop.c | 29 +++++++++++------------------
- 1 file changed, 11 insertions(+), 18 deletions(-)
+ drivers/usb/mtu3/mtu3_core.c | 5 ++---
+ 1 file changed, 2 insertions(+), 3 deletions(-)
 
-diff --git a/drivers/clk/mediatek/clk-mt8173-mfgtop.c b/drivers/clk/mediatek/clk-mt8173-mfgtop.c
-index 5669ca9954dc..53918ad7f402 100644
---- a/drivers/clk/mediatek/clk-mt8173-mfgtop.c
-+++ b/drivers/clk/mediatek/clk-mt8173-mfgtop.c
-@@ -30,6 +30,8 @@ static const struct mtk_gate_regs mfg_cg_regs = {
- 	.set_ofs = 0x0004,
- };
- 
-+#define MFG_CG_26M	BIT(3)
-+
- #define GATE_MFG(_id, _name, _parent, _shift, _flags)	\
- 	GATE_MTK_FLAGS(_id, _name, _parent, &mfg_cg_regs, _shift, &mtk_clk_gate_ops_setclr, _flags)
- 
-@@ -38,7 +40,8 @@ static const struct mtk_gate mfg_clks[] = {
- 	GATE_MFG(CLK_MFG_AXI, "mfg_axi", "axi_mfg_in_sel", 0, CLK_SET_RATE_PARENT),
- 	GATE_MFG(CLK_MFG_MEM, "mfg_mem", "mem_mfg_in_sel", 1, CLK_SET_RATE_PARENT),
- 	GATE_MFG(CLK_MFG_G3D, "mfg_g3d", "mfg_sel", 2, CLK_SET_RATE_PARENT),
--	GATE_MFG(CLK_MFG_26M, "mfg_26m", "clk26m", 3, 0),
-+	/* Driven by the power domain callbacks, not by a clk consumer */
-+	GATE_MFG(CLK_MFG_26M, "mfg_26m", "clk26m", 3, CLK_IGNORE_UNUSED),
- };
- 
- struct mt8173_mfgtop_data {
-@@ -46,7 +49,6 @@ struct mt8173_mfgtop_data {
- 	struct regmap *regmap;
- 	struct generic_pm_domain genpd;
- 	struct of_phandle_args parent_pd, child_pd;
--	struct clk *clk_26m;
- };
- 
- /* Delay count in clock cycles */
-@@ -66,12 +68,12 @@ struct mt8173_mfgtop_data {
- static int clk_mt8173_mfgtop_power_on(struct generic_pm_domain *domain)
+diff --git a/drivers/usb/mtu3/mtu3_core.c b/drivers/usb/mtu3/mtu3_core.c
+index a40bf5bad2d5..ed0e426645fd 100644
+--- a/drivers/usb/mtu3/mtu3_core.c
++++ b/drivers/usb/mtu3/mtu3_core.c
+@@ -790,10 +790,9 @@ static irqreturn_t mtu3_u2_common_isr(struct mtu3 *mtu)
+ static irqreturn_t mtu3_irq(int irq, void *data)
  {
- 	struct mt8173_mfgtop_data *data = container_of(domain, struct mt8173_mfgtop_data, genpd);
--	int ret;
+ 	struct mtu3 *mtu = (struct mtu3 *)data;
+-	unsigned long flags;
+ 	u32 level1;
  
--	/* drives internal power management */
--	ret = clk_prepare_enable(data->clk_26m);
--	if (ret)
--		return ret;
-+	/*
-+	 * Drives internal power management. Written directly: the clk API
-+	 * needs runtime PM, which is disabled during _noirq transitions.
-+	 */
-+	regmap_write(data->regmap, mfg_cg_regs.clr_ofs, MFG_CG_26M);
+-	spin_lock_irqsave(&mtu->lock, flags);
++	spin_lock_bh(&mtu->lock);
  
- 	/* Power on/off delays for various signals */
- 	regmap_write(data->regmap, MFG_ACTIVE_POWER_CON0,
-@@ -103,7 +105,7 @@ static int clk_mt8173_mfgtop_power_off(struct generic_pm_domain *domain)
- 	regmap_write(data->regmap, 0xec, 0);
+ 	/* U3D_LV1ISR is RU */
+ 	level1 = mtu3_readl(mtu->mac_base, U3D_LV1ISR);
+@@ -814,7 +813,7 @@ static irqreturn_t mtu3_irq(int irq, void *data)
+ 	if (level1 & QMU_INTR)
+ 		mtu3_qmu_isr(mtu);
  
- 	/* drives internal power management */
--	clk_disable_unprepare(data->clk_26m);
-+	regmap_write(data->regmap, mfg_cg_regs.set_ofs, MFG_CG_26M);
+-	spin_unlock_irqrestore(&mtu->lock, flags);
++	spin_unlock_bh(&mtu->lock);
  
- 	return 0;
- }
-@@ -155,16 +157,10 @@ static int clk_mt8173_mfgtop_probe(struct platform_device *pdev)
- 		goto put_pm_runtime;
- 	}
- 
--	data->clk_26m = clk_hw_get_clk(data->clk_data->hws[CLK_MFG_26M], "26m");
--	if (IS_ERR(data->clk_26m)) {
--		ret = dev_err_probe(dev, PTR_ERR(data->clk_26m), "Failed to get 26 MHz clock\n");
--		goto unregister_clks;
--	}
--
- 	ret = of_clk_add_hw_provider(node, of_clk_hw_onecell_get, data->clk_data);
- 	if (ret) {
- 		dev_err_probe(dev, ret, "Failed to add clk OF provider\n");
--		goto put_26m_clk;
-+		goto unregister_clks;
- 	}
- 
- 	data->genpd.name = "mfg-top";
-@@ -197,8 +193,6 @@ static int clk_mt8173_mfgtop_probe(struct platform_device *pdev)
- 	pm_genpd_remove(&data->genpd);
- del_clk_provider:
- 	of_clk_del_provider(node);
--put_26m_clk:
--	clk_put(data->clk_26m);
- unregister_clks:
- 	mtk_clk_unregister_gates(mfg_clks, ARRAY_SIZE(mfg_clks), data->clk_data);
- put_pm_runtime:
-@@ -217,7 +211,6 @@ static void clk_mt8173_mfgtop_remove(struct platform_device *pdev)
- 	of_genpd_del_provider(node);
- 	pm_genpd_remove(&data->genpd);
- 	of_clk_del_provider(node);
--	clk_put(data->clk_26m);
- 	mtk_clk_unregister_gates(mfg_clks, ARRAY_SIZE(mfg_clks), data->clk_data);
- 	of_node_put(data->parent_pd.np);
+ 	return IRQ_HANDLED;
  }
 
 ---
 base-commit: df2908090cda368b01ff43709f51890076c56157
-change-id: 20260912-mfgtop-no-clk-api-power-on-a5e0a3a43b33
+change-id: 20260913-usb-mtu3-gadget-completion-callback-fix-d334f7e99a17
 
 Best regards,
 --  
