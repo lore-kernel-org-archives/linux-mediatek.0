@@ -4,70 +4,104 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D2DDEC88E5C
-	for <linux-mediatek@archiver.kernel.org>; Sun, 13 Sep 2026 19:53:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A75F5C88E5C
+	for <linux-mediatek@archiver.kernel.org>; Sun, 13 Sep 2026 21:48:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
-	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=OxeU5Su/M8erJsaUWOmS2EmM0zS643DtJmSk63z/Z00=; b=s9HQ+4H3f/GIRilI6ZzASph1od
-	h5LlsHnf/CvSaK4SAlNETeOaft6wVadFX/+VvFbWwjet4swv0HKd+r8zzbpHrUgbD/Q8gtJI95gzQ
-	DhV+gWmRrtkZ+atkiWNExEKdOzmJQDQ71smXxirUxpW7FfJ2LmWaFfks+1TaTp+uO20/CN3V3FsJ6
-	WvGU7ZbFCmvYsk3YEHtgPuM4taMNxYx+7h37yS9CgDbkNIXvxGtA9i3d5jgBJcxYJI0/++CbvEGj4
-	XyMDUUE/9Txe0ZkY34JSeZYLDT7zFcw2OC1RAI646lWR04mzSoZekQ/USWn1ZB1XMaKP6ROh9NfZZ
-	AIr/YxZw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=LiFj+YViXnUILO1Xl8u0yjE4yvh4W8pLQubMdsa1jkQ=; b=biltIqBwwZbMHpYdg171BkX+As
+	eUMzfRXE3TN4ciNAU6UUWLHLqYGr31TEcXBliTkAUGTDJwfm9CnQR3BIlEmVDKPUa+ATpCXNOKpb1
+	lVdLuqtMaC2O6mgRw2eFPHnKgj0gDABck/RpQG4PpRjX8/w0CS6ZlxQ2DbSSRph8EoyDiT+0Asj2y
+	ZYcmsBLO5LcwLM46/vfAnKJ6exs5UDta/u5/oRZT1S+X+87cAAxERWa28fOGuATvZIg4/cL9s0+zZ
+	oNgNh6xLKhmHMQ2MNgQwE22czz/jwm309Pt4TwNWzw2rCG9Pl8QVjt9YFfq6BKUK9PCzGB5mtHDcZ
+	joLR/nUQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x5qGc-000000020XO-1JTp;
-	Sun, 13 Sep 2026 19:53:34 +0000
-Received: from xs1.mindbit.ro ([80.86.107.70] helo=mail.mindbit.ro)
+	id 1x5s3S-000000023iv-3HUJ;
+	Sun, 13 Sep 2026 21:48:07 +0000
+Received: from mail-oo2-x07.google.com ([2607:f8b0:4864:31::7])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x5qGa-000000020WM-0yzs;
-	Sun, 13 Sep 2026 19:53:33 +0000
-Received: from dog.kanata.rendec.net (pool-174-112-193-187.cpe.net.cable.rogers.com [174.112.193.187])
-	by mail.mindbit.ro (Postfix) with ESMTPSA id B5817CD5BC;
-	Sun, 13 Sep 2026 22:53:23 +0300 (EEST)
-DKIM-Filter: OpenDKIM Filter v2.11.0 mail.mindbit.ro B5817CD5BC
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=rendec.net;
-	s=default; t=1789329207;
-	bh=OxeU5Su/M8erJsaUWOmS2EmM0zS643DtJmSk63z/Z00=;
-	h=Subject:From:To:Cc:Date:In-Reply-To:References:From;
-	b=bPrxv5ZxzllOQiy2krKFOjC+n45BHyruI8wXJWW2dWXRr4DcLu0qSRf6d6pHLDx2g
-	 jWcfuKvfm4R5fkihNP2bYAGlMPiEKu2EReiVm/sDrL/7gpXNRKBB7aWno9BxyE0PIx
-	 eJ2WBtrgtJF/6pZnjqFQwwsDO/KmzOaIx0fkVSU/CK9rK96UEIEpRCrZ3RBw/9RO7M
-	 dIG3X6gzczLJWO2ggvEASF+KnDy8M/wU/ZXNb4/e4nVlCj9JFDbH5mUjxdeheYhNPH
-	 IQWdrYEJBtqEOV1SW3KVrCuI7RGRLTeehLAl+p9Cvbyg6Rh5mmTzHhmbRZNO4iAJKh
-	 MCi83qnwm1Cog==
-Message-ID: <81f0bf10b41dff85872487ab68c750471b7c2f89.camel@rendec.net>
-Subject: Re: [PATCH v2 0/6] riscv: Make IPI_MAX visible and use it
- consistently
-From: Radu Rendec <radu@rendec.net>
-To: Guo Ren <guoren@kernel.org>, Paul Walmsley <pjw@kernel.org>, Palmer
- Dabbelt	 <palmer@dabbelt.com>, Albert Ou <aou@eecs.berkeley.edu>, Alexandre
- Ghiti	 <alex@ghiti.fr>, Daniel Lezcano <daniel.lezcano@kernel.org>, Thomas
- Gleixner	 <tglx@kernel.org>, Anup Patel <anup@brainfault.org>, Tiffany Lin	
- <tiffany.lin@mediatek.com>, Andrew-CT Chen <andrew-ct.chen@mediatek.com>, 
- Yunfei Dong <yunfei.dong@mediatek.com>, Minghsiu Tsai
- <minghsiu.tsai@mediatek.com>, Houlong Wei	 <houlong.wei@mediatek.com>,
- Mauro Carvalho Chehab <mchehab@kernel.org>,  Matthias Brugger
- <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
- <angelogioacchino.delregno@collabora.com>
-Cc: linux-riscv@lists.infradead.org, linux-kernel@vger.kernel.org, 
-	linux-media@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org, "tip-bot2 for GUO Ren (XuanTie)"
-	 <tip-bot2@linutronix.de>, Nathan Chancellor <nathan@kernel.org>
-Date: Sun, 13 Sep 2026 15:53:22 -0400
-In-Reply-To: <20260911-ipi_max-v2-0-a77826ff189e@kernel.org>
-References: <20260911-ipi_max-v2-0-a77826ff189e@kernel.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-User-Agent: Evolution 3.58.3 (3.58.3-1.fc43) 
+	id 1x5s3P-000000023hg-2bYe
+	for linux-mediatek@lists.infradead.org;
+	Sun, 13 Sep 2026 21:48:05 +0000
+Received: by mail-oo2-x07.google.com with SMTP id 006d021491bc7-6c197ff1f3aso636422eaf.0
+        for <linux-mediatek@lists.infradead.org>; Sun, 13 Sep 2026 14:48:03 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20251104; t=1789336082; x=1789940882; darn=lists.infradead.org;
+        h=cc:to:message-id:content-transfer-encoding:content-type
+         :mime-version:subject:date:from:from:to:cc:subject:date:message-id
+         :reply-to:content-type;
+        bh=LiFj+YViXnUILO1Xl8u0yjE4yvh4W8pLQubMdsa1jkQ=;
+        b=BEboUwQBh5r89AkJFf3H0kxEiisC/i6C76MXq/xq0d9t6ikARt36w6DNG/8LDTdbqx
+         +qhJQwG1Pue6s5oCsWKEZ6VTQIkadZMxxHDWz3EvEn31BtfoHwMGlUUjf1xiQkGbpfLN
+         HIp3KvN29u/AiDsASc7i/Y+WkprCuoAq+Ta6fr85IIYvMzwNxzwaJw/5WEfWHezrtCvP
+         1L7wX/FZJvZs1ZRWYSEnDKYSZMRsyT3D2kEtroqTgsMoIWaKNapDRc2uv/0heo9Joopa
+         P460VCW0/tQRCFJsW3Jr7PYKb8zX9f7Ur77JNBn6447UTkaPs1DjvLX+D94iMJqg77Xi
+         4taw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1789336082; x=1789940882;
+        h=cc:to:message-id:content-transfer-encoding:content-type
+         :mime-version:subject:date:from:x-gm-gg:x-gm-message-state:from:to
+         :cc:subject:date:message-id:reply-to:content-type;
+        bh=LiFj+YViXnUILO1Xl8u0yjE4yvh4W8pLQubMdsa1jkQ=;
+        b=qnnpKzGUVGoziJ7zrA46GKzAfgs9HMfl/7vu+EpHLFPVD3G5KG+/7Adb2Pn3Y7RekU
+         uMtGn61BuzmfdlJWEFDlp6cwUsZ9t05tzwbwResZlznkcrBZttUp+LcYhkHP7tosw30F
+         lKf3dAUTzDDn6kIFw76FSQx49W5l5QXXYjure7i1KlG09i6i4pG+CSrLH0+JvqlJvddY
+         6G85x5wc4yDwxAUyJbD4ClnSZWg71TscVmDCgPyknqdkF3W63yW8nGzk1FhuJmFCpppc
+         O363GJxqTigTT6PaGMRclCLm66fp8Cjr0pZ1Yrv6c2QHrIEDUm5WsEv0KvM+NSS0zu+Y
+         Vuzg==
+X-Forwarded-Encrypted: i=1; AKwUvBxpjImvqYXxwR8tqXxKOGrMpQcGi/itxVXhJs2hYJZIEgao9FW2215VedplB+4OsLYMIiV5PdiH93fIhKpcXQ==@lists.infradead.org
+X-Gm-Message-State: AFuF++ly1fFPN+CBW/XTkMIGtfWLrSV3IqCoOVtDtSuRPDxQaU2SWg9l
+	2MgUqpcGvGAle2kyrGdV2dqDU0xOfu+xHy4cqCthgnVlNAXGoTBVCXW4
+X-Gm-Gg: AYBFou1+b2DhthN4JQdPwiQfAFAZjYN63NXLS5sOrdJ7lHSs7zuTE84so6T6+v4HvC4
+	qXMg5YludsqPxPsZRtFyU77QlD5HtvdkiT8EpWTGFPZvrkLDYsOOTvNsrfXNoZMHixuqvr1LzlM
+	JBcyZpmk9hWHNnFb2XJbjHOGG6ASmYPqEls0wgqanZwNfTtsF1XN5Rs0XS1N8JymOtaOEdg9lBM
+	4eIxaVLKkXoYIdB0Cm6ftvOjL3swoKwVxZD1eZ5Q086EnuHVDhcUJNioD3NxqFr7JtmO/H4C71K
+	mg8EQp26vFPAm1WZAE2ZC5KR18hEzA6ID89EFtHUkF7swmPoEAalzDX2Xj6N5wb9RL2sFNxLMoC
+	GY05gQAmM5v/m8dklz2WMn67A3hyVtU2pd9/6vGFJYx0LFX5YBSjBvPgxHyCzkXZ9O1Z8B2Gktq
+	QxOVqM32LNnC+WDfAMhrhGXVKmOqwS+G6oxWgtGc2i0w7oBYi5imMWuSGaVDNPK2hlx/XrqJD6l
+	qnPk1k=
+X-Received: by 2002:a05:6820:2213:b0:6c2:5e92:b599 with SMTP id 006d021491bc7-6c25e92c715mr7185528eaf.4.1789336082388;
+        Sun, 13 Sep 2026 14:48:02 -0700 (PDT)
+Received: from [192.168.18.164] ([2600:8804:5716:d800::b712])
+        by smtp.gmail.com with ESMTPSA id 006d021491bc7-6c0990cc05fsm8928296eaf.3.2026.09.13.14.47.59
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sun, 13 Sep 2026 14:48:01 -0700 (PDT)
+From: Ryan Brue <ryanbrue.dev@gmail.com>
+Date: Sun, 13 Sep 2026 16:47:53 -0500
+Subject: [PATCH v2] clk: mediatek: mt8173-mfgtop: do not use the clk API
+ from power_on
 MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Message-Id: <20260913-mfgtop-no-clk-api-power-on-v2-1-b84771a3d5bd@gmail.com>
+X-B4-Tracking: v=1; b=H4sIAAAAAAAC/42NQQ6CMBAAv0J6dg1tRaIn/mE4lLLAKnSbFlFD+
+ LuAH/A4yWRmFhEDYRTXZBYBJ4rEbgV1SITtjGsRqF5ZqFSd04tUMDTtyB4cg+0fYDyB5xcGYAc
+ mw9Roc9KV1mIN+IANvff4rfxxfFZ3tONW3IyO4sjhs98nuXl/jSYJEmpsZJabWqo8L9rBUH+0P
+ IhyWZYvjqeF0tYAAAA=
+X-Change-ID: 20260912-mfgtop-no-clk-api-power-on-a5e0a3a43b33
+To: Stephen Boyd <sboyd@kernel.org>, Brian Masney <bmasney+clk@redhat.com>, 
+ Jerome Brunet <jbrunet+clk@baylibre.com>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Chen-Yu Tsai <wenst@chromium.org>
+Cc: Brian Masney <bmasney@redhat.com>, linux-clk@vger.kernel.org, 
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, Ryan Brue <ryanbrue.dev@gmail.com>
+X-Mailer: b4 0.16.0
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1789336079; l=6274;
+ i=ryanbrue.dev@gmail.com; s=20260906; h=from:subject:message-id;
+ bh=nfq4xKN/U3UCWCePBLPoeRZgNdv9ADYvF1h2MfVGoe0=;
+ b=vmOHX9MbkBdVuDpyVXNrpAACjzRmh8NFH++7aqIkxLDNaUdOwDwWdteL6obQKE5zRwy2+rwS/
+ aywx2+gD5K0DV1qhZwo9lOccQKn78Ow5Vp+8xyhd3YiddwHrJZXr6wv
+X-Developer-Key: i=ryanbrue.dev@gmail.com; a=ed25519;
+ pk=KsUvVaP//v/2q+ZBuacc7cLbsyEYn+AD71Sn28oZWKo=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260913_125332_454579_DD9480F6 
-X-CRM114-Status: GOOD (  17.84  )
+X-CRM114-CacheID: sfid-20260913_144803_682881_1A9157F9 
+X-CRM114-Status: GOOD (  19.53  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,84 +116,157 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, 2026-09-11 at 03:27 +0000, Guo Ren wrote:
-> This series removes the implicit assumption that RISC-V supports exactly
-> eight IPI message types.
->=20
-> Currently, the SBI, CLINT and ACLINT SSWI IPI providers use
-> BITS_PER_BYTE when sizing the generic IPI mux, while IMSIC carries a
-> separate IMSIC_NR_IPI definition set to 8. These values happen to match
-> IPI_MAX today, but neither is the proper source of truth for the number
-> of RISC-V IPI message types.
->=20
-> Move enum ipi_message_type to asm/smp.h so IPI providers can use IPI_MAX
-> directly, then replace the BITS_PER_BYTE and IMSIC_NR_IPI uses with
-> IPI_MAX.
->=20
-> This also makes adding future RISC-V IPI message types independent of
-> the current eight-entry assumption.
->=20
-> A follow-up patch renames the MediaTek VPU mailbox terminator from
-> IPI_MAX to IPI_VPU_MAX. That token belongs to the VPU firmware IPI id
-> enum and should follow the same prefixed convention as IPI_VPU_INIT
-> (and SCP_IPI_MAX on the SCP side), instead of reusing the generic
-> IPI_MAX name.
->=20
-> ---
-> GUO Ren (XuanTie) (4):
-> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 clocksource: clint: Use IPI_MAX for IPI mu=
-xing
-> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 irqchip/aclint-sswi: Use IPI_MAX for IPI m=
-uxing
-> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 irqchip/imsic: Use IPI_MAX instead of IMSI=
-C_NR_IPI
-> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 media: mtk-vpu: rename IPI_MAX to IPI_VPU_=
-MAX
->=20
-> tip-bot2 for GUO Ren (XuanTie) (2):
-> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 riscv: smp: Move enum ipi_message_type to =
-asm/smp.h
-> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 riscv: sbi: Use IPI_MAX for SBI IPI muxing
+clk_mt8173_mfgtop_power_on() calls clk_prepare_enable() on the mfg_26m gate
+that this same driver provides. That is a layering inversion which cannot
+work: clk_core_prepare() calls clk_pm_runtime_get() on the clock provider
+-- this driver's own device -- and genpd power transitions run at _noirq
+time, where runtime PM is disabled and pm_runtime_resume_and_get() returns
+-EACCES.
 
-I am confused. Thomas merged your entire v1 series a week before (see
-the individual replies from=C2=A0tip-bot2@linutronix.de). Why are you
-sending v2?
+Measured on mt8173 (amazon-suez) during resume from suspend-to-RAM,
+immediately after the secondary CPUs come back up:
 
-Patch 6 was not included in v1 (but it's clearly related), so perhaps
-you meant to send only this one as a separate patch?
+  clk-mt8173-mfgtop 13fff000.clock-controller: 26 MHz clock enable failed: -13
 
-Also:
- * The cover letter should include a changelog, indicating what changes
-   were made in each version compared to the previous one.
- * Patches 1 and 2 carry a "From:" tag that attributes authorship to
-   tip-bot2, which is wrong (if these patches were to be applied).
+The failure is not survivable, because genpd_sync_power_on() ignores what
+power_on() returns and marks the domain on regardless. The clock is then
+left ungated-but-unprepared, and the next power_off() underflows its
+refcount:
 
->=20
-> =C2=A0arch/riscv/include/asm/smp.h=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 | 12 ++++++=
-++++++
-> =C2=A0arch/riscv/kernel/sbi-ipi.c=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 |=C2=
-=A0 4 ++--
-> =C2=A0arch/riscv/kernel/smp.c=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0 | 12 ------------
-> =C2=A0drivers/clocksource/timer-clint.c=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 |=C2=A0 4 ++--
-> =C2=A0drivers/irqchip/irq-aclint-sswi.c=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 |=C2=A0 4 ++--
-> =C2=A0drivers/irqchip/irq-riscv-imsic-early.c=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0 |=C2=A0 4 ++--
-> =C2=A0drivers/irqchip/irq-riscv-imsic-state.h=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0 |=C2=A0 1 -
-> =C2=A0drivers/media/platform/mediatek/vpu/mtk_vpu.c | 12 ++++++------
-> =C2=A0drivers/media/platform/mediatek/vpu/mtk_vpu.h |=C2=A0 4 ++--
-> =C2=A09 files changed, 28 insertions(+), 29 deletions(-)
-> ---
-> base-commit: 08df884136f1c1197bab2a27814404fd329d9aac
-> change-id: 20260911-ipi_max-ff71eeadf6fd
->=20
-> Best regards,
-> --=C2=A0=20
-> GUO Ren (XuanTie) <guoren@kernel.org>
+  mfg_26m already disabled
+  mfg_26m already unprepared
+  WARNING: drivers/clk/clk.c:1048 at clk_core_unprepare
+  Workqueue: pm genpd_power_off_work_fn
+    clk_unprepare / clk_mt8173_mfgtop_power_off / _genpd_power_off
+
+Gate the bit with a direct regmap write instead. The vendor driver
+(mtk_mfgsys.c) also drives the four MFG CG bits with raw register writes
+from its power sequencing. The runtime-PM path was never affected, only the
+_noirq transitions of system suspend and resume. mfg_26m stays registered
+as a clock for any consumer that wants it; nothing currently does.
+
+Because the gate is now driven from the domain callbacks, its enable count
+in the clock framework stays 0 while the domain is on. Mark it
+CLK_IGNORE_UNUSED so that clk_disable_unused() does not gate the 26 MHz
+clock under an already-powered domain when a consumer probes before late
+init; the domain callbacks are the only writers.
+
+Fixes: ebd0b73d2137 ("clk: mediatek: Add mt8173-mfgtop driver")
+Assisted-by: LLM
+Signed-off-by: Ryan Brue <ryanbrue.dev@gmail.com>
+---
+Changes in v2:
+- Mark mfg_26m CLK_IGNORE_UNUSED: with the gate driven from the domain
+  callbacks its CCF enable count stays 0, so clk_disable_unused() would gate
+  the 26 MHz clock under an already-powered domain if a consumer probed
+  before late init (reported by the Sashiko review of v1). Verified on the
+  Fire HD 10: the gate follows the domain (hardware Y with the GPU active, N
+  after unbind) while the enable count stays 0, and the GPU keeps working.
+- Link to v1: https://patch.msgid.link/20260912-mfgtop-no-clk-api-power-on-v1-1-def157ad1277@gmail.com
+---
+ drivers/clk/mediatek/clk-mt8173-mfgtop.c | 29 +++++++++++------------------
+ 1 file changed, 11 insertions(+), 18 deletions(-)
+
+diff --git a/drivers/clk/mediatek/clk-mt8173-mfgtop.c b/drivers/clk/mediatek/clk-mt8173-mfgtop.c
+index 5669ca9954dc..53918ad7f402 100644
+--- a/drivers/clk/mediatek/clk-mt8173-mfgtop.c
++++ b/drivers/clk/mediatek/clk-mt8173-mfgtop.c
+@@ -30,6 +30,8 @@ static const struct mtk_gate_regs mfg_cg_regs = {
+ 	.set_ofs = 0x0004,
+ };
+ 
++#define MFG_CG_26M	BIT(3)
++
+ #define GATE_MFG(_id, _name, _parent, _shift, _flags)	\
+ 	GATE_MTK_FLAGS(_id, _name, _parent, &mfg_cg_regs, _shift, &mtk_clk_gate_ops_setclr, _flags)
+ 
+@@ -38,7 +40,8 @@ static const struct mtk_gate mfg_clks[] = {
+ 	GATE_MFG(CLK_MFG_AXI, "mfg_axi", "axi_mfg_in_sel", 0, CLK_SET_RATE_PARENT),
+ 	GATE_MFG(CLK_MFG_MEM, "mfg_mem", "mem_mfg_in_sel", 1, CLK_SET_RATE_PARENT),
+ 	GATE_MFG(CLK_MFG_G3D, "mfg_g3d", "mfg_sel", 2, CLK_SET_RATE_PARENT),
+-	GATE_MFG(CLK_MFG_26M, "mfg_26m", "clk26m", 3, 0),
++	/* Driven by the power domain callbacks, not by a clk consumer */
++	GATE_MFG(CLK_MFG_26M, "mfg_26m", "clk26m", 3, CLK_IGNORE_UNUSED),
+ };
+ 
+ struct mt8173_mfgtop_data {
+@@ -46,7 +49,6 @@ struct mt8173_mfgtop_data {
+ 	struct regmap *regmap;
+ 	struct generic_pm_domain genpd;
+ 	struct of_phandle_args parent_pd, child_pd;
+-	struct clk *clk_26m;
+ };
+ 
+ /* Delay count in clock cycles */
+@@ -66,12 +68,12 @@ struct mt8173_mfgtop_data {
+ static int clk_mt8173_mfgtop_power_on(struct generic_pm_domain *domain)
+ {
+ 	struct mt8173_mfgtop_data *data = container_of(domain, struct mt8173_mfgtop_data, genpd);
+-	int ret;
+ 
+-	/* drives internal power management */
+-	ret = clk_prepare_enable(data->clk_26m);
+-	if (ret)
+-		return ret;
++	/*
++	 * Drives internal power management. Written directly: the clk API
++	 * needs runtime PM, which is disabled during _noirq transitions.
++	 */
++	regmap_write(data->regmap, mfg_cg_regs.clr_ofs, MFG_CG_26M);
+ 
+ 	/* Power on/off delays for various signals */
+ 	regmap_write(data->regmap, MFG_ACTIVE_POWER_CON0,
+@@ -103,7 +105,7 @@ static int clk_mt8173_mfgtop_power_off(struct generic_pm_domain *domain)
+ 	regmap_write(data->regmap, 0xec, 0);
+ 
+ 	/* drives internal power management */
+-	clk_disable_unprepare(data->clk_26m);
++	regmap_write(data->regmap, mfg_cg_regs.set_ofs, MFG_CG_26M);
+ 
+ 	return 0;
+ }
+@@ -155,16 +157,10 @@ static int clk_mt8173_mfgtop_probe(struct platform_device *pdev)
+ 		goto put_pm_runtime;
+ 	}
+ 
+-	data->clk_26m = clk_hw_get_clk(data->clk_data->hws[CLK_MFG_26M], "26m");
+-	if (IS_ERR(data->clk_26m)) {
+-		ret = dev_err_probe(dev, PTR_ERR(data->clk_26m), "Failed to get 26 MHz clock\n");
+-		goto unregister_clks;
+-	}
+-
+ 	ret = of_clk_add_hw_provider(node, of_clk_hw_onecell_get, data->clk_data);
+ 	if (ret) {
+ 		dev_err_probe(dev, ret, "Failed to add clk OF provider\n");
+-		goto put_26m_clk;
++		goto unregister_clks;
+ 	}
+ 
+ 	data->genpd.name = "mfg-top";
+@@ -197,8 +193,6 @@ static int clk_mt8173_mfgtop_probe(struct platform_device *pdev)
+ 	pm_genpd_remove(&data->genpd);
+ del_clk_provider:
+ 	of_clk_del_provider(node);
+-put_26m_clk:
+-	clk_put(data->clk_26m);
+ unregister_clks:
+ 	mtk_clk_unregister_gates(mfg_clks, ARRAY_SIZE(mfg_clks), data->clk_data);
+ put_pm_runtime:
+@@ -217,7 +211,6 @@ static void clk_mt8173_mfgtop_remove(struct platform_device *pdev)
+ 	of_genpd_del_provider(node);
+ 	pm_genpd_remove(&data->genpd);
+ 	of_clk_del_provider(node);
+-	clk_put(data->clk_26m);
+ 	mtk_clk_unregister_gates(mfg_clks, ARRAY_SIZE(mfg_clks), data->clk_data);
+ 	of_node_put(data->parent_pd.np);
+ }
+
+---
+base-commit: df2908090cda368b01ff43709f51890076c56157
+change-id: 20260912-mfgtop-no-clk-api-power-on-a5e0a3a43b33
+
+Best regards,
+--  
+Ryan Brue <ryanbrue.dev@gmail.com>
+
 
