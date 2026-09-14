@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B558BC88E70
-	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Sep 2026 11:58:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0EA1AC88E70
+	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Sep 2026 11:58:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=t8XqS8Upsiv1V81bqiF67/l4JlQpZzp1HXgw9Cory10=; b=EmelqE/D+GtYtnGS+8K7hETjVd
-	bUQpi4lk/grAA6iLQuAo6hGxcqJ1fKbq1qS025vDjXaVUPqw5E/WfO9aUgrYBTjEwRnr0H1urLv7f
-	BKJ/ZtxQhfNFo0833aSYUVg9vlh7a/scTPJpAKtSXNAMHV9kj7LwrnUPCxom0KErE2lEIG6IBq7Si
-	iHjPrezmJlSAoOdiToD3bfHGDHUTHDFi+rHXQJPC7IrqQ2r3an9NEReYBHxPhA9L2oPNuQ6e9uRsu
-	YJBLavcoRT9FW7C3VNT4xGqvQonfCfb8I+nBLr67THU+zczE3bLO/Qa7z/lzbFL/KSuDzGKwAK+6T
-	oyYt83eA==;
+	bh=IKlDnUU9zBjuWIFzs99jXIYiZ1c9wlX77lxbCv40U1Q=; b=mlBQCYyDSGn0DcUV1eLy/9GvT7
+	NXD6itH9EQ/M8LdMZbliUKcmqSt9KbtxBX4piVGtjKEknpUBBHEeR9CCVrJBhzYhT48IOJ/4XY5C7
+	FPVYK5J5LIr+QIYyMJy4bJforqWeRlvORLWoM8ELh95DkZH1VHfR6vFA4Eu8LBNhtGiE/cof4cw88
+	EJ8sttHig+ZLJlKMpDKRIOy0FJrFgDdhz+AGWrBYiJC0uC5uh2AtxWEYkCVfYED1jT3l/y4R4z0Uo
+	7E/UCDlrWHjkYLpNUjwGj+/ROYLXlbaE94HGGiokD4ckePoDVmSfzS0e6/PqGwBXVcJvunmDJx2qn
+	jGuGaKDg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x65Kg-00000003Qxj-3dYO;
-	Mon, 14 Sep 2026 11:58:46 +0000
+	id 1x65Kh-00000003QzE-28Zc;
+	Mon, 14 Sep 2026 11:58:53 +0000
 Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x65KM-00000003Qbj-3wKE;
+	id 1x65KN-00000003QcG-3v5y;
 	Mon, 14 Sep 2026 11:58:29 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1789387105;
-	bh=O/2oOvoxSWzBEMPQaytRMBvL/lJdVIBZpLIZy6kRn3k=;
+	s=mail; t=1789387106;
+	bh=fTieI8NXtjf84c6bHqlL+x2GwkSSrjWo1eGphSfuE7k=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=amHTyUQIyfANJmuuKvrBWXKsZchtWHmQBNz9nJQGCfVG1q7WpXTvTsrH1Ys9Sobq3
-	 d6SvXw2eaKjD+sBWiqT7Ue6wAyLdfIAoAUlGAkIiuLItk321F6yXjT4GhcT41aAF0O
-	 pfrljZdDYTIyzGOrJgTd5ELAc/7RCzXVFGN/GsijlUc4JxrYA0lz1Do79Hm72/Y90s
-	 PCQbahdxWIQMgX1EEHurvEjWyjccL2vUvmd4R99sZWfoxk2Z4Q3VyJ9OKx4GzOhgYF
-	 Uy4iJJgpoHDCSvywtpVk3MMa6OLggIABxMm6CwRns40YH/vLlEl7u3kziBsSjnWnfM
-	 V0WSm/Wl2m6Bw==
+	b=f+vlF9Bc5/maoVeqW7q3XCX4T3QsKwCSEbFhY/QomhWYcxPpmA0WoiGFJtQvPtj67
+	 lr/5nf25LzNkPtva0bn6sfFHrza8DghjplYFpjGSB5rM1F0q0msVxzwGU6cnzGUENf
+	 fE34NXRdDy6YX5RCvkEGOqpCdQi38rD1DJz93g8zhHsIRxHSZMyTsssg42IKqGpgBB
+	 85PYWanwJR1p/8fMCjTDuYN34FCaOlVi6D//Qu2FtAMQ24CfSiWdRfm50HMffmpH3/
+	 Q95anjKKhOlM6s1s4djmMq1aFy7AZIcZjVmMnpy9KueWdwhumdPJEpDa5704CvT00c
+	 R+WIibu9pQ7jQ==
 Received: from IcarusMOD.eternityproject.eu (unknown [100.64.1.21])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 6E3FA17E0FE2;
-	Mon, 14 Sep 2026 13:58:24 +0200 (CEST)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 5EC2F17E08A1;
+	Mon, 14 Sep 2026 13:58:25 +0200 (CEST)
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 To: chunkuang.hu@kernel.org
 Cc: p.zabel@pengutronix.de,
@@ -64,18 +64,19 @@ Cc: p.zabel@pengutronix.de,
 	linux-arm-kernel@lists.infradead.org,
 	kernel@collabora.com,
 	justin.yeh@mediatek.com,
-	jason-jh.lin@mediatek.com
-Subject: [PATCH v7 10/13] drm/mediatek: mtk_dsi: Add support for MT8196
-Date: Mon, 14 Sep 2026 13:58:09 +0200
-Message-ID: <20260914115812.22751-11-angelogioacchino.delregno@collabora.com>
+	jason-jh.lin@mediatek.com,
+	CK Hu <ck.hu@mediatek.com>
+Subject: [PATCH v7 11/13] drm/mediatek: mtk_dsi: Enable PM Runtime on probe
+Date: Mon, 14 Sep 2026 13:58:10 +0200
+Message-ID: <20260914115812.22751-12-angelogioacchino.delregno@collabora.com>
 X-Mailer: git-send-email 2.55.0
 In-Reply-To: <20260914115812.22751-1-angelogioacchino.delregno@collabora.com>
 References: <20260914115812.22751-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260914_045827_173145_76BE934B 
-X-CRM114-Status: GOOD (  11.53  )
+X-CRM114-CacheID: sfid-20260914_045828_155826_E66E694F 
+X-CRM114-Status: GOOD (  11.52  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,125 +91,36 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add support for the new DSI IP found in the Kompanio Ultra MT8196
-SoC and its Dimensity and Genio variants.
+Enable PM Runtime at the end of mtk_dsi_probe() so that the
+mediatek-drm mtk_ddp_comp_power_on() function is able to do
+pm_runtime_resume_and_get() and, analogously, the function
+mtk_ddp_comp_power_off() to pm_runtime_put() for the DSI
+device.
 
-Differently from the older DSI IPs, the one from MT8196 requires
-the initialization of all of the QoS parameters and can make use
-of a DSI SRAM reserved buffer (present also on older SoCs but not
-mandatory on those).
+This makes sure that the power domains for the DSI IP are
+turned on and off when necessary.
 
+Reviewed-by: CK Hu <ck.hu@mediatek.com>
 Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
- drivers/gpu/drm/mediatek/mtk_drm_drv.c |  2 +
- drivers/gpu/drm/mediatek/mtk_dsi.c     | 67 ++++++++++++++++++++++++++
- 2 files changed, 69 insertions(+)
+ drivers/gpu/drm/mediatek/mtk_dsi.c | 4 ++++
+ 1 file changed, 4 insertions(+)
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.c b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-index 08f6be311dd1..aec8da072a41 100644
---- a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-+++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-@@ -828,6 +828,8 @@ static const struct of_device_id mtk_ddp_comp_dt_ids[] = {
- 	  .data = (void *)MTK_DSI },
- 	{ .compatible = "mediatek,mt8189-dsi",
- 	  .data = (void *)MTK_DSI },
-+	{ .compatible = "mediatek,mt8196-dsi",
-+	  .data = (void *)MTK_DSI },
- 	{ }
- };
- 
 diff --git a/drivers/gpu/drm/mediatek/mtk_dsi.c b/drivers/gpu/drm/mediatek/mtk_dsi.c
-index 16bf08bee38e..d930cb3c4d74 100644
+index d930cb3c4d74..b668814b9200 100644
 --- a/drivers/gpu/drm/mediatek/mtk_dsi.c
 +++ b/drivers/gpu/drm/mediatek/mtk_dsi.c
-@@ -373,6 +373,59 @@ static const u16 mtk_dsi_regs_mt8186[DSI_ADV_REG_MAX] = {
- 	[DSI_CMDQ] = 0xd00,
- };
+@@ -1734,6 +1734,10 @@ static int mtk_dsi_probe(struct platform_device *pdev)
+ 	if (ret)
+ 		return dev_err_probe(&pdev->dev, ret, "Failed to request DSI irq\n");
  
-+static const u16 mtk_dsi_regs_main_v2[DSI_MAIN_REG_MAX] = {
-+	[DSI_START] = 0x00,
-+	[DSI_INTEN] = 0x08,
-+	[DSI_INTSTA] = 0x0c,
-+	[DSI_CON_CTRL] = 0x30,
-+	[DSI_MODE_CTRL] = 0x34,
-+	[DSI_TXRX_CTRL] = 0x38,
-+	[DSI_PSCTRL] = 0x3c,
-+	[DSI_VSA_NL] = 0x60,
-+	[DSI_VBP_NL] = 0x64,
-+	[DSI_VFP_NL] = 0x68,
-+	[DSI_VACT_NL] = 0x6c,
-+	[DSI_SIZE_CON] = 0x2c,
-+	[DSI_HSA_WC] = 0x80,
-+	[DSI_HBP_WC] = 0x84,
-+	[DSI_HFP_WC] = 0x88,
-+	[DSI_CMDQ_SIZE] = 0x44,
-+	[DSI_HSTX_CKL_WC] = 0x100,
-+	[DSI_RX_DATA0] = 0xa4,
-+	[DSI_RX_DATA1] = 0xa8,
-+	[DSI_RX_DATA2] = 0xac,
-+	[DSI_RX_DATA3] = 0xb0,
-+	[DSI_RACK] = 0xb4,
-+	[DSI_PHY_LCCON] = 0x7d0,
-+	[DSI_PHY_LD0CON] = 0x7d4,
-+	[DSI_PHY_TIMECON0] = 0x600,
-+	[DSI_PHY_TIMECON1] = 0x604,
-+	[DSI_PHY_TIMECON2] = 0x608,
-+	[DSI_PHY_TIMECON3] = 0x60c,
-+};
++	ret = devm_pm_runtime_enable(dev);
++	if (ret)
++		return ret;
 +
-+static const u16 mtk_dsi_regs_qos_v2[DSI_QOS_REG_MAX] = {
-+	[DSI_QOS_BUF_CON0] = 0x300,
-+	[DSI_QOS_BUF_CON1] = 0x304,
-+	[DSI_QOS_TX_BUF_RW_TIMES] = 0x310,
-+	[DSI_QOS_SODI_HIGH] = 0x314,
-+	[DSI_QOS_SODI_LOW] = 0x318,
-+	[DSI_QOS_PREULTRA_HIGH] = 0x324,
-+	[DSI_QOS_PREULTRA_LOW] = 0x328,
-+	[DSI_QOS_ULTRA_HIGH] = 0x32c,
-+	[DSI_QOS_ULTRA_LOW] = 0x330,
-+	[DSI_QOS_URGENT_HIGH] = 0x334,
-+	[DSI_QOS_URGENT_LOW] = 0x338,
-+	[DSI_QOS_PREURGENT_HIGH] = 0x33c
-+};
-+
-+static const u16 mtk_dsi_regs_mt8196[DSI_ADV_REG_MAX] = {
-+	[DSI_VM_CMD_CON] = 0x110,
-+	[DSI_SHADOW_DEBUG] = 0xd0,
-+	[DSI_CMDQ] = 0x400,
-+	[DSI_VDE] = 0x3f8,
-+};
-+
- static inline struct mtk_dsi *bridge_to_dsi(struct drm_bridge *b)
- {
- 	return container_of(b, struct mtk_dsi, bridge);
-@@ -1743,6 +1796,19 @@ static const struct mtk_dsi_driver_data mt8189_dsi_driver_data = {
- 	.support_per_frame_lp = true,
- };
- 
-+static const struct mtk_dsi_driver_data mt8196_dsi_driver_data = {
-+	.reg_main = mtk_dsi_regs_main_v2,
-+	.reg_qos = mtk_dsi_regs_qos_v2,
-+	.reg_adv = mtk_dsi_regs_mt8196,
-+	.max_link_rate_mbps = 2000,
-+	.dsi_sram_bytes = 32,
-+	.pixels_per_iter = 2,
-+	.num_burst_lines = 8,
-+	.has_size_ctl = true,
-+	.cmdq_long_packet_ctl = true,
-+	.support_per_frame_lp = true,
-+};
-+
- static const struct of_device_id mtk_dsi_of_match[] = {
- 	{ .compatible = "mediatek,mt2701-dsi", .data = &mt2701_dsi_driver_data },
- 	{ .compatible = "mediatek,mt8167-dsi", .data = &mt2701_dsi_driver_data },
-@@ -1751,6 +1817,7 @@ static const struct of_device_id mtk_dsi_of_match[] = {
- 	{ .compatible = "mediatek,mt8186-dsi", .data = &mt8186_dsi_driver_data },
- 	{ .compatible = "mediatek,mt8188-dsi", .data = &mt8188_dsi_driver_data },
- 	{ .compatible = "mediatek,mt8189-dsi", .data = &mt8189_dsi_driver_data },
-+	{ .compatible = "mediatek,mt8196-dsi", .data = &mt8196_dsi_driver_data },
- 	{ /* sentinel */ }
- };
- MODULE_DEVICE_TABLE(of, mtk_dsi_of_match);
+ 	ret = mipi_dsi_host_register(&dsi->host);
+ 	if (ret < 0)
+ 		return dev_err_probe(dev, ret, "Failed to register DSI host\n");
 -- 
 2.55.0
 
