@@ -4,72 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BAA16C88E72
-	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Sep 2026 13:58:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 09C58C88E72
+	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Sep 2026 14:03:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=22m5iAqIpbmJxJVnpa24mBjkDMjZX1GabmsvOm2Bnq0=; b=TPydVsaIaEd70Km0fEuCbpezHO
-	IqPX84FXEZ66mdAcqRLyM+m1dc/e77G6VJ25Bi4UUSiyfWlAphlYH7dPULWXh+a5cmGdE6LGFh6Ww
-	xmxu+kDZGmfdz8io6ybTX7jqmaL+kEMXW4QRAUBYrepN4YRh6QguFStwS2avXXA6dwbGEhlNrRuPj
-	GfyT7KPkDiRZLNCkwjPJfYPx7iKQ4OHEa7rKmC2YWSNPW6JuOiR0NQPntJW0CGNjRtF80jKV6qnhH
-	vhEwMV2xFfVl4lupXqKW4roAi7lz5cTyvoiTz924zqBvbRgwwPdc6hFLbolrjwXsTACMgUyDEuImU
-	eltTLdAQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=DL+4G6Acg94ISi+DE163+7kN27YE1IqIr+s7EV8FG5c=; b=jKOPJ7OobZnrXOSAQaTWrETONE
+	Dk4IoGEcQpoUYhi5mzvK5NpO/K2o0uLvHOfWFSg0Sj85NIxsGW677oO7tQleCBCdvnpaz/K5onrdM
+	/A5ADjLB0dCICNgQ83PfdHpGt2/cgj5M5n7pC1J79Id+Ez6otVXwWkpHtICCqE/k6e5UXowqqncBN
+	Pdf0Gum7/3O03LUTJ8xJ1xsJYdGxf+Z+D0s3ITtZ8durgbWrH9xEr2cIn4VkWqw79Enyt9H0/Vtg1
+	fOXGLvSL9WOpczQDe3fSaIwDvepkbPUcq6rthpnaxYKqwlFBVjt8AYMC+mGWFHJZV1QZQNQFThXXV
+	iDXg40tg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x67Cd-00000003tfa-1O1g;
-	Mon, 14 Sep 2026 13:58:35 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1x67HI-00000003uVI-0uEc;
+	Mon, 14 Sep 2026 14:03:24 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x67CZ-00000003tec-2gO0;
-	Mon, 14 Sep 2026 13:58:32 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1789394309;
-	bh=5PRno6bDN7rPaMhefe1EXNUdAJWaB7rxNicPHWb0KnI=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=II0/Ohlbjh/tfLR/rkI11YDxsqnSLpLp+L9XW6BiNCOzRWEC3mRcQEVoLdXNtXCcA
-	 JTYgYVwNw031zm8hW0Bfk8I59I6BPT/8j86ie4Mgo4jzi7DcK6m3NejaDjdZ6MMM1p
-	 XzWmDJDt/qAdomZoyDki5Kldwq9LGkpcGdj5Ao5iCVE7yn8vJYi66/1AHibngIeZUh
-	 QA64XxXu3Pl4ZP6Wxy5Ul3VP8gpUxzwcfcMZpb0duA2dxuvw+FlmG5s1V4cPcSdf5d
-	 CCVKZdP5gTiY7bPzYpgRrKvLCHk+y6B+Dw79gkN0R15OU/pD37PGw7hcNhzxYS8B7Z
-	 ZKdnLoN1eCrkw==
-Received: from [100.64.1.21] (unknown [100.64.1.21])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange x25519)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id E739917E0700;
-	Mon, 14 Sep 2026 15:58:28 +0200 (CEST)
-Message-ID: <8f1ea5c4-d85a-43eb-8b10-3f80f8343b27@collabora.com>
-Date: Mon, 14 Sep 2026 15:58:28 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
+	id 1x67HF-00000003uUI-3hyM;
+	Mon, 14 Sep 2026 14:03:21 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by tor.source.kernel.org (Postfix) with ESMTP id 5573E601FA;
+	Mon, 14 Sep 2026 14:03:21 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id DC0B61F000FF;
+	Mon, 14 Sep 2026 14:03:20 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1789394601;
+	bh=DL+4G6Acg94ISi+DE163+7kN27YE1IqIr+s7EV8FG5c=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To;
+	b=Bf7gBv/x4x/3XpbK4YwTjNJp1ghIEMrn+A0L+oL2e5vzKc0GuRxW1/OIAJ+2eGnZ9
+	 1luJCDPX0nLz+ZUfKYnvyUo5BPW7kUmWidaqurbigeuaVVS3nD7KDWOU29280Jp33l
+	 BMst1FepH5gttyo3z+5rRzp/xzMNL9NPefeYwkkaXPfQCiKS3PjFiWkOSVfPLcVPvT
+	 jjmbjuUXsDLNrkh3t6tcmSHXNpY2eYC+uu4NvA4r32+PBBCPHqNiRscGYSa1vUm7Ii
+	 fYRDJmyxzDcUS0y/USrZtgOQV1w8lRNSJjlrVQ+PbWyvdIbxWGLSHOMetLdA1v42eN
+	 JBJNA+D22Gk/w==
+Received: by finisterre.sirena.org.uk (Postfix, from userid 1000)
+	id 3124A1AC52F1; Mon, 14 Sep 2026 15:03:18 +0100 (BST)
+Date: Mon, 14 Sep 2026 15:03:18 +0100
+From: Mark Brown <broonie@kernel.org>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: phucduc.bui@gmail.com, Liam Girdwood <lgirdwood@gmail.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>,
+	Cezary Rojewski <cezary.rojewski@intel.com>,
+	Cyril Chao <Cyril.Chao@mediatek.com>,
+	Kuninori Morimoto <kuninori.morimoto.gx@renesas.com>,
+	Dan Carpenter <error27@gmail.com>, cassiogabrielcontato@gmail.com,
+	linux-sound@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
 Subject: Re: [PATCH v2 02/13] ASoC: mediatek: mt8189: Propagate APLL enable
  errors
-To: Mark Brown <broonie@kernel.org>
-Cc: phucduc.bui@gmail.com, Liam Girdwood <lgirdwood@gmail.com>,
- Matthias Brugger <matthias.bgg@gmail.com>, Jaroslav Kysela <perex@perex.cz>,
- Takashi Iwai <tiwai@suse.com>, Cezary Rojewski <cezary.rojewski@intel.com>,
- Cyril Chao <Cyril.Chao@mediatek.com>,
- Kuninori Morimoto <kuninori.morimoto.gx@renesas.com>,
- Dan Carpenter <error27@gmail.com>, cassiogabrielcontato@gmail.com,
- linux-sound@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+Message-ID: <aqf-pqvBNQ21EQZx@sirena.co.uk>
 References: <20260914072842.24420-1-phucduc.bui@gmail.com>
  <20260914072842.24420-3-phucduc.bui@gmail.com>
  <07add31d-5622-40eb-9bcf-f7cb2396fee3@collabora.com>
  <aqf7B_E7_Gv5iK2A@sirena.co.uk>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-In-Reply-To: <aqf7B_E7_Gv5iK2A@sirena.co.uk>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260914_065831_828868_989702A8 
-X-CRM114-Status: GOOD (  11.70  )
+ <8f1ea5c4-d85a-43eb-8b10-3f80f8343b27@collabora.com>
+MIME-Version: 1.0
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="GXuwere7a8FKIrgP"
+Content-Disposition: inline
+In-Reply-To: <8f1ea5c4-d85a-43eb-8b10-3f80f8343b27@collabora.com>
+X-Cookie: My vaseline is RUNNING...
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,37 +83,47 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 9/14/26 15:47, Mark Brown wrote:
-> On Mon, Sep 14, 2026 at 03:22:21PM +0200, AngeloGioacchino Del Regno wrote:
->> On 9/14/26 09:28, phucduc.bui@gmail.com wrote:
-> 
->>> +	ret = regmap_update_bits(afe->regmap, AFE_APLL2_TUNER_CFG,
->>
->> Well, this is a bit of defensive programming here.
->>
->> The regmap pointer is already checked by the previous function call, and this is
->> a regmap over MMIO... and MMIO writes can't fail.
-> 
-> Oh, you sweet summer child :) .
 
-lmao
+--GXuwere7a8FKIrgP
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 
->  Though practically speaking the error
-> handling ends up being the same as if they couldn't fail since if
-> something goes wrong it's generally catastrophic stuff like locking the
-> core up completely so the end result is the same.
+On Mon, Sep 14, 2026 at 03:58:28PM +0200, AngeloGioacchino Del Regno wrote:
+> On 9/14/26 15:47, Mark Brown wrote:
 
-That was also an implicit point (that should've been explicit from me): if anything
-goes horribly wrong here, it means that it already went horribly wrong "some
-function calls ago", and the platform likely already locked up as you suggested.
+> >  Though practically speaking the error
+> > handling ends up being the same as if they couldn't fail since if
+> > something goes wrong it's generally catastrophic stuff like locking the
+> > core up completely so the end result is the same.
 
-In any case, I'm not against doing error checking, it's just about not doing it
-when it's really useless (I'm sure you understand my reasons), and I believe this
-specific case is one of those.
+> That was also an implicit point (that should've been explicit from me): if anything
+> goes horribly wrong here, it means that it already went horribly wrong "some
+> function calls ago", and the platform likely already locked up as you suggested.
 
-That said, should you prefer having error checks in such places... it's not a
-performance path, so I don't really have strong opinions really.
+> In any case, I'm not against doing error checking, it's just about not doing it
+> when it's really useless (I'm sure you understand my reasons), and I believe this
+> specific case is one of those.
 
-Cheers!
-Angelo
+> That said, should you prefer having error checks in such places... it's not a
+> performance path, so I don't really have strong opinions really.
+
+Yeah, I think it's fine and sensible to skip the error checks in cases
+where we can't really do anything constructive about the error.
+
+--GXuwere7a8FKIrgP
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmqn/qUACgkQJNaLcl1U
+h9BGFwf+LZVRHjhM7Nyt8/mV1pd/nUeH1UxU9/++n9Z3LlOZ670g07YD9SuYOfud
+JqZzC5fxhObTL9cZtZDRjzXUyLW475E0JPlyiFo2Ikp9tz2yQ8fpgowKCsdPu26C
+zNqqAtMewvt3WhaEg/cUitd2ud8jMvFcmWlQ1f0VtKahB1qZtdtwCF01RaJ7juyZ
+2jWOORbnrraSfmhPZMSr9JLSaq4miasH5OkUqDGCTsRBERLGG5y61KnFf9zwSyZY
+eDxsuo7zD/c99xXevtcRNDnIDMgoZFRrEHrfM39N3Kosi3Vur5Fng4dommcO3osy
+fbQJLFrr/RbKz7tPNCdJJhyC9zJ6UQ==
+=ZB27
+-----END PGP SIGNATURE-----
+
+--GXuwere7a8FKIrgP--
 
