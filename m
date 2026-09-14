@@ -4,50 +4,50 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1297FC88E64
-	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Sep 2026 13:22:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 98373C88E64
+	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Sep 2026 13:27:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=NknbF6999qcnMNlc+k3ZiS7mVV/PW7NWn8+4+CTjJJ8=; b=3W7EcQ4oyXWvB47nX5oTLgiB0S
-	DLrfkX5L2++kk3lfwcuRO3Wz+nezj6cNkav932YDZR0FXL80i98ELnIWBXTXZz9W1zUlFL44ZaM7t
-	WI4++URfJpHyaHMa6SI41NBwa2FspcrWkGDWqVfHTry9Z4Kiw7gPpwzDc2GKaP37ZdNGsEZ+9Dzds
-	tmSN5nVembVT8a6EfeWTGZxg9BM417v2f63sq31h92h0VL7nts2N936gZ4rPlPp2+pFVaa2YW8ROe
-	lOfEhzlUnZ7Vj2x4L5Wt6dY2PkQf9XN/wYzxXbbto+u4g7rJnJ+QJJJ2c6UdoQN62dSrGlC/NHh08
-	8KDW44Iw==;
+	bh=tlCqoXDW3o2LvZIWaVrno5EG+N0nzh/qf9rQ2xgjTtw=; b=kW6BaJ8puLUVo22cpZFj/pgAUt
+	EMci6ng2j1Z+gl7EPh2UCyqVITZdnKHV/OPKiQiN0aFrDZnBO8wQZA85Zs+wqcW/+rsNAw5ucs640
+	4Xd+JM0mVLRFyZZjiU2/JmiaZa+q9xJ9C9e+IyVHxD8Gp4xitInbGd+2tiebvrRgAgrwQH+CtEPx1
+	Ld6XFxbsTTYt7G2bAafApNxRJbHuiIy/LI3YFTp8jtV5qAWB83meSzYEvu3AeAqZfRreAwlWEzLPd
+	F297TAPu6Uwb8EjYKleOzzmCAoRUgGbImjdZ8EMTC/GzSDUE+1zVXvBOKgCnIUBK/WtVpYwl21eau
+	dH0dpwXA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x66de-00000003jyJ-3wZE;
-	Mon, 14 Sep 2026 13:22:26 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1x66i4-00000003kwv-2FlR;
+	Mon, 14 Sep 2026 13:27:01 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x66dc-00000003jxJ-0WLD;
-	Mon, 14 Sep 2026 13:22:25 +0000
+	id 1x66i2-00000003kvb-1dNA;
+	Mon, 14 Sep 2026 13:26:59 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1789392142;
-	bh=g+NHV6fMPvMB7g7ePyJrULSs0z4hTzYaFjSbJMYyRe8=;
+	s=mail; t=1789392416;
+	bh=3OQriGhrIrMIubXZFC8YrO8oerOhRvRRfIlDcpLUMAo=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=VPD5O4Ipjn6V7JnsslWeosPZd2xLD6c8kLbVWbDVFLeG08VSS81NgTqRNi6R8cML5
-	 XVOFUhrXVQUezVJZeSFZ62/24mhg411q2gc0GP+cXxrKQPxLUki1qOCYxrBhY0BeJG
-	 XhcihTsgEU3bsl6iRXQT+lFvqrFoeTUZIykhkfNveVuwYxu59f9auZNZaKAQPniq/g
-	 Q02tLWHFC7Ho58afsIZ+zs+oPF4UTr2Y+6LVyWE+Nh3W1J580b8BvItH5pwo8gkMxo
-	 5iR4ACRQEZwtltaDD9aZsqQgZMGAdywaaFrj3cswe7N3WZS9WAbRRhai7zXAiUdD44
-	 3uu2t4aLwxIfw==
+	b=DAnx0NH2wBcsJnYGx9ntqPVkBwKJ6/xND0kERYftNf+EJvjhHTV+DjLWcuNeD2NRE
+	 yB1492N1Tipj7TXjNWtxbQWHIXotq41UGujqsSQdp1peAhdUtslT+5O4cLVlKwTVg5
+	 q+bkwXy27Q3OeRWVuah8ZYzTYHN8SOKDPcP7W3iJSyC1Np77uqGXX8Q8phUacHnezq
+	 B6MD1P0DqJDCwqae2VlZ2N3GgsAzWmQXjpwScQdJh150bAe/T0QSTnNh6NXPOhF1TE
+	 JFRt4L+RF5yvtxitnEDFK0m9WUYapJ4jRdTAe4URnH0DnXo7GcLyhTHjZzaR0lAR+m
+	 5eVZUDDsQx/Lg==
 Received: from [100.64.1.21] (unknown [100.64.1.21])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange x25519)
+	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 762BA17E0074;
-	Mon, 14 Sep 2026 15:22:21 +0200 (CEST)
-Message-ID: <07add31d-5622-40eb-9bcf-f7cb2396fee3@collabora.com>
-Date: Mon, 14 Sep 2026 15:22:21 +0200
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id BC56D17E01D1;
+	Mon, 14 Sep 2026 15:26:55 +0200 (CEST)
+Message-ID: <693fea96-1905-49c9-b1c5-3fa1ceb4874a@collabora.com>
+Date: Mon, 14 Sep 2026 15:26:55 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 02/13] ASoC: mediatek: mt8189: Propagate APLL enable
+Subject: Re: [PATCH v2 07/13] ASoC: mediatek: mt8189: Propagate runtime resume
  errors
 To: phucduc.bui@gmail.com, Mark Brown <broonie@kernel.org>
 Cc: Liam Girdwood <lgirdwood@gmail.com>,
@@ -59,15 +59,15 @@ Cc: Liam Girdwood <lgirdwood@gmail.com>,
  linux-sound@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
 References: <20260914072842.24420-1-phucduc.bui@gmail.com>
- <20260914072842.24420-3-phucduc.bui@gmail.com>
+ <20260914072842.24420-8-phucduc.bui@gmail.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Content-Language: en-US
-In-Reply-To: <20260914072842.24420-3-phucduc.bui@gmail.com>
+In-Reply-To: <20260914072842.24420-8-phucduc.bui@gmail.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260914_062224_318520_9255FC87 
-X-CRM114-Status: GOOD (  16.25  )
+X-CRM114-CacheID: sfid-20260914_062658_590976_FB859017 
+X-CRM114-Status: GOOD (  19.55  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,134 +85,100 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 On 9/14/26 09:28, phucduc.bui@gmail.com wrote:
 > From: bui duc phuc <phucduc.bui@gmail.com>
 > 
-> mt8189_apll1_enable() and mt8189_apll2_enable() currently ignore
-> errors from regmap_update_bits() and do not clean up resources when
-> clock enable operations fail.
+> mt8189_afe_runtime_resume() currently ignores errors from regmap
+> operations and mt8189_afe_enable_main_clock().
 > 
-> Propagate these errors and roll back the clocks and tuner state on
-> errors.
+> Propagate these errors and clean up the state before returning the
+> error.
 > 
-> Fixes: dc637ffeed6c ("ASoC: mediatek: mt8189: support audio clock control")
+> Fixes: 7eb153585598 ("ASoC: mediatek: mt8189: add platform driver")
 > Signed-off-by: bui duc phuc <phucduc.bui@gmail.com>
 > ---
 > 
 > Changes in v2:
 >   - Update the names of the goto labels.
 > 
->   sound/soc/mediatek/mt8189/mt8189-afe-clk.c | 78 ++++++++++++++++------
->   1 file changed, 56 insertions(+), 22 deletions(-)
+>   sound/soc/mediatek/mt8189/mt8189-afe-pcm.c | 36 +++++++++++++++++-----
+>   1 file changed, 29 insertions(+), 7 deletions(-)
 > 
-> diff --git a/sound/soc/mediatek/mt8189/mt8189-afe-clk.c b/sound/soc/mediatek/mt8189/mt8189-afe-clk.c
-> index 63e03a40dbbe..aaf4f7921363 100644
-> --- a/sound/soc/mediatek/mt8189/mt8189-afe-clk.c
-> +++ b/sound/soc/mediatek/mt8189/mt8189-afe-clk.c
-> @@ -454,30 +454,47 @@ int mt8189_apll1_enable(struct mtk_base_afe *afe)
+> diff --git a/sound/soc/mediatek/mt8189/mt8189-afe-pcm.c b/sound/soc/mediatek/mt8189/mt8189-afe-pcm.c
+> index 77cf2b604f6c..67fa40afdefa 100644
+> --- a/sound/soc/mediatek/mt8189/mt8189-afe-pcm.c
+> +++ b/sound/soc/mediatek/mt8189/mt8189-afe-pcm.c
+> @@ -2328,24 +2328,46 @@ static int mt8189_afe_runtime_resume(struct device *dev)
 >   
->   	ret = mt8189_afe_enable_top_cg(afe, MT8189_CG_APLL1_CK);
->   	if (ret)
-> -		return ret;
-> +		goto err_clear_mux_setting;
->   
->   	ret = mt8189_afe_enable_top_cg(afe, MT8189_PDN_APLL_TUNER1);
->   	if (ret)
-> -		return ret;
-> +		goto err_disable_apll1_ck;
->   
->   	/* sel 44.1kHz:1, apll_div:7, upper bound:3 */
-> -	regmap_update_bits(afe->regmap, AFE_APLL1_TUNER_CFG,
-> -			   XTAL_EN_128FS_SEL_MASK_SFT | APLL_DIV_MASK_SFT |
-> -			   UPPER_BOUND_MASK_SFT,
-> -			   (0x1 << XTAL_EN_128FS_SEL_SFT) | (7 << APLL_DIV_SFT) |
-> -			   (3 << UPPER_BOUND_SFT));
-> +	ret = regmap_update_bits(afe->regmap, AFE_APLL1_TUNER_CFG,
-> +				 XTAL_EN_128FS_SEL_MASK_SFT | APLL_DIV_MASK_SFT |
-> +				 UPPER_BOUND_MASK_SFT,
-> +				 (0x1 << XTAL_EN_128FS_SEL_SFT) | (7 << APLL_DIV_SFT) |
-> +				 (3 << UPPER_BOUND_SFT));
-> +	if (ret)
-> +		goto err_disable_apll_tuner1;
->   
->   	/* apll1 freq tuner enable */
-> -	regmap_update_bits(afe->regmap, AFE_APLL1_TUNER_CFG,
-> -			   FREQ_TUNER_EN_MASK_SFT,
-> -			   0x1 << FREQ_TUNER_EN_SFT);
-> +	ret = regmap_update_bits(afe->regmap, AFE_APLL1_TUNER_CFG,
-> +				 FREQ_TUNER_EN_MASK_SFT,
-> +				 0x1 << FREQ_TUNER_EN_SFT);
-> +	if (ret)
-> +		goto err_disable_apll_tuner1;
->   
->   	/* audio apll1 on */
->   	ret = mt8189_afe_enable_top_cg(afe, MT8189_AUDIO_APLL1_EN_ON);
->   	if (ret)
-> -		return ret;
-> +		goto err_clear_freq_tuner_en;
->   
->   	return 0;
-> +
-> +err_clear_freq_tuner_en:
-> +	regmap_update_bits(afe->regmap, AFE_APLL1_TUNER_CFG,
-> +			   FREQ_TUNER_EN_MASK_SFT,
-> +			   0x0);
-> +err_disable_apll_tuner1:
-> +	mt8189_afe_disable_top_cg(afe, MT8189_PDN_APLL_TUNER1);
-> +err_disable_apll1_ck:
-> +	mt8189_afe_disable_top_cg(afe, MT8189_CG_APLL1_CK);
-> +err_clear_mux_setting:
-> +	apll1_mux_setting(afe, false);
-> +
-> +	return ret;
->   }
->   
->   void mt8189_apll1_disable(struct mtk_base_afe *afe)
-> @@ -506,30 +523,47 @@ int mt8189_apll2_enable(struct mtk_base_afe *afe)
->   
->   	ret = mt8189_afe_enable_top_cg(afe, MT8189_CG_APLL2_CK);
->   	if (ret)
-> -		return ret;
-> +		goto err_clear_mux_setting;
->   
->   	ret = mt8189_afe_enable_top_cg(afe, MT8189_PDN_APLL_TUNER2);
->   	if (ret)
-> -		return ret;
-> +		goto err_disable_apll2_ck;
->   
->   	/* sel 48kHz: 2, apll_div: 7, upper bound: 3*/
-> -	regmap_update_bits(afe->regmap, AFE_APLL2_TUNER_CFG,
-> -			   XTAL_EN_128FS_SEL_MASK_SFT | APLL_DIV_MASK_SFT |
-> -			   UPPER_BOUND_MASK_SFT,
-> -			   (0x2 << XTAL_EN_128FS_SEL_SFT) | (7 << APLL_DIV_SFT) |
-> -			   (3 << UPPER_BOUND_SFT));
-> +	ret = regmap_update_bits(afe->regmap, AFE_APLL2_TUNER_CFG,
+>   	if (!afe->regmap) {
+>   		dev_warn(afe->dev, "skip regmap\n");
 
-Well, this is a bit of defensive programming here.
+In the probe function, there's a call to devm_regmap_init_mmio(), and that's being
+correctly checked for error as in, if any, probe will fail.
 
-The regmap pointer is already checked by the previous function call, and this is
-a regmap over MMIO... and MMIO writes can't fail.
+So... during suspend or resume or anywhere else in this driver really, the regmap
+pointer can't be NULL.
+The right thing to do here would be to just remove the useless check.
 
-> +				 XTAL_EN_128FS_SEL_MASK_SFT | APLL_DIV_MASK_SFT |
-> +				 UPPER_BOUND_MASK_SFT,
-> +				 (0x2 << XTAL_EN_128FS_SEL_SFT) | (7 << APLL_DIV_SFT) |
-> +				 (3 << UPPER_BOUND_SFT));
-> +	if (ret)
-> +		goto err_disable_apll_tuner2;
->   
->   	/* apll2 freq tuner enable */
-> -	regmap_update_bits(afe->regmap, AFE_APLL2_TUNER_CFG,
-> -			   FREQ_TUNER_EN_MASK_SFT,
-> -			   0x1 << FREQ_TUNER_EN_SFT);
-> +	ret = regmap_update_bits(afe->regmap, AFE_APLL2_TUNER_CFG,
-> +				 FREQ_TUNER_EN_MASK_SFT,
-> +				 0x1 << FREQ_TUNER_EN_SFT);
-> +	if (ret)
-> +		goto err_disable_apll_tuner2;
-
-Same here.
-...and it's the same in some other commits of this series.
-
-Though, good job about fixing the failure paths, that's good stuff.
+Mind you, this comment applies to some other commits in this series as well.
 
 Cheers,
 Angelo
 
+> -		return 0;
+> +		ret = -EINVAL;
+> +		goto err_disable_reg_rw_clk;
+>   	}
+>   
+>   	regcache_cache_only(afe->regmap, false);
+> -	regcache_sync(afe->regmap);
+> +	ret = regcache_sync(afe->regmap);
+> +	if (ret)
+> +		goto err_set_cache_only;
+>   
+>   	/* set audio 26M request */
+> -	regmap_update_bits(afe->regmap, AFE_SPM_CONTROL_REQ, 0x1, 0x1);
+> -	regmap_update_bits(afe->regmap, AFE_CBIP_CFG0, 0x1, 0x1);
+> +	ret = regmap_update_bits(afe->regmap, AFE_SPM_CONTROL_REQ, 0x1, 0x1);
+> +	if (ret)
+> +		goto err_set_cache_only;
+> +
+> +	ret = regmap_update_bits(afe->regmap, AFE_CBIP_CFG0, 0x1, 0x1);
+> +	if (ret)
+> +		goto err_clear_26m_req;
+>   
+>   	/* force cpu use 8_24 format when writing 32bit data */
+> -	regmap_update_bits(afe->regmap, AFE_MEMIF_CON0,
+> -			   CPU_HD_ALIGN_MASK_SFT, 0 << CPU_HD_ALIGN_SFT);
+> +	ret = regmap_update_bits(afe->regmap, AFE_MEMIF_CON0,
+> +				 CPU_HD_ALIGN_MASK_SFT, 0 << CPU_HD_ALIGN_SFT);
+> +	if (ret)
+> +		goto err_clear_26m_req;
+>   
+>   	/* enable AFE */
+> -	mt8189_afe_enable_main_clock(afe);
+> +	ret = mt8189_afe_enable_main_clock(afe);
+> +	if (ret)
+> +		goto err_clear_26m_req;
+>   
+>   	return 0;
+> +
+> +err_clear_26m_req:
+> +	regmap_update_bits(afe->regmap,
+> +			   AFE_SPM_CONTROL_REQ, 0x1, 0x0);
+> +err_set_cache_only:
+> +	regcache_cache_only(afe->regmap, true);
+> +err_disable_reg_rw_clk:
+> +	mt8189_afe_disable_reg_rw_clk(afe);
+> +
+> +	return ret;
+>   }
+>   
+>   static int mt8189_afe_component_probe(struct snd_soc_component *component)
+
+
+-- 
+AngeloGioacchino Del Regno
+Senior Software Engineer
+
+Collabora Ltd.
+Platinum Building, St John's Innovation Park, Cambridge CB4 0DS, UK
+Registered in England & Wales, no. 5513718
 
