@@ -4,149 +4,129 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1FCCEC88E6E
-	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Sep 2026 09:17:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E9930C88E64
+	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Sep 2026 09:26:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From
-	:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=c162nsAv+WgH5DBdIOz9opPhre+CgPQ3J8rcJUeSGws=; b=pKUL+VwelMWNMkbt7HsaEWqE9p
-	d7fNFDk3kGSAQFEfUN619l0o1K3bypr2gbA+JR7AigtPNdFpPP6K/Xt3pJwqPKqTiirWxQMvOSFf5
-	oRB+3lJfwma5+FNF1XThLX/oMF/a3fxBwZoWcSZ6kZdhW9F7GmNBNmTZGc6uOfjrgNjDaIJaXBTVT
-	MpuRGdP6jIMF2C99RwCQv2+kJvVz1vnQ8oq9PTsCFMUN7vcTQ6HVNWYKnYZc0SUQXJz5Htg4BQzNi
-	Qa9KEInFSvXv6rjBwQY2YiDrnrvfzWn78yd//hRibWoQaKwI8wwgELHrHgaLhsIXXonY69hhv5QrQ
-	LmgjICQA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Date:References:In-Reply-To:Subject:Cc:To:From:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Tb/KsUxM9jxkMjSRJHpE7KiQY8ZPLkB6sQ8Hi6kwrEk=; b=jJyezbyiRzedmI4RKLIy5DoVdY
+	AOqd/YOH6f/wP2OayXR8EaHoQ6J9PWAeBcnx/PU1A8yDVgjXSkN3rNvpbnvCkmb03z3WiEVcdwXjN
+	9UahEI19FSIlX4YBF2px6I9goCAkBtTPhFSCjCm/ZnEjSYwrfXZAVQZHOVH3sF1ckdz0aJR4FNv8r
+	p0YHy8UWwSChoOEebf7pDDu6sU7YW7Fjyyh2V5K1wy5UfPKCJUvOJg/84SsFD1DSskC0/aimIE88Q
+	x9GrCYa2ywunkIwTGWTY9yhdziQ34ohuz2JnNFTt8ahgbNgNqCF/EE7szsThvQ/HY3bT5/obh7ltW
+	kQ/S/+JQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x62on-00000002tfA-0aEQ;
-	Mon, 14 Sep 2026 09:17:41 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1x62wx-00000002weF-0P8H;
+	Mon, 14 Sep 2026 09:26:07 +0000
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x62ok-00000002teh-2ai5;
-	Mon, 14 Sep 2026 09:17:38 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id 5AC944053C;
-	Mon, 14 Sep 2026 09:17:38 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id D10821F000FF;
-	Mon, 14 Sep 2026 09:17:19 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1789377458;
-	bh=c162nsAv+WgH5DBdIOz9opPhre+CgPQ3J8rcJUeSGws=;
-	h=Date:Subject:To:References:From:In-Reply-To;
-	b=EJj4jtxHyjAfrzi3/mqsrA/t06zEhysC8g9J9sGOtiCEK7zAT+AtlZln3EJM34ZD7
-	 p8rvkMcJjKvqKc9ejAfXNHOkpo/yECvujPFNk7ojFOuDyGneuxyHjlAxSM7pOyNUDU
-	 qrhgolW66BW5o2FhP4cqUlGdlbISYrmqjOSTg5Uh2aYk2YoPZEkmcTadV67pTxz3mR
-	 X8mvYAOIy5SPeu0eAdKHoocUv0xpMgrH5Ei9lQrHEiE1Q8ItNNax+z2t1cVEgsWIjA
-	 vX1Qx+vfJC2g/I1mvTaCYNK4ZgxPSzsRAEEcQN/x1Jpm8xm1fR0jOHARWlgjDlpAn/
-	 G5Ug+H8M0ZSbQ==
-Message-ID: <911f404f-ca3d-4c91-9e59-8e486bda9456@kernel.org>
-Date: Mon, 14 Sep 2026 11:17:16 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH net-next] dt-bindings: net: Use consistent indentation in
- the example
-To: Claudiu Manoil <claudiu.manoil@nxp.com>,
- Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>,
- Rob Clark <robin.clark@oss.qualcomm.com>, Dmitry Baryshkov
- <lumag@kernel.org>, Abhinav Kumar <abhinav.kumar@linux.dev>,
- Jessica Zhang <jesszhan0024@gmail.com>, Sean Paul <sean@poorly.run>,
- Marijn Suijten <marijn.suijten@somainline.org>,
- David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>, Justin Chen <justin.chen@broadcom.com>,
- Florian Fainelli <florian.fainelli@broadcom.com>,
- Andrew Lunn <andrew+netdev@lunn.ch>, "David S. Miller"
- <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
- Hans Ulli Kroll <ulli.kroll@googlemail.com>,
- Linus Walleij <linusw@kernel.org>, =?UTF-8?B?Q2zDqW1lbnQgTMOpZ2Vy?=
- <clement.leger@bootlin.com>, Vladimir Oltean <olteanv@gmail.com>,
- Heiner Kallweit <hkallweit1@gmail.com>, Russell King
- <linux@armlinux.org.uk>, Kunihiko Hayashi <hayashi.kunihiko@socionext.com>,
- Masami Hiramatsu <mhiramat@kernel.org>, Felix Fietkau <nbd@nbd.name>,
- Lorenzo Bianconi <lorenzo@kernel.org>, Ryder Lee <ryder.lee@mediatek.com>,
- Shayne Chen <shayne.chen@mediatek.com>, Sean Wang <sean.wang@mediatek.com>,
- Johannes Berg <johannes@sipsolutions.net>,
- Matthias Brugger <matthias.bgg@gmail.com>,
+	id 1x62wt-00000002wcJ-2lTF
+	for linux-mediatek@lists.infradead.org;
+	Mon, 14 Sep 2026 09:26:05 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1789377961;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 in-reply-to:in-reply-to:references:references;
+	bh=Tb/KsUxM9jxkMjSRJHpE7KiQY8ZPLkB6sQ8Hi6kwrEk=;
+	b=dPaZuwUONbmnfqkF/nudUj5tYk5kvDFpPnwRsllmZDFgigEh8Z6z6OBmZZtEDmQtKneTdv
+	RKISS2irpGQOky8W/CAmM0pTh3qVUx6AxAghUYbneRouHQiZMA7xBqtEkN2GDjjUonRWxI
+	c8aDSzV14eA9yB5JC/NpwY2XoBUBbd8=
+Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
+ [209.85.128.71]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-573-pFqFrtfJPRi8vLryatq9MQ-1; Mon, 14 Sep 2026 05:23:56 -0400
+X-MC-Unique: pFqFrtfJPRi8vLryatq9MQ-1
+X-Mimecast-MFC-AGG-ID: pFqFrtfJPRi8vLryatq9MQ_1789377835
+Received: by mail-wm1-f71.google.com with SMTP id 5b1f17b1804b1-49953abe51fso16675965e9.1
+        for <linux-mediatek@lists.infradead.org>; Mon, 14 Sep 2026 02:23:56 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1789377835; x=1789982635;
+        h=content-type:mime-version:message-id:date:references:in-reply-to
+         :subject:cc:to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject
+         :date:message-id:reply-to:content-type;
+        bh=Tb/KsUxM9jxkMjSRJHpE7KiQY8ZPLkB6sQ8Hi6kwrEk=;
+        b=GtBi8n1DaYZlkgQUjlRSIVHoGLC/wBclo7bML3lOfV1womleHDK4yBq2Smt0ocNMbF
+         +hf+w+xbaEmxkcPKvVUFm4TnzJmXPKDlmrFx0Wvy52MTJSDswkRJ3IO68NIT05jyutUi
+         xHghsX2yERwaFIfqobHoxhzuEG8eG98S7gCc8bnkFG35VfFJR2WOknqwetiOfgKZzTdm
+         gYQ/w2YpF22o4yuoINFx6DEEjnrvM9AYfPkb9dVex3DiFzcJLgptAywpghbB/hdV6c7A
+         WPq64N+giYuxl1Ba1qKsUPSe0SCkaO34Dc+/SU1Zpn21Dk/x6XEBxL3ZgWlT7BhZ9WGS
+         1nKw==
+X-Forwarded-Encrypted: i=1; AKwUvBwBuhhWA8oothrFKgiKQbbcNfrwpB46d3voCeUm2RFTi3/dFnbqfjurE4Y88k3FtichTHixMMkd1WD52GGGGQ==@lists.infradead.org
+X-Gm-Message-State: AFuF++mpv2lgptgSmD/ptUJerErhZPWzvBC6kV7Q1mH4FH9ycCsLNwN3
+	obBigrwyeRNdSE9I4IIerAQpqWI/ZXc5su8Vci4v64rItyQpK9B5ANSReM2XMgT0gK1cZRQHXVm
+	kziZ7pWDlN6HbtEnafnKccSewQ21rBAkvjl++E2NF3Z6qe2kWJ1wKnBNVRQ9zWZbuX5GZdLzutg
+	==
+X-Gm-Gg: AYBFou0blVRLDYc3J3TxzGBY2syc1XxA3nG5/5M85LaFSVxCI1WsobiGyDMeJ1c4zym
+	fNIEWCsJp7FDzk7fhRnpkqdCusKZ+CgjZtpSHN0uEl2iEOCTZQP9jGRnIUWJokyEIHQZ1uOG3an
+	pcrSlz9fJ+yfNZ/oPZlPZbrEY1DO1ZeGsPVNW1xPTjfUh8EOec+JWZBVHthMGTR989eW2I0GnfC
+	gTzBHf3l9BMD49tSX3vsJLVGjuRbSJihDa7d5JCAJSnT+cBjoxxziyFI6zyFZavmHFJPXB32gqH
+	ejfyL3n3tD0eAeodDw3XjYNdQAyBJ+eTU2LDf4jN30AadshIk51l/X74Few46+b57JC0kBnQg0q
+	qJcgg3Ob//DDnFfrG3/XdJkfp/nwgjGq8ujUzdtoLwaw4BRTs+OXXQdUwTg==
+X-Received: by 2002:a05:600c:628f:b0:49d:1df6:2592 with SMTP id 5b1f17b1804b1-49e7a66ae3dmr16857805e9.21.1789377835279;
+        Mon, 14 Sep 2026 02:23:55 -0700 (PDT)
+X-Received: by 2002:a05:600c:628f:b0:49d:1df6:2592 with SMTP id 5b1f17b1804b1-49e7a66ae3dmr16857405e9.21.1789377834915;
+        Mon, 14 Sep 2026 02:23:54 -0700 (PDT)
+Received: from localhost (62-151-111-63.jazzfree.ya.com. [62.151.111.63])
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-49e6576122bsm399519375e9.2.2026.09.14.02.23.54
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 14 Sep 2026 02:23:54 -0700 (PDT)
+From: Javier Martinez Canillas <javierm@redhat.com>
+To: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>, Chen-Yu Tsai
+ <wens@kernel.org>, David Airlie <airlied@gmail.com>, Simona Vetter
+ <simona@ffwll.ch>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann
+ <tzimmermann@suse.de>, Rob Herring <robh@kernel.org>, Krzysztof Kozlowski
+ <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, Jernej Skrabec
+ <jernej.skrabec@gmail.com>, Samuel Holland <samuel@sholland.org>, Liu Ying
+ <victor.liu@nxp.com>, Andrzej Hajda <andrzej.hajda@intel.com>, Neil
+ Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>,
+ Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, Jonas Karlman
+ <jonas@kwiboo.se>, Luca Ceresoli <luca.ceresoli@bootlin.com>, Frank Li
+ <Frank.Li@nxp.com>, Sascha Hauer <s.hauer@pengutronix.de>, Pengutronix
+ Kernel Team <kernel@pengutronix.de>, Fabio Estevam <festevam@gmail.com>,
+ Francesco Dolcini <francesco@dolcini.it>, Philipp Zabel
+ <p.zabel@pengutronix.de>, Chun-Kuang Hu <chunkuang.hu@kernel.org>, Rob
+ Clark <robin.clark@oss.qualcomm.com>, Dmitry Baryshkov <lumag@kernel.org>,
+ Abhinav Kumar <abhinav.kumar@linux.dev>, Jessica Zhang
+ <jesszhan0024@gmail.com>, Sean Paul <sean@poorly.run>, Marijn Suijten
+ <marijn.suijten@somainline.org>, Marcus Folkesson
+ <marcus.folkesson@gmail.com>, Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+ Alexandre Torgue <alexandre.torgue@foss.st.com>, Yannick Fertre
+ <yannick.fertre@foss.st.com>, Raphael Gallais-Pou
+ <raphael.gallais-pou@foss.st.com>, Philippe Cornu
+ <philippe.cornu@foss.st.com>, Matthias Brugger <matthias.bgg@gmail.com>,
  AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Jeff Johnson <jjohnson@kernel.org>,
- Richard Cochran <richardcochran@gmail.com>,
- Geert Uytterhoeven <geert+renesas@glider.be>,
- Magnus Damm <magnus.damm@gmail.com>,
- Yongxing Mou <yongxing.mou@oss.qualcomm.com>, Robert Foss
- <rfoss@kernel.org>, Abel Vesa <abelvesa@kernel.org>,
- "G. Jaya Kumaran" <vineetha.g.jaya.kumaran@intel.com>,
- Alexandre Belloni <alexandre.belloni@bootlin.com>,
- Alex Elder <elder@kernel.org>, Siddharth Vadapalli <s-vadapalli@ti.com>,
- Roger Quadros <rogerq@kernel.org>,
- "linux-arm-msm@vger.kernel.org" <linux-arm-msm@vger.kernel.org>,
- "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>,
- "freedreno@lists.freedesktop.org" <freedreno@lists.freedesktop.org>,
- "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "bcm-kernel-feedback-list@broadcom.com"
- <bcm-kernel-feedback-list@broadcom.com>,
- "netdev@vger.kernel.org" <netdev@vger.kernel.org>,
- "linux-arm-kernel@lists.infradead.org"
- <linux-arm-kernel@lists.infradead.org>,
- "linux-renesas-soc@vger.kernel.org" <linux-renesas-soc@vger.kernel.org>,
- "linux-wireless@vger.kernel.org" <linux-wireless@vger.kernel.org>,
- "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
- "ath10k@lists.infradead.org" <ath10k@lists.infradead.org>
-References: <20260913122910.99457-3-krzysztof.kozlowski@oss.qualcomm.com>
- <GV2PR04MB11740B2D119032B8B12B2FA9396BB2@GV2PR04MB11740.eurprd04.prod.outlook.com>
-From: Krzysztof Kozlowski <krzk@kernel.org>
-Content-Language: en-US
-Autocrypt: addr=krzk@kernel.org; keydata=
- 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
-In-Reply-To: <GV2PR04MB11740B2D119032B8B12B2FA9396BB2@GV2PR04MB11740.eurprd04.prod.outlook.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+ Adrien Grassein <adrien.grassein@gmail.com>, Russell King
+ <linux@armlinux.org.uk>, Simha BN <simhavcs@gmail.com>, CK Hu
+ <ck.hu@mediatek.com>, Jitao shi <jitao.shi@mediatek.com>, Yongxing Mou
+ <yongxing.mou@oss.qualcomm.com>, Abel Vesa <abelvesa@kernel.org>, Chris
+ Morgan <macromorgan@hotmail.com>, dri-devel@lists.freedesktop.org,
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-sunxi@lists.linux.dev, linux-kernel@vger.kernel.org,
+ imx@lists.linux.dev, linux-mediatek@lists.infradead.org,
+ linux-arm-msm@vger.kernel.org, freedreno@lists.freedesktop.org,
+ linux-stm32@st-md-mailman.stormreply.com
+Cc: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
+Subject: Re: [PATCH 1/2] dt-bindings: display: Use consistent indentation in
+ the example
+In-Reply-To: <20260913123331.100293-3-krzysztof.kozlowski@oss.qualcomm.com>
+References: <20260913123331.100293-3-krzysztof.kozlowski@oss.qualcomm.com>
+Date: Mon, 14 Sep 2026 11:23:52 +0200
+Message-ID: <87pkyg1907.fsf@ocarina.mail-host-address-is-not-set>
+MIME-Version: 1.0
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: hc6UZMiTPPp-jwN_id56WinGk1rxTnctv6UhSBFj-V8_1789377835
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260914_022603_774245_82ECA492 
+X-CRM114-Status: UNSURE (   8.04  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -161,17 +141,23 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 14/09/2026 11:14, Claudiu Manoil wrote:
-> 
-> 
-> 
-> NXP Confidential
+Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com> writes:
 
-No. Please fix your corpo systems or switch kindly to @linux.dev
-https://korg.docs.kernel.org/linuxdev.html
+> Correct indentation in the examples to consistent 2- or 4-spaces
+> indentation to fix dt-check-style warnings ("example 0
+> [indent-consistent] indent mismatch ...").  Preferred is 4-spaces, but
+> re-indenting entire example just for that is too much churn.
+>
+> Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
+> ---
 
-You just top-posted with "confidential" and then quoted entire email.
+Reviewed-by: Javier Martinez Canillas <javierm@redhat.com>
 
+-- 
 Best regards,
-Krzysztof
+
+Javier Martinez Canillas
+Core Platforms
+Red Hat
+
 
