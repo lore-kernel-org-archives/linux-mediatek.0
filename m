@@ -4,124 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1DB51C88E5C
-	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Sep 2026 02:22:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A660CC88E64
+	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Sep 2026 04:36:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=3tEjgAAbHV/rvWkki0Kg0WXaYwrNIughZ7yXhBTXOcY=; b=0mM6qNiKpB27DQLH+KB+NAosT0
-	Yh8WbCtr5A0GHexwqFNsjOQTF32EFXdkhq8w4RKabflGKLLzikrl+boHUZ1/1KSFRSLquP5oFRNsR
-	K+Ko+mwqPao1EJyHTdOqpdNzre9tZ2sl8g2TM48GHpb0JEVj1Wnc3kQ0g2z2JhDqIiLzjXD5X8sku
-	VmyE4Cxz24qtSp/rQ6zAKOMPADCRSX9yWds1gpKQ7DL3Th0ANh/BR25sBUaSMBzrBI2nrRjlgS4sI
-	pknaPAtomZ2p6Th62y42YYd476v+fq1I8t0JG2wQpnyntpgJ9E4rN8LbEPYP9fO6pvmkW25X6j1G9
-	WY0emvhA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=TkwUOSDSp3ryK6bSwYygdEKHO8xo9+O2b5YUmOfUHzE=; b=jUD1f0j271rxirmzpwnpcbQ9Ah
+	aKlZIg7AQCKCDYERNtI98yVz1Va3o8SFhCpNvM9P3j6mIOIp8T5NK4AUAe7vtBjQpzdDxa7ekGAMR
+	ntmjWkRgcN77F5p5e4eklOg/e50gw8wdl4d7T/WT79qPzSf+aERwQMt+DGqEuLOpo2/AaF1SLdX0y
+	L/ZxvXTltXwfeX8hvPrCvN0CxX28wAUsBRuPlzp5lf0vSxVGNN5l+31AdgoJ/TmyX4NzyPc8HJ3Qh
+	focsF9nmvNDP5qumjotA/AAUxRhrU4XNA7kATNTHDIs6h1uvW9/GcCba0J2ceIUgG1V5FZBT56UCx
+	IY96e4Gw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x5wKt-00000002Ai3-093D;
-	Mon, 14 Sep 2026 02:22:23 +0000
-Received: from mail-koreacentralazon11023076.outbound.protection.outlook.com ([40.107.44.76] helo=SEYPR02CU001.outbound.protection.outlook.com)
+	id 1x5yQL-00000002KOo-3ZyO;
+	Mon, 14 Sep 2026 04:36:09 +0000
+Received: from relay.yourmailgateway.de ([185.244.194.184])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x5wKp-00000002Ah0-3Pxu;
-	Mon, 14 Sep 2026 02:22:21 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=n2fAuA5nFwsL/ms606WSMHYPGwe2Jo1bAW0OzmLFFeEevxdH0uPPC/qGtzOl1SkaDlKISO/oOe/m24F5yfij7KMD8gw4l2oIrM4BZI1xKsnRELgUOPUYdaLXR0avOCGaVWAKr+epSVocNO6K7iVCeokSjsaiqz2Qa1obeX+Z5SXMYhwIgr4Kr9lQSeR2stig8Wv2OcpBx50jH3fnr0oVaVppfgFtmYoelz/HHQXk55y4Q2BTa7PobKHLpjviAv/AynWXdeGAMqc6sqPiGC0ewZg9LkorgN9DQOJ+pq7fipRO7o7qTEvPpSTMHadwl6eU8d53W/Uzd28I2HeLxItfvA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=3tEjgAAbHV/rvWkki0Kg0WXaYwrNIughZ7yXhBTXOcY=;
- b=NOUhGfUNcuXZdRyjRe2T14EVyuvupn8+xuYTO+i+vcLQFj8v6x+e5X6Eycwh5Bgm9DCWhrpdi08EcbSpw8UCgANnYfOKptcIY9UoDwS6TX9cE6799Dvsx0haIt6tuBORsbej0le4pbjpSXJnktuFk/bAAaDxTdxVV3UhUR4RFlM8NUDsOBLfxYv3xEyMepwlCHEOAYV20APl0STRl2zwjcsgTyzhEaDMpu1+T1Gs9cMHn0WBsx7u8cLT50tWaFDXjk2inWi8a890bSuXpVR7kWneKu0bankhJTklxH+rkTZq/MDRbFWRCdcwc/3r8u+S3Vtwql7AZwBS31kdXlsOxg==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
- 222.71.101.198) smtp.rcpttodomain=amd.com smtp.mailfrom=cixtech.com;
- dmarc=bestguesspass action=none header.from=cixtech.com; dkim=none (message
- not signed); arc=none (0)
-Received: from SG2PR02CA0124.apcprd02.prod.outlook.com (2603:1096:4:188::9) by
- TYNPR06MB8997.apcprd06.prod.outlook.com (2603:1096:405:3c4::19) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.406.12; Mon, 14 Sep
- 2026 02:21:56 +0000
-Received: from SG1PEPF000082E8.apcprd02.prod.outlook.com
- (2603:1096:4:188:cafe::2b) by SG2PR02CA0124.outlook.office365.com
- (2603:1096:4:188::9) with Microsoft SMTP Server (version=TLS1_3,
- cipher=TLS_AES_256_GCM_SHA384) id 15.21.406.12 via Frontend Transport; Mon,
- 14 Sep 2026 02:21:56 +0000
-X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 222.71.101.198)
- smtp.mailfrom=cixtech.com; dkim=none (message not signed)
- header.d=none;dmarc=bestguesspass action=none header.from=cixtech.com;
-Received-SPF: Pass (protection.outlook.com: domain of cixtech.com designates
- 222.71.101.198 as permitted sender) receiver=protection.outlook.com;
- client-ip=222.71.101.198; helo=smtprelay.cixcomputing.com; pr=C
-Received: from smtprelay.cixcomputing.com (222.71.101.198) by
- SG1PEPF000082E8.mail.protection.outlook.com (10.167.240.9) with Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.21.428.7 via Frontend Transport; Mon, 14 Sep 2026 02:21:56 +0000
-Received: from gary-System-Product-Name (unknown [172.16.64.196])
-	by smtprelay.cixcomputing.com (Postfix) with ESMTPSA id B5031427F209;
-	Mon, 14 Sep 2026 10:21:55 +0800 (CST)
-Date: Mon, 14 Sep 2026 10:21:54 +0800
-From: Gary Yang <gary.yang@cixtech.com>
-To: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
-Cc: Linus Walleij <linusw@kernel.org>, Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Dong Aisheng <aisheng.dong@nxp.com>,
-	Fabio Estevam <festevam@gmail.com>, Frank Li <Frank.Li@nxp.com>,
-	Jacky Bai <ping.bai@nxp.com>,
-	Pengutronix Kernel Team <kernel@pengutronix.de>,
-	NXP S32 Linux Team <s32@nxp.com>,
-	Sascha Hauer <s.hauer@pengutronix.de>,
-	Sean Wang <sean.wang@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Bartosz Golaszewski <brgl@kernel.org>,
-	Bjorn Andersson <andersson@kernel.org>,
-	Michal Simek <michal.simek@amd.com>,
-	Fugang Duan <fugang.duan@cixtech.com>,
-	CIX Linux Kernel Upstream Group <cix-kernel-upstream@cixtech.com>,
-	Del Regno <angelogioacchino.delregno@somainline.org>,
-	Rahul Tanwar <rahul.tanwar@linux.intel.com>,
-	Mukesh Ojha <mukesh.ojha@oss.qualcomm.com>,
-	Jingyi Wang <jingyi.wang@oss.qualcomm.com>,
-	Neil Armstrong <neil.armstrong@linaro.org>,
-	Krishna Potthuri <sai.krishna.potthuri@amd.com>,
-	linux-gpio@vger.kernel.org, devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org, imx@lists.linux.dev,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org
-Subject: Re: [PATCH] dt-bindings: pinctrl: Use consistent indentation in the
- example
-Message-ID: <aqdaQgd2zD7p5GDU@gary-System-Product-Name>
-References: <20260913123223.99893-2-krzysztof.kozlowski@oss.qualcomm.com>
+	id 1x5yQI-00000002KNT-3CQz;
+	Mon, 14 Sep 2026 04:36:08 +0000
+Received: from relay01-mors.netcup.net (localhost [127.0.0.1])
+	by relay01-mors.netcup.net (Postfix) with ESMTPS id 4hjslz4GJDz9KSt;
+	Mon, 14 Sep 2026 06:35:59 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=leemhuis.info;
+	s=key2; t=1789360559;
+	bh=l/3VpX+XI0mzcW52NigVjmYMhh6INWYXFx0JGEuAyv8=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=WRhGlbO9qY9QfRs4S606PpeWRg0XE7+ZPlCpSm1AU2rrDD5Lfo5WXz+VzPr3RpSY8
+	 G65jTa5AkmCnWvKBcxnLMDOnuIZ1sNmb2EIyJS5BehmfpL11Ug4cOFP6FtxsT2fq0X
+	 QpU4+vu48tLXRSb6hTeHRDG+xGOAPXgnpUoHY6XpjyhQ33qc6kJMf/uwf58dT0i3mz
+	 VyoAu1Nu9YvNLucsFZhFN9JTbaTp6K7yv38nFzpNdqWwRqEG4mDQcqIOX7MynLTsFH
+	 2WvSpKOTuM9mi2YhW5yr8WOuTHI71/tEarn9mvNKHyu6ZCKBDkIEW+bKADBTaNqXz9
+	 24qwmHiqI4wIw==
+Received: from policy02-mors.netcup.net (unknown [46.38.225.35])
+	by relay01-mors.netcup.net (Postfix) with ESMTPS id 4hjslz3Y6bz7wsn;
+	Mon, 14 Sep 2026 06:35:59 +0200 (CEST)
+Received: from mxe9fb.netcup.net (unknown [10.243.12.53])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange ECDHE (P-256) server-signature RSA-PSS (2048 bits) server-digest SHA256)
+	(No client certificate requested)
+	by policy02-mors.netcup.net (Postfix) with ESMTPS id 4hjslx4hd8z8svW;
+	Mon, 14 Sep 2026 06:35:57 +0200 (CEST)
+Received: from [IPV6:2a02:8108:8984:1d00:a0cf:1912:4be:477f] (unknown [IPv6:2a02:8108:8984:1d00:a0cf:1912:4be:477f])
+	by mxe9fb.netcup.net (Postfix) with ESMTPSA id 805E05F9D2;
+	Mon, 14 Sep 2026 06:35:56 +0200 (CEST)
+Authentication-Results: mxe9fb;
+        spf=pass (sender IP is 2a02:8108:8984:1d00:a0cf:1912:4be:477f) smtp.mailfrom=regressions@leemhuis.info smtp.helo=[IPV6:2a02:8108:8984:1d00:a0cf:1912:4be:477f]
+Received-SPF: pass (mxe9fb: connection is authenticated)
+Message-ID: <2fd03569-f1c4-4c02-97ed-c74f4cd7f809@leemhuis.info>
+Date: Mon, 14 Sep 2026 06:35:56 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-In-Reply-To: <20260913123223.99893-2-krzysztof.kozlowski@oss.qualcomm.com>
-X-EOPAttributedMessage: 0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: SG1PEPF000082E8:EE_|TYNPR06MB8997:EE_
-X-MS-Office365-Filtering-Correlation-Id: 8ba692ce-7cbb-437c-4565-08df1206f2fe
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|23010399003|7416014|376014|1800799024|82310400026|36860700016|22082099003|18002099003|3023799007|10067099003|56012099006;
-X-Microsoft-Antispam-Message-Info: aWkdQLddGLsxkMstMEUMdsyDfguVp4YV/4ik0FSJS9fiVZE0JS/94ZLu+1Bzj3OI0ZS66oWOgZ2TH5XYPjVvK+8m5rmniOM0ZjL+kna9wC8V/qeUPZXpuFvRphGzFGMwSAtvCdu1MTY6D+0zHgCqsrc5aZAxO/8ksnQgaQs4p/WLkpbEWqLFqtGheEp4oitKI8fy0VGDaFmdGq+MeDNpmrFH46rTfnkQr2hemBMaKgoVIHwXxgKqt8UrRE/AlnGpMOeL0we2rlrEZ99IsBBIq5FMA/pxhOrBh9Wi6n9j4zKR0X3XkaD8pTtb3XjhLZIQjzBgrbbfvyLTZC9Qj/49cn+bW09wj8MmPSC1kXXnJM/U0QQGffwtq7hePeXboZ9o9s3gpr8/pGCowrCTKjgRt6/ep8Q6nJ94EwppGQ7brvCVwiG4H6i+Nuq9LnNoQi5xClXWdZ+xwu3NagjGjiB+N/98rhnIbDDB2/8Vv6TascRfKawtJb2Vj+MslnBtl9fUzsQwlyTnusKJGkcY23CrmxH4qD62UlGSJ/MmSru0hGlWbultUdmOfNM4hxC1DfeuTLOIBI9FnJ5KYJZMajBNL+ggkBgEkQ5Hx1fbhlQaRSbfK7Qt0GWIzky5k9IFdsdXFp8MOJSPNgJDumznryVNoNPudl31FsPs18hErSsYV11DOTTvp4hqMCWhdwMLn8NUfPsxoZbbZZ07QtI3VNKj+g==
-X-Forefront-Antispam-Report: CIP:222.71.101.198;CTRY:CN;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:smtprelay.cixcomputing.com;PTR:InfoDomainNonexistent;CAT:NONE;SFS:(13230040)(23010399003)(7416014)(376014)(1800799024)(82310400026)(36860700016)(22082099003)(18002099003)(3023799007)(10067099003)(56012099006);DIR:OUT;SFP:1102;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: F/79DqLaazRwUbD86GoJJ7cC8g4ftG4fKHYIMyvQWnpFbvcZ1Dpjzu46frkHE6frKlGOX9itotiyrcWeuRWeqmn4BH+Kd8If6rw5QeTkrQ9wBMrPrr6k4JFy4xEqA31EeAcBc9wdknEVjibm7FGI2RgBJLfPGFSCc+IJN1+QcrQalV9+zu8we7zcFruF54tXn1umPiy0uwiZT/2NONNYiy0rmYgtBB+0XrldmXS0qkSGWmauPVM4CsL5y9VrMy0wHvF/2/0qjNEXGGmGkEcZIIh6T1aaJZ2oaWYf3Xkh4fKummeAyYC5uVSKMVT7KvstKQm65CF6KNreG+oIj/ibI+cthHLVhoITOJ9jkMvntYI+zLTSj3XQsyIUtSo64dFu8vMzlm6jdLVF2yfGckDPRLhfzeHMxwA7/4klbCQEPyDEQGNtantIJ5teSe9rEGOh
-X-OriginatorOrg: cixtech.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 14 Sep 2026 02:21:56.3984
- (UTC)
-X-MS-Exchange-CrossTenant-Network-Message-Id: 8ba692ce-7cbb-437c-4565-08df1206f2fe
-X-MS-Exchange-CrossTenant-Id: 0409f77a-e53d-4d23-943e-ccade7cb4811
-X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=0409f77a-e53d-4d23-943e-ccade7cb4811;Ip=[222.71.101.198];Helo=[smtprelay.cixcomputing.com]
-X-MS-Exchange-CrossTenant-AuthSource: SG1PEPF000082E8.apcprd02.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Anonymous
-X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: TYNPR06MB8997
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH wireless] wifi: mt76: mt792x: fix NULL dereference in ACPI
+ SAR init during probe
+To: Devin Wittmayer <lucid_duck@justthetip.ca>, Felix Fietkau <nbd@nbd.name>,
+ Lorenzo Bianconi <lorenzo@kernel.org>
+Cc: Klara Modin <klarasmodin@gmail.com>,
+ Charlie-cy Wu <Charlie-cy.Wu@mediatek.com>, JB Tsai <jb.tsai@mediatek.com>,
+ Sean Wang <sean.wang@mediatek.com>, Ryder Lee <ryder.lee@mediatek.com>,
+ Shayne Chen <shayne.chen@mediatek.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ linux-wireless@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ regressions@lists.linux.dev
+References: <20260825181712.28548-1-lucid_duck@justthetip.ca>
+From: Thorsten Leemhuis <regressions@leemhuis.info>
+Content-Language: de-DE, en-US
+In-Reply-To: <20260825181712.28548-1-lucid_duck@justthetip.ca>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+X-PPP-Message-ID: <178936055709.725840.16914483602007956628@mxe9fb.netcup.net>
+X-NC-CID: DBseGpMhWIEgVtQ5BXljnzJ0Jmciv99+44qwUxKmBeXs+d6quD4=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260913_192219_992718_1BF2C0D9 
-X-CRM114-Status: GOOD (  15.30  )
+X-CRM114-CacheID: sfid-20260913_213607_149677_7974084B 
+X-CRM114-Status: GOOD (  27.22  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -136,305 +96,80 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 2026-09-13 14:32, Krzysztof Kozlowski wrote:
-
-> EXTERNAL EMAIL
+On 8/25/26 20:17, Devin Wittmayer wrote:
+> Some laptops carry a MediaTek power table in their firmware, and the
+> driver reads it to set a transmit limit for each frequency range. It
+> only fills in the ranges themselves when it registers the device.
 > 
-> Correct indentation in the examples to consistent 2- or 4-spaces
-> indentation to fix dt-check-style warnings ("example 0
-> [indent-consistent] indent mismatch ...").  Preferred is 4-spaces, but
-> re-indenting entire example just for that is too much churn.
+> The startup step that does this existed already, but it never programmed
+> anything. These two commits made it run a regulatory update instead,
+> which sets the limits on the way through, long before registration. So on
+> a machine that has the table the driver reads through an empty pointer
+> and the interface never appears:
+
+For the record: Linus pulled this directly from the list into mainline
+yesterday after I pointed to this patch in a small regression report. I
+did that, as I had seen multiple people reporting a regression who
+confirmed that this patch fixed things for them.
+
+Bypassing subsystems like this has obvious downsides and risks; hence,
+if that got something on the wrong track, please speak up -- or ideally
+send patches to set things straight again in mainline.
+
+https://git.kernel.org/torvalds/c/7825de3f75d184612d77655669a04ea0da252c17
+/ 7825de3f75d184 ("wifi: mt76: mt792x: fix NULL dereference in ACPI SAR
+init during probe") [v7.3-rc3]
+
+Ciao, Thorsten
+
+>   BUG: kernel NULL pointer dereference, address: 0000000000000004
+>   RIP: 0010:mt792x_init_acpi_sar_power
+>   Call Trace:
+>    mt7921_set_tx_sar_pwr
+>    mt7921_mcu_regd_update
+>    mt7921_regd_update
+>    mt7921_run_firmware
+>    mt7921e_mcu_init
+>    mt7921_init_work
 > 
-> Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
-
-For the cix part:
-
-Reviewed-by: Gary Yang <gary.yang@cixtech.com>
-
+> Skip it when the ranges are missing. They are applied again once the
+> device is up, which is where they came from before.
+> 
+> Reported-by: Klara Modin <klarasmodin@gmail.com>
+> Closes: https://lore.kernel.org/linux-wireless/aoyxqHYvSuaBeubf@soda.int.kasm.eu/
+> Fixes: 9b80bd9cab40 ("wifi: mt76: mt7921: add regulatory wiphy self manager support")
+> Fixes: e9f3f1cc133f ("wifi: mt76: mt7925: add regulatory wiphy self manager support")
+> Signed-off-by: Devin Wittmayer <lucid_duck@justthetip.ca>
 > ---
->  .../pinctrl/awinic,aw9523-pinctrl.yaml        | 50 +++++++++----------
->  .../bindings/pinctrl/cix,sky1-pinctrl.yaml    |  2 +-
->  .../bindings/pinctrl/fsl,imx7d-pinctrl.yaml   |  8 +--
->  .../bindings/pinctrl/intel,lgm-io.yaml        | 14 +++---
->  .../pinctrl/mediatek,mt8183-pinctrl.yaml      |  4 +-
->  .../pinctrl/mediatek,mt8195-pinctrl.yaml      |  2 +-
->  .../bindings/pinctrl/qcom,hawi-tlmm.yaml      |  4 +-
->  .../bindings/pinctrl/qcom,kaanapali-tlmm.yaml |  4 +-
->  .../bindings/pinctrl/qcom,maili-tlmm.yaml     |  4 +-
->  .../bindings/pinctrl/semtech,sx1501q.yaml     |  4 +-
->  .../bindings/pinctrl/xlnx,zynqmp-pinctrl.yaml | 46 ++++++++---------
->  11 files changed, 71 insertions(+), 71 deletions(-)
 > 
-> diff --git a/Documentation/devicetree/bindings/pinctrl/awinic,aw9523-pinctrl.yaml b/Documentation/devicetree/bindings/pinctrl/awinic,aw9523-pinctrl.yaml
-> index 98c310a3c63c..1c09c0fd4930 100644
-> --- a/Documentation/devicetree/bindings/pinctrl/awinic,aw9523-pinctrl.yaml
-> +++ b/Documentation/devicetree/bindings/pinctrl/awinic,aw9523-pinctrl.yaml
-> @@ -108,32 +108,32 @@ examples:
->          #size-cells = <0>;
+> Reproduced on both chips before sending, an MT7922 and an MT7925, and the
+> fix clears both. Neither machine here ships a vendor power table, so I
+> supplied one through an ACPI override in the initrd. It also wants recent
+> firmware. The June builds do not turn on self-managed regulatory and
+> nothing happens; the builds now in linux-firmware do, and then it dies
+> exactly as reported with no interface at all. Patched, both come up and
+> scan normally, and the injected limits still show through in the power
+> table afterwards, so the skip does not lose them.
 > 
->          aw9523: gpio-expander@58 {
-> -                compatible = "awinic,aw9523-pinctrl";
-> -                reg = <0x58>;
-> -                interrupt-parent = <&tlmm>;
-> -                interrupts = <50 IRQ_TYPE_EDGE_FALLING>;
-> -                gpio-controller;
-> -                #gpio-cells = <2>;
-> -                gpio-ranges = <&tlmm 0 0 16>;
-> -                interrupt-controller;
-> -                #interrupt-cells = <2>;
-> -                reset-gpios = <&tlmm 51 GPIO_ACTIVE_HIGH>;
-> +            compatible = "awinic,aw9523-pinctrl";
-> +            reg = <0x58>;
-> +            interrupt-parent = <&tlmm>;
-> +            interrupts = <50 IRQ_TYPE_EDGE_FALLING>;
-> +            gpio-controller;
-> +            #gpio-cells = <2>;
-> +            gpio-ranges = <&tlmm 0 0 16>;
-> +            interrupt-controller;
-> +            #interrupt-cells = <2>;
-> +            reset-gpios = <&tlmm 51 GPIO_ACTIVE_HIGH>;
+> With that table still in place and the fix absent, backing out the mt7921
+> commit on its own also boots clean, so the table is not what causes this.
 > 
-> -                keyboard-matrix-col-pins {
-> -                        pins = "gpio8", "gpio9", "gpio10", "gpio11",
-> -                               "gpio12", "gpio13", "gpio14", "gpio15";
-> -                        function = "gpio";
-> -                        input-disable;
-> -                        output-low;
-> -                };
-> +            keyboard-matrix-col-pins {
-> +                pins = "gpio8", "gpio9", "gpio10", "gpio11",
-> +                       "gpio12", "gpio13", "gpio14", "gpio15";
-> +                function = "gpio";
-> +                input-disable;
-> +                output-low;
-> +            };
+>  drivers/net/wireless/mediatek/mt76/mt792x_acpi_sar.c | 3 ++-
+>  1 file changed, 2 insertions(+), 1 deletion(-)
 > 
-> -                keyboard-matrix-row-pins {
-> -                        pins = "gpio0", "gpio1", "gpio2", "gpio3",
-> -                               "gpio4", "gpio5", "gpio6", "gpio7";
-> -                        function = "gpio";
-> -                        bias-pull-up;
-> -                        drive-open-drain;
-> -                        input-enable;
-> -                };
-> +            keyboard-matrix-row-pins {
-> +                pins = "gpio0", "gpio1", "gpio2", "gpio3",
-> +                       "gpio4", "gpio5", "gpio6", "gpio7";
-> +                function = "gpio";
-> +                bias-pull-up;
-> +                drive-open-drain;
-> +                input-enable;
-> +            };
->          };
->      };
-> diff --git a/Documentation/devicetree/bindings/pinctrl/cix,sky1-pinctrl.yaml b/Documentation/devicetree/bindings/pinctrl/cix,sky1-pinctrl.yaml
-> index 8ed53496c386..4ab1f00775cc 100644
-> --- a/Documentation/devicetree/bindings/pinctrl/cix,sky1-pinctrl.yaml
-> +++ b/Documentation/devicetree/bindings/pinctrl/cix,sky1-pinctrl.yaml
-> @@ -86,6 +86,6 @@ examples:
->                  pinmux = <CIX_PAD_GPIO012_FUNC_GPIO012>;
->                  bias-pull-up;
->                  drive-strength = <8>;
-> -           };
-> +            };
->          };
->      };
-> diff --git a/Documentation/devicetree/bindings/pinctrl/fsl,imx7d-pinctrl.yaml b/Documentation/devicetree/bindings/pinctrl/fsl,imx7d-pinctrl.yaml
-> index 948160cfbc5f..7275215918bb 100644
-> --- a/Documentation/devicetree/bindings/pinctrl/fsl,imx7d-pinctrl.yaml
-> +++ b/Documentation/devicetree/bindings/pinctrl/fsl,imx7d-pinctrl.yaml
-> @@ -106,8 +106,8 @@ examples:
->        fsl,input-sel = <&iomuxc>;
-> 
->        pinctrl_gpio_lpsr: gpio1-grp {
-> -          fsl,pins =
-> -            <0x0008 0x0038 0x0000 0x0 0x0 0x59>,
-> -            <0x000C 0x003C 0x0000 0x0 0x0 0x59>;
-> -        };
-> +        fsl,pins =
-> +          <0x0008 0x0038 0x0000 0x0 0x0 0x59>,
-> +          <0x000C 0x003C 0x0000 0x0 0x0 0x59>;
-> +      };
->      };
-> diff --git a/Documentation/devicetree/bindings/pinctrl/intel,lgm-io.yaml b/Documentation/devicetree/bindings/pinctrl/intel,lgm-io.yaml
-> index 1144ca2896e3..96c405711f65 100644
-> --- a/Documentation/devicetree/bindings/pinctrl/intel,lgm-io.yaml
-> +++ b/Documentation/devicetree/bindings/pinctrl/intel,lgm-io.yaml
-> @@ -64,13 +64,13 @@ examples:
->          reg = <0xe2880000 0x100000>;
-> 
->          uart0-pins {
-> -             pins = <64>, /* UART_RX0 */
-> -                    <65>; /* UART_TX0 */
-> -             function = "CONSOLE_UART0";
-> -             pinmux = <1>,
-> -                      <1>;
-> -             groups = "CONSOLE_UART0";
-> -          };
-> +            pins = <64>, /* UART_RX0 */
-> +                   <65>; /* UART_TX0 */
-> +            function = "CONSOLE_UART0";
-> +            pinmux = <1>,
-> +                     <1>;
-> +            groups = "CONSOLE_UART0";
-> +        };
->      };
-> 
->  ...
-> diff --git a/Documentation/devicetree/bindings/pinctrl/mediatek,mt8183-pinctrl.yaml b/Documentation/devicetree/bindings/pinctrl/mediatek,mt8183-pinctrl.yaml
-> index 3db2438fadc7..4bcee7741fcd 100644
-> --- a/Documentation/devicetree/bindings/pinctrl/mediatek,mt8183-pinctrl.yaml
-> +++ b/Documentation/devicetree/bindings/pinctrl/mediatek,mt8183-pinctrl.yaml
-> @@ -221,8 +221,8 @@ examples:
-> 
->              i2c0_pins_a: i2c0-pins {
->                  pins1 {
-> -                  pinmux = <PINMUX_GPIO48__FUNC_SCL5>,
-> -                           <PINMUX_GPIO49__FUNC_SDA5>;
-> +                    pinmux = <PINMUX_GPIO48__FUNC_SCL5>,
-> +                             <PINMUX_GPIO49__FUNC_SDA5>;
->                      mediatek,pull-up-adv = <3>;
->                      drive-strength-microamp = <1000>;
->                  };
-> diff --git a/Documentation/devicetree/bindings/pinctrl/mediatek,mt8195-pinctrl.yaml b/Documentation/devicetree/bindings/pinctrl/mediatek,mt8195-pinctrl.yaml
-> index 33cb71775db9..0bcafa78acb2 100644
-> --- a/Documentation/devicetree/bindings/pinctrl/mediatek,mt8195-pinctrl.yaml
-> +++ b/Documentation/devicetree/bindings/pinctrl/mediatek,mt8195-pinctrl.yaml
-> @@ -234,7 +234,7 @@ examples:
->    - |
->      #include <dt-bindings/pinctrl/mt8195-pinfunc.h>
->      #include <dt-bindings/interrupt-controller/arm-gic.h>
-> -    #
-> +
->      pio: pinctrl@10005000 {
->        compatible = "mediatek,mt8195-pinctrl";
->        reg = <0x10005000 0x1000>,
-> diff --git a/Documentation/devicetree/bindings/pinctrl/qcom,hawi-tlmm.yaml b/Documentation/devicetree/bindings/pinctrl/qcom,hawi-tlmm.yaml
-> index 3b3961789860..2b1354e212e5 100644
-> --- a/Documentation/devicetree/bindings/pinctrl/qcom,hawi-tlmm.yaml
-> +++ b/Documentation/devicetree/bindings/pinctrl/qcom,hawi-tlmm.yaml
-> @@ -113,8 +113,8 @@ examples:
->          #interrupt-cells = <2>;
-> 
->          qup-uart7-state {
-> -          pins = "gpio62", "gpio63";
-> -          function = "qup1_se7";
-> +            pins = "gpio62", "gpio63";
-> +            function = "qup1_se7";
->          };
->      };
->  ...
-> diff --git a/Documentation/devicetree/bindings/pinctrl/qcom,kaanapali-tlmm.yaml b/Documentation/devicetree/bindings/pinctrl/qcom,kaanapali-tlmm.yaml
-> index 53534a07a1f0..ea7d4768483d 100644
-> --- a/Documentation/devicetree/bindings/pinctrl/qcom,kaanapali-tlmm.yaml
-> +++ b/Documentation/devicetree/bindings/pinctrl/qcom,kaanapali-tlmm.yaml
-> @@ -120,8 +120,8 @@ examples:
->          #interrupt-cells = <2>;
-> 
->          qup-uart7-state {
-> -          pins = "gpio62", "gpio63";
-> -          function = "qup1_se7";
-> +            pins = "gpio62", "gpio63";
-> +            function = "qup1_se7";
->          };
->      };
->  ...
-> diff --git a/Documentation/devicetree/bindings/pinctrl/qcom,maili-tlmm.yaml b/Documentation/devicetree/bindings/pinctrl/qcom,maili-tlmm.yaml
-> index 64fe90b2391b..a0b56adb3388 100644
-> --- a/Documentation/devicetree/bindings/pinctrl/qcom,maili-tlmm.yaml
-> +++ b/Documentation/devicetree/bindings/pinctrl/qcom,maili-tlmm.yaml
-> @@ -113,8 +113,8 @@ examples:
->          #interrupt-cells = <2>;
-> 
->          qup-uart7-state {
-> -          pins = "gpio62", "gpio63";
-> -          function = "qup1_se7";
-> +            pins = "gpio62", "gpio63";
-> +            function = "qup1_se7";
->          };
->      };
->  ...
-> diff --git a/Documentation/devicetree/bindings/pinctrl/semtech,sx1501q.yaml b/Documentation/devicetree/bindings/pinctrl/semtech,sx1501q.yaml
-> index 39d7dad3313b..f7a7551d7f50 100644
-> --- a/Documentation/devicetree/bindings/pinctrl/semtech,sx1501q.yaml
-> +++ b/Documentation/devicetree/bindings/pinctrl/semtech,sx1501q.yaml
-> @@ -244,8 +244,8 @@ examples:
->              interrupt-controller;
-> 
->              gpio1-cfg {
-> -                  pins = "gpio1";
-> -                  bias-pull-up;
-> +                pins = "gpio1";
-> +                bias-pull-up;
->              };
->          };
->      };
-> diff --git a/Documentation/devicetree/bindings/pinctrl/xlnx,zynqmp-pinctrl.yaml b/Documentation/devicetree/bindings/pinctrl/xlnx,zynqmp-pinctrl.yaml
-> index ce66fd15ff9c..300d38f87f2d 100644
-> --- a/Documentation/devicetree/bindings/pinctrl/xlnx,zynqmp-pinctrl.yaml
-> +++ b/Documentation/devicetree/bindings/pinctrl/xlnx,zynqmp-pinctrl.yaml
-> @@ -317,37 +317,37 @@ examples:
->      #include <dt-bindings/pinctrl/pinctrl-zynqmp.h>
->      zynqmp_firmware: zynqmp-firmware {
->          pinctrl0: pinctrl {
-> -          compatible = "xlnx,zynqmp-pinctrl";
-> +            compatible = "xlnx,zynqmp-pinctrl";
-> 
-> -          pinctrl_uart1_default: uart1-default {
-> -             mux {
-> -                 groups = "uart0_4_grp", "uart0_5_grp";
-> -                 function = "uart0";
-> -             };
-> +            pinctrl_uart1_default: uart1-default {
-> +                mux {
-> +                    groups = "uart0_4_grp", "uart0_5_grp";
-> +                    function = "uart0";
-> +                };
-> 
-> -             conf {
-> -                groups = "uart0_4_grp";
-> -                slew-rate = <SLEW_RATE_SLOW>;
-> -                power-source = <IO_STANDARD_LVCMOS18>;
-> -             };
-> +                conf {
-> +                    groups = "uart0_4_grp";
-> +                    slew-rate = <SLEW_RATE_SLOW>;
-> +                    power-source = <IO_STANDARD_LVCMOS18>;
-> +                };
-> 
-> -             conf-rx {
-> -                pins = "MIO18";
-> -                bias-pull-up;
-> -             };
-> +                conf-rx {
-> +                    pins = "MIO18";
-> +                    bias-pull-up;
-> +                };
-> 
-> -             conf-tx {
-> -                pins = "MIO19";
-> -                bias-disable;
-> -                input-schmitt-disable;
-> -             };
-> -          };
-> +                conf-tx {
-> +                    pins = "MIO19";
-> +                    bias-disable;
-> +                    input-schmitt-disable;
-> +                };
-> +            };
->          };
->      };
-> 
->      uart1 {
-> -         pinctrl-names = "default";
-> -         pinctrl-0 = <&pinctrl_uart1_default>;
-> +        pinctrl-names = "default";
-> +        pinctrl-0 = <&pinctrl_uart1_default>;
->      };
-> 
->  ...
-> --
-> 2.53.0
-> 
+> diff --git a/drivers/net/wireless/mediatek/mt76/mt792x_acpi_sar.c b/drivers/net/wireless/mediatek/mt76/mt792x_acpi_sar.c
+> index 946dd7956e4a..b468051fbe68 100644
+> --- a/drivers/net/wireless/mediatek/mt76/mt792x_acpi_sar.c
+> +++ b/drivers/net/wireless/mediatek/mt76/mt792x_acpi_sar.c
+> @@ -323,7 +323,8 @@ int mt792x_init_acpi_sar_power(struct mt792x_phy *phy, bool set_default)
+>  	const struct cfg80211_sar_capa *capa = phy->mt76->hw->wiphy->sar_capa;
+>  	int i;
+>  
+> -	if (!phy->acpisar || !((struct mt792x_acpi_sar *)phy->acpisar)->dyn)
+> +	if (!capa || !phy->acpisar ||
+> +	    !((struct mt792x_acpi_sar *)phy->acpisar)->dyn)
+>  		return 0;
+>  
+>  	/* When ACPI SAR enabled in HW, we should apply rules for .frp
+
 
