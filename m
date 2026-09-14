@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C73A7C88E77
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C3C36C88E75
 	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Sep 2026 11:58:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
@@ -12,37 +12,37 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=JGyG1xBrnbtl27Jc2+9ofen3qKDirECTBevHFHFWqig=; b=lP5dQt6lg8NfiPlGBfLeVV2Yo6
-	we1FMK8LRqtwlksUVoCAd7v9YMKF+MwmGHkELjp9IHR4vYBqvHN9kDi+K7h+Z7xLAAWPnT9hsEg2g
-	wcagvcw5WS7IJm1eG7UBBEys1LI1BsUjy3GcD7BR9pqjuz4SdfZPe6GYLSDS7QnwLvL70f0fdTSXo
-	cMytpn9cMw5VDuT2B8hy3cNGTqFMAeXzzIzEgGlASNyjeI8T9bCcwaNwpv0lM8pSSUhLnyP3aYRe8
-	bSdlt5joNCvItUc8QXwF1Z1xhkB/7OlIU6ve/Xv1ZMTG8GagtMpZAjfALLC0uny2UfnnWC3AkudEP
-	aJtY4R3Q==;
+	bh=TxDQ+1SR7xIOtuSpD48f9OTcmXnIM9C0DYGIuyJjetM=; b=zfeRQt/BmdD/zA3Lko/W84q3wd
+	+i12KJQhQyDTHopE1GGdZLvljioWsdiGbI2WnmbuSUIi0/NP+qJ58Ltv1u7uZzphZBSriBO1TMEO7
+	JizVfwsl5R0WH75lJLXZWg4De7jAUqgHcnDg0HWGIWN2ymwPNX9gAYPydW/tqwtqPtlk43KUrNNUT
+	/kMq3sv6uw7VL0cr7QyXGcQkJsGxh4nV/rgpbjdNTpFmKYLMIE7PGKCOWPYo4wv2oI5E7c9MpkbbQ
+	pI5lEi5dLTVzop8uDkD+fNvLhaaOWRxpQvHgQqtnKrqkWbNZSJyGfPb9VFI9f5GnF7yhsLB5ogoRh
+	yI+DF3qg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x65KT-00000003Qin-0P8J;
+	id 1x65KT-00000003QjW-1F1D;
 	Mon, 14 Sep 2026 11:58:33 +0000
 Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x65KH-00000003QWu-3I9q;
-	Mon, 14 Sep 2026 11:58:23 +0000
+	id 1x65KI-00000003QWv-1Ett;
+	Mon, 14 Sep 2026 11:58:24 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1789387099;
-	bh=qyYNtF6Szv6pA6AN5mfvaTW4lHJbi9aApiqokgMWKXA=;
+	s=mail; t=1789387100;
+	bh=6aKjiiiV3r+u+ttJGtnTE0DCvbNuV5aY0+blwbJlC64=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=YksS3IlZd4rVuwZdzbjgVB/yasXhw+vs0PRd4z2N5oyZ/ZVC2auJuqjMMzEIhT0oc
-	 T9GCCIzfF/NUFt963PSe8wGAxf2iStu0EsSJJ9zQGs+4yb9b252sZ0lmESWlN8rc6j
-	 llSL+zXQd/5LNEWDYyYeXycyCEptq2/dtMW8ks47WNx9awOB7pWYwhw/rGmjSdZ5Y7
-	 sooaUfyDExrnJWGEQuAiXM/h5J7pfkXv8NyghT0BEuMBd6Rakh7aosx+7O8M4J41uM
-	 WbQR6rmTIQLtXJXZnmN+D6Kla/HxfdoWQteC4dXI+Vq0lb4GXvSJxu0480R1dZyOzG
-	 zeDDHg+IYOnMw==
+	b=F2rXkx/MXSeVq8NUzxC+FRcoTf9H+UjQ1CwvwvWegUmXkCoHKcUoHB4nS5wawTeYx
+	 J4I5yqMoYAnHTFOebqyjtYrOIz1yowolzL92kmj8h22jxHDwwEqy7ITSQb3qxijFxj
+	 KrDtBBLlCL0vuPUwEaNoJ61AfXcnM0bbt9qU1PDywW9U11QCdF/c2esR+d0TN7oZLh
+	 qEUEOrHa2h7N0mELQccgpTUJZR0RCH2riX6C26GLLUxUrS0rJgDssXtN8qYKbV43iw
+	 PvGP1XfExIsj/bTZIQUlDpw7Qju+gTLHiwvLnrfD2dIL/C/0OL5yCFDOvUV10TAxm0
+	 /km4oP29cFl5g==
 Received: from IcarusMOD.eternityproject.eu (unknown [100.64.1.21])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id BF6A017E0CF4;
-	Mon, 14 Sep 2026 13:58:18 +0200 (CEST)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id B887817E0CFC;
+	Mon, 14 Sep 2026 13:58:19 +0200 (CEST)
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 To: chunkuang.hu@kernel.org
 Cc: p.zabel@pengutronix.de,
@@ -66,17 +66,17 @@ Cc: p.zabel@pengutronix.de,
 	justin.yeh@mediatek.com,
 	jason-jh.lin@mediatek.com,
 	CK Hu <ck.hu@mediatek.com>
-Subject: [PATCH v7 04/13] drm/mediatek: mtk_dsi: Cleanup encoder if reset fails during bind
-Date: Mon, 14 Sep 2026 13:58:03 +0200
-Message-ID: <20260914115812.22751-5-angelogioacchino.delregno@collabora.com>
+Subject: [PATCH v7 05/13] drm/mediatek: mtk_dsi: Enable interrupt at component bind time
+Date: Mon, 14 Sep 2026 13:58:04 +0200
+Message-ID: <20260914115812.22751-6-angelogioacchino.delregno@collabora.com>
 X-Mailer: git-send-email 2.55.0
 In-Reply-To: <20260914115812.22751-1-angelogioacchino.delregno@collabora.com>
 References: <20260914115812.22751-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260914_045821_976318_32363D87 
-X-CRM114-Status: GOOD (  11.64  )
+X-CRM114-CacheID: sfid-20260914_045822_518412_C3FB4B32 
+X-CRM114-Status: GOOD (  18.47  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,42 +91,103 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-When binding the dsi component, the .bind() callback initializes
-the encoder, and then will optionally trigger resets.
+Having the DSI interrupt enabled before actually binding the DSI
+component to the display controller driver is both useless and
+dangerous: the main purpose of this interrupt is to signal CMD
+done, LP RX data ready, or VideoMode done, or to reset the HW
+engine if this doesn't come.
 
-Should that last operation fail, binding will as well fail but
-the encoder is never removed from the DRM encoder list and if
-the driver gets removed afterwards, this may crash the kernel
-because of an use-after-free condition.
+Should this interrupt come too late (during probe), the HW will
+be reset only at the next occurrence of a timeout, which slows
+down boot and may render artifacts to the DSI display.
 
-In order to avoid that, cleanup the encoder upon reset failure.
+Moreover, clearing the DSI interrupt while the display controller
+is not ready yet, may result in an interrupt storm.
 
-Fixes: 605c83753d97 ("drm/mediatek: mtk_dsi: Reset the dsi0 hardware")
+In order to prevent this from happening, request the interrupt
+with IRQF_NO_AUTOEN, and enable it only when binding DSI to its
+display controller component master.
+
 Reviewed-by: CK Hu <ck.hu@mediatek.com>
 Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
- drivers/gpu/drm/mediatek/mtk_dsi.c | 8 +++++++-
- 1 file changed, 7 insertions(+), 1 deletion(-)
+ drivers/gpu/drm/mediatek/mtk_dsi.c | 24 +++++++++++++-----------
+ 1 file changed, 13 insertions(+), 11 deletions(-)
 
 diff --git a/drivers/gpu/drm/mediatek/mtk_dsi.c b/drivers/gpu/drm/mediatek/mtk_dsi.c
-index 97b8a91874f5..0b167b4411e5 100644
+index 0b167b4411e5..ef1638e77f00 100644
 --- a/drivers/gpu/drm/mediatek/mtk_dsi.c
 +++ b/drivers/gpu/drm/mediatek/mtk_dsi.c
-@@ -1095,7 +1095,13 @@ static int mtk_dsi_bind(struct device *dev, struct device *master, void *data)
- 	if (ret)
+@@ -225,6 +225,7 @@ struct mtk_dsi {
+ 	int refcount;
+ 	bool enabled;
+ 	bool lanes_ready;
++	int irq;
+ 	u32 irq_data;
+ 	wait_queue_head_t irq_wait_queue;
+ 	const struct mtk_dsi_driver_data *driver_data;
+@@ -1101,6 +1102,8 @@ static int mtk_dsi_bind(struct device *dev, struct device *master, void *data)
  		return ret;
+ 	}
  
--	return device_reset_optional(dev);
-+	ret = device_reset_optional(dev);
-+	if (ret) {
-+		drm_encoder_cleanup(&dsi->encoder);
-+		return ret;
-+	}
++	enable_irq(dsi->irq);
 +
-+	return 0;
+ 	return 0;
  }
  
- static void mtk_dsi_unbind(struct device *dev, struct device *master,
+@@ -1109,6 +1112,8 @@ static void mtk_dsi_unbind(struct device *dev, struct device *master,
+ {
+ 	struct mtk_dsi *dsi = dev_get_drvdata(dev);
+ 
++	disable_irq(dsi->irq);
++
+ 	drm_encoder_cleanup(&dsi->encoder);
+ }
+ 
+@@ -1342,7 +1347,6 @@ static int mtk_dsi_probe(struct platform_device *pdev)
+ {
+ 	struct mtk_dsi *dsi;
+ 	struct device *dev = &pdev->dev;
+-	int irq_num;
+ 	int ret;
+ 
+ 	dsi = devm_drm_bridge_alloc(dev, struct mtk_dsi, bridge,
+@@ -1375,9 +1379,9 @@ static int mtk_dsi_probe(struct platform_device *pdev)
+ 	if (IS_ERR(dsi->phy))
+ 		return dev_err_probe(dev, PTR_ERR(dsi->phy), "Failed to get MIPI-DPHY\n");
+ 
+-	irq_num = platform_get_irq(pdev, 0);
+-	if (irq_num < 0)
+-		return irq_num;
++	dsi->irq = platform_get_irq(pdev, 0);
++	if (dsi->irq < 0)
++		return dsi->irq;
+ 
+ 	dsi->host.ops = &mtk_dsi_ops;
+ 	dsi->host.dev = dev;
+@@ -1386,17 +1390,15 @@ static int mtk_dsi_probe(struct platform_device *pdev)
+ 
+ 	platform_set_drvdata(pdev, dsi);
+ 
++	ret = devm_request_irq(&pdev->dev, dsi->irq, mtk_dsi_irq,
++			       IRQF_NO_AUTOEN, dev_name(&pdev->dev), dsi);
++	if (ret)
++		return dev_err_probe(&pdev->dev, ret, "Failed to request DSI irq\n");
++
+ 	ret = mipi_dsi_host_register(&dsi->host);
+ 	if (ret < 0)
+ 		return dev_err_probe(dev, ret, "Failed to register DSI host\n");
+ 
+-	ret = devm_request_irq(&pdev->dev, irq_num, mtk_dsi_irq,
+-			       IRQF_TRIGGER_NONE, dev_name(&pdev->dev), dsi);
+-	if (ret) {
+-		mipi_dsi_host_unregister(&dsi->host);
+-		return dev_err_probe(&pdev->dev, ret, "Failed to request DSI irq\n");
+-	}
+-
+ 	dsi->bridge.of_node = dev->of_node;
+ 	dsi->bridge.type = DRM_MODE_CONNECTOR_DSI;
+ 
 -- 
 2.55.0
 
