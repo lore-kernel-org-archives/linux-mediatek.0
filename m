@@ -4,65 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 34E8DC88E73
-	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Sep 2026 14:21:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3B4F9C88E73
+	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Sep 2026 14:31:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=tYq7J+liZPfE6vz/gYfQT62bcUz+PZLbDbl9s0i8mss=; b=kVsfX8RTIIIneeGRNKDvaqZ03e
-	N/mEPqORk4JH+BHWJKg/QJVtyv+wOu8t1qihvwMCKf41b8YW9JcGf7qJ73Cnf0FQ+eKdtyl2ilx/d
-	D45mvJwhn+shI8yMaWU1AUDSCddTBSXypt5PbCtk9qswJ/LP7j7Moyysf11e4Y/fqZbo9Sr24//Jj
-	a3p29K96aqAOq/a3oICneBNG5Je3lr041o/UvRUVECUG5fndeafYrmwOw69WHXbtoJJLdp5QAOhkp
-	t1NiIaByl0Ou5F+mvYvfIpD7+meb9MSXzb8JJj8xUX6RH6/GKOaLEBKLrUL2QmnNHypzOgTRDfduO
-	iL6Or20w==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
+	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=qP7p6Lw9XBuNpZD4yTpL5ZkISx0ECNRa0OCciHWyqMM=; b=z/3LX7MAKcnl/qVjyf31eTSDTW
+	yw5QJYC5O4ahysqSsaepRo5/zcXKVLB+sIlI0OdBXRRrgXmzfGPSarZNl460oxh2RTOWwZER0m/gy
+	cr0NxtrOKyyYXCtEEZ6vaa42h83ONScJX8ldyuZmNYdPniKXH0Te54plYTHJrQnSsf6N1BNNODqNG
+	6T5xbTe0pSm7MTWekMoxuAEYlYvZJy3VAfCKb3GmP7tR19cTdMmV/56JVPePyRM1ziARXMyiBsaQj
+	5oTMvRyj5tpA5FuuvnYS0s/HCj06gVJMTEZFexl3521eNTvD5wthCtEX9Xk1MMHXTii9/AflD8lbR
+	h/euZ8Ng==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x67Yb-00000003y2S-02qN;
-	Mon, 14 Sep 2026 14:21:17 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1x67iD-00000003zVm-05Xq;
+	Mon, 14 Sep 2026 14:31:13 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x67YY-00000003y1Z-2O7N;
-	Mon, 14 Sep 2026 14:21:15 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1789395672;
-	bh=RUjuEURudxuA62FC/3YKgFX+Jca+QNqEHhjwHbSSvWI=;
-	h=From:To:Cc:Subject:Date:From;
-	b=OKzWNuKv9eEo3SSOjHFmQr9Bdku02etUWBv5Bzlg0UYBJQsSanvY2FACiBdq1/ErQ
-	 xs4tgeVjObiq3UV/hni6D8ZRtdQ4WEb1BcPUeNesTRH7VTAwxWP2LmjonUl1SLwZpe
-	 thZ98FgfrFYOAAecbBjCorcITBFhoCICwQz8C1qyqmVqqxQLrzA7tdJncgkeQjDOmB
-	 j0VtmUuYK6L/3ro+pDVVgJXb74HxoDa+IBaf0Xm64VtRAIYxkeNDOiWILh8bZpychz
-	 Eqh3CS8OzMrDXjWOwK6W11KwVO9UJeBEX8v4zuGbC+pP1kx6qJ9W32fvLjHqR8aub+
-	 oWNa1LlSk9lzA==
-Received: from IcarusMOD.eternityproject.eu (unknown [100.64.1.21])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 43F4817E0075;
-	Mon, 14 Sep 2026 16:21:12 +0200 (CEST)
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-To: bmasney@redhat.com
-Cc: sboyd@kernel.org,
-	jbrunet+clk@baylibre.com,
-	linux-clk@vger.kernel.org,
-	matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: [PATCH] MAINTAINERS: Add Angelo as MediaTek Clock Drivers submaintainer
-Date: Mon, 14 Sep 2026 16:20:39 +0200
-Message-ID: <20260914142039.31654-1-angelogioacchino.delregno@collabora.com>
-X-Mailer: git-send-email 2.55.0
+	id 1x67iB-00000003zVP-1heX
+	for linux-mediatek@lists.infradead.org;
+	Mon, 14 Sep 2026 14:31:11 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by sea.source.kernel.org (Postfix) with ESMTP id C479842A64;
+	Mon, 14 Sep 2026 14:31:10 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id A804E1F000FF;
+	Mon, 14 Sep 2026 14:31:10 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1789396270;
+	bh=qP7p6Lw9XBuNpZD4yTpL5ZkISx0ECNRa0OCciHWyqMM=;
+	h=Subject:From:Date:References:In-Reply-To:To:Cc;
+	b=UnLeLUkyvfYtHAvBjvIbwR+jupgLARs6tT5nEzAbpyOWQ98xEpiD3ETaQ3iN37Rco
+	 3QxFGGesbMhIRa09yJZ2WU5jB4ePnfEdnlnwOWnR0MCnMLcjpbrS3YDbP44E48jede
+	 aw46t5yvJ43NSrhR6/ElGU8NVR1GQxlwsm6iqXN98aPNOf4ayezcN/2yICBx0s+GHk
+	 0q25sRxFzkCdlHF9AOt2qFEIuQRgYjhmGuh6nPy2Waggonf4jUtDSUGmQ1sM8wV4xu
+	 M+EKaB6s/JtoqUOq0POvZsfSrhA0soe5S4suz2elF3a5eyngdHV6cpIXOha2/eGqCK
+	 wwU13wk06eTAQ==
+Received: from [10.30.226.235] (localhost [IPv6:::1])
+	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id 1996B3924A67;
+	Mon, 14 Sep 2026 14:30:07 +0000 (UTC)
+Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260914_072114_752757_C2D933BD 
-X-CRM114-Status: UNSURE (   7.88  )
-X-CRM114-Notice: Please train this message.
+Subject: Re: [PATCH v2 0/3] Bluetooth: btmtk: firmware debug event routing and
+ WMT
+ FUNC_CTRL status fixes
+From: patchwork-bot+bluetooth@kernel.org
+Message-Id: <178939620588.604238.15437504595416258002.git-patchwork-notify@kernel.org>
+Date: Mon, 14 Sep 2026 14:30:05 +0000
+References: <20260914065654.102916-1-chris.lu@mediatek.com>
+In-Reply-To: <20260914065654.102916-1-chris.lu@mediatek.com>
+To: Chris Lu <chris.lu@mediatek.com>
+Cc: marcel@holtmann.org, johan.hedberg@gmail.com, luiz.dentz@gmail.com,
+ sean.wang@mediatek.com, will-cy.Lee@mediatek.com, ss.wu@mediatek.com,
+ linux-bluetooth@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-mediatek@lists.infradead.org
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,38 +75,39 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-As asked multiple times by both Stephen Boyd and Brian Masney,
-add an entry for MediaTek Clock Drivers with myself as the
-submaintainer.
+Hello:
 
-Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
----
- MAINTAINERS | 11 +++++++++++
- 1 file changed, 11 insertions(+)
+This series was applied to bluetooth/bluetooth-next.git (master)
+by Luiz Augusto von Dentz <luiz.von.dentz@intel.com>:
 
-diff --git a/MAINTAINERS b/MAINTAINERS
-index 7dd93f200d51..881ada7b2af9 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -16722,6 +16722,17 @@ M:	Sean Wang <sean.wang@mediatek.com>
- S:	Maintained
- F:	drivers/media/rc/mtk-cir.c
- 
-+MEDIATEK CLOCK DRIVERS
-+M:	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-+L:	linux-clk@vger.kernel.org
-+L:	linux-mediatek@lists.infradead.org (moderated for non-subscribers)
-+S:	Maintained
-+T:	git git://git.kernel.org/pub/scm/linux/kernel/git/mediatek/linux.git
-+F:	Documentation/devicetree/bindings/clock/mediatek,*
-+F:	drivers/clk/mediatek/
-+F:	include/dt-bindings/clock/mediatek,*.h
-+F:	include/dt-bindings/clock/mt*-clk.h
-+
- MEDIATEK DMA DRIVER
- M:	Sean Wang <sean.wang@mediatek.com>
- L:	dmaengine@vger.kernel.org
+On Mon, 14 Sep 2026 14:56:51 +0800 you wrote:
+> This series bundles three independent MediaTek Bluetooth driver fixes:
+> 
+> Patch 1 is a resend of a fix submitted on 25 Aug 2026
+> ("Bluetooth: btmtk: Route firmware debug event to the diag channel")
+> that received no review feedback at the time.
+> 
+> Patches 2-3 fix how btmtk_usb_hci_wmt_sync() (and its btmtksdio.c /
+> btmtkuart.c counterparts) interpret a WMT FUNC_CTRL event that carries
+> only the WMT header and no trailing 2-byte status word. Such an event
+> is a normal firmware ack for a plain enable/disable request, with the
+> result carried in the header's own flag byte, not a failure as the
+> current code assumes:
+> 
+> [...]
+
+Here is the summary with links:
+  - [v2,1/3] Bluetooth: btmtk: Route firmware debug event to the diag channel
+    (no matching commit)
+  - [v2,2/3] Bluetooth: btmtk: fix wrong status for short WMT FUNC_CTRL events
+    https://git.kernel.org/bluetooth/bluetooth-next/c/8fcc7afecb81
+  - [v2,3/3] Bluetooth: btmtksdio, btmtkuart: validate WMT event length before struct access
+    (no matching commit)
+
+You are awesome, thank you!
 -- 
-2.55.0
+Deet-doot-dot, I am a bot.
+https://korg.docs.kernel.org/patchwork/pwbot.html
+
 
 
