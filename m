@@ -4,102 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E950DC88E64
-	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Sep 2026 07:30:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D7213C88E50
+	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Sep 2026 07:34:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=DlX7uEp+xJt+DRWD58MvDXb25/Cat7Ywclf9fNm7ioc=; b=LX+lj8ePDc9qTZGn8E5X+5yJ7o
-	bx3zLrseGmwcy5N6oLDkbFC5jMQQTqQzSMnrS75dDixY/aeSYw6V0BPdeVLF6WowDOg8Nc5OSAmfm
-	guNaxJESvQ82TvR50Ms8gkmkMpBOv5fAWhTEL+EVs3E5iWtZvJhYIg6lvvLG0PJCc8BfdwxbsJVdU
-	dOIQ31syE/DpbQpW2oBOZpG7d8nncfPFLbV4m+FyKMsg5BOYJuHklOdaxw9N4lT8RvZXpm5dpjlJ4
-	b+t/vuAXATjGYLT/vnPNNRExGdmOxLPvJMGRwO6gHHRnmgN9Hx4dK2EaGA4LeERyczdQSmM3l6usi
-	uHBj54nw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=TtEvQNvPqAD5FRL3MTosyyKwzxDMv1cKB1WhFqpa4Ok=; b=kp516Zbf+61oFtLBHnzPnQ4f4S
+	wL0i3aLsRxf/88InKai4p3vwpwxJ7r2YbCHMnw51GY4ydf/b91s+XVQtHBrLNmE5YMXj+fVTPNQcq
+	QLR+tYDmMCcnI/ZtzuGgUWlzxOD848B8Lk6bMSQwmsVGVqxW6XxJZLR+vE9S+dU1BRXv082vqinEJ
+	j/cbHFghQcgsjs6JVqhX0lmAEx8LNfxBTwGNIRxe4SOJPPCaAMKObZgv0lYEXOxlMezM0kO0IDEKs
+	sMql8nso3JS9QTMjK24LXOAtAWWI8JbZeA3zhN/9dHqHhDYS2bHCKSAU3/UZUIuBVznrjPqfhXrEv
+	QQ7SYkWg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x618f-00000002ZDi-3HZS;
-	Mon, 14 Sep 2026 07:30:05 +0000
-Received: from mail-pj1-x102d.google.com ([2607:f8b0:4864:20::102d])
+	id 1x61D4-00000002aRB-3EDK;
+	Mon, 14 Sep 2026 07:34:38 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x618V-00000002Z03-2QXG
-	for linux-mediatek@lists.infradead.org;
-	Mon, 14 Sep 2026 07:29:57 +0000
-Received: by mail-pj1-x102d.google.com with SMTP id 98e67ed59e1d1-383b4a3755fso3235726a91.3
-        for <linux-mediatek@lists.infradead.org>; Mon, 14 Sep 2026 00:29:55 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1789370995; x=1789975795; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to:content-type;
-        bh=DlX7uEp+xJt+DRWD58MvDXb25/Cat7Ywclf9fNm7ioc=;
-        b=Oxh5KtI15mHLfutWk+oNPhcTTufJHvtesnDO0zlXC1rKbCwg0EkOd4sxafniP7o+0+
-         UWjjIgDVJyq7N6nke2PMlsbOPPatRhA7sQFreXyQOoEFBii0ca38IL0wRxweSD5XuWNm
-         +0PT/0vZA7gi1Ragzm5qm1vCSuEmyy+Am51/ISbnFAjHzca5mllBy3lSgm3hm7Pdrn52
-         unXrw612vEHUFbUc8Fxjole1UrGBlCDWZtR/07Qk3UHfHWFg1gv0DT+zWGeYpN31cFUd
-         f4jCNG5sXSSMg1E1YHFypCy4T185Ed/HAtQMZeqKVND4Ip/2Xo2FkPQRkFYEtogaCWze
-         bb+g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20251104; t=1789370995; x=1789975795;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
-         :to:cc:subject:date:message-id:reply-to:content-type;
-        bh=DlX7uEp+xJt+DRWD58MvDXb25/Cat7Ywclf9fNm7ioc=;
-        b=SPOyygTgN0sxMSC3RR7QMO2X9plwNxVmBEjlZkqmlq+L4CPC7X8xi0Rsb1TZ1KNbmx
-         fij0HB7F6ZL5qYMoAgpD52WJck/cF7eMnj8o8ffz40OYiDYxYNb4IgoZlRM0JdVgaHe5
-         NT8I8aghj5+hVz4c4muE5YswhckRPVKnn/XVvqCKmBXzcnIp17dg+qfpbJ+w0P6awBlG
-         oqtzEDxgUnfJMEUP/u1n1NG2SYCl7dlMoc38eDlri4Si5KI78JemleBD15rPEtYviKhO
-         95mlvYGdD0R8BNJTdN1IybGKin/AGgCf6H5RW3U7W+WJg7JALY5b11YUp/VWSIQdQc37
-         vS3g==
-X-Forwarded-Encrypted: i=1; AKwUvBwfuGfoOOF9K4YoobN/0i0bKII6MpTEj42gUmGZKmBsS5DGCHQY06ODb4NGh6rHHb5Tv3ZDhIDF9GEgk2mUYw==@lists.infradead.org
-X-Gm-Message-State: AFuF++lqSHXX75HiVlGfoFtHZVVCtTiljRbh0Wc56KSgl22nOBGRCsRG
-	Bilr8gYSPu8nFITLCFaWhPYR57sUCtu9JexeQ+moD8y9ANJyAiyM3pXR
-X-Gm-Gg: AYBFou1+eonj6AumokL5nzXh7DhAOw5Tkm+4Y9R9V999lIGWHm4FzkT0fnT0Gvg1TYg
-	fcqXeqGeKfbEigYzs54a58x59pXu17Q2OMq3jS8c+KA29nFroh+JvWhY7yLANpN+4LYMM3V6FOa
-	oBjzQlNLt3O0iMDOhpNCeTQibuVfFIOXp6LF7TEEUVHS9rT8sffbdjaKkAI6utKCzl4hYrf/TQA
-	5fUOTTG3GbocAkupnSihlqxZG9Kc335C2JOePTrfalSQTKZtmOZh7gSIvAtqy7zMNVDJ0SR8MlG
-	l0JbqG56nZEKubzcIZeLYuxWZVydU5lgJfiXATNLaauR1iBbAg4hgA2TpZSLhORYastQxc5Eh1X
-	C4M6USNSVivKcWz+WjM4jDrdUKTY2AGOjsVg50STHc6HGHJKtntf0GxzIk8P5F5oVXmC1RvWfzS
-	tkjPgqCt9KdAocJ8Mjw9guBO2DeDx9Gt7n/oqxKlaSq5j1yCU0SaOt1H/FNBZMbLu+uOyq+QINX
-	iyEf0S4BhDa8uxX6Tfs22nen+ECQlB38/ILu60K3OwO2kmBagT4Lo6Ap8TrglrZsKytauN15n8n
-	63pgWxP6XfZVaosqFahbRBzGHQ==
-X-Received: by 2002:a17:90b:3884:b0:396:6344:3b63 with SMTP id 98e67ed59e1d1-39debf6ce65mr3151063a91.2.1789370994682;
-        Mon, 14 Sep 2026 00:29:54 -0700 (PDT)
-Received: from phuc-desktop.. ([183.91.15.56])
-        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-39d957131f9sm19598245a91.12.2026.09.14.00.29.51
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 14 Sep 2026 00:29:54 -0700 (PDT)
-From: phucduc.bui@gmail.com
-To: Mark Brown <broonie@kernel.org>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: Liam Girdwood <lgirdwood@gmail.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Jaroslav Kysela <perex@perex.cz>,
-	Takashi Iwai <tiwai@suse.com>,
-	Cezary Rojewski <cezary.rojewski@intel.com>,
-	Cyril Chao <Cyril.Chao@mediatek.com>,
-	Kuninori Morimoto <kuninori.morimoto.gx@renesas.com>,
-	Dan Carpenter <error27@gmail.com>,
-	cassiogabrielcontato@gmail.com,
-	linux-sound@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	bui duc phuc <phucduc.bui@gmail.com>
-Subject: [PATCH v2 13/13] ASoC: mediatek: mt8189: Validate TDM MCLK frequency
-Date: Mon, 14 Sep 2026 14:28:42 +0700
-Message-ID: <20260914072842.24420-14-phucduc.bui@gmail.com>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20260914072842.24420-1-phucduc.bui@gmail.com>
-References: <20260914072842.24420-1-phucduc.bui@gmail.com>
+	id 1x61D2-00000002aPa-2atA;
+	Mon, 14 Sep 2026 07:34:37 +0000
+X-UUID: b9959e92b00e11f1acbe4559397dec65-20260914
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=TtEvQNvPqAD5FRL3MTosyyKwzxDMv1cKB1WhFqpa4Ok=;
+	b=TWfeM9t8CvQfuW0rQ2zrheg4XDqlqYwRBHGVEKklvc7+RNPMxiQ466NyJsgiSwcxohlyJA3mAQ3ez2gnCoErc+zSGduG7TrvMQbg6kL6vZgiFVrEm2AlJcXbnyxAKCIMnojXaAcXM99TCgvd14tLiIeJK+Kg/3WM5v3M+OEsA64=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.3.19,REQID:260a4c0e-6327-4e16-b680-dfe57bbf6fd4,IP:0,U
+	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
+	:release,TS:-5
+X-CID-META: VersionHash:7db8b62,CLOUDID:fac68c23-5cf3-42cf-b2e6-6e46fb0e268e,B
+	ulkID:nil,BulkQuantity:0,SF:81|82|102|836|865|888|898,TC:-5,Content:0|15|5
+	0|99,EDM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:-1,COL:0,OSI:0,
+	OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 2,SSN|SDN
+X-CID-BAS: 2,SSN|SDN,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
+X-UUID: b9959e92b00e11f1acbe4559397dec65-20260914
+Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
+	(envelope-from <irui.wang@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 839459469; Mon, 14 Sep 2026 00:34:31 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.2562.29; Mon, 14 Sep 2026 15:34:28 +0800
+Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
+ mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.2562.29 via Frontend Transport; Mon, 14 Sep 2026 15:34:27 +0800
+From: Irui Wang <irui.wang@mediatek.com>
+To: Hans Verkuil <hverkuil-cisco@xs4all.nl>, Mauro Carvalho Chehab
+	<mchehab@kernel.org>, Rob Herring <robh+dt@kernel.org>, Matthias Brugger
+	<matthias.bgg@gmail.com>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	<wenst@chromium.org>, <angelogioacchino.delregno@collabora.com>,
+	<nicolas.dufresne@collabora.com>, Tiffany Lin <tiffany.lin@mediatek.com>,
+	kyrie wu <kyrie.wu@mediatek.com>
+CC: Yunfei Dong <yunfei.dong@mediatek.com>, Maoguang Meng
+	<maoguang.meng@mediatek.com>, Longfei Wang <longfei.wang@mediatek.com>, Irui
+ Wang <irui.wang@mediatek.com>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>,
+	<linux-media@vger.kernel.org>, <devicetree@vger.kernel.org>,
+	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-mediatek@lists.infradead.org>, "Rob Herring (Arm)" <robh@kernel.org>
+Subject: [PATCH v8 1/6] media: dt-bindings: mediatek,vcodec-encoder: Add MT8196
+Date: Mon, 14 Sep 2026 15:34:16 +0800
+Message-ID: <20260914073423.16131-2-irui.wang@mediatek.com>
+X-Mailer: git-send-email 2.46.0
+In-Reply-To: <20260914073423.16131-1-irui.wang@mediatek.com>
+References: <20260914073423.16131-1-irui.wang@mediatek.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260914_002955_636575_4E383054 
-X-CRM114-Status: UNSURE (   9.35  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260914_003436_681187_E33D6751 
+X-CRM114-Status: GOOD (  12.14  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -114,32 +95,70 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: bui duc phuc <phucduc.bui@gmail.com>
+Add support for MT8196 video encoder which uses VCP (Video Co-Processor)
+for firmware management. Unlike previous platforms that use SCP/VPU, MT8196
+requires VCP to load and execute the video encoding firmware, with the
+encoder communicating through VCP to perform encoding operations.
 
-mtk_dai_tdm_cal_mclk() accepts zero or negative frequencies.
-Reject invalid frequencies before configuring the TDM clock.
+Add the "mediatek,mt8196-vcodec-enc" compatible string and introduce
+the "mediatek,vcp" property to reference the VCP device, which is
+required for MT8196 encoder operation.
 
-Fixes: 9f202872ba04 ("ASoC: mediatek: mt8189: support TDM in platform driver")
-Signed-off-by: bui duc phuc <phucduc.bui@gmail.com>
+Signed-off-by: Irui Wang <irui.wang@mediatek.com>
+Reviewed-by: Rob Herring (Arm) <robh@kernel.org>
+Reviewed-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
 ---
- sound/soc/mediatek/mt8189/mt8189-dai-tdm.c | 3 +++
- 1 file changed, 3 insertions(+)
+ .../media/mediatek,vcodec-encoder.yaml        | 22 +++++++++++++++++++
+ 1 file changed, 22 insertions(+)
 
-diff --git a/sound/soc/mediatek/mt8189/mt8189-dai-tdm.c b/sound/soc/mediatek/mt8189/mt8189-dai-tdm.c
-index 1b51027c6cf4..7748b4ff2c72 100644
---- a/sound/soc/mediatek/mt8189/mt8189-dai-tdm.c
-+++ b/sound/soc/mediatek/mt8189/mt8189-dai-tdm.c
-@@ -381,6 +381,9 @@ static int mtk_dai_tdm_cal_mclk(struct mtk_base_afe *afe,
- 	int apll;
- 	int apll_rate;
+diff --git a/Documentation/devicetree/bindings/media/mediatek,vcodec-encoder.yaml b/Documentation/devicetree/bindings/media/mediatek,vcodec-encoder.yaml
+index 4505e6687..dce007e6e 100644
+--- a/Documentation/devicetree/bindings/media/mediatek,vcodec-encoder.yaml
++++ b/Documentation/devicetree/bindings/media/mediatek,vcodec-encoder.yaml
+@@ -24,6 +24,7 @@ properties:
+               - mediatek,mt8188-vcodec-enc
+               - mediatek,mt8192-vcodec-enc
+               - mediatek,mt8195-vcodec-enc
++              - mediatek,mt8196-vcodec-enc
+       - items:
+           - const: mediatek,mt8186-vcodec-enc
+           - const: mediatek,mt8183-vcodec-enc
+@@ -58,6 +59,13 @@ properties:
+     description:
+       Describes point to scp.
  
-+	if (freq <= 0)
-+		return -EINVAL;
++  mediatek,vcp:
++    $ref: /schemas/types.yaml#/definitions/phandle
++    description:
++      Reference to the VCP (Video Co-Processor) device that loads and executes
++      the video encoding firmware. The encoder communicates with the firmware
++      through VCP to perform encoding operations.
 +
- 	apll = mt8189_get_apll_by_rate(afe, freq);
- 	apll_rate = mt8189_get_apll_rate(afe, apll);
+   power-domains:
+     maxItems: 1
  
+@@ -76,6 +84,20 @@ required:
+   - iommus
+ 
+ allOf:
++  - if:
++      properties:
++        compatible:
++          contains:
++            enum:
++              - mediatek,mt8196-vcodec-enc
++
++    then:
++      required:
++        - mediatek,vcp
++    else:
++      properties:
++        mediatek,vcp: false
++
+   - if:
+       properties:
+         compatible:
 -- 
-2.43.0
+2.55.0.windows.3
 
 
