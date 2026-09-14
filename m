@@ -4,78 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 75266C88E6F
-	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Sep 2026 18:45:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5B211C88E72
+	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Sep 2026 18:55:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=i9gXA1RkdX4vMZMFUGwaIE3uoUpXpiFuI92B74HJ7J0=; b=Kkbpt0Wgl2rhlkF02EGf7l8zLv
-	J9reUnaW1wraT3Fi6B49qHPGE9yLSZVmGJ/3d+tfpJDP0DecWiRu7HKGByC7MEj5o+HTcuXdKgnsq
-	NDxpdJlMq2BFiKUNsb0/ugn5PPLplvXwn/1a+Zf4IwiNwnUmyUPNzJG5q5v8bBpIQ78mIG3blTgVP
-	XvYcrR5hgztEoCj21QYvfz3ilNJuoAQVxC/CClVrRYvsf1/36TrewYjKiuafKdRyJ/6Dw7hFSQDoh
-	hDkuVpBtC0AXdBodDsukvIEN5oCo8hcpZbQ2dXkFEn8P35nh412DbRnzbyYy63nKUywO4jvnQELkv
-	fzQFqS/g==;
+	bh=Dt5w1Pn+88+/6QbLVYWGwITkkmR85KAahvz0h2yQbyk=; b=FijpY162f4yNX08Os5SaOyCHjr
+	PLz+shKk6cS/BSOvVR9l06v1znKWhlHTe9MT2s8AcLGBk/ztewNyrCqhEdZ8NN+Pg/zD2ZQvVgc5E
+	Z1KyXBciwbBwPAT7vv/+MCCXz+de9DMuYTIxFFqJY0EondVB97AgJKKXU0vZjuWxh6Yg/LjiiT9nP
+	q2rloIQ/9uYRwYTyPlsLYi0sevoqasHnZ50CX4Ask9TWrqOgyLdsUvH7G7Gc7H9efGfp9gCAG5FYC
+	BbuvVS7m+BpxkBg3Lut17H7BJF0uceeqZ79gTeZmisSDL7MHYrO3Bl/55mDWI+uJFICa4W3+7ZYGy
+	T46zqMQA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x6Bgj-00000004Taa-47AS;
-	Mon, 14 Sep 2026 18:45:57 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1x6Bpe-00000004UdT-0FwN;
+	Mon, 14 Sep 2026 18:55:10 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x6Bgi-00000004TZx-0TBN;
-	Mon, 14 Sep 2026 18:45:56 +0000
+	id 1x6Bpc-00000004UdG-0di7;
+	Mon, 14 Sep 2026 18:55:08 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 6524A60142;
-	Mon, 14 Sep 2026 18:45:55 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id DF77B1F000FF;
-	Mon, 14 Sep 2026 18:45:54 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 032AC60142;
+	Mon, 14 Sep 2026 18:55:07 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 615D61F000FF;
+	Mon, 14 Sep 2026 18:55:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1789411555;
-	bh=i9gXA1RkdX4vMZMFUGwaIE3uoUpXpiFuI92B74HJ7J0=;
+	s=k20260515; t=1789412106;
+	bh=Dt5w1Pn+88+/6QbLVYWGwITkkmR85KAahvz0h2yQbyk=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=HqNwQCAvMKD+GtGTB1UVnO5oeUzfzRSCLeRIQ/NI/5YC/RG8r3BPF3gt7Th8nmezh
-	 52/bjdtG4ljm5K2ylaznkBZ7klnQGPV+ZMsV/hFoADQuNk8YHaCYp+yofBFuAvnJZe
-	 ElLgLdKytCXrZdC6yCKHeoDbIQEcWWTVds2fhZpJEDzuVQ1nK9Bp319qhycp1fdkeN
-	 bWn/RODdLH2egWxUnfOaxYwKI40pI80/tPR6AkuP+W07vm6M08Yrox09wCd4bZYP7I
-	 cwkWlicYtvLmI0ccrZstiC05EfQg4gETzi5+40U10PA4kJMGRZYxFhUBBcuRe7kVRF
-	 h7NCB+gOQnemg==
+	b=avwicQJnNlv4NY+cCLzYzlQzvtXGDzbl0SG7/oFzAQKdUDlB8xcYXpO3FmXdq9VIe
+	 zA3CmeKjc9Jdf5PEjbDCLE7bCZlIs2inTwCFif0kJic+F0O9hiUyISjRU+uelz1xYz
+	 /dbsbWPxfkYVe5v/6m7mgo5+dy2XDTGTW9C+VdEWOd3OWsozb7A3kNlueXPo9UNoOS
+	 4FP0ZIeq2WeYGUuuuCe76ybcZB/6lgLvwODHPefhsCpKQir+H3kp0xyZwY9O5pgem5
+	 Aaq93jDqfXzQQZeW39jKcA0i+G2ukQo8j423D+NNHqdlHROAuxLeWWcsOWwTIxhD6T
+	 GMYpdgv3oV6uQ==
 Received: by traversing.sirena.org.uk (Postfix, from userid 1000)
-	id 4D626FDBA8E; Mon, 14 Sep 2026 19:45:41 +0100 (BST)
-Date: Mon, 14 Sep 2026 19:45:41 +0100
+	id 6BA11FF4DAC; Mon, 14 Sep 2026 19:54:39 +0100 (BST)
+Date: Mon, 14 Sep 2026 19:54:39 +0100
 From: Mark Brown <broonie@kernel.org>
-To: Mukesh Ojha <mukesh.ojha@oss.qualcomm.com>
-Cc: Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>,
-	Liam Girdwood <lgirdwood@gmail.com>,
+To: Hemanth Selam <hemanth.selam@gmail.com>
+Cc: Liam Girdwood <lgirdwood@gmail.com>, Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Claudiu Beznea <claudiu.beznea@tuxon.dev>,
+	Andrei Simion <andrei.simion@microchip.com>,
+	Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>,
+	Nicolas Ferre <nicolas.ferre@microchip.com>,
+	Alexandre Belloni <alexandre.belloni@bootlin.com>,
+	Ray Jui <rjui@broadcom.com>, Scott Branden <sbranden@broadcom.com>,
+	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>,
+	Lars-Peter Clausen <lars@metafoo.de>,
+	Nuno =?iso-8859-1?Q?S=E1?= <nuno.sa@analog.com>,
+	David Rhodes <david.rhodes@cirrus.com>,
+	Richard Fitzgerald <rf@opensource.cirrus.com>,
+	Support Opensource <support.opensource@diasemi.com>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Oder Chiou <oder_chiou@realtek.com>,
+	Shenghao Ding <shenghao-ding@ti.com>, Kevin Lu <kevin-lu@ti.com>,
+	Baojun Xu <baojun.xu@ti.com>, Sen Wang <sen@ti.com>,
+	Cezary Rojewski <cezary.rojewski@intel.com>,
 	Peter Ujfalusi <peter.ujfalusi@linux.intel.com>,
 	Bard Liao <yung-chuan.liao@linux.intel.com>,
-	Daniel Baluta <daniel.baluta@nxp.com>,
-	Orson Zhai <orsonzhai@gmail.com>,
-	Baolin Wang <baolin.wang@linux.alibaba.com>,
-	Gary Yang <gary.yang@cixtech.com>,
-	Fugang Duan <fugang.duan@cixtech.com>,
 	Kai Vehmanen <kai.vehmanen@linux.intel.com>,
 	Pierre-Louis Bossart <pierre-louis.bossart@linux.dev>,
-	Vijendar Mukunda <Vijendar.Mukunda@amd.com>,
-	Chunyan Zhang <zhang.lyra@gmail.com>,
-	CIX Linux Kernel Upstream Group <cix-kernel-upstream@cixtech.com>,
-	linux-sound@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	sound-open-firmware@alsa-project.org
-Subject: Re: [PATCH v2 5/12] ASoC: cix-ipbloq: Use
- devm_of_reserved_mem_device_init()
-Message-ID: <aqhA1bSbwBL3z5Ad@sirena.org.uk>
-References: <20260902194712.2003414-1-mukesh.ojha@oss.qualcomm.com>
- <20260902194712.2003414-6-mukesh.ojha@oss.qualcomm.com>
+	Srinivas Kandagatla <srini@kernel.org>,
+	Jarkko Nikula <jarkko.nikula@bitmer.com>,
+	Kunihiko Hayashi <hayashi.kunihiko@socionext.com>,
+	Masami Hiramatsu <mhiramat@kernel.org>,
+	linux-kernel@vger.kernel.org, linux-sound@vger.kernel.org,
+	devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	patches@opensource.cirrus.com, linux-mediatek@lists.infradead.org,
+	linux-arm-msm@vger.kernel.org, linux-omap@vger.kernel.org
+Subject: Re: [PATCH] ASoC: fix typos in comments
+Message-ID: <aqhC72HtZg6vZwlb@sirena.org.uk>
+References: <20260904110315.11650-1-hemanth.selam@gmail.com>
 MIME-Version: 1.0
 Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="v9z/FgVXq66TVnlQ"
+	protocol="application/pgp-signature"; boundary="+R8ajydSb1j5T0kw"
 Content-Disposition: inline
-In-Reply-To: <20260902194712.2003414-6-mukesh.ojha@oss.qualcomm.com>
+In-Reply-To: <20260904110315.11650-1-hemanth.selam@gmail.com>
 X-Cookie: Orders subject to approval.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -92,42 +103,31 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 
---v9z/FgVXq66TVnlQ
+--+R8ajydSb1j5T0kw
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
 
-On Thu, Sep 03, 2026 at 01:17:05AM +0530, Mukesh Ojha wrote:
-> Use the devres-managed devm_of_reserved_mem_device_init() to ensure
-> the reserved memory region is released on device removal, fixing a
-> missing cleanup in the original code.
->=20
-> Acked-by: Mark Brown <broonie@kernel.org>
-> Reviewed-by: Gary Yang <gary.yang@cixtech.com>
-> Signed-off-by: Mukesh Ojha <mukesh.ojha@oss.qualcomm.com>
-> ---
->  sound/hda/controllers/cix-ipbloq.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
+On Fri, Sep 04, 2026 at 04:33:01PM +0530, Hemanth Selam wrote:
+> Fix typos in comments, reported by scripts/checkpatch.pl using the
+> misspelling list in scripts/spelling.txt.  Only touches comments, no code
+> changes.
 
-Please submit patches using subject lines reflecting the style for the
-subsystem, this makes it easier for people to identify relevant patches.
-Look at what existing commits in the area you're changing are doing and
-make sure your subject lines visually resemble what they're doing.
+This doesn't apply against current code, please check and resend.
 
---v9z/FgVXq66TVnlQ
+--+R8ajydSb1j5T0kw
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmqoQNQACgkQJNaLcl1U
-h9Cx3gf/aYLthuCMsMEQmoOqZmVaK7lkMZtutXAHSpVqlCF21WT8OUo8CHJUBOZO
-CqqF3j8USYxrpXTArB7zXq7WjIcSTQLU8LUANUpbY6zzjnwSJqg7no6Q/C2LdLAw
-6dCUZtYHRI5VmtEScEHPn+M3k+ny5NTAqKy9uwlQ+uthFreN5pEpmoFQiUmSQgik
-M4mnRZQQA7yQpfBDt2pp69KONsBH91wD3R0wcj7oHOOV8ma+CYtWty1uEOGtStBC
-5Vd9j6aOTBGU/3G/VzC8nl61V3K+bZX3AJZVBpGof1eV/sAxYW/MsT7wy0RZkAwM
-Lnu7P4u43Mi56mCA9ewYHpNXBgl0zA==
-=q00i
+iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmqoQu4ACgkQJNaLcl1U
+h9BQngf+NrKbIDQswDCVtp+p2+16s8VA4komgI1mJwvGX/l3TCUsL9LCubDyEiJT
+MFMcRlrtytBdb0B5Im6RKBIWJZaH+traqJYXu2n9J/Og95j4v42wm4LoXkXG+52n
+hMDKyEctBPWrG9zn+kKJ1r5azQYZ+ZpyMVbJE2KO7wWOpHEXpBu1/x9nZMVl4JK1
+ACL5+4S4QJlPc9rY0c3BhOi7nIHmBD67gjYbv3aQ2yTskcZrbwwRySAJgXXVEkuK
+t/ekOauEuhMj3Kj4rslRddyVgJaulJSlC9TvCRdHsKUlVZ/a1+Zymt/MbzJWQNcb
+FYQj7jL/7dJkHDDVC1Ah1qRWVbr/ow==
+=ob1K
 -----END PGP SIGNATURE-----
 
---v9z/FgVXq66TVnlQ--
+--+R8ajydSb1j5T0kw--
 
