@@ -4,78 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E9AFEC88E70
-	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Sep 2026 13:48:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BAA16C88E72
+	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Sep 2026 13:58:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=r+S2Onhngb3QQb5M8d8baXat0zr7TDEklDXfpK9pyK4=; b=ZB+cKyqgKkaOisMwO0ETIj3xj7
-	l085yZb6Pw+apGtPAPX2oThwg/R5Ta5ykWCrUMW2scPqmyR2/BgNFEBp7lpqmq4EyDPB+OSyJbRkT
-	XWLmopiMmbiXA+/+F1106Bvk73I7z7QUCQaCZSs1lfcpI4DRVvY5kqdaRKWjeX/2W7iy6mN0lMuEm
-	SiDCmG5trazJs7h9DB38SssF/XiXTAAhOQKMKsFUDrjinEzmp8DP8YpYKNY0X2z89BGH0TxBreyJ/
-	SRXLnSmWJI3e82ITP9qvN+UkPHVi0parI3JEGn1bj8TEPGGBrBDlX3nZI6vQf0UIy71WKPEIrmAd1
-	zenEcoOA==;
+	bh=22m5iAqIpbmJxJVnpa24mBjkDMjZX1GabmsvOm2Bnq0=; b=TPydVsaIaEd70Km0fEuCbpezHO
+	IqPX84FXEZ66mdAcqRLyM+m1dc/e77G6VJ25Bi4UUSiyfWlAphlYH7dPULWXh+a5cmGdE6LGFh6Ww
+	xmxu+kDZGmfdz8io6ybTX7jqmaL+kEMXW4QRAUBYrepN4YRh6QguFStwS2avXXA6dwbGEhlNrRuPj
+	GfyT7KPkDiRZLNCkwjPJfYPx7iKQ4OHEa7rKmC2YWSNPW6JuOiR0NQPntJW0CGNjRtF80jKV6qnhH
+	vhEwMV2xFfVl4lupXqKW4roAi7lz5cTyvoiTz924zqBvbRgwwPdc6hFLbolrjwXsTACMgUyDEuImU
+	eltTLdAQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x672o-00000003qxX-3K3K;
-	Mon, 14 Sep 2026 13:48:26 +0000
+	id 1x67Cd-00000003tfa-1O1g;
+	Mon, 14 Sep 2026 13:58:35 +0000
 Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x672m-00000003qwC-18eW;
-	Mon, 14 Sep 2026 13:48:25 +0000
+	id 1x67CZ-00000003tec-2gO0;
+	Mon, 14 Sep 2026 13:58:32 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1789393702;
-	bh=sqm232wL8WeQzLs2jOKgbSNxH7ke3GuXlQGXo8yJQk0=;
+	s=mail; t=1789394309;
+	bh=5PRno6bDN7rPaMhefe1EXNUdAJWaB7rxNicPHWb0KnI=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=ppLT7Hd2WVLs8uYNpUu5s+TTm1uVg/17FO1N+akh3gXmRprLckeYvUZYclQ8A+ej/
-	 5b61o4zyKcZEKYqp0BGPsfADvf8U4o4/S0Tv4pgFh7WaC9zEgTewYSj1jJ7QvioVq9
-	 8r8MgxyjLBD3w2d7dQeqcStjxltDHSkmyBt4ptaAUnbaNWqNTSUMHUwbq4BVspZaep
-	 pfyoJhfhorVIiyEfYSRn7yqRgmWC1W4ObKxBknAPZMxEWmK5vADCBE2xvlLj1XW+RQ
-	 U5tEP42bvP++JeIRK2Cgsut81NOnNfaR+nSPPD+B5FrOrLBMgmVb8acscT5rCO6aRb
-	 gcH0RHmaow1XQ==
+	b=II0/Ohlbjh/tfLR/rkI11YDxsqnSLpLp+L9XW6BiNCOzRWEC3mRcQEVoLdXNtXCcA
+	 JTYgYVwNw031zm8hW0Bfk8I59I6BPT/8j86ie4Mgo4jzi7DcK6m3NejaDjdZ6MMM1p
+	 XzWmDJDt/qAdomZoyDki5Kldwq9LGkpcGdj5Ao5iCVE7yn8vJYi66/1AHibngIeZUh
+	 QA64XxXu3Pl4ZP6Wxy5Ul3VP8gpUxzwcfcMZpb0duA2dxuvw+FlmG5s1V4cPcSdf5d
+	 CCVKZdP5gTiY7bPzYpgRrKvLCHk+y6B+Dw79gkN0R15OU/pD37PGw7hcNhzxYS8B7Z
+	 ZKdnLoN1eCrkw==
 Received: from [100.64.1.21] (unknown [100.64.1.21])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	 key-exchange x25519)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 5676717E05D3;
-	Mon, 14 Sep 2026 15:48:21 +0200 (CEST)
-Message-ID: <f2bb7446-bfbd-4598-ba95-d9561a4e132b@collabora.com>
-Date: Mon, 14 Sep 2026 15:48:20 +0200
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id E739917E0700;
+	Mon, 14 Sep 2026 15:58:28 +0200 (CEST)
+Message-ID: <8f1ea5c4-d85a-43eb-8b10-3f80f8343b27@collabora.com>
+Date: Mon, 14 Sep 2026 15:58:28 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 00/24] MT8189: Add support for system and base clock
- controllers
-To: Brian Masney <bmasney@redhat.com>
-Cc: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>,
- Michael Turquette <mturquette@baylibre.com>, Stephen Boyd
- <sboyd@kernel.org>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- Chun-Jie Chen <chun-jie.chen@mediatek.com>,
- Philipp Zabel <p.zabel@pengutronix.de>,
- Edward-JW Yang <edward-jw.yang@mediatek.com>,
- Richard Cochran <richardcochran@gmail.com>, Chen-Yu Tsai
- <wenst@chromium.org>, kernel@collabora.com, linux-clk@vger.kernel.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- netdev@vger.kernel.org, Conor Dooley <conor.dooley@microchip.com>,
- Irving-CH Lin <irving-ch.lin@mediatek.com>
-References: <20260729-mt8189-clocks-system-base-v4-0-e356b813a64c@collabora.com>
- <amuWdRD-TBQtFT_4@redhat.com>
- <1f6bdf69-c3fe-4e1d-8ff8-0e36d9f4e063@collabora.com>
- <aqf6NH-xrMtCQppv@redhat.com>
+Subject: Re: [PATCH v2 02/13] ASoC: mediatek: mt8189: Propagate APLL enable
+ errors
+To: Mark Brown <broonie@kernel.org>
+Cc: phucduc.bui@gmail.com, Liam Girdwood <lgirdwood@gmail.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Jaroslav Kysela <perex@perex.cz>,
+ Takashi Iwai <tiwai@suse.com>, Cezary Rojewski <cezary.rojewski@intel.com>,
+ Cyril Chao <Cyril.Chao@mediatek.com>,
+ Kuninori Morimoto <kuninori.morimoto.gx@renesas.com>,
+ Dan Carpenter <error27@gmail.com>, cassiogabrielcontato@gmail.com,
+ linux-sound@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+References: <20260914072842.24420-1-phucduc.bui@gmail.com>
+ <20260914072842.24420-3-phucduc.bui@gmail.com>
+ <07add31d-5622-40eb-9bcf-f7cb2396fee3@collabora.com>
+ <aqf7B_E7_Gv5iK2A@sirena.co.uk>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Content-Language: en-US
-In-Reply-To: <aqf6NH-xrMtCQppv@redhat.com>
+In-Reply-To: <aqf7B_E7_Gv5iK2A@sirena.co.uk>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260914_064824_475080_9E7A6214 
-X-CRM114-Status: GOOD (  14.24  )
+X-CRM114-CacheID: sfid-20260914_065831_828868_989702A8 
+X-CRM114-Status: GOOD (  11.70  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,38 +84,37 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 9/14/26 15:44, Brian Masney wrote:
-> Hi Angelo,
+On 9/14/26 15:47, Mark Brown wrote:
+> On Mon, Sep 14, 2026 at 03:22:21PM +0200, AngeloGioacchino Del Regno wrote:
+>> On 9/14/26 09:28, phucduc.bui@gmail.com wrote:
 > 
-> On Fri, Jul 31, 2026 at 12:04:49PM +0200, AngeloGioacchino Del Regno wrote:
->> On 7/30/26 20:22, Brian Masney wrote:
->>> Should there be a new MAINTAINERS entry added? There's currently 221
->>> files under drivers/clk/mediatek/ and there's currently only one
->>> mediatek maintainer entry:
->>>
->>>       MEDIATEK MT6735 CLOCK & RESET DRIVERS.
->>>
->>> Is there anyone from mediatek (or elsewhere) that could act as a clk
->>> subsystem maintainer similar to what the other SoC vendors do? Help with
->>> reviews, send in pulls, etc?
->>>
+>>> +	ret = regmap_update_bits(afe->regmap, AFE_APLL2_TUNER_CFG,
 >>
->> I may be able to step in, but I have to check if it's feasible, time-wise, on
->> my side.
+>> Well, this is a bit of defensive programming here.
 >>
->> Though, that won't happen until mid-September... because, well, I'm about to go
->> on holiday (in a few days from now).
+>> The regmap pointer is already checked by the previous function call, and this is
+>> a regmap over MMIO... and MMIO writes can't fail.
 > 
-> I'm checking in to see if you would be willing to be clk submaintainer
-> for the MediaTek clk drivers?
-> 
-> Brian
+> Oh, you sweet summer child :) .
 
-Time is lacking, but I get that one hour from me is more than zero, which is
-a good thing.
+lmao
 
-Let's do it.
+>  Though practically speaking the error
+> handling ends up being the same as if they couldn't fail since if
+> something goes wrong it's generally catastrophic stuff like locking the
+> core up completely so the end result is the same.
 
-Cheers,
+That was also an implicit point (that should've been explicit from me): if anything
+goes horribly wrong here, it means that it already went horribly wrong "some
+function calls ago", and the platform likely already locked up as you suggested.
+
+In any case, I'm not against doing error checking, it's just about not doing it
+when it's really useless (I'm sure you understand my reasons), and I believe this
+specific case is one of those.
+
+That said, should you prefer having error checks in such places... it's not a
+performance path, so I don't really have strong opinions really.
+
+Cheers!
 Angelo
 
