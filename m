@@ -4,79 +4,124 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 08991C88E66
-	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Sep 2026 02:19:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1DB51C88E5C
+	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Sep 2026 02:22:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=sA478DaC1kQ5BkUJJthxmPoh+OuKqAkvinPcE7BvToY=; b=u9rwDpQj7nRds661U9o1Uf3qmC
-	feztLKI/iaN94MVXqD1++W6kKB7Bl/oPsWJNM3Q5wfBmxIpDyp2MCUY3S/2HGpcYY2NM5ghyXA890
-	zVJ3pYzDLrC3I59lgN4Ac76h/y1zI8NSs9p8v8vevxr7TB1ChOzDCqrDR1jfGCC292LTMLxFo4mS0
-	Tmb9FfCcAN13ZZR5EMsAYdqNlZx2TmqXzrbBiocJ7irSuA5QKrPMYPFewzzJVdYDfDPwYeXiwKLrf
-	WRlvXJODfnCEdB329A+EoeZTMMBa/+GA4atV+1faNlZjcWZjnlgo2N2tyMRBKrnWDHDKExNzBWAXg
-	H152NI+A==;
+	bh=3tEjgAAbHV/rvWkki0Kg0WXaYwrNIughZ7yXhBTXOcY=; b=0mM6qNiKpB27DQLH+KB+NAosT0
+	Yh8WbCtr5A0GHexwqFNsjOQTF32EFXdkhq8w4RKabflGKLLzikrl+boHUZ1/1KSFRSLquP5oFRNsR
+	K+Ko+mwqPao1EJyHTdOqpdNzre9tZ2sl8g2TM48GHpb0JEVj1Wnc3kQ0g2z2JhDqIiLzjXD5X8sku
+	VmyE4Cxz24qtSp/rQ6zAKOMPADCRSX9yWds1gpKQ7DL3Th0ANh/BR25sBUaSMBzrBI2nrRjlgS4sI
+	pknaPAtomZ2p6Th62y42YYd476v+fq1I8t0JG2wQpnyntpgJ9E4rN8LbEPYP9fO6pvmkW25X6j1G9
+	WY0emvhA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x5wIF-00000002Aag-2Okh;
-	Mon, 14 Sep 2026 02:19:39 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1x5wKt-00000002Ai3-093D;
+	Mon, 14 Sep 2026 02:22:23 +0000
+Received: from mail-koreacentralazon11023076.outbound.protection.outlook.com ([40.107.44.76] helo=SEYPR02CU001.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x5wI9-00000002AY9-1suG
-	for linux-mediatek@lists.infradead.org;
-	Mon, 14 Sep 2026 02:19:35 +0000
-X-UUID: b583375aafe211f1afed4741b24580c9-20260913
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=sA478DaC1kQ5BkUJJthxmPoh+OuKqAkvinPcE7BvToY=;
-	b=sQUS/KngRsTTtuy4d7G2sCx8XVojt4OXffVCrAzuitxsWZ6Kj26kmmlrMKtLv6sqx8aT5gTZcm3NYKdB4CoS4VAs+AcanYKilR7kSulgJqMdkPJc62NiZEy51iygn5+8Qqgl0jUtJytD/8RT5u0pXB8JpYiu0cxxgFjqVpCCFEU=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.19,REQID:1d6a81a1-2dbd-496d-bc5c-035a2b24a63b,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:7db8b62,CLOUDID:59e64528-9ebf-4787-bb42-3cd26eee85aa,B
-	ulkID:nil,BulkQuantity:0,SF:81|82|102|836|865|888|898,TC:-5,Content:0|15|5
-	0|99,EDM:-3,IP:nil,URL:1,File:130,RT:0,Bulk:nil,QS:nil,BEC:-1,COL:0,OSI:0,
-	OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 2,SSN|SDN
-X-CID-BAS: 2,SSN|SDN,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULS
-X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: b583375aafe211f1afed4741b24580c9-20260913
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
-	(envelope-from <eason.lai@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 220296321; Sun, 13 Sep 2026 19:19:26 -0700
-Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
- MTKMBS14N1.mediatek.inc (172.21.101.75) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.29; Mon, 14 Sep 2026 10:19:24 +0800
-Received: from mtksitap99.mediatek.inc (10.233.130.16) by
- mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.2562.29 via Frontend Transport; Mon, 14 Sep 2026 10:19:24 +0800
-From: Eason Lai <eason.lai@mediatek.com>
-To: <nbd@nbd.name>, <lorenzo@kernel.org>
-CC: <linux-wireless@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
-	<kun.wu@mediatek.com>, <deren.wu@mediatek.com>, <sean.wang@mediatek.com>,
-	<quan.zhou@mediatek.com>, <ryder.lee@mediatek.com>, <leon.yen@mediatek.com>,
-	<litien.chang@mediatek.com>, <jb.tsai@mediatek.com>,
-	<lucid_duck@justthetip.ca>, <eason.lai@mediatek.com>,
-	<stable@vger.kernel.org>, Hans Buchheim <hbuchheim@gmail.com>, Sergei
- Melnichenko <sergei.melnichenko@gmail.com>
-Subject: [PATCH v5 2/2] wifi: mt76: fix memory leak in USB TX path
-Date: Mon, 14 Sep 2026 10:19:20 +0800
-Message-ID: <20260914021920.32246-3-eason.lai@mediatek.com>
-X-Mailer: git-send-email 2.45.2
-In-Reply-To: <20260914021920.32246-1-eason.lai@mediatek.com>
-References: <20260827083526.1621600-1-eason.lai@mediatek.com>
- <20260914021920.32246-1-eason.lai@mediatek.com>
+	id 1x5wKp-00000002Ah0-3Pxu;
+	Mon, 14 Sep 2026 02:22:21 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=n2fAuA5nFwsL/ms606WSMHYPGwe2Jo1bAW0OzmLFFeEevxdH0uPPC/qGtzOl1SkaDlKISO/oOe/m24F5yfij7KMD8gw4l2oIrM4BZI1xKsnRELgUOPUYdaLXR0avOCGaVWAKr+epSVocNO6K7iVCeokSjsaiqz2Qa1obeX+Z5SXMYhwIgr4Kr9lQSeR2stig8Wv2OcpBx50jH3fnr0oVaVppfgFtmYoelz/HHQXk55y4Q2BTa7PobKHLpjviAv/AynWXdeGAMqc6sqPiGC0ewZg9LkorgN9DQOJ+pq7fipRO7o7qTEvPpSTMHadwl6eU8d53W/Uzd28I2HeLxItfvA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=3tEjgAAbHV/rvWkki0Kg0WXaYwrNIughZ7yXhBTXOcY=;
+ b=NOUhGfUNcuXZdRyjRe2T14EVyuvupn8+xuYTO+i+vcLQFj8v6x+e5X6Eycwh5Bgm9DCWhrpdi08EcbSpw8UCgANnYfOKptcIY9UoDwS6TX9cE6799Dvsx0haIt6tuBORsbej0le4pbjpSXJnktuFk/bAAaDxTdxVV3UhUR4RFlM8NUDsOBLfxYv3xEyMepwlCHEOAYV20APl0STRl2zwjcsgTyzhEaDMpu1+T1Gs9cMHn0WBsx7u8cLT50tWaFDXjk2inWi8a890bSuXpVR7kWneKu0bankhJTklxH+rkTZq/MDRbFWRCdcwc/3r8u+S3Vtwql7AZwBS31kdXlsOxg==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
+ 222.71.101.198) smtp.rcpttodomain=amd.com smtp.mailfrom=cixtech.com;
+ dmarc=bestguesspass action=none header.from=cixtech.com; dkim=none (message
+ not signed); arc=none (0)
+Received: from SG2PR02CA0124.apcprd02.prod.outlook.com (2603:1096:4:188::9) by
+ TYNPR06MB8997.apcprd06.prod.outlook.com (2603:1096:405:3c4::19) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.406.12; Mon, 14 Sep
+ 2026 02:21:56 +0000
+Received: from SG1PEPF000082E8.apcprd02.prod.outlook.com
+ (2603:1096:4:188:cafe::2b) by SG2PR02CA0124.outlook.office365.com
+ (2603:1096:4:188::9) with Microsoft SMTP Server (version=TLS1_3,
+ cipher=TLS_AES_256_GCM_SHA384) id 15.21.406.12 via Frontend Transport; Mon,
+ 14 Sep 2026 02:21:56 +0000
+X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 222.71.101.198)
+ smtp.mailfrom=cixtech.com; dkim=none (message not signed)
+ header.d=none;dmarc=bestguesspass action=none header.from=cixtech.com;
+Received-SPF: Pass (protection.outlook.com: domain of cixtech.com designates
+ 222.71.101.198 as permitted sender) receiver=protection.outlook.com;
+ client-ip=222.71.101.198; helo=smtprelay.cixcomputing.com; pr=C
+Received: from smtprelay.cixcomputing.com (222.71.101.198) by
+ SG1PEPF000082E8.mail.protection.outlook.com (10.167.240.9) with Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.21.428.7 via Frontend Transport; Mon, 14 Sep 2026 02:21:56 +0000
+Received: from gary-System-Product-Name (unknown [172.16.64.196])
+	by smtprelay.cixcomputing.com (Postfix) with ESMTPSA id B5031427F209;
+	Mon, 14 Sep 2026 10:21:55 +0800 (CST)
+Date: Mon, 14 Sep 2026 10:21:54 +0800
+From: Gary Yang <gary.yang@cixtech.com>
+To: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
+Cc: Linus Walleij <linusw@kernel.org>, Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Dong Aisheng <aisheng.dong@nxp.com>,
+	Fabio Estevam <festevam@gmail.com>, Frank Li <Frank.Li@nxp.com>,
+	Jacky Bai <ping.bai@nxp.com>,
+	Pengutronix Kernel Team <kernel@pengutronix.de>,
+	NXP S32 Linux Team <s32@nxp.com>,
+	Sascha Hauer <s.hauer@pengutronix.de>,
+	Sean Wang <sean.wang@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Bartosz Golaszewski <brgl@kernel.org>,
+	Bjorn Andersson <andersson@kernel.org>,
+	Michal Simek <michal.simek@amd.com>,
+	Fugang Duan <fugang.duan@cixtech.com>,
+	CIX Linux Kernel Upstream Group <cix-kernel-upstream@cixtech.com>,
+	Del Regno <angelogioacchino.delregno@somainline.org>,
+	Rahul Tanwar <rahul.tanwar@linux.intel.com>,
+	Mukesh Ojha <mukesh.ojha@oss.qualcomm.com>,
+	Jingyi Wang <jingyi.wang@oss.qualcomm.com>,
+	Neil Armstrong <neil.armstrong@linaro.org>,
+	Krishna Potthuri <sai.krishna.potthuri@amd.com>,
+	linux-gpio@vger.kernel.org, devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org, imx@lists.linux.dev,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org
+Subject: Re: [PATCH] dt-bindings: pinctrl: Use consistent indentation in the
+ example
+Message-ID: <aqdaQgd2zD7p5GDU@gary-System-Product-Name>
+References: <20260913123223.99893-2-krzysztof.kozlowski@oss.qualcomm.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+In-Reply-To: <20260913123223.99893-2-krzysztof.kozlowski@oss.qualcomm.com>
+X-EOPAttributedMessage: 0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: SG1PEPF000082E8:EE_|TYNPR06MB8997:EE_
+X-MS-Office365-Filtering-Correlation-Id: 8ba692ce-7cbb-437c-4565-08df1206f2fe
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230040|23010399003|7416014|376014|1800799024|82310400026|36860700016|22082099003|18002099003|3023799007|10067099003|56012099006;
+X-Microsoft-Antispam-Message-Info: aWkdQLddGLsxkMstMEUMdsyDfguVp4YV/4ik0FSJS9fiVZE0JS/94ZLu+1Bzj3OI0ZS66oWOgZ2TH5XYPjVvK+8m5rmniOM0ZjL+kna9wC8V/qeUPZXpuFvRphGzFGMwSAtvCdu1MTY6D+0zHgCqsrc5aZAxO/8ksnQgaQs4p/WLkpbEWqLFqtGheEp4oitKI8fy0VGDaFmdGq+MeDNpmrFH46rTfnkQr2hemBMaKgoVIHwXxgKqt8UrRE/AlnGpMOeL0we2rlrEZ99IsBBIq5FMA/pxhOrBh9Wi6n9j4zKR0X3XkaD8pTtb3XjhLZIQjzBgrbbfvyLTZC9Qj/49cn+bW09wj8MmPSC1kXXnJM/U0QQGffwtq7hePeXboZ9o9s3gpr8/pGCowrCTKjgRt6/ep8Q6nJ94EwppGQ7brvCVwiG4H6i+Nuq9LnNoQi5xClXWdZ+xwu3NagjGjiB+N/98rhnIbDDB2/8Vv6TascRfKawtJb2Vj+MslnBtl9fUzsQwlyTnusKJGkcY23CrmxH4qD62UlGSJ/MmSru0hGlWbultUdmOfNM4hxC1DfeuTLOIBI9FnJ5KYJZMajBNL+ggkBgEkQ5Hx1fbhlQaRSbfK7Qt0GWIzky5k9IFdsdXFp8MOJSPNgJDumznryVNoNPudl31FsPs18hErSsYV11DOTTvp4hqMCWhdwMLn8NUfPsxoZbbZZ07QtI3VNKj+g==
+X-Forefront-Antispam-Report: CIP:222.71.101.198;CTRY:CN;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:smtprelay.cixcomputing.com;PTR:InfoDomainNonexistent;CAT:NONE;SFS:(13230040)(23010399003)(7416014)(376014)(1800799024)(82310400026)(36860700016)(22082099003)(18002099003)(3023799007)(10067099003)(56012099006);DIR:OUT;SFP:1102;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: F/79DqLaazRwUbD86GoJJ7cC8g4ftG4fKHYIMyvQWnpFbvcZ1Dpjzu46frkHE6frKlGOX9itotiyrcWeuRWeqmn4BH+Kd8If6rw5QeTkrQ9wBMrPrr6k4JFy4xEqA31EeAcBc9wdknEVjibm7FGI2RgBJLfPGFSCc+IJN1+QcrQalV9+zu8we7zcFruF54tXn1umPiy0uwiZT/2NONNYiy0rmYgtBB+0XrldmXS0qkSGWmauPVM4CsL5y9VrMy0wHvF/2/0qjNEXGGmGkEcZIIh6T1aaJZ2oaWYf3Xkh4fKummeAyYC5uVSKMVT7KvstKQm65CF6KNreG+oIj/ibI+cthHLVhoITOJ9jkMvntYI+zLTSj3XQsyIUtSo64dFu8vMzlm6jdLVF2yfGckDPRLhfzeHMxwA7/4klbCQEPyDEQGNtantIJ5teSe9rEGOh
+X-OriginatorOrg: cixtech.com
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 14 Sep 2026 02:21:56.3984
+ (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 8ba692ce-7cbb-437c-4565-08df1206f2fe
+X-MS-Exchange-CrossTenant-Id: 0409f77a-e53d-4d23-943e-ccade7cb4811
+X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=0409f77a-e53d-4d23-943e-ccade7cb4811;Ip=[222.71.101.198];Helo=[smtprelay.cixcomputing.com]
+X-MS-Exchange-CrossTenant-AuthSource: SG1PEPF000082E8.apcprd02.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Anonymous
+X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: TYNPR06MB8997
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260913_191933_517908_C0B26E54 
-X-CRM114-Status: GOOD (  15.66  )
+X-CRM114-CacheID: sfid-20260913_192219_992718_1BF2C0D9 
+X-CRM114-Status: GOOD (  15.30  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,100 +136,305 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-When errors occur in mt76u_tx_queue_skb(), the skb is not properly
-freed, leading to memory leaks. This happens when:
-- The queue is full
-- tx_prepare_skb() drops zero-length frames (such as WMM NULL frames)
-  to prevent hardware TX hangs
-- Buffer setup fails
+On 2026-09-13 14:32, Krzysztof Kozlowski wrote:
 
-Fix by properly releasing the skb with ieee80211_tx_status_ext() when
-the queue is full or tx_prepare_skb() fails, and using
-mt76_tx_complete_skb() when mt76u_tx_setup_buffers() fails (since
-tx_prepare_skb() has already succeeded and may have allocated resources
-that need cleanup)
+> EXTERNAL EMAIL
+> 
+> Correct indentation in the examples to consistent 2- or 4-spaces
+> indentation to fix dt-check-style warnings ("example 0
+> [indent-consistent] indent mismatch ...").  Preferred is 4-spaces, but
+> re-indenting entire example just for that is too much churn.
+> 
+> Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
 
-Fixes: b40b15e1521f ("mt76: add usb support to mt76 layer")
-Cc: stable@vger.kernel.org
-Tested-by: Devin Wittmayer <lucid_duck@justthetip.ca>
-Closes: https://github.com/morrownr/mt76/issues/83
-Signed-off-by: Eason Lai <eason.lai@mediatek.com>
-Tested-by: Hans Buchheim <hbuchheim@gmail.com>
-Reported-by: Sergei Melnichenko <sergei.melnichenko@gmail.com>
----
-v2:
-  - add error handling for queue full and tx_prepare_skb()
-  - correct error handling for mt76u_tx_setup_buffers()
-v3: add Tested-by: Devin Wittmayer and cc stable
-v4: add Closes line
-v5: add Tested-by: Hans Buchheim and Reported-by: Sergei Melnichenko
----
- drivers/net/wireless/mediatek/mt76/usb.c | 31 ++++++++++++++++++++----
- 1 file changed, 26 insertions(+), 5 deletions(-)
+For the cix part:
 
-diff --git a/drivers/net/wireless/mediatek/mt76/usb.c b/drivers/net/wireless/mediatek/mt76/usb.c
-index a9af3aa6b80a..dfc12f6944a7 100644
---- a/drivers/net/wireless/mediatek/mt76/usb.c
-+++ b/drivers/net/wireless/mediatek/mt76/usb.c
-@@ -893,6 +893,9 @@ mt76u_tx_queue_skb(struct mt76_phy *phy, struct mt76_queue *q,
- 		   enum mt76_txq_id qid, struct sk_buff *skb,
- 		   struct mt76_wcid *wcid, struct ieee80211_sta *sta)
- {
-+	struct ieee80211_tx_status status = {
-+		.sta = sta,
-+	};
- 	struct mt76_tx_info tx_info = {
- 		.skb = skb,
- 	};
-@@ -900,17 +903,27 @@ mt76u_tx_queue_skb(struct mt76_phy *phy, struct mt76_queue *q,
- 	u16 idx = q->head;
- 	int err;
- 
--	if (q->queued == q->ndesc)
--		return -ENOSPC;
-+	if (q->queued == q->ndesc) {
-+		err = -ENOSPC;
-+		goto err_free_skb;
-+	}
- 
- 	skb->prev = skb->next = NULL;
- 	err = dev->drv->tx_prepare_skb(dev, NULL, qid, wcid, sta, &tx_info);
- 	if (err < 0)
--		return err;
-+		goto err_free_skb;
- 
- 	err = mt76u_tx_setup_buffers(dev, tx_info.skb, q->entry[idx].urb);
--	if (err < 0)
--		return err;
-+	if (err < 0) {
-+		/*
-+		 * mt76_tx_status_skb_get() walks the idr and dereferences
-+		 * a freed skb. This SKB is not counted in non-AQL counter
-+		 * due to error return, so using 0xffff as wcid to keep
-+		 * balanced.
-+		 */
-+		mt76_tx_complete_skb(dev, 0xffff, tx_info.skb);
-+		goto err_ret;
-+	}
- 
- 	mt76u_fill_bulk_urb(dev, USB_DIR_OUT, q->ep, q->entry[idx].urb,
- 			    mt76u_complete_tx, &q->entry[idx]);
-@@ -921,6 +934,14 @@ mt76u_tx_queue_skb(struct mt76_phy *phy, struct mt76_queue *q,
- 	q->queued++;
- 
- 	return idx;
-+
-+err_free_skb:
-+	status.skb = tx_info.skb;
-+	spin_lock_bh(&dev->rx_lock);
-+	ieee80211_tx_status_ext(dev->hw, &status);
-+	spin_unlock_bh(&dev->rx_lock);
-+err_ret:
-+	return err;
- }
- 
- static void mt76u_tx_kick(struct mt76_dev *dev, struct mt76_queue *q)
--- 
-2.45.2
+Reviewed-by: Gary Yang <gary.yang@cixtech.com>
 
+> ---
+>  .../pinctrl/awinic,aw9523-pinctrl.yaml        | 50 +++++++++----------
+>  .../bindings/pinctrl/cix,sky1-pinctrl.yaml    |  2 +-
+>  .../bindings/pinctrl/fsl,imx7d-pinctrl.yaml   |  8 +--
+>  .../bindings/pinctrl/intel,lgm-io.yaml        | 14 +++---
+>  .../pinctrl/mediatek,mt8183-pinctrl.yaml      |  4 +-
+>  .../pinctrl/mediatek,mt8195-pinctrl.yaml      |  2 +-
+>  .../bindings/pinctrl/qcom,hawi-tlmm.yaml      |  4 +-
+>  .../bindings/pinctrl/qcom,kaanapali-tlmm.yaml |  4 +-
+>  .../bindings/pinctrl/qcom,maili-tlmm.yaml     |  4 +-
+>  .../bindings/pinctrl/semtech,sx1501q.yaml     |  4 +-
+>  .../bindings/pinctrl/xlnx,zynqmp-pinctrl.yaml | 46 ++++++++---------
+>  11 files changed, 71 insertions(+), 71 deletions(-)
+> 
+> diff --git a/Documentation/devicetree/bindings/pinctrl/awinic,aw9523-pinctrl.yaml b/Documentation/devicetree/bindings/pinctrl/awinic,aw9523-pinctrl.yaml
+> index 98c310a3c63c..1c09c0fd4930 100644
+> --- a/Documentation/devicetree/bindings/pinctrl/awinic,aw9523-pinctrl.yaml
+> +++ b/Documentation/devicetree/bindings/pinctrl/awinic,aw9523-pinctrl.yaml
+> @@ -108,32 +108,32 @@ examples:
+>          #size-cells = <0>;
+> 
+>          aw9523: gpio-expander@58 {
+> -                compatible = "awinic,aw9523-pinctrl";
+> -                reg = <0x58>;
+> -                interrupt-parent = <&tlmm>;
+> -                interrupts = <50 IRQ_TYPE_EDGE_FALLING>;
+> -                gpio-controller;
+> -                #gpio-cells = <2>;
+> -                gpio-ranges = <&tlmm 0 0 16>;
+> -                interrupt-controller;
+> -                #interrupt-cells = <2>;
+> -                reset-gpios = <&tlmm 51 GPIO_ACTIVE_HIGH>;
+> +            compatible = "awinic,aw9523-pinctrl";
+> +            reg = <0x58>;
+> +            interrupt-parent = <&tlmm>;
+> +            interrupts = <50 IRQ_TYPE_EDGE_FALLING>;
+> +            gpio-controller;
+> +            #gpio-cells = <2>;
+> +            gpio-ranges = <&tlmm 0 0 16>;
+> +            interrupt-controller;
+> +            #interrupt-cells = <2>;
+> +            reset-gpios = <&tlmm 51 GPIO_ACTIVE_HIGH>;
+> 
+> -                keyboard-matrix-col-pins {
+> -                        pins = "gpio8", "gpio9", "gpio10", "gpio11",
+> -                               "gpio12", "gpio13", "gpio14", "gpio15";
+> -                        function = "gpio";
+> -                        input-disable;
+> -                        output-low;
+> -                };
+> +            keyboard-matrix-col-pins {
+> +                pins = "gpio8", "gpio9", "gpio10", "gpio11",
+> +                       "gpio12", "gpio13", "gpio14", "gpio15";
+> +                function = "gpio";
+> +                input-disable;
+> +                output-low;
+> +            };
+> 
+> -                keyboard-matrix-row-pins {
+> -                        pins = "gpio0", "gpio1", "gpio2", "gpio3",
+> -                               "gpio4", "gpio5", "gpio6", "gpio7";
+> -                        function = "gpio";
+> -                        bias-pull-up;
+> -                        drive-open-drain;
+> -                        input-enable;
+> -                };
+> +            keyboard-matrix-row-pins {
+> +                pins = "gpio0", "gpio1", "gpio2", "gpio3",
+> +                       "gpio4", "gpio5", "gpio6", "gpio7";
+> +                function = "gpio";
+> +                bias-pull-up;
+> +                drive-open-drain;
+> +                input-enable;
+> +            };
+>          };
+>      };
+> diff --git a/Documentation/devicetree/bindings/pinctrl/cix,sky1-pinctrl.yaml b/Documentation/devicetree/bindings/pinctrl/cix,sky1-pinctrl.yaml
+> index 8ed53496c386..4ab1f00775cc 100644
+> --- a/Documentation/devicetree/bindings/pinctrl/cix,sky1-pinctrl.yaml
+> +++ b/Documentation/devicetree/bindings/pinctrl/cix,sky1-pinctrl.yaml
+> @@ -86,6 +86,6 @@ examples:
+>                  pinmux = <CIX_PAD_GPIO012_FUNC_GPIO012>;
+>                  bias-pull-up;
+>                  drive-strength = <8>;
+> -           };
+> +            };
+>          };
+>      };
+> diff --git a/Documentation/devicetree/bindings/pinctrl/fsl,imx7d-pinctrl.yaml b/Documentation/devicetree/bindings/pinctrl/fsl,imx7d-pinctrl.yaml
+> index 948160cfbc5f..7275215918bb 100644
+> --- a/Documentation/devicetree/bindings/pinctrl/fsl,imx7d-pinctrl.yaml
+> +++ b/Documentation/devicetree/bindings/pinctrl/fsl,imx7d-pinctrl.yaml
+> @@ -106,8 +106,8 @@ examples:
+>        fsl,input-sel = <&iomuxc>;
+> 
+>        pinctrl_gpio_lpsr: gpio1-grp {
+> -          fsl,pins =
+> -            <0x0008 0x0038 0x0000 0x0 0x0 0x59>,
+> -            <0x000C 0x003C 0x0000 0x0 0x0 0x59>;
+> -        };
+> +        fsl,pins =
+> +          <0x0008 0x0038 0x0000 0x0 0x0 0x59>,
+> +          <0x000C 0x003C 0x0000 0x0 0x0 0x59>;
+> +      };
+>      };
+> diff --git a/Documentation/devicetree/bindings/pinctrl/intel,lgm-io.yaml b/Documentation/devicetree/bindings/pinctrl/intel,lgm-io.yaml
+> index 1144ca2896e3..96c405711f65 100644
+> --- a/Documentation/devicetree/bindings/pinctrl/intel,lgm-io.yaml
+> +++ b/Documentation/devicetree/bindings/pinctrl/intel,lgm-io.yaml
+> @@ -64,13 +64,13 @@ examples:
+>          reg = <0xe2880000 0x100000>;
+> 
+>          uart0-pins {
+> -             pins = <64>, /* UART_RX0 */
+> -                    <65>; /* UART_TX0 */
+> -             function = "CONSOLE_UART0";
+> -             pinmux = <1>,
+> -                      <1>;
+> -             groups = "CONSOLE_UART0";
+> -          };
+> +            pins = <64>, /* UART_RX0 */
+> +                   <65>; /* UART_TX0 */
+> +            function = "CONSOLE_UART0";
+> +            pinmux = <1>,
+> +                     <1>;
+> +            groups = "CONSOLE_UART0";
+> +        };
+>      };
+> 
+>  ...
+> diff --git a/Documentation/devicetree/bindings/pinctrl/mediatek,mt8183-pinctrl.yaml b/Documentation/devicetree/bindings/pinctrl/mediatek,mt8183-pinctrl.yaml
+> index 3db2438fadc7..4bcee7741fcd 100644
+> --- a/Documentation/devicetree/bindings/pinctrl/mediatek,mt8183-pinctrl.yaml
+> +++ b/Documentation/devicetree/bindings/pinctrl/mediatek,mt8183-pinctrl.yaml
+> @@ -221,8 +221,8 @@ examples:
+> 
+>              i2c0_pins_a: i2c0-pins {
+>                  pins1 {
+> -                  pinmux = <PINMUX_GPIO48__FUNC_SCL5>,
+> -                           <PINMUX_GPIO49__FUNC_SDA5>;
+> +                    pinmux = <PINMUX_GPIO48__FUNC_SCL5>,
+> +                             <PINMUX_GPIO49__FUNC_SDA5>;
+>                      mediatek,pull-up-adv = <3>;
+>                      drive-strength-microamp = <1000>;
+>                  };
+> diff --git a/Documentation/devicetree/bindings/pinctrl/mediatek,mt8195-pinctrl.yaml b/Documentation/devicetree/bindings/pinctrl/mediatek,mt8195-pinctrl.yaml
+> index 33cb71775db9..0bcafa78acb2 100644
+> --- a/Documentation/devicetree/bindings/pinctrl/mediatek,mt8195-pinctrl.yaml
+> +++ b/Documentation/devicetree/bindings/pinctrl/mediatek,mt8195-pinctrl.yaml
+> @@ -234,7 +234,7 @@ examples:
+>    - |
+>      #include <dt-bindings/pinctrl/mt8195-pinfunc.h>
+>      #include <dt-bindings/interrupt-controller/arm-gic.h>
+> -    #
+> +
+>      pio: pinctrl@10005000 {
+>        compatible = "mediatek,mt8195-pinctrl";
+>        reg = <0x10005000 0x1000>,
+> diff --git a/Documentation/devicetree/bindings/pinctrl/qcom,hawi-tlmm.yaml b/Documentation/devicetree/bindings/pinctrl/qcom,hawi-tlmm.yaml
+> index 3b3961789860..2b1354e212e5 100644
+> --- a/Documentation/devicetree/bindings/pinctrl/qcom,hawi-tlmm.yaml
+> +++ b/Documentation/devicetree/bindings/pinctrl/qcom,hawi-tlmm.yaml
+> @@ -113,8 +113,8 @@ examples:
+>          #interrupt-cells = <2>;
+> 
+>          qup-uart7-state {
+> -          pins = "gpio62", "gpio63";
+> -          function = "qup1_se7";
+> +            pins = "gpio62", "gpio63";
+> +            function = "qup1_se7";
+>          };
+>      };
+>  ...
+> diff --git a/Documentation/devicetree/bindings/pinctrl/qcom,kaanapali-tlmm.yaml b/Documentation/devicetree/bindings/pinctrl/qcom,kaanapali-tlmm.yaml
+> index 53534a07a1f0..ea7d4768483d 100644
+> --- a/Documentation/devicetree/bindings/pinctrl/qcom,kaanapali-tlmm.yaml
+> +++ b/Documentation/devicetree/bindings/pinctrl/qcom,kaanapali-tlmm.yaml
+> @@ -120,8 +120,8 @@ examples:
+>          #interrupt-cells = <2>;
+> 
+>          qup-uart7-state {
+> -          pins = "gpio62", "gpio63";
+> -          function = "qup1_se7";
+> +            pins = "gpio62", "gpio63";
+> +            function = "qup1_se7";
+>          };
+>      };
+>  ...
+> diff --git a/Documentation/devicetree/bindings/pinctrl/qcom,maili-tlmm.yaml b/Documentation/devicetree/bindings/pinctrl/qcom,maili-tlmm.yaml
+> index 64fe90b2391b..a0b56adb3388 100644
+> --- a/Documentation/devicetree/bindings/pinctrl/qcom,maili-tlmm.yaml
+> +++ b/Documentation/devicetree/bindings/pinctrl/qcom,maili-tlmm.yaml
+> @@ -113,8 +113,8 @@ examples:
+>          #interrupt-cells = <2>;
+> 
+>          qup-uart7-state {
+> -          pins = "gpio62", "gpio63";
+> -          function = "qup1_se7";
+> +            pins = "gpio62", "gpio63";
+> +            function = "qup1_se7";
+>          };
+>      };
+>  ...
+> diff --git a/Documentation/devicetree/bindings/pinctrl/semtech,sx1501q.yaml b/Documentation/devicetree/bindings/pinctrl/semtech,sx1501q.yaml
+> index 39d7dad3313b..f7a7551d7f50 100644
+> --- a/Documentation/devicetree/bindings/pinctrl/semtech,sx1501q.yaml
+> +++ b/Documentation/devicetree/bindings/pinctrl/semtech,sx1501q.yaml
+> @@ -244,8 +244,8 @@ examples:
+>              interrupt-controller;
+> 
+>              gpio1-cfg {
+> -                  pins = "gpio1";
+> -                  bias-pull-up;
+> +                pins = "gpio1";
+> +                bias-pull-up;
+>              };
+>          };
+>      };
+> diff --git a/Documentation/devicetree/bindings/pinctrl/xlnx,zynqmp-pinctrl.yaml b/Documentation/devicetree/bindings/pinctrl/xlnx,zynqmp-pinctrl.yaml
+> index ce66fd15ff9c..300d38f87f2d 100644
+> --- a/Documentation/devicetree/bindings/pinctrl/xlnx,zynqmp-pinctrl.yaml
+> +++ b/Documentation/devicetree/bindings/pinctrl/xlnx,zynqmp-pinctrl.yaml
+> @@ -317,37 +317,37 @@ examples:
+>      #include <dt-bindings/pinctrl/pinctrl-zynqmp.h>
+>      zynqmp_firmware: zynqmp-firmware {
+>          pinctrl0: pinctrl {
+> -          compatible = "xlnx,zynqmp-pinctrl";
+> +            compatible = "xlnx,zynqmp-pinctrl";
+> 
+> -          pinctrl_uart1_default: uart1-default {
+> -             mux {
+> -                 groups = "uart0_4_grp", "uart0_5_grp";
+> -                 function = "uart0";
+> -             };
+> +            pinctrl_uart1_default: uart1-default {
+> +                mux {
+> +                    groups = "uart0_4_grp", "uart0_5_grp";
+> +                    function = "uart0";
+> +                };
+> 
+> -             conf {
+> -                groups = "uart0_4_grp";
+> -                slew-rate = <SLEW_RATE_SLOW>;
+> -                power-source = <IO_STANDARD_LVCMOS18>;
+> -             };
+> +                conf {
+> +                    groups = "uart0_4_grp";
+> +                    slew-rate = <SLEW_RATE_SLOW>;
+> +                    power-source = <IO_STANDARD_LVCMOS18>;
+> +                };
+> 
+> -             conf-rx {
+> -                pins = "MIO18";
+> -                bias-pull-up;
+> -             };
+> +                conf-rx {
+> +                    pins = "MIO18";
+> +                    bias-pull-up;
+> +                };
+> 
+> -             conf-tx {
+> -                pins = "MIO19";
+> -                bias-disable;
+> -                input-schmitt-disable;
+> -             };
+> -          };
+> +                conf-tx {
+> +                    pins = "MIO19";
+> +                    bias-disable;
+> +                    input-schmitt-disable;
+> +                };
+> +            };
+>          };
+>      };
+> 
+>      uart1 {
+> -         pinctrl-names = "default";
+> -         pinctrl-0 = <&pinctrl_uart1_default>;
+> +        pinctrl-names = "default";
+> +        pinctrl-0 = <&pinctrl_uart1_default>;
+>      };
+> 
+>  ...
+> --
+> 2.53.0
+> 
 
