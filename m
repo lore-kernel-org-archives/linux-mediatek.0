@@ -4,83 +4,198 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B8CC5C88E6A
-	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Sep 2026 07:34:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0A2ECC88E50
+	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Sep 2026 08:05:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:To:Subject
+	:Date:Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=gdfwjGADhgtUrDpDoqj+aKYY1Y3zXb2Kw/5200kXnaw=; b=TB2jBc7cHfR5gwRi682xf6SFoP
-	4WV3ajgGqhTjRjl81/V1QbrYXNEi98a+9Z1u0SUnosQwe/2gQF7qyqL4qyefRNlOt6yFY0B7nzCNT
-	5VEoM8hkztHUOO/Jifw5CJRl0Ls9XTWWTWaw5yGkI9h47L3KcjzmF4Os5CWK1TUE1H3A2xD93B2Id
-	ohBKkgIbRP1BUqQeuWFov21SyIFUeeddV/lfdlkzPfrmSxx7jIdpBpoJQZrCzyTkZqNSyUFC18+N0
-	AzVjZreXvfP45elqQQXF1NW4MVfNNHQoPzMGTSnXcO32MT7uilPAN5rHJENdT2vyX+Y0w5krbs6cE
-	3zBlQqUA==;
+	bh=N6EK60rhMrWUHwO9hRYuylhESdji7nYBVQOVBdz1hg8=; b=t3F0mE/Ft5FpRdzj3IUFKWNjnJ
+	r8gJDtnrzoqDnemlVYF1g3MqJstNbnvk+auMBWGOSk7gEmHFe9zDhIegkl8VdTEvFMjNfcK3eQ5Eb
+	yaf6TUcKVcCTpRBcORXa05t2XKjxfvbcQvZAEUeUneUTN+T4XOqkupD3deN+Q6SGI8Jkc5GnVzqLD
+	jfFcKa6l7OUnX8AzhfywPUIHV0jDuZ/XWiC0lGDdmjkkMxwdBBDIMYfCViAKbA8umGcgAXngpAkzE
+	UTARIbSx4i+H1Odfk0Q1TQ7XrlJ0JgQOPzL+OTwDWhqDnbvfpffCfaXgB/cJmGiSXAL6rz2SwKPmI
+	9rzLhXCQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x61DF-00000002aZN-1o9p;
-	Mon, 14 Sep 2026 07:34:49 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1x61gu-00000002egZ-3qe3;
+	Mon, 14 Sep 2026 08:05:28 +0000
+Received: from mail-westusazon11010009.outbound.protection.outlook.com ([52.101.85.9] helo=BYAPR05CU005.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x61D4-00000002aQm-11Ou;
-	Mon, 14 Sep 2026 07:34:39 +0000
-X-UUID: bc563eb6b00e11f1acbe4559397dec65-20260914
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=gdfwjGADhgtUrDpDoqj+aKYY1Y3zXb2Kw/5200kXnaw=;
-	b=b5WgmyPzbjd7+LUppDscfU9R96UJP37qybzMH8yPiC+m9WamykiTD9c289fqL8AWov80YCfed7lrrwMhndGvMvtVaee7VcHUMTRULeYls2az7ebau5kp0mZyQkXqrb66fzdKR+q9zSL7ZnMwazcaGfTzLT8Yt9O6ISrN1Locjzk=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.19,REQID:fa6a710c-ae01-4138-8c85-3c751046344e,IP:0,U
-	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
-	N:release,TS:-25
-X-CID-META: VersionHash:7db8b62,CLOUDID:18c78c23-5cf3-42cf-b2e6-6e46fb0e268e,B
-	ulkID:nil,BulkQuantity:0,SF:81|82|102|136|836|865|888|898,TC:-5,Content:0|
-	15|50|99,EDM:-3|-100,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:-1,COL
-	:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 2,SSN|SDN
-X-CID-BAS: 2,SSN|SDN,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: bc563eb6b00e11f1acbe4559397dec65-20260914
-Received: from mtkmbs09n1.mediatek.inc [(172.21.101.35)] by mailgw02.mediatek.com
-	(envelope-from <irui.wang@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1387779097; Mon, 14 Sep 2026 00:34:36 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- MTKMBS14N1.mediatek.inc (172.21.101.75) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.29; Mon, 14 Sep 2026 15:34:33 +0800
-Received: from mhfsdcap04.gcn.mediatek.inc (10.17.3.154) by
- mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.2562.29 via Frontend Transport; Mon, 14 Sep 2026 15:34:32 +0800
-From: Irui Wang <irui.wang@mediatek.com>
-To: Hans Verkuil <hverkuil-cisco@xs4all.nl>, Mauro Carvalho Chehab
-	<mchehab@kernel.org>, Rob Herring <robh+dt@kernel.org>, Matthias Brugger
-	<matthias.bgg@gmail.com>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	<wenst@chromium.org>, <angelogioacchino.delregno@collabora.com>,
-	<nicolas.dufresne@collabora.com>, Tiffany Lin <tiffany.lin@mediatek.com>,
-	kyrie wu <kyrie.wu@mediatek.com>
-CC: Yunfei Dong <yunfei.dong@mediatek.com>, Maoguang Meng
-	<maoguang.meng@mediatek.com>, Longfei Wang <longfei.wang@mediatek.com>, Irui
- Wang <irui.wang@mediatek.com>,
-	<Project_Global_Chrome_Upstream_Group@mediatek.com>,
-	<linux-media@vger.kernel.org>, <devicetree@vger.kernel.org>,
-	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-mediatek@lists.infradead.org>
-Subject: [PATCH v8 5/6] media: mediatek: encoder: Add support for VCP encode process
-Date: Mon, 14 Sep 2026 15:34:20 +0800
-Message-ID: <20260914073423.16131-6-irui.wang@mediatek.com>
-X-Mailer: git-send-email 2.46.0
-In-Reply-To: <20260914073423.16131-1-irui.wang@mediatek.com>
-References: <20260914073423.16131-1-irui.wang@mediatek.com>
+	id 1x61gq-00000002ee7-0Dkr;
+	Mon, 14 Sep 2026 08:05:27 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=LPYmhoYh1yD1174mRhZOUWqyiNgZlZpHMccxNYTZQLffO2awiYtYaxWUGZKZotje4jHA957Zl57aVJ05xai8zVufmni5t8MWGUkwCMg5gDuqV6CsflntQzoWOvIslFJW4kTH3eP/n+D3JnNJYEV4yT5+ksgbLEu4IgNAznIFIgFlgJNxoJOZWz/GAvTdDCee3Jl5rOeKn0ABIuBOxwapwXAuVVdD75Jomx+URh734yfOtW+rWJ+kQ6SZfWG5QUAaX+MvJ+TjoWLjkbKmLpfdz5ZZ3swHpbnz5onzGI2hElKCrhRFRRJEnL3Zuy0/OLLUZzUB7HEauDLhSs/ovodPfw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=N6EK60rhMrWUHwO9hRYuylhESdji7nYBVQOVBdz1hg8=;
+ b=tYwI6OwIgPBi/iGXbUbgAjX5xSSC6pR1VUnn8Jtap9ukKwg+D0ESQLA614UQNYoonM+UsEYOs7pAFki6tq5naltOD2Z2W05QTSeepOI7BZjuX0eCwGogHXEixWQINZ7CTtHnBauzQQKrz5n9Xo7acnmTkDbj0+1QidCM6IsMU7fMyKB4mx+gXiYQ5Xxueb+zhixbTI9IPlO0WyiFbAmQXFNuxxbuZlr0Ww7Z+fbhra4ad99jlYR/2kEhkWHgCfr3KrqU37VRiTJkFn6iyPogGWV4tgPrpX31nZUcXQJtP9Dav6s55SPSN8ZyUK1TdxFtuiOfv1L9IanyrowVHUCdMA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=amd.com; dmarc=pass action=none header.from=amd.com; dkim=pass
+ header.d=amd.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=amd.com; s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=N6EK60rhMrWUHwO9hRYuylhESdji7nYBVQOVBdz1hg8=;
+ b=tFFRa8aH5BK2olr35fwtpXO4PlNSzj5kLganAY8I3MMDHzxyOkr7eQpAlhW0BcEU2xGbJkJVRe5o25QHHY02BVI4uewnPeP0ZwDTzutYItgBFRU12ejB8uyPA+W4nWOff736tusSLCBkkHZw90HvGMZMqMmdmLFFIiGVQZbEUrg=
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=amd.com;
+Received: from LV5PR12MB9779.namprd12.prod.outlook.com (2603:10b6:408:301::14)
+ by DM6PR12MB4106.namprd12.prod.outlook.com (2603:10b6:5:221::7) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.406.12; Mon, 14 Sep
+ 2026 08:05:17 +0000
+Received: from LV5PR12MB9779.namprd12.prod.outlook.com
+ ([fe80::8ac8:e862:8ae9:9287]) by LV5PR12MB9779.namprd12.prod.outlook.com
+ ([fe80::8ac8:e862:8ae9:9287%5]) with mapi id 15.21.0406.007; Mon, 14 Sep 2026
+ 08:05:17 +0000
+Message-ID: <6eccf2a5-68a7-4741-aacf-7c2916de7345@amd.com>
+Date: Mon, 14 Sep 2026 10:05:04 +0200
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] dt-bindings: pinctrl: Use consistent indentation in the
+ example
+To: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>,
+ Linus Walleij <linusw@kernel.org>, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
+ <conor+dt@kernel.org>, Dong Aisheng <aisheng.dong@nxp.com>,
+ Fabio Estevam <festevam@gmail.com>, Frank Li <Frank.Li@nxp.com>,
+ Jacky Bai <ping.bai@nxp.com>, Pengutronix Kernel Team
+ <kernel@pengutronix.de>, NXP S32 Linux Team <s32@nxp.com>,
+ Sascha Hauer <s.hauer@pengutronix.de>, Sean Wang <sean.wang@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Bartosz Golaszewski <brgl@kernel.org>, Bjorn Andersson
+ <andersson@kernel.org>, Gary Yang <gary.yang@cixtech.com>,
+ Fugang Duan <fugang.duan@cixtech.com>,
+ CIX Linux Kernel Upstream Group <cix-kernel-upstream@cixtech.com>,
+ Del Regno <angelogioacchino.delregno@somainline.org>,
+ Rahul Tanwar <rahul.tanwar@linux.intel.com>,
+ Mukesh Ojha <mukesh.ojha@oss.qualcomm.com>,
+ Jingyi Wang <jingyi.wang@oss.qualcomm.com>,
+ Neil Armstrong <neil.armstrong@linaro.org>,
+ Krishna Potthuri <sai.krishna.potthuri@amd.com>, linux-gpio@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ imx@lists.linux.dev, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org
+References: <20260913123223.99893-2-krzysztof.kozlowski@oss.qualcomm.com>
+Content-Language: en-US
+From: Michal Simek <michal.simek@amd.com>
+Autocrypt: addr=michal.simek@amd.com; keydata=
+ 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
+ mpwx1d8=
+In-Reply-To: <20260913123223.99893-2-krzysztof.kozlowski@oss.qualcomm.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+X-ClientProxiedBy: SJ0PR03CA0244.namprd03.prod.outlook.com
+ (2603:10b6:a03:3a0::9) To LV5PR12MB9779.namprd12.prod.outlook.com
+ (2603:10b6:408:301::14)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-MTK: N
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: LV5PR12MB9779:EE_|DM6PR12MB4106:EE_
+X-MS-Office365-Filtering-Correlation-Id: 771e00d6-ded6-4841-fa1e-08df1236e9c1
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230040|376014|7416014|1800799024|23010399003|366016|921020|18002099003|22082099003|56012099006|11063799006|10067099003;
+X-Microsoft-Antispam-Message-Info: KNNbnwM5YmXJpHAGnxFO1ydl4eRRJIpO1r54vTFTDELMDPXJYhoyisEQfw5VEj97jVUyl+jRcZfTYLq0uS44szqxeDG0OZ8237WOBeJ7F0uQ4han73eOHfo/Aqc1Z1CSIVKMzIirDQCc8bsLkEBl9LxfaTOGcuGKX46qz/qyVz0iJ+KtxZkbeTaSGpnQEZwlw7LfoYJ8pvIN6HbV8YzC9GJ3tn2bd8gTgP+VEtmH6De5ruLyF0jYOhvOVtIg2sxLY9twQ7RX6rtJqdX0uLbI/blGqvv/0+XD+wNRtjyA0+HW81qp5jFVV/9dOibpH3PWuBsE4O6WRSScyWCoLpg/gyRTrHjjlTcrDmmFro06mBfRwWhuuUnxbcPjC4LUHIDL3UL9001Yjlf+MpCKwELeKOupaNMx7B3blJeBJunzPm5SUlMUSj2o6bxTWEr7XSvFDvYZLG//ImTj6cH4QdMfYC6VCylEckqrB+8VK+4Wk3NYLWHIoR7typPhx+8fG2EdZVXML3IqrGYWCzt3+RiTcyJOQVXo3yrbWQ1M7txCN/4yaJcuZtoMSdf5XWCo8/OgwqGI1x0CBfIeoWSS9EJ21cdw1i0JdRBNvwAb2d92j0RAxoJwhKqJNe/IFiNUK8M9NI88suVXT+Gb6JhN/rxi+GrhIKYwJYMskLfx9uHrIm2b2gb4NrL106okOFKxW0dNKTNUm0MD/irsqjaTBpsAZA==
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:LV5PR12MB9779.namprd12.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(376014)(7416014)(1800799024)(23010399003)(366016)(921020)(18002099003)(22082099003)(56012099006)(11063799006)(10067099003);DIR:OUT;SFP:1101;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?Mm0wZDJhYmFlYXNkK1BwTHh1eGFyMk13V3BSdmlYOWdjZkhialNtTFE4K1ZC?=
+ =?utf-8?B?RWFaMzlwQW9uOFFSc2owYkpkeGpHUGtYNWFESGlBdFEvT3Vxd2hQa3pOVktT?=
+ =?utf-8?B?R3RUTGRPYS95RGR6RkdjbG5talpzdFdhK2Z2TCtkL25DcS92eTUvR1NENDVE?=
+ =?utf-8?B?YW5hK0tSNDcxOWZrYmNRbHVLYlVWZ3c5TURUaDkwa3ZoWWZ1cUsxV1kzNG5u?=
+ =?utf-8?B?Z1MvcWZvTTBmTWZvenJ2aVZROHZiaUdtSkI5c2pKdDZvbThLQTNYMGxadDlP?=
+ =?utf-8?B?MXN0bm9iUDhBMUFhdERPWjhxNEQ3VVg5MjBwTktaK3dGejJRRXJOb085Wlg3?=
+ =?utf-8?B?bkRzYU1zVG5JeWlxcDRneXBvMmlGWkVCZ1RkVjA4UWxNVnR6SXp0VUw0YXhB?=
+ =?utf-8?B?VjRGNVJieU5xTlhLZCtSOXdIMExtQkdRZEROV0RaNnEzVDJxREw5MENqV3U2?=
+ =?utf-8?B?MEZvKzRIckJHNFgxOHJhdG9kYXlqODFEdXUrQzRuai8xMlZ6RmtBUFp6QjRW?=
+ =?utf-8?B?SDFNR1lEam4za3ZBd3d4Mng1THgrd2lRZlZERUlmeHBvODJ5dmk5Zmp4L2dl?=
+ =?utf-8?B?SnN5RHZZbE1YZW1PUVBxR25wWWV3cndnZDEwVm1McFdkeEU0N1JNTkF0N1pu?=
+ =?utf-8?B?MUM4L2hjamNLU0dneHlJcmxnUHVaS3VqU2pYTm9wTUh0aFpORFRIbjcyT2xG?=
+ =?utf-8?B?Nm9ORXpVamxiekN3L2kzcVVYYXRkVHRrSDVwbDA3VC9Na1UvdFVvV2ZVTDNq?=
+ =?utf-8?B?S1BMempualZveml2cXdtR2dtR2pENE1VSmZ3dmVhWUF1bGdRNFpqTlg0Yms1?=
+ =?utf-8?B?YWhpam5OYWJKSHJLRHE0QTdrNEVuZEtISzdSZ1hkcTkwUDNaYXpSYlp1cjhP?=
+ =?utf-8?B?UkJNVHg1bGZITjF3dU1zZWYrY0JzRUNuMzdsdkg2RzVjTC9jRmIwczFSSkFT?=
+ =?utf-8?B?cFFuNkVSdmcwWEs5dWFzdS8vOHZXd0JZTENjOWh5dmFRVUNhUUI1Mnl3WERq?=
+ =?utf-8?B?MXJTR0tpNlpJTS9Pemh4MXo3NjRkVWUyanY1RHh5ejV1L0U1a0pGb0FDZlV0?=
+ =?utf-8?B?NEVLemplcEd6Y0haYnNzZ2hodVZYYWVIOWRESE81K0JzdHB5K1lwQitjSHUw?=
+ =?utf-8?B?KzMydzNqaGNMUGQ1K1NuOGkzUU9zbUcvdlVNZldzU0E4L2dyYlpFWndnWWZT?=
+ =?utf-8?B?eXZLbGY1b25CUXdxYngzSjdZOHQ1SzBZdzhwVUpGZnRpN3hKcGUwTTkwN2pG?=
+ =?utf-8?B?Y04veXdrdmhENDIvYzdIa1l5SWZ0MElSRWV1ektEb0Fkd1l2K2Eza0YrL093?=
+ =?utf-8?B?YStsOEVNSXN2ZU42NWFKU1o4SlhXYjR3eHpwT3A1aE9CeEVTTDFFVkdlcFZ5?=
+ =?utf-8?B?WkZtNEt2eWtBSlZsSldhZ0RrdFpLV3BhbjVycHg5VTNjS3NDKy90N3RHbVNE?=
+ =?utf-8?B?MFZBUDBoRktDTzNweFd4Zmw3ZkIrcmN2MG0wYjlBSWIveEIyc08yeWhQZlFJ?=
+ =?utf-8?B?cmNaNzd5RFNBSTZHNEVCNWVnbGs4Ky9aL0EyTjBVTjg1b05jMzVNbURObXJ1?=
+ =?utf-8?B?YU5UYWUySjczcDAzOC9oZkZOUk5aWDdWbHUwY3NwbHhDYU9PUmYzNEZNYksw?=
+ =?utf-8?B?YlBvOTFVemVvbTAzZ1JOeUtCamN5ZlYybW5MRDRXMlMrZHBzc3hLVFhibUd4?=
+ =?utf-8?B?aTRnZkFjbXBRQWlNMHFsZ1dFS1grUGhMcHd4RFVITE5lSnFnY2F6N2dxcnc3?=
+ =?utf-8?B?c3hRK1FVWDVVaGJsSFJwUDM2QXFOck5WQlM5YVFiSjh3OEZSY3V5MVh3b0oz?=
+ =?utf-8?B?L0tDSnBjWlhyZ2JDL3JER0VlSkowT3lPbjZZVnBvSUhUYS91UVhMSmxTZEZZ?=
+ =?utf-8?B?eXhnZnIwei9kRVpoaE5LTTZaWlhXVm5ieG9ndTdGT3lIemV6QnlxWElpMmdJ?=
+ =?utf-8?B?bnhjaHBRRnhURE9kNEFBYjBwd2kraVJsZngwR0ZRQVFEWmpDL21xZ1BXOXJG?=
+ =?utf-8?B?T1FObUJlRStGNzJUcWhlZm83dXp2UlgxV09hZXVieXZjQWxDdmkvck9NYUZj?=
+ =?utf-8?B?WWlNWExXMmVZWmFQSmxpeXVEM1R1YjhIeVNCWHlna1I4a2Q2cjVXVjZ1Wkxr?=
+ =?utf-8?B?ZFBOY3RpOVlxVUw0V0pFaXVtd2VWWTIzVXo4MElVcXdpaGQ4UWlsc1djQ0Ro?=
+ =?utf-8?B?S290b293Vm9WenNnVTJKSURuUXd5QUV5R011UnFueWxJVDBCUGFYVjhjNmNK?=
+ =?utf-8?B?TkIramYzSTBkRGMrQndYdlNPTlRJU25RNWM5ZzZQOWl3RmhJME90VTB0Qmp1?=
+ =?utf-8?Q?iXnSsoNL7rlL2uO8f2?=
+X-OriginatorOrg: amd.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 771e00d6-ded6-4841-fa1e-08df1236e9c1
+X-MS-Exchange-CrossTenant-AuthSource: LV5PR12MB9779.namprd12.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 14 Sep 2026 08:05:17.0503
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 3dd8961f-e488-4e60-8e11-a82d994e183d
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: WjJ1TvwbnrrjzQljVMjqmL2srrfaOdbl8qO4p+l9STcPASHRN4d/Y/0K4zZ2J9gO
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM6PR12MB4106
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260914_003438_305147_D71BD474 
-X-CRM114-Status: GOOD (  21.91  )
+X-CRM114-CacheID: sfid-20260914_010524_162019_F9E98C46 
+X-CRM114-Status: UNSURE (   9.27  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,170 +210,30 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Adapt the encoder driver to support VCP firmware interface.
 
-Use platform data fw_type to identify VCP firmware and perform
-VCP-specific operations:
-- Allocate RC buffers using the VCP device
-- Send shared memory address to VCP firmware
-- Map the encoder VSI address to the CPU address space using the
-VCP shared memory address.
 
-Signed-off-by: Irui Wang <irui.wang@mediatek.com>
----
- .../mediatek/vcodec/common/mtk_vcodec_fw.c    |  6 +++++
- .../mediatek/vcodec/common/mtk_vcodec_fw.h    |  1 +
- .../vcodec/common/mtk_vcodec_fw_priv.h        |  1 +
- .../vcodec/common/mtk_vcodec_fw_vcp.c         |  6 +++++
- .../vcodec/encoder/venc/venc_common_if.c      | 22 ++++++++++++++-----
- .../mediatek/vcodec/encoder/venc_vpu_if.c     | 16 ++++++++++++--
- 6 files changed, 44 insertions(+), 8 deletions(-)
+On 9/13/26 14:32, Krzysztof Kozlowski wrote:
+> Correct indentation in the examples to consistent 2- or 4-spaces
+> indentation to fix dt-check-style warnings ("example 0
+> [indent-consistent] indent mismatch ...").  Preferred is 4-spaces, but
+> re-indenting entire example just for that is too much churn.
+> 
+> Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
+> ---
+>   .../pinctrl/awinic,aw9523-pinctrl.yaml        | 50 +++++++++----------
+>   .../bindings/pinctrl/cix,sky1-pinctrl.yaml    |  2 +-
+>   .../bindings/pinctrl/fsl,imx7d-pinctrl.yaml   |  8 +--
+>   .../bindings/pinctrl/intel,lgm-io.yaml        | 14 +++---
+>   .../pinctrl/mediatek,mt8183-pinctrl.yaml      |  4 +-
+>   .../pinctrl/mediatek,mt8195-pinctrl.yaml      |  2 +-
+>   .../bindings/pinctrl/qcom,hawi-tlmm.yaml      |  4 +-
+>   .../bindings/pinctrl/qcom,kaanapali-tlmm.yaml |  4 +-
+>   .../bindings/pinctrl/qcom,maili-tlmm.yaml     |  4 +-
+>   .../bindings/pinctrl/semtech,sx1501q.yaml     |  4 +-
+>   .../bindings/pinctrl/xlnx,zynqmp-pinctrl.yaml | 46 ++++++++---------
+>   11 files changed, 71 insertions(+), 71 deletions(-)
+Reviewed-by: Michal Simek <michal.simek@amd.com> # ZynqMP
 
-diff --git a/drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_fw.c b/drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_fw.c
-index 8630e871d..962fb2a77 100644
---- a/drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_fw.c
-+++ b/drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_fw.c
-@@ -83,3 +83,9 @@ int mtk_vcodec_fw_get_type(struct mtk_vcodec_fw *fw)
- 	return fw->type;
- }
- EXPORT_SYMBOL_GPL(mtk_vcodec_fw_get_type);
-+
-+struct device *mtk_vcodec_fw_get_dev(struct mtk_vcodec_fw *fw)
-+{
-+	return fw->ops->get_fw_dev(fw);
-+}
-+EXPORT_SYMBOL_GPL(mtk_vcodec_fw_get_dev);
-diff --git a/drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_fw.h b/drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_fw.h
-index 005ac9969..7428b5d6f 100644
---- a/drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_fw.h
-+++ b/drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_fw.h
-@@ -44,5 +44,6 @@ int mtk_vcodec_fw_ipi_send(struct mtk_vcodec_fw *fw, int id,
- 			   void *buf, unsigned int len, unsigned int wait);
- int mtk_vcodec_fw_get_type(struct mtk_vcodec_fw *fw);
- int mtk_vcodec_fw_get_ipi(enum mtk_vcodec_fw_type type, int hw_id);
-+struct device *mtk_vcodec_fw_get_dev(struct mtk_vcodec_fw *fw);
- 
- #endif /* _MTK_VCODEC_FW_H_ */
-diff --git a/drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_fw_priv.h b/drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_fw_priv.h
-index 0a2a9b010..710c83c87 100644
---- a/drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_fw_priv.h
-+++ b/drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_fw_priv.h
-@@ -29,6 +29,7 @@ struct mtk_vcodec_fw_ops {
- 	int (*ipi_send)(struct mtk_vcodec_fw *fw, int id, void *buf,
- 			unsigned int len, unsigned int wait);
- 	void (*release)(struct mtk_vcodec_fw *fw);
-+	struct device *(*get_fw_dev)(struct mtk_vcodec_fw *fw);
- };
- 
- #if IS_ENABLED(CONFIG_VIDEO_MEDIATEK_VCODEC_VPU)
-diff --git a/drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_fw_vcp.c b/drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_fw_vcp.c
-index 468c4bf4e..ece171380 100644
---- a/drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_fw_vcp.c
-+++ b/drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_fw_vcp.c
-@@ -569,6 +569,11 @@ static void mtk_vcodec_vcp_release(struct mtk_vcodec_fw *fw)
- 	mtk_vcodec_vcp_put_device(fw);
- }
- 
-+static struct device *mtk_vcodec_vcp_get_fw_dev(struct mtk_vcodec_fw *fw)
-+{
-+	return fw->vcp->vcp_device->dev;
-+}
-+
- static const struct mtk_vcodec_fw_ops mtk_vcodec_vcp_msg = {
- 	.load_firmware = mtk_vcodec_vcp_load_firmware,
- 	.get_vdec_capa = mtk_vcodec_vcp_get_vdec_capa,
-@@ -577,6 +582,7 @@ static const struct mtk_vcodec_fw_ops mtk_vcodec_vcp_msg = {
- 	.ipi_register = mtk_vcodec_vcp_set_ipi_register,
- 	.ipi_send = mtk_vcodec_vcp_ipi_send,
- 	.release = mtk_vcodec_vcp_release,
-+	.get_fw_dev = mtk_vcodec_vcp_get_fw_dev,
- };
- 
- struct mtk_vcodec_fw *mtk_vcodec_fw_vcp_init(void *priv, enum mtk_vcodec_fw_use fw_use)
-diff --git a/drivers/media/platform/mediatek/vcodec/encoder/venc/venc_common_if.c b/drivers/media/platform/mediatek/vcodec/encoder/venc/venc_common_if.c
-index 742420343..b7401d967 100644
---- a/drivers/media/platform/mediatek/vcodec/encoder/venc/venc_common_if.c
-+++ b/drivers/media/platform/mediatek/vcodec/encoder/venc/venc_common_if.c
-@@ -481,7 +481,11 @@ static void venc_free_rc_buf(struct venc_inst *inst,
- 	int i;
- 	struct device *dev;
- 
--	dev = &inst->ctx->dev->plat_dev->dev;
-+	if (inst->ctx->dev->venc_pdata->fw_type == VCP)
-+		dev = mtk_vcodec_fw_get_dev(inst->ctx->dev->fw_handler);
-+	else
-+		dev = &inst->ctx->dev->plat_dev->dev;
-+
- 	mtk_venc_mem_free(inst, dev, &bufs->rc_code);
- 
- 	for (i = 0; i < core_num; i++)
-@@ -530,12 +534,18 @@ static int venc_alloc_rc_buf(struct venc_inst *inst,
- 	struct device *dev;
- 	void *tmp_va;
- 
--	dev = &inst->ctx->dev->plat_dev->dev;
--	if (mtk_venc_mem_alloc(inst, dev, &bufs->rc_code))
--		return -ENOMEM;
-+	if (inst->ctx->dev->venc_pdata->fw_type == VCP) {
-+		dev = mtk_vcodec_fw_get_dev(fw);
-+		if (mtk_venc_mem_alloc(inst, dev, &bufs->rc_code))
-+			return -ENOMEM;
-+	} else {
-+		dev = &inst->ctx->dev->plat_dev->dev;
-+		if (mtk_venc_mem_alloc(inst, dev, &bufs->rc_code))
-+			return -ENOMEM;
- 
--	tmp_va = mtk_vcodec_fw_map_dm_addr(fw, bufs->rc_code.pa);
--	memcpy(bufs->rc_code.va, tmp_va, bufs->rc_code.size);
-+		tmp_va = mtk_vcodec_fw_map_dm_addr(fw, bufs->rc_code.pa);
-+		memcpy(bufs->rc_code.va, tmp_va, bufs->rc_code.size);
-+	}
- 
- 	for (i = 0; i < core_num; i++) {
- 		if (mtk_venc_mem_alloc(inst, dev, &bufs->rc_info[i]))
-diff --git a/drivers/media/platform/mediatek/vcodec/encoder/venc_vpu_if.c b/drivers/media/platform/mediatek/vcodec/encoder/venc_vpu_if.c
-index 7772b8442..1da9043fd 100644
---- a/drivers/media/platform/mediatek/vcodec/encoder/venc_vpu_if.c
-+++ b/drivers/media/platform/mediatek/vcodec/encoder/venc_vpu_if.c
-@@ -8,16 +8,26 @@
- #include "venc_ipi_msg.h"
- #include "venc_vpu_if.h"
- 
-+#define VSI_OFFSET_MASK 0x0FFFFFFF
-+
- static void handle_enc_init_msg(struct venc_vpu_inst *vpu, const void *data)
- {
- 	const struct venc_vpu_ipi_msg_init_comm *msg = data;
- 	struct mtk_vcodec_fw *fw = vpu->ctx->dev->fw_handler;
-+	u64 pa_start, vsi_offset;
- 
- 	vpu->inst_addr = msg->init_ack.vpu_inst_addr;
--	vpu->vsi = mtk_vcodec_fw_map_dm_addr(fw, vpu->inst_addr);
-+
-+	if (vpu->ctx->dev->venc_pdata->fw_type == VCP) {
-+		pa_start = (u64)fw->vcp->iova_addr;
-+		vsi_offset = (msg->vpu_vsi_addr & VSI_OFFSET_MASK) - (pa_start & VSI_OFFSET_MASK);
-+		vpu->vsi = mtk_vcodec_fw_map_dm_addr(fw, ENCODER_MEM) + vsi_offset;
-+	} else {
-+		vpu->vsi = mtk_vcodec_fw_map_dm_addr(fw, msg->vpu_vsi_addr);
-+	}
- 
- 	/* Firmware version field value is unspecified on MT8173. */
--	if (mtk_vcodec_fw_get_type(fw) == VPU)
-+	if (vpu->ctx->dev->venc_pdata->fw_type == VPU)
- 		return;
- 
- 	/* Check firmware version. */
-@@ -155,6 +165,8 @@ int vpu_enc_init(struct venc_vpu_inst *vpu)
- 	out.base.venc_inst = (unsigned long)vpu;
- 	if (MTK_ENC_DRV_IS_COMM(vpu->ctx)) {
- 		out.codec_type = vpu->ctx->q_data[MTK_Q_DATA_DST].fmt->fourcc;
-+		if (vpu->ctx->dev->venc_pdata->fw_type == VCP)
-+			out.shared_iova = vpu->ctx->dev->fw_handler->vcp->iova_addr;
- 		msg_size = sizeof(struct venc_ap_ipi_msg_init_comm);
- 	} else {
- 		msg_size = sizeof(struct venc_ap_ipi_msg_init);
--- 
-2.55.0.windows.3
-
+Thanks,
+Michal
 
