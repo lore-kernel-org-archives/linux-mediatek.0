@@ -4,78 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 30302C88E64
-	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Sep 2026 12:02:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7698CC88E72
+	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Sep 2026 12:04:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=qLAzhKsUxTEy3WyscyUgfZmNUubzBcet9DIGHn5TpLk=; b=1RFAsQ3AThAGk6qSkfe45iO2MR
-	KZYJnXsMyXVja7E4heUCE9/cu821KfREcWPq5nVy2q3s+5mnlx/u9soo3WBwQYZN2m+mxTnazUkQq
-	crupyN540WikcV6jkY5L+Tj8zCqnbDTR9Ud5GggfEqwICGlJp0HAaDU5/QtS7n9IOk8dHCdSZTJGO
-	d7QmLs0ANR15Ikexn0wbF0+i434YsFj0JoGtRdhdkMVk9IUFAa+e8kWCOy5nooU7A0NmgF6Vpm6aw
-	8hVN+R6Khsb4aVxJ7+IpvxeXQe6cUHLI1jAsWrTlwk/ZbAxU6y5JSSsTpJJEBn92XtQ2U8r4DNqJ1
-	mUYgWqzQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=XAsJmPxRImlCYuJ9vGlo0mSRQFzzdCFhDR4wSqoeuuE=; b=aRyiLmBq+3XrQ4F3w2WOc6EWZQ
+	wqiwlssLUQJwHKDGa8gkQ5lGggWI5SrU8DOj9EIkfbQAGKlRsJuKVafrwbsj9pt6oIoMpu5R7tibs
+	JxzeQ4vdp0zW9tgXOw980qigf+zkXYy1fXXjPGiF8qxRr+zV6TBNKPhI4gVYHT5y2IhMOt6RJ1xe0
+	26VGOKdHGYa+mTBFl0IMH/X1ZK6CH30+EDvyouROQEHlwzxKHYuqbaa/Qsn7MrDqsxqKiE2tLbTmS
+	IhRrZ8MBWbsTT/gF1gokX0fhQ2+0nPWmXIXcSM/JC6sJQzRWT7qGpr+t9b0HcBDZ+E3QGc0hybW+S
+	9e14/rTg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x65OU-00000003Sb1-2QGW;
-	Mon, 14 Sep 2026 12:02:42 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1x65Q6-00000003T0W-1FFJ;
+	Mon, 14 Sep 2026 12:04:22 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x65OK-00000003SW7-2ERY;
-	Mon, 14 Sep 2026 12:02:33 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=In-Reply-To:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
-	Sender:Reply-To:Content-ID:Content-Description;
-	bh=qLAzhKsUxTEy3WyscyUgfZmNUubzBcet9DIGHn5TpLk=; b=ZvJZ95SYEZtKTM7NEoQamHsc3E
-	OdZBf+waXyIqMh0C2l5M5AwvCFH6uXy2aMeqaoxBD5QG73h7K52el9XRbpwPFxqm8Ti5ZPYnedc0M
-	6dPLWhySq2TwlZ1V/+G3YH97x0Xk4ASIQCanu8qvMx0777/o3QmKstnVwasuEQyWLJV2hSaHL6w1v
-	Mwtx2r9a0QiF+ay+DXr10LPcEm0+mmfN7SmSDSfu/xLGDstT4n01a+cwN6Judp/aDnXHXJ78dS4CK
-	e7+7qiFrphWiRKhKctev6NhCFfxn6Zu8R0JcruCXxrw1XrEyNQPB5yIwKnkCVqRz3aQSfx3AiNIzx
-	p2jjl+Bg==;
-Received: from vps0.lunn.ch ([156.67.10.101])
-	by desiato.infradead.org with esmtps (Exim 4.99.2 #2 (Red Hat Linux))
-	id 1x65OH-00000005Zug-2I8x;
-	Mon, 14 Sep 2026 12:02:31 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
-	s=20171124; h=In-Reply-To:Content-Transfer-Encoding:Content-Disposition:
-	Content-Type:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:From:
-	Sender:Reply-To:Subject:Date:Message-ID:To:Cc:MIME-Version:Content-Type:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Content-Disposition:
-	In-Reply-To:References; bh=qLAzhKsUxTEy3WyscyUgfZmNUubzBcet9DIGHn5TpLk=; b=L8
-	K44j2NVTUPMiCH9VjA+7dm9CoQuf6fxcIFjIgMb5n22ygkq+eWaOP0PMdTbt44rwpVShsQfAoisCd
-	s5TLASYsJeKdL6yE8S7HQntQSemzEn7fk7w1Xo+XsMJu5an06kkv8LhKesJW6L0/27NVmxqhFPJvG
-	n6MjgswPA8P9dNg=;
-Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
-	(envelope-from <andrew@lunn.ch>)
-	id 1x65Nk-0054Xh-Tz; Mon, 14 Sep 2026 14:01:56 +0200
-Date: Mon, 14 Sep 2026 14:01:56 +0200
-From: Andrew Lunn <andrew@lunn.ch>
-To: Caleb James DeLisle <cjd@cjdns.fr>
-Cc: netdev@vger.kernel.org, daniel@makrotopia.org, dqfext@gmail.com,
-	SkyLake.Huang@mediatek.com, hkallweit1@gmail.com,
-	linux@armlinux.org.uk, davem@davemloft.net, edumazet@google.com,
-	kuba@kernel.org, pabeni@redhat.com, matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	Matheus Sampaio Queiroga <srherobrine20@gmail.com>
-Subject: Re: [PATCH v3 net-next] net: phy: mediatek: support MT7530 PHYs on
- EN71221 MCM
-Message-ID: <a6e1bb7f-e395-434e-8e9b-992141969d74@lunn.ch>
-References: <20260911120646.4123877-1-cjd@cjdns.fr>
+	id 1x65Pq-00000003St4-0j2j;
+	Mon, 14 Sep 2026 12:04:07 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1789387444;
+	bh=gKOpORfZZq9WL4GdKkT6J4ZawStjF0sjbadPfw+E4YI=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=WOdQfsOx/T0ceqL5oapOcdLeeiktULtm7ihs6SFh+NUe7Y/achPrLONtXSgaWdanO
+	 NDfWJMUiA4gk4wNunkSvPqnZX8it41xUrl+r6OapZwOdrUlxsf3hCq6ELaE4wXM6yc
+	 GzLDOkovTKeEjTAOp8CRXH1V7iGhF9WhrobFk0y4yecR9nQN2Q/toQk29E6ekCGDI3
+	 beYlUSMdKVoyraor1bhH7ZTkAhqj8oqQFRuvadhAX6aObEDXXR0tzA0F2Z2C1ld9BH
+	 7cUZtBoC7SRM4TuWcOVAyXJ+H6ib+Apq1uLVrbTon46L3wGmLPqONmylhoCWPojD3B
+	 R3oIFKLp1hzaQ==
+Received: from [100.64.1.21] (unknown [100.64.1.21])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange x25519)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 04BFC17E091A;
+	Mon, 14 Sep 2026 14:04:02 +0200 (CEST)
+Message-ID: <94a11a7a-0f9e-40b5-aa1b-7d5be34c99ac@collabora.com>
+Date: Mon, 14 Sep 2026 14:04:02 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <20260911120646.4123877-1-cjd@cjdns.fr>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v12 03/24] dt-bindings: ufs: mediatek,ufs: Add mt8196
+ variant
+To: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>,
+ Chunfeng Yun <chunfeng.yun@mediatek.com>, Vinod Koul <vkoul@kernel.org>,
+ Neil Armstrong <neil.armstrong@linaro.org>, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
+ <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ Peter Wang <peter.wang@mediatek.com>,
+ Chaotian Jing <chaotian.jing@mediatek.com>,
+ Alim Akhtar <alim.akhtar@samsung.com>, Avri Altman
+ <avri.altman@sandisk.com>, Bart Van Assche <bvanassche@acm.org>,
+ Stanley Jhu <chu.stanley@gmail.com>,
+ "James E.J. Bottomley" <James.Bottomley@HansenPartnership.com>,
+ Philipp Zabel <p.zabel@pengutronix.de>, Liam Girdwood <lgirdwood@gmail.com>,
+ Mark Brown <broonie@kernel.org>, Manivannan Sadhasivam <mani@kernel.org>,
+ "Martin K. Petersen" <mkp@kernel.org>
+Cc: kernel@collabora.com, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-phy@lists.infradead.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-scsi@vger.kernel.org,
+ Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+References: <20260914-mt8196-ufs-v12-0-9279d7ef814d@collabora.com>
+ <20260914-mt8196-ufs-v12-3-9279d7ef814d@collabora.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
+In-Reply-To: <20260914-mt8196-ufs-v12-3-9279d7ef814d@collabora.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260914_130229_657588_129D8E69 
-X-CRM114-Status: UNSURE (   9.53  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260914_050406_382073_0DB5E9A4 
+X-CRM114-Status: GOOD (  10.36  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,34 +92,22 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-> + * The EcoNet EN751221 "G" multi-chip module MT7530 requires additional PHY
-> + * configuration.
-> + */
-> +static int en751221_mcm_phy_config_init(struct phy_device *phydev)
-> +{
-> +	int ret;
-> +
-> +	ret = genphy_soft_reset(phydev);
-> +	if (ret)
-> +		return ret;
-> +
-> +	/* Master/Slave negotiation does not work reliably */
-> +	ret = phy_write(phydev, MII_CTRL1000, ADVERTISE_1000FULL |
-> +			CTL1000_ENABLE_MASTER | CTL1000_PREFER_MASTER |
-> +			CTL1000_AS_MASTER);
+On 9/14/26 13:38, Louis-Alexis Eyraud wrote:
+> From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+> 
+> The MediaTek MT8196 SoC's UFS controller uses a different set of supplies.
+> It is therefore not compatible with the MT8195. It also have an additional
+> 0.9V supply pin (AVDD09_UFS_1), that is specific to this SoC, thus not
+> currently described in the binding.
+> 
+> Add a compatible for this SoC and new property for the additional supply,
+> and modify the binding correspondingly.
+> 
+> Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+> Reviewed-by: Chaotian Jing <chaotian.jing@mediatek.com>
+> Signed-off-by: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
 
-Is it sufficiently broken that we should stop the user changing it?
 
-     ethtool     -s     devname    [speed N]    [lanes N]    [duplex half|full]
-            [port tp|aui|bnc|mii] [mdix auto|on|off]  [autoneg on|off]  [adver‐
-            tise N[/M]  |  advertise mode  on|off  ...]  [phyad N] [xcvr inter‐
-            nal|external]        [wol N[/M]         | wol p|u|m|b|a|g|s|f|d...]
-            [sopass xx:yy:zz:aa:bb:cc]      [master-slave preferred-master|pre‐
-            ferred-slave|forced-master|forced-slave]   [msglvl   N[/M] |    ms‐
-            glvl type on|off ...]
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
-You don't appear to have a config_aneg, so genphy_config_aneg() will
-be used, which calls genphy_setup_master_slave. 
-
-   Andrew
 
