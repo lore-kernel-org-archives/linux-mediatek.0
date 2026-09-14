@@ -4,53 +4,52 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C9297C88E64
-	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Sep 2026 09:10:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2E336C88E64
+	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Sep 2026 09:10:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:From:
 	To:Subject:Message-Id:Date:Content-Type:Content-Transfer-Encoding:
 	Mime-Version:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=J6gkIocMxhvdpf/NKA6qKbg3ZwMu+O+tLx3jm8Ehdxo=; b=KSyYpbecu166XD95Sb+rWgPeOB
-	4lmAh27AsnR0shbmwfTIjtHllVm2fQOgBBDynKr+lvS0+AQEAhWIIsU1+MuVpIitjXFo7phLTWaMB
-	sOX8PAHWO1Ii7K17guyu5L0BARij9ul2Enrr67vvRsEkAUo4t+ggWXDIJrkE6hsrL0lBujFOIHxNG
-	gE2xHgv0SIgr7qSqtOfb34MVNOdRhwQXyL1S7GCmu7PyzntuPYQUwcol76D/YOoLq1m3MlZ+0klNv
-	Ek141yxBwOuyZAkpohxMk2kBZ+oM0vnbbzRJ9AhS5ptzOMpalNEJlDxA5c03iet4IW1tmGhR8OX9c
-	R6uXRGng==;
+	bh=J6gkIocMxhvdpf/NKA6qKbg3ZwMu+O+tLx3jm8Ehdxo=; b=UwmMEPy5KOHuqXRfqmqWYVAVgT
+	z+rujHigk7cDEe8I/ReCF2eBW7FeaqgFvWWPF9fYfaDN2Mx0Q0gZZBlmTrwrNBM1JCtUgTa5S2tCz
+	68jHBLsaIW0Ovhk+oWOcKu/KYVdXOWKGl/Tx4mrgT2UvCFf7CKyAwV3D8sD9G1r/ASscRNoI1lYdS
+	JWVBuYlrVqB5eGlDXNq6jWQk9HtV6XU0hOe/IB2Vl2Eagzdw1mWz4JJ+cIPhkjUKNYVbTFnYsTGkt
+	aryLTba4w4t0ndifbDU87Z2a3bHowbb3Lb3UuwQoQqJPvF54BFLteNbZ0JGu5dA8Oq4FwDnR2hJBT
+	z+zU0yyg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x62hO-00000002sDF-3AjC;
-	Mon, 14 Sep 2026 09:10:02 +0000
+	id 1x62hW-00000002sFm-3lEP;
+	Mon, 14 Sep 2026 09:10:10 +0000
 Received: from smtpout-04.galae.net ([185.171.202.116])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x62hL-00000002sCF-2MkH
-	for linux-mediatek@lists.infradead.org;
-	Mon, 14 Sep 2026 09:10:01 +0000
+	id 1x62hQ-00000002sDT-2vW4;
+	Mon, 14 Sep 2026 09:10:06 +0000
 Received: from smtpout-01.galae.net (smtpout-01.galae.net [212.83.139.233])
-	by smtpout-04.galae.net (Postfix) with ESMTPS id A786BC62215;
-	Mon, 14 Sep 2026 09:10:37 +0000 (UTC)
+	by smtpout-04.galae.net (Postfix) with ESMTPS id C9A5EC5CD41;
+	Mon, 14 Sep 2026 09:10:45 +0000 (UTC)
 Received: from mail.galae.net (mail.galae.net [212.83.136.155])
-	by smtpout-01.galae.net (Postfix) with ESMTPS id 8B50060323;
-	Mon, 14 Sep 2026 09:09:54 +0000 (UTC)
-Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id 1E0CB11C7AFDB;
-	Mon, 14 Sep 2026 11:09:21 +0200 (CEST)
+	by smtpout-01.galae.net (Postfix) with ESMTPS id B045F60580;
+	Mon, 14 Sep 2026 09:10:02 +0000 (UTC)
+Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id 9370F11C7AFDC;
+	Mon, 14 Sep 2026 11:09:37 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=dkim;
-	t=1789376991; h=from:subject:date:message-id:to:mime-version:content-type:
+	t=1789376999; h=from:subject:date:message-id:to:mime-version:content-type:
 	 content-transfer-encoding:in-reply-to:references;
 	bh=J6gkIocMxhvdpf/NKA6qKbg3ZwMu+O+tLx3jm8Ehdxo=;
-	b=QOx/baCyIfdZIARepp6rSTVpentmNiDyxh/MzkNo667zrVwrPzSi/av2sIi9036kR90wcX
-	1cvc4jdCrwV097hLpWf2iDVabSiC11DtW7J1xyqQXazNoA64Wl91R5rKEI8FxCpyc9ptil
-	d+WhOydTJIs7zDbd6mw+szwsocwD9lCzeBTxIRfayrxJRpUvKv/JdIZAezkFvDYRk5/QsS
-	OPFQcb5MRz94HyIbB/OsKBkagZqlQWVnJh1TLJZMeu43YXlcLA101Ygc2ctU0spQmfnRI1
-	mlCgsvmVZUbYE5ne3cozOiZTcqNTeXaw+yp6jOZae8jNUAqU4pSkxil5SzkMsw==
+	b=V/S0lrmmL71ZBsBR/XBCFjI98LgKkiHAv7j9dc0xrTkjkGC9lUUILnC0yOpXTDdo6Jqym+
+	efzToVH1eyBm9ahiseIPrlPneDIHEWt7DqGZb6bDmy0oDinA45cHma+7+DqkRjloEf6G4P
+	4WXtli+F8pHa2mmVqCJu2x1nfnLkYl9O8hXqGEWBaHmOvlr71+4u4LL0Zq9vhSM23gTlDx
+	LJ4AlI90ifROUyx7NgNve5QPatdQ4yidw+kC682ul7VhVGHAmjFHi85J+j86VqIpop0Cj4
+	CBgFpqr4f/HRNcCCy9bbwsy07nqo+molgZt2jZxtiBDm5iimwdzMn/T/gWxDQg==
 Mime-Version: 1.0
 Content-Transfer-Encoding: quoted-printable
 Content-Type: text/plain; charset=UTF-8
-Date: Mon, 14 Sep 2026 11:09:15 +0200
-Message-Id: <DLEX6WY9X3PO.S0N8N4G4K301@bootlin.com>
-Subject: Re: [PATCH 1/2] dt-bindings: display: Use consistent indentation in
- the example
+Date: Mon, 14 Sep 2026 11:09:31 +0200
+Message-Id: <DLEX74H9NP51.1V8PYE64K89RI@bootlin.com>
+Subject: Re: [PATCH 2/2] dt-bindings: display/msm: Use consistent
+ indentation in the example
 To: "Krzysztof Kozlowski" <krzysztof.kozlowski@oss.qualcomm.com>, "Chen-Yu
  Tsai" <wens@kernel.org>, "David Airlie" <airlied@gmail.com>, "Simona
  Vetter" <simona@ffwll.ch>, "Maarten Lankhorst"
@@ -92,11 +91,12 @@ To: "Krzysztof Kozlowski" <krzysztof.kozlowski@oss.qualcomm.com>, "Chen-Yu
 From: "Luca Ceresoli" <luca.ceresoli@bootlin.com>
 X-Mailer: aerc 0.22.0
 References: <20260913123331.100293-3-krzysztof.kozlowski@oss.qualcomm.com>
-In-Reply-To: <20260913123331.100293-3-krzysztof.kozlowski@oss.qualcomm.com>
+ <20260913123331.100293-4-krzysztof.kozlowski@oss.qualcomm.com>
+In-Reply-To: <20260913123331.100293-4-krzysztof.kozlowski@oss.qualcomm.com>
 X-Last-TLS-Session-Version: TLSv1.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260914_020959_792405_B8E7E00A 
-X-CRM114-Status: UNSURE (   5.08  )
+X-CRM114-CacheID: sfid-20260914_021004_904007_320E5029 
+X-CRM114-Status: UNSURE (   5.32  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
