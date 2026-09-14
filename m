@@ -4,111 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 52410C982D8
-	for <linux-mediatek@archiver.kernel.org>; Fri, 18 Sep 2026 18:29:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7FBA6C982D7
+	for <linux-mediatek@archiver.kernel.org>; Fri, 18 Sep 2026 21:03:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
-	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=xkCUHEW8BaYz+mvJmpvhPzJPz+lQKTKEiJB6NksDW9o=; b=qSOdLJ2uGaM0xbYaPAnr9ivpBr
-	zGHHQuyE+WFheRTkGPJI5S4b58ecoI/TtwdGfZ5y+MIrmL3BRxjeuUTrHKh4Rcs1Yeti7iiaR5q/d
-	iKILdO1D3meb0fsRa6yWQky4vLyEF6RAlzwCgMnKLlKtpPjD1jpw9uIF9oqOiTUJsIAJAyXUCOoMp
-	ToYdqOoODk0kEx4ktDViNyJLWEHk3Aola5UHgoB9iTERrBSYnzO9fqLsiBcugXfHD9Qn2Jek/um0d
-	RP4G5pijihPnSjwHfyD8PG1oEU8LbYl4Gw2jlMg/SvLLPRCQ4A7VcG+wn7UlrPysdaU1hmWbLiCXC
-	wdPkL4qQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=zBVUB+rZ7j2Dok9x4TAglY73jOcPB1CQmY0vslpUrio=; b=yWgVg6JCeh0oTPMc7JZNY0H+Ao
+	rITBAmkEHEt+ocRP4TQIKdUiWBYH9C9aHWelzeaOmtuo0iPw1oRsPLWa2boPwEUxfSPRNriLstf83
+	aYrbv7OKVInsKRI6bGLvYbpGQmTjlcNFA/8ssL7TmW46F6h5Lx9QhQ0vXEF+RwZVy0z8LrvLiAd3z
+	4NFMXPGs6NaeZ1iKKcCuc8P/x9/LhDCbtfFU1y4OlPxzqiYwtBZh415vHkamFEkkjMq0DsWULxtVO
+	jlyowZvfkrjgUisbkXPjiFzy3ZuZTyH1wY6x4MSKUhmfmp+0kz0aKPXqxvFVeyVYp4z87ztUhj/IT
+	NnlaU6CQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x7dLB-0000000FJVs-1aCF;
-	Fri, 18 Sep 2026 18:29:41 +0000
-Received: from mail-ej2-x10.google.com ([2a00:1450:4864:34::10])
+	id 1x7fjs-0000000FXm2-0cbB;
+	Fri, 18 Sep 2026 21:03:20 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x7dL8-0000000FJUl-1k9s
-	for linux-mediatek@lists.infradead.org;
-	Fri, 18 Sep 2026 18:29:40 +0000
-Received: by mail-ej2-x10.google.com with SMTP id a640c23a62f3a-c254f55efe5so177726866b.2
-        for <linux-mediatek@lists.infradead.org>; Fri, 18 Sep 2026 11:29:37 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1789756176; cv=none;
-        d=google.com; s=arc-20260327;
-        b=cK1NpD/+MldhZ2E32LapmyaWzTbJ7/YDhkFi+itMmrr8xcaidQNCDXry0Oie8A/+DW
-         tuMy5pNbVTr+15jIe0V7Jg1ayImmidn20diKGvXyrs5d9dysmwBi2sVfAxVGkLnXe6pi
-         8pigdwIURwQLDoQCuguexSSplPVIL4A/2q+e96xzrb48Y8Cl10UmhREBrF1pM31yxNxQ
-         E1/wuBgOq0Rh407Szvv2UNQWnvJ/iEp+owru+ae3kf/OkN+IzALCEUBecpx7LRTiFEyZ
-         6EcJgs0xSuFk7m+nL/XkHgmeikji8f1RqOE1CI3nXNo8QHeHhVoYsN5VXnSO3iIezCjN
-         Arew==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20260327;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:dkim-signature;
-        bh=xkCUHEW8BaYz+mvJmpvhPzJPz+lQKTKEiJB6NksDW9o=;
-        fh=dz90ymxu1/mSb5aMiRJPFWlQDjZuirngBhYnK/oreCU=;
-        b=Ut8Um6ThMNxB1C04JPkGfn2k7IRl+2VrpAs4eo/6xpyUg3zAqcc4QPsoudxFUhlZUK
-         ge6aM5M9PbflkCne4Y3VPoOsYb8zQV+9rixkEbf1VdNUiS/p5go7rGhqvcL7tLRIDDJq
-         4pznr9hb0tmJ93cYZA+vx2oztGVTFPAd3jfAL4WDmfzko3ZjMum/RFqs0BpiizLtSI7S
-         QHWmQzxGnZ/GEjFQ4uv9GCjkFiVSzeFVe8DnIM6ulQMslrDOIfKbUGtCZ80qb7pxRIzx
-         7PmcVdvsg0l4+pL/AHvcWZmAXsBRSU81ws4VUkOAioFJv0ulESZVsqsCE048KVinRdg4
-         TmEA==;
-        darn=lists.infradead.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1789756176; x=1790360976; darn=lists.infradead.org;
-        h=content-type:cc:to:subject:message-id:date:from:in-reply-to
-         :references:mime-version:from:to:cc:subject:date:message-id:reply-to
-         :content-type;
-        bh=xkCUHEW8BaYz+mvJmpvhPzJPz+lQKTKEiJB6NksDW9o=;
-        b=hGjufEcws53yCxlSYLE5lffmiYEJVMuCofc3uqIAlKKcun3mV13OcdbdeMGmptBNUn
-         8ZrlPDYyCNy3mBT8AY/Uf+tiCOiwp2r9HxDpdoiTgfGKT9ox5FQgq0A0cUshliYqbQ3n
-         /Tkb/rZjOY71jJbOin/jZyGFn+g5QiY6p8KBuJ2w2oE+Kl5yVgb2gkckkqiiZaA6eVbe
-         lEAijhOPXZ8d1VoQlnyYSRQGeq/mzoMWQ29cB25GGqmZgIWBy0KkPYTUUi32ZOWgwHB3
-         nmrDgAcKJENsl94AlJgfJlsNhO3kKV64T+uNawY7f1sSN/z2JXsG/rmaccCf2uIQuvoP
-         2E2Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1789756176; x=1790360976;
-        h=content-type:cc:to:subject:message-id:date:from:in-reply-to
-         :references:mime-version:x-gm-gg:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to:content-type;
-        bh=xkCUHEW8BaYz+mvJmpvhPzJPz+lQKTKEiJB6NksDW9o=;
-        b=BwYr7kIJPevepwe/QhLF8JqC4U7S+Si7IHUSy2ytKsMwGSNZ9Ble+1ZUR0MUWC/kll
-         eLNdBtrPZidAfh1dCDJ+Nw8FVrjDi5KEOGFsPkUPTBTB2zBHyurcVnpMe0qUS3NJlc6U
-         e1rlbhQEiHT/ljMMd0w9bj6PxOnCWIAcG2nl+yBzHPXgVEbBzgcCnUdJS+E+wWHYvOFo
-         41I/5ZnURXvB7QkdyZb+0yoelSh/7PIzUe+F+pWt5VjUqgROUWlVj1A92+2BiAJ/Wx4G
-         oI5JFP0CWmBvi/KvrpcxwxWD3O/FoWK8cliEj5bImsiWXn5dHBP66Zg3iMbzpGePMbdK
-         whWQ==
-X-Gm-Message-State: AFuF++lpi4t5CIz19F+DnWQV5Bi+RLJEqsA8mUNndvHSSKwfPiK/+D33
-	3rooMFzRexV5z67Kfi8Rzhov4lB1z8EZF3EJoKblwtdST0YykwkwWsYhC2GIxdGOAR9dVDSV2bn
-	0s+gN6TnDl0XXcMoDzXOrwwj7U3SBxvHvQQOu/S4=
-X-Gm-Gg: AYBFou13AHycvYY7SaF7+afdQpqdE0e4pvP/Sqv75A+PAWSavPJAThu+5tPz4hLDmSj
-	U3upna1Gmi7hMB1IQr8TFF85cHPtNrJuUG0+fp2cT4s1c/iwNhf/ehKzjzdNZ4FzG5TSSyGd0vB
-	ToYeXuJC/HUZLek3FJUNUqdppPu96sTq4Vk4ui2+p2YnT2ikvAa6m9+qH6FIcqRFtvAbnnHLKyo
-	ycvYJdfgDDEIhLBB5qVB8mW9G3sBT9yM8enjLnnGqjoY/XeA4izvq7yIj62nqKtDZVrIzWmidz+
-	n4+5BsQk/ALKSb4drbd0lSYfEvMeH5/8t/cijIS0KOBCCdrFQdON0DmQjaTJ74AO
-X-Received: by 2002:a17:907:1c0f:b0:c29:d62b:fcfa with SMTP id
- a640c23a62f3a-c2a156590b7mr346464966b.2.1789756176118; Fri, 18 Sep 2026
- 11:29:36 -0700 (PDT)
+	id 1x7fjq-0000000FXln-3PXw;
+	Fri, 18 Sep 2026 21:03:18 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by sea.source.kernel.org (Postfix) with ESMTP id 43BA9432C6;
+	Fri, 18 Sep 2026 21:03:18 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6AEC21F000FF;
+	Fri, 18 Sep 2026 21:03:13 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1789765398;
+	bh=zBVUB+rZ7j2Dok9x4TAglY73jOcPB1CQmY0vslpUrio=;
+	h=From:To:Cc:In-Reply-To:References:Subject:Date;
+	b=EquH21eDjld/an88BVJInTO7kzqLbzkbhO4GX8J8pNG8p1QYnwb4dRn3iAgBIbfWr
+	 OkT/lCUUqO4yXOWNjNhOVEHkWTAl0rPrKD7JrS1ABU1sRhS2I2jkt6x/H9BZq8CQiz
+	 EyOZoikrcCrvDPm8Ia/PUMsgaY2JcW8RmvD8Or0TvNHGWRys9AQtM1fpec216z+gzI
+	 zJMexvjUOdcIkSbgU+s54ncFfdKhmm2JezDhrQlHvMImZKzQKr/Cm882nGO/t+rv7R
+	 1D65458XG5rZ14aF3reQ39elGXlbZQ0nq5wn3m0waz2zqTDQnOelGV1zLVRqV2pN5s
+	 ts3i/y8NF5qBQ==
+From: Mark Brown <broonie@kernel.org>
+To: Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, 
+ Liam Girdwood <lgirdwood@gmail.com>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Peter Ujfalusi <peter.ujfalusi@linux.intel.com>, 
+ Bard Liao <yung-chuan.liao@linux.intel.com>, 
+ Daniel Baluta <daniel.baluta@nxp.com>, Orson Zhai <orsonzhai@gmail.com>, 
+ Baolin Wang <baolin.wang@linux.alibaba.com>, 
+ Gary Yang <gary.yang@cixtech.com>, Fugang Duan <fugang.duan@cixtech.com>, 
+ Mukesh Ojha <mukesh.ojha@oss.qualcomm.com>
+Cc: Kai Vehmanen <kai.vehmanen@linux.intel.com>, 
+ Pierre-Louis Bossart <pierre-louis.bossart@linux.dev>, 
+ Vijendar Mukunda <Vijendar.Mukunda@amd.com>, 
+ Chunyan Zhang <zhang.lyra@gmail.com>, 
+ CIX Linux Kernel Upstream Group <cix-kernel-upstream@cixtech.com>, 
+ linux-sound@vger.kernel.org, linux-kernel@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+ sound-open-firmware@alsa-project.org
+In-Reply-To: <20260902194712.2003414-1-mukesh.ojha@oss.qualcomm.com>
+References: <20260902194712.2003414-1-mukesh.ojha@oss.qualcomm.com>
+Subject: Re: (subset) [PATCH v2 0/12] ASoC: Use
+ devm_of_reserved_mem_device_init()
+Message-Id: <178941200290.1239410.15128719985401962631.b4-ty@b4>
+Date: Mon, 14 Sep 2026 19:53:22 +0100
 MIME-Version: 1.0
-References: <20260918175736.355305-1-l.scorcia@gmail.com> <20260918175736.355305-4-l.scorcia@gmail.com>
-In-Reply-To: <20260918175736.355305-4-l.scorcia@gmail.com>
-From: Luca Leonardo Scorcia <l.scorcia@gmail.com>
-Date: Fri, 18 Sep 2026 20:29:24 +0200
-X-Gm-Features: AcwNN1UQFOY_vCJJJdBRj6O6gZ3zFhbPbxWCZbiFNcjPHyL_aMs2Ld1pz8hUFJk
-Message-ID: <CAORyz2KEfzcJ_2AphkPU6o-YhLAqudCXVdY+LDoynUx_FsTMJg@mail.gmail.com>
-Subject: Re: [PATCH 3/4] soc: mediatek: mt8167-mmsys: add routes for all
- display paths
-To: linux-mediatek@lists.infradead.org
-Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>, 
-	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>, 
-	Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
-	Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, CK Hu <ck.hu@mediatek.com>, 
-	Jitao shi <jitao.shi@mediatek.com>, dri-devel@lists.freedesktop.org, 
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org
-Content-Type: text/plain; charset="UTF-8"
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260918_112938_466476_76A6E33A 
-X-CRM114-Status: UNSURE (   6.69  )
-X-CRM114-Notice: Please train this message.
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+X-Mailer: b4 0.17-dev
+X-Developer-Signature: v=1; a=openpgp-sha256; l=2791; i=broonie@kernel.org;
+ h=from:subject:message-id; bh=Gb3QfmkOrVGIOg3Os7Iaodaux/izAj7p3PV3IKXh+fU=;
+ b=owEBbQGS/pANAwAKASTWi3JdVIfQAcsmYgBqracOJJWQrLPDtSKiJSYpghDcGeKoEJK1wdvqo
+ 513w+6zGRKJATMEAAEKAB0WIQSt5miqZ1cYtZ/in+ok1otyXVSH0AUCaq2nDgAKCRAk1otyXVSH
+ 0MLgB/4jhdeXKcFGMRCCOMJElsESDYK/RiLzcZOpc/umujbrAhMQfEtatYYIqDO7C0PzI8ZYQI9
+ MdMEsMKSBkFJ08aEIR5tjImNZQ7SuNNJ/SgjtGVt9Hhkj0OEjN0eNKQQytEntJacRYMQO1UPgPk
+ Uf3ruANx91aa3b15+zkFxy6kr8RuwQYFP4nddp1PMt2PChGYL4/4G2ipzwkuf2ksBUvCTavby97
+ P8nBFtQ3vuF7kquhtSHsgobzow6bwfySpj9+rvteitlbionrYAYYofjlp8tH39cFcdZxCMXZPPm
+ YeoW1w2tzJfFKdmd7p9RQ7IqHdHaOZciA996BukFHe1eHNx4
+X-Developer-Key: i=broonie@kernel.org; a=openpgp;
+ fpr=3F2568AAC26998F9E813A1C5C3F436CA30F5D8EB
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -123,14 +95,63 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Sashiko found [1] some copy-and-paste errors in this patch that are
-worth correcting. I must have checked it a hundred times but they
-still slipped in.
-I will send a revised v2 after waiting a few days for additional reviews.
-Thank you
+On Thu, 03 Sep 2026 01:17:00 +0530, Mukesh Ojha wrote:
+> ASoC: Use devm_of_reserved_mem_device_init()
+> 
+> Several ASoC drivers manually manage reserved memory lifetime by calling
+> of_reserved_mem_device_init() in probe and of_reserved_mem_device_release()
+> in remove. This pattern is fragile: any error path between the two that
+> skips the release leaks the reserved memory region for the lifetime of the
+> driver.
+> 
+> [...]
 
-[1] https://sashiko.dev/#/message/20260918175736.355305-4-l.scorcia%40gmail.com
--- 
-Luca Leonardo Scorcia
-l.scorcia@gmail.com
+Applied to
+
+   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-7.4
+
+Thanks!
+
+[01/12] ASoC: mediatek: mt8192: Use devm_of_reserved_mem_device_init()
+        https://git.kernel.org/broonie/sound/c/14318426e2c0
+[02/12] ASoC: mediatek: mt8196: Use devm_of_reserved_mem_device_init()
+        https://git.kernel.org/broonie/sound/c/68cd0442f674
+[03/12] ASoC: mediatek: mt8183: Use devm_of_reserved_mem_device_init()
+        https://git.kernel.org/broonie/sound/c/573d1749fcb3
+[04/12] ASoC: mediatek: mt8189: Use devm_of_reserved_mem_device_init()
+        https://git.kernel.org/broonie/sound/c/34dbfae252c2
+[06/12] ASoC: mediatek: mt8173: Use devm_of_reserved_mem_device_init()
+        https://git.kernel.org/broonie/sound/c/f33929d53089
+[07/12] ASoC: mediatek: mt8186: Use devm_of_reserved_mem_device_init()
+        https://git.kernel.org/broonie/sound/c/55be77e8a5fb
+[08/12] ASoC: mediatek: mt8188: Use devm_of_reserved_mem_device_init()
+        https://git.kernel.org/broonie/sound/c/3167f3ca6c77
+[09/12] ASoC: mediatek: mt8195: Use devm_of_reserved_mem_device_init()
+        https://git.kernel.org/broonie/sound/c/4169b6a5cdd3
+[10/12] ASoC: SOF: mediatek: mt8186: Use devm_of_reserved_mem_device_init()
+        https://git.kernel.org/broonie/sound/c/6b006d357f03
+[11/12] ASoC: SOF: mediatek: mt8195: Use devm_of_reserved_mem_device_init()
+        https://git.kernel.org/broonie/sound/c/3531143e9cec
+[12/12] ASoC: sprd: Use devm_of_reserved_mem_device_init()
+        https://git.kernel.org/broonie/sound/c/e88fd9fe81d7
+
+All being well this means that it will be integrated into the linux-next
+tree (usually sometime in the next 24 hours) and sent to Linus during
+the next merge window (or sooner if it is a bug fix), however if
+problems are discovered then the patch may be dropped or reverted.
+
+You may get further e-mails resulting from automated or manual testing
+and review of the tree, please engage with people reporting problems and
+send followup patches addressing any issues that are reported if needed.
+
+If any updates are required or you are submitting further changes they
+should be sent as incremental updates against current git, existing
+patches will not be replaced.
+
+Please add any relevant lists and maintainers to the CCs when replying
+to this mail.
+
+Thanks,
+Mark
+
 
