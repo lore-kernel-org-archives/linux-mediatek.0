@@ -4,69 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2F44DC88E70
-	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Sep 2026 13:47:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E9AFEC88E70
+	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Sep 2026 13:48:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=N+C6bJ9lSz1Jpov7bJ535G9We/yIWpPULTUgpYQ3bu4=; b=M6v2bYCCuE4WYyqjhbf2Za0yeb
-	ISQMXA1oTIFUj2tqSoWK4QrZpuKAKszIXgvvbcb6MoqLWwQUfbrsUisj7088yuoTbjCi2eO/Gx+CE
-	N/tt5d0lMKt/f1bGBYG7icEmh++QblMN46est0sJWUY1h2gidKAdMH4zPN+KC4IusInaCQ0CDV/+/
-	gjnVkjpDuBjQ+x7ACRQagQ/bLT5ivEePtYnS9Df/sc1CS6fn+8NyQLi9Glt1WWxMfekv0oaIotb+c
-	VEvZDWZjHvHIa+tW2e3GR8CCj4mXxvxnExcpB5nz1W1Wfd9aa62l456s03DwL2WmesGSJxjW2vTiD
-	Zq6WC7sA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=r+S2Onhngb3QQb5M8d8baXat0zr7TDEklDXfpK9pyK4=; b=ZB+cKyqgKkaOisMwO0ETIj3xj7
+	l085yZb6Pw+apGtPAPX2oThwg/R5Ta5ykWCrUMW2scPqmyR2/BgNFEBp7lpqmq4EyDPB+OSyJbRkT
+	XWLmopiMmbiXA+/+F1106Bvk73I7z7QUCQaCZSs1lfcpI4DRVvY5kqdaRKWjeX/2W7iy6mN0lMuEm
+	SiDCmG5trazJs7h9DB38SssF/XiXTAAhOQKMKsFUDrjinEzmp8DP8YpYKNY0X2z89BGH0TxBreyJ/
+	SRXLnSmWJI3e82ITP9qvN+UkPHVi0parI3JEGn1bj8TEPGGBrBDlX3nZI6vQf0UIy71WKPEIrmAd1
+	zenEcoOA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x672J-00000003qgY-19gb;
-	Mon, 14 Sep 2026 13:47:55 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1x672o-00000003qxX-3K3K;
+	Mon, 14 Sep 2026 13:48:26 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x672I-00000003qfe-2hCG;
-	Mon, 14 Sep 2026 13:47:54 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id 26091434C7;
-	Mon, 14 Sep 2026 13:47:54 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id D1F431F00893;
-	Mon, 14 Sep 2026 13:47:53 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1789393674;
-	bh=N+C6bJ9lSz1Jpov7bJ535G9We/yIWpPULTUgpYQ3bu4=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=Y3b6l5Sy5djH0Axzhiu2XWukfUdypi5qXIMoXVqOrigWayJq8cIShonF7uT2jWATm
-	 sPpyh+M/4iWRegTgf/c7cJ8TPe0E1PgC+w/QDMmLribgTuI25QmWAsIy/KZ+DQc0M/
-	 kSVRdlHbj2AzsFvGYIJK8zlTXVi8G/1gtwP9UYyoF1foMNVWouRr9j0xohnjyo9puy
-	 LaBdzW3iFMoflmlxEv1t85yXhToQ6KPFqqkM9fwlMzLKN8ZsoW/3dCFOR7Mvhb/NXF
-	 2vXAaETbhb2us/gfKAQVPapIDHhE4meHEU4bP50CBmqi7RS0AaQkaUDwge0Q/1SRzo
-	 pbzTRF3S6BIkg==
-Received: by finisterre.sirena.org.uk (Postfix, from userid 1000)
-	id 345AF1AC52F1; Mon, 14 Sep 2026 14:47:51 +0100 (BST)
-Date: Mon, 14 Sep 2026 14:47:51 +0100
-From: Mark Brown <broonie@kernel.org>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: phucduc.bui@gmail.com, Liam Girdwood <lgirdwood@gmail.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>,
-	Cezary Rojewski <cezary.rojewski@intel.com>,
-	Cyril Chao <Cyril.Chao@mediatek.com>,
-	Kuninori Morimoto <kuninori.morimoto.gx@renesas.com>,
-	Dan Carpenter <error27@gmail.com>, cassiogabrielcontato@gmail.com,
-	linux-sound@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v2 02/13] ASoC: mediatek: mt8189: Propagate APLL enable
- errors
-Message-ID: <aqf7B_E7_Gv5iK2A@sirena.co.uk>
-References: <20260914072842.24420-1-phucduc.bui@gmail.com>
- <20260914072842.24420-3-phucduc.bui@gmail.com>
- <07add31d-5622-40eb-9bcf-f7cb2396fee3@collabora.com>
+	id 1x672m-00000003qwC-18eW;
+	Mon, 14 Sep 2026 13:48:25 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1789393702;
+	bh=sqm232wL8WeQzLs2jOKgbSNxH7ke3GuXlQGXo8yJQk0=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=ppLT7Hd2WVLs8uYNpUu5s+TTm1uVg/17FO1N+akh3gXmRprLckeYvUZYclQ8A+ej/
+	 5b61o4zyKcZEKYqp0BGPsfADvf8U4o4/S0Tv4pgFh7WaC9zEgTewYSj1jJ7QvioVq9
+	 8r8MgxyjLBD3w2d7dQeqcStjxltDHSkmyBt4ptaAUnbaNWqNTSUMHUwbq4BVspZaep
+	 pfyoJhfhorVIiyEfYSRn7yqRgmWC1W4ObKxBknAPZMxEWmK5vADCBE2xvlLj1XW+RQ
+	 U5tEP42bvP++JeIRK2Cgsut81NOnNfaR+nSPPD+B5FrOrLBMgmVb8acscT5rCO6aRb
+	 gcH0RHmaow1XQ==
+Received: from [100.64.1.21] (unknown [100.64.1.21])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 5676717E05D3;
+	Mon, 14 Sep 2026 15:48:21 +0200 (CEST)
+Message-ID: <f2bb7446-bfbd-4598-ba95-d9561a4e132b@collabora.com>
+Date: Mon, 14 Sep 2026 15:48:20 +0200
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="P/tFBbzpIceAToQ8"
-Content-Disposition: inline
-In-Reply-To: <07add31d-5622-40eb-9bcf-f7cb2396fee3@collabora.com>
-X-Cookie: My vaseline is RUNNING...
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v4 00/24] MT8189: Add support for system and base clock
+ controllers
+To: Brian Masney <bmasney@redhat.com>
+Cc: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>,
+ Michael Turquette <mturquette@baylibre.com>, Stephen Boyd
+ <sboyd@kernel.org>, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
+ <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ Chun-Jie Chen <chun-jie.chen@mediatek.com>,
+ Philipp Zabel <p.zabel@pengutronix.de>,
+ Edward-JW Yang <edward-jw.yang@mediatek.com>,
+ Richard Cochran <richardcochran@gmail.com>, Chen-Yu Tsai
+ <wenst@chromium.org>, kernel@collabora.com, linux-clk@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ netdev@vger.kernel.org, Conor Dooley <conor.dooley@microchip.com>,
+ Irving-CH Lin <irving-ch.lin@mediatek.com>
+References: <20260729-mt8189-clocks-system-base-v4-0-e356b813a64c@collabora.com>
+ <amuWdRD-TBQtFT_4@redhat.com>
+ <1f6bdf69-c3fe-4e1d-8ff8-0e36d9f4e063@collabora.com>
+ <aqf6NH-xrMtCQppv@redhat.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
+In-Reply-To: <aqf6NH-xrMtCQppv@redhat.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260914_064824_475080_9E7A6214 
+X-CRM114-Status: GOOD (  14.24  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,42 +90,38 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On 9/14/26 15:44, Brian Masney wrote:
+> Hi Angelo,
+> 
+> On Fri, Jul 31, 2026 at 12:04:49PM +0200, AngeloGioacchino Del Regno wrote:
+>> On 7/30/26 20:22, Brian Masney wrote:
+>>> Should there be a new MAINTAINERS entry added? There's currently 221
+>>> files under drivers/clk/mediatek/ and there's currently only one
+>>> mediatek maintainer entry:
+>>>
+>>>       MEDIATEK MT6735 CLOCK & RESET DRIVERS.
+>>>
+>>> Is there anyone from mediatek (or elsewhere) that could act as a clk
+>>> subsystem maintainer similar to what the other SoC vendors do? Help with
+>>> reviews, send in pulls, etc?
+>>>
+>>
+>> I may be able to step in, but I have to check if it's feasible, time-wise, on
+>> my side.
+>>
+>> Though, that won't happen until mid-September... because, well, I'm about to go
+>> on holiday (in a few days from now).
+> 
+> I'm checking in to see if you would be willing to be clk submaintainer
+> for the MediaTek clk drivers?
+> 
+> Brian
 
---P/tFBbzpIceAToQ8
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Time is lacking, but I get that one hour from me is more than zero, which is
+a good thing.
 
-On Mon, Sep 14, 2026 at 03:22:21PM +0200, AngeloGioacchino Del Regno wrote:
-> On 9/14/26 09:28, phucduc.bui@gmail.com wrote:
+Let's do it.
 
-> > +	ret =3D regmap_update_bits(afe->regmap, AFE_APLL2_TUNER_CFG,
->=20
-> Well, this is a bit of defensive programming here.
->=20
-> The regmap pointer is already checked by the previous function call, and =
-this is
-> a regmap over MMIO... and MMIO writes can't fail.
-
-Oh, you sweet summer child :) .  Though practically speaking the error
-handling ends up being the same as if they couldn't fail since if
-something goes wrong it's generally catastrophic stuff like locking the
-core up completely so the end result is the same.
-
---P/tFBbzpIceAToQ8
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmqn+wYACgkQJNaLcl1U
-h9BSxQf9G8Xdq5Mf7AwqiSpgu3Yw8i7t/TfDP30tuFFmVeW/ZnYzfZDEBEpqtW/1
-Qjmdx6+OOp1KgYt3l6QLlZbYtHEBOZBGM5eJsqTcDLSk8hVK31B8bFhIRsY5hL1d
-5O6xK5ZInZA3H/PtHbkWq0aqZg3cPA4ci/SyZ4xNmDjyV4bOP6gaSm2acMzSPLXi
-AkdU2FfuRVfcOMh4C2UzY5MmmKzJL2BOI+KthHTluYVZdcNQleVv/Pgrwm2hpxcy
-gXJ8CB55QEgkmY+6azNck8vAbUC+RK2vXpPbvbv3pOAM7NPXvP+i1PlNXGgDMAUF
-6rpD0iFE9TeOFOWBmNioVfZZJrkaWQ==
-=ffDW
------END PGP SIGNATURE-----
-
---P/tFBbzpIceAToQ8--
+Cheers,
+Angelo
 
