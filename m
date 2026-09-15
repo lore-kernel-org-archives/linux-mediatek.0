@@ -4,85 +4,99 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E68E3C88E75
-	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Sep 2026 08:11:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 87765C88E53
+	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Sep 2026 08:14:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=HBQvXv6p+u/RbI1JvgnZn1coJcIMNlU2UJpSprDOLww=; b=0OFHu2/1/JH6Nsl50C++045WMs
-	8xNzHoH3ppjuubvM210GzXuzkNxDL8Da+WTDaTrfkhBq5yJXOlaJz4XC7jiS3SXXhV0GARDOAvl+3
-	BBXdaJko2YBINWIraPNZk8Bl4+P8koi2HsWtK2AHGG9c7+wJl4aIpvUtnqOkJ1VQgTB0KB4c2uipG
-	UK2rrlEUn2bsEdKHNdji5xfvKKVv5SOdySUnS65EKk6er5ewuT2QF7ScU3gkToEO0UoYstPgemwrC
-	DOMaWw0N5Br4MJC/YwPH/PJPb/I5Q1+a1ywegqO3WdoFFUNKj/lpZ6Gg8Nw5wDfyC4SnlknNxt6s7
-	249koSeg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=fK70m/+67S91Rd7mLvg4C0s5IC06h3pjUxuQ9PXSFLg=; b=f5/Q+vJ17RuOzW2j7ZkLtNt4B6
+	e9D75SyqLeYWcURJz33N6+OLqy5V6Gx322EUDYvBzYIMCVPIBdPgsvCdxJ7qlX2mFF4T0mgDuOmLE
+	dWo8pp2g3iiPykhYb89WIECLQ5N5jSz93hDyyJSRd40v4M3fqqzrVFIYDJ4OUOe0+9OeNDAVYgTuw
+	gMQa1xdL2S+sB07txHq1PCE+wBfhSxZu7Rol0OpXG/yZXgt5EXQQRvVlV1UEQXF5J3MpC6fjRkLth
+	G54Tr+CmptnhK/AyYufM1jINQNUHVdb2NZs4QMs7NfLPQJxF8EHTxQjXtw68+ZceO4LsJrDRAl36D
+	RZLfkfQQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x6OGY-00000005aOu-30fd;
-	Tue, 15 Sep 2026 08:11:46 +0000
-Received: from mgamail.intel.com ([198.175.65.13])
+	id 1x6OJR-00000005azU-2NTK;
+	Tue, 15 Sep 2026 08:14:46 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x6OGV-00000005aNT-3BTh;
-	Tue, 15 Sep 2026 08:11:45 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1789459903; x=1820995903;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=NIV5i/07/x8Lh1kdJ4pqvn6E+LCPP2Auh0d7O+8uc6g=;
-  b=jxQJOl5qfks5PkaHy28IGEbylAQiYuF3KJNqj5ayKNk7mmYAw0qRXBaQ
-   I04GsAhw4NAINAaChIWRJFTQQJvqgHZozGf1Jtp+XTYHhEq2c7IG2kvFg
-   8WE8fCdytw4y7Yzl3cWDKK89q957i9u0hzElDBk6/pQY82gaTEc3aCuBi
-   PpWzHWrVsPE/elxcXVL8PEk9i5tlrftxR0xAas0IRniKro7ZtawzLL5Js
-   ODQ2VitXvZtFOESijD5FJxOHc7t4Nez5zIDLag/xuJnmdVpLLOALpFKkR
-   cMsg8pUox++OOGp8s3S3CAsK2csIFxbHrgNtCt4hRovYH3S/p61ZkfUHX
-   g==;
-X-CSE-ConnectionGUID: mA739q27Q+K1O47JIRQNHQ==
-X-CSE-MsgGUID: FrC9BwTYTS+wYUb9tw8dvg==
-X-IronPort-AV: E=McAfee;i="6800,10657,11905"; a="100970537"
-X-IronPort-AV: E=Sophos;i="6.27,103,1787036400"; 
-   d="scan'208";a="100970537"
-Received: from fmviesa007.fm.intel.com ([10.60.135.147])
-  by orvoesa105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 15 Sep 2026 01:11:40 -0700
-X-CSE-ConnectionGUID: A61ofmMuT1WaatRfRHR9oQ==
-X-CSE-MsgGUID: 9FXUUD7fTb+kFjCdl+uAGg==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.27,103,1787036400"; 
-   d="scan'208";a="269613058"
-Received: from smoticic-mobl1.ger.corp.intel.com (HELO localhost) ([10.245.245.203])
-  by fmviesa007-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 15 Sep 2026 01:11:36 -0700
-Date: Tue, 15 Sep 2026 11:11:34 +0300
-From: Andy Shevchenko <andriy.shevchenko@intel.com>
-To: Srinivas Kandagatla <srini@kernel.org>
-Cc: rva333@protonmail.com, Sen Chu <sen.chu@mediatek.com>,
-	Sean Wang <sean.wang@mediatek.com>,
-	Macpaul Lin <macpaul.lin@mediatek.com>, Lee Jones <lee@kernel.org>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Andy Shevchenko <andy@kernel.org>, linux-pm@vger.kernel.org,
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	Ben Grisdale <bengris32@protonmail.ch>
-Subject: Re: [PATCH v4 2/3] nvmem: add mt6323 PMIC EFUSE driver
-Message-ID: <aqj9ttde-cZXPm_Z@ashevche-desk.local>
-References: <20260911-mt6323-nvmem-v4-0-626dd17531dc@protonmail.com>
- <20260911-mt6323-nvmem-v4-2-626dd17531dc@protonmail.com>
- <170bcc15-38fc-47cb-89f5-8fe7411111aa@kernel.org>
+	id 1x6OJN-00000005ayn-46er;
+	Tue, 15 Sep 2026 08:14:43 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1789460079;
+	bh=peFcxrEiF5RSqGPX56LYLlt2B39hIHlN8E9Jg0EGoOA=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=pcXNkLpug/JktcHH/E9hIzstybTXMoZ5q/oqPEZ2WtjVj9VaCdDfgWj7RIQurGubj
+	 iUcKL69G4IKdUtEuwSXlNkc4xQ8GOniGHFBJO7xQNzMwE6Bti9cdsxKEYd+yNUeB32
+	 UP+ovB6twZs8X3OA2iVCGr7f/MPa2InXlBZOfqN2OPixBKFDabh19dHkbHI3srHrnE
+	 5RRglVS75Fayvh63aOlMeu5O2hpRDT8U9CbTUYXq7sO5o3Q7Fk58OV4PjKE1OzVX2S
+	 lu2zJ3pgng8sJ9A5f+a5AJoBlAg5fAy5kbRNTnyA/2tJr2k/Ut+jzZTgJyKAsfQJH9
+	 bXhPwY9p0Gd3w==
+Received: from [100.64.1.21] (unknown [100.64.1.21])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 3209017E0A27;
+	Tue, 15 Sep 2026 10:14:35 +0200 (CEST)
+Message-ID: <27dc00f9-ac45-4f96-81d4-2ce724b296a1@collabora.com>
+Date: Tue, 15 Sep 2026 10:14:34 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <170bcc15-38fc-47cb-89f5-8fe7411111aa@kernel.org>
-Organization: Intel Finland Oy - BIC 0357606-4 - c/o Alberga Business Park, 6
- krs, Bertel Jungin Aukio 5, 02600 Espoo
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v3] ASoC: dt-bindings: Use consistent indentation in the
+ example
+To: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>,
+ Lars-Peter Clausen <lars@metafoo.de>, =?UTF-8?Q?Nuno_S=C3=A1?=
+ <nuno.sa@analog.com>, Liam Girdwood <lgirdwood@gmail.com>,
+ Mark Brown <broonie@kernel.org>, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
+ <conor+dt@kernel.org>, Jerome Brunet <jbrunet@baylibre.com>,
+ David Rhodes <david.rhodes@cirrus.com>,
+ Richard Fitzgerald <rf@opensource.cirrus.com>,
+ =?UTF-8?Q?Martin_Povi=C5=A1er?= <povik+lin@cutebit.org>,
+ Frank Li <Frank.Li@nxp.com>, Sascha Hauer <s.hauer@pengutronix.de>,
+ Pengutronix Kernel Team <kernel@pengutronix.de>,
+ Fabio Estevam <festevam@gmail.com>, Binbin Zhou <zhoubinbin@loongson.cn>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Srinivas Kandagatla <srini@kernel.org>,
+ Kuninori Morimoto <kuninori.morimoto.gx@renesas.com>,
+ Biju Das <biju.das.jz@bp.renesas.com>,
+ Lad Prabhakar <prabhakar.mahadev-lad.rj@bp.renesas.com>,
+ Shenghao Ding <shenghao-ding@ti.com>, Kevin Lu <kevin-lu@ti.com>,
+ Baojun Xu <baojun.xu@ti.com>, Sen Wang <sen@ti.com>,
+ Geert Uytterhoeven <geert+renesas@glider.be>,
+ Magnus Damm <magnus.damm@gmail.com>,
+ Alexandre Belloni <alexandre.belloni@bootlin.com>,
+ Khanh Le <khanh.le.xr@renesas.com>,
+ Ricardo Rivera-Matos <rriveram@opensource.cirrus.com>,
+ patches@opensource.cirrus.com,
+ David Rau <David.Rau.opensource@dm.renesas.com>,
+ Shawn Guo <shawnguo@kernel.org>, Shengjiu Wang <shengjiu.wang@nxp.com>,
+ Oleksij Rempel <o.rempel@pengutronix.de>,
+ Yingkun Meng <mengyingkun@loongson.cn>, Trevor Wu <trevor.wu@mediatek.com>,
+ Julien Massot <jmassot@collabora.com>, Jiaxin Yu <jiaxin.yu@mediatek.com>,
+ Shane Chien <shane.chien@mediatek.com>,
+ Daniel Beer <daniel.beer@igorinstitute.com>,
+ Sebastian Reichel <sre@kernel.org>, linux-sound@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ asahi@lists.linux.dev, imx@lists.linux.dev,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-arm-msm@vger.kernel.org, linux-renesas-soc@vger.kernel.org
+Cc: Charles Keepax <ckeepax@opensource.cirrus.com>
+References: <20260915063317.28971-2-krzysztof.kozlowski@oss.qualcomm.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
+In-Reply-To: <20260915063317.28971-2-krzysztof.kozlowski@oss.qualcomm.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260915_011143_832723_E75A55E2 
-X-CRM114-Status: GOOD (  13.17  )
+X-CRM114-CacheID: sfid-20260915_011442_178820_E35E9E68 
+X-CRM114-Status: UNSURE (   9.28  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,55 +111,24 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Sep 14, 2026 at 11:08:36PM +0100, Srinivas Kandagatla wrote:
-> On 9/11/26 7:33 AM, Roman Vivchar via B4 Relay wrote:
-
-> > Add support for the EFUSE controller found in the Mediatek MT6323 PMIC.
-> > The MT6323 EFUSE stores 24 bytes of hardware-related data, such as
-> > thermal sensor calibration values.
-
-...
-
-> > +++ b/MAINTAINERS
-
-> >  F:	drivers/iio/adc/mt6323-auxadc.c
-> >  F:	include/dt-bindings/iio/adc/mediatek,mt6323-auxadc.h
-> >  
-> > +MEDIATEK MT6323 PMIC NVMEM DRIVER
-> > +M:	Roman Vivchar <rva333@protonmail.com>
-> > +S:	Maintained
-> > +F:	drivers/nvmem/mt6323-efuse.c
+On 9/15/26 08:33, Krzysztof Kozlowski wrote:
+> Correct indentation in the examples to consistent 2- or 4-spaces
+> indentation to fix dt-check-style warnings ("example 0
+> [indent-consistent] indent mismatch ...").  Preferred is 4-spaces, but
+> re-indenting entire example just for that is too much churn.
 > 
-> placement is in wrong order,
+> While changing the lines, correct also node name to be generic in
+> cirrus,cs35l45.yaml, cirrus,cs42l42.yaml and dialog,da7219.yaml.
+> 
+> Acked-by: Charles Keepax <ckeepax@opensource.cirrus.com>
+> Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
+> 
 
-Can you elaborate on this? I do not see the issue.
+For MediaTek:
 
-> same in make file too.
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
-> >  MEDIATEK MT6735 CLOCK & RESET DRIVERS
-> >  M:	Yassine Oudjana <y.oudjana@protonmail.com>
-> >  L:	linux-clk@vger.kernel.org
-
-...
-
-> > +++ b/drivers/nvmem/Makefile
-
-> > obj-$(CONFIG_NVMEM_MICROCHIP_OTPC)	+= nvmem-microchip-otpc.o
-> >  nvmem-microchip-otpc-y			:= microchip-otpc.o
-> >  obj-$(CONFIG_NVMEM_MTK_EFUSE)		+= nvmem_mtk-efuse.o
-> >  nvmem_mtk-efuse-y			:= mtk-efuse.o
-> > +obj-$(CONFIG_NVMEM_MT6323_EFUSE)		+= nvmem_mt6323-efuse.o
-> > +nvmem_mt6323-efuse-y			:= mt6323-efuse.o
-
-Yes, here the digits should be before letters.
-
-> >  obj-$(CONFIG_NVMEM_MXS_OCOTP)		+= nvmem-mxs-ocotp.o
-> >  nvmem-mxs-ocotp-y			:= mxs-ocotp.o
-> >  obj-$(CONFIG_NVMEM_NINTENDO_OTP)	+= nvmem-nintendo-otp.o
-
--- 
-With Best Regards,
-Andy Shevchenko
-
+Cheers,
+Angelo
 
 
