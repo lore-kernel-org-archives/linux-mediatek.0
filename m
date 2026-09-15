@@ -4,66 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9734CC88E75
-	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Sep 2026 13:26:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 057DBC88E53
+	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Sep 2026 13:28:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ErkzZ1ZFOtFbK4HOjtmx0Rkzf/fK40DMGc6473S3ltU=; b=Ap+1uX5PfMA+JsoI86w+eqrW93
-	y6THFkX7HC/8hyEgFWKQZfLBc1sGLx1de/kbvkvItU7Oj4NTFkUhfGGfLu9JMzjlyWAdNk8DCx8XM
-	Ag5uElKZLpleIvCuhTMvQ1zxpSz6ZD63Cw3qQlM9uNDt7a7vqIrm6TPthBmAoQJ96f8whnDJc4+Ss
-	+n5njFhp7vFQ46DgAPVAU7BNR2tE3ADeaPrxVOAIYn/FMKlcgxwo2Z7b81XWKwLBI5ZUB3iXI1THT
-	Qx9IaeDfVldgq1zT731YipelwICQUYm1ADL31FueHkZZ1aXq0pFD8WyZYlpuNCFGKDGZA3TlZ9TIl
-	651sujjw==;
+	bh=EcXSJVTvVZthIHGprEq2KGGmZzyD2tJp3Y6QBdt23ME=; b=o8whaF/VSyKR4LRa5fJVwg+MEn
+	z0EXR5t0jUlhKXNPdEM0DJXnj8ThVG/07WRFbUN75NtScAqbhNDpOYNIkpRUkRSDqmpaP6toUgFxl
+	ldv5wAEPIUNWX8KjDG/mwgKjIyf0HPFZ5cjs1V86UYLLd9TsYNfBQJj2SUYjZdLI9lxz59uWtLxx9
+	LfiCvvfaTINOHemCwgioullFKR36v0qVh0JVjLWhHJAnQADMOExTywOyYr4J1PVNkJLYzyZAl31IA
+	8cDWnpSjTKEyCfApKmFd1Jt+OtjPaDr35klrl4HTgSNV5Oz8hQgPN7tPxZnavxzE1M+RR0fbi20W3
+	wLl55rOg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x6TAc-00000006j1U-09gk;
-	Tue, 15 Sep 2026 13:25:58 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1x6TCb-00000006jM5-22qI;
+	Tue, 15 Sep 2026 13:28:01 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x6TAY-00000006j09-1EZG;
-	Tue, 15 Sep 2026 13:25:56 +0000
+	id 1x6TCa-00000006jLI-0LMC;
+	Tue, 15 Sep 2026 13:28:00 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
+	:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:Message-ID:
+	Sender:Reply-To:Content-ID:Content-Description;
+	bh=EcXSJVTvVZthIHGprEq2KGGmZzyD2tJp3Y6QBdt23ME=; b=k1R3ij4SeHdzW8BuCs6LfhL3qA
+	pDQ0Voc80rCzBvC7GI/7mScndWx++2l0W+byAjNxS3US6NPh5iIazfsTBoiKLWBWPad5hilUnFUSb
+	KBQ+U18aw/D7Nu+V1pQQvxa1L/NMIWcv4yfCwCO5VA994qW+zPNdgUGrhLPX1d2wjnUeTeDgRewXn
+	nsuZibAOJwpuNzSVsBKCoFKvWVg40b3YI9JkNON1Q8c4IqFhhEWXSMUXURCNgsIXQd9RZOZ+DnBr0
+	xKG6gHfCpuLdBUHQw6inliUq6Tp7VAbvJP2U8KSuF2ZQeXQobSpEzOzCB6OiDlWBEuX0g29TaCSrL
+	ygv/IkFA==;
+Received: from bali.collaboradmins.com ([148.251.105.195])
+	by desiato.infradead.org with esmtps (Exim 4.99.2 #2 (Red Hat Linux))
+	id 1x6TCV-00000006p4M-3gFk;
+	Tue, 15 Sep 2026 13:27:58 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1789478751;
-	bh=n+xfkg7b6cBRQFcEcl4DQNh7KCXdlVfEV7dSl1CI46g=;
-	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
-	b=HLzK5T+PL7+QNdbur9YPOrEAL2xCzL2s/cGPigZPIhmJuIhlSN1NWe4RggLgBfLX2
-	 ti8SoOcuFR6yA66H+oJZv8f9r4tfsZK3N3QPWbeubsfkCsAY7NpWZBnbRwCoCRTRzb
-	 bw5oHpgYjS6Z2Us+4Ha7n+vVXFM1SrhzBQy+syp1Xt9Ur1GFITkePWBbRC41o9BJVx
-	 lQFynk0uQxxLQsTbChs2TuooLRjgpYxq/AMtYqKrsWm76YkpcvosIoVQvvO8yxdTFl
-	 NzkgUeV476tlyNHkdr5F1DPG2hANy6sf4zDr6twX5rjk4aB6FjLVTEvhCu6rrHOy4c
-	 DDjkNKNJYdSXw==
-Received: from IcarusMOD.eternityproject.eu (unknown [100.64.1.21])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	s=mail; t=1789478873;
+	bh=lohGgxfltMTEidmM0lOlsFdBrhEdgnJZYESmU16vlmQ=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=TWPA9Rt4P0ApNG8s1YVbxCYTY5s61WEx7UKrZaXAR7c4TsiqDLmjSAg/YM3x9/v8o
+	 0xYKW2eshg4cNIBhUilWWQ1GxzkzOcbhKYh1UAXoz8OS+2vj4cnkErjHyD37FiRd0R
+	 0Z7al0tPohX2G08Pnijxkrb5wIP0I4oepwnx+Fff8cobci6V4UuWQvhHHQ85aGUJDZ
+	 7kkVDmVgT6/vaWcArKv2Du/KGbSg4GmE1T4eZlM4CoqwDVWtBsHxkfiX1T6bukXZLP
+	 VRXY3KSOJj2Bv5f6bOj7D229WMZ8043D+BhLZM642ZK+3r1EkJfPl3tDf2icaIVm2N
+	 f28gFzgSQV+Vg==
+Received: from [100.64.1.21] (unknown [100.64.1.21])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 8BB6117E07A9;
-	Tue, 15 Sep 2026 15:25:51 +0200 (CEST)
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-To: Matthias Brugger <matthias.bgg@gmail.com>, 
- Martino Dell'Ambrogio <tillo@tillo.ch>
-Cc: linux-mediatek@lists.infradead.org, 
- linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org, 
- linux-kernel@vger.kernel.org, kees@kernel.org, tony.luck@intel.com, 
- gpiccoli@igalia.com
-In-Reply-To: <20260915141226.600486-1-tillo@tillo.ch>
-References: <20260915141226.600486-1-tillo@tillo.ch>
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 621B317E0082;
+	Tue, 15 Sep 2026 15:27:53 +0200 (CEST)
+Message-ID: <a463a9fd-dddd-4b78-8408-2be683f80f13@collabora.com>
+Date: Tue, 15 Sep 2026 15:27:52 +0200
+MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
 Subject: Re: [PATCH v5] arm64: dts: mediatek: mt7986a-bananapi-bpi-r3: add
  ramoops region
-Message-Id: <178947875151.35150.1801064329287090544.b4-ty@b4>
-Date: Tue, 15 Sep 2026 15:25:51 +0200
-MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
+To: Martino Dell'Ambrogio <tillo@tillo.ch>,
+ Matthias Brugger <matthias.bgg@gmail.com>
+Cc: linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, kees@kernel.org,
+ tony.luck@intel.com, gpiccoli@igalia.com
+References: <20260915141226.600486-1-tillo@tillo.ch>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
+In-Reply-To: <20260915141226.600486-1-tillo@tillo.ch>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-X-Mailer: b4 0.16.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260915_062555_425816_17C45908 
-X-CRM114-Status: UNSURE (   8.73  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260915_142756_932434_A303E4EE 
+X-CRM114-Status: GOOD (  18.50  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,7 +91,7 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, 15 Sep 2026 14:12:26 +0200, Martino Dell'Ambrogio wrote:
+On 9/15/26 14:12, Martino Dell'Ambrogio wrote:
 > Reserve 64 KiB of RAM just below the ARM Trusted Firmware secmon region
 > (0x42ff0000-0x43000000) for persistent kernel log storage via pstore/ramoops,
 > allowing post-panic console output and oops dumps to be recovered after a
@@ -91,15 +104,38 @@ On Tue, 15 Sep 2026 14:12:26 +0200, Martino Dell'Ambrogio wrote:
 > in persistent_ram_new(), which lets pstore recover dumps even when the panic
 > path truncates writes mid-record.
 > 
-> [...]
+> The no-map property is required so the reserved region is kept out of the
+> kernel linear map. ramoops remaps the carve-out write-combine via
+> ioremap_wc(); on arm64, leaving the same physical RAM mapped cacheable in
+> the linear map at the same time is an attribute-mismatch and risks losing
+> panic data to dirty cache evictions from the linear alias.
+> 
+> The region sits immediately below the ATF block already declared at
+> 0x43000000 in mt7986a.dtsi, so no other reserved-memory child is moved or
+> resized. BPI-R3 ships with 2 GiB of DRAM starting at 0x40000000, well above
+> 0x43000000, so the region is always within installed memory.
+> 
+> For the carve-out to actually preserve content across a reset, the boot
+> loader must avoid touching this region on warm reset; on standard BPI-R3
+> boards with the stock OpenWrt U-Boot fork this already holds.
+> 
+> Signed-off-by: Martino Dell'Ambrogio <tillo@tillo.ch>
+> ---
+> Changes in v5:
+>   - Restore this board's own carve-out. v4 carried the BPI-R4 values by
+>     mistake - 1 MiB at 0x42f00000 with 128/256/64/64 KiB zones - while the
+>     commit message still described the BPI-R3 layout. That would have reserved
+>     1 MiB instead of 64 KiB on a 2 GiB board and contradicted its own message.
+>     Back to 64 KiB at 0x42ff0000 with 8/32/8/8 KiB, as in v3. Thanks to the
+>     Sashiko review for catching it; entirely my error in regenerating the patch.
+>   - No other change: the plain reserved-memory node from v4 is kept.
+> 
+> The BPI-R4 patch is unaffected - its values were correct in v4 and it needs no
+> resend:
+> https://lore.kernel.org/all/20260915135722.566918-1-tillo@tillo.ch/
 
-Applied to v7.3-next/dts64, thanks!
-
-[1/1] arm64: dts: mediatek: mt7986a-bananapi-bpi-r3: add ramoops region
-      commit: 5b748eb481caf88e7f0b3c763dbc6247a59f6e21
+You forgot to send the 7988a bpi-r4 patch :-)
 
 Cheers,
 Angelo
-
-
 
