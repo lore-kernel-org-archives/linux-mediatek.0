@@ -4,72 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 75CB0C88E53
-	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Sep 2026 09:10:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 38CE9C88E53
+	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Sep 2026 09:33:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:From:
+	To:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=1BlLytoK9U9ANYNy4BNoi6wfDwQEe5v70EmA8BH9Piw=; b=ToBtsPe2acRZcaW+npTdy97Sb2
-	Nt5za+UDQJq3fiflZMXdzipWKXLpYOBZ7Z0qQfvuEH7+cEgBxKvIhmbdrBuGTtKRRZrslDF7WOWrl
-	sVs0QgnztxjGS5c/86McXO2F22jd0N6urjGdvNXuM8JXoPBTjJVip5Qup5S/AXFF4Q4/ZyLyKAfnG
-	O1J4kxaBznaEajdK4g6AbOe/61ijBqyKJ+Q849zIXJKSxKNEOi4Q4zFsVO1Hvd48i+G3z0Wobrbhk
-	/A/SCZOB+2AFD895MPHZxu70rHqt+B1G5Do5t0wHGQbZH/bH5XdnnQoSndIw536GDCYDVeS8SuZ8O
-	nZKxYv3g==;
+	bh=hXSEs7BTDlc8dKDKpzIizZkxrmFqMoEY8BMFcJ/xLxg=; b=bjTBu1gP14Vt3F6c2qpFb2jX/G
+	PwQ0nK2cg5xYXan3AXkc86LZXzYB59Sk+f99v9TohCILhMUWq7w7tKjQvi6B6+o3ORSNkasUN4eEM
+	9cJSWx5KHevG+sOr6EBUO/i6o7NS3EG7eiOhF1p191O48FszOnrMpeIU+JNWt60yTSmd/t3VHDexa
+	Lv+RoxDUPCB4TEftiywVtRUiey0qGuymdeQcYto3phBRmp4UIHDVz6RCEJyHzHIxh/pgAzZ5Wa0zd
+	/dnak6K3ls4Pd+bIzqLId3MSZALKz4y5VKszjxtb6AIgH7XE39HMmEn5PuIP/2rGqwtZo6REsZyRV
+	Wg/AYOPA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x6PBS-00000005kay-1VS0;
-	Tue, 15 Sep 2026 09:10:34 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1x6PXe-00000005nFJ-1All;
+	Tue, 15 Sep 2026 09:33:30 +0000
+Received: from mail-4319.protonmail.ch ([185.70.43.19])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x6PBJ-00000005kY9-2wLf;
-	Tue, 15 Sep 2026 09:10:28 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1789463423;
-	bh=AO60Q3QxQLSX5nGXdAEMjIA905O1ARI+jXUSfoFnJrM=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=Xwylx1WJsWjs7MjUahl3hMJgjNdBKksZVvff0H5iHgLG5qB45ZPQlYCiwXIMsK3lK
-	 EZp6eOzWoCZpPaNUCvLR4bCpYogaJMmvRz1qFtf4/PskWxVaX21htGMHxQp2fnDg6c
-	 bfeXSw8W/FbRrf1NIL/bjlKtvBJCme4aAAgrh5HC7rr04ntAe4n30GLO+92SP1MmoH
-	 xvb3SrMRi3GdCxxpR3mNL9QMvMjJRBGO/IAdmt9mTstkO9gafUbmkwEeYCMGzaDTam
-	 ZNVW+AO4KMoS442wy7WVDoAo2fzyuStsm5Uj16yFQ5YIQWN6B9wW2kjhusekqCAbam
-	 7Z0o+5N/YlAyg==
-Received: from [100.64.1.21] (unknown [100.64.1.21])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 70E2017E090C;
-	Tue, 15 Sep 2026 11:10:22 +0200 (CEST)
-Message-ID: <2506620b-a89a-43c2-bb86-ee4a136d3719@collabora.com>
-Date: Tue, 15 Sep 2026 11:10:21 +0200
+	id 1x6PXY-00000005nDN-2kPj
+	for linux-mediatek@lists.infradead.org;
+	Tue, 15 Sep 2026 09:33:26 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=protonmail.com;
+	s=protonmail3; t=1789464799; x=1789723999;
+	bh=hXSEs7BTDlc8dKDKpzIizZkxrmFqMoEY8BMFcJ/xLxg=;
+	h=Date:To:From:Cc:Subject:Message-ID:In-Reply-To:References:
+	 Feedback-ID:From:To:Cc:Date:Subject:Reply-To:Feedback-ID:
+	 Message-ID:BIMI-Selector;
+	b=wY1y8xTaVY9o71t68zZ8xxpnHJIDVB1JeESHBv+1cj7WISv5xrNPHU/dzNiNh6mI8
+	 xtxbiTfFHVa7DJUXy5Ueyoex/ntihHchoHtjhDuihhcHlboLrbQnD5DAXiK/2jn0Us
+	 ayWGOvjJNWs4OHILwjPVjXAmxgfK/9HnvzivI9seOo/T8tPB/Oe/zUDmXcMlwR6HI3
+	 Qu/DN+XQoTr8bFHzKSJTuULS0SNgscpwOf1HZuirbSnVqbJs8UMRxnsTME3p/iieFB
+	 U9ZxR1Z5qpEBA7eL5iio25/sYPfWF+4aLMvasr+m0hhY4Em5u405/lCMmh0f4rwSaI
+	 3oiMy5SbdVyOQ==
+Date: Tue, 15 Sep 2026 09:33:14 +0000
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+From: Roman Vivchar <rva333@protonmail.com>
+Cc: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Heiko Stuebner <heiko@sntech.de>, dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH] dt-bindings: gpu: arm,mali-utgard: add mt6572
+Message-ID: <qhCDchmGeChGRGsaz37FafYzJowgCzD3tkhtgZCAmpTdTZ7MloVCm3SgJPxz6_rJZJ_HIxpwgQZibP1bkX2tRz-XkcPVwznUO7issd2PYmI=@protonmail.com>
+In-Reply-To: <20260810-6572-dt-mali-v1-1-fb908627bf23@protonmail.com>
+References: <20260810-6572-dt-mali-v1-1-fb908627bf23@protonmail.com>
+Feedback-ID: 173184497:user:proton
+X-Pm-Message-ID: 45b726ba5dba26f46e8487dde82dbede2970503f
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 5/6] usb: mtu3: add missing
- pm_runtime_dont_use_autosuspend() calls
-To: Joshua Crofts <joshua.crofts1@gmail.com>,
- Peter Chen <peter.chen@kernel.org>, Pawel Laszczak <pawell@cadence.com>,
- Roger Quadros <rogerq@kernel.org>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Mathias Nyman <mathias.nyman@intel.com>,
- Chunfeng Yun <chunfeng.yun@mediatek.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- Heikki Krogerus <heikki.krogerus@linux.intel.com>
-Cc: linux-usb@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- stable@vger.kernel.org
-References: <20260915090223.1346-1-joshua.crofts1@gmail.com>
- <20260915090223.1346-6-joshua.crofts1@gmail.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-In-Reply-To: <20260915090223.1346-6-joshua.crofts1@gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260915_021025_916882_A8428F52 
-X-CRM114-Status: UNSURE (   8.06  )
+X-CRM114-CacheID: sfid-20260915_023324_843266_5A686D02 
+X-CRM114-Status: UNSURE (   4.86  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -85,19 +70,11 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 9/15/26 11:02, Joshua Crofts wrote:
-> The comm_init_err label in mtu3_probe() and mtu3_remove() both call
-> pm_runtime_disable() on error or device teardown, but don't call
-> pm_runtime_dont_use_autosuspend(), causing resource leaks.
-> 
-> Add the missing pm_runtime_dont_use_autosuspend().
-> 
-> Found using Coccinelle.
-> 
-> Fixes: df2069acb005 ("usb: Add MediaTek USB3 DRD driver")
-> Fixes: fa6f59e28c61 ("usb: mtu3: support runtime PM for host mode")
-> Cc: <stable@vger.kernel.org>
-> Signed-off-by: Joshua Crofts <joshua.crofts1@gmail.com>
+Hi Angelo,
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Could you take a look at this patch? That's a one line change with a new
+compatible string for mt6572 GPU.
+
+Thanks,
+Roman
 
