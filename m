@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D15CAC88E75
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F2A81C88E7F
 	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Sep 2026 16:47:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
@@ -12,45 +12,60 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=7QcBWaaEQKdZzuohrRvD5zKSPSt1kcAuIgFhNTdGC4k=; b=Z06x/6xN3fCM/PrRUwgCFyS+tQ
-	313CWAvchCttweG9a2xjUAGVXkQDIJ9CcM2YCLWljbyAKoeVmizOK+mP7UDGgsm6GUfQY0fYcfGj7
-	vhyB0yUKKZpXP3B8akKhG2k9NHDmzmt4P+TjAc5pqgp0mgR/JY9Qds/XwpF/jcKj4fQPBI1pUWEwl
-	LcwCEsDLZ5o3Hx3DA1ibZti6g8ZMMsWzhKGqzLheFk49jmFkkgYxZk5DIpoJxxFdHzewbIbtA6UmQ
-	Qg1Lq3iE+5XJj4fX+wuypHBPGc+wgHOe597mkDsC/K4ei1CQgMqYEGj9rEztGBz9YsV6Ik0pniFdY
-	gWGqe3bw==;
+	bh=asHhcWK0Xqz3or0oLNmGpjADbooqi5HN3ZH3Pieglwc=; b=MJ88oSE+qQEWMuiejPbBKWQYsz
+	HLBxZmTk2Im04WgF5rguxFUJ4BoWZn6WZ00gjWsVj9YdgizyWuNxpaAokgMp12AziZP85CFyfmEbV
+	HZiFH4Qs2AjIA4HYn7bJgIeRYlhRp3Cr8KkJkMYOjOLEZFFgIv1nBvdUE5g6tuYB3j0RIxJN2UUHZ
+	3/aYQ8ARzGr/LxuyAt4xld037DfefU5VhxLk/EIJOKYN/eMWkfsTSMaQOEt7YrGMF2inbCczMqnCM
+	U6QSze+hWZarlgEjqPFbWTLMc6YCCTjp70bpDFFph8VD3rvo8LDnvKDaHM4b8ax4fXfN7JYGBTTc3
+	AU1fZP4Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x6WJp-00000007Teq-0Cz6;
+	id 1x6WJp-00000007Tf4-0TaJ;
 	Tue, 15 Sep 2026 16:47:41 +0000
-Received: from smtpout-02.galae.net ([185.246.84.56])
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x6WJY-00000007TQU-0wwm
-	for linux-mediatek@lists.infradead.org;
+	id 1x6WJZ-00000007TT7-2MQy
+	for linux-mediatek@bombadil.infradead.org;
 	Tue, 15 Sep 2026 16:47:25 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Cc:To:In-Reply-To:References:
+	Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
+	From:Sender:Reply-To:Content-ID:Content-Description;
+	bh=asHhcWK0Xqz3or0oLNmGpjADbooqi5HN3ZH3Pieglwc=; b=RWk/kBiNpFL9G16ihZ84tqNF8N
+	K61ZYR1UHvnVh6ECoO8DaRG7qrDHPu5i8Yg9humWuBEjKPdq3tAGpCIXb+F4PVkP2UjKirWjxn+Dh
+	5PUkULLGsAJ11DgbVTVadZfb5lnWivGDFa5F0dLAtpMoSXF26F/nzvxBoEesFHcL3ypkMiwcmDeGH
+	GVInVY54Q2REe66MfRrm8eSheFWqIXekfQZwkUpjAthv6OW4C4RSbXuKtSnOL3mhTqCkBRThV38Rl
+	7aXnoV9xwMugsYBMZHNGudpXEl9YotJawYrCvq66SE85xTHR7uxaXqf1llskxsYSKLy+F0BwmcwsU
+	9yS1uvNw==;
+Received: from smtpout-03.galae.net ([185.246.85.4])
+	by desiato.infradead.org with esmtps (Exim 4.99.2 #2 (Red Hat Linux))
+	id 1x6WJU-000000072iC-0GV8
+	for linux-mediatek@lists.infradead.org;
+	Tue, 15 Sep 2026 16:47:24 +0000
 Received: from smtpout-01.galae.net (smtpout-01.galae.net [212.83.139.233])
-	by smtpout-02.galae.net (Postfix) with ESMTPS id BC31B1A0809;
-	Tue, 15 Sep 2026 16:47:22 +0000 (UTC)
+	by smtpout-03.galae.net (Postfix) with ESMTPS id 5DF1D4E4063B;
+	Tue, 15 Sep 2026 16:47:19 +0000 (UTC)
 Received: from mail.galae.net (mail.galae.net [212.83.136.155])
-	by smtpout-01.galae.net (Postfix) with ESMTPS id 8F18F602B0;
-	Tue, 15 Sep 2026 16:47:22 +0000 (UTC)
-Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id 6515211C7AFFA;
-	Tue, 15 Sep 2026 18:47:18 +0200 (CEST)
+	by smtpout-01.galae.net (Postfix) with ESMTPS id 312E0602B0;
+	Tue, 15 Sep 2026 16:47:19 +0000 (UTC)
+Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id E3F1D11C7B005;
+	Tue, 15 Sep 2026 18:47:13 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=dkim;
-	t=1789490841; h=from:subject:date:message-id:to:cc:mime-version:content-type:
+	t=1789490837; h=from:subject:date:message-id:to:cc:mime-version:content-type:
 	 content-transfer-encoding:in-reply-to:references;
-	bh=7QcBWaaEQKdZzuohrRvD5zKSPSt1kcAuIgFhNTdGC4k=;
-	b=oil6Fp4lUxFKvGF10XW5JpqcsG58AY9KQQmQYrw9kT1dD+Wf6n4uAnFOoJXABT+e+jY9eL
-	T9ifn3sSQWcsJPYYvdRfGPRw5FFn4JeML0+DPX4Kaoh9/CYdqjDgV/oK1O+sXNBZ04UIUE
-	XpVOo7c4q/dg1kADI40U4CxgKOeFAF45pUfz6Up6FLboewdCZ+52BnwQurHEUWZ3lZ5gRJ
-	apWRGB1xBQ1U+0n17aDT5qWo39wWzDQQQP5S6oEPsuikJHXMNayqEQDxQduSG37yloF2pd
-	cwEvX+5vPjMoSi1+ATLo+ZitsN/CJjOfY0zlklzF7Wh2HPxOUYpi9CfJJafXvg==
+	bh=asHhcWK0Xqz3or0oLNmGpjADbooqi5HN3ZH3Pieglwc=;
+	b=hme8c/ZZPHmsKAAS8YXw1tajbiCNNs97s4J3lTJs0tWwLrXp6YIx/1M2ISQPqHvDygLNY7
+	ogYzCpgbOUoAsY7TNdQWujBHAOn3wZzO+cHxQ971PmB0tmihRxqboQmvgbvUOQekykEVbx
+	s3WT/8h0Zl1F5wrp63HuWI9jL6F3QAU4zCbTeLGGiF0ZMvj+xVE3idbIeowrCfYyJVrRbG
+	H/3XA5ASC3PVkA4+b94dUr81YbD7/xhQOPPYcEzpwsNR9cvhb1bRbsS8fjdmeBtWrC2TFI
+	5JGMNdbkyBnB0aHEpAnUITdjNLaUBdR+ODPH2nNXlGQWrb3rnJ5asUActHzmQg==
 From: Luca Ceresoli <luca.ceresoli@bootlin.com>
-Date: Tue, 15 Sep 2026 18:46:21 +0200
-Subject: [PATCH v4 8/9] drm/bridge: ssd2825: select DRM_PANEL_BRIDGE
+Date: Tue, 15 Sep 2026 18:46:20 +0200
+Subject: [PATCH v4 7/9] drm/bridge: tc358768: select DRM_PANEL_BRIDGE
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20260915-drm-bridge-drm_panel-cleanup-v4-8-30401d9406f3@bootlin.com>
+Message-Id: <20260915-drm-bridge-drm_panel-cleanup-v4-7-30401d9406f3@bootlin.com>
 References: <20260915-drm-bridge-drm_panel-cleanup-v4-0-30401d9406f3@bootlin.com>
 In-Reply-To: <20260915-drm-bridge-drm_panel-cleanup-v4-0-30401d9406f3@bootlin.com>
 To: Andrzej Hajda <andrzej.hajda@intel.com>, 
@@ -67,12 +82,13 @@ Cc: Hui Pu <Hui.Pu@gehealthcare.com>, Ian Ray <ian.ray@gehealthcare.com>,
  dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, 
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
  Luca Ceresoli <luca.ceresoli@bootlin.com>, 
- Svyatoslav Ryhel <clamor95@gmail.com>
+ Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>, 
+ Peter Ujfalusi <peter.ujfalusi@ti.com>
 X-Mailer: b4 0.16.0
 X-Last-TLS-Session-Version: TLSv1.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260915_094724_424504_A690D9AC 
-X-CRM114-Status: UNSURE (   7.99  )
+X-CRM114-CacheID: sfid-20260915_174722_750281_85A22FB7 
+X-CRM114-Status: UNSURE (   7.52  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -91,27 +107,28 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 This driver uses drm_panel_bridge_add_typed() and
 drm_panel_bridge_remove(), which are enabled by DRM_PANEL_BRIDGE.
 
-Leave the 'select DRM_PANEL' because it is needed for drm_panel_put() and
-drm_panel_enable() which the driver uses.
+Leave the 'select DRM_PANEL' because it is needed for drm_panel_put() which
+the driver uses.
 
-Cc: Svyatoslav Ryhel <clamor95@gmail.com>
+Cc: Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>
+Cc: Peter Ujfalusi <peter.ujfalusi@ti.com>
 Signed-off-by: Luca Ceresoli <luca.ceresoli@bootlin.com>
 ---
  drivers/gpu/drm/bridge/Kconfig | 1 +
  1 file changed, 1 insertion(+)
 
 diff --git a/drivers/gpu/drm/bridge/Kconfig b/drivers/gpu/drm/bridge/Kconfig
-index 73e13ad59a93..92938df3b747 100644
+index a4bc1b5401c0..73e13ad59a93 100644
 --- a/drivers/gpu/drm/bridge/Kconfig
 +++ b/drivers/gpu/drm/bridge/Kconfig
-@@ -351,6 +351,7 @@ config DRM_SOLOMON_SSD2825
- 	select DRM_MIPI_DSI
+@@ -410,6 +410,7 @@ config DRM_TOSHIBA_TC358768
  	select DRM_KMS_HELPER
+ 	select REGMAP_I2C
  	select DRM_PANEL
 +	select DRM_PANEL_BRIDGE
+ 	select DRM_MIPI_DSI
+ 	select VIDEOMODE_HELPERS
  	help
- 	  Say Y here if you want support for the Solomon SSD2825 RGB/DSI
- 	  SPI bridge driver.
 
 -- 
 2.55.0
