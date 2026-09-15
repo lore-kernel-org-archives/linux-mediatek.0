@@ -4,61 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 409BAC88E75
-	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Sep 2026 07:09:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 51668C88E53
+	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Sep 2026 07:46:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=/K27mxe9awqLXCoqsJ9jRsb86rIPPKQr7g5yuTtOxfw=; b=fW2gJHIPsu+OyOsDwocBsE5I5r
-	pXad1MLNrDdegEGkcuud53fKDR5nBP0KCszsIq+oEYjy325swp5f1sjtlP9x88ZViceTShtJs4QFG
-	LwPKEaLoNFTJ1FKb6shFP7KKwXn5aA6pPknDG1yT0CrPa1pktgl0IudR52tAJUY2kgFGQ40OUsp09
-	DptCdv3z+ENutKP4644WBM51iE6kuloF//M0WnEFWIwaAZbEkWhczKvD+b/94SfOyF/1FugajUGy9
-	nahvIXIlSU4MQzrOnL7JY5pSkiOvb2EIBWP7Id/1BQavBw2AkF+VDbzep7WQQzwFU/pMOEJOO+yfV
-	vSPoJ1eg==;
+	bh=Y+TjYkeWtH29/hH7rFUt/RjEjcCETjZLhLZ9MVicTyc=; b=GCvXgidbyX+UX+PIky29hHALMX
+	t8h5Fs8RbAmMU0RSkWmZdA0wnGkB/OIuUa+97fB1MeEqLFc6b6I1pqHf1hSXY+uL19MX7gp1fjJQ9
+	P6PX3ViKz9MWQ+EZOtAKV0yHdTk91PY+gh+ZH7eOMBQwgqJ14qL6H6MCDCRJ3Jlsyin6UfnqBfT1C
+	L4UWZOAMvqOrdgFnntl6pHncXmgvWyT2kRg4b7ySed777ANQuw1k2QElygrQW0Vm5lAvGMlJFH51c
+	G4WEY0Yah5OPo/zn2yGfS/gEvaq5DpkRab7a0ZDECUhjR4aVR9KzJcJnfNGOrGdnRuvLsGLrnTUuR
+	6iMxadCg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x6NIc-00000005QJX-40m9;
-	Tue, 15 Sep 2026 07:09:50 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1x6Nru-00000005Wc1-48Dl;
+	Tue, 15 Sep 2026 07:46:18 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x6NIb-00000005QIx-0aJo;
-	Tue, 15 Sep 2026 07:09:49 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 3E0C0600D1;
-	Tue, 15 Sep 2026 07:09:48 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0D8541F00893;
-	Tue, 15 Sep 2026 07:09:43 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1789456187;
-	bh=/K27mxe9awqLXCoqsJ9jRsb86rIPPKQr7g5yuTtOxfw=;
-	h=From:To:Cc:In-Reply-To:References:Subject:Date;
-	b=B1UzSc44GeHez8fe4GxW50BmLJcwpPxJ5MBOv9/9uF4lPIvzChHxfAWDPhIIOrkJa
-	 YYuK9g4rNlRXLDEMetEwBg6K9T+RQvb1PQmtRBrcAZCQ7VpiBNN7SjRJSC8tDyL/Fu
-	 nxs2tLQO5/rm7IZg5slYRKJwohTxOzJkCT5iBUaBXrLqZxaQdXWObhx8kpLZjMy86x
-	 23ubFKkCTRg7poZNwd4p8iONlQz9v5NkWN3+K3AuvRu8Wii9MyBVgJm2K+hqr2MwT4
-	 r/ilSy3cPNU629VQofgcuR0hTsOTPZs2HVNcnroJZlhOeKlPR1cpnkMTkC52aoaODe
-	 aYeltPa4o9Z8A==
-From: Krzysztof Kozlowski <krzk@kernel.org>
-To: Yong Wu <yong.wu@mediatek.com>, Rob Herring <robh@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Congcong Yao <congcong.yao@mediatek.com>
-Cc: linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, 
- devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- Zhengnan Chen <zhengnan.chen@mediatek.com>
-In-Reply-To: <20260831-8189-smi-support-v4-0-8ae66dd3eeed@mediatek.com>
-References: <20260831-8189-smi-support-v4-0-8ae66dd3eeed@mediatek.com>
-Subject: Re: [PATCH v4 0/2] memory: mtk-smi: add MT8189 SMI support
-Message-Id: <178945618368.44717.5402356332875633769.b4-ty@b4>
-Date: Tue, 15 Sep 2026 09:09:43 +0200
+	id 1x6Nrt-00000005WZr-2ueS;
+	Tue, 15 Sep 2026 07:46:17 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
+	:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:Message-ID:
+	Sender:Reply-To:Content-ID:Content-Description;
+	bh=Y+TjYkeWtH29/hH7rFUt/RjEjcCETjZLhLZ9MVicTyc=; b=nz9YVOSfjScWSd9tyTLTRNvmFx
+	+Bn5MjMNbjGF/KUsGJLizpOwvtqmkC/uSGp/QT45Pylyx42AUX2/3UQZNjpr9CqR+t/oAA027zduL
+	GxApVPBXeIm2oDWPPuKC5PWhdNd3XFFXa6x6pNTu7s5wQ557ZabCgCy/JZtmMDgmRn25lzEmuxn7V
+	ZVfMFAkA/W3wabPdJ50H7nlciE2iZhtiQZ6f8N0la+Ubsh8gwOm57MFykl8rk0mHc5WeYDp6oZd1u
+	Q+SwiN4FTVElc3Ypuo653xrcCVFPGV7dHQCN8qF07/WUZafCFo6JdEszdz9C5q+cu5wj+mGqeJdoA
+	scvCneWg==;
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	by desiato.infradead.org with esmtps (Exim 4.99.2 #2 (Red Hat Linux))
+	id 1x6Nrn-00000006OLn-2FdT;
+	Tue, 15 Sep 2026 07:46:15 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1789458366;
+	bh=R2xJrxl6upO9LEZweJ/1XyeQgzkDVimk0RD2c0Xhaos=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=RuHpU7fE5Z3XY4d1RQw7AynI1G6BDoB5xPNNPepviV3HvXt+ms0L31xc6+SHCLzxK
+	 3iRHWRkSFYEfTowlf3WpUsYCHq943JD2sONUO1hchsQvSRXeRQOLwyeaRjXmmcwKeK
+	 lvKFHWIqsyWUAEMvz0NjGq0oTNlLts5iy/XigFtwbrt/jhfrWIH/lP/zuskE79bnAG
+	 hW7dKYFXKbQjRIIr1WoJkGK6o9MeiSO5wrdanTLQ7QT0171MdWICbAN5KtAVQkvRw2
+	 azvGzRVR3aLd6f1gYWkrhED0LRtpdOb8Al3muwKT1CBvuc7+BAkaNlAkNttyau6+1K
+	 cx1vOKlGON/6A==
+Received: from [100.64.1.21] (unknown [100.64.1.21])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange x25519)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 80C3417E007B;
+	Tue, 15 Sep 2026 09:46:05 +0200 (CEST)
+Message-ID: <a465210b-cd9c-4c5b-a54d-54d4b62b0706@collabora.com>
+Date: Tue, 15 Sep 2026 09:46:04 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v3] arm64: dts: mediatek: mt7988a-bananapi-bpi-r4: add
+ ramoops region
+To: Martino Dell'Ambrogio <tillo@tillo.ch>,
+ Matthias Brugger <matthias.bgg@gmail.com>
+Cc: linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, kees@kernel.org,
+ tony.luck@intel.com, gpiccoli@igalia.com
+References: <20260915064254.1594808-1-tillo@tillo.ch>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
+In-Reply-To: <20260915064254.1594808-1-tillo@tillo.ch>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-X-Mailer: b4 0.16.0
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260915_084611_877787_1D29374B 
+X-CRM114-Status: GOOD (  25.58  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,26 +91,85 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-
-On Mon, 31 Aug 2026 14:52:05 +0800, Congcong Yao wrote:
-> This patchset adds MT8189 SMI support.
+On 9/15/26 06:42, Martino Dell'Ambrogio wrote:
+> Reserve 1 MiB of RAM just below the ARM Trusted Firmware secmon region
+> (0x42f00000-0x43000000) for persistent kernel log storage via pstore/ramoops,
+> allowing post-panic console output and oops dumps to be recovered after a
+> reboot. Without it, kernel crash logs on this board are lost when the SoC
+> warm-resets and the on-chip console buffer is reinitialised.
 > 
-> The series updates the MediaTek SMI bindings for MT8189 and adds the
-> corresponding SMI common and LARB support in the mtk-smi driver.
+> With record-size=128 KiB, console-size=256 KiB, ftrace-size=64 KiB and
+> pmsg-size=64 KiB, ramoops_probe() carves the post-console remainder
+> (640 KiB) into five 128 KiB kmsg records, with the requested ecc-size=16
+> reserving a small Reed-Solomon parity block from each zone's own
+> allocation (per persistent_ram_new()). The ECC lets pstore recover dumps
+> even when the panic path truncates writes mid-record.
 > 
-> Based on commit e30626823a40 ("Add linux-next specific files for 20260828")
+> The no-map property is required so the reserved region is kept out of the
+> kernel linear map. ramoops remaps the carve-out write-combine via
+> ioremap_wc(); on arm64, leaving the same physical RAM mapped cacheable in
+> the linear map at the same time is an attribute-mismatch and risks losing
+> panic data to dirty cache evictions from the linear alias.
 > 
-> [...]
+> The carve-out sits immediately below the ATF region already declared at
+> 0x43000000 in mt7988a.dtsi, so no other reserved-memory child is moved or
+> resized. BPI-R4 ships with at least 4 GiB of DRAM starting at 0x40000000,
+> so the region is well within installed memory on every variant.
+> 
+> For the carve-out to actually preserve content across a reset, the boot
+> loader must also avoid touching this region on warm reset; on standard
+> BPI-R4 boards with the stock OpenWrt U-Boot fork this already holds.
+> 
+> Signed-off-by: Martino Dell'Ambrogio <tillo@tillo.ch>
+> ---
+> Changes in v3:
+>   - Resend; no functional change. Rebased on v7.3-rc3, where the v2 diff
+>     still applies unmodified.
+>   - v2 drew no review comments. It was also sent, in error, as a reply to
+>     the BPI-R3 patch's thread rather than its own, so it is likely to have
+>     been read as a duplicate of that board's patch. This version starts a
+>     fresh thread to avoid repeating that.
+> 
+> The matching BPI-R3 (mt7986a) patch is being resent as v3 at the same time.
+> 
+> v2: https://lore.kernel.org/all/20260528123645.2650085-1-tillo@tillo.ch/
+> v1: https://lore.kernel.org/all/20260528092807.1936177-1-tillo@tillo.ch/
+> 
+>   .../boot/dts/mediatek/mt7988a-bananapi-bpi-r4.dtsi  | 13 +++++++++++++
+>   1 file changed, 13 insertions(+)
+> 
+> diff --git a/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4.dtsi b/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4.dtsi
+> index 0ff69da..6a8dc89 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4.dtsi
+> +++ b/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4.dtsi
+> @@ -80,6 +80,19 @@
+>   	};
+>   };
+>   
+> +&{/reserved-memory} {
 
-Applied, thanks!
+It's just
 
-[1/2] dt-bindings: memory-controllers: mtk-smi: Add support for mt8189
-      https://git.kernel.org/krzk/linux-mem-ctrl/c/605e6053de5c639abe4cba71644cd3c5fae46374
-[2/2] memory: mtk-smi: Add MT8189 support
-      https://git.kernel.org/krzk/linux-mem-ctrl/c/771c036d72eefe36aa6c953ecf44bee4c000a368
+	reserved-memory {
 
-Best regards,
--- 
-Krzysztof Kozlowski <krzk@kernel.org>
+Sorry about missing your patch for all this time; the comment applies to both btw.
 
+Cheers,
+Angelo
+
+> +	ramoops@42f00000 {
+> +		compatible = "ramoops";
+> +		reg = <0 0x42f00000 0 0x100000>;
+> +		no-map;
+> +		record-size = <0x20000>;
+> +		console-size = <0x40000>;
+> +		ftrace-size = <0x10000>;
+> +		pmsg-size = <0x10000>;
+> +		ecc-size = <16>;
+> +	};
+> +};
+> +
+>   &cci {
+>   	proc-supply = <&rt5190_buck3>;
+>   };
 
