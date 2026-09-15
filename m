@@ -4,45 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 11606C88E73
-	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Sep 2026 08:42:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4D01EC88E53
+	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Sep 2026 08:43:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=IKlDnUU9zBjuWIFzs99jXIYiZ1c9wlX77lxbCv40U1Q=; b=fSrLrIo/07Hc6DUMlZ89ku236p
-	9Z4Fd+xKyHMNocswZ7BuNqTNEG6QNKhh9S8KY4DYqq6Rrs31eJ+Of7zbQHU3ci2CBq3jMZYMZanvD
-	CYRHANp3O4BY0B+URMUvrf482m/WJBQyBCNU0npdI9vNqvCQP3CHqaW2yeVmkprGZxL6WpSuOUHP0
-	HCDNSmP6oYaWAu4IlsGVlAzobsA14nCACVo68JhpXmNp6Dwb+fXJCppLpndypFV8IottC1Eylp2bX
-	S58R1YF/yLSVIVeYXnpFw/ibmZVg+onjb0Ai5VWsky2V0yCzvmhIVaWkjE14v1dojC1nlq8AbHN63
-	CRNKOfCw==;
+	bh=2kyQ9q9H+Q12n4br//wADN3LcoKZmJu+3jowxzVWT8U=; b=i/v2feEFJkaGVRmHuYUMkB+KZQ
+	c0Tr77ZYsKbXKStkcNSDF0tljfVM2vVyycmqU7FBCcshC8cKyt9mZ7Z4nV8pLdeZvr02F+o5XgkEj
+	I+ULOFqKdAsQ5pMAeALLGfy5ECdIJV7zpG0YCpIk/eMfWFLMTiDn17La79EhepB+BAoRKch57V4kx
+	a6XZJeKIMVbJS/NKNZ1Fjoj7q5lFYwcD1uILwisgV9Flh/lVjzwARtnaiTIMJU9Sefqfypgx2bmWf
+	gcbbZsvLdDQUWrsCIPvyeVtdZuwoN57HDAQZKic5s+gGh558pZg0KMGUgAOPVpMKdxshTVsta29p7
+	TDXTWudw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x6Okc-00000005ezp-1GZi;
-	Tue, 15 Sep 2026 08:42:50 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1x6Okl-00000005f80-2CYX;
+	Tue, 15 Sep 2026 08:42:59 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x6Ok8-00000005eOE-2E3g;
-	Tue, 15 Sep 2026 08:42:21 +0000
+	id 1x6OkB-00000005eTu-1s31;
+	Tue, 15 Sep 2026 08:42:23 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
+	:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
+	Content-Type:Content-ID:Content-Description;
+	bh=2kyQ9q9H+Q12n4br//wADN3LcoKZmJu+3jowxzVWT8U=; b=jrgwngfkntzNsf+WBuc1VO6VLl
+	xDNmUijLKpxGFUHuzwt27r1N74BVoyRujcWcnXUGxsOzp6YxUDLwSMp98yI1UONFkienxM8Uso/m8
+	rzgI8k+G2P5qen8cmavShND4zy8xeKY8Xe0A9//j4s9w7ztUvkPfDnL611qMnT386fviyt8zE/MVq
+	dbxhFe4zQ61tPEtN2B85nguxwbUAAyI6OjnvA4iQsE4FilOiZbeJMvXI5Ebz60MRkm144lUlQB4UE
+	cTI0TLs8KJPmeOHUsUKJgGTcTNxAlsrwQs2jYeKF39attbFE01y7GZ5F/N4vsEe/wntNXU17do0DW
+	k1W4uzTg==;
+Received: from bali.collaboradmins.com ([148.251.105.195])
+	by desiato.infradead.org with esmtps (Exim 4.99.2 #2 (Red Hat Linux))
+	id 1x6Ok8-00000006RfN-2doc;
+	Tue, 15 Sep 2026 08:42:22 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1789461737;
-	bh=fTieI8NXtjf84c6bHqlL+x2GwkSSrjWo1eGphSfuE7k=;
+	s=mail; t=1789461739;
+	bh=43A1BM9waMG6ewhWBGIC1XAm5wq/Dw6qxwtteFBu24Q=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=gFcdnO/9Sni43ITNgywyZ8NzX+2O49XhxQ/QwaxM5QuC9LvxO7YLbreALrmbBCUIl
-	 Rw0HEztPkpcgaf8id3vQ1pusZ5qV+n7XimPyStoyEAFaaLbq2RXPJ70fctvm2kbiz9
-	 Gj0a4dySJlfFhpkbcFc5A+/Cnp0URkrn3oNXm7P3a4EtOetZwiDidXH8DeFFA1RdVr
-	 Uu+LGmrw0Vqnxk19/Zu4+f8g4BDPu0ycwcMvmG3u6dy/3RDFtK1AJJTBqIKSHKnArS
-	 HM6ZuF61G2VsXCcU7R5zx/FkJEtjOYNpRV/Gh1FRMcDCILKSXTHxV5P2xm52Q6VOvs
-	 5VuVKbI7Wg3LQ==
+	b=YkFJ/15bRhHTE3uiJHWxNrWwH3ueQHRC4QHhskffYYEybssCoqomdjV5mDQnwrxlk
+	 Gi3gRRKLV6YGf/pJQZy1V7Yg14TxIQzmr86rU02ZUm8aVtkIBvoW3Q4s/vATZ9hFNL
+	 CnnXbbx2OZTD197SKs3IigtpTDgOb6B5gASHTW6cdqLhfaKuCnWSjEn4j/9BZpZ58V
+	 ZgQbjBG6ER94HtVUCXAlzr7jTN+p2iNiZETvkWhCIgKeeu+58/OpooN7Jy9v82pf1D
+	 AeXKC6T4+at+oZYf2kYtMFNewUiB9Ri8MSZqksp3W9bpZpLMM+0cZkstx77CcNmmMG
+	 6F5ui1YCfzhBw==
 Received: from IcarusMOD.eternityproject.eu (unknown [100.64.1.21])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id D44C217E10D8;
-	Tue, 15 Sep 2026 10:42:15 +0200 (CEST)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id C45A917E1054;
+	Tue, 15 Sep 2026 10:42:17 +0200 (CEST)
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 To: chunkuang.hu@kernel.org
 Cc: p.zabel@pengutronix.de,
@@ -65,18 +79,20 @@ Cc: p.zabel@pengutronix.de,
 	kernel@collabora.com,
 	justin.yeh@mediatek.com,
 	jason-jh.lin@mediatek.com,
+	Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>,
 	CK Hu <ck.hu@mediatek.com>
-Subject: [PATCH v8 11/13] drm/mediatek: mtk_dsi: Enable PM Runtime on probe
-Date: Tue, 15 Sep 2026 10:41:46 +0200
-Message-ID: <20260915084148.11385-12-angelogioacchino.delregno@collabora.com>
+Subject: [PATCH v8 12/13] dt-bindings: display: mediatek: wdma: Add compatibles for more SoCs
+Date: Tue, 15 Sep 2026 10:41:47 +0200
+Message-ID: <20260915084148.11385-13-angelogioacchino.delregno@collabora.com>
 X-Mailer: git-send-email 2.55.0
 In-Reply-To: <20260915084148.11385-1-angelogioacchino.delregno@collabora.com>
 References: <20260915084148.11385-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260915_014220_720249_555E8DA3 
-X-CRM114-Status: GOOD (  12.26  )
+X-CRM114-CacheID: sfid-20260915_094220_806011_DE1970DC 
+X-CRM114-Status: UNSURE (   9.38  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,36 +107,42 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Enable PM Runtime at the end of mtk_dsi_probe() so that the
-mediatek-drm mtk_ddp_comp_power_on() function is able to do
-pm_runtime_resume_and_get() and, analogously, the function
-mtk_ddp_comp_power_off() to pm_runtime_put() for the DSI
-device.
+Multiple MediaTek SoCs have the Write DMA hardware in their Display
+Controller: add the missing compatibles for Dimensity 1200 (MT6893)
+and for Kompanio 500/520/820/1200 (MT8183/MT8186/MT8192/MT8195).
 
-This makes sure that the power domains for the DSI IP are
-turned on and off when necessary.
+Note that MT6893 is not compatible with MT8173 as it introduces
+support for destination addresses larger than 32 bits by adding
+one additional register for the upper 32 bits of the address.
 
+Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
 Reviewed-by: CK Hu <ck.hu@mediatek.com>
 Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
- drivers/gpu/drm/mediatek/mtk_dsi.c | 4 ++++
- 1 file changed, 4 insertions(+)
+ .../devicetree/bindings/display/mediatek/mediatek,wdma.yaml  | 5 +++++
+ 1 file changed, 5 insertions(+)
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_dsi.c b/drivers/gpu/drm/mediatek/mtk_dsi.c
-index d930cb3c4d74..b668814b9200 100644
---- a/drivers/gpu/drm/mediatek/mtk_dsi.c
-+++ b/drivers/gpu/drm/mediatek/mtk_dsi.c
-@@ -1734,6 +1734,10 @@ static int mtk_dsi_probe(struct platform_device *pdev)
- 	if (ret)
- 		return dev_err_probe(&pdev->dev, ret, "Failed to request DSI irq\n");
+diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,wdma.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,wdma.yaml
+index 97d052b0fb61..c3ed867d058d 100644
+--- a/Documentation/devicetree/bindings/display/mediatek/mediatek,wdma.yaml
++++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,wdma.yaml
+@@ -22,11 +22,16 @@ properties:
+   compatible:
+     oneOf:
+       - enum:
++          - mediatek,mt6893-disp-wdma
+           - mediatek,mt8173-disp-wdma
+       - items:
+           - enum:
+               - mediatek,mt6795-disp-wdma
+               - mediatek,mt8167-disp-wdma
++              - mediatek,mt8183-disp-wdma
++              - mediatek,mt8186-disp-wdma
++              - mediatek,mt8192-disp-wdma
++              - mediatek,mt8195-disp-wdma
+           - const: mediatek,mt8173-disp-wdma
  
-+	ret = devm_pm_runtime_enable(dev);
-+	if (ret)
-+		return ret;
-+
- 	ret = mipi_dsi_host_register(&dsi->host);
- 	if (ret < 0)
- 		return dev_err_probe(dev, ret, "Failed to register DSI host\n");
+   reg:
 -- 
 2.55.0
 
