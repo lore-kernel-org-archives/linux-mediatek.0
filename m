@@ -4,98 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 03681C88E75
-	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Sep 2026 11:58:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CA4AEC88E75
+	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Sep 2026 12:02:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=BrGTdKyYWPDzcFJDUsLHUxteyx4n5jj5bbwXZChmZq4=; b=KfBT1CkF33gJDwslh4o3RvRb25
-	sHRweUL2P7XORY0WT2gpJA9Z3ax/i1F7yawETVy1aSy35P18ynNKWoruhlBBR2yKNy2LsXFITHde7
-	djH0r9t3MRrVeE2PAMdW5ClDwIzABZz5UbZzXOj+YSjx3TzaEBV7kWUvkkfgD6G11DRsUaivQlpef
-	nyGDRi7nRFnw8XKBxvKx5MgT6zzwCtr3wocrS8SsU3u1EYh6RgpwkcHDWXbl50AeohLZGKlMesyBS
-	QKBB/MgmpxM/r8XxdC37bv0ZWuPPGjK3X5MX6v9k46G57E3et8x0KqVouaCRSUrVFItYdidFVtUY+
-	vDsR7Row==;
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=tbavliD54dG7PozP9lPRJAT/qtK1sRmoX7AU//MVtoU=; b=1zFDWxC+K5sh9U/oD8h4LvX51g
+	jKPLO9NLW8eEO1mf8A6o+xJa9hI4nAXzM/0gYWqMFex8XaTcsXu6xSz5XrWFi/FbmNOnbzZ2N/XMd
+	7tPGaoqPgjRkG9Q6o4GaEVybPprfY7RP4D7OAsgu12ka++71G2MN6WkPzsIh8h/kMGsafCaExO3y/
+	8XQUGuLIN70P7RWyXJmspgvAkpt7eZWSJaBN+c24EyB5uwMmgcHDp6Ce/l9QgkirTJ6Ujk2skRJOv
+	9wm7VnENK0jQ++jUpfxNIh44d5YaqAOmMDBFNemEJXtzqhMXLvhZLUh1pxBfDbAN/TLTyi8fLk/UO
+	KCsfwxpA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x6Rnj-00000006LHG-14T0;
-	Tue, 15 Sep 2026 11:58:15 +0000
-Received: from mail-pj2-x11.google.com ([2607:f8b0:4864:39::11])
+	id 1x6RrN-00000006MQN-1OM6;
+	Tue, 15 Sep 2026 12:02:01 +0000
+Received: from mail.cjdns.fr ([5.135.140.105])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x6Rng-00000006LF8-37AM
-	for linux-mediatek@lists.infradead.org;
-	Tue, 15 Sep 2026 11:58:13 +0000
-Received: by mail-pj2-x11.google.com with SMTP id 98e67ed59e1d1-396ccb1a990so2740229a91.3
-        for <linux-mediatek@lists.infradead.org>; Tue, 15 Sep 2026 04:58:12 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1789473492; x=1790078292; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
-        bh=BrGTdKyYWPDzcFJDUsLHUxteyx4n5jj5bbwXZChmZq4=;
-        b=LjuV5cDdC4mMuWZDfAM+3MEykNztWrJLWHBmDUn6v2o9a74FUX4N9KsppZhJtEVkA/
-         ZfSOdSkFXh8KvqJhSwUxTaJPPRyhWRYua5JILRQ1sYKq/k+LcIqvavAf0ZBcn2+GoApt
-         QFZrod6K3WsPt4ZbreqKS+G1I7GEW+Y+PDyXmkaL5H7qCD/URVO+71ZBVW7giqw+0SGt
-         /ziv5xRa/z09aaXKX1gd+68tdpbelTMeb4+WswUxTYNzZvdSbF3EFDxVxbYyEMdUZCzw
-         gz44zciawEGW2NMC1zbVluZvgL9GxrPY6VFZflf1RO9cw1D+3L/f3wWM9nNViULQtBKr
-         RJSg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1789473492; x=1790078292;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to:content-type;
-        bh=BrGTdKyYWPDzcFJDUsLHUxteyx4n5jj5bbwXZChmZq4=;
-        b=F8dOna5ojK/EwvjPW3+XMSI9O7uqYOrRY5lwvNxYHS4WClPUc+M9JVyJqhgmjcgKHc
-         M8+KWrEoRlH0XBx69SIlYqHbnxxxYDtpkydCISM5WkaFSK61QZGaHyym5RJwjpO5vfIP
-         gflf8SFhjtSjtG/Z6Eth77pV6NeZc9c+7hR9gDbPLOthdAnbobzRuStw1P9kHq8Z1Lfr
-         7r65oaMtpZRQ5dFOpWTEH/jSO1CY03yzCsomV9dTCmstC25ClQT4vk7E9Sc220gtnAP7
-         ynot9Fg1XNY0/S+qgGusmUJ95lwtmXXxSDdADC7SnY5aFTL0jBoPWQd/r6G/XSlNWd6d
-         uZ2w==
-X-Forwarded-Encrypted: i=1; AKwUvByFbFBO9mipblpoEi0o8TGMAxg2iEKoZ+3mDN1GjRURAMOLtwWmpo71RDmvqfxH9VVVBRV3U76+3vfIMahg1w==@lists.infradead.org
-X-Gm-Message-State: AFuF++lwoHF6yoqiuqOewSmyelM2o8rpXUUPhJ9ooTJ2R5BlZAzBOeTJ
-	xsFMk2J4ZPtaZA5Ad7bfMU1Zkm7vcuPxhVModdb6uY1cUTtWpZutaDut
-X-Gm-Gg: AYBFou1Yd3CLTwAO2Ja0PllLG9OVjTdcfuMw2RDwBVUkJopJJ9Ub/bsRoSoNEsu2fD+
-	R0PZ59gsGcBWtoNh6+G1BVv5cbUpPdbM+Cr36XHv6gzkf15kVEo1yfHizEaKxKyHGNGJDvx8AYU
-	03kCQuKX2CNJ/jiCBPm+EdiyiAq/NvUx7PW0GzDcd+cinKleVPQTZqiNXDTmd+xvJY7+J1E9r8G
-	fwXYROGdnW7nD6oUWE3qbsY6rN7rpeqHsgIsQashQSPXk6kw8J9UppT2We9lG1adXCMOCz1eZcb
-	6myFSCjlUBfk13mYiKAH4euPtVG27pzhMx1nBIrW/XxgURaZZsOddbHSFnvlI4sYuUWm/UAc4u0
-	CHaB+vgYTJbfzy1NhVuwuFUSlvid3iR7uj6tslnpmMirBXv1Nub7wg9g5QbUk84iqZ92pL/WQvK
-	uViXY2oJ2OEyEFJGcnq4LRpRvFLdDiNlEfiYVd0+llRNwqKiwEOmulzQ==
-X-Received: by 2002:a17:90a:d648:b0:39d:cbb1:c96f with SMTP id 98e67ed59e1d1-39dec09a779mr13558544a91.18.1789473491565;
-        Tue, 15 Sep 2026 04:58:11 -0700 (PDT)
-Received: from lgs.. ([2001:250:5800:1002::de93])
-        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-39dfdacba6bsm4953697a91.14.2026.09.15.04.58.03
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 15 Sep 2026 04:58:10 -0700 (PDT)
-From: Guangshuo Li <lgs201920130244@gmail.com>
-To: Tiffany Lin <tiffany.lin@mediatek.com>,
-	Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
-	Yunfei Dong <yunfei.dong@mediatek.com>,
-	Mauro Carvalho Chehab <mchehab@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Nicolas Dufresne <nicolas.dufresne@collabora.com>,
-	Fei Shao <fshao@chromium.org>,
-	Kees Cook <kees@kernel.org>,
-	Guangshuo Li <lgs201920130244@gmail.com>,
-	Chen-Yu Tsai <wenst@chromium.org>,
-	Hans Verkuil <hverkuil+cisco@kernel.org>,
-	Steve Cho <stevecho@chromium.org>,
-	linux-media@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Cc: stable@vger.kernel.org
-Subject: [PATCH] media: mediatek: vcodec: destroy core workqueue on remove
-Date: Tue, 15 Sep 2026 19:57:53 +0800
-Message-ID: <20260915115753.2411047-1-lgs201920130244@gmail.com>
-X-Mailer: git-send-email 2.43.0
+	id 1x6Rr9-00000006MMh-2EIv;
+	Tue, 15 Sep 2026 12:01:49 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id 3D77747E84B;
+	Tue, 15 Sep 2026 14:01:30 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cjdns.fr; s=dkim;
+	t=1789473703; h=from:subject:date:message-id:to:cc:mime-version:content-type:
+	 content-transfer-encoding:content-language:in-reply-to:references;
+	bh=tbavliD54dG7PozP9lPRJAT/qtK1sRmoX7AU//MVtoU=;
+	b=tKafBG8KGwbeX0kxLyniCtDhO0GbcrDfhP5FBIiC6YlLcQxrcaiePXF7ks1dS4cyPsRwcD
+	d2zoSOyyG5aZMlkZWmfOCo5qkKIMPtKK/JeF9sbZyZg265+Q/0/D3c5yc58KE8R2BWHACM
+	r2x6te608l9C4R7HWEdL2kRS0XSv7OK0ZJV5GKzxLANja8bl9qfRjllp6qLBYbVn24mgia
+	DeTfM6ljw336jVFbMd7x1AoPZbMYzKOq8gknRHo4ysKeYntnhy/S4ER2cyzTf4bjw5rUuJ
+	cbqKYimekSRbqwzECicTMTIkPPWaMED9zgDf+C+VqXZPb0r9IdGQjBKulnICQQ==
+Message-ID: <2a7edfd0-b784-4b60-b9f9-769fe00286b7@cjdns.fr>
+Date: Tue, 15 Sep 2026 14:01:29 +0200
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+User-Agent: Mozilla Thunderbird Beta
+Subject: Re: [PATCH v5 net-next] net: phy: mediatek: support MT7530 PHYs on
+ EN71221 MCM
+To: Daniel Golle <daniel@makrotopia.org>
+Cc: netdev@vger.kernel.org, dqfext@gmail.com, SkyLake.Huang@mediatek.com,
+ andrew@lunn.ch, hkallweit1@gmail.com, linux@armlinux.org.uk,
+ davem@davemloft.net, edumazet@google.com, kuba@kernel.org,
+ pabeni@redhat.com, matthias.bgg@gmail.com,
+ angelogioacchino.delregno@collabora.com, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ Matheus Sampaio Queiroga <srherobrine20@gmail.com>
+References: <20260915113427.113296-1-cjd@cjdns.fr>
+ <aqkwYd5dTmHDCIW9@makrotopia.org>
+Content-Language: en-US
+From: Caleb James DeLisle <cjd@cjdns.fr>
+In-Reply-To: <aqkwYd5dTmHDCIW9@makrotopia.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+X-Last-TLS-Session-Version: TLSv1.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260915_045812_793049_36BF7DEB 
-X-CRM114-Status: GOOD (  10.93  )
+X-CRM114-CacheID: sfid-20260915_050147_995990_E5B1CF18 
+X-CRM114-Status: GOOD (  12.27  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -110,40 +76,65 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The decoder probe allocates core_workqueue for latency-based decoder
-architectures. The probe failure paths destroy the workqueue, but the
-normal remove path only destroys decode_workqueue.
 
-As a result, removing a latency-based decoder leaves core_workqueue
-allocated after the device lifetime has ended.
+On 15/09/2026 13:47, Daniel Golle wrote:
+> On Tue, Sep 15, 2026 at 11:34:27AM +0000, Caleb James DeLisle wrote:
+>> [...]
+>> +/*
+>> + * MTK_GPHY_ID_MT7530 ID is also used for an EcoNet SoC FE phy, but that PHY
+>> + * does not advertise ESTATUS_1000_TFULL.
+>> + */
+>> +static bool mt7530_is_gphy(struct phy_device *phydev)
+>> +{
+>> +	return phydev->phy_id == MTK_GPHY_ID_MT7530 &&
+>> +	       (phy_read(phydev, MII_ESTATUS) & ESTATUS_1000_TFULL) != 0;
+>> +}
+>> +
+>> +static int mt7530_phy_match(struct phy_device *phydev,
+>> +			    const struct phy_driver *phydrv)
+>> +{
+>> +	return mt7530_is_gphy(phydev) && !en751221_is_mcm_phy(phydev);
+>> +}
+>> +
+>> +static int en751221_phy_match(struct phy_device *phydev,
+>> +			      const struct phy_driver *phydrv)
+>> +{
+>> +	return mt7530_is_gphy(phydev) && en751221_is_mcm_phy(phydev);
+>> +}
+>> +
+>>   static int mt7531_phy_config_init(struct phy_device *phydev)
+>>   {
+>>   	mtk_gephy_config_init(phydev);
+>> @@ -135,6 +199,23 @@ static struct phy_driver mtk_gephy_driver[] = {
+>>   		 */
+>>   		.config_intr	= genphy_no_config_intr,
+>>   		.handle_interrupt = genphy_handle_interrupt_no_ack,
+>> +		.match_phy_device = mt7530_phy_match,
+>> +		.suspend	= genphy_suspend,
+>> +		.resume		= genphy_resume,
+>> +		.read_page	= mtk_phy_read_page,
+>> +		.write_page	= mtk_phy_write_page,
+>> +	},
+>> +	{
+>> +		PHY_ID_MATCH_EXACT(MTK_GPHY_ID_MT7530),
+> I'd suggest to actually use phy_id and phy_id_mask assigned by the
+> PHY_ID_MATCH_EXACT macro by calling genphy_match_phy_device() in your
+> match functions above instead of open-coding the ID match.
+> Or drop PHY_ID_MATCH_EXACT from *both* drivers.
 
-Destroy core_workqueue during remove for latency-based decoder
-architectures, matching the cleanup performed by the probe failure
-paths.
 
-This issue was found by manual code inspection.
+I suppose the latter is easier because then I don't have to re-think 
+mt7530_is_gphy() which would be lying if it wasn't actually checking ID 
+is MTK_GPHY_ID_MT7530.
 
-Fixes: 365e4ba01df4 ("media: mtk-vcodec: Add work queue for core hardware decode")
-Cc: stable@vger.kernel.org
-Signed-off-by: Guangshuo Li <lgs201920130244@gmail.com>
----
- .../media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.c | 2 ++
- 1 file changed, 2 insertions(+)
 
-diff --git a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.c b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.c
-index e936ed8dffba..426d060d937c 100644
---- a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.c
-+++ b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.c
-@@ -570,6 +570,8 @@ static void mtk_vcodec_dec_remove(struct platform_device *pdev)
- 	struct mtk_vcodec_dec_dev *dev = platform_get_drvdata(pdev);
- 
- 	destroy_workqueue(dev->decode_workqueue);
-+	if (IS_VDEC_LAT_ARCH(dev->vdec_pdata->hw_arch))
-+		destroy_workqueue(dev->core_workqueue);
- 
- 	if (media_devnode_is_registered(dev->mdev_dec.devnode)) {
- 		media_device_unregister(&dev->mdev_dec);
--- 
-2.43.0
+But I guess I should come back tomorrow since I'm already in trouble 
+with the 24 hour bot.
+
+
+Thanks,
+
+Caleb
+
 
 
