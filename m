@@ -4,66 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 370C5C88E75
-	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Sep 2026 14:16:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6D2C4C88E75
+	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Sep 2026 14:20:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Wo4ny1YwO98WkJgsUBMk960GhhmSfpCNz1vnRwv3xeI=; b=rlKqYfSLbcgRxTmE89aA5h6ZcN
-	OoEdWgrZabjzOHB2sKPQcHt9LFjmTNVLpdiq3h1Bvbgzz8KGcVD0XbPCysyDuPjpuuaGZ9N2KIWen
-	quaBtfYOtMEYd1AWtD1U/Le92gEfFkjue6JBp6/nFmnU7WUuRju9o9ZFWZ5qPMJ+21wCxWTJmJ8Cq
-	VOqE6fPCKDBfjax7pQyuR6c2TS35HbKtPj+Q0BjkVHhxBjJTkcMZi/GJE0XJ+i8BG26ZBFLs9uQPr
-	rWzBm21z7x2j99kYlHF0SghqxHNoAQ7FpglQ6JPYN+NG5fA62t9/KZgjHy3i+zWRAKT1mammtCSHf
-	p4mV2M3Q==;
+	bh=TZ4W1UtZ+gfAJ2S2H6vEINh2v09+juTrXnaQsKKsnfw=; b=uwIjvo4jZ5r5SG7R8eQvU+69BX
+	/MfELAL/IuyZRVi6PVFAd4GSdZZzJ5fNg8HwvOrMmcKmKKo0W7pZPVCkwdSZBAWXX3HSOoiuQs2In
+	VZ0g4lOoFKDtYQOJ6ZeMf6zCTVX9oGB9s09yLY//iu7OZYkZsm9bwEj5SN33cOxSuBwMLLheGiTQO
+	Lfdbzrd2QSvwpfltTd76UclvN0/uTJU/V/BHuSUW3rXkbu9Pqr2P4WNEF0Bl8iGU42m5+a2D8Hnhl
+	YqFUiYtlyku4UzMmBKuczFsd828aLopKzwMnTFRNDDDPM9yYX87bqUTcd4rDg3KMVlgnr3PjotnuD
+	l1OtEHnA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x6TxK-00000006tkm-3Zmt;
-	Tue, 15 Sep 2026 14:16:18 +0000
+	id 1x6U18-00000006uRs-4BUq;
+	Tue, 15 Sep 2026 14:20:15 +0000
 Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x6Tx8-00000006thz-2OIl;
-	Tue, 15 Sep 2026 14:16:17 +0000
+	id 1x6U13-00000006uQF-3m1v;
+	Tue, 15 Sep 2026 14:20:13 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1789481764;
-	bh=PTbxpPFOxDQ8xv3WRyCj1KIRouewlTe+7MQl0VvICic=;
-	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
-	b=KRUCyAocjxgVBz3HulW75LFARuyrG+119/V5KXj4ptEBwVuz+JDHiZet+PUE5I0IQ
-	 qoy7VqAKh+MD6vKt02YWiG+VFikVc68ZjvuDBCMsJoa+vk+Azx+NRdAMf1ZDxvMFCk
-	 1RW4txL2x7YYjWoElHWCLKxAZ5QoWcdaN7Gm80yo6u6PbSoBh+1k2YRqzerZjkZ57V
-	 rcKpYgnNz/DI7qUhMi3jatG4TUpAFf1mthq+htbk8Ia+cv1QKt91/AjAkjS6MERzb8
-	 42k50eoz5tHYt1tdyYmuf1ZL8TZ0SpWy5vYn6PFbarvsPRF0er/Cnwb0IW4jXWWeJf
-	 BrvV6ODCSIQ6w==
-Received: from IcarusMOD.eternityproject.eu (unknown [100.64.1.21])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	s=mail; t=1789482007;
+	bh=X1uRYjOBwsQk4iHixraLfF+7oZ/5RTXpZmOTIJejqFk=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=ZiDzqsNKBx/4yVFHZvk0UwXUhf6U8SA/B2rLokXztM2+XKBQC+htL3RWI5/VUudqA
+	 bkQFhiP0OfYGSbMdgn8w8IHgq2wNhv1ZEHxcYgvjZMpYfG3XNywMkXrVPvRdcDRVHo
+	 1t6iOJhQb6vaODAuUfcB/uXehItzGU5ecmtX3bNZIzCHX1Foeik2fBBaXjcCiIeVga
+	 sIWomELTygiQHlizuVkCGR4dzKmhcg0mASjsYJNf1cG/VQMCmfhIhfm6pY2t2iqWLP
+	 0FLxOhmfm/q36jNXhSrerWHFFqbKIHKoHe47/8yv+NMDBcc0MSGlw2cWUAYuG+KUNg
+	 VS3cioWafcfWw==
+Received: from [100.64.1.21] (unknown [100.64.1.21])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange x25519)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id AF8E317E089A;
-	Tue, 15 Sep 2026 16:16:03 +0200 (CEST)
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-To: Matthias Brugger <matthias.bgg@gmail.com>, 
- Martino Dell'Ambrogio <tillo@tillo.ch>
-Cc: linux-mediatek@lists.infradead.org, 
- linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org, 
- linux-kernel@vger.kernel.org, kees@kernel.org, tony.luck@intel.com, 
- gpiccoli@igalia.com
-In-Reply-To: <20260915135722.566918-1-tillo@tillo.ch>
-References: <20260915135722.566918-1-tillo@tillo.ch>
-Subject: Re: [PATCH v4] arm64: dts: mediatek: mt7988a-bananapi-bpi-r4: add
- ramoops region
-Message-Id: <178948176365.42253.18334352766065751313.b4-ty@b4>
-Date: Tue, 15 Sep 2026 16:16:03 +0200
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 7C94D17E0082;
+	Tue, 15 Sep 2026 16:20:07 +0200 (CEST)
+Message-ID: <2203bb2b-9490-4d2b-8ec0-bebaaa9148b6@collabora.com>
+Date: Tue, 15 Sep 2026 16:20:07 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v5] arm64: dts: mediatek: mt7986a-bananapi-bpi-r3: add
+ ramoops region
+To: Martino Dell'Ambrogio <tillo@tillo.ch>,
+ Matthias Brugger <matthias.bgg@gmail.com>
+Cc: linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, kees@kernel.org,
+ tony.luck@intel.com, gpiccoli@igalia.com
+References: <20260915141226.600486-1-tillo@tillo.ch>
+ <a463a9fd-dddd-4b78-8408-2be683f80f13@collabora.com>
+ <20260915155333.821189-1-tillo@tillo.ch>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
+In-Reply-To: <20260915155333.821189-1-tillo@tillo.ch>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-X-Mailer: b4 0.16.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260915_071608_242048_A0483657 
-X-CRM114-Status: UNSURE (   8.56  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260915_072010_098896_B2DC11AD 
+X-CRM114-Status: GOOD (  12.35  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,29 +79,30 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, 15 Sep 2026 13:57:22 +0200, Martino Dell'Ambrogio wrote:
-> Reserve 1 MiB of RAM just below the ARM Trusted Firmware secmon region
-> (0x42f00000-0x43000000) for persistent kernel log storage via pstore/ramoops,
-> allowing post-panic console output and oops dumps to be recovered after a
-> reboot. Without it, kernel crash logs on this board are lost when the SoC
-> warm-resets and the on-chip console buffer is reinitialised.
+On 9/15/26 15:53, Martino Dell'Ambrogio wrote:
+> On 9/15/26 15:27, AngeloGioacchino Del Regno wrote:
+>> You forgot to send the 7988a bpi-r4 patch :-)
 > 
-> With record-size=128 KiB, console-size=256 KiB, ftrace-size=64 KiB and
-> pmsg-size=64 KiB, ramoops_probe() carves the post-console remainder
-> (640 KiB) into five 128 KiB kmsg records, with the requested ecc-size=16
-> reserving a small Reed-Solomon parity block from each zone's own
-> allocation (per persistent_ram_new()). The ECC lets pstore recover dumps
-> even when the panic path truncates writes mid-record.
+> It did go out - as v4 rather than v5, which is probably what threw the search
+> off. Only the BPI-R3 needed the v5 respin, because its v4 accidentally carried
+> the BPI-R4's values. The BPI-R4 patch was already correct at v4, so it stands
+> as sent, and it does carry the plain reserved-memory node you asked for:
 > 
-> [...]
+>    https://lore.kernel.org/all/20260915135722.566918-1-tillo@tillo.ch/
+> 
+> Same To/Cc as this one, sent 13:57 CEST, five seconds before the R3 v4.
+> Patchwork picked it up as 14818166 in the Linux-Mediatek project.
+> 
+> Happy to resend it if that is easier than fishing it out of the archive.
+> 
+> And thank you for applying the BPI-R3 one.
+> 
+> Martino
 
-Applied to v7.3-next/dts64, thanks!
+You're right. For whatever reason, it didn't reach my inbox.. go figure.
 
-[1/1] arm64: dts: mediatek: mt7988a-bananapi-bpi-r4: add ramoops region
-      commit: b71dd71f0965358d33a4c5c93789e46795f0f49d
+I applied the other one as well, thanks for sending!
 
 Cheers,
 Angelo
-
-
 
