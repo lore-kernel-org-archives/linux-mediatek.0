@@ -4,76 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D71EEC88E7D
-	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Sep 2026 09:03:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 03178C982C2
+	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Sep 2026 09:03:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=kLWSmlyXJzRPOS1GeQ3EyJF1epHoFNqr/jbcGqxOmCY=; b=jqbhMwgRrTjeboL0hsxndO2Z5D
-	R7KoC1iY0oOpG8h5XBaJINQqrQ1qLC8uenABMMVCt7NsPLe2OvxpHo/VCTkejdqA3ZhCb1i5SEKBs
-	gQ16CbXbpOmgSTrnrOxMLoQj5lKTdM5Wx6Ti15YXfim574/4/mDuNvB5Gua9MzJRp+5VEhS74kq99
-	Z5ajc+hcPkNV68q7MqHWtSRQu4RxHcYtFU4lVQRCMzLjp+Rf/atPmepD6R+OjlqgdpTKff3gq+jqs
-	+usjkvn1swbuDLkWV9P6dHs4rFoFdBGGCkx7jVHihze2J5xzS5tEX09rgahSoo7MJ3l97NknaeXWm
-	YzwWAykw==;
+	bh=6QV6AlfXXw+r11qGovTiPwbiifuuf1ZUfq2GxVsn5iw=; b=Kfsn6ZE8ywKb/Gcc2vIQNTKB+f
+	tEYYC6KwZWm7IKxfIByBgz25pdQkQygnCPJm1knu+zEZqPfb+X9j3lxcS8NW9jRZ2k9AkT3UJiMw6
+	wgHvKsFa/BJAv8SFzhdnAKXmygsoqIrBJ6amSwLCs+2OHEOHPLH0agkOKr9TqlJjMJmX+38gwyvRC
+	QlbdY8Y60VP5QDD2+gEv7F7gTuILK4EnLeGn7zAV9u/ThsgfE2cp1fzH27KM22qLWXnfFHsPPyRnv
+	yG9WbYBiJZ9hf+kD56cU7r3XPG3whnm1B4NpihYp5RJJxk29ZhtdLN7OffMuDJhs7M0wM/2a1k13L
+	tsT4MLcg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x6P4D-00000005iof-2xDI;
-	Tue, 15 Sep 2026 09:03:05 +0000
-Received: from mail-ej2-f12.google.com ([74.125.228.140])
+	id 1x6P4E-00000005is7-3LWV;
+	Tue, 15 Sep 2026 09:03:06 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x6P48-00000005iit-3ffA
+	id 1x6P4C-00000005imc-1Fwe
+	for linux-mediatek@bombadil.infradead.org;
+	Tue, 15 Sep 2026 09:03:04 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
+	:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
+	Content-Type:Content-ID:Content-Description;
+	bh=6QV6AlfXXw+r11qGovTiPwbiifuuf1ZUfq2GxVsn5iw=; b=VxtVt0bito96j7oxWrW51IqRWU
+	s05HvNWuHf944v2DYvSqpMjW1qxEi6Xvy2suK8bk0Jg3OiWr7DPm5r3gvLQE+o7VIdKZikYX2wP3i
+	jtAH8eDrFz2awUOSAeneEr/5rDIPmpKJBjwtPahbmZq27nw6C2DRn1o9J09jeqQgAZaZUoNAqtVMm
+	qsD7lPWohoxFdbcNvGV4L4O+6Uk6jkOEbnb+ZvT1pBaAv86tYaNx19rpTaQ4ojmc89qwSNIPOh7l8
+	QixbCPDs7yAuyNZ+wOqbPcPPo2WCY//cuJzCxZBsZZhKin/JgybjbjtkkwiRfCJkH25jdZb6Z5jzp
+	/8B/k/cQ==;
+Received: from mail-ed2-x10.google.com ([2a00:1450:4864:33::10])
+	by desiato.infradead.org with esmtps (Exim 4.99.2 #2 (Red Hat Linux))
+	id 1x6P46-00000006TEW-0IsO
 	for linux-mediatek@lists.infradead.org;
 	Tue, 15 Sep 2026 09:03:02 +0000
-Received: by mail-ej2-f12.google.com with SMTP id a640c23a62f3a-c254f9f7db0so8496766b.3
-        for <linux-mediatek@lists.infradead.org>; Tue, 15 Sep 2026 02:03:00 -0700 (PDT)
+Received: by mail-ed2-x10.google.com with SMTP id 4fb4d7f45d1cf-6a9adea43b6so3886472a12.0
+        for <linux-mediatek@lists.infradead.org>; Tue, 15 Sep 2026 02:02:57 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1789462979; x=1790067779; darn=lists.infradead.org;
+        d=gmail.com; s=20251104; t=1789462976; x=1790067776; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to:content-type;
-        bh=kLWSmlyXJzRPOS1GeQ3EyJF1epHoFNqr/jbcGqxOmCY=;
-        b=ShFSqJVQmyuuXiIIXrALM6aXvdaRmcDxUawKxVPDDDx4xbi/FmXf87JTD39+uTNguA
-         MipyuiPr+/FELboK1KAyFRtQYDt24D1qkzbk5xsvs/0h3nRh1PDZQ5BTwNVh1GD+VzYQ
-         6xhOSNLl1CJZ84uZFkbywjgCK1NnE9SQ9Yqo2bOo6HwfF6dJMf6kTntH7+qQGczjd4FV
-         FnUse+FuviCXfHH1lPp8jsCPcM5ke62xNGXF+JLCFo2EpmDTmutezbKfbFLVOTwWtHg0
-         eZm/b1rGaJmKCCA0pTTUCUcMBIzRL555sZjlnXp8ZNloALnksfoF/54qygA14d2L3OuT
-         7+fA==
+        bh=6QV6AlfXXw+r11qGovTiPwbiifuuf1ZUfq2GxVsn5iw=;
+        b=bNCkoKpjzA4UUJrBQtvjgiiUi7/Y+giTucWDv7FVdW1pRIbLBZCccIxYmcNxPapiI1
+         PngViBUvC2DGSnyQMmGCrmiT5ziLMgT5BgubgnClzc/9/u9KpolvB34XcCeT7CB1k6TQ
+         weADmHZ3m6DkMCBtmncg3+yAa+D6rpT/Npqyv9obP0cPqlJVOLo3cNHQY6vgtuGtFwKO
+         ENsedxFT3si2YFNhW6BKAAOB23VFMrEfWW5/k98DKueeYczlUIbthQWDH/kTp/Q7Lcw6
+         a+6uzIVVxVn0s1JKM4b+TsgbSRUcmwjHJzW5eRAwiKNiupf0WR/YS/alyEzSm+KyQSnS
+         l6YQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1789462979; x=1790067779;
+        d=1e100.net; s=20260707; t=1789462976; x=1790067776;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
          :to:cc:subject:date:message-id:reply-to:content-type;
-        bh=kLWSmlyXJzRPOS1GeQ3EyJF1epHoFNqr/jbcGqxOmCY=;
-        b=OhovrloHnvjNi44S30nV5qsxSQkxMSwsZQgmoSvLA9Cjx96zmuaxYU87TMvWgF1/gl
-         b9F2vP02gxOyYtgSZNuQenrXunSL0O57gc1sQHRQHrCcEMZ8zLQX9zAHCyTsjgn8ai1Q
-         L6aDHAeYjvw9m0emVDPncBx8mSP1rSVCdRnChfxK0E1ljbUQZhXb8oAHBOJC4fR7Ir5a
-         jTfQc/U/VsQQmqx+rd+OSKjK5TUjnce0ePyDTNYQQM1BT017blsvFCnQjK7o5pqO0GY+
-         HwBS7ymCB5h/Oqk+cO2auYwHm4eNfqtGVt7LCVTcixwR7njT/GOEAWJP5946Wl4/5D1M
-         EWSg==
-X-Forwarded-Encrypted: i=1; AKwUvBwSK26+HlL0/BoaRcL5QdVmy1Eigr9F93NKm5A3oQ628dhrtENrJMAupAu67a5tM32QeJa0wo4IhUeHm0gX0g==@lists.infradead.org
-X-Gm-Message-State: AFuF++nsA/iV4x+ToeILvFf7nz52szz57aAqQyomryoY6if20naxEHV5
-	kMike7AafLV2o9Bpncg2UHn5Pu3D+nsWO4sw5M1RgSVeJ37vc1lCamef
-X-Gm-Gg: AYBFou0jZEttskKTZM2bpa6yZSXNQXK+4dMZUr8IJxdXCb0tlCuTWlLynve037JiOco
-	2Zj4Q7Fc7/qr/OyoHFacM7h8QRQzpNkIhP3ICBmIeX4+jfIkfBUSZr0kIa2Airuqkh6gDcY/eh9
-	PLQioxMErtCglEUBO1YBnv3TWry3eXoF/oWpGG+kLvPq/4PNTHdAUZheUhD3FrmlS9lWNTxqXve
-	VgKBZbyHByP9UhGcruV2OEpTcu9xkG0LjSyHauGP5FBq6IH2ydaQsdtg3hmoRtY4wqx/czb5EuK
-	5uqgqIkNqnG7Zm1qd0v5Q12icred4uAPqH0X+2YY3xAoHuOx5uXL9PKVengAJdZ96CYuMkfgO6b
-	w+pJM5a1CZo5u2fLrcgJ9bZ3LnCn6jHDFpTbU5df/ffQ9k7g5NE9yoHNHmxkGBZgAmjFpoTA1B5
-	WR8dr6UBjMXen85A41KblLG0tAtUoffPKlO64fPl8tJ5SZFpTL1YASw1Xr7b1YEqY3HqlFYN1SL
-	srZGe9YqOIJtCAfHtbX8Ck+FjRWExqxT23Zv1wNkC4+vr4Jpvhj/DN947qPUwXQkl2Ac2d7LOFo
-	Jx7he41y0jKyusZOIi6YgPhzilzUG3UYau/FMaa8j6gB2AuQqbTk8Yem1tMJ92mSfy79JSPUuBJ
-	8qqgNyBdiBOr1iSRXjnxOmlSuHw4qp+TZNyfEZGM7MYpq2UjNQOIl6oKcjmK1AMuaWlgK7DPKZ5
-	Ehzv01Q8z7nRKvYJH1d9rE8CQenHMO4UYjBmVHbSgdKPP911pqnC4nspTrDPCsC0r2aLV/BCALo
-	SlQ1aasces=
-X-Received: by 2002:a17:907:9407:b0:c29:4634:5c99 with SMTP id a640c23a62f3a-c29d771747dmr18032566b.4.1789462978527;
-        Tue, 15 Sep 2026 02:02:58 -0700 (PDT)
+        bh=6QV6AlfXXw+r11qGovTiPwbiifuuf1ZUfq2GxVsn5iw=;
+        b=2uajt8jwAOxZGiGoCQ9+GZixv6mFPmD3o9flsFzbaRFR7LHq+OgGG84UBbWHi9cDWb
+         H/C6M3ZeRXgqpKRFjSTLg06BHaWuhT/ovIOEmzZLfSX4uPvn9XAkaeJFz9s/filU4ErN
+         gb4PUWJ1TmRup85huBUWK7P5zFFaKRX2ATJdNzql6j2Cjdjnt3jGqxUCllWph7ek/5Af
+         T0JiX2EVGPNlrtf9jml9F3hU+1r42xNeumBjOEToeK5gcT0j7xKLyXHawLhZWCIcSi2L
+         YiL0Z6v4Bnb9yRvXleUY3EBovi6/XblAo6picO5FPmbj6QXHKW/TcMwC2LdKVmagewx/
+         /jUA==
+X-Forwarded-Encrypted: i=1; AKwUvByQrjbYfnr0ypE9C7DHE0pR2R+XfeOwt3sa8r6qWL6sfwehqlA+m3c2fm3kv8RLGFZCHKRKbtgvHQYfskTT8A==@lists.infradead.org
+X-Gm-Message-State: AFuF++lhD8p9TMmIl9I0+e9ZwxrjfOnlAV/eWeS+oGE+1KTIUdWD8I3S
+	jk+1W2lOTtTgjbrljnl5apjWEFvo/MH5KLQqLfSPE1SOQjFjJ6FmpMfN
+X-Gm-Gg: AYBFou1eCHBpjg9YdUiwhsLW7NydKptU3Tk6tBT4ZWMomAawYR5BOXc5k5F9Y105sep
+	gfxiPhJpdxOwUrBtsvihPxmsciwr4JJzwBhxApaQmxVcYaX8HV0njIVv4uOzT7X9AvzZb5kBzK6
+	7jn3YTEJnN9xZoIqLK2hfFcd+ZQssToqIyo1HUcYGyBH+/Kl27MPCKqBkhL0TcIJedwgXxIDbIT
+	olCzHo7169ZcFRZenl5oLlek2ntbIX+WK13dKBw4N7GbLSrQjEcpWw7uT5L2tKdkm3ovNP8FsDT
+	2eKqG20HrwavxQeduMAg5YT8BkgsDjF+HOy4Jwqr809Dmtwr0GXU0wClbLXwupBqTtl9wNPZ4nP
+	WJnOkDqv0VPiCgUtosZdeeI6YXErNY0lkW9aYHQ3wo8JlGEbnhZERZgqibGZ0NYA1gzn+Ictxow
+	yjdLNuC0Af3hqajJTf3jlxVGsYg5KwI4h2kIOyHfdpbrjz1m8Ut8fKi55nROf5SlrsaFqBqYHWD
+	E3XNJoMKlWcWxWX262X68DDNyDYvxl73FUgAXSlX6BOA7JwzJy6Px4yfoHloTn6PysQvEvR0tjY
+	tz42OD73VDiVzrP1HAY9+Hw1mJBkGw4G5H4NfHHcMkwVQHL4W2WmT+oW8E2sUv8EFh+N8r/nbNi
+	lwxfTaiGyVJBybiIT0tgBsctyE9tmB6RTjKNo5q24E7flr1IY/AbGepDhWaRn1IHZAAccCq65Mh
+	c1rCvYBuQ3OiLSvxJwdr9CJoJnYDI+9nAJ7Iy3tZPdcnA+/vedA2xbMumr20bK7RLAbchDWoDmS
+	+Ko07oXuzE=
+X-Received: by 2002:a17:907:720d:b0:c26:1649:47b4 with SMTP id a640c23a62f3a-c29b87180e1mr401204766b.42.1789462976048;
+        Tue, 15 Sep 2026 02:02:56 -0700 (PDT)
 Received: from cs-280612103108-default.europe-west4-b.c.oa7bb030819b2a894-tp.internal (88.71.12.34.bc.googleusercontent.com. [34.12.71.88])
-        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-c2965c4cf01sm546369266b.1.2026.09.15.02.02.57
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-c2965c4cf01sm546369266b.1.2026.09.15.02.02.54
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 15 Sep 2026 02:02:57 -0700 (PDT)
+        Tue, 15 Sep 2026 02:02:54 -0700 (PDT)
 From: Joshua Crofts <joshua.crofts1@gmail.com>
 To: Peter Chen <peter.chen@kernel.org>,
 	Pawel Laszczak <pawell@cadence.com>,
@@ -89,17 +104,17 @@ Cc: linux-usb@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org,
 	stable@vger.kernel.org
-Subject: [PATCH 5/6] usb: mtu3: add missing pm_runtime_dont_use_autosuspend() calls
-Date: Tue, 15 Sep 2026 09:02:22 +0000
-Message-ID: <20260915090223.1346-6-joshua.crofts1@gmail.com>
+Subject: [PATCH 2/6] usb: xhci-mtk: add missing pm_runtime_dont_use_autosuspend() call
+Date: Tue, 15 Sep 2026 09:02:19 +0000
+Message-ID: <20260915090223.1346-3-joshua.crofts1@gmail.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260915090223.1346-1-joshua.crofts1@gmail.com>
 References: <20260915090223.1346-1-joshua.crofts1@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260915_020300_947472_8B06D90C 
-X-CRM114-Status: GOOD (  10.60  )
+X-CRM114-CacheID: sfid-20260915_100259_737605_BEFECF7E 
+X-CRM114-Status: GOOD (  10.58  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -114,7 +129,7 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The comm_init_err label in mtu3_probe() and mtu3_remove() both call
+The disable_pm label in xhci_mtk_probe() and xhci_mtk_remove() both call
 pm_runtime_disable() on error or device teardown, but don't call
 pm_runtime_dont_use_autosuspend(), causing resource leaks.
 
@@ -122,33 +137,33 @@ Add the missing pm_runtime_dont_use_autosuspend().
 
 Found using Coccinelle.
 
-Fixes: df2069acb005 ("usb: Add MediaTek USB3 DRD driver")
-Fixes: fa6f59e28c61 ("usb: mtu3: support runtime PM for host mode")
+Fixes: 0cbd4b34cda9 ("xhci: mediatek: support MTK xHCI host controller")
+Fixes: 04284eb74e0c ("usb: xhci-mtk: add support runtime PM")
 Cc: <stable@vger.kernel.org>
 Signed-off-by: Joshua Crofts <joshua.crofts1@gmail.com>
 ---
- drivers/usb/mtu3/mtu3_plat.c | 2 ++
+ drivers/usb/host/xhci-mtk.c | 2 ++
  1 file changed, 2 insertions(+)
 
-diff --git a/drivers/usb/mtu3/mtu3_plat.c b/drivers/usb/mtu3/mtu3_plat.c
-index b4f4c776adb9..ce64c36a98f7 100644
---- a/drivers/usb/mtu3/mtu3_plat.c
-+++ b/drivers/usb/mtu3/mtu3_plat.c
-@@ -445,6 +445,7 @@ static int mtu3_probe(struct platform_device *pdev)
- comm_init_err:
+diff --git a/drivers/usb/host/xhci-mtk.c b/drivers/usb/host/xhci-mtk.c
+index 60af5fe29bd4..eb483a267bf6 100644
+--- a/drivers/usb/host/xhci-mtk.c
++++ b/drivers/usb/host/xhci-mtk.c
+@@ -700,6 +700,7 @@ static int xhci_mtk_probe(struct platform_device *pdev)
+ disable_pm:
  	pm_runtime_put_noidle(dev);
  	pm_runtime_disable(dev);
 +	pm_runtime_dont_use_autosuspend(dev);
- 	ssusb_debugfs_remove_root(ssusb);
- 
  	return ret;
-@@ -483,6 +484,7 @@ static void mtu3_remove(struct platform_device *pdev)
- 	ssusb_rscs_exit(ssusb);
- 	ssusb_debugfs_remove_root(ssusb);
- 	pm_runtime_disable(&pdev->dev);
-+	pm_runtime_dont_use_autosuspend(&pdev->dev);
- 	pm_runtime_put_noidle(&pdev->dev);
- 	pm_runtime_set_suspended(&pdev->dev);
+ }
+ 
+@@ -731,6 +732,7 @@ static void xhci_mtk_remove(struct platform_device *pdev)
+ 	regulator_bulk_disable(BULK_VREGS_NUM, mtk->supplies);
+ 
+ 	pm_runtime_disable(dev);
++	pm_runtime_dont_use_autosuspend(dev);
+ 	pm_runtime_put_noidle(dev);
+ 	pm_runtime_set_suspended(dev);
  }
 -- 
 2.47.3
