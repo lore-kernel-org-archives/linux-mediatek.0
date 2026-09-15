@@ -4,73 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F3FAEC88E75
-	for <linux-mediatek@archiver.kernel.org>; Mon, 14 Sep 2026 23:16:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9BA03C88E75
+	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Sep 2026 01:51:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
+	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=6zWxkkeiTyWE5LKeVfdhoG160eDFFWVwrPpDwosVNsg=; b=s5Iya2JVr88lAWEYd/zJYiPjFc
-	u+jlxGiszu50fpIJDw3SOhE9uy6yyzy/pMtBhzxVxV3d6QSmeRJJyjW9vX17kc091cAzI/1KyKBtS
-	9PmMT9y69cb2/oVxncCR3Oo6YQM/zt/gzcOAOjfA85L8rzVjSFK9pmgsCFAEmHYv1WTtHvJBYxA6B
-	NcpD5pRI6ZJJKUy6kOzoxMa/OMN0Ga8hsfcHCROALEFsJIzYHptLwZ9WkNZBy7XzkKeA60sUKb4JP
-	8bUvgh4rU1IlBLtjdgdbroVusEHDldTEDLHiSlHhyx6Qja17V7MLskf6910NLofxY/HGcsp5n9Mqm
-	pN4wAkhQ==;
+	bh=itwfnddppYts/aNh14NQXudZ+g/qHKM1ljo2Odl43j8=; b=0xdWpGhJJixYmfwIdmtPWNCEVl
+	vqG6zuFj4aN0vTddR6XacnEujzYIlpcqiHdBisrQt/X6ZyMUy0H53+lvRR5/Q4cJE/hp8es4Ohn6q
+	xENLZYASliRvECehpljUoyjh0GBgpPtj+4+czjBLgaXCKSf8wO84cqb4GjKffBeLUmEMLifpzCis8
+	eHHYFmQ1Q4Tp5gBdWYbLPIws86fty9rdyOkbN1Zo5EEvesncJP64X4FauHne/twArdST12D5OM3Xc
+	o3eTy5HK4mCU85BbINZ1paGROvV9c+e4wur0G73zVTQ6NQ1VaP0EcvvX7OF06h7JlLWMjUaWdc3r3
+	DK1iv03g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x6Fuj-00000004qXZ-1WjG;
-	Mon, 14 Sep 2026 23:16:41 +0000
-Received: from out-190.mta0.migadu.com ([2001:41d0:1004:224b::be] helo=mta0.migadu.com)
+	id 1x6IKM-00000004zBW-0LXQ;
+	Tue, 15 Sep 2026 01:51:18 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x6Fud-00000004qPF-3JkG
-	for linux-mediatek@lists.infradead.org;
-	Mon, 14 Sep 2026 23:16:39 +0000
-X-Envelope-To: linux-mediatek@lists.infradead.org
-DKIM-Signature: a=rsa-sha256; bh=6zWxkkeiTyWE5LKeVfdhoG160eDFFWVwrPpDwosVNsg=;
- c=simple/simple; d=justthetip.ca;
- h=from:to:subject:date:message-id:mime-version:content-type; s=key1;
- t=1789427792; v=1; x=1790032592;
- b=CTN8WiOgCgcBOqgnN4CcU3dUEdhIrCHG69eyBylJY3dopCJ14vtbC3gvs15LK5dIFLBssFSv
- oaMh34+xqmSi+Se3HTEwEnAUmgwolt+UV0e3UQ2s7cp0agA9qpEl0cXPi50M+mDeiRathmIfC3p
- R4gh8HPeL6jGDLv5VfIEkzZtkHDBwHsjrzqTmT7EE3WTaaLGW7hfkSjGIOu+/ldKi40pvC2eh1+
- hZSa33IElwwuE8mS1px74fwfBFLbFr9AaPKcm8vgkHS4UDK61lok2XjvpID2qJRhyulnZ/slKnP
- XGOm9GZLh7RrCqqVu2s12MzMIRMCKTUvO4VNNz2cJZxTA==
-X-Envelope-To: linux-mediatek@lists.infradead.org
-Received: by smtp.migadu.com with ESMTPS id 93e28aba6f8c875a;
-	Mon, 14 Sep 2026 23:16:21 +0000
-X-Mizu-Trace-ID: 93e28aba6f8c875a
-X-Migadu-Flow: FLOW_OUT
-From: Devin Wittmayer <lucid_duck@justthetip.ca>
-To: Thorsten Leemhuis <regressions@leemhuis.info>,
-	Felix Fietkau <nbd@nbd.name>,
-	Lorenzo Bianconi <lorenzo@kernel.org>
-Cc: Klara Modin <klarasmodin@gmail.com>,
-	Charlie-cy Wu <Charlie-cy.Wu@mediatek.com>,
-	JB Tsai <jb.tsai@mediatek.com>,
-	Sean Wang <sean.wang@mediatek.com>,
-	Ryder Lee <ryder.lee@mediatek.com>,
-	Shayne Chen <shayne.chen@mediatek.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-wireless@vger.kernel.org,
-	linux-mediatek@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	regressions@lists.linux.dev
-Subject: Re: [PATCH wireless] wifi: mt76: mt792x: fix NULL dereference in ACPI SAR init during probe
-Date: Mon, 14 Sep 2026 16:16:18 -0700
-Message-ID: <20260914231618.17749-1-lucid_duck@justthetip.ca>
-X-Mailer: git-send-email 2.55.0
-In-Reply-To: <2fd03569-f1c4-4c02-97ed-c74f4cd7f809@leemhuis.info>
-References: <20260825181712.28548-1-lucid_duck@justthetip.ca> <2fd03569-f1c4-4c02-97ed-c74f4cd7f809@leemhuis.info>
-MIME-Version: 1.0
+	id 1x6IKK-00000004zB6-1aym;
+	Tue, 15 Sep 2026 01:51:16 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by tor.source.kernel.org (Postfix) with ESMTP id 83ABE602C4;
+	Tue, 15 Sep 2026 01:51:15 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 342DF1F000FF;
+	Tue, 15 Sep 2026 01:51:15 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1789437075;
+	bh=itwfnddppYts/aNh14NQXudZ+g/qHKM1ljo2Odl43j8=;
+	h=Subject:From:Date:References:In-Reply-To:To:Cc;
+	b=dLPeftJ1fhcJ7f7zNyFpCvlPdmwLHBDm94aFvbpa7aCd/H+6CqHV0lyNOTcMv0zhz
+	 KrQ9O1WAFq/wdYNhKPAhfoGcX6ZjMQoz8aAjRG39k0C7BfBXmokMLHZBsg10nKlFde
+	 dOBsbjUw2CWv8Ndk2i29itlGPTTGv8VJF4HSbJJV7enkRylCtTDoA/XXeYNGETYKto
+	 8qhQEDU57gt3sX0J7EZvdqVuKHlL9KS6ogV+pEB5wSN4ez2F980imFrAlgZbSzx2lE
+	 hrq6E5UuikRzgvdHyk3585algHMWdLzkHmD3K7tmpDJW1G2GUhW8Mg0HzF5OvIuque
+	 YpCdNSf8DcMOg==
+Received: from [10.30.226.235] (localhost [IPv6:::1])
+	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id 56E4E3924FFE;
+	Tue, 15 Sep 2026 01:50:11 +0000 (UTC)
 Content-Type: text/plain; charset="utf-8"
+MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260914_161636_258826_BB2AD9FB 
-X-CRM114-Status: GOOD (  13.11  )
+Subject: Re: [PATCH net-next v7] net: airoha: add LRO offload support
+From: patchwork-bot+netdevbpf@kernel.org
+Message-Id: <178943700988.1306524.1515972440197677223.git-patchwork-notify@kernel.org>
+Date: Tue, 15 Sep 2026 01:50:09 +0000
+References: <20260909-airoha-eth-lro-v7-1-e6317be79067@kernel.org>
+In-Reply-To: <20260909-airoha-eth-lro-v7-1-e6317be79067@kernel.org>
+To: Lorenzo Bianconi <lorenzo@kernel.org>
+Cc: andrew+netdev@lunn.ch, davem@davemloft.net, edumazet@google.com,
+ kuba@kernel.org, pabeni@redhat.com, aleksander.lobakin@intel.com,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ netdev@vger.kernel.org, madhur.agrawal@airoha.com, horms@kernel.org
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,38 +72,37 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Thorsten,
+Hello:
 
-Thanks for pointing Linus at it, that's pretty cool.
+This patch was applied to netdev/net-next.git (main)
+by Jakub Kicinski <kuba@kernel.org>:
 
-There's nothing to set straight as far as I could find so no additional
-patches to send. I went through it pretty thoroughly against mainline
-this afternoon.
+On Wed, 09 Sep 2026 21:06:05 +0200 you wrote:
+> Introduce LRO offload support to the airoha_eth driver, leveraging
+> the EN7581/AN7583 SoC's 8 dedicated LRO hardware queues mapped to RX
+> queues 24-31. LRO offloading does not support Scatter-Gather (SG) so
+> it is required to increase the page_pool allocation order to 2 for RX
+> queues 24-31 (LRO queues).
+> 
+> Since LRO is configured per-QDMA and shared across all devices using
+> it, LRO is mutually exclusive with multiple devices bound to the
+> same QDMA block. NETIF_F_LRO availability is re-evaluated whenever the
+> QDMA user count changes (device registration and runtime QDMA
+> migration): airoha_update_netdev_features() drops the feature when the
+> QDMA has more than one user, while airoha_dev_set_qdma() re-enables LRO
+> on the destination QDMA after a migration so that a running device
+> keeps it active on the new QDMA block.
+> 
+> [...]
 
-No stable backport needed. Both commits it fixes first appear in
-v7.3-rc1, so the regression never reached a release.
+Here is the summary with links:
+  - [net-next,v7] net: airoha: add LRO offload support
+    https://git.kernel.org/netdev/net-next/c/a952507ca094
 
-Felix's tree carries no competing fix and has not touched that file
-since October from what I could find.
+You are awesome, thank you!
+-- 
+Deet-doot-dot, I am a bot.
+https://korg.docs.kernel.org/patchwork/pwbot.html
 
-The two patches still queued for that file, Junjie's 0xff one and my
-table-layout one, both apply cleanly on top, so nothing got stranded.
 
-Thanks again,
-
-Devin
-
-On 14/09/2026 06:35, Thorsten Leemhuis wrote:
-> For the record: Linus pulled this directly from the list into mainline
-> yesterday after I pointed to this patch in a small regression report. I
-> did that, as I had seen multiple people reporting a regression who
-> confirmed that this patch fixed things for them.
->
-> Bypassing subsystems like this has obvious downsides and risks; hence,
-> if that got something on the wrong track, please speak up -- or ideally
-> send patches to set things straight again in mainline.
->
-> https://git.kernel.org/torvalds/c/7825de3f75d184612d77655669a04ea0da252c17
-> / 7825de3f75d184 ("wifi: mt76: mt792x: fix NULL dereference in ACPI SAR
-> init during probe") [v7.3-rc3]
 
