@@ -4,73 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D4D09C88E75
-	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Sep 2026 03:54:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9092EC88E53
+	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Sep 2026 04:43:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-Type:MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=Cg7BjXQsPJW6OHMuCBfATLvuEeL8ik/U3coKCoyf238=; b=fOPA9PCWlx9cYaMD+LPQhcO1jH
-	4lx+JCOxR2IpKVjh5/gZqXVgQzh77iv2nJw43TrENX2PKoy3DzxyJ4xf6ynrkf/qRPVvIGoeUFGhY
-	qM3rtwszY2eHXtYMgLPjIIFIanbSI0rVNDftrFzhDZKPb1ACCahpLY/l94C4ecaJb1vc9o+//Eeb4
-	8FKVSeDnp+gkDOQyOiaxoV5RwRpLgRE4eFB2prrN6Hj5GNaJoNEwlot9JvH9Y/+wFBKLK0oASEOe+
-	Frxsj3VoY3wEHfniJnA0gW3+kUI6V29bWdnI/FM7FcvpNuS5l1ehr9uAYXDpU1IQqp9UG3bpY9+vV
-	Ju1RPDVQ==;
+	bh=iDBR88Kq1bFU8YSncqnOxECCzfjGRrt18SSlVQzNBnc=; b=vl0kvCaEkmVC6PA6lD2EQiFm13
+	SXE9W1qvPlGN3dssxx3SQcuJzavyHtsW3iwtHSuPrsezyr9757HYWQK/xSwEq5wOFuOIE9QUtJYjq
+	dI062IGwF6Q6zlhToa+SuQ/UQOSVRrDkgWn0BvbXwg9wjtv9CuXOaureoQVnLgx4zb0t2KMAFFx4a
+	VCgJ4GGSqrQHqAyUruqDxuPGjcWHqU36bTksa2muVLyXy61tJc1vMRoTVyjUUvDsnQmquNf18AorP
+	WGZuvcZdsOJCzHUbCUR+dxOvb2MdINV8pn+YAmo66xJQgzlBmQhaGEeGz1oz/BveUnp8qHllQ+KxN
+	SIBsiGdw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x6KF8-00000005A0t-3ACt;
-	Tue, 15 Sep 2026 03:54:02 +0000
-Received: from smtp21.cstnet.cn ([159.226.251.21] helo=cstnet.cn)
+	id 1x6L0n-00000005CWv-3jYX;
+	Tue, 15 Sep 2026 04:43:17 +0000
+Received: from mail.mdapi.ch ([31.3.128.54])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x6KF3-00000005A03-3uam;
-	Tue, 15 Sep 2026 03:54:01 +0000
-Received: from dfae2b116770.home.arpa (unknown [36.110.52.2])
-	by APP-01 (Coremail) with SMTP id qwCowABXLvJSwahqw9QHCA--.5267S2;
-	Tue, 15 Sep 2026 11:53:54 +0800 (CST)
-From: Wentao Liang <vulab@iscas.ac.cn>
-To: angelogioacchino.delregno@collabora.com
-Cc: linux-arm-kernel@lists.infradead.org,
-	linux-bluetooth@vger.kernel.org,
+	id 1x6L0k-00000005CUO-3B8N;
+	Tue, 15 Sep 2026 04:43:16 +0000
+From: Martino Dell'Ambrogio <tillo@tillo.ch>
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=tillo.ch; s=mail202603;
+	t=1789447378;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding;
+	bh=iDBR88Kq1bFU8YSncqnOxECCzfjGRrt18SSlVQzNBnc=;
+	b=PPSoj7PgCTlMLla4350sZgDJzIx+8rTgGOjNPZe/8yjpHw/erLp7sBJIKRyL4Q0DGFFEES
+	EOHypxEvIX9IQLMiyt4D1pNU4m5sUDJm9S4W/mviqw44fezn5wsj/atoTua336GyBgO+Sx
+	3Ke3NU5c08uPO9p0GmAXn1OCT9x+OEVGupg0kPo7RDXGEtsV26T65sB4R5u/n8sJoZM9Dq
+	L4QTolYeMLexySoXGEkLqUzBoI6PZsVqhxG2u7Z3nSwnHU4AApJVk/72Jdj5KPvYm/M7wy
+	Y58qs1XXSkMlQ3h1FetjarEwgC45NJLH870d8KGTSMJtgWLgYL+dWQ0Deh/Kmg==
+To: Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: linux-mediatek@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org,
+	devicetree@vger.kernel.org,
 	linux-kernel@vger.kernel.org,
-	linux-mediatek@lists.infradead.org,
-	luiz.dentz@gmail.com,
-	marcel@holtmann.org,
-	matthias.bgg@gmail.com,
-	sean.wang@mediatek.com,
-	lkml@vger.kernel.org,
-	Wentao Liang <vulab@iscas.ac.cn>,
-	stable@vger.kernel.org
-Subject: [PATCH 2/4] Bluetooth: btmtksdio: Fix runtime PM leak in btmtksdio_shutdown()
-Date: Tue, 15 Sep 2026 03:53:25 +0000
-Message-Id: <20260915035325.1724227-1-vulab@iscas.ac.cn>
-X-Mailer: git-send-email 2.34.1
+	kees@kernel.org,
+	tony.luck@intel.com,
+	gpiccoli@igalia.com
+Subject: [PATCH v3] arm64: dts: mediatek: mt7988a-bananapi-bpi-r4: add ramoops region
+Date: Tue, 15 Sep 2026 06:42:54 +0200
+Message-ID: <20260915064254.1594808-1-tillo@tillo.ch>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-CM-TRANSID: qwCowABXLvJSwahqw9QHCA--.5267S2
-X-Coremail-Antispam: 1UD129KBjvJXoW7GFW3JFy5CF13Kw47Jr4ktFb_yoW8Jryfpr
-	Wq9FyayFZavw42yFn7JanaqFWYv34YqrW8Kry0934rur4rJayIyF15tryYq3WSkrWkCw45
-	A3Z2qFWfGFnFkw7anT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
-	9KBjDU0xBIdaVrnRJUUU9F14x267AKxVW8JVW5JwAFc2x0x2IEx4CE42xK8VAvwI8IcIk0
-	rVWrJVCq3wAFIxvE14AKwVWUJVWUGwA2ocxC64kIII0Yj41l84x0c7CEw4AK67xGY2AK02
-	1l84ACjcxK6xIIjxv20xvE14v26ryj6F1UM28EF7xvwVC0I7IYx2IY6xkF7I0E14v26F4j
-	6r4UJwA2z4x0Y4vEx4A2jsIE14v26F4UJVW0owA2z4x0Y4vEx4A2jsIEc7CjxVAFwI0_Gc
-	CE3s1le2I262IYc4CY6c8Ij28IcVAaY2xG8wAqx4xG64xvF2IEw4CE5I8CrVC2j2WlYx0E
-	2Ix0cI8IcVAFwI0_Jrv_JF1lYx0Ex4A2jsIE14v26F4j6r4UJwAm72CE4IkC6x0Yz7v_Jr
-	0_Gr1lF7xvr2IYc2Ij64vIr41lF7I21c0EjII2zVCS5cI20VAGYxC7M4IIrI8v6xkF7I0E
-	8cxan2IY04v7MxkF7I0En4kS14v26r1q6r43MxAIw28IcxkI7VAKI48JMxC20s026xCaFV
-	Cjc4AY6r1j6r4UMI8I3I0E5I8CrVAFwI0_Jr0_Jr4lx2IqxVCjr7xvwVAFwI0_JrI_JrWl
-	x4CE17CEb7AF67AKxVWUtVW8ZwCIc40Y0x0EwIxGrwCI42IY6xIIjxv20xvE14v26r1j6r
-	1xMIIF0xvE2Ix0cI8IcVCY1x0267AKxVW8JVWxJwCI42IY6xAIw20EY4v20xvaj40_Jr0_
-	JF4lIxAIcVC2z280aVAFwI0_Jr0_Gr1lIxAIcVC2z280aVCY1x0267AKxVW8JVW8JrUvcS
-	sGvfC2KfnxnUUI43ZEXa7VU19Xo7UUUUU==
-X-Originating-IP: [36.110.52.2]
-X-CM-SenderInfo: pyxotu46lvutnvoduhdfq/1tbiDAMLA2qoi9j4JwAAsJ
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260914_205358_342001_9A249A26 
-X-CRM114-Status: UNSURE (   9.32  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260914_214315_063565_D7E8ACE3 
+X-CRM114-Status: GOOD (  14.81  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,36 +70,78 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-btmtksdio_shutdown() takes a runtime PM reference with
-pm_runtime_get_sync(bdev->dev), which leaves the device's usage
-count incremented even when it fails.  If the WMT func-ctrl command
-fails to send, mtk_hci_wmt_sync() returns a negative error and the
-function returns immediately, skipping the pm_runtime_put_noidle()
-at the ignore_wmt_cmd label, so the reference is leaked.
+Reserve 1 MiB of RAM just below the ARM Trusted Firmware secmon region
+(0x42f00000-0x43000000) for persistent kernel log storage via pstore/ramoops,
+allowing post-panic console output and oops dumps to be recovered after a
+reboot. Without it, kernel crash logs on this board are lost when the SoC
+warm-resets and the on-chip console buffer is reinitialised.
 
-Drop the reference with pm_runtime_put_noidle() before returning
-the error to keep the usage count balanced.
+With record-size=128 KiB, console-size=256 KiB, ftrace-size=64 KiB and
+pmsg-size=64 KiB, ramoops_probe() carves the post-console remainder
+(640 KiB) into five 128 KiB kmsg records, with the requested ecc-size=16
+reserving a small Reed-Solomon parity block from each zone's own
+allocation (per persistent_ram_new()). The ECC lets pstore recover dumps
+even when the panic path truncates writes mid-record.
 
-Fixes: 7f3c563c575e ("Bluetooth: btmtksdio: Add runtime PM support to SDIO based Bluetooth")
-Cc: stable@vger.kernel.org
-Signed-off-by: Wentao Liang <vulab@iscas.ac.cn>
+The no-map property is required so the reserved region is kept out of the
+kernel linear map. ramoops remaps the carve-out write-combine via
+ioremap_wc(); on arm64, leaving the same physical RAM mapped cacheable in
+the linear map at the same time is an attribute-mismatch and risks losing
+panic data to dirty cache evictions from the linear alias.
+
+The carve-out sits immediately below the ATF region already declared at
+0x43000000 in mt7988a.dtsi, so no other reserved-memory child is moved or
+resized. BPI-R4 ships with at least 4 GiB of DRAM starting at 0x40000000,
+so the region is well within installed memory on every variant.
+
+For the carve-out to actually preserve content across a reset, the boot
+loader must also avoid touching this region on warm reset; on standard
+BPI-R4 boards with the stock OpenWrt U-Boot fork this already holds.
+
+Signed-off-by: Martino Dell'Ambrogio <tillo@tillo.ch>
 ---
- drivers/bluetooth/btmtksdio.c | 1 +
- 1 file changed, 1 insertion(+)
+Changes in v3:
+ - Resend; no functional change. Rebased on v7.3-rc3, where the v2 diff
+   still applies unmodified.
+ - v2 drew no review comments. It was also sent, in error, as a reply to
+   the BPI-R3 patch's thread rather than its own, so it is likely to have
+   been read as a duplicate of that board's patch. This version starts a
+   fresh thread to avoid repeating that.
 
-diff --git a/drivers/bluetooth/btmtksdio.c b/drivers/bluetooth/btmtksdio.c
-index 243215a81fa7..dfb61653a878 100644
---- a/drivers/bluetooth/btmtksdio.c
-+++ b/drivers/bluetooth/btmtksdio.c
-@@ -1231,6 +1231,7 @@ static int btmtksdio_shutdown(struct hci_dev *hdev)
- 	err = mtk_hci_wmt_sync(hdev, &wmt_params);
- 	if (err < 0) {
- 		bt_dev_err(hdev, "Failed to send wmt func ctrl (%d)", err);
-+		pm_runtime_put_noidle(bdev->dev);
- 		return err;
- 	}
+The matching BPI-R3 (mt7986a) patch is being resent as v3 at the same time.
+
+v2: https://lore.kernel.org/all/20260528123645.2650085-1-tillo@tillo.ch/
+v1: https://lore.kernel.org/all/20260528092807.1936177-1-tillo@tillo.ch/
+
+ .../boot/dts/mediatek/mt7988a-bananapi-bpi-r4.dtsi  | 13 +++++++++++++
+ 1 file changed, 13 insertions(+)
+
+diff --git a/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4.dtsi b/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4.dtsi
+index 0ff69da..6a8dc89 100644
+--- a/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4.dtsi
+@@ -80,6 +80,19 @@
+ 	};
+ };
  
++&{/reserved-memory} {
++	ramoops@42f00000 {
++		compatible = "ramoops";
++		reg = <0 0x42f00000 0 0x100000>;
++		no-map;
++		record-size = <0x20000>;
++		console-size = <0x40000>;
++		ftrace-size = <0x10000>;
++		pmsg-size = <0x10000>;
++		ecc-size = <16>;
++	};
++};
++
+ &cci {
+ 	proc-supply = <&rt5190_buck3>;
+ };
 -- 
-2.34.1
+2.47.3
+
 
 
