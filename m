@@ -4,78 +4,179 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AFD60C88E53
-	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Sep 2026 05:27:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5AC2EC88E75
+	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Sep 2026 06:06:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=33cVQ5J4yhsyUS8HwbCV24xkwsxQdh7bjkPhas/popg=; b=aJ+fSbxg1uKeq29SVd0syJ7Tt7
-	FWx2WVMAjUc/C8Pyk970czj1wc/bn41GzFlFdG3T8GXJZkdhLmkdh1yOch6lrViqqgnGxakXjfn48
-	npnhVD4qO7mYdz3XpHAUA1QWur9MgSQNCJsKOQIK5yZDcoREuHCtBKiJu/0Cfeh2RrOu8XeSqrRDI
-	mpkqfvc0aLHSX4du0bwPK7jRqraGm49L+7SMIzsO/cQnc/vU4ilGcbjUMJVovRbvJA8cIZOQxu0yT
-	wN6lIuDWaVPIti9h4WJiK0LanMLDwFXeD41877qB2P7xlmcBxkQ14oLEXLoLJI6CrOCZDatET1Zle
-	cRrh0u3w==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=+uyBT5Zaxv1RHABZ8zEG0vkgVxe7bFptHBkSRZjYknY=; b=YC93GeCK6rXz/+ZActBigjWOYW
+	kBhYkq4kIDwbCgiThPNWSlA2CdeW4WfPaZ4WIc7Wbb4DeMr3rILGZ1hJ1IL3pp9elQia9j6ee3hNS
+	ySrkSUKxUtOJM7Mm41dK8hXyBMJ394KdKN3YgTkLiOwH6dgwEWJa7eLRCeDZiEj3JezlglkjI6jV9
+	RF/KeRnoWfwmHqkWpvsF/G2wL5TVfk3fYRDAdMNSE6UCb9LGd4jnANyAY0MmF8ZvQ9BIGL0CENB/9
+	fbnM8t47IDBtMYVh/KFE+13M/1pGfiB0PJ9xS79qnjjA6LOZ8oEwYVUwmWe581AA/Xf4hVxa7oEC+
+	VIhvHGXw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x6LhH-00000005F6s-1ufQ;
-	Tue, 15 Sep 2026 05:27:11 +0000
-Received: from [216.200.240.185] (helo=mailgw02.mediatek.com)
+	id 1x6MJ2-00000005KMB-2yjM;
+	Tue, 15 Sep 2026 06:06:12 +0000
+Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x6LhE-00000005F5u-3Jnk
+	id 1x6MI4-00000005KHR-1mSo
 	for linux-mediatek@lists.infradead.org;
-	Tue, 15 Sep 2026 05:27:09 +0000
-X-UUID: 13b54776b0c611f1acbe4559397dec65-20260914
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=33cVQ5J4yhsyUS8HwbCV24xkwsxQdh7bjkPhas/popg=;
-	b=qCy8PznXjGVLGKiXuDTyHM1puJ33Jsr/CmFjwBaGPKjH9bj/hsSBFT1XWvDrd1fX9oNDxaRHA9tdPo7CUbcudBy13wkguzZ8eRaD5zSkBzQw7yq9aGB57luPbQjgFwJ+ljZnfRGG3PNWCenYaB8PMYmgwnWL7fQfFC+CMh93hBE=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.19,REQID:8ae78f1b-920e-4047-8213-2028251c4913,IP:0,U
-	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
-	:release,TS:-5
-X-CID-META: VersionHash:7db8b62,CLOUDID:f67dd9e2-72a5-4ba1-af40-18bbd6ea8ffd,B
-	ulkID:nil,BulkQuantity:0,SF:102|123|836|865|888|898,TC:-5,Content:0|15|50|
-	99,EDM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:-1,COL:0,OSI:0,OS
-	A:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 2,SSN|SDN
-X-CID-BAS: 2,SSN|SDN,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: 13b54776b0c611f1acbe4559397dec65-20260914
-Received: from mtkmbs09n2.mediatek.inc [(172.21.101.94)] by mailgw02.mediatek.com
-	(envelope-from <alice.chao@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1712032148; Mon, 14 Sep 2026 22:27:00 -0700
-Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
- MTKMBS09N2.mediatek.inc (172.21.101.94) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.29; Tue, 15 Sep 2026 13:26:58 +0800
-Received: from mtksitap99.mediatek.inc (10.233.130.16) by
- mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.2562.29 via Frontend Transport; Tue, 15 Sep 2026 13:26:58 +0800
-From: <alice.chao@mediatek.com>
-To: <stable@vger.kernel.org>
-CC: <linux-scsi@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-	<martin.petersen@oracle.com>, <James.Bottomley@HansenPartnership.com>,
-	<bvanassche@acm.org>, <avri.altman@sandisk.com>, <alim.akhtar@samsung.com>,
-	<wsd_upstream@mediatek.com>, <linux-mediatek@lists.infradead.org>,
-	<peter.wang@mediatek.com>, <chun-hung.wu@mediatek.com>,
-	<alice.chao@mediatek.com>, <cc.chou@mediatek.com>,
-	<chaotian.jing@mediatek.com>, <tun-yu.yu@mediatek.com>,
-	<naomi.chu@mediatek.com>, <ed.tsai@mediatek.com>
-Subject: [PATCH 6.18.y] scsi: ufs: core: Re-arm the device command completion before submitting
-Date: Tue, 15 Sep 2026 13:26:37 +0800
-Message-ID: <20260915052638.459390-1-alice.chao@mediatek.com>
-X-Mailer: git-send-email 2.45.2
+	Tue, 15 Sep 2026 06:06:11 +0000
+Received: from pps.filterd (m0279865.ppops.net [127.0.0.1])
+	by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id 68F2nRDq3319816
+	for <linux-mediatek@lists.infradead.org>; Tue, 15 Sep 2026 06:05:07 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
+	cc:content-transfer-encoding:content-type:date:from:in-reply-to
+	:message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
+	+uyBT5Zaxv1RHABZ8zEG0vkgVxe7bFptHBkSRZjYknY=; b=IYAr1IbJLqKGHlp+
+	8asmbPHttAf9fAPsgi74UFS+fWXB2zYMG+GRBUm85azZODOx/3pIAfXSSu/i/kB4
+	5bwFbvagZrWPOUNgmUNmMOtSw2B3A8xhIMQ5h595xLXb77yE2vHyOUjIVCOCvKL8
+	Yh9Oz+g471cIkF59lwAgs5JY5Fd7nV4JAm37hAVdwzirn29fwbNa+0ePm9SfqOq9
+	G7NSkTtNk2EEt9l9nuba4rvDRUNDDOb6rM+v9U9c1h08OTLPQkegwsp/wKoqVhOs
+	YXbk2bHC1haLukheqGRPl6ExyoQBrMgHSXBLv+lUOau6J3TMBsu0Bj5d29FWLNCr
+	Q2ymAQ==
+Received: from mail-qk1-f200.google.com (mail-qk1-f200.google.com [209.85.222.200])
+	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4gpn41tnxg-1
+	(version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
+	for <linux-mediatek@lists.infradead.org>; Tue, 15 Sep 2026 06:05:06 +0000 (GMT)
+Received: by mail-qk1-f200.google.com with SMTP id af79cd13be357-93a082c014aso158537785a.0
+        for <linux-mediatek@lists.infradead.org>; Mon, 14 Sep 2026 23:05:06 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=oss.qualcomm.com; s=google; t=1789452306; x=1790057106; darn=lists.infradead.org;
+        h=content-transfer-encoding:content-type:in-reply-to:content-language
+         :from:references:cc:to:subject:user-agent:mime-version:date
+         :message-id:from:to:cc:subject:date:message-id:reply-to:content-type;
+        bh=+uyBT5Zaxv1RHABZ8zEG0vkgVxe7bFptHBkSRZjYknY=;
+        b=c0ujiTaZeGHaNmoezz5rOWoV2LdTXn/B14GJPn3IuFFVH/y1ULlnkWA9uPqccfKdbs
+         8DnoNNe3zrW4YYx7inYVYMiilC4ZKWq6kFHv3W7Cf5y4sc2jE4UcFlv0aXbftYslTR2N
+         y4OQXe8tBnaAdl9Y/X6cCtTxzq6wrhWbtU5fnE1SP6eqTzE0XAQMQ6QL4q5KlOn0HLTd
+         0JiOL+x6JjMBJC1MUrCi1fsQsYO5B6hb4hUhKvmfmjfHshsWpPUq/DZ/gS/bD1w4cGWZ
+         p2HRmCgCEk3quP5H3FjrvXPmMSS62daczbRmP8NzyyVAitYIfqGN86b3w+kLBJYDr6SM
+         UJpw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20260707; t=1789452306; x=1790057106;
+        h=content-transfer-encoding:content-type:in-reply-to:content-language
+         :from:references:cc:to:subject:user-agent:mime-version:date
+         :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to:content-type;
+        bh=+uyBT5Zaxv1RHABZ8zEG0vkgVxe7bFptHBkSRZjYknY=;
+        b=BDexAZN7ehYRLgzLALRmH6SzVHZuuhLqMxK/vtlr1AeyOsRMpHX5p9+GRAh7Y2+D+E
+         3U7jOIS3uGKv+xa5Ph61ZYHH6q9/GL09zoLpZrc8/Ur2WLKBIa8AxChg9V+oHU4gLc4H
+         3gmzCnDP49A5XLL+pOaSaGKhwCJ9IdUed3W478N0ydZVSevwpIrBFyDb9GqU/kz+iwJN
+         w0la6wYjd6QvPwydP3d46G1D0gA01NPZBV8rsWFFNyEVnfEzhpQvHwNHfvBoZ3kefx9x
+         SiSebS8Ju8XqO3vtz7+mZ3PfC6n4x0cr0gdBvmBphntJhfFZMQr8Gikkk7Ij8QgbNnk6
+         L2Yw==
+X-Forwarded-Encrypted: i=1; AKwUvByFuDkjfEFvhji433E1MI7cn6NAb1NoLh9mgy1A0w6FqMX5WiUA2ECnNOt15gU00GMiG8UyeV58PeBrYFDKow==@lists.infradead.org
+X-Gm-Message-State: AFuF++nevM3lXhD1bvg0JOt7Z19MJvcPQj5fbjDfkOlBKRyvwY6bYKzs
+	78b3VLdKkklxtndNqVtMSWjbKhaofGInlgpUsPUdUVYiTSQMtF5R0GPQ0gcCHoG7tWNQRUprJ5L
+	PjvlCN+NNMoR981nH/QeSSmjVHeVnVfT77dR1/3cn61tU0pJINFg7OXRFG7+L3b6RZH2EUF7Yld
+	I=
+X-Gm-Gg: AYBFou0PRw79f0c5bnzd3ZHxoxQ5uCVL6ttMDMHYn61bHQVc7GqvHgT0eiFbx+ao+x2
+	yM90khYsOAnwxW+pxNiapQ3uz6YumygQN6u44v9Nn3TZUr3TPjV/1Q5sXTl8ca+v5TlOxtxR/C4
+	727LcMCrr+KAhY8Z9RS+UNX7CusOsYBOK4k7fO5456YXMC6HhXc+qmTr8PpPEYooMwNIpt2eniA
+	JE1JntvrkyvhaXYLC5pplITkIwuQp1J+pOs1VcatU/S3lUwB9Eear5xC09jibhU6eQEKBFDf+ta
+	DMRuftFHNhO845cJJR5VrYgizzsOTuyg5bqxEY1g/Qfsjior0h+tOSFqoBL4KN6zApetxpdIj51
+	6QJVP5WwIADhBVCmU1XaeOpxkZD/+
+X-Received: by 2002:a05:620a:7018:b0:93a:3257:34b with SMTP id af79cd13be357-93a346fa956mr323526485a.29.1789452305623;
+        Mon, 14 Sep 2026 23:05:05 -0700 (PDT)
+X-Received: by 2002:a05:620a:7018:b0:93a:3257:34b with SMTP id af79cd13be357-93a346fa956mr323522485a.29.1789452305151;
+        Mon, 14 Sep 2026 23:05:05 -0700 (PDT)
+Received: from [192.168.1.110] ([178.197.219.214])
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-486eb3602eesm30648123f8f.34.2026.09.14.23.05.01
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Mon, 14 Sep 2026 23:05:04 -0700 (PDT)
+Message-ID: <18eff59e-e9ec-4c44-8d2f-f689bd5f1832@oss.qualcomm.com>
+Date: Tue, 15 Sep 2026 08:05:00 +0200
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-MTK: N
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2] ASoC: dt-bindings: Use consistent indentation in the
+ example
+To: Mark Brown <broonie@kernel.org>
+Cc: Lars-Peter Clausen <lars@metafoo.de>,
+        =?UTF-8?Q?Nuno_S=C3=A1?=
+ <nuno.sa@analog.com>,
+        Liam Girdwood <lgirdwood@gmail.com>, Rob Herring <robh@kernel.org>,
+        Krzysztof Kozlowski <krzk+dt@kernel.org>,
+        Conor Dooley <conor+dt@kernel.org>,
+        Jerome Brunet <jbrunet@baylibre.com>,
+        David Rhodes <david.rhodes@cirrus.com>,
+        Richard Fitzgerald <rf@opensource.cirrus.com>,
+        =?UTF-8?Q?Martin_Povi=C5=A1er?= <povik+lin@cutebit.org>,
+        Frank Li <Frank.Li@nxp.com>, Sascha Hauer <s.hauer@pengutronix.de>,
+        Pengutronix Kernel Team <kernel@pengutronix.de>,
+        Fabio Estevam <festevam@gmail.com>,
+        Binbin Zhou <zhoubinbin@loongson.cn>,
+        Matthias Brugger <matthias.bgg@gmail.com>,
+        AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+        Srinivas Kandagatla <srini@kernel.org>,
+        Kuninori Morimoto <kuninori.morimoto.gx@renesas.com>,
+        Biju Das <biju.das.jz@bp.renesas.com>,
+        Lad Prabhakar <prabhakar.mahadev-lad.rj@bp.renesas.com>,
+        Shenghao Ding <shenghao-ding@ti.com>, Kevin Lu <kevin-lu@ti.com>,
+        Baojun Xu <baojun.xu@ti.com>, Sen Wang <sen@ti.com>,
+        Geert Uytterhoeven <geert+renesas@glider.be>,
+        Magnus Damm <magnus.damm@gmail.com>,
+        Alexandre Belloni <alexandre.belloni@bootlin.com>,
+        Khanh Le <khanh.le.xr@renesas.com>,
+        Ricardo Rivera-Matos <rriveram@opensource.cirrus.com>,
+        patches@opensource.cirrus.com,
+        David Rau <David.Rau.opensource@dm.renesas.com>,
+        Shawn Guo <shawnguo@kernel.org>, Shengjiu Wang <shengjiu.wang@nxp.com>,
+        Oleksij Rempel <o.rempel@pengutronix.de>,
+        Yingkun Meng <mengyingkun@loongson.cn>,
+        Trevor Wu <trevor.wu@mediatek.com>,
+        Julien Massot <jmassot@collabora.com>,
+        Jiaxin Yu <jiaxin.yu@mediatek.com>,
+        Shane Chien <shane.chien@mediatek.com>,
+        Daniel Beer <daniel.beer@igorinstitute.com>,
+        Sebastian Reichel <sre@kernel.org>, linux-sound@vger.kernel.org,
+        devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+        asahi@lists.linux.dev, imx@lists.linux.dev,
+        linux-arm-kernel@lists.infradead.org,
+        linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org,
+        linux-renesas-soc@vger.kernel.org
+References: <20260914093657.61218-2-krzysztof.kozlowski@oss.qualcomm.com>
+ <aqg6VUKriyVANv6u@sirena.org.uk>
+From: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
+Content-Language: en-US
+In-Reply-To: <aqg6VUKriyVANv6u@sirena.org.uk>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwOTE1MDA4NSBTYWx0ZWRfXx+SPGXbwlMjU
+ CS8o3aB6u1Nm44iLD28lBHI+uedMsG6bO71WHvJJSgZAb1jkcgqr3FX7LJPnLGIjV0zfbgE+4f1
+ qEfBjkwk6Pox/cT+yI/DjMu2g8n8NSmg3+1B8O6T3C/bp5iNFC1dsEF52o4I4q9ggleIaLzzrbr
+ 69TwX1GW6zZSNXwg+7FCzjbtJMKSvJwKG6VUT5UsmRWUHH5FLW/9aGHMAW5rgb/xTVV2tobujty
+ tIlUxhugUfIJZspyNXAnW1JtB+vI/nTf2iYq15pmj9aEq97kfF32ujzScLQCRpR8sXvrD6t5vhU
+ EiSRyFxsSoR918CfvTZPabRtZZRG+lEM64vp6QFqp7QWGchO5c1efuXnGyQDlSAHyv3N9yG77Ka
+ NrPsJZCocuqSEeHSqkYzVja9vuFLprXeRZQ7SwatyfBcjqLbszlw8bPsbaWEc4brFgZGiw0xopt
+ KYQ4NxEhKGaL15ZB46A==
+X-Proofpoint-GUID: 4SUps1ohc3LS-IIK4fb-HW0rAsWUQMzx
+X-Authority-Analysis: v=2.4 cv=cqQOAF4i c=1 sm=1 tr=0 ts=6aa8e012 cx=c_pps
+ a=hnmNkyzTK/kJ09Xio7VxxA==:117 a=+bKQE0WJfmhK2875HamI0Q==:17
+ a=IkcTkHD0fZMA:10 a=VdqzKS8jKosA:10 a=s4-Qcg_JpJYA:10
+ a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=Um2Pa8k9VHT-vaBCBUpS:22
+ a=EUspDBNiAAAA:8 a=chZs0_0Ys9iI7aL1xjgA:9 a=QEXdDO2ut3YA:10
+ a=PEH46H7Ffwr30OY-TuGO:22
+X-Proofpoint-ORIG-GUID: 4SUps1ohc3LS-IIK4fb-HW0rAsWUQMzx
+X-Proofpoint-Spam-Info: AW1haW4tMjYwOTE1MDA4NSBTYWx0ZWRfX7oolJYv/2gph
+ sAvDftsVx1ecswg9o249jLrPneijVsBbyS1ra3MzMpAt3gwx22Z7YCDsM8WgJevP+xBPO+Bi4En
+ TbayymJ8RFabiiREOb9+j+ki3EMjQxM=
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1176,Hydra:6.1.134,FMLib:17.12.100.49
+ definitions=2026-09-15_01,2026-09-14_02,2025-10-01_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ clxscore=1015 adultscore=0 phishscore=0 priorityscore=1501 malwarescore=0
+ suspectscore=0 spamscore=0 lowpriorityscore=0 impostorscore=0 bulkscore=0
+ classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
+ reason=mlx scancount=1 engine=8.22.0-2609040000 definitions=main-2609150085
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260914_222708_848452_66AA2DCB 
-X-CRM114-Status: GOOD (  16.91  )
+X-CRM114-CacheID: sfid-20260914_230512_498436_4D0B1978 
+X-CRM114-Status: GOOD (  13.08  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,115 +191,22 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Alice Chao <alice.chao@mediatek.com>
+On 14/09/2026 20:17, Mark Brown wrote:
+> On Mon, Sep 14, 2026 at 11:36:58AM +0200, Krzysztof Kozlowski wrote:
+>> Correct indentation in the examples to consistent 2- or 4-spaces
+>> indentation to fix dt-check-style warnings ("example 0
+>> [indent-consistent] indent mismatch ...").  Preferred is 4-spaces, but
+>> re-indenting entire example just for that is too much churn.
+>>
+>> While changing the lines, correct also node name to be generic in
+>> cirrus,cs35l45.yaml, cirrus,cs42l42.yaml and dialog,da7219.yaml.
+>>
+>> Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
+> 
+> Can you rebase this against current for-7.4 please?
 
-Commit 20b97acc4caf ("scsi: ufs: core: Fix a race condition related to
-device commands") moved the device management command completion into
-struct ufs_hba, initialized once by ufshcd_init(), and dropped the
+Sure
 
-	hba->dev_cmd.complete = NULL;
-
-assignments that used to make ufshcd_compl_one_cqe() discard completions
-the submitter had already given up on. Nothing replaced them, so the
-completion is never reset between two device commands:
-
-  Task A (device command submitter) IRQ (tag == hba->reserved_slot)
-  --------------------------------- ------------------------------
-  ufshcd_read_desc_param()
-   ufshcd_query_descriptor_retry()
-    __ufshcd_query_descriptor()
-     ufshcd_exec_dev_cmd()
-      ufshcd_issue_dev_cmd()
-       ufshcd_send_command()
-       ufshcd_wait_for_dev_cmd()
-        wait_for_completion_timeout()
-        /* times out, done == 0 */
-        ufshcd_clear_cmd()
-        /* returns 0, no effect */
-       return -EAGAIN
-                                    ufs_mtk_mcq_intr()
-                                     ufshcd_mcq_poll_cqe_lock()
-                                      ufshcd_mcq_process_cqe()
-                                       ufshcd_compl_one_cqe()
-                                        /* lrbp->cmd == NULL */
-                                        complete(&hba->dev_cmd.complete)
-                                        /* done: 0 -> 1 */
-  ufshcd_query_attr_retry()
-   ufshcd_query_attr()
-    ufshcd_exec_dev_cmd()
-     ufshcd_issue_dev_cmd()
-      ufshcd_send_command()
-      ufshcd_wait_for_dev_cmd()
-       wait_for_completion_timeout()
-       /* returns at once, done: 1 -> 0 */
-       ufshcd_dev_cmd_completion()
-       /* response UPIU not written yet */
-       return -EINVAL
-
-Task A then rejects what it reads out of the response UPIU:
-
-  ufshcd_dev_cmd_completion: Invalid device management cmd response: 0
-  ufshcd_dev_cmd_completion: unexpected response in Query RSP: ff
-
-The skew does not self-correct. On a UFS 4.0 controller in MCQ mode it
-persisted across more than a thousand consecutive device commands,
-failing every descriptor and attribute read until the link was reset.
-
-The controller can still complete the timed-out command because in MCQ
-mode ufshcd_clear_cmd() only issues an SQ cleanup (SQRTC.ICU), which
-shows the command left the submission queue but not that a CQE is not
-already posted. The MCQ path also skips the hba->outstanding_reqs
-re-check that the SDB path does, so it returns -EAGAIN with the
-completion still armed.
-
-Re-arm the completion in ufshcd_issue_dev_cmd(), immediately before
-submitting. All submitters - ufshcd_exec_dev_cmd(),
-ufshcd_issue_devman_upiu_cmd() and ufshcd_advanced_rpmb_op() - reach it
-holding hba->dev_cmd.lock, so no extra serialization is needed.
-
-This narrows the window rather than closing it: the CQE only carries the
-tag and every device command uses hba->reserved_slot, so a late
-completion is still indistinguishable from the expected one. It no
-longer spans the idle time between two commands.
-
-No mainline commit: commit 08b12cda6c44 ("scsi: ufs: core: Switch to
-scsi_get_internal_cmd()") moved this path onto the block layer and
-removed struct ufs_dev_cmd::complete and ufshcd_wait_for_dev_cmd(). Each
-device command now waits on its own request via blk_execute_rq(), so
-mainline has no shared completion to skew. That refactor is not a
-reasonable stable backport; this is the minimal alternative.
-
-Affected versions: v6.15 through v6.18, i.e. the kernels that carry the
-commit named in the Fixes: tag but not the mainline rewrite above.
-
-Fixes: 20b97acc4caf ("scsi: ufs: core: Fix a race condition related to device commands")
-Cc: stable@vger.kernel.org
-Signed-off-by: Alice Chao <alice.chao@mediatek.com>
----
- drivers/ufs/core/ufshcd.c | 9 +++++++++
- 1 file changed, 9 insertions(+)
-
-diff --git a/drivers/ufs/core/ufshcd.c b/drivers/ufs/core/ufshcd.c
-index 87578e8824d2..003fa8af4f4d 100644
---- a/drivers/ufs/core/ufshcd.c
-+++ b/drivers/ufs/core/ufshcd.c
-@@ -3312,6 +3312,15 @@ static int ufshcd_issue_dev_cmd(struct ufs_hba *hba, struct ufshcd_lrb *lrbp,
- {
- 	int err;
- 
-+	/*
-+	 * A device command that timed out may still be completed by the
-+	 * controller later on. hba->dev_cmd.complete is shared by all device
-+	 * commands, so re-arm it here, immediately before submitting, to keep
-+	 * such a late completion from being mistaken for the completion of
-+	 * this command.
-+	 */
-+	reinit_completion(&hba->dev_cmd.complete);
-+
- 	ufshcd_add_query_upiu_trace(hba, UFS_QUERY_SEND, lrbp->ucd_req_ptr);
- 	ufshcd_send_command(hba, tag, hba->dev_cmd_queue);
- 	err = ufshcd_wait_for_dev_cmd(hba, lrbp, timeout);
--- 
-2.45.2
-
+Best regards,
+Krzysztof
 
