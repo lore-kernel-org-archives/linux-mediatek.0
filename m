@@ -4,64 +4,110 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CA4AEC88E75
-	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Sep 2026 12:02:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 80764C88E75
+	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Sep 2026 12:10:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=tbavliD54dG7PozP9lPRJAT/qtK1sRmoX7AU//MVtoU=; b=1zFDWxC+K5sh9U/oD8h4LvX51g
-	jKPLO9NLW8eEO1mf8A6o+xJa9hI4nAXzM/0gYWqMFex8XaTcsXu6xSz5XrWFi/FbmNOnbzZ2N/XMd
-	7tPGaoqPgjRkG9Q6o4GaEVybPprfY7RP4D7OAsgu12ka++71G2MN6WkPzsIh8h/kMGsafCaExO3y/
-	8XQUGuLIN70P7RWyXJmspgvAkpt7eZWSJaBN+c24EyB5uwMmgcHDp6Ce/l9QgkirTJ6Ujk2skRJOv
-	9wm7VnENK0jQ++jUpfxNIh44d5YaqAOmMDBFNemEJXtzqhMXLvhZLUh1pxBfDbAN/TLTyi8fLk/UO
-	KCsfwxpA==;
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=ARc4u49b6G5t0LuKLqwXD8cu3X9ELbFHgcHDb7cDF2U=; b=hvUDRj/tfmAO2xVz6rZytvCYqQ
+	JLdP8jCE+oOb9DWJGpf0kfDXoZw2Qu4tHlNSp572e1/qL9Njchs8MnarbGOWUisU/mBRUBK57VSHP
+	/RsfNBl2ZzMKle9bYC/p3ROSmYQi0yds4Kv/JeHjTT6VFuVinmi/KmpHIF1Zm6kHSaEFpCC/hq9Bg
+	JmVuV2v3FEmDGbrLDBB9Ue/ngI8sCpsnCsvwO+5IsN8BjkGihR5KumI88STA3g3MeuiFv51BKF+EM
+	SuzFb/C6yN2yNv142Dip/F7LOry25OkMp7KGvJ1xjDDzLQehSmYbLRP8/Od1JkvoQgc3zijr0ICdY
+	Ze1L1K+Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x6RrN-00000006MQN-1OM6;
-	Tue, 15 Sep 2026 12:02:01 +0000
-Received: from mail.cjdns.fr ([5.135.140.105])
+	id 1x6Rzo-00000006PWX-2oxL;
+	Tue, 15 Sep 2026 12:10:44 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x6Rr9-00000006MMh-2EIv;
-	Tue, 15 Sep 2026 12:01:49 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id 3D77747E84B;
-	Tue, 15 Sep 2026 14:01:30 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cjdns.fr; s=dkim;
-	t=1789473703; h=from:subject:date:message-id:to:cc:mime-version:content-type:
-	 content-transfer-encoding:content-language:in-reply-to:references;
-	bh=tbavliD54dG7PozP9lPRJAT/qtK1sRmoX7AU//MVtoU=;
-	b=tKafBG8KGwbeX0kxLyniCtDhO0GbcrDfhP5FBIiC6YlLcQxrcaiePXF7ks1dS4cyPsRwcD
-	d2zoSOyyG5aZMlkZWmfOCo5qkKIMPtKK/JeF9sbZyZg265+Q/0/D3c5yc58KE8R2BWHACM
-	r2x6te608l9C4R7HWEdL2kRS0XSv7OK0ZJV5GKzxLANja8bl9qfRjllp6qLBYbVn24mgia
-	DeTfM6ljw336jVFbMd7x1AoPZbMYzKOq8gknRHo4ysKeYntnhy/S4ER2cyzTf4bjw5rUuJ
-	cbqKYimekSRbqwzECicTMTIkPPWaMED9zgDf+C+VqXZPb0r9IdGQjBKulnICQQ==
-Message-ID: <2a7edfd0-b784-4b60-b9f9-769fe00286b7@cjdns.fr>
-Date: Tue, 15 Sep 2026 14:01:29 +0200
+	id 1x6Rzn-00000006PVn-0uze
+	for linux-mediatek@bombadil.infradead.org;
+	Tue, 15 Sep 2026 12:10:43 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
+	:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:Content-ID:
+	Content-Description:In-Reply-To:References;
+	bh=ARc4u49b6G5t0LuKLqwXD8cu3X9ELbFHgcHDb7cDF2U=; b=j9rcVnFZ7tu4I0+KkJ9YGGdx5K
+	3IUWatV2fl7Sq8CDPCVGsYgMk/NTnwiFbDw41106kNDudwCCXFMkIglj2Ot1G1+fSrdC7OuywPblP
+	XM5SZnCkxKrEfbqffoIWFC3PZx299KwCuazRsfvaKyR7wJ7cbri2dZU0cJxXNjtNxGjEa4M1nJlUY
+	w8oUa/o21ZzxrhJKc8s+BQpvlkMkcKQiGB8LxtcUvMCmPhfW2z3S/ZwBdWt8uwYqtbl+hWe/b0kIy
+	jwbDv4RZ43eyKRhknJHPkmz7qQWx3thfYPxKgDjw9GO6ivE2oXP11zhBhogYtAkDc1GKdtPKMw32r
+	V60ZGyqA==;
+Received: from mail-pj2-x11.google.com ([2607:f8b0:4864:39::11])
+	by desiato.infradead.org with esmtps (Exim 4.99.2 #2 (Red Hat Linux))
+	id 1x6Rzk-00000006i3q-1CLZ
+	for linux-mediatek@lists.infradead.org;
+	Tue, 15 Sep 2026 12:10:42 +0000
+Received: by mail-pj2-x11.google.com with SMTP id d9443c01a7336-2dd53691be5so28606675ad.1
+        for <linux-mediatek@lists.infradead.org>; Tue, 15 Sep 2026 05:10:39 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20251104; t=1789474238; x=1790079038; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
+        bh=ARc4u49b6G5t0LuKLqwXD8cu3X9ELbFHgcHDb7cDF2U=;
+        b=ZoBCEmF35jS++3ggxmfu47mlV0ELnU8fz51BVGjk5pImbuNfgwciOFaXO2D6c/Z9XH
+         ZdW5pIZrMDXRwNx7jY4HlO/MMiJh1QYjkfVhka0FyJAiqiWxTzYuxisd93Rz+YJggWC9
+         aFQg4ejXsIe2a/7GRP6GV7fJfX4UQDR5gABTQhWaS4pbHmCCyUU8bD+WcBiwelYsX7UV
+         RsVF9qUkgxD+ngomhFWpbIQXYdkVItZIkWqWThdiY2/gV3jBRAzUZQDD2ayqlhz/yIxV
+         J/m6FlUFz417sF1LZEhsau+kd5UBqUK0uPwPr61hdj/9IbD3ufs+ZwQAMKOJi002rSCA
+         x34w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20260707; t=1789474238; x=1790079038;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to:content-type;
+        bh=ARc4u49b6G5t0LuKLqwXD8cu3X9ELbFHgcHDb7cDF2U=;
+        b=xxhp1rjWar5JTTixUZs01vGkcw9LfC5ESkUhbteOV2LcbhzSlSTm3BVyG2eAsafOCt
+         MlfNMUaEkML3w27S2EoidXkX88R3M2TRz7GaCXa70wHm/xo/ZWJOjAFIJCKq3rkjI/Hd
+         2/FFNcgCrHwpOkEfbP3rGXf6tvcrYpVqDh+CzuEBKJogIlCJKhW8D2wBRWeHFCP/w1fH
+         220wIZbIAkQmGcLjtT37EMLMi5BkwWk5rumSOBri+PPTRWAGbigwYs4htkFLh2rOw/mr
+         QNWhgU0s95pwpz7bCNSmLMuMFqAzoomMKfj/Cjrwlu7ZOeTmwEgSZ0Vw7OENBoaGl+Hc
+         ACjQ==
+X-Forwarded-Encrypted: i=1; AKwUvBwV4/AAGYHifRv6r9cI6MTxe0K4Kjwnl7G7Mt8ujemowtlxsQlAKbNcQvZCyE3OLYVeFaBLG4GveIdHRPsC6A==@lists.infradead.org
+X-Gm-Message-State: AFuF++nRPG+JAxTPv3SPOREhA2bFYX3BMHDdSYOQEXnNlozqg7jP28z1
+	ikJrFHezpfQUaBHOIkn6tPvc4m6TlhyoTdLgWqD7zVm2TlhfRmgBU2F8il6hc1kB
+X-Gm-Gg: AYBFou0apETcL+LB3a2fbGaiXN61kYN32mpao+jdkjopLtix2tJoYZ5PHadRT/YSNcB
+	wHdT6jxiFJfQObsudhYWT8+EXN60PdKUhF+FPssqaTh7ASXqR56/tfuWRLj2rjJnoOiopfLmg4i
+	xtc+jIiONCLqLzXZFcnpv/uJRqWEIuCu8LMuEyVI0MyRk4JAZX9qqfIUPM3oy3hbIf7lbbUV40n
+	s3dha4xu4W0wKng1S4km2i9d9N9Vb4x3Uf4Cb867BwfuV6saUHivIObYoXciveRntwwfFOsk2Sx
+	RU6BClju1clTHKZWn5l0lvaI9VLmVnSuE8B5lHM7uZfyMJocEnOsbqw9/PT2xWa+wwxnRbSiVHI
+	H5efS5OnPpv1k0C9JDaivwc/sQSS1Wen7aWYctkShDjZK43EdOjNRotIVlncSkUEjFyri8R13JB
+	odPCO0FYeTAjgUX5c86u/p06BZMfg0mLJAPzHIFCdJkjGCn/5UhowtPA==
+X-Received: by 2002:a17:903:2c07:b0:2d5:e3ce:3988 with SMTP id d9443c01a7336-2dd6c6e9b11mr142531885ad.11.1789474237753;
+        Tue, 15 Sep 2026 05:10:37 -0700 (PDT)
+Received: from lgs.. ([2001:250:5800:1002::de93])
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-2dd2cfce707sm66466685ad.55.2026.09.15.05.10.31
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 15 Sep 2026 05:10:37 -0700 (PDT)
+From: Guangshuo Li <lgs201920130244@gmail.com>
+To: Minghsiu Tsai <minghsiu.tsai@mediatek.com>,
+	Houlong Wei <houlong.wei@mediatek.com>,
+	Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
+	Tiffany Lin <tiffany.lin@mediatek.com>,
+	Yunfei Dong <yunfei.dong@mediatek.com>,
+	Mauro Carvalho Chehab <mchehab@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Hans Verkuil <hverkuil@kernel.org>,
+	linux-media@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Cc: Guangshuo Li <lgs201920130244@gmail.com>,
+	stable@vger.kernel.org
+Subject: [PATCH] media: mediatek: vpu: release reserved memory on remove
+Date: Tue, 15 Sep 2026 20:10:25 +0800
+Message-ID: <20260915121025.2412446-1-lgs201920130244@gmail.com>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird Beta
-Subject: Re: [PATCH v5 net-next] net: phy: mediatek: support MT7530 PHYs on
- EN71221 MCM
-To: Daniel Golle <daniel@makrotopia.org>
-Cc: netdev@vger.kernel.org, dqfext@gmail.com, SkyLake.Huang@mediatek.com,
- andrew@lunn.ch, hkallweit1@gmail.com, linux@armlinux.org.uk,
- davem@davemloft.net, edumazet@google.com, kuba@kernel.org,
- pabeni@redhat.com, matthias.bgg@gmail.com,
- angelogioacchino.delregno@collabora.com, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- Matheus Sampaio Queiroga <srherobrine20@gmail.com>
-References: <20260915113427.113296-1-cjd@cjdns.fr>
- <aqkwYd5dTmHDCIW9@makrotopia.org>
-Content-Language: en-US
-From: Caleb James DeLisle <cjd@cjdns.fr>
-In-Reply-To: <aqkwYd5dTmHDCIW9@makrotopia.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-Last-TLS-Session-Version: TLSv1.3
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260915_050147_995990_E5B1CF18 
-X-CRM114-Status: GOOD (  12.27  )
+X-CRM114-CacheID: sfid-20260915_131040_499257_8BF2F78E 
+X-CRM114-Status: GOOD (  11.11  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,65 +122,41 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+mtk_vpu_probe() may assign a reserved memory region to the VPU device
+with of_reserved_mem_device_init(). The probe failure path releases the
+assignment with of_reserved_mem_device_release(), but the normal remove
+path does not perform the corresponding cleanup.
 
-On 15/09/2026 13:47, Daniel Golle wrote:
-> On Tue, Sep 15, 2026 at 11:34:27AM +0000, Caleb James DeLisle wrote:
->> [...]
->> +/*
->> + * MTK_GPHY_ID_MT7530 ID is also used for an EcoNet SoC FE phy, but that PHY
->> + * does not advertise ESTATUS_1000_TFULL.
->> + */
->> +static bool mt7530_is_gphy(struct phy_device *phydev)
->> +{
->> +	return phydev->phy_id == MTK_GPHY_ID_MT7530 &&
->> +	       (phy_read(phydev, MII_ESTATUS) & ESTATUS_1000_TFULL) != 0;
->> +}
->> +
->> +static int mt7530_phy_match(struct phy_device *phydev,
->> +			    const struct phy_driver *phydrv)
->> +{
->> +	return mt7530_is_gphy(phydev) && !en751221_is_mcm_phy(phydev);
->> +}
->> +
->> +static int en751221_phy_match(struct phy_device *phydev,
->> +			      const struct phy_driver *phydrv)
->> +{
->> +	return mt7530_is_gphy(phydev) && en751221_is_mcm_phy(phydev);
->> +}
->> +
->>   static int mt7531_phy_config_init(struct phy_device *phydev)
->>   {
->>   	mtk_gephy_config_init(phydev);
->> @@ -135,6 +199,23 @@ static struct phy_driver mtk_gephy_driver[] = {
->>   		 */
->>   		.config_intr	= genphy_no_config_intr,
->>   		.handle_interrupt = genphy_handle_interrupt_no_ack,
->> +		.match_phy_device = mt7530_phy_match,
->> +		.suspend	= genphy_suspend,
->> +		.resume		= genphy_resume,
->> +		.read_page	= mtk_phy_read_page,
->> +		.write_page	= mtk_phy_write_page,
->> +	},
->> +	{
->> +		PHY_ID_MATCH_EXACT(MTK_GPHY_ID_MT7530),
-> I'd suggest to actually use phy_id and phy_id_mask assigned by the
-> PHY_ID_MATCH_EXACT macro by calling genphy_match_phy_device() in your
-> match functions above instead of open-coding the ID match.
-> Or drop PHY_ID_MATCH_EXACT from *both* drivers.
+As a result, removing the VPU driver after a successful probe can leave
+the reserved memory assignment associated with the device after its
+lifetime has ended.
 
+Release the reserved memory assignment after freeing the VPU external
+firmware memory, matching the cleanup performed by the probe failure
+path.
 
-I suppose the latter is easier because then I don't have to re-think 
-mt7530_is_gphy() which would be lying if it wasn't actually checking ID 
-is MTK_GPHY_ID_MT7530.
+This issue was found by manual code inspection.
 
+Fixes: 3003a180ef6b ("[media] VPU: mediatek: support Mediatek VPU")
+Cc: stable@vger.kernel.org
+Signed-off-by: Guangshuo Li <lgs201920130244@gmail.com>
+---
+ drivers/media/platform/mediatek/vpu/mtk_vpu.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-But I guess I should come back tomorrow since I'm already in trouble 
-with the 24 hour bot.
-
-
-Thanks,
-
-Caleb
-
+diff --git a/drivers/media/platform/mediatek/vpu/mtk_vpu.c b/drivers/media/platform/mediatek/vpu/mtk_vpu.c
+index 8d8319f0cd22..16b5bdc2f2c0 100644
+--- a/drivers/media/platform/mediatek/vpu/mtk_vpu.c
++++ b/drivers/media/platform/mediatek/vpu/mtk_vpu.c
+@@ -966,6 +966,7 @@ static void mtk_vpu_remove(struct platform_device *pdev)
+ 		destroy_workqueue(vpu->wdt.wq);
+ 	vpu_free_ext_mem(vpu, P_FW);
+ 	vpu_free_ext_mem(vpu, D_FW);
++	of_reserved_mem_device_release(&pdev->dev);
+ 	mutex_destroy(&vpu->vpu_mutex);
+ 	clk_unprepare(vpu->clk);
+ }
+-- 
+2.43.0
 
 
