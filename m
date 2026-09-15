@@ -4,83 +4,117 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3D3D0C88E7F
-	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Sep 2026 15:05:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AFFD7C88E7F
+	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Sep 2026 15:59:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=JxR1a+NHBW5NyHiRlc3z9Sa8f0/DZpFL2P8ykg6p9HI=; b=ZQveo/vHyJ4570UOyuMP3m3/va
-	xPnJocoBT6TGh8lugZe5i1FOzpIFP5hGAb8rwenZJXVee5lxrDPKyRVvQ3gYSBgnkpEeitpgI6nS5
-	GGEZxIQrEhRI4cp5Yn/1DLN6hRptAp+jUpkPfVHbSGnkxxpch04nspiryuN6lyFrGozBcS92VldGZ
-	47VBr7XiSv9uCCoQN0SRDJq9h8IUSbrYhv3MtYO7rJ7KWaLb2n0wGNN13QUoqfUGwl2OmwjVpS61m
-	3bUThA1x2OedASySYUfA1ReLrPlXGB99rCMR8oqqQqO09cCg8CLHS4waJV5BsRWk8zfnjRaaQwyNT
-	hhDpkqQA==;
+	Content-Type:In-Reply-To:From:References:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From
+	:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=u17cMuYGc5vtBTFcb6UewtH/WxUd/WeV4HHc12mdl6E=; b=aQs5yKL2ZnGtviewVct5XG/VKQ
+	Qhf0cnA8Qu9auinx4Aag8bdxX+7CzhAQsoUNdTjr9qubh+jmdhgImB5kWKyn+NtCwbrgIKkyXOWFk
+	d/wKdc4Wxmrl55gyJ0qHSk/j664Ii2M1ATzPye1cELIUDlVs6Wuvpgc1dO7xLULd2ykNmnadxO3I3
+	3lSpgbnCUmlDPTh/FlfJIkpgn3RM9U4o3WUSm0GpkO/39YZZ9cS86dFif6TTrvbNLPBE2Up5xzJgG
+	ue6ECHZou5Qb/cp4EGozCcFW36P9FZLbs/NsJocoDNK4zRgu5TtoFBPKVX+884ErlMh5C1sImHyFY
+	tRzg+8GA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x6UjB-000000074cz-3GF7;
-	Tue, 15 Sep 2026 15:05:45 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1x6VZd-00000007Kbi-10rD;
+	Tue, 15 Sep 2026 15:59:57 +0000
+Received: from mail-oi2-x10.google.com ([2607:f8b0:4864:32::10])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x6Uj8-000000074ai-1517;
-	Tue, 15 Sep 2026 15:05:44 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1789484740;
-	bh=pN+y+ua7LcQO4k08fzswufOynoNn3Gegmsif93HWJfw=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=G/D51xBPXsh/78g+ra+ytqPS9njN+2QjXQlko8dJ3FUYq32RQHTYCEd4pqbfbAPBR
-	 r5qbbj/lwRONctQ5LMiAlG3fG2pcP8OvNrPoHFvEiwBEnzU4oufy47+tqaUE/ZezoD
-	 owr41VHIE0Ry1zdqS48Ry2A23xFXypqfLnwH+Uvkfi5iOoR2CeH7fqxPLAmY/Nt9Sf
-	 LAeCx2myTG2grgKNZFiP/fEk7RvoA+cGWqhgHLWzJduQ5C7Gf8f2F7kRA10q2mk9aN
-	 Pqh+fnpjZffqewNoWNo7LDLok6Mc5m+lbBxA0qRS4Yq037IYSuhEP/JTKie3v0Kz2r
-	 wOzPAmiBHyzUg==
-Received: from [100.64.1.21] (unknown [100.64.1.21])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 4514817E0082;
-	Tue, 15 Sep 2026 17:05:39 +0200 (CEST)
-Message-ID: <14b99e0a-e08a-42af-b982-471cae869149@collabora.com>
-Date: Tue, 15 Sep 2026 17:05:38 +0200
+	id 1x6VZX-00000007KaP-2SSu
+	for linux-mediatek@lists.infradead.org;
+	Tue, 15 Sep 2026 15:59:55 +0000
+Received: by mail-oi2-x10.google.com with SMTP id 5614622812f47-4b37a29bf27so1224058b6e.2
+        for <linux-mediatek@lists.infradead.org>; Tue, 15 Sep 2026 08:59:50 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=ieee.org; s=google; t=1789487989; x=1790092789; darn=lists.infradead.org;
+        h=content-transfer-encoding:content-type:in-reply-to:from
+         :content-language:references:to:subject:user-agent:mime-version:date
+         :message-id:from:to:cc:subject:date:message-id:reply-to:content-type;
+        bh=u17cMuYGc5vtBTFcb6UewtH/WxUd/WeV4HHc12mdl6E=;
+        b=XpKsh/MWbghaW5GUTgO7fWjR76SFlVsTTGh/u3voaaupjLJMTwx5zXfmuCiGm2yTXE
+         ln5JvlyjT9dtrgrgDz6F36jCAKtju81X8l5Dourd5EePvAwATJE2B8TDGGldqsfpEIzZ
+         Aoi71zJMs0ICfEKMoOW7njRnhsyys39GCEs68=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20260707; t=1789487989; x=1790092789;
+        h=content-transfer-encoding:content-type:in-reply-to:from
+         :content-language:references:to:subject:user-agent:mime-version:date
+         :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to:content-type;
+        bh=u17cMuYGc5vtBTFcb6UewtH/WxUd/WeV4HHc12mdl6E=;
+        b=XSz02AQUnmELB/EcCDd6D4Fwh8ToAyrDLWI8kMUbTrE5527n1qmiL5YlOy6g9Hwr46
+         Y/6XnSEGv/HG5JeaeoYNFwrmoorfN6xaU0gu1wAMjcdw1PHXh7zBeyKUYTVtFzK/N3k2
+         scBElErDGYIGxqV6qfNCE01M4JZCdKUYRhQ6E+a2ANdXQfkkJLKIF0R0tKnjMFXNhxXa
+         XcXywUso4o5xBDJKTSa9OdkabuAdjz+OqR6sKBm5B392wFUzktBuZBVmtOYxYxASS9G2
+         QAbhTtyIo1eIgP0vBFNyn7EB1FXX/yQsKBFeylQu2rp8uxYQihkDSczk/Q240ggc0w6R
+         TbZQ==
+X-Forwarded-Encrypted: i=1; AKwUvBwB+97XlE/OUwiURSWsOevjtcfcbbTlIHt1x7aleBNVsCx90mf5XFLp1cd9ceM3YbKHdKuBSWewDhuvcKLKKw==@lists.infradead.org
+X-Gm-Message-State: AFuF++lWjwuWMPip+0byY+YvmPfjJsV8tnanV2b6YgAWKRHGir18+wU6
+	i5RLpJe7huHXqD3RcE4Tw1AdSneKXu/LHM8MEP4umR0RIbNNsWXs49dhR1bm5hYJmw==
+X-Gm-Gg: AYBFou16ky0eXnqGbSqeZ43b/yBcHSWL4TprERJ1YxvA+dCQzoM2oRfFQWszO8Zkzc6
+	Hp5/5gHVNroAGN4T1UV6ST8BQEwiZ0RM+mB75RCJmEVyMh4Rpr62phKUiB503xvoYM1L1xu8qK0
+	2YeVIw8EItzi2SnOoWc/6QFfYjrm1tKfsNd9yUm3PAPV8zwqWnmNB+zvoAbZ9trobXdXJiDs7fX
+	JQTTV1w2K0vaOM/SbRo6v8S6SaPVMFJUiHH3t/WdDa2069g8wlLUhg+pT/V+hEl92kHyanmupa+
+	tTSx32e5Q+GxpFonA4a2+ntOJrbmTkBhhdEVIJSUJ7y4wZn3M0I0s8ywoJWo7+8YcI1A1YaBp3k
+	7WDzFLdFiczTHGXbR2PE0MHDIcz1PtS+XbfNJCRyqRg/gVjydA4e34kK1QwRFIxvnYFBjFIBEDn
+	yRP/4LEr2T53kswGtyqSCQqV7YYh9NOKnPHHUPGiFN9glpfbaO5ZAIvYEZg2c5Xm1yPw==
+X-Received: by 2002:a05:6808:1512:b0:4b9:a88b:888f with SMTP id 5614622812f47-4c7b5d89f12mr5055793b6e.37.1789487989169;
+        Tue, 15 Sep 2026 08:59:49 -0700 (PDT)
+Received: from [172.22.22.28] ([73.62.185.64])
+        by smtp.googlemail.com with ESMTPSA id 586e51a60fabf-4842a33f8b2sm18328fac.14.2026.09.15.08.59.45
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 15 Sep 2026 08:59:47 -0700 (PDT)
+Message-ID: <28bbceed-ec75-4916-b579-f33f63bff5d4@ieee.org>
+Date: Tue, 15 Sep 2026 10:59:44 -0500
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v8 02/13] drm/mediatek: Implement Display Stream
- Compression support
-To: Nikolai Burov <nikolai.burov@jolla.com>,
- "chunkuang.hu@kernel.org" <chunkuang.hu@kernel.org>
-Cc: "p.zabel@pengutronix.de" <p.zabel@pengutronix.de>,
- "maarten.lankhorst@linux.intel.com" <maarten.lankhorst@linux.intel.com>,
- "mripard@kernel.org" <mripard@kernel.org>,
- "tzimmermann@suse.de" <tzimmermann@suse.de>,
- "airlied@gmail.com" <airlied@gmail.com>, "simona@ffwll.ch"
- <simona@ffwll.ch>, "robh@kernel.org" <robh@kernel.org>,
- "krzk+dt@kernel.org" <krzk+dt@kernel.org>,
- "conor+dt@kernel.org" <conor+dt@kernel.org>,
- "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
- "jitao.shi@mediatek.com" <jitao.shi@mediatek.com>,
- "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>,
- "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
- "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "linux-arm-kernel@lists.infradead.org"
- <linux-arm-kernel@lists.infradead.org>,
- "kernel@collabora.com" <kernel@collabora.com>,
- "justin.yeh@mediatek.com" <justin.yeh@mediatek.com>,
- "jason-jh.lin@mediatek.com" <jason-jh.lin@mediatek.com>
-References: <20260915084148.11385-1-angelogioacchino.delregno@collabora.com>
- <20260915084148.11385-3-angelogioacchino.delregno@collabora.com>
- <GV1PR06MB8417DED4A9C82CE84248F5F5E4BA2@GV1PR06MB8417.eurprd06.prod.outlook.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Subject: Re: [PATCH v2 net-next] dt-bindings: net: Use consistent indentation
+ in the example
+To: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>,
+ Justin Chen <justin.chen@broadcom.com>,
+ Florian Fainelli <florian.fainelli@broadcom.com>,
+ Andrew Lunn <andrew+netdev@lunn.ch>, "David S. Miller"
+ <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>,
+ Hans Ulli Kroll <ulli.kroll@googlemail.com>,
+ Linus Walleij <linusw@kernel.org>, =?UTF-8?B?Q2zDqW1lbnQgTMOpZ2Vy?=
+ <clement.leger@bootlin.com>, Vladimir Oltean <olteanv@gmail.com>,
+ Heiner Kallweit <hkallweit1@gmail.com>, Russell King
+ <linux@armlinux.org.uk>, Kunihiko Hayashi <hayashi.kunihiko@socionext.com>,
+ Masami Hiramatsu <mhiramat@kernel.org>, Felix Fietkau <nbd@nbd.name>,
+ Lorenzo Bianconi <lorenzo@kernel.org>, Ryder Lee <ryder.lee@mediatek.com>,
+ Shayne Chen <shayne.chen@mediatek.com>, Sean Wang <sean.wang@mediatek.com>,
+ Johannes Berg <johannes@sipsolutions.net>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Jeff Johnson <jjohnson@kernel.org>,
+ Richard Cochran <richardcochran@gmail.com>,
+ Geert Uytterhoeven <geert+renesas@glider.be>,
+ Magnus Damm <magnus.damm@gmail.com>,
+ "G. Jaya Kumaran" <vineetha.g.jaya.kumaran@intel.com>,
+ Claudiu Manoil <claudiu.manoil@nxp.com>,
+ Alexandre Belloni <alexandre.belloni@bootlin.com>,
+ Alex Elder <elder@kernel.org>, Siddharth Vadapalli <s-vadapalli@ti.com>,
+ Roger Quadros <rogerq@kernel.org>, bcm-kernel-feedback-list@broadcom.com,
+ netdev@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-renesas-soc@vger.kernel.org, linux-arm-msm@vger.kernel.org,
+ linux-wireless@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ ath10k@lists.infradead.org
+References: <20260914155645.112508-2-krzysztof.kozlowski@oss.qualcomm.com>
 Content-Language: en-US
-In-Reply-To: <GV1PR06MB8417DED4A9C82CE84248F5F5E4BA2@GV1PR06MB8417.eurprd06.prod.outlook.com>
+From: Alex Elder <elder@ieee.org>
+In-Reply-To: <20260914155645.112508-2-krzysztof.kozlowski@oss.qualcomm.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260915_080542_627550_16DBCEF1 
-X-CRM114-Status: GOOD (  48.79  )
+X-CRM114-CacheID: sfid-20260915_085951_771124_86CA5284 
+X-CRM114-Status: GOOD (  19.25  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,524 +129,427 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 9/15/26 15:55, Nikolai Burov wrote:
-> (Sorry for the resend, I made a mistake with the formatting and the recipient list)
+On 9/14/26 10:56 AM, Krzysztof Kozlowski wrote:
+> Correct indentation in the examples to consistent 2- or 4-spaces
+> indentation to fix dt-check-style warnings ("example 0
+> [indent-consistent] indent mismatch ...").  Preferred is 4-spaces, but
+> re-indenting entire example just for that is too much churn.
 > 
-> On 9/15/26 11:41 AM, AngeloGioacchino Del Regno wrote:
->> Add a real driver for the Display Stream Compression (DSC) Display
->> Controller IP, implementing support for DSC v1.1 to v1.2.
->>
->> In order to do this, it was necessary to remove the basic DSC IP
->> bypass setup from mtk_ddp_comp: this functionality is retained in
->> the new mtk_disp_dsc driver, which checks if DSC was actually
->> requested by other components (with the only one that currently
->> supports this being DSI) and, if not, it will set BYPASS mode in
->> the DSC IP.
->>
->> Like before, the BYPASS mode is set before starting the DSC IP,
->> but unlike before, this is being done in the component start
->> callback instead of the config one.
->> Notably, the config callback is called by mtk_crtc always
->> immediately before the calling start callback, so the order of
->> register writes is retained.
->> The only real difference is that now this is being done through
->> CPU writes instead of CMDQ, but since that's called only once
->> and since it's just three registers, the performance impact will
->> not be minimal and not even measurable.
->>
->> As anticipated, DSC handling was also introduced in the mtk_dsi
->> driver: when performing dsi_host_attach, the driver now checks
->> if the DSI panel adds the DSC configuration structure to the
->> mipi_dsi_device structure and, if it does, it will store a
->> pointer in the driver-local mtk_dsi structure's `dsc` member.
->>
->> The DSI driver will then check whether the DSC configuration
->> that comes from the panel is valid (in regard to MediaTek DSI)
->> and will call the DRM API's DSC helpers to calculate and set
->> all of the const and RC parameters for the actual DSC setup.
->>
->> For the time being, even though the latest MediaTek SoCs do
->> support DSC v1.2, only DSC v1.1 pre-scr support is implemented
->> as an initial contribution (which is rather big, and 1.2 would
->> make it even bigger - but that can anyway be implemented later).
->>
->> As a last step for validation of DSC parameters in DSI, a check
->> for the hdisplay against DSC slice sidth and one for vdisplay
->> against DSC slice height was added to the mode_valid callback,
->> making sure that H/V are, as expected, multiples of slice W/H.
->>
->> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> In cortina,gemini-ethernet.yaml also drop the wrongly indented mdio bus,
+> because it is not necessary for the example.
 > 
-> Hello,
+> Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
+
+Overall looks good to me (but the IPA binding in particular is good).
+
+Acked-by: Alex Elder <elder@riscstar.com>
 > 
-> I have been testing previous versions of this patch on an MT6858 device
-> with a DSC-only panel. Since I spotted a few issues with the code, I
-> decided to leave a few comments here even though I am not a maintainer.
-> Some of them are already mentioned in the Sashiko report.
+> ---
 > 
-
-Hey, thanks for your comments!
-
-> [...]
->> diff --git a/drivers/gpu/drm/mediatek/mtk_crtc.c b/drivers/gpu/drm/mediatek/mtk_crtc.c
->> index 97e3ff412e6e..c0a53c153b8d 100644
->> --- a/drivers/gpu/drm/mediatek/mtk_crtc.c
->> +++ b/drivers/gpu/drm/mediatek/mtk_crtc.c
->> @@ -22,6 +22,7 @@
->>   
->>   #include "mtk_crtc.h"
->>   #include "mtk_ddp_comp.h"
->> +#include "mtk_disp_drv.h"
->>   #include "mtk_drm_drv.h"
->>   #include "mtk_plane.h"
->>   
->> @@ -344,6 +345,8 @@ static int mtk_crtc_ddp_hw_init(struct mtk_crtc *mtk_crtc)
->>   	struct drm_connector *connector;
->>   	struct drm_encoder *encoder;
->>   	struct drm_connector_list_iter conn_iter;
->> +	struct mtk_ddp_comp *comp_dsi = NULL, *comp_dsc = NULL;
->> +	struct drm_dsc_config *dsc_cfg;
->>   	struct drm_device *dev = mtk_crtc->base.dev;
->>   	unsigned int width, height, vrefresh, bpc = MTK_MAX_BPC;
->>   	int ret;
->> @@ -398,6 +401,17 @@ static int mtk_crtc_ddp_hw_init(struct mtk_crtc *mtk_crtc)
+> Changes in v2:
+> 1. Mention mdio bus removal.
+> ---
+>   .../bindings/net/brcm,asp-v2.0.yaml           |  2 +-
+>   .../bindings/net/cortina,gemini-ethernet.yaml | 52 ++++++--------
+>   .../bindings/net/dsa/renesas,rzn1-a5psw.yaml  |  4 +-
+>   .../bindings/net/intel,dwmac-plat.yaml        |  6 +-
+>   .../devicetree/bindings/net/mdio-gpio.yaml    | 16 ++---
+>   .../bindings/net/mscc,vsc7514-switch.yaml     |  8 +--
+>   .../devicetree/bindings/net/qcom,ipa.yaml     | 10 +--
+>   .../bindings/net/realtek,rtl82xx.yaml         |  6 +-
+>   .../bindings/net/socionext,uniphier-ave4.yaml | 32 ++++-----
+>   .../bindings/net/ti,cpsw-switch.yaml          | 70 +++++++++----------
+>   .../bindings/net/wireless/mediatek,mt76.yaml  | 32 ++++-----
+>   .../bindings/net/wireless/qcom,ath10k.yaml    |  2 +-
+>   12 files changed, 114 insertions(+), 126 deletions(-)
 > 
-> This is inside a for loop that skips the last item:
-> 
->      for (i = 0; i < mtk_crtc->ddp_comp_nr - 1; i++) {
-> 
->>   		if (!mtk_ddp_comp_add(mtk_crtc->ddp_comp[i], mtk_crtc->mutex))
->>   			mtk_mutex_add_comp(mtk_crtc->mutex,
->>   					   mtk_crtc->ddp_comp[i]->id);
->> +
->> +		/* For now, only single DSI is supported */
->> +		if (mtk_crtc->ddp_comp[i]->id >= DDP_COMPONENT_DSI0 &&
->> +		    mtk_crtc->ddp_comp[i]->id <= DDP_COMPONENT_DSI3)
->> +			if (!comp_dsi)
->> +				comp_dsi = mtk_crtc->ddp_comp[i];
->> +
->> +		if (mtk_crtc->ddp_comp[i]->id == DDP_COMPONENT_DSC0 ||
->> +		    mtk_crtc->ddp_comp[i]->id == DDP_COMPONENT_DSC1)
->> +			if (!comp_dsc)
->> +				comp_dsc = mtk_crtc->ddp_comp[i];
-> 
-> If DSI is the last component, it would never be considered as a
-> candidate for DSC setup. Shouldn't this be in a loop that covers all
-> components?
-> 
+> diff --git a/Documentation/devicetree/bindings/net/brcm,asp-v2.0.yaml b/Documentation/devicetree/bindings/net/brcm,asp-v2.0.yaml
+> index a3db6d594c8c..7fcc564e820c 100644
+> --- a/Documentation/devicetree/bindings/net/brcm,asp-v2.0.yaml
+> +++ b/Documentation/devicetree/bindings/net/brcm,asp-v2.0.yaml
+> @@ -123,7 +123,7 @@ examples:
+>               phy0: ethernet-phy@1 {
+>                   reg = <1>;
+>               };
+> -       };
+> +        };
+>   
+>           mdio@ce14 {
+>               compatible = "brcm,asp-v2.1-mdio";
+> diff --git a/Documentation/devicetree/bindings/net/cortina,gemini-ethernet.yaml b/Documentation/devicetree/bindings/net/cortina,gemini-ethernet.yaml
+> index f0b5bea2458d..da9bc170cd54 100644
+> --- a/Documentation/devicetree/bindings/net/cortina,gemini-ethernet.yaml
+> +++ b/Documentation/devicetree/bindings/net/cortina,gemini-ethernet.yaml
+> @@ -87,18 +87,6 @@ examples:
+>       #include <dt-bindings/interrupt-controller/irq.h>
+>       #include <dt-bindings/clock/cortina,gemini-clock.h>
+>       #include <dt-bindings/reset/cortina,gemini-reset.h>
+> -    mdio0: mdio {
+> -      #address-cells = <1>;
+> -      #size-cells = <0>;
+> -      phy0: ethernet-phy@1 {
+> -        reg = <1>;
+> -        device_type = "ethernet-phy";
+> -      };
+> -      phy1: ethernet-phy@3 {
+> -        reg = <3>;
+> -        device_type = "ethernet-phy";
+> -      };
+> -    };
+>   
+>       ethernet@60000000 {
+>           compatible = "cortina,gemini-ethernet";
+> @@ -110,28 +98,28 @@ examples:
+>           ranges;
+>   
+>           gmac0: ethernet-port@0 {
+> -                compatible = "cortina,gemini-ethernet-port";
+> -                reg = <0x60008000 0x2000>, /* Port 0 DMA/TOE */
+> -                      <0x6000a000 0x2000>; /* Port 0 GMAC */
+> -                interrupt-parent = <&intcon>;
+> -                interrupts = <1 IRQ_TYPE_LEVEL_HIGH>;
+> -                resets = <&syscon GEMINI_RESET_GMAC0>;
+> -                clocks = <&syscon GEMINI_CLK_GATE_GMAC0>;
+> -                clock-names = "PCLK";
+> -                phy-mode = "rgmii";
+> -                phy-handle = <&phy0>;
+> +            compatible = "cortina,gemini-ethernet-port";
+> +            reg = <0x60008000 0x2000>, /* Port 0 DMA/TOE */
+> +                  <0x6000a000 0x2000>; /* Port 0 GMAC */
+> +            interrupt-parent = <&intcon>;
+> +            interrupts = <1 IRQ_TYPE_LEVEL_HIGH>;
+> +            resets = <&syscon GEMINI_RESET_GMAC0>;
+> +            clocks = <&syscon GEMINI_CLK_GATE_GMAC0>;
+> +            clock-names = "PCLK";
+> +            phy-mode = "rgmii";
+> +            phy-handle = <&phy0>;
+>           };
+>   
+>           gmac1: ethernet-port@1 {
+> -                compatible = "cortina,gemini-ethernet-port";
+> -                reg = <0x6000c000 0x2000>, /* Port 1 DMA/TOE */
+> -                      <0x6000e000 0x2000>; /* Port 1 GMAC */
+> -                interrupt-parent = <&intcon>;
+> -                interrupts = <2 IRQ_TYPE_LEVEL_HIGH>;
+> -                resets = <&syscon GEMINI_RESET_GMAC1>;
+> -                clocks = <&syscon GEMINI_CLK_GATE_GMAC1>;
+> -                clock-names = "PCLK";
+> -                phy-mode = "rgmii";
+> -                phy-handle = <&phy1>;
+> +            compatible = "cortina,gemini-ethernet-port";
+> +            reg = <0x6000c000 0x2000>, /* Port 1 DMA/TOE */
+> +                  <0x6000e000 0x2000>; /* Port 1 GMAC */
+> +            interrupt-parent = <&intcon>;
+> +            interrupts = <2 IRQ_TYPE_LEVEL_HIGH>;
+> +            resets = <&syscon GEMINI_RESET_GMAC1>;
+> +            clocks = <&syscon GEMINI_CLK_GATE_GMAC1>;
+> +            clock-names = "PCLK";
+> +            phy-mode = "rgmii";
+> +            phy-handle = <&phy1>;
+>           };
+>       };
+> diff --git a/Documentation/devicetree/bindings/net/dsa/renesas,rzn1-a5psw.yaml b/Documentation/devicetree/bindings/net/dsa/renesas,rzn1-a5psw.yaml
+> index ea285ef3e64f..fab6aa6237e9 100644
+> --- a/Documentation/devicetree/bindings/net/dsa/renesas,rzn1-a5psw.yaml
+> +++ b/Documentation/devicetree/bindings/net/dsa/renesas,rzn1-a5psw.yaml
+> @@ -127,8 +127,8 @@ examples:
+>                   phy-mode = "internal";
+>   
+>                   fixed-link {
+> -                  speed = <1000>;
+> -                  full-duplex;
+> +                    speed = <1000>;
+> +                    full-duplex;
+>                   };
+>               };
+>           };
+> diff --git a/Documentation/devicetree/bindings/net/intel,dwmac-plat.yaml b/Documentation/devicetree/bindings/net/intel,dwmac-plat.yaml
+> index 62c1da36a2b5..d1522216d32b 100644
+> --- a/Documentation/devicetree/bindings/net/intel,dwmac-plat.yaml
+> +++ b/Documentation/devicetree/bindings/net/intel,dwmac-plat.yaml
+> @@ -91,9 +91,9 @@ examples:
+>           snps,tx-queues-to-use = <2>;
+>           snps,tx-sched-wrr;
+>           queue0 {
+> -           snps,weight = <0x10>;
+> -           snps,dcb-algorithm;
+> -           snps,priority = <0x0>;
+> +            snps,weight = <0x10>;
+> +            snps,dcb-algorithm;
+> +            snps,priority = <0x0>;
+>           };
+>   
+>           queue1 {
+> diff --git a/Documentation/devicetree/bindings/net/mdio-gpio.yaml b/Documentation/devicetree/bindings/net/mdio-gpio.yaml
+> index eb4171a1940e..36e51aaae9c0 100644
+> --- a/Documentation/devicetree/bindings/net/mdio-gpio.yaml
+> +++ b/Documentation/devicetree/bindings/net/mdio-gpio.yaml
+> @@ -45,13 +45,13 @@ examples:
+>       };
+>   
+>       mdio0: mdio {
+> -      compatible = "virtual,mdio-gpio";
+> -      #address-cells = <1>;
+> -      #size-cells = <0>;
+> -      gpios = <&qe_pio_a 11>,
+> -              <&qe_pio_c 6>;
+> -      ethphy0: ethernet-phy@0 {
+> -        reg = <0>;
+> -      };
+> +        compatible = "virtual,mdio-gpio";
+> +        #address-cells = <1>;
+> +        #size-cells = <0>;
+> +        gpios = <&qe_pio_a 11>,
+> +                <&qe_pio_c 6>;
+> +        ethphy0: ethernet-phy@0 {
+> +            reg = <0>;
+> +        };
+>       };
+>   ...
+> diff --git a/Documentation/devicetree/bindings/net/mscc,vsc7514-switch.yaml b/Documentation/devicetree/bindings/net/mscc,vsc7514-switch.yaml
+> index 86a9c3fc76c8..d825130b54b4 100644
+> --- a/Documentation/devicetree/bindings/net/mscc,vsc7514-switch.yaml
+> +++ b/Documentation/devicetree/bindings/net/mscc,vsc7514-switch.yaml
+> @@ -197,10 +197,10 @@ examples:
+>               <0x71040000 0x10000>,
+>               <0x71050000 0x10000>,
+>               <0x71060000 0x10000>;
+> -            reg-names = "sys", "rew", "qs", "ptp", "port0", "port1",
+> -            "port2", "port3", "port4", "port5", "port6",
+> -            "port7", "port8", "port9", "port10", "qsys",
+> -            "ana", "s0", "s1", "s2";
+> +      reg-names = "sys", "rew", "qs", "ptp", "port0", "port1",
+> +                  "port2", "port3", "port4", "port5", "port6",
+> +                  "port7", "port8", "port9", "port10", "qsys",
+> +                  "ana", "s0", "s1", "s2";
+>   
+>         ethernet-ports {
+>           #address-cells = <1>;
+> diff --git a/Documentation/devicetree/bindings/net/qcom,ipa.yaml b/Documentation/devicetree/bindings/net/qcom,ipa.yaml
+> index 68ec76fe4473..38e3830512fe 100644
+> --- a/Documentation/devicetree/bindings/net/qcom,ipa.yaml
+> +++ b/Documentation/devicetree/bindings/net/qcom,ipa.yaml
+> @@ -246,14 +246,14 @@ examples:
+>           qcom,remote-pid = <5>;
+>   
+>           ipa_smp2p_out: ipa-ap-to-modem {
+> -                qcom,entry-name = "ipa";
+> -                #qcom,smem-state-cells = <1>;
+> +            qcom,entry-name = "ipa";
+> +            #qcom,smem-state-cells = <1>;
+>           };
+>   
+>           ipa_smp2p_in: ipa-modem-to-ap {
+> -                qcom,entry-name = "ipa";
+> -                interrupt-controller;
+> -                #interrupt-cells = <2>;
+> +            qcom,entry-name = "ipa";
+> +            interrupt-controller;
+> +            #interrupt-cells = <2>;
+>           };
+>       };
+>   
+> diff --git a/Documentation/devicetree/bindings/net/realtek,rtl82xx.yaml b/Documentation/devicetree/bindings/net/realtek,rtl82xx.yaml
+> index 45033c31a2d5..07b39ef1fc62 100644
+> --- a/Documentation/devicetree/bindings/net/realtek,rtl82xx.yaml
+> +++ b/Documentation/devicetree/bindings/net/realtek,rtl82xx.yaml
+> @@ -91,8 +91,8 @@ examples:
+>           #size-cells = <0>;
+>   
+>           ethphy1: ethernet-phy@1 {
+> -                reg = <1>;
+> -                realtek,clkout-disable;
+> -                realtek,aldps-enable;
+> +            reg = <1>;
+> +            realtek,clkout-disable;
+> +            realtek,aldps-enable;
+>           };
+>       };
+> diff --git a/Documentation/devicetree/bindings/net/socionext,uniphier-ave4.yaml b/Documentation/devicetree/bindings/net/socionext,uniphier-ave4.yaml
+> index 4eb63b303cff..8c8622160abb 100644
+> --- a/Documentation/devicetree/bindings/net/socionext,uniphier-ave4.yaml
+> +++ b/Documentation/devicetree/bindings/net/socionext,uniphier-ave4.yaml
+> @@ -121,22 +121,22 @@ examples:
+>     - |
+>       ether: ethernet@65000000 {
+>           compatible = "socionext,uniphier-ld20-ave4";
+> -                reg = <0x65000000 0x8500>;
+> -                interrupts = <0 66 4>;
+> -                phy-mode = "rgmii";
+> -                phy-handle = <&ethphy>;
+> -                clock-names = "ether";
+> -                clocks = <&sys_clk 6>;
+> -                reset-names = "ether";
+> -                resets = <&sys_rst 6>;
+> -                socionext,syscon-phy-mode = <&soc_glue 0>;
+> +        reg = <0x65000000 0x8500>;
+> +        interrupts = <0 66 4>;
+> +        phy-mode = "rgmii";
+> +        phy-handle = <&ethphy>;
+> +        clock-names = "ether";
+> +        clocks = <&sys_clk 6>;
+> +        reset-names = "ether";
+> +        resets = <&sys_rst 6>;
+> +        socionext,syscon-phy-mode = <&soc_glue 0>;
+>   
+> -                mdio {
+> -                        #address-cells = <1>;
+> -                        #size-cells = <0>;
+> +        mdio {
+> +            #address-cells = <1>;
+> +            #size-cells = <0>;
+>   
+> -                        ethphy: ethernet-phy@1 {
+> -                                reg = <1>;
+> -                        };
+> -                };
+> +            ethphy: ethernet-phy@1 {
+> +                reg = <1>;
+> +            };
+>           };
+> +    };
+> diff --git a/Documentation/devicetree/bindings/net/ti,cpsw-switch.yaml b/Documentation/devicetree/bindings/net/ti,cpsw-switch.yaml
+> index 8b5da602a2e8..4d24dadfaa5d 100644
+> --- a/Documentation/devicetree/bindings/net/ti,cpsw-switch.yaml
+> +++ b/Documentation/devicetree/bindings/net/ti,cpsw-switch.yaml
+> @@ -192,50 +192,50 @@ examples:
+>           interrupt-names = "rx_thresh", "rx", "tx", "misc";
+>   
+>           ethernet-ports {
+> -                #address-cells = <1>;
+> -                #size-cells = <0>;
+> +            #address-cells = <1>;
+> +            #size-cells = <0>;
+>   
+> -                cpsw_port1: port@1 {
+> -                        reg = <1>;
+> -                        label = "port1";
+> -                        mac-address = [ 00 00 00 00 00 00 ];
+> -                        phys = <&phy_gmii_sel 1>;
+> -                        phy-handle = <&ethphy0_sw>;
+> -                        phy-mode = "rgmii";
+> -                        ti,dual-emac-pvid = <1>;
+> -                };
+> +            cpsw_port1: port@1 {
+> +                reg = <1>;
+> +                label = "port1";
+> +                mac-address = [ 00 00 00 00 00 00 ];
+> +                phys = <&phy_gmii_sel 1>;
+> +                phy-handle = <&ethphy0_sw>;
+> +                phy-mode = "rgmii";
+> +                ti,dual-emac-pvid = <1>;
+> +            };
+>   
+> -                cpsw_port2: port@2 {
+> -                        reg = <2>;
+> -                        label = "wan";
+> -                        mac-address = [ 00 00 00 00 00 00 ];
+> -                        phys = <&phy_gmii_sel 2>;
+> -                        phy-handle = <&ethphy1_sw>;
+> -                        phy-mode = "rgmii";
+> -                        ti,dual-emac-pvid = <2>;
+> -                };
+> +            cpsw_port2: port@2 {
+> +                reg = <2>;
+> +                label = "wan";
+> +                mac-address = [ 00 00 00 00 00 00 ];
+> +                phys = <&phy_gmii_sel 2>;
+> +                phy-handle = <&ethphy1_sw>;
+> +                phy-mode = "rgmii";
+> +                ti,dual-emac-pvid = <2>;
+> +            };
+>           };
+>   
+>           davinci_mdio_sw: mdio@1000 {
+> -                compatible = "ti,cpsw-mdio","ti,davinci_mdio";
+> -                reg = <0x1000 0x100>;
+> -                clocks = <&gmac_clkctrl DRA7_GMAC_GMAC_CLKCTRL 0>;
+> -                clock-names = "fck";
+> -                #address-cells = <1>;
+> -                #size-cells = <0>;
+> -                bus_freq = <1000000>;
+> +            compatible = "ti,cpsw-mdio","ti,davinci_mdio";
+> +            reg = <0x1000 0x100>;
+> +            clocks = <&gmac_clkctrl DRA7_GMAC_GMAC_CLKCTRL 0>;
+> +            clock-names = "fck";
+> +            #address-cells = <1>;
+> +            #size-cells = <0>;
+> +            bus_freq = <1000000>;
+>   
+> -                ethphy0_sw: ethernet-phy@0 {
+> -                        reg = <0>;
+> -                };
+> +            ethphy0_sw: ethernet-phy@0 {
+> +                reg = <0>;
+> +            };
+>   
+> -                ethphy1_sw: ethernet-phy@1 {
+> -                        reg = <1>;
+> -                };
+> +            ethphy1_sw: ethernet-phy@1 {
+> +                reg = <1>;
+> +            };
+>           };
+>   
+>           cpts {
+> -                clocks = <&gmac_clkctrl DRA7_GMAC_GMAC_CLKCTRL 25>;
+> -                clock-names = "cpts";
+> +            clocks = <&gmac_clkctrl DRA7_GMAC_GMAC_CLKCTRL 25>;
+> +            clock-names = "cpts";
+>           };
+>       };
+> diff --git a/Documentation/devicetree/bindings/net/wireless/mediatek,mt76.yaml b/Documentation/devicetree/bindings/net/wireless/mediatek,mt76.yaml
+> index ae6b97cdc44b..bf4116b057d2 100644
+> --- a/Documentation/devicetree/bindings/net/wireless/mediatek,mt76.yaml
+> +++ b/Documentation/devicetree/bindings/net/wireless/mediatek,mt76.yaml
+> @@ -325,22 +325,22 @@ examples:
+>             r0 {
+>               regdomain = "FCC";
+>               txpower-5g {
+> -               b0 {
+> -                   channels = <36 48>;
+> -                   rates-ofdm = /bits/ 8 <23 23 23 23 23 23 23 23>;
+> -                   rates-mcs = /bits/ 8 <1 23 23 23 23 23 23 23 23 23 23>,
+> -                               /bits/ 8 <3 22 22 22 22 22 22 22 22 22 22>;
+> -                   rates-ru = /bits/ 8 <3 22 22 22 22 22 22 22 22 22 22 22 22>,
+> -                              /bits/ 8 <4 20 20 20 20 20 20 20 20 20 20 20 20>;
+> -               };
+> -               b1 {
+> -                   channels = <100 181>;
+> -                   rates-ofdm = /bits/ 8 <14 14 14 14 14 14 14 14>;
+> -                   rates-mcs = /bits/ 8  <4 14 14 14 14 14 14 14 14 14 14>;
+> -                   txs-delta = <12 9 6>;
+> -                   rates-ru = /bits/ 8  <7 14 14 14 14 14 14 14 14 14 14 14 14>;
+> -               };
+> -             };
+> +              b0 {
+> +                channels = <36 48>;
+> +                rates-ofdm = /bits/ 8 <23 23 23 23 23 23 23 23>;
+> +                rates-mcs = /bits/ 8 <1 23 23 23 23 23 23 23 23 23 23>,
+> +                            /bits/ 8 <3 22 22 22 22 22 22 22 22 22 22>;
+> +                rates-ru = /bits/ 8 <3 22 22 22 22 22 22 22 22 22 22 22 22>,
+> +                           /bits/ 8 <4 20 20 20 20 20 20 20 20 20 20 20 20>;
+> +              };
+> +              b1 {
+> +                channels = <100 181>;
+> +                rates-ofdm = /bits/ 8 <14 14 14 14 14 14 14 14>;
+> +                rates-mcs = /bits/ 8  <4 14 14 14 14 14 14 14 14 14 14>;
+> +                txs-delta = <12 9 6>;
+> +                rates-ru = /bits/ 8  <7 14 14 14 14 14 14 14 14 14 14 14 14>;
+> +              };
+> +            };
+>             };
+>           };
+>         };
+> diff --git a/Documentation/devicetree/bindings/net/wireless/qcom,ath10k.yaml b/Documentation/devicetree/bindings/net/wireless/qcom,ath10k.yaml
+> index e667d78b3ab3..a52cb8a0d409 100644
+> --- a/Documentation/devicetree/bindings/net/wireless/qcom,ath10k.yaml
+> +++ b/Documentation/devicetree/bindings/net/wireless/qcom,ath10k.yaml
+> @@ -408,4 +408,4 @@ examples:
+>                             "msi15",
+>                             "legacy";
+>           ieee80211-freq-limit = <5470000 5875000>;
+> -      };
+> +    };
 
-That's my own mess during conflict resolution.... as that was supposed to be in
-the latter loop instead, ugh. Just 7-8 lines above...
-
-I guess that's what happens when carrying things and rebasing continuously...
-
-Though, that worked for me because I tested that on the restructured mediatek-drm
-code which, in turn, resolves this bug due to the refactoring. Oops again.
-
->>   	}
->>   	if (!mtk_ddp_comp_add(mtk_crtc->ddp_comp[i], mtk_crtc->mutex))
->>   		mtk_mutex_add_comp(mtk_crtc->mutex, mtk_crtc->ddp_comp[i]->id);
->> @@ -413,6 +427,13 @@ static int mtk_crtc_ddp_hw_init(struct mtk_crtc *mtk_crtc)
->>   		mtk_ddp_comp_start(comp);
->>   	}
->>   
->> +	/* Setup the DSC if present, with the config coming from DSI */
->> +	if (comp_dsc && comp_dsi) {
->> +		dsc_cfg = mtk_dsi_get_dsc_config(comp_dsi->dev);
->> +		if (dsc_cfg)
->> +			mtk_ddp_comp_dsc_setup(comp_dsc, dsc_cfg);
->> +	}
->> +
->>   	/* Initially configure all planes */
->>   	for (i = 0; i < mtk_crtc->layer_nr; i++) {
->>   		struct drm_plane *plane = &mtk_crtc->planes[i];
-> [...]
->> diff --git a/drivers/gpu/drm/mediatek/mtk_disp_dsc.c b/drivers/gpu/drm/mediatek/mtk_disp_dsc.c
->> new file mode 100644
->> index 000000000000..090f0609a14c
->> --- /dev/null
->> +++ b/drivers/gpu/drm/mediatek/mtk_disp_dsc.c
-> [...]
->> +
->> +#define DISP_REG_DSC_DBG_CON		0x60
->> +#  define DSC_CKSM_CAL_EN		BIT(9)
->> +
->> +#define DISP_REG_DSC_OUTBUF		0x70
->> +#  define DSC_OBUF_SIZE			GENMASK(11, 0)
->> +
->> +#define DISP_REG_DSC_PPS(x)		(0x80 + (x * 4)) /* 0..19 */
-> 
-> This causes an operator precedence bug when you use
-> DISP_REG_DSC_PPS(8 + i) below. Wrap the argument in parentheses:
-> 
-> #define DISP_REG_DSC_PPS(x)        (0x80 + ((x) * 4)))
-> 
-
-Whoops. Yup, that's right.
-
->> +#  define DSC_P0_UP_LINE_BUF_DEPTH	GENMASK(3, 0)
->> +#  define DSC_P0_BPC			GENMASK(7, 4)
->> +#  define DSC_P0_BPP			GENMASK(17, 8)
->> +#  define DSC_P0_RCT_ON			BIT(18)
->> +#  define DSC_P0_BLOCK_PRED_EN		BIT(19)
-> [...]
->> +static void mtk_dsc_pps_setup(struct mtk_dsc *disp_dsc, struct drm_dsc_config *dsc_cfg)
->> +{
->> +	struct drm_dsc_rc_range_parameters *rcrp = dsc_cfg->rc_range_params;
->> +	u16 *rbt = dsc_cfg->rc_buf_thresh;
->> +	u32 data;
->> +	int i, j;
->> +
->> +	/* PPS 0 - Note: Fractional BPP is not supported! */
->> +	data = FIELD_PREP(DSC_P0_UP_LINE_BUF_DEPTH, dsc_cfg->line_buf_depth);
->> +	data |= FIELD_PREP(DSC_P0_BPC, dsc_cfg->bits_per_component);
->> +	data |= FIELD_PREP(DSC_P0_BPP, dsc_cfg->bits_per_pixel);
->> +	data |= DSC_P0_RCT_ON | DSC_P0_BLOCK_PRED_EN;
->> +	writel(data, disp_dsc->reg + DISP_REG_DSC_PPS(0));
->> +
->> +	/* PPS 1 */
->> +	data = FIELD_PREP(DSC_P1_INITIAL_XMIT_DELAY, dsc_cfg->initial_xmit_delay);
->> +	data |= FIELD_PREP(DSC_P1_INITIAL_DEC_DELAY, dsc_cfg->initial_dec_delay);
->> +	writel(data, disp_dsc->reg + DISP_REG_DSC_PPS(1));
->> +
->> +	/* PPS 2 */
->> +	data = FIELD_PREP(DSC_P2_INITIAL_SCALE_VALUE, dsc_cfg->initial_scale_value);
->> +	data |= FIELD_PREP(DSC_P2_SCALE_INCR_INTERVAL, dsc_cfg->scale_increment_interval);
->> +	writel(data, disp_dsc->reg + DISP_REG_DSC_PPS(2));
-> 
-> Is RC_MODEL_SIZE omitted here on purpose?
-> 
-
-Nope, that was not on purpose. Added, but it's on PPS6, not on PPS2.
-
->> +
->> +	/* PPS 3 */
->> +	data = FIELD_PREP(DSC_P3_SCALE_DECR_INTERVAL, dsc_cfg->scale_decrement_interval);
->> +	data |= FIELD_PREP(DSC_P3_FIRST_LINE_BPG_OFFSET, dsc_cfg->first_line_bpg_offset);
->> +	writel(data, disp_dsc->reg + DISP_REG_DSC_PPS(3));
-> [...]
->> +
->> +void mtk_dsc_setup(struct device *dev, struct drm_dsc_config *dsc_cfg)
->> +{
->> +	struct mtk_dsc *disp_dsc = dev_get_drvdata(dev);
->> +	u32 dsc_slice_w, dsc_slice_h, dsc_mode, dsc_cfg_rval, dsc_shadow;
->> +	u32 dsc_dbg_con, dsc_con, dsc_enc_width, dsc_pic_w, dsc_pic_h;
->> +	u32 pic_group_width, pic_height_ext_num, slice_group_width;
->> +	u32 chunk_size, dsc_pad_num, dsc_pre_pad_sz;
->> +	bool dsc_en_bit;
->> +
->> +	pic_height_ext_num = dsc_cfg->pic_height + dsc_cfg->slice_height - 1;
->> +	pic_group_width = (dsc_cfg->slice_width * 4) / 3;
->> +	slice_group_width = (dsc_cfg->slice_width + 2) / 3;
->> +
->> +	if (dsc_cfg->slice_chunk_size)
->> +		chunk_size = dsc_cfg->slice_chunk_size;
->> +	else
->> +		chunk_size = dsc_cfg->slice_width * dsc_cfg->bits_per_pixel / 8 / 16;
->> +
->> +	dsc_enc_width = FIELD_PREP(DSC_ENC_WIDTH_PIC, dsc_cfg->pic_width) |
->> +			FIELD_PREP(DSC_ENC_WIDTH_SLICE, dsc_cfg->slice_width);
->> +
->> +	dsc_pic_w = FIELD_PREP(DSC_PIC_GROUP_WIDTH_M1, pic_group_width - 1);
->> +	dsc_pic_w |= FIELD_PREP(DSC_PIC_WIDTH, dsc_cfg->pic_width);
->> +	dsc_pic_h = FIELD_PREP(DSC_PIC_HEIGHT_EXT_M1, pic_height_ext_num - 1);
->> +	dsc_pic_h |= FIELD_PREP(DSC_PIC_HEIGHT, dsc_cfg->pic_height - 1);
->> +
->> +	dsc_slice_w = FIELD_PREP(DSC_SLICE_GROUP_WIDTH_M1, slice_group_width - 1);
->> +	dsc_slice_w |= FIELD_PREP(DSC_SLICE_WIDTH, dsc_cfg->slice_width);
->> +	dsc_slice_h = FIELD_PREP(DSC_SLICE_WIDTH_MOD3, dsc_cfg->slice_width % 3);
->> +	dsc_slice_h |= FIELD_PREP(DSC_SLICE_NUM_M1,
->> +				  (pic_height_ext_num / dsc_cfg->slice_height) - 1);
->> +	dsc_slice_h |= FIELD_PREP(DSC_SLICE_HEIGHT_M1, dsc_cfg->slice_height - 1);
->> +
->> +	dsc_pad_num = (3 - ((chunk_size * 2) % 3)) % 3;
->> +	dsc_pad_num = FIELD_PREP(DSC_PAD_NUMBER, dsc_pad_num);
->> +
->> +	dsc_pre_pad_sz = FIELD_PREP(DSC_PIC_PREPAD_HEIGHT, dsc_cfg->pic_height);
->> +	dsc_pre_pad_sz |= FIELD_PREP(DSC_PIC_PREPAD_WIDTH, dsc_cfg->pic_width);
->> +
->> +	dsc_mode = FIELD_PREP(DSC_INIT_DELAY_HEIGHT, 4);
->> +	dsc_mode |= FIELD_PREP(DSC_RGB_SWAP, 0);
-> 
-> This register has a field called SLICE_MODE (bit 0) that should be set
-> when there is more than one slice. Since the code above already
-> configures the slice count, this should probably be enabled. (Maybe only
-> some SoCs require it, but I wasn't able to get it working on MT6858
-> without this.)
-> 
-
-No idea, but mine worked without (MT8196 Chromebook), and works with SLICE_MODE set
-as you say as well, so that's nice.
-
->> +
->> +	/* Must enable checksum calc in DBG if enabling core checksum in CFG */
->> +	dsc_cfg_rval = DSC_CFG_ICH_EN | DSC_CFG_CRC_EN | DSC_CFG_DSC12_BUGFIX |
->> +		       DSC_CFG_CORE_CHECKSUM;
->> +	dsc_dbg_con = DSC_CKSM_CAL_EN;
->> +
->> +	if (dsc_cfg->bits_per_component == 8)
->> +		dsc_cfg_rval |= FIELD_PREP_CONST(DSC_CFG_FLATNESS_DET_THRES,
->> +						 DSC_CFG_FLATNESS_8BITS);
->> +	else
->> +		dsc_cfg_rval |= FIELD_PREP_CONST(DSC_CFG_FLATNESS_DET_THRES,
->> +						 DSC_CFG_FLATNESS_10BITS);
-> [...]
->> diff --git a/drivers/gpu/drm/mediatek/mtk_dsi.c b/drivers/gpu/drm/mediatek/mtk_dsi.c
->> index f82506e10fd5..97b8a91874f5 100644
->> --- a/drivers/gpu/drm/mediatek/mtk_dsi.c
->> +++ b/drivers/gpu/drm/mediatek/mtk_dsi.c
->> @@ -18,6 +18,8 @@
->>   #include <video/mipi_display.h>
->>   #include <video/videomode.h>
->>   
->> +#include <drm/display/drm_dsc.h>
->> +#include <drm/display/drm_dsc_helper.h>
->>   #include <drm/drm_atomic_helper.h>
->>   #include <drm/drm_bridge.h>
->>   #include <drm/drm_bridge_connector.h>
->> @@ -71,11 +73,12 @@
->>   
->>   #define DSI_PSCTRL		0x1c
->>   #define DSI_PS_WC			GENMASK(13, 0)
->> -#define DSI_PS_SEL			GENMASK(17, 16)
->> +#define DSI_PS_SEL			GENMASK(19, 16)
->>   #define PACKED_PS_16BIT_RGB565		0
->>   #define PACKED_PS_18BIT_RGB666		1
->>   #define LOOSELY_PS_24BIT_RGB666		2
->>   #define PACKED_PS_24BIT_RGB888		3
->> +#define COMPRESSED_PS_DSC		5
->>   
->>   #define DSI_VSA_NL		0x20
->>   #define DSI_VBP_NL		0x24
->> @@ -203,6 +206,7 @@ struct mtk_dsi {
->>   	struct drm_bridge bridge;
->>   	struct drm_bridge *next_bridge;
->>   	struct drm_connector *connector;
->> +	struct drm_dsc_config *dsc;
->>   	struct phy *phy;
->>   
->>   	void __iomem *regs;
->> @@ -393,9 +397,35 @@ static void mtk_dsi_rxtx_control(struct mtk_dsi *dsi)
->>   	writel(regval, dsi->regs + DSI_TXRX_CTRL);
->>   }
->>   
->> -static void mtk_dsi_ps_control(struct mtk_dsi *dsi, bool config_vact)
->> +static void mtk_dsi_ps_control_dsc(struct mtk_dsi *dsi, bool config_vact)
->> +{
->> +	const struct mtk_dsi_driver_data *data = dsi->driver_data;
->> +	const u16 *reg_main = dsi->driver_data->reg_main;
->> +	const short dsi_buf_bpp = 3;
->> +	u32 ps_wc;
->> +
->> +	/* Word count */
->> +	ps_wc = FIELD_PREP(DSI_PS_WC, 2 * dsi->dsc->slice_chunk_size);
-> 
-> This assumes that there are exactly two slices. That is often the case,
-> but the number of slices may vary depending on the width. I think this
-> would be a good place to use dsi->dsc->slice_count.
-> 
-
-Definitely. Yes.
-
->> +
->> +	if (config_vact) {
->> +		writel(FIELD_PREP(VACT_NL, dsi->vm.vactive),
->> +		       dsi->regs + reg_main[DSI_VACT_NL]);
->> +		writel(ps_wc, dsi->regs + reg_main[DSI_HSTX_CKL_WC]);
->> +	}
->> +
->> +	/* Always use DSC Pixel Stream type */
->> +	writel(ps_wc | FIELD_PREP(DSI_PS_SEL, COMPRESSED_PS_DSC),
->> +	       dsi->regs + reg_main[DSI_PSCTRL]);
->> +
->> +	if (data->has_size_ctl)
->> +		writel(FIELD_PREP(DSI_HEIGHT, dsi->vm.vactive) |
->> +		       FIELD_PREP(DSI_WIDTH, (ps_wc + dsi_buf_bpp - 1) / dsi_buf_bpp),
->> +		       dsi->regs + reg_main[DSI_SIZE_CON]);
->> +}
->> +
->> +static void mtk_dsi_ps_control_uncompressed(struct mtk_dsi *dsi, bool config_vact)
->>   {
->> -	u32 dsi_buf_bpp, ps_val, ps_wc, vact_nl;
->> +	u32 dsi_buf_bpp, ps_val, ps_wc, size_val, vact_nl;
->>   
->>   	if (dsi->format == MIPI_DSI_FMT_RGB565)
->>   		dsi_buf_bpp = 2;
->> @@ -430,6 +460,21 @@ static void mtk_dsi_ps_control(struct mtk_dsi *dsi, bool config_vact)
->>   		writel(ps_wc, dsi->regs + DSI_HSTX_CKL_WC);
->>   	}
->>   	writel(ps_val, dsi->regs + DSI_PSCTRL);
->> +
->> +	if (dsi->driver_data->has_size_ctl) {
->> +		size_val = FIELD_PREP(DSI_HEIGHT, dsi->vm.vactive);
->> +		size_val |= FIELD_PREP(DSI_WIDTH, dsi->vm.hactive);
->> +
->> +		writel(size_val, dsi->regs + DSI_SIZE_CON);
->> +	}
->> +}
->> +
->> +static void mtk_dsi_ps_control(struct mtk_dsi *dsi, bool config_vact)
->> +{
->> +	if (dsi->dsc)
->> +		mtk_dsi_ps_control_dsc(dsi, config_vact);
->> +	else
->> +		mtk_dsi_ps_control_uncompressed(dsi, config_vact);
->>   }
->>   
->>   static void mtk_dsi_config_vdo_timing_per_frame_lp(struct mtk_dsi *dsi)
->> @@ -565,26 +610,68 @@ static void mtk_dsi_config_vdo_timing_per_line_lp(struct mtk_dsi *dsi)
->>   	writel(horizontal_frontporch_byte, dsi->regs + DSI_HFP_WC);
->>   }
->>   
->> -static void mtk_dsi_config_vdo_timing(struct mtk_dsi *dsi)
->> +static int mtk_dsi_set_dsc_params(struct mtk_dsi *dsi)
->> +{
->> +	struct drm_dsc_config *dsc = dsi->dsc;
->> +	struct device *dev = dsi->host.dev;
->> +	int ret;
->> +
->> +	if (dsc->bits_per_pixel & GENMASK(3, 0)) {
->> +		dev_err(dev, "Fractional bits_per_pixel not supported\n");
->> +		return -EINVAL;
->> +	}
->> +
->> +	if (dsc->bits_per_component != 8) {
->> +		dev_err(dev, "%u bits per component is not supported\n",
->> +			dsc->bits_per_component);
->> +		return -EINVAL;
->> +	}
-> 
-> Any reason why this wouldn't support 10bpc? The rest of the code seems
-> to handle it fine.
-> 
-
-I have no way to test it with 10bpc, and downstream limits it to 8...
-but if you can test that and make sure that it works, I can remove the
-limitation.
-
->> +
->> +	dsc->simple_422 = false;
->> +	dsc->convert_rgb = true;
->> +	dsc->vbr_enable = false;
->> +
->> +	drm_dsc_set_const_params(dsc);
->> +	drm_dsc_set_rc_buf_thresh(dsc);
->> +
->> +	ret = drm_dsc_setup_rc_params(dsc, DRM_DSC_1_1_PRE_SCR);
->> +	if (ret) {
->> +		dev_err(dev, "Cannot find DSC RC params\n");
->> +		return ret;
->> +	}
-> 
-> The defaults in MediaTek's downstream driver match DRM_DSC_1_2_444, not
-> DRM_DSC_1_1_PRE_SCR, and the panel on my test device requires that even
-> though it uses DSC v1.1. This may be a panel-specific problem, but have
-> you tested this with any actual panels that need 1_1_PRE_SCR?
-> 
-
-My downstream uses 1_1_PRE_SCR... that's why it is like this.
-
-I can resolve it like
-
-	if (dsc->dsc_version_major == 1 && dsc->dsc_version_minor == 1)
-		type = DRM_DSC_1_1_PRE_SCR;
-	else
-		type = DRM_DSC_1_2_444;
-
-	ret = drm_dsc_setup_rc_params(dsc, type);
-
-...that will work, granted that the panel declares the correct DSC version.
-
->> +
->> +	dsc->initial_scale_value = drm_dsc_initial_scale_value(dsc);
->> +	dsc->line_buf_depth = dsc->bits_per_component + 1;
->> +
->> +	return drm_dsc_compute_rc_parameters(dsc);
->> +}
->> +
->> +static int mtk_dsi_config_vdo_timing(struct mtk_dsi *dsi)
->>   {
->>   	struct videomode *vm = &dsi->vm;
->> +	int ret;
->>   
->>   	writel(vm->vsync_len, dsi->regs + DSI_VSA_NL);
->>   	writel(vm->vback_porch, dsi->regs + DSI_VBP_NL);
->>   	writel(vm->vfront_porch, dsi->regs + DSI_VFP_NL);
->>   	writel(vm->vactive, dsi->regs + DSI_VACT_NL);
->>   
->> -	if (dsi->driver_data->has_size_ctl)
->> -		writel(FIELD_PREP(DSI_HEIGHT, vm->vactive) |
->> -			FIELD_PREP(DSI_WIDTH, vm->hactive),
->> -			dsi->regs + DSI_SIZE_CON);
->> -
->>   	if (dsi->driver_data->support_per_frame_lp)
->>   		mtk_dsi_config_vdo_timing_per_frame_lp(dsi);
->>   	else
->>   		mtk_dsi_config_vdo_timing_per_line_lp(dsi);
->>   
->> -	mtk_dsi_ps_control(dsi, false);
->> +	if (dsi->dsc) {
->> +		ret = mtk_dsi_set_dsc_params(dsi);
->> +		if (ret)
->> +			return ret;
->> +
->> +		mtk_dsi_ps_control(dsi, true);
->> +	} else {
->> +		mtk_dsi_ps_control(dsi, false);
->> +	}
-> 
-> I don't quite understand what is going on here, even in the original
-> driver before this patch. What is the point of setting VACT_NL twice?
-> Does mtk_dsi_ps_control() really need to be called in mtk_dsi_poweron()
-> if mtk_dsi_config_vdo_timing() ends up calling it a second time?
-
-I didn't do much research, but MT8173 and 8192 if I remember correctly won't work
-without this sequence. I saw that 2 years ago or something, so I don't remember
-all that clearly.
-
-> 
-> If the order is not important, perhaps this would be cleaner:
-> 
-> mtk_dsi_poweron()
->   - mtk_dsi_config_vdo_timing()
->     - set VSA_NL, VBP_NL, VFP_NL, VACT_NL, SIZE_CON
->     - mtk_dsi_set_dsc_params()
->     - mtk_dsi_ps_control_{dsc|uncompressed}()
->     - mtk_dsi_config_vdo_timing_per_{frame|line}_lp()
-> 
-> One problem is that mtk_dsi_config_vdo_timing_per_frame_lp() currently
-> doesn't take DSC into account when computing ps_wc, resulting in wrong
-> timings.
-> 
-> Another problem is that the data rate calculation in mtk_dsi_poweron()
-> is also unconditionally using the bits-per-pixel value from the color
-> format. To get a correct frame rate with DSC, it would need to do
-> something similar to dsi_adjust_pclk_for_compression() in
-> drivers/gpu/drm/msm/dsi/dsi_host.c.
-> 
-> Other than that, the DSC support seems to work well so far. Thank you
-> for the useful contribution!
-> 
-
-Thank you for your review, that was precious.
-
-I will leave this ps_control part as-is, because of the regression that it would
-create with the old SoCs otherwise, and because .. well, it works for both me and
-you, so for now it's "good enough".
-
-We can always come back to this in the future with a separate patch, and we should
-do just that, otherwise series versions will never come to an end :-)
-
-
-> Best regards,
-> Nikolai
-> 
-> P.S.: I can try to push my changes and workarounds to a git tree if
-> needed.
-
-No need for that, I have already addressed your comments and I'll send a v9
-tomorrow in the morning after one last test.
-
-Cheers,
-Angelo
 
