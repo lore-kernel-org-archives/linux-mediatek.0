@@ -4,79 +4,110 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 51668C88E53
-	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Sep 2026 07:46:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9FECDC88E53
+	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Sep 2026 07:55:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Y+TjYkeWtH29/hH7rFUt/RjEjcCETjZLhLZ9MVicTyc=; b=GCvXgidbyX+UX+PIky29hHALMX
-	t8h5Fs8RbAmMU0RSkWmZdA0wnGkB/OIuUa+97fB1MeEqLFc6b6I1pqHf1hSXY+uL19MX7gp1fjJQ9
-	P6PX3ViKz9MWQ+EZOtAKV0yHdTk91PY+gh+ZH7eOMBQwgqJ14qL6H6MCDCRJ3Jlsyin6UfnqBfT1C
-	L4UWZOAMvqOrdgFnntl6pHncXmgvWyT2kRg4b7ySed777ANQuw1k2QElygrQW0Vm5lAvGMlJFH51c
-	G4WEY0Yah5OPo/zn2yGfS/gEvaq5DpkRab7a0ZDECUhjR4aVR9KzJcJnfNGOrGdnRuvLsGLrnTUuR
-	6iMxadCg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
+	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=goS4E7honEFOUt4mgD9dkwBiL9FCUu+3QHZSOMHuZ5E=; b=UA6yqMs9o2aegemq52liRLxi15
+	V74DKXNDUOrbPSicE+A6mOAt0G+PxhUH9wjJE05ELTMdtd16BguY48CX0OR4tHH3DI2BbB58m3XYV
+	4XbN7yZqZcdJIv47W20p/ssvD7BqmDF7mbMvB74gDQDByuDJU0ASLVGjOG6eBSil/fDRLAyef05Cn
+	zqRKTyMSRAkZOjLDYlw+SbimbXT8QIxsXt6ipI/ohnNZJfYRZMzXuB4bFgpyDGl3kI51d81uXkk4M
+	zNZBezlm1RtJLxzwA2+0LonanvOiRKoxFVZQM2Y8F3DX8i6L7hCRryffKg3ZbDlUHnFEj6MI7DJSt
+	vBERYK3g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x6Nru-00000005Wc1-48Dl;
-	Tue, 15 Sep 2026 07:46:18 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1x6O0x-00000005Y8m-2XKY;
+	Tue, 15 Sep 2026 07:55:40 +0000
+Received: from mail-ej1-x635.google.com ([2a00:1450:4864:20::635])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x6Nrt-00000005WZr-2ueS;
-	Tue, 15 Sep 2026 07:46:17 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
-	:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:Message-ID:
-	Sender:Reply-To:Content-ID:Content-Description;
-	bh=Y+TjYkeWtH29/hH7rFUt/RjEjcCETjZLhLZ9MVicTyc=; b=nz9YVOSfjScWSd9tyTLTRNvmFx
-	+Bn5MjMNbjGF/KUsGJLizpOwvtqmkC/uSGp/QT45Pylyx42AUX2/3UQZNjpr9CqR+t/oAA027zduL
-	GxApVPBXeIm2oDWPPuKC5PWhdNd3XFFXa6x6pNTu7s5wQ557ZabCgCy/JZtmMDgmRn25lzEmuxn7V
-	ZVfMFAkA/W3wabPdJ50H7nlciE2iZhtiQZ6f8N0la+Ubsh8gwOm57MFykl8rk0mHc5WeYDp6oZd1u
-	Q+SwiN4FTVElc3Ypuo653xrcCVFPGV7dHQCN8qF07/WUZafCFo6JdEszdz9C5q+cu5wj+mGqeJdoA
-	scvCneWg==;
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
-	by desiato.infradead.org with esmtps (Exim 4.99.2 #2 (Red Hat Linux))
-	id 1x6Nrn-00000006OLn-2FdT;
-	Tue, 15 Sep 2026 07:46:15 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1789458366;
-	bh=R2xJrxl6upO9LEZweJ/1XyeQgzkDVimk0RD2c0Xhaos=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=RuHpU7fE5Z3XY4d1RQw7AynI1G6BDoB5xPNNPepviV3HvXt+ms0L31xc6+SHCLzxK
-	 3iRHWRkSFYEfTowlf3WpUsYCHq943JD2sONUO1hchsQvSRXeRQOLwyeaRjXmmcwKeK
-	 lvKFHWIqsyWUAEMvz0NjGq0oTNlLts5iy/XigFtwbrt/jhfrWIH/lP/zuskE79bnAG
-	 hW7dKYFXKbQjRIIr1WoJkGK6o9MeiSO5wrdanTLQ7QT0171MdWICbAN5KtAVQkvRw2
-	 azvGzRVR3aLd6f1gYWkrhED0LRtpdOb8Al3muwKT1CBvuc7+BAkaNlAkNttyau6+1K
-	 cx1vOKlGON/6A==
-Received: from [100.64.1.21] (unknown [100.64.1.21])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange x25519)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 80C3417E007B;
-	Tue, 15 Sep 2026 09:46:05 +0200 (CEST)
-Message-ID: <a465210b-cd9c-4c5b-a54d-54d4b62b0706@collabora.com>
-Date: Tue, 15 Sep 2026 09:46:04 +0200
+	id 1x6O0w-00000005Y7w-0TbK
+	for linux-mediatek@lists.infradead.org;
+	Tue, 15 Sep 2026 07:55:39 +0000
+Received: by mail-ej1-x635.google.com with SMTP id a640c23a62f3a-c294ad260fdso89989966b.1
+        for <linux-mediatek@lists.infradead.org>; Tue, 15 Sep 2026 00:55:36 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1789458935; cv=none;
+        d=google.com; s=arc-20260327;
+        b=UjssUpSoXADB8H/IP0aXbuqJXwMC1W+HxEl7G4ziLxObxTRS68dNqRjRUXCPjvAfyo
+         Kv+CSvbnRSRf/RK/ieMs7IKRzqoxLwAxFtgiuh7i35xa0AT5OaONFKhN3CeotwCmwfTU
+         VGP88Boio+EKsIct7rYji/vjZj3e4mDaJd8tvahDNdI4/pqbKxU8/LQnceulR8PzKEKr
+         p/SjWt18GqQjmKcyd7Difho13Vcvt92yz4+nwmb76tduQ5mpBYgIJFHAL+rjCjIcA1ln
+         pPH6tbvsBhViOgk25nj4eJxWhEql5ZqwaT5/pKv5jJV6pB++62eAJ304p7LqkS5leMYr
+         V9tg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20260327;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:dkim-signature;
+        bh=goS4E7honEFOUt4mgD9dkwBiL9FCUu+3QHZSOMHuZ5E=;
+        fh=imQWVzz5g/WwnFHDhO1WJOOSnLD60wfHGf7fwvCkLLc=;
+        b=hYfuWLi+vigsAeqpV1H8NEepeUGMMUSeu1cL0Oo1IquTZUVTMDzpu6WP8HpqNkWxXd
+         W65ux+mETbDzdfRk4e2hdqg9n2rCxdjjDByhDruzntQHditpB05mWlUZnYuV2RiprQER
+         mMXAbN1WUSR4jcQmNhLyTZTcRo88wDldJMVKjMi3j0TH3KAafhs6QAsIheGewj1/h4TF
+         qNfu3p6rVWoMX7X511/U/R+Rvt1uxIE8Kt2Z9o4zeYsUeade4kvn6DN4izwoFvTt1/Gx
+         fC5hAJy3yE1Hrtd512n+W5dET5SiUKoYOotun8snOq7NxnnvtFY/AujsLmpLepnGJUD6
+         cF5A==;
+        darn=lists.infradead.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20251104; t=1789458935; x=1790063735; darn=lists.infradead.org;
+        h=content-type:cc:to:subject:message-id:date:from:in-reply-to
+         :references:mime-version:from:to:cc:subject:date:message-id:reply-to
+         :content-type;
+        bh=goS4E7honEFOUt4mgD9dkwBiL9FCUu+3QHZSOMHuZ5E=;
+        b=TOjBTqatGzF1UL+2xEMJLW7JyydVwHbcb/WmXu2TAdLZY50Bzj7udQFzJzlsSkT3WB
+         pod1MWznXfDX6oQRg1olypGatT7ljtyXP1jyrghZEq7Xbre40jeV3fFyaZ0TupR22kAl
+         07TrTDLx0P37cb9uTauE6tQOZd+76A2GoYDu+ynXxL2X95fdCYx1vPlmGSg7+WrOLfFq
+         /GfTPCr+Voix92XAmEwvlV/A1ICs09bk3agdxK5f6O53cmVYDsYZxDtF+KhLLnnF3dOw
+         RjE1OxESGOrZK2TEpyQBhAHx6zFhcqw9AOYICzP1BBXcR65QG6+tpAGHODo9NVFb/MC/
+         95aA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20260707; t=1789458935; x=1790063735;
+        h=content-type:cc:to:subject:message-id:date:from:in-reply-to
+         :references:mime-version:x-gm-gg:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to:content-type;
+        bh=goS4E7honEFOUt4mgD9dkwBiL9FCUu+3QHZSOMHuZ5E=;
+        b=0gN3f41eUzfKVOMGNvJ4uq3n1JJFUNBQsst+hsXMR3kgBKcuYrTx3favGjQ6eHLp5j
+         4eRU0T9mczkskHi2PGu/00fWcNHCyfxp3gLc4ZnoiJbR13BIXh/tcQOFK7y9dLKkqsj9
+         emE+weCSxMsmsyB6j4jzovp/U0NJEQNwQ5Y4SiGoaHCoJX5pz9GpPquIWOs/Rs2baSjv
+         baK3WucrHt79U96zg7Y9yV7oUJlCjrHX5dpAkDo61Ve78lY+fABwTe1l2kYanpsPzKJb
+         4s5QOBcbjCUsNUN25cOeEbb99XcJLZkLyaYxe2EDAWSvT1OG3lYDMctUDxoVG/v4Ju9e
+         +w9A==
+X-Forwarded-Encrypted: i=1; AKwUvBwn2LCYEyCbs0jkkSnEXkOt8UP9VMh3d/Hqpem9XpjkeLwUcorplXYFuaOMjYTTrJK4gAtrX+yjs+hRAjLBFA==@lists.infradead.org
+X-Gm-Message-State: AFuF++nEznDQkGU39LrBRqLvhSEwk8d35mGttrxaAlA1sO8DYDXIMBm8
+	ukK8n7RSWMfxfx7Cyb6sWcqQA/g0V3FzloKeqX0qt+nyaQjQLFt8HhWdNhlzcICUQAV19JFLMQn
+	JYiNDXQcQHLJenQvc2yFbsm4Is2IBm/w=
+X-Gm-Gg: AYBFou0jPu6mfndK57e1O0x76+IUE08r/ngLF8jT4VXWNmLIIqqanNiB5BmBe/L1pxY
+	l3cJkI/jbmpwojjQpx5Ph7K+moKQ1QsIRESo3SJnWYFl75qU5Eb8KN7trvrFhtFqtrgOcCpCS0s
+	3uqzEc63HT6LySkCM1SVO8wjSXm+WGo8KaJgmBaQemDg4Xct5YKD1tH0/DCgU5GE8nR1QANz/+E
+	xPK7yk0bdQW7qzENnO1U93GwqHT571XqCsU1gcfAcDxlM09ye5XtKKR+nkEIfn3zkR93ByDwVH4
+	sQarc9fuX6Rr18194rXmUQKTRZ290eabntsWU562XCGoyDco97jz2TuZXFVLlNjc6e44pUppyBf
+	89hHMfGRDTfILmULuazT0RL5DQ55wEUrp1d9547Wp3fJ5EQ/NcBvjwZoclaL5LnG3tsI=
+X-Received: by 2002:a17:906:6a06:b0:c26:1f8f:ed53 with SMTP id
+ a640c23a62f3a-c29c896c418mr191111266b.12.1789458935020; Tue, 15 Sep 2026
+ 00:55:35 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3] arm64: dts: mediatek: mt7988a-bananapi-bpi-r4: add
- ramoops region
-To: Martino Dell'Ambrogio <tillo@tillo.ch>,
- Matthias Brugger <matthias.bgg@gmail.com>
-Cc: linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, kees@kernel.org,
- tony.luck@intel.com, gpiccoli@igalia.com
-References: <20260915064254.1594808-1-tillo@tillo.ch>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-In-Reply-To: <20260915064254.1594808-1-tillo@tillo.ch>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+References: <20260914072842.24420-1-phucduc.bui@gmail.com> <20260914072842.24420-8-phucduc.bui@gmail.com>
+ <693fea96-1905-49c9-b1c5-3fa1ceb4874a@collabora.com>
+In-Reply-To: <693fea96-1905-49c9-b1c5-3fa1ceb4874a@collabora.com>
+From: Bui Duc Phuc <phucduc.bui@gmail.com>
+Date: Tue, 15 Sep 2026 14:55:20 +0700
+X-Gm-Features: AcwNN1XHHQHyucAHdm0EW7r7ZxJRYduxWbuLcSKyAsTdoDPrrcNWVh8BQ68F-UQ
+Message-ID: <CAABR9nH5e=kKRsHQYx7u3HtWgA3C897d9dH4h+wQTpZNGaTRHQ@mail.gmail.com>
+Subject: Re: [PATCH v2 07/13] ASoC: mediatek: mt8189: Propagate runtime resume errors
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: Mark Brown <broonie@kernel.org>, Liam Girdwood <lgirdwood@gmail.com>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, 
+	Cezary Rojewski <cezary.rojewski@intel.com>, Cyril Chao <Cyril.Chao@mediatek.com>, 
+	Kuninori Morimoto <kuninori.morimoto.gx@renesas.com>, Dan Carpenter <error27@gmail.com>, 
+	cassiogabrielcontato@gmail.com, linux-sound@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+	linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260915_084611_877787_1D29374B 
-X-CRM114-Status: GOOD (  25.58  )
+X-CRM114-CacheID: sfid-20260915_005538_171508_062582B8 
+X-CRM114-Status: GOOD (  13.42  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,85 +122,32 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 9/15/26 06:42, Martino Dell'Ambrogio wrote:
-> Reserve 1 MiB of RAM just below the ARM Trusted Firmware secmon region
-> (0x42f00000-0x43000000) for persistent kernel log storage via pstore/ramoops,
-> allowing post-panic console output and oops dumps to be recovered after a
-> reboot. Without it, kernel crash logs on this board are lost when the SoC
-> warm-resets and the on-chip console buffer is reinitialised.
-> 
-> With record-size=128 KiB, console-size=256 KiB, ftrace-size=64 KiB and
-> pmsg-size=64 KiB, ramoops_probe() carves the post-console remainder
-> (640 KiB) into five 128 KiB kmsg records, with the requested ecc-size=16
-> reserving a small Reed-Solomon parity block from each zone's own
-> allocation (per persistent_ram_new()). The ECC lets pstore recover dumps
-> even when the panic path truncates writes mid-record.
-> 
-> The no-map property is required so the reserved region is kept out of the
-> kernel linear map. ramoops remaps the carve-out write-combine via
-> ioremap_wc(); on arm64, leaving the same physical RAM mapped cacheable in
-> the linear map at the same time is an attribute-mismatch and risks losing
-> panic data to dirty cache evictions from the linear alias.
-> 
-> The carve-out sits immediately below the ATF region already declared at
-> 0x43000000 in mt7988a.dtsi, so no other reserved-memory child is moved or
-> resized. BPI-R4 ships with at least 4 GiB of DRAM starting at 0x40000000,
-> so the region is well within installed memory on every variant.
-> 
-> For the carve-out to actually preserve content across a reset, the boot
-> loader must also avoid touching this region on warm reset; on standard
-> BPI-R4 boards with the stock OpenWrt U-Boot fork this already holds.
-> 
-> Signed-off-by: Martino Dell'Ambrogio <tillo@tillo.ch>
-> ---
-> Changes in v3:
->   - Resend; no functional change. Rebased on v7.3-rc3, where the v2 diff
->     still applies unmodified.
->   - v2 drew no review comments. It was also sent, in error, as a reply to
->     the BPI-R3 patch's thread rather than its own, so it is likely to have
->     been read as a duplicate of that board's patch. This version starts a
->     fresh thread to avoid repeating that.
-> 
-> The matching BPI-R3 (mt7986a) patch is being resent as v3 at the same time.
-> 
-> v2: https://lore.kernel.org/all/20260528123645.2650085-1-tillo@tillo.ch/
-> v1: https://lore.kernel.org/all/20260528092807.1936177-1-tillo@tillo.ch/
-> 
->   .../boot/dts/mediatek/mt7988a-bananapi-bpi-r4.dtsi  | 13 +++++++++++++
->   1 file changed, 13 insertions(+)
-> 
-> diff --git a/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4.dtsi b/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4.dtsi
-> index 0ff69da..6a8dc89 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4.dtsi
-> +++ b/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4.dtsi
-> @@ -80,6 +80,19 @@
->   	};
->   };
->   
-> +&{/reserved-memory} {
+Hi Angelo,
 
-It's just
+Thank you for your reviews.
 
-	reserved-memory {
 
-Sorry about missing your patch for all this time; the comment applies to both btw.
+> >       if (!afe->regmap) {
+> >               dev_warn(afe->dev, "skip regmap\n");
+>
+> In the probe function, there's a call to devm_regmap_init_mmio(), and that's being
+> correctly checked for error as in, if any, probe will fail.
+>
+> So... during suspend or resume or anywhere else in this driver really, the regmap
+> pointer can't be NULL.
+> The right thing to do here would be to just remove the useless check.
+>
+> Mind you, this comment applies to some other commits in this series as well.
+>
 
-Cheers,
-Angelo
+You are right. devm_regmap_init_mmio() returns an ERR_PTR() on error
+or a valid pointer to a struct regmap on success,
+so checking for NULL here is not correct.
 
-> +	ramoops@42f00000 {
-> +		compatible = "ramoops";
-> +		reg = <0 0x42f00000 0 0x100000>;
-> +		no-map;
-> +		record-size = <0x20000>;
-> +		console-size = <0x40000>;
-> +		ftrace-size = <0x10000>;
-> +		pmsg-size = <0x10000>;
-> +		ecc-size = <16>;
-> +	};
-> +};
-> +
->   &cci {
->   	proc-supply = <&rt5190_buck3>;
->   };
+Also, if devm_regmap_init_mmio() fails, the probe will already fail.
+Therefore, I will remove the if (!afe->regmap) check here.
+
+
+Best regards,
+Phuc
 
