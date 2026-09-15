@@ -4,73 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C5A4FC88E53
-	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Sep 2026 08:26:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F30E1C88E73
+	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Sep 2026 08:42:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=amUCRKAsD4Gxaeqv0xybOj88/Vakw7xMA79ZYbnTllU=; b=Yk7jQHg3pO3eM4gfjtNh7qCiUX
-	d7A8mFCJsIAljf/1DAp/ibk/YGXRVgUgT4o0PNUyVoBEWJDbAW+t5D758Vxzt++gh8CNcRcfCjs5o
-	+15rFnNnVN6vY4q2Y561rDAVjXf9yJtpBMmBxJlZqlO9VtDBgjsmwIqzYUZsELjXOySaZ8JgmEKaQ
-	1eiXAQ6SRaTCceY5Gk1oE5I9sc9YzVF6iexgcG3uZB6PoSmxm76nhcEJ8EMeHcq50EcNFhrIglx5C
-	c0p3eaV1WQIzVIO7OIq8rD9qigU1D76y3SExrmRa4TluiPrgPUkpstTK/3tWMi/PXKZQHM5JUmoIY
-	GlscsZLA==;
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=wbXQpTpmjPsQcqxd5UcdduDk+ZTR0/xuonckVpFD9GE=; b=aEY4/XVq6jHTMkB+9YLrdPUWWN
+	erEUVR/faivsEwClSiusnRA9DE4rBsciEnburjC8iS4d+kAEKfBjiIfE3e+yF1E7zXofPPCc/phdR
+	V0pxwHPQzo1S7RTUmmWKaqV0K5oz0CMXb9xgZmAeys6ofUko1VizN6aoAX1mGi1CoWtr57LViT9Dg
+	mE3A5EKtdby3RXL5KDRweWEK1xJe2MT++lMIkZPFYe7ZgzKxxzY39KiQ1yDXaRILkbVpOFFfpAqi0
+	NQVtPC5TFl77xEP01cTB610Suu5cu6wx8Dwocj1UDDGpWErJ/ESc3kRNzVFDrli+DnRquJQvJF+h2
+	nP3/PyZg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x6OV8-00000005c8U-2eCT;
-	Tue, 15 Sep 2026 08:26:50 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1x6Ojq-00000005e7d-24a6;
+	Tue, 15 Sep 2026 08:42:02 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x6OV4-00000005c7s-1Oa0;
-	Tue, 15 Sep 2026 08:26:47 +0000
+	id 1x6Ojn-00000005e6W-3jfa;
+	Tue, 15 Sep 2026 08:42:01 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1789460802;
-	bh=Mcxm2eZBaUSab7V2BxURMy56qBJEYr7x6oE4KD5VWB0=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=QSLAnEuwULHu0mfV2zcgoR8yvQQUWiQK2L+deDnun03gaXkSAnr8/04QFcC70z5AM
-	 IwXH/ydw/MjUfqWSKSzYjmI/qRPTUkBoj6Lw7heRJNZPk9uSM2sUUjIT3A78DzQuJj
-	 rhNQJ9HU/cQd1ettpY8dMzYPslS+qOSVzsBsuDy+WmjMsDXAOjy8YES+DxA5V9XvBT
-	 Mb/WX9a6MVvzOcTZMBqGdmw5okTpuW2jqsaPsRDRNP0Q2J9UX4XOSPXwRPHL7EfJpr
-	 RpQ6yOss/bCSf9srn4HKEJhkf9sChdoS2f0L2PjQhdAiCnxI4lmsAifgVrP3SfqjpN
-	 44gKhJn07n8Hg==
-Received: from [100.64.1.21] (unknown [100.64.1.21])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange x25519)
+	s=mail; t=1789461717;
+	bh=qYq+w9vPF4t3jgF9my76/AeUHbNE9NQ8AWI6RmmxSHI=;
+	h=From:To:Cc:Subject:Date:From;
+	b=JiCuzmcuqTF7a6pBhIDLPBv0oanK9Gi0jN2dsZcfpndKlSjivattKbKAQF5cEBXJu
+	 vp1kYj09phnCJSq+UNQ40AGxWcZ2n+nvT60OCqX+aeRX15hgyRzfHCQ8altm7Hma/8
+	 OomRyCSxJdSBGCtCGQTgLp+c0Gzf8A1upMAeovxi40XBiMRdV5TgwMd5FTaMURO385
+	 gYmp4inY1P8QhTx63sPD97K6urQJqzGc/mEtFme8rsEY6QLxLPdA7ciDNd9MUZDIy0
+	 bSX6G8wyhlPyQHdXfZtNgT1B+8jWOU+8kJJqn/lZHanePnymnxR2OeyAjFFz3VD2dr
+	 +AnPsdM1DlnmA==
+Received: from IcarusMOD.eternityproject.eu (unknown [100.64.1.21])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 29FF217E07DB;
-	Tue, 15 Sep 2026 10:26:41 +0200 (CEST)
-Message-ID: <bcf23df0-30bf-4dd6-b5ad-7ad23f74efa2@collabora.com>
-Date: Tue, 15 Sep 2026 10:26:40 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 07/13] ASoC: mediatek: mt8189: Propagate runtime resume
- errors
-To: Bui Duc Phuc <phucduc.bui@gmail.com>
-Cc: Mark Brown <broonie@kernel.org>, Liam Girdwood <lgirdwood@gmail.com>,
- Matthias Brugger <matthias.bgg@gmail.com>, Jaroslav Kysela <perex@perex.cz>,
- Takashi Iwai <tiwai@suse.com>, Cezary Rojewski <cezary.rojewski@intel.com>,
- Cyril Chao <Cyril.Chao@mediatek.com>,
- Kuninori Morimoto <kuninori.morimoto.gx@renesas.com>,
- Dan Carpenter <error27@gmail.com>, cassiogabrielcontato@gmail.com,
- linux-sound@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
-References: <20260914072842.24420-1-phucduc.bui@gmail.com>
- <20260914072842.24420-8-phucduc.bui@gmail.com>
- <693fea96-1905-49c9-b1c5-3fa1ceb4874a@collabora.com>
- <CAABR9nH5e=kKRsHQYx7u3HtWgA3C897d9dH4h+wQTpZNGaTRHQ@mail.gmail.com>
- <CAABR9nGVYghGE-kshpeJQJrvuUFJmDATW_mBCoJfVwDNVnSErw@mail.gmail.com>
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id C8F4617E090C;
+	Tue, 15 Sep 2026 10:41:55 +0200 (CEST)
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-In-Reply-To: <CAABR9nGVYghGE-kshpeJQJrvuUFJmDATW_mBCoJfVwDNVnSErw@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+To: chunkuang.hu@kernel.org
+Cc: p.zabel@pengutronix.de,
+	maarten.lankhorst@linux.intel.com,
+	mripard@kernel.org,
+	tzimmermann@suse.de,
+	airlied@gmail.com,
+	simona@ffwll.ch,
+	robh@kernel.org,
+	krzk+dt@kernel.org,
+	conor+dt@kernel.org,
+	matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com,
+	jitao.shi@mediatek.com,
+	dri-devel@lists.freedesktop.org,
+	linux-mediatek@lists.infradead.org,
+	devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	kernel@collabora.com,
+	justin.yeh@mediatek.com,
+	jason-jh.lin@mediatek.com
+Subject: [PATCH v8 00/13] drm/mediatek: Add DSC, WDMA, MT8189/96 DSI support
+Date: Tue, 15 Sep 2026 10:41:35 +0200
+Message-ID: <20260915084148.11385-1-angelogioacchino.delregno@collabora.com>
+X-Mailer: git-send-email 2.55.0
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260915_012646_524616_625C33AC 
-X-CRM114-Status: GOOD (  17.00  )
+X-CRM114-CacheID: sfid-20260915_014200_120160_195E0479 
+X-CRM114-Status: GOOD (  18.45  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,68 +88,103 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 9/15/26 10:23, Bui Duc Phuc wrote:
-> Hi Angelo,
-> 
-> 
->>>
->>> In the probe function, there's a call to devm_regmap_init_mmio(), and that's being
->>> correctly checked for error as in, if any, probe will fail.
->>>
->>> So... during suspend or resume or anywhere else in this driver really, the regmap
->>> pointer can't be NULL.
->>> The right thing to do here would be to just remove the useless check.
->>>
->>> Mind you, this comment applies to some other commits in this series as well.
->>>
-> 
-> I found something interesting:
-> 
-> in mt8189_afe_pcm_dev_probe()
-> 
-> -------------------------------------
-> afe->runtime_resume = mt8189_afe_runtime_resume;
-> afe->runtime_suspend = mt8189_afe_runtime_suspend;
-> 
-> ret = devm_pm_runtime_enable(dev);
-> if (ret)
-> return ret;
-> 
-> /*
-> * Audio device is part of genpd. Registering it as a syscore device
-> * ensure the proper power-on sequence of the AFE device.
-> */
-> dev_pm_syscore_device(dev, true);
-> 
-> /* enable clock for regcache get default value from hw */
-> ret = pm_runtime_resume_and_get(dev);
-> if (ret)
-> return dev_err_probe(dev, ret, "failed to resume device\n");
-> 
-> afe->regmap = devm_regmap_init_mmio(dev, afe->base_addr,
->     &mt8189_afe_regmap_config);
-> if (IS_ERR(afe->regmap)) {
-> ret = PTR_ERR(afe->regmap);
-> goto err_pm_put;
-> }
-> -----------------------------------------------
-> 
-> Here, it looks like mt8189_afe_runtime_resume() gets called
-> before devm_regmap_init_mmio().
-> 
-> So if we remove this part:
-> ---------------------
-> if (!afe->regmap) {
->          dev_warn(afe->dev, "skip regmap\n");
->          return 0;
->      }
-> -----------------------
-> from mt8189_afe_runtime_resume(), that could actually trigger the bug
-> we were just discussing.
-> 
-Well, then...
+Changes in v8:
+ - Fixed offset for LCCON and LD0CON registers in MT8196 register map
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Changes in v7:
+ - Added full drm_dsc header inclusion in mtk_disp_drv.h (CK)
+ - Moved CMDMODE_WAIT_DATA_EVERY_LINE_EN to commit [9/12] (CK)
+ - Removed constification cleanup from mtk_dsi (CK)
+ - Performed cleanups on commit [4/12] (CK)
+ - Split maximum link rate parameter moving from MT8189 support (CK)
+ - Split SRAM/QoS support from MT8196 support commit (CK)
 
-...still, please check the other cases.
+Changes in v6:
+ - Fixed .remove function name in wdma (ugh...)
+
+Changes in v5:
+ - Clarified commit description for WDMA binding compatibles addition
+   explaining why Dimensity 1200 is not compatible with MT8173
+ - Added missing mediatek,mt8189-dsi compatible in mtk_drm_drv.c
+ - Added fix in mtk_dsi for failing device_reset_optional() producing
+   a possible use-after-free issue
+
+Changes in v4:
+ - WDMA: Delete the .remove() callback from WDMA as not needed anymore
+ - WDMA: Add comments explaining no bus errors will happen if writing
+   to INT_ENABLE, INT_STATUS registers while unpowered or unclocked
+ - Return error in mtk_wdma_wb_atomic_check() error conditions, oops!
+ - DSC: Fix dsc_pad_num calculation (missing parenthesis...)
+ - DSI: Change dsc slice check error to dev_dbg instead to avoid spam
+ - DSI: Correctly cleanup dsi->dsc upon component_add failure
+ - DSI: Make sure the CKTX_CKL_WC register is correctly programmed in
+   DSI w/DSC case
+
+Changes in v3:
+ - Changed mtk_dsi DSC implementation to use a different DSI_PS
+   setting function for compressed or uncompressed, as the dsc one
+   is way simpler than the regular one and becomes way shorter
+ - DSC: Fixed missing PPS 19 register write
+ - DSI: Anticipated call to devm_pm_runtime_enable() to before
+   registering the DSI Host interface
+ - DSI: Anticipated installing IRQ handler before registering the
+   dsi host interface, which wasn't a problem before, but now it
+   would be one because the interrupt is being enabled when binding!
+ - DSI: Fixed some possible calculation overflows that may happen in
+   MT8189 and MT8196 because of the higher supported resolutions
+ - WDMA: Use devm variant of pm_runtime_enable()
+ - Change WDMA interrupt handler to allow signaling WB complete even
+   if there is no specific vblank callback installed to avoid very
+   long timeouts (in any case, WB is complete for real even if there
+   is no vblank_cb, just a bit useless without, but still complete)
+ - Fixed WDMA register writes as register id was in function signature
+   for mtk_wdma_ddp_write_dst_addr() but the function itself never
+   used it in DISP_REG_WDMA_DST_ADDRX() macro
+
+Changes in v2:
+ - Rebased on next-20260706
+
+This series adds support for:
+ - Display Stream Compression (DSC) for DSI and DisplayPort for both
+   legacy (8188/92/95 and others) and for Kompanio Ultra MT8196 SoCs
+ - Write DMA (WDMA) Engine (for legacy only at this time) as a step
+   to enable Writeback support (coming later with a restructuring of
+   the entire mediatek-drm driver)
+ - Newer MIPI DSI IP revisions, found in MT8189 and MT8196 SoCs
+
+AngeloGioacchino Del Regno (13):
+  dt-bindings: display: mediatek: dsc: Add MT8196 compatible
+  drm/mediatek: Implement Display Stream Compression support
+  dt-bindings: display: mediatek: dsi: Document MT8189 and MT8196
+  drm/mediatek: mtk_dsi: Cleanup encoder if reset fails during bind
+  drm/mediatek: mtk_dsi: Enable interrupt at component bind time
+  drm/mediatek: mtk_dsi: Transfer register offsets to per-SoC const
+  drm/mediatek: mtk_dsi: Move max link rate parameter to platform data
+  drm/mediatek: mtk_dsi: Add support for MT8189
+  drm/mediatek: mtk_dsi: Add support for SRAM QoS setting
+  drm/mediatek: mtk_dsi: Add support for MT8196
+  drm/mediatek: mtk_dsi: Enable PM Runtime on probe
+  dt-bindings: display: mediatek: wdma: Add compatibles for more SoCs
+  drm/mediatek: Add Write DMA (WDMA) Engine for Writeback support
+
+ .../display/mediatek/mediatek,dsc.yaml        |   4 +-
+ .../display/mediatek/mediatek,dsi.yaml        |   2 +
+ .../display/mediatek/mediatek,wdma.yaml       |   5 +
+ drivers/gpu/drm/mediatek/Makefile             |   2 +
+ drivers/gpu/drm/mediatek/mtk_crtc.c           |  21 +
+ drivers/gpu/drm/mediatek/mtk_ddp_comp.c       |  64 +-
+ drivers/gpu/drm/mediatek/mtk_ddp_comp.h       |   9 +
+ drivers/gpu/drm/mediatek/mtk_disp_drv.h       |  28 +
+ drivers/gpu/drm/mediatek/mtk_disp_dsc.c       | 446 ++++++++++
+ drivers/gpu/drm/mediatek/mtk_disp_wdma.c      | 628 ++++++++++++++
+ drivers/gpu/drm/mediatek/mtk_drm_drv.c        |  10 +
+ drivers/gpu/drm/mediatek/mtk_drm_drv.h        |   2 +
+ drivers/gpu/drm/mediatek/mtk_dsi.c            | 795 ++++++++++++++----
+ 13 files changed, 1827 insertions(+), 189 deletions(-)
+ create mode 100644 drivers/gpu/drm/mediatek/mtk_disp_dsc.c
+ create mode 100644 drivers/gpu/drm/mediatek/mtk_disp_wdma.c
+
+-- 
+2.55.0
+
 
