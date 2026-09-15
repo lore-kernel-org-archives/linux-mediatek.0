@@ -4,64 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CFF06C88E75
-	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Sep 2026 09:55:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5B5CAC88E75
+	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Sep 2026 10:10:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Fi/dRVXiXBIot4v5nHDQZH3qjk6CazAUgLOp7/ZEMyo=; b=jjXGjzEuTu+Fa/wrQrRxW4ZV32
-	XNnE30pG8XQzusiVLzly8kvkN/xcYTidKkKHhQ+lVwFPu8WufaDSJ/FQhBTdNKWLwMLR1M1t2GGuy
-	VvGdU6q6s7mEsiYEOlA11oZ4GYhoHib2TKCJPGzrbBwWyl17K/MQkRcz99kSZF22hWpcABNpkdN/S
-	I9ei6kjxjZ9VrYLzrA1TWFLuRMEYzmJ1xDYc+YOS8Ui95Ogw1oWTwg1bMAGGvfdqJZUKkcegY+0rd
-	oh90Ss63VGA6kuyqXRFduJw/H8YRGjxkxMY+v+Q15XQOlfKjPweT0GMnptDnPRu6ybYoiI2E25GnL
-	j5qvPMAQ==;
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=A6sJOEFXkET5OTUGpPVqAhGJNpr1Qhp3F4YDCiH0l2c=; b=LSh2K7aYyAZ+mB+8yKIHWMOEAL
+	H8Ep8T6BUkzT+i7128MSKDwOdxUWMBOnLn7pr5mKyXBJostA3H45mXPX3Opihr4M0iI8obaDEdolm
+	p5w34OqLeRJiA0ZAmFQCMoy7frYFlAHz98kURVELDXOd0EjgoZdkIgTvRlhleONu7pVrf/6Kqk9bV
+	GUJfp3jVMF1w38B2w6JZfHIpURzH0MrLF9aTTR3tfJzTaQrfmjQeSTiWcg2GnZ+oyKZM9CaY47Bpr
+	MWfh04OvmzmS3CNQ+0UplsBm40r2BUL37gyz0MivNe1tjjqLeF/Y0l2HhwM+OlFVEH0uMcqa+GlYH
+	ff5uYbpw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x6Pt9-00000005paE-1orX;
-	Tue, 15 Sep 2026 09:55:43 +0000
-Received: from mail.cjdns.fr ([5.135.140.105])
+	id 1x6Q7Y-00000005rUt-2vg0;
+	Tue, 15 Sep 2026 10:10:36 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x6Pt5-00000005pYs-24gV;
-	Tue, 15 Sep 2026 09:55:40 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id 8132D476D79;
-	Tue, 15 Sep 2026 11:55:26 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cjdns.fr; s=dkim;
-	t=1789466133; h=from:subject:date:message-id:to:cc:mime-version:content-type:
-	 content-transfer-encoding:content-language:in-reply-to:references;
-	bh=Fi/dRVXiXBIot4v5nHDQZH3qjk6CazAUgLOp7/ZEMyo=;
-	b=E56no6bXvfvfWeTMftV4PVj1DAjuMK7Xn6M1Q0ejyA1aBMsTX7kyxZyUIf60GgdKtarDIr
-	Lvq35rb+5Ux3RhtOABB5GVzoihOvmMoAe5VoKVQ/lVJ+xmVxOEjOtAYKeMb5/ZSgkFjwWf
-	jWrrXxjJGKdwO2WlLfVoVdeR6w0yKV3NLC4DC+3rd6jLYLxOXnm9HvV3DXqUkA7550gqNK
-	Hnrxopx2C0jqER04Ykkof8osavGCNW2vuBd8jgIsb1iRV4a4d7V4KdjS7RO7t+eLZt0nTe
-	cG1eFDCyEUs0td27/oGO17hkHL8LOP8gydXTivMlxy6lZvbAVxFZez0KJDBfdQ==
-Message-ID: <c560a70b-8ccf-415a-ba8f-0c061a9f6b03@cjdns.fr>
-Date: Tue, 15 Sep 2026 11:55:25 +0200
+	id 1x6Q7R-00000005rJQ-0lF0;
+	Tue, 15 Sep 2026 10:10:30 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1789467026;
+	bh=D7vYRfDYX2mNbWggPeNQgbQs/Qp4rSvwGWxfHN5e9nY=;
+	h=From:To:Cc:Subject:Date:From;
+	b=Ue0f0yL3LGb2t5G/Q1Sb8TZOpHIw1yeqNoNSHBn4t3tQhMBak207yq/w5LjvwonqN
+	 kLTYi2bvAxU5s4NVV/fWrJib1Cy7vF8ibv/Y/5SidlIrVPlUccm7I5PJqgMZ+Y2ctV
+	 HDFykahu0/dTkwRYOCHUf6hAWgdGF0VdNRBzKT1gsLh+u5GI9WnPbdo5Ayy9LZ3PyN
+	 Mi/N5e9I0S6woR/xwP5TRLIt7AnjOLUhXpTQf9wxEPBDXr08/Od1g6Ne8Ch+sEkpgK
+	 JA2cR6JvCVobwnlhBE9fhRGMZ1h/I2Ogh9JiR16b1/jHwYtM+1IFaVeJ4FWi5ulbgL
+	 fKooppqug/RZw==
+Received: from IcarusMOD.eternityproject.eu (unknown [100.64.1.21])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 8B4E117E089A;
+	Tue, 15 Sep 2026 12:10:25 +0200 (CEST)
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+To: chunfeng.yun@mediatek.com
+Cc: vkoul@kernel.org,
+	neil.armstrong@linaro.org,
+	robh@kernel.org,
+	krzk+dt@kernel.org,
+	conor+dt@kernel.org,
+	matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	linux-phy@lists.infradead.org,
+	devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	kernel@collabora.com
+Subject: [PATCH v4 0/2] PHY: Add MediaTek PCI-Express Gen4 S-PHY Driver
+Date: Tue, 15 Sep 2026 12:10:20 +0200
+Message-ID: <20260915101022.23852-1-angelogioacchino.delregno@collabora.com>
+X-Mailer: git-send-email 2.55.0
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird Beta
-Subject: Re: [PATCH v3 net-next] net: phy: mediatek: support MT7530 PHYs on
- EN71221 MCM
-To: Andrew Lunn <andrew@lunn.ch>
-Cc: netdev@vger.kernel.org, daniel@makrotopia.org, dqfext@gmail.com,
- SkyLake.Huang@mediatek.com, hkallweit1@gmail.com, linux@armlinux.org.uk,
- davem@davemloft.net, edumazet@google.com, kuba@kernel.org,
- pabeni@redhat.com, matthias.bgg@gmail.com,
- angelogioacchino.delregno@collabora.com, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- Matheus Sampaio Queiroga <srherobrine20@gmail.com>
-References: <20260911120646.4123877-1-cjd@cjdns.fr>
- <a6e1bb7f-e395-434e-8e9b-992141969d74@lunn.ch>
-Content-Language: en-US
-From: Caleb James DeLisle <cjd@cjdns.fr>
-In-Reply-To: <a6e1bb7f-e395-434e-8e9b-992141969d74@lunn.ch>
-Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-Last-TLS-Session-Version: TLSv1.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260915_025539_726953_E53A54C4 
-X-CRM114-Status: GOOD (  10.20  )
+X-CRM114-CacheID: sfid-20260915_031029_430024_4EEB45C0 
+X-CRM114-Status: GOOD (  13.43  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,50 +81,56 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Changes in v4:
+ - Mentioned MT6991 in the commit description for commit 2 (Mani)
+ - Added comment to clarify that if one calibration is missing, no
+   calibration should be trusted
+ - Changed Kconfig to mention module build (Mani)
+ - Changed header comment to add "Author" and change indentation (Mani)
+ - Moved cktx_impsel, tx_impsel to the top (Mani)
+ - Added pm_runtime_no_callbacks() call (Mani)
 
-On 14/09/2026 14:01, Andrew Lunn wrote:
->> + * The EcoNet EN751221 "G" multi-chip module MT7530 requires additional PHY
->> + * configuration.
->> + */
->> +static int en751221_mcm_phy_config_init(struct phy_device *phydev)
->> +{
->> +	int ret;
->> +
->> +	ret = genphy_soft_reset(phydev);
->> +	if (ret)
->> +		return ret;
->> +
->> +	/* Master/Slave negotiation does not work reliably */
->> +	ret = phy_write(phydev, MII_CTRL1000, ADVERTISE_1000FULL |
->> +			CTL1000_ENABLE_MASTER | CTL1000_PREFER_MASTER |
->> +			CTL1000_AS_MASTER);
-> Is it sufficiently broken that we should stop the user changing it?
+Changes in v3:
+ - Allowed value 0 in calibration fields (as it's a legal value)
+ - Fixed duplicated LN_TX_IMPSEL_{P,N}MOS writes
+ - Allowed -ENOENT for nvmem_cell_read_u{8,16}() calls, as the
+   calibration data is effectively optional
+ - Removed two development stage leftover unused definitions
+ - Moved num_lanes check in mtk_pcie_sphy_get_calibration_data()
+   to reduce indent in probe function.
 
+Changes in v2:
+ - Added items/description to reg in binding
+ - Added missing pm_runtime.h inclusion
+ - Moved pm_runtime_enable call to before registering PHY
+ - Fixed pmos/nmos variable size for 5 bits calibration values
+ - Fixed calibration for single-lane PCIe, as in, the ln1 rswn
+   calibration nvmem value is ignored in code if it's single
+   lane and will not return an error; this is due to the fact
+   that, effectively, single-lane may have a zero calibration
+   in tx-ln1-rswn which is fine, as that'd be anyway unused
+ - Changed calibration data errors to dev_err_probe and changed
+   the "no calibration for ..." message to dev_info instead
 
-Well I must be going crazy because I tested this a second time and now 
-it's working without forcing master at all. I guess when I was 
-previously testing, I must have had some un-resetted state leftover from 
-trying with EEE enabled. I will re-send without this command because it 
-seems to work.
+This adds a driver for the PCI-Express Gen4 "S-PHY" found in the
+Genio MT8894, Kompanio MT8196, Dimensity MT6991 SoCs (which are
+all variants of the same chip).
 
+This was successfully tested on MT8894 and MT8196.
 
-Thanks,
+AngeloGioacchino Del Regno (2):
+  dt-bindings: phy: Document MT8196 MediaTek PCI-Express Gen4 S-PHY
+  phy: mediatek: Add support for PCI-Express Gen4 S-PHY
 
-Caleb
+ .../phy/mediatek,mt8196-pcie-sphy.yaml        |  93 +++
+ drivers/phy/mediatek/Kconfig                  |  13 +
+ drivers/phy/mediatek/Makefile                 |   1 +
+ drivers/phy/mediatek/phy-mtk-pcie-sphy.c      | 561 ++++++++++++++++++
+ 4 files changed, 668 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/phy/mediatek,mt8196-pcie-sphy.yaml
+ create mode 100644 drivers/phy/mediatek/phy-mtk-pcie-sphy.c
 
+-- 
+2.55.0
 
->
->       ethtool     -s     devname    [speed N]    [lanes N]    [duplex half|full]
->              [port tp|aui|bnc|mii] [mdix auto|on|off]  [autoneg on|off]  [adver‐
->              tise N[/M]  |  advertise mode  on|off  ...]  [phyad N] [xcvr inter‐
->              nal|external]        [wol N[/M]         | wol p|u|m|b|a|g|s|f|d...]
->              [sopass xx:yy:zz:aa:bb:cc]      [master-slave preferred-master|pre‐
->              ferred-slave|forced-master|forced-slave]   [msglvl   N[/M] |    ms‐
->              glvl type on|off ...]
->
-> You don't appear to have a config_aneg, so genphy_config_aneg() will
-> be used, which calls genphy_setup_master_slave.
->
->     Andrew
->
 
