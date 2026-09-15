@@ -4,65 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 64222C88E72
-	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Sep 2026 02:11:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A55F0C88E53
+	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Sep 2026 03:52:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
-	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=4S3VRquMpKlrPOR2TZexhm6DFlDuABWqBf6DlMNhpn8=; b=0VtWKjYIUILcaden1kFbT1cQw3
-	cGnWK35qIWFfzL8YphIcFExWwxmsba5d5rwqAZ0feIx6Br95GX6YpMK/8CGtz/Ghvgay8qaqje0OW
-	t1Kh/mA+78vLafa4qQ/A/FfuWifOhZwCPXoZD0etBRcEtk9UGCiT04mPDsaTlXfr96NLSTWVRpabv
-	Y/Xtovb4zx72KFQP1uxXEw8V3loNWu06ifVp5sA2zr1cZCjUwJaZv/QoXSQqzRk5wL54yiJ2ijC6G
-	eolyme9/E6VfkUe9FMRkK39u3SKD5b7j17oCG8PKBY1I6iFyCeYmZYP9y9/xi8DUERoSAj2iqORIx
-	MDyIwilA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=YKUD7Q8leVgtHxcVUmnMCsrruSvvfMchXK3EUk9cdSs=; b=d9E9+q5126xQFX1FLbbW87f5r1
+	o+Domrp9NCFrV3SVSWhCnahOP6NIkw4yKbrnQdnV+n66aFe+0FbuBN9e2MJ0EsIwt3RG7mxPScHG+
+	2MtkAtd4WtgtHoY1pHp/ELpT8DA8VALGWMNOcU4v/BG7kWsU0hFFV1DhstPnB6zCde7FPbEwKsvwj
+	Jr8i2uUYH6aKFabnIkIOB+GmrSsTpV5UwGEmou9jDOHhFFZMvu8ugybbHlwc+0R/pFXn6kIvvcjwc
+	zg2gsVV2dvjsokHalYUtkBEAYa/ZPNvbk5pvJfQwSYNpsMKKDk6m8sxFBvCnD2iuT1YkQ8rkgtGRf
+	UVi1SojQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x6Idk-000000050zf-4A1s;
-	Tue, 15 Sep 2026 02:11:20 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1x6KDZ-000000059mG-0Tsv;
+	Tue, 15 Sep 2026 03:52:25 +0000
+Received: from smtp21.cstnet.cn ([159.226.251.21] helo=cstnet.cn)
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x6Idj-000000050z9-2HTK;
-	Tue, 15 Sep 2026 02:11:19 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id CF6F543D4C;
-	Tue, 15 Sep 2026 02:11:18 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id B0F6D1F00893;
-	Tue, 15 Sep 2026 02:11:18 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1789438278;
-	bh=4S3VRquMpKlrPOR2TZexhm6DFlDuABWqBf6DlMNhpn8=;
-	h=Subject:From:Date:References:In-Reply-To:To:Cc;
-	b=CH//NHTCmn8x1gykEUMbofNjpPWh/gxQx5+irZwn75xmqYs+GdT6TDwTDj3QJGGVo
-	 oAr2tVWgd9AEhC/pEdm71GjPAmiNqTu9IC3fWouXCstbJ0RuynpRhZnuqPDEPb2w87
-	 m/E+Dri+eMbVLbFgFQYGBiMVgYBwPDPlR+Z1YZ4IIHArwXkv7Bf/9GyLaJX0Q7JaA8
-	 4yffA5qyD8CP6TdPRi1iCepUlXwe+ZV1w627Td6hC0pJrYpHy4sMZh90HIogEncvhG
-	 2JHnTC9iPMKKppPhVGabX7pnVxnOYO/lEzUcVrVwWlNq7solbT30hD1XFU/7KR/Ddp
-	 jqFOPFtJ3xhEQ==
-Received: from [10.30.226.235] (localhost [IPv6:::1])
-	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id D0A063924FFE;
-	Tue, 15 Sep 2026 02:10:14 +0000 (UTC)
-Content-Type: text/plain; charset="utf-8"
+	id 1x6KDU-000000059lL-2aAC;
+	Tue, 15 Sep 2026 03:52:23 +0000
+Received: from dfae2b116770.home.arpa (unknown [36.110.52.2])
+	by APP-01 (Coremail) with SMTP id qwCowAB3TvLuwKhqos0HCA--.49242S2;
+	Tue, 15 Sep 2026 11:52:14 +0800 (CST)
+From: Wentao Liang <vulab@iscas.ac.cn>
+To: angelogioacchino.delregno@collabora.com
+Cc: chih-yin.chiang@mediatek.com,
+	linux-arm-kernel@lists.infradead.org,
+	linux-bluetooth@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	luiz.dentz@gmail.com,
+	marcel@holtmann.org,
+	mark-yw.chen@mediatek.com,
+	matthias.bgg@gmail.com,
+	sean.wang@mediatek.com,
+	lkml@vger.kernel.org,
+	Wentao Liang <vulab@iscas.ac.cn>,
+	stable@vger.kernel.org
+Subject: [PATCH 1/4] Bluetooth: btmtksdio: Fix runtime PM leak in btmtksdio_reset()
+Date: Tue, 15 Sep 2026 03:51:45 +0000
+Message-Id: <20260915035145.1724096-1-vulab@iscas.ac.cn>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Subject: Re: [PATCH net] net: phy: mediatek: do not report link and per-speed
- LED
- rules together
-From: patchwork-bot+netdevbpf@kernel.org
-Message-Id: <178943821337.1315233.3755940967519255382.git-patchwork-notify@kernel.org>
-Date: Tue, 15 Sep 2026 02:10:13 +0000
-References: <20260912134306.3544329-1-naseefkm@gmail.com>
-In-Reply-To: <20260912134306.3544329-1-naseefkm@gmail.com>
-To: Ahmed Naseef <naseefkm@gmail.com>
-Cc: netdev@vger.kernel.org, davem@davemloft.net, andrew@lunn.ch,
- angelogioacchino.delregno@collabora.com, daniel@makrotopia.org,
- edumazet@google.com, hkallweit1@gmail.com, kuba@kernel.org,
- matthias.bgg@gmail.com, pabeni@redhat.com, dqfext@gmail.com,
- linux@armlinux.org.uk, SkyLake.Huang@mediatek.com,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-mediatek@lists.infradead.org
+X-CM-TRANSID: qwCowAB3TvLuwKhqos0HCA--.49242S2
+X-Coremail-Antispam: 1UD129KBjvJXoW7CF1DZF43Zw48Zw4rWr4fGrg_yoW8Jw4xp3
+	97uF1Ykr13Ar4ayFsrtF1rXFWj93y3tryjkFyUK34rur45Xr42yF1UKryjq3ZFkrWkArW3
+	tF1IqrsxWFyjkaUanT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
+	9KBjDU0xBIdaVrnRJUUU9Y14x267AKxVW8JVW5JwAFc2x0x2IEx4CE42xK8VAvwI8IcIk0
+	rVWrJVCq3wAFIxvE14AKwVWUJVWUGwA2ocxC64kIII0Yj41l84x0c7CEw4AK67xGY2AK02
+	1l84ACjcxK6xIIjxv20xvE14v26ryj6F1UM28EF7xvwVC0I7IYx2IY6xkF7I0E14v26r4j
+	6F4UM28EF7xvwVC2z280aVAFwI0_Cr1j6rxdM28EF7xvwVC2z280aVCY1x0267AKxVW0oV
+	Cq3wAS0I0E0xvYzxvE52x082IY62kv0487Mc02F40EFcxC0VAKzVAqx4xG6I80ewAv7VC0
+	I7IYx2IY67AKxVWUGVWUXwAv7VC2z280aVAFwI0_Cr0_Gr1UMcvjeVCFs4IE7xkEbVWUJV
+	W8JwACjcxG0xvY0x0EwIxGrwACjI8F5VA0II8E6IAqYI8I648v4I1lFIxGxcIEc7CjxVA2
+	Y2ka0xkIwI1lc7CjxVAaw2AFwI0_Jw0_GFyl42xK82IYc2Ij64vIr41l4I8I3I0E4IkC6x
+	0Yz7v_Jr0_Gr1lx2IqxVAqx4xG67AKxVWUJVWUGwC20s026x8GjcxK67AKxVWUGVWUWwC2
+	zVAF1VAY17CE14v26r1q6r43MIIYrxkI7VAKI48JMIIF0xvE2Ix0cI8IcVAFwI0_Jr0_JF
+	4lIxAIcVC0I7IYx2IY6xkF7I0E14v26r4j6F4UMIIF0xvE42xK8VAvwI8IcIk0rVWUJVWU
+	CwCI42IY6I8E87Iv67AKxVWUJVW8JwCI42IY6I8E87Iv6xkF7I0E14v26r4j6r4UJbIYCT
+	nIWIevJa73UjIFyTuYvjfU78u4UUUUU
+X-Originating-IP: [36.110.52.2]
+X-CM-SenderInfo: pyxotu46lvutnvoduhdfq/1tbiCRILA2qoiqL8UAAAsV
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260914_205221_025479_825736F4 
+X-CRM114-Status: GOOD (  10.18  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,31 +86,40 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello:
+btmtksdio_reset() takes a runtime PM reference with
+pm_runtime_get_sync(bdev->dev), which leaves the device's usage
+count incremented even when it fails.  However, when the reset has
+already been started (BTMTKSDIO_HW_RESET_ACTIVE is found set by
+test_and_set_bit()), the function returns early without dropping
+that reference, leaking it on every concurrent reset request.
 
-This patch was applied to netdev/net.git (main)
-by Jakub Kicinski <kuba@kernel.org>:
+Add a pm_runtime_put_noidle() on the early-exit path to keep the
+usage count balanced.
 
-On Sat, 12 Sep 2026 17:43:06 +0400 you wrote:
-> mtk_phy_led_hw_ctrl_get() reports TRIGGER_NETDEV_LINK whenever any of the
-> speed bits in on_set is on, and in addition reports every individual
-> TRIGGER_NETDEV_LINK_* bit that is set. The netdev trigger refuses that
-> combination: netdev_led_attr_store() rejects TRIGGER_NETDEV_LINK together
-> with any per-speed rule, and it validates the whole resulting mode rather
-> than just the bit being written. Once the hardware has any link bit
-> programmed, every write to the trigger attributes of that LED therefore
-> fails with -EINVAL and the LED can no longer be configured.
-> 
-> [...]
+Fixes: 8fafe702253d ("Bluetooth: mt7921s: support bluetooth reset mechanism")
+Cc: stable@vger.kernel.org
+Signed-off-by: Wentao Liang <vulab@iscas.ac.cn>
+---
+ drivers/bluetooth/btmtksdio.c | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
 
-Here is the summary with links:
-  - [net] net: phy: mediatek: do not report link and per-speed LED rules together
-    https://git.kernel.org/netdev/net/c/bde5212360bd
-
-You are awesome, thank you!
+diff --git a/drivers/bluetooth/btmtksdio.c b/drivers/bluetooth/btmtksdio.c
+index 5b0fab7b89b5..243215a81fa7 100644
+--- a/drivers/bluetooth/btmtksdio.c
++++ b/drivers/bluetooth/btmtksdio.c
+@@ -1280,8 +1280,10 @@ static void btmtksdio_reset(struct hci_dev *hdev)
+ 
+ 	pm_runtime_get_sync(bdev->dev);
+ 
+-	if (test_and_set_bit(BTMTKSDIO_HW_RESET_ACTIVE, &bdev->tx_state))
++	if (test_and_set_bit(BTMTKSDIO_HW_RESET_ACTIVE, &bdev->tx_state)) {
++		pm_runtime_put_noidle(bdev->dev);
+ 		return;
++	}
+ 
+ 	sdio_claim_host(bdev->func);
+ 
 -- 
-Deet-doot-dot, I am a bot.
-https://korg.docs.kernel.org/patchwork/pwbot.html
-
+2.34.1
 
 
