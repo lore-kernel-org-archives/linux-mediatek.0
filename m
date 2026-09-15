@@ -4,66 +4,99 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0599CC88E7F
-	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Sep 2026 14:57:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E5CCCC88E75
+	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Sep 2026 15:02:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=254R1arFeoToj39V4xt3wD6Cd/e86zUvnv4vHFoNiO8=; b=gU7mt9h69/b2wyEKSXynQ6M9Hb
-	2sDcGmuaZC4/cZkWDhKH/c09v0GfSd3pFMgdf9zY+dA7FRuqBRQBhvv0B2kLNkhTtk7cmqVwAJAKz
-	luRvp0SK9S4Kf+5BEWJebelJ+1GrO16Otb3tPxztVVCSXw/fUweuSkncGf4la1I0GKwxnvIAs7Qa8
-	2kt/Iw6wjTj9w+AbLFbfIqozbvBT6jVXCUrANRsJ3ZbO5B8mTbvtB+GhaZFqyLwzzHX5v6ZJex64g
-	vlbGrq+lXVkWLk9hU0fyH12ncLLhBG9hqSUIR0RXg3suq8yorg3T2V4Of0Kjf0pxpNtvQBXhcFaK8
-	/NyM2cdA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=62dnS9UB1nI/BR4/ltxJuhKZokBySflA5rnVbV11GGc=; b=daErnP8RX+3CejZZ9ydU/SRKs0
+	/mw8ob0PmzBOyRPV/HSyTd84yboeIkoi4omJZRL9euurlzEXJoVDRJRwpNurmP+Tn4lGrXW87w+oZ
+	jT7ba7Dad9SZqyBf8l8PnreIwzCyGl//HWxJOB1kqvfs4AyVwTrtqHOc0IGihZWlqVvlPGXiMflRK
+	afv9kzhWkUJkQ/9Or02PYeeTHvYulSd4nWjSUNG4krXYbYX6bioypmMRZYvl6Jegt01t2fD6w7eWG
+	gcfkQUWRJgc9830eQ52KR8eWjKvytt6Y8/vMnWijoQcZd1n8T470YwXdPWv2o7wU0JwGJ4ONUZwCi
+	fBEjtQmw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x6Ub9-000000072dH-2SAV;
-	Tue, 15 Sep 2026 14:57:27 +0000
-Received: from galois.linutronix.de ([2a0a:51c0:0:12e:550::1])
+	id 1x6Ufn-000000073oB-1IPs;
+	Tue, 15 Sep 2026 15:02:17 +0000
+Received: from mail-qv1-xf33.google.com ([2607:f8b0:4864:20::f33])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x6Ub3-000000072ac-32Ur;
-	Tue, 15 Sep 2026 14:57:25 +0000
-Date: Tue, 15 Sep 2026 16:57:18 +0200
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linutronix.de;
-	s=2020; t=1789484239;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding;
-	bh=254R1arFeoToj39V4xt3wD6Cd/e86zUvnv4vHFoNiO8=;
-	b=CMxRiALKRyq1V0anX/6ckGE1/BYVlY9fL1HrNqPxF+rhX83P1p/qFKV4bWiUlU9UTMePxr
-	HzlLa9dzLTZcH25PTP5dqzuDisqVgjoTO/HivOoWmBbN/i+78iVHckmaa3Zg/MNXIrYKxM
-	TDTopVi1FbxNwr7k3Z1/KmX/58vPQC5SLzDhW1V3Q53a5Z176YzBvHkmZE9oH5tuM8RoPu
-	2re8k0NPE8tC3mOO/wVwfwx+0RcS2aX0OkNunxeVH9EIp/kAb/ZHlU/I1GyqZh3NmysbTg
-	vsw0bDc6EkpveHAS/raUcFqg6Ww2kHMnqGKir0+stdZKgWh/NNrgm4lCqPNSaw==
-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=linutronix.de;
-	s=2020e; t=1789484239;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding;
-	bh=254R1arFeoToj39V4xt3wD6Cd/e86zUvnv4vHFoNiO8=;
-	b=HWvLdMTcF+Vhh5bpLeoxnfSNe/H03Ev2y7ULP+pZoyAwB/q2HdfOaRc3o3cfsSOIIJg3e4
-	RkAgiAkQLZ7EddAg==
-From: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
-To: linux-media@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Cc: Matthias Brugger <matthias.bgg@gmail.com>,
+	id 1x6Ufh-000000073lj-3ZB1
+	for linux-mediatek@lists.infradead.org;
+	Tue, 15 Sep 2026 15:02:13 +0000
+Received: by mail-qv1-xf33.google.com with SMTP id 6a1803df08f44-90cd4631090so10464286d6.1
+        for <linux-mediatek@lists.infradead.org>; Tue, 15 Sep 2026 08:02:09 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=rowland.harvard.edu; s=google; t=1789484528; x=1790089328; darn=lists.infradead.org;
+        h=in-reply-to:content-disposition:content-type:mime-version
+         :references:message-id:subject:cc:to:from:date:from:to:cc:subject
+         :date:message-id:reply-to:content-type;
+        bh=62dnS9UB1nI/BR4/ltxJuhKZokBySflA5rnVbV11GGc=;
+        b=ftUT6xgnNpad1MmzbtZNsym4iBXCjcO4VvpJpTWFlbr/Bm5vY2TKizD3xbHiMPc4sh
+         oXCXQbz4IpHHRVvFDuplB4sRuMlsjejwxZYJzUVs0/PFjMrZQFTRhTJ+rRynTrD7UHhv
+         pfwuIB9gcnZy16b1uBB4AKB2+lur31ucY18DUxZxJZG3PwhgrLTOS3Ke0YfpLbr9qb+k
+         A6LS9mye2+/cBNnzfg94onGJxjOdl3SNbofvrdSaL7rtNtPYYrbwkhrUGsga6uOEB/jc
+         TjawdEZ2y5SlrccyXkYxcxg2aslRVBJSUFpxP3jM6cGOc8OjGDrLSoWVcCQoqGztk24a
+         sfag==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20260707; t=1789484528; x=1790089328;
+        h=in-reply-to:content-disposition:content-type:mime-version
+         :references:message-id:subject:cc:to:from:date:x-gm-gg
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+         :content-type;
+        bh=62dnS9UB1nI/BR4/ltxJuhKZokBySflA5rnVbV11GGc=;
+        b=bz8OSVgG7rRZEYJrp8tIYOJAnhSleAtE5VvKOH5j+95NDnVh3iyhGwcbUV4nt6Z0nb
+         wNcRtHaihfEMZwN0wb5gWhbyCjsMedFuSm5bVpybtJnZ52Ih7ZqZTyxA+LMUp6AjCLfZ
+         YZlBxKq1m6Tzd7tMi7MreXDbXG7i4HCnBmqxn3/prn249Zb2au2or/fXnkVomkUBH6Nv
+         5MvdwUk0NKecu5GLW84YYy6+MdnfhNXf/PMe0ELCtLlP6zzU9J3zMZwAzh4A2UPPZQ2z
+         1SdvUhx+brQppBw1Mfc9Opx0fYevBzwjPJdWkA7w1jhIrVMRyIgHDdYZU5PbN6UC12Kz
+         SsCw==
+X-Forwarded-Encrypted: i=1; AKwUvBzkF4YVjQkCYCJLGnr+B897TJKqzhsHVJLSXMScjZlrPNr3WfJSNdSjit2RqOXKbNjk+BNl/3QSsBmhrzp5uA==@lists.infradead.org
+X-Gm-Message-State: AFuF++mb6qQAle3kAY//VMjmSa6zTYxk7neOn6OZSO7B+G0Q3s/gNpbF
+	aagHTbHXGsgfXorMA4XJr3SJG+V6koGP1/ZR61lMfuHNuyciQ1A2mF5AMTVmCaib8A==
+X-Gm-Gg: AYBFou2IOFyJ1F/9YvproVn4QWUAdwXbP/B9wGmkQFeQcMZq3sU+0vwruTK08On5K/F
+	+ySPfvOzpgNc6HQT3SsnOOl3/rrFG4MZlHOIib4/H3fyAnuQzaiy2ANi0f42aRk1gSQGp3NqrIT
+	JGoXp3h13d5NkawHmlF/rN3qRP2vkocQbUueGeMiniPJKt8LaPp1PbDyEqVfvePEYp37Z0ZAhOq
+	1uGgO+dWDws/EenpwYpXDKfjvU4BBghpHFFk6K2UcCDFvfaARq3LHyZbahC+UV/gtDG4wWgITsO
+	zU5qMG54ETCsNaMDLTa4D6J55CeTZEXT9Kl5U0p9K+MxvQz/pSruIMpUT9y+FiERlWnX4hX4u3n
+	B8xMJ07XyKZ1hkUuMfMyeO/hsM2rXQP4ymsAJJO0wQZF4yK/kwngvoJRn952Tv67u0ugXZVbenY
+	vTmdEBy+sEcMdEKILCdmLTgbVJvHomAWI+2OV52rA4/XKHCR/d5X81Jf+nheizCkIu64No/HSOh
+	D7bVkWpX0c=
+X-Received: by 2002:ad4:5e8b:0:b0:8e9:cd74:87bb with SMTP id 6a1803df08f44-912343f272emr52165806d6.18.1789484526773;
+        Tue, 15 Sep 2026 08:02:06 -0700 (PDT)
+Received: from rowland.harvard.edu ([2601:19b:d01:d210::7544])
+        by smtp.gmail.com with ESMTPSA id 6a1803df08f44-9123bec51c7sm381356d6.38.2026.09.15.08.02.05
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 15 Sep 2026 08:02:06 -0700 (PDT)
+Date: Tue, 15 Sep 2026 11:02:03 -0400
+From: Alan Stern <stern@rowland.harvard.edu>
+To: Joshua Crofts <joshua.crofts1@gmail.com>
+Cc: Peter Chen <peter.chen@kernel.org>, Pawel Laszczak <pawell@cadence.com>,
+	Roger Quadros <rogerq@kernel.org>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	Mathias Nyman <mathias.nyman@intel.com>,
+	Chunfeng Yun <chunfeng.yun@mediatek.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Nicolas Dufresne <nicolas.dufresne@collabora.com>,
-	Johan Hovold <johan@kernel.org>,
-	Guangshuo Li <lgs201920130244@gmail.com>
-Subject: [BUG] mtk-mdp3: Crash during probe in mtk-mdp3
-Message-ID: <20260915145718.5D7Dsuwc@linutronix.de>
+	Heikki Krogerus <heikki.krogerus@linux.intel.com>,
+	linux-usb@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, stable@vger.kernel.org
+Subject: Re: [PATCH 1/6] usb: core: add missing
+ pm_runtime_dont_use_autosuspend() call
+Message-ID: <e2404a51-3480-4c93-8d31-6b796879ff6f@rowland.harvard.edu>
+References: <20260915090223.1346-1-joshua.crofts1@gmail.com>
+ <20260915090223.1346-2-joshua.crofts1@gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+In-Reply-To: <20260915090223.1346-2-joshua.crofts1@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260915_075721_909798_E86261CB 
-X-CRM114-Status: UNSURE (   6.05  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260915_080211_790740_5541A571 
+X-CRM114-Status: GOOD (  15.65  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,77 +111,35 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
+On Tue, Sep 15, 2026 at 09:02:18AM +0000, Joshua Crofts wrote:
+> The fail label in usb_new_device() disables pm_runtime on failure, but
+> doesn't call pm_runtime_dont_use_autosuspend(), causing resource leaks.
+> 
+> Add the missing pm_runtime_dont_use_autosuspend() call.
+> 
+> Found using Coccinelle.
+> 
+> Fixes: fcc4a01eb866 ("USB: use the runtime-PM autosuspend implementation")
+> Cc: <stable@vger.kernel.org>
+> Signed-off-by: Joshua Crofts <joshua.crofts1@gmail.com>
+> ---
+>  drivers/usb/core/hub.c | 1 +
+>  1 file changed, 1 insertion(+)
+> 
+> diff --git a/drivers/usb/core/hub.c b/drivers/usb/core/hub.c
+> index 3345b3298daf..dec6d5c49759 100644
+> --- a/drivers/usb/core/hub.c
+> +++ b/drivers/usb/core/hub.c
+> @@ -2745,6 +2745,7 @@ int usb_new_device(struct usb_device *udev)
+>  fail:
+>  	usb_set_device_state(udev, USB_STATE_NOTATTACHED);
+>  	pm_runtime_disable(&udev->dev);
+> +	pm_runtime_dont_use_autosuspend(&udev->dev);
+>  	pm_runtime_set_suspended(&udev->dev);
+>  	return err;
+>  }
+> -- 
+> 2.47.3
 
-On next-20260914 I saw:
-
-| mtk-mdp3 14001000.dma-controller: deferred probe timeout, ignoring depend=
-ency
-| Unable to handle kernel NULL pointer dereference at virtual address 00000=
-00000000019
-| Mem abort info:
-|   ESR =3D 0x0000000096000004
-|   EC =3D 0x25: DABT (current EL), IL =3D 32 bits
-|   SET =3D 0, FnV =3D 0
-|   EA =3D 0, S1PTW =3D 0
-|   FSC =3D 0x04: level 0 translation fault
-| Data abort info:
-|   ISV =3D 0, ISS =3D 0x00000004, ISS2 =3D 0x00000000
-|   CM =3D 0, WnR =3D 0, TnD =3D 0, TagAccess =3D 0
-|   GCS =3D 0, Overlay =3D 0, DirtyBit =3D 0
-| user pgtable: 4k pages, 48-bit VAs, pgdp=3D0000000110d36000
-| [0000000000000019] pgd=3D0000000000000000, p4d=3D0000000000000000
-| Internal error: Oops: 0000000096000004 [#1]  SMP
-| dwmac-mediatek 11021000.ethernet end0: renamed from eth0
-| Modules linked in: mtk_vcodec_dec_hw =E2=80=A6
-| CPU: 6 UID: 0 PID: 90 Comm: kworker/u32:1 Tainted: G        W           7=
-=2E3.0-rc3-next-20260914 #1 PREEMPT_{RT,(full)}
-| Tainted: [W]=3DWARN
-| Hardware name: MediaTek Genio 1200 EVK-P1V2-EMMC (DT)
-| Workqueue: events_unbound deferred_probe_work_func
-| pstate: 60400009 (nZCv daif +PAN -UAO -TCO -DIT -SSBS BTYPE=3D--)
-| pc : mtk_mutex_get+0xc/0x44 [mtk_mutex]
-| lr : mdp_probe+0x150/0x438 [mtk_mdp3]
-| sp : ffff8000837ebb30
-| x29: ffff8000837ebb30 x28: 0000000000000000 x27: 0000000000000000
-| x26: 000000000000000c x25: 000000000000000d x24: ffff0000c0de3410
-| x23: 0000000000000000 x22: ffff0000c0de3400 x21: 0000000000000000
-| x20: ffff0000d1e56800 x19: ffff0000d1e56800 x18: ffff8000826bfd18
-| x17: 3030303030303431 x16: 3a6d726f6674616c x15: 0000000000000058
-| x14: ffffffffffffffff x13: 0000000000000028 x12: 0101010101010101
-| x11: 7f7f7f7f7f7f7f7f x10: fefeff776473746c x9 : 0000000000000008
-| x8 : ffff0000c0864500 x7 : 0000000000000000 x6 : 0000000000000020
-| x5 : 0000000000000020 x4 : 0000000000000040 x3 : 0000000000000000
-| x2 : ffff80007b37d040 x1 : 0000000000000000 x0 : 0000000000000019
-| Call trace:
-|  mtk_mutex_get+0xc/0x44 [mtk_mutex] (P)
-|  platform_probe+0x5c/0xa4
-|  really_probe+0xbc/0x2c0
-|  __driver_probe_device+0x11c/0x184
-|  driver_probe_device+0x3c/0x114
-|  __device_attach_driver+0xb8/0x11c
-|  bus_for_each_drv+0x88/0xe8
-|  __device_attach+0xa0/0x190
-|  device_initial_probe+0x50/0x54
-|  bus_probe_device+0x38/0xac
-|  deferred_probe_work_func+0x90/0xc8
-|  process_one_work+0x188/0x4f8
-|  worker_thread+0x18c/0x308
-|  kthread+0x130/0x140
-|  ret_from_fork+0x10/0x20
-| Code: ???????? f9403c03 52800001 91006460 (39400002)
-| ---[ end trace 0000000000000000 ]---
-
-That report ist from
-	https://dashboard.kernelci.org/test/maestro%3A6aa88a0d20239ade9037b72f
-	https://files.kernelci.org/rt-tests-cyclictest-6aa88a0d20239ade9037b72f/lo=
-g.txt.gz
-
-This is also visible on 7.3.0-rc3:
-	https://files.kernelci.org/rt-tests-cyclictest-6aa84e3720239ade90364e29/lo=
-g.txt.gz
-
-Could someone please take a look, I don't have the hardware myself.
-
-Sebastian
+Acked-by: Alan Stern <stern@rowland.harvard.edu>
 
