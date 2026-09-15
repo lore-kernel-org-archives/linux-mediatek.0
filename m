@@ -4,80 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 546A9C88E77
-	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Sep 2026 11:43:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2AA4AC88E5C
+	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Sep 2026 12:09:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=/jDea6QT7XDZNpWlJafqLaYmjAarXqVXfLvltQxqSsU=; b=ud0NFG/LaKq8GFFadPqnIwRswM
-	MLx1ZDVl9K6RXXf7AT1O9oxlubCEVvWo5izZo6yzte0sWrbBWd8wrj3aindPY/TOOiDmd4/THxurg
-	H6EukVwWrjbyX2UgoTTTl3uSacE+Eiq7TXex5/IM9PLw4+jjb2gEj+JrR2kvnigHf6lZ73OCP82Mk
-	APnVHLUdM/J1LDOsXkNK8fbc5FyP3Ye7l5udPhGDTdoXRRufBkb4OjdxGZCq0vIttQsuJTSfxt/Io
-	X17SJOMp2DrJbEbmYxYMSfi+0xxATYHMxnWVwvolsmZ+GXAIUImW7Y7z/UUhEirJvz7JsInW6+d5e
-	S7YZCLcw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=HSYim5Wxi1PvEp4JVMuAVhAZ3OFAwfBLwHxEX4lM0DY=; b=2+2OTVbunxcotkFmO/hR7RkOWm
+	XKwX6NarOfdvJddto55DOPQZ53eYiqdhLubfTf2GuCcE5eu6daR1yICdsE9GTDNI37H2/GyOsYB1N
+	vGgtxLxca68P71jqCRxAsLiTasjcVfqHHkYqya0jUZj33jMw6vH+NlYKJK6huNHSNiQghgHzqbpAU
+	Dgs/xjXxFqisSWGxa0Y27ihR3ldPNZKTgI7q9jvMe3QPIGUUP9//+1hQpnKnzW4fNXH+XtCsqJ2ko
+	dbKvAHXVh8bh5ifip/BK147+CkC9JEjYF6blJpnKXiesqzVT7YiJV3KfRz9NPrphBGaW3mbi4vmdW
+	bmFk5CLg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x6o2X-000000096LL-001E;
-	Wed, 16 Sep 2026 11:43:01 +0000
+	id 1x6oRh-000000098f8-42he;
+	Wed, 16 Sep 2026 12:09:01 +0000
 Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x6o2V-000000096L1-2Ooy;
-	Wed, 16 Sep 2026 11:42:59 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id E81EA43C4C;
-	Wed, 16 Sep 2026 11:42:58 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id BF9DFC2BCB9;
-	Wed, 16 Sep 2026 11:42:58 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1789558978;
-	bh=2Mw0UYhkPwOelAjKAtaWqRpuJeZGpm+KZh1S53AlCb8=;
-	h=From:Date:Subject:To:Cc:Reply-To:From;
-	b=kNrE6Yav6mYlwEQYXSU9AUQaWn9TGkSwHRPX4vobJoPMw/tmU9Vgkt8BBwsrlDekM
-	 HAgiudLMv+8tslEFlSftOzJLvJ5S0bLCKo4v3pKXspheiznp4tult+7O4ed9456rFR
-	 839zQNR9PvS1Y5Vw7xE2xwuUpGqlkUrEbO6e1XlNrK3j8aEnr8uioH4PuUI+DCgwVr
-	 HLwhPnVedMzWD4J2RTE78oGoUWKlZlsde04kIMJ1giv/nBUEUPxCwufVQQMTYjNgF1
-	 APw1Rc4dv1U1LepuBuU4sG03ZyJEfGCEo/7yJC08CdxIDMqynikpG770sta39u4Voq
-	 Sh4NIfuUI7HFA==
-Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 9DF81C88E7D;
-	Wed, 16 Sep 2026 11:42:58 +0000 (UTC)
-From: Roman Vivchar via B4 Relay <devnull+rva333.protonmail.com@kernel.org>
-Date: Wed, 16 Sep 2026 14:42:35 +0300
-Subject: [PATCH] dt-bindings: iio: adc: mediatek,mt2701-auxadc: add mt6572
+	id 1x6oRg-000000098eB-0ahS;
+	Wed, 16 Sep 2026 12:09:00 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by sea.source.kernel.org (Postfix) with ESMTP id 8620743B46;
+	Wed, 16 Sep 2026 12:08:59 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id EFD1C1F000FF;
+	Wed, 16 Sep 2026 12:08:54 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1789560539;
+	bh=HSYim5Wxi1PvEp4JVMuAVhAZ3OFAwfBLwHxEX4lM0DY=;
+	h=From:To:Cc:In-Reply-To:References:Subject:Date;
+	b=UInVsfQ6krE0FNJY5UUARa6DiUpRAySntdgO4ZVZj5o2/6rWF9kh5/JFk5VKetz+6
+	 nufkt9N7nc6DcjrICjgjPGDG8ba4gMzLDQtpOk30asoDM/0F0KGup5nOO8dGmPGfd9
+	 zJdaqUZr/S8dIqdLk/95Gtio+yOo9pKnSfF5nBy7n0JBNKD5CRgDcea0jpgJDDyLBe
+	 7+zQGGvl4Y/2cszG5lGr1lyVennQcglpeTyZj70igNO4+560odvmqd5xdEQZxm9/yG
+	 MWKavfwzoLfy8rbBnxVZN+HIG9YTrhcttbL4A7QvYQ67s7/+aKdrQf2WgaJeAxHBJV
+	 u5CFDyVM1dceQ==
+From: Mark Brown <broonie@kernel.org>
+To: Liam Girdwood <lgirdwood@gmail.com>, 
+ Pengpeng Hou <pengpeng@iscas.ac.cn>
+Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Baojun Xu <baojun.xu@ti.com>, 
+ =?utf-8?q?C=C3=A1ssio_Gabriel?= <cassiogabrielcontato@gmail.com>, 
+ Cyril Chao <cyril.chao@mediatek.com>, Darren Ye <darren.ye@mediatek.com>, 
+ David Rhodes <david.rhodes@cirrus.com>, Kevin Lu <kevin-lu@ti.com>, 
+ Kuninori Morimoto <kuninori.morimoto.gx@renesas.com>, 
+ Lars-Peter Clausen <lars@metafoo.de>, linux-arm-kernel@lists.infradead.org, 
+ linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, 
+ linux-mips@vger.kernel.org, linux-sound@vger.kernel.org, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ =?utf-8?q?Nuno_S=C3=A1?= <nuno.sa@analog.com>, 
+ patches@opensource.cirrus.com, Paul Cercueil <paul@crapouillou.net>, 
+ Jaroslav Kysela <perex@perex.cz>, 
+ Richard Fitzgerald <rf@opensource.cirrus.com>, Sen Wang <sen@ti.com>, 
+ Shenghao Ding <shenghao-ding@ti.com>, Takashi Iwai <tiwai@suse.com>
+In-Reply-To: <20260828113416.47061-1-pengpeng@iscas.ac.cn>
+References: <20260828113416.47061-1-pengpeng@iscas.ac.cn>
+Subject: Re: (subset) [PATCH 00/20] ASoC: propagate register restore
+ failures
+Message-Id: <178949144504.151760.12464142695639435377.b4-ty@b4>
+Date: Tue, 15 Sep 2026 17:57:25 +0100
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20260916-6572-dt-auxadc-v1-1-e8190d614c33@protonmail.com>
-X-B4-Tracking: v=1; b=H4sIAAAAAAAC/yXMMQ6DMAxA0asgz1gKJk0RV0EMIXFadwCUAEJC3
- J1Axzf8f0DiKJygLQ6IvEmSacyoygLc144fRvHZQIqMaiqN5vUm9AvadbfeIRsfSNmhJt1Ajub
- IQfZn2PV/p3X4sVvuC5znBTiodohyAAAA
-X-Change-ID: 20260814-6572-dt-auxadc-e6df20ab3248
-To: Jonathan Cameron <jic23@kernel.org>, 
- David Lechner <dlechner@baylibre.com>, 
- =?utf-8?q?Nuno_S=C3=A1?= <nuno.sa@analog.com>, 
- Andy Shevchenko <andy@kernel.org>, Rob Herring <robh@kernel.org>, 
- Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Zhiyong Tao <zhiyong.tao@mediatek.com>
-Cc: linux-iio@vger.kernel.org, devicetree@vger.kernel.org, 
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, Roman Vivchar <rva333@protonmail.com>
-X-Mailer: b4 0.15.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1789558977; l=1058;
- i=rva333@protonmail.com; s=20260510; h=from:subject:message-id;
- bh=RZDlKUe7DkcNemzM8RoN8vGwJ99E8wZHTiCH/d1P1qc=;
- b=sAqCN+D1D/bp0wpWn6DIoDT5q9AaznJfEIUcDQ7I9fdG5FPPYC5pfDjIC9wSL6V3bOBTnmb/7
- hqK+o78k6yxDozFO2zoTZfpaH3rmXvvXlR9HVzsEf2JetXl9yHjHDHS
-X-Developer-Key: i=rva333@protonmail.com; a=ed25519;
- pk=zww/nWjBGoQ4POXCG0BV6fx2iuXK6jx77rsKPA5YK5Y=
-X-Endpoint-Received: by B4 Relay for rva333@protonmail.com/20260510 with
- auth_id=777
-X-Original-From: Roman Vivchar <rva333@protonmail.com>
+X-Mailer: b4 0.17-dev
+X-Developer-Signature: v=1; a=openpgp-sha256; l=3614; i=broonie@kernel.org;
+ h=from:subject:message-id; bh=d+riWkzY7q0D6HM2ci+jcWpLhyoHJWVEnRYlfZf/RNY=;
+ b=owEBbQGS/pANAwAKASTWi3JdVIfQAcsmYgBqqobUqaQMsTSfvXw5SOzhPOjjf49lajDtxY70q
+ bjt1LzvU2eJATMEAAEKAB0WIQSt5miqZ1cYtZ/in+ok1otyXVSH0AUCaqqG1AAKCRAk1otyXVSH
+ 0JwAB/4qX2VCeUFhY26zn+oKpD/Z2FRkfF5QuhC418CZ9p4F5gLsSZJzpAqnUeSLWh6eX73u3xL
+ zzsmCliChrB4KPQ6kn0A02V87HZxC2LIuwi8D5GXPjtiqiujVztKUdAjTdkCA8/L8S/UUSofek6
+ U+nFLSsGhKyGlYM09dbKt3u7sAWDD+znHNxYoAp2V5rJOp8WJnY56qzDR6dblNGSsJVzBlQqU6P
+ kzI1glDOfv5zqLcz8/4BKkbU5Pz7UzgiJqBzfS02j+MSAvAnT3UqdfAYrszSKUz7wWLIFEs8nlh
+ NN0+KQHdQrXdlQh8mHDeBrlCKSKrcbjmYO96Rey1XEGJslbI
+X-Developer-Key: i=broonie@kernel.org; a=openpgp;
+ fpr=3F2568AAC26998F9E813A1C5C3F436CA30F5D8EB
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,40 +91,80 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Reply-To: rva333@protonmail.com
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Roman Vivchar <rva333@protonmail.com>
+On Fri, 28 Aug 2026 19:33:55 +0800, Pengpeng Hou wrote:
+> ASoC: propagate register restore failures
+> 
+> Several ASoC codec and AFE power transitions restore cached register state
+> after reset or power loss.  The callbacks in this series all have an effective
+> error consumer: component probe or hw_params, DAPM bias handling, device
+> runtime PM, or system PM.  They currently continue or publish success after a
+> required register operation failed.
+> 
+> [...]
 
-Add a compatible string for the mt6572 AUXADC, that is compatible with
-mt8173 IP.
+Applied to
 
-Signed-off-by: Roman Vivchar <rva333@protonmail.com>
----
- Documentation/devicetree/bindings/iio/adc/mediatek,mt2701-auxadc.yaml | 1 +
- 1 file changed, 1 insertion(+)
+   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-7.4
 
-diff --git a/Documentation/devicetree/bindings/iio/adc/mediatek,mt2701-auxadc.yaml b/Documentation/devicetree/bindings/iio/adc/mediatek,mt2701-auxadc.yaml
-index d9e825e5054f..750e1e837fb8 100644
---- a/Documentation/devicetree/bindings/iio/adc/mediatek,mt2701-auxadc.yaml
-+++ b/Documentation/devicetree/bindings/iio/adc/mediatek,mt2701-auxadc.yaml
-@@ -38,6 +38,7 @@ properties:
-           - const: mediatek,mt7986-auxadc
-       - items:
-           - enum:
-+              - mediatek,mt6572-auxadc
-               - mediatek,mt6893-auxadc
-               - mediatek,mt8183-auxadc
-               - mediatek,mt8186-auxadc
+Thanks!
 
----
-base-commit: 8cd9520d35a6c38db6567e97dd93b1f11f185dc6
-change-id: 20260814-6572-dt-auxadc-e6df20ab3248
+[01/20] ASoC: adau1372: Unwind failed power restoration
+        https://git.kernel.org/broonie/sound/c/affb75ebf9ae
+[02/20] ASoC: adau1701: Propagate register cache replay errors
+        https://git.kernel.org/broonie/sound/c/6194ceba5dac
+[03/20] ASoC: cs35l56: Propagate register restore errors from runtime resume
+        https://git.kernel.org/broonie/sound/c/adf7e9a1f508
+[04/20] ASoC: cs42l42: Propagate system resume restore errors
+        https://git.kernel.org/broonie/sound/c/68cbe8933835
+[05/20] ASoC: es9356: Publish IRQ readiness after cache replay
+        https://git.kernel.org/broonie/sound/c/31a717842535
+[06/20] ASoC: jz4740: Propagate codec wake-up errors
+        https://git.kernel.org/broonie/sound/c/c826c897a330
+[07/20] ASoC: max98088: Propagate cache replay errors from bias restore
+        https://git.kernel.org/broonie/sound/c/11e145401b68
+[08/20] ASoC: ssm2518: Unwind failed power restoration
+        https://git.kernel.org/broonie/sound/c/6b4330d590a2
+[09/20] ASoC: ssm4567: Unwind failed power restoration
+        https://git.kernel.org/broonie/sound/c/4406319f7f52
+[10/20] ASoC: tlv320aic3x: Propagate power restoration errors
+        https://git.kernel.org/broonie/sound/c/1621a23dd164
+[11/20] ASoC: wm8731: Unwind supplies on cache replay failure
+        https://git.kernel.org/broonie/sound/c/f7c28c42085b
+[12/20] ASoC: wm8770: Unwind supplies on cache replay failure
+        https://git.kernel.org/broonie/sound/c/fcfcb17039d9
+[13/20] ASoC: wm8804: Propagate cache replay errors from runtime resume
+        https://git.kernel.org/broonie/sound/c/a4de439e78dc
+[14/20] ASoC: wm8904: Unwind resources on cache replay failure
+        https://git.kernel.org/broonie/sound/c/4da4cb28883d
+[15/20] ASoC: wm8985: Unwind supplies on cache replay failure
+        https://git.kernel.org/broonie/sound/c/76f9631fa81b
+[16/20] ASoC: wm8991: Propagate cache replay errors from bias restore
+        https://git.kernel.org/broonie/sound/c/745f64b9335b
+[17/20] ASoC: wm8993: Unwind supplies on cache replay failure
+        https://git.kernel.org/broonie/sound/c/7784ba385367
+[18/20] ASoC: wm8996: Unwind supplies on cache replay failure
+        https://git.kernel.org/broonie/sound/c/8fe60034e163
 
-Best regards,
---  
-Roman Vivchar <rva333@protonmail.com>
+All being well this means that it will be integrated into the linux-next
+tree (usually sometime in the next 24 hours) and sent to Linus during
+the next merge window (or sooner if it is a bug fix), however if
+problems are discovered then the patch may be dropped or reverted.
 
+You may get further e-mails resulting from automated or manual testing
+and review of the tree, please engage with people reporting problems and
+send followup patches addressing any issues that are reported if needed.
+
+If any updates are required or you are submitting further changes they
+should be sent as incremental updates against current git, existing
+patches will not be replaced.
+
+Please add any relevant lists and maintainers to the CCs when replying
+to this mail.
+
+Thanks,
+Mark
 
 
