@@ -4,72 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BC2EAC88E53
-	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Sep 2026 04:44:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AFD60C88E53
+	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Sep 2026 05:27:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=R17raKv3A7dRbP0Z0IS8IcCAkKFbNj8l0X/n53cwErk=; b=KPvtDj92hhZDzBvXqergOPdm+f
-	Xaqua1Pg3t5/cK27at/z96hzyCPhdofYeXPUkBNDAoQ9tc9gZ9Y5ik7UMpwiK/DaF2/JB83g+TDZ7
-	UsJS1zLoTX/qWER+Auwq1orDyzq7gkkGGQ42g5QcMt8W6MRiIeANlSAfUcMQir+BC/rxeD3yAO5BF
-	7MSLmCxkri7kFX1F4ezcb9yf1HIpNm9kkL03lCE5VB6g/OxmaITbrsmsIvNJh7C19mfDEvegV2XEN
-	rx/2syBWwo+xKktxu8ZELTEeyqaVBz+620pS5eWaEmqGnfhrjGudodbjNIpmUWuiz5wljc44zvgrI
-	kLdE/GQA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=33cVQ5J4yhsyUS8HwbCV24xkwsxQdh7bjkPhas/popg=; b=aJ+fSbxg1uKeq29SVd0syJ7Tt7
+	FWx2WVMAjUc/C8Pyk970czj1wc/bn41GzFlFdG3T8GXJZkdhLmkdh1yOch6lrViqqgnGxakXjfn48
+	npnhVD4qO7mYdz3XpHAUA1QWur9MgSQNCJsKOQIK5yZDcoREuHCtBKiJu/0Cfeh2RrOu8XeSqrRDI
+	mpkqfvc0aLHSX4du0bwPK7jRqraGm49L+7SMIzsO/cQnc/vU4ilGcbjUMJVovRbvJA8cIZOQxu0yT
+	wN6lIuDWaVPIti9h4WJiK0LanMLDwFXeD41877qB2P7xlmcBxkQ14oLEXLoLJI6CrOCZDatET1Zle
+	cRrh0u3w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x6L1X-00000005Ci9-11oV;
-	Tue, 15 Sep 2026 04:44:03 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1x6LhH-00000005F6s-1ufQ;
+	Tue, 15 Sep 2026 05:27:11 +0000
+Received: from [216.200.240.185] (helo=mailgw02.mediatek.com)
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x6L1V-00000005Chh-3Cpe;
-	Tue, 15 Sep 2026 04:44:01 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
-	:MIME-Version:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:Content-ID:
-	Content-Description:In-Reply-To:References;
-	bh=R17raKv3A7dRbP0Z0IS8IcCAkKFbNj8l0X/n53cwErk=; b=Fejze0j+SE4/cndYjFxdg4IOzM
-	WUgfnycJcmEIBwAejWLcqVpKYQnfDPsWHRRvQVjXG7QdIMvqnE+W/pokid6PqE0vnMqQiaGKYb3hu
-	rYFTQERPr6VNTb0tn1PV2WAOpGVlQ84QJQG1lpsi+bkY9VED8ppaIFY26FFOEuDmU6qd5Xkjz8Tkn
-	VYTmoa0ttWfx9GgA/CyTmta9/HPOd3x6niaZEqs6DtNePgW+6mKVqdE3IwVNpTIYSUwb+PnezxTER
-	N1uO5clI0D51/UYl6tG0JFm6r6mo5VOSPXRKp0Fnr0rEq3D0bHcSCL9ZZJ31SQH6RAMMj8VIB7Bad
-	QRg/rvdA==;
-Received: from mail.mdapi.ch ([31.3.128.54])
-	by desiato.infradead.org with esmtps (Exim 4.99.2 #2 (Red Hat Linux))
-	id 1x6L0l-00000006Gbm-1EAr;
-	Tue, 15 Sep 2026 04:43:58 +0000
-From: Martino Dell'Ambrogio <tillo@tillo.ch>
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=tillo.ch; s=mail202603;
-	t=1789447383;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding;
-	bh=R17raKv3A7dRbP0Z0IS8IcCAkKFbNj8l0X/n53cwErk=;
-	b=OuSbTTxeQeoVaSq50k3p04BeRq+7cMcJ0MvPJa0qOXiCzU3MJVtd+1bfodzWQfmfQqSjqY
-	qyvXMojZFVSTC2VhK2xjejCpSE8wi5tEA3yrGa3jTzqc2bv2YHNyXjKJe0prFuibH0Gc1o
-	XoPH8gpNaxsEZfVhCxbEipAishcwGSS2iqNv9wvrNZgzBJQlEDzIA8AzJvATBc2m4EyVEp
-	M0aQhmfexP4p46trWHu9WZW+R6jqGMGsjRZa6Yc06rTuqjJBfMBZV2ZwEWkeYyWJS/z+Eb
-	zRBupS6VDq0EnaFl/RL4l30rY6daSiSGAlhS1Y8D7/DTYuraPrjfsQFlQFScWw==
-To: Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: linux-mediatek@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org,
-	devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	kees@kernel.org,
-	tony.luck@intel.com,
-	gpiccoli@igalia.com
-Subject: [PATCH v3] arm64: dts: mediatek: mt7986a-bananapi-bpi-r3: add ramoops region
-Date: Tue, 15 Sep 2026 06:43:02 +0200
-Message-ID: <20260915064302.1595204-1-tillo@tillo.ch>
+	id 1x6LhE-00000005F5u-3Jnk
+	for linux-mediatek@lists.infradead.org;
+	Tue, 15 Sep 2026 05:27:09 +0000
+X-UUID: 13b54776b0c611f1acbe4559397dec65-20260914
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=33cVQ5J4yhsyUS8HwbCV24xkwsxQdh7bjkPhas/popg=;
+	b=qCy8PznXjGVLGKiXuDTyHM1puJ33Jsr/CmFjwBaGPKjH9bj/hsSBFT1XWvDrd1fX9oNDxaRHA9tdPo7CUbcudBy13wkguzZ8eRaD5zSkBzQw7yq9aGB57luPbQjgFwJ+ljZnfRGG3PNWCenYaB8PMYmgwnWL7fQfFC+CMh93hBE=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.3.19,REQID:8ae78f1b-920e-4047-8213-2028251c4913,IP:0,U
+	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
+	:release,TS:-5
+X-CID-META: VersionHash:7db8b62,CLOUDID:f67dd9e2-72a5-4ba1-af40-18bbd6ea8ffd,B
+	ulkID:nil,BulkQuantity:0,SF:102|123|836|865|888|898,TC:-5,Content:0|15|50|
+	99,EDM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:-1,COL:0,OSI:0,OS
+	A:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 2,SSN|SDN
+X-CID-BAS: 2,SSN|SDN,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
+X-UUID: 13b54776b0c611f1acbe4559397dec65-20260914
+Received: from mtkmbs09n2.mediatek.inc [(172.21.101.94)] by mailgw02.mediatek.com
+	(envelope-from <alice.chao@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1712032148; Mon, 14 Sep 2026 22:27:00 -0700
+Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
+ MTKMBS09N2.mediatek.inc (172.21.101.94) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.2562.29; Tue, 15 Sep 2026 13:26:58 +0800
+Received: from mtksitap99.mediatek.inc (10.233.130.16) by
+ mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.2562.29 via Frontend Transport; Tue, 15 Sep 2026 13:26:58 +0800
+From: <alice.chao@mediatek.com>
+To: <stable@vger.kernel.org>
+CC: <linux-scsi@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+	<martin.petersen@oracle.com>, <James.Bottomley@HansenPartnership.com>,
+	<bvanassche@acm.org>, <avri.altman@sandisk.com>, <alim.akhtar@samsung.com>,
+	<wsd_upstream@mediatek.com>, <linux-mediatek@lists.infradead.org>,
+	<peter.wang@mediatek.com>, <chun-hung.wu@mediatek.com>,
+	<alice.chao@mediatek.com>, <cc.chou@mediatek.com>,
+	<chaotian.jing@mediatek.com>, <tun-yu.yu@mediatek.com>,
+	<naomi.chu@mediatek.com>, <ed.tsai@mediatek.com>
+Subject: [PATCH 6.18.y] scsi: ufs: core: Re-arm the device command completion before submitting
+Date: Tue, 15 Sep 2026 13:26:37 +0800
+Message-ID: <20260915052638.459390-1-alice.chao@mediatek.com>
+X-Mailer: git-send-email 2.45.2
 MIME-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260915_054330_968706_F88E2F3C 
-X-CRM114-Status: GOOD (  14.00  )
+X-CRM114-CacheID: sfid-20260914_222708_848452_66AA2DCB 
+X-CRM114-Status: GOOD (  16.91  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,77 +90,115 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Reserve 64 KiB of RAM just below the ARM Trusted Firmware secmon region
-(0x42ff0000-0x43000000) for persistent kernel log storage via pstore/ramoops,
-allowing post-panic console output and oops dumps to be recovered after a
-warm reset. Without it, kernel crash logs on this board are lost when the
-SoC reboots.
+From: Alice Chao <alice.chao@mediatek.com>
 
-The zone sizes (record-size=8 KiB, console-size=32 KiB, ftrace-size=8 KiB,
-pmsg-size=8 KiB) consume the full 64 KiB carve-out. The requested ecc-size=16
-reserves a small Reed-Solomon parity block from each zone's own allocation
-in persistent_ram_new(), which lets pstore recover dumps even when the panic
-path truncates writes mid-record.
+Commit 20b97acc4caf ("scsi: ufs: core: Fix a race condition related to
+device commands") moved the device management command completion into
+struct ufs_hba, initialized once by ufshcd_init(), and dropped the
 
-The no-map property is required so the reserved region is kept out of the
-kernel linear map. ramoops remaps the carve-out write-combine via
-ioremap_wc(); on arm64, leaving the same physical RAM mapped cacheable in
-the linear map at the same time is an attribute-mismatch and risks losing
-panic data to dirty cache evictions from the linear alias.
+	hba->dev_cmd.complete = NULL;
 
-The region sits immediately below the ATF block already declared at
-0x43000000 in mt7986a.dtsi, so no other reserved-memory child is moved or
-resized. BPI-R3 ships with 2 GiB of DRAM starting at 0x40000000, well above
-0x43000000, so the region is always within installed memory.
+assignments that used to make ufshcd_compl_one_cqe() discard completions
+the submitter had already given up on. Nothing replaced them, so the
+completion is never reset between two device commands:
 
-For the carve-out to actually preserve content across a reset, the boot
-loader must avoid touching this region on warm reset; on standard BPI-R3
-boards with the stock OpenWrt U-Boot fork this already holds.
+  Task A (device command submitter) IRQ (tag == hba->reserved_slot)
+  --------------------------------- ------------------------------
+  ufshcd_read_desc_param()
+   ufshcd_query_descriptor_retry()
+    __ufshcd_query_descriptor()
+     ufshcd_exec_dev_cmd()
+      ufshcd_issue_dev_cmd()
+       ufshcd_send_command()
+       ufshcd_wait_for_dev_cmd()
+        wait_for_completion_timeout()
+        /* times out, done == 0 */
+        ufshcd_clear_cmd()
+        /* returns 0, no effect */
+       return -EAGAIN
+                                    ufs_mtk_mcq_intr()
+                                     ufshcd_mcq_poll_cqe_lock()
+                                      ufshcd_mcq_process_cqe()
+                                       ufshcd_compl_one_cqe()
+                                        /* lrbp->cmd == NULL */
+                                        complete(&hba->dev_cmd.complete)
+                                        /* done: 0 -> 1 */
+  ufshcd_query_attr_retry()
+   ufshcd_query_attr()
+    ufshcd_exec_dev_cmd()
+     ufshcd_issue_dev_cmd()
+      ufshcd_send_command()
+      ufshcd_wait_for_dev_cmd()
+       wait_for_completion_timeout()
+       /* returns at once, done: 1 -> 0 */
+       ufshcd_dev_cmd_completion()
+       /* response UPIU not written yet */
+       return -EINVAL
 
-Signed-off-by: Martino Dell'Ambrogio <tillo@tillo.ch>
+Task A then rejects what it reads out of the response UPIU:
+
+  ufshcd_dev_cmd_completion: Invalid device management cmd response: 0
+  ufshcd_dev_cmd_completion: unexpected response in Query RSP: ff
+
+The skew does not self-correct. On a UFS 4.0 controller in MCQ mode it
+persisted across more than a thousand consecutive device commands,
+failing every descriptor and attribute read until the link was reset.
+
+The controller can still complete the timed-out command because in MCQ
+mode ufshcd_clear_cmd() only issues an SQ cleanup (SQRTC.ICU), which
+shows the command left the submission queue but not that a CQE is not
+already posted. The MCQ path also skips the hba->outstanding_reqs
+re-check that the SDB path does, so it returns -EAGAIN with the
+completion still armed.
+
+Re-arm the completion in ufshcd_issue_dev_cmd(), immediately before
+submitting. All submitters - ufshcd_exec_dev_cmd(),
+ufshcd_issue_devman_upiu_cmd() and ufshcd_advanced_rpmb_op() - reach it
+holding hba->dev_cmd.lock, so no extra serialization is needed.
+
+This narrows the window rather than closing it: the CQE only carries the
+tag and every device command uses hba->reserved_slot, so a late
+completion is still indistinguishable from the expected one. It no
+longer spans the idle time between two commands.
+
+No mainline commit: commit 08b12cda6c44 ("scsi: ufs: core: Switch to
+scsi_get_internal_cmd()") moved this path onto the block layer and
+removed struct ufs_dev_cmd::complete and ufshcd_wait_for_dev_cmd(). Each
+device command now waits on its own request via blk_execute_rq(), so
+mainline has no shared completion to skew. That refactor is not a
+reasonable stable backport; this is the minimal alternative.
+
+Affected versions: v6.15 through v6.18, i.e. the kernels that carry the
+commit named in the Fixes: tag but not the mainline rewrite above.
+
+Fixes: 20b97acc4caf ("scsi: ufs: core: Fix a race condition related to device commands")
+Cc: stable@vger.kernel.org
+Signed-off-by: Alice Chao <alice.chao@mediatek.com>
 ---
-Changes in v3:
- - Resend; no functional change. Rebased on v7.3-rc3, where the v2 diff
-   still applies unmodified.
- - v2 drew no review comments. It was also sent, in error, as a reply to
-   the BPI-R4 patch's thread rather than its own, so it is likely to have
-   been read as a duplicate of that board's patch. This version starts a
-   fresh thread to avoid repeating that.
+ drivers/ufs/core/ufshcd.c | 9 +++++++++
+ 1 file changed, 9 insertions(+)
 
-The matching BPI-R4 (mt7988a) patch is being resent as v3 at the same time.
-
-v2: https://lore.kernel.org/all/20260528123655.2650868-1-tillo@tillo.ch/
-v1: https://lore.kernel.org/all/20260528093038.1945245-1-tillo@tillo.ch/
-
- .../boot/dts/mediatek/mt7986a-bananapi-bpi-r3.dts   | 13 +++++++++++++
- 1 file changed, 13 insertions(+)
-
-diff --git a/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3.dts b/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3.dts
-index 637e556..322a12d 100644
---- a/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3.dts
-+++ b/arch/arm64/boot/dts/mediatek/mt7986a-bananapi-bpi-r3.dts
-@@ -142,6 +142,19 @@
- 	};
- };
+diff --git a/drivers/ufs/core/ufshcd.c b/drivers/ufs/core/ufshcd.c
+index 87578e8824d2..003fa8af4f4d 100644
+--- a/drivers/ufs/core/ufshcd.c
++++ b/drivers/ufs/core/ufshcd.c
+@@ -3312,6 +3312,15 @@ static int ufshcd_issue_dev_cmd(struct ufs_hba *hba, struct ufshcd_lrb *lrbp,
+ {
+ 	int err;
  
-+&{/reserved-memory} {
-+	ramoops@42ff0000 {
-+		compatible = "ramoops";
-+		reg = <0 0x42ff0000 0 0x10000>;
-+		no-map;
-+		record-size = <0x2000>;
-+		console-size = <0x8000>;
-+		ftrace-size = <0x2000>;
-+		pmsg-size = <0x2000>;
-+		ecc-size = <16>;
-+	};
-+};
++	/*
++	 * A device command that timed out may still be completed by the
++	 * controller later on. hba->dev_cmd.complete is shared by all device
++	 * commands, so re-arm it here, immediately before submitting, to keep
++	 * such a late completion from being mistaken for the completion of
++	 * this command.
++	 */
++	reinit_completion(&hba->dev_cmd.complete);
 +
- &cpu_thermal {
- 	cooling-maps {
- 		map-cpu-active-high {
+ 	ufshcd_add_query_upiu_trace(hba, UFS_QUERY_SEND, lrbp->ucd_req_ptr);
+ 	ufshcd_send_command(hba, tag, hba->dev_cmd_queue);
+ 	err = ufshcd_wait_for_dev_cmd(hba, lrbp, timeout);
 -- 
-2.47.3
-
+2.45.2
 
 
