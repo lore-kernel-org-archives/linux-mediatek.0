@@ -4,87 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0AF4FC88E75
-	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Sep 2026 12:38:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5DB85C88E75
+	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Sep 2026 12:38:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:To:From:Reply-To:
 	Cc:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=EBth4tRMg8GOGvhksLcEkRFTz5ARAzMlbCo5jt8vu2Q=; b=fDEUVnBIleW7HbBrlGhBnhCLIA
-	C4dJdLdB3hhjBWg0yyqsAbllEoS5otWk5ljyyN1shXG2iL0AW3uRi3nC8JenDAJnyQAiIn4oyOrV1
-	UkEcAHpoFc2jKXAG5Hw+uy5xh8B1WGFd50QdfO8xTtD3vW5NbNU2p1RrgqGgc1sTlCsOLdKhza7nn
-	LCRXabAadhWjmbYvQ0XakYVMLX2/bFYRqBn4a/cKg+D+TAyBIu4npmw2dtXAyvaV9YZk3cN8jeIfI
-	E1GPkcZ7a8XlXfAMmq8SEzkAxL2iaTYzd12KC+rwAtmn6ffzAnpuYUVzE9DPXBJHKdBp17ClnAOyu
-	EeYH8olw==;
+	bh=mBJHZiui6LC0ZFroetycbP9gbMZ7hcwLvF2peu3oVkk=; b=TGT1jQ9BPKaCqswe+IGIFOy7mZ
+	qC8KiA3ZbI3g5LEeHmwV+akeRQ3Fe0lxtJ/N0MInlOjUlTWmXVGWpuo/yQFDC348wiVhHS4vDYXON
+	zTF/dZwDlV4S7h8f79JaRs6fAemMouVGqaadDhjJuOSEhbSAilH0kztFcb14KZpdOlj/zC3zD5qC0
+	YBVKFqWx5XYXnnfTDiiJBIEcl3FLNaoXYzRMWwN1TNcwi8eS4t+03GgIJz3OtjcQxnFN5pty4GX+g
+	lMF0uG/ISeQanbUjfEl2xzBGgmCR55LmVqmSIXC70xRdCfhzLJdBc9gX7/YIGyWJ4V6gtCuOEhnWS
+	YMAFZMHw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x6SQt-00000006WmP-03il;
-	Tue, 15 Sep 2026 12:38:43 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1x6SQz-00000006WrU-0nm6;
+	Tue, 15 Sep 2026 12:38:50 +0000
+Received: from mail-wm2-x11.google.com ([2a00:1450:4864:31::11])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x6SQg-00000006WdC-43GL
-	for linux-mediatek@bombadil.infradead.org;
-	Tue, 15 Sep 2026 12:38:31 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
-	:References:In-Reply-To:Message-ID:Date:Subject:To:From:Sender:Reply-To:Cc:
-	Content-Type:Content-ID:Content-Description;
-	bh=EBth4tRMg8GOGvhksLcEkRFTz5ARAzMlbCo5jt8vu2Q=; b=C/ALLGxZdUyiaseae213K4qSyt
-	ZRie751s6gCn/dge6EiliEkl1x0Slvpugcf3Ki/7NoBJnl4eZQzKjeHTJWCVu1ZTEqrsJJQ+wlOdB
-	Z+6L6HRKMyiO0NpDVCRs6BwDvE/nslcWOMZ8gBrgeL8TkCQPJDlQzWHtv4Fwkq7fI5sJrOIdHp4Ux
-	viNzjSPxX1wLldfAC7ViHvBdxcXUy3zG2V+RwbwsQwmibtPNxa/o0ACOfai2K1whb9EwffL455C7q
-	4Iq50QVRrrQph/RSBf8FXcxkm/4yQD1Axbi/8GSAkB40q3FHsdh4WydtKmtJEgaSlkxghZ//7mDm4
-	uMWtLTLw==;
-Received: from mail-wm2-x10.google.com ([2a00:1450:4864:31::10])
-	by desiato.infradead.org with esmtps (Exim 4.99.2 #2 (Red Hat Linux))
-	id 1x6SQd-00000006kDb-3qOT
+	id 1x6SQf-00000006WbL-2ehS
 	for linux-mediatek@lists.infradead.org;
-	Tue, 15 Sep 2026 12:38:29 +0000
-Received: by mail-wm2-x10.google.com with SMTP id 5b1f17b1804b1-49b912d8239so18849225e9.0
-        for <linux-mediatek@lists.infradead.org>; Tue, 15 Sep 2026 05:38:27 -0700 (PDT)
+	Tue, 15 Sep 2026 12:38:31 +0000
+Received: by mail-wm2-x11.google.com with SMTP id 5b1f17b1804b1-49e71cdb22bso20666615e9.2
+        for <linux-mediatek@lists.infradead.org>; Tue, 15 Sep 2026 05:38:29 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1789475906; x=1790080706; darn=lists.infradead.org;
+        d=gmail.com; s=20251104; t=1789475908; x=1790080708; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:to:from:from:to:cc:subject:date:message-id
          :reply-to:content-type;
-        bh=EBth4tRMg8GOGvhksLcEkRFTz5ARAzMlbCo5jt8vu2Q=;
-        b=Xhyr3sq6+njl9hsi5JKBzmrqTXVaUb6oeUtZFcMGkMQYYQYEjqD7UOi2l++i4u5Psu
-         VAObeAUCIukGy4cOqhtHaLbIGXpiG/03aSsgJjNKpTKuEYQqcqsBtibN/HimXZlH53U0
-         v9VcoSjkauQMPZYvfVj9eaA/YoxNSUTn+/XmzdtnFav8zhVRhetd/7aVicg24oip20WM
-         ZVaSe3e3uIOGrNonpk+vE/tFDepRzshtdG4hTN/Y3cWXGfslAJOoinLOVLPuyAdJ4nfz
-         6boqk8ffsGLbCr1GX7ChrB8QdfpXkdR5qrWVayLFufOC0pjUKTvV1LSaposzk6cDSIl9
-         ctcA==
+        bh=mBJHZiui6LC0ZFroetycbP9gbMZ7hcwLvF2peu3oVkk=;
+        b=EUCxs+UVXpLU8kcKeZQlMOCZcxrO75ucQue1M+5e6MVUC7XKSNDirw5oNZyOwIlEB6
+         uPCfpMxRKe4wc4xvw8CjmvazUG9bWCwzRSWcvQcyspaIQ508nr4pBc/OlEymN4DS+luM
+         RQFfCGmptfv100ZkFmX8sT9jQaliJ/sHjPcV5eKMN9o4bOw1a3fkUj8xB3u6f8b9Mpgu
+         +cU0+H0Xxg1NQ1845ub6mTbkW92C2CO5wQFb7npi0/k9RJAuvIPH5v1UFeje62rugDGj
+         QFT4+u0/JKFEjFCQcAUA9E6+YZqktWed2JXqxhkAxUJ+ViestTy5siPBHbGWRM0EqTZz
+         3qGQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1789475906; x=1790080706;
+        d=1e100.net; s=20260707; t=1789475908; x=1790080708;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:to:from:x-gm-gg:x-gm-message-state:from:to
          :cc:subject:date:message-id:reply-to:content-type;
-        bh=EBth4tRMg8GOGvhksLcEkRFTz5ARAzMlbCo5jt8vu2Q=;
-        b=VnbluCC3hVXPrd3kL9Jq6lyLfudrdl+83qC8IMfUc1tz4/DfQj+mMGh0NG+ng9aZz7
-         4H89yXlKsEMKlwlh5cG79ST53oTxyEucnrw39nRUyl9R+qrVQRx3r7u3AowaJuOOiK2N
-         Ghr8k/jlw070LI9WdWuk2ob/g4UFMauL37VuSg1VqWW+ls0rFHXnmhMgzu/62mn440bs
-         cB+HkpVHeWFJTTvG4QWTXP9B6rXftF5hHhEdoYgtOWVKBNqdgDRfK3XmIrjYuj155ymv
-         2xBYDkKv50zO6nv6DvXaHSQq8yUuoE09sJ+WaktQT8OwVAViNkzwWPgPNlcTNtiop3u3
-         1Mww==
-X-Forwarded-Encrypted: i=1; AKwUvByjbEy86ImD6flBUfCCDtEbjrXMXtuGCTisiDFquwMvFHr9P3NLxQUkzUzSN6z5xVwFBwAyVgHhxVziOK3HzA==@lists.infradead.org
-X-Gm-Message-State: AFuF++kQb1O619Qdok4RYwzjM+ZlPm/O3gJcA31Klz+Jh0LlOPnBRK90
-	2ceZzumerkC0/6oSP6UX0sD8/jaXH2vJy9Mvqw42pvWrJ0WpYbSjIwaE
-X-Gm-Gg: AYBFou1Sa+/i10RlgQuP8LtqNBqKOdGkqA9m9Hqm2lcB3vS+CLnS7Y3+wr5Yvv0/KHI
-	kZzjt5kZdPyLwbyKTWNmUa4JUVAUx2kbTDZmJG0ge1BhVVY3eHDFY9QOyLERKFWRE3rf5ua6oVa
-	WUlxYYzAP634MZwdkEooCDIRb7iRKr/CTo6IK9fUyXXf5TTESERHIoeNB9POv2H9d6r6Uii56Qn
-	EnbP3qvv99wRKPme99QOTnAl354KnPpuLD6EF78cHbXWoHNr8l7DYfXir5u6y6rK6dE2sf3M2/a
-	D+x9RJwXTUGkfLYIRfP+RXKXDMNVmszQTSulL03VNG8e6T7sZ0mggKucbg67FJwr3zWDX32Qval
-	7k8BRZrh3UmatWgarv8FQks3faIc4fNPutfsa4tuHTJcw2aVN7OSp1ooXhAlgaC05mtO5g7/erG
-	cCzmMIKDyjU7mqj6SLL/0brw3TtQC5lWGmYRuq40YCuiaYU90CW7Zd5zpYW//w7c3/XD2GTE/fp
-	/cQEoTB0UjhpUfSvIYineG6mt9TTYy4pZQGcp1TBbwyh/pe98WnogHt3OcsJQ9H
-X-Received: by 2002:a05:600c:3b89:b0:49c:ff3c:973f with SMTP id 5b1f17b1804b1-49e7a692d5emr106570525e9.24.1789475905719;
-        Tue, 15 Sep 2026 05:38:25 -0700 (PDT)
+        bh=mBJHZiui6LC0ZFroetycbP9gbMZ7hcwLvF2peu3oVkk=;
+        b=tLaT0AqDBOk0wsTXISub045gwmIV6NJE0NDENQ3C8lpt6/hGCmBnAt9s+U9EswZtVi
+         U1/liCn5uwo++/CiF0+lzheNj7LzqrdUEnzZUn614ft+JA0l2NZPGpSLG0iFrC7PgxTs
+         WuZH4aXDO/MfrbwLPUIDC/LNDIv8TQB0TpcBls5QT/2bsR01u3dcwYAwSzTZPCHbaZu5
+         EALi/yi7P7Ye58PVTYHS0l0tuMaIKZhcvMrrh11mxQxk24ELJGi0rOC6sjdnzfF605ht
+         3KRrma9FYCv9jcEvMEwgr75zyfVNjTTMcXyEBCQvDYCRvPGVsoYCeUgM2AQ0nKAjuFPs
+         RL/A==
+X-Forwarded-Encrypted: i=1; AKwUvByr3eU+gisKSQNpChL8eG9GMkGjJ5D27s4580PwUlDpKV5vF0I55E0R//ipQ8GbR0ufc2WHGnO+gIRVWr/eWg==@lists.infradead.org
+X-Gm-Message-State: AFuF++lKuqfCk4VBoXGn6lefHFePLhNKJAzCyxkRr7Dd9XgAsaT/I12T
+	LwFcAB/musE5OIr7Es3n0uARdm006wI+3AVY65M1H1b3sdGsXvhQvC0K
+X-Gm-Gg: AYBFou2Bo4L8otsrrhTT2JsXXf1octmz87hEFd68BZGWqguNI/G0AKCbfRm121HJS9q
+	9xtWlIq74/8uALZqIgj1Nuc+YU0Kqs6u4sjQPkR9R2lsr3p7DuNDzLY8r5eTtBRy1BQ9737i/RO
+	NN1yptlloSO784OgN9GoDJZ9Xwk+UwCTfAYGcdkLdd0w4z0lEi4iZ3kHOvXjA86slD3rWi+pldH
+	wXP7G58us9QETQi582BsrY75TA6wNql3bynlYSeL2WMLFYkJ/RLDhbZrYp6ZF5rQxq+azyrA/EI
+	6234fGiwkH8WZ6qMRBbE2pTc2OC/apxoknRZemCPaksTSQzBDhRnTkfzEuj1gd4HC+XNRe69TjM
+	ZUsLl0Cc4Cm77JCU4Cd1r3sg1zxfXO4O1mihd8o+ARyysVo03W9mPmAhzUIBYWlsiQDLefehlvg
+	DmkJ4W+yCYPkGAmR/l5mGgVNhkj4yF9LUquY4zbyBmSeBsFMG/gwFQNTtSKWz4nLw398HLO1hbZ
+	RC5KLL1VfEbofoi/LoSymkklTDpoHv+5LpL2nOUuUcYkfnhKYCzkri9u3iZc7DP+6VKJeUdzWY=
+X-Received: by 2002:a05:600c:4e47:b0:49c:fa20:cc02 with SMTP id 5b1f17b1804b1-49e7a677cdbmr68143945e9.25.1789475907626;
+        Tue, 15 Sep 2026 05:38:27 -0700 (PDT)
 Received: from Ansuel-XPS24.localdomain (host-79-26-252-140.retail.telecomitalia.it. [79.26.252.140])
-        by smtp.googlemail.com with ESMTPSA id 5b1f17b1804b1-49e7d6a8d5asm62958635e9.9.2026.09.15.05.38.23
+        by smtp.googlemail.com with ESMTPSA id 5b1f17b1804b1-49e7d6a8d5asm62958635e9.9.2026.09.15.05.38.25
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 15 Sep 2026 05:38:25 -0700 (PDT)
+        Tue, 15 Sep 2026 05:38:27 -0700 (PDT)
 From: Christian Marangi <ansuelsmth@gmail.com>
 To: Christian Marangi <ansuelsmth@gmail.com>,
 	Lee Jones <lee@kernel.org>,
@@ -110,17 +95,17 @@ To: Christian Marangi <ansuelsmth@gmail.com>,
 	mfd@lists.linux.dev,
 	devicetree@vger.kernel.org,
 	linux-kernel@vger.kernel.org
-Subject: [PATCH net-next v22 1/9] dt-bindings: net: dsa: Document support for Airoha AN8855 DSA Switch
-Date: Tue, 15 Sep 2026 14:37:58 +0200
-Message-ID: <20260915123812.14747-2-ansuelsmth@gmail.com>
+Subject: [PATCH net-next v22 2/9] dt-bindings: net: Document support for AN8855 Switch Internal PHY
+Date: Tue, 15 Sep 2026 14:37:59 +0200
+Message-ID: <20260915123812.14747-3-ansuelsmth@gmail.com>
 X-Mailer: git-send-email 2.53.0
 In-Reply-To: <20260915123812.14747-1-ansuelsmth@gmail.com>
 References: <20260915123812.14747-1-ansuelsmth@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260915_133828_064422_2FD9B966 
-X-CRM114-Status: GOOD (  13.96  )
+X-CRM114-CacheID: sfid-20260915_053829_935372_0CD0EF81 
+X-CRM114-Status: GOOD (  15.68  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -135,108 +120,109 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Document support for Airoha AN8855 5-port Gigabit Switch.
+Document support for AN8855 Switch Internal PHY.
 
-It does expose the 5 Internal PHYs on the MDIO bus and each port
-can access the Switch register space by configuring the PHY page.
+Airoha AN8855 is a 5-port Gigabit Switch that expose the Internal
+PHYs on the MDIO bus.
+
+Each PHY might need to be calibrated to correctly work with the
+use of the eFUSE provided by the Switch SoC. This can be enabled by
+defining in the PHY node the NVMEM cell properties.
 
 Signed-off-by: Christian Marangi <ansuelsmth@gmail.com>
 Reviewed-by: Rob Herring (Arm) <robh@kernel.org>
 ---
- .../net/dsa/airoha,an8855-switch.yaml         | 86 +++++++++++++++++++
- 1 file changed, 86 insertions(+)
- create mode 100644 Documentation/devicetree/bindings/net/dsa/airoha,an8855-switch.yaml
+ .../bindings/net/airoha,an8855-phy.yaml       | 83 +++++++++++++++++++
+ 1 file changed, 83 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/net/airoha,an8855-phy.yaml
 
-diff --git a/Documentation/devicetree/bindings/net/dsa/airoha,an8855-switch.yaml b/Documentation/devicetree/bindings/net/dsa/airoha,an8855-switch.yaml
+diff --git a/Documentation/devicetree/bindings/net/airoha,an8855-phy.yaml b/Documentation/devicetree/bindings/net/airoha,an8855-phy.yaml
 new file mode 100644
-index 000000000000..5ad9b9e13983
+index 000000000000..d2f86116badf
 --- /dev/null
-+++ b/Documentation/devicetree/bindings/net/dsa/airoha,an8855-switch.yaml
-@@ -0,0 +1,86 @@
++++ b/Documentation/devicetree/bindings/net/airoha,an8855-phy.yaml
+@@ -0,0 +1,83 @@
 +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
 +%YAML 1.2
 +---
-+$id: http://devicetree.org/schemas/net/dsa/airoha,an8855-switch.yaml#
++$id: http://devicetree.org/schemas/net/airoha,an8855-phy.yaml#
 +$schema: http://devicetree.org/meta-schemas/core.yaml#
 +
-+title: Airoha AN8855 Gigabit Switch
++title: Airoha AN8855 Switch Internal PHY
 +
 +maintainers:
 +  - Christian Marangi <ansuelsmth@gmail.com>
 +
 +description: >
-+  Airoha AN8855 is a 5-port Gigabit Switch.
++  Airoha AN8855 is a 5-port Gigabit Switch that expose the Internal
++  PHYs on the MDIO bus.
 +
-+  It does expose the 5 Internal PHYs on the MDIO bus and each port
-+  can access the Switch register space by configuring the PHY page.
++  Each PHY might need to be calibrated to correctly work with the
++  use of the eFUSE provided by the Switch SoC.
 +
-+$ref: dsa.yaml#/$defs/ethernet-ports
++allOf:
++  - $ref: ethernet-phy.yaml#
++
++select:
++  properties:
++    compatible:
++      contains:
++        enum:
++          - ethernet-phy-idc0ff.0410
++  required:
++    - compatible
 +
 +properties:
-+  compatible:
-+    const: airoha,an8855-switch
++  reg:
++    maxItems: 1
++
++  nvmem-cells:
++    items:
++      - description: phandle to SoC eFUSE tx_a
++      - description: phandle to SoC eFUSE tx_b
++      - description: phandle to SoC eFUSE tx_c
++      - description: phandle to SoC eFUSE tx_d
++
++  nvmem-cell-names:
++    items:
++      - const: tx_a
++      - const: tx_b
++      - const: tx_c
++      - const: tx_d
 +
 +required:
 +  - compatible
++  - reg
++
++dependentRequired:
++  nvmem-cells: [ nvmem-cell-names ]
 +
 +unevaluatedProperties: false
 +
 +examples:
 +  - |
-+    ethernet-switch {
-+        compatible = "airoha,an8855-switch";
++    mdio {
++        #address-cells = <1>;
++        #size-cells = <0>;
 +
-+        ports {
-+            #address-cells = <1>;
-+            #size-cells = <0>;
++        ethernet-phy@1 {
++            compatible = "ethernet-phy-idc0ff.0410",
++                         "ethernet-phy-ieee802.3-c45";
 +
-+            port@0 {
-+                reg = <0>;
-+                label = "lan1";
-+                phy-mode = "internal";
-+                phy-handle = <&internal_phy1>;
-+            };
++            reg = <1>;
++        };
 +
-+            port@1 {
-+                reg = <1>;
-+                label = "lan2";
-+                phy-mode = "internal";
-+                phy-handle = <&internal_phy2>;
-+            };
++        ethernet-phy@2 {
++            compatible = "ethernet-phy-idc0ff.0410",
++                         "ethernet-phy-ieee802.3-c45";
 +
-+            port@2 {
-+                reg = <2>;
-+                label = "lan3";
-+                phy-mode = "internal";
-+                phy-handle = <&internal_phy3>;
-+            };
++            reg = <2>;
 +
-+            port@3 {
-+                reg = <3>;
-+                label = "lan4";
-+                phy-mode = "internal";
-+                phy-handle = <&internal_phy4>;
-+            };
-+
-+            port@4 {
-+                reg = <4>;
-+                label = "wan";
-+                phy-mode = "internal";
-+                phy-handle = <&internal_phy5>;
-+            };
-+
-+            port@5 {
-+                reg = <5>;
-+                label = "cpu";
-+                ethernet = <&gmac0>;
-+                phy-mode = "2500base-x";
-+
-+                fixed-link {
-+                    speed = <2500>;
-+                    full-duplex;
-+                    pause;
-+                };
-+            };
++            nvmem-cells = <&shift_sel_port0_tx_a>,
++                          <&shift_sel_port0_tx_b>,
++                          <&shift_sel_port0_tx_c>,
++                          <&shift_sel_port0_tx_d>;
++            nvmem-cell-names = "tx_a", "tx_b", "tx_c", "tx_d";
 +        };
 +    };
 -- 
