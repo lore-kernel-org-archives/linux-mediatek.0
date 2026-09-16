@@ -4,84 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 180F6C88E5C
-	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Sep 2026 07:59:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 53CE0C982C1
+	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Sep 2026 07:59:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=9EP7B7Ij+uzgh7ozqOWENJmY+4dziA6HYdxmCK1rOAM=; b=shG8MAkAzl+/BW9Dtj/wOg+Jd5
-	6DGzgDsrThcUlQaDxsAtpFD3R5m/IVlS7ouQqyvt5UDde0JP+ClDAzR5ymdLXpiNBg5dLT6gG8Ids
-	hZAaVSbzbIjhm/9o85k93ue05bbLnEnauRq0ClgtK2CpJZ1NSlDea37qB6Mgr4/IPOfjimkIE3kOd
-	rc/myZYTFX6R7vSa1GynR/eQ0F03s9Viu5OgU2mPpWRft3UeVRwX5rLGyJAkQkRy/hQinXr0aNY/e
-	eDPyNcq4OI0Jh+oY/CAdOepLPqAX2IRACt55xo2QxIJ0yJYc4hMzelCXL3OAndEO11Uix02jSyGzH
-	5D6rJc0w==;
+	bh=SWwi8XOZ6LU+PxR6btCprbkiTyl3Q4dICGc4z937Hmk=; b=pClZxDmc9O3izsoAmFuAoW1WLg
+	HsCfprRB/I+pl/roB/purSfaTsSm2d8lOgDRJG/2w+qDpzu72QsUQt0YCBrER/Ox+8vfFEDSiWrjM
+	7o0u/br8vkVpWfN2jULNLdOcF1aqop5qKwZqYJgGXDIzfimi3xg63kKOKOx9wW3FEhEhMAZkr3fxR
+	vMbqYNA8gyovxSTCbNbdu3s/hYldXuRUWqMvSKbrLwaEE6ZRDqwEqkQrt2zr+RHBlpNCJlCURZLkN
+	mQUrU/EEgSXUkEma5HV37cwjuPpyC7eC2lmNpPI6ndLiDZOhGDQJ3/deZdwQbdY0mmYwMH0jfRfOP
+	Ur2ZdJTA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x6kY2-00000008e6Q-0625;
-	Wed, 16 Sep 2026 07:59:18 +0000
+	id 1x6kYB-00000008eBy-0uNC;
+	Wed, 16 Sep 2026 07:59:27 +0000
 Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x6kXY-00000008dw8-13LI
+	id 1x6kXi-00000008dxc-0Rvg
 	for linux-mediatek@bombadil.infradead.org;
-	Wed, 16 Sep 2026 07:58:48 +0000
+	Wed, 16 Sep 2026 07:58:58 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
 	:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
 	Content-Type:Content-ID:Content-Description;
-	bh=9EP7B7Ij+uzgh7ozqOWENJmY+4dziA6HYdxmCK1rOAM=; b=QCtjwq+sPvdB96hHa+SHqAMEIs
-	Zndwz4Xr1QBXxWpTYsCtd4calHyLRrK0f1LuXo1Dib1NI/7nsZFvX6FVp8/KcGFapVgdsx1ix1cba
-	Zu80urTsCpS1WCzNHd7+qRAzCj1kiXFK68PGVe+Lv3f9Ch7B+PmeKCE0XbZCpxzbbdd9aJXb+CqZI
-	qCCSuc5fGPyzrwekYuSzMbnwp0TN4osAGuIzSLZ2AMUMUll6R5T7E+5FcNkBVWi3lclWkowGwW463
-	Umn9q/DmPezsE3uI789ilKittq7wIlQ8e+hKw6JDbCrR8xaeuiHefHM9KoNekgsZm+lfcx2LDg7pH
-	4+NIaLkg==;
-Received: from mail-pz2-x10.google.com ([2607:f8b0:4864:3b::10])
+	bh=SWwi8XOZ6LU+PxR6btCprbkiTyl3Q4dICGc4z937Hmk=; b=AGE5/jykzddzpuu7uXk9g7gdIa
+	a3pUZniEybjXSeJYOfyA6yPj4cHfmH4S36/YnC8qkXLvrImGy4mrjg313eBY+pDTXpwC7RsyzJykd
+	L9K3JQANPfE9FS+FFuHswbnYlB8cblW5GmmezNgquVHlvmN+QGhBRECBP7RKtA25URq3KwHZXptmJ
+	VZyal9fGdxeGigEPaByzQ5aUvOH3ctYq1dfhWxieivvYW5NNULaGj/0uhpCwTa18isW+gWxyEQzDr
+	1qmIiPwMNXwK1rF956kQU9n6aqJ4KpyYQpTODiUNos7vnLHVIoXG+SzYaxteRKSLWKmNH3HnhnRFp
+	YGxPHRaQ==;
+Received: from mail-pj2-x11.google.com ([2607:f8b0:4864:39::11])
 	by desiato.infradead.org with esmtps (Exim 4.99.2 #2 (Red Hat Linux))
-	id 1x6kXV-00000007bX7-1q0t
+	id 1x6kXa-00000007bY0-1duH
 	for linux-mediatek@lists.infradead.org;
-	Wed, 16 Sep 2026 07:58:47 +0000
-Received: by mail-pz2-x10.google.com with SMTP id 41be03b00d2f7-cc4cdc0d663so353158a12.3
-        for <linux-mediatek@lists.infradead.org>; Wed, 16 Sep 2026 00:58:44 -0700 (PDT)
+	Wed, 16 Sep 2026 07:58:55 +0000
+Received: by mail-pj2-x11.google.com with SMTP id 98e67ed59e1d1-396ccd5cf02so475267a91.3
+        for <linux-mediatek@lists.infradead.org>; Wed, 16 Sep 2026 00:58:50 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1789545523; x=1790150323; darn=lists.infradead.org;
+        d=chromium.org; s=google; t=1789545528; x=1790150328; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to:content-type;
-        bh=9EP7B7Ij+uzgh7ozqOWENJmY+4dziA6HYdxmCK1rOAM=;
-        b=Kiq3QmgT6WF5AmV6SiJHQ4YT3TQWXBh6/3/mSp8EQ9U86N02CXMm82vUIHDwlPpjbe
-         7eW6pUzLNqUTKGzDUEljQMmEg3zmYX2//lj5xYAdJ9yGTy2mY+KZGMuWMEDr855lOLS9
-         PtTP8qIs2S19N7x7qnPJqVKOJyj/t0mlaJDrI=
+        bh=SWwi8XOZ6LU+PxR6btCprbkiTyl3Q4dICGc4z937Hmk=;
+        b=mYVxphmz8b5k7JGYa+15NPC4fVE3IeBb7MUflwapPnILRJ+C62RU76twDOZrzSLc1r
+         /z4iGoYXi1bPxove+DzbEgGoo47RcVsDlTISzDdlQY0afd3Gv30poGddOhe0daSdZ+x2
+         3ksMruVr3MJnBvVXelUX8/2VWMj/pdmD+u4r0=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1789545523; x=1790150323;
+        d=1e100.net; s=20260707; t=1789545528; x=1790150328;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
          :to:cc:subject:date:message-id:reply-to:content-type;
-        bh=9EP7B7Ij+uzgh7ozqOWENJmY+4dziA6HYdxmCK1rOAM=;
-        b=FTWSv2OdZluI1uLDQF8dkWIsRW3o08UkU8lvl3DX0ZKl7jA8ifvSGo6UVnMsmo0jKL
-         HkqQ/G3cg2fyMTvV68Snugwyq+aYg8KztHw48I+8/fvD/i+FXC47glfuRhwEXIkjXhEb
-         ZZmjOr7L/gtMj+AbEX6vMvysFjGM2AHAgvNWlceM2xdHMPYmAuKq4wW5t0/YcA0/HQlw
-         sZEP8O55jmp5jD02M3q6VWFz4baFGx0GfaMAz2HEf7/eLart5oJeJi0qezrIsRg943Eq
-         K8E8zFYDj+2sXXlLuQsYF/0mFmSHlHTaknfsCLNusbdTwdjDyisfpglsq5gOPAEpSl2k
-         Cdgg==
-X-Forwarded-Encrypted: i=1; AKwUvBxcdqm/kyAhgku20phFMwdouhkF5xrTLQvkbqZkMIDvrmMuLNDuqoKewjegPCfVb7Dz4S7nB1YFAC9V9L2hkg==@lists.infradead.org
-X-Gm-Message-State: AFuF++kGABIfx8VmSbBLkdScWi82LCzNbozEVVMdHBye0tK567dZt4aw
-	JeNuXPJ7wGNn/dq0KyOHibXQ9OIr0CPUtC+WBL152Fw6pmqDwjWQ7gaBCGV8P1nlPQ==
-X-Gm-Gg: AYBFou0gq8Mum0xiYQjYEfH82t8Q5l29RD7+1/xrJ2EHbW0bStdXWPHuY2bxb2Ea3re
-	MEw+f/zk5lT/EbZB3Zn39H39pd2zvin++gDAdP7Iu9ZqDfgqSCBG816KoHQ5bF0kHErpHyov9xW
-	YEMlvcUJFdoEn8P5Vb7YYgUQlBukSWD624KF4b7C3EINW/2fnkiah4NMoHz1elc9PvSUThgk5Ho
-	B3poGK425tjBjDWtPTKum9/TKUmje+HtVYa+rPzTXK/Zua5ueI4wnSOQsRUDuIXdG2vY+bbGxDP
-	bGStjIJpholAqaO8fr2gpsN45k8BiJR89Gp0W4GHFzS/YMX+cKw/7a5AMiNz4PfzknotqFm5/DA
-	jAQD6pgNzDHhOy766HSFRa5tKHLtE4p5EpImKfVomKLp5KYPzN/T7mRoiDqkLlm/VakMSPJJjtc
-	kssuI22j7PBVvEfuddc8weyChbuHMTU8g4+sVsvMmFpi61DNOi18tLDsF0qnHH3OuXMVadGP7u2
-	yi00IDC1bjgPOr/pmyGjtlGWCtaEXoAR7MgMXxSxzjhxH9th5BLXRhuyA==
-X-Received: by 2002:a17:90b:440c:b0:39d:fea0:c17 with SMTP id 98e67ed59e1d1-39e1e309c21mr3792094a91.8.1789545523106;
-        Wed, 16 Sep 2026 00:58:43 -0700 (PDT)
+        bh=SWwi8XOZ6LU+PxR6btCprbkiTyl3Q4dICGc4z937Hmk=;
+        b=hygCV3SswjkFLidH3yhIrykduf1NJZVUf8hc7h6tCJW0H6fuCu6GbQFOOWvixJ6WwI
+         JfvdBIfOzr98moxjwEMsdnFS3PlfZI7vFXoryF9tRBbfnqCa7ydO84JgUScPgckqSHo1
+         /eKVeYDdMrpaaMI36CDvQcUZR87lbNEnWowGoveUmKYq0jkClcU6I4jTU241qZmZ5HgZ
+         j8+xyRNo189tUmcZ78uar2oQw/90CHcffyUWzAZzmDYhtnoH8xCeVjVVsx0TsaKbOg1u
+         80zldvzDT6FEgDE+eBapFXOJNyVV5tO91WXQaNKaeb4+06clm1oL5KwLOUC1afHR+L9Q
+         ntmA==
+X-Forwarded-Encrypted: i=1; AKwUvBw56gEpdkV5QayeTcMjIoBT0Yuq+rSEO67YoS/nhSiE+Of6wYz6bpUY+5kAJyrJYAuGDuJoX1p6B8L7uymLtw==@lists.infradead.org
+X-Gm-Message-State: AFuF++krkJ40S0V3qlW6nf55k4FCLPoNd12tPpbyqgvQGOsB3fchmXtX
+	6AWrxRHSdnwNje6sodh4Uxo4UESIElr2aFLAwcftMwaesu6US/3+GJx0ZbWip0AQXw==
+X-Gm-Gg: AYBFou2mXYdi3QMd7+Of5C1gYWHHMzAz37WEeLxZdWxlpk6juoqsGFS02tmyE5gOf+H
+	gHqXHyAYJuJgjHnKrjArhoALMukjKZ/i8vOXshwswkGZjbEA0KjTGx7Svlx6xdXziHE1tQHmDtl
+	0P9mgBmb4BuXqYl4peG2Li/0dW8WmQJaNcRBm2eTZFVDOlHu2DGfBrTiIO7RUVC+MdUBRCEwIev
+	0YJ45jsIAgovOjwEG0h/zPAPzH76NKLnIywwKZDKAxx/GOki5wMfkvxTAoPlO7aDzVTMugg6QTf
+	wf75/9HZoH5gocYFXw3cVfrYXqc9+x6oEf+VErxj3Pq/q342SdaX7Sj5AyXJ5J+gAq23RSk0I9X
+	RZzHmXgSpH3h6bBGtWlAso9sgDFqq/kKuMDTx9HktZcxVPK8jWRq8dFn9NmgBR9K+/tGykVVRpd
+	bKCCdrTgbX6h7+KR62kALb+BFYgOEH4QsnrcJ1seTo8emGGcK8azRBFi1iQF0QQWidI/qkSA8UL
+	yHbPr6LoyoJkD4OxqOcppa3FRxifnlTbhfTRXrZElsYLqIgc9pMnmxl474pr7IgUpuv
+X-Received: by 2002:a17:90b:39a3:b0:39e:233f:cee9 with SMTP id 98e67ed59e1d1-39e233fd063mr2563733a91.11.1789545528600;
+        Wed, 16 Sep 2026 00:58:48 -0700 (PDT)
 Received: from wenst-7875.tpe.corp.google.com ([2a00:79e0:203d:7:1f62:7622:5d61:2578])
-        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-39e1b7acba2sm4348197a91.16.2026.09.16.00.58.38
+        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-39e1b7acba2sm4348197a91.16.2026.09.16.00.58.43
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 16 Sep 2026 00:58:42 -0700 (PDT)
+        Wed, 16 Sep 2026 00:58:47 -0700 (PDT)
 From: Chen-Yu Tsai <wenst@chromium.org>
 To: Bartosz Golaszewski <brgl@kernel.org>,
 	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
@@ -108,17 +108,17 @@ Cc: Chen-Yu Tsai <wenst@chromium.org>,
 	Manivannan Sadhasivam <mani@kernel.org>,
 	Alan Stern <stern@rowland.harvard.edu>,
 	Bartosz Golaszewski <bartosz.golaszewski@oss.qualcomm.com>
-Subject: [PATCH v9 04/15] usb: hub: Use assign_bit() in usb_hub_set_port_power()
-Date: Wed, 16 Sep 2026 15:57:30 +0800
-Message-ID: <20260916075745.3549953-5-wenst@chromium.org>
+Subject: [PATCH v9 05/15] usb: hub: Return actual error from hub_configure() in hub_probe()
+Date: Wed, 16 Sep 2026 15:57:31 +0800
+Message-ID: <20260916075745.3549953-6-wenst@chromium.org>
 X-Mailer: git-send-email 2.55.0.1032.g73a4cd73de-goog
 In-Reply-To: <20260916075745.3549953-1-wenst@chromium.org>
 References: <20260916075745.3549953-1-wenst@chromium.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260916_085845_677206_685656A1 
-X-CRM114-Status: GOOD (  12.17  )
+X-CRM114-CacheID: sfid-20260916_085852_662436_027317F1 
+X-CRM114-Status: GOOD (  15.58  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -133,51 +133,71 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-usb_hub_set_port_power() open-codes assign_bit(). Just use the
-assign_bit() macro instead. This makes subsequent additions to
-usb_hub_set_port_power() easier to read.
+The addition of power sequencing descriptor handling in the USB hub code
+requires dealing with deferred probing from pwrseq_get(). The power
+sequencing provider may not yet be available when the USB hub probes.
 
-This change does not introduce any functional changes.
+Return the actual error code from hub_configure() when it fails, so that
+the driver core can notice the deferred probe request.
 
-Suggested-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-Reviewed-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+Also rewrite this section into the standard error handling pattern:
+
+    if (error) {
+        # handle error
+        return error;
+    }
+
+    # do more work
+    return 0;
+
 Reviewed-by: Bartosz Golaszewski <bartosz.golaszewski@oss.qualcomm.com>
+Reviewed-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
 Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
 ---
-Attributing suggestion to Andy, since the change was originally
-requested as part of a review.
+Changes since v2:
+- Rewrite into standard error handling pattern
 
-Changes since v4:
-- New patch (split out from "usb: hub: Power on connected M.2 E-key
-  connectors with power sequencing API") (Andy)
+Changes since v1:
+- Moved "int ret" declaration in hub_configure() over here from the next
+  patch
 ---
- drivers/usb/core/hub.c | 6 ++----
- 1 file changed, 2 insertions(+), 4 deletions(-)
+ drivers/usb/core/hub.c | 14 ++++++++------
+ 1 file changed, 8 insertions(+), 6 deletions(-)
 
 diff --git a/drivers/usb/core/hub.c b/drivers/usb/core/hub.c
-index 199d3f535a89..a4ec79a06a5c 100644
+index a4ec79a06a5c..707eeee198b0 100644
 --- a/drivers/usb/core/hub.c
 +++ b/drivers/usb/core/hub.c
-@@ -10,6 +10,7 @@
-  * Released under the GPLv2 only.
-  */
+@@ -1875,6 +1875,7 @@ static int hub_probe(struct usb_interface *intf, const struct usb_device_id *id)
+ 	struct usb_host_interface *desc;
+ 	struct usb_device *hdev;
+ 	struct usb_hub *hub;
++	int ret;
  
-+#include <linux/bitops.h>
- #include <linux/kernel.h>
- #include <linux/errno.h>
- #include <linux/module.h>
-@@ -902,10 +903,7 @@ int usb_hub_set_port_power(struct usb_device *hdev, struct usb_hub *hub,
- 	if (ret)
- 		return ret;
+ 	desc = intf->cur_altsetting;
+ 	hdev = interface_to_usbdev(intf);
+@@ -2006,14 +2007,15 @@ static int hub_probe(struct usb_interface *intf, const struct usb_device_id *id)
+ 		usb_set_interface(hdev, 0, 0);
+ 	}
  
--	if (set)
--		set_bit(port1, hub->power_bits);
--	else
--		clear_bit(port1, hub->power_bits);
-+	assign_bit(port1, hub->power_bits, set);
- 	return 0;
+-	if (hub_configure(hub, &desc->endpoint[0].desc) >= 0) {
+-		onboard_dev_create_pdevs(hdev, &hub->onboard_devs);
+-
+-		return 0;
++	ret = hub_configure(hub, &desc->endpoint[0].desc);
++	if (ret < 0) {
++		hub_disconnect(intf);
++		return ret;
+ 	}
+ 
+-	hub_disconnect(intf);
+-	return -ENODEV;
++	onboard_dev_create_pdevs(hdev, &hub->onboard_devs);
++
++	return 0;
  }
  
+ static int
 -- 
 2.55.0.1032.g73a4cd73de-goog
 
