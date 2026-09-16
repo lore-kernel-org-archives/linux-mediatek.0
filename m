@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7EF65C88E5C
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DBAC0C88E77
 	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Sep 2026 08:00:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
@@ -12,76 +12,76 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ud8Ab8x/DbJP2ljWLphVYfSDOg1pJvQBgrltchLDCh0=; b=WiUHP9YD9Tm09g/Mn2QbcHpvN0
-	tI03eHc/ctjUya8rmV3BZ2hBx2OQ+24zmHt8hQtQWjsUoPgok+UEcLnNM14lJj2swuJDpq5QW0Er2
-	T+VZJQ+7sducc4rtwPq0IvZDQlriEC6cI1KDkeT9s9q7wsQXYO1hKfqvh+J0w38ciVuov7NLhG4X6
-	wscmTO2sZ30ae+gSf3WzIibpbCqvl0UUVOXufc8mBJXhET9kB01OGzOyyB9K2e/jgAYlqjxJHfdfO
-	BcMOZPkKOS9mGkDPn3J+QGY4nAR8qIqfwjchNFplXskNmkG96n98yQPN8hbg1yiQutdENODamGMK9
-	QvMotJow==;
+	bh=UnPIF04bEgfqnB06sJJ+n/4J6DJ5aXluvuxFl2QwIxQ=; b=MExPakZc7ctZLgHO/PPUTk0ht4
+	y3MXr0G9VXDI7I6+UaCXleFTFSvsXpS2jo8L5IUbrybumhIGX1C7DlgBYSBNkiNW/oeKgooN8HFUu
+	lqk0e+BvPvMhgjVQYDSIu8+7JqbZEB4vuZag4aO71FQJ3IpUOeBtVpQ3Z5coVKGVDRC/Mpc2GchPg
+	OPulupVdCa1DcGgpz3THHPXDZCPvXRjwb3iMSxRTytecZFIT26AnFFKvi8nrMhMmyo7ml9GZzBBb8
+	BaakK4v9/bnhaKkPDW8oB5ZNKW6vKl1M3weSV0/VujzX2ptkpMwFSV0Uro0cwF8grxUGusS/05mic
+	r5rGICwQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x6kYl-00000008eg5-2ZmU;
+	id 1x6kYl-00000008efp-26eK;
 	Wed, 16 Sep 2026 08:00:03 +0000
 Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x6kYB-00000008eBc-2chM
+	id 1x6kY6-00000008e8s-2oon
 	for linux-mediatek@bombadil.infradead.org;
-	Wed, 16 Sep 2026 07:59:27 +0000
+	Wed, 16 Sep 2026 07:59:24 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
 	:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
 	Content-Type:Content-ID:Content-Description;
-	bh=ud8Ab8x/DbJP2ljWLphVYfSDOg1pJvQBgrltchLDCh0=; b=P4TVpCiNTV2QvSdHS5xF9Wix7x
-	JkrI6Um2FKtjeo2nD/WgkqlX30iBD+xEc6LL5AosGyiv7n+G75dBKOyFVGw8kEytgiCyiSRFuMpow
-	6VKSlNYm0i5XL4RQVFsRxqlp9LZLEpHlYCPnA2Xm9uD/4P9JkmIr2d/XtDz28KBtoqKVg7OAwHXMl
-	89IQS3cWy1ZY6qn78s4sUIkBRTwS8Kd1M3ozThrRfhBwK+IizhnZt1ShcxTYYhxaHV0J50sJ/lZJT
-	AE8gE868QycdYU/JgWI8px7QoCY3Vd5j+TULJ08ZD4rufqwBT6BAP+01NMJUj+9xDjzFmvM+GrBZO
-	kci4K9lw==;
-Received: from mail-pz2-x0e.google.com ([2607:f8b0:4864:3b::e])
+	bh=UnPIF04bEgfqnB06sJJ+n/4J6DJ5aXluvuxFl2QwIxQ=; b=EYVSEidn/98LCmhmA2MGGO9aXR
+	tPVdoffp+2anNEUXS6eirwUf+a2mmfDRs0TO5XgCfK2dOpKhKPNDD89KFgXBbQZdwUxWs8zqsm/Vh
+	o0iKfceVBNp5ynXmEzEd8BQUcp2N3+R8iNEdl71thDUsbPA2066/R4tajwC6AhbPfuOPqZDVg23x6
+	F8PG8F1ZTSmq8JkylbxOuuof8q9aNiINGKvzxE7AsaRpFsDMOkpky2bDyYnDHpEn/UInZTT95rR4X
+	reRn6liWr29g0lRvHexjhyUQexF9LALs9Mwswf22DcIsS1MwcMaAa8Kr/h83odG/RqTovArzzW6jl
+	fm5LzVbQ==;
+Received: from mail-pj2-x10.google.com ([2607:f8b0:4864:39::10])
 	by desiato.infradead.org with esmtps (Exim 4.99.2 #2 (Red Hat Linux))
-	id 1x6kY7-00000007bcv-1Drs
+	id 1x6kY1-00000007bc3-46d4
 	for linux-mediatek@lists.infradead.org;
-	Wed, 16 Sep 2026 07:59:25 +0000
-Received: by mail-pz2-x0e.google.com with SMTP id 41be03b00d2f7-cc4c08393b0so550786a12.0
-        for <linux-mediatek@lists.infradead.org>; Wed, 16 Sep 2026 00:59:22 -0700 (PDT)
+	Wed, 16 Sep 2026 07:59:19 +0000
+Received: by mail-pj2-x10.google.com with SMTP id 98e67ed59e1d1-396cccbba91so453876a91.1
+        for <linux-mediatek@lists.infradead.org>; Wed, 16 Sep 2026 00:59:17 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1789545561; x=1790150361; darn=lists.infradead.org;
+        d=chromium.org; s=google; t=1789545556; x=1790150356; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to:content-type;
-        bh=ud8Ab8x/DbJP2ljWLphVYfSDOg1pJvQBgrltchLDCh0=;
-        b=dtjfzbgF57ZxCbbpz0CzbuqoSFqj4nBm8gAPe+li7q8SSur8gIJ1c/P5YH+MTlg+eR
-         7Bwdhq/BczwJm1k6/Rig7S4V5/q2jau/+V5Ufe8AUdfay+YN9tllIVNRd6U8BCCuVYUy
-         NieagI8czYdrrD4ZK2/U0vpjm/QMFf8unaicY=
+        bh=UnPIF04bEgfqnB06sJJ+n/4J6DJ5aXluvuxFl2QwIxQ=;
+        b=SCLM4+MH6n1fa+KN+c3dgv8kXHkBDTs+j0fn7XaMgC+aNWEL5Zofb4hTAzY5fGoixz
+         ggQSMrrRqOx42noPeaWCcLMYxJCCJwaYum6YJU/bMg10sZd2Jk4ydW/+1i9JdXc9u+ms
+         r6rbGGcCpP47tatZiGN4ID6w5Myho6NiZK6WA=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1789545561; x=1790150361;
+        d=1e100.net; s=20260707; t=1789545556; x=1790150356;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
          :to:cc:subject:date:message-id:reply-to:content-type;
-        bh=ud8Ab8x/DbJP2ljWLphVYfSDOg1pJvQBgrltchLDCh0=;
-        b=sXQB6bcS9FaUOVLTOA67tsHTbWkwBIWAuyDNaOzQR2YU5gCuAj8XP4Eu4x4YOzCNuf
-         /S1wLx7uhxsEXs4PqwtjNcA2EP6MCfkNkSNRMSLbCpDNTs5ICI1Y/w3npcGu62rtwZtC
-         rAB/AV6dqdgOhD19fGbwq4C/od/oy+1TuFnqSbIfQT9EIgYM+fUyv7o/05HmkysJ3Scx
-         9XP9RL5xjNhRLa8FiK0WuN+HTn8hhkQ58DZ2enBprmjxHpojZOmSOZMKpQVNeWnrNW6i
-         E1hWmmNZHbjHQDyk7UVURUiyYoOEpce+/HUo5JdGHjXSE4E6mJ3bv7X3qE47ihWsWlLA
-         vMHg==
-X-Forwarded-Encrypted: i=1; AKwUvBx0K7ar2hM1pn8jPiXCBVRDi1R/wPA3V0POVB2ptoUF2PT56h3GBAq8WQ9xs+c0HQG4tAz0LniVvyq5cC9YYg==@lists.infradead.org
-X-Gm-Message-State: AFuF++lGxN9vN7uuHvd8bLrAxElHT/UoQRvh9B1dva8CnY8Olto0wb79
-	Q3L6s5NPryau6tRgQm+WiZUG6tCt5E40HBTYvcOtoutA7tDZNTyGgEfxmS3EOSEfFA==
-X-Gm-Gg: AYBFou1z4biSzzbllrV4RYF/yBUgY9uqE1wah/O0P9It4Bjx2nz/q66AM9Rhtnl971v
-	bdIfGACwgZjpoP2tkU7j+eCpwYeu9j2Xy6jE6oerEKf+U3FbZH5BpZo3pUMY9j0/nhSDMlxU6Y9
-	wsxLv9rM1ZK97kPUDeiPRnbyeVyBCrLMeOYpFMuCNuj9Wg6JRPxQY+EXp1MrwMKBq+mDscw1qxt
-	jAff5tq5Q0A6HELKhmwYakFhEkED+5fEUMEcAj2g+lw8kDqdubNlmS0p0AWBFuK8UIvQ9LF6G/8
-	/DJvtCJuaZG4CA/wA/MQVfTYUnu/o19u8CNrSxLgRj4h5QsjOioozApWpgudSybDM7IFcYr1RHa
-	OBSgPxtp2r+GC7yKEysWoq11GHlQ1C8cWT4TUdmq3xI389CqECckamHrotzB+3qXW1jhFczau3h
-	fCg3jZK2aHrqt75dF03E1l8BaJ32PLHJN1b7LF0GIS/oNi7Xa5KM0t7m4co0bkBSfswo6pHBb/g
-	1OMwuaQt+1nYN64HN1Csn9AK9DzBEBZY6q238/N7jEGPXngFvrMyaNM9w==
-X-Received: by 2002:a17:90b:3e85:b0:398:bee5:61d6 with SMTP id 98e67ed59e1d1-39e1e55f7ffmr3982483a91.24.1789545561399;
-        Wed, 16 Sep 2026 00:59:21 -0700 (PDT)
+        bh=UnPIF04bEgfqnB06sJJ+n/4J6DJ5aXluvuxFl2QwIxQ=;
+        b=bDxdgk4Z2cSsPPbUiVJmCV/ZEqv23OJNrPefYIWoYWHPHvCuTjAH4iyD2KO1wpp0Q1
+         if7QDotWre3OcfFkrzr1wFstgz0AwFYVo+MkTLJH7b9bHlK5T94r4EhUB2zmSFbsj5do
+         C5XGVNoDifTCDVkdh8ID+kFZCpjk2ig1ZdS7N82YwM7clRbNyWPp4cH+8YKLUBLHG8Y9
+         BgkIOyLOxRYW2uABXCJmYCh5Rv41qrUHxr+vTqjH98jCm2liJe/008cnV//k983/o+hA
+         I0j+7Ru1yYNWMgoniJafOz/6GU7+LmVrLYJVrYvw8C+oCLmQ5jii3VV5CCTLRHkhM4/t
+         HyHA==
+X-Forwarded-Encrypted: i=1; AKwUvBxH4msyplPRljIslWb5kPftLbFbxplF43Hmwb4r8qDLdG0M3QMszKMvO31NwAiMJtR2PiBezVAOeKFdLH5m+g==@lists.infradead.org
+X-Gm-Message-State: AFuF++kMb0FWtNHjabUgN2noEjG8hwqTnKxBJGdlaT74VuLnAUG1Zghq
+	NAn5xxNiM4TB+6PMLLJLBqj132vw3ifKydTcXWQtI72tNTTnEuZAvv9Gr88TsHf7xQ==
+X-Gm-Gg: AYBFou2jxNc3TJpk4Y5VlXblXes3tyQKyPbtXCYap88oIGZRSyya7Ss92klx9dJ7Cqm
+	S0Nwc187KemAgiZAeQAHuIVkneYIB53I/ZSKFkWQfS0Eb1PpzZsZiCtpXGOILrdFxau1KhnSSyM
+	Jfu1VDgq4tlvC4VkIhjv01mDgpBXP/bUMXUc3QB9FRJ4Q9H2KLI+ER4K4Mi1rjLRL+j4sNiVQoF
+	5eSnNVD33c2C8/tHg+yNwzEWl787+H6sNHODMNm/3YO3B1sNFQ4FpV1AcKr3zm+2q43Si27N+s7
+	04wrsw4o5eInpcxHehtLcbzE6z3Y6EG2hwxd3YjBMfMHsDf+Eq0X8RqvLjV6Qv24sOrGfYr1tKj
+	DPFUYi83T87DNrjwBbqLCQdsEObeDsQ0bxh0grlc48/brttWKPLBv7FMNHCrpvSjd1VAyQ4kLAT
+	eJchXJsXdHMKG3XxWALeKAIj6RVrUM2/FieqKyaFub2ZaYKPlWvPlCnNjcdMsGhW8cL0JW3Uk9N
+	GO+7Qto4ENyjJRQhaIc/ihbgyZXDi8c8wc7+hHDD50rqfmg3geyaBOeqw==
+X-Received: by 2002:a17:90b:4cc8:b0:398:c292:ac80 with SMTP id 98e67ed59e1d1-39e1e330a2dmr4372580a91.10.1789545556050;
+        Wed, 16 Sep 2026 00:59:16 -0700 (PDT)
 Received: from wenst-7875.tpe.corp.google.com ([2a00:79e0:203d:7:1f62:7622:5d61:2578])
-        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-39e1b7acba2sm4348197a91.16.2026.09.16.00.59.16
+        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-39e1b7acba2sm4348197a91.16.2026.09.16.00.59.10
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 16 Sep 2026 00:59:20 -0700 (PDT)
+        Wed, 16 Sep 2026 00:59:15 -0700 (PDT)
 From: Chen-Yu Tsai <wenst@chromium.org>
 To: Bartosz Golaszewski <brgl@kernel.org>,
 	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
@@ -107,18 +107,19 @@ Cc: Chen-Yu Tsai <wenst@chromium.org>,
 	linux-kernel@vger.kernel.org,
 	Manivannan Sadhasivam <mani@kernel.org>,
 	Alan Stern <stern@rowland.harvard.edu>,
-	Manivannan Sadhasivam <manivannan.sadhasivam@oss.qualcomm.com>
-Subject: [PATCH v9 11/15] power: sequencing: pcie-m2: support matching on remote "port" node
-Date: Wed, 16 Sep 2026 15:57:37 +0800
-Message-ID: <20260916075745.3549953-12-wenst@chromium.org>
+	Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>,
+	Bartosz Golaszewski <bartosz.golaszewski@oss.qualcomm.com>
+Subject: [PATCH v9 10/15] dt-bindings: usb: mediatek,mtk-xhci: Switch to ports for USB connections
+Date: Wed, 16 Sep 2026 15:57:36 +0800
+Message-ID: <20260916075745.3549953-11-wenst@chromium.org>
 X-Mailer: git-send-email 2.55.0.1032.g73a4cd73de-goog
 In-Reply-To: <20260916075745.3549953-1-wenst@chromium.org>
 References: <20260916075745.3549953-1-wenst@chromium.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260916_085923_626790_56959E11 
-X-CRM114-Status: GOOD (  15.05  )
+X-CRM114-CacheID: sfid-20260916_085918_347204_29C3AAE4 
+X-CRM114-Status: GOOD (  11.95  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -133,54 +134,70 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-A USB hub can have multiple ports, and this driver needs to
-differentiate which port is being matched to. The USB hub driver now
-associates the "port" node with the usb_port device, so here we can
-use the remote "port" node to check for a match. Then fall back to
-the remote device node for the other connection types.
+This reverts commit 454a1e3cd36c113341d7b71e8e691c6e47ab4a8a.
 
-Also rewrite the existing "remote == dev_of_node(dev)" with
-device_match_of_node() for consistency.
+MediaTek's XHCI implementation supports both USB 2.0 High Speed (HS)
+and USB 3.x Super Speed (SS). The block can also be synthesized with
+either HS-only capability or HS+SS capability. The SSUSB controller
+handles the device or gadget mode. Saying that SSUSB handles the HS
+portion is wrong.
 
-Reviewed-by: Manivannan Sadhasivam <manivannan.sadhasivam@oss.qualcomm.com>
+For example, on the MT8195, the first two instances support both HS and
+SS, while the latter two instances support only HS.
+
+Switch to a "ports" sub-node for describing USB connections. Port 1 is
+Super Speed if the controller is SS-capable, otherwise it is High Speed.
+Port 2 is High Speed if SS-capable. This port mapping scheme directly
+matches what the hardware returns in its capability registers.
+
+Fixes: 454a1e3cd36c ("dt-bindings: usb: mediatek,mtk-xhci: Add port for SuperSpeed EP")
+Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
+Reviewed-by: Bartosz Golaszewski <bartosz.golaszewski@oss.qualcomm.com>
 Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
 ---
-Changes since v4:
-- Dropped blank line between __free() variable declaration and
-  subsequent use of the variable in conditional
-
-Changes since v3:
-- Drop redundant device node validity check; device_match_of_node()
-  does it internally
-
-Changes since v2:
-- Use device_match_of_node()
+Changes since v1:
+- Squashed DT binding revert and addition together
+- Dropped reviewed-by from Bartosz
 ---
- drivers/power/sequencing/pwrseq-pcie-m2.c | 9 ++++++++-
- 1 file changed, 8 insertions(+), 1 deletion(-)
+ .../bindings/usb/mediatek,mtk-xhci.yaml         | 17 +++++++++++++----
+ 1 file changed, 13 insertions(+), 4 deletions(-)
 
-diff --git a/drivers/power/sequencing/pwrseq-pcie-m2.c b/drivers/power/sequencing/pwrseq-pcie-m2.c
-index 322c307ce6c6..350a4c8831f7 100644
---- a/drivers/power/sequencing/pwrseq-pcie-m2.c
-+++ b/drivers/power/sequencing/pwrseq-pcie-m2.c
-@@ -175,9 +175,16 @@ static int pwrseq_pcie_m2_match(struct pwrseq_device *pwrseq,
- 	 * parent matches the OF node of 'dev'.
- 	 */
- 	for_each_endpoint_of_node(ctx->of_node, endpoint) {
-+		/* USB port devices are tied to the port nodes. */
-+		struct device_node *remote_port __free(device_node) =
-+				of_graph_get_remote_port(endpoint);
-+		if (device_match_of_node(dev, remote_port))
-+			return PWRSEQ_MATCH_OK;
-+
-+		/* Try the remote port parent for other types. */
- 		struct device_node *remote __free(device_node) =
- 				of_graph_get_remote_port_parent(endpoint);
--		if (remote && (remote == dev_of_node(dev)))
-+		if (device_match_of_node(dev, remote))
- 			return PWRSEQ_MATCH_OK;
- 	}
+diff --git a/Documentation/devicetree/bindings/usb/mediatek,mtk-xhci.yaml b/Documentation/devicetree/bindings/usb/mediatek,mtk-xhci.yaml
+index 231e6f35a986..d6c75bd20b78 100644
+--- a/Documentation/devicetree/bindings/usb/mediatek,mtk-xhci.yaml
++++ b/Documentation/devicetree/bindings/usb/mediatek,mtk-xhci.yaml
+@@ -107,10 +107,6 @@ properties:
+       - description: USB3/SS(P) PHY
+       - description: USB2/HS PHY
  
+-  port:
+-    $ref: /schemas/graph.yaml#/properties/port
+-    description: Super Speed (SS) Output endpoint to a Type-C connector
+-
+   vusb33-supply:
+     description: Regulator of USB AVDD3.3v
+ 
+@@ -188,6 +184,19 @@ properties:
+   "#size-cells":
+     const: 0
+ 
++  ports:
++    $ref: /schemas/graph.yaml#/properties/ports
++
++    properties:
++      port@1:
++        $ref: /schemas/graph.yaml#/properties/port
++        description: Super Speed (SS) data bus if SS-capable;
++          otherwise High Speed (HS) data bus.
++
++      port@2:
++        $ref: /schemas/graph.yaml#/properties/port
++        description: High Speed (HS) data bus if controller is SS-capable.
++
+ patternProperties:
+   "@[0-9a-f]{1}$":
+     type: object
 -- 
 2.55.0.1032.g73a4cd73de-goog
 
