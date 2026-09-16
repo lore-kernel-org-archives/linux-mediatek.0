@@ -4,86 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 64819C88E5C
-	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Sep 2026 09:56:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 70C3EC88E77
+	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Sep 2026 10:20:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=hHVHwGYLuKp9yrRdZZpJ+o7ex5O7lrk7lia+vMokVzU=; b=eScaT84P1qRuPyqL2YVyueridb
-	d1E9XecF46aY7fbfRhhh9JH+SJdVkBTrWNLtU9meN8DuVUkdedPTkbUz07FjelOZVHq/NVeE3t8+8
-	UWm+GIkMHdk8DjCCHixA7+uWuzAc79WoK742kOcN8xVLfh8kaUpP0zVNEU6po2GGlvlP0/TI3AFaH
-	R513QiWA+ouBOFpPPzLLF9S+FGZ9pOykBowPFHLHxf9syIA+jOr8wSndeoY82Zaqp+hHBWmnGSXUp
-	wQcVtRfXu7fcxbqsON2u9svp/LlILIp93gy14EROIM7yP2U3WgeYUK6zO4tEnEOMVizWEe0w1ItpB
-	sAGMfOPA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=oifjO2FRqSI1P+f2ZcUoFrwoF0E599KhTMFfFuhSdvI=; b=kksc9YC30sWurw+TydGGq+YYse
+	RSf80XKlG2I5yRvDPyqDQyBl/W54gUqLZaRdhCITXcv6dgunEBCH9/JgXYBNm/O20gtZqkIq/3zWm
+	qjfchyjbwsohGiSPbLfxtXrfkXDCsToELZTg33RT57zm4MDHvGLsUagVj3UMUESAcFt3557S0KZTY
+	nauIB2kslW1OF8BSCSasx2LZ4jC3kBCjhdyS2t4RPss7vXoIJFOBB4V++35uqprCLi+9+2c64Eeli
+	E+lM6jv1rgcRhJYm8pS3wwquYpH+gmLtd0+ksxBgjDJGa+kdyOGDlELCHd0wXYInUZXM7iX/u9zNu
+	FgVn7leQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x6mMx-00000008ul3-07ar;
-	Wed, 16 Sep 2026 09:55:59 +0000
-Received: from mgamail.intel.com ([192.198.163.16])
+	id 1x6mkG-00000008xKm-47dr;
+	Wed, 16 Sep 2026 10:20:04 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x6mMu-00000008ujn-3AQz;
-	Wed, 16 Sep 2026 09:55:57 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1789552556; x=1821088556;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=iAHJd4eqBM8b6hwbrA5kr1yWGb3u2TqN8211KLrRBwk=;
-  b=BNY1yrScaVvhPcKqh0FcLugWrFBBZ35pdk975P92Tr99aiepfAF9Bnqx
-   Esi18VTZP7eHF2uvuGraf7PreG6h0TSZQB7qEHyG7DTmyPHzcpiqtAuvd
-   yKRFEqPznxhngM05EdHPGvCa+LCsF9/qhPlSzE64ulCQq/HKhYkLvIIiB
-   jdCNaMFh4yzaJ3xTUv1VjTUtFHW0+Z8tGEbZBBhpa/I2UD5JZbfVG7+Bz
-   D2Or15pzCFMT3eymtlMquNbPV4rBugnb57bExxRa6PEokV7ngqHVcn2Fc
-   UtuthQK+mQANu4/DAwFtnwnPGp54wv9NfUXqG7IIKMXU+CYzYFvmnrSt6
-   w==;
-X-CSE-ConnectionGUID: MvR60DktTOu60nTeXNsjlQ==
-X-CSE-MsgGUID: w3Zo9xrLRUmigC1boxy9sQ==
-X-IronPort-AV: E=McAfee;i="6800,10657,11905"; a="77486939"
-X-IronPort-AV: E=Sophos;i="6.27,103,1787036400"; 
-   d="scan'208";a="77486939"
-Received: from orviesa001.jf.intel.com ([10.64.159.141])
-  by fmvoesa110.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 16 Sep 2026 02:55:56 -0700
-X-CSE-ConnectionGUID: CMf+pV8wSQO9PkbimfunmA==
-X-CSE-MsgGUID: 1AA1bSyoS7mKuAtJD4vrvg==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.27,103,1787036400"; 
-   d="scan'208";a="311564651"
-Received: from ettammin-mobl2.ger.corp.intel.com (HELO localhost) ([10.245.244.145])
-  by smtpauth.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 16 Sep 2026 02:55:52 -0700
-Date: Wed, 16 Sep 2026 12:55:49 +0300
-From: Andy Shevchenko <andriy.shevchenko@intel.com>
-To: Ryan Brue <ryanbrue.dev@gmail.com>
-Cc: Jonathan Cameron <jic23@kernel.org>,
-	David Lechner <dlechner@baylibre.com>,
-	Nuno =?iso-8859-1?Q?S=E1?= <nuno.sa@analog.com>,
-	Andy Shevchenko <andy@kernel.org>, Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Lee Jones <lee@kernel.org>, linux-iio@vger.kernel.org,
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, mfd@lists.linux.dev,
-	Roman Vivchar <rva333@protonmail.com>,
-	Luca Leonardo Scorcia <l.scorcia@gmail.com>
-Subject: Re: [PATCH 2/3] iio: adc: mt6397-auxadc: add mt6397 PMIC AUXADC
- driver
-Message-ID: <aqpnpT6hU5Z0s1TZ@ashevche-desk.local>
-References: <20260915-rbrue-suez-upstreaming-mt6397-auxadc-v1-0-d35d2ac3d6f0@gmail.com>
- <20260915-rbrue-suez-upstreaming-mt6397-auxadc-v1-2-d35d2ac3d6f0@gmail.com>
+	id 1x6mkD-00000008xJa-48fB;
+	Wed, 16 Sep 2026 10:20:03 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1789553998;
+	bh=ZdiiynkTSEzixqoDULJaTjJ2JCfd9M9hNholTnj5GQU=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=mSIn0NIG7emGT1WDtVPOGhV9vO5/hD739A2wU0lUdlnlJ41tHMC0YYehbWqSPjDW/
+	 BKKJg5d4OVpSEsvqIbRt7c2DlxJ90fxG09yH6/OqQBobMrbLh7OwxhUCOSEBY/zkvG
+	 /UFoRyGIc4zvqn9/6YvV4hEgFqAdUKHla2Yx0UbqIqJjBqh8rtwPVjUaFt9LQGQblx
+	 d+oebwWbgh8eYTHB1kx3h+UOy+45/ex9QtheyI+CSWJz08SIzYMMA1eONeNbLqutNX
+	 6F2kd72D2QJD5KHhRjMQ9ciHXyiqjek7+nXguzHMgLPE7u5ierx9Ircz9sWpHi3l+0
+	 KicQ1/YeeHGjQ==
+Received: from [100.64.1.21] (unknown [100.64.1.21])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange x25519)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id CC5AF17E0420;
+	Wed, 16 Sep 2026 12:19:57 +0200 (CEST)
+Message-ID: <c8fb208f-c9a8-45ae-93f2-161279f2ba37@collabora.com>
+Date: Wed, 16 Sep 2026 12:19:57 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20260915-rbrue-suez-upstreaming-mt6397-auxadc-v1-2-d35d2ac3d6f0@gmail.com>
-Organization: Intel Finland Oy - BIC 0357606-4 - c/o Alberga Business Park, 6
- krs, Bertel Jungin Aukio 5, 02600 Espoo
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v3 00/12] ASoC: mediatek: mt8189: Improve error handling
+To: phucduc.bui@gmail.com, Mark Brown <broonie@kernel.org>
+Cc: Liam Girdwood <lgirdwood@gmail.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>, Jaroslav Kysela <perex@perex.cz>,
+ Takashi Iwai <tiwai@suse.com>, Cezary Rojewski <cezary.rojewski@intel.com>,
+ Cyril Chao <Cyril.Chao@mediatek.com>,
+ Kuninori Morimoto <kuninori.morimoto.gx@renesas.com>,
+ Dan Carpenter <error27@gmail.com>, cassiogabrielcontato@gmail.com,
+ linux-sound@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+References: <20260916050020.14575-1-phucduc.bui@gmail.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
+In-Reply-To: <20260916050020.14575-1-phucduc.bui@gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260916_025556_815096_5E564C71 
-X-CRM114-Status: GOOD (  31.00  )
+X-CRM114-CacheID: sfid-20260916_032002_229862_FB2D470D 
+X-CRM114-Status: GOOD (  17.47  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,152 +80,70 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Sep 15, 2026 at 11:15:27PM -0500, Ryan Brue wrote:
-> The mt6397 AUXADC is a 10-bit ADC behind the SoC's PMIC wrapper. On boards
-> built around this PMIC it is the only way to read the battery: the SoC's
-> AUXADC is wired to board thermistors and the charger ICs these boards use
-> have no ADC of their own.
+On 9/16/26 07:00, phucduc.bui@gmail.com wrote:
+> From: bui duc phuc <phucduc.bui@gmail.com>
 > 
-> Add a driver exposing the battery voltage and battery temperature
-> channels. Only those two are described, so a channel ID in the device tree
-> is an index into the driver's channel array rather than the PMIC's channel
-> number, as mt6323-auxadc does. The ready bit lives in a channel's raw
-> result register, but the value comes from the chip's trimmed copy of it,
-> which is what the vendor driver reads for a measurement.
+> Hi all,
 > 
-> Both channels need more than that, as the vendor programs them. The
-> battery voltage is measured through ISENSE, because a board with a
-> switching charger in the power path leaves BATSNS on the charger's system
-> rail instead of on the pack. The thermistor only reads correctly with the
-> PMIC's battery-detect bias and input buffer enabled, which take 20 ms to
-> settle. Both are switched back off afterwards.
+> This series addresses part of the error handling in the MT8189 AFE driver.
 > 
-> Reads average sixteen conversions in software; the chip's sample
-> accumulator makes no measurable difference at any setting, so it is left
-> at one sample per conversion.
+> It propagates errors from clock operations and runtime resume, validates
+> clock parameters, and removes redundant error messages.
+> 
+> In v2, there was discussion about checking the return value of
+> regmap_update_bits(). While opinions differed, the existing driver already
+> checks it in mt8189_afe_enable_top_cg(), which is used by
+> mt8189_apll1_enable() and mt8189_apll2_enable() touched by this series.
+> 
+> Therefore, I keep these checks and add the corresponding error paths for
+> consistency.
+> 
+> Compile-tested only.
 
-...
+Series is
 
-> +/*
-> + * MediaTek MT6397 PMIC AUXADC IIO driver
-> + *
-> + * Copyright (c) 2026 Ryan Brue <ryanbrue.dev@gmail.com>
-> + *
-> + * Based on drivers/iio/adc/mt6323-auxadc.c
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
-Why not add this device support into that driver?
+Cheers,
+Angelo
 
-> + */
-
-...
-
-> +#define MT6397_AUXADC_ISENSE_SETTLE_US	USEC_PER_MSEC
-
-(1 * USEC_PER_MSEC)
-
-...
-
-> +static const struct iio_chan_spec mt6397_auxadc_channels[] = {
-> +	MTK_PMIC_IIO_CHAN(isense,   MT6397_AUXADC_ISENSE,
-
-One space too many.
-
-> +			  MT6397_AUXADC_HWCHAN_BATSNS),
-> +	MTK_PMIC_IIO_CHAN(bat_temp, MT6397_AUXADC_BAT_TEMP,
-> +			  MT6397_AUXADC_HWCHAN_BAT_TEMP),
-> +};
-
-...
-
-> +static int mt6397_auxadc_battemp_bias(struct mt6397_auxadc *adc, bool on)
-> +{
-> +	struct regmap *map = adc->regmap;
-> +	int ret;
-> +
-> +	if (on) {
-> +		ret = regmap_set_bits(map, MT6397_AUXADC_CON0,
-> +				      MT6397_AUXADC_CON0_BUF_PWD_ON);
-> +		if (ret)
-> +			return ret;
-> +		ret = regmap_set_bits(map, MT6397_AUXADC_CON0,
-> +				      MT6397_AUXADC_CON0_BUF_PWD_B);
-> +		if (ret)
-> +			return ret;
-> +		return regmap_set_bits(map, MT6397_CHR_CON7,
-> +				       MT6397_CHR_CON7_BATON_TDET_EN);
-> +	}
-> +
-> +	ret = regmap_clear_bits(map, MT6397_CHR_CON7,
-> +				MT6397_CHR_CON7_BATON_TDET_EN);
-> +	ret = ret ?: regmap_clear_bits(map, MT6397_AUXADC_CON0,
-> +				       MT6397_AUXADC_CON0_BUF_PWD_B);
-> +	return ret ?: regmap_clear_bits(map, MT6397_AUXADC_CON0,
-> +					MT6397_AUXADC_CON0_BUF_PWD_ON);
-
-Huh?! Please, use standard pattern with 'if (ret) return ret;'.
-Ditto for other weird cases like this.
-
-> +}
-
-...
-
-> +{
-> +	unsigned int i, sum = 0;
-> +	int ret, sample;
-
-It's preferred not to mix ret with other semantically different variables.
-
-> +	/* Held across the whole burst: the channel select is shared state. */
-> +	guard(mutex)(&adc->lock);
-> +
-> +	if (chan->channel == MT6397_AUXADC_ISENSE) {
-> +		ret = mt6397_auxadc_isense_enable(adc);
-> +		if (ret)
-> +			return ret;
-> +		fsleep(MT6397_AUXADC_ISENSE_SETTLE_US);
-> +	} else {
-> +		ret = mt6397_auxadc_battemp_bias(adc, true);
-> +		if (ret)
-> +			return ret;
-> +		fsleep(MT6397_AUXADC_BATTEMP_SETTLE_US);
-> +	}
-
-> +	for (i = 0; i < MT6397_AUXADC_SAMPLES; i++) {
-
-	for (unsigned int i = 0; i < MT6397_AUXADC_SAMPLES; i++) {
-
-
-> +		ret = mt6397_auxadc_read_once(adc, chan, &sample);
-> +		if (ret)
-> +			break;
-> +
-> +		sum += sample;
-> +	}
-> +
-> +	/* Lower START so the converter is not left armed between reads. */
-> +	regmap_clear_bits(adc->regmap, MT6397_AUXADC_CON1,
-> +			  MT6397_AUXADC_CON1_START);
-> +
-> +	if (chan->channel == MT6397_AUXADC_ISENSE)
-> +		mt6397_auxadc_isense_disable(adc);
-> +	else
-> +		mt6397_auxadc_battemp_bias(adc, false);
-> +
-> +	if (ret)
-> +		return ret;
-> +
-> +	*val = DIV_ROUND_CLOSEST(sum, MT6397_AUXADC_SAMPLES);
-> +
-> +	return 0;
-> +}
-
-...
-
-Otherwise nice and small driver.
-
--- 
-With Best Regards,
-Andy Shevchenko
-
-
+> 
+> Link v1 :
+> https://lore.kernel.org/all/20260910125742.150902-1-phucduc.bui@gmail.com/
+> Link v2:
+> https://lore.kernel.org/all/20260914072842.24420-1-phucduc.bui@gmail.com/
+> 
+> Changes in v2:
+>   - Update the names of the goto labels.
+>   - Check for zero frequency since freq is unsigned.
+> Changes in v3:
+>   - Add Angelo's Reviewed-by tag.
+>   - Restore the existing afe->regmap checks,
+>     making the separate patch for missing regmap unnecessary.
+>   - Do not pre-initialize ret; set ret = 0 in the default case throughout
+>     the series.
+> 
+> Best regards,
+> Phuc
+> 
+> bui duc phuc (12):
+>    ASoC: mediatek: mt8189: Propagate APLL enable errors
+>    ASoC: mediatek: mt8189: Propagate MCK enable errors
+>    ASoC: mediatek: mt8189: Validate MCK ID
+>    ASoC: mediatek: mt8189: Propagate reg_rw clock errors
+>    ASoC: mediatek: mt8189: Use dev_err_probe() for clock errors
+>    ASoC: mediatek: mt8189: Propagate runtime resume errors
+>    ASoC: mediatek: mt8189: Remove redundant error message
+>    ASoC: mediatek: mt8189: Propagate APLL errors
+>    ASoC: mediatek: mt8189: Propagate MCLK errors
+>    ASoC: mediatek: mt8189: Validate sysclk frequency
+>    ASoC: mediatek: mt8189: Propagate TDM clock errors
+>    ASoC: mediatek: mt8189: Validate TDM MCLK frequency
+> 
+>   sound/soc/mediatek/mt8189/mt8189-afe-clk.c | 134 +++++++++++++++------
+>   sound/soc/mediatek/mt8189/mt8189-afe-pcm.c |  45 ++++---
+>   sound/soc/mediatek/mt8189/mt8189-dai-i2s.c |  18 ++-
+>   sound/soc/mediatek/mt8189/mt8189-dai-tdm.c |  19 ++-
+>   4 files changed, 154 insertions(+), 62 deletions(-)
+> 
 
