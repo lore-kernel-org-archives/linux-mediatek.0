@@ -4,85 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9794BC88E77
-	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Sep 2026 10:57:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9C7E3C88E5C
+	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Sep 2026 11:08:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=gz7RtVIVDtvAOyTXE/mXacpXU+T/iTsuAc5JzyyRrCI=; b=GXvnGW+x3hYszlHz9OZYUTNdeP
-	FznBstcpBNZ2jcydZATGUFmuEyGbsBvnMdD5i7WPShYyFtnkx6YSZDLyt1PA+hTIBJVbU1W5xWjbj
-	iGc9m0IScvXNNbY7vlZDEureOi16tRuWEImy9DRX7qkzjgsPwtuY5PMi8+E4VuGK6NdDx9PXBYz30
-	YaB0i5qKO1V/A8ILr4GHX0quRMqHY5Noo3UN+vq/Q58BxpJ/em59WOuOYJnRzJZUWdBFPagyZ8Vo5
-	41VFtkmMeJi5yB5mgMdARkd3ODHGrUlZ3c8b192sbVUfD+pB4VmQFhU6Apa62Tpa1/7fzHYvMj4Fj
-	6m8e2zPg==;
+	bh=eSAGX47Hy8b0egmNyWcSXVJm5ulCSGW/EmuhPogSmCo=; b=UHngFTsDNE+r+VJ54A/2prwPKG
+	JagcUyVxSjozF4SJrvNB5nKBP4CpZdITn7E3WPbclPuQZ1kCkymfdhIQ0jzjqigc+UaST/1uqHDUA
+	CBZIGLArUwj743IuwOvFOlBE/Fogl65maSNvuzMe8W7HiM7IpRqlP+T0UZdYkeJ9SYLcIfDbEhzxs
+	Jv1kvevR6R5ymfI7thFQ81SHqJX2zURHp1nHAoS6pRIa8zfnNS7egBTPYpc67nMuBg4df46iZAi0B
+	rv/N/SkAY+S+Ne5XZV2hZkGzqT0xR06352cJpqGqZWDwF39IxNLetBv3Xu+dDu360GnTmXk59vvXa
+	UXyNCeGA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x6nKZ-000000091Kx-1vFc;
-	Wed, 16 Sep 2026 10:57:35 +0000
+	id 1x6nVD-000000092Nq-1fdV;
+	Wed, 16 Sep 2026 11:08:35 +0000
 Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x6nKT-000000091J2-2EsG;
-	Wed, 16 Sep 2026 10:57:30 +0000
+	id 1x6nVB-000000092MA-0tDr;
+	Wed, 16 Sep 2026 11:08:34 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1789556246;
-	bh=M3Q8PsaLkKHlvIUr5hlqxV84+L4Iq4K5flIJuMgtdOA=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=PV/0fH3IdcGxbWl15FphMuau4ZVGT+IxC3hWi+8R0uiO9UpOOAf0ZLDvzZzWQSlvK
-	 i3gXWo0G/iipFPEelkQVrryw9kIlUyFTWMtRExKcrxVhwNUq4HCySvdnZtMu8ify0t
-	 M/VbhYT9Tjy7zaZ6dCj3XnnG1cjrcPO2Kn7D88RN1uS8UvFSkvi1U+fjlyclXR/TXl
-	 8Te76d9Rw8JwzYbsmeN3vV5qQalIygyz/ZXKwv50F58Agbwstzs8RulPlUzd7bN72v
-	 DBNSYhl6XU2IZ6+2T9htMgAqRErw8GGrFX1QSs9HSMGIGz7vRiZID5qtCfXXHk6iq8
-	 7J6evp+G2Uxfw==
-Received: from [100.64.1.21] (unknown [100.64.1.21])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	s=mail; t=1789556909;
+	bh=mvbGJKU7g8urQTzwwQuSXtCvZqjpvJmauyF4amfDJEo=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+	b=GN6eTxhS/ALFNxkyrBHL9dWeqBtnw7EBL2VDx83iRjR+y0Ef793/Zmsb3hrPFLZyf
+	 ybayf5bILV7z7l1m8AHR3zG8pUd6oxbvmMxoy9sLxHGPHAb0AdtsIKP5OYO7JKhMLc
+	 5giPtPEtC/zD4F416dMqPlcO2ih4QfJUL4zW376C08ryvlofChQtLlkcG0nBxzZRgj
+	 jYqsVRrVxqJDE1AhY2/+YMkBWotE2aOn7Qhk3FhgAuq1ObEWy7gWmB+e3RPGdVFAaA
+	 UmUXiaD1BnBE4UbZ6/7TdEVdjMWn2uAOXIJhWR+NH7LYweZX7vRK1h+lrb3ev1XiBC
+	 C6Rpr2RYQ3cHw==
+Received: from IcarusMOD.eternityproject.eu (unknown [100.64.1.21])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id E035B17E0420;
-	Wed, 16 Sep 2026 12:57:25 +0200 (CEST)
-Message-ID: <1b7438ba-69c3-4c3d-b79b-2879b90fabc1@collabora.com>
-Date: Wed, 16 Sep 2026 12:57:25 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v8 02/13] drm/mediatek: Implement Display Stream
- Compression support
-To: Nikolai Burov <nikolai.burov@jolla.com>,
- "chunkuang.hu@kernel.org" <chunkuang.hu@kernel.org>
-Cc: "p.zabel@pengutronix.de" <p.zabel@pengutronix.de>,
- "maarten.lankhorst@linux.intel.com" <maarten.lankhorst@linux.intel.com>,
- "mripard@kernel.org" <mripard@kernel.org>,
- "tzimmermann@suse.de" <tzimmermann@suse.de>,
- "airlied@gmail.com" <airlied@gmail.com>, "simona@ffwll.ch"
- <simona@ffwll.ch>, "robh@kernel.org" <robh@kernel.org>,
- "krzk+dt@kernel.org" <krzk+dt@kernel.org>,
- "conor+dt@kernel.org" <conor+dt@kernel.org>,
- "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
- "jitao.shi@mediatek.com" <jitao.shi@mediatek.com>,
- "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>,
- "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
- "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "linux-arm-kernel@lists.infradead.org"
- <linux-arm-kernel@lists.infradead.org>,
- "kernel@collabora.com" <kernel@collabora.com>,
- "justin.yeh@mediatek.com" <justin.yeh@mediatek.com>,
- "jason-jh.lin@mediatek.com" <jason-jh.lin@mediatek.com>
-References: <20260915084148.11385-1-angelogioacchino.delregno@collabora.com>
- <20260915084148.11385-3-angelogioacchino.delregno@collabora.com>
- <GV1PR06MB8417DED4A9C82CE84248F5F5E4BA2@GV1PR06MB8417.eurprd06.prod.outlook.com>
- <14b99e0a-e08a-42af-b982-471cae869149@collabora.com>
- <GV1PR06MB841771AF67A658BF71D4F479E4BA2@GV1PR06MB8417.eurprd06.prod.outlook.com>
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 1789B17E091A;
+	Wed, 16 Sep 2026 13:08:29 +0200 (CEST)
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-In-Reply-To: <GV1PR06MB841771AF67A658BF71D4F479E4BA2@GV1PR06MB8417.eurprd06.prod.outlook.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+To: chunkuang.hu@kernel.org
+Cc: p.zabel@pengutronix.de,
+	maarten.lankhorst@linux.intel.com,
+	mripard@kernel.org,
+	tzimmermann@suse.de,
+	airlied@gmail.com,
+	simona@ffwll.ch,
+	robh@kernel.org,
+	krzk+dt@kernel.org,
+	conor+dt@kernel.org,
+	matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com,
+	jitao.shi@mediatek.com,
+	dri-devel@lists.freedesktop.org,
+	linux-mediatek@lists.infradead.org,
+	devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	kernel@collabora.com,
+	justin.yeh@mediatek.com,
+	jason-jh.lin@mediatek.com,
+	CK Hu <ck.hu@mediatek.com>
+Subject: [PATCH v9 01/13] dt-bindings: display: mediatek: dsc: Add MT8196 compatible
+Date: Wed, 16 Sep 2026 13:08:13 +0200
+Message-ID: <20260916110825.102631-2-angelogioacchino.delregno@collabora.com>
+X-Mailer: git-send-email 2.55.0
+In-Reply-To: <20260916110825.102631-1-angelogioacchino.delregno@collabora.com>
+References: <20260916110825.102631-1-angelogioacchino.delregno@collabora.com>
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260916_035729_746056_E53E7B0C 
-X-CRM114-Status: GOOD (  34.68  )
+X-CRM114-CacheID: sfid-20260916_040833_426159_067283F2 
+X-CRM114-Status: UNSURE (   9.99  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,119 +92,34 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 9/15/26 20:51, Nikolai Burov wrote:
-> On 9/15/26 6:05 PM, AngeloGioacchino Del Regno wrote:
-> [...]
->>>> +    ret = drm_dsc_setup_rc_params(dsc, DRM_DSC_1_1_PRE_SCR);
->>>> +    if (ret) {
->>>> +        dev_err(dev, "Cannot find DSC RC params\n");
->>>> +        return ret;
->>>> +    }
->>>
->>> The defaults in MediaTek's downstream driver match DRM_DSC_1_2_444, not
->>> DRM_DSC_1_1_PRE_SCR, and the panel on my test device requires that even
->>> though it uses DSC v1.1. This may be a panel-specific problem, but have
->>> you tested this with any actual panels that need 1_1_PRE_SCR?
->>>
->>
->> My downstream uses 1_1_PRE_SCR... that's why it is like this.
->>
->> I can resolve it like
->>
->>       if (dsc->dsc_version_major == 1 && dsc->dsc_version_minor == 1)
->>           type = DRM_DSC_1_1_PRE_SCR;
->>       else
->>           type = DRM_DSC_1_2_444;
->>
->>       ret = drm_dsc_setup_rc_params(dsc, type);
->>
->> ...that will work, granted that the panel declares the correct DSC version.
->>
-> 
-> Unfortunately not, because DRM_DSC_1_2_444 is also needed for some v1.1
-> panels. From drivers/gpu/drm/drm_dsc_helper.c:
-> 
-> /*
->   * Selected Rate Control Related Parameter Recommended Values from DSC v1.2, v1.2a, v1.2b and
->   * DSC_v1.1_E1 specs.
->   *
->   * Cross-checked against C Model releases: DSC_model_20161212 and 20210623
->   */
-> static const struct rc_parameters_data rc_parameters_1_2_444[] = {
-> ...
-> 
-> I'm pretty sure that my device is not using DSC v1.2.
-> 
-> Since this is definitely panel-specific and there seems to be no good
-> way to detect the required parameters at the moment, this is probably
-> something to fix later.
-> 
+Add compatible for the Display Stream Compression (DSC) IP found
+in the display controller of the MT8196 SoC.
 
-Ok, let's just go with 1_2_444 then - makes sense... that's something
-that must be accounted at the API level, because I know of some panels
-that need the PRE_SCR set... and that's even if they're using v1.2, just
-because - for whatever reason - some of the DSC params are stored in and
-read from an OTP area of the DriverIC (and that would mismatch then with
-the other params that are runtime-programmable from the DrIC view, which
-results in pixel-garbage artifacts).
+This IP is compatible with the one found in MT8195.
 
-Not sure how many panels are doing that, but this is of course not a MTK
-specific thing... I looked around, and apparently there's a mention of
-that in the Intel driver as well - yay I'm not the only one who knows, lol.
+Acked-by: Rob Herring (Arm) <robh@kernel.org>
+Reviewed-by: CK Hu <ck.hu@mediatek.com>
+Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+---
+ .../devicetree/bindings/display/mediatek/mediatek,dsc.yaml    | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
 
-(And I definitely didn't expect that to be the case anyway).
+diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,dsc.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,dsc.yaml
+index a5b88eb97e3b..c8b3e86943e4 100644
+--- a/Documentation/devicetree/bindings/display/mediatek/mediatek,dsc.yaml
++++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,dsc.yaml
+@@ -23,7 +23,9 @@ properties:
+       - enum:
+           - mediatek,mt8195-disp-dsc
+       - items:
+-          - const: mediatek,mt8188-disp-dsc
++          - enum:
++              - mediatek,mt8188-disp-dsc
++              - mediatek,mt8196-disp-dsc
+           - const: mediatek,mt8195-disp-dsc
+ 
+   reg:
+-- 
+2.55.0
 
-> [...]
->>> I don't quite understand what is going on here, even in the original
->>> driver before this patch. What is the point of setting VACT_NL twice?
->>> Does mtk_dsi_ps_control() really need to be called in mtk_dsi_poweron()
->>> if mtk_dsi_config_vdo_timing() ends up calling it a second time?
->>
->> I didn't do much research, but MT8173 and 8192 if I remember correctly
->> won't work
->> without this sequence. I saw that 2 years ago or something, so I don't
->> remember
->> all that clearly.
->>
-> 
-> Okay, it's fine to keep it as-is then to avoid breaking older SoCs. One
-> change I would definitely recommend though is to move
-> mtk_dsi_set_dsc_params() to the very beginning of the sequence, maybe
-> even into mtk_dsi_host_attach().
-> 
-> Otherwise some parts of the code might end up relying on unpopulated
-> parameters by accident, and it's harder to debug if they change in the
-> middle of the sequence.
-> 
-
-Honestly, since it works right now, I would be happier to push this upstream
-as-is, and then shuffle things around (for an optimization, or else) after
-the fact.
-
-The point is to have a working baseline upstream, then if needed improve it
-later when further testing can be done - point is that there's a huge set
-of patches that is restructuring everything, so I want to play safe as much
-as I can in this moment - I think (and hope) you understand my feeling here.
-
-> [...]
->> We can always come back to this in the future with a separate patch, and
->> we should
->> do just that, otherwise series versions will never come to an end :-)
->>
-> 
-> Agreed. My work is currently also based on the restructured mediatek-drm
-> driver, but I will try to send follow-up patches for MT6858 support once
-> some of this stuff lands upstream.
-> 
-
-That's... a w e s o m e !
-
-This is a practical test of the restructured code on yet another platform,
-and I'm happier now because it's a different type of device (as in, not a
-laptop and not an aiot board).
-
-Thanks for that, highly appreciated.
-
-Cheers,
-Angelo
 
