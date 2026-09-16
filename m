@@ -4,80 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2A9BBC982C9
-	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Sep 2026 16:20:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E5C52C982C9
+	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Sep 2026 16:35:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From
-	:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=HpbnWJEGL9NjihNHGwgBoO1lxp2f2aVoZ/arzsurXIo=; b=h4Za8ud4HLscldLB/A0bcDes4i
-	iIwS6NWhGml9n1QNPz5A/VW5egYedg8RwYJ/B8yyse8vVwmjKxvXgYAxaLziO/9exWvixIP/OkC5j
-	xLKZPPOq4T7N/v1DIJH0Am2UeJsFYj4NPmuolQHb5Kgmg5AIe6+Zcao0mJa2GQPcQ+sIkCTsy7fsX
-	qYV/KdEMMNNw5San4zDpis5FpLx1Wks0xOJ7Iv0l3UMmCWus5MiTjLCD4DcmndR0f97VOyiw0X6Xy
-	8T7SF//abAuaRxqDJvjgpDedYJBJbEFPm5rhqd5IHoOTRxCBDFutF45UeX1FtWVWGMqQnuhM22z9k
-	7AuakPOA==;
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=044CrMqm1hX472GyboH+P8q+RWHr3VuP6wQdlD4joxs=; b=p1C/u+2eNJvsEgV37cZj2sCYY4
+	AISIpdO7RI/Jp2d8/JiBetBaoou5Ev82fadTcHRqsrOwwQzUYEWIzmorT77d2E6bpdCE5KYOsjbig
+	JbGdmiT0MgCAXDGXRf/B/haeF1+xFINEN340MAJOPlGSRff1W6kWFCGZOz30giX9A+Sq1YwpYxIVM
+	Iwf8hfIIV/YTKXcSDcvxpArs1hZD/W8hI0Z93xCafc3MEMQHogPWefxnWr2iyzAylxhOLU/wHuJUk
+	YQgu2OMnQ3egNMGnm6De/BMUGEFG9vNdlY8zTZQFQ7iKGp/asryk3NifEpIhFJuTlkV/Oqy1ccHGj
+	rP8iCogg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x6sN9-00000009iet-3GVi;
-	Wed, 16 Sep 2026 16:20:35 +0000
-Received: from smtpout-04.galae.net ([185.171.202.116])
+	id 1x6sbe-00000009ks8-1xvF;
+	Wed, 16 Sep 2026 16:35:34 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x6sN7-00000009ieE-1Rwe
+	id 1x6sbd-00000009krH-2A67
 	for linux-mediatek@lists.infradead.org;
-	Wed, 16 Sep 2026 16:20:34 +0000
-Received: from smtpout-01.galae.net (smtpout-01.galae.net [212.83.139.233])
-	by smtpout-04.galae.net (Postfix) with ESMTPS id 5FA24C5CD65;
-	Wed, 16 Sep 2026 16:21:14 +0000 (UTC)
-Received: from mail.galae.net (mail.galae.net [212.83.136.155])
-	by smtpout-01.galae.net (Postfix) with ESMTPS id 3936760337;
-	Wed, 16 Sep 2026 16:20:30 +0000 (UTC)
-Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id E5F0D11C7B05C;
-	Wed, 16 Sep 2026 18:20:18 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=dkim;
-	t=1789575624; h=from:subject:date:message-id:to:mime-version:content-type:
-	 content-transfer-encoding:content-language:in-reply-to:references;
-	bh=HpbnWJEGL9NjihNHGwgBoO1lxp2f2aVoZ/arzsurXIo=;
-	b=U4LHQ7LSkICNCO7ToQ5xHrfiLdcHnz2/ttaah0BkmBXIG3MqosnQEOR5X/7NxellbJcRGW
-	xAG4jSZy8VuMGs7IKTOtPPE4SyaZQJvbp8ju4uZj6C1Mid42WZB71TsfaYB9eReILV5xt9
-	dEjapsyZsOTgw6i3141Ykl6ja0onsTjXrNdltqKrdpZBCPJT065I174ymwoX/oDyH0vpk9
-	MnsZ1VaSWZuuCxP4TbPJu8s+enkrl0MToPUlPS0+ZOIDuz1v7j+i9itsMm1iuGXBTz1f/r
-	oY8nmD0cUWLykxhWvfRaeCudRkhWYXUAt2RuEXeMhPVXNZ8MGIuhYXAPo7ILIg==
-Message-ID: <9609a821-c971-491c-9436-9346c48d2ee5@bootlin.com>
-Date: Wed, 16 Sep 2026 18:20:18 +0200
+	Wed, 16 Sep 2026 16:35:33 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by tor.source.kernel.org (Postfix) with ESMTP id 770626022C
+	for <linux-mediatek@lists.infradead.org>; Wed, 16 Sep 2026 16:35:32 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2D81D1F0089D
+	for <linux-mediatek@lists.infradead.org>; Wed, 16 Sep 2026 16:35:32 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1789576532;
+	bh=044CrMqm1hX472GyboH+P8q+RWHr3VuP6wQdlD4joxs=;
+	h=References:In-Reply-To:From:Date:Subject:To:Cc;
+	b=ev8qH/SxBCpyuGF3HU5REG17ahp3YJOMTf5VMWq89VmLTcd29cME/my0j+xE39SBh
+	 753CcdI1sS4+tA6b9wrI4PtI4S0Juz6E7sXIBeOvJQRwVcMP3knbNwUQOjO0aypvo8
+	 i2Ah48QVlUpeykjmGRWTci0GzvQU8w1ZY9GoZEaN4zUkY07aA3+VjZ7eJL/jH2yZ4f
+	 x/oA2Hr74NxP5/ed70hXaRmYNJhbqYxKPxjo2CWTAXqlUHBaJnUPY2Fu4Mq41e5p/0
+	 bMZ6JEMmisL3sPEO14aYX+EVc6AkO0TMRDh1/7HE/WPIAE5whK0oCWO/zbmOyOtxrV
+	 6VngY2T8yyjEA==
+Received: by mail-lf1-f47.google.com with SMTP id 2adb3069b0e04-5b5f21afe8cso2341844e87.1
+        for <linux-mediatek@lists.infradead.org>; Wed, 16 Sep 2026 09:35:32 -0700 (PDT)
+X-Forwarded-Encrypted: i=1; AKwUvBwn7lEGnj8VZK8dL9KqwLjhWA0HI4Cs4i/bYedTPgsNfl1+JdaNlebZcW4QwfJvkzzNGsEcW5bwPLlEWlxrfw==@lists.infradead.org
+X-Gm-Message-State: AFuF++nzmhe4/qQDQf/wvbbqHXCnhUwxQF11UKKOt4vLSBh4mT2LqASv
+	W/PBQprpoyE7wvGWASoXd3N/E5ByLg7DHQx9BmBiVYg95pqrDu7gH0Gri+siq7nQIYBzbKQqz2d
+	sjX/GcfuTj0ozCD+K9GFAlz3pLnwC5QE=
+X-Received: by 2002:a05:6512:63d7:20b0:5b8:9999:2f14 with SMTP id
+ 2adb3069b0e04-5b8ba5eba89mr50407e87.19.1789576530843; Wed, 16 Sep 2026
+ 09:35:30 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH net-next v15 00/12] net: pcs: Introduce support for fwnode
- PCS
-To: Christian Marangi <ansuelsmth@gmail.com>,
- Andrew Lunn <andrew+netdev@lunn.ch>, "David S. Miller"
- <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>,
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>, Simon Horman <horms@kernel.org>,
- Jonathan Corbet <corbet@lwn.net>, Shuah Khan <skhan@linuxfoundation.org>,
- Randy Dunlap <rdunlap@infradead.org>, Lorenzo Bianconi <lorenzo@kernel.org>,
- Heiner Kallweit <hkallweit1@gmail.com>, Russell King
- <linux@armlinux.org.uk>, Philipp Zabel <p.zabel@pengutronix.de>,
- Nathan Chancellor <nathan@kernel.org>,
- Nick Desaulniers <ndesaulniers@google.com>, Bill Wendling
- <morbo@google.com>, Justin Stitt <justinstitt@google.com>,
- netdev@vger.kernel.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-doc@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- llvm@lists.linux.dev
-References: <20260901083001.8044-1-ansuelsmth@gmail.com>
-Content-Language: en-US
-From: Maxime Chevallier <maxime.chevallier@bootlin.com>
-In-Reply-To: <20260901083001.8044-1-ansuelsmth@gmail.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
-X-Last-TLS-Session-Version: TLSv1.3
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260916_092033_544578_15CEB985 
-X-CRM114-Status: UNSURE (   5.75  )
-X-CRM114-Notice: Please train this message.
+References: <20260723035823.2041832-1-justin.yeh@mediatek.com> <20260723035823.2041832-2-justin.yeh@mediatek.com>
+In-Reply-To: <20260723035823.2041832-2-justin.yeh@mediatek.com>
+From: Linus Walleij <linusw@kernel.org>
+Date: Wed, 16 Sep 2026 18:35:18 +0200
+X-Gmail-Original-Message-ID: <CAD++jL=3YWAQsYZUTiRUpX_WOkeNYe5NdADwNeoFky+gY=OX5w@mail.gmail.com>
+X-Gm-Features: AcwNN1VvaG_CTHc5Gx7LSXS7f1odDC4A4LezNnphRUFVM6XIRyS7EcYx1dfz_o0
+Message-ID: <CAD++jL=3YWAQsYZUTiRUpX_WOkeNYe5NdADwNeoFky+gY=OX5w@mail.gmail.com>
+Subject: Re: [PATCH v7 1/5] pinctrl: mediatek: use devm_gpiochip_add_data()
+ for GPIO chip
+To: Justin Yeh <justin.yeh@mediatek.com>
+Cc: Sean Wang <sean.wang@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	Project_Global_Chrome_Upstream_Group@mediatek.com, 
+	linux-mediatek@lists.infradead.org, linux-gpio@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	Chen-Yu Tsai <wenst@chromium.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,16 +84,31 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Christian,
+On Thu, Jul 23, 2026 at 5:58=E2=80=AFAM Justin Yeh <justin.yeh@mediatek.com=
+> wrote:
 
-On 9/1/26 10:29, Christian Marangi wrote:
-> This series introduce a most awaited feature that is correctly
-> provide PCS with fwnode without having to use specific export symbol
-> and additional handling of PCS in phylink.
+> The gpio_chip is allocated with device-managed memory but registered with
+> the non-managed gpiochip_add_data(). This was harmless while the drivers
+> were built-in, but once they can be built as modules and unbound/rmmod'd,
+> devm frees the gpio_chip's memory while it is still registered, causing a
+> use-after-free.
+>
+> Register it with devm_gpiochip_add_data() so it shares the same
+> device-managed lifecycle, which also lets the manual gpiochip_remove()
+> error paths go away.
+>
+> Fixes: a6df410d420a ("pinctrl: mediatek: Add Pinctrl/GPIO driver for mt81=
+35.")
+> Fixes: 805250982bb5 ("pinctrl: mediatek: add pinctrl-paris that implement=
+s the vendor dt-bindings")
+> Fixes: e78d57b2f87c ("pinctrl: mediatek: add pinctrl-moore that implement=
+s the generic pinctrl dt-bindings")
+> Signed-off-by: Justin Yeh <justin.yeh@mediatek.com>
+> Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
 
-I tried to re-rerun the mvpp2 prototype conversion, but it looks like the
-series doesn't apply cleanly on net-next anymore :(
+This patch does not apply to current v7.3-rc1.
+Please rebase and resend!
 
-Maxime
-
+Yours,
+Linus Walleij
 
