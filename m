@@ -4,83 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EBF3CC88E77
-	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Sep 2026 04:15:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CADFEC88E77
+	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Sep 2026 04:15:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=geQe/Nt94sgACddk5UkhJlOoq3dCQ3FTfciRXuFH+10=; b=yLZ1ijVTIyx1mf
-	KRtWYKulb+lS5jaNbIvoj2NHX8cXOEARGa0Q6D2l3ek2SLDARY/YnkizA+/We1A3E/jpQz2sOlaob
-	Lj0Txlzla7zZSv2AX5Yl0ipTCZnTWSLFO3zrrUyPQtU1mwhq/t8CelbWYnuGbM05BuP3HnzxEg/4S
-	rc/k2MzpfKgElIHlJtryr3/Ls0ba8UBw+ikKV8lacainek8owyo3T2MGvJdbOYbCilrJwuQeWdqSi
-	NXwYxVdjMv3as3rB0ZJ2Cvs4JV6SDsfhjezMu30ap5hPQSzhrn66pzdep3V/O+xrb33U1JdwyT/D1
-	o/TI7HqQQJqbjrWMIbMg==;
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=jhwjcBFP/KKm35RjYsTK0NhciT0e3mhgRUR8OdcQ0MU=; b=18fr/SCq/j8NDntir5avHAxswS
+	Id7ZqVFcRi7nzokbaHeTU+AnZfYt/NU7gP79ncD1PvOyZCiIpUxq7sS/oDeqTOfnQle07LVBTJNit
+	xhgJVBIoax2HyahfX+fcQ1BT97+tIsSfSWCpZJ1VCQWSlOglqSuwFvUa1yAerZ3VOZBxAGBJbsMn6
+	5CfXMD0L/YssEiHDXTYHBrM6kyxfh9yAgl1b622XeJkPrD9wURF0T0FujU9hawndFOGMjO1LecOFt
+	1EU212ye1RxtwpWazXYXf8C0IK726pGHzgW8WEAbALQO7VBi0mWohVP9Xxpb6xXDbO4jVRCdCncv7
+	XM8b8QCQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x6h3W-00000008I0N-1Wq4;
-	Wed, 16 Sep 2026 04:15:34 +0000
-Received: from mail-oo2-x02.google.com ([2607:f8b0:4864:31::2])
+	id 1x6h3c-00000008I39-2ZYp;
+	Wed, 16 Sep 2026 04:15:40 +0000
+Received: from mail-oo2-x04.google.com ([2607:f8b0:4864:31::4])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x6h3T-00000008HyF-06kg
+	id 1x6h3T-00000008HyW-3laF
 	for linux-mediatek@lists.infradead.org;
-	Wed, 16 Sep 2026 04:15:32 +0000
-Received: by mail-oo2-x02.google.com with SMTP id 46e09a7af769-7f9cc0e524aso1743486a34.1
-        for <linux-mediatek@lists.infradead.org>; Tue, 15 Sep 2026 21:15:30 -0700 (PDT)
+	Wed, 16 Sep 2026 04:15:33 +0000
+Received: by mail-oo2-x04.google.com with SMTP id 46e09a7af769-7f4e9ec63a7so1383743a34.1
+        for <linux-mediatek@lists.infradead.org>; Tue, 15 Sep 2026 21:15:31 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1789532129; x=1790136929; darn=lists.infradead.org;
-        h=cc:to:content-transfer-encoding:content-type:mime-version
-         :message-id:date:subject:from:from:to:cc:subject:date:message-id
-         :reply-to:content-type;
-        bh=geQe/Nt94sgACddk5UkhJlOoq3dCQ3FTfciRXuFH+10=;
-        b=fvGisQT+Rrt15Kyv93vgvdOWdeYxxO/n2l4f0mekJx/dzUrGfwRUN6qiEwEQetrEaf
-         6Nlh3y36PHeofK3Jjg73l+AMYyKcB0MeNscxSamncKFstX+I0JwRY+TLywHm3BMihmRt
-         B60h7CT10gotUKGgWIxFK8N01YCzWrzl5ExzFQrUfwfwjwDyiynIg3yyaFX9/P7oyOd1
-         9k9MxWMlb0kWP0tjjkFVOecj/rQXaRGim+pHjAtZbgljKbwOUw4tbHn/f+XIouN4HjCw
-         XqCOEB/k5NFUDpfqG3vEGO8VXRmJOxz5Zb+0JwerquMtD08P+Eooxv4/B38+Z7C11q5R
-         ofHg==
+        d=gmail.com; s=20251104; t=1789532131; x=1790136931; darn=lists.infradead.org;
+        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
+         :content-type:mime-version:subject:date:from:from:to:cc:subject:date
+         :message-id:reply-to:content-type;
+        bh=jhwjcBFP/KKm35RjYsTK0NhciT0e3mhgRUR8OdcQ0MU=;
+        b=ZfGXpHLr7ArSqT3IJ1r+/Rmo+BsJaU4jGSHSfiVF5pTOZjaADxvZRzAubresojNAL8
+         uUbXTd+eI1dTqjYNFKShToJExIX9k4qdLW4EORHcAOtlfacHHl7N/28EI0xGe613gp32
+         F0icIKWQJ0nmCr1nGpyXxuujcKMphiBeqlXX/O+3fbkLoZNbt8ZB7nLV/InIXvGhYFrK
+         QiSlKVE/M5cWO/A24U0bC7V97ai0hpndnyW7LBr7qEdX3VWQXOaoHHPTpMipHc/sAssc
+         +N6aOTsv+eWMWUK99npZ8ML+QDfScyrMhu1j4xAx/h+KTUmOM3PBtjwM+VVoSNlkIPm1
+         7U6Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1789532129; x=1790136929;
-        h=cc:to:content-transfer-encoding:content-type:mime-version
-         :message-id:date:subject:from:x-gm-gg:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to:content-type;
-        bh=geQe/Nt94sgACddk5UkhJlOoq3dCQ3FTfciRXuFH+10=;
-        b=SrMB0FNFP1IdadrEdOcLet9DoOkmnWkBGp4TsSSkUxtg3CJ1n+hmiqmZyOWjUlPuAW
-         VZoPoZ8AFMAsbR8r5uoYgcFp/IgwLNTk/XtRsdiNV3/0qCvb0q+ZqVGAEH5PsATFwKcc
-         nB7DH2WeE0FE8izdVg1HkRfGo6eFMEg1PfKyKwHgR/+xo0QVSZaVgEUZ3YtbisJLS6D5
-         nzosAkLELJNs7cWGBfxVuzpaH8Yh7R5f2uUrr7bqdgEgHLrDLHAeBS7T6h95XP7CYHdL
-         mekDvaPr1pm/JK0dktlyKehnV5dhzV4luC1qHDQ11n5eYuvz/ip6Pa8GOnfUN4dn3IC5
-         m4YA==
-X-Forwarded-Encrypted: i=1; AKwUvBxZWYpNxqKfbodrOP2bq7DBtQ48/7D1DapTEmocuSEj5xLydd69mpY/g0AmZaAzFTG6AqnFsfzNP4kzSvlKDQ==@lists.infradead.org
-X-Gm-Message-State: AFuF++nhFYkSpDRXQZ52r+y2xrtWpDE2doqK70HTKw3lR4waF/CoVkGG
-	ev619l3pKtA7ooSyRFTrP8IGoMvoqHYq+bCDbtFUFR4BlTonNkjC97YW
-X-Gm-Gg: AYBFou1ES2wsV8Ibzy7F/nwlDteLMVfQoRHyzR6ilvGvxdCcdOiASEy3Vy4FcvvU8fu
-	JbOpeBABtEYaGZkIHUbEuKf0V0jc9lNt6mbgrf+CY5GUN496+UpEmJho6nv96I+/z/SLqgypwQQ
-	htMlMKxSEhje0Z6LPyGa+rbxeKTK8vrmxX5+ScgcSR+Nulld6wiz+ZYTGzirabOWiorV8plgGO4
-	fiy1w7jXp3/c/7zGQXDBvt0TRy+zmkTuYEIeIllP7ioXbA3ZFDXSTUxkHtD5KJ/z63KRqCPvcEB
-	C+NDJtNB1Y2uaCQHS8YoUm11aiU4+jVihLcPquIWZrRVfUb58KvOIh63CKbgY9zgnhrXElO7PmP
-	rxc39CZ43gWuv3Wld9wtNsJxD5kX9HuLQSacG2AcWSTlUDYyp5QhUO5650tmGmPH79zXQjWOTKi
-	ft6U85WetMtm9hquYTkcLHRRfZj2JHKzDw3lHb0/JH2PrUObk4d/KAwafPGk2eKEc3L5BCftzjN
-	LTnCw==
-X-Received: by 2002:a05:6830:6af7:b0:7f4:eb7e:c8f7 with SMTP id 46e09a7af769-80b2c18158cmr1482766a34.5.1789532129476;
-        Tue, 15 Sep 2026 21:15:29 -0700 (PDT)
+        d=1e100.net; s=20260707; t=1789532131; x=1790136931;
+        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
+         :content-type:mime-version:subject:date:from:x-gm-gg
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+         :content-type;
+        bh=jhwjcBFP/KKm35RjYsTK0NhciT0e3mhgRUR8OdcQ0MU=;
+        b=lcjyowwfeaIToq/KPnbhMNHMKSKoi/I/tBMY1Sj9ZDMkskV+KMvB3wfIbscRkR05DZ
+         aezn7UcMSkP79zzXizmuP8zEsya1DuWW/ubJ8GF7ztvy8DNrGt/fu1M+LZbcUqQO/o8u
+         fGM3ytxZLmZlUXhXusMtqlbjSe3ucjesJY0FAOBjs5qbbIOTobADuH3feY1+Qyqu86/0
+         Rhy/vy4ej/AmaZjty75C9MRPD9WK3328/vsq0V07cWaOsbgpT+XOcB4Ru0sCamxOTYWN
+         ZZ6XiKn+3Vx8oE622R5kXYpW3R3HB4x6v5QX+dwpM88GU6nACx/k+W1Q9JaWf/pnMmM5
+         GGMA==
+X-Forwarded-Encrypted: i=1; AKwUvByRGOGY0Q8WHQfalp3CgfVdyYtcAyKCBQ1UWjW4eNdToRsbD6hZ959R68qmgpo02kqZr1L43AtmqBnZctaiOg==@lists.infradead.org
+X-Gm-Message-State: AFuF++lBkSFO5eP5QdTwQTlTwM7MAMBfd9cJyAXwWZm7FCExvYIlenU3
+	evbp+z0svxfpp+nw3GKxMHRzQWWTP3Q0g6xAMxqCcxAL9XN+dj/93JKz
+X-Gm-Gg: AYBFou1nR47A9nHAOK2FzczJH3aCdy7gKcevNlk7T7ROXyJ9gX0ElQ4VhSdTW8fbZjV
+	nYOGUm9e2mv6ZNSa57P36dnHIdM9JT/RelZqixY4uxoGWgrVc2h7RbphPaDFqdXyot8GggCATjl
+	i+c+SZDigP7pXZ0ZRDHYBNnKFeVksJZu6/t7p1zERVlxtU8tKeYQihqDMSQVNl1Rt2yXvaVwFZm
+	msROa7qU9LTJtXFRimmO4+vIC3ZQSL676dTuxDwgIJl/hsQIPT1PPg8KdVzj6dpZdQa6dJhpqnH
+	z31n6OcsP6gOlKgwc+bb8hCRR2OrlMgn1H5lcDFYOgItBFgTaShQTu70gBfI04X3CZyLgsM7ywx
+	OhYroH4HYmRH1kPr5svriusbIRFbHtZUSD3HLhulxWfr6ThrheiNlsaqbCDpXFwrykJQbyNHV4b
+	a1lTfHkSESx7m6EMDv//Eq4/sJiuS8zspcfvvh5lhiUyOS32mLImMxzsBAj2EA1d7mx28=
+X-Received: by 2002:a05:6830:6211:b0:7fa:ab72:9e04 with SMTP id 46e09a7af769-80b2f7c830fmr1398025a34.28.1789532130742;
+        Tue, 15 Sep 2026 21:15:30 -0700 (PDT)
 Received: from [192.168.18.164] ([2600:8804:5716:d800::b712])
-        by smtp.gmail.com with ESMTPSA id 46e09a7af769-80b07ad0373sm1440484a34.26.2026.09.15.21.15.27
+        by smtp.gmail.com with ESMTPSA id 46e09a7af769-80b07ad0373sm1440484a34.26.2026.09.15.21.15.29
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 15 Sep 2026 21:15:29 -0700 (PDT)
+        Tue, 15 Sep 2026 21:15:30 -0700 (PDT)
 From: Ryan Brue <ryanbrue.dev@gmail.com>
-Subject: [PATCH 0/3] iio: adc: add mt6397 PMIC AUXADC support
-Date: Tue, 15 Sep 2026 23:15:25 -0500
-Message-Id: <20260915-rbrue-suez-upstreaming-mt6397-auxadc-v1-0-d35d2ac3d6f0@gmail.com>
+Date: Tue, 15 Sep 2026 23:15:26 -0500
+Subject: [PATCH 1/3] dt-bindings: iio: adc: mediatek,mt6359-auxadc: add
+ mt6397 PMIC AUXADC
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-X-B4-Tracking: v=1; b=H4sIAAAAAAAC/x3NwQ6CMAyA4VchPdtkqw7FVzEe5ijYA5O0zBAJ7
- +7C8bv8/wbGKmxwbzZQ/orJJ1f4UwPpHfPIKH01kKPWdf6C+tLCaIV/WGZblOMkecRpac/dFWN
- ZY58wsCe6OQopOKipWXmQ9dg8nvv+B56DRSV2AAAA
-X-Change-ID: 20260914-rbrue-suez-upstreaming-mt6397-auxadc-5e1228025c50
+Message-Id: <20260915-rbrue-suez-upstreaming-mt6397-auxadc-v1-1-d35d2ac3d6f0@gmail.com>
+References: <20260915-rbrue-suez-upstreaming-mt6397-auxadc-v1-0-d35d2ac3d6f0@gmail.com>
+In-Reply-To: <20260915-rbrue-suez-upstreaming-mt6397-auxadc-v1-0-d35d2ac3d6f0@gmail.com>
 To: Jonathan Cameron <jic23@kernel.org>, 
  David Lechner <dlechner@baylibre.com>, 
  =?utf-8?q?Nuno_S=C3=A1?= <nuno.sa@analog.com>, 
@@ -97,16 +96,16 @@ Cc: linux-iio@vger.kernel.org, devicetree@vger.kernel.org,
  Luca Leonardo Scorcia <l.scorcia@gmail.com>, 
  Ryan Brue <ryanbrue.dev@gmail.com>
 X-Mailer: b4 0.16.0
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1789532127; l=3814;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1789532127; l=2042;
  i=ryanbrue.dev@gmail.com; s=20260906; h=from:subject:message-id;
- bh=1ZhvOrKcGislD+WC+8Q4vWu5z8pTpCo7Q/Gsjhr1d1M=;
- b=hy8S44J3Kt9/i++nBCcDmWUBualfD1ZRDUrk1YbiwxToPcudFRBPrKHFN4YfXcOFs/wkiAGTH
- L6vgwManOMMAClIr8hluO7RIvzaIEMuHuNUzkqJgQwQVkFxih5p6Zjj
+ bh=pmiqpg+YqOsk+EKifCpoFFAOwMNO4lcDpbG+a0tTy6k=;
+ b=zlRbINoqD2290MGLwe+MTrL1s4Bsp9ASTtTw5dB1r5/3VSi6a+YNhJDWnfn5xx5DMFAkDSpsR
+ JKyOG0N88gfCa+Au6JKO0cUBK36yIriOBv3MjrXPSU5E4mjHwOdwFy9
 X-Developer-Key: i=ryanbrue.dev@gmail.com; a=ed25519;
  pk=KsUvVaP//v/2q+ZBuacc7cLbsyEYn+AD71Sn28oZWKo=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260915_211531_452396_377C8209 
-X-CRM114-Status: GOOD (  17.72  )
+X-CRM114-CacheID: sfid-20260915_211531_945833_110616EB 
+X-CRM114-Status: GOOD (  14.01  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -121,82 +120,53 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The MediaTek mt6397 PMIC has a 10-bit AUXADC that nothing in-tree can
-reach. On boards built around it that ADC is the only path to the battery:
-the SoC's AUXADC is wired to board thermistors, and the charger ICs these
-boards use have no ADC at all, so without it there is no pack voltage and
-no state of charge.
+The MediaTek mt6397 PMIC includes a 10-bit AUXADC used for battery voltage
+and battery temperature measurements. It is not register compatible with
+mt6359: a conversion is requested by writing a channel number to a select
+field and pulsing an edge triggered start bit rather than by setting the
+channel's bit in a request register, and the results live elsewhere.
+It therefore gets its own compatible rather than a fallback.
 
-Patch 1 adds the compatible to the existing MediaTek PMIC AUXADC schema and
-the header naming the channels, patch 2 the driver, patch 3 the MFD cell
-that instantiates it. The cell comes last so that no commit in between
-registers a child no driver can claim.
+Add the binding and the header naming the channels a consumer puts in
+io-channels. The battery channel is named for the input it measures,
+ISENSE, which is what mt6323-auxadc calls the same input.
 
-The mt6397 is not given mediatek,mt6359-auxadc as a fallback because the
-two are not register compatible; patch 1 has the detail.
-
-Only the two channels a board needs for its pack are described, so patch 1
-ships a header naming them: a channel ID is an index into the driver's array
-and not the PMIC's channel number, as in mt6323-auxadc. The register
-sequences are the ones the vendor kernel's pmic_auxadc.c programs.
-
-One note on patch 3: it adds a cell to mt6397_devs[], which Luca Leonardo
-Scorcia's MT6392 series converts to the MFD_CELL_* macros in its patch
-4/9 [1]. Whichever of the two lands second needs a respin. Mine would
-become a single MFD_CELL_OF(), and I can do a respin if that patch arrives
-first.
-Cc'd Luca.
-
-[1] https://lore.kernel.org/all/20260902193351.185771-5-l.scorcia@gmail.com/
-
-Tested on an Amazon Fire HD 10 (2017), an mt8173 with an mt6397. Both
-channels are exercised: the battery channel by a fuel gauge, which reads 817
-counts, 3830 mV with the pack at rest, and the thermistor channel by an
-ntc-thermistor consuming it.
-
-I have two things in the driver different from the vendor (Amazon
-Fire OS based on a 3.18 kernel). Verified with over 150 interleaved reads
-per setting:
-
- - Leaving the ISENSE input enabled between reads, as the vendor does,
-   makes no difference to the value, so the driver switches it off again
-   and leaves both ADC input enables clear when idle.
-
- - The chip's sample accumulator makes no difference at 4, 8, 16 or 31
-   samples and costs no measurable time, so it is left at one. Software
-   averaging helps, but only by about a quarter: 0.92 LSB standard
-   deviation for one conversion against 0.67 for sixteen, where independent
-   samples would have given 0.23. Conversions in a burst are correlated.
-
-The reading was checked against the charger, which regulates the pack to
-a programmed voltage in constant-voltage mode. Over twelve such voltages
-from 3904 to 4080 mV, and charge currents from 111 to 778 mA, the driver's
-reading is a mean of 0.9 mV from the regulated value, well inside
-the charger's regulation tolerance. That also settles reading the chip's
-trimmed result register rather than the raw one - the raw register is
-20.7 mV low at every one of the twelve points.
-
+Assisted-by: LLM
 Signed-off-by: Ryan Brue <ryanbrue.dev@gmail.com>
 ---
-Ryan Brue (3):
-      dt-bindings: iio: adc: mediatek,mt6359-auxadc: add mt6397 PMIC AUXADC
-      iio: adc: mt6397-auxadc: add mt6397 PMIC AUXADC driver
-      mfd: mt6397-core: Add mt6397 AUXADC support
+ .../devicetree/bindings/iio/adc/mediatek,mt6359-auxadc.yaml      | 1 +
+ include/dt-bindings/iio/adc/mediatek,mt6397-auxadc.h             | 9 +++++++++
+ 2 files changed, 10 insertions(+)
 
- .../bindings/iio/adc/mediatek,mt6359-auxadc.yaml   |   1 +
- MAINTAINERS                                        |   7 +
- drivers/iio/adc/Kconfig                            |  11 +
- drivers/iio/adc/Makefile                           |   1 +
- drivers/iio/adc/mt6397-auxadc.c                    | 340 +++++++++++++++++++++
- drivers/mfd/mt6397-core.c                          |   3 +
- .../dt-bindings/iio/adc/mediatek,mt6397-auxadc.h   |   9 +
- 7 files changed, 372 insertions(+)
----
-base-commit: fd73f4a6659897191fa0d40695fe370925dd3780
-change-id: 20260914-rbrue-suez-upstreaming-mt6397-auxadc-5e1228025c50
+diff --git a/Documentation/devicetree/bindings/iio/adc/mediatek,mt6359-auxadc.yaml b/Documentation/devicetree/bindings/iio/adc/mediatek,mt6359-auxadc.yaml
+index c2f7387e4bfc..2847bd5d5bc4 100644
+--- a/Documentation/devicetree/bindings/iio/adc/mediatek,mt6359-auxadc.yaml
++++ b/Documentation/devicetree/bindings/iio/adc/mediatek,mt6359-auxadc.yaml
+@@ -26,6 +26,7 @@ properties:
+           - mediatek,mt6359-auxadc
+           - mediatek,mt6363-auxadc
+           - mediatek,mt6373-auxadc
++          - mediatek,mt6397-auxadc
+       - items:
+           - enum:
+               - mediatek,mt6365-auxadc
+diff --git a/include/dt-bindings/iio/adc/mediatek,mt6397-auxadc.h b/include/dt-bindings/iio/adc/mediatek,mt6397-auxadc.h
+new file mode 100644
+index 000000000000..b696c1cb5ebe
+--- /dev/null
++++ b/include/dt-bindings/iio/adc/mediatek,mt6397-auxadc.h
+@@ -0,0 +1,9 @@
++/* SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause) */
++
++#ifndef _DT_BINDINGS_MEDIATEK_MT6397_AUXADC_H
++#define _DT_BINDINGS_MEDIATEK_MT6397_AUXADC_H
++
++#define MT6397_AUXADC_ISENSE		0
++#define MT6397_AUXADC_BAT_TEMP		1
++
++#endif
 
-Best regards,
---  
-Ryan Brue <ryanbrue.dev@gmail.com>
+-- 
+2.55.0
 
 
