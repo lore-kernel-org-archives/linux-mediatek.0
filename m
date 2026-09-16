@@ -4,102 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 17F3DC88E77
-	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Sep 2026 08:21:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6556CC88E5C
+	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Sep 2026 09:51:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
-	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Bw432elLmhA4oy2qWRZIhT4M5eB1za1G9hSrgeusNHM=; b=qr7RatZTGjpTg36DMAPR/EgItd
-	mzoh7qDWfNtQ1oQDDRnn6K8zVpfj1TdVse/k9iMmo247U2QXT+bMwJoWB/Q9aVDejLbMxB3BUKJdz
-	r/+Y2EDZt5pMSDN9t4FziTshq6/QwLUrdAjjfBipg9gmZ58zKetO1n308sejixjpMtx79kCi9QSaZ
-	lLalsa+BFerhaq2q+Fy2jyGT1CuCXzej7EVceCt7jdiVfK6BjqF3ngE1ZRjThh1JfIb3rj1+7vD//
-	+37xY5OJJXZcN905l7eGTfo1jiEJjainvdJzkxXnNrjWTSqV2JPkLLSMsD+3MjK6y+n+pvWWxaZFR
-	RmVbFtRQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=QL6jKas1cmdLyBHfqWeojKDHQRuRtzuhcu/gUwSMtHk=; b=0PH5tPP1Lr8xb0rTXKjavz/rkV
+	ib2FLCAyssFKCcKf1yY0xXg2xXy20awUmJj4y4/Q/d3O6VIHHx9y6PKAXiuPg/ai3e5jTM64ZXdjW
+	ZkXt34H18w4nELgCqa/8l3v/Ldnqz3eUH6vnHSRYNfJgRKaspcnMHUcpLzSQFOzoiNhvKKS0AKHq7
+	qXcqxTGs1pnkx8oYzD1xsoZDDNz1LWL9NVAYCou6P4/9+j0dekQnVpN6E6z0i31MqOfC0EnwK8ViD
+	4q47Q8ijHq7MH1QqnGX829xketTmu10EkUBJouHVmdqoDQ6S4TgluMWlEPiRaZzTIUIE9pajq0Rmq
+	4v6rKHMg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x6ktg-00000008hsl-2reO;
-	Wed, 16 Sep 2026 08:21:40 +0000
-Received: from mail-wm2-x10.google.com ([2a00:1450:4864:31::10])
+	id 1x6mIQ-00000008tqG-1Vu4;
+	Wed, 16 Sep 2026 09:51:18 +0000
+Received: from mgamail.intel.com ([192.198.163.10])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x6ktc-00000008hrT-1rjj
-	for linux-mediatek@lists.infradead.org;
-	Wed, 16 Sep 2026 08:21:39 +0000
-Received: by mail-wm2-x10.google.com with SMTP id 5b1f17b1804b1-49b91369d18so4271835e9.0
-        for <linux-mediatek@lists.infradead.org>; Wed, 16 Sep 2026 01:21:35 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1789546894; x=1790151694; darn=lists.infradead.org;
-        h=content-transfer-encoding:content-type:mime-version:references
-         :in-reply-to:message-id:subject:cc:to:from:date:from:to:cc:subject
-         :date:message-id:reply-to:content-type;
-        bh=Bw432elLmhA4oy2qWRZIhT4M5eB1za1G9hSrgeusNHM=;
-        b=WQSC3Xo326XsLU2+mN5PPx53Gt4YMe9n6eANRF9jqaMzkep/uc/KJ4yvAkkOA2i/39
-         +1RPjuQIHB3YTTeM9f6N7CRhN14BrEAaqmw01XO/7fHeXjav90FP0s733c5JNwikOTAK
-         YH4wDGBRtG+WlWb/ePfl4azo0fd1Q4YQv5lftj8WXwgNp8qvtjuM3kpThtda1ADX6nge
-         MEiFCJOevak2tJ3yfEMeh6ObkkhjxqIoYIqGTcCMmTOyMUIkMwFKFKL1c4550WJVR+Pj
-         wmScAcn5vIx6m9r1WiWCjGnEKBrhn1Ugz43QsbSeuh0Z6klHRDOaq+FCMU9o/7DFrlP2
-         jqlw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1789546894; x=1790151694;
-        h=content-transfer-encoding:content-type:mime-version:references
-         :in-reply-to:message-id:subject:cc:to:from:date:x-gm-gg
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
-         :content-type;
-        bh=Bw432elLmhA4oy2qWRZIhT4M5eB1za1G9hSrgeusNHM=;
-        b=buClpJ6MvH/vlIIk04oAy11m9PLTWjtD9y6jkinsfOlTpSZFdEDQyafblOvgqCHKVf
-         a0rodmsaCx0lL7Bs4kyHCaMq17uSD2I76G/kK1WMUGd6Izl8gMbKUOt2fQiuPTlvhDLK
-         urkSNjrmtpH9wqUhWBNsnwG5s01DxpCqWi20b+Q7MwijLcAKwMw6gfi6RryD/PnQLwVK
-         ozpe0fywVzUTo2e0noLzcSE9KD7ziXAKmf+MizjsEI5Cy+IMVUjacHU+hL+hBvqYU7bX
-         ygTT80GQCkqoItAmGcS8p3AqzuRUgFyo8+lfpvSX/6ZDTyFgxAU06/5poRzjunLEbNW+
-         QhPg==
-X-Forwarded-Encrypted: i=1; AKwUvBxwMRd2zcVDEZr6vXpoJwNuwx8K7sI0EcNWfemL0ygCrjm5sQ548kBqN2tbX5D+5AuPX/4NCxeKVDFmPkGvxg==@lists.infradead.org
-X-Gm-Message-State: AFuF++mQTtf38Zedk9ekwqTX0jrclN9fr5K1RSKxAi7baTcRxmD8vImF
-	zKwvxlG7P+47TC06uk3iB/SFkC+uds7HNxyLjH4GDeCKnlYs5Cid6Pmf
-X-Gm-Gg: AYBFou22vbctN0csNK9lMpmC0oGjb2azaBC0Oym0c9+bKEp/iUTm1lR5bUNI3BEWEiy
-	Gg1Ew76d2TVdA+jgiKLXe1FRz1wTht7L988XFgNngYwk39YHXXxACC2VrLiNapRSk9MEiIiXVrq
-	qt5OtQeiiQrdoBFuezKg68sEMZWf/Oj8gr1U1XczMJdkgWfqpEnhoR4ebZS4wfk68tENy+HmjRW
-	nQPBTRuZf6XVHeMrdWwOMYgogixWOYpL9LpeHbkMBWMrl4P++5t1j9TpmAPPwJzd4bAoJ3J9Zdr
-	J/rV/0DGQZNXIzilX0gGiQKNAd/89t/wWeQclp+WrdcnjbwNHDMGH1El1o4L+y3VBBJR5A5hhkN
-	6VKFUdoYSMUpkLEDq1ibdvKKXUMdA8bAgqPXZyA3b4gzO6V6aSVd87AdBO2jAPJ4Qj+DGuOV6uL
-	fypj3s1tVNFLu84XhnnM2sCN7zQz3/d/ovlVGGdidvZ0RaU8MyY1MD2wrerXZe8Nx4BuLTw2zm9
-	J5iqBK1TT9CSgceXGBfhZKXmPEEOiQJf+cK1eh3UpxFGjAqEotw1o6bkmi8bsu3eBSytpKxwsmY
-	79LRhYZ794WLkQnbcKsMk4lv4ZoUrogPS4lNeMa0LymruSqz/aauag7qxC0ViAx08dcBCJCSQFz
-	QAMzZT/kufu2OjxKA/bWXUgpkFGWFN4muJG5iS1rOs3MNDAb8yGZUpJojR23P6lEH/P2wJbchrf
-	uT5ej3
-X-Received: by 2002:a05:600c:470a:b0:49e:6bce:b0f9 with SMTP id 5b1f17b1804b1-49eb732cc87mr17337945e9.16.1789546893641;
-        Wed, 16 Sep 2026 01:21:33 -0700 (PDT)
-Received: from localhost (90-182-112-124.rcp.o2.cz. [90.182.112.124])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-49e83da071asm73394925e9.8.2026.09.16.01.21.32
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 16 Sep 2026 01:21:33 -0700 (PDT)
-Date: Wed, 16 Sep 2026 10:21:32 +0200
-From: Joshua Crofts <joshua.crofts1@gmail.com>
-To: Johan Hovold <johan@kernel.org>
-Cc: Peter Chen <peter.chen@kernel.org>, Pawel Laszczak <pawell@cadence.com>,
- Roger Quadros <rogerq@kernel.org>, Greg Kroah-Hartman
- <gregkh@linuxfoundation.org>, Mathias Nyman <mathias.nyman@intel.com>,
- Chunfeng Yun <chunfeng.yun@mediatek.com>, Matthias Brugger
- <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
- <angelogioacchino.delregno@collabora.com>, Heikki Krogerus
- <heikki.krogerus@linux.intel.com>, linux-usb@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, stable@vger.kernel.org
-Subject: Re: [PATCH 1/6] usb: core: add missing
- pm_runtime_dont_use_autosuspend() call
-Message-ID: <20260916102132.00005129@gmail.com>
-In-Reply-To: <aqpOlKtxeROh-G_s@hovoldconsulting.com>
-References: <20260915090223.1346-1-joshua.crofts1@gmail.com>
-	<20260915090223.1346-2-joshua.crofts1@gmail.com>
-	<aqpOlKtxeROh-G_s@hovoldconsulting.com>
-X-Mailer: Claws Mail 4.4.0 (GTK 3.24.51; x86_64-w64-mingw32)
+	id 1x6mIG-00000008tls-0RHN;
+	Wed, 16 Sep 2026 09:51:09 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1789552268; x=1821088268;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=UIwWPNKRQ8FW7Bu3jbEPy9yWyv1Y+CRFZBuPobR95d0=;
+  b=WSIipDdzxEAMVRuShekuIWphl5WaGPdtNe7r7XOzARhPxXJdkm1gvB+Y
+   JkKbAaNka2+L3d7S1+/l+VHAqLbCZ4R3gf7UhEO9wj1SW9E2klbkkfP08
+   UyHoxH3aiEj9o+zMidCkHaAqxWOCcvyBuLxaR6OMY4zzmCoZGqMjNkXow
+   86bPdJ6ubGycuZWHSPqcPgeE4IOhhLr9c+ppx95GkF8SKAWrwNoDBEbAs
+   KFRbvhqNMyxuVfjpixjI1vFhYHLXTvF4ORX9FhsN5qDiO/LpZxGi8jH1O
+   bzeYlXqPCwa644GVT1HMWH49fWeNY4++MOMh2qpXo6ZmiITYwH1Lwh/Lw
+   g==;
+X-CSE-ConnectionGUID: F2KUMXLjTGikjIni6oSIUg==
+X-CSE-MsgGUID: 1u4U3+ArRBGAXsSI4Uyw/Q==
+X-IronPort-AV: E=McAfee;i="6800,10657,11905"; a="101270152"
+X-IronPort-AV: E=Sophos;i="6.27,103,1787036400"; 
+   d="scan'208";a="101270152"
+Received: from fmviesa009.fm.intel.com ([10.60.135.149])
+  by fmvoesa104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 16 Sep 2026 02:51:06 -0700
+X-CSE-ConnectionGUID: KfvqFqviTauBpXirtJ5MXw==
+X-CSE-MsgGUID: RK56W2AkRI2hfojlaoS2QQ==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.27,103,1787036400"; 
+   d="scan'208";a="267080866"
+Received: from ettammin-mobl2.ger.corp.intel.com (HELO localhost) ([10.245.244.145])
+  by fmviesa009-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 16 Sep 2026 02:51:01 -0700
+Date: Wed, 16 Sep 2026 12:50:58 +0300
+From: Andy Shevchenko <andriy.shevchenko@intel.com>
+To: Ryan Brue <ryanbrue.dev@gmail.com>
+Cc: Jonathan Cameron <jic23@kernel.org>,
+	David Lechner <dlechner@baylibre.com>,
+	Nuno =?iso-8859-1?Q?S=E1?= <nuno.sa@analog.com>,
+	Andy Shevchenko <andy@kernel.org>, Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Lee Jones <lee@kernel.org>, linux-iio@vger.kernel.org,
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, mfd@lists.linux.dev,
+	Roman Vivchar <rva333@protonmail.com>,
+	Luca Leonardo Scorcia <l.scorcia@gmail.com>
+Subject: Re: [PATCH 0/3] iio: adc: add mt6397 PMIC AUXADC support
+Message-ID: <aqpmgliQW7FW53o5@ashevche-desk.local>
+References: <20260915-rbrue-suez-upstreaming-mt6397-auxadc-v1-0-d35d2ac3d6f0@gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20260915-rbrue-suez-upstreaming-mt6397-auxadc-v1-0-d35d2ac3d6f0@gmail.com>
+Organization: Intel Finland Oy - BIC 0357606-4 - c/o Alberga Business Park, 6
+ krs, Bertel Jungin Aukio 5, 02600 Espoo
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260916_012136_499826_7BCE441E 
-X-CRM114-Status: GOOD (  16.76  )
+X-CRM114-CacheID: sfid-20260916_025108_193094_816F1C68 
+X-CRM114-Status: GOOD (  10.60  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -114,35 +96,19 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, 16 Sep 2026 10:08:52 +0200
-Johan Hovold <johan@kernel.org> wrote:
+On Tue, Sep 15, 2026 at 11:15:25PM -0500, Ryan Brue wrote:
+> The MediaTek mt6397 PMIC has a 10-bit AUXADC that nothing in-tree can
+> reach. On boards built around it that ADC is the only path to the battery:
+> the SoC's AUXADC is wired to board thermistors, and the charger ICs these
+> boards use have no ADC at all, so without it there is no pack voltage and
+> no state of charge.
 
-> On Tue, Sep 15, 2026 at 09:02:18AM +0000, Joshua Crofts wrote:
-> > The fail label in usb_new_device() disables pm_runtime on failure, but
-> > doesn't call pm_runtime_dont_use_autosuspend(), causing resource leaks.  
-> 
-> No it does not, as the device itself is about to be freed. Sure we could
-> disable autosuspend again here, but it does not really matter.
-> 
-
-Okay, commit message aside, you still need to call dont_use_autosuspend()
-on teardown as the driver doesn't use the devm_* counterparts. Currently
-(according to my cocci SmPL [1]) there are 195 instances of this in the kernel.
-
-...
-
-> But this one should not have a Fixes tag and does not need to be
-> backported.
-
-Yeah, you already mentioned this in IIO once [2]. I found several instances
-of patches like these being backported however, so perhaps times have changed.
-
-[1] https://lore.kernel.org/cocci/20260915064327.1377-1-joshua.crofts1@gmail.com/
-[2] https://lore.kernel.org/linux-iio/aoQEyeHUiTwWenBL@hovoldconsulting.com/
-
-
+This doesn't explain why a brand new driver? Perhaps we have existing code that
+may be updated to support this device?
 
 -- 
-Kind regards,
-Joshua Crofts
+With Best Regards,
+Andy Shevchenko
+
+
 
