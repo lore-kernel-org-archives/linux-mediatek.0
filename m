@@ -4,48 +4,48 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 01D3BC88E77
-	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Sep 2026 08:08:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C61FCC88E5C
+	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Sep 2026 08:16:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=NGsPUd4c4/jiwAM0z4uKJZVSAM5wKncJVyzSk3d45QY=; b=4aS62TOqwgF+oymAX5FAGcOQK1
-	8xU9+DqMJEwy7dTHpChDbaImCaUxctwP7rUd3mff3nUTUQi4G/eH/GUqteuUbYrLX184ZftpGJriq
-	TljzV9xcT5jnuseOBFi8PkJjQxo8i9hItMwdRNeqwIm65wiqq3t3I8DWWFx+xgzg7UluuQ7YwYN0E
-	Ou30urfsNrgOgPXQEvlcPZh/aKTdz22Q2xOyp0zgNtNk74zEswTL96rZUhwap0YoRbffXxZyBVCgS
-	UGkJC+Lq/axFYBAxRqoW3KKxzxVTpPHum6ZBefDMQNwb6z/4qNA82AAXRiejQx3Zo2uaF8hI+ZMKT
-	p5db2/7A==;
+	bh=SjWIP8bNgzdC4buQnhVS9zvJ7ieVsM0oE8uqr/MRoYM=; b=BDEXpsI64Sr/cFkY0Uq0a8jXCl
+	1r9wja79fHa3xHVXBh4SzIw8zbiIgjarXbc0FcLqvP0s+DMPN6q1UXrkKlx9LXQsqhbYKUM7raXNz
+	9gHNyR4MH4NBLvYFFuAYKc3OpDiGNhnazrCPNuKWq1HMyGG9UHcN+l8WtunYhMj0Wx6yJtuYlEKtV
+	QUc2CVob2AUAxmmOpam2wpAeUZsA7DFIx77I/zjILolZCclpTmBBnIgvTDBYY8zmI6sh89HDmbI/R
+	3y+aE7JpZvnS0uoCA2L86jVlCMcVF9OHTF9rPpdn12a8TDuDEetM5poe7jlDmlompDkkmvs6Sh8ve
+	eAZJVkYw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x6khO-00000008gkf-3vGj;
-	Wed, 16 Sep 2026 08:08:58 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1x6koX-00000008hKL-3KNN;
+	Wed, 16 Sep 2026 08:16:21 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x6khM-00000008gkO-2UvO;
-	Wed, 16 Sep 2026 08:08:57 +0000
+	id 1x6koW-00000008hJU-23AV;
+	Wed, 16 Sep 2026 08:16:20 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id A31E360234;
-	Wed, 16 Sep 2026 08:08:55 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 57A701F000FF;
-	Wed, 16 Sep 2026 08:08:55 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 918586053A;
+	Wed, 16 Sep 2026 08:16:19 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3F8951F00893;
+	Wed, 16 Sep 2026 08:16:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1789546135;
-	bh=NGsPUd4c4/jiwAM0z4uKJZVSAM5wKncJVyzSk3d45QY=;
+	s=k20260515; t=1789546579;
+	bh=SjWIP8bNgzdC4buQnhVS9zvJ7ieVsM0oE8uqr/MRoYM=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=ca4k+47D8o+zL7G76OczRVJ7a2qkrBHqI1/Od4RNEPo8JwVuyHFH1drWChaxTzMVx
-	 rzivByJWrrPNPjNcwUROqglLsqdxSI0Pwmt1OseLUucgoLpZ6SRxGJAcuiyqTiQHgH
-	 YhCxZ8D0YfcysSM37Do7LNFweJjSI3JpPOJxaljmY9aJVkzqysWBGY7KK4f3zefMZG
-	 snx5LEIMjOywY6TRK+DA37/AmXX6lVZ3X1YMjyTYXQsOX5FB995aGl+U0goeoEuPbF
-	 9Rxdbw2kP1zJ5MLILiUJoPaSOnDceCxHNZQWqEYkj12JmbNv67cRA7nTXw0pl6pDsD
-	 UOROGyIchJRQw==
+	b=JXwBUxpp6BrunGC9Exr6GM/vSGpDSwW0e19VQG/HebrdWDreqD+TRflwbah2sHQOp
+	 FpxMLshY1UEor/GvOfupqRFWD/7O/D2IT53Ts1TI0qFtHguYs/mwcF9Zi3Q3eq5daW
+	 zDrOlbTsyURpbnesjY/9q7QnelxvpU617ZiErDVoEip8cXsy+kXVqb4NL0quiCe+fz
+	 VUWYamsRGz77Z/6BQ1e99VwL01uV5WAnNUvkI2cMNjx/mSZFEeZRdfrPgO6QyFkNxL
+	 4wb3ea39LRymM0UgOJlA2TIVhPRqcPmZq2u67H7j2RDNLc9dbn0+llVJHeqS7b4Itb
+	 l8KwbL9+yj3oA==
 Received: from johan by xi.lan with local (Exim 4.99.5)
 	(envelope-from <johan@kernel.org>)
-	id 1x6khI-00000005w7O-3XCS;
-	Wed, 16 Sep 2026 10:08:52 +0200
-Date: Wed, 16 Sep 2026 10:08:52 +0200
+	id 1x6koS-00000005wGU-1cEn;
+	Wed, 16 Sep 2026 10:16:16 +0200
+Date: Wed, 16 Sep 2026 10:16:16 +0200
 From: Johan Hovold <johan@kernel.org>
 To: Joshua Crofts <joshua.crofts1@gmail.com>
 Cc: Peter Chen <peter.chen@kernel.org>, Pawel Laszczak <pawell@cadence.com>,
@@ -59,15 +59,15 @@ Cc: Peter Chen <peter.chen@kernel.org>, Pawel Laszczak <pawell@cadence.com>,
 	linux-usb@vger.kernel.org, linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org, stable@vger.kernel.org
-Subject: Re: [PATCH 1/6] usb: core: add missing
+Subject: Re: [PATCH 2/6] usb: xhci-mtk: add missing
  pm_runtime_dont_use_autosuspend() call
-Message-ID: <aqpOlKtxeROh-G_s@hovoldconsulting.com>
+Message-ID: <aqpQULC3P0wspKwL@hovoldconsulting.com>
 References: <20260915090223.1346-1-joshua.crofts1@gmail.com>
- <20260915090223.1346-2-joshua.crofts1@gmail.com>
+ <20260915090223.1346-3-joshua.crofts1@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20260915090223.1346-2-joshua.crofts1@gmail.com>
+In-Reply-To: <20260915090223.1346-3-joshua.crofts1@gmail.com>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,45 +82,28 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Sep 15, 2026 at 09:02:18AM +0000, Joshua Crofts wrote:
-> The fail label in usb_new_device() disables pm_runtime on failure, but
-> doesn't call pm_runtime_dont_use_autosuspend(), causing resource leaks.
+On Tue, Sep 15, 2026 at 09:02:19AM +0000, Joshua Crofts wrote:
+> The disable_pm label in xhci_mtk_probe() and xhci_mtk_remove() both call
+> pm_runtime_disable() on error or device teardown, but don't call
+> pm_runtime_dont_use_autosuspend(), causing resource leaks.
 
-No it does not, as the device itself is about to be freed. Sure we could
-disable autosuspend again here, but it does not really matter.
+No, there is no resource leak here either and this does not need to be
+backported.
 
-You could consider balancing the runtime pm count as well, as I guess
-both of these could trip up static checkers (cf. [1]).
-
-> Add the missing pm_runtime_dont_use_autosuspend() call.
+The autosuspend setting is not restored, but that would only possibly
+have an impact in the theoretical corner case that someone forcibly
+rebinds a different driver that does not enable it.
+ 
+> Add the missing pm_runtime_dont_use_autosuspend().
 > 
 > Found using Coccinelle.
 > 
-> Fixes: fcc4a01eb866 ("USB: use the runtime-PM autosuspend implementation")
+> Fixes: 0cbd4b34cda9 ("xhci: mediatek: support MTK xHCI host controller")
+> Fixes: 04284eb74e0c ("usb: xhci-mtk: add support runtime PM")
 > Cc: <stable@vger.kernel.org>
 
-But this one should not have a Fixes tag and does not need to be
+So, without having looked at the rest: none of these should be
 backported.
 
-> Signed-off-by: Joshua Crofts <joshua.crofts1@gmail.com>
-> ---
->  drivers/usb/core/hub.c | 1 +
->  1 file changed, 1 insertion(+)
-> 
-> diff --git a/drivers/usb/core/hub.c b/drivers/usb/core/hub.c
-> index 3345b3298daf..dec6d5c49759 100644
-> --- a/drivers/usb/core/hub.c
-> +++ b/drivers/usb/core/hub.c
-> @@ -2745,6 +2745,7 @@ int usb_new_device(struct usb_device *udev)
->  fail:
->  	usb_set_device_state(udev, USB_STATE_NOTATTACHED);
->  	pm_runtime_disable(&udev->dev);
-> +	pm_runtime_dont_use_autosuspend(&udev->dev);
->  	pm_runtime_set_suspended(&udev->dev);
->  	return err;
->  }
-
 Johan
-
-[1] https://lore.kernel.org/all/aivMnTkZ-jTRH2Jy@hovoldconsulting.com/
 
