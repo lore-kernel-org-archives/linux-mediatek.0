@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2B1F4C88E77
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8CFECC982C5
 	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Sep 2026 07:59:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
@@ -12,76 +12,76 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=mxcOLcYtzXeNvmAXwxnBSPIznA4IuiBXVh28WxVeHIw=; b=UbOJ7lN3SaRlyc4QqgfoJKVhGY
-	3MWg/CWxDV2etHlyY0+Eb6xRxgyxn9L8fD8wXT5mhrUWj2p8zB4RpyxwFqd3+NdtsGhmGJLHISW2K
-	4opm0CNeSuKDQ7p4A/oV8Issv6/c6W1FYmaTc5ZNJsW2GR5/x5i3Alq5bR5opmAfNXtRTAGT1pTWA
-	R7QPNmly8dpOVzx1cBAlZvd61rJZbCvgivJmNhSUDTJVVfbYS5hP5F6XS8HZMvORQBL0O2BK91V9w
-	wxKgjdXqxgq8J77Fvo4tW4I1gJAoQUwEH4dRIE1IUwL3be82wPLQNnO4LSnJk06+a4GJ3UNNik2Qp
-	O0VyaWkg==;
+	bh=LBlifXBc8TeLjZFKtJEs7hY8wBigqZQzlvtfz7/nzb0=; b=mJjhcguB+JMkRxXEMBQbkCEvGx
+	M10nLwMoNyEdzEbyQvtCBvu61AxM70yf0/XLAFaXPKLY6zeZj+rC9vAHMs5IKqawKJnuDc+kawjGP
+	Zh8nJlPq1MO2C9Tn86Y0K1EEoy0kxxERN4BnuHmZpA4eaMXjI3l2EDTtoisY5nsxhFveHeLIl0gSW
+	x6dpPzg+Clx4a0Ii02AA+9ibG5nL+tJqavxEIya5h+NeKgllMHHhyIZaW1WEJ5mcPdYQS7+i6MKMY
+	MX4n/NTGIPJd8GsldJhS6f6L7RC2HIKV0TMUoO4CD/FIwJUghRTHr/RGG29DN3fLMUpvDh85D5csA
+	s65dyb6g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x6kYE-00000008eGY-0c4F;
+	id 1x6kYE-00000008eHm-1wLi;
 	Wed, 16 Sep 2026 07:59:30 +0000
 Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x6kXo-00000008dzf-1Pks
+	id 1x6kXz-00000008e4v-1aSz
 	for linux-mediatek@bombadil.infradead.org;
-	Wed, 16 Sep 2026 07:59:04 +0000
+	Wed, 16 Sep 2026 07:59:17 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
 	:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
 	Content-Type:Content-ID:Content-Description;
-	bh=mxcOLcYtzXeNvmAXwxnBSPIznA4IuiBXVh28WxVeHIw=; b=dUcv0oVWy2JLC1YcC1cbc2qo3i
-	6p+h69+OKkHuL/dl5AyKh0DIwz1jOnwped6eTLr2T7f1EMPTTxQG1sjNj37rqQrjUTLybVbjbSN9J
-	Ljp14RsI4qyg3mB7XI3DWV0I3BRYxawt/qwJbR4rM0Sn0pZmd/Xcjo3vc6p7yZwh3djfHlzJpkxAG
-	8uM357yla/7sSicIAB8T6+4p5dKV0iOh8/vqZxb6Cjw9HQa+5gjc223fegp1EBFyV1lTI40OEBCq8
-	EVLqUvnZTkLtBkhgQ5rqwq2UZz/rWzD1GYfzotEDpNck0ArX5AbgLA7FtRc4HmwTbGBYH7zRz55Q1
-	dw8WAgUg==;
+	bh=LBlifXBc8TeLjZFKtJEs7hY8wBigqZQzlvtfz7/nzb0=; b=lO7CnMnGh7rXWHxGNDydwIqU5U
+	JeWktuoDBdsmXpm3a7hpWqzxhLd/5Fn5ycSXTmz/Sxwg+V7NjUu3knEbdK1gPo1JMYpGkMkpvtMqE
+	A2tk1NvuIN4R0+5YoAag0lSqPz8/aYjSPXlkeh9/aIgRPO44RSOPSrAGJ+7Zmr6cCwJv2NLfKlSnF
+	aFOHVzEbTKI0chbqaH6GUNU3Bu6EA+sB3DYhzIUdq+NDJB2s0vUlq2D96WAuubp3V8+q1T2PkkWFT
+	Knu08WNDr7mqmJqpOGNwlcWZgpg2fMxgc5vdqbhxk6UDxyLNLc0doN+oeglYiB5J6pAqwBiDI/aAe
+	P3akyiaw==;
 Received: from mail-pj2-x10.google.com ([2607:f8b0:4864:39::10])
 	by desiato.infradead.org with esmtps (Exim 4.99.2 #2 (Red Hat Linux))
-	id 1x6kXl-00000007bZ5-0y7P
+	id 1x6kXw-00000007bb7-0VW2
 	for linux-mediatek@lists.infradead.org;
-	Wed, 16 Sep 2026 07:59:03 +0000
-Received: by mail-pj2-x10.google.com with SMTP id 98e67ed59e1d1-396ccafb752so567965a91.0
-        for <linux-mediatek@lists.infradead.org>; Wed, 16 Sep 2026 00:59:00 -0700 (PDT)
+	Wed, 16 Sep 2026 07:59:14 +0000
+Received: by mail-pj2-x10.google.com with SMTP id 98e67ed59e1d1-39b31b4281eso564134a91.2
+        for <linux-mediatek@lists.infradead.org>; Wed, 16 Sep 2026 00:59:11 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1789545539; x=1790150339; darn=lists.infradead.org;
+        d=chromium.org; s=google; t=1789545550; x=1790150350; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to:content-type;
-        bh=mxcOLcYtzXeNvmAXwxnBSPIznA4IuiBXVh28WxVeHIw=;
-        b=GEqFCMmBxNWP2ZXQU6uDmnGG2YM6tuBnBdz0Q7ZTQccCMNdpnQVi5OYwdGVbAUMWlF
-         enuCmjnnmgvAqVWLmpgYnhtgh8fBbSJZEdZx+gVIkaDnnvITBb2cmfien2H5xqtu6eV9
-         4puCqBEkGTeLGs36UUTx1HBEBLF7vzSpSXGNg=
+        bh=LBlifXBc8TeLjZFKtJEs7hY8wBigqZQzlvtfz7/nzb0=;
+        b=iAL352A6emXmW1AEv8SoSrp4QlFRX9sqZUYFQb0zd/t7lgfdu36Hnq77Lvsow7SIYl
+         UhTXAaftWX+0B1zWxvscl7Bl4I4Wa/s8jyLHvgfMgEyrrxd9VYG8Vm7KVKRwA3QGoxWX
+         RS2lkVnrLKxt9lcGtPOptjIm89CAldaGhWOcg=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1789545539; x=1790150339;
+        d=1e100.net; s=20260707; t=1789545550; x=1790150350;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
          :to:cc:subject:date:message-id:reply-to:content-type;
-        bh=mxcOLcYtzXeNvmAXwxnBSPIznA4IuiBXVh28WxVeHIw=;
-        b=pX54HQBIbKetGGQIuqrJmDJc8xsyJGv21rs2IZ1o33chB+LLxDewJYBztm/5R11TZh
-         TTszz3v0kTsYv73Hm8RFC9zmCcqcHd5ZiUZb1pB+Jb+hpavMzV94hRqHTn39VFOwubXn
-         ysPpCrNxAVXDrc3fI96lisTkL5Zj8UIbivnuuNw6Pm09DMdRNiW85KsYenPjBlXyVq5w
-         DfA8VujyrXHbawXuMfh/v4cgfoh4ADHV0QlkjjuFe4ImNwOQe1c3qT2CyH02JPsO7pC/
-         tesUHlAVge9iYivLUdPqQwmmHIvhRq+3c4fhyhcNg1nfLI7K5EfKFFuRpT/9KIAZ8Dfz
-         nYRA==
-X-Forwarded-Encrypted: i=1; AKwUvBzWM1Bcsns6CIHtp2BquCIgvpHgDW1IHKaNQSRKUj3/jZK+UlL9OJbCk7E8Vw4AdShDvOSLHvML3Lg6siKxdg==@lists.infradead.org
-X-Gm-Message-State: AFuF++nZKMayoaWGSyvgv5pM6Vn7JGY9gudFAVGnKLJhO/Szs+EnxUS9
-	Mx1M9LGkSfdLsysQLwH3eUUKZh5PKBLpC60JqqqLLvJS/ROcoLch13ttbvZdRX6RnQ==
-X-Gm-Gg: AYBFou0Ti7FdeLKfEQV1kZYdgR8Ca52ASeYWwgEcdcAmW35U8sTeudH/2xVgG2xlnFT
-	17d9glG0oI5joR7/SDxlSqB0nrwix50soS//e9KKkLUIRMnBGtOEQGonvjuza0f082EVEvOvp3m
-	pAq/uUPmlWXv4r5e4HL8hgDWSKwCrVMwjEkUVYo41ILI6+NcUtExY9zbII/ny8h+NQ9Qr9HVNF2
-	2SoCYOMOzhxzJUxrDVJnxeIlymLvXF/XkVJVYB2CTb7sw0+djKVOWxO1HsOU60dp42bKHB97/S6
-	AzD21SlAgpgAGuSTSghj5pL/jfocguJWl0i0bFJfxFsm8NUtMSfMLeWZOhPwWNpIsEX0iusHpa4
-	ZlKUSinrQvovxb5cWhXKm2CUJknxwzpbfTYMnD8PtMzHmIXsj95VRhgOgtMPf5kHe3gb9Wf5/JZ
-	Hdzdh9/1nqfd0MxZpQhA61GcA1us+g+ZYaCCq2pR8H4AQOPBFD/ipMUc0hfXCrrImYqkczp0ONA
-	Wy2q70Kt409A3fbsE1KTQSdfYuQEip9OhwNA1PiwEFHbHMchrRwP4VYPg==
-X-Received: by 2002:a17:90b:586f:b0:39e:28dc:3682 with SMTP id 98e67ed59e1d1-39e28dc380fmr622870a91.21.1789545539469;
-        Wed, 16 Sep 2026 00:58:59 -0700 (PDT)
+        bh=LBlifXBc8TeLjZFKtJEs7hY8wBigqZQzlvtfz7/nzb0=;
+        b=mdfH+ba39PETjNzoe79t3iC1SnguzXE2yNBz2IQ9dO95AbzRMgIKCfXhrw1ZCe7gdR
+         EncOe0fzEQt2RSPMJzAwT80Mg8ytq4ERbwwJa9z5vjZC8eHEBIFtdrTm6EcPDOspbRYD
+         ugGsH2UKvqWrTCeU+Y3QTHYNsSW+LD/ABibJVnZpWqEEKh7xm5OIzjQ1Umr8HVu+vC82
+         2c92kYAlxcyCnFD2k9RXTU93CKpKvSU6M27Dicu7pY4bEbZwCgBuIqKOSYquo0mSC1oL
+         9zgBNsiYAwlwnNSpgtNJk36HF9/j8P/U48N6t7kruJJngi6NwEtMPCPvvYprKdSKE78k
+         U8lQ==
+X-Forwarded-Encrypted: i=1; AKwUvBxjPQsPhIodBdhtFKuA5rVcn52AThhvjWBnfLdZ+/pbNnm3urdvyleqe7Pnt/GtDmBr0I64hVUDBaBLyLU1Jw==@lists.infradead.org
+X-Gm-Message-State: AFuF++lMtFuHTG4UREP0faBy4+DWz49lIe/bs/OIUx6wV+wOEyXp5J7+
+	Q3cDA3HmzQNUU14jGe2niogMhg/SxiEWyIds8p4ayXtC+f8Y1mriP/tEzt1SZRZQ0A==
+X-Gm-Gg: AYBFou3lIDtV6VkPWatjM7ue3K40Nv3ntEEf5zywJTbto03YsNPMcofVn1eSx0jtrWg
+	FyDe8s2y57cbOpaS51vD/qbI5+e6PcJqGdaW1xPRxLF1m8ZKGsv9UosjsZFt+S8r62so6o1hXnr
+	qokiVvGQyPVPHaGN85k4OVj36zup0d9QKWIErkwiiOBVmCvcHTihABEeq9w+Px+Rn0SOEk8H52T
+	V+cQrXjA4Pp3jCqHasEVaHH32zjdPbIS36j+T559dKxFlYnM9PeK6A7f8s2NrXYAMQhf2A2KY7P
+	FsRwWKvQ8epVpGztsQeeMwc0F6D4YGmQVN+q/vXgs2w/RLHhWif20iZ2jBfMpJXKlP3YMG4JmJd
+	4uJy5cK7awROj9CU6MULv7KeJYSoqKV0fRvbr4NXVGzQc/CcTJhGQbT1RGmk+XqjAtcYb8Y9Te/
+	Gm1VDlfEyi+yZbuRFcTu/AnN5iAeTkwXiu9xa9xGCGjuOptx2twIZ1i5elHOoCaKSEXd78/KYjb
+	fenkmYU8vqgc6rcUnx/FqsFgQc/dsYqtIFmb67Ap1teGbKfcs/y5Mbomr8=
+X-Received: by 2002:a17:90a:c105:b0:39e:27e:2f09 with SMTP id 98e67ed59e1d1-39e1e284ff2mr4191391a91.8.1789545550190;
+        Wed, 16 Sep 2026 00:59:10 -0700 (PDT)
 Received: from wenst-7875.tpe.corp.google.com ([2a00:79e0:203d:7:1f62:7622:5d61:2578])
-        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-39e1b7acba2sm4348197a91.16.2026.09.16.00.58.54
+        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-39e1b7acba2sm4348197a91.16.2026.09.16.00.59.05
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 16 Sep 2026 00:58:58 -0700 (PDT)
+        Wed, 16 Sep 2026 00:59:09 -0700 (PDT)
 From: Chen-Yu Tsai <wenst@chromium.org>
 To: Bartosz Golaszewski <brgl@kernel.org>,
 	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
@@ -108,17 +108,17 @@ Cc: Chen-Yu Tsai <wenst@chromium.org>,
 	Manivannan Sadhasivam <mani@kernel.org>,
 	Alan Stern <stern@rowland.harvard.edu>,
 	Bartosz Golaszewski <bartosz.golaszewski@oss.qualcomm.com>
-Subject: [PATCH v9 07/15] usb: hub: Pass |struct usb_port*| to usb_port_is_power_on()
-Date: Wed, 16 Sep 2026 15:57:33 +0800
-Message-ID: <20260916075745.3549953-8-wenst@chromium.org>
+Subject: [PATCH v9 09/15] usb: hub: Power on connected M.2 E-key connectors with power sequencing API
+Date: Wed, 16 Sep 2026 15:57:35 +0800
+Message-ID: <20260916075745.3549953-10-wenst@chromium.org>
 X-Mailer: git-send-email 2.55.0.1032.g73a4cd73de-goog
 In-Reply-To: <20260916075745.3549953-1-wenst@chromium.org>
 References: <20260916075745.3549953-1-wenst@chromium.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260916_085901_651540_10ED36BB 
-X-CRM114-Status: GOOD (  17.77  )
+X-CRM114-CacheID: sfid-20260916_085912_561336_85FB1ACA 
+X-CRM114-Status: GOOD (  41.91  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -133,111 +133,393 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-usb_port_is_power_on() currently takes |struct usb_hub*|, but only needs
-it to tell if the hub/port is SuperSpeed or not.
+The new M.2 E-key connector can have a USB connection. For the USB device
+on this connector to work, its power must be enabled and the W_DISABLE2#
+signal deasserted. The connector driver handles this and provides a
+toggle over the power sequencing API.
 
-In a subsequent change, usb_port_is_power_on() needs access to a pwrseq
-state tracking field in |struct usb_port|. Either structure can be used
-to identify whether a port/hub is SuperSpeed or not, as the field in
-|struct usb_port| is inherited from the hub:
+This feature currently only supports a directly connected (no mux in
+between) M.2 E-key connector. Existing USB connector types are not
+covered. The USB A connector was recently added to the onboard devices
+driver. USB B connectors have historically been managed by the USB
+gadget or dual-role device controller drivers. USB C connectors are
+handled by TCPM drivers.
 
-    port->is_superspeed = hub_is_superspeed(hub)
+The power sequencing API does not know whether a power sequence provider
+is not needed or not available yet, so we only request it for connectors
+that we know need it, which at this time is just the E-key connector.
 
-Replace usb_port_is_power_on()'s |struct usb_hub*| parameter with
-|struct usb_port*| so a subsequent change can use it.
+On the USB side, the port firmware node (if present) is tied to the
+usb_port device. This device is used to acquire the power sequencing
+descriptor. This allows the provider to tell the different ports on one
+hub apart.
+
+This feature is not implemented in the onboard USB devices driver. The
+power sequencing API expects the consumer device to make the request,
+but there is no device node to instantiate a platform device to tie
+the driver to. The connector is not a child node of the USB host or
+hub, and the graph connection is from a USB port to the connector.
+And the connector itself already has a driver.
+
+Power sequencing is not directly enabled in the connector driver as
+that would completely decouple the timing of it from the USB subsystem.
+It would not be possible for the USB subsystem to toggle the power
+for a power cycle or to disable the port.
 
 Reviewed-by: Bartosz Golaszewski <bartosz.golaszewski@oss.qualcomm.com>
-Reviewed-by: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+Link: https://lore.kernel.org/all/20260610084053.2059858-1-wenst@chromium.org/
+Link: https://lore.kernel.org/all/20260515090149.3169406-1-wenst@chromium.org/
 Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
 ---
+Sashiko mentions possible use-after-free of hub->ports from the sysfs
+callbacks. This is actually not possible, since the sysfs callbacks
+acquire the hub device and its lock, and then check if it is in the
+process of disconnect / removal. If it is, then the callbacks just
+error out.
+
 Changes since v8:
-- Adapted to |struct usb_port| and  usb_port_is_power_on() moving back to
+- Adapted to |struct usb_port| and usb_port_is_power_on() moving back to
   hub.[ch]
+- Moved comment about Sashiko false-positive to footnote
+
+Changes since v7:
+- Adapted to pwrseq_enable/disable() rename
+
+Changes since v6:
+- Added braces ("{}") to for loop in hub_is_port_power_switchable() (Andy)
+- Adapted usb_port_is_power_on() to new pwrseq_get_state() function
+  return values (Bartosz)
+
+Changes since v5:
+- Only assign port_dev->pwrseq if successfully retrieved pwrseq
+  descriptor (Andy)
+- Dropped the pwrseq error pointer check in the release function (Andy)
+- Added check for port->pwrseq != NULL before calling
+  pwrseq_is_power_on() (API change in patch 3)
+
+Changes since v4:
+- Rewrote usb_port_is_power_on() to better express intent and
+  restrictions of pwrseq API (Andy)
+- Switched to dev_fwnode() in port_pwrseq_is_supported() (Andy)
+- Added blank line separating normal variable declarations and __free()
+  type declarations (Andy)
+- Split out assign_bit() rewrite (Andy)
+- Moved pwrseq_put() to release function to avoid UAF (Sashiko)
+- Added back pwrseq_power_off() call in usb_hub_remove_port_device();
+  otherwise power off could be delayed to object release
+- Don't clear hub->ports[port1 - 1] in main error path;
+  by that time the port device is registered and sysfs attributes are
+  available to userspace (Sashiko)
+
 Changes since v3:
 - Adapted to move of usb_port_is_power_on() to port.c and port.h
----
- drivers/usb/core/hub.c  | 11 ++++++-----
- drivers/usb/core/hub.h  |  2 +-
- drivers/usb/core/port.c |  2 +-
- 3 files changed, 8 insertions(+), 7 deletions(-)
+- Simplified usb_hub_set_port_pwrseq() (Andy)
+- Renamed usb_hub_set_port_pwrseq()'s "set" parameter to "on"
+- Dropped usb_hub_restore_port_pwrseq() (use usb_hub_set_port_pwrseq()
+  with inverted argument)
+- Fixed off-by-one access in hub_is_port_power_switchable() (Sashiko)
+- Assign retval from dev_err_probe() instead of the other way around (Andy)
+- Clear hub->ports[port1 - 1] in USB port error and remove paths to
+  avoid other threads from accidental UAF while the USB hub device is
+  being unwound (Sashiko)
+- Short-circuit out of helpers if !IS_ENABLED(CONFIG_POWER_SEQUENCING)
+  to avoid errors from stub functions (Sashiko)
 
+Changes since v2:
+- Expanded subject to mention power sequencing API
+- Dropped commit message bit about power sequencing Kconfig symbol change
+  to bool
+- Added optional dependency on POWER_SEQUENCING to USB
+- Split out pwrseq_power_*() calls into separate helpers
+- Rewrote set_bit() and clear_bit() branches with assign_bit()
+- Dropped the pwrseq_power_off() before pwrseq_put(): pwrseq_put() does it
+  automatically.
+- Removed pwrseq_power_on() from usb_hub_create_port_device(); it will
+  get called through usb_hub_set_port_power() in hub_activate().
+- Added checks for port->pwrseq in hub_is_port_power_switchable()
+
+- Use separate pwrseq descriptors for HighSpeed and SuperSpeed ports.
+  This makes things simpler. On the other hand to power cycle a port
+  userspace needs to toggle it on both the HS and SS ports together.
+- Dropped pwrseq state tracking again
+  The power sequencing consumer API already tracks the state internally;
+  doing it again in |struct usb_port| is not necessary especially now
+  that the descriptors aren't shared.
+
+It's unclear to me how actual hubs reconcile USB_PORT_FEAT_POWER settings
+from the HS side and SS side. One hub chip vendor said that VBUS_EN for
+a port is on if the flag is set on either side; however actually testing
+on one of their hubs showed that VBUS was cut as soon as the flag is
+cleared on the HS port. Maybe it could be different if a SS device was
+connected? That scenario was not tested. Testing on another retail
+bought hub seemed to work exactly as described though: USB_PORT_FEAT_POWER
+needed to be clear on both HS and SS ports to turn off VBUS.
+
+Under this scheme, I'm not sure how the power cycle in hub_port_connect()
+would work correctly.
+
+- Link to v2:
+  https://lore.kernel.org/all/20260610084053.2059858-1-wenst@chromium.org/
+
+Changes since v1:
+- Switch to fwnode instead of OF
+- Tie port@ fwnode to usb_port device
+- Move remote node compatible checking to separate helper
+- Use usb_port device to request power sequencing descriptor
+- Drop "index" parameter from pwrseq_get()
+- Do not get pwrseq descriptor for SuperSpeed port; share one for one
+  physical port
+- Add pwrseq state tracking
+- Link to v1:
+  https://lore.kernel.org/all/20260515090149.3169406-1-wenst@chromium.org/
+---
+ drivers/usb/Kconfig     |  1 +
+ drivers/usb/core/hub.c  | 29 ++++++++++++++++++++--
+ drivers/usb/core/hub.h  | 12 +++++++++-
+ drivers/usb/core/port.c | 53 +++++++++++++++++++++++++++++++++++++++++
+ 4 files changed, 92 insertions(+), 3 deletions(-)
+
+diff --git a/drivers/usb/Kconfig b/drivers/usb/Kconfig
+index abf8c6cdea9e..ef1959363fb1 100644
+--- a/drivers/usb/Kconfig
++++ b/drivers/usb/Kconfig
+@@ -44,6 +44,7 @@ config USB_ARCH_HAS_HCD
+ config USB
+ 	tristate "Support for Host-side USB"
+ 	depends on USB_ARCH_HAS_HCD
++	depends on POWER_SEQUENCING if POWER_SEQUENCING
+ 	select GENERIC_ALLOCATOR
+ 	select USB_COMMON
+ 	select NLS  # for UTF-8 strings
 diff --git a/drivers/usb/core/hub.c b/drivers/usb/core/hub.c
-index 707eeee198b0..1a98ccfe2664 100644
+index f309ceea1969..0e929a4c9fa1 100644
 --- a/drivers/usb/core/hub.c
 +++ b/drivers/usb/core/hub.c
-@@ -3249,11 +3249,11 @@ static bool hub_port_stop_enumerate(struct usb_hub *hub, int port1, int retries)
+@@ -33,6 +33,7 @@
+ #include <linux/mutex.h>
+ #include <linux/random.h>
+ #include <linux/pm_qos.h>
++#include <linux/pwrseq/consumer.h>
+ #include <linux/kobject.h>
+ 
+ #include <linux/bitfield.h>
+@@ -878,6 +879,16 @@ static void hub_tt_work(struct work_struct *work)
+ 	spin_unlock_irqrestore(&hub->tt.lock, flags);
  }
  
- /* Check if a port is power on */
--int usb_port_is_power_on(struct usb_hub *hub, unsigned int portstatus)
-+int usb_port_is_power_on(struct usb_port *port, unsigned int portstatus)
++static int usb_hub_set_port_pwrseq(struct usb_port *port, bool on)
++{
++	if (!IS_ENABLED(CONFIG_POWER_SEQUENCING))
++		return 0;
++
++	if (on)
++		return pwrseq_enable(port->pwrseq);
++	return pwrseq_disable(port->pwrseq);
++}
++
+ /**
+  * usb_hub_set_port_power - control hub port's power state
+  * @hdev: USB device belonging to the usb hub
+@@ -893,15 +904,22 @@ static void hub_tt_work(struct work_struct *work)
+ int usb_hub_set_port_power(struct usb_device *hdev, struct usb_hub *hub,
+ 			   int port1, bool set)
+ {
++	struct usb_port *pwrseq_port = hub->ports[port1 - 1];
+ 	int ret;
+ 
++	ret = usb_hub_set_port_pwrseq(pwrseq_port, set);
++	if (ret)
++		return ret;
++
+ 	if (set)
+ 		ret = set_port_feature(hdev, port1, USB_PORT_FEAT_POWER);
+ 	else
+ 		ret = usb_clear_port_feature(hdev, port1, USB_PORT_FEAT_POWER);
+ 
+-	if (ret)
++	if (ret) {
++		usb_hub_set_port_pwrseq(pwrseq_port, !set);
+ 		return ret;
++	}
+ 
+ 	assign_bit(port1, hub->power_bits, set);
+ 	return 0;
+@@ -3249,6 +3267,7 @@ static bool hub_port_stop_enumerate(struct usb_hub *hub, int port1, int retries)
+ int usb_port_is_power_on(struct usb_port *port, unsigned int portstatus)
  {
  	int ret = 0;
++	int pwrseq_state;
  
--	if (hub_is_superspeed(hub->hdev)) {
-+	if (port->is_superspeed) {
+ 	if (port->is_superspeed) {
  		if (portstatus & USB_SS_PORT_STAT_POWER)
+@@ -3258,7 +3277,13 @@ int usb_port_is_power_on(struct usb_port *port, unsigned int portstatus)
  			ret = 1;
- 	} else {
-@@ -3315,7 +3315,7 @@ static int check_port_resume_type(struct usb_device *udev,
  	}
- 	/* Is the device still present? */
- 	else if (status || port_is_suspended(hub, portstatus) ||
--			!usb_port_is_power_on(hub, portstatus)) {
-+			!usb_port_is_power_on(port_dev, portstatus)) {
- 		if (status >= 0)
- 			status = -ENODEV;
- 	} else if (!(portstatus & USB_PORT_STAT_CONNECTION)) {
-@@ -3757,12 +3757,13 @@ static int wait_for_connected(struct usb_device *udev,
- 		struct usb_hub *hub, int port1,
- 		u16 *portchange, u16 *portstatus)
- {
-+	struct usb_port *port_dev = hub->ports[port1 - 1];
- 	int status = 0, delay_ms = 0;
  
- 	while (delay_ms < 2000) {
- 		if (status || *portstatus & USB_PORT_STAT_CONNECTION)
- 			break;
--		if (!usb_port_is_power_on(hub, *portstatus)) {
-+		if (!usb_port_is_power_on(port_dev, *portstatus)) {
- 			status = -ENODEV;
- 			break;
- 		}
-@@ -5458,7 +5459,7 @@ static void hub_port_connect(struct usb_hub *hub, int port1, u16 portstatus,
- 		 * but only if the port isn't owned by someone else.
- 		 */
- 		if (hub_is_port_power_switchable(hub)
--				&& !usb_port_is_power_on(hub, portstatus)
-+				&& !usb_port_is_power_on(port_dev, portstatus)
- 				&& !port_dev->port_owner)
- 			set_port_feature(hdev, port1, USB_PORT_FEAT_POWER);
+-	return ret;
++	/* stub function returns error */
++	pwrseq_state = pwrseq_get_state(port->pwrseq);
++	/* fall back to port status if pwrseq is in unknown state */
++	if (pwrseq_state < 0 || pwrseq_state == PWRSEQ_STATE_UNKNOWN)
++		return ret;
++
++	return ret && pwrseq_state == PWRSEQ_STATE_ON;
+ }
  
+ static void usb_lock_port(struct usb_port *port_dev)
 diff --git a/drivers/usb/core/hub.h b/drivers/usb/core/hub.h
-index 9ebc5ef54a32..b65d9192379d 100644
+index b65d9192379d..e3a0f7ec0775 100644
 --- a/drivers/usb/core/hub.h
 +++ b/drivers/usb/core/hub.h
-@@ -138,7 +138,7 @@ extern int usb_clear_port_feature(struct usb_device *hdev,
- 		int port1, int feature);
- extern int usb_hub_port_status(struct usb_hub *hub, int port1,
- 		u16 *status, u16 *change);
--extern int usb_port_is_power_on(struct usb_hub *hub, unsigned int portstatus);
-+extern int usb_port_is_power_on(struct usb_port *port, unsigned int portstatus);
+@@ -85,6 +85,7 @@ struct usb_hub {
+  * @port_owner: port's owner
+  * @peer: related usb2 and usb3 ports (share the same connector)
+  * @connector: USB Type-C connector
++ * @pwrseq: power sequencing descriptor for the port
+  * @req: default pm qos request for hubs without port power control
+  * @connect_type: port's connect type
+  * @state: device state of the usb device attached to the port
+@@ -104,6 +105,7 @@ struct usb_port {
+ 	struct usb_dev_state *port_owner;
+ 	struct usb_port *peer;
+ 	struct typec_connector *connector;
++	struct pwrseq_desc *pwrseq;
+ 	struct dev_pm_qos_request *req;
+ 	enum usb_port_connect_type connect_type;
+ 	enum usb_device_state state;
+@@ -147,7 +149,15 @@ static inline bool hub_is_port_power_switchable(struct usb_hub *hub)
+ 	if (!hub)
+ 		return false;
+ 	hcs = hub->descriptor->wHubCharacteristics;
+-	return (le16_to_cpu(hcs) & HUB_CHAR_LPSM) < HUB_CHAR_NO_LPSM;
++	if ((le16_to_cpu(hcs) & HUB_CHAR_LPSM) < HUB_CHAR_NO_LPSM)
++		return true;
++	/* check for controllable external power sequencers */
++	for (unsigned int i = 0; i < hub->hdev->maxchild; i++) {
++		if (hub->ports[i] && hub->ports[i]->pwrseq)
++			return true;
++	}
++
++	return false;
+ }
  
- static inline bool hub_is_port_power_switchable(struct usb_hub *hub)
- {
+ static inline int hub_is_superspeed(struct usb_device *hdev)
 diff --git a/drivers/usb/core/port.c b/drivers/usb/core/port.c
-index c0a51d9b06a6..67ae2bfd3e93 100644
+index 67ae2bfd3e93..14a4a8f5d152 100644
 --- a/drivers/usb/core/port.c
 +++ b/drivers/usb/core/port.c
-@@ -98,7 +98,7 @@ static ssize_t disable_show(struct device *dev,
+@@ -8,11 +8,14 @@
+  */
+ 
+ #include <linux/acpi.h>
++#include <linux/cleanup.h>
+ #include <linux/kstrtox.h>
+ #include <linux/slab.h>
+ #include <linux/string_choices.h>
+ #include <linux/sysfs.h>
+ #include <linux/pm_qos.h>
++#include <linux/property.h>
++#include <linux/pwrseq/consumer.h>
+ #include <linux/component.h>
+ #include <linux/usb/of.h>
+ 
+@@ -29,6 +32,9 @@ static bool usb_port_allow_power_off(struct usb_device *hdev,
+ 	if (hub_is_port_power_switchable(hub))
+ 		return true;
+ 
++	if (port_dev->pwrseq)
++		return true;
++
+ 	if (!IS_ENABLED(CONFIG_ACPI))
+ 		return false;
+ 
+@@ -364,6 +370,8 @@ static void usb_port_device_release(struct device *dev)
+ 	 * device_platform_notify_remove() in device_del().
+ 	 */
+ 	fwnode_handle_put(dev_fwnode(dev));
++	/* usb_hub_create_port_device() could leave an error value */
++	pwrseq_put(port_dev->pwrseq);
+ 	kfree(port_dev->req);
+ 	kfree(port_dev);
+ }
+@@ -756,11 +764,46 @@ static const struct component_ops connector_ops = {
+ 	.unbind = connector_unbind,
+ };
+ 
++static bool port_pwrseq_is_supported(struct usb_port *port_dev)
++{
++	struct device *dev = &port_dev->dev;
++	struct fwnode_handle *port = dev_fwnode(dev);
++
++	struct fwnode_handle *ep __free(fwnode_handle) =
++			fwnode_graph_get_next_port_endpoint(port, NULL);
++	if (!ep)
++		return false;
++
++	struct fwnode_handle *remote __free(fwnode_handle) =
++			fwnode_graph_get_remote_port_parent(ep);
++	if (!remote)
++		return false;
++
++	if (!fwnode_device_is_compatible(remote, "pcie-m2-e-connector")) {
++		dev_dbg(dev, "remote endpoint %pfw is not a supported connector", remote);
++		return false;
++	}
++
++	return true;
++}
++
++static struct pwrseq_desc *usb_hub_port_pwrseq_get(struct usb_port *port_dev)
++{
++	if (!IS_ENABLED(CONFIG_POWER_SEQUENCING))
++		return NULL;
++
++	if (!port_pwrseq_is_supported(port_dev))
++		return NULL;
++
++	return pwrseq_get(&port_dev->dev, "usb");
++}
++
+ int usb_hub_create_port_device(struct usb_hub *hub, int port1)
+ {
+ 	struct usb_port *port_dev;
+ 	struct usb_device *hdev = hub->hdev;
+ 	struct fwnode_handle *fwnode = dev_fwnode(&hdev->dev);
++	struct pwrseq_desc *pwrseq;
+ 	int retval;
+ 
+ 	port_dev = kzalloc_obj(*port_dev);
+@@ -811,6 +854,7 @@ int usb_hub_create_port_device(struct usb_hub *hub, int port1)
+ 	retval = device_register(&port_dev->dev);
+ 	if (retval) {
+ 		put_device(&port_dev->dev);
++		hub->ports[port1 - 1] = NULL;
+ 		return retval;
  	}
  
- 	usb_hub_port_status(hub, port1, &portstatus, &unused);
--	disabled = !usb_port_is_power_on(hub, portstatus);
-+	disabled = !usb_port_is_power_on(port_dev, portstatus);
+@@ -828,6 +872,14 @@ int usb_hub_create_port_device(struct usb_hub *hub, int port1)
+ 		goto err_put_kn;
+ 	}
  
-  out_hdev_lock:
- 	usb_unlock_device(hdev);
++	pwrseq = usb_hub_port_pwrseq_get(port_dev);
++	if (IS_ERR(pwrseq)) {
++		retval = dev_err_probe(&port_dev->dev, PTR_ERR(pwrseq),
++				       "failed to get power sequencing descriptor\n");
++		goto err_put_kn;
++	}
++	port_dev->pwrseq = pwrseq;
++
+ 	retval = component_add(&port_dev->dev, &connector_ops);
+ 	if (retval) {
+ 		dev_warn(&port_dev->dev, "failed to add component\n");
+@@ -885,6 +937,7 @@ void usb_hub_remove_port_device(struct usb_hub *hub, int port1)
+ 	peer = port_dev->peer;
+ 	if (peer)
+ 		unlink_peers(port_dev, peer);
++	pwrseq_disable(port_dev->pwrseq);
+ 	component_del(&port_dev->dev, &connector_ops);
+ 	sysfs_put(port_dev->state_kn);
+ 	device_unregister(&port_dev->dev);
 -- 
 2.55.0.1032.g73a4cd73de-goog
 
