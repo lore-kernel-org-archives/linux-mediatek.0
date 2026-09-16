@@ -4,80 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CADFEC88E77
-	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Sep 2026 04:15:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 120B4C982C4
+	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Sep 2026 04:15:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=jhwjcBFP/KKm35RjYsTK0NhciT0e3mhgRUR8OdcQ0MU=; b=18fr/SCq/j8NDntir5avHAxswS
-	Id7ZqVFcRi7nzokbaHeTU+AnZfYt/NU7gP79ncD1PvOyZCiIpUxq7sS/oDeqTOfnQle07LVBTJNit
-	xhgJVBIoax2HyahfX+fcQ1BT97+tIsSfSWCpZJ1VCQWSlOglqSuwFvUa1yAerZ3VOZBxAGBJbsMn6
-	5CfXMD0L/YssEiHDXTYHBrM6kyxfh9yAgl1b622XeJkPrD9wURF0T0FujU9hawndFOGMjO1LecOFt
-	1EU212ye1RxtwpWazXYXf8C0IK726pGHzgW8WEAbALQO7VBi0mWohVP9Xxpb6xXDbO4jVRCdCncv7
-	XM8b8QCQ==;
+	bh=54xUl28tB3oyyAr/XFRTTgMHGsQTvwV3/5B41pgtCxk=; b=gCSfeJzXX/RnsI/Vpz9hulAjfS
+	P456UuP1F1/MXkhp/OyzRw6zbLXDWOO693s5oZrCP7A8Kudwl03/yCJjoB0jI3E1PFg3ROhbqwDWe
+	P01WQ3Ck2Nu21lZGks4TgYNum072LncqTkjkvJMe4fiH3d50rQYjbyPvlgvS2Jgxua/gWWe+DAsNL
+	mNA8EymY2BIEZo+2MoD3SmR++9G0rjynwGjeXPH9Q0s/AFGpIEG0Knvq4GgSsmJb3LCnt3DIfBAHy
+	zG3w4U2201FcSbHE3TXzx8zflDEZ0dk7U7lfuu61rYo1uqCF5SLrFeTft6cRzqgLleSv+DCl/zFr5
+	bNZugaEw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x6h3c-00000008I39-2ZYp;
-	Wed, 16 Sep 2026 04:15:40 +0000
-Received: from mail-oo2-x04.google.com ([2607:f8b0:4864:31::4])
+	id 1x6h3f-00000008I5V-3X5G;
+	Wed, 16 Sep 2026 04:15:43 +0000
+Received: from mail-oo2-x05.google.com ([2607:f8b0:4864:31::5])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x6h3T-00000008HyW-3laF
+	id 1x6h3W-00000008I0f-48hf
 	for linux-mediatek@lists.infradead.org;
-	Wed, 16 Sep 2026 04:15:33 +0000
-Received: by mail-oo2-x04.google.com with SMTP id 46e09a7af769-7f4e9ec63a7so1383743a34.1
-        for <linux-mediatek@lists.infradead.org>; Tue, 15 Sep 2026 21:15:31 -0700 (PDT)
+	Wed, 16 Sep 2026 04:15:36 +0000
+Received: by mail-oo2-x05.google.com with SMTP id 46e09a7af769-7f748fe2947so2232296a34.0
+        for <linux-mediatek@lists.infradead.org>; Tue, 15 Sep 2026 21:15:34 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1789532131; x=1790136931; darn=lists.infradead.org;
+        d=gmail.com; s=20251104; t=1789532134; x=1790136934; darn=lists.infradead.org;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :content-type:mime-version:subject:date:from:from:to:cc:subject:date
          :message-id:reply-to:content-type;
-        bh=jhwjcBFP/KKm35RjYsTK0NhciT0e3mhgRUR8OdcQ0MU=;
-        b=ZfGXpHLr7ArSqT3IJ1r+/Rmo+BsJaU4jGSHSfiVF5pTOZjaADxvZRzAubresojNAL8
-         uUbXTd+eI1dTqjYNFKShToJExIX9k4qdLW4EORHcAOtlfacHHl7N/28EI0xGe613gp32
-         F0icIKWQJ0nmCr1nGpyXxuujcKMphiBeqlXX/O+3fbkLoZNbt8ZB7nLV/InIXvGhYFrK
-         QiSlKVE/M5cWO/A24U0bC7V97ai0hpndnyW7LBr7qEdX3VWQXOaoHHPTpMipHc/sAssc
-         +N6aOTsv+eWMWUK99npZ8ML+QDfScyrMhu1j4xAx/h+KTUmOM3PBtjwM+VVoSNlkIPm1
-         7U6Q==
+        bh=54xUl28tB3oyyAr/XFRTTgMHGsQTvwV3/5B41pgtCxk=;
+        b=H+fiDDJCGHI5iEG+ttlc41ZuK2tghnQeGFQfS/Ytosj4r9+YAaxeg/6g80AuMDO+mh
+         Dd0flpA/gxkMwTtqOFU40ukHXxtu769MZBXYyQkr40AW14NVrWWbaxezpTs2HQkOqQJ4
+         ML53Z482f4Ja/ZhdPMUVNmdRuK69kSLevFEiSBCR98Xw8eSZljk/Nh7D0QikKkE7UTFr
+         XsqOV7unin8DYdhUGIzxwbUVuC+9Wbr+aPOfOB0UZhe1MTDG1fGnrDL/XMw7P9d00GTE
+         4+ZTH+ab+oaKGUcwhHmIjylcVqj2qB6VjCiKfUnSlt11mjeLkKE+SjGGZjZz+VhJ3k1z
+         euLQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1789532131; x=1790136931;
+        d=1e100.net; s=20260707; t=1789532134; x=1790136934;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :content-type:mime-version:subject:date:from:x-gm-gg
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
          :content-type;
-        bh=jhwjcBFP/KKm35RjYsTK0NhciT0e3mhgRUR8OdcQ0MU=;
-        b=lcjyowwfeaIToq/KPnbhMNHMKSKoi/I/tBMY1Sj9ZDMkskV+KMvB3wfIbscRkR05DZ
-         aezn7UcMSkP79zzXizmuP8zEsya1DuWW/ubJ8GF7ztvy8DNrGt/fu1M+LZbcUqQO/o8u
-         fGM3ytxZLmZlUXhXusMtqlbjSe3ucjesJY0FAOBjs5qbbIOTobADuH3feY1+Qyqu86/0
-         Rhy/vy4ej/AmaZjty75C9MRPD9WK3328/vsq0V07cWaOsbgpT+XOcB4Ru0sCamxOTYWN
-         ZZ6XiKn+3Vx8oE622R5kXYpW3R3HB4x6v5QX+dwpM88GU6nACx/k+W1Q9JaWf/pnMmM5
-         GGMA==
-X-Forwarded-Encrypted: i=1; AKwUvByRGOGY0Q8WHQfalp3CgfVdyYtcAyKCBQ1UWjW4eNdToRsbD6hZ959R68qmgpo02kqZr1L43AtmqBnZctaiOg==@lists.infradead.org
-X-Gm-Message-State: AFuF++lBkSFO5eP5QdTwQTlTwM7MAMBfd9cJyAXwWZm7FCExvYIlenU3
-	evbp+z0svxfpp+nw3GKxMHRzQWWTP3Q0g6xAMxqCcxAL9XN+dj/93JKz
-X-Gm-Gg: AYBFou1nR47A9nHAOK2FzczJH3aCdy7gKcevNlk7T7ROXyJ9gX0ElQ4VhSdTW8fbZjV
-	nYOGUm9e2mv6ZNSa57P36dnHIdM9JT/RelZqixY4uxoGWgrVc2h7RbphPaDFqdXyot8GggCATjl
-	i+c+SZDigP7pXZ0ZRDHYBNnKFeVksJZu6/t7p1zERVlxtU8tKeYQihqDMSQVNl1Rt2yXvaVwFZm
-	msROa7qU9LTJtXFRimmO4+vIC3ZQSL676dTuxDwgIJl/hsQIPT1PPg8KdVzj6dpZdQa6dJhpqnH
-	z31n6OcsP6gOlKgwc+bb8hCRR2OrlMgn1H5lcDFYOgItBFgTaShQTu70gBfI04X3CZyLgsM7ywx
-	OhYroH4HYmRH1kPr5svriusbIRFbHtZUSD3HLhulxWfr6ThrheiNlsaqbCDpXFwrykJQbyNHV4b
-	a1lTfHkSESx7m6EMDv//Eq4/sJiuS8zspcfvvh5lhiUyOS32mLImMxzsBAj2EA1d7mx28=
-X-Received: by 2002:a05:6830:6211:b0:7fa:ab72:9e04 with SMTP id 46e09a7af769-80b2f7c830fmr1398025a34.28.1789532130742;
-        Tue, 15 Sep 2026 21:15:30 -0700 (PDT)
+        bh=54xUl28tB3oyyAr/XFRTTgMHGsQTvwV3/5B41pgtCxk=;
+        b=p+amr964Ccps/ybIY5cLnKwea2buqXuYPT573+PDwAKV+5Dk78nt9rcmiPGJSYD1hb
+         K1YOt3kE+H0ZgvzPtML2RUgT1n7kECNPO7WuIdXMck4oqTc+f265YDJxmdPDcVVINXjc
+         7kFtvvYmOJiLzzQFbC2Y8KMkJCIENye+Y2+a7MoQNHBtNh8ZNkabL4kRrpMRbyqPKXvh
+         vQqw52r/9Ul6PmyOOLxpbswkAOGl1EzdmgoHPYWLNd9r3AH7chnigRck/UXSVXq+TmCU
+         8xkM3/0SrEFr/VVuguWba8JqRL8T9vstD78xC08eEczqLn7Ve9NAIr9mlWP0TPFd1C/B
+         SPTw==
+X-Forwarded-Encrypted: i=1; AKwUvBytVwL6nVMNBIp1mHsBvde3+OsFNbGsCZCZ2rsnoapekSZ9FQAQTjAxWMJffyUW4IV5ZZMNMfmnsMa/2LnBdQ==@lists.infradead.org
+X-Gm-Message-State: AFuF++nFqJdmpxSjk3mzchjp/8N38/UevnqVKIWLKEBYpxjQQLAyd5In
+	j2TAYWz+xQTCeq4w6XLGFT1dhmTWHUSZeA5TKbPjxsCtuVG5YSRs7OOt
+X-Gm-Gg: AYBFou2lX3dnMoahNTkvkJ+NbmmdkjV+yi0k7z8PMZZdvoxoqXUh9lP7KbqOTTGbwsn
+	alZg0e5vvi1OrT1UQ2xR+kaZ8A/4ACVr8Wk15GPNC1Th+hcu6NBa9OuRjOzvP+g4P6tOtyXchMB
+	nes4k++I4R3KM9mku8TBRxmaZ22d+ohSqxL1eMtBINZmMlc5vvWNGF5TfPlk6E7LQOjdCJhrioO
+	sxmBJ6Fh5NXesQZaqDyF2ZyKqspYDHCN3OU2ZGiVNKakbwYwgKzoqRwCTMlXwEjN/j5pMG5f/WO
+	77dmnUC78PkADi42RzmcMUUzWIojC3PbIbhfTklcwAuPOsICzXRxUEoYB8AQFaOrM8coKw6ul6r
+	aLPB4eSvpVhptXTklOWb3hlHBEUBbyuh53pGZ+me2GdPEDYuoGvZOojuYbEKSYwSwd3xehLoxS/
+	/ghY2Wzh6YuQX/t7yC2XATfoVbMyo6aMgP/e/r0he2d9n5/dW5BQUBEZLT9CYCVk3Tybs=
+X-Received: by 2002:a05:6830:a257:10b0:7f6:8bfc:ddff with SMTP id 46e09a7af769-80b2cdcbd2dmr963693a34.5.1789532134233;
+        Tue, 15 Sep 2026 21:15:34 -0700 (PDT)
 Received: from [192.168.18.164] ([2600:8804:5716:d800::b712])
-        by smtp.gmail.com with ESMTPSA id 46e09a7af769-80b07ad0373sm1440484a34.26.2026.09.15.21.15.29
+        by smtp.gmail.com with ESMTPSA id 46e09a7af769-80b07ad0373sm1440484a34.26.2026.09.15.21.15.32
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 15 Sep 2026 21:15:30 -0700 (PDT)
+        Tue, 15 Sep 2026 21:15:32 -0700 (PDT)
 From: Ryan Brue <ryanbrue.dev@gmail.com>
-Date: Tue, 15 Sep 2026 23:15:26 -0500
-Subject: [PATCH 1/3] dt-bindings: iio: adc: mediatek,mt6359-auxadc: add
- mt6397 PMIC AUXADC
+Date: Tue, 15 Sep 2026 23:15:28 -0500
+Subject: [PATCH 3/3] mfd: mt6397-core: Add mt6397 AUXADC support
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20260915-rbrue-suez-upstreaming-mt6397-auxadc-v1-1-d35d2ac3d6f0@gmail.com>
+Message-Id: <20260915-rbrue-suez-upstreaming-mt6397-auxadc-v1-3-d35d2ac3d6f0@gmail.com>
 References: <20260915-rbrue-suez-upstreaming-mt6397-auxadc-v1-0-d35d2ac3d6f0@gmail.com>
 In-Reply-To: <20260915-rbrue-suez-upstreaming-mt6397-auxadc-v1-0-d35d2ac3d6f0@gmail.com>
 To: Jonathan Cameron <jic23@kernel.org>, 
@@ -96,16 +95,16 @@ Cc: linux-iio@vger.kernel.org, devicetree@vger.kernel.org,
  Luca Leonardo Scorcia <l.scorcia@gmail.com>, 
  Ryan Brue <ryanbrue.dev@gmail.com>
 X-Mailer: b4 0.16.0
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1789532127; l=2042;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1789532127; l=822;
  i=ryanbrue.dev@gmail.com; s=20260906; h=from:subject:message-id;
- bh=pmiqpg+YqOsk+EKifCpoFFAOwMNO4lcDpbG+a0tTy6k=;
- b=zlRbINoqD2290MGLwe+MTrL1s4Bsp9ASTtTw5dB1r5/3VSi6a+YNhJDWnfn5xx5DMFAkDSpsR
- JKyOG0N88gfCa+Au6JKO0cUBK36yIriOBv3MjrXPSU5E4mjHwOdwFy9
+ bh=1otP8UYV9viBZZ+f8NwjITACufQDeLB/kdjE9I9R9IM=;
+ b=Qdf5f6KxhlBn6zznJXIHm5ylt2/6A7HbBfAy+GlK4uGnXRE5GEfZMjssKRRjN1v/McHSPhcj7
+ o1QFlFIYqhHBqBAzYR+NCPtMKgwVYgLdEInxZcyBNZ1KMNPGeCtuh5w
 X-Developer-Key: i=ryanbrue.dev@gmail.com; a=ed25519;
  pk=KsUvVaP//v/2q+ZBuacc7cLbsyEYn+AD71Sn28oZWKo=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260915_211531_945833_110616EB 
-X-CRM114-Status: GOOD (  14.01  )
+X-CRM114-CacheID: sfid-20260915_211535_035674_695F99D9 
+X-CRM114-Status: GOOD (  12.33  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -120,51 +119,30 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The MediaTek mt6397 PMIC includes a 10-bit AUXADC used for battery voltage
-and battery temperature measurements. It is not register compatible with
-mt6359: a conversion is requested by writing a channel number to a select
-field and pulsing an edge triggered start bit rather than by setting the
-channel's bit in a request register, and the results live elsewhere.
-It therefore gets its own compatible rather than a fallback.
-
-Add the binding and the header naming the channels a consumer puts in
-io-channels. The battery channel is named for the input it measures,
-ISENSE, which is what mt6323-auxadc calls the same input.
+The mt6397 PMIC includes an AUXADC. Register the AUXADC in the mt6397
+devices array to allow the corresponding driver to probe using compatible
+string.
 
 Assisted-by: LLM
 Signed-off-by: Ryan Brue <ryanbrue.dev@gmail.com>
 ---
- .../devicetree/bindings/iio/adc/mediatek,mt6359-auxadc.yaml      | 1 +
- include/dt-bindings/iio/adc/mediatek,mt6397-auxadc.h             | 9 +++++++++
- 2 files changed, 10 insertions(+)
+ drivers/mfd/mt6397-core.c | 3 +++
+ 1 file changed, 3 insertions(+)
 
-diff --git a/Documentation/devicetree/bindings/iio/adc/mediatek,mt6359-auxadc.yaml b/Documentation/devicetree/bindings/iio/adc/mediatek,mt6359-auxadc.yaml
-index c2f7387e4bfc..2847bd5d5bc4 100644
---- a/Documentation/devicetree/bindings/iio/adc/mediatek,mt6359-auxadc.yaml
-+++ b/Documentation/devicetree/bindings/iio/adc/mediatek,mt6359-auxadc.yaml
-@@ -26,6 +26,7 @@ properties:
-           - mediatek,mt6359-auxadc
-           - mediatek,mt6363-auxadc
-           - mediatek,mt6373-auxadc
-+          - mediatek,mt6397-auxadc
-       - items:
-           - enum:
-               - mediatek,mt6365-auxadc
-diff --git a/include/dt-bindings/iio/adc/mediatek,mt6397-auxadc.h b/include/dt-bindings/iio/adc/mediatek,mt6397-auxadc.h
-new file mode 100644
-index 000000000000..b696c1cb5ebe
---- /dev/null
-+++ b/include/dt-bindings/iio/adc/mediatek,mt6397-auxadc.h
-@@ -0,0 +1,9 @@
-+/* SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause) */
-+
-+#ifndef _DT_BINDINGS_MEDIATEK_MT6397_AUXADC_H
-+#define _DT_BINDINGS_MEDIATEK_MT6397_AUXADC_H
-+
-+#define MT6397_AUXADC_ISENSE		0
-+#define MT6397_AUXADC_BAT_TEMP		1
-+
-+#endif
+diff --git a/drivers/mfd/mt6397-core.c b/drivers/mfd/mt6397-core.c
+index 9ec951996588..5d5f816492aa 100644
+--- a/drivers/mfd/mt6397-core.c
++++ b/drivers/mfd/mt6397-core.c
+@@ -261,6 +261,9 @@ static const struct mfd_cell mt6359_devs[] = {
+ 
+ static const struct mfd_cell mt6397_devs[] = {
+ 	{
++		.name = "mt6397-auxadc",
++		.of_compatible = "mediatek,mt6397-auxadc",
++	}, {
+ 		.name = "mt6397-rtc",
+ 		.num_resources = ARRAY_SIZE(mt6397_rtc_resources),
+ 		.resources = mt6397_rtc_resources,
 
 -- 
 2.55.0
