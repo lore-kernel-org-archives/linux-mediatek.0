@@ -4,100 +4,118 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2A8D5C88E77
-	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Sep 2026 05:24:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C852DC88E5C
+	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Sep 2026 05:55:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=zSwtxaUSQ7K0oB62qUITKeVKiPbi0vng9/BLzWTtzOE=; b=sWTlU5Ie0RxaPBhdp7Kj+1OV8j
-	YYHEdARi8go9fnvDoDuS5/DKEWUNqntQb66Qd9vn7lgyr8nvBmsQrrKW/8TkgvTDxzWSdSbifpn69
-	Tn0owr4+2g1mJTf3gtTaaRV3EzsrRSGvKoRbvwwzkEPBx8TVaZGfjiplecOcWlpraOh54HYFvC631
-	7ybzPTE+oH1CHUldbLgLVzUEnxNm7Tq84tv1PGj/UaoM+tpsG25mIsPbNNfh0h4ofoBey9jhHkEoO
-	BFF/nELwP8JKWw0WvVwmYDxZKJ0imUJlqLhMgD20U44i2ZftlUTfLhF/QwGXa8GnMAeyn0PIbqxT4
-	aStWud5A==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=MqFU5BpLPG1Ad79y0zq7m4k9RGfhTKwi6mVEHKHgkMk=; b=pCBosl1bmdjtAIQNlhARfNEB15
+	dnYGCCxSic+0oyWVZgifv2YXpWFy/uwFu2QKYSnSlbNe8Ey/3rbgHFQxR1tHHhCzITHrJv6ukMwog
+	RDvfxp5TGmv3SSJjaZpb7zgrDJFw+3L6J6f4qbe9BtUCtgS+v8BBpV0pPom4yN/E40uGsKMqtpG6W
+	oJfRY4tja/GZQ5k8twS7AhYmdL4frCj43PSUWSZ6ynY/FrKzvMMSmyMObDoHpEKmotNA4OlHndq9V
+	37+lWOKR62vOAp/8OFFWNVLUwOJvhCX6FNU6vi2wDdSWcOq72pXEkjn/IYmbz0ZNSKVDuaf1a+1Y8
+	wqo7WEuQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x6i7y-00000008NcA-09Or;
-	Wed, 16 Sep 2026 05:24:14 +0000
-Received: from mail-oo2-x05.google.com ([2607:f8b0:4864:31::5])
+	id 1x6ice-00000008QWW-1IFO;
+	Wed, 16 Sep 2026 05:55:56 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x6i7v-00000008NbW-2ZHJ
+	id 1x6icb-00000008QVt-2ubH
+	for linux-mediatek@bombadil.infradead.org;
+	Wed, 16 Sep 2026 05:55:53 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
+	:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:Message-ID:
+	Sender:Reply-To:Content-ID:Content-Description;
+	bh=MqFU5BpLPG1Ad79y0zq7m4k9RGfhTKwi6mVEHKHgkMk=; b=f+AE9t5IcA3Fs+QG7oU3+RmbpP
+	fBrImqBuRlB2CiG6m75uMUxOjw0LDGHH1LEmQMVm7AnbpFgkYUcgZiNJ/uxrxT3XlR2WgmyZnN+OU
+	i3C2geKbBJV6kOusT8TY6ZfOPe6CzzqjZDlqvVjy/QdWwrKwT/CN6QGBJDdE5gjmI4oj562v/REpK
+	i0B8Zl+gBztc71GsWdKgnNIyLteWbsQFooVa1IxOPENPu1JFBb69PWQ3O502fRgkFI6ZeiffgO+e9
+	NE2Xcy9MPK4K1p9iYO5zEVFnsmXF4YMiTMzYBjzxlKZJx41PWCsAMkvse+iBf32v9+YuB67Z6htFQ
+	3YTbZkZw==;
+Received: from mail-oo2-x0b.google.com ([2607:f8b0:4864:31::b])
+	by desiato.infradead.org with esmtps (Exim 4.99.2 #2 (Red Hat Linux))
+	id 1x6ibv-00000007VzK-0cVk
 	for linux-mediatek@lists.infradead.org;
-	Wed, 16 Sep 2026 05:24:12 +0000
-Received: by mail-oo2-x05.google.com with SMTP id 46e09a7af769-7f748fe2947so2247370a34.0
-        for <linux-mediatek@lists.infradead.org>; Tue, 15 Sep 2026 22:24:11 -0700 (PDT)
+	Wed, 16 Sep 2026 05:55:52 +0000
+Received: by mail-oo2-x0b.google.com with SMTP id 006d021491bc7-6aaf6076546so2802337eaf.1
+        for <linux-mediatek@lists.infradead.org>; Tue, 15 Sep 2026 22:55:10 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1789536250; x=1790141050; darn=lists.infradead.org;
-        h=cc:to:message-id:content-transfer-encoding:content-type
-         :mime-version:subject:date:from:from:to:cc:subject:date:message-id
-         :reply-to:content-type;
-        bh=zSwtxaUSQ7K0oB62qUITKeVKiPbi0vng9/BLzWTtzOE=;
-        b=oNRL6AdDXHpHVeOGraXzqwkfNZKljw32smiv2zcfkd+HdxPtboXBPW/RZfh7bNBc6m
-         kRB1VEFcCOdCSWSEJFDYc20o4ZKhgg0Il3l13FdhmQV0WSA1VYFWzCx24RuQDi32fSR5
-         hj7t2jxjHEkMQYV7oM6jBpfzFEiSuLznbrvsaXBPHKCNnyx5cmPqZoZw8zo46XcXkPWR
-         wlXIKt27O0ClPr2qfmhiZt0Jsg/NGkbhwWaQaHM4M6SdX9bHocx0gt4ibewnBnxC9bW+
-         nT2LIk2Tmx/EvXKZemaapvSZm4LqaAzIt5O75kDKuUo63Tr2OTO1JOan8X0oEkMSCXb9
-         B/Rg==
+        d=gmail.com; s=20251104; t=1789538109; x=1790142909; darn=lists.infradead.org;
+        h=content-transfer-encoding:content-type:in-reply-to:from
+         :content-language:references:cc:to:subject:user-agent:mime-version
+         :date:message-id:from:to:cc:subject:date:message-id:reply-to
+         :content-type;
+        bh=MqFU5BpLPG1Ad79y0zq7m4k9RGfhTKwi6mVEHKHgkMk=;
+        b=rsoJejBB8Hg+dcVmjB8mDPSHYFlJo/GnFdy3sYRZyfbH6BOG338EEyV8vDwyxj25hs
+         /IRUrLA2GHDyqB7y/MjBaCLdUIgPAK83FlATJv8oiEfqrYhIG/UWZVDhhUioNTJK19TR
+         q/ZAPmpUVDowLta2ENj0OjnJa4+b/fSUXEq07LkkA6ikq1//LiotGQasJvNqRIGyBT9K
+         XgiEqqk5MfAd+5pdoYo1Dij5m3ghOL7tIG952wMzpg2zhkjxQkobEWPHeXF04boy5hls
+         LP+9mQLz9Por2tV9vUc9YGXAFqb07pdM5/ffa4DReTpkry8xNHwtunSEj2NrK0Yd2KU3
+         zL0A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1789536250; x=1790141050;
-        h=cc:to:message-id:content-transfer-encoding:content-type
-         :mime-version:subject:date:from:x-gm-gg:x-gm-message-state:from:to
-         :cc:subject:date:message-id:reply-to:content-type;
-        bh=zSwtxaUSQ7K0oB62qUITKeVKiPbi0vng9/BLzWTtzOE=;
-        b=RkrlXCL0/GEwGypzLXReJfqGZrZ0yqYKrMjQ4o+yWXNL5qozieJhI2R2hIbZCv4Q8v
-         xYgQXatfOAc/P7C2LnirGOIbHICRPx0mDNjdyVmZaAwAHOnJ7Uz4T0TV9vUAz8j+b48n
-         CKi6Nv2jwAaBgR8q5YzVTj7OkYtWaalt2buSMKTZKcrMaXJBI+8zoNTRMG9dH8Gb94c/
-         sJdJtgr+yHs722OMI368d9xnaDXMoAJm1vVO98hEuLK5ySH4ckOix5kekaJr7S4yYqDc
-         /7yZH2xloBSs0smypaulNqDWycomMN3EY6ogLWYbaxU34cqMlzH15L/QGBu0bQpZdroJ
-         u9Sg==
-X-Forwarded-Encrypted: i=1; AKwUvBzr6bwb1YR7jf1Aedcovi9MEdVt5atWgk8JpyYPaXX8CPoFMJFBAaAK9GfQ2EUQKLDITyh62c94aca3JihxTQ==@lists.infradead.org
-X-Gm-Message-State: AFuF++n8rFpHGd76qPqCNt+J/qi/P4k2IFwJJztFzw+aqvJ+6kuK3CH5
-	5sochcGnqhR/2qh1jvwcALdFhU7kL3EgI2pJ6WZ0V7hCn26QSIHPkytD
-X-Gm-Gg: AYBFou0duvAxMUeuPItadXx058ZKR26yr2tee4SzMlGO2NynRqSpK+cARW8rzOGJzKv
-	RQ1YzCkR1rPS43TCI81hluYPpWJLeQAXsXBxXlFzLQ8g2vUkQx4yU7zJgwLZkE1TVv9FiKDOYAs
-	KmS78lF8xhWn/AriD8+fWlYlvCOU1GpDe+vYQEkaIeGCT/5DnC0apY4TpEaKlvdyIMtPItHN4Gu
-	szhOCHfxdxHejGh50CNq0aGz+dCpDGik30u3y+d0EZuQH6HEDNmdrQ8scJXm5mSzCQtvZiKEcER
-	4qHYHGOb5beB2Drs2kS/PEEWQK2LOlT1VZsNaMkMuhkQopS9hHktCg3x46gmNy2EoUWW7ILMT9/
-	uxNcNtayLRkqXoqJHBvDG+E+IHClU7pDGcqyQUYL9sI0OiTwEtRvF8MRpFiWsctTkXV41E9Q/nM
-	PxO83Vh6whWPY+FDL/3eF64Bi80QtrlKzWVESG8J2Sp8Cybk6Q4MvQLwEJX4jRd4D/zK8=
-X-Received: by 2002:a05:6830:6d2e:b0:80a:45e1:7677 with SMTP id 46e09a7af769-80b2f3ac500mr1403318a34.23.1789536250381;
-        Tue, 15 Sep 2026 22:24:10 -0700 (PDT)
-Received: from [192.168.18.164] ([2600:8804:5716:d800::b712])
-        by smtp.gmail.com with ESMTPSA id 46e09a7af769-80b07ad0294sm1562819a34.24.2026.09.15.22.24.08
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 15 Sep 2026 22:24:09 -0700 (PDT)
-From: Ryan Brue <ryanbrue.dev@gmail.com>
-Date: Wed, 16 Sep 2026 00:24:00 -0500
-Subject: [PATCH] drm/mediatek: dsi: force command mode in mtk_dsi_poweron()
+        d=1e100.net; s=20260707; t=1789538109; x=1790142909;
+        h=content-transfer-encoding:content-type:in-reply-to:from
+         :content-language:references:cc:to:subject:user-agent:mime-version
+         :date:message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to:content-type;
+        bh=MqFU5BpLPG1Ad79y0zq7m4k9RGfhTKwi6mVEHKHgkMk=;
+        b=RU4JawEMqd6EkkxpGUdGhQ2PS4leAA2+Il9FRTHfA6V9G1UTXGveNnQvc/aCkxhU4G
+         rA1343kkZ9fB7aDccfvGMVgneC/HtQq6VOjQ0BCxbHmnthXqCoX4ovwQkOyYLQC9QDJx
+         oFex7nlUYjWyitDor8UQ/Yk3N4+UDMZZ+vGFmSXzJNHQQssMdDv6Sv30k8FQAJW95RlS
+         /FzO4cWscLJYp0Wnaz3P/JNiQGx7pHv+YNnbYmaq4XDpHWjWK2DYo3lFeY/okWq2IrwG
+         oBnSkh7pHiHtcpZatOGH4hO7P8Kpy7htRUhCpMjMWZeZKnPTEVfxEDMPM1wnL3M1t3Df
+         Yi7Q==
+X-Forwarded-Encrypted: i=1; AKwUvBzgzKiQQoBSwxP1TgkcEcjBwFmM/TLubdd9nOL5Fpl+D6hl2miySD3u7u6alixkM6SN3CrP4jq3ULMsmqoq8Q==@lists.infradead.org
+X-Gm-Message-State: AFuF++l4SrRXkTG75aTGImZMmCP0Rg6bjdpo/E76GQ5UWb5aGPwkwH3R
+	jc3bExof/at9At3iBUaxfPpPLjr/fXvEPUJuQzEoW1X4rVxR9Tb+zQOT
+X-Gm-Gg: AYBFou0Supw0XggHaIU/r6l0hBv8js4OL8yKXhIU2BvU1TbZfufMie0hC34qeTRMwce
+	9bRDSoZHPtJ/QttBTccL393X783I7nHrnWMa5XIVjt4i5ZGqeHSCpRlGFiR+tD+LmUgHcArU/WB
+	uvkvTajrNTTl7+rVHKaATlZ0fzb/m/56C+We/A2tSnyoyPT1hUtDEcoaHLoYigLfEAf5KySHcso
+	Txe61VoGgqM25MCuJMEHFw0Tj6ze57mZoufNOBNb7fw2wH2g7xc7vffbuWLUsD/lSWeJB7jMDnC
+	u5pYpk7UKr9z+0iBzXJZTeN0rsA4kGOA/630mPOtrfGkP8XAOR0Do14g+mcJQQsQkE9hHMVZ0rj
+	MiLyFfnZ/iGAcyTHgCvUKP347awuCzY/AlVex9D7j6Uzt+TQDU76yyZZd4P1RZXGEEPZ+hz/wrF
+	pdZvl8Cg0namlEmsVZR6Zrb8V6a1yW6j5uMsWAP8yCNZyu6vsHqyHCVwZbtEcIMo8pvwwk5i9Bv
+	Ahd3EgqS+qZtiKr
+X-Received: by 2002:a05:6820:188e:b0:6b3:f4b8:bb86 with SMTP id 006d021491bc7-6c7d1bc852cmr1410414eaf.22.1789538108821;
+        Tue, 15 Sep 2026 22:55:08 -0700 (PDT)
+Received: from ?IPV6:2600:8804:5716:d800::b712? ([2600:8804:5716:d800::b712])
+        by smtp.gmail.com with ESMTPSA id 006d021491bc7-6c7a78ac1c6sm1949699eaf.13.2026.09.15.22.55.05
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 15 Sep 2026 22:55:07 -0700 (PDT)
+Message-ID: <b9a58aac-4a49-43ed-93f9-32c295609312@gmail.com>
+Date: Wed, 16 Sep 2026 00:55:05 -0500
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20260916-rbrue-suez-upstreaming-mtk-dsi-cmd-mode-v1-1-b37f167e25cb@gmail.com>
-X-B4-Tracking: v=1; b=H4sIAAAAAAAC/x3NwQqDMAyA4VeRnBeonYjuVcYO2kQXRqskdoyJ7
- 27x+F3+fwdjFTZ4VDsof8VkSQX1rYLwHtLMKFQM3vnW9XWLOmpmtMx/zKttykOUNGPcPkgmGCJ
- hXIiRunsTnO+nZuyg1FblSX7X6fk6jhM0/FZ9eQAAAA==
-X-Change-ID: 20260916-rbrue-suez-upstreaming-mtk-dsi-cmd-mode-d834c029f4b8
-To: Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
- Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@gmail.com>, 
- Simona Vetter <simona@ffwll.ch>, Matthias Brugger <matthias.bgg@gmail.com>, 
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v3 2/3] drivers: gpu: drm: panel: Add BOE NT51021 driver
+To: Nickolay Goppen <setotau@mainlining.org>,
+ Neil Armstrong <neil.armstrong@linaro.org>,
+ Jessica Zhang <jesszhan0024@gmail.com>, David Airlie <airlied@gmail.com>,
+ Simona Vetter <simona@ffwll.ch>,
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>,
  AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, 
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- Ryan Brue <ryanbrue.dev@gmail.com>
-X-Mailer: b4 0.16.0
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1789536248; l=2721;
- i=ryanbrue.dev@gmail.com; s=20260906; h=from:subject:message-id;
- bh=hpjXRGa4viZcbFnNO5KBT0ICAECMSKtgFaKjk3ZUers=;
- b=YGYtnMBV27PnM1edrgMETUOi3yg7VZTGrzPFHJou4Uz1zxAGKN1TiUeZkDDsyt2+fjf5MWWPb
- W6IpgB8c/lLB0mGPpb7e2KK71MSkVE3pVyuDUNsENUDYOqVIuiy9cDh
-X-Developer-Key: i=ryanbrue.dev@gmail.com; a=ed25519;
- pk=KsUvVaP//v/2q+ZBuacc7cLbsyEYn+AD71Sn28oZWKo=
+Cc: dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, Alexey Minnekhanov <alexeymin@minlexx.ru>,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+References: <20260913-qcom-novatek-nt51021-panels-v3-0-266bc5d7e8c9@mainlining.org>
+ <20260913-qcom-novatek-nt51021-panels-v3-2-266bc5d7e8c9@mainlining.org>
+Content-Language: en-US
+From: Ryan Brue <ryanbrue.dev@gmail.com>
+In-Reply-To: <20260913-qcom-novatek-nt51021-panels-v3-2-266bc5d7e8c9@mainlining.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260915_222411_686100_E8B9B0CE 
-X-CRM114-Status: GOOD (  14.91  )
+X-CRM114-CacheID: sfid-20260916_065511_388245_828FEA4D 
+X-CRM114-Status: UNSURE (   7.52  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -112,70 +130,13 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-mtk_dsi_reset_engine() does not touch DSI_MODE_CTRL, so whatever the
-bootloader left there survives power-on. On boards where the bootloader
-lights the panel for a boot logo and hands the DSI over still running, the
-leftover value is a video mode, and the first mtk_dsi_host_transfer() then
-takes the "already streaming" path: it stops the stream and waits for
-VM_DONE, which never arrives, because the engine reset has already stopped
-the stream. The panel's very first command fails and it is never
-initialised:
+Not sure if I was supposed to reply with the trailer again, but to the 
+individual patch, or if I should leave it since I already messed it up 
+in the thread, so I hope I'm not doing this wrong:
 
-  [drm] Wait DSI IRQ(0x00000008) Timeout
-  *ERROR* failed to switch cmd mode
-  sending dcs data 8f a5 failed: -62
-
-Set command mode right after the engine reset, so DSI_MODE_CTRL describes
-the state the reset leaves the engine in. The video mode is programmed by
-mtk_dsi_set_mode() when the stream is actually started, exactly as today.
-
-Seen on the Amazon Fire HD 10 (2017), whose LK bootloader draws its logo
-over DSI in video mode and never stops the stream before jumping to the
-kernel.
-
-Assisted-by: LLM
-Signed-off-by: Ryan Brue <ryanbrue.dev@gmail.com>
----
-The board this was found on, an Amazon Fire HD 10 (2017), is not upstream
-yet, so no in-tree board regresses without this. It is a state-consistency
-fix either way: mtk_dsi_reset_engine() stops the stream but leaves
-DSI_MODE_CTRL still describing the mode the bootloader was driving, and
-nothing writes that register again until mtk_dsi_set_mode() at stream start.
-
-This touches the same lines as "drm/mediatek: mtk_dsi: Transfer register
-offsets to per-SoC const" from the MT8196 series; I will rebase on top of
-that if it lands first.
----
- drivers/gpu/drm/mediatek/mtk_dsi.c | 9 +++++++++
- 1 file changed, 9 insertions(+)
-
-diff --git a/drivers/gpu/drm/mediatek/mtk_dsi.c b/drivers/gpu/drm/mediatek/mtk_dsi.c
-index 7961139333ad..4cb486f54653 100644
---- a/drivers/gpu/drm/mediatek/mtk_dsi.c
-+++ b/drivers/gpu/drm/mediatek/mtk_dsi.c
-@@ -737,6 +737,15 @@ static int mtk_dsi_poweron(struct mtk_dsi *dsi)
- 		       dsi->regs + dsi->driver_data->reg_shadow_dbg_off);
- 
- 	mtk_dsi_reset_engine(dsi);
-+
-+	/*
-+	 * mtk_dsi_reset_engine() leaves DSI_MODE_CTRL alone, so a video mode
-+	 * left there by a bootloader that handed the panel over still running
-+	 * would make the first command wait for a VM_DONE that never arrives.
-+	 * mtk_dsi_set_mode() programs the real mode when the stream starts.
-+	 */
-+	mtk_dsi_set_cmd_mode(dsi);
-+
- 	mtk_dsi_phy_timconfig(dsi);
- 
- 	mtk_dsi_ps_control(dsi, true);
-
----
-base-commit: fd73f4a6659897191fa0d40695fe370925dd3780
-change-id: 20260916-rbrue-suez-upstreaming-mtk-dsi-cmd-mode-d834c029f4b8
+Tested-by: Ryan Brue <ryanbrue.dev@gmail.com> # Amazon Fire HD 10 
+(2017), boe,tv101wum-nm0
 
 Best regards,
---  
-Ryan Brue <ryanbrue.dev@gmail.com>
-
+Ryan
 
