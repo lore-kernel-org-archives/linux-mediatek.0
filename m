@@ -4,56 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6556CC88E5C
-	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Sep 2026 09:51:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 64819C88E5C
+	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Sep 2026 09:56:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=QL6jKas1cmdLyBHfqWeojKDHQRuRtzuhcu/gUwSMtHk=; b=0PH5tPP1Lr8xb0rTXKjavz/rkV
-	ib2FLCAyssFKCcKf1yY0xXg2xXy20awUmJj4y4/Q/d3O6VIHHx9y6PKAXiuPg/ai3e5jTM64ZXdjW
-	ZkXt34H18w4nELgCqa/8l3v/Ldnqz3eUH6vnHSRYNfJgRKaspcnMHUcpLzSQFOzoiNhvKKS0AKHq7
-	qXcqxTGs1pnkx8oYzD1xsoZDDNz1LWL9NVAYCou6P4/9+j0dekQnVpN6E6z0i31MqOfC0EnwK8ViD
-	4q47Q8ijHq7MH1QqnGX829xketTmu10EkUBJouHVmdqoDQ6S4TgluMWlEPiRaZzTIUIE9pajq0Rmq
-	4v6rKHMg==;
+	bh=hHVHwGYLuKp9yrRdZZpJ+o7ex5O7lrk7lia+vMokVzU=; b=eScaT84P1qRuPyqL2YVyueridb
+	d1E9XecF46aY7fbfRhhh9JH+SJdVkBTrWNLtU9meN8DuVUkdedPTkbUz07FjelOZVHq/NVeE3t8+8
+	UWm+GIkMHdk8DjCCHixA7+uWuzAc79WoK742kOcN8xVLfh8kaUpP0zVNEU6po2GGlvlP0/TI3AFaH
+	R513QiWA+ouBOFpPPzLLF9S+FGZ9pOykBowPFHLHxf9syIA+jOr8wSndeoY82Zaqp+hHBWmnGSXUp
+	wQcVtRfXu7fcxbqsON2u9svp/LlILIp93gy14EROIM7yP2U3WgeYUK6zO4tEnEOMVizWEe0w1ItpB
+	sAGMfOPA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x6mIQ-00000008tqG-1Vu4;
-	Wed, 16 Sep 2026 09:51:18 +0000
-Received: from mgamail.intel.com ([192.198.163.10])
+	id 1x6mMx-00000008ul3-07ar;
+	Wed, 16 Sep 2026 09:55:59 +0000
+Received: from mgamail.intel.com ([192.198.163.16])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x6mIG-00000008tls-0RHN;
-	Wed, 16 Sep 2026 09:51:09 +0000
+	id 1x6mMu-00000008ujn-3AQz;
+	Wed, 16 Sep 2026 09:55:57 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
   d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1789552268; x=1821088268;
+  t=1789552556; x=1821088556;
   h=date:from:to:cc:subject:message-id:references:
    mime-version:in-reply-to;
-  bh=UIwWPNKRQ8FW7Bu3jbEPy9yWyv1Y+CRFZBuPobR95d0=;
-  b=WSIipDdzxEAMVRuShekuIWphl5WaGPdtNe7r7XOzARhPxXJdkm1gvB+Y
-   JkKbAaNka2+L3d7S1+/l+VHAqLbCZ4R3gf7UhEO9wj1SW9E2klbkkfP08
-   UyHoxH3aiEj9o+zMidCkHaAqxWOCcvyBuLxaR6OMY4zzmCoZGqMjNkXow
-   86bPdJ6ubGycuZWHSPqcPgeE4IOhhLr9c+ppx95GkF8SKAWrwNoDBEbAs
-   KFRbvhqNMyxuVfjpixjI1vFhYHLXTvF4ORX9FhsN5qDiO/LpZxGi8jH1O
-   bzeYlXqPCwa644GVT1HMWH49fWeNY4++MOMh2qpXo6ZmiITYwH1Lwh/Lw
-   g==;
-X-CSE-ConnectionGUID: F2KUMXLjTGikjIni6oSIUg==
-X-CSE-MsgGUID: 1u4U3+ArRBGAXsSI4Uyw/Q==
-X-IronPort-AV: E=McAfee;i="6800,10657,11905"; a="101270152"
+  bh=iAHJd4eqBM8b6hwbrA5kr1yWGb3u2TqN8211KLrRBwk=;
+  b=BNY1yrScaVvhPcKqh0FcLugWrFBBZ35pdk975P92Tr99aiepfAF9Bnqx
+   Esi18VTZP7eHF2uvuGraf7PreG6h0TSZQB7qEHyG7DTmyPHzcpiqtAuvd
+   yKRFEqPznxhngM05EdHPGvCa+LCsF9/qhPlSzE64ulCQq/HKhYkLvIIiB
+   jdCNaMFh4yzaJ3xTUv1VjTUtFHW0+Z8tGEbZBBhpa/I2UD5JZbfVG7+Bz
+   D2Or15pzCFMT3eymtlMquNbPV4rBugnb57bExxRa6PEokV7ngqHVcn2Fc
+   UtuthQK+mQANu4/DAwFtnwnPGp54wv9NfUXqG7IIKMXU+CYzYFvmnrSt6
+   w==;
+X-CSE-ConnectionGUID: MvR60DktTOu60nTeXNsjlQ==
+X-CSE-MsgGUID: w3Zo9xrLRUmigC1boxy9sQ==
+X-IronPort-AV: E=McAfee;i="6800,10657,11905"; a="77486939"
 X-IronPort-AV: E=Sophos;i="6.27,103,1787036400"; 
-   d="scan'208";a="101270152"
-Received: from fmviesa009.fm.intel.com ([10.60.135.149])
-  by fmvoesa104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 16 Sep 2026 02:51:06 -0700
-X-CSE-ConnectionGUID: KfvqFqviTauBpXirtJ5MXw==
-X-CSE-MsgGUID: RK56W2AkRI2hfojlaoS2QQ==
+   d="scan'208";a="77486939"
+Received: from orviesa001.jf.intel.com ([10.64.159.141])
+  by fmvoesa110.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 16 Sep 2026 02:55:56 -0700
+X-CSE-ConnectionGUID: CMf+pV8wSQO9PkbimfunmA==
+X-CSE-MsgGUID: 1AA1bSyoS7mKuAtJD4vrvg==
 X-ExtLoop1: 1
 X-IronPort-AV: E=Sophos;i="6.27,103,1787036400"; 
-   d="scan'208";a="267080866"
+   d="scan'208";a="311564651"
 Received: from ettammin-mobl2.ger.corp.intel.com (HELO localhost) ([10.245.244.145])
-  by fmviesa009-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 16 Sep 2026 02:51:01 -0700
-Date: Wed, 16 Sep 2026 12:50:58 +0300
+  by smtpauth.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 16 Sep 2026 02:55:52 -0700
+Date: Wed, 16 Sep 2026 12:55:49 +0300
 From: Andy Shevchenko <andriy.shevchenko@intel.com>
 To: Ryan Brue <ryanbrue.dev@gmail.com>
 Cc: Jonathan Cameron <jic23@kernel.org>,
@@ -70,18 +70,20 @@ Cc: Jonathan Cameron <jic23@kernel.org>,
 	linux-mediatek@lists.infradead.org, mfd@lists.linux.dev,
 	Roman Vivchar <rva333@protonmail.com>,
 	Luca Leonardo Scorcia <l.scorcia@gmail.com>
-Subject: Re: [PATCH 0/3] iio: adc: add mt6397 PMIC AUXADC support
-Message-ID: <aqpmgliQW7FW53o5@ashevche-desk.local>
+Subject: Re: [PATCH 2/3] iio: adc: mt6397-auxadc: add mt6397 PMIC AUXADC
+ driver
+Message-ID: <aqpnpT6hU5Z0s1TZ@ashevche-desk.local>
 References: <20260915-rbrue-suez-upstreaming-mt6397-auxadc-v1-0-d35d2ac3d6f0@gmail.com>
+ <20260915-rbrue-suez-upstreaming-mt6397-auxadc-v1-2-d35d2ac3d6f0@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20260915-rbrue-suez-upstreaming-mt6397-auxadc-v1-0-d35d2ac3d6f0@gmail.com>
+In-Reply-To: <20260915-rbrue-suez-upstreaming-mt6397-auxadc-v1-2-d35d2ac3d6f0@gmail.com>
 Organization: Intel Finland Oy - BIC 0357606-4 - c/o Alberga Business Park, 6
  krs, Bertel Jungin Aukio 5, 02600 Espoo
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260916_025108_193094_816F1C68 
-X-CRM114-Status: GOOD (  10.60  )
+X-CRM114-CacheID: sfid-20260916_025556_815096_5E564C71 
+X-CRM114-Status: GOOD (  31.00  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,15 +98,148 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Sep 15, 2026 at 11:15:25PM -0500, Ryan Brue wrote:
-> The MediaTek mt6397 PMIC has a 10-bit AUXADC that nothing in-tree can
-> reach. On boards built around it that ADC is the only path to the battery:
-> the SoC's AUXADC is wired to board thermistors, and the charger ICs these
-> boards use have no ADC at all, so without it there is no pack voltage and
-> no state of charge.
+On Tue, Sep 15, 2026 at 11:15:27PM -0500, Ryan Brue wrote:
+> The mt6397 AUXADC is a 10-bit ADC behind the SoC's PMIC wrapper. On boards
+> built around this PMIC it is the only way to read the battery: the SoC's
+> AUXADC is wired to board thermistors and the charger ICs these boards use
+> have no ADC of their own.
+> 
+> Add a driver exposing the battery voltage and battery temperature
+> channels. Only those two are described, so a channel ID in the device tree
+> is an index into the driver's channel array rather than the PMIC's channel
+> number, as mt6323-auxadc does. The ready bit lives in a channel's raw
+> result register, but the value comes from the chip's trimmed copy of it,
+> which is what the vendor driver reads for a measurement.
+> 
+> Both channels need more than that, as the vendor programs them. The
+> battery voltage is measured through ISENSE, because a board with a
+> switching charger in the power path leaves BATSNS on the charger's system
+> rail instead of on the pack. The thermistor only reads correctly with the
+> PMIC's battery-detect bias and input buffer enabled, which take 20 ms to
+> settle. Both are switched back off afterwards.
+> 
+> Reads average sixteen conversions in software; the chip's sample
+> accumulator makes no measurable difference at any setting, so it is left
+> at one sample per conversion.
 
-This doesn't explain why a brand new driver? Perhaps we have existing code that
-may be updated to support this device?
+...
+
+> +/*
+> + * MediaTek MT6397 PMIC AUXADC IIO driver
+> + *
+> + * Copyright (c) 2026 Ryan Brue <ryanbrue.dev@gmail.com>
+> + *
+> + * Based on drivers/iio/adc/mt6323-auxadc.c
+
+Why not add this device support into that driver?
+
+> + */
+
+...
+
+> +#define MT6397_AUXADC_ISENSE_SETTLE_US	USEC_PER_MSEC
+
+(1 * USEC_PER_MSEC)
+
+...
+
+> +static const struct iio_chan_spec mt6397_auxadc_channels[] = {
+> +	MTK_PMIC_IIO_CHAN(isense,   MT6397_AUXADC_ISENSE,
+
+One space too many.
+
+> +			  MT6397_AUXADC_HWCHAN_BATSNS),
+> +	MTK_PMIC_IIO_CHAN(bat_temp, MT6397_AUXADC_BAT_TEMP,
+> +			  MT6397_AUXADC_HWCHAN_BAT_TEMP),
+> +};
+
+...
+
+> +static int mt6397_auxadc_battemp_bias(struct mt6397_auxadc *adc, bool on)
+> +{
+> +	struct regmap *map = adc->regmap;
+> +	int ret;
+> +
+> +	if (on) {
+> +		ret = regmap_set_bits(map, MT6397_AUXADC_CON0,
+> +				      MT6397_AUXADC_CON0_BUF_PWD_ON);
+> +		if (ret)
+> +			return ret;
+> +		ret = regmap_set_bits(map, MT6397_AUXADC_CON0,
+> +				      MT6397_AUXADC_CON0_BUF_PWD_B);
+> +		if (ret)
+> +			return ret;
+> +		return regmap_set_bits(map, MT6397_CHR_CON7,
+> +				       MT6397_CHR_CON7_BATON_TDET_EN);
+> +	}
+> +
+> +	ret = regmap_clear_bits(map, MT6397_CHR_CON7,
+> +				MT6397_CHR_CON7_BATON_TDET_EN);
+> +	ret = ret ?: regmap_clear_bits(map, MT6397_AUXADC_CON0,
+> +				       MT6397_AUXADC_CON0_BUF_PWD_B);
+> +	return ret ?: regmap_clear_bits(map, MT6397_AUXADC_CON0,
+> +					MT6397_AUXADC_CON0_BUF_PWD_ON);
+
+Huh?! Please, use standard pattern with 'if (ret) return ret;'.
+Ditto for other weird cases like this.
+
+> +}
+
+...
+
+> +{
+> +	unsigned int i, sum = 0;
+> +	int ret, sample;
+
+It's preferred not to mix ret with other semantically different variables.
+
+> +	/* Held across the whole burst: the channel select is shared state. */
+> +	guard(mutex)(&adc->lock);
+> +
+> +	if (chan->channel == MT6397_AUXADC_ISENSE) {
+> +		ret = mt6397_auxadc_isense_enable(adc);
+> +		if (ret)
+> +			return ret;
+> +		fsleep(MT6397_AUXADC_ISENSE_SETTLE_US);
+> +	} else {
+> +		ret = mt6397_auxadc_battemp_bias(adc, true);
+> +		if (ret)
+> +			return ret;
+> +		fsleep(MT6397_AUXADC_BATTEMP_SETTLE_US);
+> +	}
+
+> +	for (i = 0; i < MT6397_AUXADC_SAMPLES; i++) {
+
+	for (unsigned int i = 0; i < MT6397_AUXADC_SAMPLES; i++) {
+
+
+> +		ret = mt6397_auxadc_read_once(adc, chan, &sample);
+> +		if (ret)
+> +			break;
+> +
+> +		sum += sample;
+> +	}
+> +
+> +	/* Lower START so the converter is not left armed between reads. */
+> +	regmap_clear_bits(adc->regmap, MT6397_AUXADC_CON1,
+> +			  MT6397_AUXADC_CON1_START);
+> +
+> +	if (chan->channel == MT6397_AUXADC_ISENSE)
+> +		mt6397_auxadc_isense_disable(adc);
+> +	else
+> +		mt6397_auxadc_battemp_bias(adc, false);
+> +
+> +	if (ret)
+> +		return ret;
+> +
+> +	*val = DIV_ROUND_CLOSEST(sum, MT6397_AUXADC_SAMPLES);
+> +
+> +	return 0;
+> +}
+
+...
+
+Otherwise nice and small driver.
 
 -- 
 With Best Regards,
