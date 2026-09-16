@@ -4,70 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2223CC88E75
-	for <linux-mediatek@archiver.kernel.org>; Tue, 15 Sep 2026 19:09:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id ED1BBC88E77
+	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Sep 2026 00:11:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=VZZahkEZsCL+PKrtdWoz/s9J6Xm9ti56DGFksMB3RZ0=; b=eIfHhz9OmSou+5YEHq5fDdpEW7
-	MA0ZNKrmL5bc2l5JkLzkZvxrQTx9Ok8uSIjA+4aGyg8FAU3PgxoKeddOFSRGFXg9/bvVI8SSMJJEY
-	p/WvHCu5fjXzmmIa4BrJ5dBa4ESRtiHf9l1Wwzb/43RW1V/8DZY+L4cQ2GrIVSbtL3C63GGpcvTPw
-	vfqLTuVw4375A3s7cVuCEzeV7O8LPsj9be2vBXhWxgJD7c6r/79BKI/X/HkxeNonvHSRFNALgU4EN
-	vsREdk7nJYPNA8dmKU3KRXlZMSmx8xw3bNsmXF+zV1Z/pAdH0Lhi4e7tQiraWwUet/ViqnpgcxpIO
-	xnc8Udnw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
+	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=h0jvqgC79bdg0pdzTtOyCEQHgcIpzw+yLTKCSTLmEGk=; b=iHBP8cD3hghx4xZpSOIQ3z4uEa
+	vzBeAgiEaxs+wVQ40kk6cmmRo8clESnRFaEvGLMZSByYkCvu5hS9v0IxJjWr4h54uottBweAtZZZX
+	Rb3JvEViyLIkz/pjNPjjAtHh7OVWlgweBEylYIw9ko13SxleBEeka9afsHriDiDQGC6UzGQTEQJeu
+	3JwFqU/dBrN6emJnoaPg4+rW9IIpb+RBLFqFEsupTxW+kEUJVBePsjikCqybR6O4x34SNekeWcuNW
+	oWlTKyIgmOsxF2BJlPc0YFuEWJv5JQILYfk0zClhEx00rgdrasEJoTbwqDdIRLag++cFqieuKULT6
+	GvTYxFOQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x6YWb-00000007ph4-3wb2;
-	Tue, 15 Sep 2026 19:09:01 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1x6dFH-000000085wb-1fcA;
+	Wed, 16 Sep 2026 00:11:27 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x6YWa-00000007pgU-2Jwq;
-	Tue, 15 Sep 2026 19:09:00 +0000
+	id 1x6dFA-000000085vM-3hFJ;
+	Wed, 16 Sep 2026 00:11:22 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id 108F9433D9;
-	Tue, 15 Sep 2026 19:09:00 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id B3D991F000FF;
-	Tue, 15 Sep 2026 19:08:59 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 2360D444FB;
+	Wed, 16 Sep 2026 00:11:20 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id EF13C1F000FF;
+	Wed, 16 Sep 2026 00:11:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1789499339;
-	bh=VZZahkEZsCL+PKrtdWoz/s9J6Xm9ti56DGFksMB3RZ0=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=jcXIQ846u0hD7cbVyrKnMTnF0o+5Smg3LWqn7qScZs0K5FP3b7hrYW5iyPz6/hHy8
-	 pIGA5/OO8CSjXbGF5KVCIJo/TqDy0Pb8Gv9n8dMn2nSOnpbJjUqi4kmO3VvuXhCniG
-	 Ok6H9QNm/qdFKYX8jVMaZHL6sAk9Afa2AYVzXXjPce3Nf5jn6F/PfWA7IzDGu0IN2x
-	 GXYpnHU5l/6R2wZ7Agfw3267vwFTiBvNXutn5JonSgsLEU39ICjePxlgKJSoPSWBur
-	 khQzwDROQ+E6PmicA6lByW9Jmh0ehelZPIGPD4iZVhp4PAxe1aX2g4KPN9BOb3/9s6
-	 42VYlluwxsC6w==
-Date: Tue, 15 Sep 2026 14:08:58 -0500
-From: "Rob Herring (Arm)" <robh@kernel.org>
-To: Luca Leonardo Scorcia <l.scorcia@gmail.com>
-Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Chun-Kuang Hu <chunkuang.hu@kernel.org>,
-	Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>,
-	linux-arm-kernel@lists.infradead.org,
-	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
-	linux-kernel@vger.kernel.org, devicetree@vger.kernel.org,
-	dri-devel@lists.freedesktop.org,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Jitao shi <jitao.shi@mediatek.com>, Simona Vetter <simona@ffwll.ch>,
-	Philipp Zabel <p.zabel@pengutronix.de>, CK Hu <ck.hu@mediatek.com>,
-	Thomas Zimmermann <tzimmermann@suse.de>,
-	David Airlie <airlied@gmail.com>,
-	linux-mediatek@lists.infradead.org,
-	Conor Dooley <conor+dt@kernel.org>,
-	Maxime Ripard <mripard@kernel.org>
-Subject: Re: [PATCH RESEND v2] dt-bindings: mediatek: hdmi-ddc: Correct the
- compatibles for mt7623-mt8167
-Message-ID: <178949933645.3018579.8198387236458743112.robh@kernel.org>
-References: <20260908184125.10916-1-l.scorcia@gmail.com>
+	s=k20260515; t=1789517480;
+	bh=h0jvqgC79bdg0pdzTtOyCEQHgcIpzw+yLTKCSTLmEGk=;
+	h=Subject:From:Date:References:In-Reply-To:To:Cc;
+	b=Ybu/t1Q5PHjEuRAqiE1/J148VOgeQo8iYgqqmzI/3iXvFuos5aSOQOLpHXOliNZRG
+	 V9Ceo1ZveZADvGVvuNzgK5B1vAG3A8BKupH2AYbFtcjypMJxLkxlUqlkwf6iViIytd
+	 GhpJmSiPUMs/MIlh7tEKA0PA/atih+k/ElG0HkfPddeCqXsw+r5zrbAVoHvYCcQfa/
+	 R6hmDwp/R+8U8lMOJU+RNqgFudRZYhGogexXbCNTotX/AZ+bQ4OE5EV4HSHEOn/VEE
+	 +HCxUaB912DLsy3MjZZFOKUHd6jzEsmNUXZtGlUx9xEUbJ1j9sIUnDmpIBoIiTilzG
+	 cMLcWkbhcAlHw==
+Received: from [10.30.226.235] (localhost [IPv6:::1])
+	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id 939E7392706C;
+	Wed, 16 Sep 2026 00:10:15 +0000 (UTC)
+Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20260908184125.10916-1-l.scorcia@gmail.com>
+Content-Transfer-Encoding: 8bit
+Subject: Re: [PATCH v2 net-next] dt-bindings: net: Use consistent indentation
+ in
+ the example
+From: patchwork-bot+netdevbpf@kernel.org
+Message-Id: <178951741413.2328807.13052906737611774655.git-patchwork-notify@kernel.org>
+Date: Wed, 16 Sep 2026 00:10:14 +0000
+References: <20260914155645.112508-2-krzysztof.kozlowski@oss.qualcomm.com>
+In-Reply-To: <20260914155645.112508-2-krzysztof.kozlowski@oss.qualcomm.com>
+To: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
+Cc: justin.chen@broadcom.com, florian.fainelli@broadcom.com,
+ andrew+netdev@lunn.ch, davem@davemloft.net, edumazet@google.com,
+ kuba@kernel.org, pabeni@redhat.com, robh@kernel.org, krzk+dt@kernel.org,
+ conor+dt@kernel.org, ulli.kroll@googlemail.com, linusw@kernel.org,
+ clement.leger@bootlin.com, olteanv@gmail.com, hkallweit1@gmail.com,
+ linux@armlinux.org.uk, hayashi.kunihiko@socionext.com, mhiramat@kernel.org,
+ nbd@nbd.name, lorenzo@kernel.org, ryder.lee@mediatek.com,
+ shayne.chen@mediatek.com, sean.wang@mediatek.com, johannes@sipsolutions.net,
+ matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
+ jjohnson@kernel.org, richardcochran@gmail.com, geert+renesas@glider.be,
+ magnus.damm@gmail.com, vineetha.g.jaya.kumaran@intel.com,
+ claudiu.manoil@nxp.com, alexandre.belloni@bootlin.com, elder@kernel.org,
+ s-vadapalli@ti.com, rogerq@kernel.org, bcm-kernel-feedback-list@broadcom.com,
+ netdev@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-renesas-soc@vger.kernel.org, linux-arm-msm@vger.kernel.org,
+ linux-wireless@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ ath10k@lists.infradead.org
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,27 +88,30 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Hello:
 
-On Tue, 08 Sep 2026 20:41:05 +0200, Luca Leonardo Scorcia wrote:
-> The HDMI DDC driver for both mt7623 and mt8167 is actually the same as
-> mt8173-hdmi-ddc and the mt7623n.dtsi board include file already uses
-> mt8173-hdmi-ddc compatible as a fallback, but the documentation lists
-> them as separate entries. Correct the binding by adding the correct
-> fallback.
-> 
-> Signed-off-by: Luca Leonardo Scorcia <l.scorcia@gmail.com>
-> Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
-> ---
-> Fixes the following dtbs_check error in mt7623n-rfb-emmc.dts and
-> mt7623n-bananapi-bpi-r2.dts:
-> 
-> i2c@11013000 (mediatek,mt7623-hdmi-ddc): compatible:
->   ['mediatek,mt7623-hdmi-ddc', 'mediatek,mt8173-hdmi-ddc'] is too long
-> 
->  .../bindings/display/mediatek/mediatek,hdmi-ddc.yaml  | 11 +++++++----
->  1 file changed, 7 insertions(+), 4 deletions(-)
-> 
+This patch was applied to netdev/net-next.git (main)
+by Jakub Kicinski <kuba@kernel.org>:
 
-Applied, thanks!
+On Mon, 14 Sep 2026 17:56:46 +0200 you wrote:
+> Correct indentation in the examples to consistent 2- or 4-spaces
+> indentation to fix dt-check-style warnings ("example 0
+> [indent-consistent] indent mismatch ...").  Preferred is 4-spaces, but
+> re-indenting entire example just for that is too much churn.
+> 
+> In cortina,gemini-ethernet.yaml also drop the wrongly indented mdio bus,
+> because it is not necessary for the example.
+> 
+> [...]
+
+Here is the summary with links:
+  - [v2,net-next] dt-bindings: net: Use consistent indentation in the example
+    https://git.kernel.org/netdev/net-next/c/032ef43b9dab
+
+You are awesome, thank you!
+-- 
+Deet-doot-dot, I am a bot.
+https://korg.docs.kernel.org/patchwork/pwbot.html
+
 
 
