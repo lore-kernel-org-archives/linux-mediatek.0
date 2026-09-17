@@ -4,66 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7EB99C982CF
-	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Sep 2026 13:06:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 43736C982D6
+	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Sep 2026 13:41:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=sI54x/ez5T6fsA2elcHz3RaGZcESZ5CGlXIm7sI1To0=; b=pnuMYgy8kAbJ84BhPgEeBAqhSF
-	4NuHP/jFbPYhYzykcfusRD3/v20Qss0zyRSmHvKGJOQOiJ66Q3RCYLCQ5s0ALBtmM3bwn7yj8YrHa
-	2x5x4q9IJwg1E5oIMGQhr9wTfJCJlIpXndhWsuQHOfRYIzaQ0l43qgEURF0U5QJVZ+oJLGrU459h1
-	7tNM+leUKaXSBvuNrS0NSbtMsRXYcgZDMerJqnCk7UpiR5BSoANTj7du7eb+DmGNgPJfkOXceX4Z0
-	glmPj4260B98CBb8pS7w+FmoSSK7+hOzD6D91/sAcYHBp9fkV9Jfw62eAJrLnAs502hM+KbzwZh94
-	TlBwCnxg==;
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=nh5CA98hU5Kad3EkJ+HsQ6RaKiFClbwyolq9lduE3qw=; b=OYIWlO/c2GuhmJyUtqNgwomFvl
+	uxto59wUeOKUqyn4AVFHCxruyRHCmw5APs/W8vVUIwE+NnjyDfo/ubgqfZZHYShJwJXmt7e7usmpy
+	PSiSGA2ATLdPPBMfcrhkldffqNWQPHDvfOk9IBMwMF7GIViHaSfNmg5xaRABXZ0vkCgEPMInnwRjB
+	0Xue8tyAyj531js/764L0g5odFZIZDcS82Wzz166AgU2BXVmEW5p3WIP8aIW082ZOzHZRs9E688N2
+	FY6oN16HuJv/AfLLbUfmlej8vP+6qBLM5Cf/wzlgF75ko3l6cIyqsqxQ6dXHSoD1QYqvdPTy5HP89
+	cH9fIpmw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x7BoP-0000000BMlh-0f3Q;
-	Thu, 17 Sep 2026 13:06:01 +0000
-Received: from mail.cjdns.fr ([5.135.140.105])
+	id 1x7CMg-0000000BPys-3P43;
+	Thu, 17 Sep 2026 13:41:26 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x7BoM-0000000BMjn-1RcY;
-	Thu, 17 Sep 2026 13:05:59 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id 211744BA1CE;
-	Thu, 17 Sep 2026 15:05:41 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cjdns.fr; s=dkim;
-	t=1789650350; h=from:subject:date:message-id:to:cc:mime-version:
-	 content-transfer-encoding; bh=sI54x/ez5T6fsA2elcHz3RaGZcESZ5CGlXIm7sI1To0=;
-	b=dvdAoZxR7+zpdIT9didapD0CnUxXZbgsxzFNbc8GaOUiMocOHERVj+2HE+WHqLEaiBlq96
-	4k2dImmfjZV4lOGTQzFOeDC1F3A5eBPZCveyRIeEOS5CdrlcXFub3etJTRd0BxO9YyXgrM
-	tEY3g62eK+rDHUk5XgQZT+gc/dhzVWHNhZS5jNUPgm7HhY2L0XogJ5u1ygLlTENnq/Cq2y
-	A2yQDHvUp0gjTdiYbvCHvMQI2PtRovIkkrbYUMNmimHwYnbz5iMxEGEVUZ9i8NfjgnZIlE
-	R26Wzw5LaWNZodaXthaZq3gpGHKbpUFm2A43e3TK7yTp+3drllO6+izKcEgTkA==
-From: Caleb James DeLisle <cjd@cjdns.fr>
-To: netdev@vger.kernel.org
-Cc: daniel@makrotopia.org,
-	dqfext@gmail.com,
-	SkyLake.Huang@mediatek.com,
-	andrew@lunn.ch,
-	hkallweit1@gmail.com,
-	linux@armlinux.org.uk,
-	davem@davemloft.net,
-	edumazet@google.com,
-	kuba@kernel.org,
-	pabeni@redhat.com,
-	matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	Caleb James DeLisle <cjd@cjdns.fr>,
-	Matheus Sampaio Queiroga <srherobrine20@gmail.com>
-Subject: [PATCH v6 net-next] net: phy: mediatek: support MT7530 PHYs on EN71221 MCM
-Date: Thu, 17 Sep 2026 13:05:34 +0000
-Message-Id: <20260917130534.297930-1-cjd@cjdns.fr>
+	id 1x7CMV-0000000BPw3-1rRw;
+	Thu, 17 Sep 2026 13:41:16 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1789652472;
+	bh=WXnbHCnUYR5s688B9EDCkVdUk9C84hOPHL2r2I0cRMQ=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=kmCkZOj13qxW+S9TnLgN8z4faQzr+EEMKxY3glYI6AvDpyI0Xx2vRPsc8VVbLWAQL
+	 9HpIKHi3DmVhIa1qZr7QjHxRY9hQJGI67VyY0p94wAnHdgHCbIsDEDi9DtGF0hM05O
+	 R6P3aA9/6reVrlQEQ7g1bFgOFAwmoxEWHm3nydCvAyTr1jy5835DhLBXGN9noH2dKj
+	 2o8R6pFOj66jXveiPN41+LlMFeXynIDk6QP9jFGFH4gzpuVKVsXoyl/82C4kUjBjkO
+	 IBW/sjuATU2x3yib11NY8XjqTS25lHwlozNtmcM3UgECGFtFjs0Aj5jWxS2ZLsPHdt
+	 EzqSTe51B4sXA==
+Received: from [100.64.1.21] (unknown [100.64.1.21])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 90C1C17E01C5;
+	Thu, 17 Sep 2026 15:41:11 +0200 (CEST)
+Message-ID: <0e161194-aa14-4e63-b7c0-b1cf488203c6@collabora.com>
+Date: Thu, 17 Sep 2026 15:41:11 +0200
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-Last-TLS-Session-Version: TLSv1.3
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 1/3] dt-bindings: usb: mtu3: add mt6595
+To: rva333@protonmail.com, Chunfeng Yun <chunfeng.yun@mediatek.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
+Cc: linux-usb@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org
+References: <20260917-6595-mtu3-v1-0-a2ba7c230d68@protonmail.com>
+ <20260917-6595-mtu3-v1-1-a2ba7c230d68@protonmail.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
+In-Reply-To: <20260917-6595-mtu3-v1-1-a2ba7c230d68@protonmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260917_060558_749838_3AA29A97 
-X-CRM114-Status: GOOD (  16.47  )
+X-CRM114-CacheID: sfid-20260917_064115_661503_DB7C25D4 
+X-CRM114-Status: UNSURE (   5.79  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,137 +80,13 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The EcoNet EN751221 multi-chip module implementation of the MT7530
-requires some additional configuration of the PHYs on startup.
-The reason for this is not known, but it is possible that it has
-to do with the fact that the EN751221 MCM implementation of the
-MT7530 runs at an abnormal PLL frequency (362.5Mhz).
+On 9/17/26 09:32, Roman Vivchar via B4 Relay wrote:
+> From: Roman Vivchar <rva333@protonmail.com>
+> 
+> Add a compatible string for the MTU3 IP found on the MediaTek mt6595 SoC.
+> 
+> Signed-off-by: Roman Vivchar <rva333@protonmail.com>
 
-Detect whether the MT7530 PHY is attached to the MDIO bus of an
-EcoNet EN751221 switch and if so, apply the necessary register
-updates. Additionally, never attempt to configure an MT7530
-identified PHY which does not have gigabit support because the same
-ID is used for another (FE) PHY.
-
-Co-developed-by: Matheus Sampaio Queiroga <srherobrine20@gmail.com>
-Signed-off-by: Matheus Sampaio Queiroga <srherobrine20@gmail.com>
-Signed-off-by: Caleb James DeLisle <cjd@cjdns.fr>
----
- drivers/net/phy/mediatek/mtk-ge.c | 81 ++++++++++++++++++++++++++++++-
- 1 file changed, 80 insertions(+), 1 deletion(-)
-
-diff --git a/drivers/net/phy/mediatek/mtk-ge.c b/drivers/net/phy/mediatek/mtk-ge.c
-index 96d8ac5154e5..62e3eff37b80 100644
---- a/drivers/net/phy/mediatek/mtk-ge.c
-+++ b/drivers/net/phy/mediatek/mtk-ge.c
-@@ -1,4 +1,5 @@
- // SPDX-License-Identifier: GPL-2.0+
-+#include <linux/of.h>
- #include <linux/bitfield.h>
- #include <linux/module.h>
- #include <linux/phy.h>
-@@ -101,6 +102,69 @@ static int mt7530_phy_config_init(struct phy_device *phydev)
- 	return 0;
- }
- 
-+/*
-+ * The EcoNet EN751221 "G" multi-chip module MT7530 requires additional PHY
-+ * configuration.
-+ */
-+static int en751221_mcm_phy_config_init(struct phy_device *phydev)
-+{
-+	int ret;
-+
-+	ret = genphy_soft_reset(phydev);
-+	if (ret)
-+		return ret;
-+
-+	ret = phy_write_paged(phydev, MTK_PHY_PAGE_EXTENDED_1,
-+			      MTK_PHY_AUX_CTRL_AND_STATUS, 0x3a04);
-+	if (ret < 0)
-+		return ret;
-+
-+	/* Clause 45 global/local data from mt7530GePhyCfgLoad(E3.0). */
-+	ret = phy_write_mmd(phydev, MDIO_MMD_VEND2, 0x0417, 0x7775);
-+	if (ret < 0)
-+		return ret;
-+
-+	ret = phy_write_mmd(phydev, MDIO_MMD_VEND1, 0x00a6, 0x0350);
-+	if (ret < 0)
-+		return ret;
-+
-+	ret = phy_write_mmd(phydev, MDIO_MMD_VEND1, 0x0012, 0xd210);
-+	if (ret < 0)
-+		return ret;
-+
-+	return mt7530_phy_config_init(phydev);
-+}
-+
-+static bool en751221_is_mcm_phy(struct phy_device *phydev)
-+{
-+	struct device *parent = phydev->mdio.bus->parent;
-+
-+	return parent && parent->of_node &&
-+	       of_device_is_compatible(parent->of_node, "econet,en751221");
-+}
-+
-+/*
-+ * MTK_GPHY_ID_MT7530 ID is also used for an EcoNet SoC FE phy, but that PHY
-+ * does not advertise ESTATUS_1000_TFULL.
-+ */
-+static bool mt7530_is_gphy(struct phy_device *phydev)
-+{
-+	return phydev->phy_id == MTK_GPHY_ID_MT7530 &&
-+	       (phy_read(phydev, MII_ESTATUS) & ESTATUS_1000_TFULL) != 0;
-+}
-+
-+static int mt7530_phy_match(struct phy_device *phydev,
-+			    const struct phy_driver *phydrv)
-+{
-+	return mt7530_is_gphy(phydev) && !en751221_is_mcm_phy(phydev);
-+}
-+
-+static int en751221_phy_match(struct phy_device *phydev,
-+			      const struct phy_driver *phydrv)
-+{
-+	return mt7530_is_gphy(phydev) && en751221_is_mcm_phy(phydev);
-+}
-+
- static int mt7531_phy_config_init(struct phy_device *phydev)
- {
- 	mtk_gephy_config_init(phydev);
-@@ -126,7 +190,6 @@ static int mt7531_phy_config_init(struct phy_device *phydev)
- 
- static struct phy_driver mtk_gephy_driver[] = {
- 	{
--		PHY_ID_MATCH_EXACT(MTK_GPHY_ID_MT7530),
- 		.name		= "MediaTek MT7530 PHY",
- 		.probe		= mt7530_phy_probe,
- 		.config_init	= mt7530_phy_config_init,
-@@ -135,6 +198,22 @@ static struct phy_driver mtk_gephy_driver[] = {
- 		 */
- 		.config_intr	= genphy_no_config_intr,
- 		.handle_interrupt = genphy_handle_interrupt_no_ack,
-+		.match_phy_device = mt7530_phy_match,
-+		.suspend	= genphy_suspend,
-+		.resume		= genphy_resume,
-+		.read_page	= mtk_phy_read_page,
-+		.write_page	= mtk_phy_write_page,
-+	},
-+	{
-+		.name		= "EcoNet EN751221 MCM PHY",
-+		.probe		= mt7530_phy_probe,
-+		.config_init	= en751221_mcm_phy_config_init,
-+		/* Interrupts are handled by the switch, not the PHY
-+		 * itself.
-+		 */
-+		.config_intr	= genphy_no_config_intr,
-+		.handle_interrupt = genphy_handle_interrupt_no_ack,
-+		.match_phy_device = en751221_phy_match,
- 		.suspend	= genphy_suspend,
- 		.resume		= genphy_resume,
- 		.read_page	= mtk_phy_read_page,
--- 
-2.39.5
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
 
