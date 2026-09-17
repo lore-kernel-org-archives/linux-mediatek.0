@@ -4,67 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 31316C982D5
-	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Sep 2026 13:41:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9995AC982D6
+	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Sep 2026 14:10:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:From:
+	To:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=dPf7LzZmxzlg9jX7ElzrrXiznywcSPHlxZxwxUBIoSs=; b=4SmbNSTPpvOYRS0Nff9HnttQpL
-	M4Dch7p6G1/V0SOeR/07RYH7QSfWhgK7U7wY2rXQwIUngTZO1xgdxsx6yUBBoQ/J5DvjLhAkIIOIn
-	oVlm1Pg+ePNvifukinrUlHD0WUBom7bIK+YMTpE5NnNwe1vRQethglAU/8ePutMAlQJwzk/wEZdMk
-	KaTUojXRNlFeheaDOPzmOI/CGEtV+ugvJrJ4PYSqUxy65d76ooF1mB/Ql4u809VfxohUaBpldboN8
-	mfIKWAer94BVLQcpTCMAqbdVtwTvTDYwpFh3f3JAx1isgK45g42jujPC4ob9c6+r45MwJcRTsR00y
-	XfUUpXdQ==;
+	bh=U0kQ20G2GyxZdcHxUkGcj/TBXWhOw07BqxWa+U6dizM=; b=jmW8kA8W/jsKiPRKiEpQ2zc/Fj
+	jJUKLIXCzWG+Wxl7MtLju1vQwzj7wTL/B/Mk03PJ+Q8nDN/2iO7capqMfYzg8Vbl3ohF2nxZHJvPI
+	jseLwC3dPkFv+8d9zyn6zlctUd6kJKE0F/Tgh0Krnjcumvb/TMeCPwhbI6bXXHCFn+/hCryzUjzoj
+	zztuc8NkM90DS8QZ71reLYT/jVzSylZ5t1eXBmjH7SEcgeGgR8ZHwajkc5lXurnnDHuefvcaXq0Eg
+	TcNBDJXgkI0lt3K95nQlwC1bnSBTYBrnlEmcWuQ0Gu14GSxr0qyASIrATbE/Csw9OUnUtPYYg26DF
+	tYeI8CQQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x7CMg-0000000BPzI-45az;
-	Thu, 17 Sep 2026 13:41:26 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1x7CoZ-0000000BWAd-2YSA;
+	Thu, 17 Sep 2026 14:10:15 +0000
+Received: from mail-4319.protonmail.ch ([185.70.43.19])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x7CMY-0000000BPwa-16L9;
-	Thu, 17 Sep 2026 13:41:19 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1789652475;
-	bh=2I8IYPE4jK4J/34TcT0rn/Ucik7A413Pi2ivi1Aafkc=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=Yor3PFAsld/Sk7hwTH66NORlEGrS2Z5+yn28LYDI8ReNtlNWl9eNl3T5TgfUx3nhY
-	 cw81iZ6gxoL4n+v0BE5JGblEOaqYTlgd96wq5B1babozBEPPrlV4RRrmh9Ur5ngSie
-	 8p8KzekU+itHLKDpYUFYTor1fBw/Xzl8YpHVsv2mb8asHZoQ6maGFNFsb+0IQzZOq7
-	 5zcdUrVrnA8jOKJJLY6Gma5L3NXS3T+IKXGfv38/RFmh7tFe/4Od/C02dtaSn5/RX8
-	 YStcKMvtTrDD2s3vBBTH49IFIeUEmPkTC6NJJJkaR86nuommroKVWjodhd5IYCRkwB
-	 F2d3W0GAwJh+A==
-Received: from [100.64.1.21] (unknown [100.64.1.21])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id F40AF17E03B6;
-	Thu, 17 Sep 2026 15:41:14 +0200 (CEST)
-Message-ID: <b3b2f2ae-1eb1-4d3d-9f4b-4de3868802f1@collabora.com>
-Date: Thu, 17 Sep 2026 15:41:14 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
+	id 1x7CoY-0000000BW9f-06we
+	for linux-mediatek@lists.infradead.org;
+	Thu, 17 Sep 2026 14:10:15 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=protonmail.com;
+	s=protonmail3; t=1789654209; x=1789913409;
+	bh=U0kQ20G2GyxZdcHxUkGcj/TBXWhOw07BqxWa+U6dizM=;
+	h=Date:To:From:Cc:Subject:Message-ID:In-Reply-To:References:
+	 Feedback-ID:From:To:Cc:Date:Subject:Reply-To:Feedback-ID:
+	 Message-ID:BIMI-Selector;
+	b=VpH4rEUBVwNKZgtPJluSktDjlAEaDfH9VaOD8Ng8JlUBzmMpsjdlGr8CVNiWja20l
+	 gO+htypaYTX/BL0L05eQMXuidQd9iztEmx6LJOJy1jYmXmLXWk6XsV76zS+eCsA9pJ
+	 rzJxATVC1aU0YNUbVeDpfD5H0fQGgkEpzU/7kF+rYpOfCaxw2Cx2aYofu16/UFk3sX
+	 sOd3eseesWQLxg21VH/VbgXWW6C+UF1annJDvjofIez00QrXGyM16DTiOKz5eB+lyb
+	 7iyjkWnxJBtzIq0qxrVqwyrOhob62RKIfxEMdGJS1Rdj8Ig8BJKR/jFpKka0mW9gpZ
+	 peV8noiaE7Cog==
+Date: Thu, 17 Sep 2026 14:10:04 +0000
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+From: Roman Vivchar <rva333@protonmail.com>
+Cc: Chunfeng Yun <chunfeng.yun@mediatek.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, linux-usb@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org
 Subject: Re: [PATCH 2/3] usb: mtu3: introduce platform data
-To: rva333@protonmail.com, Chunfeng Yun <chunfeng.yun@mediatek.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
-Cc: linux-usb@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org
-References: <20260917-6595-mtu3-v1-0-a2ba7c230d68@protonmail.com>
- <20260917-6595-mtu3-v1-2-a2ba7c230d68@protonmail.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-In-Reply-To: <20260917-6595-mtu3-v1-2-a2ba7c230d68@protonmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Message-ID: <W3RQEXxvwip3Mexf-O8unMK1o-0tjlq2OUYD6DJVSdy9d6JmV0JJsp6RmWGcecqc8KGiLlxpuP-vE2u03s29zsytiROc17Vp_EoVQdjqyIg=@protonmail.com>
+In-Reply-To: <b3b2f2ae-1eb1-4d3d-9f4b-4de3868802f1@collabora.com>
+References: <20260917-6595-mtu3-v1-0-a2ba7c230d68@protonmail.com> <20260917-6595-mtu3-v1-2-a2ba7c230d68@protonmail.com> <b3b2f2ae-1eb1-4d3d-9f4b-4de3868802f1@collabora.com>
+Feedback-ID: 173184497:user:proton
+X-Pm-Message-ID: 2e9365794284a1e4314c717f619a219150d8bd88
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260917_064118_488071_27D97A9B 
-X-CRM114-Status: GOOD (  24.86  )
+X-CRM114-CacheID: sfid-20260917_071014_240461_D3125DC6 
+X-CRM114-Status: GOOD (  11.61  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,142 +69,53 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 9/17/26 09:32, Roman Vivchar via B4 Relay wrote:
-> From: Roman Vivchar <rva333@protonmail.com>
-> 
+Hi Angelo,
 
-That's good, but the commit title doesn't explain anything.
+On Thursday, September 17th, 2026 at 4:41 PM, AngeloGioacchino Del Regno <a=
+ngelogioacchino.delregno@collabora.com> wrote:
 
-usb: mtu3: Add SoC platform data for FIFO slots ?
+> On 9/17/26 09:32, Roman Vivchar via B4 Relay wrote:
+> > From: Roman Vivchar <rva333@protonmail.com>
+> >
+>=20
+> That's good, but the commit title doesn't explain anything.
+>=20
+> usb: mtu3: Add SoC platform data for FIFO slots ?
+>=20
+> ...or anything else that actually explains what you're doing.
 
-...or anything else that actually explains what you're doing.
+Ack.
 
-> Some SoCs, such as mt6595, require specific quirks for the MTU3 to
-> function properly.
-> 
-> The mt6595 IP block doesn't support multiple slots for the FIFO,
-> resulting FIFO wrap.
-> 
-> Fix this by adding platform data with a field to handle FIFO limitation.
+>=20
+> > Some SoCs, such as mt6595, require specific quirks for the MTU3 to
+> > function properly.
+> >
+> > The mt6595 IP block doesn't support multiple slots for the FIFO,
+> > resulting FIFO wrap.
+> >
+> > Fix this by adding platform data with a field to handle FIFO limitation=
+.
+>=20
+> Well, also say that this commit brings no functional differences for the
+> currently supported SoCs :-)
 
-Well, also say that this commit brings no functional differences for the
-currently supported SoCs :-)
+Indeed. Will do.
 
-> 
-> Assisted-by: LLM (debugging)
-> Signed-off-by: Roman Vivchar <rva333@protonmail.com>
-> ---
->   drivers/usb/mtu3/mtu3.h        | 9 +++++++++
->   drivers/usb/mtu3/mtu3_core.c   | 5 +++++
->   drivers/usb/mtu3/mtu3_gadget.c | 8 ++++++--
->   drivers/usb/mtu3/mtu3_plat.c   | 8 ++++++--
->   4 files changed, 26 insertions(+), 4 deletions(-)
-> 
-> diff --git a/drivers/usb/mtu3/mtu3.h b/drivers/usb/mtu3/mtu3.h
-> index ba5a63669e5f..1258aa7483aa 100644
-> --- a/drivers/usb/mtu3/mtu3.h
-> +++ b/drivers/usb/mtu3/mtu3.h
-> @@ -315,6 +315,14 @@ static inline struct ssusb_mtk *dev_to_ssusb(struct device *dev)
->   	return dev_get_drvdata(dev);
->   }
->   
-> +/**
-> + * struct mtu3_platform_data - platform data for the driver.
-> + * @single_slot: the IP can handle only one buffer for bulk transfers
-> + */
-> +struct mtu3_platform_data {
-> +	bool single_slot;
+...
 
-bool fifo_single_slot ?
+> > +=09unsigned single_slot:1;
+>=20
+> unsigned fifo_single_slot:1 ?
+>=20
+> ...or you can bring the entire pdata structure in there for easy future e=
+xtension.
+> Your choice.
 
-> +};
-> +
->   /**
->    * struct mtu3 - device driver instance data.
->    * @slot: MTU3_U2_IP_SLOT_DEFAULT for U2 IP only,
-> @@ -369,6 +377,7 @@ struct mtu3 {
->   	unsigned connected:1;
->   	unsigned async_callbacks:1;
->   	unsigned separate_fifo:1;
-> +	unsigned single_slot:1;
+I don't think it's worth pulling 4 or 8 bytes just for one flag. Let it
+be a bitfield for now.
 
-unsigned fifo_single_slot:1 ?
+Other comments will be fixed in v2.
 
-...or you can bring the entire pdata structure in there for easy future extension.
-Your choice.
-
->   
->   	u8 address;
->   	u8 test_mode_nr;
-> diff --git a/drivers/usb/mtu3/mtu3_core.c b/drivers/usb/mtu3/mtu3_core.c
-> index 66dbfe1705d5..03e28c93bc51 100644
-> --- a/drivers/usb/mtu3/mtu3_core.c
-> +++ b/drivers/usb/mtu3/mtu3_core.c
-> @@ -923,6 +923,7 @@ int ssusb_gadget_init(struct ssusb_mtk *ssusb)
->   {
->   	struct device *dev = ssusb->dev;
->   	struct platform_device *pdev = to_platform_device(dev);
-> +	const struct mtu3_platform_data *pdata = NULL;
->   	struct mtu3 *mtu = NULL;
->   	int ret = -ENOMEM;
->   
-> @@ -930,6 +931,10 @@ int ssusb_gadget_init(struct ssusb_mtk *ssusb)
->   	if (mtu == NULL)
->   		return -ENOMEM;
->   
-> +	pdata = device_get_match_data(dev);
-> +	if (pdata)
-
-Checking if there's any pdata is redundant, since you have already correctly
-assigned pdata to all of the of_match entries.
-
-Cheers,
-Angelo
-
-> +		mtu->single_slot = pdata->single_slot;
-> +
->   	mtu->irq = platform_get_irq_byname_optional(pdev, "device");
->   	if (mtu->irq < 0) {
->   		if (mtu->irq == -EPROBE_DEFER)
-> diff --git a/drivers/usb/mtu3/mtu3_gadget.c b/drivers/usb/mtu3/mtu3_gadget.c
-> index f224f2ee379a..bfacb1ba152e 100644
-> --- a/drivers/usb/mtu3/mtu3_gadget.c
-> +++ b/drivers/usb/mtu3/mtu3_gadget.c
-> @@ -112,8 +112,12 @@ static int mtu3_ep_enable(struct mtu3_ep *mep)
->   	mep->ep.desc = desc;
->   	mep->ep.comp_desc = comp_desc;
->   
-> -	/* slot mainly affects bulk/isoc transfer, so ignore int */
-> -	mep->slot = usb_endpoint_xfer_int(desc) ? 0 : mtu->slot;
-> +	if (mtu->single_slot)
-> +		/* older IPs can handle only one slot reliably */
-> +		mep->slot = 0;
-> +	else
-> +		/* slot mainly affects bulk/isoc transfer, so ignore int */
-> +		mep->slot = usb_endpoint_xfer_int(desc) ? 0 : mtu->slot;
->   
->   	ret = mtu3_config_ep(mtu, mep, interval, burst, mult);
->   	if (ret < 0)
-> diff --git a/drivers/usb/mtu3/mtu3_plat.c b/drivers/usb/mtu3/mtu3_plat.c
-> index cc8a864dbd63..bc65acdfb0de 100644
-> --- a/drivers/usb/mtu3/mtu3_plat.c
-> +++ b/drivers/usb/mtu3/mtu3_plat.c
-> @@ -611,9 +611,13 @@ static const struct dev_pm_ops mtu3_pm_ops = {
->   
->   #define DEV_PM_OPS (IS_ENABLED(CONFIG_PM) ? &mtu3_pm_ops : NULL)
->   
-> +static const struct mtu3_platform_data mt8173_platform_data = {
-> +	.single_slot = false,
-> +};
-> +
->   static const struct of_device_id mtu3_of_match[] = {
-> -	{.compatible = "mediatek,mt8173-mtu3",},
-> -	{.compatible = "mediatek,mtu3",},
-> +	{ .compatible = "mediatek,mt8173-mtu3", .data = &mt8173_platform_data },
-> +	{ .compatible = "mediatek,mtu3", .data = &mt8173_platform_data },
->   	{},
->   };
->   MODULE_DEVICE_TABLE(of, mtu3_of_match);
-> 
-
+Best regards,
+Roman
 
