@@ -4,86 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 12B09C88E72
-	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Sep 2026 15:17:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A79F4C88E72
+	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Sep 2026 15:33:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=yokcjFoYaQjb2AXJXwiS2CgA9icNw4hd0m3OmDjYLh0=; b=1wmVh2U8Xq20NS5X9glkW+Dyjd
-	IyEdyv29/Go0qiic82tQQ0dKCOOxM2Aezw/Ajsu3DE9fhIqEMpD6H8O3tH88dlLSVDnOeWB1vN9AE
-	VLKidU1W3MejFkbPGLCdQjB0OwVx4oIo9Q65sNzKV3f+n/wjPBxsjW/ZfxOSnufZrUop0InjiELkQ
-	OV5Q0ziPpbVa+i3zas2blXrukYN2lrMuqt53KklE3DvPF0YbctL6SwvWIjHP3FXQ+sDKqrB9f+thN
-	A2hasLG25BwcnCui05DKMrIT6HpONuTbxxRa1PkQUbBC3h7YmWz6VoMxMdFhilIT8FB/cHqj0uPe7
-	C/9Z4RuQ==;
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=1l/c6/RyoVKodAg4+5S8RTBCKJBpQxJtRcQaVQS18Tk=; b=yF1oGW8BnOmqx16HW9wL0Tn1Qo
+	4gxzbfh4CF7Ubg/gbInebphLZGHpVnvbLM1ZplDacHGJ4+s56DVHkmrmAoUuoTkJzwx8LbNWIjNAP
+	Y5aSecqimyYhSHKOeauLI+Ecp1FLPfk265wjcvWzpEcOM7HJ4Kz9PcVnisxtRDccuzwIk2gr2a3E+
+	bho8/am/+FQAALOGMU0bUJoGh0xS4BYzObnjsoW+LXFcTQ4kGKC5wMzO0PBLJyGRl7+1KU8yYaU1o
+	RfoPQLu31ISa9dpDoQKa1sJtJlPONhro6+y2ho0h7oVxidHRVwioITiZ1xt7jR7eiUuKuBTLirOZA
+	BdDrm8Gw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x7DrM-0000000Bem8-3JdU;
-	Thu, 17 Sep 2026 15:17:12 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1x7E6y-0000000BhBI-0tzH;
+	Thu, 17 Sep 2026 15:33:20 +0000
+Received: from smtp25.cstnet.cn ([159.226.251.25] helo=cstnet.cn)
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x7DrL-0000000Beld-1a4L
-	for linux-mediatek@lists.infradead.org;
-	Thu, 17 Sep 2026 15:17:11 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id A84DA60514
-	for <linux-mediatek@lists.infradead.org>; Thu, 17 Sep 2026 15:17:10 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7E8991F008A1
-	for <linux-mediatek@lists.infradead.org>; Thu, 17 Sep 2026 15:17:10 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1789658230;
-	bh=yokcjFoYaQjb2AXJXwiS2CgA9icNw4hd0m3OmDjYLh0=;
-	h=References:In-Reply-To:From:Date:Subject:To:Cc;
-	b=baYHiQhLKHIXv5JcbsYM8h8jWAIdy60s6NhCh0ZGU54W95BOiAuC94Ol2AcpHo47g
-	 xOJkjhXStRdOshTWhG385se+mN0mwxSalEgzP9JG2PQIOLJ/oHEIVw0zHQeJ6cCyxv
-	 qfvHypAZ4Aa+PBTDs1xGLwk8gxllOPs9TBclUTaLcaptPXVE/nH6o6dNw9fmKr/Ga+
-	 euX0r0XKcn50B8jtWh1/A5rkcHzzpSCbjKD97mWUlLgkoyhoofyCpgqfsFLMmV7xqx
-	 ARc5Jnmu7agtqFNmn3zlh9R+1V4XybdteMzm34GCd9fCbp5oeKdHFvfY4O6Spsy5NH
-	 56pQ+Rtftr60g==
-Received: by mail-ed2-f27.google.com with SMTP id 4fb4d7f45d1cf-6aa135d6e97so1567961a12.2
-        for <linux-mediatek@lists.infradead.org>; Thu, 17 Sep 2026 08:17:10 -0700 (PDT)
-X-Forwarded-Encrypted: i=1; AKwUvBxcvKVtwtulM+A4mpiLfzGqljCZmlH7OKhquT4zfF9awA3BmcW/B8Wc54DF11ZomXMPmqZBol2IkjMAkSf8sg==@lists.infradead.org
-X-Gm-Message-State: AFuF++kUVvMnRYCe3uzDfqr6jAtjuXrcytXHhJeZQNvB+JpGiX8eboWh
-	ikVz3V0+rzJrjX05S1u0NrkLFIq611PUci+ftx7F/SCSo0SFn/fHaAwAc+7vThKB0GTrdI/gu8h
-	rOCx1XbRb3MBZSW+KO62oHWd63mA+mg==
-X-Received: by 2002:a05:6402:460c:b0:6a6:8dd:c76b with SMTP id
- 4fb4d7f45d1cf-6aa22247992mr11552271a12.1.1789658228391; Thu, 17 Sep 2026
- 08:17:08 -0700 (PDT)
+	id 1x7E6u-0000000BhA4-2DW4;
+	Thu, 17 Sep 2026 15:33:18 +0000
+Received: from dfae2b116770.home.arpa (unknown [36.110.52.2])
+	by APP-05 (Coremail) with SMTP id zQCowABHtD45CKxqAp+DCA--.5832S2;
+	Thu, 17 Sep 2026 23:33:13 +0800 (CST)
+From: Wentao Liang <vulab@iscas.ac.cn>
+To: angelogioacchino.delregno@collabora.com
+Cc: khilman@baylibre.com,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	matthias.bgg@gmail.com,
+	roger.lu@mediatek.com,
+	Wentao Liang <vulab@iscas.ac.cn>,
+	stable@vger.kernel.org
+Subject: [PATCH] soc: mediatek: mtk-svs: Fix device leak in svs_add_device_link()
+Date: Thu, 17 Sep 2026 15:33:13 +0000
+Message-Id: <20260917153313.2160581-1-vulab@iscas.ac.cn>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-References: <20260917144134.459819-1-matyasdaniel006@gmail.com>
-In-Reply-To: <20260917144134.459819-1-matyasdaniel006@gmail.com>
-From: Rob Herring <robh@kernel.org>
-Date: Thu, 17 Sep 2026 10:16:56 -0500
-X-Gmail-Original-Message-ID: <CAL_JsqLyPK2rJVAyzCtGtrBSTwOKRZ_EAmE1Xd++9DFaxrrmDw@mail.gmail.com>
-X-Gm-Features: AcwNN1WrkKsI-hJClnXnbb72poP7rLqVHTc23ccK3T-HSnvYyjsVzuH4L2tWH2Y
-Message-ID: <CAL_JsqLyPK2rJVAyzCtGtrBSTwOKRZ_EAmE1Xd++9DFaxrrmDw@mail.gmail.com>
-Subject: Re: [PATCH] dt-bindings: Expand flow lists to block lists
-To: Daniel Matyas <matyasdaniel006@gmail.com>
-Cc: Shenghao Ding <shenghao-ding@ti.com>, Kevin Lu <kevin-lu@ti.com>, Baojun Xu <baojun.xu@ti.com>, 
-	Sen Wang <sen@ti.com>, Peter Huewe <peterhuewe@gmx.de>, Jarkko Sakkinen <jarkko@kernel.org>, 
-	Jason Gunthorpe <jgg@ziepe.ca>, Chunfeng Yun <chunfeng.yun@mediatek.com>, 
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	Wim Van Sebroeck <wim@linux-watchdog.org>, Dharma Balasubiramani <dharma.b@microchip.com>, 
-	Jeff LaBundy <jeff@labundy.com>, Simon Glass <sjg@chromium.org>, Linus Walleij <linusw@kernel.org>, 
-	Alexandre Torgue <alexandre.torgue@foss.st.com>, Giuseppe Cavallaro <peppe.cavallaro@st.com>, 
-	Jose Abreu <joabreu@synopsys.com>, Atish Patra <atishp@rivosinc.com>, 
-	Shawn Guo <shawn.guo@linaro.org>, Dmitry Osipenko <digetx@gmail.com>, 
-	Ibrahim Tilki <Ibrahim.Tilki@analog.com>, Okan Sahin <Okan.Sahin@analog.com>, 
-	devicetree@vger.kernel.org, linux-rtc@vger.kernel.org, 
-	Ricard Wanderlof <ricardw@axis.com>, patches@opensource.cirrus.com, 
-	Lukas Wunner <lukas@wunner.de>, Eugen Hristev <ehristev@kernel.org>, mfd@lists.linux.dev, 
-	linux-samsung-soc@vger.kernel.org, linux-mmc@vger.kernel.org, 
-	linux-mtd@lists.infradead.org, linux-amlogic@lists.infradead.org, 
-	netdev@vger.kernel.org, linux-pci@vger.kernel.org, 
-	linux-perf-users@vger.kernel.org, linux-phy@lists.infradead.org, 
-	linux-tegra@vger.kernel.org, linux-sound@vger.kernel.org, 
-	linux-integrity@vger.kernel.org, linux-usb@vger.kernel.org, 
-	linux-mediatek@lists.infradead.org, linux-watchdog@vger.kernel.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 8bit
+X-CM-TRANSID: zQCowABHtD45CKxqAp+DCA--.5832S2
+X-Coremail-Antispam: 1UD129KBjvJXoW7Zw1ktr15Wr1rKw4rXr1UZFb_yoW8JFWDpF
+	WDKayqyryYqr129a17Ar1UZF15uayIk3s5Cr4rXwn7Zwn5Jr43XrWaqa4Fqw10yFWkGa13
+	JryqyrWxCw4xAr7anT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
+	9KBjDU0xBIdaVrnRJUUUBFb7Iv0xC_tr1lb4IE77IF4wAFc2x0x2IEx4CE42xK8VAvwI8I
+	cIk0rVWrJVCq3wAFIxvE14AKwVWUJVWUGwA2ocxC64kIII0Yj41l84x0c7CEw4AK67xGY2
+	AK021l84ACjcxK6xIIjxv20xvE14v26ryj6F1UM28EF7xvwVC0I7IYx2IY6xkF7I0E14v2
+	6F4j6r4UJwA2z4x0Y4vEx4A2jsIE14v26rxl6s0DM28EF7xvwVC2z280aVCY1x0267AKxV
+	W0oVCq3wAS0I0E0xvYzxvE52x082IY62kv0487Mc02F40EFcxC0VAKzVAqx4xG6I80ewAv
+	7VC0I7IYx2IY67AKxVWUtVWrXwAv7VC2z280aVAFwI0_Cr1j6rxdMcvjeVCFs4IE7xkEbV
+	WUJVW8JwACjcxG0xvY0x0EwIxGrwACjI8F5VAI37AI020EjII2zVCS5cI20VAGYxC7MxkF
+	7I0En4kS14v26r1q6r43MxAIw28IcxkI7VAKI48JMxAIw28IcVCjz48v1sIEY20_Gr43Wr
+	1UJr1l4I8I3I0E4IkC6x0Yz7v_Jr0_Gr1lx2IqxVAqx4xG67AKxVWUJVWUGwC20s026x8G
+	jcxK67AKxVWUGVWUWwC2zVAF1VAY17CE14v26r1q6r43MIIYrxkI7VAKI48JMIIF0xvE2I
+	x0cI8IcVAFwI0_JFI_Gr1lIxAIcVC0I7IYx2IY6xkF7I0E14v26F4j6r4UJwCI42IY6xAI
+	w20EY4v20xvaj40_Jr0_JF4lIxAIcVC2z280aVAFwI0_Gr1j6F4UJwCI42IY6I8E87Iv6x
+	kF7I0E14v26rxl6s0DYxBIdaVFxhVjvjDU0xZFpf9x07UC38nUUUUU=
+X-Originating-IP: [36.110.52.2]
+X-CM-SenderInfo: pyxotu46lvutnvoduhdfq/1tbiBgINA2qr888vQgABsb
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260917_083316_936138_DA3F3DC8 
+X-CRM114-Status: GOOD (  10.43  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,26 +81,42 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Sep 17, 2026 at 9:41=E2=80=AFAM Daniel Matyas <matyasdaniel006@gmai=
-l.com> wrote:
->
-> Running dt_bindings_check returned:
-> [error] string value is redundantly quoted with any quotes (quoted-string=
-s)
->
+svs_get_subsys_device() returns a reference to the supplier device that
+the caller must drop.  svs_add_device_link() returns the reference to
+its callers on success, but the device_link_add() failure path and the
+probe deferral path return an error pointer without putting the device,
+so the reference is leaked.
 
-That false positive is fixed in newer versions of yamllint since at
-least a year and a half ago. There's also some other quoting checks
-I'd like to turn on, but that bumps the minimum version since unknown
-checks are an error in yamllint.
+Drop the reference on both error paths.
 
-> The files used quotation marks in flow lists because the strings had
-> commas and these commas were interpreted as separators. Convert flow
-> style lists to block style lists, so that there is no problems with the
-> commas.
+Fixes: 681a02e95000 ("soc: mediatek: SVS: introduce MTK SVS engine")
+Cc: stable@vger.kernel.org
+Signed-off-by: Wentao Liang <vulab@iscas.ac.cn>
+---
+ drivers/soc/mediatek/mtk-svs.c | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
 
-If we wanted to fix like this, we should probably just require block
-style everywhere, but I don't think we should do that.
+diff --git a/drivers/soc/mediatek/mtk-svs.c b/drivers/soc/mediatek/mtk-svs.c
+index 99edecb204f2..dd9643026c66 100644
+--- a/drivers/soc/mediatek/mtk-svs.c
++++ b/drivers/soc/mediatek/mtk-svs.c
+@@ -2155,11 +2155,14 @@ static struct device *svs_add_device_link(struct svs_platform *svsp,
+ 				   DL_FLAG_AUTOREMOVE_CONSUMER);
+ 	if (!sup_link) {
+ 		dev_err(svsp->dev, "sup_link is NULL\n");
++		put_device(dev);
+ 		return ERR_PTR(-EINVAL);
+ 	}
+ 
+-	if (sup_link->supplier->links.status != DL_DEV_DRIVER_BOUND)
++	if (sup_link->supplier->links.status != DL_DEV_DRIVER_BOUND) {
++		put_device(dev);
+ 		return ERR_PTR(-EPROBE_DEFER);
++	}
+ 
+ 	return dev;
+ }
+-- 
+2.34.1
 
-Rob
 
