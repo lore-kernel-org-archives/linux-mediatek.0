@@ -4,61 +4,94 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 107E3C982D7
-	for <linux-mediatek@archiver.kernel.org>; Fri, 18 Sep 2026 09:50:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B52E1C982DC
+	for <linux-mediatek@archiver.kernel.org>; Fri, 18 Sep 2026 09:59:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Mhe/jArEZiTm/L88sXSRArvdYinXqabgfSoJURVLiaw=; b=olm7pcNOKM1QCglJnhx6d+OOf9
-	Zm6ifzMexjTHJ2u/vcnupgGETy1+1kx0c0chXAe4Wkvpbsk7NgeqI7aQT/pEufk5pP64c7w0D/si0
-	GmrQs1xh9PAP73vfwlRfbJ97G50BiICDXIS5MsEIp0eUC9HY1+Mf1S3ggftHFcEaFfPieETqOUXHZ
-	8VapnCVLN5DtzsgF9Tt/PdV4FbHSKMFsAdlT7ZF5DSWuLJkRyuS9vpmxdpdAM76PWidDRCaNVMsh0
-	fquvMVQ22CpdvSeYTrWcPv7R29D4kSg6z4cm/3831IhuObLYDWa+P6T0MJATVmK4kzjPsKlNU1ptR
-	j6bpX6mA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=lgMv2zbGxpMjSU1Q12TUieC/fHlr4upj7o7tSr9up10=; b=MFEuxbh5BJEMXZvbuHexgBULe7
+	nLjJzC9Jh1PKLU8DRWZnp2NdH3/yYlDwGSftB1JISddHow2NV3JE4pVKlCj9L1A4zn1kpTmfnqYuA
+	2Ag5tWy1NXYAIjJMWjyEqu1xEtLRI6Dba7qGZ2o2NeyzCJpLshnYvof34j1C/eAhwIGYpOCcYscy6
+	pU/zozvWNyBoUt1vQZOIjSx6K3phbuMIQwOl3uj1JuPfsM4pERzQZipjO9pDLNiEjyCRWX/LfAwbB
+	PvpCoD3R9P6p9YQiRVe5xDt6Wct9GB8YPKpkKDTsVzcCEv6m5uwG+uukpMyJU5sH1819BcEc5Gw+f
+	HPZky0vg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x7VEm-0000000DzeD-34gs;
-	Fri, 18 Sep 2026 09:50:32 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1x7VNT-0000000E1ZF-28Is;
+	Fri, 18 Sep 2026 09:59:31 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x7VEl-0000000DzdQ-0flG;
-	Fri, 18 Sep 2026 09:50:31 +0000
+	id 1x7VNS-0000000E1Ye-39mh;
+	Fri, 18 Sep 2026 09:59:30 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id CEC5460A5E;
-	Fri, 18 Sep 2026 09:50:24 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8987A1F000FF;
-	Fri, 18 Sep 2026 09:50:23 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 1C8B841E74;
+	Fri, 18 Sep 2026 09:59:30 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8B94A1F000FF;
+	Fri, 18 Sep 2026 09:59:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1789725024;
-	bh=Mhe/jArEZiTm/L88sXSRArvdYinXqabgfSoJURVLiaw=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=W/PkjKmakehCuNFmQPTGYUoW/AoczQbueulzxRMo1934P0fpkm4au7oh3k9I4EViE
-	 thI3adZQpoqaO8d5dr0QCU9sRhPWfHO+ctemWJOyTK4pu7sbdlM6lIKiWODIlGTqnu
-	 5S3Si2eoJWXCRezNHqecncDoY1e8LJ/Pv4CUKANmrf03xR1JxlVlMNlGWvrWcj54JH
-	 CpvevOIprCD1LBmp58pdEmNWKVK05mMRpr96t+BuntCYCT8TvV3Mr7kBH27hyBDAEx
-	 bN5a/s0yvzBRHM81VxIdqRpo1m5/vmvnCI7zGsyvRnGFpLSYQpAwsu8dBRjuk8cy+U
-	 sxxjA62G7Tw9Q==
-Date: Fri, 18 Sep 2026 11:50:20 +0200
-From: Krzysztof Kozlowski <krzk@kernel.org>
-To: Roman Vivchar <rva333@protonmail.com>
-Cc: Jonathan Cameron <jic23@kernel.org>, 
-	David Lechner <dlechner@baylibre.com>, Nuno =?utf-8?B?U8Oh?= <nuno.sa@analog.com>, 
-	Andy Shevchenko <andy@kernel.org>, Rob Herring <robh@kernel.org>, 
-	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Zhiyong Tao <zhiyong.tao@mediatek.com>, 
-	linux-iio@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH] dt-bindings: iio: adc: mediatek,mt2701-auxadc: add mt6572
-Message-ID: <20260918-boisterous-slim-dolphin-03d5ea@quoll>
-References: <20260916-6572-dt-auxadc-v1-1-e8190d614c33@protonmail.com>
+	s=k20260515; t=1789725570;
+	bh=lgMv2zbGxpMjSU1Q12TUieC/fHlr4upj7o7tSr9up10=;
+	h=From:To:Cc:In-Reply-To:References:Subject:Date;
+	b=Puu3U2cZYIyWJMi7D+z6178AnlTL7FE1Zy1y55J+Pia2TSVMLauoTfBUy3vOIOQM3
+	 yZJsMkBSz1D+q4Flx42onJbGinBIvq5VvndXAbuS3PH/cJfBC/K/jH6uGH1HiTG6pU
+	 xvUIgrRf1/dOcfUvWmcLdVbitzNEyYjprAlng8K9Q849ic28eYBoCSSTIwN4F6NWfG
+	 yOGOgW0Iww8zFBfqyrGj9A4v0o/Vp/TqK2HT6icehU0pAkXgm9ytw6/NjKouPe6lcp
+	 pAdI4rtS+fjoaKLLiqeVKHEI6EknVvq30GsAcOoxFrMOCPRAlopNG20bkVoovw16sH
+	 q0qXzqrb4epvg==
+From: Mark Brown <broonie@kernel.org>
+To: Liam Girdwood <lgirdwood@gmail.com>, 
+ Hemanth Selam <hemanth.selam@gmail.com>
+Cc: Claudiu Beznea <claudiu.beznea@tuxon.dev>, 
+ Andrei Simion <andrei.simion@microchip.com>, 
+ Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, 
+ Nicolas Ferre <nicolas.ferre@microchip.com>, 
+ Alexandre Belloni <alexandre.belloni@bootlin.com>, 
+ Ray Jui <rjui@broadcom.com>, Scott Branden <sbranden@broadcom.com>, 
+ Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>, 
+ Lars-Peter Clausen <lars@metafoo.de>, 
+ =?utf-8?q?Nuno_S=C3=A1?= <nuno.sa@analog.com>, 
+ David Rhodes <david.rhodes@cirrus.com>, 
+ Richard Fitzgerald <rf@opensource.cirrus.com>, 
+ Support Opensource <support.opensource@diasemi.com>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Oder Chiou <oder_chiou@realtek.com>, Shenghao Ding <shenghao-ding@ti.com>, 
+ Kevin Lu <kevin-lu@ti.com>, Baojun Xu <baojun.xu@ti.com>, 
+ Sen Wang <sen@ti.com>, Cezary Rojewski <cezary.rojewski@intel.com>, 
+ Peter Ujfalusi <peter.ujfalusi@linux.intel.com>, 
+ Bard Liao <yung-chuan.liao@linux.intel.com>, 
+ Kai Vehmanen <kai.vehmanen@linux.intel.com>, 
+ Pierre-Louis Bossart <pierre-louis.bossart@linux.dev>, 
+ Srinivas Kandagatla <srini@kernel.org>, 
+ Jarkko Nikula <jarkko.nikula@bitmer.com>, 
+ Kunihiko Hayashi <hayashi.kunihiko@socionext.com>, 
+ Masami Hiramatsu <mhiramat@kernel.org>, linux-sound@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org, 
+ patches@opensource.cirrus.com, linux-mediatek@lists.infradead.org, 
+ linux-arm-msm@vger.kernel.org, linux-omap@vger.kernel.org
+In-Reply-To: <20260917054001.15728-1-hemanth.selam@gmail.com>
+References: <20260917054001.15728-1-hemanth.selam@gmail.com>
+Subject: Re: [PATCH v4] ASoC: fix typos in comments
+Message-Id: <178966626559.285745.8708474287640144157.b4-ty@b4>
+Date: Thu, 17 Sep 2026 18:31:05 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-In-Reply-To: <20260916-6572-dt-auxadc-v1-1-e8190d614c33@protonmail.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+X-Mailer: b4 0.17-dev
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1073; i=broonie@kernel.org;
+ h=from:subject:message-id; bh=/zRSak1lAxIbHDbqXIouf1cZlAlyfRMZrnChjylsPLE=;
+ b=owEBbQGS/pANAwAKASTWi3JdVIfQAcsmYgBqrQt5bTHOE1BAdFm/GOH5MgfjjkzvnxEiNN/fC
+ VdR/OVoCgaJATMEAAEKAB0WIQSt5miqZ1cYtZ/in+ok1otyXVSH0AUCaq0LeQAKCRAk1otyXVSH
+ 0LA+B/95jFomfKKBgRBZ3Svo7TgDki1UIX7cgIQ3816/CKGuiu8nh3Qj36vZl+2xsX8R4e6+9Aj
+ FyFv4gZ2anBe2u8QdnAsP1otAPXZVsvagmbp6t6jIDEQkerLsiUjesAuDdtyIN/DBaM7gdf10mc
+ kyDJIx4iGPlf9g1vCp0GeKX+Ysb8mxeV3P4mo6X11U4ELBOvokDC21053xBWBlaWUwLlnM0zll0
+ 8yJKNt6Hbr8Wp9GyAomW7NaLzuPRIT5jJAToWs7+G+epN/ObyezHBTEDGKNYe/9/0SSaAMtALzb
+ oWKiqNIa3OLge9jH+LeFUk9plwFWNOeCWrH4DdpbGb76GqfX
+X-Developer-Key: i=broonie@kernel.org; a=openpgp;
+ fpr=3F2568AAC26998F9E813A1C5C3F436CA30F5D8EB
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,18 +106,35 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Sep 16, 2026 at 02:42:35PM +0300, Roman Vivchar wrote:
-> Add a compatible string for the mt6572 AUXADC, that is compatible with
-> mt8173 IP.
-> 
-> Signed-off-by: Roman Vivchar <rva333@protonmail.com>
-> ---
->  Documentation/devicetree/bindings/iio/adc/mediatek,mt2701-auxadc.yaml | 1 +
->  1 file changed, 1 insertion(+)
+On Thu, 17 Sep 2026 11:10:01 +0530, Hemanth Selam wrote:
+> ASoC: fix typos in comments
 
-Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
+Applied to
 
-Best regards,
-Krzysztof
+   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-7.4
+
+Thanks!
+
+[1/1] ASoC: fix typos in comments
+      https://git.kernel.org/broonie/sound/c/a603fe4e0003
+
+All being well this means that it will be integrated into the linux-next
+tree (usually sometime in the next 24 hours) and sent to Linus during
+the next merge window (or sooner if it is a bug fix), however if
+problems are discovered then the patch may be dropped or reverted.
+
+You may get further e-mails resulting from automated or manual testing
+and review of the tree, please engage with people reporting problems and
+send followup patches addressing any issues that are reported if needed.
+
+If any updates are required or you are submitting further changes they
+should be sent as incremental updates against current git, existing
+patches will not be replaced.
+
+Please add any relevant lists and maintainers to the CCs when replying
+to this mail.
+
+Thanks,
+Mark
 
 
