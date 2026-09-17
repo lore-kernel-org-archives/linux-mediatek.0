@@ -4,69 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A79F4C88E72
-	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Sep 2026 15:33:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 50CC5C982D6
+	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Sep 2026 15:48:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=1l/c6/RyoVKodAg4+5S8RTBCKJBpQxJtRcQaVQS18Tk=; b=yF1oGW8BnOmqx16HW9wL0Tn1Qo
-	4gxzbfh4CF7Ubg/gbInebphLZGHpVnvbLM1ZplDacHGJ4+s56DVHkmrmAoUuoTkJzwx8LbNWIjNAP
-	Y5aSecqimyYhSHKOeauLI+Ecp1FLPfk265wjcvWzpEcOM7HJ4Kz9PcVnisxtRDccuzwIk2gr2a3E+
-	bho8/am/+FQAALOGMU0bUJoGh0xS4BYzObnjsoW+LXFcTQ4kGKC5wMzO0PBLJyGRl7+1KU8yYaU1o
-	RfoPQLu31ISa9dpDoQKa1sJtJlPONhro6+y2ho0h7oVxidHRVwioITiZ1xt7jR7eiUuKuBTLirOZA
-	BdDrm8Gw==;
+	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=74yEEtCWYGlmpU2Ug1OwwzMYLRDcIaEn/Rs2+G6Scsk=; b=q4iWYpftP/EysiEY/5QWP4QmnS
+	nqwEEwwpCK9MkRaDn0mYCn/uQ5d1sy5jCGwAIq2O92JhN0n0rB22YUtyCwSb6smoUnbhBNJpVoc+J
+	bIs7pi8ZrjBSPIep3TYHYkVG1LnRMjy0Nip8fHAgpNHZMXah1MBxxgZRx17/BSAKf82o9/jh6ndYF
+	0yymyPayRZ4m6xsYAgNLeto+gxSJPvi3j1u5vSasfUw+xOwSFK2nLDEqkRHJZJLfSyRgkgWoK/wsQ
+	gqvW1UHkBUZLs+IPGt2S5qFsHqi5hwhRyvaOyLvXkf6RsqSz2lTVY3L71f153Q7wom9/PZD+a1kln
+	unyUxUOw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x7E6y-0000000BhBI-0tzH;
-	Thu, 17 Sep 2026 15:33:20 +0000
-Received: from smtp25.cstnet.cn ([159.226.251.25] helo=cstnet.cn)
+	id 1x7ELj-0000000BkbK-1wrW;
+	Thu, 17 Sep 2026 15:48:35 +0000
+Received: from out-246.mta0.migadu.com ([2001:41d0:1004:224b::f6] helo=mta0.migadu.com)
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x7E6u-0000000BhA4-2DW4;
-	Thu, 17 Sep 2026 15:33:18 +0000
-Received: from dfae2b116770.home.arpa (unknown [36.110.52.2])
-	by APP-05 (Coremail) with SMTP id zQCowABHtD45CKxqAp+DCA--.5832S2;
-	Thu, 17 Sep 2026 23:33:13 +0800 (CST)
-From: Wentao Liang <vulab@iscas.ac.cn>
-To: angelogioacchino.delregno@collabora.com
-Cc: khilman@baylibre.com,
-	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
+	id 1x7ELf-0000000BkXX-0JPe
+	for linux-mediatek@lists.infradead.org;
+	Thu, 17 Sep 2026 15:48:33 +0000
+X-Envelope-To: linux-mediatek@lists.infradead.org
+DKIM-Signature: a=rsa-sha256; bh=OT+/yVmtxXayw7zlWQbeNg/PbunauEOYNtUr4VfcRoM=;
+ c=simple/simple; d=justthetip.ca;
+ h=from:to:subject:date:message-id:mime-version:content-type; s=key1;
+ t=1789660106; v=1; x=1790264906;
+ b=OFTx8xd1g7y/PvhGL955VupUMsKVhJMRZDcgUfGJJS4N1ZYHU5bHS4JdTyhRl6OQFHW3ogV0
+ pUEHU6goNMlnXAGicxJ1eE0qdLZ38Faw+gwkKsW2cS9+T8pi8iEwnCiYh/ZyBj+ocPO4DQaWDO7
+ 29oAR4F3ETNLJT7+O7lzszMxPQ0LzL9U2bq0h9C6AEaA3nkwofvVfa58cdYSztSIlPU6oRqBn6p
+ vvUImpm/BUFqIbE8k57Pre0s14JhX3fYRXQNx2C3xlXg1JimV1tfxDRwn3CVyfxRaLPuZJRttAH
+ TuvG7JNuzJrxp1jkLBoPsxYQtSazh42CzmTy2YIk8MIKA==
+X-Envelope-To: linux-mediatek@lists.infradead.org
+Received: by smtp.migadu.com with ESMTPS id 925e810515962063;
+	Thu, 17 Sep 2026 15:48:16 +0000
+X-Mizu-Trace-ID: 925e810515962063
+X-Migadu-Flow: FLOW_OUT
+From: Devin Wittmayer <lucid_duck@justthetip.ca>
+To: Wentao Liang <vulab@iscas.ac.cn>
+Cc: linux-wireless@vger.kernel.org,
 	linux-mediatek@lists.infradead.org,
-	matthias.bgg@gmail.com,
-	roger.lu@mediatek.com,
-	Wentao Liang <vulab@iscas.ac.cn>,
-	stable@vger.kernel.org
-Subject: [PATCH] soc: mediatek: mtk-svs: Fix device leak in svs_add_device_link()
-Date: Thu, 17 Sep 2026 15:33:13 +0000
-Message-Id: <20260917153313.2160581-1-vulab@iscas.ac.cn>
-X-Mailer: git-send-email 2.34.1
+	nbd@nbd.name,
+	lorenzo@kernel.org,
+	eason.lai@mediatek.com,
+	angelogioacchino.delregno@collabora.com
+Subject: Re: [PATCH] wifi: mt76: Fix skb reference leak on USB/SDIO tx_queue_skb error paths
+Date: Thu, 17 Sep 2026 08:48:13 -0700
+Message-ID: <20260917154813.5823-1-lucid_duck@justthetip.ca>
+X-Mailer: git-send-email 2.55.0
+In-Reply-To: <20260917122058.2150817-1-vulab@iscas.ac.cn>
+References: <20260917122058.2150817-1-vulab@iscas.ac.cn>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-CM-TRANSID: zQCowABHtD45CKxqAp+DCA--.5832S2
-X-Coremail-Antispam: 1UD129KBjvJXoW7Zw1ktr15Wr1rKw4rXr1UZFb_yoW8JFWDpF
-	WDKayqyryYqr129a17Ar1UZF15uayIk3s5Cr4rXwn7Zwn5Jr43XrWaqa4Fqw10yFWkGa13
-	JryqyrWxCw4xAr7anT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
-	9KBjDU0xBIdaVrnRJUUUBFb7Iv0xC_tr1lb4IE77IF4wAFc2x0x2IEx4CE42xK8VAvwI8I
-	cIk0rVWrJVCq3wAFIxvE14AKwVWUJVWUGwA2ocxC64kIII0Yj41l84x0c7CEw4AK67xGY2
-	AK021l84ACjcxK6xIIjxv20xvE14v26ryj6F1UM28EF7xvwVC0I7IYx2IY6xkF7I0E14v2
-	6F4j6r4UJwA2z4x0Y4vEx4A2jsIE14v26rxl6s0DM28EF7xvwVC2z280aVCY1x0267AKxV
-	W0oVCq3wAS0I0E0xvYzxvE52x082IY62kv0487Mc02F40EFcxC0VAKzVAqx4xG6I80ewAv
-	7VC0I7IYx2IY67AKxVWUtVWrXwAv7VC2z280aVAFwI0_Cr1j6rxdMcvjeVCFs4IE7xkEbV
-	WUJVW8JwACjcxG0xvY0x0EwIxGrwACjI8F5VAI37AI020EjII2zVCS5cI20VAGYxC7MxkF
-	7I0En4kS14v26r1q6r43MxAIw28IcxkI7VAKI48JMxAIw28IcVCjz48v1sIEY20_Gr43Wr
-	1UJr1l4I8I3I0E4IkC6x0Yz7v_Jr0_Gr1lx2IqxVAqx4xG67AKxVWUJVWUGwC20s026x8G
-	jcxK67AKxVWUGVWUWwC2zVAF1VAY17CE14v26r1q6r43MIIYrxkI7VAKI48JMIIF0xvE2I
-	x0cI8IcVAFwI0_JFI_Gr1lIxAIcVC0I7IYx2IY6xkF7I0E14v26F4j6r4UJwCI42IY6xAI
-	w20EY4v20xvaj40_Jr0_JF4lIxAIcVC2z280aVAFwI0_Gr1j6F4UJwCI42IY6I8E87Iv6x
-	kF7I0E14v26rxl6s0DYxBIdaVFxhVjvjDU0xZFpf9x07UC38nUUUUU=
-X-Originating-IP: [36.110.52.2]
-X-CM-SenderInfo: pyxotu46lvutnvoduhdfq/1tbiBgINA2qr888vQgABsb
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260917_083316_936138_DA3F3DC8 
-X-CRM114-Status: GOOD (  10.43  )
+X-CRM114-CacheID: sfid-20260917_084831_696255_025603E2 
+X-CRM114-Status: UNSURE (   6.64  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,42 +76,28 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-svs_get_subsys_device() returns a reference to the supplier device that
-the caller must drop.  svs_add_device_link() returns the reference to
-its callers on success, but the device_link_add() failure path and the
-probe deferral path return an error pointer without putting the device,
-so the reference is leaked.
+Wentao,
 
-Drop the reference on both error paths.
+Thanks for catching this. The USB half is already fixed and the patch is
+sitting in Felix's tree:
 
-Fixes: 681a02e95000 ("soc: mediatek: SVS: introduce MTK SVS engine")
-Cc: stable@vger.kernel.org
-Signed-off-by: Wentao Liang <vulab@iscas.ac.cn>
----
- drivers/soc/mediatek/mtk-svs.c | 5 ++++-
- 1 file changed, 4 insertions(+), 1 deletion(-)
+	Eason Lai, "wifi: mt76: fix memory leak in USB TX path"
+	v5 posted 14 September, Fixes: b40b15e1521f, same as your USB half
 
-diff --git a/drivers/soc/mediatek/mtk-svs.c b/drivers/soc/mediatek/mtk-svs.c
-index 99edecb204f2..dd9643026c66 100644
---- a/drivers/soc/mediatek/mtk-svs.c
-+++ b/drivers/soc/mediatek/mtk-svs.c
-@@ -2155,11 +2155,14 @@ static struct device *svs_add_device_link(struct svs_platform *svsp,
- 				   DL_FLAG_AUTOREMOVE_CONSUMER);
- 	if (!sup_link) {
- 		dev_err(svsp->dev, "sup_link is NULL\n");
-+		put_device(dev);
- 		return ERR_PTR(-EINVAL);
- 	}
- 
--	if (sup_link->supplier->links.status != DL_DEV_DRIVER_BOUND)
-+	if (sup_link->supplier->links.status != DL_DEV_DRIVER_BOUND) {
-+		put_device(dev);
- 		return ERR_PTR(-EPROBE_DEFER);
-+	}
- 
- 	return dev;
- }
--- 
-2.34.1
+It does not cover the SDIO side you are patching, so that half is still
+open. One thing to fold in before you respin: frames the driver wants
+transmit status for go into a per-station table, and freeing one outright
+leaves the table pointing at it.
 
+	mt7921_usb_sdio_tx_prepare_skb  asks for status every HZ/4 per
+					station, then puts the frame in
+					that station's table
+	mt76_tx_status_skb_get		sweeps what is still in there and
+					reads a flag and a timestamp out
+					of each entry
+
+Eason's version marks the frame done and leaves it for that sweep to
+reclaim.
+
+Devin
 
