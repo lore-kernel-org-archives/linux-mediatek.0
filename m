@@ -4,72 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9B050C88E72
-	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Sep 2026 10:07:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3A8FAC88E72
+	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Sep 2026 11:22:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=0GHjhtVvxFLZhScL54L2jBcW8yR+A4yG3rVQcdon9mc=; b=n/3yCddbk1ZXW9X9M5PLLQ5g2v
-	C6LseXjv2ZxPUDD5shNY47mx1Mvz1IVFhDph0BrnJ/7+/089sqzaLJkphiIsDw0ynatBe6SETmsTo
-	NxEZ775xINtUhR7Bo+Ogi0b0YfBx9prE6qxjmvjOIfpfvBo6TRkpD44MM0+fRf9ea+h6tUBXUC5C4
-	QdjW1zlT8AXyGrcn/ObKxXA4xUZtdj9d765g1O8PeX4b2LqvVuFjL7Au5XN/u/y2cmlq3+1oAd6sS
-	fGjj2IaQwPyKNnkN6DukG5IfT3Jfvb06UKhsZHg8J66nWps9eRQBZAn0RfpXOCvo7cuYI+BAlh8qc
-	Xe2ZZOAQ==;
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=n6B9j/a1/s4fshEJb5EzFOlgfCFA7frpy0VX2srAiwg=; b=FkVtMwm1lfzPQRn0pyV8USXAmO
+	9zifvads6lfYChvDVWn1d8wL0qIu3/oNqNKXDhhP9YwrjCBPwx/LQp/hk2+JR6at+Bgq4CjTahblq
+	8/KncJb20+ikleernQ8Q98jzVSe+N0QS3Zn3QnKOh0QsKNH7dD6880ax0HQRfjswGJVBruxke8XjQ
+	o/VSRQvr1GGdk8IwHBcYInD1HXujtGTEREE0tYgWlIn0EPb5ZUTMHF5+TeBY1wZmquNQwNKc7w2Vj
+	fNt9+OT3qGzj8OUV0+DzzyORgJVpQHtPjlsjhyiLF87V/VMXmNHjnA4fGshncMp+ZTjbfPK67loQv
+	D2wCCC7w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x791b-0000000B4Zl-3GfM;
-	Thu, 17 Sep 2026 10:07:27 +0000
-Received: from smtp25.cstnet.cn ([159.226.251.25] helo=cstnet.cn)
+	id 1x7ACc-0000000BB3q-3Q0F;
+	Thu, 17 Sep 2026 11:22:54 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x791Y-0000000B4YZ-26GG;
-	Thu, 17 Sep 2026 10:07:26 +0000
-Received: from dfae2b116770.home.arpa (unknown [36.110.52.2])
-	by APP-05 (Coremail) with SMTP id zQCowACHuELZu6tqD0t+CA--.353S2;
-	Thu, 17 Sep 2026 18:07:21 +0800 (CST)
-From: Wentao Liang <vulab@iscas.ac.cn>
-To: angelogioacchino.delregno@collabora.com
-Cc: hverkuil@kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	linux-media@vger.kernel.org,
-	linux-mediatek@lists.infradead.org,
-	matthias.bgg@gmail.com,
-	mchehab@kernel.org,
-	moudy.ho@mediatek.com,
-	Wentao Liang <vulab@iscas.ac.cn>,
-	stable@vger.kernel.org
-Subject: [PATCH] media: platform: mtk-mdp3: Fix device reference leak in mdp_comp_init()
-Date: Thu, 17 Sep 2026 10:07:21 +0000
-Message-Id: <20260917100721.2146044-1-vulab@iscas.ac.cn>
-X-Mailer: git-send-email 2.34.1
+	id 1x7ACa-0000000BB3C-3HSQ
+	for linux-mediatek@lists.infradead.org;
+	Thu, 17 Sep 2026 11:22:52 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by sea.source.kernel.org (Postfix) with ESMTP id 79F6744783
+	for <linux-mediatek@lists.infradead.org>; Thu, 17 Sep 2026 11:22:52 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 618851F0089A
+	for <linux-mediatek@lists.infradead.org>; Thu, 17 Sep 2026 11:22:52 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1789644172;
+	bh=n6B9j/a1/s4fshEJb5EzFOlgfCFA7frpy0VX2srAiwg=;
+	h=References:In-Reply-To:From:Date:Subject:To:Cc;
+	b=TXiXYNpabvSqHPTuVy63UzlukAP9rW3YxZn68xoZHUgyHw7UYnxU5Qi1d3+f96V5e
+	 F02mqfQ0pDCExHmUmcF5lPKldiyNFr41olfeSh3y5vdzPOBl6Lfag8kwxpbWDNAx44
+	 jEG/vybZryl02Mcyxq67Dv/ZEDQHg5WtfNZcWKFzkfVtX71DBRW6BpPJNPm5QJXWi2
+	 P7O5MDIxS325W+D7YNh05nZuASiwbgkSVzXKVIo7N3XVcaBq5xwJxetGX2i1IIdrud
+	 UWlRlcQdHpj+jW9rLUUxdGWDY1ob+Tv08ZjzavvUVtnsA/cF3qTeyR2azgeb18s3be
+	 gvOG0s+xZvzjQ==
+Received: by mail-wr2-f12.google.com with SMTP id ffacd0b85a97d-482f6351831so430314f8f.1
+        for <linux-mediatek@lists.infradead.org>; Thu, 17 Sep 2026 04:22:52 -0700 (PDT)
+X-Forwarded-Encrypted: i=1; AKwUvBzURQzMonIqWBbsJ0LxPLIkk7yhWU8V/kaqxCnrzO0Bmlp321YubtpxyXL0NG0F7i1qSQgwauIM/Frk6WSbhA==@lists.infradead.org
+X-Gm-Message-State: AFuF++l+oLM24aGPgv+31ThgGgLKd7NgOGwtPbZNsxz4pl1TD5XaIC85
+	SEHjip2EqVPzt/4KLkJBEACBEbgDSRfBroSkfLiRGKwk5gR9qY4caZXJibtOtjlHRweBf7kh1mK
+	Z/233vDHtBvPprfPrfnV3T+/nHfPp7yE=
+X-Received: by 2002:a5d:5c89:0:b0:484:3310:f39b with SMTP id
+ ffacd0b85a97d-4870d05a853mr8600400f8f.28.1789644170593; Thu, 17 Sep 2026
+ 04:22:50 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-CM-TRANSID: zQCowACHuELZu6tqD0t+CA--.353S2
-X-Coremail-Antispam: 1UD129KBjvJXoW7uw4xCFyUCr15tr15tw1xGrg_yoW8tw1fpF
-	WUKay5ArW8WFsFgF4Yy3WDu3W5Aw1S9ayUWr1xtw1Iy3ZxWrWUGFy0v3WqvrZ5AF9aya43
-	J3W8tryxuayUZaUanT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
-	9KBjDU0xBIdaVrnRJUUUPvb7Iv0xC_Kw4lb4IE77IF4wAFc2x0x2IEx4CE42xK8VAvwI8I
-	cIk0rVWrJVCq3wAFIxvE14AKwVWUJVWUGwA2ocxC64kIII0Yj41l84x0c7CEw4AK67xGY2
-	AK021l84ACjcxK6xIIjxv20xvE14v26ryj6F1UM28EF7xvwVC0I7IYx2IY6xkF7I0E14v2
-	6F4j6r4UJwA2z4x0Y4vEx4A2jsIE14v26rxl6s0DM28EF7xvwVC2z280aVCY1x0267AKxV
-	W0oVCq3wAS0I0E0xvYzxvE52x082IY62kv0487Mc02F40EFcxC0VAKzVAqx4xG6I80ewAv
-	7VC0I7IYx2IY67AKxVWUAVWUtwAv7VC2z280aVAFwI0_Gr1j6F4UJwAm72CE4IkC6x0Yz7
-	v_Jr0_Gr1lF7xvr2IYc2Ij64vIr41lF7I21c0E0s8F02x267IIx4CEVc8vx2IErcIFxwAC
-	I402YVCY1x02628vn2kIc2xKxwCY1x0262kKe7AKxVWUtVW8ZwCF04k20xvY0x0EwIxGrw
-	CF04k20xvE74AGY7Cv6cx26r48ZrWUJr1UMxC20s026xCaFVCjc4AY6r1j6r4UMI8I3I0E
-	5I8CrVAFwI0_Jr0_Jr4lx2IqxVCjr7xvwVAFwI0_JrI_JrWlx4CE17CEb7AF67AKxVWUtV
-	W8ZwCIc40Y0x0EwIxGrwCI42IY6xIIjxv20xvE14v26r1I6r4UMIIF0xvE2Ix0cI8IcVCY
-	1x0267AKxVWxJVW8Jr1lIxAIcVCF04k26cxKx2IYs7xG6r1j6r1xMIIF0xvEx4A2jsIE14
-	v26r4UJVWxJr1lIxAIcVC2z280aVCY1x0267AKxVW0oVCq3bIYCTnIWIevJa73UjIFyTuY
-	vjxUqdHjUUUUU
-X-Originating-IP: [36.110.52.2]
-X-CM-SenderInfo: pyxotu46lvutnvoduhdfq/1tbiBgkNA2qrq3ZB1gAAsK
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260917_030724_907852_F98AF916 
-X-CRM114-Status: GOOD (  12.62  )
+References: <20260911-ipi_max-v2-0-a77826ff189e@kernel.org> <81f0bf10b41dff85872487ab68c750471b7c2f89.camel@rendec.net>
+In-Reply-To: <81f0bf10b41dff85872487ab68c750471b7c2f89.camel@rendec.net>
+From: Guo Ren <guoren@kernel.org>
+Date: Thu, 17 Sep 2026 19:22:36 +0800
+X-Gmail-Original-Message-ID: <CAJF2gTQZWfvN8c7E3+jcmzD0GqzYKzYO9vLd=eR36azKU1Uq5g@mail.gmail.com>
+X-Gm-Features: AcwNN1VkQt2KJ9LdNhZ0s1HMZyJ-GB0dwEmH64lRQnabSIV5TmddFI50VGPY-Rw
+Message-ID: <CAJF2gTQZWfvN8c7E3+jcmzD0GqzYKzYO9vLd=eR36azKU1Uq5g@mail.gmail.com>
+Subject: Re: [PATCH v2 0/6] riscv: Make IPI_MAX visible and use it consistently
+To: Radu Rendec <radu@rendec.net>
+Cc: Paul Walmsley <pjw@kernel.org>, Palmer Dabbelt <palmer@dabbelt.com>, 
+	Albert Ou <aou@eecs.berkeley.edu>, Alexandre Ghiti <alex@ghiti.fr>, 
+	Daniel Lezcano <daniel.lezcano@kernel.org>, Thomas Gleixner <tglx@kernel.org>, 
+	Anup Patel <anup@brainfault.org>, Tiffany Lin <tiffany.lin@mediatek.com>, 
+	Andrew-CT Chen <andrew-ct.chen@mediatek.com>, Yunfei Dong <yunfei.dong@mediatek.com>, 
+	Minghsiu Tsai <minghsiu.tsai@mediatek.com>, Houlong Wei <houlong.wei@mediatek.com>, 
+	Mauro Carvalho Chehab <mchehab@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, linux-riscv@lists.infradead.org, 
+	linux-kernel@vger.kernel.org, linux-media@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+	"tip-bot2 for GUO Ren (XuanTie)" <tip-bot2@linutronix.de>, Nathan Chancellor <nathan@kernel.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,68 +88,74 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-mdp_comp_init() takes a reference to the component platform device
-with of_find_device_by_node(), but the error path taken when the
-clock array cannot be allocated and the one taken for a component
-without a GCE EOF event return without dropping it.  The caller
-frees the mdp_comp in those cases, so the reference is leaked.
+On Mon, Sep 14, 2026 at 3:53=E2=80=AFAM Radu Rendec <radu@rendec.net> wrote=
+:
+>
+> On Fri, 2026-09-11 at 03:27 +0000, Guo Ren wrote:
+> > This series removes the implicit assumption that RISC-V supports exactl=
+y
+> > eight IPI message types.
+> >
+> > Currently, the SBI, CLINT and ACLINT SSWI IPI providers use
+> > BITS_PER_BYTE when sizing the generic IPI mux, while IMSIC carries a
+> > separate IMSIC_NR_IPI definition set to 8. These values happen to match
+> > IPI_MAX today, but neither is the proper source of truth for the number
+> > of RISC-V IPI message types.
+> >
+> > Move enum ipi_message_type to asm/smp.h so IPI providers can use IPI_MA=
+X
+> > directly, then replace the BITS_PER_BYTE and IMSIC_NR_IPI uses with
+> > IPI_MAX.
+> >
+> > This also makes adding future RISC-V IPI message types independent of
+> > the current eight-entry assumption.
+> >
+> > A follow-up patch renames the MediaTek VPU mailbox terminator from
+> > IPI_MAX to IPI_VPU_MAX. That token belongs to the VPU firmware IPI id
+> > enum and should follow the same prefixed convention as IPI_VPU_INIT
+> > (and SCP_IPI_MAX on the SCP side), instead of reusing the generic
+> > IPI_MAX name.
+> >
+> > ---
+> > GUO Ren (XuanTie) (4):
+> >       clocksource: clint: Use IPI_MAX for IPI muxing
+> >       irqchip/aclint-sswi: Use IPI_MAX for IPI muxing
+> >       irqchip/imsic: Use IPI_MAX instead of IMSIC_NR_IPI
+> >       media: mtk-vpu: rename IPI_MAX to IPI_VPU_MAX
+> >
+> > tip-bot2 for GUO Ren (XuanTie) (2):
+> >       riscv: smp: Move enum ipi_message_type to asm/smp.h
+> >       riscv: sbi: Use IPI_MAX for SBI IPI muxing
+>
+> I am confused. Thomas merged your entire v1 series a week before (see
+> the individual replies from tip-bot2@linutronix.de). Why are you
+> sending v2?
+>
+> Patch 6 was not included in v1 (but it's clearly related), so perhaps
+> you meant to send only this one as a separate patch?
+>
+> Also:
+>  * The cover letter should include a changelog, indicating what changes
+>    were made in each version compared to the previous one.
+>  * Patches 1 and 2 carry a "From:" tag that attributes authorship to
+>    tip-bot2, which is wrong (if these patches were to be applied).
 
-Release the reference on both error paths.
+Sorry for the noise, and thanks for catching these.
 
-Fixes: c4320f9721fd ("media: platform: mtk-mdp3: dynamically allocate component clocks")
-Cc: stable@vger.kernel.org
-Signed-off-by: Wentao Liang <vulab@iscas.ac.cn>
----
- .../media/platform/mediatek/mdp3/mtk-mdp3-comp.c   | 14 +++++++++++---
- 1 file changed, 11 insertions(+), 3 deletions(-)
+You are right on both points. I missed the cover-letter changelog,
+and I should not have resent the already-merged patches as v2. The
+"From: tip-bot2" tags were added by b4 because those two patches had
+already landed; that is useful as a reminder to me, but it should not
+have been left in the patches themselves.
 
-diff --git a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-comp.c b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-comp.c
-index 7fcb2fbdd64e..acb2758a7b42 100644
---- a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-comp.c
-+++ b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-comp.c
-@@ -1730,6 +1730,7 @@ static int mdp_comp_init(struct mdp_dev *mdp, struct device_node *node,
- 	struct device *dev = &mdp->pdev->dev;
- 	struct platform_device *pdev_c;
- 	int clk_ofst;
-+	int ret;
- 	int i;
- 	s32 event;
- 
-@@ -1756,8 +1757,10 @@ static int mdp_comp_init(struct mdp_dev *mdp, struct device_node *node,
- 	comp->clk_num = mdp->mdp_data->comp_data[id].info.clk_num;
- 	comp->clks = devm_kzalloc(dev, sizeof(struct clk *) * comp->clk_num,
- 				  GFP_KERNEL);
--	if (!comp->clks)
--		return -ENOMEM;
-+	if (!comp->clks) {
-+		ret = -ENOMEM;
-+		goto err_put_device;
-+	}
- 
- 	clk_ofst = mdp->mdp_data->comp_data[id].info.clk_ofst;
- 
-@@ -1782,7 +1785,8 @@ static int mdp_comp_init(struct mdp_dev *mdp, struct device_node *node,
- 		if (of_property_read_u32_index(node, "mediatek,gce-events",
- 					       MDP_GCE_EVENT_EOF, &event)) {
- 			dev_err(dev, "Component id %d has no EOF\n", id);
--			return -EINVAL;
-+			ret = -EINVAL;
-+			goto err_put_device;
- 		}
- 	} else {
- 		event = MDP_GCE_NO_EVENT;
-@@ -1791,6 +1795,10 @@ static int mdp_comp_init(struct mdp_dev *mdp, struct device_node *node,
- 	comp->gce_event[MDP_GCE_EVENT_EOF] = event;
- 
- 	return 0;
-+
-+err_put_device:
-+	put_device(&pdev_c->dev);
-+	return ret;
- }
- 
- static void mdp_comp_deinit(struct mdp_comp *comp)
--- 
-2.34.1
+I should have skipped the b4 v2 flow and just sent patch 6 on its
+own. The only remaining change is the mtk-vpu IPI_MAX rename, which
+is needed after IPI_MAX became visible from <asm/smp.h>.
 
+If you are willing to pick patch 6 as-is, I would appreciate it.
+Otherwise I will resend it as a standalone patch.
+
+--=20
+Best Regards
+ Guo Ren
 
