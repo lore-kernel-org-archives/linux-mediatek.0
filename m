@@ -4,55 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 70481C982CF
-	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Sep 2026 12:06:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5745CC88E72
+	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Sep 2026 12:19:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=LlnRbt5c8SP+aAJF87ouKUvRBbld9YxcfP/ftrnkZgw=; b=GfXJrc1RAr7Y5V5mrAvIp83ifb
-	zGNZQ/AlN/6XTBWMhECPGxVFFq4vJte99vYvRtNA1pxBBpRZhnA+c664YIiS2j6mK20qS29g1Sn7N
-	ht63JKQY408/0ZgbMM5JTAGHp+9XCe1xnTXxkj2Qhjj0220K0OaFFjhzYSLyOzFVaSJOpXHPdkVrQ
-	GxqUH6B1esTTPQfbvLLXWVxY5C9d56DM1akQwkB+/CPMuuTJQstwp9lbgffr+VhgqwAzZTRsAr8Ki
-	AiZ+usY76R7kNyMXnggbeqylvj3rOZa2FtNsf6yCpEmEOZ4PdhJ0x1z+VlyB0Qq9m5ycSi3E4gBhs
-	c3R5pRSA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=rw58twcp2P9BtfwCcTPb0Y+6RU6vhrm1L4dhzoPtKWU=; b=wlOC2EwhNFwzMcauhZW3FC6pbG
+	EOasdUrjbvqNuUlSVOiKxoJJrLhGDqrfJWg8iuV/6qtguDAQSsxyQf2YqxMaaBixoONy6E09kWvL1
+	d8Kkr5D8rWa53B47Izaprvz2FTshJRjU3k8TVDCOGBMtlwyNbevbNKHqJ/qpjL48BqLUey43ItovM
+	UMXpbaRG9DWVU+v/bK2BlCE06evnSbyyBbEbix0oZUDgoUm0yMwmKRS4moU6zmskreNhhSScAkG2d
+	ngraAkgj2eucLrQomrsIjSd4z2hs86IG2FwUDHeHGGd5mFCxLrG/GsrwrxD0hcqQw6SXj1OibtweG
+	R6e3Zblg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x7Asg-0000000BFft-2oqg;
-	Thu, 17 Sep 2026 12:06:22 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1x7B5m-0000000BGkb-47NO;
+	Thu, 17 Sep 2026 12:19:54 +0000
+Received: from smtp25.cstnet.cn ([159.226.251.25] helo=cstnet.cn)
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x7Asf-0000000BFfX-04vU;
-	Thu, 17 Sep 2026 12:06:21 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 1D71A602D3;
-	Thu, 17 Sep 2026 12:06:20 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 4B62D1F00898;
-	Thu, 17 Sep 2026 12:06:19 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linuxfoundation.org;
-	s=korg; t=1789646779;
-	bh=LlnRbt5c8SP+aAJF87ouKUvRBbld9YxcfP/ftrnkZgw=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=0ljomUrwTL2UcjQ7HHAcYdrtIKTqFYzw3wyXinI7YNmmp9wq2uvlibGxRe3/YSkmK
-	 ryRmZwW7JLzSvGxQ06hWYVVDby0dfdp29e7FXIUOZVmR0sEpEhuqhRPALUXGZax/u9
-	 kyEaroyGZOc8yeqFj6lfvzQPnCrsFqApRO66wVvc=
-Date: Thu, 17 Sep 2026 12:57:01 +0100
-From: Greg KH <gregkh@linuxfoundation.org>
-To: Wentao Liang <vulab@iscas.ac.cn>
-Cc: angelogioacchino.delregno@collabora.com, jason-jh.lin@mediatek.com,
-	jassisinghbrar@gmail.com, linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
-	matthias.bgg@gmail.com, stable@vger.kernel.org
-Subject: Re: [PATCH] mailbox: mtk-cmdq: Fix GCE clock reference leak in
- cmdq_get_clocks()
-Message-ID: <2026091720-erased-urchin-8903@gregkh>
-References: <20260917093745.2144930-1-vulab@iscas.ac.cn>
+	id 1x7B5e-0000000BGjW-478O;
+	Thu, 17 Sep 2026 12:19:53 +0000
+Received: from dfae2b116770.home.arpa (unknown [36.110.52.2])
+	by APP-05 (Coremail) with SMTP id zQCowAAHKkPg2qtq5l+ACA--.43080S2;
+	Thu, 17 Sep 2026 20:19:44 +0800 (CST)
+From: Wentao Liang <vulab@iscas.ac.cn>
+To: angelogioacchino.delregno@collabora.com
+Cc: linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	linux-wireless@vger.kernel.org,
+	lorenzo@kernel.org,
+	matthias.bgg@gmail.com,
+	nbd@nbd.name,
+	ryder.lee@mediatek.com,
+	sean.wang@mediatek.com,
+	shayne.chen@mediatek.com,
+	Wentao Liang <vulab@iscas.ac.cn>,
+	stable@vger.kernel.org
+Subject: [PATCH] wifi: mt76: Fix of_node reference leak in mt76_get_rate_power_limits()
+Date: Thu, 17 Sep 2026 12:19:44 +0000
+Message-Id: <20260917121944.2150737-1-vulab@iscas.ac.cn>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20260917093745.2144930-1-vulab@iscas.ac.cn>
+Content-Transfer-Encoding: 8bit
+X-CM-TRANSID: zQCowAAHKkPg2qtq5l+ACA--.43080S2
+X-Coremail-Antispam: 1UD129KBjvJXoW7Ar47KryrZw1rZr1UGw4fGrg_yoW8KF45pF
+	W293yYkr1UJay7G3WIqF4fAa45tan2k3yUuF97G34rCws5uwn0qF12qa1YvF13AFy8ua4Y
+	yr1Ut3ZrGFWS9r7anT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
+	9KBjDU0xBIdaVrnRJUUUPqb7Iv0xC_tr1lb4IE77IF4wAFc2x0x2IEx4CE42xK8VAvwI8I
+	cIk0rVWrJVCq3wAFIxvE14AKwVWUJVWUGwA2ocxC64kIII0Yj41l84x0c7CEw4AK67xGY2
+	AK021l84ACjcxK6xIIjxv20xvE14v26ryj6F1UM28EF7xvwVC0I7IYx2IY6xkF7I0E14v2
+	6F4j6r4UJwA2z4x0Y4vEx4A2jsIE14v26rxl6s0DM28EF7xvwVC2z280aVCY1x0267AKxV
+	W0oVCq3wAS0I0E0xvYzxvE52x082IY62kv0487Mc02F40EFcxC0VAKzVAqx4xG6I80ewAv
+	7VC0I7IYx2IY67AKxVWUAVWUtwAv7VC2z280aVAFwI0_Gr1j6F4UJwAm72CE4IkC6x0Yz7
+	v_Jr0_Gr1lF7xvr2IYc2Ij64vIr41lF7I21c0E0s8F02x267IIx4CEVc8vx2IErcIFxwAC
+	I402YVCY1x02628vn2kIc2xKxwCY1x0262kKe7AKxVWUtVW8ZwCF04k20xvY0x0EwIxGrw
+	CF04k20xvE74AGY7Cv6cx26r48ZrWUJr1UMxC20s026xCaFVCjc4AY6r1j6r4UMI8I3I0E
+	5I8CrVAFwI0_Jr0_Jr4lx2IqxVCjr7xvwVAFwI0_JrI_JrWlx4CE17CEb7AF67AKxVWUtV
+	W8ZwCIc40Y0x0EwIxGrwCI42IY6xIIjxv20xvE14v26r1j6r1xMIIF0xvE2Ix0cI8IcVCY
+	1x0267AKxVW8JVWxJwCI42IY6xAIw20EY4v20xvaj40_Jr0_JF4lIxAIcVC2z280aVAFwI
+	0_Gr1j6F4UJwCI42IY6I8E87Iv6xkF7I0E14v26rxl6s0DYxBIdaVFxhVjvjDU0xZFpf9x
+	07jbl19UUUUU=
+X-Originating-IP: [36.110.52.2]
+X-CM-SenderInfo: pyxotu46lvutnvoduhdfq/1tbiCRQNA2qrq02VlQAAs0
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260917_051947_381770_305B04A7 
+X-CRM114-Status: GOOD (  11.20  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -67,24 +86,77 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Sep 17, 2026 at 09:37:45AM +0000, Wentao Liang wrote:
-> of_clk_get() returns the clock with an elevated reference count, but
-> the references taken for the other GCE clocks are never dropped: those
-> clocks outlive probe and the driver calls neither clk_put() nor
-> clk_bulk_put(), so probing a GCE with multiple instances leaks one
-> reference per other GCE clock.
-> 
-> Let devres drop the references when the device goes away, which also
-> covers the probe failure paths after cmdq_get_clocks() has returned.
-> 
-> Fixes: 85dfdbfc13ea ("mailbox: cmdq: add multi-gce clocks support for mt8195")
-> Cc: stable@vger.kernel.org
-> Signed-off-by: Wentao Liang <vulab@iscas.ac.cn>
+mt76_find_power_limits_node() and mt76_find_channel_node() return nodes
+with the reference held, but mt76_get_rate_power_limits() overwrites the
+"txpower-<band>" node reference and never releases the channel node
+reference, leaking both.
 
-Please stop sending these patches.  You are not responding to any
-feedback, so we are assuming you are just a bot :(
+Drop the intermediate and the channel node reference on every exit path,
+and take a reference on the fallback node returned by
+mt76_find_power_limits_node() so the caller's of_node_put() is balanced.
 
-All should be dropped until proven otherwise.
+Fixes: 22b980badc0f ("mt76: add functions for parsing rate power limits from DT")
+Cc: stable@vger.kernel.org
+Signed-off-by: Wentao Liang <vulab@iscas.ac.cn>
+---
+ drivers/net/wireless/mediatek/mt76/eeprom.c | 16 +++++++++++-----
+ 1 file changed, 11 insertions(+), 5 deletions(-)
 
-greg k-h
+diff --git a/drivers/net/wireless/mediatek/mt76/eeprom.c b/drivers/net/wireless/mediatek/mt76/eeprom.c
+index afdb73661866..86f3fbb7e940 100644
+--- a/drivers/net/wireless/mediatek/mt76/eeprom.c
++++ b/drivers/net/wireless/mediatek/mt76/eeprom.c
+@@ -231,7 +231,8 @@ mt76_find_power_limits_node(struct mt76_dev *dev)
+ 		struct property *regd = of_find_property(cur, "regdomain", NULL);
+ 
+ 		if (!country && !regd) {
+-			fallback = cur;
++			of_node_put(fallback);
++			fallback = of_node_get(cur);
+ 			continue;
+ 		}
+ 
+@@ -429,7 +430,7 @@ s8 mt76_get_rate_power_limits(struct mt76_phy *phy,
+ 			      s8 target_power)
+ {
+ 	struct mt76_dev *dev = phy->dev;
+-	struct device_node *np;
++	struct device_node *np, *band_np;
+ 	const s8 *val;
+ 	char name[16];
+ 	char band;
+@@ -459,15 +460,18 @@ s8 mt76_get_rate_power_limits(struct mt76_phy *phy,
+ 		band = '6';
+ 		break;
+ 	default:
++		of_node_put(np);
+ 		return target_power;
+ 	}
+ 
+ 	snprintf(name, sizeof(name), "txpower-%cg", band);
+-	np = of_get_child_by_name(np, name);
+-	if (!np)
++	band_np = of_get_child_by_name(np, name);
++	of_node_put(np);
++	if (!band_np)
+ 		return target_power;
+ 
+-	np = mt76_find_channel_node(np, chan);
++	np = mt76_find_channel_node(band_np, chan);
++	of_node_put(band_np);
+ 	if (!np)
+ 		return target_power;
+ 
+@@ -514,6 +518,8 @@ s8 mt76_get_rate_power_limits(struct mt76_phy *phy,
+ 				     ARRAY_SIZE(dest->path.ru_bf), val, len, target_power,
+ 				     txs_delta, &max_power, n_chains, MT76_SKU_BACKOFF);
+ 
++	of_node_put(np);
++
+ 	return max_power;
+ }
+ EXPORT_SYMBOL_GPL(mt76_get_rate_power_limits);
+-- 
+2.34.1
+
 
