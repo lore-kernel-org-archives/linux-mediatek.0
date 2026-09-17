@@ -4,85 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0E122C982CD
-	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Sep 2026 06:55:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6083CC982C1
+	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Sep 2026 07:33:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:References:In-Reply-To:
-	MIME-Version:Content-Type:Message-ID:Date:Subject:Cc:To:From:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=CUm8IylK3V7lcVuZn2ulYwmszlPFrNkvTKkjAabL9nQ=; b=ec940Y8W65IeNbLyHHHZpPwZ2r
-	EPwQxMQKNzJuXXWoRwqqX/ywO4wKjWTZjDNnHCD9HUpA197+op/f4oWgAIHopYvJc3WzKCLxAjzxl
-	C4ES+ryaBUTG8RPSSQX/kNtWKZ7o64semn/eEAhp1cF5Btv/6k1sQqcLrA7TBo0Jdz4e4PJfzG1Bw
-	H1d5hhhMkI7vMjB0zQ9K18g7JQpugx0JLgR3ZOdl7muKDdk1aCAlT8RmGKkg43uPkfHPpqMmJM8Wz
-	Yeg0JeG29LnXLpjHQPfOCVar9ndIduBKYZMG/EQFPjvu94zPgwDjRXTWcfA3IbD2zfua+ue7KL9Hy
-	OvIV4sWw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:
+	References:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:
+	Subject:Date:From:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=PznxlksQYBfsU0xCnDVjDDPfQPlwZim+leRQNvOAAWM=; b=m52C2UT2bJ05cQQRfEW/ZXMuTS
+	xj8KvBhqebo+gRhPXWH7kmFs0yYwUdmJqPpjtSggZGMXfBb2tQinkzI9hPf88YW1kcUOrtAmO4ouD
+	TUkNu0iuq9GUxsvqpuCf/VM2P3Hv5WR0YQ8r5OoRCOUSwSFCQxpeI4CmaoeSKKgIsuJE8NSkUcJ75
+	WwqbnzXXEygrMDBc4SfZBlS8ERPeOG+1t7OrXdiWihgnkpa9wFBFCNaP3n/GKK+8XPndNuC7Ranzy
+	1N50UuLl/rxv5Y4TScCc51/nfdTPkvLoE4p5VWXDsyicM0mkkGXgT5YBSKJqBUWYUbEwt2NBDwyqb
+	u34K05tg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x761m-0000000AjAK-3Ix8;
-	Thu, 17 Sep 2026 06:55:26 +0000
-Received: from mail-pj2-x10.google.com ([2607:f8b0:4864:39::10])
+	id 1x76cN-0000000Am3g-0iN2;
+	Thu, 17 Sep 2026 07:33:15 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x761k-0000000Aj8N-3JEo
-	for linux-mediatek@lists.infradead.org;
-	Thu, 17 Sep 2026 06:55:25 +0000
-Received: by mail-pj2-x10.google.com with SMTP id 98e67ed59e1d1-396ccda24a3so373400a91.0
-        for <linux-mediatek@lists.infradead.org>; Wed, 16 Sep 2026 23:55:24 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1789628123; x=1790232923; darn=lists.infradead.org;
-        h=references:in-reply-to:mime-version:content-type:message-id:date
-         :subject:cc:to:from:from:to:cc:subject:date:message-id:reply-to
-         :content-type;
-        bh=CUm8IylK3V7lcVuZn2ulYwmszlPFrNkvTKkjAabL9nQ=;
-        b=h0tYYA7jx01y+Usq1og4/cA8XT8HH0OUHslkRSP1h1QGndX1NjgTqRlyPGAnVReMRI
-         C1aw7MpC8Q7ygitSzwtOuFI4sZzu/vDpMY6YWogV9r3Hd14XL9lDkLIbePySG6Ihi9dv
-         K6ozY6eX4I+8XdDZAzGAeNimigqCxWLkGWPdz+nb7uQa4hxgcRfs7hsz1PuukUFYp/Xo
-         pBxr4lPEgaJPX+iwvTibMJ2od2q/esnhO7+D+WWxoybcNTUrJWGTlAQSuOBGLo3H4xpf
-         mfycc0WxV4DBS+bno90+yzhQuLl8H/tZbDeIQilTW+92kTQaJMdc6NxcUMyMySzcZSCV
-         /VdQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1789628123; x=1790232923;
-        h=references:in-reply-to:mime-version:content-type:message-id:date
-         :subject:cc:to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject
-         :date:message-id:reply-to:content-type;
-        bh=CUm8IylK3V7lcVuZn2ulYwmszlPFrNkvTKkjAabL9nQ=;
-        b=S9IfymTktvvzEfOLLTU35QaKCRVwm6mTaLXO3ZHerkIXrTG0fhAEIarAoSqGojRgoW
-         6H8SxA843AQpDH7TZIqFmoN0C9o9IchcDiHbjkDoVC7c3BO2jQ+edZOIQEcJHvzYGclZ
-         gt0XPNRjxYKnMbzBwHEOBjAZlVOEg0XwsJSnow8kBlYeO6ZW7IQlVU6wwQsTN+B0ljZ9
-         RFc6Fbkq0gM1IZyMjlZx41thqd9XG5GRvYxdy8j4we1PG4PAdcANGCReQG6z6USG6qeL
-         yP5KAE6Hhgi2SXgnsius3A9isIZGP7hAvYE18ocG4FBE8LiRlgWS4m2v5hOEdygushGq
-         dKPg==
-X-Forwarded-Encrypted: i=1; AKwUvBzI2vuu43txbAtEqDT5stPe0Xnn2/EozfvheUyFkGrwGseyiwfwPKVGMIqSaYzrOPYrutCOzU4W8sj24iOh3A==@lists.infradead.org
-X-Gm-Message-State: AFuF++m2Vebj9/CLNPxEex0R4lYL2u1LGTfs/XTXX+Hj43mTnd92s+YM
-	1V3+o6OKLWO14eKxcNTrc5xEgPj27ayk1ELgGeAWJQWSGjoosrQwwVyI
-X-Gm-Gg: AYBFou1b7NgEF9p2lCZRxNhMLMSDG1J82vr9u/xpxOV2fTUeWDmHIm2qQHko8OCs5Cw
-	RT6YPQwXJzLpMxkn8YvSbLXwfV0+fQSTtphtf+MwXY1HHWHz037+c+gb7JgVVp3yOM66Z2A/Zvm
-	l4MBmvUdZAcb5NRRvROfjZH6ggkJkgncfuVsEOBp6TjgRGm/CvCZAdpOCHVFNpGjEwt0ELtk52t
-	YyNBdhrhYTSUa6VkqAZwRA0qGAHQ1Q1Z2TjJG0azISoaG/nDH0O8a46bfHtytVTWC6pX1W821oY
-	gf6qnTcr2U4WClabvFN+/DLjaGf2us7AbOxs+Rj9h7wNxYvOQ71ZDR2Fsc5k99Rtl5IJXEA03qA
-	2rKRTdWKDIgkq51GEnNVhOmRm4nGnjMuK87jnPQPTO+3C/nf1uDdVMbubDKcBuWs+mZAxVaHGlc
-	rFpU1OymZRyGrjvJlfrN+1btoRxxJ1SzXkYV2/74VEMsLwnx4lKG/k1vXM6BT2DW76/FNAIk7mU
-	X8=
-X-Received: by 2002:a17:90b:4ece:b0:39d:ba21:fd90 with SMTP id 98e67ed59e1d1-39e1e491176mr18804302a91.16.1789628123381;
-        Wed, 16 Sep 2026 23:55:23 -0700 (PDT)
-Received: from [127.0.1.1] ([47.253.114.73])
-        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-39e35def1f2sm3334653a91.5.2026.09.16.23.55.11
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 16 Sep 2026 23:55:23 -0700 (PDT)
-From: Wayen Yan <win847@gmail.com>
-To: Guangshuo Li <lgs201920130244@gmail.com>
-Cc: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo@kernel.org>, Andrew Lunn <andrew+netdev@lunn.ch>, "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, netdev@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, stable@vger.kernel.org
-Subject: Re: [PATCH] net: mediatek: fix PPE resource leak on remove
-Date: Thu, 17 Sep 2026 14:55:11 +0800
-Message-ID: <178962811102.1264013.13698060411191875408@gmail.com>
-Content-Type: text/plain; charset=utf-8
+	id 1x76cF-0000000Am1e-36kZ;
+	Thu, 17 Sep 2026 07:33:08 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id D5F2C44797;
+	Thu, 17 Sep 2026 07:33:06 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPS id ADB93C2BCFC;
+	Thu, 17 Sep 2026 07:33:06 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1789630386;
+	bh=OqnPiTNjAqjVxKgEBD7t4LAZoC7s4CYHM+rwUWFCRLI=;
+	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To:From;
+	b=rzy5n5s2mqinkiSaA8hBf7bDSYzVNv/k/HDOs2i6LyCMDB8tVyZIvaCNWXn+5keTY
+	 2EJv6f6mYFxIqVChzBputriqCXTNL3p2ISdPHC8gh3eqh/bOSPCBxuk1nF0CI3uIGj
+	 9XtCK545KBlbERe4J1V7Rx/GdcD5ExRZMjni32yWXD8OoGOyPjw20HibPPIv3Oo9qe
+	 af1QjhTiKaNNCDlMNr5n1KdGe1aDCg8E+NNOuXDuHEQLaYwChI/dhMQ3JNBjoHXDAd
+	 ZnNUE6/S5G60EZpXH2KVsKSYDWTvUkTX2WM/y5baG8MetpM93CpfbdEoeIu1JnMFN+
+	 cOq/dEylSx8EA==
+Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 8F35DC982D0;
+	Thu, 17 Sep 2026 07:33:06 +0000 (UTC)
+From: Roman Vivchar via B4 Relay <devnull+rva333.protonmail.com@kernel.org>
+Date: Thu, 17 Sep 2026 10:32:07 +0300
+Subject: [PATCH 2/3] usb: mtu3: introduce platform data
 MIME-Version: 1.0
-In-Reply-To: <20260916051618.2904439-1-lgs201920130244@gmail.com>
-References: <20260916051618.2904439-1-lgs201920130244@gmail.com>
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260916_235524_846140_5C9F0B59 
-X-CRM114-Status: GOOD (  11.78  )
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Message-Id: <20260917-6595-mtu3-v1-2-a2ba7c230d68@protonmail.com>
+References: <20260917-6595-mtu3-v1-0-a2ba7c230d68@protonmail.com>
+In-Reply-To: <20260917-6595-mtu3-v1-0-a2ba7c230d68@protonmail.com>
+To: Chunfeng Yun <chunfeng.yun@mediatek.com>, 
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: linux-usb@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, 
+ linux-kernel@vger.kernel.org, Roman Vivchar <rva333@protonmail.com>
+X-Mailer: b4 0.15.2
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1789630384; l=3695;
+ i=rva333@protonmail.com; s=20260510; h=from:subject:message-id;
+ bh=y54e7myPthNulRzCzcIJqcwIVSWOKyZTdFwExQoLyXc=;
+ b=UIxXZokLjiwTb3X/I4dC6/m0foRCb+50aMrzGk4ic71sBFhvXZTvwmMWDWVOp7TwTdKwjiBsq
+ R3kw84kLEVLAbkVLA4kLPs1mAoFC5cjwCZQGDHwFGm+bUt1wbq5SnvF
+X-Developer-Key: i=rva333@protonmail.com; a=ed25519;
+ pk=zww/nWjBGoQ4POXCG0BV6fx2iuXK6jx77rsKPA5YK5Y=
+X-Endpoint-Received: by B4 Relay for rva333@protonmail.com/20260510 with
+ auth_id=777
+X-Original-From: Roman Vivchar <rva333@protonmail.com>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,55 +84,121 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Reply-To: rva333@protonmail.com
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Guangshuo,
+From: Roman Vivchar <rva333@protonmail.com>
 
-Thanks for the patch. Calling mtk_ppe_deinit() from the remove path is
-the right direction, since the probe error path already tears PPE down
-but the successful remove path currently does not.
+Some SoCs, such as mt6595, require specific quirks for the MTU3 to
+function properly.
 
-However, I think the cleanup is still incomplete.
+The mt6595 IP block doesn't support multiple slots for the FIFO,
+resulting FIFO wrap.
 
-mtk_ppe_deinit() currently only destroys the per-PPE l2_flows
-rhashtable:
+Fix this by adding platform data with a field to handle FIFO limitation.
 
-    rhashtable_destroy(&eth->ppe[i]->l2_flows);
+Assisted-by: LLM (debugging)
+Signed-off-by: Roman Vivchar <rva333@protonmail.com>
+---
+ drivers/usb/mtu3/mtu3.h        | 9 +++++++++
+ drivers/usb/mtu3/mtu3_core.c   | 5 +++++
+ drivers/usb/mtu3/mtu3_gadget.c | 8 ++++++--
+ drivers/usb/mtu3/mtu3_plat.c   | 8 ++++++--
+ 4 files changed, 26 insertions(+), 4 deletions(-)
 
-This only destroys the hash table itself. It does not free any entries
-that may still be stored in it. In this driver, L2 offload entries are
-struct mtk_flow_entry objects allocated by mtk_flow_offload_replace()
-and inserted into eth->flow_table, and bridge/L2 entries are also
-indexed from ppe->l2_flows via mtk_foe_entry_commit_l2().
+diff --git a/drivers/usb/mtu3/mtu3.h b/drivers/usb/mtu3/mtu3.h
+index ba5a63669e5f..1258aa7483aa 100644
+--- a/drivers/usb/mtu3/mtu3.h
++++ b/drivers/usb/mtu3/mtu3.h
+@@ -315,6 +315,14 @@ static inline struct ssusb_mtk *dev_to_ssusb(struct device *dev)
+ 	return dev_get_drvdata(dev);
+ }
+ 
++/**
++ * struct mtu3_platform_data - platform data for the driver.
++ * @single_slot: the IP can handle only one buffer for bulk transfers
++ */
++struct mtu3_platform_data {
++	bool single_slot;
++};
++
+ /**
+  * struct mtu3 - device driver instance data.
+  * @slot: MTU3_U2_IP_SLOT_DEFAULT for U2 IP only,
+@@ -369,6 +377,7 @@ struct mtu3 {
+ 	unsigned connected:1;
+ 	unsigned async_callbacks:1;
+ 	unsigned separate_fifo:1;
++	unsigned single_slot:1;
+ 
+ 	u8 address;
+ 	u8 test_mode_nr;
+diff --git a/drivers/usb/mtu3/mtu3_core.c b/drivers/usb/mtu3/mtu3_core.c
+index 66dbfe1705d5..03e28c93bc51 100644
+--- a/drivers/usb/mtu3/mtu3_core.c
++++ b/drivers/usb/mtu3/mtu3_core.c
+@@ -923,6 +923,7 @@ int ssusb_gadget_init(struct ssusb_mtk *ssusb)
+ {
+ 	struct device *dev = ssusb->dev;
+ 	struct platform_device *pdev = to_platform_device(dev);
++	const struct mtu3_platform_data *pdata = NULL;
+ 	struct mtu3 *mtu = NULL;
+ 	int ret = -ENOMEM;
+ 
+@@ -930,6 +931,10 @@ int ssusb_gadget_init(struct ssusb_mtk *ssusb)
+ 	if (mtu == NULL)
+ 		return -ENOMEM;
+ 
++	pdata = device_get_match_data(dev);
++	if (pdata)
++		mtu->single_slot = pdata->single_slot;
++
+ 	mtu->irq = platform_get_irq_byname_optional(pdev, "device");
+ 	if (mtu->irq < 0) {
+ 		if (mtu->irq == -EPROBE_DEFER)
+diff --git a/drivers/usb/mtu3/mtu3_gadget.c b/drivers/usb/mtu3/mtu3_gadget.c
+index f224f2ee379a..bfacb1ba152e 100644
+--- a/drivers/usb/mtu3/mtu3_gadget.c
++++ b/drivers/usb/mtu3/mtu3_gadget.c
+@@ -112,8 +112,12 @@ static int mtu3_ep_enable(struct mtu3_ep *mep)
+ 	mep->ep.desc = desc;
+ 	mep->ep.comp_desc = comp_desc;
+ 
+-	/* slot mainly affects bulk/isoc transfer, so ignore int */
+-	mep->slot = usb_endpoint_xfer_int(desc) ? 0 : mtu->slot;
++	if (mtu->single_slot)
++		/* older IPs can handle only one slot reliably */
++		mep->slot = 0;
++	else
++		/* slot mainly affects bulk/isoc transfer, so ignore int */
++		mep->slot = usb_endpoint_xfer_int(desc) ? 0 : mtu->slot;
+ 
+ 	ret = mtu3_config_ep(mtu, mep, interval, burst, mult);
+ 	if (ret < 0)
+diff --git a/drivers/usb/mtu3/mtu3_plat.c b/drivers/usb/mtu3/mtu3_plat.c
+index cc8a864dbd63..bc65acdfb0de 100644
+--- a/drivers/usb/mtu3/mtu3_plat.c
++++ b/drivers/usb/mtu3/mtu3_plat.c
+@@ -611,9 +611,13 @@ static const struct dev_pm_ops mtu3_pm_ops = {
+ 
+ #define DEV_PM_OPS (IS_ENABLED(CONFIG_PM) ? &mtu3_pm_ops : NULL)
+ 
++static const struct mtu3_platform_data mt8173_platform_data = {
++	.single_slot = false,
++};
++
+ static const struct of_device_id mtu3_of_match[] = {
+-	{.compatible = "mediatek,mt8173-mtu3",},
+-	{.compatible = "mediatek,mtu3",},
++	{ .compatible = "mediatek,mt8173-mtu3", .data = &mt8173_platform_data },
++	{ .compatible = "mediatek,mtu3", .data = &mt8173_platform_data },
+ 	{},
+ };
+ MODULE_DEVICE_TABLE(of, mtu3_of_match);
 
-There is also a lifetime mismatch for eth->flow_table:
-mtk_eth_offload_init() initializes it, but I do not see a matching
-destroy/free on the remove path.
+-- 
+2.55.0
 
-So I think remove should first drain the offload flow entries, using the
-same per-entry teardown as mtk_flow_offload_destroy():
-
-    mtk_foe_entry_clear(...)
-    mtk_wed_flow_remove(...) when needed
-    kfree(entry)
-
-and then destroy eth->flow_table and the per-PPE l2_flows tables.
-rhashtable_free_and_destroy() with a small callback would probably fit
-this better than plain rhashtable_destroy().
-
-While touching mtk_ppe_deinit(), it would also be better to use continue
-instead of return for missing PPE instances, so later PPE instances are
-not skipped.
-
-One more minor cleanup issue: mtk_ppe_debugfs_init() creates the ppe%d
-debugfs directory, but the PPE teardown path does not remove it.
-
-So I agree with the fix direction, but I think this should be respun as
-a complete PPE/offload cleanup rather than only adding mtk_ppe_deinit()
-to mtk_remove().
-
-Thanks,
-Wayen
 
 
