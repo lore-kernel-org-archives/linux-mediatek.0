@@ -4,69 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EE78CC88E72
-	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Sep 2026 09:39:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8BD78C88E72
+	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Sep 2026 10:02:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=xL8D+x8zSShAzS42oaIFDP2dOoseL67pe2y72te8lnk=; b=rCz4TDMoyVOEVf+SaKZ/gjSwwv
-	QvYsaGQR0dFa7AhLqsTjvZEHe+y0H81BM1ysI1S5yTB3n8tz3fgnHeH9zbGZXvw45iUgNzJPEITDB
-	UzdGqchzr2jmUpTXuSJf13/OA5BAKjdniyWb+4d+zN7NiD8dBpILWZEB0DAEHcNrZuV24OerA7AjB
-	fu3PwsUT2mgkXhn4HoORxW6iiUMQXETin+6ANh2jEnNcqWm/4ENhDyW5z9ts+GjVEwpWfriiKp5Wa
-	dQIp0CBlZ++Z7Oyg7+xbNBnF4QH2E+VjwEJugi+6R4tT6oClyTNV6fG2LBa0EBDzQiS6ZJ8nid1Rz
-	HBVV91OQ==;
+	bh=rPBu7XEMUYzmXNf+VFl9KBFAn689Ojplx8schjty8+U=; b=flpho6UuzB7cjLP/Ps/E0qoYva
+	B10eASpTuV7rMATqOZu1ALeRbz03ShAIb7VcUHcpVPX6z2/u3fFc3dujlyCf4Nv6JbLdzYoRyEkvn
+	0KwqrcBzbTZfZLkb3+m8zQmOlDqB7l4zmuEjkjFsQoI3RIZihlcRF8cprqop9aH+0AmHpuD67BY56
+	BV8awVM3aPsZ0kz8cHjR+whdXh25Szy/rTJzuRWrDsYuvky7zyzCLw5JZxf5+q9mu20CmHhG8CdTq
+	R6phpyXFTwrTQPN98Acen8KsDU9ZI0kNi1/MmwVrVdPyuK+4z2fKti7cILzKQ6sCQy/eV7l4RGmIK
+	/AR+l3aw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x78aX-0000000B1Wp-1kk5;
-	Thu, 17 Sep 2026 09:39:29 +0000
+	id 1x78xB-0000000B3yn-0rGu;
+	Thu, 17 Sep 2026 10:02:53 +0000
 Received: from smtp25.cstnet.cn ([159.226.251.25] helo=cstnet.cn)
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x78aT-0000000B1VQ-3fgM;
-	Thu, 17 Sep 2026 09:39:27 +0000
+	id 1x78x8-0000000B3xq-1Brt;
+	Thu, 17 Sep 2026 10:02:52 +0000
 Received: from dfae2b116770.home.arpa (unknown [36.110.52.2])
-	by APP-05 (Coremail) with SMTP id zQCowADH+EJLtatqTtJ9CA--.40665S2;
-	Thu, 17 Sep 2026 17:39:23 +0800 (CST)
+	by APP-05 (Coremail) with SMTP id zQCowADnVD_HuqtqiDl+CA--.150S2;
+	Thu, 17 Sep 2026 18:02:47 +0800 (CST)
 From: Wentao Liang <vulab@iscas.ac.cn>
 To: angelogioacchino.delregno@collabora.com
-Cc: bibby.hsieh@mediatek.com,
-	ck.hu@mediatek.com,
-	jassisinghbrar@gmail.com,
+Cc: bin.liu@mediatek.com,
+	hverkuil@kernel.org,
+	irui.wang@mediatek.com,
+	kyrie.wu@mediatek.com,
 	linux-arm-kernel@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
+	linux-media@vger.kernel.org,
 	linux-mediatek@lists.infradead.org,
 	matthias.bgg@gmail.com,
+	mchehab@kernel.org,
 	Wentao Liang <vulab@iscas.ac.cn>,
 	stable@vger.kernel.org
-Subject: [PATCH] mailbox: mtk-cmdq: Fix runtime PM leak in cmdq_mbox_flush()
-Date: Thu, 17 Sep 2026 09:39:23 +0000
-Message-Id: <20260917093923.2145007-1-vulab@iscas.ac.cn>
+Subject: [PATCH] media: mtk-jpeg: Fix runtime PM leak in mtk_jpegdec_worker()
+Date: Thu, 17 Sep 2026 10:02:47 +0000
+Message-Id: <20260917100247.2145872-1-vulab@iscas.ac.cn>
 X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-CM-TRANSID: zQCowADH+EJLtatqTtJ9CA--.40665S2
-X-Coremail-Antispam: 1UD129KBjvJXoW7tF4UCF48CryUZF15Cr13XFb_yoW8XFy3pF
-	Wjqa43GFW8XF47ZF1qk3Z3XFyaka40qrWDA3ySgas5Zwn8J3WrXa45K3sYqF1kCr15tFWU
-	J3s7t347CF1qkFJanT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
-	9KBjDU0xBIdaVrnRJUUU9E1xkIjI8I6I8E6xAIw20EY4v20xvaj40_Wr0E3s1l1IIY67AE
-	w4v_Jr0_Jr4l8cAvFVAK0II2c7xJM28CjxkF64kEwVA0rcxSw2x7M28EF7xvwVC0I7IYx2
-	IY67AKxVW5JVW7JwA2z4x0Y4vE2Ix0cI8IcVCY1x0267AKxVWxJVW8Jr1l84ACjcxK6I8E
-	87Iv67AKxVW0oVCq3wA2z4x0Y4vEx4A2jsIEc7CjxVAFwI0_GcCE3s1le2I262IYc4CY6c
-	8Ij28IcVAaY2xG8wAqx4xG64xvF2IEw4CE5I8CrVC2j2WlYx0E2Ix0cI8IcVAFwI0_Jrv_
-	JF1lYx0Ex4A2jsIE14v26r4UJVWxJr1lOx8S6xCaFVCjc4AY6r1j6r4UM4x0Y48IcxkI7V
-	AKI48JM4x0x7Aq67IIx4CEVc8vx2IErcIFxwACI402YVCY1x02628vn2kIc2xKxwCY1x02
-	62kKe7AKxVWUtVW8ZwCF04k20xvY0x0EwIxGrwCF04k20xvE74AGY7Cv6cx26r48ZrWUJr
-	1UMxC20s026xCaFVCjc4AY6r1j6r4UMI8I3I0E5I8CrVAFwI0_Jr0_Jr4lx2IqxVCjr7xv
-	wVAFwI0_JrI_JrWlx4CE17CEb7AF67AKxVWUtVW8ZwCIc40Y0x0EwIxGrwCI42IY6xIIjx
-	v20xvE14v26r1j6r1xMIIF0xvE2Ix0cI8IcVCY1x0267AKxVW8JVWxJwCI42IY6xAIw20E
-	Y4v20xvaj40_Jr0_JF4lIxAIcVC2z280aVAFwI0_Cr0_Gr1UMIIF0xvEx4A2jsIEc7CjxV
-	AFwI0_GcCE3sUvcSsGvfC2KfnxnUUI43ZEXa7VU1eWlPUUUUU==
+X-CM-TRANSID: zQCowADnVD_HuqtqiDl+CA--.150S2
+X-Coremail-Antispam: 1UD129KBjvJXoW7Zr47Ar4UtFWUXFW5CrWfZrb_yoW8GFy3pr
+	W5tFy7ArWDGw45tw48Aw17XFyYk34rGr48uF1xX3WkZ39xXF47t3y5ZFyftFWIkr9Fka45
+	Jr10q3yxGr4qvFJanT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
+	9KBjDU0xBIdaVrnRJUUUPqb7Iv0xC_KF4lb4IE77IF4wAFc2x0x2IEx4CE42xK8VAvwI8I
+	cIk0rVWrJVCq3wAFIxvE14AKwVWUJVWUGwA2ocxC64kIII0Yj41l84x0c7CEw4AK67xGY2
+	AK021l84ACjcxK6xIIjxv20xvE14v26ryj6F1UM28EF7xvwVC0I7IYx2IY6xkF7I0E14v2
+	6F4j6r4UJwA2z4x0Y4vEx4A2jsIE14v26rxl6s0DM28EF7xvwVC2z280aVCY1x0267AKxV
+	W0oVCq3wAS0I0E0xvYzxvE52x082IY62kv0487Mc02F40EFcxC0VAKzVAqx4xG6I80ewAv
+	7VC0I7IYx2IY67AKxVWUAVWUtwAv7VC2z280aVAFwI0_Gr1j6F4UJwAm72CE4IkC6x0Yz7
+	v_Jr0_Gr1lF7xvr2IYc2Ij64vIr41lF7I21c0E0s8F02x267IIx4CEVc8vx2IErcIFxwAC
+	I402YVCY1x02628vn2kIc2xKxwCY1x0262kKe7AKxVWUtVW8ZwCF04k20xvY0x0EwIxGrw
+	CF04k20xvE74AGY7Cv6cx26r48ZrWUJr1UMxC20s026xCaFVCjc4AY6r1j6r4UMI8I3I0E
+	5I8CrVAFwI0_Jr0_Jr4lx2IqxVCjr7xvwVAFwI0_JrI_JrWlx4CE17CEb7AF67AKxVWUtV
+	W8ZwCIc40Y0x0EwIxGrwCI42IY6xIIjxv20xvE14v26r1j6r1xMIIF0xvE2Ix0cI8IcVCY
+	1x0267AKxVW8JVWxJwCI42IY6xAIw20EY4v20xvaj40_Jr0_JF4lIxAIcVC2z280aVAFwI
+	0_Gr1j6F4UJwCI42IY6I8E87Iv6xkF7I0E14v26rxl6s0DYxBIdaVFxhVjvjDU0xZFpf9x
+	07j1zuXUUUUU=
 X-Originating-IP: [36.110.52.2]
-X-CM-SenderInfo: pyxotu46lvutnvoduhdfq/1tbiCRUNA2qrq00tEQAAsJ
+X-CM-SenderInfo: pyxotu46lvutnvoduhdfq/1tbiCRQNA2qrq00+8QAAs7
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260917_023926_316394_FE38743C 
+X-CRM114-CacheID: sfid-20260917_030250_683409_F98C7D72 
 X-CRM114-Status: GOOD (  10.10  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -82,46 +86,34 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-pm_runtime_get_sync() leaves the runtime PM usage counter incremented
-even when it fails, but cmdq_mbox_flush() returns the error without
-dropping it.  The same happens when the GCE thread does not drain in
-time and the function bails out with -EFAULT.
+pm_runtime_get_sync() leaves the device's runtime PM usage count
+incremented even when it fails.  mtk_jpegdec_worker() jumps to
+dec_end on that failure, which does not call pm_runtime_put(), so
+the reference taken by the failed resume is leaked.
 
-Undo the reference on both error paths.
+Use pm_runtime_resume_and_get() instead, which drops the reference
+again when resuming the device fails.
 
-Fixes: b0524f7c9635 ("mailbox: mediatek: implement flush function")
+Fixes: dedc21500334 ("media: mtk-jpegdec: add jpeg decode worker interface")
 Cc: stable@vger.kernel.org
 Signed-off-by: Wentao Liang <vulab@iscas.ac.cn>
 ---
- drivers/mailbox/mtk-cmdq-mailbox.c | 7 ++++++-
- 1 file changed, 6 insertions(+), 1 deletion(-)
+ drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/mailbox/mtk-cmdq-mailbox.c b/drivers/mailbox/mtk-cmdq-mailbox.c
-index eadd340f8fee..07a8c2382c93 100644
---- a/drivers/mailbox/mtk-cmdq-mailbox.c
-+++ b/drivers/mailbox/mtk-cmdq-mailbox.c
-@@ -565,8 +565,10 @@ static int cmdq_mbox_flush(struct mbox_chan *chan, unsigned long timeout)
- 	int ret;
+diff --git a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
+index 8c684756d5fc..ed1d5858c942 100644
+--- a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
++++ b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
+@@ -1732,7 +1732,7 @@ static void mtk_jpegdec_worker(struct work_struct *work)
+ 	jpeg_dst_buf->frame_num = ctx->total_frame_num;
  
- 	ret = pm_runtime_get_sync(cmdq->mbox.dev);
--	if (ret < 0)
-+	if (ret < 0) {
-+		pm_runtime_put_noidle(cmdq->mbox.dev);
- 		return ret;
-+	}
- 
- 	spin_lock_irqsave(&thread->chan->lock, flags);
- 	if (list_empty(&thread->task_busy_list))
-@@ -603,6 +605,9 @@ static int cmdq_mbox_flush(struct mbox_chan *chan, unsigned long timeout)
- 		dev_err(cmdq->mbox.dev, "Fail to wait GCE thread 0x%x done\n",
- 			(u32)(thread->base - cmdq->base));
- 
-+		pm_runtime_mark_last_busy(cmdq->mbox.dev);
-+		pm_runtime_put_autosuspend(cmdq->mbox.dev);
-+
- 		return -EFAULT;
- 	}
- 	pm_runtime_mark_last_busy(cmdq->mbox.dev);
+ 	mtk_jpegdec_set_hw_param(ctx, hw_id, src_buf, dst_buf);
+-	ret = pm_runtime_get_sync(comp_jpeg[hw_id]->dev);
++	ret = pm_runtime_resume_and_get(comp_jpeg[hw_id]->dev);
+ 	if (ret < 0) {
+ 		dev_err(jpeg->dev, "%s : %d, pm_runtime_get_sync fail !!!\n",
+ 			__func__, __LINE__);
 -- 
 2.34.1
 
