@@ -4,66 +4,120 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 43083C982C1
-	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Sep 2026 03:49:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6D935C982D0
+	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Sep 2026 05:24:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
-	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Y6cGKpFcCklW5Jo9lNnPFtDobTnBJlFsS9ENQ2sHdzE=; b=OUzj4Ar2lTUDdcpFoGWOAc8KVM
-	K6G3GaQ3yToDa4A/+aZqtEWNVGaiYbLaUZ6RITslYPDNnUMfvu2iCMkskqJN4ddIJGqV64ZVgXXHY
-	hjZGem7cMBdCmfuDU2CdtAmR/EIFVa0aymh0toweWVz5HUKXkngKGJ7APOsKZVHPil1wwMgCCldOD
-	FIwMPG75YWEYBHjlv4uuMeTq0sNhxhdx2XFaRQb/J5kGnC+klkAVGSWUxp7y2wnArGr6aUs0X/Ldw
-	+3ZqOkAIckj6zfUy/UfbJR1mXYldkRfpJgjrMDSCSSh7tcm6bdM3CkgTdFB/BLmw1H1GeScinNAU4
-	bliMTc4g==;
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=MgfC2YDA5MlWY7aPX9LW2hTwGflIkNfx7ki9cO3eyQ4=; b=hHMxAlzlVlfwLt0Kn8gyMrB4Hb
+	5F3LDXPowu8If6GYaNNxvhqJCPOqrXfuzl4WdCTLMCRf5Vsf4SAurd/s4LgSXhW6x+1evIsNpluxf
+	nzzMac/pAfY2UdynwVe8i5ZDGPsrXDcQLDYxCEpQO0Vu0KIYnxpvBlGLQejxbpVmiQITwxO+1Fo1b
+	iQVS5SDDYTgOPcEl5KqUfW2bMY0FroDWIgmjCGpGEnwMx5XMW+oRgxTrwf/RCCSpSygD/hPLhdrpo
+	UR5yCUCz4cHb2GdNxMl2clic0ThHWZehvl+hU2//WXokzPtDcJMQI+OBoKm2vBiDXWtxOsp3QijJy
+	EmlzgvvQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x737O-0000000AXUB-2vTk;
-	Thu, 17 Sep 2026 03:49:02 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1x74bV-0000000Aakj-2wbq;
+	Thu, 17 Sep 2026 05:24:13 +0000
+Received: from mail-pj2-x0f.google.com ([2607:f8b0:4864:39::f])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x737N-0000000AXTy-09ff;
-	Thu, 17 Sep 2026 03:49:01 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 1C82A601EF;
-	Thu, 17 Sep 2026 03:49:00 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5B5011F000FF;
-	Thu, 17 Sep 2026 03:48:57 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1789616939;
-	bh=Y6cGKpFcCklW5Jo9lNnPFtDobTnBJlFsS9ENQ2sHdzE=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:References;
-	b=aU/V5gQ93+pC+HRvqA/GfcLuuoJerzIZRwAVgWFNc1LPfEN8aD/9NTQTIHJhKnRGz
-	 P65Loi3/d44DMrYVZYIBARgqHf9R6cwuxfZbhOMxd56L4yRuEAv3QZPwQkWsK3/0Fh
-	 0DavfcfmTFDDYChL6uO/OZO9md8pqPXyuO/PgtZUNQSu8ncGDMjAxbwIoRDdORoDTy
-	 zd6rm/pduy0W2mtPO4P2jFyL0STx4B3wMwkTfi1vECbn5MUwMSkUIzwLd0dd7fpvrg
-	 OYKgu5R18lPgUS9d/AzoJ2AZQCYwv7NIyuqnIP/JwcDNDCX8gUOHj9rkEkEZOLVC18
-	 cC0HI/3hZMQZQ==
-Date: Thu, 17 Sep 2026 04:48:52 +0100
-From: Jonathan Cameron <jic23@kernel.org>
-To: Ryan Brue <ryanbrue.dev@gmail.com>
-Cc: David Lechner <dlechner@baylibre.com>, Nuno =?UTF-8?B?U8Oh?=
- <nuno.sa@analog.com>, Andy Shevchenko <andy@kernel.org>, Rob Herring
- <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Lee
- Jones <lee@kernel.org>, linux-iio@vger.kernel.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- mfd@lists.linux.dev, Roman Vivchar <rva333@protonmail.com>, Luca Leonardo
- Scorcia <l.scorcia@gmail.com>
-Subject: Re: [PATCH 2/3] iio: adc: mt6397-auxadc: add mt6397 PMIC AUXADC
- driver
-Message-ID: <20260917044852.3da6f7e5@jic23-hlaptop>
-In-Reply-To: <20260915-rbrue-suez-upstreaming-mt6397-auxadc-v1-2-d35d2ac3d6f0@gmail.com>
-References: <20260915-rbrue-suez-upstreaming-mt6397-auxadc-v1-0-d35d2ac3d6f0@gmail.com>
-	<20260915-rbrue-suez-upstreaming-mt6397-auxadc-v1-2-d35d2ac3d6f0@gmail.com>
-X-Mailer: Claws Mail 4.4.0 (GTK 3.24.52; x86_64-pc-linux-gnu)
+	id 1x74bS-0000000Aak1-20mr
+	for linux-mediatek@lists.infradead.org;
+	Thu, 17 Sep 2026 05:24:12 +0000
+Received: by mail-pj2-x0f.google.com with SMTP id 98e67ed59e1d1-396ccd4f99dso387947a91.2
+        for <linux-mediatek@lists.infradead.org>; Wed, 16 Sep 2026 22:24:09 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20251104; t=1789622649; x=1790227449; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
+        bh=MgfC2YDA5MlWY7aPX9LW2hTwGflIkNfx7ki9cO3eyQ4=;
+        b=F1t5ZMGHHsV3GGjGofPeI8YrJ9bIh37Drvgdz0WpYolqz7k6vMh+S0luz/zZF2eTMu
+         v6YvmiGrdpO4EL2IgNPBLNYdJ68egefxD8u+ScpqNeIMtrsnON58D1MSwcEKBreGuVaF
+         mrlPer322fVVTTLzpczxiOCRnfnIWNDrTpDFxw1SeC0YYdfrQwl7P2kpl9xgeSZDHIlI
+         blViC0ddfIX0ZHXIdDDMIqKpQfeflBH3ncxsBF02iFTytuK2HTili0v5dg/YxZXdECsv
+         w/mWndpX3uLTkwR3u/BcqSt8gpIWcbMYAaUrcG89l94zxYamJ+twF2Fl2mKRkRQqRPTA
+         iClw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20260707; t=1789622649; x=1790227449;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to:content-type;
+        bh=MgfC2YDA5MlWY7aPX9LW2hTwGflIkNfx7ki9cO3eyQ4=;
+        b=oKsAtTNqngRBst9EiWbcO0IjEi/5qBc3q4ed7bK6NUykecsVSKfLOMXkrcbdjMo586
+         bqpI1uNXSMI8VswIvb5XgEnOt/ERFvKA5TH2eGXB1gOc5+LnaX815VCbDXN2pt8UojCB
+         wVvUevTYcd3e1TeYJk3cxNLklXjjmdpPY1Z975i6iFCmmr0DDOiQzv5MKx5ubclNDqNr
+         FbQDgHPZQxPDqmBef8kHsYuEBg2poqcwSI5o+R4CYJjZr3sKcK1QTA8dH0+EZB60rEAs
+         wQQvWacU4dMpjPfZrMJeCxkHUyqlJ9f4HC2cAZ7Mmk1oloJb/22OI9vk//bPK65RMUpb
+         tvAQ==
+X-Forwarded-Encrypted: i=1; AKwUvByZeP0FY6EN2aZi5bJ/UsAeu/4ME/3icXGGfAwuaxS0F2JZFxGzg9SWLvU3gWlS+LG/mFXwURV6sbQJObzBWA==@lists.infradead.org
+X-Gm-Message-State: AFuF++nVEjxYrlxgZ5MqCZ6DIUBMHAjg1iU1nuQ6UMnM19cMZaL4GFoE
+	kDFq60S5uZIcrX8fmq+bvfgNVyrnqLMxDqnazzCTE6IJfNcub5GyPXRP
+X-Gm-Gg: AYBFou0wo0Hn9RVZRScYPx8vkXTA1gHhD0ZIjDNI0olHpVHCMUwIrWBZD16SGRWdELe
+	X3nqsNHO22zwQ4w2INGbxiNVj2/z91slzT3QZU/oAU0pHgzbVwRXslh3Ldgct323/w3MLvQlq1r
+	8M5CgPwVKJCBWC0CKPHQFod9aua+tg/XEy7hSEcbMyYQqTSez5sIcs+828hkbtC/3mxHnJS2AUb
+	N60MTq1wlx3lJHp2kVWqqF5m5JBklAGboBA3TMFZ2pM/Ldr5qLx2jMlFxzHBhL17kHpAQH4zvSJ
+	GPI04JRtud44E/+7bkWH10xjTErEeMwf9Ja7JKftvyVyu0arwA1TqtHlx98EHATfkqohm1lW6Jn
+	4VvPHwoupO9yt8jZAZETDxcaIk8dThRU2Q2skC7fuv35snNpPT2dyzeQ32YTTDUOTHDX931QgtI
+	veNZ/wgeFCraYg6frJI2WIKKy/7b4cYg8hMLCxTSVNAge2v7vbncEI/M9v3KH4cHYRJlpesgJXV
+	Z/iv8HlCt8TOSVmydI9MiFL2w==
+X-Received: by 2002:a17:90b:1fce:b0:39e:2faa:2e83 with SMTP id 98e67ed59e1d1-39e2faa31f1mr7696392a91.10.1789622648492;
+        Wed, 16 Sep 2026 22:24:08 -0700 (PDT)
+Received: from volcano9f6e-hostos.amd.com ([165.204.217.251])
+        by smtp.gmail.com with ESMTPSA id 5a478bee46e88-33bf5a93f1fsm12482915eec.11.2026.09.16.22.23.57
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 16 Sep 2026 22:24:08 -0700 (PDT)
+From: Hemanth Selam <hemanth.selam@gmail.com>
+To: Mark Brown <broonie@kernel.org>,
+	Liam Girdwood <lgirdwood@gmail.com>
+Cc: Claudiu Beznea <claudiu.beznea@tuxon.dev>,
+	Andrei Simion <andrei.simion@microchip.com>,
+	Jaroslav Kysela <perex@perex.cz>,
+	Takashi Iwai <tiwai@suse.com>,
+	Nicolas Ferre <nicolas.ferre@microchip.com>,
+	Alexandre Belloni <alexandre.belloni@bootlin.com>,
+	Ray Jui <rjui@broadcom.com>,
+	Scott Branden <sbranden@broadcom.com>,
+	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>,
+	Lars-Peter Clausen <lars@metafoo.de>,
+	=?UTF-8?q?Nuno=20S=C3=A1?= <nuno.sa@analog.com>,
+	David Rhodes <david.rhodes@cirrus.com>,
+	Richard Fitzgerald <rf@opensource.cirrus.com>,
+	Support Opensource <support.opensource@diasemi.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Oder Chiou <oder_chiou@realtek.com>,
+	Shenghao Ding <shenghao-ding@ti.com>,
+	Kevin Lu <kevin-lu@ti.com>,
+	Baojun Xu <baojun.xu@ti.com>,
+	Sen Wang <sen@ti.com>,
+	Cezary Rojewski <cezary.rojewski@intel.com>,
+	Peter Ujfalusi <peter.ujfalusi@linux.intel.com>,
+	Bard Liao <yung-chuan.liao@linux.intel.com>,
+	Kai Vehmanen <kai.vehmanen@linux.intel.com>,
+	Pierre-Louis Bossart <pierre-louis.bossart@linux.dev>,
+	Srinivas Kandagatla <srini@kernel.org>,
+	Jarkko Nikula <jarkko.nikula@bitmer.com>,
+	Kunihiko Hayashi <hayashi.kunihiko@socionext.com>,
+	Masami Hiramatsu <mhiramat@kernel.org>,
+	linux-sound@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	patches@opensource.cirrus.com,
+	linux-mediatek@lists.infradead.org,
+	linux-arm-msm@vger.kernel.org,
+	linux-omap@vger.kernel.org
+Subject: [PATCH v3] ASoC: fix typos in comments
+Date: Thu, 17 Sep 2026 10:53:55 +0530
+Message-ID: <20260917052355.13344-1-hemanth.selam@gmail.com>
+X-Mailer: git-send-email 2.48.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260916_222410_595352_A0943943 
+X-CRM114-Status: GOOD (  26.57  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,294 +132,551 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, 15 Sep 2026 23:15:27 -0500
-Ryan Brue <ryanbrue.dev@gmail.com> wrote:
+Fix typos in comments, reported by scripts/checkpatch.pl using the
+misspelling list in scripts/spelling.txt.  Only touches comments, no code
+changes.
 
-> The mt6397 AUXADC is a 10-bit ADC behind the SoC's PMIC wrapper. On boards
-> built around this PMIC it is the only way to read the battery: the SoC's
-> AUXADC is wired to board thermistors and the charger ICs these boards use
-> have no ADC of their own.
-> 
-> Add a driver exposing the battery voltage and battery temperature
-> channels. Only those two are described, so a channel ID in the device tree
-> is an index into the driver's channel array rather than the PMIC's channel
-> number, as mt6323-auxadc does. The ready bit lives in a channel's raw
-> result register, but the value comes from the chip's trimmed copy of it,
-> which is what the vendor driver reads for a measurement.
-> 
-> Both channels need more than that, as the vendor programs them. The
-> battery voltage is measured through ISENSE, because a board with a
-> switching charger in the power path leaves BATSNS on the charger's system
-> rail instead of on the pack. The thermistor only reads correctly with the
-> PMIC's battery-detect bias and input buffer enabled, which take 20 ms to
-> settle. Both are switched back off afterwards.
-> 
-> Reads average sixteen conversions in software; the chip's sample
-> accumulator makes no measurable difference at any setting, so it is left
-> at one sample per conversion.
-> 
-> Assisted-by: LLM
-> Signed-off-by: Ryan Brue <ryanbrue.dev@gmail.com>
+v3 is v2 regenerated on top of broonie/sound.git for-next, with a
+base-commit trailer so the base is unambiguous.  v2 was reported as not
+applying; I could not reproduce that against for-next, for-7.4 or
+for-linus, so please let me know which branch you are applying to if this
+one still fails.
 
-I took a quick look but Andy called out the biggest question,
-why doesn't it make sense to extend an existing driver to
-cover this part?  Might not make sense but you need to talk
-through why not in the cover letter.
+Signed-off-by: Hemanth Selam <hemanth.selam@gmail.com>
+---
+ sound/soc/atmel/atmel-pcm-dma.c            |  2 +-
+ sound/soc/bcm/cygnus-ssp.h                 |  2 +-
+ sound/soc/codecs/adau1701.c                |  4 ++--
+ sound/soc/codecs/cs35l33.c                 |  2 +-
+ sound/soc/codecs/cs35l34.c                 |  2 +-
+ sound/soc/codecs/cs42l42.c                 |  2 +-
+ sound/soc/codecs/cs42l73.c                 |  4 ++--
+ sound/soc/codecs/cx20442.c                 |  2 +-
+ sound/soc/codecs/da7210.c                  |  2 +-
+ sound/soc/codecs/hdac_hda.c                |  2 +-
+ sound/soc/codecs/hdac_hdmi.c               |  2 +-
+ sound/soc/codecs/max98927.c                |  4 ++--
+ sound/soc/codecs/mt6359.c                  |  8 ++++----
+ sound/soc/codecs/nau8825.c                 | 10 +++++-----
+ sound/soc/codecs/rt1320-sdw.c              |  2 +-
+ sound/soc/codecs/rt5631.h                  |  8 ++++----
+ sound/soc/codecs/rt5640.c                  |  2 +-
+ sound/soc/codecs/rt5645.c                  |  2 +-
+ sound/soc/codecs/rt5651.c                  |  2 +-
+ sound/soc/codecs/rt5670.c                  |  2 +-
+ sound/soc/codecs/tlv320dac33.c             |  2 +-
+ sound/soc/intel/atom/sst-mfld-dsp.h        |  2 +-
+ sound/soc/intel/atom/sst/sst.h             |  2 +-
+ sound/soc/intel/boards/sof_cirrus_common.c |  2 +-
+ sound/soc/qcom/qdsp6/q6asm-dai.c           |  2 +-
+ sound/soc/ti/davinci-i2s.c                 |  2 +-
+ sound/soc/ti/davinci-mcasp.c               |  2 +-
+ sound/soc/ti/omap-mcbsp.c                  |  2 +-
+ sound/soc/uniphier/aio.h                   |  2 +-
+ sound/soc/ux500/ux500_msp_i2s.c            |  2 +-
+ 30 files changed, 43 insertions(+), 43 deletions(-)
 
-> diff --git a/drivers/iio/adc/mt6397-auxadc.c b/drivers/iio/adc/mt6397-auxadc.c
-> new file mode 100644
-> index 000000000000..dbfa82341d6c
-> --- /dev/null
-> +++ b/drivers/iio/adc/mt6397-auxadc.c
-...
+diff --git a/sound/soc/atmel/atmel-pcm-dma.c b/sound/soc/atmel/atmel-pcm-dma.c
+index 7306e04da513..e4b73ae3df4f 100644
+--- a/sound/soc/atmel/atmel-pcm-dma.c
++++ b/sound/soc/atmel/atmel-pcm-dma.c
+@@ -47,7 +47,7 @@ static const struct snd_pcm_hardware atmel_pcm_dma_hardware = {
+  * atmel_pcm_dma_irq: SSC interrupt handler for DMAENGINE enabled SSC
+  *
+  * We use DMAENGINE to send/receive data to/from SSC so this ISR is only to
+- * check if any overrun occured.
++ * check if any overrun occurred.
+  */
+ static void atmel_pcm_dma_irq(u32 ssc_sr,
+ 	struct snd_pcm_substream *substream)
+diff --git a/sound/soc/bcm/cygnus-ssp.h b/sound/soc/bcm/cygnus-ssp.h
+index 4925e03c3c30..7848e15efbe1 100644
+--- a/sound/soc/bcm/cygnus-ssp.h
++++ b/sound/soc/bcm/cygnus-ssp.h
+@@ -27,7 +27,7 @@ struct ringbuf_regs {
+ 	unsigned wraddr;
+ 	unsigned baseaddr;
+ 	unsigned endaddr;
+-	unsigned fmark;   /* freemark for play, fullmark for caputure */
++	unsigned fmark;   /* freemark for play, fullmark for capture */
+ 	unsigned period_bytes;
+ 	unsigned buf_size;
+ };
+diff --git a/sound/soc/codecs/adau1701.c b/sound/soc/codecs/adau1701.c
+index a1311c7b56b1..d55cdc5d4413 100644
+--- a/sound/soc/codecs/adau1701.c
++++ b/sound/soc/codecs/adau1701.c
+@@ -4,7 +4,7 @@
+  *
+  * Copyright 2011 Analog Devices Inc.
+  * Author: Lars-Peter Clausen <lars@metafoo.de>
+- *	based on an inital version by Cliff Cai <cliff.cai@analog.com>
++ *	based on an initial version by Cliff Cai <cliff.cai@analog.com>
+  */
+ 
+ #include <linux/module.h>
+@@ -701,7 +701,7 @@ static int adau1701_probe(struct snd_soc_component *component)
+ 	 */
+ 	adau1701->pll_clkdiv = ADAU1707_CLKDIV_UNSET;
+ 
+-	/* initalize with pre-configured pll mode settings */
++	/* initialize with pre-configured pll mode settings */
+ 	ret = adau1701_reset(component, adau1701->pll_clkdiv, 0);
+ 	if (ret < 0)
+ 		goto exit_regulators_disable;
+diff --git a/sound/soc/codecs/cs35l33.c b/sound/soc/codecs/cs35l33.c
+index d0f9231f5e44..b8c19f175701 100644
+--- a/sound/soc/codecs/cs35l33.c
++++ b/sound/soc/codecs/cs35l33.c
+@@ -578,7 +578,7 @@ static int cs35l33_set_tdm_slot(struct snd_soc_dai *dai, unsigned int tx_mask,
+ 			| CS35L33_X_LOC);
+ 	}
+ 
+-	/* disconnect {vp,vbst}_mon routes: eanble later if set in tx_mask*/
++	/* disconnect {vp,vbst}_mon routes: enable later if set in tx_mask*/
+ 	snd_soc_dapm_del_routes(dapm, cs35l33_vp_vbst_mon_route,
+ 		ARRAY_SIZE(cs35l33_vp_vbst_mon_route));
+ 
+diff --git a/sound/soc/codecs/cs35l34.c b/sound/soc/codecs/cs35l34.c
+index 3f265bd760f7..a72be629a31e 100644
+--- a/sound/soc/codecs/cs35l34.c
++++ b/sound/soc/codecs/cs35l34.c
+@@ -297,7 +297,7 @@ static int cs35l34_set_tdm_slot(struct snd_soc_dai *dai, unsigned int tx_mask,
+ 				CS35L34_X_STATE | CS35L34_X_LOC,
+ 				CS35L34_X_STATE | CS35L34_X_LOC);
+ 
+-	/* disconnect {vp,vbst}_mon routes: eanble later if set in tx_mask*/
++	/* disconnect {vp,vbst}_mon routes: enable later if set in tx_mask*/
+ 	while (slot >= 0) {
+ 		/* configure VMON_TX_LOC */
+ 		if (slot_num == 0)
+diff --git a/sound/soc/codecs/cs42l42.c b/sound/soc/codecs/cs42l42.c
+index 866c21944729..84065d153ebf 100644
+--- a/sound/soc/codecs/cs42l42.c
++++ b/sound/soc/codecs/cs42l42.c
+@@ -1682,7 +1682,7 @@ irqreturn_t cs42l42_irq_thread(int irq, void *data)
+ 	if (cs42l42->suspended || !cs42l42->init_done)
+ 		return IRQ_NONE;
+ 
+-	/* Read sticky registers to clear interurpt */
++	/* Read sticky registers to clear interrupt */
+ 	for (i = 0; i < ARRAY_SIZE(stickies); i++) {
+ 		regmap_read(cs42l42->regmap, irq_params_table[i].status_addr,
+ 				&(stickies[i]));
+diff --git a/sound/soc/codecs/cs42l73.c b/sound/soc/codecs/cs42l73.c
+index 72076ccf4570..72c4213ed74b 100644
+--- a/sound/soc/codecs/cs42l73.c
++++ b/sound/soc/codecs/cs42l73.c
+@@ -761,7 +761,7 @@ static const struct snd_soc_dapm_route cs42l73_audio_map[] = {
+ 	{"ASPOUTL", "ASP-IP Volume", "ASPL Output Mixer"},
+ 	{"ASPOUTR", "ASP-IP Volume", "ASPR Output Mixer"},
+ 
+-	/* Auxillary Capture */
++	/* Auxiliary Capture */
+ 	{"XSPL Output Mixer", NULL, "Input Left Capture"},
+ 	{"XSPR Output Mixer", NULL, "Input Right Capture"},
+ 
+@@ -1126,7 +1126,7 @@ static int cs42l73_set_bias_level(struct snd_soc_component *component,
+ 			mdelay(cs42l73->shutdwn_delay);
+ 			cs42l73->shutdwn_delay = 0;
+ 		} else {
+-			mdelay(15); /* Min amount of time requred to power
++			mdelay(15); /* Min amount of time required to power
+ 				     * down.
+ 				     */
+ 		}
+diff --git a/sound/soc/codecs/cx20442.c b/sound/soc/codecs/cx20442.c
+index 0dea84cd8ef2..d3c7a9370220 100644
+--- a/sound/soc/codecs/cx20442.c
++++ b/sound/soc/codecs/cx20442.c
+@@ -200,7 +200,7 @@ static int cx20442_write(struct snd_soc_component *component, unsigned int reg,
+  * Line discpline related code
+  *
+  * Any of the callback functions below can be used in two ways:
+- * 1) registerd by a machine driver as one of line discipline operations,
++ * 1) registered by a machine driver as one of line discipline operations,
+  * 2) called from a machine's provided line discipline callback function
+  *    in case when extra machine specific code must be run as well.
+  */
+diff --git a/sound/soc/codecs/da7210.c b/sound/soc/codecs/da7210.c
+index 597510de561a..40d759938edc 100644
+--- a/sound/soc/codecs/da7210.c
++++ b/sound/soc/codecs/da7210.c
+@@ -1158,7 +1158,7 @@ static int da7210_probe(struct snd_soc_component *component)
+ 	snd_soc_component_write(component, DA7210_PLL_DIV3, DA7210_MCLK_RANGE_10_20_MHZ |
+ 					      DA7210_PLL_BYP);
+ 
+-	/* Diable PLL and bypass it */
++	/* Disable PLL and bypass it */
+ 	snd_soc_component_write(component, DA7210_PLL, DA7210_PLL_FS_48000);
+ 
+ 	/* Activate all enabled subsystem */
+diff --git a/sound/soc/codecs/hdac_hda.c b/sound/soc/codecs/hdac_hda.c
+index 1c06fdbf0e71..7414be08d3d5 100644
+--- a/sound/soc/codecs/hdac_hda.c
++++ b/sound/soc/codecs/hdac_hda.c
+@@ -520,7 +520,7 @@ static int hdac_hda_codec_probe(struct snd_soc_component *component)
+ 	/*
+ 	 * hdac_device core already sets the state to active and calls
+ 	 * get_noresume. So enable runtime and set the device to suspend.
+-	 * pm_runtime_enable is also called during codec registeration
++	 * pm_runtime_enable is also called during codec registration
+ 	 */
+ 	pm_runtime_put(&hdev->dev);
+ 	pm_runtime_suspend(&hdev->dev);
+diff --git a/sound/soc/codecs/hdac_hdmi.c b/sound/soc/codecs/hdac_hdmi.c
+index d9e6fa6d3e99..b3f677e7ddc9 100644
+--- a/sound/soc/codecs/hdac_hdmi.c
++++ b/sound/soc/codecs/hdac_hdmi.c
+@@ -1753,7 +1753,7 @@ static int hdmi_codec_resume(struct device *dev)
+ 	/*
+ 	 * As the ELD notify callback request is not entertained while the
+ 	 * device is in suspend state. Need to manually check detection of
+-	 * all pins here. pin capablity change is not support, so use the
++	 * all pins here. pin capability change is not support, so use the
+ 	 * already set pin caps.
+ 	 *
+ 	 * NOTE: this is safe to call even if the codec doesn't actually resume.
+diff --git a/sound/soc/codecs/max98927.c b/sound/soc/codecs/max98927.c
+index d8dfaefdca7e..285c9d1ea721 100644
+--- a/sound/soc/codecs/max98927.c
++++ b/sound/soc/codecs/max98927.c
+@@ -672,7 +672,7 @@ static int max98927_probe(struct snd_soc_component *component)
+ 		     0x80);
+ 	regmap_write(max98927->regmap, MAX98927_R0026_PCM_TO_SPK_MONOMIX_B,
+ 		     0x1);
+-	/* Set inital volume (+13dB) */
++	/* Set initial volume (+13dB) */
+ 	regmap_write(max98927->regmap, MAX98927_R0036_AMP_VOL_CTRL, 0x38);
+ 	regmap_write(max98927->regmap, MAX98927_R003C_SPK_GAIN, 0x05);
+ 	/* Enable DC blocker */
+@@ -870,7 +870,7 @@ static int max98927_i2c_probe(struct i2c_client *i2c)
+ 	/* voltage/current slot configuration */
+ 	max98927_slot_config(i2c, max98927);
+ 
+-	/* codec registeration */
++	/* codec registration */
+ 	ret = devm_snd_soc_register_component(&i2c->dev,
+ 		&soc_component_dev_max98927,
+ 		max98927_dai, ARRAY_SIZE(max98927_dai));
+diff --git a/sound/soc/codecs/mt6359.c b/sound/soc/codecs/mt6359.c
+index b15bdb15dbb0..c51eae602ca0 100644
+--- a/sound/soc/codecs/mt6359.c
++++ b/sound/soc/codecs/mt6359.c
+@@ -82,7 +82,7 @@ static void mt6359_reset_capture_gpio(struct mt6359_priv *priv)
+ 			   0x3 << 0, 0x0);
+ }
+ 
+-/* use only when doing mtkaif calibraiton at the boot time */
++/* use only when doing mtkaif calibration at the boot time */
+ static void mt6359_set_dcxo(struct mt6359_priv *priv, bool enable)
+ {
+ 	regmap_update_bits(priv->regmap, MT6359_DCXO_CW12,
+@@ -90,7 +90,7 @@ static void mt6359_set_dcxo(struct mt6359_priv *priv, bool enable)
+ 			   (enable ? 1 : 0) << RG_XO_AUDIO_EN_M_SFT);
+ }
+ 
+-/* use only when doing mtkaif calibraiton at the boot time */
++/* use only when doing mtkaif calibration at the boot time */
+ static void mt6359_set_clksq(struct mt6359_priv *priv, bool enable)
+ {
+ 	/* Enable/disable CLKSQ 26MHz */
+@@ -99,7 +99,7 @@ static void mt6359_set_clksq(struct mt6359_priv *priv, bool enable)
+ 			   (enable ? 1 : 0) << RG_CLKSQ_EN_SFT);
+ }
+ 
+-/* use only when doing mtkaif calibraiton at the boot time */
++/* use only when doing mtkaif calibration at the boot time */
+ static void mt6359_set_aud_global_bias(struct mt6359_priv *priv, bool enable)
+ {
+ 	regmap_update_bits(priv->regmap, MT6359_AUDDEC_ANA_CON13,
+@@ -107,7 +107,7 @@ static void mt6359_set_aud_global_bias(struct mt6359_priv *priv, bool enable)
+ 			   (enable ? 0 : 1) << RG_AUDGLB_PWRDN_VA32_SFT);
+ }
+ 
+-/* use only when doing mtkaif calibraiton at the boot time */
++/* use only when doing mtkaif calibration at the boot time */
+ static void mt6359_set_topck(struct mt6359_priv *priv, bool enable)
+ {
+ 	regmap_update_bits(priv->regmap, MT6359_AUD_TOP_CKPDN_CON0,
+diff --git a/sound/soc/codecs/nau8825.c b/sound/soc/codecs/nau8825.c
+index 5165aeba4b67..2eb0efc983a0 100644
+--- a/sound/soc/codecs/nau8825.c
++++ b/sound/soc/codecs/nau8825.c
+@@ -345,10 +345,10 @@ static u32 nau8825_intlog10_dec3(u32 value)
+ /**
+  * nau8825_xtalk_sidetone - computes cross talk suppression sidetone gain.
+  *
+- * @sig_org: orignal signal level
++ * @sig_org: original signal level
+  * @sig_cros: cross talk signal level
+  *
+- * The orignal and cross talk signal vlues need to be characterized.
++ * The original and cross talk signal vlues need to be characterized.
+  * Once these values have been characterized, this sidetone value
+  * can be converted to decibel with the equation below.
+  * sidetone = 20 * log (original signal level / crosstalk signal level)
+@@ -671,11 +671,11 @@ static void nau8825_xtalk_imm_stop(struct nau8825 *nau8825)
+  * Thus, the measurement function has four states to complete whole sequence.
+  * 1. Prepare state : Prepare the resource for detection and transfer to HPR
+  *     IMM stat to make JKR1(HPR) impedance measure.
+- * 2. HPR IMM state : Read out orignal signal level of JKR1(HPR) and transfer
++ * 2. HPR IMM state : Read out original signal level of JKR1(HPR) and transfer
+  *     to HPL IMM state to make JKTIP(HPL) impedance measure.
+  * 3. HPL IMM state : Read out cross talk signal level of JKTIP(HPL) and
+  *     transfer to IMM state to determine suppression sidetone gain.
+- * 4. IMM state : Computes cross talk suppression sidetone gain with orignal
++ * 4. IMM state : Computes cross talk suppression sidetone gain with original
+  *     and cross talk signal level. Apply this gain and then restore codec
+  *     configuration. Then transfer to Done state for ending.
+  */
+@@ -724,7 +724,7 @@ static void nau8825_xtalk_measure(struct nau8825 *nau8825)
+ 		nau8825->xtalk_state = NAU8825_XTALK_IMM;
+ 		break;
+ 	case NAU8825_XTALK_IMM:
+-		/* In impedance measure state, the orignal and cross talk
++		/* In impedance measure state, the original and cross talk
+ 		 * signal level vlues are ready. The side tone gain is deter-
+ 		 * mined with these signal level. After all, restore codec
+ 		 * configuration.
+diff --git a/sound/soc/codecs/rt1320-sdw.c b/sound/soc/codecs/rt1320-sdw.c
+index 444a91755be9..b13622e54ae0 100644
+--- a/sound/soc/codecs/rt1320-sdw.c
++++ b/sound/soc/codecs/rt1320-sdw.c
+@@ -2084,7 +2084,7 @@ static int rt1320_rae_load(struct rt1320_sdw_priv *rt1320)
+ 		regmap_update_bits(rt1320->regmap, 0x20005818, 0x80, 0x80);
+ 		/* RAE run */
+ 		regmap_update_bits(rt1320->regmap, 0x2000301c, 0x01, 0x01);
+-		/* Phase sync eanble */
++		/* Phase sync enable */
+ 		regmap_update_bits(rt1320->regmap, 0xc047, 0x80, 0x80);
+ 		break;
+ 	}
+diff --git a/sound/soc/codecs/rt5631.h b/sound/soc/codecs/rt5631.h
+index 8a6b99a48c7c..00734207ac9f 100644
+--- a/sound/soc/codecs/rt5631.h
++++ b/sound/soc/codecs/rt5631.h
+@@ -415,7 +415,7 @@
+ #define RT5631_ADDA_FILTER_CLK_SEL_256FS		(0 << 7) /* 256FS */
+ #define RT5631_ADDA_FILTER_CLK_SEL_384FS		(1 << 7) /* 384FS */
+ 
+-/* Power managment addition 1 (0x3A) */
++/* Power management addition 1 (0x3A) */
+ #define RT5631_PWR_MAIN_I2S_EN			(0x1 << 15)
+ #define RT5631_PWR_MAIN_I2S_BIT			15
+ #define RT5631_PWR_CLASS_D				(0x1 << 12)
+@@ -435,7 +435,7 @@
+ #define RT5631_PWR_DAC_R_TO_MIXER			(0x1 << 5)
+ #define RT5631_PWR_DAC_R_TO_MIXER_BIT		5
+ 
+-/* Power managment addition 2 (0x3B) */
++/* Power management addition 2 (0x3B) */
+ #define RT5631_PWR_OUTMIXER_L				(0x1 << 15)
+ #define RT5631_PWR_OUTMIXER_L_BIT			15
+ #define RT5631_PWR_OUTMIXER_R				(0x1 << 14)
+@@ -461,7 +461,7 @@
+ #define RT5631_PWR_PLL2				(0x1 << 0)
+ #define RT5631_PWR_PLL2_BIT				0
+ 
+-/* Power managment addition 3(0x3C) */
++/* Power management addition 3(0x3C) */
+ #define RT5631_PWR_VREF				(0x1 << 15)
+ #define RT5631_PWR_VREF_BIT				15
+ #define RT5631_PWR_FAST_VREF_CTRL			(0x1 << 14)
+@@ -489,7 +489,7 @@
+ #define RT5631_PWR_HP_AMP_DRIVING			(0x1 << 0)
+ #define RT5631_PWR_HP_AMP_DRIVING_BIT		0
+ 
+-/* Power managment addition 4(0x3E) */
++/* Power management addition 4(0x3E) */
+ #define RT5631_PWR_SPK_L_VOL				(0x1 << 15)
+ #define RT5631_PWR_SPK_L_VOL_BIT			15
+ #define RT5631_PWR_SPK_R_VOL				(0x1 << 14)
+diff --git a/sound/soc/codecs/rt5640.c b/sound/soc/codecs/rt5640.c
+index 4fa1eee8e87f..03d0ac3359f5 100644
+--- a/sound/soc/codecs/rt5640.c
++++ b/sound/soc/codecs/rt5640.c
+@@ -1216,7 +1216,7 @@ static const struct snd_soc_dapm_widget rt5640_dapm_widgets[] = {
+ 		0, rt5640_spk_l_mix, ARRAY_SIZE(rt5640_spk_l_mix)),
+ 	SND_SOC_DAPM_MIXER("SPK MIXR", RT5640_PWR_MIXER, RT5640_PWR_SM_R_BIT,
+ 		0, rt5640_spk_r_mix, ARRAY_SIZE(rt5640_spk_r_mix)),
+-	/* Ouput Volume */
++	/* Output Volume */
+ 	SND_SOC_DAPM_PGA("SPKVOL L", RT5640_PWR_VOL,
+ 		RT5640_PWR_SV_L_BIT, 0, NULL, 0),
+ 	SND_SOC_DAPM_PGA("SPKVOL R", RT5640_PWR_VOL,
+diff --git a/sound/soc/codecs/rt5645.c b/sound/soc/codecs/rt5645.c
+index bf9f278c3de9..bb448254275f 100644
+--- a/sound/soc/codecs/rt5645.c
++++ b/sound/soc/codecs/rt5645.c
+@@ -2209,7 +2209,7 @@ static const struct snd_soc_dapm_widget rt5645_dapm_widgets[] = {
+ 		0, rt5645_out_l_mix, ARRAY_SIZE(rt5645_out_l_mix)),
+ 	SND_SOC_DAPM_MIXER("OUT MIXR", RT5645_PWR_MIXER, RT5645_PWR_OM_R_BIT,
+ 		0, rt5645_out_r_mix, ARRAY_SIZE(rt5645_out_r_mix)),
+-	/* Ouput Volume */
++	/* Output Volume */
+ 	SND_SOC_DAPM_SWITCH("SPKVOL L", RT5645_PWR_VOL, RT5645_PWR_SV_L_BIT, 0,
+ 		&spk_l_vol_control),
+ 	SND_SOC_DAPM_SWITCH("SPKVOL R", RT5645_PWR_VOL, RT5645_PWR_SV_R_BIT, 0,
+diff --git a/sound/soc/codecs/rt5651.c b/sound/soc/codecs/rt5651.c
+index 9723b4c7540c..b911757376f5 100644
+--- a/sound/soc/codecs/rt5651.c
++++ b/sound/soc/codecs/rt5651.c
+@@ -1024,7 +1024,7 @@ static const struct snd_soc_dapm_widget rt5651_dapm_widgets[] = {
+ 			   0, rt5651_out_l_mix, ARRAY_SIZE(rt5651_out_l_mix)),
+ 	SND_SOC_DAPM_MIXER("OUT MIXR", RT5651_PWR_MIXER, RT5651_PWR_OM_R_BIT,
+ 			   0, rt5651_out_r_mix, ARRAY_SIZE(rt5651_out_r_mix)),
+-	/* Ouput Volume */
++	/* Output Volume */
+ 	SND_SOC_DAPM_SWITCH("OUTVOL L", RT5651_PWR_VOL,
+ 			    RT5651_PWR_OV_L_BIT, 0, &outvol_l_control),
+ 	SND_SOC_DAPM_SWITCH("OUTVOL R", RT5651_PWR_VOL,
+diff --git a/sound/soc/codecs/rt5670.c b/sound/soc/codecs/rt5670.c
+index f772f093479a..62d4e7cea5af 100644
+--- a/sound/soc/codecs/rt5670.c
++++ b/sound/soc/codecs/rt5670.c
+@@ -1901,7 +1901,7 @@ static const struct snd_soc_dapm_widget rt5670_dapm_widgets[] = {
+ 			   0, rt5670_out_l_mix, ARRAY_SIZE(rt5670_out_l_mix)),
+ 	SND_SOC_DAPM_MIXER("OUT MIXR", RT5670_PWR_MIXER, RT5670_PWR_OM_R_BIT,
+ 			   0, rt5670_out_r_mix, ARRAY_SIZE(rt5670_out_r_mix)),
+-	/* Ouput Volume */
++	/* Output Volume */
+ 	SND_SOC_DAPM_MIXER("HPOVOL MIXL", RT5670_PWR_VOL,
+ 			   RT5670_PWR_HV_L_BIT, 0,
+ 			   rt5670_hpvoll_mix, ARRAY_SIZE(rt5670_hpvoll_mix)),
+diff --git a/sound/soc/codecs/tlv320dac33.c b/sound/soc/codecs/tlv320dac33.c
+index 55a95b62a650..b91ab42882d1 100644
+--- a/sound/soc/codecs/tlv320dac33.c
++++ b/sound/soc/codecs/tlv320dac33.c
+@@ -914,7 +914,7 @@ static int dac33_prepare_chip(struct snd_pcm_substream *substream,
+ 	/* OSC calibration time */
+ 	dac33_write(component, DAC33_CALIB_TIME, 96);
+ 
+-	/* adjustment treshold & step */
++	/* adjustment threshold & step */
+ 	dac33_write(component, DAC33_INT_OSC_CTRL_B, DAC33_ADJTHRSHLD(2) |
+ 						 DAC33_ADJSTEP(1));
+ 
+diff --git a/sound/soc/intel/atom/sst-mfld-dsp.h b/sound/soc/intel/atom/sst-mfld-dsp.h
+index c8f0816edb53..59606259a06e 100644
+--- a/sound/soc/intel/atom/sst-mfld-dsp.h
++++ b/sound/soc/intel/atom/sst-mfld-dsp.h
+@@ -189,7 +189,7 @@ struct ipc_dsp_hdr {
+ union ipc_header_high {
+ 	struct {
+ 		u32  msg_id:8;	    /* Message ID - Max 256 Message Types */
+-		u32  task_id:4;	    /* Task ID associated with this comand */
++		u32  task_id:4;	    /* Task ID associated with this command */
+ 		u32  drv_id:4;    /* Identifier for the driver to track*/
+ 		u32  rsvd1:8;	    /* Reserved */
+ 		u32  result:4;	    /* Reserved */
+diff --git a/sound/soc/intel/atom/sst/sst.h b/sound/soc/intel/atom/sst/sst.h
+index c43946c5ecee..e24d9dad7ef6 100644
+--- a/sound/soc/intel/atom/sst/sst.h
++++ b/sound/soc/intel/atom/sst/sst.h
+@@ -182,7 +182,7 @@ struct sst_block {
+  * @pcm_substream : PCM substream
+  * @period_elapsed : PCM period elapsed callback
+  * @sfreq : stream sampling freq
+- * @cumm_bytes : cummulative bytes decoded
++ * @cumm_bytes : cumulative bytes decoded
+  */
+ struct stream_info {
+ 	unsigned int		status;
+diff --git a/sound/soc/intel/boards/sof_cirrus_common.c b/sound/soc/intel/boards/sof_cirrus_common.c
+index 88fc6cb2bfd4..ec4bda40ae00 100644
+--- a/sound/soc/intel/boards/sof_cirrus_common.c
++++ b/sound/soc/intel/boards/sof_cirrus_common.c
+@@ -151,7 +151,7 @@ static const char * const cs35l41_name_prefixes[] = { "WL", "WR", "TL", "TR" };
+  * UID 0x2 -> TL
+  * UID 0x3 -> TR
+  * Note: If there are less than 4 Amps, UIDs still map to WL/WR/TL/TR. Dynamic code will only create
+- * dai links for UIDs which exist, and ignore non-existant ones. Only 2 or 4 amps are expected.
++ * dai links for UIDs which exist, and ignore non-existent ones. Only 2 or 4 amps are expected.
+  * Return number of codecs found.
+  */
+ static int cs35l41_compute_codec_conf(void)
+diff --git a/sound/soc/qcom/qdsp6/q6asm-dai.c b/sound/soc/qcom/qdsp6/q6asm-dai.c
+index 4f09fdd40905..cd4f82bb8cc7 100644
+--- a/sound/soc/qcom/qdsp6/q6asm-dai.c
++++ b/sound/soc/qcom/qdsp6/q6asm-dai.c
+@@ -551,7 +551,7 @@ static void compress_event_handler(uint32_t opcode, uint32_t token,
+ 						 prtd->stream_id,
+ 						 CMD_CLOSE);
+ 				/*
+-				 * vaild stream ids start from 1, So we are
++				 * valid stream ids start from 1, So we are
+ 				 * toggling this between 1 and 2.
+ 				 */
+ 				prtd->stream_id = (prtd->stream_id == 1 ? 2 : 1);
+diff --git a/sound/soc/ti/davinci-i2s.c b/sound/soc/ti/davinci-i2s.c
+index ec7eb2f19b6f..3614f614117d 100644
+--- a/sound/soc/ti/davinci-i2s.c
++++ b/sound/soc/ti/davinci-i2s.c
+@@ -49,7 +49,7 @@
+  *    incompatible with ASP and with either McBSP.
+  *
+  * In short:  this uses ASP to implement I2S, not McBSP.
+- * And it won't be the only DaVinci implemention of I2S.
++ * And it won't be the only DaVinci implementation of I2S.
+  */
+ #define DAVINCI_MCBSP_DRR_REG	0x00
+ #define DAVINCI_MCBSP_DXR_REG	0x04
+diff --git a/sound/soc/ti/davinci-mcasp.c b/sound/soc/ti/davinci-mcasp.c
+index ad9e194a3d0d..d461ab419655 100644
+--- a/sound/soc/ti/davinci-mcasp.c
++++ b/sound/soc/ti/davinci-mcasp.c
+@@ -1818,7 +1818,7 @@ static int davinci_mcasp_startup(struct snd_pcm_substream *substream,
+ 	    !mcasp->async_mode)
+ 		max_channels = mcasp->channels;
+ 	/*
+-	 * But we can always allow channels upto the amount of
++	 * But we can always allow channels up to the amount of
+ 	 * the available tdm_slots.
+ 	 */
+ 	if (max_channels < tdm_slots)
+diff --git a/sound/soc/ti/omap-mcbsp.c b/sound/soc/ti/omap-mcbsp.c
+index 5734388a4e4b..889e357b64d0 100644
+--- a/sound/soc/ti/omap-mcbsp.c
++++ b/sound/soc/ti/omap-mcbsp.c
+@@ -1237,7 +1237,7 @@ static int omap_mcbsp_dai_set_dai_sysclk(struct snd_soc_dai *cpu_dai,
+ 		break;
+ 	case OMAP_MCBSP_SYSCLK_CLKR_EXT:
+ 		regs->pcr0	|= SCLKME;
+-		/* Disable ouput on CLKR pin in master mode */
++		/* Disable output on CLKR pin in master mode */
+ 		regs->pcr0	&= ~CLKRM;
+ 		break;
+ 	default:
+diff --git a/sound/soc/uniphier/aio.h b/sound/soc/uniphier/aio.h
+index 1900ea01ce3d..87b27256cf80 100644
+--- a/sound/soc/uniphier/aio.h
++++ b/sound/soc/uniphier/aio.h
+@@ -183,7 +183,7 @@ struct uniphier_aio_selector {
+  *
+  * These are examples for sound data paths:
+  *
+- * For caputure device:
++ * For capture device:
+  *   (outer of AIO) -> iport -> iif -> ch -> rb -> (CPU)
+  * For playback device:
+  *   (CPU) -> rb -> ch -> oif -> oport -> (outer of AIO)
+diff --git a/sound/soc/ux500/ux500_msp_i2s.c b/sound/soc/ux500/ux500_msp_i2s.c
+index 683b485fb570..bd2cfc618290 100644
+--- a/sound/soc/ux500/ux500_msp_i2s.c
++++ b/sound/soc/ux500/ux500_msp_i2s.c
+@@ -19,7 +19,7 @@
+ 
+ #include "ux500_msp_i2s.h"
+ 
+- /* Protocol desciptors */
++ /* Protocol descriptors */
+ static const struct msp_protdesc prot_descs[] = {
+ 	{ /* I2S */
+ 		MSP_SINGLE_PHASE,
 
-> +/*
-> + * CHR_CON16 and the two SOURCE_CH0 selects route either BATSNS or ISENSE onto
-> + * the battery channel. Only ISENSE is used: with a switching charger in the
-> + * power path BATSNS sits on the system rail rather than on the pack.
-> + */
-> +#define MT6397_CHR_CON16		0x0020
-> +#define MT6397_CHR_CON16_ADCIN_VSEN_EN	BIT(11)
-> +#define MT6397_CHR_CON16_ADCIN_VBAT_EN	BIT(10)
-
-These are used as values for the ADCIN_SEL.
-I think they should have names to make that clear and be
-1 and 2 rather than bits.
-
-> +#define MT6397_CHR_CON16_ADCIN_SEL	(MT6397_CHR_CON16_ADCIN_VSEN_EN | \
-> +					 MT6397_CHR_CON16_ADCIN_VBAT_EN)
-
-This would then be a register field mask from GENMASK()
-
-> +#define MT6397_AUXADC_CON14		0x055e
-> +#define MT6397_AUXADC_CON14_CH0_NORM_SEL BIT(2)
-> +#define MT6397_AUXADC_CON14_CH0_LBAT_SEL BIT(0)
-
-A common visual trick in IIO drivers separates register addresses from fields
-and from values.
-#define MT6397_AUXADC_CON14		0x055e
-#define   MT6397_AUXADC_CON14_CH0_NORM_SEL BIT(2)
-#define   MT6397_AUXADC_CON14_CH0_LBAT_SEL BIT(0)
-
-Also blank line here as the settle time is not directly related to the
-register.
-> +#define MT6397_AUXADC_ISENSE_SETTLE_US	USEC_PER_MSEC
-> +
-> +struct mt6397_auxadc {
-> +	struct regmap *regmap;
-> +	/* AUXADC doesn't support reading multiple channels simultaneously. */
-
-I'd rather you said why than simply not supported. Seems
-that it's a multi register sequence so needs to be atomic wrt
-to other channel reads.
-
-> +	struct mutex lock;
-> +};
-> +
-> +#define MTK_PMIC_IIO_CHAN(_name, _chan, _hwchan)                \
-> +{                                                               \
-> +	.type = IIO_VOLTAGE,                                    \
-> +	.indexed = 1,                                           \
-> +	.channel = _chan,                                       \
-> +	.address = _hwchan,                                     \
-> +	.datasheet_name = __stringify(_name),                   \
-> +	.info_mask_separate = BIT(IIO_CHAN_INFO_RAW) |          \
-> +			      BIT(IIO_CHAN_INFO_SCALE),         \
-> +}
-For two the macro is of marginal benefit. I'd just put the structure
-values in directly.  Then we know which parameter is which etc.
-> +
-> +/*
-> + * A device tree channel ID indexes this array; .address holds the PMIC channel
-> + * number. The thermistor reports as a voltage because that is all the PMIC
-> + * measures: the divider across an NTC whose curve belongs to the board.
-> + */
-> +static const struct iio_chan_spec mt6397_auxadc_channels[] = {
-> +	MTK_PMIC_IIO_CHAN(isense,   MT6397_AUXADC_ISENSE,
-
-If you do keep this, one space is enough. Aligning when there
-are lines in between brings little value that I can see.
-
-> +			  MT6397_AUXADC_HWCHAN_BATSNS),
-> +	MTK_PMIC_IIO_CHAN(bat_temp, MT6397_AUXADC_BAT_TEMP,
-> +			  MT6397_AUXADC_HWCHAN_BAT_TEMP),
-> +};
-> +
-> +static int mt6397_auxadc_read_once(struct mt6397_auxadc *adc,
-> +				   const struct iio_chan_spec *chan, int *val)
-> +{
-> +	struct regmap *map = adc->regmap;
-> +	unsigned int reg;
-> +	int ret;
-> +
-> +	ret = regmap_update_bits(map, MT6397_AUXADC_CON1,
-> +				 MT6397_AUXADC_CON1_CHSEL,
-> +				 FIELD_PREP(MT6397_AUXADC_CON1_CHSEL,
-> +					    chan->address));
-> +	if (ret)
-> +		return ret;
-> +
-> +	/* START is edge triggered: it has to be lowered before being raised. */
-> +	ret = regmap_clear_bits(map, MT6397_AUXADC_CON1,
-> +				MT6397_AUXADC_CON1_START);
-For lines that go not much over 80 chars and where it helps readability it
-is fine to break that limit.  I think that applies here.
-> +	if (ret)
-> +		return ret;
-> +
-> +	ret = regmap_set_bits(map, MT6397_AUXADC_CON1,
-> +			      MT6397_AUXADC_CON1_START);
-and here.
-
-> +	if (ret)
-> +		return ret;
-> +
-> +	fsleep(MT6397_AUXADC_START_US);
-> +
-> +	ret = regmap_read_poll_timeout(map, MT6397_AUXADC_ADC(chan->address),
-> +				       reg, reg & MT6397_AUXADC_ADC_RDY,
-> +				       100, 100 * USEC_PER_MSEC);
-> +	if (ret)
-> +		return ret;
-> +
-> +	ret = regmap_read(map, MT6397_AUXADC_ADC_TRIM(chan->address), &reg);
-> +	if (ret)
-> +		return ret;
-> +
-> +	*val = FIELD_GET(MT6397_AUXADC_ADC_VAL, reg);
-> +
-> +	return 0;
-> +}
-> +
-> +static int mt6397_auxadc_battemp_bias(struct mt6397_auxadc *adc, bool on)
-> +{
-> +	struct regmap *map = adc->regmap;
-> +	int ret;
-> +
-> +	if (on) {
-> +		ret = regmap_set_bits(map, MT6397_AUXADC_CON0,
-> +				      MT6397_AUXADC_CON0_BUF_PWD_ON);
-> +		if (ret)
-> +			return ret;
-Add a blank line here 
-> +		ret = regmap_set_bits(map, MT6397_AUXADC_CON0,
-> +				      MT6397_AUXADC_CON0_BUF_PWD_B);
-> +		if (ret)
-> +			return ret;
-and here.  Small readability improvement but worth having!
-
-> +		return regmap_set_bits(map, MT6397_CHR_CON7,
-> +				       MT6397_CHR_CON7_BATON_TDET_EN);
-> +	}
-
-For cases like this I'd use and else.
-Not strictly necessary but makes it visually obvious it is an either or
-question.
-
-> +
-> +	ret = regmap_clear_bits(map, MT6397_CHR_CON7,
-> +				MT6397_CHR_CON7_BATON_TDET_EN);
-> +	ret = ret ?: regmap_clear_bits(map, MT6397_AUXADC_CON0,
-> +				       MT6397_AUXADC_CON0_BUF_PWD_B);
-> +	return ret ?: regmap_clear_bits(map, MT6397_AUXADC_CON0,
-> +					MT6397_AUXADC_CON0_BUF_PWD_ON);
-> +}
-
-> +
-> +static int mt6397_auxadc_isense_disable(struct mt6397_auxadc *adc)
-> +{
-> +	struct regmap *map = adc->regmap;
-> +	int ret;
-> +
-> +	ret = regmap_clear_bits(map, MT6397_AUXADC_CON14,
-> +				MT6397_AUXADC_CON14_CH0_NORM_SEL |
-> +				MT6397_AUXADC_CON14_CH0_LBAT_SEL);
-> +
-> +	return ret ?: regmap_clear_bits(map, MT6397_CHR_CON16,
-> +					MT6397_CHR_CON16_ADCIN_SEL);
-
-Andy called this out already.  LLM being too clever maybe?
-Anyhow, just burn a few lines of code for readability!
-
-> +}
-> +
-> +static int mt6397_auxadc_read_channel(struct mt6397_auxadc *adc,
-> +				      const struct iio_chan_spec *chan,
-> +				      int *val)
-> +{
-> +	unsigned int i, sum = 0;
-
-Please split variables that are initialized from ones that aren't.
-Can be hard to spot when just one is.
-
-> +	int ret, sample;
-> +
-> +	/* Held across the whole burst: the channel select is shared state. */
-> +	guard(mutex)(&adc->lock);
-> +
-> +	if (chan->channel == MT6397_AUXADC_ISENSE) {
-> +		ret = mt6397_auxadc_isense_enable(adc);
-> +		if (ret)
-> +			return ret;
-> +		fsleep(MT6397_AUXADC_ISENSE_SETTLE_US);
-> +	} else {
-> +		ret = mt6397_auxadc_battemp_bias(adc, true);
-> +		if (ret)
-> +			return ret;
-> +		fsleep(MT6397_AUXADC_BATTEMP_SETTLE_US);
-> +	}
-> +
-> +	for (i = 0; i < MT6397_AUXADC_SAMPLES; i++) {
-
-	for (unsigned int i = 0; ...
-
-> +		ret = mt6397_auxadc_read_once(adc, chan, &sample);
-> +		if (ret)
-> +			break;
-> +
-> +		sum += sample;
-> +	}
-> +
-> +	/* Lower START so the converter is not left armed between reads. */
-> +	regmap_clear_bits(adc->regmap, MT6397_AUXADC_CON1,
-> +			  MT6397_AUXADC_CON1_START);
-> +
-> +	if (chan->channel == MT6397_AUXADC_ISENSE)
-> +		mt6397_auxadc_isense_disable(adc);
-> +	else
-> +		mt6397_auxadc_battemp_bias(adc, false);
-> +
-> +	if (ret)
-> +		return ret;
-> +
-> +	*val = DIV_ROUND_CLOSEST(sum, MT6397_AUXADC_SAMPLES);
-> +
-> +	return 0;
-> +}
-
-> +
-> +static int mt6397_auxadc_init(struct mt6397_auxadc *adc)
-> +{
-> +	return regmap_update_bits(adc->regmap, MT6397_AUXADC_CON0,
-> +				  MT6397_AUXADC_CON0_SPL_NUM,
-> +				  FIELD_PREP(MT6397_AUXADC_CON0_SPL_NUM, 1));
-
-Not worth having a helper to call just one thing. Put this regmap
-call inline.
-
-> +}
-
-> +
-> +static const struct of_device_id mt6397_auxadc_of_match[] = {
-> +	{ .compatible = "mediatek,mt6397-auxadc" },
-> +	{ /* sentinel */ }
-	{ }
-
-Is enough.  The sentinel nature of that is kind of obvious so
-a while back we removed all those comments from IIO.
-
-
-> +};
-> +MODULE_DEVICE_TABLE(of, mt6397_auxadc_of_match);
+base-commit: 260a144af70c8babbf2f15d1a56bacfa83f8aef6
+-- 
+2.48.1
 
 
