@@ -4,113 +4,97 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4D951C982CC
-	for <linux-mediatek@archiver.kernel.org>; Wed, 16 Sep 2026 23:54:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 86E7EC982CC
+	for <linux-mediatek@archiver.kernel.org>; Thu, 17 Sep 2026 01:09:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
-	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Yl8nSjxuwI/LouP4WDHFD4P4zMMIU3JlJ+zSqw0WuNY=; b=Rhrw6PVAfhvaYUigSazjE+x2an
-	cmA0wSqOeHRq3KFuNcvBUdcppwDuHYP/EETqD7t+do7voTuRmQUTH+z/Qqfs9EYqtnI5G/LdVLeYK
-	9PaUAPFO3UiMv90ad5X4B67nPHMt1nA3vnwXakw+UIQLTkzTK3Q6OvKoAdMqYLZ1rxP/+dIsKIrbj
-	bkaSnFxMgiP9n49LEElI2CmPMCnQ7bR3yjZevEZoPLNJpeKLmkkwrHpUl74rtz657lcxi4svnVHi2
-	62cnSyITrpdm3TgZmVWVLpLYMahWuEF5iZ17b2AqZN4A6Guo1hDVCUPXrjFRyM2rpYsuGlaEVrDfb
-	dKXaOvLQ==;
+	bh=nonWuzicTCeYBkiKvjrnS+sct50ruoIlfuFduwj3gS8=; b=t/M0s2subzzu5lDbOxwp7IBf7G
+	gWXwJW7FPdjQ8eZV55ElootzXalNFYY4UIFBMyuoL0HlIf5YrHce3x2GT110n1/QAigaPpaPC139C
+	TyMnFh799GGo17UVZnZTHvPDbsVUrxLnn8kKhhh0yyfbp7/704mb5BphDiIzQXlLEpXFEhNAndvaR
+	ZjuiVzQfiS1/7Lyijidx+N3xIgkcj3ow1NbKbJuty3i4l6UdRwNqjL2lpfvX24E2OR+2+I9t4ZXhJ
+	bgVLKYBof4+Txxsh3CvUlSMBWGerPAFGHFge0ft1Q+KeOaxlg0BFKhsmzpb3srRcXl9Uqv/pH0M6F
+	y8CpWudQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x6zRx-0000000AHi9-1gbz;
-	Wed, 16 Sep 2026 23:54:01 +0000
-Received: from mail-qv2-x10.google.com ([2607:f8b0:4864:33::10])
+	id 1x70dQ-0000000AOPM-13F1;
+	Thu, 17 Sep 2026 01:09:56 +0000
+Received: from mail-pz2-x0d.google.com ([2607:f8b0:4864:3b::d])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x6zRu-0000000AHhC-0IYg
+	id 1x70dM-0000000AOOB-3W0Z
 	for linux-mediatek@lists.infradead.org;
-	Wed, 16 Sep 2026 23:54:00 +0000
-Received: by mail-qv2-x10.google.com with SMTP id 6a1803df08f44-91064d2d54fso2390466d6.0
-        for <linux-mediatek@lists.infradead.org>; Wed, 16 Sep 2026 16:53:57 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1789602837; cv=none;
-        d=google.com; s=arc-20260327;
-        b=nsz4vXcvhzLquUEApvmPZBVsxlUOXrmf1fvsQpe3K1DdjZodjhaKdZag5utFl2OITP
-         CWhqubJtodiWxJeFTspBYLqcmjivZqviHrBQhYh6gti5Z7IMPdqldqNppRr7fLLWtmUs
-         jED8VY+GcgtIuab8X6mRECyM1m72ordrvr4UzYMFWoXq+B2Mh2w0mzewYelKEMeAgkwZ
-         v34JMD7xywV6zV7NwhOmEGlQ5Iii6kz97UH+m+UG99tudfe3w03F04uICEfFaAdA20ZD
-         +lNvNsYakcsCW1Rfq+PWuR0tJd1Y168WGZB3pYs34uhCKwbLpc7gI10DnQ7KV6jJgYmm
-         /JAA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20260327;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:dkim-signature;
-        bh=Yl8nSjxuwI/LouP4WDHFD4P4zMMIU3JlJ+zSqw0WuNY=;
-        fh=TvfjLzKZdlnTi02aiRP5c+NvAvSbsOno6bID3LoB/Xs=;
-        b=e+7/h/9qvaa/xfYQdfNBdGd1kVXY+eP/SYtamPEgWmGHItRQb5/Ij5JZTplO5Tk3zG
-         jlHmvS/YWya3y7klu/7mxt5b1LpjDySGr2j2pLU5lYyuymd8OWsLQey3bXAK1QwSYGBy
-         06DudSWcpKOkP7R8nuK2omUdpMcHUizxgiqo63SnE34WacUsTmRRb2J9HSadmgi7bImz
-         uD/VCaNDke4DFwoicZNpxvk4yi8YB5CrtPORScme2a328q16afgKt6h2ThssR1BwptOo
-         5jwY51v+UFcnyPFzgWYWiZCLingICENPHHHpOcMI2ef3wkKfe6cX0ZFMs7IPJCKFuxtO
-         iegg==;
-        darn=lists.infradead.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
+	Thu, 17 Sep 2026 01:09:55 +0000
+Received: by mail-pz2-x0d.google.com with SMTP id d2e1a72fcca58-85469b2e1d7so213298b3a.0
+        for <linux-mediatek@lists.infradead.org>; Wed, 16 Sep 2026 18:09:52 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1789602837; x=1790207637; darn=lists.infradead.org;
-        h=content-type:cc:to:subject:message-id:date:from:in-reply-to
-         :references:mime-version:from:to:cc:subject:date:message-id:reply-to
-         :content-type;
-        bh=Yl8nSjxuwI/LouP4WDHFD4P4zMMIU3JlJ+zSqw0WuNY=;
-        b=VldO2C0ha7T7xKtkXiiP/ttW0bBOlq5Ou4dmL+Q90TnSLi2rxiw/BEm6dRrneoPC3Q
-         m1tfi+1gi0VrvKFAYMom4hM6Qy8AucYb+F5pLdv7yrYbKeGBsNUpotuiWoOurxfqXJW8
-         1wlUQg3cSHjwm4JnRJvocbzSq86GjUoe3x6cVTHEyODILI3k/XIfdTPmSs/jO36ukYny
-         tU3qJ1lx0oEoAieL3dwN9fEcfRk+jU0xeCPvFVjALRBbJGpbED7g+uZwBTbtbeTXXQD+
-         G0HsayeduacNtaKYjtcLEzHCTbFtE1NjgU5GX34YcZB6H0nKyYQql49wfkz+WSgw2NYP
-         soOQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1789602837; x=1790207637;
-        h=content-type:cc:to:subject:message-id:date:from:in-reply-to
-         :references:mime-version:x-gm-gg:x-gm-message-state:from:to:cc
+        d=gmail.com; s=20251104; t=1789607391; x=1790212191; darn=lists.infradead.org;
+        h=in-reply-to:content-disposition:content-type:mime-version
+         :references:message-id:subject:cc:to:from:date:sender:from:to:cc
          :subject:date:message-id:reply-to:content-type;
-        bh=Yl8nSjxuwI/LouP4WDHFD4P4zMMIU3JlJ+zSqw0WuNY=;
-        b=GfIt6JP8AzLCkZWQYGLzGIIMB9WYbB6Xzb0sStC+qk17q+wPCG+iFRD3mtSs3IhiQR
-         4qfOmm0Qjc5UIgaqqelMNRoiqagmwwgePV+NGU6Q6SsODILfaj4g6RNjf4sr96sS4XQU
-         2bWejiJ53iCVrDgp0ftOZZLsGx0Qesi/dCYAaPaj0LOyr3ra3AsrvqMpFaTWlzJ/YDGx
-         kipwJqwNx1PG4Q0ahogkww+oyjQurQ7F/R2tjmkC3OtB03BUU9PWbmHRG0f4E/csjpZP
-         QnlY+IXTbQ/7oIFCANg8zqZ+xw1i+FFx9TZnVn2DQu5Nue4ai3LLrC06s0JUFtnD6Rvo
-         UtNg==
-X-Forwarded-Encrypted: i=1; AKwUvBziqeiqCUqOhU0irwtSNhx18H6O9lH5ZbC1Mw3VeUsoeD6jQ8C+GqjfHDpbygswR9tuNconZ+rR+if7EH7r1A==@lists.infradead.org
-X-Gm-Message-State: AFuF++njoNjQbC7mY4DPvNCsbcv34J2VT7+g2b5SmxMtp7auvL/RWMYq
-	k3jwexmAlz5Mfsq4Llk2mllxodxtg4kDYvfGZVVC8nllbpPBhtoz0rZ+vaidWvv6mLFSdsdtxVQ
-	TYjabQF3Z27wc81TXx5bZdCgYguNiGvs=
-X-Gm-Gg: AYBFou0f5YogIjfACL/2tejWLxJm67eOJcxlVXUPaWFFFoV+kGa8Gp3q6OloTKwcGoU
-	2AX5wOVWaJ9aXv7WUtepBWWEg5/BAHFXPfe+BJ2VyEW8Isui3Mbdq8pHK/aaPZDuVhvbqJuCAYY
-	Zm0eVQ0xyfJU6mbT1skXlIWrd1j3Z2U8DuQ107sZoA5ISzhE0ADef6nOgkigTNUaXzUoOdyIlTe
-	+4e6O4alR2zdDlvml3P8ey4o6TrKwhYid3TTqhdhWiG6/bXH9PI93+AR5TIJvh3gs+clTbUBVn6
-	xF94rXbEJta7ZRdrUlqdw3KzAjYOn/CWVDF/hn1d6Q/1g4noqcZfIcUrlIjvq8p8kA==
-X-Received: by 2002:a05:6214:cce:b0:910:94c6:2ea1 with SMTP id
- 6a1803df08f44-9123d7318a0mr91642006d6.12.1789602836616; Wed, 16 Sep 2026
- 16:53:56 -0700 (PDT)
+        bh=nonWuzicTCeYBkiKvjrnS+sct50ruoIlfuFduwj3gS8=;
+        b=pgcFPWCjOISjuZRQx+WG4wXhX7LNevtDs2cT+ux14AwPaB/3o8xaxW1CFICtHpdWpC
+         0oGSePGLIxr8T85tJWk8TUN2ghsG0BPdIecHObRmhB/YZbTEgfaVwonpwfehj1/6EbmR
+         AP6gG07OVyUYA2pdgZj6Aaalb8CuPaYW32q2MsFAW7wgVmVTLt7ttaCxWaVYfsu5yyL6
+         jS0A/LKnMVQ2O9chZ51p8HpMC8EwOMiy5forgpCd8JBISF4BesYc4yt9KBmgW8YB8Egf
+         MVUzdTznPnMIc4rIALj23Xk6StwxQ4AfkCdHN3T54uJLFYHmrCuH2JBquMkgVQF//wwp
+         t+yQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20260707; t=1789607391; x=1790212191;
+        h=in-reply-to:content-disposition:content-type:mime-version
+         :references:message-id:subject:cc:to:from:date:sender:x-gm-gg
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+         :content-type;
+        bh=nonWuzicTCeYBkiKvjrnS+sct50ruoIlfuFduwj3gS8=;
+        b=ZWQP4KbmIjNxSg0+VwqxgI5GQAtTbJJxDqhqMygmcx29iZMJTqHYshEYRcOBK8G+7J
+         82HF/ECkZZOg4DFfWKbUBPtxLspHkkPlYt1nWAUcUI1iGtCeeYFARKAbNDjbPMkHDp1R
+         g7S54rSD0kaDgLm6sDRnKJFmcF6Mv93b8AJsUcKCVsfYwHr9pBGBDku1EUem8diixnxD
+         pHVsOpzW2kStMyq1tZabR7UGyS2N+dodq2cYBFcYCybJoS37u2AvStlTDV7aiHDUEks5
+         PVs5LG9hbVzHq37sPl954Zm4EHpkrUzRiiSbf90ayp+g3Icna2Oj0REZv9QLLVos89j8
+         fxJw==
+X-Gm-Message-State: AFuF++kqVSx27338+XfOcNGUxRjEO/ZsUklEzUd9BQzv/AEUYqV4upbg
+	4UsDFEa/Twlbt3hppUYpcOYpbdH4J/9EBIjfhsl96T+SQzQ7Qwmx2vkT
+X-Gm-Gg: AYBFou1LUEDaHHb+IMaGog73RvrxZr1Fuw2qdiRg2yVDN1RN/OAdeWt1m62rJ/UVIN9
+	SbDFptLXQsarTE0auYnqVcnC2AgD0vsSSVUTYEVYK6C9GsI2i6ARjgIHDUCy17xxCEqltSGfV20
+	Xc81LpHRkqAx9f9mQlOyb37PBKmZ9V8m2d/PW9J0G9ZkXSIycQ7AKRdBhq+QBo2UAioidewW9Xl
+	70ojRfGcmYMCP9jxSeu5Zz6RXOaUL92aTVKtnrnuIzRf0IF40lGy0G/GvawsdepN0Hp8dy6lCMp
+	ICNA/kRT/qFnhVcAeHYDx1lVECajycPoElAxk/HKOfGypa/BYPGHggwDHaRio0CPkDQSb61L3JV
+	VqZp7ER2s/L8HwQJcg4r3Ygzlz87joNUzVgPTZlSGkIuhSSnUD5zqZM3stwE4ByW61n8M8HDbOu
+	upusCT7lcQuTOaZb3uL3N3jC2Ab9Y4rdnBWJo7nZkQzlbEkROpx7yxL9lR0sgLLcBpt3fLBpoUt
+	vL0eUrAAbz+
+X-Received: by 2002:a17:90b:2c88:b0:39e:26a7:7aca with SMTP id 98e67ed59e1d1-39e26a77cefmr11932602a91.23.1789607391606;
+        Wed, 16 Sep 2026 18:09:51 -0700 (PDT)
+Received: from server.roeck-us.net ([2600:1700:e321:62f0:da43:aeff:fecc:bfd5])
+        by smtp.gmail.com with ESMTPSA id a92af1059eb24-14395cfb0b1sm8545272c88.5.2026.09.16.18.09.50
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 16 Sep 2026 18:09:51 -0700 (PDT)
+Date: Wed, 16 Sep 2026 18:09:49 -0700
+From: Guenter Roeck <linux@roeck-us.net>
+To: Luca Leonardo Scorcia <l.scorcia@gmail.com>
+Cc: linux-mediatek@lists.infradead.org,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Wim Van Sebroeck <wim@linux-watchdog.org>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Philipp Zabel <p.zabel@pengutronix.de>,
+	linux-watchdog@vger.kernel.org, devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+Subject: Re: [PATCH v5 3/8] dt-bindings: watchdog: Add compatible for
+ MediaTek mt8167
+Message-ID: <f0ceff89-4fdc-4d93-8e0a-26137e1f4279@roeck-us.net>
+References: <20260908174259.9009-1-l.scorcia@gmail.com>
+ <20260908174259.9009-4-l.scorcia@gmail.com>
 MIME-Version: 1.0
-References: <20260901083001.8044-1-ansuelsmth@gmail.com> <9609a821-c971-491c-9436-9346c48d2ee5@bootlin.com>
-In-Reply-To: <9609a821-c971-491c-9436-9346c48d2ee5@bootlin.com>
-From: "Christian Marangi (Ansuel)" <ansuelsmth@gmail.com>
-Date: Thu, 17 Sep 2026 01:53:44 +0200
-X-Gm-Features: AcwNN1XEi8i0bR0p6V2XML1oNL1EMS0XGZ-YJo8qlzp3ByfRA3buomyIp2Ok6rc
-Message-ID: <CA+_ehUw0KK8mHDmaH7UBKxq-By7CvXCaWDUg9NvoMPzSe5cgHw@mail.gmail.com>
-Subject: Re: [PATCH net-next v15 00/12] net: pcs: Introduce support for fwnode PCS
-To: Maxime Chevallier <maxime.chevallier@bootlin.com>
-Cc: Andrew Lunn <andrew+netdev@lunn.ch>, "David S. Miller" <davem@davemloft.net>, 
-	Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
-	Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
-	Simon Horman <horms@kernel.org>, Jonathan Corbet <corbet@lwn.net>, 
-	Shuah Khan <skhan@linuxfoundation.org>, Randy Dunlap <rdunlap@infradead.org>, 
-	Lorenzo Bianconi <lorenzo@kernel.org>, Heiner Kallweit <hkallweit1@gmail.com>, 
-	Russell King <linux@armlinux.org.uk>, Philipp Zabel <p.zabel@pengutronix.de>, 
-	Nathan Chancellor <nathan@kernel.org>, Nick Desaulniers <ndesaulniers@google.com>, 
-	Bill Wendling <morbo@google.com>, Justin Stitt <justinstitt@google.com>, netdev@vger.kernel.org, 
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	linux-doc@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org, llvm@lists.linux.dev
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20260908174259.9009-4-l.scorcia@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260916_165358_132106_611CAD23 
-X-CRM114-Status: GOOD (  12.60  )
+X-CRM114-CacheID: sfid-20260916_180952_881601_BA05A794 
+X-CRM114-Status: GOOD (  11.12  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -125,25 +109,22 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il giorno mer 16 set 2026 alle ore 18:20 Maxime Chevallier
-<maxime.chevallier@bootlin.com> ha scritto:
->
-> Hi Christian,
->
-> On 9/1/26 10:29, Christian Marangi wrote:
-> > This series introduce a most awaited feature that is correctly
-> > provide PCS with fwnode without having to use specific export symbol
-> > and additional handling of PCS in phylink.
->
-> I tried to re-rerun the mvpp2 prototype conversion, but it looks like the
-> series doesn't apply cleanly on net-next anymore :(
->
+On Tue, Sep 08, 2026 at 07:38:30PM +0200, Luca Leonardo Scorcia wrote:
+> Currently mt8167 inherits its watchdog from the included mt8516 dtsi,
+> which in turn falls back on mt6589-wdt. However according to the data
+> sheet mt8167 toprgu is not actually compatible with mt6589 (it has 14 sw
+> resets instead of 12, and its reset bit map table is different from
+> mt6589).
+> 
+> Update the mtk-wdt binding to add a dedicated compatible for mt8167 and
+> add the IDs that can be used in device trees to identify subsystem resets.
+> 
+> Signed-off-by: Luca Leonardo Scorcia <l.scorcia@gmail.com>
+> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
 
-Hi Maxime,
+Applied.
 
-yes the conflict was caused by LRO patch on the airoha ethernet driver.
-I just sent v16 with the series rebased.
-
-Also Andrew had something to say for the mvpp2 patch so maybe we
-can discuss how to improve that.
+Thanks,
+Guenter
 
