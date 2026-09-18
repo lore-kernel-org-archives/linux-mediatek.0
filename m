@@ -4,65 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1306EC982D8
-	for <linux-mediatek@archiver.kernel.org>; Fri, 18 Sep 2026 16:12:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 27ABEC982DA
+	for <linux-mediatek@archiver.kernel.org>; Fri, 18 Sep 2026 16:27:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=KJDSnN54e6nHoVHI3hmkPcATaJ7eX7EbuynT3I/CgVs=; b=sbbnIuaGyfi+aX9J4fx+KAI/Bp
-	bQtTPkCXfRIB7yTrPYylsaXpLwgMAAE7Qocom1ZpLeqTl9h2wwYpJj4hO31yhvf2xCrv4kqEXvvht
-	2qPEdU/pF4iHDbQ8D2OxlaE0DWpkNEuRHfZ0skme0pzYqOp2qQI572OGNv65rpSNHCYST+ze3775q
-	LM8Q00RE58y6Bdqv7XPkjNx51zlnoq9OXcN9RDE2OQqRI2uprdyOVDHF5Eno/6qCZX7SI/FTp4s8i
-	276MIWAqEcAv4eZeA1KsAE+iZtWb8wYBX2LTq38MMrxNQDm1Sbet/5+Ulqsn6k8d+EocxI2ZVIVhJ
-	TNWNQaBw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:Message-Id:Date:MIME-Version:Subject:References:
+	In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=NAU59vvsEmrYVpB8nv8x4xK1FUmZUpy8NnVvSLExP/A=; b=KRZBWFn46XPcPlZfM0xnL4N/El
+	QHKBH3+qgWyb8U5BNxh/BPXi2b1Ah8nS+iiA3yYAzhZneU/1Jk/9Aj+rNvyAjUV+8kHiFiRyroJwQ
+	qNFzl35nSPVY45+ogybORLyQ5XepjrETz1EV6RWhjRUwtqlbjWC6ZqXxFfKV7e4OKPOw7iwv0Ezqe
+	4PTb2Ls7M6J62sZ+07Y5oMKBSsa6ctEzH/onGG+kOUkHS3VMdUmC2faPdPMFGOQO6Aw29/HXXzW6R
+	t97OXejMzPp9JgU1V8Ta4sIAbCD/5bfwBc4p0qKckfjjuWqBJVxb/7y9w7wUQr3rrBk7QZFjmijb3
+	BqmFUV7w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x7bCJ-0000000EybF-0tDw;
-	Fri, 18 Sep 2026 16:12:23 +0000
-Received: from mail.cjdns.fr ([5.135.140.105])
+	id 1x7bR6-0000000F1PT-3PZY;
+	Fri, 18 Sep 2026 16:27:40 +0000
+Received: from forward502b.mail.yandex.net ([178.154.239.146])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x7bCG-0000000Eya0-3v7E;
-	Fri, 18 Sep 2026 16:12:22 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id BC9FD4E2396;
-	Fri, 18 Sep 2026 18:12:03 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cjdns.fr; s=dkim;
-	t=1789747932; h=from:subject:date:message-id:to:cc:mime-version:
-	 content-transfer-encoding; bh=KJDSnN54e6nHoVHI3hmkPcATaJ7eX7EbuynT3I/CgVs=;
-	b=IU+Sa0SC7beHmdw2MSK4P/O7aAu25uLSTXaSTrVN+eAouJYEIgoffuEjLOBxEzfFzK81rW
-	7mZU+yb8cGTbqN0Zz1aeJP161GroHj4nEUvB8Pu26vWvx6dKpi/lNH8u25r/31rbp5/WS3
-	Z2FlBKJhvmGQjt4M9hF7OiM/agJ3GnG7CKx0cknRfz7RTXB0GPXWhJnkJDmeSpfB/ZaAU9
-	fukxQSqr5y1FTtsWZcz4MAiYX3RJpLV2ZdaguX+C5wD0GeBkn5bwc/WhnaktDpNslUxV1t
-	ZmX0dfXfqP8A7t6y37nCA1L87ocdywUK6GV4STg2InvTf7jZ4iHzqUidNcq42Q==
-From: Caleb James DeLisle <cjd@cjdns.fr>
-To: netdev@vger.kernel.org
-Cc: daniel@makrotopia.org,
-	dqfext@gmail.com,
-	SkyLake.Huang@mediatek.com,
-	andrew@lunn.ch,
-	hkallweit1@gmail.com,
-	linux@armlinux.org.uk,
-	davem@davemloft.net,
-	edumazet@google.com,
-	kuba@kernel.org,
-	pabeni@redhat.com,
-	matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	Caleb James DeLisle <cjd@cjdns.fr>
-Subject: [PATCH net-next] net: phy: mediatek: do not match MT7530 PHY if 10/100 only
-Date: Fri, 18 Sep 2026 16:11:56 +0000
-Message-Id: <20260918161156.377822-1-cjd@cjdns.fr>
+	id 1x7bR3-0000000F1OS-2cth
+	for linux-mediatek@lists.infradead.org;
+	Fri, 18 Sep 2026 16:27:40 +0000
+Received: from mail-nwsmtp-mxback-production-main-59.sas.yp-c.yandex.net (mail-nwsmtp-mxback-production-main-59.sas.yp-c.yandex.net [IPv6:2a02:6b8:c11:501:0:640:c489:0])
+	by forward502b.mail.yandex.net (postfix) with ESMTPS id ADDA38CB2C;
+	Fri, 18 Sep 2026 19:27:27 +0300 (MSK)
+Received: from mail.yandex.ru (2a02:6b8:c1c:3147:0:640:b38b:0 [2a02:6b8:c1c:3147:0:640:b38b:0])
+	by mail-nwsmtp-mxback-production-main-59.sas.yp-c.yandex.net (mxback) with HTTPS id MRaVga1vk4Y0-2b5DlXr0;
+	Fri, 18 Sep 2026 19:27:27 +0300
+X-Yandex-Fwd: 1
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=0upti.me; s=mail;
+	t=1789748847; bh=NAU59vvsEmrYVpB8nv8x4xK1FUmZUpy8NnVvSLExP/A=;
+	h=Message-Id:References:Date:Cc:Subject:In-Reply-To:To:From;
+	b=HweAqYwyNdpwVVygzSr8jyfDApylvClVKAdQdRXnHjhOrZTfIaJ2odJ9veG7qwXHf
+	 leCj3QHs3Rowv1kljnhTV3Jb7ZASZ2cODom4+PMNFYyTfchrtBl7rtKg1crZgPlxSE
+	 V/1VbSXA/0pFnrr4D9hMsccdD3zhGP+N+emsSYco=
+Authentication-Results: mail-nwsmtp-mxback-production-main-59.sas.yp-c.yandex.net; dkim=pass header.i=@0upti.me
+Received: by mail-sendbernar-production-main-91.sas.yp-c.yandex.net (sendbernar) with HTTPS id 5f39ae46106f62be9806b612ed5e658f;
+	Fri, 18 Sep 2026 19:27:26 +0300
+From: Ilya K <me@0upti.me>
+To: Ben Greear <greearb@candelatech.com>
+Cc: linux-wireless@vger.kernel.org,
+	netdev@vger.kernel.org,
+	linux-mediatek@lists.infradead.org
+In-Reply-To: <1556871789207706@7dc9deb3-4292-4932-8568-de9b411208d8>
+References: <1767631788532094@64c4e675-cd08-4a74-816f-886742f9bfcd> <529a79bc-dab7-aa41-00bd-c47ecbefaa00@candelatech.com> <471221788538289@323ca970-5bd2-4c6b-b52d-2b863a718615> <3acf531c-bcc7-412b-b3bb-665069260e46@candelatech.com> <2028561788553569@f088f4ec-f441-47a1-b7e4-75a1052aa4df> <2418461788691106@84aa39c5-f501-4e64-8418-6a8b6eb88e21> <eb405366-6574-4e4c-a89d-363751ed848b@candelatech.com> <4175721788798939@f00554c7-d809-471c-9bcf-78e5d8eceab4> <1556871789207706@7dc9deb3-4292-4932-8568-de9b411208d8>
+Subject: Re:[bug] Triple whammy of mt7996e bugs on 7.2+
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-Last-TLS-Session-Version: TLSv1.3
+X-Mailer: Yamail [ http://yandex.ru ] 5.0
+Date: Fri, 18 Sep 2026 19:27:26 +0300
+Message-Id: <1443771789748846@4a8ec5ae-80ed-44bc-b7d3-6bc660c90136>
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260918_091221_158754_2490E4AA 
-X-CRM114-Status: GOOD (  11.92  )
+X-CRM114-CacheID: sfid-20260918_092737_859909_D1A23E71 
+X-CRM114-Status: UNSURE (   4.00  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,54 +75,20 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-An EcoNet SoC 10/100 PHY uses the same ID as the MT7530 PHY, but a true
-MT7530 PHY always has gigabit support so they can be distinguished by
-the presence of the ESTATUS_1000_TFULL flag. Add a match_phy_device
-which refuses to match if the PHY is not gigabit.
+Yet another update: 7.2.6 + firmware from mtk-openwrt-feeds is stable for a few days, but then crashes with
 
-Signed-off-by: Caleb James DeLisle <cjd@cjdns.fr>
----
-This supercedes [PATCH v6 net-next] net: phy: mediatek: support MT7530 PHYs on EN71221 MCM
-Link: https://lore.kernel.org/netdev/20260917130534.297930-1-cjd@cjdns.fr
-Because after the recent EEE disablement in the driver, it is found
-that the default MT7530 PHY driver does apparently work with the EcoNet
-MCM MT7530.
----
- drivers/net/phy/mediatek/mtk-ge.c | 13 +++++++++++++
- 1 file changed, 13 insertions(+)
+[98876.837441] mt7996e 0000:01:00.0: Message 00130022 (seq 14) timeout
+[98879.483965] mt7996e 0000:01:00.0: HW/SW Version: 0x8a108a10, Build Time: 20260721003616a
+[98879.592297] mt7996e 0000:01:00.0: WM Firmware Version: ____000000, Build Time: 20260721003609
+[98879.631743] mt7996e 0000:01:00.0: DSP Firmware Version: ____000000, Build Time: 20260721002848
+[98879.657097] mt7996e 0000:01:00.0: WA Firmware Version: ____000000, Build Time: 20260721003453
+[98902.835490] mt7996e 0000:01:00.0: Message 001a0034 (seq 11) timeout
+(repeating from there)
 
-diff --git a/drivers/net/phy/mediatek/mtk-ge.c b/drivers/net/phy/mediatek/mtk-ge.c
-index 96d8ac5154e5..f801966bb4ee 100644
---- a/drivers/net/phy/mediatek/mtk-ge.c
-+++ b/drivers/net/phy/mediatek/mtk-ge.c
-@@ -101,6 +101,18 @@ static int mt7530_phy_config_init(struct phy_device *phydev)
- 	return 0;
- }
- 
-+/*
-+ * MTK_GPHY_ID_MT7530 ID is also used for an EcoNet SoC FE phy, but that PHY
-+ * does not advertise ESTATUS_1000_TFULL. Match this driver only if the PHY
-+ * advertizes gigabit capability.
-+ */
-+static int mt753x_gphy_match(struct phy_device *phydev,
-+			     const struct phy_driver *phydrv)
-+{
-+	return genphy_match_phy_device(phydev, phydrv) &&
-+	       (phy_read(phydev, MII_ESTATUS) & ESTATUS_1000_TFULL) != 0;
-+}
-+
- static int mt7531_phy_config_init(struct phy_device *phydev)
- {
- 	mtk_gephy_config_init(phydev);
-@@ -135,6 +147,7 @@ static struct phy_driver mtk_gephy_driver[] = {
- 		 */
- 		.config_intr	= genphy_no_config_intr,
- 		.handle_interrupt = genphy_handle_interrupt_no_ack,
-+		.match_phy_device = mt753x_gphy_match,
- 		.suspend	= genphy_suspend,
- 		.resume		= genphy_resume,
- 		.read_page	= mtk_phy_read_page,
--- 
-2.39.5
+I've picked a few more things from the latest mt76-fixes, specifically these three:
+- https://lore.kernel.org/all/20260729173632.14387-3-enderaoelyther@gmail.com/
+- https://lore.kernel.org/all/20260823053739.186748-1-gongtao0607@gmail.com/
+- https://lore.kernel.org/all/20260901092232.461379-1-nbd@nbd.name/
 
+Building this now, we'll see how it goes.
 
