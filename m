@@ -4,61 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 57431C982D8
-	for <linux-mediatek@archiver.kernel.org>; Fri, 18 Sep 2026 14:39:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1306EC982D8
+	for <linux-mediatek@archiver.kernel.org>; Fri, 18 Sep 2026 16:12:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:To:From:Reply-To:Content-Type:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=RUEDhthLVuxR2718jDNKdRGiGEMQjCBAe/tRxn/+snQ=; b=z/mXObvdeJG248
-	y6bGsEWAfNeWGV+OV5OBP6kZ6EJ0gOU+Gc8tZTzkLjNNs3rRo4mqgEuD9YSiY6EizGn+vM1GM0wdT
-	D6YmUdU+7EwZmGmMi4Tyt6hjv77Q3mnPpBVuG+SqtSsJW5Cjvrs/BAMgRL2qqutbAhwrxy+6uXzoJ
-	tPlwDXHJ1zQvyxh7Ugo5W9shtqrGVIMPK3dlF57ysUxygvzjvlY0/W+m5Aq3DfdDBDLPua0e4lu+4
-	pzOBaKv/y0wa7cjvAqOGCb/hSLvq9yJgjse7iNKBSPu0KCdZ2mpljjuMLV0Uh+uhE+KiurGG28UHS
-	475lYhR0wpJmP4A+kCXA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=KJDSnN54e6nHoVHI3hmkPcATaJ7eX7EbuynT3I/CgVs=; b=sbbnIuaGyfi+aX9J4fx+KAI/Bp
+	bQtTPkCXfRIB7yTrPYylsaXpLwgMAAE7Qocom1ZpLeqTl9h2wwYpJj4hO31yhvf2xCrv4kqEXvvht
+	2qPEdU/pF4iHDbQ8D2OxlaE0DWpkNEuRHfZ0skme0pzYqOp2qQI572OGNv65rpSNHCYST+ze3775q
+	LM8Q00RE58y6Bdqv7XPkjNx51zlnoq9OXcN9RDE2OQqRI2uprdyOVDHF5Eno/6qCZX7SI/FTp4s8i
+	276MIWAqEcAv4eZeA1KsAE+iZtWb8wYBX2LTq38MMrxNQDm1Sbet/5+Ulqsn6k8d+EocxI2ZVIVhJ
+	TNWNQaBw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x7Zjz-0000000Ek8D-15X1;
-	Fri, 18 Sep 2026 14:39:03 +0000
-Received: from mxout2.routing.net ([134.0.28.12])
+	id 1x7bCJ-0000000EybF-0tDw;
+	Fri, 18 Sep 2026 16:12:23 +0000
+Received: from mail.cjdns.fr ([5.135.140.105])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x7Zjw-0000000Ek5e-1kbV;
-	Fri, 18 Sep 2026 14:39:02 +0000
-Received: from mxbulk.masterlogin.de (unknown [192.168.10.85])
-	by mxout2.routing.net (Postfix) with ESMTP id 7BE6D6143C;
-	Fri, 18 Sep 2026 14:38:54 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mailerdienst.de;
-	s=routing; t=1789742334;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=RUEDhthLVuxR2718jDNKdRGiGEMQjCBAe/tRxn/+snQ=;
-	b=DISv0Eq2ohtzhZJGzuiCqsNl7e4SYVmhSXbU++jql8NRjDfhxFkELnjmX49hLDpPxRByEF
-	ICUTJu4L/5bi44PdZE4m9reQj7D3g+x6jmYXj3G/06b4BhDYkpEh9HkNTySJhOfXItDs4y
-	WoSXn6ATyZRZmBJ5aUS7K1EGUGEOh84=
-Received: from frank-G5-5590 (fttx-pool-80.245.73.6.bambit.de [80.245.73.6])
-	by mxbulk.masterlogin.de (Postfix) with ESMTPSA id 486C31200CB;
-	Fri, 18 Sep 2026 14:38:54 +0000 (UTC)
-From: Frank Wunderlich <linux@fw-web.de>
-To: Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Subject: [PATCH 2/2] arm64: dts: mediatek: mt7988a-bpi-r4pro: label gpio-hogs
-Date: Fri, 18 Sep 2026 16:38:43 +0200
-Message-ID: <20260918143846.30458-3-linux@fw-web.de>
-X-Mailer: git-send-email 2.53.0
-In-Reply-To: <20260918143846.30458-1-linux@fw-web.de>
-References: <20260918143846.30458-1-linux@fw-web.de>
+	id 1x7bCG-0000000Eya0-3v7E;
+	Fri, 18 Sep 2026 16:12:22 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id BC9FD4E2396;
+	Fri, 18 Sep 2026 18:12:03 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cjdns.fr; s=dkim;
+	t=1789747932; h=from:subject:date:message-id:to:cc:mime-version:
+	 content-transfer-encoding; bh=KJDSnN54e6nHoVHI3hmkPcATaJ7eX7EbuynT3I/CgVs=;
+	b=IU+Sa0SC7beHmdw2MSK4P/O7aAu25uLSTXaSTrVN+eAouJYEIgoffuEjLOBxEzfFzK81rW
+	7mZU+yb8cGTbqN0Zz1aeJP161GroHj4nEUvB8Pu26vWvx6dKpi/lNH8u25r/31rbp5/WS3
+	Z2FlBKJhvmGQjt4M9hF7OiM/agJ3GnG7CKx0cknRfz7RTXB0GPXWhJnkJDmeSpfB/ZaAU9
+	fukxQSqr5y1FTtsWZcz4MAiYX3RJpLV2ZdaguX+C5wD0GeBkn5bwc/WhnaktDpNslUxV1t
+	ZmX0dfXfqP8A7t6y37nCA1L87ocdywUK6GV4STg2InvTf7jZ4iHzqUidNcq42Q==
+From: Caleb James DeLisle <cjd@cjdns.fr>
+To: netdev@vger.kernel.org
+Cc: daniel@makrotopia.org,
+	dqfext@gmail.com,
+	SkyLake.Huang@mediatek.com,
+	andrew@lunn.ch,
+	hkallweit1@gmail.com,
+	linux@armlinux.org.uk,
+	davem@davemloft.net,
+	edumazet@google.com,
+	kuba@kernel.org,
+	pabeni@redhat.com,
+	matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	Caleb James DeLisle <cjd@cjdns.fr>
+Subject: [PATCH net-next] net: phy: mediatek: do not match MT7530 PHY if 10/100 only
+Date: Fri, 18 Sep 2026 16:11:56 +0000
+Message-Id: <20260918161156.377822-1-cjd@cjdns.fr>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
+X-Last-TLS-Session-Version: TLSv1.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260918_073900_691205_A1DA7FDD 
-X-CRM114-Status: GOOD (  10.28  )
+X-CRM114-CacheID: sfid-20260918_091221_158754_2490E4AA 
+X-CRM114-Status: GOOD (  11.92  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,108 +74,57 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: devicetree@vger.kernel.org, Linus Walleij <linusw@kernel.org>, Bartosz Golaszewski <bartosz.golaszewski@oss.qualcomm.com>, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, Andy Shevchenko <andriy.shevchenko@linux.intel.com>, Mika Westerberg <mika.westerberg@linux.intel.com>, linux-arm-kernel@lists.infradead.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Frank Wunderlich <frank-w@public-files.de>
+An EcoNet SoC 10/100 PHY uses the same ID as the MT7530 PHY, but a true
+MT7530 PHY always has gigabit support so they can be distinguished by
+the presence of the ESTATUS_1000_TFULL flag. Add a match_phy_device
+which refuses to match if the PHY is not gigabit.
 
-GPIO hogs were tagged with name "?" in recent kernel versions (7.1+) due to
-commit d1d564ec4992 ("gpio: move hogs into GPIO core").
-
-7.0 showed the unit-name which behaviour is restored by patch [1], but
-labeling the hog directly makes things easier.
-
-gpiochip0: 84 GPIOs, parent: platform/1001f000.pinctrl, pinctrl_moore:
- gpio-0   (                    |tx-disable          ) in  lo
- gpio-1   (                    |mod-def0            ) in  hi IRQ ACTIVE LOW
- gpio-2   (                    |los                 ) in  hi IRQ
- gpio-12  (                    |cd                  ) in  lo IRQ ACTIVE LOW
- gpio-13  (                    |reset               ) in  hi IRQ ACTIVE LOW
- gpio-14  (                    |WPS                 ) in  hi IRQ ACTIVE LOW
- gpio-21  (                    |tx-disable          ) in  lo
- gpio-63  (                    |?                   ) out hi
- gpio-69  (                    |mod-def0            ) in  hi IRQ ACTIVE LOW
- gpio-70  (                    |los                 ) in  hi IRQ
- gpio-79  (                    |?                   ) out lo
- gpio-82  (                    |PHY reset           ) out hi ACTIVE LOW
- gpio-83  (                    |PHY reset           ) out hi ACTIVE LOW
-
-after the change:
-
-root@bpi-r4:~# cat /sys/kernel/debug/gpio
-gpiochip0: 84 GPIOs, parent: platform/1001f000.pinctrl, pinctrl_moore:
- gpio-0   (                    |tx-disable          ) in  lo
- gpio-1   (                    |mod-def0            ) in  hi IRQ ACTIVE LOW
- gpio-2   (                    |los                 ) in  hi IRQ
- gpio-12  (                    |cd                  ) in  lo IRQ ACTIVE LOW
- gpio-13  (                    |reset               ) in  hi IRQ ACTIVE LOW
- gpio-14  (                    |WPS                 ) in  hi IRQ ACTIVE LOW
- gpio-21  (                    |tx-disable          ) in  lo
- gpio-63  (                    |pcie3-cn14-hog      ) out hi
- gpio-69  (                    |mod-def0            ) in  hi IRQ ACTIVE LOW
- gpio-70  (                    |los                 ) in  hi IRQ
- gpio-79  (                    |pcie2-cn15-hog      ) out lo
- gpio-82  (                    |PHY reset           ) out hi ACTIVE LOW
- gpio-83  (                    |PHY reset           ) out hi ACTIVE LOW
-
-[1] https://git.kernel.org/pub/scm/linux/kernel/git/brgl/linux.git/commit/?id=d54a489c8c4b627775445d54a6cbd32f209bda8f
-"gpiolib: use of_node_name if line-name is missing"
-
-Fixes: d1d564ec4992 ("gpio: move hogs into GPIO core")
-Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
+Signed-off-by: Caleb James DeLisle <cjd@cjdns.fr>
 ---
- .../boot/dts/mediatek/mt7988a-bananapi-bpi-r4-pro-cn13.dtso      | 1 +
- .../boot/dts/mediatek/mt7988a-bananapi-bpi-r4-pro-cn14.dtso      | 1 +
- .../boot/dts/mediatek/mt7988a-bananapi-bpi-r4-pro-cn15.dtso      | 1 +
- .../boot/dts/mediatek/mt7988a-bananapi-bpi-r4-pro-cn18.dtso      | 1 +
- 4 files changed, 4 insertions(+)
+This supercedes [PATCH v6 net-next] net: phy: mediatek: support MT7530 PHYs on EN71221 MCM
+Link: https://lore.kernel.org/netdev/20260917130534.297930-1-cjd@cjdns.fr
+Because after the recent EEE disablement in the driver, it is found
+that the default MT7530 PHY driver does apparently work with the EcoNet
+MCM MT7530.
+---
+ drivers/net/phy/mediatek/mtk-ge.c | 13 +++++++++++++
+ 1 file changed, 13 insertions(+)
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4-pro-cn13.dtso b/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4-pro-cn13.dtso
-index 973b76ba0cbf..e9c322df15fc 100644
---- a/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4-pro-cn13.dtso
-+++ b/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4-pro-cn13.dtso
-@@ -16,5 +16,6 @@ / {
- };
+diff --git a/drivers/net/phy/mediatek/mtk-ge.c b/drivers/net/phy/mediatek/mtk-ge.c
+index 96d8ac5154e5..f801966bb4ee 100644
+--- a/drivers/net/phy/mediatek/mtk-ge.c
++++ b/drivers/net/phy/mediatek/mtk-ge.c
+@@ -101,6 +101,18 @@ static int mt7530_phy_config_init(struct phy_device *phydev)
+ 	return 0;
+ }
  
- &{/soc/pinctrl@1001f000/pcie-2-hog} {
-+	line-name = "pcie2-cn13-hog";
- 	output-high;
- };
-diff --git a/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4-pro-cn14.dtso b/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4-pro-cn14.dtso
-index 90b2a64459c3..9d8de737ca40 100644
---- a/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4-pro-cn14.dtso
-+++ b/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4-pro-cn14.dtso
-@@ -16,5 +16,6 @@ / {
- };
- 
- &{/soc/pinctrl@1001f000/pcie-3-hog} {
-+	line-name = "pcie3-cn14-hog";
- 	output-high;
- };
-diff --git a/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4-pro-cn15.dtso b/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4-pro-cn15.dtso
-index 9750916042de..57ee7dacdd78 100644
---- a/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4-pro-cn15.dtso
-+++ b/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4-pro-cn15.dtso
-@@ -16,5 +16,6 @@ / {
- };
- 
- &{/soc/pinctrl@1001f000/pcie-2-hog} {
-+	line-name = "pcie2-cn15-hog";
- 	output-low;
- };
-diff --git a/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4-pro-cn18.dtso b/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4-pro-cn18.dtso
-index 9830fb0fd97a..7830980ac95a 100644
---- a/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4-pro-cn18.dtso
-+++ b/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4-pro-cn18.dtso
-@@ -16,5 +16,6 @@ / {
- };
- 
- &{/soc/pinctrl@1001f000/pcie-3-hog} {
-+	line-name = "pcie3-cn18-hog";
- 	output-low;
- };
++/*
++ * MTK_GPHY_ID_MT7530 ID is also used for an EcoNet SoC FE phy, but that PHY
++ * does not advertise ESTATUS_1000_TFULL. Match this driver only if the PHY
++ * advertizes gigabit capability.
++ */
++static int mt753x_gphy_match(struct phy_device *phydev,
++			     const struct phy_driver *phydrv)
++{
++	return genphy_match_phy_device(phydev, phydrv) &&
++	       (phy_read(phydev, MII_ESTATUS) & ESTATUS_1000_TFULL) != 0;
++}
++
+ static int mt7531_phy_config_init(struct phy_device *phydev)
+ {
+ 	mtk_gephy_config_init(phydev);
+@@ -135,6 +147,7 @@ static struct phy_driver mtk_gephy_driver[] = {
+ 		 */
+ 		.config_intr	= genphy_no_config_intr,
+ 		.handle_interrupt = genphy_handle_interrupt_no_ack,
++		.match_phy_device = mt753x_gphy_match,
+ 		.suspend	= genphy_suspend,
+ 		.resume		= genphy_resume,
+ 		.read_page	= mtk_phy_read_page,
 -- 
-2.53.0
+2.39.5
 
 
