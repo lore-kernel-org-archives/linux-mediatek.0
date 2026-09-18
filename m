@@ -4,105 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 39C69C88E75
-	for <linux-mediatek@archiver.kernel.org>; Fri, 18 Sep 2026 04:58:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D6B56C88E75
+	for <linux-mediatek@archiver.kernel.org>; Fri, 18 Sep 2026 06:42:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=O2vctS1HDPIT/X25n9pLYfCPg6VUQlM6OzxcQLhiTME=; b=n7dq3XSbOV5OpQH4rZKqSRrcAI
-	EmJSYuy1Y+WRbVpL5CoZ5R8Cf1NxcWKPelgV+hIfjdxScZf5p1MI+43mWWRth7pcBcMN4KECSaoKG
-	LBNrW/0kiEnCH5J4Gdz7fjaMf5dG+JWbgkHlEq8CiblcGfDid4RUc5VoSH4B+14UpQv0BIR75YKCl
-	KCg1hhB2o6aBroewIPoWMhBHl4yMjnlID+UUPGtWGdQ3kjROdx3TJg4yC6OibVhrol+u6SfJa0Uvx
-	QyOiLm+xY2+n5yDdrkLRdgSa4Ze6a17Q2Im8naz182muY+af+Z5wzMvBx5JAbVb9YUrCepspHmORC
-	9I6lLBTg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=2b/hfHMHk07uLaHej3EfpeP759CMUcoK+OgHBoYy/5U=; b=l0bL4ZNehL/0PBpc4pchJk5aTo
+	vE+ibevBDKf6pzEoRUWeD1LCKorL0WCqvnuJJb3i6VDkUI4BFHHh9iWyce31KoAyLcnFdjrCEikVE
+	5GkJklfSjXCLonBarcJHa/hRB0k094BoDCfbXOMsP6YsMfbIdW6DTtFCWie2NroxHghRhJbAH34mh
+	eJVxFfWOXQBsgpYCcbSAA1nMX+HOj7mTxWfOPaNNG+vruIA1fXbCvcWTmEoKTSCQPFi8RD0NZNvZe
+	0XGvIENUQahsxeH5Xo6TimN/3met/qBBjEW7jbpQB5e1ZsPi4TS3vBKzSoGrZPnTPSWOBY2t1gojs
+	3jnCgkhA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x7Qfp-0000000DU25-3BiE;
-	Fri, 18 Sep 2026 04:58:09 +0000
-Received: from mail-oi2-x09.google.com ([2607:f8b0:4864:32::9])
+	id 1x7SIj-0000000DbQZ-26M9;
+	Fri, 18 Sep 2026 06:42:25 +0000
+Received: from mgamail.intel.com ([192.198.163.14])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x7Qfk-0000000DTzJ-22Kl
-	for linux-mediatek@lists.infradead.org;
-	Fri, 18 Sep 2026 04:58:06 +0000
-Received: by mail-oi2-x09.google.com with SMTP id 5614622812f47-4c650fea78aso173192b6e.0
-        for <linux-mediatek@lists.infradead.org>; Thu, 17 Sep 2026 21:58:04 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1789707483; x=1790312283; darn=lists.infradead.org;
-        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
-         :content-type:mime-version:subject:date:from:from:to:cc:subject:date
-         :message-id:reply-to:content-type;
-        bh=O2vctS1HDPIT/X25n9pLYfCPg6VUQlM6OzxcQLhiTME=;
-        b=Pe6Vi4bLZpLiYhs1wDqS5tmRDgrcn1YPtCeLTIsEx24D+LeP5RiWMqpsX9oD3OOX99
-         hX6MZCXAIsGrUW+i5bxCzpxsyjZYGxw8sqKm7GPkh8P/b4M/8z6hsrZRkw9xZjhv+Ubu
-         pHK/p2lTbSGUcgsL0FjAQSwlczwOSf5p+lpM11eFYT9auLZIUkU91NXCcLpFBECjfNHr
-         dB6u8Ru+mhCE1HTyYbolnqY4riAA2GiagtPSRg7G8pMz2Z1CkxNz5gk+VhwQLx/Fh2fL
-         aFQOtLcaGo4TiYfdWMUNovLek7mygMt0UpVzzk9qXetfPFQVMWWMqlMMzzvbSP5yoife
-         7ZdA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1789707483; x=1790312283;
-        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
-         :content-type:mime-version:subject:date:from:x-gm-gg
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
-         :content-type;
-        bh=O2vctS1HDPIT/X25n9pLYfCPg6VUQlM6OzxcQLhiTME=;
-        b=Tv0CcFyCPSdM7CCaYC6agEvOokLFeshGDg0wzL+6lm9Ll44krHn/Lm0gaBwFLez/oV
-         bxktZX+eINiNpT+BkEBCpVVKNVJj4neiuF2UWIa9jXV4NLbQa9MpNwghafxBAeW4dCoV
-         ucD+tP2eRA/lA+bTqCa8qbIEbcvCjWaVr/yegucF5jLEGMeRnwOtRM8goNJ/xl2J54ke
-         mALRVZdRXxBeeBjUbbdJMUnsJwB4Muos8nRJPbuZuIJIhAFKdYgOmrZb2vdgoaZja9+N
-         D5TQZeTEy7pdZSG8Spu24g6ALS812gCnS07zrGlHqNkRwT9rnIbWNNF7ggq1tRyaHI0J
-         7q/g==
-X-Forwarded-Encrypted: i=1; AKwUvBwRD5K16BJ8t+7blE+Hlf8inddiSI97aWgsapqrsthbz35e/RoR6wKKnOc+fnxvwhlGQevAjCaTnvXKCjlWdQ==@lists.infradead.org
-X-Gm-Message-State: AFuF++mPaEHkr9SlDad3CKNxpb443NfJ7NKJf/0zlMcmuGgUDfaGLFL0
-	fyNcGGFn5prgAb68glNBdT24NBRjIxgz9RNnDd0nFaQux8ZnGWWwiJi3
-X-Gm-Gg: AYBFou0nFtpI2xNuldKkVCgrgMYfTCZEP9eI3os+gt91m9kKkfwZklOTa5GVTyZ9MmK
-	sXj+XGt9/a+/Gm3i7y3zCywRP1512wpoqBi/2WPJ48wozmjQqQIOmbPlRIHQigQg2OrvUSJNL+Q
-	DfTVe3Q5cRIFNMx5l5e37yIjHPJqD6iMBIKp2xAwRVvMY9OCLonsxVTMTd/wJxGjwxMjvOMJmv/
-	rLOJZlEt+O+5IvNeJJNIKvHFNzB51lMYJbDd8ieKT1ywi+1P6aslhkE4x0Z1B4B4t9jsthFtWtc
-	oSNb6Pu7sn/7+vsO0wPkrJ6HaAfzlx7QFDzsCeL9HfGtuT3soXHcrtfS090dh6SjDFitPd1+Zzt
-	0Sx/iueQJhJAwbYnFs5wxmTRacWN1dTnnnqEiiyDUTKOFVDK4FZsANG0zTiNj97e+WM62qeuLyr
-	vuEKC7lvnMwQAWgRxnT9fk7kTXOUeVyonmVTbm5481wHd+ysXy8JL+1fgwA0uUXSDnww==
-X-Received: by 2002:a05:6820:198e:b0:6ba:1356:2038 with SMTP id 006d021491bc7-6ca9dc81d82mr1247500eaf.65.1789707483400;
-        Thu, 17 Sep 2026 21:58:03 -0700 (PDT)
-Received: from [192.168.18.164] ([2600:8804:5716:d800::b712])
-        by smtp.gmail.com with ESMTPSA id 586e51a60fabf-48739da0d0dsm256318fac.12.2026.09.17.21.58.00
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 17 Sep 2026 21:58:02 -0700 (PDT)
-From: Ryan Brue <ryanbrue.dev@gmail.com>
-Date: Thu, 17 Sep 2026 23:57:47 -0500
-Subject: [PATCH 2/2] rtc: mt6397: expose the spare bytes of the alarm
- registers as nvmem
+	id 1x7SIg-0000000DbOi-1Pqz;
+	Fri, 18 Sep 2026 06:42:23 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1789713742; x=1821249742;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=Q8qkLWFRIEs3LhO9JJsC9itRXPMawbI1tnHmSNR1qjU=;
+  b=FpGqt8CXtWKlt0YDM6BsZnxMl9dsdxlHtg2RdYqJFkK6oA7O6ZO/xjUS
+   Oef3zJoIARQFFNA+sRMDh6HP4GVzQBibkjQASg+ao9G8OiYS3F2AE0UwY
+   VjJLovinEd0uD2GpLnbK2xpsmg6lLWCulVIp2rWkJoDFgYipyZoq1ZzUX
+   jPikc2pcmrhUf/PSSLmPqbp3JU2Dmv+ZyjsjlVwKATh1uUPOAVv/eT8X9
+   GA+YaIZJyc7sT4E5OJ/I3bzXjP0akVUxlKs0KEBUaL4jBSBBF2rEf79hM
+   LzeNN83EPDlrmhi9b7dq9j0VDxw0Jnl3tGVf0b8JWGY/WS2mZswOb+ccz
+   g==;
+X-CSE-ConnectionGUID: pbMM4p2mQCaI3Dh/PwVTYw==
+X-CSE-MsgGUID: kPJi8EFCRm2Cdnxh3704ag==
+X-IronPort-AV: E=McAfee;i="6800,10657,11905"; a="90217382"
+X-IronPort-AV: E=Sophos;i="6.27,103,1787036400"; 
+   d="scan'208";a="90217382"
+Received: from fmviesa012.fm.intel.com ([10.60.135.152])
+  by fmvoesa108.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 17 Sep 2026 23:42:21 -0700
+X-CSE-ConnectionGUID: XqPyq6tVQjmBYMsrb8i6uA==
+X-CSE-MsgGUID: WKZRfvWWQ0ScMHejZX/UkA==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.27,103,1787036400"; 
+   d="scan'208";a="2433853"
+Received: from carterle-desk.ger.corp.intel.com (HELO localhost) ([10.245.245.170])
+  by smtpauth.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 17 Sep 2026 23:42:18 -0700
+Date: Fri, 18 Sep 2026 09:42:11 +0300
+From: Andy Shevchenko <andriy.shevchenko@intel.com>
+To: Ryan Brue <ryanbrue.dev@gmail.com>
+Cc: Jonathan Cameron <jic23@kernel.org>,
+	David Lechner <dlechner@baylibre.com>,
+	Nuno =?iso-8859-1?Q?S=E1?= <nuno.sa@analog.com>,
+	Andy Shevchenko <andy@kernel.org>, Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Lee Jones <lee@kernel.org>, linux-iio@vger.kernel.org,
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, mfd@lists.linux.dev,
+	Roman Vivchar <rva333@protonmail.com>,
+	Luca Leonardo Scorcia <l.scorcia@gmail.com>
+Subject: Re: [PATCH 0/3] iio: adc: add mt6397 PMIC AUXADC support
+Message-ID: <aqzdQ64Y_mkEdLZU@ashevche-desk.local>
+References: <20260915-rbrue-suez-upstreaming-mt6397-auxadc-v1-0-d35d2ac3d6f0@gmail.com>
+ <aqpmgliQW7FW53o5@ashevche-desk.local>
+ <2d1b80f2-53f6-4ed6-81bf-e35c0a9efb26@gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20260917-rbrue-suez-upstreaming-mt6397-rtc-nvmem-v1-2-558b8f95cfbc@gmail.com>
-References: <20260917-rbrue-suez-upstreaming-mt6397-rtc-nvmem-v1-0-558b8f95cfbc@gmail.com>
-In-Reply-To: <20260917-rbrue-suez-upstreaming-mt6397-rtc-nvmem-v1-0-558b8f95cfbc@gmail.com>
-To: Sen Chu <sen.chu@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, 
- Macpaul Lin <macpaul.lin@mediatek.com>, Lee Jones <lee@kernel.org>, 
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Eddie Huang <eddie.huang@mediatek.com>, 
- Alexandre Belloni <alexandre.belloni@bootlin.com>
-Cc: linux-pm@vger.kernel.org, mfd@lists.linux.dev, 
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
- linux-rtc@vger.kernel.org, Ryan Brue <ryanbrue.dev@gmail.com>
-X-Mailer: b4 0.16.0
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1789707469; l=5079;
- i=ryanbrue.dev@gmail.com; s=20260906; h=from:subject:message-id;
- bh=1ZbFpDNmPpKPUw8gavi59S7TugQ/2BR2pAG4PVbmBvQ=;
- b=kj88aZa+h4fhuHQwM8Bk8GTy18OwBUHg5C5G/Eakbrvp92M6E9GMdVV5SYpbTN1UoeBxPc9GB
- pvRQ/rrqw2PDudl5VHFcBTBuqsjCkWZg2xKtUjEWDMv3azffj7wA3JR
-X-Developer-Key: i=ryanbrue.dev@gmail.com; a=ed25519;
- pk=KsUvVaP//v/2q+ZBuacc7cLbsyEYn+AD71Sn28oZWKo=
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <2d1b80f2-53f6-4ed6-81bf-e35c0a9efb26@gmail.com>
+Organization: Intel Finland Oy - BIC 0357606-4 - c/o Alberga Business Park, 6
+ krs, Bertel Jungin Aukio 5, 02600 Espoo
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260917_215804_553477_D2257880 
-X-CRM114-Status: GOOD (  23.45  )
+X-CRM114-CacheID: sfid-20260917_234222_385101_D7978FA2 
+X-CRM114-Status: GOOD (  33.15  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -117,171 +98,66 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Each alarm field lives in the low bits of its register and the driver
-masks its writes accordingly, so the high byte of four of them is storage
-the RTC never touches. MediaTek names these RTC_NEW_SPARE0 to
-RTC_NEW_SPARE3 and gives the first to a fuel gauge, which is how its PMIC
-battery drivers carry a state of charge over a reboot.
+On Thu, Sep 17, 2026 at 03:24:05PM -0500, Ryan Brue wrote:
+> On 9/16/26 4:50 AM, Andy Shevchenko wrote:
+> > On Tue, Sep 15, 2026 at 11:15:25PM -0500, Ryan Brue wrote:
+> > > The MediaTek mt6397 PMIC has a 10-bit AUXADC that nothing in-tree can
+> > > reach. On boards built around it that ADC is the only path to the battery:
+> > > the SoC's AUXADC is wired to board thermistors, and the charger ICs these
+> > > boards use have no ADC at all, so without it there is no pack voltage and
+> > > no state of charge.
+> > This doesn't explain why a brand new driver? Perhaps we have existing code that
+> > may be updated to support this device?
+> I considered adding mt6397 support to either mt6323-auxadc or mt6359-auxadc,
+> and both had problems.
+> 
+> Both mt6323-auxadc and mt6359-auxadc select channels through a request
+> register (1 bit per channel), while mt6397 uses a 4-bit numeric field CHSEL
+> in CON1 (10:7), and then pulses a START bit (CON1 bit 0). That was the
+> biggest reason I made the new driver.
+> 
+> For mt6323-auxadc, which is the closest I could find to the mt6397
+> (CON0..CON27), it has 13 more registers than the mt6397 (CON0..CON14). It
+> uses CON22 for its request register, and reads the result value from the
+> same register as the ready bit. We don't do that - the mt6397 has a factory
+> calibrated value for each channel at 0x16 higher than the raw value. mt6323
+> also has a 1800 mV / 15 bit scale / resolution while we have 1200 mV / 10
+> bits. We also have some per-channel preparation that we have to do before
+> the burst, that the mt6323 doesn't have to do.
+> 
+> For mt6359-auxadc, it has a more generic framework for describing the
+> AUXADC, but it assumes requests are channel-per-bit, and so we would have to
+> basically ignore req_idx, req_mask, rdy_idx, and rdy_mask.
 
-Offer all four as a battery-backed nvmem provider, so that a consumer does
-not have to reach into this block behind the driver's back. Doing it here
-is what makes it safe: a write lands under the same lock the alarm paths
-take, so it can neither be lost inside mtk_rtc_set_alarm()'s
-read-modify-write nor fire the write trigger in the middle of one.
+> We also have our own software sampling, which the vendor does too (Amazon
+> Fire OS based on Linux 3.18). We'd have to have our own sampling callback to
+> do it.
 
-The nvmem core does not range check a cell against the provider size, so
-the callbacks check the offset themselves.
+If it's not an upstream, we do not care.
 
-Tested on an MT6397; MediaTek's spare map for mt6323 matches, and the
-alarm field masks are common to every compatible this driver binds.
+> I drafted two other versions of these patches adding mt6397 support to both
+> of those drivers, but the differences meant I had to add a lot of extra
+> boilerplate to each driver and to me it didn't make sense.
+> 
+> In v2 I will add the justification to the cover letter and commits for why I
+> chose a new driver.
 
-Assisted-by: LLM
-Signed-off-by: Ryan Brue <ryanbrue.dev@gmail.com>
----
- drivers/rtc/rtc-mt6397.c       | 91 +++++++++++++++++++++++++++++++++++++++++-
- include/linux/mfd/mt6397/rtc.h |  7 ++++
- 2 files changed, 97 insertions(+), 1 deletion(-)
+Yes, please. Always do that when submitting a brand new driver that might sound
+like a (partially) compatible with something already existing.
 
-diff --git a/drivers/rtc/rtc-mt6397.c b/drivers/rtc/rtc-mt6397.c
-index 3d857681f760..d6e156516aa6 100644
---- a/drivers/rtc/rtc-mt6397.c
-+++ b/drivers/rtc/rtc-mt6397.c
-@@ -4,6 +4,8 @@
- * Author: Tianping.Fang <tianping.fang@mediatek.com>
- */
- 
-+#include <linux/array_size.h>
-+#include <linux/bitfield.h>
- #include <linux/err.h>
- #include <linux/interrupt.h>
- #include <linux/mfd/mt6397/core.h>
-@@ -243,10 +245,91 @@ static const struct rtc_class_ops mtk_rtc_ops = {
- 	.set_alarm  = mtk_rtc_set_alarm,
- };
- 
-+/*
-+ * The spare byte of each of these registers, in the order a board addresses
-+ * them as RTC_NEW_SPARE0 to RTC_NEW_SPARE3.
-+ */
-+static const u32 mtk_rtc_spare_reg[] = {
-+	RTC_AL_HOU, RTC_AL_DOM, RTC_AL_DOW, RTC_AL_MTH,
-+};
-+
-+static int mtk_rtc_nvram_read(void *priv, unsigned int offset, void *val,
-+			      size_t bytes)
-+{
-+	struct mt6397_rtc *rtc = priv;
-+	u8 *buf = val;
-+	u32 data;
-+	int ret = 0;
-+
-+	if (offset >= ARRAY_SIZE(mtk_rtc_spare_reg) ||
-+	    bytes > ARRAY_SIZE(mtk_rtc_spare_reg) - offset)
-+		return -EINVAL;
-+
-+	mutex_lock(&rtc->lock);
-+
-+	while (bytes--) {
-+		ret = regmap_read(rtc->regmap,
-+				  rtc->addr_base + mtk_rtc_spare_reg[offset++],
-+				  &data);
-+		if (ret)
-+			break;
-+
-+		*buf++ = FIELD_GET(RTC_SPARE_MASK, data);
-+	}
-+
-+	mutex_unlock(&rtc->lock);
-+
-+	return ret;
-+}
-+
-+static int mtk_rtc_nvram_write(void *priv, unsigned int offset, void *val,
-+			       size_t bytes)
-+{
-+	struct mt6397_rtc *rtc = priv;
-+	u8 *buf = val;
-+	int ret = 0;
-+
-+	if (offset >= ARRAY_SIZE(mtk_rtc_spare_reg) ||
-+	    bytes > ARRAY_SIZE(mtk_rtc_spare_reg) - offset)
-+		return -EINVAL;
-+
-+	mutex_lock(&rtc->lock);
-+
-+	while (bytes--) {
-+		ret = regmap_update_bits(rtc->regmap,
-+					 rtc->addr_base + mtk_rtc_spare_reg[offset++],
-+					 RTC_SPARE_MASK,
-+					 FIELD_PREP(RTC_SPARE_MASK, *buf++));
-+		if (ret)
-+			goto out;
-+	}
-+
-+	/*
-+	 * None of it reaches the always-on domain until the write trigger,
-+	 * which commits every pending alarm register at once -- so this runs
-+	 * under the same lock the alarm paths take, rather than landing in
-+	 * the middle of one of them.
-+	 */
-+	ret = mtk_rtc_write_trigger(rtc);
-+out:
-+	mutex_unlock(&rtc->lock);
-+
-+	return ret;
-+}
-+
- static int mtk_rtc_probe(struct platform_device *pdev)
- {
- 	struct resource *res;
- 	struct mt6397_chip *mt6397_chip = dev_get_drvdata(pdev->dev.parent);
-+	struct nvmem_config nvmem_cfg = {
-+		.name = "mt6397_rtc_spare",
-+		.word_size = 1,
-+		.stride = 1,
-+		.size = ARRAY_SIZE(mtk_rtc_spare_reg),
-+		.type = NVMEM_TYPE_BATTERY_BACKED,
-+		.reg_read = mtk_rtc_nvram_read,
-+		.reg_write = mtk_rtc_nvram_write,
-+	};
- 	struct mt6397_rtc *rtc;
- 	int ret;
- 
-@@ -293,7 +376,13 @@ static int mtk_rtc_probe(struct platform_device *pdev)
- 	rtc->rtc_dev->start_secs = mktime64(1968, 1, 2, 0, 0, 0);
- 	rtc->rtc_dev->set_start_time = true;
- 
--	return devm_rtc_register_device(rtc->rtc_dev);
-+	ret = devm_rtc_register_device(rtc->rtc_dev);
-+	if (ret)
-+		return ret;
-+
-+	nvmem_cfg.priv = rtc;
-+
-+	return devm_rtc_nvmem_register(rtc->rtc_dev, &nvmem_cfg);
- }
- 
- #ifdef CONFIG_PM_SLEEP
-diff --git a/include/linux/mfd/mt6397/rtc.h b/include/linux/mfd/mt6397/rtc.h
-index 27883af44f87..f4da579ec638 100644
---- a/include/linux/mfd/mt6397/rtc.h
-+++ b/include/linux/mfd/mt6397/rtc.h
-@@ -49,6 +49,13 @@
- 
- #define RTC_AL_SEC             0x0018
- 
-+/* The high byte of four of the alarms is spare, always-on storage */
-+#define RTC_AL_HOU             0x001c
-+#define RTC_AL_DOM             0x001e
-+#define RTC_AL_DOW             0x0020
-+#define RTC_AL_MTH             0x0022
-+#define RTC_SPARE_MASK         GENMASK(15, 8)
-+
- #define RTC_AL_SEC_MASK        0x003f
- #define RTC_AL_MIN_MASK        0x003f
- #define RTC_AL_HOU_MASK        0x001f
+> If you'd like me to instead send the exploratory patches I made adapting
+> mt6323-auxadc or mt6359-auxadc, let me know. I'm fine if it ends up seeming
+> like we should adapt one of the existing drivers, but I think the mechanism
+> for controlling this AUXADC is unique and merits its own driver.
+> 
+> Thanks again for the review, I am going through each one, and sorry for the
+> delay. I'm rather new to kernel development.
+
+No problem, and welcome!
 
 -- 
-2.55.0
+With Best Regards,
+Andy Shevchenko
+
 
 
