@@ -4,69 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F2EE7C982D0
-	for <linux-mediatek@archiver.kernel.org>; Fri, 18 Sep 2026 01:21:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B6B17C982D0
+	for <linux-mediatek@archiver.kernel.org>; Fri, 18 Sep 2026 01:38:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
 	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
 	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=69bnCVQM5n3sV/AN5VtraQEwkW0YanBMdQC8pbKcydM=; b=N3i2h6kBoRE297s70O9wb5XfBA
-	gV77gz2sXWVZGSzFCPmXacE/0UPdv5dV0FG5X5/BPtmIy15WVY2PcX1ZQvjYU0/ygVN9WyGBHKYY5
-	VMjs/i4Y/T0trSlvbc9R41+P8fjAfJKNToazd33ydPf3VOS05WLTXB1UqzN27MC+Qm70zuePNbaho
-	7fPppsKR9hOEtqqAvjrjybxweUkhtk/FkH6mVel1ES7fCqz00S/4IWLpVs9mt3hNBdYE1XIz1URJv
-	w/IDzJaEK4RetwlpHjZLjwwUitUkonLkHI9RwPJA53e/i6R4vDyDi5KePk6uSozxtzfEQWvL9snuD
-	uGiE1+oQ==;
+	bh=ANSYXhkR59VMjSJxw7ihndcWaAezvhBNEHzaW2IaT8Q=; b=ZM6daW6SSGlAPuELCYn14Ftx80
+	zyl7t6e4w3XvILLa+0nwXPi9mqlfSXpm/W1L4iCesQZPx+XfWNKkoUwhruo3unTMsDkjcfYw2aF57
+	9RH5GVsI30dPKXFpsELBK4nIVKjR07zzfCotKCVytEbI7YV6ixRyjiAbVFewgYM+yY8v6i3CBH3Tz
+	U4p/7tP6goUHNESsqF8pX/+MQpWrexZeVC3BdkoWBwCjINrQdOPKzrT6LAazt4Neao8gBK4VqerKd
+	u5CzehpbgZc0nlDvrDbcTBRg5h7WLbFTwq8gh/hgwtfaidr3MKOC4Aus33D1B+LbMnhhvW7zyvDdc
+	J40YPpEw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x7NI3-0000000D8Il-1u3i;
-	Fri, 18 Sep 2026 01:21:23 +0000
-Received: from xs1.mindbit.ro ([80.86.107.70] helo=mail.mindbit.ro)
+	id 1x7NYy-0000000DAwm-3EtY;
+	Fri, 18 Sep 2026 01:38:52 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x7NI0-0000000D8Gz-1BEf;
-	Fri, 18 Sep 2026 01:21:21 +0000
+	id 1x7NYx-0000000DAw2-2D1F;
+	Fri, 18 Sep 2026 01:38:51 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=MIME-Version:Content-Transfer-Encoding
+	:Content-Type:References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:
+	Sender:Reply-To:Content-ID:Content-Description;
+	bh=ANSYXhkR59VMjSJxw7ihndcWaAezvhBNEHzaW2IaT8Q=; b=o/q5zSt1Pk4JiweCSLOrFSHYiX
+	I9VZIpxLU75lX73oDfm5vtOqjU3cXyrB9RovyV9rhdZXQhRFSoQhP4kn5LP5BVe/vVfh/2YWqwPBx
+	V+U9LGSbVRXF4HkBCP9P8qAABkXD4lAPFPNtCMK3bsru4t0SdxDaIZ0zSplBVI2fRXl+u0Xhyf6cp
+	8MCfLxvmVorZoEjLD6Qgow5R+/ZbIGY4BPeTHawc33oGpDin0mscK6HumBFjuoGK/hrxPRN/gE6oq
+	oBoLW/mjKw7/axzLT6uSQ5ykABEcWK76wVO0uvMQ1SAI9p9awOSWt3IT/ezcz+RGpl4UHUrVG3KcL
+	2R4e4Z9w==;
+Received: from xs1.mindbit.ro ([80.86.107.70] helo=mail.mindbit.ro)
+	by desiato.infradead.org with esmtps (Exim 4.99.2 #2 (Red Hat Linux))
+	id 1x7NYu-00000009U9v-20PT;
+	Fri, 18 Sep 2026 01:38:50 +0000
 Received: from dog.kanata.rendec.net (pool-174-112-193-187.cpe.net.cable.rogers.com [174.112.193.187])
-	by mail.mindbit.ro (Postfix) with ESMTPSA id 76870D0766;
-	Fri, 18 Sep 2026 04:21:14 +0300 (EEST)
-DKIM-Filter: OpenDKIM Filter v2.11.0 mail.mindbit.ro 76870D0766
+	by mail.mindbit.ro (Postfix) with ESMTPSA id 7125DCFB00;
+	Fri, 18 Sep 2026 04:38:41 +0300 (EEST)
+DKIM-Filter: OpenDKIM Filter v2.11.0 mail.mindbit.ro 7125DCFB00
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=rendec.net;
-	s=default; t=1789694477;
-	bh=69bnCVQM5n3sV/AN5VtraQEwkW0YanBMdQC8pbKcydM=;
+	s=default; t=1789695524;
+	bh=ANSYXhkR59VMjSJxw7ihndcWaAezvhBNEHzaW2IaT8Q=;
 	h=Subject:From:To:Cc:Date:In-Reply-To:References:From;
-	b=ax2GgqebXNR2R2lP+6/CijC3VqGvyDb08ILb0eZ6Ema1QmO+nzkiVt/qRo7PjqTGp
-	 omF5ojiR+tFY2fkhlBSOfp1uhXyFE5u1MkIs/42ovtNJ+0FF/txHSbBXiE5YlIqqXz
-	 7ZfxK8+GnM/1UaO/A/wiJz4RukrOPn8ziE+7vEOamYCHnXcUjxPRGUakAtZoryriXd
-	 hzMZ+JCt9n9yC1f1spnVcwlt9shjLNaDYXtF4nrnK/oHV7gCM1A9PdtfQYADHAkmYd
-	 vd+8dsupfkAL9T2QqNdP05m/gXaJ7VZc2W+030SRS9tXyKQrP6cko254BVWIod5kye
-	 4hJvIM4Oow2Kw==
-Message-ID: <2b23ecf7ae8baf0266c3701060858abec901a71c.camel@rendec.net>
-Subject: Re: [PATCH v2 6/6] media: mtk-vpu: rename IPI_MAX to IPI_VPU_MAX
+	b=UUFShpgXvfTYmy5brAtO+WcGmV3rDOVegPicqUL9zj5RA97uAyCc0vfhtHnzp/cQH
+	 lgeeNGr8EpfgrhVgpHTSVShEQZYxefMGS8F0yRGsV0AMLZEpZTcIUiyPyt1BPurz1T
+	 QeL8n0QO4KTZtuGI3Fssf17KVkFYkV94FPUlOU4J3LHfbLCcQE0NnCbtp8LMjIzRPj
+	 BkZIf6EYcJINqt5ciNEZvPKrZ8FzR0I3gol01O0FC8usyqs2NjCmZJwrm+34Qg3s6k
+	 CPF/2PttvoU63/4X9NEUaoDvenduK8aRmniNzluH4xUpg5/SUNz8Ohjtp4wuKWwiWI
+	 1ZPjwGiDMTlLA==
+Message-ID: <6a4202752078c5f55882d3a4f5113829201dfb7b.camel@rendec.net>
+Subject: Re: [PATCH v2 0/6] riscv: Make IPI_MAX visible and use it
+ consistently
 From: Radu Rendec <radu@rendec.net>
-To: "GUO Ren (XuanTie)" <guoren@kernel.org>, Paul Walmsley <pjw@kernel.org>,
-  Palmer Dabbelt <palmer@dabbelt.com>, Albert Ou <aou@eecs.berkeley.edu>,
- Alexandre Ghiti <alex@ghiti.fr>,  Daniel Lezcano
- <daniel.lezcano@kernel.org>, Thomas Gleixner <tglx@kernel.org>, Anup Patel
- <anup@brainfault.org>,  Tiffany Lin <tiffany.lin@mediatek.com>, Andrew-CT
- Chen <andrew-ct.chen@mediatek.com>, Yunfei Dong	
- <yunfei.dong@mediatek.com>, Minghsiu Tsai <minghsiu.tsai@mediatek.com>, 
- Houlong Wei <houlong.wei@mediatek.com>, Mauro Carvalho Chehab
- <mchehab@kernel.org>, Matthias Brugger	 <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno	 <angelogioacchino.delregno@collabora.com>
-Cc: linux-riscv@lists.infradead.org, linux-kernel@vger.kernel.org, 
+To: Guo Ren <guoren@kernel.org>, Thomas Gleixner <tglx@kernel.org>
+Cc: Paul Walmsley <pjw@kernel.org>, Palmer Dabbelt <palmer@dabbelt.com>, 
+ Albert Ou <aou@eecs.berkeley.edu>, Alexandre Ghiti <alex@ghiti.fr>, Daniel
+ Lezcano	 <daniel.lezcano@kernel.org>, Anup Patel <anup@brainfault.org>,
+ Tiffany Lin	 <tiffany.lin@mediatek.com>, Andrew-CT Chen
+ <andrew-ct.chen@mediatek.com>,  Yunfei Dong <yunfei.dong@mediatek.com>,
+ Minghsiu Tsai <minghsiu.tsai@mediatek.com>, Houlong Wei	
+ <houlong.wei@mediatek.com>, Mauro Carvalho Chehab <mchehab@kernel.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+ <angelogioacchino.delregno@collabora.com>, 
+	linux-riscv@lists.infradead.org, linux-kernel@vger.kernel.org, 
 	linux-media@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org, Nathan Chancellor <nathan@kernel.org>
-Date: Thu, 17 Sep 2026 21:21:12 -0400
-In-Reply-To: <20260911-ipi_max-v2-6-a77826ff189e@kernel.org>
+	linux-mediatek@lists.infradead.org, "tip-bot2 for GUO Ren (XuanTie)"	
+ <tip-bot2@linutronix.de>, Nathan Chancellor <nathan@kernel.org>
+Date: Thu, 17 Sep 2026 21:38:39 -0400
+In-Reply-To: <CAJF2gTQZWfvN8c7E3+jcmzD0GqzYKzYO9vLd=eR36azKU1Uq5g@mail.gmail.com>
 References: <20260911-ipi_max-v2-0-a77826ff189e@kernel.org>
-	 <20260911-ipi_max-v2-6-a77826ff189e@kernel.org>
+	 <81f0bf10b41dff85872487ab68c750471b7c2f89.camel@rendec.net>
+	 <CAJF2gTQZWfvN8c7E3+jcmzD0GqzYKzYO9vLd=eR36azKU1Uq5g@mail.gmail.com>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 User-Agent: Evolution 3.58.3 (3.58.3-1.fc43) 
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260917_182120_500381_04614E31 
-X-CRM114-Status: GOOD (  20.22  )
+X-CRM114-CacheID: sfid-20260918_023848_647955_C7D7F035 
+X-CRM114-Status: GOOD (  33.76  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,111 +98,108 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, 2026-09-11 at 03:27 +0000, GUO Ren (XuanTie) wrote:
-> The last enumerator of this driver's firmware IPI id list is a bound
-> for the VPU mailbox protocol, not a generic host IPI limit. Follow the
-> existing naming in this header: IPI_VPU_INIT already carries a VPU
-> prefix, so the terminator should match.
+On Thu, 2026-09-17 at 19:22 +0800, Guo Ren wrote:
+> On Mon, Sep 14, 2026 at 3:53=E2=80=AFAM Radu Rendec <radu@rendec.net> wro=
+te:
+> >=20
+> > On Fri, 2026-09-11 at 03:27 +0000, Guo Ren wrote:
+> > > This series removes the implicit assumption that RISC-V supports exac=
+tly
+> > > eight IPI message types.
+> > >=20
+> > > Currently, the SBI, CLINT and ACLINT SSWI IPI providers use
+> > > BITS_PER_BYTE when sizing the generic IPI mux, while IMSIC carries a
+> > > separate IMSIC_NR_IPI definition set to 8. These values happen to mat=
+ch
+> > > IPI_MAX today, but neither is the proper source of truth for the numb=
+er
+> > > of RISC-V IPI message types.
+> > >=20
+> > > Move enum ipi_message_type to asm/smp.h so IPI providers can use IPI_=
+MAX
+> > > directly, then replace the BITS_PER_BYTE and IMSIC_NR_IPI uses with
+> > > IPI_MAX.
+> > >=20
+> > > This also makes adding future RISC-V IPI message types independent of
+> > > the current eight-entry assumption.
+> > >=20
+> > > A follow-up patch renames the MediaTek VPU mailbox terminator from
+> > > IPI_MAX to IPI_VPU_MAX. That token belongs to the VPU firmware IPI id
+> > > enum and should follow the same prefixed convention as IPI_VPU_INIT
+> > > (and SCP_IPI_MAX on the SCP side), instead of reusing the generic
+> > > IPI_MAX name.
+> > >=20
+> > > ---
+> > > GUO Ren (XuanTie) (4):
+> > > =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 clocksource: clint: Use IPI_MAX for IP=
+I muxing
+> > > =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 irqchip/aclint-sswi: Use IPI_MAX for I=
+PI muxing
+> > > =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 irqchip/imsic: Use IPI_MAX instead of =
+IMSIC_NR_IPI
+> > > =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 media: mtk-vpu: rename IPI_MAX to IPI_=
+VPU_MAX
+> > >=20
+> > > tip-bot2 for GUO Ren (XuanTie) (2):
+> > > =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 riscv: smp: Move enum ipi_message_type=
+ to asm/smp.h
+> > > =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 riscv: sbi: Use IPI_MAX for SBI IPI mu=
+xing
+> >=20
+> > I am confused. Thomas merged your entire v1 series a week before (see
+> > the individual replies from tip-bot2@linutronix.de). Why are you
+> > sending v2?
+> >=20
+> > Patch 6 was not included in v1 (but it's clearly related), so perhaps
+> > you meant to send only this one as a separate patch?
+> >=20
+> > Also:
+> > =C2=A0* The cover letter should include a changelog, indicating what ch=
+anges
+> > =C2=A0=C2=A0 were made in each version compared to the previous one.
+> > =C2=A0* Patches 1 and 2 carry a "From:" tag that attributes authorship =
+to
+> > =C2=A0=C2=A0 tip-bot2, which is wrong (if these patches were to be appl=
+ied).
 >=20
-> The same convention is used by the SCP IPI enum, which ends with a
-> prefixed SCP_IPI_MAX rather than a bare IPI_MAX.
->=20
-> Rename IPI_MAX to IPI_VPU_MAX and update the descriptor table bounds
-> and range checks. No functional change.
->=20
-> Link: https://lore.kernel.org/linux-riscv/20260908222349.GA2324870@ax162
-> Cc: Nathan Chancellor <nathan@kernel.org>
-> Signed-off-by: GUO Ren (XuanTie) <guoren@kernel.org>
-> ---
-> =C2=A0drivers/media/platform/mediatek/vpu/mtk_vpu.c | 12 ++++++------
-> =C2=A0drivers/media/platform/mediatek/vpu/mtk_vpu.h |=C2=A0 4 ++--
-> =C2=A02 files changed, 8 insertions(+), 8 deletions(-)
->=20
-> diff --git a/drivers/media/platform/mediatek/vpu/mtk_vpu.c b/drivers/medi=
-a/platform/mediatek/vpu/mtk_vpu.c
-> index 8d8319f0cd22..b3e9f8c4ab7a 100644
-> --- a/drivers/media/platform/mediatek/vpu/mtk_vpu.c
-> +++ b/drivers/media/platform/mediatek/vpu/mtk_vpu.c
-> @@ -211,7 +211,7 @@ struct mtk_vpu {
-> =C2=A0	struct vpu_regs reg;
-> =C2=A0	struct vpu_run run;
-> =C2=A0	struct vpu_wdt wdt;
-> -	struct vpu_ipi_desc ipi_desc[IPI_MAX];
-> +	struct vpu_ipi_desc ipi_desc[IPI_VPU_MAX];
-> =C2=A0	struct share_obj __iomem *recv_buf;
-> =C2=A0	struct share_obj __iomem *send_buf;
-> =C2=A0	struct device *dev;
-> @@ -221,7 +221,7 @@ struct mtk_vpu {
-> =C2=A0	struct mutex vpu_mutex; /* for protecting vpu data data structure =
-*/
-> =C2=A0	u32 wdt_refcnt;
-> =C2=A0	wait_queue_head_t ack_wq;
-> -	bool ipi_id_ack[IPI_MAX];
-> +	bool ipi_id_ack[IPI_VPU_MAX];
-> =C2=A0};
-> =C2=A0
-> =C2=A0static inline void vpu_cfg_writel(struct mtk_vpu *vpu, u32 val, u32=
- offset)
-> @@ -296,7 +296,7 @@ int vpu_ipi_register(struct platform_device *pdev,
-> =C2=A0		return -EPROBE_DEFER;
-> =C2=A0	}
-> =C2=A0
-> -	if (id < IPI_MAX && handler) {
-> +	if (id < IPI_VPU_MAX && handler) {
-> =C2=A0		ipi_desc =3D vpu->ipi_desc;
-> =C2=A0		ipi_desc[id].name =3D name;
-> =C2=A0		ipi_desc[id].handler =3D handler;
-> @@ -319,7 +319,7 @@ int vpu_ipi_send(struct platform_device *pdev,
-> =C2=A0	unsigned long timeout;
-> =C2=A0	int ret =3D 0;
-> =C2=A0
-> -	if (id <=3D IPI_VPU_INIT || id >=3D IPI_MAX ||
-> +	if (id <=3D IPI_VPU_INIT || id >=3D IPI_VPU_MAX ||
-> =C2=A0	=C2=A0=C2=A0=C2=A0 len > sizeof(send_obj->share_buf) || !buf) {
-> =C2=A0		dev_err(vpu->dev, "failed to send ipi message\n");
-> =C2=A0		return -EINVAL;
-> @@ -748,7 +748,7 @@ static void vpu_ipi_handler(struct mtk_vpu *vpu)
-> =C2=A0	s32 id =3D readl(&rcv_obj->id);
-> =C2=A0
-> =C2=A0	memcpy_fromio(data, rcv_obj->share_buf, sizeof(data));
-> -	if (id < IPI_MAX && ipi_desc[id].handler) {
-> +	if (id < IPI_VPU_MAX && ipi_desc[id].handler) {
-> =C2=A0		ipi_desc[id].handler(data, readl(&rcv_obj->len),
-> =C2=A0				=C2=A0=C2=A0=C2=A0=C2=A0 ipi_desc[id].priv);
-> =C2=A0		if (id > IPI_VPU_INIT) {
-> @@ -934,7 +934,7 @@ static int mtk_vpu_probe(struct platform_device *pdev=
-)
-> =C2=A0#ifdef CONFIG_DEBUG_FS
-> =C2=A0	debugfs_remove(vpu_debugfs);
-> =C2=A0#endif
-> -	memset(vpu->ipi_desc, 0, sizeof(struct vpu_ipi_desc) * IPI_MAX);
-> +	memset(vpu->ipi_desc, 0, sizeof(struct vpu_ipi_desc) * IPI_VPU_MAX);
-> =C2=A0vpu_mutex_destroy:
-> =C2=A0	mutex_destroy(&vpu->vpu_mutex);
-> =C2=A0disable_vpu_clk:
-> diff --git a/drivers/media/platform/mediatek/vpu/mtk_vpu.h b/drivers/medi=
-a/platform/mediatek/vpu/mtk_vpu.h
-> index 3951547e9ec5..44ab631ec904 100644
-> --- a/drivers/media/platform/mediatek/vpu/mtk_vpu.h
-> +++ b/drivers/media/platform/mediatek/vpu/mtk_vpu.h
-> @@ -49,7 +49,7 @@ typedef void (*ipi_handler_t) (void *data,
-> =C2=A0 *			 handle VP8 video encoder job,, and vice versa.
-> =C2=A0 * @IPI_MDP:		 The interrupt from vpu is to notify kernel to
-> =C2=A0 *			 handle MDP (Media Data Path) job, and vice versa.
-> - * @IPI_MAX:		 The maximum IPI number
-> + * @IPI_VPU_MAX:	 The maximum VPU IPI number
-> =C2=A0 */
-> =C2=A0
-> =C2=A0enum ipi_id {
-> @@ -60,7 +60,7 @@ enum ipi_id {
-> =C2=A0	IPI_VENC_H264,
-> =C2=A0	IPI_VENC_VP8,
-> =C2=A0	IPI_MDP,
-> -	IPI_MAX,
-> +	IPI_VPU_MAX,
-> =C2=A0};
-> =C2=A0
-> =C2=A0/**
+> Sorry for the noise, and thanks for catching these.
 
-Reviewed-by: Radu Rendec <radu@rendec.net>
+No worries :)
+
+> You are right on both points. I missed the cover-letter changelog,
+> and I should not have resent the already-merged patches as v2. The
+> "From: tip-bot2" tags were added by b4 because those two patches had
+> already landed; that is useful as a reminder to me, but it should not
+> have been left in the patches themselves.
+>=20
+> I should have skipped the b4 v2 flow and just sent patch 6 on its
+> own. The only remaining change is the mtk-vpu IPI_MAX rename, which
+> is needed after IPI_MAX became visible from <asm/smp.h>.
+
+Ugh, I missed that part. Because the IPI_MAX rename was already picked
+up, it's going to break the mtk-vpu driver until patch 6 is picked up
+too.
+
+> If you are willing to pick patch 6 as-is, I would appreciate it.
+> Otherwise I will resend it as a standalone patch.
+
+I cannot pick up anything myself because I'm just a reviewer. But I
+don't see any reason why patch 6 couldn't be picked up as-is, as long
+as everyone is on the same page. The "[PATCH v2 6/6]" part of the
+subject is dropped anyway.
+
+I now realize that patch 1 (which introduces the conflicting change)
+was picked up by Thomas via the irq/drivers tip branch, but patch 6 is
+strictly a media subsystem patch, so I guess normally it should be
+picked up by a different maintainer via a different tree.
+
+Thomas, are you willing to pick this up too? I'm thinking it could
+avoid some pain if irq/drivers gets merged into mainline first, before
+patch 6 makes it there through the media subsystem. Also, it's a pretty
+"innocent" patch, it just renames an enum value, and it's contained
+within that driver.
+
+--=20
+Best regards,
+Radu
 
