@@ -4,81 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9981DC88E75
-	for <linux-mediatek@archiver.kernel.org>; Fri, 18 Sep 2026 04:58:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 39C69C88E75
+	for <linux-mediatek@archiver.kernel.org>; Fri, 18 Sep 2026 04:58:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=UqClDMZv+Qp3g2QhTysx0rBLnCkZVZnC/Rs9Rzbs0+0=; b=QCWiHtpJfodSbu/QqBGQtBb3xd
-	ZtEzEzBi+fs3d8vwVUUwHMvlAWbCa7nq3Tg2tYi+TseBqCKrNMAdmIwSX75U9uYRnMvZ+MQRHG8r8
-	AdT2T//muOVm3V/soYq62DJciP944K1vofKMG3ZJOZNoW8/YQcQ+cMnFZDszCf26LzyBbvhJVORyp
-	OFr5KM3XAG7cLY5F7BfoonqX+3nGJzgvxw/va+/Zhy9i2ijPell333+JqfMVkttGL38HtC6rfzjav
-	K7PqLkWzNXQhdFeXgQ+2JVrCgTrPeRJ9tvtQCSTL6cN3XiEKKFpaR2myf338SvQ6fZ4Uzb9RG28vq
-	KwnwgaTQ==;
+	bh=O2vctS1HDPIT/X25n9pLYfCPg6VUQlM6OzxcQLhiTME=; b=n7dq3XSbOV5OpQH4rZKqSRrcAI
+	EmJSYuy1Y+WRbVpL5CoZ5R8Cf1NxcWKPelgV+hIfjdxScZf5p1MI+43mWWRth7pcBcMN4KECSaoKG
+	LBNrW/0kiEnCH5J4Gdz7fjaMf5dG+JWbgkHlEq8CiblcGfDid4RUc5VoSH4B+14UpQv0BIR75YKCl
+	KCg1hhB2o6aBroewIPoWMhBHl4yMjnlID+UUPGtWGdQ3kjROdx3TJg4yC6OibVhrol+u6SfJa0Uvx
+	QyOiLm+xY2+n5yDdrkLRdgSa4Ze6a17Q2Im8naz182muY+af+Z5wzMvBx5JAbVb9YUrCepspHmORC
+	9I6lLBTg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x7Qfj-0000000DTye-25DQ;
-	Fri, 18 Sep 2026 04:58:03 +0000
-Received: from mail-oa2-x0a.google.com ([2607:f8b0:4864:30::a])
+	id 1x7Qfp-0000000DU25-3BiE;
+	Fri, 18 Sep 2026 04:58:09 +0000
+Received: from mail-oi2-x09.google.com ([2607:f8b0:4864:32::9])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x7Qfh-0000000DTxU-1Nua
+	id 1x7Qfk-0000000DTzJ-22Kl
 	for linux-mediatek@lists.infradead.org;
-	Fri, 18 Sep 2026 04:58:02 +0000
-Received: by mail-oa2-x0a.google.com with SMTP id 586e51a60fabf-47bbb846425so192847fac.0
-        for <linux-mediatek@lists.infradead.org>; Thu, 17 Sep 2026 21:58:01 -0700 (PDT)
+	Fri, 18 Sep 2026 04:58:06 +0000
+Received: by mail-oi2-x09.google.com with SMTP id 5614622812f47-4c650fea78aso173192b6e.0
+        for <linux-mediatek@lists.infradead.org>; Thu, 17 Sep 2026 21:58:04 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1789707480; x=1790312280; darn=lists.infradead.org;
+        d=gmail.com; s=20251104; t=1789707483; x=1790312283; darn=lists.infradead.org;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :content-type:mime-version:subject:date:from:from:to:cc:subject:date
          :message-id:reply-to:content-type;
-        bh=UqClDMZv+Qp3g2QhTysx0rBLnCkZVZnC/Rs9Rzbs0+0=;
-        b=RqYQSizCbg0FrOwbUUycktGFy0ZDNgddn1JIPOrpZz9HarWprEDxJZQl7iRYOob8Qx
-         A5xbOuQvqTHTZR2331OJCS12uwU8PccMGt1Sg1wVXtMvgrJwLNb5w3MZQjhkkOvn5NCX
-         pPqiuVINVdeabcJPaCr6rJ1nEixPQy7nx1SD/pN572C6yaE3632IpLxVRT7DIBhAuMsM
-         +uXaYONUh+bfI4RwPdTquDVCa6fLsmle0E2ubWuL9y7Ei/Fit/2hXBKXV9Ae+Ph5Cl3S
-         tm/nJfDA8b+sn0f1x0aIuUcdhybj0n714Kz127ykQNgMd3gH+ip29dRe2KgecJrSLZ2v
-         Asww==
+        bh=O2vctS1HDPIT/X25n9pLYfCPg6VUQlM6OzxcQLhiTME=;
+        b=Pe6Vi4bLZpLiYhs1wDqS5tmRDgrcn1YPtCeLTIsEx24D+LeP5RiWMqpsX9oD3OOX99
+         hX6MZCXAIsGrUW+i5bxCzpxsyjZYGxw8sqKm7GPkh8P/b4M/8z6hsrZRkw9xZjhv+Ubu
+         pHK/p2lTbSGUcgsL0FjAQSwlczwOSf5p+lpM11eFYT9auLZIUkU91NXCcLpFBECjfNHr
+         dB6u8Ru+mhCE1HTyYbolnqY4riAA2GiagtPSRg7G8pMz2Z1CkxNz5gk+VhwQLx/Fh2fL
+         aFQOtLcaGo4TiYfdWMUNovLek7mygMt0UpVzzk9qXetfPFQVMWWMqlMMzzvbSP5yoife
+         7ZdA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1789707480; x=1790312280;
+        d=1e100.net; s=20260707; t=1789707483; x=1790312283;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :content-type:mime-version:subject:date:from:x-gm-gg
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
          :content-type;
-        bh=UqClDMZv+Qp3g2QhTysx0rBLnCkZVZnC/Rs9Rzbs0+0=;
-        b=v2d9QysvJpt+LZf6VQstWe6CqpaUchKcw5Xcu/sCBXQv5IVSmM5R1UBaRk3qg+0z/y
-         xyham84s9eJRdBdFXMPCu6os3zKnrFiE8psAZDtgrhKYBrMsnKFji8dxeMJ2VlkPnFXE
-         3WD3djZTmZMpRCkSMvKe4Q9t1AVy+gfowSPNf9E14aE/D44k34lAXdV2e3ZFurAZWFl0
-         8q+u5tI5dDNBsnPqKAhQuBEr0YfnBUjUGDqOb5J0fY77WYwDh/qWKhbAOonVENdmRF4f
-         kDd9jF+QZg7kE9IkNwNxIP/B0PzNO/2GpYH8RoFXfkSEl9cWua2PKd9hSAc6Nkm01VYU
-         Hq4g==
-X-Forwarded-Encrypted: i=1; AKwUvByxgqK099wexBAahyMNwkYsMtCJOU3QFFdQiaWwn+FWQB2gCSbUKAXWBz+Lk2y0Kh9LIYjbx1XCGe4pD81y5Q==@lists.infradead.org
-X-Gm-Message-State: AFuF++kWZo3tMIPB8cO9cQ+RtXgXDymGBlc2oSDrWgAJiRyTLFkXl3SV
-	xwIQOx73YSsa3g+mY52qw1iSikuGeQvB5ULgZAjb3wSDrwtaoiZ1Sm9L
-X-Gm-Gg: AYBFou29pQELUYULXtduxfek4nFRcEW1KL8OTWly3RZtCM3dDFYiOo7oBpqqJMVL4iI
-	HuwyKuc+cbr2PQBVj99EFG07+EuJRYp54ZAxDq62y4o+5x3U3cZZS0CUI5H8IZJ5ViuekPIzRZg
-	R5SK6uh7hrnhJ22JbvT1UxfJkrEUUz1M1MUYC0c4t8Aihg9bKdKl8r1S2mP1u9rqAT4XOW7PXOz
-	//Zz//navb+KflxEhOVgJ6uxgMNzSHF1bdmrT0bn6gEjzcZofHHL5JeFv1YDFuJ79g35TdFPP9K
-	zCWa4AFc/L9kbNotPE58xf12ImREcxFmO/XLmpUKoK/HeDk4mFEEZ85e0Gxxi3scv5iF9jUYtzm
-	+jcxUoCBPgyV3kX5nf6oZtcb2d8LcYCqHbpfmc5Fu+aB6EUMgyNmEcmpsHbYHLkiYwNRecXV314
-	gb2UBE0CtTwrlUXyuJ4t+WdetmdSUs69Lv0KgOc7Wxd8VzX9no9e8+F2+LF45/ryGBcmZhI6KCS
-	Ai+
-X-Received: by 2002:a05:6870:2419:b0:483:b498:9db0 with SMTP id 586e51a60fabf-486e5447154mr1433078fac.14.1789707480336;
-        Thu, 17 Sep 2026 21:58:00 -0700 (PDT)
+        bh=O2vctS1HDPIT/X25n9pLYfCPg6VUQlM6OzxcQLhiTME=;
+        b=Tv0CcFyCPSdM7CCaYC6agEvOokLFeshGDg0wzL+6lm9Ll44krHn/Lm0gaBwFLez/oV
+         bxktZX+eINiNpT+BkEBCpVVKNVJj4neiuF2UWIa9jXV4NLbQa9MpNwghafxBAeW4dCoV
+         ucD+tP2eRA/lA+bTqCa8qbIEbcvCjWaVr/yegucF5jLEGMeRnwOtRM8goNJ/xl2J54ke
+         mALRVZdRXxBeeBjUbbdJMUnsJwB4Muos8nRJPbuZuIJIhAFKdYgOmrZb2vdgoaZja9+N
+         D5TQZeTEy7pdZSG8Spu24g6ALS812gCnS07zrGlHqNkRwT9rnIbWNNF7ggq1tRyaHI0J
+         7q/g==
+X-Forwarded-Encrypted: i=1; AKwUvBwRD5K16BJ8t+7blE+Hlf8inddiSI97aWgsapqrsthbz35e/RoR6wKKnOc+fnxvwhlGQevAjCaTnvXKCjlWdQ==@lists.infradead.org
+X-Gm-Message-State: AFuF++mPaEHkr9SlDad3CKNxpb443NfJ7NKJf/0zlMcmuGgUDfaGLFL0
+	fyNcGGFn5prgAb68glNBdT24NBRjIxgz9RNnDd0nFaQux8ZnGWWwiJi3
+X-Gm-Gg: AYBFou0nFtpI2xNuldKkVCgrgMYfTCZEP9eI3os+gt91m9kKkfwZklOTa5GVTyZ9MmK
+	sXj+XGt9/a+/Gm3i7y3zCywRP1512wpoqBi/2WPJ48wozmjQqQIOmbPlRIHQigQg2OrvUSJNL+Q
+	DfTVe3Q5cRIFNMx5l5e37yIjHPJqD6iMBIKp2xAwRVvMY9OCLonsxVTMTd/wJxGjwxMjvOMJmv/
+	rLOJZlEt+O+5IvNeJJNIKvHFNzB51lMYJbDd8ieKT1ywi+1P6aslhkE4x0Z1B4B4t9jsthFtWtc
+	oSNb6Pu7sn/7+vsO0wPkrJ6HaAfzlx7QFDzsCeL9HfGtuT3soXHcrtfS090dh6SjDFitPd1+Zzt
+	0Sx/iueQJhJAwbYnFs5wxmTRacWN1dTnnnqEiiyDUTKOFVDK4FZsANG0zTiNj97e+WM62qeuLyr
+	vuEKC7lvnMwQAWgRxnT9fk7kTXOUeVyonmVTbm5481wHd+ysXy8JL+1fgwA0uUXSDnww==
+X-Received: by 2002:a05:6820:198e:b0:6ba:1356:2038 with SMTP id 006d021491bc7-6ca9dc81d82mr1247500eaf.65.1789707483400;
+        Thu, 17 Sep 2026 21:58:03 -0700 (PDT)
 Received: from [192.168.18.164] ([2600:8804:5716:d800::b712])
-        by smtp.gmail.com with ESMTPSA id 586e51a60fabf-48739da0d0dsm256318fac.12.2026.09.17.21.57.52
+        by smtp.gmail.com with ESMTPSA id 586e51a60fabf-48739da0d0dsm256318fac.12.2026.09.17.21.58.00
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 17 Sep 2026 21:57:53 -0700 (PDT)
+        Thu, 17 Sep 2026 21:58:02 -0700 (PDT)
 From: Ryan Brue <ryanbrue.dev@gmail.com>
-Date: Thu, 17 Sep 2026 23:57:46 -0500
-Subject: [PATCH 1/2] dt-bindings: mfd: mediatek: mt6397: describe the RTC's
- nvmem layout
+Date: Thu, 17 Sep 2026 23:57:47 -0500
+Subject: [PATCH 2/2] rtc: mt6397: expose the spare bytes of the alarm
+ registers as nvmem
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20260917-rbrue-suez-upstreaming-mt6397-rtc-nvmem-v1-1-558b8f95cfbc@gmail.com>
+Message-Id: <20260917-rbrue-suez-upstreaming-mt6397-rtc-nvmem-v1-2-558b8f95cfbc@gmail.com>
 References: <20260917-rbrue-suez-upstreaming-mt6397-rtc-nvmem-v1-0-558b8f95cfbc@gmail.com>
 In-Reply-To: <20260917-rbrue-suez-upstreaming-mt6397-rtc-nvmem-v1-0-558b8f95cfbc@gmail.com>
 To: Sen Chu <sen.chu@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, 
@@ -94,16 +93,16 @@ Cc: linux-pm@vger.kernel.org, mfd@lists.linux.dev,
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
  linux-rtc@vger.kernel.org, Ryan Brue <ryanbrue.dev@gmail.com>
 X-Mailer: b4 0.16.0
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1789707469; l=1572;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1789707469; l=5079;
  i=ryanbrue.dev@gmail.com; s=20260906; h=from:subject:message-id;
- bh=QApoySis0Adh6uF/PzHVfhA1jkpjYHZNgPhek+gBJ7E=;
- b=mjeSErd6IUo2Z5QDXzSoT7MEYbyj3Na50gNAofJEh5wz/azQT61QJzOrgH1djAKYxTLLJUkYV
- wo88yBIlUloAzlG19N2bRJfn1YRBdEMkcgp1nZ1QQEMSYEmHHj+zw0v
+ bh=1ZbFpDNmPpKPUw8gavi59S7TugQ/2BR2pAG4PVbmBvQ=;
+ b=kj88aZa+h4fhuHQwM8Bk8GTy18OwBUHg5C5G/Eakbrvp92M6E9GMdVV5SYpbTN1UoeBxPc9GB
+ pvRQ/rrqw2PDudl5VHFcBTBuqsjCkWZg2xKtUjEWDMv3azffj7wA3JR
 X-Developer-Key: i=ryanbrue.dev@gmail.com; a=ed25519;
  pk=KsUvVaP//v/2q+ZBuacc7cLbsyEYn+AD71Sn28oZWKo=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260917_215801_386969_B381AF7B 
-X-CRM114-Status: GOOD (  10.22  )
+X-CRM114-CacheID: sfid-20260917_215804_553477_D2257880 
+X-CRM114-Status: GOOD (  23.45  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -118,42 +117,169 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Four of the MT6397 RTC's alarm registers use only their low bits; the
-high byte of each is storage the clock and the alarm don't touch.
-MediaTek's documentation names them RTC_NEW_SPARE0 to RTC_NEW_SPARE3 and
-assigns the first to a fuel gauge, which is what a battery driver reads
-at boot so that the reported capacity does not jump across a reboot.
+Each alarm field lives in the low bits of its register and the driver
+masks its writes accordingly, so the high byte of four of them is storage
+the RTC never touches. MediaTek names these RTC_NEW_SPARE0 to
+RTC_NEW_SPARE3 and gives the first to a fuel gauge, which is how its PMIC
+battery drivers carry a state of charge over a reboot.
 
-They sit in the RTC's always-on domain, so the driver can offer them as
-a battery-backed nvmem provider. Allow a board to lay cells out over
-them.
+Offer all four as a battery-backed nvmem provider, so that a consumer does
+not have to reach into this block behind the driver's back. Doing it here
+is what makes it safe: a write lands under the same lock the alarm paths
+take, so it can neither be lost inside mtk_rtc_set_alarm()'s
+read-modify-write nor fire the write trigger in the middle of one.
+
+The nvmem core does not range check a cell against the provider size, so
+the callbacks check the offset themselves.
+
+Tested on an MT6397; MediaTek's spare map for mt6323 matches, and the
+alarm field masks are common to every compatible this driver binds.
 
 Assisted-by: LLM
 Signed-off-by: Ryan Brue <ryanbrue.dev@gmail.com>
 ---
- Documentation/devicetree/bindings/mfd/mediatek,mt6397.yaml | 9 +++++++++
- 1 file changed, 9 insertions(+)
+ drivers/rtc/rtc-mt6397.c       | 91 +++++++++++++++++++++++++++++++++++++++++-
+ include/linux/mfd/mt6397/rtc.h |  7 ++++
+ 2 files changed, 97 insertions(+), 1 deletion(-)
 
-diff --git a/Documentation/devicetree/bindings/mfd/mediatek,mt6397.yaml b/Documentation/devicetree/bindings/mfd/mediatek,mt6397.yaml
-index 3cbc0dc12c31..5c89c589b53c 100644
---- a/Documentation/devicetree/bindings/mfd/mediatek,mt6397.yaml
-+++ b/Documentation/devicetree/bindings/mfd/mediatek,mt6397.yaml
-@@ -81,6 +81,15 @@ properties:
+diff --git a/drivers/rtc/rtc-mt6397.c b/drivers/rtc/rtc-mt6397.c
+index 3d857681f760..d6e156516aa6 100644
+--- a/drivers/rtc/rtc-mt6397.c
++++ b/drivers/rtc/rtc-mt6397.c
+@@ -4,6 +4,8 @@
+ * Author: Tianping.Fang <tianping.fang@mediatek.com>
+ */
  
-       start-year: true
++#include <linux/array_size.h>
++#include <linux/bitfield.h>
+ #include <linux/err.h>
+ #include <linux/interrupt.h>
+ #include <linux/mfd/mt6397/core.h>
+@@ -243,10 +245,91 @@ static const struct rtc_class_ops mtk_rtc_ops = {
+ 	.set_alarm  = mtk_rtc_set_alarm,
+ };
  
-+      nvmem-layout:
-+        $ref: /schemas/nvmem/layouts/nvmem-layout.yaml
-+        description:
-+          The RTC carries four bytes of storage that neither the clock nor the
-+          alarm uses, in the high half of four of the alarm registers, and
-+          offers them as a battery-backed nvmem provider. MediaTek's
-+          documentation names them RTC_NEW_SPARE0 to RTC_NEW_SPARE3 and gives
-+          the first to a fuel gauge.
++/*
++ * The spare byte of each of these registers, in the order a board addresses
++ * them as RTC_NEW_SPARE0 to RTC_NEW_SPARE3.
++ */
++static const u32 mtk_rtc_spare_reg[] = {
++	RTC_AL_HOU, RTC_AL_DOM, RTC_AL_DOW, RTC_AL_MTH,
++};
 +
-     required:
-       - compatible
++static int mtk_rtc_nvram_read(void *priv, unsigned int offset, void *val,
++			      size_t bytes)
++{
++	struct mt6397_rtc *rtc = priv;
++	u8 *buf = val;
++	u32 data;
++	int ret = 0;
++
++	if (offset >= ARRAY_SIZE(mtk_rtc_spare_reg) ||
++	    bytes > ARRAY_SIZE(mtk_rtc_spare_reg) - offset)
++		return -EINVAL;
++
++	mutex_lock(&rtc->lock);
++
++	while (bytes--) {
++		ret = regmap_read(rtc->regmap,
++				  rtc->addr_base + mtk_rtc_spare_reg[offset++],
++				  &data);
++		if (ret)
++			break;
++
++		*buf++ = FIELD_GET(RTC_SPARE_MASK, data);
++	}
++
++	mutex_unlock(&rtc->lock);
++
++	return ret;
++}
++
++static int mtk_rtc_nvram_write(void *priv, unsigned int offset, void *val,
++			       size_t bytes)
++{
++	struct mt6397_rtc *rtc = priv;
++	u8 *buf = val;
++	int ret = 0;
++
++	if (offset >= ARRAY_SIZE(mtk_rtc_spare_reg) ||
++	    bytes > ARRAY_SIZE(mtk_rtc_spare_reg) - offset)
++		return -EINVAL;
++
++	mutex_lock(&rtc->lock);
++
++	while (bytes--) {
++		ret = regmap_update_bits(rtc->regmap,
++					 rtc->addr_base + mtk_rtc_spare_reg[offset++],
++					 RTC_SPARE_MASK,
++					 FIELD_PREP(RTC_SPARE_MASK, *buf++));
++		if (ret)
++			goto out;
++	}
++
++	/*
++	 * None of it reaches the always-on domain until the write trigger,
++	 * which commits every pending alarm register at once -- so this runs
++	 * under the same lock the alarm paths take, rather than landing in
++	 * the middle of one of them.
++	 */
++	ret = mtk_rtc_write_trigger(rtc);
++out:
++	mutex_unlock(&rtc->lock);
++
++	return ret;
++}
++
+ static int mtk_rtc_probe(struct platform_device *pdev)
+ {
+ 	struct resource *res;
+ 	struct mt6397_chip *mt6397_chip = dev_get_drvdata(pdev->dev.parent);
++	struct nvmem_config nvmem_cfg = {
++		.name = "mt6397_rtc_spare",
++		.word_size = 1,
++		.stride = 1,
++		.size = ARRAY_SIZE(mtk_rtc_spare_reg),
++		.type = NVMEM_TYPE_BATTERY_BACKED,
++		.reg_read = mtk_rtc_nvram_read,
++		.reg_write = mtk_rtc_nvram_write,
++	};
+ 	struct mt6397_rtc *rtc;
+ 	int ret;
  
+@@ -293,7 +376,13 @@ static int mtk_rtc_probe(struct platform_device *pdev)
+ 	rtc->rtc_dev->start_secs = mktime64(1968, 1, 2, 0, 0, 0);
+ 	rtc->rtc_dev->set_start_time = true;
+ 
+-	return devm_rtc_register_device(rtc->rtc_dev);
++	ret = devm_rtc_register_device(rtc->rtc_dev);
++	if (ret)
++		return ret;
++
++	nvmem_cfg.priv = rtc;
++
++	return devm_rtc_nvmem_register(rtc->rtc_dev, &nvmem_cfg);
+ }
+ 
+ #ifdef CONFIG_PM_SLEEP
+diff --git a/include/linux/mfd/mt6397/rtc.h b/include/linux/mfd/mt6397/rtc.h
+index 27883af44f87..f4da579ec638 100644
+--- a/include/linux/mfd/mt6397/rtc.h
++++ b/include/linux/mfd/mt6397/rtc.h
+@@ -49,6 +49,13 @@
+ 
+ #define RTC_AL_SEC             0x0018
+ 
++/* The high byte of four of the alarms is spare, always-on storage */
++#define RTC_AL_HOU             0x001c
++#define RTC_AL_DOM             0x001e
++#define RTC_AL_DOW             0x0020
++#define RTC_AL_MTH             0x0022
++#define RTC_SPARE_MASK         GENMASK(15, 8)
++
+ #define RTC_AL_SEC_MASK        0x003f
+ #define RTC_AL_MIN_MASK        0x003f
+ #define RTC_AL_HOU_MASK        0x001f
 
 -- 
 2.55.0
