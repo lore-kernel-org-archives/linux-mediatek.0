@@ -4,66 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 16A2BC982CC
-	for <linux-mediatek@archiver.kernel.org>; Sat, 19 Sep 2026 06:52:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A296EC982CC
+	for <linux-mediatek@archiver.kernel.org>; Sat, 19 Sep 2026 09:16:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:To:
+	From:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=yCvKOOZJlmWGLHZyrsJtjvW3q4jXCw/cfJrFwwwwJvQ=; b=bgDLVzsyBfj7ePZwV8rPwlgd7o
-	0hhWL5VyWom726UlJFJ5vCXpayoe+IEmWoWN/9q0i0Xyutr0Ul7nACwCTIC0Sx5VI/aAnL1C6aTEH
-	Cz74ZMbJUQTipoxGM/q4Spx9MRywg6sby/Usi8dYmhmzi8VsajJIiqRpAOtNapc/Xdqn1uK2D31//
-	nnXHFfnS6lw0d0999rO8W140pl7BZDFZqE6H0YxTmADE6QFYa8d7VBWVa5FTvif07fwVltnHpGrTX
-	aEKTn0c6oVg4qsKOdY2HchpRmQhxxGWsPBEDI5ozx0klIC77tmf/oxDNPeoTLWQ5FiPwF97kC6gdZ
-	1DpKd4Ow==;
+	bh=Awg67cxHl18a2D/zvjxAJGydZiXsMD2cX9Cd0uol1eY=; b=n3riRkmLIqGnmMXEA1vsdz4srE
+	6z2W3u1TVsyYF5Xl0/5pOZFGxM8xKfiTbEhBvmp15G1Xp8p3eNtq4HiCpwbE5BqFFy3PSEl6f40c5
+	PauEI7yV1Z0f8a+aWKXS56R731BuTR82SjvU3pxH1O0IsGP4+0hhhe4v2gTWw+Fo/6yQmhUAWkFHt
+	igGjTn2DHbltX8UxSZTjQLDufQ5fWxPNVvKLNc83nyTWcdZ/YWFGTEGmRj4k372nnJXVp0LWDK7Qb
+	OfbmS13/P3fbX+OSwH7l/LjrMpVgaDLbzFAuAy63W3S1J+XoVn1IRm8OdrPzXm/XAl96scmGzNcp9
+	Wi4fryFQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x7owO-0000000G0Hs-3TXf;
-	Sat, 19 Sep 2026 06:52:52 +0000
-Received: from mail-m2426.xmail.ntesmail.com ([45.195.24.26])
+	id 1x7rBc-0000000G7Xa-3D8R;
+	Sat, 19 Sep 2026 09:16:44 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x7owL-0000000G0FN-3pgY;
-	Sat, 19 Sep 2026 06:52:51 +0000
-Received: from [172.16.12.90] (unknown [61.154.14.86])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 4e5c81ff9;
-	Sat, 19 Sep 2026 14:52:38 +0800 (GMT+08:00)
-Message-ID: <94451cc1-5dcc-4017-9b17-19fc20245ca8@rock-chips.com>
-Date: Sat, 19 Sep 2026 14:52:19 +0800
+	id 1x7rBb-0000000G7XN-2d7s;
+	Sat, 19 Sep 2026 09:16:43 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by tor.source.kernel.org (Postfix) with ESMTP id 302396020C;
+	Sat, 19 Sep 2026 09:16:42 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id D11DF1F00898;
+	Sat, 19 Sep 2026 09:16:36 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1789809401;
+	bh=Awg67cxHl18a2D/zvjxAJGydZiXsMD2cX9Cd0uol1eY=;
+	h=From:To:In-Reply-To:References:Subject:Date;
+	b=D6bTLqfUcwgwHXNN2m8iiQmju3ywMCqfUeA8Pxi83jxqjKXay6zBuctYKlYwrKJhA
+	 Ooni5TFUpqMA9Sb5sSEvvwXHNLyzfJ+cZ5X72yu3cv7wwZESuuqCEFd+t4ibZ10NEO
+	 Bu+UJRtBBMGOFdgZKofYdY0rDHQZ/sO1WLtuE/S27fEqXuJ92zZQDexgbIbStF27kY
+	 cmolrPno6YL/0ofzxDFVaANbY87g1ti0ihrIJobilNiO8imtHCDFEBC3eR/CfOFC3h
+	 qJTCN8JcY1idmW2VjWjUN3TsfcRgkjOuRPPq3d7Ras1fjmcBqjpBEL1g0swX+iL2Eo
+	 xYouV74JzK4KA==
+From: Mark Brown <broonie@kernel.org>
+To: Liam Girdwood <lgirdwood@gmail.com>, Rob Herring <robh@kernel.org>, 
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, Jaroslav Kysela <perex@perex.cz>, 
+ Takashi Iwai <tiwai@suse.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Philipp Zabel <p.zabel@pengutronix.de>, 
+ Cyril Chao <Cyril.Chao@mediatek.com>, Darren Ye <darren.ye@mediatek.com>, 
+ Rosen Penev <rosenp@gmail.com>, Daniel Golle <daniel@makrotopia.org>, 
+ bui duc phuc <phucduc.bui@gmail.com>, linux-sound@vger.kernel.org, 
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+ Christian Marangi <ansuelsmth@gmail.com>
+In-Reply-To: <20260908090448.3332-1-ansuelsmth@gmail.com>
+References: <20260908090448.3332-1-ansuelsmth@gmail.com>
+Subject: Re: [PATCH v6 0/5] ASoC: Add support for Airoha AN7581
+Message-Id: <178976668737.1863384.7459518219395606759.b4-ty@b4>
+Date: Fri, 18 Sep 2026 23:24:47 +0200
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v9 02/13] drm/mediatek: Implement Display Stream
- Compression support
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: chunkuang.hu@kernel.org, p.zabel@pengutronix.de,
- maarten.lankhorst@linux.intel.com, mripard@kernel.org, tzimmermann@suse.de,
- airlied@gmail.com, simona@ffwll.ch, robh@kernel.org, krzk+dt@kernel.org,
- conor+dt@kernel.org, matthias.bgg@gmail.com, jitao.shi@mediatek.com,
- dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, kernel@collabora.com,
- justin.yeh@mediatek.com, jason-jh.lin@mediatek.com
-References: <20260916110825.102631-1-angelogioacchino.delregno@collabora.com>
- <20260916110825.102631-3-angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-From: Chaoyi Chen <chaoyi.chen@rock-chips.com>
-In-Reply-To: <20260916110825.102631-3-angelogioacchino.delregno@collabora.com>
-Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-X-HM-Tid: 0aa0b8703e5003a7kunmb39cf7f3fb4f3e
-X-HM-MType: 1
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFITzdXWRgWCB1ZQUpXWS1ZQUlXWQ8JGhUIEh9ZQVlCTx4fVk5JGk5CSk9JGBoeSFYVFA
-	kWGhdVEwETFhoSFyQUDg9ZV1kYEgtZQVlNSlVKTk9VSk9VQ01ZV1kWGg8SFR0UWUFZT0tIVUpLSU
-	9PT0hVSktLVUpCS0tZBg++
-DKIM-Signature: a=rsa-sha256;
-	b=IYvLOT+ZLuL17rn47b2fIRKpsfV3Djch3gDimo9Pbn3EhzAdXn+34mKd9GylNsvfzySPs0QIMnHV0WM952ngEQInR2LgNciceaA4c5mn+0TqE6KLXQw4EIIuKoOnuPzINBtI4+nXvALj8t/uyy6tuGhRnHz+zjY0RhIfWYT0Eqc=; c=relaxed/relaxed; s=default; d=rock-chips.com; v=1;
-	bh=yCvKOOZJlmWGLHZyrsJtjvW3q4jXCw/cfJrFwwwwJvQ=;
-	h=date:mime-version:subject:message-id:from;
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260918_235250_515787_F417D241 
-X-CRM114-Status: GOOD (  26.77  )
+X-Mailer: b4 0.17-dev
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,87 +77,52 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
+On Tue, 08 Sep 2026 11:04:42 +0200, Christian Marangi wrote:
+> ASoC: Add support for Airoha AN7581
+> 
+> Add all the patch and documentation to support Airoha AN7581
+> sound driver.
+> 
+> The card follows similar implementation with Mediatek with
+> the codec present on i2c but with a simplified implementation
+> register wise and additional frequency supported.
+> 
+> [...]
 
-On 9/16/2026 7:08 PM, AngeloGioacchino Del Regno wrote:
-> Add a real driver for the Display Stream Compression (DSC) Display
-> Controller IP, implementing support for DSC v1.1 to v1.2.
-> 
-> In order to do this, it was necessary to remove the basic DSC IP
-> bypass setup from mtk_ddp_comp: this functionality is retained in
-> the new mtk_disp_dsc driver, which checks if DSC was actually
-> requested by other components (with the only one that currently
-> supports this being DSI) and, if not, it will set BYPASS mode in
-> the DSC IP.
-> 
-> Like before, the BYPASS mode is set before starting the DSC IP,
-> but unlike before, this is being done in the component start
-> callback instead of the config one.
-> Notably, the config callback is called by mtk_crtc always
-> immediately before the calling start callback, so the order of
-> register writes is retained.
-> The only real difference is that now this is being done through
-> CPU writes instead of CMDQ, but since that's called only once
-> and since it's just three registers, the performance impact will
-> not be minimal and not even measurable.
-> 
-> As anticipated, DSC handling was also introduced in the mtk_dsi
-> driver: when performing dsi_host_attach, the driver now checks
-> if the DSI panel adds the DSC configuration structure to the
-> mipi_dsi_device structure and, if it does, it will store a
-> pointer in the driver-local mtk_dsi structure's `dsc` member.
-> 
-> The DSI driver will then check whether the DSC configuration
-> that comes from the panel is valid (in regard to MediaTek DSI)
-> and will call the DRM API's DSC helpers to calculate and set
-> all of the const and RC parameters for the actual DSC setup.
-> 
-> For the time being, even though the latest MediaTek SoCs do
-> support DSC v1.2, only DSC v1.1 pre-scr support is implemented
-> as an initial contribution (which is rather big, and 1.2 would
-> make it even bigger - but that can anyway be implemented later).
-> 
-> As a last step for validation of DSC parameters in DSI, a check
-> for the hdisplay against DSC slice sidth and one for vdisplay
-> against DSC slice height was added to the mode_valid callback,
-> making sure that H/V are, as expected, multiples of slice W/H.
-> 
-> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-> ---
->  drivers/gpu/drm/mediatek/Makefile       |   1 +
->  drivers/gpu/drm/mediatek/mtk_crtc.c     |  21 ++
->  drivers/gpu/drm/mediatek/mtk_ddp_comp.c |  43 +--
->  drivers/gpu/drm/mediatek/mtk_ddp_comp.h |   9 +
->  drivers/gpu/drm/mediatek/mtk_disp_drv.h |   8 +
->  drivers/gpu/drm/mediatek/mtk_disp_dsc.c | 449 ++++++++++++++++++++++++
->  drivers/gpu/drm/mediatek/mtk_drm_drv.c  |   2 +
->  drivers/gpu/drm/mediatek/mtk_drm_drv.h  |   1 +
->  drivers/gpu/drm/mediatek/mtk_dsi.c      | 151 +++++++-
->  9 files changed, 635 insertions(+), 50 deletions(-)
->  create mode 100644 drivers/gpu/drm/mediatek/mtk_disp_dsc.c
-> 
+Applied to
 
-[...]
+   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-7.4
 
-> +
-> +	dsc->simple_422 = false;
-> +	dsc->convert_rgb = true;
-> +	dsc->vbr_enable = false;
-> +
-> +	drm_dsc_set_const_params(dsc);
-> +	drm_dsc_set_rc_buf_thresh(dsc);
-> +
-> +	ret = drm_dsc_setup_rc_params(dsc, DRM_DSC_1_2_444);
-> +	if (ret) {
-> +		dev_err(dev, "Cannot find DSC RC params\n");
-> +		return ret;
-> +	}
-> +
+Thanks!
 
-Just out of curiosity, is there a reason the DSC v1.1 rc parameters 
-aren't used here?
+[1/5] ASoC: dt-bindings: Add Airoha AN7581 AFE Sound card
+      https://git.kernel.org/broonie/sound/c/78da571393da
+[2/5] ASoC: dt-bindings: Add Airoha AN7581 AFE with WM8960 Codec schema
+      https://git.kernel.org/broonie/sound/c/8fcf0497e6da
+[3/5] ASoC: mediatek: common: permit to provide dedicated regmap for irq
+      https://git.kernel.org/broonie/sound/c/b49799e40313
+[4/5] ASoC: airoha: Add AFE driver for Airoha AN7581
+      https://git.kernel.org/broonie/sound/c/4974ffa0d6c2
+[5/5] ASoC: airoha: Add machine driver for Airoha AN7581
+      https://git.kernel.org/broonie/sound/c/272d6e51bc1f
 
--- 
-Best, 
-Chaoyi
+All being well this means that it will be integrated into the linux-next
+tree (usually sometime in the next 24 hours) and sent to Linus during
+the next merge window (or sooner if it is a bug fix), however if
+problems are discovered then the patch may be dropped or reverted.
+
+You may get further e-mails resulting from automated or manual testing
+and review of the tree, please engage with people reporting problems and
+send followup patches addressing any issues that are reported if needed.
+
+If any updates are required or you are submitting further changes they
+should be sent as incremental updates against current git, existing
+patches will not be replaced.
+
+Please add any relevant lists and maintainers to the CCs when replying
+to this mail.
+
+Thanks,
+Mark
+
 
