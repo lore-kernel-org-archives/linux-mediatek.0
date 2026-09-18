@@ -4,75 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 52DF7C982D7
-	for <linux-mediatek@archiver.kernel.org>; Fri, 18 Sep 2026 09:59:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F2FFBC982DA
+	for <linux-mediatek@archiver.kernel.org>; Fri, 18 Sep 2026 10:03:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=z1o+2EJUrEUDbyRUgSUskYSkV3cMpCH3ceYu3ofO7V0=; b=0v8/xTdWdgRVQ1FN+5fesrmc+f
-	ylI7zQOn72Fum9w1zWjKfx//eve4SXVIHcmLjNJ6lcW2AtFdb0pjXLF7f1W9LFHyEz/PX6/JxnklQ
-	h3M2Ou69Nyij3bxR8YAmDGLU9bRVZ4xjTM8gWXpqbhKvo9VUvUI1tiXDTLIutWrSfxhMqNE9thAz/
-	fvH/FE2UKnkzg9V7/8OemXZwcZ1kVys+GV++c6Vq2MkaGIRsA6WPhmCbk9yl8QRvDbxzOkVU7XRsb
-	FoggTxArJbLWzgfYS/dAb+dnnBisd9zeXfRAFw2WrGPdu4uL/PAxm5ccDqE8z0vwy95qssGo/Adb1
-	n7zM8CeA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Vf+VMKVEe34XIFcoM0F3NyOnHOuNbUrZlrEVL6D0Cdw=; b=pv1EZS4l8750nloGSCdUrWMaaA
+	jIUyQ7h9+UhXHkap76kF2ysE63KBuK+wgkNx+IAXiURRTugPC7YDkk9q/+rbWRat1jamlT4SgCJr7
+	XJWXXD0rXGpqJpRGACFVVVv5h0DLSivo1VZCNQQyRLAoQKjN3bPwe3NleoHW7hHZOqbO+oUVHaVRx
+	mQPzAlTRQmiySEger2gktMrt4A3LZWHWf8GQK6GRTS6QQ2dIhNZYeYFNPiwZvE80CbcYt2zqrRahD
+	QqY/g8Ky0MdHSHLNdDNybk7x/nNQuCJ9PIlOnLhAALrmq90OLpAEVSn1ko37oA+okDe7XrhAbF3m4
+	sdLZXasw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x7VNb-0000000E1e7-2naw;
-	Fri, 18 Sep 2026 09:59:39 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1x7VQz-0000000E2AS-15OY;
+	Fri, 18 Sep 2026 10:03:09 +0000
+Received: from mgamail.intel.com ([192.198.163.4])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x7VNY-0000000E1bx-40Wj;
-	Fri, 18 Sep 2026 09:59:37 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id EB56460A5E;
-	Fri, 18 Sep 2026 09:59:35 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1E2EB1F00898;
-	Fri, 18 Sep 2026 09:59:32 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1789725575;
-	bh=z1o+2EJUrEUDbyRUgSUskYSkV3cMpCH3ceYu3ofO7V0=;
-	h=From:To:Cc:In-Reply-To:References:Subject:Date;
-	b=TXD9X0N4EOz7g+ZOsnyYq8PjoPS6r/evXipkXUDIgrfT5rxBcTwDA0fTFdBkuN3XY
-	 n0muqI0hyQmHdzKpYjpIcGGofLjlhr0wVfv5gDoiRnXrZqGPlB6VVO2ITnE7WVusyY
-	 atjdYiB9oOI4bQdHZQsQFQYHT7D5OdJMhGwEbWIxLci3KhuvnuHVXMltSAVLzQgIJl
-	 RVV4E3oijSEvZE2TLoFFLDqG0bZ//6opVFlmO5QG7e+hDhyfTq/kO5v56p1BpYibbJ
-	 6LEAWHUcoV2etl1DzJHbPO9zqdBaFqNPdt2SN2Tm+F3vOcmGT/sMuZji1Orfnm0HZi
-	 B5NobWZfkEVzQ==
-From: Mark Brown <broonie@kernel.org>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- phucduc.bui@gmail.com
-Cc: Liam Girdwood <lgirdwood@gmail.com>, 
- Matthias Brugger <matthias.bgg@gmail.com>, Jaroslav Kysela <perex@perex.cz>, 
- Takashi Iwai <tiwai@suse.com>, Cezary Rojewski <cezary.rojewski@intel.com>, 
- Cyril Chao <Cyril.Chao@mediatek.com>, 
- Kuninori Morimoto <kuninori.morimoto.gx@renesas.com>, 
- Dan Carpenter <error27@gmail.com>, cassiogabrielcontato@gmail.com, 
- linux-sound@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
-In-Reply-To: <20260916050020.14575-1-phucduc.bui@gmail.com>
-References: <20260916050020.14575-1-phucduc.bui@gmail.com>
-Subject: Re: [PATCH v3 00/12] ASoC: mediatek: mt8189: Improve error
- handling
-Message-Id: <178964579061.162267.1362536058859075939.b4-ty@b4>
-Date: Thu, 17 Sep 2026 12:49:50 +0100
+	id 1x7VQx-0000000E29j-0vYc;
+	Fri, 18 Sep 2026 10:03:08 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1789725788; x=1821261788;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=uElSAhyH1PpeEPWtCcp7Howb3i9y6eQxOdUHga4bW1E=;
+  b=GR14b0haBjIpr/0DhwIvkhYI9Xn76vRme6b0RAZGOxziKklvYSHtL+/E
+   I/IfWr3MBEek9YuXfc982aukkD1MAZgjBFfsG9S7NQn24CbEtGH1UhJ+J
+   BuPMAcRBsshrxSTkazqO4qbRp57l4lsZjacCEyn+sDyPB1pNJJNfm0674
+   BeHu+Ya/pGGxvZ+SVc561QG1sHbape1MtTOXo4Ur59g6/lE5+DO3LMqMq
+   iujsdp9/udHx9teUs85XdaC+txnr3Y8Zm4/lAMLblqs2wbIZfcljg/I3g
+   bvV/WzKBMQNWYYB4F4Fb8gujaSfj2ZKvqKWrK6Ssw20LXcgO3LHbJQgRB
+   g==;
+X-CSE-ConnectionGUID: 7JJ5xXsyRvCaA1gdTalJiA==
+X-CSE-MsgGUID: 9YpDHz9rS+237zQauBOLJQ==
+X-IronPort-AV: E=McAfee;i="6800,10657,11905"; a="728803"
+X-IronPort-AV: E=Sophos;i="6.27,103,1787036400"; 
+   d="scan'208";a="728803"
+Received: from fmviesa006.fm.intel.com ([10.60.135.146])
+  by fmvoesa114.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 18 Sep 2026 03:03:06 -0700
+X-CSE-ConnectionGUID: Fzk0+0vuSaGiYihkFXoX7g==
+X-CSE-MsgGUID: JJFCgwzZRAm1B0qK2MGLwQ==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.27,103,1787036400"; 
+   d="scan'208";a="270024013"
+Received: from black.igk.intel.com ([10.91.253.5])
+  by fmviesa006.fm.intel.com with ESMTP; 18 Sep 2026 03:03:03 -0700
+Received: by black.igk.intel.com (Postfix, from userid 1008)
+	id 0041099; Fri, 18 Sep 2026 12:03:01 +0200 (CEST)
+Date: Fri, 18 Sep 2026 12:03:01 +0200
+From: Heikki Krogerus <heikki.krogerus@linux.intel.com>
+To: Joshua Crofts <joshua.crofts1@gmail.com>
+Cc: Peter Chen <peter.chen@kernel.org>, Pawel Laszczak <pawell@cadence.com>,
+	Roger Quadros <rogerq@kernel.org>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	Mathias Nyman <mathias.nyman@intel.com>,
+	Chunfeng Yun <chunfeng.yun@mediatek.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	linux-usb@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, stable@vger.kernel.org
+Subject: Re: [PATCH 4/6] usb: typec: ucsi: ccg: add missing
+ pm_runtime_dont_use_autosuspend() call
+Message-ID: <aq0MVewexVIdq_qs@black.igk.intel.com>
+References: <20260915090223.1346-1-joshua.crofts1@gmail.com>
+ <20260915090223.1346-5-joshua.crofts1@gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-X-Mailer: b4 0.17-dev
-X-Developer-Signature: v=1; a=openpgp-sha256; l=2622; i=broonie@kernel.org;
- h=from:subject:message-id; bh=DyUPZa74Z6H2dwMaVflO5vPYh8y7Y+XnqMVZ729Issg=;
- b=owEBbQGS/pANAwAKASTWi3JdVIfQAcsmYgBqrQuC8AvSUhtSFMKXeNu/CtsaAbJ+39W4gmt0b
- qK1kL2tgGGJATMEAAEKAB0WIQSt5miqZ1cYtZ/in+ok1otyXVSH0AUCaq0LggAKCRAk1otyXVSH
- 0CwNB/9XQDgm/oej4WNwzmN06N+304vOdFoIWg77CZn+9TMH8/Ib2NEUuGTyPdrcxB9/sGJJ3nk
- oXlkZWze+j58o7QwIivsPRjaANz3sZLpK21LDo8Xd8FhGh3ie/IB8cB8WUVL8kOo9SMWeA97Wu/
- +CKAh61TP64/MvTm4lk40IjGRMfM5ykLs/PZJVQqKhkaMFzwn5Oq61a9I9bjEuNLUwgn92avbAP
- IErQMkXf1DB18+isDnLl3IeFCVSvrrr7Rx6ISkYbLWTnEsG484dl6g+wdQndgkpDedwd796I7FS
- 5TGlzYWOovwOzlU21Sa2YO01BdFJKZiJ2Prs+IjopdLUXouc
-X-Developer-Key: i=broonie@kernel.org; a=openpgp;
- fpr=3F2568AAC26998F9E813A1C5C3F436CA30F5D8EB
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20260915090223.1346-5-joshua.crofts1@gmail.com>
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260918_030307_267544_ACA2952E 
+X-CRM114-Status: GOOD (  14.85  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,65 +94,39 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, 16 Sep 2026 12:00:07 +0700, phucduc.bui@gmail.com wrote:
-> ASoC: mediatek: mt8189: Improve error handling
+On Tue, Sep 15, 2026 at 09:02:21AM +0000, Joshua Crofts wrote:
+> ucsi_ccg_remove() disables PM runtime on teardown, but doesn't call
+> pm_runtime_dont_use_autosuspend(), causing resource leaks.
 > 
-> From: bui duc phuc <phucduc.bui@gmail.com>
+> Add the missing pm_runtime_dont_use_autosuspend() call.
 > 
-> Hi all,
+> Found using Coccinelle.
 > 
-> This series addresses part of the error handling in the MT8189 AFE driver.
+> Fixes: a94ecde41f7e ("usb: typec: ucsi: ccg: enable runtime pm support")
+> Cc: <stable@vger.kernel.org>
+> Signed-off-by: Joshua Crofts <joshua.crofts1@gmail.com>
+
+Reviewed-by: Heikki Krogerus <heikki.krogerus@linux.intel.com>
+
+> ---
+>  drivers/usb/typec/ucsi/ucsi_ccg.c | 1 +
+>  1 file changed, 1 insertion(+)
 > 
-> [...]
+> diff --git a/drivers/usb/typec/ucsi/ucsi_ccg.c b/drivers/usb/typec/ucsi/ucsi_ccg.c
+> index 91c2958a708c..9d3ebb255de7 100644
+> --- a/drivers/usb/typec/ucsi/ucsi_ccg.c
+> +++ b/drivers/usb/typec/ucsi/ucsi_ccg.c
+> @@ -1519,6 +1519,7 @@ static void ucsi_ccg_remove(struct i2c_client *client)
+>  
+>  	cancel_work_sync(&uc->pm_work);
+>  	cancel_work_sync(&uc->work);
+> +	pm_runtime_dont_use_autosuspend(uc->dev);
+>  	pm_runtime_disable(uc->dev);
+>  	ucsi_unregister(uc->ucsi);
+>  	free_irq(uc->irq, uc);
+> -- 
+> 2.47.3
 
-Applied to
-
-   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-7.4
-
-Thanks!
-
-[01/12] ASoC: mediatek: mt8189: Propagate APLL enable errors
-        https://git.kernel.org/broonie/sound/c/5a3c23d4aa89
-[02/12] ASoC: mediatek: mt8189: Propagate MCK enable errors
-        https://git.kernel.org/broonie/sound/c/bd9a8d9def20
-[03/12] ASoC: mediatek: mt8189: Validate MCK ID
-        https://git.kernel.org/broonie/sound/c/b6b47040e897
-[04/12] ASoC: mediatek: mt8189: Propagate reg_rw clock errors
-        https://git.kernel.org/broonie/sound/c/29de66668799
-[05/12] ASoC: mediatek: mt8189: Use dev_err_probe() for clock errors
-        https://git.kernel.org/broonie/sound/c/ea8c96a05da7
-[06/12] ASoC: mediatek: mt8189: Propagate runtime resume errors
-        https://git.kernel.org/broonie/sound/c/483e827b005f
-[07/12] ASoC: mediatek: mt8189: Remove redundant error message
-        https://git.kernel.org/broonie/sound/c/e9e9e514eeef
-[08/12] ASoC: mediatek: mt8189: Propagate APLL errors
-        https://git.kernel.org/broonie/sound/c/6347f276da8c
-[09/12] ASoC: mediatek: mt8189: Propagate MCLK errors
-        https://git.kernel.org/broonie/sound/c/65b9d4a783cc
-[10/12] ASoC: mediatek: mt8189: Validate sysclk frequency
-        https://git.kernel.org/broonie/sound/c/9c73b5a43c99
-[11/12] ASoC: mediatek: mt8189: Propagate TDM clock errors
-        https://git.kernel.org/broonie/sound/c/242d0280eabb
-[12/12] ASoC: mediatek: mt8189: Validate TDM MCLK frequency
-        https://git.kernel.org/broonie/sound/c/197ec30e1b60
-
-All being well this means that it will be integrated into the linux-next
-tree (usually sometime in the next 24 hours) and sent to Linus during
-the next merge window (or sooner if it is a bug fix), however if
-problems are discovered then the patch may be dropped or reverted.
-
-You may get further e-mails resulting from automated or manual testing
-and review of the tree, please engage with people reporting problems and
-send followup patches addressing any issues that are reported if needed.
-
-If any updates are required or you are submitting further changes they
-should be sent as incremental updates against current git, existing
-patches will not be replaced.
-
-Please add any relevant lists and maintainers to the CCs when replying
-to this mail.
-
-Thanks,
-Mark
-
+-- 
+heikki
 
