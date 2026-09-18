@@ -4,83 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7FBA6C982D7
-	for <linux-mediatek@archiver.kernel.org>; Fri, 18 Sep 2026 21:03:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5974EC982D8
+	for <linux-mediatek@archiver.kernel.org>; Fri, 18 Sep 2026 21:53:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=zBVUB+rZ7j2Dok9x4TAglY73jOcPB1CQmY0vslpUrio=; b=yWgVg6JCeh0oTPMc7JZNY0H+Ao
-	rITBAmkEHEt+ocRP4TQIKdUiWBYH9C9aHWelzeaOmtuo0iPw1oRsPLWa2boPwEUxfSPRNriLstf83
-	aYrbv7OKVInsKRI6bGLvYbpGQmTjlcNFA/8ssL7TmW46F6h5Lx9QhQ0vXEF+RwZVy0z8LrvLiAd3z
-	4NFMXPGs6NaeZ1iKKcCuc8P/x9/LhDCbtfFU1y4OlPxzqiYwtBZh415vHkamFEkkjMq0DsWULxtVO
-	jlyowZvfkrjgUisbkXPjiFzy3ZuZTyH1wY6x4MSKUhmfmp+0kz0aKPXqxvFVeyVYp4z87ztUhj/IT
-	NnlaU6CQ==;
+	bh=8W8XO/Ae5cM2yDYef7QCLLw8szG6m9g5X/FwN3K83rI=; b=RB7r3oiUwqJBsIZYEBlrimEVTl
+	OjlLrW8s5tAUgg+Mwg6Pt/Cag4Yghkwk+v5pf4UIegDwxwjb2aIfcxun9DOlPZ25+SF+PufpfLFQP
+	HgVITSJ2WQbbvwslsts6LKwmLxbglkLq07tl8fxbCoEw0u7L2OovbtFGJqtQqVMZeMFpmRIlDZ9qK
+	uquBcciold6RrHB1lsoSaseB7Uxqu3tSUlY4V6T4OCysNgX1P3eKDuZdThOI8MB3Xr/EBVQmch4Oe
+	Rof1F1u3PdT2QqYYDxvorGCpsyTBcC6tBcYntUhM8oIyxBwxHbbaqViLybtv/CPgjD3G58p9OYROn
+	00Djf0dA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x7fjs-0000000FXm2-0cbB;
-	Fri, 18 Sep 2026 21:03:20 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1x7gVx-0000000FaQ1-2xWu;
+	Fri, 18 Sep 2026 21:53:01 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x7fjq-0000000FXln-3PXw;
-	Fri, 18 Sep 2026 21:03:18 +0000
+	id 1x7gVv-0000000FaPn-3JIs;
+	Fri, 18 Sep 2026 21:52:59 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id 43BA9432C6;
-	Fri, 18 Sep 2026 21:03:18 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6AEC21F000FF;
-	Fri, 18 Sep 2026 21:03:13 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 429EC43660;
+	Fri, 18 Sep 2026 21:52:59 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id EBD681F000FF;
+	Fri, 18 Sep 2026 21:52:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1789765398;
-	bh=zBVUB+rZ7j2Dok9x4TAglY73jOcPB1CQmY0vslpUrio=;
-	h=From:To:Cc:In-Reply-To:References:Subject:Date;
-	b=EquH21eDjld/an88BVJInTO7kzqLbzkbhO4GX8J8pNG8p1QYnwb4dRn3iAgBIbfWr
-	 OkT/lCUUqO4yXOWNjNhOVEHkWTAl0rPrKD7JrS1ABU1sRhS2I2jkt6x/H9BZq8CQiz
-	 EyOZoikrcCrvDPm8Ia/PUMsgaY2JcW8RmvD8Or0TvNHGWRys9AQtM1fpec216z+gzI
-	 zJMexvjUOdcIkSbgU+s54ncFfdKhmm2JezDhrQlHvMImZKzQKr/Cm882nGO/t+rv7R
-	 1D65458XG5rZ14aF3reQ39elGXlbZQ0nq5wn3m0waz2zqTDQnOelGV1zLVRqV2pN5s
-	 ts3i/y8NF5qBQ==
-From: Mark Brown <broonie@kernel.org>
-To: Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, 
- Liam Girdwood <lgirdwood@gmail.com>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Peter Ujfalusi <peter.ujfalusi@linux.intel.com>, 
- Bard Liao <yung-chuan.liao@linux.intel.com>, 
- Daniel Baluta <daniel.baluta@nxp.com>, Orson Zhai <orsonzhai@gmail.com>, 
- Baolin Wang <baolin.wang@linux.alibaba.com>, 
- Gary Yang <gary.yang@cixtech.com>, Fugang Duan <fugang.duan@cixtech.com>, 
- Mukesh Ojha <mukesh.ojha@oss.qualcomm.com>
-Cc: Kai Vehmanen <kai.vehmanen@linux.intel.com>, 
- Pierre-Louis Bossart <pierre-louis.bossart@linux.dev>, 
- Vijendar Mukunda <Vijendar.Mukunda@amd.com>, 
- Chunyan Zhang <zhang.lyra@gmail.com>, 
- CIX Linux Kernel Upstream Group <cix-kernel-upstream@cixtech.com>, 
- linux-sound@vger.kernel.org, linux-kernel@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
- sound-open-firmware@alsa-project.org
-In-Reply-To: <20260902194712.2003414-1-mukesh.ojha@oss.qualcomm.com>
-References: <20260902194712.2003414-1-mukesh.ojha@oss.qualcomm.com>
-Subject: Re: (subset) [PATCH v2 0/12] ASoC: Use
- devm_of_reserved_mem_device_init()
-Message-Id: <178941200290.1239410.15128719985401962631.b4-ty@b4>
-Date: Mon, 14 Sep 2026 19:53:22 +0100
+	s=k20260515; t=1789768379;
+	bh=8W8XO/Ae5cM2yDYef7QCLLw8szG6m9g5X/FwN3K83rI=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To;
+	b=N4e2esu+nbbszP6tLi19HQcyp3UTfm/8Ra6HgTLuOQ+lNSqq8wN+HG+5h6voAyqvw
+	 JBkuq0O+9qHVnNQbBgRtykiL9pO3Vt6BwH2Sj8pF/dmFnLgHgRR7aDvmMyMcioECsa
+	 G+aklz+r4vk8Zf6tskvGHkWPFLLypq9CoO1qx+wVAOYydQqrmMy3HKK6igwX3IHg5M
+	 sLlhMMa99E+cjHdfktxpavspkszmjIeW8oThUebLcBwp6ttL7d/w/VRXtIXH6Xkzw9
+	 4QKPO2HHZrpt/1GgREjb06tQk9uZU3M+lxyfNiL7jZ1dCpQEMKqJ0qcVPg0k4lI7VI
+	 ypWSSAtI1vISw==
+Message-ID: <abbbc648-6284-49b0-b362-5d41e34b3e42@kernel.org>
+Date: Fri, 18 Sep 2026 22:52:55 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v3 0/3] nvmem: mtk-efuse: mt6572 support
+To: rva333@protonmail.com, Srinivas Kandagatla <srini@kernel.org>,
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
+ Lala Lin <lala.lin@mediatek.com>
+Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+References: <20260909-6572-nvmem-v3-0-c0c441656431@protonmail.com>
+Content-Language: en-US
+From: Srinivas Kandagatla <srini@kernel.org>
+In-Reply-To: <20260909-6572-nvmem-v3-0-c0c441656431@protonmail.com>
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
-X-Mailer: b4 0.17-dev
-X-Developer-Signature: v=1; a=openpgp-sha256; l=2791; i=broonie@kernel.org;
- h=from:subject:message-id; bh=Gb3QfmkOrVGIOg3Os7Iaodaux/izAj7p3PV3IKXh+fU=;
- b=owEBbQGS/pANAwAKASTWi3JdVIfQAcsmYgBqracOJJWQrLPDtSKiJSYpghDcGeKoEJK1wdvqo
- 513w+6zGRKJATMEAAEKAB0WIQSt5miqZ1cYtZ/in+ok1otyXVSH0AUCaq2nDgAKCRAk1otyXVSH
- 0MLgB/4jhdeXKcFGMRCCOMJElsESDYK/RiLzcZOpc/umujbrAhMQfEtatYYIqDO7C0PzI8ZYQI9
- MdMEsMKSBkFJ08aEIR5tjImNZQ7SuNNJ/SgjtGVt9Hhkj0OEjN0eNKQQytEntJacRYMQO1UPgPk
- Uf3ruANx91aa3b15+zkFxy6kr8RuwQYFP4nddp1PMt2PChGYL4/4G2ipzwkuf2ksBUvCTavby97
- P8nBFtQ3vuF7kquhtSHsgobzow6bwfySpj9+rvteitlbionrYAYYofjlp8tH39cFcdZxCMXZPPm
- YeoW1w2tzJfFKdmd7p9RQ7IqHdHaOZciA996BukFHe1eHNx4
-X-Developer-Key: i=broonie@kernel.org; a=openpgp;
- fpr=3F2568AAC26998F9E813A1C5C3F436CA30F5D8EB
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,63 +75,75 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 03 Sep 2026 01:17:00 +0530, Mukesh Ojha wrote:
-> ASoC: Use devm_of_reserved_mem_device_init()
+
+
+On 9/9/26 11:48 AM, Roman Vivchar via B4 Relay wrote:
+> This patch series adds MediaTek mt6572 efuse support. Unlike newer SoCs,
+> its efuse controller doesn't work properly with 8-bit reads, leading to
+> invalid data with current mtk-efuse driver implementation.
 > 
-> Several ASoC drivers manually manage reserved memory lifetime by calling
-> of_reserved_mem_device_init() in probe and of_reserved_mem_device_release()
-> in remove. This pattern is fragile: any error path between the two that
-> skips the release leaks the reserved memory region for the lifetime of the
-> driver.
+> This behavior can be observed with devmem (0x10009174 and 0x10009178 are
+> thermal calibration cells):
+> ~ # devmem 0x10009174 32
+> 0x00CDD4CD
+> ~ # devmem 0x10009178 32
+> 0x0F76865D
+> ~ # devmem 0x10009174 8
+> 0xCD
+> ~ # devmem 0x10009175 8
+> 0x00
+> ~ # devmem 0x10009176 8
+> 0x00
+> ~ # devmem 0x10009177 8
+> 0x00
+> ~ # devmem 0x10009178 8
+> 0x5D
+> ~ # devmem 0x10009179 8
+> 0x00
+> ~ # devmem 0x1000917a 8
+> 0x00
+> ~ # devmem 0x1000917b 8
+> 0x00
 > 
-> [...]
+> Patch 1 adds dt-bindings compatible for the mt6572,
+> Patch 2 adds platform data option to use aligned 32-bit reads instead
+> of plain readb().
+> Patch 3 adds platform data for mt6572 SoC.
+> 
+> Signed-off-by: Roman Vivchar <rva333@protonmail.com>
+> ---
+> Changes in v3:
+> - Pick up Rob's r-b tag for dt-bindings
+> - Patch 2 and 3 unchanged, for some reason cover letter and patch 1 were
+> missing on the web mirror...
+> - Link to v2: https://patch.msgid.link/20260724-6572-nvmem-v2-0-e58d16a29621@protonmail.com
+> 
+> Changes in v2:
+> - dt-bindings: make mediatek,mt6572-efuse standalone compatible
+> - Driver: add 'mtk_reg_read_aligned' helper instead of modifying 'mtk_reg_read'
+> - Link to v1: https://patch.msgid.link/20260715-6572-nvmem-v1-0-9c13be99d077@protonmail.com
+> 
+> ---
+> Roman Vivchar (3):
+>       dt-bindings: nvmem: mediatek: efuse: add mt6572
+>       nvmem: mtk-efuse: add support for 32-bit aligned reads
+>       nvmem: mtk-efuse: add mt6572 support
+> 
 
-Applied to
+Doesn't apply cleanly pl resend.
 
-   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-7.4
-
-Thanks!
-
-[01/12] ASoC: mediatek: mt8192: Use devm_of_reserved_mem_device_init()
-        https://git.kernel.org/broonie/sound/c/14318426e2c0
-[02/12] ASoC: mediatek: mt8196: Use devm_of_reserved_mem_device_init()
-        https://git.kernel.org/broonie/sound/c/68cd0442f674
-[03/12] ASoC: mediatek: mt8183: Use devm_of_reserved_mem_device_init()
-        https://git.kernel.org/broonie/sound/c/573d1749fcb3
-[04/12] ASoC: mediatek: mt8189: Use devm_of_reserved_mem_device_init()
-        https://git.kernel.org/broonie/sound/c/34dbfae252c2
-[06/12] ASoC: mediatek: mt8173: Use devm_of_reserved_mem_device_init()
-        https://git.kernel.org/broonie/sound/c/f33929d53089
-[07/12] ASoC: mediatek: mt8186: Use devm_of_reserved_mem_device_init()
-        https://git.kernel.org/broonie/sound/c/55be77e8a5fb
-[08/12] ASoC: mediatek: mt8188: Use devm_of_reserved_mem_device_init()
-        https://git.kernel.org/broonie/sound/c/3167f3ca6c77
-[09/12] ASoC: mediatek: mt8195: Use devm_of_reserved_mem_device_init()
-        https://git.kernel.org/broonie/sound/c/4169b6a5cdd3
-[10/12] ASoC: SOF: mediatek: mt8186: Use devm_of_reserved_mem_device_init()
-        https://git.kernel.org/broonie/sound/c/6b006d357f03
-[11/12] ASoC: SOF: mediatek: mt8195: Use devm_of_reserved_mem_device_init()
-        https://git.kernel.org/broonie/sound/c/3531143e9cec
-[12/12] ASoC: sprd: Use devm_of_reserved_mem_device_init()
-        https://git.kernel.org/broonie/sound/c/e88fd9fe81d7
-
-All being well this means that it will be integrated into the linux-next
-tree (usually sometime in the next 24 hours) and sent to Linus during
-the next merge window (or sooner if it is a bug fix), however if
-problems are discovered then the patch may be dropped or reverted.
-
-You may get further e-mails resulting from automated or manual testing
-and review of the tree, please engage with people reporting problems and
-send followup patches addressing any issues that are reported if needed.
-
-If any updates are required or you are submitting further changes they
-should be sent as incremental updates against current git, existing
-patches will not be replaced.
-
-Please add any relevant lists and maintainers to the CCs when replying
-to this mail.
-
-Thanks,
-Mark
+--srini
+>  .../devicetree/bindings/nvmem/mediatek,efuse.yaml  |  5 ++-
+>  drivers/nvmem/mtk-efuse.c                          | 41 +++++++++++++++++++++-
+>  2 files changed, 44 insertions(+), 2 deletions(-)
+> ---
+> base-commit: 8cd9520d35a6c38db6567e97dd93b1f11f185dc6
+> change-id: 20260710-6572-nvmem-eb98c7a73351
+> 
+> Best regards,
+> --  
+> Roman Vivchar <rva333@protonmail.com>
+> 
+> 
 
 
