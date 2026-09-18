@@ -4,86 +4,96 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B6B17C982D0
-	for <linux-mediatek@archiver.kernel.org>; Fri, 18 Sep 2026 01:38:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5479BC982D2
+	for <linux-mediatek@archiver.kernel.org>; Fri, 18 Sep 2026 01:50:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
-	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ANSYXhkR59VMjSJxw7ihndcWaAezvhBNEHzaW2IaT8Q=; b=ZM6daW6SSGlAPuELCYn14Ftx80
-	zyl7t6e4w3XvILLa+0nwXPi9mqlfSXpm/W1L4iCesQZPx+XfWNKkoUwhruo3unTMsDkjcfYw2aF57
-	9RH5GVsI30dPKXFpsELBK4nIVKjR07zzfCotKCVytEbI7YV6ixRyjiAbVFewgYM+yY8v6i3CBH3Tz
-	U4p/7tP6goUHNESsqF8pX/+MQpWrexZeVC3BdkoWBwCjINrQdOPKzrT6LAazt4Neao8gBK4VqerKd
-	u5CzehpbgZc0nlDvrDbcTBRg5h7WLbFTwq8gh/hgwtfaidr3MKOC4Aus33D1B+LbMnhhvW7zyvDdc
-	J40YPpEw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=R1Dphf3wJq4BrmquaAl7H8zsB9cDxJ+RW6Mq3uDSYmM=; b=zYxxmsa8L9HQh4zfcrukiMqsHX
+	ZK8d9FquBnGMwwUG9eAy9pR23LJMwFwMyak7j9y5c4+f+k4b0Loe/6J1yysPsKnK9HZ12UBr1i15R
+	rTyNrDlf6s5wLnUGa3Ob3SiFKMwyvIGXLs8JSA96KpLr73+H74nb17gqZb5f9BQRgNyhGj1WwYoxx
+	IRdsTG2aDJWrJq/Vq5cK85h0MgH4ZDe/Sq68LHhJOBXe5iITo3g1GyO+Fmexwf/49ZRlr/1utf69a
+	oVhSuVy1a+mxSWEj8XuonPRfngKfSnaaS7J5iSXG3DUc9G6qa9t2xIj+lFauryE4PiDjr07wgEltp
+	h45bMiMA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x7NYy-0000000DAwm-3EtY;
-	Fri, 18 Sep 2026 01:38:52 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1x7NkF-0000000DD6i-0DgW;
+	Fri, 18 Sep 2026 01:50:31 +0000
+Received: from mail-wr2-x16.google.com ([2a00:1450:4864:30::16])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x7NYx-0000000DAw2-2D1F;
-	Fri, 18 Sep 2026 01:38:51 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=MIME-Version:Content-Transfer-Encoding
-	:Content-Type:References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:
-	Sender:Reply-To:Content-ID:Content-Description;
-	bh=ANSYXhkR59VMjSJxw7ihndcWaAezvhBNEHzaW2IaT8Q=; b=o/q5zSt1Pk4JiweCSLOrFSHYiX
-	I9VZIpxLU75lX73oDfm5vtOqjU3cXyrB9RovyV9rhdZXQhRFSoQhP4kn5LP5BVe/vVfh/2YWqwPBx
-	V+U9LGSbVRXF4HkBCP9P8qAABkXD4lAPFPNtCMK3bsru4t0SdxDaIZ0zSplBVI2fRXl+u0Xhyf6cp
-	8MCfLxvmVorZoEjLD6Qgow5R+/ZbIGY4BPeTHawc33oGpDin0mscK6HumBFjuoGK/hrxPRN/gE6oq
-	oBoLW/mjKw7/axzLT6uSQ5ykABEcWK76wVO0uvMQ1SAI9p9awOSWt3IT/ezcz+RGpl4UHUrVG3KcL
-	2R4e4Z9w==;
-Received: from xs1.mindbit.ro ([80.86.107.70] helo=mail.mindbit.ro)
-	by desiato.infradead.org with esmtps (Exim 4.99.2 #2 (Red Hat Linux))
-	id 1x7NYu-00000009U9v-20PT;
-	Fri, 18 Sep 2026 01:38:50 +0000
-Received: from dog.kanata.rendec.net (pool-174-112-193-187.cpe.net.cable.rogers.com [174.112.193.187])
-	by mail.mindbit.ro (Postfix) with ESMTPSA id 7125DCFB00;
-	Fri, 18 Sep 2026 04:38:41 +0300 (EEST)
-DKIM-Filter: OpenDKIM Filter v2.11.0 mail.mindbit.ro 7125DCFB00
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=rendec.net;
-	s=default; t=1789695524;
-	bh=ANSYXhkR59VMjSJxw7ihndcWaAezvhBNEHzaW2IaT8Q=;
-	h=Subject:From:To:Cc:Date:In-Reply-To:References:From;
-	b=UUFShpgXvfTYmy5brAtO+WcGmV3rDOVegPicqUL9zj5RA97uAyCc0vfhtHnzp/cQH
-	 lgeeNGr8EpfgrhVgpHTSVShEQZYxefMGS8F0yRGsV0AMLZEpZTcIUiyPyt1BPurz1T
-	 QeL8n0QO4KTZtuGI3Fssf17KVkFYkV94FPUlOU4J3LHfbLCcQE0NnCbtp8LMjIzRPj
-	 BkZIf6EYcJINqt5ciNEZvPKrZ8FzR0I3gol01O0FC8usyqs2NjCmZJwrm+34Qg3s6k
-	 CPF/2PttvoU63/4X9NEUaoDvenduK8aRmniNzluH4xUpg5/SUNz8Ohjtp4wuKWwiWI
-	 1ZPjwGiDMTlLA==
-Message-ID: <6a4202752078c5f55882d3a4f5113829201dfb7b.camel@rendec.net>
-Subject: Re: [PATCH v2 0/6] riscv: Make IPI_MAX visible and use it
- consistently
-From: Radu Rendec <radu@rendec.net>
-To: Guo Ren <guoren@kernel.org>, Thomas Gleixner <tglx@kernel.org>
-Cc: Paul Walmsley <pjw@kernel.org>, Palmer Dabbelt <palmer@dabbelt.com>, 
- Albert Ou <aou@eecs.berkeley.edu>, Alexandre Ghiti <alex@ghiti.fr>, Daniel
- Lezcano	 <daniel.lezcano@kernel.org>, Anup Patel <anup@brainfault.org>,
- Tiffany Lin	 <tiffany.lin@mediatek.com>, Andrew-CT Chen
- <andrew-ct.chen@mediatek.com>,  Yunfei Dong <yunfei.dong@mediatek.com>,
- Minghsiu Tsai <minghsiu.tsai@mediatek.com>, Houlong Wei	
- <houlong.wei@mediatek.com>, Mauro Carvalho Chehab <mchehab@kernel.org>, 
- Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
- <angelogioacchino.delregno@collabora.com>, 
-	linux-riscv@lists.infradead.org, linux-kernel@vger.kernel.org, 
-	linux-media@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org, "tip-bot2 for GUO Ren (XuanTie)"	
- <tip-bot2@linutronix.de>, Nathan Chancellor <nathan@kernel.org>
-Date: Thu, 17 Sep 2026 21:38:39 -0400
-In-Reply-To: <CAJF2gTQZWfvN8c7E3+jcmzD0GqzYKzYO9vLd=eR36azKU1Uq5g@mail.gmail.com>
-References: <20260911-ipi_max-v2-0-a77826ff189e@kernel.org>
-	 <81f0bf10b41dff85872487ab68c750471b7c2f89.camel@rendec.net>
-	 <CAJF2gTQZWfvN8c7E3+jcmzD0GqzYKzYO9vLd=eR36azKU1Uq5g@mail.gmail.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-User-Agent: Evolution 3.58.3 (3.58.3-1.fc43) 
+	id 1x7NkD-0000000DD5e-0y91
+	for linux-mediatek@lists.infradead.org;
+	Fri, 18 Sep 2026 01:50:30 +0000
+Received: by mail-wr2-x16.google.com with SMTP id ffacd0b85a97d-4834977ae75so69863f8f.3
+        for <linux-mediatek@lists.infradead.org>; Thu, 17 Sep 2026 18:50:28 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=lex.la; s=google; t=1789696227; x=1790301027; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
+        bh=R1Dphf3wJq4BrmquaAl7H8zsB9cDxJ+RW6Mq3uDSYmM=;
+        b=C/BUudhXbMElJtq8LJ1Hybqk8k+au9M0LRUIwsqftDKwk9a2nntmdPBW2ThMS/D1Vl
+         DFQRAaVPKh3bXOesWN2O2I6GjCjR7+0Rgl9DlDoL6dMRpG2C+2/h/8nD5VskQuRsEDTY
+         clfwy7XxhSMVdyz412LMy6f99ps04GWWQnRL4BJN/wG0Y2FZSCmUEUX/c0tkoqtldTiz
+         1idVDRfte58GrA2hHm8d0rvLUalznncim3I5b+5uH6Gy4k0XTj6BIKOKylTqgzLTagQI
+         5MzV2V39YWKuuzow791l0YKSN7ZuElWPAl2WxMwKPYmjB06U98JJIM89//R92V8yWjow
+         RXUQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20260707; t=1789696227; x=1790301027;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to:content-type;
+        bh=R1Dphf3wJq4BrmquaAl7H8zsB9cDxJ+RW6Mq3uDSYmM=;
+        b=qsyca2Bbr0EMgafW39yE1odxsdOZDZjrwziNw1KlpJ1Jne4xkALI0aZTk4HE+0Ixvi
+         WC8+dyM6S8xv5dqZc6MqRYZDQDj3/YKmbFOwz7tkKO93DD+2wlDpbSHz/4R10cOSV6so
+         zXPYKLJ8BMfCWp3ORXd73dlEKHtwnFTuHY/q343u+IChCI14CssenvciGk5d69+MweLA
+         Cy8FaQX4FI3FAC4xaC67MkWJU5tg/x99nu2I2uWQtFiVWVEFn8waFM5s996S5aT/XFSH
+         NOYXkjyO/huP5pgHtsnUKAfO/aZKXTlxrhZwp/Uu/Pa/INamkX/8wTt6WStSYX37+knz
+         slzw==
+X-Forwarded-Encrypted: i=1; AKwUvByaULlI2XbScyCUw0gEzD9VUJw4dtjWcob603dbE6bPYsQ6kH9GN+fY5aLOq7ITcqi3c9apDCYsS7WQaEcQmw==@lists.infradead.org
+X-Gm-Message-State: AFuF++ngYjCDzoQT5twLy0846mj9UYc/K84Ev0Adue0Ea2damcNBGhck
+	R8SjAVCWQUGtrrJGGyOLcBhlQFDSTKV58zIGydkD8/xQ6AmHq3wVfbPaKIVLO9inMAg=
+X-Gm-Gg: AYBFou0HLu1trPFHtVokp68PHq905hsQLakIRyhCQIBbeXg7ZxWAzBQDpp4P80uVUJk
+	lUXsWhAcDRSOAjUX0Mygy5+Ix+qrmvcEyiMOwU9JXInOtr9IfSC4RJeG0fzy7XGKkUMAbK2JYjC
+	KRGQfjIWf5tQXHkybNSjfM37Olj2uxoGFwQUnrJzPJkLrbX4nwIllTZkbNA/zsxljZXKG5SDn9L
+	6ynWiOiBOIQgQS/+WKXvfiUcTbP3KN/m/sJni5GSpZ+0pqZ/u4jPpyiw16DvOBChQfy8aCl85LQ
+	5eJZNPYXUi3S4YN3iqbvxIw4WG4tEtyvU0ZhYZfmLJ9Gmo7yZFymPO7mN+lswd8r6oHiIDzg+Gu
+	16ZKy0eRi1YOandRs3wFnVru84uCspUK2+R0xduXps/6o7Yla6j/3CcRCaarkAeI6hKGGIEb8kN
+	SfbQG9jE9xoX4YAIjflKWrsIm6IH5nLWstXTPzZfTONKHmVikKGCB1pvYfn/rQ
+X-Received: by 2002:a05:6000:4903:b0:486:f301:11df with SMTP id ffacd0b85a97d-4871e20cffbmr1925132f8f.6.1789696226372;
+        Thu, 17 Sep 2026 18:50:26 -0700 (PDT)
+Received: from remote-01 ([84.17.55.229])
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-4871ff57926sm70569f8f.14.2026.09.17.18.50.24
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 17 Sep 2026 18:50:25 -0700 (PDT)
+From: Aleksei Sviridkin <f@lex.la>
+To: netdev@vger.kernel.org
+Cc: chester.a.unal@arinc9.com,
+	daniel@makrotopia.org,
+	andrew@lunn.ch,
+	olteanv@gmail.com,
+	gerg@kernel.org,
+	davem@davemloft.net,
+	edumazet@google.com,
+	kuba@kernel.org,
+	pabeni@redhat.com,
+	matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	Aleksei Sviridkin <f@lex.la>
+Subject: [PATCH net v2 0/2] net: dsa: mt7530: fix two crashes on driver unbind
+Date: Fri, 18 Sep 2026 04:50:18 +0300
+Message-ID: <20260918015020.2518315-1-f@lex.la>
+X-Mailer: git-send-email 2.53.0
 MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260918_023848_647955_C7D7F035 
-X-CRM114-Status: GOOD (  33.76  )
+X-CRM114-CacheID: sfid-20260917_185029_340238_001857EB 
+X-CRM114-Status: GOOD (  23.12  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,108 +108,91 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 2026-09-17 at 19:22 +0800, Guo Ren wrote:
-> On Mon, Sep 14, 2026 at 3:53=E2=80=AFAM Radu Rendec <radu@rendec.net> wro=
-te:
-> >=20
-> > On Fri, 2026-09-11 at 03:27 +0000, Guo Ren wrote:
-> > > This series removes the implicit assumption that RISC-V supports exac=
-tly
-> > > eight IPI message types.
-> > >=20
-> > > Currently, the SBI, CLINT and ACLINT SSWI IPI providers use
-> > > BITS_PER_BYTE when sizing the generic IPI mux, while IMSIC carries a
-> > > separate IMSIC_NR_IPI definition set to 8. These values happen to mat=
-ch
-> > > IPI_MAX today, but neither is the proper source of truth for the numb=
-er
-> > > of RISC-V IPI message types.
-> > >=20
-> > > Move enum ipi_message_type to asm/smp.h so IPI providers can use IPI_=
-MAX
-> > > directly, then replace the BITS_PER_BYTE and IMSIC_NR_IPI uses with
-> > > IPI_MAX.
-> > >=20
-> > > This also makes adding future RISC-V IPI message types independent of
-> > > the current eight-entry assumption.
-> > >=20
-> > > A follow-up patch renames the MediaTek VPU mailbox terminator from
-> > > IPI_MAX to IPI_VPU_MAX. That token belongs to the VPU firmware IPI id
-> > > enum and should follow the same prefixed convention as IPI_VPU_INIT
-> > > (and SCP_IPI_MAX on the SCP side), instead of reusing the generic
-> > > IPI_MAX name.
-> > >=20
-> > > ---
-> > > GUO Ren (XuanTie) (4):
-> > > =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 clocksource: clint: Use IPI_MAX for IP=
-I muxing
-> > > =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 irqchip/aclint-sswi: Use IPI_MAX for I=
-PI muxing
-> > > =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 irqchip/imsic: Use IPI_MAX instead of =
-IMSIC_NR_IPI
-> > > =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 media: mtk-vpu: rename IPI_MAX to IPI_=
-VPU_MAX
-> > >=20
-> > > tip-bot2 for GUO Ren (XuanTie) (2):
-> > > =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 riscv: smp: Move enum ipi_message_type=
- to asm/smp.h
-> > > =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 riscv: sbi: Use IPI_MAX for SBI IPI mu=
-xing
-> >=20
-> > I am confused. Thomas merged your entire v1 series a week before (see
-> > the individual replies from tip-bot2@linutronix.de). Why are you
-> > sending v2?
-> >=20
-> > Patch 6 was not included in v1 (but it's clearly related), so perhaps
-> > you meant to send only this one as a separate patch?
-> >=20
-> > Also:
-> > =C2=A0* The cover letter should include a changelog, indicating what ch=
-anges
-> > =C2=A0=C2=A0 were made in each version compared to the previous one.
-> > =C2=A0* Patches 1 and 2 carry a "From:" tag that attributes authorship =
-to
-> > =C2=A0=C2=A0 tip-bot2, which is wrong (if these patches were to be appl=
-ied).
->=20
-> Sorry for the noise, and thanks for catching these.
+Unbinding the MT7530 driver from an MT7531 dereferences NULL in
+regulator_disable(). On a Netcraze NC-1012 (MT7981B + MT7531, 6.18.44):
 
-No worries :)
+  # echo mdio-bus:1f > /sys/bus/mdio_bus/drivers/mt7530-mdio/unbind
 
-> You are right on both points. I missed the cover-letter changelog,
-> and I should not have resent the already-merged patches as v2. The
-> "From: tip-bot2" tags were added by b4 because those two patches had
-> already landed; that is useful as a reminder to me, but it should not
-> have been left in the patches themselves.
->=20
-> I should have skipped the b4 v2 flow and just sent patch 6 on its
-> own. The only remaining change is the mtk-vpu IPI_MAX rename, which
-> is needed after IPI_MAX became visible from <asm/smp.h>.
+oopses there, and the build it was found on sets CONFIG_PANIC_ON_OOPS, so
+the board goes down with it. Fix that and the same command gets as far as
+mt7530_remove_common(), which disposes interrupt mappings the switch's own
+regmap-irq chip still owns; the regmap-irq thread then faults in
+handle_nested_irq() later in the same teardown. rmmod reaches both, since
+mdio_module_driver() calls .remove on module exit.
 
-Ugh, I missed that part. Because the IPI_MAX rename was already picked
-up, it's going to break the mtk-vpu driver until patch 6 is picked up
-too.
+Patch 1 is the regulator one. mt7530_probe() requests the core and io
+supplies only for ID_MT7530 and mt7530_setup() enables them under the same
+test, but mt7530_remove() disables them unconditionally, so on an MT7621 or
+an MT7531 both pointers are still NULL from devm_kzalloc(). It reaches the
+MDIO front end only.
 
-> If you are willing to pick patch 6 as-is, I would appreciate it.
-> Otherwise I will resend it as a standalone patch.
+Patch 2 is the interrupt one, and it reaches further.
+mt7530_remove_common() disposes the per-PHY interrupt mappings by hand from
+.remove, while the regmap-irq chip that owns the domain is devm-registered
+and its parent interrupt is only freed once .remove has returned.
+regmap_del_irq_chip() disposes the same mappings itself, in an order that
+cannot race, so the driver's call adds nothing but a window. That helper is
+called from both front ends, so the defect also covers the MMIO parts -
+MT7988, EN7581, AN7583 and EN7528 - which have no regulators and never meet
+the first defect at all.
 
-I cannot pick up anything myself because I'm just a reviewer. But I
-don't see any reason why patch 6 couldn't be picked up as-is, as long
-as everyone is on the same page. The "[PATCH v2 6/6]" part of the
-subject is dropped anyway.
+The order is not arbitrary. On an MT7531 the regulator fault happens in the
+first thing mt7530_remove() does with the switch, so execution never
+reaches the interrupt defect. The second only became visible once the first
+was fixed, which is also how both came to be found on one board.
 
-I now realize that patch 1 (which introduces the conflicting change)
-was picked up by Thomas via the irq/drivers tip branch, but patch 6 is
-strictly a media subsystem patch, so I guess normally it should be
-picked up by a different maintainer via a different tree.
+Found and verified there. Without patch 1 the unbind panics in
+regulator_disable(); with patch 1 alone the panic moves on to
+handle_nested_irq(); with both, three unbind/bind cycles run, two back to
+back and a third after a pause. In the two whose dmesg was captured, each
+unbind removes the switch from the driver directory and takes lan1 to lan4
+with it, each bind brings them back, and lan1 relinks at 1Gbps/full after
+both binds, lan4 after the second. uptime rose from 58 to 202 seconds
+across the three without resetting and pstore gained no new record. The
+third cycle stayed unbound long enough to read the descriptors: no mt7530
+line in /proc/interrupts and no irq/79, irq/80 or irq/81 directory, and the
+next bind reuses those three numbers - regmap-irq freeing and disposing
+what the driver no longer touches. The kernel under test was identified by
+the sha256 of its ELF notes section, read from /sys/kernel/notes on the
+running board and computed in advance from the flashed image.
 
-Thomas, are you willing to pick this up too? I'm thinking it could
-avoid some pain if irq/drivers gets merged into mainline first, before
-patch 6 makes it there through the media subsystem. Also, it's a pretty
-"innocent" patch, it just renames an enum value, and it's contained
-within that driver.
+What hardware could not answer here. There is no MT7530 or MT7621 part on
+this bench, so the ID_MT7530 branch that patch 1 adds was checked by
+reading the generated code rather than by running it, and no MMIO part was
+available to exercise patch 2 on that front end either. One unrelated WARN
+remains across the unbind, from sysfs_remove_link() under
+dsa_user_destroy(); it is a separate DSA teardown-ordering defect and is
+not addressed here.
 
---=20
-Best regards,
-Radu
+v2:
+- patch 2 changes shape. Moving dsa_unregister_switch() in front of the
+  dispose, as v1 did, only covers the phylib side: the regmap-irq chip is
+  devm-registered, so its parent interrupt outlives .remove and the thread
+  can still dispatch on a mapping the driver has just disposed. Dropping
+  the call is what closes that: regmap_del_irq_chip() walks every hwirq
+  below chip->num_irqs and disposes each one that maps, which covers
+  whatever the driver created - the driver's own set is the user ports
+  below MT7530_NUM_PHYS, hwirq 0 to 2 on the board below - and it does so
+  after freeing the parent interrupt and before removing the domain.
+- patch 2 points Fixes: at commit 254f6b272e3b ("dsa: mt7530: Utilize
+  REGMAP_IRQ for interrupt handling") instead of commit ba751e28d442 ("net:
+  dsa: mt7530: add interrupt support"). Before the regmap-irq conversion
+  the driver owned the domain and removed it by hand, where
+  irq_domain_remove() disposes nothing, so the call was required there; it
+  became redundant when regmap-irq took the domain over.
+- patch 1: same diff; the trailers are reordered and the message now names
+  devm_kzalloc() as where the NULL comes from.
+- v1: https://lore.kernel.org/netdev/20260914202421.2737079-1-f@lex.la/
+
+Aleksei Sviridkin (2):
+  net: dsa: mt7530: fix NULL dereference on unbind of MT7531 and MT7621
+  net: dsa: mt7530: leave the MDIO IRQ mappings to regmap-irq
+
+ drivers/net/dsa/mt7530-mdio.c | 18 ++++++++++--------
+ drivers/net/dsa/mt7530.c      |  3 ---
+ 2 files changed, 10 insertions(+), 11 deletions(-)
+
+-- 
+2.53.0
+
 
