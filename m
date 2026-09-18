@@ -4,62 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3906FC982D7
-	for <linux-mediatek@archiver.kernel.org>; Fri, 18 Sep 2026 09:26:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 107E3C982D7
+	for <linux-mediatek@archiver.kernel.org>; Fri, 18 Sep 2026 09:50:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=GyJ/Izgdsqp5q8EJHvMUjjmksB1H1LTha8OAdEwdi4o=; b=FRcxnfT8oPtjp8bYixhrdJV9kq
-	MuF72Q2MJv58uw204ZP/4em5NVsj3Li8ZvGRqInGPhn8PShL8f23re84oEo7QT5V5hUK1DJijZ244
-	farAaN6KG227TbLnAp9s5+boz0kn21DI+PcxrvirfV5V/s/SllRH5M0XgSHVA1bERRbcrARSH7jsr
-	fjHI2lbZG+BgZ/ye7aGXSIx1g8/+J8/VAIziiyV/6he3pLmaEMOMGrXJU1BWnNDuT1ntJoOndmI8s
-	3LfKP2S2f1RADspdZ3sNYdj6BzENv7oNDGtcZ0OzPdChwGuG9De5Kr0XH0tGXysfe/fGRbpr8wnEq
-	O+UsFd4A==;
+	bh=Mhe/jArEZiTm/L88sXSRArvdYinXqabgfSoJURVLiaw=; b=olm7pcNOKM1QCglJnhx6d+OOf9
+	Zm6ifzMexjTHJ2u/vcnupgGETy1+1kx0c0chXAe4Wkvpbsk7NgeqI7aQT/pEufk5pP64c7w0D/si0
+	GmrQs1xh9PAP73vfwlRfbJ97G50BiICDXIS5MsEIp0eUC9HY1+Mf1S3ggftHFcEaFfPieETqOUXHZ
+	8VapnCVLN5DtzsgF9Tt/PdV4FbHSKMFsAdlT7ZF5DSWuLJkRyuS9vpmxdpdAM76PWidDRCaNVMsh0
+	fquvMVQ22CpdvSeYTrWcPv7R29D4kSg6z4cm/3831IhuObLYDWa+P6T0MJATVmK4kzjPsKlNU1ptR
+	j6bpX6mA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x7UrN-0000000DwSj-37Ow;
-	Fri, 18 Sep 2026 09:26:21 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1x7VEm-0000000DzeD-34gs;
+	Fri, 18 Sep 2026 09:50:32 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x7UrM-0000000DwSI-2rDU;
-	Fri, 18 Sep 2026 09:26:20 +0000
+	id 1x7VEl-0000000DzdQ-0flG;
+	Fri, 18 Sep 2026 09:50:31 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id B3F1D60A66;
-	Fri, 18 Sep 2026 09:26:19 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id BDE141F00893;
-	Fri, 18 Sep 2026 09:26:17 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id CEC5460A5E;
+	Fri, 18 Sep 2026 09:50:24 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8987A1F000FF;
+	Fri, 18 Sep 2026 09:50:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1789723579;
-	bh=GyJ/Izgdsqp5q8EJHvMUjjmksB1H1LTha8OAdEwdi4o=;
+	s=k20260515; t=1789725024;
+	bh=Mhe/jArEZiTm/L88sXSRArvdYinXqabgfSoJURVLiaw=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=dTPAXqIMzE3zycBsqWLtnKbfH7UTA+wPBUSmm9FVCgnVlZS+cSZ4kIBteBFtOZPSX
-	 +JIZmqWQf2EyzXBct0o+IRtlpZwSgI8HpNuoofjU7yff+11zadzIkhTCyVlVHmSZge
-	 KieiUkq6Twe3H44uy4Y3WTIKX/w07c8tTELWSBCzXTj7JY/up3OsVdsTCQCObX7Oc2
-	 95yXJJvKNyiq2jq3l0VGR1HtrHNLkAtyugwIYgazb9PH5Ool0INnJ6Y+OLH6GiUFdk
-	 ROA2JKb/JwkCqoKgNXqt/gZbbsFEldDNCHkiWrvXDe0Q0bnKdtzBesW6uD7pUDzfAs
-	 EdU7IgGBDDYFw==
-Date: Fri, 18 Sep 2026 10:26:14 +0100
-From: Mark Brown <broonie@kernel.org>
-To: Justin Yeh <justin.yeh@mediatek.com>
-Cc: Liam Girdwood <lgirdwood@gmail.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Project_Global_Chrome_Upstream_Group@mediatek.com,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH 0/2] Allow mtk-regulator-coupler to be built as a module
-Message-ID: <f034927d-1907-45b7-ae66-a10989116ce8@sirena.org.uk>
-References: <20260903062056.1024263-1-justin.yeh@mediatek.com>
- <20260918003722.2764284-1-justin.yeh@mediatek.com>
+	b=W/PkjKmakehCuNFmQPTGYUoW/AoczQbueulzxRMo1934P0fpkm4au7oh3k9I4EViE
+	 thI3adZQpoqaO8d5dr0QCU9sRhPWfHO+ctemWJOyTK4pu7sbdlM6lIKiWODIlGTqnu
+	 5S3Si2eoJWXCRezNHqecncDoY1e8LJ/Pv4CUKANmrf03xR1JxlVlMNlGWvrWcj54JH
+	 CpvevOIprCD1LBmp58pdEmNWKVK05mMRpr96t+BuntCYCT8TvV3Mr7kBH27hyBDAEx
+	 bN5a/s0yvzBRHM81VxIdqRpo1m5/vmvnCI7zGsyvRnGFpLSYQpAwsu8dBRjuk8cy+U
+	 sxxjA62G7Tw9Q==
+Date: Fri, 18 Sep 2026 11:50:20 +0200
+From: Krzysztof Kozlowski <krzk@kernel.org>
+To: Roman Vivchar <rva333@protonmail.com>
+Cc: Jonathan Cameron <jic23@kernel.org>, 
+	David Lechner <dlechner@baylibre.com>, Nuno =?utf-8?B?U8Oh?= <nuno.sa@analog.com>, 
+	Andy Shevchenko <andy@kernel.org>, Rob Herring <robh@kernel.org>, 
+	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Zhiyong Tao <zhiyong.tao@mediatek.com>, 
+	linux-iio@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH] dt-bindings: iio: adc: mediatek,mt2701-auxadc: add mt6572
+Message-ID: <20260918-boisterous-slim-dolphin-03d5ea@quoll>
+References: <20260916-6572-dt-auxadc-v1-1-e8190d614c33@protonmail.com>
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="bTlqMwmTvtaxM+Z9"
+Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
-In-Reply-To: <20260918003722.2764284-1-justin.yeh@mediatek.com>
-X-Cookie: Dental health is next to mental health.
+In-Reply-To: <20260916-6572-dt-auxadc-v1-1-e8190d614c33@protonmail.com>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,46 +73,18 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On Wed, Sep 16, 2026 at 02:42:35PM +0300, Roman Vivchar wrote:
+> Add a compatible string for the mt6572 AUXADC, that is compatible with
+> mt8173 IP.
+> 
+> Signed-off-by: Roman Vivchar <rva333@protonmail.com>
+> ---
+>  Documentation/devicetree/bindings/iio/adc/mediatek,mt2701-auxadc.yaml | 1 +
+>  1 file changed, 1 insertion(+)
 
---bTlqMwmTvtaxM+Z9
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
 
-On Fri, Sep 18, 2026 at 08:37:22AM +0800, Justin Yeh wrote:
-> Hi Mark, Liam, Matthias, Angelo,
->=20
-> Gentle ping on this series, sent two weeks ago:
-> https://lore.kernel.org/all/20260903062056.1024263-1-justin.yeh@mediatek.=
-com/
+Best regards,
+Krzysztof
 
-Please don't send content free pings and please allow a reasonable time
-for review.  People get busy, go on holiday, attend conferences and so=20
-on so unless there is some reason for urgency (like critical bug fixes)
-please allow at least a couple of weeks for review.  If there have been
-review comments then people may be waiting for those to be addressed.
-
-Sending content free pings adds to the mail volume (if they are seen at
-all) which is often the problem and since they can't be reviewed
-directly if something has gone wrong you'll have to resend the patches
-anyway, so sending again is generally a better approach though there are
-some other maintainers who like them - if in doubt look at how patches
-for the subsystem are normally handled.
-
---bTlqMwmTvtaxM+Z9
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmqtA7YACgkQJNaLcl1U
-h9Dlkwf/YJOx05NeMMpnlsAzuP7wfrP9ZAT8RAWV4CBWBbKzL922YZOLpb5Ei+eB
-Z/xbWC1awCG/N8+oWPgkNAm23hoftpLU8X3Q1oYIBbznNydS8ietdFfibILvPa6/
-FrFFyRkzX15QOAMC1OybDghDiPydNv52kyfmBrL3/qM4tDEkUJ5hY8iRTJGz/wKg
-nUZBbd81D14Yyf8huMaCaJ6d3i700e47eNMiGvIMNftQ/Ys9U0PIwE++tgvDLyp/
-riInpbgojfvNkvvWDS7RFGeHfutXfbFVXS4lq53Httz4RU2I9K/4UAt3RqgUesmi
-NZHxugQUq4Er+7UhhPDPUbnnjlmOtQ==
-=uW80
------END PGP SIGNATURE-----
-
---bTlqMwmTvtaxM+Z9--
 
