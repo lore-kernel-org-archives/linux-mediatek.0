@@ -4,71 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 279C6C982DF
-	for <linux-mediatek@archiver.kernel.org>; Fri, 18 Sep 2026 17:57:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 85931C982D8
+	for <linux-mediatek@archiver.kernel.org>; Fri, 18 Sep 2026 17:58:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=MOpF21qwCYtkBPyOZB6nIIWOi6wwbvKg9f2XgINcd2A=; b=4TPYGST6Rz9wRP3Sg0jGQfaoz9
-	5TPjjRdSoXymClJZYUzdI80VmLgbLZbLjnsG4wHcF5X2EWFaV6hlf9BVLYnRGkNJaCOGQwHLT6uNM
-	xRvui37ndzY1Y7I7O/lc5yF3229C0iQP3eUP4p+UZlvrNKkzBX8Xtqb7YfgQUkJaEKxyhb/A+X8fC
-	PQ5tP5AbGLzE5o+jZl9/9iTaWm5S5C93RS2Ll6W3UrNy/f3MH/MEBXVFDzzHy+GdXnftQ6Nuw+2qw
-	olrvOvSMtPWe5p8j04Ffky8DhPz1LuIoSNEpKvSXSZ/n4PCpaJWqTUiKHfjHnToVlIkDc/WYWQr7s
-	i3XOWEKQ==;
+	bh=4ylMW2foaHNEjV+ZwE7Us38p2iYChzzws4mregGYupM=; b=ns5CutCbe0bGFQUxC8DBmbBEFb
+	kkb6X0qmqp0gQa76fTyrr3avAHWRm4bIlJcDuwO9G4QiYRKfzHd+P1TzbzaP1m4x0xfiuo5iDUtXV
+	RlzeNkZT49TK/6kYVM986vz72yVPfYbsry82nk6v3lzztUBdIn81iT3xmiyb6rwvlvmAAmwDRChfO
+	/P5vkDTzVV2TkhDazmcjjfHhVzjXLtICtlGWYffFWffq5um1bzg6No1ULdZD/CQZHqkp4Uw5KZRbK
+	jef/7X7HYBczvYIVL+jpqTv/wN4IdJ46uGIBSvnKv/syxeJOfQujnPAv7GXdOTKDj/GN7YgpGahBy
+	qIl6tkSw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x7cqU-0000000FEYs-1Waq;
-	Fri, 18 Sep 2026 17:57:58 +0000
+	id 1x7cqd-0000000FEdu-2Zuz;
+	Fri, 18 Sep 2026 17:58:07 +0000
 Received: from mail-wr2-x10.google.com ([2a00:1450:4864:30::10])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x7cqN-0000000FETw-0PSL
+	id 1x7cqO-0000000FEUl-3qCl
 	for linux-mediatek@lists.infradead.org;
-	Fri, 18 Sep 2026 17:57:52 +0000
-Received: by mail-wr2-x10.google.com with SMTP id ffacd0b85a97d-485933b2522so723177f8f.0
-        for <linux-mediatek@lists.infradead.org>; Fri, 18 Sep 2026 10:57:50 -0700 (PDT)
+	Fri, 18 Sep 2026 17:57:54 +0000
+Received: by mail-wr2-x10.google.com with SMTP id ffacd0b85a97d-485933b2522so723196f8f.0
+        for <linux-mediatek@lists.infradead.org>; Fri, 18 Sep 2026 10:57:52 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1789754269; x=1790359069; darn=lists.infradead.org;
+        d=gmail.com; s=20251104; t=1789754271; x=1790359071; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to:content-type;
-        bh=MOpF21qwCYtkBPyOZB6nIIWOi6wwbvKg9f2XgINcd2A=;
-        b=iqyyBsBLpxLX4cfrCDV4BNN2DV+m5bswuYm9CxGWDYV5enX/MaEXAuWz4XPFfLjpY5
-         6qUprTHxJtS+Y4iWZ8teF6UWwhCfCLlMuYNl7DtVaAMDyAtNpwMDpg/3F/e6YphOWMkp
-         YogQOWD7eHpT/DHuhtcjz+ZkQ+ba5w6wdlbbHRX8JoWi17lTQJKwnm0Erh/VBkZWt4s/
-         zFtBbepYTBqzi0VPB2QixspKDpi7ZbG5fl4rW6HvmoS6vzP9nMQdUJwDuPQnPfe6ZSWr
-         zl9W4nN5PqFM1rNta+Wwv+cX+R4zM3zYQnH78nNUVPbHC66F0b+c38TS1VWTsfULSKUX
-         7RVA==
+        bh=4ylMW2foaHNEjV+ZwE7Us38p2iYChzzws4mregGYupM=;
+        b=ej7gG18+Gyh5t4yTPnv3XZkcXjg09P9/YBe5dcasy/Ii7geGCuepVkADhli00flCjR
+         bunKzJZmscjW6pYCrHjnvU69V8OAOWEYivp6xUdkmCmCrKdVzZnOPWYxlYtnZBCxSGo5
+         ZVsj/tzeqNhgvwrkQirTeqc4WhxkDSn74kBbXNgva8/yXQJa233Pkjaz+VkWscwLeuZj
+         JCzK85ZRuFG9AlUP/9hJyhzDLxvDPDK4D81ZG1rAnz6/fGEqQmRoBuTeWgXs+rbRgHsk
+         phlzby8LobKLfkDWEDBhedpB54Lg1ARPyHYvVCQFoACh6xvsH9yhTDAMONrwU8tGwlfT
+         xz7w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1789754269; x=1790359069;
+        d=1e100.net; s=20260707; t=1789754271; x=1790359071;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
          :to:cc:subject:date:message-id:reply-to:content-type;
-        bh=MOpF21qwCYtkBPyOZB6nIIWOi6wwbvKg9f2XgINcd2A=;
-        b=UF9EYj6wlFp6YzEHiSCA1AudevN0UzMZJbonQHVdlyYZGcQU+bA5A5aMndMKLjNoSz
-         hHONaOzlMaofSYjU2ArCa+s/KM3uAz2tbYvZhPu5U6bwv6pGUuaK7ZTadha3sMzsLoRp
-         nPrWi8HDUZNYS+lQEf467Ij8ItTaRKlfHOv4HnQMT1tJruibZ2IQ6FqpKDHBYMFDf+CX
-         xPpC8wLVwTlm/x6W59DwFxJrn6HeJyThi3gZ5228vDGHwgES8n9uMTPly8ZZzYDt/qVG
-         OM1gHczYW1vpAFf87aNTwUv5L+9kOM3PuuuMyMYLeuP4IkSEktRC4YXj6pJp4xhBzPbG
-         8pLA==
-X-Gm-Message-State: AFuF++nse/iego5UHMN+sIWN16k34zn2XxZDXnclI6zEkGcve4G2In5M
-	lSNQ+52VtHvzRsGvzkyjoNYIou1yPj3zmJT5v5P57g/WjsHg4baurQZjvm2ycBWQ
-X-Gm-Gg: AYBFou2FogzN57QU7fjBmVOo0nY/+WNPtvRez4kESeWyJa2Nijln+uyD7gtSMPz/H25
-	5Bm5xoWJVIvjKF4DFixTxEvHm1oFI2vb+L2630DD68ORlfi5Pauo1VPz/4I8tKeWNvRfGf83Uqh
-	Q7FFzK1ZN3oArJrVM7DxTHRnvBN/9qMgGO02wTpNkHDqEGgKkYOUrTF6zarDaQ93caiuwxHzPcv
-	0BG/eBiJt/+NeFU49B60Jh7MVKFV7DpA6+tt/0TiOSWiPPNw7BE2bzDWzTey4bldEK+KjrlVJZZ
-	yX8HyK8RTp1ibuvmDFu7Vpfh3Og5gjiXQb/6vx1jbf3z3rQ5G4HPDq92czkUFifoXECJhIAx7Pg
-	gEmftAbweIWbFwEXaoAxVzvy4/jvqo1EpLFY/nor+MSipZxujAB3NwCY0rDaWGXbf2xFpOicsWa
-	1PudzJ83nEW2pmIoEf/JmxLp+ayWYMGrSrMJjAXAJnRFGBC2EUMitQE1gna6UfCTkR6lFZCUPrO
-	l79JQ==
-X-Received: by 2002:a05:6000:40c8:b0:487:403:f2eb with SMTP id ffacd0b85a97d-4871e263f5dmr9591011f8f.17.1789754269490;
-        Fri, 18 Sep 2026 10:57:49 -0700 (PDT)
+        bh=4ylMW2foaHNEjV+ZwE7Us38p2iYChzzws4mregGYupM=;
+        b=URtcePfuvJU3vx9Uh8a1sgfX13AwobQovgQNQBRdtYRirIoHMBTxwaDwiFws16cfvC
+         BGxa5idvcxvNWa5TgsRI0qQtZRl76gKoPQMWeOrAB8ZVOzeSJB9VIkYSj2qgI7iOiw4X
+         0CWPYysxE4RrMdkhQ3Mw0xr/0+8XLiV3k4a7jU0T6Jxow9TBViRmdXZVINUE8TwhIf9g
+         3VGeuZ7P1NGsY/2Cdysu1jD/6SLKKSstnJocPJi4qZ9DHv5SCto8l1eEmFA9972mzVRV
+         H0RmoZ2saPbO+ylHhsk+NqUsnDbFNpfgFwR7ADl2RJTdMocQq8tbsc5HRcRtEyr84n69
+         Q9zQ==
+X-Gm-Message-State: AFuF++m/mB7f75BlDGkT6zk92U0QU/K77ZpS73qHqBqYmU2jOC/Gtu1Y
+	hmxoKUxvDUvuPrkMygbuT1InayA1sGwlze0tFV5P0pUKcd2F88heYh0bcSHBvOrc
+X-Gm-Gg: AYBFou0PUhlUzD0Ya6F+u3sDG/JlHw/QyJIzeqPine4Z0lQ7aysd2Im+XKclssNrGkH
+	+f4WS/y8HoRdM2CAowj6NraZOVuWtaoPYrBlbeohWxgeSjUukSbiE4v2aDjYm5WhBzRcAPDCt8A
+	g7xTyerGpZjhzbLO8Pd9B13/QDlmIsaQKGfW15B6RVzQeIMICNy1tEb39vUtUz9dVOwNutI1Z0h
+	ntHRENZQFj1QbO22B1WBLHaE1Qmewgz4Sj2bN4e+6II+BDZwLhSBpyks59OgR5Rzp1NAcxWpPei
+	gjixqVfdODH3OsE/17JjIBRZI/BchWg1tQKqJBiQRLLBEyrWS1JpCpqIy896xodSaz6THw5Dpi0
+	kvcGRSIxwH7+0T8jwlbjDfvZDNrqRZU9+Er0z56DafRIXUSDxcxkVwpBGJaAYVuuqJb7JtzfzCl
+	M6jezHX/DJQnCXATXcT7xJNeUair5fndpI0PKwejJ/B1K/xbK3LIG1jNAax0gDlp3mEY8=
+X-Received: by 2002:a5d:584c:0:b0:486:f45a:57a7 with SMTP id ffacd0b85a97d-4871e264829mr7609614f8f.16.1789754271218;
+        Fri, 18 Sep 2026 10:57:51 -0700 (PDT)
 Received: from luca-vm.lan ([154.61.61.58])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-48724562aebsm268461f8f.14.2026.09.18.10.57.48
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-48724562aebsm268461f8f.14.2026.09.18.10.57.50
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 18 Sep 2026 10:57:49 -0700 (PDT)
+        Fri, 18 Sep 2026 10:57:50 -0700 (PDT)
 From: Luca Leonardo Scorcia <l.scorcia@gmail.com>
 To: linux-mediatek@lists.infradead.org
 Cc: Luca Leonardo Scorcia <l.scorcia@gmail.com>,
@@ -90,17 +89,17 @@ Cc: Luca Leonardo Scorcia <l.scorcia@gmail.com>,
 	devicetree@vger.kernel.org,
 	linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org
-Subject: [PATCH 2/4] drm/mediatek: Add support for mt8167 Digital Parallel Interface
-Date: Fri, 18 Sep 2026 19:55:26 +0200
-Message-ID: <20260918175736.355305-3-l.scorcia@gmail.com>
+Subject: [PATCH 3/4] soc: mediatek: mt8167-mmsys: add routes for all display paths
+Date: Fri, 18 Sep 2026 19:55:27 +0200
+Message-ID: <20260918175736.355305-4-l.scorcia@gmail.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260918175736.355305-1-l.scorcia@gmail.com>
 References: <20260918175736.355305-1-l.scorcia@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260918_105751_743875_35961D27 
-X-CRM114-Status: GOOD (  12.39  )
+X-CRM114-CacheID: sfid-20260918_105753_040024_6CFC635B 
+X-CRM114-Status: GOOD (  14.35  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -115,77 +114,231 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add support for the two DPI blocks found in the mt8167 SoCs. One of them
-can be routed to a DPI connector and another is directly connected to the
-HDMI IP.
+mt8167 display output pipeline can be configured in many different ways.
+Add support for additional routes according to the SoC data sheet and
+Android sources. There's a few inconsistencies between those two, but
+assume the Android sources are correct since they are required to drive
+HDMI output via DPI1.
 
 Signed-off-by: Luca Leonardo Scorcia <l.scorcia@gmail.com>
 ---
- drivers/gpu/drm/mediatek/mtk_dpi.c     | 23 +++++++++++++++++++++++
- drivers/gpu/drm/mediatek/mtk_drm_drv.c |  2 ++
- 2 files changed, 25 insertions(+)
+ drivers/soc/mediatek/mt8167-mmsys.h | 183 ++++++++++++++++++++++++++--
+ 1 file changed, 174 insertions(+), 9 deletions(-)
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_dpi.c b/drivers/gpu/drm/mediatek/mtk_dpi.c
-index 0e4f430de983..9012adeb63d0 100644
---- a/drivers/gpu/drm/mediatek/mtk_dpi.c
-+++ b/drivers/gpu/drm/mediatek/mtk_dpi.c
-@@ -1114,6 +1114,10 @@ static const struct mtk_dpi_factor dpi_factor_mt2701[] = {
- 	{ 64000, 4 }, { 128000, 2 }, { U32_MAX, 1 }
- };
+diff --git a/drivers/soc/mediatek/mt8167-mmsys.h b/drivers/soc/mediatek/mt8167-mmsys.h
+index 001379373507..aab1774152c5 100644
+--- a/drivers/soc/mediatek/mt8167-mmsys.h
++++ b/drivers/soc/mediatek/mt8167-mmsys.h
+@@ -5,35 +5,200 @@
  
-+static const struct mtk_dpi_factor dpi_factor_mt8167[] = {
-+	{ 64000, 16 }, { 74250, 8 }, { 160000, 4 }, { U32_MAX, 2 }
-+};
+ #define MT8167_DISP_REG_CONFIG_DISP_OVL0_MOUT_EN	0x030
+ #define MT8167_DISP_REG_CONFIG_DISP_DITHER_MOUT_EN	0x038
++#define MT8167_DISP_REG_CONFIG_DISP_UFOE_MOUT_EN	0x03c
+ #define MT8167_DISP_REG_CONFIG_DISP_COLOR0_SEL_IN	0x058
++#define MT8167_DISP_REG_CONFIG_DISP_WDMA0_SEL_IN	0x05c
++#define MT8167_DISP_REG_CONFIG_DISP_UFOE_SEL_IN		0x060
+ #define MT8167_DISP_REG_CONFIG_DISP_DSI0_SEL_IN		0x064
++#define MT8167_DISP_REG_CONFIG_DISP_DPI0_SEL_IN		0x068
+ #define MT8167_DISP_REG_CONFIG_DISP_RDMA0_SOUT_SEL_IN	0x06c
++#define MT8167_DISP_REG_CONFIG_DISP_RDMA1_SOUT_SEL_IN	0x070
++#define MT8167_DISP_REG_CONFIG_DISP_DPI1_SEL_IN		0x074
 +
- static const struct mtk_dpi_factor dpi_factor_mt8173[] = {
- 	{ 27000, 48 }, { 84000, 24 }, { 167000, 12 }, { U32_MAX, 6 }
- };
-@@ -1163,6 +1167,24 @@ static const struct mtk_dpi_conf mt2701_conf = {
- 	.csc_enable_bit = CSC_ENABLE,
- };
++#define MT8167_OVL0_MOUT_EN_COLOR0			0x1
++#define MT8167_OVL0_MOUT_EN_WDMA0			0x2
++#define MT8167_OVL0_MOUT_EN_MASK			0x3
  
-+static const struct mtk_dpi_conf mt8167_conf = {
-+	.dpi_factor = dpi_factor_mt8167,
-+	.num_dpi_factor = ARRAY_SIZE(dpi_factor_mt8167),
-+	.reg_h_fre_con = 0xe0,
-+	.max_clock_khz = 150000,
-+	.output_fmts = mt8173_output_fmts,
-+	.num_output_fmts = ARRAY_SIZE(mt8173_output_fmts),
-+	.pixels_per_iter = 1,
-+	.is_ck_de_pol = true,
-+	.swap_input_support = true,
-+	.support_direct_pin = true,
-+	.dimension_mask = HPW_MASK,
-+	.hvsize_mask = HSIZE_MASK,
-+	.channel_swap_shift = CH_SWAP,
-+	.yuv422_en_bit = YUV422_EN,
-+	.csc_enable_bit = CSC_ENABLE,
-+};
+ #define MT8167_DITHER_MOUT_EN_RDMA0			0x1
++#define MT8167_DITHER_MOUT_EN_UFOE			0x2
++#define MT8167_DITHER_MOUT_EN_WDMA0			0x4
+ #define MT8167_DITHER_MOUT_EN_MASK			0x7
+ 
+-#define MT8167_RDMA0_SOUT_DSI0				0x2
+-#define MT8167_RDMA0_SOUT_MASK				0x3
++#define MT8167_UFOE_MOUT_EN_DSI0			0x1
++#define MT8167_UFOE_MOUT_EN_DPI0			0x2
++/*
++ * For some reason Android sources and the data sheet don't agree here,
++ * the data sheet has UFOE_MOUT_EN_WDMA0 as 0x4 and does not mention DPI1.
++ */
++#define MT8167_UFOE_MOUT_EN_DPI1			0x4
++#define MT8167_UFOE_MOUT_EN_WDMA0			0x8
++#define MT8167_UFOE_MOUT_EN_MASK			0xF
 +
- static const struct mtk_dpi_conf mt8183_conf = {
- 	.dpi_factor = dpi_factor_mt8183,
- 	.num_dpi_factor = ARRAY_SIZE(dpi_factor_mt8183),
-@@ -1342,6 +1364,7 @@ static void mtk_dpi_remove(struct platform_device *pdev)
++#define MT8167_COLOR0_SEL_IN_RDMA0			0x0
++#define MT8167_COLOR0_SEL_IN_OVL0			0x1
++#define MT8167_COLOR0_SEL_IN_MASK			0x1
++
++#define MT8167_WDMA0_SEL_IN_OVL0			0x0
++#define MT8167_WDMA0_SEL_IN_DITHER			0x1
++#define MT8167_WDMA0_SEL_IN_UFOE			0x2
++#define MT8167_WDMA0_SEL_IN_MASK			0x3
++
++#define MT8167_UFOE_SEL_IN_RDMA0			0x0
++#define MT8167_UFOE_SEL_IN_DITHER			0x1
++#define MT8167_UFOE_SEL_IN_MASK				0x1
  
- static const struct of_device_id mtk_dpi_of_ids[] = {
- 	{ .compatible = "mediatek,mt2701-dpi", .data = &mt2701_conf },
-+	{ .compatible = "mediatek,mt8167-dpi", .data = &mt8167_conf },
- 	{ .compatible = "mediatek,mt8173-dpi", .data = &mt8173_conf },
- 	{ .compatible = "mediatek,mt8183-dpi", .data = &mt8183_conf },
- 	{ .compatible = "mediatek,mt8186-dpi", .data = &mt8186_conf },
-diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.c b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-index c86a3f54f35b..64c87221d931 100644
---- a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-+++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-@@ -802,6 +802,8 @@ static const struct of_device_id mtk_ddp_comp_dt_ids[] = {
- 	  .data = (void *)MTK_DPI },
- 	{ .compatible = "mediatek,mt8167-dsi",
- 	  .data = (void *)MTK_DSI },
-+	{ .compatible = "mediatek,mt8167-dpi",
-+	  .data = (void *)MTK_DPI },
- 	{ .compatible = "mediatek,mt8173-dpi",
- 	  .data = (void *)MTK_DPI },
- 	{ .compatible = "mediatek,mt8183-dpi",
++#define MT8167_DSI0_SEL_IN_UFOE				0x0
+ #define MT8167_DSI0_SEL_IN_RDMA0			0x1
++#define MT8167_DSI0_SEL_IN_RDMA1			0x2
+ #define MT8167_DSI0_SEL_IN_MASK				0x3
+ 
++#define MT8167_DPI0_SEL_IN_UFOE				0x0
++#define MT8167_DPI0_SEL_IN_RDMA0			0x1
++#define MT8167_DPI0_SEL_IN_RDMA1			0x2
++#define MT8167_DPI0_SEL_IN_MASK				0x3
++
++#define MT8167_DPI1_SEL_IN_UFOE				0x0
++#define MT8167_DPI1_SEL_IN_RDMA0			0x1
++#define MT8167_DPI1_SEL_IN_RDMA1			0x2
++#define MT8167_DPI1_SEL_IN_MASK				0x3
++
++#define MT8167_RDMA0_SOUT_UFOE				0x0
++#define MT8167_RDMA0_SOUT_COLOR0			0x1
++#define MT8167_RDMA0_SOUT_DSI0				0x2
++#define MT8167_RDMA0_SOUT_DPI0				0x3
++/* DPI1 is only defined in Android sources, not in the data sheet */
++#define MT8167_RDMA0_SOUT_DPI1				0x4
++#define MT8167_RDMA0_SOUT_MASK				0x7
++
++#define MT8167_RDMA1_SOUT_DSI0				0x0
++#define MT8167_RDMA1_SOUT_DPI0				0x1
++/* DPI1 is only defined in Android sources, not in the data sheet */
++#define MT8167_RDMA1_SOUT_DPI1				0x2
++#define MT8167_RDMA1_SOUT_MASK				0x3
++
+ static const struct mtk_mmsys_routes mt8167_mmsys_routing_table[] = {
++	/* OVL0<->COLOR0 */
+ 	MMSYS_ROUTE(OVL, 0, COLOR, 0,
+-		    MT8167_DISP_REG_CONFIG_DISP_OVL0_MOUT_EN, OVL0_MOUT_EN_COLOR0,
+-		    OVL0_MOUT_EN_COLOR0),
++		    MT8167_DISP_REG_CONFIG_DISP_OVL0_MOUT_EN, MT8167_OVL0_MOUT_EN_MASK,
++		    MT8167_OVL0_MOUT_EN_COLOR0),
++	MMSYS_ROUTE(OVL, 0, COLOR, 0,
++		    MT8167_DISP_REG_CONFIG_DISP_COLOR0_SEL_IN, MT8167_COLOR0_SEL_IN_MASK,
++		    MT8167_COLOR0_SEL_IN_OVL0),
++
++	/* OVL0<->WDMA0 */
++	MMSYS_ROUTE(OVL, 0, WDMA, 0,
++		    MT8167_DISP_REG_CONFIG_DISP_OVL0_MOUT_EN, MT8167_OVL0_MOUT_EN_MASK,
++		    MT8167_OVL0_MOUT_EN_WDMA0),
++	MMSYS_ROUTE(OVL, 0, WDMA, 0,
++		    MT8167_DISP_REG_CONFIG_DISP_COLOR0_SEL_IN, MT8167_COLOR0_SEL_IN_MASK,
++		    MT8167_WDMA0_SEL_IN_OVL0),
++
++	/* DITHER0 outputs */
+ 	MMSYS_ROUTE(DITHER, 0, RDMA, 0,
+ 		    MT8167_DISP_REG_CONFIG_DISP_DITHER_MOUT_EN, MT8167_DITHER_MOUT_EN_MASK,
+ 		    MT8167_DITHER_MOUT_EN_RDMA0),
+-	MMSYS_ROUTE(OVL, 0, COLOR, 0,
+-		    MT8167_DISP_REG_CONFIG_DISP_COLOR0_SEL_IN, COLOR0_SEL_IN_OVL0,
+-		    COLOR0_SEL_IN_OVL0),
+-	MMSYS_ROUTE(RDMA, 0, DSI, 0,
++	MMSYS_ROUTE(DITHER, 0, UFOE, 0,
++		    MT8167_DISP_REG_CONFIG_DISP_DITHER_MOUT_EN, MT8167_DITHER_MOUT_EN_MASK,
++		    MT8167_DITHER_MOUT_EN_UFOE),
++	MMSYS_ROUTE(DITHER, 0, WDMA, 0,
++		    MT8167_DISP_REG_CONFIG_DISP_DITHER_MOUT_EN, MT8167_DITHER_MOUT_EN_MASK,
++		    MT8167_DITHER_MOUT_EN_WDMA0),
++
++	/* UFOE<->DSI0 */
++	MMSYS_ROUTE(UFOE, 0, DSI, 0,
++		    MT8167_DISP_REG_CONFIG_DISP_UFOE_MOUT_EN, MT8167_UFOE_MOUT_EN_MASK,
++		    MT8167_UFOE_MOUT_EN_DSI0),
++	MMSYS_ROUTE(UFOE, 0, DSI, 0,
+ 		    MT8167_DISP_REG_CONFIG_DISP_DSI0_SEL_IN, MT8167_DSI0_SEL_IN_MASK,
+-		    MT8167_DSI0_SEL_IN_RDMA0),
++		    MT8167_DSI0_SEL_IN_UFOE),
++
++	/* UFOE<->DPI0 */
++	MMSYS_ROUTE(UFOE, 0, DPI, 0,
++		    MT8167_DISP_REG_CONFIG_DISP_UFOE_MOUT_EN, MT8167_UFOE_MOUT_EN_MASK,
++		    MT8167_UFOE_MOUT_EN_DPI0),
++	MMSYS_ROUTE(UFOE, 0, DPI, 0,
++		    MT8167_DISP_REG_CONFIG_DISP_DPI0_SEL_IN, MT8167_DPI0_SEL_IN_MASK,
++		    MT8167_DPI0_SEL_IN_UFOE),
++
++	/* UFOE<->DPI1 */
++	MMSYS_ROUTE(UFOE, 0, DPI, 1,
++		    MT8167_DISP_REG_CONFIG_DISP_UFOE_MOUT_EN, MT8167_UFOE_MOUT_EN_MASK,
++		    MT8167_UFOE_MOUT_EN_DPI1),
++	MMSYS_ROUTE(UFOE, 0, DPI, 1,
++		    MT8167_DISP_REG_CONFIG_DISP_DPI1_SEL_IN, MT8167_DPI1_SEL_IN_MASK,
++		    MT8167_DPI1_SEL_IN_UFOE),
++
++	/* UFOE<->WDMA0 */
++	MMSYS_ROUTE(UFOE, 0, WDMA, 0,
++		    MT8167_DISP_REG_CONFIG_DISP_UFOE_MOUT_EN, MT8167_UFOE_MOUT_EN_MASK,
++		    MT8167_UFOE_MOUT_EN_WDMA0),
++	MMSYS_ROUTE(UFOE, 0, WDMA, 0,
++		    MT8167_DISP_REG_CONFIG_DISP_WDMA0_SEL_IN, MT8167_WDMA0_SEL_IN_MASK,
++		    MT8167_WDMA0_SEL_IN_UFOE),
++
++	/* RDMA0<->UFOE */
++	MMSYS_ROUTE(RDMA, 0, UFOE, 0,
++		    MT8167_DISP_REG_CONFIG_DISP_RDMA0_SOUT_SEL_IN, MT8167_RDMA0_SOUT_MASK,
++		    MT8167_RDMA0_SOUT_UFOE),
++	MMSYS_ROUTE(RDMA, 0, UFOE, 0,
++		    MT8167_DISP_REG_CONFIG_DISP_UFOE_SEL_IN, MT8167_UFOE_SEL_IN_MASK,
++		    MT8167_UFOE_SEL_IN_RDMA0),
++
++	/* RDMA0->COLOR0 */
++	MMSYS_ROUTE(RDMA, 0, COLOR, 0,
++		    MT8167_DISP_REG_CONFIG_DISP_RDMA0_SOUT_SEL_IN, MT8167_RDMA0_SOUT_MASK,
++		    MT8167_RDMA0_SOUT_COLOR0),
++	MMSYS_ROUTE(RDMA, 0, COLOR, 0,
++		    MT8167_DISP_REG_CONFIG_DISP_COLOR0_SEL_IN, MT8167_COLOR0_SEL_IN_MASK,
++		    MT8167_COLOR0_SEL_IN_RDMA0),
++
++	/* RDMA0<->DSI0 */
+ 	MMSYS_ROUTE(RDMA, 0, DSI, 0,
+ 		    MT8167_DISP_REG_CONFIG_DISP_RDMA0_SOUT_SEL_IN, MT8167_RDMA0_SOUT_MASK,
+ 		    MT8167_RDMA0_SOUT_DSI0),
++	MMSYS_ROUTE(RDMA, 0, DSI, 0,
++		    MT8167_DISP_REG_CONFIG_DISP_DSI0_SEL_IN, MT8167_DSI0_SEL_IN_MASK,
++		    MT8167_DSI0_SEL_IN_RDMA0),
++
++	/* RDMA0<->DPI0 */
++	MMSYS_ROUTE(RDMA, 0, DPI, 0,
++		    MT8167_DISP_REG_CONFIG_DISP_RDMA0_SOUT_SEL_IN, MT8167_RDMA0_SOUT_MASK,
++		    MT8167_RDMA0_SOUT_DPI0),
++	MMSYS_ROUTE(RDMA, 0, DPI, 0,
++		    MT8167_DISP_REG_CONFIG_DISP_DPI0_SEL_IN, MT8167_DPI0_SEL_IN_MASK,
++		    MT8167_DPI0_SEL_IN_RDMA0),
++
++	/* RDMA0<->DPI1 */
++	MMSYS_ROUTE(RDMA, 0, DPI, 1,
++		    MT8167_DISP_REG_CONFIG_DISP_RDMA0_SOUT_SEL_IN, MT8167_RDMA0_SOUT_MASK,
++		    MT8167_RDMA0_SOUT_DPI1),
++	MMSYS_ROUTE(RDMA, 0, DPI, 1,
++		    MT8167_DISP_REG_CONFIG_DISP_DPI1_SEL_IN, MT8167_DPI1_SEL_IN_MASK,
++		    MT8167_DPI1_SEL_IN_RDMA0),
++
++	/* RDMA1<->DSI0 */
++	MMSYS_ROUTE(RDMA, 1, DSI, 0,
++		    MT8167_DISP_REG_CONFIG_DISP_RDMA1_SOUT_SEL_IN, MT8167_RDMA1_SOUT_MASK,
++		    MT8167_RDMA1_SOUT_DSI0),
++	MMSYS_ROUTE(RDMA, 1, DPI, 0,
++		    MT8167_DISP_REG_CONFIG_DISP_DSI0_SEL_IN, MT8167_DSI0_SEL_IN_MASK,
++		    MT8167_DPI0_SEL_IN_RDMA1),
++
++	/* RDMA1<->DPI0 */
++	MMSYS_ROUTE(RDMA, 1, DPI, 0,
++		    MT8167_DISP_REG_CONFIG_DISP_RDMA1_SOUT_SEL_IN, MT8167_RDMA1_SOUT_MASK,
++		    MT8167_RDMA1_SOUT_DPI0),
++	MMSYS_ROUTE(RDMA, 1, DPI, 0,
++		    MT8167_DISP_REG_CONFIG_DISP_DPI0_SEL_IN, MT8167_DPI0_SEL_IN_MASK,
++		    MT8167_DPI0_SEL_IN_RDMA1),
++
++	/* RDMA1<->DPI1 */
++	MMSYS_ROUTE(RDMA, 1, DPI, 1,
++		    MT8167_DISP_REG_CONFIG_DISP_RDMA1_SOUT_SEL_IN, MT8167_RDMA1_SOUT_MASK,
++		    MT8167_RDMA1_SOUT_DPI1),
++	MMSYS_ROUTE(RDMA, 1, DPI, 1,
++		    MT8167_DISP_REG_CONFIG_DISP_DPI1_SEL_IN, MT8167_DPI1_SEL_IN_MASK,
++		    MT8167_DPI1_SEL_IN_RDMA1),
+ };
+ 
+ #endif /* __SOC_MEDIATEK_MT8167_MMSYS_H */
 -- 
 2.43.0
 
