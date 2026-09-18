@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3DC4EC982DA
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 57431C982D8
 	for <linux-mediatek@archiver.kernel.org>; Fri, 18 Sep 2026 14:39:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
@@ -12,22 +12,22 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
 	:Subject:To:From:Reply-To:Content-Type:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=dmIt+nC5rd2B63RrYxnYEeZwslXtM3bAeP8pd+OZ6w4=; b=nYjKCR4/c8cMyB
-	T4ctxMcEZyQ6r/3lj4rtqQzCWll3wkAUBQWuzX/4IrshrrpOpV5e+OCFe/6pnQuQJxycZxJPRRXzM
-	nAdZL1xEODBE18Eu6x4q4PTP942PghMnmLv+SoTbGm1Lyik6+NaYIrTZbGxWvDWzgslX+EQfYpCNI
-	p0av6P0dZ/H2DGgx8Ey2hiVyQPnzwxPsso1/gEx69b9c5Ez9wMHz1EV94oDmjcBxhB8uQQDLlgnyQ
-	Lor1014IiEaNo/BadSa0EW7aXbiTOqIlIuOaK6SwTqm/xLOiwtbGXVeDw2ZuxVvpk6yeBcQUXMnwf
-	PmliXmbmvKtNTrnwQsOw==;
+	List-Owner; bh=RUEDhthLVuxR2718jDNKdRGiGEMQjCBAe/tRxn/+snQ=; b=z/mXObvdeJG248
+	y6bGsEWAfNeWGV+OV5OBP6kZ6EJ0gOU+Gc8tZTzkLjNNs3rRo4mqgEuD9YSiY6EizGn+vM1GM0wdT
+	D6YmUdU+7EwZmGmMi4Tyt6hjv77Q3mnPpBVuG+SqtSsJW5Cjvrs/BAMgRL2qqutbAhwrxy+6uXzoJ
+	tPlwDXHJ1zQvyxh7Ugo5W9shtqrGVIMPK3dlF57ysUxygvzjvlY0/W+m5Aq3DfdDBDLPua0e4lu+4
+	pzOBaKv/y0wa7cjvAqOGCb/hSLvq9yJgjse7iNKBSPu0KCdZ2mpljjuMLV0Uh+uhE+KiurGG28UHS
+	475lYhR0wpJmP4A+kCXA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x7Zjz-0000000Ek7i-0MNk;
+	id 1x7Zjz-0000000Ek8D-15X1;
 	Fri, 18 Sep 2026 14:39:03 +0000
-Received: from mxout3.routing.net ([134.0.28.8])
+Received: from mxout2.routing.net ([134.0.28.12])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x7Zjw-0000000Ek5f-202R;
-	Fri, 18 Sep 2026 14:39:01 +0000
+	id 1x7Zjw-0000000Ek5e-1kbV;
+	Fri, 18 Sep 2026 14:39:02 +0000
 Received: from mxbulk.masterlogin.de (unknown [192.168.10.85])
-	by mxout3.routing.net (Postfix) with ESMTP id 4997A6106A;
+	by mxout2.routing.net (Postfix) with ESMTP id 7BE6D6143C;
 	Fri, 18 Sep 2026 14:38:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mailerdienst.de;
 	s=routing; t=1789742334;
@@ -35,12 +35,12 @@ DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mailerdienst.de;
 	 to:to:cc:cc:mime-version:mime-version:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=dmIt+nC5rd2B63RrYxnYEeZwslXtM3bAeP8pd+OZ6w4=;
-	b=DIczmh1QW3CrmlJdYweGLBd27MfDRxSr3sP8ngyBTsVk+rKApQ1IStr0zI8xU9hngM/Fss
-	o36+TSC1S2dIkNpw2LZsT6U1y4ZL9kpHIf79QwUGxNl5NkofsTeO7Q5tXUXEt6JPlJrp+p
-	rVxoq+zXyY2XROrjhVAW8VmS3C/qdA4=
+	bh=RUEDhthLVuxR2718jDNKdRGiGEMQjCBAe/tRxn/+snQ=;
+	b=DISv0Eq2ohtzhZJGzuiCqsNl7e4SYVmhSXbU++jql8NRjDfhxFkELnjmX49hLDpPxRByEF
+	ICUTJu4L/5bi44PdZE4m9reQj7D3g+x6jmYXj3G/06b4BhDYkpEh9HkNTySJhOfXItDs4y
+	WoSXn6ATyZRZmBJ5aUS7K1EGUGEOh84=
 Received: from frank-G5-5590 (fttx-pool-80.245.73.6.bambit.de [80.245.73.6])
-	by mxbulk.masterlogin.de (Postfix) with ESMTPSA id 11D4E120181;
+	by mxbulk.masterlogin.de (Postfix) with ESMTPSA id 486C31200CB;
 	Fri, 18 Sep 2026 14:38:54 +0000 (UTC)
 From: Frank Wunderlich <linux@fw-web.de>
 To: Rob Herring <robh@kernel.org>,
@@ -48,18 +48,17 @@ To: Rob Herring <robh@kernel.org>,
 	Conor Dooley <conor+dt@kernel.org>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Subject: [PATCH 1/2] arm64: dts: mediatek: mt7988a-bpi-r4pro: add names for i2c-to-gpio chip
-Date: Fri, 18 Sep 2026 16:38:42 +0200
-Message-ID: <20260918143846.30458-2-linux@fw-web.de>
+Subject: [PATCH 2/2] arm64: dts: mediatek: mt7988a-bpi-r4pro: label gpio-hogs
+Date: Fri, 18 Sep 2026 16:38:43 +0200
+Message-ID: <20260918143846.30458-3-linux@fw-web.de>
 X-Mailer: git-send-email 2.53.0
 In-Reply-To: <20260918143846.30458-1-linux@fw-web.de>
 References: <20260918143846.30458-1-linux@fw-web.de>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260918_073900_690613_97F05979 
-X-CRM114-Status: UNSURE (   8.70  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260918_073900_691205_A1DA7FDD 
+X-CRM114-Status: GOOD (  10.28  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,43 +76,101 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Frank Wunderlich <frank-w@public-files.de>
 
-Add line-names for the PCA9555 i2c to gpio expander to have more
-information in debugfs.
+GPIO hogs were tagged with name "?" in recent kernel versions (7.1+) due to
+commit d1d564ec4992 ("gpio: move hogs into GPIO core").
 
+7.0 showed the unit-name which behaviour is restored by patch [1], but
+labeling the hog directly makes things easier.
+
+gpiochip0: 84 GPIOs, parent: platform/1001f000.pinctrl, pinctrl_moore:
+ gpio-0   (                    |tx-disable          ) in  lo
+ gpio-1   (                    |mod-def0            ) in  hi IRQ ACTIVE LOW
+ gpio-2   (                    |los                 ) in  hi IRQ
+ gpio-12  (                    |cd                  ) in  lo IRQ ACTIVE LOW
+ gpio-13  (                    |reset               ) in  hi IRQ ACTIVE LOW
+ gpio-14  (                    |WPS                 ) in  hi IRQ ACTIVE LOW
+ gpio-21  (                    |tx-disable          ) in  lo
+ gpio-63  (                    |?                   ) out hi
+ gpio-69  (                    |mod-def0            ) in  hi IRQ ACTIVE LOW
+ gpio-70  (                    |los                 ) in  hi IRQ
+ gpio-79  (                    |?                   ) out lo
+ gpio-82  (                    |PHY reset           ) out hi ACTIVE LOW
+ gpio-83  (                    |PHY reset           ) out hi ACTIVE LOW
+
+after the change:
+
+root@bpi-r4:~# cat /sys/kernel/debug/gpio
+gpiochip0: 84 GPIOs, parent: platform/1001f000.pinctrl, pinctrl_moore:
+ gpio-0   (                    |tx-disable          ) in  lo
+ gpio-1   (                    |mod-def0            ) in  hi IRQ ACTIVE LOW
+ gpio-2   (                    |los                 ) in  hi IRQ
+ gpio-12  (                    |cd                  ) in  lo IRQ ACTIVE LOW
+ gpio-13  (                    |reset               ) in  hi IRQ ACTIVE LOW
+ gpio-14  (                    |WPS                 ) in  hi IRQ ACTIVE LOW
+ gpio-21  (                    |tx-disable          ) in  lo
+ gpio-63  (                    |pcie3-cn14-hog      ) out hi
+ gpio-69  (                    |mod-def0            ) in  hi IRQ ACTIVE LOW
+ gpio-70  (                    |los                 ) in  hi IRQ
+ gpio-79  (                    |pcie2-cn15-hog      ) out lo
+ gpio-82  (                    |PHY reset           ) out hi ACTIVE LOW
+ gpio-83  (                    |PHY reset           ) out hi ACTIVE LOW
+
+[1] https://git.kernel.org/pub/scm/linux/kernel/git/brgl/linux.git/commit/?id=d54a489c8c4b627775445d54a6cbd32f209bda8f
+"gpiolib: use of_node_name if line-name is missing"
+
+Fixes: d1d564ec4992 ("gpio: move hogs into GPIO core")
 Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
 ---
- .../mediatek/mt7988a-bananapi-bpi-r4-pro.dtsi  | 18 ++++++++++++++++++
- 1 file changed, 18 insertions(+)
+ .../boot/dts/mediatek/mt7988a-bananapi-bpi-r4-pro-cn13.dtso      | 1 +
+ .../boot/dts/mediatek/mt7988a-bananapi-bpi-r4-pro-cn14.dtso      | 1 +
+ .../boot/dts/mediatek/mt7988a-bananapi-bpi-r4-pro-cn15.dtso      | 1 +
+ .../boot/dts/mediatek/mt7988a-bananapi-bpi-r4-pro-cn18.dtso      | 1 +
+ 4 files changed, 4 insertions(+)
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4-pro.dtsi b/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4-pro.dtsi
-index 1eeb72108b9b..f54787fbbc71 100644
---- a/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4-pro.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4-pro.dtsi
-@@ -315,6 +315,24 @@ pca9555: i2c-gpio-expander@20 {
- 				reg = <0x20>;
- 				gpio-controller;
- 				#gpio-cells = <2>;
-+
-+				gpio-line-names =
-+					"BKEY-A-PDN",	/* GPIO0 */
-+					"BKEY-A-Vset",	/* GPIO1 */
-+					"BKEY-B-PDN",	/* GPIO2 */
-+					"BKEY-B-Vset",	/* GPIO3 */
-+					"BKEY-C-PDN",	/* GPIO4 */
-+					"BKEY-C-Vset",	/* GPIO5 */
-+					"SIM_SEL",	/* GPIO6 */
-+					"mPCIe_AB_Vset",/* GPIO7 */
-+					"mPCIe_A_PDN",	/* GPIO8 */
-+					"mPCIe_B_PDN",	/* GPIO9 */
-+					"BKEY-A-RST",	/* GPIO10 */
-+					"VBUS_AB_PDN",	/* GPIO11 */
-+					"BKEY-B-RST",	/* GPIO12 */
-+					"BKEY-C-RST",	/* GPIO13 */
-+					"SYS_LEDB",	/* GPIO14 */
-+					"SYS_LEDR";	/* GPIO15 */
- 			};
+diff --git a/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4-pro-cn13.dtso b/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4-pro-cn13.dtso
+index 973b76ba0cbf..e9c322df15fc 100644
+--- a/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4-pro-cn13.dtso
++++ b/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4-pro-cn13.dtso
+@@ -16,5 +16,6 @@ / {
+ };
  
- 			rtc@51 {
+ &{/soc/pinctrl@1001f000/pcie-2-hog} {
++	line-name = "pcie2-cn13-hog";
+ 	output-high;
+ };
+diff --git a/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4-pro-cn14.dtso b/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4-pro-cn14.dtso
+index 90b2a64459c3..9d8de737ca40 100644
+--- a/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4-pro-cn14.dtso
++++ b/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4-pro-cn14.dtso
+@@ -16,5 +16,6 @@ / {
+ };
+ 
+ &{/soc/pinctrl@1001f000/pcie-3-hog} {
++	line-name = "pcie3-cn14-hog";
+ 	output-high;
+ };
+diff --git a/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4-pro-cn15.dtso b/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4-pro-cn15.dtso
+index 9750916042de..57ee7dacdd78 100644
+--- a/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4-pro-cn15.dtso
++++ b/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4-pro-cn15.dtso
+@@ -16,5 +16,6 @@ / {
+ };
+ 
+ &{/soc/pinctrl@1001f000/pcie-2-hog} {
++	line-name = "pcie2-cn15-hog";
+ 	output-low;
+ };
+diff --git a/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4-pro-cn18.dtso b/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4-pro-cn18.dtso
+index 9830fb0fd97a..7830980ac95a 100644
+--- a/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4-pro-cn18.dtso
++++ b/arch/arm64/boot/dts/mediatek/mt7988a-bananapi-bpi-r4-pro-cn18.dtso
+@@ -16,5 +16,6 @@ / {
+ };
+ 
+ &{/soc/pinctrl@1001f000/pcie-3-hog} {
++	line-name = "pcie3-cn18-hog";
+ 	output-low;
+ };
 -- 
 2.53.0
 
