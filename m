@@ -4,113 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6EA22C982D2
-	for <linux-mediatek@archiver.kernel.org>; Fri, 18 Sep 2026 08:20:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3906FC982D7
+	for <linux-mediatek@archiver.kernel.org>; Fri, 18 Sep 2026 09:26:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=kLk/qXepwU+Sdk80TMQeIbWMJ2U8WIHPfybN4YV+JME=; b=z4KhfzHsW5nokqwQIUAumbv8ne
-	iRY9Vpip6jrhiIVq0hME4czQpvyKiOt2xDSX9PfRvNZ8WfRa6ZEwsLy6+wrhRPgqoNlYilH7J/ke4
-	Br33Pt2KEL/Fn+ge3nTq4GDtchS30Da6J5f5RF6i6GH6JoTDLrMSBvLBeo2TzdkglEtki8isaG9SI
-	JOjaVD6pjyXdvdHRJ+FW8f2IUubuRn9g8o7Nocaehmm2u0r4EIW6jfj8Kwz3JHefT8lR/P4YBh8o2
-	6fIpsui7z6prL+P1xr3gQ/lg4Tz5TFBeDWVb6n2oyl01Ez8W+px+J1F9KbNJ1KdkS6KfRcfNop709
-	wwY30jNQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=GyJ/Izgdsqp5q8EJHvMUjjmksB1H1LTha8OAdEwdi4o=; b=FRcxnfT8oPtjp8bYixhrdJV9kq
+	MuF72Q2MJv58uw204ZP/4em5NVsj3Li8ZvGRqInGPhn8PShL8f23re84oEo7QT5V5hUK1DJijZ244
+	farAaN6KG227TbLnAp9s5+boz0kn21DI+PcxrvirfV5V/s/SllRH5M0XgSHVA1bERRbcrARSH7jsr
+	fjHI2lbZG+BgZ/ye7aGXSIx1g8/+J8/VAIziiyV/6he3pLmaEMOMGrXJU1BWnNDuT1ntJoOndmI8s
+	3LfKP2S2f1RADspdZ3sNYdj6BzENv7oNDGtcZ0OzPdChwGuG9De5Kr0XH0tGXysfe/fGRbpr8wnEq
+	O+UsFd4A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x7Tpi-0000000Dn4z-2vPl;
-	Fri, 18 Sep 2026 08:20:34 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1x7UrN-0000000DwSj-37Ow;
+	Fri, 18 Sep 2026 09:26:21 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x7Tpi-0000000Dn4h-0Msd
-	for linux-mediatek@bombadil.infradead.org;
-	Fri, 18 Sep 2026 08:20:34 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
-	:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
-	Content-Type:Content-ID:Content-Description;
-	bh=kLk/qXepwU+Sdk80TMQeIbWMJ2U8WIHPfybN4YV+JME=; b=e/MK5YUFlMpmY32hhhObDKDB0s
-	Uadz2v/SFt/7fNmO2EXl/gGLV2iq0l08qK82vGCiLpp1Ej+2qfM8Qx+MVAYN5PtWiQZxdEDKGRkxc
-	wRS0y+msRiypyWNvH4GaMB1i/r5xleROdmih5akbMb06YmBprO/xlORyWudlhZ8jw9AxJwRVSnDpA
-	omAKaH+T9CXny87CH0CSXelF7++a8OtmzV7qRauEw40kV3FY+QbkQHk2iZaWM8C+v2NFJ9CQFWjlZ
-	iTo08NjNFX29CuoZ9eH4xNuvB/CPDumEONfF2UsblUvnvUXsIylMbG48P0znuB7+ETQld4UMPqGW5
-	YpB9BBeA==;
-Received: from mail-wr2-x10.google.com ([2a00:1450:4864:30::10])
-	by desiato.infradead.org with esmtps (Exim 4.99.2 #2 (Red Hat Linux))
-	id 1x7Tpf-00000009mPS-1TGP
-	for linux-mediatek@lists.infradead.org;
-	Fri, 18 Sep 2026 08:20:33 +0000
-Received: by mail-wr2-x10.google.com with SMTP id ffacd0b85a97d-482f6351831so201051f8f.1
-        for <linux-mediatek@lists.infradead.org>; Fri, 18 Sep 2026 01:20:30 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=lex.la; s=google; t=1789719629; x=1790324429; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to:content-type;
-        bh=kLk/qXepwU+Sdk80TMQeIbWMJ2U8WIHPfybN4YV+JME=;
-        b=iUUyXUoC49vtmXlXuwmZ/iFr9JqYOTOMNyyirc0OhOiEh6EnzSXaz2ei1h/IR9jHRd
-         iQtFuW5uQMM3+UTg0+Hoj4yMdrmZ6GZRom9z2anLjfjDaVtD306UE2emF2w7aKYLwIJ8
-         dZZw6qioD3i3EqCByBxuO48gDus6YxG/gjO/rdj8Z8mLQtUYerD3G8dIgwdRML5I7Isd
-         7vSGU1+mIiqScgy+dDl8HE9ylR/An061toMe97BZ0eYr4Gb6N8XNHk8YsMZwHa17qnaz
-         9fewZ5E84Zb4Oh3PBbSCxHp5NsXFaYdLnEwje32R0APPnRdxXynxVIEf1QcBRgcaOOal
-         NSYg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1789719629; x=1790324429;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
-         :to:cc:subject:date:message-id:reply-to:content-type;
-        bh=kLk/qXepwU+Sdk80TMQeIbWMJ2U8WIHPfybN4YV+JME=;
-        b=Yn0zcdtWhuiFef4PcDfp/HZa1gcVbAB+2oo5KJuCXqOOPMI1n0oHBJTK8UJOceyqyR
-         5CDK2eOJ589WVm/tNF2YtYpPWitt+QPPipjyig/NhqHOsQEtutCJ0YtVG/jbZ5NiYEnH
-         t18laHV2+Q1QD1GcgqXPzgdgWKNLrgWbWYB49hA9py+5O3xdBQ45W2PJRDy7sp420fjD
-         kEM2RymKgSS6Piv+Z1USzh7CIAfY9ezQLrd5Q5LWVvwaoaVduspNOfKPM8GM3p6FBat6
-         GoeIt16RihjmDmjw3zbj7t7ew8nRrLletSwhS8sYvxi0e9jfqG0JSI2hjlczT0lkloli
-         LSyQ==
-X-Forwarded-Encrypted: i=1; AKwUvBzuTRpH+eIcZKJFbqjuB/dCCT7Jt8Vub6N42vYtFN8jRc+JmJDKn57Xd051ISolAIf9E3nkaZH9sdXUdA4p3w==@lists.infradead.org
-X-Gm-Message-State: AFuF++l6wP1Sardxjn5wyPTxQJGXqKgGAKXd7UDDDkP6KjVcqI8eWtYU
-	Tuu6odYNT+syeZLwOLPGDb7PLd8iBDpwbOGIc8kzYIIcz7rXyVBRtm/VinV03PsUEl8=
-X-Gm-Gg: AYBFou3wdWE6dopRExtNvWrCbJjArf9rjYkr70ZBVv1q80HZ8T3ldyqOroRiS9f6Vyg
-	jOqpUvlzYUHQlroF8JUhuxe1fP+9VhXAtewlRU3GcTho7ahMl16KfMAHLXaCm3Od/mJsBginQ63
-	1USOERoDNfcqGhqZ418+AZ2QtEkpaLTAGl7uypGy/deuwExx/ozfbJ6ZfnuvpMxqzdM9VMTPRlb
-	05WOVUgngmJdxJxZZ1nDeyKTLKqURNn7KW4v1EDJiH71aeW8Xxpp3BCurgpIc2KphOSSEJjhtXi
-	QDIE7kDkn+EdvJOC/wDFvIypcVuGhj5JhLJQBek+e20/9VjBBqQNvWCo+rmgOKgElnru8c3eXvs
-	p8dfbicMw0KhlsdCUtB+FDxJq29YCNtdxmWF483xcZ3kOWg7zBZ8l7Fr8LeAP6ULA5ypDW0Q+XI
-	ZSC/fKK1GN2hxh9oWegbHCEWg4IBSS1ZKNAmHN8/FKUHzTmSy8aw==
-X-Received: by 2002:a05:6000:603:b0:487:41c:515b with SMTP id ffacd0b85a97d-4871e25e2a9mr2371051f8f.30.1789719629172;
-        Fri, 18 Sep 2026 01:20:29 -0700 (PDT)
-Received: from remote-01 ([84.17.55.229])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-4871ff56905sm2152472f8f.20.2026.09.18.01.20.27
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 18 Sep 2026 01:20:28 -0700 (PDT)
-From: Aleksei Sviridkin <f@lex.la>
-To: andrew@lunn.ch
-Cc: netdev@vger.kernel.org,
-	chester.a.unal@arinc9.com,
-	daniel@makrotopia.org,
-	olteanv@gmail.com,
-	davem@davemloft.net,
-	edumazet@google.com,
-	kuba@kernel.org,
-	pabeni@redhat.com,
-	matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com,
-	gerg@kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
+	id 1x7UrM-0000000DwSI-2rDU;
+	Fri, 18 Sep 2026 09:26:20 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by tor.source.kernel.org (Postfix) with ESMTP id B3F1D60A66;
+	Fri, 18 Sep 2026 09:26:19 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id BDE141F00893;
+	Fri, 18 Sep 2026 09:26:17 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1789723579;
+	bh=GyJ/Izgdsqp5q8EJHvMUjjmksB1H1LTha8OAdEwdi4o=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To;
+	b=dTPAXqIMzE3zycBsqWLtnKbfH7UTA+wPBUSmm9FVCgnVlZS+cSZ4kIBteBFtOZPSX
+	 +JIZmqWQf2EyzXBct0o+IRtlpZwSgI8HpNuoofjU7yff+11zadzIkhTCyVlVHmSZge
+	 KieiUkq6Twe3H44uy4Y3WTIKX/w07c8tTELWSBCzXTj7JY/up3OsVdsTCQCObX7Oc2
+	 95yXJJvKNyiq2jq3l0VGR1HtrHNLkAtyugwIYgazb9PH5Ool0INnJ6Y+OLH6GiUFdk
+	 ROA2JKb/JwkCqoKgNXqt/gZbbsFEldDNCHkiWrvXDe0Q0bnKdtzBesW6uD7pUDzfAs
+	 EdU7IgGBDDYFw==
+Date: Fri, 18 Sep 2026 10:26:14 +0100
+From: Mark Brown <broonie@kernel.org>
+To: Justin Yeh <justin.yeh@mediatek.com>
+Cc: Liam Girdwood <lgirdwood@gmail.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Project_Global_Chrome_Upstream_Group@mediatek.com,
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
 	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH net v2 1/2] net: dsa: mt7530: fix NULL dereference on unbind of MT7531 and MT7621
-Date: Fri, 18 Sep 2026 11:20:23 +0300
-Message-ID: <20260918082024.2697569-1-f@lex.la>
-X-Mailer: git-send-email 2.53.0
-In-Reply-To: <857a7395-4741-4d2c-abb0-b806e8f9bd78@lunn.ch>
-References: <20260918015020.2518315-1-f@lex.la> <20260918015020.2518315-2-f@lex.la> <857a7395-4741-4d2c-abb0-b806e8f9bd78@lunn.ch>
+Subject: Re: [PATCH 0/2] Allow mtk-regulator-coupler to be built as a module
+Message-ID: <f034927d-1907-45b7-ae66-a10989116ce8@sirena.org.uk>
+References: <20260903062056.1024263-1-justin.yeh@mediatek.com>
+ <20260918003722.2764284-1-justin.yeh@mediatek.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260918_092031_506798_1AE0A3E7 
-X-CRM114-Status: GOOD (  11.78  )
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="bTlqMwmTvtaxM+Z9"
+Content-Disposition: inline
+In-Reply-To: <20260918003722.2764284-1-justin.yeh@mediatek.com>
+X-Cookie: Dental health is next to mental health.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -125,28 +74,46 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-> Did you consider using devm_regulator_get_enable()?
 
-No. Looking at it now, it is the better shape, but not for this patch.
+--bTlqMwmTvtaxM+Z9
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-Two things stop it from being a swap. The driver sets the voltages before
-it enables, 1.0 V on core and 3.3 V on io, and get_enable returns an int,
-so no handle is left for regulator_set_voltage(). On the BPI-R2, which is
-also the example in the binding, both supplies are MT6323 regulators with
-a range, vpa 0.5 to 3.65 V and vemc3v3 3.0 to 3.3 V, so those calls are
-not decoration. The other is placement: the get is in probe and the enable
-is in mt7530_setup(), which DSA calls much later and which resets the chip
-on the next lines, so get_enable would bring the rails up at a different
-point.
+On Fri, Sep 18, 2026 at 08:37:22AM +0800, Justin Yeh wrote:
+> Hi Mark, Liam, Matthias, Angelo,
+>=20
+> Gentle ping on this series, sent two weeks ago:
+> https://lore.kernel.org/all/20260903062056.1024263-1-justin.yeh@mediatek.=
+com/
 
-It is still worth doing, for a reason this patch deliberately leaves
-alone. mt7530_remove() disables the supplies before
-mt7530_remove_common() calls dsa_unregister_switch(), which still writes
-switch registers over MDIO, so on a board where those rails really drop
-the teardown is talking to a switch that is already off. A devres disable
-runs after .remove returns and would fix that too.
+Please don't send content free pings and please allow a reasonable time
+for review.  People get busy, go on holiday, attend conferences and so=20
+on so unless there is some reason for urgency (like critical bug fixes)
+please allow at least a couple of weeks for review.  If there have been
+review comments then people may be waiting for those to be addressed.
 
-So I would keep this one as the NULL check with a Fixes tag, and send the
-conversion to net-next, where the voltage handling and the power-up
-ordering can be argued on their own.
+Sending content free pings adds to the mail volume (if they are seen at
+all) which is often the problem and since they can't be reviewed
+directly if something has gone wrong you'll have to resend the patches
+anyway, so sending again is generally a better approach though there are
+some other maintainers who like them - if in doubt look at how patches
+for the subsystem are normally handled.
+
+--bTlqMwmTvtaxM+Z9
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmqtA7YACgkQJNaLcl1U
+h9Dlkwf/YJOx05NeMMpnlsAzuP7wfrP9ZAT8RAWV4CBWBbKzL922YZOLpb5Ei+eB
+Z/xbWC1awCG/N8+oWPgkNAm23hoftpLU8X3Q1oYIBbznNydS8ietdFfibILvPa6/
+FrFFyRkzX15QOAMC1OybDghDiPydNv52kyfmBrL3/qM4tDEkUJ5hY8iRTJGz/wKg
+nUZBbd81D14Yyf8huMaCaJ6d3i700e47eNMiGvIMNftQ/Ys9U0PIwE++tgvDLyp/
+riInpbgojfvNkvvWDS7RFGeHfutXfbFVXS4lq53Httz4RU2I9K/4UAt3RqgUesmi
+NZHxugQUq4Er+7UhhPDPUbnnjlmOtQ==
+=uW80
+-----END PGP SIGNATURE-----
+
+--bTlqMwmTvtaxM+Z9--
 
