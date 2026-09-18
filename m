@@ -4,82 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F2FFBC982DA
-	for <linux-mediatek@archiver.kernel.org>; Fri, 18 Sep 2026 10:03:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7FD7CC982D9
+	for <linux-mediatek@archiver.kernel.org>; Fri, 18 Sep 2026 10:12:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Vf+VMKVEe34XIFcoM0F3NyOnHOuNbUrZlrEVL6D0Cdw=; b=pv1EZS4l8750nloGSCdUrWMaaA
-	jIUyQ7h9+UhXHkap76kF2ysE63KBuK+wgkNx+IAXiURRTugPC7YDkk9q/+rbWRat1jamlT4SgCJr7
-	XJWXXD0rXGpqJpRGACFVVVv5h0DLSivo1VZCNQQyRLAoQKjN3bPwe3NleoHW7hHZOqbO+oUVHaVRx
-	mQPzAlTRQmiySEger2gktMrt4A3LZWHWf8GQK6GRTS6QQ2dIhNZYeYFNPiwZvE80CbcYt2zqrRahD
-	QqY/g8Ky0MdHSHLNdDNybk7x/nNQuCJ9PIlOnLhAALrmq90OLpAEVSn1ko37oA+okDe7XrhAbF3m4
-	sdLZXasw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=c+PHpPK78a10gB0bJb2+oG7YcNlo1a7Hh7HzEKPa02A=; b=KGFAjiX33IRJfyRF9rDCht3ra7
+	XQiRnn40ELA1H+wcjO6YDwEp4sqeIkkdm/MaZr9onUU/tTwGjB1CWdT+uwybXS364e5Npofxawy23
+	umpEGlg97o/aahEcAA8b0vjewHRKNZDBzwINv3rNroCNedZRDKbrofX3TbDkw65bRZ72soON+ZlWC
+	VJvtRLwNYe0XzZADyx7AVos9nQOB5FIcvu0AFGB4OD0yK0nI7f2v5Nss4FarRVEtO13iKpYX4O6KC
+	0SVgrtjTZX4N96Qqxg6FZsg2Un2cQctMtHUiZlScpvoBHOQHCttLCAz9a8r/+6tEeoKjqIAVj7fKY
+	mNL3ajAw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x7VQz-0000000E2AS-15OY;
-	Fri, 18 Sep 2026 10:03:09 +0000
-Received: from mgamail.intel.com ([192.198.163.4])
+	id 1x7VZo-0000000E4GG-2jjo;
+	Fri, 18 Sep 2026 10:12:16 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x7VQx-0000000E29j-0vYc;
-	Fri, 18 Sep 2026 10:03:08 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1789725788; x=1821261788;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=uElSAhyH1PpeEPWtCcp7Howb3i9y6eQxOdUHga4bW1E=;
-  b=GR14b0haBjIpr/0DhwIvkhYI9Xn76vRme6b0RAZGOxziKklvYSHtL+/E
-   I/IfWr3MBEek9YuXfc982aukkD1MAZgjBFfsG9S7NQn24CbEtGH1UhJ+J
-   BuPMAcRBsshrxSTkazqO4qbRp57l4lsZjacCEyn+sDyPB1pNJJNfm0674
-   BeHu+Ya/pGGxvZ+SVc561QG1sHbape1MtTOXo4Ur59g6/lE5+DO3LMqMq
-   iujsdp9/udHx9teUs85XdaC+txnr3Y8Zm4/lAMLblqs2wbIZfcljg/I3g
-   bvV/WzKBMQNWYYB4F4Fb8gujaSfj2ZKvqKWrK6Ssw20LXcgO3LHbJQgRB
-   g==;
-X-CSE-ConnectionGUID: 7JJ5xXsyRvCaA1gdTalJiA==
-X-CSE-MsgGUID: 9YpDHz9rS+237zQauBOLJQ==
-X-IronPort-AV: E=McAfee;i="6800,10657,11905"; a="728803"
-X-IronPort-AV: E=Sophos;i="6.27,103,1787036400"; 
-   d="scan'208";a="728803"
-Received: from fmviesa006.fm.intel.com ([10.60.135.146])
-  by fmvoesa114.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 18 Sep 2026 03:03:06 -0700
-X-CSE-ConnectionGUID: Fzk0+0vuSaGiYihkFXoX7g==
-X-CSE-MsgGUID: JJFCgwzZRAm1B0qK2MGLwQ==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.27,103,1787036400"; 
-   d="scan'208";a="270024013"
-Received: from black.igk.intel.com ([10.91.253.5])
-  by fmviesa006.fm.intel.com with ESMTP; 18 Sep 2026 03:03:03 -0700
-Received: by black.igk.intel.com (Postfix, from userid 1008)
-	id 0041099; Fri, 18 Sep 2026 12:03:01 +0200 (CEST)
-Date: Fri, 18 Sep 2026 12:03:01 +0200
-From: Heikki Krogerus <heikki.krogerus@linux.intel.com>
-To: Joshua Crofts <joshua.crofts1@gmail.com>
-Cc: Peter Chen <peter.chen@kernel.org>, Pawel Laszczak <pawell@cadence.com>,
-	Roger Quadros <rogerq@kernel.org>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	Mathias Nyman <mathias.nyman@intel.com>,
-	Chunfeng Yun <chunfeng.yun@mediatek.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-usb@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, stable@vger.kernel.org
-Subject: Re: [PATCH 4/6] usb: typec: ucsi: ccg: add missing
- pm_runtime_dont_use_autosuspend() call
-Message-ID: <aq0MVewexVIdq_qs@black.igk.intel.com>
-References: <20260915090223.1346-1-joshua.crofts1@gmail.com>
- <20260915090223.1346-5-joshua.crofts1@gmail.com>
+	id 1x7VZm-0000000E4Ff-2dwu;
+	Fri, 18 Sep 2026 10:12:15 +0000
+X-UUID: 66af603ab34911f1afed4741b24580c9-20260918
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=c+PHpPK78a10gB0bJb2+oG7YcNlo1a7Hh7HzEKPa02A=;
+	b=hhxln0CNF+9oPy4ruFPd44PpKVjG7qBBhRD4c6Bs7pJfuus9AdyHHVCPm5lIevTIDjd+J0BFyBPnolt+Y1bRBHbtnd/jVA5aVLQMuiZSF5SSSH9CkX2QdTA/AS6XqbgJnVTWYAdxONXvnFIC3Eq06zlstEMmD8DzgTFh1GkzqAA=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.3.19,REQID:a81b2639-32d6-4e6c-b505-132492eab886,IP:0,U
+	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
+	N:release,TS:-25
+X-CID-META: VersionHash:7db8b62,CLOUDID:f72b00e3-72a5-4ba1-af40-18bbd6ea8ffd,B
+	ulkID:nil,BulkQuantity:0,SF:102|836|865|888|898,TC:-5,Content:0|15|50|99,E
+	DM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:-1,COL:0,OSI:0,OSA:0,
+	AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 2,SSN|SDN
+X-CID-BAS: 2,SSN|SDN,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
+X-UUID: 66af603ab34911f1afed4741b24580c9-20260918
+Received: from mtkmbs14n2.mediatek.inc [(172.21.101.76)] by mailgw01.mediatek.com
+	(envelope-from <shf.chen@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 130609747; Fri, 18 Sep 2026 03:12:06 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+ mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.2562.29; Fri, 18 Sep 2026 18:12:03 +0800
+Received: from mtksitap99.mediatek.inc (10.233.130.16) by
+ mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.2562.29 via Frontend Transport; Fri, 18 Sep 2026 18:12:03 +0800
+From: Shao-Fu Chen <shf.chen@mediatek.com>
+To: Jens Wiklander <jenswi@kernel.org>, Sumit Garg <sumit.garg@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>
+CC: <op-tee@lists.trustedfirmware.org>, <linux-kernel@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
+	<Project_Global_Chrome_Upstream_Group@mediatek.com>, <tadd.kao@mediatek.com>,
+	<jarried.lin@mediatek.com>, <vince-wl.liu@mediatek.com>,
+	<justin.yeh@mediatek.com>, Shao-Fu Chen <shf.chen@mediatek.com>
+Subject: [PATCH] optee: register TEE devices only once fully initialized
+Date: Fri, 18 Sep 2026 18:10:46 +0800
+Message-ID: <20260918101113.6699-1-shf.chen@mediatek.com>
+X-Mailer: git-send-email 2.45.2
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20260915090223.1346-5-joshua.crofts1@gmail.com>
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260918_030307_267544_ACA2952E 
-X-CRM114-Status: GOOD (  14.85  )
+X-CRM114-CacheID: sfid-20260918_031214_681764_008C6506 
+X-CRM114-Status: GOOD (  15.28  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,39 +88,117 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Sep 15, 2026 at 09:02:21AM +0000, Joshua Crofts wrote:
-> ucsi_ccg_remove() disables PM runtime on teardown, but doesn't call
-> pm_runtime_dont_use_autosuspend(), causing resource leaks.
-> 
-> Add the missing pm_runtime_dont_use_autosuspend() call.
-> 
-> Found using Coccinelle.
-> 
-> Fixes: a94ecde41f7e ("usb: typec: ucsi: ccg: enable runtime pm support")
-> Cc: <stable@vger.kernel.org>
-> Signed-off-by: Joshua Crofts <joshua.crofts1@gmail.com>
+optee_probe() called tee_device_register() on both the client and the
+supplicant device before the rest of struct optee had been initialized.
 
-Reviewed-by: Heikki Krogerus <heikki.krogerus@linux.intel.com>
+tee_device_register() calls cdev_device_add(), which does two things at
+once: it creates /dev/tee0 and /dev/teepriv0, and it links the device
+into the tee class so that class_find_device() can find it. From that
+moment on the device is reachable both from user space via tee_open()
+and from kernel space via tee_client_open_context(). The only gate in
+teedev_open() is tee_device_get(), which merely checks that
+teedev->desc is non-NULL, which was already set by tee_device_alloc().
+Therefore, there is effectively no gate at all.
 
-> ---
->  drivers/usb/typec/ucsi/ucsi_ccg.c | 1 +
->  1 file changed, 1 insertion(+)
-> 
-> diff --git a/drivers/usb/typec/ucsi/ucsi_ccg.c b/drivers/usb/typec/ucsi/ucsi_ccg.c
-> index 91c2958a708c..9d3ebb255de7 100644
-> --- a/drivers/usb/typec/ucsi/ucsi_ccg.c
-> +++ b/drivers/usb/typec/ucsi/ucsi_ccg.c
-> @@ -1519,6 +1519,7 @@ static void ucsi_ccg_remove(struct i2c_client *client)
->  
->  	cancel_work_sync(&uc->pm_work);
->  	cancel_work_sync(&uc->work);
-> +	pm_runtime_dont_use_autosuspend(uc->dev);
->  	pm_runtime_disable(uc->dev);
->  	ucsi_unregister(uc->ucsi);
->  	free_irq(uc->irq, uc);
-> -- 
-> 2.47.3
+A context opened in that window can run against a struct optee where
 
+  - optee->call_queue.mutex is not initialized by optee_cq_init()
+  - optee->supp mutex and completions is not initialized by
+    optee_supp_init()
+  - optee->rpmb_dev_mutex is not initialized yet,
+  - the message argument cache is not initialized by
+    optee_shm_arg_cache_init()
+  - optee->ctx is still NULL
+
+Any open session or invoke during this window takes uninitialized
+mutexes and dereferences a NULL pointer.
+
+Fix it by moving both tee_device_register() calls down to the point
+where all of struct optee is set up.
+
+Signed-off-by: Shao-Fu Chen <shf.chen@mediatek.com>
+---
+ drivers/tee/optee/ffa_abi.c | 16 ++++++++--------
+ drivers/tee/optee/smc_abi.c | 17 ++++++++---------
+ 2 files changed, 16 insertions(+), 17 deletions(-)
+
+diff --git a/drivers/tee/optee/ffa_abi.c b/drivers/tee/optee/ffa_abi.c
+index 633715b98625..d3cc7c5fc1e9 100644
+--- a/drivers/tee/optee/ffa_abi.c
++++ b/drivers/tee/optee/ffa_abi.c
+@@ -1123,14 +1123,6 @@ static int optee_ffa_probe(struct ffa_device *ffa_dev)
+ 
+ 	optee_set_dev_group(optee);
+ 
+-	rc = tee_device_register(optee->teedev);
+-	if (rc)
+-		goto err_unreg_supp_teedev;
+-
+-	rc = tee_device_register(optee->supp_teedev);
+-	if (rc)
+-		goto err_unreg_supp_teedev;
+-
+ 	rc = rhashtable_init(&optee->ffa.global_ids, &shm_rhash_params);
+ 	if (rc)
+ 		goto err_unreg_supp_teedev;
+@@ -1159,6 +1151,14 @@ static int optee_ffa_probe(struct ffa_device *ffa_dev)
+ 	if (optee_ffa_protmem_pool_init(optee, sec_caps))
+ 		pr_info("Protected memory service not available\n");
+ 
++	rc = tee_device_register(optee->teedev);
++	if (rc)
++		goto err_unregister_devices;
++
++	rc = tee_device_register(optee->supp_teedev);
++	if (rc)
++		goto err_unregister_devices;
++
+ 	rc = optee_enumerate_devices(PTA_CMD_GET_DEVICES);
+ 	if (rc)
+ 		goto err_unregister_devices;
+diff --git a/drivers/tee/optee/smc_abi.c b/drivers/tee/optee/smc_abi.c
+index b8a2bdac3208..51624443359b 100644
+--- a/drivers/tee/optee/smc_abi.c
++++ b/drivers/tee/optee/smc_abi.c
+@@ -1849,14 +1849,6 @@ static int optee_probe(struct platform_device *pdev)
+ 
+ 	optee_set_dev_group(optee);
+ 
+-	rc = tee_device_register(optee->teedev);
+-	if (rc)
+-		goto err_unreg_supp_teedev;
+-
+-	rc = tee_device_register(optee->supp_teedev);
+-	if (rc)
+-		goto err_unreg_supp_teedev;
+-
+ 	optee_cq_init(&optee->call_queue, thread_count);
+ 	optee_supp_init(&optee->supp);
+ 	optee->smc.memremaped_shm = memremaped_shm;
+@@ -1916,6 +1908,14 @@ static int optee_probe(struct platform_device *pdev)
+ 	if (optee->smc.sec_caps & OPTEE_SMC_SEC_CAP_DYNAMIC_SHM)
+ 		pr_info("dynamic shared memory is enabled\n");
+ 
++	rc = tee_device_register(optee->teedev);
++	if (rc)
++		goto err_disable_shm_cache;
++
++	rc = tee_device_register(optee->supp_teedev);
++	if (rc)
++		goto err_disable_shm_cache;
++
+ 	rc = optee_enumerate_devices(PTA_CMD_GET_DEVICES);
+ 	if (rc)
+ 		goto err_disable_shm_cache;
+@@ -1942,7 +1942,6 @@ static int optee_probe(struct platform_device *pdev)
+ 	optee_shm_arg_cache_uninit(optee);
+ 	optee_supp_uninit(&optee->supp);
+ 	mutex_destroy(&optee->call_queue.mutex);
+-err_unreg_supp_teedev:
+ 	tee_device_unregister(optee->supp_teedev);
+ err_unreg_teedev:
+ 	tee_device_unregister(optee->teedev);
 -- 
-heikki
+2.45.2
+
 
