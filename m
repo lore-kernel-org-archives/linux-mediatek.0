@@ -4,77 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 09AAEC982D2
-	for <linux-mediatek@archiver.kernel.org>; Fri, 18 Sep 2026 00:37:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F2EE7C982D0
+	for <linux-mediatek@archiver.kernel.org>; Fri, 18 Sep 2026 01:21:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
+	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=1gwNE+OBSnQyLjeDU8H4XDoiVsytL2D9V4t/U5WKHu8=; b=uHlyDnJdPyvh5/acZU2FugdhSU
-	LogfIU4vPVWJow55mIJvnpUnu3ZOqCnQZ89WN579/NkUKTdSIZjGDlxmXseWZSBER9LZ35n6y9QGD
-	IN+8rbryVFqJBtSDH6Wpiyuu1qIYWe/i7FHhULxam+r/6ZcIpx8Ds9yrvoNRgW0c0FhlV143f247c
-	pktUGa+ktQMS7+5Na+VU0N1FU/WgYqXJkEmcGyrbS8CW3QT9q/N2Nk8epBFNhUQsFu2fiLbeVJ8Tk
-	SfX5mCY9eDkwMqUfPRZOVhW17e5a5Txs1vnnPEFutsTvvIsBRIGJt39mhljBmPSoZAqediEThNXOB
-	Awe260Lw==;
+	bh=69bnCVQM5n3sV/AN5VtraQEwkW0YanBMdQC8pbKcydM=; b=N3i2h6kBoRE297s70O9wb5XfBA
+	gV77gz2sXWVZGSzFCPmXacE/0UPdv5dV0FG5X5/BPtmIy15WVY2PcX1ZQvjYU0/ygVN9WyGBHKYY5
+	VMjs/i4Y/T0trSlvbc9R41+P8fjAfJKNToazd33ydPf3VOS05WLTXB1UqzN27MC+Qm70zuePNbaho
+	7fPppsKR9hOEtqqAvjrjybxweUkhtk/FkH6mVel1ES7fCqz00S/4IWLpVs9mt3hNBdYE1XIz1URJv
+	w/IDzJaEK4RetwlpHjZLjwwUitUkonLkHI9RwPJA53e/i6R4vDyDi5KePk6uSozxtzfEQWvL9snuD
+	uGiE1+oQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x7Mbe-0000000D2yZ-3woU;
-	Fri, 18 Sep 2026 00:37:34 +0000
-Received: from [216.200.240.185] (helo=mailgw02.mediatek.com)
+	id 1x7NI3-0000000D8Il-1u3i;
+	Fri, 18 Sep 2026 01:21:23 +0000
+Received: from xs1.mindbit.ro ([80.86.107.70] helo=mail.mindbit.ro)
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x7Mbc-0000000D2xK-2WHL;
-	Fri, 18 Sep 2026 00:37:33 +0000
-X-UUID: 1e47e1dcb2f911f1acbe4559397dec65-20260917
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=1gwNE+OBSnQyLjeDU8H4XDoiVsytL2D9V4t/U5WKHu8=;
-	b=O0rVwSh5F81ot508m8Q9fWpIAAVAoohpA7b5k1r4x/V/sS7Mi6IUlDU06ZKrF9cD39KJUy/d3PfqIa2E5oFmP/v+QqnH9PN5dvAx3zSn3ZIewn3JkIrdF45Gn3KmlI8F9hJ+TxABrcF2IpmJiO9RI9EQyP7jluNyKwRmTd9v9DA=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.19,REQID:2f5f3de0-7277-4169-b533-789f4b46c75a,IP:0,U
-	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
-	:release,TS:-5
-X-CID-META: VersionHash:7db8b62,CLOUDID:37a17428-9ebf-4787-bb42-3cd26eee85aa,B
-	ulkID:nil,BulkQuantity:0,SF:81|82|83|102|836|865|888|898,TC:-5,Content:0|1
-	5|50|99,EDM:-3,IP:nil,URL:99|1,File:130,RT:0,Bulk:nil,QS:nil,BEC:-1,COL:0,
-	OSI:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 2,SSN|SDN
-X-CID-BAS: 2,SSN|SDN,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULS
-X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: 1e47e1dcb2f911f1acbe4559397dec65-20260917
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
-	(envelope-from <justin.yeh@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 822324489; Thu, 17 Sep 2026 17:37:24 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs13n2.mediatek.inc (172.21.101.108) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.29; Fri, 18 Sep 2026 08:37:22 +0800
-Received: from mtksitap99.mediatek.inc (10.233.130.16) by
- mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.2562.29 via Frontend Transport; Fri, 18 Sep 2026 08:37:22 +0800
-From: Justin Yeh <justin.yeh@mediatek.com>
-To: Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>
-CC: <Project_Global_Chrome_Upstream_Group@mediatek.com>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
-	<linux-mediatek@lists.infradead.org>
-Subject: Re: [PATCH 0/2] Allow mtk-regulator-coupler to be built as a module
-Date: Fri, 18 Sep 2026 08:37:22 +0800
-Message-ID: <20260918003722.2764284-1-justin.yeh@mediatek.com>
-X-Mailer: git-send-email 2.45.2
-In-Reply-To: <20260903062056.1024263-1-justin.yeh@mediatek.com>
-References: <20260903062056.1024263-1-justin.yeh@mediatek.com>
+	id 1x7NI0-0000000D8Gz-1BEf;
+	Fri, 18 Sep 2026 01:21:21 +0000
+Received: from dog.kanata.rendec.net (pool-174-112-193-187.cpe.net.cable.rogers.com [174.112.193.187])
+	by mail.mindbit.ro (Postfix) with ESMTPSA id 76870D0766;
+	Fri, 18 Sep 2026 04:21:14 +0300 (EEST)
+DKIM-Filter: OpenDKIM Filter v2.11.0 mail.mindbit.ro 76870D0766
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=rendec.net;
+	s=default; t=1789694477;
+	bh=69bnCVQM5n3sV/AN5VtraQEwkW0YanBMdQC8pbKcydM=;
+	h=Subject:From:To:Cc:Date:In-Reply-To:References:From;
+	b=ax2GgqebXNR2R2lP+6/CijC3VqGvyDb08ILb0eZ6Ema1QmO+nzkiVt/qRo7PjqTGp
+	 omF5ojiR+tFY2fkhlBSOfp1uhXyFE5u1MkIs/42ovtNJ+0FF/txHSbBXiE5YlIqqXz
+	 7ZfxK8+GnM/1UaO/A/wiJz4RukrOPn8ziE+7vEOamYCHnXcUjxPRGUakAtZoryriXd
+	 hzMZ+JCt9n9yC1f1spnVcwlt9shjLNaDYXtF4nrnK/oHV7gCM1A9PdtfQYADHAkmYd
+	 vd+8dsupfkAL9T2QqNdP05m/gXaJ7VZc2W+030SRS9tXyKQrP6cko254BVWIod5kye
+	 4hJvIM4Oow2Kw==
+Message-ID: <2b23ecf7ae8baf0266c3701060858abec901a71c.camel@rendec.net>
+Subject: Re: [PATCH v2 6/6] media: mtk-vpu: rename IPI_MAX to IPI_VPU_MAX
+From: Radu Rendec <radu@rendec.net>
+To: "GUO Ren (XuanTie)" <guoren@kernel.org>, Paul Walmsley <pjw@kernel.org>,
+  Palmer Dabbelt <palmer@dabbelt.com>, Albert Ou <aou@eecs.berkeley.edu>,
+ Alexandre Ghiti <alex@ghiti.fr>,  Daniel Lezcano
+ <daniel.lezcano@kernel.org>, Thomas Gleixner <tglx@kernel.org>, Anup Patel
+ <anup@brainfault.org>,  Tiffany Lin <tiffany.lin@mediatek.com>, Andrew-CT
+ Chen <andrew-ct.chen@mediatek.com>, Yunfei Dong	
+ <yunfei.dong@mediatek.com>, Minghsiu Tsai <minghsiu.tsai@mediatek.com>, 
+ Houlong Wei <houlong.wei@mediatek.com>, Mauro Carvalho Chehab
+ <mchehab@kernel.org>, Matthias Brugger	 <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno	 <angelogioacchino.delregno@collabora.com>
+Cc: linux-riscv@lists.infradead.org, linux-kernel@vger.kernel.org, 
+	linux-media@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-mediatek@lists.infradead.org, Nathan Chancellor <nathan@kernel.org>
+Date: Thu, 17 Sep 2026 21:21:12 -0400
+In-Reply-To: <20260911-ipi_max-v2-6-a77826ff189e@kernel.org>
+References: <20260911-ipi_max-v2-0-a77826ff189e@kernel.org>
+	 <20260911-ipi_max-v2-6-a77826ff189e@kernel.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+User-Agent: Evolution 3.58.3 (3.58.3-1.fc43) 
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260917_173732_643180_FB429BA1 
-X-CRM114-Status: UNSURE (   9.39  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260917_182120_500381_04614E31 
+X-CRM114-Status: GOOD (  20.22  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,18 +81,111 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Mark, Liam, Matthias, Angelo,
+On Fri, 2026-09-11 at 03:27 +0000, GUO Ren (XuanTie) wrote:
+> The last enumerator of this driver's firmware IPI id list is a bound
+> for the VPU mailbox protocol, not a generic host IPI limit. Follow the
+> existing naming in this header: IPI_VPU_INIT already carries a VPU
+> prefix, so the terminator should match.
+>=20
+> The same convention is used by the SCP IPI enum, which ends with a
+> prefixed SCP_IPI_MAX rather than a bare IPI_MAX.
+>=20
+> Rename IPI_MAX to IPI_VPU_MAX and update the descriptor table bounds
+> and range checks. No functional change.
+>=20
+> Link: https://lore.kernel.org/linux-riscv/20260908222349.GA2324870@ax162
+> Cc: Nathan Chancellor <nathan@kernel.org>
+> Signed-off-by: GUO Ren (XuanTie) <guoren@kernel.org>
+> ---
+> =C2=A0drivers/media/platform/mediatek/vpu/mtk_vpu.c | 12 ++++++------
+> =C2=A0drivers/media/platform/mediatek/vpu/mtk_vpu.h |=C2=A0 4 ++--
+> =C2=A02 files changed, 8 insertions(+), 8 deletions(-)
+>=20
+> diff --git a/drivers/media/platform/mediatek/vpu/mtk_vpu.c b/drivers/medi=
+a/platform/mediatek/vpu/mtk_vpu.c
+> index 8d8319f0cd22..b3e9f8c4ab7a 100644
+> --- a/drivers/media/platform/mediatek/vpu/mtk_vpu.c
+> +++ b/drivers/media/platform/mediatek/vpu/mtk_vpu.c
+> @@ -211,7 +211,7 @@ struct mtk_vpu {
+> =C2=A0	struct vpu_regs reg;
+> =C2=A0	struct vpu_run run;
+> =C2=A0	struct vpu_wdt wdt;
+> -	struct vpu_ipi_desc ipi_desc[IPI_MAX];
+> +	struct vpu_ipi_desc ipi_desc[IPI_VPU_MAX];
+> =C2=A0	struct share_obj __iomem *recv_buf;
+> =C2=A0	struct share_obj __iomem *send_buf;
+> =C2=A0	struct device *dev;
+> @@ -221,7 +221,7 @@ struct mtk_vpu {
+> =C2=A0	struct mutex vpu_mutex; /* for protecting vpu data data structure =
+*/
+> =C2=A0	u32 wdt_refcnt;
+> =C2=A0	wait_queue_head_t ack_wq;
+> -	bool ipi_id_ack[IPI_MAX];
+> +	bool ipi_id_ack[IPI_VPU_MAX];
+> =C2=A0};
+> =C2=A0
+> =C2=A0static inline void vpu_cfg_writel(struct mtk_vpu *vpu, u32 val, u32=
+ offset)
+> @@ -296,7 +296,7 @@ int vpu_ipi_register(struct platform_device *pdev,
+> =C2=A0		return -EPROBE_DEFER;
+> =C2=A0	}
+> =C2=A0
+> -	if (id < IPI_MAX && handler) {
+> +	if (id < IPI_VPU_MAX && handler) {
+> =C2=A0		ipi_desc =3D vpu->ipi_desc;
+> =C2=A0		ipi_desc[id].name =3D name;
+> =C2=A0		ipi_desc[id].handler =3D handler;
+> @@ -319,7 +319,7 @@ int vpu_ipi_send(struct platform_device *pdev,
+> =C2=A0	unsigned long timeout;
+> =C2=A0	int ret =3D 0;
+> =C2=A0
+> -	if (id <=3D IPI_VPU_INIT || id >=3D IPI_MAX ||
+> +	if (id <=3D IPI_VPU_INIT || id >=3D IPI_VPU_MAX ||
+> =C2=A0	=C2=A0=C2=A0=C2=A0 len > sizeof(send_obj->share_buf) || !buf) {
+> =C2=A0		dev_err(vpu->dev, "failed to send ipi message\n");
+> =C2=A0		return -EINVAL;
+> @@ -748,7 +748,7 @@ static void vpu_ipi_handler(struct mtk_vpu *vpu)
+> =C2=A0	s32 id =3D readl(&rcv_obj->id);
+> =C2=A0
+> =C2=A0	memcpy_fromio(data, rcv_obj->share_buf, sizeof(data));
+> -	if (id < IPI_MAX && ipi_desc[id].handler) {
+> +	if (id < IPI_VPU_MAX && ipi_desc[id].handler) {
+> =C2=A0		ipi_desc[id].handler(data, readl(&rcv_obj->len),
+> =C2=A0				=C2=A0=C2=A0=C2=A0=C2=A0 ipi_desc[id].priv);
+> =C2=A0		if (id > IPI_VPU_INIT) {
+> @@ -934,7 +934,7 @@ static int mtk_vpu_probe(struct platform_device *pdev=
+)
+> =C2=A0#ifdef CONFIG_DEBUG_FS
+> =C2=A0	debugfs_remove(vpu_debugfs);
+> =C2=A0#endif
+> -	memset(vpu->ipi_desc, 0, sizeof(struct vpu_ipi_desc) * IPI_MAX);
+> +	memset(vpu->ipi_desc, 0, sizeof(struct vpu_ipi_desc) * IPI_VPU_MAX);
+> =C2=A0vpu_mutex_destroy:
+> =C2=A0	mutex_destroy(&vpu->vpu_mutex);
+> =C2=A0disable_vpu_clk:
+> diff --git a/drivers/media/platform/mediatek/vpu/mtk_vpu.h b/drivers/medi=
+a/platform/mediatek/vpu/mtk_vpu.h
+> index 3951547e9ec5..44ab631ec904 100644
+> --- a/drivers/media/platform/mediatek/vpu/mtk_vpu.h
+> +++ b/drivers/media/platform/mediatek/vpu/mtk_vpu.h
+> @@ -49,7 +49,7 @@ typedef void (*ipi_handler_t) (void *data,
+> =C2=A0 *			 handle VP8 video encoder job,, and vice versa.
+> =C2=A0 * @IPI_MDP:		 The interrupt from vpu is to notify kernel to
+> =C2=A0 *			 handle MDP (Media Data Path) job, and vice versa.
+> - * @IPI_MAX:		 The maximum IPI number
+> + * @IPI_VPU_MAX:	 The maximum VPU IPI number
+> =C2=A0 */
+> =C2=A0
+> =C2=A0enum ipi_id {
+> @@ -60,7 +60,7 @@ enum ipi_id {
+> =C2=A0	IPI_VENC_H264,
+> =C2=A0	IPI_VENC_VP8,
+> =C2=A0	IPI_MDP,
+> -	IPI_MAX,
+> +	IPI_VPU_MAX,
+> =C2=A0};
+> =C2=A0
+> =C2=A0/**
 
-Gentle ping on this series, sent two weeks ago:
-https://lore.kernel.org/all/20260903062056.1024263-1-justin.yeh@mediatek.com/
-
-Is it OK to pick up as it is, or is there something you would like me to
-change first?
-
-One note on the routing: patch 2/2 (soc/mediatek Kconfig) depends on the
-exports added by patch 1/2 (regulator core), so the two have to land in
-that order - ideally via the same tree.
-
-Thanks,
-Justin
+Reviewed-by: Radu Rendec <radu@rendec.net>
 
