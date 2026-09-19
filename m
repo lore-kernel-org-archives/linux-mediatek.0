@@ -4,72 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4DD09C982D8
-	for <linux-mediatek@archiver.kernel.org>; Sat, 19 Sep 2026 06:52:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 84DCBC982DD
+	for <linux-mediatek@archiver.kernel.org>; Sat, 19 Sep 2026 06:52:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=DhDYniwbZK/cLIuF0+kBZ9daKL8rPuxnkEwAZ8qtlXY=; b=mNyp5JBQKio9/OErWfzNysrVBN
-	EpbfORdwTG4vzkn6Mu0AtePELMbMrnTp2uJmkdnGMqmbKv7e1s0HJ9WirJMCnXikwy3fvuuoRtF9V
-	lUADVDK7ep/EbZ2gbwCDrc+Bbe6Js3SGPzVNE23BG2eW3ddLWqnnhXIyjuOK4KBubwrkr3wgg57T5
-	GNFQx+eRBQ8n09QQvAAE6jKQ5aMlkNoKCl3Xbu90vNB7isk7diS1H7jfm/H7bIVu/Mfob2llOpWeo
-	vlTiQFTfv36VvH5jI3w1YWs68Ifu/67QEzQ/qt5zyw8JwsXaJJ7EmgCnj1YYXvgroIOuUx3H/QxO1
-	jbkc24YA==;
+	bh=K14gEIiwRJ26lA+Mkn6qqcGlhkPWo02FPF9k8+47c18=; b=rRGfc9h+HzlgRwBGKBRmG/y0R1
+	ikGK7IRl4MAXiGZnI5CWfwilkrbNi9vLmxWNGkNnzypQZWOOhJN4QvR57yS1KZCjDr6a86icXp6CO
+	jJgktKZYeLQTaR8piMO28sY74JHAneaLLYzh+gwAokRf1CdSksmzc2gzFheHXkHm7DufVN5PUqgRT
+	BwlfOEhpXT/t5Pf9Evjlbgo6J1aBdmWonRpVCP38ogtcc86Y0djHwxFkANnI/xVSgqiJsife0fd1l
+	HQetydzF188IfTioO2xYu6c3/+3jOywNYv4iAWEjMxJiofoKFI939ECBcEEPDx48uBlwgtLarrXRV
+	ltcC+Stw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x7ovt-0000000G07I-0o2B;
-	Sat, 19 Sep 2026 06:52:21 +0000
-Received: from mail-pf1-x431.google.com ([2607:f8b0:4864:20::431])
+	id 1x7ovv-0000000G08R-1sHH;
+	Sat, 19 Sep 2026 06:52:23 +0000
+Received: from mail-pz2-x0f.google.com ([2607:f8b0:4864:3b::f])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x7ovq-0000000G065-3tyL
+	id 1x7ovr-0000000G06a-3ztT
 	for linux-mediatek@lists.infradead.org;
-	Sat, 19 Sep 2026 06:52:20 +0000
-Received: by mail-pf1-x431.google.com with SMTP id d2e1a72fcca58-86ec25cf7ecso2379840b3a.1
-        for <linux-mediatek@lists.infradead.org>; Fri, 18 Sep 2026 23:52:18 -0700 (PDT)
+	Sat, 19 Sep 2026 06:52:21 +0000
+Received: by mail-pz2-x0f.google.com with SMTP id d2e1a72fcca58-85469b355ffso933646b3a.1
+        for <linux-mediatek@lists.infradead.org>; Fri, 18 Sep 2026 23:52:19 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1789800738; x=1790405538; darn=lists.infradead.org;
+        d=gmail.com; s=20251104; t=1789800739; x=1790405539; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to:content-type;
-        bh=DhDYniwbZK/cLIuF0+kBZ9daKL8rPuxnkEwAZ8qtlXY=;
-        b=baxxgRv0vUDWHaPN0HSnIBaRG0EuUixM8SPAdcZgvqTGhgpQkErtNXZwxUHKjcr9kE
-         rRtOLqcUsCbs+10dZKCy8fL8iQZ2UgWhbjAFziPf7zRDFfdd2/AOHntWWqbLRwgYTLPt
-         jYGRb4Fo2eoevNIQWHyVaYpubWFPzbiiUC/e0QYKVDXcz9+7kR6AR/UsmueTT2XgT6rG
-         z35igFU+cxk1ud35FEpoh36m4q738UpQSA7a260gKJTdMpQooB2Tfj/x3L9IK4LV/0jE
-         JnR6iuJb5LlYmgzuLQj7BqBYrsEZ5ktF73w/iNAfcUIsJQFPyjWSkQbm12NgaXIAOoSf
-         U3ag==
+        bh=K14gEIiwRJ26lA+Mkn6qqcGlhkPWo02FPF9k8+47c18=;
+        b=CDl5udMwLzdgeJG2Y81JbhHhCBBaAfoamPXitI5IF/hS7safiQ+J8kNqUyiEPAf/GC
+         kxeddRurAglI5TxAB4sQGYn2eDiEj4/sO4kxiSMORrIJb7wc3cxufnwX2vHurmrv5k1j
+         oRIgVRZ+WXsiMIlmFRlcwOHrW6GNuONLfiOuomkeNlWBK8PSDhMDoWgxMSkyXgYstjRU
+         0RMKGIg1IiiuWceBPnJXvdluXr5CjhMGdbzoZVRTXwBXnUtDde7MXvp5G04rIal5JkWC
+         DL4R8hLUQFRyc74xFy2cwliRyTPbCeNd1xXYSJ93/lk1DGC8/IqRQnfF8YyM8BP8KWIi
+         WQQw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1789800738; x=1790405538;
+        d=1e100.net; s=20260707; t=1789800739; x=1790405539;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
          :to:cc:subject:date:message-id:reply-to:content-type;
-        bh=DhDYniwbZK/cLIuF0+kBZ9daKL8rPuxnkEwAZ8qtlXY=;
-        b=rqF4vqOTuhYMlXVfVEFceP1nyMv5yLFheW34nKHuWuptOBM1YYO7a5gmsnuu/iajcX
-         jCxbJVMshoL9mk6ZI6bsoCPxH5lzfmCKlimXjjXuei5uEsA4r2/ZgCFkFxvKEvcmmZ13
-         gcrfSlkEBbqs8QqdxKM9jpCXpFQw6FNaaCGPdt0Rf3Jg2rAcULRTbq7t6SA/yPfCuMCx
-         bZ5XoFF5dj2frhq798rhZLanO70m3izpEtfT7BB8Y8YHavowk2jElEja9v7ufHdGMFLC
-         nbL6LEkArjpIa7jVtxhG/RlZ1PvQHRnout1pcleg4PXlCp2yOKoR5MPaWdm95tTW9rNU
-         jZSg==
-X-Forwarded-Encrypted: i=1; AKwUvByj/hb6CrQo9uNnVt7aZY0uvv8ovSSIbJHwXjmYluRL4WV84PH5ZgM/q3Y02rw7wILc4u3UTyChweqCHWdPRQ==@lists.infradead.org
-X-Gm-Message-State: AFuF++l2moN4Hgku0iiDu1On6D2QtW47xtgWfbTE7IZj8GGStPmHyS0e
-	p8qMechdCzDUr5yStNODO6djUGphU+KXdiDY0LOlh0y9tQBOF33wXQkD
-X-Gm-Gg: AYBFou074mn3ccodyuoWOxXe4CfU2dF6oDg+yhvcK565fWZ+pKSj/HwHFm+Lo3QmTtX
-	HuHpg2REv6rLET41v4JU93gqQPgAgbjPHxCTNXLL5bBQ4U8gPcRpHoTgLvQ0tLCSbV+40oe8CxT
-	h/myKA64J6exvUcNju+WbNw6mUxroop4sUyUWYz4vDCnXLoCQJJEIB47DBrl34lGGeVYNdkiTdk
-	G6z2JnYTnCODbCaQSbfsNqRkd6OSZZ+KLQi6/5Rtpq3b6WgrVZAC2zJQiTZn8jdZJXduATOCpbp
-	KILvBjtTvC+K8gzoEbpnFq7nEhED4iavWqOcLH890SG819sD09pVdFewjLoEon5fu8zuFKqcGH0
-	QR1gc23v4eBPGJc1kzyxuyIMgPQgfqaESGI0jmoOOlJKIDxV54ymhdMg7b4TfCLfIYTrjNZW2W3
-	AuYj9ep7IEe7lQxiLbDNAjJwX1r8C1SHd0EswbO9dIAJN3tpqLhjgrbEpeWN3nDRprG5xEGrBiw
-	aURJA1Mqdp00tG1/EEzJkZXZ/scAxFSsA==
-X-Received: by 2002:a05:6a00:3905:b0:874:72b6:7da4 with SMTP id d2e1a72fcca58-87472b680f6mr7159549b3a.31.1789800737620;
-        Fri, 18 Sep 2026 23:52:17 -0700 (PDT)
+        bh=K14gEIiwRJ26lA+Mkn6qqcGlhkPWo02FPF9k8+47c18=;
+        b=Ee7qMst+17p5yTnL7MDy5fgI9Oq1V2NXFXE7EhNwsDN+0jGJc4ON69xVGXTxVlMvfe
+         W5xcmQzhkfRRd51IXrB3uPFQ0nbc9qV8T2c8jO8YzoMT6EMahxwqv0SwT7+C0voi52vF
+         EjdOgWZrQtxWWlcnIZ5AGhycAsB47rUhuOez9uTuomQSd6AftrBNCtMqceRBowKXJNzT
+         TdVJaM53aqrA7VY+a1chBA+3Zc/u47QxN9LdPLadwXpzJxFJDzzJWd3GxfxP5dnttZ8e
+         20w/19LU5uz+TWqVeU30d3cOL8Y/oXsk8/gYV37PZruw2NCXppq9cfpJHWB8rq9rF3h6
+         +ECA==
+X-Forwarded-Encrypted: i=1; AKwUvBxrCwSTU785h/DouiaTKTYvb+smnqWVM2yowxXCCqsMhmjWTPaiVBEwpGUhdSQJc41H6le597b8TySoXhESnA==@lists.infradead.org
+X-Gm-Message-State: AFuF++mUSyackPcqO8KJpk9aRsg3nGsDDCojjg5PHF23OKzwz7COF4hi
+	y9aMxO6Y2gXql+s9DKMMdKkRhs3mhVgaBnHieNf0hkvZOcPk4upGXARd
+X-Gm-Gg: AYBFou3jb76jSg9B46JcQOuBww7Gr9MEVaLOOZFlPrELozKOA6oLBKruMasFGy6Fx6u
+	zBktnnjLQDPHNrUP/0TfJ52Zs983+EVnyI1gUvDoNA6FiRzEyyw1C21eoOP73Qv7Uu5MRTT0Ohz
+	W4wVW2t60MO+hzYndEN2jU75oO+ITtb2Lx2gn9M3+qZjeMVev24fjmAqTCp9z+YY/WdZh6Cwq8n
+	DaaGDXpCm5+3WXlOyqOd7eE14mg3/EFM2JA4SNnvsvC/qBOFyS7Z1xsGcOsMB0EUN2eQhW60gKR
+	orGPOBqUU63z18O7xzXwuLND5GCQ18j0Xsa4cjP9fMVUukme2wSxUJuUVKRoNYpWebtg7EvGZbz
+	QUQuarMpk31KI8QIrxxL7aFiLNOJmNihn7FmCU9XZlcQkG1BAmcCAXWg77YuaD1HTqJ36EDobX3
+	SVcoi5stUGWkqjwR+yp7bdOiUCk/2BPoieJ8vpbwBhhtMz80a/iIk8Lb1O5J2+mhzCfSUNqp7FH
+	w3rM2G7rDMmZYKOggqFrkdQOBOvsKqHfw==
+X-Received: by 2002:a05:6a00:2e11:b0:878:34d7:6995 with SMTP id d2e1a72fcca58-87834d76d70mr625344b3a.37.1789800738978;
+        Fri, 18 Sep 2026 23:52:18 -0700 (PDT)
 Received: from abs.sf.dndws.com ([50.35.86.68])
-        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-877a94f5464sm678077b3a.27.2026.09.18.23.52.16
+        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-877a94f5464sm678077b3a.27.2026.09.18.23.52.18
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 18 Sep 2026 23:52:17 -0700 (PDT)
+        Fri, 18 Sep 2026 23:52:18 -0700 (PDT)
 From: Tao <gongtao0607@gmail.com>
 To: netdev@vger.kernel.org
 Cc: Tao <gongtao0607@gmail.com>,
@@ -83,20 +83,23 @@ Cc: Tao <gongtao0607@gmail.com>,
 	Paolo Abeni <pabeni@redhat.com>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Florian Fainelli <florian.fainelli@broadcom.com>,
+	=?UTF-8?q?Ar=C4=B1n=C3=A7=20=C3=9CNAL?= <arinc.unal@arinc9.com>,
+	Lorenzo Bianconi <lorenzo@kernel.org>,
 	linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
-Subject: [PATCH net 1/2] net: dsa: mt7530: use consistent egress tag for trapped link-local frames
-Date: Sat, 19 Sep 2026 06:52:11 +0000
-Message-ID: <20260919065214.31604-2-gongtao0607@gmail.com>
+Subject: [PATCH net 2/2] net: dsa: mt7530: trap frames to conduit in MFC on EN7581 and AN7583
+Date: Sat, 19 Sep 2026 06:52:12 +0000
+Message-ID: <20260919065214.31604-3-gongtao0607@gmail.com>
 X-Mailer: git-send-email 2.55.0
 In-Reply-To: <20260919065214.31604-1-gongtao0607@gmail.com>
 References: <20260919065214.31604-1-gongtao0607@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260918_235218_965616_1E8C98F8 
-X-CRM114-Status: GOOD (  14.87  )
+X-CRM114-CacheID: sfid-20260918_235220_017745_B7F00B17 
+X-CRM114-Status: GOOD (  12.39  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -111,92 +114,41 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-commit 3ac85bcfd404 ("net: dsa: mt7530: preserve VLAN tags on trapped
-link-local frames") changed the egress VLAN tag attribute for trapped
-link-local frames in BPC, RGAC1, and RGAC2 from MT7530_VLAN_EG_UNTAGGED
-to MT7530_VLAN_EG_DISABLED, with the intention of passing frames
-through without VLAN tag modification.
+On MT7531 and MT7988 switches, trapped frames forwarding is directed to
+CPU ports specified in the MT7531_CFC (0x04) CPU_PMAP bitmap. When support
+for EN7581 was introduced, it was assumed to follow the MT7531 model.
 
-However, in MT7530 hardware, MT7530_VLAN_EG_DISABLED disables the
-protocol-level egress tagging override, causing trapped frames to
-fall back to the egress port's active VLAN table (VAWD2) rule. When a
-bridge with VLAN filtering is active, the CPU port is configured with
-stack mode, causing the switch to insert a VLAN tag into incoming
-untagged BPDUs (01:80:C2:00:00:00) and other link-local frames before
-delivering them to the CPU conduit.
+However, on Airoha EN7581 and AN7583 switch IP, setting MT7531_CFC alone
+is not sufficient for trapped control frames (such as STP BPDUs) to exit
+towards the CPU port. The switch forwarding hardware also requires the
+MT7530_CPU_EN bit and MT7530_CPU_PORT field to be enabled in MT753X_MFC
+(0x10). Without this, trapped frames are dropped by the switch forwarding
+logic and never reach the CPU conduit.
 
-Because BPDUs arrive at the CPU with a VLAN tag (EtherType 0x8100
-at offset 12 instead of 802.3 length <= 1500), userspace STP daemons
-(such as ustpd) and the kernel bridge drop or ignore them, breaking
-STP convergence.
+Include ID_EN7581 and ID_AN7583 in mt753x_conduit_state_change() to set
+MT7530_CPU_EN and MT7530_CPU_PORT in MT753X_MFC when the conduit becomes
+operational, matching the handling for MT7530, MT7621, and EN7528.
 
-Use MT7530_VLAN_EG_CONSISTENT instead. This instructs the hardware to
-keep egress tagging consistent with the ingress wire format: frames
-received untagged on the wire remain untagged when forwarded to the
-CPU, while VLAN-tagged frames preserve their original VLAN tag.
-
-Fixes: 3ac85bcfd404 ("net: dsa: mt7530: preserve VLAN tags on trapped link-local frames")
+Fixes: 2b0229f67932 ("net: dsa: mt7530: Add EN7581 support")
 Signed-off-by: Tao <gongtao0607@gmail.com>
 ---
- drivers/net/dsa/mt7530.c | 24 ++++++++++++------------
- 1 file changed, 12 insertions(+), 12 deletions(-)
+ drivers/net/dsa/mt7530.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
 diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
-index 14692497e1a6..863f2079833f 100644
+index 863f2079833f..9693a55f553e 100644
 --- a/drivers/net/dsa/mt7530.c
 +++ b/drivers/net/dsa/mt7530.c
-@@ -1245,39 +1245,39 @@ static void
- mt753x_trap_frames(struct mt7530_priv *priv)
- {
- 	/* Trap 802.1X PAE frames and BPDUs to the CPU port(s) and egress
--	 * them with the EG_TAG attribute set to disabled (system default)
--	 * so that any VLAN tags in the frame are not modified by the
--	 * switch egress VLAN tag processing. This preserves VLAN tags
--	 * for reception on VLAN sub-interfaces.
-+	 * them with the EG_TAG attribute set to consistent so that any
-+	 * VLAN tags in the frame are not modified by the switch egress
-+	 * VLAN tag processing. This preserves VLAN tags for reception
-+	 * on VLAN sub-interfaces.
+@@ -3309,7 +3309,8 @@ mt753x_conduit_state_change(struct dsa_switch *ds,
+ 	 * interface is up.
  	 */
- 	regmap_update_bits(priv->regmap, MT753X_BPC,
- 			   PAE_BPDU_FR | PAE_EG_TAG_MASK | PAE_PORT_FW_MASK |
- 				   BPDU_EG_TAG_MASK | BPDU_PORT_FW_MASK,
--			   PAE_BPDU_FR | PAE_EG_TAG(MT7530_VLAN_EG_DISABLED) |
-+			   PAE_BPDU_FR | PAE_EG_TAG(MT7530_VLAN_EG_CONSISTENT) |
- 				   PAE_PORT_FW(TO_CPU_FW_CPU_ONLY) |
--				   BPDU_EG_TAG(MT7530_VLAN_EG_DISABLED) |
-+				   BPDU_EG_TAG(MT7530_VLAN_EG_CONSISTENT) |
- 				   TO_CPU_FW_CPU_ONLY);
+ 	if (priv->id != ID_MT7530 && priv->id != ID_MT7621 &&
+-	    priv->id != ID_EN7528)
++	    priv->id != ID_EN7528 &&
++	    priv->id != ID_EN7581 && priv->id != ID_AN7583)
+ 		return;
  
- 	/* Trap frames with :01 and :02 MAC DAs to the CPU port(s) and
--	 * egress them with EG_TAG disabled.
-+	 * egress them with EG_TAG consistent.
- 	 */
- 	regmap_update_bits(priv->regmap, MT753X_RGAC1,
- 			   R02_BPDU_FR | R02_EG_TAG_MASK | R02_PORT_FW_MASK |
- 				   R01_BPDU_FR | R01_EG_TAG_MASK | R01_PORT_FW_MASK,
--			   R02_BPDU_FR | R02_EG_TAG(MT7530_VLAN_EG_DISABLED) |
-+			   R02_BPDU_FR | R02_EG_TAG(MT7530_VLAN_EG_CONSISTENT) |
- 				   R02_PORT_FW(TO_CPU_FW_CPU_ONLY) | R01_BPDU_FR |
--				   R01_EG_TAG(MT7530_VLAN_EG_DISABLED) |
-+				   R01_EG_TAG(MT7530_VLAN_EG_CONSISTENT) |
- 				   TO_CPU_FW_CPU_ONLY);
- 
- 	/* Trap frames with :03 and :0E MAC DAs to the CPU port(s) and
--	 * egress them with EG_TAG disabled.
-+	 * egress them with EG_TAG consistent.
- 	 */
- 	regmap_update_bits(priv->regmap, MT753X_RGAC2,
- 			   R0E_BPDU_FR | R0E_EG_TAG_MASK | R0E_PORT_FW_MASK |
- 				   R03_BPDU_FR | R03_EG_TAG_MASK | R03_PORT_FW_MASK,
--			   R0E_BPDU_FR | R0E_EG_TAG(MT7530_VLAN_EG_DISABLED) |
-+			   R0E_BPDU_FR | R0E_EG_TAG(MT7530_VLAN_EG_CONSISTENT) |
- 				   R0E_PORT_FW(TO_CPU_FW_CPU_ONLY) | R03_BPDU_FR |
--				   R03_EG_TAG(MT7530_VLAN_EG_DISABLED) |
-+				   R03_EG_TAG(MT7530_VLAN_EG_CONSISTENT) |
- 				   TO_CPU_FW_CPU_ONLY);
- }
- 
+ 	mask = BIT(cpu_dp->index);
 -- 
 2.55.0
 
