@@ -4,65 +4,151 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A296EC982CC
-	for <linux-mediatek@archiver.kernel.org>; Sat, 19 Sep 2026 09:16:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 57A2DC982D7
+	for <linux-mediatek@archiver.kernel.org>; Sat, 19 Sep 2026 10:07:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:To:
-	From:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Awg67cxHl18a2D/zvjxAJGydZiXsMD2cX9Cd0uol1eY=; b=n3riRkmLIqGnmMXEA1vsdz4srE
-	6z2W3u1TVsyYF5Xl0/5pOZFGxM8xKfiTbEhBvmp15G1Xp8p3eNtq4HiCpwbE5BqFFy3PSEl6f40c5
-	PauEI7yV1Z0f8a+aWKXS56R731BuTR82SjvU3pxH1O0IsGP4+0hhhe4v2gTWw+Fo/6yQmhUAWkFHt
-	igGjTn2DHbltX8UxSZTjQLDufQ5fWxPNVvKLNc83nyTWcdZ/YWFGTEGmRj4k372nnJXVp0LWDK7Qb
-	OfbmS13/P3fbX+OSwH7l/LjrMpVgaDLbzFAuAy63W3S1J+XoVn1IRm8OdrPzXm/XAl96scmGzNcp9
-	Wi4fryFQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-Type:In-Reply-To:References:Message-ID:Date
+	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=3W5joIT9a0o/BO5o8rfJdmdWIKv/e3ulgq2vU7mruEI=; b=ZA28qfBOCF/rWH2vrPBg35qSRh
+	ZIUBo/BeIh/jgPtw5vjggJreHfli4kr/1ycZlwZcTo2EwsZe5EX/mqjglqIbKCrKSNkxKt8PANOa9
+	PFB0pyWyHoIHopY3j/DGy7to6ksGAvEQdEbHcKBWvrvG9bp037zKEb6Uw3xk/fUceU56M8/TzxGgs
+	mT+Bje7Ef7+w9RcerZZ5h45WxmlY6GlykTDgxCqO52fl25IwYlo/Lnm4Nc7oQc1to01NrMcB98s26
+	BEPYiGcGInBViQpkO/3acB6B2xNbwi7GxjJApwmJGz5CSsUNSIn9JYvVvBVlfr8E+7O1ysymIN5Et
+	WSzHKb4A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x7rBc-0000000G7Xa-3D8R;
-	Sat, 19 Sep 2026 09:16:44 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1x7ryb-0000000GA0C-2VOu;
+	Sat, 19 Sep 2026 10:07:21 +0000
+Received: from mail-norwayeastazlp170130007.outbound.protection.outlook.com ([2a01:111:f403:c20f::7] helo=OSPPR02CU001.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x7rBb-0000000G7XN-2d7s;
-	Sat, 19 Sep 2026 09:16:43 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 302396020C;
-	Sat, 19 Sep 2026 09:16:42 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id D11DF1F00898;
-	Sat, 19 Sep 2026 09:16:36 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1789809401;
-	bh=Awg67cxHl18a2D/zvjxAJGydZiXsMD2cX9Cd0uol1eY=;
-	h=From:To:In-Reply-To:References:Subject:Date;
-	b=D6bTLqfUcwgwHXNN2m8iiQmju3ywMCqfUeA8Pxi83jxqjKXay6zBuctYKlYwrKJhA
-	 Ooni5TFUpqMA9Sb5sSEvvwXHNLyzfJ+cZ5X72yu3cv7wwZESuuqCEFd+t4ibZ10NEO
-	 Bu+UJRtBBMGOFdgZKofYdY0rDHQZ/sO1WLtuE/S27fEqXuJ92zZQDexgbIbStF27kY
-	 cmolrPno6YL/0ofzxDFVaANbY87g1ti0ihrIJobilNiO8imtHCDFEBC3eR/CfOFC3h
-	 qJTCN8JcY1idmW2VjWjUN3TsfcRgkjOuRPPq3d7Ras1fjmcBqjpBEL1g0swX+iL2Eo
-	 xYouV74JzK4KA==
-From: Mark Brown <broonie@kernel.org>
-To: Liam Girdwood <lgirdwood@gmail.com>, Rob Herring <robh@kernel.org>, 
- Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, Jaroslav Kysela <perex@perex.cz>, 
- Takashi Iwai <tiwai@suse.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Philipp Zabel <p.zabel@pengutronix.de>, 
- Cyril Chao <Cyril.Chao@mediatek.com>, Darren Ye <darren.ye@mediatek.com>, 
- Rosen Penev <rosenp@gmail.com>, Daniel Golle <daniel@makrotopia.org>, 
- bui duc phuc <phucduc.bui@gmail.com>, linux-sound@vger.kernel.org, 
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
- Christian Marangi <ansuelsmth@gmail.com>
-In-Reply-To: <20260908090448.3332-1-ansuelsmth@gmail.com>
-References: <20260908090448.3332-1-ansuelsmth@gmail.com>
-Subject: Re: [PATCH v6 0/5] ASoC: Add support for Airoha AN7581
-Message-Id: <178976668737.1863384.7459518219395606759.b4-ty@b4>
-Date: Fri, 18 Sep 2026 23:24:47 +0200
+	id 1x7ryY-0000000G9zk-3f2P;
+	Sat, 19 Sep 2026 10:07:20 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=JiJJ9LGTAZkgn47pWNhj0BFLTtEAu2g+qwMoFcWXXPRYGOZOvrJOKogdGknSFWKOVk8ap64jATFweG3n3MuRIPEiBb3thDqGfaqQ1S/ZBrx33tWA+1U5s2aLTtrQJdQQHZWqfo9ObYuKwPhFwYXN+7bakFcjVr3dFqD6uF9YT3bkopf8w41TwwaQLi3Uiv8ZXYKzWKeRY8I/yummhkCe+GWR/kIlPRQtWhwp51VFJeKZOJv2xpDDEGwmRHFeQsNDFz3Bl+QfPcXqU20lYYnWYOTmoI1SPsgv8vAInFfohGBg3t/0cCM8PegGD6ytw8Nx0NOeNDTwhYA5x+UR8VAn0A==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=3W5joIT9a0o/BO5o8rfJdmdWIKv/e3ulgq2vU7mruEI=;
+ b=gyLPOjQHanjuCCFOE4ovtc2HCN5YTHLc6JxB3PD9y8WJ8CNRgiQAaUC5ruiPTJEODg38RrJuhMN0u66wTHZ1mOlYc/8/QkCg8msxInrxuw8EevUOlyJek/aFnxdpOIrsARw2I/A8XVg780E8v0q6IKi+RMB2OZURfD4IOhqZ5jsg5Qx3Q32nstqbNzytc08FVQ41qMg7GC+1bi2IjeLQBsq5H7/ecUDKYQi3Z8hcwky4clzPY3jME1nnDFMuYaxbOAjuq8iygz6WJI6Q3T7KkgM239WIXJGlLP8xyiwxwo1s4klwnZ5vIz8/GaN7OzggozYeZTjVHFrg1LB9KPRMmQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=jolla.com; dmarc=pass action=none header.from=jolla.com;
+ dkim=pass header.d=jolla.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=jolla.com;
+ s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=3W5joIT9a0o/BO5o8rfJdmdWIKv/e3ulgq2vU7mruEI=;
+ b=vEVc0kEuPWxb+/NmioZgTwGZml9DjwT15niYwnePx90w66k0upzyfA93BjOmhXH/eFkRAeQ/UQAv45NhZkQrh/4qF/9kM6kTnLTU+GgBxEnMi4WwukQr3J9Knw/L2v5+bG30N984v/elu8Cqme2PdjkvpaJ49+o0kERkhvf15KgraeczfMIQuWSFrMK3CF40BbmfQHKjm+VDAr140I2oSoqh5HtPwh/i6VZWvs/AcaqBKqGQEHJhChLgUyUS0G4EH3RH/ctbiCVXMyPqHWEYwRe6Pr0wkLY63HPNsK8pAzHZAGx0S+5yRli8CvpS93BuiOt7dPuARxVDe1+ec17SJA==
+Received: from GV1PR06MB8417.eurprd06.prod.outlook.com (2603:10a6:150:24::20)
+ by DU0PR06MB8573.eurprd06.prod.outlook.com (2603:10a6:10:358::9) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.406.16; Sat, 19 Sep
+ 2026 10:07:10 +0000
+Received: from GV1PR06MB8417.eurprd06.prod.outlook.com
+ ([fe80::4cc8:af2b:8580:2a99]) by GV1PR06MB8417.eurprd06.prod.outlook.com
+ ([fe80::4cc8:af2b:8580:2a99%4]) with mapi id 15.21.0428.009; Sat, 19 Sep 2026
+ 10:07:09 +0000
+From: Nikolai Burov <nikolai.burov@jolla.com>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	"chunkuang.hu@kernel.org" <chunkuang.hu@kernel.org>
+CC: "p.zabel@pengutronix.de" <p.zabel@pengutronix.de>,
+	"maarten.lankhorst@linux.intel.com" <maarten.lankhorst@linux.intel.com>,
+	"mripard@kernel.org" <mripard@kernel.org>, "tzimmermann@suse.de"
+	<tzimmermann@suse.de>, "airlied@gmail.com" <airlied@gmail.com>,
+	"simona@ffwll.ch" <simona@ffwll.ch>, "robh@kernel.org" <robh@kernel.org>,
+	"krzk+dt@kernel.org" <krzk+dt@kernel.org>, "conor+dt@kernel.org"
+	<conor+dt@kernel.org>, "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
+	"jitao.shi@mediatek.com" <jitao.shi@mediatek.com>,
+	"dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>,
+	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+	"devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
+	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+	"linux-arm-kernel@lists.infradead.org"
+	<linux-arm-kernel@lists.infradead.org>, "kernel@collabora.com"
+	<kernel@collabora.com>, "justin.yeh@mediatek.com" <justin.yeh@mediatek.com>,
+	"jason-jh.lin@mediatek.com" <jason-jh.lin@mediatek.com>
+Subject: Re: [PATCH v8 02/13] drm/mediatek: Implement Display Stream
+ Compression support
+Thread-Topic: [PATCH v8 02/13] drm/mediatek: Implement Display Stream
+ Compression support
+Thread-Index: AQHdRQqeK2Ypb3mcyEKOw4qUZ3ay3rbPp/cDgAAVSQCAADsIUIABEfOAgASlZ54=
+Date: Sat, 19 Sep 2026 10:07:08 +0000
+Message-ID: <GV1PR06MB8417EC0F8704D72979464C68E4862@GV1PR06MB8417.eurprd06.prod.outlook.com>
+References: <20260915084148.11385-1-angelogioacchino.delregno@collabora.com>
+ <20260915084148.11385-3-angelogioacchino.delregno@collabora.com>
+ <GV1PR06MB8417DED4A9C82CE84248F5F5E4BA2@GV1PR06MB8417.eurprd06.prod.outlook.com>
+ <14b99e0a-e08a-42af-b982-471cae869149@collabora.com>
+ <GV1PR06MB841771AF67A658BF71D4F479E4BA2@GV1PR06MB8417.eurprd06.prod.outlook.com>
+ <1b7438ba-69c3-4c3d-b79b-2879b90fabc1@collabora.com>
+In-Reply-To: <1b7438ba-69c3-4c3d-b79b-2879b90fabc1@collabora.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+msip_labels: 
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=jolla.com;
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: GV1PR06MB8417:EE_|DU0PR06MB8573:EE_
+x-ms-office365-filtering-correlation-id: 982fa652-0224-452b-8f29-08df1635c40d
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;ARA:13230040|1800799024|376014|7416014|23010399003|366016|10070799003|3023799007|10067099003|4143699003|56012099006|38070700021|18002099003|22082099003;
+x-microsoft-antispam-message-info: wCj4OT0yE2NzBWXHCD3PyNJhnGEqNXrQjwYAsDurw9pFsRovu2MRoxlaHxj5tXxAcPqDZH+eVSeoLCTvfLZ0rKOgApKwYd3CkuORjzN0cWRlTbuZSgfNiAmzW1cFCfEEUgzVLCuwqtnoOlT5BZQ26H22ykQSicOY+sPP3ZzzKiVbMq1dFRQBT8fKOyoPfYZaBu6P2v++lYFx7nJGCBif9xk3QCzsGhwtAriNWDLiURDQVyO2/9GaKg08Yf6Ahb/ZT53VUApWXjBJCA/kXEIyYSUI4XjTVzZDeSjNMs6dPBJIbapqJKyEkBfREGbskBzq/E59ECg0T+1XpzrpACE+Nsfio+LSh+VBrt4L5CSLpM6eL7r3FWgPSatA4kd5jD7iRYlfar5A7JarquMjbF1KeF14lcGDr/9CxOguReOqNXWYrTWN2RRvw2f4PNCQUZdlju/zZBbNuDdjtBFY5kVscn2t89AdG8y4w0bxuDkBq6GsmLfk70xauUlQoQVwjjhkigk3Y5EZJliPQKEyrZKn+S749Gm3ZtezEY0A4FS47ECBkT05RZ7X69shmQu+Hq9BmkASTscrhl/Ve/ozguC3JcxMPHkFD7b0AbKaHHVHtOU19uijKbDlOy3T1DfkIqoy6JkuzNQ2+1dfDfWzP/cxnhMrd/9pjC8awUeuMXFJn8A=
+x-forefront-antispam-report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:GV1PR06MB8417.eurprd06.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(1800799024)(376014)(7416014)(23010399003)(366016)(10070799003)(3023799007)(10067099003)(4143699003)(56012099006)(38070700021)(18002099003)(22082099003);DIR:OUT;SFP:1102;
+x-ms-exchange-antispam-messagedata-chunkcount: 2
+x-ms-exchange-antispam-messagedata-0: =?iso-8859-1?Q?rzdZRwmlwq9pYp35VO48AlmS51ah2rimcK2pJAD9Cb0Mlzj8Q5ReZOhn4X?=
+ =?iso-8859-1?Q?WQqo5FXmqP6uoRvlS6oPv6XoF9WKjAbky6JxsZTfVrDjfZYLJNWHSWSty1?=
+ =?iso-8859-1?Q?vmnhwh4IkLRwfg4o0eHulE5ygbT8ABkkzTG3fd/MSrk/lMDNY39vG+q1go?=
+ =?iso-8859-1?Q?MtJ1SsqhC6mpy1Q/xHgi32GadPG2RsLq53+4DEbWq8g4mK/TxEgTz/QCCU?=
+ =?iso-8859-1?Q?6Ykn4BZ5/BgIksCRScQWhZIrx2COJ6G131o+vTNJoERZ4T6eJe/vMroCaD?=
+ =?iso-8859-1?Q?lBHe9WOpBjojHjRcWJPGNUF+LgpNPfzGwoa34bi8tHe6JTlNTxjR2tOmex?=
+ =?iso-8859-1?Q?icTQWxZ8FnKYebK/V64bLmu2mt1o6WpaMwKwq9Fj1IIOD3gbWm5laBaf4A?=
+ =?iso-8859-1?Q?uSr2rE/Z62yWUL3bDifNDcdiqrJybnkTucGeUZ8wEtqRhB6eomto201EaE?=
+ =?iso-8859-1?Q?VcqG1VQeTbujniJDzCVXb9wpqy+Ie+4QJmQFh3XBcYmdLTMz+P0OfhRxPa?=
+ =?iso-8859-1?Q?1GMylexVGcwzLdtHslOlly6fVL+gF6VR7PlGbjsjIaHJiC4aTjas0Vbaew?=
+ =?iso-8859-1?Q?OImVKsH3kdHiUnh9QmadLihdXeh1zUxpbGwNM3z9cYF23RvkdFwFjPHICb?=
+ =?iso-8859-1?Q?BklkP0l5XrPB5JXxttAy6dW5NN85bniovzU03ykHhCBb8t/oQ88GpQ4vHv?=
+ =?iso-8859-1?Q?wvWz0Sk6uEoCHrEjC6cbhTgpYJ7qTQ++URTsThpJyGmUHXsWuxkPU/F6qL?=
+ =?iso-8859-1?Q?IB0KDKzk3cyDaQlqJCRE0cisHhW6giH4ppC7V27iThAd2Rdxc73lybSnG0?=
+ =?iso-8859-1?Q?x28kOPjUBOjKzcTDoEOhzDWdjQXkkIa8UK8Yq+whhTpAOBcLZGCpqDhaeF?=
+ =?iso-8859-1?Q?e9u8mrUD50d2gVtYhP/TTwSWcMTOU80nHGmS1JhNtzvd+/uON/mM7Bz9m/?=
+ =?iso-8859-1?Q?7nLH1Y+VyHiSc/BW6RM1nx0Cx8tpWg1G0LUW7ItCLoQ4kS+kTU9ZiDZjLv?=
+ =?iso-8859-1?Q?Q0TJPE88XS/cM36oUNidoXtPdb428uvVUQFHwVw9BdEC2LCBYbRI8c5Lmw?=
+ =?iso-8859-1?Q?lPDttfijiS93er7Yl5og/XLrlBREmnOtMGeYQmIZv8zgGv3TA/EAFZBvoS?=
+ =?iso-8859-1?Q?15dg/4PJQNDdD+mYxTUPB5Jw6mREWQ3u1VrgbhlvES3kbKWBIblrZTaBOu?=
+ =?iso-8859-1?Q?XT7t5pHX2kTqdCAa+RN/opQoD4I3Pm4bqRQmJJxNiD5MSYdUGfvcLf4SoD?=
+ =?iso-8859-1?Q?Pr2nAVoMpY7wNMbv96aWeT30S+KQ1dPsR4iTU8XR+AXSiXehaCgZUN/sy1?=
+ =?iso-8859-1?Q?iqRMhGN+dVz/kCh0dN7Jz88MK8Bl0F9yOoOEd7YQi7Z6f/h4hR7RZ7vSv1?=
+ =?iso-8859-1?Q?VWlk9VeCiSoCpLT54wB6VmBfRce4smQvrW29jYJAzDGfoQhKC5jHgtoAnY?=
+ =?iso-8859-1?Q?427UWcNxT/KLPVg1PDu/BKU8qxs4XJmUc+fSKh04zys2j/lsEonEGqi9oV?=
+ =?iso-8859-1?Q?YnpS8NZ+Kf3fTN4lXgvsWI7etTEbgOjGJXPqBm5aXaqrTXIgbhJ/AcddGX?=
+ =?iso-8859-1?Q?G27u7FIiYNyHsBoyr2G+Mod6YCCU1mxSGt3mrqL21E5iAStUPqhTX1I1+h?=
+ =?iso-8859-1?Q?4Qj/bc746cO37ft+MCXt0v3Or1DtVmM7UDmmFcPdmGraYiUx05QyNIoAxI?=
+ =?iso-8859-1?Q?+CPsVifdJo/YNB4+M2+f9ibUMkSGXCz1RXVFfcYaxSvHnz2TjcO8d42qZX?=
+ =?iso-8859-1?Q?Nf26DDtt3JCGnZW2k7LS/VCp2m6LrLxuQxoku09QWxQrSco5Ky7o74AIrQ?=
+ =?iso-8859-1?Q?Yeyvof6rOMwXJXGwcXwv7s/yJwGsazlDptMyf16LV3fzq1LbG8c5rr9Aon?=
+ =?iso-8859-1?Q?lW?=
+x-ms-exchange-antispam-messagedata-1: t4Zl4q8KTI5QmQ==
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-X-Mailer: b4 0.17-dev
+X-OriginatorOrg: jolla.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: GV1PR06MB8417.eurprd06.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 982fa652-0224-452b-8f29-08df1635c40d
+X-MS-Exchange-CrossTenant-originalarrivaltime: 19 Sep 2026 10:07:08.7735
+ (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: b6cd1562-9512-488f-a364-34d46554c96a
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: jmJ3SA4/cEpL5syhBaBUSDxR+vibfBuZrV3lIFYhKcLd6/Ke0aDvMunlx2MPyblKDT8Ahfq8yWn6VtuE6aD5pA==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DU0PR06MB8573
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260919_030718_945232_D0F50A5F 
+X-CRM114-Status: GOOD (  16.25  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,52 +163,97 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, 08 Sep 2026 11:04:42 +0200, Christian Marangi wrote:
-> ASoC: Add support for Airoha AN7581
-> 
-> Add all the patch and documentation to support Airoha AN7581
-> sound driver.
-> 
-> The card follows similar implementation with Mediatek with
-> the codec present on i2c but with a simplified implementation
-> register wise and additional frequency supported.
-> 
-> [...]
-
-Applied to
-
-   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-7.4
-
-Thanks!
-
-[1/5] ASoC: dt-bindings: Add Airoha AN7581 AFE Sound card
-      https://git.kernel.org/broonie/sound/c/78da571393da
-[2/5] ASoC: dt-bindings: Add Airoha AN7581 AFE with WM8960 Codec schema
-      https://git.kernel.org/broonie/sound/c/8fcf0497e6da
-[3/5] ASoC: mediatek: common: permit to provide dedicated regmap for irq
-      https://git.kernel.org/broonie/sound/c/b49799e40313
-[4/5] ASoC: airoha: Add AFE driver for Airoha AN7581
-      https://git.kernel.org/broonie/sound/c/4974ffa0d6c2
-[5/5] ASoC: airoha: Add machine driver for Airoha AN7581
-      https://git.kernel.org/broonie/sound/c/272d6e51bc1f
-
-All being well this means that it will be integrated into the linux-next
-tree (usually sometime in the next 24 hours) and sent to Linus during
-the next merge window (or sooner if it is a bug fix), however if
-problems are discovered then the patch may be dropped or reverted.
-
-You may get further e-mails resulting from automated or manual testing
-and review of the tree, please engage with people reporting problems and
-send followup patches addressing any issues that are reported if needed.
-
-If any updates are required or you are submitting further changes they
-should be sent as incremental updates against current git, existing
-patches will not be replaced.
-
-Please add any relevant lists and maintainers to the CCs when replying
-to this mail.
-
-Thanks,
-Mark
-
+On 9/16/26 1:57 PM, AngeloGioacchino Del Regno wrote:=0A=
+>>>> The defaults in MediaTek's downstream driver match DRM_DSC_1_2_444, no=
+t=0A=
+>>>> DRM_DSC_1_1_PRE_SCR, and the panel on my test device requires that eve=
+n=0A=
+>>>> though it uses DSC v1.1. This may be a panel-specific problem, but hav=
+e=0A=
+>>>> you tested this with any actual panels that need 1_1_PRE_SCR?=0A=
+>>>>=0A=
+>>>=0A=
+>>> My downstream uses 1_1_PRE_SCR... that's why it is like this.=0A=
+>>>=0A=
+>>> I can resolve it like=0A=
+>>>=0A=
+>>>       if (dsc->dsc_version_major =3D=3D 1 && dsc->dsc_version_minor =3D=
+=3D 1)=0A=
+>>>           type =3D DRM_DSC_1_1_PRE_SCR;=0A=
+>>>       else=0A=
+>>>           type =3D DRM_DSC_1_2_444;=0A=
+>>>=0A=
+>>>       ret =3D drm_dsc_setup_rc_params(dsc, type);=0A=
+>>>=0A=
+>>> ...that will work, granted that the panel declares the correct DSC =0A=
+>>> version.=0A=
+>>>=0A=
+>>=0A=
+>> Unfortunately not, because DRM_DSC_1_2_444 is also needed for some v1.1=
+=0A=
+>> panels. From drivers/gpu/drm/drm_dsc_helper.c:=0A=
+>>=0A=
+>> /*=0A=
+>>   * Selected Rate Control Related Parameter Recommended Values from =0A=
+>> DSC v1.2, v1.2a, v1.2b and=0A=
+>>   * DSC_v1.1_E1 specs.=0A=
+>>   *=0A=
+>>   * Cross-checked against C Model releases: DSC_model_20161212 and =0A=
+>> 20210623=0A=
+>>   */=0A=
+>> static const struct rc_parameters_data rc_parameters_1_2_444[] =3D {=0A=
+>> ...=0A=
+>>=0A=
+>> I'm pretty sure that my device is not using DSC v1.2.=0A=
+>>=0A=
+>> Since this is definitely panel-specific and there seems to be no good=0A=
+>> way to detect the required parameters at the moment, this is probably=0A=
+>> something to fix later.=0A=
+>>=0A=
+> =0A=
+> Ok, let's just go with 1_2_444 then - makes sense... that's something=0A=
+> that must be accounted at the API level, because I know of some panels=0A=
+> that need the PRE_SCR set... and that's even if they're using v1.2, just=
+=0A=
+> because - for whatever reason - some of the DSC params are stored in and=
+=0A=
+> read from an OTP area of the DriverIC (and that would mismatch then with=
+=0A=
+> the other params that are runtime-programmable from the DrIC view, which=
+=0A=
+> results in pixel-garbage artifacts).=0A=
+> =0A=
+> Not sure how many panels are doing that, but this is of course not a MTK=
+=0A=
+> specific thing... I looked around, and apparently there's a mention of=0A=
+> that in the Intel driver as well - yay I'm not the only one who knows, lo=
+l.=0A=
+> =0A=
+> (And I definitely didn't expect that to be the case anyway).=0A=
+=0A=
+I just double-checked the downstream code I was referring to, and it=0A=
+seems that the 1.2 parameters are only used for 10-bit panels by=0A=
+default. The parameters for 8-bit panels match 1_1_PRE_SCR [1].=0A=
+=0A=
+So this would be closer to the default downstream behavior:=0A=
+=0A=
+    if (dsc->bits_per_component =3D=3D 8)=0A=
+        type =3D DRM_DSC_1_1_PRE_SCR;=0A=
+    else=0A=
+        type =3D DRM_DSC_1_2_444;=0A=
+=0A=
+    ret =3D drm_dsc_setup_rc_params(dsc, type);=0A=
+=0A=
+But again, this is actually panel-specific and should be fixed=0A=
+separately. I wasn't demanding any changes here and you can also keep=0A=
+using 1_1_PRE_SCR or whatever works for you if you have to send another=0A=
+version.=0A=
+=0A=
+[1]: https://github.com/oppo-source/android_kernel_modules_and_devicetree_o=
+ppo_mt6993/blob/4d505a4292dab3176a45fec66dc85debc362e24c/kernel/kernel_devi=
+ce_modules-6.12/drivers/gpu/drm/mediatek/mediatek_v2/v1/mtk_disp_dsc.c#L152=
+2=0A=
+=0A=
+Best regards,=0A=
+Nikolai=
 
