@@ -4,76 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9482AC982D8
-	for <linux-mediatek@archiver.kernel.org>; Sun, 20 Sep 2026 18:46:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5FC0EC982D8
+	for <linux-mediatek@archiver.kernel.org>; Sun, 20 Sep 2026 23:17:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=7ynaufQVtyfTr5NQ4iLsrxfZxiHcy95lGY5BmduC6Mo=; b=UlUqWpeVTs7z0zv3h/u75alnsi
-	0tEUhObNFm0XtFMXELGvXLZqZ2APiRLOR2u7FjmjeDjFDhVlsplreiZ3ID14jwxf9LvCYT4MBfMI1
-	52Czdq3+6QQHONg1S/sPa21gKkamZWrbFHMypjrxJTH57aYV694vsA7nYTBg4lE7K/jC4s67Pt2WL
-	TpjnypniwL1TwsdPCoImes3GssumuUBHvfwZxWiPubfIxgF54JV/RQWie2oO+h5X7zXa0KRX3DtmO
-	DoQ0fst/ekSMGLhpz9tjQ7pGHH3Tz5d7QV1MklITt0flyM9b/3xEOVBB1B5LH/0Lhb6CEBTFPUIC7
-	Eloyw9pA==;
+	bh=iNmqXhGZZ3SwaOV8bqOvV8+pT+SPZVFh4wF6oc2IRlM=; b=p+uR5gJZ2oZhReq7ABXYNxmBc4
+	aHhSwvRG7S+qIcsYT3XB8FscfnISZxhSz/DhYmgUiMesj/V+Bi8vDSU1pU221knq7BqwkujWhsIvg
+	Qv2SaEYRQIf2Z8ZNQgjwZdwcwMmIsRB8E2I1a2s21FEsGnjuEuYxtnFwmxyy13jDwNZKxV8Y4sigP
+	EGJwoh4UkpHSQCUNb4t+JcyLYJpzpX9qhoWJtJgNhNWFihzj1zyaPzA8BDUDeUi+sdAVZOIm8Z287
+	AkVK/jvhT2hxXwQcCIWH9HBfSJ2avlrSnMxP6ttk1rcK/z5dJjwJg4INhICgMnFQDMvHdYdChQomL
+	XEn0mHDA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x8MYC-00000000G8v-3m7F;
-	Sun, 20 Sep 2026 18:46:08 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1x8QmV-00000000a8T-2FXE;
+	Sun, 20 Sep 2026 23:17:11 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x8MYB-00000000G8g-0SNU;
-	Sun, 20 Sep 2026 18:46:07 +0000
+	id 1x8QmU-00000000a8E-4B4w;
+	Sun, 20 Sep 2026 23:17:11 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 1A87A601DB;
-	Sun, 20 Sep 2026 18:46:06 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 431801F000FF;
-	Sun, 20 Sep 2026 18:45:57 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id C55F9601F0;
+	Sun, 20 Sep 2026 23:17:09 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id A394B1F000FF;
+	Sun, 20 Sep 2026 23:17:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1789929965;
-	bh=7ynaufQVtyfTr5NQ4iLsrxfZxiHcy95lGY5BmduC6Mo=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To;
-	b=IECg6RA8t5Y5NM/O2OoL6T2FKPBTNxPWYMFFG5dVV6UPBJlyurapze0Oxk9g14wsT
-	 BA6iMjkH6lhbW6ktnVI8U+D2PwRwruPh8xo/e42R0FJIibymnZmCTZuWT44yysLemY
-	 RAV6b0ezBUx5FQlFEP58xX2ToCAgJSSGvhQvIAZ0CA8UWcNDfbl1Du3koLWv1dhDeL
-	 LJdq+MapRumNtkV/j7xWJ/XxzbvxLeLN4D6Ua+9gV+rinWDUswdKlTUj6LYnxWqsO+
-	 HRiVrUM/J9T3Bdm3VK425koantZzNKVn4Z+NLlRu3tsM9cXf0OSGU+U639KHGcTVs+
-	 NWzZzI53CAtew==
-Message-ID: <7074efa0-17f3-45f9-9cde-301f81c68005@kernel.org>
-Date: Sun, 20 Sep 2026 20:45:54 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 01/28] dt-bindings: sound: Add Apple Macs sound
- peripherals
-To: James Calligeros <jcalligeros99@gmail.com>,
- =?UTF-8?Q?Martin_Povi=C5=A1er?= <povik+lin@cutebit.org>,
- Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>,
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>, Janne Grunau <j@jannau.net>,
- Neal Gompa <neal@gompa.dev>, David Rhodes <david.rhodes@cirrus.com>,
- Richard Fitzgerald <rf@opensource.cirrus.com>,
- Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>,
- Ulf Hansson <ulfh@kernel.org>, Amit Kucheria <amit.kucheria@linaro.org>,
- "Rafael J. Wysocki" <rafael.j.wysocki@intel.com>,
- Lars-Peter Clausen <lars@metafoo.de>, Vinod Koul <vkoul@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Shenghao Ding <shenghao-ding@ti.com>, Kevin Lu <kevin-lu@ti.com>,
- Baojun Xu <baojun.xu@ti.com>, Sen Wang <sen@ti.com>,
- James Schulman <james.schulman@cirrus.com>
-Cc: asahi@lists.linux.dev, linux-sound@vger.kernel.org,
+	s=k20260515; t=1789946229;
+	bh=iNmqXhGZZ3SwaOV8bqOvV8+pT+SPZVFh4wF6oc2IRlM=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:References;
+	b=KXchSqOMRu6y0GF6EJYza2QP88aCzZmwup1XUPGrasdEXOhI6G7OJ14iaK1CWpkJs
+	 yqDplcxA/MrOg7wIZwopBhu4eSf0x2hW43ePFgdnb1T8ZMGX4KBu4ZJhbq905a+M2B
+	 /QZq8nTfycPwGGIPWRLsEmzwrLZwV0Mx2erm3tVKNSXQuHaPkO0J4Bk/KhqqPUr36b
+	 LQQTXQ+wRVrHLNYaYL5uxJlfha8588V9Hp1xwdIzVyqQGtskhuqi/Fwt0mI8+W6MiC
+	 nyvSs8D9Mn/PNqMjBa9q4p3DN9FDOlq1/cC3K9rnEI+ARfCKV/s3bGi8ip+Wjn8cPq
+	 k9TKIz31I3z4A==
+Date: Mon, 21 Sep 2026 00:17:02 +0100
+From: Jonathan Cameron <jic23@kernel.org>
+To: Ryan Brue <ryanbrue.dev@gmail.com>
+Cc: David Lechner <dlechner@baylibre.com>, Nuno =?UTF-8?B?U8Oh?=
+ <nuno.sa@analog.com>, Andy Shevchenko <andy@kernel.org>, Rob Herring
+ <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
+ <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Lee
+ Jones <lee@kernel.org>, linux-iio@vger.kernel.org,
  devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, patches@opensource.cirrus.com,
- Takashi Iwai <tiwai@suse.de>, linux-mediatek@lists.infradead.org
-References: <20260920-macaudio-v1-0-741cc20a74e5@gmail.com>
- <20260920-macaudio-v1-1-741cc20a74e5@gmail.com>
-Content-Language: en-US
-From: Sven Peter <sven@kernel.org>
-In-Reply-To: <20260920-macaudio-v1-1-741cc20a74e5@gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ mfd@lists.linux.dev, Roman Vivchar <rva333@protonmail.com>, Luca Leonardo
+ Scorcia <l.scorcia@gmail.com>, Andy Shevchenko
+ <andriy.shevchenko@intel.com>
+Subject: Re: [PATCH v3 0/3] iio: adc: add mt6397 PMIC AUXADC support
+Message-ID: <20260921001702.3a208780@jic23-hlaptop>
+In-Reply-To: <20260920-rbrue-suez-upstreaming-mt6397-auxadc-v3-0-c00edacbee64@gmail.com>
+References: <20260920-rbrue-suez-upstreaming-mt6397-auxadc-v3-0-c00edacbee64@gmail.com>
+X-Mailer: Claws Mail 4.4.0 (GTK 3.24.52; x86_64-pc-linux-gnu)
+MIME-Version: 1.0
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,67 +77,22 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
+On Sun, 20 Sep 2026 00:31:50 -0500
+Ryan Brue <ryanbrue.dev@gmail.com> wrote:
 
-On 20.09.26 06:53, James Calligeros wrote:
-> From: Martin Povišer <povik+lin@cutebit.org>
-> 
-> Add binding for Apple Silicon Macs machine-level integration of sound
-> peripherals.
-> 
-> Signed-off-by: Martin Povišer <povik+lin@cutebit.org>
-> Co-developed-by: James Calligeros <jcalligeros99@gmail.com>
-> Signed-off-by: James Calligeros <jcalligeros99@gmail.com>
-> ---
->   .../bindings/sound/apple,macaudio.yaml   | 235 +++++++++++++++++++++++++
->   1 file changed, 235 insertions(+)
-> 
-> diff --git a/Documentation/devicetree/bindings/sound/apple,macaudio.yaml b/Documentation/devicetree/bindings/sound/apple,macaudio.yaml
-> new file mode 100644
-> index 000000000000..bd844c9928c9
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/sound/apple,macaudio.yaml
-> @@ -0,0 +1,235 @@
-> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-> +%YAML 1.2
-> +---
-> +$id: http://devicetree.org/schemas/sound/apple,macaudio.yaml#
-> +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> +
-> +title: Sound peripheral integration for Apple Silicon Macs
-> +
-> +description:
-> +  This binding represents the overall machine-level integration of sound
-> +  peripherals on Apple Silicon Macs, starting with the M1 series.
-> +
-> +maintainers:
-> +  - James Calligeros <jcalligeros99@gmail.com>
-> +
-> +properties:
-> +  compatible:
-> +    oneOf:
-> +      - description: First-of-their-kind machines
-> +        items:
-> +          - enum:
-> +              - apple,j180-macaudio
-> +              - apple,j274-macaudio
-> +              - apple,j293-macaudio
-> +              - apple,j313-macaudio
-> +              - apple,j314-macaudio
-> +              - apple,j316-macaudio
-> +              - apple,j375-macaudio
-> +              - apple,j413-macaudio
-> +              - apple,j415-macaudio
-> +              - apple,j473-macaudio
-> +              - apple,j456-macaudio
-> +              - apple,j457-macaudio
-> +          - const: apple,macaudio
+> The MediaTek mt6397 PMIC has a 10-bit AUXADC that nothing in-tree can
+> reach. On boards built around it that ADC is the only path to the battery:
+> the SoC's AUXADC is wired to board thermistors, and the charger ICs these
+> boards use have no ADC at all, so without it there is no pack voltage and
+> no state of charge.
 
-We've had some not-so-great experiences with these generic compatibles 
-in the past. I'd just drop it.
+Hi Ryan,
 
+Please slow down between new versions.  Unless a maintainer is specifically
+asking for a quick turn around (sometimes happen very late in a series) at
+least a week is typical time to allow multiple reviews to come in
+and hence save on effort all round.
 
-
-Sven
+Jonathan
 
 
