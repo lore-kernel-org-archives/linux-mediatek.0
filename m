@@ -4,81 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1A63FC982D0
-	for <linux-mediatek@archiver.kernel.org>; Sun, 20 Sep 2026 04:55:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 45F79C982D0
+	for <linux-mediatek@archiver.kernel.org>; Sun, 20 Sep 2026 04:55:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=guh9SUKBNUNAFe1CPJL5pC07OGZIVIcs9iIVSylPf+8=; b=gs7iQAPTI0CIfJBRZNM/LMbeX4
-	5KQ6M/S1iTvtLAlAadtsp2kcg+Ym8FWw42R4l3YHFXeQCM7y3tk92sCMem9own8fqoSc4FsvAaOaq
-	Gf4KGsFq/iXm7v6caq62DFqmY6rFL69PWj13i307HvJ4B5Vox2G/WVv1g9Z0x5/qDXnHOveNdgmjm
-	YKSJwIYfK34J5eHsNX63gI2ozx7pg1ZwZJI+GZw8Eh0g8czksSSk56Kpxi7C0ZY2LM6EgkyNsDXwv
-	g8ZWdUdLZliQakUqxZxP7zvo6+uSmTFDdljvNoT14HsYYHCMeOzDog5ddmCw4xQR93P0i9CIEolPC
-	qwXV/2Xw==;
+	bh=SAVOL9koiJ+YcQGa1QFT/np1LbpIAAvGvOBmeTVIdhA=; b=d1fwYfABu6+F+Bh3oQeJQ4aTC9
+	u3AHJIm3/xNNOP6Hp9yypYozXsghXevVn/JtmEbryoMqjxU3c3fLXDbOBPyxlCQ6CVlTdEDgClkK5
+	YOR1HHm/XlAY7ppEh318SbJnQQxkUBP5mCtjBR6cvW6Xgv7840gtR4goa76RxREI6eTChJt38c1NZ
+	ZXZ5ZGToHMTQxoasyI47z7GDoXeZ0Mg1SuXJ4YYOu1EOXNMWauO3So3epAjmUTymVvXBFFENAiaKX
+	NPqJVs8hFUcnR98qWeGhowWnJIE2C3JzSwW0Vgi/UShh54vvhkp6COm//Q3Bu0HpLSTUFYP+VUUNR
+	38PrhM7w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x89aW-0000000Gs3O-41N4;
-	Sun, 20 Sep 2026 04:55:40 +0000
-Received: from mail-pj2-x0e.google.com ([2607:f8b0:4864:39::e])
+	id 1x89ag-0000000GsA3-3t0C;
+	Sun, 20 Sep 2026 04:55:50 +0000
+Received: from mail-pj2-x10.google.com ([2607:f8b0:4864:39::10])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x89aT-0000000Gs0m-3MIY
+	id 1x89ad-0000000Gs73-005w
 	for linux-mediatek@lists.infradead.org;
-	Sun, 20 Sep 2026 04:55:39 +0000
-Received: by mail-pj2-x0e.google.com with SMTP id d9443c01a7336-2df38376150so1165255ad.0
-        for <linux-mediatek@lists.infradead.org>; Sat, 19 Sep 2026 21:55:37 -0700 (PDT)
+	Sun, 20 Sep 2026 04:55:49 +0000
+Received: by mail-pj2-x10.google.com with SMTP id d9443c01a7336-2d93ff61046so19899215ad.3
+        for <linux-mediatek@lists.infradead.org>; Sat, 19 Sep 2026 21:55:46 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1789880137; x=1790484937; darn=lists.infradead.org;
+        d=gmail.com; s=20251104; t=1789880146; x=1790484946; darn=lists.infradead.org;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :content-type:mime-version:subject:date:from:from:to:cc:subject:date
          :message-id:reply-to:content-type;
-        bh=guh9SUKBNUNAFe1CPJL5pC07OGZIVIcs9iIVSylPf+8=;
-        b=Pble97URqibzkBPUi4h/JNB+4uyuHZqz9ex4QX5fyM24QjwufsQGb5H2Zv2+qoTywo
-         QBKTLd9z3BU9lWgZoFWUuqJtzCEUjmoiXQKIxOZpFKPRnMsH8JprbaaRyYRamHjzu54c
-         74kpDcq/RV7UFN4kOmIY2+wz1ja+vrJY0TyRT7kRvf3r0g90VIqRXWDvL3x8fMhktVQh
-         J3/Fb81YeU04+Lr657Cndv6ewlijzV/Rl2UXTrLCBKqwR8pnixyxH0xWiTkjrMAri5Z2
-         CWsZbpyK0HZVs53RPLtSDliMf4L5kffdmbSwz55AeOJlwsN58Znrsi31mzvvbheiyklq
-         8fSg==
+        bh=SAVOL9koiJ+YcQGa1QFT/np1LbpIAAvGvOBmeTVIdhA=;
+        b=nzO1uhUhhJfy8vXa8C2+RCgAxgYyVn/751fTWxSIMhFpP734zyC8DLC3hFiJ1LA9Rs
+         jXcZlcv1ZezROhLM+OOZRtEeMS6v75a8NONeqPPHg+LTnz4IdVzbf4EixWDr9TqtwTMB
+         bwEFVfBn/IQGF44FYCgjl/mCORjCBipSKPA5Jh1f+MhtisrreKA8Hr9YUBe1pPPjzzYZ
+         seKUu4ELZjh1QDKdb97ssDO+PaJDehhERNSBtJ1/Mp9P1opZsCYEABMOeGdw5LFROvNp
+         OoGV5EeUIFy2oDvxrFy4ZHPnBNx0vqQ9v148RMiDHbxM4FbeVdz47SZ1FYrBk7ZA4xwL
+         hEng==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1789880137; x=1790484937;
+        d=1e100.net; s=20260707; t=1789880146; x=1790484946;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :content-type:mime-version:subject:date:from:x-gm-gg
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
          :content-type;
-        bh=guh9SUKBNUNAFe1CPJL5pC07OGZIVIcs9iIVSylPf+8=;
-        b=dcHu/N2ezElxLgspfVnk6gHb+6lR9tW9+P8OkvP9jvWRm+JHBoq2NNf48KgyABk33V
-         nCsSDtlqBkxzRr1ypsN3vl5yfg2L7Uwq912eMvYHeTgcVu0QxG5n/fVvR6c9U0pLev9P
-         YgmTVFIyWtLe0hmW4sC0Su7vwoQxYSXOIEfBdZS1Dg9HhlvhdAlIHb+0zfDzh+qn3oPE
-         loT9y3AATNwrAjbgbH4VheZbKimcVzbpMwHCFyqUQX5eI8TACCCnA9REvFsQ8LQyhS1G
-         9Ljo2rRLj4aq6n0gNT/EiqvoDe5DMy4hSDCBqFY3QKHxjALSaVPr3g0wNc/QXk45I16d
-         Es/A==
-X-Forwarded-Encrypted: i=1; AKwUvBy6hFxscyyTJwhxrjV37Z9fL1xZZ+yiUMpHU/P1h1+suvz4qJqBMMxjnEdXislzsi++dSrMjxcy+zwbYW0COg==@lists.infradead.org
-X-Gm-Message-State: AFuF++nuExX99gneHymXnBXGaF/i1/H4U0oqylPm3pvonoPZFm8yyZm1
-	75IFPoYbDFasRd2SGerSbEqLaBkTpVa98aFs5nBiWaFlxact0B7isGG7
-X-Gm-Gg: AYBFou2hBOblTcwJOtZ9L8rfv95OezClep8A03B4YHLLRZJqk1gbdIc5I+WeDXcJyV4
-	ktSxk9k4MASStrIcPbBVt801BUM6ccYadwYAXcQ44vVMCyWeP0ACiy81WI4nbRT3qI0KTkcZ7+y
-	c5ECNtv1kcbdGqMnKlKwENP2TNZXncm/e+TKFiVFf4GkUGInAn67AgNOdHkPiuL/FNx964sLVQr
-	UAPfaXVmoN8cezjlrD3sW3Kowsoq4YKy/LXnfG8wYpZkPY0l8wl5r0ZMUvRU0Qq+mnzRbZNvxAS
-	ex1woMjGTs+oRvhuPcbbRl3APvSVS3X4wht3FO7Edt4QpcgZGBF3RNaSmP9ZGMMvQTvPiKhAANg
-	LuuqGKteY9cv4hpDI3IjwidNeN5m2oscwr4X8bOjZZygs6yW6nRLoH3yLcvjAHAlargije+uDs6
-	iXJLjOfnIWNe/nnOrKaJmBzs7R2LNNsA7AeV1//Npyz/qdsNLpmJBvIglqWszcxPPBz7f3VlsuD
-	j++wj4cYAY+2gTpzA7uxZ82o6FcZ96S8Iqh5xRKu9l2gep5xxWZNh6pJ9ZT5sVY6T8dIQAw9vVj
-	UZWsdqFgTm6GYFhgCf1NPOIg8S4LQLlH8XW1MD4Iexqyubc=
-X-Received: by 2002:a17:903:3b90:b0:2dd:c100:251c with SMTP id d9443c01a7336-2ddc1002582mr42342795ad.37.1789880136783;
-        Sat, 19 Sep 2026 21:55:36 -0700 (PDT)
+        bh=SAVOL9koiJ+YcQGa1QFT/np1LbpIAAvGvOBmeTVIdhA=;
+        b=xGPuS3lTmULIAq+qFacWwMCGkD7dh5iRdRD2NJzCmlWkMM0gzcFETBNh4osDUUw9zS
+         ziCQtfo/lTEupw70U6OqlQbf62pRsIR4MoiLhzHQquFHP75p4C1b4T+uaIqPbDFTmhCd
+         V/PQ8sPeMH+Icl9VADCCWZcTRJWRvoYveVM/pyO4k5a3zcF19Tn4icbtwH+0RbgH+uMx
+         Qy0KZJ3EIROMy88OgHz/FYqhgE/MCdKMvkm624lfXMAK/hIXWZAvTHt6pSPhVNHDv0vu
+         UNcMwFhPu2xSJJE1WSRYUTyGXIJKk9cH8F68AwfG9MtyWMEaZFHeR/TZEAeiSLeqdmJ/
+         D8aQ==
+X-Forwarded-Encrypted: i=1; AKwUvBxsF6vtQyY7GVJCwpJOu8eyDXrUA29vYuZXE5WoIHjFU70iIpDuPhLem53lkUC2/KybnlJRDe23wlF70kmtAg==@lists.infradead.org
+X-Gm-Message-State: AFuF++krGszvq6hMCxggdAf9tZ8X8CNjnadEscxdYg2yWbiinA2SyzC8
+	yvWGtEhXPjatAdZlGUtmdKtlzajCWfQ/sxom22lpoW7Anm+R7VCOgIh/
+X-Gm-Gg: AYBFou3ltLnn5TmqtPm8n4r4bR27DahwfnFR3yHMOFfg0l+u1yb3jPFC2vwPy17DZ1s
+	VFKUClzXgxe28BTLlADSKEzJGe/xOQ0mKHLxfoiAj54jNfhQF1ZfelXElgBcXV7zQ1j5CCqUKZ/
+	5SEIX2T7dh8s7azZNjPHyiNULgg+Fd6hKvyXjDoyiP/fQQqd5r6ZiztMxc4prJPPNvcMeEEywy9
+	u1ag0iCz6kQP3FzTnatBuTLlH326TkfPWMASC9K3tjQ1KxsttiY+gKctVrWFpzV2Q+kgyLClwTW
+	ziObIv3MqV6l9HtIod5xDgHQbxF75bfbHMjOyxDWOmQVzQNhXMQt8IMCEdTgOPYtAiyQUex8+ts
+	dxN3eCxiTe9QveWc4yxm3NJLrwCmbVLzluOpnBoIQt1hAqp704R7TbZOD3PMO51aUTRiFtrxxpd
+	q4VDHJh+4zbmnr7WnMX+U+Q/sM6axjAlAbr+sMPVdIkkGZm3tVBmrOgr7kY8WtzYxauKl4uUHFp
+	8hEdRNRizvSMBGliRrR+DFp/7Qa/57kdq+ZqmStCSqpPgoNFbE8/clZRCS/cmKeVhm9tQW3Uzk3
+	UAypdU6lLigh91Kl/jkIi6c6rNjA59+Y9rKcdLQF3iHvsyZqfAw95nZTgQ==
+X-Received: by 2002:a17:902:d4c6:b0:2dd:c100:3130 with SMTP id d9443c01a7336-2ddc100319amr56593615ad.44.1789880146239;
+        Sat, 19 Sep 2026 21:55:46 -0700 (PDT)
 Received: from [192.168.2.3] ([2403:581e:d87e:0:fc2d:ed31:e80e:412d])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-2ddc17d712dsm16026765ad.64.2026.09.19.21.55.28
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-2ddc17d712dsm16026765ad.64.2026.09.19.21.55.37
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 19 Sep 2026 21:55:36 -0700 (PDT)
+        Sat, 19 Sep 2026 21:55:45 -0700 (PDT)
 From: James Calligeros <jcalligeros99@gmail.com>
-Date: Sun, 20 Sep 2026 14:53:42 +1000
-Subject: [PATCH 03/28] ASoC: cs42l42: Set a faster digital ramp-up rate
+Date: Sun, 20 Sep 2026 14:53:43 +1000
+Subject: [PATCH 04/28] ASoC: apple: mca: Fix PD link double-frees
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20260920-macaudio-v1-3-741cc20a74e5@gmail.com>
+Message-Id: <20260920-macaudio-v1-4-741cc20a74e5@gmail.com>
 References: <20260920-macaudio-v1-0-741cc20a74e5@gmail.com>
 In-Reply-To: <20260920-macaudio-v1-0-741cc20a74e5@gmail.com>
 To: =?utf-8?q?Martin_Povi=C5=A1er?= <povik+lin@cutebit.org>, 
@@ -104,18 +104,18 @@ Cc: asahi@lists.linux.dev, linux-sound@vger.kernel.org,
  Takashi Iwai <tiwai@suse.de>, linux-mediatek@lists.infradead.org, 
  Hector Martin <marcan@marcan.st>
 X-Mailer: b4 0.15.2
-X-Developer-Signature: v=1; a=openpgp-sha256; l=2168;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=2173;
  i=jcalligeros99@gmail.com; h=from:subject:message-id;
- bh=OmSPjK7SUuOGMGgXmxuIo+R2IFqwguXc6h4eMDL7B9Y=;
- b=owGbwMvMwCV2xczoYuD3ygTG02pJDFnr0+UPyfalrpv1r+xTfu2HLE4JBaWJnIbuCs4xLr/5f
- j7JPX+yYyILgxgXg6WYIsuGJiGP2UZsN/tFKvfCzGFlAhkiLdLAAAQsDHy5iXmlRjpGeqbahnqG
- RjrGOkYMXJwCMNU3NBj+6VWfZumKncEUeYQh9bx1/ZJCiWl7v/0OePDm0bym69Z1Oxn+F3iHLD6
- yt/urYQ8zk7cEo0T99E9aWpIxG7Ysk69699SeDQA=
+ bh=l6ILyllDJHogvaPe0jQmA0G3c3totE6rg0ScLhCeibc=;
+ b=owGbwMvMwCV2xczoYuD3ygTG02pJDFnr0+U5j3Q8K1d7n3zG7LTOxmmXz5Q2XzaeunGxT7HUc
+ 45m1SaHjoksDGJcDJZiiiwbmoQ8Zhux3ewXqdwLM4eVCWSItEgDAxCwMPDlJuaVGukY6ZlqG+oZ
+ GukY6xgxcHEKwFRPesTwT+HVJhMTvqn60VdsGRn0HgazSXQf/Jq76funXvH8tlWL1RgZWk4ftrd
+ /oNc+ddnUN1O2mJZWhlTNltBy1Hz0+n246IQNHAA=
 X-Developer-Key: i=jcalligeros99@gmail.com; a=openpgp;
  fpr=B08212489B3206D98F1479BDD43632D151F77960
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260919_215537_862710_355643CB 
-X-CRM114-Status: GOOD (  13.00  )
+X-CRM114-CacheID: sfid-20260919_215547_197361_1EAC09B2 
+X-CRM114-Status: GOOD (  12.62  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -132,59 +132,72 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Hector Martin <marcan@marcan.st>
 
-With the default ramp-up rate, there is a noticeable fade-in when
-streams start. This can be undesirable with aggressive muting for power
-saving, since the beginning of the stream is lost.
+Add additional checks to ensure MCA PD links are not double freed.
 
-Lower the digital output ramp-up time from 8 samples per period to 2
-samples per period. This still leaves some fade-in to avoid pops, but it
-is a lot less noticeable and no longer feels like the stream is fading
-in.
-
-Fixes: 2c394ca79604 ("ASoC: Add support for CS42L42 codec")
+Fixes: 3df5d0d97289 ("ASoC: apple: mca: Start new platform driver")
 Signed-off-by: Hector Martin <marcan@marcan.st>
 Signed-off-by: James Calligeros <jcalligeros99@gmail.com>
 ---
- include/sound/cs42l42.h    |  4 ++++
- sound/soc/codecs/cs42l42.c | 10 ++++++++++
- 2 files changed, 14 insertions(+)
+ sound/soc/apple/mca.c | 16 +++++++++++++---
+ 1 file changed, 13 insertions(+), 3 deletions(-)
 
-diff --git a/include/sound/cs42l42.h b/include/sound/cs42l42.h
-index 1bd8eee54f66..b3657965d491 100644
---- a/include/sound/cs42l42.h
-+++ b/include/sound/cs42l42.h
-@@ -62,6 +62,10 @@
- #define CS42L42_INTERNAL_FS_MASK	(1 << CS42L42_INTERNAL_FS_SHIFT)
+diff --git a/sound/soc/apple/mca.c b/sound/soc/apple/mca.c
+index be702b2942a5..66196c6a9273 100644
+--- a/sound/soc/apple/mca.c
++++ b/sound/soc/apple/mca.c
+@@ -303,6 +303,7 @@ static int mca_fe_enable_clocks(struct mca_cluster *cl)
+ 	 * the power state driver would error out on seeing the device
+ 	 * as clock-gated.
+ 	 */
++	WARN_ON(cl->pd_link);
+ 	cl->pd_link = device_link_add(mca->dev, cl->pd_dev,
+ 				      DL_FLAG_STATELESS | DL_FLAG_PM_RUNTIME |
+ 					      DL_FLAG_RPM_ACTIVE);
+@@ -326,7 +327,11 @@ static void mca_fe_disable_clocks(struct mca_cluster *cl)
+ 	mca_modify(cl, REG_SYNCGEN_STATUS, SYNCGEN_STATUS_EN, 0);
+ 	mca_modify(cl, REG_STATUS, STATUS_MCLK_EN, 0);
  
- #define CS42L42_SFTRAMP_RATE		(CS42L42_PAGE_10 + 0x0A)
-+#define CS42L42_SFTRAMP_ASR_RATE_MASK	GENMASK(7, 4)
-+#define CS42L42_SFTRAMP_ASR_RATE_SHIFT	4
-+#define CS42L42_SFTRAMP_DSR_RATE_MASK	GENMASK(3, 0)
-+#define CS42L42_SFTRAMP_DSR_RATE_SHIFT	0
- #define CS42L42_SLOW_START_ENABLE	(CS42L42_PAGE_10 + 0x0B)
- #define CS42L42_SLOW_START_EN_MASK	GENMASK(6, 4)
- #define CS42L42_SLOW_START_EN_SHIFT	4
-diff --git a/sound/soc/codecs/cs42l42.c b/sound/soc/codecs/cs42l42.c
-index b5d69d5516a6..c40e8da8f6eb 100644
---- a/sound/soc/codecs/cs42l42.c
-+++ b/sound/soc/codecs/cs42l42.c
-@@ -2422,6 +2422,16 @@ int cs42l42_init(struct cs42l42_private *cs42l42)
- 			(1 << CS42L42_ADC_PDN_SHIFT) |
- 			(0 << CS42L42_PDN_ALL_SHIFT));
- 
-+	/*
-+	 * Configure a faster digital ramp time, to avoid an audible
-+	 * fade-in when streams start.
-+	 */
-+	regmap_update_bits(cs42l42->regmap, CS42L42_SFTRAMP_RATE,
-+			   CS42L42_SFTRAMP_ASR_RATE_MASK |
-+			   CS42L42_SFTRAMP_DSR_RATE_MASK,
-+			   (10 << CS42L42_SFTRAMP_ASR_RATE_SHIFT) |
-+			   (1 << CS42L42_SFTRAMP_DSR_RATE_SHIFT));
+-	device_link_del(cl->pd_link);
++	if (cl->pd_link) {
++		device_link_del(cl->pd_link);
++		cl->pd_link = NULL;
++	}
 +
- 	ret = cs42l42_handle_device_data(cs42l42->dev, cs42l42);
- 	if (ret != 0)
- 		goto err_shutdown;
+ 	clk_disable_unprepare(cl->clk_parent);
+ }
+ 
+@@ -392,6 +397,7 @@ static int mca_fe_prepare(struct snd_pcm_substream *substream,
+ 	if (!cl->syncgen_in_use) {
+ 		int port = ffs(mca_fe_get_portmask(substream));
+ 
++		WARN_ON(cl->pd_link);
+ 		cl->pd_link = device_link_add(mca->dev, cl->pd_dev,
+ 					      DL_FLAG_STATELESS | DL_FLAG_PM_RUNTIME |
+ 						DL_FLAG_RPM_ACTIVE);
+@@ -423,8 +429,10 @@ static int mca_fe_hw_free(struct snd_pcm_substream *substream,
+ 		return 0;
+ 
+ 	mca_modify(cl, REG_SYNCGEN_STATUS, SYNCGEN_STATUS_EN, 0);
+-	if (cl->pd_link)
++	if (cl->pd_link) {
+ 		device_link_del(cl->pd_link);
++		cl->pd_link = NULL;
++	}
+ 
+ 	return 0;
+ }
+@@ -1145,8 +1153,10 @@ static void apple_mca_release(struct mca_data *mca)
+ 			dev_pm_domain_detach(cl->pd_dev, true);
+ 	}
+ 
+-	if (mca->pd_link)
++	if (mca->pd_link) {
+ 		device_link_del(mca->pd_link);
++		mca->pd_link = NULL;
++	}
+ 
+ 	if (!IS_ERR_OR_NULL(mca->pd_dev))
+ 		dev_pm_domain_detach(mca->pd_dev, true);
 
 -- 
 2.55.0
