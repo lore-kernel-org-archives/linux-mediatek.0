@@ -4,83 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id ED2FEC982E1
-	for <linux-mediatek@archiver.kernel.org>; Sun, 20 Sep 2026 15:44:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9482AC982D8
+	for <linux-mediatek@archiver.kernel.org>; Sun, 20 Sep 2026 18:46:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=AecNapTxF362oY8rExZxZezRuqvp1u2dtTLC2cyGOGo=; b=d65HUel/6uooVwuLpMoJnvNcgS
-	10uh0dC94XoDYH7nizCkOQJrSpontOyjVBLRJjVenBglL+jROsNOxBVl0jQH2E7DZw8o4oc/MCifg
-	5qBYY4UsuJf5RLeD63xS9AaOslr7HUzGaalf4XzdzOyIelX5hGzsBMIFFZ/JlBJqQOcUx63I+HsID
-	GZpPQuBxTeTXT1WFHjvc2RHvZDxkf6zbzJt9fhvNRvJElvy/FC3ZTRFiPaBecPAt/BeUEyab3dGN9
-	xMnk9gSbLKVdXH1aRdquRrgTRhpqaBdJWLs3D+6BnTk/KmRR1I4IUk8EQ4GXsQj9g104gM71vOn4/
-	TncymyEQ==;
+	bh=7ynaufQVtyfTr5NQ4iLsrxfZxiHcy95lGY5BmduC6Mo=; b=UlUqWpeVTs7z0zv3h/u75alnsi
+	0tEUhObNFm0XtFMXELGvXLZqZ2APiRLOR2u7FjmjeDjFDhVlsplreiZ3ID14jwxf9LvCYT4MBfMI1
+	52Czdq3+6QQHONg1S/sPa21gKkamZWrbFHMypjrxJTH57aYV694vsA7nYTBg4lE7K/jC4s67Pt2WL
+	TpjnypniwL1TwsdPCoImes3GssumuUBHvfwZxWiPubfIxgF54JV/RQWie2oO+h5X7zXa0KRX3DtmO
+	DoQ0fst/ekSMGLhpz9tjQ7pGHH3Tz5d7QV1MklITt0flyM9b/3xEOVBB1B5LH/0Lhb6CEBTFPUIC7
+	Eloyw9pA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x8JiN-000000005bi-11SA;
-	Sun, 20 Sep 2026 15:44:27 +0000
-Received: from smtp10.goneo.de ([85.220.189.106])
+	id 1x8MYC-00000000G8v-3m7F;
+	Sun, 20 Sep 2026 18:46:08 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x8JiC-000000005WT-1x8Y;
-	Sun, 20 Sep 2026 15:44:17 +0000
-Received: from hub2.goneo.de (hub2.goneo.de [IPv6:2001:1640:5::8:53])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange x25519)
-	(No client certificate requested)
-	by smtp10.goneo.de (Postfix) with ESMTPS id D3F9F240875;
-	Sun, 20 Sep 2026 17:44:14 +0200 (CEST)
-Received: from hub2.goneo.de (localhost [127.0.0.1])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange x25519)
-	(No client certificate requested)
-	by hub2.goneo.de (Postfix) with ESMTPS id 9822F24046F;
-	Sun, 20 Sep 2026 17:44:12 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=tk154.de; s=DKIM001;
-	t=1789919052;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=AecNapTxF362oY8rExZxZezRuqvp1u2dtTLC2cyGOGo=;
-	b=IHf43IOKsxj6P1o2SIUddEo/Cckd8cLCRycpgDVjDrjv5WRVZCeIUt4wUHTHFZRIl5nMkj
-	pX/2PjUJcfHFktbABB01Jeiu9Wemam/gFyzgr1Qaau/Bbo3Z1ouKeuGoVxB3jQHSKeN3Hn
-	vibJXJPpmmL+nnH2uf/jTMEOozuxzrW5q2Tei5kzal9Om+TPOKqTOmtD5hud1dc/6f9joo
-	WC6wojI6BCXc6438Uj+NijGEzR8nWHrj49NaWEoxicg8XKV4sM3ZwZCugBIl7DA0P7Kjxk
-	Vi9kW9Hi7mB5xvuAhqU5YY4bO0wO8BINmaroYWnwBagDjhoRd1lb0D+PehnfWg==
-Received: from Til-Notebook.lan (unknown [IPv6:2a00:1f:5743:bc00::d0f])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	by hub2.goneo.de (Postfix) with ESMTPSA id 63596240350;
-	Sun, 20 Sep 2026 17:44:08 +0200 (CEST)
-From: Til Kaiser <mail@tk154.de>
-To: netdev@vger.kernel.org
-Cc: lorenzo@kernel.org,
-	andrew+netdev@lunn.ch,
-	davem@davemloft.net,
-	edumazet@google.com,
-	kuba@kernel.org,
-	pabeni@redhat.com,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	Til Kaiser <mail@tk154.de>
-Subject: [PATCH net-next 2/2] net: airoha: Add XDP statistics
-Date: Sun, 20 Sep 2026 17:43:29 +0200
-Message-ID: <20260920154329.161755-3-mail@tk154.de>
-X-Mailer: git-send-email 2.55.0
-In-Reply-To: <20260920154329.161755-1-mail@tk154.de>
-References: <20260920154329.161755-1-mail@tk154.de>
+	id 1x8MYB-00000000G8g-0SNU;
+	Sun, 20 Sep 2026 18:46:07 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by tor.source.kernel.org (Postfix) with ESMTP id 1A87A601DB;
+	Sun, 20 Sep 2026 18:46:06 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 431801F000FF;
+	Sun, 20 Sep 2026 18:45:57 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1789929965;
+	bh=7ynaufQVtyfTr5NQ4iLsrxfZxiHcy95lGY5BmduC6Mo=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To;
+	b=IECg6RA8t5Y5NM/O2OoL6T2FKPBTNxPWYMFFG5dVV6UPBJlyurapze0Oxk9g14wsT
+	 BA6iMjkH6lhbW6ktnVI8U+D2PwRwruPh8xo/e42R0FJIibymnZmCTZuWT44yysLemY
+	 RAV6b0ezBUx5FQlFEP58xX2ToCAgJSSGvhQvIAZ0CA8UWcNDfbl1Du3koLWv1dhDeL
+	 LJdq+MapRumNtkV/j7xWJ/XxzbvxLeLN4D6Ua+9gV+rinWDUswdKlTUj6LYnxWqsO+
+	 HRiVrUM/J9T3Bdm3VK425koantZzNKVn4Z+NLlRu3tsM9cXf0OSGU+U639KHGcTVs+
+	 NWzZzI53CAtew==
+Message-ID: <7074efa0-17f3-45f9-9cde-301f81c68005@kernel.org>
+Date: Sun, 20 Sep 2026 20:45:54 +0200
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 01/28] dt-bindings: sound: Add Apple Macs sound
+ peripherals
+To: James Calligeros <jcalligeros99@gmail.com>,
+ =?UTF-8?Q?Martin_Povi=C5=A1er?= <povik+lin@cutebit.org>,
+ Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>,
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, Janne Grunau <j@jannau.net>,
+ Neal Gompa <neal@gompa.dev>, David Rhodes <david.rhodes@cirrus.com>,
+ Richard Fitzgerald <rf@opensource.cirrus.com>,
+ Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>,
+ Ulf Hansson <ulfh@kernel.org>, Amit Kucheria <amit.kucheria@linaro.org>,
+ "Rafael J. Wysocki" <rafael.j.wysocki@intel.com>,
+ Lars-Peter Clausen <lars@metafoo.de>, Vinod Koul <vkoul@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Shenghao Ding <shenghao-ding@ti.com>, Kevin Lu <kevin-lu@ti.com>,
+ Baojun Xu <baojun.xu@ti.com>, Sen Wang <sen@ti.com>,
+ James Schulman <james.schulman@cirrus.com>
+Cc: asahi@lists.linux.dev, linux-sound@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, patches@opensource.cirrus.com,
+ Takashi Iwai <tiwai@suse.de>, linux-mediatek@lists.infradead.org
+References: <20260920-macaudio-v1-0-741cc20a74e5@gmail.com>
+ <20260920-macaudio-v1-1-741cc20a74e5@gmail.com>
+Content-Language: en-US
+From: Sven Peter <sven@kernel.org>
+In-Reply-To: <20260920-macaudio-v1-1-741cc20a74e5@gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-Rspamd-UID: 6e5446
-X-Rspamd-UID: 047c72
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260920_084416_651019_88E4FC08 
-X-CRM114-Status: GOOD (  20.90  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,275 +88,67 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Track and expose per-device XDP statistics via ethtool, covering both
-the RX and TX sides of the XDP data path.
+Hi,
 
-A new struct airoha_xdp_stats is introduced and embedded in the existing
-struct airoha_hw_stats. It contains the following counters, all protected
-by the existing u64_stats_sync:
+On 20.09.26 06:53, James Calligeros wrote:
+> From: Martin Povišer <povik+lin@cutebit.org>
+> 
+> Add binding for Apple Silicon Macs machine-level integration of sound
+> peripherals.
+> 
+> Signed-off-by: Martin Povišer <povik+lin@cutebit.org>
+> Co-developed-by: James Calligeros <jcalligeros99@gmail.com>
+> Signed-off-by: James Calligeros <jcalligeros99@gmail.com>
+> ---
+>   .../bindings/sound/apple,macaudio.yaml   | 235 +++++++++++++++++++++++++
+>   1 file changed, 235 insertions(+)
+> 
+> diff --git a/Documentation/devicetree/bindings/sound/apple,macaudio.yaml b/Documentation/devicetree/bindings/sound/apple,macaudio.yaml
+> new file mode 100644
+> index 000000000000..bd844c9928c9
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/sound/apple,macaudio.yaml
+> @@ -0,0 +1,235 @@
+> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
+> +%YAML 1.2
+> +---
+> +$id: http://devicetree.org/schemas/sound/apple,macaudio.yaml#
+> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> +
+> +title: Sound peripheral integration for Apple Silicon Macs
+> +
+> +description:
+> +  This binding represents the overall machine-level integration of sound
+> +  peripherals on Apple Silicon Macs, starting with the M1 series.
+> +
+> +maintainers:
+> +  - James Calligeros <jcalligeros99@gmail.com>
+> +
+> +properties:
+> +  compatible:
+> +    oneOf:
+> +      - description: First-of-their-kind machines
+> +        items:
+> +          - enum:
+> +              - apple,j180-macaudio
+> +              - apple,j274-macaudio
+> +              - apple,j293-macaudio
+> +              - apple,j313-macaudio
+> +              - apple,j314-macaudio
+> +              - apple,j316-macaudio
+> +              - apple,j375-macaudio
+> +              - apple,j413-macaudio
+> +              - apple,j415-macaudio
+> +              - apple,j473-macaudio
+> +              - apple,j456-macaudio
+> +              - apple,j457-macaudio
+> +          - const: apple,macaudio
 
-  rx_xdp_pass            - frames passed to the networking stack
-  rx_xdp_aborted         - frames with XDP_ABORTED or unknown action
-  rx_xdp_drop            - frames dropped by the BPF program or on error
-  rx_xdp_tx              - frames sent back out via XDP_TX
-  rx_xdp_tx_errors       - XDP_TX failures
-  rx_xdp_redirect        - frames successfully redirected
-  rx_xdp_redirect_errors - XDP_REDIRECT failures
-  tx_xdp_xmit            - frames successfully submitted via ndo_xdp_xmit
-  tx_xdp_xmit_errors     - frames dropped in ndo_xdp_xmit
+We've had some not-so-great experiences with these generic compatibles 
+in the past. I'd just drop it.
 
-The airoha_run_xdp() function is reworked to update the appropriate
-counter after each XDP action. The airoha_xdp_xmit() ndo_xdp_xmit handler
-is updated to record the number of successfully transmitted and dropped
-frames.
 
-The ethtool interface is extended with three new callbacks:
 
-- get_strings: emits the XDP counter names followed by the page pool
-  stat strings obtained from page_pool_ethtool_stats_get_strings().
-- get_sset_count: returns the combined count of XDP and page pool stats.
-- get_ethtool_stats: reads the XDP counters under the u64_stats_sync
-  seqcount and appends page pool stats collected from all active RX
-  queues via page_pool_get_stats().
-
-PAGE_POOL_STATS is selected in Kconfig to enable the page pool statistics
-infrastructure required by the ethtool callbacks.
-
-Signed-off-by: Til Kaiser <mail@tk154.de>
----
- drivers/net/ethernet/airoha/Kconfig      |   1 +
- drivers/net/ethernet/airoha/airoha_eth.c | 131 ++++++++++++++++++++---
- drivers/net/ethernet/airoha/airoha_eth.h |  14 +++
- 3 files changed, 133 insertions(+), 13 deletions(-)
-
-diff --git a/drivers/net/ethernet/airoha/Kconfig b/drivers/net/ethernet/airoha/Kconfig
-index 1f6640a15fc9..3fa7683a79e9 100644
---- a/drivers/net/ethernet/airoha/Kconfig
-+++ b/drivers/net/ethernet/airoha/Kconfig
-@@ -20,6 +20,7 @@ config NET_AIROHA
- 	depends on NET_DSA || !NET_DSA
- 	select NET_AIROHA_NPU
- 	select PAGE_POOL
-+	select PAGE_POOL_STATS
- 	help
- 	  This driver supports the gigabit ethernet MACs in the
- 	  Airoha SoC family.
-diff --git a/drivers/net/ethernet/airoha/airoha_eth.c b/drivers/net/ethernet/airoha/airoha_eth.c
-index 71b25f225a8a..29b837204842 100644
---- a/drivers/net/ethernet/airoha/airoha_eth.c
-+++ b/drivers/net/ethernet/airoha/airoha_eth.c
-@@ -864,6 +864,11 @@ static int airoha_xdp_xmit(struct net_device *netdev, int n,
- 	spin_unlock(&q->lock);
- 	rcu_read_unlock();
- 
-+	u64_stats_update_begin(&dev->stats.syncp);
-+	dev->stats.xdp_stats.tx_xdp_xmit += n - drops;
-+	dev->stats.xdp_stats.tx_xdp_xmit_errors += drops;
-+	u64_stats_update_end(&dev->stats.syncp);
-+
- 	return n - drops;
- }
- 
-@@ -871,40 +876,56 @@ static bool airoha_run_xdp(struct net_device *netdev, struct bpf_prog *prog,
- 			   struct xdp_buff *xdp, struct airoha_queue *q,
- 			   struct airoha_queue_entry *e, struct page *page)
- {
-+	struct airoha_gdm_dev *dev = netdev_priv(netdev);
-+	struct airoha_hw_stats *hw_stats = &dev->stats;
- 	u32 act = bpf_prog_run_xdp(prog, xdp);
-+	u64 *count;
- 
- 	switch (act) {
- 	case XDP_PASS:
--		return false;
-+		count = &hw_stats->xdp_stats.rx_xdp_pass;
-+		goto update_stats;
- 	case XDP_TX:
- 		if (unlikely(airoha_xdp_xmit_back(netdev, xdp, q->qdma) < 0)) {
-+			count = &hw_stats->xdp_stats.rx_xdp_tx_errors;
- 			trace_xdp_exception(netdev, prog, act);
--			page_pool_put_full_page(q->page_pool, page, true);
--		} else {
--			e->buf = NULL;
-+			break;
- 		}
--		break;
-+
-+		e->buf = NULL;
-+		count = &hw_stats->xdp_stats.rx_xdp_tx;
-+		goto update_stats;
- 	case XDP_REDIRECT:
- 		if (unlikely(xdp_do_redirect(netdev, xdp, prog) < 0)) {
-+			count = &hw_stats->xdp_stats.rx_xdp_redirect_errors;
- 			trace_xdp_exception(netdev, prog, act);
--			page_pool_put_full_page(q->page_pool, page, true);
--		} else {
--			q->xdp_flush = true;
--			e->buf = NULL;
-+			break;
- 		}
--		break;
-+
-+		e->buf = NULL;
-+		q->xdp_flush = true;
-+		count = &hw_stats->xdp_stats.rx_xdp_redirect;
-+		goto update_stats;
- 	default:
- 		bpf_warn_invalid_xdp_action(netdev, prog, act);
- 		fallthrough;
- 	case XDP_ABORTED:
-+		count = &hw_stats->xdp_stats.rx_xdp_aborted;
- 		trace_xdp_exception(netdev, prog, act);
--		fallthrough;
-+		break;
- 	case XDP_DROP:
--		page_pool_put_full_page(q->page_pool, page, true);
-+		count = &hw_stats->xdp_stats.rx_xdp_drop;
- 		break;
- 	}
- 
--	return true;
-+	page_pool_put_full_page(q->page_pool, page, true);
-+
-+update_stats:
-+	u64_stats_update_begin(&hw_stats->syncp);
-+	*count = *count + 1;
-+	u64_stats_update_end(&hw_stats->syncp);
-+
-+	return act != XDP_PASS;
- }
- 
- static int airoha_qdma_rx_process(struct airoha_queue *q, int budget)
-@@ -3676,12 +3697,96 @@ static const struct net_device_ops airoha_netdev_ops = {
- 	.ndo_xdp_xmit		= airoha_xdp_xmit,
- };
- 
-+#define AIROHA_ETHTOOL_XDP_STAT(x) { #x, \
-+				  offsetof(struct airoha_hw_stats, xdp_stats.x) / \
-+				  sizeof(u64) }
-+
-+static const struct {
-+	const char name[ETH_GSTRING_LEN];
-+	u32 offset;
-+} airoha_ethtool_xdp_stats[] = {
-+	AIROHA_ETHTOOL_XDP_STAT(rx_xdp_redirect),
-+	AIROHA_ETHTOOL_XDP_STAT(rx_xdp_redirect_errors),
-+	AIROHA_ETHTOOL_XDP_STAT(rx_xdp_pass),
-+	AIROHA_ETHTOOL_XDP_STAT(rx_xdp_aborted),
-+	AIROHA_ETHTOOL_XDP_STAT(rx_xdp_drop),
-+	AIROHA_ETHTOOL_XDP_STAT(rx_xdp_tx),
-+	AIROHA_ETHTOOL_XDP_STAT(rx_xdp_tx_errors),
-+	AIROHA_ETHTOOL_XDP_STAT(tx_xdp_xmit),
-+	AIROHA_ETHTOOL_XDP_STAT(tx_xdp_xmit_errors),
-+};
-+
-+static void airoha_ethtool_get_strings(struct net_device *netdev, u32 stringset, u8 *data)
-+{
-+	int i;
-+
-+	switch (stringset) {
-+	case ETH_SS_STATS:
-+		for (i = 0; i < ARRAY_SIZE(airoha_ethtool_xdp_stats); i++) {
-+			strscpy(data, airoha_ethtool_xdp_stats[i].name, ETH_GSTRING_LEN);
-+			data += ETH_GSTRING_LEN;
-+		}
-+		page_pool_ethtool_stats_get_strings(data);
-+		break;
-+	}
-+}
-+
-+static int airoha_ethtool_get_sset_count(struct net_device *netdev, int stringset)
-+{
-+	switch (stringset) {
-+	case ETH_SS_STATS:
-+		return ARRAY_SIZE(airoha_ethtool_xdp_stats) + page_pool_ethtool_stats_get_count();
-+	default:
-+		return -EOPNOTSUPP;
-+	}
-+}
-+
-+static void airoha_ethtool_get_ethtool_stats(struct net_device *netdev,
-+					     struct ethtool_stats *stats,
-+					     u64 *data)
-+{
-+	struct airoha_gdm_dev *dev = netdev_priv(netdev);
-+	struct airoha_hw_stats *hw_stats = &dev->stats;
-+	u64 *hw_stats_base = (u64 *)hw_stats;
-+	struct page_pool_stats pp_stats = {};
-+	struct airoha_qdma *qdma;
-+	unsigned int start;
-+	int i;
-+
-+	if (netif_running(netdev))
-+		airoha_update_hw_stats(dev);
-+
-+	do {
-+		start = u64_stats_fetch_begin(&hw_stats->syncp);
-+		for (i = 0; i < ARRAY_SIZE(airoha_ethtool_xdp_stats); i++)
-+			data[i] = hw_stats_base[airoha_ethtool_xdp_stats[i].offset];
-+	} while (u64_stats_fetch_retry(&hw_stats->syncp, start));
-+
-+	rcu_read_lock();
-+	qdma = rcu_dereference(dev->qdma);
-+	if (qdma) {
-+		for (i = 0; i < ARRAY_SIZE(qdma->q_rx); i++) {
-+			struct airoha_queue *q = &qdma->q_rx[i];
-+
-+			if (q->page_pool)
-+				page_pool_get_stats(q->page_pool, &pp_stats);
-+		}
-+	}
-+	rcu_read_unlock();
-+
-+	page_pool_ethtool_stats_get(data + ARRAY_SIZE(airoha_ethtool_xdp_stats),
-+				    &pp_stats);
-+}
-+
- static const struct ethtool_ops airoha_ethtool_ops = {
- 	.get_drvinfo		= airoha_ethtool_get_drvinfo,
- 	.get_eth_mac_stats      = airoha_ethtool_get_mac_stats,
- 	.get_rmon_stats		= airoha_ethtool_get_rmon_stats,
- 	.get_link_ksettings	= phy_ethtool_get_link_ksettings,
- 	.get_link		= ethtool_op_get_link,
-+	.get_strings		= airoha_ethtool_get_strings,
-+	.get_sset_count		= airoha_ethtool_get_sset_count,
-+	.get_ethtool_stats	= airoha_ethtool_get_ethtool_stats,
- };
- 
- static int airoha_metadata_dst_alloc(struct airoha_gdm_port *port)
-diff --git a/drivers/net/ethernet/airoha/airoha_eth.h b/drivers/net/ethernet/airoha/airoha_eth.h
-index cfbc0b8f5bf9..d2ac295c49e9 100644
---- a/drivers/net/ethernet/airoha/airoha_eth.h
-+++ b/drivers/net/ethernet/airoha/airoha_eth.h
-@@ -236,6 +236,18 @@ struct airoha_tx_irq_queue {
- 	u32 *q;
- };
- 
-+struct airoha_xdp_stats {
-+	u64 rx_xdp_redirect;
-+	u64 rx_xdp_redirect_errors;
-+	u64 rx_xdp_pass;
-+	u64 rx_xdp_aborted;
-+	u64 rx_xdp_drop;
-+	u64 rx_xdp_tx;
-+	u64 rx_xdp_tx_errors;
-+	u64 tx_xdp_xmit;
-+	u64 tx_xdp_xmit_errors;
-+};
-+
- struct airoha_hw_stats {
- 	struct u64_stats_sync syncp;
- 
-@@ -259,6 +271,8 @@ struct airoha_hw_stats {
- 	u64 rx_jabber;
- 	u64 rx_len[7];
- 
-+	struct airoha_xdp_stats xdp_stats;
-+
- 	struct {
- 		/* Previous HW register values for 32-bit counter delta
- 		 * tracking. Storing the last seen value and accumulating
--- 
-2.55.0
+Sven
 
 
