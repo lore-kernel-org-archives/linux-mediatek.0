@@ -4,81 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 89B40C982D0
-	for <linux-mediatek@archiver.kernel.org>; Sun, 20 Sep 2026 04:57:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 35A6CC982D0
+	for <linux-mediatek@archiver.kernel.org>; Sun, 20 Sep 2026 04:57:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=gWumTWBsv9GByVmif5mlGmCyRKrpCmaiWOQWTcHmLkY=; b=UU225cUPh4+DbZ/3NgYJ0ZpW+q
-	92cFJkw6ljZEw90yAUMxZyDEtC7lQawMSOBVCPCGCwz1XD/yXN/npwUSHKJza6QsNONY/85Krv+Rg
-	Qb/mA0kKC+OBAFqqXoWjgYleIxf0O8FXu6HK6vH56K6Ynaj287Fhs3ryOrZjDnTAAGmm9R+LQge1V
-	Kd8E1r+mlag68RipPutyyrkj9+29OtLdQgqCdzi40mZ1iq9URjWhHno/kaSi2pzfirVahzDewo2vm
-	uiZTXq0QZ2GmFF+RFh08Lkj/qsBFhJzDr6/Rvy3Z+cCd2UVP1LqwhLEXKos9ajdGI5yNnO0Id9AC3
-	e4qwySIw==;
+	bh=UhSaVgPZF5rm02UijUctP+1GziT6CoSBtc+R2AKZdGQ=; b=rY31NIRdUVPZIlxibZfkt857pb
+	NzaZiDnfgqR+7Dokji75nhxQZgKqEG4WjfbmddKe0EObK4soh7HrlkzaVKXR3lr8CJNAfjpiN9zJZ
+	ZAOLGU8uMWjDEEPySCd519wUXz/qNw2J8ghZ2Q+/3MZXM+c1VBzakgfU6t4iJxV6qyUjnHg01JGFe
+	5aFt9+OK/pWLQ9NznKPJjAMxHVO84ufbuGQ9mlHwHTI1hKcQAikjqoY5Fm8w9H9FPGosTlkbQnGea
+	nKCtIPOuDM7Cqa92t92lmlHVKnmE+QhihCtmeTiX1MwIHDNshBXDd+Cnf/qlSUYfaQxFq0Me6wZxd
+	+y/V6VMg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x89c8-0000000GtHn-2TvK;
-	Sun, 20 Sep 2026 04:57:20 +0000
+	id 1x89cJ-0000000GtOa-1O95;
+	Sun, 20 Sep 2026 04:57:31 +0000
 Received: from mail-pj2-x11.google.com ([2607:f8b0:4864:39::11])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x89c6-0000000GtFH-07Wh
+	id 1x89cE-0000000GtLw-3VHG
 	for linux-mediatek@lists.infradead.org;
-	Sun, 20 Sep 2026 04:57:19 +0000
-Received: by mail-pj2-x11.google.com with SMTP id d9443c01a7336-2db1ca069c8so20274195ad.3
-        for <linux-mediatek@lists.infradead.org>; Sat, 19 Sep 2026 21:57:17 -0700 (PDT)
+	Sun, 20 Sep 2026 04:57:29 +0000
+Received: by mail-pj2-x11.google.com with SMTP id d9443c01a7336-2dd4b43b20bso13301905ad.1
+        for <linux-mediatek@lists.infradead.org>; Sat, 19 Sep 2026 21:57:26 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1789880237; x=1790485037; darn=lists.infradead.org;
+        d=gmail.com; s=20251104; t=1789880246; x=1790485046; darn=lists.infradead.org;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :content-type:mime-version:subject:date:from:from:to:cc:subject:date
          :message-id:reply-to:content-type;
-        bh=gWumTWBsv9GByVmif5mlGmCyRKrpCmaiWOQWTcHmLkY=;
-        b=cq+gPMgdyPQJn61uhIr9EwXeL2IzfhsUaxlVHxK0awjCY388Nd9CgTtJ6eIlguPqD5
-         FJV874xLWhycYTp7d+fUrjS6b1MfrfB67MpE2rpGV/9THHLdblTj7jskku7UJYTOdtj9
-         By/rGzq9qFPCDWgWbCmel24zn0c97LJPzgWMCV7UQMlcFqNi+soVDpcDu2Dt9Jc1QcWT
-         o15wjotrfp/tK75DQ/pP2aQxuQf0EwA4G72DXuPJ05QurGKZgaL6tl32iniMiz3Sdsia
-         AhMGbkm/wEfqfmwn5R2ocOat1TAeIC7MODrdmhWWcI+TgB7cAxJYPQm+JQoNUI6d9yw4
-         bJoQ==
+        bh=UhSaVgPZF5rm02UijUctP+1GziT6CoSBtc+R2AKZdGQ=;
+        b=juShknAQB9ZvQupiukFHOUKG89GHdd4np11hOkcfhyB92QOmkSEmDXs/9OGOhKbH3M
+         o9A7gNfREHgWE//KZZV5y+pNWjhcPa3LnMdDu05/vOPvxaqrRCuPyz/shp/5yPOLmy2u
+         pusOaT99mSzcKYVO/O4Vz1Qlq4IY6qAUXP/IC9xuggIWcjnnRckDmYqCwagEjG6wfWKi
+         xZsHcdHCkov1E5JsU7ISPQDeXBjEU9dh4qmy7MR/anDggQYZ7zYyBQcVQP/Qtt+vSZH8
+         OYc6/nrR5si+4/2GuC0MMSb5r0ZOReb8pRdUQRoW/Rew/CGvqxt7LyhG1+/0Q0j8XNOU
+         9C/A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1789880237; x=1790485037;
+        d=1e100.net; s=20260707; t=1789880246; x=1790485046;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :content-type:mime-version:subject:date:from:x-gm-gg
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
          :content-type;
-        bh=gWumTWBsv9GByVmif5mlGmCyRKrpCmaiWOQWTcHmLkY=;
-        b=mis8lqFDajP6nXVmDp/Y99gdtDRnc4c40euJ9ba35NQTxyxpA+TZALXt1g9KgaRiHs
-         A/PxtufSIeURa6mKwC72Xln9TBRvUMShKiHfXA/bPvR3UNOj8HwRNvN21LIHcm3l0ISO
-         HZR0gvNlUpx0UQJbVn0BoE8b1Yi7AAQ5QKIA1qBSIHagbbzxuWOgY/MaQ2TsZ9exoaAt
-         jlNcF/vIi4LPEWkBA16TQvtJKkfmX7wcvU670cfhvNlQmegKRiCYnx6VZbnxDsqDqQA7
-         Dl5lCPr9ooa2LnGA+bi7ZGlHnCs+qFIkvUiM67FYipp6OHf0oNlmFqm/gViI9PrOYgZ4
-         j3Zg==
-X-Forwarded-Encrypted: i=1; AKwUvBwqN5fXXUfLr7PskTcbkc1sc9v2NfOCHjtjQn5XZD7vGT/pyqVxRmOmync56DV1wl5iX1Tcqyzg4BRmpSz4pw==@lists.infradead.org
-X-Gm-Message-State: AFuF++lmVP2m3nIGVIfE0aTbatZfDbtZwOokxj0WPgRX4Vh+TVfY7DY9
-	O7rmqFIsMKu0OMP1xtAXrgb9idd5OUakIQOxk1FAqroFaiEA5dr1KG6p
-X-Gm-Gg: AYBFou3IrXHW+d+DPvPbsIgOQkDzld1DKExTm1lZel8h+gIUmsz8tJV9ht2sFVE4zX0
-	ZhHn25NIFsaDJV9vaW9nLocLFNWeQW6PRNckt94RS8ABhji34HySplUsdWu1Ru70+8opSjXiFMM
-	O/fcOldEjvq6v3hlNHghRzTESSaISXk4H98n+XsO5jqg8HrCH7/StD9C+eeIhKR6HcydG2So/wl
-	Y3KnWxvxym2uTEWkV+kWSzMqJ5JoQYS3okqUrbwmMC0l8on08SZj02YZNGzVzw6qrIklTnisXvo
-	hPfUA4D9INDppahsPsuv4pddoKZ+vUct4crsk2qKFFvMPUNABcq5dMhVgSwF/LCrqF+yo5gf6k0
-	2a/pleEDzP8t2omaKk3ftpema+noE83w1asJWoFSTYq94UnBdLvIIm45uvEXWTIbT2giL5pgBdT
-	AB2B4CumMJ4Cvw7WAzZlLNvj5mGhaSECnszWNie27gTYNJoqmvDOVDv92Na5j2EU3a8BL5DdxgA
-	utWl31XUyK7Se5nPFWBCejiIVQ/CsmaQnGuAJrnllQNTkqLE7jLndzqZgo4Ektaf6S3K4fNvjim
-	hSrCXjZm7h5C4XbJC/xPH4uO31k5NfYntfZIUrrWG7wqrkc=
-X-Received: by 2002:a17:903:2350:b0:2d8:d4d0:7932 with SMTP id d9443c01a7336-2ddb1b99472mr110221825ad.22.1789880237323;
-        Sat, 19 Sep 2026 21:57:17 -0700 (PDT)
+        bh=UhSaVgPZF5rm02UijUctP+1GziT6CoSBtc+R2AKZdGQ=;
+        b=YfDfc0hE0xOLG2nQUhTejovWY5eFy21xZbbaOFF1lkStKw3VUClfNekyis5cmHS8be
+         m5VhLcPfUfXmq8QkgWo5sP4Z0mGDX5rD6X6jX7u89RC2irq4CmRiZ0hMNRh5jURB84Ir
+         Nsz/9PHXud0ODpqCcGKOedcQZqwcycPNlYjki53+1a0SoPofv3TeoqUlRZnj73w03e82
+         rInlBsgcRopdAuEvvaK1SAp4+yh0djwGGo+MdpdwpSAKMEyJAyzyJLT1ahTsJBWp3qlH
+         xkzyMnciKe2l1aq166ErY/ojLwvbCFjCXR4dxP73P+RNxcjQXGZ9ZCo7d+tjvw61CtAT
+         sRqw==
+X-Forwarded-Encrypted: i=1; AKwUvBxGNCkxkxh+WhJ7PT2ngmMYi4uoaiXKnsNuODN46I16IeFkLVypm0TRzSssKqAg4b1j67K/HncRgFvp57iaTg==@lists.infradead.org
+X-Gm-Message-State: AFuF++k65tjlToz4LRlb/HbmwSGDc2RSY+wxfGDQ53w15fVEbPwBHOgt
+	FAqK935HHdvX24c+I0GlYWCkrnckafS3lWnCvl4/tavNnc7kbkmU7ZoU
+X-Gm-Gg: AYBFou3BWVJI5kBHVKDvK1OoFpbZG4mjemAVpz1VtUWbbY4nWlcT7yCUBi5NyxVh+00
+	pcixEYY+CHLRN/6KOWNtfaUcFAqIDkx/6LnNawHYpa1htVzyMiFdcedIPXI4mPwR+d/ipHb3CO/
+	W8iuzzmt5E1JWsam8UHJB0zqi8NrwnPvcwww62nLrhwpu+GNeKRHQrRcoJFeyWGujBe0Nd6P+e2
+	+pGuWeW/XDH/9U+UXqpSFh+EZuiOObBACss8aOp5fIiEcJDJZpSxyt5asWSda/Tz3rlBiHVW+yR
+	iIPKmPbK6wl67+23HfMt9EqZU4CdNT428gjGeoylN5VwYMqTa+f2kcnpmqPFCJd5xy7u3SxwmIF
+	FPmrq3ku5SuD5J3iE81ndKYJORHwxB6jmuCZ1G3+PVsutaglVJcPZ9NQvwlK3cuJmv8w2FG5Eyc
+	ta2HJwUPGsJaiRXO0zWMo2wudWdIpCMt4F1sdZHV6e7t4Elzfkl6a8TVXqNVZGJ3JCKIvsfQ1ic
+	H1y4iDLaPnC1IbQNsL1Ayc32Wpuh7g4kBsDcS/UT9XRR//6ylEwh4a9UNwNRR4bwWp4QzOnVYZk
+	8m+Qxr5KW1NDICb9CuhLcojoEI1zYAl37jQZCCM+pX59yoU=
+X-Received: by 2002:a17:903:3205:b0:2d8:f965:7e48 with SMTP id d9443c01a7336-2ddb1ab3990mr125558885ad.1.1789880246135;
+        Sat, 19 Sep 2026 21:57:26 -0700 (PDT)
 Received: from [192.168.2.3] ([2403:581e:d87e:0:fc2d:ed31:e80e:412d])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-2ddc17d712dsm16026765ad.64.2026.09.19.21.57.08
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-2ddc17d712dsm16026765ad.64.2026.09.19.21.57.17
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 19 Sep 2026 21:57:17 -0700 (PDT)
+        Sat, 19 Sep 2026 21:57:25 -0700 (PDT)
 From: James Calligeros <jcalligeros99@gmail.com>
-Date: Sun, 20 Sep 2026 14:53:53 +1000
-Subject: [PATCH 14/28] ASoC: ops: Export snd_soc_control_matches()
+Date: Sun, 20 Sep 2026 14:53:54 +1000
+Subject: [PATCH 15/28] ASoC: tas2764: Set up V/ISENSE on codec probe
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20260920-macaudio-v1-14-741cc20a74e5@gmail.com>
+Message-Id: <20260920-macaudio-v1-15-741cc20a74e5@gmail.com>
 References: <20260920-macaudio-v1-0-741cc20a74e5@gmail.com>
 In-Reply-To: <20260920-macaudio-v1-0-741cc20a74e5@gmail.com>
 To: =?utf-8?q?Martin_Povi=C5=A1er?= <povik+lin@cutebit.org>, 
@@ -101,21 +101,20 @@ To: =?utf-8?q?Martin_Povi=C5=A1er?= <povik+lin@cutebit.org>,
 Cc: asahi@lists.linux.dev, linux-sound@vger.kernel.org, 
  devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
  linux-arm-kernel@lists.infradead.org, patches@opensource.cirrus.com, 
- Takashi Iwai <tiwai@suse.de>, linux-mediatek@lists.infradead.org, 
- Hector Martin <marcan@marcan.st>
+ Takashi Iwai <tiwai@suse.de>, linux-mediatek@lists.infradead.org
 X-Mailer: b4 0.15.2
-X-Developer-Signature: v=1; a=openpgp-sha256; l=2678;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=3680;
  i=jcalligeros99@gmail.com; h=from:subject:message-id;
- bh=uxLGzSeW/mzW8E6v3Cg7Wd+ZjxhCKdm9ELh/X2EAU88=;
- b=owGbwMvMwCV2xczoYuD3ygTG02pJDFnr0xWLO9eyfbBor06vLstcdaLicvofUeZTBl/eBvFfe
- rmvsK22YyILgxgXg6WYIsuGJiGP2UZsN/tFKvfCzGFlAhkiLdLAAAQsDHy5iXmlRjpGeqbahnqG
- RjrGOkYMXJwCMNX9PAz/s8qDIsvmh53P8D5Tz/lWc7XhN7NFpw+lskz3vNL/72d9IMP/oKod8dP
- Mjuve2bEroJZ3o1lo9uWXh9+oOpofqjxhlufLDQA=
+ bh=fow1KNfeFBOwUBq/AuCok83xrJa9sG69vnUGOaB1hgI=;
+ b=owGbwMvMwCV2xczoYuD3ygTG02pJDFnr0xVrK2bPvZvHF6X2dCXrwu1KRTPjZ9y5ViY06av2h
+ xdHm9cVdUxkYRDjYrAUU2TZ0CTkMduI7Wa/SOVemDmsTCBDpEUaGICAhYEvNzGv1EjHSM9U21DP
+ 0EjHWMeIgYtTAKZ6+UyG/6nut++9+/rpg8y69fskunk8ZVavXr+WVdSMRfcYq+WiK0sY/qmdUP2
+ 7/MWbypxjaSUxbA7lme6/Pk5q07ZaOU/qrPlOZ3YA
 X-Developer-Key: i=jcalligeros99@gmail.com; a=openpgp;
  fpr=B08212489B3206D98F1479BDD43632D151F77960
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260919_215718_083025_26269912 
-X-CRM114-Status: GOOD (  12.01  )
+X-CRM114-CacheID: sfid-20260919_215726_894879_06916682 
+X-CRM114-Status: GOOD (  14.58  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -130,80 +129,121 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Hector Martin <marcan@marcan.st>
+Setup V/ISENSE on codec probe rather than doing so on every hw_params
+or TDM slot call so that it is configured at the same time as the
+rest of the codec.
 
-This helper is useful for drivers that want to do their own control
-lookups and matching as part of more complex logic than the existing
-operations.
-
-Signed-off-by: Hector Martin <marcan@marcan.st>
 Signed-off-by: James Calligeros <jcalligeros99@gmail.com>
 ---
- include/sound/soc.h | 2 ++
- sound/soc/soc-ops.c | 9 +++++----
- 2 files changed, 7 insertions(+), 4 deletions(-)
+ sound/soc/codecs/tas2764.c | 61 ++++++++-----------------
+ 1 file changed, 20 insertions(+), 41 deletions(-)
 
-diff --git a/include/sound/soc.h b/include/sound/soc.h
-index d638fc69925c..6c4689ef8973 100644
---- a/include/sound/soc.h
-+++ b/include/sound/soc.h
-@@ -576,6 +576,8 @@ int snd_soc_get_volsw_sx(struct snd_kcontrol *kcontrol,
- 	struct snd_ctl_elem_value *ucontrol);
- int snd_soc_put_volsw_sx(struct snd_kcontrol *kcontrol,
- 	struct snd_ctl_elem_value *ucontrol);
-+bool snd_soc_control_matches(struct snd_kcontrol *kcontrol,
-+	const char *pattern);
- int snd_soc_limit_volume(struct snd_soc_card *card,
- 	const char *name, int max);
- int snd_soc_deactivate_kctl(struct snd_soc_card *card,
-diff --git a/sound/soc/soc-ops.c b/sound/soc/soc-ops.c
-index dc27d1c409ab..94d0514be66d 100644
---- a/sound/soc/soc-ops.c
-+++ b/sound/soc/soc-ops.c
-@@ -403,7 +403,7 @@ int snd_soc_put_volsw_sx(struct snd_kcontrol *kcontrol,
- }
- EXPORT_SYMBOL_GPL(snd_soc_put_volsw_sx);
- 
--static bool soc_control_matches(struct snd_kcontrol *kctl,
-+bool snd_soc_control_matches(struct snd_kcontrol *kctl,
- 	const char *pattern)
+diff --git a/sound/soc/codecs/tas2764.c b/sound/soc/codecs/tas2764.c
+index 6654100ac91d..39372d0446d0 100644
+--- a/sound/soc/codecs/tas2764.c
++++ b/sound/soc/codecs/tas2764.c
+@@ -266,8 +266,6 @@ static int tas2764_mute(struct snd_soc_dai *dai, int mute, int direction)
+ static int tas2764_set_bitwidth(struct tas2764_priv *tas2764, int bitwidth)
  {
- 	const char *name = kctl->id.name;
-@@ -425,6 +425,7 @@ static bool soc_control_matches(struct snd_kcontrol *kctl,
+ 	struct snd_soc_component *component = tas2764->component;
+-	int sense_en;
+-	int val;
+ 	int ret;
  
- 	return !strcmp(name, pattern);
+ 	switch (bitwidth) {
+@@ -297,32 +295,6 @@ static int tas2764_set_bitwidth(struct tas2764_priv *tas2764, int bitwidth)
+ 	if (ret < 0)
+ 		return ret;
+ 
+-	val = snd_soc_component_read(tas2764->component, TAS2764_PWR_CTRL);
+-	if (val < 0)
+-		return val;
+-
+-	if (val & (1 << TAS2764_VSENSE_POWER_EN))
+-		sense_en = 0;
+-	else
+-		sense_en = TAS2764_TDM_CFG5_VSNS_ENABLE;
+-
+-	ret = snd_soc_component_update_bits(tas2764->component, TAS2764_TDM_CFG5,
+-					    TAS2764_TDM_CFG5_VSNS_ENABLE,
+-					    sense_en);
+-	if (ret < 0)
+-		return ret;
+-
+-	if (val & (1 << TAS2764_ISENSE_POWER_EN))
+-		sense_en = 0;
+-	else
+-		sense_en = TAS2764_TDM_CFG6_ISNS_ENABLE;
+-
+-	ret = snd_soc_component_update_bits(tas2764->component, TAS2764_TDM_CFG6,
+-					    TAS2764_TDM_CFG6_ISNS_ENABLE,
+-					    sense_en);
+-	if (ret < 0)
+-		return ret;
+-
+ 	return 0;
  }
-+EXPORT_SYMBOL_GPL(snd_soc_control_matches);
  
- static int snd_soc_clip_to_platform_max(struct snd_kcontrol *kctl)
+@@ -452,7 +424,6 @@ static int tas2764_set_dai_tdm_slot(struct snd_soc_dai *dai,
+ 				int slots, int slot_width)
  {
-@@ -492,7 +493,7 @@ int snd_soc_limit_volume(struct snd_soc_card *card, const char *name, int max)
- 		return -EINVAL;
+ 	struct snd_soc_component *component = dai->component;
+-	struct tas2764_priv *tas2764 = snd_soc_component_get_drvdata(component);
+ 	int left_slot, right_slot;
+ 	int slots_cfg;
+ 	int slot_size;
+@@ -499,15 +470,26 @@ static int tas2764_set_dai_tdm_slot(struct snd_soc_dai *dai,
+ 	if (ret < 0)
+ 		return ret;
  
- 	list_for_each_entry(kctl, &card->snd_card->controls, list) {
--		if (!soc_control_matches(kctl, name))
-+		if (!snd_soc_control_matches(kctl, name))
- 			continue;
+-	ret = snd_soc_component_update_bits(component, TAS2764_TDM_CFG5,
++	return 0;
++}
++
++static int tas2764_set_visense(struct tas2764_priv *tas2764, int vslot, int islot)
++{
++	int ret;
++
++	ret = snd_soc_component_update_bits(tas2764->component, TAS2764_TDM_CFG5,
++					    TAS2764_TDM_CFG5_VSNS_ENABLE |
+ 					    TAS2764_TDM_CFG5_50_MASK,
+-					    tas2764->v_sense_slot);
++					    TAS2764_TDM_CFG5_VSNS_ENABLE |
++					    vslot);
+ 	if (ret < 0)
+ 		return ret;
  
- 		ret = soc_limit_volume(kctl, max);
-@@ -534,7 +535,7 @@ int snd_soc_deactivate_kctl(struct snd_soc_card *card,
- 		return -EINVAL;
+-	ret = snd_soc_component_update_bits(component, TAS2764_TDM_CFG6,
++	ret = snd_soc_component_update_bits(tas2764->component, TAS2764_TDM_CFG6,
++					    TAS2764_TDM_CFG6_ISNS_ENABLE |
+ 					    TAS2764_TDM_CFG6_50_MASK,
+-					    tas2764->i_sense_slot);
++					    TAS2764_TDM_CFG6_ISNS_ENABLE |
++					    islot);
+ 	if (ret < 0)
+ 		return ret;
  
- 	list_for_each_entry(kctl, &card->snd_card->controls, list) {
--		if (!soc_control_matches(kctl, name))
-+		if (!snd_soc_control_matches(kctl, name))
- 			continue;
+@@ -821,15 +803,12 @@ static int tas2764_codec_probe(struct snd_soc_component *component)
+ 			dev_warn(tas2764->dev, "failed to request IRQ: %d\n", ret);
+ 	}
  
- 		ret = snd_ctl_activate_id(card->snd_card, &kctl->id, active);
-@@ -604,7 +605,7 @@ int snd_soc_set_enum_kctl(struct snd_soc_card *card,
- 		return -EINVAL;
+-	ret = snd_soc_component_update_bits(tas2764->component, TAS2764_TDM_CFG5,
+-					    TAS2764_TDM_CFG5_VSNS_ENABLE, 0);
+-	if (ret < 0)
+-		return ret;
++	if (tas2764->v_sense_slot != -1 || tas2764->i_sense_slot != -1) {
++		ret = tas2764_set_visense(tas2764, tas2764->v_sense_slot, tas2764->i_sense_slot);
++		if (ret < 0)
++			return ret;
++	}
  
- 	list_for_each_entry(kctl, &card->snd_card->controls, list) {
--		if (!soc_control_matches(kctl, name))
-+		if (!snd_soc_control_matches(kctl, name))
- 			continue;
+-	ret = snd_soc_component_update_bits(tas2764->component, TAS2764_TDM_CFG6,
+-					    TAS2764_TDM_CFG6_ISNS_ENABLE, 0);
+-	if (ret < 0)
+-		return ret;
  
- 		ret = soc_set_enum_kctl(kctl, value);
+ 	switch (tas2764->devid) {
+ 	case DEVID_SN012776:
 
 -- 
 2.55.0
