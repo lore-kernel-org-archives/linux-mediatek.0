@@ -4,69 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E0CF5C982D8
-	for <linux-mediatek@archiver.kernel.org>; Sun, 20 Sep 2026 14:49:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BAFB1C982D8
+	for <linux-mediatek@archiver.kernel.org>; Sun, 20 Sep 2026 15:44:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=3tmbrVeXaVfBtF5hD/z5Qd645SjBzZ23MF0sBpcF788=; b=xUYRuufJRmHTaJUILUQcBEKmTc
-	66U6fGAz4DwTgkj/bO4DaO2+KrIgupIL4qYyTvVJsYJ3b1buDJh3nnrjpbpK837yw6D33dIpz+NvK
-	hPAhkUJJP0b4sio2SpbuQhKyrFxVQmGGVU6QJC5Fr1D9ojDwjGVj9AemTaOQEe04mNg2qCLx0oUf4
-	l+Za3NH0Y8uxZET5jmRk+IoAKA9eK4sz1/NeV2RoACF3W2hb2Dhjgmkng+945m434AyJDXKAvt+UP
-	7sEWVLlIcbA+oiwx8j2pRcTEoFY4nWVGQ+Gx2Wjgk7OVPJ7w9ARVA4c9Lah3tSkscQBui5yiCpviB
-	NcniNIMg==;
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=tBsn9miQQPKGSJtsD4pDOgRy//TQgMGIazpQogwAOVw=; b=3AbdshKSHmgYxntsRoPKKqXsNQ
+	0c8jT+dDJCH2GVw+5bGhOxFrqCahrI83lRImm+cEFUwHu/ZUTaPwEB/O3iPt7ZI52YBfyydtXubJK
+	rz2ljInqSXI/JtK2UQK3XCje/8D3Ri9hs2h0we3Fl58VJh530pfuTqgK9eeO20Zi1nW7bXEUFDwa8
+	Hkho9Om8ye7X8kLMqZK7aXgxOidk6BoLNilQKHeEodhPHcf7K7AAHjNV78zBZuglRZFxUz5lGopwY
+	fk6QLrkhdMZ3i1WG/A5r6jNhdUOJwpIkt0jL4LzhHprl5qTffad4ykEwk4h1TnEsQp6TOvVuRfQdB
+	lsRYsVAw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x8IrT-000000000Ng-1T3a;
-	Sun, 20 Sep 2026 14:49:47 +0000
-Received: from dispatch1-us1.ppe-hosted.com ([67.231.154.164])
+	id 1x8JiB-000000005Wc-3Y6H;
+	Sun, 20 Sep 2026 15:44:15 +0000
+Received: from smtp10.goneo.de ([85.220.189.106])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x8IrP-000000000NF-489n
-	for linux-mediatek@lists.infradead.org;
-	Sun, 20 Sep 2026 14:49:45 +0000
-X-Virus-Scanned: Proofpoint Essentials engine
-Received: from mail3.candelatech.com (mail.candelatech.com [208.74.158.173])
-	by mx1-us1.ppe-hosted.com (PPE Hosted ESMTP Server) with ESMTP id 517B980007E;
-	Sun, 20 Sep 2026 14:49:40 +0000 (UTC)
-Received: from [192.168.1.23] (unknown [98.97.32.77])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES128-GCM-SHA256 (128/128 bits))
+	id 1x8Ji8-000000005Vk-0OEn;
+	Sun, 20 Sep 2026 15:44:14 +0000
+Received: from hub2.goneo.de (hub2.goneo.de [IPv6:2001:1640:5::8:53])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange x25519)
 	(No client certificate requested)
-	by mail3.candelatech.com (Postfix) with ESMTPSA id 47C8F13C2B0;
-	Sun, 20 Sep 2026 07:49:39 -0700 (PDT)
-DKIM-Filter: OpenDKIM Filter v2.11.0 mail3.candelatech.com 47C8F13C2B0
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=candelatech.com;
-	s=default; t=1789915779;
-	bh=HOypawCg01zp6a+LrYrKj3sXWu5oOMxRj3XL5TVBPdA=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=kcVBhjje2TL4/pY9DtYSXFiqDRytLAq6MfoZMY46tJjO6HviWlecDrEMNAy3PiP6b
-	 tx6gAg71Mlp60Luu6V2nN3210juROFd01VQ8bmT5Q8iQaLlj5TxLRfQpFbKeh8YWSH
-	 PAlrp3anUik9IkHcAFZNC6q+vtmGhaFl0LNPwp7k=
-Message-ID: <599b4d0d-31fa-4466-bfdc-8185d6c0ee5d@candelatech.com>
-Date: Sun, 20 Sep 2026 07:49:38 -0700
+	by smtp10.goneo.de (Postfix) with ESMTPS id E75D3240655;
+	Sun, 20 Sep 2026 17:44:04 +0200 (CEST)
+Received: from hub2.goneo.de (localhost [127.0.0.1])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange x25519)
+	(No client certificate requested)
+	by hub2.goneo.de (Postfix) with ESMTPS id A6437240350;
+	Sun, 20 Sep 2026 17:44:02 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=tk154.de; s=DKIM001;
+	t=1789919042;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:
+	 content-transfer-encoding:content-transfer-encoding;
+	bh=tBsn9miQQPKGSJtsD4pDOgRy//TQgMGIazpQogwAOVw=;
+	b=Lv1yaUxTsNMfDv5dsheRuWQA02pXjEeH8YUeZfwf4fY17FWwuv24TYjViUsDNX9+w3YMTG
+	q/EFpzM1DRm7XZO8JzDzFrkMEhPDGRb6+H+48mejUGbzQXwkXdZ7FWVF1qVuymuqpZrYz2
+	09eYSQbfDO9NTXOv2mTi2zUz+Ay0vb9YRVRvZAu4wO92ynWU50BN0rxJekDo7fdMAGaa/u
+	6NyVCLagWAPMBgx2waDffCvPRBJ/bwoJZ8g3vC6q6c6+GmYDYwzdne92laO0QLSgeeVQaf
+	5HwytlfkCCMBGheon7+uVtyVS6QF+dEM3bIPLa7eUQz3ItWJjY+JXvv/o9nimA==
+Received: from Til-Notebook.lan (unknown [IPv6:2a00:1f:5743:bc00::d0f])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	by hub2.goneo.de (Postfix) with ESMTPSA id 5D47224027A;
+	Sun, 20 Sep 2026 17:43:57 +0200 (CEST)
+From: Til Kaiser <mail@tk154.de>
+To: netdev@vger.kernel.org
+Cc: lorenzo@kernel.org,
+	andrew+netdev@lunn.ch,
+	davem@davemloft.net,
+	edumazet@google.com,
+	kuba@kernel.org,
+	pabeni@redhat.com,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	Til Kaiser <mail@tk154.de>
+Subject: [PATCH net-next 0/2] net: airoha: Add XDP support
+Date: Sun, 20 Sep 2026 17:43:27 +0200
+Message-ID: <20260920154329.161755-1-mail@tk154.de>
+X-Mailer: git-send-email 2.55.0
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [RFC 1/2] wifi: mt76: disable NAPI before deleting in dma_cleanup
-To: Devin Wittmayer <lucid_duck@justthetip.ca>
-Cc: linux-wireless@vger.kernel.org, linux-mediatek@lists.infradead.org,
- nbd@nbd.name, lorenzo@kernel.org, Shiji Yang <yangshiji66@outlook.com>
-References: <20260916204750.1439984-1-greearb@candelatech.com>
- <20260920034907.199687-1-lucid_duck@justthetip.ca>
-Content-Language: en-MW
-From: Ben Greear <greearb@candelatech.com>
-Organization: Candela Technologies
-In-Reply-To: <20260920034907.199687-1-lucid_duck@justthetip.ca>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-MDID: 1789915781-QqhLh0O8VnRk
-X-PPE-STACK: {"stack":"us5"}
-X-MDID-O: us5;at1;1789915781;QqhLh0O8VnRk;<greearb@candelatech.com>;5a03f558aff5a5117b3feee4b78a8f35
-X-PPE-TRUSTED: V=1;DIR=OUT;
+Content-Transfer-Encoding: 8bit
+X-Rspamd-UID: f4f184
+X-Rspamd-UID: 6eb56b
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260920_074944_085149_7B96210A 
-X-CRM114-Status: GOOD (  18.02  )
+X-CRM114-CacheID: sfid-20260920_084412_845969_CA07FB3C 
+X-CRM114-Status: UNSURE (   6.40  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,54 +93,28 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 9/19/26 20:49, Devin Wittmayer wrote:
-> On 9/16/26 13:47, Ben Greear wrote:
->> +		napi_disable(&dev->napi[i]);
->>   		netif_napi_del(&dev->napi[i]);
-> 
-> Ben,
-> 
-> The warning and the softirqd spin are both real, and your 2/2 looks like
-> the right place for them.
-> 
-> On 1/2 there is a snag. mt7921e and mt7925e already stop RX themselves,
-> and they do it early:
-> 
-> 	mt76_unregister_device()
-> 	napi_disable() on each rx queue
-> 	tx_token_put()
-> 	mt792x_dma_cleanup()
-> 
-> It has to be early. A poll still in flight can come back with a transmit
-> status and take an entry out of the table tx_token_put() is tearing
-> down. By the time the shared cleanup runs RX is already stopped, so a
-> second disable there just sits:
-> 
-> 	task in D state, refcount -1
-> 	napi_disable_locked <- mt76_dma_cleanup <- mt7925_pci_remove
-> 
-> That was on MT7927. The USB parts tear down a different way and never
-> arrive, which is probably why this is easy to miss.
-> 
-> Would putting the disable next to the IRQ and tasklet work in your 2/2
-> cover mt7996? That keeps it where the driver already knows whether it
-> has stopped RX.
+Hello,
 
-I have a hard time figuring out exactly how to safely tear down
-the mt7996 driver, especially without breaking other mt76 drivers.
+This series adds XDP support to the Airoha Ethernet driver.
 
-But instead of just playing whack-a-mole with this,
-we should figure out if sub-driver or mt76 core should be handling this,
-and add some comments of expected behaviour so we don't keep fixing one chipset
-and breaking another.
+Patch 1 adds the RX- and TX-path support needed for XDP_PASS, XDP_DROP,
+XDP_TX, and XDP_REDIRECT.
 
-Maybe Felix has an opinion on correct path forward?
+Patch 2 exposes XDP and page-pool statistics through ethtool.
 
 Thanks,
-Ben
+Til
+
+Til Kaiser (2):
+  net: airoha: Add XDP support
+  net: airoha: Add XDP statistics
+
+ drivers/net/ethernet/airoha/Kconfig      |   1 +
+ drivers/net/ethernet/airoha/airoha_eth.c | 493 +++++++++++++++++++++--
+ drivers/net/ethernet/airoha/airoha_eth.h |  32 +-
+ 3 files changed, 496 insertions(+), 30 deletions(-)
 
 -- 
-Ben Greear <greearb@candelatech.com>
-Candela Technologies Inc  http://www.candelatech.com
+2.55.0
 
 
