@@ -4,63 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 91E4DC982CC
-	for <linux-mediatek@archiver.kernel.org>; Sun, 20 Sep 2026 03:49:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 50153C982CC
+	for <linux-mediatek@archiver.kernel.org>; Sun, 20 Sep 2026 03:50:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=SOi7CXctaFFUMBybDADhVggCvS8Wu5ozw9CR2j33Eu0=; b=iGXQq/NyyzhVDsyMMrGC69pgnP
-	Yg3skahSZpuBF9rdYyxfrY8dzbQFdh1oyGfuTS2CG7rqQOd2B2tGETLB2YgIHhMG1QicvNgZ7eWNE
-	xMqhNl06XHSVJq3Olyqkf0MMfi9oaMxyPLDefZi+3IuUcFWtT6okjCYD0MrzTYzJRHwLFbkiOElBU
-	3hQTV5x0rrSS/oGiPoTl6IF4rrlA5tz8krG0AjK3GI372/gqtKdyi6wlDXfdU2kaKFaWwz+1Idx0v
-	M2vYO9O/b/jIR64f3R6yOHAl4RUcD7sMdpRXe97/v9UcKNLjRm8s5F8T2vucEm/mZE0sMTzh4k03w
-	4DqrXzDA==;
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=elh06BPvOR+aqBWG+a9YMejfiEndb0cqDcnnH29KM38=; b=VyHDY/hRbmenDThoaSwaieyI1a
+	SgKv8ZQTb1Pm/9XlVFEdC3rYSbNkrAkoHUcJt/qWXec9jGN2EBqgQAJxFjLcb4Y67Dr+2l3TXoKFb
+	a+UBkT+WhmB34K6FVi99kis7dyczobQg49zELIt4cCnfrSvSVxFpYBXcZKb4Gjz76ywsyTEIL9Qpv
+	/wsfY4c4qmhINc0v6SfgZojgzP12JtnrFBayHzoIygQYnq1A43TeYvVS6y2eQ+hdNczzU4j/1Flaj
+	2dt2MsrHJPI8FWwrB46/a/X8qQW8uVVoQmHeDfNXElLn269QpwmUATs+4nyIIwMu77fVXErTJTbrB
+	30I20bWw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x88YQ-0000000Gpzq-3cZt;
-	Sun, 20 Sep 2026 03:49:26 +0000
-Received: from out-96.mta0.migadu.com ([2001:41d0:1004:224b::60] helo=mta0.migadu.com)
+	id 1x88Zq-0000000Gq79-03Kx;
+	Sun, 20 Sep 2026 03:50:54 +0000
+Received: from mail-proxy49146.mail.163.com ([45.254.49.146])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x88YN-0000000Gpyc-3M2U
-	for linux-mediatek@lists.infradead.org;
-	Sun, 20 Sep 2026 03:49:25 +0000
-X-Envelope-To: linux-mediatek@lists.infradead.org
-DKIM-Signature: a=rsa-sha256; bh=8tIQ0S7jyLanjgsT+/AQf2DFwUVOBpd95+f9sHDtt4o=;
- c=simple/simple; d=justthetip.ca;
- h=from:to:subject:date:message-id:mime-version:content-type; s=key1;
- t=1789876159; v=1; x=1790480959;
- b=vmUDhVGj00l43S/QW961TuRHUxxHFxffVUUNNFnildCOsnfg9R7uUtQjrPKwTHpDOEFfbNQk
- 4fOsLql6VlZpkVP2Q8MaCH+4FSKqHFrpeHB10V9Lfb9si+YCsAZKiEvdEDuE5CobNJJaOFLIjn/
- 1TGe/OiBhEaMKiSWmvAdgHjDRO8LZ7WiPPxZhVYvw5hFg4DqxDc4rBnx0SFu0Gbg7IA3KO9MFGh
- GyUysxPEZsjYbE9cEo7s49/y2HGtvGiZcNq/DhJLFqTOhqtVWo9AgOMeb0ksBFxqOTFhLcVmEle
- JgSKMYXrDyMNZya0btqvaWHKPMh5OzPDVM+HkTz5SwIyQ==
-X-Envelope-To: linux-mediatek@lists.infradead.org
-Received: by smtp.migadu.com with ESMTPS id e762d4409d191228;
-	Sun, 20 Sep 2026 03:49:09 +0000
-X-Mizu-Trace-ID: e762d4409d191228
-X-Migadu-Flow: FLOW_OUT
-From: Devin Wittmayer <lucid_duck@justthetip.ca>
-To: Ben Greear <greearb@candelatech.com>
-Cc: linux-wireless@vger.kernel.org,
+	id 1x88Zn-0000000Gq6i-2rg0;
+	Sun, 20 Sep 2026 03:50:53 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
+	s=s110527; h=From:To:Subject:Date:Message-ID:MIME-Version; bh=el
+	h06BPvOR+aqBWG+a9YMejfiEndb0cqDcnnH29KM38=; b=Rogi/3MPytkdsgRYNH
+	vE6a4yjT61PA14Mi1gV6dkVW6rzhPLimfOI8jsPvEYLyFGHVYFawAEjv4AUPBxuD
+	vqPav87lekW35xCb/izz1WNazgxoYbYDtvmTku3rRlfyFLtOOufdRYB/SXHJ6D0F
+	mPV54ZP7vsJVD3gXaPweDTNzs=
+Received: from localhost.localdomain (unknown [])
+	by gzga-smtp-mtada-g0-1 (Coremail) with SMTP id _____wCXJ4jiV69q2YnYBg--.30633S2;
+	Sun, 20 Sep 2026 11:49:55 +0800 (CST)
+From: Pengpeng Hou <hppiscas@163.com>
+To: peter.wang@mediatek.com
+Cc: chaotian.jing@mediatek.com,
+	chu.stanley@gmail.com,
+	james.bottomley@hansenpartnership.com,
+	mkp@kernel.org,
+	linux-scsi@vger.kernel.org,
 	linux-mediatek@lists.infradead.org,
-	nbd@nbd.name,
-	lorenzo@kernel.org,
-	Shiji Yang <yangshiji66@outlook.com>
-Subject: Re: [RFC 1/2] wifi: mt76: disable NAPI before deleting in dma_cleanup
-Date: Sat, 19 Sep 2026 20:49:07 -0700
-Message-ID: <20260920034907.199687-1-lucid_duck@justthetip.ca>
-X-Mailer: git-send-email 2.55.0
-In-Reply-To: <20260916204750.1439984-1-greearb@candelatech.com>
-References: <20260916204750.1439984-1-greearb@candelatech.com>
+	linux-kernel@vger.kernel.org,
+	martin.petersen@oracle.com,
+	matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com,
+	linux-arm-kernel@lists.infradead.org,
+	stanleyjhu@google.com,
+	hppiscas@163.com
+Subject: [PATCH v2] scsi: ufs: mediatek: handle mPHY power-on failures
+Date: Sun, 20 Sep 2026 11:49:53 +0800
+Message-ID: <20260920034953.19535-1-hppiscas@163.com>
+X-Mailer: git-send-email 2.50.1
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
+X-CM-TRANSID: _____wCXJ4jiV69q2YnYBg--.30633S2
+X-Coremail-Antispam: 1Uf129KBjvJXoWxXF4xKw43JrW5tr1fJw43Wrg_yoW5GryDpa
+	93K3yqkr1kGrWIvF429FsF93WrW3yfGFy8Gr13Cw1I93W2gr9FqFyvkryfWF4SyrZ5A3yj
+	qF18ta47GanIvr7anT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
+	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x0zRY0PhUUUUU=
+X-CM-SenderInfo: 5kssx2xfdvqiywtou0bp/xtbCxgOUXWqvV+O6XwAA3Y
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260919_204924_306346_447091AE 
-X-CRM114-Status: UNSURE (   6.75  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260919_205051_947582_E79EADCE 
+X-CRM114-Status: GOOD (  11.31  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,37 +79,77 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 9/16/26 13:47, Ben Greear wrote:
-> +		napi_disable(&dev->napi[i]);
->  		netif_napi_del(&dev->napi[i]);
+The MediaTek helper enables VA09 before powering on the mPHY, but
+ignores the PHY result. A failure can leave VA09 enabled and publish
+mphy_powered_on as true, so a later power-on attempt is skipped.
 
-Ben,
+Check phy_power_on(), attempt to unwind VA09 on failure, and leave the
+state flag unchanged. Propagate the helper result from host
+initialization as well as its existing resume caller. Keep the original
+PHY error if the supply rollback also fails, and report that rollback
+separately.
 
-The warning and the softirqd spin are both real, and your 2/2 looks like
-the right place for them.
+The issue was found by our static-analysis tool.
 
-On 1/2 there is a snag. mt7921e and mt7925e already stop RX themselves,
-and they do it early:
+Fixes: 561e3a8726b2 ("scsi: ufs-mediatek: Fix unbalanced clock on/off")
+Fixes: cf137b3ea49a ("scsi: ufs-mediatek: Support VA09 regulator operations")
+Assisted-by: gpt 5
+Signed-off-by: Pengpeng Hou <hppiscas@163.com>
+---
+Changes since v1:
+https://lore.kernel.org/all/20260828092311.10774-1-pengpeng@iscas.ac.cn/
+Use err for the rollback result and dev_err() for operation failures, as
+Stanley requested.
 
-	mt76_unregister_device()
-	napi_disable() on each rx queue
-	tx_token_put()
-	mt792x_dma_cleanup()
+ drivers/ufs/host/ufs-mediatek.c |   18 ++++++++++++++++--
+ 1 file changed, 16 insertions(+), 2 deletions(-)
 
-It has to be early. A poll still in flight can come back with a transmit
-status and take an entry out of the table tx_token_put() is tearing
-down. By the time the shared cleanup runs RX is already stopped, so a
-second disable there just sits:
+diff --git a/drivers/ufs/host/ufs-mediatek.c b/drivers/ufs/host/ufs-mediatek.c
+index 814c1b7343b9..12a6d4138e44 100644
+--- a/drivers/ufs/host/ufs-mediatek.c
++++ b/drivers/ufs/host/ufs-mediatek.c
+@@ -509,6 +509,7 @@ static int ufs_mtk_mphy_power_on(struct ufs_hba *hba, bool on)
+ 	struct ufs_mtk_host *host = ufshcd_get_variant(hba);
+ 	struct phy *mphy = host->mphy;
+ 	struct arm_smccc_res res;
++	int err;
+ 	int ret = 0;
+ 
+ 	if (!mphy || !(on ^ host->mphy_powered_on))
+@@ -523,7 +524,18 @@ static int ufs_mtk_mphy_power_on(struct ufs_hba *hba, bool on)
+ 			usleep_range(200, 210);
+ 			ufs_mtk_va09_pwr_ctrl(res, 1);
+ 		}
+-		phy_power_on(mphy);
++		ret = phy_power_on(mphy);
++		if (ret) {
++			if (ufs_mtk_is_va09_supported(hba)) {
++				ufs_mtk_va09_pwr_ctrl(res, 0);
++				err = regulator_disable(host->reg_va09);
++				if (err)
++					dev_err(hba->dev,
++						"failed to unwind va09: %d\n", err);
++			}
++			dev_err(hba->dev, "failed to enable mphy: %d\n", ret);
++			return ret;
++		}
+ 	} else {
+ 		phy_power_off(mphy);
+ 		if (ufs_mtk_is_va09_supported(hba)) {
+@@ -1295,7 +1307,9 @@ static int ufs_mtk_init(struct ufs_hba *hba)
+ 	 *
+ 	 * Enable phy clocks specifically here.
+ 	 */
+-	ufs_mtk_mphy_power_on(hba, true);
++	err = ufs_mtk_mphy_power_on(hba, true);
++	if (err)
++		goto out_variant_clear;
+ 
+ 	if (ufs_mtk_is_rtff_mtcmos(hba)) {
+ 		/* First Restore here, to avoid backup unexpected value */
 
-	task in D state, refcount -1
-	napi_disable_locked <- mt76_dma_cleanup <- mt7925_pci_remove
+base-commit: 518e5b794c06c0f0eb40df3e202274a66202c137
+-- 
+2.50.1 (Apple Git-155)
 
-That was on MT7927. The USB parts tear down a different way and never
-arrive, which is probably why this is easy to miss.
-
-Would putting the disable next to the IRQ and tasklet work in your 2/2
-cover mt7996? That keeps it where the driver already knows whether it
-has stopped RX.
-
-Devin
 
