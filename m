@@ -4,46 +4,46 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9037EC982ED
-	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Sep 2026 15:22:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 580F5C982EE
+	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Sep 2026 15:25:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=bOzR8GVrme4M89CxBLevVcZ1IZiI/sDrZnX7jk52Wno=; b=4WDxJCYWZLWTmAmw67Z6LUHe38
-	yEKb78xQtyVLV6oiIdk88Zn/JWa5JWvWwkhvs33PzGmijItlmRRCn8GHZVL1r0e+ku8qxf5puwTsW
-	9GeyY3iF7MqgctX/jqg7L7FJ49MORIxocFPBSyONA3gWN2I3Yr0X7HLL7kkahlSotjVJOFg29bc+u
-	ORrAgVIw5F1oipn6QdLtAP4bNzXuHxyifiF0ghWZoq6zjYS0x4hO3GgNDNtF6SVMV+w33zpaDEjCo
-	URunVLkJt+X0FjpW8HhvIF3wIisy69720qPG8Ah1RTwe7VryjT1Utvi9qVQjTb61Xm25VU3mGYno3
-	5nc7q5jQ==;
+	bh=52tNeDu8Sx+QHd6wEVEFM9NUN84pRBXq3nOTjLgEzE8=; b=Afb3fBoy92/I+ged8PqGUtNGrA
+	1bTCbF8uxGTdlsX6+5kzU8b1vz8wS25dsWcljHHo42VvP7PUIElaZ9DwuDeG/Yvq0AyJgyOIsGMq2
+	dIsGRvS+ei3BCdKcQLijElesZsikvN8F8tlGTfZyi8LXyFd7La7gyVAgP0t32GTr2CzuCeBI1aoR3
+	5U6sv+Jc18tpPlkY8Rkt64OqWb70CQXg5v2yzCPImbXyd62Go58zrleSyXan4+51uFnKrOg/UFoNJ
+	EPkNYOczNiBFMjJVhXd+OI8qVS4EdjW025NzeI7o+nTAOJT/bMXboBsfCMxgcclNdS8csuxXO9WsT
+	OUUP6zsg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x8fqi-00000002atr-2BTN;
-	Mon, 21 Sep 2026 15:22:32 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1x8ftv-00000002bMw-12rX;
+	Mon, 21 Sep 2026 15:25:51 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x8fqg-00000002atB-3cq2;
-	Mon, 21 Sep 2026 15:22:30 +0000
+	id 1x8ftu-00000002bM5-1PXs;
+	Mon, 21 Sep 2026 15:25:50 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id DBCF7600C8;
-	Mon, 21 Sep 2026 15:22:29 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 521351F000FF;
-	Mon, 21 Sep 2026 15:22:29 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 0A02F40A50;
+	Mon, 21 Sep 2026 15:25:50 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id B2B221F000FF;
+	Mon, 21 Sep 2026 15:25:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1790004149;
-	bh=bOzR8GVrme4M89CxBLevVcZ1IZiI/sDrZnX7jk52Wno=;
+	s=k20260515; t=1790004349;
+	bh=52tNeDu8Sx+QHd6wEVEFM9NUN84pRBXq3nOTjLgEzE8=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=C2ZU9Id/+o1irOenoCt9jM34dfFp6/t2bWH0fXwvb2Jy9dd0QU7QgEOUE6aaFSh24
-	 ToidA/ICs5d9V0HBZPj9oTwsLLE/lG+jfwZ4qNdgQ3J2mVj6aNrHZJeXB9uPT6/ezr
-	 gXQVF4K8q7fJBfeInuGl2eceBeaRH6wz6s46Gh8KJc3HrDs3zH4dQIjIU0cvlbiSbj
-	 NuE943hL8XPvQt6FSMoxRLuOaQgZnCm/MyA9lsUapoUk3aeDQr/qjeVHR2chXn8lK/
-	 fnevuSvK1Qjau09aVKkyer+OS5zMNmo2RkEil1IK4TTwuUiid4f4jF8L2Nd6tQKvho
-	 tS+6MZU40uEcA==
+	b=lx18RnvPmerMwYKQBdZc24TN0CA72fv1PlKnIN7fmREb7z4DLrOzWNxX0v1AfkThT
+	 2on/RpJJUThi4V13fYJKL2Orrx5UD2dx4E38CnNYuvwOUU6bgjsNJ5hsuzm1zwAxCl
+	 01DDbFqnAHOV56oV49xPxn5toCEHk2gjkb/Po/jisxflIq8qlh9vxjUCN4PvcR9tKe
+	 XoOIXln291MBXqB0BLKdNEl0l33QzQpmeM8f0MGLf5uWGgFXm17X6RzdeQu0PIE/AY
+	 ptaH/kTFHjN9PS16mhnjg0DVXQ9gvdsqIBHBm/l1M+CRzO4v+FQwld92QZOSh1R6g4
+	 RLll6pDrbXqjg==
 Received: by finisterre.sirena.org.uk (Postfix, from userid 1000)
-	id B5E3B1AC56A7; Mon, 21 Sep 2026 16:22:22 +0100 (BST)
-Date: Mon, 21 Sep 2026 17:22:22 +0200
+	id 569CB1AC56A7; Mon, 21 Sep 2026 16:25:46 +0100 (BST)
+Date: Mon, 21 Sep 2026 17:25:46 +0200
 From: Mark Brown <broonie@kernel.org>
 To: James Calligeros <jcalligeros99@gmail.com>
 Cc: Martin =?utf-8?Q?Povi=C5=A1er?= <povik+lin@cutebit.org>,
@@ -66,17 +66,17 @@ Cc: Martin =?utf-8?Q?Povi=C5=A1er?= <povik+lin@cutebit.org>,
 	linux-sound@vger.kernel.org, devicetree@vger.kernel.org,
 	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
 	patches@opensource.cirrus.com, Takashi Iwai <tiwai@suse.de>,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH 01/28] dt-bindings: sound: Add Apple Macs sound
- peripherals
-Message-ID: <arFLrr23j9QVjKp5@sirena.co.uk>
+	linux-mediatek@lists.infradead.org,
+	Martin =?utf-8?Q?Povi=C5=A1er?= <povik@protonmail.com>
+Subject: Re: [PATCH 02/28] ASoC: cs42l42: Fix typo
+Message-ID: <arFMetXGoogEAwmJ@sirena.co.uk>
 References: <20260920-macaudio-v1-0-741cc20a74e5@gmail.com>
- <20260920-macaudio-v1-1-741cc20a74e5@gmail.com>
+ <20260920-macaudio-v1-2-741cc20a74e5@gmail.com>
 MIME-Version: 1.0
 Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="9DlXPXtwe81yJB7g"
+	protocol="application/pgp-signature"; boundary="G0JcrUZHHYSZL8sl"
 Content-Disposition: inline
-In-Reply-To: <20260920-macaudio-v1-1-741cc20a74e5@gmail.com>
+In-Reply-To: <20260920-macaudio-v1-2-741cc20a74e5@gmail.com>
 X-Cookie: Too clever is dumb.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -93,40 +93,33 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 
---9DlXPXtwe81yJB7g
+--G0JcrUZHHYSZL8sl
 Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
 
-On Sun, Sep 20, 2026 at 02:53:40PM +1000, James Calligeros wrote:
-> From: Martin Povi=C5=A1er <povik+lin@cutebit.org>
+On Sun, Sep 20, 2026 at 02:53:41PM +1000, James Calligeros wrote:
+> From: Martin Povi=C5=A1er <povik@protonmail.com>
 >=20
-> Add binding for Apple Silicon Macs machine-level integration of sound
-> peripherals.
+> Fixes: 2c394ca79604 ("ASoC: Add support for CS42L42 codec")
 
-> +      - description: Machines compatible with J293
-> +        items:
-> +          - enum:
-> +              - apple,j493-macaudio
-> +          - const: apple,j293-macaudio
-> +          - const: apple,macaudio
+This one is a very clear example of something that should have been
+split out, it's unrelated to the rest of the series.
 
-This doesn't seem to correspond to the DT for j493.
-
---9DlXPXtwe81yJB7g
+--G0JcrUZHHYSZL8sl
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmqxS60ACgkQJNaLcl1U
-h9CEPAf/dQqOTFUfSqvlY/jmFLZk+OUZk4RtOYaqTJ/vfY4z/YQ/sCnFIXYeZnin
-TSXdhiD4jqVa4STh+dsIzzsnODcQyStOhfCGFXIYzSoV9gdR00T3DwHlTKU6zrlz
-qDFc3jxbaHcdW2VZ10YmawxZ9PIjGevKTgKQwrLLD9rxjWEa64yVb+1hgc8jAmWv
-vn8e4DnGoR0qfJvzIJ/GgiRmwEY2EK2zXw4x+QtQzFVCrV01QmrIuQIvKKXlFkmQ
-BiHssUi3qgPFuaWRNe6yubT8pq/8qGFBiBtr/YMoYPNv9vGp0Tr0ARhCo8ycHTsH
-yOa386ia8Ee7BbOlalJdhEWFxxxwqw==
-=e0C1
+iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmqxTGAACgkQJNaLcl1U
+h9Caewf+N5iufxYFZ1liCvBd7fhltp9ck3djJSBs5D9F/V24SiXkujxzDT8AQdtt
+gcgzgX64NeQHbmgXRupfcESD2zeVGOOzSmbL9Kp3ohp8j5YqYey3hJEerIOlWxw0
+ZXWOY0jdi4I3A3PE0Y5H4R6jO044TTmVVNeOFHTHXIN+zxhAVNvnjfuZImzoI8R9
+dpGasJ1qTw75x1hZbryAhBcS7ho28ZT9t6kPhehrfRP3iXUinwItU8yiFBghmVvM
+FrcKdFdM1AvZjLiIE/rqudAdqlpszUVWDjluAnWdJb0w4onBKbbMgjmsE2KAygHC
+75lcoKFZI0G6SoaytCypAVZ/dAJeMA==
+=I6dw
 -----END PGP SIGNATURE-----
 
---9DlXPXtwe81yJB7g--
+--G0JcrUZHHYSZL8sl--
 
