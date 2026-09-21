@@ -4,102 +4,109 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3FC4BC982DE
-	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Sep 2026 10:26:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 397E2C982DE
+	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Sep 2026 10:36:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=h7tYSkJ6lOcONG+Kk7MS1jRgYa+E91ac/ILJT9gEeSM=; b=a3Nj0cDrTBlk+RG+L70lA/FL2x
-	HwB0kLmvmCic6sKPZ7YG+uuG3horCUO/rMDKylgg9higonTCln14byg9GPlKhTOr3SZjZoQeif+Ra
-	E8bWruSBNy3uVRKX1ePjNSb2HssUjkAa6aJ11LiljoDMhMrBTwJxDaVB2KHhX5DacYnU1bOluINed
-	sWP0I8jLGA3WlcXyksqS8+UsZJ7J1fyk9Fg0AZcnxcCeY8wJgtFh93up7jNFy4Ljb/j2xcWrb6ERL
-	hcEBnrG6Xue6MYCY/TAEyIfPLGmRGw/w3646wHRNHEJ5piu8Sul9haZnxhYtoZ+UW6qysLcyoLUlv
-	JYipBOUg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
+	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=h/tDLQ7kiHFPBmC66BABbwtjlpncgEgg8G3PARGPN7c=; b=ACZBndxZA87noyQzXE4+Wyte0U
+	BatrqdDwOYysI/kZo1Ma7xF/QSCNX6rspJFO5W6rzN+7qYlh8y9zn0DsOaSUAOmLfjxjjDhpRTsyd
+	L5aug7K7nwiscwB6hs9z+0zskRSPkNCvdqLeC/eZcBpTeRYaSkGVsz8k7t+2id2VQbqOtL2iZHLUY
+	wxhswPnIb1KLBOrmOw8ndvqkNRWHyhs6ICA+qVB6lKpq9QSX/o+rgl0rshrhEIOIu0R6Z1ukvjmUN
+	tbMvabDvZcwJzF2nvLyQaAzeqp2iqW1JSDp/4ScEzAGYwEEVoqCPsB9wD8M6afpv2lzF54Df5TnEm
+	zNKfbTJg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x8bDu-00000001gwj-2qXX;
-	Mon, 21 Sep 2026 10:26:10 +0000
-Received: from mail-pz2-x0f.google.com ([2607:f8b0:4864:3b::f])
+	id 1x8bO2-00000001iPu-1cAn;
+	Mon, 21 Sep 2026 10:36:38 +0000
+Received: from mail-ed2-x10.google.com ([2a00:1450:4864:33::10])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x8bDX-00000001ggm-1DgZ
+	id 1x8bNz-00000001iOw-0yEj
 	for linux-mediatek@lists.infradead.org;
-	Mon, 21 Sep 2026 10:25:48 +0000
-Received: by mail-pz2-x0f.google.com with SMTP id d2e1a72fcca58-8693af0d7c4so3036983b3a.3
-        for <linux-mediatek@lists.infradead.org>; Mon, 21 Sep 2026 03:25:47 -0700 (PDT)
+	Mon, 21 Sep 2026 10:36:36 +0000
+Received: by mail-ed2-x10.google.com with SMTP id 4fb4d7f45d1cf-6a6056be4d2so2274675a12.1
+        for <linux-mediatek@lists.infradead.org>; Mon, 21 Sep 2026 03:36:34 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1789986993; cv=none;
+        d=google.com; s=arc-20260327;
+        b=lKq5nPlm4cgj01RA9VntFBolPERlzGcUanZPoI0+CNIL5yHDj3JTbUKA/mkQvZ6lXC
+         Y75RM8NzbzwMsG9PGV+jmBuAU/kLJTHGF/5Nqrtdyd1586+6oFaopYJMhuqUHhUs1xbJ
+         +ASyEUy+pmMESpKLoVb4zsFRuBlsAYMS49ETARB+IElI6HiwYoR6Wrt4fyc0IoXX2IA8
+         YSgdA9rKvpc1zODDgdNYTPKilN4qo2bdUT1vMc61vyutqoXFlzQqMFuT44aVabTOXi8X
+         TW5dLcCs04lqESBx4lxfd5EQYcoUwl2tOKdXA3+lmjD7ZKyEpfWFXM8xoX2xBa0d/e37
+         tZow==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20260327;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:dkim-signature;
+        bh=h/tDLQ7kiHFPBmC66BABbwtjlpncgEgg8G3PARGPN7c=;
+        fh=ChRvQ0Hb4xhGzLZDBOfzrjX6Ttaay+75S05QsgsUkFU=;
+        b=TkD9Q46PABNAt0zNJmLBXZHVuMAsXNRWdEvcwAxbzrWk7ZDjfJXqEABWJmfsVdC4dX
+         y/bN2hohN6zwNvbgUwL/48pgUIYaV4Pv6AVtUEzVFJw48iewfaBmcBdrjADVBHOZzycn
+         Px2hmJPoGxglcIpjb5MDUv3FM73Niqr4fk+44GA6fMb5tkQZYoqIDcB16eKNHnGnoEyg
+         JNIYmR8VYk0KPSI2mxqrZFXPDx+k3+ajA0SxtJkDJe5BRO7afoR3Vw2hxYnUsg3hc0eV
+         hVsxvFXz7Iqb1SV9U4ldvmfLuR5cbRwYrhoXb2m8Z09QoEw3rnbq0X8lYGfh864221YE
+         G5ng==;
+        darn=lists.infradead.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1789986347; x=1790591147; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to:content-type;
-        bh=h7tYSkJ6lOcONG+Kk7MS1jRgYa+E91ac/ILJT9gEeSM=;
-        b=JmkufzbEzEVFuUMtPVoD7SKUzJhKBN7f5Zf4tToIGG3G6xnWq0MTf93jj4p0hc0g5j
-         yiFzYm5rrad08PmLvwoQV+HDcx8Tftr6+FKu6A7kbOK5IZETego/rBJPgu36pUXAngR5
-         UI9jkMhEJeH4T2ubhdLrO1Vh5uyuNHqJt3OZfeR6C/5d9JtkhmhmVe66U9ObCIgwv9aQ
-         1mks7URZFCgng+UgdmyN0eePmh+bmbudsmdk8JLDWTZw0DSbabYPpXwtXtlrqt+pCxK5
-         l9jhKPr7H7M0xT1eRUVFngl3K5O2UIyFqaYT9bapEjF83gO5lQPhOjLBYw3WGkHVJ58h
-         saaA==
+        d=gmail.com; s=20251104; t=1789986993; x=1790591793; darn=lists.infradead.org;
+        h=content-type:cc:to:subject:message-id:date:from:in-reply-to
+         :references:mime-version:from:to:cc:subject:date:message-id:reply-to
+         :content-type;
+        bh=h/tDLQ7kiHFPBmC66BABbwtjlpncgEgg8G3PARGPN7c=;
+        b=E7oKYJCeNtTBjp38YI9ujQoKaSxxb/P/2mrMWbJkOKMgjxr9dOovteyixAFl+y9Rzh
+         ix59L5e6LviBF4Q8FmXttNMAXL1ntZfhODdAt3lhQMFrHjyOIgWGhBxN5ALZX4rEYu7O
+         3HltHGNlfeOLNUFfGHOGNYDa/ATnShKdZy19C64zAzteNMgaJwj0FKGViNK1UGeEDCpq
+         PuMpsoDFA6adu0YBuUEPXpOzldi94HUVu0C+N8Q/BssTAh/FLycX4nCiA+qRCjre+t6z
+         Rn7GuO/AhYSoX7F9UdrmMZsbidTgG3NegnzvYXswekWsb1zQ1Ix2X047n9vc4QtvBpGu
+         qz/A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1789986347; x=1790591147;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
-         :to:cc:subject:date:message-id:reply-to:content-type;
-        bh=h7tYSkJ6lOcONG+Kk7MS1jRgYa+E91ac/ILJT9gEeSM=;
-        b=kmEkpyggahYn2NY7cVUDNzhwrrnZgAfgdAQJtrrVIvJsnmlzhA8gbpylu9m1RPMt6/
-         iDVkPVk6L6WsV6XsdNxUwwbePbVuG0k1gBlXRyKmZwWv0lnsfcD95p9IBtnzUJhEMQVt
-         eAzOkrTHLvKQrVx4wKMlSkegOQYINAdgCaRa2tFEytMgNY2rxGtn+k6PjDqGOFYf+e1/
-         ySUpsIFkgSip7bUu+pn3cUUp4EXaiL3Qifg6VjNjseN9u+MEykd3V1F72R9oMf7ROQiC
-         C877cPfT56/vulp/NBN08IsrdUY4UqtLk+uELwLC1HrFH3CN2cr1IFdZbkUPnl7HDy5B
-         B4PQ==
-X-Forwarded-Encrypted: i=1; AKwUvBwD9oqqaTM6mNDbsdguVzlIW19pHsKYem0dl/13x+Z8RryewFKWX2bz9SVxg+IRlIYiAontRjGe07y0mVLa8w==@lists.infradead.org
-X-Gm-Message-State: AFuF++lgazMqMu7bEdqw8K7X0iJW00ggUN/BKSvUuQVxZB147u5rYW+g
-	je6cVR3HSarOwrgTSG0NrA8jAv0fznEYqAXEVUf6h2vpYPpeFURUp2J5
-X-Gm-Gg: AYBFou23OQny4MnNJXb/j8znlcL/7Q/mhV4uLOSCASnIA5whQQ3uLL57ACTAaV1XCar
-	apa4/49ghchlzuwhQ2nxvCAlemP4678et+VVLifd+2WmseF1PRFI93TgLhaWhfSdgugq+fUqzZk
-	lD2hufY0TU+H4dp73OPJF0MWqycW357pi473s0Lx52vh1mwFtMEVF4GnKGHhZbuI+NZ8hM/6JCa
-	OIChMqigYsFuSFGBrmfCrqn3ONnpqtBDzvhfc/RuAlhW8cjk1x4NSV9f5deKBPrNttjKHqeo3Np
-	Y21UvOoAsOdzJtp1GmYJAkd/h6FvsJG2SnoV+ZGcxyeemLj2yt43XaV4lumEg9j1NL0mPkQVMmQ
-	zRUim7vI5EQjBswlOCyXsX/e5QE/57HT/dJvuahmd6ZNgUObCAfa/s1PME97kjdoAUhoRqeEf6V
-	1cSv9HmdnnvN/GoCmHCTvE2MdFOZP4zqi94LxGWkkcUBJ4PtpBkNPkvmWbouw1aeurIhSYo4Xwo
-	nhRQgpfJf6ZiooIp/7xQOR3qh8IpHxmfAx3iRA=
-X-Received: by 2002:a05:6a00:159b:b0:878:34e7:9a40 with SMTP id d2e1a72fcca58-87834e7a3c9mr6176607b3a.57.1789986346569;
-        Mon, 21 Sep 2026 03:25:46 -0700 (PDT)
-Received: from buffalo-ssd.taila54753.ts.net ([240b:253:4760:f400:1ebf:ceff:fe7f:5e0b])
-        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-877a94f238csm2909174b3a.21.2026.09.21.03.25.43
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 21 Sep 2026 03:25:46 -0700 (PDT)
-From: Akari Tsuyukusa <akkun11.open@gmail.com>
-To: Stephen Boyd <sboyd@kernel.org>,
-	Brian Masney <bmasney+clk@redhat.com>,
-	Jerome Brunet <jbrunet+clk@baylibre.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: Takashi Sakamoto <o-takashi@sakamocchi.jp>,
-	Danilo Krummrich <dakr@kernel.org>,
-	=?UTF-8?q?Uwe=20Kleine-K=C3=B6nig=20=28The=20Capable=20Hub=29?= <u.kleine-koenig@baylibre.com>,
-	Bjorn Helgaas <bhelgaas@google.com>,
-	Akari Tsuyukusa <akkun11.open@gmail.com>,
-	Nicolas Frattaroli <nicolas.frattaroli@collabora.com>,
-	Chen-Yu Tsai <wenst@chromium.org>,
-	Laura Nao <laura.nao@collabora.com>,
-	Sjoerd Simons <sjoerd@collabora.com>,
-	linux-clk@vger.kernel.org (open list:COMMON CLK FRAMEWORK),
-	linux-kernel@vger.kernel.org (open list:ARM/Mediatek SoC support),
-	linux-arm-kernel@lists.infradead.org (moderated list:ARM/Mediatek SoC support),
-	linux-mediatek@lists.infradead.org (moderated list:ARM/Mediatek SoC support)
-Subject: [PATCH 6/6] clk: mediatek: Reserve missing MT8516 top clock IDs
-Date: Mon, 21 Sep 2026 19:25:22 +0900
-Message-ID: <20260921102522.1640072-7-akkun11.open@gmail.com>
-X-Mailer: git-send-email 2.55.0
-In-Reply-To: <20260921102522.1640072-1-akkun11.open@gmail.com>
-References: <20260921102522.1640072-1-akkun11.open@gmail.com>
+        d=1e100.net; s=20260707; t=1789986993; x=1790591793;
+        h=content-type:cc:to:subject:message-id:date:from:in-reply-to
+         :references:mime-version:x-gm-gg:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to:content-type;
+        bh=h/tDLQ7kiHFPBmC66BABbwtjlpncgEgg8G3PARGPN7c=;
+        b=Tv7hRTAH4kKKnzBPFcyeL+sceGqiR1mOK55YYTZ8S2bA7WEZhkV6LV3qjhARsX5CwF
+         8g6Gzsuov6Q2s0EbwxJZTuSaNBWu0z/Mrxob/M1eN0hJ+jtnIvCOf1Z1FIsXMiukTSVj
+         cSf3u4zvyPOKXu25onl9nFycFuxG3wdag32s7lirWA3GiqHSJWjldxNqWssl28/nl8R9
+         ICs79DoVoUKIsZj2gHoocDsWdUdbAwxjhJlUeNPBiJGxLPyv7XIJo9MoGMlrKxXruI7l
+         BtSFkjVIKKVeoRXg6KsACZVT3oB1A3z5YcJj0eWNXlw5gTXkkD/qDXU9BkD9YWvERxoH
+         6iVQ==
+X-Gm-Message-State: AFuF++kbelzs++AxTYqtJQK6WS7WpgbvXNmWLdFlr7nVn8qL6BxQOc0Q
+	K/nPwQcaEmDM+Oeh41eKSHoUDA6qUIlkL2dgnF4TnT4/vGOuvu/IycTfTzBLdHp+/B8ICaI2jBz
+	0xhd7ulkQbwNS4ans0tCzdJdmZD1DyZU=
+X-Gm-Gg: AYBFou3sG91OwFKBuf1iiEzH3s/N+tjRqovZNn94AlLrD3uPbPmkejGVh6xDhZyWkfF
+	OYxOeFv7d/FTbuop/JUyoLRfYh8Tq4hXNdpVle1snS02KuErD9AsUCqETfl1z+38OgTZbpANo1A
+	vKYvpyz500eaO4Flf0u6cDQfm+iVKkgpizD0Bf52axz1vtdJmPySb45FkicwGwexWlJrJTgYg8R
+	xK3QBMjS5RpgzNTdkANDjxzTa243n9lkrf9m9CLfzEC4VFC5BdoH3J4hFUXx9QKtaUzdzyqdbPt
+	A4zLWZVxtj9xtVWDYZ6yBuzdEBwfgAbH0PvlMCdjLQ/HOdYjOMdoXw==
+X-Received: by 2002:a05:6402:4547:b0:6a9:f88b:14dd with SMTP id
+ 4fb4d7f45d1cf-6aa4f97d7cfmr6238277a12.1.1789986992392; Mon, 21 Sep 2026
+ 03:36:32 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+References: <20260918175736.355305-1-l.scorcia@gmail.com> <178998607025.21155.9680834242820851509.b4-ty@b4>
+In-Reply-To: <178998607025.21155.9680834242820851509.b4-ty@b4>
+From: Luca Leonardo Scorcia <l.scorcia@gmail.com>
+Date: Mon, 21 Sep 2026 12:36:20 +0200
+X-Gm-Features: AcwNN1VQ6S9fCy63ty823Nyxcerwh9XF-bIr0lhnPcmyyBWQe3Ulp9EvTrhD9Cw
+Message-ID: <CAORyz2+E9LY+6sb+0G-deR8ZVZK_xu+p_hvp8aKteVVhHpeBRQ@mail.gmail.com>
+Subject: Re: (subset) [PATCH 0/4] Add support for the mt8167 display pipeline
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: linux-mediatek@lists.infradead.org, 
+	Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>, 
+	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>, 
+	Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
+	Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, CK Hu <ck.hu@mediatek.com>, 
+	Jitao shi <jitao.shi@mediatek.com>, dri-devel@lists.freedesktop.org, 
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260921_032547_332637_E919409B 
-X-CRM114-Status: UNSURE (   9.99  )
+X-CRM114-CacheID: sfid-20260921_033635_308251_72DF9B84 
+X-CRM114-Status: UNSURE (   7.23  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -115,34 +122,17 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Reserve the binding-defined CLK_TOP_EMI_DDRPHY_SEL and
-CLK_TOP_DDRPHYCFG_SEL slots in the MT8516 top clock provider
-with dummy clocks.
+> Applied to v7.3-next/soc, thanks!
+>
+> [3/4] soc: mediatek: mt8167-mmsys: add routes for all display paths
+>       commit: ae0968038f994d6e275f5dc94a27325ee751fe58
 
-These muxes are not implemented by the Linux MT8516 clock
-driver, but their binding IDs must remain represented in the
-onecell data to preserve a valid ID-to-slot mapping.
+I'm sorry Angelo, please revert this - I'll post a v2 with the
+corrections spotted by Sashiko [1] later today.
+Thank you
 
-Assisted-by: GPT-5.6 Luna
-Signed-off-by: Akari Tsuyukusa <akkun11.open@gmail.com>
----
- drivers/clk/mediatek/clk-mt8516.c | 2 ++
- 1 file changed, 2 insertions(+)
-
-diff --git a/drivers/clk/mediatek/clk-mt8516.c b/drivers/clk/mediatek/clk-mt8516.c
-index 342a59019fea..b64674559878 100644
---- a/drivers/clk/mediatek/clk-mt8516.c
-+++ b/drivers/clk/mediatek/clk-mt8516.c
-@@ -545,6 +545,8 @@ static const struct mtk_gate_regs top5_cg_regs = {
- 	GATE_MTK(_id, _name, _parent, &top5_cg_regs, _shift, &mtk_clk_gate_ops_setclr)
- 
- static const struct mtk_gate top_clks[] = {
-+	GATE_DUMMY(CLK_TOP_EMI_DDRPHY_SEL, "emi_ddrphy_sel_dummy"),
-+	GATE_DUMMY(CLK_TOP_DDRPHYCFG_SEL, "ddrphycfg_sel_dummy"),
- 	/* TOP1 */
- 	GATE_TOP1(CLK_TOP_THEM, "them", "ahb_infra_sel", 1),
- 	GATE_TOP1(CLK_TOP_APDMA, "apdma", "ahb_infra_sel", 2),
--- 
-2.55.0
-
+[1] https://lore.kernel.org/linux-mediatek/CAORyz2KEfzcJ_2AphkPU6o-YhLAqudCXVdY+LDoynUx_FsTMJg@mail.gmail.com/
+--
+Luca Leonardo Scorcia
+l.scorcia@gmail.com
 
