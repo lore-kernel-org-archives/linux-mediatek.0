@@ -4,78 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D25D2C982EE
-	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Sep 2026 13:21:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id ED3C9C982ED
+	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Sep 2026 14:00:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:CC:To:From
-	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=DMmrU7374bXu7rpn27MZ+FOc1NoZqY19Bvh/QjgStqo=; b=FNzL+sXkdm6BT9ofPK6cMc/3EB
-	qJuiGL1lJ1gJRZSQtNzuRMJX8DL01nStyRhn3VxieiiEO0BvNB8fvW+3gAN57/jkYT+yV5+8vI1uE
-	fkTjeZ847yPkAAUAUM21JSFyeHV8X2lMWozXv9G6UJoTu4pvUiOWIEam/v1jjHoVbFyySN1yyNE+i
-	C+ATFT2WIDHNU+sqNEce40fHqK39gVCE+1KZdhk6kE0yEfKU1C0e0YbjN5C7sIogrhQmzIx4YsHEE
-	ePTprtbLe3Jo4WVD2/MVnpUmMfMfSQUjtDhjFQFFyo32rSOWB4ASfl8G49NFOwRQ75RVG3PBei3Xt
-	0pQtFldg==;
+	bh=UpSBX9zUnKOsYMEzJCVdOj7P1czBOXfO4KP+K+06BCw=; b=s5TDULk/O0dGTpwSlPTtuih/2K
+	yQAabmPtbTF2W55JNnw9IPxQkfVeUwzZaJuYZzfOHAXim/8OnNjj8e0gdb3o/V85DCjvwt5QpHI/U
+	0UHkxbFDh6m/TMi7/05g/yguNPOiT4PNI/0eJW+sRr4m6uLorCfLtmYBOsRtqJ4MN3yVVXH2oEsv9
+	PSfNvFAktsXqh3VkIzJ05d7VWMgvesgmNs+6IoAFvAi0oRLlD0/97B9qzhtwNMZeohrpUaNHPVzIq
+	r40oiWf28RbmBqKqhGaPWRuNcb1sOmSGdeLQS9/mVPREvwoxh3i7PySj4qx0HkZypUJrVKOA/ELBS
+	T1SLt3HQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x8dxF-00000002E6a-3A90;
-	Mon, 21 Sep 2026 13:21:09 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
-	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x8dxC-00000002E5t-2QPB
-	for linux-mediatek@lists.infradead.org;
-	Mon, 21 Sep 2026 13:21:07 +0000
-X-UUID: 4b233e2cb5bf11f1afed4741b24580c9-20260921
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=MIME-Version:Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID; bh=DMmrU7374bXu7rpn27MZ+FOc1NoZqY19Bvh/QjgStqo=;
-	b=DV1UxTr03H8GCBIx3mQ+Vw3MVf1aGm4xa8AcR977qfxTfiORCJIvDDSMOkBNzgb9LyYt1R9rZmCkUrKyn1pfc5Zn1aMd6O9wWH9BBSBSkNyLm1HJelv5qmKZOmUHJFNaDJSanFctwTQek1wbaSD8VHaJx7fJlKkJD9cFLVxu76Y=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.19,REQID:46e109fe-77a4-46db-8e31-5e856d53f89e,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:7db8b62,CLOUDID:da831de3-72a5-4ba1-af40-18bbd6ea8ffd,B
-	ulkID:nil,BulkQuantity:0,SF:80|81|82|83|102|836|865|888|898,TC:-5,Content:
-	0|15|50|99,EDM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:-1,COL:0,
-	OSI:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 2,SSN|SDN
-X-CID-BAS: 2,SSN|SDN,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: 4b233e2cb5bf11f1afed4741b24580c9-20260921
-Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw01.mediatek.com
-	(envelope-from <peter.wang@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 157353867; Mon, 21 Sep 2026 06:21:02 -0700
-Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
- MTKMBS09N2.mediatek.inc (172.21.101.94) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.29; Mon, 21 Sep 2026 21:21:00 +0800
-Received: from [10.233.130.16] (10.233.130.16) by mtkmbs13n1.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.2.2562.29 via Frontend
- Transport; Mon, 21 Sep 2026 21:21:00 +0800
-Message-ID: <21231fed9487b88316da067d9a7f6fbb812e7f98.camel@mediatek.com>
-Subject: Re: [PATCH v1] scsi: ufs: core: Hold a clock reference across the
- probe
-From: Peter Wang <peter.wang@mediatek.com>
-To: Naomi Chu <naomi.chu@mediatek.com>, <linux-scsi@vger.kernel.org>,
-	<mkp@kernel.org>, <avri.altman@sandisk.com>, <alim.akhtar@samsung.com>,
-	<James.Bottomley@HansenPartnership.com>, <bvanassche@acm.org>
-CC: <wsd_upstream@mediatek.com>, <alice.chao@mediatek.com>,
-	<chun-hung.wu@mediatek.com>, <linux-mediatek@lists.infradead.org>,
-	<linux-kernel@vger.kernel.org>, <ed.tsai@mediatek.com>
-Date: Mon, 21 Sep 2026 21:21:00 +0800
-In-Reply-To: <20260909091045.1134956-1-naomi.chu@mediatek.com>
-References: <20260909091045.1134956-1-naomi.chu@mediatek.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-User-Agent: Evolution 3.52.3-0ubuntu1.1 
+	id 1x8eZj-00000002Jqf-0LJF;
+	Mon, 21 Sep 2026 14:00:55 +0000
+Received: from foss.arm.com ([217.140.110.172])
+	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
+	id 1x8eZg-00000002Jpc-3Wyz;
+	Mon, 21 Sep 2026 14:00:54 +0000
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
+	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 6A6651D13;
+	Mon, 21 Sep 2026 07:00:48 -0700 (PDT)
+Received: from J2N7QTR9R3.cambridge.arm.com (usa-sjc-imap-foss1.foss.arm.com [10.121.207.14])
+	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id A03C33F528;
+	Mon, 21 Sep 2026 07:00:50 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple; d=arm.com; s=foss;
+	t=1789999251; bh=196CWRrTsBXNGEh3O1halF0+Yb/A+7t5R7xVTmSSTuQ=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
+	b=RIH1OhFfFFabunQv0YPirHG+CsJ71/CgYQj6MJ4sSGsVQuJMZyLB4jJmRSzQ1LE2K
+	 rDCaxiiaeeqFrS4tkZ+PYRwgV01eC7wlP+F6GgTQZZnRsOz7ERB9k7nxd8o4rA2K2p
+	 j0e+0RpvqbHK5mmk+msSNDIq0m0LAKukZXJLpUeI=
+Date: Mon, 21 Sep 2026 15:00:45 +0100
+From: Mark Rutland <mark.rutland@arm.com>
+To: Steven Rostedt <rostedt@goodmis.org>,
+	Vladimir Murzin <vladimir.murzin@arm.com>, paulmck@kernel.org
+Cc: Chunfeng Yun <chunfeng.yun@mediatek.com>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	linux-usb@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: [BUG/PATCH] drivers/usb/mtu3: Work around mtu3_log_ep
+ double-indirection issue
+Message-ID: <arE4jcn4dCD9gos_@J2N7QTR9R3.cambridge.arm.com>
+References: <a3ee0655-d818-48e0-84d1-475e6c16c991@paulmck-laptop>
+ <d7bb2cf4-11c3-468c-8749-99cc408299c7@arm.com>
+ <b6c621eb-6d20-4e00-ac05-af122b630ca5@paulmck-laptop>
+ <aae79c1c-8738-4b97-b1b9-d82d19d82d49@arm.com>
+ <20260909093524.249c2a1a@gandalf.local.home>
 MIME-Version: 1.0
-X-MTK: N
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20260909093524.249c2a1a@gandalf.local.home>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260921_062106_625563_BF6DD21B 
-X-CRM114-Status: GOOD (  17.81  )
+X-CRM114-CacheID: sfid-20260921_070052_917105_48D41798 
+X-CRM114-Status: GOOD (  11.97  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,48 +75,56 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, 2026-09-09 at 17:10 +0800, Naomi Chu wrote:
-> Clock gating becomes possible as soon as ufshcd_init_clk_gating() has
-> run, and from that point on the probe keeps accessing host registers
-> without ever taking a clock reference. This has been safe only
-> because
-> of the state check in __ufshcd_release(): gate_work is not queued
-> unless hba->ufshcd_state is UFSHCD_STATE_OPERATIONAL, and the
-> promotion
-> to that state used to happen after the last register access of the
-> probe, at the end of ufshcd_probe_hba().
->=20
-> That is fragile: it only works while the promotion happens after the
-> register accesses. Commit a390e6677f41 ("scsi: ufs: core: Expand the
-> ufshcd_device_init(hba, true) call") changed that ordering by moving
-> the promotion into ufshcd_init(), which schedules ufshcd_async_scan()
-> afterwards. ufshcd_probe_hba() therefore now runs with the state
-> already promoted, and it accesses host registers without holding a
-> clock reference:
->=20
-> =C2=A0- on hosts with UFSHCD_QUIRK_REINIT_AFTER_MAX_GEAR_SWITCH it calls
-> =C2=A0=C2=A0 ufshcd_hba_stop() and ufshcd_hba_enable() before
-> =C2=A0=C2=A0 ufshcd_device_init() sets the state back to UFSHCD_STATE_RES=
-ET,
-> and
-> =C2=A0=C2=A0 both read REG_CONTROLLER_ENABLE, so gated clocks stall there
-> instead
-> =C2=A0=C2=A0 of just losing a write.
-> =C2=A0- it ends with an ufshcd_configure_auto_hibern8() write, which its
-> =C2=A0=C2=A0 other callers do take a clock reference for.
->=20
-> Take a clock reference as soon as clock gating has been initialised
-> and
-> keep it until the probe is over. It then does not matter who drops a
-> clock reference while the probe is running, and the register accesses
-> of the probe no longer depend on hba->ufshcd_state. The reference is
-> dropped by ufshcd_async_scan() once the scan has finished, or by the
-> new out_release label if the probe fails after it was taken.
->=20
-> Fixes: a390e6677f41 ("scsi: ufs: core: Expand the
-> ufshcd_device_init(hba, true) call")
-> Signed-off-by: Naomi Chu <naomi.chu@mediatek.com>
-> ---
+On Wed, Sep 09, 2026 at 09:35:24AM -0400, Steven Rostedt wrote:
+> On Wed, 9 Sep 2026 11:31:28 +0100
+> Vladimir Murzin <vladimir.murzin@arm.com> wrote:
+> 
+> > I've done a little bit massaging and here is what worked for me
+> > 
+> > 
+> > diff --git a/drivers/usb/mtu3/mtu3_trace.h b/drivers/usb/mtu3/mtu3_trace.h
+> > index 89870175d635..4d4bae25fa1f 100644
+> > --- a/drivers/usb/mtu3/mtu3_trace.h
+> > +++ b/drivers/usb/mtu3/mtu3_trace.h
+> > @@ -224,6 +224,7 @@ DECLARE_EVENT_CLASS(mtu3_log_ep,
+> >                 __field(unsigned int, flags)
+> >                 __field(unsigned int, direction)
+> >                 __field(struct mtu3_gpd_ring *, gpd_ring)
+> > +               __field(dma_addr_t, gpd_ring_dma)
+> >         ),
+> >         TP_fast_assign(
+> >                 __assign_str(name);
+> > @@ -235,12 +236,13 @@ DECLARE_EVENT_CLASS(mtu3_log_ep,
+> >                 __entry->flags = mep->flags;
+> >                 __entry->direction = mep->is_in;
+> >                 __entry->gpd_ring = &mep->gpd_ring;
+> > +               __entry->gpd_ring_dma = mep->gpd_ring.dma;
+> >         ),
+> >         TP_printk("%s: type %s maxp %d slot %d mult %d burst %d ring %p/%pad flags %c:%c%c%c:%c",
+> >                 __get_str(name), usb_ep_type_string(__entry->type),
+> >                 __entry->maxp, __entry->slot,
+> >                 __entry->mult, __entry->maxburst,
+> > -               __entry->gpd_ring, &__entry->gpd_ring->dma,
+> > +               __entry->gpd_ring, &__entry->gpd_ring_dma,
+> >                 __entry->flags & MTU3_EP_ENABLED ? 'E' : 'e',
+> >                 __entry->flags & MTU3_EP_STALL ? 'S' : 's',
+> >                 __entry->flags & MTU3_EP_WEDGE ? 'W' : 'w',
+> 
+> LGTM,
+> 
+> Reviewed-by: Steven Rostedt <rostedt@goodmis.org>
 
-Reviewed-by: Peter Wang <peter.wang@mediatek.com>
+On v7.3-rc4 I still see the splat Paul reported initially, and the above
+fixes that, so FWIW:
+
+Tested-by: Mark Rutland <mark.rutland@arm.com>
+
+Steve, I assume you were expecting someone to send the above as a full
+patch.
+
+Paul, do you intend to send a v2, or should Vladimir send out his
+version as its own patch? I assume you're happy with a Reported-by, if
+he does that?
+
+Mark.
 
