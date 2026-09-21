@@ -4,61 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5FC0EC982D8
-	for <linux-mediatek@archiver.kernel.org>; Sun, 20 Sep 2026 23:17:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A56B3C982D8
+	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Sep 2026 00:21:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
 	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=iNmqXhGZZ3SwaOV8bqOvV8+pT+SPZVFh4wF6oc2IRlM=; b=p+uR5gJZ2oZhReq7ABXYNxmBc4
-	aHhSwvRG7S+qIcsYT3XB8FscfnISZxhSz/DhYmgUiMesj/V+Bi8vDSU1pU221knq7BqwkujWhsIvg
-	Qv2SaEYRQIf2Z8ZNQgjwZdwcwMmIsRB8E2I1a2s21FEsGnjuEuYxtnFwmxyy13jDwNZKxV8Y4sigP
-	EGJwoh4UkpHSQCUNb4t+JcyLYJpzpX9qhoWJtJgNhNWFihzj1zyaPzA8BDUDeUi+sdAVZOIm8Z287
-	AkVK/jvhT2hxXwQcCIWH9HBfSJ2avlrSnMxP6ttk1rcK/z5dJjwJg4INhICgMnFQDMvHdYdChQomL
-	XEn0mHDA==;
+	bh=nwf30iuTuv5VLbNpYFck9XFeHn/Dpbwh6FqWUkooBEQ=; b=PURlRpKSuwkCI/pUWoE9j3lNYy
+	iTFqsFZUQzbIMyZCUnbZ5aZzEbd7mKtVRDlZemvWeA38oTy0gRvFFnRzmeN/SnVmqQCOMKSKlu6NB
+	SGRt92IgmGpCfpJD8QJMJPKlc9T3ad/z7Ebev/usW70lwCNw848BSSaE49jq9UOjpMx1ioW3Mc1b7
+	qB8yhw1J8YuFd0yH2xZosH77LOYaTk47D6Nt+pA6blKrC5G9l5L0KH5ES1voyH7PDYy9iATw9/Q/K
+	I8IeE01hunEetRsf0MPA59UT4kV6jySMXADFXvM2mJdN6sbZ+zRqUdKv83baIdlf+qe78uecBxOw4
+	9nS2nK0A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x8QmV-00000000a8T-2FXE;
-	Sun, 20 Sep 2026 23:17:11 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1x8Rmj-00000000ctW-3cwC;
+	Mon, 21 Sep 2026 00:21:29 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x8QmU-00000000a8E-4B4w;
-	Sun, 20 Sep 2026 23:17:11 +0000
+	id 1x8Rmi-00000000ctJ-2voA;
+	Mon, 21 Sep 2026 00:21:28 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id C55F9601F0;
-	Sun, 20 Sep 2026 23:17:09 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id A394B1F000FF;
-	Sun, 20 Sep 2026 23:17:06 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id C2998601F0;
+	Mon, 21 Sep 2026 00:21:27 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 930A61F000FF;
+	Mon, 21 Sep 2026 00:21:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1789946229;
-	bh=iNmqXhGZZ3SwaOV8bqOvV8+pT+SPZVFh4wF6oc2IRlM=;
+	s=k20260515; t=1789950087;
+	bh=nwf30iuTuv5VLbNpYFck9XFeHn/Dpbwh6FqWUkooBEQ=;
 	h=Date:From:To:Cc:Subject:In-Reply-To:References;
-	b=KXchSqOMRu6y0GF6EJYza2QP88aCzZmwup1XUPGrasdEXOhI6G7OJ14iaK1CWpkJs
-	 yqDplcxA/MrOg7wIZwopBhu4eSf0x2hW43ePFgdnb1T8ZMGX4KBu4ZJhbq905a+M2B
-	 /QZq8nTfycPwGGIPWRLsEmzwrLZwV0Mx2erm3tVKNSXQuHaPkO0J4Bk/KhqqPUr36b
-	 LQQTXQ+wRVrHLNYaYL5uxJlfha8588V9Hp1xwdIzVyqQGtskhuqi/Fwt0mI8+W6MiC
-	 nyvSs8D9Mn/PNqMjBa9q4p3DN9FDOlq1/cC3K9rnEI+ARfCKV/s3bGi8ip+Wjn8cPq
-	 k9TKIz31I3z4A==
-Date: Mon, 21 Sep 2026 00:17:02 +0100
+	b=C8gbed0tVCs/tkqu9+wuToN+7202xAx+QM2NyRJy4p+ixQ7rb65LcnrkJi3eCvtwp
+	 sU++JbEMgY4pKUqYUt33Bwk/KQMRiLVL+FKpF/bfqM1Hnrslio7QbqfBmrcUIGRuFm
+	 ozbjwLTMQA3xE6HKonFzaunnRJEuVJJLvBm5mU04oI49QArf8NgtehLTK33xA/Pu/R
+	 6kLvfQo/KlZz2knNZaArriNJFb5ypf8RjDyvUe9CUFr3euljeV6QOTnyJBY7NWosqH
+	 ZJV5z5dRTlJIBWdnfpqhkQiVDWt5ZCU0I3vo7fYq+ou1fvOo5scEE1wVqLnRmUSMEJ
+	 XSQmLvSnBLejQ==
+Date: Mon, 21 Sep 2026 01:21:21 +0100
 From: Jonathan Cameron <jic23@kernel.org>
-To: Ryan Brue <ryanbrue.dev@gmail.com>
-Cc: David Lechner <dlechner@baylibre.com>, Nuno =?UTF-8?B?U8Oh?=
- <nuno.sa@analog.com>, Andy Shevchenko <andy@kernel.org>, Rob Herring
- <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Lee
- Jones <lee@kernel.org>, linux-iio@vger.kernel.org,
+To: Krzysztof Kozlowski <krzk@kernel.org>
+Cc: Roman Vivchar <rva333@protonmail.com>, David Lechner
+ <dlechner@baylibre.com>, Nuno =?UTF-8?B?U8Oh?= <nuno.sa@analog.com>, Andy
+ Shevchenko <andy@kernel.org>, Rob Herring <robh@kernel.org>, Krzysztof
+ Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+ <angelogioacchino.delregno@collabora.com>, Zhiyong Tao
+ <zhiyong.tao@mediatek.com>, linux-iio@vger.kernel.org,
  devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- mfd@lists.linux.dev, Roman Vivchar <rva333@protonmail.com>, Luca Leonardo
- Scorcia <l.scorcia@gmail.com>, Andy Shevchenko
- <andriy.shevchenko@intel.com>
-Subject: Re: [PATCH v3 0/3] iio: adc: add mt6397 PMIC AUXADC support
-Message-ID: <20260921001702.3a208780@jic23-hlaptop>
-In-Reply-To: <20260920-rbrue-suez-upstreaming-mt6397-auxadc-v3-0-c00edacbee64@gmail.com>
-References: <20260920-rbrue-suez-upstreaming-mt6397-auxadc-v3-0-c00edacbee64@gmail.com>
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH] dt-bindings: iio: adc: mediatek,mt2701-auxadc: add
+ mt6572
+Message-ID: <20260921012121.048cef83@jic23-hlaptop>
+In-Reply-To: <20260918-boisterous-slim-dolphin-03d5ea@quoll>
+References: <20260916-6572-dt-auxadc-v1-1-e8190d614c33@protonmail.com>
+	<20260918-boisterous-slim-dolphin-03d5ea@quoll>
 X-Mailer: Claws Mail 4.4.0 (GTK 3.24.52; x86_64-pc-linux-gnu)
 MIME-Version: 1.0
 Content-Type: text/plain; charset=US-ASCII
@@ -77,22 +77,28 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sun, 20 Sep 2026 00:31:50 -0500
-Ryan Brue <ryanbrue.dev@gmail.com> wrote:
+On Fri, 18 Sep 2026 11:50:20 +0200
+Krzysztof Kozlowski <krzk@kernel.org> wrote:
 
-> The MediaTek mt6397 PMIC has a 10-bit AUXADC that nothing in-tree can
-> reach. On boards built around it that ADC is the only path to the battery:
-> the SoC's AUXADC is wired to board thermistors, and the charger ICs these
-> boards use have no ADC at all, so without it there is no pack voltage and
-> no state of charge.
+> On Wed, Sep 16, 2026 at 02:42:35PM +0300, Roman Vivchar wrote:
+> > Add a compatible string for the mt6572 AUXADC, that is compatible with
+> > mt8173 IP.
+> > 
+> > Signed-off-by: Roman Vivchar <rva333@protonmail.com>
+> > ---
+> >  Documentation/devicetree/bindings/iio/adc/mediatek,mt2701-auxadc.yaml | 1 +
+> >  1 file changed, 1 insertion(+)  
+> 
+> Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
+Applied.
 
-Hi Ryan,
-
-Please slow down between new versions.  Unless a maintainer is specifically
-asking for a quick turn around (sometimes happen very late in a series) at
-least a week is typical time to allow multiple reviews to come in
-and hence save on effort all round.
+Thanks
 
 Jonathan
+
+> 
+> Best regards,
+> Krzysztof
+> 
 
 
