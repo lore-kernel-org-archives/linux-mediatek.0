@@ -4,54 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 111A2C982ED
-	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Sep 2026 15:04:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1C3A5C982E6
+	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Sep 2026 15:07:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=C9OuFK8krYG5CFJQY5mJoDN0CmcjBiY8Df4psmo7f7k=; b=AHXEfKtT7AfQsAriFJBopQH1Me
-	Mxjm/zubEwZEBIwcZFZFys93Pwk7rkLW58SJp3exF33SvIpImPMTS54+r428cRaRlIs3ffhXU5UVH
-	tk2zog7wqcEHbPIG7VH02IwRO0jEZaUO3DtU8MlC36cWlH4ggtaTjz6acrmIAxYYT0y9dtNaMV6qv
-	dySK4DLwYZrHTk46yIk1egF1QfOY4LhY6b/GuuSRhnLbwhgxLWa9Pwx1SAVmlmjGBpBBnB6qzyj22
-	tipwgNeQT6yOJtSSBVWUgSggBsJ56jnSc0qnIyELGUR11vUrOGafHSpnV2WKCpAiqSkPqi0ZtPwko
-	N089v9Cw==;
+	bh=C9OuFK8krYG5CFJQY5mJoDN0CmcjBiY8Df4psmo7f7k=; b=wSPl2jMd1SoxZKdfE2JcMvZkdo
+	k1q5RsDHP5QVNX8ElrHqH1tOHU9VIf3aoIIkrJAQlf7XqDkKM5e6/GZ4FvZxlN8cqQJE6tC1+q/HS
+	xo7X8XU1L/H1/1FY/xyIabCA9hlq/gBsrJD2UibhSbP301y2B3uPwnA2xryJ4lNsaUYn0zOp2oPM/
+	XAGAsqmePg9/cDzkUemdsmkFmJtogF9eGEf6Jle7SWkVJvqUOQWa5v3fc0gFHD5YLFxO4SUC9ssI9
+	wweDuwou6ToTF7QdWOt2eoYLOGOXmVms4OpfwZZ6KwDDfY1YhYX3rygPPzRZ9oTIGQsl+4op2VK/1
+	UNY5UwfA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x8fYl-00000002XLE-0Sot;
-	Mon, 21 Sep 2026 15:03:59 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1x8fc5-00000002Xyc-18Yw;
+	Mon, 21 Sep 2026 15:07:25 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x8fYj-00000002XKR-1Wix;
-	Mon, 21 Sep 2026 15:03:57 +0000
+	id 1x8fc1-00000002Xwu-2QDV;
+	Mon, 21 Sep 2026 15:07:23 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id D3F6D41881;
-	Mon, 21 Sep 2026 15:03:56 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id F3F431F000FF;
-	Mon, 21 Sep 2026 15:03:55 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id B0E7D600C8;
+	Mon, 21 Sep 2026 15:07:20 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id A58001F000FF;
+	Mon, 21 Sep 2026 15:07:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1790003036;
+	s=k20260515; t=1790003240;
 	bh=C9OuFK8krYG5CFJQY5mJoDN0CmcjBiY8Df4psmo7f7k=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=HKPtgqXM8YdJsCLmf/4XWk866/vpIokpgYm5FBBZMXJiBdXigdiDCTg9BG39/L/vp
-	 gNFovqk3NNKb2LSzzO6almiWMgLvY+0DPM5nY96vjw2kuVmK1C4aPqNmNqAc7JaeR3
-	 BmSyW8ls6DDWGEdAi5GhWQ0h/pmTeVKMy5fWpxX/Oqxb1+UpK678Eqwjj0pATZpyl6
-	 gJjrRboSyK6QdP4VLnOaeCuhNRpa0/zQ3M96RAeg56rvyP/U1shNwLfsYp4ZPd0w1i
-	 b2a3P6iJBnYD/ggePc0FuzwuO/1/wYbvhM6k5qDRMoi7GbqjsxpDFN4C98xyjJAyoz
-	 Nlnvjed8Q1QqA==
-Date: Mon, 21 Sep 2026 17:03:53 +0200
+	b=C/PKQEwySgSwNGafp4Sed39F3rpKkgJQ9XIP0UYxKqxZvrMvYXyt6ySX5tsVuZxtC
+	 RSIe4qkmkI/8xo5pUSmj+b00/rzYZG/O/+NjmfTYri9F6GQCday5ZSCBk/dZ++SmHi
+	 yDJ5oVf3VsfjfgWRSliRTvrU2goNx1jIs2e+vTPfdHvqAW2uZzlbqr8YyDKiCwp5+K
+	 aODTlXJN+FNQIfmh7Wkcm690cvq4z+0SYEXJJD7z36I2Nre/4NAUYriP8EoES8qcu7
+	 2DmPWmMMg++gdD1uKvCsAj/LuqEtyNTKRF4EDKjEGvWx7mkbwWtXkUsooLBtCMTbQw
+	 6VM9txvXC8xOA==
+Date: Mon, 21 Sep 2026 17:07:17 +0200
 From: krzk@kernel.org
 To: Guangshuo Li <lgs201920130244@gmail.com>
-Cc: Bin Liu <b-liu@ti.com>, linux-usb@vger.kernel.org, 
-	Yonglong Wu <yonglong.wu@mediatek.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
-	linux-kernel@vger.kernel.org, Min Guo <min.guo@mediatek.com>, 
-	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, stable@vger.kernel.org, 
-	Matthias Brugger <matthias.bgg@gmail.com>
+Cc: Yonglong Wu <yonglong.wu@mediatek.com>, 
+	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-usb@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	Matthias Brugger <matthias.bgg@gmail.com>, Min Guo <min.guo@mediatek.com>, stable@vger.kernel.org, 
+	Bin Liu <b-liu@ti.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Subject: Re: [PATCH] usb: musb: mediatek: fix child device leak
-Message-ID: <arFHWJb9igZQPkeZ@quoll>
+Message-ID: <arFIIXUAYO8OXa_5@quoll>
 References: <20260921085119.308981-1-lgs201920130244@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
