@@ -4,51 +4,50 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0C45BC982DE
-	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Sep 2026 10:16:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 47F0EC982E1
+	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Sep 2026 10:16:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=0pk62u2SlCQA2g8YhkGB0TZ25FcIUqQFtwR4ALeVSLg=; b=y70xpaevBNG01c2JoDaogRtr90
-	9lDQVUgKg0LGswaeEC4hQjj6ZYXwFrKVEmnlMoSaZe2AtjHiF/RYKLtm7yG4J9/yEhESCRZQ0kXvJ
-	hQPNmsW3w8CUsAkRlfr4/mgWllYbPrxVZjl3D2PZzw1SMyHJxlM9MUtM+06OiyuIbYPK4tDwCEjbc
-	hp1xjLszpVW+KyNcgJFvAtqa07eX5nV1aLQpvnvTkEtH3Q2VcWgbuYC4SQ4wZAb6xjFnDE1RkjzAj
-	ylwBoyYhI3DmjXVvdrfMmsSDUqSTL9Uwa12kQ9CTIGRidgiFraYinFjeR9EsZX3d3m7VDlCcn7VkV
-	i4/50XdA==;
+	bh=DA0WJK1alYM5IkMkXcbrZdgEnQ3XRkqytNqm6G2Awio=; b=VU+Fa4PpKlsXCsItIxGwj+zZ8y
+	dJHLxSWWT5zEFAf2Y3IuXMIpJBfszCqGiypB1KNSChZrDQbddY80NzX1wAoi/Ku9oCIKkm69sp/Jj
+	ekiZhkWfeF15deHYg+SrqTys8FwWUjMQR01eNPPzXXTF++3GG8GnMn7Y8ZJNZ2nV+YecbkrnWr+D8
+	tmFnBYNIWDmi2XTC0kMGUTJtI5Q+K8z8Peu49qE6F33xxOfWeyIoWvKV44HoLrDtFEvwso86p079H
+	MyIioOZZxfwbp/2S9lS8qRbbyrCUPQXJWv5QFZai+YMBK+/Ua+xxliSEQ+5XbJ4a8cvpsFoRdh3xU
+	9Bn4NKHg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x8b4B-00000001eAv-14TV;
-	Mon, 21 Sep 2026 10:16:07 +0000
+	id 1x8b4u-00000001eLA-1xeW;
+	Mon, 21 Sep 2026 10:16:52 +0000
 Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x8b48-00000001e9P-409j;
-	Mon, 21 Sep 2026 10:16:06 +0000
+	id 1x8b4o-00000001eJl-2Vur;
+	Mon, 21 Sep 2026 10:16:48 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1789985762;
-	bh=Lo6e24+OYras1PE/uj4vcsvTH4ido1eqB1uEmKdu8AA=;
+	s=mail; t=1789985804;
+	bh=DVHjoDLlRZ8xarvRTXy+GeqFMaFzqMyhGQvV2Jvh3ms=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=VfHMWqm8b9SnxR37a2o+QHFo05DzegEUwaCfzQU/6eS3IyI2Ccii7SQVwhZD8qGlJ
-	 wFEbG89uI/HGYx5imCLuXEdiU9+L51gbcm8BU3pEpJ0hA0cgVT4bNZzIbzGTpPwlRG
-	 YzFkkrkcnccFD1fWXVgTKdHXa64v6rjvfqhzF2ziIHSXEp/5UDKFlQE5XpYgeU0eGW
-	 my+doEkkJcDrMkXOZ3uUcOF7frqTwW5L0vECs/MuIvE5fj1l81G9wjvx6K7Tn9B1DA
-	 YKjWxODMOeeM4wIiDJwW3WYOrj2fNfYIqx46Zw6SjmIZLH94fREHdI2GKWZXX5BYso
-	 kpBNDYvQEqfsg==
+	b=fGkWIRlUpT3FUMIocCMnGjrfqk3tG23xRw/lOgpYwLSIUor1o7zDXMvYSjiBQHNje
+	 82q2pjNI7OynoPk06TSzBBrp2dFXlzZJ4U6C3AGpPNpR9ZYLcK4qwKlTVHi75zdaaF
+	 yxAyEzpnnqnNLNy/9LyacTq82h6slOISlpYVfTRz7ZXjsNUqhN3xVCQRpVTpfKWuI/
+	 Xi8rM57Wyh23iVTXAgSB6eWB3V+uQCykH1qiO5scVgRlgHLYTwOmUD9fLvHVmfNuY1
+	 oHZ5XJ4uUW9kAf4GNCjQmGig2kFW/MHcvJRcFpZt+8W2JV61c/CvnGuPm+I8wCElPG
+	 yzCW6NZE2gZtg==
 Received: from [100.64.1.21] (unknown [100.64.1.21])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange x25519)
+	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 0641417E020C;
-	Mon, 21 Sep 2026 12:16:01 +0200 (CEST)
-Message-ID: <817d5599-a2ad-4f47-ab07-a74b0325950d@collabora.com>
-Date: Mon, 21 Sep 2026 12:16:01 +0200
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 070DF17E047B;
+	Mon, 21 Sep 2026 12:16:43 +0200 (CEST)
+Message-ID: <fc0fcb6d-a935-4795-91fb-f3ee17ced650@collabora.com>
+Date: Mon, 21 Sep 2026 12:16:43 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 1/3] dt-bindings: iio: adc: mediatek,mt6359-auxadc: add
- mt6397 PMIC AUXADC
+Subject: Re: [PATCH v3 3/3] mfd: mt6397-core: Add mt6397 AUXADC support
 To: Ryan Brue <ryanbrue.dev@gmail.com>, Jonathan Cameron <jic23@kernel.org>,
  David Lechner <dlechner@baylibre.com>, =?UTF-8?Q?Nuno_S=C3=A1?=
  <nuno.sa@analog.com>, Andy Shevchenko <andy@kernel.org>,
@@ -62,15 +61,16 @@ Cc: linux-iio@vger.kernel.org, devicetree@vger.kernel.org,
  Luca Leonardo Scorcia <l.scorcia@gmail.com>,
  Andy Shevchenko <andriy.shevchenko@intel.com>
 References: <20260920-rbrue-suez-upstreaming-mt6397-auxadc-v3-0-c00edacbee64@gmail.com>
- <20260920-rbrue-suez-upstreaming-mt6397-auxadc-v3-1-c00edacbee64@gmail.com>
+ <20260920-rbrue-suez-upstreaming-mt6397-auxadc-v3-3-c00edacbee64@gmail.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Content-Language: en-US
-In-Reply-To: <20260920-rbrue-suez-upstreaming-mt6397-auxadc-v3-1-c00edacbee64@gmail.com>
+In-Reply-To: <20260920-rbrue-suez-upstreaming-mt6397-auxadc-v3-3-c00edacbee64@gmail.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260921_031605_151511_141BBD24 
-X-CRM114-Status: GOOD (  11.09  )
+X-CRM114-CacheID: sfid-20260921_031647_005987_2E3D22BA 
+X-CRM114-Status: UNSURE (   7.78  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,19 +86,13 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 On 9/20/26 07:31, Ryan Brue wrote:
-> The MediaTek mt6397 PMIC includes a 10-bit AUXADC used for battery voltage
-> and battery temperature measurements. It is not register compatible with
-> mt6359: a conversion is requested by writing a channel number to a select
-> field and pulsing an edge triggered start bit rather than by setting the
-> channel's bit in a request register, and the results live elsewhere.
-> It therefore gets its own compatible rather than a fallback.
-> 
-> Add the binding and the header naming the channels a consumer puts in
-> io-channels. The battery channel is named for the input it measures,
-> ISENSE, which is what mt6323-auxadc calls the same input.
+> The mt6397 PMIC includes an AUXADC. Register the AUXADC in the mt6397
+> devices array to allow the corresponding driver to probe using compatible
+> string.
 > 
 > Assisted-by: LLM
 > Signed-off-by: Ryan Brue <ryanbrue.dev@gmail.com>
 
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+
 
