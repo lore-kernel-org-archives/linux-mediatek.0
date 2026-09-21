@@ -4,96 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 99C13C982EE
-	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Sep 2026 19:32:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 61209C982EE
+	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Sep 2026 20:23:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=YkVaGp7Cn0+pPyLCGLyICIBFgNNpQjfNjoyqplnwg8g=; b=c/4GJFELBJHjdtBcxo+2sLUZ5L
-	8ThYUj10CJQ+6eKiG/CIxWJVB+eioYfg0BmAtGOTNIIRyVGq2NF4DUuXnuDDerYsLyqPZCYoQzWsQ
-	f6QB8opvGKLzancGT4CJORFZBR/qoft/w4HHEbMxBaaC2BFMidpIgppLNw9PBOGMiTcCsQqgoYjsd
-	baKAlVdC14rvkLYH8Txd+tS1sw9dbnM+i0YUr4h1wDLJ+XOOAd7XDReA7bbcKZcVuQ9IU5ZbWH8LY
-	r/ebARh0ojvYeMi0nMsKT7nf+dzJrQoR6iRsu3UdZ4fJe0GVluWsVDa/PDSuj4JR5lFXS/l9I6SDx
-	O0/ZoR1A==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=EuIYaACFfYHQrqG9qgcFjCKehJqKFbN314wuAG+MnDA=; b=bpIkR2w1I9rGdj15etkPZ/XjYl
+	y15UoWFsdSEiYEUjKn5vPjWVzCpN/ZRq43Fbrq8MniNrUaaI8dcahVXi9WDXP3LUP3nO+DKPvEtxX
+	YUCvEKX8AOuK1DwZ9nkEiEIA/20MGRNeBcZCtIsQxJw1u1fq5JTqpyLRbw86TMbbGbYOD+vLz4PDo
+	2Qy9fxk4Ps8LGMUQ4VObXfxaIc4J96t4xugRDnWFdCNx4WEIYScjNBw8CuA8ZN/2U/Y2esKeZIb2s
+	RdGSf+ogdJObm8Pr7a3lpn4J3+hyYK+nQvVnhizMMjHl9ps/qmyKfiLAFoxJ2tfiK/9VXtelU+UEk
+	fgun7gOQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x8jkJ-00000003Eks-1Uwk;
-	Mon, 21 Sep 2026 19:32:11 +0000
-Received: from mail-pj2-x10.google.com ([2607:f8b0:4864:39::10])
+	id 1x8kXu-00000003KkY-49TD;
+	Mon, 21 Sep 2026 20:23:27 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x8jkG-00000003Ek1-2c7v
-	for linux-mediatek@lists.infradead.org;
-	Mon, 21 Sep 2026 19:32:10 +0000
-Received: by mail-pj2-x10.google.com with SMTP id d9443c01a7336-2d90ba1d807so41162815ad.3
-        for <linux-mediatek@lists.infradead.org>; Mon, 21 Sep 2026 12:32:08 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1790019128; x=1790623928; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:content-type:mime-version
-         :references:message-id:subject:cc:to:from:date:from:to:cc:subject
-         :date:message-id:reply-to:content-type;
-        bh=YkVaGp7Cn0+pPyLCGLyICIBFgNNpQjfNjoyqplnwg8g=;
-        b=g1wc6gHPd1ObszXXwlQBvbh9jUrtBPDasWzWTgqhDgT35CfP6fCtc+QHQUPsMOIfyk
-         vBJq30+Un/p2iiruCQWeB8bSa9SLCrzSgvVGlO9Gb+xAQ5OZo0VM/DSfVoTTebUwGH5R
-         58VKGamx6CQkueRP2R012RfXMCZpY3EouSNhTMjCTo05CBeuxEuLcKFrWIE2/rFVqEfW
-         KgoRrcdq/6qDUmc0DkUv2+ivTewu9mQZHb7bzxZCW4IRsHiIVzlUYG7pWlVidmVb/e0g
-         W6jupeOPfnJM24HzE2iyE6LBhkEr7zW6s4KoQH9PxElh8sEzhm97Y+pGj4pR89wv18Kl
-         yj4g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1790019128; x=1790623928;
-        h=in-reply-to:content-disposition:content-type:mime-version
-         :references:message-id:subject:cc:to:from:date:x-gm-gg
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
-         :content-type;
-        bh=YkVaGp7Cn0+pPyLCGLyICIBFgNNpQjfNjoyqplnwg8g=;
-        b=U8gkQCeyrYGwCUXFcAv0E4qJ+AJzSwxWlE5g5YkKjlTuiyMuf85rzGOPo5qa1Wa1/j
-         XagRVYKRNC3mGH9AHtbs80bRlUtJ514E7gWyH2fAq4M1KpLM78+xpkeY7LsGCPi8bfUM
-         pZ27kC49/xMr383dGQDrMpNyNndK3r0nolWWs4ZlUo7wu9PtFEKbUM0tl8gkNvSSWVC7
-         Bn5uLTEy9OSYOYncizy/iweZNFk09vNRL+e202SvG5YXykaVGpTcFstOcViaDDkzzSRq
-         HddybPXR88sAp4jQSGcG/RKVcvwAFvS3ik8rHQaucaHlH/via6NQnk6gL6NI91nFHlQX
-         fbug==
-X-Forwarded-Encrypted: i=1; AKwUvBxsi/1+zLdLCax02wP1mYFq6UO4jzv1HYf+bl7YBdJeKzGuowxFl2AoLj5VZzy4zcndgkP7ErgIRJ908JMhyg==@lists.infradead.org
-X-Gm-Message-State: AFuF++kZMXWgRPE34zQ6r758IVAFZvW4pLpnbC2drQpb7oTdGlewOpFS
-	QjfGMCd8D74lenscLjDAdQjZ2xodLKU60UmEDNCtxxj9IeRpAUjw5FlS
-X-Gm-Gg: AYBFou3BOcMsIfpL3nblVDbafd3LwyGF2xgAO1zaHQQ/+tMomx+GH7n4FlUsSn8u0fy
-	3GXAdpAyVITav2BO9TehZUlfeXQBDtqUWh6gD8kIEL4GWot22N0zfWoNgaWdR0dId6CncdlOCyT
-	oXR86oJbGvcmzFt37YCI9vwNe4x0f5IlUME4415nwaI3xmMLIUTVfmVgrBye+6pdav0D+Kr0aI8
-	nXCDxEity4nSelfHIZFGui4Ys0mXeO0y3rtqvlvgM3bTpZJJlHB+FWRR1oSWDX8VTaG3FVfG7Sa
-	bqL1O9FCAqgybRXkCAPTeZdv1aW1t+tlx8mqTrSa4C3jWQ30lJViJ0JhOK7IfCxM55aghswQLzV
-	p+8wfT6JfmbuCALy4yQdiuwWWZnsNX+xVJlhizdnodI6Qk6tTvEjVCoNPUb0FuZhucWpftYxJZH
-	ltIvrTdCbSggaRMPnfGs5tMucKJRyXCUagw1n9ArwMZ+udZxaVkyyveNaQnbiNFNxC/IH+RhYO9
-	j7qgiltoHINLBF4jfaPoILYHXcUNzNdIeOS81LY
-X-Received: by 2002:a17:903:4b28:b0:2dd:c100:a5da with SMTP id d9443c01a7336-2ddc100a676mr100940305ad.46.1790019127634;
-        Mon, 21 Sep 2026 12:32:07 -0700 (PDT)
-Received: from google.com ([2a00:79e0:2ebe:8:e1a7:4f7b:11d4:34fa])
-        by smtp.gmail.com with ESMTPSA id 5a478bee46e88-33e5ec60d1fsm126954eec.28.2026.09.21.12.32.05
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 21 Sep 2026 12:32:07 -0700 (PDT)
-Date: Mon, 21 Sep 2026 12:32:02 -0700
-From: Dmitry Torokhov <dmitry.torokhov@gmail.com>
-To: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
-Cc: Rob Herring <robh@kernel.org>, 
-	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
-	Yassine Oudjana <y.oudjana@protonmail.com>, Mattijs Korpershoek <mkorpershoek@kernel.org>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Artur Rojek <contact@artur-rojek.eu>, 
-	Frank Li <Frank.Li@nxp.com>, linux-input@vger.kernel.org, devicetree@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH] dt-bindings: input: Use consistent indentation in the
- example
-Message-ID: <arGGLo9vmxyJQlTo@google.com>
-References: <20260913123310.100170-2-krzysztof.kozlowski@oss.qualcomm.com>
+	id 1x8kXt-00000003Kk1-3S2v;
+	Mon, 21 Sep 2026 20:23:25 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by tor.source.kernel.org (Postfix) with ESMTP id D7AC960142;
+	Mon, 21 Sep 2026 20:23:24 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id D7A411F000FF;
+	Mon, 21 Sep 2026 20:23:23 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1790022204;
+	bh=EuIYaACFfYHQrqG9qgcFjCKehJqKFbN314wuAG+MnDA=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:References;
+	b=mkSvno16N/KbJGqH9JJZG3oUqniaYsWHOFiSd9ghPUELNVKurBiKi3yJDjkAbLoRD
+	 xGKOhi//72HswvsfOg1UO9UzNxVoOgyxDGA09uczWblOpvKqhNwVzKtE4Nmg7q8Alq
+	 oJJdF3xhwK2GNG/oiFS+mklEUQB4Nl9i5O362wvz7KzhGYn4cGHMJqhOvsAUxpmejw
+	 dF2Pl8nHmPWHq0/TTbk0nJYkY3n5GTnap8fnt9gJoyy/8oIWJW5OMFDhmOMgDcUm9d
+	 8muczurGCO4jezT8YoOO6RqoACBvBu+HF+ws0+K52hrf/oCE/kEx9EPpGJno1pMcOB
+	 4xz92dZYnAW4Q==
+Date: Mon, 21 Sep 2026 13:23:23 -0700
+From: Jakub Kicinski <kuba@kernel.org>
+To: "Wu. JackBB (GSM)" <JackBB_Wu@compal.com>
+Cc: Loic Poulain <loic.poulain@oss.qualcomm.com>, Sergey Ryazanov
+ <ryazanov.s.a@gmail.com>, Johannes Berg <johannes@sipsolutions.net>,
+ "Andrew Lunn" <andrew+netdev@lunn.ch>, "David S. Miller"
+ <davem@davemloft.net>, "Eric Dumazet" <edumazet@google.com>, Paolo Abeni
+ <pabeni@redhat.com>, Wen-Zhi Huang <wen-zhi.huang@mediatek.com>, Shi-Wei
+ Yeh <shi-wei.yeh@mediatek.com>, "Minano Tseng" <Minano.tseng@mediatek.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+ <angelogioacchino.delregno@collabora.com>, "Simon Horman"
+ <horms@kernel.org>, Jonathan Corbet <corbet@lwn.net>, Shuah Khan
+ <skhan@linuxfoundation.org>, "Yu. Robert (GSM)" <robert_yu@compal.com>,
+ "Chang. Jeff (GSM)" <Jeff_Chang@compal.com>, "linux-kernel@vger.kernel.org"
+ <linux-kernel@vger.kernel.org>, "netdev@vger.kernel.org"
+ <netdev@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org"
+ <linux-arm-kernel@lists.infradead.org>,
+ "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+ "linux-doc@vger.kernel.org" <linux-doc@vger.kernel.org>
+Subject: Re: [External Mail] Re: [PATCH v8 1/6] net: wwan: t9xx: Add PCIe
+ core
+Message-ID: <20260921132323.7e6f76d3@kernel.org>
+In-Reply-To: <690e3d6d04ba47efba2b4cda7b18e42e@compal.com>
+References: <20260914-t9xx_driver_v1-v8-0-5206c2e6bea0@compal.com>
+	<20260914-t9xx_driver_v1-v8-1-5206c2e6bea0@compal.com>
+	<20260919165434.08d026a8@kernel.org>
+	<690e3d6d04ba47efba2b4cda7b18e42e@compal.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20260913123310.100170-2-krzysztof.kozlowski@oss.qualcomm.com>
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260921_123208_673561_EC176A77 
-X-CRM114-Status: UNSURE (   9.11  )
-X-CRM114-Notice: Please train this message.
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -108,16 +85,37 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sun, Sep 13, 2026 at 02:33:11PM +0200, Krzysztof Kozlowski wrote:
-> Correct indentation in the examples to consistent 2- or 4-spaces
-> indentation to fix dt-check-style warnings ("example 0
-> [indent-consistent] indent mismatch ...").  Preferred is 4-spaces, but
-> re-indenting entire example just for that is too much churn.
+On Mon, 21 Sep 2026 07:06:23 +0000 Wu. JackBB (GSM) wrote:
+> Two questions on the prompts document.
 > 
-> Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
+> Are the following hard requirements the series has to meet, or targets
+> for the tool?
 
-Applied, thank you.
+Targets for the LLM but also these are describing a high quality
+submission in general.
 
--- 
-Dmitry
+>  - line 44: "Ideal patches are between 200 and 700 LoC (added +
+>    removed, not counting context)."
+>  - line 46: "Avoid series larger than 2.5k LoC. The first series is
+>    usually larger, but must not exceed 4k LoC."
+>  - lines 57-58: "Series 1 should aim to add the simplest possible
+>    version of the driver which nonetheless can send and receive a
+>    trivial (no offloads) packet."
+>  - line 117: "Avoid the use of managed APIs (``devm_``, ``pcim_``)."
+> 
+> On the packet one: this series carries no netdev because an earlier
+> review found the driver too large to submit at once, so the network
+> functionality was split into follow-up series.
+
+That's fine.
+
+> The document also asks for no defensive checks (lines 119-120) and few
+> code comments (line 124).  That runs against the direction of the AI review
+> we have been getting, where both have been growing.  Is the current
+> direction still fine?
+
+The kernel coding guide has not changed, defensive checks are still
+discouraged. If AI is suggesting checks that can't trigger just comment
+on the review or add a comment / WARN to the code to mark the condition
+as impossible.
 
