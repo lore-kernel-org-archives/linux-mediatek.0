@@ -4,82 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D6053C982DE
-	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Sep 2026 10:43:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8D8D2C982E1
+	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Sep 2026 10:49:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From
-	:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=JYchMiREWowW3+mUg8h/Fng4wcnIcSeQ0Ii8DipHHhY=; b=30kPlYj8DX16SXW4+gS6Xh5z9l
-	njyjIAOh1MhcyWs2kflAFwM/GSVF19qay/tSOwHbRzzhj3p4/7GWpVCgYZYLQR7CvJekHdsw/VdlS
-	Q0OSDIHmbLiZh/P/nznWnoJbn8uDrLX495y4WxmFWTdt2i4FGKqiPlVJGN4tVNjSsDw3IG+zaPjCD
-	ChGGpwdsIIuw0HZinc+kLVfpA6BChvedpfoipk2TehWXIkHBCTbZGPADv4xdmH4q6nc1l454DHD6S
-	RoJyJFDFKkNOjLiwWxIPzvLo+SA1a43oNtlUF230ptJ/bzZwaiwaN11Re5A5uDmMYRT+nw6sNMXzA
-	362mbqmw==;
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Pairy7dsQZgTodP+Gt3cSIv+87Hj8a+LeOtdVlLrVLE=; b=bZv3PLhYehhaOjS4cyDeeHzjt9
+	qOTu+nOcv5ZnZBBsba9N7ORr1wVEB2Z8YUwq7k91kZJIW4YAfq0TT1AtJFLQ/nUmwIznG1joDM9tc
+	pRjb+Kc0xQgYc6c3X2t9DxgR0M3/MLMUCa4+8/SCxjPr6krd2/EEe0oWCnv05UmTZGsZNNDV+Gdmv
+	+wtnn1EPZ5U8KkZLhLseMGHOOf2yGHeekHrdPQfQ0sqzpGXYhwkHp8dTP7DXH5JyA0qe1W9mTtv/c
+	0oM2aoqmw89WutTHOAUNjSAygwO83B5GQy/BYBCj2UQzyNhgpgWwjup3kGxAd4XiC1Ot/O6+k1yUn
+	GEOLsKjQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x8bUN-00000001jTl-15Dt;
-	Mon, 21 Sep 2026 10:43:11 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1x8bav-00000001kAq-1HA7;
+	Mon, 21 Sep 2026 10:49:57 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x8bUI-00000001jSi-46vU;
-	Mon, 21 Sep 2026 10:43:08 +0000
+	id 1x8bai-00000001k7U-4A1l;
+	Mon, 21 Sep 2026 10:49:46 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1789987384;
-	bh=Jgwpcker6k9rDea0kRKtirRFxf58xRqNK/1bFIhkyeg=;
-	h=Date:Subject:To:References:From:In-Reply-To:From;
-	b=oMTNaCUUQMOFVvWtgJ8FpNZ78+radWm4cFtglDxYayHg0KljOdwH8twiOXi86vS+U
-	 P3VUGiXZmygGnudp9xbNeTLWgolxWIBtpw50uZp180Qt5J6bwhxGXRSHalytZTM+6E
-	 2zxNom4zWTDpnpi/BFF1YgFfhfMoLnQE3suBwwbogv6IekEHfTDrFHDuJrXjjSDohm
-	 6v50HbEataNqYDAVG6gHO69vfRYaEz3UtKyFlL7EmlZNEoGJ11fi/hJYypEtBORh4u
-	 xNxx8Qt4b9iGK7fOa/1MsShkRNlvXC0pUMqKDGSQLNt3bI4p447TOs6WYGN4plBFxQ
-	 2eNtJ8McJQ3/g==
+	s=mail; t=1789987782;
+	bh=jcQ0uXCTQN6WFOE+Jcx1zQyWym5Bv44C6LobbdOSxxE=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=f6Y+EDzEKTe5O68Ni67Q2wB9Fs0lexT5YJDL9btkq5KPtqIwQQPVrf0QZKaSWEtSV
+	 8RKuOF2gk0eGIXr6coKQZuVjfPZvnt3RW7HhcLxyu870oHSepRmhJVolVTXRPMQcP6
+	 aVvmE9o4r7cU6i+A+x0NbcoYCcMYmxSUlt2HyCLZ7c90XDXBD4Vw4w02gEkH4b3/L3
+	 11xxy3asNsHFhz2ksOm3CfTRS4Ihuu1T8bJL4LvNASKDvx2IQeYS/wuPNrphQVYyp5
+	 8UF/W6a223fSoHKLIPS5wuP7q/gHsHSPk3klzsRTcKvAn1y3tD1VDvCkyM8oJom796
+	 gXPFyPkTn1Bcw==
 Received: from [100.64.1.21] (unknown [100.64.1.21])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange x25519)
+	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 3C7EA17E09D6;
-	Mon, 21 Sep 2026 12:43:03 +0200 (CEST)
-Message-ID: <bffc0927-26c0-4b36-9d66-d75dc5aa3b89@collabora.com>
-Date: Mon, 21 Sep 2026 12:43:02 +0200
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 8750017E020C;
+	Mon, 21 Sep 2026 12:49:41 +0200 (CEST)
+Message-ID: <ba4fe17c-ee29-4739-a14e-87b39e5efcc5@collabora.com>
+Date: Mon, 21 Sep 2026 12:49:41 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] media: dt-bindings: Correct white-space style
-To: Krzysztof Kozlowski <krzk@kernel.org>,
- Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>,
- Keke Li <keke.li@amlogic.com>, Mauro Carvalho Chehab <mchehab@kernel.org>,
+Subject: Re: [PATCH v4 2/3] drivers: gpu: drm: panel: Add BOE NT51021 driver
+To: Nickolay Goppen <setotau@mainlining.org>,
+ Neil Armstrong <neil.armstrong@linaro.org>,
+ Jessica Zhang <jesszhan0024@gmail.com>, David Airlie <airlied@gmail.com>,
+ Simona Vetter <simona@ffwll.ch>,
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
  Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>, Zhi Mao <zhi.mao@mediatek.com>,
- Tiffany Lin <tiffany.lin@mediatek.com>,
- Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
- Yunfei Dong <yunfei.dong@mediatek.com>, Bin Liu <bin.liu@mediatek.com>,
- Vikash Garodia <vikash.garodia@oss.qualcomm.com>,
- Dikshita Agarwal <dikshita.agarwal@oss.qualcomm.com>,
- Bryan O'Donoghue <bod@kernel.org>,
- Jacopo Mondi <jacopo.mondi@ideasonboard.com>,
- Raspberry Pi Kernel Maintenance <kernel-list@raspberrypi.com>,
- Florian Fainelli <florian.fainelli@broadcom.com>,
- Broadcom internal kernel review list
- <bcm-kernel-feedback-list@broadcom.com>,
- Matthias Brugger <matthias.bgg@gmail.com>, Xia Jiang
- <xia.jiang@mediatek.com>, Stanimir Varbanov <stanimir.varbanov@linaro.org>,
- linux-media@vger.kernel.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-msm@vger.kernel.org,
- linux-rpi-kernel@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org
-References: <20260801195528.235230-2-krzysztof.kozlowski@oss.qualcomm.com>
- <1505ca0c-4a31-4673-bbe0-8474133fc504@kernel.org>
+ Conor Dooley <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
+Cc: dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, Ryan Brue <ryanbrue.dev@gmail.com>,
+ Alexey Minnekhanov <alexeymin@minlexx.ru>,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+References: <20260917-qcom-novatek-nt51021-panels-v4-0-30afbc35d70c@mainlining.org>
+ <20260917-qcom-novatek-nt51021-panels-v4-2-30afbc35d70c@mainlining.org>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Content-Language: en-US
-In-Reply-To: <1505ca0c-4a31-4673-bbe0-8474133fc504@kernel.org>
+In-Reply-To: <20260917-qcom-novatek-nt51021-panels-v4-2-30afbc35d70c@mainlining.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260921_034307_178407_3622642F 
-X-CRM114-Status: GOOD (  10.27  )
+X-CRM114-CacheID: sfid-20260921_034945_195317_22260450 
+X-CRM114-Status: GOOD (  31.18  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,28 +84,107 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 9/18/26 12:46, Krzysztof Kozlowski wrote:
-> On 01/08/2026 21:55, Krzysztof Kozlowski wrote:
->> Correct a few white-space issues, like double space after '=' or before
->> bracket '{' characters, which will be flagged by dt-check-style.  No
->> functional changes.
->>
->> Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
->> ---
->>   .../bindings/media/amlogic,c3-mipi-csi2.yaml  |  4 +-
->>   .../bindings/media/i2c/galaxycore,gc05a2.yaml |  2 +-
->>   .../media/mediatek,vcodec-encoder.yaml        |  2 +-
->>   .../bindings/media/mediatek-jpeg-decoder.yaml |  4 +-
->>   .../bindings/media/mediatek-jpeg-encoder.yaml |  2 +-
->>   .../bindings/media/qcom,msm8996-venus.yaml    | 40 +++++++++----------
->>   .../bindings/media/raspberrypi,pispbe.yaml    |  2 +-
->>   7 files changed, 28 insertions(+), 28 deletions(-)
+On 9/17/26 14:51, Nickolay Goppen wrote:
+> Add driver for BOE NT51021-based 8-inch and 10-inch DSI video mode
+> panels used in Xiaomi Mi Pad 4, Mi Pad 4 Plus (xiaomi-clover)
+> and Amazon Fire HD 10 (2017) (amazon-suez) tablets.
 > 
-> This received reviews, is trivial, waits on the lists for 1.5 monts and
-> it seems people are repeating what I did.
+> NT51021-based panels also support content-adaptive brightness control by
+> generating a PWM signal for backlight driver IC. Content adaptation
+> means that content grey level scale can be increased while
+> simultaneously decreasing brightness of the backlight to achieve
+> same perceived brightness. This makes the power consumption of
+> backlight be reduced with keeping acceptable display quality.
 > 
-> I understand this won't be picked up by media.
-....in any case, for MediaTek:
+> Both panels are very similar, differences are only in init sequence
+> and resolution.
+> 
+> The register sequence of the TV101WUM-NM0 is the BOE branch of
+> init_lcm_registers() in drivers/misc/mediatek/lcm/nt51021_wuxga_dsi_vdo/
+> in the Fire OS 3.18 tree, command for command, with only a 120 ms wait
+> after sleep-out added where the vendor waits its trailing 5 ms.
+> The 0x8f 0xa5 and 0x8f 0x00 that bracket it are the vendor's command
+> interface selection, sent on every board that is not an early proto or
+> HVT unit.
+> 
+> It is much shorter than boe_tv101wum_nx0_init() because this module is
+> left on its own factory trim. NT51021 R8CH selects whether V1/V14, gamma
+> and HAOP come from the panel's OTP memory or from control registers, and
+> the 0x8c 0x80 here leaves all three on OTP, where the NX0's 0x8e
+> switches
+> them to registers so that the three pages of gamma it then writes take
+> effect. So the absent gamma is deliberate rather than an omission, and
+> the differing 0x8c is its consequence. CABC is likewise untouched
+> because
+> the vendor drives it over I2C from the backlight path. What is left is
+> 0xc0 and 0xc8, which the public NT51021 specification does not describe;
+> everything else this sequence touches carries the same value as the
+> other
+> two panels, including the terminal resistor, TP_SYNC, the MIPI Rx drive
+> strength and all three test modes.
+> 
+> The timings are the vendor's lcm_get_params(): hsync 1, hbp 32, hfp 110,
+> vsync 1, vbp 14, vfp 11, so htotal 1343 and vtotal 1946. The pixel clock
+> follows the vendor's PLL_CLOCK = 490, which after DDR is 980 Mbps per
+> lane and over four lanes at 24bpp is 163.33 MHz, so 62.5 Hz. The
+> bootloader leaves the MIPI TX PLL at that rate: read back before the
+> kernel touches it, this board's PLL decodes to exactly 980 Mbps per
+> lane, so the panel is already there when the kernel takes over.
+> 
+> The front porch is the vendor's declared 110 rather than the smaller
+> value its own DSI driver ends up running. That driver also sets
+> clk_lp_per_line_enable, which makes ddp_dsi_config() overwrite HFP_WC
+> after the declared timing is programmed, shrinking it to leave just
+> enough room to take the clock lane to LP and back. That is a
+> controller-side workaround rather than a panel property, and it
+> contradicts the cont_clock = 1 set beside it, which disables the very LP
+> transition it makes room for. Mainline mtk_dsi handles the clock lane
+> itself, so the panel's declared timing is the right thing to carry here.
+> 
+> The vendor asks for SYNC_EVENT_VDO_MODE with cont_clock = 1 rather than
+> burst, so make mode_flags per variant instead of fixed in probe(). The
+> two existing panels keep the flags they had. Burst was also tried on
+> this hardware and worked, but the vendor configuration is the one the
+> module is characterised for.
+> 
+> The physical size is the datasheet active area, 216.576 x 135.36 mm,
+> which measures 216 x 135 on the glass. The vendor's declared a
+> physical_width = 136 and physical_height = 221, which appears to be an
+> error. The size of the test unit was physically measured. 1200/136 and
+> 1920/221 disagree by 1.5%.
+> 
+> The vendor's bootloader and kernel both carry a second register sequence
+> for the Innolux module this board second-sources against, selected from
+> two board ID straps. No Innolux unit was available, so that sequence is
+> left out rather than carried untested; however, the Innolux part number
+> was identified as "P101KDA-AB0", should someone with that glass need to
+> upstream support in the future.
+> 
+> Tested on the Amazon Fire HD 10 (2017) driven by mediatek-drm: 1200x1920
+> at 62.5 Hz across a cold boot, display off and on cycles and a
+> suspend/resume, with the MIPI TX PLL reading back at the intended rate
+> every time.
+> 
+> Assisted-by: LLM
+> Tested-by: Ryan Brue <ryanbrue.dev@gmail.com> # Amazon Fire HD 10 (2017), boe,tv101wum-nm0
+> Co-developed-by: Ryan Brue <ryanbrue.dev@gmail.com>
+> Signed-off-by: Ryan Brue <ryanbrue.dev@gmail.com>
+> Co-developed-by: Alexey Minnekhanov <alexeymin@minlexx.ru>
+> Signed-off-by: Alexey Minnekhanov <alexeymin@minlexx.ru>
+> Signed-off-by: Nickolay Goppen <setotau@mainlining.org>
+
+Though I would've preferred to see the commands put in arrays instead of
+multiple function calls with all of those values, the only improvement
+would be slightly lower code size... and I don't think it's worth it to
+request a v5 for just that.
+
+After all, it's anyway the same "mess" of unknown data going out to the
+panel's DriverIC - be it in one form or the other, it's not changing much.
+
+So
 
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+
+Cheers,
+Angelo
 
