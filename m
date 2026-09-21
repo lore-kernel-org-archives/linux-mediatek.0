@@ -4,46 +4,46 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 43AEFC982ED
-	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Sep 2026 15:27:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 31B79C982E6
+	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Sep 2026 15:33:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=PR3QlLkpOllF17ylDcNIQRMmZtuCsB9dWNGolTVMx54=; b=ZbGUcOxYfRsNr5Rfqg6vj0GPsJ
-	Y3LpQPUTb97U22G1cCPtdV7SJOUDW6xR+Q29eUnk/snDqKWxc1sMPJehoHwpwmMrLuPNZIv03I2zZ
-	ZyHu/SMM+zcrseXyVIi5QhcacAIoZR2Jn2QHEGtjAkNz5T713ICneHQY6XQfgGCVUo0i+64xiQ1eU
-	g8c7APy23qWEAHG9TBsSblearWE9yLra9XFOUD5/MY1rTZxvRnJggEdkvCs+wCW+z921+zoPzE8LY
-	LPyA4yG3eVYQa0Iz+AHSbI5/PtvFgPO0N9RZxzu97n1eSF5pLTz3Xo69mwxExB1Dlsu9JLUg1QGHe
-	d6Cj4/rQ==;
+	bh=W8D2yB3bE6BKhGOLQ/iMBVp9chvKCeuMO2b5VVl3euw=; b=E7yBNC0hP1WRyz61foXxEGQSEe
+	hh/3eCFXTEW1FJlMfXNy5veP41GBMLO5YElyS4YBVgDrDjzxokmlFN2RViv9eP/sBN27M5MJnNsti
+	V+4ApzO0tkl5WQgww7Q/O9bKbTjS3Us/n4OQgk9yQSKU/AeKa14cN56aoj31oG8AoBDfOtsgLjYuI
+	57nYSRKXw0zAC1UJsNE4DjuPjhH9fBDGFwoi8QWhIc3GtGqXFR8InHcwHqTe9WdlXozbU1xlMyPJj
+	/N/aIBmPB+hckjKP37mdkXE1V9oG85CDkAuPovuDwaB0TIiwrvE2YHQPGjlXxczU6XqPZdhzYH6jE
+	5kwQOHvg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x8fvi-00000002buq-1XuB;
-	Mon, 21 Sep 2026 15:27:42 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1x8g0t-00000002dId-0juA;
+	Mon, 21 Sep 2026 15:33:03 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x8fve-00000002btH-1SlS;
-	Mon, 21 Sep 2026 15:27:38 +0000
+	id 1x8g0p-00000002dHC-2e6O;
+	Mon, 21 Sep 2026 15:32:59 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 7B0D1600C8;
-	Mon, 21 Sep 2026 15:27:37 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id EBD601F000FF;
-	Mon, 21 Sep 2026 15:27:36 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 6261342E72;
+	Mon, 21 Sep 2026 15:32:59 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 18B941F00893;
+	Mon, 21 Sep 2026 15:32:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1790004457;
-	bh=PR3QlLkpOllF17ylDcNIQRMmZtuCsB9dWNGolTVMx54=;
+	s=k20260515; t=1790004779;
+	bh=W8D2yB3bE6BKhGOLQ/iMBVp9chvKCeuMO2b5VVl3euw=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=clldXVd1qt5JTqeAkuX3EX4mIWHnlMOgEnnMh+oY/nrA318cmAhD5LHyTIc5y2Wbd
-	 //bnRA5kAnB6W8JMUS3dmlaIMqgsPMSkZRnBhR8FLjdXu6zzEmylQbDEqFnvs5Kegd
-	 B4R67LRz7A2CFXy5oBhEW+5vwa3gwzBB+wCZ0h3n2nNV0r3VAyatsbrKGDs5N6KmJl
-	 nVQiXY+jA/6TGI0eQgyN+DPKU9uU0dtSFAbUCmV95QTbJo8vluO6q+yE2CNI49ShaG
-	 nxnSwxj7a3Rl8cjTBM/reYdHFLjBsNJ/jFncfOFzTrPYnNKyNFP8eNQFaZv2ozOqJW
-	 7iIyz1/esJB3A==
+	b=omqZJTJw3PS4Hi5M6+ar0tInmiG98Vpn5CiLztucoUgrYpt+KCEftnxirMgNs2cqf
+	 tJvVdi35oPoJcq67aCkSrjwJrX157arhUnBVjKWg90/DLXnvPnQDPIXYQg35dk0BLw
+	 8qBG6l4V7Skg36KaxaxwpV14JdTD6fQ1Al1YfXD+egl/AvfPRT9dlu91qVxKC2Zgpk
+	 4LSeVRPPqE/uuCMinpgSB/Y+/XNWMMcWXkECW1d7fqV2KW6PRs2Hxrtk8D+xNl2nMu
+	 3l6caMeoFxWFt/Ozq46DQ2wUGQEzXsPVicDxx2IUlvl4gXpE1rqggjuoGpDHbwvQnn
+	 qSOWCMp8TfLRw==
 Received: by finisterre.sirena.org.uk (Postfix, from userid 1000)
-	id 09D661AC56A7; Mon, 21 Sep 2026 16:27:34 +0100 (BST)
-Date: Mon, 21 Sep 2026 17:27:33 +0200
+	id 049A61AC56A7; Mon, 21 Sep 2026 16:32:54 +0100 (BST)
+Date: Mon, 21 Sep 2026 17:32:54 +0200
 From: Mark Brown <broonie@kernel.org>
 To: James Calligeros <jcalligeros99@gmail.com>
 Cc: Martin =?utf-8?Q?Povi=C5=A1er?= <povik+lin@cutebit.org>,
@@ -67,15 +67,15 @@ Cc: Martin =?utf-8?Q?Povi=C5=A1er?= <povik+lin@cutebit.org>,
 	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
 	patches@opensource.cirrus.com, Takashi Iwai <tiwai@suse.de>,
 	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH 10/28] ASoC: ops: Accept patterns in snd_soc_limit_volume
-Message-ID: <arFM5QGrJx1aYhGK@sirena.co.uk>
+Subject: Re: [PATCH 07/28] ALSA: Support nonatomic dmaengine PCMs
+Message-ID: <arFOJnILnWgUY59s@sirena.co.uk>
 References: <20260920-macaudio-v1-0-741cc20a74e5@gmail.com>
- <20260920-macaudio-v1-10-741cc20a74e5@gmail.com>
+ <20260920-macaudio-v1-7-741cc20a74e5@gmail.com>
 MIME-Version: 1.0
 Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="qy1Q+x+0xkGVmW14"
+	protocol="application/pgp-signature"; boundary="xOqEqatVNA/Q95D7"
 Content-Disposition: inline
-In-Reply-To: <20260920-macaudio-v1-10-741cc20a74e5@gmail.com>
+In-Reply-To: <20260920-macaudio-v1-7-741cc20a74e5@gmail.com>
 X-Cookie: Too clever is dumb.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -92,40 +92,32 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 
---qy1Q+x+0xkGVmW14
+--xOqEqatVNA/Q95D7
 Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
 
-On Sun, Sep 20, 2026 at 02:53:49PM +1000, James Calligeros wrote:
+On Sun, Sep 20, 2026 at 02:53:46PM +1000, James Calligeros wrote:
 > From: Martin Povi=C5=A1er <povik+lin@cutebit.org>
 >=20
-> In snd_soc_limit_volume, instead of looking up a single control by name,
-> also understand wildcard-starting patterns like '* Amp Gain Volume' to
-> touch many controls at one.
+> Add support for nonatomic dmaengine PCMs.
 
-> -	return soc_limit_volume(kctl, max);
-> +	return hits;
->  }
->  EXPORT_SYMBOL_GPL(snd_soc_limit_volume);
+This is nice to have but I don't see a user being added here?
 
-This will break the existing Cirrus and TI users which treat non-zero
-values as errors, most users ignore the return value but they check.
-
---qy1Q+x+0xkGVmW14
+--xOqEqatVNA/Q95D7
 Content-Type: application/pgp-signature; name="signature.asc"
 
 -----BEGIN PGP SIGNATURE-----
 
-iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmqxTOUACgkQJNaLcl1U
-h9Dkuwf/e+9+p51dk6ApJjuQ0eXbD7tKMLOu2OSHbM26owrg0ihRHT55cBX3KJ9a
-YXR3LUhWCtuE3nZLpD15aYVuH8Ix8zzDg7S8e+0X8TIwppv3PJoGL3RFQS8/TMh/
-fUwbXTB8oMMTHLZnbJS0L0G6ptXZxb+qYxQj4Sa54U3F3hxla3fMfXfaLPNs0hw/
-b/VWJgr72b30FphSIcZDwLs9PIgLWl3sUA2MLNigqhvcyY882sDZmCYlpvmBR0FL
-f6q1qYUUd+5Sg0AXe/BqCJGnetxnaM3kfQ4FTgRjbHqx9WahPIj9vORlshRbTzCv
-SCf1emZJ+s7LB9sfqe7izn+xljAPrw==
-=LUax
+iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmqxTiMACgkQJNaLcl1U
+h9D8yAf/bljkO0Fr3bF7YamCura0DZBNVxUDe198L5l38PN93J+nfGKN1w3Ttw89
+OB35EXtVf7Jp6WxjFmNUTfWWT3/BVPMBzoZ+KhamYQYQn0JTPI3SG4W3sxvvWMP9
+9LX4NfetIr6oh2gwoJ46XeZhTl36iP72hNbOvxWqdiuB7uU27kDyt+fhgtmGbUjw
+T7OZEpb7Zf7fJfaFdJ9wJ5qo3fvE/O8tw1Q/cx+tur3aValh9G21+pQVgVcL6snQ
+rCZ/D5M9TSFhACwZHVtg9uaU9KtLXlQob25SUqBRz3+c9h/fgQoKdnJCxkKX0lB1
+8j36JXdggD/naDGfRyraCDekc+AjPg==
+=i2/i
 -----END PGP SIGNATURE-----
 
---qy1Q+x+0xkGVmW14--
+--xOqEqatVNA/Q95D7--
 
