@@ -4,66 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 780D3C982E1
-	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Sep 2026 10:56:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9DF83C982F1
+	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Sep 2026 11:16:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=yfKxUvTIIVbpaGwF4ucUbyra343Yt8o6RNfl09sjy5c=; b=B5pA9+wYrr3bLnMllu5zl6DPhN
-	41u2Xm9juL5k1WeTaXCXbQMXUUv1EQyFbiX9vDmgB9zwGDbN8Og4+xZx6O9xdFbYoRv4F+CFZFlpo
-	ji3FQaxG39GmXyOKAAHAbe0MU5LrImfXh+mQDzyjjJ+OJZMJfXGjOvUdNd44BjTbx2gFyU2iAUDDf
-	ymksDeVmpDkFxDWB6iUvS5GYAxDaulOyNhBmYQkHQ7NPmPNXcdp5T0nj2ozW0a4A4rYcndwwuV/Uu
-	r7NgnhTwwEuTD18BwBSibZhvSYwW5PF8fOp1nkPAOw2K/ZkjJzwoV56x5WRJmfJaA1lFsVg68laGL
-	aOpvspig==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:References:
+	In-Reply-To:To:Subject:Message-ID:From:Content-Transfer-Encoding:Content-Type
+	:Date:MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=89B9ISIa0ErpX/7TVt0J21h4twW1PJGNW1n+amGHNfk=; b=je12btKmKWLiPP/VbRvSEFQTSc
+	B3P0wqkGa47XIWIXdokZPTsjAPiM4PBL9ZhFGjLpwW7QoQO21zgPq6zvxOh5yGBNu+7WVDcWyTbeT
+	58YJK9Ut6bZPGNyu4UsyjVvpF3CT5knVNKVCklGiE736sN/7b0JEli0J85oDgNdvisfTy6J7gnH6F
+	Aceid+ZQrisRGnjJr2GsEfzJ8rQjvf6TH01UGO+UBe8BQqBbNOhP/c7bqIgOcCkJtFIVQD6LXNY/i
+	LLu1u/HTjnCh6E/JSRY9etn7jngopmHhRhINzckvYyt6nqfPQbWaCkpWW7RnicpjHPi4fEgsH90nZ
+	aoK2jw6A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x8bh6-00000001lM4-1NzO;
-	Mon, 21 Sep 2026 10:56:20 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1x8c0W-00000001rBD-2tgi;
+	Mon, 21 Sep 2026 11:16:24 +0000
+Received: from out-232.mta0.migadu.com ([2001:41d0:1004:224b::e8] helo=mta0.migadu.com)
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x8bh2-00000001lKn-0NOm;
-	Mon, 21 Sep 2026 10:56:18 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1789988173;
-	bh=w+cy8zPIKF/xDlzbjSv3pIdL4iqEbDHcpzSasSalz/c=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=N+x5swDtZttXcUWxFOnG5jeZ8dMdvuckhnH+McXYPPp73jOIDIxjzMU2hU6li9Veq
-	 AiP0eFT5krIR8LWeF71Eam91WUK5t/ZsCqAThISHZmLXp6b5SKbJUff6uqwzyUYd/f
-	 0xLWdpYUKV4mQNKUgJd5MyoRijKq3IlPiJPZeSxoKDEXXhRT0W8efqUt7I5UBtuXGw
-	 qxWmQZU/X4T4g6q2EhH+oYLvroKGkoK3k7xQayRbfkAhZINz3ht+ovXfXG61C6exwB
-	 oNt+Gz7K84JsZG3EADfzQ+0wRu02Bww17eU0umuaeVzMBWGUifRLofUVUDS5YSqtGq
-	 UUEax7BLWU3yQ==
-Received: from [100.64.1.21] (unknown [100.64.1.21])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 3B8F317E03B6;
-	Mon, 21 Sep 2026 12:56:13 +0200 (CEST)
-Message-ID: <9a060038-3f9a-4df9-9051-3b57787da765@collabora.com>
-Date: Mon, 21 Sep 2026 12:56:12 +0200
+	id 1x8c0T-00000001r6L-3mlC
+	for linux-mediatek@lists.infradead.org;
+	Mon, 21 Sep 2026 11:16:23 +0000
+X-Envelope-To: linux-mediatek@lists.infradead.org
+DKIM-Signature: a=rsa-sha256; bh=gatQIgMu3v/IsMUVrYP5QjjizymHE9HTRW55gqqQDXU=;
+ c=simple/simple; d=linux.dev;
+ h=from:to:subject:date:message-id:mime-version:content-type; s=key1;
+ t=1789989377; v=1; x=1790594177;
+ b=Ah2ILXlJUiKmMBQ1B/wLli2UkwdnNt4Qa+mxodmPSWcyTrLObSoJRJF1Dy4SpeONenSkSuyd
+ 2oEAlmsNg4E9NeLNx0OoxjKhbzo5mUU+ObrfGPgu1UpcWiGkB2PgBkFyNIIm15DrankoS2e6zu/
+ wyWp5ShFZ9eamQ8BRyRJH2rs=
+X-Envelope-To: linux-mediatek@lists.infradead.org
+Received: by smtp.migadu.com with ESMTPS id 89478576c1541826;
+	Mon, 21 Sep 2026 11:16:16 +0000
+X-Mizu-Trace-ID: 89478576c1541826
+X-Migadu-Flow: FLOW_OUT
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2] clk: mediatek: mt7988-apmixed: publish the OF module
- alias
-To: Pengpeng Hou <hppiscas@163.com>, sboyd@kernel.org
-Cc: bmasney+clk@redhat.com, jbrunet+clk@baylibre.com, matthias.bgg@gmail.com,
- linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- sam.shih@mediatek.com, daniel@makrotopia.org
-References: <20260920033856.14518-1-hppiscas@163.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-In-Reply-To: <20260920033856.14518-1-hppiscas@163.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Date: Mon, 21 Sep 2026 11:16:16 +0000
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+From: "Frank Wunderlich" <frank.wunderlich@linux.dev>
+Message-ID: <6b691a27f27eee1a058426cc7fd5a3fbdbfd45a6@linux.dev>
+TLS-Required: No
+Subject: Re: [PATCH 1/2] clk: mediatek: mt7988: keep combo-lane U3 PHY ref
+ clock enabled
+To: "AngeloGioacchino Del Regno" <angelogioacchino.delregno@collabora.com>,
+ "Frank Wunderlich" <linux@fw-web.de>, "Stephen Boyd" <sboyd@kernel.org>,
+ "Brian Masney" <bmasney+clk@redhat.com>, "Jerome Brunet"
+ <jbrunet+clk@baylibre.com>, "Matthias Brugger" <matthias.bgg@gmail.com>,
+ "Mathias Nyman" <mathias.nyman@intel.com>, "Chunfeng Yun"
+ <chunfeng.yun@mediatek.com>, "Greg Kroah-Hartman"
+ <gregkh@linuxfoundation.org>
+In-Reply-To: <a71b6552-ea57-4575-89e1-14d414d53569@collabora.com>
+References: <20260919114744.46777-1-linux@fw-web.de>
+ <20260919114744.46777-2-linux@fw-web.de>
+ <a71b6552-ea57-4575-89e1-14d414d53569@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260921_035616_277180_C8D4983C 
-X-CRM114-Status: UNSURE (   9.81  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260921_041622_080394_F3E312A9 
+X-CRM114-Status: GOOD (  13.43  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,24 +74,106 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: linux-usb@vger.kernel.org, Daniel Golle <daniel@makrotopia.org>, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, Chen-Yu Tsai <wenst@chromium.org>, Mihai Ordean <research@mihaiordean.com>, linux-clk@vger.kernel.org, linux-arm-kernel@lists.infradead.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 9/20/26 05:38, Pengpeng Hou wrote:
-> COMMON_CLK_MT7988 permits a module build, and the apmixed driver matches
-> mediatek,mt7988-apmixedsys through its OF table. The table is not
-> exported, so the module does not publish the corresponding autoload
-> alias.
-> 
-> Add MODULE_DEVICE_TABLE() for that existing table.
-> 
-> The issue was found by our static-analysis tool.
-> 
-> Fixes: 4b4719437d85 ("clk: mediatek: add drivers for MT7988 SoC")
-> Reviewed-by: Daniel Golle <daniel@makrotopia.org>
-> Assisted-by: gpt 5
-> Signed-off-by: Pengpeng Hou <hppiscas@163.com>
+Am 21. September 2026 um 11:59 schrieb "AngeloGioacchino Del Regno" <ange=
+logioacchino.delregno@collabora.com>:
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Hi angelo
 
+> On 9/19/26 13:47, Frank Wunderlich wrote:
+>=20
+>=20>=20
+>=20> From: Mihai Ordean <research@mihaiordean.com>
+> >  CLK_INFRA_USB_PIPE is the reference clock of xphyu3port0, the U3/PCI=
+e
+> >  combo serdes. On MT7988 that lane is shared between ssusb0's SuperSp=
+eed
+> >  side and pcie2, but only the consumer that claims the PHY holds the =
+gate.
+> >  On the BPI-R4 Pro, ssusb0 is configured USB2-only (u3p-dis-msk=3D1) =
+and
+> >  pcie2 claims the lane for the CN13/CN15 M.2 slot, so pcie2 is the so=
+le
+> >  holder. u3p-dis-msk does not remove ssusb0's SuperSpeed root hub: th=
+at is
+> >  decided by xhci_has_one_roothub(), which keys off usb3_rhub.num_port=
+s
+> >  from the xHCI capability registers, so bus 2 is registered and live
+> >  regardless. When the M.2 slot is empty, pcie2 fails link training (-=
+110)
+> >  and its error path calls phy_power_off()/phy_exit(), which gates thi=
+s
+> >  clock - and sspxtp_sel with it, as nothing else consumes it. The sti=
+ll
+> >  registered SuperSpeed root hub is then left polling a serdes whose P=
+HY
+> >  reference clock has just stopped,
+> >=20
+>=20I'm not sure why said clock cannot be assigned to the USB controller =
+as well
+> as the PCIe PHY to keep the refcount high, avoiding to gate it?
+
+the clock is assigned to the phy which is assigned to both consumers
+
+mt7988a.dtsi:
+
+		xsphy: xs-phy@11e10000 {
+			compatible =3D "mediatek,mt7988-xsphy",
+				     "mediatek,xsphy";
+			...
+
+			xphyu3port0: usb-phy@3400 {
+				reg =3D <0x3400 0x500>;
+				clocks =3D <&infracfg CLK_INFRA_USB_PIPE>;
+
+		ssusb0: usb@11190000 {
+			compatible =3D "mediatek,mt7988-xhci", "mediatek,mtk-xhci";
+			...
+			phys =3D <&xphyu2port0 PHY_TYPE_USB2>,
+			       <&xphyu3port0 PHY_TYPE_USB3>;
+		};
+
+		pcie2: pcie@11280000 {
+			compatible =3D "mediatek,mt7986-pcie",
+				     "mediatek,mt8192-pcie";
+			...
+
+			phys =3D <&xphyu3port0 PHY_TYPE_PCIE>;
+			phy-names =3D "pcie-phy";
+			...
+		};
+
+but this seems not enough...do you mean we need to define the clock again=
+ for both
+consumers (e.g. via assigned-clock-parents property)?
+
+regards Frank
+
+> Cheers,
+> Angelo
+>=20
+>=20>=20
+>=20> and asserts the shared SSUSB interrupt
+> >  outside the xHCI event ring; xhci_irq() reads USBSTS with EINT clear=
+ and
+> >  returns IRQ_NONE, so the core disables the line ("nobody cared") and=
+ the
+> >  next USB teardown blocks forever in xhci_disable_slot().
+> >  Boot logs show the storm threshold being crossed 86-107 ms after the
+> >  pcie2 probe failure, while the earlier combo-mux switch to PCIe mode
+> >  (~550 ms before) causes no trouble, pointing at the clock gating rat=
+her
+> >  than the mux as the trigger.
+> >  Mark the gate CLK_IS_CRITICAL so the combo lane keeps its reference =
+clock.
+> >  Only port 0's gate is affected; ssusb1 uses CLK_INFRA_USB_PIPE_CK_P1=
+.
+> >  Signed-off-by: Mihai Ordean <research@mihaiordean.com>
+> >  Signed-off-by: Frank Wunderlich <frank-w@public-files.de>
+
+
+regards Frank
 
