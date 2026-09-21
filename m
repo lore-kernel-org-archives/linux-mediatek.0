@@ -4,79 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 31B79C982E6
-	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Sep 2026 15:33:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6B4C4C982E6
+	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Sep 2026 16:10:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Message-ID:Date
+	:Cc:To:From:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=W8D2yB3bE6BKhGOLQ/iMBVp9chvKCeuMO2b5VVl3euw=; b=E7yBNC0hP1WRyz61foXxEGQSEe
-	hh/3eCFXTEW1FJlMfXNy5veP41GBMLO5YElyS4YBVgDrDjzxokmlFN2RViv9eP/sBN27M5MJnNsti
-	V+4ApzO0tkl5WQgww7Q/O9bKbTjS3Us/n4OQgk9yQSKU/AeKa14cN56aoj31oG8AoBDfOtsgLjYuI
-	57nYSRKXw0zAC1UJsNE4DjuPjhH9fBDGFwoi8QWhIc3GtGqXFR8InHcwHqTe9WdlXozbU1xlMyPJj
-	/N/aIBmPB+hckjKP37mdkXE1V9oG85CDkAuPovuDwaB0TIiwrvE2YHQPGjlXxczU6XqPZdhzYH6jE
-	5kwQOHvg==;
+	bh=8Dcl/YCF2+B098BGRJ8CrT3yll1ewyEntjQdy30W5P4=; b=heOgVsjM0yrJwDLjbnFDrM1LXZ
+	Vd4ehStxXj3Btls4HlJjSJ8whQanWO+s1FBZ9i7jvvrjy2yv/odv2QQHQsvQzv+yJ1PploArNVVSN
+	i5CUo+PK8up3Kg4/eurmqlPvWOQbEzcwjG654yMBvLX5LaDjrQBTn7rfw9uMXYlTVacMoNtZCiebt
+	jGzAsshma8/7uIEHGSkWuc1GxPMF1mMMCD0qwea62jo944FNLGOaO/B21eE+poPTae6NLmy8NkQGo
+	3WPGGuF6vDGB8nhbBYXdx5KYEWHMp2haeBGcWapoFG5P4S9Ay4JjW+rltUNlSFzZQsWt0BmG2rZBn
+	LJ+UnslA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x8g0t-00000002dId-0juA;
-	Mon, 21 Sep 2026 15:33:03 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1x8gai-00000002mmt-1y4q;
+	Mon, 21 Sep 2026 16:10:04 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x8g0p-00000002dHC-2e6O;
-	Mon, 21 Sep 2026 15:32:59 +0000
+	id 1x8gah-00000002mmM-16Sn;
+	Mon, 21 Sep 2026 16:10:03 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id 6261342E72;
-	Mon, 21 Sep 2026 15:32:59 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 18B941F00893;
-	Mon, 21 Sep 2026 15:32:59 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id E72EA60120;
+	Mon, 21 Sep 2026 16:10:01 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id C7D7C1F000FF;
+	Mon, 21 Sep 2026 16:10:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1790004779;
-	bh=W8D2yB3bE6BKhGOLQ/iMBVp9chvKCeuMO2b5VVl3euw=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=omqZJTJw3PS4Hi5M6+ar0tInmiG98Vpn5CiLztucoUgrYpt+KCEftnxirMgNs2cqf
-	 tJvVdi35oPoJcq67aCkSrjwJrX157arhUnBVjKWg90/DLXnvPnQDPIXYQg35dk0BLw
-	 8qBG6l4V7Skg36KaxaxwpV14JdTD6fQ1Al1YfXD+egl/AvfPRT9dlu91qVxKC2Zgpk
-	 4LSeVRPPqE/uuCMinpgSB/Y+/XNWMMcWXkECW1d7fqV2KW6PRs2Hxrtk8D+xNl2nMu
-	 3l6caMeoFxWFt/Ozq46DQ2wUGQEzXsPVicDxx2IUlvl4gXpE1rqggjuoGpDHbwvQnn
-	 qSOWCMp8TfLRw==
-Received: by finisterre.sirena.org.uk (Postfix, from userid 1000)
-	id 049A61AC56A7; Mon, 21 Sep 2026 16:32:54 +0100 (BST)
-Date: Mon, 21 Sep 2026 17:32:54 +0200
-From: Mark Brown <broonie@kernel.org>
-To: James Calligeros <jcalligeros99@gmail.com>
-Cc: Martin =?utf-8?Q?Povi=C5=A1er?= <povik+lin@cutebit.org>,
-	Liam Girdwood <lgirdwood@gmail.com>, Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>, Sven Peter <sven@kernel.org>,
-	Janne Grunau <j@jannau.net>, Neal Gompa <neal@gompa.dev>,
-	David Rhodes <david.rhodes@cirrus.com>,
-	Richard Fitzgerald <rf@opensource.cirrus.com>,
-	Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>,
-	Ulf Hansson <ulfh@kernel.org>,
-	Amit Kucheria <amit.kucheria@linaro.org>,
-	"Rafael J. Wysocki" <rafael.j.wysocki@intel.com>,
-	Lars-Peter Clausen <lars@metafoo.de>, Vinod Koul <vkoul@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Shenghao Ding <shenghao-ding@ti.com>, Kevin Lu <kevin-lu@ti.com>,
-	Baojun Xu <baojun.xu@ti.com>, Sen Wang <sen@ti.com>,
-	James Schulman <james.schulman@cirrus.com>, asahi@lists.linux.dev,
-	linux-sound@vger.kernel.org, devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	patches@opensource.cirrus.com, Takashi Iwai <tiwai@suse.de>,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH 07/28] ALSA: Support nonatomic dmaengine PCMs
-Message-ID: <arFOJnILnWgUY59s@sirena.co.uk>
-References: <20260920-macaudio-v1-0-741cc20a74e5@gmail.com>
- <20260920-macaudio-v1-7-741cc20a74e5@gmail.com>
+	s=k20260515; t=1790007001;
+	bh=8Dcl/YCF2+B098BGRJ8CrT3yll1ewyEntjQdy30W5P4=;
+	h=Subject:From:To:Cc:Date:In-Reply-To:References;
+	b=U8H4FXk2ri/2sD/yFYT+r33CsULfV6zir8BMvHAGdh04PvCgac9ult+PiQEzJAOLf
+	 PUfnkPM9fmPeH+dWRkW7MEd0cufrUy6QRfif8QWFDfL5fFUzzns2r2hm2w/l+GVk5S
+	 1LdZZpX7aCf3czlUPykZsV24sAQ/J9cALH3z0woJWa23rB4PbBvEC108NWtk9LEH6O
+	 XggwGv4iWzAUUu2rlziQg4CQ5Y6x0cWxn23RExJ9xVKnoEnuiSu2+2d4a6oXi42gZk
+	 vHi7uugSHWh68R4bhCjVLc9cxu78WO+yXrFaFELY7Bx437OV/dWgCHtQtZUYgu1chx
+	 fT6of19l3ygCQ==
+Subject: Re: [PATCH net v4 3/3] net: ethernet: mtk_wed: setup WDMA_RING_TX(0)
+ for non-DBDC MT7986
+From: netdev-bot+sashiko@kernel.org
+To: hujy652@gmail.com
+Cc: nbd@nbd.name, lorenzo@kernel.org, andrew+netdev@lunn.ch,
+ davem@davemloft.net, edumazet@google.com, kuba@kernel.org, pabeni@redhat.com,
+ matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
+ sujuan.chen@mediatek.com, Rex.Lu@mediatek.com, netdev@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org
+Date: Mon, 21 Sep 2026 16:10:00 +0000
+Message-ID: <179000700034.2160803.10594281691384015089@kernel.org>
+In-Reply-To: <20260917144335.19466-3-hujy652@gmail.com>
+References: <20260917144335.19466-3-hujy652@gmail.com>
+X-sashiko-severity: Medium
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="xOqEqatVNA/Q95D7"
-Content-Disposition: inline
-In-Reply-To: <20260920-macaudio-v1-7-741cc20a74e5@gmail.com>
-X-Cookie: Too clever is dumb.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,33 +73,123 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Thank you for your contribution! Sashiko AI review found 1 potential
+issue(s) to consider.
 
---xOqEqatVNA/Q95D7
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Critical: 0 · High: 0 · Medium: 1 (1) · Low: 0
 
-On Sun, Sep 20, 2026 at 02:53:46PM +1000, James Calligeros wrote:
-> From: Martin Povi=C5=A1er <povik+lin@cutebit.org>
->=20
-> Add support for nonatomic dmaengine PCMs.
+If you believe none of the issues are legitimate, please reply to each
+issue of Medium severity or higher and explain why the AI is wrong.
+If any of them are legitimate and you plan to respin, please let patchwork
+know by including "pw-bot: cr" as a separate line at the end of your reply
+(one such reply per series is enough).
 
-This is nice to have but I don't see a user being added here?
+- [Medium] In mtk_wed_start()
+  (drivers/net/ethernet/mediatek/mtk_wed.c:2346-2347) the newly added…
 
---xOqEqatVNA/Q95D7
-Content-Type: application/pgp-signature; name="signature.asc"
+Pre-existing issues:
+- [Medium] This problem wasn't introduced by this patch, but the patch
+  widens it: dev->tx_wdma[] descriptor rings are allocated with…
 
------BEGIN PGP SIGNATURE-----
+--
 
-iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmqxTiMACgkQJNaLcl1U
-h9D8yAf/bljkO0Fr3bF7YamCura0DZBNVxUDe198L5l38PN93J+nfGKN1w3Ttw89
-OB35EXtVf7Jp6WxjFmNUTfWWT3/BVPMBzoZ+KhamYQYQn0JTPI3SG4W3sxvvWMP9
-9LX4NfetIr6oh2gwoJ46XeZhTl36iP72hNbOvxWqdiuB7uU27kDyt+fhgtmGbUjw
-T7OZEpb7Zf7fJfaFdJ9wJ5qo3fvE/O8tw1Q/cx+tur3aValh9G21+pQVgVcL6snQ
-rCZ/D5M9TSFhACwZHVtg9uaU9KtLXlQob25SUqBRz3+c9h/fgQoKdnJCxkKX0lB1
-8j36JXdggD/naDGfRyraCDekc+AjPg==
-=i2/i
------END PGP SIGNATURE-----
+net: ethernet: mtk_wed: setup WDMA_RING_TX(0) for non-DBDC MT7986
 
---xOqEqatVNA/Q95D7--
+On a non-DBDC MT7986 only rx_ring[1]/tx_wdma[1] get set up, so
+WDMA_RING_TX(0) is never programmed even though WED needs it for RX
+offload.  The patch adds a call to mtk_wed_wdma_tx_ring_setup() for ring 0
+from mtk_wed_start() when the device is WED v2 and rx_ring[0] was not
+allocated, passing reset=true when tx_wdma[0] already exists.
+
+> diff --git a/drivers/net/ethernet/mediatek/mtk_wed.c b/drivers/net/ethernet/mediatek/mtk_wed.c
+> index 3f0be70c3f145..3800e602d3c48 100644
+> --- a/drivers/net/ethernet/mediatek/mtk_wed.c
+> +++ b/drivers/net/ethernet/mediatek/mtk_wed.c
+> @@ -2339,6 +2339,13 @@ mtk_wed_start(struct mtk_wed_device *dev, u32 irq_mask)
+>  		if (!dev->rx_wdma[i].desc)
+>  			mtk_wed_wdma_rx_ring_setup(dev, i, 16, false);
+>  
+> +	/*
+> +	 * non-DBDC MT7986 allocates only rx_ring[1] and tx_wdma[1] during setup
+> +	 * but tx_wdma[0] is also needed for WED to function.
+> +	 */
+> +	if (mtk_wed_is_v2(dev->hw) && !dev->rx_ring[0].desc)
+> +		mtk_wed_wdma_tx_ring_setup(dev, 0, MTK_WED_WDMA_RING_SIZE, !!dev->tx_wdma[0].desc);
+
+[Severity: Medium]
+Should the return value of mtk_wed_wdma_tx_ring_setup() be checked here?
+
+On the first start of a non-DBDC v2 device dev->tx_wdma[0].desc is NULL, so
+reset is false and the helper takes the allocation path:
+
+drivers/net/ethernet/mediatek/mtk_wed.c:mtk_wed_wdma_tx_ring_setup() {
+	wdma = &dev->tx_wdma[idx];
+	if (!reset && mtk_wed_ring_alloc(dev, wdma, MTK_WED_WDMA_RING_SIZE,
+					 dev->hw->soc->wdma_desc_size, true))
+		return -ENOMEM;
+	...
+}
+
+mtk_wed_ring_alloc() does a dma_alloc_coherent() of
+MTK_WED_WDMA_RING_SIZE * wdma_desc_size (32 KiB on MT7986), and on failure
+the helper returns before writing MTK_WDMA_RING_TX(0) BASE/COUNT/CPU_IDX/
+DMA_IDX and before the "if (!idx)" block that programs the WED side
+MTK_WED_WDMA_RING_TX window.
+
+Since the status is dropped, mtk_wed_start() keeps going through
+mtk_wed_hw_init(), mtk_wed_configure_irq() and mtk_wed_dma_enable(), which
+arms MTK_WDMA_GLO_CFG_TX_DMA_EN and, for rx-capable v2,
+MTK_WED_WDMA_GLO_CFG_TX_DRV_EN | MTK_WED_WDMA_GLO_CFG_TX_DDONE_CHK, and
+then sets dev->running = true.  Can the hardware then fetch descriptors
+from a ring whose base register was left at 0 by the preceding
+mtk_wdma_tx_reset()/mtk_wed_reset(), leaving the WED offload silently
+non-functional with no message?
+
+The other caller of the same helper propagates the failure:
+
+drivers/net/ethernet/mediatek/mtk_wed.c:mtk_wed_rx_ring_setup() {
+	if (mtk_wed_wdma_tx_ring_setup(dev, idx, MTK_WED_WDMA_RING_SIZE,
+				       reset))
+		return -ENOMEM;
+	...
+}
+
+and mtk_wed_start() itself already bails out on mtk_wed_rx_buffer_alloc()
+and mtk_wed_rro_cfg() failures.  Since mtk_wed_ops.start is void and
+mt7915_dma_start() cannot observe the error, would it make sense to abort
+the start sequence locally here (skipping mtk_wed_dma_enable() and
+dev->running = true) and log the failure?
+
+[Severity: Medium]
+This isn't a problem introduced by this patch, but does this new call add
+another leak of dev->tx_wdma[0]?
+
+dev->tx_wdma[] rings are allocated by mtk_wed_ring_alloc() via
+mtk_wed_wdma_tx_ring_setup(), but the ring-release helpers never free that
+array:
+
+drivers/net/ethernet/mediatek/mtk_wed.c:mtk_wed_free_tx_rings() {
+	for (i = 0; i < ARRAY_SIZE(dev->tx_ring); i++)
+		mtk_wed_free_ring(dev, &dev->tx_ring[i]);
+	for (i = 0; i < ARRAY_SIZE(dev->rx_wdma); i++)
+		mtk_wed_free_ring(dev, &dev->rx_wdma[i]);
+}
+
+drivers/net/ethernet/mediatek/mtk_wed.c:mtk_wed_free_rx_rings() {
+	mtk_wed_free_rx_buffer(dev);
+	mtk_wed_free_ring(dev, &dev->rro.ring);
+}
+
+__mtk_wed_detach() calls those helpers and then does
+memset(dev, 0, sizeof(*dev)), so tx_wdma[].desc/desc_phys are discarded and
+the 32 KiB coherent allocation can no longer be released.
+
+The existing allocation site is mtk_wed_rx_ring_setup(), so the omission
+predates this change, but non-DBDC MT7986/MT7981 previously never allocated
+tx_wdma[0] at all, and now every attach/start/detach cycle would leak one
+more ring.  Would adding dev->tx_wdma[] to mtk_wed_free_tx_rings() be the
+right way to restore alloc/free symmetry?
+
+-- 
+Sashiko AI review · https://netdev-ai.bots.linux.dev/sashiko/#/patchset/20260917144335.19466-1-hujy652%40gmail.com
 
