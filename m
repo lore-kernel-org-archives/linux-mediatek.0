@@ -4,63 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id ED3C9C982ED
-	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Sep 2026 14:00:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AF9CAC982E1
+	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Sep 2026 14:08:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:From:
+	Subject:Message-ID:References:Mime-Version:In-Reply-To:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=UpSBX9zUnKOsYMEzJCVdOj7P1czBOXfO4KP+K+06BCw=; b=s5TDULk/O0dGTpwSlPTtuih/2K
-	yQAabmPtbTF2W55JNnw9IPxQkfVeUwzZaJuYZzfOHAXim/8OnNjj8e0gdb3o/V85DCjvwt5QpHI/U
-	0UHkxbFDh6m/TMi7/05g/yguNPOiT4PNI/0eJW+sRr4m6uLorCfLtmYBOsRtqJ4MN3yVVXH2oEsv9
-	PSfNvFAktsXqh3VkIzJ05d7VWMgvesgmNs+6IoAFvAi0oRLlD0/97B9qzhtwNMZeohrpUaNHPVzIq
-	r40oiWf28RbmBqKqhGaPWRuNcb1sOmSGdeLQS9/mVPREvwoxh3i7PySj4qx0HkZypUJrVKOA/ELBS
-	T1SLt3HQ==;
+	bh=NHBznU/RKpQgFAQzB7weutwQS0p5qU29+fazNItsqXQ=; b=JZiUlPZkZ7P7PLjbaGwreflSvv
+	CzZWVU0g3tIs6iNb6e0+tMqtF1GbUEVhtqIKNlgmQCWRYMwP2ihMTTy8ngEhpyAEmUDlDb0ImOfFu
+	EdF5kJ30CVy1ZB+VHfQUy16ytY8qaiXGC8st8BuV1I3r1UPzI74xpxyVuf3/n47vR98gvk7eiVzym
+	t4BBvBf6MI4a1gS6TlNor4YXLhnPMAs3FrY00bGb6Gf/6b1FjM/O46q5TdFONvRDUbPGjIbn7QbA5
+	WNlkxHFpetnqMJdB7/WGVf8SoCdPVnmqME4kK8rr1+M8rcPnXDSjMKyOhSw7O0s1dWXStJiEy/43p
+	MNZsaxlA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x8eZj-00000002Jqf-0LJF;
-	Mon, 21 Sep 2026 14:00:55 +0000
-Received: from foss.arm.com ([217.140.110.172])
-	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x8eZg-00000002Jpc-3Wyz;
-	Mon, 21 Sep 2026 14:00:54 +0000
-Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
-	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 6A6651D13;
-	Mon, 21 Sep 2026 07:00:48 -0700 (PDT)
-Received: from J2N7QTR9R3.cambridge.arm.com (usa-sjc-imap-foss1.foss.arm.com [10.121.207.14])
-	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id A03C33F528;
-	Mon, 21 Sep 2026 07:00:50 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple; d=arm.com; s=foss;
-	t=1789999251; bh=196CWRrTsBXNGEh3O1halF0+Yb/A+7t5R7xVTmSSTuQ=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=RIH1OhFfFFabunQv0YPirHG+CsJ71/CgYQj6MJ4sSGsVQuJMZyLB4jJmRSzQ1LE2K
-	 rDCaxiiaeeqFrS4tkZ+PYRwgV01eC7wlP+F6GgTQZZnRsOz7ERB9k7nxd8o4rA2K2p
-	 j0e+0RpvqbHK5mmk+msSNDIq0m0LAKukZXJLpUeI=
-Date: Mon, 21 Sep 2026 15:00:45 +0100
-From: Mark Rutland <mark.rutland@arm.com>
-To: Steven Rostedt <rostedt@goodmis.org>,
-	Vladimir Murzin <vladimir.murzin@arm.com>, paulmck@kernel.org
-Cc: Chunfeng Yun <chunfeng.yun@mediatek.com>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	linux-usb@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [BUG/PATCH] drivers/usb/mtu3: Work around mtu3_log_ep
- double-indirection issue
-Message-ID: <arE4jcn4dCD9gos_@J2N7QTR9R3.cambridge.arm.com>
-References: <a3ee0655-d818-48e0-84d1-475e6c16c991@paulmck-laptop>
- <d7bb2cf4-11c3-468c-8749-99cc408299c7@arm.com>
- <b6c621eb-6d20-4e00-ac05-af122b630ca5@paulmck-laptop>
- <aae79c1c-8738-4b97-b1b9-d82d19d82d49@arm.com>
- <20260909093524.249c2a1a@gandalf.local.home>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20260909093524.249c2a1a@gandalf.local.home>
+	id 1x8ego-00000002LXJ-0iaQ;
+	Mon, 21 Sep 2026 14:08:14 +0000
+Received: from mail-pl1-x647.google.com ([2607:f8b0:4864:20::647])
+	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
+	id 1x8egi-00000002LUt-1s8u
+	for linux-mediatek@lists.infradead.org;
+	Mon, 21 Sep 2026 14:08:10 +0000
+Received: by mail-pl1-x647.google.com with SMTP id d9443c01a7336-2d55d8cd938so53817205ad.1
+        for <linux-mediatek@lists.infradead.org>; Mon, 21 Sep 2026 07:08:06 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=google.com; s=20251104; t=1789999686; x=1790604486; darn=lists.infradead.org;
+        h=content-type:cc:to:from:subject:message-id:references:mime-version
+         :in-reply-to:date:from:to:cc:subject:date:message-id:reply-to
+         :content-type;
+        bh=NHBznU/RKpQgFAQzB7weutwQS0p5qU29+fazNItsqXQ=;
+        b=VxrlPgnpKWg3oT33IUDLVuiOZfofHrIWwCYEszfdbHSMy6xRe0X8iYUdtDMjkbwxwq
+         jArD+9lQr+5xVuf66Y5CQH3j1u4WSWJvnMGlw5leYW9uEY/etYs+7sur5JPImbyzcmoy
+         f3U8I52ndbV619lLFuH+tTERqkW4zQUgL75Ex/iECV7CWsKnzdQNRA/LPWAtHESVzTBP
+         EuvS0ri2TaHlSusLrJaVRt1XuEVt0FLc25QswuoL2paIweO+iwp94Za0dDlyTqidBOiJ
+         XFyKRwXiKlRceEcZe3a/jl9PaDLmupH6MFueZDhCyzfG+RM40M9bX9CtSPyw9YbQhxSF
+         R/gQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20260707; t=1789999686; x=1790604486;
+        h=content-type:cc:to:from:subject:message-id:references:mime-version
+         :in-reply-to:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to:content-type;
+        bh=NHBznU/RKpQgFAQzB7weutwQS0p5qU29+fazNItsqXQ=;
+        b=x0/bPdiItonuWLBUUJaC5ZoPrDZCG5NJ4FTw3meLWvXunOiKcbylM4R97keeMRCYXT
+         Z7Vu+CQ4/sHiAdQcf7dsZmmp934jddSmUX87DFek50u6b7ip6nZ4e+FXbUfyWIbJMldh
+         Qlc3m1GCUF5vIGJIIF6bK3iXJUpp3fDsk5YFnr+AVnEmyUTvnE/5sNaY/jQSEJ+6uz8C
+         r30URwTfQ5dd6KVh7Xt1Qjcg3GdbXBsh0/T10wmWjuxwjPL2x1/wuTRe6KSYr+FoyI/3
+         kexuj+6ISVLswbUTKx509HtlqWYHRogwpIu9wavYFnWK5yJuKHaPZfTJJLjiS6juwjf+
+         owkw==
+X-Forwarded-Encrypted: i=1; AKwUvBy/sigd85msyQTBFAFkvqD5jQdlbaDIWCDfZu6BO3uqxf3sUtSa7BvMvjnLpFUApCAv9pr+Vg+x02j4mXwtvA==@lists.infradead.org
+X-Gm-Message-State: AFuF++kyObrQ75dXaUIgF97UBvhpg7BibGGg8E0P9Gh0Z0pzkLzfLujt
+	HUD6+pn5MuMMjV5rVLSECzQBp32XAMuig8qn5YGAHGjY27xa9EyMffFhIaVR7j01dt2g+wGex6b
+	Tt9fwkH0scduUwRr/Z1fhrA==
+X-Received: from plrr1.prod.google.com ([2002:a17:902:c601:b0:2df:3de3:9186])
+ (user=stanleyjhu job=prod-delivery.src-stubby-dispatcher) by
+ 2002:a17:903:1844:b0:2dd:c100:942f with SMTP id d9443c01a7336-2ddc1009bf7mr110453315ad.45.1789999685875;
+ Mon, 21 Sep 2026 07:08:05 -0700 (PDT)
+Date: Mon, 21 Sep 2026 22:08:03 +0800
+In-Reply-To: <20260920034953.19535-1-hppiscas@163.com>
+Mime-Version: 1.0
+References: <20260920034953.19535-1-hppiscas@163.com>
+X-Mailer: git-send-email 2.55.0.1082.g2b9226bbc0-goog
+Message-ID: <20260921140803.3210439-1-stanleyjhu@google.com>
+Subject: Re: [PATCH v2] scsi: ufs: mediatek: handle mPHY power-on failures
+From: Stanley Jhu <stanleyjhu@google.com>
+To: Pengpeng Hou <hppiscas@163.com>, Peter Wang <peter.wang@mediatek.com>
+Cc: Stanley Jhu <stanleyjhu@google.com>, chaotian.jing@mediatek.com, 
+	chu.stanley@gmail.com, james.bottomley@hansenpartnership.com, mkp@kernel.org, 
+	linux-scsi@vger.kernel.org, linux-mediatek@lists.infradead.org, 
+	linux-kernel@vger.kernel.org, martin.petersen@oracle.com, 
+	matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com, 
+	linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260921_070052_917105_48D41798 
-X-CRM114-Status: GOOD (  11.97  )
+X-CRM114-CacheID: sfid-20260921_070808_516974_DCFB6332 
+X-CRM114-Status: UNSURE (   6.18  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,56 +95,12 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Sep 09, 2026 at 09:35:24AM -0400, Steven Rostedt wrote:
-> On Wed, 9 Sep 2026 11:31:28 +0100
-> Vladimir Murzin <vladimir.murzin@arm.com> wrote:
-> 
-> > I've done a little bit massaging and here is what worked for me
-> > 
-> > 
-> > diff --git a/drivers/usb/mtu3/mtu3_trace.h b/drivers/usb/mtu3/mtu3_trace.h
-> > index 89870175d635..4d4bae25fa1f 100644
-> > --- a/drivers/usb/mtu3/mtu3_trace.h
-> > +++ b/drivers/usb/mtu3/mtu3_trace.h
-> > @@ -224,6 +224,7 @@ DECLARE_EVENT_CLASS(mtu3_log_ep,
-> >                 __field(unsigned int, flags)
-> >                 __field(unsigned int, direction)
-> >                 __field(struct mtu3_gpd_ring *, gpd_ring)
-> > +               __field(dma_addr_t, gpd_ring_dma)
-> >         ),
-> >         TP_fast_assign(
-> >                 __assign_str(name);
-> > @@ -235,12 +236,13 @@ DECLARE_EVENT_CLASS(mtu3_log_ep,
-> >                 __entry->flags = mep->flags;
-> >                 __entry->direction = mep->is_in;
-> >                 __entry->gpd_ring = &mep->gpd_ring;
-> > +               __entry->gpd_ring_dma = mep->gpd_ring.dma;
-> >         ),
-> >         TP_printk("%s: type %s maxp %d slot %d mult %d burst %d ring %p/%pad flags %c:%c%c%c:%c",
-> >                 __get_str(name), usb_ep_type_string(__entry->type),
-> >                 __entry->maxp, __entry->slot,
-> >                 __entry->mult, __entry->maxburst,
-> > -               __entry->gpd_ring, &__entry->gpd_ring->dma,
-> > +               __entry->gpd_ring, &__entry->gpd_ring_dma,
-> >                 __entry->flags & MTU3_EP_ENABLED ? 'E' : 'e',
-> >                 __entry->flags & MTU3_EP_STALL ? 'S' : 's',
-> >                 __entry->flags & MTU3_EP_WEDGE ? 'W' : 'w',
-> 
-> LGTM,
-> 
-> Reviewed-by: Steven Rostedt <rostedt@goodmis.org>
+On Sun, 20 Sep 2026 11:49:53 +0800, Pengpeng Hou wrote:
+> Check phy_power_on(), attempt to unwind VA09 on failure, and leave the
+> state flag unchanged. Propagate the helper result from host
+> initialization as well as its existing resume caller. Keep the original
+> PHY error if the supply rollback also fails, and report that rollback
+> separately.
 
-On v7.3-rc4 I still see the splat Paul reported initially, and the above
-fixes that, so FWIW:
-
-Tested-by: Mark Rutland <mark.rutland@arm.com>
-
-Steve, I assume you were expecting someone to send the above as a full
-patch.
-
-Paul, do you intend to send a v2, or should Vladimir send out his
-version as its own patch? I assume you're happy with a Reported-by, if
-he does that?
-
-Mark.
+Reviewed-by: Stanley Jhu <stanleyjhu@google.com>
 
