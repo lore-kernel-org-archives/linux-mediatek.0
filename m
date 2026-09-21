@@ -4,72 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 912D5C982ED
-	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Sep 2026 10:06:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D2B34C982E1
+	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Sep 2026 10:15:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=jE+eIzcQ8oQ4HV8nw3uP9cmcpgngx1xK2AKLODCmwbg=; b=Dt4jvizblvPmi4hFS3TWqEBoNL
-	iba8UkZaBs4x1kxvmCv5NTntAb5nwWVMzfQEmYguM44Z1Y83DBayTeaxA7XOOGAuhTCisuKdsxDDA
-	jq43u7xoEUmxk05ogzAAhEZZOCwGOpz1GboQW7MJIk5OAQh9LYFItsbx4WFL3AtG2o8pkNYUVziKh
-	5ZBx5vHIeXNOf+FNIxS9zVOxO+SGmJcFc08E77jHlhQt/el4YP0OC0mNzgYYd8124tvpJbcEKddsh
-	Q1yfIVvC2Tg4SkjQ16fg8TJhjYBf5776yj+tJseuAHEMd/DbvaI4ZaFYy1Wc1zehQzDSVVdka9fdD
-	xYkmMTxA==;
+	bh=d9A0A2kqXtdyBSvTCoAbbk2qCDL8pg4K8rZZYQxHcMY=; b=SHYQGU2PXhQ/5Vd80FxT9UiYst
+	S0D1QJHw1P0aPgP0A2UXmgQ5T44AP5azAxOXJ+ldcid37NPOBVUaZZa4rSPaWYrMR8iDp9/E0WocY
+	Zlc2YxoJSs/1lBsrclsLXDCNAAXOlPfuIO+kgaF659tqvA4a3liCkWKUXKi9ScxraLizciJFjA2dM
+	y/t74LXdUOpWZNb1fa5mhZsnQbqvhKcfT6UQZMkSYBcRGCrasS4gZOhjil+vVcJyKoRd10dKMR6Lq
+	Cr6K5wqqbFDXnDj7rq/Ov2xRAWI3rzzKuA83evkfM2jWa90JDhvYWwuCbCPzYyOaaAFvnicyM4LKj
+	Yj7HzcVw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x8auY-00000001cpt-0Q6a;
-	Mon, 21 Sep 2026 10:06:10 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1x8b3o-00000001e5l-0KRP;
+	Mon, 21 Sep 2026 10:15:44 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x8auS-00000001cna-1tpg;
-	Mon, 21 Sep 2026 10:06:08 +0000
+	id 1x8b3i-00000001e4i-3oX9;
+	Mon, 21 Sep 2026 10:15:40 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1789985161;
-	bh=cDVOUqRmDAiIlq1x0W5Pvyz6PeI3fBgskd+Ma0ilQKo=;
+	s=mail; t=1789985735;
+	bh=tZtMCjyRjEVpTYK9a7RCqJ/OJnIZNfwPzTXTJARyiqM=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=A3pfzR/dCqrz8smbfXkXbFTaPcptGDfypqJU0/vWlqaFXv6he4RZgFT2s1gI4WHJD
-	 wnsm/w/bm4cf/OeQ5iGHeKsxop9OmaKwEk4DZSFWhR41obr1W9Q07t/Fhla4sa2KEo
-	 rZnlnUNakg4PvHKtYLdwwHYiVAZ/FWjTBaVVkzdqqSjzjwtTpMPmSMn+ULiGk4PJFA
-	 3Yg/py1RSSE+qxIaNb4EJFtx9TGzAGtSqqfSHFORXNQi1k7h7bLkp5b5veC22bHsoW
-	 fQZFTnrMgQa9NJODZqU7bEF1cFC4Ay1PfltiJIBmiwucz+NCWMz6oTIgZxOF9fLomF
-	 FESu3L+VMYGPw==
+	b=mXwGSfjC43zRsHGRv+b3VYs9+SM/XZumFJR8wiN1GnOLRQgPqtyB3HPTLbTo6Xcmm
+	 diCckJQntmudlTEfHjY/bJgOAKq30axoN1qb9NBscKfniEEiz0nCFotPzAA1MJtR3A
+	 7x7wk/dh5tZnmJ7LWIZfLQsLQijoXGB1RmBhrBxUdE6NnDw46PH6tDKdWlj1lXU8Yb
+	 ABcs3SsTxkL2wGGhVzVVpVtSOJwkuOxWCwILObqwTHrOt7YTPkoUEwmTa4EmqAYjv/
+	 F50Dkz0OIiiGU3IFXMYfuX2s8sXb1rJ/ySozxlV25vurscmYniZGESKOL02aPzY16n
+	 BEX50MZjDC4xg==
 Received: from [100.64.1.21] (unknown [100.64.1.21])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange x25519)
+	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 49EA117E020C;
-	Mon, 21 Sep 2026 12:06:00 +0200 (CEST)
-Message-ID: <a657522a-30b3-491c-8f1c-9d09e3bbe176@collabora.com>
-Date: Mon, 21 Sep 2026 12:05:59 +0200
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 1932017E01D1;
+	Mon, 21 Sep 2026 12:15:35 +0200 (CEST)
+Message-ID: <9d9648f8-2097-492a-ba20-6345e8661174@collabora.com>
+Date: Mon, 21 Sep 2026 12:15:34 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v9 02/13] drm/mediatek: Implement Display Stream
- Compression support
-To: Chaoyi Chen <chaoyi.chen@rock-chips.com>
-Cc: chunkuang.hu@kernel.org, p.zabel@pengutronix.de,
- maarten.lankhorst@linux.intel.com, mripard@kernel.org, tzimmermann@suse.de,
- airlied@gmail.com, simona@ffwll.ch, robh@kernel.org, krzk+dt@kernel.org,
- conor+dt@kernel.org, matthias.bgg@gmail.com, jitao.shi@mediatek.com,
- dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, kernel@collabora.com,
- justin.yeh@mediatek.com, jason-jh.lin@mediatek.com,
- Nikolai Burov <nikolai.burov@jolla.com>
-References: <20260916110825.102631-1-angelogioacchino.delregno@collabora.com>
- <20260916110825.102631-3-angelogioacchino.delregno@collabora.com>
- <94451cc1-5dcc-4017-9b17-19fc20245ca8@rock-chips.com>
+Subject: Re: [PATCH v3 2/3] iio: adc: mt6397-auxadc: add mt6397 PMIC AUXADC
+ driver
+To: Ryan Brue <ryanbrue.dev@gmail.com>, Jonathan Cameron <jic23@kernel.org>,
+ David Lechner <dlechner@baylibre.com>, =?UTF-8?Q?Nuno_S=C3=A1?=
+ <nuno.sa@analog.com>, Andy Shevchenko <andy@kernel.org>,
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>, Lee Jones <lee@kernel.org>
+Cc: linux-iio@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, mfd@lists.linux.dev,
+ Roman Vivchar <rva333@protonmail.com>,
+ Luca Leonardo Scorcia <l.scorcia@gmail.com>,
+ Andy Shevchenko <andriy.shevchenko@intel.com>
+References: <20260920-rbrue-suez-upstreaming-mt6397-auxadc-v3-0-c00edacbee64@gmail.com>
+ <20260920-rbrue-suez-upstreaming-mt6397-auxadc-v3-2-c00edacbee64@gmail.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Content-Language: en-US
-In-Reply-To: <94451cc1-5dcc-4017-9b17-19fc20245ca8@rock-chips.com>
+In-Reply-To: <20260920-rbrue-suez-upstreaming-mt6397-auxadc-v3-2-c00edacbee64@gmail.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260921_030604_670948_0AAA991E 
-X-CRM114-Status: GOOD (  28.22  )
+X-CRM114-CacheID: sfid-20260921_031539_125517_A4555F21 
+X-CRM114-Status: GOOD (  43.85  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,98 +85,219 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 9/19/26 08:52, Chaoyi Chen wrote:
-> Hi,
+On 9/20/26 07:31, Ryan Brue wrote:
+> The mt6397 AUXADC is a 10-bit ADC behind the SoC's PMIC wrapper. On boards
+> built around this PMIC it is the only way to read the battery: the SoC's
+> AUXADC is wired to board thermistors and the charger ICs these boards use
+> have no ADC of their own.
 > 
-> On 9/16/2026 7:08 PM, AngeloGioacchino Del Regno wrote:
->> Add a real driver for the Display Stream Compression (DSC) Display
->> Controller IP, implementing support for DSC v1.1 to v1.2.
->>
->> In order to do this, it was necessary to remove the basic DSC IP
->> bypass setup from mtk_ddp_comp: this functionality is retained in
->> the new mtk_disp_dsc driver, which checks if DSC was actually
->> requested by other components (with the only one that currently
->> supports this being DSI) and, if not, it will set BYPASS mode in
->> the DSC IP.
->>
->> Like before, the BYPASS mode is set before starting the DSC IP,
->> but unlike before, this is being done in the component start
->> callback instead of the config one.
->> Notably, the config callback is called by mtk_crtc always
->> immediately before the calling start callback, so the order of
->> register writes is retained.
->> The only real difference is that now this is being done through
->> CPU writes instead of CMDQ, but since that's called only once
->> and since it's just three registers, the performance impact will
->> not be minimal and not even measurable.
->>
->> As anticipated, DSC handling was also introduced in the mtk_dsi
->> driver: when performing dsi_host_attach, the driver now checks
->> if the DSI panel adds the DSC configuration structure to the
->> mipi_dsi_device structure and, if it does, it will store a
->> pointer in the driver-local mtk_dsi structure's `dsc` member.
->>
->> The DSI driver will then check whether the DSC configuration
->> that comes from the panel is valid (in regard to MediaTek DSI)
->> and will call the DRM API's DSC helpers to calculate and set
->> all of the const and RC parameters for the actual DSC setup.
->>
->> For the time being, even though the latest MediaTek SoCs do
->> support DSC v1.2, only DSC v1.1 pre-scr support is implemented
->> as an initial contribution (which is rather big, and 1.2 would
->> make it even bigger - but that can anyway be implemented later).
->>
->> As a last step for validation of DSC parameters in DSI, a check
->> for the hdisplay against DSC slice sidth and one for vdisplay
->> against DSC slice height was added to the mode_valid callback,
->> making sure that H/V are, as expected, multiples of slice W/H.
->>
->> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
->> ---
->>   drivers/gpu/drm/mediatek/Makefile       |   1 +
->>   drivers/gpu/drm/mediatek/mtk_crtc.c     |  21 ++
->>   drivers/gpu/drm/mediatek/mtk_ddp_comp.c |  43 +--
->>   drivers/gpu/drm/mediatek/mtk_ddp_comp.h |   9 +
->>   drivers/gpu/drm/mediatek/mtk_disp_drv.h |   8 +
->>   drivers/gpu/drm/mediatek/mtk_disp_dsc.c | 449 ++++++++++++++++++++++++
->>   drivers/gpu/drm/mediatek/mtk_drm_drv.c  |   2 +
->>   drivers/gpu/drm/mediatek/mtk_drm_drv.h  |   1 +
->>   drivers/gpu/drm/mediatek/mtk_dsi.c      | 151 +++++++-
->>   9 files changed, 635 insertions(+), 50 deletions(-)
->>   create mode 100644 drivers/gpu/drm/mediatek/mtk_disp_dsc.c
->>
+> Add a driver exposing the battery voltage and battery temperature
+> channels. Only those two are described, so a channel ID in the device tree
+> indexes the driver's channel array rather than the PMIC's channel number,
+> as mt6323-auxadc does. The ready bit lives in a channel's raw result
+> register, but the value comes from the chip's factory-calibrated copy.
 > 
-> [...]
+> The battery voltage is measured through ISENSE, because a board with a
+> switching charger in the power path leaves BATSNS on the charger's system
+> rail instead of on the pack. The thermistor only reads correctly with the
+> PMIC's battery-detect bias and input buffer enabled, which take 20 ms to
+> settle. Both are switched back off afterwards.
 > 
->> +
->> +	dsc->simple_422 = false;
->> +	dsc->convert_rgb = true;
->> +	dsc->vbr_enable = false;
->> +
->> +	drm_dsc_set_const_params(dsc);
->> +	drm_dsc_set_rc_buf_thresh(dsc);
->> +
->> +	ret = drm_dsc_setup_rc_params(dsc, DRM_DSC_1_2_444);
->> +	if (ret) {
->> +		dev_err(dev, "Cannot find DSC RC params\n");
->> +		return ret;
->> +	}
->> +
+> Reads average sixteen conversions in software; the chip's sample
+> accumulator makes no measurable difference at any setting, so it is left
+> at one sample per conversion.
 > 
-> Just out of curiosity, is there a reason the DSC v1.1 rc parameters
-> aren't used here?
+> Assisted-by: LLM
+> Signed-off-by: Ryan Brue <ryanbrue.dev@gmail.com>
 > 
+> ---
+> 
+> A new driver was created here, instead of modifying an existing driver such
+> as mt6323-auxadc or mt6359-auxadc, for the following reasons:
+> 
+>   - Both mt6323-auxadc and mt6359-auxadc select channels through a request
+>     register (1 bit per channel), while mt6397 uses a 4-bit numeric field
+>     CHSEL in CON1 (10:7), and then pulses a START bit (CON1 bit 0).
+> 
+>   - For mt6323-auxadc, which is the closest I could find to the mt6397
+>     (CON0..CON27), it has 13 more registers than the mt6397 (CON0..CON14).
+>     It uses CON22 for its request register, and reads the result value
+>     from the same register as the ready bit. We don't do that - the mt6397
+>     has a factory-calibrated value for each channel at 0x16 higher than the
+>     raw value. mt6323 also has a 1800 mV / 15 bit scale / resolution while
+>     we have 1200 mV / 10 bits. We also have some per-channel preparation
+>     that we have to do before the burst, that the mt6323 doesn't have to
+>     do.
+> 
+>   - For mt6359-auxadc, it has a more generic framework for describing the
+>     AUXADC, but it assumes requests are channel-per-bit, and so we would
+>     have to basically ignore req_idx, req_mask, rdy_idx, and rdy_mask.
+> 
+>   - We also have our own software sampling, which the vendor does too
+>     (Amazon Fire OS based on Linux 3.18). We'd have to have our own
+>     sampling callback to do it.
+> ---
+>   MAINTAINERS                     |   1 +
+>   drivers/iio/adc/Kconfig         |  11 ++
+>   drivers/iio/adc/Makefile        |   1 +
+>   drivers/iio/adc/mt6397-auxadc.c | 391 ++++++++++++++++++++++++++++++++++++++++
+>   4 files changed, 404 insertions(+)
+> 
+> diff --git a/MAINTAINERS b/MAINTAINERS
+> index 41d7b3a67415..9b254f98b5d7 100644
+> --- a/MAINTAINERS
+> +++ b/MAINTAINERS
+> @@ -16717,6 +16717,7 @@ MEDIATEK MT6397 PMIC AUXADC DRIVER
+>   M:	Ryan Brue <ryanbrue.dev@gmail.com>
+>   L:	linux-iio@vger.kernel.org
+>   S:	Maintained
+> +F:	drivers/iio/adc/mt6397-auxadc.c
+>   F:	include/dt-bindings/iio/adc/mediatek,mt6397-auxadc.h
+>   
+>   MEDIATEK MT6735 CLOCK & RESET DRIVERS
+> diff --git a/drivers/iio/adc/Kconfig b/drivers/iio/adc/Kconfig
+> index 415e519ad4eb..9a1d36ed53cb 100644
+> --- a/drivers/iio/adc/Kconfig
+> +++ b/drivers/iio/adc/Kconfig
+> @@ -1233,6 +1233,17 @@ config MEDIATEK_MT6370_ADC
+>   	  This driver can also be built as a module. If so, the module
+>   	  will be called "mt6370-adc".
+>   
+> +config MEDIATEK_MT6397_AUXADC
+> +	tristate "MediaTek MT6397 PMIC AUXADC driver"
+> +	depends on MFD_MT6397
+> +	help
+> +	  Say yes here to enable support for MediaTek MT6397 PMIC Auxiliary ADC.
+> +	  This driver provides the battery voltage and battery temperature
+> +	  channels used by the fuel gauge on boards built around this PMIC.
+> +
+> +	  This driver can also be built as a module. If so, the module will be
+> +	  called mt6397-auxadc.
+> +
+>   config MEDIATEK_MT6577_AUXADC
+>   	tristate "MediaTek AUXADC driver"
+>   	depends on ARCH_MEDIATEK || COMPILE_TEST
+> diff --git a/drivers/iio/adc/Makefile b/drivers/iio/adc/Makefile
+> index dcec0abb03b7..13cb4206bdb7 100644
+> --- a/drivers/iio/adc/Makefile
+> +++ b/drivers/iio/adc/Makefile
+> @@ -105,6 +105,7 @@ obj-$(CONFIG_MEDIATEK_MT6323_AUXADC) += mt6323-auxadc.o
+>   obj-$(CONFIG_MEDIATEK_MT6359_AUXADC) += mt6359-auxadc.o
+>   obj-$(CONFIG_MEDIATEK_MT6360_ADC) += mt6360-adc.o
+>   obj-$(CONFIG_MEDIATEK_MT6370_ADC) += mt6370-adc.o
+> +obj-$(CONFIG_MEDIATEK_MT6397_AUXADC) += mt6397-auxadc.o
+>   obj-$(CONFIG_MEDIATEK_MT6577_AUXADC) += mt6577_auxadc.o
+>   obj-$(CONFIG_MEN_Z188_ADC) += men_z188_adc.o
+>   obj-$(CONFIG_MESON_SARADC) += meson_saradc.o
+> diff --git a/drivers/iio/adc/mt6397-auxadc.c b/drivers/iio/adc/mt6397-auxadc.c
+> new file mode 100644
+> index 000000000000..d860cd3a8922
+> --- /dev/null
+> +++ b/drivers/iio/adc/mt6397-auxadc.c
+> @@ -0,0 +1,391 @@
+> +// SPDX-License-Identifier: GPL-2.0-only
+> +/*
+> + * MediaTek MT6397 PMIC AUXADC IIO driver
+> + *
+> + * Copyright (c) 2026 Ryan Brue <ryanbrue.dev@gmail.com>
+> + *
+> + * Based on drivers/iio/adc/mt6323-auxadc.c
+> + */
+> +
 
-I was using the v1.1 RC parameters before, but Nikolai found out that some panels
-actually require that, even when v1.2 support is not declared.
+..snip..
 
-Besides, he also validated that v1.2 works for him, and works for me as well, so
-I opted to use those ones instead, as the v1.1 pre_scr params were working for me
-but not for him.
+> +
+> +static int mt6397_auxadc_battemp_bias_on(struct mt6397_auxadc *adc)
+> +{
+> +	struct regmap *map = adc->regmap;
+> +	int ret;
+> +
+> +	ret = regmap_set_bits(map, MT6397_AUXADC_CON0,
+> +			      MT6397_AUXADC_CON0_BUF_PWD_ON);
+> +	if (ret)
+> +		return ret;
+> +
+> +	ret = regmap_set_bits(map, MT6397_AUXADC_CON0,
+> +			      MT6397_AUXADC_CON0_BUF_PWD_B);
+> +	if (ret)
+> +		return ret;
+> +
+> +	return regmap_set_bits(map, MT6397_CHR_CON7,
+> +			       MT6397_CHR_CON7_BATON_TDET_EN);
+> +}
+> +
+> +static int mt6397_auxadc_battemp_bias_off(struct mt6397_auxadc *adc)
+> +{
+> +	struct regmap *map = adc->regmap;
+> +	int ret;
+> +
+> +	ret = regmap_clear_bits(map, MT6397_CHR_CON7, MT6397_CHR_CON7_BATON_TDET_EN);
+> +	if (ret)
+> +		return ret;
+> +
+> +	ret = regmap_clear_bits(map, MT6397_AUXADC_CON0, MT6397_AUXADC_CON0_BUF_PWD_B);
+> +	if (ret)
+> +		return ret;
 
-This will be improved in the future, as choosing any of the two will leave us with
-something working and something broken... but I plan to make those improvements
-only after at least this basic support finds his way upstream.
+If this fails, and the internal buffers are kept enabled, are you sure that
+the AUXADC won't lock up?
+
+Should it lock up, I imagine that the best thing that could happen is a power
+leakage, but can be as bad as a system lockup.
+
+Should we unconditionally also clear the MT6397_AUXADC_CON0_BUF_PWD_ON bit
+even if MT6397_AUXADC_CON0_BUF_PWD_B clearing fails?
+
+> +
+> +	return regmap_clear_bits(map, MT6397_AUXADC_CON0,
+> +				 MT6397_AUXADC_CON0_BUF_PWD_ON);
+> +}
+> +
+> +static int mt6397_auxadc_isense_enable(struct mt6397_auxadc *adc)
+> +{
+> +	struct regmap *map = adc->regmap;
+> +	int ret;
+> +
+> +	/*
+> +	 * Two of the five independent input enables, not a select field:
+> +	 * BATSNS is cleared first so that the two inputs are never enabled
+> +	 * onto the battery channel at the same time.
+> +	 */
+> +	ret = regmap_clear_bits(map, MT6397_CHR_CON16, MT6397_CHR_CON16_ADCIN_VBAT_EN);
+> +	if (ret)
+> +		return ret;
+> +
+> +	ret = regmap_set_bits(map, MT6397_CHR_CON16, MT6397_CHR_CON16_ADCIN_VSEN_EN);
+> +	if (ret)
+> +		return ret;
+> +
+> +	return regmap_set_bits(map, MT6397_AUXADC_CON14,
+> +			       MT6397_AUXADC_CON14_CH0_NORM_SEL |
+> +			       MT6397_AUXADC_CON14_CH0_LBAT_SEL);
+> +}
+> +
+> +static int mt6397_auxadc_isense_disable(struct mt6397_auxadc *adc)
+> +{
+> +	struct regmap *map = adc->regmap;
+> +	int ret;
+> +
+> +	ret = regmap_clear_bits(map, MT6397_AUXADC_CON14,
+> +				MT6397_AUXADC_CON14_CH0_NORM_SEL |
+> +				MT6397_AUXADC_CON14_CH0_LBAT_SEL);
+> +	if (ret)
+> +		return ret;
+> +
+> +	return regmap_clear_bits(map, MT6397_CHR_CON16,
+> +				 MT6397_CHR_CON16_ADCIN_VSEN_EN |
+> +				 MT6397_CHR_CON16_ADCIN_VBAT_EN);
+
+Same here, but makes even more sense: if clearing the channel selector
+fails, you still want to disable the ADCIN in an effort to avoid power
+leakage.
+
+Everything else looks good, so I'm sure that you're getting my R-b on
+version 4.
 
 Cheers,
 Angelo
