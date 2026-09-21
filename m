@@ -4,95 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 80550C982E6
-	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Sep 2026 14:54:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6AC66C982E6
+	for <linux-mediatek@archiver.kernel.org>; Mon, 21 Sep 2026 15:02:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=55jBginyPAWykGAECg1kcDGv2/bNXqJ6rxbJ7xeJwNc=; b=p5zGjdlkIXICT1I680eiKhgQw8
-	NmQ5ZSD4hmsFU+zrG51IWk9q9kV2Ivn8VDKpF9Ijj5Y4hbeZFewJ6xOeSNeD5k1D/P2lUokEv+ac1
-	Ebnm+nktIGfcRmSGsJmsdbWxfOkHq7tdkY+iFEUN2yuScGjQIlvZU8xyhwQDKwRTUNPHwQtbXeb/O
-	ymUQOTpB1OLdehCR09p4dc+G+Wk4pKRXt3yhaQsEN1awz/YevuOrloel/eYjCZin7uYeI2/AQE5ks
-	7otpI/UhWGuS/RRltoSHuyDzTHGHtRr+CS7XrYeMpqGYA41x2VRnDzSvYsxIuRCppUlD1l4xx0Mwo
-	OOltZa8A==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=v4UVAeTU1JJaiw4t/Qj/n7SDGMX+yxvPEzMCHsSdNF0=; b=g5P5nSfLqisFh0EhIiBk5WZEEL
+	tdGpbDUzMQD8F7uItkufrcKkHfhCVxcUi6fyx3GKWx/do4JSrfLydZGQtUp3ogRNx0PB0+bHvG3r+
+	ps90FerHMuB/6kbVoj87xJOgmElz1LPfACE3sO35cugHctl7EkQJTyC/bNcd5mMXAuo4EJ5skZqCY
+	9cXpoufHaIwMobI3o8FkEU7uQzg0VV4YZd1K+DeLhlnDfesQpmrTUtwJNBICb3uvjUoCWGK25s44R
+	tXumvCh/FBK4cvMO5h5TjVYKPZfyxMXjT5PBXcezC5bRuUIHoufIG5syGKa17mt7f3iK4NIew3b7Z
+	PO+luV3g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x8fPl-00000002UP5-3rzf;
-	Mon, 21 Sep 2026 14:54:41 +0000
-Received: from mail-pj2-x0e.google.com ([2607:f8b0:4864:39::e])
+	id 1x8fXG-00000002WmZ-00kF;
+	Mon, 21 Sep 2026 15:02:26 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x8fPd-00000002UJp-41ww
-	for linux-mediatek@lists.infradead.org;
-	Mon, 21 Sep 2026 14:54:36 +0000
-Received: by mail-pj2-x0e.google.com with SMTP id 98e67ed59e1d1-396ccda24afso2242447a91.3
-        for <linux-mediatek@lists.infradead.org>; Mon, 21 Sep 2026 07:54:33 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1790002473; x=1790607273; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
-        bh=55jBginyPAWykGAECg1kcDGv2/bNXqJ6rxbJ7xeJwNc=;
-        b=CRXZMCFBdaIs0p8BX7gbxOVGB1ofkzM5oZYsRiFMQNrkScj9rPpa9Gfxmk+fiE95k5
-         4UTu0KeYAs3IelDr0v+6KbyVjiq0Z8xlcXJlKDnXZ9qagc5PiAwV3r1OW3OuXriT32Tu
-         mW4XQ1s60AbUkcV42xmcRIL5ev9hfdeayWxeINctQz5YvMTttaHeQ3IiI19OpaWb7nP6
-         dkms3cYeWvPAZCylOQgIdWXHGQt9XLuz4bjstEaejkdfpQ7PxQ270rpWQgNen+suemQx
-         HlYh+6/5Hf4OEZWf7Hccli7gIoIldGqUwn7S+B22M6W7evNOvmPz1IDzku47Bi4b+ZeS
-         UuUQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1790002473; x=1790607273;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to:content-type;
-        bh=55jBginyPAWykGAECg1kcDGv2/bNXqJ6rxbJ7xeJwNc=;
-        b=S+NWXYinar2mMl0Buh4BSASV8Z3Lw+YjpU+JWUETbPyGKhtrsfARnUmnOuxRsVsKFE
-         qUS4VzpYnFyoqYEkW5GEEorH1LdYKfG6Lwe5Fll5tOkWLr0CXAzOAhDfVHoOOLVQhWxz
-         9WCEVs2Ji8PCDz3PtJP7mwVzxBBkyIB7YAz3TUvfSw90YzBGgUQYtHjV45fXWJtVFNNo
-         f/hj+b502VLKx5ruD5sWP5fw/xZxjfYu2TgQ/E+yCJVS0Ly1UC3xciq7z2AdZRVFVUE4
-         X8BwV2SSTdaDN1BK04dQRQg7/xpQHSyeh0bB4iaU5qXeNtsDVTume1j0V6ZgdI/Jt8QY
-         GfSQ==
-X-Forwarded-Encrypted: i=1; AKwUvBymrLgKGu3aTPTtaEriuisrgoYPsodz4OYVgZLYXFRynldgz46DAzgMVGDGPyUWQZvs9+pdgsGdldk2ccMpKw==@lists.infradead.org
-X-Gm-Message-State: AFuF++mxDOOVh006CAD6jBezkpMTnzDo5xLWXBf9CxLHD4afP/GFfekg
-	WUIskhSvPTK62GLNtMIsnwSCOx9bI0nH4CuXwFY3AFMtydUg6EjLB6HA
-X-Gm-Gg: AYBFou1o4zZtH75/ouYXUXiXO1O56ByksQqxRSTgCc8ZGzC9AscIs3jwxrjcdsjK1XD
-	TumE+RZI5DWcX0f/FOjJzWJ59Cf0bnAxfXGJElOq/1dwpxjQXu3vxvWr6yrlWTTBAEONi0/kLcO
-	zSu55XWDf3r5jAO5yOH6In2y9bgHy2IcT7fDW6orDAXmA6cLm/o5bDa48I7HOhZifvz7aIwehLV
-	2H4kOXnmPAXy4epPpFu22vywtdcxWxLlObCBOKhN+6JbKD++PD944dxgzbA+cC50OeV91Ljys3S
-	s44C6p2tSSIqSgObiKHk2pxvi9TKrKn6Uqchh+RH3c6XFnvUtygS52/d3Vw4rhp4o2yYc2MkwLg
-	k55doe6d/+gcMU/gnvdlitqR6RVbYNDZlPovzo/3vB5neXxasRFcdcyIa5FRzj0jbxfjooY/W9N
-	LNFdaMIKz7z5v+99PrjpbXnAh6Av17uxW5UI9rGqXL2t0EQQtHo9G/KoOAtRiLED9c7Q==
-X-Received: by 2002:a05:6a21:e584:b0:3d7:b3c1:cc34 with SMTP id adf61e73a8af0-3dd8c41a56dmr13850919637.26.1790002472781;
-        Mon, 21 Sep 2026 07:54:32 -0700 (PDT)
-Received: from lgs.. ([2001:250:5800:1002::de93])
-        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-877a6bec901sm3343453b3a.4.2026.09.21.07.54.28
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 21 Sep 2026 07:54:32 -0700 (PDT)
-From: Guangshuo Li <lgs201920130244@gmail.com>
-To: Felix Fietkau <nbd@nbd.name>,
-	Lorenzo Bianconi <lorenzo@kernel.org>,
-	Andrew Lunn <andrew+netdev@lunn.ch>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>,
-	Paolo Abeni <pabeni@redhat.com>,
+	id 1x8fXC-00000002WkS-2bC1;
+	Mon, 21 Sep 2026 15:02:22 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by tor.source.kernel.org (Postfix) with ESMTP id 6AAB760A6F;
+	Mon, 21 Sep 2026 15:02:20 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id BD5E91F00893;
+	Mon, 21 Sep 2026 15:02:19 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1790002940;
+	bh=v4UVAeTU1JJaiw4t/Qj/n7SDGMX+yxvPEzMCHsSdNF0=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To;
+	b=CVSpmy71UmB2ms8Rjz8minaI4YrhlvUAq/hKG21gKu5n5xyDm5fsQW8CZ2JM3NuMJ
+	 JhfkZ/BG2dYqYExJdfI56O4f6W/zamyRSG2c0P6fQQaUUz9omjbvee6GFxe9M6Z79N
+	 g/IVuovmT/fyf9DsTWq7xtHxuCAHg9JbnckZYYOKoNVswX0rNP3d7xsiKNR0FExLqs
+	 LD0v5GA0KX+gJyCUw8hogylsV/F8FMEhJE4N3ZweV/dc0HVrspkxn1m9EJBW4jC2S0
+	 17XVnA8L8KAJ9KzOp+kYbVYmYklvat1VXWsEJT38xNGNDnjkckDAmfkinUZSfnWgmy
+	 FnXzF3NE0sv9g==
+Received: by finisterre.sirena.org.uk (Postfix, from userid 1000)
+	id 198661AC56A7; Mon, 21 Sep 2026 16:02:16 +0100 (BST)
+Date: Mon, 21 Sep 2026 17:02:16 +0200
+From: Mark Brown <broonie@kernel.org>
+To: James Calligeros <jcalligeros99@gmail.com>
+Cc: Martin =?utf-8?Q?Povi=C5=A1er?= <povik+lin@cutebit.org>,
+	Liam Girdwood <lgirdwood@gmail.com>, Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>, Sven Peter <sven@kernel.org>,
+	Janne Grunau <j@jannau.net>, Neal Gompa <neal@gompa.dev>,
+	David Rhodes <david.rhodes@cirrus.com>,
+	Richard Fitzgerald <rf@opensource.cirrus.com>,
+	Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>,
+	Ulf Hansson <ulfh@kernel.org>,
+	Amit Kucheria <amit.kucheria@linaro.org>,
+	"Rafael J. Wysocki" <rafael.j.wysocki@intel.com>,
+	Lars-Peter Clausen <lars@metafoo.de>, Vinod Koul <vkoul@kernel.org>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	netdev@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
+	Shenghao Ding <shenghao-ding@ti.com>, Kevin Lu <kevin-lu@ti.com>,
+	Baojun Xu <baojun.xu@ti.com>, Sen Wang <sen@ti.com>,
+	James Schulman <james.schulman@cirrus.com>, asahi@lists.linux.dev,
+	linux-sound@vger.kernel.org, devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	patches@opensource.cirrus.com, Takashi Iwai <tiwai@suse.de>,
 	linux-mediatek@lists.infradead.org
-Cc: Guangshuo Li <lgs201920130244@gmail.com>,
-	stable@vger.kernel.org
-Subject: [PATCH v2] net: mediatek: fix PPE resource leak on remove
-Date: Mon, 21 Sep 2026 22:54:21 +0800
-Message-ID: <20260921145421.443018-1-lgs201920130244@gmail.com>
-X-Mailer: git-send-email 2.43.0
+Subject: Re: [PATCH 01/28] dt-bindings: sound: Add Apple Macs sound
+ peripherals
+Message-ID: <arFG-KXA9aGlXQ27@sirena.co.uk>
+References: <20260920-macaudio-v1-0-741cc20a74e5@gmail.com>
+ <20260920-macaudio-v1-1-741cc20a74e5@gmail.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260921_075434_032303_BB6953FC 
-X-CRM114-Status: GOOD (  18.77  )
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="mBqIcINAN3k6lMdu"
+Content-Disposition: inline
+In-Reply-To: <20260920-macaudio-v1-1-741cc20a74e5@gmail.com>
+X-Cookie: Too clever is dumb.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -107,164 +92,38 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The PPE teardown is incomplete after both probe failure and normal
-driver removal.
 
-mtk_ppe_init() initializes a per-PPE l2_flows rhashtable and creates
-debugfs entries, while mtk_eth_offload_init() initializes the shared
-eth->flow_table. Flow offload entries allocated by
-mtk_flow_offload_replace() can remain in these tables for the lifetime
-of the device.
+--mBqIcINAN3k6lMdu
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-mtk_ppe_deinit() currently only destroys the l2_flows tables. It does
-not release entries in eth->flow_table or destroy the flow table, and
-the normal remove path does not call mtk_ppe_deinit() at all. PPE
-debugfs entries are also left behind.
+On Sun, Sep 20, 2026 at 02:53:40PM +1000, James Calligeros wrote:
+> From: Martin Povi=C5=A1er <povik+lin@cutebit.org>
+>=20
+> Add binding for Apple Silicon Macs machine-level integration of sound
+> peripherals.
 
-Drain eth->flow_table with rhashtable_free_and_destroy(), clearing each
-PPE flow entry, dropping the WED flow reference when necessary, and
-freeing the flow entry. Remove the PPE debugfs directories and destroy
-the per-PPE l2_flows tables afterwards.
+Please submit patches using subject lines reflecting the style for the
+subsystem, this makes it easier for people to identify relevant patches.
+Look at what existing commits in the area you're changing are doing and
+make sure your subject lines visually resemble what they're doing.
+There's no need to resubmit to fix this alone.
 
-Track initialization of the shared flow table so partial probe cleanup
-is safe and the table is initialized only once when multiple PPE
-instances are present. Also continue past missing PPE instances during
-cleanup so later instances are not skipped.
+--mBqIcINAN3k6lMdu
+Content-Type: application/pgp-signature; name="signature.asc"
 
-Call mtk_ppe_deinit() from the remove path to perform the complete
-PPE/offload teardown.
+-----BEGIN PGP SIGNATURE-----
 
-Fixes: 33fc42de3327 ("net: ethernet: mtk_eth_soc: support creating mac address based offload entries")
-Cc: stable@vger.kernel.org
-Signed-off-by: Guangshuo Li <lgs201920130244@gmail.com>
----
-v2:
-  - Drain and destroy the shared offload flow table during PPE teardown.
-  - Remove per-entry PPE and WED state before freeing flow entries.
-  - Remove PPE debugfs entries during teardown.
-  - Continue past missing PPE instances instead of returning early.
-  - Track the shared flow table initialization state for safe cleanup.
-  - Call the complete PPE teardown from the remove path.
+iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmqxRvcACgkQJNaLcl1U
+h9Bnswf5Aa0Iwjwij4bsZ+RZaKJ4PAN5qntk+PDpED8uFPRsFPjxayfQQpln/+YE
+sDuji25SQZ7OypbShQhRshvEwun3ovaP2m+Ha4hMrWdOFbsyUBT4/IYUaK7iGUF8
+QU58uLXPlqNSj8Ea7cgKSEcnMMhcIYcvgDKxpbWcugCdpoJEWwLEpSGeRjQNHlzA
+0PMiHY2MlW7mTys8yaPlq0b4N41vHWxzZN+zOD0pRWLf4K33boQziryFUy3K9wfH
+mPY+XVYWGwsPVEq9P/9zFHg9GbLNDIx4LoMBDC1zOgK05uuGRrM5QVgtWp5jqWR8
+G5J4yfk6TU1ORHvckcmhQbBuP1KTsw==
+=Gras
+-----END PGP SIGNATURE-----
 
- drivers/net/ethernet/mediatek/mtk_eth_soc.c   |  1 +
- drivers/net/ethernet/mediatek/mtk_eth_soc.h   |  2 +
- drivers/net/ethernet/mediatek/mtk_ppe.c       | 13 ++++++-
- .../net/ethernet/mediatek/mtk_ppe_offload.c   | 37 ++++++++++++++++++-
- 4 files changed, 50 insertions(+), 3 deletions(-)
-
-diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-index be3bd025c41a..04d0a1eec4cf 100644
---- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-+++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-@@ -5394,6 +5394,7 @@ static void mtk_remove(struct platform_device *pdev)
- 
- 	netif_napi_del(&eth->tx_napi);
- 	netif_napi_del(&eth->rx_napi);
-+	mtk_ppe_deinit(eth);
- 	mtk_cleanup(eth);
- 	free_netdev(eth->dummy_dev);
- 	mtk_mdio_cleanup(eth);
-diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.h b/drivers/net/ethernet/mediatek/mtk_eth_soc.h
-index 0168e2fbc619..c1ca8af6f356 100644
---- a/drivers/net/ethernet/mediatek/mtk_eth_soc.h
-+++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.h
-@@ -1344,6 +1344,7 @@ struct mtk_eth {
- 
- 	struct mtk_ppe			*ppe[3];
- 	struct rhashtable		flow_table;
-+	bool				flow_table_initialized;
- 
- 	struct bpf_prog			__rcu *prog;
- 
-@@ -1508,6 +1509,7 @@ int mtk_gmac_gephy_path_setup(struct mtk_eth *eth, int mac_id);
- int mtk_gmac_rgmii_path_setup(struct mtk_eth *eth, int mac_id);
- 
- int mtk_eth_offload_init(struct mtk_eth *eth, u8 id);
-+void mtk_eth_offload_deinit(struct mtk_eth *eth);
- int mtk_eth_setup_tc(struct net_device *dev, enum tc_setup_type type,
- 		     void *type_data);
- int mtk_flow_offload_cmd(struct mtk_eth *eth, struct flow_cls_offload *cls,
-diff --git a/drivers/net/ethernet/mediatek/mtk_ppe.c b/drivers/net/ethernet/mediatek/mtk_ppe.c
-index 8451dc3fd00a..f41df3cf0e2b 100644
---- a/drivers/net/ethernet/mediatek/mtk_ppe.c
-+++ b/drivers/net/ethernet/mediatek/mtk_ppe.c
-@@ -1,6 +1,7 @@
- // SPDX-License-Identifier: GPL-2.0-only
- /* Copyright (C) 2020 Felix Fietkau <nbd@nbd.name> */
- 
-+#include <linux/debugfs.h>
- #include <linux/kernel.h>
- #include <linux/io.h>
- #include <linux/iopoll.h>
-@@ -946,7 +947,17 @@ void mtk_ppe_deinit(struct mtk_eth *eth)
- 
- 	for (i = 0; i < ARRAY_SIZE(eth->ppe); i++) {
- 		if (!eth->ppe[i])
--			return;
-+			continue;
-+
-+		debugfs_lookup_and_remove(eth->ppe[i]->dirname, NULL);
-+	}
-+
-+	mtk_eth_offload_deinit(eth);
-+
-+	for (i = 0; i < ARRAY_SIZE(eth->ppe); i++) {
-+		if (!eth->ppe[i])
-+			continue;
-+
- 		rhashtable_destroy(&eth->ppe[i]->l2_flows);
- 	}
- }
-diff --git a/drivers/net/ethernet/mediatek/mtk_ppe_offload.c b/drivers/net/ethernet/mediatek/mtk_ppe_offload.c
-index 99b28aaa7cc4..5b14c7b3052f 100644
---- a/drivers/net/ethernet/mediatek/mtk_ppe_offload.c
-+++ b/drivers/net/ethernet/mediatek/mtk_ppe_offload.c
-@@ -678,9 +678,42 @@ int mtk_eth_setup_tc(struct net_device *dev, enum tc_setup_type type,
- 	}
- }
- 
-+static void mtk_flow_offload_free(void *ptr, void *arg)
-+{
-+	struct mtk_flow_entry *entry = ptr;
-+	struct mtk_eth *eth = arg;
-+
-+	mtk_foe_entry_clear(eth->ppe[entry->ppe_index], entry);
-+
-+	if (entry->wed_index >= 0)
-+		mtk_wed_flow_remove(entry->wed_index);
-+
-+	kfree(entry);
-+}
-+
- int mtk_eth_offload_init(struct mtk_eth *eth, u8 id)
- {
--	if (!eth->ppe[id] || !eth->ppe[id]->foe_table)
-+	int err;
-+
-+	if (!eth->ppe[id] || !eth->ppe[id]->foe_table ||
-+	    eth->flow_table_initialized)
- 		return 0;
--	return rhashtable_init(&eth->flow_table, &mtk_flow_ht_params);
-+	err = rhashtable_init(&eth->flow_table, &mtk_flow_ht_params);
-+	if (!err)
-+		eth->flow_table_initialized = true;
-+
-+	return err;
-+}
-+
-+void mtk_eth_offload_deinit(struct mtk_eth *eth)
-+{
-+	if (!eth->flow_table_initialized)
-+		return;
-+
-+	mutex_lock(&mtk_flow_offload_mutex);
-+	rhashtable_free_and_destroy(&eth->flow_table, mtk_flow_offload_free,
-+				    eth);
-+	mutex_unlock(&mtk_flow_offload_mutex);
-+
-+	eth->flow_table_initialized = false;
- }
--- 
-2.43.0
-
+--mBqIcINAN3k6lMdu--
 
