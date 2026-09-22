@@ -4,114 +4,116 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9B409C982F1
-	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Sep 2026 10:13:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0FBDBC982F1
+	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Sep 2026 10:14:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
-	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=UWyw6GenqzB0Wv/KjUzt8dv4Hf93e69h31+KA7jwNuM=; b=fA21B9HFAEpA9By2qGlt9Ix1uV
-	CTzZNjNx+64tZ/Me7K3C7yPMPMXdHKu76WOA5NDstA7nQrYYbA0pKgZWiKhY6BhW1w2Q0wF4nR9SE
-	oZwxQpGLBcB/PenSxsWH0DLlNN6XMIfg5PTo/cYUUkk+67rlzk+N+THitTltmYTSCxrl9LGPChEVQ
-	lHTe6SieJ+vUe9zXNZSW5veqCtKS0Je29HLqiSOU7I146JsKxYUDZm7B2xJCC+uJpOnEdQtJQBu4X
-	sTFx1HJysCne9MPtflSl6EXnLcp6pNhi7hQLeca/chUJrM638Q1qeGfA3zkMgcdw3n4fnQ3N1/4jD
-	jCTxGmxA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=2ESDSZM667q7EB0r3pmeL1vJBKH8ckNK36jbuGzw9rQ=; b=xoXw4x0LE4nhuw9d7ivfhCfZ9v
+	3THl+/SxB27WUf4d3JGbnnP9Y5lmgezSru6nOTH8Y36+QVmmzYsjeEOmdjtP23Um/z1HjDp9nTu4C
+	c0+PJrP0nBMvh9XriJX5lq+YJiXgJpPj1cblNR8vh3CyYJ75yUDmXrF5vhiR0df+Mw3LDwB3uGdKv
+	FMbahD0CRhAy92kHa41SdQS3sOK+dIZHgwRlGw+JMqONb6gMJRxT4uXmRY0WF2yle0M3H+fcPOtW8
+	nB0rfeMHbpbYoAE46SYYL4ZoH+5oHoUfmFMwA5uespAUpBuwbpMsTOGeZui6Uwk757YU4uN+iyUCK
+	efFEQ0kg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x8xUw-000000051PW-1bQv;
-	Tue, 22 Sep 2026 10:13:14 +0000
-Received: from mail-vk1-xa31.google.com ([2607:f8b0:4864:20::a31])
+	id 1x8xWI-000000051fj-2JEt;
+	Tue, 22 Sep 2026 10:14:38 +0000
+Received: from mail-qv2-x0f.google.com ([2607:f8b0:4864:33::f])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x8xUs-000000051O3-3pOX
+	id 1x8xWG-000000051es-0XHF
 	for linux-mediatek@lists.infradead.org;
-	Tue, 22 Sep 2026 10:13:12 +0000
-Received: by mail-vk1-xa31.google.com with SMTP id 71dfb90a1353d-5c985f055b9so861801e0c.0
-        for <linux-mediatek@lists.infradead.org>; Tue, 22 Sep 2026 03:13:09 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1790071989; cv=none;
+	Tue, 22 Sep 2026 10:14:37 +0000
+Received: by mail-qv2-x0f.google.com with SMTP id 6a1803df08f44-90cdfcbe207so44781236d6.3
+        for <linux-mediatek@lists.infradead.org>; Tue, 22 Sep 2026 03:14:35 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1790072074; cv=none;
         d=google.com; s=arc-20260327;
-        b=UDOQbsmAj/RQlHSve/cPbR6Y0ZD8ngTLKxp/Jspq8YlEB/S+2mVL4Ef4Ipk/J0WGNX
-         jMuRSlPfSKj/ffMmENUIocAr2Tajl/cnVo3ndYBB4Yt4UVMe0MpzZlUfmUpiqNnDgPk5
-         iIyInAouCWsmvIRtiUDcSBF7p/oYrqGFrYPt/cZYdV2t53Ezbnnhzx5KSdQk2WWegZN3
-         X8O7EudaDXvI4Z9r372/avwSI4Ky0MyMBazZn4Ha8lDhVhTvS/pVj/804LEfDmFMkr0O
-         EpYn2SD7PzGA5NSdJq+fDaWm9cUdQVrOIlJDndo3PQuHf0IRPVCua8/9OZkfxbhU8rTx
-         MnWg==
+        b=TMGVrnf6dwchkO2qXHj2hEeXRrQkQ6593qO1sP2CcAfZIcQayNx9GG/u7x0aSUe5Bk
+         F/PdVnk3FLyvSM/24gDhmO4PcZ/8naetl69OhxuRxKopbK0mF5UX2tZ/WgmBAfUq2EvD
+         teHu2+cskjQGAv/xKM2pd89c1jpTJvwms7RnjIq8Z7KdfmoIg2tmNAutpkrU+UQO9OSF
+         4rinNLrEOxLWqsUxmjW5b+or9fd5RS/n/wPwo1E0D9JZZCQhUnVILoB3zuV1/q6NPRRT
+         mKIMdx9gY+khv5cSg2SecPLeGKwzw4GTXL/IMyW6l51alFgiJ1LyXa6bhhAq9kFwg9na
+         GzfA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20260327;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:dkim-signature;
-        bh=UWyw6GenqzB0Wv/KjUzt8dv4Hf93e69h31+KA7jwNuM=;
-        fh=KUw5ySPgXMChTSYI9liY+DPjBxUasWlaCAk/pAjtjmw=;
-        b=kn/zY+KXEU9diIArv3gnPSbki81XB9Xy/bFvYQ5uqUnHR6dF6chApkh6yCClQoDcDb
-         lxHT4IVttJ27zUa0etpA+BGhjZOcq6VR0yKz3B5pj3z0TqPpvyFo3riXDMtrvYSKlUSE
-         QiZq0SxbgaGvQZRvqjeqViAjH1K2mtpT1V9sngDDbH2NsWZwUABt+oyvKER0hCoAALjd
-         5ruv2xgPAEfHuDolyNp5p8ty7hyE1qbTkI5iAU3LvVwfP8AiqwD0nx/FQiL+snpuWcqU
-         vojcpBhe+yhTXUiZXvxzWhhIrlpwSryFdnbhPdkSRaGyL+s1ab5T6RIH20ap9y/ORdLi
-         9QAQ==;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=2ESDSZM667q7EB0r3pmeL1vJBKH8ckNK36jbuGzw9rQ=;
+        fh=TLozUS0v5JIZDb7CVVz6QRgxYf7flQ9SW7wNENfJngo=;
+        b=V51007rgvOJje9uFhmQ2Ujc95MBo9E6dJAVEsUj5Tc+JoyhLzBQrO87k64kNPPbmpb
+         hyCX86Fl1jgepemX6NMs6yfpkgey1hnD1qkahBs/6cP/vl5xRqrQ3rJ47IUFNWv2vv8a
+         f3qDpnlM1mgIlKoB4t+dRppdejtgHQQYEQM9WNyZFx92XBMw7c7veS8WpioyWEwPM0+9
+         8VkXl03R6clO4sRWoNl1L2sDO2/KDhHSkWM48TRjXRinf9zDqhoPlD4/CSfTwPD0l9u7
+         xtoGD0TAA7yO68CY/XVJEmnnCQdSi7aggJ1iPOUWC/cxi7YQTyt2sZflMNlBaDKuYCOl
+         CucA==;
         darn=lists.infradead.org
 ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1790071989; x=1790676789; darn=lists.infradead.org;
-        h=content-type:cc:to:subject:message-id:date:from:in-reply-to
-         :references:mime-version:from:to:cc:subject:date:message-id:reply-to
-         :content-type;
-        bh=UWyw6GenqzB0Wv/KjUzt8dv4Hf93e69h31+KA7jwNuM=;
-        b=DLj1lPRXxjPUnXdRcKdpwXtECsXSa3CdJPkXOnM6BJJJ/rpIXhaGKs6jK/t6nVp/nH
-         16KcF0WwFZRJdANtMcY/tL7wAko7YqEPiPTQ+xh8HWe5xzyJZkmN6P25vdMRWxhdWHGd
-         z1tSaij3Ikh2WfF7RPG3FH9L2e8MEo5BVU2O31H4zH+VGCtyhvER3ZM4XJnVg5KQrT+K
-         Ybxv6OIsXDAAooCnbvJAsZddk3k+le3YDOlmGs9ufW6mDlBhitYN+E3Zp3ns6ENFsylV
-         SwtNz+LWIAq+eZMQUsyZG4hLDZJAzr+QGG7JUkenscmEpRkYq4T+GyscmWV2fQVzJl8w
-         KQvg==
+        d=gmail.com; s=20251104; t=1790072074; x=1790676874; darn=lists.infradead.org;
+        h=content-transfer-encoding:content-type:cc:to:subject:message-id
+         :date:from:in-reply-to:references:mime-version:from:to:cc:subject
+         :date:message-id:reply-to:content-type;
+        bh=2ESDSZM667q7EB0r3pmeL1vJBKH8ckNK36jbuGzw9rQ=;
+        b=AG4pAUIM8kdzWFW6t1eJ7r7a4XR5NpaHb0IaOIWXBFSZFSzCBB9omiMO4NlI9EKaHR
+         PXDlZ3jF2ROekisE8Qz8T8r/4O0mm6ADezf+uq0foURS38rH4p3oDveY1SQwZG/ZU+1y
+         LLdY/BNwCLQZUZoOSY9caBkb48tgeDbDsqyKtK+PcRScENxRkU6ScpcEqUusD8ZTDHyU
+         hTwkbayV2iwrHjS1Ijysf9glAa8x3YQg9QJFyh/+LZY/2eBK891JsvHNopJ4FqW54Zfd
+         v/VtzlVXfmWVM0k7rCW8jOTfxxoMeSccoKqs4H7kR/uipzRhPQ66q44arJq6hN+FN5pp
+         MDjw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1790071989; x=1790676789;
-        h=content-type:cc:to:subject:message-id:date:from:in-reply-to
-         :references:mime-version:x-gm-gg:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to:content-type;
-        bh=UWyw6GenqzB0Wv/KjUzt8dv4Hf93e69h31+KA7jwNuM=;
-        b=QvWIH7by6EoBHFgTUXzruNy40Aj4MaT7K6sbME4Euy5MHuA+OH3STbwoGW9rsEVeUb
-         j59uubmimOGIqC8aP61+v3VMGnwqBEukwX/9i43w4Zu4eaZVkMyLMjB1QXgcj0zm+54+
-         IBqpfP/e9rm4Bgi6HZhh+urT/ToB533RokDgGeE13sUKKnuimZrJ8nrs5Hy38UoJJufa
-         zwSGXM6D+w0VvwTcGq8vIBSQOb/st12vCQJ+tRiW5lhQ+QWNapGmnebGVmkd4FJr3ZlO
-         AO4SjEdR8fukB7aSJslo5CFBQdFU5leRhnsw4z79+Ms402GJpvh+0v2eMd+Hi7Omg3wa
-         wM5A==
-X-Forwarded-Encrypted: i=1; AKwUvBz6e9NOKJYJpu6j8UWME4vRHBnpHhOQNSLmygVMy/V0SyzNMTDuFWyWsYFhsufaGvRWQTcyHn3UqR2hBXpufA==@lists.infradead.org
-X-Gm-Message-State: AFuF++mWI6EtP15IQRmELK0lm63qCdHDSBcZYSFhFathHIk6BGzLO0nb
-	7aKkMvwns6MxXoEYars4trR1irBLjIoI4ski8ZRQxpSl5sgcwvGWG5Kvk97NFxFEJt39xlaGU6U
-	+QEcHtDlVk474EQ42mmPQc29LBn6OKa8=
-X-Gm-Gg: AYBFou3exMt8HaE4CD9FuTIBoYot3zxwtN1SQMUwnEg237REYA0TBV6SQbenxyp+dzV
-	FuUbgq0Xyv9igfApxiuWbw5sGH1t+7Grf/3zJLM22XILMY4l54uAiWcnqEgSlBhCWzbVAqezVf+
-	h6WbgDUi9PEICOCLrozAekkwOAQ+rpm6tY/NQFEXX1U/jUbd91pcV6F+svF0Bp7c+kIBzKq6k1P
-	Y3PuQS0D022F0me+78+A+Z/KSGlV1WorT1rme6c+zGaIekChVONAzngyjMgRCpTHZ7fbJQHjFup
-	P8Hr2YJS/gqGatFdJEkEo+LAXDQ7tYA/5UqGKY3kmAizh2yNnAzA2Q==
-X-Received: by 2002:a05:6122:2b8a:b0:5c9:9f03:cb07 with SMTP id
- 71dfb90a1353d-5c9e343983fmr1483343e0c.2.1790071988975; Tue, 22 Sep 2026
- 03:13:08 -0700 (PDT)
+        d=1e100.net; s=20260707; t=1790072074; x=1790676874;
+        h=content-transfer-encoding:content-type:cc:to:subject:message-id
+         :date:from:in-reply-to:references:mime-version:x-gm-gg
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+         :content-type;
+        bh=2ESDSZM667q7EB0r3pmeL1vJBKH8ckNK36jbuGzw9rQ=;
+        b=tNcF7XUX+jxjkyiVz3dudhTQpnKgBX5lCLqeswvWZhElM1f6OGtfKwoKCGx6YJCIDS
+         nRbRa6vLH2eG20Begnsn7EF4Bwfg6e8HiHLIN01ROlmIllqYV6YeHC7wHGtI4F9eUH8k
+         rRRDaSTkapxvdKdxktO2V3RuDtZyRnLyrkrTt3IltBERdCl1JZ85o8e7iN+KglpzlcVp
+         LO6fh6+BzUMjztkk9gZS9T3VXKDK/EPDMfunLxthrq56s7kkmgt2nOWVTkJXyWhcuo9C
+         +6urpbe1CvQATmT1tNgaapCs++2Q7XzuLGNR5V2XshZm0nQHx1pUTn+mcf1QcLmAQBAV
+         kT1Q==
+X-Forwarded-Encrypted: i=1; AKwUvByRQWbDKtnCf14aQYN9zmrikRZYSI6V7prPZw9R8hC/BNjQOFF74RoBH+pyT4ygIEcESPL+n3k5OJEZydWFaQ==@lists.infradead.org
+X-Gm-Message-State: AFuF++nmDHQaQr1BWtvK7by/J1xpx+oiSJ/AnQinnCfp15DHdPcVIevH
+	hSWvR2ny1l0HtGjFrr4e6WnTcYfFx2DILGy3HRG/TAqiTM+0Sbtd7wNjf3zgREdr3ZHYR2bAHiw
+	qBbJ6AoWKfQd2yaEtyq1xSOOFR8v/kng=
+X-Gm-Gg: AYBFou2qFojbZuew/IjbHfLY7uMsoPQqny8OxVYS1wa0TYFIoGv3s32wzfAtZhBeTGo
+	15bqvkwB0KiCj1zDnyJe0ffEEnOZUgyPi/mk8OuzyXCdw5nF6QKVwB7vcUZamSb8tLJjG+DlXwZ
+	y+mSNXl91KbAOrMubk6hW+Q1H7xLuGJFdlQHW1/sm0owJvd/R7YcYXSnQrJKTSQ3oafUzZbDIfs
+	o7DSfvAwhjRA90bORqmcRoWFfwbYSvoCJLAwP5OVXijlHpfttWxs2Lnclj6zastTZbyR2e1ti4a
+	7WyT4/480YoZsN3scDtCZ9PrVwQRByRM9mg+lknQAJOBxRWjwhm/sYo=
+X-Received: by 2002:a05:6214:d63:b0:913:fa79:99c3 with SMTP id
+ 6a1803df08f44-913fc94b160mr46562816d6.43.1790072074583; Tue, 22 Sep 2026
+ 03:14:34 -0700 (PDT)
 MIME-Version: 1.0
-References: <20260916235200.20712-1-ansuelsmth@gmail.com> <20260921135933.7e8857ba@kernel.org>
-In-Reply-To: <20260921135933.7e8857ba@kernel.org>
+References: <20260915123812.14747-1-ansuelsmth@gmail.com> <20260915123812.14747-5-ansuelsmth@gmail.com>
+ <20260921134410.13a7173c@kernel.org>
+In-Reply-To: <20260921134410.13a7173c@kernel.org>
 From: "Christian Marangi (Ansuel)" <ansuelsmth@gmail.com>
-Date: Tue, 22 Sep 2026 12:12:56 +0200
-X-Gm-Features: AcwNN1XO-IQtQQeBFy8m7z0RqgCFyAn_vcQf_nLSSDZxar5hmkBbTIMafTrhl4Q
-Message-ID: <CA+_ehUwy9RUKCCHDnqoED3AMVnErgGr9RCrCR4ceg5QONq1wOQ@mail.gmail.com>
-Subject: Re: [PATCH net-next v16 00/12] net: pcs: Introduce support for fwnode PCS
+Date: Tue, 22 Sep 2026 12:14:22 +0200
+X-Gm-Features: AcwNN1WQadm9kZulSu2D2w98S17OkpHd-MeZLtXiKqWwHyLw9Fh6tPwUuh65TfY
+Message-ID: <CA+_ehUyFH_ZSsjhp-U9WBFoRZR-ZMWnNQ5pY5vAy1LxUU5hSsw@mail.gmail.com>
+Subject: Re: [PATCH net-next v22 4/9] mfd: an8855: Add support for Airoha
+ AN8855 Switch
 To: Jakub Kicinski <kuba@kernel.org>
-Cc: Maxime Chevallier <maxime.chevallier@bootlin.com>, Andrew Lunn <andrew+netdev@lunn.ch>, 
-	"David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
-	Paolo Abeni <pabeni@redhat.com>, Rob Herring <robh@kernel.org>, 
+Cc: Lee Jones <lee@kernel.org>, Rob Herring <robh@kernel.org>, 
 	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
-	Simon Horman <horms@kernel.org>, Jonathan Corbet <corbet@lwn.net>, 
-	Shuah Khan <skhan@linuxfoundation.org>, Randy Dunlap <rdunlap@infradead.org>, 
-	Lorenzo Bianconi <lorenzo@kernel.org>, Heiner Kallweit <hkallweit1@gmail.com>, 
-	Russell King <linux@armlinux.org.uk>, Philipp Zabel <p.zabel@pengutronix.de>, 
-	Nathan Chancellor <nathan@kernel.org>, Nick Desaulniers <ndesaulniers@google.com>, 
-	Bill Wendling <morbo@google.com>, Justin Stitt <justinstitt@google.com>, netdev@vger.kernel.org, 
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	linux-doc@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org, llvm@lists.linux.dev
+	Andrew Lunn <andrew+netdev@lunn.ch>, "David S. Miller" <davem@davemloft.net>, 
+	Eric Dumazet <edumazet@google.com>, Paolo Abeni <pabeni@redhat.com>, 
+	Vladimir Oltean <olteanv@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	"Chester A. Unal" <chester.a.unal@arinc9.com>, Daniel Golle <daniel@makrotopia.org>, 
+	Heiner Kallweit <hkallweit1@gmail.com>, Russell King <linux@armlinux.org.uk>, 
+	Simon Horman <horms@kernel.org>, linux-arm-kernel@lists.infradead.org, 
+	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org, 
+	mfd@lists.linux.dev, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org
 Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260922_031310_959098_45A26A9D 
-X-CRM114-Status: GOOD (  22.59  )
+X-CRM114-CacheID: sfid-20260922_031436_176167_30C92A2E 
+X-CRM114-Status: GOOD (  16.29  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -126,49 +128,49 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Il giorno lun 21 set 2026 alle ore 22:59 Jakub Kicinski
+Il giorno lun 21 set 2026 alle ore 22:44 Jakub Kicinski
 <kuba@kernel.org> ha scritto:
 >
-> On Thu, 17 Sep 2026 01:51:26 +0200 Christian Marangi wrote:
-> > This series introduce a most awaited feature that is correctly
-> > provide PCS with fwnode without having to use specific export symbol
-> > and additional handling of PCS in phylink.
+> On Tue, 15 Sep 2026 14:38:01 +0200 Christian Marangi wrote:
+> > Add support for Airoha AN8855 Switch that provide support for a DSA
+> > switch and a NVMEM provider.
 > >
-> > At times there were 2 different implementation (this and the one
-> > from Sean) but Sean agreed that this can be picked and used in favor
-> > of his implementation as long as his case with race condition is
-> > correctly handled.
+> > Also make use of the mdio-regmap driver and register a regmap for each
+> > internal PHY of the switch.
+> > This is needed to handle the double usage of the PHYs as both PHY and
+> > Switch accessor.
 >
-> Looks like the review for one of the patches failed so it won't be
-> emailed out:
-> https://netdev-ai.bots.linux.dev/sashiko/#/patchset/20260916235200.20712-2-ansuelsmth@gmail.com
+> GCC spews warnings:
 >
-> Are all of the issues invalid?
-
-Only one is relevant, but expected.
-
-The remark on the fwnode patch are invalid. The driver is expected
-to return those error as probe defer is not supported.
-(a notifier and late attach/detach is used to align to phylink logic)
-
-For the specific Airoha PCS driver it's really speculation from the AI
-but HW doesn't work as described by AI.
-
-The only real comment that is valid is about the alternative way
-to give supported interface with the .get_capabilites OP.
-
-This is currently not supported as there isn't any user and it will
-be implemented as soon as there will be one. It's really to limit
-the patch delta of this change and to progress further.
-
-Maybe FIXME might be suitable?
-
+> drivers/mfd/airoha-an8855.c: In function =E2=80=98an8855_mdio_register=E2=
+=80=99:
+> drivers/mfd/airoha-an8855.c:438:48: warning: =E2=80=98-phy=E2=80=99 direc=
+tive output may be truncated writing 4 bytes into a region of size between =
+1 and 61 [-Wformat-truncation=3D]
+>   438 |         snprintf(mrc.name, MII_BUS_ID_SIZE, "%s-phy%d", priv->bus=
+->id, addr);
+>       |                                                ^~~~
+> In function =E2=80=98an8855_phy_bus_register=E2=80=99,
+>     inlined from =E2=80=98an8855_mdio_register=E2=80=99 at ../drivers/mfd=
+/airoha-an8855.c:469:9:
+> drivers/mfd/airoha-an8855.c:438:45: note: using the range [-2147483648, 2=
+147483647] for directive argument
+>   438 |         snprintf(mrc.name, MII_BUS_ID_SIZE, "%s-phy%d", priv->bus=
+->id, addr);
+>       |                                             ^~~~~~~~~~
+> drivers/mfd/airoha-an8855.c:438:9: note: =E2=80=98snprintf=E2=80=99 outpu=
+t between 6 and 76 bytes into a destination of size 61
+>   438 |         snprintf(mrc.name, MII_BUS_ID_SIZE, "%s-phy%d", priv->bus=
+->id, addr);
+>       |         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~=
+~~~~~~~~~~~
 >
-> Once the AI review is cleared, some human will have to review this
-> and vouch for you as a maintainer. Better still be your co-maintainer.
 
-I think some revision ago there was Andrew that reviewed some code.
-Anyway thank a lot for checking this once in a while, I feel it's a pretty
-important change but I understand it's complex to handle as it does
-introduce a whole new subsystem.
+Hi,
+
+ I also didn't receive the email for the AI review... Did it broke also her=
+e?
+If everything else is ok, should I send new revision or maybe we can pick t=
+his
+and I can send followup for this warning?
 
