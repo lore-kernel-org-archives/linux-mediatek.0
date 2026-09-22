@@ -4,61 +4,108 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C6F6EC982F1
-	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Sep 2026 02:15:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 13B7BC982FD
+	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Sep 2026 02:41:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Message-ID:Date
-	:Cc:To:From:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
+	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=0ASA5JW6b5bnDhsby8kSTB9776aPdBxV6ZarEwfGUYA=; b=esa1gEQ3H37G1uA9KWVzzKH1vW
-	PddMaykgyYRSBeDmASa1uJ8hG9YuH357QbN/oaBsU27fxZfLUOgzcwMhVwemc1aKVXsQ0eWxIO5j9
-	k5UcvOOeA9B7OrK8mq5PJCSubHXSVPp/z6xmKvdMf25GQDlN5A+HTp2KwS8n66pxfpJZo/qHe95Ra
-	SAq/FZJgeouJlr4b4b8wGq9Lf58hqrkl9h++MS6kEikjJYCmqA+n5ytZZPDY2zbXCV6uw3MuxkNNs
-	++bPG4CI5aBOEDUSBqV36K+dcFwr1gzpxPdHdxd4dtwpEaspYrK5oMyU5ZVM195zyAWR2UZliqHFg
-	tHs6DBVA==;
+	bh=y766ru1pP38bk6e7RtGWTvz6LPHY8UDSub3CPfviG84=; b=ANlcE2cKxFcCOWKsamTtmlgxAH
+	3wNYEEaLoHHiuTmPgOHPfVD/vrbyrn7OwUTe3lzj0d6V2jzFRzYnqfcJpNpxKkKzoAwlgylFeulSN
+	sth1EFf0v8FmgfkFR1hkwx4Eg8kFYvfY4Ok9Db2JzGKggrhb6JdniYg+z04e1Nm2DqzxFk58oYvTg
+	cfT7Fuj2kOh4ilOpNjKlbWvGsPy34laOjx1AvaOnh5cu3MRtayfEow8GEjk2m0lPteRHNgUZdQACa
+	UYilBkCWj6UYnOC1xUXXFxAVLhg5ceO48ye8eWMzYaJU8hIGKm/iKmXUPtD1ti4arQmt/Kb44AppV
+	tK6fLqvw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x8q32-00000003xID-39u8;
-	Tue, 22 Sep 2026 02:15:56 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1x8qRz-000000040sB-0btR;
+	Tue, 22 Sep 2026 02:41:43 +0000
+Received: from mail-yx2-x10.google.com ([2607:f8b0:4864:41::10])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x8q31-00000003xHv-0YSx;
-	Tue, 22 Sep 2026 02:15:55 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id 832F6406BB;
-	Tue, 22 Sep 2026 02:15:54 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 72E991F000FF;
-	Tue, 22 Sep 2026 02:15:53 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1790043354;
-	bh=0ASA5JW6b5bnDhsby8kSTB9776aPdBxV6ZarEwfGUYA=;
-	h=Subject:From:To:Cc:Date:In-Reply-To:References;
-	b=PfUGiGY6exW5Q7gji0YFSkvi13LVMyGzTvOjVsTxfVtzbGXGK+rRzSL28X9Wndv0i
-	 C6adaZKgC6jHsvjI1OxafymgqF42Ap5wxVQDJaBqU+oN5IMp0ue/GgFgnva8ya721p
-	 GzmG6hOSdv2AIRKesaUdDG1Abw53zGJeYPNeOgrbWD1GgVSU8OmrmPo2Vh49GdcTJx
-	 fJo1HQ5B60ixEAJihe6wqxxhR6UjIGAVumnoL6IugL5u3vZ/8R2orpkU7C/xvvzP5g
-	 VleMGt9tx2VOUfCdaZqfFbfZbxdWp3i5jwSveShtQpQ9EGMBUFIlzoW9f/SkaaJNJx
-	 ixp+W8dl01Q7g==
-Subject: Re: [PATCH net v2 1/2] net: dsa: mt7530: fix NULL dereference on
- unbind of MT7531 and MT7621
-From: netdev-bot+sashiko@kernel.org
-To: f@lex.la
-Cc: netdev@vger.kernel.org, chester.a.unal@arinc9.com, daniel@makrotopia.org,
- andrew@lunn.ch, olteanv@gmail.com, gerg@kernel.org, davem@davemloft.net,
- edumazet@google.com, kuba@kernel.org, pabeni@redhat.com,
- matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org
-Date: Tue, 22 Sep 2026 02:15:52 +0000
-Message-ID: <179004335292.2160803.1657607362233554719@kernel.org>
-In-Reply-To: <20260918015020.2518315-2-f@lex.la>
-References: <20260918015020.2518315-2-f@lex.la>
-X-sashiko-severity: Medium
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
+	id 1x8qRw-000000040rK-0KTC
+	for linux-mediatek@lists.infradead.org;
+	Tue, 22 Sep 2026 02:41:42 +0000
+Received: by mail-yx2-x10.google.com with SMTP id 00721157ae682-85d46e4cdcdso30516957b3.2
+        for <linux-mediatek@lists.infradead.org>; Mon, 21 Sep 2026 19:41:39 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1790044899; cv=none;
+        d=google.com; s=arc-20260327;
+        b=bROIC0VL4i6s6XYKpQ/i2vuytrEZ3b8YxB143RgvEL1drLJSDV6N/we4wVK/2yIqbx
+         XMGf47U6z5Yv3of9eruAQynu5Y4OOB7sCRKNWNmWANOVnbRD0hd1c6S+47oD0MAg59G7
+         12rLlHXLa1O4nHX+nIG1e/2pMRMt6zprvf+vaqKbB+HxwGDb4aUmfq71BQgCkP3MqKjQ
+         AHnqrq7Z71kHq3FoHUnjuyGrIKNJq6MGfOidoUoKD5rsYktEmsI1dDhd0bCxRZdJM9H+
+         EEwZXgYsV1jt+S/VNmnT4yD4S66WaScrnyUvbndT8Ng03pFurGDXsl4CNf0+a1qF5con
+         YwUQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20260327;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:dkim-signature;
+        bh=y766ru1pP38bk6e7RtGWTvz6LPHY8UDSub3CPfviG84=;
+        fh=UGUWv9V1W9ktp5VKxf3D93bMgQvh09aarTWeZHH0MlA=;
+        b=YSVVexSdlxS8Iwt+uy1nCC8jMiaYbdCBnmwt1BmWaBtDqg+sVpE+C30+G9ROkzjrit
+         0lwC1wwTPwIbhroHm5wWoE4jDW2Hv23v99fsV8Oz2jBhFeMVhHdcPbKdm/dsJMjVpcrU
+         C2YNFJPPwxLp7vAEIq0nHhJkrvxtQjujs8XTBmIEy8UbqSsmb+Z92yN/xHuPpWChS1Mj
+         CpW2g/VZL4SdKkAMyjWfOa2rnTr699TeAgRwmeep4TONDnJbljhY3NWzvmjwW0JYHiQ6
+         u+NP3ldbkuZF82lGcCIR9EpBJMldtn0b4LN4HA1mRDLbPfzy/QN/Wn2SSNZYofzpfk+U
+         +RFw==;
+        darn=lists.infradead.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20251104; t=1790044899; x=1790649699; darn=lists.infradead.org;
+        h=content-type:cc:to:subject:message-id:date:from:in-reply-to
+         :references:mime-version:from:to:cc:subject:date:message-id:reply-to
+         :content-type;
+        bh=y766ru1pP38bk6e7RtGWTvz6LPHY8UDSub3CPfviG84=;
+        b=R6jAQ2jiddKdWJ0LkuDUSJydCSY1aWCoOsVgF1BQJ2x/ciNdmc4A/FC53KzmvXlhzS
+         Vn2Oyp+X+vHCuhNwbOnWPZWhckCqZffYRRWJRl31fuQxwgVYkkjebOEaqg/cIpAo89Xu
+         KwEl69TF810XKz9SOVvx1jCjRxMgj2AlIBnPE4G4tGuzcUxw9nptG7s7AelYtsAbLW1a
+         sKuKiOJi6GzRBU3Uys7r180St1gffwyyzcRUFxtki7qmkHHeVL/tRFf8V/IbpZyn7NOq
+         oa+nKnh4DQo+EAohIr9J5HqYIqO7px0gg4FMa9X7xhHssPOP2fsdkhrqszRwmu9g0r1e
+         Fsiw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20260707; t=1790044899; x=1790649699;
+        h=content-type:cc:to:subject:message-id:date:from:in-reply-to
+         :references:mime-version:x-gm-gg:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to:content-type;
+        bh=y766ru1pP38bk6e7RtGWTvz6LPHY8UDSub3CPfviG84=;
+        b=hkC3900KkVcwW5R10muJyCmZxCT/2EpUMHy3FkwDp3PM/8Yy7f/O8O7JnWRoU/A+SM
+         U4Ln6u4Auv9yl2rl3qQszEvk9g5jod2lcdCeljZLFqFZ1Db5j6ieMKzOf3LlHEWv3Z1R
+         FFiu/IT9eISAg3eoa5AKNKW0iHcwBrD6LtcXxa+9GwDW2RjVeR4b9pBiR0PK7zjF7MmN
+         HqDeDWrVVyb5m8Z5vvOl1fJKaUt+HTCCV00vW8pLEkdA/AfPtqbl54NbFHhTm3tnhx1A
+         fXE1GZD4hxeZsE0ciZGnO+AnVO58HzNiwj922s/8MgZtQCrKY1NUdh74LIBprey2L+zS
+         a2mA==
+X-Forwarded-Encrypted: i=1; AKwUvBwKX/L75Ti3U1J2KEmPKm7uyIXML9NXgbAiHdM1rbtPQBYPfp2SJMPmQ08lHCNHA39TBJhy2u/wilXvlL3cdQ==@lists.infradead.org
+X-Gm-Message-State: AFuF++k29gYb4SqKGCgJaU4g0xg7h8u0r41oRexSUQGDClGOLvszuoWJ
+	TQNRCm6LWVoe1y0sfqJcyjtniVnYJTNQbQqXWFQ84KVGTdrqf6MrFWnAk+Bneb1jLOhxegoqi18
+	NHOIwoYv/kGa6I0vaMX03PAl0dflpOeE=
+X-Gm-Gg: AYBFou3Mb+XhMkeMRY79ZKdj95ghCkogP0u9nsGDhoYVD4Fp9ItUIu0SjbA/KZtiLf8
+	bHJbmksFAlfuY2ruzE3ZbSB6hwP5FAYB693pM/+cwaFVV1sxgwbnkSsGt6SN4oh58K/erpoijYm
+	h/uRTO7E42iEiYl5p1dsRFjWR+cGHRsTyhcqMPR2IPyMWq7zpLCY83XyXE4MDLpN5ZAeyjJoBnu
+	W9BHq1CpC51+PeMWV0N/XIdPLZ6SAnT1zp3aBA+MORTvoreoW2JNPDjpk0Bx4FXjl9rZdHF9oBj
+	Z/YCwmkqXQXFmrZJ7fsfNi7+5giIGpLKL/q3mf2sGlsZeYjqxS5hU9FI4/7dngNG1vRU
+X-Received: by 2002:a05:690e:418c:b0:671:6e1b:3579 with SMTP id
+ 956f58d0204a3-6717fce3850mr3483604d50.31.1790044898781; Mon, 21 Sep 2026
+ 19:41:38 -0700 (PDT)
 MIME-Version: 1.0
+References: <20260921085119.308981-1-lgs201920130244@gmail.com> <arFHWJb9igZQPkeZ@quoll>
+In-Reply-To: <arFHWJb9igZQPkeZ@quoll>
+From: Guangshuo Li <lgs201920130244@gmail.com>
+Date: Tue, 22 Sep 2026 10:41:25 +0800
+X-Gm-Features: AcwNN1V-Ux3fREqDv-l9JklLsk_41fzba7T8a5w0aNSBvvhTkqxYTyKq2Y8-7tQ
+Message-ID: <CANUHTR-FtO3EAxgTmXeS0YeT+2CPB=4iA_T-2qFZO3QT7veYYw@mail.gmail.com>
+Subject: Re: [PATCH] usb: musb: mediatek: fix child device leak
+To: krzk@kernel.org
+Cc: Bin Liu <b-liu@ti.com>, linux-usb@vger.kernel.org, 
+	Yonglong Wu <yonglong.wu@mediatek.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-kernel@vger.kernel.org, 
+	Min Guo <min.guo@mediatek.com>, linux-arm-kernel@lists.infradead.org, 
+	linux-mediatek@lists.infradead.org, stable@vger.kernel.org, 
+	Matthias Brugger <matthias.bgg@gmail.com>
+Content-Type: text/plain; charset="UTF-8"
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260921_194141_777818_6D5DA1CC 
+X-CRM114-Status: GOOD (  32.40  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,241 +120,87 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Thank you for your contribution! Sashiko AI review found 1 potential
-issue(s) to consider.
+Hi Krzysztof,
 
-Critical: 0 · High: 0 · Medium: 1 (2) · Low: 0 (1)
+Thank you for your feedback.
 
-If you believe none of the issues are legitimate, please reply to each
-issue of Medium severity or higher and explain why the AI is wrong.
-If any of them are legitimate and you plan to respin, please let patchwork
-know by including "pw-bot: cr" as a separate line at the end of your reply
-(one such reply per series is enough).
+On Mon, 21 Sept 2026 at 23:03, <krzk@kernel.org> wrote:
+>
+>
+> On Mon, 21 Sep 2026 16:51:19 +0800, Guangshuo Li wrote:
+> > mtk_musb_probe() populates child platform devices using
+> > of_platform_populate(), but neither the probe error paths nor the
+> > driver remove path depopulate them.
+> >
+> > If any initialization step after of_platform_populate() fails, the
+> > probe returns without unregistering the populated child devices.
+> > Likewise, the children remain registered when the driver is later
+> > unbound.
+> >
+> > Use devm_of_platform_populate() so the populated child devices are
+> > automatically depopulated when probe fails or the driver is unbound.
+> >
+> > The issue was identified by a static analysis tool I developed and
+> > confirmed by manual review.
+> >
+> > Fixes: 0990366bab3c ("usb: musb: Add support for MediaTek musb controller")
+> > Cc: stable@vger.kernel.org
+> > Signed-off-by: Guangshuo Li <lgs201920130244@gmail.com>
+> > ---
+> >  drivers/usb/musb/mediatek.c | 2 +-
+> >  1 file changed, 1 insertion(+), 1 deletion(-)
+> >
+>
+>
+> You sent multiple independent patches, to multiple independent
+> subsystems. The amount of these patches clearly suggest this was
+> AI generated and most likely not tested.
+>
+> More importantly, you sent all this work without properly organizing
+> relevant patches into patchsets. This makes reviewing difficult
+> and might cause multiple reviewers to address the same issue.
+> Replying to the entire set is impossible and requires handling each
+> patch independently, instead of applying or discarding the set.
+> Maintainers also won't see the bigger picture of your work. Quite
+> worrying.
+>
+> This is on the verge of hostile patch: bomb us with so many
+> contributions, we won't be able to handle them in efficient manner,
+> like responding ONCE to ask you to slow down.  Considering all this
+> is untested and LLM generated, I have even more doubts whether this
+> should be considered for review.
+>
+> Please read kernel documentation BEFORE posting more work. It will
+> explain you how to identify subsystems, how to organize your work per
+> subsystem, how to document usage of LLM and how what you should not
+> do if this was posted in a good faith.
+>
+> Best regards,
+> Krzysztof
+>
+>
+>
 
-- [Medium] The regulator enable reference is taken in the DSA `.setup`
-  callback (mt7530_setup(), drivers/net/dsa/mt7530.c:2493-2509) but…
+I would like to clarify that these patches were manually reviewed and
+audited by us; they were not simply generated and submitted by an LLM.
+However, I understand why the recent submission pattern may have given
+that impression. We sent too many patches in a short period of time,
+and we also failed to respond to some discussions in a timely manner,
+which made the situation look worse.
 
-Pre-existing issues:
-- [Medium] On the ID_MT7530 path the patch keeps
-  regulator_disable(core_pwr)/regulator_disable(io_pwr) ahead of…
-- [Medium] In mt7530_setup() (drivers/net/dsa/mt7530.c:2494 and :2502)
-  the return values of `regulator_set_voltage(priv->core_pwr, 1000000,…
-- [Low] Binding/driver disagreement about which compatibles the `core-
-  supply`/`io-supply` properties apply to.
+Many of the recent patches, especially the v2 revisions, are
+corrections and improvements based on previous review feedback rather
+than completely new untested changes. That said, we recognize that the
+way we submitted them increased the burden on maintainers and
+reviewers.
 
---
+We apologize for the pressure this caused to the community. We will be
+more careful about organizing patches by subsystem, preparing proper
+patchsets, and following the kernel contribution guidelines before
+sending future work.
 
-net: dsa: mt7530: fix NULL dereference on unbind of MT7531 and MT7621
+Thank you again for pointing this out.
 
-The core and io supplies are only requested for ID_MT7530, but
-mt7530_remove() disabled them unconditionally, so unbinding an MT7531 or
-MT7621 called regulator_disable() on a NULL pointer.  The patch gates the
-two regulator_disable() calls on priv->id == ID_MT7530.
-
-> diff --git a/drivers/net/dsa/mt7530-mdio.c b/drivers/net/dsa/mt7530-mdio.c
-> index 784dd58a71589..de42f70afcfa1 100644
-> --- a/drivers/net/dsa/mt7530-mdio.c
-> +++ b/drivers/net/dsa/mt7530-mdio.c
-> @@ -227,15 +227,17 @@ mt7530_remove(struct mdio_device *mdiodev)
->  	if (!priv)
->  		return;
->  
-> -	ret = regulator_disable(priv->core_pwr);
-> -	if (ret < 0)
-> -		dev_err(priv->dev,
-> -			"Failed to disable core power: %d\n", ret);
-> -
-> -	ret = regulator_disable(priv->io_pwr);
-> -	if (ret < 0)
-> -		dev_err(priv->dev, "Failed to disable io pwr: %d\n",
-> -			ret);
-> +	if (priv->id == ID_MT7530) {
-
-[Severity: Low]
-This isn't a bug introduced by this patch, but the id test here is now the
-third place that encodes "these supplies belong to ID_MT7530", while the
-binding does not say that.
-
-In Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml both
-core-supply and io-supply are defined as generic top-level properties and
-are only listed under required: for the mediatek,mt7530 branch.  The
-mediatek,mt7531 branch disallows other properties explicitly:
-
-      properties:
-        gpio-controller: false
-        mediatek,mcm: false
-
-but leaves the two supplies permitted, and the mediatek,mt7621 branch only
-adds mediatek,mcm to required:.
-
-So a schema-valid DT with core-supply on compatible = "mediatek,mt7531" has
-that phandle silently ignored, since mt7530_probe() never calls
-devm_regulator_get() for any other id:
-
-	if (priv->id == ID_MT7530) {
-		priv->core_pwr = devm_regulator_get(&mdiodev->dev, "core");
-		...
-	}
-
-Should the binding set core-supply: false / io-supply: false on the
-mt7531 and mt7621 branches so the two sides agree?
-
-> +		ret = regulator_disable(priv->core_pwr);
-> +		if (ret < 0)
-> +			dev_err(priv->dev,
-> +				"Failed to disable core power: %d\n", ret);
-> +
-> +		ret = regulator_disable(priv->io_pwr);
-> +		if (ret < 0)
-> +			dev_err(priv->dev, "Failed to disable io pwr: %d\n",
-> +				ret);
-> +	}
-
-[Severity: Medium]
-Is priv->id the right condition for the disable side?  It records that the
-supplies were requested in mt7530_probe(), not that they were ever enabled.
-The enable happens in a different callback, mt7530_setup() in mt7530.c,
-reached through ds->ops->setup.
-
-Can this produce an unbalanced disable on an ID_MT7530 board?
-mt7530_probe() -> dsa_register_switch() -> dsa_tree_setup() can return
-success without ever running ds->ops->setup:
-
-net/dsa/dsa.c:dsa_tree_setup() {
-	...
-	complete = dsa_tree_setup_routing_table(dst);
-	if (!complete)
-		return 0;
-	...
-}
-
-A later unbind then takes this new ID_MT7530 branch with
-regulator->enable_count still zero:
-
-drivers/regulator/core.c:_regulator_disable() {
-	if (WARN(regulator->enable_count == 0,
-		 "unbalanced disables for %s\n", rdev_get_name(rdev)))
-		return -EIO;
-	...
-}
-
-which also means the dev_err() above prints -EIO.  A tree teardown and
-re-setup cycle, e.g. a peer switch in the same tree unbinding and binding
-again, runs mt7530_setup() and therefore regulator_enable() more than once
-against this single disable.
-
-Does the opposite direction leak the enable reference?  Every error return
-in mt7530_setup() after the core rail is up:
-
-	if (priv->id == ID_MT7530) {
-		regulator_set_voltage(priv->core_pwr, 1000000, 1000000);
-		ret = regulator_enable(priv->core_pwr);
-		...
-		regulator_set_voltage(priv->io_pwr, 3300000, 3300000);
-		ret = regulator_enable(priv->io_pwr);
-		if (ret < 0) {
-			dev_err(priv->dev, "Failed to enable io pwr: %d\n",
-				ret);
-			return ret;
-		}
-	}
-
-	/* Waiting for MT7530 got to stable */
-	INIT_MT7530_DUMMY_POLL(&p, priv, MT753X_TRAP);
-	ret = readx_poll_timeout(_mt7530_read, &p, val, val != 0,
-				 20, 1000000);
-	if (ret < 0) {
-		dev_err(priv->dev, "reset timeout\n");
-		return ret;
-
-propagates out through mt753x_setup() and dsa_register_switch() to
-mt7530_probe(), so .remove is never called.  The devm release path only
-puts the regulator:
-
-drivers/regulator/core.c:_regulator_put() {
-	...
-	/* Docs say you must disable before calling regulator_put() */
-	WARN_ON(regulator->enable_count);
-	...
-}
-
-so the 1.0 V core and 3.3 V I/O rails stay enabled for the lifetime of the
-system, with a WARN.  The MT7530_CREV id mismatch and the 20 MHz XTAL
-rejection reach the same point.
-
-Would pairing the enable with the existing symmetric hook,
-mt753x_teardown() in mt7530.c, or tracking an explicit "enabled" flag and
-unwinding the mt7530_setup() error paths, cover the NULL case this patch
-targets as well as these two?
-
->  
->  	mt7530_remove_common(priv);
->  
-
-[Severity: Medium]
-This is a pre-existing ordering issue rather than something this patch
-introduces, and the cover text says as much, but it may be worth recording
-here since the ID_MT7530 path keeps it.
-
-Everything mt7530_remove_common() still does runs against a die whose rails
-have just been switched off:
-
-drivers/net/dsa/mt7530.c:mt7530_remove_common() {
-	dsa_unregister_switch(priv->ds);
-
-	mutex_destroy(&priv->reg_mutex);
-}
-
-dsa_unregister_switch() reaches mt753x_teardown(), the per-port
-mt7530_port_disable() PCR read-modify-writes such as
-
-	mt7530_rmw(priv, MT7530_PCR_P(port), PCR_MATRIX_MASK, PCR_MATRIX_CLR);
-
-the mac_link_down() PMCR writes and the internal-PHY suspend writes that go
-through the switch's own MDIO bus.  Are those writes simply lost at that
-point, leaving the driver's bookkeeping describing a state the hardware
-never reached?
-
-Can the MIB poller also read an unpowered die?  mt753x_teardown() is the
-only place the self-rearming stats work is cancelled:
-
-drivers/net/dsa/mt7530.c:mt753x_teardown() {
-	struct mt7530_priv *priv = ds->priv;
-
-	if (priv->bus)
-		cancel_delayed_work_sync(&priv->stats_work);
-}
-
-and it runs from inside dsa_unregister_switch(), i.e. after the disables
-above.  mt7530_stats_poll() re-arms itself unconditionally:
-
-		mt7530_stats_refresh(priv);
-		schedule_delayed_work(&priv->stats_work,
-				      MT7530_STATS_POLL_INTERVAL);
-
-so it can be doing MDIO reads while mt7530_remove() drops the rails,
-folding all-ones reads into the cached per-port counters.
-
-[Severity: Medium]
-This is also pre-existing and untouched by the patch, but while in this
-area: mt7530_setup() in drivers/net/dsa/mt7530.c discards the return value
-of both regulator_set_voltage() calls:
-
-	if (priv->id == ID_MT7530) {
-		regulator_set_voltage(priv->core_pwr, 1000000, 1000000);
-		ret = regulator_enable(priv->core_pwr);
-		...
-		regulator_set_voltage(priv->io_pwr, 3300000, 3300000);
-		ret = regulator_enable(priv->io_pwr);
-
-If machine constraints do not permit the requested range, or
-REGULATOR_CHANGE_VOLTAGE is not allowed, or a second consumer holds a
-shared rail at another voltage, the rail is still enabled and the driver
-goes on to reset the die, poll MT753X_TRAP and read MT7530_CREV as if the
-1.0 V core / 3.3 V I/O operating points had been applied.  Should these two
-calls be checked so the failure surfaces as an error instead of as
-intermittent register access failures?
-
--- 
-Sashiko AI review · https://netdev-ai.bots.linux.dev/sashiko/#/patchset/20260918015020.2518315-1-f%40lex.la
+Best regards,
+Guangshuo
 
