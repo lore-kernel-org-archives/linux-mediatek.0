@@ -4,65 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CA13AC98307
-	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Sep 2026 11:40:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 948CDC98302
+	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Sep 2026 11:40:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=uZc72lVezmkXz2G7Jp1DA5jGItZ0xUg8PC4HKJRbhcs=; b=OSGmVZORwMauDwCBfCuRjcagi+
-	iHdfvtGm5zukT70hAFMR3HERlqBwKNc9NcIoP95w2N5jH7cB41QU85yAI4N/awWae4ZzD343wvPKN
-	oQ+vdVTxPE+8f2j2WVG9Ro0Lbkk++oPnErpHUvU1TBDPyLe7MJBe2dZx4w2WwwUWw395kLj2zbJFQ
-	1lxj1r1377X9hyxavClyioN9IuWMqD/FW2F1A9BmC71GkegtIoCpuv2gKK3CgxnW7LufBCkL1/VKS
-	mJp4IGcCDOkhDTC1jK9oCFng4JFnhyj1MaJywi/7J1rna2uVOQgbLBz8SZsqYO0napBNV5gmoZJAF
-	Mxz2iT6g==;
+	Content-Type:In-Reply-To:From:References:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From
+	:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=mOIgHatIHLrv2JYlRas1UVhwebFVBfI/35oMsXcgnkE=; b=qsVyZVucZcfOXhQqvon6CdQir8
+	wHYZcTsapbcyjfdkq7cTiEJKNyjRJ5fCdyEPmoWgGNiuVQX5wiiPDT9KDA/cgwCP/4lE+NkQY3yjS
+	KBOvXC2H9zn1h9Ja1GburADoqrHyPDMYqC5XligrD7Nhvpg2ptOKeQtaMJ5XzB98p867zIac9osMd
+	PkbwIFuGc/YKdH3PEIbNHENRBIVhGiTtsr4y9i5lYF2n+H6a4tHdJwxTWWaVxF8bU99MXneVhc1yk
+	KuhZQDGA6+mVBS5bA8aSjIHJrALi9ct8LPVkPDK89CYCVhRHX494l6orYmLtch/q0EhqB+h4oMA0T
+	cXMe9Nkg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x8yr2-00000005CFw-28kk;
-	Tue, 22 Sep 2026 11:40:08 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1x8yr1-00000005CCL-0rdq;
+	Tue, 22 Sep 2026 11:40:07 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x8yqz-00000005C9w-1fJx;
-	Tue, 22 Sep 2026 11:40:05 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
-	:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:Message-ID:
-	Sender:Reply-To:Content-ID:Content-Description;
-	bh=uZc72lVezmkXz2G7Jp1DA5jGItZ0xUg8PC4HKJRbhcs=; b=TvXRetfajQG6D9tH1XSuckdTAl
-	4z+QXtUT6CN2rUA7zO4TmktV9vAfKGsH3/Zkbqu41oFu1s36Y5JRUtrl91yS8exozDAsf5BnBfEtt
-	dgCqaIGOmPb5CtXGOll1AHqohDjawddhG3H+ScTb5eeJIICTAmU8JqkrEyDY5klXFK1fH8xPeDALa
-	k+TqW9/YY64j+s5l5EQrXp67WrZ+i/CHER9eBWMDcWbe78Z5K7LBkjEnveh0IgKdvuZ7rf3dcAKt6
-	XL0O/ZPFlMH0n6xdFJ+vnMgh24kOZatl4Q1vOaqCrcI4KCe8F6fn37pTi/joWD9HqrCFl7d2RoDiW
-	UrVsUDBw==;
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
-	by desiato.infradead.org with esmtps (Exim 4.99.2 #2 (Red Hat Linux))
-	id 1x8yqu-0000000DV7H-47Mq;
-	Tue, 22 Sep 2026 11:40:04 +0000
+	id 1x8yqv-00000005C5x-1Tfa;
+	Tue, 22 Sep 2026 11:40:02 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1790077196;
-	bh=BlNsu5y9N74CLlypKsAoY7D/nmyC2bMJlD/FQtgwghU=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=b7KFLW7yKcvOZMkUaajcF85BtYI+3FnxF0T28XELjdze9ubwlApkbmJ4X4Zifly0C
-	 JXHizn672BzzV8pnNR/24FOSDbUoNsf+71cFtdEDBDvnX61qa2FknG5G1+UZfyCeE1
-	 g//hzZHf+oN1pAXf2/hQ+Oa/Kc/3RclddNiyT0qvVheB4rfxxpKhbAU1iYG9Ou3oq0
-	 nw3voyE0/4hdjbrmXH83Wl/sMQImVsl6jVl7cWpsKgrjfy/rUI4CtGUB7A1XWvuuL3
-	 4lZvoc9GKc7+B3g9pl7w5AyXCKd0YbdgUfCxeMPv+ThYbM95pVqFCCTHtftJsSm587
-	 T/L9Wrzct1t8g==
+	s=mail; t=1790077199;
+	bh=wXBz31YYAqZAgxYBge5P36ysNsF9WzmlFm5K4PaRbgE=;
+	h=Date:Subject:To:References:From:In-Reply-To:From;
+	b=oE1ydEiXT0YFVSwwKAwRK1QjdOU8PyAEzxmKSShu5U0YKqp1bvu1S5Vbm69pIoR5k
+	 SvId+xQbBPwc5wb5EhWDvjmP0RneGeoIbNs3X+n8S5yVjF1avpa0wXFk/yWeaZTkjx
+	 fGMLlUz1vSjcaL6jN1Z8cNv6Lbtp4TY2ZHkUjClNTtdeigTh0/hPWFuBWljNce1z4L
+	 8ZLVj1nG31VxEjFnlmxzn6rSGzq9x1S3xQGeSyZ0bd+KQHMr+3y0dMf9IofL3HtR0u
+	 aegtKGbtJ+EcxdHw0+/fxlr96ICWP7wlPpocoRWBroUExx6fJCOSSYzQUIoPZLbbbE
+	 u2tfVvONXUlbA==
 Received: from [100.64.1.21] (unknown [100.64.1.21])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id C505C17E0D7F;
-	Tue, 22 Sep 2026 13:39:55 +0200 (CEST)
-Message-ID: <b1730fda-67e2-4f07-bcb1-8ac18c49479a@collabora.com>
-Date: Tue, 22 Sep 2026 13:39:55 +0200
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id DB4B817E0E01;
+	Tue, 22 Sep 2026 13:39:58 +0200 (CEST)
+Message-ID: <3d056e8f-2d03-4356-b205-f7c1fd47d713@collabora.com>
+Date: Tue, 22 Sep 2026 13:39:58 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v17 09/12] media: dt-bindings: mediatek,jpeg: Add
- mediatek, mt8196-jpgdec compatible
+Subject: Re: [PATCH v17 08/12] media: mediatek: jpeg: fix remove buffer
+ removal timing for multi-core
 To: Kyrie Wu <kyrie.wu@mediatek.com>,
  Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring <robh@kernel.org>,
  Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
@@ -74,17 +60,16 @@ To: Kyrie Wu <kyrie.wu@mediatek.com>,
  linux-media@vger.kernel.org, devicetree@vger.kernel.org,
  linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-mediatek@lists.infradead.org
-Cc: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
 References: <20260922091530.241762-1-kyrie.wu@mediatek.com>
- <20260922091530.241762-10-kyrie.wu@mediatek.com>
+ <20260922091530.241762-9-kyrie.wu@mediatek.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Content-Language: en-US
-In-Reply-To: <20260922091530.241762-10-kyrie.wu@mediatek.com>
+In-Reply-To: <20260922091530.241762-9-kyrie.wu@mediatek.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260922_124001_206055_747046A2 
-X-CRM114-Status: UNSURE (   7.58  )
+X-CRM114-CacheID: sfid-20260922_044001_613559_B0CC7B2A 
+X-CRM114-Status: UNSURE (   6.97  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -101,13 +86,14 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 On 9/22/26 11:15, Kyrie Wu wrote:
-> Compared to the previous generation IC, the MT8196 uses SMMU
-> instead of IOMMU and supports features such as dynamic voltage
-> and frequency scaling. Therefore, add "mediatek,mt8196-jpgdec"
-> compatible to the binding document.
+> Move calls to v4l2_m2m_src/dst_buf_remove() inside of the spinlock
+> protected scope to ensure all necessary operations are performed
+> before buffers are removed from their queues and ensure proper
+> synchronization of buffer handling to avoid buffer lost.
 > 
+> Fixes: 86379bd9d399 ("media: mtk-jpeg: Fixes jpeg enc&dec worker sw flow")
 > Signed-off-by: Kyrie Wu <kyrie.wu@mediatek.com>
-> Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
+> Reviewed-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
 
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
