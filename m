@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E96F8C98302
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E8008C982FA
 	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Sep 2026 11:45:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
@@ -12,61 +12,58 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=BsUkWyyppwcLejz9XQL9IVGiWG7r5wC3thh4t8PWiZ8=; b=y28YSyDg20m3ISWhqqpltRNwYb
-	rzOzIHV0wIfRbWnsEiVGFHTgcRUht0XQzenwZl9AG51l3j6+Ph4p9dv/04KrgePfiB2vTpqp1fNUC
-	litGaeXhpR7m9KYMTBueZ78mFDMjrYeFJm3Z0rXbHGp2+ABpew/Jz2fpZl64zZ3tpn45qMVXfZvfI
-	7LTcuTq/TL+kik8zjZh+J8z7l2e1raZHCMsrKtdz3rfQCZVKvePLcj3Mq3ojdOWriMHUet/PspYF0
-	P4FpVoc6/94+eDLMv8YC90/w6UIRgpICTe3GWqLgO/aXDJFCm1QqqN8VVRp45hyKZderYX5eicsf2
-	HmOkDKHw==;
+	bh=O/C/yfoc8MNJECP8bjDv7AtAK6K/8GDl3xqk/IfXYdk=; b=b0OHxqXNExBRwsnAsWYxq0kv2U
+	GhJWOVNIrzt/qMNDMNiwp5l7Rao2KctSnRrgolfyZUYafZ8k7PQ4UjJ3OLUUXo8WIroiCcXT688Ex
+	mqrET8h1T/r5ghmHK6YMIB6n33L1v24/MuwHmKXqRHJ8tlWiE5VGmV+XD6cOsRlnjUm0ljhljZ+xm
+	KV2E35mWqSxEhDeqtVUCCNpKc6Bs5RReYFX0nNR1cvmzp26vztN20rEihf4GYDLljU4f3xdQZR65r
+	8d/5thj48o25kYf0O82I4EhP1ckCA2rKjP6Mzn0EwbWtuzPYUKX0glv8bR9nb88lWn5aerewl1ntR
+	jSZQd8Cw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x8yvp-00000005DuE-2lqu;
+	id 1x8yvp-00000005Duc-3bPF;
 	Tue, 22 Sep 2026 11:45:05 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x8yvg-00000005Dnb-2ajc;
-	Tue, 22 Sep 2026 11:44:57 +0000
+	id 1x8yvl-00000005Dq2-3x0G;
+	Tue, 22 Sep 2026 11:45:03 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1790077494;
-	bh=O7w5n026IGBCjhsjdIg4jrMN2Kmgt8m27mA8hACD7Zk=;
+	s=mail; t=1790077500;
+	bh=jKFRXUzZ/gZUTvNeWyPS2Cro/WCl4lSg1W4J+SAdU+c=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=pVoXrkX56NRRSFTs8mEurIzM1btQPZ7cNHzt9klVHEg5O66otXn3IjvRflk8/NA1h
-	 4RZ4o8+gzSd3qYXGbM2fACEjF5MtsxM3Vt6JxrdOl2IJNas6FBFhQMb7WGE7HSgWMu
-	 Vu4e7WYxn0uGOL/IHDce+2dYGSeN6AHcz6di7TgOa+WlcYlnUeZDxJhlGjQZ6pwo3/
-	 CXXuD5kybZhJf1+MSD83QXnoknHpsqPs6nJSeynQhqjm5DIE+TTXB/QkM5g1zz1Cmx
-	 9MdXlhPMhlKSpzxcoRdlwCFjkYuGB0zXHJvfj0KqpToVWdNqieJv3tbVerjf75q3Bn
-	 jZxR5N3A6HIEA==
+	b=VsjR1yAmeWj6hHQcapdsAtBNEZdkX47MMhiLc69fpXQ8lM7Gqu6uJx1GOaUSBjc6l
+	 SoxYgm7UYA4OF5+/O3/Iwsk0RbZZZkOjOfb1zltAX1ZMyvAXlsW4gT25y0LJBqPYqz
+	 mjZ+gKNnCZVIlEg4pKAtLEPCt5BgCrr3CF7Thrbtf1O8blWg3twzyXZfAmDnWpJiG7
+	 Dr4rHCgso0zdP1ew/cm1OZIdKs2cleRJWJcfXPlyl4UETEd70JJPL8wICW5JviODv3
+	 UN5t2LvKf61kUXDfcf8fkXl8lhp0b8Wk5svSGfdgB9Oc7ETcJHC9TDQ5kxuD1lja2B
+	 KcnsLoAx0JzbQ==
 Received: from [100.64.1.21] (unknown [100.64.1.21])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 29C7E17E0515;
-	Tue, 22 Sep 2026 13:44:54 +0200 (CEST)
-Message-ID: <cf0d3c85-d337-4d77-bfe2-4ba623bdf31b@collabora.com>
-Date: Tue, 22 Sep 2026 13:44:54 +0200
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 84BFB17E03B6;
+	Tue, 22 Sep 2026 13:44:59 +0200 (CEST)
+Message-ID: <68960e8d-36fb-4a35-a469-c18e3ade8fe3@collabora.com>
+Date: Tue, 22 Sep 2026 13:44:59 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] dt-bindings: clock: mediatek: Add MT8516 fallbacks
-To: "Rob Herring (Arm)" <robh@kernel.org>, Stephen Boyd <sboyd@kernel.org>,
- Brian Masney <bmasney+clk@redhat.com>,
- Jerome Brunet <jbrunet+clk@baylibre.com>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- Michael Turquette <mturquette@baylibre.com>,
- Yassine Oudjana <y.oudjana@protonmail.com>
-Cc: Krzysztof Kozlowski <krzk@kernel.org>, linux-clk@vger.kernel.org,
- linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
-References: <20260921232807.3137010-1-robh@kernel.org>
+Subject: Re: [PATCH] dt-bindings: mfd: Add MT6397 sound DAI cells
+To: "Rob Herring (Arm)" <robh@kernel.org>, Sen Chu <sen.chu@mediatek.com>,
+ Sean Wang <sean.wang@mediatek.com>, Macpaul Lin <macpaul.lin@mediatek.com>,
+ Lee Jones <lee@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
+Cc: linux-pm@vger.kernel.org, mfd@lists.linux.dev,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+References: <20260921232649.3132592-1-robh@kernel.org>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Content-Language: en-US
-In-Reply-To: <20260921232807.3137010-1-robh@kernel.org>
+In-Reply-To: <20260921232649.3132592-1-robh@kernel.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260922_044456_813816_5026EA34 
-X-CRM114-Status: UNSURE (   7.00  )
+X-CRM114-CacheID: sfid-20260922_044502_153585_B097D2C6 
+X-CRM114-Status: UNSURE (   5.65  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -82,13 +79,9 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 9/22/26 01:28, Rob Herring (Arm) wrote:
-> MT8516 topckgen and apmixedsys nodes use the common syscon fallback
-> form. Add the MT8516 compatibles to the branches that allow the
-> syscon fallback.
+On 9/22/26 01:26, Rob Herring (Arm) wrote:
+> Document the one sound DAI cell provided by MT6397 PMIC nodes.
 > 
-> Fixes: cd9fdd06b0e8 ("dt-bindings: arm: mediatek: topckgen: Convert to DT schema")
-> Fixes: 16a146735df3 ("dt-bindings: arm: mediatek: apmixedsys: Convert to DT schema")
 > Assisted-by: LLM
 > Signed-off-by: Rob Herring (Arm) <robh@kernel.org>
 
