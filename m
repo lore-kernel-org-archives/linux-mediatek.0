@@ -4,107 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F3324C98302
-	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Sep 2026 13:47:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 86D75C98302
+	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Sep 2026 17:03:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=rf3NcYvAmItVxbqtkxxzSpUPurh9H42FsWoY744N9zk=; b=dSthzAcwZI+huBhaYzt47A09UT
-	gjq/TQyunmy9T5UlGrKTsTJaI41Ael7f7lvQQiYHied4dtuWoirjeBISUocW0SuqyzWCl6eTtvhl0
-	p0KTtWf9407dyIMMT7ayvDGTykKzJLfSaZqSibGNktXNqiIMgdicaBswzIBMlzp7LgZY3J/efRIgs
-	8Cyr+85SETGhXNkYfPtVDT8vZ0FFxReTWk/amXH9O88ZsG1OvbQ2U1r1O28C7/0p+3QBcpF0wy4Nz
-	4p75/I44Oa9b6yFnXM29z+SQ+AYxtxC3noppFPGzjdqr0AweSlDol4LxgmbNsScgZaxW4E2ppl+AU
-	pbN95btg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Message-ID:Date
+	:Cc:To:From:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=DTgI03Mb2guSbNjbgohk2ODS86HEBC4CplwUVNmAa0I=; b=B+j6HYnJ48zBOaCbI3NNpDo4Jb
+	LpCilrPr9RblDVvAOwFDiKtRpSiOVGYXKNflJJhTEzHfrPpeE8XmnVuB9UXXm3AVJzeMbDlHxA0Ie
+	UZkyrY+HLymxaW6E+sJfFcO/sYPypIvUybegitwUzuwrUJmyaYyHzmQhYkx5PrWQ7jj1ED3fHlt74
+	YoMDYY/Vo+lMvJ+CsOd1cEswaMl59DHYcY86pvFMNLn6ydSbY4Blwh7ZdUIXKynHa7hTlq5JV10fZ
+	2azyKpnkStabAqitz1Z+W+GYnKRzBG3G2+AVAH/H3nnLGjsd557gPhqYrtk0Bfk9L54T5BidgwUe2
+	jE8S9GFw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x90pv-00000005agT-2JRH;
-	Tue, 22 Sep 2026 13:47:07 +0000
-Received: from mail-pz2-x0f.google.com ([2607:f8b0:4864:3b::f])
+	id 1x93tk-000000068gw-2H3c;
+	Tue, 22 Sep 2026 17:03:16 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x90pt-00000005afT-0HFN
-	for linux-mediatek@lists.infradead.org;
-	Tue, 22 Sep 2026 13:47:06 +0000
-Received: by mail-pz2-x0f.google.com with SMTP id 41be03b00d2f7-cc433d52421so2482417a12.3
-        for <linux-mediatek@lists.infradead.org>; Tue, 22 Sep 2026 06:47:04 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1790084824; x=1790689624; darn=lists.infradead.org;
-        h=content-transfer-encoding:lines:status:content-disposition
-         :content-type:mime-version:references:in-reply-to:message-id:date
-         :subject:cc:to:from:from:to:cc:subject:date:message-id:reply-to
-         :content-type;
-        bh=rf3NcYvAmItVxbqtkxxzSpUPurh9H42FsWoY744N9zk=;
-        b=i/5wrm6Fp5iCtU1TxIub0W1UYls+TOUusLI0axGG5Fa1/bUIEfOn3GAZRRfMCTExqB
-         Z0FlptCWcmob0YpAaKMfgpyyfVC50kqrB3IAgcprcXQAB2CU7SXeMJMNKuDbWae/2tNf
-         Sf76tP61OTrrkgXoBh56RE6kWj+PCcrQ6MM4jWQ880oQpTiWNuEEazd++k0qIPseoKim
-         PJLtSFCojRyllsrHhRx63OEndh9J/GCNK/dRJh6NWfDU/hInSWDCRYnaZeeXM8Lt5aP5
-         8aAAx3ThCkqiz7mozpA9XYSWjqCho4K0eRt5uSmbTykmWoBLLIEW4Jx6qYlsK3jWSjPw
-         6OuQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1790084824; x=1790689624;
-        h=content-transfer-encoding:lines:status:content-disposition
-         :content-type:mime-version:references:in-reply-to:message-id:date
-         :subject:cc:to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject
-         :date:message-id:reply-to:content-type;
-        bh=rf3NcYvAmItVxbqtkxxzSpUPurh9H42FsWoY744N9zk=;
-        b=UGgc2FcPr9aNuY6cTTu0CMZkTpUbcqVdfYoPtt4rpPZkqjI0d9DWnS22XI+Rl01vDY
-         MQh6av/PZcRt4UdylYjEP8/eoNjjwSUdtEOdjVqCMVyQE5ECcbV2ZS1mregI2zRMkrGS
-         O67zvR6yqzrHMVkhIMuSdP5DkWFUkTj58Y9lx228Drss9C41VElxmrNuPCCrbTx88k2M
-         +XYfWBnOYH+D+6KWqkhs2+ZaCTfHCm7sBZHGujOHpecS7a07gFuCtSGOnJYhJK0bhF/d
-         lz6lD9CrpehhrqAzOXhMkcYJ9O+1l7ktxpDrWKAiOTBl3sfI3qdmi/XiqZR8vt+4GJmp
-         YH1Q==
-X-Forwarded-Encrypted: i=1; AKwUvBzLbvMoZS3WewYonAEu4b2WgJqqanFb9oXwhAA6ixmp1lFH6yILxwUoG67JDCbaBxlAWmP2V6GbkJ9ydKYGpg==@lists.infradead.org
-X-Gm-Message-State: AFuF++kbYoid8kVaim/dvNpGdyLC35le3ESJ1rIGBhYoganhiASX2/yZ
-	mwGtaq+GQO8A60bt9EzbQEFGmbXI0WHwiLOJOUkpC7ORIGUHHdPELE6B
-X-Gm-Gg: AYBFou2OSVDztlskJ2ln/7X6L2BgjKUUy+R9ZwBFc25GhXTRSeJeaAIsfEgHkvE/bVt
-	ZYttWJlRZT9q4YEJ4k5rNl12+zzKERQlHmGRGEHvi5HB7b1J44ng6uoLkL47h9hU0NC1pOafZYC
-	1bVImU0aFKuShsmVJ4kKFWlGV9mL2gIGROqoP8LQQ4lPcLJDX2FCvh7AHlFOtGF7htr5Jse/qDH
-	cyYaUoqBXEIuVgtcc/wGYUVUoZKPIoIqlnV0vItB1KetlY+f+MSud/c2MStQ+fdTgZ9FCWLHREI
-	FAfZbI4UVvGVRHXBJV4geFZsHTLmpUyPZyCjcjXoQMu2vfDRpy49VLfuipAhMIgb+TOsEkKo/M0
-	uX3HS0Xo1kT1UgvK47fs9R+B64qZhSut1wsTXfUiiYvsGvODzoiJ1qIxI4Hz+L1Ww84CCLnyJm/
-	9+l1NtTebAWTzMsDop4JDptu0TNzjuyw6deAH77ix0uK1xkLXtOojwY8RBK5p2pNlGoRDHT2KKs
-	WkuEuT7x7HcmCJsgL2BDwpi/MyWh6SMJfS3L3o=
-X-Received: by 2002:a17:90b:35cb:b0:39e:6c69:f479 with SMTP id 98e67ed59e1d1-3a073262d85mr1337283a91.56.1790084823601;
-        Tue, 22 Sep 2026 06:47:03 -0700 (PDT)
-Received: from DESKTOP-VNSSJ2S.lan (59-127-145-64.hinet-ip.hinet.net. [59.127.145.64])
-        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-3a06caf4a73sm1381225a91.2.2026.09.22.06.46.59
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 22 Sep 2026 06:47:03 -0700 (PDT)
-From: Zhi-Jun You <hujy652@gmail.com>
-To: netdev-bot+sashiko@kernel.org
-Cc: Rex.Lu@mediatek.com,
-	andrew+netdev@lunn.ch,
-	angelogioacchino.delregno@collabora.com,
-	davem@davemloft.net,
-	edumazet@google.com,
-	hujy652@gmail.com,
-	kuba@kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	linux-mediatek@lists.infradead.org,
-	lorenzo@kernel.org,
-	matthias.bgg@gmail.com,
-	nbd@nbd.name,
-	netdev@vger.kernel.org,
-	pabeni@redhat.com,
-	sujuan.chen@mediatek.com
-Subject: Re: [PATCH net v4 3/3] net: ethernet: mtk_wed: setup WDMA_RING_TX(0) for non-DBDC MT7986
-Date: Tue, 22 Sep 2026 21:46:04 +0800
-Message-ID: <20260922134604.617-1-hujy652@gmail.com>
-X-Mailer: git-send-email 2.47.3
-In-Reply-To: <179000700034.2160803.10594281691384015089@kernel.org>
-References: <20260917144335.19466-3-hujy652@gmail.com> <179000700034.2160803.10594281691384015089@kernel.org>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: attachment; filename=v4reply
-X-Mutt-References: <179000700034.2160803.10594281691384015089@kernel.org>
-X-Mutt-Fcc: ~/sent
+	id 1x93ti-000000068fl-1hce;
+	Tue, 22 Sep 2026 17:03:14 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by sea.source.kernel.org (Postfix) with ESMTP id 2389142E81;
+	Tue, 22 Sep 2026 17:03:14 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 4995F1F000FF;
+	Tue, 22 Sep 2026 17:03:13 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1790096594;
+	bh=DTgI03Mb2guSbNjbgohk2ODS86HEBC4CplwUVNmAa0I=;
+	h=Subject:From:To:Cc:Date:In-Reply-To:References;
+	b=dxf06q/cfVdRc+b9A3STWRA0UWGDXlKXGJvWITgIYlNSzK3Cujfv2zQh7kDpaa6bX
+	 /9LasdNdUBAjHzz2yRUdmGjaeueKsI80375q2iIEJaa7r3XT6GSB2KtKqBHD4AkRkT
+	 pKIQhXRJr0zBqcPYFpD/TOpGuIdsB0Rddz01va4QQ73GpWAPrBJ+WGedlLqjinn5WH
+	 E/auFJGb3Qf9HbyAa/84wZWJa4DOdyO5Og/K6SWUU0py0yhYpbfA+RZFY9ix5ff0X7
+	 EftFWNgSzEdOG9rbRpd4KjNOOUT5rVRMazCOXpqwYnxMDwmL8sSnYBGJx39seh2IQr
+	 5KsMgWWG+HlhA==
+Subject: Re: [net PATCH] net: ethernet: mediatek: only enable WED for ARM64
+ architecture
+From: netdev-bot+sashiko@kernel.org
+To: yangshiji66@outlook.com
+Cc: netdev@vger.kernel.org, nbd@nbd.name, lorenzo@kernel.org,
+ andrew+netdev@lunn.ch, davem@davemloft.net, edumazet@google.com,
+ kuba@kernel.org, pabeni@redhat.com, matthias.bgg@gmail.com,
+ angelogioacchino.delregno@collabora.com, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ stable@vger.kernel.org
+Date: Tue, 22 Sep 2026 17:03:12 +0000
+Message-ID: <179009659284.2160803.2402786454793152027@kernel.org>
+In-Reply-To: =?utf-8?q?=3COSZPR01MB8140B889AD227E0B547F5F87BC872=40OSZPR01MB?=
+ =?utf-8?q?8140=2Ejpnprd01=2Eprod=2Eoutlook=2Ecom=3E?=
+References: =?utf-8?q?=3COSZPR01MB8140B889AD227E0B547F5F87BC872=40OSZPR01MB8?=
+ =?utf-8?q?140=2Ejpnprd01=2Eprod=2Eoutlook=2Ecom=3E?=
+X-sashiko-severity: Medium
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260922_064705_120632_597C889E 
-X-CRM114-Status: GOOD (  39.16  )
+MIME-Version: 1.0
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -119,139 +75,89 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Sep 21, 2026 at 04:10:00PM +0000, netdev-bot+sashiko@kernel.org wrote:
-> Thank you for your contribution! Sashiko AI review found 1 potential
-> issue(s) to consider.
-> 
-> Critical: 0 · High: 0 · Medium: 1 (1) · Low: 0
-> 
-> If you believe none of the issues are legitimate, please reply to each
-> issue of Medium severity or higher and explain why the AI is wrong.
-> If any of them are legitimate and you plan to respin, please let patchwork
-> know by including "pw-bot: cr" as a separate line at the end of your reply
-> (one such reply per series is enough).
-> 
-> - [Medium] In mtk_wed_start()
->   (drivers/net/ethernet/mediatek/mtk_wed.c:2346-2347) the newly added…
-> 
-> Pre-existing issues:
-> - [Medium] This problem wasn't introduced by this patch, but the patch
->   widens it: dev->tx_wdma[] descriptor rings are allocated with…
-> 
-> --
-> 
-> net: ethernet: mtk_wed: setup WDMA_RING_TX(0) for non-DBDC MT7986
-> 
-> On a non-DBDC MT7986 only rx_ring[1]/tx_wdma[1] get set up, so
-> WDMA_RING_TX(0) is never programmed even though WED needs it for RX
-> offload.  The patch adds a call to mtk_wed_wdma_tx_ring_setup() for ring 0
-> from mtk_wed_start() when the device is WED v2 and rx_ring[0] was not
-> allocated, passing reset=true when tx_wdma[0] already exists.
-> 
-> > diff --git a/drivers/net/ethernet/mediatek/mtk_wed.c b/drivers/net/ethernet/mediatek/mtk_wed.c
-> > index 3f0be70c3f145..3800e602d3c48 100644
-> > --- a/drivers/net/ethernet/mediatek/mtk_wed.c
-> > +++ b/drivers/net/ethernet/mediatek/mtk_wed.c
-> > @@ -2339,6 +2339,13 @@ mtk_wed_start(struct mtk_wed_device *dev, u32 irq_mask)
-> >  		if (!dev->rx_wdma[i].desc)
-> >  			mtk_wed_wdma_rx_ring_setup(dev, i, 16, false);
-> >  
-> > +	/*
-> > +	 * non-DBDC MT7986 allocates only rx_ring[1] and tx_wdma[1] during setup
-> > +	 * but tx_wdma[0] is also needed for WED to function.
-> > +	 */
-> > +	if (mtk_wed_is_v2(dev->hw) && !dev->rx_ring[0].desc)
-> > +		mtk_wed_wdma_tx_ring_setup(dev, 0, MTK_WED_WDMA_RING_SIZE, !!dev->tx_wdma[0].desc);
-> 
-> [Severity: Medium]
-> Should the return value of mtk_wed_wdma_tx_ring_setup() be checked here?
-> 
-> On the first start of a non-DBDC v2 device dev->tx_wdma[0].desc is NULL, so
-> reset is false and the helper takes the allocation path:
-> 
-> drivers/net/ethernet/mediatek/mtk_wed.c:mtk_wed_wdma_tx_ring_setup() {
-> 	wdma = &dev->tx_wdma[idx];
-> 	if (!reset && mtk_wed_ring_alloc(dev, wdma, MTK_WED_WDMA_RING_SIZE,
-> 					 dev->hw->soc->wdma_desc_size, true))
-> 		return -ENOMEM;
-> 	...
-> }
-> 
-> mtk_wed_ring_alloc() does a dma_alloc_coherent() of
-> MTK_WED_WDMA_RING_SIZE * wdma_desc_size (32 KiB on MT7986), and on failure
-> the helper returns before writing MTK_WDMA_RING_TX(0) BASE/COUNT/CPU_IDX/
-> DMA_IDX and before the "if (!idx)" block that programs the WED side
-> MTK_WED_WDMA_RING_TX window.
-> 
-> Since the status is dropped, mtk_wed_start() keeps going through
-> mtk_wed_hw_init(), mtk_wed_configure_irq() and mtk_wed_dma_enable(), which
-> arms MTK_WDMA_GLO_CFG_TX_DMA_EN and, for rx-capable v2,
-> MTK_WED_WDMA_GLO_CFG_TX_DRV_EN | MTK_WED_WDMA_GLO_CFG_TX_DDONE_CHK, and
-> then sets dev->running = true.  Can the hardware then fetch descriptors
-> from a ring whose base register was left at 0 by the preceding
-> mtk_wdma_tx_reset()/mtk_wed_reset(), leaving the WED offload silently
-> non-functional with no message?
-> 
-> The other caller of the same helper propagates the failure:
-> 
-> drivers/net/ethernet/mediatek/mtk_wed.c:mtk_wed_rx_ring_setup() {
-> 	if (mtk_wed_wdma_tx_ring_setup(dev, idx, MTK_WED_WDMA_RING_SIZE,
-> 				       reset))
-> 		return -ENOMEM;
-> 	...
-> }
-> 
-> and mtk_wed_start() itself already bails out on mtk_wed_rx_buffer_alloc()
-> and mtk_wed_rro_cfg() failures.  Since mtk_wed_ops.start is void and
-> mt7915_dma_start() cannot observe the error, would it make sense to abort
-> the start sequence locally here (skipping mtk_wed_dma_enable() and
-> dev->running = true) and log the failure?
+Thank you for your contribution! Sashiko AI review found 1 potential
+issue(s) to consider.
 
-ACK I will add error messages and return when there's an error.
+Critical: 0 · High: 0 · Medium: 1 · Low: 0
 
-> 
-> [Severity: Medium]
-> This isn't a problem introduced by this patch, but does this new call add
-> another leak of dev->tx_wdma[0]?
-> 
-> dev->tx_wdma[] rings are allocated by mtk_wed_ring_alloc() via
-> mtk_wed_wdma_tx_ring_setup(), but the ring-release helpers never free that
-> array:
-> 
-> drivers/net/ethernet/mediatek/mtk_wed.c:mtk_wed_free_tx_rings() {
-> 	for (i = 0; i < ARRAY_SIZE(dev->tx_ring); i++)
-> 		mtk_wed_free_ring(dev, &dev->tx_ring[i]);
-> 	for (i = 0; i < ARRAY_SIZE(dev->rx_wdma); i++)
-> 		mtk_wed_free_ring(dev, &dev->rx_wdma[i]);
-> }
-> 
-> drivers/net/ethernet/mediatek/mtk_wed.c:mtk_wed_free_rx_rings() {
-> 	mtk_wed_free_rx_buffer(dev);
-> 	mtk_wed_free_ring(dev, &dev->rro.ring);
-> }
-> 
-> __mtk_wed_detach() calls those helpers and then does
-> memset(dev, 0, sizeof(*dev)), so tx_wdma[].desc/desc_phys are discarded and
-> the 32 KiB coherent allocation can no longer be released.
-> 
-> The existing allocation site is mtk_wed_rx_ring_setup(), so the omission
-> predates this change, but non-DBDC MT7986/MT7981 previously never allocated
-> tx_wdma[0] at all, and now every attach/start/detach cycle would leak one
-> more ring.  Would adding dev->tx_wdma[] to mtk_wed_free_tx_rings() be the
-> right way to restore alloc/free symmetry?
-> 
+If you believe none of the issues are legitimate, please reply to each
+issue of Medium severity or higher and explain why the AI is wrong.
+If any of them are legitimate and you plan to respin, please let patchwork
+know by including "pw-bot: cr" as a separate line at the end of your reply
+(one such reply per series is enough).
 
-There is a patch in MediaTek SDK fixing this exact issue.
-I will pull the patch from there.
+- [Medium] Inappropriate `Fixes:` tag: the commit claims to fix
+  804775dfc288 ("net: ethernet: mtk_eth_soc: add support for Wireless…
 
-Link:https://github.com/mediatek/mtk-openwrt-feeds/blob/main/25.12/files/target/linux/mediatek/patches-6.12/999-wed-04-Fix-reinsert-wifi-module-cause-memory-leak-issue.patch
+--
 
-Best regards,
-Zhi-Jun
+net: ethernet: mediatek: only enable WED for ARM64 architecture
 
-pw-bot: cr
-> -- 
-> Sashiko AI review · https://netdev-ai.bots.linux.dev/sashiko/#/patchset/20260917144335.19466-1-hujy652%40gmail.com
-> 
+This narrows the dependency of the hidden def_bool symbol
+NET_MEDIATEK_SOC_WED so it is only enabled on ARM64 ARCH_MEDIATEK
+builds, on the grounds that only MT7622 and MT798x implement WED.
 
+> diff --git a/drivers/net/ethernet/mediatek/Kconfig b/drivers/net/ethernet/mediatek/Kconfig
+> index 2ba361f8ce7d..7737f2f15478 100644
+> --- a/drivers/net/ethernet/mediatek/Kconfig
+> +++ b/drivers/net/ethernet/mediatek/Kconfig
+
+>     Fixes: 804775dfc288 ("net: ethernet: mtk_eth_soc: add support for Wireless Ethernet Dispatch (WED)")
+
+[Severity: Medium]
+
+Is the Fixes: tag appropriate here?  The changelog does not describe a
+defect, only a hardware-scope observation and a prediction:
+
+    Currently, only MT7622 and MT798x SoCs support WED features. They
+    are all ARM64 platforms. And it is unlikely that MediaTek will
+    release a new net chip based on ARM32 architecture in the future.
+
+As far as I can tell nothing misbehaves on 32-bit today.  WED is only
+instantiated when the ethernet DT node carries a mediatek,wed phandle:
+
+drivers/net/ethernet/mediatek/mtk_eth_soc.c:mtk_probe() {
+	...
+	np = of_parse_phandle(pdev->dev.of_node,
+			      "mediatek,wed", i);
+	if (!np)
+		break;
+	...
+	mtk_wed_add_hw(np, eth, eth->base + wdma_base, wdma_phy, i);
+	...
+}
+
+and git grep wed arch/arm/boot/dts/mediatek returns no matches, so no
+32-bit MediaTek platform can reach mtk_wed_add_hw().
+
+There also does not appear to be any 64-bit-only construct that a
+depends on ARM64 would be repairing: mtk_wed.c, mtk_wed_wo.c,
+mtk_wed_mcu.c and mtk_wed.h contain no readq/writeq, no >> 32 address
+splitting and no CONFIG_64BIT conditionals (the only CONFIG_64BIT use in
+the directory is in mtk_eth_soc.h, which this symbol does not gate).
+
+> @@ -8,7 +8,7 @@ config NET_VENDOR_MEDIATEK
+>  if NET_VENDOR_MEDIATEK
+>  
+>  config NET_MEDIATEK_SOC_WED
+> -	depends on ARCH_MEDIATEK || COMPILE_TEST
+> +	depends on (ARCH_MEDIATEK && ARM64) || COMPILE_TEST
+>  	def_bool NET_MEDIATEK_SOC != n
+
+Since the Fixes: tag makes this a candidate for stable backporting, could
+this silently flip a config symbol in released kernels?  On a stable tree
+with 32-bit ARCH_MEDIATEK, the depends on line becomes false and
+NET_MEDIATEK_SOC_WED is a hidden def_bool, so make olddefconfig drops
+mtk_wed*.o from the build with no prompt or warning.
+
+Would it make sense to drop the Fixes: tag and describe this as a build
+scope cleanup instead?
+
+One more question on the ARM64 condition itself: if something in the WED
+code really is not buildable on 32-bit, does the || COMPILE_TEST branch
+leave that unaddressed, since it still builds the identical code on
+non-ARM64 targets?
+
+-- 
+Sashiko AI review · https://netdev-ai.bots.linux.dev/sashiko/#/patchset/OSZPR01MB8140B889AD227E0B547F5F87BC872%40OSZPR01MB8140.jpnprd01.prod.outlook.com
 
