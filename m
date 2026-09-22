@@ -4,51 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 948CDC98302
-	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Sep 2026 11:40:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E8D4AC98309
+	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Sep 2026 11:40:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From
 	:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=mOIgHatIHLrv2JYlRas1UVhwebFVBfI/35oMsXcgnkE=; b=qsVyZVucZcfOXhQqvon6CdQir8
-	wHYZcTsapbcyjfdkq7cTiEJKNyjRJ5fCdyEPmoWgGNiuVQX5wiiPDT9KDA/cgwCP/4lE+NkQY3yjS
-	KBOvXC2H9zn1h9Ja1GburADoqrHyPDMYqC5XligrD7Nhvpg2ptOKeQtaMJ5XzB98p867zIac9osMd
-	PkbwIFuGc/YKdH3PEIbNHENRBIVhGiTtsr4y9i5lYF2n+H6a4tHdJwxTWWaVxF8bU99MXneVhc1yk
-	KuhZQDGA6+mVBS5bA8aSjIHJrALi9ct8LPVkPDK89CYCVhRHX494l6orYmLtch/q0EhqB+h4oMA0T
-	cXMe9Nkg==;
+	bh=JOROkEf3AP33CfaZrAMOfiBPXKpYbraAe31uQk5L9l8=; b=Va1YXMSO7arALL6Zm5aH4o0LQn
+	bqtZKaWaZnjetHPOMRjdd2xFDMt+z4EZnxfIdXuixk2bl3VzarQEFzkD/BQ9yY/cWaCJNGBjT9bhV
+	gXKJn69MZOM0gMvd5HbkMbKvh3p//9g/3Gpyn8twCpptpWmZ9iljvFVbuvhI3DCQb1u2iFCdVGUWW
+	4RHfcNdxs0R6ZZAuweFgcPrIruosncks6IRrsr58hQHmc6c5DItmCPcac9gl+6f0eduDNGIKJn49+
+	DOhZqqm7tJAnSTaUZNCU3B5loXKeSpzWXjprl2qxxyXCSv+QM6a2ovoMvh0YX3AhCw0XaMpW9a0Ho
+	FkPgoIQw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x8yr1-00000005CCL-0rdq;
-	Tue, 22 Sep 2026 11:40:07 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1x8yr2-00000005CFq-1Yzx;
+	Tue, 22 Sep 2026 11:40:08 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x8yqv-00000005C5x-1Tfa;
-	Tue, 22 Sep 2026 11:40:02 +0000
+	id 1x8yqz-00000005C9v-1cgX;
+	Tue, 22 Sep 2026 11:40:05 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
+	:In-Reply-To:From:References:To:Subject:MIME-Version:Date:Message-ID:Sender:
+	Reply-To:Cc:Content-ID:Content-Description;
+	bh=JOROkEf3AP33CfaZrAMOfiBPXKpYbraAe31uQk5L9l8=; b=mPvgS81f2Frmp/CHl7NgJEOQIi
+	TpFYNt1UaYHsJuDJILcCRgbeHXdpbZM1GD0DRa4FAs81Ux5DoLHuLdJ8ZIX7/leZLXjU8qVY4QOla
+	QRrJ3SGZBaVKXjXci8Jlcx0CWz+/YSfJ4OF93A63YgBm8dyfMuWCdVSyV4TKEcu0Slk8uUl7meU4m
+	4lY1tIE89gxqIyMl+hR7gJ1oUP7bPtxPHWYVjciGAlWK3M9srpmF8pEi7lBueEqKUkVXGqcDao7wY
+	6/s6gAuCOv4oJ+ykE2FZub7OyfddFTikv47TET0F52nb9g2lFE2tQPUclWA5tuQ2EDK4smDH2FG8/
+	kDG2wR4Q==;
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	by desiato.infradead.org with esmtps (Exim 4.99.2 #2 (Red Hat Linux))
+	id 1x8yqw-0000000DV8S-1P1r;
+	Tue, 22 Sep 2026 11:40:04 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1790077199;
-	bh=wXBz31YYAqZAgxYBge5P36ysNsF9WzmlFm5K4PaRbgE=;
+	s=mail; t=1790077201;
+	bh=bSFP9C9XjARx/dNNgNrfSYeFoPgGa+k9SPVPrwMzPcg=;
 	h=Date:Subject:To:References:From:In-Reply-To:From;
-	b=oE1ydEiXT0YFVSwwKAwRK1QjdOU8PyAEzxmKSShu5U0YKqp1bvu1S5Vbm69pIoR5k
-	 SvId+xQbBPwc5wb5EhWDvjmP0RneGeoIbNs3X+n8S5yVjF1avpa0wXFk/yWeaZTkjx
-	 fGMLlUz1vSjcaL6jN1Z8cNv6Lbtp4TY2ZHkUjClNTtdeigTh0/hPWFuBWljNce1z4L
-	 8ZLVj1nG31VxEjFnlmxzn6rSGzq9x1S3xQGeSyZ0bd+KQHMr+3y0dMf9IofL3HtR0u
-	 aegtKGbtJ+EcxdHw0+/fxlr96ICWP7wlPpocoRWBroUExx6fJCOSSYzQUIoPZLbbbE
-	 u2tfVvONXUlbA==
+	b=Us3mJDQTlFuo/LamL+FrEDlGp2GUp6RetzX1uEuUXGI2Z07wV8GwgJQYoIGs4wou6
+	 x6PHTe9IvfbpyvaThgcWyi0aeWRj4jjEY7zPTZqZxmd27Iz21mBDqBBOFC1w5dNHVS
+	 j/8XY7ZPKPPv38WDqkSzKOE6J/jKg6+bUJw+sVOjsGmOWCFw5H65Qp8Aw8oECguXe3
+	 UKu9v+d62dk6IcuHWPyJ/9HHkfPtjAXUFj3CO4+BHaX1C52AfNDhIkn6Mt3250eKtG
+	 WtnbxgazIraZ3+KTNuCw7feZJaXgFRZDP2IUCgmAOcYibqyKveWNpjn2hopxwtvkEd
+	 uivI8lovJ8ocQ==
 Received: from [100.64.1.21] (unknown [100.64.1.21])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id DB4B817E0E01;
-	Tue, 22 Sep 2026 13:39:58 +0200 (CEST)
-Message-ID: <3d056e8f-2d03-4356-b205-f7c1fd47d713@collabora.com>
-Date: Tue, 22 Sep 2026 13:39:58 +0200
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 63AA817E0EA9;
+	Tue, 22 Sep 2026 13:40:00 +0200 (CEST)
+Message-ID: <9a40a5e2-ed21-4727-927c-ab4a1779bb19@collabora.com>
+Date: Tue, 22 Sep 2026 13:40:00 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v17 08/12] media: mediatek: jpeg: fix remove buffer
- removal timing for multi-core
+Subject: Re: [PATCH v17 07/12] media: mediatek: jpeg: fix resolution change
+ event handling in decoder
 To: Kyrie Wu <kyrie.wu@mediatek.com>,
  Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring <robh@kernel.org>,
  Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
@@ -61,16 +75,15 @@ To: Kyrie Wu <kyrie.wu@mediatek.com>,
  linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-mediatek@lists.infradead.org
 References: <20260922091530.241762-1-kyrie.wu@mediatek.com>
- <20260922091530.241762-9-kyrie.wu@mediatek.com>
+ <20260922091530.241762-8-kyrie.wu@mediatek.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Content-Language: en-US
-In-Reply-To: <20260922091530.241762-9-kyrie.wu@mediatek.com>
+In-Reply-To: <20260922091530.241762-8-kyrie.wu@mediatek.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260922_044001_613559_B0CC7B2A 
-X-CRM114-Status: UNSURE (   6.97  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260922_124002_672321_514C2706 
+X-CRM114-Status: GOOD (  10.40  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,12 +99,17 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 On 9/22/26 11:15, Kyrie Wu wrote:
-> Move calls to v4l2_m2m_src/dst_buf_remove() inside of the spinlock
-> protected scope to ensure all necessary operations are performed
-> before buffers are removed from their queues and ensure proper
-> synchronization of buffer handling to avoid buffer lost.
+> This patch refines the handling of resolution change events within
+> JPEG decoder worker. The `mtk_jpeg_set_queue_data` function is now
+> called to set up queue data before signaling a source change through
+> `mtk_jpeg_queue_src_chg_event`. By reorganizing these calls, the
+> patch ensures that necessary queue information is updated prior to
+> transitioning the context state to `MTK_JPEG_SOURCE_CHANGE`.
+> A condition is added to exit early if the context is already in the
+> `MTK_JPEG_SOURCE_CHANGE` state, preventing redundant operations and
+> improving processing efficiency.
 > 
-> Fixes: 86379bd9d399 ("media: mtk-jpeg: Fixes jpeg enc&dec worker sw flow")
+> Fixes: dedc21500334 ("media: mtk-jpegdec: add jpeg decode worker interface")
 > Signed-off-by: Kyrie Wu <kyrie.wu@mediatek.com>
 > Reviewed-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
 
