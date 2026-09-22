@@ -4,65 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 25B45C982FF
-	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Sep 2026 11:40:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 66B71C982FF
+	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Sep 2026 11:40:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From
 	:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=SvLBNlT+tYxltY75wE2DJhASSro9Tv4AmA54gwbSbpE=; b=0mlGtpOeUlELd6ZkwOaNpVxxcn
-	kbKTQGGzEYVVy6hErjnFkWhxmxKVjMVCIjkZnP5tfx7p1JdAehT5rCnqkUOz0Y0OuH9EfHHFFCeXN
-	Q/Y/X08VCJEMYMekErf3c4b2qoFPsSL5d5DmgpYAzkwy6OYyBOUyPUZlYEG9l0ce8rFOr4VsY9wOr
-	NLsXLIuRDOE76nD1ye0tRjFqDXY7GvMCm4RDs4EAKuKarDab0ltCoxlCamj0nMJt5alfoR1+juMD0
-	g8fSKJ93Y8CA8cuBF1FFLChPcGHlI9aUiVS6Yjd0vvm3frER9gR2sM5o+BhO6MC32AaCv5cnSxPjT
-	OIYvCEcQ==;
+	bh=yZ7m14nglimJsIUJImK3pMgdcUp8p6Dy4xZ9KKZFCzA=; b=yd45yqDArv7UX/l0aJQw9LY0Mr
+	5nCSXUvQfE7fYSFY9eN1Vr5mUqOE5Afk+Bf/8Hy9ZxeV/pwTEKsYPZ9zyNMPGvoAV7K7zCEPVXE9/
+	PPdCX2a528PJ1ISTX2KWKgHQ+y6c90NY3WXah0vEVi3WDk0w092Sq7GSiLBLKtdXMSULXr4nq1G+m
+	crrGOuRYpPobZDd3UwsRYSBPMislc0VLc5ATJmPebnK7745qM5TaS9BqG5dN+m+bIMPnttfgJM6vr
+	J997xvTwxxtYflGKXaY/8qxxpb0pEmjWn+ICdXlw0JIS6g1GSnYKL0sflKLo1rpmFxNASZpoP/3lD
+	F3NflHwg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x8yrD-00000005CVW-1G0W;
-	Tue, 22 Sep 2026 11:40:19 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1x8yrJ-00000005CaM-2aTo;
+	Tue, 22 Sep 2026 11:40:25 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x8yr0-00000005CAm-49wc;
-	Tue, 22 Sep 2026 11:40:06 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
-	:In-Reply-To:From:References:To:Subject:MIME-Version:Date:Message-ID:Sender:
-	Reply-To:Cc:Content-ID:Content-Description;
-	bh=SvLBNlT+tYxltY75wE2DJhASSro9Tv4AmA54gwbSbpE=; b=Txk62y+5OEtyFZhz8v5V6pUVOX
-	7pssijlYYppbQ9HvGxbfrYhZZ/MFQWPAUNN0FUNDL64E19Han1X0zV1ctgUonbPSwNPT6MVK0YgnG
-	n+sWPgBOJQhX5GijHiufVTHwSsJON+92aEZm2Ag2Ucdo+zQq3vmz2CqZ3BLcgw38Jhp66BQJ2eBmM
-	U9HLeYDcyl5qWwCF21ER9fSkGwJINS/oH4tYB7OsfRo8KjKu8JsNUyVNHkjPiE61dSThaVMB77pHY
-	td8/lzh25HHNg3FsVv7xGJU2PrbfPHDnurPyW9ZyNrzD4fY5b5m9iEHLaEPoxlWpdye8pF1ygMLl+
-	4RQlICCA==;
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
-	by desiato.infradead.org with esmtps (Exim 4.99.2 #2 (Red Hat Linux))
-	id 1x8yqy-0000000DV91-0wM9;
-	Tue, 22 Sep 2026 11:40:05 +0000
+	id 1x8yr0-00000005CA1-12sH;
+	Tue, 22 Sep 2026 11:40:07 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1790077202;
-	bh=FQNyYELQWOZqqSIXXBpLYWmzFgTJEJee+pRKGcizJ0E=;
+	s=mail; t=1790077204;
+	bh=g+uWp8GE5+l5SIkEyY6Vib3qVErtfIu+oq4xkgSWvfo=;
 	h=Date:Subject:To:References:From:In-Reply-To:From;
-	b=YtTGMFvZt32FR2ik55eJTZB7cbefvgxGu/0SlyEiF1Y7UFrlkQN23qA9fiOr9aqbK
-	 9n0RprEcLFyaRrQO/5SZHuxLKzEZZBrugARQxcQnByCjOPKJpMdAyUNOHT3KimKIVo
-	 HFbY7TfkRlnubhwpIIw9FnU2GbXhTLDaNWmUI1BQBQ7tE6ruldD4LWshFAnyp/M7TS
-	 gqnJa+DTf4iNlyrsVK7MM57RCMrQlSkKo/LFeVxD1PsuXWwHG+lJcmzL3EeGRswXRy
-	 dyjsJYbcpiHJp/x1JT/bbRUD3C8grHpnJErGsxt88MpWxD9nKiCSzO5JS2Ai8P5Srj
-	 azhaGnDWTp1cw==
+	b=CvNIdMLdkrFipraKmV6ceiqmuuxTu0xed6CBvGQspKvg4IOHdqZPUou/SFPp96iNn
+	 IpDM9+bPlOCDV8PDGQA7zUpHgmStWsRT5uf+Zg3D+NXfflPVMWbyz716mpHSkaeeZ+
+	 FKq1U6s9tCaJc6mnkBrVKKbJWs4Z8dVkwBp0Tcz4Cmyzt37YcKMKxY2a1MrQQhnVXf
+	 uAvNbgb8Ay9p6hctPP7tDqIx6sIjZwjBWHPxhaJcNfvV1juwKYOr2VOcm0bEbsOnTp
+	 rd1g2BHZMXemIbqgiQCIQVJ/X6hpNSq7CtKpgM3F6WL7/FL/e9epS+1IC2pk8jJzHP
+	 jy3jEO9a/V5wQ==
 Received: from [100.64.1.21] (unknown [100.64.1.21])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
 	 key-exchange x25519)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 5B6A417E0FB7;
-	Tue, 22 Sep 2026 13:40:02 +0200 (CEST)
-Message-ID: <f07598eb-df4e-4766-953c-0189940d3617@collabora.com>
-Date: Tue, 22 Sep 2026 13:40:02 +0200
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id C5E4017E03B6;
+	Tue, 22 Sep 2026 13:40:03 +0200 (CEST)
+Message-ID: <193cb5ee-09ea-4105-90ab-3968c796ff86@collabora.com>
+Date: Tue, 22 Sep 2026 13:40:03 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v17 04/12] media: mediatek: jpeg: Fix buffer completion on
- multi-core streaming stop
+Subject: Re: [PATCH v17 06/12] media: mediatek: jpeg: fix buffer state update
+ timing
 To: Kyrie Wu <kyrie.wu@mediatek.com>,
  Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring <robh@kernel.org>,
  Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
@@ -75,15 +61,15 @@ To: Kyrie Wu <kyrie.wu@mediatek.com>,
  linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-mediatek@lists.infradead.org
 References: <20260922091530.241762-1-kyrie.wu@mediatek.com>
- <20260922091530.241762-5-kyrie.wu@mediatek.com>
+ <20260922091530.241762-7-kyrie.wu@mediatek.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Content-Language: en-US
-In-Reply-To: <20260922091530.241762-5-kyrie.wu@mediatek.com>
+In-Reply-To: <20260922091530.241762-7-kyrie.wu@mediatek.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260922_124004_418740_A47EB968 
-X-CRM114-Status: UNSURE (   9.22  )
+X-CRM114-CacheID: sfid-20260922_044006_451674_F6107593 
+X-CRM114-Status: UNSURE (   8.57  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -100,18 +86,17 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 On 9/22/26 11:15, Kyrie Wu wrote:
-> Enhances the Mediatek JPEG driver's stability and reliability by ensuring
-> that all queued buffers are processed before stopping the streaming in
-> multi-core environments. It introduces a call to
-> `vb2_wait_for_all_buffers()` in the `mtk_jpeg_enc_stop_streaming()` and
-> `mtk_jpeg_dec_stop_streaming()` functions when the `multi_core` variant
-> is enabled. This change ensures that no buffers are left unprocessed,
-> preventing potential data loss or corruption during multi-core flow.
+> Update the destination buffer state only after the decoder has selected
+> a hardware core and resumed its runtime PM state successfully. This avoids
+> assigning frame tracking data to buffers that will be returned early, such
+> as when a source resolution change is detected.
 > 
-> Fixes: 0fa49df4222f ("media: mtk-jpegdec: support jpegdec multi-hardware")
+> Protect the destination buffer state update with the hardware spinlock so
+> the completion path observes a consistent context and frame number. Stop
+> walking the done queue after completing the next expected frame, since the
+> remaining buffers still need to wait for their own frame order.
+> 
 > Fixes: dedc21500334 ("media: mtk-jpegdec: add jpeg decode worker interface")
-> Fixes: 934e8bccac95 ("mtk-jpegenc: support jpegenc multi-hardware")
-> Fixes: 5fb1c2361e56 ("mtk-jpegenc: add jpeg encode worker interface")
 > Signed-off-by: Kyrie Wu <kyrie.wu@mediatek.com>
 > Reviewed-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
 
