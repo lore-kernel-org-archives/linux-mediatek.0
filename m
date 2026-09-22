@@ -4,110 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A14D7C982E6
-	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Sep 2026 00:09:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C6F6EC982F1
+	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Sep 2026 02:15:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=+px+gyXVLidkcy+k/uZ//IG8TqK3wgfrhlr6nss3oOM=; b=UQ94mMfBIWbkoNNnK6i/lZ/CNC
-	i8ixfBptt/XCxJ1O9zxgITIN+rq4gnWQICg0MkiorrFm3xZywlQ5WmGiXll/DDN6U/hHPNl2m7p/a
-	dTbLDGxg1unUNPnzvZwPVxf/HnpR/0VII57eX+3tzRo+ui6Ph/LZKuwyXelNaWikflx3PAFzM8FEk
-	aBCgU/Dtw9z8bSMxX9nJ+MUFj/GyuE8Lh2cN33H5RdaqukfEKHz4xYUkLoP69sYhpbWNy55BkGPy7
-	H5BSyDY6cXqDEnl25PpgI4NMIK6dGQtdK7H13qjy8DMrKQcf7MhOTK3dYFbrLfIHFm0grUYe6Ncks
-	fWTDttCQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Message-ID:Date
+	:Cc:To:From:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=0ASA5JW6b5bnDhsby8kSTB9776aPdBxV6ZarEwfGUYA=; b=esa1gEQ3H37G1uA9KWVzzKH1vW
+	PddMaykgyYRSBeDmASa1uJ8hG9YuH357QbN/oaBsU27fxZfLUOgzcwMhVwemc1aKVXsQ0eWxIO5j9
+	k5UcvOOeA9B7OrK8mq5PJCSubHXSVPp/z6xmKvdMf25GQDlN5A+HTp2KwS8n66pxfpJZo/qHe95Ra
+	SAq/FZJgeouJlr4b4b8wGq9Lf58hqrkl9h++MS6kEikjJYCmqA+n5ytZZPDY2zbXCV6uw3MuxkNNs
+	++bPG4CI5aBOEDUSBqV36K+dcFwr1gzpxPdHdxd4dtwpEaspYrK5oMyU5ZVM195zyAWR2UZliqHFg
+	tHs6DBVA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x8o4d-00000003lFo-07Ca;
-	Tue, 22 Sep 2026 00:09:27 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1x8q32-00000003xID-39u8;
+	Tue, 22 Sep 2026 02:15:56 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x8o4a-00000003lFd-45R1
-	for linux-mediatek@bombadil.infradead.org;
-	Tue, 22 Sep 2026 00:09:25 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
-	:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:Content-ID:
-	Content-Description:In-Reply-To:References;
-	bh=+px+gyXVLidkcy+k/uZ//IG8TqK3wgfrhlr6nss3oOM=; b=ovxmVZ7kJCXZV0LKBHSzN9JlUv
-	fJPZeuE/CwpBCUR3oqBDFd6XJCD7xfDEw+VEByiPYcR+CJ/KieFLSrtiYWvt6OiCEcDNa3qW0ZRD6
-	ErQ6YfGY2yJNwsnrYFLMMCqFqs/2CH+FTX1tw+D+FU4tlREsjaK7B+DY10sRuB3rU8xHfRNCnqh4P
-	nhv+Zex5nJKuON/CyPOq83s3SXBicUytWKYjE3cbJ3lmF3+eTm1bxw3rlyBsNg5fXEjmkQbqyP9NU
-	1z8VJA50mrhf3f0z0SrXVjKrNfOeIGW328CKTa9ICl9D6F1nXowTi5xMkAtGjdnUovpz+mxU6jcHY
-	lShSTAsg==;
-Received: from mail-qk2-x10.google.com ([2607:f8b0:4864:34::10])
-	by desiato.infradead.org with esmtps (Exim 4.99.2 #2 (Red Hat Linux))
-	id 1x8o4X-0000000Cw7V-35fq
-	for linux-mediatek@lists.infradead.org;
-	Tue, 22 Sep 2026 00:09:23 +0000
-Received: by mail-qk2-x10.google.com with SMTP id af79cd13be357-93910a0cefaso311202085a.2
-        for <linux-mediatek@lists.infradead.org>; Mon, 21 Sep 2026 17:09:21 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1790035759; x=1790640559; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
-        bh=+px+gyXVLidkcy+k/uZ//IG8TqK3wgfrhlr6nss3oOM=;
-        b=Jpj4iPo0hQCInYpENn23itykyx42+B8LHumtRYLVR9h1WPZyfJPCF1QLDtxIXJGipE
-         6mD+izhnWyB6hAypOJgJxUcjTvXyVpqGt6La+jWwwHKS11XHLlwgEvKfs23Lu99skPkZ
-         YinhMZNpncPYI/2iTqm5wBTQ9RiypzTR/InhNdBjaTVwgwiaK7i4wRPwKXvmNr6ctTBD
-         3R1NlNj7odx03AirqwJvU6j2kDoTxaJ0uVxTd9JZ0T8mstkXKIuzfSDHSV9eHIlMTt0T
-         BZ6j22HOHyNuk3WGPAH44n7QI/AZULVwTpVNnKhhErPH65ijn7d2TIzF07PAm4ElWgMR
-         8QkA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1790035759; x=1790640559;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to:content-type;
-        bh=+px+gyXVLidkcy+k/uZ//IG8TqK3wgfrhlr6nss3oOM=;
-        b=kwSmlxsHg0XN6xGnU7EgYSMpRWKIT5aAgotAPsJI67fsTpA9heeW9AeK9TIDocw4gH
-         79PAnhWU6ftvZQU7ybghD6SUpm0VqH2/O4/BPHt1v42EvQbKVZvTBjavh2RVnZgorDtQ
-         N3nbZkn/CMZ/1fzpWLPm1zzFFZzGQU79rXsLsvnYfkcO1FbmGPqg9TGDZZqJv64Su+6b
-         0YeFpmlMqavZBSZbZEy2fcNcedG1BjPr+sR8lTpoQ6cVEGHvDeC2TIGxK4Fja7Dsjq8U
-         HCxX0HZWLrxCccRZ8uKTPuPs/D30pj1xpiAeofAAQeWD7Y6pQsYJMMD76KXRacZLSgSQ
-         5scg==
-X-Forwarded-Encrypted: i=1; AKwUvByZphAzD0ZJ1/+2D45HJWhHxvXvJyXs9uhyaPtmak1i3m4VM3NAylud42b7EKVo0kOBgpHLcdy+PxrWfhM3XQ==@lists.infradead.org
-X-Gm-Message-State: AFuF++lCIbwBSWjOMZ+gNveK1bo4GNl/CcrvPBbKLnpDBdIj3RmAE6qF
-	66JTHpcxRCX3gpqVjNU+QnG3xvBMQlLLOGrouZMZfWrbMiP0VfzUBkw=
-X-Gm-Gg: AYBFou1xQgRAg2QTVNnrwLf6NxPXUIMkdvn8hFcX5AcxEyoWTqsfRnsJiBNkp02D2aS
-	HUp2R1Z70Yjzd41xJlHMqAbT+MF5wNBA5phbsVBytJqpoZ7D7EJsRFJaO13tc56oyjp5a+yKRS2
-	pb8LqqVl7LmdrdkxwI5jhZ6WKQaRVW9ncjbXWOZ+RNCd+7vFNRWiIjxWPvBcrU26+/z2lbVn5S3
-	RzaEF4R1pYOYBZFHOpNZ4FiFfqNMnzBKeSpcVwslEmg+KCUuICMdsbmHfim6lcyt8xnRpArLTI9
-	IQGY6Xh79N16LIdyucNHpAL3mN7i5ATURv4L7vaF+z1LTxVJoJa+7sMcFzfE8sUphv5tmUo1vB2
-	JKQ1R+ZDFwUc2T42W3ui80EpjxANiFYjT3XXw4iURp48bf8gkuOgEzSKrZvouR5FDb4AruCP3Wf
-	B/X/L48IPvVfT7Hxb5Mhjk438tuE/fGBFPwSmmpDFNs89x6edu2SIuT5+SX5zeWBngzgGQBk0hz
-	yh5pONX2UMuJndDzmaJQIvFQAtuoPtw474l++rgddTWcs+svuv4JOaFkjpDjSroWl24DSUgQ/QL
-	8Sci2DEIdB/G+ahpkNOaeBJCyGzX
-X-Received: by 2002:a05:620a:1791:b0:93b:f246:bae8 with SMTP id af79cd13be357-93c15e78ed6mr305051085a.37.1790035759325;
-        Mon, 21 Sep 2026 17:09:19 -0700 (PDT)
-Received: from i4-gl-tmk5904-1.ad.psu.edu ([130.203.156.90])
-        by smtp.gmail.com with ESMTPSA id af79cd13be357-93c19a812d4sm53263785a.22.2026.09.21.17.09.18
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 21 Sep 2026 17:09:18 -0700 (PDT)
-From: Myeonghun Pak <mhun512@gmail.com>
-To: Lorenzo Bianconi <lorenzo@kernel.org>,
-	Andrew Lunn <andrew+netdev@lunn.ch>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>,
-	Paolo Abeni <pabeni@redhat.com>
-Cc: Myeonghun Pak <mhun512@gmail.com>,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	netdev@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	stable@vger.kernel.org,
-	Ijae Kim <ae878000@gmail.com>
-Subject: [PATCH net] net: airoha: npu: cancel wdt_work after releasing the WDT IRQ
-Date: Mon, 21 Sep 2026 20:09:14 -0400
-Message-ID: <20260922000914.542068-1-mhun512@gmail.com>
-X-Mailer: git-send-email 2.53.0
-MIME-Version: 1.0
+	id 1x8q31-00000003xHv-0YSx;
+	Tue, 22 Sep 2026 02:15:55 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by sea.source.kernel.org (Postfix) with ESMTP id 832F6406BB;
+	Tue, 22 Sep 2026 02:15:54 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 72E991F000FF;
+	Tue, 22 Sep 2026 02:15:53 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1790043354;
+	bh=0ASA5JW6b5bnDhsby8kSTB9776aPdBxV6ZarEwfGUYA=;
+	h=Subject:From:To:Cc:Date:In-Reply-To:References;
+	b=PfUGiGY6exW5Q7gji0YFSkvi13LVMyGzTvOjVsTxfVtzbGXGK+rRzSL28X9Wndv0i
+	 C6adaZKgC6jHsvjI1OxafymgqF42Ap5wxVQDJaBqU+oN5IMp0ue/GgFgnva8ya721p
+	 GzmG6hOSdv2AIRKesaUdDG1Abw53zGJeYPNeOgrbWD1GgVSU8OmrmPo2Vh49GdcTJx
+	 fJo1HQ5B60ixEAJihe6wqxxhR6UjIGAVumnoL6IugL5u3vZ/8R2orpkU7C/xvvzP5g
+	 VleMGt9tx2VOUfCdaZqfFbfZbxdWp3i5jwSveShtQpQ9EGMBUFIlzoW9f/SkaaJNJx
+	 ixp+W8dl01Q7g==
+Subject: Re: [PATCH net v2 1/2] net: dsa: mt7530: fix NULL dereference on
+ unbind of MT7531 and MT7621
+From: netdev-bot+sashiko@kernel.org
+To: f@lex.la
+Cc: netdev@vger.kernel.org, chester.a.unal@arinc9.com, daniel@makrotopia.org,
+ andrew@lunn.ch, olteanv@gmail.com, gerg@kernel.org, davem@davemloft.net,
+ edumazet@google.com, kuba@kernel.org, pabeni@redhat.com,
+ matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org
+Date: Tue, 22 Sep 2026 02:15:52 +0000
+Message-ID: <179004335292.2160803.1657607362233554719@kernel.org>
+In-Reply-To: <20260918015020.2518315-2-f@lex.la>
+References: <20260918015020.2518315-2-f@lex.la>
+X-sashiko-severity: Medium
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260922_010921_956977_835F9F24 
-X-CRM114-Status: GOOD (  16.01  )
+MIME-Version: 1.0
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -122,84 +73,241 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-airoha_npu_remove() calls cancel_work_sync() on each core's wdt_work,
-but the watchdog IRQ that queues it is requested with devm_request_irq()
-and is freed only after .remove() returns.  airoha_npu_wdt_handler() can
-therefore schedule_work() again once the cancel has returned.  struct
-airoha_npu, which contains the work, is devm_kzalloc()'d and is freed in
-that same unwind, so the late work dereferences freed memory.
+Thank you for your contribution! Sashiko AI review found 1 potential
+issue(s) to consider.
 
-Register the work with devm_work_autocancel() before devm_request_irq()
-and drop .remove().  Devres runs in reverse order, so the IRQ is freed
-before cancel_work_sync(), including when probe fails.  A cancel left in
-.remove() cannot get that order.  Initializing the work first also stops
-a pending watchdog interrupt from queuing an uninitialized work item.
-Probe currently calls INIT_WORK() only after devm_request_irq().
+Critical: 0 · High: 0 · Medium: 1 (2) · Low: 0 (1)
 
-This issue was identified during our ongoing static-analysis research
-while reviewing kernel code.
+If you believe none of the issues are legitimate, please reply to each
+issue of Medium severity or higher and explain why the AI is wrong.
+If any of them are legitimate and you plan to respin, please let patchwork
+know by including "pw-bot: cr" as a separate line at the end of your reply
+(one such reply per series is enough).
 
-Fixes: 23290c7bc190 ("net: airoha: Introduce Airoha NPU support")
-Cc: stable@vger.kernel.org # 6.15+
-Assisted-by: LLM
-Co-developed-by: Ijae Kim <ae878000@gmail.com>
-Signed-off-by: Ijae Kim <ae878000@gmail.com>
-Signed-off-by: Myeonghun Pak <mhun512@gmail.com>
----
- drivers/net/ethernet/airoha/airoha_npu.c | 18 ++++++------------
- 1 file changed, 6 insertions(+), 12 deletions(-)
+- [Medium] The regulator enable reference is taken in the DSA `.setup`
+  callback (mt7530_setup(), drivers/net/dsa/mt7530.c:2493-2509) but…
 
-diff --git a/drivers/net/ethernet/airoha/airoha_npu.c b/drivers/net/ethernet/airoha/airoha_npu.c
-index 5bb4817a898d..4d3195eb00f7 100644
---- a/drivers/net/ethernet/airoha/airoha_npu.c
-+++ b/drivers/net/ethernet/airoha/airoha_npu.c
-@@ -5,6 +5,7 @@
-  */
- 
- #include <linux/devcoredump.h>
-+#include <linux/devm-helpers.h>
- #include <linux/firmware.h>
- #include <linux/platform_device.h>
- #include <linux/of_net.h>
-@@ -751,12 +752,15 @@ static int airoha_npu_probe(struct platform_device *pdev)
- 		if (irq < 0)
- 			return irq;
- 
-+		err = devm_work_autocancel(dev, &core->wdt_work,
-+					   airoha_npu_wdt_work);
-+		if (err)
-+			return err;
-+
- 		err = devm_request_irq(dev, irq, airoha_npu_wdt_handler,
- 				       IRQF_SHARED, "airoha-npu-wdt", core);
- 		if (err)
- 			return err;
--
--		INIT_WORK(&core->wdt_work, airoha_npu_wdt_work);
- 	}
- 
- 	/* wlan IRQ lines */
-@@ -803,18 +807,8 @@ static int airoha_npu_probe(struct platform_device *pdev)
- 	return 0;
- }
- 
--static void airoha_npu_remove(struct platform_device *pdev)
--{
--	struct airoha_npu *npu = platform_get_drvdata(pdev);
--	int i;
--
--	for (i = 0; i < ARRAY_SIZE(npu->cores); i++)
--		cancel_work_sync(&npu->cores[i].wdt_work);
--}
--
- static struct platform_driver airoha_npu_driver = {
- 	.probe = airoha_npu_probe,
--	.remove = airoha_npu_remove,
- 	.driver = {
- 		.name = "airoha-npu",
- 		.of_match_table = of_airoha_npu_match,
+Pre-existing issues:
+- [Medium] On the ID_MT7530 path the patch keeps
+  regulator_disable(core_pwr)/regulator_disable(io_pwr) ahead of…
+- [Medium] In mt7530_setup() (drivers/net/dsa/mt7530.c:2494 and :2502)
+  the return values of `regulator_set_voltage(priv->core_pwr, 1000000,…
+- [Low] Binding/driver disagreement about which compatibles the `core-
+  supply`/`io-supply` properties apply to.
 
-base-commit: 238650ef6c7c7cca08e032527329424c9fbd70e5
+--
+
+net: dsa: mt7530: fix NULL dereference on unbind of MT7531 and MT7621
+
+The core and io supplies are only requested for ID_MT7530, but
+mt7530_remove() disabled them unconditionally, so unbinding an MT7531 or
+MT7621 called regulator_disable() on a NULL pointer.  The patch gates the
+two regulator_disable() calls on priv->id == ID_MT7530.
+
+> diff --git a/drivers/net/dsa/mt7530-mdio.c b/drivers/net/dsa/mt7530-mdio.c
+> index 784dd58a71589..de42f70afcfa1 100644
+> --- a/drivers/net/dsa/mt7530-mdio.c
+> +++ b/drivers/net/dsa/mt7530-mdio.c
+> @@ -227,15 +227,17 @@ mt7530_remove(struct mdio_device *mdiodev)
+>  	if (!priv)
+>  		return;
+>  
+> -	ret = regulator_disable(priv->core_pwr);
+> -	if (ret < 0)
+> -		dev_err(priv->dev,
+> -			"Failed to disable core power: %d\n", ret);
+> -
+> -	ret = regulator_disable(priv->io_pwr);
+> -	if (ret < 0)
+> -		dev_err(priv->dev, "Failed to disable io pwr: %d\n",
+> -			ret);
+> +	if (priv->id == ID_MT7530) {
+
+[Severity: Low]
+This isn't a bug introduced by this patch, but the id test here is now the
+third place that encodes "these supplies belong to ID_MT7530", while the
+binding does not say that.
+
+In Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml both
+core-supply and io-supply are defined as generic top-level properties and
+are only listed under required: for the mediatek,mt7530 branch.  The
+mediatek,mt7531 branch disallows other properties explicitly:
+
+      properties:
+        gpio-controller: false
+        mediatek,mcm: false
+
+but leaves the two supplies permitted, and the mediatek,mt7621 branch only
+adds mediatek,mcm to required:.
+
+So a schema-valid DT with core-supply on compatible = "mediatek,mt7531" has
+that phandle silently ignored, since mt7530_probe() never calls
+devm_regulator_get() for any other id:
+
+	if (priv->id == ID_MT7530) {
+		priv->core_pwr = devm_regulator_get(&mdiodev->dev, "core");
+		...
+	}
+
+Should the binding set core-supply: false / io-supply: false on the
+mt7531 and mt7621 branches so the two sides agree?
+
+> +		ret = regulator_disable(priv->core_pwr);
+> +		if (ret < 0)
+> +			dev_err(priv->dev,
+> +				"Failed to disable core power: %d\n", ret);
+> +
+> +		ret = regulator_disable(priv->io_pwr);
+> +		if (ret < 0)
+> +			dev_err(priv->dev, "Failed to disable io pwr: %d\n",
+> +				ret);
+> +	}
+
+[Severity: Medium]
+Is priv->id the right condition for the disable side?  It records that the
+supplies were requested in mt7530_probe(), not that they were ever enabled.
+The enable happens in a different callback, mt7530_setup() in mt7530.c,
+reached through ds->ops->setup.
+
+Can this produce an unbalanced disable on an ID_MT7530 board?
+mt7530_probe() -> dsa_register_switch() -> dsa_tree_setup() can return
+success without ever running ds->ops->setup:
+
+net/dsa/dsa.c:dsa_tree_setup() {
+	...
+	complete = dsa_tree_setup_routing_table(dst);
+	if (!complete)
+		return 0;
+	...
+}
+
+A later unbind then takes this new ID_MT7530 branch with
+regulator->enable_count still zero:
+
+drivers/regulator/core.c:_regulator_disable() {
+	if (WARN(regulator->enable_count == 0,
+		 "unbalanced disables for %s\n", rdev_get_name(rdev)))
+		return -EIO;
+	...
+}
+
+which also means the dev_err() above prints -EIO.  A tree teardown and
+re-setup cycle, e.g. a peer switch in the same tree unbinding and binding
+again, runs mt7530_setup() and therefore regulator_enable() more than once
+against this single disable.
+
+Does the opposite direction leak the enable reference?  Every error return
+in mt7530_setup() after the core rail is up:
+
+	if (priv->id == ID_MT7530) {
+		regulator_set_voltage(priv->core_pwr, 1000000, 1000000);
+		ret = regulator_enable(priv->core_pwr);
+		...
+		regulator_set_voltage(priv->io_pwr, 3300000, 3300000);
+		ret = regulator_enable(priv->io_pwr);
+		if (ret < 0) {
+			dev_err(priv->dev, "Failed to enable io pwr: %d\n",
+				ret);
+			return ret;
+		}
+	}
+
+	/* Waiting for MT7530 got to stable */
+	INIT_MT7530_DUMMY_POLL(&p, priv, MT753X_TRAP);
+	ret = readx_poll_timeout(_mt7530_read, &p, val, val != 0,
+				 20, 1000000);
+	if (ret < 0) {
+		dev_err(priv->dev, "reset timeout\n");
+		return ret;
+
+propagates out through mt753x_setup() and dsa_register_switch() to
+mt7530_probe(), so .remove is never called.  The devm release path only
+puts the regulator:
+
+drivers/regulator/core.c:_regulator_put() {
+	...
+	/* Docs say you must disable before calling regulator_put() */
+	WARN_ON(regulator->enable_count);
+	...
+}
+
+so the 1.0 V core and 3.3 V I/O rails stay enabled for the lifetime of the
+system, with a WARN.  The MT7530_CREV id mismatch and the 20 MHz XTAL
+rejection reach the same point.
+
+Would pairing the enable with the existing symmetric hook,
+mt753x_teardown() in mt7530.c, or tracking an explicit "enabled" flag and
+unwinding the mt7530_setup() error paths, cover the NULL case this patch
+targets as well as these two?
+
+>  
+>  	mt7530_remove_common(priv);
+>  
+
+[Severity: Medium]
+This is a pre-existing ordering issue rather than something this patch
+introduces, and the cover text says as much, but it may be worth recording
+here since the ID_MT7530 path keeps it.
+
+Everything mt7530_remove_common() still does runs against a die whose rails
+have just been switched off:
+
+drivers/net/dsa/mt7530.c:mt7530_remove_common() {
+	dsa_unregister_switch(priv->ds);
+
+	mutex_destroy(&priv->reg_mutex);
+}
+
+dsa_unregister_switch() reaches mt753x_teardown(), the per-port
+mt7530_port_disable() PCR read-modify-writes such as
+
+	mt7530_rmw(priv, MT7530_PCR_P(port), PCR_MATRIX_MASK, PCR_MATRIX_CLR);
+
+the mac_link_down() PMCR writes and the internal-PHY suspend writes that go
+through the switch's own MDIO bus.  Are those writes simply lost at that
+point, leaving the driver's bookkeeping describing a state the hardware
+never reached?
+
+Can the MIB poller also read an unpowered die?  mt753x_teardown() is the
+only place the self-rearming stats work is cancelled:
+
+drivers/net/dsa/mt7530.c:mt753x_teardown() {
+	struct mt7530_priv *priv = ds->priv;
+
+	if (priv->bus)
+		cancel_delayed_work_sync(&priv->stats_work);
+}
+
+and it runs from inside dsa_unregister_switch(), i.e. after the disables
+above.  mt7530_stats_poll() re-arms itself unconditionally:
+
+		mt7530_stats_refresh(priv);
+		schedule_delayed_work(&priv->stats_work,
+				      MT7530_STATS_POLL_INTERVAL);
+
+so it can be doing MDIO reads while mt7530_remove() drops the rails,
+folding all-ones reads into the cached per-port counters.
+
+[Severity: Medium]
+This is also pre-existing and untouched by the patch, but while in this
+area: mt7530_setup() in drivers/net/dsa/mt7530.c discards the return value
+of both regulator_set_voltage() calls:
+
+	if (priv->id == ID_MT7530) {
+		regulator_set_voltage(priv->core_pwr, 1000000, 1000000);
+		ret = regulator_enable(priv->core_pwr);
+		...
+		regulator_set_voltage(priv->io_pwr, 3300000, 3300000);
+		ret = regulator_enable(priv->io_pwr);
+
+If machine constraints do not permit the requested range, or
+REGULATOR_CHANGE_VOLTAGE is not allowed, or a second consumer holds a
+shared rail at another voltage, the rail is still enabled and the driver
+goes on to reset the die, poll MT753X_TRAP and read MT7530_CREV as if the
+1.0 V core / 3.3 V I/O operating points had been applied.  Should these two
+calls be checked so the failure surfaces as an error instead of as
+intermittent register access failures?
+
 -- 
-2.53.0
+Sashiko AI review · https://netdev-ai.bots.linux.dev/sashiko/#/patchset/20260918015020.2518315-1-f%40lex.la
 
