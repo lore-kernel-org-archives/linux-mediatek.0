@@ -4,64 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F1DD8C982F1
-	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Sep 2026 08:42:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8AE0EC982FF
+	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Sep 2026 09:15:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=fi3feLtPVMOYDU5sUdusGNlECI2wB3sb2uL66NcRc9k=; b=ugbvOJLPf3WIQMQHgbBuOaDXb8
-	KcbdO9ivv2hc6VMRIvFAPZQZrKwxf/oa2XXNWeZwwUuiC+Czed7IuAQi0tOsjowUORD4R3HSOPp/s
-	nvvrg6Gag7E1vFWYREz+30qX5ndro+Pu8pfCZmZYotK0eCXndlNfRGGeW8leZE5ACrqYpt6R4V49r
-	I+x46KX4FP8HticwwPZ1L+xZE1S4xZ1w+QQrULRYv705UkJD3p4Ikq6FbHfD9g1LE3c2HbiFa1jTR
-	+rEzdtrkLmRn/UKuuAVZcJy+5APVH4wx+4nam7P5N/g2Xtz6wL4nafldljWe8Ae7HQpXLupoMMG5C
-	5OT7ztBQ==;
+	bh=xLU1raGNRNkiRMZRkTcRsI52O6Ivn3m3LlM8helEoEo=; b=qevtgwC+Lh0SnYXzIMlVAjiCRB
+	6JPtnu+Xb5R0UGAmiW7h8614aA0lWW2mZZEvTR6rKc8Z+hWu0Rr0SNABcbwKP0H3dReLHz4EFv9OU
+	vJaC0K/NRznT3FCVkxuKu0+1UknV6PRwsCamj5xo1wHJOLCuzxAtrdPMCoABZbbK7SygJcjokt9iJ
+	duVDwgRE5kXyplrb28KvloMIy2xgsnhyEu2T7QYJp0OiPdyttSzUyaffZJ0iElhHTFdoSz9iNwAaA
+	QfRdnTtkSYIwD3X+5Oa09pjH5RH2A+9oFUG1MkLsX7fgBjIbVOE75nletT5Tr7DH13XfwlqvRDHL5
+	7CTzs0zA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x8w5Y-00000004iJS-311u;
-	Tue, 22 Sep 2026 08:42:56 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1x8wbL-00000004s5t-38dg;
+	Tue, 22 Sep 2026 09:15:47 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x8w5W-00000004iJ6-3R4t;
-	Tue, 22 Sep 2026 08:42:54 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id E11D460200;
-	Tue, 22 Sep 2026 08:42:53 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 18C911F000FF;
-	Tue, 22 Sep 2026 08:42:52 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1790066573;
-	bh=fi3feLtPVMOYDU5sUdusGNlECI2wB3sb2uL66NcRc9k=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=BaEsM3dWk6wO/Saa4fIrO+Mh3NPfkoe9ZQcZyG/yXkQGiFFm5tTlbD32I7tzqlbg/
-	 vx2k3Qn1Y6m896KGpgneohI2pxEl7Z0VFM3SUgQbsZ1rY4K6WjWQRgoe6/WZo7R17h
-	 1NXYCUYOU2ubx20DuHLzFF8tcUZmmPgcbRDVrhNC5SndIekDeCDRw9CHN/AixWf8ER
-	 tV80o5arod7lIY6Exk2YSycqkx0xHHFXWta/Ks1pUavYnqisrJIZmVSMrCNJtwGIkI
-	 I8yhuEFrDftHcM8ggvz8sj1yTL+qkmywXYgiFFTBHMzHwNYwxp+KpM1sJp4TtKp8rO
-	 /1Up6/elBhjjQ==
-Date: Tue, 22 Sep 2026 10:42:51 +0200
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-To: Lorenzo Bianconi <lorenzo.bianconi@oss.qualcomm.com>
-Cc: Myeonghun Pak <mhun512@gmail.com>, Andrew Lunn <andrew+netdev@lunn.ch>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org,
-	linux-kernel@vger.kernel.org, stable@vger.kernel.org,
-	Ijae Kim <ae878000@gmail.com>
-Subject: Re: [PATCH net] net: airoha: npu: cancel wdt_work after releasing
- the WDT IRQ
-Message-ID: <arI_i_JpOBsXM3ln@lore-desk>
-References: <20260922000914.542068-1-mhun512@gmail.com>
- <arI5OD8X2Eoz_Ojd@lore-desk>
+	id 1x8wbK-00000004s3y-0PhE;
+	Tue, 22 Sep 2026 09:15:47 +0000
+X-UUID: 2db62302b66611f1afed4741b24580c9-20260922
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=xLU1raGNRNkiRMZRkTcRsI52O6Ivn3m3LlM8helEoEo=;
+	b=Jce5IK6lkdFIvK3av8DKo+vp5N6Tuh6vKp9Wj1b7QknFriLF1WX73WQtT7t6j/Iq9P0ehr1BxD/riIZrpcfoosgk1SmAkSW/jBmYssJBAhW3UYV4r8SsYYGXj3qStaYrt1aeMG+izQeUukRfFLgUCY/qHLOQW1uCm+qB3jY6KLs=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.3.19,REQID:721abe94-2a1b-433a-9bab-6065aff79953,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:7db8b62,CLOUDID:f1e426e3-72a5-4ba1-af40-18bbd6ea8ffd,B
+	ulkID:nil,BulkQuantity:0,SF:81|82|102|836|865|888|898,TC:-5,Content:0|15|5
+	0|99,EDM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:-1,COL:0,OSI:0,
+	OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 2,SSN|SDN
+X-CID-BAS: 2,SSN|SDN,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
+X-UUID: 2db62302b66611f1afed4741b24580c9-20260922
+Received: from mtkmbs09n1.mediatek.inc [(172.21.101.35)] by mailgw01.mediatek.com
+	(envelope-from <kyrie.wu@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 638379290; Tue, 22 Sep 2026 02:15:39 -0700
+Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
+ MTKMBS09N1.mediatek.inc (172.21.101.35) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.2562.29; Tue, 22 Sep 2026 17:15:37 +0800
+Received: from gcnsap21.gcn.mediatek.inc (10.17.81.22) by
+ mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.2562.29 via Frontend Transport; Tue, 22 Sep 2026 17:15:36 +0800
+From: Kyrie Wu <kyrie.wu@mediatek.com>
+To: Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>, Bin Liu <bin.liu@mediatek.com>,
+	kyrie wu <kyrie.wu@mediatek.corp-partner.google.com>, Hans Verkuil
+	<hverkuil@kernel.org>, irui wang <irui.wang@mediatek.com>, Nicolas Dufresne
+	<nicolas.dufresne@collabora.com>, <linux-media@vger.kernel.org>,
+	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>
+CC: Kyrie Wu <kyrie.wu@mediatek.com>
+Subject: [PATCH v17 04/12] media: mediatek: jpeg: Fix buffer completion on multi-core streaming stop
+Date: Tue, 22 Sep 2026 17:15:21 +0800
+Message-ID: <20260922091530.241762-5-kyrie.wu@mediatek.com>
+X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20260922091530.241762-1-kyrie.wu@mediatek.com>
+References: <20260922091530.241762-1-kyrie.wu@mediatek.com>
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="ROMP+kOHbe7PUdpe"
-Content-Disposition: inline
-In-Reply-To: <arI5OD8X2Eoz_Ojd@lore-desk>
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-MTK: N
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260922_021546_146846_0ECD4D95 
+X-CRM114-Status: GOOD (  13.62  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,122 +92,60 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
---ROMP+kOHbe7PUdpe
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Enhances the Mediatek JPEG driver's stability and reliability by ensuring
+that all queued buffers are processed before stopping the streaming in
+multi-core environments. It introduces a call to
+`vb2_wait_for_all_buffers()` in the `mtk_jpeg_enc_stop_streaming()` and
+`mtk_jpeg_dec_stop_streaming()` functions when the `multi_core` variant
+is enabled. This change ensures that no buffers are left unprocessed,
+preventing potential data loss or corruption during multi-core flow.
 
-> > airoha_npu_remove() calls cancel_work_sync() on each core's wdt_work,
-> > but the watchdog IRQ that queues it is requested with devm_request_irq()
-> > and is freed only after .remove() returns.  airoha_npu_wdt_handler() can
-> > therefore schedule_work() again once the cancel has returned.  struct
-> > airoha_npu, which contains the work, is devm_kzalloc()'d and is freed in
-> > that same unwind, so the late work dereferences freed memory.
-> >=20
-> > Register the work with devm_work_autocancel() before devm_request_irq()
-> > and drop .remove().  Devres runs in reverse order, so the IRQ is freed
-> > before cancel_work_sync(), including when probe fails.  A cancel left in
-> > .remove() cannot get that order.  Initializing the work first also stops
-> > a pending watchdog interrupt from queuing an uninitialized work item.
-> > Probe currently calls INIT_WORK() only after devm_request_irq().
-> >=20
-> > This issue was identified during our ongoing static-analysis research
-> > while reviewing kernel code.
-> >=20
-> > Fixes: 23290c7bc190 ("net: airoha: Introduce Airoha NPU support")
-> > Cc: stable@vger.kernel.org # 6.15+
-> > Assisted-by: LLM
-> > Co-developed-by: Ijae Kim <ae878000@gmail.com>
-> > Signed-off-by: Ijae Kim <ae878000@gmail.com>
-> > Signed-off-by: Myeonghun Pak <mhun512@gmail.com>
->=20
-> I guess this is net-next material, it is just an optimization, not a real=
- fix.
-> Anyway:
+Fixes: 0fa49df4222f ("media: mtk-jpegdec: support jpegdec multi-hardware")
+Fixes: dedc21500334 ("media: mtk-jpegdec: add jpeg decode worker interface")
+Fixes: 934e8bccac95 ("mtk-jpegenc: support jpegenc multi-hardware")
+Fixes: 5fb1c2361e56 ("mtk-jpegenc: add jpeg encode worker interface")
+Signed-off-by: Kyrie Wu <kyrie.wu@mediatek.com>
+Reviewed-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+---
+ drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c | 8 ++++++++
+ 1 file changed, 8 insertions(+)
 
-Sorry I misread the commit message, this is actually for net, thx for fixin=
-g it.
+diff --git a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
+index 7856a556c..d0fb68bc8 100644
+--- a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
++++ b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
+@@ -850,8 +850,12 @@ static struct vb2_v4l2_buffer *mtk_jpeg_buf_remove(struct mtk_jpeg_ctx *ctx,
+ static void mtk_jpeg_enc_stop_streaming(struct vb2_queue *q)
+ {
+ 	struct mtk_jpeg_ctx *ctx = vb2_get_drv_priv(q);
++	struct mtk_jpeg_dev *jpeg = ctx->jpeg;
+ 	struct vb2_v4l2_buffer *vb;
+ 
++	if (jpeg->variant->multi_core)
++		vb2_wait_for_all_buffers(q);
++
+ 	while ((vb = mtk_jpeg_buf_remove(ctx, q->type)))
+ 		v4l2_m2m_buf_done(vb, VB2_BUF_STATE_ERROR);
+ }
+@@ -859,6 +863,7 @@ static void mtk_jpeg_enc_stop_streaming(struct vb2_queue *q)
+ static void mtk_jpeg_dec_stop_streaming(struct vb2_queue *q)
+ {
+ 	struct mtk_jpeg_ctx *ctx = vb2_get_drv_priv(q);
++	struct mtk_jpeg_dev *jpeg = ctx->jpeg;
+ 	struct vb2_v4l2_buffer *vb;
+ 
+ 	/*
+@@ -866,6 +871,9 @@ static void mtk_jpeg_dec_stop_streaming(struct vb2_queue *q)
+ 	 * Before STREAMOFF, we still have to return the old resolution and
+ 	 * subsampling. Update capture queue when the stream is off.
+ 	 */
++	if (jpeg->variant->multi_core)
++		vb2_wait_for_all_buffers(q);
++
+ 	if (ctx->state == MTK_JPEG_SOURCE_CHANGE &&
+ 	    V4L2_TYPE_IS_CAPTURE(q->type)) {
+ 		struct mtk_jpeg_src_buf *src_buf;
+-- 
+2.51.0.windows.2
 
-Regards,
-Lorenzo
-
->=20
-> Acked-by: Lorenzo Bianconi <lorenzo.bianconi@oss.qualcomm.com>
->=20
-> > ---
-> >  drivers/net/ethernet/airoha/airoha_npu.c | 18 ++++++------------
-> >  1 file changed, 6 insertions(+), 12 deletions(-)
-> >=20
-> > diff --git a/drivers/net/ethernet/airoha/airoha_npu.c b/drivers/net/eth=
-ernet/airoha/airoha_npu.c
-> > index 5bb4817a898d..4d3195eb00f7 100644
-> > --- a/drivers/net/ethernet/airoha/airoha_npu.c
-> > +++ b/drivers/net/ethernet/airoha/airoha_npu.c
-> > @@ -5,6 +5,7 @@
-> >   */
-> > =20
-> >  #include <linux/devcoredump.h>
-> > +#include <linux/devm-helpers.h>
-> >  #include <linux/firmware.h>
-> >  #include <linux/platform_device.h>
-> >  #include <linux/of_net.h>
-> > @@ -751,12 +752,15 @@ static int airoha_npu_probe(struct platform_devic=
-e *pdev)
-> >  		if (irq < 0)
-> >  			return irq;
-> > =20
-> > +		err =3D devm_work_autocancel(dev, &core->wdt_work,
-> > +					   airoha_npu_wdt_work);
-> > +		if (err)
-> > +			return err;
-> > +
-> >  		err =3D devm_request_irq(dev, irq, airoha_npu_wdt_handler,
-> >  				       IRQF_SHARED, "airoha-npu-wdt", core);
-> >  		if (err)
-> >  			return err;
-> > -
-> > -		INIT_WORK(&core->wdt_work, airoha_npu_wdt_work);
-> >  	}
-> > =20
-> >  	/* wlan IRQ lines */
-> > @@ -803,18 +807,8 @@ static int airoha_npu_probe(struct platform_device=
- *pdev)
-> >  	return 0;
-> >  }
-> > =20
-> > -static void airoha_npu_remove(struct platform_device *pdev)
-> > -{
-> > -	struct airoha_npu *npu =3D platform_get_drvdata(pdev);
-> > -	int i;
-> > -
-> > -	for (i =3D 0; i < ARRAY_SIZE(npu->cores); i++)
-> > -		cancel_work_sync(&npu->cores[i].wdt_work);
-> > -}
-> > -
-> >  static struct platform_driver airoha_npu_driver =3D {
-> >  	.probe =3D airoha_npu_probe,
-> > -	.remove =3D airoha_npu_remove,
-> >  	.driver =3D {
-> >  		.name =3D "airoha-npu",
-> >  		.of_match_table =3D of_airoha_npu_match,
-> >=20
-> > base-commit: 238650ef6c7c7cca08e032527329424c9fbd70e5
-> > --=20
-> > 2.53.0
-> >=20
-
-
-
---ROMP+kOHbe7PUdpe
-Content-Type: application/pgp-signature; name=signature.asc
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCarI/iwAKCRA6cBh0uS2t
-rCBBAQDy2x6M/fi6duRrhEFZhDWaiM2e2dJo7Uiggfh389sWAQD/RM73V4pw21iD
-BWMNWNTf6UaF0dWbwvNONop0kmUkHQI=
-=o0gu
------END PGP SIGNATURE-----
-
---ROMP+kOHbe7PUdpe--
 
