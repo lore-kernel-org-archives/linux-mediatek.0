@@ -4,94 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 82802C982FF
-	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Sep 2026 09:16:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 19124C982F1
+	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Sep 2026 09:39:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=OQiTHq4KuPn/gITELzrX+BVB0tlu7L8seIzjUVZvIe0=; b=H5l2DWzfEYwW04LSzWiwpQ2gzp
-	KqtdBLH4N7aXIVYcHYkKam+fF60FBD2VkiXeP7z2MqrRjXdTWYUwrdxowHWBywlB9aE+qPB6NSWVi
-	mbwWgqECEFUyK5ZmAFVMOgC434fJ6izHoh0u5eZGzJa5O5vCPotqjFt4CqU3T0r+686xRR576COJk
-	ajzz6fKhIn81Qb9ybrbHsn2jJxWKQGhen4NyN4HO3mzoeujok1Ot+rXU9pW8f0UanPJ50r/gFV9gf
-	vwAG6s3gx6q1jB/opCenOfmbRGvQQGnxUvQq6SifXNEcgJLiRlIOah6lvIpfsz/Uc4DfE55FcCfCv
-	DBelpMWQ==;
+	bh=hq5YyT/zdVF7V5KC77tC6utWfg4F8JVDMC2qfMUXaw8=; b=gRhtfQ0ey6leTCbQCZqSyMKZQv
+	T7x85ggzfYEC3E9fCdVAvceB666wy4kG3XXkzEqKlatMgwBuTsssI5IU2oV9/Zb3VuBk4xafMFPew
+	V0NQBzXukbFSaX+7FI71BxhkpW/dhrZOeGdhg5AJ5j7rZ5Gzt0K/Ls0gG6WvGQo08oldMoOosFaMV
+	CNDDY3qCthI3acYfduOh9aSGMotN4BeLnAFswZelXdXWsGjvmEYeS2+x2gbda2/AI+nfJifGSlsKI
+	EtV12QVOAhp6iyxr5TX2pzrAVPVTegBTegz2DF7eNLJ0e22ClKDwiUircyMragRUbTbP+zIBEnifT
+	DGGWsm7Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x8wbi-00000004scT-1ZkK;
-	Tue, 22 Sep 2026 09:16:10 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1x8wxo-00000004wWG-2u2d;
+	Tue, 22 Sep 2026 09:39:00 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x8wbW-00000004sHd-0ULU;
-	Tue, 22 Sep 2026 09:15:58 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Type:Content-Transfer-Encoding
-	:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:
-	Sender:Reply-To:Content-ID:Content-Description;
-	bh=OQiTHq4KuPn/gITELzrX+BVB0tlu7L8seIzjUVZvIe0=; b=PZpjG3/wULufPCAw/ClkPZR9hT
-	REQczqaEBn9tu2HHO4k9NQYKpodVIGuMgJl2U8Vr9EceV1TexXPidRPFmIwN/axuetWoaxayPnlGN
-	errVBYfaDdTd8jsP1yfTQumOIlw/iXiOLCCFcpAZtRnAkZSzg6Vj3i5i80gc9ejjCvxGIZEF1a/5k
-	xzDbGB/WCP/HhO6OCvijxJUpGy8zsP0UIyGvD/iNW/a3C91FPRenNvfF9k9qIs0XyPSacSwYhrIBa
-	m55RFYjg3Q6Jt2HyLGKNQTwrLw8cWGg6iVva3ZsSCdGxW0pq4d5mk9xY7+YP/M5q6tAn7zsCIORAx
-	G77w04Zw==;
-Received: from mailgw02.mediatek.com ([216.200.240.185])
-	by desiato.infradead.org with esmtps (Exim 4.99.2 #2 (Red Hat Linux))
-	id 1x8wbR-0000000DLa1-2FJY;
-	Tue, 22 Sep 2026 09:15:55 +0000
-X-UUID: 31f07ad0b66611f1acbe4559397dec65-20260922
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=OQiTHq4KuPn/gITELzrX+BVB0tlu7L8seIzjUVZvIe0=;
-	b=U3/nP7PNiH6XtbwA+MXwHaEAOOwDAxzG+MUkVLH9cG0nPI5BqI569wUfvBpdeMCSTaBwEdysfhXV1ep25Py17cgGVyxrd3rdRdXHn8SMMn9fcTi00Dr1fmb6br7AFhRiMQdGNVnWDSCFyDe87Q3w0YzmQB9DuhI991AhQtfRtAk=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.19,REQID:b6c850dd-a2e3-42a4-b615-6e90334c7bdd,IP:0,U
-	RL:0,TC:0,Content:0,EDM:-25,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
-	N:release,TS:-25
-X-CID-META: VersionHash:7db8b62,CLOUDID:d561697c-2058-4298-90ad-1156c3f1dffd,B
-	ulkID:nil,BulkQuantity:0,SF:81|82|102|836|865|888|898,TC:-5,Content:0|15|5
-	0|99,EDM:2,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:-1,COL:0,OSI:0,O
-	SA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 2,SSN|SDN
-X-CID-BAS: 2,SSN|SDN,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: 31f07ad0b66611f1acbe4559397dec65-20260922
-Received: from mtkmbs14n1.mediatek.inc [(172.21.101.75)] by mailgw02.mediatek.com
-	(envelope-from <kyrie.wu@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 908050397; Tue, 22 Sep 2026 02:15:46 -0700
-Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.29; Tue, 22 Sep 2026 17:15:44 +0800
-Received: from gcnsap21.gcn.mediatek.inc (10.17.81.22) by
- mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.2562.29 via Frontend Transport; Tue, 22 Sep 2026 17:15:43 +0800
-From: Kyrie Wu <kyrie.wu@mediatek.com>
-To: Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>, Bin Liu <bin.liu@mediatek.com>,
-	kyrie wu <kyrie.wu@mediatek.corp-partner.google.com>, Hans Verkuil
-	<hverkuil@kernel.org>, irui wang <irui.wang@mediatek.com>, Nicolas Dufresne
-	<nicolas.dufresne@collabora.com>, <linux-media@vger.kernel.org>,
-	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>
-CC: Kyrie Wu <kyrie.wu@mediatek.com>
-Subject: [PATCH v17 11/12] media: mediatek: jpeg: add jpeg compatible
-Date: Tue, 22 Sep 2026 17:15:28 +0800
-Message-ID: <20260922091530.241762-12-kyrie.wu@mediatek.com>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20260922091530.241762-1-kyrie.wu@mediatek.com>
-References: <20260922091530.241762-1-kyrie.wu@mediatek.com>
+	id 1x8wxn-00000004wVh-0aUe;
+	Tue, 22 Sep 2026 09:38:59 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by sea.source.kernel.org (Postfix) with ESMTP id C24C4432E6;
+	Tue, 22 Sep 2026 09:38:58 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 126C71F000FF;
+	Tue, 22 Sep 2026 09:38:58 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1790069938;
+	bh=hq5YyT/zdVF7V5KC77tC6utWfg4F8JVDMC2qfMUXaw8=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To;
+	b=JIJXExLCBRy8py2yJQzX13tW7nDrsqlkEnjylva0JeYxMGf44F8QnnQjU41qxASC0
+	 FzLouRRO/Y8FaxGuPZQqs6gHsPCTAcmRf/go6vykKXFE+WfeAUImz1S91Gm1oiOmVW
+	 QMZ0Pprmqgz3XLFt8qbRdFWAtGpB/qIjLuyc7g1KII6nrtUJqolJa6C7tJJs4PB7rH
+	 1oQnflKSeD5njANlp1Jk9AZFTU3Ol5ZEZTdsolEsNDjnPgoYR7HeO1g4XBN+sA3wbW
+	 +GPKp0WHhjE2bjdEPRGiHCBQJRnEccRnTSdpPp4i0c2DCZz/WlNZ1qESl8AI6Vu1du
+	 81KD2oLNxBbbA==
+Received: by finisterre.sirena.org.uk (Postfix, from userid 1000)
+	id BD00C1AC56BF; Tue, 22 Sep 2026 10:38:54 +0100 (BST)
+Date: Tue, 22 Sep 2026 11:38:54 +0200
+From: Mark Brown <broonie@kernel.org>
+To: James Calligeros <jcalligeros99@gmail.com>
+Cc: Martin =?utf-8?Q?Povi=C5=A1er?= <povik+lin@cutebit.org>,
+	Liam Girdwood <lgirdwood@gmail.com>, Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>, Sven Peter <sven@kernel.org>,
+	Janne Grunau <j@jannau.net>, Neal Gompa <neal@gompa.dev>,
+	David Rhodes <david.rhodes@cirrus.com>,
+	Richard Fitzgerald <rf@opensource.cirrus.com>,
+	Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>,
+	Ulf Hansson <ulfh@kernel.org>,
+	Amit Kucheria <amit.kucheria@linaro.org>,
+	"Rafael J. Wysocki" <rafael.j.wysocki@intel.com>,
+	Lars-Peter Clausen <lars@metafoo.de>, Vinod Koul <vkoul@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Shenghao Ding <shenghao-ding@ti.com>, Kevin Lu <kevin-lu@ti.com>,
+	Baojun Xu <baojun.xu@ti.com>, Sen Wang <sen@ti.com>,
+	James Schulman <james.schulman@cirrus.com>, asahi@lists.linux.dev,
+	linux-sound@vger.kernel.org, devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	patches@opensource.cirrus.com, Takashi Iwai <tiwai@suse.de>,
+	linux-mediatek@lists.infradead.org,
+	Hector Martin <marcan@marcan.st>,
+	Sasha Finkelstein <k@chaosmail.tech>
+Subject: Re: [PATCH 16/28] ASoC: apple: Add macaudio machine driver
+Message-ID: <arJMrsl45g2_bLPB@sirena.co.uk>
+References: <20260920-macaudio-v1-0-741cc20a74e5@gmail.com>
+ <20260920-macaudio-v1-16-741cc20a74e5@gmail.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-MTK: N
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260922_101553_924539_3A50783B 
-X-CRM114-Status: GOOD (  11.91  )
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="J3S3MW2YA3wzFenM"
+Content-Disposition: inline
+In-Reply-To: <20260920-macaudio-v1-16-741cc20a74e5@gmail.com>
+X-Cookie: Too clever is dumb.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,106 +93,299 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add jpeg dec and enc compatible for mt8196
 
-Signed-off-by: Kyrie Wu <kyrie.wu@mediatek.com>
-Reviewed-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
----
- .../platform/mediatek/jpeg/mtk_jpeg_core.c    | 36 +++++++++++++++++++
- .../platform/mediatek/jpeg/mtk_jpeg_dec_hw.c  |  3 ++
- .../platform/mediatek/jpeg/mtk_jpeg_enc_hw.c  |  3 ++
- 3 files changed, 42 insertions(+)
+--J3S3MW2YA3wzFenM
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-diff --git a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
-index 0907960db..8e96501a4 100644
---- a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
-+++ b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
-@@ -1919,6 +1919,20 @@ static struct mtk_jpeg_variant mtk8195_jpegenc_drvdata = {
- 	.jpeg_worker = mtk_jpegenc_worker,
- };
- 
-+static struct mtk_jpeg_variant mtk8196_jpegenc_drvdata = {
-+	.formats = mtk_jpeg_enc_formats,
-+	.num_formats = MTK_JPEG_ENC_NUM_FORMATS,
-+	.qops = &mtk_jpeg_enc_qops,
-+	.m2m_ops = &mtk_jpeg_multicore_enc_m2m_ops,
-+	.dev_name = "mtk-jpeg-enc",
-+	.ioctl_ops = &mtk_jpeg_enc_ioctl_ops,
-+	.out_q_default_fourcc = V4L2_PIX_FMT_YUYV,
-+	.cap_q_default_fourcc = V4L2_PIX_FMT_JPEG,
-+	.multi_core = true,
-+	.jpeg_worker = mtk_jpegenc_worker,
-+	.support_34bit = true,
-+};
-+
- static const struct mtk_jpeg_variant mtk8195_jpegdec_drvdata = {
- 	.formats = mtk_jpeg_dec_formats,
- 	.num_formats = MTK_JPEG_DEC_NUM_FORMATS,
-@@ -1932,6 +1946,20 @@ static const struct mtk_jpeg_variant mtk8195_jpegdec_drvdata = {
- 	.jpeg_worker = mtk_jpegdec_worker,
- };
- 
-+static const struct mtk_jpeg_variant mtk8196_jpegdec_drvdata = {
-+	.formats = mtk_jpeg_dec_formats,
-+	.num_formats = MTK_JPEG_DEC_NUM_FORMATS,
-+	.qops = &mtk_jpeg_dec_qops,
-+	.m2m_ops = &mtk_jpeg_multicore_dec_m2m_ops,
-+	.dev_name = "mtk-jpeg-dec",
-+	.ioctl_ops = &mtk_jpeg_dec_ioctl_ops,
-+	.out_q_default_fourcc = V4L2_PIX_FMT_JPEG,
-+	.cap_q_default_fourcc = V4L2_PIX_FMT_YUV420M,
-+	.multi_core = true,
-+	.jpeg_worker = mtk_jpegdec_worker,
-+	.support_34bit = true,
-+};
-+
- static const struct of_device_id mtk_jpeg_match[] = {
- 	{
- 		.compatible = "mediatek,mt8173-jpgdec",
-@@ -1953,6 +1981,14 @@ static const struct of_device_id mtk_jpeg_match[] = {
- 		.compatible = "mediatek,mt8195-jpgdec",
- 		.data = &mtk8195_jpegdec_drvdata,
- 	},
-+	{
-+		.compatible = "mediatek,mt8196-jpgenc",
-+		.data = &mtk8196_jpegenc_drvdata,
-+	},
-+	{
-+		.compatible = "mediatek,mt8196-jpgdec",
-+		.data = &mtk8196_jpegdec_drvdata,
-+	},
- 	{},
- };
- 
-diff --git a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_dec_hw.c b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_dec_hw.c
-index 426150bff..07452249b 100644
---- a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_dec_hw.c
-+++ b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_dec_hw.c
-@@ -45,6 +45,9 @@ static const struct of_device_id mtk_jpegdec_hw_ids[] = {
- 	{
- 		.compatible = "mediatek,mt8195-jpgdec-hw",
- 	},
-+	{
-+		.compatible = "mediatek,mt8196-jpgdec-hw",
-+	},
- 	{},
- };
- MODULE_DEVICE_TABLE(of, mtk_jpegdec_hw_ids);
-diff --git a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_enc_hw.c b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_enc_hw.c
-index 47e95d4ac..c7954af0e 100644
---- a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_enc_hw.c
-+++ b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_enc_hw.c
-@@ -51,6 +51,9 @@ static const struct of_device_id mtk_jpegenc_drv_ids[] = {
- 	{
- 		.compatible = "mediatek,mt8195-jpgenc-hw",
- 	},
-+	{
-+		.compatible = "mediatek,mt8196-jpgenc-hw",
-+	},
- 	{},
- };
- MODULE_DEVICE_TABLE(of, mtk_jpegenc_drv_ids);
--- 
-2.51.0.windows.2
+On Sun, Sep 20, 2026 at 02:53:55PM +1000, James Calligeros wrote:
 
+> Apple Silicon Macs have a complex audio subsystem consisting
+> of an I2S peripheral (MCA) and multiple codecs of various
+> models and capabilities. Some machines have a basic mono
+> speaker with hardware downmix, while others have a very
+> intricate stereo system consisting of multiple codecs and
+> drivers per L/R channel. Some machines report voice coil
+> voltage and current information back to the SoC, and others
+> do not. All machines have a headset jack.
+
+> +config SND_SOC_APPLE_MACAUDIO
+> +	tristate "Sound support for Apple Silicon Macs"
+> +	depends on ARCH_APPLE || COMPILE_TEST
+> +	select SND_SOC_APPLE_MCA
+> +	select SND_SIMPLE_CARD_UTILS
+
+Do we actually use simple-card?
+
+> --- a/sound/soc/apple/Makefile
+> +++ b/sound/soc/apple/Makefile
+> @@ -2,3 +2,7 @@
+>  snd-soc-apple-mca-y	:=3D mca.o
+> =20
+>  obj-$(CONFIG_SND_SOC_APPLE_MCA)	+=3D snd-soc-apple-mca.o
+> +
+> +snd-soc-macaudio-objs	:=3D macaudio.o
+> +
+> +obj-$(CONFIG_SND_SOC_APPLE_MACAUDIO)	+=3D snd-soc-macaudio.o
+
+Note the -y vs -objs style difference here.
+
+> @@ -0,0 +1,1729 @@
+> +// SPDX-License-Identifier: GPL-2.0-only
+> +/*
+> + * ASoC machine driver for Apple Silicon Macs
+> + *
+
+Please kep the entire comment block C++ so things look more consistent.
+
+> +static void macaudio_vlimit_unlock(struct macaudio_snd_data *ma, bool un=
+lock)
+> +{
+
+> +	case AMP_TAS5770:
+> +		if (unlock)
+> +			max =3D TAS5770_0DB;
+> +		else
+> +			max =3D 1; //TAS5770_DB(ma->cfg->safe_vol);
+> +		break;
+> +	case AMP_SN012776:
+> +		if (unlock)
+> +			max =3D SN012776_0DB;
+> +		else
+> +			max =3D 1; //SN012776_DB(ma->cfg->safe_vol);
+> +		break;
+
+What's going on with those comments?
+
+> +static void macaudio_vlimit_update(struct macaudio_snd_data *ma)
+> +{
+
+> +
+> +	/* Check that *every* limited control is locked by the same owner */
+> +	list_for_each_entry(kctl, &ma->card.snd_card->controls, list) {
+> +		if (!snd_soc_control_matches(kctl, volume_control_names[ma->cfg->amp]))
+> +			continue;
+
+This is used from the volume limit timeout work which doesn't hold the
+controls_rwsem, userspace can add or remove user controls which would
+change the list so the work needs to lock the controls list.
+
+> +/*
+> + * Parse one DPCM backend from the devicetree. This means taking one
+> + * of the CPU DAIs and combining it with one or more CODEC DAIs.
+> + */
+> +static int macaudio_parse_of_be_dai_link(struct macaudio_snd_data *ma,
+> +				struct snd_soc_dai_link *link,
+> +				int be_index, int ncodecs_per_be,
+> +				struct device_node *cpu,
+> +				struct device_node *codec)
+
+> +	ret =3D macaudio_parse_of_component(cpu, be_index, link->cpus);
+> +	if (ret)
+> +		return dev_err_probe(ma->card.dev, ret, "parsing CPU DAI of link '%s' =
+at %pOF\n",
+> +				     link->name, codec);
+
+Cut'n'paste with logging the codec node.
+
+> +static int macaudio_get_codec_idle_props(struct device_node *np,
+> +					 struct ma_codec_idle *idle, int i,
+> +					 int be_index, int ncodecs_per_cpu)
+> +{
+> +	char propname[32];
+> +	int ret, sys_codec;
+> +
+> +	/*
+> +	 * Depending on the BE index on the DAI, we need to offset our i
+> +	 */
+> +	sys_codec =3D i + (be_index * ncodecs_per_cpu);
+> +
+> +	snprintf(propname, 32, "dai-tdm-idle-mode-%d", sys_codec);
+> +	ret =3D of_property_match_string(np, propname, "zero");
+> +	if (!ret) {
+> +		idle->idle_mode =3D SND_SOC_DAI_TDM_IDLE_ZERO;
+> +	} else {
+> +		ret =3D of_property_match_string(np, propname, "pulldown");
+> +		if (!ret)
+> +			idle->idle_mode =3D SND_SOC_DAI_TDM_IDLE_PULLDOWN;
+> +		else
+> +			return ret;
+> +	}
+
+Should we warn on unknown values?
+
+> +static int macaudio_dpcm_hw_params(struct snd_pcm_substream *substream,
+> +				   struct snd_pcm_hw_params *params)
+> +{
+> +	struct snd_soc_pcm_runtime *rtd =3D snd_soc_substream_to_rtd(substream);
+> +	struct macaudio_snd_data *ma =3D snd_soc_card_get_drvdata(rtd->card);
+> +	struct macaudio_link_props *props =3D &ma->link_props[rtd->dai_link->id=
+];
+> +	struct snd_soc_dai *cpu_dai =3D snd_soc_rtd_to_cpu(rtd, 0);
+> +	struct snd_interval *rate =3D hw_param_interval(params,
+> +						      SNDRV_PCM_HW_PARAM_RATE);
+> +	int bclk_ratio =3D macaudio_get_runtime_bclk_ratio(substream);
+> +	int i;
+> +
+> +	if (props->is_sense) {
+> +		rate->min =3D rate->max =3D cpu_dai->symmetric_rate;
+> +		return 0;
+> +	}
+
+It feels like this DAI ought to have separate ops...  Also, for the
+sense link will we definitely already have a rate set up?
+
+> +static int macaudio_be_trigger(struct snd_pcm_substream *substream, int =
+cmd)
+> +{
+> +	struct snd_soc_pcm_runtime *rtd =3D snd_soc_substream_to_rtd(substream);
+> +	struct macaudio_snd_data *ma =3D snd_soc_card_get_drvdata(rtd->card);
+> +	struct macaudio_link_props *props =3D &ma->link_props[rtd->dai_link->id=
+];
+> +
+> +	if (props->is_speakers && substream->stream =3D=3D SNDRV_PCM_STREAM_PLA=
+YBACK) {
+> +		switch (cmd) {
+> +		case SNDRV_PCM_TRIGGER_START:
+> +		case SNDRV_PCM_TRIGGER_RESUME:
+> +		case SNDRV_PCM_TRIGGER_PAUSE_RELEASE:
+> +			ma->bes_active |=3D BIT(rtd->dai_link->id);
+> +			break;
+> +		case SNDRV_PCM_TRIGGER_SUSPEND:
+> +		case SNDRV_PCM_TRIGGER_PAUSE_PUSH:
+> +		case SNDRV_PCM_TRIGGER_STOP:
+> +			ma->bes_active &=3D ~BIT(rtd->dai_link->id);
+> +			break;
+
+Do we have adequate locking here, this is shared between BEs but the BEs
+have their own locks?
+
+> +static int macaudio_be_assign_tdm(struct snd_soc_pcm_runtime *rtd)
+> +{
+
+> +	for_each_rtd_codec_dais(rtd, i, dai) {
+
+> +		if (props->codecs[i].idle_mode) {
+> +			ret =3D snd_soc_dai_set_tdm_idle(dai, props->codecs[i].idle_mask,
+> +						       0, props->codecs[i].idle_mode, 0);
+> +		}
+> +	}
+> +
+> +	return 0;
+
+We store ret but don't pay attention to the result.
+
+> +#define CHECK(call, pattern, value, min)                                =
+       \
+> +	{                                                                      \
+> +		int ret =3D call(card, pattern, value);                          \
+> +		int err =3D (ret >=3D 0 && ret < min) ? -ERANGE : ret;             \
+> +		if (err < 0) {                                                 \
+> +			dev_err(card->dev, "%s on '%s': %d\n", #call, pattern, \
+> +				ret);                                          \
+> +			if (please_blow_up_my_speakers < 2)                    \
+> +				return err;                                    \
+> +		} else {                                                       \
+> +			dev_dbg(card->dev, "%s on '%s': %d hits\n", #call,     \
+> +				pattern, ret);                                 \
+> +		}                                                              \
+> +	}
+> +
+> +#define CHECK_CONCAT(call, suffix, value) \
+> +	{ \
+> +		snprintf(buf, sizeof(buf), "%s%s", prefix, suffix); \
+> +		CHECK(call, buf, value, 1); \
+> +	}
+
+This only requires one match, things might go wrong for a stereo setup.
+
+> +static const struct snd_kcontrol_new macaudio_hp_mux =3D
+> +	SOC_DAPM_ENUM("Headphones Playback Mux", macaudio_hp_mux_enum);
+
+> +	SND_SOC_DAPM_SPK("Speaker (Static)", NULL),
+
+Is this used?
+
+> +	SND_SOC_DAPM_MUX("Headphone Playback Mux", SND_SOC_NOPM, 0, 0, &macaudi=
+o_hp_mux),
+
+Headphone or Headphones?
+
+> +static int macaudio_slk_put(struct snd_kcontrol *kcontrol, struct snd_ct=
+l_elem_value *uvalue)
+> +{
+> +	struct snd_soc_card *card =3D snd_kcontrol_chip(kcontrol);
+> +	struct macaudio_snd_data *ma =3D snd_soc_card_get_drvdata(card);
+> +
+> +	if (!ma->speaker_lock_owner)
+> +		return -EPERM;
+> +
+> +	if (uvalue->value.integer.value[0] !=3D SPEAKER_MAGIC_VALUE)
+> +		return -EINVAL;
+> +
+> +	/* Serves as a notification that the lock was lost at some point */
+> +	if (ma->speaker_volume_was_locked) {
+> +		ma->speaker_volume_was_locked =3D false;
+> +		return -ETIMEDOUT;
+> +	}
+> +
+> +	mutex_lock(&ma->volume_lock_mutex);
+
+Shouldn't we take the mutex before checking (and potentially changing)
+the state?  Otherwise we've got TOCTOU issues.
+
+> +static void macaudio_slk_unlock(struct snd_kcontrol *kcontrol)
+> +{
+> +	struct snd_soc_card *card =3D snd_kcontrol_chip(kcontrol);
+> +	struct macaudio_snd_data *ma =3D snd_soc_card_get_drvdata(card);
+> +
+> +	ma->speaker_lock_owner =3D NULL;
+> +	ma->speaker_lock_timeout =3D 0;
+> +	macaudio_vlimit_update(ma);
+> +}
+
+This seems to similarly be missing locking.
+
+> +/*	enable	amp		speakers	stereo	gain	safe_vol */
+> +struct macaudio_platform_cfg macaudio_j180_cfg =3D {
+> +	false,	AMP_SN012776,	SPKR_1W1T,	false,	10,	-20,
+> +};
+
+These should be static, they're not used outside this file.  Probably
+also const.
+
+> +static const struct of_device_id macaudio_snd_device_id[]  =3D {
+
+> +	/* j375    AID10   sn012776    15      1=D7 1W */
+> +	{ .compatible =3D "apple,j375-macaudio", .data =3D &macaudio_j37x_j47x_=
+cfg },
+
+The j47x entries in the table use 20 not 15.
+
+> +static void macaudio_snd_platform_remove(struct platform_device *pdev)
+> +{
+> +	struct macaudio_snd_data *ma =3D dev_get_drvdata(&pdev->dev);
+> +
+> +	cancel_delayed_work_sync(&ma->lock_timeout_work);
+> +}
+
+What ensures that lock_update_work is cancelled?
+
+--J3S3MW2YA3wzFenM
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmqyTK0ACgkQJNaLcl1U
+h9A19wf/fkTwF4NVPToEqCvVj16AyCprlKjMn1WdPIlRrrtatsDtyY5nq766qxdg
+fQXIjO4EKgsMxxPdcbuud62kEHITQAHHec0a/z4EuYshi0IYyDs5YcxN8ev5NzGV
+lIugSSezpIm6z9tv6skF/XFxhijMQgHIKc1f6Pwm0EpT3XAW5tNdpWvYhGnGwmXH
+b29RJbLLZRGngUyRXBwGOBSfa55A8JnqGgER8UswOi/+qI1rJOdUQ6YuuNBpDYbq
+chHJViaseajkwym5RyIzBrXZ/pbXKtxvAVI3+g7jxpuPmH9Kg9fVwclS4XygWtud
+om4S5aS+S2w9qHProWNSQvVc4eBQjA==
+=+POr
+-----END PGP SIGNATURE-----
+
+--J3S3MW2YA3wzFenM--
 
