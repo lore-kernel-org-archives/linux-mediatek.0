@@ -4,117 +4,107 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 69612C982FA
-	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Sep 2026 13:26:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F3324C98302
+	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Sep 2026 13:47:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ofxcWs5wvUKXDp1OvqNuIaoTkk52/+tItoWNT6uQhGU=; b=sRJk6ciIkW/kFek4rdNSDSTpVO
-	SvQra6OZRxJTZvnlutdk/bEQU4dYJ1+NvWmtq6LRLPyjGM2/Hm3X0yyeg1e4jnIE6EjgxIvl6zjQ3
-	SIDQOzV4FInerN/uK4JnSqB2J6fp+CF1eDUVO92J8ZPUFDcAFL4rOjwCDGawPqVvXDlnxC8HP3ULe
-	QzU7f7lCKDLVUdbMp99xZoNND+qP0VGCG8Xd83FXgIXhPwHGrgxCHZklD4ucMpLZGIQm8I6XNspSu
-	Hq2/Y2u1UVh6MNq0Aft+o3VtWOlmwHRLEpU+JBU4fWcMCpOC62ZjKjXlwkgz35sKTn7W/VYN7x6fC
-	8oVgrweA==;
+	bh=rf3NcYvAmItVxbqtkxxzSpUPurh9H42FsWoY744N9zk=; b=dSthzAcwZI+huBhaYzt47A09UT
+	gjq/TQyunmy9T5UlGrKTsTJaI41Ael7f7lvQQiYHied4dtuWoirjeBISUocW0SuqyzWCl6eTtvhl0
+	p0KTtWf9407dyIMMT7ayvDGTykKzJLfSaZqSibGNktXNqiIMgdicaBswzIBMlzp7LgZY3J/efRIgs
+	8Cyr+85SETGhXNkYfPtVDT8vZ0FFxReTWk/amXH9O88ZsG1OvbQ2U1r1O28C7/0p+3QBcpF0wy4Nz
+	4p75/I44Oa9b6yFnXM29z+SQ+AYxtxC3noppFPGzjdqr0AweSlDol4LxgmbNsScgZaxW4E2ppl+AU
+	pbN95btg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x90W8-00000005VtF-0qfW;
-	Tue, 22 Sep 2026 13:26:40 +0000
-Received: from mail-ej2-x06.google.com ([2a00:1450:4864:34::6])
+	id 1x90pv-00000005agT-2JRH;
+	Tue, 22 Sep 2026 13:47:07 +0000
+Received: from mail-pz2-x0f.google.com ([2607:f8b0:4864:3b::f])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x90W6-00000005VsX-0yYr
+	id 1x90pt-00000005afT-0HFN
 	for linux-mediatek@lists.infradead.org;
-	Tue, 22 Sep 2026 13:26:39 +0000
-Received: by mail-ej2-x06.google.com with SMTP id a640c23a62f3a-c29440ee0e7so280769766b.0
-        for <linux-mediatek@lists.infradead.org>; Tue, 22 Sep 2026 06:26:37 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1790083596; cv=none;
-        d=google.com; s=arc-20260327;
-        b=R/TprBeSC8XWiNIxHlybF1/0//4ZAHx06fzWgM6jCp31eG1xywqjn8NN5JhQiLXF5f
-         MAnuirqwLDDh1/NoKnXvc3UUwxwXV/ju5We3aIIH8klZycoNT1rJQsem3w5yEnaHdktC
-         UOUDG3DYUDNao6wGr0cU0ZY0TZq6nX/daDHHPDqqxLdm/RGkhgCqiw5NUCgxvG7TILBA
-         P961c/7o5xLWLBE96sTtlElvgCrG+49phi9bF2RjZ9vAKcEdMkzc0yC/jQRx2teT3LYU
-         0vNM1ya6d3rhGsm7Ty/sFdFOlR6JYfzsduzoXq0ul4FT+aZLsbfEMQGdYwuc4FPrrllw
-         KbuA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20260327;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=ofxcWs5wvUKXDp1OvqNuIaoTkk52/+tItoWNT6uQhGU=;
-        fh=vy+4+XrauinimdENN9YDyJ1UVzFanPcUXmwgkbYOW0E=;
-        b=QXxZd/G7VZOHsqlc2RAxLbawXI4PCJynA9R7uP7UWFW5b0I/8BnxrgjISF95bcZpRR
-         jwEmDCMr9CM/vhInm1qR3ZUFkixGanCmXDJPYeWOlhBTdCd09X+T60Y4ffvCJPDMMf+H
-         vYibpLG6mibVZuaTR8tPUnqxPx/4azIEFscPooDJ4mEPX5Qa+crXhCGfd7MEuUrHEG3K
-         /fNB/vx2PY9liTadW7BskEJKa+yPV1MXftrNgHjBy1PxDOoMWFdezfkWUi40zWSNEpT5
-         xtR15CcoSjlHD8G+NSHf12fdi8g7DqCdqyK7NJ8if8+9oVviclUCKIvf2UfbJ1wYNCPT
-         7uJg==;
-        darn=lists.infradead.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
+	Tue, 22 Sep 2026 13:47:06 +0000
+Received: by mail-pz2-x0f.google.com with SMTP id 41be03b00d2f7-cc433d52421so2482417a12.3
+        for <linux-mediatek@lists.infradead.org>; Tue, 22 Sep 2026 06:47:04 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1790083596; x=1790688396; darn=lists.infradead.org;
-        h=content-transfer-encoding:content-type:cc:to:subject:message-id
-         :date:from:in-reply-to:references:mime-version:from:to:cc:subject
-         :date:message-id:reply-to:content-type;
-        bh=ofxcWs5wvUKXDp1OvqNuIaoTkk52/+tItoWNT6uQhGU=;
-        b=QxR2Jg6sC+NJw97vsTDMB4QK94JLweFSKuI+aPPpQi8f2H+QrWBEnnN0TVGy0lS1yf
-         RNEWNpFyh/K3BhmWnXvFFBSdiQKmXLbkG3EEw4inJ4pNKfbip+tyHe1zWZsG6an9zo60
-         cPz/Sl4Enc001Hh59MCDxeGnAbEfUsP2dDXeeMs8YX25JJV6f5HntSAqkielhZV0Mb+n
-         CTp6KnuiRb1rY4QNu8YgBDA6NCBghV9OvmzVup0Aey0q+UyNhFZuGuSOP/aV7oznZyo3
-         tVdsttnMnckGHFW5W/aPnRtIxa76o3iIXH7Mji9oKuh9H0SdoitTwyAVx3tkrENWc/rX
-         R+7Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1790083596; x=1790688396;
-        h=content-transfer-encoding:content-type:cc:to:subject:message-id
-         :date:from:in-reply-to:references:mime-version:x-gm-gg
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+        d=gmail.com; s=20251104; t=1790084824; x=1790689624; darn=lists.infradead.org;
+        h=content-transfer-encoding:lines:status:content-disposition
+         :content-type:mime-version:references:in-reply-to:message-id:date
+         :subject:cc:to:from:from:to:cc:subject:date:message-id:reply-to
          :content-type;
-        bh=ofxcWs5wvUKXDp1OvqNuIaoTkk52/+tItoWNT6uQhGU=;
-        b=QTSi+UmngBNejfhh+oArhJKgua5VOaS0rEIEwslZnPgVfCjIbtZ6kh6Yr9Qz/oyr5W
-         /YPEN+YmgV9UIXk26989RABW0QcQfeqVuTOtVmuk8alzosi18lYGeR96ox/fe6V+b1rG
-         U9e+4T7JpGXxkbOXcZ78GpM8OUXQ1FtdVW1sh0Thcav1KipRSUUolg66UckMNPNIwukW
-         qfrXBT0VcFYu2RsR30bulncjKQCQqE6GqlJK8j51k+jz+gAbBRwkg/YQRkf1JnfQ7pLR
-         hz6Wa9tk8U3mSQ8VF91dR6+eD9BZuOm6NJh4YFahbfk8xdOij/qJNmQkj+TXjicIQz87
-         1eQA==
-X-Forwarded-Encrypted: i=1; AKwUvBzqIFGLnMMw0d9//AEBnJM7wU7TO1OfwS597CZBAcbG4FEgjMGWj6c6qk1f8VDSrv2xCHY9BGczPTFIpnNZIQ==@lists.infradead.org
-X-Gm-Message-State: AFuF++l5WKW1skLd1ZGa4zvHwOqs9cWGvtPvC4R5LI9A8DKrYVh3F5GT
-	OOWpK00C+68fVk7cldcvQiOFOUoAoHSvNpL3VBfFRzFmBY0fzoKen8GNfVLYpsEqhN/K4hNiZCz
-	uBQ5VdYbIpDy+3aKB4BQMVB93D6+Dwgc=
-X-Gm-Gg: AYBFou1y2f+HE722PUl9wkX7E5HEykeq3qpLgKf0UMw3SwRkQrZCBD/cHWl0je31Fxk
-	eLguLwhhCwqX63Hvn6iJNWI+Tvu4m5B98UxCJyBMeJUyJxVMIMCAwOBUE+teQwUbDXlbyo98+Ki
-	o/x4gKHPCnXH6qsy5G6vpvYKRCnQOtKI37SxDPtF09VwDwSjSFsEz6lwNz9VLG78O+c8JXzS6UV
-	ky3RgxkUFF3+UNTFuPanEZVWaIckY0Oav8BQqZ+7jIutiX/U9EuAArh/tDj90SWpTqHfw2oCTx4
-	t7lhAS9az10pCXO3k+JKGbe5B6tYJhVRzcc62OvdKvwSQsyKQT8U0e6tsQ==
-X-Received: by 2002:a17:907:962a:b0:c25:6c9a:88bc with SMTP id
- a640c23a62f3a-c2a156ed781mr1064393666b.19.1790083595818; Tue, 22 Sep 2026
- 06:26:35 -0700 (PDT)
+        bh=rf3NcYvAmItVxbqtkxxzSpUPurh9H42FsWoY744N9zk=;
+        b=i/5wrm6Fp5iCtU1TxIub0W1UYls+TOUusLI0axGG5Fa1/bUIEfOn3GAZRRfMCTExqB
+         Z0FlptCWcmob0YpAaKMfgpyyfVC50kqrB3IAgcprcXQAB2CU7SXeMJMNKuDbWae/2tNf
+         Sf76tP61OTrrkgXoBh56RE6kWj+PCcrQ6MM4jWQ880oQpTiWNuEEazd++k0qIPseoKim
+         PJLtSFCojRyllsrHhRx63OEndh9J/GCNK/dRJh6NWfDU/hInSWDCRYnaZeeXM8Lt5aP5
+         8aAAx3ThCkqiz7mozpA9XYSWjqCho4K0eRt5uSmbTykmWoBLLIEW4Jx6qYlsK3jWSjPw
+         6OuQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20260707; t=1790084824; x=1790689624;
+        h=content-transfer-encoding:lines:status:content-disposition
+         :content-type:mime-version:references:in-reply-to:message-id:date
+         :subject:cc:to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject
+         :date:message-id:reply-to:content-type;
+        bh=rf3NcYvAmItVxbqtkxxzSpUPurh9H42FsWoY744N9zk=;
+        b=UGgc2FcPr9aNuY6cTTu0CMZkTpUbcqVdfYoPtt4rpPZkqjI0d9DWnS22XI+Rl01vDY
+         MQh6av/PZcRt4UdylYjEP8/eoNjjwSUdtEOdjVqCMVyQE5ECcbV2ZS1mregI2zRMkrGS
+         O67zvR6yqzrHMVkhIMuSdP5DkWFUkTj58Y9lx228Drss9C41VElxmrNuPCCrbTx88k2M
+         +XYfWBnOYH+D+6KWqkhs2+ZaCTfHCm7sBZHGujOHpecS7a07gFuCtSGOnJYhJK0bhF/d
+         lz6lD9CrpehhrqAzOXhMkcYJ9O+1l7ktxpDrWKAiOTBl3sfI3qdmi/XiqZR8vt+4GJmp
+         YH1Q==
+X-Forwarded-Encrypted: i=1; AKwUvBzLbvMoZS3WewYonAEu4b2WgJqqanFb9oXwhAA6ixmp1lFH6yILxwUoG67JDCbaBxlAWmP2V6GbkJ9ydKYGpg==@lists.infradead.org
+X-Gm-Message-State: AFuF++kbYoid8kVaim/dvNpGdyLC35le3ESJ1rIGBhYoganhiASX2/yZ
+	mwGtaq+GQO8A60bt9EzbQEFGmbXI0WHwiLOJOUkpC7ORIGUHHdPELE6B
+X-Gm-Gg: AYBFou2OSVDztlskJ2ln/7X6L2BgjKUUy+R9ZwBFc25GhXTRSeJeaAIsfEgHkvE/bVt
+	ZYttWJlRZT9q4YEJ4k5rNl12+zzKERQlHmGRGEHvi5HB7b1J44ng6uoLkL47h9hU0NC1pOafZYC
+	1bVImU0aFKuShsmVJ4kKFWlGV9mL2gIGROqoP8LQQ4lPcLJDX2FCvh7AHlFOtGF7htr5Jse/qDH
+	cyYaUoqBXEIuVgtcc/wGYUVUoZKPIoIqlnV0vItB1KetlY+f+MSud/c2MStQ+fdTgZ9FCWLHREI
+	FAfZbI4UVvGVRHXBJV4geFZsHTLmpUyPZyCjcjXoQMu2vfDRpy49VLfuipAhMIgb+TOsEkKo/M0
+	uX3HS0Xo1kT1UgvK47fs9R+B64qZhSut1wsTXfUiiYvsGvODzoiJ1qIxI4Hz+L1Ww84CCLnyJm/
+	9+l1NtTebAWTzMsDop4JDptu0TNzjuyw6deAH77ix0uK1xkLXtOojwY8RBK5p2pNlGoRDHT2KKs
+	WkuEuT7x7HcmCJsgL2BDwpi/MyWh6SMJfS3L3o=
+X-Received: by 2002:a17:90b:35cb:b0:39e:6c69:f479 with SMTP id 98e67ed59e1d1-3a073262d85mr1337283a91.56.1790084823601;
+        Tue, 22 Sep 2026 06:47:03 -0700 (PDT)
+Received: from DESKTOP-VNSSJ2S.lan (59-127-145-64.hinet-ip.hinet.net. [59.127.145.64])
+        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-3a06caf4a73sm1381225a91.2.2026.09.22.06.46.59
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 22 Sep 2026 06:47:03 -0700 (PDT)
+From: Zhi-Jun You <hujy652@gmail.com>
+To: netdev-bot+sashiko@kernel.org
+Cc: Rex.Lu@mediatek.com,
+	andrew+netdev@lunn.ch,
+	angelogioacchino.delregno@collabora.com,
+	davem@davemloft.net,
+	edumazet@google.com,
+	hujy652@gmail.com,
+	kuba@kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	lorenzo@kernel.org,
+	matthias.bgg@gmail.com,
+	nbd@nbd.name,
+	netdev@vger.kernel.org,
+	pabeni@redhat.com,
+	sujuan.chen@mediatek.com
+Subject: Re: [PATCH net v4 3/3] net: ethernet: mtk_wed: setup WDMA_RING_TX(0) for non-DBDC MT7986
+Date: Tue, 22 Sep 2026 21:46:04 +0800
+Message-ID: <20260922134604.617-1-hujy652@gmail.com>
+X-Mailer: git-send-email 2.47.3
+In-Reply-To: <179000700034.2160803.10594281691384015089@kernel.org>
+References: <20260917144335.19466-3-hujy652@gmail.com> <179000700034.2160803.10594281691384015089@kernel.org>
 MIME-Version: 1.0
-References: <20260916235200.20712-1-ansuelsmth@gmail.com> <20260921135933.7e8857ba@kernel.org>
- <CA+_ehUwy9RUKCCHDnqoED3AMVnErgGr9RCrCR4ceg5QONq1wOQ@mail.gmail.com> <033fc935-c37a-4b0f-8b79-68248e45da8f@bootlin.com>
-In-Reply-To: <033fc935-c37a-4b0f-8b79-68248e45da8f@bootlin.com>
-From: Coia Prant <coiaprant@gmail.com>
-Date: Tue, 22 Sep 2026 21:26:23 +0800
-X-Gm-Features: AcwNN1Ur2tt8b16s6pIVEQsDoiyvx1gOYWr_ba3DyTwWp74e1eP8TDNhMjUzs84
-Message-ID: <CALj3r0gyfggFP-T+yXM2P=ooyQMk0AUfnpxtArk5ioU+wMNrxw@mail.gmail.com>
-Subject: Re: [PATCH net-next v16 00/12] net: pcs: Introduce support for fwnode PCS
-To: Maxime Chevallier <maxime.chevallier@bootlin.com>
-Cc: "Christian Marangi (Ansuel)" <ansuelsmth@gmail.com>, Jakub Kicinski <kuba@kernel.org>, 
-	Andrew Lunn <andrew+netdev@lunn.ch>, "David S. Miller" <davem@davemloft.net>, 
-	Eric Dumazet <edumazet@google.com>, Paolo Abeni <pabeni@redhat.com>, Rob Herring <robh@kernel.org>, 
-	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
-	Simon Horman <horms@kernel.org>, Jonathan Corbet <corbet@lwn.net>, 
-	Shuah Khan <skhan@linuxfoundation.org>, Randy Dunlap <rdunlap@infradead.org>, 
-	Lorenzo Bianconi <lorenzo@kernel.org>, Heiner Kallweit <hkallweit1@gmail.com>, 
-	Russell King <linux@armlinux.org.uk>, Philipp Zabel <p.zabel@pengutronix.de>, 
-	Nathan Chancellor <nathan@kernel.org>, Nick Desaulniers <ndesaulniers@google.com>, 
-	Bill Wendling <morbo@google.com>, Justin Stitt <justinstitt@google.com>, netdev@vger.kernel.org, 
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	linux-doc@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org, llvm@lists.linux.dev
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: attachment; filename=v4reply
+X-Mutt-References: <179000700034.2160803.10594281691384015089@kernel.org>
+X-Mutt-Fcc: ~/sent
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260922_062638_299010_5A3ECF8A 
-X-CRM114-Status: GOOD (  19.55  )
+X-CRM114-CacheID: sfid-20260922_064705_120632_597C889E 
+X-CRM114-Status: GOOD (  39.16  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -129,50 +119,139 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Maxime Chevallier <maxime.chevallier@bootlin.com> =E4=BA=8E2026=E5=B9=B49=
-=E6=9C=8822=E6=97=A5=E5=91=A8=E4=BA=8C 20:50=E5=86=99=E9=81=93=EF=BC=9A
->
-> I'm attending a Rust training until thursday, I'll see if I can squeeze i=
-n some
-> time to re-test on mvpp2 :(
->
-> There're a few series pending for rockchip and S32 on stmmac that deal wi=
-th
-> PCS support and their PCS handle. It would be nice to have some stmmac gl=
-ue
-> maintainers that are using complex PCS to help with maintainance or at le=
-ast
-> testing, maybe Coia can help with the tests ?
->
-> Maxime
+On Mon, Sep 21, 2026 at 04:10:00PM +0000, netdev-bot+sashiko@kernel.org wrote:
+> Thank you for your contribution! Sashiko AI review found 1 potential
+> issue(s) to consider.
+> 
+> Critical: 0 · High: 0 · Medium: 1 (1) · Low: 0
+> 
+> If you believe none of the issues are legitimate, please reply to each
+> issue of Medium severity or higher and explain why the AI is wrong.
+> If any of them are legitimate and you plan to respin, please let patchwork
+> know by including "pw-bot: cr" as a separate line at the end of your reply
+> (one such reply per series is enough).
+> 
+> - [Medium] In mtk_wed_start()
+>   (drivers/net/ethernet/mediatek/mtk_wed.c:2346-2347) the newly added…
+> 
+> Pre-existing issues:
+> - [Medium] This problem wasn't introduced by this patch, but the patch
+>   widens it: dev->tx_wdma[] descriptor rings are allocated with…
+> 
+> --
+> 
+> net: ethernet: mtk_wed: setup WDMA_RING_TX(0) for non-DBDC MT7986
+> 
+> On a non-DBDC MT7986 only rx_ring[1]/tx_wdma[1] get set up, so
+> WDMA_RING_TX(0) is never programmed even though WED needs it for RX
+> offload.  The patch adds a call to mtk_wed_wdma_tx_ring_setup() for ring 0
+> from mtk_wed_start() when the device is WED v2 and rx_ring[0] was not
+> allocated, passing reset=true when tx_wdma[0] already exists.
+> 
+> > diff --git a/drivers/net/ethernet/mediatek/mtk_wed.c b/drivers/net/ethernet/mediatek/mtk_wed.c
+> > index 3f0be70c3f145..3800e602d3c48 100644
+> > --- a/drivers/net/ethernet/mediatek/mtk_wed.c
+> > +++ b/drivers/net/ethernet/mediatek/mtk_wed.c
+> > @@ -2339,6 +2339,13 @@ mtk_wed_start(struct mtk_wed_device *dev, u32 irq_mask)
+> >  		if (!dev->rx_wdma[i].desc)
+> >  			mtk_wed_wdma_rx_ring_setup(dev, i, 16, false);
+> >  
+> > +	/*
+> > +	 * non-DBDC MT7986 allocates only rx_ring[1] and tx_wdma[1] during setup
+> > +	 * but tx_wdma[0] is also needed for WED to function.
+> > +	 */
+> > +	if (mtk_wed_is_v2(dev->hw) && !dev->rx_ring[0].desc)
+> > +		mtk_wed_wdma_tx_ring_setup(dev, 0, MTK_WED_WDMA_RING_SIZE, !!dev->tx_wdma[0].desc);
+> 
+> [Severity: Medium]
+> Should the return value of mtk_wed_wdma_tx_ring_setup() be checked here?
+> 
+> On the first start of a non-DBDC v2 device dev->tx_wdma[0].desc is NULL, so
+> reset is false and the helper takes the allocation path:
+> 
+> drivers/net/ethernet/mediatek/mtk_wed.c:mtk_wed_wdma_tx_ring_setup() {
+> 	wdma = &dev->tx_wdma[idx];
+> 	if (!reset && mtk_wed_ring_alloc(dev, wdma, MTK_WED_WDMA_RING_SIZE,
+> 					 dev->hw->soc->wdma_desc_size, true))
+> 		return -ENOMEM;
+> 	...
+> }
+> 
+> mtk_wed_ring_alloc() does a dma_alloc_coherent() of
+> MTK_WED_WDMA_RING_SIZE * wdma_desc_size (32 KiB on MT7986), and on failure
+> the helper returns before writing MTK_WDMA_RING_TX(0) BASE/COUNT/CPU_IDX/
+> DMA_IDX and before the "if (!idx)" block that programs the WED side
+> MTK_WED_WDMA_RING_TX window.
+> 
+> Since the status is dropped, mtk_wed_start() keeps going through
+> mtk_wed_hw_init(), mtk_wed_configure_irq() and mtk_wed_dma_enable(), which
+> arms MTK_WDMA_GLO_CFG_TX_DMA_EN and, for rx-capable v2,
+> MTK_WED_WDMA_GLO_CFG_TX_DRV_EN | MTK_WED_WDMA_GLO_CFG_TX_DDONE_CHK, and
+> then sets dev->running = true.  Can the hardware then fetch descriptors
+> from a ring whose base register was left at 0 by the preceding
+> mtk_wdma_tx_reset()/mtk_wed_reset(), leaving the WED offload silently
+> non-functional with no message?
+> 
+> The other caller of the same helper propagates the failure:
+> 
+> drivers/net/ethernet/mediatek/mtk_wed.c:mtk_wed_rx_ring_setup() {
+> 	if (mtk_wed_wdma_tx_ring_setup(dev, idx, MTK_WED_WDMA_RING_SIZE,
+> 				       reset))
+> 		return -ENOMEM;
+> 	...
+> }
+> 
+> and mtk_wed_start() itself already bails out on mtk_wed_rx_buffer_alloc()
+> and mtk_wed_rro_cfg() failures.  Since mtk_wed_ops.start is void and
+> mt7915_dma_start() cannot observe the error, would it make sense to abort
+> the start sequence locally here (skipping mtk_wed_dma_enable() and
+> dev->running = true) and log the failure?
 
-Hi Maxime,
+ACK I will add error messages and return when there's an error.
 
-Thanks for thinking of me. I should be upfront about where I am though.
+> 
+> [Severity: Medium]
+> This isn't a problem introduced by this patch, but does this new call add
+> another leak of dev->tx_wdma[0]?
+> 
+> dev->tx_wdma[] rings are allocated by mtk_wed_ring_alloc() via
+> mtk_wed_wdma_tx_ring_setup(), but the ring-release helpers never free that
+> array:
+> 
+> drivers/net/ethernet/mediatek/mtk_wed.c:mtk_wed_free_tx_rings() {
+> 	for (i = 0; i < ARRAY_SIZE(dev->tx_ring); i++)
+> 		mtk_wed_free_ring(dev, &dev->tx_ring[i]);
+> 	for (i = 0; i < ARRAY_SIZE(dev->rx_wdma); i++)
+> 		mtk_wed_free_ring(dev, &dev->rx_wdma[i]);
+> }
+> 
+> drivers/net/ethernet/mediatek/mtk_wed.c:mtk_wed_free_rx_rings() {
+> 	mtk_wed_free_rx_buffer(dev);
+> 	mtk_wed_free_ring(dev, &dev->rro.ring);
+> }
+> 
+> __mtk_wed_detach() calls those helpers and then does
+> memset(dev, 0, sizeof(*dev)), so tx_wdma[].desc/desc_phys are discarded and
+> the 32 KiB coherent allocation can no longer be released.
+> 
+> The existing allocation site is mtk_wed_rx_ring_setup(), so the omission
+> predates this change, but non-DBDC MT7986/MT7981 previously never allocated
+> tx_wdma[0] at all, and now every attach/start/detach cycle would leak one
+> more ring.  Would adding dev->tx_wdma[] to mtk_wed_free_tx_rings() be the
+> right way to restore alloc/free symmetry?
+> 
 
-My focus this cycle is landing the RK3568 XPCS glue before the next
-merge window so it lands in the next LTS, and so downstreams like
-OpenWrt and ImmortalWrt don't have to carry a backport.
+There is a patch in MediaTek SDK fixing this exact issue.
+I will pull the patch from there.
 
-On testing Christian's series: my current glue goes from
-ethernet-pcs-mii@N up to the XPCS platform device and hands the virtual
-MDIO bus to xpcs_create_mdiodev(). Christian's series changes how the
-PCS is looked up, so testing it now would mean restructuring the
-Rockchip glue and rewriting the binding, and I can't fit that into this
-cycle on top of the initial merge.
+Link:https://github.com/mediatek/mtk-openwrt-feeds/blob/main/25.12/files/target/linux/mediatek/patches-6.12/999-wed-04-Fix-reinsert-wifi-module-cause-memory-leak-issue.patch
 
-Once my glue is in and the lookup story has settled, I'll be glad to
-rebase and test =E2=80=94 and convert to xlate if that turns out to be the
-direction. I'd like to use xlate long-term, the timing just doesn't
-work for this window.
+Best regards,
+Zhi-Jun
 
-On maintenance: I'm a student and fairly new to this, so I can't take
-on the PCS subsystem as a whole. What I can commit to is helping where
-I have the bandwidth: testing when I can, and sharing some of the load
-on the XPCS glue layer (pcs-xpcs-plat and the platform glue drivers),
-plus a bit of pcs-xpcs work. If there are stmmac glue maintainers who
-can help cover the rest, that would be very welcome.
+pw-bot: cr
+> -- 
+> Sashiko AI review · https://netdev-ai.bots.linux.dev/sashiko/#/patchset/20260917144335.19466-1-hujy652%40gmail.com
+> 
 
-Thanks,
-Coia
 
