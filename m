@@ -4,72 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E7DA4C982FA
-	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Sep 2026 11:40:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 62A2CC982FA
+	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Sep 2026 11:44:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From
-	:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=5sh4I3uZEwOtEYpw33x5GG/9XO5c8ZsodmbDjJSbeV8=; b=4s2YNaf2IjjIefof0u5D0blTdb
-	1GkTY33Gj+z4KPqL+JRwr0flZ22iAlNEaof2JmZK9e7zv6aEgYVTNcxfZ0AWFxq0J4XcWC2zd2ogY
-	483cLBdrjngvXWmkl9fxx5hPADlNh07jlb6/0nnoYstIvHhm0kjgSFQ7WDlSr7yfMVSZqNbEhzkbo
-	BEWXBhXyu4ELsAUTcvjDTEc9Y+jE/UemIudOsOK8rAvryKUE9WdjUj91doQSrL1DxS2UUH8B6KA1v
-	5VeZJehuhRbEIoxarzh1QuQlG0sAeAZFSNzxrXBL9wUqIKIpqpwp9wVEvRgDape6HsVWbc1G+J0VH
-	9EMmP2kg==;
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=i/Cfij+Q5hH5r5YCJ8SjzJRHCMas/NePWqksJcwwvao=; b=2HX8xwWj3FnICVyvEGrWikhJ1Z
+	GJAnQcwrdPkLrj9asH4x108URMQ/qxVRYVfQTElXs4L1rBBgGpupffrJGn3OkssrHOysU/UpzOrvD
+	NYlP5yKHNKZ9Xmi32R5fhn0lP5hNjVOednZjAtDDEko6odM0//nv/SYALyjodmkv2yYoeuNRVLWB7
+	6p1OCm2ht0dyaZIWYN53M4242Ur6A6cVZ0GVeMnu7RgqErGXExBf3H/YZCP0uhTcF3Df7n39tof+o
+	EjBXglNc6InCUbdeJ7VL8tQUqQ3qBtq/kxegIW+L2G47hEUF5JNsAcugIJiPCndkXKGirCMVgXIgO
+	/X9waDDA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x8yrZ-00000005CnJ-0B7e;
-	Tue, 22 Sep 2026 11:40:41 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1x8yvi-00000005Doo-1IRi;
+	Tue, 22 Sep 2026 11:44:58 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x8yr4-00000005CHI-1woQ;
-	Tue, 22 Sep 2026 11:40:11 +0000
+	id 1x8yvf-00000005DnN-2RFK;
+	Tue, 22 Sep 2026 11:44:56 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1790077208;
-	bh=IFfZ70kjB90+zj0QtAAYEQEl82esnuhwlzrSu2ntQMk=;
-	h=Date:Subject:To:References:From:In-Reply-To:From;
-	b=XGB5oRF3+j++jbJ96WMoP4+lbPftpA7nKnIh6w74Ou5RlNua15wDD5eOZrRcopdPQ
-	 GFaknc/DSCXWjmVoiRqPMqqxgfTVMQAEPUjlprskzJGXkv+Au7gfT0HHhf9/24pwLi
-	 gyRqasPj4lwcUtPkjo/u9gql6EFCI2MSIkre+j192Ir1v/35qcThA0G3QReCDgdJSa
-	 kppQ7EOHKLOssNjDMYdt9P4kFvFUF1nBC7SGik0jBdTccmXxup+CJVtsacJrTqFzr9
-	 3ZzL5/EYwj5Mn7eIclrsREP3orDNHYhDWRjd34I6YvqXFDZtUM7b7p0U02eJv7BOkN
-	 Ao7/62ai5wUFA==
+	s=mail; t=1790077493;
+	bh=W+7CB1tky3BRVS0DPQGa+VxhsQuoLSseXPxz/cl6bvs=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=TOwCfCesqdcEZrUL30zGh1tottDeXc8EQHe9NfbzsfE0stQOlZiN/Yy9YlHuwkmDM
+	 DScFWtm3IreUeoVxdGRFG9A+fmjGIESxO9G42kDcOxtUKjDCJWEBrPIGhxsFu6th/5
+	 at8iSCo4obkHoPlVsjTMdwqc3pWQWkgyRdEMD77WDPOIGqbP8SkNdXo7e0nZXeHzg9
+	 cwlNJlEnSYUfPC4KmhAvIpRDbJCVNcw40UIRJaw7Uw+ABNbsA+sO85gc5BRx9EkVOj
+	 H8U0y/TD3mDIiXHvPma52E/VqdE2UhQ7KfFHoW6LIFWEXiiXmuK+apqvNptczsFxqs
+	 ZkvYzRW2Vks2g==
 Received: from [100.64.1.21] (unknown [100.64.1.21])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange x25519)
+	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 9ECFE17E05F4;
-	Tue, 22 Sep 2026 13:40:07 +0200 (CEST)
-Message-ID: <99fc3209-ec8a-414d-9838-3a92e133d63f@collabora.com>
-Date: Tue, 22 Sep 2026 13:40:07 +0200
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 3D29A17E03B6;
+	Tue, 22 Sep 2026 13:44:53 +0200 (CEST)
+Message-ID: <4e68e679-f4c8-4a5f-9b06-f1c61dbff7d9@collabora.com>
+Date: Tue, 22 Sep 2026 13:44:52 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v17 03/12] media: mediatek: jpeg: fix buffer structure
- size and layout
-To: Kyrie Wu <kyrie.wu@mediatek.com>,
- Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring <robh@kernel.org>,
+Subject: Re: [PATCH] dt-bindings: arm: mediatek: Fix MT6779 audsys compatible
+To: "Rob Herring (Arm)" <robh@kernel.org>,
  Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
  <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
- Bin Liu <bin.liu@mediatek.com>,
- kyrie wu <kyrie.wu@mediatek.corp-partner.google.com>,
- Hans Verkuil <hverkuil@kernel.org>, irui wang <irui.wang@mediatek.com>,
- Nicolas Dufresne <nicolas.dufresne@collabora.com>,
- linux-media@vger.kernel.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org
-References: <20260922091530.241762-1-kyrie.wu@mediatek.com>
- <20260922091530.241762-4-kyrie.wu@mediatek.com>
+ Eugen Hristev <ehristev@kernel.org>
+Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+References: <20260921232819.3137721-1-robh@kernel.org>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Content-Language: en-US
-In-Reply-To: <20260922091530.241762-4-kyrie.wu@mediatek.com>
+In-Reply-To: <20260921232819.3137721-1-robh@kernel.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260922_044010_708796_D81213B0 
-X-CRM114-Status: UNSURE (   9.29  )
+X-CRM114-CacheID: sfid-20260922_044455_779710_CE03E899 
+X-CRM114-Status: UNSURE (   7.39  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -85,20 +78,14 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 9/22/26 11:15, Kyrie Wu wrote:
-> Updates the `buf_struct_size` in the JPEG driver to use the correct
-> structure `mtk_jpeg_src_buf` instead of `v4l2_m2m_buffer`, ensuring
-> proper handling of source buffers. The previous buffer size led to
-> mismatches and potential issues during video buffer handling.
+On 9/22/26 01:28, Rob Herring (Arm) wrote:
+> The correct name for the MediaTek MT6779 audsys compatible is
+> "mediatek,mt6779-audio", not "mediatek,mt6779-audsys". The original .txt
+> binding was correct.
 > 
-> Moves `frame_num` in the `mtk_jpeg_src_buf` structure to align with
-> other members appropriately. The first field of the driver-specific
-> buffer structure must be the subsystem-specificstruct
-> (vb2_v4l2_buffer in the case of V4L2).
-> 
-> Fixes: 5fb1c2361e56 ("mtk-jpegenc: add jpeg encode worker interface")
-> Signed-off-by: Kyrie Wu <kyrie.wu@mediatek.com>
-> Reviewed-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+> Fixes: e97c618234d9 ("dt-bindings: arm: mediatek: convert audsys and mt2701-afe-pcm to yaml")
+> Assisted-by: LLM
+> Signed-off-by: Rob Herring (Arm) <robh@kernel.org>
 
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
