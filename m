@@ -4,63 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 86D75C98302
-	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Sep 2026 17:03:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 62AA3C98302
+	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Sep 2026 18:31:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Message-ID:Date
-	:Cc:To:From:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=DTgI03Mb2guSbNjbgohk2ODS86HEBC4CplwUVNmAa0I=; b=B+j6HYnJ48zBOaCbI3NNpDo4Jb
-	LpCilrPr9RblDVvAOwFDiKtRpSiOVGYXKNflJJhTEzHfrPpeE8XmnVuB9UXXm3AVJzeMbDlHxA0Ie
-	UZkyrY+HLymxaW6E+sJfFcO/sYPypIvUybegitwUzuwrUJmyaYyHzmQhYkx5PrWQ7jj1ED3fHlt74
-	YoMDYY/Vo+lMvJ+CsOd1cEswaMl59DHYcY86pvFMNLn6ydSbY4Blwh7ZdUIXKynHa7hTlq5JV10fZ
-	2azyKpnkStabAqitz1Z+W+GYnKRzBG3G2+AVAH/H3nnLGjsd557gPhqYrtk0Bfk9L54T5BidgwUe2
-	jE8S9GFw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=zxMWe1Gn1onetdReGCnPNu372D/8gHhav9+ZEra4BaM=; b=rnfPoIuxW0G5fWP1xB5GStPkws
+	CPGwnd25Usk7zQKhA6YvN4sH3wptDw53982kybUex4uAuKgKd3wljlLxmvcC3PDRNQ5tIzUK1J7AY
+	fWcDqQ4AYQU2V2ZI4BhC8tbcBO1ybKQHNOtV6WY0Cw6JCaXc4KZkX6gehbAxOYfIrCY47XoeHJSg4
+	HgbGUau9Tf4zjuIoVwcrhtkKeM2ZAJZ5tHZtSKyaSkAdcEL19Q736eIJcn8LdgxwsobirzYAYIUhk
+	0x/IxEHOkpeGal28ZYnCionLaoV1+UwxbYk0/6dh1CVPBvff6aIFGNllTJpRRmgw4KvEt+9sRnm1S
+	ww57jImA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x93tk-000000068gw-2H3c;
-	Tue, 22 Sep 2026 17:03:16 +0000
+	id 1x95H5-00000006J5X-3tlO;
+	Tue, 22 Sep 2026 18:31:27 +0000
 Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x93ti-000000068fl-1hce;
-	Tue, 22 Sep 2026 17:03:14 +0000
+	id 1x95H4-00000006J4w-1Z67;
+	Tue, 22 Sep 2026 18:31:26 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id 2389142E81;
-	Tue, 22 Sep 2026 17:03:14 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 4995F1F000FF;
-	Tue, 22 Sep 2026 17:03:13 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id D154D417B2;
+	Tue, 22 Sep 2026 18:31:25 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 80BD01F00893;
+	Tue, 22 Sep 2026 18:31:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1790096594;
-	bh=DTgI03Mb2guSbNjbgohk2ODS86HEBC4CplwUVNmAa0I=;
-	h=Subject:From:To:Cc:Date:In-Reply-To:References;
-	b=dxf06q/cfVdRc+b9A3STWRA0UWGDXlKXGJvWITgIYlNSzK3Cujfv2zQh7kDpaa6bX
-	 /9LasdNdUBAjHzz2yRUdmGjaeueKsI80375q2iIEJaa7r3XT6GSB2KtKqBHD4AkRkT
-	 pKIQhXRJr0zBqcPYFpD/TOpGuIdsB0Rddz01va4QQ73GpWAPrBJ+WGedlLqjinn5WH
-	 E/auFJGb3Qf9HbyAa/84wZWJa4DOdyO5Og/K6SWUU0py0yhYpbfA+RZFY9ix5ff0X7
-	 EftFWNgSzEdOG9rbRpd4KjNOOUT5rVRMazCOXpqwYnxMDwmL8sSnYBGJx39seh2IQr
-	 5KsMgWWG+HlhA==
-Subject: Re: [net PATCH] net: ethernet: mediatek: only enable WED for ARM64
- architecture
-From: netdev-bot+sashiko@kernel.org
-To: yangshiji66@outlook.com
-Cc: netdev@vger.kernel.org, nbd@nbd.name, lorenzo@kernel.org,
- andrew+netdev@lunn.ch, davem@davemloft.net, edumazet@google.com,
- kuba@kernel.org, pabeni@redhat.com, matthias.bgg@gmail.com,
- angelogioacchino.delregno@collabora.com, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- stable@vger.kernel.org
-Date: Tue, 22 Sep 2026 17:03:12 +0000
-Message-ID: <179009659284.2160803.2402786454793152027@kernel.org>
-In-Reply-To: =?utf-8?q?=3COSZPR01MB8140B889AD227E0B547F5F87BC872=40OSZPR01MB?=
- =?utf-8?q?8140=2Ejpnprd01=2Eprod=2Eoutlook=2Ecom=3E?=
-References: =?utf-8?q?=3COSZPR01MB8140B889AD227E0B547F5F87BC872=40OSZPR01MB8?=
- =?utf-8?q?140=2Ejpnprd01=2Eprod=2Eoutlook=2Ecom=3E?=
-X-sashiko-severity: Medium
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
+	s=k20260515; t=1790101885;
+	bh=zxMWe1Gn1onetdReGCnPNu372D/8gHhav9+ZEra4BaM=;
+	h=From:To:Cc:Subject:Date;
+	b=VkLhgJ12vAKrxbUuncHIicgmjCFQy21k7qkQhdQGikCFSAXRV0ONjKk6u42HXvlHg
+	 AAjw94Kuq7Y15isBWpt1P95x9o+6AK+Wz0Pl44KLKsCYiBQH9Vv64XDBlSfDphngX5
+	 vXZonHDGdfZj/2E9OfhdoFcls6OMOtEtlPhJ2znP1WCT9uJOx8c05a7+Q1DLIv0C1V
+	 25QYBAQR+DAlEsEoBrOk1+Z9DWZ50bYPSeL72ZHxp2vhuJPfxuttEIbjjz75jbZ6+0
+	 GIWnP8bTSgI3D+61qzpPCVTC2bOs0rEEDTAbnU9/YgUD8vVk0pIj3aNhIcF35j8lKi
+	 ibrOh3LPeETkA==
+From: "Rob Herring (Arm)" <robh@kernel.org>
+To: Liam Girdwood <lgirdwood@gmail.com>,
+	Mark Brown <broonie@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Eugen Hristev <ehristev@kernel.org>
+Cc: linux-sound@vger.kernel.org,
+	devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: [PATCH] ASoC: dt-bindings: mediatek: Fix MT7622 clock count
+Date: Tue, 22 Sep 2026 13:31:20 -0500
+Message-ID: <20260922183121.289108-1-robh@kernel.org>
+X-Mailer: git-send-email 2.53.0
 MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,89 +74,56 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Thank you for your contribution! Sashiko AI review found 1 potential
-issue(s) to consider.
+MT7622 audio nodes have 33 clocks and clock names. The shared MT2701
+binding listed the longer MT2701 clock set as the common minimum,
+so MT7622 DTs failed validation as too short even though the binding
+already capped MT7622 at a smaller list.
 
-Critical: 0 · High: 0 · Medium: 1 · Low: 0
+Set the common minimum to 33 and make the MT7622 conditional require
+exactly 33 clocks and clock names.
 
-If you believe none of the issues are legitimate, please reply to each
-issue of Medium severity or higher and explain why the AI is wrong.
-If any of them are legitimate and you plan to respin, please let patchwork
-know by including "pw-bot: cr" as a separate line at the end of your reply
-(one such reply per series is enough).
+Assisted-by: LLM
+Signed-off-by: Rob Herring (Arm) <robh@kernel.org>
+---
+ .../bindings/sound/mediatek,mt2701-audio.yaml          | 10 ++++++----
+ 1 file changed, 6 insertions(+), 4 deletions(-)
 
-- [Medium] Inappropriate `Fixes:` tag: the commit claims to fix
-  804775dfc288 ("net: ethernet: mtk_eth_soc: add support for Wireless…
-
---
-
-net: ethernet: mediatek: only enable WED for ARM64 architecture
-
-This narrows the dependency of the hidden def_bool symbol
-NET_MEDIATEK_SOC_WED so it is only enabled on ARM64 ARCH_MEDIATEK
-builds, on the grounds that only MT7622 and MT798x implement WED.
-
-> diff --git a/drivers/net/ethernet/mediatek/Kconfig b/drivers/net/ethernet/mediatek/Kconfig
-> index 2ba361f8ce7d..7737f2f15478 100644
-> --- a/drivers/net/ethernet/mediatek/Kconfig
-> +++ b/drivers/net/ethernet/mediatek/Kconfig
-
->     Fixes: 804775dfc288 ("net: ethernet: mtk_eth_soc: add support for Wireless Ethernet Dispatch (WED)")
-
-[Severity: Medium]
-
-Is the Fixes: tag appropriate here?  The changelog does not describe a
-defect, only a hardware-scope observation and a prediction:
-
-    Currently, only MT7622 and MT798x SoCs support WED features. They
-    are all ARM64 platforms. And it is unlikely that MediaTek will
-    release a new net chip based on ARM32 architecture in the future.
-
-As far as I can tell nothing misbehaves on 32-bit today.  WED is only
-instantiated when the ethernet DT node carries a mediatek,wed phandle:
-
-drivers/net/ethernet/mediatek/mtk_eth_soc.c:mtk_probe() {
-	...
-	np = of_parse_phandle(pdev->dev.of_node,
-			      "mediatek,wed", i);
-	if (!np)
-		break;
-	...
-	mtk_wed_add_hw(np, eth, eth->base + wdma_base, wdma_phy, i);
-	...
-}
-
-and git grep wed arch/arm/boot/dts/mediatek returns no matches, so no
-32-bit MediaTek platform can reach mtk_wed_add_hw().
-
-There also does not appear to be any 64-bit-only construct that a
-depends on ARM64 would be repairing: mtk_wed.c, mtk_wed_wo.c,
-mtk_wed_mcu.c and mtk_wed.h contain no readq/writeq, no >> 32 address
-splitting and no CONFIG_64BIT conditionals (the only CONFIG_64BIT use in
-the directory is in mtk_eth_soc.h, which this symbol does not gate).
-
-> @@ -8,7 +8,7 @@ config NET_VENDOR_MEDIATEK
->  if NET_VENDOR_MEDIATEK
->  
->  config NET_MEDIATEK_SOC_WED
-> -	depends on ARCH_MEDIATEK || COMPILE_TEST
-> +	depends on (ARCH_MEDIATEK && ARM64) || COMPILE_TEST
->  	def_bool NET_MEDIATEK_SOC != n
-
-Since the Fixes: tag makes this a candidate for stable backporting, could
-this silently flip a config symbol in released kernels?  On a stable tree
-with 32-bit ARCH_MEDIATEK, the depends on line becomes false and
-NET_MEDIATEK_SOC_WED is a hidden def_bool, so make olddefconfig drops
-mtk_wed*.o from the build with no prompt or warning.
-
-Would it make sense to drop the Fixes: tag and describe this as a build
-scope cleanup instead?
-
-One more question on the ARM64 condition itself: if something in the WED
-code really is not buildable on 32-bit, does the || COMPILE_TEST branch
-leave that unaddressed, since it still builds the identical code on
-non-ARM64 targets?
-
+diff --git a/Documentation/devicetree/bindings/sound/mediatek,mt2701-audio.yaml b/Documentation/devicetree/bindings/sound/mediatek,mt2701-audio.yaml
+index 30f331366566..10df1e7c7eb9 100644
+--- a/Documentation/devicetree/bindings/sound/mediatek,mt2701-audio.yaml
++++ b/Documentation/devicetree/bindings/sound/mediatek,mt2701-audio.yaml
+@@ -32,7 +32,7 @@ properties:
+     maxItems: 1
+ 
+   clocks:
+-    minItems: 34
++    minItems: 33
+     items:
+       - description: audio infra sys clock
+       - description: top audio mux 1
+@@ -74,7 +74,7 @@ properties:
+       - description: audio APLL root pd
+ 
+   clock-names:
+-    minItems: 34
++    minItems: 33
+     items:
+       - const: infra_sys_audio_clk
+       - const: top_audio_mux1_sel
+@@ -132,8 +132,10 @@ allOf:
+     then:
+       properties:
+         clocks:
+-          maxItems: 34
++          minItems: 33
++          maxItems: 33
+         clock-names:
+-          maxItems: 34
++          minItems: 33
++          maxItems: 33
+ 
+ additionalProperties: false
 -- 
-Sashiko AI review · https://netdev-ai.bots.linux.dev/sashiko/#/patchset/OSZPR01MB8140B889AD227E0B547F5F87BC872%40OSZPR01MB8140.jpnprd01.prod.outlook.com
+2.53.0
+
 
