@@ -4,75 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A2FC2C98302
-	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Sep 2026 10:36:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2225FC982F1
+	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Sep 2026 10:38:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:
-	References:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:
-	Subject:Date:From:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=xF0uyJJDrrwp8Lcf2KUo2KH8XfvefSad6sEynq5ZH8I=; b=HHbkfEmtnpm7UYwGciuwLpoVm2
-	mnU0TkFFRx9IfaJkOvcBFJ+eTjeV5I8Q/FbdjuuyxzxUJnb7ezCG4nmzqIurTx/CANuYM1QvzZ+la
-	NzX9jSFRa3zI7je4YpnmwSqaQzFFDvDvzt1NdNoA74+S3mBDiL+OLO7TKRQl+I2CvwoI7HX979Muu
-	czyIe/NetGwDOVf/aX//UR8A+qxo6v4QHVyCeM8kO8ykTStDK4r/0D0xUX6c/NF35BMjXrUaBiKLA
-	RlOuUrj+ypLvMM/woxY5uPoqWF/yaNzzx9uc7t2mZ6ic29XRCmQxFyf7L+CbXFdeG/DR7SMHZ2Ffm
-	apmhswJg==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=npxqYAoA7IwkUE88Ybw2nQQ/5lB1zYdS7If1dwmwfYs=; b=KP6+hwopIgwKA20z7E0pd+MUzI
+	F72qrPaiKxe2q9fCRs/Tshaw2d0mPHo5ln9zaowzdtuoO7kmNt2cw8vOC8XuqibZgfLAPW7AAT3ga
+	HsroB1GKQnwQjoDM6eMv/h1GYl9jeh3G6EmT+lGalGvSxpnSMcKzR0wkQmsWtn5ZqrOYIG7cOBgYW
+	KfuBcyaSwH+qaQldbtvaJ6XO26LitJin0aRYK9lJR76QcQNOWh15pKiQWTX3fvre1cm09pdQboIVw
+	UOUNgNSIA7gCZE6eBa7x7OjSf2R3IgrMVevrwfSSSmLZ212ABRMJav/k5CvUK9t58/Gedrun88uRL
+	40UH3czg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x8xrh-0000000546h-0irl;
-	Tue, 22 Sep 2026 10:36:45 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
-	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x8xrf-0000000544h-2uRD;
-	Tue, 22 Sep 2026 10:36:43 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id F1AC9448D4;
-	Tue, 22 Sep 2026 10:36:42 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id D5A3EC2BCFD;
-	Tue, 22 Sep 2026 10:36:42 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1790073402;
-	bh=CAcQ7Xu/9h2GhGu0CNLrvi0qn4QCtyqsChF0NqMeacA=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To:From;
-	b=NPodaoxzxRXR6b2AcmJyZgKYIexfnraLBtwb5gjBjdNRQWB2OSrBRG2TVcmtkr1lL
-	 +guNf2M/1iLm7UJ+h4ku7A/Z/IxyQixTP1t16xKjASsMg4uIuYtSVBf5jO+PRStT2l
-	 TuhDxS52xZkC5IaGoo1DtvXIhSGI0RHpdDEWm2iwZJ1BLo4xGDdJYISt7x+mDsaBCG
-	 GUYT/S8stqrspXiTeY05C0Okq8jT2bMex4nJy8Mr5waoeszHU9zDVlHYzEiiKudGhM
-	 Imt4Jn3j9gkLnwqD33dYxAb3fkDuLbKQgMMb9SC9tu4y9ZMuc5mx+LiyVLs2X7GvAm
-	 YmbjHxV3QBbZQ==
-Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id BDCBCC98306;
-	Tue, 22 Sep 2026 10:36:42 +0000 (UTC)
-From: Roman Vivchar via B4 Relay <devnull+rva333.protonmail.com@kernel.org>
-Date: Tue, 22 Sep 2026 13:36:42 +0300
-Subject: [PATCH v2 3/3] usb: mtu3: add mt6595 support
+	id 1x8xtd-000000054or-0qa8;
+	Tue, 22 Sep 2026 10:38:45 +0000
+Received: from foss.arm.com ([217.140.110.172])
+	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
+	id 1x8xta-000000054nj-49Yj;
+	Tue, 22 Sep 2026 10:38:44 +0000
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
+	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 14ACD1576;
+	Tue, 22 Sep 2026 03:38:38 -0700 (PDT)
+Received: from login2.euhpc2.arm.com (login2.euhpc2.arm.com [10.58.100.22])
+	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPA id 3ABA73F632;
+	Tue, 22 Sep 2026 03:38:40 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple; d=arm.com; s=foss;
+	t=1790073521; bh=0EIXjeyAI4S9Q4d29IPfXdLZ0TzlUX09hLhqO14gjnM=;
+	h=From:To:Cc:Subject:Date:From;
+	b=vIZAJbEWTlXPu/VZ4y7Cm3s/P8h40IGvctRJFvrzCHJ5H+8HiL2pAfQt88fs1Solb
+	 aUxNZE4rOt04rTDkEvhb2lyVfRs71xEZ3VtVdQlZGvJN/mMMyvAA86bEcXA47TNypW
+	 Gm9aNnZh0od7w05bLPzZMzlzG8GTKGWc4tZ1Ctjs=
+From: Vladimir Murzin <vladimir.murzin@arm.com>
+To: linux-usb@vger.kernel.org
+Cc: linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	chunfeng.yun@mediatek.com,
+	gregkh@linuxfoundation.org,
+	rostedt@goodmis.org,
+	paulmck@kernel.org,
+	mark.rutland@arm.com,
+	Vladimir Murzin <vladimir.murzin@arm.com>
+Subject: [PATCH] usb: mtu3: Fix double dereference in TP_printk
+Date: Tue, 22 Sep 2026 11:37:56 +0100
+Message-Id: <20260922103756.104846-1-vladimir.murzin@arm.com>
+X-Mailer: git-send-email 2.24.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20260922-6595-mtu3-v2-3-71203a362b36@protonmail.com>
-References: <20260922-6595-mtu3-v2-0-71203a362b36@protonmail.com>
-In-Reply-To: <20260922-6595-mtu3-v2-0-71203a362b36@protonmail.com>
-To: Chunfeng Yun <chunfeng.yun@mediatek.com>, 
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: linux-usb@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, 
- linux-kernel@vger.kernel.org, Roman Vivchar <rva333@protonmail.com>
-X-Mailer: b4 0.15.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1790073400; l=1072;
- i=rva333@protonmail.com; s=20260510; h=from:subject:message-id;
- bh=4eJyqPWqICB49dnoynS9NuK90SAls5nCrv8lul+jrkc=;
- b=Helez+SfQi3Bl9XUgDSgIs6bK/Q8s1SERu7FfzNpipN1fTm5JbN+e/p2DW1N4YCQxBU6QAvLF
- bUsvlsZF7C1AOI7Pt16x3Jnu6rV9DVeqZu7UaFCjIsZEtes+b9bv0yi
-X-Developer-Key: i=rva333@protonmail.com; a=ed25519;
- pk=zww/nWjBGoQ4POXCG0BV6fx2iuXK6jx77rsKPA5YK5Y=
-X-Endpoint-Received: by B4 Relay for rva333@protonmail.com/20260510 with
- auth_id=777
-X-Original-From: Roman Vivchar <rva333@protonmail.com>
+Content-Transfer-Encoding: 8bit
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260922_033843_147595_61B022B0 
+X-CRM114-Status: GOOD (  12.67  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,44 +69,99 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Reply-To: rva333@protonmail.com
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Roman Vivchar <rva333@protonmail.com>
+Paul reported kernel splat:
 
-Add a platform data for the MediaTek mt6595 SoC MTU3 IP block with a
-quirk for single FIFO slot.
+[    0.000000] TRACE EVENT ERROR: Event mtu3_gadget_ep_set_halt has double dereference in TP_printk: &REC->gpd_ring->dma
+[    0.000000] ------------[ cut here ]------------
+[    0.000000] Event mtu3_gadget_ep_set_halt has double dereference in TP_printk: &REC->gpd_ring->dma
+[    0.000000] WARNING: kernel/trace/trace_events.c:420 at test_double_dereference+0x144/0x14c, CPU#0: swapper/0/0
+[    0.000000] Modules linked in:
+[    0.000000] CPU: 0 UID: 0 PID: 0 Comm: swapper/0 Not tainted 7.3.0-rc1 #15247 PREEMPT
+[    0.000000] Hardware name: linux,dummy-virt (DT)
+[    0.000000] pstate: 600000c5 (nZCv daIF -PAN -UAO -TCO -DIT -SSBS BTYPE=--)
+[    0.000000] pc : test_double_dereference+0x144/0x14c
+[    0.000000] lr : test_double_dereference+0x144/0x14c
+[    0.000000] sp : ffffc80aa7633bf0
+[    0.000000] x29: ffffc80aa7633bf0 x28: ffffc80aa7c0f047 x27: 000508b58019388f
+[    0.000000] x26: 0000000000000003 x25: 0000000000000007 x24: ffffc80aa5fceff8
+[    0.000000] x23: ffffc80aa7c0f05a x22: ffffc80aa64edfe8 x21: ffffc80aa7c0fce8
+[    0.000000] x20: ffffc80aa7c0f047 x19: 0000000000000013 x18: 0000000000000001
+[    0.000000] x17: 6572656420656c62 x16: 756f642073616820 x15: 746c61685f746573
+[    0.000000] x14: 0000000000000000 x13: ffff000139d90000 x12: 0000000000000045
+[    0.000000] x11: 00000000000000cf x10: ffff00013f546428 x9 : ffff000139d90000
+[    0.000000] x8 : 3fffffffffffc000 x7 : 0000000000000001 x6 : 0000000000000001
+[    0.000000] x5 : ffff00013f4e6440 x4 : 0000000000000000 x3 : 0000000000000000
+[    0.000000] x2 : 0000000000000000 x1 : 0000000000000000 x0 : ffffc80aa764a700
+[    0.000000] Call trace:
+[    0.000000]  test_double_dereference+0x144/0x14c (P)
+[    0.000000]  trace_event_raw_init+0x37c/0x5d8
+[    0.000000]  event_init+0x34/0xc0
+[    0.000000]  trace_event_init+0xec/0x588
+[    0.000000]  trace_init+0x24/0x6e0
+[    0.000000]  start_kernel+0x4a0/0x8ec
+[    0.000000]  __primary_switched+0x88/0x90
+[    0.000000] irq event stamp: 0
+[    0.000000] hardirqs last  enabled at (0): [<0000000000000000>] 0x0
+[    0.000000] hardirqs last disabled at (0): [<0000000000000000>] 0x0
+[    0.000000] softirqs last  enabled at (0): [<0000000000000000>] 0x0
+[    0.000000] softirqs last disabled at (0): [<0000000000000000>] 0x0
+[    0.000000] ---[ end trace 0000000000000000 ]---
+[    0.000000] TRACE EVENT ERROR: Event mtu3_gadget_ep_disable has double dereference in TP_printk: &REC->gpd_ring->dma
+[    0.000000] TRACE EVENT ERROR: Event mtu3_gadget_ep_enable has double dereference in TP_printk: &REC->gpd_ring->dma
 
-Signed-off-by: Roman Vivchar <rva333@protonmail.com>
+Which also observed by Mark and myself.
+
+The splat it result of new check introduced by b5cc230af5e5 ("tracing:
+Warn when an event dereferences a pointer in TP_printk()") which
+correctly catches issue with %pad dereferencing the address saved in
+the ring buffer. TP_fast_assign() logic gets executed when the
+tracepoint is triggered, however the TP_printk() is executed when the
+user reads the trace buffer which could be seconds, minutes, hours,
+days, even months later and nothing guarantee that __entry->gpd_ring
+pointer will still be pointing to what it was when it was recorded.
+
+Fix the issue by capturing immediate value of gpd_ring.dma when trace
+point is triggered.
+
+Reported-by: Paul E. McKenney <paulmck@kernel.org>
+Tested-by: Mark Rutland <mark.rutland@arm.com>
+Reviewed-by: Steven Rostedt <rostedt@goodmis.org>
+Signed-off-by: Vladimir Murzin <vladimir.murzin@arm.com>
 ---
- drivers/usb/mtu3/mtu3_plat.c | 5 +++++
- 1 file changed, 5 insertions(+)
+ drivers/usb/mtu3/mtu3_trace.h | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/usb/mtu3/mtu3_plat.c b/drivers/usb/mtu3/mtu3_plat.c
-index bb67da4704b2..9d633695a9be 100644
---- a/drivers/usb/mtu3/mtu3_plat.c
-+++ b/drivers/usb/mtu3/mtu3_plat.c
-@@ -611,11 +611,16 @@ static const struct dev_pm_ops mtu3_pm_ops = {
- 
- #define DEV_PM_OPS (IS_ENABLED(CONFIG_PM) ? &mtu3_pm_ops : NULL)
- 
-+static const struct mtu3_platform_data mt6595_platform_data = {
-+	.fifo_single_slot = true,
-+};
-+
- static const struct mtu3_platform_data mt8173_platform_data = {
- 	.fifo_single_slot = false,
- };
- 
- static const struct of_device_id mtu3_of_match[] = {
-+	{ .compatible = "mediatek,mt6595-mtu3", .data = &mt6595_platform_data },
- 	{ .compatible = "mediatek,mt8173-mtu3", .data = &mt8173_platform_data },
- 	{ .compatible = "mediatek,mtu3", .data = &mt8173_platform_data },
- 	{},
-
+diff --git a/drivers/usb/mtu3/mtu3_trace.h b/drivers/usb/mtu3/mtu3_trace.h
+index 89870175d635..9aaa167d69c1 100644
+--- a/drivers/usb/mtu3/mtu3_trace.h
++++ b/drivers/usb/mtu3/mtu3_trace.h
+@@ -224,6 +224,7 @@ DECLARE_EVENT_CLASS(mtu3_log_ep,
+ 		__field(unsigned int, flags)
+ 		__field(unsigned int, direction)
+ 		__field(struct mtu3_gpd_ring *, gpd_ring)
++		__field(dma_addr_t, gpd_ring_dma)
+ 	),
+ 	TP_fast_assign(
+ 		__assign_str(name);
+@@ -235,12 +236,13 @@ DECLARE_EVENT_CLASS(mtu3_log_ep,
+ 		__entry->flags = mep->flags;
+ 		__entry->direction = mep->is_in;
+ 		__entry->gpd_ring = &mep->gpd_ring;
++		__entry->gpd_ring_dma = mep->gpd_ring.dma
+ 	),
+ 	TP_printk("%s: type %s maxp %d slot %d mult %d burst %d ring %p/%pad flags %c:%c%c%c:%c",
+ 		__get_str(name), usb_ep_type_string(__entry->type),
+ 		__entry->maxp, __entry->slot,
+ 		__entry->mult, __entry->maxburst,
+-		__entry->gpd_ring, &__entry->gpd_ring->dma,
++		__entry->gpd_ring, &__entry->gpd_ring_dma,
+ 		__entry->flags & MTU3_EP_ENABLED ? 'E' : 'e',
+ 		__entry->flags & MTU3_EP_STALL ? 'S' : 's',
+ 		__entry->flags & MTU3_EP_WEDGE ? 'W' : 'w',
 -- 
-2.55.0
-
+2.34.1
 
 
