@@ -4,67 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3DA93C982FA
-	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Sep 2026 10:40:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4784FC982FA
+	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Sep 2026 11:36:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=XqQKW3z5hnKtOh1Yrt4+LANIYob4MMKL9Db4+xJiKME=; b=SmH5TRkZJhZgkWKhSN6FQiJ/sL
-	SAeIwf3s7nbOmZpW+K8aq7k/VWIhIlDTt2ktfhnaB+gDnl/oyIV7B1PD+eB3yUzocN0KRRVk0Z7Yz
-	I3h3/+skjsJDHgkk2VrhNDRu/fXq91YL2OcIfDvWWgFr2zlDH7WXKyvg/2L+WZ7Xo7l2tjjK5ZwMV
-	MYQjk6/R9CvxakSu7CEuH7lG+zZKJaMcgPgmm8gLM1Du/oedoCNVEO1+ahjPyMuAeY04oyNuNUhAA
-	gZAhzyimuXJOQlrwafanpk/lslTus4TcIrEV4YUA+WLml8V/GnXUNjGz1ktcp3W7h/jtMvnLxjhWV
-	7mqQXADg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=TSepEe8gJ5V9PTOvT2CU7X853Enuy+dQkLPVUAgV/zM=; b=p4oRQKPliwPjjXr+nWp+oSW3hn
+	Ud9hTz2HJg7AywOZG51fW+C0F/HLhSEFJwr9csa+cIORk1UFTvKvbMAY6++Q5PwYGzro9ymj2/3Ok
+	KTLoubheXiAkIqBlrfvEjWeXrAiY8qUFKn6b52J2RoePFOTxXaj5ZBchqBtceYob++P/HOFBnAwCR
+	+vDw9W1iHxI17OKxV9B309JKUieGPhFmsH24eFwt/ERsJ0in5vv7wDeMFeaCBYeDqSGELBNZlRjZs
+	9TQH6X0462La7hwEgJ9YRraT/u+xueq+GGuuJtHXtse9yaY/azs3uMXve+pJqkZlJ8Fo2jxjXO8yk
+	+bJ7CtUg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x8xvW-000000055G1-00M0;
-	Tue, 22 Sep 2026 10:40:42 +0000
-Received: from foss.arm.com ([217.140.110.172])
-	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x8xvR-000000055Ei-3GP3;
-	Tue, 22 Sep 2026 10:40:39 +0000
-Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
-	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 081181476;
-	Tue, 22 Sep 2026 03:40:33 -0700 (PDT)
-Received: from [10.0.152.207] (e121487-lin.cambridge.arm.com [10.0.152.207])
-	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id C9F083F632;
-	Tue, 22 Sep 2026 03:40:34 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple; d=arm.com; s=foss;
-	t=1790073636; bh=6SHOXZRwGSLZUhiOFQuc5mbQU1ywz+XYMnYI1L3G3jg=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=Gq6DozBfbVooCvSLzrCn05HPEV9yYD5seyMJI6wgjyrWj+9DV1MaiHQt7kvPhWL4Z
-	 DF4RfOOj2MaZoW9zqpStsUdXgD8DoSBMHYjrIQaiu39hBciSiW8RNvJ0yDjxmvrF53
-	 N6wni7Sz1iYBcVCFCgbmy6Syk007BX7q62oyBGJk=
-Message-ID: <8ca7bd18-ad17-4aa2-b184-9fd13921828f@arm.com>
-Date: Tue, 22 Sep 2026 11:40:33 +0100
+	id 1x8ynL-00000005BgN-05bi;
+	Tue, 22 Sep 2026 11:36:19 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
+	id 1x8ynJ-00000005BfX-3ezI;
+	Tue, 22 Sep 2026 11:36:17 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by tor.source.kernel.org (Postfix) with ESMTP id E76A460DE9;
+	Tue, 22 Sep 2026 11:36:16 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id B80681F00893;
+	Tue, 22 Sep 2026 11:36:13 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1790076976;
+	bh=TSepEe8gJ5V9PTOvT2CU7X853Enuy+dQkLPVUAgV/zM=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To;
+	b=NOz7HibIFdheMN/q4+NYcN2EVOdq4KZAhUqJR4qXWTSSriVa0LwVfRGcSIYB1O6N+
+	 bBzOY1zPRlv2VQT6RjL2gDelowLsMgwTAkLxui6wX7jc8G+um0oz4R+dpUp79IvDLl
+	 xq5XBFYqNDp3ffnaCAI7NZbkmWzXGEOJXTrhI08t6tuRdYFrGoZaHJZUSpn+G9/3ML
+	 7834fV6oXKNvPLgVDQuqiHcrOCribPTTPi3RKbXO1/zu1KhjPHbO1qDlFVKPgAti2v
+	 3bpt/cozM2iK8deadZJAITpRm67wTqnjUSiG4OyhUc+bch1ekNhw4TUxfw20llgWr8
+	 gB4YUB25OsbVQ==
+Date: Tue, 22 Sep 2026 12:36:11 +0100
+From: Lee Jones <lee@kernel.org>
+To: Triet Hoang <triet.hoang.dev@gmail.com>
+Cc: Chanwoo Choi <cw00.choi@samsung.com>,
+	Krzysztof Kozlowski <krzk@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Aaro Koskinen <aaro.koskinen@iki.fi>,
+	Andreas Kemnade <andreas@kemnade.info>,
+	Kevin Hilman <khilman@baylibre.com>,
+	Roger Quadros <rogerq@kernel.org>, Tony Lindgren <tony@atomide.com>,
+	mfd@lists.linux.dev, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, linux-omap@vger.kernel.org,
+	linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v2 RESEND] mfd: Convert to DEFINE_SIMPLE_DEV_PM_OPS()
+Message-ID: <20260922113611.GB3277918@google.com>
+References: <20260911081022.3475479-1-triet.hoang.dev@gmail.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [BUG/PATCH] drivers/usb/mtu3: Work around mtu3_log_ep
- double-indirection issue
-To: paulmck@kernel.org, Mark Rutland <mark.rutland@arm.com>
-Cc: Steven Rostedt <rostedt@goodmis.org>,
- Chunfeng Yun <chunfeng.yun@mediatek.com>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-usb@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org
-References: <a3ee0655-d818-48e0-84d1-475e6c16c991@paulmck-laptop>
- <d7bb2cf4-11c3-468c-8749-99cc408299c7@arm.com>
- <b6c621eb-6d20-4e00-ac05-af122b630ca5@paulmck-laptop>
- <aae79c1c-8738-4b97-b1b9-d82d19d82d49@arm.com>
- <20260909093524.249c2a1a@gandalf.local.home>
- <arE4jcn4dCD9gos_@J2N7QTR9R3.cambridge.arm.com>
- <297673dd-6bcc-471a-9db0-980da3242339@paulmck-laptop>
-Content-Language: en-GB
-From: Vladimir Murzin <vladimir.murzin@arm.com>
-In-Reply-To: <297673dd-6bcc-471a-9db0-980da3242339@paulmck-laptop>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260922_034037_916706_429100FE 
-X-CRM114-Status: GOOD (  12.80  )
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20260911081022.3475479-1-triet.hoang.dev@gmail.com>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,66 +76,35 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 9/21/26 17:14, Paul E. McKenney wrote:
-> On Mon, Sep 21, 2026 at 03:00:45PM +0100, Mark Rutland wrote:
->> On Wed, Sep 09, 2026 at 09:35:24AM -0400, Steven Rostedt wrote:
->>> On Wed, 9 Sep 2026 11:31:28 +0100
->>> Vladimir Murzin <vladimir.murzin@arm.com> wrote:
->>>
->>>> I've done a little bit massaging and here is what worked for me
->>>>
->>>>
->>>> diff --git a/drivers/usb/mtu3/mtu3_trace.h b/drivers/usb/mtu3/mtu3_trace.h
->>>> index 89870175d635..4d4bae25fa1f 100644
->>>> --- a/drivers/usb/mtu3/mtu3_trace.h
->>>> +++ b/drivers/usb/mtu3/mtu3_trace.h
->>>> @@ -224,6 +224,7 @@ DECLARE_EVENT_CLASS(mtu3_log_ep,
->>>>                 __field(unsigned int, flags)
->>>>                 __field(unsigned int, direction)
->>>>                 __field(struct mtu3_gpd_ring *, gpd_ring)
->>>> +               __field(dma_addr_t, gpd_ring_dma)
->>>>         ),
->>>>         TP_fast_assign(
->>>>                 __assign_str(name);
->>>> @@ -235,12 +236,13 @@ DECLARE_EVENT_CLASS(mtu3_log_ep,
->>>>                 __entry->flags = mep->flags;
->>>>                 __entry->direction = mep->is_in;
->>>>                 __entry->gpd_ring = &mep->gpd_ring;
->>>> +               __entry->gpd_ring_dma = mep->gpd_ring.dma;
->>>>         ),
->>>>         TP_printk("%s: type %s maxp %d slot %d mult %d burst %d ring %p/%pad flags %c:%c%c%c:%c",
->>>>                 __get_str(name), usb_ep_type_string(__entry->type),
->>>>                 __entry->maxp, __entry->slot,
->>>>                 __entry->mult, __entry->maxburst,
->>>> -               __entry->gpd_ring, &__entry->gpd_ring->dma,
->>>> +               __entry->gpd_ring, &__entry->gpd_ring_dma,
->>>>                 __entry->flags & MTU3_EP_ENABLED ? 'E' : 'e',
->>>>                 __entry->flags & MTU3_EP_STALL ? 'S' : 's',
->>>>                 __entry->flags & MTU3_EP_WEDGE ? 'W' : 'w',
->>> LGTM,
->>>
->>> Reviewed-by: Steven Rostedt <rostedt@goodmis.org>
->> On v7.3-rc4 I still see the splat Paul reported initially, and the above
->> fixes that, so FWIW:
->>
->> Tested-by: Mark Rutland <mark.rutland@arm.com>
->>
->> Steve, I assume you were expecting someone to send the above as a full
->> patch.
->>
->> Paul, do you intend to send a v2, or should Vladimir send out his
->> version as its own patch? I assume you're happy with a Reported-by, if
->> he does that?
-> I figure that Vladimir's patch supersedes my hack, and so I would be
-> quite happy with Vladimir sending a formal patch with my Reported-by.
+On Fri, 11 Sep 2026, Triet Hoang wrote:
+
+> Convert the deprecated SIMPLE_DEV_PM_OPS() to DEFINE_SIMPLE_DEV_PM_OPS()
+> and pm_sleep_ptr().
 > 
-> 							Thanx, Paul
+> This allows us to drop the __maybe_unused annotations from PM callbacks.
+> This is a straightforward cleanup with no functional change intended.
 > 
+> Signed-off-by: Triet Hoang <triet.hoang.dev@gmail.com>
+> ---
+> Changes in v2:
+> - Change commit message prefix from "drivers/mfd: " to "mfd: ".
+> - Wrap to 75 ish chars for commit messages.
+> 
+> Link to v1: https://lore.kernel.org/all/20260821092508.324787-1-triet.hoang.dev@gmail.com/
+> Link to v2: https://lore.kernel.org/all/20260829050228.42638-1-triet.hoang.dev@gmail.com/
+> ---
+>  drivers/mfd/iqs62x.c           | 8 ++++----
+>  drivers/mfd/max77843.c         | 8 ++++----
+>  drivers/mfd/mt6360-core.c      | 8 ++++----
+>  drivers/mfd/rk8xx-i2c.c        | 4 ++--
+>  drivers/mfd/rn5t618.c          | 8 ++++----
+>  drivers/mfd/ti_am335x_tscadc.c | 8 ++++----
+>  drivers/mfd/tps6586x.c         | 8 ++++----
+>  drivers/mfd/twl-core.c         | 8 ++++----
+>  8 files changed, 30 insertions(+), 30 deletions(-)
 
-Thanks everyone, formal patch is out
+Already applied.
 
-https://lore.kernel.org/linux-arm-kernel/20260922103756.104846-1-vladimir.murzin@arm.com/T/#u
-
-Cheers
-Vladimir
+-- 
+Lee Jones
 
