@@ -4,62 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7A28EC982FA
-	for <linux-mediatek@archiver.kernel.org>; Tue, 22 Sep 2026 22:24:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 19882C982FA
+	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Sep 2026 00:21:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=vWi2Axh0FHWZnYR9ulxCow+anQdMaqgalXbk9rXUqks=; b=DGTo7P787f+WuLDM6e7u9fVWmt
-	bhH7YDFoHugoDfyOIZgVF6Z5N/lNcc7iEA5hb02Lox0hmPBO46Y4HhhbHWQNGLL/nBqGnQ+Srj7eF
-	oOFEbHl2dZZOSABjkYnmTZIlLZt2bIfhEy70dxpMf1b+o9IvHWC2ebfHCAym9eyWEu+7mMG7YUnD6
-	x/X24cKYVWhkEzA2DTXw59fF9I6iKALdusFEKlAM6qD/OWiCpiq//ngi70RYlc18Nrvn7GwuInBSd
-	KPXTzXst9hFsrY7ARLSJg5SobdtYzHg9F6OsFiTDVJxLG7o7NEI0c3jqOJWyjcyUNRz4xi1I1Mb6+
-	maVUOKnQ==;
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=uzB1bIu4DCAXkv+EdyAIgxF9xElFNSnl6zM2ZgAtCWQ=; b=vuQ7UZxTwGwtjg+1yog54H09/W
+	sZeNGWSPNTuBOeVCzbJPzoTe5GkBXbhRwD8+QPpc4Zi2un8iteChhAXG+GNLb681Cm/Z1/gq7jQxQ
+	EvNUa+puXbkSkCtWI0qFv0YMugpqTW4OXWSnivmkCmHAhvIDYNlIDWVzW6dcO+8gj739tY9vzQp6b
+	qbUKpZK4GO9Cdiv2BZwSPj2HUPJ6EPj3YBFJfrPd4QZNmyk/tAZNvvpNmPVZclPw4IZgzoqcVORqi
+	+Kd+Vm0qwkxqys0JfAVnkes84TtZEYaQV4z2Fz8v00tO7IDsF6PRrHKEwN0vTW9WYGUEGtnI4f7gv
+	TH8vPw7w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x98uz-00000006fnM-07fW;
-	Tue, 22 Sep 2026 22:24:53 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1x9Aja-00000006mjD-0YJu;
+	Wed, 23 Sep 2026 00:21:14 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x98uy-00000006fn9-0NpI;
-	Tue, 22 Sep 2026 22:24:52 +0000
+	id 1x9AjY-00000006miX-05WK;
+	Wed, 23 Sep 2026 00:21:12 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id 3227440C42;
-	Tue, 22 Sep 2026 22:24:51 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id D3EEB1F000FF;
-	Tue, 22 Sep 2026 22:24:50 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 22DEB601F0;
+	Wed, 23 Sep 2026 00:21:11 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2D2BD1F000FF;
+	Wed, 23 Sep 2026 00:21:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1790115891;
-	bh=vWi2Axh0FHWZnYR9ulxCow+anQdMaqgalXbk9rXUqks=;
-	h=From:To:Cc:Subject:Date;
-	b=cjCKBqcKEru9zM97pqeXmgjpuIsJTYOlXU65lbCzviwU1uTCQc7/jP5GAGwVB8bC3
-	 bAIdF0wadiIt0JD/TxosSvXCWr9Whe6gR35sjbdMUGcXYb5w48YTA1eC9WXRva11H/
-	 cqrhIh6itFZQlEK/IePJv8OzC1ogosWKzq0KXyXGdcAFPwNgDB3B3mP4DHYUQk52eb
-	 56ZMiCgnM3aN1iAVCpEznT0im7FSJv1scneOxejhud4uCnr/3PEpA5l1d9caLkTxgp
-	 TC113L05PJvZN8TUmOE1ja4cEkgoSNn97JzZLn8IuKqKPH5qSA2ojJ93x92ZILsL9K
-	 CUM0Xnq6unQRA==
-From: "Rob Herring (Arm)" <robh@kernel.org>
-To: Sean Wang <sean.wang@kernel.org>,
-	Linus Walleij <linusw@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Andy Teng <andy.teng@mediatek.com>
-Cc: linux-mediatek@lists.infradead.org,
-	linux-gpio@vger.kernel.org,
-	devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org
-Subject: [PATCH] dt-bindings: pinctrl: Fix MT6797 pin nodes
-Date: Tue, 22 Sep 2026 17:24:39 -0500
-Message-ID: <20260922222439.1682749-1-robh@kernel.org>
-X-Mailer: git-send-email 2.53.0
+	s=k20260515; t=1790122870;
+	bh=uzB1bIu4DCAXkv+EdyAIgxF9xElFNSnl6zM2ZgAtCWQ=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:References;
+	b=UP5W3GZlkEXz0RmChr/UZd5XuxVjbLtw/24ppTpDkV7iRPvGRVoFmS/7rTsUDKWbs
+	 TQEuHvWtVPskwH4QBnZoOYuNkgZ8O3GRJGjuRxa/Wk+GgMAsQlJOow7q+0DcEFEmyW
+	 PpyjJgWaoPsn3EZIY2g4hD8/DaiMrrWFQDaxiXQLvNUSA4dztpn8duHDqjKsP3rv3n
+	 XAS7XoRlTEYPuWL4QpBOMztATDHSMTbO085x9nfyYi/uITT1IbqZr0ZYUCscLmLpFa
+	 0x2SBL42d1tEDMDJb/u564g1YjuxtuFFkLhHTNDH4g49MEn7ckFtHlP9eRZb4gCdj3
+	 Gz7d2tqU9o3tg==
+Date: Tue, 22 Sep 2026 17:21:09 -0700
+From: Jakub Kicinski <kuba@kernel.org>
+To: "Christian Marangi (Ansuel)" <ansuelsmth@gmail.com>
+Cc: Lee Jones <lee@kernel.org>, Rob Herring <robh@kernel.org>, Krzysztof
+ Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, Andrew
+ Lunn <andrew+netdev@lunn.ch>, "David S. Miller" <davem@davemloft.net>, Eric
+ Dumazet <edumazet@google.com>, Paolo Abeni <pabeni@redhat.com>, Vladimir
+ Oltean <olteanv@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ "Chester A. Unal" <chester.a.unal@arinc9.com>, Daniel Golle
+ <daniel@makrotopia.org>, Heiner Kallweit <hkallweit1@gmail.com>, Russell
+ King <linux@armlinux.org.uk>, Simon Horman <horms@kernel.org>,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ netdev@vger.kernel.org, mfd@lists.linux.dev, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org
+Subject: Re: [PATCH net-next v22 4/9] mfd: an8855: Add support for Airoha
+ AN8855 Switch
+Message-ID: <20260922172109.1e666b56@kernel.org>
+In-Reply-To: <CA+_ehUyFH_ZSsjhp-U9WBFoRZR-ZMWnNQ5pY5vAy1LxUU5hSsw@mail.gmail.com>
+References: <20260915123812.14747-1-ansuelsmth@gmail.com>
+	<20260915123812.14747-5-ansuelsmth@gmail.com>
+	<20260921134410.13a7173c@kernel.org>
+	<CA+_ehUyFH_ZSsjhp-U9WBFoRZR-ZMWnNQ5pY5vAy1LxUU5hSsw@mail.gmail.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,37 +81,11 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Allow MT6797 pinctrl state nodes named *-pins directly under the
-pinctrl controller. The existing mt6797.dtsi uses nodes such as
-i2c0-pins and uart0-pins, each with pins-* child nodes, while the
-conversion only allowed numbered state nodes such as foo-0.
+On Tue, 22 Sep 2026 12:14:22 +0200 Christian Marangi (Ansuel) wrote:
+>  I also didn't receive the email for the AI review... Did it broke also here?
+> If everything else is ok, should I send new revision or maybe we can pick this
+> and I can send followup for this warning?
 
-Assisted-by: LLM
-Signed-off-by: Rob Herring (Arm) <robh@kernel.org>
----
- .../devicetree/bindings/pinctrl/mediatek,mt6779-pinctrl.yaml  | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
-
-diff --git a/Documentation/devicetree/bindings/pinctrl/mediatek,mt6779-pinctrl.yaml b/Documentation/devicetree/bindings/pinctrl/mediatek,mt6779-pinctrl.yaml
-index f4bab7a132d3..dba2dec15477 100644
---- a/Documentation/devicetree/bindings/pinctrl/mediatek,mt6779-pinctrl.yaml
-+++ b/Documentation/devicetree/bindings/pinctrl/mediatek,mt6779-pinctrl.yaml
-@@ -111,12 +111,12 @@ allOf:
-         - "#interrupt-cells"
- 
- patternProperties:
--  '-[0-9]*$':
-+  '(-pins|-[0-9]+)$':
-     type: object
-     additionalProperties: false
- 
-     patternProperties:
--      '-pins*$':
-+      '.*pins.*':
-         type: object
-         description:
-           A pinctrl node should contain at least one subnodes representing the
--- 
-2.53.0
-
+Clashiko gates on build and kdoc being clean, to try to save tokens.
+FWIW this is also how the CI (kselftests) are gated.
 
