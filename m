@@ -4,103 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CC10BC98309
-	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Sep 2026 05:51:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 21151C98302
+	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Sep 2026 05:55:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=YnMEvypJ3Ha2bDjbDxvE5Gk/KNs3bBY6A7SZqpIE6fo=; b=wVKZeCHhASr4A58qSG8S76bUtH
-	aV4KyprNGu1jOHBm02ZgOl1K4zA3siDqspIsr+hP4YNNeVDV0RQIypmYWpGArJIwHy+JCGf0kaQKv
-	EKz6dozP+B0TpXbg0nsL9cGFD9EzlCrM1X6fd2mfH5Ho23YvoXKN95eUk8mz3S8PUflbqcC5c6hfi
-	K22cPoTRjhX6q+9ZPlY2fCkW23JPkE4Gjs0i2mRI6F1DtvTunnmbdVnkcq6E8O69LhpQxLYpZ+0XZ
-	PgKk41dWgfFXTUPVMu9ptE75bfGQeP26kjJlCa1f1wXWYe/8UHKtiCu7xhM49pIRr+qV+ezluxwFM
-	nYvfGgJg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Message-ID:Date
+	:Cc:To:From:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=TraGMeCA9pkffDDmCOvPFMTZm8A9mB7/rgVzunnJM6A=; b=2vXriiCTJAeACBlAhdJ8oPTf23
+	TNsg+QfG7pWYc+cDetAi0RHGUhZEuPCQOjR7NZ8BvK5JoLK5LY4iiggaAhJc+5Ea4wuw9wdHu4R62
+	iCYY9tT979bbObJlQwLiuRyQNMDPtHirDGOe+ToQsA6i1ri+g8jbjKOKcvZHIgu4qQZQxX6d+Q0Rt
+	3Eoq0M1+mg/juNppZiQjCtkK4DYMnJMcmsU8JsRAFQC7bdnNHCcAglyEtO+sOAXab4Av97nLmGuRT
+	qMszGSSyyuia4xRYa++WY1BJXufVrN1dNnqoXJHGQzORIQbWS7VeTVdTMJo6mZwgrCtaZeSBYDRQz
+	iTS2tVbw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x9Fst-00000007CqH-3Vn8;
-	Wed, 23 Sep 2026 05:51:11 +0000
-Received: from mail-pz2-x0c.google.com ([2607:f8b0:4864:3b::c])
+	id 1x9Fwm-00000007Dje-18DN;
+	Wed, 23 Sep 2026 05:55:12 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x9Fsq-00000007Co3-3Ynl
-	for linux-mediatek@lists.infradead.org;
-	Wed, 23 Sep 2026 05:51:09 +0000
-Received: by mail-pz2-x0c.google.com with SMTP id 41be03b00d2f7-cc750a1482fso419852a12.2
-        for <linux-mediatek@lists.infradead.org>; Tue, 22 Sep 2026 22:51:08 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1790142668; x=1790747468; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to:content-type;
-        bh=YnMEvypJ3Ha2bDjbDxvE5Gk/KNs3bBY6A7SZqpIE6fo=;
-        b=Z667LpZ2ELkQn1czkEJU/mryF0/zAbyPTYBnGZoxpHAHusBU9qb9mEZrUwKk+hnBm6
-         BiO39z0qLe1ENoJnnneFdjM2xIJ+fqxsOAMBjDMH75zwCP4V00MAo3urF0RuRoRbKfYW
-         DwZmDlrQ2zboEI0qMALx5IgFaAM5OLR1u8KmTjx8mKIuIif5FSpq8wc+oy0HBtguxUD9
-         IWdCZF6qe9yYzroXKx3HrXqItqF4dx54WsKZLD+fc+tiNtRDtQLP14EWTic4sA/1IbCi
-         oY3bgMG8C4DlgDpBivmpEOCQ5T9iQhfZpKO021g2JVa5ScfzMTUaLEKTLikd9g8oi+fn
-         YbjA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1790142668; x=1790747468;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
-         :to:cc:subject:date:message-id:reply-to:content-type;
-        bh=YnMEvypJ3Ha2bDjbDxvE5Gk/KNs3bBY6A7SZqpIE6fo=;
-        b=t02RLmCZY77xvz0NQwtq7qFnbSgeRkOzaQN/xEIz+10DPulsFMYuPHZwYgRLOyMPCe
-         NwLP/kP17f1OkcUXex5hSWoaMUECb+gc81ELetTNZtRgodG/Tdtlweab1vStDCnyS/K3
-         nt1vPvyhhXXCXFKRSfYG2h+joJynhNp09NwmiZehxg1O/vbw0ptbOKuoTb1O1jKtXZof
-         U1uX7QTmLZ3pD/fVfdQWaeeNSX3AGzDhRZ2LUfF1wknYub2paaxVq9J7rF9X/woohQHK
-         T/9znXcIP2GyAK2l4PRYrkRhjH4ImFGa1OtW8e0K9ZhF1vYJKwWlO5TxDx9zE9Gyd/G4
-         22xA==
-X-Forwarded-Encrypted: i=1; AKwUvBxCH880ZUegujnjbhL3GUitFFfUuHgd6oSEswO8Crrf1ZGErAjDiAKV9CBwm3yTTEJTrL/LWbpmXVmg6f5Euw==@lists.infradead.org
-X-Gm-Message-State: AFuF++m9iKSggZCcBi3vCwBqlQ1OpKFHST7CNx+B8kP8FqOYSoBTC+OY
-	Sm77R/XlfI2prrQ6qaw+qdn/WNsBIhEFBJU51nO/TqvbioLPJUBHjbeP
-X-Gm-Gg: AYBFou2tVapof2Ka2fcQLbZpsbRyetZ+/gOEEqvS9+kiooYQTVCvTXNAzp9yryWdeN7
-	QtW7z+bnc2Juozxqxp5pmm85eo7ua/IrJpBINj/HWzNV2B961LjwwczXsaly0Q+hPYGv5vb5ruL
-	ZcDR+W+TAN44/dJ1wkonMgzdZBG0Ocs1PAKbr6pu3BNzgKUwzp90kJpfF2pG1FqDkFDyO99ddPC
-	J1j32O1zWZhbnCQREsfYAGBN5Azep6dqqkbVqBavgIV8X5kmU+GviRkt4YnaSwJz3f4djDoYq/x
-	O1IQ9/hLEiKVnSYsP84nSsQpy2nkUplBgC9fw4uhqTRksIpIh8xOWmkVxsIDzKlKMHIIUWezsNr
-	hBqXZpIcD7yLAZlarKsQMoFzxn+LV9NVXAhd5wEVRo/NhjpE6gn/0p94c6SCFA1idUvf/xyN17e
-	oCK99C/Tk58NI8cCn443eMs/YcZ7Qtb+VCl2eL8c96zxrAx9OElyY3sutphfeXnubLe/3K9ZFWd
-	illPSu/r+5PJgdctEhXVqEhvBohZoexcCrqSw1XR4w6
-X-Received: by 2002:a05:6a20:c78e:b0:3dd:a007:cb2b with SMTP id adf61e73a8af0-3ddf8260c2bmr1610115637.39.1790142667977;
-        Tue, 22 Sep 2026 22:51:07 -0700 (PDT)
-Received: from abs.sf.dndws.com ([50.35.86.68])
-        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-87d1dffd6ddsm691486b3a.48.2026.09.22.22.51.07
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 22 Sep 2026 22:51:07 -0700 (PDT)
-From: Tao Gong <gongtao0607@gmail.com>
-To: netdev@vger.kernel.org
-Cc: "Chester A . Unal" <chester.a.unal@arinc9.com>,
-	Daniel Golle <daniel@makrotopia.org>,
-	Andrew Lunn <andrew@lunn.ch>,
-	Vladimir Oltean <olteanv@gmail.com>,
-	"David S . Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>,
-	Paolo Abeni <pabeni@redhat.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Lorenzo Bianconi <lorenzo@kernel.org>,
-	=?UTF-8?q?Ar=C4=B1n=C3=A7=20=C3=9CNAL?= <arinc.unal@arinc9.com>,
-	Florian Fainelli <florian.fainelli@broadcom.com>,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	Tao Gong <gongtao0607@gmail.com>,
-	Lorenzo Bianconi <lorenzo.bianconi@oss.qualcomm.com>
-Subject: [PATCH net v2 2/2] net: dsa: mt7530: trap frames to conduit in MFC on EN7581 and AN7583
-Date: Wed, 23 Sep 2026 05:51:03 +0000
-Message-ID: <20260923055103.949540-3-gongtao0607@gmail.com>
-X-Mailer: git-send-email 2.55.0
-In-Reply-To: <20260923055103.949540-1-gongtao0607@gmail.com>
-References: <20260923055103.949540-1-gongtao0607@gmail.com>
-MIME-Version: 1.0
+	id 1x9Fwk-00000007Dj3-09gc;
+	Wed, 23 Sep 2026 05:55:10 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by sea.source.kernel.org (Postfix) with ESMTP id C763940462;
+	Wed, 23 Sep 2026 05:55:09 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id DA8151F000FF;
+	Wed, 23 Sep 2026 05:55:08 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1790142909;
+	bh=TraGMeCA9pkffDDmCOvPFMTZm8A9mB7/rgVzunnJM6A=;
+	h=Subject:From:To:Cc:Date:In-Reply-To:References;
+	b=h9SoH5iQkl3t37QCkgDv34WeMmzNr8I+fr84AcprN4TyGLE5zwyd/4fPA1K7kPyVB
+	 o2kRvuEtiwvV3NOZglTkgN1d4nyUDUyc2LQsRDKd3E46/CGNXWIEgpItQyjJh+FWA7
+	 Q8niw17vXKEAQ881f488Tye6ZI1FWeeNImUz7DsVH2yteO+z5jNYlybWJAwoKNnyPh
+	 zpWPf+65Ka2+KTA2FKwgIIaSObAz7OxhBxrnEnYBNWAApgtB9dKYQWsmoNEJ94tVIh
+	 LvcySD6zUHyUBMJhFDQMkJIUjG7taPBtzhKAn0N3UUFRX4XB5jc2rKTxN8vDVxmKPQ
+	 BGL5f/aAhMFqg==
+Subject: Re: [PATCH v2] net: mediatek: fix PPE resource leak on remove
+From: netdev-bot+sashiko@kernel.org
+To: lgs201920130244@gmail.com
+Cc: nbd@nbd.name, lorenzo@kernel.org, andrew+netdev@lunn.ch,
+ davem@davemloft.net, edumazet@google.com, kuba@kernel.org, pabeni@redhat.com,
+ matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
+ netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ stable@vger.kernel.org
+Date: Wed, 23 Sep 2026 05:55:08 +0000
+Message-ID: <179014290838.2160803.10190235889811039929@kernel.org>
+In-Reply-To: <20260921145421.443018-1-lgs201920130244@gmail.com>
+References: <20260921145421.443018-1-lgs201920130244@gmail.com>
+X-sashiko-severity: High
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260922_225108_896183_643E2FD2 
-X-CRM114-Status: GOOD (  12.10  )
+MIME-Version: 1.0
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -115,43 +72,304 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On MT7531 and MT7988 switches, trapped frames forwarding is directed to
-CPU ports specified in the MT7531_CFC (0x04) CPU_PMAP bitmap. When support
-for EN7581 was introduced, it was assumed to follow the MT7531 model.
+Thank you for your contribution! Sashiko AI review found 3 potential
+issue(s) to consider.
 
-However, on Airoha EN7581 and AN7583 switch IP, setting MT7531_CFC alone
-is not sufficient for trapped control frames (such as STP BPDUs) to exit
-towards the CPU port. The switch forwarding hardware also requires the
-MT7530_CPU_EN bit and MT7530_CPU_PORT field to be enabled in MT753X_MFC
-(0x10). Without this, trapped frames are dropped by the switch forwarding
-logic and never reach the CPU conduit.
+Critical: 0 · High: 2 · Medium: 1 (1) · Low: 0
 
-Include ID_EN7581 and ID_AN7583 in mt753x_conduit_state_change() to set
-MT7530_CPU_EN and MT7530_CPU_PORT in MT753X_MFC when the conduit becomes
-operational, matching the handling for MT7530, MT7621, and EN7528.
+If you believe none of the issues are legitimate, please reply to each
+issue of Medium severity or higher and explain why the AI is wrong.
+If any of them are legitimate and you plan to respin, please let patchwork
+know by including "pw-bot: cr" as a separate line at the end of your reply
+(one such reply per series is enough).
 
-Fixes: 2b0229f67932 ("net: dsa: mt7530: Add EN7581 support")
-Acked-by: Lorenzo Bianconi <lorenzo.bianconi@oss.qualcomm.com>
-Signed-off-by: Tao Gong <gongtao0607@gmail.com>
----
- drivers/net/dsa/mt7530.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+- [High] Teardown ordering bug: mtk_remove() calls the newly added
+  mtk_ppe_deinit(eth) *after* mtk_hw_deinit(eth), which has already…
+- [High] Use-after-free: mtk_remove() destroys the shared offload
+  rhashtable (mtk_ppe_deinit() -> mtk_eth_offload_deinit() ->…
+- [Medium] The WED reference drop added in mtk_flow_offload_free()
+  (mtk_wed_flow_remove(entry->wed_index)) is dead code on the remove…
 
-diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
-index 20bb07fac0f7..92b5e949ffab 100644
---- a/drivers/net/dsa/mt7530.c
-+++ b/drivers/net/dsa/mt7530.c
-@@ -3338,7 +3338,8 @@ mt753x_conduit_state_change(struct dsa_switch *ds,
- 	 * interface is up.
- 	 */
- 	if (priv->id != ID_MT7530 && priv->id != ID_MT7621 &&
--	    priv->id != ID_EN7528)
-+	    priv->id != ID_EN7528 &&
-+	    priv->id != ID_EN7581 && priv->id != ID_AN7583)
- 		return;
- 
- 	mask = BIT(cpu_dp->index);
+Pre-existing issues:
+- [Medium] Pre-existing WED flow-reference leak in
+  mtk_flow_offload_replace(): after 'if (wed_index >= 0 && (err =…
+
+--
+
+net: mediatek: fix PPE resource leak on remove
+
+This patch drains eth->flow_table with rhashtable_free_and_destroy()
+during PPE teardown, removes the PPE debugfs directories, tracks whether
+the shared flow table was initialized, and calls mtk_ppe_deinit() from
+mtk_remove().
+
+A few questions about the new teardown ordering below.
+
+> diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+> index 2ea5dfe85539b..0625be1b112f7 100644
+> --- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+> +++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+> @@ -5410,6 +5410,7 @@ static void mtk_remove(struct platform_device *pdev)
+>  
+>  	netif_napi_del(&eth->tx_napi);
+>  	netif_napi_del(&eth->rx_napi);
+> +	mtk_ppe_deinit(eth);
+>  	mtk_cleanup(eth);
+>  	free_netdev(eth->dummy_dev);
+>  	mtk_mdio_cleanup(eth);
+
+[Severity: High]
+Can this new call site touch PPE registers after the clocks are gone?
+In mtk_remove(), mtk_hw_deinit() has already run before this point:
+
+drivers/net/ethernet/mediatek/mtk_eth_soc.c:mtk_hw_deinit() {
+	if (!test_and_clear_bit(MTK_HW_INIT, &eth->state))
+		return 0;
+
+	mtk_clk_disable(eth);
+
+	pm_runtime_put_sync(eth->dev);
+	pm_runtime_disable(eth->dev);
+	...
+}
+
+The new drain path reaches MMIO for every entry that still has a
+hardware slot:
+
+mtk_ppe_deinit() -> mtk_eth_offload_deinit() ->
+rhashtable_free_and_destroy(&eth->flow_table, mtk_flow_offload_free) ->
+mtk_foe_entry_clear() -> __mtk_foe_entry_clear()
+
+drivers/net/ethernet/mediatek/mtk_ppe.c:__mtk_foe_entry_clear() {
+	if (entry->hash != 0xffff) {
+		struct mtk_foe_entry *hwe = mtk_foe_get_entry(ppe, entry->hash);
+
+		hwe->ib1 &= ~MTK_FOE_IB1_STATE;
+		hwe->ib1 |= FIELD_PREP(MTK_FOE_IB1_STATE, MTK_FOE_STATE_INVALID);
+		dma_wmb();
+		mtk_ppe_cache_clear(ppe);
+	...
+}
+
+drivers/net/ethernet/mediatek/mtk_ppe.c:mtk_ppe_cache_clear() {
+	ppe_set(ppe, MTK_PPE_CACHE_CTL, MTK_PPE_CACHE_CTL_CLEAR);
+	ppe_clear(ppe, MTK_PPE_CACHE_CTL, MTK_PPE_CACHE_CTL_CLEAR);
+}
+
+mtk_ppe_stop() does not reset entry->hash, so the hash != 0xffff branch
+is reachable during unbind when offloaded flows are present.
+
+The probe unwind uses the opposite order, with mtk_ppe_deinit() running
+before mtk_hw_deinit() and mtk_wed_exit():
+
+err_deinit_ppe:
+	mtk_ppe_deinit(eth);
+	mtk_mdio_cleanup(eth);
+err_free_dev:
+	mtk_free_dev(eth);
+err_deinit_hw:
+	mtk_hw_deinit(eth);
+err_wed_exit:
+	mtk_wed_exit();
+
+Should the remove path place mtk_ppe_deinit() before mtk_wed_exit() and
+mtk_hw_deinit() to match?
+
+> diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.h b/drivers/net/ethernet/mediatek/mtk_eth_soc.h
+> index 88a9b3b23bea5..2b33067345c39 100644
+> --- a/drivers/net/ethernet/mediatek/mtk_eth_soc.h
+> +++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.h
+> @@ -1346,6 +1346,7 @@ struct mtk_eth {
+>  
+>  	struct mtk_ppe			*ppe[3];
+>  	struct rhashtable		flow_table;
+> +	bool				flow_table_initialized;
+>  
+>  	struct bpf_prog			__rcu *prog;
+>  
+
+[ ... ]
+
+> diff --git a/drivers/net/ethernet/mediatek/mtk_ppe.c b/drivers/net/ethernet/mediatek/mtk_ppe.c
+> index 8451dc3fd00aa..f41df3cf0e2b8 100644
+> --- a/drivers/net/ethernet/mediatek/mtk_ppe.c
+> +++ b/drivers/net/ethernet/mediatek/mtk_ppe.c
+
+[ ... ]
+
+> @@ -946,7 +947,17 @@ void mtk_ppe_deinit(struct mtk_eth *eth)
+>  
+>  	for (i = 0; i < ARRAY_SIZE(eth->ppe); i++) {
+>  		if (!eth->ppe[i])
+> -			return;
+> +			continue;
+> +
+> +		debugfs_lookup_and_remove(eth->ppe[i]->dirname, NULL);
+> +	}
+> +
+> +	mtk_eth_offload_deinit(eth);
+> +
+> +	for (i = 0; i < ARRAY_SIZE(eth->ppe); i++) {
+> +		if (!eth->ppe[i])
+> +			continue;
+> +
+>  		rhashtable_destroy(&eth->ppe[i]->l2_flows);
+>  	}
+>  }
+
+> diff --git a/drivers/net/ethernet/mediatek/mtk_ppe_offload.c b/drivers/net/ethernet/mediatek/mtk_ppe_offload.c
+> index 99b28aaa7cc47..5b14c7b3052f9 100644
+> --- a/drivers/net/ethernet/mediatek/mtk_ppe_offload.c
+> +++ b/drivers/net/ethernet/mediatek/mtk_ppe_offload.c
+> @@ -678,9 +678,42 @@ int mtk_eth_setup_tc(struct net_device *dev, enum tc_setup_type type,
+>  	}
+>  }
+>  
+> +static void mtk_flow_offload_free(void *ptr, void *arg)
+> +{
+> +	struct mtk_flow_entry *entry = ptr;
+> +	struct mtk_eth *eth = arg;
+> +
+> +	mtk_foe_entry_clear(eth->ppe[entry->ppe_index], entry);
+> +
+> +	if (entry->wed_index >= 0)
+> +		mtk_wed_flow_remove(entry->wed_index);
+
+[Severity: Medium]
+Does this mtk_wed_flow_remove() actually drop anything on the remove
+path?  mtk_remove() runs mtk_wed_exit() before the new
+mtk_ppe_deinit(), and mtk_wed_exit() tears down the WED registry:
+
+drivers/net/ethernet/mediatek/mtk_wed.c:mtk_wed_exit() {
+	...
+		hw_list[i] = NULL;
+		debugfs_remove(hw->debugfs_dir);
+		put_device(hw->dev);
+		of_node_put(hw->node);
+		kfree(hw);
+	...
+}
+
+so by the time the drain runs, mtk_wed_flow_remove() takes the early
+bail-out:
+
+drivers/net/ethernet/mediatek/mtk_wed.c:mtk_wed_flow_remove() {
+	struct mtk_wed_hw *hw = hw_list[index];
+
+	mutex_lock(&hw_lock);
+
+	if (!hw || !hw->wed_dev)
+		goto out;
+	...
+}
+
+hw->num_flows is never decremented, wlan.offload_disable() is never
+called and mtk_wed_set_ext_int() is never re-run, so the enable done by
+mtk_wed_flow_add() is left unpaired.  Is the commit message claim of
+"dropping the WED flow reference when necessary" reachable with this
+ordering?
+
+[Severity: Medium]
+This isn't a bug introduced by this patch, but while on the subject of
+WED flow references: mtk_flow_offload_replace() acquires one before the
+entry allocation and the allocation failure path returns without
+releasing it:
+
+drivers/net/ethernet/mediatek/mtk_ppe_offload.c:mtk_flow_offload_replace() {
+	if (wed_index >= 0 && (err = mtk_wed_flow_add(wed_index)) < 0)
+		return err;
+
+	entry = kzalloc_obj(*entry);
+	if (!entry)
+		return -ENOMEM;
+	...
+}
+
+mtk_wed_flow_add() has already incremented hw->num_flows and possibly
+called wlan.offload_enable(), and since no entry is inserted into
+eth->flow_table the new drain cannot balance it either.  Should this
+return go through the goto-based unwind further down the function, which
+does call mtk_wed_flow_remove()?
+
+> +
+> +	kfree(entry);
+> +}
+> +
+>  int mtk_eth_offload_init(struct mtk_eth *eth, u8 id)
+>  {
+> -	if (!eth->ppe[id] || !eth->ppe[id]->foe_table)
+> +	int err;
+> +
+> +	if (!eth->ppe[id] || !eth->ppe[id]->foe_table ||
+> +	    eth->flow_table_initialized)
+>  		return 0;
+> -	return rhashtable_init(&eth->flow_table, &mtk_flow_ht_params);
+> +	err = rhashtable_init(&eth->flow_table, &mtk_flow_ht_params);
+> +	if (!err)
+> +		eth->flow_table_initialized = true;
+> +
+> +	return err;
+> +}
+> +
+> +void mtk_eth_offload_deinit(struct mtk_eth *eth)
+> +{
+> +	if (!eth->flow_table_initialized)
+> +		return;
+> +
+> +	mutex_lock(&mtk_flow_offload_mutex);
+> +	rhashtable_free_and_destroy(&eth->flow_table, mtk_flow_offload_free,
+> +				    eth);
+> +	mutex_unlock(&mtk_flow_offload_mutex);
+> +
+> +	eth->flow_table_initialized = false;
+>  }
+
+[Severity: High]
+Can this destroy the flow table while the offload block callbacks are
+still bound to live netdevs?
+
+In mtk_remove() the new mtk_ppe_deinit() runs before mtk_cleanup():
+
+	mtk_ppe_deinit(eth);
+	mtk_cleanup(eth);
+
+and the netdevs are only unregistered inside mtk_cleanup():
+
+drivers/net/ethernet/mediatek/mtk_eth_soc.c:mtk_cleanup() {
+	mtk_sgmii_destroy(eth);
+	mtk_unreg_dev(eth);
+	...
+}
+
+unregister_netdev() unbinds the ingress block and flushes the flowtable,
+which replays FLOW_CLS_DESTROY back into the driver through
+mtk_eth_setup_tc_block_cb() -> mtk_flow_offload_cmd() ->
+mtk_flow_offload_destroy(), where the freed table is dereferenced:
+
+	entry = rhashtable_lookup(&eth->flow_table, &f->cookie,
+				  mtk_flow_ht_params);
+
+rhashtable_free_and_destroy() kvfree()s the bucket tables and does not
+clear ht->tbl, so eth->flow_table.tbl is left dangling.
+
+mtk_flow_offload_cmd() only takes mtk_flow_offload_mutex and never
+consults the new flag:
+
+	mutex_lock(&mtk_flow_offload_mutex);
+	switch (cls->command) {
+	case FLOW_CLS_REPLACE:
+		err = mtk_flow_offload_replace(eth, cls, ppe_index);
+
+Since mtk_remove() holds no RTNL, a concurrent tc filter add ...
+skip_sw or an nf_flow_offload work item can also reach
+mtk_flow_offload_replace() -> rhashtable_insert_fast() on the freed
+table.
+
+Should the table be destroyed only after all netdevs are unregistered,
+and should mtk_flow_offload_cmd() check eth->flow_table_initialized
+under mtk_flow_offload_mutex?  Note the flag is also cleared outside
+the mutex here.
+
 -- 
-2.55.0
-
+Sashiko AI review · https://netdev-ai.bots.linux.dev/sashiko/#/patchset/20260921145421.443018-1-lgs201920130244%40gmail.com
 
