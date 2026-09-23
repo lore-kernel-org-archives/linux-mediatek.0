@@ -4,68 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 124FDC982FE
-	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Sep 2026 00:25:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7D4C9C982FA
+	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Sep 2026 02:24:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
 	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=7KbqWqmQzqJ0KcYvjL3DybqekU4MQKHRA2UF8b+yGbE=; b=XwzdtMr+g9TT513hYq3iThK1om
-	/47ek5+dCyTZkMYugNfv7bIfm2r34GdZCc95p2Z/wWh86IAtiATbk7gd5PodiHEpaoKJaLfEv+T7l
-	CmauYixzeBibKDGICrKTEKqIA/4jx1R0YiZSJ48pYWuzmwxiOfNWbKcOIGHgpQgQPeV7l8G4oTio4
-	ZVYa+Y73XfVrkSuILfaEPKizJigjk/gKNxHf196wu46D8pEfAusCVqUUHzTV5lmJOZ+jG155l/Wvr
-	vHHYuNxwI0f3gjiT62XFyIY3kA44zUls/itCXaYJvd/OW26pYYx4BYMyUXtWOG2ZC1N12bIsJaG93
-	YRTz2ApQ==;
+	bh=eKK7cLX2tCod48o8HN+nrBMshyoyneBxydRfhPU+VUU=; b=QDp/+KU0C9OHXt03ma+8cZeEsp
+	6EL/jCB7o2hVAa5iGtKkJqWDjTku6758ZF4NynrlaGzRZA+8R0Xr8EtIrUfmYkeW1sajOZAsiq10Z
+	MvoL2Zewn8fY5c5S+Y8pPDS7fNuRxbaw6wEDy5aa3odTmR3YsuIa6/p0qs6zsAbT3MGNvlQ/w3v3T
+	piiOFQgVZrX+7GVcgCVvN47CjseUr17ZfcJ2isbameL3liKmG/XCXrkMOsHbz23MdogzuT3I65eP9
+	5jgJdK5DKjsj/K2YM4/iircf7r7OI8nmV2JX6VcZYNWSbZhCx+YifEyUZM7AfBCi/cRSNBNTfA4aY
+	UiKcgdlw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x9AnU-00000006n6A-3phI;
-	Wed, 23 Sep 2026 00:25:16 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1x9CfF-00000006vrc-1o5i;
+	Wed, 23 Sep 2026 02:24:53 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x9AnU-00000006n5X-149v;
-	Wed, 23 Sep 2026 00:25:16 +0000
+	id 1x9CfD-00000006vqK-1zvF;
+	Wed, 23 Sep 2026 02:24:51 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id A49FE42A40;
-	Wed, 23 Sep 2026 00:25:15 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id A7A091F000FF;
-	Wed, 23 Sep 2026 00:25:14 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 891C56022F;
+	Wed, 23 Sep 2026 02:24:50 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id C06401F000FF;
+	Wed, 23 Sep 2026 02:24:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1790123115;
-	bh=7KbqWqmQzqJ0KcYvjL3DybqekU4MQKHRA2UF8b+yGbE=;
+	s=k20260515; t=1790130290;
+	bh=eKK7cLX2tCod48o8HN+nrBMshyoyneBxydRfhPU+VUU=;
 	h=Date:From:To:Cc:Subject:In-Reply-To:References;
-	b=Xd28X2XeSPP+Rn/cZCMrm77oAKf+Sdr+oWN4XQjNJetJjdSXcrVLA2EMQNHNzF/vC
-	 YEN1rZ4QkAWRRFVbUzxSj5mES14BeichIdqMAIHeASVf12HVOf+ImWO7/+n9Q13T2c
-	 lGZyHUI7DH4L2oQVKcKIifsSxcFYnDa6a2dvGpfCQLIjX9neqF1bI12IZ9vWCbBVKQ
-	 T9/Mqb2aXlIvFIAh+I7SjIzEkc/gSU6Tz1LoXi7NqiwdleXHtEJxToHizU/keS1g7M
-	 t43TDDSymi6bkLvRmnJnZNc1WZPix156+fOJQ5r/8i0Er6RQyUvrrJRjlXpqHT4cOP
-	 nVy46neei02PQ==
-Date: Tue, 22 Sep 2026 17:25:14 -0700
+	b=S1VH6KZgzj+BfWsFvrsKHP/NHEfJPw7zaa2Lu3jbqKgkT+Hb5Yo8NWf/mBen9uump
+	 AwWxlozzIuyDkOd1IPMAtQ/7uZ1Yq3EVz7eJ+CDXyCGVEL+cHmM4JBEFdvooCwrvOH
+	 Cc7cDKHvySBEZ3z7qctXXxYURvMSuZAzci2UREjZo/7OKZpaIyYyYTXLTvkCcG9lUE
+	 rYGCYIqnegmSTep/tKDXH93ZrzpwcomL39lEjoTMOZaCfEtuYPzxeRy7b1f4btKf2P
+	 XEIIGFLwH/7KWjbr29FMeVeU9RpRmTImCY1Qy+wAriWHzXtU1U7DJfknoFo137WdKH
+	 qiJ1O/clPCVEg==
+Date: Tue, 22 Sep 2026 19:24:49 -0700
 From: Jakub Kicinski <kuba@kernel.org>
-To: "Christian Marangi (Ansuel)" <ansuelsmth@gmail.com>
-Cc: Maxime Chevallier <maxime.chevallier@bootlin.com>, Andrew Lunn
- <andrew+netdev@lunn.ch>, "David S. Miller" <davem@davemloft.net>, Eric
- Dumazet <edumazet@google.com>, Paolo Abeni <pabeni@redhat.com>, Rob Herring
- <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>, Simon Horman <horms@kernel.org>, Jonathan Corbet
- <corbet@lwn.net>, Shuah Khan <skhan@linuxfoundation.org>, Randy Dunlap
- <rdunlap@infradead.org>, Lorenzo Bianconi <lorenzo@kernel.org>, Heiner
- Kallweit <hkallweit1@gmail.com>, Russell King <linux@armlinux.org.uk>,
- Philipp Zabel <p.zabel@pengutronix.de>, Nathan Chancellor
- <nathan@kernel.org>, Nick Desaulniers <ndesaulniers@google.com>, Bill
- Wendling <morbo@google.com>, Justin Stitt <justinstitt@google.com>,
- netdev@vger.kernel.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-doc@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- llvm@lists.linux.dev
-Subject: Re: [PATCH net-next v16 00/12] net: pcs: Introduce support for
- fwnode PCS
-Message-ID: <20260922172514.7feb6e7c@kernel.org>
-In-Reply-To: <CA+_ehUwy9RUKCCHDnqoED3AMVnErgGr9RCrCR4ceg5QONq1wOQ@mail.gmail.com>
-References: <20260916235200.20712-1-ansuelsmth@gmail.com>
-	<20260921135933.7e8857ba@kernel.org>
-	<CA+_ehUwy9RUKCCHDnqoED3AMVnErgGr9RCrCR4ceg5QONq1wOQ@mail.gmail.com>
+To: Tao <gongtao0607@gmail.com>
+Cc: netdev@vger.kernel.org, "Chester A. Unal" <chester.a.unal@arinc9.com>,
+ Daniel Golle <daniel@makrotopia.org>, Andrew Lunn <andrew@lunn.ch>,
+ Vladimir Oltean <olteanv@gmail.com>, "David S. Miller"
+ <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, Paolo Abeni
+ <pabeni@redhat.com>, Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Florian Fainelli <florian.fainelli@broadcom.com>, =?UTF-8?B?QXLEsW7DpyA=?=
+ =?UTF-8?B?w5xOQUw=?= <arinc.unal@arinc9.com>, Lorenzo Bianconi
+ <lorenzo@kernel.org>, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH net 2/2] net: dsa: mt7530: trap frames to conduit in MFC
+ on EN7581 and AN7583
+Message-ID: <20260922192449.568e2b71@kernel.org>
+In-Reply-To: <20260919065214.31604-3-gongtao0607@gmail.com>
+References: <20260919065214.31604-1-gongtao0607@gmail.com>
+	<20260919065214.31604-3-gongtao0607@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=US-ASCII
 Content-Transfer-Encoding: 7bit
@@ -83,24 +77,13 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, 22 Sep 2026 12:12:56 +0200 Christian Marangi (Ansuel) wrote:
-> The remark on the fwnode patch are invalid. The driver is expected
-> to return those error as probe defer is not supported.
-> (a notifier and late attach/detach is used to align to phylink logic)
-> 
-> For the specific Airoha PCS driver it's really speculation from the AI
-> but HW doesn't work as described by AI.
-> 
-> The only real comment that is valid is about the alternative way
-> to give supported interface with the .get_capabilites OP.
-> 
-> This is currently not supported as there isn't any user and it will
-> be implemented as soon as there will be one. It's really to limit
-> the patch delta of this change and to progress further.
-> 
-> Maybe FIXME might be suitable?
+On Sat, 19 Sep 2026 06:52:12 +0000 Tao wrote:
+> On MT7531 and MT7988 switches, trapped frames forwarding is directed to
+> CPU ports specified in the MT7531_CFC (0x04) CPU_PMAP bitmap. When support
+> for EN7581 was introduced, it was assumed to follow the MT7531 model.
 
-FWIW no preference here, I defer to the human reviewer.
-We can treat the AI review as a hint if human reviewer thinks the code
-is fine as is.
+This patch does not apply, please make sure you rebase on net/main
+and repost
+-- 
+pw-bot: cr
 
