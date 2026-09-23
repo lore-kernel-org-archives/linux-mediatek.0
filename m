@@ -4,62 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 55886C982EA
-	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Sep 2026 10:32:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 33580C982EA
+	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Sep 2026 10:32:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=SV1I/v/iKlHr4fJyFgei4IhQeXGMMlj7HID5DV29eSI=; b=Yzb8NlEa/SS6ECRysihVmPjhmh
-	xDhGrno0eV0Syg1Sg/q9a81qUJHWrr0p2egU9zqVyTGJuZsbzzzT+HccvxW57rVDdhWoj/YoSv1+z
-	fcgtIX+c9p2frM4m8DwZ9T2xR7jXpsMxEnLk/AAOHAD/2iK8PEfTa2Pq/xnj6o9689KEr3B0K3Byp
-	v/gW9/5JpDtACacMOQAcjJ9XbrDl5SX/vSvaNccSIHRJ+UfPdoBjL1Y6fWSkVpczw/XBwZjQjWmlc
-	l109uVdlA2YyLcoPnyrUorE7N1xGCDCA3E6qhBPiXE2MJKDoU/h9hEYNSNNZJd2Jddcc2pau6CO90
-	IkrMaAOA==;
+	bh=AoaZpaOhxJ3jsXpsRX7MsSfy3c9E4uGe0ETxzBg6RFg=; b=pnZpv+NyY3OfZbWe6i6nSSV0iS
+	2/tp6OQU9bnHNhlMIimxr9ctMupKl0wBol6nIspas3DHCUETx7sSG79Jup3Dp0cGc9Wxxu3Pl/i+U
+	6wEyrQgkFG9rXaW11sAcVyNii9TWTEqc/32sXWISLRjwRrt944NsBciU/y6NYabM3PXnh/pUjRi3x
+	yD8L3WwLaWnQaP1vn+60snDQqXaR3txb2waqktZQqjp4oWbAjbjlNjHubnILoLwBcq2S4zjMIcrCx
+	lj6SoVmFjPrGADq3GIlQDk+PWR4Sbdxg9T6caU8+iKmLCN0VFT2ST4A3KqQI8vsKY92far2BZJ4fH
+	rK+mSieQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x9KHA-00000007uCV-08pr;
-	Wed, 23 Sep 2026 10:32:32 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1x9KHL-00000007uIP-0ONN;
+	Wed, 23 Sep 2026 10:32:43 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x9KH6-00000007uAZ-2c7i;
-	Wed, 23 Sep 2026 10:32:30 +0000
+	id 1x9KH7-00000007uAc-2NQT;
+	Wed, 23 Sep 2026 10:32:31 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
 	s=mail; t=1790159546;
-	bh=MlU0I3ZU5CQhUEWmtUjU7hoUECBy7HNDtouJfvmnWUY=;
+	bh=988dhDBtd7g+tpgVz0uwEhaGJxjatXUHLGg6/ZegZJk=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=G35gyO8T4XqhIR9m+aMzGaE5wPpF4m5NrBZhNhNlw3PHqY3zE4WuJ6smI+aZu/tzg
-	 RGAPuSLy7FonLOg0XxEIVT9KIwoQ/Ds0h9NRx9tc2Osn84prWuQi68fn/bERSUlNst
-	 0vLYo46nZyowmK/2Oi9fopr1WgEVpJLB1bBR/BLH1wt0O3LoUiH/HN+YEgWPu67YLL
-	 1aghRxhNBEUV4/j0Woqoaft0o4GZd8oVdx6tPIBBCTZCfWW2DCzP6t7PmTk4Os9j6S
-	 pkXM4GoQVM6MG8kQ7OP/5ON47WNtvb5McH8uV6kzlimQ281Q1G6VXc8/XyYMr9j2Y4
-	 5j5A1jxQXAWSQ==
+	b=KLTpos7rUO64wlQRUWMGS63EqfFNAxOjxjY+SPUd2fHlX3gSgVmrvD6wpOuHm9e/Z
+	 J3O4oOVupFjMyzzXuUPv7dS7mRfEaZpgz3LWZQ1/zWoy+bguQ9QHaljA4As9bl4TtQ
+	 NronXdNzZMKfXhfh1laq5VN6SmGBE7JCmQ5F8Mt1tMghwWm57iXba7q6XZVTzHKH9f
+	 Qy3nfK8bzoVB1JHXWzUbdw7hFrRmNc6ym/B5jVJjYaYqBTfJPwToOm8LGql720N81v
+	 TGqP6bmWqVRBZE8IWyu9pds7gOUkoW0tdBczdOwhzq3fa65zoKisSADme2T5ShAOrZ
+	 BV6UkDnRIbotA==
 Received: from IcarusMOD.eternityproject.eu (unknown [100.64.1.21])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id E006717E0104;
-	Wed, 23 Sep 2026 12:32:25 +0200 (CEST)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 504E317E020C;
+	Wed, 23 Sep 2026 12:32:26 +0200 (CEST)
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 To: arm-soc <arm@kernel.org>,
 	soc <soc@kernel.org>
 Cc: linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org,
 	matthias.bgg@gmail.com
-Subject: [GIT,PULL,2/3] MediaTek ARM32 Device Tree updates for v7.4
-Date: Wed, 23 Sep 2026 12:32:06 +0200
-Message-ID: <20260923103222.25504-2-angelogioacchino.delregno@collabora.com>
+Subject: [GIT,PULL,3/3] MediaTek SoC driver updates for v7.4
+Date: Wed, 23 Sep 2026 12:32:07 +0200
+Message-ID: <20260923103222.25504-3-angelogioacchino.delregno@collabora.com>
 X-Mailer: git-send-email 2.55.0
 In-Reply-To: <20260923103222.25504-1-angelogioacchino.delregno@collabora.com>
 References: <20260923103222.25504-1-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260923_033228_806431_065D43F2 
-X-CRM114-Status: UNSURE (   9.33  )
+X-CRM114-CacheID: sfid-20260923_033229_750945_7094038A 
+X-CRM114-Status: UNSURE (   7.15  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -81,30 +81,28 @@ The following changes since commit cee9395acd8043be0644b25c34bfa86623f2b935:
 
 are available in the Git repository at:
 
-  https://git.kernel.org/pub/scm/linux/kernel/git/mediatek/linux.git/ tags/mtk-dts32-for-v7.4
+  https://git.kernel.org/pub/scm/linux/kernel/git/mediatek/linux.git/ tags/mtk-soc-for-v7.4
 
-for you to fetch changes up to 2e195497fc9fc0dd89cf95dab80a2d0486dab65b:
+for you to fetch changes up to 96c2b43b1fb305e91700f64e9f758fc140c66b83:
 
-  ARM: dts: mediatek: Add basic support for Amazon ford board (2026-09-10 16:41:20 +0200)
-
-----------------------------------------------------------------
-MediaTek ARM32 DeviceTree updates
-
-This adds support for the watchdog found in the MediaTek MT8127 SoC
-and a new devicetree to enable basic boot on the Amazon Fire 7 2015
-tablet using the MT8127 SoC.
+  soc: mediatek: mt8167-mmsys: add routes for all display paths (2026-09-21 15:10:28 +0200)
 
 ----------------------------------------------------------------
-Zakariya Hadrami (3):
-      dt-bindings: arm: mediatek: Add MT8127 Amazon ford
-      ARM: dts: mediatek: mt8127: Add watchdog support
-      ARM: dts: mediatek: Add basic support for Amazon ford board
+MediaTek SoC driver updates
 
- Documentation/devicetree/bindings/arm/mediatek.yaml |  1 +
- arch/arm/boot/dts/mediatek/Makefile                 |  1 +
- arch/arm/boot/dts/mediatek/mt8127-amazon-ford.dts   | 54 ++++++++++++++++++++++++++++++++++++++++++++++++++++++
- arch/arm/boot/dts/mediatek/mt8127.dtsi              |  7 +++++++
- 4 files changed, 63 insertions(+)
- create mode 100644 arch/arm/boot/dts/mediatek/mt8127-amazon-ford.dts
+This adds support for GPU<->SRAM regulator coupling for the
+MediaTek MT8189 SoC, and introduces more MMSYS routes for
+display controller pahs of the MediaTek MT8167 SoC.
+
+----------------------------------------------------------------
+Justin Yeh (1):
+      soc: mediatek: mtk-regulator-coupler: Add support for MT8189
+
+Luca Leonardo Scorcia (1):
+      soc: mediatek: mt8167-mmsys: add routes for all display paths
+
+ drivers/soc/mediatek/mt8167-mmsys.h          | 183 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++----
+ drivers/soc/mediatek/mtk-regulator-coupler.c |   1 +
+ 2 files changed, 175 insertions(+), 9 deletions(-)
 
 
