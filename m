@@ -4,73 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 857C6C982EA
-	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Sep 2026 07:24:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5A8AEC982EA
+	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Sep 2026 08:13:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:
-	References:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:
-	Subject:Date:From:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=GC++7yEkGwzylqDh+PC3SB2xhKREJhD0cBQEVLS++uM=; b=nw3wes30/9XjreI4bSYPRLaUww
-	q9kjwNWo1JyePAaYZ5ttIKsgHCVcmOkdCNkBwSRkqUreah2Wked2cES7/N0/adzTq1ONfvCOu8xPM
-	EoG8W0evCckGjLAojEff0WjMx7479+WTb645VduipKzwwIjkKwzGc78ClYEAQZY1Y/7taXgBJBPT5
-	ZMZBHFi3b9sfsnRjDB0IzINqjU4EbPrfiXPxPOdYsN4xL1yev5qlVI8R4dCpzb+d0h55OqSfcIbGr
-	2rRIqF4aqFtDJdZRHUzIa09J5NYAUVkLmTVAhZq9Y6bs0owBtxzqmZCBS7XhWnku9CXa7VbECn3j1
-	D3r8EWrA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=nXFx24uHxr9xP0FU0RdXpsSyEvVzbxC7Cx4KbtNOMGc=; b=Cl6LtjMdzkTy1AoFxqSDq7SWJe
+	6CBZQd8L0rHzEAYtv1Rlssgy7OOKGViRMGmT6Bvqj4ydv66AxvBWNGRKPh1+qnTpToLzwxW/CI8EE
+	I0ZFe0RiOPjV8r4mwm3PvpNzQq5TKPaiCyx6MbMMB9LZcfOvb62WH6fwlyC1LLipvPSCUiWnJKq9u
+	QpXlZrqEuS53DhwatWPxpPxFliW5Yj5Go0BgLi18fO5lsrUPyJkD97RoveEJKFbWObwnEh8aamhiN
+	k3Id9RLwUoUWuKl2bl6Ok79nCM0zRT98yIefs1UkJfHl6FilarHpcw7pzLcPBe4xdrflvLH9yb1ea
+	FjjPhPww==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x9HKn-00000007Ogx-19bV;
-	Wed, 23 Sep 2026 07:24:05 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1x9I6B-00000007To0-03HH;
+	Wed, 23 Sep 2026 08:13:03 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x9HKl-00000007Og0-1z4D;
-	Wed, 23 Sep 2026 07:24:03 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id DC1C243F3B;
-	Wed, 23 Sep 2026 07:24:02 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id BFE05C2BCFB;
-	Wed, 23 Sep 2026 07:24:02 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1790148242;
-	bh=bMimWP7/2n7kxCpCnfJdRq+u+0JebIhQppMg7TsGX7Q=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To:From;
-	b=nioopepw/4/n17JYod4oij4mpiPrATm9k7rd1ibi8h+UwHWVjDBEwriAlIVsY4mr6
-	 Djb4Inqk8KKh6g2bBHduTxJwnYjcnZ5QpNILZ+WdV/I0wL5S2v6aPIsLY0e5LR1VGD
-	 wpGSLC8XCrYowgPBk4Q29qIHZIsmc9jpdNg/yXIn5IaOuIe4BrUwH29IVC8rDuIkA4
-	 gmzxdNZ/84DNQ/8/lRLeUtrnmaBDJFwhsLT3MW0eeyUd4iu0/ubHqu33T+TpdiGHRp
-	 vkcYg9ahe9GZWjPR+ANcC/brtKMT6OFYK5IijWzComQSF0JPInTBOwZzgYwzfX/m8w
-	 o1vvK1nGQwC0w==
-Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id A730AC98308;
-	Wed, 23 Sep 2026 07:24:02 +0000 (UTC)
-From: Roman Vivchar via B4 Relay <devnull+rva333.protonmail.com@kernel.org>
-Date: Wed, 23 Sep 2026 10:23:35 +0300
-Subject: [PATCH 2/3] cpufreq: mediatek: add mt6572 support
+	id 1x9I68-00000007TmT-0cmh;
+	Wed, 23 Sep 2026 08:13:01 +0000
+X-UUID: 931974eab72611f1acbe4559397dec65-20260923
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=nXFx24uHxr9xP0FU0RdXpsSyEvVzbxC7Cx4KbtNOMGc=;
+	b=ryd/mHfL4NNyI4I5IXU0czBURmvlTKvyis5VMHYWK0JjCVAEpn88AFt4pyuyBiF2fPNskH/xXOnr9UGnvjsN8IVabiX18Ff0WPDM+nDqqTDlbC7zRqLoqHt/QVcSj9oVQ8J4XmHPszbgvBPBHrZbpxq66MZQt+eq9pjFSI7N+hw=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.3.19,REQID:90e99337-713e-4565-98d8-a03d64db9862,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:7db8b62,CLOUDID:1ae7e108-d10d-41b3-a8f1-bc707284d0ce,B
+	ulkID:nil,BulkQuantity:0,SF:102|836|865|888|898,TC:-5,Content:0|15|50|99,E
+	DM:-3,IP:nil,URL:99|1,File:130,RT:0,Bulk:nil,QS:nil,BEC:-1,COL:0,OSI:0,OSA
+	:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 2,SSN|SDN
+X-CID-BAS: 2,SSN|SDN,0,_
+X-CID-FACTOR: TF_CID_SPAM_ULS,TF_CID_SPAM_SNR
+X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
+X-UUID: 931974eab72611f1acbe4559397dec65-20260923
+Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw02.mediatek.com
+	(envelope-from <kyrie.wu@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 339583002; Wed, 23 Sep 2026 01:12:52 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ mtkmbs13n2.mediatek.inc (172.21.101.108) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.2562.29; Wed, 23 Sep 2026 16:12:50 +0800
+Received: from gcnsap21.gcn.mediatek.inc (10.17.81.22) by
+ mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.2562.29 via Frontend Transport; Wed, 23 Sep 2026 16:12:48 +0800
+From: Kyrie Wu <kyrie.wu@mediatek.com>
+To: Tiffany Lin <tiffany.lin@mediatek.com>, Andrew-CT Chen
+	<andrew-ct.chen@mediatek.com>, Yunfei Dong <yunfei.dong@mediatek.com>, Mauro
+ Carvalho Chehab <mchehab@kernel.org>, Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>, Kyrie Wu <kyrie.wu@mediatek.com>,
+	Hans Verkuil <hverkuil@xs4all.nl>, Nicolas Dufresne
+	<nicolas.dufresne@collabora.com>, Nathan Hebert <nhebert@chromium.org>, Arnd
+ Bergmann <arnd@arndb.de>, Irui Wang <irui.wang@mediatek.com>, George Sun
+	<george.sun@mediatek.com>, <linux-media@vger.kernel.org>,
+	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>
+CC: Neil Armstrong <neil.armstrong@linaro.org>, Andrzej Pietrasiewicz
+	<andrzejtp2010@gmail.com>, Yilong Zhou <yilong.zhou@mediatek.com>
+Subject: [PATCH v10 00/10] Enable video decoder & encoder for MT8189
+Date: Wed, 23 Sep 2026 16:12:36 +0800
+Message-ID: <20260923081246.268182-1-kyrie.wu@mediatek.com>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20260923-6572-cpufreq-v1-2-41f7af6d6d1a@protonmail.com>
-References: <20260923-6572-cpufreq-v1-0-41f7af6d6d1a@protonmail.com>
-In-Reply-To: <20260923-6572-cpufreq-v1-0-41f7af6d6d1a@protonmail.com>
-To: "Rafael J. Wysocki" <rafael@kernel.org>, 
- Viresh Kumar <viresh.kumar@linaro.org>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
- Roman Vivchar <rva333@protonmail.com>
-X-Mailer: b4 0.15.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1790148240; l=1524;
- i=rva333@protonmail.com; s=20260510; h=from:subject:message-id;
- bh=b8RMk+Zv48cfJke7eSfTbaAxttUL1iUBiWM/BLYw9Fw=;
- b=WAtqaltRs4wSpqv0CO4qpYqEoudV+Gy+Tl/BfW9ztNKoM+pdXzu5ZvgkpisnwelUGwfCf0jXZ
- TU3bA3ie/SIAkFBJYaQbX87KwRldSLbbgOO/qXeUjDSAqfNG2EZuWf4
-X-Developer-Key: i=rva333@protonmail.com; a=ed25519;
- pk=zww/nWjBGoQ4POXCG0BV6fx2iuXK6jx77rsKPA5YK5Y=
-X-Endpoint-Received: by B4 Relay for rva333@protonmail.com/20260510 with
- auth_id=777
-X-Original-From: Roman Vivchar <rva333@protonmail.com>
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-MTK: N
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260923_011300_211851_1446EFB7 
+X-CRM114-Status: GOOD (  11.84  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,49 +91,116 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Reply-To: rva333@protonmail.com
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Roman Vivchar <rva333@protonmail.com>
+It adds the MT8189 decoder and encoder bindings and compatible data,
+updates the decoder capability data, and fixes two existing decoder
+issues.  Patch 3 moves decoder firmware selection from optional DT
+properties into platform data, matching the encoder implementation.
 
-Add mt6572 SoC platform data for CPU frequency scaling.
+Patch layout:
+  1  Add the MT8189 decoder binding.
+  2  Add decoder platform-data support.
+  3  Move decoder firmware selection to platform data.
+  4-5  Refactor decoder profile, level, and VP9 probability-size data.
+  6  Fix VP9 4K profile-2 decoding.
+  7  Add the MT8189 decoder compatible data.
+  8  Fix the media-device node number.
+  9-10  Add the MT8189 encoder binding and compatible data.
 
-Signed-off-by: Roman Vivchar <rva333@protonmail.com>
----
- drivers/cpufreq/mediatek-cpufreq.c | 9 +++++++++
- 1 file changed, 9 insertions(+)
+This series depends on:
+  [1] MT8196 decoder/VCP v7
+      https://patchwork.linuxtv.org/project/linux-media/cover/20260923024258.257846-1-kyrie.wu@mediatek.com/
+  [2] MT8196 encoder v8
+      https://patchwork.linuxtv.org/project/linux-media/cover/20260914073423.16131-1-irui.wang@mediatek.com/
 
-diff --git a/drivers/cpufreq/mediatek-cpufreq.c b/drivers/cpufreq/mediatek-cpufreq.c
-index f15135b2898b..615bccc77c98 100644
---- a/drivers/cpufreq/mediatek-cpufreq.c
-+++ b/drivers/cpufreq/mediatek-cpufreq.c
-@@ -737,6 +737,14 @@ static const struct mtk_cpufreq_platform_data mt2701_platform_data = {
- 	.ccifreq_supported = false,
- };
- 
-+static const struct mtk_cpufreq_platform_data mt6572_platform_data = {
-+	.min_volt_shift = 100000,
-+	.max_volt_shift = 200000,
-+	.proc_max_volt = 1250000,
-+	.sram_min_volt = 0,
-+	.ccifreq_supported = false,
-+};
-+
- static const struct mtk_cpufreq_platform_data mt7622_platform_data = {
- 	.min_volt_shift = 100000,
- 	.max_volt_shift = 200000,
-@@ -793,6 +801,7 @@ static const struct mtk_cpufreq_platform_data mt8516_platform_data = {
- static const struct of_device_id mtk_cpufreq_machines[] __initconst __maybe_unused = {
- 	{ .compatible = "mediatek,mt2701", .data = &mt2701_platform_data },
- 	{ .compatible = "mediatek,mt2712", .data = &mt2701_platform_data },
-+	{ .compatible = "mediatek,mt6572", .data = &mt6572_platform_data },
- 	{ .compatible = "mediatek,mt7622", .data = &mt7622_platform_data },
- 	{ .compatible = "mediatek,mt7623", .data = &mt7623_platform_data },
- 	{ .compatible = "mediatek,mt7988a", .data = &mt7988_platform_data },
+Testing on MT8189:
+
+H.264:
+  ./fluster.py run -d GStreamer-H.264-V4L2SL-Gst1.0 -j2 -t 90
+  JVT-AVC_V1: 96/135 tests passed
+
+VP9:
+  ./fluster.py run -d GStreamer-VP9-V4L2SL-Gst1.0 -j2 -t 90
+  VP9-TEST-VECTORS: 276/305 tests passed
+
+v4l2-compliance:
+  mtk-vcodec-enc (/dev/video2): 46/47 passed, 1 failed, 0 warnings
+  mtk-vcodec-dec (/dev/video3): 48/48 passed, 0 failed, 0 warnings
+
+SCP upstream link:
+https://patchwork.kernel.org/project/linux-mediatek/patch/20250811015922.32680-1-huayu.zong@mediatek.com/
+
+DTSI upstream link:
+https://lore.kernel.org/linux-mediatek/20251030134541.784011-12-jh.hsu@mediatek.com/T/#m847e35de0a5b18fac0ca0624a8559d84964ad5c7
+
+Changes compared with v9:
+  - Rebased on the latest media tree.
+  - Rebased on MT8196 decoder/VCP v7 and encoder v8.
+  - Add a separate decoder firmware-platform-data patch following review.
+
+Changes compared with v8:
+--Rebased on top of the latest media tree
+
+Changes compared with v7:
+--relocate the patches set
+--refactor decoder platform data patch
+--fix commit message errors
+
+Changes compared with v6:
+--refactor the patches of set compatible data, profile and level
+--add reviewer to commit messages
+--fix commit message errors
+
+Changes compared with v5:
+--refactor the patches of set compatible data, profile and level
+--add reviewer to commit messages
+--fix commit message errors
+
+Changes compared with v4:
+--update H264 & vp9 fluster test results
+--update vp9 single core decoder prob size setting and commit messages
+
+Changes compared with v3:
+--add reviewer to commit messages
+--Rebased on top of the latest media tree
+
+Changes compared with v2:
+--add H264 fluster test results
+--reorder compatible string for dt-bindings
+
+Changes compared with v1:
+--add v4l2-compliance test results
+--add scp upstream link
+--add HW difference discriptions for dt-bindings commit messages
+
+Kyrie Wu (10):
+  dt-bindings: media: mediatek: decoder: Add MT8189
+    mediatek,vcodec-decoder
+  media: mediatek: decoder: Add a new platform data member
+  media: mediatek: decoder: Move firmware selection to platform data
+  media: mediatek: vcodec: Refactor Decoder profile & level Handling
+  media: mediatek: vcodec: Add VP9 Probability Size Configuration
+  media: mediatek: vcodec: Fix vp9 4096x2176 fail for profile2
+  media: mediatek: vcodec: add decoder compatible to support MT8189
+  media: mediatek: vcodec: Fix media device node number
+  dt-bindings: media: Add MT8189 mediatek,vcodec-encoder
+  media: mediatek: encoder: Add MT8189 encoder compatible data
+
+ .../media/mediatek,vcodec-encoder.yaml        |   2 +
+ .../media/mediatek,vcodec-subdev-decoder.yaml |   5 +-
+ .../mediatek/vcodec/decoder/mtk_vcodec_dec.c  |   2 +-
+ .../mediatek/vcodec/decoder/mtk_vcodec_dec.h  |   6 +
+ .../vcodec/decoder/mtk_vcodec_dec_drv.c       |  68 ++---
+ .../vcodec/decoder/mtk_vcodec_dec_drv.h       |  42 +--
+ .../vcodec/decoder/mtk_vcodec_dec_hw.c        |   2 +-
+ .../vcodec/decoder/mtk_vcodec_dec_stateful.c  |  16 ++
+ .../vcodec/decoder/mtk_vcodec_dec_stateless.c | 253 ++++++++++++------
+ .../vcodec/decoder/vdec/vdec_vp9_req_lat_if.c |  14 +-
+ .../vcodec/encoder/mtk_vcodec_enc_drv.c       |  17 ++
+ 11 files changed, 279 insertions(+), 148 deletions(-)
 
 -- 
-2.55.0
-
-
+2.51.0.windows.2
 
