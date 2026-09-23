@@ -4,97 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EF048C982FA
-	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Sep 2026 08:18:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 88B57C982FA
+	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Sep 2026 08:31:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=sP6wUj2jGaL1zbuYodHcp4quq1nEFGgaqRRcNNs7Hak=; b=2DMzCmY2FHuSplw2GMayiMKwDa
-	hjtLsJmDwyR8LT1QbLAPeT5Kiaxwk54WbDbYvjelaxd/PstOTlC/qA8mdNRzv1xwpP9Wp0ALy8PO5
-	7YUgRtrlK7+0+M5dDnp/FLWjTJ7gko/jEiXspTDdviXOEN2SPjv2L6w829h2X7DEaHwnTD3ZXaokG
-	bC3RCMTu26L5xNLuN72nVrzJILFpncOWh8d4xNrXcBleGwFx7ImnXRia1Kf2W5Qvk37SKwjHV1fVF
-	zXXMSPZM9TnAfXmqxCvLceI5aM2XsdlUbhPWJsoul9rxp9B8DiD2sIm3/8SJGYKLyvmX5usUrTny5
-	JON+hYxw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=ggfPnUnXU0n3rJkPoLDqNiw5pfA+E10hNhIURH89gMk=; b=tN7l/jVotDt1Mg+hhdnP4TpJpT
+	309ud0p8rvJMXsy1XnAlBjB0qMEQuOMq0nNfnYpIChAtO1NENFlqF+v1d51fW2AM5foWVVI+jmlq8
+	Nu/g9k6s6cEhokZPaSnEFbT4nw3Sw79AXA1h5ZIugkItCP0Wl0sm1NosI4BkjSbl8d/S4vvgyYmHL
+	4hRxRTZIE0epXBC9u17BajpOzDAayLK2LVEtrr+Y34KcOicmWXhOyTxOTMi8r2TgmPXV16oYGAyQM
+	V/MPAHdgd2FNWfAonjh8fUaUTbjH6e8pphBM/ULxq+H6yMNjNCSic9fysmgGKneWD1TxL27fcvw5F
+	xszRbkgQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x9IBl-00000007VSR-0VVJ;
-	Wed, 23 Sep 2026 08:18:49 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1x9IO3-00000007X2P-1SPL;
+	Wed, 23 Sep 2026 08:31:31 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x9IBi-00000007VQh-2Aj2;
-	Wed, 23 Sep 2026 08:18:46 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Type:Content-Transfer-Encoding
-	:MIME-Version:Message-ID:Date:Subject:CC:To:From:Sender:Reply-To:Content-ID:
-	Content-Description:In-Reply-To:References;
-	bh=sP6wUj2jGaL1zbuYodHcp4quq1nEFGgaqRRcNNs7Hak=; b=ow9EzifwycRpg+Mh/wUuNaiD/d
-	VWCqXPrRzpLKGJPRXOpo3UPMNn/P1/4sc7PHLYVRO2yEKjb1886RkP0R9AaIsFonK6ZbpihB8VmO0
-	JFGuyRVJeu/RIofXjaTIF5C4rBrbzOzVIcZDMhvidSykLwcCmEguqL8sU9LDBwQSDKI+hy3jeuI6I
-	pAG7qTShQx1o4iGUa6W3YEBD0Tx19w2F4BirBcQZbV+1p5Gr8jjgrICRkDrZ5ngzDsLlWnH2Z3Rnr
-	AhwKf1N8Na7YQSENWpG1q1KG4jqKDH3NQoN/wquFeUDYugQ7JPNqaIimJHZmt230xX9J4QaJckdiP
-	nmjhlS8Q==;
-Received: from mailgw01.mediatek.com ([216.200.240.184])
-	by desiato.infradead.org with esmtps (Exim 4.99.2 #2 (Red Hat Linux))
-	id 1x9IBV-0000000EWC4-3t2V;
-	Wed, 23 Sep 2026 08:18:43 +0000
-X-UUID: 58214678b72711f1afed4741b24580c9-20260923
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=sP6wUj2jGaL1zbuYodHcp4quq1nEFGgaqRRcNNs7Hak=;
-	b=oYfXYB5vJ8uxkc2APM+Zx2LYnuo04WgqnnECAncEpEAPs1qXuNduD107sAXxGqWUAlKVBxaZ59X0kssk6UAAkeMChG2BCryptnebB6m44D2x6Ymq+/lI+7jVM8PAkX6GRPv90UEXcPJQo/J8kaGHs/GpNYrGRSVmLUltS1YTdZY=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.19,REQID:ad6b33e6-27e7-40f4-879a-f0d90d9367dc,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:7db8b62,CLOUDID:6d0fdefa-1cb6-4618-8a29-fa072b24d2a9,B
-	ulkID:nil,BulkQuantity:0,SF:102|836|865|888|898,TC:-5,Content:0|15|50|99,E
-	DM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:-1,COL:0,OSI:0,OSA:0,
-	AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 2,SSN|SDN
-X-CID-BAS: 2,SSN|SDN,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: 58214678b72711f1afed4741b24580c9-20260923
-Received: from mtkmbs10n1.mediatek.inc [(172.21.101.34)] by mailgw01.mediatek.com
-	(envelope-from <kyrie.wu@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1797272329; Wed, 23 Sep 2026 01:18:23 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs13n2.mediatek.inc (172.21.101.108) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.29; Wed, 23 Sep 2026 16:18:21 +0800
-Received: from gcnsap21.gcn.mediatek.inc (10.17.81.22) by
- mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.2562.29 via Frontend Transport; Wed, 23 Sep 2026 16:18:19 +0800
-From: Kyrie Wu <kyrie.wu@mediatek.com>
-To: Tiffany Lin <tiffany.lin@mediatek.com>, Andrew-CT Chen
-	<andrew-ct.chen@mediatek.com>, Yunfei Dong <yunfei.dong@mediatek.com>, Mauro
- Carvalho Chehab <mchehab@kernel.org>, Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>, Kyrie Wu <kyrie.wu@mediatek.com>,
-	Hans Verkuil <hverkuil@xs4all.nl>, Nicolas Dufresne
-	<nicolas.dufresne@collabora.com>, Nathan Hebert <nhebert@chromium.org>, Arnd
- Bergmann <arnd@arndb.de>, Irui Wang <irui.wang@mediatek.com>, George Sun
-	<george.sun@mediatek.com>, <linux-media@vger.kernel.org>,
-	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>
-CC: Neil Armstrong <neil.armstrong@linaro.org>, Andrzej Pietrasiewicz
-	<andrzejtp2010@gmail.com>, Yilong Zhou <yilong.zhou@mediatek.com>, Krzysztof
- Kozlowski <krzysztof.kozlowski@linaro.org>
-Subject: [PATCH v10 09/10] dt-bindings: media: Add MT8189 mediatek,vcodec-encoder
-Date: Wed, 23 Sep 2026 16:18:18 +0800
-Message-ID: <20260923081818.268329-1-kyrie.wu@mediatek.com>
-X-Mailer: git-send-email 2.43.0
+	id 1x9IO0-00000007X0e-2gCB;
+	Wed, 23 Sep 2026 08:31:29 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1790152285;
+	bh=f8MjPqhRjZFCo17vsKJXb4XJoztMeVIuVFT7xq41j/Q=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=D8yPuzyqijQDRhuR1w5l5pydXbXnu2NwfYYMuWMQYAiw2AVLiA04oDG0j34xLhljP
+	 IUXY4/WlqIuoy6Gs3SrvIOIgX8fj5GrbpmqxdOb+YwfqHjshamyEpRloboo/5GRLmG
+	 DA6UyYupEHPZcCWYqKB+PMIdTSWll1jsWkKtTj93036bMWjr92Lc1v9eBmwYlhCf9D
+	 taMm1NDT/AY4eEXbKO8hPN00cQPCv0DHpH8N42BU04Ypjek+3Xl8lxmMw2RUAK3ZYI
+	 vzs6ODb0BQMM1n3znaAaMAnECzA0V/acurL+MI/C5cg+FAJgnZuwzjq1YJ8liaAm2W
+	 DZVx4dEtc5xGQ==
+Received: from [100.64.1.21] (unknown [100.64.1.21])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id C896A17E03D5;
+	Wed, 23 Sep 2026 10:31:24 +0200 (CEST)
+Message-ID: <c4908f1a-878c-4958-aaac-9960aae11879@collabora.com>
+Date: Wed, 23 Sep 2026 10:31:24 +0200
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-MTK: N
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 1/3] cpufreq: mediatek: add support for CPU speedbin
+To: rva333@protonmail.com, "Rafael J. Wysocki" <rafael@kernel.org>,
+ Viresh Kumar <viresh.kumar@linaro.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>
+Cc: linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+References: <20260923-6572-cpufreq-v1-0-41f7af6d6d1a@protonmail.com>
+ <20260923-6572-cpufreq-v1-1-41f7af6d6d1a@protonmail.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
+In-Reply-To: <20260923-6572-cpufreq-v1-1-41f7af6d6d1a@protonmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260923_091834_588136_39582963 
-X-CRM114-Status: GOOD (  10.00  )
+X-CRM114-CacheID: sfid-20260923_013128_844888_58869600 
+X-CRM114-Status: GOOD (  29.06  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -109,42 +77,155 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add MT8189 encoder compatible string to distinguish former ICs
-MTK's. Compared with MT8196, the maximum resolution of MT8189
-encoder is only 4K, and the fps is only 30, which cannot reach
-the highest parameter of MT8196: level6.2, 8K@60fps.
-Compared with MT8188, the level can only support 5.1, which is less
-than 5.2 of MT8188. But the maximum bitrate is 100Mbps, which is twice
-that of MT8188. And MT8189 could support NBM mode.
+On 9/23/26 09:23, Roman Vivchar via B4 Relay wrote:
+> From: Roman Vivchar <rva333@protonmail.com>
+> 
+> MediaTek SoCs are often released under the same marketing name, but with
+> different suffix for the speedbin. For example, mt6572m has 1 GHz limit,
+> mt6572a - 1.2 GHz, mt6572w - 1.4 GHz.
+> 
+> Add code to support per-cluster 'opp-supported-hw' property. The DT is
+> expected to pass a CPU speedbin using standard 'nvmem-cells' property
+> under the CPU node.
+> 
+> Signed-off-by: Roman Vivchar <rva333@protonmail.com>
+> ---
+>   drivers/cpufreq/mediatek-cpufreq.c | 50 ++++++++++++++++++++++++++++++++++++--
+>   1 file changed, 48 insertions(+), 2 deletions(-)
+> 
+> diff --git a/drivers/cpufreq/mediatek-cpufreq.c b/drivers/cpufreq/mediatek-cpufreq.c
+> index 052ca7cd2f4f..f15135b2898b 100644
+> --- a/drivers/cpufreq/mediatek-cpufreq.c
+> +++ b/drivers/cpufreq/mediatek-cpufreq.c
+> @@ -10,6 +10,7 @@
+>   #include <linux/cpumask.h>
+>   #include <linux/minmax.h>
+>   #include <linux/module.h>
+> +#include <linux/nvmem-consumer.h>
+>   #include <linux/of.h>
+>   #include <linux/of_platform.h>
+>   #include <linux/platform_device.h>
+> @@ -57,6 +58,7 @@ struct mtk_cpu_dvfs_info {
+>   	const struct mtk_cpufreq_platform_data *soc_data;
+>   	int vtrack_max;
+>   	bool ccifreq_bound;
+> +	int opp_token;
+>   };
+>   
+>   static struct platform_device *cpufreq_pdev;
+> @@ -381,6 +383,38 @@ static struct device *of_get_cci(struct device *cpu_dev)
+>   	return &pdev->dev;
+>   }
+>   
+> +static int mtk_cpu_parse_speedbin(struct mtk_cpu_dvfs_info *info, int cpu)
+> +{
+> +	struct device *cpu_dev = get_cpu_device(cpu);
+> +	struct dev_pm_opp_config config = {};
+> +	u32 val, opp_hw_ver;
+> +	int ret;
+> +
+> +	ret = nvmem_cell_read_variable_le_u32(cpu_dev, "speed_grade", &val);
 
-Signed-off-by: Kyrie Wu <kyrie.wu@mediatek.com>
-Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@linaro.org>
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
----
- .../devicetree/bindings/media/mediatek,vcodec-encoder.yaml      | 2 ++
- 1 file changed, 2 insertions(+)
+Let's keep consistency with cell names: for example, on the GPU side, the node
+in devicetree is called "gpu-speedbin@1234", and the panfrost node has
 
-diff --git a/Documentation/devicetree/bindings/media/mediatek,vcodec-encoder.yaml b/Documentation/devicetree/bindings/media/mediatek,vcodec-encoder.yaml
-index dce007e6e5cf..fc3d529b6325 100644
---- a/Documentation/devicetree/bindings/media/mediatek,vcodec-encoder.yaml
-+++ b/Documentation/devicetree/bindings/media/mediatek,vcodec-encoder.yaml
-@@ -22,6 +22,7 @@ properties:
-               - mediatek,mt8173-vcodec-enc
-               - mediatek,mt8183-vcodec-enc
-               - mediatek,mt8188-vcodec-enc
-+              - mediatek,mt8189-vcodec-enc
-               - mediatek,mt8192-vcodec-enc
-               - mediatek,mt8195-vcodec-enc
-               - mediatek,mt8196-vcodec-enc
-@@ -105,6 +106,7 @@ allOf:
-             enum:
-               - mediatek,mt8183-vcodec-enc
-               - mediatek,mt8188-vcodec-enc
-+              - mediatek,mt8189-vcodec-enc
-               - mediatek,mt8192-vcodec-enc
-               - mediatek,mt8195-vcodec-enc
- 
--- 
-2.51.0.windows.2
+nvmem-cells = <&gpu_speedbin>;
+nvmem-cell-names = "speed-bin";
 
+Check MT8186 and MT8188 devicetrees ;-)
+
+> +	if (ret) {
+> +		if (ret == -ENOENT)
+
+if (ret != -ENOENT && ret != -EOPNOTSUPP)
+
+> +			/* speedbin is optional */
+> +			return 0;
+> +		return dev_err_probe(cpu_dev, ret, "cpu%d: failed to read speedbin\n", cpu);
+> +	}
+> +
+> +	/* Convert the raw value to a bitmask */
+> +	if (val >= 32)
+> +		return dev_err_probe(cpu_dev, -EINVAL,
+> +				     "cpu%d: invalid speedbin value %u\n", cpu, val);
+> +	opp_hw_ver = BIT(val);
+
+If you look at nvmem/mtk-efuse.c there is a mtk_efuse_gpu_speedbin_pp() function
+that is doing (almost) *exactly* what you're doing here.
+
+Check if the same constraints as GPU speed binning applies to the CPU: if they do,
+just allow "cpu-speedbin" as node name in the fixup function, otherwise add a new
+post processing function for the CPU and act accordingly.
+
+> +
+> +	config.supported_hw = &opp_hw_ver;
+> +	config.supported_hw_count = 1;
+> +
+> +	info->opp_token = dev_pm_opp_set_config(cpu_dev, &config);
+
+It's way easier if you use
+
+devm_pm_opp_set_supported_hw(dev, &opp_hw_ver, 1);
+
+Cheers,
+Angelo
+
+> +	if (info->opp_token < 0)
+> +		return dev_err_probe(cpu_dev, info->opp_token,
+> +				     "cpu%d: failed to set OPP config\n", cpu);
+> +
+> +	return 0;
+> +}
+> +
+>   static int mtk_cpu_dvfs_info_init(struct mtk_cpu_dvfs_info *info, int cpu)
+>   {
+>   	struct device *cpu_dev;
+> @@ -450,18 +484,22 @@ static int mtk_cpu_dvfs_info_init(struct mtk_cpu_dvfs_info *info, int cpu)
+>   		}
+>   	}
+>   
+> +	ret = mtk_cpu_parse_speedbin(info, cpu);
+> +	if (ret)
+> +		goto out_disable_sram_reg;
+> +
+>   	/* Get OPP-sharing information from "operating-points-v2" bindings */
+>   	ret = dev_pm_opp_of_get_sharing_cpus(cpu_dev, &info->cpus);
+>   	if (ret) {
+>   		dev_err_probe(cpu_dev, ret,
+>   			"cpu%d: failed to get OPP-sharing information\n", cpu);
+> -		goto out_disable_sram_reg;
+> +		goto out_free_speedbin;
+>   	}
+>   
+>   	ret = dev_pm_opp_of_cpumask_add_table(&info->cpus);
+>   	if (ret) {
+>   		dev_err_probe(cpu_dev, ret, "cpu%d: no OPP table\n", cpu);
+> -		goto out_disable_sram_reg;
+> +		goto out_free_speedbin;
+>   	}
+>   
+>   	ret = clk_prepare_enable(info->cpu_clk);
+> @@ -533,6 +571,10 @@ static int mtk_cpu_dvfs_info_init(struct mtk_cpu_dvfs_info *info, int cpu)
+>   out_free_opp_table:
+>   	dev_pm_opp_of_cpumask_remove_table(&info->cpus);
+>   
+> +out_free_speedbin:
+> +	if (info->opp_token > 0)
+> +		dev_pm_opp_clear_config(info->opp_token);
+> +
+>   out_disable_sram_reg:
+>   	if (info->sram_reg)
+>   		regulator_disable(info->sram_reg);
+> @@ -573,6 +615,10 @@ static void mtk_cpu_dvfs_info_release(struct mtk_cpu_dvfs_info *info)
+>   	clk_disable_unprepare(info->inter_clk);
+>   	clk_put(info->inter_clk);
+>   	dev_pm_opp_of_cpumask_remove_table(&info->cpus);
+> +
+> +	if (info->opp_token > 0)
+> +		dev_pm_opp_clear_config(info->opp_token);
+> +
+>   	dev_pm_opp_unregister_notifier(info->cpu_dev, &info->opp_nb);
+>   	if (info->soc_data->ccifreq_supported)
+>   		put_device(info->cci_dev);
+> 
 
