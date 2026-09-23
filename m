@@ -4,51 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A5173C98302
-	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Sep 2026 02:44:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E6B43C9830B
+	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Sep 2026 02:44:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
 	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
 	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=6vr8fRdX4FmEW4+zJg+R3SBojMo0/rylKaLXN9orJks=; b=EO+iShLrk9QQO0fZP0+Z8CAQC7
-	t/qTVNALypHbuxh01TsP6UO8fVXeWG73ShbXrr2eQU5FlS3jz8WwPKNrRu2X2sEECEbhN1Hykdq58
-	PP6yLjM9H3/iezld/6Cyqs+XxmwA3pEbtz9jsMykYTvnddKJUwEXHSYo/BV0VwzPH2byX9+p6mYaq
-	7XInYO5gj/nOtyRG4ByDXEyd2pEo0NxKFxqoEmv1IAR4E8K+/HXw4VJ+eLIotPngH5falRYzErpYa
-	emtbsnL9Yyj9sZhL+Zin7xt9xle0cEZDdTLyKhNEmikjJkUnq9rkrL+TC1P0JGR7sj2uxHB+ESNWw
-	R/4IsVEQ==;
+	bh=YEVdjqexgbWcj0da8UDMKDJiezNXVchD6KGIGuVS84g=; b=2O2Osq9tIzY3eHmSyhQOqaowPf
+	3ZoSYaHBz8uDp7EjLqqNWVPqtra6QaUZS9rc/vyLskX8QnTSWxNIx62GEIRsnRzycmC9WY8M0UDgk
+	oTwRikRzahzBIlXWlzw8eUWmmvw/EeRHOSjvjP0vAm0u7/NKj9IWaEfuEdyQHjiEMfIraqFH9TTd5
+	SDYnsq9ede/Ve0+6sk0qEIdOOBfzMHo5DUGf25xs5lmBSOidHzjpV/+Fl9Bc0QsckKdeJFXtgiZ3S
+	Q6hWZj6+T5xuYl9fDBg403RbynVrHeAiYXCdZ/VcZjg7cGGQbrzaDYzIURn2XFi8y3/wRF59vEduE
+	oQSMUGDQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x9CyD-00000006y8k-3bM2;
-	Wed, 23 Sep 2026 02:44:29 +0000
+	id 1x9CyF-00000006yCU-3iWo;
+	Wed, 23 Sep 2026 02:44:31 +0000
 Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x9CxG-00000006xWK-0WLl;
-	Wed, 23 Sep 2026 02:43:30 +0000
+	id 1x9CxK-00000006xZq-0MqT;
+	Wed, 23 Sep 2026 02:43:34 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=infradead.org; s=desiato.20200630; h=Content-Type:Content-Transfer-Encoding
 	:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:
 	Sender:Reply-To:Content-ID:Content-Description;
-	bh=6vr8fRdX4FmEW4+zJg+R3SBojMo0/rylKaLXN9orJks=; b=PDqRo7CjY9zDVrYwFM2IrXCY1l
-	a5/ERchDyqDRwVSey0MlTKwlkT4HTapnAAuKMa+XUKgFSMsA5pSfTzv53Pl7wS9qQvhAZMbH5q617
-	mzhXiYMB+2rcOTjwOsjfEU5LzdUmYNLbjfPSfXA2k2I/bwwwPo+EhsMaxdAjyYuzNKhwfVqwYvcUy
-	liTfoqRjIc9CFdc3+jk0YppYO96FQia1na0D5LafVTLi1UlFr3alHBINV/ir0xO1S7aVCc4oMJ6qB
-	V3nnEEEh6yOF6ayDTff6/GC+0fP8P3xiHwVhLM1vFN9d67nc++526HCkciv/o+dyTMG6Iw6PiWHeD
-	iOsTe8wQ==;
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	bh=YEVdjqexgbWcj0da8UDMKDJiezNXVchD6KGIGuVS84g=; b=b7u3jSqT2Nf/OjD7HRJ+3lVqtr
+	2YsjGV/nvxhbKiKFpEuQOFAiiz2lr4wjYSGMI2FelVF3bHRLN32R3TiEvMsWkvIBjDW9C6Kmt8MQv
+	6qBPmN660ICCF64Vt0IZIqnM/akWG5pS3RlwbMOYlOObAqr2fLPVrjfFnKwdQXKwrBr3ZpU7+Lvzw
+	iiBrNKDIq417nW7ZCFcG5GCFyXJLjh+tYnJ6s5crr4QSahBjxhn1Hm9eTPkbN5kxq3bKSncvGf6Ym
+	FoQMC25unkoykfG8KnpPVCF8jGzerehkcb0zWecdkQDhW0cSItB5O0f4nf8sFYPT3pXA4ZERs2EeK
+	Qy8v5SYQ==;
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by desiato.infradead.org with esmtps (Exim 4.99.2 #2 (Red Hat Linux))
-	id 1x9CxC-0000000EIBM-3mO5;
-	Wed, 23 Sep 2026 02:43:29 +0000
-X-UUID: 89ade3bab6f811f1acbe4559397dec65-20260922
+	id 1x9CxG-0000000EICs-3xWa;
+	Wed, 23 Sep 2026 02:43:32 +0000
+X-UUID: 8c5d14d2b6f811f1afed4741b24580c9-20260922
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=6vr8fRdX4FmEW4+zJg+R3SBojMo0/rylKaLXN9orJks=;
-	b=Tl7kpokZDRF4YzAwyB3UZc3MefiaVT3ShgE028bypLyiKeQNCgYwWn5BM9mYopauRh/tL+23cf9Ppsn6UAl+KqsM81lKCAxaBABFFxVyLDWU2sUd+knIb6/QjHLJ1Y0yJ9tsMtznhPQ2Ue8jzf9ifduugUIU/9W3T7gC+ieif9w=;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=YEVdjqexgbWcj0da8UDMKDJiezNXVchD6KGIGuVS84g=;
+	b=S4DwOBjMA56p3RxK648Wh6liDTNYz/UxIuKED9fn19hAKQ1pnWEjIriVahLP5bDJi06PGY+VBMqvoRWHNUP5q+0NPGgaIbKMuI92BsrNSMWiTlZ+WjijcgpKL11lMtJwwegNo88LMRlC2OXBsEsEqxof5JaEpgAfrGpv3TH1wfA=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.19,REQID:af110e75-1e8e-4498-a805-480f341c52d1,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:7db8b62,CLOUDID:776045ba-8825-408e-ae13-13bc2511f41e,B
+X-CID-O-INFO: VERSION:1.3.19,REQID:d47ccb3b-6193-4980-90ea-547875421016,IP:0,U
+	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
+	:release,TS:-5
+X-CID-META: VersionHash:7db8b62,CLOUDID:8082dafa-1cb6-4618-8a29-fa072b24d2a9,B
 	ulkID:nil,BulkQuantity:0,SF:81|82|102|836|865|888|898,TC:-5,Content:0|15|5
 	0|99,EDM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:-1,COL:0,OSI:0,
 	OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
@@ -56,18 +56,18 @@ X-CID-BVR: 2,SSN|SDN
 X-CID-BAS: 2,SSN|SDN,0,_
 X-CID-FACTOR: TF_CID_SPAM_SNR
 X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: 89ade3bab6f811f1acbe4559397dec65-20260922
-Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw02.mediatek.com
+X-UUID: 8c5d14d2b6f811f1afed4741b24580c9-20260922
+Received: from mtkmbs14n2.mediatek.inc [(172.21.101.76)] by mailgw01.mediatek.com
 	(envelope-from <kyrie.wu@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1011386515; Tue, 22 Sep 2026 19:43:20 -0700
+	with ESMTP id 243707689; Tue, 22 Sep 2026 19:43:24 -0700
 Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- MTKMBS14N1.mediatek.inc (172.21.101.75) with Microsoft SMTP Server
+ mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.29; Wed, 23 Sep 2026 10:43:17 +0800
+ 15.2.2562.29; Wed, 23 Sep 2026 10:43:22 +0800
 Received: from gcnsap21.gcn.mediatek.inc (10.17.81.22) by
  mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.2562.29 via Frontend Transport; Wed, 23 Sep 2026 10:43:16 +0800
+ 15.2.2562.29 via Frontend Transport; Wed, 23 Sep 2026 10:43:20 +0800
 From: Kyrie Wu <kyrie.wu@mediatek.com>
 To: Tiffany Lin <tiffany.lin@mediatek.com>, Andrew-CT Chen
 	<andrew-ct.chen@mediatek.com>, Yunfei Dong <yunfei.dong@mediatek.com>, Mauro
@@ -88,9 +88,9 @@ To: Tiffany Lin <tiffany.lin@mediatek.com>, Andrew-CT Chen
 	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
 	<linux-mediatek@lists.infradead.org>
 CC: Sakari Ailus <sakari.ailus@linux.intel.com>
-Subject: [PATCH v7 10/14] media: mediatek: vcodec: define MT8196 vcodec levels.
-Date: Wed, 23 Sep 2026 10:42:53 +0800
-Message-ID: <20260923024258.257846-11-kyrie.wu@mediatek.com>
+Subject: [PATCH v7 13/14] media: mediatek: decoder: fill av1 buffer size with picinfo
+Date: Wed, 23 Sep 2026 10:42:56 +0800
+Message-ID: <20260923024258.257846-14-kyrie.wu@mediatek.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260923024258.257846-1-kyrie.wu@mediatek.com>
 References: <20260923024258.257846-1-kyrie.wu@mediatek.com>
@@ -99,8 +99,8 @@ Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260923_034327_592016_9782F0AA 
-X-CRM114-Status: GOOD (  11.87  )
+X-CRM114-CacheID: sfid-20260923_034331_444288_C6532B49 
+X-CRM114-Status: GOOD (  12.27  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -115,67 +115,56 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The supported level and profile are not the same for different
-codecs and architecture. Select the correct one.
+The buffer size of y and c plane has been calculated in vcp/scp,
+can fill each frame buffer size with picinfo directly.
 
 Signed-off-by: Kyrie Wu <kyrie.wu@mediatek.com>
 Reviewed-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
 ---
- .../mediatek/vcodec/decoder/mtk_vcodec_dec_stateless.c      | 6 ++++++
- 1 file changed, 6 insertions(+)
+ .../vcodec/decoder/vdec/vdec_av1_req_lat_if.c     | 15 +++++++++------
+ 1 file changed, 9 insertions(+), 6 deletions(-)
 
-diff --git a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_stateless.c b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_stateless.c
-index ab1894fba..472ece571 100644
---- a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_stateless.c
-+++ b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_stateless.c
-@@ -577,6 +577,7 @@ static void mtk_vcodec_dec_fill_h264_level(struct v4l2_ctrl_config *cfg,
- 		cfg->max = V4L2_MPEG_VIDEO_H264_LEVEL_5_2;
- 		break;
- 	case MTK_VDEC_MT8195:
-+	case MTK_VDEC_MT8196:
- 		cfg->max = V4L2_MPEG_VIDEO_H264_LEVEL_6_0;
- 		break;
- 	case MTK_VDEC_MT8183:
-@@ -595,6 +596,7 @@ static void mtk_vcodec_dec_fill_h264_profile(struct v4l2_ctrl_config *cfg,
- 	switch (ctx->dev->chip_name) {
- 	case MTK_VDEC_MT8188:
- 	case MTK_VDEC_MT8195:
-+	case MTK_VDEC_MT8196:
- 		cfg->max = V4L2_MPEG_VIDEO_H264_PROFILE_HIGH_10;
- 		break;
- 	default:
-@@ -611,6 +613,7 @@ static void mtk_vcodec_dec_fill_h265_level(struct v4l2_ctrl_config *cfg,
- 		cfg->max = V4L2_MPEG_VIDEO_HEVC_LEVEL_5_1;
- 		break;
- 	case MTK_VDEC_MT8195:
-+	case MTK_VDEC_MT8196:
- 		cfg->max = V4L2_MPEG_VIDEO_HEVC_LEVEL_5_2;
- 		break;
- 	default:
-@@ -625,6 +628,7 @@ static void mtk_vcodec_dec_fill_h265_profile(struct v4l2_ctrl_config *cfg,
- 	switch (ctx->dev->chip_name) {
- 	case MTK_VDEC_MT8188:
- 	case MTK_VDEC_MT8195:
-+	case MTK_VDEC_MT8196:
- 		cfg->max = V4L2_MPEG_VIDEO_HEVC_PROFILE_MAIN_10;
- 		break;
- 	default:
-@@ -642,6 +646,7 @@ static void mtk_vcodec_dec_fill_vp9_level(struct v4l2_ctrl_config *cfg,
- 		cfg->max = V4L2_MPEG_VIDEO_VP9_LEVEL_5_1;
- 		break;
- 	case MTK_VDEC_MT8195:
-+	case MTK_VDEC_MT8196:
- 		cfg->max = V4L2_MPEG_VIDEO_VP9_LEVEL_5_2;
- 		break;
- 	case MTK_VDEC_MT8186:
-@@ -659,6 +664,7 @@ static void mtk_vcodec_dec_fill_vp9_profile(struct v4l2_ctrl_config *cfg,
- 	switch (ctx->dev->chip_name) {
- 	case MTK_VDEC_MT8188:
- 	case MTK_VDEC_MT8195:
-+	case MTK_VDEC_MT8196:
- 		cfg->max = V4L2_MPEG_VIDEO_VP9_PROFILE_2;
- 		break;
- 	default:
+diff --git a/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_av1_req_lat_if.c b/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_av1_req_lat_if.c
+index 4932ef469..14639098f 100644
+--- a/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_av1_req_lat_if.c
++++ b/drivers/media/platform/mediatek/vcodec/decoder/vdec/vdec_av1_req_lat_if.c
+@@ -1811,18 +1811,19 @@ static int vdec_av1_slice_setup_core_buffer(struct vdec_av1_slice_instance *inst
+ {
+ 	struct vb2_buffer *vb;
+ 	struct vb2_queue *vq;
+-	int w, h, plane, size;
++	int plane;
+ 	int i;
+ 
+ 	plane = instance->ctx->q_data[MTK_Q_DATA_DST].fmt->num_planes;
+-	w = vsi->frame.uh.upscaled_width;
+-	h = vsi->frame.uh.frame_height;
+-	size = ALIGN(w, VCODEC_DEC_ALIGNED_64) * ALIGN(h, VCODEC_DEC_ALIGNED_64);
+ 
+ 	/* frame buffer */
+ 	vsi->fb.y.dma_addr = fb->base_y.dma_addr;
++
++	vsi->fb.y.size = instance->ctx->picinfo.fb_sz[0];
++	vsi->fb.c.size = instance->ctx->picinfo.fb_sz[1];
++
+ 	if (plane == 1)
+-		vsi->fb.c.dma_addr = fb->base_y.dma_addr + size;
++		vsi->fb.c.dma_addr = fb->base_y.dma_addr + vsi->fb.y.size;
+ 	else
+ 		vsi->fb.c.dma_addr = fb->base_c.dma_addr;
+ 
+@@ -1845,8 +1846,10 @@ static int vdec_av1_slice_setup_core_buffer(struct vdec_av1_slice_instance *inst
+ 		}
+ 
+ 		vref->y.dma_addr = vb2_dma_contig_plane_dma_addr(vb, 0);
++		vref->y.size = vsi->fb.y.size;
++		vref->c.size = vsi->fb.c.size;
+ 		if (plane == 1)
+-			vref->c.dma_addr = vref->y.dma_addr + size;
++			vref->c.dma_addr = vref->y.dma_addr + vsi->fb.y.size;
+ 		else
+ 			vref->c.dma_addr = vb2_dma_contig_plane_dma_addr(vb, 1);
+ 	}
 -- 
 2.51.0.windows.2
 
