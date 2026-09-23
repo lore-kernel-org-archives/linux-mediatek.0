@@ -4,125 +4,93 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AB32CC9830B
-	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Sep 2026 15:23:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E4BBAC98304
+	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Sep 2026 15:30:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:
-	Content-Type:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=3+eKCb4NMKp5Jh6mgKOVM0bUpZ6A4Z9I4O3FILpuvuc=; b=Vm0kIvc5g5G99kGlcknB7LSt5e
-	Xpxeutmygw+i+PLDQ+s2zaDGSPobbDNrIru2vyu6PH5mV9VXbtUY/ZGfPJJ9yUWwbTnJrGD4FkNDW
-	wXASEgXh+1z6nkvjfJIrSFZGkv3R7coTRG9s6dNCdvqYX59kKxGoKH1yv0TofEPapY5WmEsASntqn
-	/9HYW1H4NnuynD+7RqrmuEDr/v+Z/QTX/TIqpTq0XXB9Thf1jgjLOZIrIYHPZclJtChAXlB9e2aDk
-	4JfKzVbvlETfL4rOhD9WALO5dSwiEdDMUxh9GkIQsPqssiwO+c9uOmongBxuKiUULIymRg3g5XWZy
-	Suig2aew==;
+	bh=W4AqH3BG39Ccw9rat1s2LDjmKzSlLDWMcVufSeoX/Lk=; b=x5T1mudryxMaJ/PiKBAbOGazX+
+	1Fk4JiYUAk5kJIud5jvjJ5X+L2quCWu9RGzlMnpmUeF4ddl1KcPBr11JUnsR9ISH0gEM9bmnIk9ec
+	vtCk0Ks73UKhRAKOtCSuWb8NJuMpDLQlyrp4c8uTFm3mSfVuEzsIGEDVLopqnqlj83w2dxfngtCL2
+	Dn++yNUTCaEDeo2tycmpP/4SawmzJrxoXG8pDAbYHVSWDkE4lsHzXZmeLu0nKRXopD+EchOgAkVKk
+	N3sB93YgniEVijcRXCbQxh4ZaNzGb9f2/QyzY6FR7FS7J+b7Yp53k6m4qpQuvJMGAAr4qTnN0QSQs
+	UcFWOvBw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x9Op9-00000008iyV-3dup;
-	Wed, 23 Sep 2026 15:23:55 +0000
-Received: from mail-northeuropeazon11010021.outbound.protection.outlook.com ([52.101.84.21] helo=DB3PR0202CU003.outbound.protection.outlook.com)
+	id 1x9Ovh-00000008k5H-2D68;
+	Wed, 23 Sep 2026 15:30:41 +0000
+Received: from mail-pj2-x10.google.com ([2607:f8b0:4864:39::10])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x9Op2-00000008iu2-2ksn;
-	Wed, 23 Sep 2026 15:23:50 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=Hykzf0vtcSbo9N/qKa7XHMIwYUa/As6Cw4UvJ4CSY+eYbQJ1ksk8x6arAAaQQI6X7Xa/yPSyW1VU1aypfDpcpPDTykR7PHfrRRCtFi7f6TxiVt06EOKkYXr/2ezq8Mb2jPD0yeFhNTb6gpYHIAAUOS7U5aauxtltCBPeVLixhqKH1fFV5+4+VkxuJr1lagSYAwoIoEfLQyqyxL4Z8+wBdc9qnzxtwp89Gc2SUMGMl/RlMOu+x8hq7Tx6qO8fCLUCGgV+O/Bbq9nvmcwP/zIXSFkJfdVRBoros+lW0gaVk3Gf9tgVXtO0KVBSARHkSn9xBHc0oc4vbgPR8cKDf4i9Cg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=3+eKCb4NMKp5Jh6mgKOVM0bUpZ6A4Z9I4O3FILpuvuc=;
- b=hy3Kn80Ylyw6kQBWn1HHtrX5BEaiO6fx/nRfqvtLF6ne5sPPMLPPVgB8FT3PnzLo+CtPrOoMTJM1yDmdVEl4rf34/xmsktYLc93KEyIcshgUkeu4nyPs5WIqCODE6PVkvM9Km9zzi1JoqBgXdM6wklLCbq058auYn6jLQRkCtXHgBCE1qD7jTcByDbWVIbNM33Hxvuy7ZBXvYXeWtb+hEoDdaK9G97pEDNti0kQ9ztdHZVeEjx8/vnv/VIs3joxUZEwvmzRCKjzMz+g/L0cXsIsUjVR2f4/2s1SWaa3Xtc2+5UEpm/dJEDjpRpQMpyXl/sociX1B5Z7f/5ti+3mEWA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=oss.nxp.com; dmarc=pass action=none header.from=oss.nxp.com;
- dkim=pass header.d=oss.nxp.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=NXP1.onmicrosoft.com;
- s=selector1-NXP1-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=3+eKCb4NMKp5Jh6mgKOVM0bUpZ6A4Z9I4O3FILpuvuc=;
- b=Mr3urwW5RY+Pykeh1R6qyzNWf34mvYHgIMKFa4XmgUgcKky7AZJgineoewLyk5d484FertvA7XJHl7q72jhzm8s4BFj7qnRDJQ4wAu1HM2iuCUhawdHmH2LR/XpvyJ3u87ka68/O+1ha010s/yaqs5ZNbtQ7YKIvpYNVZHwLrHSYK5fawnoCRqEJFBorLDtZ++PBYXqvjvPsv9aUKJZs+lvWrihJTX5dpMy/SzIn6+FfAKwIi98aJQ8PieHqOrodPN4iCHT/2ElbrNP72l252dj6Pk1Ab3JQw49GvBGArqwwC91Ap708txpd0O1ibV/JUGX2cDfRZZtS1xw71K91Eg==
-Authentication-Results: mx.microsoft.com 1; dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=oss.nxp.com;
-Received: from GV2PR04MB11799.eurprd04.prod.outlook.com (2603:10a6:150:2cf::9)
- by VI0PR04MB10928.eurprd04.prod.outlook.com (2603:10a6:800:261::8) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.451.14; Wed, 23 Sep
- 2026 15:23:42 +0000
-Received: from GV2PR04MB11799.eurprd04.prod.outlook.com
- ([fe80::2146:83a2:5329:b7c]) by GV2PR04MB11799.eurprd04.prod.outlook.com
- ([fe80::2146:83a2:5329:b7c%7]) with mapi id 15.21.0428.015; Wed, 23 Sep 2026
- 15:23:42 +0000
-Date: Wed, 23 Sep 2026 10:23:33 -0500
-From: Frank Li <Frank.li@oss.nxp.com>
-To: Ginger Li <ginger.jzllee@gmail.com>
-Cc: sean.wang@mediatek.com, vkoul@kernel.org, Frank.Li@kernel.org,
-	matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
-	dmaengine@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH] dmaengine: milbeaut-hdmac: Fix deadlock with the channel
- IRQ handler
-Message-ID: <arPu9TwyACiAlw94@SMW015318>
-References: <20260923094426.67872-1-ginger.jzllee@gmail.com>
+	id 1x9Ove-00000008k4C-13hq
+	for linux-mediatek@lists.infradead.org;
+	Wed, 23 Sep 2026 15:30:40 +0000
+Received: by mail-pj2-x10.google.com with SMTP id 98e67ed59e1d1-396ccb65437so668413a91.3
+        for <linux-mediatek@lists.infradead.org>; Wed, 23 Sep 2026 08:30:37 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1790177437; x=1790782237; darn=lists.infradead.org;
+        h=in-reply-to:content-disposition:content-type:mime-version
+         :references:message-id:subject:cc:to:from:date:from:to:cc:subject
+         :date:message-id:reply-to:content-type;
+        bh=W4AqH3BG39Ccw9rat1s2LDjmKzSlLDWMcVufSeoX/Lk=;
+        b=bgYcIVFVNN0tzbZHaVjFFmAWaf+30myK170vRBpO1WIHh8QyYJy2SpB+JhHeqmnxjP
+         71ws9Y3kGghSOTia4G+e28GnMK41BP3QQZgfiRcC4Qo0HoZsTGxiDVtu2I8FqSeFXZ9T
+         yrbUHMDzhAx4vSiOgOC7o4+f/RJpnVTMZYVB7qWRebmgNUVkCOgovZTe/z2madVX4tpv
+         a/X1pIIgqjqYYZUUz+Rj45ATuuQL5BGJ3lpPWJJ3cNuHygJ97oubkBrLCQLjaKKQSUeK
+         gjGeqq0gXdBuwf7sCTjB/6DdOncVd4EjXnhf2FeiGoLvpYu28euoOpY8k8Afyft26OmQ
+         yeZw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20260707; t=1790177437; x=1790782237;
+        h=in-reply-to:content-disposition:content-type:mime-version
+         :references:message-id:subject:cc:to:from:date:x-gm-gg
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+         :content-type;
+        bh=W4AqH3BG39Ccw9rat1s2LDjmKzSlLDWMcVufSeoX/Lk=;
+        b=JyijHI5RCs8MuoOyE6hNM3lLLnvVdoWOaWiK9kWjjYDfRWq4hhmpWoA3Jjc4JpZrPt
+         KPOs/r/7wenay7WC0xzgvZgeeVOSLF8IT17+LiBAu/th7/LnwbfXE1BmE7WWqwI/Odqy
+         jlThSGvf3KFQaMO61BjzCXiWphv3bkeD+Lbj7Oy0c4fd2esHADZArrp0qBdNu6Mf/IBU
+         jrihawn+fd0IJDKoUdZRsAGqNbJ5QPKV82xT2StgKxL6h5/2sMoUd1l7Blz6dprIsCZ3
+         shB4dMfkWxyFjXZtQcCTFLKTYhUedE2IEMHiNMkHg1Hj8stLurpd9Xg+FNDi3g2yGMNA
+         HhMw==
+X-Forwarded-Encrypted: i=1; AKwUvBzmolkdy/x4Pig6SLUUK0vjxdDLgnAsb0p99xshGA50KYGmuwzNsxLWYmYeATSxp+MEzQWnnpxvE9kkdpKIew==@lists.infradead.org
+X-Gm-Message-State: AFuF++lctZSqMno+q4g9xq7z2mfcspTUAwWL8TJjwa+RSjf9SZBNbKZ9
+	7TP2GfidrSkbcxIazFD02+tgUgykgaT+TqvXBGXtQ8jz4cojQbghjweQFNOH7j3SndA=
+X-Gm-Gg: AYBFou3ze9gPHg05EDZHg1xOX8ZlwvbH5AP+cDaVBYwvuP76nzqADkpZ2fvbVsOZ5M4
+	TKrsiTMSzuE2xHv0e+hl89X7OtihBJjrjxSJVRJ4L+6zeZl6+sd/86DZr8GywX8oc4Lv05Tl7Ic
+	qeKUaufgJIV+fd8RQHJl0tPZjK5qCdnT5cledRn1sULQk7RoIlf/35CwxIND/Lxkmw1utR34wU3
+	2gK38lqmJZ3rxQEMy72kj7rLLc3gdYGY4w84UGlXuLns+HQFhmMiSmj/6XDQ4QafYX7WbM7iKkO
+	WnRT+5FY33SALI/CLCqZ6yoQVJbgsFBElP4D6OOFgrykbF5enEmZ4gyKfhZ1AcI5XjIUqgxF1FG
+	HcZdJRc8ZzHwcY0cm2yIpYDdT0qPqvmDRMS84Wa9To5Lo0uS03mKka2eenQF9MOAQtQ87wsjA9T
+	d0zoN9KU8s5ybHU+wqHAubcBkpldrhhYoZ9vDVLqChNkHDIe04NoGPaLOxfkFuMz3Zc8WoOsA=
+X-Received: by 2002:a17:90b:4d0e:b0:39e:6a7e:ee19 with SMTP id 98e67ed59e1d1-3a07e6540e2mr2620920a91.37.1790177436748;
+        Wed, 23 Sep 2026 08:30:36 -0700 (PDT)
+Received: from p14s ([2604:3d09:148c:c800:b4a:dc6a:68e:2592])
+        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-3a07ddf1cf3sm5652074a91.9.2026.09.23.08.30.34
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 23 Sep 2026 08:30:35 -0700 (PDT)
+Date: Wed, 23 Sep 2026 09:30:33 -0600
+From: Mathieu Poirier <mathieu.poirier@linaro.org>
+To: "Rob Herring (Arm)" <robh@kernel.org>
+Cc: Bjorn Andersson <andersson@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	linux-remoteproc@vger.kernel.org, devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH] dt-bindings: remoteproc: Fix MT8188 SCP regs
+Message-ID: <arPwmV6I6e2hCqo6@p14s>
+References: <20260921232520.3127457-1-robh@kernel.org>
+MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20260923094426.67872-1-ginger.jzllee@gmail.com>
-X-ClientProxiedBy: PH7P220CA0179.NAMP220.PROD.OUTLOOK.COM
- (2603:10b6:510:33b::27) To GV2PR04MB11799.eurprd04.prod.outlook.com
- (2603:10a6:150:2cf::9)
-MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: GV2PR04MB11799:EE_|VI0PR04MB10928:EE_
-X-MS-Office365-Filtering-Correlation-Id: 6cd48f3f-a39b-4890-624c-08df1986a666
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|366016|23010399003|7416014|376014|19092799006|1800799024|6133799003|11063799006|10067099003|56012099006|18002099003|22082099003;
-X-Microsoft-Antispam-Message-Info: 6gFbUrUuOfQJNyEZq+kOjVIJnCJYYk5/lNm7M74xSGWDUYAh1xszWbiAEwGG0VoPFehc35eJRPm33jNBaUBLy0Fhn6VoNl45/QfRS/bru3ZKJcAVq4GLcxSzWkBYr1NnJkc01U34+RyyAKejbdOJ1PczQgis7/T2rKr+ibEOihyPgG0qApLRwhFQilSnvaczGAM8ByCfY3GzunNqzBHa5Qp7cjpfhzmEhMT4E1Exaz9nSlQSwh9b/DFDkuVLjQrpIeb3p2KWXp+z9H6SHZLNR4icCwahX/OoO6j0tm6Eq3X76rDZjb3SPSC+/wv/5jSwl10LNQ/fNdqYXzqs/udq3nys+FaIDHpvCkHe/YBLoNzCipt+cbBqn8Jt7Q1jhdgUmjeHQvxCNe5c89nliq18zq+C06pniG+FqdtIivKnBcADTlPXAn+hK1csPOgPGXIM+unh5XxosQFsHPSsB0aoKn09DO3+IZYo0EovsHZP6/K/JkUk4QWoXXFNr4Y1pk+1TPLFJOE6bZQvrncm0xM17SYidlS3tRgAp1U8PSfs0zj63YLQWNuAe+FfPo/QJYdLU4XZHgQwTL6sZL9ZvljC9zD/BN2d1SspLoRuAsIYzkXwFSF5MXI9AQQcM/cLnksd6V20ZLBz78a82DU/pnZyMStoGyNLg8VpaKpqgTHv5p0=
-X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:GV2PR04MB11799.eurprd04.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(366016)(23010399003)(7416014)(376014)(19092799006)(1800799024)(6133799003)(11063799006)(10067099003)(56012099006)(18002099003)(22082099003);DIR:OUT;SFP:1101;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?yn30zA1oGaFIP4Eiv3cbGvEnI248+gHZLCQhbd1KpHqk9wyA2Trx0YZuRsiI?=
- =?us-ascii?Q?KMZXfGnFoHYh23lDVU0YY9/Td5Az0kwOGBOkxE+oyDDHHLAaxs+mIIYIbLw5?=
- =?us-ascii?Q?71taDTluMbN1iHRJD6o91DLdKt32VsRD2X6KUYHN5nfj3qgXqmZLRgpZnFQY?=
- =?us-ascii?Q?W3EfwkWXjA/t8jtWtKaMeLx9NUfAxdUBRpAvsQQ8r563VAuIBu5lVGd5GFTb?=
- =?us-ascii?Q?tTMy262VM7AkQGXpATox3xQqpEDak4+VxUGZ8LZAlhlo2s2D5Lc/SPf7mpMl?=
- =?us-ascii?Q?2kj9RLxZO8AqARU9qtoUQKUZwmy5ZeLJs7IWfOBrnyp1iLHjgUwzS9igNU4a?=
- =?us-ascii?Q?67l2i0mghlhOIMkjhow3iRc2RDBjRBwiDb3QF1gOP3iQIQoRCRZVXG6p77pb?=
- =?us-ascii?Q?A2vycasCeRo6wtw7KXKB1/DIXGHZaencGcEDlt1DD/DgU9+gEk6Q9kzA99FT?=
- =?us-ascii?Q?s2xCzAcmYJhKbCKUhtL8SZPiUvY4YmS6R9fgvlxXHSUyNwZ3M7Nj0PC4+zSn?=
- =?us-ascii?Q?SMX44V6+jy5mfL2z4D6Z0ZwBR6g49H26WpZuoUgXPVttsPtPtX7AAcgpbb5E?=
- =?us-ascii?Q?N4to7nn2TgxjSjEG6EKdDXNZXw3NJp1ilXa7JdcbqYYhbe2HFW8X18XUgdYQ?=
- =?us-ascii?Q?UJmwqBs+GhN1swFiOTqQD7wVJ3qgzQzd+lmDyR1gKw/6jJadtOrgZ3y6dn8V?=
- =?us-ascii?Q?PLTbdiqDUUzplAJr5sSjRuUUqxpn2MehgnApB/5OftIZRdA0LPpziOsWIT4A?=
- =?us-ascii?Q?FUnkQcAVxi7Pi/btlgGtA5QfhBVoUjbiGYVD6i+7ZDxehHUyOp+9afrR1cPh?=
- =?us-ascii?Q?HoHp0Luooi/O6RgVhFIiaYTQ8GlUf5HV7iXCwX3kbv251EnLfUPj/yo5Y+Cm?=
- =?us-ascii?Q?G/MTN+uwkxWVX+g53UTsmNx3KgU5UEnBLvxb+1cAHs6xXLuIaCcBiyyCtg1J?=
- =?us-ascii?Q?OUA+gbfNQSNZ73AmN+Uz9CXIUXDaTVxqiacc1ft4sgDsjhJf1BlUUff/C1pa?=
- =?us-ascii?Q?SlUGRh7NdA5SYol52enb3hmApQTntfSHlvmkM49DXVz5p48rLMFDST4c1+mr?=
- =?us-ascii?Q?0sztvCr4nNiKyPOqofwLfCO/Rq92oMlIHfyYTVC0bIra1M+moPPp4xh0tjvv?=
- =?us-ascii?Q?PMTBzcYhafVd8y0+vNu1Kd6qIv+52U7kaOQMEVSn6CR/WnDy8GF1GflyZQwN?=
- =?us-ascii?Q?OTk8ieh8tyvSLJaHhyq6AXA0zUADDXJvqnru9XxAJghqGo6kYaaRC+P5a/bo?=
- =?us-ascii?Q?Ma8v+elyPCkUDu8sgcX26iT59BQCHca++F9kFvYoMefJraSqX7N6iT9fqx7n?=
- =?us-ascii?Q?KIDGjOua7lbibu4AbEv95o7duB9W6IyJBo7NbFQ7/oEDEtg9QDTT0kr0ULpO?=
- =?us-ascii?Q?H9Ss5UB5T2nzmO4E8aLv8PJG3eI0nnXxOVcomkmd2iex98MH75wCaUejLhw9?=
- =?us-ascii?Q?y5tKSb5CF5WUk+s+3sWYNNE/UumZI6yyWZ0i88o/VKJeoYb/x/zt2zrBkvhE?=
- =?us-ascii?Q?vSlM0npNkj3tULlxSEwCvFWu4IrA6BMBw9J7PsszOFb7FMMD1ap6dD2nsnxJ?=
- =?us-ascii?Q?EX/17z8iZtsN8XmPPmt9Xhoi6chGtYOih0B+PIY6KUcwnPqBt3Q4d1zONKXt?=
- =?us-ascii?Q?sxdY8VzqG+o4Pj4pDHoSbIQziaLFTr41ChyaIQstbiVTC4LwQ9NIocU3Elcs?=
- =?us-ascii?Q?0oSDxGgTYa1Yyqymn0KTsstnuf7VNrxc+ZMYSlcG4VDucG9Zz2iIxKPszKao?=
- =?us-ascii?Q?Wx3AuQncwnB2iLnUSY9rPb5Wx0vdVyOZ5M7Fibh4Dvp/iCfXYd3W?=
-X-OriginatorOrg: oss.nxp.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 6cd48f3f-a39b-4890-624c-08df1986a666
-X-MS-Exchange-CrossTenant-AuthSource: GV2PR04MB11799.eurprd04.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 23 Sep 2026 15:23:42.1265
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 686ea1d3-bc2b-4c6f-a92c-d99c5c301635
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: r+kQBw/vuU0xn9fOTG1zom4zGXBDcAPhXhFsjWujHJOjicWCNCaiPPOfHijC7xo464/QjntVK8JD9ocpJa+Lwm64pu3oDVUFKFdQhbHvIT19YLInjTWf11UXE4LSnbTN
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: VI0PR04MB10928
+In-Reply-To: <20260921232520.3127457-1-robh@kernel.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260923_082348_754428_69ED3541 
-X-CRM114-Status: GOOD (  20.55  )
+X-CRM114-CacheID: sfid-20260923_083038_331317_489D00BB 
+X-CRM114-Status: GOOD (  14.78  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -137,87 +105,91 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Sep 23, 2026 at 05:44:26PM +0800, Ginger Li wrote:
-> [You don't often get email from ginger.jzllee@gmail.com. Learn why this is important at https://aka.ms/LearnAboutSenderIdentification ]
->
-> milbeaut_hdmac_interrupt() is a hardirq handler and takes mc->vc.lock with a
-> plain spin_lock() for the whole time it runs.  interrupts are disabled locally
-> in that context, so the handler itself is fine.
->
-> milbeaut_hdmac_chan_config(), milbeaut_hdmac_chan_pause() and
-> milbeaut_hdmac_chan_resume() are called from process context and take the same
-> lock with a plain spin_lock() as well, so interrupts stay enabled while the
-> lock is held.
->
-> If a channel interrupt is delivered on the CPU that is inside one of those
-> critical sections, milbeaut_hdmac_interrupt() spins on a lock that the
-> interrupted code is holding and can never release, and the CPU hangs.
->
-> Take mc->vc.lock with spin_lock_irqsave() in those three functions, as
-> milbeaut_hdmac_issue_pending() and the other process context users of this
-> lock already do.
->
-> Fixes: 6c3214e698e4 ("dmaengine: milbeaut-hdmac: Add HDMAC driver for Milbeaut platforms")
-> Signed-off-by: Ginger Li <ginger.jzllee@gmail.com>
+On Mon, Sep 21, 2026 at 06:25:19PM -0500, Rob Herring (Arm) wrote:
+> Allow single-register MT8188 SCP dual nodes with only the cfg
+> region. Keep two-register and three-register requirements for the
+> other MediaTek SCP variants that need SRAM and L1TCM regions.
+> 
+> Assisted-by: LLM
+> Signed-off-by: Rob Herring (Arm) <robh@kernel.org>
 > ---
+>  .../bindings/remoteproc/mtk,scp.yaml          | 22 ++++++++++++++++---
+>  1 file changed, 19 insertions(+), 3 deletions(-)
+>
 
-Reviewed-by: Frank Li <Frank.Li@nxp.com>
+Applied.
 
->  drivers/dma/milbeaut-hdmac.c | 15 +++++++++------
->  1 file changed, 9 insertions(+), 6 deletions(-)
->
-> diff --git a/drivers/dma/milbeaut-hdmac.c b/drivers/dma/milbeaut-hdmac.c
-> --- a/drivers/dma/milbeaut-hdmac.c
-> +++ b/drivers/dma/milbeaut-hdmac.c
-> @@ -214,10 +214,11 @@ milbeaut_hdmac_chan_config(struct dma_chan *chan, stru
->  {
->         struct virt_dma_chan *vc = to_virt_chan(chan);
->         struct milbeaut_hdmac_chan *mc = to_milbeaut_hdmac_chan(vc);
-> +       unsigned long flags;
->
-> -       spin_lock(&mc->vc.lock);
-> +       spin_lock_irqsave(&mc->vc.lock, flags);
->         mc->cfg = *cfg;
-> -       spin_unlock(&mc->vc.lock);
-> +       spin_unlock_irqrestore(&mc->vc.lock, flags);
->
->         return 0;
->  }
-> @@ -226,13 +227,14 @@ static int milbeaut_hdmac_chan_pause(struct dma_chan *
->  {
->         struct virt_dma_chan *vc = to_virt_chan(chan);
->         struct milbeaut_hdmac_chan *mc = to_milbeaut_hdmac_chan(vc);
-> +       unsigned long flags;
->         u32 val;
->
-> -       spin_lock(&mc->vc.lock);
-> +       spin_lock_irqsave(&mc->vc.lock, flags);
->         val = readl_relaxed(mc->reg_ch_base + MLB_HDMAC_DMACA);
->         val |= MLB_HDMAC_PB;
->         writel_relaxed(val, mc->reg_ch_base + MLB_HDMAC_DMACA);
-> -       spin_unlock(&mc->vc.lock);
-> +       spin_unlock_irqrestore(&mc->vc.lock, flags);
->
->         return 0;
->  }
-> @@ -241,13 +243,14 @@ static int milbeaut_hdmac_chan_resume(struct dma_chan
->  {
->         struct virt_dma_chan *vc = to_virt_chan(chan);
->         struct milbeaut_hdmac_chan *mc = to_milbeaut_hdmac_chan(vc);
-> +       unsigned long flags;
->         u32 val;
->
-> -       spin_lock(&mc->vc.lock);
-> +       spin_lock_irqsave(&mc->vc.lock, flags);
->         val = readl_relaxed(mc->reg_ch_base + MLB_HDMAC_DMACA);
->         val &= ~MLB_HDMAC_PB;
->         writel_relaxed(val, mc->reg_ch_base + MLB_HDMAC_DMACA);
-> -       spin_unlock(&mc->vc.lock);
-> +       spin_unlock_irqrestore(&mc->vc.lock, flags);
->
->         return 0;
->  }
-> --
-> 2.43.0
->
+Thanks,
+Mathieu
+ 
+> diff --git a/Documentation/devicetree/bindings/remoteproc/mtk,scp.yaml b/Documentation/devicetree/bindings/remoteproc/mtk,scp.yaml
+> index bdbb12118da4..2f0a28c7a24c 100644
+> --- a/Documentation/devicetree/bindings/remoteproc/mtk,scp.yaml
+> +++ b/Documentation/devicetree/bindings/remoteproc/mtk,scp.yaml
+> @@ -28,11 +28,11 @@ properties:
+>      description:
+>        Should contain the address ranges for memory regions SRAM, CFG, and,
+>        on some platforms, L1TCM.
+> -    minItems: 2
+> +    minItems: 1
+>      maxItems: 3
+>  
+>    reg-names:
+> -    minItems: 2
+> +    minItems: 1
+>      maxItems: 3
+>  
+>    clocks:
+> @@ -171,6 +171,7 @@ allOf:
+>      then:
+>        properties:
+>          reg:
+> +          minItems: 2
+>            maxItems: 2
+>          reg-names:
+>            items:
+> @@ -185,6 +186,7 @@ allOf:
+>      then:
+>        properties:
+>          reg:
+> +          minItems: 3
+>            maxItems: 3
+>          reg-names:
+>            items:
+> @@ -195,17 +197,31 @@ allOf:
+>        properties:
+>          compatible:
+>            enum:
+> -            - mediatek,mt8188-scp-dual
+>              - mediatek,mt8195-scp-dual
+>      then:
+>        properties:
+>          reg:
+> +          minItems: 2
+>            maxItems: 2
+>          reg-names:
+>            items:
+>              - const: cfg
+>              - const: l1tcm
+>  
+> +  - if:
+> +      properties:
+> +        compatible:
+> +          enum:
+> +            - mediatek,mt8188-scp-dual
+> +    then:
+> +      properties:
+> +        reg:
+> +          minItems: 1
+> +          maxItems: 1
+> +        reg-names:
+> +          items:
+> +            - const: cfg
+> +
+>  additionalProperties: false
+>  
+>  examples:
+> -- 
+> 2.53.0
+> 
 
