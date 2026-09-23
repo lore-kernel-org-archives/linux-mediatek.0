@@ -4,159 +4,125 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DCC37C98302
-	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Sep 2026 13:45:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AB32CC9830B
+	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Sep 2026 15:23:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=bvAW3yceqnT6AttFLk4NW8DsgIwVtqPiNNE7x4zTQZg=; b=stcc5m3f1PNYtrhdSxa3GRMuie
-	TpOS6V1rU/lswOl2XeCxEyw/FbnT18zchdB1a9yhfR50n7IMqOz5E+XNgPyIztYlrJW7waLaRmUsg
-	fo955a+VvDrSJyup8oYKlhBQ3SpSr/sQO7CSWKAozRNtlQfMVHv4E5mfDk2ByhyG2twaAQ+ZRn3Ds
-	A2h3jv831hrtiwxU3Ziv8vXdf4CBltD7bscGbAA5aIxbQqIO/RO4eLNmqzkFX4+vibQN0Twz1TpjQ
-	Pc3DdiUF2i2fKcU3xe92rVtdUrNIPE7qPPSZPxiWZHEzgYMJ4XTjjuX6czoRQH6wLjN9GMEonLqGv
-	EHBqoBzA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:
+	Content-Type:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=3+eKCb4NMKp5Jh6mgKOVM0bUpZ6A4Z9I4O3FILpuvuc=; b=Vm0kIvc5g5G99kGlcknB7LSt5e
+	Xpxeutmygw+i+PLDQ+s2zaDGSPobbDNrIru2vyu6PH5mV9VXbtUY/ZGfPJJ9yUWwbTnJrGD4FkNDW
+	wXASEgXh+1z6nkvjfJIrSFZGkv3R7coTRG9s6dNCdvqYX59kKxGoKH1yv0TofEPapY5WmEsASntqn
+	/9HYW1H4NnuynD+7RqrmuEDr/v+Z/QTX/TIqpTq0XXB9Thf1jgjLOZIrIYHPZclJtChAXlB9e2aDk
+	4JfKzVbvlETfL4rOhD9WALO5dSwiEdDMUxh9GkIQsPqssiwO+c9uOmongBxuKiUULIymRg3g5XWZy
+	Suig2aew==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x9NIE-00000008RhI-1Uu8;
-	Wed, 23 Sep 2026 13:45:50 +0000
-Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
+	id 1x9Op9-00000008iyV-3dup;
+	Wed, 23 Sep 2026 15:23:55 +0000
+Received: from mail-northeuropeazon11010021.outbound.protection.outlook.com ([52.101.84.21] helo=DB3PR0202CU003.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x9NIC-00000008RgD-1cN9
-	for linux-mediatek@lists.infradead.org;
-	Wed, 23 Sep 2026 13:45:49 +0000
-Received: from pps.filterd (m0279869.ppops.net [127.0.0.1])
-	by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id 68NDLq4l3842694
-	for <linux-mediatek@lists.infradead.org>; Wed, 23 Sep 2026 13:45:47 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
-	cc:content-transfer-encoding:content-type:date:from:in-reply-to
-	:message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
-	bvAW3yceqnT6AttFLk4NW8DsgIwVtqPiNNE7x4zTQZg=; b=NHhZfGytzmWFyCsj
-	Zbq1+A+FQqTZC64KnzfYTjTVPG4qQ2PppdfaDev7x8JA0PLgl8xEusRGtaUk2Jnu
-	dktSsj6AkBdohfO4tO1sewfq6TnnSSJAfWsSJiulrAuLH1YzPMPiVH1eN1YzL+gr
-	rXl5tjJO3b9ESRI7PcAkNumaqBIipyJqWDIi7+ikcMskQZRd0A3wRk2DfxasF1it
-	2mcq9TNtRWWuNicMFsLObGoyuSiP7WGMx9NrG7MnL3ooMu+9W0VVVhVHfTo5swQf
-	RGt6T1OymuOg3EfZA02+riv6lxDfUWyRTWk+mzOgJ+2ZyLA7Gl/eBGkdBvnXp9gg
-	Mxdl+Q==
-Received: from mail-vs1-f72.google.com (mail-vs1-f72.google.com [209.85.217.72])
-	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4gvfkbg344-1
-	(version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
-	for <linux-mediatek@lists.infradead.org>; Wed, 23 Sep 2026 13:45:47 +0000 (GMT)
-Received: by mail-vs1-f72.google.com with SMTP id ada2fe7eead31-7a760965865so70619137.3
-        for <linux-mediatek@lists.infradead.org>; Wed, 23 Sep 2026 06:45:47 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=oss.qualcomm.com; s=google; t=1790171146; x=1790775946; darn=lists.infradead.org;
-        h=content-transfer-encoding:content-type:in-reply-to:from
-         :content-language:references:cc:to:subject:user-agent:mime-version
-         :date:message-id:from:to:cc:subject:date:message-id:reply-to
-         :content-type;
-        bh=bvAW3yceqnT6AttFLk4NW8DsgIwVtqPiNNE7x4zTQZg=;
-        b=EMpQR5xlqhAJM9pLB+7fEwJSmv4QeW5aMiPmMcxdlMdHOSCBjOBfEmxmtEvAXIo5a/
-         T4glFYc3k3088wRPO7h5byqqkPf3c3849sM9yjBoPhW3EdnN1R0SEEZHeqNckr1kF1DG
-         H0K7gjxfjGypB69KYc+RdFDuFBR3R2WVblWo2gFKqoFJwlJxefo3FEyhAG/r+42qHSvO
-         QZUEkedj8zmdVuOOAgOtUZTfKaVb8X/1uMnPGyoUQN1JrD/rBylyz5OY5JpR/tEThmdh
-         b/XSIQUfz3nWwvaAwW97EzuoA+kR/SrwnARw1XQczXzhNzEhADk0YWCvoAZaC30lF5zy
-         P7/w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1790171146; x=1790775946;
-        h=content-transfer-encoding:content-type:in-reply-to:from
-         :content-language:references:cc:to:subject:user-agent:mime-version
-         :date:message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to:content-type;
-        bh=bvAW3yceqnT6AttFLk4NW8DsgIwVtqPiNNE7x4zTQZg=;
-        b=ngcYLAi2Ag1KFO65FQ1es4xL71i/JYZKE7F1+sagtaBdN02uuf6CAPme8HsVvatODF
-         lONEpUzEe3A5OXeU8RxC1GwTGYFF5PaqR588vMMMLSKE2E5sPtibBYCqbTaVWmT9hNlg
-         2VsEUBDPquXOL3SxuhMPN3jl00ywZYub58O+d+eMOWjkUAsYpTeQI7EJEjNDAeTfOdbq
-         XpmexksdvpRRstsqQWehFi8Xk8TqMKFOXAaLLZB7I1pAsautQbJmRMWapiap9WPy7imC
-         /bazCPIQCIhLO7AkEBNEV6WHQJ9VQiZWy68yqCmAtGOcl9OjbWxhQQuFhlRIY4T+1LrJ
-         CpFA==
-X-Forwarded-Encrypted: i=1; AKwUvBx6wHbjxENjXQME04EnOT91RcrdIulNSENAVhSeXgu/3SuwnKO5gPG+4PBYGmD9kEH/v56AMLkLDuevWgwo0A==@lists.infradead.org
-X-Gm-Message-State: AFuF++kbqDkXmclXcR/it6Wv4jr5rl3hWFX9t9KWerSftKvr3oaykB0E
-	QH7Wlm5euUQLJe+onKiBRs6zyBIu7itKyJOX0FfPDAY52pF6azp/gb1Zg2duWDS2MCh8EjOPhEO
-	+u6cmwuASZtOW/tt/VdcmnYGQPvF7BdY6pX50HpLPscvaaCnr2gC3dovHn8XlnG8h69UBFb7B4S
-	U=
-X-Gm-Gg: AYBFou14ewbAgyY6FxR4dode+OqYLlWEPzD0NBYREMz71Zb8GBzfwx7LcuQ4vOw5NKY
-	sy5brNZOEx+HBzybtid0m6P7GXGdW9aGi/360kNdYc8MHUNdbItyMeWzal/F+mIHCUfUaaYUDQq
-	NZm1fo/C7DaSO7yNi+nhQhiNKt2ICBsrYAZ8dD53+RuEpi+TSOxKKz/iZATQXNm74jTNaX9H98k
-	Ufbr99s9PVpbgMOsX3OHzAkG8gP9sngIrsb07Wn7mvTptp1va6waYXEn0bquV4oY5meRrKWvRDa
-	nwrB0EA+UWXwt2Er14fNb2YvIQ7KdICp74qjtskE+eIw5BkrT2mC4LMAMj+z/9ZQ5u9U2DJnLGi
-	jkRqSdvb9haqrsyFjTMrl2g==
-X-Received: by 2002:a05:6102:5121:b0:7a7:326b:688d with SMTP id ada2fe7eead31-7ac1c454b57mr2548256137.2.1790171146485;
-        Wed, 23 Sep 2026 06:45:46 -0700 (PDT)
-X-Received: by 2002:a05:6102:5121:b0:7a7:326b:688d with SMTP id ada2fe7eead31-7ac1c454b57mr2548220137.2.1790171145961;
-        Wed, 23 Sep 2026 06:45:45 -0700 (PDT)
-Received: from [192.168.202.12] ([178.235.128.140])
-        by smtp.gmail.com with ESMTPSA id 4fb4d7f45d1cf-6aab37478c9sm1722267a12.0.2026.09.23.06.45.41
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 23 Sep 2026 06:45:44 -0700 (PDT)
-Message-ID: <32bceb7e-d06b-4537-9d34-91bfe27f4ff7@oss.qualcomm.com>
-Date: Wed, 23 Sep 2026 15:45:40 +0200
+	id 1x9Op2-00000008iu2-2ksn;
+	Wed, 23 Sep 2026 15:23:50 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=Hykzf0vtcSbo9N/qKa7XHMIwYUa/As6Cw4UvJ4CSY+eYbQJ1ksk8x6arAAaQQI6X7Xa/yPSyW1VU1aypfDpcpPDTykR7PHfrRRCtFi7f6TxiVt06EOKkYXr/2ezq8Mb2jPD0yeFhNTb6gpYHIAAUOS7U5aauxtltCBPeVLixhqKH1fFV5+4+VkxuJr1lagSYAwoIoEfLQyqyxL4Z8+wBdc9qnzxtwp89Gc2SUMGMl/RlMOu+x8hq7Tx6qO8fCLUCGgV+O/Bbq9nvmcwP/zIXSFkJfdVRBoros+lW0gaVk3Gf9tgVXtO0KVBSARHkSn9xBHc0oc4vbgPR8cKDf4i9Cg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=3+eKCb4NMKp5Jh6mgKOVM0bUpZ6A4Z9I4O3FILpuvuc=;
+ b=hy3Kn80Ylyw6kQBWn1HHtrX5BEaiO6fx/nRfqvtLF6ne5sPPMLPPVgB8FT3PnzLo+CtPrOoMTJM1yDmdVEl4rf34/xmsktYLc93KEyIcshgUkeu4nyPs5WIqCODE6PVkvM9Km9zzi1JoqBgXdM6wklLCbq058auYn6jLQRkCtXHgBCE1qD7jTcByDbWVIbNM33Hxvuy7ZBXvYXeWtb+hEoDdaK9G97pEDNti0kQ9ztdHZVeEjx8/vnv/VIs3joxUZEwvmzRCKjzMz+g/L0cXsIsUjVR2f4/2s1SWaa3Xtc2+5UEpm/dJEDjpRpQMpyXl/sociX1B5Z7f/5ti+3mEWA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=oss.nxp.com; dmarc=pass action=none header.from=oss.nxp.com;
+ dkim=pass header.d=oss.nxp.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=NXP1.onmicrosoft.com;
+ s=selector1-NXP1-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=3+eKCb4NMKp5Jh6mgKOVM0bUpZ6A4Z9I4O3FILpuvuc=;
+ b=Mr3urwW5RY+Pykeh1R6qyzNWf34mvYHgIMKFa4XmgUgcKky7AZJgineoewLyk5d484FertvA7XJHl7q72jhzm8s4BFj7qnRDJQ4wAu1HM2iuCUhawdHmH2LR/XpvyJ3u87ka68/O+1ha010s/yaqs5ZNbtQ7YKIvpYNVZHwLrHSYK5fawnoCRqEJFBorLDtZ++PBYXqvjvPsv9aUKJZs+lvWrihJTX5dpMy/SzIn6+FfAKwIi98aJQ8PieHqOrodPN4iCHT/2ElbrNP72l252dj6Pk1Ab3JQw49GvBGArqwwC91Ap708txpd0O1ibV/JUGX2cDfRZZtS1xw71K91Eg==
+Authentication-Results: mx.microsoft.com 1; dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=oss.nxp.com;
+Received: from GV2PR04MB11799.eurprd04.prod.outlook.com (2603:10a6:150:2cf::9)
+ by VI0PR04MB10928.eurprd04.prod.outlook.com (2603:10a6:800:261::8) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.451.14; Wed, 23 Sep
+ 2026 15:23:42 +0000
+Received: from GV2PR04MB11799.eurprd04.prod.outlook.com
+ ([fe80::2146:83a2:5329:b7c]) by GV2PR04MB11799.eurprd04.prod.outlook.com
+ ([fe80::2146:83a2:5329:b7c%7]) with mapi id 15.21.0428.015; Wed, 23 Sep 2026
+ 15:23:42 +0000
+Date: Wed, 23 Sep 2026 10:23:33 -0500
+From: Frank Li <Frank.li@oss.nxp.com>
+To: Ginger Li <ginger.jzllee@gmail.com>
+Cc: sean.wang@mediatek.com, vkoul@kernel.org, Frank.Li@kernel.org,
+	matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
+	dmaengine@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH] dmaengine: milbeaut-hdmac: Fix deadlock with the channel
+ IRQ handler
+Message-ID: <arPu9TwyACiAlw94@SMW015318>
+References: <20260923094426.67872-1-ginger.jzllee@gmail.com>
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20260923094426.67872-1-ginger.jzllee@gmail.com>
+X-ClientProxiedBy: PH7P220CA0179.NAMP220.PROD.OUTLOOK.COM
+ (2603:10b6:510:33b::27) To GV2PR04MB11799.eurprd04.prod.outlook.com
+ (2603:10a6:150:2cf::9)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v6 06/16] usb: hub: Associate port@ fwnode with USB port
- device
-To: wens@kernel.org
-Cc: Chen-Yu Tsai <wenst@chromium.org>, Bartosz Golaszewski <brgl@kernel.org>,
-        Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-        Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
-        Daniel Scally <djrscally@gmail.com>,
-        Heikki Krogerus <heikki.krogerus@linux.intel.com>,
-        Sakari Ailus <sakari.ailus@linux.intel.com>,
-        "Rafael J. Wysocki" <rafael@kernel.org>,
-        Danilo Krummrich <dakr@kernel.org>, Rob Herring <robh@kernel.org>,
-        Krzysztof Kozlowski <krzk+dt@kernel.org>,
-        Conor Dooley <conor+dt@kernel.org>,
-        Matthias Brugger
- <matthias.bgg@gmail.com>,
-        AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-        linux-acpi@vger.kernel.org, driver-core@lists.linux.dev,
-        linux-pm@vger.kernel.org, linux-usb@vger.kernel.org,
-        devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org,
-        linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
-        Manivannan Sadhasivam <mani@kernel.org>,
-        Alan Stern <stern@rowland.harvard.edu>,
-        Bartosz Golaszewski <bartosz.golaszewski@oss.qualcomm.com>
-References: <20260721065413.2306137-1-wenst@chromium.org>
- <20260721065413.2306137-7-wenst@chromium.org>
- <c6526ba0-be08-46c6-a501-1b161939657c@oss.qualcomm.com>
- <CAGb2v66c8L20yNNmvj6TaQbS7LnqAyuv0tMQfj+0PSjMUcSByA@mail.gmail.com>
-Content-Language: en-US
-From: Konrad Dybcio <konrad.dybcio@oss.qualcomm.com>
-In-Reply-To: <CAGb2v66c8L20yNNmvj6TaQbS7LnqAyuv0tMQfj+0PSjMUcSByA@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-Proofpoint-Spam-Info: AW1haW4tMjYwOTIzMDA1NCBTYWx0ZWRfX5aih7duJ3zbP
- 47+tgKwOVLxwxmvmT7bsmxB/ZQ+DfykLkIWEFtEV2N4BcseeLLUq5vLwBWcRODT8YVzswbV6tf/
- jlLfR9x+fVaD20JenHgbwp47EHIxXAQ=
-X-Proofpoint-GUID: ArtqPzMhMt9GvxXwm8A04lMAbD2B4-ER
-X-Authority-Analysis: v=2.4 cv=RYMFmFtv c=1 sm=1 tr=0 ts=6ab3d80b cx=c_pps
- a=DUEm7b3gzWu7BqY5nP7+9g==:117 a=PRfkaYvzSr8QmIIGAkY2Sg==:17
- a=IkcTkHD0fZMA:10 a=VdqzKS8jKosA:10 a=s4-Qcg_JpJYA:10
- a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=_glEPmIy2e8OvE2BGh3C:22
- a=VwQbUJbxAAAA:8 a=EUspDBNiAAAA:8 a=M7ONEjnSaIfHBpTaVFwA:9 a=3ZKOabzyN94A:10
- a=QEXdDO2ut3YA:10 a=-aSRE8QhW-JAV6biHavz:22
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwOTIzMDA1NCBTYWx0ZWRfX3DTw5GNrcGUt
- WQSKtOYRDvlBpumNFc4r0mr3G65TNujSUwnqZYOydTTVTohawZA71uBoqRyvuMsSEpt+VwlhNF/
- im1Q6EMp4tzW7NMdGH0q8goKK0ZNYmyvVs2AjlDbcquEByEI799d18w604MNkAFaMB74SwmqUMj
- 0n/f+DoQ+zW1uCRPOCgO+f92vTeYf5rZ++03hBVDnVvGIeHl886t8f/69Th0CFaFBttOzznjAmh
- mSFTNcBVdNZdx+aHgVTf7KEc8XSvQdKs21/gnGI6zNBGlh5p30S+rkfvBSqW0wikKWMDgq0LrYZ
- XKOi1DtPYLuwaoGav9MH+G/pNYrQ8qu+k3YP2bbYy11KMaqc7TNF+ujlvBnxNSCXPMlFUYQZ+CO
- 3tIiYz3igbeB0UsJWfYWHl0P/brh/v9csPGW+pXU8oYvtxLWrMItOAxblk75NPp/sIgpCLrwg1I
- z3aBdC1J566Gqx+N6uw==
-X-Proofpoint-ORIG-GUID: ArtqPzMhMt9GvxXwm8A04lMAbD2B4-ER
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1176,Hydra:6.1.134,FMLib:17.12.100.49
- definitions=2026-09-23_04,2026-09-21_02,2025-10-01_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- spamscore=0 suspectscore=0 clxscore=1011 priorityscore=1501 phishscore=0
- adultscore=0 impostorscore=0 lowpriorityscore=0 bulkscore=0 malwarescore=0
- classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
- reason=mlx scancount=1 engine=8.22.0-2609040000 definitions=main-2609230054
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: GV2PR04MB11799:EE_|VI0PR04MB10928:EE_
+X-MS-Office365-Filtering-Correlation-Id: 6cd48f3f-a39b-4890-624c-08df1986a666
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230040|366016|23010399003|7416014|376014|19092799006|1800799024|6133799003|11063799006|10067099003|56012099006|18002099003|22082099003;
+X-Microsoft-Antispam-Message-Info: 6gFbUrUuOfQJNyEZq+kOjVIJnCJYYk5/lNm7M74xSGWDUYAh1xszWbiAEwGG0VoPFehc35eJRPm33jNBaUBLy0Fhn6VoNl45/QfRS/bru3ZKJcAVq4GLcxSzWkBYr1NnJkc01U34+RyyAKejbdOJ1PczQgis7/T2rKr+ibEOihyPgG0qApLRwhFQilSnvaczGAM8ByCfY3GzunNqzBHa5Qp7cjpfhzmEhMT4E1Exaz9nSlQSwh9b/DFDkuVLjQrpIeb3p2KWXp+z9H6SHZLNR4icCwahX/OoO6j0tm6Eq3X76rDZjb3SPSC+/wv/5jSwl10LNQ/fNdqYXzqs/udq3nys+FaIDHpvCkHe/YBLoNzCipt+cbBqn8Jt7Q1jhdgUmjeHQvxCNe5c89nliq18zq+C06pniG+FqdtIivKnBcADTlPXAn+hK1csPOgPGXIM+unh5XxosQFsHPSsB0aoKn09DO3+IZYo0EovsHZP6/K/JkUk4QWoXXFNr4Y1pk+1TPLFJOE6bZQvrncm0xM17SYidlS3tRgAp1U8PSfs0zj63YLQWNuAe+FfPo/QJYdLU4XZHgQwTL6sZL9ZvljC9zD/BN2d1SspLoRuAsIYzkXwFSF5MXI9AQQcM/cLnksd6V20ZLBz78a82DU/pnZyMStoGyNLg8VpaKpqgTHv5p0=
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:GV2PR04MB11799.eurprd04.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(366016)(23010399003)(7416014)(376014)(19092799006)(1800799024)(6133799003)(11063799006)(10067099003)(56012099006)(18002099003)(22082099003);DIR:OUT;SFP:1101;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?yn30zA1oGaFIP4Eiv3cbGvEnI248+gHZLCQhbd1KpHqk9wyA2Trx0YZuRsiI?=
+ =?us-ascii?Q?KMZXfGnFoHYh23lDVU0YY9/Td5Az0kwOGBOkxE+oyDDHHLAaxs+mIIYIbLw5?=
+ =?us-ascii?Q?71taDTluMbN1iHRJD6o91DLdKt32VsRD2X6KUYHN5nfj3qgXqmZLRgpZnFQY?=
+ =?us-ascii?Q?W3EfwkWXjA/t8jtWtKaMeLx9NUfAxdUBRpAvsQQ8r563VAuIBu5lVGd5GFTb?=
+ =?us-ascii?Q?tTMy262VM7AkQGXpATox3xQqpEDak4+VxUGZ8LZAlhlo2s2D5Lc/SPf7mpMl?=
+ =?us-ascii?Q?2kj9RLxZO8AqARU9qtoUQKUZwmy5ZeLJs7IWfOBrnyp1iLHjgUwzS9igNU4a?=
+ =?us-ascii?Q?67l2i0mghlhOIMkjhow3iRc2RDBjRBwiDb3QF1gOP3iQIQoRCRZVXG6p77pb?=
+ =?us-ascii?Q?A2vycasCeRo6wtw7KXKB1/DIXGHZaencGcEDlt1DD/DgU9+gEk6Q9kzA99FT?=
+ =?us-ascii?Q?s2xCzAcmYJhKbCKUhtL8SZPiUvY4YmS6R9fgvlxXHSUyNwZ3M7Nj0PC4+zSn?=
+ =?us-ascii?Q?SMX44V6+jy5mfL2z4D6Z0ZwBR6g49H26WpZuoUgXPVttsPtPtX7AAcgpbb5E?=
+ =?us-ascii?Q?N4to7nn2TgxjSjEG6EKdDXNZXw3NJp1ilXa7JdcbqYYhbe2HFW8X18XUgdYQ?=
+ =?us-ascii?Q?UJmwqBs+GhN1swFiOTqQD7wVJ3qgzQzd+lmDyR1gKw/6jJadtOrgZ3y6dn8V?=
+ =?us-ascii?Q?PLTbdiqDUUzplAJr5sSjRuUUqxpn2MehgnApB/5OftIZRdA0LPpziOsWIT4A?=
+ =?us-ascii?Q?FUnkQcAVxi7Pi/btlgGtA5QfhBVoUjbiGYVD6i+7ZDxehHUyOp+9afrR1cPh?=
+ =?us-ascii?Q?HoHp0Luooi/O6RgVhFIiaYTQ8GlUf5HV7iXCwX3kbv251EnLfUPj/yo5Y+Cm?=
+ =?us-ascii?Q?G/MTN+uwkxWVX+g53UTsmNx3KgU5UEnBLvxb+1cAHs6xXLuIaCcBiyyCtg1J?=
+ =?us-ascii?Q?OUA+gbfNQSNZ73AmN+Uz9CXIUXDaTVxqiacc1ft4sgDsjhJf1BlUUff/C1pa?=
+ =?us-ascii?Q?SlUGRh7NdA5SYol52enb3hmApQTntfSHlvmkM49DXVz5p48rLMFDST4c1+mr?=
+ =?us-ascii?Q?0sztvCr4nNiKyPOqofwLfCO/Rq92oMlIHfyYTVC0bIra1M+moPPp4xh0tjvv?=
+ =?us-ascii?Q?PMTBzcYhafVd8y0+vNu1Kd6qIv+52U7kaOQMEVSn6CR/WnDy8GF1GflyZQwN?=
+ =?us-ascii?Q?OTk8ieh8tyvSLJaHhyq6AXA0zUADDXJvqnru9XxAJghqGo6kYaaRC+P5a/bo?=
+ =?us-ascii?Q?Ma8v+elyPCkUDu8sgcX26iT59BQCHca++F9kFvYoMefJraSqX7N6iT9fqx7n?=
+ =?us-ascii?Q?KIDGjOua7lbibu4AbEv95o7duB9W6IyJBo7NbFQ7/oEDEtg9QDTT0kr0ULpO?=
+ =?us-ascii?Q?H9Ss5UB5T2nzmO4E8aLv8PJG3eI0nnXxOVcomkmd2iex98MH75wCaUejLhw9?=
+ =?us-ascii?Q?y5tKSb5CF5WUk+s+3sWYNNE/UumZI6yyWZ0i88o/VKJeoYb/x/zt2zrBkvhE?=
+ =?us-ascii?Q?vSlM0npNkj3tULlxSEwCvFWu4IrA6BMBw9J7PsszOFb7FMMD1ap6dD2nsnxJ?=
+ =?us-ascii?Q?EX/17z8iZtsN8XmPPmt9Xhoi6chGtYOih0B+PIY6KUcwnPqBt3Q4d1zONKXt?=
+ =?us-ascii?Q?sxdY8VzqG+o4Pj4pDHoSbIQziaLFTr41ChyaIQstbiVTC4LwQ9NIocU3Elcs?=
+ =?us-ascii?Q?0oSDxGgTYa1Yyqymn0KTsstnuf7VNrxc+ZMYSlcG4VDucG9Zz2iIxKPszKao?=
+ =?us-ascii?Q?Wx3AuQncwnB2iLnUSY9rPb5Wx0vdVyOZ5M7Fibh4Dvp/iCfXYd3W?=
+X-OriginatorOrg: oss.nxp.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 6cd48f3f-a39b-4890-624c-08df1986a666
+X-MS-Exchange-CrossTenant-AuthSource: GV2PR04MB11799.eurprd04.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 23 Sep 2026 15:23:42.1265
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 686ea1d3-bc2b-4c6f-a92c-d99c5c301635
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: r+kQBw/vuU0xn9fOTG1zom4zGXBDcAPhXhFsjWujHJOjicWCNCaiPPOfHijC7xo464/QjntVK8JD9ocpJa+Lwm64pu3oDVUFKFdQhbHvIT19YLInjTWf11UXE4LSnbTN
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: VI0PR04MB10928
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260923_064548_543176_4E5317D8 
-X-CRM114-Status: GOOD (  29.72  )
+X-CRM114-CacheID: sfid-20260923_082348_754428_69ED3541 
+X-CRM114-Status: GOOD (  20.55  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -171,69 +137,87 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 9/4/26 12:30 PM, Chen-Yu Tsai wrote:
-> (dug this out of my kernel.org email)
-> 
-> On Fri, Jul 31, 2026 at 10:44 PM Konrad Dybcio
-> <konrad.dybcio@oss.qualcomm.com> wrote:
->>
->> On 7/21/26 8:54 AM, Chen-Yu Tsai wrote:
->>> When a USB hub port is connected to a connector in a firmware node
->>> graph, the port itself has a node in the graph.
+On Wed, Sep 23, 2026 at 05:44:26PM +0800, Ginger Li wrote:
+> [You don't often get email from ginger.jzllee@gmail.com. Learn why this is important at https://aka.ms/LearnAboutSenderIdentification ]
+>
+> milbeaut_hdmac_interrupt() is a hardirq handler and takes mc->vc.lock with a
+> plain spin_lock() for the whole time it runs.  interrupts are disabled locally
+> in that context, so the handler itself is fine.
+>
+> milbeaut_hdmac_chan_config(), milbeaut_hdmac_chan_pause() and
+> milbeaut_hdmac_chan_resume() are called from process context and take the same
+> lock with a plain spin_lock() as well, so interrupts stay enabled while the
+> lock is held.
+>
+> If a channel interrupt is delivered on the CPU that is inside one of those
+> critical sections, milbeaut_hdmac_interrupt() spins on a lock that the
+> interrupted code is holding and can never release, and the CPU hangs.
+>
+> Take mc->vc.lock with spin_lock_irqsave() in those three functions, as
+> milbeaut_hdmac_issue_pending() and the other process context users of this
+> lock already do.
+>
+> Fixes: 6c3214e698e4 ("dmaengine: milbeaut-hdmac: Add HDMAC driver for Milbeaut platforms")
+> Signed-off-by: Ginger Li <ginger.jzllee@gmail.com>
+> ---
 
-[...]
+Reviewed-by: Frank Li <Frank.Li@nxp.com>
 
->> But something I faced when I was poking at USB4 was that dt-bindings
->> currently assume every controller is effectively single-port and the
->> of_graph ports under it represent HS/SS lanes, i.e. the entire
->> "ports" subnode represents a single USB port
-> 
-> Which controller is this? AFAIK for xHCI hosts there currently is no
-> "ports" node specified in the common usb-hcd.yaml binding. I plan to
-> add this separately, as it can already be used for USB A connectors.
-
-DWC3, the qcom flavor specifically (qcom,snps-dwc3)
-
-> The kernel maps every downstream port of the root hub to a separate
-> node. On the XHCI it is more complicated because it has two root hubs,
-> one for HS and one for SS. I'm not familiar with the hardware specifics
-> but they seem to map into one common namespace, so you probably get
-> ports 1~8 for HS and then 9~12 for SS. Note the number of ports is
-> different. This is just an example from my x86 workstation. And on
-> x86 each port is mapped to a different ACPI node.
-> 
->> I think the solution here would be to do ports {} under the controller
->> and have every one of them have 2 endpoints (for HS and SS
->> respectively) - then, each DT-port would correspond to a USB port
->> (sorta like in the hub case, minus the hubs are split for HS/SS so
->> they have just a single endpoint under each port)
-> 
-> But the hardware descriptors actually give two ports, one for HS and one
-> for SS. And in the case of dwc3, I suspect that they always come with
-> one downstream HS port and (optionally) one downstream SS port. So the
-> binding is actually correct, except for the numbering.
-
-Ohh yeah I overlooked the HS/SS port split.. I think you're right!
-
-> I'm looking into the dwc3 case. Changing the numbering might actually
-> not break anything. Linux seems to just need one *a* graph connection,
-> but doesn't care about the number. I looked through some other projects:
-> 
-> - FreeBSD doesn't use the OF graph for anything
-> - U-boot doesn't use the OF graph for USB
-> - OpenBSD doesn't support dwc3, only the XHCI in dwc3, and doesn't use the
->   OF graph for USB
-> - coreboot doesn't use the OF graph for anything
-> - Zephyr doesn't support dwc3
-> - TF-A doesn't use the OF graph for anything
-> - EDK2 doesn't support dwc3 and doesn't support OF graph
-> - OP-TEE doesn't support dwc3 and doesn't support OF graph
-> 
->> But that comes with a big breakage, as always..
-> 
-> As I mentioned, it probably isn't as large of a breakage.
-
-That's very welcome for a change! Thanks for checking all of them.
-
-Konrad
+>  drivers/dma/milbeaut-hdmac.c | 15 +++++++++------
+>  1 file changed, 9 insertions(+), 6 deletions(-)
+>
+> diff --git a/drivers/dma/milbeaut-hdmac.c b/drivers/dma/milbeaut-hdmac.c
+> --- a/drivers/dma/milbeaut-hdmac.c
+> +++ b/drivers/dma/milbeaut-hdmac.c
+> @@ -214,10 +214,11 @@ milbeaut_hdmac_chan_config(struct dma_chan *chan, stru
+>  {
+>         struct virt_dma_chan *vc = to_virt_chan(chan);
+>         struct milbeaut_hdmac_chan *mc = to_milbeaut_hdmac_chan(vc);
+> +       unsigned long flags;
+>
+> -       spin_lock(&mc->vc.lock);
+> +       spin_lock_irqsave(&mc->vc.lock, flags);
+>         mc->cfg = *cfg;
+> -       spin_unlock(&mc->vc.lock);
+> +       spin_unlock_irqrestore(&mc->vc.lock, flags);
+>
+>         return 0;
+>  }
+> @@ -226,13 +227,14 @@ static int milbeaut_hdmac_chan_pause(struct dma_chan *
+>  {
+>         struct virt_dma_chan *vc = to_virt_chan(chan);
+>         struct milbeaut_hdmac_chan *mc = to_milbeaut_hdmac_chan(vc);
+> +       unsigned long flags;
+>         u32 val;
+>
+> -       spin_lock(&mc->vc.lock);
+> +       spin_lock_irqsave(&mc->vc.lock, flags);
+>         val = readl_relaxed(mc->reg_ch_base + MLB_HDMAC_DMACA);
+>         val |= MLB_HDMAC_PB;
+>         writel_relaxed(val, mc->reg_ch_base + MLB_HDMAC_DMACA);
+> -       spin_unlock(&mc->vc.lock);
+> +       spin_unlock_irqrestore(&mc->vc.lock, flags);
+>
+>         return 0;
+>  }
+> @@ -241,13 +243,14 @@ static int milbeaut_hdmac_chan_resume(struct dma_chan
+>  {
+>         struct virt_dma_chan *vc = to_virt_chan(chan);
+>         struct milbeaut_hdmac_chan *mc = to_milbeaut_hdmac_chan(vc);
+> +       unsigned long flags;
+>         u32 val;
+>
+> -       spin_lock(&mc->vc.lock);
+> +       spin_lock_irqsave(&mc->vc.lock, flags);
+>         val = readl_relaxed(mc->reg_ch_base + MLB_HDMAC_DMACA);
+>         val &= ~MLB_HDMAC_PB;
+>         writel_relaxed(val, mc->reg_ch_base + MLB_HDMAC_DMACA);
+> -       spin_unlock(&mc->vc.lock);
+> +       spin_unlock_irqrestore(&mc->vc.lock, flags);
+>
+>         return 0;
+>  }
+> --
+> 2.43.0
+>
 
