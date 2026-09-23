@@ -4,65 +4,115 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 88B57C982FA
-	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Sep 2026 08:31:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4292DC982EA
+	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Sep 2026 08:32:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ggfPnUnXU0n3rJkPoLDqNiw5pfA+E10hNhIURH89gMk=; b=tN7l/jVotDt1Mg+hhdnP4TpJpT
-	309ud0p8rvJMXsy1XnAlBjB0qMEQuOMq0nNfnYpIChAtO1NENFlqF+v1d51fW2AM5foWVVI+jmlq8
-	Nu/g9k6s6cEhokZPaSnEFbT4nw3Sw79AXA1h5ZIugkItCP0Wl0sm1NosI4BkjSbl8d/S4vvgyYmHL
-	4hRxRTZIE0epXBC9u17BajpOzDAayLK2LVEtrr+Y34KcOicmWXhOyTxOTMi8r2TgmPXV16oYGAyQM
-	V/MPAHdgd2FNWfAonjh8fUaUTbjH6e8pphBM/ULxq+H6yMNjNCSic9fysmgGKneWD1TxL27fcvw5F
-	xszRbkgQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
+	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=hLbf5wdEcfSfArgGglezKU7/4be8aZs+31yfBhWP598=; b=MOpf0H9pT3Qzeu290/5Wx6ea7J
+	ZUtS9MlFumXt/Ji/yTcv8oYzqJOohlQq3VH6679VQj2cws61HVH3S6X8wpVeq3OpxmVoKc9oYGj/b
+	rHnddy8OBLLOiOFZmkujKjPe0Qzwd5Qt5HvNoAmlS+nrX5ZaiNGT6qS+rt5GId6No/yl5SGAFNIPw
+	S6USXscdLyuo1dwG+EVO6atvIj2NQRpfZOU/Q/jIiGJ0MnNWvrqI/LGFhiT7ePy+Aqvo2EBj5za+j
+	1LTlnF38ff43rzEF7qLWzaeFlYVV9xntWjsBJCsAgi9gKDZSt27GInrfxVAe5fRcJtCkkWHKldVcH
+	u6GBQLsw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x9IO3-00000007X2P-1SPL;
-	Wed, 23 Sep 2026 08:31:31 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1x9IOb-00000007XFP-44aI;
+	Wed, 23 Sep 2026 08:32:05 +0000
+Received: from mail-qk2-f43.google.com ([74.125.230.235])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x9IO0-00000007X0e-2gCB;
-	Wed, 23 Sep 2026 08:31:29 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1790152285;
-	bh=f8MjPqhRjZFCo17vsKJXb4XJoztMeVIuVFT7xq41j/Q=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=D8yPuzyqijQDRhuR1w5l5pydXbXnu2NwfYYMuWMQYAiw2AVLiA04oDG0j34xLhljP
-	 IUXY4/WlqIuoy6Gs3SrvIOIgX8fj5GrbpmqxdOb+YwfqHjshamyEpRloboo/5GRLmG
-	 DA6UyYupEHPZcCWYqKB+PMIdTSWll1jsWkKtTj93036bMWjr92Lc1v9eBmwYlhCf9D
-	 taMm1NDT/AY4eEXbKO8hPN00cQPCv0DHpH8N42BU04Ypjek+3Xl8lxmMw2RUAK3ZYI
-	 vzs6ODb0BQMM1n3znaAaMAnECzA0V/acurL+MI/C5cg+FAJgnZuwzjq1YJ8liaAm2W
-	 DZVx4dEtc5xGQ==
-Received: from [100.64.1.21] (unknown [100.64.1.21])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id C896A17E03D5;
-	Wed, 23 Sep 2026 10:31:24 +0200 (CEST)
-Message-ID: <c4908f1a-878c-4958-aaac-9960aae11879@collabora.com>
-Date: Wed, 23 Sep 2026 10:31:24 +0200
+	id 1x9IOZ-00000007XEL-2t98
+	for linux-mediatek@lists.infradead.org;
+	Wed, 23 Sep 2026 08:32:04 +0000
+Received: by mail-qk2-f43.google.com with SMTP id d75a77b69052e-530de452c33so6692471cf.1
+        for <linux-mediatek@lists.infradead.org>; Wed, 23 Sep 2026 01:32:03 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1790152321; cv=none;
+        d=google.com; s=arc-20260327;
+        b=W0pU7475Vp8OigS7uPfS0aP82KooTC8nX3oHqFJUL7nYX8X4m3rHRiqt52Bj4yLSYi
+         N8usr/0XQVqImFtv1b4LruGi9r6LuHU+Wcnb+6c3TcTHQv3OlljUXgVLzPea17RhVGbI
+         P5ibpnuPWUZIc5iAFqa2/uupe/5AKiMroX3XiW7N0xvv3yo62hK5KRYYOljOmaGjMCaa
+         zEwp0f9epAwvMkDfuGd5hxiKWqp9gAYjmo6GU48wM+DH1uftDG4BfX8FAjFr+otO+tlM
+         +43yuYQ8cnHr23rSmEINqIatHe7QY+swsZWSqScTH5bV94c1CTeboF35VoGGe/wFe9J+
+         3tRg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20260327;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:dkim-signature;
+        bh=hLbf5wdEcfSfArgGglezKU7/4be8aZs+31yfBhWP598=;
+        fh=QvIv9vKBzI9KLtYP0AwSg55TMhcrI2k482/FBFnUYBo=;
+        b=Yhfpnaax61ITYvC3ft+F9uTzK0ZqUunXsYKaxqnv94fZVoZU+XEM28xpJ5192I7gDK
+         T3UNs8XebxyPPywjL6T49aGmiQXRCBjlIMtx1vo0bB0ePz1vR/VhyuFTApEvT7JvjFM3
+         OifGqZOFmsD1MzMjwG4GbvQQ5ub8wR2RxqW6J7kWxUssCUoTX+oPcEuIw0Kb8JB9MG7A
+         m2+VRhpSBXuLpUaFq6i8d1kQN8jD5gZRxa4KhEOybMIgqDqZ3/Hjue0JOCaum/vpqLgD
+         LOtb7qzlkD/xYEsztz0zYZemQUvi+mpvXjNd6rzqBtTg56taAMVJwzxj9Y6F0FztlP6Y
+         CogA==;
+        darn=lists.infradead.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20251104; t=1790152321; x=1790757121; darn=lists.infradead.org;
+        h=content-type:cc:to:subject:message-id:date:from:in-reply-to
+         :references:mime-version:from:to:cc:subject:date:message-id:reply-to
+         :content-type;
+        bh=hLbf5wdEcfSfArgGglezKU7/4be8aZs+31yfBhWP598=;
+        b=NqWt8RxW06nXG1ZVVVsVdVsi+9wp5z9m5jQ1OAqTTkQQag4pv3B/7Fgppx+xbfm7lX
+         IXG4ZXUpfXI0RSXchlcjuFWW4SAlxoLRauSbmnbsqU3p/VrycFn5kAUpDyNfRfUqHZX3
+         BE2a5aAKdNrzDcMJroxox1H3XKNsnj8GFSxOYZ5F2o04cSlG3D3CsuypWz4Q4GRVz9Py
+         oWXCNrD2ThLeClh/OCaE9Ie5ctQYGBcRDM8OkuHDHr0IC8By0noHFmeslMkBTraCxHhX
+         WXeEl3iv0Cc78JuWffqmWs7YmQW5Y9U1pIwU8YkdarqMNRjVzONEDtDp/O/eZdTVP9fV
+         Z0xg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20260707; t=1790152321; x=1790757121;
+        h=content-type:cc:to:subject:message-id:date:from:in-reply-to
+         :references:mime-version:x-gm-gg:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to:content-type;
+        bh=hLbf5wdEcfSfArgGglezKU7/4be8aZs+31yfBhWP598=;
+        b=IU3AecDMVvfqWAs9sS/Tt5u+DmhC5sGtS8qMswAgcjk06NQ5nsnhcMcYP+ipY1RBm9
+         BuxyWwUb7Op5LJvPgLfPg7ygXERBwhwBi+8P2lEot3e220Dck5oM93YiT1yff7CUTrc9
+         rfDuEWyuB11dHDgyM7CwCn/ItHu4s6Wle44i+CCe2uknEJEhbsa81MHrD00+G//guMY8
+         fMLxZvQYk5Hnqc5LDIwK4YTUZ+LblTKd9i2tgWrKbLekz0mux2GJiqbOhLQsh5vd0Wip
+         MFgZkqCyfDmgSWU5npUPlRYJnJel39E8CfEqTls3dsWBbE3LcG7nKpxp5ksA1gmzTVzt
+         Fnkg==
+X-Forwarded-Encrypted: i=1; AKwUvBzlJWIvM/GwEMa2cyF/KsDjJ3ukiDXfUjOKQUaV0B8esCruZmxT8IsPaDH9UqBTtByIaiFw4ruDvR35w39+iw==@lists.infradead.org
+X-Gm-Message-State: AFuF++kuV4WIxZevh4VeFe4dZugxQX6fFDB/OZH0BsTqQ4PELqI8HXIe
+	FJ7HN4nmq2TRNWuL40oahktC8+lprp9ksGDEZ1ICbaVCFmDOuXD2D4B0IEJq+hRNhyeNXoaezh5
+	PfImal+zND511p2I2wyWZyqK7lFJg1x8=
+X-Gm-Gg: AYBFou1/f37ZybavHqnhBq2GXuJT7advz4w1SC5CL8OKyxsbTCORzrSH36p7yWbYBcl
+	+QUHDJv3zPEf2nyR6fWhnaydYOfAGQonubfB2+1Cgf6EwwUu/TUMZB2XmdawDKOgYSlFpZ+iHOD
+	Jiqht/tDJuIqacMSyCvoKyB/n6yjiUeqInLs/mj2kYmS4rdchdqkAPFimVwIidAxQ7yjN6M6W78
+	LMG+tu6BCi3W9s1fWTunI6ccZQz8BcwM5yyBVhe05sLyfuZ/iEGXC+G93PWPpfWgM9rzgJyD05k
+	fXJOpkThpK+atabrhN6jklrkS+AEP4+f+3aJpLEtaM0V4bnPgDX8a2lvr5S/9qb4
+X-Received: by 2002:a05:620a:6017:b0:93a:2d15:f84 with SMTP id
+ af79cd13be357-93c2511c2b1mr290767285a.33.1790152321118; Wed, 23 Sep 2026
+ 01:32:01 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 1/3] cpufreq: mediatek: add support for CPU speedbin
-To: rva333@protonmail.com, "Rafael J. Wysocki" <rafael@kernel.org>,
- Viresh Kumar <viresh.kumar@linaro.org>,
- Matthias Brugger <matthias.bgg@gmail.com>
-Cc: linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-References: <20260923-6572-cpufreq-v1-0-41f7af6d6d1a@protonmail.com>
- <20260923-6572-cpufreq-v1-1-41f7af6d6d1a@protonmail.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-In-Reply-To: <20260923-6572-cpufreq-v1-1-41f7af6d6d1a@protonmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+References: <20260916235200.20712-1-ansuelsmth@gmail.com> <20260921135933.7e8857ba@kernel.org>
+ <CA+_ehUwy9RUKCCHDnqoED3AMVnErgGr9RCrCR4ceg5QONq1wOQ@mail.gmail.com> <20260922172514.7feb6e7c@kernel.org>
+In-Reply-To: <20260922172514.7feb6e7c@kernel.org>
+From: "Christian Marangi (Ansuel)" <ansuelsmth@gmail.com>
+Date: Wed, 23 Sep 2026 10:31:49 +0200
+X-Gm-Features: AclHuK8jGec2XT5CWPXvYVvV1bFvl8hmA75zakqIakpr84shp0cAZGnoi6_G1Gs
+Message-ID: <CA+_ehUyFKZzd0uP4akgZxaLLJTwcvGGKz5ppCYsB++fn92Dn9w@mail.gmail.com>
+Subject: Re: [PATCH net-next v16 00/12] net: pcs: Introduce support for fwnode PCS
+To: Jakub Kicinski <kuba@kernel.org>
+Cc: Maxime Chevallier <maxime.chevallier@bootlin.com>, Andrew Lunn <andrew+netdev@lunn.ch>, 
+	"David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
+	Paolo Abeni <pabeni@redhat.com>, Rob Herring <robh@kernel.org>, 
+	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
+	Simon Horman <horms@kernel.org>, Jonathan Corbet <corbet@lwn.net>, 
+	Shuah Khan <skhan@linuxfoundation.org>, Randy Dunlap <rdunlap@infradead.org>, 
+	Lorenzo Bianconi <lorenzo@kernel.org>, Heiner Kallweit <hkallweit1@gmail.com>, 
+	Russell King <linux@armlinux.org.uk>, Philipp Zabel <p.zabel@pengutronix.de>, 
+	Nathan Chancellor <nathan@kernel.org>, Nick Desaulniers <ndesaulniers@google.com>, 
+	Bill Wendling <morbo@google.com>, Justin Stitt <justinstitt@google.com>, netdev@vger.kernel.org, 
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	linux-doc@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-mediatek@lists.infradead.org, llvm@lists.linux.dev
+Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260923_013128_844888_58869600 
-X-CRM114-Status: GOOD (  29.06  )
+X-CRM114-CacheID: sfid-20260923_013203_736619_4E522B75 
+X-CRM114-Status: GOOD (  21.27  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,155 +127,30 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 9/23/26 09:23, Roman Vivchar via B4 Relay wrote:
-> From: Roman Vivchar <rva333@protonmail.com>
-> 
-> MediaTek SoCs are often released under the same marketing name, but with
-> different suffix for the speedbin. For example, mt6572m has 1 GHz limit,
-> mt6572a - 1.2 GHz, mt6572w - 1.4 GHz.
-> 
-> Add code to support per-cluster 'opp-supported-hw' property. The DT is
-> expected to pass a CPU speedbin using standard 'nvmem-cells' property
-> under the CPU node.
-> 
-> Signed-off-by: Roman Vivchar <rva333@protonmail.com>
-> ---
->   drivers/cpufreq/mediatek-cpufreq.c | 50 ++++++++++++++++++++++++++++++++++++--
->   1 file changed, 48 insertions(+), 2 deletions(-)
-> 
-> diff --git a/drivers/cpufreq/mediatek-cpufreq.c b/drivers/cpufreq/mediatek-cpufreq.c
-> index 052ca7cd2f4f..f15135b2898b 100644
-> --- a/drivers/cpufreq/mediatek-cpufreq.c
-> +++ b/drivers/cpufreq/mediatek-cpufreq.c
-> @@ -10,6 +10,7 @@
->   #include <linux/cpumask.h>
->   #include <linux/minmax.h>
->   #include <linux/module.h>
-> +#include <linux/nvmem-consumer.h>
->   #include <linux/of.h>
->   #include <linux/of_platform.h>
->   #include <linux/platform_device.h>
-> @@ -57,6 +58,7 @@ struct mtk_cpu_dvfs_info {
->   	const struct mtk_cpufreq_platform_data *soc_data;
->   	int vtrack_max;
->   	bool ccifreq_bound;
-> +	int opp_token;
->   };
->   
->   static struct platform_device *cpufreq_pdev;
-> @@ -381,6 +383,38 @@ static struct device *of_get_cci(struct device *cpu_dev)
->   	return &pdev->dev;
->   }
->   
-> +static int mtk_cpu_parse_speedbin(struct mtk_cpu_dvfs_info *info, int cpu)
-> +{
-> +	struct device *cpu_dev = get_cpu_device(cpu);
-> +	struct dev_pm_opp_config config = {};
-> +	u32 val, opp_hw_ver;
-> +	int ret;
-> +
-> +	ret = nvmem_cell_read_variable_le_u32(cpu_dev, "speed_grade", &val);
+Il giorno mer 23 set 2026 alle ore 02:25 Jakub Kicinski
+<kuba@kernel.org> ha scritto:
+>
+> On Tue, 22 Sep 2026 12:12:56 +0200 Christian Marangi (Ansuel) wrote:
+> > The remark on the fwnode patch are invalid. The driver is expected
+> > to return those error as probe defer is not supported.
+> > (a notifier and late attach/detach is used to align to phylink logic)
+> >
+> > For the specific Airoha PCS driver it's really speculation from the AI
+> > but HW doesn't work as described by AI.
+> >
+> > The only real comment that is valid is about the alternative way
+> > to give supported interface with the .get_capabilites OP.
+> >
+> > This is currently not supported as there isn't any user and it will
+> > be implemented as soon as there will be one. It's really to limit
+> > the patch delta of this change and to progress further.
+> >
+> > Maybe FIXME might be suitable?
+>
+> FWIW no preference here, I defer to the human reviewer.
+> We can treat the AI review as a hint if human reviewer thinks the code
+> is fine as is.
 
-Let's keep consistency with cell names: for example, on the GPU side, the node
-in devicetree is called "gpu-speedbin@1234", and the panfrost node has
-
-nvmem-cells = <&gpu_speedbin>;
-nvmem-cell-names = "speed-bin";
-
-Check MT8186 and MT8188 devicetrees ;-)
-
-> +	if (ret) {
-> +		if (ret == -ENOENT)
-
-if (ret != -ENOENT && ret != -EOPNOTSUPP)
-
-> +			/* speedbin is optional */
-> +			return 0;
-> +		return dev_err_probe(cpu_dev, ret, "cpu%d: failed to read speedbin\n", cpu);
-> +	}
-> +
-> +	/* Convert the raw value to a bitmask */
-> +	if (val >= 32)
-> +		return dev_err_probe(cpu_dev, -EINVAL,
-> +				     "cpu%d: invalid speedbin value %u\n", cpu, val);
-> +	opp_hw_ver = BIT(val);
-
-If you look at nvmem/mtk-efuse.c there is a mtk_efuse_gpu_speedbin_pp() function
-that is doing (almost) *exactly* what you're doing here.
-
-Check if the same constraints as GPU speed binning applies to the CPU: if they do,
-just allow "cpu-speedbin" as node name in the fixup function, otherwise add a new
-post processing function for the CPU and act accordingly.
-
-> +
-> +	config.supported_hw = &opp_hw_ver;
-> +	config.supported_hw_count = 1;
-> +
-> +	info->opp_token = dev_pm_opp_set_config(cpu_dev, &config);
-
-It's way easier if you use
-
-devm_pm_opp_set_supported_hw(dev, &opp_hw_ver, 1);
-
-Cheers,
-Angelo
-
-> +	if (info->opp_token < 0)
-> +		return dev_err_probe(cpu_dev, info->opp_token,
-> +				     "cpu%d: failed to set OPP config\n", cpu);
-> +
-> +	return 0;
-> +}
-> +
->   static int mtk_cpu_dvfs_info_init(struct mtk_cpu_dvfs_info *info, int cpu)
->   {
->   	struct device *cpu_dev;
-> @@ -450,18 +484,22 @@ static int mtk_cpu_dvfs_info_init(struct mtk_cpu_dvfs_info *info, int cpu)
->   		}
->   	}
->   
-> +	ret = mtk_cpu_parse_speedbin(info, cpu);
-> +	if (ret)
-> +		goto out_disable_sram_reg;
-> +
->   	/* Get OPP-sharing information from "operating-points-v2" bindings */
->   	ret = dev_pm_opp_of_get_sharing_cpus(cpu_dev, &info->cpus);
->   	if (ret) {
->   		dev_err_probe(cpu_dev, ret,
->   			"cpu%d: failed to get OPP-sharing information\n", cpu);
-> -		goto out_disable_sram_reg;
-> +		goto out_free_speedbin;
->   	}
->   
->   	ret = dev_pm_opp_of_cpumask_add_table(&info->cpus);
->   	if (ret) {
->   		dev_err_probe(cpu_dev, ret, "cpu%d: no OPP table\n", cpu);
-> -		goto out_disable_sram_reg;
-> +		goto out_free_speedbin;
->   	}
->   
->   	ret = clk_prepare_enable(info->cpu_clk);
-> @@ -533,6 +571,10 @@ static int mtk_cpu_dvfs_info_init(struct mtk_cpu_dvfs_info *info, int cpu)
->   out_free_opp_table:
->   	dev_pm_opp_of_cpumask_remove_table(&info->cpus);
->   
-> +out_free_speedbin:
-> +	if (info->opp_token > 0)
-> +		dev_pm_opp_clear_config(info->opp_token);
-> +
->   out_disable_sram_reg:
->   	if (info->sram_reg)
->   		regulator_disable(info->sram_reg);
-> @@ -573,6 +615,10 @@ static void mtk_cpu_dvfs_info_release(struct mtk_cpu_dvfs_info *info)
->   	clk_disable_unprepare(info->inter_clk);
->   	clk_put(info->inter_clk);
->   	dev_pm_opp_of_cpumask_remove_table(&info->cpus);
-> +
-> +	if (info->opp_token > 0)
-> +		dev_pm_opp_clear_config(info->opp_token);
-> +
->   	dev_pm_opp_unregister_notifier(info->cpu_dev, &info->opp_nb);
->   	if (info->soc_data->ccifreq_supported)
->   		put_device(info->cci_dev);
-> 
+Soo should I send v17 to fix AI that failed review?
+I think I didn't got this detail.
 
