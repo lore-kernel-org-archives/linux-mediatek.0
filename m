@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A0630C98308
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 857C6C982EA
 	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Sep 2026 07:24:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
@@ -12,46 +12,45 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	References:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:
 	Subject:Date:From:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=v0gX7hBpGg0pTllDcxKPNPKyCzKaZf47PtKk9tLpDrs=; b=c4KUP/SjTpoxY5m+pe8iaD+QCm
-	viveeLdogUFM/yCWU3o+kQKvQipCd/j1UC+bhQRTzH/fCbu6IQQrxi/Ibt/aslLNz9daCdxoa/Vlu
-	aJq2mhHJpxGZ1DSON0hBsF3n8E5aI8HTOBx9baKa2HQ3pKBnmBOfjEchHKsOEUVToHXTVKqGb9RIZ
-	Qg0aTcSa0fOajR94YmqKQlJecoh8UpDduMtA4veJz5KY4ClPaIftK944TeC0we3tckzii4p0S71jj
-	I+nqxPm0iEc3UFHS3Nfmmq68DhjhKPRijAzUnkpcq2n1GyBd+nKtrDB7+IzTk3sTHIDKHHChN62BX
-	c6Ah3ERg==;
+	bh=GC++7yEkGwzylqDh+PC3SB2xhKREJhD0cBQEVLS++uM=; b=nw3wes30/9XjreI4bSYPRLaUww
+	q9kjwNWo1JyePAaYZ5ttIKsgHCVcmOkdCNkBwSRkqUreah2Wked2cES7/N0/adzTq1ONfvCOu8xPM
+	EoG8W0evCckGjLAojEff0WjMx7479+WTb645VduipKzwwIjkKwzGc78ClYEAQZY1Y/7taXgBJBPT5
+	ZMZBHFi3b9sfsnRjDB0IzINqjU4EbPrfiXPxPOdYsN4xL1yev5qlVI8R4dCpzb+d0h55OqSfcIbGr
+	2rRIqF4aqFtDJdZRHUzIa09J5NYAUVkLmTVAhZq9Y6bs0owBtxzqmZCBS7XhWnku9CXa7VbECn3j1
+	D3r8EWrA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x9HKn-00000007Ogp-0bSB;
+	id 1x9HKn-00000007Ogx-19bV;
 	Wed, 23 Sep 2026 07:24:05 +0000
 Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x9HKl-00000007Og1-1yrj;
+	id 1x9HKl-00000007Og0-1z4D;
 	Wed, 23 Sep 2026 07:24:03 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id EE6E744003;
+	by sea.source.kernel.org (Postfix) with ESMTP id DC1C243F3B;
 	Wed, 23 Sep 2026 07:24:02 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id D34A1C2BCFA;
+Received: by smtp.kernel.org (Postfix) with ESMTPS id BFE05C2BCFB;
 	Wed, 23 Sep 2026 07:24:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
 	s=k20201202; t=1790148242;
-	bh=8qjNV9QZqkvKmCjMRy1A4HY8U9aaXcxKtUE7iWgaDg4=;
+	bh=bMimWP7/2n7kxCpCnfJdRq+u+0JebIhQppMg7TsGX7Q=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To:From;
-	b=qy2f5CW7rUNsHtY88qMWoL+eMP1gyYT4bSOqNpLQJ/srgDXyaRW/LcumAq3UIQtAT
-	 gDQxgwVZcdC1no7OygDnwyBbOg9cZbAS9pOUZS7/b+0+EWT6dlbLTEsMVg2dYDlqy4
-	 qkQtQ6iLA8xKE34eIXSiS8b9E5gyoQmQJV9pXjpS+6jYBvUJv+VqeG6dgHKUr9NkO7
-	 jZ5UrRJbPhrYIt1oPHdXDzBu9/LzA6+tAnl8Bmf0jelaxYoUW1yBfbW1KerwJhs5V1
-	 HFDuM6VZi3ZaK5wOVxY697Vc3i1fTeeiFWoQRyN7ybPdRtznvTjiXTTL6NhYSbxEco
-	 0hz4j4W+vh1ow==
+	b=nioopepw/4/n17JYod4oij4mpiPrATm9k7rd1ibi8h+UwHWVjDBEwriAlIVsY4mr6
+	 Djb4Inqk8KKh6g2bBHduTxJwnYjcnZ5QpNILZ+WdV/I0wL5S2v6aPIsLY0e5LR1VGD
+	 wpGSLC8XCrYowgPBk4Q29qIHZIsmc9jpdNg/yXIn5IaOuIe4BrUwH29IVC8rDuIkA4
+	 gmzxdNZ/84DNQ/8/lRLeUtrnmaBDJFwhsLT3MW0eeyUd4iu0/ubHqu33T+TpdiGHRp
+	 vkcYg9ahe9GZWjPR+ANcC/brtKMT6OFYK5IijWzComQSF0JPInTBOwZzgYwzfX/m8w
+	 o1vvK1nGQwC0w==
 Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id BEC65C982FA;
+	by smtp.lore.kernel.org (Postfix) with ESMTP id A730AC98308;
 	Wed, 23 Sep 2026 07:24:02 +0000 (UTC)
 From: Roman Vivchar via B4 Relay <devnull+rva333.protonmail.com@kernel.org>
-Date: Wed, 23 Sep 2026 10:23:36 +0300
-Subject: [PATCH 3/3] cpufreq: dt-platdev: block the driver from probing on
- MediaTek mt6572
+Date: Wed, 23 Sep 2026 10:23:35 +0300
+Subject: [PATCH 2/3] cpufreq: mediatek: add mt6572 support
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20260923-6572-cpufreq-v1-3-41f7af6d6d1a@protonmail.com>
+Message-Id: <20260923-6572-cpufreq-v1-2-41f7af6d6d1a@protonmail.com>
 References: <20260923-6572-cpufreq-v1-0-41f7af6d6d1a@protonmail.com>
 In-Reply-To: <20260923-6572-cpufreq-v1-0-41f7af6d6d1a@protonmail.com>
 To: "Rafael J. Wysocki" <rafael@kernel.org>, 
@@ -62,11 +61,11 @@ Cc: linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
  Roman Vivchar <rva333@protonmail.com>
 X-Mailer: b4 0.15.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1790148240; l=803;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1790148240; l=1524;
  i=rva333@protonmail.com; s=20260510; h=from:subject:message-id;
- bh=pvNavw1TwxmxmNAxfAHmYvDXdUUIz8P51+5XyRZ6nPo=;
- b=YsrJCy5QZyZQ0x8+C3yQqVv16vsP+AsTxbfCOEpZ0WJhlCdxzGXzd1uQ5BVb3/jeTge8q1/k2
- laGs8FQ7FQ8Byo/4hbiF1LPi5WxV62mitZXUae3HxZn9/6QXtWgWCY6
+ bh=b8RMk+Zv48cfJke7eSfTbaAxttUL1iUBiWM/BLYw9Fw=;
+ b=WAtqaltRs4wSpqv0CO4qpYqEoudV+Gy+Tl/BfW9ztNKoM+pdXzu5ZvgkpisnwelUGwfCf0jXZ
+ TU3bA3ie/SIAkFBJYaQbX87KwRldSLbbgOO/qXeUjDSAqfNG2EZuWf4
 X-Developer-Key: i=rva333@protonmail.com; a=ed25519;
  pk=zww/nWjBGoQ4POXCG0BV6fx2iuXK6jx77rsKPA5YK5Y=
 X-Endpoint-Received: by B4 Relay for rva333@protonmail.com/20260510 with
@@ -89,26 +88,40 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Roman Vivchar <rva333@protonmail.com>
 
-MediaTek SoCs use mediatek-cpufreq driver instead of generic one. Add
-mt6572 to the blocklist.
+Add mt6572 SoC platform data for CPU frequency scaling.
 
 Signed-off-by: Roman Vivchar <rva333@protonmail.com>
 ---
- drivers/cpufreq/cpufreq-dt-platdev.c | 1 +
- 1 file changed, 1 insertion(+)
+ drivers/cpufreq/mediatek-cpufreq.c | 9 +++++++++
+ 1 file changed, 9 insertions(+)
 
-diff --git a/drivers/cpufreq/cpufreq-dt-platdev.c b/drivers/cpufreq/cpufreq-dt-platdev.c
-index ff1204c666b1..ff7fb61eda74 100644
---- a/drivers/cpufreq/cpufreq-dt-platdev.c
-+++ b/drivers/cpufreq/cpufreq-dt-platdev.c
-@@ -132,6 +132,7 @@ static const struct of_device_id blocklist[] __initconst = {
+diff --git a/drivers/cpufreq/mediatek-cpufreq.c b/drivers/cpufreq/mediatek-cpufreq.c
+index f15135b2898b..615bccc77c98 100644
+--- a/drivers/cpufreq/mediatek-cpufreq.c
++++ b/drivers/cpufreq/mediatek-cpufreq.c
+@@ -737,6 +737,14 @@ static const struct mtk_cpufreq_platform_data mt2701_platform_data = {
+ 	.ccifreq_supported = false,
+ };
  
- 	{ .compatible = "mediatek,mt2701", },
- 	{ .compatible = "mediatek,mt2712", },
-+	{ .compatible = "mediatek,mt6572", },
- 	{ .compatible = "mediatek,mt7622", },
- 	{ .compatible = "mediatek,mt7623", },
- 	{ .compatible = "mediatek,mt8167", },
++static const struct mtk_cpufreq_platform_data mt6572_platform_data = {
++	.min_volt_shift = 100000,
++	.max_volt_shift = 200000,
++	.proc_max_volt = 1250000,
++	.sram_min_volt = 0,
++	.ccifreq_supported = false,
++};
++
+ static const struct mtk_cpufreq_platform_data mt7622_platform_data = {
+ 	.min_volt_shift = 100000,
+ 	.max_volt_shift = 200000,
+@@ -793,6 +801,7 @@ static const struct mtk_cpufreq_platform_data mt8516_platform_data = {
+ static const struct of_device_id mtk_cpufreq_machines[] __initconst __maybe_unused = {
+ 	{ .compatible = "mediatek,mt2701", .data = &mt2701_platform_data },
+ 	{ .compatible = "mediatek,mt2712", .data = &mt2701_platform_data },
++	{ .compatible = "mediatek,mt6572", .data = &mt6572_platform_data },
+ 	{ .compatible = "mediatek,mt7622", .data = &mt7622_platform_data },
+ 	{ .compatible = "mediatek,mt7623", .data = &mt7623_platform_data },
+ 	{ .compatible = "mediatek,mt7988a", .data = &mt7988_platform_data },
 
 -- 
 2.55.0
