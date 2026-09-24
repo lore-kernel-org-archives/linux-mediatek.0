@@ -4,88 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C9CD1C98304
-	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Sep 2026 03:34:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C5362C982FD
+	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Sep 2026 04:33:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=S4rkArTvjlD8DucpkVvcyw33LP877dBjJ3f1kqgDbC8=; b=4iVCyuiFaXFY6UO26jt+kveCgu
-	YJlVf+5iEU3zDpEjyQwsWSlx0Ql84HqJAiyEm4J/ocfK7sKfrdTNqINUeDE2WwXLzaXKsyVwzgbvy
-	1PCLhROAkvaXaDujfCFYtuQOtybpqoZ/c//rvGamBUPoyD68nC26wMCHo+ZAT/skJ0gExAdyUv/IL
-	QW6iuLSxeMP+95OKssVwIheBZjM3L+yMlDI/rCUWMFcqncWUZW5zi7eagoSDVssst1GjLsEeTKcVU
-	PSSb7M+EWGqKW1/pHNvkw0oLYzIBhbxG6Izv/LJhBM8Tm6DUqkrx4LmGt8495Twa1O4/gPs+IaH2z
-	w4b2gpNA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=CcNwL7xRwOV9aWxBCz320PcsLt2UGmXCGMzZht9hwDc=; b=qLIZc64M2zZKEzUzmg3ajQNOYs
+	K59aWHUkKWfSlnz6uetJ+bsgCHjlhjyJasjCtdO5EnbNo/Lpvd7SHXa9d+o99VCZQIbHyZRvNG+q/
+	08hGA15fEBR/JQfzoAUmfO+gw72LqsN9cS4iAVWlOleTjlA+U1flWKn618VTwQp+kHCsLq5gTlLPC
+	9Fx+VqPcesRgl2XQNtmMkaXgJX6E681AWzQn9lBuE0fxUx6ju9HRUPVWXR/1Tbw5HzeJ6TsyVzwCO
+	HWfs83Y4uvJxmec2/Yc7tm10DbOOvOWPK9FP7FUcUUn258v/lol5pUb8PqVDbkRmaZja7KU77YdCy
+	wNJxnpKQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x9aDk-00000009wrc-26gZ;
-	Thu, 24 Sep 2026 03:34:04 +0000
-Received: from mail-vs2-x10.google.com ([2a00:1450:4864:3a::10])
+	id 1x9b90-0000000A0bk-3qOM;
+	Thu, 24 Sep 2026 04:33:14 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x9aDh-00000009wr2-2Aij
-	for linux-mediatek@lists.infradead.org;
-	Thu, 24 Sep 2026 03:34:02 +0000
-Received: by mail-vs2-x10.google.com with SMTP id 71dfb90a1353d-5c67e33b917so1281565e0c.1
-        for <linux-mediatek@lists.infradead.org>; Wed, 23 Sep 2026 20:34:01 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1790220840; x=1790825640; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
-        bh=S4rkArTvjlD8DucpkVvcyw33LP877dBjJ3f1kqgDbC8=;
-        b=rbyzaDs/gRHtP6u1wkP+DrMi15gAQ1C7etIR+FSmeFekE7+ltxG6mCkFYHUeQVL028
-         SLBlR6O5ea2h8KS5cZmPEEniXkpQtre1mwRWqTZyYYRHJ8yABneqvtK02de6gyslxzkM
-         LjbjbNlal0ep+cCN7roLyE/jLmBapZu5GtNolQqwl3iA6KzE4i8ICECfneSEFgwmCBOi
-         4l8Tawo/cmEiFa3XY25NW7SYgwM6c0nFSME3iKDq5ZmwN2fKVl5emFU7MofqP3bHK1AC
-         6j4E2GNqSbpZGcZ/vtZ2uLn9VR4PUqwkjwWNA9ID4TkNjOfCoMLXq+vI01TtlGvXkIFR
-         kWHA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1790220840; x=1790825640;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to:content-type;
-        bh=S4rkArTvjlD8DucpkVvcyw33LP877dBjJ3f1kqgDbC8=;
-        b=bMCGzP/3kEsx0oDZStaHrurkzVdXIM7mj3VlkubkpKQtdv5zjd9jafGsJqa8zY0wXW
-         h5xt90YzW9fjW8urm8xjMlSTX37vYR1wb/j7Hu3JZ4jUItkmwxzljUOhLoEGAJFbOmHG
-         +4FsLWJ5WBwdz2y07VIhS1A0i8Rl1EcIuos8sRZpeRGS1Kc5BWw2K5YAf1il2Z1KgXSf
-         kgCkd3PqtTMQVAurYYbwv37IIR4Tm4blUf8IzW9WFttT1DEP1yjwEYzkAQmidAbhs2dI
-         Ul7C2gerlqKZd0TOmrpUkdNkmPSnbKVA86M33FT/15Csh8PcOPUubhLx0Kw74k7JiZ/4
-         Fzdg==
-X-Forwarded-Encrypted: i=1; AKwUvBzzAhGUx06ffre58swbybdO/VXL7SslbQ6hUzS7P5TgRlj1LFOdqBCxDgiZHmZMrZKKgBuXrO4mmE/C/5vbag==@lists.infradead.org
-X-Gm-Message-State: AFuF++llbGL+aB8BlGy9SgVfViE2OE60UnJBq0zFn8igR3i57t8GC56z
-	bZPA6pHrJ9pG1aiF/V1UduXhRyz+ZEIQe81qybzxMUlQMLEDMO+CYlvT86PYT2F4
-X-Gm-Gg: AYBFou3NFDzBZuYKC2DGHy66ZfO1D2U9Ne7EtjxLxfsfB4lEqc3NLlVCWLUxS7ddsle
-	M0ceIYD5djw+82sT8ifNWMxUCBlzxdAGwMdMHuoPQTfizqyv1Aijh92gYHRx3LlMWigofbuT9cg
-	0dPGwsTd6CNtzmjUJ5Q5chGYbx0+V7X9B9OGvWmCaBFvYamMwjsz5cdUQv+lz12LqHqpLINCVWF
-	WWJPXEAVIwxQx40+2Gs5PT+ZGu9x4Hu/9X3xolaVYcnVIcKCq6BjLoLHqzpAV54/hMpzzroFZ9A
-	K+l5l+0TdeMuUTgd8NVEB3ETa5uJZa2w83rDoKOVMONe7tkf/TMKRZikAR5Jx0LwpZTuHtM00Uk
-	Se6+1v/3RwvwuZi7YK4kUoJIyoY0sWZ/DsMS0TxLe24FqyKSuoRwY07GBTQM1BHTOJfGUlSrAFb
-	v3CmM5mRPK0H9ioEjzNVJdYGsyjP3m3vU/78TCj2xdnu1xlkAMXlw1wSdWz8WM7LlhKZwj0o0F+
-	unJ6sY3G2e2fuVchvG75EkWURxgvwe2QzeSWXSw80E9UaI=
-X-Received: by 2002:a05:6102:4191:b0:7a8:1817:276f with SMTP id ada2fe7eead31-7af1f61e9f8mr693993137.37.1790220461112;
-        Wed, 23 Sep 2026 20:27:41 -0700 (PDT)
-Received: from localhost.localdomain ([190.177.169.131])
-        by smtp.gmail.com with ESMTPSA id ada2fe7eead31-7abf35bcb07sm6107028137.2.2026.09.23.20.27.38
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 23 Sep 2026 20:27:40 -0700 (PDT)
-From: Cristian Papa <pcristian292@gmail.com>
-To: linux-wireless@vger.kernel.org
-Cc: nbd@nbd.name,
-	lorenzo@kernel.org,
-	ryder.lee@mediatek.com,
-	shayne.chen@mediatek.com,
-	sean.wang@mediatek.com,
-	linux-mediatek@lists.infradead.org
-Subject: [PATCH] wifi: mt76: feed the station RSSI average from the chain signals
-Date: Thu, 24 Sep 2026 00:26:39 -0300
-Message-ID: <20260924032639.28158-1-pcristian292@gmail.com>
-X-Mailer: git-send-email 2.47.3
+	id 1x9b8y-0000000A0bP-49m9;
+	Thu, 24 Sep 2026 04:33:13 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by tor.source.kernel.org (Postfix) with ESMTP id 1B201600AA;
+	Thu, 24 Sep 2026 04:33:12 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2EE441F000FF;
+	Thu, 24 Sep 2026 04:33:07 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1790224391;
+	bh=CcNwL7xRwOV9aWxBCz320PcsLt2UGmXCGMzZht9hwDc=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To;
+	b=CsUtjgojaBrtU9hln5KGYU0lX2Fizlvya9euFa9GR5Ik6Y6KqsbQmYRFNAOtId5n/
+	 mGtGf3lYj23X9Wg2W+T0WCwVrEw5A+eywzQZx8wc3uCFbxbCmBJgJbnPX4lZMCFKUv
+	 7jvCtN6D7McOmqOYGW1h/A0eB1s2LMpYk/9hAAbDzU23X5LL6qCg5a1x01RIGpm2Ei
+	 4l8O4CcNgBKccOs3/1FuoaAuJkV2DMlhyjcNAIa475JQHuLKta6xFY1ewUmtqjOsX+
+	 FTBvj1fDLGg3WHEX0BTe1E4N8tHukTQShqVOoTV4PxPxNEb0TSgeqV4mi+ad7O7dBt
+	 xKr/Gsgs9Cqaw==
+Date: Thu, 24 Sep 2026 06:33:05 +0200
+From: Gao Xiang <xiang@kernel.org>
+To: Artem Dinaburg <artem@trailofbits.com>
+Cc: stable@vger.kernel.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	Sasha Levin <sashal@kernel.org>, Gao Xiang <xiang@kernel.org>,
+	Chao Yu <chao@kernel.org>, Yue Hu <huyue2@coolpad.com>,
+	Jeffle Xu <jefflexu@linux.alibaba.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	linux-erofs@lists.ozlabs.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	Sandeep Dhavale <dhavale@google.com>,
+	Will Shiu <will.shiu@mediatek.com>,
+	Gao Xiang <hsiangkao@linux.alibaba.com>,
+	Alexandre Mergnat <amergnat@baylibre.com>
+Subject: Re: [PATCH 6.1.y] erofs: Fix detection of atomic context
+Message-ID: <arSoAUX4jDzgY-rG@MacBookPro.fritz.box>
+Mail-Followup-To: Artem Dinaburg <artem@trailofbits.com>,
+	stable@vger.kernel.org,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	Sasha Levin <sashal@kernel.org>, Gao Xiang <xiang@kernel.org>,
+	Chao Yu <chao@kernel.org>, Yue Hu <huyue2@coolpad.com>,
+	Jeffle Xu <jefflexu@linux.alibaba.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	linux-erofs@lists.ozlabs.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	Sandeep Dhavale <dhavale@google.com>,
+	Will Shiu <will.shiu@mediatek.com>,
+	Gao Xiang <hsiangkao@linux.alibaba.com>,
+	Alexandre Mergnat <amergnat@baylibre.com>
+References: <20260922200448.27724-1-artem@trailofbits.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260923_203401_567828_57B01140 
-X-CRM114-Status: GOOD (  14.52  )
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+In-Reply-To: <20260922200448.27724-1-artem@trailofbits.com>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,76 +91,111 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-mt76_check_sta() adds status->signal of every received frame to the
-station's RSSI average, wcid->rssi, which mt76_get_min_avg_rssi() reads
-for the dynamic sensitivity of mt7603 and mt7615 and for the gain
-control of mt76x0 and mt76x2.
+Hi Artem,
 
-Since commit 4550fb9e9810 ("mt76: improve signal strength reporting"),
-drivers no longer set status->signal: mt76_rx_convert() computes it from
-the chain values when the frame is handed to mac80211, after
-mt76_check_sta() has run. Except on mt7921, which still sets it, the
-average is fed zeros. mt76_get_min_avg_rssi() then returns 0, so mt7603
-and mt7615 leave the sensitivity at its default, and mt76x0 and mt76x2
-fall back to -75 dBm for their gain settings.
+On Tue, Sep 22, 2026 at 04:04:36PM -0400, Artem Dinaburg wrote:
+> From: Sandeep Dhavale <dhavale@google.com>
+> 
+> [ Upstream commit 12d0a24afd9ea58e581ea64d64e066f2027b28d9 ]
+> 
+> Current check for atomic context is not sufficient as
+> z_erofs_decompressqueue_endio can be called under rcu lock
+> from blk_mq_flush_plug_list(). See the stacktrace [1]
+> 
+> In such case we should hand off the decompression work for async
+> processing rather than trying to do sync decompression in current
+> context. Patch fixes the detection by checking for
+> rcu_read_lock_any_held() and while at it use more appropriate
+> !in_task() check than in_atomic().
+> 
+> Background: Historically erofs would always schedule a kworker for
+> decompression which would incur the scheduling cost regardless of
+> the context. But z_erofs_decompressqueue_endio() may not always
+> be in atomic context and we could actually benefit from doing the
+> decompression in z_erofs_decompressqueue_endio() if we are in
+> thread context, for example when running with dm-verity.
+> This optimization was later added in patch [2] which has shown
+> improvement in performance benchmarks.
+> 
+> ==============================================
+> [1] Problem stacktrace
+> [name:core&]BUG: sleeping function called from invalid context at kernel/locking/mutex.c:291
+> [name:core&]in_atomic(): 0, irqs_disabled(): 0, non_block: 0, pid: 1615, name: CpuMonitorServi
+> [name:core&]preempt_count: 0, expected: 0
+> [name:core&]RCU nest depth: 1, expected: 0
+> CPU: 7 PID: 1615 Comm: CpuMonitorServi Tainted: G S      W  OE      6.1.25-android14-5-maybe-dirty-mainline #1
+> Hardware name: MT6897 (DT)
+> Call trace:
+>  dump_backtrace+0x108/0x15c
+>  show_stack+0x20/0x30
+>  dump_stack_lvl+0x6c/0x8c
+>  dump_stack+0x20/0x48
+>  __might_resched+0x1fc/0x308
+>  __might_sleep+0x50/0x88
+>  mutex_lock+0x2c/0x110
+>  z_erofs_decompress_queue+0x11c/0xc10
+>  z_erofs_decompress_kickoff+0x110/0x1a4
+>  z_erofs_decompressqueue_endio+0x154/0x180
+>  bio_endio+0x1b0/0x1d8
+>  __dm_io_complete+0x22c/0x280
+>  clone_endio+0xe4/0x280
+>  bio_endio+0x1b0/0x1d8
+>  blk_update_request+0x138/0x3a4
+>  blk_mq_plug_issue_direct+0xd4/0x19c
+>  blk_mq_flush_plug_list+0x2b0/0x354
+>  __blk_flush_plug+0x110/0x160
+>  blk_finish_plug+0x30/0x4c
+>  read_pages+0x2fc/0x370
+>  page_cache_ra_unbounded+0xa4/0x23c
+>  page_cache_ra_order+0x290/0x320
+>  do_sync_mmap_readahead+0x108/0x2c0
+>  filemap_fault+0x19c/0x52c
+>  __do_fault+0xc4/0x114
+>  handle_mm_fault+0x5b4/0x1168
+>  do_page_fault+0x338/0x4b4
+>  do_translation_fault+0x40/0x60
+>  do_mem_abort+0x60/0xc8
+>  el0_da+0x4c/0xe0
+>  el0t_64_sync_handler+0xd4/0xfc
+>  el0t_64_sync+0x1a0/0x1a4
+> 
+> [2] Link: https://lore.kernel.org/all/20210317035448.13921-1-huangjianan@oppo.com/
+> 
+> Reported-by: Will Shiu <Will.Shiu@mediatek.com>
+> Suggested-by: Gao Xiang <xiang@kernel.org>
+> Signed-off-by: Sandeep Dhavale <dhavale@google.com>
+> Reviewed-by: Gao Xiang <hsiangkao@linux.alibaba.com>
+> Reviewed-by: Alexandre Mergnat <amergnat@baylibre.com>
+> Link: https://lore.kernel.org/r/20230621220848.3379029-1-dhavale@google.com
+> Signed-off-by: Gao Xiang <hsiangkao@linux.alibaba.com>
+> 
+> [ Backport to 6.1.y: the source change is unchanged; only its location
+>   in z_erofs_decompress_kickoff() differs. ]
+> Assisted-by: LLM
+> Signed-off-by: Artem Dinaburg <artem@trailofbits.com>
+> ---
+> Hi Greg, Sasha, and EROFS maintainers,
+> 
+> I am continuing backporting CVE fixes still missing from 6.1.y.
+> This fix is inherited by v6.6 and every later mainline release, but 6.1.y
+> still has the affected code. The target-specific adjustment is described
+> in the bracketed note above.
+> 
+> Could you please queue it for 6.1.y?
 
-Compute the signal from the chain values in mt76_check_sta() as well,
-as mt76_rx_convert() does. On mt7921, the average now follows the same
-combined value that mac80211 gets instead of the strongest chain.
+Sorry for late reply.
 
-Tested on a TP-Link Archer XR500v with one client, switching between
-the old and the new input every 30 seconds. On the MT7662E (mt76x2),
-the average the AGC works with was -75 dBm, its fallback, with the old
-input and -54 dBm with the new one, while iw reported -54 and -52 dBm
-for the station, and the AGC mostly used its low_gain 2 setting instead
-of 1. On the MT7603E, the station average was 0 with the old input and
--41 dBm with the new one, while iw reported -42 and -41 dBm. The mt7603
-sensitivity still stayed at its default: a separate bug keeps it from
-leaving 0.
+Thanks for your effort, this commit has a follow-up commit
+commit c99fab6e80b76422741d34aafc2f930a482afbdd
 
-Fixes: 4550fb9e9810 ("mt76: improve signal strength reporting")
-Assisted-by: LLM
-Signed-off-by: Cristian Papa <pcristian292@gmail.com>
----
-Testing: OpenWrt, kernel 6.18.41 with the mac80211 backport of 6.18.39,
-openwrt/mt76 at be5ce79105 plus this change and the board's local
-patches, with a temporary module parameter selecting the old or the new
-input (not part of this patch). One client; the old-input samples of
-each run come from the same minutes as the new ones.
+erofs: fix atomic context detection when !CONFIG_DEBUG_LOCK_ALLOC
 
-Tools: an AI coding assistant (Claude Opus 5.5 in Claude Code) found the
-cause, wrote the instrumentation and drafted this change and changelog;
-the tests ran on my device.
+could you please consider backport those to stable kernels as well?
 
- drivers/net/wireless/mediatek/mt76/mac80211.c | 7 +++++--
- 1 file changed, 5 insertions(+), 2 deletions(-)
+Thanks,
+Gao Xiang
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mac80211.c b/drivers/net/wireless/mediatek/mt76/mac80211.c
-index cda5c5d51..4231adb77 100644
---- a/drivers/net/wireless/mediatek/mt76/mac80211.c
-+++ b/drivers/net/wireless/mediatek/mt76/mac80211.c
-@@ -1471,6 +1471,7 @@ mt76_check_sta(struct mt76_dev *dev, struct sk_buff *skb)
- 	struct ieee80211_hw *hw;
- 	struct mt76_wcid *wcid = status->wcid;
- 	u8 tidno = status->qos_ctl & IEEE80211_QOS_CTL_TID_MASK;
-+	int signal;
- 	bool ps;
- 
- 	hw = mt76_phy_hw(dev, status->phy_idx);
-@@ -1488,8 +1489,10 @@ mt76_check_sta(struct mt76_dev *dev, struct sk_buff *skb)
- 
- 	sta = container_of((void *)wcid, struct ieee80211_sta, drv_priv);
- 
--	if (status->signal <= 0)
--		ewma_signal_add(&wcid->rssi, -status->signal);
-+	/* status->signal is only set later, by mt76_rx_convert() */
-+	signal = mt76_rx_signal(status->chains, status->chain_signal);
-+	if (signal <= 0 && signal > -128)
-+		ewma_signal_add(&wcid->rssi, -signal);
- 
- 	wcid->inactive_count = 0;
- 
--- 
-2.47.3
-
+> 
+> Thanks,
+> Artem Dinaburg
 
