@@ -4,66 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3D237C98318
-	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Sep 2026 18:42:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C0E7CC9830E
+	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Sep 2026 21:49:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To:Cc:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=KWXHMCqPhd+fgNk0P4hGqU1QYjaf45zN7FEhgaYliZk=; b=AxI1K+levpFaZulNOaEQOzreCH
-	zXxouSlBMG0nbXH/RgGaY1yawxngSaS2kMXpWrA7rEphPYtyhy77CpHprnL12BUY6dkSgIjd4g8MW
-	+DnfL2XOxccwh82Cr+YF/Jd3Mvrq+mGkymIbvF1CQdUm7o6+4+3c4CoBEesB3WjJ5MraRKEJgkGiK
-	pyCuYFomKrqWEdmFNRxlZCzno9SVtE3quO+5LP1kTIVLbRajW48Vn62mJMT5T2mY4QTw1HsKBiIve
-	W54MDlU/KSu0YLHigFVeo3/lkOeK2e5KKN1zWTb+OXPT6TAWITGWVFs5x8a3RCUB4DuWMCFnNkm2S
-	pxSQi1yQ==;
+	bh=DL7Nsv04kDdnpWUYu7d8rzd7D0xGzhZqRoffIzHh1Fk=; b=q2pV0KJINZjnoNoBeLpG7KhMLu
+	gocBA1HFSONjnVItolwEBlhL4VOQpWIxnnopD0OQDyoq+XY8knfjHKacnpoZNg/pwFU/RTzmhlge6
+	fDplxTgc8fPLtO8EuAI8bvD1kIYUQf8TkyGXkLMdZFLkIeO5cDtDPf7YAmXXbBYXrn9LDJLuOngM2
+	0hdhSOq5dh4wYaL1D8ipPGXNXR4ixqQ6Hjfxt4uAn0ocVX1bl+6Laf3DL3pugOtQ6Vzb+QPHZGJXx
+	gL/Klsp8hrdmkRZbeXa7OYuX0zSNoLcbONslXWBohS8xbuWhvRBjl7AmfEBtcIwd65RwSSpeJ6N30
+	TZJk2UWg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x9oPA-0000000BwyO-12s7;
-	Thu, 24 Sep 2026 18:42:48 +0000
-Received: from pidgin.makrotopia.org ([2a07:2ec0:3002::65])
+	id 1x9rJg-0000000CFDt-2EPE;
+	Thu, 24 Sep 2026 21:49:20 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x9oP6-0000000Bwur-0ZKC;
-	Thu, 24 Sep 2026 18:42:46 +0000
-Received: from local
-	by pidgin.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256:X25519MLKEM768)
-	 (Exim 4.100)
-	(envelope-from <daniel@makrotopia.org>)
-	id 1x9oP0-000000007SV-3yLQ;
-	Thu, 24 Sep 2026 18:42:39 +0000
-Date: Thu, 24 Sep 2026 19:42:35 +0100
-From: Daniel Golle <daniel@makrotopia.org>
-To: Andrzej Hajda <andrzej.hajda@intel.com>,
-	Neil Armstrong <neil.armstrong@linaro.org>,
-	Robert Foss <rfoss@kernel.org>,
-	Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
-	Jonas Karlman <jonas@kwiboo.se>,
-	Jernej Skrabec <jernej.skrabec@gmail.com>,
-	Luca Ceresoli <luca.ceresoli@bootlin.com>,
-	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
-	Maxime Ripard <mripard@kernel.org>,
-	Thomas Zimmermann <tzimmermann@suse.de>,
-	David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
+	id 1x9rJf-0000000CFDU-07Az;
+	Thu, 24 Sep 2026 21:49:19 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by sea.source.kernel.org (Postfix) with ESMTP id 7067642AEB;
+	Thu, 24 Sep 2026 21:49:18 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0646C1F000FF;
+	Thu, 24 Sep 2026 21:49:17 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1790286558;
+	bh=DL7Nsv04kDdnpWUYu7d8rzd7D0xGzhZqRoffIzHh1Fk=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To;
+	b=Iz3PUv1nz8/kq3IXn8UG6VWi81dJRXt0JEB/5XeWDE6v/n4NtUOEoFQhBBWF6Qpgf
+	 osoKuOVg+1WmuUh9vncVqrDmUffoX0/tl6ow7lAVAN4dU9Er73ZDrRZl8NkbA72Mym
+	 pMsLfZClmz8unc1E78R+R8lSrDCYmmIUIzhM7XeOytuRV314H/nFmMnx3dDM+cW6zQ
+	 O9qFYzEKiSuJYur2KIIsjNS9qw41b879WFYmiFMuNgvvlLY5MopDYxJBmmr/RdUIk3
+	 Zib64xvPhl8ZtGO10lJB9aH4DkNcLVQRf7vqaxdWm4y9iDWdhWTQ5GbXAKtTyi+PVg
+	 iCVsOOudSyOmQ==
+Date: Thu, 24 Sep 2026 16:49:16 -0500
+From: "Rob Herring (Arm)" <robh@kernel.org>
+To: Ryan Brue <ryanbrue.dev@gmail.com>
+Cc: Krzysztof Kozlowski <krzk+dt@kernel.org>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Allen Chen <allen.chen@ite.com.tw>,
-	Hermes Wu <hermes.wu@ite.com.tw>,
-	Pin-yen Lin <treapking@chromium.org>,
-	dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: [PATCH v7 14/14] drm/bridge: it6505: Don't reject audio hw_params
- without an encoder
-Message-ID: <2a125d71fcbae7dd393a3ea21f452caa63c2cfda.1790275151.git.daniel@makrotopia.org>
-References: <cover.1790275151.git.daniel@makrotopia.org>
+	linux-kernel@vger.kernel.org, Conor Dooley <conor+dt@kernel.org>,
+	Dmitry Torokhov <dmitry.torokhov@gmail.com>,
+	linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org,
+	Mattijs Korpershoek <mkorpershoek@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	linux-mediatek@lists.infradead.org, linux-input@vger.kernel.org
+Subject: Re: [PATCH] dt-bindings: input: mediatek,mt6779-keypad: add the
+ MT8173 keypad
+Message-ID: <179028655599.1874918.3532753045457471424.robh@kernel.org>
+References: <20260915-rbrue-suez-upstreaming-mt8173-keypad-v1-1-96c325efacbe@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <cover.1790275151.git.daniel@makrotopia.org>
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260924_114244_177553_01F12854 
-X-CRM114-Status: GOOD (  10.17  )
+In-Reply-To: <20260915-rbrue-suez-upstreaming-mt8173-keypad-v1-1-96c325efacbe@gmail.com>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,85 +74,34 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-it6505_audio_setup_hw_params() returns -ENODEV when no encoder is
-attached. With it6505 registering an hdmi-audio-codec this runs for
-every stream on the I2S DAI, and on mt8186-corsola, where the rt1019
-speaker amplifier shares I2S3, the error tears down the whole DPCM
-backend and breaks speaker playback whenever no display is attached.
 
-The function only caches stream parameters, which needs no encoder.
-Drop the check, and apply the audio defaults once at probe instead of
-in it6505_variable_config(), which would clobber the cached
-parameters again on every hotplug. Actual audio output remains gated
-by it6505->powered.
+On Tue, 15 Sep 2026 22:47:50 -0500, Ryan Brue wrote:
+> MT8173's keypad controller is the same block this driver already handles.
+> Its register map agrees offset for offset with the MT6779 one -- STA 0x00,
+> MEM1..MEM5 0x04..0x14, DEBOUNCE 0x18, SEL 0x20, EN 0x24 -- and
+> mt6779-keypad drives it with no code change, so the node only needs the
+> fallback compatible in second position. Add the mt8173 string to the
+> existing enum, which is what mt6873, mt8183, mt8365 and mt8516 already do.
+> 
+> Verified on an MT8173 board (Amazon Fire HD 10 2017): the volume rocker
+> reports through mt6779-keypad with no driver modification.
+> 
+> Assisted-by: LLM
+> Signed-off-by: Ryan Brue <ryanbrue.dev@gmail.com>
+> ---
+> This is the binding half only. The board device tree that uses it, an Amazon
+> Fire HD 10 (2017), is not upstream yet and comes with the rest of that
+> board's nodes later; adding the compatible first keeps that submission from
+> carrying a forward reference.
+> 
+> No driver change goes with it. mt6779-keypad matches on the fallback, which
+> is how mt8183, mt8365 and mt8516 bind today -- only mt6779 and mt6873 are in
+> the driver's own match table.
+> ---
+>  Documentation/devicetree/bindings/input/mediatek,mt6779-keypad.yaml | 1 +
+>  1 file changed, 1 insertion(+)
+> 
 
-Fixes: b5c84a9edcd4 ("drm/bridge: add it6505 driver")
-Signed-off-by: Daniel Golle <daniel@makrotopia.org>
----
-v7: no changes
+Acked-by: Rob Herring (Arm) <robh@kernel.org>
 
-v6: no changes
-
-v5: no changes
-
-v4: apply audio defaults at probe time instead of in
-    it6505_variable_config()
-
-v3: no changes
-
-v2: drop the encoder check entirely instead of returning 0 early
----
- drivers/gpu/drm/bridge/ite-it6505.c | 23 ++++++++++-------------
- 1 file changed, 10 insertions(+), 13 deletions(-)
-
-diff --git a/drivers/gpu/drm/bridge/ite-it6505.c b/drivers/gpu/drm/bridge/ite-it6505.c
-index 00eaac183130..079129925f8a 100644
---- a/drivers/gpu/drm/bridge/ite-it6505.c
-+++ b/drivers/gpu/drm/bridge/ite-it6505.c
-@@ -1371,16 +1371,6 @@ static void it6505_variable_config(struct it6505 *it6505)
- 	it6505->link_state = LINK_IDLE;
- 	it6505->hdcp_desired = HDCP_DESIRED;
- 	it6505->auto_train_retry = AUTO_TRAIN_RETRY;
--	it6505->audio.select = AUDIO_SELECT;
--	it6505->audio.sample_rate = AUDIO_SAMPLE_RATE;
--	it6505->audio.channel_count = AUDIO_CHANNEL_COUNT;
--	it6505->audio.type = AUDIO_TYPE;
--	it6505->audio.i2s_input_format = I2S_INPUT_FORMAT;
--	it6505->audio.i2s_justified = I2S_JUSTIFIED;
--	it6505->audio.i2s_data_delay = I2S_DATA_DELAY;
--	it6505->audio.i2s_ws_channel = I2S_WS_CHANNEL;
--	it6505->audio.i2s_data_sequence = I2S_DATA_SEQUENCE;
--	it6505->audio.word_length = AUDIO_WORD_LENGTH;
- 	memset(it6505->sha1_input, 0, sizeof(it6505->sha1_input));
- 	memset(it6505->bksvs, 0, sizeof(it6505->bksvs));
- }
-@@ -3025,9 +3015,6 @@ static int it6505_audio_setup_hw_params(struct it6505 *it6505,
- 			     params->sample_rate, params->sample_width,
- 			     params->cea.channels);
- 
--	if (!it6505->bridge.encoder)
--		return -ENODEV;
--
- 	if (params->cea.channels <= 1 || params->cea.channels > 8) {
- 		DRM_DEV_DEBUG_DRIVER(dev, "channel number: %d not support",
- 				     params->cea.channels);
-@@ -3159,6 +3146,16 @@ static int it6505_register_audio_driver(struct device *dev)
- 	};
- 	struct platform_device *pdev;
- 
-+	it6505->audio.select = AUDIO_SELECT;
-+	it6505->audio.sample_rate = AUDIO_SAMPLE_RATE;
-+	it6505->audio.channel_count = AUDIO_CHANNEL_COUNT;
-+	it6505->audio.type = AUDIO_TYPE;
-+	it6505->audio.i2s_input_format = I2S_INPUT_FORMAT;
-+	it6505->audio.i2s_justified = I2S_JUSTIFIED;
-+	it6505->audio.i2s_data_delay = I2S_DATA_DELAY;
-+	it6505->audio.i2s_ws_channel = I2S_WS_CHANNEL;
-+	it6505->audio.i2s_data_sequence = I2S_DATA_SEQUENCE;
-+	it6505->audio.word_length = AUDIO_WORD_LENGTH;
- 	it6505->audio.mute = true;
- 	INIT_DELAYED_WORK(&it6505->delayed_audio, it6505_delayed_audio);
- 
--- 
-2.55.0
 
