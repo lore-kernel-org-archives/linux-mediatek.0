@@ -4,74 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 799D2C98324
-	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Sep 2026 15:09:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 66EDCC98324
+	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Sep 2026 15:26:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=XyvfbBnxjhqOQp2nCe828kGo+XqB5Q1kcLv5JAgzgqE=; b=gY+DvqBvfCfPPLCmMyywJNg+wi
-	vokoxGZpaUmjc9NQVoR7ZVzqSev9l+2MnLHszumhDn777jsiBIhhCjpIz0i40jvfr8IOZHanvQzon
-	ywKX9YlZ5DaZGh4/lq/ILO9eISAm04Zw4WEDozcE4sqefCDfKl5xdn08XymhDDW+Sbd4vrwSoi8sz
-	PCm8rBqgl5kMNzb6JNcsdVR5Y8qkmV71+J+XFv+JvPx6u+WjRJV3bFw0CG46SLzKS/2PTI+Lp6vT1
-	HBFFprIS8NDK12oZ4meoxOI9Mtw8/q5rSy14EQ9uJKWgultYmJsVoYp9Nj/Z9e61/ZAYnxT1MkUgH
-	pe7kYGYQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=BtNwmCpwlATZL6+yLaXsqKa6VUJAOpqf/gk0N1LtqfM=; b=W+kShqF83Wajl+OQVb7PHYsonZ
+	zMhDh1pq9rCsT6gqaXnbJi0kxgc0VZlJn7x6UaDX+CiVsEyMY3WP+rq/PoN6hw1JQIhZxZrXdhN1p
+	kfhqOmwAz6tBDF9V7Syvym7FuLB2VNyt8CHaRrIKvHBzuipA9ciPd1bMkE3H9E/OWLQ/fE4JKBKpZ
+	kc3TxnR/Nogm+5pVjJEC2pnWf3l7uq+/yiBRHBZzTSgHazrUAQEkAHCDbzrgoG/EKNCv04o//KmFS
+	KUY+PHSnKEjkLa6BbktSF9T0ygvFPgDlr6J0DAamtd5rn5CpoI30YoasUw3hEct+y/bm3wl7g/dSc
+	RxY74WnQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x9l4c-0000000BLHO-0NlO;
-	Thu, 24 Sep 2026 15:09:22 +0000
-Received: from mail.mainlining.org ([5.75.144.95])
+	id 1x9lLC-0000000BNux-3G0B;
+	Thu, 24 Sep 2026 15:26:30 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x9l4V-0000000BLC8-1DmC;
-	Thu, 24 Sep 2026 15:09:16 +0000
-DKIM-Signature: v=1; a=rsa-sha256; s=202507r; d=mainlining.org; c=relaxed/relaxed;
-	h=To:Message-Id:Subject:Date:From; t=1790262506; bh=XyvfbBnxjhqOQp2nCe828kG
-	o+XqB5Q1kcLv5JAgzgqE=; b=CH0BjwRhGcrH2qA8i+3yg9uzy42dpgmv2MNN4LO8/E+mR7Hhhp
-	59YSz+SqM9ZCBIdvyzN+GZgUVC7AaEjeANJPWgqUg6COzqq6RXzyzpyzVL53CGliP8DLCV3aNgR
-	irSHE5D6JU8iIoidBfKFoLE+bGbCr/8fFTAvG3Ir53hK8nCKvOjQxoo7MWtQddSQ944R2OGvqyM
-	gBqPkPtxPpTZmrTNYG6htYG0NMmxbg2lUx1xX4tB6d9+KdPhtyxQNiI12AsuHOhSDlHYb9qyd5H
-	0qo0s1nBiJsnibDiwfAN7U9P64///j26sPIwz0yQFeXc6M8Wa2Zv2TGyCFdMbqPa5yg==;
-DKIM-Signature: v=1; a=ed25519-sha256; s=202507e; d=mainlining.org; c=relaxed/relaxed;
-	h=To:Message-Id:Subject:Date:From; t=1790262506; bh=XyvfbBnxjhqOQp2nCe828kG
-	o+XqB5Q1kcLv5JAgzgqE=; b=4aycOujkgQAR5zKU8QWaDZ0KbSlZ6Kqynw5Y9bu3NjMGVacY6c
-	UECpKzRPxmQe1LHEJsbKHb4I5kdCpFRPykAw==;
-From: Nickolay Goppen <setotau@mainlining.org>
-Date: Thu, 24 Sep 2026 18:08:14 +0300
-Subject: [PATCH v5 1/3] dt-bindings: display: panel: Add Novatek NT51021
+	id 1x9lLB-0000000BNuJ-0J9h;
+	Thu, 24 Sep 2026 15:26:29 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by sea.source.kernel.org (Postfix) with ESMTP id CE2E640696;
+	Thu, 24 Sep 2026 15:26:28 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6E0631F000FF;
+	Thu, 24 Sep 2026 15:26:28 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1790263588;
+	bh=BtNwmCpwlATZL6+yLaXsqKa6VUJAOpqf/gk0N1LtqfM=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To;
+	b=ZmWeZ3udhfVDwkbdG7hmbVUamlOdwN1xRN6b1DIAHjkrRNINpNAEntqN2/gYcb6+c
+	 DNyY5UcnsTtJXa4wSzaKR+XVzMSK/YPdatgbzLblwj05a82siMPo+H9MBFRXq0Muam
+	 eMgLhELKWHIhSpr7ysCvDQi8XRfD3XKwJfozlir0/9nzPNNDpXYlC4pRB4nhZWrI6s
+	 h7dti4Co9Cr9IQI+b/4fsC+pahOTduY/nbbYLzEBYHvhGp3XEuUUKq8utqAbOGLLBy
+	 cR842xGOsLypHmxaSz5ICKPqqSruMiz9dMI7BjjRzP62l641nWHjsBIcXIXEb5Sxdj
+	 n4v2zzcv9buTA==
+Date: Thu, 24 Sep 2026 10:26:26 -0500
+From: "Rob Herring (Arm)" <robh@kernel.org>
+To: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
+Cc: Avri Altman <avri.altman@sandisk.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+	Alim Akhtar <alim.akhtar@samsung.com>,
+	Peter Wang <peter.wang@mediatek.com>,
+	Nicolas Frattaroli <nicolas.frattaroli@collabora.com>,
+	linux-arm-kernel@lists.infradead.org,
+	"James E.J. Bottomley" <James.Bottomley@hansenpartnership.com>,
+	Stanley Jhu <chu.stanley@gmail.com>,
+	Liam Girdwood <lgirdwood@gmail.com>, linux-phy@lists.infradead.org,
+	Vinod Koul <vkoul@kernel.org>,
+	Neil Armstrong <neil.armstrong@linaro.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Conor Dooley <conor+dt@kernel.org>, linux-scsi@vger.kernel.org,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Philipp Zabel <p.zabel@pengutronix.de>,
+	Mark Brown <broonie@kernel.org>,
+	Bart Van Assche <bvanassche@acm.org>,
+	Chaotian Jing <chaotian.jing@mediatek.com>, kernel@collabora.com,
+	"Martin K. Petersen" <mkp@kernel.org>,
+	Chunfeng Yun <chunfeng.yun@mediatek.com>,
+	Manivannan Sadhasivam <mani@kernel.org>,
+	linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH v12 02/24] dt-bindings: ufs: mediatek,ufs: Complete the
+ binding
+Message-ID: <179026358626.149119.4739305859668993061.robh@kernel.org>
+References: <20260914-mt8196-ufs-v12-0-9279d7ef814d@collabora.com>
+ <20260914-mt8196-ufs-v12-2-9279d7ef814d@collabora.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20260924-qcom-novatek-nt51021-panels-v5-1-f5eaf5685c9c@mainlining.org>
-References: <20260924-qcom-novatek-nt51021-panels-v5-0-f5eaf5685c9c@mainlining.org>
-In-Reply-To: <20260924-qcom-novatek-nt51021-panels-v5-0-f5eaf5685c9c@mainlining.org>
-To: Neil Armstrong <neil.armstrong@linaro.org>, 
- Jessica Zhang <jesszhan0024@gmail.com>, David Airlie <airlied@gmail.com>, 
- Simona Vetter <simona@ffwll.ch>, 
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: Nickolay Goppen <setotau@mainlining.org>, 
- dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org, 
- linux-kernel@vger.kernel.org, Ryan Brue <ryanbrue.dev@gmail.com>, 
- Alexey Minnekhanov <alexeymin@minlexx.ru>, 
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
- Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
-X-Mailer: b4 0.16.0
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1790262503; l=3617;
- i=setotau@mainlining.org; s=20250815; h=from:subject:message-id;
- bh=djYEApXChJkEHMpATwAz8wyMNg0creUuTFwqHmIt6Cs=;
- b=dlIA+UAtKj7pWjP//Qz1T4Nvj/TmTz9d1Bo6LCYObaD+q9bMBlp0rE9uK2VpTfwLDpno15O8N
- /xAK09L6YTzAkKrvvB3c8hhER/lt2sCqFdGOSGBqq/MGGIU56/ST3J7
-X-Developer-Key: i=setotau@mainlining.org; a=ed25519;
- pk=Og7YO6LfW+M2QfcJfjaUaXc8oOr5zoK8+4AtX5ICr4o=
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260924_080915_504054_B3914778 
-X-CRM114-Status: GOOD (  12.48  )
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20260914-mt8196-ufs-v12-2-9279d7ef814d@collabora.com>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,120 +90,64 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Novatek NT51021 is a display driver IC that can drive DSI panel. It
-is also present in the BOE TV101WUM-NX0 video mode panel, which is a WUXGA
-panel with a resolution of 1200x1920 and 10.1 inches size. It is found in
-Xiaomi Mi Pad 4 Plus. Also it's present in the BOE-TV080WUM-NX2 video mode
-panel, which also has a resolution of 1200x1920, but 8 inches size. It is
-found in Xiaomi Mi Pad 4. And also it's present in the BOE-TV101WUM-NM0.
-It's found in Amazon Fire HD 10 (2017).
 
-Add the bindings for display driver for the IC, with support added
-for this BOE TV101WUM-NX0 and TV080WUM-NX2 WUXGA video mode panels.
+On Mon, 14 Sep 2026 13:38:48 +0200, Louis-Alexis Eyraud wrote:
+> From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+> 
+> As it stands, the mediatek,ufs.yaml binding is startlingly incomplete.
+> Its one example, which is the only real "user" of this binding in
+> mainline, uses the deprecated freq-table-hz property.
+> 
+> The resets, of which there are three optional ones, are completely
+> absent.
+> 
+> The clock description for MT8195 is incomplete, as is the one for
+> MT8192. It's not known if the one clock binding for MT8183 is even
+> correct, but I do not have access to the necessary code and
+> documentation to find this out myself.
+> 
+> The power supply situation is not much better; the binding describes one
+> required power supply, but it's the UFS card supply, not any of the
+> supplies feeding the controller silicon.
+> 
+> No second example is present in the binding, making verification
+> difficult.
+> 
+> Disallow freq-table-hz and move to operating-points-v2. It's fine to
+> break compatibility here, as the binding is currently unused and would
+> be impossible to correctly use in its current state.
+> 
+> Add the three resets and the corresponding reset-names property. These
+> resets appear to be optional, i.e. not required for the functioning of
+> the device.
+> 
+> Move the list of clock names out of the if condition, and expand it for
+> the confirmed clocks I could find by cross-referencing several clock
+> drivers. For MT8195, increase the minimum number of clocks to include
+> the rx_symbol ones, as they're internal to the SoC and should always
+> be present, and should therefore not be omitted.
+> 
+> MT8192 gets to have at least 3 clocks, as these were the ones I could
+> quickly confirm from a glance at various trees. I can't say this was an
+> exhaustive search though, but it's better than the current situation.
+> 
+> Properly document all supplies, with which pin name on the SoCs they
+> supply. Complete the example with them.
+> 
+> Also add a MT8195 example to the binding, using supply labels that I am
+> pretty sure would be the right ones for e.g. the Radxa NIO 12L.
+> 
+> Finally, remove the 'ufs_' prefix from all clock names containing it
+> and rename 'ufs' clock to 'main'.
+> 
+> Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+> Reviewed-by: Chaotian Jing <chaotian.jing@mediatek.com>
+> Signed-off-by: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
+> ---
+>  .../devicetree/bindings/ufs/mediatek,ufs.yaml      | 115 +++++++++++++++++----
+>  1 file changed, 96 insertions(+), 19 deletions(-)
+> 
 
-Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
-Co-developed-by: Ryan Brue <ryanbrue.dev@gmail.com>
-Signed-off-by: Ryan Brue <ryanbrue.dev@gmail.com>
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Signed-off-by: Nickolay Goppen <setotau@mainlining.org>
----
- .../bindings/display/panel/novatek,nt51021.yaml    | 87 ++++++++++++++++++++++
- 1 file changed, 87 insertions(+)
+Reviewed-by: Rob Herring (Arm) <robh@kernel.org>
 
-diff --git a/Documentation/devicetree/bindings/display/panel/novatek,nt51021.yaml b/Documentation/devicetree/bindings/display/panel/novatek,nt51021.yaml
-new file mode 100644
-index 000000000000..7754a8cb1e5c
---- /dev/null
-+++ b/Documentation/devicetree/bindings/display/panel/novatek,nt51021.yaml
-@@ -0,0 +1,87 @@
-+# SPDX-License-Identifier: GPL-2.0-only OR BSD-2-Clause
-+%YAML 1.2
-+---
-+$id: http://devicetree.org/schemas/display/panel/novatek,nt51021.yaml#
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
-+
-+title: Novatek NT51021 based DSI display Panels
-+
-+maintainers:
-+  - Nickolay Goppen <setotau@mainlining.org>
-+
-+description:
-+  The NT51021 IC from Novatek is a generic DSI Panel IC used to drive dsi
-+  panels.
-+  Right now, support is added only for a BOE WUXGA LCD display panels with a
-+  resolution of 1200x1920. They are video mode DSI panels.
-+
-+allOf:
-+  - $ref: panel-common.yaml#
-+
-+properties:
-+  compatible:
-+    items:
-+      - enum:
-+          - boe,tv101wum-nm0
-+          - boe,tv101wum-nx0
-+          - boe,tv080wum-nx2
-+      - const: novatek,nt51021
-+
-+  reg:
-+    maxItems: 1
-+
-+  reset-gpios:
-+    maxItems: 1
-+    description: phandle of gpio for reset line - This should be 8mA, gpio
-+      can be configured using mux, pinctrl, pinctrl-names (active low)
-+
-+  vdd-supply:
-+    description: phandle of the regulator that provides the supply voltage
-+      for digital circuits
-+
-+  avdd-supply:
-+    description: phandle of the regulator that provides the supply voltage
-+      for analog circuits
-+
-+  havdd-supply:
-+    description: phandle of the regulator that provides the supply voltage
-+      for analog circuits
-+
-+required:
-+  - compatible
-+  - reg
-+  - vdd-supply
-+  - avdd-supply
-+  - havdd-supply
-+  - reset-gpios
-+  - port
-+
-+unevaluatedProperties: false
-+
-+examples:
-+  - |
-+    #include <dt-bindings/gpio/gpio.h>
-+
-+    dsi {
-+        #address-cells = <1>;
-+        #size-cells = <0>;
-+
-+        panel@0 {
-+            compatible = "boe,tv101wum-nx0", "novatek,nt51021";
-+            reg = <0>;
-+            vdd-supply = <&lcd_pwr>;
-+            avdd-supply = <&lcd_pwr>;
-+            havdd-supply = <&lcd_pwr>;
-+
-+            backlight = <&i2c_backlight>;
-+            reset-gpios = <&tlmm 62 GPIO_ACTIVE_LOW>;
-+
-+            port {
-+                panel_in: endpoint {
-+                    remote-endpoint = <&dsi0_out>;
-+                };
-+            };
-+        };
-+    };
-+
-+...
-
--- 
-2.55.0
 
