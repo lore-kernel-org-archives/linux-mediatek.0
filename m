@@ -4,79 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C5362C982FD
-	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Sep 2026 04:33:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 93D3FC98310
+	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Sep 2026 07:24:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=CcNwL7xRwOV9aWxBCz320PcsLt2UGmXCGMzZht9hwDc=; b=qLIZc64M2zZKEzUzmg3ajQNOYs
-	K59aWHUkKWfSlnz6uetJ+bsgCHjlhjyJasjCtdO5EnbNo/Lpvd7SHXa9d+o99VCZQIbHyZRvNG+q/
-	08hGA15fEBR/JQfzoAUmfO+gw72LqsN9cS4iAVWlOleTjlA+U1flWKn618VTwQp+kHCsLq5gTlLPC
-	9Fx+VqPcesRgl2XQNtmMkaXgJX6E681AWzQn9lBuE0fxUx6ju9HRUPVWXR/1Tbw5HzeJ6TsyVzwCO
-	HWfs83Y4uvJxmec2/Yc7tm10DbOOvOWPK9FP7FUcUUn258v/lol5pUb8PqVDbkRmaZja7KU77YdCy
-	wNJxnpKQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
+	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=XvieWIY+i1AST9RqXpJ7/z/MULbKFfSbxYmjedMqeuo=; b=i1WtkFrkMN6ZAZ30ohk1rg+6Zu
+	t5fpGHqv2wxOQt9cDfYe3MOqLvVfUTS1ECxY3fCM5S8iSCT9OQUMU6GU5rWNinkHnKvVzzs4iGkAD
+	VV9DlTlR2aNiqqn4IdSMgHBpqHcAZYjmD+lHpHwT6vSCHxHipDS4hal9XJz/5WcMpPpFuatAvHHcd
+	Npnvv+ZFzcNvp5WM9b1mdpk5QV6MAsmiu236aXsYAsvaW8Ou5xn0R5+elk107jDXuM23l1czT/MgF
+	GHWjqkmne7VWCwYpE7MWrZrckhTAAcOzjhVtJDYFCsWO4Fd7Qnr8tuwzZt1tXvfGqNbPWlhkNFVgJ
+	aXOyUPeg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x9b90-0000000A0bk-3qOM;
-	Thu, 24 Sep 2026 04:33:14 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1x9doZ-0000000AGzn-1xQe;
+	Thu, 24 Sep 2026 07:24:19 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x9b8y-0000000A0bP-49m9;
-	Thu, 24 Sep 2026 04:33:13 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 1B201600AA;
-	Thu, 24 Sep 2026 04:33:12 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2EE441F000FF;
-	Thu, 24 Sep 2026 04:33:07 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1790224391;
-	bh=CcNwL7xRwOV9aWxBCz320PcsLt2UGmXCGMzZht9hwDc=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=CsUtjgojaBrtU9hln5KGYU0lX2Fizlvya9euFa9GR5Ik6Y6KqsbQmYRFNAOtId5n/
-	 mGtGf3lYj23X9Wg2W+T0WCwVrEw5A+eywzQZx8wc3uCFbxbCmBJgJbnPX4lZMCFKUv
-	 7jvCtN6D7McOmqOYGW1h/A0eB1s2LMpYk/9hAAbDzU23X5LL6qCg5a1x01RIGpm2Ei
-	 4l8O4CcNgBKccOs3/1FuoaAuJkV2DMlhyjcNAIa475JQHuLKta6xFY1ewUmtqjOsX+
-	 FTBvj1fDLGg3WHEX0BTe1E4N8tHukTQShqVOoTV4PxPxNEb0TSgeqV4mi+ad7O7dBt
-	 xKr/Gsgs9Cqaw==
-Date: Thu, 24 Sep 2026 06:33:05 +0200
-From: Gao Xiang <xiang@kernel.org>
-To: Artem Dinaburg <artem@trailofbits.com>
-Cc: stable@vger.kernel.org, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	Sasha Levin <sashal@kernel.org>, Gao Xiang <xiang@kernel.org>,
-	Chao Yu <chao@kernel.org>, Yue Hu <huyue2@coolpad.com>,
-	Jeffle Xu <jefflexu@linux.alibaba.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	linux-erofs@lists.ozlabs.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	Sandeep Dhavale <dhavale@google.com>,
-	Will Shiu <will.shiu@mediatek.com>,
-	Gao Xiang <hsiangkao@linux.alibaba.com>,
-	Alexandre Mergnat <amergnat@baylibre.com>
-Subject: Re: [PATCH 6.1.y] erofs: Fix detection of atomic context
-Message-ID: <arSoAUX4jDzgY-rG@MacBookPro.fritz.box>
-Mail-Followup-To: Artem Dinaburg <artem@trailofbits.com>,
-	stable@vger.kernel.org,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	Sasha Levin <sashal@kernel.org>, Gao Xiang <xiang@kernel.org>,
-	Chao Yu <chao@kernel.org>, Yue Hu <huyue2@coolpad.com>,
-	Jeffle Xu <jefflexu@linux.alibaba.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	linux-erofs@lists.ozlabs.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	Sandeep Dhavale <dhavale@google.com>,
-	Will Shiu <will.shiu@mediatek.com>,
-	Gao Xiang <hsiangkao@linux.alibaba.com>,
-	Alexandre Mergnat <amergnat@baylibre.com>
-References: <20260922200448.27724-1-artem@trailofbits.com>
+	id 1x9doX-0000000AGxb-1Xkz;
+	Thu, 24 Sep 2026 07:24:18 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1790234654;
+	bh=9V9vHNIqjj/P3V/WD9pUW9DZXjV8gTIAVkCblvj1Xq4=;
+	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
+	b=iUeeeNxGlLxhJrNz6Ckmi6E+lHfIUobG+yTsZBzxrQZ9X7ui2pdlMglCZAwsJCeSa
+	 ZqamKT9HAvUOOwFyFCosYeeQ+MKRaVpKD2lQsHChA4KstkHHN6HK91BMgzA/+eqaaa
+	 RnVXiXOfS9yNv2cj0H069w2XsByFnfTx21qFehHW8Dclew1qeCNsZ1HDGvyQPsnPaK
+	 dsF/eSembWhWj3IBQvb5B1SyXgueVcl2bW+4tbnnv9MKuGSEZWzwHuu2J2hvig9LY/
+	 pZcmQccO2196W/2LyboQEyffS1hyGLimnrtZPJw3hoJ+hB4LMxaZ52GW63C9AC3BsK
+	 mEG71nyujNusA==
+Received: from yukiji.home (unknown [100.64.0.131])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: laeyraud)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 01F0E17E01D1;
+	Thu, 24 Sep 2026 09:24:13 +0200 (CEST)
+From: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
+Date: Thu, 24 Sep 2026 09:23:24 +0200
+Subject: [PATCH net-next v2 1/7] dt-bindings: net: mediatek-dwmac: add
+ support for MT8189 SoC
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-In-Reply-To: <20260922200448.27724-1-artem@trailofbits.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Message-Id: <20260924-dwmac-mediatek-mt8189-v2-1-430bd74d5ef9@collabora.com>
+References: <20260924-dwmac-mediatek-mt8189-v2-0-430bd74d5ef9@collabora.com>
+In-Reply-To: <20260924-dwmac-mediatek-mt8189-v2-0-430bd74d5ef9@collabora.com>
+To: Andrew Lunn <andrew+netdev@lunn.ch>, 
+ "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, 
+ Richard Cochran <richardcochran@gmail.com>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Biao Huang <biao.huang@mediatek.com>, 
+ Maxime Chevallier <maxime.chevallier@bootlin.com>, 
+ Maxime Coquelin <mcoquelin.stm32@gmail.com>, 
+ Alexandre Torgue <alexandre.torgue@foss.st.com>
+Cc: kernel@collabora.com, netdev@vger.kernel.org, 
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+ linux-stm32@st-md-mailman.stormreply.com, 
+ Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
+X-Mailer: b4 0.14.3
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1790234653; l=4693;
+ i=louisalexis.eyraud@collabora.com; s=20250113; h=from:subject:message-id;
+ bh=9V9vHNIqjj/P3V/WD9pUW9DZXjV8gTIAVkCblvj1Xq4=;
+ b=fGUZW/haDY37KjFlxcP6MBiJCPKTi48kpDtrvwtppr+sq9WcagdmC+gADaBPpSVMtHy8U1rND
+ MR3cKuN5i+SDiXrPB7CuiqLLxyAyf6TYDOQl67cQgtplj9Af+1YvBKe
+X-Developer-Key: i=louisalexis.eyraud@collabora.com; a=ed25519;
+ pk=CHFBDB2Kqh4EHc6JIqFn69GhxJJAzc0Zr4e8QxtumuM=
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260924_002417_565074_304DB9BE 
+X-CRM114-Status: GOOD (  10.52  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,111 +95,157 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Artem,
+Add new compatible string and clock definitions for the Ethernet MAC
+IP found in MT8189 SoC.
 
-On Tue, Sep 22, 2026 at 04:04:36PM -0400, Artem Dinaburg wrote:
-> From: Sandeep Dhavale <dhavale@google.com>
-> 
-> [ Upstream commit 12d0a24afd9ea58e581ea64d64e066f2027b28d9 ]
-> 
-> Current check for atomic context is not sufficient as
-> z_erofs_decompressqueue_endio can be called under rcu lock
-> from blk_mq_flush_plug_list(). See the stacktrace [1]
-> 
-> In such case we should hand off the decompression work for async
-> processing rather than trying to do sync decompression in current
-> context. Patch fixes the detection by checking for
-> rcu_read_lock_any_held() and while at it use more appropriate
-> !in_task() check than in_atomic().
-> 
-> Background: Historically erofs would always schedule a kworker for
-> decompression which would incur the scheduling cost regardless of
-> the context. But z_erofs_decompressqueue_endio() may not always
-> be in atomic context and we could actually benefit from doing the
-> decompression in z_erofs_decompressqueue_endio() if we are in
-> thread context, for example when running with dm-verity.
-> This optimization was later added in patch [2] which has shown
-> improvement in performance benchmarks.
-> 
-> ==============================================
-> [1] Problem stacktrace
-> [name:core&]BUG: sleeping function called from invalid context at kernel/locking/mutex.c:291
-> [name:core&]in_atomic(): 0, irqs_disabled(): 0, non_block: 0, pid: 1615, name: CpuMonitorServi
-> [name:core&]preempt_count: 0, expected: 0
-> [name:core&]RCU nest depth: 1, expected: 0
-> CPU: 7 PID: 1615 Comm: CpuMonitorServi Tainted: G S      W  OE      6.1.25-android14-5-maybe-dirty-mainline #1
-> Hardware name: MT6897 (DT)
-> Call trace:
->  dump_backtrace+0x108/0x15c
->  show_stack+0x20/0x30
->  dump_stack_lvl+0x6c/0x8c
->  dump_stack+0x20/0x48
->  __might_resched+0x1fc/0x308
->  __might_sleep+0x50/0x88
->  mutex_lock+0x2c/0x110
->  z_erofs_decompress_queue+0x11c/0xc10
->  z_erofs_decompress_kickoff+0x110/0x1a4
->  z_erofs_decompressqueue_endio+0x154/0x180
->  bio_endio+0x1b0/0x1d8
->  __dm_io_complete+0x22c/0x280
->  clone_endio+0xe4/0x280
->  bio_endio+0x1b0/0x1d8
->  blk_update_request+0x138/0x3a4
->  blk_mq_plug_issue_direct+0xd4/0x19c
->  blk_mq_flush_plug_list+0x2b0/0x354
->  __blk_flush_plug+0x110/0x160
->  blk_finish_plug+0x30/0x4c
->  read_pages+0x2fc/0x370
->  page_cache_ra_unbounded+0xa4/0x23c
->  page_cache_ra_order+0x290/0x320
->  do_sync_mmap_readahead+0x108/0x2c0
->  filemap_fault+0x19c/0x52c
->  __do_fault+0xc4/0x114
->  handle_mm_fault+0x5b4/0x1168
->  do_page_fault+0x338/0x4b4
->  do_translation_fault+0x40/0x60
->  do_mem_abort+0x60/0xc8
->  el0_da+0x4c/0xe0
->  el0t_64_sync_handler+0xd4/0xfc
->  el0t_64_sync+0x1a0/0x1a4
-> 
-> [2] Link: https://lore.kernel.org/all/20210317035448.13921-1-huangjianan@oppo.com/
-> 
-> Reported-by: Will Shiu <Will.Shiu@mediatek.com>
-> Suggested-by: Gao Xiang <xiang@kernel.org>
-> Signed-off-by: Sandeep Dhavale <dhavale@google.com>
-> Reviewed-by: Gao Xiang <hsiangkao@linux.alibaba.com>
-> Reviewed-by: Alexandre Mergnat <amergnat@baylibre.com>
-> Link: https://lore.kernel.org/r/20230621220848.3379029-1-dhavale@google.com
-> Signed-off-by: Gao Xiang <hsiangkao@linux.alibaba.com>
-> 
-> [ Backport to 6.1.y: the source change is unchanged; only its location
->   in z_erofs_decompress_kickoff() differs. ]
-> Assisted-by: LLM
-> Signed-off-by: Artem Dinaburg <artem@trailofbits.com>
-> ---
-> Hi Greg, Sasha, and EROFS maintainers,
-> 
-> I am continuing backporting CVE fixes still missing from 6.1.y.
-> This fix is inherited by v6.6 and every later mainline release, but 6.1.y
-> still has the affected code. The target-specific adjustment is described
-> in the bracketed note above.
-> 
-> Could you please queue it for 6.1.y?
+Also, update "mediatek,rx-delay-ps" and "mediatek,tx-delay-ps" property
+description to add MT8189 RX/TX delay stage divider values, as they
+differ from existing supported SoC.
 
-Sorry for late reply.
+Signed-off-by: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
+---
+ .../devicetree/bindings/net/mediatek-dwmac.yaml    | 87 +++++++++++++++-------
+ 1 file changed, 60 insertions(+), 27 deletions(-)
 
-Thanks for your effort, this commit has a follow-up commit
-commit c99fab6e80b76422741d34aafc2f930a482afbdd
+diff --git a/Documentation/devicetree/bindings/net/mediatek-dwmac.yaml b/Documentation/devicetree/bindings/net/mediatek-dwmac.yaml
+index 3aab21b8e8de..6624dff015f0 100644
+--- a/Documentation/devicetree/bindings/net/mediatek-dwmac.yaml
++++ b/Documentation/devicetree/bindings/net/mediatek-dwmac.yaml
+@@ -20,13 +20,11 @@ select:
+         enum:
+           - mediatek,mt2712-gmac
+           - mediatek,mt8188-gmac
++          - mediatek,mt8189-gmac
+           - mediatek,mt8195-gmac
+   required:
+     - compatible
+ 
+-allOf:
+-  - $ref: snps,dwmac.yaml#
+-
+ properties:
+   compatible:
+     oneOf:
+@@ -36,6 +34,7 @@ properties:
+           - const: snps,dwmac-4.20a
+       - items:
+           - enum:
++              - mediatek,mt8189-gmac
+               - mediatek,mt8195-gmac
+           - const: snps,dwmac-5.10a
+       - items:
+@@ -44,26 +43,6 @@ properties:
+           - const: mediatek,mt8195-gmac
+           - const: snps,dwmac-5.10a
+ 
+-  clocks:
+-    minItems: 5
+-    items:
+-      - description: AXI clock
+-      - description: APB clock
+-      - description: MAC Main clock
+-      - description: PTP clock
+-      - description: RMII reference clock provided by MAC
+-      - description: MAC clock gate
+-
+-  clock-names:
+-    minItems: 5
+-    items:
+-      - const: axi
+-      - const: apb
+-      - const: mac_main
+-      - const: ptp_ref
+-      - const: rmii_internal
+-      - const: mac_cg
+-
+   interrupts:
+     maxItems: 1
+ 
+@@ -86,8 +65,10 @@ properties:
+       or will round down. Range 0~31*170.
+       For MT2712 RMII/MII interface, Allowed value need to be a multiple of 550,
+       or will round down. Range 0~31*550.
+-      For MT8188/MT8195 RGMII/RMII/MII interface, Allowed value need to be a multiple of 290,
+-      or will round down. Range 0~31*290.
++      For MT8188/MT8195 RGMII/RMII/MII interface, Allowed value need to be a
++      multiple of 290, or will round down. Range 0~31*290.
++      For MT8189 RGMII/RMII/MII interface, Allowed value need to
++      be a multiple of 180, or will round down. Range 0~31*180.
+ 
+   mediatek,rx-delay-ps:
+     description:
+@@ -96,8 +77,10 @@ properties:
+       or will round down. Range 0~31*170.
+       For MT2712 RMII/MII interface, Allowed value need to be a multiple of 550,
+       or will round down. Range 0~31*550.
+-      For MT8188/MT8195 RGMII/RMII/MII interface, Allowed value need to be a multiple
+-      of 290, or will round down. Range 0~31*290.
++      For MT8188/MT8195 RGMII/RMII/MII interface, Allowed value need to be a
++      multiple of 290, or will round down. Range 0~31*290.
++      For MT8189 RGMII/RMII/MII interface, Allowed value need to
++      be a multiple of 180, or will round down. Range 0~31*180.
+ 
+   mediatek,rmii-rxc:
+     type: boolean
+@@ -147,6 +130,56 @@ required:
+   - phy-mode
+   - mediatek,pericfg
+ 
++allOf:
++  - $ref: snps,dwmac.yaml#
++  - if:
++      properties:
++        compatible:
++          contains:
++            enum:
++              - mediatek,mt2712-gmac
++              - mediatek,mt8188-gmac
++              - mediatek,mt8195-gmac
++    then:
++      properties:
++        clocks:
++          minItems: 5
++          items:
++            - description: AXI clock
++            - description: APB clock
++            - description: MAC Main clock
++            - description: PTP clock
++            - description: RMII reference clock provided by MAC
++            - description: MAC clock gate
++
++        clock-names:
++          minItems: 5
++          items:
++            - const: axi
++            - const: apb
++            - const: mac_main
++            - const: ptp_ref
++            - const: rmii_internal
++            - const: mac_cg
++
++  - if:
++      properties:
++        compatible:
++          contains:
++            enum:
++              - mediatek,mt8189-gmac
++    then:
++      properties:
++        clocks:
++          items:
++            - description: MAC Main clock
++            - description: PTP clock
++
++        clock-names:
++          items:
++            - const: mac_main
++            - const: ptp_ref
++
+ unevaluatedProperties: false
+ 
+ examples:
 
-erofs: fix atomic context detection when !CONFIG_DEBUG_LOCK_ALLOC
+-- 
+2.55.0
 
-could you please consider backport those to stable kernels as well?
-
-Thanks,
-Gao Xiang
-
-> 
-> Thanks,
-> Artem Dinaburg
 
