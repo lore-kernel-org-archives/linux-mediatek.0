@@ -4,65 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 78561C98317
-	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Sep 2026 12:17:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D695EC98314
+	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Sep 2026 13:19:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=cPST8MJ8TSeF9sY6hxKTYUf6ipTLK8bGEw9EmCQ4rxc=; b=MzpUKGjCKqvmkpJOvH6xUErzuG
-	80uhNyTNecf3IsEuk9aK7Kw5l3r/57evLWp6JmWEa77HFLAYtzjmx+fZYqRmpxQoU8kyOmUS6++N7
-	UNmnqZTD3PPmqpMlbpNWk8WsC2h72eqDNul06BTxifwbssXL6axiXOfzjYATXTeyVJcbYSjYnn9MU
-	1BBk2mabWZ7e2FhIUASnoLYBZC/SmJ0xkI1mMaolig/WM6xA5f73KpsnBP02gddBE1Er4TR3tIJJ4
-	QgwR94QGHOVpMfB1rLf9Grtf5Bfsk8D1E0/K6cnVupmlTnFJkv245wk89YvlzBH0QRyFLPCa+Kubg
-	BKDW2juQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=OvhWLiAmSVeUcRiZOSiSzgt8c6ktpzexIIkYN0GRrD0=; b=uB3tQDn+8MwiSe+mJMVh75LPvU
+	KppkSLcXCavJwu8Pj2ew07CfaHobgk0jMEMKn49i8MNJ0nCG7BwdmvsdvICNhuV0MPk+Fsb8sO/hd
+	EcOaEwIZuzT9IG7c7tNRuQG0e9TbEIGp9fmaFTzmcA86cNJEEQSP4aTqClvVhWkaX//iL4BQ2Dfbt
+	NUbSnpOSdmzVwei8PRS4DoOvZKW1n4vegKSUR0Lz4BWo+rw37S3NeFCBPrhEDZsMa7ObKteAb7ulH
+	byM/RL+rvo0gXFZkkUnxEcJVW5CK+nMaL/6MBBeB6eJiBh4GuHqJbaL+6Jl2emkah8EwT15zdnv4p
+	X1MwWizw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x9iOV-0000000AxSm-0iYB;
-	Thu, 24 Sep 2026 12:17:43 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1x9jMj-0000000B3sZ-280U;
+	Thu, 24 Sep 2026 13:19:57 +0000
+Received: from m16.mail.163.com ([220.197.31.2])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x9iOT-0000000AxSF-1WA4;
-	Thu, 24 Sep 2026 12:17:41 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id 1521D4136F;
-	Thu, 24 Sep 2026 12:17:41 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 88CE51F000FF;
-	Thu, 24 Sep 2026 12:17:38 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1790252261;
-	bh=cPST8MJ8TSeF9sY6hxKTYUf6ipTLK8bGEw9EmCQ4rxc=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=fMA8CxqwudWuPG0E5ZdCROfZrhpZq/XSp9/Lt9Q1RaCjs5rQaJ7KDPucalqvCr1cV
-	 ECYVS2CL3hGU8ncfQZwdWRNcHxlAMY+Ep6JstbwXixQLa6+bT0t2DX+C7j4kxDRC4K
-	 OZVjaIxhCC2+i5ViQagcWtrA4cfs7diqgwcFyH22rFyhyZUWgD4lS5sMZ4q5H7jmZy
-	 E1atClSu+dtDj4hS3nqNQ8yET1UoQJxIqdr1iHUAWBdRVzva+PEYcARIWBWrdPK5yd
-	 Wf/j63ZYMCOyd6KuI3xxGX46bXUl9S5LJaqL1Fj4s1cXfbcJOpnY3efdP2K7joxlAR
-	 T4yS97EycaYNA==
-Date: Thu, 24 Sep 2026 13:17:36 +0100
-From: Mark Brown <broonie@kernel.org>
-To: Tim Kuo <Tim.Kuo@mediatek.com>
-Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
+	id 1x9jMf-0000000B3rS-1qj6;
+	Thu, 24 Sep 2026 13:19:55 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
+	s=s110527; h=From:To:Subject:Date:Message-Id:MIME-Version; bh=Ov
+	hWLiAmSVeUcRiZOSiSzgt8c6ktpzexIIkYN0GRrD0=; b=M/mnBXT4aCvmAaUIDT
+	f0rxoPud8wmEs3aWtmVNG7nfnjOLQgCuOwW6gANFWhsetTR54p0hBASfqy61/Ui+
+	ze7XHG0PaYYRUAAMXjIb3ZC0bPQpdzPLtp+wD+LhUS6UrVkt91NRSYzepH5q3MSl
+	ArAsj11ukCtPWMVYkinh/5x2g=
+Received: from pc.localdomain (unknown [])
+	by gzga-smtp-mtada-g1-3 (Coremail) with SMTP id _____wD3d5ROI7Vqq0FrAg--.32720S4;
+	Thu, 24 Sep 2026 21:19:26 +0800 (CST)
+From: Jiale Yao <yaojiale02@163.com>
+To: Felix Fietkau <nbd@nbd.name>,
+	Lorenzo Bianconi <lorenzo@kernel.org>,
+	Ryder Lee <ryder.lee@mediatek.com>,
+	Shayne Chen <shayne.chen@mediatek.com>,
+	Sean Wang <sean.wang@mediatek.com>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-spi@vger.kernel.org, devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	Steven Liu <Steven.Liu@mediatek.com>,
-	Sky Huang <Skylake.Huang@mediatek.com>
-Subject: Re: [PATCH 1/2] dt-bindings: spi: mediatek: add mediatek,spi-ipm-v59
- compatible
-Message-ID: <44a113b8-1ce0-4a17-bc07-b22f15665ef2@sirena.org.uk>
-References: <20260924031211.2199921-1-Tim.Kuo@mediatek.com>
+	Runyu Xiao <runyu.xiao@seu.edu.cn>,
+	Ming Yen Hsieh <mingyen.hsieh@mediatek.com>,
+	Javier Tia <floss@jetm.me>,
+	Leon Yen <leon.yen@mediatek.com>,
+	Eason Lai <Eason.Lai@mediatek.com>,
+	Sebastian Krzyszkowiak <sebastian.krzyszkowiak@puri.sm>,
+	Ville Nummela <ville.nummela@kempower.com>,
+	Marek Vasut <marex@nabladev.com>,
+	Rong Yan <rong.yan@mediatek.com>,
+	Deren Wu <deren.wu@mediatek.com>,
+	Hao Zhang <hao.zhang@mediatek.com>,
+	Nelson Yu <nelson.yu@mediatek.com>,
+	Prameela Rani Garnepudi <prameela.j04cs@gmail.com>,
+	Amitkumar Karwar <amit.karwar@redpinesignals.com>,
+	Kalle Valo <kvalo@kernel.org>,
+	linux-wireless@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Cc: Jiale Yao <yaojiale02@163.com>,
+	stable@vger.kernel.org
+Subject: [PATCH 2/4] wifi: mt76: mt7925: unwind link BSS add failures
+Date: Thu, 24 Sep 2026 21:19:02 +0800
+Message-Id: <20260924131908.950229-3-yaojiale02@163.com>
+X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20260924131908.950229-1-yaojiale02@163.com>
+References: <20260924131908.950229-1-yaojiale02@163.com>
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="tI8QpB5ulHks/lh1"
-Content-Disposition: inline
-In-Reply-To: <20260924031211.2199921-1-Tim.Kuo@mediatek.com>
-X-Cookie: Oh, so there you are!
+Content-Transfer-Encoding: 8bit
+X-CM-TRANSID: _____wD3d5ROI7Vqq0FrAg--.32720S4
+X-Coremail-Antispam: 1Uf129KBjvJXoW7Kr47trWfAr1kAFyxZryrJFb_yoW8Ary7pr
+	ZFgFWjkryDGa1DKw4UCw18ZFW0van5Kr1j9ryruw1rZws3Ar1fArWjva4UZry0kayvka1U
+	Xr4DtrnxuFZ8uaDanT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
+	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x0pEl1v7UUUUU=
+X-CM-SenderInfo: x1dryxhdohiji6rwjhhfrp/xtbCzR7nImq1I141qwAA3q
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260924_061953_836822_2039EFD8 
+X-CRM114-Status: GOOD (  12.02  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,36 +95,45 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+mac80211 does not call remove_interface() after add_interface() fails, so
+the driver must undo any state it published before returning an error.
 
---tI8QpB5ulHks/lh1
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+mt7925_mac_link_bss_add() reserves vif and OMAC bits and publishes the
+station WCID before asking the firmware to add the device.  If that command
+fails, the function currently returns with those resources still installed.
+The WCID pointer then refers into vif private data that mac80211 can free,
+and the mask bits remain permanently allocated.
 
-On Thu, Sep 24, 2026 at 11:12:10AM +0800, Tim Kuo wrote:
-> The IPM v59 SPI IP differs from earlier IPM designs, most visibly in the
-> tick delay field of SPI_CMD_REG, so it needs its own fallback compatible
-> rather than reusing "mediatek,spi-ipm".
+Use the existing link BSS removal helper to undo the published WCID, mask
+bits, and WCID resources when the firmware add command fails.
 
-Please submit patches using subject lines reflecting the style for the
-subsystem, this makes it easier for people to identify relevant patches.
-Look at what existing commits in the area you're changing are doing and
-make sure your subject lines visually resemble what they're doing.
-There's no need to resubmit to fix this alone.
+Commit 2fb6480c52f6 ("wifi: mt76: mt7915: unwind state on add_interface
+failure") fixed the same failure-unwind issue in mt7915.
 
---tI8QpB5ulHks/lh1
-Content-Type: application/pgp-signature; name="signature.asc"
+Fixes: c948b5da6bbe ("wifi: mt76: mt7925: add Mediatek Wi-Fi7 driver for mt7925 chips")
+Cc: stable@vger.kernel.org
+Signed-off-by: Jiale Yao <yaojiale02@163.com>
+---
+ drivers/net/wireless/mediatek/mt76/mt7925/main.c | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
 
------BEGIN PGP SIGNATURE-----
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/main.c b/drivers/net/wireless/mediatek/mt76/mt7925/main.c
+index 5993b31e1aae..25ad3bbdcd2c 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7925/main.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7925/main.c
+@@ -439,8 +439,10 @@ static int mt7925_mac_link_bss_add(struct mt792x_dev *dev,
+ 
+ 	ret = mt76_connac_mcu_uni_add_dev(&dev->mphy, link_conf, &mconf->mt76,
+ 					  &mlink->wcid, true);
+-	if (ret)
++	if (ret) {
++		mt792x_mac_link_bss_remove(dev, mconf, mlink);
+ 		goto out;
++	}
+ 
+ 	if (vif->txq) {
+ 		mtxq = (struct mt76_txq *)vif->txq->drv_priv;
+-- 
+2.34.1
 
-iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmq1FN8ACgkQJNaLcl1U
-h9Dkxwf+JLiki44QczCJPdR7+T+U9+ImnKHa4QgCTBVGtu3Eyic2dwfep5sTkxd+
-slZAs0royqIPXTRPtZmJnSrT2THSkvnSJ2YKQ6Oe5i/JbHDDIYxBoA5jqrX0hqUJ
-wAID5faIFg1aNzFABtragm00EcLB+tD4j3J/uDQQfm+52mFNW89HCIaSAYT3SvZB
-0tJGgE9qxYFTscyEpluvYGy+T6zl1zwWxd4ejiLBslNDW9rkfMycAcP43DL18TzE
-Kp5PX+i+djEYoo/j/e+w/bA0yxdRmvflbCsAFPFFvgWfK5PUtBcm3mS6t7JTCbvf
-AmTWpvf0CKPjopPgQv+uvXJZHePGzQ==
-=Mwwx
------END PGP SIGNATURE-----
-
---tI8QpB5ulHks/lh1--
 
