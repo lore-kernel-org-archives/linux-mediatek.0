@@ -4,58 +4,116 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 362ACC9830E
-	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Sep 2026 17:53:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8AA53C9830E
+	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Sep 2026 18:13:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:From:
-	To:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=I/aL5RPuPnylSm1p0HkGL1qSUDBTfmZ3Z2MEbsMXDSU=; b=b8pnW0r86ou5OGEpOKHRewy2aD
-	RrfqreA6cE3RjUSoyGg0VkuOPBC07eharKtLL9JIPBHpDhyFWkmDk+4t87D/hCHRh2uzKVcj7ayBQ
-	f+rh+Ll72CtJ0bSOeXT/GtAeKg9jgXRKqK/Iit8Sw76dPI3QSINT2Q1uc2goo6pCfjVNB0gHdNvH2
-	pf24PHgyrtjgv3MO8t07dX0xP9d+THKrb5NmSPnzPiSvEyBKPOOwBAKgaT1c31G71FajT6daUckrL
-	MMbAeRHH3PnDAulA1rAOrVdFlzczl9BSXsJfqMQWe4uBV4MOdjaurQrOQtlwMXci3zD57pCTLexMX
-	ds+T9hIw==;
+	bh=K5/HMVOS3XLD3/CmnfQQxYp5K4Q9PjCgcZilabgKRo8=; b=s5pcbpRLxa0FVm0tc2n1Yt2gTs
+	BrnajxLp2YgMjtwyx1IivDK+qCJaM/PolE8DnV2wKMxtNdMqDG2IHpMIwL1SUchGHVFV0uzXVJ6TN
+	78VZbxXrSY8QLcc2GnH4Xr6mOmFJdkYemXScdivYpmOKHI1wIEcvJWClTSv/noeQuzM5TLrDcN30T
+	gjHGz/UBSQOuHZatEvSWrPP3DxITijEHFPMStWeGUNC5aj90s99VqT4PEjNb1ydVtSpf83xntohD7
+	Umy6fQolL0vs+VvqNnnuyEmbAW1ZKTno3xmFLe/IhDpEw7GNK1MRtLFMrzMdy3zbKgJsb8Q8ikwnk
+	KqUvBb1Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x9ncx-0000000BqJO-3517;
-	Thu, 24 Sep 2026 17:52:59 +0000
-Received: from mail-106102.protonmail.ch ([79.135.106.102])
+	id 1x9nwY-0000000BsoX-3k1w;
+	Thu, 24 Sep 2026 18:13:14 +0000
+Received: from mail-yx2-x10.google.com ([2607:f8b0:4864:41::10])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x9ncu-0000000BqI7-2m2W
+	id 1x9nwW-0000000Bsnf-1zrU
 	for linux-mediatek@lists.infradead.org;
-	Thu, 24 Sep 2026 17:52:58 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=proton.me;
-	s=protonmail; t=1790272371; x=1790531571;
-	bh=I/aL5RPuPnylSm1p0HkGL1qSUDBTfmZ3Z2MEbsMXDSU=;
-	h=Date:To:From:Cc:Subject:Message-ID:In-Reply-To:References:
-	 Feedback-ID:From:To:Cc:Date:Subject:Reply-To:Feedback-ID:
-	 Message-ID:BIMI-Selector;
-	b=WJPHGQAEe3cTEweMZsJIt4mSmDHQ/ed+tPIAI5nvJi6Q88Kpic9vaRumxyb4C80Gp
-	 fIb4Y67EzqcaJXsGG3Jb1r7uPlIbaxXS2MkHEwGZhNlIUt1nYwWRdy29BUaftfnzrr
-	 Vo+UGts86jmpijzmIzKDjY8wEICzdRJCYdcUBKDx9B4p8dhAAK8wVXEC3XKppH4XIv
-	 agTQumlfcY+hk0PXGIyM6zZt8yxK71ID6xWMQ6D7kc+f/CIyR858Xo2kS+LxZefbch
-	 qWBI33/59Wm7vWEK60eFyDZtKtfUSP3PeWXvKGKq7ukxwiAdt94UBV9ipjjBbXbDwr
-	 p1x4QBJnVZOuA==
-Date: Thu, 24 Sep 2026 17:52:47 +0000
-To: Pauli Virtanen <pav@iki.fi>
-From: dt <derektern@proton.me>
-Cc: "linux-bluetooth@vger.kernel.org" <linux-bluetooth@vger.kernel.org>, "marcel@holtmann.org" <marcel@holtmann.org>, "luiz.dentz@gmail.com" <luiz.dentz@gmail.com>, "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>
-Subject: Re: [PATCH v2] Bluetooth: btmtk: don't generate bogus ISO packets from zero padding
-Message-ID: <uI6rH2cpN9VV5eZ8IdurmEg9qH4Vnth3L3uYaFHvcpXJ9ja2vBneScb0R_5lEDGlRO5T6Bb-hgXA2YIt_ZC3d_JdHo2HgGmxrxh_1GkkaCk=@proton.me>
-In-Reply-To: <e4b4da9d018ab26c5376fef47476b8852222eb07.camel@iki.fi>
-References: <fp1LLpMjte31CZfdRymzNx8DeLqozYHgFf2TAKxtIiHEkPcykA5jgtuDuZYcJTb5vPGpPkgB8GoVoX5_821oWe9NvenZdL4kwrxyCuanlw8=@proton.me> <e4b4da9d018ab26c5376fef47476b8852222eb07.camel@iki.fi>
-Feedback-ID: 213585229:user:proton
-X-Pm-Message-ID: df44e1e695f2945b59bb1b0669badff95c7f2914
+	Thu, 24 Sep 2026 18:13:13 +0000
+Received: by mail-yx2-x10.google.com with SMTP id 956f58d0204a3-66e4aa8d882so353200d50.0
+        for <linux-mediatek@lists.infradead.org>; Thu, 24 Sep 2026 11:13:11 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1790273590; cv=none;
+        d=google.com; s=arc-20260327;
+        b=A2Fyo3koVEwbnUQdfhPAt9cW70Dhii9aGBnev9LaB9l9hl0rm/+saOzzmMZkJPlhh+
+         RTKpdiExdIAo36ezuDEsA1jdcbw0cdwGt6UKc+5cfiUsGT/hVv2mZAydGfmyknXHgpDq
+         nujijbKx7LDDbnfzHIPQUHGxUFvHQGqnn2FYtzKPpTP2N4xn+VViEy3DVCQjEBwMcC3Z
+         cUl1gCy66AN2b5ayjJquE4jMvSLonPVTCeca1om5Jwc4arZui1WriTBC7qcG7lD8LvDW
+         hjT31+kMGE/azfTs7bWqA/FyvvYsF5Ri/HmDpGFGNn9S48nVbV9ygtt82Cv4brMVToYg
+         FL4A==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20260327;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=K5/HMVOS3XLD3/CmnfQQxYp5K4Q9PjCgcZilabgKRo8=;
+        fh=lyZtjk/qQD5bljwBg9+CLg2NSEoYRDbOfMsOTAGur2E=;
+        b=G+RxR9uxVOvKEoayLTcdhpWFnqiQJuIGqoldpmcrip9TscfSTbXDsG5VvEYxZjlc7T
+         eo/Wfor0uTvh5ymrDYZDYNjOg9M2JkTnkXyb/6tPDuM6GAktf6zEUyXXXY424sz1UQI6
+         d89ANhcuHKat1o08KEwmM7OIh/5DXzPzD/7XTYngcfD8SbOdRslhP93135XtHgwstiSw
+         4FHiikf6swk0mY3gQnnk1wltehbMUvSx8FRgnpUySkEEOMjxEj4ArZyLJBEFUte1S7rW
+         ZRIK6+423YtBT+17Ip3sEIS1Ua11H3WFLSKrcTCCqlYLmIR9xQmw4ME8rWcd7g3RWTnr
+         4FZQ==;
+        darn=lists.infradead.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20251104; t=1790273590; x=1790878390; darn=lists.infradead.org;
+        h=content-transfer-encoding:content-type:cc:to:subject:message-id
+         :date:from:in-reply-to:references:mime-version:from:to:cc:subject
+         :date:message-id:reply-to:content-type;
+        bh=K5/HMVOS3XLD3/CmnfQQxYp5K4Q9PjCgcZilabgKRo8=;
+        b=hu0s5fqWQiVSqNI60lJ0imualOOwHFG23fDqCdNoZRVeN0RAIr2NkRX9RUhsNN1xbq
+         OMxCvHSjIMlQvZfeLSd67nmgj3tSTYq/mJwz+YkS6o0kcsht+rFqoqPGtgMc8QaNYYzn
+         vCWsvXtO/kalhzuIm5SEPjGOh1kn3QN4VsYtBbGCTe747Kph3KE9WayxZeiOiugDH53o
+         nS8yxFE8nZsm3T0CMStfKM3SgcKpfLNNFs5jEzbfKvM8DKK+uxkYDVo+PF80fEg3NHbG
+         KzsPkRvS2hNmWqs5cOa4iC30bm2mEMB1VzeKDnEvJebNUIz58kyqbpY9T45+ZdEBPX34
+         7tEg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20260707; t=1790273590; x=1790878390;
+        h=content-transfer-encoding:content-type:cc:to:subject:message-id
+         :date:from:in-reply-to:references:mime-version:x-gm-gg
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+         :content-type;
+        bh=K5/HMVOS3XLD3/CmnfQQxYp5K4Q9PjCgcZilabgKRo8=;
+        b=CUZdld7sN9yZWozOHNlEUv3pEmdh9g3ndDseG0L+sP65TpskOzEQR8/HLbRkKfSG3r
+         Yk5l/vlJiGEZF3q+XYMPUIMX++NengMOAz5RxC5K3pCjCDEhOI0O2X1lwH3r5Ljqag7p
+         A4puXSY5UOns7Fmumco+Whq8j6uUemAOjUOJbKOBlZu+3GvQMzcZHFos/HP5fGxSaM2C
+         Zh/ojUb+GNFckhnCYAESdbp2ki+Noct1hK8fKPLHLvzUNmdROYQ2fXyy8loBt4gN9WeV
+         nkkmPhxFr0jSO5hUYFIioWODoN+530m09dKqc9s6J19Ov4eAhR5RcbO44o75W70OlqR1
+         kxBg==
+X-Forwarded-Encrypted: i=1; AKwUvBzmj+k1RDg0Vnnycrrw/byQ7XI03JwiQz7PtqaTWfgIC/EBqgCAs+QdmnuNmDhEwBICmYHB+3vkRW6Fpy4wzg==@lists.infradead.org
+X-Gm-Message-State: AFuF++krpoBBjhdp71NTk1rbl3uRpOqo3zZKFlWDyWUijU8q2JNFlAEl
+	3wyqlSMIKq0gZ9XpriyY7hiiBh03BpflYe+BJupT7yrCD+dU3ycb3nj3BBNPsNYe/PTf8zKvcYX
+	3WzjH2k6GZUCH8DW79I9iiF3UU6IHvIw=
+X-Gm-Gg: AYBFou0V4hmbCJWS1pLAJJLm/lwk2CiaLPL61nRaNczNLj4mUINpwwOorz/5sR0Y3ME
+	nO3ZTeXu02DKcmQgHFpeqc7YVJrU01VEO9NfWHvRR08PbUCOo6AY+AIVyAYOb65TfLCBkCCb6Y9
+	Xxd9cXzPYrOLw5LKefOeoC73F6QVVEosga3b9hcFgDRO+VwB84WYZrE03f8Te/F5SlcbVJ7SwoJ
+	sdjpAo8M6Jf7DxVRPoQZLCx2yJvdb2A+0iZx36G2w5yZXuls2hcz5pGevT7UbL1PcTZJBOqRnRo
+	g3qlsD+RWixM4xVOT1kpOfNGq62oHJCGRbwMGYfBNchXRrG7jzyfTlSn
+X-Received: by 2002:a05:690e:418b:b0:671:5ede:96e2 with SMTP id
+ 956f58d0204a3-672ed2603d0mr2064645d50.8.1790273590483; Thu, 24 Sep 2026
+ 11:13:10 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+References: <20260912191156.185448-1-sumeet4linux@gmail.com>
+In-Reply-To: <20260912191156.185448-1-sumeet4linux@gmail.com>
+From: Sumeet Pawnikar <sumeet4linux@gmail.com>
+Date: Thu, 24 Sep 2026 23:42:59 +0530
+X-Gm-Features: AclHuK9xd3dlB_Cgp98d7h2ns81HK8suGpMur6yXKcYJOLZ9LOtfHEkjox28BFY
+Message-ID: <CAJ9orWTDrTTRLqwnwu9YMQQKt0k2g7qZEpH6fDcMFcTbTs55KA@mail.gmail.com>
+Subject: Re: [PATCH v2 0/5] PM: Use %pe to print error pointers symbolically
+To: rafael@kernel.org, krzk@kernel.org, amit.kachhap@gmail.com, 
+	daniel.lezcano@kernel.org, thara.gopinath@gmail.com, talel@amazon.com, 
+	hayashi.kunihiko@socionext.com, mhiramat@kernel.org, mmayer@broadcom.com, 
+	viresh.kumar@linaro.org, sumitg@nvidia.com, peter.griffin@linaro.org, 
+	myungjoo.ham@samsung.com, kyungmin.park@samsung.com, cw00.choi@samsung.com, 
+	Frank.Li@nxp.com, s.hauer@pengutronix.de, matthias.bgg@gmail.com, 
+	angelogioacchino.delregno@collabora.com, sven@kernel.org, j@jannau.net, 
+	marcan@marcan.st, casey.connolly@linaro.org, sre@kernel.org, wens@kernel.org, 
+	t.schramm@manjaro.org
+Cc: bcm-kernel-feedback-list@broadcom.com, linux-samsung-soc@vger.kernel.org, 
+	kernel@pengutronix.de, imx@lists.linux.dev, 
+	linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
+	linux-arm-msm@vger.kernel.org, linux-pm@vger.kernel.org, 
+	linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260924_105257_308135_BE64765B 
-X-CRM114-Status: UNSURE (   7.88  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260924_111312_529371_E54D67ED 
+X-CRM114-Status: GOOD (  20.51  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,27 +128,74 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Pauli,
-
-On 16 September you wrote:
-> There was no comment / fix from Mediatek, so it probably should be
-> resent since it seems like driver bug.
-
-Could you refresh/resend this patch, or point me to a replacement if I
-have missed one? I checked Linux mainline, stable 7.2.7 and
-bluetooth-next today; btmtk_recv_isopkt() still lacks the padding filter.
-
-I am still carrying the local adaptation on my MT7925 and would like to
-retire it once an upstream fix is available. As reported on 17 September,
-firmware build 20260813113236 exhibited the phantom handle-zero ISO
-packets, and the adaptation removed them. I am still using that firmware.
-
-For clarity, my adaptation uses the existing device ID and omits the
-once-per-device warning; I have not hardware-tested the exact upstream
-v2. I can test your refreshed revision before supplying a Tested-by for
-that exact patch.
+On Sun, Sep 13, 2026 at 12:42=E2=80=AFAM Sumeet Pawnikar <sumeet4linux@gmai=
+l.com> wrote:
+>
+> This patch series is a cleanup for subsystems under power management
+> (linux-pm) that converts several instances of error pointer printing
+> to use the `%pe` format specifier instead of explicitly casting with
+> `PTR_ERR()`.
+>
+> Currently, many drivers use `PTR_ERR()` paired with `%ld` or `%li` to
+> print error codes returned as pointers. By switching to `%pe` and passing
+> the error pointer directly, the logging subsystem will automatically
+> print the symbolic error name (e.g., `-ENOMEM`, `-EPROBE_DEFER`) when
+> `CONFIG_SYMBOLIC_ERRNAME` is enabled, and gracefully fall back to the
+> numeric value otherwise.
+>
+> This change significantly improves the readability of kernel logs and
+> dmesg traces during debugging, without introducing any functional changes
+> or side effects.
+>
+> The cleanup has been applied across the following PM subsystems/drivers:
+> * powercap (intel_rapl_msr)
+> * thermal (cpufreq_cooling, devfreq_cooling, qcom)
+> * cpufreq (bmips, cppc, qoriq, s3c64xx)
+> * devfreq (imx-bus, imx8m-ddrc)
+> * power/supply (various battery and charger drivers)
+>
+ping for review request on above listed changes in this v2 series.
 
 Thanks,
-Derek
+Sumeet.
 
+> ---
+> changes in v2:
+>  - Krzysztof kozlowski suggested to use dev_err_probe instead of dev_err
+>    for *_probe() functions during review of v1 series. This will be done
+>    in different patch series.
+>  - Here in v2, reverted the changes for dev_err under *_probe() functions=
+.
+>
+>  - Link to v1: https://lore.kernel.org/all/20260906061755.5103-1-sumeet4l=
+inux@gmail.com/
+>
+> ---
+>
+> Sumeet Pawnikar (5):
+>   power: Use %pe to print error pointers symbolically
+>   devfreq: Use %pe to print error pointers symbolically
+>   cpufreq: Use %pe to print error pointers symbolically
+>   thermal: Use %pe to print error pointers symbolically
+>   powercap: intel_rapl: Use %pe to print error pointers symbolically
+>
+>  drivers/cpufreq/bmips-cpufreq.c            | 4 ++--
+>  drivers/cpufreq/cppc_cpufreq.c             | 4 ++--
+>  drivers/cpufreq/qoriq-cpufreq.c            | 4 ++--
+>  drivers/cpufreq/s3c64xx-cpufreq.c          | 5 ++---
+>  drivers/devfreq/imx-bus.c                  | 4 ++--
+>  drivers/devfreq/imx8m-ddrc.c               | 3 +--
+>  drivers/power/reset/macsmc-reboot.c        | 4 ++--
+>  drivers/power/supply/cpcap-charger.c       | 4 ++--
+>  drivers/power/supply/intel_dc_ti_battery.c | 2 +-
+>  drivers/power/supply/qcom_smbx.c           | 2 +-
+>  drivers/powercap/intel_rapl_msr.c          | 4 ++--
+>  drivers/thermal/cpufreq_cooling.c          | 4 ++--
+>  drivers/thermal/devfreq_cooling.c          | 4 ++--
+>  drivers/thermal/qcom/qcom-spmi-adc-tm5.c   | 4 ++--
+>  14 files changed, 25 insertions(+), 27 deletions(-)
+>
+> --
+> 2.43.0
+>
 
