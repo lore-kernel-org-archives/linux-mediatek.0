@@ -4,78 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E6DA7C98318
-	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Sep 2026 15:27:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 69EC2C98318
+	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Sep 2026 15:28:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=zBgNSeAKy3V9+glxTJ9u0MSNETvwYObNm1rdwrrdkBY=; b=YjvFw1ItGTubzQxys7QdXFFhzw
-	Xd/gTYt3quJoelYop1q7Yp/oJpOu+zw6fPzbOlPCgmDGrIXV3GmZD8xQhWnuufDK8Mt8JCzCvS/TM
-	/8kgpVOPopHWRxyaPq/ND9ZrAzGPAonVTt63ribCeZGaKeyapfnzOi1hqBqw83VH2KsO7c3XkVtRK
-	Zq2X0yaDpWdSsVeKJzwfzQypHY9IZCJ1k35uTLArwv9lX5B0VV8sLeuS+Q7SWbc8hMUMZC1SueF1q
-	9/RcTWPGjoRw+zzMo72bXzHJjTAtlLM/35Ok08ww2kHNw5EFacNBEojC6xKcxSldirZSDMjwLNX0M
-	f8Ud2EPg==;
+	bh=gRDrDqRSTSu1wAuAiMUnEXEYN6plI8hGn4/iodplTGo=; b=JMvHpwYUKh5HmA6prbo1p91uYX
+	k19ltJXkAn8iuz31moETXtemTDrcUwL0DnbeoG/nlSm1WWti8s6HlBOxuujvSE6/9QekJvDi6E9Lv
+	jnW1oNAkrqm9fxRcMCzIFW4HcfN096D15SLyhXw7iKOpR09O2a4M4Wu4aMaO6/gXMxpvPFPLZyQcJ
+	7C3xi1uQNzFHBjeMW12i8ZqF6QiZqvFYRnnHE2DH2vYzm3Lj2bmK/JE0+bCW0wHjDS07obV3Gyt1c
+	x8Rzzu0BSemCzjuE3I+1weQPEPQ8MhINf4su3TnwV2jvA1kzz4D3yA1icUQ6FJKxyB3tJH/NzXUyv
+	9ppoQYuQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x9lLz-0000000BOA5-1jIv;
-	Thu, 24 Sep 2026 15:27:19 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1x9lNS-0000000BP0j-0eTQ;
+	Thu, 24 Sep 2026 15:28:50 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x9lLn-0000000BO7D-2Ljo;
-	Thu, 24 Sep 2026 15:27:07 +0000
+	id 1x9lNM-0000000BOwi-38k7;
+	Thu, 24 Sep 2026 15:28:44 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id D0B2560200;
-	Thu, 24 Sep 2026 15:27:06 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 4D0431F00893;
-	Thu, 24 Sep 2026 15:27:06 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 6835B437A5;
+	Thu, 24 Sep 2026 15:28:44 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0D8D51F000FF;
+	Thu, 24 Sep 2026 15:28:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1790263626;
-	bh=zBgNSeAKy3V9+glxTJ9u0MSNETvwYObNm1rdwrrdkBY=;
+	s=k20260515; t=1790263724;
+	bh=gRDrDqRSTSu1wAuAiMUnEXEYN6plI8hGn4/iodplTGo=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=a5dqRwRL93QqwgSHbhAUOu0m78/vPnTDAi1chRy/CZASJetpaK0ln2X/uA6nAQEGT
-	 I6dqVGptKhE4GHYQE87CvdqAESw8/56C81+kdUytU7UweHHXRH5yiARqKM7BYH3n2J
-	 g6s7/zuIakZpPv3k518q2O7MdoVwP6cINUxbsf33tPPl8Mrm1134kY92zahoMwdA4t
-	 elbQGOLDh+7+VqaWR9xVRZdVcPDx8DP7jxt98ujI2mr8Y2gCqvTIHNeOOfpMCQpcoM
-	 UO7Ey57hD1iUhSRoIDaau/31H87iRlrLIUOGGBX3qIYnhQzuDIOFWBwWl+xsLXkreu
-	 Oj1FchTVG1Wng==
-Date: Thu, 24 Sep 2026 10:27:04 -0500
+	b=kvYGijbZcCWStjUumZ6i+KPYNbP0jIqli6M7dl/dHMn67wi85o0zhoAPxRDnbKfSh
+	 Tp7VWtUsZhQ3gRJjdzmodCsGU5TgfQqDwIZiyNDegT4CXV2FFrWJ6I1vXn2dRVzA+w
+	 tIn5vW/DybS4iTzSEKIeH1iajfTl+nYPZgeCawsUmIlsmNPi0gI1uZgwUMjQfOrHuR
+	 SQpYxvXvQqHhAcnEI5F1Q5GpSuG5ZYQTifv7rY6xwP5GneSX1c6eZCtj3p93Q7Xawv
+	 QKCWZzjA7ea6bgsZ98hY3cZNrvCyynQDbBykR/rrF6Guer+aH/v/6GjJBAmW/9rOrJ
+	 yH+YFXvbUHriw==
+Date: Thu, 24 Sep 2026 10:28:42 -0500
 From: "Rob Herring (Arm)" <robh@kernel.org>
-To: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
-Cc: "Martin K. Petersen" <mkp@kernel.org>,
+To: Christian Marangi <ansuelsmth@gmail.com>
+Cc: Jakub Kicinski <kuba@kernel.org>, Conor Dooley <conor+dt@kernel.org>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Vinod Koul <vkoul@kernel.org>,
-	Avri Altman <avri.altman@sandisk.com>,
-	Chunfeng Yun <chunfeng.yun@mediatek.com>,
-	"James E.J. Bottomley" <James.Bottomley@hansenpartnership.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Bart Van Assche <bvanassche@acm.org>,
-	Mark Brown <broonie@kernel.org>, linux-phy@lists.infradead.org,
-	devicetree@vger.kernel.org, linux-scsi@vger.kernel.org,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Alim Akhtar <alim.akhtar@samsung.com>,
-	Conor Dooley <conor+dt@kernel.org>, linux-kernel@vger.kernel.org,
-	Philipp Zabel <p.zabel@pengutronix.de>,
-	Liam Girdwood <lgirdwood@gmail.com>,
-	Manivannan Sadhasivam <mani@kernel.org>,
-	Chaotian Jing <chaotian.jing@mediatek.com>,
-	Neil Armstrong <neil.armstrong@linaro.org>,
-	Stanley Jhu <chu.stanley@gmail.com>,
-	Nicolas Frattaroli <nicolas.frattaroli@collabora.com>,
-	linux-mediatek@lists.infradead.org, kernel@collabora.com,
+	Heiner Kallweit <hkallweit1@gmail.com>,
+	Simon Horman <horms@kernel.org>,
 	linux-arm-kernel@lists.infradead.org,
-	Peter Wang <peter.wang@mediatek.com>
-Subject: Re: [PATCH v12 03/24] dt-bindings: ufs: mediatek,ufs: Add mt8196
- variant
-Message-ID: <179026362398.156393.9411770952322426875.robh@kernel.org>
-References: <20260914-mt8196-ufs-v12-0-9279d7ef814d@collabora.com>
- <20260914-mt8196-ufs-v12-3-9279d7ef814d@collabora.com>
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Andrew Lunn <andrew+netdev@lunn.ch>, linux-kernel@vger.kernel.org,
+	"David S. Miller" <davem@davemloft.net>,
+	"Chester A. Unal" <chester.a.unal@arinc9.com>,
+	Paolo Abeni <pabeni@redhat.com>,
+	Russell King <linux@armlinux.org.uk>, netdev@vger.kernel.org,
+	Eric Dumazet <edumazet@google.com>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Lee Jones <lee@kernel.org>, devicetree@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	Vladimir Oltean <olteanv@gmail.com>,
+	Daniel Golle <daniel@makrotopia.org>, mfd@lists.linux.dev
+Subject: Re: [PATCH net-next v22 3/9] dt-bindings: mfd: Document support for
+ Airoha AN8855 Switch SoC
+Message-ID: <179026372208.171717.56830935141482934.robh@kernel.org>
+References: <20260915123812.14747-1-ansuelsmth@gmail.com>
+ <20260915123812.14747-4-ansuelsmth@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20260914-mt8196-ufs-v12-3-9279d7ef814d@collabora.com>
+In-Reply-To: <20260915123812.14747-4-ansuelsmth@gmail.com>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,23 +85,18 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 
-On Mon, 14 Sep 2026 13:38:49 +0200, Louis-Alexis Eyraud wrote:
-> From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+On Tue, 15 Sep 2026 14:38:00 +0200, Christian Marangi wrote:
+> Document support for Airoha AN8855 Switch SoC. This SoC expose various
+> peripherals like an Ethernet Switch, a NVMEM provider and Ethernet PHYs.
 > 
-> The MediaTek MT8196 SoC's UFS controller uses a different set of supplies.
-> It is therefore not compatible with the MT8195. It also have an additional
-> 0.9V supply pin (AVDD09_UFS_1), that is specific to this SoC, thus not
-> currently described in the binding.
+> It does also support i2c and timers but those are not currently
+> supported/used.
 > 
-> Add a compatible for this SoC and new property for the additional supply,
-> and modify the binding correspondingly.
-> 
-> Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-> Reviewed-by: Chaotian Jing <chaotian.jing@mediatek.com>
-> Signed-off-by: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
+> Signed-off-by: Christian Marangi <ansuelsmth@gmail.com>
 > ---
->  .../devicetree/bindings/ufs/mediatek,ufs.yaml       | 21 +++++++++++++++++++++
->  1 file changed, 21 insertions(+)
+>  .../bindings/mfd/airoha,an8855.yaml           | 176 ++++++++++++++++++
+>  1 file changed, 176 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/mfd/airoha,an8855.yaml
 > 
 
 Reviewed-by: Rob Herring (Arm) <robh@kernel.org>
