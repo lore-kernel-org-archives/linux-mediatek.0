@@ -4,61 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6D4B8C98304
-	for <linux-mediatek@archiver.kernel.org>; Wed, 23 Sep 2026 19:16:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CF56FC98304
+	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Sep 2026 00:21:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=LfzNAPun3QfgyrfQ0AalSAcIX1q+GxGMokSjC8c+Aro=; b=TGemH2n7wQaD6dKCc6JnQnRT1g
-	uJXTuPoQyFEEp8CSajl9xx/hE5MiwJN5cMzw2CL/Pc9tma4+bYorZfbzQp7rkdbsIJuvVn+HMVsV3
-	rcRlCoyUnkzqqGLbR5fxWv+/M1lRbM0G9/W77srnXk9942lJ44hWEGJoy1wW2mvY2HgLL15UjwgDX
-	G4FiJZvawhIFXTDhgZw7XnKXw43gKJxguc0rGYynOTaoUp6aCIDdG8BRJtZxsez1QXITEdU0RXPLy
-	qTdtfQIhaQR3Qk/DJCFmzRXqKpAAfYwRLfR9FAs9T8KaHKwRT+ssdBBParbcbNtEt2WFYAaXT6+bW
-	i3gco5oQ==;
+	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=m+GWLIwFpPKVB13qnLI5Bw0feO/05wfn2yVZo+nfxu0=; b=qhfoNVK9r02dqWjQ5N88UJXa5n
+	4q+HoxZCxCYw1JGJAoQwzU5dxyY/KkeB/Wy3W4CsWKYnXHKqMEY54Tua5Rkbvg1gyH6eIz+ce5wMR
+	vHdiQfkr4W4Yr+nVPZjyMdxBcvkETZY7pmuHSr8B7ANcna2JiZxH7NVMgxkRPm/SMGsQyu/GQq2+U
+	IqtyFeveOoejlza1KgryGjbnjHE8V5IQkuAO/UTgjbjM29jrBDjbOJ+3+WzZQwXy/0Qafe77bIThY
+	q+12qMxHSh6xZOIX+LhxwaunSl4IKjSA2Eqxfa5eJxrFU1MWTUl4aypBft45POUjWxeBS3eRGv9ma
+	MX7sIa6g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x9SRh-00000009JGW-0R3G;
-	Wed, 23 Sep 2026 19:15:57 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1x9XDG-00000009kUq-1d1E;
+	Thu, 24 Sep 2026 00:21:22 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x9SRc-00000009JFZ-2ULh;
-	Wed, 23 Sep 2026 19:15:52 +0000
+	id 1x9XDD-00000009kUY-3vIf;
+	Thu, 24 Sep 2026 00:21:19 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id A537C600AA;
-	Wed, 23 Sep 2026 19:15:51 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 263A31F000FF;
-	Wed, 23 Sep 2026 19:15:51 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 4E88943F94;
+	Thu, 24 Sep 2026 00:21:19 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6D6D51F00893;
+	Thu, 24 Sep 2026 00:21:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1790190951;
-	bh=LfzNAPun3QfgyrfQ0AalSAcIX1q+GxGMokSjC8c+Aro=;
-	h=From:To:Cc:Subject:Date;
-	b=fVP6HfkLAXWcUzphziNJN7eEDSmmN69m2vrUKsHXa4E+6z+rHChjym6bn4gNl7D1/
-	 ThA2pXoKKCFYGWh+DsbbkuvhqG9CYGRLI6qE5xWT/iHb8KXGo9MdvX/o3bxXEj064P
-	 zOP8qBxiE6aNIcPi5/nhASftTMm1aCUGu/AXujrrvysdbvuTzF12X8OHdViIlwWitl
-	 luwRBeaOlFdtQ/lO7kiMqNYG7NrvEXlf6nJtsUN2FZekVdBeB0n8dUUWgYOX3QxQx+
-	 061xOF2nqX3gjGrtgcXC/beEQRpIAIMEu9Ve3DHPeRkimnp+uNVBUicEJhf6YjDp7J
-	 C9Wt1+34wfC5g==
-From: "Rob Herring (Arm)" <robh@kernel.org>
-To: Yong Wu <yong.wu@mediatek.com>,
-	"Joerg Roedel (AMD)" <joro@8bytes.org>,
-	Will Deacon <will@kernel.org>,
-	Robin Murphy <robin.murphy@arm.com>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
+	s=k20260515; t=1790209279;
+	bh=m+GWLIwFpPKVB13qnLI5Bw0feO/05wfn2yVZo+nfxu0=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References;
+	b=jzQSwC+wFeBtS3T3yLqWeaGdao287ksBdEwlubwx+JX5xLwQLvUNZ+EawYWmxUD/4
+	 JCcKYmkiwPbIa3FOtjrOz2R5CUcohmmLZm+DWVynYrMzbY8uimDb8mvqGV/QVGyq9h
+	 VjAZEcj2bFnzbkp8VGW/DQqAzI/9sVwQFNt6lzMzyUwQRCsIdtF2CmBOiXtzFy8C/4
+	 J01wkM60/5ReUW5kEWssq2IHUpnzyuwHfQQ59DiwQHPOXPiSuRzbFLzpJgDf7xRtk8
+	 qEJsmypvEI7V8fZxr4jx7Ey/Iy124DamTXLiPtz8nwUbAsG6/E2XyiJ1iPdGjUphpd
+	 xB9qG+32pzRoQ==
+From: Sasha Levin <sashal@kernel.org>
+To: stable@vger.kernel.org
+Cc: Sasha Levin <sashal@kernel.org>,
+	Artem Dinaburg <artem@trailofbits.com>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	Gao Xiang <xiang@kernel.org>,
+	Chao Yu <chao@kernel.org>,
+	Yue Hu <huyue2@coolpad.com>,
+	Jeffle Xu <jefflexu@linux.alibaba.com>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: iommu@lists.linux.dev,
-	linux-mediatek@lists.infradead.org,
-	devicetree@vger.kernel.org,
+	linux-erofs@lists.ozlabs.org,
 	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org
-Subject: [PATCH v2] dt-bindings: iommu: Describe MT8195 infra IRQs
-Date: Wed, 23 Sep 2026 14:15:45 -0500
-Message-ID: <20260923191546.2209201-1-robh@kernel.org>
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	Sandeep Dhavale <dhavale@google.com>,
+	Will Shiu <will.shiu@mediatek.com>,
+	Gao Xiang <hsiangkao@linux.alibaba.com>,
+	Alexandre Mergnat <amergnat@baylibre.com>
+Subject: Re: [PATCH 6.1.y] erofs: Fix detection of atomic context
+Date: Wed, 23 Sep 2026 20:21:00 -0400
+Message-ID: <2026-09-23-daily-reply-0011-re-erofs-atomic-context-detection-6-1@kernel.org>
 X-Mailer: git-send-email 2.53.0
+In-Reply-To: <20260922200448.27724-1-artem@trailofbits.com>
+References: <20260922200448.27724-1-artem@trailofbits.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-BeenThere: linux-mediatek@lists.infradead.org
@@ -75,55 +81,12 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The MT8195 infra IOMMU has one fault interrupt per IOMMU bank with 5 banks.
-Keep other MediaTek IOMMUs limited to one unnamed interrupt.
+> [ Backport to 6.1.y: the source change is unchanged; only its location
+>   in z_erofs_decompress_kickoff() differs. ]
 
-Assisted-by: LLM
-Signed-off-by: Rob Herring (Arm) <robh@kernel.org>
----
-v2:
- - Drop unnecessary 'interrupt-names' addition
----
- .../bindings/iommu/mediatek,iommu.yaml         | 18 +++++++++++++++++-
- 1 file changed, 17 insertions(+), 1 deletion(-)
+Queued for 6.1, thanks.
 
-diff --git a/Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml b/Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml
-index 79c573c47b08..cbda221a4fc5 100644
---- a/Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml
-+++ b/Documentation/devicetree/bindings/iommu/mediatek,iommu.yaml
-@@ -100,7 +100,10 @@ properties:
-     maxItems: 1
- 
-   interrupts:
--    maxItems: 1
-+    minItems: 1
-+    maxItems: 5
-+    description:
-+      A single interrupt or one interrupt per bank.
- 
-   clocks:
-     items:
-@@ -155,6 +158,19 @@ required:
-   - '#iommu-cells'
- 
- allOf:
-+  - if:
-+      properties:
-+        compatible:
-+          contains:
-+            const: mediatek,mt8195-iommu-infra
-+    then:
-+      properties:
-+        interrupts:
-+          minItems: 5
-+    else:
-+      properties:
-+        interrupts:
-+          maxItems: 1
-   - if:
-       properties:
-         compatible:
 -- 
-2.53.0
-
+Thanks,
+Sasha
 
