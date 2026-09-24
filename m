@@ -4,67 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 80702C98318
-	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Sep 2026 15:50:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E52D3C98318
+	for <linux-mediatek@archiver.kernel.org>; Thu, 24 Sep 2026 16:21:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=adX4Y7r/DWNGOUOGLuLi9FeUPsBpo9HjSjYThCKsYbI=; b=cT10Q9mSyRgCqaNSmbnXzZd5FO
-	6Dt2CBxfExhwa9KxJ4LAMHV9tkAFtAT+F+LeoD3F5N2nnKToq/UclHDYEnQRz7XuVxYp9BI7HZicR
-	gbDdhi8PZ1BGACSFMbLoTv7eQJl4LhhkpO8j3yIfRxt1nl93DYpDS2U4VV0B5buOzFQ+MzzISCtCF
-	hTGB1J/HcOxyFBD2+IS1lcxq0L8/9mDndiCEEPqXTupKw/xiwSsM5pcCLd0sISKhupxIkZn5A6hi1
-	4chy6vRo5xEgKspxsWQWqSSe0kKFfdtfIHju6j4JSovWJl0QXULTEINuvRjom6ONpGpMxO0J5aox3
-	I8c2FYjg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
+	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=t267H+Xjy70DfN6XTLGNuJg/rzEU4tIA4A29SQzOONw=; b=49anKHCdTnfgP+nwbPaVHUGvU8
+	yG6Q6CQ73Ex5zrIOyWJqTvdWud2c028Bt9L7JS6U6WFsqHBmX/dDhgaJU2QiGApIFWSXfcQ0YrFLQ
+	cK9w6DyOfndgAR6kSHje0Vn/G070mptNmi3/81wWYv7GZpKYKF/02w4UethFP73IYnkhaANqtO5eg
+	BxOOTCH+jaSvcEsKMuzCaaQtlvtt/1oX6KPN6SyX4aIcZp/5DjFIIggiBOQo7+H4INzPlbjTVFtYX
+	2fAJhcnMVM02OkXCS7BRbxUqZtpU0isaL7GWSdlGz/83wLxu6pqtdBLatXejX3BQx0lAa5JCtTW9o
+	/dbSNMiQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x9lhw-0000000BU6f-1pmA;
-	Thu, 24 Sep 2026 15:50:00 +0000
+	id 1x9mCF-0000000BaSK-3bzy;
+	Thu, 24 Sep 2026 16:21:19 +0000
 Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x9lhv-0000000BU5q-2gSD;
-	Thu, 24 Sep 2026 15:49:59 +0000
+	id 1x9mCE-0000000BaRO-0EqW;
+	Thu, 24 Sep 2026 16:21:18 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 72346601DE;
-	Thu, 24 Sep 2026 15:49:57 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id DD26B1F000FF;
-	Thu, 24 Sep 2026 15:49:56 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 68DFB601EF;
+	Thu, 24 Sep 2026 16:21:17 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1F3C01F000FF;
+	Thu, 24 Sep 2026 16:21:17 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1790264997;
-	bh=adX4Y7r/DWNGOUOGLuLi9FeUPsBpo9HjSjYThCKsYbI=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=QtXtATge/W7X1F2Ei72Hf74vg2JjbkFPhXOpPkdoRM8Am/OBoTB9RCP1v9YcJFvhx
-	 jvFhZ/DnQzwb9qCQpXxR1kpwO7u6skpqsEe1FfppoRjcEi3WLdY5fiCLjnCXd4HUHk
-	 Hi1aC5nUBKoVXs3b58jwbSw9fqQd6HEptgZ5yFj8hy6T2ZRQhjpYVgOo0pIOGymFVm
-	 ETlbFNVSEn1ymefhIaAzE+5GmtezyjM+bTtC0e0VNA7CYWwWvYsKMaHiVQwZbKmDS4
-	 yJcLCQDXO4elf66tJe77EoZs7q1Prz+vZjHeZEuOJmWRoyNpX85R3xJOcPbSAtZqKf
-	 YFEqH01/szJ8Q==
-Date: Thu, 24 Sep 2026 10:49:55 -0500
-From: Rob Herring <robh@kernel.org>
-To: netdev-bot+sashiko@kernel.org
-Cc: cjd@cjdns.fr, netdev@vger.kernel.org, andrew@lunn.ch, olteanv@gmail.com,
-	davem@davemloft.net, edumazet@google.com, kuba@kernel.org,
-	pabeni@redhat.com, krzk+dt@kernel.org, conor+dt@kernel.org,
-	matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
-	chester.a.unal@arinc9.com, daniel@makrotopia.org,
-	linux@armlinux.org.uk, arinc.unal@arinc9.com,
-	Landen.Chao@mediatek.com, dqfext@gmail.com, sean.wang@mediatek.com,
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, naseefkm@gmail.com,
-	b.larsson@gmx.com
-Subject: Re: [PATCH v2 net-next 6/7] dt-bindings: net: dsa: mediatek,mt7530:
- add econet,en751221
-Message-ID: <20260924154955.GA337010-robh@kernel.org>
-References: <20260915174643.253660-7-cjd@cjdns.fr>
- <178967820050.22033.18093714968849770785@kernel.org>
+	s=k20260515; t=1790266877;
+	bh=t267H+Xjy70DfN6XTLGNuJg/rzEU4tIA4A29SQzOONw=;
+	h=Subject:From:Date:References:In-Reply-To:To:Cc;
+	b=WlVAKJYUG2h2BEfgMlJvmLiLOXQULaKIAFv1ri2EAsxSqRkwzMrkypjDnGgKtaDdT
+	 9eads90jWb6XOqr7Rt6VszN70xqoKPgdhLqs4EH7MV2J3ylXX1geSBfc/umwtqPfOs
+	 F10Z8t+TIkFACe5weI3TTYGU5kpeNH5vUbM9MEgOXYAZ98ixZ+pVBKWGlZm3pLkqlf
+	 CpOBNXHuPO84rKfj+nTuf5M0B0zfFfe9A4Q6ULM34yyelRjYXOWRypObeRoT0gVg91
+	 KyMEzF9mpxC/D2G5CIqskRoeNAU5rI+r/4aGRDuB7sByBDileFaS3svttqPMcxRA8z
+	 ptS/ABXK6R8CA==
+Received: from [10.30.226.235] (localhost [IPv6:::1])
+	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id 5692F3A566CE;
+	Thu, 24 Sep 2026 16:20:07 +0000 (UTC)
+Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <178967820050.22033.18093714968849770785@kernel.org>
+Subject: Re: [PATCH net v2 0/2] net: dsa: mt7530: fix two crashes on driver
+ unbind
+From: patchwork-bot+netdevbpf@kernel.org
+Message-Id: <179026680615.1636687.12670916217033906178.git-patchwork-notify@kernel.org>
+Date: Thu, 24 Sep 2026 16:20:06 +0000
+References: <20260918015020.2518315-1-f@lex.la>
+In-Reply-To: <20260918015020.2518315-1-f@lex.la>
+To: Aleksei Sviridkin <f@lex.la>
+Cc: netdev@vger.kernel.org, chester.a.unal@arinc9.com, daniel@makrotopia.org,
+ andrew@lunn.ch, olteanv@gmail.com, gerg@kernel.org, davem@davemloft.net,
+ edumazet@google.com, kuba@kernel.org, pabeni@redhat.com,
+ matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,123 +75,36 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Sep 17, 2026 at 08:50:00PM +0000, netdev-bot+sashiko@kernel.org wrote:
-> Thank you for your contribution! Sashiko AI review found 7 potential
-> issue(s) to consider:
-> 
-> Critical: 0 · High: 1 · Medium: 4 · Low: 2
-> 
-> - [High] net: dsa: lockless child_bus access causes MDIO race condition
-> - [Medium] The new switch-device compatible `econet,en751221`
->   (mediatek,mt7530.yaml line 126) is the identical string already…
-> - [Medium] The new `econet,en751221` conditional (mediatek,mt7530.yaml
->   lines 369-377) applies only `$ref: "#/$defs/mt7530-passthrough-dsa-…
-> - [Medium] The series patch "net: dsa: mediatek: support MDIO switch
->   downstream of MMIO switch" moved `mt7530_setup_mdio_irq()` out of…
-> - [Medium] In passthrough mode `mt753x_cpu_port_enable()` (added by the
->   series patch "net: dsa: mediatek: add support for passthrough mode")…
-> - [Low] The paragraph added to the binding description
->   (mediatek,mt7530.yaml lines 32-36) states that "EcoNet EN751221 SoCs…
-> - [Low] Concern that neither `econet,en751221-switch` nor
->   `econet,en751221` has any consumer: at this commit…
-> 
-> --
-> 
-> dt-bindings: net: dsa: mediatek,mt7530: add econet,en751221
-> 
-> This adds two compatible strings to the MT7530 binding: econet,en751221-switch
-> for the memory mapped switch built into the EcoNet EN751221 SoC, and
-> econet,en751221 for the MT7530 multi-chip module that some EN751221 packages
-> attach to port 5 of the on-die switch via TRGMII. A new $defs block constrains
-> the DSA link port of the multi-chip module.
-> 
-> A few questions on the schema below, plus two observations about other
-> patches in the same series.
-> 
-> > diff --git a/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml b/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml
-> > index e29fb86934981..106c4087528d7 100644
-> > --- a/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml
-> > +++ b/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml
-> > @@ -29,6 +29,12 @@ description: |
-> >    and the switch registers are directly mapped into SoC's memory map rather than
-> >    using MDIO. The DSA driver currently doesn't support MT7620 variants.
-> >  
-> > +  EcoNet EN751221 SoCs have a memory mapped MT7530 with 3x 10/100 PHYs and 1x
->                                                           ^^^^
-> 
-> [Severity: Low]
-> Should this be 4x 10/100 PHYs?  The commit message of this patch says
-> "ports 0..3 are 10/100 only, port 4 has a gigabit PHY", which is four fast
-> ethernet PHYs, and en751221_mac_port_get_caps() in the later driver patch of
-> this series agrees:
-> 
-> 	/* EN751221 ports 0..3 are connected to the integrated FE PHYs. */
-> 	case 0 ... 3:
-> 		__set_bit(PHY_INTERFACE_MODE_INTERNAL, config->supported_interfaces);
-> 		config->mac_capabilities |= MAC_10 | MAC_100;
-> 
-> Since there is no in-tree EN751221 switch DTS yet, this paragraph is the only
-> port reference a DT author has.
-> 
-> > +  gigabit PHY. Some EN751221 chips such as EN7513G and EN7526G have a multi-chip
-> > +  module implementation of the MT7530 as well as the on-die switch. In these
-> > +  packages, the multi-chip module is connected to port 5 of the on-die switch
-> > +  via a TRGMII link.
-> > +
-> >    There is only the standalone version of MT7531.
-> >  
-> >    Port 5 on MT7530 supports various configurations:
-> > @@ -111,6 +117,14 @@ properties:
-> >            Built-in switch of the EcoNet EN7528 SoC
-> >          const: econet,en7528-switch
-> >  
-> > +      - description:
-> > +          Built-in switch of EcoNet EN751221 SoC
-> > +        const: econet,en751221-switch
-> > +
-> > +      - description:
-> > +          Multi-chip module MT7530 in EN751221 SoC
-> > +        const: econet,en751221
-> 
-> [Severity: Medium]
-> Can this string collide with the existing SoC compatible?  econet,en751221 is
-> already documented as the EN751221 root node compatible in
-> Documentation/devicetree/bindings/mips/econet.yaml:
-> 
->   properties:
->     $nodename:
->       const: '/'
-> 
->     compatible:
->       oneOf:
->         - description: Boards with EcoNet EN751221 family SoC
->           items:
->             - enum:
->                 - smartfiber,xp8421-b
->             - const: econet,en751221
-> 
-> and arch/mips/boot/dts/econet/en751221.dtsi uses it on the root node:
-> 
->   / {
-> 	compatible = "econet,en751221";
-> 
-> dtschema derives the select clause of a binding from the strings enumerated
-> under properties:compatible, so after this patch mediatek,mt7530.yaml is also
-> selected for that root node.  The switch schema has required: [compatible,
-> reg], unevaluatedProperties: false, and via the new conditional below also
-> required: [mediatek,mcm] (which in turn pulls in resets and reset-names).  Does
-> make dtbs_check on arch/mips/boot/dts/econet/en751221_smartfiber_xp8421-b.dtb
-> now report the root node as an invalid MT7530 switch node?
-> 
-> The reverse direction looks affected too: a switch@... node carrying
-> compatible = "econet,en751221" is selected by mips/econet.yaml and fails its
-> $nodename: const: '/' and its two-entry board/SoC compatible list.
-> 
-> The analogous MT7621 case does not collide because the SoC root uses
-> mediatek,mt7621-soc.  Since the SoC compatible is already released, would a
-> distinct string for the switch, e.g. econet,en751221-mcm-switch, work here?
+Hello:
 
-This needs to be addressed.
+This series was applied to netdev/net.git (main)
+by Jakub Kicinski <kuba@kernel.org>:
 
-Rob
+On Fri, 18 Sep 2026 04:50:18 +0300 you wrote:
+> Unbinding the MT7530 driver from an MT7531 dereferences NULL in
+> regulator_disable(). On a Netcraze NC-1012 (MT7981B + MT7531, 6.18.44):
+> 
+>   # echo mdio-bus:1f > /sys/bus/mdio_bus/drivers/mt7530-mdio/unbind
+> 
+> oopses there, and the build it was found on sets CONFIG_PANIC_ON_OOPS, so
+> the board goes down with it. Fix that and the same command gets as far as
+> mt7530_remove_common(), which disposes interrupt mappings the switch's own
+> regmap-irq chip still owns; the regmap-irq thread then faults in
+> handle_nested_irq() later in the same teardown. rmmod reaches both, since
+> mdio_module_driver() calls .remove on module exit.
+> 
+> [...]
+
+Here is the summary with links:
+  - [net,v2,1/2] net: dsa: mt7530: fix NULL dereference on unbind of MT7531 and MT7621
+    https://git.kernel.org/netdev/net/c/c2cdef41e0b4
+  - [net,v2,2/2] net: dsa: mt7530: leave the MDIO IRQ mappings to regmap-irq
+    https://git.kernel.org/netdev/net/c/0d80ba0a204c
+
+You are awesome, thank you!
+-- 
+Deet-doot-dot, I am a bot.
+https://korg.docs.kernel.org/patchwork/pwbot.html
+
+
 
