@@ -4,108 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 79A59C9830E
-	for <linux-mediatek@archiver.kernel.org>; Fri, 25 Sep 2026 16:59:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BC6E9C9830E
+	for <linux-mediatek@archiver.kernel.org>; Fri, 25 Sep 2026 17:10:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=P2oQDwCwCo1gfWj8hUM2bE3rJ8xWs7DjrsEeE/nug/Y=; b=p1pj2AeOUo6vVo/xi3Dwm9j4sL
-	pbljGj7FdZ0dNoyc/YdxOypIuSaRoH9IdIwvpbsF6vFzhitJ6Y4u2EnB7oVehlen7WJJlDCRDNDiw
-	jiQEsgIk0gTMSU0VZWf9XT/ED/bbNTjMsKPqeE78qG7g1Wgw4EjGAf7aoVFRvYNPbVqkJGYRc4tf/
-	PjJJ/7it6QK+tPx0rFg7mvxVjG0cnlIj8gKudM965VW4QTNj3d9vK1cZ62tnFwiZ/gPirFRhznssp
-	PKb/ypQN9WxE7LA0FUlp49Xtxs5pavWNoTVC4PuDli1zYK8yuPkqsrt4r5eFy4Ekyo0DTu7gUQZ5A
-	CMG4YFPQ==;
+	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=U2firQdSXga2Oxdw//orFvwTW23XIbwFiY3tULCcauc=; b=do2tpqn5m5MZwADZYrnMRZv5uz
+	53jsgI+gFfKb742VVCMpqk983bYg2/DJDzk4htFKszu3lG0rEy/n/Ku5Ezm7vKS/N2G7HnY+qXk/K
+	o7BJgML4K1+PrIX4hAHTmIIutl04OJDed7DP80arR0ejAGFiuVS5T20zO6if3pd13Z+HSU/zahn+X
+	eEw9uLdpjenfAZE2Q017ITqGfXIMvSSa9ZHX9aIeih8fQZCkLwht5simGXUArptV81kmiD4mV3rc8
+	vQo0tuuxcIOwlMDHngJSKuTMkMU/RqKnwP6zTc5/CVs0sgdJE9NM8BRxIjx0IPNew6yEGF6mZWcM3
+	r8sDNPGw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xA9H3-0000000E1e2-07UB;
-	Fri, 25 Sep 2026 16:59:49 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1xA9RJ-0000000E2on-42nI;
+	Fri, 25 Sep 2026 17:10:25 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xA9H1-0000000E1db-3OO3
-	for linux-mediatek@bombadil.infradead.org;
-	Fri, 25 Sep 2026 16:59:47 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
-	:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:Content-ID:
-	Content-Description:In-Reply-To:References;
-	bh=P2oQDwCwCo1gfWj8hUM2bE3rJ8xWs7DjrsEeE/nug/Y=; b=EIkHt2PQ7r4XAm/QlI2mGqdz5k
-	VnrqZmn9Q2P5PThbibzSSIXoFlud4YCAZxtnkENQYkQ5aTKdz92Na1KAGUoeNDvmhRcO2O8EokWx1
-	plxXUWPXYzn0SX3IGS2k9AZPfQeqAItAFAtKDVsmxL7JFXnq/q3fexOEYpBTHkZVdTGvFkUzPmW3V
-	YF/k5+YrwkfNTsANtS8RVcyvFBGxq5Adcnw03szfrpn5ClfeppLeO9efek+Nc6cb6Ig7PlnH0UUn3
-	DXLXfJQkCoEt8mye+k8fb8ADHNbciog5bbhn86cpZOZ6fMdKqb/cEqhfwxq/wCAOBLIv4v6299nST
-	d5pTsLOw==;
-Received: from mail-ed1-x532.google.com ([2a00:1450:4864:20::532])
-	by desiato.infradead.org with esmtps (Exim 4.99.2 #2 (Red Hat Linux))
-	id 1xA9Gy-0000000HANr-39zY
-	for linux-mediatek@lists.infradead.org;
-	Fri, 25 Sep 2026 16:59:46 +0000
-Received: by mail-ed1-x532.google.com with SMTP id 4fb4d7f45d1cf-6aaf28a86b9so838595a12.1
-        for <linux-mediatek@lists.infradead.org>; Fri, 25 Sep 2026 09:59:44 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1790355583; x=1790960383; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
-        bh=P2oQDwCwCo1gfWj8hUM2bE3rJ8xWs7DjrsEeE/nug/Y=;
-        b=jhJ3NXUcVwWtHYK9hgo/JrBYcgxZkf85S8oK6XrM1omazPFFmHA19dKsfLTTCpBBQy
-         Ew99Skii3/3wTGsWLmHb1vZV3cv0N9oC6WEkD6tnr4K49PVaII/IC30nRRJrsv1ehTrj
-         lYrJkuPauF/gu1RrTl/mXQfeK3jcc6znQtZ+n33l7hLXOrtOSH6qy1w9L3Lrqs830oUS
-         S61Zn9YzfhqBnrVHAKH/DgnOzPgQit9aMaq3/AH/iHvgr7uO/gWd7BcscoYavmqhW403
-         RF6ONnEGEDaBkCCcNkdpj/PuB9vB9phszlqTYh1WuoZwfmVW46IPAwGmP8fs+OI7h60f
-         nvDQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1790355583; x=1790960383;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to:content-type;
-        bh=P2oQDwCwCo1gfWj8hUM2bE3rJ8xWs7DjrsEeE/nug/Y=;
-        b=WzaG9ONeHJtgYTZaD1Vu7m9hZqcUNtUZ0pvh9cd9Cq/ZBr9Q7+m4Q6SyWcKiKNIpnA
-         2QNWaN3eDtHyZAl8QlCKEp7s5PNks3QPfi+R/IvQ+aKf9riiQeAwwOXNPn6jmPsXm+SQ
-         2MSL0JInNG3ALnSfo1djhkHxtoU0gLEFHT+y6GsdMuw1SQLeMvCbttrXlmR04LjTavjx
-         A0mzKJRwMiSBAu74s6/anrpAdQdy2i6Xo/gigYcvDGyezJcOsYf78UL9Kpt4mLt+jMfV
-         XM2x7Mq4Y32ypa/6CB+OxkPKQdGc8qi7/7scMj7AKBKLYTD2vVukJrjFrAkBPEA05kox
-         jr7g==
-X-Forwarded-Encrypted: i=1; AKwUvBzCSPIrkrDXnhzhTrQ6vXbGxHLKF6eJx06swKcrgu3tu+3X/aklF4VtbixdWbVUVO5g8Yb+WQPdbWJv1ikb1A==@lists.infradead.org
-X-Gm-Message-State: AFuF++nWhDZANvg9KAFNEkx3XnhcarOAXCbFfvwaJnn/eV50dkUnqKVW
-	ESPf9rQjc+sj/3S7RPDeO5nrY3hJPBIaF3p/UMMYSTfNgETCIPx7ERqV
-X-Gm-Gg: AYBFou0c8oJw8joewRQwFdm0X8VAM5e/gBpYxvZZNY0r+Y38xlic648dQalcOX3MywQ
-	X0gyYNGzfNwoa+bmY+/TXaBjnb/WLG0G6k9dXK3PPae21Os9CVJHC3tM4kNHLTMr2unwBwdO3as
-	/wGJEdpZ5UN3V6RfzZ/EEhkh74+XMhjrRsCBu7kh1gvH82o2jaGMkrVbEH920+ALWlRHE/k2HXQ
-	LwZWwMEEEK18Y6NhUm2HtODAOPSVpHWQ49uQt3FdDDpZaKKd6B51nlQF85UBUK5cAADo7xZiA/g
-	CdKayd/oxNLGDl4AJuW17JFU9MG2QazNOH6sQz1KYJ+kWIbVuJ1ao/sufIHl/ifipzL/IgGG1bZ
-	rA+7K4MiQk2mllfdv6QzaGWZgig5wKrUVHW/i4efeVGxTRhgAqT3REDUuAjAZeo64S6hSfuhb5Z
-	Qy5fnGW5hpwZERuLhbWDb0+KP9f/bOE4ZhQzE5H6gxeROYxV3UN8zZVrtXRhMkJDFwgM0XFkXia
-	xVnM/x0tlxiFpqL3vSuMwplzDe+W11Tk25qJ5f5MyXRbulRPHk1ZvUOyaq8Hinc
-X-Received: by 2002:a05:6402:12d0:b0:6aa:ab94:4a36 with SMTP id 4fb4d7f45d1cf-6aac8f1b94fmr4157302a12.8.1790355582773;
-        Fri, 25 Sep 2026 09:59:42 -0700 (PDT)
-Received: from Ansuel-XPS24.localdomain (host-79-29-83-136.business.telecomitalia.it. [79.29.83.136])
-        by smtp.googlemail.com with ESMTPSA id 4fb4d7f45d1cf-6aae5cb9b0asm1321152a12.9.2026.09.25.09.59.36
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 25 Sep 2026 09:59:37 -0700 (PDT)
-From: Christian Marangi <ansuelsmth@gmail.com>
-To: Christian Marangi <ansuelsmth@gmail.com>,
-	Liam Girdwood <lgirdwood@gmail.com>,
-	Mark Brown <broonie@kernel.org>,
-	Jaroslav Kysela <perex@perex.cz>,
-	Takashi Iwai <tiwai@suse.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-sound@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Cc: kernel test robot <lkp@intel.com>
-Subject: [PATCH] ASoC: airoha: Fix sparse warning for AN7581 AFE PCM
-Date: Fri, 25 Sep 2026 18:59:17 +0200
-Message-ID: <20260925165919.5407-1-ansuelsmth@gmail.com>
-X-Mailer: git-send-email 2.55.0
+	id 1xA9RI-0000000E2nx-0tiR;
+	Fri, 25 Sep 2026 17:10:24 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by sea.source.kernel.org (Postfix) with ESMTP id 98016434F7;
+	Fri, 25 Sep 2026 17:10:23 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id A37D81F000FF;
+	Fri, 25 Sep 2026 17:10:20 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1790356223;
+	bh=U2firQdSXga2Oxdw//orFvwTW23XIbwFiY3tULCcauc=;
+	h=From:To:Cc:In-Reply-To:References:Subject:Date;
+	b=hyHfbKVesXRG1nwKuJHm9f3ENMwBl6TOyR9EMWaH1u4nu6pLUZg2lrhbz6pMc0KsZ
+	 PWw7Ip3xee7qoj+xUp6jmu9KLwqFHttLN8RKo12nBpntw1rIxyu6GlNtcgqbKOkKmQ
+	 sfzhl9gEGt95O2n/2ct45SY2wd1ev6yU6k2QY9zrQrtFJpWXji3e2TucqZ8tLWWlEa
+	 7sA3VVRp9lYYDVV3q0GmDW/2hi4KLNSdjzdoCGW7xWkUdK2IVgG9BGyFZsDKJiGqcm
+	 dx17/5VBnc3wLVx5QTy0SU/pUK8lb9yipBF6Bfp7q8DmSVMhSmiFHOss3ZEd6JIgSp
+	 tK7SHx5oNB7Fw==
+From: Mark Brown <broonie@kernel.org>
+To: Matthias Brugger <matthias.bgg@gmail.com>, phucduc.bui@gmail.com
+Cc: Liam Girdwood <lgirdwood@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, 
+ Cezary Rojewski <cezary.rojewski@intel.com>, Kees Cook <kees@kernel.org>, 
+ Kuninori Morimoto <kuninori.morimoto.gx@renesas.com>, 
+ Trevor Wu <trevor.wu@mediatek.com>, 
+ Douglas Anderson <dianders@chromium.org>, linux-sound@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+ linux-kernel@vger.kernel.org
+In-Reply-To: <20260907120310.135693-1-phucduc.bui@gmail.com>
+References: <20260907120310.135693-1-phucduc.bui@gmail.com>
+Subject: Re: [PATCH 0/7] ASoC: mediatek: mt8188: Improve error handling
+Message-Id: <179029027295.149798.15849509210449707210.b4-ty@b4>
+Date: Thu, 24 Sep 2026 23:51:12 +0100
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260925_175944_888145_000AF16B 
-X-CRM114-Status: GOOD (  14.29  )
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+X-Mailer: b4 0.17-dev
+X-Developer-Signature: v=1; a=openpgp-sha256; l=2301; i=broonie@kernel.org;
+ h=from:subject:message-id; bh=ms+alJe0zYRhtHTH6fiIZKYjQe4B7jjV89D4uoFve00=;
+ b=owEBbQGS/pANAwAKASTWi3JdVIfQAcsmYgBqtqr69kr5v8xZDCf+saA655wgf5ZerHyA0TvAn
+ iHLaHPI7NeJATMEAAEKAB0WIQSt5miqZ1cYtZ/in+ok1otyXVSH0AUCaraq+gAKCRAk1otyXVSH
+ 0KK1B/0QoMqxmDmmJZzwx3d4Pu8uqUaJ5m3FWatvkhiyTsLNPyvzI0I+tvkODz+mTtJ/rO1UIgX
+ NmDThpIErV/9WJ5JYHTOUrZ0n2Il0I1V+TtKm+3C34MJlKUv1vasZQq9IZ7ck0Gx7s5TjHBqtne
+ ZB/cHop0jxEHMRUbjuN/k3/uU4t3yPU/gXpDw9aLImi6hDQp5IBzN1vBUrKrPsimGL7o65Lvmwh
+ yadNSY+28PHtMLM9Q6CDx11ntsTkJ79IBk4ZyjjExDh4sZPNqFBZ3Rtnl7bKmOu2IMxl9KXzUib
+ p8yE625OrGLZpOxURdOWZZ85Y2g4nlLx0Ysh3pv395NUugPY
+X-Developer-Key: i=broonie@kernel.org; a=openpgp;
+ fpr=3F2568AAC26998F9E813A1C5C3F436CA30F5D8EB
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -120,50 +86,59 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Fix sparse warning reported by kernel bot:
+On Mon, 07 Sep 2026 19:03:03 +0700, phucduc.bui@gmail.com wrote:
+> ASoC: mediatek: mt8188: Improve error handling
+> 
+> From: bui duc phuc <phucduc.bui@gmail.com>
+> 
+> Hi all,
+> 
+> This series improves error handling in several parts of the MT8188 AFE
+> driver.
+> Propagate errors from clock, regmap, and runtime resume operations,
+> remove redundant probe error messages, and fix clock cleanup on
+> registration failure.
+> 
+> [...]
 
-sparse warnings: (new ones prefixed by >>)
->> sound/soc/mediatek/an7581/an7581-afe-pcm.c:144:30: sparse: sparse: symbol 'an7581_afe_fe_ops' was not declared. Should it be static?
->> sound/soc/mediatek/an7581/an7581-afe-pcm.c:419:14: sparse: sparse: incorrect type in assignment (different address spaces) @@     expected void *base @@     got void [noderef] __iomem * @@
-   sound/soc/mediatek/an7581/an7581-afe-pcm.c:419:14: sparse:     expected void *base
-   sound/soc/mediatek/an7581/an7581-afe-pcm.c:419:14: sparse:     got void [noderef] __iomem *
->> sound/soc/mediatek/an7581/an7581-afe-pcm.c:439:42: sparse: sparse: incorrect type in argument 3 (different address spaces) @@     expected void [noderef] __iomem *regs @@     got void *base @@
-   sound/soc/mediatek/an7581/an7581-afe-pcm.c:439:42: sparse:     expected void [noderef] __iomem *regs
+Applied to
 
-Make an7581_afe_fe_ops static and add __iomem for the base from
-devm_platform_ioremap_resource.
+   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-7.4
 
-Fixes: 4974ffa0d6c2 ("ASoC: airoha: Add AFE driver for Airoha AN7581")
-Reported-by: kernel test robot <lkp@intel.com>
-Closes: https://lore.kernel.org/oe-kbuild-all/202609242059.t4FlJzOz-lkp@intel.com/
-Signed-off-by: Christian Marangi <ansuelsmth@gmail.com>
----
- sound/soc/mediatek/an7581/an7581-afe-pcm.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+Thanks!
 
-diff --git a/sound/soc/mediatek/an7581/an7581-afe-pcm.c b/sound/soc/mediatek/an7581/an7581-afe-pcm.c
-index a1d742362538..d47edb630452 100644
---- a/sound/soc/mediatek/an7581/an7581-afe-pcm.c
-+++ b/sound/soc/mediatek/an7581/an7581-afe-pcm.c
-@@ -141,7 +141,7 @@ static int an7581_afe_fe_startup(struct snd_pcm_substream *substream, struct snd
- 	return ret;
- }
- 
--const struct snd_soc_dai_ops an7581_afe_fe_ops = {
-+static const struct snd_soc_dai_ops an7581_afe_fe_ops = {
- 	.startup	= an7581_afe_fe_startup,
- 	.shutdown	= mtk_afe_fe_shutdown,
- 	.hw_params	= mtk_afe_fe_hw_params,
-@@ -375,7 +375,7 @@ static int an7581_afe_pcm_dev_probe(struct platform_device *pdev)
- 	struct reset_control *reset;
- 	struct mtk_base_afe *afe;
- 	int i, irq_id, ret;
--	void *base;
-+	void __iomem *base;
- 
- 	afe = devm_kzalloc(dev, sizeof(*afe), GFP_KERNEL);
- 	if (!afe)
--- 
-2.55.0
+[1/7] ASoC: mediatek: mt8188: mt8188-afe-clk: Propagate clock initialization errors
+      https://git.kernel.org/broonie/sound/c/691c4aac5ae5
+[2/7] ASoC: mediatek: mt8188: mt8188-afe-clk: Handle tuner clock enable errors
+      https://git.kernel.org/broonie/sound/c/a2c3ee3349a7
+[3/7] ASoC: mediatek: mt8188: mt8188-afe-clk: Propagate regmap update errors
+      https://git.kernel.org/broonie/sound/c/60a8112a088a
+[4/7] ASoC: mediatek: mt8188: mt8188-afe-clk: Handle clock enable errors
+      https://git.kernel.org/broonie/sound/c/1b65c13d1af9
+[5/7] ASoC: mediatek: mt8188: mt8188-afe-pcm: Handle runtime resume errors
+      https://git.kernel.org/broonie/sound/c/f5f6941d9297
+[6/7] ASoC: mediatek: mt8188: mt8188-afe-pcm: Drop redundant probe error messages
+      https://git.kernel.org/broonie/sound/c/a79f2432ee89
+[7/7] ASoC: mediatek: mt8188: fix clk leak on error in audsys_clk_register
+      https://git.kernel.org/broonie/sound/c/6cddf6e56d25
+
+All being well this means that it will be integrated into the linux-next
+tree (usually sometime in the next 24 hours) and sent to Linus during
+the next merge window (or sooner if it is a bug fix), however if
+problems are discovered then the patch may be dropped or reverted.
+
+You may get further e-mails resulting from automated or manual testing
+and review of the tree, please engage with people reporting problems and
+send followup patches addressing any issues that are reported if needed.
+
+If any updates are required or you are submitting further changes they
+should be sent as incremental updates against current git, existing
+patches will not be replaced.
+
+Please add any relevant lists and maintainers to the CCs when replying
+to this mail.
+
+Thanks,
+Mark
 
 
