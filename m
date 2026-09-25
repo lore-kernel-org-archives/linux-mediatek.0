@@ -4,58 +4,108 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3B4B3C98325
-	for <linux-mediatek@archiver.kernel.org>; Fri, 25 Sep 2026 15:59:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 79A59C9830E
+	for <linux-mediatek@archiver.kernel.org>; Fri, 25 Sep 2026 16:59:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=zB+uphukWsYzwSOajdvh6cv5j11GNs+nqVXToUS/cgk=; b=NVkm9/PTRXWXl1MFY3QgDubLak
-	3A9ozCg44qHiMRosA6h+/u/c6GpBvVEs9O4MNWccP7IWxj4ezq9LGJ0UDiKbOI9Oq/30TUNnNv9FI
-	12+0wtPU2EEj4uVX5wngjostF5g1+BPgXS5NTLD021Cek/jWQqpRHrVVNgDgpy844/llIcCeeRL4T
-	ZcRIxfw1ah9SXkqTGNUUwdebxkUQZNFBXOqg+e50Zu9rwBg+EIAw7XbUTTCD1GzOpShgQg3pQREzE
-	5lVA337ZFLEQsm06FgVcgX7bPPchg8d9sN0ceU2GYsNNmt4nP/eahsq2UW1hKFCiEC6ow1viMIAqg
-	zu992S1w==;
+	bh=P2oQDwCwCo1gfWj8hUM2bE3rJ8xWs7DjrsEeE/nug/Y=; b=p1pj2AeOUo6vVo/xi3Dwm9j4sL
+	pbljGj7FdZ0dNoyc/YdxOypIuSaRoH9IdIwvpbsF6vFzhitJ6Y4u2EnB7oVehlen7WJJlDCRDNDiw
+	jiQEsgIk0gTMSU0VZWf9XT/ED/bbNTjMsKPqeE78qG7g1Wgw4EjGAf7aoVFRvYNPbVqkJGYRc4tf/
+	PjJJ/7it6QK+tPx0rFg7mvxVjG0cnlIj8gKudM965VW4QTNj3d9vK1cZ62tnFwiZ/gPirFRhznssp
+	PKb/ypQN9WxE7LA0FUlp49Xtxs5pavWNoTVC4PuDli1zYK8yuPkqsrt4r5eFy4Ekyo0DTu7gUQZ5A
+	CMG4YFPQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xA8Kx-0000000DtCU-1KFz;
-	Fri, 25 Sep 2026 15:59:47 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1xA9H3-0000000E1e2-07UB;
+	Fri, 25 Sep 2026 16:59:49 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xA8Kv-0000000DtBf-3RnG;
-	Fri, 25 Sep 2026 15:59:45 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id 85E7B40DD3;
-	Fri, 25 Sep 2026 15:59:45 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 315751F000FF;
-	Fri, 25 Sep 2026 15:59:45 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1790351985;
-	bh=zB+uphukWsYzwSOajdvh6cv5j11GNs+nqVXToUS/cgk=;
-	h=From:To:Cc:Subject:Date;
-	b=fAKdsbzasz2R8m6Io4IM5xBe8i/yrGwfeDJvrrALc+l8G3IU7VScfmJbFY8PYuAkI
-	 GhAuWSBF6tPwubQ682VNHIisRZpv0rZ+VpLMKrHv76sco60/wy7NZ2nlElBr7vs65f
-	 gQ3rA83hKL1AQ2JKguWwqVTN+Sa/oPI8wLKOwyC3sb8f1V2+S/e3V+uwrWm08evL0u
-	 amr5Jwk87wbs0UKw41hOsM32fXdzKJekwKw23gKg627wRP9J341xERiFBdR9sfxRyC
-	 VKCuBcG2DISTPSxGP0F/By4qemd/ybYj6TU5Pc6SjL4D7TwY1BLA8OgRdeWuulD8L8
-	 YtGPz/tu8d+2w==
-From: "Rob Herring (Arm)" <robh@kernel.org>
-To: Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
+	id 1xA9H1-0000000E1db-3OO3
+	for linux-mediatek@bombadil.infradead.org;
+	Fri, 25 Sep 2026 16:59:47 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
+	:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:Content-ID:
+	Content-Description:In-Reply-To:References;
+	bh=P2oQDwCwCo1gfWj8hUM2bE3rJ8xWs7DjrsEeE/nug/Y=; b=EIkHt2PQ7r4XAm/QlI2mGqdz5k
+	VnrqZmn9Q2P5PThbibzSSIXoFlud4YCAZxtnkENQYkQ5aTKdz92Na1KAGUoeNDvmhRcO2O8EokWx1
+	plxXUWPXYzn0SX3IGS2k9AZPfQeqAItAFAtKDVsmxL7JFXnq/q3fexOEYpBTHkZVdTGvFkUzPmW3V
+	YF/k5+YrwkfNTsANtS8RVcyvFBGxq5Adcnw03szfrpn5ClfeppLeO9efek+Nc6cb6Ig7PlnH0UUn3
+	DXLXfJQkCoEt8mye+k8fb8ADHNbciog5bbhn86cpZOZ6fMdKqb/cEqhfwxq/wCAOBLIv4v6299nST
+	d5pTsLOw==;
+Received: from mail-ed1-x532.google.com ([2a00:1450:4864:20::532])
+	by desiato.infradead.org with esmtps (Exim 4.99.2 #2 (Red Hat Linux))
+	id 1xA9Gy-0000000HANr-39zY
+	for linux-mediatek@lists.infradead.org;
+	Fri, 25 Sep 2026 16:59:46 +0000
+Received: by mail-ed1-x532.google.com with SMTP id 4fb4d7f45d1cf-6aaf28a86b9so838595a12.1
+        for <linux-mediatek@lists.infradead.org>; Fri, 25 Sep 2026 09:59:44 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20251104; t=1790355583; x=1790960383; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
+        bh=P2oQDwCwCo1gfWj8hUM2bE3rJ8xWs7DjrsEeE/nug/Y=;
+        b=jhJ3NXUcVwWtHYK9hgo/JrBYcgxZkf85S8oK6XrM1omazPFFmHA19dKsfLTTCpBBQy
+         Ew99Skii3/3wTGsWLmHb1vZV3cv0N9oC6WEkD6tnr4K49PVaII/IC30nRRJrsv1ehTrj
+         lYrJkuPauF/gu1RrTl/mXQfeK3jcc6znQtZ+n33l7hLXOrtOSH6qy1w9L3Lrqs830oUS
+         S61Zn9YzfhqBnrVHAKH/DgnOzPgQit9aMaq3/AH/iHvgr7uO/gWd7BcscoYavmqhW403
+         RF6ONnEGEDaBkCCcNkdpj/PuB9vB9phszlqTYh1WuoZwfmVW46IPAwGmP8fs+OI7h60f
+         nvDQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20260707; t=1790355583; x=1790960383;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to:content-type;
+        bh=P2oQDwCwCo1gfWj8hUM2bE3rJ8xWs7DjrsEeE/nug/Y=;
+        b=WzaG9ONeHJtgYTZaD1Vu7m9hZqcUNtUZ0pvh9cd9Cq/ZBr9Q7+m4Q6SyWcKiKNIpnA
+         2QNWaN3eDtHyZAl8QlCKEp7s5PNks3QPfi+R/IvQ+aKf9riiQeAwwOXNPn6jmPsXm+SQ
+         2MSL0JInNG3ALnSfo1djhkHxtoU0gLEFHT+y6GsdMuw1SQLeMvCbttrXlmR04LjTavjx
+         A0mzKJRwMiSBAu74s6/anrpAdQdy2i6Xo/gigYcvDGyezJcOsYf78UL9Kpt4mLt+jMfV
+         XM2x7Mq4Y32ypa/6CB+OxkPKQdGc8qi7/7scMj7AKBKLYTD2vVukJrjFrAkBPEA05kox
+         jr7g==
+X-Forwarded-Encrypted: i=1; AKwUvBzCSPIrkrDXnhzhTrQ6vXbGxHLKF6eJx06swKcrgu3tu+3X/aklF4VtbixdWbVUVO5g8Yb+WQPdbWJv1ikb1A==@lists.infradead.org
+X-Gm-Message-State: AFuF++nWhDZANvg9KAFNEkx3XnhcarOAXCbFfvwaJnn/eV50dkUnqKVW
+	ESPf9rQjc+sj/3S7RPDeO5nrY3hJPBIaF3p/UMMYSTfNgETCIPx7ERqV
+X-Gm-Gg: AYBFou0c8oJw8joewRQwFdm0X8VAM5e/gBpYxvZZNY0r+Y38xlic648dQalcOX3MywQ
+	X0gyYNGzfNwoa+bmY+/TXaBjnb/WLG0G6k9dXK3PPae21Os9CVJHC3tM4kNHLTMr2unwBwdO3as
+	/wGJEdpZ5UN3V6RfzZ/EEhkh74+XMhjrRsCBu7kh1gvH82o2jaGMkrVbEH920+ALWlRHE/k2HXQ
+	LwZWwMEEEK18Y6NhUm2HtODAOPSVpHWQ49uQt3FdDDpZaKKd6B51nlQF85UBUK5cAADo7xZiA/g
+	CdKayd/oxNLGDl4AJuW17JFU9MG2QazNOH6sQz1KYJ+kWIbVuJ1ao/sufIHl/ifipzL/IgGG1bZ
+	rA+7K4MiQk2mllfdv6QzaGWZgig5wKrUVHW/i4efeVGxTRhgAqT3REDUuAjAZeo64S6hSfuhb5Z
+	Qy5fnGW5hpwZERuLhbWDb0+KP9f/bOE4ZhQzE5H6gxeROYxV3UN8zZVrtXRhMkJDFwgM0XFkXia
+	xVnM/x0tlxiFpqL3vSuMwplzDe+W11Tk25qJ5f5MyXRbulRPHk1ZvUOyaq8Hinc
+X-Received: by 2002:a05:6402:12d0:b0:6aa:ab94:4a36 with SMTP id 4fb4d7f45d1cf-6aac8f1b94fmr4157302a12.8.1790355582773;
+        Fri, 25 Sep 2026 09:59:42 -0700 (PDT)
+Received: from Ansuel-XPS24.localdomain (host-79-29-83-136.business.telecomitalia.it. [79.29.83.136])
+        by smtp.googlemail.com with ESMTPSA id 4fb4d7f45d1cf-6aae5cb9b0asm1321152a12.9.2026.09.25.09.59.36
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 25 Sep 2026 09:59:37 -0700 (PDT)
+From: Christian Marangi <ansuelsmth@gmail.com>
+To: Christian Marangi <ansuelsmth@gmail.com>,
+	Liam Girdwood <lgirdwood@gmail.com>,
+	Mark Brown <broonie@kernel.org>,
+	Jaroslav Kysela <perex@perex.cz>,
+	Takashi Iwai <tiwai@suse.com>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: devicetree@vger.kernel.org,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	linux-sound@vger.kernel.org,
 	linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
-Subject: [PATCH] dt-bindings: power: Convert mediatek,mt2701-scpsys to DT schema
-Date: Fri, 25 Sep 2026 10:59:26 -0500
-Message-ID: <20260925155927.1707560-1-robh@kernel.org>
-X-Mailer: git-send-email 2.53.0
+Cc: kernel test robot <lkp@intel.com>
+Subject: [PATCH] ASoC: airoha: Fix sparse warning for AN7581 AFE PCM
+Date: Fri, 25 Sep 2026 18:59:17 +0200
+Message-ID: <20260925165919.5407-1-ansuelsmth@gmail.com>
+X-Mailer: git-send-email 2.55.0
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260925_175944_888145_000AF16B 
+X-CRM114-Status: GOOD (  14.29  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,224 +120,50 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Convert the mediatek,mt2701-scpsys binding to DT schema. The mt6735 and
-mt6765 don't exist anywhere. The mt8183 is covered by
-mediatek,mt8195-scpsys.yaml schema. With those dropped, the clock-names
-are trimmed to drop mm-*, isp-*, cam-*, and venc_lt. The venc_lt and
-mfg_2d supplies are dropped as well.
+Fix sparse warning reported by kernel bot:
 
-Assisted-by: LLM
-Signed-off-by: Rob Herring (Arm) <robh@kernel.org>
+sparse warnings: (new ones prefixed by >>)
+>> sound/soc/mediatek/an7581/an7581-afe-pcm.c:144:30: sparse: sparse: symbol 'an7581_afe_fe_ops' was not declared. Should it be static?
+>> sound/soc/mediatek/an7581/an7581-afe-pcm.c:419:14: sparse: sparse: incorrect type in assignment (different address spaces) @@     expected void *base @@     got void [noderef] __iomem * @@
+   sound/soc/mediatek/an7581/an7581-afe-pcm.c:419:14: sparse:     expected void *base
+   sound/soc/mediatek/an7581/an7581-afe-pcm.c:419:14: sparse:     got void [noderef] __iomem *
+>> sound/soc/mediatek/an7581/an7581-afe-pcm.c:439:42: sparse: sparse: incorrect type in argument 3 (different address spaces) @@     expected void [noderef] __iomem *regs @@     got void *base @@
+   sound/soc/mediatek/an7581/an7581-afe-pcm.c:439:42: sparse:     expected void [noderef] __iomem *regs
+
+Make an7581_afe_fe_ops static and add __iomem for the base from
+devm_platform_ioremap_resource.
+
+Fixes: 4974ffa0d6c2 ("ASoC: airoha: Add AFE driver for Airoha AN7581")
+Reported-by: kernel test robot <lkp@intel.com>
+Closes: https://lore.kernel.org/oe-kbuild-all/202609242059.t4FlJzOz-lkp@intel.com/
+Signed-off-by: Christian Marangi <ansuelsmth@gmail.com>
 ---
- .../power/mediatek,mt2701-scpsys.yaml         | 111 ++++++++++++++++++
- .../bindings/soc/mediatek/scpsys.txt          |  79 -------------
- 2 files changed, 111 insertions(+), 79 deletions(-)
- create mode 100644 Documentation/devicetree/bindings/power/mediatek,mt2701-scpsys.yaml
- delete mode 100644 Documentation/devicetree/bindings/soc/mediatek/scpsys.txt
+ sound/soc/mediatek/an7581/an7581-afe-pcm.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/Documentation/devicetree/bindings/power/mediatek,mt2701-scpsys.yaml b/Documentation/devicetree/bindings/power/mediatek,mt2701-scpsys.yaml
-new file mode 100644
-index 000000000000..d991b8a008eb
---- /dev/null
-+++ b/Documentation/devicetree/bindings/power/mediatek,mt2701-scpsys.yaml
-@@ -0,0 +1,111 @@
-+# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-+%YAML 1.2
-+---
-+$id: http://devicetree.org/schemas/power/mediatek,mt2701-scpsys.yaml#
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
-+
-+title: MediaTek SCPSYS
-+
-+maintainers:
-+  - Matthias Brugger <matthias.bgg@gmail.com>
-+  - AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-+
-+description: >
-+  The System Control Processor System (SCPSYS) has several power management
-+  related tasks in the system. The tasks include thermal measurement, dynamic
-+  voltage frequency scaling (DVFS), interrupt filter and lowlevel sleep control.
-+  The System Power Manager (SPM) inside the SCPSYS is for the MTCMOS power
-+  domain control.
-+
-+  It provides the power domains defined in:
-+    - include/dt-bindings/power/mt2701-power.h
-+    - include/dt-bindings/power/mt2712-power.h
-+    - include/dt-bindings/power/mt6797-power.h
-+    - include/dt-bindings/power/mt7622-power.h
-+    - include/dt-bindings/power/mt7623a-power.h
-+
-+properties:
-+  compatible:
-+    oneOf:
-+      - enum:
-+          - mediatek,mt7623a-scpsys
-+          - mediatek,mt6797-scpsys
-+      - items:
-+          - enum:
-+              - mediatek,mt2701-scpsys
-+              - mediatek,mt2712-scpsys
-+              - mediatek,mt7622-scpsys
-+          - const: syscon
-+      - items:
-+          - const: mediatek,mt7623-scpsys
-+          - const: mediatek,mt2701-scpsys
-+          - const: syscon
-+      - items:
-+          - const: mediatek,mt7629-scpsys
-+          - const: mediatek,mt7622-scpsys
-+
-+  '#power-domain-cells':
-+    description: Always 1
-+    const: 1
-+
-+  reg:
-+    maxItems: 1
-+
-+  interrupts:
-+    maxItems: 4
-+
-+  clocks:
-+    minItems: 1
-+    maxItems: 20
-+
-+  clock-names:
-+    minItems: 1
-+    maxItems: 6
-+    items:
-+      enum:
-+        - mm
-+        - mfg
-+        - ethif
-+        - venc
-+        - jpgdec
-+        - audio
-+        - vdec
-+        - hif_sel
-+
-+  vdec-supply: true
-+  venc-supply: true
-+  isp-supply: true
-+  mm-supply: true
-+  audio-supply: true
-+  usb-supply: true
-+  mfg_async-supply: true
-+  mfg-supply: true
-+
-+  infracfg:
-+    description: Infrastructure configuration controller phandle
-+    $ref: /schemas/types.yaml#/definitions/phandle
-+
-+required:
-+  - compatible
-+  - '#power-domain-cells'
-+  - reg
-+  - infracfg
-+  - clocks
-+  - clock-names
-+
-+additionalProperties: false
-+
-+examples:
-+  - |
-+    #include <dt-bindings/clock/mt2701-clk.h>
-+
-+    power-controller@10006000 {
-+        #power-domain-cells = <1>;
-+        compatible = "mediatek,mt2701-scpsys", "syscon";
-+        reg = <0x10006000 0x1000>;
-+        infracfg = <&infracfg>;
-+        clocks = <&topckgen CLK_TOP_MM_SEL>,
-+                  <&topckgen CLK_TOP_MFG_SEL>,
-+                  <&topckgen CLK_TOP_ETHIF_SEL>;
-+        clock-names = "mm", "mfg", "ethif";
-+    };
-diff --git a/Documentation/devicetree/bindings/soc/mediatek/scpsys.txt b/Documentation/devicetree/bindings/soc/mediatek/scpsys.txt
-deleted file mode 100644
-index 3530a6668b48..000000000000
---- a/Documentation/devicetree/bindings/soc/mediatek/scpsys.txt
-+++ /dev/null
-@@ -1,79 +0,0 @@
--MediaTek SCPSYS
--===============
--
--The System Control Processor System (SCPSYS) has several power management
--related tasks in the system. The tasks include thermal measurement, dynamic
--voltage frequency scaling (DVFS), interrupt filter and lowlevel sleep control.
--The System Power Manager (SPM) inside the SCPSYS is for the MTCMOS power
--domain control.
--
--The driver implements the Generic PM domain bindings described in
--power/power-domain.yaml. It provides the power domains defined in
--- include/dt-bindings/power/mt8173-power.h
--- include/dt-bindings/power/mt6797-power.h
--- include/dt-bindings/power/mt6765-power.h
--- include/dt-bindings/power/mt2701-power.h
--- include/dt-bindings/power/mt2712-power.h
--- include/dt-bindings/power/mt7622-power.h
--
--Required properties:
--- compatible: Should be one of:
--	- "mediatek,mt2701-scpsys"
--	- "mediatek,mt2712-scpsys"
--	- "mediatek,mt6735-scpsys"
--	- "mediatek,mt6765-scpsys"
--	- "mediatek,mt6797-scpsys"
--	- "mediatek,mt7622-scpsys"
--	- "mediatek,mt7623-scpsys", "mediatek,mt2701-scpsys": For MT7623 SoC
--	- "mediatek,mt7623a-scpsys": For MT7623A SoC
--	- "mediatek,mt7629-scpsys", "mediatek,mt7622-scpsys": For MT7629 SoC
--	- "mediatek,mt8173-scpsys"
--- #power-domain-cells: Must be 1
--- reg: Address range of the SCPSYS unit
--- infracfg: must contain a phandle to the infracfg controller
--- clock, clock-names: clocks according to the common clock binding.
--                      These are clocks which hardware needs to be
--                      enabled before enabling certain power domains.
--	Required clocks for MT2701 or MT7623: "mm", "mfg", "ethif"
--	Required clocks for MT2712: "mm", "mfg", "venc", "jpgdec", "audio", "vdec"
--	Required clocks for MT6765: MUX: "mm", "mfg"
--				    CG: "mm-0", "mm-1", "mm-2", "mm-3", "isp-0",
--					"isp-1", "cam-0", "cam-1", "cam-2",
--					"cam-3","cam-4"
--	Required clocks for MT6797: "mm", "mfg", "vdec"
--	Required clocks for MT7622 or MT7629: "hif_sel"
--	Required clocks for MT7623A: "ethif"
--	Required clocks for MT8173: "mm", "mfg", "venc", "venc_lt"
--
--Optional properties:
--- vdec-supply: Power supply for the vdec power domain
--- venc-supply: Power supply for the venc power domain
--- isp-supply: Power supply for the isp power domain
--- mm-supply: Power supply for the mm power domain
--- venc_lt-supply: Power supply for the venc_lt power domain
--- audio-supply: Power supply for the audio power domain
--- usb-supply: Power supply for the usb power domain
--- mfg_async-supply: Power supply for the mfg_async power domain
--- mfg_2d-supply: Power supply for the mfg_2d power domain
--- mfg-supply: Power supply for the mfg power domain
--
--Example:
--
--	scpsys: scpsys@10006000 {
--		#power-domain-cells = <1>;
--		compatible = "mediatek,mt8173-scpsys";
--		reg = <0 0x10006000 0 0x1000>;
--		infracfg = <&infracfg>;
--		clocks = <&clk26m>,
--			 <&topckgen CLK_TOP_MM_SEL>;
--			 <&topckgen CLK_TOP_VENC_SEL>,
--			 <&topckgen CLK_TOP_VENC_LT_SEL>;
--		clock-names = "mfg", "mm", "venc", "venc_lt";
--	};
--
--Example consumer:
--
--	afe: mt8173-afe-pcm@11220000 {
--		compatible = "mediatek,mt8173-afe-pcm";
--		power-domains = <&scpsys MT8173_POWER_DOMAIN_AUDIO>;
--	};
+diff --git a/sound/soc/mediatek/an7581/an7581-afe-pcm.c b/sound/soc/mediatek/an7581/an7581-afe-pcm.c
+index a1d742362538..d47edb630452 100644
+--- a/sound/soc/mediatek/an7581/an7581-afe-pcm.c
++++ b/sound/soc/mediatek/an7581/an7581-afe-pcm.c
+@@ -141,7 +141,7 @@ static int an7581_afe_fe_startup(struct snd_pcm_substream *substream, struct snd
+ 	return ret;
+ }
+ 
+-const struct snd_soc_dai_ops an7581_afe_fe_ops = {
++static const struct snd_soc_dai_ops an7581_afe_fe_ops = {
+ 	.startup	= an7581_afe_fe_startup,
+ 	.shutdown	= mtk_afe_fe_shutdown,
+ 	.hw_params	= mtk_afe_fe_hw_params,
+@@ -375,7 +375,7 @@ static int an7581_afe_pcm_dev_probe(struct platform_device *pdev)
+ 	struct reset_control *reset;
+ 	struct mtk_base_afe *afe;
+ 	int i, irq_id, ret;
+-	void *base;
++	void __iomem *base;
+ 
+ 	afe = devm_kzalloc(dev, sizeof(*afe), GFP_KERNEL);
+ 	if (!afe)
 -- 
-2.53.0
+2.55.0
 
 
