@@ -4,71 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AF1CAC9830E
-	for <linux-mediatek@archiver.kernel.org>; Fri, 25 Sep 2026 22:03:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8D062C9830E
+	for <linux-mediatek@archiver.kernel.org>; Fri, 25 Sep 2026 22:15:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=JhT7RRiorAEvqIxi2NFea7yWCgMcbVY4FpqIxZK3PtE=; b=pMqpcRncufN5hMzaxXB2mw0bC9
-	1BYgpyQlprcGs0bm8RNAhctCGM8Ia85S8vzkaQQyCyJpcdwhSStqW4EiXSP699006oTw3nrOWN+mn
-	sHl8Xr+wTAy1nXvPihuxAYk2arjFUUZOUwqSp7pynQ6GgL4CH4Fhi8z9+aBxEMEjVj7WD+bvSJRhh
-	hm/gZkwE37/ydx0G6+YYdUZQwBZiwbSRx13NmL8vFOCXpni9HrJwln8N4sqbAsWGEwe64RUG5+wgN
-	lKl24OVM3V0a6LTb4hnfLaVM8po75LftHjUsy5UMTIQ+ty7eVDT0oDxscDmPJX0Mye8aXUo8wGdEK
-	JZ2mDP/A==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=LcRvlK/HbBz+SKxl1aYcXjvCHhEqzNV399j3CsElZuU=; b=hRymhYl1WJY5OdxJUO+iv02yWk
+	Y4YsacvoqqNbAk27++B2hjjpT+ROWVSp0NRcFD2YXAtllAcOy8ufN2H2PR8HCNnkz+0fj8icu0A1c
+	Dm/M7Jq2B98SrdPzskqEY5Jb9OiKlUHwvmzpi7alSA0yw6Tu7svsimkru/OWVsQHWmEHxjI0N5/JZ
+	UkfBm6kKoFkD51CAFjN+Bepw5Az/G3RKueTqgXzZXb7jzfEqfzrU8zi5LRRELzb9ywIKfTQNI7NXt
+	ZMvV6BH14lR/eSXaCIHEcIXMED4HGah7t+7tFyvSOjwgut60ITDoBdKm/z+Qvx7ELJXfFzON/XrVc
+	aHOzXd3A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xAE0s-0000000EXyj-0S5p;
-	Fri, 25 Sep 2026 22:03:26 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1xAECg-0000000EYSM-2wmj;
+	Fri, 25 Sep 2026 22:15:38 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xAE0p-0000000EXy9-4AGh;
-	Fri, 25 Sep 2026 22:03:24 +0000
+	id 1xAECf-0000000EYS7-28RT;
+	Fri, 25 Sep 2026 22:15:37 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 11CE460136;
-	Fri, 25 Sep 2026 22:03:23 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9C1F51F000FF;
-	Fri, 25 Sep 2026 22:03:20 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id E661A43849;
+	Fri, 25 Sep 2026 22:15:36 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0BF0E1F000FF;
+	Fri, 25 Sep 2026 22:15:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1790373802;
-	bh=JhT7RRiorAEvqIxi2NFea7yWCgMcbVY4FpqIxZK3PtE=;
-	h=From:To:Cc:In-Reply-To:References:Subject:Date;
-	b=ZUvOckdxiOcldP8Y7TLsUS4ywfbYq4Ijjecu79bk0752GH6Sg3t/+aQzGlFN42Lka
-	 gJ731UvY24MQV8DSWDb6Jw3Q2c1iYBk0wsRNUUAaXhiWxT7HtMP6VNgbhr4R/OmwUH
-	 aPe84aaAplzXaZkXqHiliqdce77HlpvDYAlw0fvhT4p9c6nwE+WEdM8OSMWzqM99LP
-	 SJbGzRmiaZoFusZA2p8J9u6E87YNB0WidoU0yCXtpzRR0P8bMwdCdwGt4rSF7jPvRL
-	 J9al3TzRaPtP6Zyde5ecwJuSjLRImUm07bDc8Jg4qyaFKySe4iDLXCWSu09in5hWvr
-	 gy1sGYY7nYyWw==
+	s=k20260515; t=1790374536;
+	bh=LcRvlK/HbBz+SKxl1aYcXjvCHhEqzNV399j3CsElZuU=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To;
+	b=YBPH2cCWgOGSA1GSHE866Vn7npvRMvUVrV/v2GPvMWuFhUe7XwuP6O8EO8/UoZkFw
+	 KkGabzc6Aw7qljtmMXO4QLhjbCq5hY9sB1vavWLufrr5wPn4r+ohz5aZ9/T97hX0Zo
+	 ov4YSQvlhaoBKjvs9J5L5zxAlyDVdJNZudoVWvexoMGWbjXDFA42EjMGHVacijWEWh
+	 Iu9Ul3+Pkty+CJixsnAEnWD9UN4pCzKLNpNFtdUBtbxrOByVA4jy9EjNanpB/2InZb
+	 qhjJ363lvr/cbHnlMg+nC544f5NtJwtD2Z0bdrNic/lu5zRe3G2CwK8sIWiV2HzfXT
+	 5QEFEUe0mPydA==
+Date: Fri, 25 Sep 2026 23:15:32 +0100
 From: Mark Brown <broonie@kernel.org>
-To: Liam Girdwood <lgirdwood@gmail.com>, Jaroslav Kysela <perex@perex.cz>, 
- Takashi Iwai <tiwai@suse.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- linux-sound@vger.kernel.org, linux-kernel@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
- Christian Marangi <ansuelsmth@gmail.com>
-Cc: kernel test robot <lkp@intel.com>
-In-Reply-To: <20260925165919.5407-1-ansuelsmth@gmail.com>
-References: <20260925165919.5407-1-ansuelsmth@gmail.com>
-Subject: Re: [PATCH] ASoC: airoha: Fix sparse warning for AN7581 AFE PCM
-Message-Id: <179035774627.204944.11119676121161416824.b4-ty@b4>
-Date: Fri, 25 Sep 2026 18:35:46 +0100
+To: Justin Yeh <justin.yeh@mediatek.com>
+Cc: Liam Girdwood <lgirdwood@gmail.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Project_Global_Chrome_Upstream_Group@mediatek.com,
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+	linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH 0/2] Allow mtk-regulator-coupler to be built as a module
+Message-ID: <ff062c05-4da2-4f55-b81b-0fdfed56bb92@sirena.org.uk>
+References: <20260903062056.1024263-1-justin.yeh@mediatek.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-X-Mailer: b4 0.17-dev
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1125; i=broonie@kernel.org;
- h=from:subject:message-id; bh=1STb2I6uOMYbLA23SF2cJPxli3BlqZ5BLB/N2hVX9uY=;
- b=owEBbQGS/pANAwAKASTWi3JdVIfQAcsmYgBqtu+lNkMGdG0kvojTWyemgHhcmJdazKAyvhUOC
- YTDhNBb9tmJATMEAAEKAB0WIQSt5miqZ1cYtZ/in+ok1otyXVSH0AUCarbvpQAKCRAk1otyXVSH
- 0FHcB/92pEnXmYv1k9Q9C82R6lOvgrpJ3wfBG+HkoECwxidD4NUEo9QxUCnZsS63DS3EFisQquJ
- XOSgFZPcfK6aIIVNnFSALY8A/CxeqYk785rKcflYKM6nJTz+DCW0QwyeF2dByakq2WWc0uQ9f3i
- sik/Vs0sFHFcmnjIEHeYY76bq0tTNEJbUkWzqFJVB87IHpbE0ua8i1jiU0tHFyT10tvZui4KO8E
- DVXdNqrCJbIcLQCwjb6LXw3zq/qNL6coDftJP3vb67w0zPCMVdYWaLtzuxiFsMwjB3aMlaMzR5X
- IYPLpcjxQqbMqhaIITvbW72MKfkkBzHJv8jAoPhx5boe38SX
-X-Developer-Key: i=broonie@kernel.org; a=openpgp;
- fpr=3F2568AAC26998F9E813A1C5C3F436CA30F5D8EB
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="P0MhuSJkYqHcPp+v"
+Content-Disposition: inline
+In-Reply-To: <20260903062056.1024263-1-justin.yeh@mediatek.com>
+X-Cookie: Love America -- or give it back.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,35 +73,61 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, 25 Sep 2026 18:59:17 +0200, Christian Marangi wrote:
-> ASoC: airoha: Fix sparse warning for AN7581 AFE PCM
 
-Applied to
+--P0MhuSJkYqHcPp+v
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 
-   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-7.4
+On Thu, Sep 03, 2026 at 02:20:45PM +0800, Justin Yeh wrote:
+> MTK_REGULATOR_COUPLER can currently only be built into the kernel: it is
+> a bool, and its prompt is hidden unless COMPILE_TEST is set, so on real
+> MediaTek configurations the symbol has no prompt and is forced to its
+> "default ARCH_MEDIATEK" value.
 
-Thanks!
+The following changes since commit 940de590b839f71d6dc846160534bf202401b8b7:
 
-[1/1] ASoC: airoha: Fix sparse warning for AN7581 AFE PCM
-      https://git.kernel.org/broonie/sound/c/cc466c77059e
+  Merge tag 'hardening-v7.3-rc2' of git://git.kernel.org/pub/scm/linux/kernel/git/kees/linux (2026-09-02 16:02:02 -0700)
 
-All being well this means that it will be integrated into the linux-next
-tree (usually sometime in the next 24 hours) and sent to Linus during
-the next merge window (or sooner if it is a bug fix), however if
-problems are discovered then the patch may be dropped or reverted.
+are available in the Git repository at:
 
-You may get further e-mails resulting from automated or manual testing
-and review of the tree, please engage with people reporting problems and
-send followup patches addressing any issues that are reported if needed.
+  https://git.kernel.org/pub/scm/linux/kernel/git/broonie/regulator.git tags/regulator-export-coupling-api
 
-If any updates are required or you are submitting further changes they
-should be sent as incremental updates against current git, existing
-patches will not be replaced.
+for you to fetch changes up to 59951bd9c6b63d4d98539db96becef729ad60b4a:
 
-Please add any relevant lists and maintainers to the CCs when replying
-to this mail.
+  regulator: core: Export helpers used by regulator couplers (2026-09-25 18:44:46 +0100)
 
-Thanks,
-Mark
+----------------------------------------------------------------
+regulator: core: Export helpers used by regulator couplers
 
+regulator_check_voltage(), regulator_check_consumers(),
+regulator_do_balance_voltage() and regulator_coupler_register() are
+already declared in include/linux/regulator/coupler.h for regulator
+coupler implementations to use, but none of them is exported. That
+limits couplers to being built into the kernel.
+
+Export them so that coupler drivers can be built as loadable modules.
+
+----------------------------------------------------------------
+Justin Yeh (1):
+      regulator: core: Export helpers used by regulator couplers
+
+ drivers/regulator/core.c | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+--P0MhuSJkYqHcPp+v
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmq28oMACgkQJNaLcl1U
+h9B36wf+LhguYCEcSacCFn9QT75ux5lJ4HRaD9vAYEGQ2IXsQhIEDJNpJHFIbjvO
+3aIo6XR7eoDRaar6InusXYtBAWRLjR+tEZbLedAn+0E03tRo5bLrRKt1eze394ix
+d6hRvvea5gh+3O0jd2KPIzhWb9FhKbMs0RztZo7cAuq4zLCzbK/V1vyLRIoVFIB6
+DnCAlafjgTMUwh7x/fXTq6x0U+d70AHey3SVpxK/ntNGd6krhL6SdzPc7EhKYgi8
+pES/JvJLKOu9FuZEE+TRYHagdGwy8WWOpwYcsA0H53o2Nba3YVdPJ6y8RjQ2bHpI
+J9V2P9qRXpVXWP8bGV/9Sh4ThQEnZA==
+=nDY7
+-----END PGP SIGNATURE-----
+
+--P0MhuSJkYqHcPp+v--
 
