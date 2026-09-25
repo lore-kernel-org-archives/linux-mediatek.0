@@ -4,73 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9D0C5C98321
-	for <linux-mediatek@archiver.kernel.org>; Fri, 25 Sep 2026 04:50:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7AFD7C98306
+	for <linux-mediatek@archiver.kernel.org>; Fri, 25 Sep 2026 04:50:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=EuT5sR3QJJEpUFIiZqumIPgjPq3lYxiQww7DYh2KWes=; b=eefoPUJCjmreuEHAj5d1g4siTl
-	EYZ2AtbA6n/8gBCXfVBqEai5yvzu5gTILQCSvyPExGoNDrW9g4ccvUpuL/E6AJ5qWNKcPEgIqd/NJ
-	NYJTnB5aZlu6JvoGNkXlNK47qzfvhsnKJ5V6z38NQSV3gj/38DtsiGQki/IVZ2WXFPqfNSQwWwr0e
-	Pn8S8AsgDOCCBnaJs73m91BZiOneXinZ1s5224Vb2PilffR5CeN02soeSAl0RHiuv5Em1eVffZjKm
-	q7GC9wWTPADIgKBl9be8owqE28xELk6mVa+YkgooN0lW1If89+BNiJMxZ3h13CU53OhWgGtgEcSli
-	f766/A6g==;
+	bh=jzleEuY4fxtuuqAMZY5BgUyZW117KjLIE0OgBW0FxFU=; b=4EHe30RdFSGFBEX81qLndo4QRY
+	wuyaEd7WhVNDosTBi/al7BrJZMQlDzQmOfmuHj/to2CkbU9yquOiixAFInCTOtQgPIpACJD/ulZOt
+	/z5d25Mprzl6p81Tw/qrk+LN7SjITF7RES1tuP5DYODYvFAjKGzDYQHSybpH2VYOo/1/cQEXUcOXX
+	Us2JPqq6gPn88plwKNy2ejL8SM5CylnCCqVlJ4BpeoYuysnCVcP+HtBgb9qrk9wsOksiICGN5s8If
+	IBVMSMf6A1JHM4Y2wGWX1eljbEzgfiSd2xB8dLMmmIAf/ub5BV5CqGiyCXxAUL8afJYDB7tItaXFn
+	0vULngOg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x9xt0-0000000CdPQ-49fc;
-	Fri, 25 Sep 2026 04:50:14 +0000
+	id 1x9xtB-0000000CdXL-1Xrv;
+	Fri, 25 Sep 2026 04:50:25 +0000
 Received: from mail-pz2-x10.google.com ([2607:f8b0:4864:3b::10])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1x9xsu-0000000CdKO-1V2x
+	id 1x9xt2-0000000CdR5-37th
 	for linux-mediatek@lists.infradead.org;
-	Fri, 25 Sep 2026 04:50:10 +0000
-Received: by mail-pz2-x10.google.com with SMTP id 41be03b00d2f7-cc4d04d73b8so147238a12.1
-        for <linux-mediatek@lists.infradead.org>; Thu, 24 Sep 2026 21:50:07 -0700 (PDT)
+	Fri, 25 Sep 2026 04:50:17 +0000
+Received: by mail-pz2-x10.google.com with SMTP id 41be03b00d2f7-cc1cea34ef3so281781a12.0
+        for <linux-mediatek@lists.infradead.org>; Thu, 24 Sep 2026 21:50:16 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1790311807; x=1790916607; darn=lists.infradead.org;
+        d=gmail.com; s=20251104; t=1790311816; x=1790916616; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to:content-type;
-        bh=EuT5sR3QJJEpUFIiZqumIPgjPq3lYxiQww7DYh2KWes=;
-        b=Ef21Tgbsi/T4sSIegWiCYQ/xH9Ug8HmqqRKSDnqrDwl7ltW0W5rQp8Wx+YqBHBueNp
-         MK8i2CWDI6Uy4c8/DKYypXLDD0xzGBTUvmLcGgd19eyX9Uc5/wLMCOLeTEhdRY5D9e+T
-         Im+ajjo82l+ma/Bytzoo578I3HEvcdEhURzNL8aF2qsN4a1Bdtgmz+MpFu1i4zVjbJMM
-         Pb+VmQQkpL4tM1YReeWtj3LL+Of3P/WKxYaKxJP1r7Bl95goiW/KcbAfRJ+0b6zqukzm
-         NhrZOKGJhPCUICdGaF6qh0gcprbL0BZNPPnWAnoelCLFHR2dE5RXtqBq9SqdRbeGiPr9
-         wOKw==
+        bh=jzleEuY4fxtuuqAMZY5BgUyZW117KjLIE0OgBW0FxFU=;
+        b=SCdzMrA3hc/gwnChcBtxBenihf2HRpDJ1Vv3pnwiPcTq9EnaDVwnvrLwWer8Amivhl
+         BeQnKB7DfdVEXPukMucOq5Dg1e3RorCHRmkKO8qqtwUH4VpqezU6p8kcH4gSmEY1vm5b
+         jyBd9TPsm4bLGb9QQIyOBfhrqfgmPGa/UNhF5viD+63HSx2qAyWWWXmOFd/sEqxbFiGL
+         KwlSuS7yGMJ9cupbNY3GD+CMxMVJZkCSlnpMCHcYs7QT/uU5bCxA3qQPMSvtaNfXZLPu
+         cGY9a0IScwkHhbuIhJ3es1XONRv3RwpJ6q5kbN9TCm90ox8q5ioENnvoZc++Pr1sbNJZ
+         bXAA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1790311807; x=1790916607;
+        d=1e100.net; s=20260707; t=1790311816; x=1790916616;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
          :to:cc:subject:date:message-id:reply-to:content-type;
-        bh=EuT5sR3QJJEpUFIiZqumIPgjPq3lYxiQww7DYh2KWes=;
-        b=mYDVAvz0R8FrZTBPscccaSXdG/NA6V25fWfKzfuhH/95rrNx6n3JrVQjnv2MxGKAF/
-         TCC4S1FJyGIv26Gz/TqnuaYI4pfenO+Mh/nscQwsWK2hirMxf8IyUcENPaLakK/13c2C
-         7rC8/2mh4UTRBGxlmd2jajGTLMGr3ND8IbAc/pocPDa1pxewEY8QgQaixdTC3AzrzDye
-         xQJ7jHq+tanSooBQhAyhPPYQQ7EBpSjsFLKevMHiljKAsgWgR9leomeV/jRshNL/V0WH
-         XmF3CBvPbm36T6E4wmrpIGxHIlUOUz0S1QpgqzVE6WJXqEBOTtxzAAxUoQPNXk1VjoH4
-         HlKw==
-X-Forwarded-Encrypted: i=1; AKwUvBzEn2Z8AALzNbuSscLcVM7YhavUsajrZV7gbeTUyj8PXNw0V2Fcvxau6G+NqMLGoxdGnGb0kJfw9VdA7rn6pA==@lists.infradead.org
-X-Gm-Message-State: AFuF++n6FZ5N0qJ0J4/m8xcT01sVxpzwB+eGZuLJ9/Bdh6FyaWpBOC0h
-	I4Hu9kFjB0+gBImM1iiRxGkFUos2Xgr/1anni/L2sWDc15yoR6wKpTEb
-X-Gm-Gg: AYBFou3Z915KP0R1gVMRhGGqtoexvAkbGxoRGF7kyj7OW0ha32dnF908XWPwnFyTD0j
-	MuCKQAy89jb3oIhJbnuVK0p7UBtDQ7fJYAO6nz+d7rk2oc+L09tRdyGXE8T66d8RxvfXIi1LP5B
-	K+PDByvHoD8j49RxKS6kq1NqySly9YPaboBbBvtDja7k/ogFxKJHnbLNRue1/0F7fGysS1R3qd4
-	dVtPSQmxfDRZF6PExgsz9XUrynR0zp8Do/zQGmaXHSp4BRt1FKV/BOo4Vnji3oxSMiPIeLEDHA1
-	vm+UYX0tO/lqIOjHYimmaGxN5iqa5EPHfdygg8IfjpNjzK2eO9eJlrNhMXebnWKoow/feO/jrAK
-	2yxS52MSjOijwflUj3yOD3gH7nZbC8ZqCfKidZRgU95hX8DTzu4xCqJQjK23SfLdTcJ03jq3rb9
-	qIAhewckxTpC07gLcQnLRDIOX6+K/QrKw073sYV8K0k0nn1NmF65geJX3iVqAZGYZ/NtEtXahnT
-	8Yqo1gbxFc50TkS9baU9GjP+edoH9A4VlgzgUDdzJlnoqMvVNt7shOjm+vA2NXBDeNYlBRrkCqP
-	yoAX2a0nNTQb4w==
-X-Received: by 2002:a17:90b:1b06:b0:3a0:8133:69a0 with SMTP id 98e67ed59e1d1-3a098b93cb8mr4058209a91.14.1790311807298;
-        Thu, 24 Sep 2026 21:50:07 -0700 (PDT)
+        bh=jzleEuY4fxtuuqAMZY5BgUyZW117KjLIE0OgBW0FxFU=;
+        b=1MVLpovx6WM4aj+h0YwAGHHKd3p8nZWwyDCUZhybyx8Le0cWcXee0NHuKbVG3f9xuC
+         2CRS4zsFQYT3liTnmqO6PYzZ+LbjvWXUn0XAMslrOLYnY37L1M7d0NGIrxATPrdjQs2C
+         aREfQAWKrspSQbbyG2cHTfI5dMTz09hx5X0gePZuLnAwsU/qi8ShAYPEtlaAlI8gTGaj
+         AMxYX7RWoXeXisuhMzk1GpBD3YfLKM8Pbxidnz/LxgypI+aoAY9+Ug28lpg3H0pKFFpy
+         fCis2+X4P/pnRAa+5KZv1QkWy1cF4KxX5d4xJKqj1Z07z2zta0Ekc8Me/8UHXM8zi4FR
+         le0A==
+X-Forwarded-Encrypted: i=1; AKwUvBwYtHTb17rLDi/+CwgQYz75b4zrf2XlDF/fVfb+mUNRmz8Mh2kpOFPNW5zh5LFmdytVN6wZPQ5fn1PM0E7KNQ==@lists.infradead.org
+X-Gm-Message-State: AFuF++mvmDTwxWdqg188bRsU6/F6BNKG8Hx8LbF4CuOWWe3G51w7RSgj
+	liDGycMLbuvTNX6ZE83M45HcVPTpn4FR+iVDqn/TnuBSriP13Ivn1T8J
+X-Gm-Gg: AYBFou0WbXSwP6g8Nc6Cg0RUJl5e8tu7zc4qmYRQaJftzan1ePtZtDolfbr558ryJL6
+	g3//QF0YlMAcJKEJL23P6G3DrGYMpxnEf/Z4MkeD7nqqTdprKPy8R+WHOFICrdKHyDcZtKChPjI
+	mBwHeo/tXcNRz892B+LEs7K3cJrqNViWQqF2kdme+4rjAWaRIdvTaE7Wg5e60jk4NUTDYF22GdR
+	Qxg5h9ldkuYDpgBccdJrNjEHyjVyzcjKMk4jQpDpR8DKwydlZyBccQYNYF+qxS0U3a4hqx7cGOR
+	doMAiI22IWsodkgfO0oWjniy08EHdNfC57PGf6A6EoRBO9njFKyf1IcaieG5MDWNqsgFOeBXhkW
+	ozs5WOv8LOuz8UXZhHZFoma6QwS56BWTuEvTLqvX95GyzXdglvWPqiDvj4FqfDI6MiDxBO4mozQ
+	PSCbvUG4UFJ2IHb5W8EQ1BGS/cXMdVE6rCE5J7nEqjENWbxRogBRh+ay0izIKNQSqn+Wic3CSre
+	sOS3mSFK025K/jUITHvEI7/qtmvSQdHMrxJ/8MXJS4h4Tym2KKxTTeaZnQyXKX3ypRurpZu7fvg
+	2eRbsqjT1F7qVg==
+X-Received: by 2002:a17:90b:164c:b0:39e:6d82:dca with SMTP id 98e67ed59e1d1-3a098df465emr3862695a91.30.1790311816047;
+        Thu, 24 Sep 2026 21:50:16 -0700 (PDT)
 Received: from phuc-desktop.. ([183.91.15.56])
-        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-3a0976cacbesm8151528a91.13.2026.09.24.21.50.03
+        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-3a0976cacbesm8151528a91.13.2026.09.24.21.50.12
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 24 Sep 2026 21:50:07 -0700 (PDT)
+        Thu, 24 Sep 2026 21:50:15 -0700 (PDT)
 From: phucduc.bui@gmail.com
 To: Mark Brown <broonie@kernel.org>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
@@ -90,17 +90,17 @@ Cc: Liam Girdwood <lgirdwood@gmail.com>,
 	linux-mediatek@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
 	bui duc phuc <phucduc.bui@gmail.com>
-Subject: [PATCH 03/14] ASoC: mediatek: mt8195: Fix register access clock error handling
-Date: Fri, 25 Sep 2026 11:48:57 +0700
-Message-ID: <20260925044908.450775-4-phucduc.bui@gmail.com>
+Subject: [PATCH 05/14] ASoC: mediatek: mt8195: Fix paired memif clock error handling
+Date: Fri, 25 Sep 2026 11:48:59 +0700
+Message-ID: <20260925044908.450775-6-phucduc.bui@gmail.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260925044908.450775-1-phucduc.bui@gmail.com>
 References: <20260925044908.450775-1-phucduc.bui@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260924_215008_396938_F78CDF4B 
-X-CRM114-Status: GOOD (  14.15  )
+X-CRM114-CacheID: sfid-20260924_215016_800321_F932AC42 
+X-CRM114-Status: GOOD (  12.02  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -117,53 +117,77 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: bui duc phuc <phucduc.bui@gmail.com>
 
-Check the return value of mt8195_afe_enable_clk() when enabling the
-register access clocks.
+Check and propagate errors when preparing and enabling the paired
+DL8/DL10 memif clocks.
 
-If enabling a clock fails, disable the clocks that were already
-enabled and propagate the error to the caller
+If enabling the second clock fails, undo the clock that was already
+prepared or enabled to keep the clock state balanced.
 
 Fixes: 6746cc858259 ("ASoC: mediatek: mt8195: add platform driver")
 Signed-off-by: bui duc phuc <phucduc.bui@gmail.com>
 ---
- sound/soc/mediatek/mt8195/mt8195-afe-clk.c | 15 ++++++++++++---
- 1 file changed, 12 insertions(+), 3 deletions(-)
+ sound/soc/mediatek/mt8195/mt8195-afe-pcm.c | 24 ++++++++++++++++++----
+ 1 file changed, 20 insertions(+), 4 deletions(-)
 
-diff --git a/sound/soc/mediatek/mt8195/mt8195-afe-clk.c b/sound/soc/mediatek/mt8195/mt8195-afe-clk.c
-index 12d8159338be..34c828fdea29 100644
---- a/sound/soc/mediatek/mt8195/mt8195-afe-clk.c
-+++ b/sound/soc/mediatek/mt8195/mt8195-afe-clk.c
-@@ -599,7 +599,7 @@ static int mt8195_afe_disable_top_cg(struct mtk_base_afe *afe, unsigned int cg_t
- int mt8195_afe_enable_reg_rw_clk(struct mtk_base_afe *afe)
- {
+diff --git a/sound/soc/mediatek/mt8195/mt8195-afe-pcm.c b/sound/soc/mediatek/mt8195/mt8195-afe-pcm.c
+index 52c3381e6766..1d3e01e2c3e7 100644
+--- a/sound/soc/mediatek/mt8195/mt8195-afe-pcm.c
++++ b/sound/soc/mediatek/mt8195/mt8195-afe-pcm.c
+@@ -286,15 +286,23 @@ mt8195_afe_paired_memif_clk_prepare(struct snd_pcm_substream *substream,
  	struct mt8195_afe_private *afe_priv = afe->platform_priv;
--	int i;
-+	int i, ret;
- 	static const unsigned int clk_array[] = {
- 		MT8195_CLK_SCP_ADSP_AUDIODSP, /* bus clock for infra */
- 		MT8195_CLK_TOP_AUDIO_H_SEL, /* clock for ADSP bus */
-@@ -611,10 +611,19 @@ int mt8195_afe_enable_reg_rw_clk(struct mtk_base_afe *afe)
- 		MT8195_CLK_AUD_A1SYS, /* AFE HW clock */
- 	};
+ 	int id = snd_soc_rtd_to_cpu(rtd, 0)->id;
+ 	int clk_id;
++	int ret;
  
--	for (i = 0; i < ARRAY_SIZE(clk_array); i++)
--		mt8195_afe_enable_clk(afe, afe_priv->clk[clk_array[i]]);
-+	for (i = 0; i < ARRAY_SIZE(clk_array); i++) {
-+		ret = mt8195_afe_enable_clk(afe, afe_priv->clk[clk_array[i]]);
+ 	if (id != MT8195_AFE_MEMIF_DL8 && id != MT8195_AFE_MEMIF_DL10)
+ 		return 0;
+ 
+ 	if (enable) {
+ 		clk_id = MT8195_CLK_AUD_MEMIF_DL10;
+-		mt8195_afe_prepare_clk(afe, afe_priv->clk[clk_id]);
++		ret = mt8195_afe_prepare_clk(afe, afe_priv->clk[clk_id]);
 +		if (ret)
-+			goto err_disable_clk;
-+	}
++			return ret;
+ 		clk_id = MT8195_CLK_AUD_MEMIF_DL8;
+-		mt8195_afe_prepare_clk(afe, afe_priv->clk[clk_id]);
++		ret = mt8195_afe_prepare_clk(afe, afe_priv->clk[clk_id]);
++		if (ret) {
++			clk_id = MT8195_CLK_AUD_MEMIF_DL10;
++			mt8195_afe_unprepare_clk(afe, afe_priv->clk[clk_id]);
++			return ret;
++		}
+ 	} else {
+ 		clk_id = MT8195_CLK_AUD_MEMIF_DL8;
+ 		mt8195_afe_unprepare_clk(afe, afe_priv->clk[clk_id]);
+@@ -315,6 +323,7 @@ mt8195_afe_paired_memif_clk_enable(struct snd_pcm_substream *substream,
+ 	struct mt8195_afe_private *afe_priv = afe->platform_priv;
+ 	int id = snd_soc_rtd_to_cpu(rtd, 0)->id;
+ 	int clk_id;
++	int ret;
  
- 	return 0;
-+
-+err_disable_clk:
-+	while (--i >= 0)
-+		mt8195_afe_disable_clk(afe, afe_priv->clk[clk_array[i]]);
-+
-+	return ret;
- }
- 
- int mt8195_afe_disable_reg_rw_clk(struct mtk_base_afe *afe)
+ 	if (id != MT8195_AFE_MEMIF_DL8 && id != MT8195_AFE_MEMIF_DL10)
+ 		return 0;
+@@ -322,11 +331,18 @@ mt8195_afe_paired_memif_clk_enable(struct snd_pcm_substream *substream,
+ 	if (enable) {
+ 		/* DL8_DL10_MEM */
+ 		clk_id = MT8195_CLK_AUD_MEMIF_DL10;
+-		mt8195_afe_enable_clk_atomic(afe, afe_priv->clk[clk_id]);
++		ret = mt8195_afe_enable_clk_atomic(afe, afe_priv->clk[clk_id]);
++		if (ret)
++			return ret;
+ 		udelay(1);
+ 		/* DL8_DL10_AGENT */
+ 		clk_id = MT8195_CLK_AUD_MEMIF_DL8;
+-		mt8195_afe_enable_clk_atomic(afe, afe_priv->clk[clk_id]);
++		ret = mt8195_afe_enable_clk_atomic(afe, afe_priv->clk[clk_id]);
++		if (ret) {
++			clk_id = MT8195_CLK_AUD_MEMIF_DL10;
++			mt8195_afe_disable_clk_atomic(afe, afe_priv->clk[clk_id]);
++			return ret;
++		}
+ 	} else {
+ 		/* DL8_DL10_AGENT */
+ 		clk_id = MT8195_CLK_AUD_MEMIF_DL8;
 -- 
 2.43.0
 
