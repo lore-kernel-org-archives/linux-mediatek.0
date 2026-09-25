@@ -4,143 +4,156 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AF4BEC98324
-	for <linux-mediatek@archiver.kernel.org>; Fri, 25 Sep 2026 08:47:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2A4F4C98321
+	for <linux-mediatek@archiver.kernel.org>; Fri, 25 Sep 2026 12:20:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:In-Reply-To:References:Cc:To:Subject:
-	From:MIME-Version:Date:Message-ID:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ybGJMieDnUAKotpO3xSLkaT24MxuG36dkIyHYhn06KA=; b=zl82pmj9IVEyFHltI48vHjL0sG
-	k1KWOD2FJZ4vY2nNvaWRg2zVtrqQE2Gw03DvWSL45z4ShyyYPqT73G06PlC2m8pKaRGu7C0WUFs7a
-	fY/OWx0anuh+Nygif/rSScgxb9h4Omtji1sUKB3qn3+kDICoC4PoRs4F9EqP+IUjnA8AOsNBBQVTb
-	g4de0M7WnPuaVcNchivA7fe4sKLpb9IOLytBwMZ0vLaj9O1Hp29gC3+XCrMAzsyRUmWDml61D6kb4
-	APtG7x5P0kH19iRalGV7xcvuZagdSCrc+DSicd1dZo+W9/JTAQ0aftl8YCadiU9q0s8aHhjgEH2ra
-	Y5RKhKmA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=voQ2O/Dzz6AWd22TDESfkLRIvWXyYSS44IiGTAccKHQ=; b=ZY4jYY2Dc7UixHmA3IKXVTyvtc
+	ev2Lln+F+whrBZ4hVvpWXrH6CMC0sE5VgBv3VM4WX2M/RcGEGcBZrwH/etBH5+UpnUkMkHLhNHZ9A
+	WiMZAc5tR/ctU2HzEX1uvkcZZ0vS7OOGmjS8NOBlOTKgTCnMeDtz8qNMrz8vjr/y+1lRohFKPelEP
+	p6PgKdR85qTW+EDFT9p3vcNz4g/HdDDkulsY3D4eFmcnSiZWTAX7ARmDWkRjeqiRsmYVZYZTQ6dIQ
+	3toZj9uP3ilOpkP2Ott4mnaZ902Ey+stQNc5Gr+sGoZ+AwZgr4r3tPG6Rdg3dry8dxg56xUbiZh8U
+	r1RJ2qbw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xA1aM-0000000CvS1-3rA3;
-	Fri, 25 Sep 2026 08:47:14 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1xA4uY-0000000DIzn-2ByV;
+	Fri, 25 Sep 2026 12:20:18 +0000
+Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xA1aL-0000000CvRX-25p2
-	for linux-mediatek@bombadil.infradead.org;
-	Fri, 25 Sep 2026 08:47:13 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
-	:In-Reply-To:References:Cc:To:Subject:Reply-To:From:MIME-Version:Date:
-	Message-ID:Sender:Content-ID:Content-Description;
-	bh=ybGJMieDnUAKotpO3xSLkaT24MxuG36dkIyHYhn06KA=; b=S0tq1ws/iSJgLBRa7+0JrW7wLL
-	unERD9eFTfuSCEdfLe/XGHKzdTEUJNs8+hZUukHCGNJSMG9SEa99RFxr8SDwOi7ZaY0EuldUR7QcL
-	HbKeuLHfenV2PDjpak+5d9jH6E1eF1/V1Pc/bGWRgDDqTUT1D7CmTFMsDmXDerbPcF6cIuBvCoIPk
-	r8Pg79AGlh6Z8ujHhOfzeshEHCLUCc5dDGjucTIsHa86k9MafjZCLaZVIsCkl7LfC1X01l95eF8ht
-	4eehAY761Ck/MSHN/wMmWyBCvJn0ZmmtrK7FeTOF73eWdJv6b0x3M5iW6rypG5ly5Di35AG2YqKUr
-	/kgR2piw==;
-Received: from mail-wm2-x11.google.com ([2a00:1450:4864:31::11])
-	by desiato.infradead.org with esmtps (Exim 4.99.2 #2 (Red Hat Linux))
-	id 1xA1aE-0000000Gk04-3YzI
+	id 1xA4uV-0000000DIyS-2hsX
 	for linux-mediatek@lists.infradead.org;
-	Fri, 25 Sep 2026 08:47:12 +0000
-Received: by mail-wm2-x11.google.com with SMTP id 5b1f17b1804b1-49e6b885ef8so3961735e9.1
-        for <linux-mediatek@lists.infradead.org>; Fri, 25 Sep 2026 01:47:06 -0700 (PDT)
+	Fri, 25 Sep 2026 12:20:16 +0000
+Received: from pps.filterd (m0279864.ppops.net [127.0.0.1])
+	by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id 68P4YS432911644
+	for <linux-mediatek@lists.infradead.org>; Fri, 25 Sep 2026 12:20:15 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
+	cc:content-transfer-encoding:content-type:date:from:in-reply-to
+	:message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
+	voQ2O/Dzz6AWd22TDESfkLRIvWXyYSS44IiGTAccKHQ=; b=b+EXR7DjyDoIih8/
+	HSzKykaJj5kLdewcfE5ub/xLBS6N6uqWV639I5n1FU7h3hq4l/YPrsx5JDAm1EiP
+	DEOfPIOUVaNtDRle8f9tTyHGIh9caGOwqh4qKvMzFFHwZTu0gTJ9JbMKNd9QRLeh
+	24hD5tTLgi9bLxQPNQkvyx3MLuPupxmEQ+IO0/Zs3FkNHRhV514ThJrRK9sdIBAe
+	Lsn8ziA3yoRH51UnqRPubv7wNPdnHnexJxTwp/3rPENqzCRmEkTHw4Nb5iMvGtDP
+	zl9xEmXub6aeHCKAD+4xT6O88uAW1QVNJPWsZh6PUaYFlxfUM1vp5T20swzcMz52
+	NaOlpg==
+Received: from mail-yw1-f199.google.com (mail-yw1-f199.google.com [209.85.128.199])
+	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4gwhm51f7k-1
+	(version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
+	for <linux-mediatek@lists.infradead.org>; Fri, 25 Sep 2026 12:20:15 +0000 (GMT)
+Received: by mail-yw1-f199.google.com with SMTP id 00721157ae682-88b853e209fso10690987b3.0
+        for <linux-mediatek@lists.infradead.org>; Fri, 25 Sep 2026 05:20:14 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1790338814; cv=none;
+        d=google.com; s=arc-20260327;
+        b=oQDMwzA0VIQbhdsJVHf11oMGOLMXVAP7PwRFFtQYjbPDnYZI26jdHQMLHYURpiqQiY
+         s5m0DCaOHDybGISOgtlV7R41lLjA6BmAo+iQ6yuVpq0o7U50oZRTQ3K9pkAVS9rTL//S
+         KxcCjIP5Bb5TC9vCUZGSyB9zwXN3trkObV0XSWOHSHNvvAx7tLj8ozVYgtPt+X3xeSpZ
+         Z3EnIJS7xSomVNva4E3fxiL2tMKrOG1Wngty+WCno4rQWywFqY8u8EteWbvH22BqNB/I
+         pTZtPZEFOC6wAnPE/W/NOBfi5YQU08068w0P5T/zdl5W2kONZzSTvs9UX3/yqt56Dp/v
+         ai4Q==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20260327;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=voQ2O/Dzz6AWd22TDESfkLRIvWXyYSS44IiGTAccKHQ=;
+        fh=piPa75uZuKTju+5matAYyUj8f4s6RSFV3OV83NQyI9c=;
+        b=igNYqMFyr3i9M4lwadfsLRqsmw+24SBZO7pPm5NULIKUPXesg4NWdEcLkHGCTAtMER
+         NwhLSyrWiIxl1l2hV4bo1kwH4Qr++MWrMRNpbAPuHLQy9KqE7dMgQgXSUhpG1RFv1hb/
+         jIhqDSe1H8gpchunAFTE8a5WAKyTfxomipJqKCMqhy7YaF39uZkV4fv0tBAPiVSUf8re
+         qH+TgiiC3R+zDvlpbJ/ca9zSozUTM6u2q3QLHzEU1FjoAwmaLJcbKmQ+S1rOK68g3aDa
+         hR/qmSOCpv32FT+fmsC3Nb1UVwRNbPZehCEqG3g8DMKi+Hf4yOECdxyxCaMCikorWRMo
+         BYcA==;
+        darn=lists.infradead.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1790326025; x=1790930825; darn=lists.infradead.org;
-        h=content-transfer-encoding:content-type:in-reply-to:organization
-         :autocrypt:content-language:references:cc:to:subject:reply-to:from
-         :user-agent:mime-version:date:message-id:from:to:cc:subject:date
-         :message-id:reply-to:content-type;
-        bh=ybGJMieDnUAKotpO3xSLkaT24MxuG36dkIyHYhn06KA=;
-        b=cEa7N8aNVVMrFEubCtvXx3EfE99YdIh3I6DsiMBYfRtVcNPEy97FVH4o8t01TqsRcQ
-         DmwyfYjo1qbRHnwpUyrTfqhoUpolAix0+uyl0RNdUkrOxLT7tM+5/S4duBeZK/Sz3b1v
-         0juOUGUxAQoYNsDmfqufVqaYbpv5B5GPFQ1atNlGXD1lrbgoNG9zkgyZq7KPO4WOUQC4
-         9rGPVbUE5IMsA7Uc1xexkE7NPgUvCj4b/t51rvcPNz3QBKsvfvuUZSLCAjISveHaSLYN
-         G4r92wte9txH1j+4uIn42LG3XnUbSs6/0eMv+Y7gJI5+6lW1i6Sbh7Lc0IJYeEV4FCSC
-         V1XQ==
+        d=oss.qualcomm.com; s=google; t=1790338814; x=1790943614; darn=lists.infradead.org;
+        h=content-transfer-encoding:content-type:cc:to:subject:message-id
+         :date:from:in-reply-to:references:mime-version:from:to:cc:subject
+         :date:message-id:reply-to:content-type;
+        bh=voQ2O/Dzz6AWd22TDESfkLRIvWXyYSS44IiGTAccKHQ=;
+        b=OjAn4js9kT9kpsnkFXVb2c4OwA50X8bmuuO/MWdrO9/9h/p1O9Kt0cNtdlQNUJ0YpF
+         oTxTJcDijlk5crOIq5msI7SdC7q5qizRocb9G/9eU5YlkTjBuSM+U4aAdLPmn3bLbRzh
+         oys/vzHVc8DkZtFO4lWwsHulMSC/SXa+xiM0Im/y+X09v/mFvkKg9WvN5Ldfj+cmEvnB
+         3LAvsO6Cc6Do+xht+Zs8zAmZUcvObIIjQ/ipX0QNrH+ghkjC25GjjBVDbKIXg1i3x1m/
+         FG9gGysGGX0N/r0LIb4yKC1UfvTJBoREeoCN9An5y9/J6QtHcE0VrK5UX/Q2ebyClzAm
+         bjPg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1790326025; x=1790930825;
-        h=content-transfer-encoding:content-type:in-reply-to:organization
-         :autocrypt:content-language:references:cc:to:subject:reply-to:from
-         :user-agent:mime-version:date:message-id:x-gm-gg:x-gm-message-state
-         :from:to:cc:subject:date:message-id:reply-to:content-type;
-        bh=ybGJMieDnUAKotpO3xSLkaT24MxuG36dkIyHYhn06KA=;
-        b=moDzOvaSJgAwjI9n3GHvSMChSrboLR+8qa9CaQu+xS2s+fhYv/implE6s5cxutC44E
-         +UeDgapmYfW2YeyUxVOc5trq6vSeC6zYXTzSyJtQUoCaeThWHJ5hpOJuF/0n9ry5igj8
-         t8qA48ypRFj7cgPzqeYFgxlawvdkYY3ct+XoHTHHgTxyscJ8nssMxqx12v84iQEjGC9q
-         XGJCquSyfIrwZ/URBjHJgozbgRHaaauzLqk+vxi8VdHC9tHs5jaVkI10XnqDTp+t27r5
-         ApSe/Vw62I/eM3kL9uIHHqMDCLDSr98J11wpS2u7E+Urg0OQpzaLwN8vQz0JAjLjlO8X
-         LOVw==
-X-Forwarded-Encrypted: i=1; AKwUvByzBjJ1wkUdr0AVQDxFMWcqXatgOiomyEntQkZjZ7fMnB7H+MyYE+O/1VVIaIvqtT3Cpla85T0EWC6zMLfvjw==@lists.infradead.org
-X-Gm-Message-State: AFuF++nKD0CfzFMOyp9wN7iEc6s9krnLPJcfa3WGfuH35YOKmITyeEYL
-	wtZeJQKeASjhVZIwzugcdbqzZ9EAp+kyGEjVK6Hwb94vDHaOIqIKw1sULgtFmKsUeXM=
-X-Gm-Gg: AYBFou19tuXneFwE3Pqx/BZwjLMLUDIxOL4DGGHcahe6PSVFLmaZfN58CeW6SKr/S2A
-	TsLUeOESRYleB19jeTNVE7By4QMtjkAS/3Q7tvbaU//s/NnAiXQe0P5Lg6FoVBakkW4RPlbBTj2
-	bjYOn2ymdLsEeSBZti2ISMlIka4yC0rQ3xc9XNKLgIrSvCyD6xlxIokAfMGyH5oiBk5Jgh8w3fi
-	4LDCd2OU2f+jymCPRrI3Gz8OpP0ftNzLaWy7ChS+h5qS8nCOuGa0M8snETNpugKI504KS04hm2T
-	a73YYRsk9+ItBxoB91W+EYZh+yg/wpcHOJdqUnrLC8TuUVRfURdLr/FNDi9aXmvW3QRYDY6CfI8
-	RyWJDcKSYthd6klSDLQRv4A4klU0LGPFNYHaM/jEwrW8ddwzn8rmk1HKHlHYEhf4tyCUPCI1whQ
-	G2SOolp3OUfooA39vj8W2+IqbyhXGvBnWUnc/Qydu5N6tNl4I6Wn6SI5uVhrAwCqn6AH9euBSr6
-	FwZhUPzQLweegSO6O91UO+v4LomYBnKCntrDCDGhNDGo4r2LKGy/jE=
-X-Received: by 2002:a05:600c:4689:b0:49f:bc8a:b103 with SMTP id 5b1f17b1804b1-49fe66841f8mr87493745e9.0.1790326024865;
-        Fri, 25 Sep 2026 01:47:04 -0700 (PDT)
-Received: from ?IPV6:2a01:e0a:106d:1080:3151:fc9b:d41c:770b? ([2a01:e0a:106d:1080:3151:fc9b:d41c:770b])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-49ff04440e2sm41053585e9.0.2026.09.25.01.47.03
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 25 Sep 2026 01:47:04 -0700 (PDT)
-Message-ID: <6399bb18-f463-4d6c-80e1-0efca5e7768d@linaro.org>
-Date: Fri, 25 Sep 2026 10:47:03 +0200
+        d=1e100.net; s=20260707; t=1790338814; x=1790943614;
+        h=content-transfer-encoding:content-type:cc:to:subject:message-id
+         :date:from:in-reply-to:references:mime-version:x-gm-gg
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+         :content-type;
+        bh=voQ2O/Dzz6AWd22TDESfkLRIvWXyYSS44IiGTAccKHQ=;
+        b=mxfAkhboRRXjnVABzyBWB6R6X9BBfjTG5xZndMB0GMpqdg1GzKHPh9mwi3MKOXm2Wa
+         +DmZGuGawvKB+3H16aa1wkemDY3OSIJa5hl4R08ew0nhgH+ho+jZQPVWXIxyFw3dhNgu
+         54VrvkRurjT/PRBvGR0XqfpCghlwlSc3UChQqSLRhbulcsqlkapbiEQEbwMchLozR0ss
+         HM80mpMP7OoxuFdorx59RNFESwUJlOF3blXUANI1l4+H+fhicTMWhwNqTAy+2MaZOhyk
+         mg8XQKjpurtZOwPKsy/FKjAP0uCIOlGLW8uQjMQLe3p5E7LYl8tHZSKx2kIAm4ba3LO6
+         OKYw==
+X-Forwarded-Encrypted: i=1; AKwUvBy3o1qY0VDGyuyr5CPWQMYuPu6/rD+kzj3FaKOONTD2v26RetsD4sTwnXUXX7B0WS5c1WpKnFOZI4QHWOSJIg==@lists.infradead.org
+X-Gm-Message-State: AFuF++nefscF7yWThRRHCLXqJB7FwkZS9PeRuawsilwnJlKrG/eK210M
+	8GoMnOtQX2u+qkf6hnbwM9axeNGrDDaQpgxWQ2eJ8O6vKHEHoqFgGIWRgrzvny8sTymsYf0BwIW
+	qHlaNynvEI0CfyqZfsmdMBkmv9SpCCZ+20HKDY6eYds2VfQ2V66FZCQqoVO9AUhQr2MgIRsNJ25
+	eqxiPRo5Vcv4BVoRCweLKNxOBFOeGHeUQdAy92D8XPXIb/PwKCPA==
+X-Gm-Gg: AYBFou156R2+0G1zPTmJL/HwKDD5qhnV+g8ajjo3cQrSQcw5e7Bem2d1IVokQUEhVm9
+	FG9YjHlGYHGJKgzu9Zv0I7RQtUWvHy3YPvS/7wVSgF2KbdQWJHAEidTF5D9W18BlWPoVV5SaqYp
+	Xux6OCY92gpTjngnSzif4x+QWiUFoV92IiDfcUdvm7ERSTk+28azxt0sw=
+X-Received: by 2002:a05:690c:7011:b0:8a8:6fac:1525 with SMTP id 00721157ae682-8a86fac15dfmr9506927b3.46.1790338814072;
+        Fri, 25 Sep 2026 05:20:14 -0700 (PDT)
+X-Received: by 2002:a05:690c:7011:b0:8a8:6fac:1525 with SMTP id
+ 00721157ae682-8a86fac15dfmr9506707b3.46.1790338813586; Fri, 25 Sep 2026
+ 05:20:13 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-From: Neil Armstrong <neil.armstrong@linaro.org>
-Subject: Re: [PATCH v5 3/3] MAINTAINERS: Add myself and Ryan Brue as
- maintainers of NT51021 panel driver
-To: Nickolay Goppen <setotau@mainlining.org>,
- Jessica Zhang <jesszhan0024@gmail.com>, David Airlie <airlied@gmail.com>,
- Simona Vetter <simona@ffwll.ch>,
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
- <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, Ryan Brue <ryanbrue.dev@gmail.com>,
- Alexey Minnekhanov <alexeymin@minlexx.ru>,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-References: <20260924-qcom-novatek-nt51021-panels-v5-0-f5eaf5685c9c@mainlining.org>
- <20260924-qcom-novatek-nt51021-panels-v5-3-f5eaf5685c9c@mainlining.org>
-Content-Language: en-US, fr
-Autocrypt: addr=neil.armstrong@linaro.org; keydata=
- xsBNBE1ZBs8BCAD78xVLsXPwV/2qQx2FaO/7mhWL0Qodw8UcQJnkrWmgTFRobtTWxuRx8WWP
- GTjuhvbleoQ5Cxjr+v+1ARGCH46MxFP5DwauzPekwJUD5QKZlaw/bURTLmS2id5wWi3lqVH4
- BVF2WzvGyyeV1o4RTCYDnZ9VLLylJ9bneEaIs/7cjCEbipGGFlfIML3sfqnIvMAxIMZrvcl9
- qPV2k+KQ7q+aXavU5W+yLNn7QtXUB530Zlk/d2ETgzQ5FLYYnUDAaRl+8JUTjc0CNOTpCeik
- 80TZcE6f8M76Xa6yU8VcNko94Ck7iB4vj70q76P/J7kt98hklrr85/3NU3oti3nrIHmHABEB
- AAHNKk5laWwgQXJtc3Ryb25nIDxuZWlsLmFybXN0cm9uZ0BsaW5hcm8ub3JnPsLAkQQTAQoA
- OwIbIwULCQgHAwUVCgkICwUWAgMBAAIeAQIXgBYhBInsPQWERiF0UPIoSBaat7Gkz/iuBQJk
- Q5wSAhkBAAoJEBaat7Gkz/iuyhMIANiD94qDtUTJRfEW6GwXmtKWwl/mvqQtaTtZID2dos04
- YqBbshiJbejgVJjy+HODcNUIKBB3PSLaln4ltdsV73SBcwUNdzebfKspAQunCM22Mn6FBIxQ
- GizsMLcP/0FX4en9NaKGfK6ZdKK6kN1GR9YffMJd2P08EO8mHowmSRe/ExAODhAs9W7XXExw
- UNCY4pVJyRPpEhv373vvff60bHxc1k/FF9WaPscMt7hlkbFLUs85kHtQAmr8pV5Hy9ezsSRa
- GzJmiVclkPc2BY592IGBXRDQ38urXeM4nfhhvqA50b/nAEXc6FzqgXqDkEIwR66/Gbp0t3+r
- yQzpKRyQif3OwE0ETVkGzwEIALyKDN/OGURaHBVzwjgYq+ZtifvekdrSNl8TIDH8g1xicBYp
- QTbPn6bbSZbdvfeQPNCcD4/EhXZuhQXMcoJsQQQnO4vwVULmPGgtGf8PVc7dxKOeta+qUh6+
- SRh3vIcAUFHDT3f/Zdspz+e2E0hPV2hiSvICLk11qO6cyJE13zeNFoeY3ggrKY+IzbFomIZY
- 4yG6xI99NIPEVE9lNBXBKIlewIyVlkOaYvJWSV+p5gdJXOvScNN1epm5YHmf9aE2ZjnqZGoM
- Mtsyw18YoX9BqMFInxqYQQ3j/HpVgTSvmo5ea5qQDDUaCsaTf8UeDcwYOtgI8iL4oHcsGtUX
- oUk33HEAEQEAAcLAXwQYAQIACQUCTVkGzwIbDAAKCRAWmrexpM/4rrXiB/sGbkQ6itMrAIfn
- M7IbRuiSZS1unlySUVYu3SD6YBYnNi3G5EpbwfBNuT3H8//rVvtOFK4OD8cRYkxXRQmTvqa3
- 3eDIHu/zr1HMKErm+2SD6PO9umRef8V82o2oaCLvf4WeIssFjwB0b6a12opuRP7yo3E3gTCS
- KmbUuLv1CtxKQF+fUV1cVaTPMyT25Od+RC1K+iOR0F54oUJvJeq7fUzbn/KdlhA8XPGzwGRy
- 4zcsPWvwnXgfe5tk680fEKZVwOZKIEuJC3v+/yZpQzDvGYJvbyix0lHnrCzq43WefRHI5XTT
- QbM0WUIBIcGmq38+OgUsMYu4NzLu7uZFAcmp6h8g
-Organization: Linaro
-In-Reply-To: <20260924-qcom-novatek-nt51021-panels-v5-3-f5eaf5685c9c@mainlining.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+References: <20260918101113.6699-1-shf.chen@mediatek.com>
+In-Reply-To: <20260918101113.6699-1-shf.chen@mediatek.com>
+From: Jens Wiklander <jens.wiklander@oss.qualcomm.com>
+Date: Fri, 25 Sep 2026 14:20:02 +0200
+X-Gm-Features: AclHuK-ouBDE3NP5KllgzizL8nzI00TGFeoDBfSmluIKyV7R7AT2q-LaOcyCY5Y
+Message-ID: <CAGgiveUPixvTF9vJ2Xo4zTSL3OBND=FgWpNth7F6PuqcidLmVA@mail.gmail.com>
+Subject: Re: [PATCH] optee: register TEE devices only once fully initialized
+To: Shao-Fu Chen <shf.chen@mediatek.com>
+Cc: Jens Wiklander <jenswi@kernel.org>, Sumit Garg <sumit.garg@kernel.org>,
+        Matthias Brugger <matthias.bgg@gmail.com>,
+        AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+        op-tee@lists.trustedfirmware.org, linux-kernel@vger.kernel.org,
+        linux-arm-kernel@lists.infradead.org,
+        linux-mediatek@lists.infradead.org,
+        Project_Global_Chrome_Upstream_Group@mediatek.com,
+        tadd.kao@mediatek.com, jarried.lin@mediatek.com,
+        vince-wl.liu@mediatek.com, justin.yeh@mediatek.com
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+X-Proofpoint-GUID: OC_oOw9lc0cQOq_arkwzh2ScHxIrw-_u
+X-Authority-Analysis: v=2.4 cv=QYnzLcbv c=1 sm=1 tr=0 ts=6ab666ff cx=c_pps
+ a=72HoHk1woDtn7btP4rdmlg==:117 a=IkcTkHD0fZMA:10 a=VdqzKS8jKosA:10
+ a=s4-Qcg_JpJYA:10 a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22
+ a=DJpcGTmdVt4CTyJn9g5Z:22 a=mpaa-ttXAAAA:8 a=oFcAipZnX4TCZRIg_scA:9
+ a=QEXdDO2ut3YA:10 a=kA6IBgd4cpdPkAWqgNAz:22
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwOTI1MDA0OSBTYWx0ZWRfX4ekPsjPXsmg+
+ e5h6V4ZZm0hA+0YoeiSAmUwKzTGEIPjaP+3/mwFbOhltrzY5u9SGVzqxkeeREdIpIq6I2rvH7YO
+ 1NhABpDAIdM8lLkjz+RRhpI8CPR5xcvL0hZLfsXHXf6hyTAUXJ5qZvj7jGNm0giD0sXkfxI9r0M
+ DFBm9nLSnHLlUSge6HuT6dP/JXezdSXij0uQXIuZwA6iLflQ5OKw5zUR7LrKTPFWxFgVMl9D70c
+ kI/ucsTPXssFCGPjgMteuU01umh/88YCS+9uUvZ7BKt5lFYNZxCuyI6RyDqE6JpRWjDZQpWYvGY
+ eoHcMjPI+fokwJHzEL2MiAjk/QjKxYiV+Fo/9DlrHo106nmTiOJ5Q6+6Bcs0e/uVkeX4c00sXnw
+ PxwfN5nHm0Pu60Du41aqNge4viIfme7M61r1yWrQ1zIzFQ9mQyaDwBPJOsWuwkS1vBMl9Ea32Wf
+ 7hL+h0sLAv6SVg/ii0w==
+X-Proofpoint-ORIG-GUID: OC_oOw9lc0cQOq_arkwzh2ScHxIrw-_u
+X-Proofpoint-Spam-Info: AW1haW4tMjYwOTI1MDA0OSBTYWx0ZWRfXx9GglUsQVXmS
+ y+yjWKlr3ASTenwpnDLpaclAnCAruvUqJMoOL2tCKAh84O32zc8N6gIkaEXPt12fIcwkB6Id50Y
+ V+JYyGDpvXs7Zs5fd66tN37JamR8IhI=
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1176,Hydra:6.1.134,FMLib:17.12.100.49
+ definitions=2026-09-25_02,2026-09-21_02,2025-10-01_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ clxscore=1011 impostorscore=0 bulkscore=0 priorityscore=1501 malwarescore=0
+ phishscore=0 suspectscore=0 lowpriorityscore=0 spamscore=0 adultscore=0
+ classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
+ reason=mlx scancount=1 engine=8.22.0-2609040000 definitions=main-2609250049
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260925_094708_744243_5D668B60 
-X-CRM114-Status: GOOD (  11.72  )
+X-CRM114-CacheID: sfid-20260925_052015_694141_17DAAB70 
+X-CRM114-Status: GOOD (  20.90  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -152,40 +165,50 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Reply-To: Neil Armstrong <neil.armstrong@linaro.org>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 9/24/26 17:08, Nickolay Goppen wrote:
-> Add a maintainer entry for the new NT51021 panel driver
-> 
-> Signed-off-by: Nickolay Goppen <setotau@mainlining.org>
+Hi,
+
+On Fri, Sep 18, 2026 at 12:12=E2=80=AFPM Shao-Fu Chen <shf.chen@mediatek.co=
+m> wrote:
+>
+> optee_probe() called tee_device_register() on both the client and the
+> supplicant device before the rest of struct optee had been initialized.
+>
+> tee_device_register() calls cdev_device_add(), which does two things at
+> once: it creates /dev/tee0 and /dev/teepriv0, and it links the device
+> into the tee class so that class_find_device() can find it. From that
+> moment on the device is reachable both from user space via tee_open()
+> and from kernel space via tee_client_open_context(). The only gate in
+> teedev_open() is tee_device_get(), which merely checks that
+> teedev->desc is non-NULL, which was already set by tee_device_alloc().
+> Therefore, there is effectively no gate at all.
+>
+> A context opened in that window can run against a struct optee where
+>
+>   - optee->call_queue.mutex is not initialized by optee_cq_init()
+>   - optee->supp mutex and completions is not initialized by
+>     optee_supp_init()
+>   - optee->rpmb_dev_mutex is not initialized yet,
+>   - the message argument cache is not initialized by
+>     optee_shm_arg_cache_init()
+>   - optee->ctx is still NULL
+>
+> Any open session or invoke during this window takes uninitialized
+> mutexes and dereferences a NULL pointer.
+>
+> Fix it by moving both tee_device_register() calls down to the point
+> where all of struct optee is set up.
+>
+> Signed-off-by: Shao-Fu Chen <shf.chen@mediatek.com>
 > ---
->   MAINTAINERS | 7 +++++++
->   1 file changed, 7 insertions(+)
-> 
-> diff --git a/MAINTAINERS b/MAINTAINERS
-> index 7291238bc09f..743c785b4558 100644
-> --- a/MAINTAINERS
-> +++ b/MAINTAINERS
-> @@ -8354,6 +8354,13 @@ S:	Maintained
->   F:	Documentation/devicetree/bindings/display/panel/novatek,nt37801.yaml
->   F:	drivers/gpu/drm/panel/panel-novatek-nt37801.c
->   
-> +DRM DRIVER FOR NOVATEK NT51021 PANELS
-> +M:	Ryan Brue <ryanbrue.dev@gmail.com>
-> +M:	Nickolay Goppen <setotau@mainlining.org>
-> +S:	Maintained
-> +F:	Documentation/devicetree/bindings/display/panel/novatek,nt51021.yaml
-> +F:	drivers/gpu/drm/panel/panel-novatek-nt51021.c
-> +
->   DRM DRIVER FOR NVIDIA GEFORCE/QUADRO GPUS
->   M:	Lyude Paul <lyude@redhat.com>
->   M:	Danilo Krummrich <dakr@kernel.org>
-> 
+>  drivers/tee/optee/ffa_abi.c | 16 ++++++++--------
+>  drivers/tee/optee/smc_abi.c | 17 ++++++++---------
+>  2 files changed, 16 insertions(+), 17 deletions(-)
 
-Reviewed-by: Neil Armstrong <neil.armstrong@linaro.org>
+Looks good, I'm picking this up.
 
-Thanks,
-Neil
+Cheers,
+Jens
 
