@@ -4,64 +4,94 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 62E21C9830E
-	for <linux-mediatek@archiver.kernel.org>; Fri, 25 Sep 2026 13:24:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E9096C98321
+	for <linux-mediatek@archiver.kernel.org>; Fri, 25 Sep 2026 14:24:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=JcvwxJfj+wQCvTyKCuDmOvkUWIndsvAdclXPqwL6QjM=; b=07fX5iLSzSeAZQeQVVgzRJ/ft1
-	h3KmjVUsGPh3qgUcQhpQFsbVZiAA5zqm2GTOfOVv3xRWqudFiSbcYUypxopEqXk2a2s4Q7DdcF1D0
-	DvK8NOJoFId2Si3DHb3ZYxNIOA+tUHqXU4F66fHKaEpnJBIe1lGRwiNSmuLb9gpAdnw5vHFIvyNEW
-	Ylja1TcYeQH7hOJEfmbgENAdu9MTn5LUd+J5JowyoCEN/AskpdkEWvW0yFWNddXCqk8FkmOH2ayfW
-	H+QRc6xd7eBu+R+QxGNtHSybX6dl0gkZfbNjTYwbRH7D0fSv/gyUzye6oRAP6lAR5dFuD0qR9RO3v
-	frpWUizA==;
+	bh=E0I0TIKEyiasgHy1ngA6HhdOkD8Gr+np1P2q8hO6FMM=; b=UXDal2kqDtKvTZmdia+UaEr7/d
+	MxY9R5e8v/MmvHCimrlnbKYIzUZLBkxP5hXMHqyWVF507APl8I06b2qYrfiU7D0wgs3xXpMVTrJHX
+	bkxjnRPDjUKDNLH6WReEg6Bmp0gLXiqqk4jPFA3C1rM3ks2Icbv050vGmv0OPeeDZJb4zr9V7Xsu5
+	HHVlBbYSlvdRjAkz/t2d2sHLzGoEvZAFq9T9P4nid5SrWlTyUGubhqLCs2knwpdrycjNW5SbkCtF1
+	DgiD3Wm7Gno8bthgc7AMxhVLtquSLeiU+YAJHjTEbP8hM3vzRzWgPEiX3VcS5ifZ7DAcAQvg/9nAV
+	h3dJgOhg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xA5v3-0000000DQBK-0uKK;
-	Fri, 25 Sep 2026 13:24:53 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1xA6qP-0000000DZOP-1LHU;
+	Fri, 25 Sep 2026 14:24:09 +0000
+Received: from mail-pj2-x10.google.com ([2607:f8b0:4864:39::10])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xA5v1-0000000DQAU-3NJT;
-	Fri, 25 Sep 2026 13:24:51 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 2DAE660230;
-	Fri, 25 Sep 2026 13:24:51 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id DF1A11F000FF;
-	Fri, 25 Sep 2026 13:24:49 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1790342690;
-	bh=JcvwxJfj+wQCvTyKCuDmOvkUWIndsvAdclXPqwL6QjM=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=GSoaOEXqNZo5+lFu4BWpMyM+JE4KVsAWFxigirREnjn9EsPKMGSXqy6zl+1JRw4dm
-	 3U0v1lVUBRas/uYlViba9t+pwZ7GuOvS/CJJXOpFmu1sberKqQygJmySBYCf3ycyp4
-	 WvXUDgAxGmgJLJYcldjLPV2k9kmJsPLnVrhrQE5Rgxx1pd1IXH2Ld4PbCi05X3sEMk
-	 z7+1KJsjNpR9btN0PPFvJBbcDgR8JadJYt+p7Lus/nPk+0oR55RlDDn0uG8WYtWyj8
-	 o6VxOCBheopmhNVFgCDB/Jgjw8GuX14GXG+SzVRHn/ShaPfg2sA9qGq8yuX3XzRRBd
-	 tHA2EHtPG0A8A==
-Date: Fri, 25 Sep 2026 15:24:47 +0200
-From: Krzysztof Kozlowski <krzk@kernel.org>
-To: Luca Leonardo Scorcia <l.scorcia@gmail.com>
-Cc: linux-mediatek@lists.infradead.org, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
-	Philipp Zabel <p.zabel@pengutronix.de>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
-	Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
-	David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, Rob Herring <robh@kernel.org>, 
-	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, CK Hu <ck.hu@mediatek.com>, Jitao shi <jitao.shi@mediatek.com>, 
-	dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org
-Subject: Re: [PATCH v2 1/4] dt-bindings: display: mediatek: dpi: Add
- compatible for mt8167
-Message-ID: <20260925-inventive-crystal-firefly-0deffe@quoll>
-References: <20260921113914.779393-1-l.scorcia@gmail.com>
- <20260921113914.779393-2-l.scorcia@gmail.com>
+	id 1xA6qN-0000000DZNj-0FNn
+	for linux-mediatek@lists.infradead.org;
+	Fri, 25 Sep 2026 14:24:08 +0000
+Received: by mail-pj2-x10.google.com with SMTP id d9443c01a7336-2dd88a115ebso5089785ad.2
+        for <linux-mediatek@lists.infradead.org>; Fri, 25 Sep 2026 07:24:06 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20251104; t=1790346246; x=1790951046; darn=lists.infradead.org;
+        h=in-reply-to:content-disposition:content-type:mime-version
+         :references:message-id:subject:cc:to:from:date:sender:from:to:cc
+         :subject:date:message-id:reply-to:content-type;
+        bh=E0I0TIKEyiasgHy1ngA6HhdOkD8Gr+np1P2q8hO6FMM=;
+        b=Ho6cMfC7dhp1rQ+h4v+1olLNoJ85jIPyJ/YozX0QHy7ITvNxt99zo/1JjCdxN68ZsB
+         QARZb/2VK7FyOKtn8hizpBUzenAxjTTKrK+SSLXwG+RQPf3o4MHz5spQDjcAmFUVuG7V
+         9g+eJBgz1XQ67uiWFDOtvuKyZW0jRCPNZ5MOwAl7Gh/X7m20PQMet91qiyTphUgOEmnP
+         +BWvv7Yol62H/OSr9e1/OVm/YnVZ5/a8cQqX4BVvbPeghfgK2hrFJXEEC6MLuuU0LAmg
+         lc/i9CHMABXDHiSar6MqVa8Q1vUT+bNNrstWsZ6EuvJhxVmvnOL0fngfoeOBNPvm0uTt
+         SQ3w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20260707; t=1790346246; x=1790951046;
+        h=in-reply-to:content-disposition:content-type:mime-version
+         :references:message-id:subject:cc:to:from:date:sender:x-gm-gg
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+         :content-type;
+        bh=E0I0TIKEyiasgHy1ngA6HhdOkD8Gr+np1P2q8hO6FMM=;
+        b=vspS+1HdYke/pPThwzld9Ry6RLY0VDsS1KKGpuOICBq0Ts65hQXHSzKo030cbSzqKi
+         thSa1q9qGAi5kTns0IoeUInYoIdUOZ3FjIFi0U9maSTCOLoDLHIsZ0cRfgPvMcPW0ZiS
+         Ya+vtxiPpf1cnhTNJTswr4uRRLvbrveE0kJ1vb7AvX+x2j07qvU6qqJyV9fCH0A5c7Iv
+         yqzk226otHjdokHj/w3ngu3ijCAyxwkLM9BNsQHAH8iDjWl0erOT/WecPmaUda7EkeAZ
+         pzjAdceArSGDrQgyRZudPMHHNl1RwtSu/UOCTbJHQToXnWRDLv0XvTRUYk9EmU4lDXr8
+         VDKw==
+X-Forwarded-Encrypted: i=1; AKwUvBzHIAEA4LZNFNg1pZYe7Dnf00OXzd0OvYGvI06e4wu+GdamTC3tyTg663skrNrY5l/q8PebOeLKoSwUTCVX3w==@lists.infradead.org
+X-Gm-Message-State: AFuF++lGb1OhUw5cYqC3J0YjUZ4/4m9xqOKnpA+0kJf5vhUCY31kyEXJ
+	U/TOAXxlaBaw1pziYuPOZ3VM9Xd8QxiXF1+0ZGHVOiiQ42TotmYj1GfE
+X-Gm-Gg: AYBFou0bfBIa4WLYWD4wU7PdhbetLtfEWkToupRc/sF/1tp6twSCi4ZU4TPn69qNLOr
+	tDGzspEEzy71l/pTbx5oX5A8nCKCX5Um4fQZuofBSDhQt80OUOhPeyy4eOUMOYu8+IoYLpiJer5
+	y2miT0IHbH2/sMu2QVLbah07Kpbl8vpxcMBzVfqHM17ENOOJ3aA6qUGKeU9bZfbCrt9QXY6vtRN
+	Ltk6jAyD1DflE+g1woFqsulAni5jVmDh42LODTyfkEn595k7GjZ1BBvThlWLeUfXCmTVaq+lTyE
+	wGQ1UlBKeqLRglBnnCs3sio6JJfJfh3jP8Uw9mnnj32VLcN5Zvex3lfGrurAHALQVjssQLx8PfT
+	WV82gFaAJMSA+a/KR4aTbh1QAujDBzv304VKUpzpnkrvl+ZMu+coeaTQu4Y2Eqp/7A8KSYnJGJQ
+	gaMWlXDDwwVwNZsAGyHnQ8Yyi70/iw2lF30NADdwjP4MUJJtLEKBx+PqvfeE2xPOgyJEXtNkjX/
+	XlYEv81eI1H
+X-Received: by 2002:a17:902:d481:b0:2dd:b83b:fe1e with SMTP id d9443c01a7336-2df7de9309fmr49802315ad.22.1790346241220;
+        Fri, 25 Sep 2026 07:24:01 -0700 (PDT)
+Received: from server.roeck-us.net ([2600:1700:e321:62f0:da43:aeff:fecc:bfd5])
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-2df913e032bsm11754115ad.27.2026.09.25.07.24.00
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 25 Sep 2026 07:24:00 -0700 (PDT)
+Date: Fri, 25 Sep 2026 07:23:59 -0700
+From: Guenter Roeck <linux@roeck-us.net>
+To: Ryan Brue <ryanbrue.dev@gmail.com>
+Cc: Wim Van Sebroeck <wim@linux-watchdog.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	"freddy.hsin" <freddy.hsin@mediatek.com>,
+	linux-watchdog@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH] watchdog: mediatek: Apply the driver's mode to a
+ watchdog left running
+Message-ID: <559c625b-8191-439b-b613-d35afe24c4b1@roeck-us.net>
+References: <20260923-rbrue-suez-upstreaming-mtk-wdt-dual-mode-v1-1-0970852315e4@gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20260921113914.779393-2-l.scorcia@gmail.com>
+In-Reply-To: <20260923-rbrue-suez-upstreaming-mtk-wdt-dual-mode-v1-1-0970852315e4@gmail.com>
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260925_072407_157349_0F7AC3AF 
+X-CRM114-Status: GOOD (  12.51  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,21 +106,26 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Sep 21, 2026 at 01:38:55PM +0200, Luca Leonardo Scorcia wrote:
-> MediaTek mt8167 SoC has two Digital Parallel Interface (DPI) blocks,
-> one can be routed to a DPI display while the other is wired to the HDMI
-> block. They are not compatible with any other device, so add a new
-> compatible to describe them in the device tree.
+On Wed, Sep 23, 2026 at 10:10:41PM -0500, Ryan Brue wrote:
+> When the bootloader leaves the watchdog enabled, probe only marks it
+> running and sets the timeout, so WDT_MODE keeps whatever the bootloader
+> wrote. The Amazon Fire HD 10 (2017) bootloader leaves dual mode with the
+> bark IRQ enabled, and no pretimeout is configured, so each timeout only
+> raises the IRQ and restarts the count: with the 20 s timeout systemd
+> sets, a hung system was reset after 37.95-39.76 s, and after 18.25-20.92 s
+> once IRQ_EN was cleared by hand.
 > 
-> Signed-off-by: Luca Leonardo Scorcia <l.scorcia@gmail.com>
-> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> Program the mode as mtk_wdt_start() does, which also applies
+> mediatek,disable-extrst and mediatek,reset-by-toprgu to a running
+> watchdog; read those two properties first.
+> 
+> Fixes: bbece05c0d3a ("watchdog: mtk_wdt: Remove mtk_wdt_stop() in probe() to prevent the system freeze and it doesn't reboot by watchdog problem")
+> Assisted-by: LLM
+> Signed-off-by: Ryan Brue <ryanbrue.dev@gmail.com>
 > ---
->  .../devicetree/bindings/display/mediatek/mediatek,dpi.yaml       | 1 +
->  1 file changed, 1 insertion(+)
 
-Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
+Applied.
 
-Best regards,
-Krzysztof
-
+Thanks,
+Guenter
 
