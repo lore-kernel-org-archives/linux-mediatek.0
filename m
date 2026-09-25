@@ -4,94 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E9096C98321
-	for <linux-mediatek@archiver.kernel.org>; Fri, 25 Sep 2026 14:24:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 52281C98321
+	for <linux-mediatek@archiver.kernel.org>; Fri, 25 Sep 2026 15:06:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=E0I0TIKEyiasgHy1ngA6HhdOkD8Gr+np1P2q8hO6FMM=; b=UXDal2kqDtKvTZmdia+UaEr7/d
-	MxY9R5e8v/MmvHCimrlnbKYIzUZLBkxP5hXMHqyWVF507APl8I06b2qYrfiU7D0wgs3xXpMVTrJHX
-	bkxjnRPDjUKDNLH6WReEg6Bmp0gLXiqqk4jPFA3C1rM3ks2Icbv050vGmv0OPeeDZJb4zr9V7Xsu5
-	HHVlBbYSlvdRjAkz/t2d2sHLzGoEvZAFq9T9P4nid5SrWlTyUGubhqLCs2knwpdrycjNW5SbkCtF1
-	DgiD3Wm7Gno8bthgc7AMxhVLtquSLeiU+YAJHjTEbP8hM3vzRzWgPEiX3VcS5ifZ7DAcAQvg/9nAV
-	h3dJgOhg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=WzdROanWlTNrH8RVUU2vkB9x2qZKNDOucbvjx4s09js=; b=yXfxB5OJ/jNrkV7fB3S41hNgXi
+	fRqAX0cQwFRkACHUJQEcXW9YmRY/0jcYefruNPo02Mcb6j6cDe/26NGfsGTzcjTsxWj1f83Dgab5R
+	xDmDHlHpSamuJZph34EwK3mV7kqksqe1RKwK+Ba1H59Nf+vJP7dNuUe9nZpAyod/FIfjdLqkMqlMk
+	aZ6rQkrcU3gxk0GaxUGcd6+sVBhc+wdQNnXI+QBSPuwiFc74XsEcJOV0QOtEtvXo4RfoJZt1at7AU
+	8wfebkGJPXoOyoXjDB8jKvWkLi0qRmlviIe9xJ1yI3cQVEHdUS1wyTaWhn6hJVSkikAbBWhKNHRmf
+	m6p2wt7A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xA6qP-0000000DZOP-1LHU;
-	Fri, 25 Sep 2026 14:24:09 +0000
-Received: from mail-pj2-x10.google.com ([2607:f8b0:4864:39::10])
+	id 1xA7VI-0000000DhZQ-4BWW;
+	Fri, 25 Sep 2026 15:06:24 +0000
+Received: from m16.mail.163.com ([117.135.210.5])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xA6qN-0000000DZNj-0FNn
-	for linux-mediatek@lists.infradead.org;
-	Fri, 25 Sep 2026 14:24:08 +0000
-Received: by mail-pj2-x10.google.com with SMTP id d9443c01a7336-2dd88a115ebso5089785ad.2
-        for <linux-mediatek@lists.infradead.org>; Fri, 25 Sep 2026 07:24:06 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1790346246; x=1790951046; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:content-type:mime-version
-         :references:message-id:subject:cc:to:from:date:sender:from:to:cc
-         :subject:date:message-id:reply-to:content-type;
-        bh=E0I0TIKEyiasgHy1ngA6HhdOkD8Gr+np1P2q8hO6FMM=;
-        b=Ho6cMfC7dhp1rQ+h4v+1olLNoJ85jIPyJ/YozX0QHy7ITvNxt99zo/1JjCdxN68ZsB
-         QARZb/2VK7FyOKtn8hizpBUzenAxjTTKrK+SSLXwG+RQPf3o4MHz5spQDjcAmFUVuG7V
-         9g+eJBgz1XQ67uiWFDOtvuKyZW0jRCPNZ5MOwAl7Gh/X7m20PQMet91qiyTphUgOEmnP
-         +BWvv7Yol62H/OSr9e1/OVm/YnVZ5/a8cQqX4BVvbPeghfgK2hrFJXEEC6MLuuU0LAmg
-         lc/i9CHMABXDHiSar6MqVa8Q1vUT+bNNrstWsZ6EuvJhxVmvnOL0fngfoeOBNPvm0uTt
-         SQ3w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1790346246; x=1790951046;
-        h=in-reply-to:content-disposition:content-type:mime-version
-         :references:message-id:subject:cc:to:from:date:sender:x-gm-gg
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
-         :content-type;
-        bh=E0I0TIKEyiasgHy1ngA6HhdOkD8Gr+np1P2q8hO6FMM=;
-        b=vspS+1HdYke/pPThwzld9Ry6RLY0VDsS1KKGpuOICBq0Ts65hQXHSzKo030cbSzqKi
-         thSa1q9qGAi5kTns0IoeUInYoIdUOZ3FjIFi0U9maSTCOLoDLHIsZ0cRfgPvMcPW0ZiS
-         Ya+vtxiPpf1cnhTNJTswr4uRRLvbrveE0kJ1vb7AvX+x2j07qvU6qqJyV9fCH0A5c7Iv
-         yqzk226otHjdokHj/w3ngu3ijCAyxwkLM9BNsQHAH8iDjWl0erOT/WecPmaUda7EkeAZ
-         pzjAdceArSGDrQgyRZudPMHHNl1RwtSu/UOCTbJHQToXnWRDLv0XvTRUYk9EmU4lDXr8
-         VDKw==
-X-Forwarded-Encrypted: i=1; AKwUvBzHIAEA4LZNFNg1pZYe7Dnf00OXzd0OvYGvI06e4wu+GdamTC3tyTg663skrNrY5l/q8PebOeLKoSwUTCVX3w==@lists.infradead.org
-X-Gm-Message-State: AFuF++lGb1OhUw5cYqC3J0YjUZ4/4m9xqOKnpA+0kJf5vhUCY31kyEXJ
-	U/TOAXxlaBaw1pziYuPOZ3VM9Xd8QxiXF1+0ZGHVOiiQ42TotmYj1GfE
-X-Gm-Gg: AYBFou0bfBIa4WLYWD4wU7PdhbetLtfEWkToupRc/sF/1tp6twSCi4ZU4TPn69qNLOr
-	tDGzspEEzy71l/pTbx5oX5A8nCKCX5Um4fQZuofBSDhQt80OUOhPeyy4eOUMOYu8+IoYLpiJer5
-	y2miT0IHbH2/sMu2QVLbah07Kpbl8vpxcMBzVfqHM17ENOOJ3aA6qUGKeU9bZfbCrt9QXY6vtRN
-	Ltk6jAyD1DflE+g1woFqsulAni5jVmDh42LODTyfkEn595k7GjZ1BBvThlWLeUfXCmTVaq+lTyE
-	wGQ1UlBKeqLRglBnnCs3sio6JJfJfh3jP8Uw9mnnj32VLcN5Zvex3lfGrurAHALQVjssQLx8PfT
-	WV82gFaAJMSA+a/KR4aTbh1QAujDBzv304VKUpzpnkrvl+ZMu+coeaTQu4Y2Eqp/7A8KSYnJGJQ
-	gaMWlXDDwwVwNZsAGyHnQ8Yyi70/iw2lF30NADdwjP4MUJJtLEKBx+PqvfeE2xPOgyJEXtNkjX/
-	XlYEv81eI1H
-X-Received: by 2002:a17:902:d481:b0:2dd:b83b:fe1e with SMTP id d9443c01a7336-2df7de9309fmr49802315ad.22.1790346241220;
-        Fri, 25 Sep 2026 07:24:01 -0700 (PDT)
-Received: from server.roeck-us.net ([2600:1700:e321:62f0:da43:aeff:fecc:bfd5])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-2df913e032bsm11754115ad.27.2026.09.25.07.24.00
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 25 Sep 2026 07:24:00 -0700 (PDT)
-Date: Fri, 25 Sep 2026 07:23:59 -0700
-From: Guenter Roeck <linux@roeck-us.net>
-To: Ryan Brue <ryanbrue.dev@gmail.com>
-Cc: Wim Van Sebroeck <wim@linux-watchdog.org>,
+	id 1xA7VE-0000000DhV5-1nQu;
+	Fri, 25 Sep 2026 15:06:23 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
+	s=s110527; h=From:To:Subject:Date:Message-Id:MIME-Version; bh=Wz
+	dROanWlTNrH8RVUU2vkB9x2qZKNDOucbvjx4s09js=; b=DVcs3mEJ/3/NyJ1bLz
+	66RyjCWIQ9ZhktvE+Qr48b9Z0dgaPWWog1qncyjcpLs0toYOfqK77ayhEqMcSTQt
+	BLH+NBSA56n6m1OnwZNxtkaFG2ObLcKEG+Ugtxk065IRWYJv7KiIGbp236MvYK4J
+	nATBwJ0Km9Oh8AprQAXFMmDp4=
+Received: from pc.localdomain (unknown [])
+	by gzga-smtp-mtada-g0-3 (Coremail) with SMTP id _____wD3J8zYjbZq2yQpAw--.5414S3;
+	Fri, 25 Sep 2026 23:06:02 +0800 (CST)
+From: Jiale Yao <yaojiale02@163.com>
+To: Felix Fietkau <nbd@nbd.name>,
+	Lorenzo Bianconi <lorenzo@kernel.org>,
+	Ryder Lee <ryder.lee@mediatek.com>,
+	Shayne Chen <shayne.chen@mediatek.com>,
+	Sean Wang <sean.wang@mediatek.com>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	"freddy.hsin" <freddy.hsin@mediatek.com>,
-	linux-watchdog@vger.kernel.org, linux-kernel@vger.kernel.org,
+	Markus Theil <markus.theil@tu-ilmenau.de>,
+	linux-wireless@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH] watchdog: mediatek: Apply the driver's mode to a
- watchdog left running
-Message-ID: <559c625b-8191-439b-b613-d35afe24c4b1@roeck-us.net>
-References: <20260923-rbrue-suez-upstreaming-mtk-wdt-dual-mode-v1-1-0970852315e4@gmail.com>
+Cc: Jiale Yao <yaojiale02@163.com>
+Subject: [PATCH 1/2] wifi: mt76: usb: fix source overread in mt76u_copy
+Date: Fri, 25 Sep 2026 23:05:54 +0800
+Message-Id: <20260925150556.2304003-2-yaojiale02@163.com>
+X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20260925150556.2304003-1-yaojiale02@163.com>
+References: <20260925150556.2304003-1-yaojiale02@163.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20260923-rbrue-suez-upstreaming-mtk-wdt-dual-mode-v1-1-0970852315e4@gmail.com>
+Content-Transfer-Encoding: 8bit
+X-CM-TRANSID: _____wD3J8zYjbZq2yQpAw--.5414S3
+X-Coremail-Antispam: 1Uf129KBjvJXoW7Ww4UWFy5ZFW5uw45Zr4kCrg_yoW8ZF4kpF
+	Z7KFya9rZxGF17Jw4xAan8AF93ZayIkryDKrZ3Za4fu395Jw18KFy8KFyUKrWUZF4Sgr12
+	yrnFyr97W3s8taUanT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
+	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x0pENeOiUUUUU=
+X-CM-SenderInfo: x1dryxhdohiji6rwjhhfrp/xtbC7xvhHGq2jdsjagAA3K
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260925_072407_157349_0F7AC3AF 
-X-CRM114-Status: GOOD (  12.51  )
+X-CRM114-CacheID: sfid-20260925_080621_664195_0921C277 
+X-CRM114-Status: GOOD (  12.97  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,26 +80,59 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Sep 23, 2026 at 10:10:41PM -0500, Ryan Brue wrote:
-> When the bootloader leaves the watchdog enabled, probe only marks it
-> running and sets the timeout, so WDT_MODE keeps whatever the bootloader
-> wrote. The Amazon Fire HD 10 (2017) bootloader leaves dual mode with the
-> bark IRQ enabled, and no pretimeout is configured, so each timeout only
-> raises the IRQ and restarts the count: with the 20 s timeout systemd
-> sets, a hung system was reset after 37.95-39.76 s, and after 18.25-20.92 s
-> once IRQ_EN was cleared by hand.
-> 
-> Program the mode as mtk_wdt_start() does, which also applies
-> mediatek,disable-extrst and mediatek,reset-by-toprgu to a running
-> watchdog; read those two properties first.
-> 
-> Fixes: bbece05c0d3a ("watchdog: mtk_wdt: Remove mtk_wdt_stop() in probe() to prevent the system freeze and it doesn't reboot by watchdog problem")
-> Assisted-by: LLM
-> Signed-off-by: Ryan Brue <ryanbrue.dev@gmail.com>
-> ---
+mt76u_copy() rounds up len to a multiple of four and uses the rounded
+length as the bound for memcpy() from the source buffer. When the
+caller's length is not four-byte aligned, the final copy reads up to
+three bytes past the source buffer.
 
-Applied.
+Keep the original length for the source copy and zero the remaining
+bytes in the transmit buffer so that the hardware access width remains
+four-byte aligned.
 
-Thanks,
-Guenter
+Fixes: 9446248669968 ("mt76: speed up usb bulk copy")
+Signed-off-by: Jiale Yao <yaojiale02@163.com>
+---
+ drivers/net/wireless/mediatek/mt76/usb.c | 16 +++++++++++-----
+ 1 file changed, 11 insertions(+), 5 deletions(-)
+
+diff --git a/drivers/net/wireless/mediatek/mt76/usb.c b/drivers/net/wireless/mediatek/mt76/usb.c
+index a9af3aa6b80a..a42a33f4e907 100644
+--- a/drivers/net/wireless/mediatek/mt76/usb.c
++++ b/drivers/net/wireless/mediatek/mt76/usb.c
+@@ -171,8 +171,10 @@ static void mt76u_copy(struct mt76_dev *dev, u32 offset,
+ {
+ 	struct mt76_usb *usb = &dev->usb;
+ 	const u8 *val = data;
+-	int ret;
+ 	int current_batch_size;
++	int len_aligned;
++	int copy_len;
++	int ret;
+ 	int i = 0;
+ 
+ 	/* Assure that always a multiple of 4 bytes are copied,
+@@ -180,12 +182,16 @@ static void mt76u_copy(struct mt76_dev *dev, u32 offset,
+ 	 * See: "mt76: round up length on mt76_wr_copy"
+ 	 * Commit 850e8f6fbd5d0003b0
+ 	 */
+-	len = round_up(len, 4);
++	len_aligned = round_up(len, 4);
+ 
+ 	mutex_lock(&usb->usb_ctrl_mtx);
+-	while (i < len) {
+-		current_batch_size = min_t(int, usb->data_len, len - i);
+-		memcpy(usb->data, val + i, current_batch_size);
++	while (i < len_aligned) {
++		current_batch_size = min_t(int, usb->data_len, len_aligned - i);
++		copy_len = min_t(int, current_batch_size, len - i);
++		memcpy(usb->data, val + i, copy_len);
++		if (copy_len < current_batch_size)
++			memset(usb->data + copy_len, 0,
++			       current_batch_size - copy_len);
+ 		ret = __mt76u_vendor_request(dev, MT_VEND_MULTI_WRITE,
+ 					     USB_DIR_OUT | USB_TYPE_VENDOR,
+ 					     0, offset + i, usb->data,
+-- 
+2.34.1
+
 
