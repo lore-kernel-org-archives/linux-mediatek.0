@@ -4,66 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D0333C98325
-	for <linux-mediatek@archiver.kernel.org>; Fri, 25 Sep 2026 15:28:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 66862C9830E
+	for <linux-mediatek@archiver.kernel.org>; Fri, 25 Sep 2026 15:47:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-Type:MIME-Version:Message-ID:Subject:Cc:From:To:Date:Reply-To:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=HX/yjkeGZhu54QuTdGe2SqLBuSkENDQfw+HyBnEMbZk=; b=3Wd/Hu36QrTCGxgqstqFE2wng4
-	CjpCSLsTAJ/mqB0NxKyzS49GHUzrfvTkbLT3/+7tzjWemwI1X2fNvgkQlRxMF2nw4Tj3yw/i/8wbE
-	MGfsWlwg6se5INFz/3/IoJyhtueWdj6wuOTwpQC8adUNmbs7nBvcFnBC35BtJlxXBvg4HSVzFz6fB
-	rTw+AUEf/snU1dwsW27EYHcHRpvfuGim1yUvk+HbhnxmDYXcTZChmCdVvSKGUijgDwvLEMKaBxHZ4
-	NpzZdEqxKuZVvXpzcLr/b/JK3Y4vwMm+VWjeeVh8cHVkrCELyun1QNNX/B2ja7AZLd1p5H4CkAgXH
-	kyWzsMwg==;
+	bh=na3aVGqjVNrIst8t4bZU+RdCofbxvyiF0JPAdioBs6Y=; b=jjokejjcgzKSecoqbzmTLZpvvX
+	d9JsZjvKZ1TskVTaNDEns2gnEAyiaKjsA6Sktv+wEms1loz0WqYYrvyzb/tlYc2cWv2fZmFKNJJZM
+	4X42OoCRQ3nB6ctSw/hkOkwXMafhX2iJCUyzIYO15eL7+CL5tfO+pvkuj8iLKKIcUTW3iC6eN2ZZF
+	2ce9WPD0GMTmuEX1ioRY/jRCa70igjrKvBsOUpHf7K4NMa4C2Gi6KeI9L1ebTe4bHLh6DZ8RVwawP
+	S3EDmWkJnkcueh2QEyW1yRSHOfOf915PaRX9EmcddbUCozFmvF5uvbdQkZ6mjd0W1+5eKi13OrA2M
+	u6HyKKPA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xA7qh-0000000DnJh-2dju;
-	Fri, 25 Sep 2026 15:28:31 +0000
-Received: from m16.mail.163.com ([220.197.31.2])
+	id 1xA88a-0000000DqGX-199F;
+	Fri, 25 Sep 2026 15:47:00 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xA7qe-0000000DnIf-3f9m;
-	Fri, 25 Sep 2026 15:28:30 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
-	s=s110527; h=From:To:Subject:Date:Message-Id:MIME-Version; bh=HX
-	/yjkeGZhu54QuTdGe2SqLBuSkENDQfw+HyBnEMbZk=; b=VdUTcKNV8FUaX58nhD
-	Etv3gN4SrbpUREKihrQWUTnmp8uEH3CwRDAArfGxvtvb1LCojDR30KT1QTC0rJWq
-	3Pe4vAgDO0pcBLGEMqAfvM1hpMdALgZJrmK7WrX2QxawOp5+WKk/FexDPS709IEG
-	RHIGjN9rt0BjmWCFh6TGBsOjg=
-Received: from pc.localdomain (unknown [])
-	by gzga-smtp-mtada-g1-1 (Coremail) with SMTP id _____wD3H5cAk7Zq7VoPAw--.4331S2;
-	Fri, 25 Sep 2026 23:28:01 +0800 (CST)
-From: Jiale Yao <yaojiale02@163.com>
-To: Felix Fietkau <nbd@nbd.name>,
-	Lorenzo Bianconi <lorenzo@kernel.org>,
-	Ryder Lee <ryder.lee@mediatek.com>,
-	Shayne Chen <shayne.chen@mediatek.com>,
-	Sean Wang <sean.wang@mediatek.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Kalle Valo <kvalo@kernel.org>,
-	linux-wireless@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Cc: Jiale Yao <yaojiale02@163.com>
-Subject: [PATCH] wifi: mt76: mt76x02: validate RX padding before use
-Date: Fri, 25 Sep 2026 23:27:54 +0800
-Message-Id: <20260925152754.2323624-1-yaojiale02@163.com>
-X-Mailer: git-send-email 2.34.1
+	id 1xA88Y-0000000DqFr-3FkC
+	for linux-mediatek@bombadil.infradead.org;
+	Fri, 25 Sep 2026 15:46:58 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
+	:MIME-Version:Message-ID:Subject:Cc:From:To:Date:Sender:Reply-To:Content-ID:
+	Content-Description:In-Reply-To:References;
+	bh=na3aVGqjVNrIst8t4bZU+RdCofbxvyiF0JPAdioBs6Y=; b=QOSfAbkzsewVTvbFTx7GrVEqwD
+	kRIHk8BJ4gFBYyK9G6cCa1cDhmsBtOcnv5j6YmrGHAdGrZg01mpmtP+GzzSTCGn9BX9F2X0g/21np
+	/pI1/gWGl8A2c6VpituXDt073jUcaTzMzCqoE1kAuw3PssCd5N6EryG0qBwSyEinAJy868vNeroV6
+	NS+D+YREbXNLDcvJwXS1zypB8d958/xYQFXbqJOPnkisHsFrXv8SLE6sao6imi72BMPov0vr7bCJ1
+	is2aWKQyxj7hVEcA/Y57BTwIGWj708YYfNk8c86TQk63Ib+4hmqTh4ds8FApyj3zArm0+rIv/9A6E
+	GYrubTYw==;
+Received: from mail-24430.protonmail.ch ([109.224.244.30])
+	by desiato.infradead.org with esmtps (Exim 4.99.2 #2 (Red Hat Linux))
+	id 1xA88V-0000000H5Ng-3ROL
+	for linux-mediatek@lists.infradead.org;
+	Fri, 25 Sep 2026 15:46:57 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=protonmail.com;
+	s=protonmail3; t=1790351206; x=1790610406;
+	bh=na3aVGqjVNrIst8t4bZU+RdCofbxvyiF0JPAdioBs6Y=;
+	h=Date:To:From:Cc:Subject:Message-ID:Feedback-ID:From:To:Cc:Date:
+	 Subject:Reply-To:Feedback-ID:Message-ID:BIMI-Selector;
+	b=XLwyQx64z2iyxd1UeoZJECbemV+ta5QXWJiLBX6K23/igwuCfxITBLcaLKZE8Ks0t
+	 4aNWWIyfeSivXGoxKfgODCRWHANiS3J8LDqJjR/zdT3W+DYI4s2/MC/Tqs4BakdX4T
+	 EdHadd9YR4ud1WAflvlUOU8LJb0iauSmttydSsmNpZf2YoiMZufVxz6mcqTWKk3adn
+	 3X0/8uuR6USRz8faqpmZAvXDdAfUbfenQxZ12SP7hFfnWTIYjMqXNq6qb5XdXOEyQd
+	 ql0uRQxY6JtmlFCOgx7BW4H66EhQBBuIzzgTJryhLlwUGDbW6rwct2+Tn/UuF+iL/C
+	 aVCjzsfeEjffw==
+Date: Fri, 25 Sep 2026 15:46:40 +0000
+To: Sean Wang <sean.wang@kernel.org>, Linus Walleij <linusw@kernel.org>, Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Andy Teng <andy.teng@mediatek.com>
+From: Yassine Oudjana <y.oudjana@protonmail.com>
+Cc: Yassine Oudjana <y.oudjana@protonmail.com>, linux-mediatek@lists.infradead.org, linux-gpio@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+Subject: [PATCH v9 0/6] MediaTek pinctrl DT binding cleanup and MT6735 pinctrl support
+Message-ID: <20260925-mt6735-pinctrl-v9-v9-0-bfb19d8bb87c@protonmail.com>
+Feedback-ID: 6882736:user:proton
+X-Pm-Message-ID: 298bd0783ccbf19c0263703409127e6a6a5ea5df
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-CM-TRANSID: _____wD3H5cAk7Zq7VoPAw--.4331S2
-X-Coremail-Antispam: 1Uf129KBjvJXoW7WF17Gw47Gw1UJF1xZFWUArb_yoW8AFy8pF
-	W5K342vr45Gr48uw18Aa1kCFWrGw1fKFy5KFySg3WrZa40krn8JFyF9FyFvryFyFsYk3WS
-	kF1qvanxGFyDu3JanT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
-	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x0pRCJPAUUUUU=
-X-CM-SenderInfo: x1dryxhdohiji6rwjhhfrp/xtbCzgEtZ2q2kwHW6gAA33
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260925_082829_376710_C395D9D1 
-X-CRM114-Status: GOOD (  11.28  )
+X-CRM114-CacheID: sfid-20260925_164656_002648_1DD24865 
+X-CRM114-Status: GOOD (  17.64  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,51 +81,127 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The RX descriptor provides L2 and PN padding lengths that are used to
-locate the CCMP IV and determine how many bytes to remove from the packet.
-These lengths are not checked against the received skb length before the
-IV is read or mt76x02_remove_hdr_pad() is called.
+These patches are part of a larger effort to support the MT6735 SoC family =
+in
+mainline Linux. More patches (unsent or sent and pending review or revision=
+) can
+be found here[1].
 
-Reject frames whose IV does not fit within the skb or whose header padding
-would extend past the end of the skb.
+This series adds a driver for the pin controller found on the MediaTek MT67=
+35
+and MT6735M SoCs. The two differ in the last 6 physical pins, which are use=
+d
+for MSDC2 on MT6735 but don't exist on MT6735M (since MSDC2 doesn't exist o=
+n it
+to begin with). In preparation to document DT bindings for this pin control=
+ler,
+the existing documents for MT67xx SoCs are combined into one in order to
+eliminate duplicate property definitions and standardize pin configuration =
+node
+names. Necessary cleanup is done along the way.
 
-Fixes: 30ce7f4456ae ("mt76: validate rx CCMP PN")
-Signed-off-by: Jiale Yao <yaojiale02@163.com>
+[1] https://gitlab.com/mt6735-mainline/linux/-/commits/mt6735-staging
+
+Changes since v8:
+ - Merge recently added slew-rate description in MT6795 bindings into MT677=
+9
+   bindings.
+ - Remove "capitalize pinmux description" which was not done from 2/6 commi=
+t
+   description.
+ - Add ARM64 || COMPILE_TEST as kconfig dependency for MT6735 driver.
+ - Set _x_addrs for GPIO_RDSEL of pin group 5 which spreads across 2 regist=
+ers.
+ - Add entries for virtual EINT pins to pull_type array.
+ - Set db_time in mtk_eint_hw struct. Debounce times match those of MT6765.
+ - Add pull_type array for MT6735M.
+Changes since v7:
+ - Wrap &mtk_paris_pinctrl_pm_ops with pm_sleep_ptr to fix build error repo=
+rted
+   by kernel test robot.
+Changes since v6:
+ - Mention changing MT6797 DT in 1st patch commit message.
+ - Squash MT6735 DT binding patches.
+ - Add debounce time to eint_hw struct. MT6735 supports the same debounce
+   times as MT6765 so reuse debounce_time_mt6765.
+Changes since v5:
+ - Revise and fix all register bits for all group register types (IES, SMT,
+   RDSEL, TDSEL, PUPD_R0_R1, PULLEN and PULLSEL).
+ - Add pull_type array.
+ - Use proper getters/setters for bias and drive.
+ - Add minItems for MT6795 interrupts.
+Changes since v4:
+ - Remove patches that were applied previously.
+ - Define interrupts items for each variant (bringing back maxItems: 1 to t=
+he top
+   level definition then adding maxItems: 2 under the MT6795 condition caus=
+es a
+   dt_binding_check error for some reason)
+ - Move example changes to the patch they belong to
+ - Don't unnecessarily move the allOf block.
+Changes since v3:
+ - Improve interrupts description to make clear what sysirq means.
+ - Set drive-strength constraints per variant.
+ - Set maxItems for reg in MT6795.
+ - Add blank lines between conditionals.
+ - Add ref for both pinmux-node.yaml and pincfg-node.yaml.
+ - Make pinctrl subnode-related changes in separate patch.
+ - Fix up some pinctrl subnode property descriptions.
+ - Add interrupts items descriptions to MT6765 and MT6735.Changes since v3:
+ - Improve interrupts description to make clear what sysirq means.
+ - Set drive-strength constraints per variant.
+ - Set maxItems for reg in MT6795.
+ - Add blank lines between conditionals.
+ - Add ref for both pinmux-node.yaml and pincfg-node.yaml.
+ - Make pinctrl subnode-related changes in separate patch.
+ - Fix up some pinctrl subnode property descriptions.
+ - Add interrupts items descriptions to MT6765 and MT6735.
+Changes since v2:
+ - Add interrupt descriptions.
+ - Change interrupts property item limits.
+ - Move pinmux examples from node description to example dts.
+ - Properly add myself as maintainer for MT6735 pinctrl driver and DT bindi=
+ngs
+   document.
+ - Remove tabs from a few defines in pinctrl-mt6735.c.
+Changes since v1:
+ - Combine other documents into existing mediatek,mt6779-pinctrl.yaml
+   instead of creating a new document with wild card in its name.
+ - Split first patch into smaller patches focused on specific changes.
+ - Remove syscon compatible from MT6779 DT to avoid a check error.
+ - Fix interrupt count for MT6795.
+
+Signed-off-by: Yassine Oudjana <y.oudjana@protonmail.com>
 ---
- drivers/net/wireless/mediatek/mt76/mt76x02_mac.c | 11 +++++++++--
- 1 file changed, 9 insertions(+), 2 deletions(-)
+Yassine Oudjana (6):
+      dt-bindings: pinctrl: mediatek,mt6779-pinctrl: Pull pinctrl node chan=
+ges from MT6795 document
+      dt-bindings: pinctrl: mediatek,mt6779-pinctrl: Improve pinctrl subnod=
+e and property descriptions
+      dt-bindings: pinctrl: mediatek,mt6779-pinctrl: Add MT6795
+      dt-bindings: pinctrl: mediatek,mt6779-pinctrl: Document MT6765 pin co=
+ntroller
+      dt-bindings: pinctrl: mediatek,mt6779-pinctrl: Add bindings for MT673=
+5 pin controller
+      pinctrl: mediatek: Add MT6735 pinctrl driver
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76x02_mac.c b/drivers/net/wireless/mediatek/mt76/mt76x02_mac.c
-index 21f8b1e64101..73a42cc4edae 100644
---- a/drivers/net/wireless/mediatek/mt76/mt76x02_mac.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt76x02_mac.c
-@@ -809,9 +809,13 @@ int mt76x02_mac_process_rx(struct mt76x02_dev *dev, struct sk_buff *skb,
- 	len = FIELD_GET(MT_RXWI_CTL_MPDU_LEN, ctl);
- 	pn_len = FIELD_GET(MT_RXINFO_PN_LEN, rxinfo);
- 	if (pn_len) {
--		int offset = ieee80211_get_hdrlen_from_skb(skb) + pad_len;
--		u8 *data = skb->data + offset;
-+		unsigned int offset = ieee80211_get_hdrlen_from_skb(skb) + pad_len;
-+		u8 *data;
- 
-+		if (offset + 8 > skb->len)
-+			return -EINVAL;
-+
-+		data = skb->data + offset;
- 		status->iv[0] = data[7];
- 		status->iv[1] = data[6];
- 		status->iv[2] = data[5];
-@@ -831,6 +835,9 @@ int mt76x02_mac_process_rx(struct mt76x02_dev *dev, struct sk_buff *skb,
- 		}
- 	}
- 
-+	if (pad_len + ieee80211_get_hdrlen_from_skb(skb) > skb->len)
-+		return -EINVAL;
-+
- 	mt76x02_remove_hdr_pad(skb, pad_len);
- 
- 	if ((rxinfo & MT_RXINFO_BA) && !(rxinfo & MT_RXINFO_NULL))
--- 
-2.34.1
+ .../bindings/pinctrl/mediatek,mt6779-pinctrl.yaml  |  196 +-
+ .../bindings/pinctrl/mediatek,mt6795-pinctrl.yaml  |  236 --
+ MAINTAINERS                                        |    9 +
+ drivers/pinctrl/mediatek/Kconfig                   |    7 +
+ drivers/pinctrl/mediatek/Makefile                  |    1 +
+ drivers/pinctrl/mediatek/pinctrl-mt6735.c          | 1118 ++++++
+ drivers/pinctrl/mediatek/pinctrl-mtk-mt6735.h      | 3993 ++++++++++++++++=
+++++
+ .../dt-bindings/pinctrl/mediatek,mt6735-pinfunc.h  | 1148 ++++++
+ 8 files changed, 6455 insertions(+), 253 deletions(-)
+---
+base-commit: 4c253ac4b29b8c6cc6fdef8f92d4facde62e63b9
+change-id: 20260924-mt6735-pinctrl-v9-30c26357d432
+
+Best regards,
+-- =20
+Yassine Oudjana <y.oudjana@protonmail.com>
+
 
 
