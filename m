@@ -4,75 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 49CEDC98321
-	for <linux-mediatek@archiver.kernel.org>; Fri, 25 Sep 2026 17:10:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2153DC9830E
+	for <linux-mediatek@archiver.kernel.org>; Fri, 25 Sep 2026 17:27:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ZY+JAmDmWtIQ8nQAOLoeWreSqeSKKZ9GlEGYCiTzBVw=; b=k+4db0XYnfjKNX8KYnCjkkmfPv
-	pBl4lXCk16/JnZWVCy3gcgKXGbk9HYtEh8gOm5jLu7NoDidHoib8n7TKBlWDh95OaBlV/Sqh3fLmw
-	W/w8hDV/EraFbuVyXrMfcwqDFgFGKz6v6cAEfuvU6WV44UsIU1TF5zIM8FdEp9b6xSYPkeqn9XMo1
-	hLh/dByt539SsFfj9ZLeKMc72iuCsjaC6ffbxn5oPO2ELP9xcx3R3v6BWRaas312/mA2sqdSUM3SW
-	3DAuKY7TwrIwLkNbD1gpBv8ftgPR40RMq2BeajJ+efOtvXH7gD+WETc68qRrgI03y6eXCK3WU1DUm
-	RTaDwePg==;
+	bh=nrCZY+w8ZAuOgUKyJ5bzQ3lA0kZX185uW8oYwG5RuQA=; b=b2Z07wJLO2+qGyONmvi+KpVhlf
+	c078DQQD1k8jILX0kQNX8LvOC5LdUwuN9QH6sF2UHluS0t5c6qnn+s3Fg9r69PHeN+5CyS3lFkG+2
+	NzA5d4f1hQJZq2SShRJuzFsFraPgv1dQ1op/0EZsDjW7ltf3GYWQI+Ah50IT6l2+wIEdr/aAeuTWI
+	LJMXLkNKNqPEIDZQ4+d2hShG9bJ+u0n4Yi3gaDxySVwcnh4fMnnal914y66J2Vky9gYjTQh34I14B
+	wI31U5J5StIsG+9aX6ofbc4A1NNwHiJ+NM4LG2b9jCIURON9ixW+EHXoco7eR5tuJM9lEcdDWowsh
+	T3zbVYDg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xA9Rg-0000000E2uN-0CVU;
-	Fri, 25 Sep 2026 17:10:48 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1xA9hS-0000000E3vw-3ipG;
+	Fri, 25 Sep 2026 17:27:06 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xA9RV-0000000E2rm-06MR;
-	Fri, 25 Sep 2026 17:10:37 +0000
+	id 1xA9hR-0000000E3vi-157p
+	for linux-mediatek@lists.infradead.org;
+	Fri, 25 Sep 2026 17:27:05 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 1960460136;
-	Fri, 25 Sep 2026 17:10:36 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id EBBE51F00893;
-	Fri, 25 Sep 2026 17:10:32 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id EB22C44247
+	for <linux-mediatek@lists.infradead.org>; Fri, 25 Sep 2026 17:27:04 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id B67231F00901
+	for <linux-mediatek@lists.infradead.org>; Fri, 25 Sep 2026 17:27:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1790356235;
-	bh=ZY+JAmDmWtIQ8nQAOLoeWreSqeSKKZ9GlEGYCiTzBVw=;
-	h=From:To:Cc:In-Reply-To:References:Subject:Date;
-	b=lIC+TS1r64GhqZtFkfmCigk1hjosRIX061L6K5cF+BPEwCRYpjdqz4Ln0COS4tOPS
-	 94wL7/3xYqFbYeHI87Z8kZfD1UvrnFqJxNz60hux26d0t1TUq9E9uLsGaRRJJStXrp
-	 4zRbds65I03aBTW2g/q2PiMln3Js9V7iGbDcnMCjEuOOZ5QoyXByz9K53bvXBt8q8t
-	 JrfzR0VSRzK42JJAgmbvvQgyeuYucCfB36XtpIdDADgBLe7V9Bp03bvZev+Gkap+Dy
-	 CJ/Fr1jXZcH6ZDtQioEZ3eBQ6k3VvjSiy+EViVUmOgkZCER58IUfh3gyQf9Bpux1r/
-	 Ho7EjK6pp9kPA==
-From: Mark Brown <broonie@kernel.org>
-To: David Rhodes <david.rhodes@cirrus.com>, 
- Richard Fitzgerald <rf@opensource.cirrus.com>, 
- Liam Girdwood <lgirdwood@gmail.com>, Jaroslav Kysela <perex@perex.cz>, 
- Takashi Iwai <tiwai@suse.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Kuninori Morimoto <kuninori.morimoto.gx@renesas.com>, 
- "Peng Fan (OSS)" <peng.fan@oss.nxp.com>
-Cc: linux-kernel@vger.kernel.org, Peng Fan <peng.fan@nxp.com>, 
- linux-sound@vger.kernel.org, patches@opensource.cirrus.com, 
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-In-Reply-To: <20260924083420.461715-1-peng.fan@oss.nxp.com>
-References: <20260924083420.461715-1-peng.fan@oss.nxp.com>
-Subject: Re: [PATCH] ASoC: use regmap_assign_bits() for conditional
- set/clear
-Message-Id: <179029244481.149798.12087901953016730058.b4-ty@b4>
-Date: Fri, 25 Sep 2026 00:27:24 +0100
+	s=k20260515; t=1790357224;
+	bh=nrCZY+w8ZAuOgUKyJ5bzQ3lA0kZX185uW8oYwG5RuQA=;
+	h=References:In-Reply-To:From:Date:Subject:To:Cc;
+	b=UfFKqsvK75p5eO5B5LPWqx7YmtHZp5SiX1PFOsrb/Rw7u/0QFbVRoYO3MBcG/t5cL
+	 f0grYRNmRlCV/gnwPAuW3LI+ccOXT0MjTt7Y8FeHXxJ869jP4sIIJdGs5M2A3YPkRs
+	 ukh/P2eflHnEpauu+zEccKoAmEXT4qeEDi7o0bJS06Qz1CCYGEgXO5YqMpVQhl3no4
+	 lLRGB99pVq05PP0MRgcsH4//8wpFOz+qWgGYKGx2Z78V8f5l9jdhS4QzuPEDb8kFis
+	 pnJBNA0VYqlKgjIBYJuffADzzi0g5B+u1BB7AUPs4ANGSHG8KVd1IE7vW4tmTi93D2
+	 bENY6AcgbMT3A==
+Received: by mail-lr2-f35.google.com with SMTP id 38308e7fff4ca-3a64e7f48e0so9534881fa.0
+        for <linux-mediatek@lists.infradead.org>; Fri, 25 Sep 2026 10:27:04 -0700 (PDT)
+X-Forwarded-Encrypted: i=1; AKwUvBwTVncxNdtDaqzIkDQFq+e9Li7EJaXgdzhYUg4y+/ULH8eAYdH9t5qxSENXuJv7MMMqD9XG9JsQZYEWFYZtcQ==@lists.infradead.org
+X-Gm-Message-State: AFuF++nP6BzAY0PT0YCv3d3pbLOaNUK9IGN4JhpB+R1mtgzmKfuyxq82
+	810U79y9CCC0OxhbSpO8gy1uJbYeR2NQeJelNQ4tZu62tXPKXYSyllKcr9gyk386Q3Wz6OD38CN
+	j2BXRsA83Yeo7y7k6krjwJwj8sY1nNGw=
+X-Received: by 2002:a05:651c:43dc:10b0:3a6:95a:52ab with SMTP id
+ 38308e7fff4ca-3a63c0e006emr12420831fa.18.1790357222990; Fri, 25 Sep 2026
+ 10:27:02 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-X-Mailer: b4 0.17-dev
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1132; i=broonie@kernel.org;
- h=from:subject:message-id; bh=btAJTGQM17nfINWzcM50CcOirwQ19hxLz8BOtzLcA/4=;
- b=owEBbQGS/pANAwAKASTWi3JdVIfQAcsmYgBqtqsGQa3KIOzA11v0aMkbM/3taweh3nHNDOqXK
- AAibBZBC0SJATMEAAEKAB0WIQSt5miqZ1cYtZ/in+ok1otyXVSH0AUCararBgAKCRAk1otyXVSH
- 0N4wB/97dJj9Hb3yE5W3Pex5aZp39b0z9qdn81f1AIzfdST/6WhThVQiD4g6s8ASSEuZVonETLW
- y+6NKn2YLYrx4NOLTIkB9C+aPVQnX9DR5ImwcbskduGdmau5yhY6+PoLs8m2/h7WHqCVZbbSWm/
- cofCyi3KOsmAO2IhDSMHqe/7PW+NOyQnsed8VYpyzAgZAT9lhbD3Pmafc7E8iewke8OKw5be+Yi
- OqT/PNwBAIwMCl/SYUAfQD2TS4Frk2LNncRRd8xgw2KcFDMAoS9vxTDMO/yDNHeUa8RtaWLdoyq
- 9Efk4Cu4eYqbHcWiXY8ztpQwzngPTY0WjSvF061FZZIzKXw6
-X-Developer-Key: i=broonie@kernel.org; a=openpgp;
- fpr=3F2568AAC26998F9E813A1C5C3F436CA30F5D8EB
+References: <20260912191156.185448-1-sumeet4linux@gmail.com> <20260912191156.185448-5-sumeet4linux@gmail.com>
+In-Reply-To: <20260912191156.185448-5-sumeet4linux@gmail.com>
+From: "Rafael J. Wysocki (Intel)" <rafael@kernel.org>
+Date: Fri, 25 Sep 2026 19:25:25 +0200
+X-Gmail-Original-Message-ID: <CAJZ5v0inzDfF5zNba7BHnq=-xTH1ucHvBv-bJSKXW0dTF71Q0g@mail.gmail.com>
+X-Gm-Features: AclHuK-zkJzcW3eTrPbI8n4uwvaOkU97xV6DSlSAXWBceH5EJVI8blUeGSzDawM
+Message-ID: <CAJZ5v0inzDfF5zNba7BHnq=-xTH1ucHvBv-bJSKXW0dTF71Q0g@mail.gmail.com>
+Subject: Re: [PATCH v2 4/5] thermal: Use %pe to print error pointers symbolically
+To: Sumeet Pawnikar <sumeet4linux@gmail.com>
+Cc: rafael@kernel.org, krzk@kernel.org, amit.kachhap@gmail.com, 
+	daniel.lezcano@kernel.org, thara.gopinath@gmail.com, talel@amazon.com, 
+	hayashi.kunihiko@socionext.com, mhiramat@kernel.org, mmayer@broadcom.com, 
+	viresh.kumar@linaro.org, sumitg@nvidia.com, peter.griffin@linaro.org, 
+	myungjoo.ham@samsung.com, kyungmin.park@samsung.com, cw00.choi@samsung.com, 
+	Frank.Li@nxp.com, s.hauer@pengutronix.de, matthias.bgg@gmail.com, 
+	angelogioacchino.delregno@collabora.com, sven@kernel.org, j@jannau.net, 
+	marcan@marcan.st, casey.connolly@linaro.org, sre@kernel.org, wens@kernel.org, 
+	t.schramm@manjaro.org, bcm-kernel-feedback-list@broadcom.com, 
+	linux-samsung-soc@vger.kernel.org, kernel@pengutronix.de, imx@lists.linux.dev, 
+	linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
+	linux-arm-msm@vger.kernel.org, linux-pm@vger.kernel.org, 
+	linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,35 +90,83 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 24 Sep 2026 16:34:12 +0800, Peng Fan (OSS) wrote:
-> ASoC: use regmap_assign_bits() for conditional set/clear
+On Sat, Sep 12, 2026 at 9:13=E2=80=AFPM Sumeet Pawnikar <sumeet4linux@gmail=
+.com> wrote:
+>
+> Replace PTR_ERR() and %ld with %pe and pass the original pointer directly
+> to pr_err() and dev_err(). The %pe format specifier prints a symbolic err=
+or
+> name (e.g. -ENOMEM) when CONFIG_SYMBOLIC_ERRNAME is enabled, otherwise it
+> falls back gracefully and prints the raw integer value. This makes messag=
+es
+> more readable without any functional change.
+>
+> Signed-off-by: Sumeet Pawnikar <sumeet4linux@gmail.com>
+> ---
+>  drivers/thermal/cpufreq_cooling.c        | 4 ++--
+>  drivers/thermal/devfreq_cooling.c        | 4 ++--
+>  drivers/thermal/qcom/qcom-spmi-adc-tm5.c | 4 ++--
+>  3 files changed, 6 insertions(+), 6 deletions(-)
+>
+> diff --git a/drivers/thermal/cpufreq_cooling.c b/drivers/thermal/cpufreq_=
+cooling.c
+> index 768859a7aed0..856d619370db 100644
+> --- a/drivers/thermal/cpufreq_cooling.c
+> +++ b/drivers/thermal/cpufreq_cooling.c
+> @@ -661,8 +661,8 @@ of_cpufreq_cooling_register(struct cpufreq_policy *po=
+licy)
+>
+>                 cdev =3D __cpufreq_cooling_register(np, policy, em);
+>                 if (IS_ERR(cdev)) {
+> -                       pr_err("cpufreq_cooling: cpu%d failed to register=
+ as cooling device: %ld\n",
+> -                              policy->cpu, PTR_ERR(cdev));
+> +                       pr_err("cpufreq_cooling: cpu%d failed to register=
+ as cooling device: %pe\n",
+> +                              policy->cpu, cdev);
+>                         cdev =3D NULL;
+>                 }
+>         }
+> diff --git a/drivers/thermal/devfreq_cooling.c b/drivers/thermal/devfreq_=
+cooling.c
+> index 0330a8112832..9ada52cbf7dd 100644
+> --- a/drivers/thermal/devfreq_cooling.c
+> +++ b/drivers/thermal/devfreq_cooling.c
+> @@ -156,8 +156,8 @@ static unsigned long get_voltage(struct devfreq *df, =
+unsigned long freq)
+>                 opp =3D dev_pm_opp_find_freq_exact(dev, freq, false);
+>
+>         if (IS_ERR(opp)) {
+> -               dev_err_ratelimited(dev, "Failed to find OPP for frequenc=
+y %lu: %ld\n",
+> -                                   freq, PTR_ERR(opp));
+> +               dev_err_ratelimited(dev, "Failed to find OPP for frequenc=
+y %lu: %pe\n",
+> +                                   freq, opp);
+>                 return 0;
+>         }
+>
+> diff --git a/drivers/thermal/qcom/qcom-spmi-adc-tm5.c b/drivers/thermal/q=
+com/qcom-spmi-adc-tm5.c
+> index af72db6299cd..4554a6fa55d1 100644
+> --- a/drivers/thermal/qcom/qcom-spmi-adc-tm5.c
+> +++ b/drivers/thermal/qcom/qcom-spmi-adc-tm5.c
+> @@ -680,8 +680,8 @@ static int adc_tm5_register_tzd(struct adc_tm5_chip *=
+adc_tm)
+>                                 continue;
+>                         }
+>
+> -                       dev_err(adc_tm->dev, "Error registering TZ zone f=
+or channel %d: %ld\n",
+> -                               adc_tm->channels[i].channel, PTR_ERR(tzd)=
+);
+> +                       dev_err(adc_tm->dev, "Error registering TZ zone f=
+or channel %d: %pe\n",
+> +                               adc_tm->channels[i].channel, tzd);
+>                         return PTR_ERR(tzd);
+>                 }
+>                 adc_tm->channels[i].tzd =3D tzd;
+> --
 
-Applied to
-
-   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-7.4
-
-Thanks!
-
-[1/1] ASoC: use regmap_assign_bits() for conditional set/clear
-      https://git.kernel.org/broonie/sound/c/286ece639c37
-
-All being well this means that it will be integrated into the linux-next
-tree (usually sometime in the next 24 hours) and sent to Linus during
-the next merge window (or sooner if it is a bug fix), however if
-problems are discovered then the patch may be dropped or reverted.
-
-You may get further e-mails resulting from automated or manual testing
-and review of the tree, please engage with people reporting problems and
-send followup patches addressing any issues that are reported if needed.
-
-If any updates are required or you are submitting further changes they
-should be sent as incremental updates against current git, existing
-patches will not be replaced.
-
-Please add any relevant lists and maintainers to the CCs when replying
-to this mail.
-
-Thanks,
-Mark
-
+Applied as 7.4 material, thanks!
 
