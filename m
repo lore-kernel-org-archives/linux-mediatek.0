@@ -4,61 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8D062C9830E
-	for <linux-mediatek@archiver.kernel.org>; Fri, 25 Sep 2026 22:15:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 06037C9830E
+	for <linux-mediatek@archiver.kernel.org>; Sat, 26 Sep 2026 00:42:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=LcRvlK/HbBz+SKxl1aYcXjvCHhEqzNV399j3CsElZuU=; b=hRymhYl1WJY5OdxJUO+iv02yWk
-	Y4YsacvoqqNbAk27++B2hjjpT+ROWVSp0NRcFD2YXAtllAcOy8ufN2H2PR8HCNnkz+0fj8icu0A1c
-	Dm/M7Jq2B98SrdPzskqEY5Jb9OiKlUHwvmzpi7alSA0yw6Tu7svsimkru/OWVsQHWmEHxjI0N5/JZ
-	UkfBm6kKoFkD51CAFjN+Bepw5Az/G3RKueTqgXzZXb7jzfEqfzrU8zi5LRRELzb9ywIKfTQNI7NXt
-	ZMvV6BH14lR/eSXaCIHEcIXMED4HGah7t+7tFyvSOjwgut60ITDoBdKm/z+Qvx7ELJXfFzON/XrVc
-	aHOzXd3A==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=HfYlT1mXmN7hZV9gF/hiwyqoHbDfenk2feT8KXoCIOc=; b=ZiWqo6HTWGwSzcNlUqwwpUGnXh
+	D/V83+XX1QA21okBi0pD7Tx+U0eN0F9C9TLz/LbRCsEWoNo06JhOI5UZq83OeiEkbpYPb5FGomuoD
+	mDKI56a87qThzwh9V4KYc59EIC3uyN9/uVHcw/Z1gZvbj8ty3H8J8lcWmzcfApbRZ2im0GhOZJH+6
+	v2cJWfDn2ZpXuLQRvTuvjHp/Yjlt/UlXaiBfaj+j2ieu9tMMUJXT6MxsPVJdPp8KEkpOrSXFeH53K
+	b8RcAv6aiCAb7DGuSjDLnR7jWJENOqwS1Hz0DpSN/QNyTkzjZIzym3g/Gfm7T880hTLvnkyegaQoB
+	0PlxQ2LQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xAECg-0000000EYSM-2wmj;
-	Fri, 25 Sep 2026 22:15:38 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1xAGUr-0000000EkiC-0FJX;
+	Sat, 26 Sep 2026 00:42:33 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xAECf-0000000EYS7-28RT;
-	Fri, 25 Sep 2026 22:15:37 +0000
+	id 1xAGUp-0000000EkhO-1hfs;
+	Sat, 26 Sep 2026 00:42:31 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id E661A43849;
-	Fri, 25 Sep 2026 22:15:36 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0BF0E1F000FF;
-	Fri, 25 Sep 2026 22:15:34 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id BC73641A7C;
+	Sat, 26 Sep 2026 00:42:30 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 255641F000FF;
+	Sat, 26 Sep 2026 00:42:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1790374536;
-	bh=LcRvlK/HbBz+SKxl1aYcXjvCHhEqzNV399j3CsElZuU=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=YBPH2cCWgOGSA1GSHE866Vn7npvRMvUVrV/v2GPvMWuFhUe7XwuP6O8EO8/UoZkFw
-	 KkGabzc6Aw7qljtmMXO4QLhjbCq5hY9sB1vavWLufrr5wPn4r+ohz5aZ9/T97hX0Zo
-	 ov4YSQvlhaoBKjvs9J5L5zxAlyDVdJNZudoVWvexoMGWbjXDFA42EjMGHVacijWEWh
-	 Iu9Ul3+Pkty+CJixsnAEnWD9UN4pCzKLNpNFtdUBtbxrOByVA4jy9EjNanpB/2InZb
-	 qhjJ363lvr/cbHnlMg+nC544f5NtJwtD2Z0bdrNic/lu5zRe3G2CwK8sIWiV2HzfXT
-	 5QEFEUe0mPydA==
-Date: Fri, 25 Sep 2026 23:15:32 +0100
+	s=k20260515; t=1790383350;
+	bh=HfYlT1mXmN7hZV9gF/hiwyqoHbDfenk2feT8KXoCIOc=;
+	h=From:To:Cc:In-Reply-To:References:Subject:Date;
+	b=GWht8zLr8pm0fNjuXdaTPKwv4p2QKOFi9sFNST4AXZrbl/SdxHr3VsEH/xXrwSZ5S
+	 qfn2i3Cbm02X3U6PIXZZfTf1k7xSG34K5rFu8g7UtbQPzc6EOj1XS7kW++FrgZf42H
+	 b+Iwh02EJzaBfW6zdVnqsXyf8KfdutClS3YQtCAG+n/xqx/hAjZNZJeOyQDiQNyzPK
+	 KARd5Sw1YsctcrTPza+NuCOFjf1ZqDQZjs0bFrlTheKGNdVbHhS3/GL0sTOZBn8N1p
+	 Vbo9/CHNmWUBGmncr75MRxHGwgjMPmJrrQwB8I7v1lllniNNb1lhTbX+G8TJYWfQby
+	 tYwLAn5+L901g==
 From: Mark Brown <broonie@kernel.org>
-To: Justin Yeh <justin.yeh@mediatek.com>
-Cc: Liam Girdwood <lgirdwood@gmail.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Project_Global_Chrome_Upstream_Group@mediatek.com,
-	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH 0/2] Allow mtk-regulator-coupler to be built as a module
-Message-ID: <ff062c05-4da2-4f55-b81b-0fdfed56bb92@sirena.org.uk>
-References: <20260903062056.1024263-1-justin.yeh@mediatek.com>
+To: Matthias Brugger <matthias.bgg@gmail.com>, phucduc.bui@gmail.com
+Cc: Liam Girdwood <lgirdwood@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, 
+ Cezary Rojewski <cezary.rojewski@intel.com>, 
+ Shunli Wang <shunli.wang@mediatek.com>, cassiogabrielcontato@gmail.com, 
+ linux-sound@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+In-Reply-To: <20260903045203.175337-1-phucduc.bui@gmail.com>
+References: <20260903045203.175337-1-phucduc.bui@gmail.com>
+Subject: Re: [PATCH v4 0/5] ASoC: mediatek: mt8183: Fix clock error
+ handling
+Message-Id: <179035803658.204944.2406140635443720922.b4-ty@b4>
+Date: Fri, 25 Sep 2026 18:40:36 +0100
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="P0MhuSJkYqHcPp+v"
-Content-Disposition: inline
-In-Reply-To: <20260903062056.1024263-1-justin.yeh@mediatek.com>
-X-Cookie: Love America -- or give it back.
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+X-Mailer: b4 0.17-dev
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1823; i=broonie@kernel.org;
+ h=from:subject:message-id; bh=/LjzesrlcWTd/CH1GZp69Xv1z4ylzcuCNdP97aIc2cM=;
+ b=owEBbQGS/pANAwAKASTWi3JdVIfQAcsmYgBqtxTxwHnRigYvRJG9MsCfkFpvB7CaB2BWhVxFZ
+ b4t+HC/OSiJATMEAAEKAB0WIQSt5miqZ1cYtZ/in+ok1otyXVSH0AUCarcU8QAKCRAk1otyXVSH
+ 0PWlB/9UKaCd/H5Vsx6p24FjHIzrX3tyxefaspzQHADIMwMo6sNkiYM1n6MBPiFhyar1M5r21VR
+ CaFm/5JJuYYyeWpQWapONkoxdrTkh+DxVLE8kCiNxRFYabj3N/JO4hFlhMWIOrYVFq0DsQLBODP
+ 5ZYO5Lr0bR5KcmVHTpR0dPZ7+0Q5qfWd+N4MnQaVmXDHX0pLQvuf8BTTun8IrvX7MOiQxca/yJE
+ cn1Lx6Edqtw2vdUr4yR+6bgBWr0YEG00+UcwFvgnPTyj+PiupFYq3vJ0sDzK2nvjoRVHKdN83kx
+ 6dtKyc9FCXXn8VlgNjhse8mmak4CWcbcdE3DThw3unMXmIGD
+X-Developer-Key: i=broonie@kernel.org; a=openpgp;
+ fpr=3F2568AAC26998F9E813A1C5C3F436CA30F5D8EB
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,61 +85,52 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On Thu, 03 Sep 2026 11:51:58 +0700, phucduc.bui@gmail.com wrote:
+> ASoC: mediatek: mt8183: Fix clock error handling
+> 
+> From: bui duc phuc <phucduc.bui@gmail.com>
+> 
+> Hi all,
+> 
+> This series fixes and cleans up clock error handling in the MT8183 ASoC
+> driver.
+> 
+> [...]
 
---P0MhuSJkYqHcPp+v
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+Applied to
 
-On Thu, Sep 03, 2026 at 02:20:45PM +0800, Justin Yeh wrote:
-> MTK_REGULATOR_COUPLER can currently only be built into the kernel: it is
-> a bool, and its prompt is hidden unless COMPILE_TEST is set, so on real
-> MediaTek configurations the symbol has no prompt and is forced to its
-> "default ARCH_MEDIATEK" value.
+   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-7.4
 
-The following changes since commit 940de590b839f71d6dc846160534bf202401b8b7:
+Thanks!
 
-  Merge tag 'hardening-v7.3-rc2' of git://git.kernel.org/pub/scm/linux/kernel/git/kees/linux (2026-09-02 16:02:02 -0700)
+[1/5] ASoC: mediatek: mt8183: Fix wrong clock cleanup on clk_set_parent() failure
+      https://git.kernel.org/broonie/sound/c/7f05596bd404
+[2/5] ASoC: mediatek: mt8183: Fix clock handling in mux disable path
+      https://git.kernel.org/broonie/sound/c/4a0f9566ae0c
+[3/5] ASoC: mediatek: mt8183: Fix APLL enable error handling
+      https://git.kernel.org/broonie/sound/c/30cf48383006
+[4/5] ASoC: mediatek: mt8183: Use dev_err_probe() for error handling
+      https://git.kernel.org/broonie/sound/c/21cc0c50d395
+[5/5] ASoC: mediatek: mt8183: Drop redundant probe error messages
+      https://git.kernel.org/broonie/sound/c/f7bcb8c94ccb
 
-are available in the Git repository at:
+All being well this means that it will be integrated into the linux-next
+tree (usually sometime in the next 24 hours) and sent to Linus during
+the next merge window (or sooner if it is a bug fix), however if
+problems are discovered then the patch may be dropped or reverted.
 
-  https://git.kernel.org/pub/scm/linux/kernel/git/broonie/regulator.git tags/regulator-export-coupling-api
+You may get further e-mails resulting from automated or manual testing
+and review of the tree, please engage with people reporting problems and
+send followup patches addressing any issues that are reported if needed.
 
-for you to fetch changes up to 59951bd9c6b63d4d98539db96becef729ad60b4a:
+If any updates are required or you are submitting further changes they
+should be sent as incremental updates against current git, existing
+patches will not be replaced.
 
-  regulator: core: Export helpers used by regulator couplers (2026-09-25 18:44:46 +0100)
+Please add any relevant lists and maintainers to the CCs when replying
+to this mail.
 
-----------------------------------------------------------------
-regulator: core: Export helpers used by regulator couplers
+Thanks,
+Mark
 
-regulator_check_voltage(), regulator_check_consumers(),
-regulator_do_balance_voltage() and regulator_coupler_register() are
-already declared in include/linux/regulator/coupler.h for regulator
-coupler implementations to use, but none of them is exported. That
-limits couplers to being built into the kernel.
-
-Export them so that coupler drivers can be built as loadable modules.
-
-----------------------------------------------------------------
-Justin Yeh (1):
-      regulator: core: Export helpers used by regulator couplers
-
- drivers/regulator/core.c | 4 ++++
- 1 file changed, 4 insertions(+)
-
---P0MhuSJkYqHcPp+v
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmq28oMACgkQJNaLcl1U
-h9B36wf+LhguYCEcSacCFn9QT75ux5lJ4HRaD9vAYEGQ2IXsQhIEDJNpJHFIbjvO
-3aIo6XR7eoDRaar6InusXYtBAWRLjR+tEZbLedAn+0E03tRo5bLrRKt1eze394ix
-d6hRvvea5gh+3O0jd2KPIzhWb9FhKbMs0RztZo7cAuq4zLCzbK/V1vyLRIoVFIB6
-DnCAlafjgTMUwh7x/fXTq6x0U+d70AHey3SVpxK/ntNGd6krhL6SdzPc7EhKYgi8
-pES/JvJLKOu9FuZEE+TRYHagdGwy8WWOpwYcsA0H53o2Nba3YVdPJ6y8RjQ2bHpI
-J9V2P9qRXpVXWP8bGV/9Sh4ThQEnZA==
-=nDY7
------END PGP SIGNATURE-----
-
---P0MhuSJkYqHcPp+v--
 
