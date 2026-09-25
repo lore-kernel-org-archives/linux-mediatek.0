@@ -4,37 +4,37 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0C38BC98321
-	for <linux-mediatek@archiver.kernel.org>; Fri, 25 Sep 2026 15:06:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D0333C98325
+	for <linux-mediatek@archiver.kernel.org>; Fri, 25 Sep 2026 15:28:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=31AX/cwM8/OnRF/yeYpJQfvdlOv5vgEP2EVvQZ6gI+o=; b=kj8nfptUp971dqi6yqPFvHIOlm
-	a7Zs17WneRARskpBnMbUwks7wTBXuHi7subSRV4//JNAJ38Y1VUEE0oNn3S4a/AGOj5fFzQqQF1FV
-	BXG+QWzx7YMhyS3etqqXBYKEm3bS2cu5Zd8XbPHqj3Jm3LW43VqwxftqO0aq3Z8IayyIPbMTfkSzr
-	yC37ajcUoNaHYuN8SQQiPsvZu5Y77pEyd4qtXKdkqtqT7CstYBWbKSoBybdjUDxLg/wZc0IDjBc11
-	B04q6CMbIJ8//27ThHznrJ5xYQjWHt2jxAuCrliM3JgD87egUolvVFEJRc+8TaaXfyxYfCE8vH9bC
-	GaXwInRA==;
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=HX/yjkeGZhu54QuTdGe2SqLBuSkENDQfw+HyBnEMbZk=; b=3Wd/Hu36QrTCGxgqstqFE2wng4
+	CjpCSLsTAJ/mqB0NxKyzS49GHUzrfvTkbLT3/+7tzjWemwI1X2fNvgkQlRxMF2nw4Tj3yw/i/8wbE
+	MGfsWlwg6se5INFz/3/IoJyhtueWdj6wuOTwpQC8adUNmbs7nBvcFnBC35BtJlxXBvg4HSVzFz6fB
+	rTw+AUEf/snU1dwsW27EYHcHRpvfuGim1yUvk+HbhnxmDYXcTZChmCdVvSKGUijgDwvLEMKaBxHZ4
+	NpzZdEqxKuZVvXpzcLr/b/JK3Y4vwMm+VWjeeVh8cHVkrCELyun1QNNX/B2ja7AZLd1p5H4CkAgXH
+	kyWzsMwg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xA7VU-0000000Dheo-19E1;
-	Fri, 25 Sep 2026 15:06:36 +0000
-Received: from m16.mail.163.com ([117.135.210.4])
+	id 1xA7qh-0000000DnJh-2dju;
+	Fri, 25 Sep 2026 15:28:31 +0000
+Received: from m16.mail.163.com ([220.197.31.2])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xA7VE-0000000DhVD-44mh;
-	Fri, 25 Sep 2026 15:06:25 +0000
+	id 1xA7qe-0000000DnIf-3f9m;
+	Fri, 25 Sep 2026 15:28:30 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
-	s=s110527; h=From:To:Subject:Date:Message-Id:MIME-Version; bh=31
-	AX/cwM8/OnRF/yeYpJQfvdlOv5vgEP2EVvQZ6gI+o=; b=NVERoFOce+O9R/f4x2
-	hvWRcvmqTNOrJI3K+/OW+OCIMFyKId47ONck8G5sKMUbjPMf/wYuAhKSqP9WTy9b
-	s2o6EBmwymm514LveNBMrSaz50lFI0galmlPA2PuqRQRrKKyg+p+lcmgd+hFPzOg
-	sWJZW6UOdFcBPdJ5IEBEC9Vuo=
+	s=s110527; h=From:To:Subject:Date:Message-Id:MIME-Version; bh=HX
+	/yjkeGZhu54QuTdGe2SqLBuSkENDQfw+HyBnEMbZk=; b=VdUTcKNV8FUaX58nhD
+	Etv3gN4SrbpUREKihrQWUTnmp8uEH3CwRDAArfGxvtvb1LCojDR30KT1QTC0rJWq
+	3Pe4vAgDO0pcBLGEMqAfvM1hpMdALgZJrmK7WrX2QxawOp5+WKk/FexDPS709IEG
+	RHIGjN9rt0BjmWCFh6TGBsOjg=
 Received: from pc.localdomain (unknown [])
-	by gzga-smtp-mtada-g0-3 (Coremail) with SMTP id _____wD3J8zYjbZq2yQpAw--.5414S4;
-	Fri, 25 Sep 2026 23:06:05 +0800 (CST)
+	by gzga-smtp-mtada-g1-1 (Coremail) with SMTP id _____wD3H5cAk7Zq7VoPAw--.4331S2;
+	Fri, 25 Sep 2026 23:28:01 +0800 (CST)
 From: Jiale Yao <yaojiale02@163.com>
 To: Felix Fietkau <nbd@nbd.name>,
 	Lorenzo Bianconi <lorenzo@kernel.org>,
@@ -43,29 +43,27 @@ To: Felix Fietkau <nbd@nbd.name>,
 	Sean Wang <sean.wang@mediatek.com>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Johan Hovold <johan@kernel.org>,
+	Kalle Valo <kvalo@kernel.org>,
 	linux-wireless@vger.kernel.org,
 	linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
 Cc: Jiale Yao <yaojiale02@163.com>
-Subject: [PATCH 2/2] wifi: mt76: mt7615: usb: fix source overread in mt7663u_copy
-Date: Fri, 25 Sep 2026 23:05:55 +0800
-Message-Id: <20260925150556.2304003-3-yaojiale02@163.com>
+Subject: [PATCH] wifi: mt76: mt76x02: validate RX padding before use
+Date: Fri, 25 Sep 2026 23:27:54 +0800
+Message-Id: <20260925152754.2323624-1-yaojiale02@163.com>
 X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20260925150556.2304003-1-yaojiale02@163.com>
-References: <20260925150556.2304003-1-yaojiale02@163.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-CM-TRANSID: _____wD3J8zYjbZq2yQpAw--.5414S4
-X-Coremail-Antispam: 1Uf129KBjvJXoW7Ww4UWFy5ZFW5uw45Cw13XFb_yoW8Cr47pF
-	yxKF9IvrsxGF17t34xAa15AF95ua9ak34DKrZ3Za4fZ348Aw1YkFW0qFyjkr1j9w4F9r1j
-	qrnxtryxW34DAaDanT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
-	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x0pK-eoAUUUUU=
-X-CM-SenderInfo: x1dryxhdohiji6rwjhhfrp/xtbC7x3iHWq2jd0jqAAA3K
+X-CM-TRANSID: _____wD3H5cAk7Zq7VoPAw--.4331S2
+X-Coremail-Antispam: 1Uf129KBjvJXoW7WF17Gw47Gw1UJF1xZFWUArb_yoW8AFy8pF
+	W5K342vr45Gr48uw18Aa1kCFWrGw1fKFy5KFySg3WrZa40krn8JFyF9FyFvryFyFsYk3WS
+	kF1qvanxGFyDu3JanT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
+	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x0pRCJPAUUUUU=
+X-CM-SenderInfo: x1dryxhdohiji6rwjhhfrp/xtbCzgEtZ2q2kwHW6gAA33
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260925_080621_842978_BE481C82 
-X-CRM114-Status: GOOD (  12.75  )
+X-CRM114-CacheID: sfid-20260925_082829_376710_C395D9D1 
+X-CRM114-Status: GOOD (  11.28  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,53 +78,50 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-mt7663u_copy() rounds up len to a multiple of four and uses the rounded
-length as the bound for memcpy() from the source buffer. When the
-caller's length is not four-byte aligned, the final copy reads up to
-three bytes past the source buffer.
+The RX descriptor provides L2 and PN padding lengths that are used to
+locate the CCMP IV and determine how many bytes to remove from the packet.
+These lengths are not checked against the received skb length before the
+IV is read or mt76x02_remove_hdr_pad() is called.
 
-Keep the original length for the source copy and zero the remaining
-bytes in the transmit buffer so that the hardware access width remains
-four-byte aligned.
+Reject frames whose IV does not fit within the skb or whose header padding
+would extend past the end of the skb.
 
-Fixes: 6cb596ba84e3 ("mt76: usb: introduce __mt76u_init utility routine")
+Fixes: 30ce7f4456ae ("mt76: validate rx CCMP PN")
 Signed-off-by: Jiale Yao <yaojiale02@163.com>
 ---
- drivers/net/wireless/mediatek/mt76/mt7615/usb.c | 17 ++++++++++++-----
- 1 file changed, 12 insertions(+), 5 deletions(-)
+ drivers/net/wireless/mediatek/mt76/mt76x02_mac.c | 11 +++++++++--
+ 1 file changed, 9 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/usb.c b/drivers/net/wireless/mediatek/mt76/mt7615/usb.c
-index bab7b91f14be..3629e3d9bf47 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7615/usb.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7615/usb.c
-@@ -58,15 +58,22 @@ static void mt7663u_copy(struct mt76_dev *dev, u32 offset,
- 			 const void *data, int len)
- {
- 	struct mt76_usb *usb = &dev->usb;
--	int ret, i = 0, batch_len;
- 	const u8 *val = data;
-+	int len_aligned;
-+	int batch_len;
-+	int copy_len;
-+	int ret;
-+	int i = 0;
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76x02_mac.c b/drivers/net/wireless/mediatek/mt76/mt76x02_mac.c
+index 21f8b1e64101..73a42cc4edae 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76x02_mac.c
++++ b/drivers/net/wireless/mediatek/mt76/mt76x02_mac.c
+@@ -809,9 +809,13 @@ int mt76x02_mac_process_rx(struct mt76x02_dev *dev, struct sk_buff *skb,
+ 	len = FIELD_GET(MT_RXWI_CTL_MPDU_LEN, ctl);
+ 	pn_len = FIELD_GET(MT_RXINFO_PN_LEN, rxinfo);
+ 	if (pn_len) {
+-		int offset = ieee80211_get_hdrlen_from_skb(skb) + pad_len;
+-		u8 *data = skb->data + offset;
++		unsigned int offset = ieee80211_get_hdrlen_from_skb(skb) + pad_len;
++		u8 *data;
  
--	len = round_up(len, 4);
-+	len_aligned = round_up(len, 4);
++		if (offset + 8 > skb->len)
++			return -EINVAL;
++
++		data = skb->data + offset;
+ 		status->iv[0] = data[7];
+ 		status->iv[1] = data[6];
+ 		status->iv[2] = data[5];
+@@ -831,6 +835,9 @@ int mt76x02_mac_process_rx(struct mt76x02_dev *dev, struct sk_buff *skb,
+ 		}
+ 	}
  
- 	mutex_lock(&usb->usb_ctrl_mtx);
--	while (i < len) {
--		batch_len = min_t(int, usb->data_len, len - i);
--		memcpy(usb->data, val + i, batch_len);
-+	while (i < len_aligned) {
-+		batch_len = min_t(int, usb->data_len, len_aligned - i);
-+		copy_len = min_t(int, batch_len, len - i);
-+		memcpy(usb->data, val + i, copy_len);
-+		if (copy_len < batch_len)
-+			memset(usb->data + copy_len, 0, batch_len - copy_len);
- 		ret = __mt76u_vendor_request(dev, MT_VEND_WRITE_EXT,
- 					     USB_DIR_OUT | USB_TYPE_VENDOR,
- 					     (offset + i) >> 16, offset + i,
++	if (pad_len + ieee80211_get_hdrlen_from_skb(skb) > skb->len)
++		return -EINVAL;
++
+ 	mt76x02_remove_hdr_pad(skb, pad_len);
+ 
+ 	if ((rxinfo & MT_RXINFO_BA) && !(rxinfo & MT_RXINFO_NULL))
 -- 
 2.34.1
 
