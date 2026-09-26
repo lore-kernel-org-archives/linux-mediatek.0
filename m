@@ -4,109 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4126EC9830E
-	for <linux-mediatek@archiver.kernel.org>; Sat, 26 Sep 2026 01:06:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 48313C9832A
+	for <linux-mediatek@archiver.kernel.org>; Sat, 26 Sep 2026 02:30:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Date:References:Message-ID:In-Reply-To:From:Subject:Cc:To:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=uPh7h4QVBO0+zLyzuNTJsDnUZi453ATtVOhNG9pw0Zg=; b=fuFZM0YNswkOOsdprjHYtOE+GC
-	qaHN4eDp19qBOx9lhg6clnRD6vtbWkTxyFcJIJAMhAxGby/54bHkg2V6KYbemKXSROZyr0tmEPEmA
-	wLXZX7KF18j6aHULsicpBHvTdPo2wamfm12ISCEq6FcTtXiR/rcuxFVuXLiiMtpWKh/SaHRjwfx3i
-	lvgw52f83TnmqlR6Q1MAbl1GWJrgJT0EZjm3wY08xOSoC4LpWi1xIjAq0WMg/0+UfrGqvjEdzDa+/
-	67xKYDthka/R0oE+nZ8aqmfpXV0+MaoaSiA649nBbzIO/ZzY4QdwqNHhJAwzM1Cp6jB33802OAjmy
-	7FqXHnFA==;
+	bh=LekUX8XsOEkUZaYG/ud+BHEQxw0g1s9GsSaIwr3EFk8=; b=ftKKuNfiaZr/dIcxtVmve+eMK7
+	j+aFGlFcsEilc6eOSipLaFStlEJ3cL23xA8Pws4JyARM9+wnAg/K9t5ZY54pUNms0fRAbfzUCv68X
+	Ct6X4WW/swtKmhz2VoR1B5KM5DRkTYpBQeRR7KkJuy5ouzsdAIZ8uKEsQM6NK6a4vWWIiqhzb+QiQ
+	eW5oVn0LVLUOHyhfxoK4d5Pc94O4Wq+CfjQfZWaq+rYVs3FA/DPE2MHOpEKFoseIIHtAwCv0jFRfm
+	vfk46s00VVqhXQ5eTbQnd6mFx86LW4zn/6rty6wwzIFCNtnJO61n1Z2R2WlhxVPYC8agBaaFLRxWV
+	HRSmbE9Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xAGrr-0000000Empm-3Wn6;
-	Sat, 26 Sep 2026 01:06:19 +0000
-Received: from mail-pj2-x0d.google.com ([2607:f8b0:4864:39::d])
+	id 1xAIBW-0000000ErKc-3CHG;
+	Sat, 26 Sep 2026 02:30:42 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xAGro-0000000Emox-0yJp
+	id 1xAIBV-0000000ErJp-0NFG
 	for linux-mediatek@lists.infradead.org;
-	Sat, 26 Sep 2026 01:06:17 +0000
-Received: by mail-pj2-x0d.google.com with SMTP id d9443c01a7336-2df8bb777e4so5443245ad.3
-        for <linux-mediatek@lists.infradead.org>; Fri, 25 Sep 2026 18:06:15 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1790384775; x=1790989575; darn=lists.infradead.org;
-        h=content-type:content-transfer-encoding:mime-version:references
-         :in-reply-to:message-id:date:subject:cc:to:from:from:to:cc:subject
-         :date:message-id:reply-to:content-type;
-        bh=uPh7h4QVBO0+zLyzuNTJsDnUZi453ATtVOhNG9pw0Zg=;
-        b=hEVFZv0eQKmIGUmyNPAwFSS3Y+KpdqWvh7RSUoSaCW/C8h2ysPWEkDAnZ+g9DiZI0r
-         s6fWq7UjzbRp3YP+E35EIVZxXbGOSlP0v6JHvMN1GNBH2Kje/XUX+nRM5e5tOOgT7r3G
-         g0HoZ5R5G2hgRQUsvt49Q/mBZ2H6GX66AScN7nXwJdRzDzxLqgYRn6geroRjAMNaOVXe
-         CJWTNreLg/L3j2IK3xpZDfn8yLo5vzEvqzWkqdZxdlROqvNqMjJEdGDIFugDmh6q1hsK
-         tN3YxmMC/rW83aF+Vfzx4rY9MPFulOxIKIUsoS37gG8EevbOwnWW/hPjjLm5F7VDlpEH
-         94IA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1790384775; x=1790989575;
-        h=content-type:content-transfer-encoding:mime-version:references
-         :in-reply-to:message-id:date:subject:cc:to:from:x-gm-gg
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
-         :content-type;
-        bh=uPh7h4QVBO0+zLyzuNTJsDnUZi453ATtVOhNG9pw0Zg=;
-        b=SzJ9cfEncBc5ONy1GGTfAhEU5KdYSltq9DMYcT5M7iGRKhpIeGpIDVKMvoPORvOb3H
-         XEyI6y4T+a+4d1Fv3p2+dLwMiWx8k4TyCttmUf7fjYeY7yqKp8J8h3H2rOKnnk9U+M9e
-         9W9PAB8QH/Pq6lapmcbdk9d9juDaCzL02JaUMC21KNFtMjcWRyZmr6/C4+AiHvq7Tg1g
-         zk7IdIoEwvt9V/clFa3qrSQNuInHQvSAM3+ZAV1m5ad7Jy0FgePj12Jlx7sckHE1JkPX
-         teqiMvDDZw/h+QW7E5zMcaYH7Yv2MbQh+20Sa1GA5/E7m/BWq1AouYwSu7WUa7UjunWl
-         eeVg==
-X-Forwarded-Encrypted: i=1; AKwUvBz1c06miSzxrAKrv3zQB0G0g7OnWfQljRs5NJT1VIXp+xkM9NMln5daI50AfKwcZXLb1XwlsCF12QbiVz2h1A==@lists.infradead.org
-X-Gm-Message-State: AFuF++nXCWqqFgLYyivU372800XJkMEmvWb4/LeRP7FVwKSuG0xFrWrd
-	98ndF1pgPOi0NuaUGj2CNEou6klD1ZTgCaz9SIzdIUUpEmdKhqDEZULp
-X-Gm-Gg: AYBFou1D/V0vpKaWbUjZ+nuFovTcnIlseDg4Ro8m7KlN5v5RPrb1ckttnlkVfVLqLlp
-	gxkX5XsIe6uHhDlvw3XCKnBOav8kVDlA0qoZMOCfCvdlwhfxV8htkWDYdyjywJpMJ8bDLUsvxky
-	DdiTUFDKaRoFi9q0t8RPZrqECEtNXTuiaWkojSGpvbPW8RtZJIpqFdnd+CuS1OXih+qBuRqnPbm
-	7rIdjgy6qRsO3EHH3PHMXc1bU/F2mZ94AZR7u/6xEQvTiKsw2GNd7t9dUJUzTbT0bd2N3lXz5NP
-	XWd2JVVMzeBJUXwTEevxdHhaqz3degxbXA5d7hw3Zxcdouree7Z8UOZmn6ShStsh8jwS9FucEus
-	BLvqlvozAhcPw4d05tmKb5MnWJSE7pxwy98RSpldVvu72tXmeA7IRLZligqgBjfansm/9TjFW0a
-	xMxaDRQnwv285jgR4wKRoKl2nzMpg05fjJzuggFxWj/5A+kdZYds/h8W/EeDvRQjd387R0wv7ZU
-	baQwJ3iUpTxwxCcBopyq1aPfHVMOgfH36cKvPqjR7wz/A/1wttmGWeOxRqzH/oLp8AdYgeI7ihp
-	ck3d4zaDLjEHY+FJAf97zpel3/Ts0OCtTluJvvL9hncEjSAp4tM=
-X-Received: by 2002:a17:903:245:b0:2dd:8e7d:90f7 with SMTP id d9443c01a7336-2df7da6101cmr56469765ad.9.1790384774750;
-        Fri, 25 Sep 2026 18:06:14 -0700 (PDT)
-Received: from setsuna.localnet ([2403:581e:d87e:0:fc2d:ed31:e80e:412d])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-2df913e032bsm17424215ad.27.2026.09.25.18.06.04
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 25 Sep 2026 18:06:13 -0700 (PDT)
-From: James Calligeros <jcalligeros99@gmail.com>
-To: Mark Brown <broonie@kernel.org>
-Cc: Martin =?UTF-8?B?UG92acWhZXI=?= <povik+lin@cutebit.org>,
- Liam Girdwood <lgirdwood@gmail.com>, Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>,
- Sven Peter <sven@kernel.org>, Janne Grunau <j@jannau.net>,
- Neal Gompa <neal@gompa.dev>, David Rhodes <david.rhodes@cirrus.com>,
- Richard Fitzgerald <rf@opensource.cirrus.com>,
- Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>,
- Ulf Hansson <ulfh@kernel.org>, Amit Kucheria <amit.kucheria@linaro.org>,
- "Rafael J. Wysocki" <rafael.j.wysocki@intel.com>,
- Lars-Peter Clausen <lars@metafoo.de>, Vinod Koul <vkoul@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Shenghao Ding <shenghao-ding@ti.com>, Kevin Lu <kevin-lu@ti.com>,
- Baojun Xu <baojun.xu@ti.com>, Sen Wang <sen@ti.com>,
- James Schulman <james.schulman@cirrus.com>, asahi@lists.linux.dev,
- linux-sound@vger.kernel.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- patches@opensource.cirrus.com, Takashi Iwai <tiwai@suse.de>,
- linux-mediatek@lists.infradead.org, Hector Martin <marcan@marcan.st>,
- Sasha Finkelstein <k@chaosmail.tech>
-Subject: Re: [PATCH 16/28] ASoC: apple: Add macaudio machine driver
-Date: Sat, 26 Sep 2026 11:06:02 +1000
-Message-ID: <6dv6M3LAS9mol5fvC8Ie-w@gmail.com>
-In-Reply-To: <arJMrsl45g2_bLPB@sirena.co.uk>
-References: <20260920-macaudio-v1-0-741cc20a74e5@gmail.com>
- <20260920-macaudio-v1-16-741cc20a74e5@gmail.com>
- <arJMrsl45g2_bLPB@sirena.co.uk>
+	Sat, 26 Sep 2026 02:30:41 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by tor.source.kernel.org (Postfix) with ESMTP id E0C6260136;
+	Sat, 26 Sep 2026 02:30:39 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5CB101F000FF;
+	Sat, 26 Sep 2026 02:30:39 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1790389839;
+	bh=LekUX8XsOEkUZaYG/ud+BHEQxw0g1s9GsSaIwr3EFk8=;
+	h=To:Cc:Subject:From:In-Reply-To:References:Date;
+	b=bshKGTiajj3qyx4AOMn10qxr6nLoBNoXpPsoz1BqHWCsYP3Ss0ZO2q+ft2CP3kJiF
+	 vuxb2ACtZvDl8cWyX91uJRm2oiEFW2C4bW/O6i+dnhwvu0OcfLtiPYr+6mo3D46Bms
+	 YuQyaoDwhRP8++I9+mXJWf0M7Y3zi6ZNhn3H8p9bPIxFwwrcqxbXqcyRRnPFZOftCo
+	 Xwc6LyASPFM0/huJ0yDF19O2xqPskTjnyN6cpVY0qNWgfZSMUdy2Wpz0jAF0ZTC9tt
+	 Wcq0YQiP8miBVerbTYv1A/VMhxChWVLBt0n8mBGjUw7DZwfCvdOJDpF6QhljU6xYCm
+	 AxAKF2nbUD9Lg==
+To: <peter.wang@mediatek.com>
+Cc: <linux-scsi@vger.kernel.org>,  <martin.petersen@oracle.com>,
+  <avri.altman@sandisk.com>,  <alim.akhtar@samsung.com>,
+  <bvanassche@acm.org>,  <santosh.sy@samsung.com>,
+  <h.vinayak@samsung.com>,  <wsd_upstream@mediatek.com>,
+  <linux-mediatek@lists.infradead.org>,  <chun-hung.wu@mediatek.com>,
+  <alice.chao@mediatek.com>,  <cc.chou@mediatek.com>,
+  <chaotian.jing@mediatek.com>,  <tun-yu.yu@mediatek.com>,
+  <naomi.chu@mediatek.com>,  <ed.tsai@mediatek.com>
+Subject: Re: [PATCH v2 0/2] ufs: fix POST_CHANGE pairing and AHIT race
+ condition
+From: "Martin K. Petersen (Oracle)" <mkp@kernel.org>
+In-Reply-To: <20260914085148.136429-1-peter.wang@mediatek.com>
+Message-ID: <yq1jyo8pwwc.fsf@mail.kernel.org>
+References: <20260914085148.136429-1-peter.wang@mediatek.com>
+Date: Fri, 25 Sep 2026 22:30:38 -0400
 MIME-Version: 1.0
-Content-Transfer-Encoding: quoted-printable
-Content-Type: text/plain; charset="utf-8"
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260925_180616_270102_84F10155 
-X-CRM114-Status: GOOD (  18.53  )
+Content-Type: text/plain
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -121,55 +74,18 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Mark,
 
-On Tuesday, 22 September 2026 7:38:54=E2=80=AFpm Australian Eastern Standar=
-d Time Mark Brown wrote:
-> > +static void macaudio_vlimit_update(struct macaudio_snd_data *ma)
-> > +{
-> >=20
-> > +
-> > +	/* Check that *every* limited control is locked by the same owner */
-> > +	list_for_each_entry(kctl, &ma->card.snd_card->controls, list) {
-> > +		if (!snd_soc_control_matches(kctl, volume_control_names[ma->cfg->amp=
-]))
-> > +			continue;
->=20
-> This is used from the volume limit timeout work which doesn't hold the
-> controls_rwsem, userspace can add or remove user controls which would
-> change the list so the work needs to lock the controls list.
->=20
+> Patch 1 fixes a bug where POST_CHANGE was skipped on a failed gear
+> switch, leaving the host in an inconsistent state if resources acquired
+> in PRE_CHANGE were never released.
+>
+> Patch 2 fixes a race between the sysfs AHIT update path and the
+> MediaTek host driver's power mode change path. A mutex and depth
+> counter are introduced to serialize AHIT register access and ensure
+> AHIT is correctly restored after the last disabler completes.
 
-Would it be sufficient to scoped_guard the controls_rwsem wherever we
-use this pattern?
+Applied to 7.4/scsi-staging, thanks!
 
-> > +static int macaudio_dpcm_hw_params(struct snd_pcm_substream *substream,
-> > +				   struct snd_pcm_hw_params *params)
-> > +{
-> > +	struct snd_soc_pcm_runtime *rtd =3D snd_soc_substream_to_rtd(substrea=
-m);
-> > +	struct macaudio_snd_data *ma =3D snd_soc_card_get_drvdata(rtd->card);
-> > +	struct macaudio_link_props *props =3D &ma->link_props[rtd->dai_link->=
-id];
-> > +	struct snd_soc_dai *cpu_dai =3D snd_soc_rtd_to_cpu(rtd, 0);
-> > +	struct snd_interval *rate =3D hw_param_interval(params,
-> > +						      SNDRV_PCM_HW_PARAM_RATE);
-> > +	int bclk_ratio =3D macaudio_get_runtime_bclk_ratio(substream);
-> > +	int i;
-> > +
-> > +	if (props->is_sense) {
-> > +		rate->min =3D rate->max =3D cpu_dai->symmetric_rate;
-> > +		return 0;
-> > +	}
->=20
-> It feels like this DAI ought to have separate ops...  Also, for the
-> sense link will we definitely already have a rate set up?
-
-AIUI, the cpu rate should always be set up by the time we hit
-this path as it is only taken when setting up the VISENSE FE (after the
-playback stuff is already set up).
-
-
-
-
+-- 
+Martin K. Petersen
 
