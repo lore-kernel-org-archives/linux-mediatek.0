@@ -4,60 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EDDDCC98338
-	for <linux-mediatek@archiver.kernel.org>; Sun, 27 Sep 2026 21:08:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6B245C9832F
+	for <linux-mediatek@archiver.kernel.org>; Sun, 27 Sep 2026 21:09:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=yHU4nEGW7+kHgbtl043kdQcpDp7Ms+JDgnl3vA2EDIo=; b=nprzBoFYJ5onFCbs7RrWTKyD2h
-	sDzYXQS3k+XYkl5P8XMs8ekFMjYgMkbPGjNdAAVhxXdNwK6LcqepIb7p7611CxAoXY7t6hnF3Cs4s
-	q5GTK7lpRSrtg96x24PyO/JKooClbkH3ABsRPtTh+7/uLoTXQwdCfk2skmF+N3yrUuWYUaPXsWhsZ
-	JOI9n/D6Z8+nCfE+JrKg7r4niPQXbpvtLdNffof6gzGHE+8C1V6CO495lLX+crOjVg6RFAJ9Ee7UZ
-	fzc4tBGkifVLma1ekNwxl7fxKwk2MjHE+g83xgnGC7Z4r9DPeIetEoytfUUhlXLjuroMHxbmwSAyC
-	s3ZrXgqQ==;
+	bh=vpnWN1ZQg/MUyXZpejD+oDSjSibxG0HBGcMHOZX0TEw=; b=EYgpLzmGSGGNGDq/YtArYT+F8o
+	l08JjxsVpj4pB9o9iiZWFCO5enR3nsZurI7yYlkL1c58dm+uAke4yT7WyoDYzs9Hna2XoLRlcl3/p
+	KBmG3U2N/LnhQjcJv60kYENvauffdkJkaJAweu0VuaG/nOKKJ4HPSK2kqt1l8iT74SHbxfWrYLYb6
+	oFhR6n0TEwYDcm+EK/7EyXCJLC7c2MrnLiFotEY7w1HFGiHSMsh1i4kejxfqLpWtm/HlmebWf8h15
+	CpZXc8j49WRgqu8wRNemgwcuULR+E0qWAvFUZ4YRN9DHRCHcN3uPQePEYMsjHKWs2v1wLFvCpKhtB
+	sDgp/Saw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xAw78-0000000GrsD-3REJ;
-	Sun, 27 Sep 2026 21:08:50 +0000
-Received: from mail-oa2-f35.google.com ([74.125.231.99])
+	id 1xAw7K-0000000Grv9-1LWk;
+	Sun, 27 Sep 2026 21:09:02 +0000
+Received: from mail-qv2-f42.google.com ([74.125.230.170])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xAw76-0000000Grrd-2Oa3
+	id 1xAw7H-0000000GruH-2Tjw
 	for linux-mediatek@lists.infradead.org;
-	Sun, 27 Sep 2026 21:08:49 +0000
-Received: by mail-oa2-f35.google.com with SMTP id 586e51a60fabf-4938dd40902so1338845fac.3
-        for <linux-mediatek@lists.infradead.org>; Sun, 27 Sep 2026 14:08:48 -0700 (PDT)
+	Sun, 27 Sep 2026 21:09:00 +0000
+Received: by mail-qv2-f42.google.com with SMTP id 6a1803df08f44-915ec8f411aso760306d6.0
+        for <linux-mediatek@lists.infradead.org>; Sun, 27 Sep 2026 14:08:59 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1790543327; x=1791148127;
+        d=1e100.net; s=20260707; t=1790543338; x=1791148138;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
          :to:cc:subject:date:message-id:reply-to:content-type;
-        bh=yHU4nEGW7+kHgbtl043kdQcpDp7Ms+JDgnl3vA2EDIo=;
-        b=mKP2nmB8nprSfMmS/wCl5I4zcc4+6MHjbjbKSjmr4gUE9Cdq9npFLyevv5LO1bjzEZ
-         PAWCLzvHj3HFLuAf5HbfZhrq2DrhCnKNhwNW2g9wHlw/qkbWHVKIILEzNGnD2OVDykNJ
-         glfy7d5Xt/fj9/B9iLzO4KCvZQAuZuuzOTImEXzkHeWTVwEj05XQQ4DxIkk6NGzkIvRE
-         MU4mNqbUzvSQZNIxZnFiCjWGlaiBQxz4juVxBb6CjBBh4vAVMJ9bwXFO3P8K5dMPKC5z
-         lPhWRHKMXYZdF89y/TnLV0K6UmR/NoCYiCB5IKC6/BZ214z9Zfzmoi5HZobCCurz++F0
-         tbMA==
-X-Forwarded-Encrypted: i=1; AKwUvBwujMD3sQJL8nq1lNgBIYKgU9dmwgh2RMNABSff64Dj7u3CMJaT7XiSpyhVmwqwLcXD71IF7kU4QlK3MZdjtw==@lists.infradead.org
-X-Gm-Message-State: AFq9FYKFK/mCe5XqCPpVcj1nKM1Kkqcki7N7fp5qT53/asMschN3SUc4
-	L6vY7rnd1oFO+iyJuJVFPoQm9DXxFYhQpGGaHpmYd34yIyk3N8f3/n/B3pTDTSqg
-X-Gm-Gg: AYBFou1U7SxdSgWVbHpOIHKJp9urXFPdvXZCdlt1xd0p2S6YkNSNzzXivjC4RuyTifp
-	ZcbNQIwGs/ftSMCw7nXUCDePS7kMi0wOH2mh7teVv5jPeUxh8YwV82GGuSo5ybUcIQzWJHftsCo
-	IUYPvu6iNJXXLXTser8UFNGJwavzooSVNRsvaZvMIQbBXAni9yzm2ijG754Qyksf+mPTNfyCjU+
-	Kvb1kTgONVlZQGgNVzLk80VWKnlkHswNhlHH7Nze18ivm1PGmBHjqBPf4muxMkNui3OHDW4ex2P
-	F9qHEeUHGjSrk80+JQ3RBJLWADczeiM5nDD3D5SWG6bLOZaUFKGqnupQWlJysLafTGHnfplkntc
-	6toVyRBIWRkAiVQsMN+Nh3/P1VhVX1F6dMQHN4u6cs+3M/dEiA070BvPpOsVg5Nv8sMHbM7r7oP
-	ah9vqFSjhYw7/HVGGULZblOXCMYvSRQaS5TAH5jX+xy8dQNVvDYQt10HBzDNzqZsCMCZP0QXUB5
-	G98i4zd9Mz98ZrMSB8FmZdjNIOpiowJxK8JWEC9tNjJgRQUSwZoo7+TiRtHwHx8YIwd6g==
-X-Received: by 2002:a05:690c:a79c:b0:8a8:8456:a970 with SMTP id 00721157ae682-8a88456bccfmr20134317b3.68.1790543001580;
-        Sun, 27 Sep 2026 14:03:21 -0700 (PDT)
+        bh=vpnWN1ZQg/MUyXZpejD+oDSjSibxG0HBGcMHOZX0TEw=;
+        b=ZgYIzSNMhCEhXgVdWvj1lxL7PvTE7DeuDJCUnAIPTz+00iAvXisfOQ35Jl2i3tPkcr
+         U7I1S6KPrDEnIJYJxUvhL8e5SpFcwVL2z5wo4aCkTAUVF8zEdNsLY5gV9xI0J8q5HRS4
+         kCyUOOmccFnGcweXVoMeJYDUvKszuorm4Y+bJTuBzAJCFhIXiHj2pmWlvMASpe4fBaP6
+         V5qgMIjLkzoaVEayu1r8zJ+6MJO/BxxukLuoaF0BFmrUDSlsG/JyISImpDX6z4b6VRKt
+         OtEpvR1lTmWiEh1vdGkz7deEnZolD/VOgn/DbUNQyrW0enj0Z6tXunOs6wF/FPTcz7yL
+         +bzQ==
+X-Forwarded-Encrypted: i=1; AKwUvByH4kLwGPrp0L0E7ueHVnVAHqAaHk9aZIRHQH8oTO098elhxi4Mdhnd7IfwORr/8/5lHWDK5IrnXKN06QAtdQ==@lists.infradead.org
+X-Gm-Message-State: AFq9FYLwTRrE7ZPKnyL2YLJjvF5CFN6CqRlrNTFrL64EhJo+war8C/ZX
+	v1Ex5af9cwKuYgqvhnV08oPRDW+9daWF0NT5uAZRxP3kb3Bry1mS6FLWV9Ic+TyW
+X-Gm-Gg: AYBFou0cUtbsBYsDjERfyssgqu7B8uJBybd2kKwXd//W6lBEnfC9vu0YZ41DamhCMP5
+	pQaZTr4gtmtH0D2wKoe4ulJ3yr/rKI4ZLmFFvUwh2+KHdm13Bb+a2NGdxS71oZFT6+ZKmUNvm/J
+	Eu4Shq19vE30FNrNZkPnoA/bURzbm1JBp83sRxAXwpDPsPxx2PYn4LSrgunwXrgwhe++6OLN/zr
+	kopWCNntEGTiBoXVXHIDjIzwGr8wb4QNkcW594TEL8cJMnm2K5Ua63S7IWkDrS7jDjtZRp2N0L2
+	4caAkhZRif9yrLXUGP/OJhqG8cK4mnzU2TZvsBi+U9qlZUTYixNh6yrUxYEbZgVlvX1aLrqb/v+
+	ona8A7k+Zq9wJ8CEhmkTVyXa5OsitbP1xQkmsPydEi4m574pDlqxPNZYtm5IlpKQm2DUltYOcHA
+	hktnSAeU+zARWDyB63UfzjTcScwMewdXyRolQYIRzZpvReHfdkXiz8bOIGHXmrPyy0lvdb3Dq3r
+	YnVCreWrf7bPvoX4tlGn8RI9EcbW11i7u1DwNEICgdpabEKO8gxeWAhxvg6x4WYuVafoA==
+X-Received: by 2002:a05:690c:6301:b0:8a8:8456:a989 with SMTP id 00721157ae682-8a88456bcbemr25371317b3.82.1790543015721;
+        Sun, 27 Sep 2026 14:03:35 -0700 (PDT)
 Received: from sean-HP-EliteBook-830-G6.attlocal.net ([2600:1702:5083:7610:5dd7:b9c7:1078:5394])
-        by smtp.gmail.com with ESMTPSA id 00721157ae682-8a86103149dsm35389017b3.40.2026.09.27.14.03.20
+        by smtp.gmail.com with ESMTPSA id 00721157ae682-8a86103149dsm35389017b3.40.2026.09.27.14.03.34
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 27 Sep 2026 14:03:21 -0700 (PDT)
+        Sun, 27 Sep 2026 14:03:35 -0700 (PDT)
 From: Sean Wang <sean.wang@kernel.org>
 To: nbd@nbd.name
 Cc: linux-wireless@vger.kernel.org,
@@ -67,18 +67,17 @@ Cc: linux-wireless@vger.kernel.org,
 	posh.sun@mediatek.com,
 	Chengwei Yu <chengwei.yu@mediatek.com>,
 	Sean Wang <sean.wang@mediatek.com>
-Subject: [PATCH 01/23] wifi: mt76: mt7925: make NMI address TLV tail padding explicit
-Date: Sun, 27 Sep 2026 16:02:43 -0500
-Message-ID: <20260927210306.737669-2-sean.wang@kernel.org>
+Subject: [PATCH 06/23] wifi: mt76: mt7925: implement NAN key management MCU command
+Date: Sun, 27 Sep 2026 16:02:48 -0500
+Message-ID: <20260927210306.737669-7-sean.wang@kernel.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260927210306.737669-1-sean.wang@kernel.org>
 References: <20260927210306.737669-1-sean.wang@kernel.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260927_140848_607679_C8ACEE02 
-X-CRM114-Status: UNSURE (   8.74  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260927_140859_653100_B86036AD 
+X-CRM114-Status: GOOD (  15.57  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,37 +94,259 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Chengwei Yu <chengwei.yu@mediatek.com>
 
-struct mt7925_nan_nmi_addr_tlv is __packed __aligned(4). tag+len+
-nmi_addr is 10 bytes, so the aligned attribute already inserts 2
-bytes of implicit tail padding to round the struct up to 12 bytes;
-sizeof() is unchanged by this patch.
+Add mt7925_nan_manage_key_cmd() and mt7925_nan_key_mgmt_tlv() to
+install and remove NAN group and pairwise keys via
+NAN_UNI_CMD_KEY_MANAGEMENT. The TLV builder covers all firmware key
+types: NM-TK, ND-TK (unicast), TX/RX GTK (multicast data) and
+TX/RX IGTK/BIGTK (multicast management).
 
-Every sibling NAN TLV struct in this file (cluster_id, sync_rssi,
-peer_rec, map_sta_rec, ...) declares its tail padding as an explicit
-reserved[] member instead of relying on implicit compiler padding.
-Make mt7925_nan_nmi_addr_tlv consistent with that convention, and
-give the field a name so it shows up (zeroed) in TLV dumps instead
-of appearing as anonymous struct padding.
+Follows the same skb + mt76_connac_mcu_add_tlv() pattern as other NAN
+commands (mt7925_nan_enable(), mt7925_nan_change_configure()) rather
+than hand-assembling a packed struct, so it composes naturally with
+the existing NAN command helpers.
+
+Key material is grouped into struct mt7925_nan_key_info so callers
+pass one pointer instead of five arguments; init/key_exist firmware
+flags are hardcoded 1/0 since every real caller uses the same values.
 
 Co-developed-by: Sean Wang <sean.wang@mediatek.com>
 Signed-off-by: Sean Wang <sean.wang@mediatek.com>
 Signed-off-by: Chengwei Yu <chengwei.yu@mediatek.com>
 ---
- drivers/net/wireless/mediatek/mt76/mt7925/nan.h | 1 +
- 1 file changed, 1 insertion(+)
+ .../net/wireless/mediatek/mt76/mt7925/nan.c   | 122 ++++++++++++++++++
+ .../net/wireless/mediatek/mt76/mt7925/nan.h   |  72 +++++++++++
+ 2 files changed, 194 insertions(+)
 
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/nan.c b/drivers/net/wireless/mediatek/mt76/mt7925/nan.c
+index 73e45be8b40e..0579501207eb 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7925/nan.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7925/nan.c
+@@ -897,6 +897,128 @@ void mt7925_nan_stop_mac_randomization(struct ieee80211_vif *vif)
+ 	cancel_delayed_work_sync(&mvif->nan.mac_rand_work);
+ }
+ 
++static int
++mt7925_nan_key_mgmt_tlv(struct sk_buff *skb,
++			enum mt7925_nan_key_operation key_op,
++			enum mt7925_nan_key_type key_type,
++			u16 wtbl_entry,
++			const u8 *local_addr,
++			const u8 *peer_addr,
++			const struct mt7925_nan_key_info *key)
++{
++	struct mt7925_nan_key_mgmt_tlv *key_mgmt_tlv = NULL;
++	struct tlv *tlv = NULL;
++
++	if (!skb)
++		return -EINVAL;
++
++	tlv = mt76_connac_mcu_add_tlv(skb, NAN_UNI_CMD_KEY_MANAGEMENT,
++				      sizeof(struct mt7925_nan_key_mgmt_tlv));
++	if (!tlv)
++		return -ENOMEM;
++
++	key_mgmt_tlv = (struct mt7925_nan_key_mgmt_tlv *)tlv;
++	key_mgmt_tlv->op = (u8)key_op;
++	key_mgmt_tlv->key_type = (u8)key_type;
++	key_mgmt_tlv->wtbl_idx = cpu_to_le16(wtbl_entry);
++	key_mgmt_tlv->init = 1;
++	key_mgmt_tlv->key_exist = 0;
++	key_mgmt_tlv->is_nmi_tk = 0;
++
++	memcpy(key_mgmt_tlv->local_addr, local_addr, ETH_ALEN);
++	memcpy(key_mgmt_tlv->peer_addr, peer_addr, ETH_ALEN);
++
++	switch (key_type) {
++	case NAN_KEY_TYPE_NMI_CXT_MGMT_KEY:
++		key_mgmt_tlv->nmi_key_idx = 0;
++		key_mgmt_tlv->is_nmi_tk = true;
++		break;
++	case NAN_KEY_TYPE_MC_TX_KEY:
++	case NAN_KEY_TYPE_MC_MGMT_TX_KEY:
++		/* TX GTK/IGTK/BIGTK: NDI-indexed slot; NDC ID not yet tracked */
++		key_mgmt_tlv->ndi_idx = 0;
++		break;
++	case NAN_KEY_TYPE_MC_RX_KEY:
++	case NAN_KEY_TYPE_MC_MGMT_RX_KEY:
++		key_mgmt_tlv->mc_rx_idx = (u8)wtbl_entry;
++		break;
++	default:
++		return -EINVAL;
++	}
++
++	if (key_op == NAN_KEY_OP_SET_KEY) {
++		key_mgmt_tlv->algorithm_id = key->algo_id;
++		key_mgmt_tlv->key_id = key->key_id;
++		key_mgmt_tlv->key_len = key->key_len;
++
++		if (key_type == NAN_KEY_TYPE_MC_MGMT_RX_KEY && key->pn) {
++			memcpy(key_mgmt_tlv->key_rsc, key->pn,
++			       min_t(size_t, NAN_PACKET_NUMBER_LEN,
++				     sizeof(key_mgmt_tlv->key_rsc)));
++		}
++
++		if (key->key_data) {
++			memcpy(key_mgmt_tlv->key_material, key->key_data,
++			       min_t(size_t, key->key_len,
++				     sizeof(key_mgmt_tlv->key_material)));
++		}
++	}
++
++	return 0;
++}
++
++/**
++ * mt7925_nan_manage_key_cmd - Install/remove a NAN group or pairwise key
++ * @dev: mt792x device pointer
++ * @key_op: NAN_KEY_OP_SET_KEY or NAN_KEY_OP_CLS_KEY
++ * @key_type: which NAN key slot this targets (enum mt7925_nan_key_type)
++ * @wtbl_entry: WTBL index the key is bound to (WTBL_RESERVED_ENTRY invalid)
++ * @local_addr: local MAC address for this key context
++ * @peer_addr: peer MAC address for this key context
++ * @key: key material; key->key_data required for NAN_KEY_OP_SET_KEY
++ *
++ * There are no other callers yet; NAN group key installation added by a
++ * later change calls into this single command path.
++ */
++int
++mt7925_nan_manage_key_cmd(struct mt792x_dev *dev,
++			  enum mt7925_nan_key_operation key_op,
++			  enum mt7925_nan_key_type key_type,
++			  u16 wtbl_entry,
++			  const u8 *local_addr,
++			  const u8 *peer_addr,
++			  const struct mt7925_nan_key_info *key)
++{
++	struct mt76_dev *mdev = &dev->mt76;
++	struct mt7925_nan_common_hdr *hdr = NULL;
++	struct sk_buff *skb = NULL;
++	int ret;
++
++	if (!key || !local_addr || !peer_addr ||
++	    key_type >= NAN_KEY_TYPE_NUM ||
++	    wtbl_entry == WTBL_RESERVED_ENTRY ||
++	    (key_op == NAN_KEY_OP_SET_KEY && !key->key_data))
++		return -EINVAL;
++
++	skb = mt76_mcu_msg_alloc(mdev, NULL,
++				 sizeof(struct mt7925_nan_common_hdr) +
++				 sizeof(struct mt7925_nan_key_mgmt_tlv));
++	if (!skb)
++		return -ENOMEM;
++
++	hdr = (struct mt7925_nan_common_hdr *)skb_put(skb, sizeof(*hdr));
++	memset(hdr, 0, sizeof(*hdr));
++
++	ret = mt7925_nan_key_mgmt_tlv(skb, key_op, key_type, wtbl_entry,
++				      local_addr, peer_addr, key);
++	if (ret) {
++		dev_kfree_skb(skb);
++		return ret;
++	}
++
++	return mt76_mcu_skb_send_msg(mdev, skb, MCU_UNI_CMD(NAN), true);
++}
++
+ static int mt7925_nan_avail_ctrl_tlv(struct sk_buff *skb,
+ 				     struct ieee80211_vif *vif)
+ {
 diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/nan.h b/drivers/net/wireless/mediatek/mt76/mt7925/nan.h
-index d81d84a222d9..297c2856578e 100644
+index 3a14ec384e4f..f15a16b773bb 100644
 --- a/drivers/net/wireless/mediatek/mt76/mt7925/nan.h
 +++ b/drivers/net/wireless/mediatek/mt76/mt7925/nan.h
-@@ -346,6 +346,7 @@ struct mt7925_nan_nmi_addr_tlv {
- 	__le16 tag;
- 	__le16 len;
- 	u8 nmi_addr[ETH_ALEN];
-+	u8 reserved[2];
+@@ -109,6 +109,24 @@ enum nan_disc_event_type {
+ 	NAN_EVENT_ID_JOINED_CLUSTER		= 2,
+ };
+ 
++enum mt7925_nan_key_operation {
++	NAN_KEY_OP_SET_KEY,
++	NAN_KEY_OP_CLS_KEY,
++};
++
++enum mt7925_nan_key_type {
++	NAN_KEY_TYPE_NMI_CXT_MGMT_KEY,	/* NM-TK: NAN Management pairwise key */
++	NAN_KEY_TYPE_ND_TK,		/* ND-TK: NAN Data pairwise key */
++	NAN_KEY_TYPE_MC_TX_KEY,		/* TX GTK (multicast data) */
++	NAN_KEY_TYPE_MC_RX_KEY,		/* RX GTK (multicast data) */
++	NAN_KEY_TYPE_MC_MGMT_TX_KEY,	/* TX IGTK/BIGTK (multicast mgmt) */
++	NAN_KEY_TYPE_MC_MGMT_RX_KEY,	/* RX IGTK/BIGTK (multicast mgmt) */
++	NAN_KEY_TYPE_NUM,
++};
++
++#define WTBL_RESERVED_ENTRY	0xFFFF
++#define NAN_PACKET_NUMBER_LEN	6
++
+ /* bit indices into mt792x_dev->nan_deferred_pending, set from the atomic
+  * MCU-event RX path and consumed by mt7925_nan_deferred_work()
+  */
+@@ -478,6 +496,35 @@ struct mt7925_nan_update_phy_setting_tlv {
+ 	struct mt7925_nan_phy_setting phy_5g;
  } __packed __aligned(4);
  
- struct mt7925_nan_avail_ctrl_tlv {
++struct mt7925_nan_key_mgmt_tlv {
++	__le16 tag;
++	__le16 len;
++
++	u8 op;			/* enum mt7925_nan_key_operation */
++	u8 key_type;		/* enum mt7925_nan_key_type */
++	__le16 wtbl_idx;
++	u8 init;
++	u8 key_exist;
++	u8 is_nmi_tk;
++	u8 reserved0;
++
++	u8 local_addr[ETH_ALEN];
++	u8 peer_addr[ETH_ALEN];
++
++	union {
++		u8 nmi_key_idx;
++		u8 ndi_idx;
++		u8 mc_rx_idx;
++	};
++	u8 algorithm_id;
++	u8 key_id;
++	u8 key_len;
++
++	u8 key_rsc[NAN_PACKET_NUMBER_LEN];
++	u8 reserved1[2];
++	u8 key_material[32];
++} __packed __aligned(4);
++
+ /* NAN Low Power Control Command */
+ struct mt7925_nan_lowpower_ctrl_tlv {
+ 	__le16 tag;
+@@ -528,6 +575,31 @@ void mt7925_nan_stop_mac_randomization(struct ieee80211_vif *vif);
+ 
+ int mt7925_nan_send_lowpower_ctrl_cmd(struct mt792x_dev *dev, bool enable);
+ 
++/**
++ * struct mt7925_nan_key_info - key material for mt7925_nan_manage_key_cmd
++ * @algo_id:  firmware cipher algorithm ID (from mt7925_mcu_get_cipher())
++ * @key_id:   key index (1-2 for GTK, 4-7 for IGTK/BIGTK)
++ * @key_len:  key material length in bytes (16 or 32)
++ * @key_data: key bytes; must be non-NULL for SET_KEY operations
++ * @pn:       6-byte packet number / RSC; only used for MC_MGMT_RX_KEY,
++ *            pass NULL for all other key types
++ */
++struct mt7925_nan_key_info {
++	u8 algo_id;
++	u8 key_id;
++	u8 key_len;
++	const u8 *key_data;
++	const u8 *pn;
++};
++
++int mt7925_nan_manage_key_cmd(struct mt792x_dev *dev,
++			      enum mt7925_nan_key_operation key_op,
++			      enum mt7925_nan_key_type key_type,
++			      u16 wtbl_entry,
++			      const u8 *local_addr,
++			      const u8 *peer_addr,
++			      const struct mt7925_nan_key_info *key);
++
+ void mt7925_nan_local_sched_changed(struct mt792x_dev *dev,
+ 				    struct ieee80211_vif *vif);
+ 
 -- 
 2.43.0
 
