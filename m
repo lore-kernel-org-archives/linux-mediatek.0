@@ -4,35 +4,35 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6560CC9830E
-	for <linux-mediatek@archiver.kernel.org>; Sun, 27 Sep 2026 23:51:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6FE29C9830E
+	for <linux-mediatek@archiver.kernel.org>; Sun, 27 Sep 2026 23:51:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To:Cc:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=avqBsikZCf+7b5iEUfOAbHsGtezMWtniMqtW2atMLDo=; b=A7UVZOgZedGvzAiSI9Zeeiy/8A
-	fbKuHwWUt8+HoDlCBBW4AlAQQ+ZgYGlg+5FOAw7IpT0akV94dYXgD7M3ebvvDuWE/xzbdiRZ+y7aE
-	MjvFBDItATfwiq2UmhiWvcnHATkvtqtpfN01fqTA0sK2q7hxNhf74WvW/8PdjNzhBs3QkKAHbtOYO
-	vrWjRnU/50V7H5yPBe2oh0/BDBFE1ao32mCnTXLfA15s9ZznFVzeUydZsZxFJaqeLYsH+ufXnfLXE
-	vN3cbfJOeXX47ugeBN6TXgIg0m17GNZ8gHQDvy5Qeo9Em/ImRcxzGXJsL+LMMSZAx/KP19KjyVoR/
-	3W0sQ3rg==;
+	bh=QW7CjaV7wM7TsE47/7YjJeQajumJm8P+rkU0HAE9Naw=; b=OYJZy3WXIrsaj4LuS1UB2PxDRu
+	CS3NhMWD/7NVteMkIj7GqML5/Yo8wEQagpk8mmiY5JDa40dy77isXVG5uJOqZKnxGfMA/6UWyLOu9
+	a+AGenaY9Y4Y9EzTp/KjR55g+WOvb+HFqiYd1vXCyDID7hPTW5VRW51XBkuNRnzskbq1cT8VBOSvi
+	PvKDDCB2n8s+0uZYf9nbpN4+U/jf+74cGTXmaBHBF01wMCX/Q7bEArGUIagR9Y3mtFSMPy4+FSY+a
+	L/7V40WXeGcBjyv5VFpvggWJBddImzw7yCRG3/7eu2VBhd56DoRn9SJWwBBARHLpvAKIJY8Q5m8cj
+	Ek61GAnQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xAyeC-0000000H1hL-1dXp;
-	Sun, 27 Sep 2026 23:51:08 +0000
+	id 1xAyeT-0000000H1tE-2XP8;
+	Sun, 27 Sep 2026 23:51:25 +0000
 Received: from pidgin.makrotopia.org ([2a07:2ec0:3002::65])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xAye2-0000000H1Wg-1tGR;
-	Sun, 27 Sep 2026 23:51:00 +0000
+	id 1xAyeG-0000000H1jx-2iln;
+	Sun, 27 Sep 2026 23:51:14 +0000
 Received: from local
 	by pidgin.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256:X25519MLKEM768)
 	 (Exim 4.100)
 	(envelope-from <daniel@makrotopia.org>)
-	id 1xAydx-000000000rp-2YuH;
-	Sun, 27 Sep 2026 23:50:53 +0000
-Date: Mon, 28 Sep 2026 00:50:50 +0100
+	id 1xAyeB-000000000tP-3H3H;
+	Sun, 27 Sep 2026 23:51:07 +0000
+Date: Mon, 28 Sep 2026 00:51:04 +0100
 From: Daniel Golle <daniel@makrotopia.org>
 To: Andrzej Hajda <andrzej.hajda@intel.com>,
 	Neil Armstrong <neil.armstrong@linaro.org>,
@@ -53,17 +53,17 @@ To: Andrzej Hajda <andrzej.hajda@intel.com>,
 	Chen-Yu Tsai <wenst@chromium.org>, dri-devel@lists.freedesktop.org,
 	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
-Subject: [PATCH v8 10/14] drm/bridge: it6505: hold endpoint OF node reference
- while parsing it
-Message-ID: <97c7e1c392178d0d386bcdb70813a0cd162fbefe.1790552614.git.daniel@makrotopia.org>
+Subject: [PATCH v8 11/14] drm/bridge: it6505: reject a too short
+ link-frequencies property
+Message-ID: <622ec77535273c2d203aade2d7a9fda7b02676b1.1790552614.git.daniel@makrotopia.org>
 References: <cover.1790552614.git.daniel@makrotopia.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 In-Reply-To: <cover.1790552614.git.daniel@makrotopia.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260927_165058_503227_88A38FFD 
-X-CRM114-Status: GOOD (  11.59  )
+X-CRM114-CacheID: sfid-20260927_165112_695784_31C0841B 
+X-CRM114-Status: GOOD (  12.14  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,10 +78,12 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-it6505_parse_dt() drops the reference to each endpoint node right
-after looking it up and then keeps reading its properties, racing
-with the node being freed under CONFIG_OF_DYNAMIC. Put the node only
-once parsing is done.
+of_property_read_variable_u64_array() is asked for a minimum array
+size of zero, so a link-frequencies property shorter than one u64 --
+a 32-bit value written by mistake, say -- returns 0 without storing
+anything. it6505_parse_dt() reads that as success and derives
+max_dpi_pixel_clock from an uninitialised stack variable. Ask for one
+element so a short property lands in the existing error path.
 
 Fixes: 380d920b582d ("drm/bridge: add it6505 driver to read data-lanes and link-frequencies from dt")
 Signed-off-by: Daniel Golle <daniel@makrotopia.org>
@@ -90,48 +92,24 @@ v8: no changes
 
 v7: no changes
 
-v6: no changes
-
-v5: new patch
+v6: new patch
 ---
- drivers/gpu/drm/bridge/ite-it6505.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ drivers/gpu/drm/bridge/ite-it6505.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/drivers/gpu/drm/bridge/ite-it6505.c b/drivers/gpu/drm/bridge/ite-it6505.c
-index 3f17024116e14..848e9a650b9ff 100644
+index 848e9a650b9ff..ea65ca051cb9e 100644
 --- a/drivers/gpu/drm/bridge/ite-it6505.c
 +++ b/drivers/gpu/drm/bridge/ite-it6505.c
-@@ -3369,7 +3369,6 @@ static void it6505_parse_dt(struct it6505 *it6505)
- 	}
- 
- 	ep = of_graph_get_endpoint_by_regs(np, 1, 0);
--	of_node_put(ep);
- 
- 	if (ep) {
- 		len = it6505_get_data_lanes_count(ep, 1, 4);
-@@ -3382,13 +3381,13 @@ static void it6505_parse_dt(struct it6505 *it6505)
- 			*max_lane_count = MAX_LANE_COUNT;
- 			dev_err(dev, "error data-lanes, use default");
- 		}
-+		of_node_put(ep);
- 	} else {
- 		*max_lane_count = MAX_LANE_COUNT;
- 		dev_err(dev, "error endpoint, use default");
- 	}
- 
- 	ep = of_graph_get_endpoint_by_regs(np, 0, 0);
--	of_node_put(ep);
- 
+@@ -3392,7 +3392,7 @@ static void it6505_parse_dt(struct it6505 *it6505)
  	if (ep) {
  		len = of_property_read_variable_u64_array(ep,
-@@ -3408,6 +3407,7 @@ static void it6505_parse_dt(struct it6505 *it6505)
- 			dev_err(dev, "error link frequencies, use default");
- 			*max_dpi_pixel_clock = DPI_PIXEL_CLK_MAX;
- 		}
-+		of_node_put(ep);
- 	} else {
- 		dev_err(dev, "error endpoint, use default");
- 		*max_dpi_pixel_clock = DPI_PIXEL_CLK_MAX;
+ 							  "link-frequencies",
+-							  &link_frequencies, 0,
++							  &link_frequencies, 1,
+ 							  1);
+ 		if (len >= 0) {
+ 			do_div(link_frequencies, 1000);
 -- 
 2.55.0
 
