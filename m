@@ -4,61 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AB218C98338
-	for <linux-mediatek@archiver.kernel.org>; Sun, 27 Sep 2026 21:11:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A0B77C98338
+	for <linux-mediatek@archiver.kernel.org>; Sun, 27 Sep 2026 21:11:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=b/j2sk0Gu0f7kgmwf66bENo3rsyXQHCPfjXxZSmJeG4=; b=sG1HpTxUXnlyguIP3352rW6hnj
-	HL0jaYXuNhMB/3MgjQwf2ex14tGG4AeoP2yu15kCaM/HvrjRZcdGTydQ9YK9+GHhnkHbmEcRqBIKU
-	thuByiS+HpGmd6Nd+yOIzbfkKYy8EAyoc4ZjaYzBt8o7yKDGM5cGTiAfi0RJJW8wQRkyxnCe5EQkA
-	fbHgSVziZUNjGtl09/WPGv0oKq9yA/8wASsrI/Mh2AIX6eHnW4xrAL+PpYe/f2ukd30PIA7i6qBZL
-	kY+1Lf65rinF2gRNmGeOl2D0reNm6RienzUtA1ZjfXkrkmQZL140JTnWSuMvrzCuM2AsjwagCgPim
-	uHiInkig==;
+	bh=xIz9ipdGqN0Ec+YYE5JVHummumioDMVEQAqS4Zma/O4=; b=443q9fEdb2OV3ercAPxI3bopeT
+	YKXjcYoKccdS1Pk9WW4OsaeC8uAjVNR9bK6hMgS7kpukBj17yR0OMFOhBPGtjmP1p4uU5czOX0HuG
+	eD5fIMoUlNwPc8o39vSzwYSP8HjMLi86Ty0kd2dtlkNLBRtvMLX5EXIcPguT2yhqv3Pq18gwoeizg
+	AQGHRvJicCu3DMn5PcSKk6TfoRNoli7FuNFUNiTZXtRMdn1jfQ6vTw/zdBk0/ThDb0LCy8Cj7dE+G
+	DtNil0x03kr2+LVqSFVwir2FA1/0XN+2GwYc76/a79lILYsFMA/+Jva2ysA8+ucNmxldh9Lddzy6O
+	z6I6Gf4Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xAw9l-0000000GsSN-2glt;
-	Sun, 27 Sep 2026 21:11:33 +0000
-Received: from mail-dy2-f12.google.com ([74.125.229.12])
+	id 1xAwA6-0000000GsWZ-2yWV;
+	Sun, 27 Sep 2026 21:11:54 +0000
+Received: from mail-dl2-f12.google.com ([74.125.229.140])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xAw9h-0000000GsQC-3oty
+	id 1xAwA5-0000000GsW9-0N1P
 	for linux-mediatek@lists.infradead.org;
-	Sun, 27 Sep 2026 21:11:30 +0000
-Received: by mail-dy2-f12.google.com with SMTP id 5a478bee46e88-3396cec93b6so2966092eec.3
-        for <linux-mediatek@lists.infradead.org>; Sun, 27 Sep 2026 14:11:29 -0700 (PDT)
+	Sun, 27 Sep 2026 21:11:54 +0000
+Received: by mail-dl2-f12.google.com with SMTP id a92af1059eb24-142dd04edb5so3971116c88.2
+        for <linux-mediatek@lists.infradead.org>; Sun, 27 Sep 2026 14:11:52 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1790543489; x=1791148289;
+        d=1e100.net; s=20260707; t=1790543512; x=1791148312;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
          :to:cc:subject:date:message-id:reply-to:content-type;
-        bh=b/j2sk0Gu0f7kgmwf66bENo3rsyXQHCPfjXxZSmJeG4=;
-        b=YRTLRQjH9lzmDQpIssENfKzGac/ilDLrXiHQjVuBTz9MCL+rvpOsHpS5OMevkDuJ43
-         JHtzCaNDR8Q1nNaW7k7Z/Xt/jrhjXsAUC1IqVuZ78QUHbWY8CWXDfScx0rbskOTQfewy
-         Jtvkad1w4IYkxR2x3FCp7urLLCiwM53waOw29rAqgo0XvhguX1CBEOH8uxkMkWaNjuuh
-         VvAS7bK30lpbtiDvw3seORpPuGyNbsdo9LM1JVaugoYprviUUjsvwp13V43zCQmyhYql
-         I8olGM4x+5DlbCmxQpXHn/UE2k3pvWKiG5c48OprHhJ+qme8qHiae7o4UkGacFF9wt+Q
-         ryOg==
-X-Forwarded-Encrypted: i=1; AKwUvBzpCyC0lN8Sj/7xaaZ5L6Qg2ViFxCnvvhp8WpIlnQht6iJdNaYTwGVUmbAkYaJIK46JcXQGOjPhuKnR5kIhyQ==@lists.infradead.org
-X-Gm-Message-State: AFq9FYLzhRZ58itYrXH9Wnf1GLU73rzdl674NimnGkW/vg6B8xVtwtkC
-	Chs7qFMFBNowCxb+tl6q/ulMQkrA0RCl/EGFwYE+z5Alu5ClYWBkJbPYdXbT6C/H
-X-Gm-Gg: AYBFou1MEleBi1xG063DgrrtWT6yMBnU/U0cEGf3NWJjlkapK4+wuiaCtTx4LXCt/dI
-	rHp49fVjJjoTI4HpIPr5lK3yE4qlvoPbXVkoGB3mt0TnheA7a3ks8xaGHuaGr3LqLaMrItZyUYx
-	BStSFbZgQ7TANETjuBnd2VEJ0I0isB2mB1WPVUQJdLP61mSJlb3oWFHZfxtDwEnVGMrsbVkPiGu
-	4mI+ZTB4UYgoRIwluL9oC6YQjhiN5XSBbqpxjmPweLWKa5b9+oVIQx2d5RodIeRl7h2d2nhIYzM
-	qst8qNSimMocCf0huJK8egzRgGGPIQioOIC079YCLr3QtnCcmlq6E5cdpOt9oqUbS3XvDwbEoaK
-	7KyvgB+0c4oLcONw3Gnur+u9xtuBP7u7pf1qOguHQ6qRmYw24+KUDlYegf8BLcG+2gcFKpFgcOb
-	BbQMW3t5xw/tZi+9CK5Pojl55ospgWN7dGRmbUJ9IkRr6PBirQA8YYYVjJDqWE6PzLZuOlosQRu
-	gkCI1tf8+fatU7Yg3CTN93O/ppVTLsGdrO9uAM48vrDk46Pw7h/Q32xFg7zDB2T7eflwI/aM/E8
-	FZi2
-X-Received: by 2002:a05:690c:e3e1:b0:854:b86b:d206 with SMTP id 00721157ae682-8a6461b8773mr59308197b3.12.1790543011011;
-        Sun, 27 Sep 2026 14:03:31 -0700 (PDT)
+        bh=xIz9ipdGqN0Ec+YYE5JVHummumioDMVEQAqS4Zma/O4=;
+        b=0xSUjZGPPMcyeH3U6MV60E72f2l4mgorPq7DVwA8O95Mmj+9NP/DWUQcc+qb7lF6W9
+         i4grBpDBen6oht5bxuS6ReZv8tnHdnjrVFZ6J/KwEYbI5Lj6vmosw0epERlUe+a2WPiN
+         zIJKX38DPVjQ6AD1gKZ6KBrxeaSTmNbC4jTxeMXjNAT0QU2k5brxiCAXZVBYFCVPj3Rw
+         L0pREX3AoutOXGj+IiUWcGnvQN56YefNMMcrs1dx+f4Hz4K3bwnqbpp2crWF8WnqxE8n
+         unUrljM4/owK6vmbJi3wiBrt/Rl3wyzq5Gk/1PGJs36MForutDi+1/sxRRKZ3aUElSLa
+         goPA==
+X-Forwarded-Encrypted: i=1; AKwUvBydYz7vOqcJwUMR7pUE7ilKxQ/7iv0CVmnHMR5Bd8j21lROtfiBWkjZ1bQm4Guy1XZBplMvW1HHxRAgdgbw2g==@lists.infradead.org
+X-Gm-Message-State: AFuF++lf9HGrJyyQs+6/L0hvdUzAkwkJqAovfBAezdJ1fbCrNX8OOjWi
+	8HxuQv3EnOC0tAttNG+4tnTRy+6k8naT8qo3Pjy75wZV1GrPOwixdMqaH4YhtDpK
+X-Gm-Gg: AYBFou1svMU+pszhYYidcajMJsc+2q/AmaLRs02LF/uaYLY4A4O/RJJE4J6/yzOE68U
+	MO+OMefF/nMZW4jwE5y6FRH1X3aM/Ckkak7E6ArMAHXdM5lcoV/su2tiooO94VyGTNHT8Ar/EfJ
+	/cFivwcJ6eQT9i07UBNDqtmeeVr8pHx+6Z7YK/o4ZQ9gFFcACRcPnyB2cIdEGRYkGDyVasfvcXe
+	L3dKchGRdZT/2P9YLN80cIPu/bthtDVBS2Y/NpKNAcSL5/0QEhrZVVdRljsCIf0gforcON+Ij2G
+	Hmt297/VLnWzKV0C+cJ+h2AxU0MyknTshbJ5BHKQz9SK+Ezq4KiWJj+nwBnpQHrPEH97xqRVsQn
+	BSfcxyNh+OxLQjk2L5pmFxklwkq9hFFUSnp6TYiPVQk0KptFcLFEbczabQM+bg7y/62K034lqgM
+	OQXo+dTa0f80Na0WO4aFIz5Sxw25GAO6tkH27ObC/t9R7RJbrStCJkC/jEPCXdk6Tltc/7n/SAQ
+	4hI3/5+2LUUoAvoYncGW/nHDUZu6m7x1zhAcitHZNxhsdp/0iVeuOjgXOAUe1HOKiLGgw==
+X-Received: by 2002:a05:690c:6e09:b0:8a8:5c3d:930 with SMTP id 00721157ae682-8a85c3d17fdmr34943737b3.0.1790543019500;
+        Sun, 27 Sep 2026 14:03:39 -0700 (PDT)
 Received: from sean-HP-EliteBook-830-G6.attlocal.net ([2600:1702:5083:7610:5dd7:b9c7:1078:5394])
-        by smtp.gmail.com with ESMTPSA id 00721157ae682-8a86103149dsm35389017b3.40.2026.09.27.14.03.29
+        by smtp.gmail.com with ESMTPSA id 00721157ae682-8a86103149dsm35389017b3.40.2026.09.27.14.03.36
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 27 Sep 2026 14:03:29 -0700 (PDT)
+        Sun, 27 Sep 2026 14:03:38 -0700 (PDT)
 From: Sean Wang <sean.wang@kernel.org>
 To: nbd@nbd.name
 Cc: linux-wireless@vger.kernel.org,
@@ -68,17 +67,17 @@ Cc: linux-wireless@vger.kernel.org,
 	posh.sun@mediatek.com,
 	Chengwei Yu <chengwei.yu@mediatek.com>,
 	Sean Wang <sean.wang@mediatek.com>
-Subject: [PATCH 04/23] wifi: mt76: mt7925: wire up NAN MAC randomization lifecycle
-Date: Sun, 27 Sep 2026 16:02:46 -0500
-Message-ID: <20260927210306.737669-5-sean.wang@kernel.org>
+Subject: [PATCH 07/23] wifi: mt76: mt7925: add per-peer RX IGTK/BIGTK and RX GTK WTBLs
+Date: Sun, 27 Sep 2026 16:02:49 -0500
+Message-ID: <20260927210306.737669-8-sean.wang@kernel.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260927210306.737669-1-sean.wang@kernel.org>
 References: <20260927210306.737669-1-sean.wang@kernel.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260927_141129_945554_E55F66E5 
-X-CRM114-Status: GOOD (  11.25  )
+X-CRM114-CacheID: sfid-20260927_141153_152008_E5E94E59 
+X-CRM114-Status: GOOD (  16.11  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,60 +94,133 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Chengwei Yu <chengwei.yu@mediatek.com>
 
-Start mac_rand_work in mt7925_add_interface() and stop it in
-mt7925_remove_interface() so the work item added by prior patches
-is usable and cannot outlive its vif.
+NAN RX group keys are per-peer: each NAN peer can carry an independent
+IGTK/BIGTK, and each NAN_DATA peer an independent GTK. Add
+nan_rx_igtk_wcid and nan_rx_gtk_wcid to mt792x_sta to hold dedicated
+WTBL entries for these keys.
 
-INIT_DELAYED_WORK() is unconditional across all vif types, matching
-how csa_work is already initialized unconditionally -- mvif->nan
-exists on every mt792x_vif so there is nothing NAN-specific to guard.
-
-mt7925_nan_stop_mac_randomization() is called before
-mt792x_mutex_acquire(), not inside it: the work function takes the
-same dev mutex, so cancel_delayed_work_sync() while holding it would
-deadlock. This follows the same ordering mt792x_unassign_vif_chanctx()
-uses for csa_work.
+WTBLs are allocated lazily: mt7925_nan_sta_wcids_init() marks both
+fields MT792x_WCID_IDX_UNSET at peer-add time, and
+mt7925_nan_peer_wcids_free() releases whichever slots were actually
+allocated at peer-remove time. Peers that never install a NAN group
+key carry zero overhead.
 
 Co-developed-by: Sean Wang <sean.wang@mediatek.com>
 Signed-off-by: Sean Wang <sean.wang@mediatek.com>
 Signed-off-by: Chengwei Yu <chengwei.yu@mediatek.com>
 ---
- drivers/net/wireless/mediatek/mt76/mt7925/main.c | 15 +++++++++++++++
- 1 file changed, 15 insertions(+)
+ .../net/wireless/mediatek/mt76/mt7925/main.c  | 47 +++++++++++++++++++
+ drivers/net/wireless/mediatek/mt76/mt792x.h   | 11 +++++
+ 2 files changed, 58 insertions(+)
 
 diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/main.c b/drivers/net/wireless/mediatek/mt76/mt7925/main.c
-index c882952f5df1..3e1c223e8da6 100644
+index 3e1c223e8da6..2d3bf7d806a7 100644
 --- a/drivers/net/wireless/mediatek/mt76/mt7925/main.c
 +++ b/drivers/net/wireless/mediatek/mt76/mt7925/main.c
-@@ -480,6 +480,12 @@ mt7925_add_interface(struct ieee80211_hw *hw, struct ieee80211_vif *vif)
+@@ -923,6 +923,8 @@ mt7925_get_rates_table(struct ieee80211_hw *hw, struct ieee80211_vif *vif,
+ 	return mvif->basic_rates_idx;
+ }
  
- 	if (vif->type == NL80211_IFTYPE_NAN)
- 		dev->nan_vif = vif;
++static void mt7925_nan_sta_wcids_init(struct mt792x_sta *msta);
 +
-+	if (vif->type == NL80211_IFTYPE_NAN ||
-+	    vif->type == NL80211_IFTYPE_NAN_DATA)
-+		INIT_DELAYED_WORK(&mvif->nan.mac_rand_work,
-+				  mt7925_nan_mac_rand_work);
+ static int mt7925_mac_link_sta_add(struct mt76_dev *mdev,
+ 				   struct ieee80211_vif *vif,
+ 				   struct ieee80211_link_sta *link_sta,
+@@ -1060,6 +1062,9 @@ static int mt7925_mac_link_sta_add(struct mt76_dev *mdev,
+ 			goto out_pm;
+ 	}
+ 
++	if (vif->type == NL80211_IFTYPE_NAN || vif->type == NL80211_IFTYPE_NAN_DATA)
++		mt7925_nan_sta_wcids_init(msta);
 +
- out:
- 	mt792x_mutex_release(dev);
+ 	mt76_connac_power_save_sched(&dev->mphy, &dev->pm);
  
-@@ -493,6 +499,15 @@ mt7925_remove_interface(struct ieee80211_hw *hw, struct ieee80211_vif *vif)
- 	struct mt792x_dev *dev = mt792x_hw_dev(hw);
- 	struct mt792x_bss_conf *mconf;
+ 	return 0;
+@@ -1306,6 +1311,45 @@ int mt7925_mac_sta_event(struct mt76_dev *mdev, struct ieee80211_vif *vif,
+ }
+ EXPORT_SYMBOL_GPL(mt7925_mac_sta_event);
  
-+	/*
-+	 * Stop before taking the dev mutex: mt7925_nan_mac_rand_work()
-+	 * acquires it too, so cancel_delayed_work_sync() would deadlock
-+	 * against a concurrently running instance if called while held.
++/* Mark per-peer NAN group key WTBLs as unallocated at station add time.
++ * Pairs with mt7925_nan_peer_wcids_free() at station remove time.
++ */
++static void mt7925_nan_sta_wcids_init(struct mt792x_sta *msta)
++{
++	msta->nan_rx_gtk_wcid.idx = MT792x_WCID_IDX_UNSET;
++	msta->nan_rx_igtk_wcid.idx = MT792x_WCID_IDX_UNSET;
++}
++
++/* Free a lazily-allocated per-peer NAN group key WTBL and reset its sentinel. */
++static void mt7925_nan_wcid_free(struct mt76_dev *mdev, struct mt76_wcid *wcid)
++{
++	u16 idx = wcid->idx;
++
++	rcu_assign_pointer(mdev->wcid[idx], NULL);
++	mt76_wcid_cleanup(mdev, wcid);
++	mt76_wcid_mask_clear(mdev->wcid_mask, idx);
++	wcid->idx = MT792x_WCID_IDX_UNSET;
++}
++
++/* Release any lazily-allocated per-peer NAN group key WTBLs for a departing
++ * station.  Called from mt7925_mac_link_sta_remove() after the primary WTBL
++ * is already freed, so the NAN-specific cleanup is clearly separated from the
++ * generic STA teardown path.
++ */
++static void mt7925_nan_peer_wcids_free(struct mt76_dev *mdev,
++				       struct ieee80211_vif *vif,
++				       struct ieee80211_sta *sta)
++{
++	struct mt792x_sta *msta = (struct mt792x_sta *)sta->drv_priv;
++
++	if (vif->type == NL80211_IFTYPE_NAN_DATA &&
++	    msta->nan_rx_gtk_wcid.idx != MT792x_WCID_IDX_UNSET)
++		mt7925_nan_wcid_free(mdev, &msta->nan_rx_gtk_wcid);
++
++	if (msta->nan_rx_igtk_wcid.idx != MT792x_WCID_IDX_UNSET)
++		mt7925_nan_wcid_free(mdev, &msta->nan_rx_igtk_wcid);
++}
++
+ static void mt7925_mac_link_sta_remove(struct mt76_dev *mdev,
+ 				       struct ieee80211_vif *vif,
+ 				       struct ieee80211_link_sta *link_sta,
+@@ -1350,6 +1394,9 @@ static void mt7925_mac_link_sta_remove(struct mt76_dev *mdev,
+ 	mt76_wcid_cleanup(mdev, wcid);
+ 	mt76_wcid_mask_clear(mdev->wcid_mask, idx);
+ 
++	if (vif->type == NL80211_IFTYPE_NAN || vif->type == NL80211_IFTYPE_NAN_DATA)
++		mt7925_nan_peer_wcids_free(mdev, vif, link_sta->sta);
++
+ 	mt76_connac_power_save_sched(&dev->mphy, &dev->pm);
+ }
+ 
+diff --git a/drivers/net/wireless/mediatek/mt76/mt792x.h b/drivers/net/wireless/mediatek/mt76/mt792x.h
+index fa28a77d12bb..707ca24193f9 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt792x.h
++++ b/drivers/net/wireless/mediatek/mt76/mt792x.h
+@@ -18,6 +18,11 @@
+ #define MT792x_WTBL_SIZE	20
+ #define MT792x_WTBL_RESERVED	(MT792x_WTBL_SIZE - 1)
+ #define MT792x_WTBL_STA		(MT792x_WTBL_RESERVED - MT792x_MAX_INTERFACES)
++/* Sentinel for a lazily-allocated wcid that has not yet been assigned a slot.
++ * U16_MAX is outside every valid alloc range and matches the 0xffff value
++ * used in mt76 DMA ring entries to mark an unused wcid field.
++ */
++#define MT792x_WCID_IDX_UNSET	U16_MAX
+ 
+ #define MT792x_CFEND_RATE_DEFAULT	0x49	/* OFDM 24M */
+ #define MT792x_CFEND_RATE_11B		0x03	/* 11B LP, 11M */
+@@ -148,6 +153,12 @@ struct mt792x_sta {
+ 
+ 	/* NAN peer schedule */
+ 	struct mt792x_sta_nan_sched nan_sched;
++
++	/* NAN per-peer group key WTBLs (allocated lazily when keys are installed)
++	 * Note: TX GTK is interface-level, see mt792x_vif->nan_tx_gtk_table
 +	 */
-+	if (vif->type == NL80211_IFTYPE_NAN ||
-+	    vif->type == NL80211_IFTYPE_NAN_DATA)
-+		mt7925_nan_stop_mac_randomization(vif);
-+
- 	mt792x_mutex_acquire(dev);
++	struct mt76_wcid nan_rx_gtk_wcid;    /* NAN_DATA peer: RX GTK WTBL (per-peer) */
++	struct mt76_wcid nan_rx_igtk_wcid;   /* NAN peer: RX IGTK/BIGTK WTBL (per-peer) */
+ };
  
- 	if (dev->nan_vif == vif)
+ DECLARE_EWMA(rssi, 10, 8);
 -- 
 2.43.0
 
