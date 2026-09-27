@@ -4,66 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 92904C9830E
-	for <linux-mediatek@archiver.kernel.org>; Sun, 27 Sep 2026 10:11:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B3111C9832F
+	for <linux-mediatek@archiver.kernel.org>; Sun, 27 Sep 2026 18:45:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=GM5K3YMcvdK6ZyeBlGyhLaLE+gMTP73HJSvrqEJgq7k=; b=M1BTh90MOjXicyQHa4EY3fcDkX
-	QdcBgKJrWUNNfuva/TEu84Ir/HaulyelN7fiBdf5CKna1V18UZrpzi8o9vgIPBsYjVOkKjNLz69gT
-	/xUNbWnPSlNqYRzVad71LamNoahb5b14CuusOtJgfQh/1Uap1324Kc7S8xMJZrasSfLeJJiMyCPUd
-	MwcU5Onu4FItaa1pXKZ+5dcNg6tdz1EumTm7ezqAxG62gk0uTT1X6KHwmeIpdRkFpSjqYUq5QTIFD
-	ea+kU9cknfnvPlas2QuJjhtG4obCmqswoObRHjpX/CKb9roxmsiB42YMlb8dr67j2jRf8DnBofFvU
-	G6+9GQQQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=XOZCUtTkrG5ksbg7GHum6vxlU/QGb8FKtSPAAJz104M=; b=wXjxr9+IcgUei4EgQYrsa8iqHP
+	myaND8gRmfAH1yO429HdwHdTGk3Ngn6D4ekHU0DcfY5WF4nZqs2optuxJStKr6pjeqaM0KGujr3n5
+	TRXqj6ChI8cvfNmSJTzYfVgDu4GxGQc29SEkY43xewI+pIEV24THB5bwVJDLyW1tIL+7DnjshaTec
+	/32H4r8m1h1ArgCSLx+SXDwVyUp+SOVz2Aw57DX8V9RzAEfi/1s2hUxW9FC/ACIYRI6FyBtfzClN0
+	zkdsrM8tuOZUUJN/Uf6UaZ9xVtKVL2dhzy7uZCeaD2vkPNvDEQzqSGUsxEZmjYOrY9kof3UY+Nbas
+	gzNJNYIA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xAlqg-0000000GCih-1BZ9;
-	Sun, 27 Sep 2026 10:11:10 +0000
-Received: from m16.mail.163.com ([220.197.31.3])
+	id 1xAtsP-0000000Gi3Z-1UYX;
+	Sun, 27 Sep 2026 18:45:29 +0000
+Received: from vps0.lunn.ch ([156.67.10.101])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xAlqc-0000000GCi9-2JtA;
-	Sun, 27 Sep 2026 10:11:08 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
-	s=s110527; h=From:To:Subject:Date:Message-Id:MIME-Version; bh=GM
-	5K3YMcvdK6ZyeBlGyhLaLE+gMTP73HJSvrqEJgq7k=; b=lf6wZSq3haUkfV3A+q
-	fbSDB1uG3Ch6cXFx0NOtpxEYeuFOEnwi+dkEE/5O1u96q7LbOVEV+zi2rdU8zU60
-	gYfiURpavW1TaYPQB51PMxli2saZPg43nxBdtvs86AlriiDjNOuDWaiJPSaFwJgA
-	24OliH9h4ivqFTH7cCpIXlkew=
-Received: from pc.localdomain (unknown [])
-	by gzga-smtp-mtada-g1-1 (Coremail) with SMTP id _____wDnn52j67hqFV5yBA--.63529S2;
-	Sun, 27 Sep 2026 18:10:44 +0800 (CST)
-From: Jiale Yao <yaojiale02@163.com>
-To: Felix Fietkau <nbd@nbd.name>,
-	Lorenzo Bianconi <lorenzo@kernel.org>,
-	Ryder Lee <ryder.lee@mediatek.com>,
-	Shayne Chen <shayne.chen@mediatek.com>,
-	Sean Wang <sean.wang@mediatek.com>,
+	id 1xAtsN-0000000Gi34-1hUp;
+	Sun, 27 Sep 2026 18:45:28 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
+	s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
+	References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
+	Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
+	bh=XOZCUtTkrG5ksbg7GHum6vxlU/QGb8FKtSPAAJz104M=; b=rCiSnUJ2wDqcA0siV9Oe9iiKYI
+	c4LnjWW9IHv9TSgwZHH3Ae9tkM50pS7OsMeJKUQY+vb2yGMBePj8zqdyOddBug+P4Ir7N+US+D0sP
+	D9AkkjIOu4Kg/c7FkJMVT9QMweed7vJhBBNc/RNgZgVO3jJycd5kSvheRasKBeMLBLYU=;
+Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
+	(envelope-from <andrew@lunn.ch>)
+	id 1xAts2-007YMh-Kf; Sun, 27 Sep 2026 20:45:06 +0200
+Date: Sun, 27 Sep 2026 20:45:06 +0200
+From: Andrew Lunn <andrew@lunn.ch>
+To: Christian Marangi <ansuelsmth@gmail.com>
+Cc: Lee Jones <lee@kernel.org>, Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Andrew Lunn <andrew+netdev@lunn.ch>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	Vladimir Oltean <olteanv@gmail.com>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-wireless@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
+	"Chester A. Unal" <chester.a.unal@arinc9.com>,
+	Daniel Golle <daniel@makrotopia.org>,
+	Heiner Kallweit <hkallweit1@gmail.com>,
+	Russell King <linux@armlinux.org.uk>,
+	Simon Horman <horms@kernel.org>,
 	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Cc: Jiale Yao <yaojiale02@163.com>,
-	stable@vger.kernel.org
-Subject: [PATCH] wifi: mt76: mt7615: cancel reset work during unregister
-Date: Sun, 27 Sep 2026 18:10:40 +0800
-Message-Id: <20260927101041.957362-1-yaojiale02@163.com>
-X-Mailer: git-send-email 2.34.1
+	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org,
+	mfd@lists.linux.dev, devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org
+Subject: Re: [PATCH net-next v23 5/9] net: phy: Add Airoha AN8855 Internal
+ Switch Gigabit PHY
+Message-ID: <544bfdda-abdb-4fb6-a4c1-201dd8899703@lunn.ch>
+References: <20260925182435.21207-1-ansuelsmth@gmail.com>
+ <20260925182435.21207-6-ansuelsmth@gmail.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-CM-TRANSID: _____wDnn52j67hqFV5yBA--.63529S2
-X-Coremail-Antispam: 1Uf129KBjvJXoWxJrW3XFWkKw4kKF4fZrWkZwb_yoW8GFWDpa
-	y5K3y5u340gF4DKw4UZa1xAa45WanagrW3Cry8Xw4UW395AryFyrW0vFyjy340ya1kCa4Y
-	yrWUtry3ua4qvaDanT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
-	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x0piPCztUUUUU=
-X-CM-SenderInfo: x1dryxhdohiji6rwjhhfrp/xtbCzQXsJ2q466WNDQAA3f
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20260925182435.21207-6-ansuelsmth@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260927_031107_061714_161ECAC5 
-X-CRM114-Status: UNSURE (   7.95  )
+X-CRM114-CacheID: sfid-20260927_114527_445931_3EB038C1 
+X-CRM114-Status: UNSURE (   9.91  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -79,37 +86,15 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The MCU error interrupt handler queues reset_work on the device workqueue.
-Device removal can reach mt76_unregister_device() while that work is still
-pending, since the workqueue is not destroyed until mt76_free_device().
+On Fri, Sep 25, 2026 at 08:24:27PM +0200, Christian Marangi wrote:
+> Add support for Airoha AN8855 Internal Switch Gigabit PHY.
+> 
+> This is a simple PHY driver to configure and calibrate the PHY for the
+> AN8855 Switch with the use of NVMEM cells.
+> 
+> Signed-off-by: Christian Marangi <ansuelsmth@gmail.com>
 
-If reset_work runs in this window, it operates on an unregistered hw and
-can requeue mac_work after ieee80211_unregister_hw() has torn the device
-down. Cancel it before unregistering the device so it cannot outlive the
-registered hw.
+Reviewed-by: Andrew Lunn <andrew@lunn.ch>
 
-Fixes: 61c4fa721968 ("mt76: mt7615: implement hardware reset support")
-Cc: stable@vger.kernel.org
-Signed-off-by: Jiale Yao <yaojiale02@163.com>
----
- drivers/net/wireless/mediatek/mt76/mt7615/pci_init.c | 1 +
- 1 file changed, 1 insertion(+)
-
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/pci_init.c b/drivers/net/wireless/mediatek/mt76/mt7615/pci_init.c
-index a9178e077fd6..7d8580720cd8 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7615/pci_init.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7615/pci_init.c
-@@ -116,6 +116,7 @@ void mt7615_unregister_device(struct mt7615_dev *dev)
- 	mcu_running = mt7615_wait_for_mcu_init(dev);
- 
- 	mt7615_unregister_ext_phy(dev);
-+	cancel_work_sync(&dev->reset_work);
- 	mt76_unregister_device(&dev->mt76);
- 	if (mcu_running)
- 		mt7615_mcu_exit(dev);
-
-base-commit: 93f51579e7df248780214094418f205253383cc5
--- 
-2.34.1
-
+    Andrew
 
