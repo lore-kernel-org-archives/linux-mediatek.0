@@ -4,60 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 86AE2C98338
-	for <linux-mediatek@archiver.kernel.org>; Sun, 27 Sep 2026 21:09:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 968F8C98338
+	for <linux-mediatek@archiver.kernel.org>; Sun, 27 Sep 2026 21:10:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=UkhZ2kma8HhtbeCDUYXPoOTXgHUsrl8wufpj1Cp5KIo=; b=jDZM/ZVncqstoV0kZqgHzBMd53
-	i1REIMwxPKIPLrbBKbp+8kQYg5QDjhX/bTi1tkte4cDto3vWHRArVXazRHc6aPeCIVk9EDWI+sybd
-	K4bJETMmInVqUAk8EUDJtVUOv544epJ3v6Avff2DHIbrfBluNgMCCwvQjylWY3j0JKdTMbVzVAoD8
-	5+01SFCfU44DrZiCfMItX2KLjFAYfHpRjctcxv5MWFoISHNwtSLFq2ENfhevT33RZEAGZAr5gfgcb
-	MyuqRIkS4esd26sJYqDJBTweu4dRIWjhRBSqqZPP1FxVBsNZhGeSzJ7gLU30APHSFADnl3LXyjpDO
-	en9bla/A==;
+	bh=51tKyP36tDuGpcEaNaaGVAIec2B8UojDAEaCdV7fQHs=; b=1plKaGEUqBhHoZvYSm/twEQOVX
+	Xwj6S+s3TGkXLSRFsQYSPLThOXZJiJ6hea/YcFT8KyWuvUCBaAYt7OYkU2UWfOlRDvLtdNmEy+vc6
+	oRSq2t6Aj3ttJPvwAbIH+CijNzgi71vU7XTUSMhp0NFK7FnPIyM0C5OzFrVVW6Ya4K43gSWbcIOcl
+	Ip+vQa0/RFsdZGhoK/Y9MDXk702Ekp4UoP4snlqFD63eR6YL58yA9IUoQFwLTHmIlfzHweGz5fhC2
+	M89I80qcMY47cnBFdbXQqfj4V/7dxiN1v4oK48dEMUo0DgZyKIMm2P8NeV4K2xz4PyP/oS2AZG2ue
+	QLBfoC0Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xAw82-0000000GrzT-25iF;
-	Sun, 27 Sep 2026 21:09:46 +0000
-Received: from mail-ua2-f12.google.com ([74.125.226.204])
+	id 1xAw8F-0000000Gs29-2wVB;
+	Sun, 27 Sep 2026 21:09:59 +0000
+Received: from mail-oa2-f35.google.com ([74.125.231.99])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xAw80-0000000Grz8-13kf
+	id 1xAw8D-0000000Gs1p-2RKu
 	for linux-mediatek@lists.infradead.org;
-	Sun, 27 Sep 2026 21:09:45 +0000
-Received: by mail-ua2-f12.google.com with SMTP id a1e0cc1a2514c-97e7c8c8602so1355499241.0
-        for <linux-mediatek@lists.infradead.org>; Sun, 27 Sep 2026 14:09:43 -0700 (PDT)
+	Sun, 27 Sep 2026 21:09:58 +0000
+Received: by mail-oa2-f35.google.com with SMTP id 586e51a60fabf-491c13d63d9so1740099fac.0
+        for <linux-mediatek@lists.infradead.org>; Sun, 27 Sep 2026 14:09:57 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1790543382; x=1791148182;
+        d=1e100.net; s=20260707; t=1790543397; x=1791148197;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
          :to:cc:subject:date:message-id:reply-to:content-type;
-        bh=UkhZ2kma8HhtbeCDUYXPoOTXgHUsrl8wufpj1Cp5KIo=;
-        b=bkik/a6hxS1LVe2+9lo4RbNEl8XNnWps0p8QRTB9fSrJig0JHJxJPJkp/Y1EiyEHPi
-         ZzVbDznrbwpNpxam5tM20mpHh7hE7+bZ2d8YGxPG+YFJ2cYMMcnkAoMazV8u4KpiIyDP
-         +wXdXGqbnUsdSqJVOJKpD+8IW5HaPz+yH7DTksbfthx66+y2c2Xn8SOvI71zEi9dAgn3
-         qHhnnMer5NqYDfg8VWg8Wmxv7lZNJRXXvBPnK1QxwMcLtg4/9z9DcZ5fVydLA0HWT9ws
-         gKiiyQA1YT3LeNSWs4w1dwkNR6kIkdT+9FJFDQ9RktctVpTnLmWPinSG8uBKowcSInA8
-         Dg8Q==
-X-Forwarded-Encrypted: i=1; AKwUvBzO9XGa1yGEcyqWL+48RgcWr+VJOfZEBoXlI7FjfuUBhjtRTXDMD2AIzqpZ1mBRT8cqqUkNDBGkOurwBNfHmg==@lists.infradead.org
-X-Gm-Message-State: AFq9FYJqmkNYZXgZdf++QNx6TjxYVSfFVarxBOk6i1LTPaU7mzctdypH
-	vl4ofjJNA6reSWp6IOQorYAv/NIuXvNJhcvmZ07m2yIFKoQ/XKZ+gHGknESvvbni
-X-Gm-Gg: AYBFou3ZX0TzWeUvGDbnnM/zWKBKQdSCfuCbqpz44Kx602Nd/QhiSexA76NVfxYNaFl
-	gqZc1MhGGMgz0LRZdEVI08A0/mEnz3TvZkZVf4yv3aMmZZB8d+1jtdjKK0UIk67DOq6M/0aRkB5
-	4DPDB+qQR/T4XvpPF39w6hesGXWv2UrNxKaFO5gSGQrqlCD8hY80bqwXmTnqSswHfRBTxgUJiJq
-	H/A/f+7fcm1S1vbVIyoEIVrRmB7++IvgiTYUDBy3x0+wdpP9yMsS9n23TDgK52aBcgcml2jnuE6
-	ERsAIc+X77gBYWx4o1K4AMJ87k+3wR8bqMVMMKiGx0QHmhc2C5uZCrFwuoffU8fLJZCkaSq9VDW
-	lPBa06M1qVtXW/CRxTIr93t4RmEzaxZZb6rgAmEO49JqcpQN8f9eJVNWbxgEdKwHHhYGAJgo5WV
-	l8EelqS8l2cX0X/gxC+zQmxIAK083iDeFzifyjYGr7WjR8DeEdMJqNnGXyaKotygkfa1XRSMzIP
-	nXiK0FOdZRApa99CrrYSYG5joGpVyl4+wUQEofnFXVn0Qn0BGapvIBiYTx+jfLtjHRm0A==
-X-Received: by 2002:a05:690c:c4fa:b0:8a8:7688:2d99 with SMTP id 00721157ae682-8a876885069mr40362257b3.26.1790543024585;
-        Sun, 27 Sep 2026 14:03:44 -0700 (PDT)
+        bh=51tKyP36tDuGpcEaNaaGVAIec2B8UojDAEaCdV7fQHs=;
+        b=OUAZgOHi2O7MIDQtKcMpC6Yc6kTBKMF8Uja38/E+Gn+meRXc/H3CiGsfRC2JrBumdq
+         gLlm6m3hH1Yr18KT0O0TdOJiXuxICiNzj3wsw/rgZdIkabJaCy+nrIcNQAOCie3KqIbC
+         ZKcuL6OEIpzdG9TR/Ldmnogx5ClE/s1O4TvPCggO8t6qtZostPTL9q2bbwnkTNrIu0ig
+         Mf0UyhcySuSnYdNNdc2zLWSvoL3Vkr2o10Far4yXmZqwmKCQfK+5ocKmbTf6R7gRsIzl
+         8W9leQH7OqAdQMc8vEydCNwDFVCbl5y0p/fadfBGfwgU3K2SPWZ4VKhlpbmUmjYd7kFg
+         wDfQ==
+X-Forwarded-Encrypted: i=1; AKwUvBxd46nw9Wi1mRsFoy5H77LlbmPfNJPsvbcSVCCaDmwQ2QEZox/pTHAuoXFyu6izcyZ1G8bGa7cYDWAF/u8KVw==@lists.infradead.org
+X-Gm-Message-State: AFuF++nsMZPRlMNhFTUK4wC1pDSRlcvoN4uYcR6kghybeLUkbVRW5J3d
+	FEyBtACNwX67t/fYF+iPuZWAwCfuuBv5XTakg5mqvDSgqVlJ10naxcF+0NkTURAq
+X-Gm-Gg: AYBFou2I8PleZmYuEZAyC9IJ+R3FH9gSiyebCm7l6v6+GY7w9qFo8sGebnMBDZnbLnw
+	3g1WNVYfG0oVwFzmAIhMQpDHDRGU3chSY4ymc30eiy2inK8ezeCxAHoMztRw/NyDYZZzowZAEm7
+	H9UWXNhgjuVQZicynqvwLzdqOexugGVGJosrGlGpTnTvgpvzlTWwchVGeOKfZsmPv3ubTgvNlHa
+	Qp33gBlmoJ0pWuSn3hcxMWGt7yyyp9HU5z1MDsJ4ZIhw0niYw/lfoSe6yKKeYSh1XB20UYixpK3
+	CO1ZAvE9DaNaCFQTQ57I0PIzCawpV0gtMPaX+aAWyPH8q7WDcRKrFrnNitK9eC5HuxCepaR2936
+	XqhpwRI7MbxNxwceDHgi+T+C0DrGzizLIxc7WkZXz90zHpVf9oC68ssk8luGSLqabKI/J8tarzF
+	RVxApQomD/rgW0lxxyWi74cqIJ/dudyfV6bDLIvdT2n+Z8XhjivQMZ+GYAXRCZe3XmPsgtW1kzf
+	KzpoqfhrdRcK9KiGf787mJsjTzAxLZg9ATngeV2frFAjTy+yxwupCClTwcrjbrTKgeayw==
+X-Received: by 2002:a05:690c:8f:b0:884:c7c1:31c3 with SMTP id 00721157ae682-8a64bb0003cmr58968007b3.10.1790543067107;
+        Sun, 27 Sep 2026 14:04:27 -0700 (PDT)
 Received: from sean-HP-EliteBook-830-G6.attlocal.net ([2600:1702:5083:7610:5dd7:b9c7:1078:5394])
-        by smtp.gmail.com with ESMTPSA id 00721157ae682-8a86103149dsm35389017b3.40.2026.09.27.14.03.42
+        by smtp.gmail.com with ESMTPSA id 00721157ae682-8a86103149dsm35389017b3.40.2026.09.27.14.04.24
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 27 Sep 2026 14:03:44 -0700 (PDT)
+        Sun, 27 Sep 2026 14:04:25 -0700 (PDT)
 From: Sean Wang <sean.wang@kernel.org>
 To: nbd@nbd.name
 Cc: linux-wireless@vger.kernel.org,
@@ -65,19 +65,19 @@ Cc: linux-wireless@vger.kernel.org,
 	yu-ching.liu@mediatek.com,
 	jenhao.yang@mediatek.com,
 	posh.sun@mediatek.com,
-	Chengwei Yu <chengwei.yu@mediatek.com>,
+	Jacobs Wu <jacobs.wu@mediatek.com>,
 	Sean Wang <sean.wang@mediatek.com>
-Subject: [PATCH 08/23] wifi: mt76: mt7925: add NDC-aware TX GTK table for NAN_DATA
-Date: Sun, 27 Sep 2026 16:02:50 -0500
-Message-ID: <20260927210306.737669-9-sean.wang@kernel.org>
+Subject: [PATCH 20/23] wifi: mt76: mt7925: disable only the RX NAPI instances that exist
+Date: Sun, 27 Sep 2026 16:03:02 -0500
+Message-ID: <20260927210306.737669-21-sean.wang@kernel.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260927210306.737669-1-sean.wang@kernel.org>
 References: <20260927210306.737669-1-sean.wang@kernel.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260927_140944_331110_3B8C2293 
-X-CRM114-Status: GOOD (  22.84  )
+X-CRM114-CacheID: sfid-20260927_140957_650164_9D5475EE 
+X-CRM114-Status: GOOD (  15.06  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,227 +92,64 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Chengwei Yu <chengwei.yu@mediatek.com>
+From: Jacobs Wu <jacobs.wu@mediatek.com>
 
-NAN TX GTK is NDC-scoped: every station in the same NAN Data Cluster
-shares one key, and a single NAN_DATA vif can join multiple NDCs
-concurrently. Add mt792x_nan.nan_tx_gtk_table[] (up to
-MT792X_MAX_NAN_NDC = 8 RCU on-demand entries, one per NDC) and route
-interface-directed NAN_DATA multicast through the matching WTBL in
-mt792x_tx(), falling back to the interface WTBL when no entry exists.
+mt7925e_mac_reset() picks the RX NAPI instances to disable from the
+interrupt masks, but the instances themselves are created per allocated
+RX queue by mt76_dma_init(). On mt7925 the two do not agree: the tx-done
+ring is only described by the mt7928 DMA layout, so q_rx[MT_RXQ_MCU_WA]
+is never allocated and never gets a NAPI, while mt7925_irq_map still
+carries rx.wm2_complete_mask.
 
-Teardown lives in mt7925_remove_interface(), not the shared
-mt792x_remove_interface(): NAN_DATA vifs are mt7925-only so cleanup
-in the shared path would never run.
+A MAC reset therefore calls napi_disable() on an instance whose
+net_device pointer is NULL. The fault happens inside napi_disable()
+while the reset work holds the RTNL, so networking goes down with it and
+the machine is left answering ping with no usable userspace; only a
+power cycle recovers it. Repeated NAN data path setup and teardown hits
+this reliably on a busy channel, where MAC resets are frequent.
 
-NOTE: NDC selection from skb context is not yet implemented; the
-lookup always picks the first installed entry until mt7925_nan_set_key()
-populates the table.
+Iterate the RX queues instead, the same way the restore path further
+down re-enables them, so only instances that were actually added are
+touched.
 
+Fixes: c948b5da6bbe ("wifi: mt76: mt7925: add Mediatek Wi-Fi7 driver for mt7925 chips")
 Co-developed-by: Sean Wang <sean.wang@mediatek.com>
 Signed-off-by: Sean Wang <sean.wang@mediatek.com>
-Signed-off-by: Chengwei Yu <chengwei.yu@mediatek.com>
+Signed-off-by: Jacobs Wu <jacobs.wu@mediatek.com>
 ---
- .../net/wireless/mediatek/mt76/mt7925/main.c  | 36 +++++++++++
- drivers/net/wireless/mediatek/mt76/mt792x.h   | 64 ++++++++++++++++++-
- .../net/wireless/mediatek/mt76/mt792x_core.c  | 27 ++++++--
- 3 files changed, 122 insertions(+), 5 deletions(-)
+ .../wireless/mediatek/mt76/mt7925/pci_mac.c   | 19 +++++++++++++------
+ 1 file changed, 13 insertions(+), 6 deletions(-)
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/main.c b/drivers/net/wireless/mediatek/mt76/mt7925/main.c
-index 2d3bf7d806a7..1b253989f43b 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7925/main.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7925/main.c
-@@ -486,12 +486,22 @@ mt7925_add_interface(struct ieee80211_hw *hw, struct ieee80211_vif *vif)
- 		INIT_DELAYED_WORK(&mvif->nan.mac_rand_work,
- 				  mt7925_nan_mac_rand_work);
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/pci_mac.c b/drivers/net/wireless/mediatek/mt76/mt7925/pci_mac.c
+index 6e9daf96da88..32463ef30ebb 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7925/pci_mac.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7925/pci_mac.c
+@@ -127,12 +127,19 @@ int mt7925e_mac_reset(struct mt792x_dev *dev)
+ 	mt76_txq_schedule_all(&dev->mphy);
  
-+	if (vif->type == NL80211_IFTYPE_NAN_DATA) {
-+		/* nan_tx_gtk_table[] slots are NULL from mac80211's kzalloc of
-+		 * drv_priv; entries are allocated on demand by set_key when a
-+		 * TX GTK is installed.
-+		 */
-+		spin_lock_init(&mvif->nan.nan_tx_gtk_lock);
-+	}
- out:
- 	mt792x_mutex_release(dev);
- 
- 	return ret;
- }
- 
-+static void mt7925_nan_gtk_table_cleanup(struct mt792x_dev *dev,
-+					 struct mt792x_vif *mvif);
+ 	mt76_worker_disable(&dev->mt76.tx_worker);
+-	if (irq_map->rx.data_complete_mask)
+-		napi_disable(&dev->mt76.napi[MT_RXQ_MAIN]);
+-	if (irq_map->rx.wm_complete_mask)
+-		napi_disable(&dev->mt76.napi[MT_RXQ_MCU]);
+-	if (irq_map->rx.wm2_complete_mask)
+-		napi_disable(&dev->mt76.napi[MT_RXQ_MCU_WA]);
 +
- static void
- mt7925_remove_interface(struct ieee80211_hw *hw, struct ieee80211_vif *vif)
- {
-@@ -516,6 +526,9 @@ mt7925_remove_interface(struct ieee80211_hw *hw, struct ieee80211_vif *vif)
- 	mconf = mt792x_link_conf_to_mconf(&vif->bss_conf);
- 	mt792x_mac_link_bss_remove(dev, mconf, &mvif->sta.deflink);
- 
-+	if (vif->type == NL80211_IFTYPE_NAN_DATA)
-+		mt7925_nan_gtk_table_cleanup(dev, mvif);
-+
- 	mt792x_mutex_release(dev);
- }
- 
-@@ -1331,6 +1344,29 @@ static void mt7925_nan_wcid_free(struct mt76_dev *mdev, struct mt76_wcid *wcid)
- 	wcid->idx = MT792x_WCID_IDX_UNSET;
- }
- 
-+/* Free all TX GTK WTBL entries for a NAN_DATA vif on interface teardown.
-+ * Caller must hold dev->mt76.mutex.
-+ */
-+static void mt7925_nan_gtk_table_cleanup(struct mt792x_dev *dev,
-+					 struct mt792x_vif *mvif)
-+{
-+	int i;
-+
-+	for (i = 0; i < MT792X_MAX_NAN_NDC; i++) {
-+		struct mt792x_nan_gtk_entry *e;
-+
-+		e = rcu_dereference_protected(mvif->nan.nan_tx_gtk_table[i],
-+					      lockdep_is_held(&dev->mt76.mutex));
-+		if (!e)
-+			continue;
-+		rcu_assign_pointer(mvif->nan.nan_tx_gtk_table[i], NULL);
-+		rcu_assign_pointer(dev->mt76.wcid[e->wcid.idx], NULL);
-+		mt76_wcid_cleanup(&dev->mt76, &e->wcid);
-+		mt76_wcid_mask_clear(dev->mt76.wcid_mask, e->wcid.idx);
-+		kfree(e);
-+	}
-+}
-+
- /* Release any lazily-allocated per-peer NAN group key WTBLs for a departing
-  * station.  Called from mt7925_mac_link_sta_remove() after the primary WTBL
-  * is already freed, so the NAN-specific cleanup is clearly separated from the
-diff --git a/drivers/net/wireless/mediatek/mt76/mt792x.h b/drivers/net/wireless/mediatek/mt76/mt792x.h
-index 707ca24193f9..342733e1001c 100644
---- a/drivers/net/wireless/mediatek/mt76/mt792x.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt792x.h
-@@ -155,7 +155,7 @@ struct mt792x_sta {
- 	struct mt792x_sta_nan_sched nan_sched;
- 
- 	/* NAN per-peer group key WTBLs (allocated lazily when keys are installed)
--	 * Note: TX GTK is interface-level, see mt792x_vif->nan_tx_gtk_table
-+	 * Note: TX GTK is interface-level, see mvif->nan.nan_tx_gtk_table
- 	 */
- 	struct mt76_wcid nan_rx_gtk_wcid;    /* NAN_DATA peer: RX GTK WTBL (per-peer) */
- 	struct mt76_wcid nan_rx_igtk_wcid;   /* NAN peer: RX IGTK/BIGTK WTBL (per-peer) */
-@@ -183,6 +183,60 @@ struct mt792x_nan_conf {
- 	bool enable_dw_notification;
- };
- 
-+/*
-+ * NAN WTBL layout (mt7925)
-+ *
-+ * TX scope -- determined by who shares the encrypting key:
-+ *
-+ *   mvif->sta.deflink.wcid          [NAN vif, interface-level]
-+ *     TX IGTK/BIGTK: multicast management TX.  Shared by all NMI peers;
-+ *     installed via the normal hardware key path (set_key fallback).
-+ *
-+ *   mvif->sta.deflink.wcid          [NAN_DATA vif, interface-level]
-+ *     TX GTK fallback when nan.nan_tx_gtk_table[] has no entry for the NDC.
-+ *
-+ *   mvif->nan.nan_tx_gtk_table[i]->wcid [NAN_DATA vif, NDC-level, on-demand]
-+ *     TX GTK: multicast data TX.  All peers in the same NAN Data Cluster
-+ *     share one TX GTK; different NDCs use independent keys.  Each slot
-+ *     is NULL until set_key installs a key for that NDC (up to
-+ *     MT792X_MAX_NAN_NDC concurrent NDCs).
-+ *     NOTE: currently returns -EOPNOTSUPP -- mac80211 does not pass an
-+ *     NDC ID at set_key time, so the correct table slot cannot be
-+ *     selected.
-+ *
-+ * RX scope -- always per-peer because each sender has its own key:
-+ *
-+ *   msta->deflink.wcid              [NMI or NDI peer, peer-level]
-+ *     NM-TK (NMI unicast) or ND-TK (NDI unicast).
-+ *
-+ *   msta->nan_rx_gtk_wcid           [NDI peer under NAN_DATA vif, peer-level]
-+ *     RX GTK: multicast data RX.  Keyidx 1-2; allocated lazily in set_key.
-+ *
-+ *   msta->nan_rx_igtk_wcid          [NMI peer under NAN vif, peer-level]
-+ *     RX IGTK/BIGTK: multicast management RX.  Keyidx 4-7; allocated
-+ *     lazily in set_key.
-+ *
-+ * Example -- 2 peers in different NDCs, full security (design intent):
-+ *   1  NAN vif WTBL                 TX IGTK/BIGTK
-+ *   1  NAN_DATA vif WTBL            TX GTK fallback
-+ *   2  NMI peer WTBLs               NM-TK (one per peer)
-+ *   2  NDI peer WTBLs               ND-TK (one per peer)
-+ *   2  TX GTK WTBLs                 nan.nan_tx_gtk_table[], one per NDC
-+ *   2  RX GTK WTBLs                 nan_rx_gtk_wcid, one per NDI peer
-+ *   2  RX IGTK/BIGTK WTBLs          nan_rx_igtk_wcid, one per NMI peer
-+ *  = 12 WTBLs total
-+ *
-+ * Maximum concurrent NDCs is based on NAN_MAX_CONN_CFG (8 peers).
-+ */
-+#define MT792X_MAX_NAN_NDC	8
-+
-+/* TX GTK WTBL for one NAN Data Cluster; allocated only when the key is installed */
-+struct mt792x_nan_gtk_entry {
-+	u8 ndc_id[ETH_ALEN];
-+	struct mt76_wcid wcid;
-+	u8 key_idx;
-+};
-+
- struct mt792x_nan {
- 	struct mt792x_nan_conf conf;
- 
-@@ -208,6 +262,14 @@ struct mt792x_nan {
- 	 */
- 	struct delayed_work mac_rand_work;
- 	u32 mac_rand_period_sec;
-+
-+	/* NAN_DATA TX GTK table (mt7925 only): one entry per NAN Data Cluster,
-+	 * allocated on demand when set_key installs a TX GTK for that NDC.
-+	 * Protected by nan_tx_gtk_lock; slots are NULL until populated.
++	/*
++	 * Disable the RX NAPI instances that were actually created. They are
++	 * added per allocated RX queue by mt76_dma_init(), while the interrupt
++	 * masks describe what the hardware is able to raise - on mt7925 the
++	 * tx-done queue is never allocated (only mt7928 defines that ring), so
++	 * its NAPI has no net_device and napi_disable() faults on it while
++	 * holding the RTNL, wedging the whole machine. Iterate the queues, the
++	 * same way the restore path below re-enables them.
 +	 */
-+	struct mt792x_nan_gtk_entry __rcu *nan_tx_gtk_table[MT792X_MAX_NAN_NDC];
-+	/* Protects nan_tx_gtk_table. */
-+	spinlock_t nan_tx_gtk_lock;
- };
- 
- struct mt792x_vif {
-diff --git a/drivers/net/wireless/mediatek/mt76/mt792x_core.c b/drivers/net/wireless/mediatek/mt76/mt792x_core.c
-index 0ad33f74c228..c8e42447f43a 100644
---- a/drivers/net/wireless/mediatek/mt76/mt792x_core.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt792x_core.c
-@@ -187,11 +187,30 @@ void mt792x_tx(struct ieee80211_hw *hw, struct ieee80211_tx_control *control,
- 		wcid = &mlink->wcid;
- 	}
- 
-+	/* NAN_DATA multicast: route through the NDC-specific TX GTK WTBL.
-+	 * Full WTBL layout is documented in mt792x.h.
-+	 * NOTE: NDC selection is not yet implemented; always falls back to
-+	 * the interface WTBL until set_key populates nan_tx_gtk_table[].
-+	 */
- 	if (vif && !control->sta) {
--		struct mt792x_vif *mvif;
--
--		mvif = (struct mt792x_vif *)vif->drv_priv;
--		wcid = &mvif->sta.deflink.wcid;
-+		struct mt792x_vif *mvif = (struct mt792x_vif *)vif->drv_priv;
++	mt76_for_each_q_rx(&dev->mt76, i)
++		napi_disable(&dev->mt76.napi[i]);
 +
-+		if (vif->type == NL80211_IFTYPE_NAN_DATA) {
-+			struct mt792x_nan_gtk_entry *entry = NULL;
-+			int i;
-+
-+			rcu_read_lock();
-+			for (i = 0; i < MT792X_MAX_NAN_NDC; i++) {
-+				entry = rcu_dereference(mvif->nan.nan_tx_gtk_table[i]);
-+				if (entry)
-+					break;
-+			}
-+			rcu_read_unlock();
-+
-+			wcid = entry ? &entry->wcid : &mvif->sta.deflink.wcid;
-+		} else {
-+			wcid = &mvif->sta.deflink.wcid;
-+		}
- 	}
+ 	if (irq_map->tx.all_complete_mask)
+ 		napi_disable(&dev->mt76.tx_napi);
  
- 	if (vif && control->sta && ieee80211_vif_is_mld(vif) &&
 -- 
 2.43.0
 
