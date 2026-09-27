@@ -4,35 +4,35 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3583FC9830E
-	for <linux-mediatek@archiver.kernel.org>; Sun, 27 Sep 2026 23:51:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6560CC9830E
+	for <linux-mediatek@archiver.kernel.org>; Sun, 27 Sep 2026 23:51:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To:Cc:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=OflXaFBWxwBd06gPa8AR9/ryI/v+RvG8l+B2MeCj0RQ=; b=lfwy3XdgaXtMWJvLPVJ9rnfiWD
-	mWs6ThW4LmXj/4d8CEQN2CCZI3wBzC7UGMAtvJxwOBghUz1ZRhYYra7Bt/U4/F7FDZp8BBOFFLzl5
-	3DcImXWr/v7jPgCPX/PGc+oxQIDkUpPPdrI43PI/vu3xJu/mrZFmO0mcr9S3EBGcTszmm2B0tkWJW
-	2O9xq0bJ7K0jzFwMhf6HSmvMfYhbypk0Zq/lbbF0ajanFwHrUGz55pecrZV8blnzf4Ox10ymgf5ra
-	OQR6ziMYJw5EA70Wu8FP6AABDVCbLsefO47TgjNajl6blfytGYBDOeSHtOz9XmJ79yyu+ezj0T3vp
-	yQAz6dbA==;
+	bh=avqBsikZCf+7b5iEUfOAbHsGtezMWtniMqtW2atMLDo=; b=A7UVZOgZedGvzAiSI9Zeeiy/8A
+	fbKuHwWUt8+HoDlCBBW4AlAQQ+ZgYGlg+5FOAw7IpT0akV94dYXgD7M3ebvvDuWE/xzbdiRZ+y7aE
+	MjvFBDItATfwiq2UmhiWvcnHATkvtqtpfN01fqTA0sK2q7hxNhf74WvW/8PdjNzhBs3QkKAHbtOYO
+	vrWjRnU/50V7H5yPBe2oh0/BDBFE1ao32mCnTXLfA15s9ZznFVzeUydZsZxFJaqeLYsH+ufXnfLXE
+	vN3cbfJOeXX47ugeBN6TXgIg0m17GNZ8gHQDvy5Qeo9Em/ImRcxzGXJsL+LMMSZAx/KP19KjyVoR/
+	3W0sQ3rg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xAye5-0000000H1aO-0WkK;
-	Sun, 27 Sep 2026 23:51:01 +0000
+	id 1xAyeC-0000000H1hL-1dXp;
+	Sun, 27 Sep 2026 23:51:08 +0000
 Received: from pidgin.makrotopia.org ([2a07:2ec0:3002::65])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xAydu-0000000H1OQ-0r6O;
-	Sun, 27 Sep 2026 23:50:51 +0000
+	id 1xAye2-0000000H1Wg-1tGR;
+	Sun, 27 Sep 2026 23:51:00 +0000
 Received: from local
 	by pidgin.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256:X25519MLKEM768)
 	 (Exim 4.100)
 	(envelope-from <daniel@makrotopia.org>)
-	id 1xAydp-000000000r0-12cY;
-	Sun, 27 Sep 2026 23:50:45 +0000
-Date: Mon, 28 Sep 2026 00:50:42 +0100
+	id 1xAydx-000000000rp-2YuH;
+	Sun, 27 Sep 2026 23:50:53 +0000
+Date: Mon, 28 Sep 2026 00:50:50 +0100
 From: Daniel Golle <daniel@makrotopia.org>
 To: Andrzej Hajda <andrzej.hajda@intel.com>,
 	Neil Armstrong <neil.armstrong@linaro.org>,
@@ -53,17 +53,17 @@ To: Andrzej Hajda <andrzej.hajda@intel.com>,
 	Chen-Yu Tsai <wenst@chromium.org>, dri-devel@lists.freedesktop.org,
 	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
-Subject: [PATCH v8 09/14] drm/bridge: it6505: guard against zero channel
- count in audio infoframe
-Message-ID: <f6dec78d013b5fbda56fdcc40f1d2cff96c219ba.1790552614.git.daniel@makrotopia.org>
+Subject: [PATCH v8 10/14] drm/bridge: it6505: hold endpoint OF node reference
+ while parsing it
+Message-ID: <97c7e1c392178d0d386bcdb70813a0cd162fbefe.1790552614.git.daniel@makrotopia.org>
 References: <cover.1790552614.git.daniel@makrotopia.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 In-Reply-To: <cover.1790552614.git.daniel@makrotopia.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260927_165050_248287_C5A8A788 
-X-CRM114-Status: GOOD (  12.44  )
+X-CRM114-CacheID: sfid-20260927_165058_503227_88A38FFD 
+X-CRM114-Status: GOOD (  11.59  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,18 +78,13 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-it6505->audio.channel_count stays 0 until link training or a valid
-hw_params call has run, but it6505_enable_audio() can be reached
-before that from the audio-FIFO-error IRQ, making
-it6505_enable_audio_infoframe() index the 8-entry audio_info_ca[]
-table with -1. Bail out while the channel count is not yet known.
+it6505_parse_dt() drops the reference to each endpoint node right
+after looking it up and then keeps reading its properties, racing
+with the node being freed under CONFIG_OF_DYNAMIC. Put the node only
+once parsing is done.
 
-Also fix the debug print on the invalid-channel-count path, which
-logged the previously cached count instead of the rejected one.
-
-Fixes: b5c84a9edcd4 ("drm/bridge: add it6505 driver")
+Fixes: 380d920b582d ("drm/bridge: add it6505 driver to read data-lanes and link-frequencies from dt")
 Signed-off-by: Daniel Golle <daniel@makrotopia.org>
-Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
 ---
 v8: no changes
 
@@ -97,38 +92,46 @@ v7: no changes
 
 v6: no changes
 
-v5: no changes
-
-v4: no changes, collected Chen-Yu Tsai's Reviewed-by
-
-v3: new patch
+v5: new patch
 ---
- drivers/gpu/drm/bridge/ite-it6505.c | 5 ++++-
- 1 file changed, 4 insertions(+), 1 deletion(-)
+ drivers/gpu/drm/bridge/ite-it6505.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/drivers/gpu/drm/bridge/ite-it6505.c b/drivers/gpu/drm/bridge/ite-it6505.c
-index 0d21014324167..3f17024116e14 100644
+index 3f17024116e14..848e9a650b9ff 100644
 --- a/drivers/gpu/drm/bridge/ite-it6505.c
 +++ b/drivers/gpu/drm/bridge/ite-it6505.c
-@@ -1577,6 +1577,9 @@ static void it6505_enable_audio_infoframe(struct it6505 *it6505)
- 	struct device *dev = it6505->dev;
- 	u8 audio_info_ca[] = { 0x00, 0x00, 0x01, 0x03, 0x07, 0x0B, 0x0F, 0x1F };
- 
-+	if (!it6505->audio.channel_count)
-+		return;
-+
- 	DRM_DEV_DEBUG_DRIVER(dev, "infoframe channel_allocation:0x%02x",
- 			     audio_info_ca[it6505->audio.channel_count - 1]);
- 
-@@ -3012,7 +3015,7 @@ static int __maybe_unused it6505_audio_setup_hw_params(struct it6505 *it6505,
- 
- 	if (params->cea.channels <= 1 || params->cea.channels > 8) {
- 		DRM_DEV_DEBUG_DRIVER(dev, "channel number: %d not support",
--				     it6505->audio.channel_count);
-+				     params->cea.channels);
- 		return -EINVAL;
+@@ -3369,7 +3369,6 @@ static void it6505_parse_dt(struct it6505 *it6505)
  	}
  
+ 	ep = of_graph_get_endpoint_by_regs(np, 1, 0);
+-	of_node_put(ep);
+ 
+ 	if (ep) {
+ 		len = it6505_get_data_lanes_count(ep, 1, 4);
+@@ -3382,13 +3381,13 @@ static void it6505_parse_dt(struct it6505 *it6505)
+ 			*max_lane_count = MAX_LANE_COUNT;
+ 			dev_err(dev, "error data-lanes, use default");
+ 		}
++		of_node_put(ep);
+ 	} else {
+ 		*max_lane_count = MAX_LANE_COUNT;
+ 		dev_err(dev, "error endpoint, use default");
+ 	}
+ 
+ 	ep = of_graph_get_endpoint_by_regs(np, 0, 0);
+-	of_node_put(ep);
+ 
+ 	if (ep) {
+ 		len = of_property_read_variable_u64_array(ep,
+@@ -3408,6 +3407,7 @@ static void it6505_parse_dt(struct it6505 *it6505)
+ 			dev_err(dev, "error link frequencies, use default");
+ 			*max_dpi_pixel_clock = DPI_PIXEL_CLK_MAX;
+ 		}
++		of_node_put(ep);
+ 	} else {
+ 		dev_err(dev, "error endpoint, use default");
+ 		*max_dpi_pixel_clock = DPI_PIXEL_CLK_MAX;
 -- 
 2.55.0
 
