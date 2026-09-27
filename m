@@ -4,75 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 53412C9830E
-	for <linux-mediatek@archiver.kernel.org>; Sun, 27 Sep 2026 21:48:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 49D74CA5FA2
+	for <linux-mediatek@archiver.kernel.org>; Sun, 27 Sep 2026 23:49:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=uRCO1hCvm+HcqUF0cIAAS7cPIp9rv+bSF/z0y9cWaHQ=; b=OQDvGI0nP3PgFOKC4p8uEvCm1C
-	dPgC84zJP0xExoF2fPfRyQFbgrQkFMbQXpzGgo5yDDjdcsrmFzZEYvBC8JH0/P6iDiHUFKNMjDLal
-	ax2TloN//g6Y03WX37NgqEngUjiMPh6eXLDHX0Oz+rd/qR5UjCzqONZ4Xn+AuEe2Z2FQSpAgakEr4
-	T3fNa0Qg976XMd9gY3qbJMUtVQox6g08Sk0uH6y/smdJGlSiUsarI3GMMqjkvKxgWw9qZMvAv+jMu
-	NEJUdvxJLnOHPE557Nr1DGFzSSXlVDjji7CqVYUJ7RohBrGdY8vSPwIEIPXnc7mFsEf/2ebLwyvXn
-	QJIzFuJg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Subject:To:From:Date:Reply-To:Cc:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=/+5I+7WAGSp20q9tdOoOfwKzRULV4kbqPsm7TOSdKx0=; b=cTkt16gj/toBgSzRyfLnNqK3MP
+	oAo9Fvqsgzep6snAn43+iv7CIfBIxDMhE12AV/XdfGfjLDSzT9LquDW2E5QFkCPoha/ozgc+7+16e
+	VatihBiSc1X5aUcay/BbH0nq8pGftP1A4PGnGVjKoQHf6rTZEgzgk+TZEWrgh9y4FcerNM98RtBLG
+	Wvy3RMqGpXdbQtYJWeo3Iwviv6RzD9UM5ozkf04u6JdQXFoQtGrubgt7Gt6BbZCz1HvGVVon/9rHF
+	2NFv39US4LDd9Q/f8Ks9HNP6HFgfcOeCQpfGFKRc6bU8z/ipMNO4hrab7hWJ9t7M0PIsPqg1DByhA
+	df0eXSUg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xAwjt-0000000GuJS-2f0V;
-	Sun, 27 Sep 2026 21:48:53 +0000
-Received: from vps0.lunn.ch ([156.67.10.101])
+	id 1xAycw-0000000H0o7-2v3j;
+	Sun, 27 Sep 2026 23:49:50 +0000
+Received: from pidgin.makrotopia.org ([2a07:2ec0:3002::65])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xAwjr-0000000GuIt-0YeD;
-	Sun, 27 Sep 2026 21:48:52 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
-	s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
-	References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
-	Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
-	bh=uRCO1hCvm+HcqUF0cIAAS7cPIp9rv+bSF/z0y9cWaHQ=; b=Oef4GSQIwPZhqB72EoCeNbmCAq
-	irFkql9KZPdDbyxsCkLuIvvPTBcEDaProqDUuRc/XEMrrz43SR/x9RNcawsFv2BRBxChM/DczMi4e
-	EmNeU5/fV2D+Jcox6GfO+YtEQV7awuKJOQKbUjo9CPeqGOjyKYGTnwRPtOm6g2+qRdFY=;
-Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
-	(envelope-from <andrew@lunn.ch>)
-	id 1xAwjU-007ZW8-Q9; Sun, 27 Sep 2026 23:48:28 +0200
-Date: Sun, 27 Sep 2026 23:48:28 +0200
-From: Andrew Lunn <andrew@lunn.ch>
-To: Christian Marangi <ansuelsmth@gmail.com>
-Cc: Lee Jones <lee@kernel.org>, Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Andrew Lunn <andrew+netdev@lunn.ch>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@google.com>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Vladimir Oltean <olteanv@gmail.com>,
+	id 1xAyct-0000000H0mj-2ZNV;
+	Sun, 27 Sep 2026 23:49:49 +0000
+Received: from local
+	by pidgin.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256:X25519MLKEM768)
+	 (Exim 4.100)
+	(envelope-from <daniel@makrotopia.org>)
+	id 1xAycX-000000000jo-2nQP;
+	Sun, 27 Sep 2026 23:49:25 +0000
+Date: Mon, 28 Sep 2026 00:49:22 +0100
+From: Daniel Golle <daniel@makrotopia.org>
+To: Andrzej Hajda <andrzej.hajda@intel.com>,
+	Neil Armstrong <neil.armstrong@linaro.org>,
+	Robert Foss <rfoss@kernel.org>,
+	Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
+	Jonas Karlman <jonas@kwiboo.se>,
+	Jernej Skrabec <jernej.skrabec@gmail.com>,
+	Luca Ceresoli <luca.ceresoli@bootlin.com>,
+	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+	Maxime Ripard <mripard@kernel.org>,
+	Thomas Zimmermann <tzimmermann@suse.de>,
+	David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	"Chester A. Unal" <chester.a.unal@arinc9.com>,
-	Daniel Golle <daniel@makrotopia.org>,
-	Heiner Kallweit <hkallweit1@gmail.com>,
-	Russell King <linux@armlinux.org.uk>,
-	Simon Horman <horms@kernel.org>,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org,
-	mfd@lists.linux.dev, devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org
-Subject: Re: [PATCH net-next v23 8/9] net: dsa: mt7530: generalize and move
- common function to lib module
-Message-ID: <f4fb3c02-34ec-4ce4-8abe-d85e1d09cb5c@lunn.ch>
-References: <20260925182435.21207-1-ansuelsmth@gmail.com>
- <20260925182435.21207-9-ansuelsmth@gmail.com>
- <cd200dee-1bde-4cc2-a296-c93d704cb906@lunn.ch>
- <6ab97c6e.f5ac67e6.37e70.11e5@mx.google.com>
+	Hermes Wu <hermes.wu@ite.com.tw>,
+	Allen Chen <allen.chen@ite.com.tw>,
+	Pin-yen Lin <treapking@chromium.org>,
+	Chen-Yu Tsai <wenst@chromium.org>, dri-devel@lists.freedesktop.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: [PATCH v8 00/14] drm/bridge: it6505: DP audio support + shared-DAI
+ hw_params fix
+Message-ID: <cover.1790552614.git.daniel@makrotopia.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <6ab97c6e.f5ac67e6.37e70.11e5@mx.google.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260927_144851_177375_D82B68BB 
-X-CRM114-Status: GOOD (  26.24  )
+X-CRM114-CacheID: sfid-20260927_164947_805481_02853BC4 
+X-CRM114-Status: GOOD (  16.29  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,60 +76,142 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sun, Sep 27, 2026 at 10:28:25PM +0200, Christian Marangi wrote:
-> On Sun, Sep 27, 2026 at 09:02:09PM +0200, Andrew Lunn wrote:
-> > On Fri, Sep 25, 2026 at 08:24:30PM +0200, Christian Marangi wrote:
-> > > In preparation of support of DSA Switch from Airoha, create a mt7530
-> > > library module and move there all the common function.
-> > > 
-> > > Function are generalized to use the reg_field regmap API but still apply
-> > > the same exact logic. Every function is renamed to mt7530_lib prefix to
-> > > better identify it.
-> > > 
-> > > Minimum modification are needed to the register header and common enum and
-> > > macro are moved to the mt7530 library header to permit reuse.
-> > > 
-> > > A library struct is introduced with everything required for the common
-> > > functions.
-> > > 
-> > > The generalization and the introduction of reg_field regmap API have the
-> > > side effect of permitting to clean the mirror functions that required
-> > > special handling for MT7530 and MT7531 based switch that had different
-> > > registers. This is done by declaring a common MT7530 reg_field and a
-> > > specific one in the Switch match table.
-> > > 
-> > > No behaviour change is expected by this change as it's just a code move and
-> > > reimplementation.
-> > > 
-> > > Signed-off-by: Christian Marangi <ansuelsmth@gmail.com>
-> > > ---
-> > >  drivers/net/dsa/Kconfig       |    4 +
-> > >  drivers/net/dsa/Makefile      |    1 +
-> > >  drivers/net/dsa/mt7530-lib.c  | 1128 +++++++++++++++++++++++++++
-> > >  drivers/net/dsa/mt7530-lib.h  |  391 ++++++++++
-> > >  drivers/net/dsa/mt7530-mdio.c |    4 +
-> > >  drivers/net/dsa/mt7530-mmio.c |    4 +
-> > >  drivers/net/dsa/mt7530.c      | 1368 ++++++++-------------------------
-> > >  drivers/net/dsa/mt7530.h      |  256 ++----
-> > 
-> > The number of mt* file keep going up. Is it time to move it into a
-> > subdirectory?
-> 
-> The problem as always is that mediatek directory will also contain airoha
-> stuff...
+Revive HDMI/DP audio support for the it6505, originally posted by
+Jiaxin Yu [1], rebased onto current -next with the review feedback
+addressed: &client->dev is gone (the driver gained it6505->dev) and
+"#sound-dai-cells" has since been added by commit 325af1bef5b9
+("dt-bindings: display: bridge: it6505: Add #sound-dai-cells").
 
-That is only a Marketing problem, and Mainline generally ignores
-marketing. Companies get bought and sold all the time. We don't rename
-anything because of that.
+Patches 1-12 fix pre-existing bugs found during review of earlier
+versions of this series; they carry Fixes: tags and are ordered first
+so stable trees can pick them.
 
-> I would like to fix some trivial things pointed out by sashiko. Can I apply
-> those and keep the review tag? For this patch for example it's just the
-> typo for the multicast MIB.
-> 
-> For the other patch is also very trivial stuff. 
+Patch 13 wires up the it6505 audio helpers via hdmi_codec_ops,
+unblocking the mt8186-mt6366 sound card which references it6505 as
+the I2S3 codec. Patch 14 makes hw_params succeed with no display
+attached, needed when the I2S bus is shared with another codec as on
+MT8186 "steelix" Chromebooks, where the speaker path must keep
+working regardless of the it6505 link state.
 
-Yes, not a problem. If you make major changes then drop it, but
-trivial stuff is fine.
+Tested on a MT8186 (google,steelix) Chromebook: the sound card comes
+up, speakers, microphone and headset jack work. HDMI/DP audio output
+itself could not be tested for lack of a suitable adapter cable.
 
-	Andrew
+[1] https://lore.kernel.org/all/20230730180803.22570-4-jiaxin.yu@mediatek.com/
+---
+v8:
+ * patch 4: keep the DP AUX unregister in remove() as well, so an i2c
+   unbind waits for in-flight AUX device users before the regmap is
+   freed; flagged by the Sashiko AI review of v7
+ * patch 5: terminate the new dev_err() messages with a newline
+ * patch 13: it6505_poweron() sets the powered flag and runs the
+   logic reset and init sequence under audio_lock, closing a race
+   with the delayed enable work flagged by the Sashiko AI review of
+   v7; newline for the new dev_err() message
+ * rebased onto next-20260925
+ * patches 1-3, 6-12 and 14: no changes
+
+v7:
+ * new patch 2: cancel link_works, hdcp_wait_ksv_list and hdcp_work
+   in it6505_poweroff() so link training and HDCP authentication
+   cannot run into a chip being powered off; pre-existing, found
+   while assessing the Sashiko AI review of v6
+ * patch 13 (was 12): it6505_poweroff() clears the powered flag
+   under audio_lock, closing the race between the codec ops and a
+   concurrent power-off flagged by the Sashiko AI review of v6; the
+   it6505_enable_audio() wrapper is folded into the delayed work
+ * the remaining v6 review findings are already fixed by later
+   patches of this series (patches 3, 4, 6, 8, 11 and 12), concern
+   pre-existing code outside its scope (whole-register restore in
+   it6505_audio_input(), unchecked reads in it6505_aux_i2c_wait()
+   and it6505_calc_video_info(), regulator disable order) or do not
+   apply (AUX unregister on unbind, missing newline in dev_err())
+ * rebased onto next-20260923
+ * patches 1, 3-12 and 14: no changes
+
+v6:
+ * patch 1: track notifier registration in a flag instead of
+   clearing notifier_call, which a chain traversal racing the
+   unregistration could have called as NULL (extcon traverses its
+   raw notifier chain unlocked); flagged by Sashiko AI review of v5.
+   The in-flight-callback race also flagged there is an extcon core
+   limitation affecting all its consumers and cannot be closed from
+   a consumer driver.
+ * patch 4: note that a failed regulator_disable() leaks the
+   reference either way
+ * new patches 10 and 11: two more pre-existing fixes from v5
+   review, an uninitialised link-frequencies value and an error
+   code written back to the reset register
+ * patches 2, 3, 5-9, 12 and 13: no changes
+
+v5:
+ * patch 1: serialise notifier registration state with extcon_lock
+ * patch 2: also drop the runtime PM usage ref held for a connected
+   display; retitled
+ * new patches 3-7 and 9: more pre-existing fixes from v4 review
+   (AUX unregister symmetry, poweroff error path, IRQ status read
+   errors, two divisions by zero, of_node_put before use)
+ * patch 10 (was 4): update plugged_cb/codec_dev under mode_lock
+ * patches 8 and 11: no changes
+
+v4:
+ * patch 1: quiesce extcon notifier and IRQ before cancelling work,
+   initialise extcon_wq in probe; retitled
+ * new patch 2: disable runtime PM on remove
+ * patch 3 (was 2): collected Chen-Yu Tsai's Reviewed-by
+ * patch 4 (was 3): start out muted; mute state and cached
+   parameters updated under audio_lock; unregister codec after
+   quiesce
+ * patch 5 (was 4): apply audio defaults at probe time
+
+v3:
+ * new patches 1 and 2, fixing a pre-existing use-after-free on
+   remove() and an out-of-bounds read with channel_count == 0
+ * patch 3 (was 1): serialise audio enable/disable with audio_lock;
+   track mute state so the FIFO-error IRQ cannot undo a mute
+ * patch 4 (was 2): no changes
+
+v2:
+ * keep and unregister the hdmi-codec platform_device on remove
+ * initialise delayed_audio before registering the codec device
+ * cancel delayed_audio synchronously on shutdown and remove
+ * disable audio immediately when muting
+ * patch 2: drop the encoder check instead of returning 0 early
+
+v1: https://lore.kernel.org/all/cover.1784393979.git.daniel@makrotopia.org/
+v2: https://lore.kernel.org/all/cover.1784561622.git.daniel@makrotopia.org/
+v3: https://lore.kernel.org/all/cover.1784600387.git.daniel@makrotopia.org/
+v4: https://lore.kernel.org/all/cover.1784681487.git.daniel@makrotopia.org/
+v5: https://lore.kernel.org/all/cover.1784717129.git.daniel@makrotopia.org/
+v6: https://lore.kernel.org/all/cover.1784947240.git.daniel@makrotopia.org/
+v7: https://lore.kernel.org/all/cover.1790275151.git.daniel@makrotopia.org/
+
+Daniel Golle (13):
+  drm/bridge: it6505: quiesce event sources and work on remove()
+  drm/bridge: it6505: quiesce work items before powering off
+  drm/bridge: it6505: balance and disable runtime PM on remove
+  drm/bridge: it6505: unregister DP AUX adapter on bridge detach
+  drm/bridge: it6505: complete poweroff even if disabling regulators
+    fails
+  drm/bridge: it6505: bail out of the IRQ handler when status reads fail
+  drm/bridge: it6505: avoid division by zero in pixel clock calculation
+  drm/bridge: it6505: avoid division by zero in audio FS debug print
+  drm/bridge: it6505: guard against zero channel count in audio
+    infoframe
+  drm/bridge: it6505: hold endpoint OF node reference while parsing it
+  drm/bridge: it6505: reject a too short link-frequencies property
+  drm/bridge: it6505: don't write an error code back to the reset
+    register
+  drm/bridge: it6505: Don't reject audio hw_params without an encoder
+
+Jiaxin Yu (1):
+  drm/bridge: it6505: Add audio support
+
+ drivers/gpu/drm/bridge/ite-it6505.c | 263 +++++++++++++++++++++-------
+ 1 file changed, 202 insertions(+), 61 deletions(-)
+
+
+base-commit: f5f84daefcd92d7a630066635ecea1433ed5eac7
+-- 
+2.55.0
 
