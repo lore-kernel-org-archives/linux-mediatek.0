@@ -4,40 +4,40 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C1128C98338
-	for <linux-mediatek@archiver.kernel.org>; Sun, 27 Sep 2026 18:51:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 44BD8C9832F
+	for <linux-mediatek@archiver.kernel.org>; Sun, 27 Sep 2026 19:02:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=CcZlrq36jN2pkMV34cMOplpSYdzUUCdpucEDszn1/ZI=; b=sRczYnKuAAke1gHOKvH9YW8bnh
-	A3q4qLopltypd6oWTtZX05lJC1KWoxc/8jOREU6WO3IAyTXjP0TbuVfIi5MkdLavKvQY10b4gjFXv
-	oXyE73l8nnc56XclGEL+/AI1Ov+SkUXIGmZttZ/VGoNDeBILDtBNZBa9CSTATGYObxwsJBClCp6P/
-	sLzUBJ1jKw9HC71MSdclEFXSp/Z7NjjrykgfZhn9lWXm/1nM7CTzp9gpz6EjBiWToPWhlpkFP3HjE
-	Tp2sQ96GbFu6vY2a6e9XBL8PLeEjJscrSVli5R4f5vEMZTD+QfA42THAUklrgfMpcJrBAMiMdqiUm
-	80fk1W1Q==;
+	bh=UQrtppGpAREwEBox3klCIQcjsYbUf0EeTuSwQEhRl+0=; b=4ugv/nXsR3JHwCIhzEdc98kWMx
+	pHVRfvq/st28ORZhiXAJQphiAT43MYlXDzaYUQPluUSTEiBD+e85hkHL716tP3syk7AyezP1chTNh
+	AYv2oJRAGrwOO35FJisM6SfoHNXjtpIYpvvIXpyqIlEwFVr3/k8SxwQIE66mdGn8Vyw8TtPfobX+b
+	hia70Y8rERKKUC+3rBSUWR7/lNrjMUh8lhKn6w15r+Z8x2qDGKFej2iTqGJb1wgBfd5FCVPbUu3ty
+	/im0gbwROE+wpFGmRciUQv+LrTw+8qF9YxWHsmlQWI7KdLGFMlfIX8U4vmtYfbQyDFFTK8lpTKrfH
+	Zijp4KDw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xAtyM-0000000GiX1-2GiU;
-	Sun, 27 Sep 2026 18:51:38 +0000
+	id 1xAu8o-0000000GjYi-447N;
+	Sun, 27 Sep 2026 19:02:26 +0000
 Received: from vps0.lunn.ch ([156.67.10.101])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xAtyJ-0000000GiWI-38l9;
-	Sun, 27 Sep 2026 18:51:36 +0000
+	id 1xAu8m-0000000GjYF-3LYa;
+	Sun, 27 Sep 2026 19:02:25 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
 	s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
 	References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
 	Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
 	Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
-	bh=CcZlrq36jN2pkMV34cMOplpSYdzUUCdpucEDszn1/ZI=; b=Sgtlxa2+GoXGuP42agneQT3GjG
-	6LvNym4fI8J17O1966sfV8n3zcjN4UbsfrOFbI7XJdfhUKVk1s2a0yjRMxD8kq6WAg/Um+T1BUqMr
-	+atVPOeGT1RqnXws9hm8wYyw92x6DF3sw2e1c2H2ox+Z7STKT8L48syvAUkUPUGNlUTs=;
+	bh=UQrtppGpAREwEBox3klCIQcjsYbUf0EeTuSwQEhRl+0=; b=GXE3mkqRY/t8zgm8M7PViX9qlw
+	2P5+5y4FfOjpjW3YAfRO/RNQR2B+mjHhHaLVo3V2PgXSwur4ZbiWg79L3t/UZde82dIYBCQgljmVE
+	MS+vGcDHhJ/arNtWKId8I4qV50ynJtihdgrIfdpN+Ohg7VE/tKgxabpA7UB6mN3tPwX8=;
 Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
 	(envelope-from <andrew@lunn.ch>)
-	id 1xAty5-007YPf-Vs; Sun, 27 Sep 2026 20:51:21 +0200
-Date: Sun, 27 Sep 2026 20:51:21 +0200
+	id 1xAu8X-007YUJ-0o; Sun, 27 Sep 2026 21:02:09 +0200
+Date: Sun, 27 Sep 2026 21:02:09 +0200
 From: Andrew Lunn <andrew@lunn.ch>
 To: Christian Marangi <ansuelsmth@gmail.com>
 Cc: Lee Jones <lee@kernel.org>, Rob Herring <robh@kernel.org>,
@@ -59,19 +59,18 @@ Cc: Lee Jones <lee@kernel.org>, Rob Herring <robh@kernel.org>,
 	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org,
 	mfd@lists.linux.dev, devicetree@vger.kernel.org,
 	linux-kernel@vger.kernel.org
-Subject: Re: [PATCH net-next v23 7/9] MAINTAINERS: add myself as maintainer
- for Airoha AN8855 Switch
-Message-ID: <7be51225-fe6e-466a-83ee-fbf0dac22610@lunn.ch>
+Subject: Re: [PATCH net-next v23 8/9] net: dsa: mt7530: generalize and move
+ common function to lib module
+Message-ID: <cd200dee-1bde-4cc2-a296-c93d704cb906@lunn.ch>
 References: <20260925182435.21207-1-ansuelsmth@gmail.com>
- <20260925182435.21207-8-ansuelsmth@gmail.com>
+ <20260925182435.21207-9-ansuelsmth@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20260925182435.21207-8-ansuelsmth@gmail.com>
+In-Reply-To: <20260925182435.21207-9-ansuelsmth@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260927_115135_808918_0C37EBEF 
-X-CRM114-Status: UNSURE (   7.51  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20260927_120224_835230_0EF51AD7 
+X-CRM114-Status: GOOD (  17.71  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,11 +85,42 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Sep 25, 2026 at 08:24:29PM +0200, Christian Marangi wrote:
-> Add myself as maintainer for AN8855 DSA driver and all the related
-> subdriver (mfd, mdio, phy, nvmem)
+On Fri, Sep 25, 2026 at 08:24:30PM +0200, Christian Marangi wrote:
+> In preparation of support of DSA Switch from Airoha, create a mt7530
+> library module and move there all the common function.
+> 
+> Function are generalized to use the reg_field regmap API but still apply
+> the same exact logic. Every function is renamed to mt7530_lib prefix to
+> better identify it.
+> 
+> Minimum modification are needed to the register header and common enum and
+> macro are moved to the mt7530 library header to permit reuse.
+> 
+> A library struct is introduced with everything required for the common
+> functions.
+> 
+> The generalization and the introduction of reg_field regmap API have the
+> side effect of permitting to clean the mirror functions that required
+> special handling for MT7530 and MT7531 based switch that had different
+> registers. This is done by declaring a common MT7530 reg_field and a
+> specific one in the Switch match table.
+> 
+> No behaviour change is expected by this change as it's just a code move and
+> reimplementation.
 > 
 > Signed-off-by: Christian Marangi <ansuelsmth@gmail.com>
+> ---
+>  drivers/net/dsa/Kconfig       |    4 +
+>  drivers/net/dsa/Makefile      |    1 +
+>  drivers/net/dsa/mt7530-lib.c  | 1128 +++++++++++++++++++++++++++
+>  drivers/net/dsa/mt7530-lib.h  |  391 ++++++++++
+>  drivers/net/dsa/mt7530-mdio.c |    4 +
+>  drivers/net/dsa/mt7530-mmio.c |    4 +
+>  drivers/net/dsa/mt7530.c      | 1368 ++++++++-------------------------
+>  drivers/net/dsa/mt7530.h      |  256 ++----
+
+The number of mt* file keep going up. Is it time to move it into a
+subdirectory?
 
 Reviewed-by: Andrew Lunn <andrew@lunn.ch>
 
