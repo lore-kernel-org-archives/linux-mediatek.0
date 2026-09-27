@@ -4,60 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 977BCC9832F
-	for <linux-mediatek@archiver.kernel.org>; Sun, 27 Sep 2026 21:11:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AB218C98338
+	for <linux-mediatek@archiver.kernel.org>; Sun, 27 Sep 2026 21:11:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=44C50Q4Ln0VEE6bQOHS+qkeZ/WSlCaRUIPf2SffjR1M=; b=h5roBZv1aulk1e9Vg2fXUUH2MM
-	fVXyH6lv0v75J2YmTTCxSsHfpXnbmMoG/HO038ee0XNbjBdYe3MhCpmZ1g9M8gtdhXQkPZflWdQhk
-	n4aq1jdQFPDDB17kAZDNHX7xfUg3q+4KnQdDldtJGyq8eHDmA6M82/gudgvdj/aZTRHx3zc6/nv/G
-	FfJk1rwdWOcZkZ+gkHJTG1DOOo5y8mj6ri55ga+wolFcRUdTM3Vrwql7t2q2f3FBcIDPgNuTAenqW
-	0t95wm+i1D3V0Bcj1+GlhqTat6+EY59KBPv9tMIkfXslEUMhTWY4TgkGGBy5wSv5JEuBTWrmhv7hQ
-	Uaavg0tw==;
+	bh=b/j2sk0Gu0f7kgmwf66bENo3rsyXQHCPfjXxZSmJeG4=; b=sG1HpTxUXnlyguIP3352rW6hnj
+	HL0jaYXuNhMB/3MgjQwf2ex14tGG4AeoP2yu15kCaM/HvrjRZcdGTydQ9YK9+GHhnkHbmEcRqBIKU
+	thuByiS+HpGmd6Nd+yOIzbfkKYy8EAyoc4ZjaYzBt8o7yKDGM5cGTiAfi0RJJW8wQRkyxnCe5EQkA
+	fbHgSVziZUNjGtl09/WPGv0oKq9yA/8wASsrI/Mh2AIX6eHnW4xrAL+PpYe/f2ukd30PIA7i6qBZL
+	kY+1Lf65rinF2gRNmGeOl2D0reNm6RienzUtA1ZjfXkrkmQZL140JTnWSuMvrzCuM2AsjwagCgPim
+	uHiInkig==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xAw9j-0000000GsRN-2VJT;
-	Sun, 27 Sep 2026 21:11:31 +0000
-Received: from mail-qv2-f42.google.com ([74.125.230.170])
+	id 1xAw9l-0000000GsSN-2glt;
+	Sun, 27 Sep 2026 21:11:33 +0000
+Received: from mail-dy2-f12.google.com ([74.125.229.12])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xAw9g-0000000GsOt-1o3d
+	id 1xAw9h-0000000GsQC-3oty
 	for linux-mediatek@lists.infradead.org;
-	Sun, 27 Sep 2026 21:11:29 +0000
-Received: by mail-qv2-f42.google.com with SMTP id 6a1803df08f44-915ec8f411aso766476d6.0
-        for <linux-mediatek@lists.infradead.org>; Sun, 27 Sep 2026 14:11:28 -0700 (PDT)
+	Sun, 27 Sep 2026 21:11:30 +0000
+Received: by mail-dy2-f12.google.com with SMTP id 5a478bee46e88-3396cec93b6so2966092eec.3
+        for <linux-mediatek@lists.infradead.org>; Sun, 27 Sep 2026 14:11:29 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1790543487; x=1791148287;
+        d=1e100.net; s=20260707; t=1790543489; x=1791148289;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
          :to:cc:subject:date:message-id:reply-to:content-type;
-        bh=44C50Q4Ln0VEE6bQOHS+qkeZ/WSlCaRUIPf2SffjR1M=;
-        b=Y6jc4ftTj4ilzCNxsbHgKkIFw1LUpuIb+XC0QnJ0+zxkqeK+EFiPmTUbqs9w6v1Ka0
-         uUmVJFIvNYrd4sMgDvBhJrxVRlQkD9tnNE8LJOJNZuP9fE0yKd0u8OYjlDXyoYbbv1In
-         By/ylxeskAqci/MWPvc4Ji01QElu30la0LVw2tU10N3/HBPEtzuOb9V32VofzlrzTfp0
-         fTeLQ1cxSxsfCHATy9EBuZaR5xBlgo8ahs76aYPRxvLh4JSV4xwse5J7TXQusKRQTCbw
-         XfwvVftDgJyxZvnjGRwPjUta3La1ZQj53wBLiZLAXgwJMLrqp2BgRDXQVqzAd0P/I73/
-         Ny2w==
-X-Forwarded-Encrypted: i=1; AKwUvByWZfo9VQx8mq62ncPnVDwbAzWqOW51eimASkU6MzbtRX7bdZ+TiQku3VmLmsQm0UB4r+PBgPkEOLgy0wg+9g==@lists.infradead.org
-X-Gm-Message-State: AFq9FYLEKKsu6ggI/bowFeNkFIE4IR0dnGU/T64NIVyhk1oC4Mn6mEJG
-	AQ4HOORJ3ECgwJV2bt+kG0yXgG5Wj3Si4OM6ZceHCEuqBmy9/704paKxcoO05Zpn
-X-Gm-Gg: AYBFou3eJgqFybZXxzBESoYDcYns8o0mw/gOV9g8BHvAIcPyaVbmMD4E25kMbqTwDxO
-	wAuuWsKxUG6NHoi/+z1fcNAiYuTFW84Ej4kVzrl6N/+BlMZ5ICTitCqkJ73OYrviVHbKW9vGkmF
-	mkfZkUGl1rWWG4KC3dsD9FTkPTcjf026H18R+ipmw2du/+qC00O3DWApZGMr2FMUvF4K3wrkLNh
-	WFC7TMadKqX1joQf0H316B/lo/vP5+YLFYf7W0BAwubsJCO2sVMyVtZ4O8FlAhZ/M1oBS/RH9hq
-	KXiPn+qDw12tVUotPPW7NtmgY1fNmS0SJ7YbQjOvskJN52ugi1zmOP6qnGomyySkl9lyB1iXevH
-	ujNFPCa9ovWHfLzKSpMCaduTCwkh7lMXISRpCtbHthQWjmyBesBvE9F1CyCjAc9Dqt/QIReNZsN
-	cRPkjspcFndzHM0Tr2MPcM0hAo4P03NObicPd2JdALaHyMmRxAglzcI9JO8a3z38S2jf/RxW4pK
-	7c7U4od0g93Fm624zTbgoLiPgUWsfgC/u5P1kXrkXD8AO1S5C/yTHoGcYKTD0Q/eWNfsPc=
-X-Received: by 2002:a05:690c:16:b0:8a2:496:1985 with SMTP id 00721157ae682-8a6486081f9mr47069207b3.54.1790543053313;
-        Sun, 27 Sep 2026 14:04:13 -0700 (PDT)
+        bh=b/j2sk0Gu0f7kgmwf66bENo3rsyXQHCPfjXxZSmJeG4=;
+        b=YRTLRQjH9lzmDQpIssENfKzGac/ilDLrXiHQjVuBTz9MCL+rvpOsHpS5OMevkDuJ43
+         JHtzCaNDR8Q1nNaW7k7Z/Xt/jrhjXsAUC1IqVuZ78QUHbWY8CWXDfScx0rbskOTQfewy
+         Jtvkad1w4IYkxR2x3FCp7urLLCiwM53waOw29rAqgo0XvhguX1CBEOH8uxkMkWaNjuuh
+         VvAS7bK30lpbtiDvw3seORpPuGyNbsdo9LM1JVaugoYprviUUjsvwp13V43zCQmyhYql
+         I8olGM4x+5DlbCmxQpXHn/UE2k3pvWKiG5c48OprHhJ+qme8qHiae7o4UkGacFF9wt+Q
+         ryOg==
+X-Forwarded-Encrypted: i=1; AKwUvBzpCyC0lN8Sj/7xaaZ5L6Qg2ViFxCnvvhp8WpIlnQht6iJdNaYTwGVUmbAkYaJIK46JcXQGOjPhuKnR5kIhyQ==@lists.infradead.org
+X-Gm-Message-State: AFq9FYLzhRZ58itYrXH9Wnf1GLU73rzdl674NimnGkW/vg6B8xVtwtkC
+	Chs7qFMFBNowCxb+tl6q/ulMQkrA0RCl/EGFwYE+z5Alu5ClYWBkJbPYdXbT6C/H
+X-Gm-Gg: AYBFou1MEleBi1xG063DgrrtWT6yMBnU/U0cEGf3NWJjlkapK4+wuiaCtTx4LXCt/dI
+	rHp49fVjJjoTI4HpIPr5lK3yE4qlvoPbXVkoGB3mt0TnheA7a3ks8xaGHuaGr3LqLaMrItZyUYx
+	BStSFbZgQ7TANETjuBnd2VEJ0I0isB2mB1WPVUQJdLP61mSJlb3oWFHZfxtDwEnVGMrsbVkPiGu
+	4mI+ZTB4UYgoRIwluL9oC6YQjhiN5XSBbqpxjmPweLWKa5b9+oVIQx2d5RodIeRl7h2d2nhIYzM
+	qst8qNSimMocCf0huJK8egzRgGGPIQioOIC079YCLr3QtnCcmlq6E5cdpOt9oqUbS3XvDwbEoaK
+	7KyvgB+0c4oLcONw3Gnur+u9xtuBP7u7pf1qOguHQ6qRmYw24+KUDlYegf8BLcG+2gcFKpFgcOb
+	BbQMW3t5xw/tZi+9CK5Pojl55ospgWN7dGRmbUJ9IkRr6PBirQA8YYYVjJDqWE6PzLZuOlosQRu
+	gkCI1tf8+fatU7Yg3CTN93O/ppVTLsGdrO9uAM48vrDk46Pw7h/Q32xFg7zDB2T7eflwI/aM/E8
+	FZi2
+X-Received: by 2002:a05:690c:e3e1:b0:854:b86b:d206 with SMTP id 00721157ae682-8a6461b8773mr59308197b3.12.1790543011011;
+        Sun, 27 Sep 2026 14:03:31 -0700 (PDT)
 Received: from sean-HP-EliteBook-830-G6.attlocal.net ([2600:1702:5083:7610:5dd7:b9c7:1078:5394])
-        by smtp.gmail.com with ESMTPSA id 00721157ae682-8a86103149dsm35389017b3.40.2026.09.27.14.04.12
+        by smtp.gmail.com with ESMTPSA id 00721157ae682-8a86103149dsm35389017b3.40.2026.09.27.14.03.29
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 27 Sep 2026 14:04:12 -0700 (PDT)
+        Sun, 27 Sep 2026 14:03:29 -0700 (PDT)
 From: Sean Wang <sean.wang@kernel.org>
 To: nbd@nbd.name
 Cc: linux-wireless@vger.kernel.org,
@@ -65,19 +66,19 @@ Cc: linux-wireless@vger.kernel.org,
 	yu-ching.liu@mediatek.com,
 	jenhao.yang@mediatek.com,
 	posh.sun@mediatek.com,
-	Jacobs Wu <jacobs.wu@mediatek.com>,
+	Chengwei Yu <chengwei.yu@mediatek.com>,
 	Sean Wang <sean.wang@mediatek.com>
-Subject: [PATCH 16/23] wifi: mt76: mt7925: double the retry budget for NAN unicast management
-Date: Sun, 27 Sep 2026 16:02:58 -0500
-Message-ID: <20260927210306.737669-17-sean.wang@kernel.org>
+Subject: [PATCH 04/23] wifi: mt76: mt7925: wire up NAN MAC randomization lifecycle
+Date: Sun, 27 Sep 2026 16:02:46 -0500
+Message-ID: <20260927210306.737669-5-sean.wang@kernel.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260927210306.737669-1-sean.wang@kernel.org>
 References: <20260927210306.737669-1-sean.wang@kernel.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260927_141128_851270_5640A292 
-X-CRM114-Status: GOOD (  11.07  )
+X-CRM114-CacheID: sfid-20260927_141129_945554_E55F66E5 
+X-CRM114-Status: GOOD (  11.25  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -92,50 +93,62 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Jacobs Wu <jacobs.wu@mediatek.com>
+From: Chengwei Yu <chengwei.yu@mediatek.com>
 
-The NAN setup handshakes are one-shot at the host: wpa_supplicant aborts
-PASN on the first unacknowledged authentication frame and completes the
-NDP state machine without retransmitting an unacknowledged key-install.
-Right after the data path confirm both peers transmit at each other
-nearly simultaneously, and with half-duplex radios one 15-retry burst
-regularly dies inside the peer's own TX window (measured ~50% loss of
-the key-install on an MT7925 pair, killing the NDP setup).
+Start mac_rand_work in mt7925_add_interface() and stop it in
+mt7925_remove_interface() so the work item added by prior patches
+is usable and cannot outlive its vif.
 
-Double the TXD retry budget to the field maximum for NAN unicast
-management so the burst outlives the cross-fire window.
+INIT_DELAYED_WORK() is unconditional across all vif types, matching
+how csa_work is already initialized unconditionally -- mvif->nan
+exists on every mt792x_vif so there is nothing NAN-specific to guard.
+
+mt7925_nan_stop_mac_randomization() is called before
+mt792x_mutex_acquire(), not inside it: the work function takes the
+same dev mutex, so cancel_delayed_work_sync() while holding it would
+deadlock. This follows the same ordering mt792x_unassign_vif_chanctx()
+uses for csa_work.
 
 Co-developed-by: Sean Wang <sean.wang@mediatek.com>
 Signed-off-by: Sean Wang <sean.wang@mediatek.com>
-Signed-off-by: Jacobs Wu <jacobs.wu@mediatek.com>
+Signed-off-by: Chengwei Yu <chengwei.yu@mediatek.com>
 ---
- drivers/net/wireless/mediatek/mt76/mt7925/mac.c | 13 +++++++++++++
- 1 file changed, 13 insertions(+)
+ drivers/net/wireless/mediatek/mt76/mt7925/main.c | 15 +++++++++++++++
+ 1 file changed, 15 insertions(+)
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/mac.c b/drivers/net/wireless/mediatek/mt76/mt7925/mac.c
-index 101f571b027f..f19d0451f373 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7925/mac.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7925/mac.c
-@@ -806,6 +806,19 @@ mt7925_mac_write_txwi(struct mt76_dev *dev, __le32 *txwi,
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/main.c b/drivers/net/wireless/mediatek/mt76/mt7925/main.c
+index c882952f5df1..3e1c223e8da6 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7925/main.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7925/main.c
+@@ -480,6 +480,12 @@ mt7925_add_interface(struct ieee80211_hw *hw, struct ieee80211_vif *vif)
  
- 	val = FIELD_PREP(MT_TXD3_REM_TX_COUNT, 15);
+ 	if (vif->type == NL80211_IFTYPE_NAN)
+ 		dev->nan_vif = vif;
++
++	if (vif->type == NL80211_IFTYPE_NAN ||
++	    vif->type == NL80211_IFTYPE_NAN_DATA)
++		INIT_DELAYED_WORK(&mvif->nan.mac_rand_work,
++				  mt7925_nan_mac_rand_work);
++
+ out:
+ 	mt792x_mutex_release(dev);
  
-+	/* NAN setup handshakes are one-shot at the host: a single lost burst
-+	 * kills the NDP (peers transmit at each other nearly simultaneously
-+	 * after M3 and half-duplex radios miss the reply). Double the retry
-+	 * budget so the burst outlives the cross-fire window.
+@@ -493,6 +499,15 @@ mt7925_remove_interface(struct ieee80211_hw *hw, struct ieee80211_vif *vif)
+ 	struct mt792x_dev *dev = mt792x_hw_dev(hw);
+ 	struct mt792x_bss_conf *mconf;
+ 
++	/*
++	 * Stop before taking the dev mutex: mt7925_nan_mac_rand_work()
++	 * acquires it too, so cancel_delayed_work_sync() would deadlock
++	 * against a concurrently running instance if called while held.
 +	 */
-+	if (vif && vif->type == NL80211_IFTYPE_NAN) {
-+		struct ieee80211_hdr *nan_hdr = (struct ieee80211_hdr *)skb->data;
++	if (vif->type == NL80211_IFTYPE_NAN ||
++	    vif->type == NL80211_IFTYPE_NAN_DATA)
++		mt7925_nan_stop_mac_randomization(vif);
 +
-+		if (ieee80211_is_mgmt(nan_hdr->frame_control) &&
-+		    !is_multicast_ether_addr(nan_hdr->addr1))
-+			val = FIELD_PREP(MT_TXD3_REM_TX_COUNT, 31);
-+	}
-+
- 	if (key)
- 		val |= MT_TXD3_PROTECT_FRAME;
- 	if (info->flags & IEEE80211_TX_CTL_NO_ACK)
+ 	mt792x_mutex_acquire(dev);
+ 
+ 	if (dev->nan_vif == vif)
 -- 
 2.43.0
 
