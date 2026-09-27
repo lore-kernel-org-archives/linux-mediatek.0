@@ -4,35 +4,35 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D1B12C9832F
-	for <linux-mediatek@archiver.kernel.org>; Sun, 27 Sep 2026 23:50:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EDC81C9830E
+	for <linux-mediatek@archiver.kernel.org>; Sun, 27 Sep 2026 23:50:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To:Cc:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=O4XHWoTfxVyFp9rrStjvc2zcXowu7OKeIms2/LZeXeI=; b=0n+Gs9HXoJ+UkaKr3za3exdDj6
-	5Bm+AGS1gExgKQiT46syDanVr+RHjJmQThnorMuq4VakLwV1hHoVf4cVf8vRlK+J9G6kXnXjnX9aP
-	zrssyjy/8XkmUS1TSEGNp7d+T0VicAsNMc4+rKtYTA/CNk3W0C4D4WKeKA5RwVdocdHhJO37pQCtt
-	Lme0/14aomFDdx5997pCJdBBG5xtdRTHDm9KxxN5vtJOa1qSR4rkU3Mtg5BgIwa+fL0wHXowQJhow
-	H79VF/oo0ikVw0/dimBHSJY94q3nta3p0WjadIrSnQuZapHNKvJBsuhPz5RmItaNkrlwRbA1pTLS0
-	148uu2Lw==;
+	bh=XMBKNX3mCHmPbnNScRXj4/DdBB8GT5w75znCORnXDgY=; b=QeMSYmw369TxeBa2A/JqdeP0uA
+	CumDS0yHNgUawrWYIsUswNvdGd9oOYth06mnsZ1E7vBpAW4wU18fwVBMOB3bWLbUpN9idxH7tnz1w
+	ujhKtGecLMuQ9R8XCho0cXKU55wd6s3vXBM+XKY6XkVcR7xULAWHG5tQYR1cT6sdugW7CuvStlq/U
+	pJ6wocd3ulms73A1ZTTj9PbuF5FFZ/98O/i90ZzfXLe9M4tneNs9119+BgpkbgZM9zCUen5Aq6yKh
+	Us/e7YFtO2ygbn4tQYGZmjhc9CkVPOgm/7EJk9eHeR+4iT7iyY28oBKJZ2Ktci8QK6PnwfGOjoyRt
+	nQO7+FbA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xAydE-0000000H0xp-3D2y;
-	Sun, 27 Sep 2026 23:50:08 +0000
+	id 1xAydU-0000000H16u-0bns;
+	Sun, 27 Sep 2026 23:50:24 +0000
 Received: from pidgin.makrotopia.org ([2a07:2ec0:3002::65])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xAyd9-0000000H0uu-478k;
-	Sun, 27 Sep 2026 23:50:05 +0000
+	id 1xAydI-0000000H0zJ-0iVM;
+	Sun, 27 Sep 2026 23:50:13 +0000
 Received: from local
 	by pidgin.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256:X25519MLKEM768)
 	 (Exim 4.100)
 	(envelope-from <daniel@makrotopia.org>)
-	id 1xAyd5-000000000m7-13xw;
-	Sun, 27 Sep 2026 23:49:59 +0000
-Date: Mon, 28 Sep 2026 00:49:56 +0100
+	id 1xAydC-000000000n7-2Fho;
+	Sun, 27 Sep 2026 23:50:06 +0000
+Date: Mon, 28 Sep 2026 00:50:03 +0100
 From: Daniel Golle <daniel@makrotopia.org>
 To: Andrzej Hajda <andrzej.hajda@intel.com>,
 	Neil Armstrong <neil.armstrong@linaro.org>,
@@ -53,17 +53,17 @@ To: Andrzej Hajda <andrzej.hajda@intel.com>,
 	Chen-Yu Tsai <wenst@chromium.org>, dri-devel@lists.freedesktop.org,
 	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
-Subject: [PATCH v8 03/14] drm/bridge: it6505: balance and disable runtime PM
- on remove
-Message-ID: <aa94f192ee4ac67bc51d0809fdd4a0e675050fef.1790552614.git.daniel@makrotopia.org>
+Subject: [PATCH v8 04/14] drm/bridge: it6505: unregister DP AUX adapter on
+ bridge detach
+Message-ID: <ae0941be8fb5e20a309f2e30b5e2d8818168aa38.1790552614.git.daniel@makrotopia.org>
 References: <cover.1790552614.git.daniel@makrotopia.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 In-Reply-To: <cover.1790552614.git.daniel@makrotopia.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260927_165004_030281_D8512E3D 
-X-CRM114-Status: GOOD (  11.27  )
+X-CRM114-CacheID: sfid-20260927_165012_217589_4DEDD4A7 
+X-CRM114-Status: GOOD (  12.14  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,45 +78,51 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Runtime PM is enabled in probe but never disabled on remove, so
-rebinding the driver warns "Unbalanced pm_runtime_enable!". The
-extcon work also holds a usage reference while a display is
-connected, which unbinding leaks; the count survives in struct
-device, so after a rebind the device never runtime-suspends again.
+The DP AUX adapter is registered in .attach() but only unregistered
+in i2c remove(). Unbinding and rebinding the DRM device while the
+i2c driver stays bound registers the adapter a second time, which
+fails. Also unregister it in .detach() and on the .attach() error
+path, which so far leaked the registration. remove() keeps its call,
+which waits for in-flight AUX device users before devres frees the
+regmap; drm_dp_aux_unregister() does nothing for an adapter that is
+already unregistered.
 
-Drop the usage reference held for a connected display and disable
-runtime PM in remove().
-
-Fixes: 10517777d302 ("drm/bridge: it6505: Adapt runtime power management framework")
+Fixes: b5c84a9edcd4 ("drm/bridge: add it6505 driver")
+Assisted-by: LLM
 Signed-off-by: Daniel Golle <daniel@makrotopia.org>
 ---
-v8: no changes
+v8: keep the unregister in remove() so an i2c unbind waits for
+    in-flight AUX device users before the regmap is freed
 
 v7: no changes
 
 v6: no changes
 
-v5: also drop the usage ref held for a connected display; retitled
-
-v4: new patch
+v5: new patch
 ---
- drivers/gpu/drm/bridge/ite-it6505.c | 3 +++
- 1 file changed, 3 insertions(+)
+ drivers/gpu/drm/bridge/ite-it6505.c | 2 ++
+ 1 file changed, 2 insertions(+)
 
 diff --git a/drivers/gpu/drm/bridge/ite-it6505.c b/drivers/gpu/drm/bridge/ite-it6505.c
-index 52d7d818a5ea3..9c4aae383c1c5 100644
+index 9c4aae383c1c5..7a0702e441ad7 100644
 --- a/drivers/gpu/drm/bridge/ite-it6505.c
 +++ b/drivers/gpu/drm/bridge/ite-it6505.c
-@@ -3663,6 +3663,9 @@ static void it6505_i2c_remove(struct i2c_client *client)
- 	cancel_work_sync(&it6505->hdcp_wait_ksv_list);
- 	cancel_delayed_work_sync(&it6505->hdcp_work);
- 	cancel_work_sync(&it6505->extcon_wq);
-+	if (it6505->extcon_state)
-+		pm_runtime_put_sync(&client->dev);
-+	pm_runtime_disable(&client->dev);
- 	it6505_poweroff(it6505);
- 	it6505_remove_edid(it6505);
+@@ -3096,6 +3096,7 @@ static int it6505_bridge_attach(struct drm_bridge *bridge,
+ 		ret = it6505_use_notifier_module(it6505);
+ 		if (ret < 0) {
+ 			dev_err(dev, "use notifier module failed");
++			drm_dp_aux_unregister(&it6505->aux);
+ 			return ret;
+ 		}
+ 	}
+@@ -3109,6 +3110,7 @@ static void it6505_bridge_detach(struct drm_bridge *bridge)
+ 
+ 	flush_work(&it6505->link_works);
+ 	it6505_remove_notifier_module(it6505);
++	drm_dp_aux_unregister(&it6505->aux);
  }
+ 
+ static enum drm_mode_status
 -- 
 2.55.0
 
