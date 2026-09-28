@@ -4,102 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5B0D7C9833F
-	for <linux-mediatek@archiver.kernel.org>; Mon, 28 Sep 2026 10:08:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2FC22CA5FA2
+	for <linux-mediatek@archiver.kernel.org>; Mon, 28 Sep 2026 11:03:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=z10g3ECzJZ0ykUnbHwtfiSwuKXKaTF3jzUkbhLSuRL8=; b=L4sJXBFs7f3Marzr9G/Ejrgv5j
-	Y6qPvHz2EK4ZtUZ0aU+/M0eWZjJgKH8fIhbwj44T6MwDlu66K/1daA948BWSVyPro6EWFBh3J0mOt
-	u5b3Mrc/+JBjvsqlQ+cX4KqMShO8K7mr3C6b1WxoBbHLJqb0u2LLdg85ZRvpS+X3EW0fxRQpDIl4x
-	MVxFCFqO0MZozdLKUbZVXRYeUeniibfknaIbhzPB2E8z/OP3/ywgT8kRTYLPHyoIJHx5swHqRxcxp
-	oHbZkdiPn7eizJmIy885ppHGHlW42gqKfCorWb4YM2lRjR7cFRXbEua5duh3YIJayRbtH28x4YSM9
-	OOdXLX7w==;
+	bh=GRWHJvrV87zg7wTj96AOWlFOZBTwq5ScjGQwkE9kXh8=; b=DTYo0wLS97wBmXEUS0hievbOW3
+	iOwVJocDdojEWj80993FxTf+TsbW5wsefNDbB4O21lGqJBFPbvIX7SiyTBvXEFNB58L7Vw+Ez2f3P
+	WNupuZN+YeWiRnBHUeFIQKYSYV2XMabBIZWgkujZlxzQLUuDLQqIf0Y78ZELAOVigoMoDAUiZ+buA
+	BV2uXlvnL/Hu2/8/bH86OAcLKLKykkMJ7h5dnmMnxPX/dOZAnGo4+2pKOlCVD9z1cjrN+YQWiHXnU
+	oBNRfl4aNQg9YGDffBTldUfX548aD/bZNE9FZEJNKQxcQgoiSqGebmhFrjHF5dXF+uaBAAV2iJTBI
+	6z5TxNzw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xB8Hx-00000000Jch-3CcW;
-	Mon, 28 Sep 2026 10:08:49 +0000
-Received: from perceval.ideasonboard.com ([213.167.242.64])
+	id 1xB98m-00000000Ppk-2oiw;
+	Mon, 28 Sep 2026 11:03:24 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xB8Hu-00000000Jc7-16YV;
-	Mon, 28 Sep 2026 10:08:47 +0000
-Received: from killaraus.ideasonboard.com (2001-14ba-70f3-e800--a06.rev.dnainternet.fi [IPv6:2001:14ba:70f3:e800::a06])
-	by perceval.ideasonboard.com (Postfix) with ESMTPSA id E36DB236;
-	Mon, 28 Sep 2026 12:06:52 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1790590013;
-	bh=k6VynnZ+N0kAdeAd03ynKQPR8TBTY7wOhaOTHQKca+w=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=cYi0UKhHY06B7Vg62VtL/Uqyke32Y27qqq3plWvR9m6EVW/CNEflE+5kqP2JeozAf
-	 o8RgWh+ZMIiO8DNusL1tMpQ7W1egqmADBEVBq6ch6vulOHK4Q1qExGccxe3mT8xLGv
-	 jVTbhMYiYuw0ld5Li3bK/+10oRYcX3LD5PSwMP9A=
-Date: Mon, 28 Sep 2026 13:08:41 +0300
-From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-To: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
-Cc: Luca Ceresoli <luca.ceresoli@bootlin.com>,
-	Chen-Yu Tsai <wens@kernel.org>, David Airlie <airlied@gmail.com>,
-	Simona Vetter <simona@ffwll.ch>,
-	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
-	Maxime Ripard <mripard@kernel.org>,
-	Thomas Zimmermann <tzimmermann@suse.de>,
-	Rob Herring <robh@kernel.org>,
+	id 1xB98l-00000000PpJ-1fbV;
+	Mon, 28 Sep 2026 11:03:23 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by tor.source.kernel.org (Postfix) with ESMTP id BE72B60052;
+	Mon, 28 Sep 2026 11:03:22 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 16D721F000FF;
+	Mon, 28 Sep 2026 11:03:15 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1790593402;
+	bh=GRWHJvrV87zg7wTj96AOWlFOZBTwq5ScjGQwkE9kXh8=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To;
+	b=SG55Bru0an6HMsHCstSC1nYa8joHK0Q+fQpmoyTiAAChgQfIPQcwNa7hJ9c76ElZj
+	 FgCSwH1n3QX9ODLvsg6/ddVH610KpnIKCCKouoFnzvI6opPVFzP37WYQ0EQX0Utohx
+	 ATxj9lj/b0ABODdvh1GZw8OPnDV0kqw/pHaTF6MuyH0C0Uxnb4/kBtpngl3OyZ2Py8
+	 YANozyrl7MmYGlJMWF13NnJoW/HYppQQ33kS/k7cMFQ0YRxxsdkLpBj7tUNZxUkPJd
+	 FSqvcvJv4SftFwwGy1ip6sGS1RrZL6gkiSb+IS89vy77bsijRlMXSpgJSl9TMY8qvF
+	 561BxhnzNAF9A==
+Date: Mon, 28 Sep 2026 12:03:13 +0100
+From: Mark Brown <broonie@kernel.org>
+To: James Calligeros <jcalligeros99@gmail.com>
+Cc: Martin =?utf-8?Q?Povi=C5=A1er?= <povik+lin@cutebit.org>,
+	Liam Girdwood <lgirdwood@gmail.com>, Rob Herring <robh@kernel.org>,
 	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Jernej Skrabec <jernej.skrabec@gmail.com>,
-	Samuel Holland <samuel@sholland.org>, Liu Ying <victor.liu@nxp.com>,
-	Andrzej Hajda <andrzej.hajda@intel.com>,
-	Neil Armstrong <neil.armstrong@linaro.org>,
-	Robert Foss <rfoss@kernel.org>, Jonas Karlman <jonas@kwiboo.se>,
-	Frank Li <Frank.Li@nxp.com>, Sascha Hauer <s.hauer@pengutronix.de>,
-	Pengutronix Kernel Team <kernel@pengutronix.de>,
-	Fabio Estevam <festevam@gmail.com>,
-	Francesco Dolcini <francesco@dolcini.it>,
-	Philipp Zabel <p.zabel@pengutronix.de>,
-	Chun-Kuang Hu <chunkuang.hu@kernel.org>,
-	Rob Clark <robin.clark@oss.qualcomm.com>,
-	Dmitry Baryshkov <lumag@kernel.org>,
-	Abhinav Kumar <abhinav.kumar@linux.dev>,
-	Jessica Zhang <jesszhan0024@gmail.com>, Sean Paul <sean@poorly.run>,
-	Marijn Suijten <marijn.suijten@somainline.org>,
-	Marcus Folkesson <marcus.folkesson@gmail.com>,
-	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
-	Alexandre Torgue <alexandre.torgue@foss.st.com>,
-	Yannick Fertre <yannick.fertre@foss.st.com>,
-	Raphael Gallais-Pou <raphael.gallais-pou@foss.st.com>,
-	Philippe Cornu <philippe.cornu@foss.st.com>,
+	Conor Dooley <conor+dt@kernel.org>, Sven Peter <sven@kernel.org>,
+	Janne Grunau <j@jannau.net>, Neal Gompa <neal@gompa.dev>,
+	David Rhodes <david.rhodes@cirrus.com>,
+	Richard Fitzgerald <rf@opensource.cirrus.com>,
+	Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>,
+	Ulf Hansson <ulfh@kernel.org>,
+	Amit Kucheria <amit.kucheria@linaro.org>,
+	"Rafael J. Wysocki" <rafael.j.wysocki@intel.com>,
+	Lars-Peter Clausen <lars@metafoo.de>, Vinod Koul <vkoul@kernel.org>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Adrien Grassein <adrien.grassein@gmail.com>,
-	Russell King <linux@armlinux.org.uk>, Simha BN <simhavcs@gmail.com>,
-	CK Hu <ck.hu@mediatek.com>, Jitao shi <jitao.shi@mediatek.com>,
-	Yongxing Mou <yongxing.mou@oss.qualcomm.com>,
-	Abel Vesa <abelvesa@kernel.org>,
-	Chris Morgan <macromorgan@hotmail.com>,
-	Martinez Canillas <javierm@redhat.com>,
-	dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org, linux-sunxi@lists.linux.dev,
-	linux-kernel@vger.kernel.org, imx@lists.linux.dev,
-	linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org,
-	freedreno@lists.freedesktop.org,
-	linux-stm32@st-md-mailman.stormreply.com
-Subject: Re: (subset) [PATCH 1/2] dt-bindings: display: Use consistent
- indentation in the example
-Message-ID: <20260928100841.GC22609@killaraus.ideasonboard.com>
-References: <20260913123331.100293-3-krzysztof.kozlowski@oss.qualcomm.com>
- <179057359762.92994.13773102514654073802.b4-ty@b4>
- <8499ed1a-df9e-4e5a-b609-3da8499a47b5@oss.qualcomm.com>
- <20260928065837.GA22609@killaraus.ideasonboard.com>
- <ccb949ea-5fa9-47e5-be75-af8155328dc8@oss.qualcomm.com>
+	Shenghao Ding <shenghao-ding@ti.com>, Kevin Lu <kevin-lu@ti.com>,
+	Baojun Xu <baojun.xu@ti.com>, Sen Wang <sen@ti.com>,
+	James Schulman <james.schulman@cirrus.com>, asahi@lists.linux.dev,
+	linux-sound@vger.kernel.org, devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	patches@opensource.cirrus.com, Takashi Iwai <tiwai@suse.de>,
+	linux-mediatek@lists.infradead.org,
+	Hector Martin <marcan@marcan.st>,
+	Sasha Finkelstein <k@chaosmail.tech>
+Subject: Re: [PATCH 16/28] ASoC: apple: Add macaudio machine driver
+Message-ID: <0ae94fbe-cd41-4d49-b073-e65ab8eff724@sirena.org.uk>
+References: <20260920-macaudio-v1-0-741cc20a74e5@gmail.com>
+ <20260920-macaudio-v1-16-741cc20a74e5@gmail.com>
+ <arJMrsl45g2_bLPB@sirena.co.uk>
+ <6dv6M3LAS9mol5fvC8Ie-w@gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="o62xNzOzXCWulXud"
 Content-Disposition: inline
-In-Reply-To: <ccb949ea-5fa9-47e5-be75-af8155328dc8@oss.qualcomm.com>
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260928_030846_457258_A28BB17A 
-X-CRM114-Status: GOOD (  17.41  )
+In-Reply-To: <6dv6M3LAS9mol5fvC8Ie-w@gmail.com>
+X-Cookie: All is fear in love and war.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -114,39 +93,75 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Sep 28, 2026 at 10:08:43AM +0200, Krzysztof Kozlowski wrote:
-> On 28/09/2026 08:58, Laurent Pinchart wrote:
-> > On Mon, Sep 28, 2026 at 08:03:18AM +0200, Krzysztof Kozlowski wrote:
-> >> On 28/09/2026 07:33, Luca Ceresoli wrote:
-> >>> On Sun, 13 Sep 2026 14:33:32 +0200, Krzysztof Kozlowski wrote:
-> >>>> Correct indentation in the examples to consistent 2- or 4-spaces
-> >>>> indentation to fix dt-check-style warnings ("example 0
-> >>>> [indent-consistent] indent mismatch ...").  Preferred is 4-spaces, but
-> >>>> re-indenting entire example just for that is too much churn.
-> >>>
-> >>> Applied, thanks!
-> >>>
-> >>> [1/2] dt-bindings: display: Use consistent indentation in the example
-> >>>       commit: 370c5d9004f8b754351981d59fc26851bf943e93
-> >>
-> >> Thanks, but I expected no one will pick it up, so I asked Rob to take
-> >> it, thus it is already queued.
-> > 
-> > Please explain your merge plans in the cover letter next time.
-> 
-> The merge plan was this going through drm-misc. It got reviews, no one
-> applied, even Dmitry for msm only reviewed the msm-bits (second patch),
-> so I asked Rob to take it. This was not planned, but result of usual
-> drm-misc inactivity for bindings (many bindings were not taken in the
-> past or with noticeable delay/pings).
 
-If that happens again, could you please reply to the series on the
-dri-devel list to tell it will be merged through the DT tree ? I don't
-think there's any issue with merging patches that way, it's just
-coordination that's lacking.
+--o62xNzOzXCWulXud
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
--- 
-Regards,
+On Sat, Sep 26, 2026 at 11:06:02AM +1000, James Calligeros wrote:
+> On Tuesday, 22 September 2026 7:38:54=E2=80=AFpm Australian Eastern Stand=
+ard Time Mark Brown wrote:
 
-Laurent Pinchart
+> > > +	list_for_each_entry(kctl, &ma->card.snd_card->controls, list) {
+> > > +		if (!snd_soc_control_matches(kctl, volume_control_names[ma->cfg->a=
+mp]))
+> > > +			continue;
+
+> > This is used from the volume limit timeout work which doesn't hold the
+> > controls_rwsem, userspace can add or remove user controls which would
+> > change the list so the work needs to lock the controls list.
+
+> Would it be sufficient to scoped_guard the controls_rwsem wherever we
+> use this pattern?
+
+I think so, but I didn't properly check.
+
+> > > +static int macaudio_dpcm_hw_params(struct snd_pcm_substream *substre=
+am,
+> > > +				   struct snd_pcm_hw_params *params)
+> > > +{
+> > > +	struct snd_soc_pcm_runtime *rtd =3D snd_soc_substream_to_rtd(substr=
+eam);
+> > > +	struct macaudio_snd_data *ma =3D snd_soc_card_get_drvdata(rtd->card=
+);
+> > > +	struct macaudio_link_props *props =3D &ma->link_props[rtd->dai_link=
+->id];
+> > > +	struct snd_soc_dai *cpu_dai =3D snd_soc_rtd_to_cpu(rtd, 0);
+> > > +	struct snd_interval *rate =3D hw_param_interval(params,
+> > > +						      SNDRV_PCM_HW_PARAM_RATE);
+> > > +	int bclk_ratio =3D macaudio_get_runtime_bclk_ratio(substream);
+> > > +	int i;
+> > > +
+> > > +	if (props->is_sense) {
+> > > +		rate->min =3D rate->max =3D cpu_dai->symmetric_rate;
+> > > +		return 0;
+> > > +	}
+
+> > It feels like this DAI ought to have separate ops...  Also, for the
+> > sense link will we definitely already have a rate set up?
+
+> AIUI, the cpu rate should always be set up by the time we hit
+> this path as it is only taken when setting up the VISENSE FE (after the
+> playback stuff is already set up).
+
+Is that something we actually enforce or is that just a thing a sensible
+userspace should do?  I can see something racing.
+
+--o62xNzOzXCWulXud
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmq6SXAACgkQJNaLcl1U
+h9DIuAf+MhyW6NwNfZ3Bqa+m4pMvFpTPdEbJLiFpeSW5EqKWKUoQ0S0CJTszd3Bq
+zw8RLCiIUkMfvzpeQ6lgIYkpLAiHkB3jWyyD4wN+ienHL9xysW8MIjWGcGChA6r1
+SroQD2iFq4g3Ek51Y7AqqFxZ7Y/SU0YhHI0Op2PXvtXed8j+IQCJo6ICEtkKz3Xz
+o7dBOqx9xzCYzHpJLN35Q8D3V8TytTyTaVH6N4VWzj+LUo9OrrEOiDk3J/inWj39
+PX0uD3e1ZY5boTMxOWYdAuKWUJ3GrbMN+RpPivdMSNLqB6ITPUafOfUIxq+DYJSc
+5iIYKe247exzaqTaiKGmFS5J5o2eTA==
+=oNVi
+-----END PGP SIGNATURE-----
+
+--o62xNzOzXCWulXud--
 
