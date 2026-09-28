@@ -4,144 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E970CCA5FA1
-	for <linux-mediatek@archiver.kernel.org>; Tue, 29 Sep 2026 09:53:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4807BCA5FA5
+	for <linux-mediatek@archiver.kernel.org>; Tue, 29 Sep 2026 10:02:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	References:In-Reply-To:Subject:Cc:To:From:Message-ID:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=5QndERAeyHrOlKw2dyPW8c3xDWXtZf30X6T2Mz/d8oU=; b=ViPYkmXlOFuoZxvtCWosbVK8vV
-	ZIY9nMHOK3jwYOt/HRxm/cjXLe5M5VJKmYoGhu5/w4eOv17lw8vFIs6URmpgXGFubO0xA0HP9F+IU
-	QyFzKLoLJTewKP9aIX9YWJF8K8GKkz5HEQoLDMYB9BfIehOQo2nCIB4q7KhWSHk0b8Gd+2wGmWG1h
-	Em9J5peyNMk8qwhL9qGfsGJ/yTTUpyDdvK41P+oLC5oG9z5rVaxqZ5XfxUUkcrnXhC3YDOTWbE1dp
-	/pYXgqStfFojBtWKpLKqSgtKe8+PT4tnSlMG9IK0+drSijwLpr4PPm7oSeW1JX2atRVFu2K0JrqCq
-	ts1smiyQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=nulHJL9kJLIpA0dFtXRxyHkO5i/ASN8Tu4K5VpXlcec=; b=t5qqQbVmDTOy32RKNcBvKD25gC
+	EbzbEHi+NJ+erhrmwccL0G/42dWBhEy5dxHefOlkMSwdUMK2EXjlHVbYLfNL4r2/hRGNF5GsItQjS
+	p9WQRdoqR/iCLrulZfNgN+pX17e9iEtTJU1asONQhmg9/T22bVKyq4EB06ZLFJEnzrfFYQgvTRHVn
+	9j4Kr8fG2JcWl9yaAI8mivi8EzdFxXcjP7SKF0WMbU0Ij+FbYzUbIJwKLZXOQ7AmULwi3fzpj97QB
+	/3LoHeoHYewUTfO70QhN+Jg0zLxGYI39wGEBryyQGLaWKJApBqM2MQNLnsAttMQHjRcWMIj8n7A+n
+	KQtdlMgg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xBUWV-000000031vd-0vga;
-	Tue, 29 Sep 2026 09:53:19 +0000
-Received: from smtp-out2.suse.de ([195.135.223.131])
+	id 1xBUfP-000000033B8-3x4M;
+	Tue, 29 Sep 2026 10:02:31 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xBUWS-000000031um-1AgL;
-	Tue, 29 Sep 2026 09:53:17 +0000
-Received: from imap1.dmz-prg2.suse.org (imap1.dmz-prg2.suse.org [IPv6:2a07:de40:b281:104:10:150:64:97])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	by smtp-out2.suse.de (Postfix) with ESMTPS id 820551F444;
-	Tue, 29 Sep 2026 09:53:04 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
-	t=1790675588; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:content-type:content-type:
-	 in-reply-to:in-reply-to:references:references;
-	bh=5QndERAeyHrOlKw2dyPW8c3xDWXtZf30X6T2Mz/d8oU=;
-	b=IR6OyRhy9njtgSWGu5dmBV5fq2a2iSY7zSpuCnAC4r1LDvrMzaF7HrsGWBC9yc7030Cmey
-	YXmlWgv3VqyPwuNf6kxvymlGhY+o3GG7NYNBT62HDXFxRifA5OUEMpQOyaq/Fld9DIfyDk
-	mCEsKPFAsFoM4TFKDJjgzKC0O/tdx+c=
-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
-	s=susede2_ed25519; t=1790675588;
-	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:content-type:content-type:
-	 in-reply-to:in-reply-to:references:references;
-	bh=5QndERAeyHrOlKw2dyPW8c3xDWXtZf30X6T2Mz/d8oU=;
-	b=RI2iC9Uyd+Kid4F1uCZuCevrwCYLsVo5HsM3K2NX+dg/JmeWGYDnMpfctjG7FyGif9graT
-	+6ofcNl6xgt105CA==
-Authentication-Results: smtp-out2.suse.de;
-	dkim=pass header.d=suse.de header.s=susede2_rsa header.b=ef8ORTcE;
-	dkim=pass header.d=suse.de header.s=susede2_ed25519 header.b=Jy6iYy8+
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
-	t=1790675584; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:content-type:content-type:
-	 in-reply-to:in-reply-to:references:references;
-	bh=5QndERAeyHrOlKw2dyPW8c3xDWXtZf30X6T2Mz/d8oU=;
-	b=ef8ORTcEBdUmzDfukXYj0Ra0pCYyGNwZY3AeOcAIG9jdfWU/pD8IBdQxlADdWGHW2yjS6A
-	USif8lF+XS4DV8rGdUqE4YbVrGT9WjOalCZ06HO8AR4WHsw6bsgl4+Gl/jJMvmgwsZ/1Tx
-	MYw0bRj5uKlZTEEFtZz8mpZtlsATiUg=
-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
-	s=susede2_ed25519; t=1790675584;
-	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
-	 mime-version:mime-version:content-type:content-type:
-	 in-reply-to:in-reply-to:references:references;
-	bh=5QndERAeyHrOlKw2dyPW8c3xDWXtZf30X6T2Mz/d8oU=;
-	b=Jy6iYy8+AVNnk0GnA+0G2zcraJ5WdNWWhd1npGOvbUlB+jAegV9NL2JeFC1K2wDFiPXusW
-	ht7mubNR55etGoCA==
-Received: from imap1.dmz-prg2.suse.org (localhost [127.0.0.1])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	by imap1.dmz-prg2.suse.org (Postfix) with ESMTPS id 03EE2136E4;
-	Tue, 29 Sep 2026 09:53:04 +0000 (UTC)
-Received: from dovecot-director2.suse.de ([2a07:de40:b281:106:10:150:64:167])
-	by imap1.dmz-prg2.suse.org with ESMTPSA
-	id P+SYMn+Ku2pSLQAAD6G6ig
-	(envelope-from <tiwai@suse.de>); Tue, 29 Sep 2026 09:53:04 +0000
-Date: Tue, 29 Sep 2026 11:52:59 +0200
-Message-ID: <878q4k2xl0.wl-tiwai@suse.de>
-From: Takashi Iwai <tiwai@suse.de>
-To: James Calligeros <jcalligeros99@gmail.com>
-Cc: Martin =?ISO-8859-2?Q?Povi=B9er?= <povik+lin@cutebit.org>,	Liam Girdwood
- <lgirdwood@gmail.com>,	Mark Brown <broonie@kernel.org>,	Rob Herring
- <robh@kernel.org>,	Krzysztof Kozlowski <krzk+dt@kernel.org>,	Conor Dooley
- <conor+dt@kernel.org>,	Sven Peter <sven@kernel.org>,	Janne Grunau
- <j@jannau.net>,	Neal Gompa <neal@gompa.dev>,	David Rhodes
- <david.rhodes@cirrus.com>,	Richard Fitzgerald <rf@opensource.cirrus.com>,
-	Jaroslav Kysela <perex@perex.cz>,	Takashi Iwai <tiwai@suse.com>,	Ulf
- Hansson <ulfh@kernel.org>,	Amit Kucheria <amit.kucheria@linaro.org>,
-	"Rafael J. Wysocki" <rafael.j.wysocki@intel.com>,	Lars-Peter Clausen
- <lars@metafoo.de>,	Vinod Koul <vkoul@kernel.org>,	Matthias Brugger
- <matthias.bgg@gmail.com>,	AngeloGioacchino Del Regno
- <angelogioacchino.delregno@collabora.com>,	Shenghao Ding
- <shenghao-ding@ti.com>,	Kevin Lu <kevin-lu@ti.com>,	Baojun Xu
- <baojun.xu@ti.com>,	Sen Wang <sen@ti.com>,	James Schulman
- <james.schulman@cirrus.com>,	asahi@lists.linux.dev,
-	linux-sound@vger.kernel.org,	devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org,	linux-arm-kernel@lists.infradead.org,
-	patches@opensource.cirrus.com,	Takashi Iwai <tiwai@suse.de>,
-	linux-mediatek@lists.infradead.org,	Hector Martin <marcan@marcan.st>
-Subject: Re: [PATCH 08/28] ALSA: control: Add kcontrol callbacks for lock/unlock
-In-Reply-To: <20260920-macaudio-v1-8-741cc20a74e5@gmail.com>
-References: <20260920-macaudio-v1-0-741cc20a74e5@gmail.com>
-	<20260920-macaudio-v1-8-741cc20a74e5@gmail.com>
-User-Agent: Wanderlust/2.15.9 (Almost Unreal) Emacs/30.2 Mule/6.0
-MIME-Version: 1.0 (generated by SEMI-EPG 1.14.7 - "Harue")
-Content-Type: text/plain; charset=US-ASCII
-X-Rspamd-Server: rspamd2.dmz-prg2.suse.org
-X-Rspamd-Queue-Id: 820551F444
-X-Rspamd-Action: no action
-X-Spamd-Result: default: False [-1.01 / 50.00];
-	BAYES_HAM(-3.00)[99.99%];
-	SUSPICIOUS_RECIPS(1.50)[];
-	MID_CONTAINS_FROM(1.00)[];
-	R_DKIM_ALLOW(-0.20)[suse.de:s=susede2_rsa,suse.de:s=susede2_ed25519];
-	NEURAL_HAM_SHORT(-0.20)[-1.000];
-	MIME_GOOD(-0.10)[text/plain];
-	MX_GOOD(-0.01)[];
-	RCPT_COUNT_TWELVE(0.00)[35];
-	TO_MATCH_ENVRCPT_ALL(0.00)[];
-	ARC_NA(0.00)[];
-	FREEMAIL_TO(0.00)[gmail.com];
-	MIME_TRACE(0.00)[0:+];
-	URIBL_BLOCKED(0.00)[suse.de:mid,suse.de:dkim,imap1.dmz-prg2.suse.org:helo,imap1.dmz-prg2.suse.org:rdns,marcan.st:email];
-	DKIM_SIGNED(0.00)[suse.de:s=susede2_rsa,suse.de:s=susede2_ed25519];
-	FREEMAIL_ENVRCPT(0.00)[gmail.com];
-	FREEMAIL_CC(0.00)[cutebit.org,gmail.com,kernel.org,jannau.net,gompa.dev,cirrus.com,opensource.cirrus.com,perex.cz,suse.com,linaro.org,intel.com,metafoo.de,collabora.com,ti.com,lists.linux.dev,vger.kernel.org,lists.infradead.org,suse.de,marcan.st];
-	RCVD_TLS_ALL(0.00)[];
-	RCVD_COUNT_TWO(0.00)[2];
-	DBL_BLOCKED_OPENRESOLVER(0.00)[suse.de:mid,suse.de:dkim,imap1.dmz-prg2.suse.org:helo,imap1.dmz-prg2.suse.org:rdns];
-	FROM_EQ_ENVFROM(0.00)[];
-	FROM_HAS_DN(0.00)[];
-	TO_DN_SOME(0.00)[];
-	DNSWL_BLOCKED(0.00)[2a07:de40:b281:106:10:150:64:167:received,2a07:de40:b281:104:10:150:64:97:from];
-	RCVD_VIA_SMTP_AUTH(0.00)[];
-	TAGGED_RCPT(0.00)[lin,dt];
-	DKIM_TRACE(0.00)[suse.de:+];
-	R_RATELIMIT(0.00)[to_ip_from(RLs9qncch5cpanyka9neihc978)];
-	SPAMHAUS_XBL(0.00)[2a07:de40:b281:104:10:150:64:97:from]
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260929_025316_678232_F630A089 
-X-CRM114-Status: GOOD (  15.63  )
+	id 1xBUfO-000000033AR-1lWw;
+	Tue, 29 Sep 2026 10:02:30 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by sea.source.kernel.org (Postfix) with ESMTP id E96F34170F;
+	Tue, 29 Sep 2026 10:02:29 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0F2F81F000FF;
+	Tue, 29 Sep 2026 10:02:26 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1790676149;
+	bh=nulHJL9kJLIpA0dFtXRxyHkO5i/ASN8Tu4K5VpXlcec=;
+	h=From:To:Cc:In-Reply-To:References:Subject:Date;
+	b=RgioHhkmNdZtQvg+MiGPMxL9dx4r3u+xbFBYJ+THf5+Rj/t1kYEUpNgjYcTL1nQTu
+	 3GaKqOflr6Gedtkz3eaZ2HgTDTQH4Z/qjtDDQqbnH/SCyY/INOtgoNCT0wuarQSM/c
+	 B3tQvJjW5qVFkT3M7BVZTD0CT0ZQD9l93lKc8HiL9NFRWAmni9vH9/Dku5N99tpkxI
+	 gsTJvOAegSDLNZ4mC84wwTemvPkhvsv4ol4+Ss1vutXG8SP6BD1IiOb8v1l4uSVISh
+	 d+5ClpJQJWNSDUED1S2adj1CVP0m8MDYWPXTiNs4MdmWKvM5j3R1A5zfUsKHDh21Q1
+	 wpBrAxlcnNR0g==
+From: Mark Brown <broonie@kernel.org>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ phucduc.bui@gmail.com
+Cc: Liam Girdwood <lgirdwood@gmail.com>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, Jaroslav Kysela <perex@perex.cz>, 
+ Takashi Iwai <tiwai@suse.com>, 
+ Kuninori Morimoto <kuninori.morimoto.gx@renesas.com>, 
+ cassiogabrielcontato@gmail.com, Linus Walleij <linusw@kernel.org>, 
+ Bartosz Golaszewski <brgl@kernel.org>, 
+ Mukesh Ojha <mukesh.ojha@oss.qualcomm.com>, 
+ Jiaxin Yu <jiaxin.yu@mediatek.com>, linux-sound@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+ linux-kernel@vger.kernel.org
+In-Reply-To: <20260918133912.133799-1-phucduc.bui@gmail.com>
+References: <20260918133912.133799-1-phucduc.bui@gmail.com>
+Subject: Re: [PATCH 00/15] ASoC: mediatek: mt8192: Improve error handling
+Message-Id: <179061349732.139547.10371331992646576384.b4-ty@b4>
+Date: Mon, 28 Sep 2026 17:38:17 +0100
+MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+X-Mailer: b4 0.17-dev
+X-Developer-Signature: v=1; a=openpgp-sha256; l=3193; i=broonie@kernel.org;
+ h=from:subject:message-id; bh=stgBM7pYGROF9+rzR96tnRXOrCNzrYnyoCUvQ4IcUNg=;
+ b=owEBbQGS/pANAwAKASTWi3JdVIfQAcsmYgBqu4ywQnV3aU6c7DM6H1ZPC3cV2G/fM4z512afD
+ 8CUVlf9y4OJATMEAAEKAB0WIQSt5miqZ1cYtZ/in+ok1otyXVSH0AUCaruMsAAKCRAk1otyXVSH
+ 0InXB/9UXNYse/bdzBQAmCKkxDQ72Yf7LfgHio339TkWNwiU2WRhi8z625A0K+Pehuiu3TFijUi
+ t5+nOTeESV2C/DVzyENdDvLE6SZnWWCTyIHUWLS8MS9c7RaiQSyf9rAR3saw1+Z9yJa8PLfvLuf
+ O2GTgXmoqcY3rLV00ontvlsV8k/Gw+6kn1zhfs22SRATtnEXsSTCzVZvZC3Fie05QXPr038QlVM
+ UiH5gSzL5yzbzmfYqj02yW2xYD31mfIA+h3jIRepeKuzHAg3sKCGnvZZY5L1KR3tUC6fC7z5LpT
+ m3yITdtFU+04m+uo4Xs/1GrKMSWrid88StM6M+CbSYeYjgCn
+X-Developer-Key: i=broonie@kernel.org; a=openpgp;
+ fpr=3F2568AAC26998F9E813A1C5C3F436CA30F5D8EB
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -156,31 +88,71 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sun, 20 Sep 2026 06:53:47 +0200,
-James Calligeros wrote:
+On Fri, 18 Sep 2026 20:38:56 +0700, phucduc.bui@gmail.com wrote:
+> ASoC: mediatek: mt8192: Improve error handling
 > 
-> From: Hector Martin <marcan@marcan.st>
+> From: bui duc phuc <phucduc.bui@gmail.com>
 > 
-> This allows drivers to implement policy around locking/unlocking
-> controls, such as enforcing that a group of controls may only be locked
-> by the same process/file, and taking actions when the controls
-> lock/unlock (such as granting special access on lock and resetting
-> values on unlock).
+> Hi all,
 > 
-> This is, in particular, useful to implement volume safety controls, such
-> that only a particular process (that locks controls and completes a
-> handshake) may increase volumes above a given safe limit. It also allows
-> the volume to be automatically lowered if that process dies (which will
-> trigger an implicit unlock).
+> This series addresses part of the error handling in the MT8192 driver.
 > 
-> Signed-off-by: Hector Martin <marcan@marcan.st>
-> Signed-off-by: James Calligeros <jcalligeros99@gmail.com>
+> [...]
 
-This doesn't sound like a good approach to me, and this looks rather
-irrelevant with the purpose of the series.
+Applied to
 
+   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-7.4
 
-thanks,
+Thanks!
 
-Takashi
+[01/15] ASoC: mediatek: mt8192: fix APLL mux error handling
+        https://git.kernel.org/broonie/sound/c/e8c263e0ef95
+[02/15] ASoC: mediatek: mt8192: fix AFE clock error handling
+        https://git.kernel.org/broonie/sound/c/7c54781e6e60
+[03/15] ASoC: mediatek: mt8192: fix error handling in APLL enable functions
+        https://git.kernel.org/broonie/sound/c/88760524ca99
+[04/15] ASoC: mediatek: mt8192: fix MCK clock error handling
+        https://git.kernel.org/broonie/sound/c/4a0ab266cb15
+[05/15] ASoC: mediatek: mt8192: switch to devm_clk_get_optional()
+        https://git.kernel.org/broonie/sound/c/6f4edfdce009
+[06/15] ASoC: mediatek: mt8192: Use dev_err_probe() in mt8192_init_clock()
+        https://git.kernel.org/broonie/sound/c/bed395cb305b
+[07/15] ASoC: mediatek: mt8192: Propagate errors in mt8192_afe_gpio_request()
+        https://git.kernel.org/broonie/sound/c/411be3902fa8
+[08/15] ASoC: mediatek: mt8192: Use dev_err_probe() for devm_pinctrl_get()
+        https://git.kernel.org/broonie/sound/c/59608878c593
+[09/15] ASoC: mediatek: mt8192: check return values in mt8192_afe_gpio_init()
+        https://git.kernel.org/broonie/sound/c/7cca184ad434
+[10/15] ASoC: mediatek: mt8192: Handle regcache_sync() failure in runtime resume
+        https://git.kernel.org/broonie/sound/c/d9e264741b04
+[11/15] ASoC: mediatek: mt8192: Remove redundant error message
+        https://git.kernel.org/broonie/sound/c/d31c0d3eb414
+[12/15] ASoC: mediatek: mt8192: Propagate mt8192_afe_gpio_request() errors in ADDA DAI
+        https://git.kernel.org/broonie/sound/c/eed9414a1b07
+[13/15] ASoC: mediatek: mt8192: Propagate errors in TDM DAI DAPM event handlers
+        https://git.kernel.org/broonie/sound/c/d0bc9613bc2d
+[14/15] ASoC: mediatek: mt8192: Propagate errors in I2S DAI DAPM event handlers
+        https://git.kernel.org/broonie/sound/c/49aeb628d10e
+[15/15] ASoC: mediatek: mt8192-mt6359: Fix error handling in MTKAIF calibration
+        https://git.kernel.org/broonie/sound/c/d6c8a0b5bf69
+
+All being well this means that it will be integrated into the linux-next
+tree (usually sometime in the next 24 hours) and sent to Linus during
+the next merge window (or sooner if it is a bug fix), however if
+problems are discovered then the patch may be dropped or reverted.
+
+You may get further e-mails resulting from automated or manual testing
+and review of the tree, please engage with people reporting problems and
+send followup patches addressing any issues that are reported if needed.
+
+If any updates are required or you are submitting further changes they
+should be sent as incremental updates against current git, existing
+patches will not be replaced.
+
+Please add any relevant lists and maintainers to the CCs when replying
+to this mail.
+
+Thanks,
+Mark
+
 
