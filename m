@@ -4,63 +4,186 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8A228C9833E
-	for <linux-mediatek@archiver.kernel.org>; Mon, 28 Sep 2026 08:04:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DA001C9833E
+	for <linux-mediatek@archiver.kernel.org>; Mon, 28 Sep 2026 08:09:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Message-ID:Date
-	:Cc:To:From:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=wpKB8NWNIG9HI9GTo75J4nfgoxYdt8QoZF0s8fE5gFw=; b=xkRqbM2TX/RiOJ16U8/E806coS
-	vF21xRtkk+CZvYU2AgCLvMOj2XL91gYc5NTcuBDxfafzRv9WhJ57+qV77zbQ6J43YTO6SgHgzaREQ
-	QAxJs2wnMSU12Qrx8YjoQOvZxaciwD5uhdx6zcPREqo11kyVWOm58XpwFmDqzGXKUCxGLF8UwtJhR
-	ow0ekFankFcvboqLYlMTGQRqznDJA8/aOWWq8KcVScCMVjMVEIXTHAqHdgfEWna4RYAUqtNPPGCLE
-	Bhr0lxyGQSstNXvDIt6vJMlS/y/XJSGguENo5douml4NhrTmKhnJaYpCnodt1EHN8Xc3oXoj+FWsg
-	gSpi6ZxQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=oM81pKyayfK2X8YKDVXwTbFLMrukiJVnnCmewayJBqA=; b=lJ1e1rJv12j8yneID+3rSGrL0U
+	fVUSwM7WZWTx+dxCDWTJyopjPyeQOsfpEadSmGlSGZu9Lzcil3YAy5120RXnXK3xuFz4hylI3SY4Y
+	Jhj7LCMwgBYDqRdf4S2jvT+q+T53gBb/B9VtfTg3EgjqCbsyCH6DBZbvaw2690txGodzPWF6ePIUm
+	SGH/L7JDsuEmQrrLbB9CWJzksRZ6zeLDnhjCfJXf+m5e1UOtMA2ecHnpWPLo7occzxoiuUyuP2N1p
+	bh/xlHofcUkxOj3B6HqFPQFSpRfIeSy9S/h+0kUTv7GhyH4EIxTg0D7UQ6zzZuegQkG/7HyEi5jYT
+	BrSuu6ZA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xB6LE-000000000Ne-0hED;
-	Mon, 28 Sep 2026 08:04:04 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1xB6Q0-000000001l0-3RJe;
+	Mon, 28 Sep 2026 08:09:00 +0000
+Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xB6Kv-000000000CW-1q7j;
-	Mon, 28 Sep 2026 08:03:45 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 57E3060D85;
-	Mon, 28 Sep 2026 08:03:44 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id C94FD1F000FF;
-	Mon, 28 Sep 2026 08:03:42 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1790582624;
-	bh=wpKB8NWNIG9HI9GTo75J4nfgoxYdt8QoZF0s8fE5gFw=;
-	h=Subject:From:To:Cc:Date:In-Reply-To:References;
-	b=fQwmu5tZ++pPdx978y8XvVOELXuIhncUvhyxzvE3O28BzUdCEfshtgvu6Ynzj9ine
-	 bnC73Rzfo9sFCCL8gc8PvojoDaVGNcVeAjQXndfnduOZcKzV6AXEW/mppLXuwcgbli
-	 jDY2o76gvQzgaJ4E3zxjgnrWuYvCgick5VE2SEqzgpazPxoFnRBCLcicVatAGSQ8+a
-	 WbmRCmUD+U+2PA+bVTY2WzNpmeJh2Tfo8ZKfSVMMf2LtlFj0S6cAI8kNTtktL010mt
-	 t0+XXepyA6wezn0wGw/geaZ6Ijhfi0Sv/L0vKPTg1w7yPWhw8yQ1QtDF9a5bMhC5hU
-	 2feqsY/CYFnsg==
-Subject: Re: [PATCH net-next v2 7/7] net: stmmac: mediatek: add support for MT8189 SoC
-From: netdev-bot+sashiko@kernel.org
-To: louisalexis.eyraud@collabora.com
-Cc: andrew+netdev@lunn.ch, davem@davemloft.net, edumazet@google.com,
- kuba@kernel.org, pabeni@redhat.com, robh@kernel.org, krzk+dt@kernel.org,
- conor+dt@kernel.org, richardcochran@gmail.com, matthias.bgg@gmail.com,
- angelogioacchino.delregno@collabora.com, biao.huang@mediatek.com,
- maxime.chevallier@bootlin.com, mcoquelin.stm32@gmail.com,
- alexandre.torgue@foss.st.com, kernel@collabora.com, netdev@vger.kernel.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-stm32@st-md-mailman.stormreply.com
-Date: Mon, 28 Sep 2026 08:03:42 +0000
-Message-ID: <179058262236.3145.17042342965998808468@kernel.org>
-In-Reply-To: <20260924-dwmac-mediatek-mt8189-v2-7-430bd74d5ef9@collabora.com>
-References: <20260924-dwmac-mediatek-mt8189-v2-7-430bd74d5ef9@collabora.com>
-X-sashiko-severity: Medium
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
+	id 1xB6Px-000000001iu-3nz5
+	for linux-mediatek@lists.infradead.org;
+	Mon, 28 Sep 2026 08:08:59 +0000
+Received: from pps.filterd (m0279867.ppops.net [127.0.0.1])
+	by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id 68S7xMM11982076
+	for <linux-mediatek@lists.infradead.org>; Mon, 28 Sep 2026 08:08:57 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
+	cc:content-transfer-encoding:content-type:date:from:in-reply-to
+	:message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
+	oM81pKyayfK2X8YKDVXwTbFLMrukiJVnnCmewayJBqA=; b=SKDSW8Y5QhLznaQ1
+	yzxkud/7TYJOhk6dx/p3qyA8tC7kxFki3tE+Nd56wjxF+b9iJASw0vjxii6TezBT
+	ZMdgxRrVQ2HKFKydfWaRhBoF1GZenEMTC9ZAlW7V7JbrI6fP8P5Zye3NyIqA3FnL
+	bZR5CJzL4DXRwrnLCl+DzAJSwTuaS9FLvO/Sz22RXBSSG5drpv8iuVkBtm4eQsJG
+	dpY7YaSJfuQDnR8mcWdZIemD2SZhPnkbHriD1NzKmc8auOlu68yM325Jq+Uh3j4G
+	/z3D6lwBxyFHr4YBKSDVwA3Y/J+s3jJDWavHdfwb3amjUN9uEsX5VHOL68NyDm0u
+	n08ytQ==
+Received: from mail-qk1-f198.google.com (mail-qk1-f198.google.com [209.85.222.198])
+	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4gyj6t0h2g-1
+	(version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
+	for <linux-mediatek@lists.infradead.org>; Mon, 28 Sep 2026 08:08:57 +0000 (GMT)
+Received: by mail-qk1-f198.google.com with SMTP id af79cd13be357-93c5ab5c136so283446785a.3
+        for <linux-mediatek@lists.infradead.org>; Mon, 28 Sep 2026 01:08:57 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=oss.qualcomm.com; s=google; t=1790582936; x=1791187736; darn=lists.infradead.org;
+        h=content-transfer-encoding:content-type:in-reply-to:content-language
+         :from:references:cc:to:subject:user-agent:mime-version:date
+         :message-id:from:to:cc:subject:date:message-id:reply-to:content-type;
+        bh=oM81pKyayfK2X8YKDVXwTbFLMrukiJVnnCmewayJBqA=;
+        b=AAChiHA1cbAT3S+uel57gcKsYBtY6FL3PhIOZXURv9C+u76ShIDzlZ0XAupDabujZa
+         YRNhC05aVwxFQbCdAWCVa7TI7aAZBaI7UClSTMi4A5jxcL8IHEE1RoDx3Se+A78I4cb0
+         VFyY7wr7ppX/I9MeaCbLXwv3FM71RdoQL1fCFiryIMi8lGuzGcoxNCBJbISbpM2hyJud
+         j5NsKBL8pS9hMxn8de3ipHy16pQhhMVMEqCBoCY/gHBek94La55BhHbXFoB/JTQ7ptSC
+         Duh9wueTKChkNAUKLS0hXNfvhW2yatdGVSMT2grPhmw1WJNtEQwdaNKhlhHLWBYv3LmT
+         +/5A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20260707; t=1790582936; x=1791187736;
+        h=content-transfer-encoding:content-type:in-reply-to:content-language
+         :from:references:cc:to:subject:user-agent:mime-version:date
+         :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to:content-type;
+        bh=oM81pKyayfK2X8YKDVXwTbFLMrukiJVnnCmewayJBqA=;
+        b=kcXj50nCZmnrfANQn1H6XmLGq1pTEPeB7smLX1sKQTc1Kdtzldvq8I/iOkcPRfvgFE
+         Y+yA2lIbywcPj6vW+Qh5XtDUpgQNJuiA+EUmNrBMyxJnMddXr2n36kjXg7s11oSEOPdb
+         S4J/FMnTJahcv4XZL5EAQGKN3BOCytuoXOe95HzHs6KeE1tl19Z3klH8OuSWi12+Mxmn
+         JPruhABtt8tT9PL+hQqnfzDa+1EbVjuqMTTMJESWApzqmWRzqXwrPRugJUDpmMgyyV4o
+         meidoNt4SJgXrtCYfhZRXW/57Ua+xVx+VtGFciw5K4kzhzfLCa4Pvc1iYIqe2WnpAv5C
+         8clQ==
+X-Forwarded-Encrypted: i=1; AKwUvBz4WfEN3kFf0YWv3cI0icQvXGS3E2V/+Jw31y+7DgjQjj8RCaZS/XDauBuCmccdIqTIDCkGFEJU4fT4Uo/N3g==@lists.infradead.org
+X-Gm-Message-State: AFuF++mWvmTg8uf2Kbzai5c7JhrDQXESaneLl0ZjD/vN7HkhW+9MKmWl
+	jagd244Lks/9p6FYjvdoJH4kXQlnL6mA7BhHE5M2nJOqX4XDvr72a1hoEJKZwKcUtajOyABtLLo
+	0Pqny/MBoCWhvz/9f5dqwe76+0zp/R6bybo+G5cnmfdqseyFdW5q5DfrKGmsSEbpeytFvM3WI7i
+	k=
+X-Gm-Gg: AYBFou2tJP+3x9ghEpGNSedzN8MwHqbkJ1+ku2vh/dQkrn5oEFrpzVhWdxF3+YMunAq
+	xKYPtJHu+cwTN2TZgjFZc+kFzLXOYh7TYNTEqyM8qTQeQNSRp/4IO/9IosI9ayDp5JScCB7sCTc
+	GQDi4X8v1GLEC0gfgVXi2HJuE9B8Mt7shgehbZj1U9m+6/3v+ucOutoUq3NTEj4QQ73DeavgF6b
+	u/M8MEqfeGwCdQJQyKR9DP3ujJostWflJtfI5D7gNJDk/7AA9SUaItW6UV24+/VuXUGltfx7rXl
+	/Hb3paVWcPMobUoiGpRDd1bgBpW1ptrE4a/njofSD7DLSEUnEhW4EwBoLr8f06iqSbBWlaWdXW2
+	6N1eiA3fBLrgSGuDNvxkjzgMTyiwq
+X-Received: by 2002:a05:620a:4150:b0:939:a003:7127 with SMTP id af79cd13be357-93c43d15a2dmr1823459685a.52.1790582936324;
+        Mon, 28 Sep 2026 01:08:56 -0700 (PDT)
+X-Received: by 2002:a05:620a:4150:b0:939:a003:7127 with SMTP id af79cd13be357-93c43d15a2dmr1823452285a.52.1790582935772;
+        Mon, 28 Sep 2026 01:08:55 -0700 (PDT)
+Received: from [192.168.1.110] ([178.197.219.214])
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-4887a349731sm26045947f8f.12.2026.09.28.01.08.45
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Mon, 28 Sep 2026 01:08:53 -0700 (PDT)
+Message-ID: <ccb949ea-5fa9-47e5-be75-af8155328dc8@oss.qualcomm.com>
+Date: Mon, 28 Sep 2026 10:08:43 +0200
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: (subset) [PATCH 1/2] dt-bindings: display: Use consistent
+ indentation in the example
+To: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+Cc: Luca Ceresoli <luca.ceresoli@bootlin.com>, Chen-Yu Tsai
+ <wens@kernel.org>,
+        David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
+        Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+        Maxime Ripard <mripard@kernel.org>,
+        Thomas Zimmermann <tzimmermann@suse.de>, Rob Herring <robh@kernel.org>,
+        Krzysztof Kozlowski <krzk+dt@kernel.org>,
+        Conor Dooley <conor+dt@kernel.org>,
+        Jernej Skrabec
+ <jernej.skrabec@gmail.com>,
+        Samuel Holland <samuel@sholland.org>, Liu Ying <victor.liu@nxp.com>,
+        Andrzej Hajda <andrzej.hajda@intel.com>,
+        Neil Armstrong <neil.armstrong@linaro.org>,
+        Robert Foss <rfoss@kernel.org>, Jonas Karlman <jonas@kwiboo.se>,
+        Frank Li <Frank.Li@nxp.com>, Sascha Hauer <s.hauer@pengutronix.de>,
+        Pengutronix Kernel Team <kernel@pengutronix.de>,
+        Fabio Estevam <festevam@gmail.com>,
+        Francesco Dolcini
+ <francesco@dolcini.it>,
+        Philipp Zabel <p.zabel@pengutronix.de>,
+        Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+        Rob Clark <robin.clark@oss.qualcomm.com>,
+        Dmitry Baryshkov
+ <lumag@kernel.org>,
+        Abhinav Kumar <abhinav.kumar@linux.dev>,
+        Jessica Zhang <jesszhan0024@gmail.com>, Sean Paul <sean@poorly.run>,
+        Marijn Suijten <marijn.suijten@somainline.org>,
+        Marcus Folkesson <marcus.folkesson@gmail.com>,
+        Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+        Alexandre Torgue <alexandre.torgue@foss.st.com>,
+        Yannick Fertre <yannick.fertre@foss.st.com>,
+        Raphael Gallais-Pou <raphael.gallais-pou@foss.st.com>,
+        Philippe Cornu <philippe.cornu@foss.st.com>,
+        Matthias Brugger <matthias.bgg@gmail.com>,
+        AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+        Adrien Grassein <adrien.grassein@gmail.com>,
+        Russell King <linux@armlinux.org.uk>, Simha BN <simhavcs@gmail.com>,
+        CK Hu <ck.hu@mediatek.com>, Jitao shi <jitao.shi@mediatek.com>,
+        Yongxing Mou <yongxing.mou@oss.qualcomm.com>,
+        Abel Vesa
+ <abelvesa@kernel.org>,
+        Chris Morgan <macromorgan@hotmail.com>,
+        Martinez Canillas <javierm@redhat.com>,
+        dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org,
+        linux-arm-kernel@lists.infradead.org, linux-sunxi@lists.linux.dev,
+        linux-kernel@vger.kernel.org, imx@lists.linux.dev,
+        linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org,
+        freedreno@lists.freedesktop.org,
+        linux-stm32@st-md-mailman.stormreply.com
+References: <20260913123331.100293-3-krzysztof.kozlowski@oss.qualcomm.com>
+ <179057359762.92994.13773102514654073802.b4-ty@b4>
+ <8499ed1a-df9e-4e5a-b609-3da8499a47b5@oss.qualcomm.com>
+ <20260928065837.GA22609@killaraus.ideasonboard.com>
+From: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
+Content-Language: en-US
+In-Reply-To: <20260928065837.GA22609@killaraus.ideasonboard.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwOTI4MDAzMiBTYWx0ZWRfXxJWW/IW5mkNf
+ AfTyS+k5LRetlrGvBtdvo7qOvwpC67zLpwoJnoeBRMV8ygE6D7pJy22fPEJNnazZ8hzWEAGgQKg
+ 51KYa1j4inEEtxgJtLbfF0Y5i3AHv/DtXn0KRC5U21xHISxYf7RxqHfqPIU5II45awIN5bVmdiw
+ QGL2YBD+tksyCubln52DoRZVQt0f/nJfgyzDhN5PE2ouZiOmBUp2033a0u/wyROziCJoscH13Vv
+ uafibVH4Mahts7gvv8ldcHXoIsiGR25oq9P/00aQwo+SQ+W17f3pq60KOrQAhT+yz94d+xWxU6M
+ oWM9RkqbdsRGKrM80Nm5KFba2Q1iY4Ibc6CBJCpChCnkv4caq/XvRWBrzdjB57Q8VXKPb1h6Vt/
+ ycmou7iRoemm4MJ9IEwtzH6VPBuCCL5OEe9H746is1bBydccC+lT1yQFrLjciPTjiuV08PV/MCa
+ gEsALWo3Kocr2cvbMtA==
+X-Proofpoint-ORIG-GUID: X_x_lKxAQiWju4U3CT9MAxNUG99y7WNP
+X-Authority-Analysis: v=2.4 cv=dZkVTnXe c=1 sm=1 tr=0 ts=6aba2099 cx=c_pps
+ a=qKBjSQ1v91RyAK45QCPf5w==:117 a=+bKQE0WJfmhK2875HamI0Q==:17
+ a=IkcTkHD0fZMA:10 a=VdqzKS8jKosA:10 a=s4-Qcg_JpJYA:10
+ a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=eoimf2acIAo5FJnRuUoq:22
+ a=3sPRIKSABCI_lCAVw8wA:9 a=QEXdDO2ut3YA:10 a=NFOGd7dJGGMPyQGDc5-O:22
+X-Proofpoint-GUID: X_x_lKxAQiWju4U3CT9MAxNUG99y7WNP
+X-Proofpoint-Spam-Info: AW1haW4tMjYwOTI4MDAzMiBTYWx0ZWRfX1sfuS+oxUIhG
+ NanzUXWfFH56GsRB11CENr++9nSWsDERSRsu0qQvPZcA4kXzHKjS9NOnkCxtwCV8LzMyLGXVuPE
+ Lhsy2cuyWYaCiigyAXy2wvO03ddwUX4=
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1176,Hydra:6.1.134,FMLib:17.12.100.49
+ definitions=2026-09-28_01,2026-09-21_02,2025-10-01_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ priorityscore=1501 lowpriorityscore=0 bulkscore=0 clxscore=1015 phishscore=0
+ malwarescore=0 impostorscore=0 suspectscore=0 adultscore=0 spamscore=0
+ classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
+ reason=mlx scancount=1 engine=8.22.0-2609040000 definitions=main-2609280032
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260928_010857_981983_936C2694 
+X-CRM114-Status: GOOD (  13.61  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,167 +198,31 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Thank you for your contribution! Sashiko AI review found 1 potential
-issue(s) to consider.
+On 28/09/2026 08:58, Laurent Pinchart wrote:
+> On Mon, Sep 28, 2026 at 08:03:18AM +0200, Krzysztof Kozlowski wrote:
+>> On 28/09/2026 07:33, Luca Ceresoli wrote:
+>>> On Sun, 13 Sep 2026 14:33:32 +0200, Krzysztof Kozlowski wrote:
+>>>> Correct indentation in the examples to consistent 2- or 4-spaces
+>>>> indentation to fix dt-check-style warnings ("example 0
+>>>> [indent-consistent] indent mismatch ...").  Preferred is 4-spaces, but
+>>>> re-indenting entire example just for that is too much churn.
+>>>
+>>> Applied, thanks!
+>>>
+>>> [1/2] dt-bindings: display: Use consistent indentation in the example
+>>>       commit: 370c5d9004f8b754351981d59fc26851bf943e93
+>>
+>> Thanks, but I expected no one will pick it up, so I asked Rob to take
+>> it, thus it is already queued.
+> 
+> Please explain your merge plans in the cover letter next time.
 
-Critical: 0 · High: 0 · Medium: 1 (2) · Low: 0
+The merge plan was this going through drm-misc. It got reviews, no one
+applied, even Dmitry for msm only reviewed the msm-bits (second patch),
+so I asked Rob to take it. This was not planned, but result of usual
+drm-misc inactivity for bindings (many bindings were not taken in the
+past or with noticeable delay/pings).
 
-If you believe none of the issues are legitimate, please reply to each
-issue of Medium severity or higher and explain why the AI is wrong.
-If any of them are legitimate and you plan to respin, please let patchwork
-know by including "pw-bot: cr" as a separate line at the end of your reply
-(one such reply per series is enough).
-
-- [Medium] On MT8189, the driver and the DT binding disagree about MAC-
-  sourced RMII.
-
-Pre-existing issues:
-- [Medium] This problem wasn't introduced by this patch, but
-  mediatek_dwmac_probe() ignores the return value of…
-- [Medium] This problem wasn't introduced by this patch, but
-  mediatek_dwmac_clks_config(enabled=true) leaks clock enables.
-
---
-
-net: stmmac: mediatek: add support for MT8189 SoC
-
-This adds MT8189 support to the MediaTek dwmac glue driver. MT8189 reuses
-the MT8195 pericfg programming callbacks, with a different register
-offset, 180ps delay stage dividers, a shorter clock list and the TX clock
-output enable feature.
-
-> diff --git a/drivers/net/ethernet/stmicro/stmmac/dwmac-mediatek.c b/drivers/net/ethernet/stmicro/stmmac/dwmac-mediatek.c
-> index 36599dc33b14..f07c331b029f 100644
-> --- a/drivers/net/ethernet/stmicro/stmmac/dwmac-mediatek.c
-> +++ b/drivers/net/ethernet/stmicro/stmmac/dwmac-mediatek.c
-
-[ ... ]
-
-> @@ -124,6 +131,10 @@ static const char * const mt8195_dwmac_clk_l[] = {
->  	"axi", "apb", "mac_cg", "mac_main", "ptp_ref"
->  };
->  
-> +static const char * const mt8189_dwmac_clk_l[] = {
-> +	"mac_main", "ptp_ref"
-> +};
-
-[Severity: Medium]
-How is RMII with the MAC providing the reference clock meant to work on
-MT8189?
-
-The MT8189 binding added earlier in this series ("dt-bindings: net:
-mediatek-dwmac: add support for MT8189 SoC") limits clock-names to exactly
-these two entries:
-
-    clock-names:
-      items:
-        - const: mac_main
-        - const: ptp_ref
-
-However, it still allows mediatek,rmii-clk-from-mac for this compatible.
-The tx/rx-delay-ps descriptions also mention the MT8189 RMII interface.
-
-If a board sets mediatek,rmii-clk-from-mac, mediatek_dwmac_clk_init()
-always requests a clock that the binding does not permit:
-
-drivers/net/ethernet/stmicro/stmmac/dwmac-mediatek.c:mediatek_dwmac_clk_init() {
-    ...
-	if (plat->rmii_clk_from_mac) {
-		plat->rmii_internal_clk = devm_clk_get(plat->dev, "rmii_internal");
-		if (IS_ERR(plat->rmii_internal_clk))
-			ret = PTR_ERR(plat->rmii_internal_clk);
-    ...
-}
-
-So a DT that passes schema validation fails to probe. A DT that supplies
-rmii_internal, and so would probe, fails schema validation.
-
-The new variant also reuses mt8195_set_interface() and mt8195_set_delay().
-These program MT8195_RMII_CLK_SRC_INTERNAL and the RMII_TXC/RMII_RXC delay
-path, so the driver seems to treat this mode as supported.
-
-Should the MT8189 binding gain an optional rmii_internal clock? Or should
-the binding and the driver reject mediatek,rmii-clk-from-mac for MT8189
-with a clear error?
-
-[ ... ]
-
-> @@ -495,6 +506,21 @@ static void mt8195_fix_mac_speed(void *priv, phy_interface_t interface,
->  			   reg_val);
->  }
->  
-> +static const struct mediatek_dwmac_variant mt8189_gmac_variant = {
-> +	.dwmac_set_phy_interface = mt8195_set_interface,
-> +	.dwmac_set_delay = mt8195_set_delay,
-
-[Severity: Medium]
-This is a pre-existing issue, not one introduced by this patch. Now that
-MT8189 uses mt8195_set_delay(), can it cause trouble that
-mediatek_dwmac_probe() ignores the return value of mediatek_dwmac_init()?
-
-drivers/net/ethernet/stmicro/stmmac/dwmac-mediatek.c:mediatek_dwmac_probe() {
-    ...
-	mediatek_dwmac_common_data(pdev, plat_dat, priv_plat);
-	mediatek_dwmac_init(&pdev->dev, priv_plat);
-
-	ret = mediatek_dwmac_clks_config(priv_plat, true);
-    ...
-}
-
-With phy-mode = "gmii", stmmac_get_phy_intf_sel() returns
-PHY_INTF_SEL_GMII_MII. That passes the check in mediatek_dwmac_init(), and
-mt8195_set_interface() writes CTRL0. mt8195_set_delay() then reaches:
-
-	default:
-		dev_err(plat->dev, "phy interface not supported\n");
-		return -EINVAL;
-
-CTRL1 and CTRL2 are never written, but probe still goes on into
-stmmac_dvr_probe() and succeeds.
-
-The error is also ignored for phy modes that mediatek_dwmac_init() rejects
-up front. In that case the device probes with the pericfg interface
-registers never programmed.
-
-Should probe fail when mediatek_dwmac_init() returns an error?
-
-> +	.dwmac_fix_mac_speed = mt8195_fix_mac_speed,
-> +	.clk_list = mt8189_dwmac_clk_l,
-> +	.num_clks = ARRAY_SIZE(mt8189_dwmac_clk_l),
-
-[Severity: Medium]
-This isn't a bug introduced by this patch, but does
-mediatek_dwmac_clks_config() leak the bulk clock enables when the
-rmii_internal clock fails to enable?
-
-drivers/net/ethernet/stmicro/stmmac/dwmac-mediatek.c:mediatek_dwmac_clks_config() {
-    ...
-		ret = clk_bulk_prepare_enable(variant->num_clks, plat->clks);
-		...
-		ret = clk_prepare_enable(plat->rmii_internal_clk);
-		if (ret) {
-			dev_err(plat->dev, "failed to enable rmii internal clk, err = %d\n", ret);
-			return ret;
-		}
-    ...
-}
-
-That path has no clk_bulk_disable_unprepare(). mediatek_dwmac_probe() also
-returns the error directly, without reaching err_drv_probe:
-
-	ret = mediatek_dwmac_clks_config(priv_plat, true);
-	if (ret)
-		return ret;
-
-On MT8189 this leaves mac_main and ptp_ref prepared and enabled. The devm
-bulk get cleanup only drops the clock references. The same leak can
-happen through the clks_config callback on resume.
-
-On MT8189 this needs a DT that sets mediatek,rmii-clk-from-mac and also
-supplies an rmii_internal clock, which the MT8189 binding does not allow.
-
-[ ... ]
-
--- 
-Sashiko AI review · https://netdev-ai.bots.linux.dev/sashiko/#/patchset/20260924-dwmac-mediatek-mt8189-v2-0-430bd74d5ef9%40collabora.com
+Best regards,
+Krzysztof
 
