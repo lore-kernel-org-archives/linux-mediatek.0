@@ -4,66 +4,106 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 69CE9CA5FA3
-	for <linux-mediatek@archiver.kernel.org>; Mon, 28 Sep 2026 18:34:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 81A6FCA5FA3
+	for <linux-mediatek@archiver.kernel.org>; Mon, 28 Sep 2026 19:46:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=XKHR+SJFFASvBta04CRZYYpREuzHifi5SVWuCQ0YQps=; b=vCX/olBwA4EiHFbAirzBZO7b3m
-	f71mgFjF5rPWcpWAZjO6JCpclZysqj5vzXAfnjaDrfDdPJw+LALtYpqRnWPHD503mRtRZcGLXukQo
-	4kxJbBer6GaqMWLoSbhVqHYAyM6DEiGccHQRn2Baf/1zPAc7o6or6npFCO68mUq95kbfGINcIXo8+
-	Xoo42wDHLGeUHQ0LqtfgyCYFqU9uO1PEYMEMnMfx5MAWuCm0QcA4HHPm0RIelGGWCavtbeM9i6Cbi
-	0Lk5AVzAIV/rFzPDs/Y7Rpta2Su+ELP4ueycUQ2gNZ/WOgL7R7fYndaQ4KWhln987/EjfkwX6dkZH
-	I/qTl5fQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-ID:Date:Subject:To:From:Reply-To:Cc:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=lPt2STi0m5YpEVxAK2hfO3VZC4EAI2eiHH4POGJLw7Q=; b=iUUKs45W42US3XebDpxpvngGZq
+	MStadno1VPCsa4KPIjwU6NKFEQrY11jA30xzYzP58l7naC8bsHuDz4sqEymbOcprIpAnUDuYtP6OU
+	3LRH4ecyQgaenCIpN43gS2qOXW3zjXrU4Pr+sZsHuYNHwIGJ6kyWk2iwX7yaxykljhHXAcUmsNrLV
+	yOCe23O5x2yO3SEStmUCWxqgwmn53LnFQf+NnTepapmij/F/rBwwJkj6QXA97C+THoQGRUqZvee3L
+	oxNgAyzYe2unm0Clk3+sf32be3EgplQQKJ2omOhBDPB2fUhtv58NvfWEvu5rNoOiwX7WMshFa/qLw
+	kJvpfqNw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xBGBI-00000001L7x-0yCp;
-	Mon, 28 Sep 2026 18:34:28 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1xBHIT-00000001UOQ-3H4m;
+	Mon, 28 Sep 2026 19:45:57 +0000
+Received: from mail-wr2-x10.google.com ([2a00:1450:4864:30::10])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xBGBG-00000001L7W-0Y8S;
-	Mon, 28 Sep 2026 18:34:26 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id DE95243DFA;
-	Mon, 28 Sep 2026 18:34:25 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 42A5C1F000FF;
-	Mon, 28 Sep 2026 18:34:25 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1790620465;
-	bh=XKHR+SJFFASvBta04CRZYYpREuzHifi5SVWuCQ0YQps=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=HddpuUAIJy8c5vSGRQw0mfQi6dkV1NhSW7orkilOjlUGTw2o8nKc7M5WmbUMueKuj
-	 qZfUbByg5FV1rkLSR/R+8ZmIG7gJ4I9ecDn3mO8WWRaBnUZelIuyA0mHdVUeF6Wzle
-	 XmOh9Z/MHItk7ql5bIDMtJkh5KUdB6c0PWSWP3vihRFKo2DsBOnYnwlRznGe56S4GG
-	 RuIBTiFLpJW2I1TAEyjsPNcnekmEAnlhMqs1rqf0XxZsr0Y58U3K2rLDxUwkUXj5DJ
-	 a3+u180KWuosyDNOk3kh3GJbxh54P1UE+Q0+/es5OvhUYpntT7x7Va2DqRXfcWjCIM
-	 YYGU8nTzmMrqA==
-Date: Mon, 28 Sep 2026 13:34:22 -0500
-From: "Rob Herring (Arm)" <robh@kernel.org>
-To: Ryan Brue <ryanbrue.dev@gmail.com>
-Cc: linux-pm@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	Macpaul Lin <macpaul.lin@mediatek.com>, Lee Jones <lee@kernel.org>,
-	Eddie Huang <eddie.huang@mediatek.com>,
+	id 1xBHIQ-00000001ULP-1tdn
+	for linux-mediatek@lists.infradead.org;
+	Mon, 28 Sep 2026 19:45:56 +0000
+Received: by mail-wr2-x10.google.com with SMTP id ffacd0b85a97d-4843cedd129so1944793f8f.0
+        for <linux-mediatek@lists.infradead.org>; Mon, 28 Sep 2026 12:45:53 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20251104; t=1790624752; x=1791229552; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:to
+         :from:from:to:cc:subject:date:message-id:reply-to:content-type;
+        bh=lPt2STi0m5YpEVxAK2hfO3VZC4EAI2eiHH4POGJLw7Q=;
+        b=THEFQt9cjQ7QRCBjRa1p4z4azmCmxwfaSQk4uz6jWJDWOL1BxIOo+DXdbbCHnyyENT
+         U1vJyDOqUjhnSPNnJ7+2g5+8BTckFIA85fGjNA9qB5LqWNFaIjH27nOChPEXuNfbcgod
+         sK3plI2acAvk9IIzwkC5DGys5VvBkPatC4Eq1WZoZI7Gf8wi0UVzJEiocEmSg02Om4IK
+         hSmlbfoeXTFr1mp8ia+NEoaTHWNGYfSw8Excucvah6r1ClZf7BcjWsB0MTi0XOJeZckx
+         tSOWDkyp48lyL75m1cENtEhP7NwYj704ALZHfl+UOQP9THa428YlPSHWuI680ChwhITP
+         JC1w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20260707; t=1790624752; x=1791229552;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:to
+         :from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to:content-type;
+        bh=lPt2STi0m5YpEVxAK2hfO3VZC4EAI2eiHH4POGJLw7Q=;
+        b=IpmxZFjyeAu+WM1xJ7HX3xXWhE/S8cnRf1dzwGb+DRgZoR4q+329mnuHGVskjO0xtD
+         no01x2AY+x3+wADFseSpI+n0fcWsu//WxFUxOAFgY87vcC4H0DKjZuwFj6UOxA3t9wdH
+         pf48jBMZmP5ZBMeWf6iv+TV2zx3+3CdjJ7xTUjhkz/E5N9NBTrtrmFh/gaa+g9XY11e3
+         YsksEI5HyDXihEsOj9iHMYpH3kpBUVDhm1Z8jQnFS1Iptfds0lHylPmIboIKdLHRSYyL
+         zrbymEWUS4BWxf/BoVup8FYd1ILculzpuO6RqwmblmM6Siqmy02V+N1Hv885SSXrzmut
+         tA0Q==
+X-Forwarded-Encrypted: i=1; AKwUvBwaqRFv2r5ykYSn0N4NcxOflXuKpPHOu/el1dh5sGrX4CDfGcZCQMfYeksS6AHM0F0cKEG1iK8kjl8sr6rXEQ==@lists.infradead.org
+X-Gm-Message-State: AFq9FYJWp3DotmGLmyMeS3nSmLwDAMUGUH417eUCke/fUvmC36Z88m4c
+	slNtQG2Tg457tzBfcGzXS2WLFzeECT5CIi7dU8JrP9wryNft0GQ3xAAfQmUe4Q==
+X-Gm-Gg: AYBFou3YQcH0XFhLVD7tlPlF/0YSS2gl/1eD/18RpVXpptZgwppuGVQ2E3UGQgtxKKW
+	B39E7SU4uJpelL7fQq1YVkvUce5AIB/sTRTtip0YjD40oUOyR0HmPXhFNQABzgsAQoPjCFR26qU
+	0NyYU261KTR9YTxIxEeaOIk1q0Ux7A2jsiLpPl3dU65OM9INWevBbg+uuHnfK5r4vp2MR4hEw4n
+	eUdekOu2WJbgHvHrixwjxFqffGuphHgWNl2eTRyBotg0HY//4cWSJHlo1XwM/i7jyv64OKeoZeU
+	0MdYSV3NsfKXrHLLGfIMoQ8lK6BTsJp47o+NUeDQQ5L/KNk+cILJ3ObI0nP4abwjX8NRxrEpxOK
+	qsgeu4DPjkTHENdiEgMMTIAfTYZwgnU+rlfcsISAW41cZyhMJfJY595/ar0PyIs/kjmq+S+phRF
+	qbh9ZFf2FBf+K8hSos8pjf4aXYaFyTXMpCA9LgYOUvZmoSvWXAyumbeVYh/aObFAF/a7HQ/oBx+
+	U4xff8UOFPtcTB0IHlTPZEzagSeerVaSpgQdxpr69c1wKwEBa/rq2SRNIRBNP4d
+X-Received: by 2002:a05:6000:2887:b0:487:27f6:a4e6 with SMTP id ffacd0b85a97d-488716bf363mr30358408f8f.54.1790624752308;
+        Mon, 28 Sep 2026 12:45:52 -0700 (PDT)
+Received: from Ansuel-XPS24.localdomain (host-82-57-191-234.retail.telecomitalia.it. [82.57.191.234])
+        by smtp.googlemail.com with ESMTPSA id ffacd0b85a97d-48af071532dsm1527706f8f.20.2026.09.28.12.45.49
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 28 Sep 2026 12:45:51 -0700 (PDT)
+From: Christian Marangi <ansuelsmth@gmail.com>
+To: Christian Marangi <ansuelsmth@gmail.com>,
+	Lee Jones <lee@kernel.org>,
+	Rob Herring <robh@kernel.org>,
 	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>, mfd@lists.linux.dev,
-	linux-rtc@vger.kernel.org,
-	Alexandre Belloni <alexandre.belloni@bootlin.com>,
-	linux-mediatek@lists.infradead.org, Sen Chu <sen.chu@mediatek.com>,
-	devicetree@vger.kernel.org, Sean Wang <sean.wang@mediatek.com>,
-	linux-kernel@vger.kernel.org, Conor Dooley <conor+dt@kernel.org>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Subject: Re: [PATCH 1/2] dt-bindings: mfd: mediatek: mt6397: describe the
- RTC's nvmem layout
-Message-ID: <179062046209.229646.883172989324987113.robh@kernel.org>
-References: <20260917-rbrue-suez-upstreaming-mt6397-rtc-nvmem-v1-0-558b8f95cfbc@gmail.com>
- <20260917-rbrue-suez-upstreaming-mt6397-rtc-nvmem-v1-1-558b8f95cfbc@gmail.com>
+	Conor Dooley <conor+dt@kernel.org>,
+	Andrew Lunn <andrew+netdev@lunn.ch>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@google.com>,
+	Jakub Kicinski <kuba@kernel.org>,
+	Paolo Abeni <pabeni@redhat.com>,
+	Vladimir Oltean <olteanv@gmail.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	"Chester A. Unal" <chester.a.unal@arinc9.com>,
+	Daniel Golle <daniel@makrotopia.org>,
+	Heiner Kallweit <hkallweit1@gmail.com>,
+	Russell King <linux@armlinux.org.uk>,
+	Simon Horman <horms@kernel.org>,
+	Joris Vaisvila <joey@tinyisr.com>,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	netdev@vger.kernel.org,
+	mfd@lists.linux.dev,
+	devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org
+Subject: [PATCH net-next v24 00/10] net: dsa: Add Airoha AN8855 support
+Date: Mon, 28 Sep 2026 21:44:59 +0200
+Message-ID: <20260928194511.41878-1-ansuelsmth@gmail.com>
+X-Mailer: git-send-email 2.55.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20260917-rbrue-suez-upstreaming-mt6397-rtc-nvmem-v1-1-558b8f95cfbc@gmail.com>
+Content-Transfer-Encoding: 8bit
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260928_124554_708663_3C3CBE43 
+X-CRM114-Status: GOOD (  13.29  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,25 +118,481 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+This series add the initial support for the Airoha AN8855 Switch.
 
-On Thu, 17 Sep 2026 23:57:46 -0500, Ryan Brue wrote:
-> Four of the MT6397 RTC's alarm registers use only their low bits; the
-> high byte of each is storage the clock and the alarm don't touch.
-> MediaTek's documentation names them RTC_NEW_SPARE0 to RTC_NEW_SPARE3 and
-> assigns the first to a fuel gauge, which is what a battery driver reads
-> at boot so that the reported capacity does not jump across a reboot.
-> 
-> They sit in the RTC's always-on domain, so the driver can offer them as
-> a battery-backed nvmem provider. Allow a board to lay cells out over
-> them.
-> 
-> Assisted-by: LLM
-> Signed-off-by: Ryan Brue <ryanbrue.dev@gmail.com>
-> ---
->  Documentation/devicetree/bindings/mfd/mediatek,mt6397.yaml | 9 +++++++++
->  1 file changed, 9 insertions(+)
-> 
+It's a 5 port Gigabit Switch with SGMII/HSGMII upstream port.
 
-Reviewed-by: Rob Herring (Arm) <robh@kernel.org>
+This is starting to get in the wild and there are already some router
+having this switch chip.
+
+MT7530 is generalized with reg fields to a shared library to
+reduce code duplication and reuse all the logic for AN8855.
+
+There is this special thing where PHY needs to be calibrated with values
+from the switch efuse. (the thing have a whole cpu timer and MCU)
+
+Given the double usage of PHY and Switch accessor, a special handling
+is used with registering a mdio-regmap bus for each internal PHY.
+
+From v8 Driver is now evaluated with Kernel selftest scripts for DSA:
+
+Additional info about the test bridge_vlan_aware.sh.
+
+It was discovered that the Airoha Switch (and probably the Mediatek one
+that produce the same test results) hardcode checking for 802.1ad when
+the port is configured in VLAN-Aware mode (aka Security mode).
+
+In such mode, both 802.1q and 802.1ad TPID are checked, hence the
+bridge_vlan_aware.sh test fails as packets with 802.1ad TPID are rejected
+(in the case where a wrong VLAN ID is forwarded)
+
+This was confirmed by Airoha and multiple try were done to try to
+workaround this problem. No solution were found to this as ACL mechanism
+can't work on receiving packets and the Switch doesn't support turning off
+this.
+
+The current driver is in use from 4 month on OpenWrt with all kind of
+scenario confirming working in VLAN bridge. By tweaking the
+bridge_vlan_aware.sh test with setting the TPID to 0x9100, the test
+correctly pass as packets gets classified as untagged and the default PVID
+applied. It's also confirmed that switch correctly parse the 802.1ad tag
+and make the packet pass only when allowed by VLAN table rules.
+
+Output local_termination.sh
+TEST: lan2: Unicast IPv4 to primary MAC address                     [ OK ]
+TEST: lan2: Unicast IPv4 to macvlan MAC address                     [ OK ]
+TEST: lan2: Unicast IPv4 to unknown MAC address                     [ OK ]
+TEST: lan2: Unicast IPv4 to unknown MAC address, promisc            [ OK ]
+TEST: lan2: Unicast IPv4 to unknown MAC address, allmulti           [ OK ]
+TEST: lan2: Multicast IPv4 to joined group                          [ OK ]
+TEST: lan2: Multicast IPv4 to unknown group                         [XFAIL]
+        reception succeeded, but should have failed
+TEST: lan2: Multicast IPv4 to unknown group, promisc                [ OK ]
+TEST: lan2: Multicast IPv4 to unknown group, allmulti               [ OK ]
+TEST: lan2: Multicast IPv6 to joined group                          [ OK ]
+TEST: lan2: Multicast IPv6 to unknown group                         [XFAIL]
+        reception succeeded, but should have failed
+TEST: lan2: Multicast IPv6 to unknown group, promisc                [ OK ]
+TEST: lan2: Multicast IPv6 to unknown group, allmulti               [ OK ]
+TEST: lan2: 1588v2 over L2 transport, Sync                          [ OK ]
+TEST: lan2: 1588v2 over L2 transport, Follow-Up                     [ OK ]
+TEST: lan2: 1588v2 over L2 transport, Peer Delay Request            [ OK ]
+TEST: lan2: 1588v2 over IPv4, Sync                                  [FAIL]
+        reception failed
+TEST: lan2: 1588v2 over IPv4, Follow-Up                             [FAIL]
+        reception failed
+TEST: lan2: 1588v2 over IPv4, Peer Delay Request                    [FAIL]
+        reception failed
+TEST: lan2: 1588v2 over IPv6, Sync                                  [FAIL]
+        reception failed
+TEST: lan2: 1588v2 over IPv6, Follow-Up                             [FAIL]
+        reception failed
+TEST: lan2: 1588v2 over IPv6, Peer Delay Request                    [FAIL]
+        reception failed
+TEST: vlan_filtering=0 bridge: Unicast IPv4 to primary MAC address   [ OK ]
+TEST: vlan_filtering=0 bridge: Unicast IPv4 to macvlan MAC address   [ OK ]
+TEST: vlan_filtering=0 bridge: Unicast IPv4 to unknown MAC address   [ OK ]
+TEST: vlan_filtering=0 bridge: Unicast IPv4 to unknown MAC address, promisc   [ OK ]
+TEST: vlan_filtering=0 bridge: Unicast IPv4 to unknown MAC address, allmulti   [ OK ]
+TEST: vlan_filtering=0 bridge: Multicast IPv4 to joined group       [ OK ]
+TEST: vlan_filtering=0 bridge: Multicast IPv4 to unknown group      [XFAIL]
+        reception succeeded, but should have failed
+TEST: vlan_filtering=0 bridge: Multicast IPv4 to unknown group, promisc   [ OK ]
+TEST: vlan_filtering=0 bridge: Multicast IPv4 to unknown group, allmulti   [ OK ]
+TEST: vlan_filtering=0 bridge: Multicast IPv6 to joined group       [ OK ]
+TEST: vlan_filtering=0 bridge: Multicast IPv6 to unknown group      [XFAIL]
+        reception succeeded, but should have failed
+TEST: vlan_filtering=0 bridge: Multicast IPv6 to unknown group, promisc   [ OK ]
+TEST: vlan_filtering=0 bridge: Multicast IPv6 to unknown group, allmulti   [ OK ]
+TEST: vlan_filtering=1 bridge: Unicast IPv4 to primary MAC address   [ OK ]
+TEST: vlan_filtering=1 bridge: Unicast IPv4 to macvlan MAC address   [ OK ]
+TEST: vlan_filtering=1 bridge: Unicast IPv4 to unknown MAC address   [ OK ]
+TEST: vlan_filtering=1 bridge: Unicast IPv4 to unknown MAC address, promisc   [ OK ]
+TEST: vlan_filtering=1 bridge: Unicast IPv4 to unknown MAC address, allmulti   [ OK ]
+TEST: vlan_filtering=1 bridge: Multicast IPv4 to joined group       [ OK ]
+TEST: vlan_filtering=1 bridge: Multicast IPv4 to unknown group      [XFAIL]
+        reception succeeded, but should have failed
+TEST: vlan_filtering=1 bridge: Multicast IPv4 to unknown group, promisc   [ OK ]
+TEST: vlan_filtering=1 bridge: Multicast IPv4 to unknown group, allmulti   [ OK ]
+TEST: vlan_filtering=1 bridge: Multicast IPv6 to joined group       [ OK ]
+TEST: vlan_filtering=1 bridge: Multicast IPv6 to unknown group      [XFAIL]
+        reception succeeded, but should have failed
+TEST: vlan_filtering=1 bridge: Multicast IPv6 to unknown group, promisc   [ OK ]
+TEST: vlan_filtering=1 bridge: Multicast IPv6 to unknown group, allmulti   [ OK ]
+TEST: VLAN upper: Unicast IPv4 to primary MAC address               [ OK ]
+TEST: VLAN upper: Unicast IPv4 to macvlan MAC address               [ OK ]
+TEST: VLAN upper: Unicast IPv4 to unknown MAC address               [ OK ]
+TEST: VLAN upper: Unicast IPv4 to unknown MAC address, promisc      [ OK ]
+TEST: VLAN upper: Unicast IPv4 to unknown MAC address, allmulti     [ OK ]
+TEST: VLAN upper: Multicast IPv4 to joined group                    [ OK ]
+TEST: VLAN upper: Multicast IPv4 to unknown group                   [XFAIL]
+        reception succeeded, but should have failed
+TEST: VLAN upper: Multicast IPv4 to unknown group, promisc          [ OK ]
+TEST: VLAN upper: Multicast IPv4 to unknown group, allmulti         [ OK ]
+TEST: VLAN upper: Multicast IPv6 to joined group                    [ OK ]
+TEST: VLAN upper: Multicast IPv6 to unknown group                   [XFAIL]
+        reception succeeded, but should have failed
+TEST: VLAN upper: Multicast IPv6 to unknown group, promisc          [ OK ]
+TEST: VLAN upper: Multicast IPv6 to unknown group, allmulti         [ OK ]
+TEST: VLAN upper: 1588v2 over L2 transport, Sync                    [ OK ]
+TEST: VLAN upper: 1588v2 over L2 transport, Follow-Up               [FAIL]
+        reception failed
+TEST: VLAN upper: 1588v2 over L2 transport, Peer Delay Request      [ OK ]
+TEST: VLAN upper: 1588v2 over IPv4, Sync                            [FAIL]
+        reception failed
+;TEST: VLAN upper: 1588v2 over IPv4, Follow-Up                       [FAIL]
+        reception failed
+TEST: VLAN upper: 1588v2 over IPv4, Peer Delay Request              [FAIL]
+        reception failed
+TEST: VLAN upper: 1588v2 over IPv6, Sync                            [FAIL]
+        reception failed
+TEST: VLAN upper: 1588v2 over IPv6, Follow-Up                       [FAIL]
+        reception failed
+TEST: VLAN upper: 1588v2 over IPv6, Peer Delay Request              [FAIL]
+        reception failed
+TEST: VLAN over vlan_filtering=0 bridged port: Unicast IPv4 to primary MAC address   [ OK ]
+TEST: VLAN over vlan_filtering=0 bridged port: Unicast IPv4 to macvlan MAC address   [ OK ]
+TEST: VLAN over vlan_filtering=0 bridged port: Unicast IPv4 to unknown MAC address   [ OK ]
+TEST: VLAN over vlan_filtering=0 bridged port: Unicast IPv4 to unknown MAC address, promisc   [ OK ]
+TEST: VLAN over vlan_filtering=0 bridged port: Unicast IPv4 to unknown MAC address, allmulti   [ OK ]
+TEST: VLAN over vlan_filtering=0 bridged port: Multicast IPv4 to joined group   [ OK ]
+TEST: VLAN over vlan_filtering=0 bridged port: Multicast IPv4 to unknown group   [XFAIL]
+        reception succeeded, but should have failed
+TEST: VLAN over vlan_filtering=0 bridged port: Multicast IPv4 to unknown group, promisc   [ OK ]
+TEST: VLAN over vlan_filtering=0 bridged port: Multicast IPv4 to unknown group, allmulti   [ OK ]
+TEST: VLAN over vlan_filtering=0 bridged port: Multicast IPv6 to joined group   [ OK ]
+TEST: VLAN over vlan_filtering=0 bridged port: Multicast IPv6 to unknown group   [XFAIL]
+        reception succeeded, but should have failed
+TEST: VLAN over vlan_filtering=0 bridged port: Multicast IPv6 to unknown group, promisc   [ OK ]
+TEST: VLAN over vlan_filtering=0 bridged port: Multicast IPv6 to unknown group, allmulti   [ OK ]
+TEST: VLAN over vlan_filtering=0 bridged port: 1588v2 over L2 transport, Sync   [ OK ]
+TEST: VLAN over vlan_filtering=0 bridged port: 1588v2 over L2 transport, Follow-Up   [ OK ]
+TEST: VLAN over vlan_filtering=0 bridged port: 1588v2 over L2 transport, Peer Delay Request   [ OK ]
+TEST: VLAN over vlan_filtering=0 bridged port: 1588v2 over IPv4, Sync   [FAIL]
+        reception failed
+TEST: VLAN over vlan_filtering=0 bridged port: 1588v2 over IPv4, Follow-Up   [FAIL]
+        reception failed
+TEST: VLAN over vlan_filtering=0 bridged port: 1588v2 over IPv4, Peer Delay Request   [FAIL]
+        reception failed
+TEST: VLAN over vlan_filtering=0 bridged port: 1588v2 over IPv6, Sync   [FAIL]
+        reception failed
+TEST: VLAN over vlan_filtering=0 bridged port: 1588v2 over IPv6, Follow-Up   [FAIL]
+        reception failed
+TEST: VLAN over vlan_filtering=0 bridged port: 1588v2 over IPv6, Peer Delay Request   [FAIL]
+        reception failed
+TEST: VLAN over vlan_filtering=1 bridged port: Unicast IPv4 to primary MAC address   [ OK ]
+TEST: VLAN over vlan_filtering=1 bridged port: Unicast IPv4 to macvlan MAC address   [ OK ]
+TEST: VLAN over vlan_filtering=1 bridged port: Unicast IPv4 to unknown MAC address   [FAIL]
+        reception succeeded, but should have failed
+TEST: VLAN over vlan_filtering=1 bridged port: Unicast IPv4 to unknown MAC address, promisc   [ OK ]
+TEST: VLAN over vlan_filtering=1 bridged port: Unicast IPv4 to unknown MAC address, allmulti   [FAIL]
+        reception succeeded, but should have failed
+TEST: VLAN over vlan_filtering=1 bridged port: Multicast IPv4 to joined group   [ OK ]
+TEST: VLAN over vlan_filtering=1 bridged port: Multicast IPv4 to unknown group   [XFAIL]
+        reception succeeded, but should have failed
+TEST: VLAN over vlan_filtering=1 bridged port: Multicast IPv4 to unknown group, promisc   [ OK ]
+TEST: VLAN over vlan_filtering=1 bridged port: Multicast IPv4 to unknown group, allmulti   [ OK ]
+TEST: VLAN over vlan_filtering=1 bridged port: Multicast IPv6 to joined group   [ OK ]
+TEST: VLAN over vlan_filtering=1 bridged port: Multicast IPv6 to unknown group   [XFAIL]
+        reception succeeded, but should have failed
+TEST: VLAN over vlan_filtering=1 bridged port: Multicast IPv6 to unknown group, promisc   [ OK ]
+TEST: VLAN over vlan_filtering=1 bridged port: Multicast IPv6 to unknown group, allmulti   [ OK ]
+TEST: VLAN over vlan_filtering=1 bridged port: 1588v2 over L2 transport, Sync   [ OK ]
+TEST: VLAN over vlan_filtering=1 bridged port: 1588v2 over L2 transport, Follow-Up   [ OK ]
+TEST: VLAN over vlan_filtering=1 bridged port: 1588v2 over L2 transport, Peer Delay Request   [ OK ]
+TEST: VLAN over vlan_filtering=1 bridged port: 1588v2 over IPv4, Sync   [FAIL]
+        reception failed
+TEST: VLAN over vlan_filtering=1 bridged port: 1588v2 over IPv4, Follow-Up   [FAIL]
+        reception failed
+TEST: VLAN over vlan_filtering=1 bridged port: 1588v2 over IPv4, Peer Delay Request   [FAIL]
+        reception failed
+TEST: VLAN over vlan_filtering=1 bridged port: 1588v2 over IPv6, Sync   [FAIL]
+        reception failed
+TEST: VLAN over vlan_filtering=1 bridged port: 1588v2 over IPv6, Follow-Up   [FAIL]
+        reception failed
+TEST: VLAN over vlan_filtering=1 bridged port: 1588v2 over IPv6, Peer Delay Request   [FAIL]
+        reception failed
+TEST: VLAN over vlan_filtering=0 bridge: Unicast IPv4 to primary MAC address   [ OK ]
+TEST: VLAN over vlan_filtering=0 bridge: Unicast IPv4 to macvlan MAC address   [ OK ]
+TEST: VLAN over vlan_filtering=0 bridge: Unicast IPv4 to unknown MAC address   [ OK ]
+TEST: VLAN over vlan_filtering=0 bridge: Unicast IPv4 to unknown MAC address, promisc   [ OK ]
+TEST: VLAN over vlan_filtering=0 bridge: Unicast IPv4 to unknown MAC address, allmulti   [ OK ]
+TEST: VLAN over vlan_filtering=0 bridge: Multicast IPv4 to joined group   [ OK ]
+TEST: VLAN over vlan_filtering=0 bridge: Multicast IPv4 to unknown group   [XFAIL]
+        reception succeeded, but should have failed
+TEST: VLAN over vlan_filtering=0 bridge: Multicast IPv4 to unknown group, promisc   [ OK ]
+TEST: VLAN over vlan_filtering=0 bridge: Multicast IPv4 to unknown group, allmulti   [ OK ]
+TEST: VLAN over vlan_filtering=0 bridge: Multicast IPv6 to joined group   [ OK ]
+TEST: VLAN over vlan_filtering=0 bridge: Multicast IPv6 to unknown group   [XFAIL]
+        reception succeeded, but should have failed
+TEST: VLAN over vlan_filtering=0 bridge: Multicast IPv6 to unknown group, promisc   [ OK ]
+TEST: VLAN over vlan_filtering=0 bridge: Multicast IPv6 to unknown group, allmulti   [ OK ]
+TEST: VLAN over vlan_filtering=1 bridge: Unicast IPv4 to primary MAC address   [ OK ]
+TEST: VLAN over vlan_filtering=1 bridge: Unicast IPv4 to macvlan MAC address   [ OK ]
+TEST: VLAN over vlan_filtering=1 bridge: Unicast IPv4 to unknown MAC address   [ OK ]
+TEST: VLAN over vlan_filtering=1 bridge: Unicast IPv4 to unknown MAC address, promisc   [ OK ]
+TEST: VLAN over vlan_filtering=1 bridge: Unicast IPv4 to unknown MAC address, allmulti   [ OK ]
+TEST: VLAN over vlan_filtering=1 bridge: Multicast IPv4 to joined group   [ OK ]
+TEST: VLAN over vlan_filtering=1 bridge: Multicast IPv4 to unknown group   [XFAIL]
+        reception succeeded, but should have failed
+TEST: VLAN over vlan_filtering=1 bridge: Multicast IPv4 to unknown group, promisc   [ OK ]
+TEST: VLAN over vlan_filtering=1 bridge: Multicast IPv4 to unknown group, allmulti   [ OK ]
+TEST: VLAN over vlan_filtering=1 bridge: Multicast IPv6 to joined group   [ OK ]
+TEST: VLAN over vlan_filtering=1 bridge: Multicast IPv6 to unknown group   [XFAIL]
+        reception succeeded, but should have failed
+TEST: VLAN over vlan_filtering=1 bridge: Multicast IPv6 to unknown group, promisc   [ OK ]
+TEST: VLAN over vlan_filtering=1 bridge: Multicast IPv6 to unknown group, allmulti   [ OK ]
+
+Output bridge_vlan_unaware.sh
+TEST: ping                                                          [ OK ]
+TEST: ping6                                                         [ OK ]
+TEST: FDB learning                                                  [ OK ]
+TEST: Unknown unicast flood                                         [ OK ]
+TEST: Unregistered multicast flood                                  [ OK ]
+
+Output bridge_vlan_aware.sh
+TEST: ping                                                          [ OK ]
+TEST: ping6                                                         [ OK ]
+TEST: FDB learning                                                  [ OK ]
+TEST: Unknown unicast flood                                         [ OK ]
+TEST: Unregistered multicast flood                                  [ OK ]
+INFO: Add and delete a VLAN on bridge port lan2
+TEST: ping                                                          [ OK ]
+TEST: ping6                                                         [ OK ]
+TEST: Externally learned FDB entry - ageing & roaming               [ OK ]
+TEST: FDB entry in PVID for VLAN-tagged with other TPID             [FAIL]
+        FDB entry was not learned when it should
+TEST: Reception of VLAN with other TPID as untagged                 [FAIL]
+        Packet was not forwarded when it should
+TEST: Reception of VLAN with other TPID as untagged (no PVID)       [FAIL]
+        Packet was forwarded when should not
+
+Changes v24:
+- Add review tag by Andrew
+- Fix missing multicast from generalize patch
+- Add patch to move mediatek drivers to dedicated driver
+- Zero out saved timer on LPI disable
+- Correctl check regfiled on FDB read
+- Fix MFD leaked of node
+
+Changes v23:
+- Add review by tag for DT patch
+- Fix MFD fwnode handle release
+- Better handle LPI handling for AN8855
+- Add additional kconfig for AN8855
+- Use shorter name for virtual phy bus
+
+Changes v22:
+- Improve MFD lock handling for phy bus
+- Prevent devm crash on removal for MFD driver
+- Address VAWD bug reported by bot
+- Fix wrong msb for MIB for AN8855 driver
+- Better handle kconfig dependency
+- Read tx_lpi under lock
+
+Changes v21:
+- Rebase on top of net-next
+- Drop megred patch from Daniel
+- Address suggestion reported by bot for MFD driver
+- Drop reset for MFD driver
+- Reset FDB and VLAN data on writing
+- Fix not correct PCR matrix in port enable
+- Add ID_EN7528 fields
+- Fix MAC address learning SA_DIS
+- Fix MAC address FDB read swapped
+- Fix mib reset logic
+- Fix AN8855 missing regfiled
+- Fix AN8855 ethtool stats access
+- Improve tx lpi timer for AN8855
+- Improve MFD Documentation patch
+Changes v20:
+- Address all the typo pointed out by bot
+- Make documentation schema more consistent
+- Address some concern for the mfd driver from bot
+- Fix some conversion problem for the generalization patch
+Changes v19:
+- Rebase on top of net-next
+- Rework with shared function from mt7530 driver
+- Add dependency for mt7530 lock
+- Fix some define typo for AN8855
+Changes v18:
+- Fix configurting typo
+- Init ret in MFD driver
+Changes v17:
+- Drop nvmem patch (subset merged and present in linux-next)
+- Fix wrong Documentation patch for MFD
+- Address reviews for MFD driver
+- Rework MTK tag to slipt for Airoha name
+Changes v16:
+- Rebase on top of net-next
+- Drop PBUS implementation (Airoha said that it's not OK to use it)
+- Convert to simple mdio-regmap and split regmap
+- Fix typo for some define (AND8855 -> AN8855)
+Changes v15:
+- Rebase on top of net-next
+- Drop regmap MDIO patch (in favor of PBUS)
+- Implement MDIO PBUS and rework MDIO driver/MFD
+- Reimplement EEE support
+- Add some check for regmap from MFD
+- Move to single regmap and add comments with all findings
+Changes v14:
+- Move MAITAINERS entry to dedicated commit (make it easier for cross
+  subsystem merge)
+- Pack variables in trap function
+- Add additional patch for reported difference from MTK tag
+Changes v13:
+- Reimplement tx_lpi OPs
+- Rework mdio-regmap to internally encode/decode address
+- Fix error in Documentation
+- Drop ext-surge property (assume calibration with declared nvmem cell)
+- Fix comments from Lee on MFD driver
+- Improve print error and drop extra space in DSA driver
+Changes v12:
+- Update on top of net-next
+- Add additional info on conver-letter about slefttests and HW limitation
+- Introduce mdio-regmap generalization for multiple address
+- Drop dev flags and define PHY calibration in PHY node directly
+Changes v11:
+- Address reviews from Christophe (spell mistake + dev_err_probe)
+- Fix kconfig dependency for MFD driver (depends on MDIO_DEVICE instead of MDIO)
+  (indirectly fix link error for mdio APIs)
+- Fix copy-paste error for MFD driver of_table
+- Fix compilation error for PHY (move NVMEM to .config)
+- Drop unneeded NVMEM node from MDIO example schema (from Andrew)
+- Adapt MFD example schema to MDIO reg property restrictions
+Changes v10:
+- Entire rework to MFD + split to MDIO, EFUSE, SWITCH separate drivers
+- Drop EEE OPs (while Russell finish RFC for EEE changes)
+- Use new pcs_inpand OPs
+- Drop AN restart function and move to pcs_config
+- Enable assisted_learning and disable CPU learn (preparation for fdb_isolation)
+- Move EFUSE read in Internal PHY driver to .config to handle EPROBE_DEFER
+  (needed now that NVMEM driver is register externally instead of internally to switch
+   node)
+Changes v9:
+- Error out on using 5G speed as currently not supported
+- Add missing MAC_2500FD in phylink mac_capabilities
+- Add comment and improve if condition for an8855_phylink_mac_config
+Changes v8:
+- Add port Fast Age support
+- Add support for Port Isolation
+- Use correct register for Learning Disable
+- Add support for Ageing Time OP
+- Set default PVID to 0 by default
+- Add mdb OPs
+- Add port change MTU
+- Fix support for Upper VLAN
+Changes v7:
+- Fix devm_dsa_register_switch wrong export symbol
+Changes v6:
+- Drop standard MIB and handle with ethtool OPs (as requested by Jakub)
+- Cosmetic: use bool instead of 0 or 1
+Changes v5:
+- Add devm_dsa_register_switch() patch
+- Add Reviewed-by tag for DT patch
+Changes v4:
+- Set regmap readable_table static (mute compilation warning)
+- Add support for port_bridge flags (LEARNING, FLOOD)
+- Reset fdb struct in fdb_dump
+- Drop support_asym_pause in port_enable
+- Add define for get_phy_flags
+- Fix bug for port not inititially part of a bridge
+  (in an8855_setup the port matrix was always cleared but
+   the CPU port was never initially added)
+- Disable learning and flood for user port by default
+- Set CPU port to flood and learning by default
+- Correctly AND force duplex and flow control in an8855_phylink_mac_link_up
+- Drop RGMII from pcs_config
+- Check ret in "Disable AN if not in autoneg"
+- Use devm_mutex_init
+- Fix typo for AN8855_PORT_CHECK_MODE
+- Better define AN8855_STP_LISTENING = AN8855_STP_BLOCKING
+- Fix typo in AN8855_PHY_EN_DOWN_SHIFT
+- Use paged helper for PHY
+- Skip calibration in config_init if priv not defined
+Changes v3:
+- Out of RFC
+- Switch PHY code to select_page API
+- Better describe masks and bits in PHY driver for ADC register
+- Drop raw values and use define for mii read/write
+- Switch to absolute PHY address
+- Replace raw values with mask and bits for pcs_config
+- Fix typo for ext-surge property name
+- Drop support for relocating Switch base PHY address on the bus
+Changes v2:
+- Drop mutex guard patch
+- Drop guard usage in DSA driver
+- Use __mdiobus_write/read
+- Check return condition and return errors for mii read/write
+- Fix wrong logic for EEE
+- Fix link_down (don't force link down with autoneg)
+- Fix forcing speed on sgmii autoneg
+- Better document link speed for sgmii reg
+- Use standard define for sgmii reg
+- Imlement nvmem support to expose switch EFUSE
+- Rework PHY calibration with the use of NVMEM producer/consumer
+- Update DT with new NVMEM property
+- Move aneg validation for 2500-basex in pcs_config
+- Move r50Ohm table and function to PHY driver
+
+Christian Marangi (10):
+  dt-bindings: net: dsa: Document support for Airoha AN8855 DSA Switch
+  dt-bindings: net: Document support for AN8855 Switch Internal PHY
+  dt-bindings: mfd: Document support for Airoha AN8855 Switch SoC
+  mfd: an8855: Add support for Airoha AN8855 Switch
+  net: phy: Add Airoha AN8855 Internal Switch Gigabit PHY
+  net: dsa: tag_mtk: add Airoha variant usage of this TAG
+  MAINTAINERS: add myself as maintainer for Airoha AN8855 Switch
+  net: dsa: move mediatek DSA driver in dedicated directory
+  net: dsa: mt7530: generalize and move common function to lib module
+  net: dsa: Add Airoha AN8855 5-Port Gigabit DSA Switch driver
+
+ .../bindings/mfd/airoha,an8855.yaml           |  176 ++
+ .../bindings/net/airoha,an8855-phy.yaml       |   83 +
+ .../net/dsa/airoha,an8855-switch.yaml         |   86 +
+ MAINTAINERS                                   |   22 +-
+ drivers/mfd/Kconfig                           |   14 +
+ drivers/mfd/Makefile                          |    1 +
+ drivers/mfd/airoha-an8855.c                   |  579 ++++++
+ drivers/net/dsa/Kconfig                       |   45 +-
+ drivers/net/dsa/Makefile                      |    5 +-
+ drivers/net/dsa/mediatek/Kconfig              |   59 +
+ drivers/net/dsa/mediatek/Makefile             |    7 +
+ drivers/net/dsa/mediatek/an8855.c             | 1741 +++++++++++++++++
+ drivers/net/dsa/mediatek/an8855.h             |  755 +++++++
+ drivers/net/dsa/mediatek/mt7530-lib.c         | 1156 +++++++++++
+ drivers/net/dsa/mediatek/mt7530-lib.h         |  413 ++++
+ drivers/net/dsa/{ => mediatek}/mt7530-mdio.c  |    4 +
+ drivers/net/dsa/{ => mediatek}/mt7530-mmio.c  |    4 +
+ drivers/net/dsa/{ => mediatek}/mt7530.c       | 1366 +++----------
+ drivers/net/dsa/{ => mediatek}/mt7530.h       |  256 +--
+ drivers/net/dsa/{ => mediatek}/mt7628.c       |    0
+ drivers/net/phy/Kconfig                       |    6 +
+ drivers/net/phy/Makefile                      |    1 +
+ drivers/net/phy/air_an8855.c                  |  275 +++
+ include/net/dsa.h                             |    2 +
+ net/dsa/Kconfig                               |   11 +
+ net/dsa/Makefile                              |    2 +-
+ net/dsa/tag_mtk.c                             |   36 +-
+ 27 files changed, 5808 insertions(+), 1297 deletions(-)
+ create mode 100644 Documentation/devicetree/bindings/mfd/airoha,an8855.yaml
+ create mode 100644 Documentation/devicetree/bindings/net/airoha,an8855-phy.yaml
+ create mode 100644 Documentation/devicetree/bindings/net/dsa/airoha,an8855-switch.yaml
+ create mode 100644 drivers/mfd/airoha-an8855.c
+ create mode 100644 drivers/net/dsa/mediatek/Kconfig
+ create mode 100644 drivers/net/dsa/mediatek/Makefile
+ create mode 100644 drivers/net/dsa/mediatek/an8855.c
+ create mode 100644 drivers/net/dsa/mediatek/an8855.h
+ create mode 100644 drivers/net/dsa/mediatek/mt7530-lib.c
+ create mode 100644 drivers/net/dsa/mediatek/mt7530-lib.h
+ rename drivers/net/dsa/{ => mediatek}/mt7530-mdio.c (99%)
+ rename drivers/net/dsa/{ => mediatek}/mt7530-mmio.c (97%)
+ rename drivers/net/dsa/{ => mediatek}/mt7530.c (63%)
+ rename drivers/net/dsa/{ => mediatek}/mt7530.h (81%)
+ rename drivers/net/dsa/{ => mediatek}/mt7628.c (100%)
+ create mode 100644 drivers/net/phy/air_an8855.c
+
+-- 
+2.55.0
 
 
