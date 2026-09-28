@@ -4,66 +4,104 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 49874CA5FA2
-	for <linux-mediatek@archiver.kernel.org>; Sun, 27 Sep 2026 23:51:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 16B81C98328
+	for <linux-mediatek@archiver.kernel.org>; Mon, 28 Sep 2026 05:33:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To:Cc:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=T6Br8B52HiOcAEYBS4SFBjMtnKDt/aOPjWpjMD5HCIA=; b=4L2HUCNRguKJ7NNr4BxHQLzWDN
-	ZSGew2aiKYvvDXVnoAQSzbYZTD340uK7IfyI66zbmoclI31ADw+TKeum6riROjIF5yQiKnK6MPWxR
-	VouFJReFq25ztk6tY/USafEprHjm1WoIcEzKKGJf+kWh4cOBbG+2x+EmN/qvhzYybcjwHxtOZBwI6
-	x+EIkHE/gqxujfajq+N0N6+7peB9jv0JTtzxdTJcZtwPHWZdtH3SGnoy1B7+GSo2PeVydwAHa3duj
-	cO9h3qsw+CgZ6B/jbvNch/cRLqgNgmszF9djUINsM6RE1U8aTTRSZ6JurChFtRyz+19Xi3XInVQJK
-	Rqo+USEA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:To:
+	From:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=T990KGr2rKx5jCUSvUS8jX/LmqLCPwnfvjmSkriKfxo=; b=XBtMORHABeqRku8IEf4zzfLN7X
+	GvcGtw9Gmqs4dLREN6lAtj1GX6llMgX6AZD5Hh14C+BiyE5QGfwwXErC9cDJIXksqVhuhRGnMluBa
+	Sr+QtzJilOFgBHr1y6oP56/KGd3zdQEKHYJcXQE9I/QTlXxXNMKyeg4tP3mwMMdhUTvPy1pr0LXM4
+	hqCpYcIq8AF1rIHP8MJo4OwYpOV5mGJyy9x4p1M8W5iN0WEwoj55qbI9Q/VBPVYxPMLRM9rp0PHwN
+	z2wQNBXj73mnkulE/pBKF7RmK7RNqDfEasSG4tP05bP6MFCbzpiUYSKRheT78qQ9PzRpFutJIaC+Y
+	P8kXUhAA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xAyeu-0000000H2BE-1bE5;
-	Sun, 27 Sep 2026 23:51:52 +0000
-Received: from pidgin.makrotopia.org ([2a07:2ec0:3002::65])
+	id 1xB3zp-0000000HMwK-2hfY;
+	Mon, 28 Sep 2026 05:33:49 +0000
+Received: from smtpout-03.galae.net ([185.246.85.4])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xAyek-0000000H23E-0Tgv;
-	Sun, 27 Sep 2026 23:51:43 +0000
-Received: from local
-	by pidgin.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256:X25519MLKEM768)
-	 (Exim 4.100)
-	(envelope-from <daniel@makrotopia.org>)
-	id 1xAyee-000000000vQ-10Sh;
-	Sun, 27 Sep 2026 23:51:36 +0000
-Date: Mon, 28 Sep 2026 00:51:33 +0100
-From: Daniel Golle <daniel@makrotopia.org>
-To: Andrzej Hajda <andrzej.hajda@intel.com>,
-	Neil Armstrong <neil.armstrong@linaro.org>,
-	Robert Foss <rfoss@kernel.org>,
-	Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
-	Jonas Karlman <jonas@kwiboo.se>,
-	Jernej Skrabec <jernej.skrabec@gmail.com>,
-	Luca Ceresoli <luca.ceresoli@bootlin.com>,
-	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
-	Maxime Ripard <mripard@kernel.org>,
-	Thomas Zimmermann <tzimmermann@suse.de>,
-	David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Hermes Wu <hermes.wu@ite.com.tw>,
-	Allen Chen <allen.chen@ite.com.tw>,
-	Pin-yen Lin <treapking@chromium.org>,
-	Chen-Yu Tsai <wenst@chromium.org>, dri-devel@lists.freedesktop.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: [PATCH v8 14/14] drm/bridge: it6505: Don't reject audio hw_params
- without an encoder
-Message-ID: <0dae38fd46fe6950d5bac5433580791203891c6a.1790552614.git.daniel@makrotopia.org>
-References: <cover.1790552614.git.daniel@makrotopia.org>
+	id 1xB3zl-0000000HMvj-1uqn;
+	Mon, 28 Sep 2026 05:33:47 +0000
+Received: from smtpout-01.galae.net (smtpout-01.galae.net [212.83.139.233])
+	by smtpout-03.galae.net (Postfix) with ESMTPS id 483444E4102B;
+	Mon, 28 Sep 2026 05:33:40 +0000 (UTC)
+Received: from mail.galae.net (mail.galae.net [212.83.136.155])
+	by smtpout-01.galae.net (Postfix) with ESMTPS id 077BD604FF;
+	Mon, 28 Sep 2026 05:33:40 +0000 (UTC)
+Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id F3E97102F1E29;
+	Mon, 28 Sep 2026 07:33:17 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=dkim;
+	t=1790573617; h=from:subject:date:message-id:to:mime-version:content-type:
+	 content-transfer-encoding:in-reply-to:references;
+	bh=T990KGr2rKx5jCUSvUS8jX/LmqLCPwnfvjmSkriKfxo=;
+	b=HO6Z00u1RVNoE3+bxHzAY3LLITxQ86B/wuzjZUI5xqkdPFrhuYViyBh8lGV0EjqHjegsV3
+	TN0u6iV6oowQLlQKkpRjZ0wrQ5OY2H9p5DP2av7N7GcEHSKxzqQaNQ/+Z+GsVyR8r6tmPs
+	wztaux9g6NdGtKfV80D8Roi9zEgvUY5kaNtLSQAMe+RUWF1xIscA7WAyJHgJv++jjHEOtC
+	Ny4+0qfImeaJXmWy11Z9GIX0ESUy0j90n41guE4Jchi0u+5PEBcXTorucZmmRQ3b5vJCe1
+	+sSmYPBYlXUI+7fUx01JwzQnus0NMrPlmB4Oi5zEgx1QVExVsKchfBwxD2Umcg==
+From: Luca Ceresoli <luca.ceresoli@bootlin.com>
+To: Chen-Yu Tsai <wens@kernel.org>, David Airlie <airlied@gmail.com>, 
+ Simona Vetter <simona@ffwll.ch>, 
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, 
+ Jernej Skrabec <jernej.skrabec@gmail.com>, 
+ Samuel Holland <samuel@sholland.org>, Liu Ying <victor.liu@nxp.com>, 
+ Andrzej Hajda <andrzej.hajda@intel.com>, 
+ Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, 
+ Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, 
+ Jonas Karlman <jonas@kwiboo.se>, Frank Li <Frank.Li@nxp.com>, 
+ Sascha Hauer <s.hauer@pengutronix.de>, 
+ Pengutronix Kernel Team <kernel@pengutronix.de>, 
+ Fabio Estevam <festevam@gmail.com>, 
+ Francesco Dolcini <francesco@dolcini.it>, 
+ Philipp Zabel <p.zabel@pengutronix.de>, 
+ Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
+ Rob Clark <robin.clark@oss.qualcomm.com>, 
+ Dmitry Baryshkov <lumag@kernel.org>, 
+ Abhinav Kumar <abhinav.kumar@linux.dev>, 
+ Jessica Zhang <jesszhan0024@gmail.com>, Sean Paul <sean@poorly.run>, 
+ Marijn Suijten <marijn.suijten@somainline.org>, 
+ Marcus Folkesson <marcus.folkesson@gmail.com>, 
+ Maxime Coquelin <mcoquelin.stm32@gmail.com>, 
+ Alexandre Torgue <alexandre.torgue@foss.st.com>, 
+ Yannick Fertre <yannick.fertre@foss.st.com>, 
+ Raphael Gallais-Pou <raphael.gallais-pou@foss.st.com>, 
+ Philippe Cornu <philippe.cornu@foss.st.com>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Adrien Grassein <adrien.grassein@gmail.com>, 
+ Russell King <linux@armlinux.org.uk>, Simha BN <simhavcs@gmail.com>, 
+ CK Hu <ck.hu@mediatek.com>, Jitao shi <jitao.shi@mediatek.com>, 
+ Yongxing Mou <yongxing.mou@oss.qualcomm.com>, 
+ Abel Vesa <abelvesa@kernel.org>, Chris Morgan <macromorgan@hotmail.com>, 
+ Martinez Canillas <javierm@redhat.com>, dri-devel@lists.freedesktop.org, 
+ devicetree@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-sunxi@lists.linux.dev, linux-kernel@vger.kernel.org, 
+ imx@lists.linux.dev, linux-mediatek@lists.infradead.org, 
+ linux-arm-msm@vger.kernel.org, freedreno@lists.freedesktop.org, 
+ linux-stm32@st-md-mailman.stormreply.com, 
+ Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
+In-Reply-To: <20260913123331.100293-3-krzysztof.kozlowski@oss.qualcomm.com>
+References: <20260913123331.100293-3-krzysztof.kozlowski@oss.qualcomm.com>
+Subject: Re: (subset) [PATCH 1/2] dt-bindings: display: Use consistent
+ indentation in the example
+Message-Id: <179057359762.92994.13773102514654073802.b4-ty@b4>
+Date: Mon, 28 Sep 2026 07:33:17 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <cover.1790552614.git.daniel@makrotopia.org>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+X-Mailer: b4 0.16.0
+X-Last-TLS-Session-Version: TLSv1.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260927_165142_180360_A0AD5C00 
-X-CRM114-Status: GOOD (  10.12  )
+X-CRM114-CacheID: sfid-20260927_223345_667015_201A67A6 
+X-CRM114-Status: UNSURE (   6.43  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,87 +116,23 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-it6505_audio_setup_hw_params() returns -ENODEV when no encoder is
-attached. With it6505 registering an hdmi-audio-codec this runs for
-every stream on the I2S DAI, and on mt8186-corsola, where the rt1019
-speaker amplifier shares I2S3, the error tears down the whole DPCM
-backend and breaks speaker playback whenever no display is attached.
 
-The function only caches stream parameters, which needs no encoder.
-Drop the check, and apply the audio defaults once at probe instead of
-in it6505_variable_config(), which would clobber the cached
-parameters again on every hotplug. Actual audio output remains gated
-by it6505->powered.
+On Sun, 13 Sep 2026 14:33:32 +0200, Krzysztof Kozlowski wrote:
+> Correct indentation in the examples to consistent 2- or 4-spaces
+> indentation to fix dt-check-style warnings ("example 0
+> [indent-consistent] indent mismatch ...").  Preferred is 4-spaces, but
+> re-indenting entire example just for that is too much churn.
 
-Fixes: b5c84a9edcd4 ("drm/bridge: add it6505 driver")
-Signed-off-by: Daniel Golle <daniel@makrotopia.org>
----
-v8: no changes
+Applied, thanks!
 
-v7: no changes
+[1/2] dt-bindings: display: Use consistent indentation in the example
+      commit: 370c5d9004f8b754351981d59fc26851bf943e93
 
-v6: no changes
-
-v5: no changes
-
-v4: apply audio defaults at probe time instead of in
-    it6505_variable_config()
-
-v3: no changes
-
-v2: drop the encoder check entirely instead of returning 0 early
----
- drivers/gpu/drm/bridge/ite-it6505.c | 23 ++++++++++-------------
- 1 file changed, 10 insertions(+), 13 deletions(-)
-
-diff --git a/drivers/gpu/drm/bridge/ite-it6505.c b/drivers/gpu/drm/bridge/ite-it6505.c
-index acc25a579ff4d..8962e6f717dfe 100644
---- a/drivers/gpu/drm/bridge/ite-it6505.c
-+++ b/drivers/gpu/drm/bridge/ite-it6505.c
-@@ -1371,16 +1371,6 @@ static void it6505_variable_config(struct it6505 *it6505)
- 	it6505->link_state = LINK_IDLE;
- 	it6505->hdcp_desired = HDCP_DESIRED;
- 	it6505->auto_train_retry = AUTO_TRAIN_RETRY;
--	it6505->audio.select = AUDIO_SELECT;
--	it6505->audio.sample_rate = AUDIO_SAMPLE_RATE;
--	it6505->audio.channel_count = AUDIO_CHANNEL_COUNT;
--	it6505->audio.type = AUDIO_TYPE;
--	it6505->audio.i2s_input_format = I2S_INPUT_FORMAT;
--	it6505->audio.i2s_justified = I2S_JUSTIFIED;
--	it6505->audio.i2s_data_delay = I2S_DATA_DELAY;
--	it6505->audio.i2s_ws_channel = I2S_WS_CHANNEL;
--	it6505->audio.i2s_data_sequence = I2S_DATA_SEQUENCE;
--	it6505->audio.word_length = AUDIO_WORD_LENGTH;
- 	memset(it6505->sha1_input, 0, sizeof(it6505->sha1_input));
- 	memset(it6505->bksvs, 0, sizeof(it6505->bksvs));
- }
-@@ -3027,9 +3017,6 @@ static int it6505_audio_setup_hw_params(struct it6505 *it6505,
- 			     params->sample_rate, params->sample_width,
- 			     params->cea.channels);
- 
--	if (!it6505->bridge.encoder)
--		return -ENODEV;
--
- 	if (params->cea.channels <= 1 || params->cea.channels > 8) {
- 		DRM_DEV_DEBUG_DRIVER(dev, "channel number: %d not support",
- 				     params->cea.channels);
-@@ -3161,6 +3148,16 @@ static int it6505_register_audio_driver(struct device *dev)
- 	};
- 	struct platform_device *pdev;
- 
-+	it6505->audio.select = AUDIO_SELECT;
-+	it6505->audio.sample_rate = AUDIO_SAMPLE_RATE;
-+	it6505->audio.channel_count = AUDIO_CHANNEL_COUNT;
-+	it6505->audio.type = AUDIO_TYPE;
-+	it6505->audio.i2s_input_format = I2S_INPUT_FORMAT;
-+	it6505->audio.i2s_justified = I2S_JUSTIFIED;
-+	it6505->audio.i2s_data_delay = I2S_DATA_DELAY;
-+	it6505->audio.i2s_ws_channel = I2S_WS_CHANNEL;
-+	it6505->audio.i2s_data_sequence = I2S_DATA_SEQUENCE;
-+	it6505->audio.word_length = AUDIO_WORD_LENGTH;
- 	it6505->audio.mute = true;
- 	INIT_DELAYED_WORK(&it6505->delayed_audio, it6505_delayed_audio);
- 
+Best regards,
 -- 
-2.55.0
+Luca Ceresoli, Bootlin
+Embedded Linux and Kernel engineering
+https://bootlin.com
+
+
 
