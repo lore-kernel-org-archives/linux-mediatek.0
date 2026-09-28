@@ -4,64 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BD3E3C9833F
-	for <linux-mediatek@archiver.kernel.org>; Mon, 28 Sep 2026 13:41:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D5CBACA5FA5
+	for <linux-mediatek@archiver.kernel.org>; Mon, 28 Sep 2026 14:52:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=IxIytfhZwO11x5KyBUMtw1q6leq9rKslQRYH/QA9PNk=; b=qinFDCrEabdUQXLe3f5jzGhtkZ
-	NK0BtcMroGBDxkEQMMhFZBhsDdroFmFITE81NvESju4oHRvuNshKlVNTv0O6DbYVhOA+IFLT2zV9l
-	gkfq3X/gwHosDe/88+k/DxzLq4JyxsSkHNABvUb+5qSm/k5OM33h6ownE2SMxRym7oJnLxnnnLFur
-	K5LynJwYRn/HDLufla9EPC8XJqKg7n6g7rI3uFEo2vyi6iVbmv7aQVsx4ousfyZDziPkXMJOqT8rq
-	8tVHbttY8V7Me1sQc0WErLWufDAhzhv5TrW0AqPZEuXcUOsVPxkU/yz/jzsGmvh87KG7uiMLiEY8X
-	JyK4+aLQ==;
+	bh=nTxf3g7MHfc46jtOlfQr/x3upd+z4/f4dUMPgxfxrHk=; b=MMAXJi7eYLzJbuizccLU88Iy6z
+	RypFDkR7YWZCbDefSBTdq1Ag6MTk66ckBFkXYzW46x7I5TBRm24MJKWs3GuNm8TlaAMU4x1Xq5ufJ
+	Sjrq1LZCE53ia8rAbHp4RI0+LIzmxWH/KTBiNFsoTeDkQbYFiAZPTXFj+weGXh9l4Txxg4RqVBWF1
+	QmF5uyDmvS/+IEcoVw+o7RcBgtbRg1oYqGbardbhFGIZFEv9bIw53mttDs/M1YNxt0tExHwHy+M71
+	RhMHccLij1lC5NldPrMzEcp/6oDGx9dh6A0H0tCIaiw735c1f6SLLuQnixoHFSPIDENWYdLtj2Apc
+	273Xl6Yw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xBBbU-00000000gD2-0v0d;
-	Mon, 28 Sep 2026 13:41:12 +0000
-Received: from mail-m49198.qiye.163.com ([45.254.49.198])
+	id 1xBCiH-00000000pA4-2yMv;
+	Mon, 28 Sep 2026 14:52:17 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xBBbQ-00000000gBI-0mxu;
-	Mon, 28 Sep 2026 13:41:10 +0000
-Received: from LAPTOP-99KJFSET (unknown [36.153.54.109])
-	by smtp.qiye.163.com (Hmail) with ESMTP id 4f5d6f420;
-	Mon, 28 Sep 2026 21:40:55 +0800 (GMT+08:00)
-From: Hongyan Xu <getshell@seu.edu.cn>
-To: lgirdwood@gmail.com,
-	broonie@kernel.org
-Cc: perex@perex.cz,
-	tiwai@suse.com,
-	matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com,
-	phucduc.bui@gmail.com,
-	linux-sound@vger.kernel.org,
+	id 1xBCiG-00000000p9b-10Ib;
+	Mon, 28 Sep 2026 14:52:16 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by sea.source.kernel.org (Postfix) with ESMTP id A199341363;
+	Mon, 28 Sep 2026 14:52:15 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 03E201F000FF;
+	Mon, 28 Sep 2026 14:52:12 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1790607135;
+	bh=nTxf3g7MHfc46jtOlfQr/x3upd+z4/f4dUMPgxfxrHk=;
+	h=From:To:Cc:Subject:Date;
+	b=LP/RlWEYCcno73BsmdUCQ3MYvg9M5gY+QItkF6nEzp9DJgDTRP9s2iUvqDBaX9kcd
+	 4EoSagQq2MiWMgiyQNdG30Llr4nwZRM5zEwiDKZmB5k5M36xeq8CMig5C/rSr/9cjl
+	 /FKE/Fe/I4zBoiaqPeB3pFMiEWRwaIRR1JMReCwxyB9SRlyf77EHfWjAGw4qPctrwy
+	 y1qGCGYO/kB8hDgmnTmWD32H4BtcLs27d1kvBMFkOER5zGsWfawOpuZAInXJGC6fmp
+	 KEV77oNs0fGGmtzZjUq5QvP7M5Ip/hWhZGnj4QRL1ei89TIuE9rS0/3wP/xlc07AIj
+	 AepHjXkeD5vwA==
+From: Arnd Bergmann <arnd@kernel.org>
+To: Felix Fietkau <nbd@nbd.name>,
+	Lorenzo Bianconi <lorenzo@kernel.org>,
+	Ryder Lee <ryder.lee@mediatek.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: Arnd Bergmann <arnd@arndb.de>,
+	Shayne Chen <shayne.chen@mediatek.com>,
+	Sean Wang <sean.wang@mediatek.com>,
+	linux-wireless@vger.kernel.org,
 	linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	jianhao.xu@seu.edu.cn,
-	Hongyan Xu <getshell@seu.edu.cn>
-Subject: [PATCH] ASoC: mt6359-accdet: manage private workqueues with devres
-Date: Mon, 28 Sep 2026 21:40:54 +0800
-Message-ID: <20260928134054.312-1-getshell@seu.edu.cn>
-X-Mailer: git-send-email 2.50.1.windows.1
+	linux-mediatek@lists.infradead.org
+Subject: [PATCH] wifi: mt76: mt7996: add NET_AIROHA dependency
+Date: Mon, 28 Sep 2026 16:51:44 +0200
+Message-ID: <20260928145210.3153783-1-arnd@kernel.org>
+X-Mailer: git-send-email 2.53.0
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-HM-Tid: 0aa0e83f435803a1kunm0bf1d24120016b
-X-HM-MType: 10
-X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
-	tZV1koWUFITzdXWRgWCB1ZQUpXWS1ZQUlXWQ8JGhUIEh9ZQVlCHR4fVk1JSExDGR4eHh1MGFYeHw
-	5VEwETFhoSFyQUDg9ZV1kYEgtZQVlITVVKTkhVTk9VSktCWVdZFhoPEhUdFFlBWU9LSFVKS0hKT0
-	hMVUpLS1VKQktLWQY+
-DKIM-Signature: a=rsa-sha256;
-	b=HYvu/mlia949YOARa7esVLg1mr2vvgirO0MRgu39IikH90x6dAbIpAIwcZMuZBfGOo3U/NuaWKZTN9vSnIjVhKbFZO1xNk91juWrPjAbvK+Vl3/zlAd3j8pdqhhnfagWymTBipYz7yXdc/4Ou/7WSlry5jcqpoTv7yenUU5/CvA=; c=relaxed/relaxed; s=default; d=seu.edu.cn; v=1;
-	bh=IxIytfhZwO11x5KyBUMtw1q6leq9rKslQRYH/QA9PNk=;
-	h=date:mime-version:subject:message-id:from;
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260928_064108_831011_7C4A8782 
-X-CRM114-Status: GOOD (  12.31  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,105 +74,58 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The threaded jack-detect interrupts queue work on two private
-workqueues. Neither queue is destroyed on device removal, so queued
-callbacks can retain pointers to devm-allocated state after it is
-released. Probe error paths also leak the queues.
+From: Arnd Bergmann <arnd@arndb.de>
 
-Create and initialize both workqueues before requesting interrupts, then
-add a managed cleanup action. Since the managed IRQs are acquired
-afterwards, devres releases and synchronizes them before draining and
-destroying the workqueues on both removal and probe failure.
+MT7996E fails to link as build-in when NET_AIROHA=m:
 
-Fixes: eef07b9e0925 ("ASoC: mediatek: mt6359: add MT6359 accdet jack driver")
-Signed-off-by: Hongyan Xu <getshell@seu.edu.cn>
+WARNING: unmet direct dependencies detected for MT76_NPU
+  Depends on [m]: NETDEVICES [=y] && WLAN [=y] && WLAN_VENDOR_MEDIATEK [=y] && (NET_AIROHA_NPU [=y]=y [=y] || MT76_CORE [=y]=NET_AIROHA_NPU [=y]) && (NET_AIROHA [=m] || !NET_AIROHA [=m])
+  Selected by [y]:
+  - MT7996_NPU [=y] && NETDEVICES [=y] && WLAN [=y] && WLAN_VENDOR_MEDIATEK [=y] && MT7996E [=y] && (NET_AIROHA_NPU [=y]=y [=y] || MT76_CORE [=y]=NET_AIROHA_NPU [=y])
+arm-linux-gnueabi-ld: drivers/net/wireless/mediatek/mt76/npu.o: in function `mt76_npu_init':
+npu.c:(.text.mt76_npu_init+0x4c): undefined reference to `airoha_ppe_get_dev'
+arm-linux-gnueabi-ld: npu.c:(.text.mt76_npu_init+0xf8): undefined reference to `airoha_ppe_put_dev'
+
+Add another dependency to prevent this configuration, with an explicit
+special case to allow the NPU to be used while the PPE code is stubbed
+out with NET_AIROHA=n.
+
+Fixes: 377aa17d2aed ("wifi: mt76: mt7996: Add NPU offload support to MT7996 driver")
+Signed-off-by: Arnd Bergmann <arnd@arndb.de>
 ---
- sound/soc/codecs/mt6359-accdet.c | 50 ++++++++++++++++++--------------
- 1 file changed, 28 insertions(+), 22 deletions(-)
+I am not sure what the use case is for using only the NPU but not
+the PPE code, and it would be good to add a comment near the
+dependency to clarify this, or possibly skip the complexity and
+just make it a hard dependency.
+---
+ drivers/net/wireless/mediatek/mt76/Kconfig        | 1 +
+ drivers/net/wireless/mediatek/mt76/mt7996/Kconfig | 1 +
+ 2 files changed, 2 insertions(+)
 
-diff --git a/sound/soc/codecs/mt6359-accdet.c b/sound/soc/codecs/mt6359-accdet.c
-index e1190c644021..54ec1c6bd64b 100644
---- a/sound/soc/codecs/mt6359-accdet.c
-+++ b/sound/soc/codecs/mt6359-accdet.c
-@@ -914,6 +914,14 @@ int mt6359_accdet_enable_jack_detect(struct snd_soc_component *component,
- }
- EXPORT_SYMBOL_GPL(mt6359_accdet_enable_jack_detect);
+diff --git a/drivers/net/wireless/mediatek/mt76/Kconfig b/drivers/net/wireless/mediatek/mt76/Kconfig
+index 2ca96e0527c0..a4ece38f938d 100644
+--- a/drivers/net/wireless/mediatek/mt76/Kconfig
++++ b/drivers/net/wireless/mediatek/mt76/Kconfig
+@@ -40,6 +40,7 @@ config MT792x_USB
+ config MT76_NPU
+ 	tristate
+ 	depends on NET_AIROHA_NPU=y || MT76_CORE=NET_AIROHA_NPU
++	depends on NET_AIROHA=y || NET_AIROHA=n || MT76_CORE=NET_AIROHA
  
-+static void mt6359_accdet_destroy_workqueues(void *data)
-+{
-+	struct mt6359_accdet *priv = data;
-+
-+	destroy_workqueue(priv->jd_workqueue);
-+	destroy_workqueue(priv->accdet_workqueue);
-+}
-+
- static int mt6359_accdet_probe(struct platform_device *pdev)
- {
- 	struct mt6359_accdet *priv;
-@@ -955,6 +963,26 @@ static int mt6359_accdet_probe(struct platform_device *pdev)
- 	}
- 	mutex_init(&priv->res_lock);
- 
-+	priv->accdet_workqueue = create_singlethread_workqueue("accdet");
-+	INIT_WORK(&priv->accdet_work, mt6359_accdet_work);
-+	if (!priv->accdet_workqueue) {
-+		dev_err(&pdev->dev, "Failed to create accdet workqueue\n");
-+		return -ENOMEM;
-+	}
-+
-+	priv->jd_workqueue = create_singlethread_workqueue("mt6359_accdet_jd");
-+	INIT_WORK(&priv->jd_work, mt6359_accdet_jd_work);
-+	if (!priv->jd_workqueue) {
-+		dev_err(&pdev->dev, "Failed to create jack detect workqueue\n");
-+		destroy_workqueue(priv->accdet_workqueue);
-+		return -ENOMEM;
-+	}
-+
-+	ret = devm_add_action_or_reset(&pdev->dev,
-+				       mt6359_accdet_destroy_workqueues, priv);
-+	if (ret)
-+		return ret;
-+
- 	priv->accdet_irq = platform_get_irq(pdev, 0);
- 	if (priv->accdet_irq >= 0) {
- 		ret = devm_request_threaded_irq(&pdev->dev, priv->accdet_irq,
-@@ -1000,22 +1028,6 @@ static int mt6359_accdet_probe(struct platform_device *pdev)
- 		}
- 	}
- 
--	priv->accdet_workqueue = create_singlethread_workqueue("accdet");
--	INIT_WORK(&priv->accdet_work, mt6359_accdet_work);
--	if (!priv->accdet_workqueue) {
--		dev_err(&pdev->dev, "Failed to create accdet workqueue\n");
--		ret = -1;
--		goto err_accdet_wq;
--	}
--
--	priv->jd_workqueue = create_singlethread_workqueue("mt6359_accdet_jd");
--	INIT_WORK(&priv->jd_work, mt6359_accdet_jd_work);
--	if (!priv->jd_workqueue) {
--		dev_err(&pdev->dev, "Failed to create jack detect workqueue\n");
--		ret = -1;
--		goto err_eint_wq;
--	}
--
- 	platform_set_drvdata(pdev, priv);
- 	ret = devm_snd_soc_register_component(&pdev->dev,
- 					      &mt6359_accdet_soc_driver,
-@@ -1034,12 +1046,6 @@ static int mt6359_accdet_probe(struct platform_device *pdev)
- 	mt6359_accdet_jack_report(priv);
- 
- 	return 0;
--
--err_eint_wq:
--	destroy_workqueue(priv->accdet_workqueue);
--err_accdet_wq:
--	dev_err(&pdev->dev, "%s error. now exit.!\n", __func__);
--	return ret;
- }
- 
- static struct platform_driver mt6359_accdet_driver = {
+ source "drivers/net/wireless/mediatek/mt76/mt76x0/Kconfig"
+ source "drivers/net/wireless/mediatek/mt76/mt76x2/Kconfig"
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/Kconfig b/drivers/net/wireless/mediatek/mt76/mt7996/Kconfig
+index 5742bce12fbb..3c51b402f44e 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7996/Kconfig
++++ b/drivers/net/wireless/mediatek/mt76/mt7996/Kconfig
+@@ -17,5 +17,6 @@ config MT7996_NPU
+ 	bool "MT7996 (PCIe) NPU support"
+ 	depends on MT7996E
+ 	depends on NET_AIROHA_NPU=y || MT76_CORE=NET_AIROHA_NPU
++	depends on NET_AIROHA=y || NET_AIROHA=n || MT76_CORE=NET_AIROHA
+ 	select MT76_NPU
+ 	default n
 -- 
-2.50.1.windows.1
+2.53.0
 
 
