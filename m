@@ -4,103 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E6059CA5FA2
-	for <linux-mediatek@archiver.kernel.org>; Mon, 28 Sep 2026 16:16:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 17FFECA5FA3
+	for <linux-mediatek@archiver.kernel.org>; Mon, 28 Sep 2026 18:21:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=v9Tw4ZE1G69hRr4vc52iHnkSsVjNEruzNlhhsAUicUU=; b=sBZVClPGoqqb1qbECVLRbyP/vF
-	MDeS5ZTQNQTyZvoz4RtTe9WQujt6BSHmxPF/GFjtZJHkaHPt6F9H3MyQcXlztFHN2Y+2/6BebC1cc
-	JagL1rBVj213j2fFbxd7Dw8BINtGpzulcrnEzh3JRC5zUl2nD+FThZwmBSgSe1gcaa6XSJR/j/kbv
-	Z2rQYOA+oGHm8mEosIjVERdnRhuC5i7p5bj4FliWhejQm/YrpyNWkAFrhWEcQ6Rcpe3yCvDoO6/jy
-	mzlZzWIlZmA1FsC7iPZygwChcH8LL5f4UFwKDcaQ6dpKGBRTZs9kc+9Tq3+F6KJzLwtKWblZ+nJws
-	Ni/qK9BQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Type:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=c45RCiZFnpvIRIApUW8GP2qBnj9FSWOECr9ZirFB7BY=; b=rpdw6BTs/vfOStgu6efadiRaKb
+	axadjyAKk3HEJR1W8b2v2Eesl4rkmLFOxAYMvL2d1tZ5iWh5wbkdkbv8IrbBAOICdeiIhrFmVo9Qn
+	5jscRtRe7kk6AzorZ0eUu0qiiNzVghh2I9/4oBASxZwCokAyNWA6miv+8/55mzUl5lriumN/I9wrD
+	e1vFCaKoH6o1cbgF5bB9n42RMd86orjkzbYP8zIZGqqYbsrvGFEjD0fKuec7C9rlURV/fx8KYRoqY
+	/xErRsBFNEsFNjzXyhmQGRzIEkxNODo8E3A9ezjzoY8rgY64O7Xmca/aPeLFHoKKkLH/YeJbuGuAk
+	ot/oOOZQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xBE1j-00000000zWl-4BKG;
-	Mon, 28 Sep 2026 16:16:28 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1xBFyO-00000001IsZ-44vD;
+	Mon, 28 Sep 2026 18:21:08 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xBE1c-00000000zU7-2qaU;
-	Mon, 28 Sep 2026 16:16:20 +0000
+	id 1xBFyN-00000001IsE-11rI;
+	Mon, 28 Sep 2026 18:21:07 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 814B9600D1;
-	Mon, 28 Sep 2026 16:16:19 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 53EB91F00898;
-	Mon, 28 Sep 2026 16:16:09 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id AE1BF600E2;
+	Mon, 28 Sep 2026 18:21:06 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5F2071F000FF;
+	Mon, 28 Sep 2026 18:21:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1790612179;
-	bh=v9Tw4ZE1G69hRr4vc52iHnkSsVjNEruzNlhhsAUicUU=;
-	h=From:To:Cc:Subject:Date;
-	b=fDMPS1BQWnhqBOm5Et2mOCue6qkyeCiAtDwNCfym/yr7KTxRMQsqu0E6hMtOC3G4v
-	 zVB5Nk0ppwIjf11h1jlqCVd40xiB83NC/dlmG3Othz+Yj26ZLpuQO/2Vq89ZvGMcPq
-	 Elbik/R3zVlKqJUEchfTMLky3ugNbNjwwjfpacNS+vNbyC1jKVoP2AVcB7mBqQ1T0W
-	 PyCLWuxlgyWfASyTH/028go6JiMSdTragpnvIFyaPQzWMc6aqPUGpuysKLqr6wkZEn
-	 SP2ZljcJ1FqeYd2qX+k2O8HBsNs1d79Q7dVDQ6RHhVwJTg1TqLMZCirKMeXkrqt2mC
-	 gaVo0QpwNmSqQ==
-From: Arnd Bergmann <arnd@kernel.org>
-To: David Airlie <airlied@gmail.com>,
-	Simona Vetter <simona@ffwll.ch>,
-	Luca Ceresoli <luca.ceresoli@bootlin.com>
-Cc: Arnd Bergmann <arnd@arndb.de>,
-	Sasha Finkelstein <k@chaosmail.tech>,
-	Janne Grunau <j@jannau.net>,
-	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
-	Maxime Ripard <mripard@kernel.org>,
-	Thomas Zimmermann <tzimmermann@suse.de>,
-	Manikandan Muralidharan <manikandan.m@microchip.com>,
-	Dharma Balasubiramani <dharma.b@microchip.com>,
-	Nicolas Ferre <nicolas.ferre@microchip.com>,
-	Alexandre Belloni <alexandre.belloni@bootlin.com>,
-	Claudiu Beznea <claudiu.beznea@tuxon.dev>,
-	Jagan Teki <jagan@amarulasolutions.com>,
-	Andrzej Hajda <andrzej.hajda@intel.com>,
-	Neil Armstrong <neil.armstrong@linaro.org>,
-	Robert Foss <rfoss@kernel.org>,
-	Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
-	Jonas Karlman <jonas@kwiboo.se>,
-	Jernej Skrabec <jernej.skrabec@gmail.com>,
-	Liu Ying <victor.liu@nxp.com>,
-	Frank Li <Frank.Li@nxp.com>,
-	Sascha Hauer <s.hauer@pengutronix.de>,
-	Pengutronix Kernel Team <kernel@pengutronix.de>,
-	Fabio Estevam <festevam@gmail.com>,
-	Douglas Anderson <dianders@chromium.org>,
-	Philipp Zabel <p.zabel@pengutronix.de>,
-	Chun-Kuang Hu <chunkuang.hu@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Rob Clark <robin.clark@oss.qualcomm.com>,
-	Dmitry Baryshkov <lumag@kernel.org>,
-	Abhinav Kumar <abhinav.kumar@linux.dev>,
-	Jessica Zhang <jesszhan0024@gmail.com>,
-	Sean Paul <sean@poorly.run>,
-	Marijn Suijten <marijn.suijten@somainline.org>,
-	Marek Vasut <marex@denx.de>,
-	Stefan Agner <stefan@agner.ch>,
-	Orson Zhai <orsonzhai@gmail.com>,
-	Baolin Wang <baolin.wang@linux.alibaba.com>,
-	Chunyan Zhang <zhang.lyra@gmail.com>,
-	Jyri Sarha <jyri.sarha@iki.fi>,
-	Tomi Valkeinen <tomi.valkeinen@ideasonboard.com>,
-	Icenowy Zheng <zhengxingda@iscas.ac.cn>,
-	dri-devel@lists.freedesktop.org,
-	asahi@lists.linux.dev,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	imx@lists.linux.dev,
-	linux-mediatek@lists.infradead.org,
-	linux-arm-msm@vger.kernel.org,
-	freedreno@lists.freedesktop.org
-Subject: [PATCH] drm/bridge: add missing drm/drm_panel.h inclusions
-Date: Mon, 28 Sep 2026 18:04:50 +0200
-Message-ID: <20260928161605.2271412-1-arnd@kernel.org>
-X-Mailer: git-send-email 2.53.0
+	s=k20260515; t=1790619666;
+	bh=c45RCiZFnpvIRIApUW8GP2qBnj9FSWOECr9ZirFB7BY=;
+	h=Date:From:To:Cc:Subject:Reply-To:References:In-Reply-To;
+	b=jnGBehApRnp2zUzBcxAhucOVsXYejV9U9aAaHeA4OAN0/hqqLC/54hDmJ9EemU7y7
+	 eWsMelFCW3E0bWLJ0JNlODXbnGZtwH1JW7dJvTLdwCezVDmh4cSZP7SMlS70rF5YAL
+	 LxIGecBHfP8A1U8JG9F0SNfjJTXLpDBGP2T3V9Gb6H0Xhz+J2vEMHm6CIRxfYqb1HQ
+	 3w/xwflut2yQ5gzl4FGbzJbpI4cosUAKFEGtkinGfKkANqjGscY7Mh/yBw4GsaUOBU
+	 5XsYkIWBrpRPlkAMxOAjMsW2NazfFlaqqcS/A5UIBqdhZD7WWfmxArnh2UC8Q0L1VS
+	 JGApbadXzpvRA==
+Received: by paulmck-ThinkPad-P17-Gen-1.home (Postfix, from userid 1000)
+	id 1AEDCCE0832; Mon, 28 Sep 2026 11:21:06 -0700 (PDT)
+Date: Mon, 28 Sep 2026 11:21:06 -0700
+From: "Paul E. McKenney" <paulmck@kernel.org>
+To: Vladimir Murzin <vladimir.murzin@arm.com>
+Cc: linux-usb@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
+	chunfeng.yun@mediatek.com, gregkh@linuxfoundation.org,
+	rostedt@goodmis.org, mark.rutland@arm.com
+Subject: Re: [PATCH] usb: mtu3: Fix double dereference in TP_printk
+Message-ID: <315259c9-d7b9-44bc-8896-ecb9429a6eb5@paulmck-laptop>
+References: <20260922103756.104846-1-vladimir.murzin@arm.com>
+ <845ef1a3-8d85-4007-aa2c-05e59e79afcd@arm.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <845ef1a3-8d85-4007-aa2c-05e59e79afcd@arm.com>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -112,409 +69,114 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Reply-To: paulmck@kernel.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Arnd Bergmann <arnd@arndb.de>
+On Mon, Sep 28, 2026 at 02:11:42PM +0100, Vladimir Murzin wrote:
+> Hi All,
+> 
+> Gentle ping... spat is still present in v7.3-rc5
 
-The devm_drm_of_get_bridge() declaration moved to drm_panel.h, but
-not all callers include this, which leads to build failures in
-some configurations:
+If no one else wants to push it, I can do so.  I gotta admit that the
+resulting test failures when I forget to apply it are a bit annoying.  ;-)
 
-drivers/gpu/drm/imx/lcdc/imx-lcdc.c: In function 'imx_lcdc_probe':
-drivers/gpu/drm/imx/lcdc/imx-lcdc.c:404:18: error: implicit declaration of function 'devm_drm_of_get_bridge' [-Wimplicit-function-declaration]
-  404 |         bridge = devm_drm_of_get_bridge(dev, dev->of_node, 0, 0);
-      |                  ^~~~~~~~~~~~~~~~~~~~~~
-drivers/gpu/drm/verisilicon/vs_bridge.c: In function 'vs_bridge_init':
-drivers/gpu/drm/verisilicon/vs_bridge.c:306:16: error: implicit declaration of function 'devm_drm_of_get_bridge' [-Wimplicit-function-declaration]
-  306 |         next = devm_drm_of_get_bridge(drm_dev->dev, drm_dev->dev->of_node,
-      |                ^~~~~~~~~~~~~~~~~~~~~~
+							Thanx, Paul
 
-Include the new header in all files that need it.
-
-Fixes: aa8a8c7e4641 ("drm/bridge: panel: move all code to drm_panel.c")
-Signed-off-by: Arnd Bergmann <arnd@arndb.de>
----
- drivers/gpu/drm/adp/adp_drv.c                    | 1 +
- drivers/gpu/drm/atmel-hlcdc/atmel_hlcdc_output.c | 1 +
- drivers/gpu/drm/bridge/chipone-icn6211.c         | 1 +
- drivers/gpu/drm/bridge/imx/imx-ldb-helper.c      | 1 +
- drivers/gpu/drm/bridge/ite-it6263.c              | 1 +
- drivers/gpu/drm/bridge/microchip-lvds.c          | 1 +
- drivers/gpu/drm/bridge/nwl-dsi.c                 | 1 +
- drivers/gpu/drm/bridge/nxp-ptn3460.c             | 1 +
- drivers/gpu/drm/bridge/parade-ps8622.c           | 1 +
- drivers/gpu/drm/bridge/parade-ps8640.c           | 1 +
- drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi.c    | 1 +
- drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi2.c   | 1 +
- drivers/gpu/drm/bridge/tc358762.c                | 1 +
- drivers/gpu/drm/bridge/tc358764.c                | 1 +
- drivers/gpu/drm/bridge/tc358775.c                | 1 +
- drivers/gpu/drm/bridge/ti-dlpc3433.c             | 1 +
- drivers/gpu/drm/bridge/ti-sn65dsi83.c            | 1 +
- drivers/gpu/drm/bridge/ti-sn65dsi86.c            | 1 +
- drivers/gpu/drm/drm_bridge.c                     | 1 +
- drivers/gpu/drm/imx/ipuv3/imx-ldb.c              | 1 +
- drivers/gpu/drm/imx/ipuv3/parallel-display.c     | 1 +
- drivers/gpu/drm/imx/lcdc/imx-lcdc.c              | 1 +
- drivers/gpu/drm/mediatek/mtk_dpi.c               | 1 +
- drivers/gpu/drm/msm/disp/mdp4/mdp4_kms.c         | 1 +
- drivers/gpu/drm/mxsfb/lcdif_drv.c                | 1 +
- drivers/gpu/drm/sprd/sprd_dsi.c                  | 1 +
- drivers/gpu/drm/tidss/tidss_oldi.c               | 1 +
- drivers/gpu/drm/tilcdc/tilcdc_encoder.c          | 1 +
- drivers/gpu/drm/verisilicon/vs_bridge.c          | 1 +
- 29 files changed, 29 insertions(+)
-
-diff --git a/drivers/gpu/drm/adp/adp_drv.c b/drivers/gpu/drm/adp/adp_drv.c
-index fdf0e6316175..eb67c6fe9c01 100644
---- a/drivers/gpu/drm/adp/adp_drv.c
-+++ b/drivers/gpu/drm/adp/adp_drv.c
-@@ -16,6 +16,7 @@
- #include <drm/drm_gem_dma_helper.h>
- #include <drm/drm_gem_framebuffer_helper.h>
- #include <drm/drm_of.h>
-+#include <drm/drm_panel.h>
- #include <drm/drm_print.h>
- #include <drm/drm_probe_helper.h>
- #include <drm/drm_vblank.h>
-diff --git a/drivers/gpu/drm/atmel-hlcdc/atmel_hlcdc_output.c b/drivers/gpu/drm/atmel-hlcdc/atmel_hlcdc_output.c
-index e8aea905fb10..d16945ebb2f5 100644
---- a/drivers/gpu/drm/atmel-hlcdc/atmel_hlcdc_output.c
-+++ b/drivers/gpu/drm/atmel-hlcdc/atmel_hlcdc_output.c
-@@ -15,6 +15,7 @@
- #include <drm/drm_bridge.h>
- #include <drm/drm_encoder.h>
- #include <drm/drm_of.h>
-+#include <drm/drm_panel.h>
- #include <drm/drm_print.h>
- #include <drm/drm_simple_kms_helper.h>
- 
-diff --git a/drivers/gpu/drm/bridge/chipone-icn6211.c b/drivers/gpu/drm/bridge/chipone-icn6211.c
-index 4ec50fb63aba..fc4a49b2b246 100644
---- a/drivers/gpu/drm/bridge/chipone-icn6211.c
-+++ b/drivers/gpu/drm/bridge/chipone-icn6211.c
-@@ -6,6 +6,7 @@
- 
- #include <drm/drm_atomic_helper.h>
- #include <drm/drm_of.h>
-+#include <drm/drm_panel.h>
- #include <drm/drm_print.h>
- #include <drm/drm_mipi_dsi.h>
- 
-diff --git a/drivers/gpu/drm/bridge/imx/imx-ldb-helper.c b/drivers/gpu/drm/bridge/imx/imx-ldb-helper.c
-index 6149ba141a38..018fedb0162c 100644
---- a/drivers/gpu/drm/bridge/imx/imx-ldb-helper.c
-+++ b/drivers/gpu/drm/bridge/imx/imx-ldb-helper.c
-@@ -13,6 +13,7 @@
- 
- #include <drm/drm_bridge.h>
- #include <drm/drm_of.h>
-+#include <drm/drm_panel.h>
- #include <drm/drm_print.h>
- 
- #include "imx-ldb-helper.h"
-diff --git a/drivers/gpu/drm/bridge/ite-it6263.c b/drivers/gpu/drm/bridge/ite-it6263.c
-index 21ac8e58b9d2..12a23bb45c84 100644
---- a/drivers/gpu/drm/bridge/ite-it6263.c
-+++ b/drivers/gpu/drm/bridge/ite-it6263.c
-@@ -26,6 +26,7 @@
- #include <drm/drm_crtc.h>
- #include <drm/drm_edid.h>
- #include <drm/drm_of.h>
-+#include <drm/drm_panel.h>
- #include <drm/drm_probe_helper.h>
- 
- /* -----------------------------------------------------------------------------
-diff --git a/drivers/gpu/drm/bridge/microchip-lvds.c b/drivers/gpu/drm/bridge/microchip-lvds.c
-index dd4ffc9f4df3..53291cde0636 100644
---- a/drivers/gpu/drm/bridge/microchip-lvds.c
-+++ b/drivers/gpu/drm/bridge/microchip-lvds.c
-@@ -24,6 +24,7 @@
- #include <drm/drm_atomic_helper.h>
- #include <drm/drm_bridge.h>
- #include <drm/drm_of.h>
-+#include <drm/drm_panel.h>
- #include <drm/drm_print.h>
- #include <drm/drm_probe_helper.h>
- #include <drm/drm_simple_kms_helper.h>
-diff --git a/drivers/gpu/drm/bridge/nwl-dsi.c b/drivers/gpu/drm/bridge/nwl-dsi.c
-index 09992529f3d8..f7043dcd76cb 100644
---- a/drivers/gpu/drm/bridge/nwl-dsi.c
-+++ b/drivers/gpu/drm/bridge/nwl-dsi.c
-@@ -27,6 +27,7 @@
- #include <drm/drm_bridge.h>
- #include <drm/drm_mipi_dsi.h>
- #include <drm/drm_of.h>
-+#include <drm/drm_panel.h>
- #include <drm/drm_print.h>
- 
- #include <video/mipi_display.h>
-diff --git a/drivers/gpu/drm/bridge/nxp-ptn3460.c b/drivers/gpu/drm/bridge/nxp-ptn3460.c
-index f9eff8bfceb7..489704df6145 100644
---- a/drivers/gpu/drm/bridge/nxp-ptn3460.c
-+++ b/drivers/gpu/drm/bridge/nxp-ptn3460.c
-@@ -15,6 +15,7 @@
- #include <drm/drm_crtc.h>
- #include <drm/drm_edid.h>
- #include <drm/drm_of.h>
-+#include <drm/drm_panel.h>
- #include <drm/drm_print.h>
- #include <drm/drm_probe_helper.h>
- 
-diff --git a/drivers/gpu/drm/bridge/parade-ps8622.c b/drivers/gpu/drm/bridge/parade-ps8622.c
-index 3a2ec482037d..ff24aa647028 100644
---- a/drivers/gpu/drm/bridge/parade-ps8622.c
-+++ b/drivers/gpu/drm/bridge/parade-ps8622.c
-@@ -19,6 +19,7 @@
- #include <drm/drm_bridge.h>
- #include <drm/drm_crtc.h>
- #include <drm/drm_of.h>
-+#include <drm/drm_panel.h>
- #include <drm/drm_print.h>
- #include <drm/drm_probe_helper.h>
- 
-diff --git a/drivers/gpu/drm/bridge/parade-ps8640.c b/drivers/gpu/drm/bridge/parade-ps8640.c
-index 56b48f8feab6..425985f2398d 100644
---- a/drivers/gpu/drm/bridge/parade-ps8640.c
-+++ b/drivers/gpu/drm/bridge/parade-ps8640.c
-@@ -20,6 +20,7 @@
- #include <drm/drm_edid.h>
- #include <drm/drm_mipi_dsi.h>
- #include <drm/drm_of.h>
-+#include <drm/drm_panel.h>
- #include <drm/drm_print.h>
- 
- #define PAGE0_AUXCH_CFG3	0x76
-diff --git a/drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi.c b/drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi.c
-index 5dd475fcaacf..11233d2d7385 100644
---- a/drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi.c
-+++ b/drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi.c
-@@ -30,6 +30,7 @@
- #include <drm/drm_mipi_dsi.h>
- #include <drm/drm_modes.h>
- #include <drm/drm_of.h>
-+#include <drm/drm_panel.h>
- #include <drm/drm_print.h>
- 
- #define HWVER_131			0x31333100	/* IP version 1.31 */
-diff --git a/drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi2.c b/drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi2.c
-index c0d89dd767ce..5b4f4c823d48 100644
---- a/drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi2.c
-+++ b/drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi2.c
-@@ -24,6 +24,7 @@
- #include <drm/drm_bridge.h>
- #include <drm/drm_mipi_dsi.h>
- #include <drm/drm_of.h>
-+#include <drm/drm_panel.h>
- #include <drm/drm_print.h>
- 
- #define DSI2_PWR_UP			0x000c
-diff --git a/drivers/gpu/drm/bridge/tc358762.c b/drivers/gpu/drm/bridge/tc358762.c
-index 76564d5e4f69..c9e5bbc5dcd0 100644
---- a/drivers/gpu/drm/bridge/tc358762.c
-+++ b/drivers/gpu/drm/bridge/tc358762.c
-@@ -23,6 +23,7 @@
- #include <drm/drm_crtc.h>
- #include <drm/drm_mipi_dsi.h>
- #include <drm/drm_of.h>
-+#include <drm/drm_panel.h>
- #include <drm/drm_print.h>
- #include <drm/drm_probe_helper.h>
- 
-diff --git a/drivers/gpu/drm/bridge/tc358764.c b/drivers/gpu/drm/bridge/tc358764.c
-index 049215e65988..311de8797402 100644
---- a/drivers/gpu/drm/bridge/tc358764.c
-+++ b/drivers/gpu/drm/bridge/tc358764.c
-@@ -18,6 +18,7 @@
- #include <drm/drm_atomic_helper.h>
- #include <drm/drm_mipi_dsi.h>
- #include <drm/drm_of.h>
-+#include <drm/drm_panel.h>
- #include <drm/drm_print.h>
- 
- #define FLD_MASK(start, end)    (((1 << ((start) - (end) + 1)) - 1) << (end))
-diff --git a/drivers/gpu/drm/bridge/tc358775.c b/drivers/gpu/drm/bridge/tc358775.c
-index 203dc738ecef..e7ea47307a50 100644
---- a/drivers/gpu/drm/bridge/tc358775.c
-+++ b/drivers/gpu/drm/bridge/tc358775.c
-@@ -26,6 +26,7 @@
- #include <drm/drm_bridge.h>
- #include <drm/drm_mipi_dsi.h>
- #include <drm/drm_of.h>
-+#include <drm/drm_panel.h>
- #include <drm/drm_probe_helper.h>
- 
- #define FLD_VAL(val, start, end) FIELD_PREP(GENMASK(start, end), val)
-diff --git a/drivers/gpu/drm/bridge/ti-dlpc3433.c b/drivers/gpu/drm/bridge/ti-dlpc3433.c
-index c9f789e30687..21922878e60e 100644
---- a/drivers/gpu/drm/bridge/ti-dlpc3433.c
-+++ b/drivers/gpu/drm/bridge/ti-dlpc3433.c
-@@ -10,6 +10,7 @@
- 
- #include <drm/drm_atomic_helper.h>
- #include <drm/drm_of.h>
-+#include <drm/drm_panel.h>
- #include <drm/drm_print.h>
- #include <drm/drm_mipi_dsi.h>
- 
-diff --git a/drivers/gpu/drm/bridge/ti-sn65dsi83.c b/drivers/gpu/drm/bridge/ti-sn65dsi83.c
-index eb5b249cc43c..cc6c4c89d468 100644
---- a/drivers/gpu/drm/bridge/ti-sn65dsi83.c
-+++ b/drivers/gpu/drm/bridge/ti-sn65dsi83.c
-@@ -45,6 +45,7 @@
- #include <drm/drm_bridge_helper.h>
- #include <drm/drm_mipi_dsi.h>
- #include <drm/drm_of.h>
-+#include <drm/drm_panel.h>
- #include <drm/drm_print.h>
- #include <drm/drm_probe_helper.h>
- 
-diff --git a/drivers/gpu/drm/bridge/ti-sn65dsi86.c b/drivers/gpu/drm/bridge/ti-sn65dsi86.c
-index 48b83df9aed6..de16afa99b91 100644
---- a/drivers/gpu/drm/bridge/ti-sn65dsi86.c
-+++ b/drivers/gpu/drm/bridge/ti-sn65dsi86.c
-@@ -32,6 +32,7 @@
- #include <drm/drm_edid.h>
- #include <drm/drm_mipi_dsi.h>
- #include <drm/drm_of.h>
-+#include <drm/drm_panel.h>
- #include <drm/drm_print.h>
- #include <drm/drm_probe_helper.h>
- 
-diff --git a/drivers/gpu/drm/drm_bridge.c b/drivers/gpu/drm/drm_bridge.c
-index e7f9e6d58927..e50737432071 100644
---- a/drivers/gpu/drm/drm_bridge.c
-+++ b/drivers/gpu/drm/drm_bridge.c
-@@ -36,6 +36,7 @@
- #include <drm/drm_encoder.h>
- #include <drm/drm_file.h>
- #include <drm/drm_of.h>
-+#include <drm/drm_panel.h>
- #include <drm/drm_print.h>
- 
- #include "drm_crtc_internal.h"
-diff --git a/drivers/gpu/drm/imx/ipuv3/imx-ldb.c b/drivers/gpu/drm/imx/ipuv3/imx-ldb.c
-index 63d6a1e7c1bd..317db4d9b898 100644
---- a/drivers/gpu/drm/imx/ipuv3/imx-ldb.c
-+++ b/drivers/gpu/drm/imx/ipuv3/imx-ldb.c
-@@ -25,6 +25,7 @@
- #include <drm/drm_bridge_connector.h>
- #include <drm/drm_managed.h>
- #include <drm/drm_of.h>
-+#include <drm/drm_panel.h>
- #include <drm/drm_print.h>
- #include <drm/drm_probe_helper.h>
- #include <drm/drm_simple_kms_helper.h>
-diff --git a/drivers/gpu/drm/imx/ipuv3/parallel-display.c b/drivers/gpu/drm/imx/ipuv3/parallel-display.c
-index eb75827394f8..966649bc6dc6 100644
---- a/drivers/gpu/drm/imx/ipuv3/parallel-display.c
-+++ b/drivers/gpu/drm/imx/ipuv3/parallel-display.c
-@@ -17,6 +17,7 @@
- #include <drm/drm_bridge_connector.h>
- #include <drm/drm_managed.h>
- #include <drm/drm_of.h>
-+#include <drm/drm_panel.h>
- #include <drm/drm_probe_helper.h>
- #include <drm/drm_simple_kms_helper.h>
- #include <drm/bridge/of-display-mode-bridge.h>
-diff --git a/drivers/gpu/drm/imx/lcdc/imx-lcdc.c b/drivers/gpu/drm/imx/lcdc/imx-lcdc.c
-index c67fe80b8115..cac50a002004 100644
---- a/drivers/gpu/drm/imx/lcdc/imx-lcdc.c
-+++ b/drivers/gpu/drm/imx/lcdc/imx-lcdc.c
-@@ -14,6 +14,7 @@
- #include <drm/drm_gem_dma_helper.h>
- #include <drm/drm_gem_framebuffer_helper.h>
- #include <drm/drm_of.h>
-+#include <drm/drm_panel.h>
- #include <drm/drm_print.h>
- #include <drm/drm_probe_helper.h>
- #include <drm/drm_simple_kms_helper.h>
-diff --git a/drivers/gpu/drm/mediatek/mtk_dpi.c b/drivers/gpu/drm/mediatek/mtk_dpi.c
-index 0e4f430de983..b73d76a40c6c 100644
---- a/drivers/gpu/drm/mediatek/mtk_dpi.c
-+++ b/drivers/gpu/drm/mediatek/mtk_dpi.c
-@@ -27,6 +27,7 @@
- #include <drm/drm_edid.h>
- #include <drm/drm_encoder.h>
- #include <drm/drm_of.h>
-+#include <drm/drm_panel.h>
- 
- #include "mtk_ddp_comp.h"
- #include "mtk_disp_drv.h"
-diff --git a/drivers/gpu/drm/msm/disp/mdp4/mdp4_kms.c b/drivers/gpu/drm/msm/disp/mdp4/mdp4_kms.c
-index 9b1d1982e683..df5fed30718e 100644
---- a/drivers/gpu/drm/msm/disp/mdp4/mdp4_kms.c
-+++ b/drivers/gpu/drm/msm/disp/mdp4/mdp4_kms.c
-@@ -8,6 +8,7 @@
- 
- #include <drm/drm_bridge.h>
- #include <drm/drm_bridge_connector.h>
-+#include <drm/drm_panel.h>
- #include <drm/drm_vblank.h>
- 
- #include "msm_drv.h"
-diff --git a/drivers/gpu/drm/mxsfb/lcdif_drv.c b/drivers/gpu/drm/mxsfb/lcdif_drv.c
-index e2173c4d6fc2..ba14b20cb038 100644
---- a/drivers/gpu/drm/mxsfb/lcdif_drv.c
-+++ b/drivers/gpu/drm/mxsfb/lcdif_drv.c
-@@ -27,6 +27,7 @@
- #include <drm/drm_mode_config.h>
- #include <drm/drm_module.h>
- #include <drm/drm_of.h>
-+#include <drm/drm_panel.h>
- #include <drm/drm_probe_helper.h>
- #include <drm/drm_vblank.h>
- 
-diff --git a/drivers/gpu/drm/sprd/sprd_dsi.c b/drivers/gpu/drm/sprd/sprd_dsi.c
-index 23b0e1dc547a..260d1682c8a7 100644
---- a/drivers/gpu/drm/sprd/sprd_dsi.c
-+++ b/drivers/gpu/drm/sprd/sprd_dsi.c
-@@ -12,6 +12,7 @@
- #include <drm/drm_atomic_helper.h>
- #include <drm/drm_bridge.h>
- #include <drm/drm_of.h>
-+#include <drm/drm_panel.h>
- #include <drm/drm_probe_helper.h>
- 
- #include "sprd_drm.h"
-diff --git a/drivers/gpu/drm/tidss/tidss_oldi.c b/drivers/gpu/drm/tidss/tidss_oldi.c
-index 5eb749f495d5..7e77b4af36d0 100644
---- a/drivers/gpu/drm/tidss/tidss_oldi.c
-+++ b/drivers/gpu/drm/tidss/tidss_oldi.c
-@@ -15,6 +15,7 @@
- #include <drm/drm_atomic_helper.h>
- #include <drm/drm_bridge.h>
- #include <drm/drm_of.h>
-+#include <drm/drm_panel.h>
- 
- #include "tidss_dispc.h"
- #include "tidss_dispc_regs.h"
-diff --git a/drivers/gpu/drm/tilcdc/tilcdc_encoder.c b/drivers/gpu/drm/tilcdc/tilcdc_encoder.c
-index ac4b5beb2dd5..5fb0e8e1e829 100644
---- a/drivers/gpu/drm/tilcdc/tilcdc_encoder.c
-+++ b/drivers/gpu/drm/tilcdc/tilcdc_encoder.c
-@@ -10,6 +10,7 @@
- #include <drm/drm_bridge.h>
- #include <drm/drm_bridge_connector.h>
- #include <drm/drm_of.h>
-+#include <drm/drm_panel.h>
- #include <drm/drm_simple_kms_helper.h>
- 
- #include "tilcdc_drv.h"
-diff --git a/drivers/gpu/drm/verisilicon/vs_bridge.c b/drivers/gpu/drm/verisilicon/vs_bridge.c
-index dc7c85b07fe3..586f1bd7d7b5 100644
---- a/drivers/gpu/drm/verisilicon/vs_bridge.c
-+++ b/drivers/gpu/drm/verisilicon/vs_bridge.c
-@@ -15,6 +15,7 @@
- #include <drm/drm_connector.h>
- #include <drm/drm_encoder.h>
- #include <drm/drm_of.h>
-+#include <drm/drm_panel.h>
- #include <drm/drm_print.h>
- #include <drm/drm_simple_kms_helper.h>
- 
--- 
-2.53.0
-
+> Cheers
+> Vladimir
+> 
+> On 9/22/26 11:37, Vladimir Murzin wrote:
+> > Paul reported kernel splat:
+> > 
+> > [    0.000000] TRACE EVENT ERROR: Event mtu3_gadget_ep_set_halt has double dereference in TP_printk: &REC->gpd_ring->dma
+> > [    0.000000] ------------[ cut here ]------------
+> > [    0.000000] Event mtu3_gadget_ep_set_halt has double dereference in TP_printk: &REC->gpd_ring->dma
+> > [    0.000000] WARNING: kernel/trace/trace_events.c:420 at test_double_dereference+0x144/0x14c, CPU#0: swapper/0/0
+> > [    0.000000] Modules linked in:
+> > [    0.000000] CPU: 0 UID: 0 PID: 0 Comm: swapper/0 Not tainted 7.3.0-rc1 #15247 PREEMPT
+> > [    0.000000] Hardware name: linux,dummy-virt (DT)
+> > [    0.000000] pstate: 600000c5 (nZCv daIF -PAN -UAO -TCO -DIT -SSBS BTYPE=--)
+> > [    0.000000] pc : test_double_dereference+0x144/0x14c
+> > [    0.000000] lr : test_double_dereference+0x144/0x14c
+> > [    0.000000] sp : ffffc80aa7633bf0
+> > [    0.000000] x29: ffffc80aa7633bf0 x28: ffffc80aa7c0f047 x27: 000508b58019388f
+> > [    0.000000] x26: 0000000000000003 x25: 0000000000000007 x24: ffffc80aa5fceff8
+> > [    0.000000] x23: ffffc80aa7c0f05a x22: ffffc80aa64edfe8 x21: ffffc80aa7c0fce8
+> > [    0.000000] x20: ffffc80aa7c0f047 x19: 0000000000000013 x18: 0000000000000001
+> > [    0.000000] x17: 6572656420656c62 x16: 756f642073616820 x15: 746c61685f746573
+> > [    0.000000] x14: 0000000000000000 x13: ffff000139d90000 x12: 0000000000000045
+> > [    0.000000] x11: 00000000000000cf x10: ffff00013f546428 x9 : ffff000139d90000
+> > [    0.000000] x8 : 3fffffffffffc000 x7 : 0000000000000001 x6 : 0000000000000001
+> > [    0.000000] x5 : ffff00013f4e6440 x4 : 0000000000000000 x3 : 0000000000000000
+> > [    0.000000] x2 : 0000000000000000 x1 : 0000000000000000 x0 : ffffc80aa764a700
+> > [    0.000000] Call trace:
+> > [    0.000000]  test_double_dereference+0x144/0x14c (P)
+> > [    0.000000]  trace_event_raw_init+0x37c/0x5d8
+> > [    0.000000]  event_init+0x34/0xc0
+> > [    0.000000]  trace_event_init+0xec/0x588
+> > [    0.000000]  trace_init+0x24/0x6e0
+> > [    0.000000]  start_kernel+0x4a0/0x8ec
+> > [    0.000000]  __primary_switched+0x88/0x90
+> > [    0.000000] irq event stamp: 0
+> > [    0.000000] hardirqs last  enabled at (0): [<0000000000000000>] 0x0
+> > [    0.000000] hardirqs last disabled at (0): [<0000000000000000>] 0x0
+> > [    0.000000] softirqs last  enabled at (0): [<0000000000000000>] 0x0
+> > [    0.000000] softirqs last disabled at (0): [<0000000000000000>] 0x0
+> > [    0.000000] ---[ end trace 0000000000000000 ]---
+> > [    0.000000] TRACE EVENT ERROR: Event mtu3_gadget_ep_disable has double dereference in TP_printk: &REC->gpd_ring->dma
+> > [    0.000000] TRACE EVENT ERROR: Event mtu3_gadget_ep_enable has double dereference in TP_printk: &REC->gpd_ring->dma
+> > 
+> > Which also observed by Mark and myself.
+> > 
+> > The splat it result of new check introduced by b5cc230af5e5 ("tracing:
+> > Warn when an event dereferences a pointer in TP_printk()") which
+> > correctly catches issue with %pad dereferencing the address saved in
+> > the ring buffer. TP_fast_assign() logic gets executed when the
+> > tracepoint is triggered, however the TP_printk() is executed when the
+> > user reads the trace buffer which could be seconds, minutes, hours,
+> > days, even months later and nothing guarantee that __entry->gpd_ring
+> > pointer will still be pointing to what it was when it was recorded.
+> > 
+> > Fix the issue by capturing immediate value of gpd_ring.dma when trace
+> > point is triggered.
+> > 
+> > Reported-by: Paul E. McKenney <paulmck@kernel.org>
+> > Tested-by: Mark Rutland <mark.rutland@arm.com>
+> > Reviewed-by: Steven Rostedt <rostedt@goodmis.org>
+> > Signed-off-by: Vladimir Murzin <vladimir.murzin@arm.com>
+> > ---
+> >  drivers/usb/mtu3/mtu3_trace.h | 4 +++-
+> >  1 file changed, 3 insertions(+), 1 deletion(-)
+> > 
+> > diff --git a/drivers/usb/mtu3/mtu3_trace.h b/drivers/usb/mtu3/mtu3_trace.h
+> > index 89870175d635..9aaa167d69c1 100644
+> > --- a/drivers/usb/mtu3/mtu3_trace.h
+> > +++ b/drivers/usb/mtu3/mtu3_trace.h
+> > @@ -224,6 +224,7 @@ DECLARE_EVENT_CLASS(mtu3_log_ep,
+> >  		__field(unsigned int, flags)
+> >  		__field(unsigned int, direction)
+> >  		__field(struct mtu3_gpd_ring *, gpd_ring)
+> > +		__field(dma_addr_t, gpd_ring_dma)
+> >  	),
+> >  	TP_fast_assign(
+> >  		__assign_str(name);
+> > @@ -235,12 +236,13 @@ DECLARE_EVENT_CLASS(mtu3_log_ep,
+> >  		__entry->flags = mep->flags;
+> >  		__entry->direction = mep->is_in;
+> >  		__entry->gpd_ring = &mep->gpd_ring;
+> > +		__entry->gpd_ring_dma = mep->gpd_ring.dma
+> >  	),
+> >  	TP_printk("%s: type %s maxp %d slot %d mult %d burst %d ring %p/%pad flags %c:%c%c%c:%c",
+> >  		__get_str(name), usb_ep_type_string(__entry->type),
+> >  		__entry->maxp, __entry->slot,
+> >  		__entry->mult, __entry->maxburst,
+> > -		__entry->gpd_ring, &__entry->gpd_ring->dma,
+> > +		__entry->gpd_ring, &__entry->gpd_ring_dma,
+> >  		__entry->flags & MTU3_EP_ENABLED ? 'E' : 'e',
+> >  		__entry->flags & MTU3_EP_STALL ? 'S' : 's',
+> >  		__entry->flags & MTU3_EP_WEDGE ? 'W' : 'w',
+> > -- 2.34.1
+> > 
+> 
 
