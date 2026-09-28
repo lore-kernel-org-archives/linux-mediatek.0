@@ -4,86 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F3B84CA5FA3
-	for <linux-mediatek@archiver.kernel.org>; Mon, 28 Sep 2026 21:50:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CA54ACA5FA5
+	for <linux-mediatek@archiver.kernel.org>; Mon, 28 Sep 2026 22:26:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=mwQvTeNf1PFOWqJX6AW6JQAQxKZVMMKWGFfi7n1j4uE=; b=GebFpd4UxEd/aXg/TTXSmbGOds
-	oKkI0PrJyPC5lPZ+peVf67cxHTQ6j7W/yd6PAnZpieuM6GnIi6s2fPzoJi0yL9ER9C4su+rtz3uzW
-	S5k1C/MsoaUHc+9/J3As6SzsC/WqRKiAYn2XSPMqSKVSvnrxyUmvIJXUPyVmqKwB4+c21mMgsL443
-	9yexBj0VrLhC9FbEeUZOEa9vxnsiBhwnqIwWMN2lzo4oL3snnid7TBeMGbLmnizjS+ehOdGE1vvFC
-	nNo3e/kOkXLp1jbuJAbvtUHays4GQCnhJEjrZ9wh26taQYkiCQZ4bZ1ClNcSRwGVfpBo5HFoeyPVO
-	ee0ZnKng==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=zbhVgMQfTliX8eWfdhCQYGm0le0Urjt05MrmEhh//gw=; b=f94JqhA0GDev7he34CFSuhqdtU
+	dt4dKl/RuKqUVEbd/bh5mP3eP3n9J/qDcmc1D4kpGKN+D0NHicNmsJuc0a5Ac+BL3bC4j41Rum9pj
+	tOhzU+2jHAqWAVsSxtbUDwWaEnlPIwLGXuHjOAwX2ViUuZH7/3be+7TA1U/vDYnNnMoB6ip6ey2D2
+	ybuV51fLAeXY5NqY5XWbyC5zp4g4vbA5+jG2KwAntOS+y5uMMZ+jInOCIbBLUrP/QmjnjInohtPlc
+	lBBNrPhB0IHa3QL/xX3ftF819cA+hX6v1Y34CVfdLAwuxOSOiulCV77T9AZqREp/sI9hb3EbZns2l
+	sC4jK9Nw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xBJEV-00000001hv9-2kSl;
-	Mon, 28 Sep 2026 21:49:59 +0000
-Received: from mgamail.intel.com ([198.175.65.19])
+	id 1xBJnP-00000001kLI-3Suj;
+	Mon, 28 Sep 2026 22:26:03 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xBJES-00000001htf-3JcT;
-	Mon, 28 Sep 2026 21:49:58 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1790632197; x=1822168197;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=3A2k4B1MyyYGlKtnyMek8DNyKiLznOjV5xluhGSwX50=;
-  b=KzoB7SWmvkclxeO9BF6RYEVP1a2ZSx0txCUWobXDZbhurGj42WqLrlqA
-   Wz9L4hLINisbEV7tNEscyhwOTX5k5wIDI+mCZz57ZnAFGdV5spGNNwWDJ
-   mOhp5x5vpEHB9eaanHce+ZwKLWqFV4321em9tzi25wQVkv+YikOKEZGz5
-   NdPHsVCtiNfgn6F5yuYm8arXZwHaW8/tQxoVOwi6bd39Yv5I3r/QG5TxQ
-   dm9cx+16ZYWrSKL9pvA1Z56aSEoiSbK8qiRQ5a19jrcbI0P2KePgE1zBn
-   DIFogY1fMd1x0Q+qfj7qq4FkpJ22yjkbcmzgJDR0sgOOB0l0BQWsjsVNw
-   A==;
-X-CSE-ConnectionGUID: 4b++DzpPTQuhiVHUcjEzyA==
-X-CSE-MsgGUID: kofwAIpcSge3nMUUzdjHzw==
-X-IronPort-AV: E=McAfee;i="6800,10657,11919"; a="90295163"
-X-IronPort-AV: E=Sophos;i="6.27,129,1787036400"; 
-   d="scan'208";a="90295163"
-Received: from orviesa003.jf.intel.com ([10.64.159.143])
-  by orvoesa111.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 28 Sep 2026 14:49:56 -0700
-X-CSE-ConnectionGUID: agS7fjZAS8yA+UD6RGr5mQ==
-X-CSE-MsgGUID: LfT05oMtSsy/cY302rRjFQ==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.27,129,1787036400"; 
-   d="scan'208";a="278380629"
-Received: from conormcd-mobl2.ger.corp.intel.com (HELO localhost) ([10.245.244.42])
-  by ORVIESA003-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 28 Sep 2026 14:49:52 -0700
-Date: Tue, 29 Sep 2026 00:49:49 +0300
-From: Andy Shevchenko <andriy.shevchenko@intel.com>
-To: Ryan Brue <ryanbrue.dev@gmail.com>
-Cc: Jonathan Cameron <jic23@kernel.org>,
-	David Lechner <dlechner@baylibre.com>,
-	Nuno =?iso-8859-1?Q?S=E1?= <nuno.sa@analog.com>,
-	Andy Shevchenko <andy@kernel.org>, Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	id 1xBJnO-00000001kKq-29mD;
+	Mon, 28 Sep 2026 22:26:02 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by sea.source.kernel.org (Postfix) with ESMTP id 066DC402DA;
+	Mon, 28 Sep 2026 22:26:02 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8DDAC1F000FF;
+	Mon, 28 Sep 2026 22:26:01 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1790634361;
+	bh=zbhVgMQfTliX8eWfdhCQYGm0le0Urjt05MrmEhh//gw=;
+	h=From:To:Cc:Subject:Date;
+	b=PudfRpASqbkUOXl5dciNATNWI3dvxqVKYoRpNOK27MhdYO4u6RuTv4K42p8NGaFYp
+	 4Zpn3Ag1WlH7Lz16Kyutz9tNJ1sj35K5hLm9sijEfKxZIaJwdZrvTgserZn00x4VS0
+	 qWG2s0RJoCQaJujIAkEsIYBXm2pJ86b+1AqqWs4NXo71IEqaLza70zmUSYh5cb4xQK
+	 gOSOco6vXiBOqa1Vj1H5fXd0l04E8q45/BeuK0HIu0f3SB+qYLJefG5V0rXYLngpdH
+	 uDn5lROi4tO9O9RCZIIpIf47w76XDzbcCvQ4JIbveQO+sn3+zwa3kWdPqpIHDyF7LP
+	 iVayQYJBF799g==
+From: "Rob Herring (Arm)" <robh@kernel.org>
+To: Krzysztof Kozlowski <krzk+dt@kernel.org>,
 	Conor Dooley <conor+dt@kernel.org>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Lee Jones <lee@kernel.org>, linux-iio@vger.kernel.org,
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, mfd@lists.linux.dev,
-	Roman Vivchar <rva333@protonmail.com>,
-	Luca Leonardo Scorcia <l.scorcia@gmail.com>
-Subject: Re: [PATCH v4 2/3] iio: adc: mt6397-auxadc: add mt6397 PMIC AUXADC
- driver
-Message-ID: <arrg_SBRTPbquCFA@ashevche-desk.local>
-References: <20260928-rbrue-suez-upstreaming-mt6397-auxadc-v4-0-23533a0d30e3@gmail.com>
- <20260928-rbrue-suez-upstreaming-mt6397-auxadc-v4-2-23533a0d30e3@gmail.com>
+	linux-mediatek@lists.infradead.org
+Subject: [PATCH v2] dt-bindings: power: Convert mediatek,mt2701-scpsys to DT schema
+Date: Mon, 28 Sep 2026 17:25:51 -0500
+Message-ID: <20260928222552.1118609-1-robh@kernel.org>
+X-Mailer: git-send-email 2.53.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20260928-rbrue-suez-upstreaming-mt6397-auxadc-v4-2-23533a0d30e3@gmail.com>
-Organization: Intel Finland Oy - BIC 0357606-4 - c/o Alberga Business Park, 6
- krs, Bertel Jungin Aukio 5, 02600 Espoo
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260928_144956_876504_BA691E0C 
-X-CRM114-Status: GOOD (  17.23  )
+Content-Transfer-Encoding: 8bit
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,33 +70,300 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, Sep 28, 2026 at 03:57:20PM -0500, Ryan Brue wrote:
-> The mt6397 AUXADC is a 10-bit ADC behind the SoC's PMIC wrapper. On boards
-> built around this PMIC it is the only way to read the battery: the SoC's
-> AUXADC is wired to board thermistors and the charger ICs these boards use
-> have no ADC of their own.
-> 
-> Add a driver exposing the battery voltage and battery temperature
-> channels. Only those two are described, so a channel ID in the device tree
-> indexes the driver's channel array rather than the PMIC's channel number,
-> as mt6323-auxadc does. The ready bit lives in a channel's raw result
-> register, but the value comes from the chip's factory-calibrated copy.
-> 
-> The battery voltage is measured through ISENSE, because a board with a
-> switching charger in the power path leaves BATSNS on the charger's system
-> rail instead of on the pack. The thermistor only reads correctly with the
-> PMIC's battery-detect bias and input buffer enabled, which take 20 ms to
-> settle. Both are switched back off afterwards.
-> 
-> Reads average sixteen conversions in software; the chip's sample
-> accumulator makes no measurable difference at any setting, so it is left
-> at one sample per conversion.
+Convert the mediatek,mt2701-scpsys binding to DT schema. The mt6735 and
+mt6765 don't exist anywhere. The mt8183 is covered by
+mediatek,mt8195-scpsys.yaml schema. With those dropped, the clock-names
+are trimmed to drop mm-*, isp-*, cam-*, and venc_lt. The venc_lt and
+mfg_2d supplies are dropped as well.
 
-Reviewed-by: Andy Shevchenko <andriy.shevchenko@intel.com>
+Assisted-by: LLM
+Signed-off-by: Rob Herring (Arm) <robh@kernel.org>
+---
+v2:
+ - Add per compatible clocks/clock-names constraints
+---
+ .../power/mediatek,mt2701-scpsys.yaml         | 184 ++++++++++++++++++
+ .../bindings/soc/mediatek/scpsys.txt          |  79 --------
+ 2 files changed, 184 insertions(+), 79 deletions(-)
+ create mode 100644 Documentation/devicetree/bindings/power/mediatek,mt2701-scpsys.yaml
+ delete mode 100644 Documentation/devicetree/bindings/soc/mediatek/scpsys.txt
 
+diff --git a/Documentation/devicetree/bindings/power/mediatek,mt2701-scpsys.yaml b/Documentation/devicetree/bindings/power/mediatek,mt2701-scpsys.yaml
+new file mode 100644
+index 000000000000..75c84abc865f
+--- /dev/null
++++ b/Documentation/devicetree/bindings/power/mediatek,mt2701-scpsys.yaml
+@@ -0,0 +1,184 @@
++# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/power/mediatek,mt2701-scpsys.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
++
++title: MediaTek SCPSYS
++
++maintainers:
++  - Matthias Brugger <matthias.bgg@gmail.com>
++  - AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
++
++description: >
++  The System Control Processor System (SCPSYS) has several power management
++  related tasks in the system. The tasks include thermal measurement, dynamic
++  voltage frequency scaling (DVFS), interrupt filter and lowlevel sleep control.
++  The System Power Manager (SPM) inside the SCPSYS is for the MTCMOS power
++  domain control.
++
++  It provides the power domains defined in:
++    - include/dt-bindings/power/mt2701-power.h
++    - include/dt-bindings/power/mt2712-power.h
++    - include/dt-bindings/power/mt6797-power.h
++    - include/dt-bindings/power/mt7622-power.h
++    - include/dt-bindings/power/mt7623a-power.h
++
++properties:
++  compatible:
++    oneOf:
++      - enum:
++          - mediatek,mt7623a-scpsys
++          - mediatek,mt6797-scpsys
++      - items:
++          - enum:
++              - mediatek,mt2701-scpsys
++              - mediatek,mt2712-scpsys
++              - mediatek,mt7622-scpsys
++          - const: syscon
++      - items:
++          - const: mediatek,mt7623-scpsys
++          - const: mediatek,mt2701-scpsys
++          - const: syscon
++      - items:
++          - const: mediatek,mt7629-scpsys
++          - const: mediatek,mt7622-scpsys
++
++  '#power-domain-cells':
++    description: Always 1
++    const: 1
++
++  reg:
++    maxItems: 1
++
++  interrupts:
++    maxItems: 4
++
++  clocks:
++    minItems: 1
++    maxItems: 20
++
++  clock-names:
++    minItems: 1
++    maxItems: 6
++    items:
++      enum:
++        - mm
++        - mfg
++        - ethif
++        - venc
++        - jpgdec
++        - audio
++        - vdec
++        - hif_sel
++
++  vdec-supply: true
++  venc-supply: true
++  isp-supply: true
++  mm-supply: true
++  audio-supply: true
++  usb-supply: true
++  mfg_async-supply: true
++  mfg-supply: true
++
++  infracfg:
++    description: Infrastructure configuration controller phandle
++    $ref: /schemas/types.yaml#/definitions/phandle
++
++required:
++  - compatible
++  - '#power-domain-cells'
++  - reg
++  - infracfg
++  - clocks
++  - clock-names
++
++additionalProperties: false
++
++allOf:
++  - if:
++      properties:
++        compatible:
++          contains:
++            const: mediatek,mt2701-scpsys
++    then:
++      properties:
++        clocks:
++          minItems: 3
++          maxItems: 3
++        clock-names:
++          items:
++            - const: mm
++            - const: mfg
++            - const: ethif
++  - if:
++      properties:
++        compatible:
++          contains:
++            const: mediatek,mt7623a-scpsys
++    then:
++      properties:
++        clocks:
++          maxItems: 1
++        clock-names:
++          items:
++            - const: ethif
++  - if:
++      properties:
++        compatible:
++          contains:
++            const: mediatek,mt2712-scpsys
++    then:
++      properties:
++        clocks:
++          minItems: 6
++        clock-names:
++          items:
++            - const: mm
++            - const: mfg
++            - const: venc
++            - const: jpgdec
++            - const: audio
++            - const: vdec
++  - if:
++      properties:
++        compatible:
++          contains:
++            const: mediatek,mt7622-scpsys
++    then:
++      properties:
++        clocks:
++          maxItems: 1
++        clock-names:
++          items:
++            - const: hif_sel
++  - if:
++      properties:
++        compatible:
++          contains:
++            const: mediatek,mt6797-scpsys
++    then:
++      properties:
++        clocks:
++          minItems: 3
++          maxItems: 3
++        clock-names:
++          items:
++            - const: mfg
++            - const: mm
++            - const: vdec
++
++examples:
++  - |
++    #include <dt-bindings/clock/mt2701-clk.h>
++
++    power-controller@10006000 {
++        #power-domain-cells = <1>;
++        compatible = "mediatek,mt2701-scpsys", "syscon";
++        reg = <0x10006000 0x1000>;
++        infracfg = <&infracfg>;
++        clocks = <&topckgen CLK_TOP_MM_SEL>,
++                  <&topckgen CLK_TOP_MFG_SEL>,
++                  <&topckgen CLK_TOP_ETHIF_SEL>;
++        clock-names = "mm", "mfg", "ethif";
++    };
+diff --git a/Documentation/devicetree/bindings/soc/mediatek/scpsys.txt b/Documentation/devicetree/bindings/soc/mediatek/scpsys.txt
+deleted file mode 100644
+index 3530a6668b48..000000000000
+--- a/Documentation/devicetree/bindings/soc/mediatek/scpsys.txt
++++ /dev/null
+@@ -1,79 +0,0 @@
+-MediaTek SCPSYS
+-===============
+-
+-The System Control Processor System (SCPSYS) has several power management
+-related tasks in the system. The tasks include thermal measurement, dynamic
+-voltage frequency scaling (DVFS), interrupt filter and lowlevel sleep control.
+-The System Power Manager (SPM) inside the SCPSYS is for the MTCMOS power
+-domain control.
+-
+-The driver implements the Generic PM domain bindings described in
+-power/power-domain.yaml. It provides the power domains defined in
+-- include/dt-bindings/power/mt8173-power.h
+-- include/dt-bindings/power/mt6797-power.h
+-- include/dt-bindings/power/mt6765-power.h
+-- include/dt-bindings/power/mt2701-power.h
+-- include/dt-bindings/power/mt2712-power.h
+-- include/dt-bindings/power/mt7622-power.h
+-
+-Required properties:
+-- compatible: Should be one of:
+-	- "mediatek,mt2701-scpsys"
+-	- "mediatek,mt2712-scpsys"
+-	- "mediatek,mt6735-scpsys"
+-	- "mediatek,mt6765-scpsys"
+-	- "mediatek,mt6797-scpsys"
+-	- "mediatek,mt7622-scpsys"
+-	- "mediatek,mt7623-scpsys", "mediatek,mt2701-scpsys": For MT7623 SoC
+-	- "mediatek,mt7623a-scpsys": For MT7623A SoC
+-	- "mediatek,mt7629-scpsys", "mediatek,mt7622-scpsys": For MT7629 SoC
+-	- "mediatek,mt8173-scpsys"
+-- #power-domain-cells: Must be 1
+-- reg: Address range of the SCPSYS unit
+-- infracfg: must contain a phandle to the infracfg controller
+-- clock, clock-names: clocks according to the common clock binding.
+-                      These are clocks which hardware needs to be
+-                      enabled before enabling certain power domains.
+-	Required clocks for MT2701 or MT7623: "mm", "mfg", "ethif"
+-	Required clocks for MT2712: "mm", "mfg", "venc", "jpgdec", "audio", "vdec"
+-	Required clocks for MT6765: MUX: "mm", "mfg"
+-				    CG: "mm-0", "mm-1", "mm-2", "mm-3", "isp-0",
+-					"isp-1", "cam-0", "cam-1", "cam-2",
+-					"cam-3","cam-4"
+-	Required clocks for MT6797: "mm", "mfg", "vdec"
+-	Required clocks for MT7622 or MT7629: "hif_sel"
+-	Required clocks for MT7623A: "ethif"
+-	Required clocks for MT8173: "mm", "mfg", "venc", "venc_lt"
+-
+-Optional properties:
+-- vdec-supply: Power supply for the vdec power domain
+-- venc-supply: Power supply for the venc power domain
+-- isp-supply: Power supply for the isp power domain
+-- mm-supply: Power supply for the mm power domain
+-- venc_lt-supply: Power supply for the venc_lt power domain
+-- audio-supply: Power supply for the audio power domain
+-- usb-supply: Power supply for the usb power domain
+-- mfg_async-supply: Power supply for the mfg_async power domain
+-- mfg_2d-supply: Power supply for the mfg_2d power domain
+-- mfg-supply: Power supply for the mfg power domain
+-
+-Example:
+-
+-	scpsys: scpsys@10006000 {
+-		#power-domain-cells = <1>;
+-		compatible = "mediatek,mt8173-scpsys";
+-		reg = <0 0x10006000 0 0x1000>;
+-		infracfg = <&infracfg>;
+-		clocks = <&clk26m>,
+-			 <&topckgen CLK_TOP_MM_SEL>;
+-			 <&topckgen CLK_TOP_VENC_SEL>,
+-			 <&topckgen CLK_TOP_VENC_LT_SEL>;
+-		clock-names = "mfg", "mm", "venc", "venc_lt";
+-	};
+-
+-Example consumer:
+-
+-	afe: mt8173-afe-pcm@11220000 {
+-		compatible = "mediatek,mt8173-afe-pcm";
+-		power-domains = <&scpsys MT8173_POWER_DOMAIN_AUDIO>;
+-	};
 -- 
-With Best Regards,
-Andy Shevchenko
-
+2.53.0
 
 
