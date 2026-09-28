@@ -4,63 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 67191CA5FA2
-	for <linux-mediatek@archiver.kernel.org>; Mon, 28 Sep 2026 13:21:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BD3E3C9833F
+	for <linux-mediatek@archiver.kernel.org>; Mon, 28 Sep 2026 13:41:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=HEjQlrzSz/9hZuS61/C4rrXkgZDZGf6FR93QXOJ5zaI=; b=rOcm2oLupfaXFE68FiBwv/ycGB
-	9HZodDdQMjpULUy+oaEl6lY3/Hjn3ZlXaltAWGIFVh2Z6cOZ7G6QR7qjAVqQ5Hrfu45hNjgmh9Ip7
-	BFuqZlZkl2EGkmpUJdBDfRCYa5z4Xqxh1WrjvtT+WtgzrkEkpbRO5ba7HVtQue0grJDvt2DDs7sTy
-	HmVpUuwsUUkIQVYmsBuDSyWJKDyZ0+MhBBowVkwyC9PHubxiH+pg6Y6ofy9s4xQYP1CT+Aytb3S9a
-	DFiK0y8tAmLze0FRMsLCM4ywLQhjjfjLABqkLk2PHy9qow6ByXeRi+QlhQ3gw/eYDuTj3WpD/1OBN
-	GTe4aMYg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=IxIytfhZwO11x5KyBUMtw1q6leq9rKslQRYH/QA9PNk=; b=qinFDCrEabdUQXLe3f5jzGhtkZ
+	NK0BtcMroGBDxkEQMMhFZBhsDdroFmFITE81NvESju4oHRvuNshKlVNTv0O6DbYVhOA+IFLT2zV9l
+	gkfq3X/gwHosDe/88+k/DxzLq4JyxsSkHNABvUb+5qSm/k5OM33h6ownE2SMxRym7oJnLxnnnLFur
+	K5LynJwYRn/HDLufla9EPC8XJqKg7n6g7rI3uFEo2vyi6iVbmv7aQVsx4ousfyZDziPkXMJOqT8rq
+	8tVHbttY8V7Me1sQc0WErLWufDAhzhv5TrW0AqPZEuXcUOsVPxkU/yz/jzsGmvh87KG7uiMLiEY8X
+	JyK4+aLQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xBBIW-00000000dXl-0NRK;
-	Mon, 28 Sep 2026 13:21:36 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1xBBbU-00000000gD2-0v0d;
+	Mon, 28 Sep 2026 13:41:12 +0000
+Received: from mail-m49198.qiye.163.com ([45.254.49.198])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xBBIU-00000000dXH-3Sjx;
-	Mon, 28 Sep 2026 13:21:34 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id 4781043CAD;
-	Mon, 28 Sep 2026 13:21:34 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8CEAA1F00893;
-	Mon, 28 Sep 2026 13:21:33 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1790601694;
-	bh=HEjQlrzSz/9hZuS61/C4rrXkgZDZGf6FR93QXOJ5zaI=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=kBIWwKhKOKv0kENXFht5TnHNyc/xxKjRaW/+GLhf57CIOyN+wF8fOqR/FxGJes4Er
-	 LwfWrpPgvf3Tq7TshK9fauFjWnKX5mSJ4kZI+OsZhtBf2MumTuIdz7ZLzbkbKEHJWx
-	 C0b8ogppypPbIxH6jfGNgQTH8wjTehOK1BeVh2IpB+20YyJxMHYA4TtWQx/QbHjdl9
-	 m0utuPUqZ3GcfP2TkVaNGSMjm5aQJwLukKkxkvGqbHnCApNg+H88AXrCWGVLdl+JIG
-	 F7nNGtqBCwftqTt7/ZPFmRlvAgkduXpNIGqoZBMFuttMBEtvbN7HpuIGbk335C/F4A
-	 RZVTkB3oxT4/A==
-Date: Mon, 28 Sep 2026 08:21:31 -0500
-From: Rob Herring <robh@kernel.org>
-To: Yassine Oudjana <y.oudjana@protonmail.com>
-Cc: Sean Wang <sean.wang@kernel.org>, Linus Walleij <linusw@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Andy Teng <andy.teng@mediatek.com>,
-	linux-mediatek@lists.infradead.org, linux-gpio@vger.kernel.org,
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org
-Subject: Re: [PATCH v10 2/6] dt-bindings: pinctrl: mediatek,mt6779-pinctrl:
- Improve pinctrl subnode and property descriptions
-Message-ID: <20260928132131.GA3950360-robh@kernel.org>
-References: <20260925-mt6735-pinctrl-v9-v10-2-cc042983c565@protonmail.com>
+	id 1xBBbQ-00000000gBI-0mxu;
+	Mon, 28 Sep 2026 13:41:10 +0000
+Received: from LAPTOP-99KJFSET (unknown [36.153.54.109])
+	by smtp.qiye.163.com (Hmail) with ESMTP id 4f5d6f420;
+	Mon, 28 Sep 2026 21:40:55 +0800 (GMT+08:00)
+From: Hongyan Xu <getshell@seu.edu.cn>
+To: lgirdwood@gmail.com,
+	broonie@kernel.org
+Cc: perex@perex.cz,
+	tiwai@suse.com,
+	matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com,
+	phucduc.bui@gmail.com,
+	linux-sound@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	jianhao.xu@seu.edu.cn,
+	Hongyan Xu <getshell@seu.edu.cn>
+Subject: [PATCH] ASoC: mt6359-accdet: manage private workqueues with devres
+Date: Mon, 28 Sep 2026 21:40:54 +0800
+Message-ID: <20260928134054.312-1-getshell@seu.edu.cn>
+X-Mailer: git-send-email 2.50.1.windows.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20260925-mt6735-pinctrl-v9-v10-2-cc042983c565@protonmail.com>
+Content-Transfer-Encoding: 8bit
+X-HM-Tid: 0aa0e83f435803a1kunm0bf1d24120016b
+X-HM-MType: 10
+X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
+	tZV1koWUFITzdXWRgWCB1ZQUpXWS1ZQUlXWQ8JGhUIEh9ZQVlCHR4fVk1JSExDGR4eHh1MGFYeHw
+	5VEwETFhoSFyQUDg9ZV1kYEgtZQVlITVVKTkhVTk9VSktCWVdZFhoPEhUdFFlBWU9LSFVKS0hKT0
+	hMVUpLS1VKQktLWQY+
+DKIM-Signature: a=rsa-sha256;
+	b=HYvu/mlia949YOARa7esVLg1mr2vvgirO0MRgu39IikH90x6dAbIpAIwcZMuZBfGOo3U/NuaWKZTN9vSnIjVhKbFZO1xNk91juWrPjAbvK+Vl3/zlAd3j8pdqhhnfagWymTBipYz7yXdc/4Ou/7WSlry5jcqpoTv7yenUU5/CvA=; c=relaxed/relaxed; s=default; d=seu.edu.cn; v=1;
+	bh=IxIytfhZwO11x5KyBUMtw1q6leq9rKslQRYH/QA9PNk=;
+	h=date:mime-version:subject:message-id:from;
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260928_064108_831011_7C4A8782 
+X-CRM114-Status: GOOD (  12.31  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,18 +76,105 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Sep 25, 2026 at 06:52:57PM +0000, Yassine Oudjana wrote:
-> Change "subnodes" to "subnode" in subnode description for better
-> grammatical accuracy, wrap all descriptions at 80 characters, and remove
-> literal style indicators from descriptions that don't need their new lines
-> preserved.
-> 
-> Signed-off-by: Yassine Oudjana <y.oudjana@protonmail.com>
-> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-> Acked-by: Rob Herring <robh@kernel.org>
-> ---
->  .../bindings/pinctrl/mediatek,mt6779-pinctrl.yaml         | 15 ++++++++-------
->  1 file changed, 8 insertions(+), 7 deletions(-)
+The threaded jack-detect interrupts queue work on two private
+workqueues. Neither queue is destroyed on device removal, so queued
+callbacks can retain pointers to devm-allocated state after it is
+released. Probe error paths also leak the queues.
 
-The threading is broken for this series...
+Create and initialize both workqueues before requesting interrupts, then
+add a managed cleanup action. Since the managed IRQs are acquired
+afterwards, devres releases and synchronizes them before draining and
+destroying the workqueues on both removal and probe failure.
+
+Fixes: eef07b9e0925 ("ASoC: mediatek: mt6359: add MT6359 accdet jack driver")
+Signed-off-by: Hongyan Xu <getshell@seu.edu.cn>
+---
+ sound/soc/codecs/mt6359-accdet.c | 50 ++++++++++++++++++--------------
+ 1 file changed, 28 insertions(+), 22 deletions(-)
+
+diff --git a/sound/soc/codecs/mt6359-accdet.c b/sound/soc/codecs/mt6359-accdet.c
+index e1190c644021..54ec1c6bd64b 100644
+--- a/sound/soc/codecs/mt6359-accdet.c
++++ b/sound/soc/codecs/mt6359-accdet.c
+@@ -914,6 +914,14 @@ int mt6359_accdet_enable_jack_detect(struct snd_soc_component *component,
+ }
+ EXPORT_SYMBOL_GPL(mt6359_accdet_enable_jack_detect);
+ 
++static void mt6359_accdet_destroy_workqueues(void *data)
++{
++	struct mt6359_accdet *priv = data;
++
++	destroy_workqueue(priv->jd_workqueue);
++	destroy_workqueue(priv->accdet_workqueue);
++}
++
+ static int mt6359_accdet_probe(struct platform_device *pdev)
+ {
+ 	struct mt6359_accdet *priv;
+@@ -955,6 +963,26 @@ static int mt6359_accdet_probe(struct platform_device *pdev)
+ 	}
+ 	mutex_init(&priv->res_lock);
+ 
++	priv->accdet_workqueue = create_singlethread_workqueue("accdet");
++	INIT_WORK(&priv->accdet_work, mt6359_accdet_work);
++	if (!priv->accdet_workqueue) {
++		dev_err(&pdev->dev, "Failed to create accdet workqueue\n");
++		return -ENOMEM;
++	}
++
++	priv->jd_workqueue = create_singlethread_workqueue("mt6359_accdet_jd");
++	INIT_WORK(&priv->jd_work, mt6359_accdet_jd_work);
++	if (!priv->jd_workqueue) {
++		dev_err(&pdev->dev, "Failed to create jack detect workqueue\n");
++		destroy_workqueue(priv->accdet_workqueue);
++		return -ENOMEM;
++	}
++
++	ret = devm_add_action_or_reset(&pdev->dev,
++				       mt6359_accdet_destroy_workqueues, priv);
++	if (ret)
++		return ret;
++
+ 	priv->accdet_irq = platform_get_irq(pdev, 0);
+ 	if (priv->accdet_irq >= 0) {
+ 		ret = devm_request_threaded_irq(&pdev->dev, priv->accdet_irq,
+@@ -1000,22 +1028,6 @@ static int mt6359_accdet_probe(struct platform_device *pdev)
+ 		}
+ 	}
+ 
+-	priv->accdet_workqueue = create_singlethread_workqueue("accdet");
+-	INIT_WORK(&priv->accdet_work, mt6359_accdet_work);
+-	if (!priv->accdet_workqueue) {
+-		dev_err(&pdev->dev, "Failed to create accdet workqueue\n");
+-		ret = -1;
+-		goto err_accdet_wq;
+-	}
+-
+-	priv->jd_workqueue = create_singlethread_workqueue("mt6359_accdet_jd");
+-	INIT_WORK(&priv->jd_work, mt6359_accdet_jd_work);
+-	if (!priv->jd_workqueue) {
+-		dev_err(&pdev->dev, "Failed to create jack detect workqueue\n");
+-		ret = -1;
+-		goto err_eint_wq;
+-	}
+-
+ 	platform_set_drvdata(pdev, priv);
+ 	ret = devm_snd_soc_register_component(&pdev->dev,
+ 					      &mt6359_accdet_soc_driver,
+@@ -1034,12 +1046,6 @@ static int mt6359_accdet_probe(struct platform_device *pdev)
+ 	mt6359_accdet_jack_report(priv);
+ 
+ 	return 0;
+-
+-err_eint_wq:
+-	destroy_workqueue(priv->accdet_workqueue);
+-err_accdet_wq:
+-	dev_err(&pdev->dev, "%s error. now exit.!\n", __func__);
+-	return ret;
+ }
+ 
+ static struct platform_driver mt6359_accdet_driver = {
+-- 
+2.50.1.windows.1
+
 
