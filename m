@@ -4,95 +4,111 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C01A8C9832A
-	for <linux-mediatek@archiver.kernel.org>; Tue, 29 Sep 2026 15:04:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 61D40C9832A
+	for <linux-mediatek@archiver.kernel.org>; Tue, 29 Sep 2026 15:28:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=+edsoFX5PqL65dJFkIJ/uSxWsDbol4HH9AaqaASjRno=; b=WOG88MN2hCmsV62RCWgqjdF3OS
-	+ILnrU99p3lxogv6+6sLIiZwLJWnkzFAk0FTdoSpfxagw9cFpjUcPW0qXSXFiUGe94KxpyYrCDTbb
-	SlVbHXI4PL0nMVAjqJqLmiuKvbxyEmiNSVuSQODOqc6fcHp32xUPF+Mqxh6hulbDxQ2mTEInlBBee
-	Vl2jQotxXwclpAUjo/0MZIhPYBv9LLjKwzzFeQ3QeStPm6PMKvbQE38UPUnBfcIKM52VS+vHKYl+x
-	8FF2wCML2VbDckJOs9W22OtuGY+yyrJt602U4PHHCeYqoJ6Id0GxmmSz4u5n2qwvvQLd22bfBipRg
-	TavTZy2Q==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Subject:References:In-Reply-To:Message-ID:Cc:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=hwlExALEuIqma+phYwZ53l5lEw6aiZrSHMRC6Erf8OA=; b=o8hZkZWwS0i5VFL/lEA29+3Xwr
+	eRBBAYDyfszlzhIxWZOk0f3SXNdKZ51kGziwK6KzFnz5EoUnH9fOSPrScZNpBet0weF6uDgMb8Yat
+	SIRKX8cBvYzfju5vAbL95cenOIhwByfscsuJ02zWOuEJ1W1uB8SQwIQd0YIf5jE+TklI6XScpRWA9
+	gbGefO1ZVpOSxVi600r6tmE2L5nI9qkmMfNu8vPtGTuqYsFC+hUAiuoNI+iEP30lxgdLCLpOkFT9R
+	RmohPkO/wedYv2YOlBFpeygsOz3j9VigHlqoAuQHJvaONJPfsycYnzf2RSksGqpIpWGefFe8B7SxX
+	UAEUjLHQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xBZNT-00000003scw-1wmc;
-	Tue, 29 Sep 2026 15:04:19 +0000
-Received: from mail-yx2-f38.google.com ([74.125.224.166])
+	id 1xBZlF-00000003wMh-2nZO;
+	Tue, 29 Sep 2026 15:28:53 +0000
+Received: from mail-yx2-x0c.google.com ([2607:f8b0:4864:41::c])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xBZNN-00000003saB-1596
+	id 1xBZlC-00000003wLb-2TBv
 	for linux-mediatek@lists.infradead.org;
-	Tue, 29 Sep 2026 15:04:14 +0000
-Received: by mail-yx2-f38.google.com with SMTP id 00721157ae682-8a7af43a358so39743387b3.1
-        for <linux-mediatek@lists.infradead.org>; Tue, 29 Sep 2026 08:04:12 -0700 (PDT)
+	Tue, 29 Sep 2026 15:28:52 +0000
+Received: by mail-yx2-x0c.google.com with SMTP id 00721157ae682-8ab42612328so9366427b3.0
+        for <linux-mediatek@lists.infradead.org>; Tue, 29 Sep 2026 08:28:49 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1790694251; x=1791299051; darn=lists.infradead.org;
-        h=cc:to:message-id:content-transfer-encoding:content-type
-         :mime-version:subject:date:from:from:to:cc:subject:date:message-id
-         :reply-to:content-type;
-        bh=+edsoFX5PqL65dJFkIJ/uSxWsDbol4HH9AaqaASjRno=;
-        b=j6SR/0jsIj9GMTVOt9NaIWLsZqmBvyZzI5DRNptIYyrA8ZsP/9sIdT1Wt/4++eUfnn
-         4ht07xpUpeB/JG1zo+bp1KbpzdnBDQ0RWQ2Teq8aPUYTQ5y5q2s9qaRm1yv7CyrpyHpr
-         9qxRHh6CJrAje712IHdx/5C8PvHU/L9uO4BRs5YvIv+pdr9B5Xj8nDZ2KZ+UtvAwmC4O
-         I1MhbkQlxooemXLQRSaQQko+EneJ3NWMhWHFPLudMK3iPINMeDx3+jGo401LEoN9RWc3
-         Jda/3UthWGv43uRYNgclPAFiztdBW0BSxRrpaOgln9NLqPXSDOEXks1a2stv7CtgAPQU
-         gtGQ==
+        d=gmail.com; s=20251104; t=1790695729; x=1791300529; darn=lists.infradead.org;
+        h=content-transfer-encoding:content-type:mime-version:subject
+         :references:in-reply-to:message-id:cc:to:from:date:from:to:cc
+         :subject:date:message-id:reply-to:content-type;
+        bh=hwlExALEuIqma+phYwZ53l5lEw6aiZrSHMRC6Erf8OA=;
+        b=KSVEumxGPeQJkmd58a4lO0WxPAE+GYWlc6pjH8tZx5GI8icRbPJ+LL9vM0olsK6YAT
+         +gUvSUD1G7chHWkkGYTIJpO8aCAhcMUWlvisu5wP//EMm3aYRtQW97wyjTsSG7h/x49z
+         GiuH0IfxqESZNJfOzvH/YdoplZgOY7sUQVkWlLSRRcPIYrfGDIhzyYmxyLlrZCldmYwd
+         LWvhKC4ZCPxE5EcjCHMqvPU82MHfNGANKcYHMCVlwC+/ayGYaEGa+gnQW9WOqDUy/GJ7
+         ImarDDTRA+bHmIK2xlqkIkDWxtrD2aLcgzR0x0rJbzlFr34m3O3PhrUmnxhRGuzbZ6pR
+         YwJQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1790694251; x=1791299051;
-        h=cc:to:message-id:content-transfer-encoding:content-type
-         :mime-version:subject:date:from:x-gm-gg:x-gm-message-state:from:to
-         :cc:subject:date:message-id:reply-to:content-type;
-        bh=+edsoFX5PqL65dJFkIJ/uSxWsDbol4HH9AaqaASjRno=;
-        b=DyxAwH465/F6jZPsKL7zJ/jUjjaTZqtMQzq/Slf8WYJLnRP1LVfeAuaOPdGTIgAbd5
-         6kXHxT9CrtAUyWYN8OLy+KanBp8ZZWlF/l69qgoa/b8zXGIDSOD32qEVBIazPiof2eqh
-         Qf9WXeoNYaaBJzwhxtGUSPlvqcY7r4CRgEKchM/Hc5shZ+ma7fWfxsoqwhgxLLUarTdB
-         PnmoS/droDaGucXZ4WfolO1Xa1mjw63D6VRh26i6IPEDgjkdCHvb2AdCUa4odQJg0f0t
-         RWiLvVCEOgl+6qyCTLLbnxIUO4sRio1IKrhwqkh9zQqL6tT+LgoFP2fr5vZ//pnOVdCc
-         K3QQ==
-X-Forwarded-Encrypted: i=1; AKwUvBzR5hKFdmY1nZewXI1/dYm+R6lmS7A59VQdgdu7HQBnj7BGVA5pxV3Uyn07MBkVr9/lHiJlhuavZLph38gNAg==@lists.infradead.org
-X-Gm-Message-State: AFq9FYKqFJlfRt3w6qBE1RMx0o2gBNsFZ0KvLGxacmDMJbRmohRi/ObX
-	siNU++VAuEdjctwR0bXnyNshe6+jlYOb39zdiLqC6s0WdJzoNNGocBA/
-X-Gm-Gg: AYBFou1ViCtlgB9FXsSw/xvLUXSvnRR3Fpb9kpQtTAPx5VkQCKnsBDoBUdnVHLZpOaU
-	bow4WZDnk1q5aJxGeiN99I9OOpQv88mimNOTSD3ERyflzQ75d0Jl1CHp0U79yT1RomfFP2rY3Xb
-	KVOwx42Rm+/ckGWGAIQQTk7OKeOrWpqYnu1MqKfIEqpiyHK8mttZxfJtyhmdxWhQgRDL2NPMtQT
-	Q3HaSrnkwFwcaFfuzZVQ+BtVFb17Bo6b0uszOkg5L4TZtQaoCj8OOgrXKd+oQPB4O+8954uFNVW
-	91cXaGF2a5cgrArFMDVCOCyrCIb9rxb906v4n8wZ7jNnFTJpw3ncek33s2MR5NubQcCCnsnBjjH
-	yKMnK2QBkdAFoYpHE4m/t8ckRbsDvM49g05OFBQAxYyzY5qOPMBeu8eTY7xZJfqAJ3hxsHy1Wkz
-	a8lrACJ38bgcKuwSp6iaqKLE6xlPpCCDYVPCPx79q0guN7AQIPQJ44deWGT31wEZoTtA==
-X-Received: by 2002:a05:690c:e3e8:b0:841:e9e4:8ab9 with SMTP id 00721157ae682-8a64949ac2dmr92204867b3.25.1790694251364;
-        Tue, 29 Sep 2026 08:04:11 -0700 (PDT)
-Received: from [192.168.18.164] ([2600:8804:5716:d800::2620])
-        by smtp.gmail.com with ESMTPSA id 00721157ae682-8ab40a699b9sm9871467b3.43.2026.09.29.08.04.09
+        d=1e100.net; s=20260707; t=1790695729; x=1791300529;
+        h=content-transfer-encoding:content-type:mime-version:subject
+         :references:in-reply-to:message-id:cc:to:from:date:x-gm-gg
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+         :content-type;
+        bh=hwlExALEuIqma+phYwZ53l5lEw6aiZrSHMRC6Erf8OA=;
+        b=mq1hocUGa9b5G8nmObEeuRg1WMUW/kXqALlSNFH3taa3s8yMnsfHB0FKgm6OEdF6SH
+         ppSZNUvpmdq4HRJsiO42lxuh1myJXHBCS7UOWEYbbQG4hum8M3H5btRdlhe9oljFYcKU
+         9qKlryEXxvC/ulSI/G5xc/WlBmo7WtQxwO8urZ3/YsIls028Fhv0PtIXalpK7AOzMACI
+         dmd8yFREbYe9U7MY1mtaC6NVQxRxs9p8jlxkcfcCrNZay3CHYDxgvs59Y8o1n3WDafow
+         dpeWpUOKfJ9bv1EfU75u+UAAbBWoFztGAcMmBPrJtoN+5QNb1DETD9OW3f1ZhYZjG+XC
+         pG2A==
+X-Forwarded-Encrypted: i=1; AKwUvBzD7b11qbNai5f9JfsRuXj68jatGXXRf4gGEocVyN3zyNL1GCrEBeUHIo9ZJDikVTyXMBjRjaEzHHuBnB8PVg==@lists.infradead.org
+X-Gm-Message-State: AFq9FYKhQ2zQkyhGuDZlexPzbh7SYV6WkCGKhLzwb982QMR5aVFY8aF7
+	IF9zlMJbwSes1s/gkEuWlcbmvE/olAk9ZXin6s1lRzyiIoPuSpHLvLOG
+X-Gm-Gg: AYBFou0exXyKvmM77v5ZjgT34N/56eeNaTm7Lol8Amtyt5+niys0eOjsGBrpJh+bI8H
+	j0c+0koecY+BY9GBJUymp6pKMR2LnA4E3jRcu2+BnKr1o3rlc9exVDK5zR/JKcnZd+LurBsprOD
+	q2N5hN3KDG3eIN9cAtJlMMUbUCNRZfMidLwLM8fcEE8Wv15ODV1idMACHEkCin/7//jJDWGYDSn
+	dFdZERDzLo8V96qnYUYxf5aSTBcofpGZjlKBDBXx9aOug4eY/RmoJBCHOaN4df7JpSAenPXqW4E
+	okLgl4WZO+7sTKN0dPH5+FNH/cVzVt5kHFa92MYp44u7Etlb5pXNf+ZNa3hIGmGN0BhzQ/h19Jo
+	kWUQNDx1ZrNCosDt+lSIzW77Mci6IF1o6dCSePFqHu66MGrWLTD75YhORDdu79aHp9ll4lwr1VO
+	UZeveKuNL9e2ndusvJwS1gmiGssTaGvQhCWQTeBBuRtQaLL4gZCNXR76EoSoAWIjcVAK4EmAHLq
+	83te7up9L5l7Evk0VQoVhxrDZfSJ70UkYeUed/mUgzsfaigIWg2
+X-Received: by 2002:a05:690c:e3c3:b0:868:505e:b96d with SMTP id 00721157ae682-8a64c3432b4mr71353467b3.2.1790695728518;
+        Tue, 29 Sep 2026 08:28:48 -0700 (PDT)
+Received: from gmail.com (111.46.245.35.bc.googleusercontent.com. [35.245.46.111])
+        by smtp.gmail.com with ESMTPSA id 00721157ae682-8a860f9cdb0sm60998327b3.24.2026.09.29.08.28.47
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 29 Sep 2026 08:04:09 -0700 (PDT)
-From: Ryan Brue <ryanbrue.dev@gmail.com>
-Date: Tue, 29 Sep 2026 10:04:05 -0500
-Subject: [PATCH RESEND] usb: mtu3: don't run gadget completion callbacks
- with interrupts disabled
+        Tue, 29 Sep 2026 08:28:47 -0700 (PDT)
+Date: Tue, 29 Sep 2026 11:28:47 -0400
+From: Willem de Bruijn <willemdebruijn.kernel@gmail.com>
+To: Shiming Cheng <shiming.cheng@mediatek.com>, 
+ davem@davemloft.net, 
+ edumazet@google.com, 
+ kuba@kernel.org, 
+ pabeni@redhat.com, 
+ horms@kernel.org, 
+ matthias.bgg@gmail.com, 
+ angelogioacchino.delregno@collabora.com, 
+ willemb@google.com, 
+ daniel.zahka@gmail.com, 
+ alice@isovalent.com, 
+ sd@queasysnail.net, 
+ eilaimemedsnaimel@gmail.com, 
+ imv4bel@gmail.com, 
+ nbd@nbd.name, 
+ dsahern@kernel.org, 
+ netdev@vger.kernel.org, 
+ linux-kernel@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org
+Cc: stable@vger.kernel.org, 
+ steffen.klassert@secunet.com, 
+ lena.wang@mediatek.com, 
+ shiming.cheng@mediatek.com
+Message-ID: <willemdebruijn.kernel.20906a8caa141@gmail.com>
+In-Reply-To: <20260929100256.23192-1-shiming.cheng@mediatek.com>
+References: <20260929100256.23192-1-shiming.cheng@mediatek.com>
+Subject: Re: [PATCH] net: gro: mark frag_list GRO packets as SKB_GSO_DODGY
+ when a list element exceeds gso_size
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20260929-usb-mtu3-gadget-completion-callback-fix-v1-1-8b75b48fab96@gmail.com>
-To: Chunfeng Yun <chunfeng.yun@mediatek.com>, 
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Cc: linux-usb@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, 
- stable@vger.kernel.org, Ryan Brue <ryanbrue.dev@gmail.com>
-X-Mailer: b4 0.16.0
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1790694249; l=3859;
- i=ryanbrue.dev@gmail.com; s=20260906; h=from:subject:message-id;
- bh=ctXSxhL8cB96oM2LlBR4kk7hbE12PJXfiPWlYJLZFo0=;
- b=yw9LSE1i8GiNOL28F+XSvLaDLH7wn1idNjPtWu+r9QdBnFtrnSjo5+Rv8f6OF2gtorNSDOtWI
- rwGwjhX4Z1JB8caumEIvOiFYMI3N524g6ZrHKXJhw00Al65rItA0TYm
-X-Developer-Key: i=ryanbrue.dev@gmail.com; a=ed25519;
- pk=KsUvVaP//v/2q+ZBuacc7cLbsyEYn+AD71Sn28oZWKo=
+Content-Type: text/plain;
+ charset=utf-8
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260929_080413_305071_828C8D76 
-X-CRM114-Status: GOOD (  16.86  )
+X-CRM114-CacheID: sfid-20260929_082850_649690_A4CD6A4A 
+X-CRM114-Status: GOOD (  21.38  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -107,100 +123,82 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-mtu3_irq() is a threaded handler, so it runs in process context, but it
-takes mtu->lock with spin_lock_irqsave(). mtu3_req_complete() then drops
-the lock with a plain spin_unlock() around
-usb_gadget_giveback_request(), which leaves hardware interrupts disabled
-across the gadget function's completion callback.
+Shiming Cheng wrote:
+> When RX LRO (or similar offload) is enabled, the TCP/IPv4 GRO path may
+> aggregate traffic using frag_list. The resulting skb is later segmented=
 
-That breaks any callback that reaches netif_rx(). Since the threaded
-handler is in neither hardirq nor softirq context, netif_rx() takes its
-local_bh_disable()/local_bh_enable() path, and enabling softirqs with
-interrupts disabled is not allowed:
+> via the frag_list segmentation path (skb_segment_list()).
+> =
 
-  WARNING: kernel/softirq.c:430 at __local_bh_enable_ip+0x17c/0x188
-    __local_bh_enable_ip
-    netif_rx
-    rx_complete [u_ether]
-    usb_gadget_giveback_request
-    mtu3_req_complete
-    mtu3_qmu_isr
-    mtu3_irq
-    irq_thread_fn
+> However, some drivers can hand GRO/LRO-aggregated frames to the stack
+> where individual frag_list elements are already larger than skb_shinfo(=
+p)
+> ->gso_size (i.e., an element itself contains multiple MSS worth of
+> payload) and may be non-linear (nr_frags > 0). This shape is not
+> naturally produced by the software GRO aggregation logic for devices
+> without LRO, and can lead to unexpected behavior in the frag_list
+> segmentation path.
 
-With CONFIG_TRACE_IRQFLAGS, __local_bh_enable_ip() ends with an
-unconditional local_irq_enable(), so the plain spin_lock() re-taking
-mtu->lock afterwards runs with interrupts on and is recorded
-SOFTIRQ-ON-W, while mtu3_gadget_queue() takes the same lock from a
-softirq (ncm's tx hrtimer), and lockdep follows up with an inconsistent
-lock state report naming mtu->lock.
+Did you observe this with a specific driver?
 
-The locking was right when mtu3_irq() was a hardirq handler. It stopped
-being right when the handler became threaded without a primary handler;
-dwc3 hit the same thing the same way and fixed it in the controller
-driver, in commit 84918a89d6ef ("usb: dwc3: gadget: Let the interrupt
-handler disable bottom halves.").
+We don't want to have to support every crazy driver scheme. The right
+approach may be to fix the driver.
 
-mtu->lock is never taken in hardirq context: the only handler is
-threaded and has no primary handler, so disabling softirqs is enough.
-Take it with spin_lock_bh() in mtu3_irq(). The completion callback then
-runs with interrupts enabled and softirqs disabled, which is the context
-netif_rx() expects. The other sites keep spin_lock_irqsave(), which is
-strictly stronger and still correct; several of them really can be
-reached from softirq context.
+To understand the geometry: the driver passes a GSO skb with frag_list,
+where frag_list members may be any size, not just gso_size? I.e., these
+do not conform to SKB_GSO_FRAGLIST rules?
 
-Both reports need lockdep to be seen, but the context violation is real:
-netif_rx() wants either hardirq/softirq context or interrupts enabled,
-and mtu3 gives it neither. The fallout on a PROVE_LOCKING kernel is not
-cosmetic either - copying a 21 MB file over USB ethernet hung and reset
-this board repeatedly before this change. Once interrupts have been
-left enabled while the thread holds mtu->lock, the tx hrtimer softirq on
-the same CPU spins on it forever, which is the "CPU0: lock(&mtu->lock);
-<Interrupt> lock(&mtu->lock);" scenario lockdep names. The same copy is
-reliable after it.
+I don't recall immediately what the acceptable behavior for regular
+GSO skbs with frag_list is. But for starters such a driver should not
+advertiserr SKB_GSO_FRAGLIST.
 
-Fixes: 13118959cb1a ("usb: mtu3: register mtu3_irq by threaded irq")
-Cc: stable@vger.kernel.org
-Assisted-by: LLM
-Signed-off-by: Ryan Brue <ryanbrue.dev@gmail.com>
----
- drivers/usb/mtu3/mtu3_core.c | 5 ++---
- 1 file changed, 2 insertions(+), 3 deletions(-)
+> =
 
-diff --git a/drivers/usb/mtu3/mtu3_core.c b/drivers/usb/mtu3/mtu3_core.c
-index a40bf5bad2d5..ed0e426645fd 100644
---- a/drivers/usb/mtu3/mtu3_core.c
-+++ b/drivers/usb/mtu3/mtu3_core.c
-@@ -790,10 +790,9 @@ static irqreturn_t mtu3_u2_common_isr(struct mtu3 *mtu)
- static irqreturn_t mtu3_irq(int irq, void *data)
- {
- 	struct mtu3 *mtu = (struct mtu3 *)data;
--	unsigned long flags;
- 	u32 level1;
- 
--	spin_lock_irqsave(&mtu->lock, flags);
-+	spin_lock_bh(&mtu->lock);
- 
- 	/* U3D_LV1ISR is RU */
- 	level1 = mtu3_readl(mtu->mac_base, U3D_LV1ISR);
-@@ -814,7 +813,7 @@ static irqreturn_t mtu3_irq(int irq, void *data)
- 	if (level1 & QMU_INTR)
- 		mtu3_qmu_isr(mtu);
- 
--	spin_unlock_irqrestore(&mtu->lock, flags);
-+	spin_unlock_bh(&mtu->lock);
- 
- 	return IRQ_HANDLED;
- }
+> Detect this condition during frag_list aggregation and mark the
+> aggregated packet as SKB_GSO_DODGY when a list element=E2=80=99s length=
+ exceeds
+> gso_size. This forces a more conservative segmentation/linearization
+> behavior downstream and avoids relying on assumptions that do not hold
+> for LRO-produced aggregates.
+> =
 
----
-base-commit: df2908090cda368b01ff43709f51890076c56157
-change-id: 20260913-usb-mtu3-gadget-completion-callback-fix-d334f7e99a17
+> No change for normal software GRO aggregation: the new check only
+> triggers when skb_shinfo(p)->gso_size is set and a frag_list element
+> length exceeds that size.
+> =
 
-Best regards,
---
-Ryan Brue <ryanbrue.dev@gmail.com>
--- 
-Ryan Brue <ryanbrue.dev@gmail.com>
+> Fixes: 3a1296a38d0c ("net: Support GRO/GSO fraglist chaining.")
+> Cc: <stable@vger.kernel.org>
+> Signed-off-by: Shiming Cheng <shiming.cheng@mediatek.com>
+> ---
+>  net/core/gro.c | 3 +++
+>  1 file changed, 3 insertions(+)
+> =
+
+> diff --git a/net/core/gro.c b/net/core/gro.c
+> index 29b4d02bf519..e70ecf19b0a7 100644
+> --- a/net/core/gro.c
+> +++ b/net/core/gro.c
+> @@ -259,6 +259,9 @@ int skb_gro_receive_list(struct sk_buff *p, struct =
+sk_buff *skb)
+>  	skb_shinfo(p)->flags |=3D skb_shinfo(skb)->flags & SKBFL_SHARED_FRAG;=
+
+>  =
+
+>  	NAPI_GRO_CB(skb)->same_flow =3D 1;
+> +	/* frag_list element larger than gso_size (already coalesced before l=
+ist-append) */
+> +	if (skb_shinfo(p)->gso_size && skb->len > skb_shinfo(p)->gso_size)
+> +		skb_shinfo(p)->gso_type |=3D SKB_GSO_DODGY;
+>  =
+
+>  	return 0;
+>  }
+> -- =
+
+> 2.45.2
+> =
+
+
 
 
