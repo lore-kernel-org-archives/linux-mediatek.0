@@ -4,111 +4,105 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 61D40C9832A
-	for <linux-mediatek@archiver.kernel.org>; Tue, 29 Sep 2026 15:28:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A397BCA5FAC
+	for <linux-mediatek@archiver.kernel.org>; Tue, 29 Sep 2026 17:58:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Subject:References:In-Reply-To:Message-ID:Cc:To:
-	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=hwlExALEuIqma+phYwZ53l5lEw6aiZrSHMRC6Erf8OA=; b=o8hZkZWwS0i5VFL/lEA29+3Xwr
-	eRBBAYDyfszlzhIxWZOk0f3SXNdKZ51kGziwK6KzFnz5EoUnH9fOSPrScZNpBet0weF6uDgMb8Yat
-	SIRKX8cBvYzfju5vAbL95cenOIhwByfscsuJ02zWOuEJ1W1uB8SQwIQd0YIf5jE+TklI6XScpRWA9
-	gbGefO1ZVpOSxVi600r6tmE2L5nI9qkmMfNu8vPtGTuqYsFC+hUAiuoNI+iEP30lxgdLCLpOkFT9R
-	RmohPkO/wedYv2YOlBFpeygsOz3j9VigHlqoAuQHJvaONJPfsycYnzf2RSksGqpIpWGefFe8B7SxX
-	UAEUjLHQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=3Q5DALqLK2poFGKjmNG6XI2SLB5UCPlonreW219u7mo=; b=RVwGfCEDy2xXYUvQz2rNYIuHqp
+	94tJDlyS1zAb66L1buTmLJbJLygnNgexAUey4CO8Qlbf3iVFY0IJFOvSsXSrd7u/M97M9in6xagTo
+	5SW0osY9Oes/z1+bPZ+CogWACLrfg5DXKs9y2ln1by7bphDJm9ocwkpDOFHeUmSWUMsUTrA/anDeg
+	uCe0NXnB5V3b/21uJ+j2YE95kEH7v9epjC5YBeVJRYQU+INochgfHXlkS+RaE7/ulMCcTpEEddY2d
+	4R7cw5y00u4JoOfZVmToYDP0iP4ow+EPT4z0bFtO1cxNaPLnWdHO0PC/iAl0sYF1+r16QgEAXr4qG
+	RkSuHGEA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xBZlF-00000003wMh-2nZO;
-	Tue, 29 Sep 2026 15:28:53 +0000
-Received: from mail-yx2-x0c.google.com ([2607:f8b0:4864:41::c])
+	id 1xBc5Y-00000004Eww-3akp;
+	Tue, 29 Sep 2026 17:58:00 +0000
+Received: from mail-oo2-x0a.google.com ([2607:f8b0:4864:31::a])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xBZlC-00000003wLb-2TBv
+	id 1xBc5V-00000004EvZ-035J
 	for linux-mediatek@lists.infradead.org;
-	Tue, 29 Sep 2026 15:28:52 +0000
-Received: by mail-yx2-x0c.google.com with SMTP id 00721157ae682-8ab42612328so9366427b3.0
-        for <linux-mediatek@lists.infradead.org>; Tue, 29 Sep 2026 08:28:49 -0700 (PDT)
+	Tue, 29 Sep 2026 17:57:58 +0000
+Received: by mail-oo2-x0a.google.com with SMTP id 46e09a7af769-81a7ff792f6so1554305a34.0
+        for <linux-mediatek@lists.infradead.org>; Tue, 29 Sep 2026 10:57:56 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1790695729; x=1791300529; darn=lists.infradead.org;
-        h=content-transfer-encoding:content-type:mime-version:subject
-         :references:in-reply-to:message-id:cc:to:from:date:from:to:cc
-         :subject:date:message-id:reply-to:content-type;
-        bh=hwlExALEuIqma+phYwZ53l5lEw6aiZrSHMRC6Erf8OA=;
-        b=KSVEumxGPeQJkmd58a4lO0WxPAE+GYWlc6pjH8tZx5GI8icRbPJ+LL9vM0olsK6YAT
-         +gUvSUD1G7chHWkkGYTIJpO8aCAhcMUWlvisu5wP//EMm3aYRtQW97wyjTsSG7h/x49z
-         GiuH0IfxqESZNJfOzvH/YdoplZgOY7sUQVkWlLSRRcPIYrfGDIhzyYmxyLlrZCldmYwd
-         LWvhKC4ZCPxE5EcjCHMqvPU82MHfNGANKcYHMCVlwC+/ayGYaEGa+gnQW9WOqDUy/GJ7
-         ImarDDTRA+bHmIK2xlqkIkDWxtrD2aLcgzR0x0rJbzlFr34m3O3PhrUmnxhRGuzbZ6pR
-         YwJQ==
+        d=gmail.com; s=20251104; t=1790704676; x=1791309476; darn=lists.infradead.org;
+        h=cc:to:message-id:content-transfer-encoding:content-type
+         :mime-version:subject:date:from:from:to:cc:subject:date:message-id
+         :reply-to:content-type;
+        bh=3Q5DALqLK2poFGKjmNG6XI2SLB5UCPlonreW219u7mo=;
+        b=StoM3zX8RtowvxCj1FY1gps7MGsetvhPXvsGA/UbNeu9+7Gd8+NS0qX+idKy7cbO04
+         V7+2y+Uah8HJPz92kJobG0S+cbML60wDMZL8MdM8DpaBLMgcfko/ugu8nkunK8R3fmlV
+         qULweWWMM6sOeVD2ePtNdQdiFvn+vtHacRKA2f/chpU51ksekL0hkBVttCANUZpq8JmA
+         Pc9JYEnFSQTpHp23SfUBEuH3x7eitmlOoRCzn/cpKPpq4AGEJ1mA8JuTEl1pY9tIb96B
+         EG/SJytC3h6dyH8vKSOYr1lAvuM/zD5Esk5upclXQE8DNg8+YSV2XiQ8I2CvhUfZf5aI
+         MGdQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1790695729; x=1791300529;
-        h=content-transfer-encoding:content-type:mime-version:subject
-         :references:in-reply-to:message-id:cc:to:from:date:x-gm-gg
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
-         :content-type;
-        bh=hwlExALEuIqma+phYwZ53l5lEw6aiZrSHMRC6Erf8OA=;
-        b=mq1hocUGa9b5G8nmObEeuRg1WMUW/kXqALlSNFH3taa3s8yMnsfHB0FKgm6OEdF6SH
-         ppSZNUvpmdq4HRJsiO42lxuh1myJXHBCS7UOWEYbbQG4hum8M3H5btRdlhe9oljFYcKU
-         9qKlryEXxvC/ulSI/G5xc/WlBmo7WtQxwO8urZ3/YsIls028Fhv0PtIXalpK7AOzMACI
-         dmd8yFREbYe9U7MY1mtaC6NVQxRxs9p8jlxkcfcCrNZay3CHYDxgvs59Y8o1n3WDafow
-         dpeWpUOKfJ9bv1EfU75u+UAAbBWoFztGAcMmBPrJtoN+5QNb1DETD9OW3f1ZhYZjG+XC
-         pG2A==
-X-Forwarded-Encrypted: i=1; AKwUvBzD7b11qbNai5f9JfsRuXj68jatGXXRf4gGEocVyN3zyNL1GCrEBeUHIo9ZJDikVTyXMBjRjaEzHHuBnB8PVg==@lists.infradead.org
-X-Gm-Message-State: AFq9FYKhQ2zQkyhGuDZlexPzbh7SYV6WkCGKhLzwb982QMR5aVFY8aF7
-	IF9zlMJbwSes1s/gkEuWlcbmvE/olAk9ZXin6s1lRzyiIoPuSpHLvLOG
-X-Gm-Gg: AYBFou0exXyKvmM77v5ZjgT34N/56eeNaTm7Lol8Amtyt5+niys0eOjsGBrpJh+bI8H
-	j0c+0koecY+BY9GBJUymp6pKMR2LnA4E3jRcu2+BnKr1o3rlc9exVDK5zR/JKcnZd+LurBsprOD
-	q2N5hN3KDG3eIN9cAtJlMMUbUCNRZfMidLwLM8fcEE8Wv15ODV1idMACHEkCin/7//jJDWGYDSn
-	dFdZERDzLo8V96qnYUYxf5aSTBcofpGZjlKBDBXx9aOug4eY/RmoJBCHOaN4df7JpSAenPXqW4E
-	okLgl4WZO+7sTKN0dPH5+FNH/cVzVt5kHFa92MYp44u7Etlb5pXNf+ZNa3hIGmGN0BhzQ/h19Jo
-	kWUQNDx1ZrNCosDt+lSIzW77Mci6IF1o6dCSePFqHu66MGrWLTD75YhORDdu79aHp9ll4lwr1VO
-	UZeveKuNL9e2ndusvJwS1gmiGssTaGvQhCWQTeBBuRtQaLL4gZCNXR76EoSoAWIjcVAK4EmAHLq
-	83te7up9L5l7Evk0VQoVhxrDZfSJ70UkYeUed/mUgzsfaigIWg2
-X-Received: by 2002:a05:690c:e3c3:b0:868:505e:b96d with SMTP id 00721157ae682-8a64c3432b4mr71353467b3.2.1790695728518;
-        Tue, 29 Sep 2026 08:28:48 -0700 (PDT)
-Received: from gmail.com (111.46.245.35.bc.googleusercontent.com. [35.245.46.111])
-        by smtp.gmail.com with ESMTPSA id 00721157ae682-8a860f9cdb0sm60998327b3.24.2026.09.29.08.28.47
+        d=1e100.net; s=20260707; t=1790704676; x=1791309476;
+        h=cc:to:message-id:content-transfer-encoding:content-type
+         :mime-version:subject:date:from:x-gm-gg:x-gm-message-state:from:to
+         :cc:subject:date:message-id:reply-to:content-type;
+        bh=3Q5DALqLK2poFGKjmNG6XI2SLB5UCPlonreW219u7mo=;
+        b=zxiYeiCbt6LqCcmCcww1cMYAWwa8qT+GhNQdDL4rnw0/pg7Vx6wEp0zn33izSxCjox
+         EMfELfUHDAukRGYT1X5Wm8SzQA4G2v/KbI9Hiu0OhlNLMfajzwpsC3P59idO+kZos4UZ
+         as67C4LQKWuzdJfzGYwEs78lHZKyO73lpyiYSJkMh8VkiNaHqXXVM6xs4LVJNHwppgJ6
+         c6Topy9XvDWxEZpL5k8ERNuIkNidmXNsPQsGjaNPjK5LlhRcdWnIv16deounBB1y6Bjr
+         sIRb45wosYJDRm2WYKDPW/NR9kkSa+4jtqTzPn+wrLHJKY/dyt6veymNPxBhRJLY+Doa
+         WYbw==
+X-Gm-Message-State: AFuF++mzNTYh2p5fVqz9eOvNuktEPaYBpy0h/r+u53dxcC8BeMWVJrMj
+	tnUNatFu/RJYXS8AkgXDOnTvsD/454ZGIlYHv00GEg8zKNDC4KlRYAyZ
+X-Gm-Gg: AYBFou3FW0Xj6bXZi2aCnPAI+kOpPlpyrcVYDHjxzQDLWcozqwCbib5Hmd4sU+8xiLc
+	ie/GBdpIdnYp+jm/7qUNi1sjZvyhQxYB6Lups/aQLByaKZnfKX2GoI445IY83jIrQtGY/wfq+OU
+	f4bYjuEVv7KWuI+ucYIK6gS8FSXosJC/AGefLc6WBWoYqYnYVmGWulmYYEdVaCJkUX+n4rAJmZE
+	gr5cgWqdTez/USJJVO/m5VpIBxCAR/2ixo1C+51gjp0I8qrNuB6xpIJunXBsa3RQQepchFZtqNh
+	1JGJA+0mgo7sK9gcCoX9alW651irMfmEZdd/pA/eOQPYh9JPv246Vq3jfMXjFcd3w+kXjhfajw6
+	slvSULp/IYqQ5jRh9rTqoSJ59Ewg39X09mEnAj9DXB3sv/S6oIznQeafZP5KJ7T8FYQT8TIIjMu
+	gF1H4WCCEnEkW0jaNwQfDAuEX7Vto8LA3r7+IiqIgaSgl4FaPGcysqUvOuT2ZasFk2dg==
+X-Received: by 2002:a05:6830:6f8b:b0:81c:ad41:f9a8 with SMTP id 46e09a7af769-81fd8d7e013mr96882a34.25.1790704675863;
+        Tue, 29 Sep 2026 10:57:55 -0700 (PDT)
+Received: from [192.168.18.164] ([2600:8804:5716:d800::2620])
+        by smtp.gmail.com with ESMTPSA id 46e09a7af769-81faf7eedd6sm691407a34.17.2026.09.29.10.57.54
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 29 Sep 2026 08:28:47 -0700 (PDT)
-Date: Tue, 29 Sep 2026 11:28:47 -0400
-From: Willem de Bruijn <willemdebruijn.kernel@gmail.com>
-To: Shiming Cheng <shiming.cheng@mediatek.com>, 
- davem@davemloft.net, 
- edumazet@google.com, 
- kuba@kernel.org, 
- pabeni@redhat.com, 
- horms@kernel.org, 
- matthias.bgg@gmail.com, 
- angelogioacchino.delregno@collabora.com, 
- willemb@google.com, 
- daniel.zahka@gmail.com, 
- alice@isovalent.com, 
- sd@queasysnail.net, 
- eilaimemedsnaimel@gmail.com, 
- imv4bel@gmail.com, 
- nbd@nbd.name, 
- dsahern@kernel.org, 
- netdev@vger.kernel.org, 
- linux-kernel@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org
-Cc: stable@vger.kernel.org, 
- steffen.klassert@secunet.com, 
- lena.wang@mediatek.com, 
- shiming.cheng@mediatek.com
-Message-ID: <willemdebruijn.kernel.20906a8caa141@gmail.com>
-In-Reply-To: <20260929100256.23192-1-shiming.cheng@mediatek.com>
-References: <20260929100256.23192-1-shiming.cheng@mediatek.com>
-Subject: Re: [PATCH] net: gro: mark frag_list GRO packets as SKB_GSO_DODGY
- when a list element exceeds gso_size
+        Tue, 29 Sep 2026 10:57:55 -0700 (PDT)
+From: Ryan Brue <ryanbrue.dev@gmail.com>
+Date: Tue, 29 Sep 2026 12:57:51 -0500
+Subject: [PATCH] pinctrl: mediatek: common-v1: Use a raw spinlock for the
+ pinctrl regmap
 MIME-Version: 1.0
-Content-Type: text/plain;
- charset=utf-8
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Message-Id: <20260929-rbrue-suez-upstreaming-mtk-pinctrl-raw-regmap-v1-1-db92943f42cb@gmail.com>
+X-B4-Tracking: v=1; b=H4sIAAAAAAAC/x3NQQ6CMBBA0auQWTsJNBaCVzEuCgx1oq3NTKtGw
+ t1tWL7N/xsoCZPCpdlA6M3Kr1jRnRqY7y56Ql6qwbSmb0djUSYphFrohyVpFnKBo8eQH5g4zlm
+ eKO6DQj64hJ09L70xdhqHAWozCa38PX7X277/AZvetit/AAAA
+X-Change-ID: 20260925-rbrue-suez-upstreaming-mtk-pinctrl-raw-regmap-154d6225b977
+To: Sean Wang <sean.wang@kernel.org>, Linus Walleij <linusw@kernel.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Bartosz Golaszewski <brgl@kernel.org>, 
+ Sebastian Andrzej Siewior <bigeasy@linutronix.de>, 
+ Clark Williams <clrkwllms@kernel.org>, Steven Rostedt <rostedt@goodmis.org>, 
+ Yingjoe Chen <yingjoe.chen@mediatek.com>, 
+ Chaotian Jing <chaotian.jing@mediatek.com>, 
+ Hongzhou Yang <hongzhou.yang@mediatek.com>
+Cc: linux-mediatek@lists.infradead.org, linux-gpio@vger.kernel.org, 
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-rt-devel@lists.linux.dev, Ryan Brue <ryanbrue.dev@gmail.com>
+X-Mailer: b4 0.16.0
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1790704674; l=5335;
+ i=ryanbrue.dev@gmail.com; s=20260906; h=from:subject:message-id;
+ bh=AhPKeNImrvlq1anzVY2fNb8qUrxOu5aYYSTJF3bI2YQ=;
+ b=yQ5tCTTuq8nTIonA2166WPdB0ch3FpnbY3HeqZaxd1jIKsCOG9Ko0jSYkM8b1C/Fa3Ehnt1cj
+ hLTiIbbRx6fCXdVy1YJTPmVo+15nwP4U/aNM9eWC7H3yhRtWEe8kDnL
+X-Developer-Key: i=ryanbrue.dev@gmail.com; a=ed25519;
+ pk=KsUvVaP//v/2q+ZBuacc7cLbsyEYn+AD71Sn28oZWKo=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260929_082850_649690_A4CD6A4A 
-X-CRM114-Status: GOOD (  21.38  )
+X-CRM114-CacheID: sfid-20260929_105757_075027_9271A73D 
+X-CRM114-Status: GOOD (  18.03  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -123,82 +117,149 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Shiming Cheng wrote:
-> When RX LRO (or similar offload) is enabled, the TCP/IPv4 GRO path may
-> aggregate traffic using frag_list. The resulting skb is later segmented=
+The EINT irq_chip emulates both-edge interrupts by reading the pin's
+level through mtk_gpio_get() and the pinctrl regmap. It does so from its
+unmask and set_type callbacks, under the raw irq_desc lock, and from the
+chained handler, in hard interrupt context. The regmap comes from syscon
+and locks with a spinlock_t, which may sleep on PREEMPT_RT. With
+CONFIG_PROVE_LOCKING, the first request of a both-edge EINT prints
+"[ BUG: Invalid wait context ]" and turns lockdep off for the rest of
+the boot.
 
-> via the frag_list segmentation path (skb_segment_list()).
-> =
+Create the regmap for the "mediatek,pctl-regmap" nodes here instead,
+with use_raw_spinlock set, and register it with syscon so that other
+users of a node, such as the ethernet on MT2701 and MT7623, share its
+lock. If the node already has a syscon regmap, keep using it. Select
+REGMAP_MMIO, which the driver now uses directly.
 
-> However, some drivers can hand GRO/LRO-aggregated frames to the stack
-> where individual frag_list elements are already larger than skb_shinfo(=
-p)
-> ->gso_size (i.e., an element itself contains multiple MSS worth of
-> payload) and may be non-linear (nr_frags > 0). This shape is not
-> naturally produced by the software GRO aggregation logic for devices
-> without LRO, and can lead to unexpected behavior in the frag_list
-> segmentation path.
+Fixes: 3221f40b7631 ("pinctrl: mediatek: emulate GPIO interrupt on both-edges")
+Assisted-by: LLM
+Signed-off-by: Ryan Brue <ryanbrue.dev@gmail.com>
+---
+Found on the Amazon Fire HD 10 (2017), an MT8173 tablet that is not
+upstream yet, where usb_extcon_probe() requests the USB ID pin's
+both-edge EINT. With this patch lockdep stays on through boot, CPU
+hotplug, suspend to RAM, and lid open/close edges on the hall sensor's
+both-edge EINT. Only MT8173 was tested. Nothing else uses the node
+there, so the -EEXIST fallback was not exercised.
 
-Did you observe this with a specific driver?
+checkpatch warns that the regmap_config should be const. It is copied
+per node to set name and max_register, as syscon does.
+---
+ drivers/pinctrl/mediatek/Kconfig              |  1 +
+ drivers/pinctrl/mediatek/pinctrl-mtk-common.c | 59 ++++++++++++++++++++++++++-
+ 2 files changed, 58 insertions(+), 2 deletions(-)
 
-We don't want to have to support every crazy driver scheme. The right
-approach may be to fix the driver.
+diff --git a/drivers/pinctrl/mediatek/Kconfig b/drivers/pinctrl/mediatek/Kconfig
+index 30ef3dc5dfb1..764256901d6a 100644
+--- a/drivers/pinctrl/mediatek/Kconfig
++++ b/drivers/pinctrl/mediatek/Kconfig
+@@ -17,6 +17,7 @@ config PINCTRL_MTK
+ 	select GENERIC_PINCONF
+ 	select GPIOLIB
+ 	select EINT_MTK
++	select REGMAP_MMIO
+ 
+ config PINCTRL_MTK_V2
+ 	tristate
+diff --git a/drivers/pinctrl/mediatek/pinctrl-mtk-common.c b/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
+index 1a977acd6883..65b1e3096183 100644
+--- a/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
++++ b/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
+@@ -9,6 +9,7 @@
+ #include <linux/gpio/driver.h>
+ #include <linux/module.h>
+ #include <linux/of.h>
++#include <linux/of_address.h>
+ #include <linux/of_irq.h>
+ #include <linux/pinctrl/consumer.h>
+ #include <linux/pinctrl/machine.h>
+@@ -1057,6 +1058,60 @@ static int mtk_eint_init(struct mtk_pinctrl *pctl, struct platform_device *pdev)
+ 	return mtk_eint_do_init(pctl->eint, NULL);
+ }
+ 
++static const struct regmap_config mtk_pctrl_regmap_config = {
++	.reg_bits = 32,
++	.val_bits = 32,
++	.reg_stride = 4,
++	.use_raw_spinlock = true,
++};
++
++/*
++ * The EINT irq_chip reads a pin's level through this regmap from callbacks
++ * that run under the raw irq_desc lock, so the regmap has to use a raw
++ * spinlock too, which syscon's own does not. Register one with syscon for the
++ * node instead, so that any other user of the node shares its lock.
++ */
++static struct regmap *mtk_pctrl_syscon_regmap(struct device_node *np)
++{
++	struct regmap_config config = mtk_pctrl_regmap_config;
++	struct regmap *regmap;
++	struct resource res;
++	void __iomem *base;
++	int ret;
++
++	ret = of_address_to_resource(np, 0, &res);
++	if (ret)
++		return ERR_PTR(ret);
++
++	base = ioremap(res.start, resource_size(&res));
++	if (!base)
++		return ERR_PTR(-ENOMEM);
++
++	config.name = kasprintf(GFP_KERNEL, "%pOFn@%pa", np, &res.start);
++	if (!config.name) {
++		iounmap(base);
++		return ERR_PTR(-ENOMEM);
++	}
++
++	config.max_register = resource_size(&res) - config.reg_stride;
++	regmap = regmap_init_mmio(NULL, base, &config);
++	kfree(config.name);
++	if (IS_ERR(regmap)) {
++		iounmap(base);
++		return regmap;
++	}
++
++	ret = of_syscon_register_regmap(np, regmap);
++	if (ret) {
++		regmap_exit(regmap);
++		iounmap(base);
++		/* An earlier probe, or another user of the node, got there first. */
++		return ret == -EEXIST ? syscon_node_to_regmap(np) : ERR_PTR(ret);
++	}
++
++	return regmap;
++}
++
+ /* This is used as a common probe function */
+ int mtk_pctrl_init(struct platform_device *pdev,
+ 		const struct mtk_pinctrl_devdata *data,
+@@ -1076,7 +1131,7 @@ int mtk_pctrl_init(struct platform_device *pdev,
+ 
+ 	node = of_parse_phandle(np, "mediatek,pctl-regmap", 0);
+ 	if (node) {
+-		pctl->regmap1 = syscon_node_to_regmap(node);
++		pctl->regmap1 = mtk_pctrl_syscon_regmap(node);
+ 		of_node_put(node);
+ 		if (IS_ERR(pctl->regmap1))
+ 			return PTR_ERR(pctl->regmap1);
+@@ -1089,7 +1144,7 @@ int mtk_pctrl_init(struct platform_device *pdev,
+ 	/* Only 8135 has two base addr, other SoCs have only one. */
+ 	node = of_parse_phandle(np, "mediatek,pctl-regmap", 1);
+ 	if (node) {
+-		pctl->regmap2 = syscon_node_to_regmap(node);
++		pctl->regmap2 = mtk_pctrl_syscon_regmap(node);
+ 		of_node_put(node);
+ 		if (IS_ERR(pctl->regmap2))
+ 			return PTR_ERR(pctl->regmap2);
 
-To understand the geometry: the driver passes a GSO skb with frag_list,
-where frag_list members may be any size, not just gso_size? I.e., these
-do not conform to SKB_GSO_FRAGLIST rules?
+---
+base-commit: 72d3fcf802c45d00b300f25b848a93c3a2bd7c7e
+change-id: 20260925-rbrue-suez-upstreaming-mtk-pinctrl-raw-regmap-154d6225b977
 
-I don't recall immediately what the acceptable behavior for regular
-GSO skbs with frag_list is. But for starters such a driver should not
-advertiserr SKB_GSO_FRAGLIST.
-
-> =
-
-> Detect this condition during frag_list aggregation and mark the
-> aggregated packet as SKB_GSO_DODGY when a list element=E2=80=99s length=
- exceeds
-> gso_size. This forces a more conservative segmentation/linearization
-> behavior downstream and avoids relying on assumptions that do not hold
-> for LRO-produced aggregates.
-> =
-
-> No change for normal software GRO aggregation: the new check only
-> triggers when skb_shinfo(p)->gso_size is set and a frag_list element
-> length exceeds that size.
-> =
-
-> Fixes: 3a1296a38d0c ("net: Support GRO/GSO fraglist chaining.")
-> Cc: <stable@vger.kernel.org>
-> Signed-off-by: Shiming Cheng <shiming.cheng@mediatek.com>
-> ---
->  net/core/gro.c | 3 +++
->  1 file changed, 3 insertions(+)
-> =
-
-> diff --git a/net/core/gro.c b/net/core/gro.c
-> index 29b4d02bf519..e70ecf19b0a7 100644
-> --- a/net/core/gro.c
-> +++ b/net/core/gro.c
-> @@ -259,6 +259,9 @@ int skb_gro_receive_list(struct sk_buff *p, struct =
-sk_buff *skb)
->  	skb_shinfo(p)->flags |=3D skb_shinfo(skb)->flags & SKBFL_SHARED_FRAG;=
-
->  =
-
->  	NAPI_GRO_CB(skb)->same_flow =3D 1;
-> +	/* frag_list element larger than gso_size (already coalesced before l=
-ist-append) */
-> +	if (skb_shinfo(p)->gso_size && skb->len > skb_shinfo(p)->gso_size)
-> +		skb_shinfo(p)->gso_type |=3D SKB_GSO_DODGY;
->  =
-
->  	return 0;
->  }
-> -- =
-
-> 2.45.2
-> =
-
-
+Best regards,
+--  
+Ryan Brue <ryanbrue.dev@gmail.com>
 
 
