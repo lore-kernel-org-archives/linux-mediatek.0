@@ -4,86 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3DA72CA5FA7
-	for <linux-mediatek@archiver.kernel.org>; Tue, 29 Sep 2026 21:01:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 28DFBCA5FA5
+	for <linux-mediatek@archiver.kernel.org>; Tue, 29 Sep 2026 21:06:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:Content-Type:
 	References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=YQOfsK+HlKeVCf8Z4OdzeQNNGZLvLEYB73B+IGrPM8Q=; b=S9m4YFKCmKBRsKZPtkUinZ20Ni
-	Isub+LbTrFk6UcgqLei0h+nKc4Xa9yd3BmwPzMmzYAImxGLdZEjTeYMDcnVq8fPQXdfndWUW0WX0t
-	wOcsylYO3dioOTd/qcIgX7t4OOro1KgNN+aFiDFqhqUGVCRsfm9XWNS+uyyDMm9UpaUidG3Rr05lq
-	u/w93Xjg8VrOBtgqJfUK4FVXkCblGqpfrdVrGtD/M0ifahjHhBjV/KeqEZ2FHBrOyY1Km3wwF0wf1
-	dshI0LazeXhg+5S4tP7cH1CmQXV2DK2a+HNGdtbsyLiJSdOyBBdoHa4qTBGvMv50Qe9LCKRA90Wce
-	9J2sSrAA==;
+	bh=8LFOvHs5vGrtobfr2ePGnKbAMOPISIpzHqSP7jz8iLA=; b=oq09m4og4K4l1uYDlMLfiRYq9B
+	23VcwlwUooAbiO2+auk/l8KdbfWbSj+0RBGKUqd/GJzuKS9vaIg37XZ2M5poS+sTv13a9DZyrZhtE
+	OZjVzzXar24HbndpK3K81+xsJ4OgFbQiK+bYwigbXagybLqoikpdDo3EbpoKnSgL4SMCsjW7Szs6+
+	8/wV/XDV3y/6SS4+8tRxfLv7DvzQFl+BYcwvDvivvoIStS3YJC9SJB3AEw4hlMqpt6PUSP1NoFwGt
+	fbSDaVv9WbAio1yvxJbtq5ooJjHw1sHyRjzeL+fjeGqMnqVRnCn8wuyOG/MKSA186qH6MFUDQPwhs
+	8EKbh2hQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xBewz-00000004Yph-13yr;
-	Tue, 29 Sep 2026 21:01:21 +0000
-Received: from mail-vs2-x28.google.com ([2a00:1450:4864:3a::28])
+	id 1xBf1l-00000004ZIh-0jqf;
+	Tue, 29 Sep 2026 21:06:17 +0000
+Received: from mail-qk2-x0c.google.com ([2607:f8b0:4864:34::c])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xBewx-00000004Yoj-235q
+	id 1xBf1h-00000004ZHV-2ayo
 	for linux-mediatek@lists.infradead.org;
-	Tue, 29 Sep 2026 21:01:20 +0000
-Received: by mail-vs2-x28.google.com with SMTP id 71dfb90a1353d-5d4b5d7413dso340606e0c.1
-        for <linux-mediatek@lists.infradead.org>; Tue, 29 Sep 2026 14:01:19 -0700 (PDT)
+	Tue, 29 Sep 2026 21:06:14 +0000
+Received: by mail-qk2-x0c.google.com with SMTP id d75a77b69052e-533289b43ebso41770881cf.3
+        for <linux-mediatek@lists.infradead.org>; Tue, 29 Sep 2026 14:06:13 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=ndufresne-ca.20251104.gappssmtp.com; s=20251104; t=1790715678; x=1791320478; darn=lists.infradead.org;
+        d=ndufresne-ca.20251104.gappssmtp.com; s=20251104; t=1790715972; x=1791320772; darn=lists.infradead.org;
         h=mime-version:user-agent:content-type:autocrypt:references
          :in-reply-to:date:cc:to:from:subject:message-id:from:to:cc:subject
          :date:message-id:reply-to:content-type;
-        bh=YQOfsK+HlKeVCf8Z4OdzeQNNGZLvLEYB73B+IGrPM8Q=;
-        b=s/56zz8lXDc5/nd7pM02A8uESGEcf8oxGtYMVUywJRrYSoiO7/813TrU4/LExNUxx3
-         mn10YhERg9GYtQ2LpL6HHmgwrp3c4kGwgP5+GbAxUQYcinuQVgU2HVUzsVTR5GD3+PE6
-         TKfQtwXfkT6TAYrF6pPF8KA8Jc58T3m1bGwGYIkVe+TbZe9ElE+O25FDgz7W+Njt3XpJ
-         QVJ7Z05rZC2I2AURruaRTbsycWGAMb+bFzcwpGzpCRgebZ+hdnlG7oNijQfPL7Bz9C17
-         KRD5CbOEFXl0iJEUbDhlJf3wxvPGMlszmGsmWCMO4VBCBO73iWG9U3jLkAW6hhcQ/7rG
-         xupQ==
+        bh=8LFOvHs5vGrtobfr2ePGnKbAMOPISIpzHqSP7jz8iLA=;
+        b=VBs+TvP6qu9UVitRPTBz1KS3CM0BfQKu/tW8DK7qeDQT3ClLfS+TNE/U7kOwIWxVgQ
+         W4TkE45TnmKDZnfyMCxTI0nQDzaGJA5XtaCtiRxixbgsnjWWzrpoUwLwkeB9s1VzwfJi
+         Bc42J4UmwQNlMKH4RPzpISPpuE//WiOdL1qk6oRKdCCcD21DdzIp1f4d/rnoqJ8OUNE0
+         ZsChEgFER5ZHVwxkUK0ZTB3aP/oN0JPMztWBVs/gLH87KE8Um9fMxZBJROJFj9JlFUmh
+         Hz+xg29PUHEFLBDn/hcM6jWA/4qggsDpquv+5FzRYwYmu0/RSVNZxfQPUQ96qlVIyTLv
+         8yzQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1790715678; x=1791320478;
+        d=1e100.net; s=20260707; t=1790715972; x=1791320772;
         h=mime-version:user-agent:content-type:autocrypt:references
          :in-reply-to:date:cc:to:from:subject:message-id:x-gm-gg
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
          :content-type;
-        bh=YQOfsK+HlKeVCf8Z4OdzeQNNGZLvLEYB73B+IGrPM8Q=;
-        b=1H651k0yIP/dPRqT5dsjZf84dTwJUXSJl1VMN4YBLODt0cGyQ+ut3j6wzttEYb7FNv
-         DBog8n/pSdhX8+AZqNPp4q3fLokOw6NDLMHs/OGi6q8Va7e5R9i1lwcEL9D6eKYUskJk
-         BLHVgVdPwF8l2cBOdT2faotMhcZWFRnVSBLAiFUw5PhiBPzUlKQ3pV8T0MlqGd5oaIY6
-         7wAJmS2WQvNpBWgnW/it7CLwqAbDpned4Mzx+qMSLs7/u6uRGMVvJ8PA/QnaQ5r07RaU
-         z5GxYiCnNazDVkqaDma19mpc+H8SviDy4tqbe6PULVYV+/lZy80oHGGiQshMdqBElKlc
-         Dgsg==
-X-Forwarded-Encrypted: i=1; AKwUvBzZjjTbnw4qe9ea9KeJ+qyQ2WvypFLfUSh1+E/FkDCQioiyyjF+3xOQLsF2XKjzqa/jCiUZrnbBaCQPUKGppQ==@lists.infradead.org
-X-Gm-Message-State: AFq9FYIszp3tKJjZGQIuIoa4e4H0OLaajEYH+d4yHi/dVyxblJ90g5po
-	yIKNtObQnxqZg8fR/mfGO0B8SwRFavMEgo08GgpAuC7z7CZdM5SvwIGKNCJDWU2zfV4=
-X-Gm-Gg: AYBFou0mFicSTyZqQ2KOqr2EBPnll1rJKpxY+yQItW51b2AioRcYkConD6yABlltxmV
-	/kcqUnaMMgImGORaRrebaTfdYsxaF1VTCCSYNp4gjPIBAHusNLYOTUeAFBuJEr+4Q8PedTm8UmQ
-	a+MAEBFBxIDHMwTuPpRsUHlG80u9JsO5DlKgezbltm0OtsjdJKRkd1XC1x/+696AL/dNxqOjAZQ
-	Ph34qn/VgSpdhSB6HaeAr19UMvXzlQKa1mxI4sppsFWCnr3RhbBas/iILo3GBw2bQXH2sD9kAZW
-	0Pk5n/kjpk5NBkOI0NrPpSUe9jqR8/TsGuXPqdnqreT69sWCGqFwEzp7IVmsg3YUQlyI1ruAb+5
-	wr3Fn6F4bK0z0HPzK3ymPJ1CzfN1wtMn1gPRcEbWrtS098ioEZGp6pbr8kc1JuBtpXr/Fl4yvYG
-	OW4S/zp6soLo2dYuWDgUB9o15yv+V0XY4sxkIcigshKh8i7cJ7tpC+xSOKS0q6UTnTk2dtCRdT5
-	0fzWLJ3NkhmbtjUuHIHGzgc
-X-Received: by 2002:a05:6122:1c05:b0:5c9:ae70:e784 with SMTP id 71dfb90a1353d-5d5131cdd4cmr304268e0c.3.1790715678096;
-        Tue, 29 Sep 2026 14:01:18 -0700 (PDT)
+        bh=8LFOvHs5vGrtobfr2ePGnKbAMOPISIpzHqSP7jz8iLA=;
+        b=OnBgxYH7sTeHRfzo647p2R87OyOGIz2/gycGqh6A68H7tkO9BZ0nt4eeot3HmzGyJj
+         skGd5zCw9cCCcUlec02k7TDR2LIv44ln6HHxG8mdEybX1pPzC0Tp4iJL4t65M7EH4r+b
+         Z3eJV60OFL917DPQf7sTy7DhrAy7iLh8W/SRtwVoDvS9MfoUpqXdW4RFsrnVKx1caTxV
+         fDhbXGysJKWAyBdUQ/7K9TbW28bIloHCyeeLWFabVAK+VugLtXRhbhi7PihpmUxui3YO
+         40mSSdF67Rda6lA/zuUBHEcgJoIMaJp0KHmxpKguifVzRfjJ9Onvsvocmhe9uckUIbFM
+         LQTg==
+X-Forwarded-Encrypted: i=1; AKwUvBy/QOuDuTWGEOEj/UZa8upuI+X5sWVrGP5P2oImjFucm0h6wqYrmSAE3YH33AniFgbO54b4sOg6M7VOJRPvCg==@lists.infradead.org
+X-Gm-Message-State: AFuF++mVYokf4atB9lxIEnM2RhaEjkzTQbeaEO4Trkp0uRM3QsrvKSMA
+	Cuh56ib0VGBMtlkAyMtK7V7yFVCVAG1DNjxdoVXps65A2wLk+/PJMNOPGWPW+4rTZd0=
+X-Gm-Gg: AYBFou0DYRXU6tPE6SBXTLZpAhrMLYXJGMtvQq9erhH8/BbaAi6t/69ojwEHIWptP2a
+	CexI7hTFXiF0N+6topp07j1N9Wba6GuoYv3t1MzWaSGq5GIq5Uc7MOZn84AP3u20cH6LZMqULBv
+	xKYPkSnPD8Ivkw4NlTrmCenBGXZEJHT3EWmTCki4GZi1asaSVCkNYKpQsh2vPwHgaN02HMUQST5
+	z8EuOlxATyTrp574sbUAPYXyb4H1b5xdhyQ4W2iEjRklVLZYaIOyiXZLrvYj4ByCqRglHUkgnQN
+	BfjwbrAqR7MV+9Tyjkdg0gTRwtKSZtYvicFL0V6IMw8KKZJxnvZ7TsYnfyrA4tXN4/dYwNqFCO+
+	f/cIWz7Ft2609ykDxD+IhuUtLeOiv/QXy7xMtfQ9ua0jTBNVBLLSNUhxxkJEjTHvkrV180zV/Wi
+	dTSUrMgKgn6lI1+ELChiLuBrzk/qeWWGgFgvh9JgQ+v6rBn2ZaNDylK2q0fw9WiFxORUV0/Qi7P
+	ObedgBjAtD2yA==
+X-Received: by 2002:a05:6214:c27:b0:917:9504:374d with SMTP id 6a1803df08f44-91799b6daf0mr7450606d6.36.1790715972169;
+        Tue, 29 Sep 2026 14:06:12 -0700 (PDT)
 Received: from ?IPv6:2606:6d00:11:34bd::5ac? ([2606:6d00:11:34bd::5ac])
-        by smtp.gmail.com with ESMTPSA id 71dfb90a1353d-5d4e778bafasm1226873e0c.5.2026.09.29.14.01.16
+        by smtp.gmail.com with ESMTPSA id 6a1803df08f44-917987e2746sm4263186d6.20.2026.09.29.14.06.09
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 29 Sep 2026 14:01:17 -0700 (PDT)
-Message-ID: <dd1d9010ad1a3ee11fc38923dfa1252992c2b245.camel@ndufresne.ca>
-Subject: Re: [PATCH] media: mtk-jpeg: Fix runtime PM leak in
- mtk_jpegdec_worker()
+        Tue, 29 Sep 2026 14:06:10 -0700 (PDT)
+Message-ID: <0741e05902488b491624e5e05098092245242a1a.camel@ndufresne.ca>
+Subject: Re: [PATCH] media: mediatek: vpu: release reserved memory on remove
 From: Nicolas Dufresne <nicolas@ndufresne.ca>
-To: Wentao Liang <vulab@iscas.ac.cn>, angelogioacchino.delregno@collabora.com
-Cc: bin.liu@mediatek.com, hverkuil@kernel.org, irui.wang@mediatek.com, 
-	kyrie.wu@mediatek.com, linux-arm-kernel@lists.infradead.org, 
-	linux-kernel@vger.kernel.org, linux-media@vger.kernel.org, 
-	linux-mediatek@lists.infradead.org, matthias.bgg@gmail.com,
- mchehab@kernel.org, 	stable@vger.kernel.org
-Date: Tue, 29 Sep 2026 17:01:16 -0400
-In-Reply-To: <20260917100247.2145872-1-vulab@iscas.ac.cn>
-References: <20260917100247.2145872-1-vulab@iscas.ac.cn>
+To: Guangshuo Li <lgs201920130244@gmail.com>, Minghsiu Tsai	
+ <minghsiu.tsai@mediatek.com>, Houlong Wei <houlong.wei@mediatek.com>, 
+ Andrew-CT Chen <andrew-ct.chen@mediatek.com>, Tiffany Lin
+ <tiffany.lin@mediatek.com>, Yunfei Dong	 <yunfei.dong@mediatek.com>, Mauro
+ Carvalho Chehab <mchehab@kernel.org>,  Matthias Brugger
+ <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+ <angelogioacchino.delregno@collabora.com>,  Hans Verkuil
+ <hverkuil@kernel.org>, linux-media@vger.kernel.org,
+ linux-kernel@vger.kernel.org, 	linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org
+Cc: stable@vger.kernel.org
+Date: Tue, 29 Sep 2026 17:06:09 -0400
+In-Reply-To: <20260915121025.2412446-1-lgs201920130244@gmail.com>
+References: <20260915121025.2412446-1-lgs201920130244@gmail.com>
 Autocrypt: addr=nicolas@ndufresne.ca; prefer-encrypt=mutual;
  keydata=mDMEaCN2ixYJKwYBBAHaRw8BAQdAM0EHepTful3JOIzcPv6ekHOenE1u0vDG1gdHFrChD
  /e0J05pY29sYXMgRHVmcmVzbmUgPG5pY29sYXNAbmR1ZnJlc25lLmNhPoicBBMWCgBEAhsDBQsJCA
@@ -98,12 +102,12 @@ Autocrypt: addr=nicolas@ndufresne.ca; prefer-encrypt=mutual;
  ECHgcCF4AACgkQ2UGUUSlgcvRObgD/YnQjfi4+L8f4fI7p1pPMTwRTcaRdy6aqkKEmKsCArzQBAK8
  bRLv9QjuqsE6oQZra/RB4widZPvphs78H0P6NmpIJ
 Content-Type: multipart/signed; micalg="pgp-sha512";
-	protocol="application/pgp-signature"; boundary="=-OaQi5nvPKDU3qCHl6JAX"
+	protocol="application/pgp-signature"; boundary="=-JBpDEv9eNq9BIPUlwiLE"
 User-Agent: Evolution 3.60.2 (3.60.2-1.fc44) 
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260929_140119_585609_10A930E9 
-X-CRM114-Status: GOOD (  15.41  )
+X-CRM114-CacheID: sfid-20260929_140613_678971_0837F02F 
+X-CRM114-Status: GOOD (  16.80  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -119,58 +123,63 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 
---=-OaQi5nvPKDU3qCHl6JAX
+--=-JBpDEv9eNq9BIPUlwiLE
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 
-Le jeudi 17 septembre 2026 =C3=A0 10:02 +0000, Wentao Liang a =C3=A9crit=C2=
+Le mardi 15 septembre 2026 =C3=A0 20:10 +0800, Guangshuo Li a =C3=A9crit=C2=
 =A0:
-> pm_runtime_get_sync() leaves the device's runtime PM usage count
-> incremented even when it fails.  mtk_jpegdec_worker() jumps to
-> dec_end on that failure, which does not call pm_runtime_put(), so
-> the reference taken by the failed resume is leaked.
+> mtk_vpu_probe() may assign a reserved memory region to the VPU device
+> with of_reserved_mem_device_init(). The probe failure path releases the
+> assignment with of_reserved_mem_device_release(), but the normal remove
+> path does not perform the corresponding cleanup.
 >=20
-> Use pm_runtime_resume_and_get() instead, which drops the reference
-> again when resuming the device fails.
+> As a result, removing the VPU driver after a successful probe can leave
+> the reserved memory assignment associated with the device after its
+> lifetime has ended.
 >=20
-> Fixes: dedc21500334 ("media: mtk-jpegdec: add jpeg decode worker interfac=
-e")
+> Release the reserved memory assignment after freeing the VPU external
+> firmware memory, matching the cleanup performed by the probe failure
+> path.
+>=20
+> This issue was found by manual code inspection.
+>=20
+> Fixes: 3003a180ef6b ("[media] VPU: mediatek: support Mediatek VPU")
 > Cc: stable@vger.kernel.org
-> Signed-off-by: Wentao Liang <vulab@iscas.ac.cn>
+> Signed-off-by: Guangshuo Li <lgs201920130244@gmail.com>
 
 Reviewed-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
 
 > ---
->  drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
+>  drivers/media/platform/mediatek/vpu/mtk_vpu.c | 1 +
+>  1 file changed, 1 insertion(+)
 >=20
-> diff --git a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c b/drive=
-rs/media/platform/mediatek/jpeg/mtk_jpeg_core.c
-> index 8c684756d5fc..ed1d5858c942 100644
-> --- a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
-> +++ b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
-> @@ -1732,7 +1732,7 @@ static void mtk_jpegdec_worker(struct work_struct *=
-work)
->  	jpeg_dst_buf->frame_num =3D ctx->total_frame_num;
-> =20
->  	mtk_jpegdec_set_hw_param(ctx, hw_id, src_buf, dst_buf);
-> -	ret =3D pm_runtime_get_sync(comp_jpeg[hw_id]->dev);
-> +	ret =3D pm_runtime_resume_and_get(comp_jpeg[hw_id]->dev);
->  	if (ret < 0) {
->  		dev_err(jpeg->dev, "%s : %d, pm_runtime_get_sync fail !!!\n",
->  			__func__, __LINE__);
+> diff --git a/drivers/media/platform/mediatek/vpu/mtk_vpu.c b/drivers/medi=
+a/platform/mediatek/vpu/mtk_vpu.c
+> index 8d8319f0cd22..16b5bdc2f2c0 100644
+> --- a/drivers/media/platform/mediatek/vpu/mtk_vpu.c
+> +++ b/drivers/media/platform/mediatek/vpu/mtk_vpu.c
+> @@ -966,6 +966,7 @@ static void mtk_vpu_remove(struct platform_device *pd=
+ev)
+>  		destroy_workqueue(vpu->wdt.wq);
+>  	vpu_free_ext_mem(vpu, P_FW);
+>  	vpu_free_ext_mem(vpu, D_FW);
+> +	of_reserved_mem_device_release(&pdev->dev);
+>  	mutex_destroy(&vpu->vpu_mutex);
+>  	clk_unprepare(vpu->clk);
+>  }
 
---=-OaQi5nvPKDU3qCHl6JAX
+--=-JBpDEv9eNq9BIPUlwiLE
 Content-Type: application/pgp-signature; name="signature.asc"
 Content-Description: This is a digitally signed message part
 
 -----BEGIN PGP SIGNATURE-----
 
-iHUEABYKAB0WIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCarwnHAAKCRDZQZRRKWBy
-9E83APwLk0zeKWzQOIGJYqNZSVuM65LfwP9mlNJVQ/ss2bY3FAD9EhLs8d7/vbqz
-J2u9T+/yffmnP0xvF8G43YoE4lnGZQg=
-=AlR/
+iHUEABYKAB0WIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCarwoQQAKCRDZQZRRKWBy
+9LIrAP9JLK9HAtBMScpQ1KexiHDip4nmcCWrHasuo3ANeEljAgEAs60FyYFYBqgL
+Jt8fxtvRcoN2QASZVOg0X0uof6Yp8g4=
+=0P79
 -----END PGP SIGNATURE-----
 
---=-OaQi5nvPKDU3qCHl6JAX--
+--=-JBpDEv9eNq9BIPUlwiLE--
 
