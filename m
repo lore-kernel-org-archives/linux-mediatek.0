@@ -4,97 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 50B65CA5FA5
-	for <linux-mediatek@archiver.kernel.org>; Tue, 29 Sep 2026 20:27:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B5331CA5FA7
+	for <linux-mediatek@archiver.kernel.org>; Tue, 29 Sep 2026 20:35:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:Content-Type:
-	References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Message-ID:Date
+	:Cc:To:From:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=hy0Z7g0k5BdEZ5Ocq6wEdB+TmRlfMsQeWatc+/oqaY4=; b=gaFXYOBHeFz6WvvuuEnpcnsBB/
-	F0KIizIUj3VZ37t3gvdvxqGeEHp0R4onCgjlzOw8Qyj1UiPBC/0ZFpDodVI5wjhbOPFgycpsTtmhx
-	rycSjOAynTG7/cI3fqZj7zqtq5baFrmz1dL6PyFWEodyMwIoIh/mBnOex1hYKXdkC3olsJd6mqn0G
-	tBQrAljQzUMV6teCOhThFpDbUSNA54QKwaKp3WRCFA8mmmFD1PqHqQZnVp44AthoENH+/AT+/QWxP
-	aoedHSGYSFPt6q797ZKWmZU3MCcPGz0o07U++f9tHEv87gYNpDh/gTeY4MTWMSQnHG1q/gSZb7aP2
-	1Iwg1NuA==;
+	bh=8w9ECo7Zxk+E9vZum/tU3C35TNd/88XkTZm60kcGeGg=; b=H0dNaEZ8Vl3+1UbRuyxT5I0vba
+	zS/acPRIV71vjFm/NZwlt7F9H2hv1v4Gv12Cd4HcU43qeA5MNQ2v+tN1Z6FZha45R33WbJGw/ABZC
+	z1CeD5irrsgtyzZzjZAtkagru5KcSzhm10URPVUXQNMaRQZKo//vhR2Fo+Rmxk0hLr/0LKMaTHKpJ
+	5jJr1U2k0hsepUNRPxh43F09xW1FC+TyEcIfJS3tohfEy1TWis6FqYi/eiBerE0NUr8R2zBcET5nC
+	v3VrA8N9/HO3LcH6KIlLjzP4CHjKDkpIIVyUxi9vBAfWF1QGhaRewbZdOc6jhAwuc183sF1U2+n/z
+	DCI02QAw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xBePx-00000004UPG-2VGD;
-	Tue, 29 Sep 2026 20:27:13 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1xBeXY-00000004V2Q-2quy;
+	Tue, 29 Sep 2026 20:35:04 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xBePv-00000004UOn-3Hta;
-	Tue, 29 Sep 2026 20:27:11 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=MIME-Version:Content-Type:References:
-	In-Reply-To:Date:Cc:To:From:Subject:Message-ID:Sender:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description;
-	bh=hy0Z7g0k5BdEZ5Ocq6wEdB+TmRlfMsQeWatc+/oqaY4=; b=AD4PCwm0abtMGY5boOIzYFrSPH
-	X6UB5WTtBE7uz4cWwggTwBwbHmpl/llOxDb37TzFAgd5mWTl0vNS2uBI4Qn6r0G0dYH+36F0goi4P
-	KMchYzs8asAV5PcxgeJ2NwTh3FOhpvuNwqkNglixhbfAECy2s74HFl38EKMlHw6KcHwpmtGSDAKMI
-	tLfmUg1fyWSBUEdCacP9PHK+gA09mYrnnkV9zuZZis4oBXzuWkcc5NmRMCwJqB9G9VA0ZdXabxjAz
-	cjVZiEZ9dF/n6v/acUdokTEGCg1B/wZJfvmDVEPV1FmgwZx0VVvkTMO5oVXFIKniesRhNo7vk54/F
-	pm+CZ6HA==;
-Received: from bali.collaboradmins.com ([148.251.105.195])
-	by desiato.infradead.org with esmtps (Exim 4.99.2 #2 (Red Hat Linux))
-	id 1xBePp-000000033uI-03AG;
-	Tue, 29 Sep 2026 20:27:07 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1790713618;
-	bh=DkHl216R8HsWOjEtGTLQqdSyQom/zGA2tKkvsdwDZYU=;
-	h=Subject:From:To:Cc:Date:In-Reply-To:References:From;
-	b=TvFU9C9Pbg/JzO7ElZRPimssQgIEjJ2O+y47e02mjN7B5re1GnOWJ2BbvYWhNNp17
-	 T1Akjncag7PuCiEoPPfIgVDUzYd3K36JyRBSSy1aiIU5w/msMQugPDcHBt8mH7x1oP
-	 GDfogMllekTuriiWr+Eo8jW4OC4m44QDMWYdGspci/W+OJ7Gdxt1i4mfXicmrZYp37
-	 tcMnhLzHJNNzkkt78qjieaQWD6O7YSwK7vp5kVpiTY+enHh8SPxuR/5uobMpxfg9+2
-	 Y1qT8xbzt77mkxXoZzgqqLW+x64NaHWHoVz8PYVlRYS1Z3VNk+bmFswyYVKDQOFwdL
-	 nR3ngVmlMXtOg==
-Received: from [100.64.0.214] (unknown [100.64.0.214])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange secp256r1 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: nicolas)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 4D56F17E0B21;
-	Tue, 29 Sep 2026 22:26:56 +0200 (CEST)
-Message-ID: <90a604622a614a2de95820bdc73372a3e1d7fb41.camel@collabora.com>
-Subject: Re: [PATCH] media: mediatek: vcodec: fix decoder child device leaks
-From: Nicolas Dufresne <nicolas.dufresne@collabora.com>
-To: Guangshuo Li <lgs201920130244@gmail.com>, Tiffany Lin	
- <tiffany.lin@mediatek.com>, Andrew-CT Chen <andrew-ct.chen@mediatek.com>, 
- Yunfei Dong <yunfei.dong@mediatek.com>, Mauro Carvalho Chehab
- <mchehab@kernel.org>, Matthias Brugger	 <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno	 <angelogioacchino.delregno@collabora.com>, Hans
- Verkuil	 <hverkuil+cisco@kernel.org>, Kees Cook <kees@kernel.org>, Tomasz
- Figa	 <tfiga@chromium.org>, Chen-Yu Tsai <wenst@chromium.org>, Steve Cho	
- <stevecho@chromium.org>, linux-media@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org
-Cc: stable@vger.kernel.org
-Date: Tue, 29 Sep 2026 16:26:54 -0400
-In-Reply-To: <20260921090808.336112-1-lgs201920130244@gmail.com>
-References: <20260921090808.336112-1-lgs201920130244@gmail.com>
-Autocrypt: addr=nicolas.dufresne@collabora.com; prefer-encrypt=mutual;
- keydata=mDMEaCN2ixYJKwYBBAHaRw8BAQdAM0EHepTful3JOIzcPv6ekHOenE1u0vDG1gdHFrChD
- /e0J05pY29sYXMgRHVmcmVzbmUgPG5pY29sYXNAbmR1ZnJlc25lLmNhPoicBBMWCgBEAhsDBQsJCA
- cCAiICBhUKCQgLAgQWAgMBAh4HAheABQkJZfd1FiEE7w1SgRXEw8IaBG8S2UGUUSlgcvQFAmibrjo
- CGQEACgkQ2UGUUSlgcvQlQwD/RjpU1SZYcKG6pnfnQ8ivgtTkGDRUJ8gP3fK7+XUjRNIA/iXfhXMN
- abIWxO2oCXKf3TdD7aQ4070KO6zSxIcxgNQFtDFOaWNvbGFzIER1ZnJlc25lIDxuaWNvbGFzLmR1Z
- nJlc25lQGNvbGxhYm9yYS5jb20+iJkEExYKAEECGwMFCwkIBwICIgIGFQoJCAsCBBYCAwECHgcCF4
- AWIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCaCyyxgUJCWX3dQAKCRDZQZRRKWBy9ARJAP96pFmLffZ
- smBUpkyVBfFAf+zq6BJt769R0al3kHvUKdgD9G7KAHuioxD2v6SX7idpIazjzx8b8rfzwTWyOQWHC
- AAS0LU5pY29sYXMgRHVmcmVzbmUgPG5pY29sYXMuZHVmcmVzbmVAZ21haWwuY29tPoiZBBMWCgBBF
- iEE7w1SgRXEw8IaBG8S2UGUUSlgcvQFAmibrGYCGwMFCQll93UFCwkIBwICIgIGFQoJCAsCBBYCAw
- ECHgcCF4AACgkQ2UGUUSlgcvRObgD/YnQjfi4+L8f4fI7p1pPMTwRTcaRdy6aqkKEmKsCArzQBAK8
- bRLv9QjuqsE6oQZra/RB4widZPvphs78H0P6NmpIJ
-Organization: Collabora Canada
-Content-Type: multipart/signed; micalg="pgp-sha512";
-	protocol="application/pgp-signature"; boundary="=-rV4yfsU2n0WfwiE+CTHf"
-User-Agent: Evolution 3.60.2 (3.60.2-1.fc44) 
+	id 1xBeXX-00000004V1r-2iNP;
+	Tue, 29 Sep 2026 20:35:03 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by sea.source.kernel.org (Postfix) with ESMTP id C5D7E418DB;
+	Tue, 29 Sep 2026 20:35:01 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7919E1F000FF;
+	Tue, 29 Sep 2026 20:35:00 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1790714101;
+	bh=8w9ECo7Zxk+E9vZum/tU3C35TNd/88XkTZm60kcGeGg=;
+	h=Subject:From:To:Cc:Date:In-Reply-To:References;
+	b=CbrxtQ6vk6su3mcR4IiljTKlaqNDLPbvzMMmrM8D4wnDJrkBssMoPlFEFK0JtlAAt
+	 6Q7QvNrGviQuflHRaMLIIoRInMl15+zDPyNRDKPINbT+b6q81pd9Cq1+rNOh0LWKfp
+	 k/zmnZNFlaeVjsUVM8zIIN+3Iamanyg1PwTasslluMmLAQRrjxIL4WhM+7c/pI3Cae
+	 eY6B4aR0GlPL1OgHvVSj6hSMki20wfedB/wsIc7tNqH0XW8pXMPg+oXW9VhqMdeClD
+	 bHRA8KqKvnLyzNw4jRGVrPGpBUc+6KCzVkhg8Fuya7pPBrPdXLh6oONVC9dL44+ixZ
+	 GKsmRpsx0vr2Q==
+Subject: Re: [PATCH net-next v23 2/9] dt-bindings: net: Document support for
+ AN8855 Switch Internal PHY
+From: netdev-bot+sashiko@kernel.org
+To: ansuelsmth@gmail.com
+Cc: lee@kernel.org, robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
+ andrew+netdev@lunn.ch, davem@davemloft.net, edumazet@google.com,
+ kuba@kernel.org, pabeni@redhat.com, olteanv@gmail.com, matthias.bgg@gmail.com,
+ angelogioacchino.delregno@collabora.com, chester.a.unal@arinc9.com,
+ daniel@makrotopia.org, hkallweit1@gmail.com, linux@armlinux.org.uk,
+ horms@kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, netdev@vger.kernel.org,
+ mfd@lists.linux.dev, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org
+Date: Tue, 29 Sep 2026 20:34:59 +0000
+Message-ID: <179071409998.434549.4068844959751707356@kernel.org>
+In-Reply-To: <20260925182435.21207-3-ansuelsmth@gmail.com>
+References: <20260925182435.21207-3-ansuelsmth@gmail.com>
+X-sashiko-severity: Medium
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
 MIME-Version: 1.0
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260929_212705_391723_C538C0BE 
-X-CRM114-Status: GOOD (  22.64  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -109,84 +75,134 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Thank you for your contribution! Sashiko AI review found 2 potential
+issue(s) to consider.
 
---=-rV4yfsU2n0WfwiE+CTHf
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Critical: 0 · High: 0 · Medium: 1 · Low: 1
 
-Le lundi 21 septembre 2026 =C3=A0 17:08 +0800, Guangshuo Li a =C3=A9crit=C2=
-=A0:
-> mtk_vcodec_probe() populates decoder hardware child platform devices on
-> platforms that support decoder subdevices. These children must be
-> removed with of_platform_depopulate() when they are no longer needed.
->=20
-> If initialization fails after the children have been populated, the
-> probe error path releases the parent decoder resources without
-> depopulating the child devices. This leaves the child platform devices
-> registered.
->=20
-> The remove path has the same issue and leaves the child devices
-> registered when the parent decoder driver is unbound.
->=20
-> Depopulate the child devices in the probe error path and in the remove
-> path before tearing down the remaining parent resources.
->=20
-> The issue was identified by a static analysis tool I developed and
-> confirmed by manual review.
->=20
-> Fixes: c05bada35f01 ("media: mtk-vcodec: Add to support multi hardware de=
-code")
-> Cc: stable@vger.kernel.org
-> Signed-off-by: Guangshuo Li <lgs201920130244@gmail.com>
-> ---
->  .../platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.c    | 5 +++++
->  1 file changed, 5 insertions(+)
->=20
-> diff --git a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_de=
-c_drv.c b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv=
-.c
-> index e936ed8dffba..592685ad522c 100644
-> --- a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.c
-> +++ b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.c
-> @@ -517,6 +517,8 @@ static int mtk_vcodec_probe(struct platform_device *p=
-dev)
->  err_dec_mem_init:
->  	video_unregister_device(vfd_dec);
->  err_reg_cont:
-> +	if (dev->vdec_pdata->is_subdev_supported)
-> +		of_platform_depopulate(&pdev->dev);
->  	if (dev->vdec_pdata->uses_stateless_api)
->  		media_device_cleanup(&dev->mdev_dec);
->  	destroy_workqueue(dev->decode_workqueue);
-> @@ -569,6 +571,9 @@ static void mtk_vcodec_dec_remove(struct platform_dev=
-ice *pdev)
->  {
->  	struct mtk_vcodec_dec_dev *dev =3D platform_get_drvdata(pdev);
-> =20
-> +	if (dev->vdec_pdata->is_subdev_supported)
-> +		of_platform_depopulate(&pdev->dev);
+If you believe none of the issues are legitimate, please reply to each
+issue of Medium severity or higher and explain why the AI is wrong.
+If any of them are legitimate and you plan to respin, please let patchwork
+know by including "pw-bot: cr" as a separate line at the end of your reply
+(one such reply per series is enough).
+
+- [Medium] Both PHY nodes in the example of the new binding
+  Documentation/devicetree/bindings/net/airoha,an8855-phy.yaml…
+- [Low] In the example of
+  Documentation/devicetree/bindings/net/airoha,an8855-phy.yaml, the PHY…
+
+--
+
+dt-bindings: net: Document support for AN8855 Switch Internal PHY
+
+This adds a binding for the internal PHYs of the Airoha AN8855 5-port
+Gigabit switch, which are exposed on the MDIO bus. It also documents
+optional nvmem-cells, which point at eFUSE cells used to calibrate each
+PHY.
+
+> diff --git a/Documentation/devicetree/bindings/net/airoha,an8855-phy.yaml b/Documentation/devicetree/bindings/net/airoha,an8855-phy.yaml
+> new file mode 100644
+> index 0000000000000..d2f86116badf4
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/net/airoha,an8855-phy.yaml
+
+[ ... ]
+
+> +examples:
+> +  - |
+> +    mdio {
+> +        #address-cells = <1>;
+> +        #size-cells = <0>;
 > +
->  	destroy_workqueue(dev->decode_workqueue);
+> +        ethernet-phy@1 {
+> +            compatible = "ethernet-phy-idc0ff.0410",
+> +                         "ethernet-phy-ieee802.3-c45";
 
-This was first for a reason, please keep first.
+[Severity: Medium]
+Should this be "ethernet-phy-ieee802.3-c22"? The same pair is used for
+ethernet-phy@2 below.
 
-Nicolas
+The rest of the series treats these PHYs as Clause 22 only. The MFD
+binding in mfd/airoha,an8855.yaml uses "ethernet-phy-ieee802.3-c22" for
+the same PHYs. The PHY driver in drivers/net/phy/air_an8855.c relies on
+Clause 22 register 0x1f paging and has no Clause 45 callbacks.
 
-> =20
->  	if (media_devnode_is_registered(dev->mdev_dec.devnode)) {
+When the c45 compatible is present, fwnode_mdiobus_register_phy()
+ignores the fixed PHY ID:
 
---=-rV4yfsU2n0WfwiE+CTHf
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: This is a digitally signed message part
-Content-Transfer-Encoding: 7bit
+drivers/net/mdio/fwnode_mdio.c:fwnode_mdiobus_register_phy() {
+    ...
+	is_c45 = fwnode_device_is_compatible(child, "ethernet-phy-ieee802.3-c45");
+	if (is_c45 || fwnode_get_phy_id(child, &phy_id))
+		phy = get_phy_device(bus, addr, is_c45);
+    ...
+}
 
------BEGIN PGP SIGNATURE-----
+The per-PHY buses that an8855_core_probe() creates come from
+devm_mdio_regmap_register(). That function only sets Clause 22
+accessors:
 
-iHUEABYKAB0WIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCarwfDgAKCRDZQZRRKWBy
-9FakAP4vcR8SMhV7pVZIdxreL/3W6hen9hQOFj6cC3ZEarcA2wD+LAwK/qdsJ85/
-pSIKX2XUmKWpyl2obUYqdo/NDZ69UQU=
-=Asfv
------END PGP SIGNATURE-----
+drivers/net/mdio/mdio-regmap.c:devm_mdio_regmap_register() {
+    ...
+	mii->read = mdio_regmap_read_c22;
+	mii->write = mdio_regmap_write_c22;
+    ...
+}
 
---=-rV4yfsU2n0WfwiE+CTHf--
+Since read_c45 is never set, this chain fails:
+
+get_phy_device(bus, addr, true)
+  get_phy_c45_ids()
+    mdiobus_c45_read() -> -EOPNOTSUPP
+  -> -EIO
+
+After that, fwnode_mdiobus_register_phy() fails and an8855_core_probe()
+jumps to err_put_fwnodes. The whole AN8855 MFD then fails to probe,
+including the switch and the efuse.
+
+The schema accepts either compatible, so dt_binding_check won't catch
+a board DT that copies this example.
+
+> +
+> +            reg = <1>;
+> +        };
+> +
+> +        ethernet-phy@2 {
+> +            compatible = "ethernet-phy-idc0ff.0410",
+> +                         "ethernet-phy-ieee802.3-c45";
+> +
+> +            reg = <2>;
+> +
+> +            nvmem-cells = <&shift_sel_port0_tx_a>,
+> +                          <&shift_sel_port0_tx_b>,
+> +                          <&shift_sel_port0_tx_c>,
+> +                          <&shift_sel_port0_tx_d>;
+
+[Severity: Low]
+Is ethernet-phy@2 meant to get the port 0 calibration cells here?
+
+Later in the series, an8855_phy_bus_register() maps a PHY to a switch
+port with phy_offset = addr - priv->switch_addr. This example also has
+a PHY at address 1, so ethernet-phy@2 can't be port 0.
+
+The sibling bindings agree:
+
+- dsa/airoha,an8855-switch.yaml maps port@0 to internal_phy1 and port@1
+  to internal_phy2.
+- mfd/airoha,an8855.yaml puts the shift_sel_port0_* cells on
+  ethernet-phy@1 and the shift_sel_port1_* cells on ethernet-phy@2.
+
+an8855_config_init() writes whatever cells it gets into
+AN8855_PHY_R50OHM_RSEL_TX_AB/CD. If a board DT copies this example, the
+port 1 PHY would silently get the port 0 TX calibration.
+
+Should the cells either move to ethernet-phy@1, or be renamed to
+shift_sel_port1_*?
+
+> +            nvmem-cell-names = "tx_a", "tx_b", "tx_c", "tx_d";
+> +        };
+> +    };
+
+-- 
+Sashiko AI review · https://netdev-ai.bots.linux.dev/sashiko/#/patchset/20260925182435.21207-1-ansuelsmth%40gmail.com
 
