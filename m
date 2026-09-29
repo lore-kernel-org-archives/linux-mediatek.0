@@ -4,78 +4,94 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 450A4CA5FA7
-	for <linux-mediatek@archiver.kernel.org>; Tue, 29 Sep 2026 06:25:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9E079CA5FA1
+	for <linux-mediatek@archiver.kernel.org>; Tue, 29 Sep 2026 07:28:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=QFc2KSUFkKfmphddM59adQNexTXZELrN5Dok5gsfyrE=; b=jqEKS73xe64vz8BoYJKm5sXhr1
-	EqBYaiEyed3S7DbE0cFIOFLGFbxJqrkilZiCrKXvPbYVr7nx3vahXlwJSCDGxWqjVGtQwoSeSCX8P
-	Wy7k8RvHIkBpqdzzH5hxe+iLmj0VEH/Q6MdavVZ4lySdfGRkR/tPcF8DSaWQ4lnGPyUbHOdE/HkbH
-	mGP9KUa8nEMepM7WhcmF+sstCuJbY5aV2j6Yil2J49YKYiR94at2XN3kuGTGipNCqFFy3gX/BrWer
-	MnMzF/orwcsXpKADG0pjlKy0ySgAT30JmUjmF2FjyM2rRAA+S1yik2nTMSbFw6caWSpp2VHZOE/h+
-	LRDlFvEA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:From:
+	To:Cc:Subject:Message-Id:Date:Content-Type:Content-Transfer-Encoding:
+	Mime-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=6z9//+D0Q6VMBTcc9ojEGZtfSdov1XXVNeeruScr3A0=; b=rwqlXjRJxMJvM1wIS9zYgu5EZl
+	2E6u1IGFZQEeGAJ1kah3bZmqmyr12vluHD7cnxNgPzh0YtDmmYsp89mLAPRD4cnY3T0m3CE+VNZ5H
+	pD3vLqX82we4BjRP9EvsA6M9Sw8vr+bBoIdPNlIRhPAGJ/iJbehDAHj8kYX6eMcO5atfhfBc96pHw
+	DoDUHBTuZtCuQuwPnIxb85pr2yXDxD576KDQDJQIsYpfxP2jRS0VCfX6bCg526p5h/Le0p1DQCR9h
+	w3KeDwLfDYjRnhF3Mt/X7NfcrvvQjSMRBOEOE1nrK6s9t8Jw/J27im/kfcjKjm4pHayqFGFgQDI0B
+	A5nDjoKQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xBRHP-00000002RjE-0d5p;
-	Tue, 29 Sep 2026 06:25:31 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1xBSFr-00000002c35-1Qw7;
+	Tue, 29 Sep 2026 07:27:59 +0000
+Received: from smtpout-02.galae.net ([185.246.84.56])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xBRHK-00000002Rhd-3wxJ;
-	Tue, 29 Sep 2026 06:25:28 +0000
-X-UUID: 8c9c8b78bbce11f1acbe4559397dec65-20260928
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=QFc2KSUFkKfmphddM59adQNexTXZELrN5Dok5gsfyrE=;
-	b=sv98azqCqgTtv2KffKwlQVQrS0/j1zkNyxTDSRBggjbhm7gtGsKBungqpegQPForoNy55vu+dIxIKVq1GrdnpyEcpuwHrpew9M0Ifa6jrcVCFHrz8x1chXf+GX8oVSgkNQLDvveei4y1kpXJ3WcoB36Rp/nJYqcP4oeyS5wCGyk=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.20,REQID:462e5aee-d2e7-4305-a20e-5accee7c1e9a,IP:0,U
-	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
-	N:release,TS:-25
-X-CID-META: VersionHash:291e20b,CLOUDID:1a71a858-f207-4360-abb2-8a360f715574,B
-	ulkID:nil,BulkQuantity:0,SF:81|82|102|136|836|865|888|898,TC:-5,Content:0|
-	15|50|99,EDM:-3|-100,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:-1,COL
-	:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 2,SSN|SDN
-X-CID-BAS: 2,SSN|SDN,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: 8c9c8b78bbce11f1acbe4559397dec65-20260928
-Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw02.mediatek.com
-	(envelope-from <tim.kuo@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1968054659; Mon, 28 Sep 2026 23:25:22 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.29; Tue, 29 Sep 2026 14:25:19 +0800
-Received: from mtksitap99.mediatek.inc (10.233.130.16) by
- mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.2562.29 via Frontend Transport; Tue, 29 Sep 2026 14:25:19 +0800
-From: Tim Kuo <Tim.Kuo@mediatek.com>
-To: Mark Brown <broonie@kernel.org>, Rob Herring <robh@kernel.org>, Krzysztof
- Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, Matthias
- Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>
-CC: <linux-spi@vger.kernel.org>, <devicetree@vger.kernel.org>,
-	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-mediatek@lists.infradead.org>, Steven Liu <Steven.Liu@mediatek.com>,
-	Sky Huang <Skylake.Huang@mediatek.com>, Tim Kuo <Tim.Kuo@mediatek.com>
-Subject: [PATCH v2 2/2] spi: mt65xx: support wider tick delay field on IPM v59
-Date: Tue, 29 Sep 2026 14:25:16 +0800
-Message-ID: <20260929062516.416368-2-Tim.Kuo@mediatek.com>
-X-Mailer: git-send-email 2.45.2
-In-Reply-To: <20260929062516.416368-1-Tim.Kuo@mediatek.com>
-References: <20260929062516.416368-1-Tim.Kuo@mediatek.com>
-MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-MTK: N
+	id 1xBSFm-00000002c0w-2ID1;
+	Tue, 29 Sep 2026 07:27:57 +0000
+Received: from smtpout-01.galae.net (smtpout-01.galae.net [212.83.139.233])
+	by smtpout-02.galae.net (Postfix) with ESMTPS id 8C3C91A1056;
+	Tue, 29 Sep 2026 07:27:49 +0000 (UTC)
+Received: from mail.galae.net (mail.galae.net [212.83.136.155])
+	by smtpout-01.galae.net (Postfix) with ESMTPS id 56C1C601BD;
+	Tue, 29 Sep 2026 07:27:49 +0000 (UTC)
+Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id 7A173102F1E1D;
+	Tue, 29 Sep 2026 09:27:27 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=dkim;
+	t=1790666865; h=from:subject:date:message-id:to:cc:mime-version:content-type:
+	 content-transfer-encoding:in-reply-to:references;
+	bh=6z9//+D0Q6VMBTcc9ojEGZtfSdov1XXVNeeruScr3A0=;
+	b=zUtWawucfhqE9LJMaIjV23h5QqOgTgci0S2/yjUEsAvPdCO6+bcMPxKW3dwUHIgc/dlDHx
+	5I7l8Yg/Hj68EnIDUYKxmON+sEx9ElxKZIwM2kR31LlP61b/94Qkrq23jBaphNnrwKs20S
+	S+stRQckkC6yK420QjVVmcJafrgIWE3JAUWRcCkZvA422vzZSW+RfAYUzjTJFwF9VSpQa7
+	kww6z0UxwVbrMy4jFGgWYj6glw/rQUkcdAchSzs5Qhzh/QBOIjS/dgAh0Fi4oSTnV/7GHL
+	SbBfslNPDNdkpmRMeIYgidzdyu0XQ6VG0OWSxpY8ucTWEpvnzYDlSxWjUShPyQ==
+Mime-Version: 1.0
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=UTF-8
+Date: Tue, 29 Sep 2026 09:27:26 +0200
+Message-Id: <DLRMF4TI56I2.3PTB24KN9ORJ3@bootlin.com>
+Subject: Re: [PATCH] drm/bridge: add missing drm/drm_panel.h inclusions
+Cc: "Arnd Bergmann" <arnd@arndb.de>, "Sasha Finkelstein" <k@chaosmail.tech>,
+ "Janne Grunau" <j@jannau.net>, "Maarten Lankhorst"
+ <maarten.lankhorst@linux.intel.com>, "Maxime Ripard" <mripard@kernel.org>,
+ "Thomas Zimmermann" <tzimmermann@suse.de>, "Manikandan Muralidharan"
+ <manikandan.m@microchip.com>, "Dharma Balasubiramani"
+ <dharma.b@microchip.com>, "Nicolas Ferre" <nicolas.ferre@microchip.com>,
+ "Alexandre Belloni" <alexandre.belloni@bootlin.com>, "Claudiu Beznea"
+ <claudiu.beznea@tuxon.dev>, "Jagan Teki" <jagan@amarulasolutions.com>,
+ "Andrzej Hajda" <andrzej.hajda@intel.com>, "Neil Armstrong"
+ <neil.armstrong@linaro.org>, "Robert Foss" <rfoss@kernel.org>, "Laurent
+ Pinchart" <Laurent.pinchart@ideasonboard.com>, "Jonas Karlman"
+ <jonas@kwiboo.se>, "Jernej Skrabec" <jernej.skrabec@gmail.com>, "Liu Ying"
+ <victor.liu@nxp.com>, "Frank Li" <Frank.Li@nxp.com>, "Sascha Hauer"
+ <s.hauer@pengutronix.de>, "Pengutronix Kernel Team"
+ <kernel@pengutronix.de>, "Fabio Estevam" <festevam@gmail.com>, "Douglas
+ Anderson" <dianders@chromium.org>, "Philipp Zabel"
+ <p.zabel@pengutronix.de>, "Chun-Kuang Hu" <chunkuang.hu@kernel.org>,
+ "Matthias Brugger" <matthias.bgg@gmail.com>, "AngeloGioacchino Del Regno"
+ <angelogioacchino.delregno@collabora.com>, "Rob Clark"
+ <robin.clark@oss.qualcomm.com>, "Dmitry Baryshkov" <lumag@kernel.org>,
+ "Abhinav Kumar" <abhinav.kumar@linux.dev>, "Jessica Zhang"
+ <jesszhan0024@gmail.com>, "Sean Paul" <sean@poorly.run>, "Marijn Suijten"
+ <marijn.suijten@somainline.org>, "Marek Vasut" <marex@denx.de>, "Stefan
+ Agner" <stefan@agner.ch>, "Orson Zhai" <orsonzhai@gmail.com>, "Baolin Wang"
+ <baolin.wang@linux.alibaba.com>, "Chunyan Zhang" <zhang.lyra@gmail.com>,
+ "Jyri Sarha" <jyri.sarha@iki.fi>, "Tomi Valkeinen"
+ <tomi.valkeinen@ideasonboard.com>, "Icenowy Zheng"
+ <zhengxingda@iscas.ac.cn>, <dri-devel@lists.freedesktop.org>,
+ <asahi@lists.linux.dev>, <linux-kernel@vger.kernel.org>,
+ <linux-arm-kernel@lists.infradead.org>, <imx@lists.linux.dev>,
+ <linux-mediatek@lists.infradead.org>, <linux-arm-msm@vger.kernel.org>,
+ <freedreno@lists.freedesktop.org>
+To: "Arnd Bergmann" <arnd@kernel.org>, "David Airlie" <airlied@gmail.com>,
+ "Simona Vetter" <simona@ffwll.ch>, "Luca Ceresoli"
+ <luca.ceresoli@bootlin.com>
+From: "Luca Ceresoli" <luca.ceresoli@bootlin.com>
+X-Mailer: aerc 0.22.0
+References: <20260928161605.2271412-1-arnd@kernel.org>
+In-Reply-To: <20260928161605.2271412-1-arnd@kernel.org>
+X-Last-TLS-Session-Version: TLSv1.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260928_232527_686411_6C06EAA2 
-X-CRM114-Status: GOOD (  17.68  )
+X-CRM114-CacheID: sfid-20260929_002754_892070_EA6423F8 
+X-CRM114-Status: GOOD (  25.95  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,123 +106,515 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The IPM v59 SPI IP widens the tick delay field in SPI_CMD_REG from
-3 bits (bits 24:22) to 7 bits (bits 28:22), so the field width can no
-longer be hardcoded in mtk_spi_hw_init().
+Hello Arnd,
 
-Add a tick_dly_mask member to struct mtk_spi_compatible and use
-field_prep() with the per-SoC mask instead of the open-coded
-mask-and-shift, then add a mtk_ipm_v59_compat entry carrying the wider
-mask along with a "mediatek,spi-ipm-v59" compatible. Any further changes
-related to IPM v59 can be modified based on this compatible.
+On Mon Sep 28, 2026 at 6:04 PM CEST, Arnd Bergmann wrote:
+> From: Arnd Bergmann <arnd@arndb.de>
+>
+> The devm_drm_of_get_bridge() declaration moved to drm_panel.h, but
+> not all callers include this, which leads to build failures in
+> some configurations:
+>
+> drivers/gpu/drm/imx/lcdc/imx-lcdc.c: In function 'imx_lcdc_probe':
+> drivers/gpu/drm/imx/lcdc/imx-lcdc.c:404:18: error: implicit declaration o=
+f function 'devm_drm_of_get_bridge' [-Wimplicit-function-declaration]
+>   404 |         bridge =3D devm_drm_of_get_bridge(dev, dev->of_node, 0, 0=
+);
+>       |                  ^~~~~~~~~~~~~~~~~~~~~~
+> drivers/gpu/drm/verisilicon/vs_bridge.c: In function 'vs_bridge_init':
+> drivers/gpu/drm/verisilicon/vs_bridge.c:306:16: error: implicit declarati=
+on of function 'devm_drm_of_get_bridge' [-Wimplicit-function-declaration]
+>   306 |         next =3D devm_drm_of_get_bridge(drm_dev->dev, drm_dev->de=
+v->of_node,
+>       |                ^~~~~~~~~~~~~~~~~~~~~~
+>
+> Include the new header in all files that need it.
+>
+> Fixes: aa8a8c7e4641 ("drm/bridge: panel: move all code to drm_panel.c")
+> Signed-off-by: Arnd Bergmann <arnd@arndb.de>
 
-Existing IPM designs keep GENMASK(24, 22) and are functionally
-unchanged.
+Thanks for the very quick reaction to this regression! However I think we
+should fix it differently.
 
-Signed-off-by: Tim Kuo <Tim.Kuo@mediatek.com>
----
-v2: remove unused tickdly offset deadcode
+I had definitely build-tested most if not all these drivers, and also
+runtime tested a few. Now I realized the build failure actually happens
+only in !OF defconfigs which I haven't build-tested (sorry about
+that!). Here's why:
 
- drivers/spi/spi-mt65xx.c | 26 +++++++++++++++++++++-----
- 1 file changed, 21 insertions(+), 5 deletions(-)
+ * the affected drivers (all or most of them) include drm_of.h
+ * drm_of.h does:
+     #if IS_ENABLED(CONFIG_OF) && IS_ENABLED(CONFIG_DRM_PANEL_BRIDGE)
+     #include <linux/of.h>
+     #include <drm/drm_bridge.h>
+     #include <drm/drm_panel.h>
+     #endif
+ * DRM_PANEL_BRIDGE is always set when DRM is set, so not a problem
+ * drivers which don't depend on OF and don't include drm_panel.h now fail
 
-diff --git a/drivers/spi/spi-mt65xx.c b/drivers/spi/spi-mt65xx.c
-index b845a599f7c6..e9ec58ce1e1f 100644
---- a/drivers/spi/spi-mt65xx.c
-+++ b/drivers/spi/spi-mt65xx.c
-@@ -4,6 +4,7 @@
-  * Author: Leilk Liu <leilk.liu@mediatek.com>
-  */
- 
-+#include <linux/bitfield.h>
- #include <linux/clk.h>
- #include <linux/device.h>
- #include <linux/err.h>
-@@ -78,9 +79,9 @@
- #define SPI_CMD_PAUSE_IE		BIT(17)
- #define SPI_CMD_IPM_NONIDLE_MODE	BIT(19)
- #define SPI_CMD_IPM_SPIM_LOOP		BIT(21)
--#define SPI_CMD_IPM_GET_TICKDLY_OFFSET	22
- 
- #define SPI_CMD_IPM_GET_TICKDLY_MASK	GENMASK(24, 22)
-+#define SPI_CMD_IPM_V59_GET_TICKDLY_MASK	GENMASK(28, 22)
- 
- #define PIN_MODE_CFG(x)	((x) / 2)
- 
-@@ -120,6 +121,7 @@
-  * @dma_ext:		DMA address extension supported
-  * @no_need_unprepare:	Don't unprepare the SPI clk during runtime
-  * @ipm_design:		Adjust/extend registers to support IPM design IP features
-+ * @tick_dly_mask:	Tick delay field of SPI_CMD_REG, IPM designs only
-  */
- struct mtk_spi_compatible {
- 	bool need_pad_sel;
-@@ -128,6 +130,7 @@ struct mtk_spi_compatible {
- 	bool dma_ext;
- 	bool no_need_unprepare;
- 	bool ipm_design;
-+	u32 tick_dly_mask;
- };
- 
- /**
-@@ -187,6 +190,15 @@ static const struct mtk_spi_compatible mtk_ipm_compat = {
- 	.enhance_timing = true,
- 	.dma_ext = true,
- 	.ipm_design = true,
-+	.tick_dly_mask = SPI_CMD_IPM_GET_TICKDLY_MASK,
-+};
-+
-+/* Every SoC with IPM v59 or newer shares this */
-+static const struct mtk_spi_compatible mtk_ipm_v59_compat = {
-+	.enhance_timing = true,
-+	.dma_ext = true,
-+	.ipm_design = true,
-+	.tick_dly_mask = SPI_CMD_IPM_V59_GET_TICKDLY_MASK,
- };
- 
- static const struct mtk_spi_compatible mt6765_compat = {
-@@ -226,6 +238,7 @@ static const struct mtk_spi_compatible mt6991_compat = {
- 	.enhance_timing = true,
- 	.dma_ext = true,
- 	.ipm_design = true,
-+	.tick_dly_mask = SPI_CMD_IPM_GET_TICKDLY_MASK,
- };
- 
- /*
-@@ -241,6 +254,9 @@ static const struct of_device_id mtk_spi_of_match[] = {
- 	{ .compatible = "mediatek,spi-ipm",
- 		.data = (void *)&mtk_ipm_compat,
- 	},
-+	{ .compatible = "mediatek,spi-ipm-v59",
-+		.data = (void *)&mtk_ipm_v59_compat,
-+	},
- 	{ .compatible = "mediatek,mt2701-spi",
- 		.data = (void *)&mtk_common_compat,
- 	},
-@@ -366,7 +382,7 @@ static int mtk_spi_hw_init(struct spi_controller *host,
- 			   struct spi_device *spi)
- {
- 	u16 cpha, cpol;
--	u32 reg_val;
-+	u32 reg_val, mask;
- 	struct mtk_chip_config *chip_config = spi->controller_data;
- 	struct mtk_spi *mdata = spi_controller_get_devdata(host);
- 
-@@ -443,10 +459,10 @@ static int mtk_spi_hw_init(struct spi_controller *host,
- 	/* tick delay */
- 	if (mdata->dev_comp->enhance_timing) {
- 		if (mdata->dev_comp->ipm_design) {
-+			mask = mdata->dev_comp->tick_dly_mask;
- 			reg_val = readl(mdata->base + SPI_CMD_REG);
--			reg_val &= ~SPI_CMD_IPM_GET_TICKDLY_MASK;
--			reg_val |= ((chip_config->tick_delay & 0x7)
--				    << SPI_CMD_IPM_GET_TICKDLY_OFFSET);
-+			reg_val &= ~mask;
-+			reg_val |= field_prep(mask, chip_config->tick_delay);
- 			writel(reg_val, mdata->base + SPI_CMD_REG);
- 		} else {
- 			reg_val = readl(mdata->base + SPI_CFG1_REG);
--- 
-2.45.2
+Most of the drivers changed by this patch do 'depend on OF', so they are
+not affected. So the patch could be trimmed significantly. But still I'm
+not in favor of including drm_panel.h in the remaining drivers, because:
 
+ * in the first place most/all of these drivers are now supposed to not use
+   the drm_panel API anymore; thsy should just use the drm_bridge API
+
+ * devm_drm_of_get_bridge() is now a deprecated [0], complicated way of
+   calling of_drm_get_bridge_by_endpoint(), which is rightfully in
+   drm_bridge.h
+   * for this reason Documentation/drm/todo.rst says it must be removed [1]
+   * removal is easy, so I plan to do it in a few weeks globally
+   * after the removal all these #include <drm_panel.h> would have to
+     be removed, but some might easily be forgotten
+
+So I see two option for a better fix:
+
+ * Option 1 -- fix the really affected drivers by switching from the
+   deprecated API to the one they recommended one. Based on quick analysis
+   there are about 6.
+
+ * Option 2 -- a quick surgical fix:
+
+   In drm_of.h:
+
+     #if IS_ENABLED(CONFIG_OF) && IS_ENABLED(CONFIG_DRM_PANEL_BRIDGE)
+      #include <linux/of.h>
+      #include <drm/drm_bridge.h>
+     -#include <drm/drm_panel.h>
+      #endif
+     +#include <drm/drm_panel.h> /* Temporary for *_of_get_bridge() */
+
+   This can easily be tracked and reverted once all
+   devm_drm_of_get_bridge() users are converted to
+   of_drm_get_bridge_by_endpoint().
+
+I'm working right now on option 1, hoping to get a series in a few hours
+from now. I can switch to option 2 in case of unexpected issues with option
+1, or if a fix "really right now" is wanted.
+
+[0] https://lore.kernel.org/lkml/20260916-drm-bridge-every-panel-v3-7-83afb=
+4f1a707@bootlin.com/
+[1] https://lore.kernel.org/lkml/20260916-drm-bridge-every-panel-v3-8-83afb=
+4f1a707@bootlin.com/
+
+Luca
+
+> ---
+>  drivers/gpu/drm/adp/adp_drv.c                    | 1 +
+>  drivers/gpu/drm/atmel-hlcdc/atmel_hlcdc_output.c | 1 +
+>  drivers/gpu/drm/bridge/chipone-icn6211.c         | 1 +
+>  drivers/gpu/drm/bridge/imx/imx-ldb-helper.c      | 1 +
+>  drivers/gpu/drm/bridge/ite-it6263.c              | 1 +
+>  drivers/gpu/drm/bridge/microchip-lvds.c          | 1 +
+>  drivers/gpu/drm/bridge/nwl-dsi.c                 | 1 +
+>  drivers/gpu/drm/bridge/nxp-ptn3460.c             | 1 +
+>  drivers/gpu/drm/bridge/parade-ps8622.c           | 1 +
+>  drivers/gpu/drm/bridge/parade-ps8640.c           | 1 +
+>  drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi.c    | 1 +
+>  drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi2.c   | 1 +
+>  drivers/gpu/drm/bridge/tc358762.c                | 1 +
+>  drivers/gpu/drm/bridge/tc358764.c                | 1 +
+>  drivers/gpu/drm/bridge/tc358775.c                | 1 +
+>  drivers/gpu/drm/bridge/ti-dlpc3433.c             | 1 +
+>  drivers/gpu/drm/bridge/ti-sn65dsi83.c            | 1 +
+>  drivers/gpu/drm/bridge/ti-sn65dsi86.c            | 1 +
+>  drivers/gpu/drm/drm_bridge.c                     | 1 +
+>  drivers/gpu/drm/imx/ipuv3/imx-ldb.c              | 1 +
+>  drivers/gpu/drm/imx/ipuv3/parallel-display.c     | 1 +
+>  drivers/gpu/drm/imx/lcdc/imx-lcdc.c              | 1 +
+>  drivers/gpu/drm/mediatek/mtk_dpi.c               | 1 +
+>  drivers/gpu/drm/msm/disp/mdp4/mdp4_kms.c         | 1 +
+>  drivers/gpu/drm/mxsfb/lcdif_drv.c                | 1 +
+>  drivers/gpu/drm/sprd/sprd_dsi.c                  | 1 +
+>  drivers/gpu/drm/tidss/tidss_oldi.c               | 1 +
+>  drivers/gpu/drm/tilcdc/tilcdc_encoder.c          | 1 +
+>  drivers/gpu/drm/verisilicon/vs_bridge.c          | 1 +
+>  29 files changed, 29 insertions(+)
+>
+> diff --git a/drivers/gpu/drm/adp/adp_drv.c b/drivers/gpu/drm/adp/adp_drv.=
+c
+> index fdf0e6316175..eb67c6fe9c01 100644
+> --- a/drivers/gpu/drm/adp/adp_drv.c
+> +++ b/drivers/gpu/drm/adp/adp_drv.c
+> @@ -16,6 +16,7 @@
+>  #include <drm/drm_gem_dma_helper.h>
+>  #include <drm/drm_gem_framebuffer_helper.h>
+>  #include <drm/drm_of.h>
+> +#include <drm/drm_panel.h>
+>  #include <drm/drm_print.h>
+>  #include <drm/drm_probe_helper.h>
+>  #include <drm/drm_vblank.h>
+> diff --git a/drivers/gpu/drm/atmel-hlcdc/atmel_hlcdc_output.c b/drivers/g=
+pu/drm/atmel-hlcdc/atmel_hlcdc_output.c
+> index e8aea905fb10..d16945ebb2f5 100644
+> --- a/drivers/gpu/drm/atmel-hlcdc/atmel_hlcdc_output.c
+> +++ b/drivers/gpu/drm/atmel-hlcdc/atmel_hlcdc_output.c
+> @@ -15,6 +15,7 @@
+>  #include <drm/drm_bridge.h>
+>  #include <drm/drm_encoder.h>
+>  #include <drm/drm_of.h>
+> +#include <drm/drm_panel.h>
+>  #include <drm/drm_print.h>
+>  #include <drm/drm_simple_kms_helper.h>
+>
+> diff --git a/drivers/gpu/drm/bridge/chipone-icn6211.c b/drivers/gpu/drm/b=
+ridge/chipone-icn6211.c
+> index 4ec50fb63aba..fc4a49b2b246 100644
+> --- a/drivers/gpu/drm/bridge/chipone-icn6211.c
+> +++ b/drivers/gpu/drm/bridge/chipone-icn6211.c
+> @@ -6,6 +6,7 @@
+>
+>  #include <drm/drm_atomic_helper.h>
+>  #include <drm/drm_of.h>
+> +#include <drm/drm_panel.h>
+>  #include <drm/drm_print.h>
+>  #include <drm/drm_mipi_dsi.h>
+>
+> diff --git a/drivers/gpu/drm/bridge/imx/imx-ldb-helper.c b/drivers/gpu/dr=
+m/bridge/imx/imx-ldb-helper.c
+> index 6149ba141a38..018fedb0162c 100644
+> --- a/drivers/gpu/drm/bridge/imx/imx-ldb-helper.c
+> +++ b/drivers/gpu/drm/bridge/imx/imx-ldb-helper.c
+> @@ -13,6 +13,7 @@
+>
+>  #include <drm/drm_bridge.h>
+>  #include <drm/drm_of.h>
+> +#include <drm/drm_panel.h>
+>  #include <drm/drm_print.h>
+>
+>  #include "imx-ldb-helper.h"
+> diff --git a/drivers/gpu/drm/bridge/ite-it6263.c b/drivers/gpu/drm/bridge=
+/ite-it6263.c
+> index 21ac8e58b9d2..12a23bb45c84 100644
+> --- a/drivers/gpu/drm/bridge/ite-it6263.c
+> +++ b/drivers/gpu/drm/bridge/ite-it6263.c
+> @@ -26,6 +26,7 @@
+>  #include <drm/drm_crtc.h>
+>  #include <drm/drm_edid.h>
+>  #include <drm/drm_of.h>
+> +#include <drm/drm_panel.h>
+>  #include <drm/drm_probe_helper.h>
+>
+>  /* ---------------------------------------------------------------------=
+--------
+> diff --git a/drivers/gpu/drm/bridge/microchip-lvds.c b/drivers/gpu/drm/br=
+idge/microchip-lvds.c
+> index dd4ffc9f4df3..53291cde0636 100644
+> --- a/drivers/gpu/drm/bridge/microchip-lvds.c
+> +++ b/drivers/gpu/drm/bridge/microchip-lvds.c
+> @@ -24,6 +24,7 @@
+>  #include <drm/drm_atomic_helper.h>
+>  #include <drm/drm_bridge.h>
+>  #include <drm/drm_of.h>
+> +#include <drm/drm_panel.h>
+>  #include <drm/drm_print.h>
+>  #include <drm/drm_probe_helper.h>
+>  #include <drm/drm_simple_kms_helper.h>
+> diff --git a/drivers/gpu/drm/bridge/nwl-dsi.c b/drivers/gpu/drm/bridge/nw=
+l-dsi.c
+> index 09992529f3d8..f7043dcd76cb 100644
+> --- a/drivers/gpu/drm/bridge/nwl-dsi.c
+> +++ b/drivers/gpu/drm/bridge/nwl-dsi.c
+> @@ -27,6 +27,7 @@
+>  #include <drm/drm_bridge.h>
+>  #include <drm/drm_mipi_dsi.h>
+>  #include <drm/drm_of.h>
+> +#include <drm/drm_panel.h>
+>  #include <drm/drm_print.h>
+>
+>  #include <video/mipi_display.h>
+> diff --git a/drivers/gpu/drm/bridge/nxp-ptn3460.c b/drivers/gpu/drm/bridg=
+e/nxp-ptn3460.c
+> index f9eff8bfceb7..489704df6145 100644
+> --- a/drivers/gpu/drm/bridge/nxp-ptn3460.c
+> +++ b/drivers/gpu/drm/bridge/nxp-ptn3460.c
+> @@ -15,6 +15,7 @@
+>  #include <drm/drm_crtc.h>
+>  #include <drm/drm_edid.h>
+>  #include <drm/drm_of.h>
+> +#include <drm/drm_panel.h>
+>  #include <drm/drm_print.h>
+>  #include <drm/drm_probe_helper.h>
+>
+> diff --git a/drivers/gpu/drm/bridge/parade-ps8622.c b/drivers/gpu/drm/bri=
+dge/parade-ps8622.c
+> index 3a2ec482037d..ff24aa647028 100644
+> --- a/drivers/gpu/drm/bridge/parade-ps8622.c
+> +++ b/drivers/gpu/drm/bridge/parade-ps8622.c
+> @@ -19,6 +19,7 @@
+>  #include <drm/drm_bridge.h>
+>  #include <drm/drm_crtc.h>
+>  #include <drm/drm_of.h>
+> +#include <drm/drm_panel.h>
+>  #include <drm/drm_print.h>
+>  #include <drm/drm_probe_helper.h>
+>
+> diff --git a/drivers/gpu/drm/bridge/parade-ps8640.c b/drivers/gpu/drm/bri=
+dge/parade-ps8640.c
+> index 56b48f8feab6..425985f2398d 100644
+> --- a/drivers/gpu/drm/bridge/parade-ps8640.c
+> +++ b/drivers/gpu/drm/bridge/parade-ps8640.c
+> @@ -20,6 +20,7 @@
+>  #include <drm/drm_edid.h>
+>  #include <drm/drm_mipi_dsi.h>
+>  #include <drm/drm_of.h>
+> +#include <drm/drm_panel.h>
+>  #include <drm/drm_print.h>
+>
+>  #define PAGE0_AUXCH_CFG3	0x76
+> diff --git a/drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi.c b/drivers/gpu/=
+drm/bridge/synopsys/dw-mipi-dsi.c
+> index 5dd475fcaacf..11233d2d7385 100644
+> --- a/drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi.c
+> +++ b/drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi.c
+> @@ -30,6 +30,7 @@
+>  #include <drm/drm_mipi_dsi.h>
+>  #include <drm/drm_modes.h>
+>  #include <drm/drm_of.h>
+> +#include <drm/drm_panel.h>
+>  #include <drm/drm_print.h>
+>
+>  #define HWVER_131			0x31333100	/* IP version 1.31 */
+> diff --git a/drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi2.c b/drivers/gpu=
+/drm/bridge/synopsys/dw-mipi-dsi2.c
+> index c0d89dd767ce..5b4f4c823d48 100644
+> --- a/drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi2.c
+> +++ b/drivers/gpu/drm/bridge/synopsys/dw-mipi-dsi2.c
+> @@ -24,6 +24,7 @@
+>  #include <drm/drm_bridge.h>
+>  #include <drm/drm_mipi_dsi.h>
+>  #include <drm/drm_of.h>
+> +#include <drm/drm_panel.h>
+>  #include <drm/drm_print.h>
+>
+>  #define DSI2_PWR_UP			0x000c
+> diff --git a/drivers/gpu/drm/bridge/tc358762.c b/drivers/gpu/drm/bridge/t=
+c358762.c
+> index 76564d5e4f69..c9e5bbc5dcd0 100644
+> --- a/drivers/gpu/drm/bridge/tc358762.c
+> +++ b/drivers/gpu/drm/bridge/tc358762.c
+> @@ -23,6 +23,7 @@
+>  #include <drm/drm_crtc.h>
+>  #include <drm/drm_mipi_dsi.h>
+>  #include <drm/drm_of.h>
+> +#include <drm/drm_panel.h>
+>  #include <drm/drm_print.h>
+>  #include <drm/drm_probe_helper.h>
+>
+> diff --git a/drivers/gpu/drm/bridge/tc358764.c b/drivers/gpu/drm/bridge/t=
+c358764.c
+> index 049215e65988..311de8797402 100644
+> --- a/drivers/gpu/drm/bridge/tc358764.c
+> +++ b/drivers/gpu/drm/bridge/tc358764.c
+> @@ -18,6 +18,7 @@
+>  #include <drm/drm_atomic_helper.h>
+>  #include <drm/drm_mipi_dsi.h>
+>  #include <drm/drm_of.h>
+> +#include <drm/drm_panel.h>
+>  #include <drm/drm_print.h>
+>
+>  #define FLD_MASK(start, end)    (((1 << ((start) - (end) + 1)) - 1) << (=
+end))
+> diff --git a/drivers/gpu/drm/bridge/tc358775.c b/drivers/gpu/drm/bridge/t=
+c358775.c
+> index 203dc738ecef..e7ea47307a50 100644
+> --- a/drivers/gpu/drm/bridge/tc358775.c
+> +++ b/drivers/gpu/drm/bridge/tc358775.c
+> @@ -26,6 +26,7 @@
+>  #include <drm/drm_bridge.h>
+>  #include <drm/drm_mipi_dsi.h>
+>  #include <drm/drm_of.h>
+> +#include <drm/drm_panel.h>
+>  #include <drm/drm_probe_helper.h>
+>
+>  #define FLD_VAL(val, start, end) FIELD_PREP(GENMASK(start, end), val)
+> diff --git a/drivers/gpu/drm/bridge/ti-dlpc3433.c b/drivers/gpu/drm/bridg=
+e/ti-dlpc3433.c
+> index c9f789e30687..21922878e60e 100644
+> --- a/drivers/gpu/drm/bridge/ti-dlpc3433.c
+> +++ b/drivers/gpu/drm/bridge/ti-dlpc3433.c
+> @@ -10,6 +10,7 @@
+>
+>  #include <drm/drm_atomic_helper.h>
+>  #include <drm/drm_of.h>
+> +#include <drm/drm_panel.h>
+>  #include <drm/drm_print.h>
+>  #include <drm/drm_mipi_dsi.h>
+>
+> diff --git a/drivers/gpu/drm/bridge/ti-sn65dsi83.c b/drivers/gpu/drm/brid=
+ge/ti-sn65dsi83.c
+> index eb5b249cc43c..cc6c4c89d468 100644
+> --- a/drivers/gpu/drm/bridge/ti-sn65dsi83.c
+> +++ b/drivers/gpu/drm/bridge/ti-sn65dsi83.c
+> @@ -45,6 +45,7 @@
+>  #include <drm/drm_bridge_helper.h>
+>  #include <drm/drm_mipi_dsi.h>
+>  #include <drm/drm_of.h>
+> +#include <drm/drm_panel.h>
+>  #include <drm/drm_print.h>
+>  #include <drm/drm_probe_helper.h>
+>
+> diff --git a/drivers/gpu/drm/bridge/ti-sn65dsi86.c b/drivers/gpu/drm/brid=
+ge/ti-sn65dsi86.c
+> index 48b83df9aed6..de16afa99b91 100644
+> --- a/drivers/gpu/drm/bridge/ti-sn65dsi86.c
+> +++ b/drivers/gpu/drm/bridge/ti-sn65dsi86.c
+> @@ -32,6 +32,7 @@
+>  #include <drm/drm_edid.h>
+>  #include <drm/drm_mipi_dsi.h>
+>  #include <drm/drm_of.h>
+> +#include <drm/drm_panel.h>
+>  #include <drm/drm_print.h>
+>  #include <drm/drm_probe_helper.h>
+>
+> diff --git a/drivers/gpu/drm/drm_bridge.c b/drivers/gpu/drm/drm_bridge.c
+> index e7f9e6d58927..e50737432071 100644
+> --- a/drivers/gpu/drm/drm_bridge.c
+> +++ b/drivers/gpu/drm/drm_bridge.c
+> @@ -36,6 +36,7 @@
+>  #include <drm/drm_encoder.h>
+>  #include <drm/drm_file.h>
+>  #include <drm/drm_of.h>
+> +#include <drm/drm_panel.h>
+>  #include <drm/drm_print.h>
+>
+>  #include "drm_crtc_internal.h"
+> diff --git a/drivers/gpu/drm/imx/ipuv3/imx-ldb.c b/drivers/gpu/drm/imx/ip=
+uv3/imx-ldb.c
+> index 63d6a1e7c1bd..317db4d9b898 100644
+> --- a/drivers/gpu/drm/imx/ipuv3/imx-ldb.c
+> +++ b/drivers/gpu/drm/imx/ipuv3/imx-ldb.c
+> @@ -25,6 +25,7 @@
+>  #include <drm/drm_bridge_connector.h>
+>  #include <drm/drm_managed.h>
+>  #include <drm/drm_of.h>
+> +#include <drm/drm_panel.h>
+>  #include <drm/drm_print.h>
+>  #include <drm/drm_probe_helper.h>
+>  #include <drm/drm_simple_kms_helper.h>
+> diff --git a/drivers/gpu/drm/imx/ipuv3/parallel-display.c b/drivers/gpu/d=
+rm/imx/ipuv3/parallel-display.c
+> index eb75827394f8..966649bc6dc6 100644
+> --- a/drivers/gpu/drm/imx/ipuv3/parallel-display.c
+> +++ b/drivers/gpu/drm/imx/ipuv3/parallel-display.c
+> @@ -17,6 +17,7 @@
+>  #include <drm/drm_bridge_connector.h>
+>  #include <drm/drm_managed.h>
+>  #include <drm/drm_of.h>
+> +#include <drm/drm_panel.h>
+>  #include <drm/drm_probe_helper.h>
+>  #include <drm/drm_simple_kms_helper.h>
+>  #include <drm/bridge/of-display-mode-bridge.h>
+> diff --git a/drivers/gpu/drm/imx/lcdc/imx-lcdc.c b/drivers/gpu/drm/imx/lc=
+dc/imx-lcdc.c
+> index c67fe80b8115..cac50a002004 100644
+> --- a/drivers/gpu/drm/imx/lcdc/imx-lcdc.c
+> +++ b/drivers/gpu/drm/imx/lcdc/imx-lcdc.c
+> @@ -14,6 +14,7 @@
+>  #include <drm/drm_gem_dma_helper.h>
+>  #include <drm/drm_gem_framebuffer_helper.h>
+>  #include <drm/drm_of.h>
+> +#include <drm/drm_panel.h>
+>  #include <drm/drm_print.h>
+>  #include <drm/drm_probe_helper.h>
+>  #include <drm/drm_simple_kms_helper.h>
+> diff --git a/drivers/gpu/drm/mediatek/mtk_dpi.c b/drivers/gpu/drm/mediate=
+k/mtk_dpi.c
+> index 0e4f430de983..b73d76a40c6c 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_dpi.c
+> +++ b/drivers/gpu/drm/mediatek/mtk_dpi.c
+> @@ -27,6 +27,7 @@
+>  #include <drm/drm_edid.h>
+>  #include <drm/drm_encoder.h>
+>  #include <drm/drm_of.h>
+> +#include <drm/drm_panel.h>
+>
+>  #include "mtk_ddp_comp.h"
+>  #include "mtk_disp_drv.h"
+> diff --git a/drivers/gpu/drm/msm/disp/mdp4/mdp4_kms.c b/drivers/gpu/drm/m=
+sm/disp/mdp4/mdp4_kms.c
+> index 9b1d1982e683..df5fed30718e 100644
+> --- a/drivers/gpu/drm/msm/disp/mdp4/mdp4_kms.c
+> +++ b/drivers/gpu/drm/msm/disp/mdp4/mdp4_kms.c
+> @@ -8,6 +8,7 @@
+>
+>  #include <drm/drm_bridge.h>
+>  #include <drm/drm_bridge_connector.h>
+> +#include <drm/drm_panel.h>
+>  #include <drm/drm_vblank.h>
+>
+>  #include "msm_drv.h"
+> diff --git a/drivers/gpu/drm/mxsfb/lcdif_drv.c b/drivers/gpu/drm/mxsfb/lc=
+dif_drv.c
+> index e2173c4d6fc2..ba14b20cb038 100644
+> --- a/drivers/gpu/drm/mxsfb/lcdif_drv.c
+> +++ b/drivers/gpu/drm/mxsfb/lcdif_drv.c
+> @@ -27,6 +27,7 @@
+>  #include <drm/drm_mode_config.h>
+>  #include <drm/drm_module.h>
+>  #include <drm/drm_of.h>
+> +#include <drm/drm_panel.h>
+>  #include <drm/drm_probe_helper.h>
+>  #include <drm/drm_vblank.h>
+>
+> diff --git a/drivers/gpu/drm/sprd/sprd_dsi.c b/drivers/gpu/drm/sprd/sprd_=
+dsi.c
+> index 23b0e1dc547a..260d1682c8a7 100644
+> --- a/drivers/gpu/drm/sprd/sprd_dsi.c
+> +++ b/drivers/gpu/drm/sprd/sprd_dsi.c
+> @@ -12,6 +12,7 @@
+>  #include <drm/drm_atomic_helper.h>
+>  #include <drm/drm_bridge.h>
+>  #include <drm/drm_of.h>
+> +#include <drm/drm_panel.h>
+>  #include <drm/drm_probe_helper.h>
+>
+>  #include "sprd_drm.h"
+> diff --git a/drivers/gpu/drm/tidss/tidss_oldi.c b/drivers/gpu/drm/tidss/t=
+idss_oldi.c
+> index 5eb749f495d5..7e77b4af36d0 100644
+> --- a/drivers/gpu/drm/tidss/tidss_oldi.c
+> +++ b/drivers/gpu/drm/tidss/tidss_oldi.c
+> @@ -15,6 +15,7 @@
+>  #include <drm/drm_atomic_helper.h>
+>  #include <drm/drm_bridge.h>
+>  #include <drm/drm_of.h>
+> +#include <drm/drm_panel.h>
+>
+>  #include "tidss_dispc.h"
+>  #include "tidss_dispc_regs.h"
+> diff --git a/drivers/gpu/drm/tilcdc/tilcdc_encoder.c b/drivers/gpu/drm/ti=
+lcdc/tilcdc_encoder.c
+> index ac4b5beb2dd5..5fb0e8e1e829 100644
+> --- a/drivers/gpu/drm/tilcdc/tilcdc_encoder.c
+> +++ b/drivers/gpu/drm/tilcdc/tilcdc_encoder.c
+> @@ -10,6 +10,7 @@
+>  #include <drm/drm_bridge.h>
+>  #include <drm/drm_bridge_connector.h>
+>  #include <drm/drm_of.h>
+> +#include <drm/drm_panel.h>
+>  #include <drm/drm_simple_kms_helper.h>
+>
+>  #include "tilcdc_drv.h"
+> diff --git a/drivers/gpu/drm/verisilicon/vs_bridge.c b/drivers/gpu/drm/ve=
+risilicon/vs_bridge.c
+> index dc7c85b07fe3..586f1bd7d7b5 100644
+> --- a/drivers/gpu/drm/verisilicon/vs_bridge.c
+> +++ b/drivers/gpu/drm/verisilicon/vs_bridge.c
+> @@ -15,6 +15,7 @@
+>  #include <drm/drm_connector.h>
+>  #include <drm/drm_encoder.h>
+>  #include <drm/drm_of.h>
+> +#include <drm/drm_panel.h>
+>  #include <drm/drm_print.h>
+>  #include <drm/drm_simple_kms_helper.h>
+>
+
+
+
+
+
+--
+Luca Ceresoli, Bootlin
+Embedded Linux and Kernel engineering
+https://bootlin.com
 
