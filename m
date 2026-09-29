@@ -4,85 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 119F2CA5FAC
-	for <linux-mediatek@archiver.kernel.org>; Tue, 29 Sep 2026 20:44:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7620DCA5FA5
+	for <linux-mediatek@archiver.kernel.org>; Tue, 29 Sep 2026 21:01:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:Content-Type:
 	References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=FiwtqZphJSml0R4L9uG6YdUip66h9uGgkQ6b6jASY4c=; b=xy+EXpswUG3BK2LYFeWjGdiLrA
-	mXRmZZORpfdq9JCxYRPfsd7Z4cNzioAlPAGK4CuVuWj8fDEJLTgG50M96oUvIajizz18RQHXbD/Me
-	52m4FI33fWj8ab4Yft4+cVSdjVRs/Gae5tJ9nk2q/+fw09tuCBDImcg2Jm2Axv3suBdV4ALBhnoU8
-	BMmwB4UMSRLeeIgS0sM6sWnPdvLHIy+ZN2z6BK98yrxAu/Ea7mdWiFi01HVbDYR46IQ8gGOPfjICx
-	WTf3Z5z2zDWRUjNovVg9OzwLrZEJygs2Xrq8t+zcFI1mf9W96hXcTB2JF0YxjEBdr8JEWqQR2nTUU
-	MCEUBagQ==;
+	bh=6WFXVZDT0yfhcBTuFPg21aJm8jhlblvZ+mRIY0J9dPY=; b=RBfKnmHGM5bC3jlzsg+0BmROul
+	UpF1/1Rq7tsBz4Y8dHS2pFxZ/DDi41eDv0JKQPYQTnZSlozQ+otfB3jmsDSO/AYlR3L7ILVkyH8mV
+	/REEoNdfNJu3BbIyqHkJZ/cP6PVgrSa2TSElVuloDbrrQfLvCNfT7h+gUGtA+js1u2HmCY+ErTNBE
+	0GvucnrlO0W5as0NDzxK0uQ38AlCXCObzjqpvmen8JEdj6xIcVMJ30m/PwOT/4wkRU75RkuB8GkJn
+	jlAxYbySVK3kMJcUG7YppDdAekO63GV1nvyxiqrVDRfzTMEYGKLL9GkW+Gb91LOxaiRI+fb4nP1W/
+	AeaKTipA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xBegf-00000004WUP-3sM8;
-	Tue, 29 Sep 2026 20:44:29 +0000
-Received: from mail-qk2-x11.google.com ([2607:f8b0:4864:34::11])
+	id 1xBewg-00000004YjO-08uK;
+	Tue, 29 Sep 2026 21:01:02 +0000
+Received: from mail-vs2-x2a.google.com ([2a00:1450:4864:3a::2a])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xBegc-00000004WTI-45Wa
+	id 1xBewd-00000004Yhe-3bE9
 	for linux-mediatek@lists.infradead.org;
-	Tue, 29 Sep 2026 20:44:28 +0000
-Received: by mail-qk2-x11.google.com with SMTP id d75a77b69052e-530fa0716f6so52536591cf.3
-        for <linux-mediatek@lists.infradead.org>; Tue, 29 Sep 2026 13:44:26 -0700 (PDT)
+	Tue, 29 Sep 2026 21:01:01 +0000
+Received: by mail-vs2-x2a.google.com with SMTP id 71dfb90a1353d-5cdb9cb7feeso1573856e0c.2
+        for <linux-mediatek@lists.infradead.org>; Tue, 29 Sep 2026 14:00:59 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=ndufresne-ca.20251104.gappssmtp.com; s=20251104; t=1790714665; x=1791319465; darn=lists.infradead.org;
+        d=ndufresne-ca.20251104.gappssmtp.com; s=20251104; t=1790715658; x=1791320458; darn=lists.infradead.org;
         h=mime-version:user-agent:content-type:autocrypt:references
          :in-reply-to:date:cc:to:from:subject:message-id:from:to:cc:subject
          :date:message-id:reply-to:content-type;
-        bh=FiwtqZphJSml0R4L9uG6YdUip66h9uGgkQ6b6jASY4c=;
-        b=mrG8xRJwaxUZstZ5ZoxJ5qRC9o7cnECWvO/lT6Cx0tK8b6pqFNL6xFtfoH0prvSb7Z
-         O6ajqVrg+vWsSEwLQO7/A1Ed3BdQtpu2MRX4xAXQdENXBsQmA/tBIGDRpAy9NKO5eFuk
-         JOmv+Pa/pqCvJtZ8xplyTOf+3XuX+BZryUiA93Gj5xRgbYT2M5ZG1DuUZ4QhAPnmdkvP
-         Jh5dWvYed/YokzR1L3FAcBJzkyE2ZbuZ9RSZFb0aZS+zpSSgceqIZnidkjpmx6vsi9TM
-         e8JeXFApjhQh6A/SIr5uZCR56NLcMjINUQDtSzKYvqGqFcxujXQ5inhoCEbJg6N7m4fd
-         DN+A==
+        bh=6WFXVZDT0yfhcBTuFPg21aJm8jhlblvZ+mRIY0J9dPY=;
+        b=zLvXnnYs+0SLrTirRysnKctcWs/zX3mGoij3ZrEd05uZPCJPFCR/VKycQLhdjuNMq2
+         tDHLJBhpzu4W8YnVfnsRIvC8eYvJRw8sK3Eyx+K73F2r/E1CHzF9h95rZB+cskX9583J
+         kB+TyDr0T0RzzjLA7ujmvxz+8OIbGaS2gON+YYCd+1AOYZHims1HKPaTPBMqqzH8h3UQ
+         XeBMid417qhL+ueNMZnZJGzBZxfwas8AvfyGhMYWFU6/DYH/MD90hrKAMr2G6oGUicZb
+         kbWOjNeaHm6cXbE6fM7+G80tILhEK6J+7/jKWBOyyDXpt3R37sV3M2tVDkyBHjpAqPy3
+         bv5w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1790714665; x=1791319465;
+        d=1e100.net; s=20260707; t=1790715658; x=1791320458;
         h=mime-version:user-agent:content-type:autocrypt:references
          :in-reply-to:date:cc:to:from:subject:message-id:x-gm-gg
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
          :content-type;
-        bh=FiwtqZphJSml0R4L9uG6YdUip66h9uGgkQ6b6jASY4c=;
-        b=oP7YUXGtkNvlA/jzNk/8swJn56OrdFRl4ftcLGbo9CgqA1P2WIbbbruMF/8c9uU63o
-         J1xT/N+Lf/yonjDdLzoz78bI4QM9AJ9PD617CcbiOfOLOlcv1EsfPFQIaWfYJW4QMUdI
-         aB0Rjb4u2oMRLlSJ53N1vmjpflE0DSCJ/6N7saS8fkgof0eEJCZV/NYUSRQjQxQ63o3T
-         B8U7Sd5xC8C9kweE+hGg1XWUaWfBomMaZNkBbh3df0rQNSICkTVPPd5hXi03NmcJ2i5r
-         zhsWaadeOsF/4Sm1mNQiFUKASpIc8W+SP6lAWAE4DRJLytTgONkP4RcIIGUkfFM0DZgK
-         S/oA==
-X-Forwarded-Encrypted: i=1; AKwUvByDArWMSMPVctR2Z4msYnJ0NdjJZfdEyhHLr+3loKoAnv3A9zxhDQJTkIeGG61mrnCGf/FyYlWnYBK/O7jvTQ==@lists.infradead.org
-X-Gm-Message-State: AFuF++lqkxONSIsQgAuimeFqVBe/MMx/PZM4wK2m0COFRNN3P2zP9Wl4
-	ao1gTuWuShAyHJTSqBXwlcbFqsuADXnzNUHzVs085xabD1nVGo1zdXQcBaSnG5RyhXg=
-X-Gm-Gg: AYBFou0Oauxe4FA+2eJpZ2cS2c0nDCpMQSO4zik4+QJ1smMUMLf4QGpZ+v3F3lRzUOl
-	7hQm7yENvkgbhtwKUs6lGMXLoOPnLA3s58SE/Qviv7tCVZPRPOzLKTHrZyQ5fLtrDyl7nJn4uHa
-	r0SdVhUERL+HBzIEaOIn5DuEeeRJ4PC6npceb1Rg0VnZshJR5gkWCf05sRapNkjAd0BXpHstS3j
-	TMQ4yIxJ2AfOQDanIuUP814NS84HKqvWhJPDV9Hcg4jCpu4h1IjzQDOFChssbl4keilR0TeOmGM
-	ulpmWz+cIeP6NIv5iGa3+7yeG7mPvLwz9JHK2MdQfIoQU7Hg7VO+qA8zOcTIzlua4CVHQ9rdW7i
-	ude3j2lawwO3s7diTSa4sZvNnbEFEjxQEeWcu6pOPfPaCMB7GI9uRBnikN3TPXm059XCFVnB0ZB
-	a2hKqgmVGUhlULERtFNlN/IGEnAWExN/09rZvHjpInBEoouC4GEBBU0xv/T/Y3H8ijPw47inDXq
-	gvrVVrNU80CGl3abOMDFtLj
-X-Received: by 2002:a05:622a:229d:b0:530:e429:ea81 with SMTP id d75a77b69052e-5336a4fedd4mr9984921cf.11.1790714665420;
-        Tue, 29 Sep 2026 13:44:25 -0700 (PDT)
+        bh=6WFXVZDT0yfhcBTuFPg21aJm8jhlblvZ+mRIY0J9dPY=;
+        b=ZTSuojkERHXbAMmiagD4WNLLz7xySjs+3ZpL4pD2sSgbrBH4eF/xqTplFu2M65hd6T
+         MGXY9lGQBcCvx4fsvofphq3UNn6KsYxcPXH+KIclqvX9f0Va1IeH6gV/6JiJP20P4Ea7
+         0ik092XOj340GjtonpW9bKlN+3udHwD25oT56lf4LmYvK2MjgWqys4SmKXClnlcUOAe5
+         o9fZnU6tnTZpVOFWu89k3zvJuD37Mx40cVghmt1njv9EJVQlQdwu3IoG3hpAyasiqUpl
+         WLo821GKsmHxfjxH5D+Wl0kLegUeNdOYAmaGtAaFi+YLJbOeDxz6VNcO6UtzZp8FOpA5
+         tpwA==
+X-Forwarded-Encrypted: i=1; AKwUvBxwl595dLWwxfvhpflNN+EUHmZmZ2OvkQt0g+jVOnnJU29KshbzstA96pAEEx3j1C2sSZLhR35cUWCjou/j6A==@lists.infradead.org
+X-Gm-Message-State: AFq9FYLEavL7CdIun5WydlTbLrDW2Vp/XDP8Qpdgb6cxaUkbuAVnU5W5
+	pztmHmerCDZs/6WdgZj3dDzCZLUbRnZzCgxXBsGpuBX9KJxvfoUVb9xq0929usoK/Pw=
+X-Gm-Gg: AYBFou3TbL0gBaHa0ZDUwGo75nRNj5dUaDr2dYeYQR8ozlDSFO9oSKvoIW7MilMfMIc
+	2brqmZDYD86urj2P33g+zZ+ETxRn26ICQqcLt66P91bVfPrklK6cK5lptOcERMTn3JvUkdshAlX
+	LIK3clMNBcWSE8z+64zjijj5qNOSu3jteQhmAArkoSnSqYYuv+XIXgWwIQlZQnJQ3UTZB8HGZg7
+	JdZqIeqbncX3gw8/pU1B5P0qTxwletLIH/7UPEdXTOf6r87MHuIODMtAKYk6VrKkz+5P9jCGiiC
+	8bHj5smf6LMuTbu/ly/w8tS36qiiXUE7vrSH/Aqntex38cLoWJOkXsT567Ldhkf+719HvTUpgV1
+	qwF1kGycrDJgmj9Zisc6GTcrCj0DKpXDPouruC1q6CtGWXDJPtXwlXTfpOzckWi82S2VQYLgKcG
+	dAb7TQPlWsM/gdXdyEd/z+qhFwVlQ227s7VSqgwFe0hY63KgDKsbS7+J772xfVAd/0yXq7143ms
+	FAuzOHqaBLu2w==
+X-Received: by 2002:a05:6102:2d02:b0:7aa:1b48:ca3f with SMTP id ada2fe7eead31-7bc39333beamr267682137.3.1790715658269;
+        Tue, 29 Sep 2026 14:00:58 -0700 (PDT)
 Received: from ?IPv6:2606:6d00:11:34bd::5ac? ([2606:6d00:11:34bd::5ac])
-        by smtp.gmail.com with ESMTPSA id 6a1803df08f44-917987e1439sm3860516d6.21.2026.09.29.13.44.24
+        by smtp.gmail.com with ESMTPSA id 71dfb90a1353d-5d4e778bf23sm1128224e0c.3.2026.09.29.14.00.54
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 29 Sep 2026 13:44:24 -0700 (PDT)
-Message-ID: <b2430afd1f224f12d5b74349399892ad774874c3.camel@ndufresne.ca>
-Subject: Re: [PATCH] media: platform: mtk-mdp3: Fix device reference leak in
- mdp_comp_init()
+        Tue, 29 Sep 2026 14:00:55 -0700 (PDT)
+Message-ID: <2e3c6c4eb72d79ef8b995d6ae62a6424685ec281.camel@ndufresne.ca>
+Subject: Re: [PATCH] media: mtk-jpeg: Fix runtime PM leak in
+ mtk_jpegdec_worker()
 From: Nicolas Dufresne <nicolas@ndufresne.ca>
 To: Wentao Liang <vulab@iscas.ac.cn>, angelogioacchino.delregno@collabora.com
-Cc: hverkuil@kernel.org, linux-arm-kernel@lists.infradead.org, 
+Cc: bin.liu@mediatek.com, hverkuil@kernel.org, irui.wang@mediatek.com, 
+	kyrie.wu@mediatek.com, linux-arm-kernel@lists.infradead.org, 
 	linux-kernel@vger.kernel.org, linux-media@vger.kernel.org, 
 	linux-mediatek@lists.infradead.org, matthias.bgg@gmail.com,
- mchehab@kernel.org, 	moudy.ho@mediatek.com, stable@vger.kernel.org
-Date: Tue, 29 Sep 2026 16:44:22 -0400
-In-Reply-To: <20260917100721.2146044-1-vulab@iscas.ac.cn>
-References: <20260917100721.2146044-1-vulab@iscas.ac.cn>
+ mchehab@kernel.org, 	stable@vger.kernel.org
+Date: Tue, 29 Sep 2026 17:00:54 -0400
+In-Reply-To: <20260917100247.2145872-1-vulab@iscas.ac.cn>
+References: <20260917100247.2145872-1-vulab@iscas.ac.cn>
 Autocrypt: addr=nicolas@ndufresne.ca; prefer-encrypt=mutual;
  keydata=mDMEaCN2ixYJKwYBBAHaRw8BAQdAM0EHepTful3JOIzcPv6ekHOenE1u0vDG1gdHFrChD
  /e0J05pY29sYXMgRHVmcmVzbmUgPG5pY29sYXNAbmR1ZnJlc25lLmNhPoicBBMWCgBEAhsDBQsJCA
@@ -97,12 +98,12 @@ Autocrypt: addr=nicolas@ndufresne.ca; prefer-encrypt=mutual;
  ECHgcCF4AACgkQ2UGUUSlgcvRObgD/YnQjfi4+L8f4fI7p1pPMTwRTcaRdy6aqkKEmKsCArzQBAK8
  bRLv9QjuqsE6oQZra/RB4widZPvphs78H0P6NmpIJ
 Content-Type: multipart/signed; micalg="pgp-sha512";
-	protocol="application/pgp-signature"; boundary="=-fdXlNmHJpaX9m6SU1Zhk"
+	protocol="application/pgp-signature"; boundary="=-LdOO8KXcg0f7Ano5ixCQ"
 User-Agent: Evolution 3.60.2 (3.60.2-1.fc44) 
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260929_134427_053914_DAD66039 
-X-CRM114-Status: GOOD (  19.32  )
+X-CRM114-CacheID: sfid-20260929_140100_169862_C8185DC1 
+X-CRM114-Status: GOOD (  15.49  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -118,94 +119,58 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 
---=-fdXlNmHJpaX9m6SU1Zhk
+--=-LdOO8KXcg0f7Ano5ixCQ
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 
-Le jeudi 17 septembre 2026 =C3=A0 10:07 +0000, Wentao Liang a =C3=A9crit=C2=
+Le jeudi 17 septembre 2026 =C3=A0 10:02 +0000, Wentao Liang a =C3=A9crit=C2=
 =A0:
-> mdp_comp_init() takes a reference to the component platform device
-> with of_find_device_by_node(), but the error path taken when the
-> clock array cannot be allocated and the one taken for a component
-> without a GCE EOF event return without dropping it.  The caller
-> frees the mdp_comp in those cases, so the reference is leaked.
+> pm_runtime_get_sync() leaves the device's runtime PM usage count
+> incremented even when it fails.  mtk_jpegdec_worker() jumps to
+> dec_end on that failure, which does not call pm_runtime_put(), so
+> the reference taken by the failed resume is leaked.
 >=20
-> Release the reference on both error paths.
+> Use pm_runtime_resume_and_get() instead, which drops the reference
+> again when resuming the device fails.
 >=20
-> Fixes: c4320f9721fd ("media: platform: mtk-mdp3: dynamically allocate com=
-ponent clocks")
+> Fixes: dedc21500334 ("media: mtk-jpegdec: add jpeg decode worker interfac=
+e")
 > Cc: stable@vger.kernel.org
 > Signed-off-by: Wentao Liang <vulab@iscas.ac.cn>
 
 Reviewed-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
 
 > ---
->  .../media/platform/mediatek/mdp3/mtk-mdp3-comp.c   | 14 +++++++++++---
->  1 file changed, 11 insertions(+), 3 deletions(-)
+>  drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
 >=20
-> diff --git a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-comp.c b/drive=
-rs/media/platform/mediatek/mdp3/mtk-mdp3-comp.c
-> index 7fcb2fbdd64e..acb2758a7b42 100644
-> --- a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-comp.c
-> +++ b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-comp.c
-> @@ -1730,6 +1730,7 @@ static int mdp_comp_init(struct mdp_dev *mdp, struc=
-t device_node *node,
->  	struct device *dev =3D &mdp->pdev->dev;
->  	struct platform_device *pdev_c;
->  	int clk_ofst;
-> +	int ret;
->  	int i;
->  	s32 event;
+> diff --git a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c b/drive=
+rs/media/platform/mediatek/jpeg/mtk_jpeg_core.c
+> index 8c684756d5fc..ed1d5858c942 100644
+> --- a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
+> +++ b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
+> @@ -1732,7 +1732,7 @@ static void mtk_jpegdec_worker(struct work_struct *=
+work)
+>  	jpeg_dst_buf->frame_num =3D ctx->total_frame_num;
 > =20
-> @@ -1756,8 +1757,10 @@ static int mdp_comp_init(struct mdp_dev *mdp, stru=
-ct device_node *node,
->  	comp->clk_num =3D mdp->mdp_data->comp_data[id].info.clk_num;
->  	comp->clks =3D devm_kzalloc(dev, sizeof(struct clk *) * comp->clk_num,
->  				  GFP_KERNEL);
-> -	if (!comp->clks)
-> -		return -ENOMEM;
-> +	if (!comp->clks) {
-> +		ret =3D -ENOMEM;
-> +		goto err_put_device;
-> +	}
-> =20
->  	clk_ofst =3D mdp->mdp_data->comp_data[id].info.clk_ofst;
-> =20
-> @@ -1782,7 +1785,8 @@ static int mdp_comp_init(struct mdp_dev *mdp, struc=
-t device_node *node,
->  		if (of_property_read_u32_index(node, "mediatek,gce-events",
->  					       MDP_GCE_EVENT_EOF, &event)) {
->  			dev_err(dev, "Component id %d has no EOF\n", id);
-> -			return -EINVAL;
-> +			ret =3D -EINVAL;
-> +			goto err_put_device;
->  		}
->  	} else {
->  		event =3D MDP_GCE_NO_EVENT;
-> @@ -1791,6 +1795,10 @@ static int mdp_comp_init(struct mdp_dev *mdp, stru=
-ct device_node *node,
->  	comp->gce_event[MDP_GCE_EVENT_EOF] =3D event;
-> =20
->  	return 0;
-> +
-> +err_put_device:
-> +	put_device(&pdev_c->dev);
-> +	return ret;
->  }
-> =20
->  static void mdp_comp_deinit(struct mdp_comp *comp)
+>  	mtk_jpegdec_set_hw_param(ctx, hw_id, src_buf, dst_buf);
+> -	ret =3D pm_runtime_get_sync(comp_jpeg[hw_id]->dev);
+> +	ret =3D pm_runtime_resume_and_get(comp_jpeg[hw_id]->dev);
+>  	if (ret < 0) {
+>  		dev_err(jpeg->dev, "%s : %d, pm_runtime_get_sync fail !!!\n",
+>  			__func__, __LINE__);
 
---=-fdXlNmHJpaX9m6SU1Zhk
+--=-LdOO8KXcg0f7Ano5ixCQ
 Content-Type: application/pgp-signature; name="signature.asc"
 Content-Description: This is a digitally signed message part
 
 -----BEGIN PGP SIGNATURE-----
 
-iHUEABYKAB0WIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCarwjJgAKCRDZQZRRKWBy
-9AzTAP9evVQ/rK1EdzWFKFNoZe85mZQymiN/AnmFnzuCNe0UMAEA2miyExzscQrC
-QApgG4LckhviwoffkCjd3tbgtsQ2eAU=
-=kfwh
+iHUEABYKAB0WIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCarwnBgAKCRDZQZRRKWBy
+9JxRAQCaqpvPcMxkU8M6x7Jg8iRFYx/F7tQzZ4yTAJ0dpC4WDAEAkMVIPHkUqYox
+NeqJq4h74JpK7UjBvsNaj7x4tjst7QM=
+=Fvo3
 -----END PGP SIGNATURE-----
 
---=-fdXlNmHJpaX9m6SU1Zhk--
+--=-LdOO8KXcg0f7Ano5ixCQ--
 
