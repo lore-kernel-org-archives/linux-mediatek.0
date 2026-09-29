@@ -4,116 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 10347CA5FA1
-	for <linux-mediatek@archiver.kernel.org>; Tue, 29 Sep 2026 06:14:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 52D30CA5FA1
+	for <linux-mediatek@archiver.kernel.org>; Tue, 29 Sep 2026 06:25:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=o1ihgfA2Xx/YQxYVKmUYf4V9Nz+OYG4xbe0ZFsfUP2g=; b=Dn/aQ6kNkDkgQ0EpS0QYyDsQCi
-	LBqYk0yMsjfdqJlOCSbyYXNSC+DBbStMhnLypKHNOf6v0WInB4rzRW+SpKSPTylD4VL0j8LAfe8t+
-	16KMI+PBK4iEjxkt780tFQtkBrhf4Yko29U7ODU5/Yw/ZWj6yU9dVpUaeqbEHcMgqd3Y61PZ4J2WM
-	TuJ/6Fg76lFwa2os/XnjlOkK2RoOCk2ypXpH9/+wAJLAYpEnDNX7wrjn07Hgpj9gTKtoKoSoMN6NQ
-	l9pbpISTcO68+bGdJQfZFBTMMGbG+iAknUcHKFc7gaSsv8KmEDquF4fzrY/t2iK1BUvvBzv3cL3Yv
-	9duW6hXg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=4BBaoZ4uoulOab2Cr6EQ3iDBn+vLxKq+FxX0x0G4yZE=; b=hLJcdaBhoLfeLL93bzuZq8Ebfr
+	WrBtkBqaElV3V3PyO6kKBdS1GVSVQsnpiV54WWhBSyOpOoAZ62qvD6fkswP2KgnjL1fk/vasE4RqZ
+	JxpgknnJpgDC1pZVEXX7OoeHoaPUngspGRkFGij6Vk84pufv/JhnDJeNLZ7Rhma1f0P4ICTxxdUWI
+	Py4VbsRNGuncSTgb28ZlFmCzjnF4CS3Z7dVjftoPW7X004sS+ekGIm+zJWrdvhgUfOE+V8/O8hltC
+	60ZjoUDE4rSU8tbS14n3hKqzM1neUgXZopLhGNQiXtEX+e8bb9eAeH7ilXd7nYESsBN1nRUqEVRQ/
+	TvjbU1vg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xBR6b-00000002Qiy-0ger;
-	Tue, 29 Sep 2026 06:14:21 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1xBRHM-00000002Ri9-3mAl;
+	Tue, 29 Sep 2026 06:25:28 +0000
+Received: from [216.200.240.185] (helo=mailgw02.mediatek.com)
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xBR6Z-00000002QiT-1oL5
-	for linux-mediatek@bombadil.infradead.org;
-	Tue, 29 Sep 2026 06:14:19 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
-	:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
-	Content-Type:Content-ID:Content-Description;
-	bh=o1ihgfA2Xx/YQxYVKmUYf4V9Nz+OYG4xbe0ZFsfUP2g=; b=Y0O++ZpJ2RpR9YNFhf+K0IjujU
-	5rz9Juq8EDSKEPrkIbhqkebkWlXF8C8+5IsZ1571l1sun4/z3sO8av+G2L1TxbQcGsu0KEjOP5jnj
-	HT5sHqxNbTZUx0vCY4PmrOb/ERNS9RwAiKF4OREXQATUtAxuqYmEGgIgnIWupR/0727YW5NUOSNiK
-	GqnK12KdPlaJY+b0vuuXoa0S+d79/7UhcB4NGxLUkd43fNuA1zMoe0kkVZtOPXM82G1INXhjDxI+V
-	mSMS7Gq3IAWPgF4xW625B+ZnNotMqn1z6JVLZkbq0olcDvZ1jbKEZwJopZryyk/tTT2CKSEvU8l8j
-	z7Kpo+1Q==;
-Received: from mail-pj2-x2b.google.com ([2607:f8b0:4864:39::2b])
-	by desiato.infradead.org with esmtps (Exim 4.99.2 #2 (Red Hat Linux))
-	id 1xBR4q-00000002EZc-1ZVq
-	for linux-mediatek@lists.infradead.org;
-	Tue, 29 Sep 2026 06:14:15 +0000
-Received: by mail-pj2-x2b.google.com with SMTP id 98e67ed59e1d1-3a47d6146d1so768304a91.0
-        for <linux-mediatek@lists.infradead.org>; Mon, 28 Sep 2026 23:12:31 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1790662350; x=1791267150; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to:content-type;
-        bh=o1ihgfA2Xx/YQxYVKmUYf4V9Nz+OYG4xbe0ZFsfUP2g=;
-        b=ezIv2HjcImQkDvBGfYI67UyCa8EpFjpKnFBPWYjP9VjWKcgEq8abivyPta0XHp1vg3
-         MH56mBlbYit44f7L3VWLSySVXNkQnsY9Ga6kNBfUNNbjGNQmLndzfc7J/R/fURw78nTX
-         0+ICTmFJm0Q1sCPNKFQPeYRIPulfxKFmE8pKzI3bEycsIlJUJ8gTPVaTg/23gVOyg56K
-         PhhlqtETks6exBWZsDszcdTI1QIMIvNJoAFYrXs+KlI6OMPATqkbXDR4DJ7vffQ9hEGS
-         STnTmFBww3v0aKEi8njFsQhcfcP1p5i5miToA55/CDLoi/KEb8T7gnyT4TMM+jvhjBkG
-         kcvw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1790662350; x=1791267150;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
-         :to:cc:subject:date:message-id:reply-to:content-type;
-        bh=o1ihgfA2Xx/YQxYVKmUYf4V9Nz+OYG4xbe0ZFsfUP2g=;
-        b=wC+9aRnL9TGtDMyIOnoonmeXl7zMSmiYxWO+aFSegj7FJp1gkPsocf7ovdm0s6YL84
-         BRGN/h1yNDDsgbht+nEDyPZkEIcEIbeiwL8FPuJ70F/IHsSl/u5SHzaDEPWpajl8qZCs
-         bAqr72zZmSwhxGMhfelnFlgBqfRn6FKLxYIhTP3ABwZpTfyAOU9mKYaY1v+h9XO9/wZz
-         bdpJlIEnA2pU/cHw2BOnCk7/Tb/uojKxAnsMm/dZeAFHyxCYC/HawJqPSiSBIJ0uXm14
-         xdHVnwYyqZymWhRr9Jih7ARsmkjASk3b3Bjj+tE4NGIWJ6BjqwQgmRZxkcY6jpIaSE4/
-         Bnow==
-X-Forwarded-Encrypted: i=1; AKwUvBzFfy2DznoaTCazTbMevW5AZ0pftnvcy/5sGxevNq2LXg5GmArDXZxiJ8qBThPvWpNYLAP/OdMVJVeLoJDPXQ==@lists.infradead.org
-X-Gm-Message-State: AFq9FYI4kiU6GEoBBXX/xLboOio8pux+2gFBkkXr5ZHJNl/X2Akq3Ffp
-	xboHhOA0rhEmnJzeR6bVmn6JN4beIXlTBnDTSMsZbwQuO3MpO3uasUnF
-X-Gm-Gg: AYBFou3ezkG68n7+Uyr3gFd02q3eyMtjDLm5b0RjWN0E+JpBotTjPbWcxbIqXp3E+fa
-	MckKwxCLSJAiXBp+bHQSsT7SeRjbWID/avz7urEyZ2SZYXfsovbvNN2e7JcjfI44a/WZY7HNhG+
-	dCpizWJhMbP2V+EN4E0YQEiht/93ijOKTUD4c+OHCeKaIbSH/KO5rXBG8zt43WhydnWXWK4nnIj
-	5AkZq9AO6igrQkuczkRuIMCtLPDmmLb9O4UZRDzt5gYYW62PbEVhyqm7nwHA2HsOxiGv+0xdPB6
-	ZfUjUtC5ft27IH8Ps+hX9MlHN66dcvEg71+KPfsAmzj/gIUahGmAR8Qz+azvO6W3E5xl2VkjinE
-	DDVlQyr8IdsBoHv6u9QOVSdqvsXTUNrBM2sdjjCmVjgSam6Jl3DMIlfo8I4nM13EfdTonP9OlMc
-	rPUOVRplf0gYHFfvEyg/Gz5iS4ZvIPhHAI3p2dgJczDTYrByqfiGnM6bfdq2rGxuwdZmdar1tTr
-	4g4JbpnUpIjG+Lp3ne7jDO7EeuA0DWfxRyf7qVqa3FNf6qp7NUUJ3ow/qJxqiWXSyDujWd0vThf
-	9g8oaMrJt0N6hw==
-X-Received: by 2002:a17:90b:3c0d:b0:3a4:6ff5:778 with SMTP id 98e67ed59e1d1-3a46ff510efmr2033501a91.44.1790662349906;
-        Mon, 28 Sep 2026 23:12:29 -0700 (PDT)
-Received: from phuc-desktop.. ([183.91.15.56])
-        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-3a498726d63sm3280965a91.17.2026.09.28.23.12.26
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 28 Sep 2026 23:12:29 -0700 (PDT)
-From: phucduc.bui@gmail.com
-To: Mark Brown <broonie@kernel.org>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Darren Ye <darren.ye@mediatek.com>
-Cc: Liam Girdwood <lgirdwood@gmail.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Jaroslav Kysela <perex@perex.cz>,
-	Takashi Iwai <tiwai@suse.com>,
-	cassiogabrielcontato@gmail.com,
-	Mukesh Ojha <mukesh.ojha@oss.qualcomm.com>,
-	Liviu Dudau <liviu.dudau@arm.com>,
-	Cyril Chao <Cyril.Chao@mediatek.com>,
-	linux-sound@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	bui duc phuc <phucduc.bui@gmail.com>
-Subject: [PATCH 07/10] ASoC: mediatek: mt8196: fix runtime resume error handling
-Date: Tue, 29 Sep 2026 13:11:18 +0700
-Message-ID: <20260929061121.124001-8-phucduc.bui@gmail.com>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20260929061121.124001-1-phucduc.bui@gmail.com>
-References: <20260929061121.124001-1-phucduc.bui@gmail.com>
+	id 1xBRHK-00000002RhO-2Rct;
+	Tue, 29 Sep 2026 06:25:27 +0000
+X-UUID: 8c37f1ccbbce11f1acbe4559397dec65-20260928
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=4BBaoZ4uoulOab2Cr6EQ3iDBn+vLxKq+FxX0x0G4yZE=;
+	b=u+sDz2lItx93DHdhddJWmflhLVux1w7e0VWYl38mvTjrLTqlQWdiFFFkU9yI09EjIpPtAD1H+dGl12lyr4WxFoD5dsnla3E7uxBws8/do5eDjm7Q6BbYsD3mYmOWpkWGvj+8YroZD0rJWU83mfWOiLE+VRccqVaypUCxn6I3tuQ=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.3.20,REQID:75ed19c0-1ef5-4ec5-a0b7-156e36b18a4c,IP:0,U
+	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
+	:release,TS:-5
+X-CID-META: VersionHash:291e20b,CLOUDID:f770a858-f207-4360-abb2-8a360f715574,B
+	ulkID:nil,BulkQuantity:0,SF:102|836|865|888|898,TC:-5,Content:0|15|50|99,E
+	DM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:-1,COL:0,OSI:0,OSA:0,
+	AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 2,SSN|SDN
+X-CID-BAS: 2,SSN|SDN,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
+X-UUID: 8c37f1ccbbce11f1acbe4559397dec65-20260928
+Received: from mtkmbs10n2.mediatek.inc [(172.21.101.183)] by mailgw02.mediatek.com
+	(envelope-from <tim.kuo@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 626298306; Mon, 28 Sep 2026 23:25:21 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+ MTKMBS09N1.mediatek.inc (172.21.101.35) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.2562.29; Tue, 29 Sep 2026 14:25:19 +0800
+Received: from mtksitap99.mediatek.inc (10.233.130.16) by
+ mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.2562.29 via Frontend Transport; Tue, 29 Sep 2026 14:25:19 +0800
+From: Tim Kuo <Tim.Kuo@mediatek.com>
+To: Mark Brown <broonie@kernel.org>, Rob Herring <robh@kernel.org>, Krzysztof
+ Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, Matthias
+ Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>
+CC: <linux-spi@vger.kernel.org>, <devicetree@vger.kernel.org>,
+	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-mediatek@lists.infradead.org>, Steven Liu <Steven.Liu@mediatek.com>,
+	Sky Huang <Skylake.Huang@mediatek.com>, Tim Kuo <Tim.Kuo@mediatek.com>
+Subject: [PATCH v2 1/2] spi: dt-bindings: add SPI IPM v59 compatible for mt7987 and mt7989
+Date: Tue, 29 Sep 2026 14:25:15 +0800
+Message-ID: <20260929062516.416368-1-Tim.Kuo@mediatek.com>
+X-Mailer: git-send-email 2.45.2
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260929_071249_733105_EA57D9F3 
-X-CRM114-Status: GOOD (  13.49  )
+X-CRM114-CacheID: sfid-20260928_232526_634013_33C7D391 
+X-CRM114-Status: GOOD (  10.20  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -128,68 +88,37 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: bui duc phuc <phucduc.bui@gmail.com>
+MTK mt7987 and mt7989 SPI hardware has been updated to IPM v59 SPI IP and
+it differs from earlier IPM designs, most visibly in the tick delay field
+of SPI_CMD_REG, so it needs its own fallback compatible rather than reusing
+"mediatek,spi-ipm".
 
-Propagate errors from regcache_sync() and main clock enable operations
-instead of ignoring them.
-
-On failure, restore cache-only mode, disable register access clocks, and
-clear the 26M clock request as needed to clean up the runtime resume
-state.
-
-Fixes: 7384ecab34eb ("ASoC: mediatek: mt8196: support audio clock control")
-Signed-off-by: bui duc phuc <phucduc.bui@gmail.com>
+Signed-off-by: Tim Kuo <Tim.Kuo@mediatek.com>
 ---
- sound/soc/mediatek/mt8196/mt8196-afe-pcm.c | 18 +++++++++++++++---
- 1 file changed, 15 insertions(+), 3 deletions(-)
+v2: Add mt7987 and mt7989 real device compatible
 
-diff --git a/sound/soc/mediatek/mt8196/mt8196-afe-pcm.c b/sound/soc/mediatek/mt8196/mt8196-afe-pcm.c
-index dcee037991aa..9888812cd993 100644
---- a/sound/soc/mediatek/mt8196/mt8196-afe-pcm.c
-+++ b/sound/soc/mediatek/mt8196/mt8196-afe-pcm.c
-@@ -2211,7 +2211,7 @@ static int mt8196_afe_runtime_suspend(struct device *dev)
- static int mt8196_afe_runtime_resume(struct device *dev)
- {
- 	struct mtk_base_afe *afe = dev_get_drvdata(dev);
--	int ret = 0;
-+	int ret;
- 
- 	ret = mt8196_afe_enable_reg_rw_clk(afe);
- 	if (ret)
-@@ -2222,7 +2222,9 @@ static int mt8196_afe_runtime_resume(struct device *dev)
- 		goto skip_regmap;
- 	}
- 	regcache_cache_only(afe->regmap, false);
--	regcache_sync(afe->regmap);
-+	ret = regcache_sync(afe->regmap);
-+	if (ret)
-+		goto err_set_cache_only;
- 
- 	/* set audio 26M request */
- 	regmap_update_bits(afe->regmap, AFE_SPM_CONTROL_REQ, 0x1, 0x1);
-@@ -2233,10 +2235,20 @@ static int mt8196_afe_runtime_resume(struct device *dev)
- 			   CPU_HD_ALIGN_MASK_SFT, 0 << CPU_HD_ALIGN_SFT);
- 
- 	/* enable AFE */
--	mt8196_afe_enable_main_clock(afe);
-+	ret = mt8196_afe_enable_main_clock(afe);
-+	if (ret)
-+		goto err_reset_26m_req;
- 
- skip_regmap:
- 	return 0;
-+
-+err_reset_26m_req:
-+	regmap_update_bits(afe->regmap, AFE_SPM_CONTROL_REQ, 0x1, 0x0);
-+err_set_cache_only:
-+	regcache_cache_only(afe->regmap, true);
-+	mt8196_afe_disable_reg_rw_clk(afe);
-+
-+	return ret;
- }
- 
- static int mt8196_afe_component_probe(struct snd_soc_component *component)
+ .../devicetree/bindings/spi/mediatek,spi-mt65xx.yaml         | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/Documentation/devicetree/bindings/spi/mediatek,spi-mt65xx.yaml b/Documentation/devicetree/bindings/spi/mediatek,spi-mt65xx.yaml
+index 3bf3eb1f8728..d2c740572d85 100644
+--- a/Documentation/devicetree/bindings/spi/mediatek,spi-mt65xx.yaml
++++ b/Documentation/devicetree/bindings/spi/mediatek,spi-mt65xx.yaml
+@@ -39,6 +39,11 @@ properties:
+               - mediatek,mt7988-spi-single
+               - mediatek,mt8188-spi-ipm
+           - const: mediatek,spi-ipm
++      - items:
++          - enum:
++              - mediatek,mt7987-spi
++              - mediatek,mt7989-spi
++          - const: mediatek,spi-ipm-v59
+       - items:
+           - enum:
+               - mediatek,mt8196-spi
+
+base-commit: 0d9d0dbf2fddcff5859d623e90ca73c4054276e1
 -- 
-2.43.0
+2.45.2
 
 
