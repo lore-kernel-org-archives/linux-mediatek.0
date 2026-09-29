@@ -4,66 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 48F94CA5FA1
-	for <linux-mediatek@archiver.kernel.org>; Tue, 29 Sep 2026 07:36:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E432CCA5FA1
+	for <linux-mediatek@archiver.kernel.org>; Tue, 29 Sep 2026 08:44:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=VZVSFmMbuJ+Z0Kk8DUTwclrZMS7jCzgzpFtuI2vVojw=; b=ExHi9t+7lGuO2oR8YRAwaBS88u
-	eRv7wCUeQIyarzKsTy77CvBTy1duhB9rWq+VHvMIkSojSNFLHW05oqwhMqjE3iZafGSHrCz0I8H0I
-	tNR8bD+NQRAUZDHLetWDiLjxdNyCAASyEXMpxEIQQzWT0toz1Fq4KEjd66LSW3bX+L7pWIO+CAaop
-	gXTI8JPW8cZugEtTruxjdUHOvkbmbOhRr255gnE8kYMNu67ycXhfbsA4P8gU4k23/qDbwsWU5VIhr
-	csKW76WlXWBikpY40Fwn86undL7rk9o0iqgNPL/Wc1NJu8GpmZxY3FtFR81rpfsLGKQJwAs30vxqv
-	OlZINadw==;
+	bh=HGik1thLDIWu+rUs+0ZfZjo/C0bB3KuUWWNKGA0+Bxw=; b=XHUOFaTlx66n+GJveurMKR0LLa
+	SAMJ0v621zxOSYx8zvL7WdGphNkNdJ9vag9hXja97FRRqoHbwERrb1D51l2gnSMmUu5/zeVW7bXKv
+	5d0D1+/j4C3Jw9/xd76ScK3ujbgZ7i+vKAQ0/eUVk4N38Cf60vX+/sHp2zAKtGjkeZRBXtwfKjPLI
+	91MNAVMQb2EYs29w7eqGyzHzi3xaBlhGfqtHi1400Kqs90UMFzc1cSIwHCOnI+AXXjFdrzKr4hXYg
+	Whh3dv+uNupJ7qdyn9Gk4PK37LwPrHVnDDDsgW1VzJKUGhLcyKU6IVw0TbHUtN4x5wrD/1lXFxKKz
+	X7uPFA4A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xBSNv-00000002d8A-18Mh;
-	Tue, 29 Sep 2026 07:36:19 +0000
+	id 1xBTS4-00000002pp2-3vgm;
+	Tue, 29 Sep 2026 08:44:40 +0000
 Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xBSNu-00000002d7i-0bY2;
-	Tue, 29 Sep 2026 07:36:18 +0000
+	id 1xBTS4-00000002pom-0Iq9;
+	Tue, 29 Sep 2026 08:44:40 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id 73566412ED;
-	Tue, 29 Sep 2026 07:36:17 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5C6861F000FF;
-	Tue, 29 Sep 2026 07:36:16 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id A084F406B6;
+	Tue, 29 Sep 2026 08:44:39 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 551FA1F0089A;
+	Tue, 29 Sep 2026 08:44:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1790667377;
-	bh=VZVSFmMbuJ+Z0Kk8DUTwclrZMS7jCzgzpFtuI2vVojw=;
+	s=k20260515; t=1790671479;
+	bh=HGik1thLDIWu+rUs+0ZfZjo/C0bB3KuUWWNKGA0+Bxw=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=XsD8jJ/MLcyAEHp06qf20kH1KRgaZNob7ijuZiJWqFCh10pJhSeq4RXgvcbV7Ap0D
-	 xfNUM/T1T7hGjFuhEIIZX3i9cttdsKKJkwmTMWD5DFpOFbMM+ak/npEdZOavVkE9bV
-	 eEWPJHQWjOK2wWRdLeNtwr3HJagt7rlZzh3MTJf6hniSDAQs4NEF7xcd7ZHuq18gPl
-	 8RZbx5Y4L43EZRG0AfNPqXeVRbFR8wkVQH3OkCRwxfm31vDciRsxetcd1Ad4S5wK4m
-	 MMgI1z4AHaGfV6tfV7+D2NGXcW4XweB3mtCC8ee0hhLUKYtafTs2f+QW8UKlQlDttN
-	 ARBNZhE9AbMBw==
-Date: Tue, 29 Sep 2026 09:36:13 +0200
+	b=m/lYIjMfw0C9EC3gduvBdvwV8OaknPDCHJaHAPcj7d+oyM1KFslpZLrgXPDQ3Py9F
+	 q/h9BNzvB8I8FAWA4gb4IM6weh92WMcTixeibBeOLCjLnwREHCeODIY1ziXJY5s/Ee
+	 OnsSC15sbrZ9BXYIC56KE7pLZO3N35AAlklq0HwQwVwk+T8TFGngTO9zmQzw8U7Dvb
+	 m0qCJVaBCsMPOwde348kB7Sk866VTL4oukxYRxTBIPiXpR7ZoG6u+RWb1xip8fNqNs
+	 86UJe0JqfckjTPXhV/dcrDfUzbdjD2aBnyFVKZvksjWAMCkOOYf21e6FR7c9txy4go
+	 aX4Ls8qvhIkyA==
+Date: Tue, 29 Sep 2026 10:44:35 +0200
 From: Krzysztof Kozlowski <krzk@kernel.org>
-To: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
-Cc: Andrew Lunn <andrew+netdev@lunn.ch>, 
-	"David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, 
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Rob Herring <robh@kernel.org>, 
+To: Chuanhong Guo <gch981213@gmail.com>
+Cc: Philipp Zabel <p.zabel@pengutronix.de>, Rob Herring <robh@kernel.org>, 
 	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
-	Richard Cochran <richardcochran@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Biao Huang <biao.huang@mediatek.com>, 
-	Maxime Chevallier <maxime.chevallier@bootlin.com>, Maxime Coquelin <mcoquelin.stm32@gmail.com>, 
-	Alexandre Torgue <alexandre.torgue@foss.st.com>, kernel@collabora.com, netdev@vger.kernel.org, 
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Wim Van Sebroeck <wim@linux-watchdog.org>, 
+	Guenter Roeck <linux@roeck-us.net>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
 	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
-	linux-stm32@st-md-mailman.stormreply.com
-Subject: Re: [PATCH net-next v2 1/7] dt-bindings: net: mediatek-dwmac: add
- support for MT8189 SoC
-Message-ID: <20260929-shrewd-rampant-shark-98e87e@quoll>
-References: <20260924-dwmac-mediatek-mt8189-v2-0-430bd74d5ef9@collabora.com>
- <20260924-dwmac-mediatek-mt8189-v2-1-430bd74d5ef9@collabora.com>
+	linux-watchdog@vger.kernel.org
+Subject: Re: [PATCH 1/3] dt-bindings: reset: mediatek: add MT7629 TOPRGU
+ reset indices
+Message-ID: <20260929-spiffy-harrier-of-snow-b78e7b@quoll>
+References: <20260926-b4-mt7629-toprgu-v1-0-c124bf9ac273@gmail.com>
+ <20260926-b4-mt7629-toprgu-v1-1-c124bf9ac273@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
-In-Reply-To: <20260924-dwmac-mediatek-mt8189-v2-1-430bd74d5ef9@collabora.com>
+In-Reply-To: <20260926-b4-mt7629-toprgu-v1-1-c124bf9ac273@gmail.com>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,22 +74,35 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Sep 24, 2026 at 09:23:24AM +0200, Louis-Alexis Eyraud wrote:
-> +  - if:
-> +      properties:
-> +        compatible:
-> +          contains:
-> +            enum:
-> +              - mediatek,mt8189-gmac
-> +    then:
-> +      properties:
-> +        clocks:
-> +          items:
-> +            - description: MAC Main clock
-> +            - description: PTP clock
+On Sat, Sep 26, 2026 at 07:13:59PM +0800, Chuanhong Guo wrote:
+> Define all seven reset IDs documented in the MT7629 TOPRGU SWSYSRST
+> register: INFRA, ETHDMA, DDRPHY, INFRA_AO, CONN, APMIXED and CONN_MCU.
+> Use their register bit positions as reset IDs.
 
-snps,dwmac schema expects the second clock to be the pclk. Why is it
-missing? This should be explained in the commit msg.
+If so, I say you don't need bindings then... but fine except:
+
+> 
+> Signed-off-by: Chuanhong Guo <gch981213@gmail.com>
+> ---
+>  include/dt-bindings/reset/mt7629-resets.h | 9 +++++++++
+>  1 file changed, 9 insertions(+)
+> 
+> diff --git a/include/dt-bindings/reset/mt7629-resets.h b/include/dt-bindings/reset/mt7629-resets.h
+> index 6bb85734f68d..828919eee298 100644
+> --- a/include/dt-bindings/reset/mt7629-resets.h
+> +++ b/include/dt-bindings/reset/mt7629-resets.h
+> @@ -53,6 +53,15 @@
+>  #define MT7629_PCIE0_USER_RST			30
+>  #define MT7629_PCIE0_PIPE_RST			31
+>  
+> +/* TOPRGU resets */
+
+Didn't new bindings switch to continues indexes?
+
+> +#define MT7629_TOPRGU_INFRA_SW_RST		0
+> +#define MT7629_TOPRGU_ETHDMA_SW_RST		1
+> +#define MT7629_TOPRGU_DDRPHY_SW_RST		6
+> +#define MT7629_TOPRGU_INFRA_AO_SW_RST		8
 
 Best regards,
 Krzysztof
