@@ -4,136 +4,96 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0214CCA5FA1
-	for <linux-mediatek@archiver.kernel.org>; Tue, 29 Sep 2026 11:27:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AF696C9832A
+	for <linux-mediatek@archiver.kernel.org>; Tue, 29 Sep 2026 15:02:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Subject:References:In-Reply-To:Message-Id:Cc:To:From:Date:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=wTvvV6l4+D0DDEvQZ4FQw43WlY8/FKGuhNm/go7qrHc=; b=QM5c4iHYt/EuJtxpcV55OK4I2m
-	h9bsrhKvKTEaCbcE1+joLxFYm336QV3DHdmsODJQ+k1tah4oCHLYJ47M9CVThZL8svcrGzoFru3CP
-	XVcP/TvH2AiPHHd01d9IHJFBTndVljpqnmtWpvLIvxb9kJoqUylSQR+xS3661XaF/8nIwG2NqHgnY
-	/5DFvLgFNtjx167GOYnqRksh4gJ+sYhefPfyJYHVxVXlbtrwdbcWnoDM24JSQkevDhxt88p4YhSSn
-	z2307BCPz6oPwmA+14XWv3U+lKtk1RAuYscrmsAOIWMpTP22rwMbToWJi6vmk4roTIfaF9PWu+sx5
-	853MuAVw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=49UzIiAo0VYsR6EXPEJbJmUgWYtE+uEvjPXao/cXtos=; b=QLdTVki7JpHEnZaj+QBWjnXbhq
+	g8H+qlSL+DAYP4kCPJcgKrjDTiTSNiPefCfpDmPXHTPGhDefXqu/P47cAGNJWgLxeknbFXWSntoBK
+	K5bXVPEYawZWzEJSDel14cdvcsZWRL+3daovFYTYV0dWB3FfPlGX0e4gh8NcHLGbfx0bNJSnNcJRF
+	u4REO6yg/NL+NDCReKNb25dH7/yX70V6cckXtEf1xYlrYPQ949+Xp9pQm+84Wb10SymxmoxFZ06xa
+	rfMLZJp6gxFMtKdcO+Wl9HjHLim9ashiRuAHgrX3e365FcftJYk/Sd1aVo5vt5vxNVrL1KUIxKq8h
+	TMtUz5WA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xBVzh-00000003Oym-3Isa;
-	Tue, 29 Sep 2026 11:27:33 +0000
-Received: from flow-a1-smtp.messagingengine.com ([103.168.172.136])
+	id 1xBZM6-00000003sAA-1viu;
+	Tue, 29 Sep 2026 15:02:54 +0000
+Received: from mail-yx2-x03.google.com ([2607:f8b0:4864:41::3])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xBVze-00000003Oxz-3ISs;
-	Tue, 29 Sep 2026 11:27:32 +0000
-Received: from ams-compute-02.internal (ams-compute-02.internal [10.64.2.62])
-	by mailflow.phl.internal (Postfix) with ESMTP id 2486C1380204;
-	Tue, 29 Sep 2026 07:27:25 -0400 (EDT)
-Received: from ams-imap-03 ([10.64.2.23])
-  by ams-compute-02.internal (MEProxy); Tue, 29 Sep 2026 07:27:29 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=arndb.de; h=cc
-	:cc:content-transfer-encoding:content-type:content-type:date
-	:date:from:from:in-reply-to:in-reply-to:message-id:mime-version
-	:references:reply-to:subject:subject:to:to; s=fm1; t=1790681244;
-	 x=1790688444; bh=wTvvV6l4+D0DDEvQZ4FQw43WlY8/FKGuhNm/go7qrHc=; b=
-	iT/bF8t/sH7Stz7uph9Y0fcqw3GQUD8oTyj95WXxH6cZxaVv3l9+WqCLaDFyvNn3
-	j+3rERPsaqANGRlvCdUCN5FnYn5X7RWVmHG71amN9KfthA7WDQmyeFx0mkQAWFeS
-	hAwUdDBzAVLyPNJsUYjilQsn4DmG0C61IiM0kN9mrhHPIwcKUZrk21f64cCVQAIJ
-	ZCPvafg8lkk1eEgHa4xjhqGFDLEI3r6bpRG1/BOXWz1mZ0mKSpfn2SDRYQOJQo9s
-	KboHWddWz8BDd8SyhZ+8bRol37acP1auXwa2KkURVSXlvfVbC69oOrHGGhD9mYgX
-	UpBmkhDrJ4TKc+XFgh6XDQ==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
-	messagingengine.com; h=cc:cc:content-transfer-encoding
-	:content-type:content-type:date:date:feedback-id:feedback-id
-	:from:from:in-reply-to:in-reply-to:message-id:mime-version
-	:references:reply-to:subject:subject:to:to:x-me-proxy
-	:x-me-sender:x-me-sender:x-sasl-enc; s=fm1; t=1790681244; x=
-	1790688444; bh=wTvvV6l4+D0DDEvQZ4FQw43WlY8/FKGuhNm/go7qrHc=; b=K
-	qTCPQpmyqsQFARj6k0N20Mz6aA92TcwRzMupe1fF3O8d6CjX4yHaOOFqAwv4r9mY
-	zcpRWpTz28gdEf3NM2V9ouc/6PiTM4hqEQl2fus5hlwqiLh9fhQvBlQhp7juqEws
-	hFYGjTCdGsja8lDlPj5OPz5V75P7jeBx/00a8ds4t2QHkoV10ZnrM3L+LfboKOag
-	WjgXSx0B22B2caV5SU4GvBz5Fk31dLClKF1rocoPqZx4uYl3LFOb6MqhPYvt9mLb
-	hRHVJFVZISxlSaKQWaX7TatUJ+3M2yy2XOA6FYobMwwUxdxHASjQPvvZXoaLuiFv
-	ax4cqIlMGs5/BQW6azJQA==
-X-ME-Sender: <xms:i6C7aoI-jpEAOdaBrVX5V_qYGxK08UamsTSaBMWg8tQGWLV4Jr20bg>
-    <xme:i6C7ai89IP0_SvJFrBUZdec9wW34sz22E1wmIEJsy9dwJN-q9ESldYdloRuY7GNi7
-    6uGIDXChIwXimeyWcGg8SXdCHD4fYGk204A1fPewtHXTAAkSEroEeqs>
-X-ME-Proxy-Cause: dmFkZTGEQyTqpDFAht/OKgejp9f8hYWmA/2GICdCvkSdg3uuYP50Haf1z67CR8BM6faFlK
-    NALY3BpxgNxHIjm780QOA8qhvsbITTo9wOUnM2zMrM36EsLjvtjeJiitynZv8QTCkXD3DE
-    DM0ToVVumES1jOvjudMBBTa0yOLxpqU4PQGgxpsfchLGW6y1+626bx82qpocXbtCqMJoxR
-    Z1Z4EdQVrtimSPxQrOQJFLyKJn0lqc7NKABI6P2gFUwnL5KHmdLokQQDAU4r9w2jkSob6p
-    +cTwJmxH8jt/ydTJUUKL52z+IeMzPNVguKInT5ePuqAP01yOUDEyPfdVaSaNNCwL8rSRrh
-    oPMn/YZcvJAllqQrr7bh80UCmQAJXKnopk52y5QhfKN+dU36OohTX3A/kQFo1d3FuKjQo+
-    pUcbL19ybCxrOQ+YKG36iqPjepZekmleiPK2hw86h8eVXh7Jw+Jj6VjAuo4bapmN3JoLCU
-    P2uXGQ4nocZOhtDXMQrcCdwMEXpeV9i1x6KfBlj90X9lPGgNv0/+KEhnwtXmwqSx76U/3I
-    zf1jj01trO1052OTFaHOgwP43HPP17CobSeubsQUvgQteYY2ixiNnvThNYLiEwih4phlzi
-    DElpzYTGokMCKMp6UmnL2FJ7naxtXcoA3h6orVOircv3zTiW9VSHhDbGEytQ
-X-ME-Proxy: <xmx:kqC7amhcIvecj-ULK3l7n1TynvTXBl3_PvAatfksP4zzZJq9_Wi4sw>
-    <xmx:kqC7ah59wSovxYe-98CML8954xHqOcg9DghZMo88o64o_eav3dr9_g>
-    <xmx:kqC7ag9WV4hjEw5rIME_K9ZWON8Z4Z7j8avngkl5_zIESNokRzPNDw>
-    <xmx:kqC7ao_T9qYlnLb7BNo6saZ9-_4P0gz0ILr4GttKO_dUMdx2a7Rv_g>
-    <xmx:nKC7amE87G7xekMefKYKvjgHTV8kmgxCxo1RxbL6blpJS_s0NTCmDbhg>
-Feedback-ID: i56a14606:Fastmail
-Received: by mailuser.ams.internal (Postfix, from userid 501)
-	id 2F97632A008D; Tue, 29 Sep 2026 07:27:07 -0400 (EDT)
-X-Mailer: MessagingEngine.com Webmail Interface
+	id 1xBZM3-00000003s8O-1W8z
+	for linux-mediatek@lists.infradead.org;
+	Tue, 29 Sep 2026 15:02:52 +0000
+Received: by mail-yx2-x03.google.com with SMTP id 956f58d0204a3-66fb34fa3b6so1248900d50.0
+        for <linux-mediatek@lists.infradead.org>; Tue, 29 Sep 2026 08:02:50 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20251104; t=1790694170; x=1791298970; darn=lists.infradead.org;
+        h=cc:to:message-id:content-transfer-encoding:content-type
+         :mime-version:subject:date:from:from:to:cc:subject:date:message-id
+         :reply-to:content-type;
+        bh=49UzIiAo0VYsR6EXPEJbJmUgWYtE+uEvjPXao/cXtos=;
+        b=BUCmgg2sJFO02Y7hW08x3SVMQm4Rij4HHq0pahUJY1CC93irJFDkZtW2QsS+5jDy/w
+         LyCIaXR8z3yQ0cLL536sXvG/jPm12f5XNUzJ28/5XNmlgQK5+PfutASlHq0e7XRNApVM
+         g30QIukXBnRTxYv1IkAwEj/WECGmwxqLxsh/Q0ZFZEw3F79VLOETQoR6l7M52l8E9zoi
+         wAEZWbWMweAeO49coYpHsQVPKsAPb2HvaEJzl6Chf+oQpZN1vcDNKv6MEPAdnYunDJvK
+         JLakIcs5E3EwrRkmphkFCE5nWz+BHlQ9Zc8z0gZOg0J1iLItuq8y1wcQARdYvuiXxcHC
+         wk7Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20260707; t=1790694170; x=1791298970;
+        h=cc:to:message-id:content-transfer-encoding:content-type
+         :mime-version:subject:date:from:x-gm-gg:x-gm-message-state:from:to
+         :cc:subject:date:message-id:reply-to:content-type;
+        bh=49UzIiAo0VYsR6EXPEJbJmUgWYtE+uEvjPXao/cXtos=;
+        b=Nmi7ywhBJ1ZFNdvuEVbLq76W6hK1ccc24JpuNUx+z2krVpp9udz9IBtqaTtoX4Hzkv
+         V094UlhhVllUSLwBgJP8DpdtGpUEsQI1MaXI45lIWsJJMS3I7zoxsyJ6jU9Ou39zPIEQ
+         EyvfOsDhgxdvAI0AhcmCv22HmZlqzVTaYjBHl0qtZEyCh+MlsjP+TUYgG9oogA1jgWUL
+         7CS4DNtLvkhWq+yPZMscnvgy25gPjrINoYYZxKQuVMpwvAdnUCKT1R6hOfGDLW9mOwxT
+         TqZr8BOktTtPSWKjMvc09+yHKkd2vZJyr7KsMYlOhU4LNCttppcp6G5UMMQVXK1PNxNF
+         3qXA==
+X-Forwarded-Encrypted: i=1; AKwUvBykglpuV8O/zUawQ4f3sdROH7NbIg36WzAcwkWNoWEhQILX+uS45L6l2jsrND4HmHYPLxqwtWLWpHpO/G/Y5w==@lists.infradead.org
+X-Gm-Message-State: AFq9FYIZZpIyjCqU1r+4CUoMxQWRKHmF+CD2gFfNTLUcMWKXQ8p1kF7h
+	9NtOAXS4RKGYcDPKa8S1uI4sUhGx+hKH5bgKFVIdNMcll468MFZR2eoH
+X-Gm-Gg: AYBFou0PDTkpJ4HQZmuQe/0xa3RTuPAB1j+Cd6rn6c5hVSpss8WGIJFEDjDIzGvueZ4
+	oRgjuLyaXqKjnGeHThIP9jRdY47PiqNwBsMwU51Wa3KhquPvwuPX0JL1qD2+Hy8pJJP6XfPgPdS
+	JU2Y+n62ITLzRaC9U3DVyThmryvQx/p9u/mepUzcJoPQf4ndGLznxT5H/9WUDn0car24yawxeZC
+	GceGZNrgodN4lP3ibe4qB3vR+WmkYPw4W4JsODXrNNvsOG2ZUt6RGmi7L53o9y42x+JjmlBx2Vc
+	cnlabxw9b219QRB/UQ2hCQ82QML2jVe5oECz2Wp7tCoyn1JKo6KDAee4lhSKhslZHM+lOZ0eGYL
+	tFb0uUZJr2kHOAXDsT9IJw9R7eKe7HqdiAhAr7VX6ic09yD44HYaYM4TUZQAJmJtU6p0vUboDRp
+	n9zaHxv5PPbnzPjeaBQS6+xxxileBj//4+O0u78rHW5mxAET7FRP8GnK1o7UvGx+LX7A==
+X-Received: by 2002:a05:690e:13c9:b0:673:7f0e:a8cb with SMTP id 956f58d0204a3-6737f0eaf3fmr5413546d50.44.1790694168952;
+        Tue, 29 Sep 2026 08:02:48 -0700 (PDT)
+Received: from [192.168.18.164] ([2600:8804:5716:d800::2620])
+        by smtp.gmail.com with ESMTPSA id 956f58d0204a3-675b7702a45sm83523d50.17.2026.09.29.08.02.46
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 29 Sep 2026 08:02:47 -0700 (PDT)
+From: Ryan Brue <ryanbrue.dev@gmail.com>
+Date: Tue, 29 Sep 2026 10:02:39 -0500
+Subject: [PATCH RESEND] usb: mtu3: fix system suspend in gadget mode after
+ soft disconnect
 MIME-Version: 1.0
-X-ThreadId: AxWFZG7AZFUJ
-Date: Tue, 29 Sep 2026 13:26:36 +0200
-From: "Arnd Bergmann" <arnd@arndb.de>
-To: "Luca Ceresoli" <luca.ceresoli@bootlin.com>,
- "Arnd Bergmann" <arnd@kernel.org>, "Dave Airlie" <airlied@gmail.com>,
- "Simona Vetter" <simona@ffwll.ch>
-Cc: "Sasha Finkelstein" <k@chaosmail.tech>, "Janne Grunau" <j@jannau.net>,
- "Maarten Lankhorst" <maarten.lankhorst@linux.intel.com>,
- "Maxime Ripard" <mripard@kernel.org>,
- "Thomas Zimmermann" <tzimmermann@suse.de>,
- "Manikandan Muralidharan" <manikandan.m@microchip.com>,
- "Dharma.B" <dharma.b@microchip.com>,
- "Nicolas Ferre" <nicolas.ferre@microchip.com>,
- "Alexandre Belloni" <alexandre.belloni@bootlin.com>,
- "Claudiu Beznea" <claudiu.beznea@tuxon.dev>,
- "Jagan Teki" <jagan@amarulasolutions.com>,
- "Andrzej Hajda" <andrzej.hajda@intel.com>,
- "Neil Armstrong" <neil.armstrong@linaro.org>,
- "Robert Foss" <rfoss@kernel.org>,
- "laurent.pinchart" <Laurent.pinchart@ideasonboard.com>,
- "Jonas Karlman" <jonas@kwiboo.se>,
- "Jernej Skrabec" <jernej.skrabec@gmail.com>,
- "Liu Ying" <victor.liu@nxp.com>, "Frank Li" <Frank.Li@nxp.com>,
- "Sascha Hauer" <s.hauer@pengutronix.de>,
- "Pengutronix Kernel Team" <kernel@pengutronix.de>,
- "Fabio Estevam" <festevam@gmail.com>,
- "Doug Anderson" <dianders@chromium.org>,
- "Philipp Zabel" <p.zabel@pengutronix.de>,
- "Chun-Kuang Hu" <chunkuang.hu@kernel.org>,
- "Matthias Brugger" <matthias.bgg@gmail.com>,
- "AngeloGioacchino Del Regno" <angelogioacchino.delregno@collabora.com>,
- "Rob Clark" <robin.clark@oss.qualcomm.com>,
- "Dmitry Baryshkov" <lumag@kernel.org>,
- "Abhinav Kumar" <abhinav.kumar@linux.dev>,
- "Jessica Zhang" <jesszhan0024@gmail.com>, "Sean Paul" <sean@poorly.run>,
- "Marijn Suijten" <marijn.suijten@somainline.org>,
- "Marek Vasut" <marex@denx.de>, "Stefan Agner" <stefan@agner.ch>,
- "Orson Zhai" <orsonzhai@gmail.com>,
- "Baolin Wang" <baolin.wang@linux.alibaba.com>,
- "Chunyan Zhang" <zhang.lyra@gmail.com>, "Jyri Sarha" <jyri.sarha@iki.fi>,
- "Tomi Valkeinen" <tomi.valkeinen@ideasonboard.com>,
- "Icenowy Zheng" <zhengxingda@iscas.ac.cn>,
- dri-devel@lists.freedesktop.org, asahi@lists.linux.dev,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- imx@lists.linux.dev, linux-mediatek@lists.infradead.org,
- linux-arm-msm@vger.kernel.org, freedreno@lists.freedesktop.org
-Message-Id: <4a566036-af8c-494e-9749-cd713d952d39@app.fastmail.com>
-In-Reply-To: <DLRMF4TI56I2.3PTB24KN9ORJ3@bootlin.com>
-References: <20260928161605.2271412-1-arnd@kernel.org>
- <DLRMF4TI56I2.3PTB24KN9ORJ3@bootlin.com>
-Subject: Re: [PATCH] drm/bridge: add missing drm/drm_panel.h inclusions
-Content-Type: text/plain
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
+Message-Id: <20260929-rbrue-suez-upstreaming-mtu3-fix-suspend-usb-gadget-mode-v1-1-a0ac3b6b2b62@gmail.com>
+To: Chunfeng Yun <chunfeng.yun@mediatek.com>, 
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
+ Fei Shao <fshao@chromium.org>
+Cc: linux-usb@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, 
+ Ryan Brue <ryanbrue.dev@gmail.com>
+X-Mailer: b4 0.16.0
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1790694166; l=3537;
+ i=ryanbrue.dev@gmail.com; s=20260906; h=from:subject:message-id;
+ bh=42nYDcBAxNvHgQbbkGEcmz3UGXdz42wPE9jsdKzwvQo=;
+ b=YbK3YF9A+aOB+Hm/xh8seZ0DcpGlIq2W0mafFoTLR2ixWJCnN6pznBz15u5t2oiwnrPpwG3qt
+ SbDI0QLbGgzCeZQpKyx1EqiIMShHI0oFXGn17wHB/0m8DdbmGIZwk4a
+X-Developer-Key: i=ryanbrue.dev@gmail.com; a=ed25519;
+ pk=KsUvVaP//v/2q+ZBuacc7cLbsyEYn+AD71Sn28oZWKo=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260929_042731_304388_1B9A4100 
-X-CRM114-Status: GOOD (  16.44  )
+X-CRM114-CacheID: sfid-20260929_080251_432351_66A4FE6C 
+X-CRM114-Status: GOOD (  18.97  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -148,46 +108,91 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Sep 29, 2026, at 09:27, Luca Ceresoli wrote:
-> On Mon Sep 28, 2026 at 6:04 PM CEST, Arnd Bergmann wrote:
+ssusb_gadget_suspend() removes the D+ pullup for system suspend by calling
+mtu3_dev_on_off(mtu, 0) directly. That writes the hardware SOFT_CONN bit
+but leaves mtu->softconnect alone, deliberately: ssusb_gadget_resume()
+needs it to decide whether to pull up again.
 
->
-> So I see two option for a better fix:
->
->  * Option 1 -- fix the really affected drivers by switching from the
->    deprecated API to the one they recommended one. Based on quick analysis
->    there are about 6.
->
->  * Option 2 -- a quick surgical fix:
->
->    In drm_of.h:
->
->      #if IS_ENABLED(CONFIG_OF) && IS_ENABLED(CONFIG_DRM_PANEL_BRIDGE)
->       #include <linux/of.h>
->       #include <drm/drm_bridge.h>
->      -#include <drm/drm_panel.h>
->       #endif
->      +#include <drm/drm_panel.h> /* Temporary for *_of_get_bridge() */
->
->    This can easily be tracked and reverted once all
->    devm_drm_of_get_bridge() users are converted to
->    of_drm_get_bridge_by_endpoint().
->
-> I'm working right now on option 1, hoping to get a series in a few hours
-> from now.
+wait_for_ip_sleep() then asks ssusb_gadget_ip_sleep_check() whether the IP
+can sleep, and that function tests mtu->softconnect -- the gadget's intent
+rather than the state of the pin. So it answers "pulled up, the IP can
+sleep" for a device that was just disconnected, and the poll for
+SSUSB_IP_SLEEP_STS runs to its 100 ms timeout:
 
-Sounds good to me.
+  mtu3 11271000.usb: gadget (high-speed) pullup D-
+  mtu3 11271000.usb: ip sleep failed!!!
+  mtu3 11271000.usb: gadget (high-speed) pullup D+
+  mtu3 11271000.usb: PM: dpm_run_callback(): mtu3_suspend returns -16
+  PM: Some devices failed to suspend, or early wake event detected
 
-> I can switch to option 2 in case of unexpected issues with option
-> 1, or if a fix "really right now" is wanted.
+and the suspend fails. The rule the hardware follows is stated in that
+same function: the IP cannot sleep while D+ is not pulled up.
 
-It's only really a problem for randconfig build bots, so as long as
-you are fine with getting more reports (and possibly patches from
-others) until your fix is in linux-next, I don't think we need
-another workaround first.
+On an MT8173 tablet (Amazon Fire HD 10 2017, dr_mode = "peripheral") this
+makes system suspend impossible whenever VBUS is present, which on a board
+whose only USB port is also its charging input means whenever it is
+charging. Unbinding the UDC, which clears mtu->softconnect through
+mtu3_gadget_pullup() and so makes the check agree with the pin again, is
+enough to let the same suspend succeed with the driver still bound and the
+charger still attached:
 
-I've added your new series on my randconfig tree in place of my
-patch and will let you know if something comes up. 
+  gadget bound   (softconnect=1): suspend returns -16, "ip sleep failed!!!"
+  gadget unbound (softconnect=0): suspend completes, 20 s of 20 s
 
-     Arnd
+So record what mtu3_dev_on_off() actually wrote and test that instead.
+Runtime suspend is unaffected: it does not soft disconnect, so the pullup
+is still set and the IP-sleep poll is still performed.
+
+Fixes: e69027c25361 ("usb: mtu3: allow system suspend during active gadget connection")
+Assisted-by: LLM
+Signed-off-by: Ryan Brue <ryanbrue.dev@gmail.com>
+---
+ drivers/usb/mtu3/mtu3.h      | 1 +
+ drivers/usb/mtu3/mtu3_core.c | 3 ++-
+ 2 files changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/drivers/usb/mtu3/mtu3.h b/drivers/usb/mtu3/mtu3.h
+index ba5a63669e5f..7f4fb87d8438 100644
+--- a/drivers/usb/mtu3/mtu3.h
++++ b/drivers/usb/mtu3/mtu3.h
+@@ -361,6 +361,7 @@ struct mtu3 {
+ 	unsigned is_self_powered:1;
+ 	unsigned test_mode:1;
+ 	unsigned softconnect:1;
++	unsigned pullup:1;
+ 	unsigned u1_enable:1;
+ 	unsigned u2_enable:1;
+ 	unsigned u3_capable:1;
+diff --git a/drivers/usb/mtu3/mtu3_core.c b/drivers/usb/mtu3/mtu3_core.c
+index a40bf5bad2d5..5ce61240194f 100644
+--- a/drivers/usb/mtu3/mtu3_core.c
++++ b/drivers/usb/mtu3/mtu3_core.c
+@@ -346,6 +346,7 @@ void mtu3_dev_on_off(struct mtu3 *mtu, int is_on)
+ 	else
+ 		mtu3_hs_softconn_set(mtu, is_on);
+ 
++	mtu->pullup = !!is_on;
+ 	dev_info(mtu->dev, "gadget (%s) pullup D%s\n",
+ 		usb_speed_string(mtu->speed), is_on ? "+" : "-");
+ }
+@@ -1023,7 +1024,7 @@ bool ssusb_gadget_ip_sleep_check(struct ssusb_mtk *ssusb)
+ 		return true;
+ 
+ 	/* device is started and pullup D+, ip can sleep */
+-	if (mtu->is_active && mtu->softconnect)
++	if (mtu->is_active && mtu->pullup)
+ 		return true;
+ 
+ 	/* ip can't sleep if not pullup D+ when support device mode */
+
+---
+base-commit: df2908090cda368b01ff43709f51890076c56157
+change-id: 20260908-rbrue-suez-upstreaming-mtu3-fix-suspend-usb-gadget-mode-c69c5104b25b
+
+Best regards,
+--
+Ryan Brue <ryanbrue.dev@gmail.com>
+-- 
+Ryan Brue <ryanbrue.dev@gmail.com>
+
 
