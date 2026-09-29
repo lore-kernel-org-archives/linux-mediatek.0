@@ -4,99 +4,99 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E76D7CA5FAB
-	for <linux-mediatek@archiver.kernel.org>; Tue, 29 Sep 2026 03:19:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C4620C9832A
+	for <linux-mediatek@archiver.kernel.org>; Tue, 29 Sep 2026 06:11:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=rChgDG4+9LHVh/7Fh95cpWNAythLuYoy13f8pIwvxIg=; b=Ybhs5QmG//OivI/rd/PQyiZvgc
-	Vd8qmwD1DZSQBcy/ZmbtfIxAUc7Y4vtZdK9lZXxigT7eSWxbuxwjWp1nq9l3DO9/rK3+7sph7l4Bg
-	D+O0E/A/pi/LXbsKph9NM4wA0iq5xscdrGy3I+deUCvHPgMFBapJT4XA5lcNWDiO6K14nMc5TKruO
-	DEJ5axGs2hN3G+WKgfoaWYs8DXhQZV/J4d2snM6EE4jgKbyxPTD5oH6htN5SSeJbOHlaeM8ICgEd8
-	3VffFZkr9o8X0zXclkRnj4RGo5PoXsIBmjAhY7OH4ducaiL9kEILUKjji8yJWSG60nSW1Bt/x1biD
-	11H/XuiQ==;
+	bh=lCOnM4BG9opzc/4UWmCexloGpdYaWaFpKWwedqDPapw=; b=OpzNkF07pIVVLkg8zKpULhM0Cw
+	mSzHvqdBu4qE7EcH5w/586GntreJpZfSvhlz5lqyYyyt51HS4lPs3l/Cvk5RF9Oy4Qil7La3TN7ua
+	V3kk6YlEJoLuVBcnCG3RHUzmDBN2JqBfKHRvlVscVn/2yorcrAbjIfiCKK7Z6fe20UqheOcE9g5Ld
+	O6sq78HlwH+UxCfYZepHgW6YznuAgCiDGPqQYh7UZKpavK4QLO2kxG+KgWjfSITHz84dDdtAEXhUK
+	sW5tWokbEoZ2XeVdENB1DtsgxG/DPURBlUCqx8BD5b1/5l0sXeFuzwZrbS8K8WeoatATA0wBoozTv
+	yD67skUA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xBON4-00000002CnA-019E;
-	Tue, 29 Sep 2026 03:19:10 +0000
-Received: from mail-dy2-x0d.google.com ([2607:f8b0:4864:36::d])
+	id 1xBR48-00000002Pd7-0UxW;
+	Tue, 29 Sep 2026 06:11:48 +0000
+Received: from mail-pj2-x0e.google.com ([2607:f8b0:4864:39::e])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xBON1-00000002ClH-0h9V
+	id 1xBR45-00000002PcL-26XW
 	for linux-mediatek@lists.infradead.org;
-	Tue, 29 Sep 2026 03:19:08 +0000
-Received: by mail-dy2-x0d.google.com with SMTP id 5a478bee46e88-3468ec309afso1318101eec.3
-        for <linux-mediatek@lists.infradead.org>; Mon, 28 Sep 2026 20:19:06 -0700 (PDT)
+	Tue, 29 Sep 2026 06:11:46 +0000
+Received: by mail-pj2-x0e.google.com with SMTP id 98e67ed59e1d1-39d654f02baso1638141a91.3
+        for <linux-mediatek@lists.infradead.org>; Mon, 28 Sep 2026 23:11:44 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=trailofbits.com; s=google; t=1790651946; x=1791256746; darn=lists.infradead.org;
+        d=gmail.com; s=20251104; t=1790662304; x=1791267104; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:message-id:date:subject:cc
          :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
-        bh=rChgDG4+9LHVh/7Fh95cpWNAythLuYoy13f8pIwvxIg=;
-        b=BZv1aZrH3TXU4fFarck1B3KRfYAqh4zfxE+4K2pSjaAzzvC+ajhzzrOut5wFtvUWsf
-         w+vMjk450o9DWSTHeJrb1RRVhljlupA7ghdB8uXy/jj/iPOzC/qcbEOBa97ACP7O/sVW
-         SeTHKud20bY7oUDjh2cAk5SE25TGQeCyGXtuh/TcXAyhLgBRKIVZvLs1OBMQfL9fX4qF
-         Ycj/n8uKGiNaJHQHirggNJ+acu5aa1n7FFq5CO/9TfZn7JEedkZqaufdPFQASQRRS1YN
-         vA5QslacUTlPjT4aTKFYZNfNLEy4bB9Z7ibRDrJWaxwKNTxlVKAYPqPbLCZA9GOjD1vf
-         g0Ew==
+        bh=lCOnM4BG9opzc/4UWmCexloGpdYaWaFpKWwedqDPapw=;
+        b=LetmDwN9hHe95x+LqMBUscGDGUEFM21PsUvEa/zpm6jcxqEvXN+CvAIkUtOMWKYWEy
+         vU7lK2a7UExcCuGJTjs9FLOcqnPE4NTNp02fKMYG7MGsDkx9p3gKJVcD5LNxXgLhQq/G
+         q3UP8GAAkTd/uoISR7Gkc8+nEsIJTYtXutgczMLYZXW6q3YcBdZdKc5o54F/2IVC2QVM
+         DjbOu1/wxiNmTGBhi3JLRR/O+7JreiBUkyMYIv83kN0QGurX+ie5e6QPoClx+x+HKjNE
+         u6SkDOpbDa+HI+GVhydZMBCFcr062HwZK3l17tL0KF+8Xooj5cLPvDgwXg9m9e32YUVI
+         qGlg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1790651946; x=1791256746;
+        d=1e100.net; s=20260707; t=1790662304; x=1791267104;
         h=content-transfer-encoding:mime-version:message-id:date:subject:cc
          :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
          :message-id:reply-to:content-type;
-        bh=rChgDG4+9LHVh/7Fh95cpWNAythLuYoy13f8pIwvxIg=;
-        b=xVk9ddPDCXTuvk03x7fcygV9y4m96YSf2JLLp4fMVDTRf33LrP+nOEfLHNyV7lExbH
-         QATCmk5lfEQ9/ScKhedkOMJ3RFJm476ZyFzJIqNSrmFY3zQ12mMTvNQZ3baLdAdL8v3C
-         aBySM1JF7j64+IEbX6GCSL1w/HFTMCaFzsBEMpLC1S5NuZyWNhLtlpuJiVwrbLnmA4HL
-         yXt/nYSp93QFgJBArq4oDHnp/XuiQRIsbjskvBLJ//J1jAN06qA/i/xTv/JY6mPXtoIL
-         nOGQmUcj2jill6O3wtcKulGh3K4k9USr6s8VOLhF+mDxigDevXN07Q+35eCMyescTyQg
-         lO4w==
-X-Forwarded-Encrypted: i=1; AKwUvBwhUNTUDFO7sY6qsu5K3mRxb+5eCDU1qFudp91UMKWne3hGxp1KeHfzeEHuuMWYVPJA8OAUkFuEehoR5GA6XA==@lists.infradead.org
-X-Gm-Message-State: AFq9FYIZIlY1XqzCtnhNwGsNeqez0ppM+1us9r87aKfxHTCOeTimJvQP
-	Avrf+8zk7vPCCwroHVgBuvrOnM1XkehWicAU6S4yp5M7Odw1W5FFFj12txnBNUchI38=
-X-Gm-Gg: AYBFou3SFMRc392Y8nDeP6sRToqyAW4EDdqobqIulAAi2FhYiNNZGz0esOGAx1prDQB
-	Fs9FOYtI64p293TOpe3qljJVyZ7FPIpp+7EpiasiHUwtddIBgYt5QpehOkMDQ1r9Gf/8zA9m5so
-	xKi/yX0qv7F0OGvfKHHmHN7PezAlxS5rD8K4dua4pE48sh/v7+spUPex2SYpSR4wwFfajcjZtzt
-	Vlv/f25kvzsK+5H4qdQvaH9w7NnkyjyMNnPQJwBn/ybm0vfbjy/zBCXA9EIkpXPKYeeOXehJwUn
-	nMdx9sJpuWuwbTth4BhLzvfbgZ4vK2hpHL40ssi1xILS2tPr9hZNu/3P7aY+2FDkNPFdiAtXAds
-	vYJPPcprlKLbmRIG4wSH/kLaV3Aua0nYCpTz4pSU2yuw+sAo7L9bpRa3pgoOiiwWNvqT7OazMzA
-	HfTov5IizanBGIa58elo1bIw8wc/F4qafHMLZHS4LnRL7IAGfN6WYNzRoezaXG+UEGKhyg0HNj1
-	r5MFNGh0BTfym4iZ1axYZoWKWXKubdVpKXaNZEW3NmtcwcoBLeRC/pgRRZ6wcliMw==
-X-Received: by 2002:a05:693c:62dc:b0:33b:ef1f:14b9 with SMTP id 5a478bee46e88-34271a92cb8mr10274241eec.15.1790651946136;
-        Mon, 28 Sep 2026 20:19:06 -0700 (PDT)
-Received: from localhost.localdomain ([2603:8001:5f01:8bab:3481:cbb6:f339:9e4e])
-        by smtp.gmail.com with ESMTPSA id 5a478bee46e88-34141a4a00dsm33740601eec.1.2026.09.28.20.19.04
-        (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
-        Mon, 28 Sep 2026 20:19:05 -0700 (PDT)
-From: Artem Dinaburg <artem@trailofbits.com>
-To: stable@vger.kernel.org
-Cc: Artem Dinaburg <artem@trailofbits.com>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	Sasha Levin <sashal@kernel.org>,
-	Dan Carpenter <dan.carpenter@linaro.org>,
+        bh=lCOnM4BG9opzc/4UWmCexloGpdYaWaFpKWwedqDPapw=;
+        b=T+x/wBRUk3AasTrJrg+YmqoATLxe+8jdERxtT2lpZZa3fNbC/fSEDDomZE75wjAm0v
+         qjd25Re5spkFNXo1D+/pmhRS7ULA0DM3Blxlf17DUTKjL2Ls7G6rv2q3q0+jbUXTUWl5
+         ENiYq7rHJTEOz+3c2KRcZoV1MhefljpIxKcf+hIU70KghvDPK/+ND6RsrBklZKIDLDJz
+         Zum7bOSRsqGVP2E1h/PF/q0j5lb315ezBfA6xMKpR+jqkt3LtEB3QBmkjEZhD3jKrUNH
+         CztC2eqFGN2zULjDqPOzsBevBBPmZ7Ev2F+mz8sQnuQVZDEV9U9lLAldLevskJSuDD2A
+         fQnQ==
+X-Forwarded-Encrypted: i=1; AKwUvBwkreHRscwVj/zaiA5WkFErVD4lXlJypeij0NjsehQS2+0vYXhtbukWHLMSg8tQYKmH7vqyAAVZOuEKlub7AA==@lists.infradead.org
+X-Gm-Message-State: AFq9FYJSVCwQpFgJ+IK7wdwCkK0OGvjLmqiJQGNDckwoQkCzC7q5cdPJ
+	XJd/xCzSErroPmLVBAQ7vacfSGABbykM2GvrumCcHDSIC17RKuzgyvoq
+X-Gm-Gg: AYBFou3QLTZS4etqz5LrfFpj64rKBRPtWnPuWRnJfrO5wSTWQxGX0psrpsDfZFT8uzc
+	f5uhUKUmR/1iMyUilEkz0UqYp+y09e8g7Vu3f6YCXXRP/MUpyQFJQj+GyEsIH1ZkJA5BjTYfIIA
+	T+geLe7EWXqAnzYUlBZOOPXIuFqL92DpWumhv0KwClZ7CpDSmZsHdKbk+oYCBi/PM0QbGw1CJki
+	6oIfbWhMfbedo6kqO4zKh6d9wr669BlwXay5OrqKWfOgpTwnhTug2hk4HnX3QNNM9qXVzH89MyU
+	aPIsQG01tetxs/als1SvlyKWclmGksVJEMW0zAf3LzGMwFt1o7fz1PfFExc0jeEvdPFIO3vX46z
+	6eJW3kSMtL8V7NBrotwlE/FMbNm8jArHhdQ8bDru/pwlCDVdCH0wa/5ns5C/zB1Wq3NBTbfea+p
+	rjXrbYya4/DrOWQU3nMaACyUMfX5cszIvhVQQAATpUcxDvgxCpSO80zaOu40A4CCGOyxHBg5gB3
+	92mYVG/lq47tFKlFQ375inD+uZhg5kbDTnokQrc+SLUqFejk10i+hv5JSiDR1ssqDc8zSbZ9Y14
+	3XEMAcMPOibxYA==
+X-Received: by 2002:a17:90b:4c4f:b0:3a0:bf0a:c9da with SMTP id 98e67ed59e1d1-3a0bf0ad1cbmr11373686a91.47.1790662303866;
+        Mon, 28 Sep 2026 23:11:43 -0700 (PDT)
+Received: from phuc-desktop.. ([183.91.15.56])
+        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-3a498726d63sm3280965a91.17.2026.09.28.23.11.39
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 28 Sep 2026 23:11:42 -0700 (PDT)
+From: phucduc.bui@gmail.com
+To: Mark Brown <broonie@kernel.org>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	CK Hu <ck.hu@mediatek.com>,
-	Chun-Kuang Hu <chunkuang.hu@kernel.org>,
-	Philipp Zabel <p.zabel@pengutronix.de>,
-	David Airlie <airlied@gmail.com>,
-	Daniel Vetter <daniel@ffwll.ch>,
+	Darren Ye <darren.ye@mediatek.com>
+Cc: Liam Girdwood <lgirdwood@gmail.com>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
-	dri-devel@lists.freedesktop.org,
+	Jaroslav Kysela <perex@perex.cz>,
+	Takashi Iwai <tiwai@suse.com>,
+	cassiogabrielcontato@gmail.com,
+	Mukesh Ojha <mukesh.ojha@oss.qualcomm.com>,
+	Liviu Dudau <liviu.dudau@arm.com>,
+	Cyril Chao <Cyril.Chao@mediatek.com>,
+	linux-sound@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	Simona Vetter <simona@ffwll.ch>,
-	jason-jh.lin@mediatek.com
-Subject: [PATCH 6.6.y] drm/mediatek: Fix potential NULL dereference in mtk_crtc_destroy()
-Date: Mon, 28 Sep 2026 23:19:01 -0400
-Message-ID: <20260929031902.88182-1-artem@trailofbits.com>
-X-Mailer: git-send-email 2.55.0
+	bui duc phuc <phucduc.bui@gmail.com>
+Subject: [PATCH 00/10] ASoC: mediatek: mt8196: Fix clock error handling
+Date: Tue, 29 Sep 2026 13:11:11 +0700
+Message-ID: <20260929061121.124001-1-phucduc.bui@gmail.com>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260928_201907_216219_F079D549 
-X-CRM114-Status: GOOD (  16.36  )
+X-CRM114-CacheID: sfid-20260928_231145_592147_709E07FF 
+X-CRM114-Status: UNSURE (   6.75  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -111,71 +111,37 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Dan Carpenter <dan.carpenter@linaro.org>
+From: bui duc phuc <phucduc.bui@gmail.com>
 
-[ Upstream commit 4018651ba5c409034149f297d3dd3328b91561fd ]
+Hi all,
 
-In mtk_crtc_create(), if the call to mbox_request_channel() fails then we
-set the "mtk_crtc->cmdq_client.chan" pointer to NULL.  In that situation,
-we do not call cmdq_pkt_create().
+This series improves error handling in the MT8196 ASoC driver,
+mainly by checking and propagating errors from clock operations.
 
-During the cleanup, we need to check if the "mtk_crtc->cmdq_client.chan"
-is NULL first before calling cmdq_pkt_destroy().  Calling
-cmdq_pkt_destroy() is unnecessary if we didn't call cmdq_pkt_create() and
-it will result in a NULL pointer dereference.
+Compile-tested only.
 
-[ Backport to 6.6.y: used the older Mediatek CRTC file and helper names. ]
+Best regards,
+Phuc
 
-Fixes: 7627122fd1c0 ("drm/mediatek: Add cmdq_handle in mtk_crtc")
-Signed-off-by: Dan Carpenter <dan.carpenter@linaro.org>
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Reviewed-by: CK Hu <ck.hu@mediatek.com>
-Link: https://patchwork.kernel.org/project/dri-devel/patch/cc537bd6-837f-4c85-a37b-1a007e268310@stanley.mountain/
-Signed-off-by: Chun-Kuang Hu <chunkuang.hu@kernel.org>
-Assisted-by: LLM
-Signed-off-by: Artem Dinaburg <artem@trailofbits.com>
----
-Hi Greg, Sasha, and drm mediatek maintainers,
+bui duc phuc (10):
+  ASoC: mediatek: mt8196: fix APLL mux error handling
+  ASoC: mediatek: mt8196: fix APLL enable error handling
+  ASoC: mediatek: mt8196: fix MCK error handling
+  ASoC: mediatek: mt8196: fix register access clock error handling
+  ASoC: mediatek: mt8196: propagate main clock errors
+  ASoC: mediatek: mt8196: use dev_err_probe() in mt8196_init_clock()
+  ASoC: mediatek: mt8196: fix runtime resume error handling
+  ASoC: mediatek: mt8196: remove redundant error message
+  ASoC: mediatek: mt8196: propagate I2S clock errors
+  ASoC: mediatek: mt8196: propagate TDM clock errors
 
-I am working through the small CVE backports still missing from 6.6.y.
-This one addresses CVE-2024-53056. It skips command-packet destruction when
-channel setup failed before packet creation.
+ sound/soc/mediatek/mt8196/mt8196-afe-clk.c | 145 ++++++++++++++-------
+ sound/soc/mediatek/mt8196/mt8196-afe-pcm.c |  28 ++--
+ sound/soc/mediatek/mt8196/mt8196-dai-i2s.c |  17 ++-
+ sound/soc/mediatek/mt8196/mt8196-dai-tdm.c |  16 ++-
+ 4 files changed, 136 insertions(+), 70 deletions(-)
 
-The fix is already present in 6.12.y, 6.18.y, and 7.2.y, but not in 6.6.y.
-This fix also affects 6.1.y, which will need a separate backport; this
-submission contains only the 6.6.y patch.
-The target-specific adjustment is recorded in the bracketed note above.
-
-Could you please queue it for 6.6.y?
-
-CVE: CVE-2024-53056
-Upstream: 4018651ba5c409034149f297d3dd3328b91561fd
-
-AI assistance: An LLM helped identify, adapt, and validate this backport; I
-reviewed the resulting code and validation evidence.
-
-Thanks,
-Artem Dinaburg
-
- drivers/gpu/drm/mediatek/mtk_drm_crtc.c | 3 +--
- 1 file changed, 1 insertion(+), 2 deletions(-)
-
-diff --git a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c b/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
-index 859dffe4513722..1e8052a0425ee5 100644
---- a/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
-+++ b/drivers/gpu/drm/mediatek/mtk_drm_crtc.c
-@@ -163,9 +163,8 @@ static void mtk_drm_crtc_destroy(struct drm_crtc *crtc)
- 
- 	mtk_mutex_put(mtk_crtc->mutex);
- #if IS_REACHABLE(CONFIG_MTK_CMDQ)
--	mtk_drm_cmdq_pkt_destroy(&mtk_crtc->cmdq_handle);
--
- 	if (mtk_crtc->cmdq_client.chan) {
-+		mtk_drm_cmdq_pkt_destroy(&mtk_crtc->cmdq_handle);
- 		mbox_free_channel(mtk_crtc->cmdq_client.chan);
- 		mtk_crtc->cmdq_client.chan = NULL;
- 	}
 -- 
-2.39.5
+2.43.0
 
 
