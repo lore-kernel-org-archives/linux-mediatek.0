@@ -4,124 +4,117 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5CBADCA5FCB
-	for <linux-mediatek@archiver.kernel.org>; Wed, 30 Sep 2026 16:19:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D5CF4CA5FC7
+	for <linux-mediatek@archiver.kernel.org>; Wed, 30 Sep 2026 16:49:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=nG2T2Alp7V7AR4zEW4H2cF7/r2rfzmYJ1/XwqhpbHio=; b=eL3d+lROTATyV2jA0zTON3/6rV
-	atbjSP5WlE8bqhbN9ImdBfZflRghe5V/XgTooJoHWKDRIZb8cmBs5hNZw0wWXZ88luctPg9cPKNuy
-	3+7mFtGcPNxw79ZERQ6EPZKJplFrGCQaAR5ysFcGXUYyThbfgBlp0iaDH6rWTbd+Pfo3JsL9rgQ+5
-	rQq5n5A7nAHVyXsVM73EGwUArHqE0AsTacYE91pSVqJlUxCSPo+t8Sb8aUzXtz/6YbwjBW6mrmaOs
-	ShOUYZ0A0tL31Nrjoag2MMbPo6PzEAbVF/34lVf/LxI20B+cP5MS69lkSvCYU+SGrELCrgtOwJhKJ
-	//0hj5Lg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
+	Message-ID:Date:From:MIME-Version:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=m/oaydNeB7KKez2Jzp2jljrx95qkFNgazQFseegu3Nw=; b=TXvahm4x5qAvGI/8DmU4Pxkm0Q
+	dFdVohu5Gz9ug6BnE/cHcxIKsWTbfBjM+7mAl9iDJg7fy5qanPhcFxty3zvjF3ocsIq+k3O0tEFiA
+	aNnTkGwEmuPY3VpMxCqPZ5Bt4EaXR2FM9qg+TIAjAedUtw+0flfxWGby3SNDiIrUiy7+dG4INcKcc
+	Z34O8hZ6AgU3uL9xtVk2qaQSBhBJnotyriU0QVeKoROZ1DgKPUZEde2KhYoPYipo26bW43hTBX6bP
+	AVClC2MBMIbJE/MpJakj22tQM809yM/nlyuko7oyDbp+Wkr8MG+PUtAQbvVOjjIXGLKlO+nLlAN3U
+	IkD0SSRQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xBx27-00000006gbQ-2Cfk;
-	Wed, 30 Sep 2026 16:19:51 +0000
+	id 1xBxUx-00000006jul-1gbh;
+	Wed, 30 Sep 2026 16:49:39 +0000
 Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xBx25-00000006gb3-2d38
+	id 1xBxUu-00000006jta-3aZr
 	for linux-mediatek@bombadil.infradead.org;
-	Wed, 30 Sep 2026 16:19:50 +0000
+	Wed, 30 Sep 2026 16:49:37 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
-	:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:MIME-Version:
-	Sender:Reply-To:Content-ID:Content-Description;
-	bh=nG2T2Alp7V7AR4zEW4H2cF7/r2rfzmYJ1/XwqhpbHio=; b=PUqHr6fKp73K6KLOEAkE+7lYwF
-	QoZwWwv7lJ9LQa9k7JbIFwdI9Vr8GuJJP78Cz8h0VJ/rBvS4/bF+YVwAu1zRW18zLHI3goR3IdSur
-	eY6XCCMJ2Yv4qz0K4DmJQ5i3lDhKOWylVMjHSq5VmKWFZlbGycR2MzdaBfu9HQBmRyAP4/Zj69v3W
-	zSpRiACaEZvmxmwwFm0qD17tHO5bYsvB5nOLQqdei2xjamAfTLdlNVOIQVcMFvEnoR2iWFbaM6cNu
-	LlWe+vfe4OFWv80qU/hph7WQ6REfDvVnezxGeiUuUFdjY4xd6Ow45hqhItffHu9Gn01YMnm+pVKTl
-	uiPdc2EQ==;
-Received: from mail-ed2-x0e.google.com ([2a00:1450:4864:33::e])
+	d=infradead.org; s=desiato.20200630; h=Content-Type:Cc:To:Subject:Message-ID:
+	Date:From:MIME-Version:Sender:Reply-To:Content-Transfer-Encoding:Content-ID:
+	Content-Description:In-Reply-To:References;
+	bh=m/oaydNeB7KKez2Jzp2jljrx95qkFNgazQFseegu3Nw=; b=G7XbZ9886q2yXMrk82xv0djEyR
+	13VFhDemsTWYmTaplAUCwxJPbi6AXeldrws8qhDshN+grodYkUbUcycRRe/kop4kLC+fusks5fg0L
+	8p/kejKqFr76PraLqrMG8r5ANKb2WzjbISsmp4rxPM2Xdvvar5QgAQA0ll9PuMLBrD2VAmgHZEQzE
+	9GvtyiH0Rj1mpSPQK1pMcrYlrRidJ44V9piv9vmFcGidWok7XVW4r0Yb8/vfzblNW/dacvXUADbZm
+	PJ9/vcIap4uBGxoOwnXYvwAF36dw+ekxvZenGoI0wCBMwwrpVEL2W7Q3nhpFfbp5mSY9n0T19KTRc
+	uH8flGMA==;
+Received: from mail-qv2-x0c.google.com ([2607:f8b0:4864:33::c])
 	by desiato.infradead.org with esmtps (Exim 4.99.2 #2 (Red Hat Linux))
-	id 1xBx22-000000044Ai-1jxE
+	id 1xBxUs-000000046Ay-0ssY
 	for linux-mediatek@lists.infradead.org;
-	Wed, 30 Sep 2026 16:19:48 +0000
-Received: by mail-ed2-x0e.google.com with SMTP id 4fb4d7f45d1cf-6aae359e2c0so8451442a12.3
-        for <linux-mediatek@lists.infradead.org>; Wed, 30 Sep 2026 09:19:45 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1790785184; cv=none;
+	Wed, 30 Sep 2026 16:49:35 +0000
+Received: by mail-qv2-x0c.google.com with SMTP id 6a1803df08f44-917a8bbbbf7so846236d6.1
+        for <linux-mediatek@lists.infradead.org>; Wed, 30 Sep 2026 09:49:33 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1790786971; cv=none;
         d=google.com; s=arc-20260327;
-        b=ZWIu4yz4X1yzISWaRMeF0LR3Y0qPZn1+fVQT7U9HgygnHzSLezNjmgJX3838IieI/v
-         N1hO42B7iJCqrTE3/64D8ju410/6KvQNbyqiJA5V38kLn3p18Dd8RNjfTRfS2gvUWigc
-         8ac130lpRhzOyUhtAMOSzDIYBbKpRYxiNP8KlUcDARTh4l62RXJB9HLG7c6R7qD4wHGb
-         JY1iG/k9cOc4S38fSkWORkW6A4Fy/1tvdMg2As6BkOepxuCsVtrn/ZeoVaGwQyG5op5C
-         kBjmXj/4jurl3nYxrwEo8Gd+OW7BKSqmefrVSsWyQsX18/n0tcZ19n5LSpfmm7BcsBCZ
-         chGQ==
+        b=GXpLnao2/WueFFel4C7bHuoghDz/lOic37Qi2KRecItOpDCGZIaXLOMfz1oLa1336d
+         0HoFUrw+/pRRBa0fG99LMx4doTXEEjagKYsHgHx17RuvrudBH3DW5QwdTrlCwSnwc+/m
+         yqu8PkGFSLGjtjADMMp8myEskAf72tah33X5ebwLFMTg+Wxfcszr2A6ZRiP8huo6FBEG
+         UTD7ppOvxaPb9kB6XKMCDenT0Tdu22miNeOaYqgf/oevtmEjbWuSL1CXxF3C/9prgsew
+         xlQiiTRU8S5HxxCL6DCXGZALFGwqUyLhhOLs8mT331Nmzg3sinTA9V8MoKK0Yq7jefbV
+         yaaA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20260327;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=nG2T2Alp7V7AR4zEW4H2cF7/r2rfzmYJ1/XwqhpbHio=;
-        fh=vZ9dS23zNWweCniIMdg5FTA0DwE3HUxjZwEunL+J8wI=;
-        b=PqOadkHQ8HzHk698bWUYFaqULaAIvU/AcyUJKMHZ0Q/YqOIyqaCjd3wa9RtInJD0OJ
-         alULjismdJ7M0wl8Ux0pQ18CUyqDKailYqzByd3QLX++bILTnb9hKsmMnMl6Cz9Bj61R
-         KCfp7PMXPHbTEdkp7/da9zDGjWEyAjZsj5KljU8almb9Wp56sVDBmEyuu3POiFK5ZrHp
-         NkmnoD+5w6auxbmTUd3skLaikq/LieenNqWJkZpWzmouukpD22W7UI0Zg6HrUw3HGgFn
-         sF9ee9daqKwsQ/IFezomxuD+3ODJfBEKD8TVrj53U4b2QjogWi+N0/FYB3NNI/e96aCJ
-         zMzA==;
+        h=cc:to:subject:message-id:date:from:mime-version:dkim-signature;
+        bh=m/oaydNeB7KKez2Jzp2jljrx95qkFNgazQFseegu3Nw=;
+        fh=4+4suC85h9Wu6LAQSL7brzHaD5yDIRvQO2/4a7NEc1Q=;
+        b=G1T2CA9tRChhaz2kc5ipNt6Xdp/mlxMmiuKHpfi3AThI6rRvfYoXx31qr1rD9huMde
+         3KiX+q16nvVnCw5mrpx/qxLr/3DiZ4jhuxlkdUtYqk5sR0sR8ZZ/zqxa2EdkjSWBrCAQ
+         UONot+kPJJ0Vi4iIn8/EOP326dVvKx+GBaUyYk5s+VEGJAfC+k5SRARzNZzatCPShiW9
+         URqeke5ZpwbrrXgZrr7Ce3rLBXeU7C0dmlDbVPObSBsRzVo4R/EbLDGrhRK+o17H+Ato
+         SPihktqzPcc3KDp46japYrXzFOZF2NAIPcdNlkz4iCvX4NCVwZ3q6WQ6BYal/hXSpygD
+         MjcA==;
         darn=lists.infradead.org
 ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1790785184; x=1791389984; darn=lists.infradead.org;
-        h=content-transfer-encoding:content-type:cc:to:subject:message-id
-         :date:from:in-reply-to:references:mime-version:from:to:cc:subject
-         :date:message-id:reply-to:content-type;
-        bh=nG2T2Alp7V7AR4zEW4H2cF7/r2rfzmYJ1/XwqhpbHio=;
-        b=mjFjjcUNjm4q+UH0Umur/LSdzlHDaoGgeoOx/rNi7pKHlPqXl3rD9wm6OGWdrVnmCN
-         3UwkTzz/R6AGu3FIBViE7tl/fpTws7zMfnKadSJgMP9xORi1RK7lY3QW0m3EAxkE3Xcg
-         7ooShHZf8ULYYWk8aOVU6Ug1ISv24BJXgIzcTwminypC4JNfHxECKSS0Duc6h3UZUNFe
-         WPQ801L8OZ/p3rGJX/3fTZg/FH+b+4kHSSX2uzNfZ45aDOSuf/qNm2boHTuDP2DNBaBd
-         sWH3u5Fu1to0zoLeHxRLz5KtD6rHxwsw4qskb/Q3pzT4qwRr4Cv4rXM84uj8ZPzFfxLr
-         dpKQ==
+        d=gmail.com; s=20251104; t=1790786971; x=1791391771; darn=lists.infradead.org;
+        h=content-type:cc:to:subject:message-id:date:from:mime-version:from
+         :to:cc:subject:date:message-id:reply-to:content-type;
+        bh=m/oaydNeB7KKez2Jzp2jljrx95qkFNgazQFseegu3Nw=;
+        b=Gfz2792Z4KfTTQ30gJpc4NyKkbVms1Bdky0MO7ma9pk165i2jAVmylKwlsyyEqdLKZ
+         /I4Ahi/sGqLfxTVD3Erh+hNP+DNfz+ie+OH9gEp8oOiAyDkbQ719cAA2/zrQUC5eN40G
+         zGh3BD7ndkSd62ijzYa+/TRLut2s1ib23BuvhNp4nozdLckWXKJhSonU27oL5rFf6uLb
+         sVmP5b3NkzIpCOgVgwUs7Qqt2nONvxybNRC4Djhimt6bkMSifxcJxhc4cHDE/CU8MoI1
+         Kt75amPyGhQ8WSKPNcHyJ/9VA5/rIrvF7ljtc/RHe6/aJ8AcqMJFNBJD1wpqynvZUu3W
+         igjw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1790785184; x=1791389984;
-        h=content-transfer-encoding:content-type:cc:to:subject:message-id
-         :date:from:in-reply-to:references:mime-version:x-gm-gg
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
-         :content-type;
-        bh=nG2T2Alp7V7AR4zEW4H2cF7/r2rfzmYJ1/XwqhpbHio=;
-        b=pzRcwE46ULMvQgrRs6xHZdB0uEXQrdQ8KIt4H9G0t8foMJgDBe7IAX6JOJpVVCG/6a
-         sfePvXxsxWJMRtW3C1xncDQT7A/wtW0v6G/REGjsykyKrbZktguqpkVlOgT+RL3en40W
-         89fd5KIXa10oF/oNzO34nQsQomm9+MZJfxL2hJBnaTq6oSjICx3jK+2Ht9R7MscG4w/x
-         Wd5PO+Yo04gIs4HekoHnqmdHIKuwLfUgg1WgM7DGwiv3OaFXb3o6W2kllWfkeHzbUObK
-         s3lBp4Zeq0bw1aKBwlEwzb5yzPZbR/LFxlVACGXmE6K4p6ghjwwQDHur8PcX5y/tuYNW
-         BfIA==
-X-Gm-Message-State: AFq9FYIBvoOqCslx77nsP5NCqWOwUb15RbP4EfkdvqQ+8MezVwoUOERa
-	IXaxx9J5cZY9r2lqDhVCFTyJJJKzuUmTe6bmkpLmQOIH1rxTWMItzSmGKm8vDHqoXX5K+xEeSfa
-	D/EeU7Ye08v3wRAg9TAXfV4P75UGEtq4=
-X-Gm-Gg: AYBFou1yiA6fXltV3LiERxUJrArAtWT4XP+WsjgQbLpOY/lfINc97evmilQDll+sVlL
-	7TCeXnL/42fRk0Hos6rRm+vAWqXUGED9Kd8EfjKvjNnbpDX4K90K+u/cIrRlhzW5ZEqVXuSiJsg
-	UtNdaeQ3gPzSLiOCGMSPg3BkCPupQR/mQGo06OQ5+UV4ItKUI9YrD3BUamdo3K3n5ssQZP1z6EP
-	Gtd2iev2K+Kxwr32FpfdBTq2mazqSfTBVJF7jyMxaEx8wFH58ML5aMIb6bxgEb/FxZUhcPtHWSW
-	uIJ/qHvm93EDqMwWxwt4i+YCDBANmGyeFU3HhZmYhmYecpKHobtgzgrKXwb+UXbPE77Q3SogWJE
-	UbYobZHVXhCiStNdnWkU9Z4uZePK9mqJnKnpEjMzKrA==
-X-Received: by 2002:a17:906:478d:b0:c2b:ca9c:1379 with SMTP id
- a640c23a62f3a-c2e23d80235mr174035666b.28.1790785184054; Wed, 30 Sep 2026
- 09:19:44 -0700 (PDT)
+        d=1e100.net; s=20260707; t=1790786971; x=1791391771;
+        h=content-type:cc:to:subject:message-id:date:from:mime-version
+         :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to:content-type;
+        bh=m/oaydNeB7KKez2Jzp2jljrx95qkFNgazQFseegu3Nw=;
+        b=tbUe9LAFgmEmGpI5vnvJQNnO0PckRAWSeY05rCs1hDyQuYoC2b82EwPRcxkaKsODFr
+         SYc8yLwAyXCwMHwEv6iCTqvUu9kcvhuykd+Ja2ypCn6wQCTNLEr0mXICTXNhTJIiB62s
+         W12wz0zF0f9ZaE4olVhziUIs58jPU+yqiO9bPjAduFNNDzY82fuvPecu/oM72f/u1o6r
+         prrtp0k5mx5Xg4mPhCfPHp28rKqs6ShSU0HkwKAhyB2+DZJ1OR7Vkp+iWFsttSJkFWC3
+         84BGSXvT1VwxJB5+zsniWxB2WDjjq/0uhDZL1Nm6Kh9nPmMP7rmIZqi1rzbrFWt/hmpr
+         f3bA==
+X-Forwarded-Encrypted: i=1; AKwUvBzVPIuqdDAJQH9bJODMst2urDzVSSbdMUgpV/vexRPdb2RzWdWGLSGF0sXPgLmZdosrvS+0zSDWUjg0D9ZYvg==@lists.infradead.org
+X-Gm-Message-State: AFq9FYLIGH/cDZuMtApwgrcc5xZubp7B+Q9zpB6KgCuTjhY9fpN5lLoA
+	AiDV4HY/mGhyU4q+s4OcdTE82H9kzSqG4R8A1OJcxrqelvfjehoSGCCWBMQ5yXJD9VB0LZg55/v
+	EDQe7YVlbeA02DvLqCodwncy/hzEspt0=
+X-Gm-Gg: AYBFou3K5OjvtxoUQFMCFDafl/kJHr1A+8m/HZQZUaoSimB+fljzkxZD2LKkfv/3bhp
+	M35gd6e6YnKHkdhKWDGjaNxcqYmnOOBZbTJrM8poAfFZjSN2OLm1DAxplMDZ8XTTVMYuKhkCUou
+	tOhSMpeEpAEEBg8n0Wwwhku540sSk0JQ0kfKVmCf60p9QuPBgVqDgClJobTSeQ73EbZG/PVI+jA
+	vOkk/tp5yVEVQFRRRKBKk7ffQcZ3jPttIISSTIHHpP+zVkFe8N4MiE/Am4kt5g1zpBCprQ4dP71
+	CNGSkEF7rIrc9H2O2sS35ZJGVV2LZ6DB0MzRI8rbl+4Y2lYL0sa+SILqqZYlY2giKMXL3xxLAJi
+	fhCEuAMuRxaTomWlIfGV/jQDxvtH0tDbU0PuuaLYgODv5
+X-Received: by 2002:a05:6214:54c5:b0:90c:a989:a68a with SMTP id
+ 6a1803df08f44-917aa2f093bmr3499616d6.11.1790786971288; Wed, 30 Sep 2026
+ 09:49:31 -0700 (PDT)
 MIME-Version: 1.0
-References: <20260820085941.380401-1-pawlik.dan@gmail.com> <20260820085941.380401-2-pawlik.dan@gmail.com>
-In-Reply-To: <20260820085941.380401-2-pawlik.dan@gmail.com>
-From: Daniel Pawlik <pawlik.dan@gmail.com>
-Date: Wed, 30 Sep 2026 18:19:31 +0200
-X-Gm-Features: AclHuK9VCY3Sjvtv8H3qKyzm85-MwnmIxc92I19Mmm-MRvCk9MqeBH9bmWUgmek
-Message-ID: <CALC2AphzQ=dHOk2Yjtaw=i2euCLxo+Lk0kO50ixtYydO0yzBHA@mail.gmail.com>
-Subject: Re: [PATCH v10 2/2] net: airoha: npu: use cacheline-sized buffers for
- mailbox DMA
-To: netdev@vger.kernel.org
-Cc: linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
-	kuba@kernel.org, lorenzo@kernel.org, nbd@nbd.name, sean.wang@mediatek.com, 
-	Mark-MC.Lee@mediatek.com, davem@davemloft.net, edumazet@google.com, 
-	pabeni@redhat.com, andrew+netdev@lunn.ch, yangshiji66@outlook.com, 
-	upstream@airoha.com, szymon.datko@gmail.com
+From: Claudio Gratton <cla20gra@gmail.com>
+Date: Wed, 30 Sep 2026 18:49:19 +0200
+X-Gm-Features: AclHuK8KG73Rdozl3C21tUCJ3Qj_vy52lU6tUV5dAYIHAggwiXb0lvze3F5m_BU
+Message-ID: <CAGohoTay793z6HftCY-1m+DP0yCJ1eeB+q4p5-z7+bOnrOWOCQ@mail.gmail.com>
+Subject: mt7925e: endpoint keeps a stale zero-latency LTR after s2idle resume,
+ blocks package C6/C10 (Panther Lake laptop)
+To: linux-wireless@vger.kernel.org
+Cc: nbd@nbd.name, lorenzo@kernel.org, ryder.lee@mediatek.com, 
+	shayne.chen@mediatek.com, sean.wang@mediatek.com, 
+	linux-mediatek@lists.infradead.org, linux-pci@vger.kernel.org
 Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260930_171946_587061_4B57C057 
-X-CRM114-Status: GOOD (  27.21  )
+X-CRM114-CacheID: sfid-20260930_174934_338942_8310436A 
+X-CRM114-Status: GOOD (  15.98  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -136,223 +129,73 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Kuba, Lorenzo, Airoha team,
+Hi,
 
-I found a concrete lead for the unresolved cacheline patch in the vendor
-firmware. The installed en7581_MT7996_npu_rv32.bin matches the blob in
-linux-firmware commit 1043c0303910 by SHA-256.
+I may have found a resume issue with the MT7925 PCIe Wi-Fi card
+(mt7925e) on a Panther Lake laptop. I am not sure whether the driver,
+the firmware or the platform is at fault, so I'm asking here first.
+Everything below is marked either "measured" or "guess".
 
-At file offset 0x3a9c, the Wi-Fi mailbox handler converts the supplied
-buffer address before reading the command:
+Hardware / software
+- HP OmniBook 7 14-hg0xxx, Core Ultra X7 358H (Panther Lake), Wi-Fi/BT
+MT7925, mt7925e at 0000:2c:00.0, root port 0000:00:1c.0
+- Reproduced on Arch linux 7.2.3.arch1-3 and on linux-omarchy 7.2.5-3
+(Arch config plus patches). Not tested on a vanilla mainline kernel.
 
-  lui   a5,0x40000
-  addi  a4,a5,-1
-  and   a4,a4,a0
-  or    a4,a4,a5
-  lw    a1,0(a4)
+Symptom (measured)
+- Fresh boot: the PMC LTR table (/sys/kernel/debug/pmc_core/ltr_show)
+shows SOUTHPORT_B = 0x0 and the package reaches PC10 at idle.
+- After the first s2idle resume in a boot, SOUTHPORT_B reads
+0x80008000 (valid, zero latency) and stays there. The package then
+stays in PC2 (PC6/PC10 residency 0%) although everything else is idle.
+- Idle power on battery is roughly 0.5 W higher while it is stuck
+(about 3.1-3.6 W vs 2.0-3.1 W, screen on). I also changed other things
+in the same period (a Bluetooth autosuspend workaround), so treat the
+0.5 W as approximate. With "echo 1 > ltr_ignore" the package reaches
+PC10 again.
 
-This implements (address & 0x3fffffff) | 0x40000000. Both 0xbf6cf000
-and 0xff6cf000 produce 0x7f6cf000. W1700K has 2 GiB of RAM starting
-at 0x80000000; its current SWIOTLB pool starts at 0xff6cf000.
+Why I think it is this Wi-Fi card (measured)
+- Unloading mt7925e changes SOUTHPORT_B to a constant 0x88418841.
+- Toggling the Wi-Fi radio (rfkill), NVMe I/O bursts and an empty USB4
+port do not change it.
 
-The handler also returns 1 (success) for an unsupported operation type
-at file offset 0x3b4a. My earlier claim that mailbox success proved a
-correct command read was therefore unjustified. The traces do not
-establish a read-succeeds/write-fails limitation.
+State across the resume (measured, one suspend cycle, "systemctl suspend")
+- Before suspend: SOUTHPORT_B = 0x0.
+- Immediately after resume, before any userspace hook: SOUTHPORT_B = 0x80008000.
+- Endpoint 2c:00.0 stays in D0; DevCtl2 = 0x0409 (LTR Mechanism Enable
+set) and the LTR capability max snoop/no-snoop latency 0x100f/0x100f
+are identical before and after.
+- Root port 00:1c.0: DevCtl2 = 0x0400 and LnkCtl = 0x0c43, unchanged.
+- No kernel messages from mt7925e or PCI during the resume.
 
-This suggests an address-window problem, but the NPU-side bus mapping
-still needs confirmation. The cacheline patch avoids the observed bounce
-path without constraining the address of future direct allocations.
+Workaround that fixes it (measured)
+- About 6 s after resume, clear and re-set DevCtl2 bit 10 (LTR
+Mechanism Enable) on the endpoint, 0.3 s apart:
+setpci -s 2c:00.0 CAP_EXP+0x28.w=<old & ~0x0400>; sleep 0.3; setpci -s
+2c:00.0 CAP_EXP+0x28.w=<old>
+The endpoint then sends a fresh LTR message, SOUTHPORT_B returns to
+0x0 and PC10 residency comes back (about 28% of samples in my run,
+idle 1.99 W with the screen on).
+- I run it from a systemd-sleep hook as a stop-gap. It has fixed the
+state after every resume I have tried, including a repeat this
+afternoon.
 
-Can Airoha confirm which host DRAM range this alias covers, and whether
-mailbox buffers above 0xbfffffff are supported?
+What I do not know (guess)
+- My guess is that the chip or its firmware re-sends a "0 latency" LTR
+message at resume and never sends the update. I cannot rule out that
+the driver or the platform leaves something unprogrammed; the
+unchanged config space only shows that it is not a PCI-level
+difference I can see.
+- I have not checked whether other MT7925/MT7922 platforms, or
+Intel/AMD systems, show the same.
 
-I have prepared, but not yet run, a test retaining all 2 GiB of RAM and
-the 12-byte DMA_BIDIRECTIONAL mapping, with the SWIOTLB boot pool below
-0xc0000000. A successful version response through a verified bounced
-mapping there would help distinguish the address limitation from a
-SWIOTLB copy/cache issue.
+Questions
+1. Has anyone seen the same behaviour, and is it known on the firmware side?
+2. If it is a driver issue, would re-triggering the LTR message at
+resume (as above) be acceptable in mt7925e, or is there a cleaner way?
+
+I can provide full logs, run patches or test firmware versions.
 
 Thanks,
-Dan
-
-czw., 20 sie 2026 o 11:00 Daniel Pawlik <pawlik.dan@gmail.com> napisa=C5=82=
-(a):
->
-> On non-coherent ARM64 (EN7581), the kernel's dma_direct_map_page()
-> forces swiotlb bounce buffering when:
->
->   !IS_ALIGNED(phys | size, dma_get_cache_alignment())
->
-> The NPU mailbox buffers are 12-24 bytes, well below the 64-byte cache
-> line size, so this check always fails regardless of physical address
-> alignment. The swiotlb sync path itself works correctly, but the
-> EN7581 NPU cannot DMA-write to the swiotlb bounce buffer address
-> range =E2=80=94 it reads commands fine (mbox_status=3D0x7 success) but ne=
-ver
-> writes responses back, leaving response fields as zeros.
->
-> This was confirmed through five boot traces on a Gemtek W1700K:
->
->   - Boots 1-4: all streaming DMA through swiotlb (is_swiotlb=3D1),
->     bounce buffer byte-identical to pre-map after NPU completion,
->     even after explicit CPU cache invalidation (dcache_inval_poc).
->     NPU version reads 0.0.
->
->   - Boot 5: kmalloc'd cache-line-aligned buffer bypasses swiotlb
->     (is_swiotlb=3D0 on all 169 mappings), NPU writes response data
->     directly, version reads 0.1111, WiFi fully functional.
->
-> Fix by rounding mailbox buffer allocations up to
-> dma_get_cache_alignment() and mapping the rounded length. The original
-> payload size is still programmed into the mailbox length register.
-> kmalloc returns cache-line-aligned pointers on ARM64 for allocations
-> >=3D ARCH_KMALLOC_MINALIGN, so the IS_ALIGNED check passes and swiotlb
-> is not triggered.
->
-> Fixes: 6f884eb87a79 ("net: airoha: Fix DMA direction for NPU mailbox buff=
-er")
-> Link: https://patchwork.kernel.org/project/linux-mediatek/patch/202608141=
-10017.2795022-1-pawlik.dan@gmail.com/
-> Link: https://patchwork.kernel.org/project/linux-mediatek/patch/202608091=
-52813.585797-1-pawlik.dan@gmail.com/
-> Link: https://patchwork.kernel.org/project/linux-mediatek/patch/202608050=
-70851.2885888-1-pawlik.dan@gmail.com/
-> Assisted-by: Claude:claude-opus-4-6
-> Signed-off-by: Daniel Pawlik <pawlik.dan@gmail.com>
-> ---
->  drivers/net/ethernet/airoha/airoha_npu.c | 25 +++++++++++++++---------
->  1 file changed, 16 insertions(+), 9 deletions(-)
->
-> diff --git a/drivers/net/ethernet/airoha/airoha_npu.c b/drivers/net/ether=
-net/airoha/airoha_npu.c
-> index 4045d1eb93ea..3416f921f961 100644
-> --- a/drivers/net/ethernet/airoha/airoha_npu.c
-> +++ b/drivers/net/ethernet/airoha/airoha_npu.c
-> @@ -5,6 +5,7 @@
->   */
->
->  #include <linux/devcoredump.h>
-> +#include <linux/dma-mapping.h>
->  #include <linux/firmware.h>
->  #include <linux/platform_device.h>
->  #include <linux/of_net.h>
-> @@ -160,15 +161,21 @@ struct wlan_mbox_data {
->         DECLARE_FLEX_ARRAY(u8, d);
->  };
->
-> +static size_t airoha_npu_mbox_size(size_t len)
-> +{
-> +       return ALIGN(len, dma_get_cache_alignment());
-> +}
-> +
->  static int airoha_npu_send_msg(struct airoha_npu *npu, int func_id,
->                                void *p, int size)
->  {
->         u16 core =3D 0; /* FIXME */
->         u32 val, offset =3D core << 4;
->         dma_addr_t dma_addr;
-> +       size_t map_len =3D airoha_npu_mbox_size(size);
->         int ret;
->
-> -       dma_addr =3D dma_map_single(npu->dev, p, size, DMA_BIDIRECTIONAL)=
-;
-> +       dma_addr =3D dma_map_single(npu->dev, p, map_len, DMA_BIDIRECTION=
-AL);
->         ret =3D dma_mapping_error(npu->dev, dma_addr);
->         if (ret)
->                 return ret;
-> @@ -191,7 +198,7 @@ static int airoha_npu_send_msg(struct airoha_npu *npu=
-, int func_id,
->
->         spin_unlock_bh(&npu->cores[core].lock);
->
-> -       dma_unmap_single(npu->dev, dma_addr, size, DMA_BIDIRECTIONAL);
-> +       dma_unmap_single(npu->dev, dma_addr, map_len, DMA_BIDIRECTIONAL);
->
->         return ret;
->  }
-> @@ -333,7 +340,7 @@ static int airoha_npu_ppe_init(struct airoha_npu *npu=
-)
->         struct ppe_mbox_data *ppe_data;
->         int err;
->
-> -       ppe_data =3D kzalloc_obj(*ppe_data);
-> +       ppe_data =3D kzalloc(airoha_npu_mbox_size(sizeof(*ppe_data)), GFP=
-_KERNEL);
->         if (!ppe_data)
->                 return -ENOMEM;
->
-> @@ -354,7 +361,7 @@ static int airoha_npu_ppe_deinit(struct airoha_npu *n=
-pu)
->         struct ppe_mbox_data *ppe_data;
->         int err;
->
-> -       ppe_data =3D kzalloc_obj(*ppe_data);
-> +       ppe_data =3D kzalloc(airoha_npu_mbox_size(sizeof(*ppe_data)), GFP=
-_KERNEL);
->         if (!ppe_data)
->                 return -ENOMEM;
->
-> @@ -375,7 +382,7 @@ static int airoha_npu_ppe_flush_sram_entries(struct a=
-iroha_npu *npu,
->         struct ppe_mbox_data *ppe_data;
->         int err;
->
-> -       ppe_data =3D kzalloc_obj(*ppe_data);
-> +       ppe_data =3D kzalloc(airoha_npu_mbox_size(sizeof(*ppe_data)), GFP=
-_KERNEL);
->         if (!ppe_data)
->                 return -ENOMEM;
->
-> @@ -399,7 +406,7 @@ static int airoha_npu_foe_commit_entry(struct airoha_=
-npu *npu,
->         struct ppe_mbox_data *ppe_data;
->         int err;
->
-> -       ppe_data =3D kzalloc_obj(*ppe_data, GFP_ATOMIC);
-> +       ppe_data =3D kzalloc(airoha_npu_mbox_size(sizeof(*ppe_data)), GFP=
-_ATOMIC);
->         if (!ppe_data)
->                 return -ENOMEM;
->
-> @@ -434,7 +441,7 @@ static int airoha_npu_ppe_stats_setup(struct airoha_n=
-pu *npu,
->         int err, size =3D num_stats_entries * sizeof(*npu->stats);
->         struct ppe_mbox_data *ppe_data;
->
-> -       ppe_data =3D kzalloc_obj(*ppe_data, GFP_ATOMIC);
-> +       ppe_data =3D kzalloc(airoha_npu_mbox_size(sizeof(*ppe_data)), GFP=
-_ATOMIC);
->         if (!ppe_data)
->                 return -ENOMEM;
->
-> @@ -466,7 +473,7 @@ static int airoha_npu_wlan_msg_send(struct airoha_npu=
- *npu, int ifindex,
->         int err, len;
->
->         len =3D sizeof(*wlan_data) + data_len;
-> -       wlan_data =3D kzalloc(len, gfp);
-> +       wlan_data =3D kzalloc(airoha_npu_mbox_size(len), gfp);
->         if (!wlan_data)
->                 return -ENOMEM;
->
-> @@ -489,7 +496,7 @@ static int airoha_npu_wlan_msg_get(struct airoha_npu =
-*npu, int ifindex,
->         int err, len;
->
->         len =3D sizeof(*wlan_data) + data_len;
-> -       wlan_data =3D kzalloc(len, gfp);
-> +       wlan_data =3D kzalloc(airoha_npu_mbox_size(len), gfp);
->         if (!wlan_data)
->                 return -ENOMEM;
->
-> --
-> 2.55.0
->
-
-
---=20
-Z powa=C5=BCaniem,
-Daniel Pawlik
+Claudio Gratton
 
