@@ -4,113 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2895DCA5FB1
-	for <linux-mediatek@archiver.kernel.org>; Wed, 30 Sep 2026 08:17:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 57784CA5FC1
+	for <linux-mediatek@archiver.kernel.org>; Wed, 30 Sep 2026 08:31:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=mRcKtZdHFiy0cgyAQBIRvb56t4wOCvKeqqa65x2mOhk=; b=4/xvUL9wuRknfpIn6OR1DXlJlN
-	kEW2o2SUZXY1AvKwduuXhlGsXDfFb/NPipR2vxbEJLFwPcwSiyV4WVCT5lK4npQInIMFu0TGDUvIx
-	sEs79We8nqqttHZYO322IZmDr0modp9EpzJX9qvEp1qtsdheIz6m8ydIcxTgyRPTemDf6tC86aoGT
-	+HYMn2+2WsRFmG7IA2TXO1kda4971pjiiK+/BdyJaYv9n1sfSmn/ebZAP2tgYdxBZGFTwWZEz0Gwr
-	Z8dQKdM1Y9nO6Lniuaot5LECg+dPaLw7MQMvfbLP9XfLpVP9Bwh2EIWEOevI9lEYFbo478EpPQTrU
-	AoluL/rw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=rrFVenRda4f6shdQ7huUXas9ap2EQjTLxRuQkX7ZbYc=; b=14XcmcmBc55KinxoTgod0rfMIU
+	c3c861BffEp2OGUSRp3PXJ+Uzy0gxiM+vWJndP2+XjoznEW93GbwrknzYi5HXyL+nC37i/ShhEwK9
+	9U+aPnuwe3qn65fkX+y6v435k65N6Xn9zXB1nyfkLZHFiC18CV6gdULs+aS1oEND9DSBGqyLePLJN
+	BRsdBvCmVEzjMCuBebo0alM1w0gJF8FT7LDcDFhwMbncQJMBI08ySJx4v2ozqUJbSOLn8njMYlFt/
+	MLNZddgOb45YU6R0jnH95srNj1C0rSKWTSLlu5ckCqEByEFOfZ0Xzfjhdvm85lQD3OWDC0++4Lf+B
+	l/Uex34A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xBpVb-00000005OqU-34sj;
-	Wed, 30 Sep 2026 08:17:47 +0000
-Received: from mail-yx2-x0d.google.com ([2607:f8b0:4864:41::d])
+	id 1xBpid-00000005Qgc-0ijq;
+	Wed, 30 Sep 2026 08:31:15 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xBpVY-00000005Op6-1wOI
+	id 1xBpia-00000005Qft-0HZF
 	for linux-mediatek@lists.infradead.org;
-	Wed, 30 Sep 2026 08:17:46 +0000
-Received: by mail-yx2-x0d.google.com with SMTP id 956f58d0204a3-67408b109e3so2206249d50.1
-        for <linux-mediatek@lists.infradead.org>; Wed, 30 Sep 2026 01:17:43 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1790756263; cv=none;
-        d=google.com; s=arc-20260327;
-        b=sFqBmucc7pgwh4agIeRu5fLRKenGOzYcMMrqkZkaeqjdgi5FIz4z7IqBwssiq6oVEt
-         EaDAkEiodLxNHBREROzdjdyUDbEA7Qb4soVc04ko4WO+TfVZl4/Xw6eiOcVr/aDoXGvg
-         wRRpMTLQ5lzq7QascuhPLhU716MiqwI9Q3KMefezUWNeCItKWHiYRD7vY0MpO4IWpJKJ
-         mURrLwMon2h3bSFcLmSeQjBHQdRjs0boSaIaJTfQ/65Rib3CUEayUOdB8u6fJKIazJE+
-         vkhKV+6XksQYaRggqqw59pGBe/SOgDKHNu7WTbx78S/Nj7pitV+AHfuqjODnZRUtrlvg
-         eHQQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20260327;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=mRcKtZdHFiy0cgyAQBIRvb56t4wOCvKeqqa65x2mOhk=;
-        fh=EYuOeVOE8siyEP7lymT4xA69hXVF0fgaHqaRsADV3V8=;
-        b=ld+atxVciQtYdD5lxtrg3IVOxVyx3Rvf+/20VNHnXJ3eUtOgm6bU4114IpFyx7yT7S
-         seFfx7lGOEUUQlHZWFVd86uTyNPaGFSfqCPSZb9ap1Uv/DgIuJc8gXbsrg7uGDHiBI0W
-         AcvLWcXlXrbjDHh0DcINrPbg7RqyGb0fZjIB6YOXbFTPbOCt+MmxOWc7HhWoRzqZU2uo
-         DUMZa5BANgfopIHmuIH65vvL+xNOl903tY9qQo649Mb1FtNKDVoN1tQG/zt2LUGA+gWZ
-         zt1GTedogXBI2jchsl8YGanRicQUm901+CL3dqBb+xk7ArT+SaKouqBhLA4dDeqW4RGD
-         czSw==;
-        darn=lists.infradead.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1790756263; x=1791361063; darn=lists.infradead.org;
-        h=content-transfer-encoding:content-type:cc:to:subject:message-id
-         :date:from:in-reply-to:references:mime-version:from:to:cc:subject
-         :date:message-id:reply-to:content-type;
-        bh=mRcKtZdHFiy0cgyAQBIRvb56t4wOCvKeqqa65x2mOhk=;
-        b=AbPh1PvpT6ZZ2+IigBswycDC2s0OY/4au/Zq1I4fmwGErxdmjbkAG8F7i12Mhgw9il
-         wr7XUIKoRmWphVbcm7MAVZMmR6y1PZC+SYls9Y9groMkgLXjkcrPHYMbgoFFuia5ZHyG
-         GF6vxJB5PH2XChF8EMLe0pTSs1VkwO+rhh7w8=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1790756263; x=1791361063;
-        h=content-transfer-encoding:content-type:cc:to:subject:message-id
-         :date:from:in-reply-to:references:mime-version:x-gm-gg
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
-         :content-type;
-        bh=mRcKtZdHFiy0cgyAQBIRvb56t4wOCvKeqqa65x2mOhk=;
-        b=nJ2cD0n2LsSS4nz92+dAScnuz52mu3rJWkYNAjX6rm2Z4p+c4Jso0wZU2oFX1bh4Cw
-         KpMqrY83vcFPf6VWpt5P6EvezhG8Vf2SKBlfaw3PZiNsFxTLg1rZ3saUndmBdn/4MFxO
-         c19XRYzFkTjFdm8S5HOj1uZa9JlXfQ/wZJA2IFl3jtOfbNQpu8PkUdz/oWnXWHLKaCm0
-         VF3W97Y5CAA5RlJbsgCGnBRiD8Tw152dlBqOcRzjhaPCs4Cgl2hKPNV9AhxkDQHzqk9b
-         6zKzTvspNM164dWPYJRbZBFd8QIOMr7u4w9pyI663hnjJWgh+VuKbokb9Hx8yXRt+RmF
-         NDOA==
-X-Forwarded-Encrypted: i=1; AKwUvBwgfPOcBnrVQPFJqxRSWCoJx2FLYfyLoUKUQCmTrzzzvdAPTwF1IKir7Uw8j0NcwyvlQ7mjzESb4QYEE/jslw==@lists.infradead.org
-X-Gm-Message-State: AFq9FYKyUhxQGf6AmYSyoSEjhaAnkIHeN/+RjXwxojB13fJr59mTnJJ5
-	kRmxNEoXUVMuZH5WoX36JMI9qwpkFLNa4abCfUIb7MiEiCgQaOkpTIn75hBICJAkkzvlc95sKyH
-	/77FLyJKlZVPgXc+gaxL7iUP5bHGuzOeo+xX7s8Dv
-X-Gm-Gg: AYBFou2ConBvLypwVQwonEJfs2haFHh7mH1f9v7lpgMGIHkw6dRwsGtpNT4HtHxRnLc
-	GrjTRqrdw9C9siFtuW9cFiFw6kEFP5icjMu+Oj+Hy2v2X994jldPO+NtD+B77D1viIyeCtZKNq2
-	fFQqNLL7NiZ/lMCgw/WkGJ1XWDJ2g2Wsg4YICcwkc43j1GczPiZevXKKNCnu1zN52hHsDL3/EhB
-	kVOBk/q6Q456FpRjiUCKSHjGdvV1kOtCk97GF8r4YN7qV8rN5Wb6WRgR3Ko2BKTPiH0YQwXxMm2
-	oDHMGjY1VeWMytDO8hWXri9WessX5bddNEAeMWYUov35HyBkdVvQKJn9aYaeC1N4cdWned4QUt9
-	8mTnw/mQV2u0NZZ8mry48p6qOBZ8fTuU=
-X-Received: by 2002:a05:690e:138e:b0:676:88ca:2799 with SMTP id
- 956f58d0204a3-67688ca33c7mr12124d50.0.1790756263029; Wed, 30 Sep 2026
- 01:17:43 -0700 (PDT)
+	Wed, 30 Sep 2026 08:31:13 +0000
+X-UUID: 47c72400bca911f1acbe4559397dec65-20260930
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=rrFVenRda4f6shdQ7huUXas9ap2EQjTLxRuQkX7ZbYc=;
+	b=oex4Ql7KpnVr/PEFX9RoUF37SA71fTi85RqHqyIhmzIHXATzfMLep7H0LTyn7+WwwMzA83jDOT7Lq2cVkDil+DLwsftuP+2xZRpMOYGAgYuhqtrqmTnlCZkZCx9OWFkvnlHaI97oy3aBE5cRfYyjKmOvSQY2LqfsFb/zE6vTge8=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.3.20,REQID:015e594c-ffa0-4a1f-a1e3-b9bd61509214,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:291e20b,CLOUDID:96c3b458-f207-4360-abb2-8a360f715574,B
+	ulkID:nil,BulkQuantity:0,SF:102|836|865|888|898,TC:-5,Content:0|15|50|99,E
+	DM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:-1,COL:0,OSI:0,OSA:0,
+	AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 2,SSN|SDN
+X-CID-BAS: 2,SSN|SDN,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
+X-UUID: 47c72400bca911f1acbe4559397dec65-20260930
+Received: from mtkmbs10n1.mediatek.inc [(172.21.101.34)] by mailgw02.mediatek.com
+	(envelope-from <jb.tsai@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1406588013; Wed, 30 Sep 2026 01:31:06 -0700
+Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
+ mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.2562.29; Wed, 30 Sep 2026 16:31:04 +0800
+Received: from mtksitap99.mediatek.inc (10.233.130.16) by
+ mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.2562.29 via Frontend Transport; Wed, 30 Sep 2026 16:31:04 +0800
+From: JB Tsai <jb.tsai@mediatek.com>
+To: <nbd@nbd.name>, <lorenzo@kernel.org>
+CC: <linux-wireless@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
+	<Sean.Wang@mediatek.com>, <Quan.Zhou@mediatek.com>, <Ryder.Lee@mediatek.com>,
+	<litien.chang@mediatek.com>, <Charlie-cy.Wu@mediatek.com>,
+	<jb.tsai@mediatek.com>
+Subject: [PATCH v2] wifi: mt76: connac2: fill TXD spe_idx for connac2 fixed-rate frames
+Date: Wed, 30 Sep 2026 16:31:02 +0800
+Message-ID: <20260930083103.1284937-1-jb.tsai@mediatek.com>
+X-Mailer: git-send-email 2.45.2
 MIME-Version: 1.0
-References: <20260929-rbrue-suez-upstreaming-mtk-pinctrl-raw-regmap-v1-1-db92943f42cb@gmail.com>
- <20260930080609.dnK1-Uta@linutronix.de>
-In-Reply-To: <20260930080609.dnK1-Uta@linutronix.de>
-From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Wed, 30 Sep 2026 16:17:31 +0800
-X-Gm-Features: AclHuK94rH4mX8n1W8Ppf4V2xglhOfwH81bL1d3SpkI1GiY_ngCECHUlOisIdXY
-Message-ID: <CAGXv+5FssQL3Go3VDFbLAT6HP12RS3U3OgxhYOeapzs64QTdUw@mail.gmail.com>
-Subject: Re: [PATCH] pinctrl: mediatek: common-v1: Use a raw spinlock for the
- pinctrl regmap
-To: Sebastian Andrzej Siewior <bigeasy@linutronix.de>, Ryan Brue <ryanbrue.dev@gmail.com>
-Cc: Mark Brown <broonie@kernel.org>, Lee Jones <lee@kernel.org>, Arnd Bergmann <arnd@arndb.de>, 
-	Sean Wang <sean.wang@kernel.org>, Linus Walleij <linusw@kernel.org>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	Bartosz Golaszewski <brgl@kernel.org>, Clark Williams <clrkwllms@kernel.org>, 
-	Steven Rostedt <rostedt@goodmis.org>, Yingjoe Chen <yingjoe.chen@mediatek.com>, 
-	Chaotian Jing <chaotian.jing@mediatek.com>, Hongzhou Yang <hongzhou.yang@mediatek.com>, 
-	linux-mediatek@lists.infradead.org, linux-gpio@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-rt-devel@lists.linux.dev, mfd@lists.linux.dev
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260930_011744_585424_601EA427 
-X-CRM114-Status: GOOD (  45.25  )
+X-CRM114-CacheID: sfid-20260930_013112_169406_0C95BEAA 
+X-CRM114-Status: GOOD (  15.50  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -125,199 +86,86 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Sep 30, 2026 at 4:06=E2=80=AFPM Sebastian Andrzej Siewior
-<bigeasy@linutronix.de> wrote:
->
-> On 2026-09-29 12:57:51 [-0500], Ryan Brue wrote:
-> > The EINT irq_chip emulates both-edge interrupts by reading the pin's
-> > level through mtk_gpio_get() and the pinctrl regmap. It does so from it=
-s
-> > unmask and set_type callbacks, under the raw irq_desc lock, and from th=
-e
-> > chained handler, in hard interrupt context. The regmap comes from sysco=
-n
-> > and locks with a spinlock_t, which may sleep on PREEMPT_RT. With
-> > CONFIG_PROVE_LOCKING, the first request of a both-edge EINT prints
-> > "[ BUG: Invalid wait context ]" and turns lockdep off for the rest of
-> > the boot.
->
-> This duplicates syscon node and creates a new one with the
-> .use_raw_spinlock=3Dtrue attribute. Now, syscon is always low-level acces=
-s
-> with MMIO access, right?
->
-> I've been wondering if we could make drivers/mfd/syscon.c use the
-> raw_spintlock_t instead making this sort of change for every driver that
-> has this "requirement".
->
-> If this is all MMIO reads/ writes then it should work. I'm not sure why
-> we have the lock to begin with. Probably due to the cache/ async writes.
-> Cache wise just the flat-cache works since the other (like rbtree)
-> allocates memory on write under the lock. So this does not work.
-> What I am bit worried about are the bulk_write and multi_reg_write where
-> multiple writes happen under the lock.
+From: Charlie-cy Wu <Charlie-cy.Wu@mediatek.com>
 
-AFAIK the lock is primarily there to serialize concurrent MMIO access,
-especially read-modify-write patterns in regmap_*_bits().
+On connac2 chipsets - MT7920, MT7921 and MT7922 - the spe_idx of
+fixed-rate frames was never programmed, so every management frame -
+auth and assoc req included - went out 1SS 1T on WF0 instead of 1SS 2T
+duplicate, giving up ~3dB of array gain during connection setup, which
+is exactly when the link budget is worst.
 
-> > Create the regmap for the "mediatek,pctl-regmap" nodes here instead,
-> > with use_raw_spinlock set, and register it with syscon so that other
-> > users of a node, such as the ethernet on MT2701 and MT7623, share its
-> > lock. If the node already has a syscon regmap, keep using it. Select
-> > REGMAP_MMIO, which the driver now uses directly.
-> >
-> > Fixes: 3221f40b7631 ("pinctrl: mediatek: emulate GPIO interrupt on both=
--edges")
-> > Assisted-by: LLM
-> > Signed-off-by: Ryan Brue <ryanbrue.dev@gmail.com>
-> > ---
-> > Found on the Amazon Fire HD 10 (2017), an MT8173 tablet that is not
-> > upstream yet, where usb_extcon_probe() requests the USB ID pin's
-> > both-edge EINT. With this patch lockdep stays on through boot, CPU
-> > hotplug, suspend to RAM, and lid open/close edges on the hall sensor's
-> > both-edge EINT. Only MT8173 was tested. Nothing else uses the node
-> > there, so the -EEXIST fallback was not exercised.
-> >
-> > checkpatch warns that the regmap_config should be const. It is copied
-> > per node to set name and max_register, as syscon does.
-> > ---
-> >  drivers/pinctrl/mediatek/Kconfig              |  1 +
-> >  drivers/pinctrl/mediatek/pinctrl-mtk-common.c | 59 +++++++++++++++++++=
-+++++++-
-> >  2 files changed, 58 insertions(+), 2 deletions(-)
-> >
-> > diff --git a/drivers/pinctrl/mediatek/Kconfig b/drivers/pinctrl/mediate=
-k/Kconfig
-> > index 30ef3dc5dfb1..764256901d6a 100644
-> > --- a/drivers/pinctrl/mediatek/Kconfig
-> > +++ b/drivers/pinctrl/mediatek/Kconfig
-> > @@ -17,6 +17,7 @@ config PINCTRL_MTK
-> >       select GENERIC_PINCONF
-> >       select GPIOLIB
-> >       select EINT_MTK
-> > +     select REGMAP_MMIO
-> >
-> >  config PINCTRL_MTK_V2
-> >       tristate
-> > diff --git a/drivers/pinctrl/mediatek/pinctrl-mtk-common.c b/drivers/pi=
-nctrl/mediatek/pinctrl-mtk-common.c
-> > index 1a977acd6883..65b1e3096183 100644
-> > --- a/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
-> > +++ b/drivers/pinctrl/mediatek/pinctrl-mtk-common.c
-> > @@ -9,6 +9,7 @@
-> >  #include <linux/gpio/driver.h>
-> >  #include <linux/module.h>
-> >  #include <linux/of.h>
-> > +#include <linux/of_address.h>
-> >  #include <linux/of_irq.h>
-> >  #include <linux/pinctrl/consumer.h>
-> >  #include <linux/pinctrl/machine.h>
-> > @@ -1057,6 +1058,60 @@ static int mtk_eint_init(struct mtk_pinctrl *pct=
-l, struct platform_device *pdev)
-> >       return mtk_eint_do_init(pctl->eint, NULL);
-> >  }
-> >
-> > +static const struct regmap_config mtk_pctrl_regmap_config =3D {
-> > +     .reg_bits =3D 32,
-> > +     .val_bits =3D 32,
-> > +     .reg_stride =3D 4,
-> > +     .use_raw_spinlock =3D true,
-> > +};
-> > +
-> > +/*
-> > + * The EINT irq_chip reads a pin's level through this regmap from call=
-backs
-> > + * that run under the raw irq_desc lock, so the regmap has to use a ra=
-w
-> > + * spinlock too, which syscon's own does not. Register one with syscon=
- for the
-> > + * node instead, so that any other user of the node shares its lock.
-> > + */
-> > +static struct regmap *mtk_pctrl_syscon_regmap(struct device_node *np)
-> > +{
-> > +     struct regmap_config config =3D mtk_pctrl_regmap_config;
-> > +     struct regmap *regmap;
-> > +     struct resource res;
-> > +     void __iomem *base;
-> > +     int ret;
-> > +
-> > +     ret =3D of_address_to_resource(np, 0, &res);
-> > +     if (ret)
-> > +             return ERR_PTR(ret);
-> > +
-> > +     base =3D ioremap(res.start, resource_size(&res));
-> > +     if (!base)
-> > +             return ERR_PTR(-ENOMEM);
-> > +
-> > +     config.name =3D kasprintf(GFP_KERNEL, "%pOFn@%pa", np, &res.start=
-);
-> > +     if (!config.name) {
-> > +             iounmap(base);
-> > +             return ERR_PTR(-ENOMEM);
-> > +     }
-> > +
-> > +     config.max_register =3D resource_size(&res) - config.reg_stride;
-> > +     regmap =3D regmap_init_mmio(NULL, base, &config);
-> > +     kfree(config.name);
-> > +     if (IS_ERR(regmap)) {
-> > +             iounmap(base);
-> > +             return regmap;
-> > +     }
-> > +
-> > +     ret =3D of_syscon_register_regmap(np, regmap);
-> > +     if (ret) {
-> > +             regmap_exit(regmap);
-> > +             iounmap(base);
-> > +             /* An earlier probe, or another user of the node, got the=
-re first. */
-> > +             return ret =3D=3D -EEXIST ? syscon_node_to_regmap(np) : E=
-RR_PTR(ret);
-> > +     }
-> > +
-> > +     return regmap;
-> > +}
+mt76_connac2_mac_write_txwi() takes the MT_TXD2_FIX_RATE path for any
+non-data frame, but the block filling MT_TXD7_SPE_IDX was guarded by
+!is_connac2(), leaving the field at 0. As spe_idx 0 also encodes "WF0"
+the hardware happily transmitted on a single path. Drop the guard so
+connac2 fills the index like the other generations do.
 
-This defeats the purpose of having a phandle to a syscon node. Now you
-have two regmaps that don't share locking, so both could end up touching
-the same register in a read-modify-write operation and overwrite one or
-the other.
+Do not set MT_TXD6_SPE_ID_IDX along with it: on connac2 that bit points
+the hardware at the WTBL instead of the TXD, and the WTBL spe_idx is
+still 0 while connecting, so setting it puts the frames back on WF0.
+This matches connac3, where SPE_IXD_SELECT_TXD is 0 and
+SPE_IXD_SELECT_BMC_WTBL is 1, and is the opposite of what the falcon
+firmware macro name HAL_MAC_TX_DESC_SET_FR_SPE_IDX_SPE_BY_TXD suggests.
 
-The syscon node is the provider of the regmap. You need to fix it there,
-not duplicate it in the consumer.
+Guard the duplicate fallback with hweight8() as well: ant_to_spe[] maps
+a single-antenna mask to 0 too, so without the check a user asking for
+one antenna would still get spe_idx 24 and duplicate onto both paths.
 
+Verified on MT7922: TXD DW7 spe_idx now reads 0x18 and the in-chip
+sniffer reports spe_idx 0x18 in the TXV of auth and assoc req, where it
+previously reported 0x0. MT7920 and MT7921 share the same connac2 TXD
+path and are fixed by the same change.
 
-ChenYu
+Fixes: 00dd59264dcb ("wifi: mt76: connac: use is_connac2() to replace is_mt7921() checks")
 
-> > +
-> >  /* This is used as a common probe function */
-> >  int mtk_pctrl_init(struct platform_device *pdev,
-> >               const struct mtk_pinctrl_devdata *data,
-> > @@ -1076,7 +1131,7 @@ int mtk_pctrl_init(struct platform_device *pdev,
-> >
-> >       node =3D of_parse_phandle(np, "mediatek,pctl-regmap", 0);
-> >       if (node) {
-> > -             pctl->regmap1 =3D syscon_node_to_regmap(node);
-> > +             pctl->regmap1 =3D mtk_pctrl_syscon_regmap(node);
-> >               of_node_put(node);
-> >               if (IS_ERR(pctl->regmap1))
-> >                       return PTR_ERR(pctl->regmap1);
-> > @@ -1089,7 +1144,7 @@ int mtk_pctrl_init(struct platform_device *pdev,
-> >       /* Only 8135 has two base addr, other SoCs have only one. */
-> >       node =3D of_parse_phandle(np, "mediatek,pctl-regmap", 1);
-> >       if (node) {
-> > -             pctl->regmap2 =3D syscon_node_to_regmap(node);
-> > +             pctl->regmap2 =3D mtk_pctrl_syscon_regmap(node);
-> >               of_node_put(node);
-> >               if (IS_ERR(pctl->regmap2))
-> >                       return PTR_ERR(pctl->regmap2);
-> >
-> > ---
-> > base-commit: 72d3fcf802c45d00b300f25b848a93c3a2bd7c7e
-> > change-id: 20260925-rbrue-suez-upstreaming-mtk-pinctrl-raw-regmap-154d6=
-225b977
-> >
-> > Best regards,
->
-> Sebastian
->
+Signed-off-by: Charlie-cy Wu <Charlie-cy.Wu@mediatek.com>
+
+---
+v2: remove Bora-id commit message
+
+---
+ .../wireless/mediatek/mt76/mt76_connac_mac.c  | 20 ++++++++++++-------
+ 1 file changed, 13 insertions(+), 7 deletions(-)
+
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76_connac_mac.c b/drivers/net/wireless/mediatek/mt76/mt76_connac_mac.c
+index de38ba9a4a26..9b40bac2b036 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76_connac_mac.c
++++ b/drivers/net/wireless/mediatek/mt76/mt76_connac_mac.c
+@@ -600,6 +600,7 @@ void mt76_connac2_mac_write_txwi(struct mt76_dev *dev, __le32 *txwi,
+ 							vif ? &vif->bss_conf : NULL,
+ 							beacon, multicast);
+ 		u32 val = MT_TXD6_FIXED_BW;
++		u8 spe_idx = mt76_connac_spe_idx(mphy->antenna_mask);
+ 
+ 		/* hardware won't add HTC for mgmt/ctrl frame */
+ 		txwi[2] |= cpu_to_le32(MT_TXD2_HTC_VLD);
+@@ -608,13 +609,18 @@ void mt76_connac2_mac_write_txwi(struct mt76_dev *dev, __le32 *txwi,
+ 		txwi[6] |= cpu_to_le32(val);
+ 		txwi[3] |= cpu_to_le32(MT_TXD3_BA_DISABLE);
+ 
+-		if (!is_connac2(dev)) {
+-			u8 spe_idx = mt76_connac_spe_idx(mphy->antenna_mask);
+-
+-			if (!spe_idx)
+-				spe_idx = 24 + phy_idx;
+-			txwi[7] |= cpu_to_le32(FIELD_PREP(MT_TXD7_SPE_IDX, spe_idx));
+-		}
++		/* Fixed-rate frames (all mgmt, so auth/assoc req too) otherwise
++		 * carry spe_idx 0 and TX 1SS 1T on WF0. Fill spe_idx like the
++		 * other connac generations do, but do NOT touch
++		 * MT_TXD6_SPE_ID_IDX: on connac2 setting it points HW at the
++		 * WTBL and the index below is ignored.
++		 *
++		 * spe_idx 0 is also a valid single-path index (WF0), so only
++		 * take the duplicate fallback when a second path exists.
++		 */
++		if (!spe_idx && hweight8(mphy->antenna_mask) > 1)
++			spe_idx = 24 + phy_idx;
++		txwi[7] |= cpu_to_le32(FIELD_PREP(MT_TXD7_SPE_IDX, spe_idx));
+ 
+ 		txwi[7] &= ~cpu_to_le32(MT_TXD7_HW_AMSDU);
+ 	}
+-- 
+2.18.0
+
 
