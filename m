@@ -4,84 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 67603CA5FA7
-	for <linux-mediatek@archiver.kernel.org>; Tue, 29 Sep 2026 21:11:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 459DDCA5FA5
+	for <linux-mediatek@archiver.kernel.org>; Wed, 30 Sep 2026 00:10:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:Content-Type:
-	References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=7HtcXJwIovXJhI6CN0srEgCID90Np/hQHMkqavjxkSc=; b=azolJDq+QpQaojCCpR0UuFLC61
-	QpksZLNwhG9zRZynBYYuqJ5JDrQqr4KmgS4AtYvAW4dQwFOoCNHgE4YV2kNisP8TVV8wXHreOr3wP
-	53UCtOIxV36YAcl1I195jRBuP4K3KU6B1Z5NbjrGwpKOug2R3q/A3Tu1ZV8hZqqVejB/09Fev0t6r
-	m1sfamo8c7DZlE5AMvQl3tERmpwnGurZdF9+ktHuA3jxr+HUpeWU21ChACtFacrggStU9M4QDjYcd
-	EieBQ6TnPKQNCH/7RbMu3BqwBxbUSuV6PK9ejuuwiJv8aGqwPW+a8qvYrsWusooPKVlqoG59zSms1
-	T+kY8BKA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
+	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=K2iyy0bndyVfIo/l5h1EmF5byJvdXSsULUMj/YdoEZU=; b=p/OVzDyByfiVefRYr19USpjEoB
+	caDalRov2/YB1zcsc+v5rZTnvkIu7xMnx+5Q+GDDgeLFfvyu9lBs/YESazgQA7c6L7FDF2VbaGxWJ
+	7RzJYwZxorkRcKnYup9Q8uI9u0IIu8Fo4YnvymJCXBI9nrBLVLEZIETMwdx0WkmEann9lGW+ZPK14
+	cxyFnS+csDGBJOHjwpeB6cgDfYroMauW3pSYCDATXsLT/24+bIwWCN5iWMjlkgDElNkAIk2e8MrLs
+	WW63SjoBFC465jooFJDp2pWHtEdBghxpovvhmNfQW+cfw/etxUPwUTJ/F/BlnZska4LTm0Vimam4g
+	Cy90ukDw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xBf6b-00000004Zfk-3ctf;
-	Tue, 29 Sep 2026 21:11:17 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1xBhth-00000004nRg-2z48;
+	Wed, 30 Sep 2026 00:10:09 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xBf6Y-00000004Zez-2VkC;
-	Tue, 29 Sep 2026 21:11:16 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1790716270;
-	bh=OJHK3wW5ArguXbjLgPCeX7+D0gjNCSr/9bwfhXsKji4=;
-	h=Subject:From:To:Cc:Date:In-Reply-To:References:From;
-	b=YjjWYb+F7ntVNqsBOrNRkIabv3brgPYVxGRCJ+c1u7teeLF+YAbmOWh4O6jjRYHH7
-	 HRBTPlrC8C4m0dNLXij4Cq0D1XXktLyiaJfdEgMR4mNqOdKAuD9in8StQ6fzJ0ha08
-	 Sd9qfHyTk/JZPt+BuOb2u8PCFcBREiUFgPsXQdadDaCCOQ6L/0HCz3+tyaf0tDXcQC
-	 5sIcSW8CND6vUM/YkE7nFt7IeP4UKUDqlEv8m2rE2WMq30TL7BqLwr2cXxc7QTdDeA
-	 a83bI7ukhAE4KIBs7b31sgl7YyvEnsVMsbGNdO4Ge0wChkJkbNOlbmCb+G/FABfQeT
-	 BCqvzTFdiH4qg==
-Received: from [100.64.0.214] (unknown [100.64.0.214])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange secp256r1 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: nicolas)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 1797717E0203;
-	Tue, 29 Sep 2026 23:11:07 +0200 (CEST)
-Message-ID: <1db4cc111dcfcdff0042841ff71ca0e0740e5072.camel@collabora.com>
-Subject: Re: [PATCH] media: mediatek: vcodec: destroy core workqueue on
- remove
-From: Nicolas Dufresne <nicolas.dufresne@collabora.com>
-To: Guangshuo Li <lgs201920130244@gmail.com>, Tiffany Lin	
- <tiffany.lin@mediatek.com>, Andrew-CT Chen <andrew-ct.chen@mediatek.com>, 
- Yunfei Dong <yunfei.dong@mediatek.com>, Mauro Carvalho Chehab
- <mchehab@kernel.org>, Matthias Brugger	 <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno	 <angelogioacchino.delregno@collabora.com>, Fei
- Shao <fshao@chromium.org>,  Kees Cook <kees@kernel.org>, Chen-Yu Tsai
- <wenst@chromium.org>, Hans Verkuil <hverkuil+cisco@kernel.org>,  Steve Cho
- <stevecho@chromium.org>, linux-media@vger.kernel.org,
- linux-kernel@vger.kernel.org, 	linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org
-Cc: stable@vger.kernel.org
-Date: Tue, 29 Sep 2026 17:11:06 -0400
-In-Reply-To: <20260915115753.2411047-1-lgs201920130244@gmail.com>
-References: <20260915115753.2411047-1-lgs201920130244@gmail.com>
-Autocrypt: addr=nicolas.dufresne@collabora.com; prefer-encrypt=mutual;
- keydata=mDMEaCN2ixYJKwYBBAHaRw8BAQdAM0EHepTful3JOIzcPv6ekHOenE1u0vDG1gdHFrChD
- /e0J05pY29sYXMgRHVmcmVzbmUgPG5pY29sYXNAbmR1ZnJlc25lLmNhPoicBBMWCgBEAhsDBQsJCA
- cCAiICBhUKCQgLAgQWAgMBAh4HAheABQkJZfd1FiEE7w1SgRXEw8IaBG8S2UGUUSlgcvQFAmibrjo
- CGQEACgkQ2UGUUSlgcvQlQwD/RjpU1SZYcKG6pnfnQ8ivgtTkGDRUJ8gP3fK7+XUjRNIA/iXfhXMN
- abIWxO2oCXKf3TdD7aQ4070KO6zSxIcxgNQFtDFOaWNvbGFzIER1ZnJlc25lIDxuaWNvbGFzLmR1Z
- nJlc25lQGNvbGxhYm9yYS5jb20+iJkEExYKAEECGwMFCwkIBwICIgIGFQoJCAsCBBYCAwECHgcCF4
- AWIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCaCyyxgUJCWX3dQAKCRDZQZRRKWBy9ARJAP96pFmLffZ
- smBUpkyVBfFAf+zq6BJt769R0al3kHvUKdgD9G7KAHuioxD2v6SX7idpIazjzx8b8rfzwTWyOQWHC
- AAS0LU5pY29sYXMgRHVmcmVzbmUgPG5pY29sYXMuZHVmcmVzbmVAZ21haWwuY29tPoiZBBMWCgBBF
- iEE7w1SgRXEw8IaBG8S2UGUUSlgcvQFAmibrGYCGwMFCQll93UFCwkIBwICIgIGFQoJCAsCBBYCAw
- ECHgcCF4AACgkQ2UGUUSlgcvRObgD/YnQjfi4+L8f4fI7p1pPMTwRTcaRdy6aqkKEmKsCArzQBAK8
- bRLv9QjuqsE6oQZra/RB4widZPvphs78H0P6NmpIJ
-Organization: Collabora Canada
-Content-Type: multipart/signed; micalg="pgp-sha512";
-	protocol="application/pgp-signature"; boundary="=-rz/nb+3HJ76xRI+V+kAt"
-User-Agent: Evolution 3.60.2 (3.60.2-1.fc44) 
+	id 1xBhtf-00000004nRS-1Hs2;
+	Wed, 30 Sep 2026 00:10:07 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by sea.source.kernel.org (Postfix) with ESMTP id A3E2743FB2;
+	Wed, 30 Sep 2026 00:10:06 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 838491F00893;
+	Wed, 30 Sep 2026 00:10:06 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1790727006;
+	bh=K2iyy0bndyVfIo/l5h1EmF5byJvdXSsULUMj/YdoEZU=;
+	h=Subject:From:Date:References:In-Reply-To:To:Cc;
+	b=H+XW6g7Cp/FuHIuWcfQ25h+zkUZ4aDZaCyeTlgkFFwIaQCLYGipBFXR8Vwu2uhNFk
+	 YlD7gvgY5tFPcYPL5rW/staR1j8mrsTrIXfpUpzrw6MVuSSc6RP7rjYBeTmccol+bX
+	 y365kIcOe+CEEmwmw4WCRnlbz3+lhSII1Asd8T+Wjf5TztsB9SuDndQ2I65DbhJsx6
+	 axWpS2PefEXlqEoYw1ZCrPhmVBuzJDPMWkPOxSk4AdYYPkBe8PQNdxkR7vzpWaxfxg
+	 OqfOgI2q8bvxMb1HE3A8BrV8Oc9gtmFS6C/B3dmozFbvBnTSzdPg3Yv+CKAWhH/Cm5
+	 dbpZQSMSypqkg==
+Received: from [10.30.226.235] (localhost [IPv6:::1])
+	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id 7743B3808209;
+	Wed, 30 Sep 2026 00:10:06 +0000 (UTC)
+Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260929_141115_187054_A95D2740 
-X-CRM114-Status: GOOD (  17.81  )
+Content-Transfer-Encoding: 8bit
+Subject: Re: [PATCH] net: dsa: use regmap_assign_bits() for conditional
+ set/clear
+From: patchwork-bot+netdevbpf@kernel.org
+Message-Id: <179072700504.1174822.271135710444572357.git-patchwork-notify@kernel.org>
+Date: Wed, 30 Sep 2026 00:10:05 +0000
+References: <20260924083538.461887-1-peng.fan@oss.nxp.com>
+In-Reply-To: <20260924083538.461887-1-peng.fan@oss.nxp.com>
+To: Peng Fan <peng.fan@oss.nxp.com>
+Cc: hauke@hauke-m.de, andrew@lunn.ch, olteanv@gmail.com, davem@davemloft.net,
+ edumazet@google.com, kuba@kernel.org, pabeni@redhat.com,
+ chester.a.unal@arinc9.com, daniel@makrotopia.org, matthias.bgg@gmail.com,
+ angelogioacchino.delregno@collabora.com, ansuelsmth@gmail.com,
+ linux-kernel@vger.kernel.org, peng.fan@nxp.com, netdev@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,74 +75,30 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Hello:
 
---=-rz/nb+3HJ76xRI+V+kAt
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+This patch was applied to netdev/net-next.git (main)
+by Jakub Kicinski <kuba@kernel.org>:
 
-Le mardi 15 septembre 2026 =C3=A0 19:57 +0800, Guangshuo Li a =C3=A9crit=C2=
-=A0:
-> The decoder probe allocates core_workqueue for latency-based decoder
-> architectures. The probe failure paths destroy the workqueue, but the
-> normal remove path only destroys decode_workqueue.
->=20
-> As a result, removing a latency-based decoder leaves core_workqueue
+On Thu, 24 Sep 2026 16:35:37 +0800 you wrote:
+> From: Peng Fan <peng.fan@nxp.com>
+> 
+> Replace if/else blocks using regmap_set_bits()/regmap_clear_bits() with
+> the simpler regmap_assign_bits() calls in the lantiq gswip, mt7530 and
+> qca8k drivers.
+> 
+> Signed-off-by: Peng Fan <peng.fan@nxp.com>
+> 
+> [...]
 
-LAT is an abbreviation to for the core responsible for entropy decoding. I =
-don't
-know what it translate to, but its not "latency", I'll do the minor edit. I=
-t
-does reduce decoding latency though :-D
+Here is the summary with links:
+  - net: dsa: use regmap_assign_bits() for conditional set/clear
+    https://git.kernel.org/netdev/net-next/c/679950fedec7
 
-> allocated after the device lifetime has ended.
->=20
-> Destroy core_workqueue during remove for latency-based decoder
-> architectures, matching the cleanup performed by the probe failure
-> paths.
->=20
-> This issue was found by manual code inspection.
->=20
-> Fixes: 365e4ba01df4 ("media: mtk-vcodec: Add work queue for core hardware=
- decode")
-> Cc: stable@vger.kernel.org
-> Signed-off-by: Guangshuo Li <lgs201920130244@gmail.com>
+You are awesome, thank you!
+-- 
+Deet-doot-dot, I am a bot.
+https://korg.docs.kernel.org/patchwork/pwbot.html
 
 
-Reviewed-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
-
-> ---
->  .../media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.c | 2 ++
->  1 file changed, 2 insertions(+)
->=20
-> diff --git a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_de=
-c_drv.c b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv=
-.c
-> index e936ed8dffba..426d060d937c 100644
-> --- a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.c
-> +++ b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.c
-> @@ -570,6 +570,8 @@ static void mtk_vcodec_dec_remove(struct platform_dev=
-ice *pdev)
->  	struct mtk_vcodec_dec_dev *dev =3D platform_get_drvdata(pdev);
-> =20
->  	destroy_workqueue(dev->decode_workqueue);
-> +	if (IS_VDEC_LAT_ARCH(dev->vdec_pdata->hw_arch))
-> +		destroy_workqueue(dev->core_workqueue);
-> =20
->  	if (media_devnode_is_registered(dev->mdev_dec.devnode)) {
->  		media_device_unregister(&dev->mdev_dec);
-
---=-rz/nb+3HJ76xRI+V+kAt
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: This is a digitally signed message part
-Content-Transfer-Encoding: 7bit
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCarwpagAKCRDZQZRRKWBy
-9DH8AQDi1rdmJFjoheKwH20vfJzgzCvgVYU5PBPqraReB1W2sgEAnGKrT/vDeefh
-OzjBK1cPvD9/FeMAd3jcnge8XJbQnQc=
-=10sJ
------END PGP SIGNATURE-----
-
---=-rz/nb+3HJ76xRI+V+kAt--
 
