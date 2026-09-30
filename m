@@ -4,94 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 05239CA5FB1
-	for <linux-mediatek@archiver.kernel.org>; Wed, 30 Sep 2026 11:03:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 087C4CA5FB1
+	for <linux-mediatek@archiver.kernel.org>; Wed, 30 Sep 2026 11:18:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=Tm4KhT1i9nkviFOM/DKWhqvTQ9rSQZ5LZ/7ePdMtknI=; b=Wpq2mUaqTfYzttZJ0UC1NwR7d9
-	X8UmY2NIPnLqSfiR6pjV9UbVJ2UEzS7H4ktyowIAO1BsaigftZul4JQtbQkNL3hqsg0htDQNfWF57
-	Ys92Ayx4ZTyems4O9XXpnyrX3W4MYDnDj8ZZf5DI17eZM7YnB1ePNPyhZWY9cleBwpVPgWqEoSUiJ
-	vfJ/TmdfLjteu0g5Ta3S8k11mKK+PVY1Hqc2/ocIe4ooX7PF0sf4O2MQ6VMpetjxfiWlOlTq4llC9
-	XbdHVMaH6Noe58wyihNMOi/jKeGfg5D/kHLflJuqwy3HzNxk6hvhBgoPjQ2lbABF2xR90tYp/2uHM
-	MOy5+jiA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=83rwTdO/FGr48GtBLJOLuXq/CyA1VYNTtnCj+4o0YoU=; b=y3dY/fMg2BwwHt8q3KJ+keTDT0
+	Mm4F3FBWnPSEi8U1f0/iQ0hJHSEqUN5QxYWE6GWKgtbYTYFhDKWT+IViumia23LVJeNNHQwoABWbG
+	rPbSKY1Aq0CkrNGBtuZg/EDOG2Zsd87HmSP5+G1ACB/VYnE6nRRdghHgqHuvi+mMifXQbaATjUcJa
+	N5ppvqiMNLYNlFVXarD+gjIq4USBCOPaUDFiP5s42ckJctzaLuqQ2hZ3GUcmi/pv6Klu/b5okRseb
+	+edb3sTKSbRFpgRJcMxiQCkt3svKmVLrJbG2oZoqm6GIpSmBNSNN0XqWB+OxdiMXlpJE6QENPAnLl
+	k1Crgtqg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xBs5k-00000005oq0-3dul;
-	Wed, 30 Sep 2026 11:03:16 +0000
-Received: from mail-qk2-x2b.google.com ([2607:f8b0:4864:34::2b])
+	id 1xBsK4-00000005qF2-1ji9;
+	Wed, 30 Sep 2026 11:18:04 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xBs5h-00000005op1-3zgj
-	for linux-mediatek@lists.infradead.org;
-	Wed, 30 Sep 2026 11:03:15 +0000
-Received: by mail-qk2-x2b.google.com with SMTP id d75a77b69052e-5332bdd8296so69629621cf.2
-        for <linux-mediatek@lists.infradead.org>; Wed, 30 Sep 2026 04:03:13 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1790766192; x=1791370992; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
-        bh=Tm4KhT1i9nkviFOM/DKWhqvTQ9rSQZ5LZ/7ePdMtknI=;
-        b=lm0ZeOD/N6TKlCwf0yygiq2qzwajACuO1y/8fK2RynKRHOVTLPkiPtlW+SndR8LR7X
-         xps1ERaYD1XvLA4ihA7Mqj0NrZD4jFBiCcDxmc4NlfcXQtX9opXsfRtGq/juQPqhZ5+u
-         mnQjZpgZg3H1xGi9WzUXjEyubyc8nlRI2HgrAqZg/gdkgSeQ/1cpQl8JiTU111ICaJWD
-         F5Ctw6l5pb2JTEe0HVN1i9XrBk2gxMM6H/FSujJYwkZ6if5psqz0Xanzzm5C7mqrBxR6
-         9kOSK3kI5lYiOy2m4grhFJwTXVcVNHO6P2hbDUmkbYIxktkhc0EAHMPcNf4nYghVoKAb
-         ORRg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1790766192; x=1791370992;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to:content-type;
-        bh=Tm4KhT1i9nkviFOM/DKWhqvTQ9rSQZ5LZ/7ePdMtknI=;
-        b=YtUsvbm5rY7h03xW/W3VFFmaqwhV/CfpFdp+phvbbLN8m0rx6yE6bSEZH/lwexRcRF
-         3BVEjwWp1FbS0wi+OZLLprfofw2GSJX7rxrQ9OR80E0GHvEj3KGS7PARzzecZxyrAL0X
-         2Be2Ly4FM7l3HtElZC8mDEfv93CM4+2NtiOd+a2GnPg/DLbW5C/9qxl6Ch/PCdQ/odLJ
-         tO+bpVd+4XZvJZQ9RJkrskK3afJntJZNkE/tRocsLpBvdx0aY1oYxurwSRvfUrF7Lfr4
-         sGHyuJpL5aT+Wr+lMQlYjV7ifFngmWp2PhLtZhBrr7zZUlNKNf7DhEdqX0nJnn8PJK6l
-         HnJA==
-X-Forwarded-Encrypted: i=1; AKwUvBz3aRDGRYOkx7BkalQQwwbt0Hgfeh8viMIIEGbag4u37ETwk4tAMcl9zpZDdv7cFwNfv6aoyPQqF6CmxSM5wA==@lists.infradead.org
-X-Gm-Message-State: AFuF++nabz8Z3G7hogFnDBqYFCqQNoB48VEQEZ5MuV7jBPLRc9wGQXab
-	X5x7YEEfPe1KEjtMB31KHvQKs/bkVwhjFXQbChQaErhnDpc4cT3hSncVkZIErjis
-X-Gm-Gg: AYBFou28mKf+aYFAnq2WaYuPnHLJLvcV72929yeRC0cHE6YyrWR1bxGx38qes1dRruX
-	CLy66XppIxSvKGQsoejTtiQ8R0jPTKJ924JZq7iuqUCunk1ZftvEYcITvh/CdvybEXBQSNxPuUW
-	qe5IgJaVlSjCmYvYeNpvoNXwY3aVPnbTPShdZcPUGU2P9ePG4BapAmHB1MFtlnL0eopgAWoIngs
-	LRXSx4buuoqLHv8MBw4NflXl9GxgeF+PG7ofvAKaAcG3UZwaYF84TppM+VwOAyxl0c9T7Rt0jkR
-	FLO/RoVPKc7yHkd2Di2uhBaEevOMU62LZcVouZ+k97Npa7HwDFLzJdHalyKkW2WFzN8JqAgljN4
-	VxmvozX06FC+7Bs8hzc+HWKzdBtF0UADkx/GjnV/eMCZkX4xYmAahKuhjvDWbnuPzv4yOR52SFF
-	2mxeQ47Re5a67tIHUIcKv/bbnB87xcuAwB3u2rl6UhLGQHVcdvLEoyWaFpFpgoCvNCZtUd+TuZz
-	r3K3S4Jt5nRkxy+LYkR
-X-Received: by 2002:a05:7022:91f:b0:144:eaa7:2765 with SMTP id a92af1059eb24-14d3204e73amr1522897c88.18.1790765717951;
-        Wed, 30 Sep 2026 03:55:17 -0700 (PDT)
-Received: from localhost.localdomain ([103.178.205.97])
-        by smtp.gmail.com with ESMTPSA id a92af1059eb24-14d083fea61sm4295477c88.3.2026.09.30.03.55.13
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 30 Sep 2026 03:55:17 -0700 (PDT)
-From: Sreeraj S Kurup <sreekuttan2156239@gmail.com>
-To: Ryder Lee <ryder.lee@mediatek.com>,
-	Lorenzo Pieralisi <lpieralisi@kernel.org>,
-	=?UTF-8?q?Krzysztof=20Wilczy=C3=85=E2=80=9Eski?= <kwilczynski@kernel.org>,
-	Manivannan Sadhasivam <mani@kernel.org>,
-	Rob Herring <robh@kernel.org>,
-	Bjorn Helgaas <bhelgaas@google.com>,
+	id 1xBsK3-00000005qEZ-23Uv;
+	Wed, 30 Sep 2026 11:18:03 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by sea.source.kernel.org (Postfix) with ESMTP id F136D43288;
+	Wed, 30 Sep 2026 11:18:02 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id BF0911F000FF;
+	Wed, 30 Sep 2026 11:17:56 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1790767082;
+	bh=83rwTdO/FGr48GtBLJOLuXq/CyA1VYNTtnCj+4o0YoU=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To;
+	b=WelI3HrTq5Q+OeeK7mUJq3BaQTbRmXCV7thColG6Cwi2zu+D/821EpOAu1biw6XX9
+	 KjWSX+fc0aNUY5nsHXHHnfwzBLnju7Yewex+2qKERqCtnwPOItwJNSvGFGkL/oo8oe
+	 oPrv+8LoTNlyIVElv8+sAghuuUmmjwcvyEt+J1qNhseq+cgYZBV5kMx6EEBdl3bPfS
+	 5M0ttAIvtIoUOHyXp4KlVjP0sdJzuoM9VQ3YOigDUSt4QZCdhmYZ0aPb6X6vtK1L1s
+	 iUcoISpT2meiyK+v5NxY+jZ6kxuiJ0BuO+RTuQsZJtiesE28XbCT54duUufkOkHiUp
+	 gxDaKvINcgGPA==
+Date: Wed, 30 Sep 2026 12:17:54 +0100
+From: Mark Brown <broonie@kernel.org>
+To: James Calligeros <jcalligeros99@gmail.com>
+Cc: Martin =?utf-8?Q?Povi=C5=A1er?= <povik+lin@cutebit.org>,
+	Liam Girdwood <lgirdwood@gmail.com>, Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>, Sven Peter <sven@kernel.org>,
+	Janne Grunau <j@jannau.net>, Neal Gompa <neal@gompa.dev>,
+	David Rhodes <david.rhodes@cirrus.com>,
+	Richard Fitzgerald <rf@opensource.cirrus.com>,
+	Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>,
+	Ulf Hansson <ulfh@kernel.org>,
+	Amit Kucheria <amit.kucheria@linaro.org>,
+	"Rafael J. Wysocki" <rafael.j.wysocki@intel.com>,
+	Lars-Peter Clausen <lars@metafoo.de>, Vinod Koul <vkoul@kernel.org>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: linux-pci@vger.kernel.org,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Shenghao Ding <shenghao-ding@ti.com>, Kevin Lu <kevin-lu@ti.com>,
+	Baojun Xu <baojun.xu@ti.com>, Sen Wang <sen@ti.com>,
+	James Schulman <james.schulman@cirrus.com>, asahi@lists.linux.dev,
+	linux-sound@vger.kernel.org, devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	patches@opensource.cirrus.com, Takashi Iwai <tiwai@suse.de>,
 	linux-mediatek@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	Sreeraj S Kurup <sreekuttan2156239@gmail.com>
-Subject: [PATCH v2] PCI: mediatek: Fix integer truncation in fls() and clamp size
-Date: Wed, 30 Sep 2026 10:54:35 +0000
-Message-ID: <20260930105435.3660-1-sreekuttan2156239@gmail.com>
-X-Mailer: git-send-email 2.55.0
+	Hector Martin <marcan@marcan.st>,
+	Sasha Finkelstein <k@chaosmail.tech>
+Subject: Re: [PATCH 16/28] ASoC: apple: Add macaudio machine driver
+Message-ID: <d591a288-a8b2-4c28-8caf-6dfa11655fc7@sirena.org.uk>
+References: <20260920-macaudio-v1-0-741cc20a74e5@gmail.com>
+ <6dv6M3LAS9mol5fvC8Ie-w@gmail.com>
+ <0ae94fbe-cd41-4d49-b073-e65ab8eff724@sirena.org.uk>
+ <ItQHm5ZKQ4Wltp6qbCRkSA@gmail.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260930_040314_599294_452CB686 
-X-CRM114-Status: GOOD (  12.63  )
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="nnH+SEOf/vZYoZnv"
+Content-Disposition: inline
+In-Reply-To: <ItQHm5ZKQ4Wltp6qbCRkSA@gmail.com>
+X-Cookie: (null cookie
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,85 +93,63 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-resource_size() returns a resource_size_t, which is 64-bit on 64-bit
-architectures or 32-bit systems with LPAE/PAE enabled. Passing this
-directly to fls(), which accepts an unsigned int, implicitly
-truncates the upper 32 bits.
 
-Furthermore, AHB2PCIE_SIZE() uses a 5-bit mask GENMASK(4, 0). If a
-resource size of 4 GiB or larger is passed, fls64() returns 33 or
-greater, which overflows the 5-bit mask and wraps around (e.g. 33 & 31
-= 1).
+--nnH+SEOf/vZYoZnv
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-Fix this by using fls64() for 64-bit resource sizes and clamping the
-result to a maximum of 31 to fit the 5-bit register field.
+On Wed, Sep 30, 2026 at 05:36:21PM +1000, James Calligeros wrote:
+> On Monday, 28 September 2026 9:03:13=E2=80=AFpm Australian Eastern Standa=
+rd Time Mark=20
+> Brown wrote:
+> > On Sat, Sep 26, 2026 at 11:06:02AM +1000, James Calligeros wrote:
+> > > On Tuesday, 22 September 2026 7:38:54=E2=80=AFpm Australian Eastern S=
+tandard Time=20
 
-Signed-off-by: Sreeraj S Kurup <sreekuttan2156239@gmail.com>
----
- drivers/pci/controller/pcie-mediatek.c | 19 +++++++++++++++++--
- 1 file changed, 17 insertions(+), 2 deletions(-)
+> > > > > +	if (props->is_sense) {
+> > > > > +		rate->min =3D rate->max =3D cpu_dai->symmetric_rate;
+> > > > > +		return 0;
+> > > > > +	}
 
-diff --git a/drivers/pci/controller/pcie-mediatek.c b/drivers/pci/controller/pcie-mediatek.c
-index a60d1ae076f8..9576fe532b92 100644
---- a/drivers/pci/controller/pcie-mediatek.c
-+++ b/drivers/pci/controller/pcie-mediatek.c
-@@ -8,6 +8,7 @@
-  */
- 
- #include <linux/bitfield.h>
-+#include <linux/bitops.h>
- #include <linux/clk.h>
- #include <linux/delay.h>
- #include <linux/errno.h>
-@@ -686,6 +687,8 @@ static int mtk_pcie_startup_port_v2(struct mtk_pcie_port *port)
- 	const struct mtk_pcie_soc *soc = port->pcie->soc;
- 	u32 val;
- 	int err;
-+	resource_size_t size;
-+	int size_order;
- 
- 	entry = resource_list_first_type(&host->windows, IORESOURCE_MEM);
- 	if (entry)
-@@ -753,8 +756,13 @@ static int mtk_pcie_startup_port_v2(struct mtk_pcie_port *port)
- 		mtk_pcie_enable_msi(port);
- 
- 	/* Set AHB to PCIe translation windows */
-+	size = resource_size(mem);
-+	size_order = fls64(size);
-+	if (size_order > 31)
-+		size_order = 31;
-+
- 	val = lower_32_bits(mem->start) |
--	      AHB2PCIE_SIZE(fls(resource_size(mem)));
-+	      AHB2PCIE_SIZE(size_order);
- 	writel(val, port->base + PCIE_AHB_TRANS_BASE0_L);
- 
- 	val = upper_32_bits(mem->start);
-@@ -775,6 +783,8 @@ static int mtk_pcie_startup_port_en7528(struct mtk_pcie_port *port)
- 	struct resource_entry *entry;
- 	u32 val, link_mask;
- 	int err;
-+	resource_size_t size;
-+	int size_order;
- 
- 	entry = resource_list_first_type(&host->windows, IORESOURCE_MEM);
- 	if (entry)
-@@ -829,8 +839,13 @@ static int mtk_pcie_startup_port_en7528(struct mtk_pcie_port *port)
- 		mtk_pcie_enable_msi(port);
- 
- 	/* Set AHB to PCIe translation windows */
-+	size = resource_size(mem);
-+	size_order = fls64(size);
-+	if (size_order > 31)
-+		size_order = 31;
-+
- 	val = lower_32_bits(mem->start) |
--	      AHB2PCIE_SIZE(fls(resource_size(mem)));
-+	      AHB2PCIE_SIZE(size_order);
- 	writel(val, port->base + PCIE_AHB_TRANS_BASE0_L);
- 
- 	val = upper_32_bits(mem->start);
--- 
-2.55.0
+> > > > It feels like this DAI ought to have separate ops...  Also, for the
+> > > > sense link will we definitely already have a rate set up?
 
+> > > AIUI, the cpu rate should always be set up by the time we hit
+> > > this path as it is only taken when setting up the VISENSE FE (after t=
+he
+> > > playback stuff is already set up).
+
+> > Is that something we actually enforce or is that just a thing a sensible
+> > userspace should do?  I can see something racing.
+
+> We don't really enforce it. speakersafetyd is the only thing that opens t=
+he
+> VISENSE PCM and does a blocking read of samples
+> which only starts and subsequently completes after the "real" PCM
+> is configured and playback begins. The sample rate is reliably
+> reflected to speakersafetyd via the kcontrol on the VISENSE PCM. We
+> have not experienced any race issues with this arrangement in ~5 years
+> nor has anyone reported any to us. I'm happy to take pointers on
+> how we should be doing this if the current approach won't fly.
+
+You could just return an error if there's no rate set, it sounds like
+your actual userspace will DTRT anyway.
+
+--nnH+SEOf/vZYoZnv
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmq87+EACgkQJNaLcl1U
+h9Cxhgf/WcFsoEMkfmXz8RaOTaYRSb5C0qxwrbBKBoUhhIsznqLaBZmbCYldSt+C
+z+HAA+DYIwT0Hod2VkGiT4b8sL2S92svIkrouVYKa4TreBxzK4GY0cabHusPWQwe
+EeXxCKfvgQj8+akOUfcXEsp391TQ0mtBW6AseRd2tLZh/h32OjqkwX+NpxcLYRF4
+/LIQAFAIGxTEB/xeXE4GlcI4fnPfMggKGnG2Dn+r+iDgeD/tIZkfK2BiR+nAatIj
+RF5JM1d5eHFJxqApPWsliNdUKU00LB0sRWYWUj9FRvqImMYIz6TD4mJX6EfeAsL9
+EOeh5DCM3Ud1EMHlvn+J5iPMDMmupQ==
+=y+Ex
+-----END PGP SIGNATURE-----
+
+--nnH+SEOf/vZYoZnv--
 
