@@ -4,94 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CDDABCA5FC1
-	for <linux-mediatek@archiver.kernel.org>; Wed, 30 Sep 2026 09:50:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D6A4BCA5FC4
+	for <linux-mediatek@archiver.kernel.org>; Wed, 30 Sep 2026 10:14:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=LLtGDvHzD6CrNoA94RNqXZ25K72u4Lfc7xmaaJ1VbZc=; b=sXZRdfg19XZkFI9VD5923A9Kb7
-	S/DEMnm7waxu4DZR1zEkPQ1lRuP3t6hKagsMc1OF9RdZHTDUUbWNfwTyAYLFkc0oyiEZHWYMDWllV
-	Mx5rZTvMZWdSjGZYMZmCRy/ZmGWGoMYwa/3whiv7kCnVQyyWTtfMHyjRm48YCQEXC6E1idlJpG6CW
-	3Z0CExHBZBBhjv/maTQOhzK4546oEV3YBUzCZqwMv6fUflUrzeWQrHUzL9kH3xY/wCDhUzm7rSvzn
-	oWuIrmLolUU1SsoKRcScPfBSMCY+3JrJGKq40Eet0bviHsIlK9IQ0IF+IyYxMMJkKLrjrcgE6ZYxx
-	c9RHq7hw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:
+	References:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:
+	Subject:Date:From:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=qrff3cv5D8/15+8lFyuQWxEAP20Quywboqf+aBje2zQ=; b=ngSwUYwx1EAulQCMx/INdJtCzI
+	Cd2Enh3lfQcf9gn4zM2XV1t1KK4kKdVmwlIiowm4t7DdwNlF3if/3yf2nz6PI1RSMtQGscm5FXyKG
+	/q2WHkP5mHZ5OZdszMeLEhILA0ldVEQdhiWWhXcPBCoy6A2ogs6KCC51gT4IRf5dgYUEqGP9sG8Qs
+	QVhwg2xDfRpWx+L0hlrwwkl5PU03APH1SzjXTHYbk2DCEVm75zmA3YNsfOruVq0cmMBOSX7zuJ/QL
+	Sqw6wUSk94AvGaO8plENjCc9y6rifAhXPtOWn4GrvJgWLg5+Pqdk9msnIvIMnO7xOqEroQAd1i/cW
+	SL1ciATg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xBqxR-00000005cEJ-2gb4;
-	Wed, 30 Sep 2026 09:50:37 +0000
-Received: from mail-dy2-x0f.google.com ([2607:f8b0:4864:36::f])
+	id 1xBrKq-00000005hDG-14aL;
+	Wed, 30 Sep 2026 10:14:48 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xBqxP-00000005cD3-0pPo
-	for linux-mediatek@lists.infradead.org;
-	Wed, 30 Sep 2026 09:50:36 +0000
-Received: by mail-dy2-x0f.google.com with SMTP id 5a478bee46e88-33e46a15703so4918716eec.0
-        for <linux-mediatek@lists.infradead.org>; Wed, 30 Sep 2026 02:50:34 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1790761834; x=1791366634; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
-        bh=LLtGDvHzD6CrNoA94RNqXZ25K72u4Lfc7xmaaJ1VbZc=;
-        b=KBa2t1+YU6ypLbcj0+u6n2ZHHNs4td4xj90hc+41QBIRg3AgwlLQFB776vXXvGUWO6
-         R0tqmK3kKRK9u8plRkm3qOENnIZMXu+JetAjlM9vMD8xFSNKEowkmhpHC8ChkYjeKs6M
-         jQDErIZSYlWHNoGVcnh5n7oQ3thQMSEhHiwVUYN1OX7shI7ghyIDPU8ntFj77+OGWD8c
-         oNSXFb9eJzDkn0QxgEzRTRWawk9ilPBWD8+H7vY6SNom9R7MVvjvy//TWkURXD1GUkJO
-         IFyI/+ulKd5bfrz6AgJRX+rLOABcHgkCwfYg7zoSKhaogKYcDtwnOPJ33VGudJLlfBVs
-         UgWQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1790761834; x=1791366634;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to:content-type;
-        bh=LLtGDvHzD6CrNoA94RNqXZ25K72u4Lfc7xmaaJ1VbZc=;
-        b=rc4LmPSPKcw11k7ss3sSZ9zMsEXWlG6//MWYz62efw3/lQupTiz+zZyg0tWnoFiYyH
-         ijpqYlYLBmWw49GEdXfjlbOUFeMBfLuiyUzzLd2hB2JGKTM23hbfKhoPC1wB6RMc1R8z
-         2SBdfyxweYcJ1yMVuO/OXif6dxdPA0en8AExgXO419UjA1P8nLvmpNt4VK1RSyWcimiz
-         /7nXqB2zt4DhXT9qch4636SPWH+OCNAJJNHDZ8WCAG/bcVxrF28tXAXeOgqzJHdLsonY
-         dKTCwyju4sAcGR8Sx/C+uh3c06tyaIsyzNYSfh/9l4RWswG9CufAnQoJc4HI8flhxjtk
-         E4dg==
-X-Forwarded-Encrypted: i=1; AKwUvBwo9hJ4W3eLkfxFiZBEqL+HHm/8cOF+UCGCIqFD5F4FHYdl8A02yhTPeCHEmHV4tHFLJWMGrsLVxASzLIaOkQ==@lists.infradead.org
-X-Gm-Message-State: AFq9FYLQJChxMhkRLhSXd9c7wAeB1PcS4QTK/DKrb5crz+bFsPnMvcZO
-	uTh+omXjsQ/m0EQ5oHnNSW3iZFjCOaQ/jnml4X58x2i9E4p9D+qCOenH
-X-Gm-Gg: AYBFou1bWg44zJuGkn2YwGWFIelOgF9IRTMe+p+iEALsx9yQ/nzPso+6RL7M/5enDyi
-	zyYjE39ApW+SQEErOYjtVwOqRMNZ3QNA0122Oo1KQhbCoON7cuetgoxyzOn5eiMqP+xx1s/HRFK
-	rLt7KQJIzKUQjOOB4Ag39zCCrJB0r22d0TKuIqf0DpAQkUkKsrlE+Dcg8nmKOZM+rGRNQ6vFWsi
-	WKqdur4Vn37dz2oNLV45zwR5QaxZ1b/dt4jlcwZoSGPH23QAJy8PLb6OQDnHtgdZeefgxsFnaVx
-	klthpfh+EPp5026f1JV4UQw0zpN1xVd1rRZjgYzlWuuRAKPznIrravONmlExijXPkIFElNQFHvK
-	7Ni7HrUJqhjnheuon7hLoSXQy4ulJxhEwTylU1xJjLxsSIwiwgI6yam7czPZBLB4BsEhsAmwGI1
-	5hHcuSf1uV+gBcVMbURUEbof62CdwCaUgg0jluGmkPKHJljUh6wi34YbAwo8MQ0hluQ6LRx/Nhi
-	HTBlStp7j64SQev5FQH
-X-Received: by 2002:a05:7300:fa07:b0:33c:3134:f45 with SMTP id 5a478bee46e88-34cd907665bmr1266990eec.5.1790761833122;
-        Wed, 30 Sep 2026 02:50:33 -0700 (PDT)
-Received: from localhost.localdomain ([103.178.205.97])
-        by smtp.gmail.com with ESMTPSA id 5a478bee46e88-34cf50553f8sm4934658eec.14.2026.09.30.02.50.20
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 30 Sep 2026 02:50:32 -0700 (PDT)
-From: Sreeraj S Kurup <sreekuttan2156239@gmail.com>
-To: Ryder Lee <ryder.lee@mediatek.com>,
-	Lorenzo Pieralisi <lpieralisi@kernel.org>,
-	=?UTF-8?q?Krzysztof=20Wilczy=C3=85=E2=80=9Eski?= <kwilczynski@kernel.org>,
-	Manivannan Sadhasivam <mani@kernel.org>,
-	Rob Herring <robh@kernel.org>,
-	Bjorn Helgaas <bhelgaas@google.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: linux-pci@vger.kernel.org,
-	linux-mediatek@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	Sreeraj S Kurup <sreekuttan2156239@gmail.com>
-Subject: [PATCH] PCI: mediatek: Fix integer truncation in fls() for resource size
-Date: Wed, 30 Sep 2026 09:49:12 +0000
-Message-ID: <20260930094912.3069-1-sreekuttan2156239@gmail.com>
-X-Mailer: git-send-email 2.55.0
+	id 1xBrKp-00000005hB8-09ox;
+	Wed, 30 Sep 2026 10:14:47 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id 8B2DB43F25;
+	Wed, 30 Sep 2026 10:14:46 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPS id 64CE7C4AF19;
+	Wed, 30 Sep 2026 10:14:46 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1790763286;
+	bh=YcXMWOwQsCLes1AVO1FME2ariUbRxFXlWwKj5WgwNiE=;
+	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To:From;
+	b=YJKwk+UrlkCk1+lruLc44Vdn9YqqelIS0jnt5qLUfZ/xh3VKojAfAzffnohp9AyMV
+	 Asuc6wH/Gp7XV+oNx9zSWjoEccRpL02DLwcuRB6DsKxDys/+4vGp5oS9r6j9/btAdQ
+	 QsAoFinUO0FnKgCT0YqPzCk2Z7NjTu6pRt/8cCoQeNLo5d17R5kKHxjJoz/aE5f0cQ
+	 rQnF+bQxXtMtQQtnypj+16b8tLrUySUIWOcoGbCLAPIlixt6dNu62y47vJSKLKZRiZ
+	 i9308js/F/W1/Sse4AvhjOf5mreN6fj6ZkQFYBw9yy6NZttGSbA0D3OakTl68wquds
+	 moLTBCqIpzmRQ==
+Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 48B42CA5FBE;
+	Wed, 30 Sep 2026 10:14:46 +0000 (UTC)
+From: Roman Vivchar via B4 Relay <devnull+rva333.protonmail.com@kernel.org>
+Date: Wed, 30 Sep 2026 13:14:29 +0300
+Subject: [PATCH v5 3/4] nvmem: mtk-efuse: add CPU speedbin post-processing
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260930_025035_266526_7E77C63B 
-X-CRM114-Status: GOOD (  12.43  )
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Message-Id: <20260930-6572-nvmem-v5-3-384d2a3a1770@protonmail.com>
+References: <20260930-6572-nvmem-v5-0-384d2a3a1770@protonmail.com>
+In-Reply-To: <20260930-6572-nvmem-v5-0-384d2a3a1770@protonmail.com>
+To: Srinivas Kandagatla <srini@kernel.org>, Rob Herring <robh@kernel.org>, 
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Andrew-CT Chen <andrew-ct.chen@mediatek.com>, 
+ Lala Lin <lala.lin@mediatek.com>
+Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+ Roman Vivchar <rva333@protonmail.com>
+X-Mailer: b4 0.15.2
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1790763284; l=1737;
+ i=rva333@protonmail.com; s=20260510; h=from:subject:message-id;
+ bh=obcdDbJPC+bJJB8ejmXjnP6/QmD/06/XozyzFUcNY2c=;
+ b=5GShSUHPJqiXvrqHRiSZTcESxZC/UG33Tn9SrBVmHk6NKDWSNpSL7fN2RH+escj9ogsV9oqRy
+ D6v3trKnWGYDiKD6tLp28Pl4bnfDCjc+XuZwZ15pENMehY6uHxmfM/l
+X-Developer-Key: i=rva333@protonmail.com; a=ed25519;
+ pk=zww/nWjBGoQ4POXCG0BV6fx2iuXK6jx77rsKPA5YK5Y=
+X-Endpoint-Received: by B4 Relay for rva333@protonmail.com/20260510 with
+ auth_id=777
+X-Original-From: Roman Vivchar <rva333@protonmail.com>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,56 +85,64 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Reply-To: rva333@protonmail.com
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-resource_size() returns a resource_size_t, which is 64-bit on 64-bit
-architectures or 32-bit systems with LPAE/PAE enabled. Passing this
-directly to fls(), which accepts an unsigned int, implicitly truncates
-the upper 32 bits.
+From: Roman Vivchar <rva333@protonmail.com>
 
-If a memory resource window of 4 GiB or larger is passed, the size
-truncates to 0, resulting in invalid AHB-to-PCIe translation window
-sizes.
+MediaTek SoCs are often released under the same marketing name, but with
+different suffix for the speedbin. For example, mt6572m has 1 GHz limit,
+mt6572a - 1.2 GHz, mt6572w - 1.4 GHz.
 
-Fix this by using fls64() to safely handle 64-bit resource sizes.
+Since the speedbin is stored as a number in the efuse, add support for
+converting it to the bitmask for opp-supported-hw usage in the DT.
 
-Signed-off-by: Sreeraj S Kurup <sreekuttan2156239@gmail.com>
+Signed-off-by: Roman Vivchar <rva333@protonmail.com>
 ---
- drivers/pci/controller/pcie-mediatek.c | 5 +++--
- 1 file changed, 3 insertions(+), 2 deletions(-)
+ drivers/nvmem/mtk-efuse.c | 19 +++++++++++++++++++
+ 1 file changed, 19 insertions(+)
 
-diff --git a/drivers/pci/controller/pcie-mediatek.c b/drivers/pci/controller/pcie-mediatek.c
-index a60d1ae076f8..61591d0176bc 100644
---- a/drivers/pci/controller/pcie-mediatek.c
-+++ b/drivers/pci/controller/pcie-mediatek.c
-@@ -8,6 +8,7 @@
-  */
+diff --git a/drivers/nvmem/mtk-efuse.c b/drivers/nvmem/mtk-efuse.c
+index 980c29d01337..d2e5c69c580e 100644
+--- a/drivers/nvmem/mtk-efuse.c
++++ b/drivers/nvmem/mtk-efuse.c
+@@ -70,6 +70,18 @@ static int mtk_efuse_gpu_speedbin_pp(void *context, const char *id, int index,
+ 	return 0;
+ }
  
- #include <linux/bitfield.h>
-+#include <linux/bitops.h>
- #include <linux/clk.h>
- #include <linux/delay.h>
- #include <linux/errno.h>
-@@ -754,7 +755,7 @@ static int mtk_pcie_startup_port_v2(struct mtk_pcie_port *port)
++static int mtk_efuse_cpu_speedbin_pp(void *context, const char *id, int index,
++				     unsigned int offset, void *data, size_t bytes)
++{
++	u8 *val = data;
++
++	if (val[0] >= 8)
++		return -EINVAL;
++
++	val[0] = BIT(val[0]);
++	return 0;
++}
++
+ static void mtk_efuse_fixup_dt_cell_info(struct nvmem_device *nvmem,
+ 					 struct nvmem_cell_info *cell)
+ {
+@@ -83,6 +95,13 @@ static void mtk_efuse_fixup_dt_cell_info(struct nvmem_device *nvmem,
+ 	if (cell->nbits <= 3 &&
+ 	    strncmp(cell->name, "gpu-speedbin", min(sz, strlen("gpu-speedbin"))) == 0)
+ 		cell->read_post_process = mtk_efuse_gpu_speedbin_pp;
++
++	/*
++	 * On mobile SoCs, the CPU speedbin is a number. Convert it to
++	 * a bitmask for supported-hw usage.
++	 */
++	if (strncmp(cell->name, "cpu-speedbin", min(sz, strlen("cpu-speedbin"))) == 0)
++		cell->read_post_process = mtk_efuse_cpu_speedbin_pp;
+ }
  
- 	/* Set AHB to PCIe translation windows */
- 	val = lower_32_bits(mem->start) |
--	      AHB2PCIE_SIZE(fls(resource_size(mem)));
-+	      AHB2PCIE_SIZE(fls64(resource_size(mem)));
- 	writel(val, port->base + PCIE_AHB_TRANS_BASE0_L);
- 
- 	val = upper_32_bits(mem->start);
-@@ -830,7 +831,7 @@ static int mtk_pcie_startup_port_en7528(struct mtk_pcie_port *port)
- 
- 	/* Set AHB to PCIe translation windows */
- 	val = lower_32_bits(mem->start) |
--	      AHB2PCIE_SIZE(fls(resource_size(mem)));
-+	      AHB2PCIE_SIZE(fls64(resource_size(mem)));
- 	writel(val, port->base + PCIE_AHB_TRANS_BASE0_L);
- 
- 	val = upper_32_bits(mem->start);
+ static int mtk_efuse_probe(struct platform_device *pdev)
+
 -- 
 2.55.0
+
 
 
