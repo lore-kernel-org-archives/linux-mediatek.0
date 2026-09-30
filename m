@@ -4,81 +4,109 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 087C4CA5FB1
-	for <linux-mediatek@archiver.kernel.org>; Wed, 30 Sep 2026 11:18:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C05F8CA5FAC
+	for <linux-mediatek@archiver.kernel.org>; Wed, 30 Sep 2026 11:43:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=83rwTdO/FGr48GtBLJOLuXq/CyA1VYNTtnCj+4o0YoU=; b=y3dY/fMg2BwwHt8q3KJ+keTDT0
-	Mm4F3FBWnPSEi8U1f0/iQ0hJHSEqUN5QxYWE6GWKgtbYTYFhDKWT+IViumia23LVJeNNHQwoABWbG
-	rPbSKY1Aq0CkrNGBtuZg/EDOG2Zsd87HmSP5+G1ACB/VYnE6nRRdghHgqHuvi+mMifXQbaATjUcJa
-	N5ppvqiMNLYNlFVXarD+gjIq4USBCOPaUDFiP5s42ckJctzaLuqQ2hZ3GUcmi/pv6Klu/b5okRseb
-	+edb3sTKSbRFpgRJcMxiQCkt3svKmVLrJbG2oZoqm6GIpSmBNSNN0XqWB+OxdiMXlpJE6QENPAnLl
-	k1Crgtqg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=8c0BJ0D8z5gH8AMDVEzCJUaQjDllcdyPshnOBMw13dA=; b=1JuZfoq8vFelQbgDoRU/4M8rAV
+	3Go0Yfkd5UQbpjqUL/PLhef9H+lMjI1sZ7+VJfhRgdfqBcGXGDWb00JBfx4Vgy6Ws55vvqg+8kLZX
+	dTvP7EU19Zde9fpxJT3qTbMA5VTWMixXiLWTKuuHUi+lkfhU1GJPkocdyflvshmcnCJb9Td5fIU4a
+	bt1XDuQ0JeQoRpU6JS0UQmTKh4ukIe1Lr1Jn63geV3HHFN8Jv3hjZhQtbYZ0jeQMWz3LHBYE6DO7s
+	R+TcyD6RA4xkJ5nx/eGsZSs0myBJvYhHmVw7LFGE2GcWYxUT54VJWC28j8nCXbPBCSnnpYYCbmWNe
+	hb7F3jUg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xBsK4-00000005qF2-1ji9;
-	Wed, 30 Sep 2026 11:18:04 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1xBsiN-00000005uMX-1bgm;
+	Wed, 30 Sep 2026 11:43:11 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xBsK3-00000005qEZ-23Uv;
-	Wed, 30 Sep 2026 11:18:03 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id F136D43288;
-	Wed, 30 Sep 2026 11:18:02 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id BF0911F000FF;
-	Wed, 30 Sep 2026 11:17:56 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1790767082;
-	bh=83rwTdO/FGr48GtBLJOLuXq/CyA1VYNTtnCj+4o0YoU=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=WelI3HrTq5Q+OeeK7mUJq3BaQTbRmXCV7thColG6Cwi2zu+D/821EpOAu1biw6XX9
-	 KjWSX+fc0aNUY5nsHXHHnfwzBLnju7Yewex+2qKERqCtnwPOItwJNSvGFGkL/oo8oe
-	 oPrv+8LoTNlyIVElv8+sAghuuUmmjwcvyEt+J1qNhseq+cgYZBV5kMx6EEBdl3bPfS
-	 5M0ttAIvtIoUOHyXp4KlVjP0sdJzuoM9VQ3YOigDUSt4QZCdhmYZ0aPb6X6vtK1L1s
-	 iUcoISpT2meiyK+v5NxY+jZ6kxuiJ0BuO+RTuQsZJtiesE28XbCT54duUufkOkHiUp
-	 gxDaKvINcgGPA==
-Date: Wed, 30 Sep 2026 12:17:54 +0100
-From: Mark Brown <broonie@kernel.org>
-To: James Calligeros <jcalligeros99@gmail.com>
-Cc: Martin =?utf-8?Q?Povi=C5=A1er?= <povik+lin@cutebit.org>,
-	Liam Girdwood <lgirdwood@gmail.com>, Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>, Sven Peter <sven@kernel.org>,
-	Janne Grunau <j@jannau.net>, Neal Gompa <neal@gompa.dev>,
-	David Rhodes <david.rhodes@cirrus.com>,
-	Richard Fitzgerald <rf@opensource.cirrus.com>,
-	Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>,
-	Ulf Hansson <ulfh@kernel.org>,
-	Amit Kucheria <amit.kucheria@linaro.org>,
-	"Rafael J. Wysocki" <rafael.j.wysocki@intel.com>,
-	Lars-Peter Clausen <lars@metafoo.de>, Vinod Koul <vkoul@kernel.org>,
+	id 1xBsiL-00000005uLs-3B1I
+	for linux-mediatek@bombadil.infradead.org;
+	Wed, 30 Sep 2026 11:43:09 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
+	:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:Content-ID:
+	Content-Description:In-Reply-To:References;
+	bh=8c0BJ0D8z5gH8AMDVEzCJUaQjDllcdyPshnOBMw13dA=; b=BFNRsgp7oVxm7Tb4eVapSaoxjq
+	BLudkTl9/caJi9n/nFOfQgX5KX59kzRHIOgLbvZgPUhEtRA0prDasRgl7paB4PNF0ueecNo7nmU62
+	5IyWyqNAjGiafzMKGtefbkN2nA56MNh4G/gnXGkdBGAObRPMeSTwOH81Z0MjAopk++p5MjeObvWot
+	Dp7YlV1oo9sc+3LT2OGOB9v2QJX+9CsLZdD1ION1i6JtveS8dgLf0eL7BtJnAQLE5+/TaDCjiFmcV
+	rNGAH9HJWAYNUTWfMBeCtYGqki4IG3jyqWfDmPA5sUQSztUdLNTKF7+whqED2uUVN6KRoCfvyUqDr
+	QuqHIyAg==;
+Received: from mail-dl2-x0c.google.com ([2607:f8b0:4864:38::c])
+	by desiato.infradead.org with esmtps (Exim 4.99.2 #2 (Red Hat Linux))
+	id 1xBsiI-00000003jVK-31f9
+	for linux-mediatek@lists.infradead.org;
+	Wed, 30 Sep 2026 11:43:08 +0000
+Received: by mail-dl2-x0c.google.com with SMTP id a92af1059eb24-14beee9ff79so625263c88.0
+        for <linux-mediatek@lists.infradead.org>; Wed, 30 Sep 2026 04:43:06 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20251104; t=1790768584; x=1791373384; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
+        bh=8c0BJ0D8z5gH8AMDVEzCJUaQjDllcdyPshnOBMw13dA=;
+        b=owE3U3HH39WX82UYiVL06A0oYXoT/lcl7mgjnul8rCQqIsRAwWIcYUJwdTh+YRAW8V
+         CsqjXmHjoxVVz63njr/ZaX5OIfIPe+UAPsQ9DU/Wya4cEJSkru6ekSmtO6ZAsWYK7XBi
+         f933Inkv9f7PQh3YXfQFs4xo9Vr+2rF/IQg2iriUkkAgGWdhJfvorwGpnenKSuAU5mdV
+         Lzpvd0mV6naJV1KZ8sEWMSTLMo0MBQ3Rh71+RXiQ+AmiKTq75Z2layQiPMG5PM0f61t7
+         3AfRGpbgQX9ETucPQUO05+LK2A0qlxRNj7Sisdx7xXcKSMPkZF85urdyfkBQqhSjQnhK
+         nBkQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20260707; t=1790768584; x=1791373384;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to:content-type;
+        bh=8c0BJ0D8z5gH8AMDVEzCJUaQjDllcdyPshnOBMw13dA=;
+        b=WhWoDXbJUBkaOoeoqkNTl8aD7XX1AItsWWbbgreRWeVdIiTlkcqKSa8P60BjzOAz5Q
+         FSW43lGYmnlVhPERlAwKbwOgQkena7DAGqtniVvRAduu0vCVNrdZ/hjWaYmJwtx2wVu7
+         QOwQR/8OAwIZ3SGZYDUScBo/enBKsw/bzbc36dJmvda0ppcBx0EA0/z68lAxTvQOJyFV
+         9SCCY8DQ8xmeKBmogoT4ci2KavUuWGq136Su4nA/881x37H8Dc45UKZKzPwP7DLKvI33
+         RjQP4F0B41xnagkplACc/a7iZqLM6u8G/SDRrwaT0snNXYA7yyt5v4ODyep1q1C1YKaq
+         rT1Q==
+X-Forwarded-Encrypted: i=1; AKwUvBw3T+ZOAEg9Z11WTvqgrM5SS0kl+eGK9EcmlrPOq7494NoaAgOvLfeeZlyNKpA2h8KpQbrJrMUuxoWLX3rosQ==@lists.infradead.org
+X-Gm-Message-State: AFuF++kdyBXG8EU9M3es6tbL2n4Y0UMgQBa0S1SAi6QmBcpPOXlZ7Z/R
+	6dtpVklibXMmDvjJlqPqdrX2Sw6TfL9Wzkew8lPeR8AHNXxe5AcdI5nG
+X-Gm-Gg: AYBFou0oNvQlDkO04vb8F972LOyVKw5aJ5saEKIiBfshsiy5ql+hF0fFRWA2JlPKv7K
+	Xu43xIwsC+ZV/VAIvQkxs0PJKSw/mgYM/M8dyylXfYv/7F9NpHIpkiWtHZZQqns5YuVIZCR+NZv
+	Fu4y2EjhEVCbYrlpGGh+nS1rxPSqnh0xKBHQbAiHUPcf9rvWCMhgZ6KvTlwSZzOSr48MW1Hbw/Y
+	6xh/6sZ0A4HagXMxXqPGTY6/wYTfYe9cR6BkVD2rzWyQRpAu9dUXV+ABDfwBRL6DdHUJkAbNLnQ
+	n+vVgfKRziuy474qB2ENsvwXekj0Af4JMxlTnO1u35dICaIkED+MQUkyjUlYJUV3AG/bbbFA0TC
+	US7TYz98tXrWwD6iyqoJD/IKMwttTea+xs8k0VEQBBNAQt6Pwv/CzT8ES95qhsuqcr8uFPcjihU
+	0Jc9vC+uqR6XF1i5rkt6bf3jG0AtB+JuxpXM3n64UWajf0in1D3SE4xwWv2IN4lH98LH3Ng2IxK
+	gGAEy4f6FXlRadPzp9a
+X-Received: by 2002:a05:7022:ed02:b0:143:2701:9198 with SMTP id a92af1059eb24-14d33491b4amr1010932c88.36.1790768583379;
+        Wed, 30 Sep 2026 04:43:03 -0700 (PDT)
+Received: from localhost.localdomain ([103.178.205.97])
+        by smtp.gmail.com with ESMTPSA id a92af1059eb24-14d083fe71dsm4363940c88.4.2026.09.30.04.42.59
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 30 Sep 2026 04:43:02 -0700 (PDT)
+From: Sreeraj S Kurup <sreekuttan2156239@gmail.com>
+To: Ryder Lee <ryder.lee@mediatek.com>,
+	Lorenzo Pieralisi <lpieralisi@kernel.org>,
+	=?UTF-8?q?Krzysztof=20Wilczy=C3=85=E2=80=9Eski?= <kwilczynski@kernel.org>,
+	Manivannan Sadhasivam <mani@kernel.org>,
+	Rob Herring <robh@kernel.org>,
+	Bjorn Helgaas <bhelgaas@google.com>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Shenghao Ding <shenghao-ding@ti.com>, Kevin Lu <kevin-lu@ti.com>,
-	Baojun Xu <baojun.xu@ti.com>, Sen Wang <sen@ti.com>,
-	James Schulman <james.schulman@cirrus.com>, asahi@lists.linux.dev,
-	linux-sound@vger.kernel.org, devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	patches@opensource.cirrus.com, Takashi Iwai <tiwai@suse.de>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: linux-pci@vger.kernel.org,
 	linux-mediatek@lists.infradead.org,
-	Hector Martin <marcan@marcan.st>,
-	Sasha Finkelstein <k@chaosmail.tech>
-Subject: Re: [PATCH 16/28] ASoC: apple: Add macaudio machine driver
-Message-ID: <d591a288-a8b2-4c28-8caf-6dfa11655fc7@sirena.org.uk>
-References: <20260920-macaudio-v1-0-741cc20a74e5@gmail.com>
- <6dv6M3LAS9mol5fvC8Ie-w@gmail.com>
- <0ae94fbe-cd41-4d49-b073-e65ab8eff724@sirena.org.uk>
- <ItQHm5ZKQ4Wltp6qbCRkSA@gmail.com>
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	Sreeraj S Kurup <sreekuttan2156239@gmail.com>
+Subject: [PATCH v3] PCI: mediatek: Fix integer truncation and handle oversized resources
+Date: Wed, 30 Sep 2026 11:42:18 +0000
+Message-ID: <20260930114218.2655-1-sreekuttan2156239@gmail.com>
+X-Mailer: git-send-email 2.55.0
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="nnH+SEOf/vZYoZnv"
-Content-Disposition: inline
-In-Reply-To: <ItQHm5ZKQ4Wltp6qbCRkSA@gmail.com>
-X-Cookie: (null cookie
+Content-Transfer-Encoding: 8bit
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20260930_124307_224110_3E50B6E9 
+X-CRM114-Status: GOOD (  15.43  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,63 +121,97 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+resource_size() returns a resource_size_t, which is 64-bit on 64-bit
+architectures or 32-bit systems with LPAE/PAE enabled. Passing this
+directly to fls(), which accepts an unsigned int, implicitly
+truncates the upper 32 bits.
 
---nnH+SEOf/vZYoZnv
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Furthermore, AHB2PCIE_SIZE() uses a 5-bit mask GENMASK(4, 0). If a
+resource size exceeds 2 GiB (order > 31), the log2 size order
+overflows the 5-bit mask. Clamping the value silently truncates the
+hardware window while leaving the OS resource intact, causing bus
+errors when accessing BARs in the unmapped upper region.
 
-On Wed, Sep 30, 2026 at 05:36:21PM +1000, James Calligeros wrote:
-> On Monday, 28 September 2026 9:03:13=E2=80=AFpm Australian Eastern Standa=
-rd Time Mark=20
-> Brown wrote:
-> > On Sat, Sep 26, 2026 at 11:06:02AM +1000, James Calligeros wrote:
-> > > On Tuesday, 22 September 2026 7:38:54=E2=80=AFpm Australian Eastern S=
-tandard Time=20
+Fix this by using fls64(size - 1) to accurately calculate log2 size
+orders without off-by-one errors and returning -EINVAL if the resource
+size exceeds the maximum supported 31-bit window order.
 
-> > > > > +	if (props->is_sense) {
-> > > > > +		rate->min =3D rate->max =3D cpu_dai->symmetric_rate;
-> > > > > +		return 0;
-> > > > > +	}
+Signed-off-by: Sreeraj S Kurup <sreekuttan2156239@gmail.com>
+---
+ drivers/pci/controller/pcie-mediatek.c | 29 ++++++++++++++++++++++++--
+ 1 file changed, 27 insertions(+), 2 deletions(-)
 
-> > > > It feels like this DAI ought to have separate ops...  Also, for the
-> > > > sense link will we definitely already have a rate set up?
+diff --git a/drivers/pci/controller/pcie-mediatek.c b/drivers/pci/controller/pcie-mediatek.c
+index a60d1ae076f8..97d13c9d3369 100644
+--- a/drivers/pci/controller/pcie-mediatek.c
++++ b/drivers/pci/controller/pcie-mediatek.c
+@@ -8,6 +8,7 @@
+  */
+ 
+ #include <linux/bitfield.h>
++#include <linux/bitops.h>
+ #include <linux/clk.h>
+ #include <linux/delay.h>
+ #include <linux/errno.h>
+@@ -686,6 +687,8 @@ static int mtk_pcie_startup_port_v2(struct mtk_pcie_port *port)
+ 	const struct mtk_pcie_soc *soc = port->pcie->soc;
+ 	u32 val;
+ 	int err;
++	resource_size_t size;
++	int size_order;
+ 
+ 	entry = resource_list_first_type(&host->windows, IORESOURCE_MEM);
+ 	if (entry)
+@@ -753,8 +756,18 @@ static int mtk_pcie_startup_port_v2(struct mtk_pcie_port *port)
+ 		mtk_pcie_enable_msi(port);
+ 
+ 	/* Set AHB to PCIe translation windows */
++	size = resource_size(mem);
++	if (!size)
++		return -EINVAL;
++
++	size_order = fls64(size - 1);
++	if (size_order > 31) {
++		dev_err(port->dev, "Memory resource size too large: %pa\n", &size);
++		return -EINVAL;
++	}
++
+ 	val = lower_32_bits(mem->start) |
+-	      AHB2PCIE_SIZE(fls(resource_size(mem)));
++	      AHB2PCIE_SIZE(size_order);
+ 	writel(val, port->base + PCIE_AHB_TRANS_BASE0_L);
+ 
+ 	val = upper_32_bits(mem->start);
+@@ -775,6 +788,8 @@ static int mtk_pcie_startup_port_en7528(struct mtk_pcie_port *port)
+ 	struct resource_entry *entry;
+ 	u32 val, link_mask;
+ 	int err;
++	resource_size_t size;
++	int size_order;
+ 
+ 	entry = resource_list_first_type(&host->windows, IORESOURCE_MEM);
+ 	if (entry)
+@@ -829,8 +844,18 @@ static int mtk_pcie_startup_port_en7528(struct mtk_pcie_port *port)
+ 		mtk_pcie_enable_msi(port);
+ 
+ 	/* Set AHB to PCIe translation windows */
++	size = resource_size(mem);
++	if (!size)
++		return -EINVAL;
++
++	size_order = fls64(size - 1);
++	if (size_order > 31) {
++		dev_err(port->dev, "Memory resource size too large: %pa\n", &size);
++		return -EINVAL;
++	}
++
+ 	val = lower_32_bits(mem->start) |
+-	      AHB2PCIE_SIZE(fls(resource_size(mem)));
++	      AHB2PCIE_SIZE(size_order);
+ 	writel(val, port->base + PCIE_AHB_TRANS_BASE0_L);
+ 
+ 	val = upper_32_bits(mem->start);
+-- 
+2.55.0
 
-> > > AIUI, the cpu rate should always be set up by the time we hit
-> > > this path as it is only taken when setting up the VISENSE FE (after t=
-he
-> > > playback stuff is already set up).
-
-> > Is that something we actually enforce or is that just a thing a sensible
-> > userspace should do?  I can see something racing.
-
-> We don't really enforce it. speakersafetyd is the only thing that opens t=
-he
-> VISENSE PCM and does a blocking read of samples
-> which only starts and subsequently completes after the "real" PCM
-> is configured and playback begins. The sample rate is reliably
-> reflected to speakersafetyd via the kcontrol on the VISENSE PCM. We
-> have not experienced any race issues with this arrangement in ~5 years
-> nor has anyone reported any to us. I'm happy to take pointers on
-> how we should be doing this if the current approach won't fly.
-
-You could just return an error if there's no rate set, it sounds like
-your actual userspace will DTRT anyway.
-
---nnH+SEOf/vZYoZnv
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmq87+EACgkQJNaLcl1U
-h9Cxhgf/WcFsoEMkfmXz8RaOTaYRSb5C0qxwrbBKBoUhhIsznqLaBZmbCYldSt+C
-z+HAA+DYIwT0Hod2VkGiT4b8sL2S92svIkrouVYKa4TreBxzK4GY0cabHusPWQwe
-EeXxCKfvgQj8+akOUfcXEsp391TQ0mtBW6AseRd2tLZh/h32OjqkwX+NpxcLYRF4
-/LIQAFAIGxTEB/xeXE4GlcI4fnPfMggKGnG2Dn+r+iDgeD/tIZkfK2BiR+nAatIj
-RF5JM1d5eHFJxqApPWsliNdUKU00LB0sRWYWUj9FRvqImMYIz6TD4mJX6EfeAsL9
-EOeh5DCM3Ud1EMHlvn+J5iPMDMmupQ==
-=y+Ex
------END PGP SIGNATURE-----
-
---nnH+SEOf/vZYoZnv--
 
