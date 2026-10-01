@@ -4,70 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DCEF2CA5FB3
-	for <linux-mediatek@archiver.kernel.org>; Thu,  1 Oct 2026 08:35:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 86990CA5FA5
+	for <linux-mediatek@archiver.kernel.org>; Thu,  1 Oct 2026 08:41:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=nRbIKtsqOqygVzGsujZN6/nCxuJYbBISgZetm9P74vE=; b=NDn/4C9SOn/wgXkWk3WZ5+WZgD
-	vNxiKu3FAAMLfN1V9nzlWCON3g4xBbTESw7Rm8YwZOKQNgZnZzIiBgyUc2QZtDdbAXKE5hBaEuWpS
-	bcH6fiLlNTeGzheqPI3UcYdhi1v9taSX75SWN5QdVYJjlQRkT2fOMIP5sxqjs6t8hJ0SGgFVt8jMh
-	eHoWLmNQzmsraf6awEdpjPBp8PP59x1CsxmzV2QOS8tPFHsV/fd+zWdUIOdtWVNVLT9uTo7UZiBt6
-	jndw21u6o7DFRZyPGMFUaBDUWfcPPVK0UU/NXqfUcHQHZzirzXR1Fp7b9Vcxa5yCF9cNIp50YiW1+
-	cSu7HkmQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:From:
+	Subject:Message-ID:References:Mime-Version:In-Reply-To:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=jIEy5cT5mmkkVcGKdpbeH8K331ZFV/0IWVEdNWVBdcc=; b=wn+QQuGtbP0IzMXXj1yY2JPL3M
+	xjAchPylP9k7eXbhkOfMfy/iIDr+K1mgrN6DIfjA2KRj3ZU3K/Ajx6nSN5aJ+as2pqj9ojwZDidbM
+	67RfOTU1E8opj/KF4YOaMoXBnvVmmRSHokJoUgbV4dUWbVW7qd/F8WyY4fB6XedQw5s9KybQ+ymkj
+	5Szv7H3PStel/VHN888gt342VtqIEM/OqIq62B+d8bwS0kAnt4aUJgrZiCIktrul879mqGwxQwBgQ
+	Rm0DRnrBAYHRb8HlO2nNR21jToT4nF81VJlP8cqpHswVpnvFpMkccfiiwzrwsjoRndMNVA/bE2pM6
+	hZTZ1lmw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xCCFv-00000008BhL-3E3a;
-	Thu, 01 Oct 2026 08:35:07 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1xCCMB-00000008Cih-20U3;
+	Thu, 01 Oct 2026 08:41:35 +0000
+Received: from mail-pg1-x547.google.com ([2607:f8b0:4864:20::547])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xCCFu-00000008Bgl-27oO
+	id 1xCCM9-00000008Chw-0rYa
 	for linux-mediatek@lists.infradead.org;
-	Thu, 01 Oct 2026 08:35:06 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id B0BB560A60
-	for <linux-mediatek@lists.infradead.org>; Thu,  1 Oct 2026 08:35:05 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 682F31F0089A
-	for <linux-mediatek@lists.infradead.org>; Thu,  1 Oct 2026 08:35:05 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1790843705;
-	bh=nRbIKtsqOqygVzGsujZN6/nCxuJYbBISgZetm9P74vE=;
-	h=References:In-Reply-To:From:Date:Subject:To:Cc;
-	b=c3SlhvcuQrJSyZoW9VcteJICxeUldHXylfc0gTU6cl9V9f74rwDXanedOzcCzlsIM
-	 vswt64LHLMRnb8NHBIWe8gc2vmrkKOWVKRS50WGHUdmcOWc4zp53V+H+C4nVaKGVDl
-	 w+Bt0IS+IF87pVzi8Xvf8rZEHU+gahzeTbYeUA66BZ+fVKM/OfEKVbuGt4tL8AqSkn
-	 rMf9Laexa3+O37DxX/FCz++g8+RYLyck4j5xVNQmOJxFvjKFGzfCCtDzbLkSrFglKm
-	 EvcOg29Wr+wBRsMF/lvqePmxLAiUdDkLgkH6xS6+gkFUOR9saE6Izx186mwo7itaga
-	 4H1QiGn/AsfMQ==
-Received: by mail-oa2-f12.google.com with SMTP id 586e51a60fabf-46ac6e5d8f7so2969377fac.1
-        for <linux-mediatek@lists.infradead.org>; Thu, 01 Oct 2026 01:35:05 -0700 (PDT)
-X-Forwarded-Encrypted: i=1; AKwUvByoDObj1acI2x5LRxCYxV2qJUW8yQrQgcS+o9PO2JQ2My+rzrQSgRH5jul66EozQ8pYyhwJqZAIwDZN2Ggc8Q==@lists.infradead.org
-X-Gm-Message-State: AFq9FYKwgFwu8NDXVYjM9v7AxXUoAy73Dh0WRLC+n17dud1QLZzKzNdl
-	CHNOE1tnLhw626NyvUPjR1hbvUs4W+SwOsjviH8RO8Iw15M1sEsPY+z9cs5u+8SqEnBpqbN1ljT
-	ojVAi9BlvTFnaB4QdRk6FRbdCsiykeb8=
-X-Received: by 2002:a05:687c:20d1:b0:491:88f1:f3aa with SMTP id
- 586e51a60fabf-49dddd46654mr4533364fac.26.1790843704807; Thu, 01 Oct 2026
- 01:35:04 -0700 (PDT)
-MIME-Version: 1.0
-References: <20260926-b4-mt7629-pinctrl-v1-1-23904cb0c3f3@gmail.com>
-In-Reply-To: <20260926-b4-mt7629-pinctrl-v1-1-23904cb0c3f3@gmail.com>
-From: Linus Walleij <linusw@kernel.org>
-Date: Thu, 1 Oct 2026 10:34:50 +0200
-X-Gmail-Original-Message-ID: <CAD++jLndGJmGzeMvHk695Kh9y56Zxye86DiFTuoKBiWTnvkmLg@mail.gmail.com>
-X-Gm-Features: AclHuK8ING7eVXmVQv5H-ajPOg6LfXVJcEvYhwqQVDz3x1__fBSswtm27gPTJNQ
-Message-ID: <CAD++jLndGJmGzeMvHk695Kh9y56Zxye86DiFTuoKBiWTnvkmLg@mail.gmail.com>
-Subject: Re: [PATCH] pinctrl: mediatek: mt7629: fix the 2.4 GHz Wi-Fi pin mode array
-To: Chuanhong Guo <gch981213@gmail.com>
-Cc: Sean Wang <sean.wang@kernel.org>, Ryder Lee <ryder.lee@mediatek.com>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	linux-mediatek@lists.infradead.org, linux-gpio@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+	Thu, 01 Oct 2026 08:41:34 +0000
+Received: by mail-pg1-x547.google.com with SMTP id 41be03b00d2f7-cc4ac5feaa4so3832689a12.1
+        for <linux-mediatek@lists.infradead.org>; Thu, 01 Oct 2026 01:41:32 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=google.com; s=20251104; t=1790844091; x=1791448891; darn=lists.infradead.org;
+        h=content-type:cc:to:from:subject:message-id:references:mime-version
+         :in-reply-to:date:from:to:cc:subject:date:message-id:reply-to
+         :content-type;
+        bh=jIEy5cT5mmkkVcGKdpbeH8K331ZFV/0IWVEdNWVBdcc=;
+        b=Gv3lM8NGKghl+hQdkgk+SVdnmt7gATlxZE5n57PmqYQmgRm8Ylcm80njsW5ZgwPk0I
+         aVHKEqYd5asImpdwan3gqw5ejUBxtBE0OwKzeQhgRv2EKrruMqmWeCXbWj+gL5jA+IuX
+         9JCMm8Vf00uEV5ntDb40Kl09Z6/z7oHLacnWgkY/tev68C2hmE6z2pCLZddJUAhBiWHl
+         JmD5z8OTpZNmDftuIxHEZ+/S2vYdDxqBXJhyJH+GSuzF1fcw6JnkHhQeFHjzXjYkVdPV
+         h5wpQKq+PnOHBuE24vFD9gVOrRTmMOr+A1Jl+4Ge/BfiTwToa5XD6pPvVZ/EzDn52Rub
+         p+lw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20260707; t=1790844091; x=1791448891;
+        h=content-type:cc:to:from:subject:message-id:references:mime-version
+         :in-reply-to:date:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to:content-type;
+        bh=jIEy5cT5mmkkVcGKdpbeH8K331ZFV/0IWVEdNWVBdcc=;
+        b=Bk/zMXdt4PoNOw+TX696CnOJY9IcW7jDFCw5tvFrTj8zpUt2NgZHObHdc9yhgxoK5Q
+         gqSEnDrfgAc1sAMBDSSClEHokocVrsNfUOYCkUlPJWyc31moV/h3e7fIFOv3D5i06ADR
+         tX9PsPsdPnwsJjk36/QsFRb33+pDA47S9nCNydO027EiFMEnTVdGYa39jFRb39xfSyM/
+         YmMtPaC8YCCNYgPXSRgm6T3yZdD6mRmqwvf9bwi8qev+b9rksw3bAC7Y/IyCqH0XYf3K
+         BGN9xYOwIA/Qmvu3Cl8Mi+OZ/XWc5wYiqKh+LFN/kHC6So7RYnJwzBxAMMh2cki0fofI
+         Pa4Q==
+X-Forwarded-Encrypted: i=1; AKwUvBzwTL6nmoZI0TF1fMwM0sI4GR7LK/gWc9LfF7vf+u8xKQFXcJKvJObcY+G28WDHvIo48yCAtTfWbPZxlAEyOw==@lists.infradead.org
+X-Gm-Message-State: AFuF++mn1wciOUiCtIgqGURSeBe2HrPEXhUL4yGzGsmtV8h8EigVtY15
+	xMqeKJAJANPfCQ2NcKqq5upg+3qprKCAjlgBo2SYYAEKOk/+CDcaMnBSxetilHGGsM30A+Yd1hG
+	5Qk3DyHpxs+gjp5MWG9h4hA==
+X-Received: from pfnn21.prod.google.com ([2002:a05:6a00:2b95:b0:886:fe91:dd9e])
+ (user=stanleyjhu job=prod-delivery.src-stubby-dispatcher) by
+ 2002:a05:6a20:7d8b:b0:3de:55ce:75d1 with SMTP id adf61e73a8af0-3de9e86af8dmr4024094637.92.1790844091336;
+ Thu, 01 Oct 2026 01:41:31 -0700 (PDT)
+Date: Thu,  1 Oct 2026 16:41:29 +0800
+In-Reply-To: <20260909091045.1134956-1-naomi.chu@mediatek.com>
+Mime-Version: 1.0
+References: <20260909091045.1134956-1-naomi.chu@mediatek.com>
+X-Mailer: git-send-email 2.56.0.rc1.315.gc6ed9934b7-goog
+Message-ID: <20261001084129.499805-1-stanleyjhu@google.com>
+Subject: Re: [PATCH v1] scsi: ufs: core: Hold a clock reference across the probe
+From: Stanley Jhu <stanleyjhu@google.com>
+To: Naomi Chu <naomi.chu@mediatek.com>
+Cc: linux-scsi@vger.kernel.org, mkp@kernel.org, avri.altman@sandisk.com, 
+	alim.akhtar@samsung.com, James.Bottomley@HansenPartnership.com, 
+	bvanassche@acm.org, wsd_upstream@mediatek.com, peter.wang@mediatek.com, 
+	alice.chao@mediatek.com, chun-hung.wu@mediatek.com, 
+	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, 
+	ed.tsai@mediatek.com
 Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20261001_014133_272534_1EBB3187 
+X-CRM114-Status: UNSURE (   3.70  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,23 +95,5 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sat, Sep 26, 2026 at 12:04=E2=80=AFPM Chuanhong Guo <gch981213@gmail.com=
-> wrote:
-
-> The wf0_2g group contains nine pins but only eight mux values.
-> mtk_pinmux_set_mux() indexes the mode array once for each pin, reading
-> past its end when configuring pin 78 (WF0_2G_HB6). This can select an
-> unrelated mux value or fail with -EINVAL, preventing the Wi-Fi device
-> from probing.
->
-> Add the missing mode 1 entry for WF0_2G_HB6.
->
-> Fixes: b44677375fee ("pinctrl: mediatek: add pinctrl support for MT7629 S=
-oC")
-> Signed-off-by: Chuanhong Guo <gch981213@gmail.com>
-
-Patch applied as nonurgent fix.
-
-Yours,
-Linus Walleij
+Reviewed-by: Stanley Jhu <stanleyjhu@google.com>
 
