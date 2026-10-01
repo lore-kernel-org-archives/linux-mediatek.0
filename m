@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7737DCA5FD7
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DF21DCA5FCF
 	for <linux-mediatek@archiver.kernel.org>; Thu,  1 Oct 2026 08:22:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
@@ -12,59 +12,58 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=TaaZl5GmaW2NfuUA6tcCmwJ6qRigH2LvATcDIn8roDc=; b=H9dQuR2EEvnfAf4HHoj7cCB/zX
-	7o/N94Lk5sqKup9jkWbNPwQu/vZmqFXPA9UVC6lUCqYugmyKr+gCzOTVR/Bp49nMjqxoUxGEu0tLI
-	f1SRLPbw22TimR/yhUn6vUV5DCmTCEibfeZQflRkrfK7uGU3qi+llydq5cqCShyJ4510Qt8ww2j8O
-	xUc2oCBiA+lBsfAkaTNNTpJiDQBsZ1XSQhLZ6B50vxoUcDniL9RuXd6K7JxEpcxC6f1dREuO353sS
-	aaZex9HK/8b7YXRjjloZwsp0ETw9p4PziSZuffAA2fSSNgllUzpWfXi1RT6R/nVYfSxJtk2blsXAO
-	0DYDXwYQ==;
+	bh=dQ4BdR2hSpa/+RKgjvCOJQqKbDQw2cKo7on2L9CthCE=; b=SlyEgJD5cIQctdai+6D3yuLDRS
+	UVHAlu74heBFwLPGtI31ZRWtQQ1QPH1qQstdxzFoDTsXXeS5+/Bln+cyNKJQajBKVmPeBT9lK1259
+	mieE625W7Nsi44mczN5q+kCFDe4xWG/twxVjiaHJ832IlWl823/BakFEw2J4fyKyOqbm9TCt+EqYo
+	zoHsM0F9Um3a5MKMDDHz9SiMUsuqCvKoyWQ2cGhJ+JpJ3YJhX0ts/guxphYA2NUYdmJUHvG4YXKVq
+	obcrNAoK3zyO0J8XCEBbNgWjXUqDRTKRoAnY/jPv8SNnnQtJ4JeLR+5sLYoY/HtGcOWrLXFdpUVbU
+	KJ6tdnWg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xCC3V-000000087GE-0i6Z;
+	id 1xCC3V-000000087Gy-1rZc;
 	Thu, 01 Oct 2026 08:22:17 +0000
 Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xCC3Q-00000008778-1SGJ;
+	id 1xCC3Q-0000000877D-1lJL;
 	Thu, 01 Oct 2026 08:22:13 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=infradead.org; s=desiato.20200630; h=Cc:To:In-Reply-To:References:
 	Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Sender:Reply-To:Content-ID:Content-Description;
-	bh=TaaZl5GmaW2NfuUA6tcCmwJ6qRigH2LvATcDIn8roDc=; b=UJiLQOesQ+2f0wEJZIywFUvUX/
-	27TOJedlBKcMHab3hxpvlPix9iZ3i8Yd0KrxuiJBKad2uIIMqna9iRjnhVW5tMXuJPcNEbGwnaxHz
-	l3f9ySKXRJtIPWfLClfaBL7Dzg+tGAEElr7DIImNnBXQXd2jI+Zw1+xDu61YxzZaqUbRAsenX5mpa
-	ZXVYOf5aXPvcKpldhvyXIPP3BHgVnAL+uWCihgHnoiPowN1Rmmo3DJH1loWBflYw8drtLLLJtExxq
-	0/UecV3di3FmMdqGJsekPrMlrq0W4QikWA5Jl4/MRVKuQ9bSarTIHSefaeDonxE1s1utStXNG1+S2
-	w5lr0hZA==;
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	bh=dQ4BdR2hSpa/+RKgjvCOJQqKbDQw2cKo7on2L9CthCE=; b=RBhnfINIWs0Irkk55EmlMl4HUJ
+	BpID/WGT2AxcwUgJNdh+lqn5h5VjJUDgwuTfjLjIZobkISS+uET9eNGfylzBLOaoEUIN67zvIqIQW
+	ypXKN7REhuefGfqTPyYp79HTBS2OG8I+so4PHQDRfWwcvWAbVNdgHJSAHbeY3XRp8V6UfWcG7/Qmr
+	AhchSiXDLH1/tcjveYIEAJobIkDgRmToW6GJ8x1CXHGEmPhNptqeTRjTAyv+885V47iQt+A1eGX8d
+	3Xqyi3KbPkFDN/Eryz6PtXsgN44Z6f9ytwSbfCl1HN23eNDJ01BpmGHdsPPpoy+dv+XaqHSyteD6Q
+	RCp0n0Lg==;
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by desiato.infradead.org with esmtps (Exim 4.99.2 #2 (Red Hat Linux))
-	id 1xCC3L-00000004ioc-2a6o;
+	id 1xCC3L-00000004ioj-2d5m;
 	Thu, 01 Oct 2026 08:22:11 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1790842923;
-	bh=HXEFqOMYQclLXNgj2YBJ3cW9HGMGfJeqHst6wm/hNow=;
+	s=mail; t=1790842924;
+	bh=bWpqNA2w/lzQwaLDZK22KciiLovKewpkb+MzEY+uZ6Y=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=pMww5UgZYb33kdIoC2C7QLZ2htPt0OsKKbaLaSLzlU32+PTh5q/PTtKkcWlyCQ6UD
-	 zO5pFakMuZaqZZzUaqjziC/kW+qc86J205RL9qaH0K8gSGaPWE79raDwpJUXGqGjLk
-	 9tqCtnXoib7MRyYWEkbJeD/Mc+kGBEdwsgbUZtSB7FkUwP78gavhvw6iCasVaIfX8Q
-	 eyCYaCW2313H+6sArnjx/8VkJPDr3OJhiMoIFqK6pSyR6J8K0qpYawqyh63ZRyt0fI
-	 RtbkbkLOIn8Em0Q1wTxDeMvDghDBI9C5IMh6ztA3ltMLEhDlET0j5lieGCM8BTcc9N
-	 VH6Hl/e4f5J+g==
+	b=Co+k6a1lEGm5VRuty15kvV7pD1tSehfDwm38Q8p508KQTYgMeEHv0LJVQH9u4Dk64
+	 pQ3oCj7iTY6RtdtPgsSRhhPRNXTMdMDEybqz1Gu2OSf2CZBJ3Nq/4p7PJvRc5kNAXL
+	 LjdkhpkjVl6eIJ7QPGxaHdyGgJrJokRluYsDppabJIaSVaYLSjng0yQv3LmeZkJDLL
+	 oOaXxPkn4ekCp6oCq3YmIOyx0UsYFByhQHfck70OYDQyu/EUJdpI93uqy988Y9O/8W
+	 +TsMPV4Lbn/rrtaohQQoLl4QgKXTqlPuGZiNnejNqQ5pyEirZRFWrTUi4upn8rLlEx
+	 cvEXiNkc8oEag==
 Received: from yukiji.home (unknown [100.64.0.131])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: laeyraud)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id C167817E0803;
-	Thu, 01 Oct 2026 10:22:02 +0200 (CEST)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id D3B8017E089A;
+	Thu, 01 Oct 2026 10:22:03 +0200 (CEST)
 From: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
-Date: Thu, 01 Oct 2026 10:21:36 +0200
-Subject: [PATCH v13 04/24] scsi: ufs: mediatek: Move MTK_SIP_UFS_CONTROL to
- mtk_sip_svc.h
+Date: Thu, 01 Oct 2026 10:21:37 +0200
+Subject: [PATCH v13 05/24] phy: mediatek: ufs: Add support for resets
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20261001-mt8196-ufs-v13-4-60854adab6d9@collabora.com>
+Message-Id: <20261001-mt8196-ufs-v13-5-60854adab6d9@collabora.com>
 References: <20261001-mt8196-ufs-v13-0-60854adab6d9@collabora.com>
 In-Reply-To: <20261001-mt8196-ufs-v13-0-60854adab6d9@collabora.com>
 To: Chunfeng Yun <chunfeng.yun@mediatek.com>, Vinod Koul <vkoul@kernel.org>, 
@@ -89,16 +88,16 @@ Cc: kernel@collabora.com, linux-arm-kernel@lists.infradead.org,
  Nicolas Frattaroli <nicolas.frattaroli@collabora.com>, 
  Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
 X-Mailer: b4 0.14.3
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1790842918; l=1832;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1790842918; l=4162;
  i=louisalexis.eyraud@collabora.com; s=20250113; h=from:subject:message-id;
- bh=z5h4Zo+etU6eLsizbb7MCmCVs96yTicxCToFv5toJJQ=;
- b=HvYXDslqjXYiYUf5S/fKnQ10vDRPPtMmaAZZIDLXcHnJwFllEuSrdmt7y69w/L+7wFIM29B8k
- NHsMdu60+3uAY8+jlBQEMBaMR8MR5xbwceroqQkcKv6uuFpasL7SZ9f
+ bh=2rm7VAJlRoymYlJ4TRbEdX+nNHudWfCFJbmQirU4tfo=;
+ b=LqUIU8fOZoLIN3D7Yu76RLMdprMBGM1aBLzcKRwwyEFldGscOpSf5CPUFVJL5KZTUoVbnB0TZ
+ 2wLTxDuQqtMDI+qEpC8vCscQ3RwrIoaOXjEd96kfXSg0kGJl2tq/NNA
 X-Developer-Key: i=louisalexis.eyraud@collabora.com; a=ed25519;
  pk=CHFBDB2Kqh4EHc6JIqFn69GhxJJAzc0Zr4e8QxtumuM=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261001_092208_096596_DB99BB81 
-X-CRM114-Status: GOOD (  14.86  )
+X-CRM114-CacheID: sfid-20261001_092208_178555_F81F97B7 
+X-CRM114-Status: GOOD (  21.44  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -115,49 +114,147 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
 
-SMC commands used by multiple drivers need to live in a shared header
-file somewhere to avoid code duplication. In order to rework the MPHY
-reset control to be in the phy-mtk-ufs.c driver, both ufs-mediatek and
-the phy driver need access to this command.
+The MediaTek UFS PHY supports PHY resets. Until now, they've been
+implemented in the UFS host driver. Since they were never documented in
+the UFS HCI node's DT bindings, and no mainline DT uses it, it's fine if
+it's moved to the correct location, which is the PHY driver.
 
-Move it to mtk_sip_svc.h, where other such command definitions already
-live.
+Implement the MPHY reset logic in this driver and expose it through the
+phy subsystem's reset op. The reset itself is optional, as judging by
+other mainline devices that use this hardware, it's not required for the
+device to function.
 
+If no reset is present, the reset op returns -EOPNOTSUPP, which means
+that the ufshci driver can detect it's present and not double sleep in
+its own reset function, where it will call the phy reset.
+
+Reviewed-by: Philipp Zabel <p.zabel@pengutronix.de>
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Reviewed-by: Peter Wang <peter.wang@mediatek.com>
+Acked-by: Vinod Koul <vkoul@kernel.org>
 Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
 Signed-off-by: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
 ---
- drivers/ufs/host/ufs-mediatek-sip.h      | 1 -
- include/linux/soc/mediatek/mtk_sip_svc.h | 3 +++
- 2 files changed, 3 insertions(+), 1 deletion(-)
+ drivers/phy/mediatek/phy-mtk-ufs.c | 71 ++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 71 insertions(+)
 
-diff --git a/drivers/ufs/host/ufs-mediatek-sip.h b/drivers/ufs/host/ufs-mediatek-sip.h
-index 7d17aedf6fb8..d627dfb4a766 100644
---- a/drivers/ufs/host/ufs-mediatek-sip.h
-+++ b/drivers/ufs/host/ufs-mediatek-sip.h
-@@ -11,7 +11,6 @@
- /*
-  * SiP (Slicon Partner) commands
+diff --git a/drivers/phy/mediatek/phy-mtk-ufs.c b/drivers/phy/mediatek/phy-mtk-ufs.c
+index fc19e0fa8ed5..4439a9eb6b7a 100644
+--- a/drivers/phy/mediatek/phy-mtk-ufs.c
++++ b/drivers/phy/mediatek/phy-mtk-ufs.c
+@@ -4,12 +4,15 @@
+  * Author: Stanley Chu <stanley.chu@mediatek.com>
   */
--#define MTK_SIP_UFS_CONTROL               MTK_SIP_SMC_CMD(0x276)
- #define UFS_MTK_SIP_VA09_PWR_CTRL         BIT(0)
- #define UFS_MTK_SIP_DEVICE_RESET          BIT(1)
- #define UFS_MTK_SIP_CRYPTO_CTRL           BIT(2)
-diff --git a/include/linux/soc/mediatek/mtk_sip_svc.h b/include/linux/soc/mediatek/mtk_sip_svc.h
-index 6c95a29b79fa..36ab3153fe44 100644
---- a/include/linux/soc/mediatek/mtk_sip_svc.h
-+++ b/include/linux/soc/mediatek/mtk_sip_svc.h
-@@ -22,6 +22,9 @@
- 	ARM_SMCCC_CALL_VAL(ARM_SMCCC_FAST_CALL, MTK_SIP_SMC_CONVENTION, \
- 			   ARM_SMCCC_OWNER_SIP, fn_id)
  
-+/* UFS related SMC call */
-+#define MTK_SIP_UFS_CONTROL		MTK_SIP_SMC_CMD(0x276)
++#include <linux/arm-smccc.h>
+ #include <linux/clk.h>
+ #include <linux/delay.h>
+ #include <linux/io.h>
+ #include <linux/module.h>
+ #include <linux/phy/phy.h>
+ #include <linux/platform_device.h>
++#include <linux/reset.h>
++#include <linux/soc/mediatek/mtk_sip_svc.h>
+ 
+ #include "phy-mtk-io.h"
+ 
+@@ -35,9 +38,17 @@
+ 
+ #define UFSPHY_CLKS_CNT    2
+ 
++#define UFS_MTK_SIP_MPHY_CTRL       BIT(8)
 +
- /* Modem related SMC call */
- #define MTK_SIP_KERNEL_CCCI_CONTROL	MTK_SIP_SMC_CMD(0x505)
++enum ufs_mtk_mphy_op {
++	UFS_MPHY_BACKUP = 0,
++	UFS_MPHY_RESTORE
++};
++
+ struct ufs_mtk_phy {
+ 	struct device *dev;
+ 	void __iomem *mmio;
++	struct reset_control *reset;
+ 	struct clk_bulk_data clks[UFSPHY_CLKS_CNT];
+ };
  
+@@ -140,9 +151,59 @@ static int ufs_mtk_phy_power_off(struct phy *generic_phy)
+ 	return 0;
+ }
+ 
++static int ufs_mtk_phy_ctrl(struct ufs_mtk_phy *phy, enum ufs_mtk_mphy_op op)
++{
++	struct arm_smccc_res res;
++
++	arm_smccc_smc(MTK_SIP_UFS_CONTROL, UFS_MTK_SIP_MPHY_CTRL, op,
++		      0, 0, 0, 0, 0, &res);
++
++	switch (res.a0) {
++	case SMCCC_RET_NOT_SUPPORTED:
++		return -EOPNOTSUPP;
++	case SMCCC_RET_INVALID_PARAMETER:
++		return -EINVAL;
++	default:
++		return 0;
++	}
++}
++
++static int ufs_mtk_phy_reset(struct phy *generic_phy)
++{
++	struct ufs_mtk_phy *phy = get_ufs_mtk_phy(generic_phy);
++	int ret;
++
++	if (!phy->reset)
++		return -EOPNOTSUPP;
++
++	ret = reset_control_assert(phy->reset);
++	if (ret)
++		return ret;
++
++	usleep_range(100, 110);
++
++	ret = reset_control_deassert(phy->reset);
++	if (ret)
++		return ret;
++
++	/*
++	 * To avoid double-sleep and other unintended side-effects in the ufshci
++	 * driver, don't return the phy_ctrl retval here, but just return -EPROTO.
++	 */
++	ret = ufs_mtk_phy_ctrl(phy, UFS_MPHY_RESTORE);
++	if (ret) {
++		dev_err(phy->dev, "UFS_MPHY_RESTORE SMC command failed: %pe\n",
++			ERR_PTR(ret));
++		return -EPROTO;
++	}
++
++	return 0;
++}
++
+ static const struct phy_ops ufs_mtk_phy_ops = {
+ 	.power_on       = ufs_mtk_phy_power_on,
+ 	.power_off      = ufs_mtk_phy_power_off,
++	.reset          = ufs_mtk_phy_reset,
+ 	.owner          = THIS_MODULE,
+ };
+ 
+@@ -162,8 +223,18 @@ static int ufs_mtk_phy_probe(struct platform_device *pdev)
+ 	if (IS_ERR(phy->mmio))
+ 		return PTR_ERR(phy->mmio);
+ 
++	phy->reset = devm_reset_control_get_optional_exclusive(dev, NULL);
++	if (IS_ERR(phy->reset))
++		return dev_err_probe(dev, PTR_ERR(phy->reset), "Failed to get reset\n");
++
+ 	phy->dev = dev;
+ 
++	if (phy->reset) {
++		ret = ufs_mtk_phy_ctrl(phy, UFS_MPHY_BACKUP);
++		if (ret)
++			return dev_err_probe(dev, ret, "Failed to back up MPHY\n");
++	}
++
+ 	ret = ufs_mtk_phy_clk_init(phy);
+ 	if (ret)
+ 		return ret;
 
 -- 
 2.55.0
