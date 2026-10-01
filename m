@@ -4,101 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3E734CA5FDE
-	for <linux-mediatek@archiver.kernel.org>; Thu,  1 Oct 2026 08:22:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DCEF2CA5FB3
+	for <linux-mediatek@archiver.kernel.org>; Thu,  1 Oct 2026 08:35:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=faFSmgf0UoH3tPqp1jvEcgCuDHoV29KBYn+yS8rEdOg=; b=JZXr6Reo4PQa99z0hwYvncqCr5
-	xc37N6yQvOuIBcrIDeifWcmypJOAXEBy7slOF/nQ3ap2kiCMRdap6fqZlKJgX+FARyt5AbiSwbMkL
-	3UR/+Ka3pdVEcmNcVPWdSgrzQ3IMgFuyYn9r2Lz2t5CWOTsDfqDcuWCFUnu2QaJymiseMfF1z8Lzs
-	ONYTjPZHCLT9s9Dt4YWRmD+5cZyvfaeFqjyFqAMR11CHsN8ZpF9UI3Au0mErY996ms4PjhYg61OXX
-	E2eDL12iabKbRESTtQFhxznDSg+8gGQjcAcxkNbiqbwe6Q2RsoNd1R10xWlcgztupv21iiYsN1YKv
-	4DLNUcJA==;
+	bh=nRbIKtsqOqygVzGsujZN6/nCxuJYbBISgZetm9P74vE=; b=NDn/4C9SOn/wgXkWk3WZ5+WZgD
+	vNxiKu3FAAMLfN1V9nzlWCON3g4xBbTESw7Rm8YwZOKQNgZnZzIiBgyUc2QZtDdbAXKE5hBaEuWpS
+	bcH6fiLlNTeGzheqPI3UcYdhi1v9taSX75SWN5QdVYJjlQRkT2fOMIP5sxqjs6t8hJ0SGgFVt8jMh
+	eHoWLmNQzmsraf6awEdpjPBp8PP59x1CsxmzV2QOS8tPFHsV/fd+zWdUIOdtWVNVLT9uTo7UZiBt6
+	jndw21u6o7DFRZyPGMFUaBDUWfcPPVK0UU/NXqfUcHQHZzirzXR1Fp7b9Vcxa5yCF9cNIp50YiW1+
+	cSu7HkmQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xCC49-000000088f9-0TI2;
-	Thu, 01 Oct 2026 08:22:57 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1xCCFv-00000008BhL-3E3a;
+	Thu, 01 Oct 2026 08:35:07 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xCC3h-000000087dw-1R96;
-	Thu, 01 Oct 2026 08:22:29 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Cc:To:In-Reply-To:References:
-	Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Sender:Reply-To:Content-ID:Content-Description;
-	bh=faFSmgf0UoH3tPqp1jvEcgCuDHoV29KBYn+yS8rEdOg=; b=TFR4soYCYED5RrdYlr2h//zW7b
-	JcZqymHMziMaMAQM7SSzWCdctwYPipcuY621b2egM2l2TysPGWOZDtCBKoZx4scp7Iy61QQUp0A4/
-	diYl5RjFgQSeo9BA3FYu9905EaZlc12IIvu0f99CnmiarO97IGbDahm+XoW2q1qZhVkxnlsIVCcsf
-	ZwokdTNEtThABzc1ySjVB5igM/UyriSELpxsHUnYtoxfEjL6OCPSdlz/3bmanVN5spI6RCAoVxLZ+
-	59FU5/cO8BGkUcdb9n04xt4fwRLnu+Si8EatmOiJRooZXM90X1keHWxfNaQTM5XkThnE99pnQjxHy
-	i5Phqpvg==;
-Received: from bali.collaboradmins.com ([148.251.105.195])
-	by desiato.infradead.org with esmtps (Exim 4.99.2 #2 (Red Hat Linux))
-	id 1xCC3e-00000004iwT-19d6;
-	Thu, 01 Oct 2026 08:22:28 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1790842945;
-	bh=ctvo10c6ZHGhBb9Ez2vAg3xgbygWnaRa1DyjwWhzx9I=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=AFIN15lPYvTfV5D6SPuQSu6M+sXDS7YmjWVza0JfvDzkIVZsvCy06aVU1OIjVSgis
-	 6Y95fWd0Tbz9SGLp5L+sqTmmSV6chxb146FEF9KFDMDYn+z/JWSMkxu6wN/uhwoyy/
-	 347LTzp8af0Y9ppR5Qn/R+8CydyhLorpp3crXHPOCFdkRh6atM2FDz6srHai117kfY
-	 /kAAE4WVrL6t+7SJefhSEIfARCm87M9Ks4tHaI8h58v3CEJ71TDhWt8sHcS/0fI//M
-	 rNOM1q2KOWt10PsJyxZ8KECGoN0QqAwEf8lidKtvb2nnFqAF78G2y+cB4+Xb5ANqhB
-	 AWpsvF5bicaXQ==
-Received: from yukiji.home (unknown [100.64.0.131])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: laeyraud)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 2E73317E1294;
-	Thu, 01 Oct 2026 10:22:24 +0200 (CEST)
-From: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
-Date: Thu, 01 Oct 2026 10:21:56 +0200
-Subject: [PATCH v13 24/24] scsi: ufs: mediatek: Add MT8196 compatible,
- update copyright
+	id 1xCCFu-00000008Bgl-27oO
+	for linux-mediatek@lists.infradead.org;
+	Thu, 01 Oct 2026 08:35:06 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by tor.source.kernel.org (Postfix) with ESMTP id B0BB560A60
+	for <linux-mediatek@lists.infradead.org>; Thu,  1 Oct 2026 08:35:05 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 682F31F0089A
+	for <linux-mediatek@lists.infradead.org>; Thu,  1 Oct 2026 08:35:05 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1790843705;
+	bh=nRbIKtsqOqygVzGsujZN6/nCxuJYbBISgZetm9P74vE=;
+	h=References:In-Reply-To:From:Date:Subject:To:Cc;
+	b=c3SlhvcuQrJSyZoW9VcteJICxeUldHXylfc0gTU6cl9V9f74rwDXanedOzcCzlsIM
+	 vswt64LHLMRnb8NHBIWe8gc2vmrkKOWVKRS50WGHUdmcOWc4zp53V+H+C4nVaKGVDl
+	 w+Bt0IS+IF87pVzi8Xvf8rZEHU+gahzeTbYeUA66BZ+fVKM/OfEKVbuGt4tL8AqSkn
+	 rMf9Laexa3+O37DxX/FCz++g8+RYLyck4j5xVNQmOJxFvjKFGzfCCtDzbLkSrFglKm
+	 EvcOg29Wr+wBRsMF/lvqePmxLAiUdDkLgkH6xS6+gkFUOR9saE6Izx186mwo7itaga
+	 4H1QiGn/AsfMQ==
+Received: by mail-oa2-f12.google.com with SMTP id 586e51a60fabf-46ac6e5d8f7so2969377fac.1
+        for <linux-mediatek@lists.infradead.org>; Thu, 01 Oct 2026 01:35:05 -0700 (PDT)
+X-Forwarded-Encrypted: i=1; AKwUvByoDObj1acI2x5LRxCYxV2qJUW8yQrQgcS+o9PO2JQ2My+rzrQSgRH5jul66EozQ8pYyhwJqZAIwDZN2Ggc8Q==@lists.infradead.org
+X-Gm-Message-State: AFq9FYKwgFwu8NDXVYjM9v7AxXUoAy73Dh0WRLC+n17dud1QLZzKzNdl
+	CHNOE1tnLhw626NyvUPjR1hbvUs4W+SwOsjviH8RO8Iw15M1sEsPY+z9cs5u+8SqEnBpqbN1ljT
+	ojVAi9BlvTFnaB4QdRk6FRbdCsiykeb8=
+X-Received: by 2002:a05:687c:20d1:b0:491:88f1:f3aa with SMTP id
+ 586e51a60fabf-49dddd46654mr4533364fac.26.1790843704807; Thu, 01 Oct 2026
+ 01:35:04 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20261001-mt8196-ufs-v13-24-60854adab6d9@collabora.com>
-References: <20261001-mt8196-ufs-v13-0-60854adab6d9@collabora.com>
-In-Reply-To: <20261001-mt8196-ufs-v13-0-60854adab6d9@collabora.com>
-To: Chunfeng Yun <chunfeng.yun@mediatek.com>, Vinod Koul <vkoul@kernel.org>, 
- Neil Armstrong <neil.armstrong@linaro.org>, Rob Herring <robh@kernel.org>, 
- Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Peter Wang <peter.wang@mediatek.com>, 
- Chaotian Jing <chaotian.jing@mediatek.com>, 
- Alim Akhtar <alim.akhtar@samsung.com>, 
- Avri Altman <avri.altman@sandisk.com>, Bart Van Assche <bvanassche@acm.org>, 
- Stanley Jhu <chu.stanley@gmail.com>, 
- "James E.J. Bottomley" <James.Bottomley@HansenPartnership.com>, 
- Philipp Zabel <p.zabel@pengutronix.de>, Liam Girdwood <lgirdwood@gmail.com>, 
- Mark Brown <broonie@kernel.org>, Manivannan Sadhasivam <mani@kernel.org>, 
- "Martin K. Petersen" <mkp@kernel.org>
-Cc: kernel@collabora.com, linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, linux-phy@lists.infradead.org, 
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
- linux-scsi@vger.kernel.org, 
- Nicolas Frattaroli <nicolas.frattaroli@collabora.com>, 
- Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
-X-Mailer: b4 0.14.3
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1790842918; l=2479;
- i=louisalexis.eyraud@collabora.com; s=20250113; h=from:subject:message-id;
- bh=cWTgHnZ/lMdOvuu4I4G/RHLEbAxcnvmFO7SITuHbHaA=;
- b=xDUyDGQumkFkn0Peb3Yk9j1EfG4X9GJq4V3I6mkbR0sl71mC4xrz6e9aUOZIwBix/kQrd5seb
- QmqNVWWsGIrA2z0f7gQ578A5DWW1tccAqPjYFjPtXxc8fuN1Iu+jKG7
-X-Developer-Key: i=louisalexis.eyraud@collabora.com; a=ed25519;
- pk=CHFBDB2Kqh4EHc6JIqFn69GhxJJAzc0Zr4e8QxtumuM=
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261001_092226_739255_D00393EC 
-X-CRM114-Status: GOOD (  13.73  )
+References: <20260926-b4-mt7629-pinctrl-v1-1-23904cb0c3f3@gmail.com>
+In-Reply-To: <20260926-b4-mt7629-pinctrl-v1-1-23904cb0c3f3@gmail.com>
+From: Linus Walleij <linusw@kernel.org>
+Date: Thu, 1 Oct 2026 10:34:50 +0200
+X-Gmail-Original-Message-ID: <CAD++jLndGJmGzeMvHk695Kh9y56Zxye86DiFTuoKBiWTnvkmLg@mail.gmail.com>
+X-Gm-Features: AclHuK8ING7eVXmVQv5H-ajPOg6LfXVJcEvYhwqQVDz3x1__fBSswtm27gPTJNQ
+Message-ID: <CAD++jLndGJmGzeMvHk695Kh9y56Zxye86DiFTuoKBiWTnvkmLg@mail.gmail.com>
+Subject: Re: [PATCH] pinctrl: mediatek: mt7629: fix the 2.4 GHz Wi-Fi pin mode array
+To: Chuanhong Guo <gch981213@gmail.com>
+Cc: Sean Wang <sean.wang@kernel.org>, Ryder Lee <ryder.lee@mediatek.com>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	linux-mediatek@lists.infradead.org, linux-gpio@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -113,73 +82,23 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+On Sat, Sep 26, 2026 at 12:04=E2=80=AFPM Chuanhong Guo <gch981213@gmail.com=
+> wrote:
 
-The MT8196's UFS controller has a new compatible. Add the necessary
-struct definitions to support it.
+> The wf0_2g group contains nine pins but only eight mux values.
+> mtk_pinmux_set_mux() indexes the mode array once for each pin, reading
+> past its end when configuring pin 78 (WF0_2G_HB6). This can select an
+> unrelated mux value or fail with -EINVAL, preventing the Wi-Fi device
+> from probing.
+>
+> Add the missing mode 1 entry for WF0_2G_HB6.
+>
+> Fixes: b44677375fee ("pinctrl: mediatek: add pinctrl support for MT7629 S=
+oC")
+> Signed-off-by: Chuanhong Guo <gch981213@gmail.com>
 
-Also update the copyrights and authors, without tabs following spaces to
-avoid checkpatch errors, to list myself as having contributed to this
-driver after the preceding rework patches.
+Patch applied as nonurgent fix.
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Reviewed-by: Peter Wang <peter.wang@mediatek.com>
-Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-Signed-off-by: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
----
- drivers/ufs/host/ufs-mediatek.c | 18 ++++++++++++++++--
- 1 file changed, 16 insertions(+), 2 deletions(-)
-
-diff --git a/drivers/ufs/host/ufs-mediatek.c b/drivers/ufs/host/ufs-mediatek.c
-index 1d9cb928de49..56ec65c2ac07 100644
---- a/drivers/ufs/host/ufs-mediatek.c
-+++ b/drivers/ufs/host/ufs-mediatek.c
-@@ -1,9 +1,11 @@
- // SPDX-License-Identifier: GPL-2.0
- /*
-  * Copyright (C) 2019 MediaTek Inc.
-+ * Copyright (C) 2026 Collabora Ltd.
-  * Authors:
-- *	Stanley Chu <stanley.chu@mediatek.com>
-- *	Peter Wang <peter.wang@mediatek.com>
-+ *      Stanley Chu <stanley.chu@mediatek.com>
-+ *      Peter Wang <peter.wang@mediatek.com>
-+ *      Nicolas Frattaroli <nicolas.frattaroli@collabora.com> (Major cleanups)
-  */
- 
- #include <linux/arm-smccc.h>
-@@ -2257,6 +2259,10 @@ static const char *const ufs_mtk_regs_avdd12_ckbuf_avdd18[] = {
- 	"avdd12", "avdd12-ckbuf", "avdd18"
- };
- 
-+static const char *const ufs_mtk_regs_avdd12_ckbuf[] = {
-+	"avdd12", "avdd12-ckbuf"
-+};
-+
- static const struct ufs_mtk_soc_data mt8183_data = {
- 	.has_avdd09 = true,
- 	.reg_names = ufs_mtk_regs_avdd12_avdd18,
-@@ -2269,10 +2275,18 @@ static const struct ufs_mtk_soc_data mt8192_8195_data = {
- 	.num_reg_names = ARRAY_SIZE(ufs_mtk_regs_avdd12_ckbuf_avdd18),
- };
- 
-+static const struct ufs_mtk_soc_data mt8196_data = {
-+	.has_avdd09 = true,
-+	.has_avdd09_1 = true,
-+	.reg_names = ufs_mtk_regs_avdd12_ckbuf,
-+	.num_reg_names = ARRAY_SIZE(ufs_mtk_regs_avdd12_ckbuf),
-+};
-+
- static const struct of_device_id ufs_mtk_of_match[] = {
- 	{ .compatible = "mediatek,mt8183-ufshci", .data = &mt8183_data },
- 	{ .compatible = "mediatek,mt8192-ufshci", .data = &mt8192_8195_data },
- 	{ .compatible = "mediatek,mt8195-ufshci", .data = &mt8192_8195_data },
-+	{ .compatible = "mediatek,mt8196-ufshci", .data = &mt8196_data },
- 	{},
- };
- MODULE_DEVICE_TABLE(of, ufs_mtk_of_match);
-
--- 
-2.55.0
-
+Yours,
+Linus Walleij
 
