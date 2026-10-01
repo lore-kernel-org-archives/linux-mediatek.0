@@ -4,82 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EBAFBCA5FCB
-	for <linux-mediatek@archiver.kernel.org>; Thu,  1 Oct 2026 13:13:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D3C33CA5FD4
+	for <linux-mediatek@archiver.kernel.org>; Thu,  1 Oct 2026 23:21:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
-	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=yb9TIGDgeZFCPu4ArY1ZqKK0e4HMHQgLsozLDps0YOQ=; b=IQwbw/Y5PozMMjwhoGPs+TkgSK
-	4SAymuSel69GTHLYdv61mb8cdBHz++PCuxGqHnrB+uKNrEtlCMSw6b99eNwAAAc2hJ2UdDH44GWaT
-	20AbOwPvlfei8kE4Gv7lF9yYtcf+Xn6L5D8aaxmU0RgQ5dHPODFGsrf5UCx4/0DRL30itFQPK/v/d
-	IA7K8/tsIv+U8ajPLWI6boqOmzSAenzjMgxAka6XpWQdRqeuDyTLnYMU43R0l0O75xlb/QI8Ln8qj
-	j4yV9BXkUuN31Pp+Z4NeOlC0XJLxyEYHSdsP7W1lR2eu+GT9XN4UPOCgiQr6dLPtuOdBQuP51rnaI
-	gkBjkhKA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=P2Ct0/bWmZg0045LkT8XFFR+cuxnWwmmUDTjfb+QZ+I=; b=Xqt9dSE3jU/MDv4NHQb4hNSm8+
+	8u7PNFCnPOnrmv+u8I7aeZ27UlhLvvjMa7SAgjqKmT5Ak+6F3xJJDbA5Po9+6AwZMDEHDIviRH1Xm
+	ODEJCKZXcxh2UNax/geupdvIONMsefOLkUq0jHJlSq720bQn5hvlwnOpdAJJ2rMAF+eHFbJm+yMib
+	PaP/9W502TSWByGLtWEVascd+0O6KZJ2Lh8yXGvO0e9sBoZ3QpHuVZ9FLYSQnO35Kon4S74jre5/1
+	URXR7VJ9Rv872ZP2+cUkbktiU0ScWOMVBFe3Eiqf5iwrnGDFcyv89tVHUqyZj4MwcX7gmwl5u+EQu
+	5704LJ6g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xCGbK-00000009CGR-3BUh;
-	Thu, 01 Oct 2026 13:13:30 +0000
-Received: from sender5-pp-g120.zoho.com ([165.173.182.120])
+	id 1xCQ5y-0000000AOrs-0C1t;
+	Thu, 01 Oct 2026 23:21:46 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xCGbH-00000009CBz-1dix;
-	Thu, 01 Oct 2026 13:13:29 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1790860388; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=bawph5s96Kai3wqlDMEC60ATyaNTKtJTHa0WO+6hfiOMm6Z4LC5gBkaYQsJ8vUb4OcuQY0q66/qYABrRwZItYGkYKf0FYu8ZssmmWs7qx6c2FWGZq4nBArYevF3fnU9HGoIOERlEkbWKh2AO4kgeIjAl0Qd6C6nNUbzofz8F6AQ=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1790860388; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=yb9TIGDgeZFCPu4ArY1ZqKK0e4HMHQgLsozLDps0YOQ=; 
-	b=MXWI2QAx4o+nUgmIxyzuFOZLecMWCyIYAGgZnidZ1toI4t793Hk0clikWrmVf5dYsZJlbK3eFZVWXUeAelbSY/ffvfBDKdlf9ilmuv8lhd4kVuVl6x3mzg+NzyNzH0FIisF4ak+gWy5sgqcw124Ogu/CnctCZnTFhkH8SA9rehE=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=louisalexis.eyraud@collabora.com;
-	dmarc=pass header.from=<louisalexis.eyraud@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1790860388;
-	s=zohomail; d=collabora.com; i=louisalexis.eyraud@collabora.com;
-	h=Message-ID:Subject:Subject:From:From:To:To:Cc:Cc:Date:Date:In-Reply-To:Content-Type:Content-Transfer-Encoding:MIME-Version:Message-Id:Reply-To;
-	bh=yb9TIGDgeZFCPu4ArY1ZqKK0e4HMHQgLsozLDps0YOQ=;
-	b=a85NZ1qLDVPYiYMxWxaLgRqOmu87ciHLp0gysp+DDKvlqXXaRlL5iXwzDPMV1yci
-	MNKcJvfJxCQhsqVM5wDwlg1IxICuhW9pXL8//s4w/SrlE4b+8TvkPS88pH49mtFpDoV
-	O/YqR9Ez+PnW+S7mhSRNqmTZ5Qki9d/+sIgMGdDE=
-Received: by smtp.zohomail.com with SMTPS id 1790860388058520.321937422743;
-	Thu, 1 Oct 2026 06:13:08 -0700 (PDT)
-Message-ID: <edfe9ef6680fd5de35de0c021302381e63d9e3de.camel@collabora.com>
-Subject: Re: [PATCH net-next v2 1/7] dt-bindings: net: mediatek-dwmac: add
- support for MT8189 SoC
-From: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
-To: Krzysztof Kozlowski <krzk@kernel.org>
-Cc: Andrew Lunn <andrew+netdev@lunn.ch>, "David S. Miller"
- <davem@davemloft.net>,  Eric Dumazet <edumazet@google.com>, Jakub Kicinski
- <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Rob Herring
- <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley	
- <conor+dt@kernel.org>, Richard Cochran <richardcochran@gmail.com>, Matthias
- Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno	
- <angelogioacchino.delregno@collabora.com>, Biao Huang
- <biao.huang@mediatek.com>,  Maxime Chevallier
- <maxime.chevallier@bootlin.com>, Maxime Coquelin
- <mcoquelin.stm32@gmail.com>, Alexandre Torgue	
- <alexandre.torgue@foss.st.com>, kernel@collabora.com,
- netdev@vger.kernel.org, 	devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, 	linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, 
-	linux-stm32@st-md-mailman.stormreply.com
-Date: Thu, 01 Oct 2026 15:13:01 +0200
-In-Reply-To: <20260929-shrewd-rampant-shark-98e87e@quoll>
-References: <20260924-dwmac-mediatek-mt8189-v2-0-430bd74d5ef9@collabora.com>
-	 <20260924-dwmac-mediatek-mt8189-v2-1-430bd74d5ef9@collabora.com>
-	 <20260929-shrewd-rampant-shark-98e87e@quoll>
-Organization: Collabora Ltd
+	id 1xCQ5x-0000000AOri-2q65
+	for linux-mediatek@lists.infradead.org;
+	Thu, 01 Oct 2026 23:21:45 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by sea.source.kernel.org (Postfix) with ESMTP id 2D7E643DEF
+	for <linux-mediatek@lists.infradead.org>; Thu,  1 Oct 2026 23:21:45 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0A7791F0089D
+	for <linux-mediatek@lists.infradead.org>; Thu,  1 Oct 2026 23:21:45 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1790896905;
+	bh=P2Ct0/bWmZg0045LkT8XFFR+cuxnWwmmUDTjfb+QZ+I=;
+	h=References:In-Reply-To:From:Date:Subject:To:Cc;
+	b=Paq0/jFcHy1N3vQSR8Ap+EoYMiP/a2ijfiCc9AnRW0aIMmF/yssXWVjTz0R7dmwAS
+	 oyvLjnvaTsqQyeXa0HQZqrwUnY3BP/Z/uSw01UUZ++gFQR9owLmLfqODsKIYMl7FAO
+	 zgQ+h/YxN/USSE5g52BNd5yf3Ld8gESl4qqr138TvCzKkNQkomMYGhTcpm7qHIA0Gk
+	 e+VoZM2vAU3yC2h3G21hPsgm7zGqn18P8UJJMyAsKGh44nVvQKq0KOUb1/k5eMdEbb
+	 2xTIy+IXPnIzq5xRHjN7G4ZlF49Iqfhh6k58p12bEAdrHloqkvBlEEb1ZpBoYxP+vX
+	 8aa9vJ/YHnrpQ==
+Received: by mail-dy2-f41.google.com with SMTP id 5a478bee46e88-344447f9c3dso4136319eec.0
+        for <linux-mediatek@lists.infradead.org>; Thu, 01 Oct 2026 16:21:45 -0700 (PDT)
+X-Forwarded-Encrypted: i=1; AKwUvBzty4Yb8JYKgt6UandtCCvKXGN7gSpBCxTsuswzbzb+feExB+CoXDy188Z69CkSqTObA+gdj1vvIbJv9DsZ5w==@lists.infradead.org
+X-Gm-Message-State: AFuF++kEk6z5qwb8fRrFVzEWCPEUUy6Z1GQoFEWP5Wq+OAvKOEVbltU9
+	oFGchd/Ahh6bCG7JCu/C9Cw7pPA0EufS2U54xuJcbFGJ/WR2UUZl2zCk2bbBf9CmXnn5JNrBOU9
+	WpI1HVeEs26rzE5FghD5kHvladgDT9w==
+X-Received: by 2002:a05:7022:f515:b0:143:297c:82e0 with SMTP id
+ a92af1059eb24-14f5bffa779mr757615c88.32.1790896904343; Thu, 01 Oct 2026
+ 16:21:44 -0700 (PDT)
+MIME-Version: 1.0
+References: <20260921131156.403652-1-lgs201920130244@gmail.com>
+In-Reply-To: <20260921131156.403652-1-lgs201920130244@gmail.com>
+From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+Date: Thu, 1 Oct 2026 23:21:30 +0000
+X-Gmail-Original-Message-ID: <CAAOTY__kLYfpbyD+nQOmdGPu8Qm_aC5BjsOQzYGVnQvD0WGP_Q@mail.gmail.com>
+X-Gm-Features: AclHuK-E9VLgmUd_-lnnf9Q-aBBowJwr-pxvO9-FXnzpDzOztdORiwXC2sJecYk
+Message-ID: <CAAOTY__kLYfpbyD+nQOmdGPu8Qm_aC5BjsOQzYGVnQvD0WGP_Q@mail.gmail.com>
+Subject: Re: [PATCH] drm/mediatek: fix ovl adaptor platform device leak
+To: Guangshuo Li <lgs201920130244@gmail.com>
+Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>, 
+	David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	"Nancy.Lin" <nancy.lin@mediatek.com>, dri-devel@lists.freedesktop.org, 
+	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, stable@vger.kernel.org
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-User-Agent: Evolution 3.60.2 (3.60.2-2.fc44) 
-MIME-Version: 1.0
-X-ZohoMailClient: External
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261001_061327_509869_563D2F0E 
-X-CRM114-Status: GOOD (  17.44  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -94,57 +84,90 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Krzysztof,
+Hi, Guangshuo:
 
-On Tue, 2026-09-29 at 09:36 +0200, Krzysztof Kozlowski wrote:
-> On Thu, Sep 24, 2026 at 09:23:24AM +0200, Louis-Alexis Eyraud wrote:
-> > +=C2=A0 - if:
-> > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 properties:
-> > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 compatible:
-> > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 contains:
-> > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 enu=
-m:
-> > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0 - mediatek,mt8189-gmac
-> > +=C2=A0=C2=A0=C2=A0 then:
-> > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 properties:
-> > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 clocks:
-> > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 items:
-> > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - d=
-escription: MAC Main clock
-> > +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 - d=
-escription: PTP clock
->=20
-> snps,dwmac schema expects the second clock to be the pclk. Why is it
-> missing? This should be explained in the commit msg.
->=20
-> Best regards,
-> Krzysztof
->=20
-Indeed, there is something incorrect.
+Guangshuo Li <lgs201920130244@gmail.com> =E6=96=BC 2026=E5=B9=B49=E6=9C=882=
+1=E6=97=A5=E9=80=B1=E4=B8=80 =E4=B8=8B=E5=8D=881:12=E5=AF=AB=E9=81=93=EF=BC=
+=9A
+>
+> mtk_drm_probe() creates an OVL adaptor platform device with
+> platform_device_register_data() when the display pipeline requires the
+> OVL adaptor.
+>
+> If a later initialization step fails, the probe error path releases
+> the DRM resources without unregistering the already registered OVL
+> adaptor device. The normal remove path likewise leaves the device
+> registered after the DRM driver is unbound.
+>
+> Keep track of whether the OVL adaptor was successfully registered and
+> unregister it on probe failure. Also recover the platform device from
+> the stored DDP component device and unregister it during normal
+> removal.
+>
+> The issue was identified by a static analysis tool I developed and
+> confirmed by manual review.
 
-I looked again at the MT8189 datasheets and there does not seem to have
-specific peripheral clock for Ethernet MAC in the SoC clock list. The
-paragraph related to clocks also lists the mac main and ptp reference
-clocks as the ones to turn on. There is also another RMII reference
-clock, only needed for RMII case, but I removed from mt8189 clock list
-in the bindings after v1 review ([1]).
+Applied to mediatek-drm-fixes [1], thanks.
 
-But at the same time, the Ethernet MAC block diagram, present in the
-datasheets, shows this IP is interconnected to the rest of SoC with AXI
-and APB interfaces (and in MT8188 datasheet too).
-There is no APB related clock that is specific to the IP in MT8189,
-contrary to MT8188 or MT819. But since it is on an APB bus (likely
-shared between multiple IPs), then there is a bus clock for peripheral
-access. Describing the IP having it makes sense (and for AXI too).
+[1] https://git.kernel.org/pub/scm/linux/kernel/git/chunkuang.hu/linux.git/=
+log/?h=3Dmediatek-drm-fixes
 
-So, in order to resolve this issue, would it be OK that I rework the
-MT8189 clock list to add "axi" and "apb" clocks and reword the commit
-message with additional details on clocks?
+Regards,
+Chun-Kuang.
 
-[1]:
-https://lore.kernel.org/all/b810b9cd-8f5e-4c9d-8496-908aae55dac1@lunn.ch/
-
-Best regards,
-Louis-Alexis
+>
+> Fixes: 0d9eee9118b7 ("drm/mediatek: Add drm ovl_adaptor sub driver for MT=
+8195")
+> Cc: stable@vger.kernel.org
+> Signed-off-by: Guangshuo Li <lgs201920130244@gmail.com>
+> ---
+>  drivers/gpu/drm/mediatek/mtk_drm_drv.c | 10 +++++++++-
+>  1 file changed, 9 insertions(+), 1 deletion(-)
+>
+> diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.c b/drivers/gpu/drm/med=
+iatek/mtk_drm_drv.c
+> index c86a3f54f35b..d176e6496aa7 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+> +++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+> @@ -1060,7 +1060,7 @@ static int mtk_drm_probe(struct platform_device *pd=
+ev)
+>         struct mtk_mmsys_driver_data *mtk_drm_data;
+>         struct device_node *node;
+>         struct component_match *match =3D NULL;
+> -       struct platform_device *ovl_adaptor;
+> +       struct platform_device *ovl_adaptor =3D NULL;
+>         int ret;
+>         int i;
+>
+> @@ -1205,6 +1205,8 @@ static int mtk_drm_probe(struct platform_device *pd=
+ev)
+>  err_pm:
+>         pm_runtime_disable(dev);
+>  err_node:
+> +       if (ovl_adaptor)
+> +               platform_device_unregister(ovl_adaptor);
+>         of_node_put(private->mutex_node);
+>         for (i =3D 0; i < DDP_COMPONENT_DRM_ID_MAX; i++)
+>                 of_node_put(private->comp_node[i]);
+> @@ -1214,9 +1216,15 @@ static int mtk_drm_probe(struct platform_device *p=
+dev)
+>  static void mtk_drm_remove(struct platform_device *pdev)
+>  {
+>         struct mtk_drm_private *private =3D platform_get_drvdata(pdev);
+> +       struct device *ovl_adaptor_dev;
+>         int i;
+>
+> +       ovl_adaptor_dev =3D
+> +               private->ddp_comp[DDP_COMPONENT_DRM_OVL_ADAPTOR].dev;
+> +
+>         component_master_del(&pdev->dev, &mtk_drm_ops);
+> +       if (ovl_adaptor_dev)
+> +               platform_device_unregister(to_platform_device(ovl_adaptor=
+_dev));
+>         pm_runtime_disable(&pdev->dev);
+>         of_node_put(private->mutex_node);
+>         for (i =3D 0; i < DDP_COMPONENT_DRM_ID_MAX; i++)
+> --
+> 2.43.0
+>
 
