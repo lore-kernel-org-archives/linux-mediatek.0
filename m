@@ -4,117 +4,108 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D5CF4CA5FC7
-	for <linux-mediatek@archiver.kernel.org>; Wed, 30 Sep 2026 16:49:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6DED0CA5FC5
+	for <linux-mediatek@archiver.kernel.org>; Thu,  1 Oct 2026 01:26:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
-	Message-ID:Date:From:MIME-Version:Reply-To:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=m/oaydNeB7KKez2Jzp2jljrx95qkFNgazQFseegu3Nw=; b=TXvahm4x5qAvGI/8DmU4Pxkm0Q
-	dFdVohu5Gz9ug6BnE/cHcxIKsWTbfBjM+7mAl9iDJg7fy5qanPhcFxty3zvjF3ocsIq+k3O0tEFiA
-	aNnTkGwEmuPY3VpMxCqPZ5Bt4EaXR2FM9qg+TIAjAedUtw+0flfxWGby3SNDiIrUiy7+dG4INcKcc
-	Z34O8hZ6AgU3uL9xtVk2qaQSBhBJnotyriU0QVeKoROZ1DgKPUZEde2KhYoPYipo26bW43hTBX6bP
-	AVClC2MBMIbJE/MpJakj22tQM809yM/nlyuko7oyDbp+Wkr8MG+PUtAQbvVOjjIXGLKlO+nLlAN3U
-	IkD0SSRQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=rFT97ZWRBz3ey/79pcQ9Crf/WiVH/cFfH5FZgLCxjms=; b=Fv+7oQM7XnW4XqSab+RFSraPz+
+	iL69tEkqOHXN/UsBjc7zJlcyHRbqBA1evZsM/JMDPo0Y3IcZQEAeJ1eQhnqT1oynqlyepvFFwef4l
+	ya8xS4Lnhids5YgCeyqBnNOFkWt1MHChCQcIXQhw+Tz1r6i4ShWBfeyQMwf6jqAlkjYAD43IDQFl7
+	Q4JYQs4Ii7Xqn0g8owLdAbvoJl0FkNoqrR5azKMGSERZ3aOK2uqSM+8NuLrZvFwH9S3sRK6iyShHk
+	nNcKwU9dxlNMuIAp3XA4OjNTVjINBgQXpO/DGf4FNBd1o7qB49qYHDUnTrVFL7LqXzHbAVgYlq6Ng
+	L4A1hG5w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xBxUx-00000006jul-1gbh;
-	Wed, 30 Sep 2026 16:49:39 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1xC5Yb-00000007ZGD-3kvu;
+	Thu, 01 Oct 2026 01:25:57 +0000
+Received: from mail-pz2-x0f.google.com ([2607:f8b0:4864:3b::f])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xBxUu-00000006jta-3aZr
-	for linux-mediatek@bombadil.infradead.org;
-	Wed, 30 Sep 2026 16:49:37 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Type:Cc:To:Subject:Message-ID:
-	Date:From:MIME-Version:Sender:Reply-To:Content-Transfer-Encoding:Content-ID:
-	Content-Description:In-Reply-To:References;
-	bh=m/oaydNeB7KKez2Jzp2jljrx95qkFNgazQFseegu3Nw=; b=G7XbZ9886q2yXMrk82xv0djEyR
-	13VFhDemsTWYmTaplAUCwxJPbi6AXeldrws8qhDshN+grodYkUbUcycRRe/kop4kLC+fusks5fg0L
-	8p/kejKqFr76PraLqrMG8r5ANKb2WzjbISsmp4rxPM2Xdvvar5QgAQA0ll9PuMLBrD2VAmgHZEQzE
-	9GvtyiH0Rj1mpSPQK1pMcrYlrRidJ44V9piv9vmFcGidWok7XVW4r0Yb8/vfzblNW/dacvXUADbZm
-	PJ9/vcIap4uBGxoOwnXYvwAF36dw+ekxvZenGoI0wCBMwwrpVEL2W7Q3nhpFfbp5mSY9n0T19KTRc
-	uH8flGMA==;
-Received: from mail-qv2-x0c.google.com ([2607:f8b0:4864:33::c])
-	by desiato.infradead.org with esmtps (Exim 4.99.2 #2 (Red Hat Linux))
-	id 1xBxUs-000000046Ay-0ssY
+	id 1xC5YZ-00000007ZFp-0a39
 	for linux-mediatek@lists.infradead.org;
-	Wed, 30 Sep 2026 16:49:35 +0000
-Received: by mail-qv2-x0c.google.com with SMTP id 6a1803df08f44-917a8bbbbf7so846236d6.1
-        for <linux-mediatek@lists.infradead.org>; Wed, 30 Sep 2026 09:49:33 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1790786971; cv=none;
+	Thu, 01 Oct 2026 01:25:56 +0000
+Received: by mail-pz2-x0f.google.com with SMTP id d2e1a72fcca58-8692a8568e9so2572094b3a.3
+        for <linux-mediatek@lists.infradead.org>; Wed, 30 Sep 2026 18:25:54 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1790817953; cv=none;
         d=google.com; s=arc-20260327;
-        b=GXpLnao2/WueFFel4C7bHuoghDz/lOic37Qi2KRecItOpDCGZIaXLOMfz1oLa1336d
-         0HoFUrw+/pRRBa0fG99LMx4doTXEEjagKYsHgHx17RuvrudBH3DW5QwdTrlCwSnwc+/m
-         yqu8PkGFSLGjtjADMMp8myEskAf72tah33X5ebwLFMTg+Wxfcszr2A6ZRiP8huo6FBEG
-         UTD7ppOvxaPb9kB6XKMCDenT0Tdu22miNeOaYqgf/oevtmEjbWuSL1CXxF3C/9prgsew
-         xlQiiTRU8S5HxxCL6DCXGZALFGwqUyLhhOLs8mT331Nmzg3sinTA9V8MoKK0Yq7jefbV
-         yaaA==
+        b=MPi8YoUCFh301tFeYoAtCfmEHfr1syNV7XzfYXJZmVOEX7vbOuGMJDXIFYNt4WvsWX
+         tkU+x0CnnnyAjalihR6jKS0We/NNfJgnFvbzYyuZNehIjjtcqzLYdKAkNbEMA+gbcBwY
+         fKxgxRmixobPFXMCl+ZZ3Y/J4WAc9m1WKEMogMHTbrLMFM2sWdxik9gMO3Ki4/wXh//l
+         9y/rfoUjYsUT01dTd23CGEdFi7vHr8iR+sba/4aessdSKYEpBIdbXOK8XDfgYxs6GlfM
+         wppTYsAyZBG8ewUNbtGwwmUsLWzkCkgEY+L+bln1MEL4F7/0LjgLBbIVZTM7Hwc7ombc
+         ew3g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20260327;
-        h=cc:to:subject:message-id:date:from:mime-version:dkim-signature;
-        bh=m/oaydNeB7KKez2Jzp2jljrx95qkFNgazQFseegu3Nw=;
-        fh=4+4suC85h9Wu6LAQSL7brzHaD5yDIRvQO2/4a7NEc1Q=;
-        b=G1T2CA9tRChhaz2kc5ipNt6Xdp/mlxMmiuKHpfi3AThI6rRvfYoXx31qr1rD9huMde
-         3KiX+q16nvVnCw5mrpx/qxLr/3DiZ4jhuxlkdUtYqk5sR0sR8ZZ/zqxa2EdkjSWBrCAQ
-         UONot+kPJJ0Vi4iIn8/EOP326dVvKx+GBaUyYk5s+VEGJAfC+k5SRARzNZzatCPShiW9
-         URqeke5ZpwbrrXgZrr7Ce3rLBXeU7C0dmlDbVPObSBsRzVo4R/EbLDGrhRK+o17H+Ato
-         SPihktqzPcc3KDp46japYrXzFOZF2NAIPcdNlkz4iCvX4NCVwZ3q6WQ6BYal/hXSpygD
-         MjcA==;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=rFT97ZWRBz3ey/79pcQ9Crf/WiVH/cFfH5FZgLCxjms=;
+        fh=o66WGGEfOZII5b76VT1iU7ed1j2Kwlj7wKRiL8YdjbQ=;
+        b=rWvxIjXgIGQNR0oQfJ3fnk9GptHERq3EhseVdYviZniNPs72ytAHMIuqXrAw9LgAgy
+         JXHEVFr2iI0vJr/7LJHGbRX9EA0j/fTNrrLgRofx8v4Hjy7dyu7xxsNkxgmvpRDcUXmW
+         +lKBaS8hoxj3w+2Lg1d4ypsX5widJpVZ9EynBR6HVdxdPdAhc1vQCz+Gz6SAIdaGGdxC
+         pSUiMTf6tPA8o+1EFc3ovmCv2uVOpOa5kw55X58OpIaUdfct6U2BBnwZrPqixKjfT1U/
+         4Wb5JZu/rqNlUoJWYQjX1IkAC74i1fJj3Slbrx++HtPiw5xG+xznWI7lRW3/jigiJGkS
+         xiGQ==;
         darn=lists.infradead.org
 ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1790786971; x=1791391771; darn=lists.infradead.org;
-        h=content-type:cc:to:subject:message-id:date:from:mime-version:from
-         :to:cc:subject:date:message-id:reply-to:content-type;
-        bh=m/oaydNeB7KKez2Jzp2jljrx95qkFNgazQFseegu3Nw=;
-        b=Gfz2792Z4KfTTQ30gJpc4NyKkbVms1Bdky0MO7ma9pk165i2jAVmylKwlsyyEqdLKZ
-         /I4Ahi/sGqLfxTVD3Erh+hNP+DNfz+ie+OH9gEp8oOiAyDkbQ719cAA2/zrQUC5eN40G
-         zGh3BD7ndkSd62ijzYa+/TRLut2s1ib23BuvhNp4nozdLckWXKJhSonU27oL5rFf6uLb
-         sVmP5b3NkzIpCOgVgwUs7Qqt2nONvxybNRC4Djhimt6bkMSifxcJxhc4cHDE/CU8MoI1
-         Kt75amPyGhQ8WSKPNcHyJ/9VA5/rIrvF7ljtc/RHe6/aJ8AcqMJFNBJD1wpqynvZUu3W
-         igjw==
+        d=gmail.com; s=20251104; t=1790817953; x=1791422753; darn=lists.infradead.org;
+        h=content-transfer-encoding:content-type:cc:to:subject:message-id
+         :date:from:in-reply-to:references:mime-version:from:to:cc:subject
+         :date:message-id:reply-to:content-type;
+        bh=rFT97ZWRBz3ey/79pcQ9Crf/WiVH/cFfH5FZgLCxjms=;
+        b=ShAT370fbAyNZJp15BJdqjRoJQqAlYJjR0I9wmqFkLlZJuvfqvMX9212HdLZ12dpIx
+         s1sqGX8nfi5Ir3MoJfgmmYwIQQrmHLaLnWatJLN4Q2VGw8K0PkgoDj3C1DV+5TPOW/IY
+         3rkRvkhYHwwLMbmhzJUxB1N14QapHiQTE8IAPY/rYxhaSoTyKeX+Y0jO00qQzn9393XY
+         6jtY11mzvhYyq4pHh9rV2r8pSt1uvcYBYjYbgxdnf5eEg9+DLlvge+4A/CDUJRSpBU1m
+         polS53Z+FXomkSf0UrIUsusYUqp4k8U2K5WS0JsIJHBalY2P2UXmcOQm/uGx/32wP15F
+         /oHg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1790786971; x=1791391771;
-        h=content-type:cc:to:subject:message-id:date:from:mime-version
-         :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to:content-type;
-        bh=m/oaydNeB7KKez2Jzp2jljrx95qkFNgazQFseegu3Nw=;
-        b=tbUe9LAFgmEmGpI5vnvJQNnO0PckRAWSeY05rCs1hDyQuYoC2b82EwPRcxkaKsODFr
-         SYc8yLwAyXCwMHwEv6iCTqvUu9kcvhuykd+Ja2ypCn6wQCTNLEr0mXICTXNhTJIiB62s
-         W12wz0zF0f9ZaE4olVhziUIs58jPU+yqiO9bPjAduFNNDzY82fuvPecu/oM72f/u1o6r
-         prrtp0k5mx5Xg4mPhCfPHp28rKqs6ShSU0HkwKAhyB2+DZJ1OR7Vkp+iWFsttSJkFWC3
-         84BGSXvT1VwxJB5+zsniWxB2WDjjq/0uhDZL1Nm6Kh9nPmMP7rmIZqi1rzbrFWt/hmpr
-         f3bA==
-X-Forwarded-Encrypted: i=1; AKwUvBzVPIuqdDAJQH9bJODMst2urDzVSSbdMUgpV/vexRPdb2RzWdWGLSGF0sXPgLmZdosrvS+0zSDWUjg0D9ZYvg==@lists.infradead.org
-X-Gm-Message-State: AFq9FYLIGH/cDZuMtApwgrcc5xZubp7B+Q9zpB6KgCuTjhY9fpN5lLoA
-	AiDV4HY/mGhyU4q+s4OcdTE82H9kzSqG4R8A1OJcxrqelvfjehoSGCCWBMQ5yXJD9VB0LZg55/v
-	EDQe7YVlbeA02DvLqCodwncy/hzEspt0=
-X-Gm-Gg: AYBFou3K5OjvtxoUQFMCFDafl/kJHr1A+8m/HZQZUaoSimB+fljzkxZD2LKkfv/3bhp
-	M35gd6e6YnKHkdhKWDGjaNxcqYmnOOBZbTJrM8poAfFZjSN2OLm1DAxplMDZ8XTTVMYuKhkCUou
-	tOhSMpeEpAEEBg8n0Wwwhku540sSk0JQ0kfKVmCf60p9QuPBgVqDgClJobTSeQ73EbZG/PVI+jA
-	vOkk/tp5yVEVQFRRRKBKk7ffQcZ3jPttIISSTIHHpP+zVkFe8N4MiE/Am4kt5g1zpBCprQ4dP71
-	CNGSkEF7rIrc9H2O2sS35ZJGVV2LZ6DB0MzRI8rbl+4Y2lYL0sa+SILqqZYlY2giKMXL3xxLAJi
-	fhCEuAMuRxaTomWlIfGV/jQDxvtH0tDbU0PuuaLYgODv5
-X-Received: by 2002:a05:6214:54c5:b0:90c:a989:a68a with SMTP id
- 6a1803df08f44-917aa2f093bmr3499616d6.11.1790786971288; Wed, 30 Sep 2026
- 09:49:31 -0700 (PDT)
+        d=1e100.net; s=20260707; t=1790817953; x=1791422753;
+        h=content-transfer-encoding:content-type:cc:to:subject:message-id
+         :date:from:in-reply-to:references:mime-version:x-gm-gg
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+         :content-type;
+        bh=rFT97ZWRBz3ey/79pcQ9Crf/WiVH/cFfH5FZgLCxjms=;
+        b=ODy9SHsqqfhkNfVodn9DAiZqz2PhDs/pLAL3S2s+F2P7I2sbZNTMqKo3a9JSQ9M3Nu
+         EK3E0ip61MSCn3rYIZwoZGQuNSqzFoNenZusi/cfFhnv8aYDz5+oEkgK+irFvfUdXtmB
+         HhFZB873M3TSgNGMQvkv2tOgo3w0iKHlsHs3DN5jloi1tO76RZa8e6z3TgkUziJgFWgO
+         LIuR8gAUghB6IKwDhmHJNnWgLjRe50XOM29AuoA6BASticB+7jryrxXFufu1s5t8Li1q
+         ZO+zKClPRbRGeZyi+wIkvWxWT26kVvhLOXgobrSiJ1qtsdWdjTbsq7fIUjak281NQEtr
+         2P0A==
+X-Forwarded-Encrypted: i=1; AKwUvBwW2943ieWIkpyheHrROQAxMR0hXpCTMAwBPMYQcZ0iEykevng8Q5QbmxWoROQokEWCs9gnY59/uGjBAApBlw==@lists.infradead.org
+X-Gm-Message-State: AFuF++lFXKJgdKcuV8z7yK+yiRVQMnHTwXl2HFhDnCcvOpdgHcKi/cm4
+	XNmOPI44IeyvWaPT8Hds4okx+4ZOfPRKPWcAYnmlUWSQs6Vzbj/9abLz8wt6itYOZWSTLIhq3g0
+	mS/gS3Lsj16I2/m1EC6jGBXetj9fnytg=
+X-Gm-Gg: AYBFou0stbmwIyXgWRA6Wlxisj2feM0BdBVAod2uNJHKE2VqgBkd5IWWwk82OUrffzy
+	z7/NGZkWpVblpIBnE5SIIwBKPTcnYXnydyZD601eWY4heqJ42m8e5I68JfFPD3327IQenokPkBQ
+	eYflJUzmfKt9ZBrlnwgLxayDC9aOsKy0ugFEPmSTBjxiNBMltoAaX926IOJxOpKpaCt+eZlH0xt
+	krqX38FDckWXFd0LJzj8uswYSJfp4ptTxaRfQ505qasD4QzHQMBeblCbuhYE/jntZuRi8HxAOe/
+	c6mt9vDD8E4JvHkCdU0YCF9kY+fKTZAy5xhM5AIvnMqmCkWngmfhz2uZ
+X-Received: by 2002:a05:6a00:2da0:b0:880:5a44:9367 with SMTP id
+ d2e1a72fcca58-8874a69ec71mr2480685b3a.30.1790817953484; Wed, 30 Sep 2026
+ 18:25:53 -0700 (PDT)
 MIME-Version: 1.0
-From: Claudio Gratton <cla20gra@gmail.com>
-Date: Wed, 30 Sep 2026 18:49:19 +0200
-X-Gm-Features: AclHuK8KG73Rdozl3C21tUCJ3Qj_vy52lU6tUV5dAYIHAggwiXb0lvze3F5m_BU
-Message-ID: <CAGohoTay793z6HftCY-1m+DP0yCJ1eeB+q4p5-z7+bOnrOWOCQ@mail.gmail.com>
-Subject: mt7925e: endpoint keeps a stale zero-latency LTR after s2idle resume,
- blocks package C6/C10 (Panther Lake laptop)
-To: linux-wireless@vger.kernel.org
-Cc: nbd@nbd.name, lorenzo@kernel.org, ryder.lee@mediatek.com, 
-	shayne.chen@mediatek.com, sean.wang@mediatek.com, 
-	linux-mediatek@lists.infradead.org, linux-pci@vger.kernel.org
+References: <20261001003501.2425492-1-lucid_duck@justthetip.ca>
+In-Reply-To: <20261001003501.2425492-1-lucid_duck@justthetip.ca>
+From: Chris <hoopyfrood42@gmail.com>
+Date: Wed, 30 Sep 2026 21:25:41 -0400
+X-Gm-Features: AclHuK8_KWE1UfLVbGLDncG3ZFM4xVbCeQcbtCCHGsIVNzIJFDtLu7YJF8SsscU
+Message-ID: <CAHaeJsSaqTJZ+Os-fxGq-g=wH7842n3Kt-_hmohdwN8qUwijiQ@mail.gmail.com>
+Subject: Re: [PATCH wireless v2] wifi: mt76: move the channel survey when the
+ channel changes
+To: Devin Wittmayer <lucid_duck@justthetip.ca>
+Cc: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo@kernel.org>, Ryder Lee <ryder.lee@mediatek.com>, 
+	Deren Wu <deren.wu@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, 
+	Shayne Chen <shayne.chen@mediatek.com>, linux-wireless@vger.kernel.org, 
+	linux-mediatek@lists.infradead.org, stable@vger.kernel.org
 Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260930_174934_338942_8310436A 
-X-CRM114-Status: GOOD (  15.98  )
+X-CRM114-CacheID: sfid-20260930_182555_189909_B364A09F 
+X-CRM114-Status: GOOD (  24.75  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -129,73 +120,146 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
+On Wed, Sep 30, 2026 at 8:35=E2=80=AFPM Devin Wittmayer
+<lucid_duck@justthetip.ca> wrote:
+>
+> mt7921 and mt7925 report every survey counter against one channel and
+> never mark the one in use. Both use channel contexts, so the code that
+> moves the survey never runs.
+>
+> Move it when a context is assigned or changed, after booking the time
+> spent on the old channel.
+>
+> Tested on MT7922 over PCIe, MT7921AU and MT7925 over USB.
+>
+> Fixes: 41ac53c899bd ("wifi: mt76: mt7921: introduce chanctx support")
+> Cc: stable@vger.kernel.org
+> Reported-by: Chris <hoopyfrood42@gmail.com>
+> Closes: https://lore.kernel.org/linux-wireless/CAHaeJsT8O8Nhq351hFp3NAL8e=
+0iU85N-LBdYZ9nYHFHVy7t_hQ@mail.gmail.com/
+>
+> Signed-off-by: Devin Wittmayer <lucid_duck@justthetip.ca>
+> ---
+> v2: aim it at the wireless tree and tag it for stable. No code change.
+>
+>  drivers/net/wireless/mediatek/mt76/mac80211.c   | 17 +++++++++++++++++
+>  drivers/net/wireless/mediatek/mt76/mt76.h       |  2 ++
+>  .../net/wireless/mediatek/mt76/mt7921/main.c    |  1 +
+>  .../net/wireless/mediatek/mt76/mt7925/main.c    |  2 ++
+>  .../net/wireless/mediatek/mt76/mt792x_core.c    |  1 +
+>  5 files changed, 23 insertions(+)
+>
+> diff --git a/drivers/net/wireless/mediatek/mt76/mac80211.c b/drivers/net/=
+wireless/mediatek/mt76/mac80211.c
+> index abbe65cbcd89..fdfdb324ab98 100644
+> --- a/drivers/net/wireless/mediatek/mt76/mac80211.c
+> +++ b/drivers/net/wireless/mediatek/mt76/mac80211.c
+> @@ -1045,6 +1045,23 @@ void mt76_update_survey(struct mt76_phy *phy)
+>  }
+>  EXPORT_SYMBOL_GPL(mt76_update_survey);
+>
+> +/* For drivers that retune without __mt76_set_channel(): book the time s=
+pent
+> + * on the old channel before moving the survey to the new one.
+> + */
+> +void mt76_set_survey_channel(struct mt76_phy *phy,
+> +                            struct cfg80211_chan_def *chandef)
+> +{
+> +       if (!chandef->chan)
+> +               return;
+> +
+> +       mt76_update_survey(phy);
+> +
+> +       phy->chandef =3D *chandef;
+> +       phy->main_chandef =3D *chandef;
+> +       phy->chan_state =3D mt76_channel_state(phy, chandef->chan);
+> +}
+> +EXPORT_SYMBOL_GPL(mt76_set_survey_channel);
+> +
+>  int __mt76_set_channel(struct mt76_phy *phy, struct cfg80211_chan_def *c=
+handef,
+>                        bool offchannel)
+>  {
+> diff --git a/drivers/net/wireless/mediatek/mt76/mt76.h b/drivers/net/wire=
+less/mediatek/mt76/mt76.h
+> index 62b41c8bb7c0..2cbe9884ab46 100644
+> --- a/drivers/net/wireless/mediatek/mt76/mt76.h
+> +++ b/drivers/net/wireless/mediatek/mt76/mt76.h
+> @@ -1548,6 +1548,8 @@ void mt76_sta_ps_transition(struct mt76_dev *dev, s=
+truct mt76_wcid *wcid,
+>  bool mt76_has_tx_pending(struct mt76_phy *phy);
+>  int mt76_update_channel(struct mt76_phy *phy);
+>  void mt76_update_survey(struct mt76_phy *phy);
+> +void mt76_set_survey_channel(struct mt76_phy *phy,
+> +                            struct cfg80211_chan_def *chandef);
+>  void mt76_update_survey_active_time(struct mt76_phy *phy, ktime_t time);
+>  int mt76_get_survey(struct ieee80211_hw *hw, int idx,
+>                     struct survey_info *survey);
+> diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/main.c b/drivers/n=
+et/wireless/mediatek/mt76/mt7921/main.c
+> index 68a059504e83..915d6789c668 100644
+> --- a/drivers/net/wireless/mediatek/mt76/mt7921/main.c
+> +++ b/drivers/net/wireless/mediatek/mt76/mt7921/main.c
+> @@ -1423,6 +1423,7 @@ mt7921_change_chanctx(struct ieee80211_hw *hw,
+>         } else {
+>                 mt76_connac_mcu_uni_set_chctx(mvif->phy->mt76, &mvif->bss=
+_conf.mt76, ctx);
+>         }
+> +       mt76_set_survey_channel(mvif->phy->mt76, &ctx->def);
+>         mt792x_mutex_release(phy->dev);
+>  }
+>
+> diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/main.c b/drivers/n=
+et/wireless/mediatek/mt76/mt7925/main.c
+> index 5993b31e1aae..e21bd79dcc56 100644
+> --- a/drivers/net/wireless/mediatek/mt76/mt7925/main.c
+> +++ b/drivers/net/wireless/mediatek/mt76/mt7925/main.c
+> @@ -2063,6 +2063,7 @@ mt7925_change_chanctx(struct ieee80211_hw *hw,
+>                                                       link_conf, ctx);
+>                 }
+>         }
+> +       mt76_set_survey_channel(mvif->phy->mt76, &ctx->def);
+>
+>         mt792x_mutex_release(phy->dev);
+>  }
+> @@ -2399,6 +2400,7 @@ static int mt7925_assign_vif_chanctx(struct ieee802=
+11_hw *hw,
+>
+>         mconf->mt76.ctx =3D ctx;
+>         mctx->bss_conf =3D mconf;
+> +       mt76_set_survey_channel(mvif->phy->mt76, &ctx->def);
+>         mutex_unlock(&dev->mt76.mutex);
+>
+>         return 0;
+> diff --git a/drivers/net/wireless/mediatek/mt76/mt792x_core.c b/drivers/n=
+et/wireless/mediatek/mt76/mt792x_core.c
+> index 0ad33f74c228..6a0d5b2c2d59 100644
+> --- a/drivers/net/wireless/mediatek/mt76/mt792x_core.c
+> +++ b/drivers/net/wireless/mediatek/mt76/mt792x_core.c
+> @@ -472,6 +472,7 @@ int mt792x_assign_vif_chanctx(struct ieee80211_hw *hw=
+,
+>         mutex_lock(&dev->mt76.mutex);
+>         mvif->bss_conf.mt76.ctx =3D ctx;
+>         mctx->bss_conf =3D &mvif->bss_conf;
+> +       mt76_set_survey_channel(&dev->mphy, &ctx->def);
+>         mutex_unlock(&dev->mt76.mutex);
+>
+>         return 0;
+> --
+> 2.55.0
+>
 
-I may have found a resume issue with the MT7925 PCIe Wi-Fi card
-(mt7925e) on a Panther Lake laptop. I am not sure whether the driver,
-the firmware or the platform is at fault, so I'm asking here first.
-Everything below is marked either "measured" or "guess".
+Tested on a Netgear A9000 (MT7925, USB 0846:9072) in monitor mode,
+Ubuntu 7.0.0-34 with the patch backported (the mt7921 hunk needed
+rebasing for the older brace-less if/else). Before: tuned to 2437 and
+then 5180 MHz, every counter stayed on 5955 MHz and no channel was
+marked in use. After: each of 2412/2437/2462/5180/5745/5955/6115 MHz
+is "[in use]" while tuned, gets its own active time (~4.2 s per 4 s
+dwell), keeps it when left and resumes on return.
 
-Hardware / software
-- HP OmniBook 7 14-hg0xxx, Core Ultra X7 358H (Panther Lake), Wi-Fi/BT
-MT7925, mt7925e at 0000:2c:00.0, root port 0000:00:1c.0
-- Reproduced on Arch linux 7.2.3.arch1-3 and on linux-omarchy 7.2.5-3
-(Arch config plus patches). Not tested on a vanilla mainline kernel.
+The busy half of the report is unchanged: busy still grows by 0xADBEEF
+=C2=B5s (11,386.6 ms) per update, now on the right channel. So the MIB busy
+register read is still returning 0xDEADBEEF on this chip.
 
-Symptom (measured)
-- Fresh boot: the PMC LTR table (/sys/kernel/debug/pmc_core/ltr_show)
-shows SOUTHPORT_B = 0x0 and the package reaches PC10 at idle.
-- After the first s2idle resume in a boot, SOUTHPORT_B reads
-0x80008000 (valid, zero latency) and stays there. The package then
-stays in PC2 (PC6/PC10 residency 0%) although everything else is idle.
-- Idle power on battery is roughly 0.5 W higher while it is stuck
-(about 3.1-3.6 W vs 2.0-3.1 W, screen on). I also changed other things
-in the same period (a Bluetooth autosuspend workaround), so treat the
-0.5 W as approximate. With "echo 1 > ltr_ignore" the package reaches
-PC10 again.
-
-Why I think it is this Wi-Fi card (measured)
-- Unloading mt7925e changes SOUTHPORT_B to a constant 0x88418841.
-- Toggling the Wi-Fi radio (rfkill), NVMe I/O bursts and an empty USB4
-port do not change it.
-
-State across the resume (measured, one suspend cycle, "systemctl suspend")
-- Before suspend: SOUTHPORT_B = 0x0.
-- Immediately after resume, before any userspace hook: SOUTHPORT_B = 0x80008000.
-- Endpoint 2c:00.0 stays in D0; DevCtl2 = 0x0409 (LTR Mechanism Enable
-set) and the LTR capability max snoop/no-snoop latency 0x100f/0x100f
-are identical before and after.
-- Root port 00:1c.0: DevCtl2 = 0x0400 and LnkCtl = 0x0c43, unchanged.
-- No kernel messages from mt7925e or PCI during the resume.
-
-Workaround that fixes it (measured)
-- About 6 s after resume, clear and re-set DevCtl2 bit 10 (LTR
-Mechanism Enable) on the endpoint, 0.3 s apart:
-setpci -s 2c:00.0 CAP_EXP+0x28.w=<old & ~0x0400>; sleep 0.3; setpci -s
-2c:00.0 CAP_EXP+0x28.w=<old>
-The endpoint then sends a fresh LTR message, SOUTHPORT_B returns to
-0x0 and PC10 residency comes back (about 28% of samples in my run,
-idle 1.99 W with the screen on).
-- I run it from a systemd-sleep hook as a stop-gap. It has fixed the
-state after every resume I have tried, including a repeat this
-afternoon.
-
-What I do not know (guess)
-- My guess is that the chip or its firmware re-sends a "0 latency" LTR
-message at resume and never sends the update. I cannot rule out that
-the driver or the platform leaves something unprogrammed; the
-unchanged config space only shows that it is not a PCI-level
-difference I can see.
-- I have not checked whether other MT7925/MT7922 platforms, or
-Intel/AMD systems, show the same.
-
-Questions
-1. Has anyone seen the same behaviour, and is it known on the firmware side?
-2. If it is a driver issue, would re-triggering the LTR message at
-resume (as above) be acceptable in mt7925e, or is there a cleaner way?
-
-I can provide full logs, run patches or test firmware versions.
-
-Thanks,
-Claudio Gratton
+Tested-by: Chris hoopyfrood42@gmail.com
 
