@@ -4,55 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 434DECA5FCB
-	for <linux-mediatek@archiver.kernel.org>; Thu,  1 Oct 2026 12:09:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1ABC5CA5FCB
+	for <linux-mediatek@archiver.kernel.org>; Thu,  1 Oct 2026 12:11:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=fTheCtXk8XaSmkfHsLnCjU58UvR0FjZKzHGfT+fHM6U=; b=FihXgstp251OA/B50a3BvTL5Es
-	KYuaoM2dUmle0+aE7+lZmOGxO9X4NwgIpusTNn95+oXpPkwsQcmz88CXfgtPljZfTpkP9NmKdzPNE
-	AS3pzJDsTBvAAPNo2LBpNmup7Y8YZn52PkXNGa3apVqahXq2nh3efmwH00jtEJs5lozQQekTFxXBq
-	eRMFmKOnjAkpJ1OPBqcXgMSkDIFF0lXrS7IGMe7vMqPE7zWscYo2Rz5YuZz9k1Tg0o77ZRKtS7z5E
-	1l2RnHltvXv12geP0L34e0Zm41nXJ9Gxm4sYukbHSmvG7nEOiAYq62KmEUXqbRm+DUPY2bUf26eeq
-	l6n4KCLQ==;
+	bh=QTqQJkL63ohXjWLssut7aVeNBPbNyPoug3s4cPnbgPw=; b=maOOttlVQGf057CVJ86Ss6lDz4
+	7ojzFbwlMd4LmFvV8E8NE3q9qZlc8abfohjBM6BPr7uduWQ4nWpqzCtdezAWsSLa7PN11clzOG3zR
+	/FrLWWnLl5pbtdlM6ewm4IO+Xdeoi5ob4jIILmqICX7x6ad+ISEPxGPNHH+wLh2LN+TgZMZ6b3GY7
+	t2tn4LhsrFVIVzgTNHhK9LkTmsF/bOn3NQa8WgGgUEFp4OQ4a5UeXQ6+OltDgWXquszexrJVI5M4U
+	OjwmGlOTZWMnUtXFf6OIO6P7bMi+yg6VU8dHqb+/WAjQXoEmOhnmFeGCoZ3L6BnBfnDa87lsMIaSd
+	tFVnCdbg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xCFbF-00000008z1r-0dV5;
-	Thu, 01 Oct 2026 12:09:21 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1xCFcz-000000091TO-3vfJ;
+	Thu, 01 Oct 2026 12:11:09 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xCFap-00000008xvE-0kmA;
-	Thu, 01 Oct 2026 12:08:55 +0000
+	id 1xCFcx-000000091Pf-2pvY;
+	Thu, 01 Oct 2026 12:11:07 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id DB12A4402F;
-	Thu,  1 Oct 2026 12:08:54 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id BEC341F000FF;
-	Thu,  1 Oct 2026 12:08:53 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 338484360A;
+	Thu,  1 Oct 2026 12:11:07 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 493451F000FF;
+	Thu,  1 Oct 2026 12:11:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1790856534;
-	bh=fTheCtXk8XaSmkfHsLnCjU58UvR0FjZKzHGfT+fHM6U=;
+	s=k20260515; t=1790856667;
+	bh=QTqQJkL63ohXjWLssut7aVeNBPbNyPoug3s4cPnbgPw=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=XgW5Jy0ZaSFeVwUsAQA87Zo1H/iLOEUmZTLoHoCpkQu1OZzviJMO2eXr1jEKmDdd5
-	 zkXVROYIE8BlF7w0Kwlw+RWyZu0gt2xMi8YD9qeWv55ux6ZxdgQend3eEG5/Aqj/cA
-	 FjIWpyn3+pwpR1SsZd1AuXJhrUWiGL6kpU9Z56YoS/ctdALAGvBsQ7ysIbwMEZuSlc
-	 EnUKXTlcIlXYtoJTQkhtL9VShUh/Iwdu9HUrkVgKdeqMcEIwusV0ANXPNttg+kqLgL
-	 GA45LrKr7cxHI9dJ+yS9jH4Qsk7SxO2Dq7dUi4SAGhfwNIniSzTVFgA5HYjbz8SFap
-	 LpAeTSiVjqMdA==
-Date: Thu, 1 Oct 2026 14:08:50 +0200
+	b=i8/6oesk+nDhLAbk7K5hdssv8WTn/KKU/k/hD5wI0EcIm6J3f3kLBNo8TJCyL4jMp
+	 zqWNuit5QKwBo7ymBSYCrhOmTjNsxXVsGUUCedu9uB2986F5RpZMeUTPIV5jFR6hRd
+	 F2t0f9hLMrx6+YS0IbaFQfGMQip4S6lwNWuYc46ypZjIj8Y197cs/LsvnQM08eXIjf
+	 1VCGnnOXafqZiPC6vwpWiRf7XiqQsZ9K0bgBWj8NKi+cOszmZqlouA0SuQWy0Y7qVA
+	 /0iYpGdf6krAXkwJWoK/maXimWzImltBx9Ez/TFLrnPuKTc7lQa2oZamRxSEpjBMfe
+	 2YEeyM22dGyZw==
+Date: Thu, 1 Oct 2026 14:11:03 +0200
 From: Krzysztof Kozlowski <krzk@kernel.org>
 To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Cc: arm-soc <arm@kernel.org>, soc <soc@kernel.org>, 
 	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, matthias.bgg@gmail.com
-Subject: Re: [GIT,PULL,1/3] MediaTek ARM64 Device Tree updates for v7.4
-Message-ID: <20261001-free-zealous-porpoise-7c6eb8@quoll>
+Subject: Re: [GIT,PULL,2/3] MediaTek ARM32 Device Tree updates for v7.4
+Message-ID: <20261001-thundering-durable-seriema-0aae1a@quoll>
 References: <20260923103222.25504-1-angelogioacchino.delregno@collabora.com>
+ <20260923103222.25504-2-angelogioacchino.delregno@collabora.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
-In-Reply-To: <20260923103222.25504-1-angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20260923103222.25504-2-angelogioacchino.delregno@collabora.com>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -67,18 +68,18 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Sep 23, 2026 at 12:32:05PM +0200, AngeloGioacchino Del Regno wrote:
+On Wed, Sep 23, 2026 at 12:32:06PM +0200, AngeloGioacchino Del Regno wrote:
 > The following changes since commit cee9395acd8043be0644b25c34bfa86623f2b935:
 > 
 >   Linux 7.3-rc1 (2026-08-30 13:34:40 -0700)
 > 
 > are available in the Git repository at:
 > 
->   https://git.kernel.org/pub/scm/linux/kernel/git/mediatek/linux.git/ tags/mtk-dts64-for-v7.4
+>   https://git.kernel.org/pub/scm/linux/kernel/git/mediatek/linux.git/ tags/mtk-dts32-for-v7.4
 > 
-> for you to fetch changes up to bf89276b2db391cbb25d1a0e898280fe85b16fb5:
+> for you to fetch changes up to 2e195497fc9fc0dd89cf95dab80a2d0486dab65b:
 > 
->   arm64: dts: mediatek: mt7988a-bpi-r4pro: label gpio-hogs (2026-09-21 12:22:18 +0200)
+>   ARM: dts: mediatek: Add basic support for Amazon ford board (2026-09-10 16:41:20 +0200)
 > 
 
 Thanks, applied
