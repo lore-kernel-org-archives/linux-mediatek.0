@@ -4,111 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C877ECA5FCB
-	for <linux-mediatek@archiver.kernel.org>; Thu,  1 Oct 2026 03:44:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C9D94CA5FB3
+	for <linux-mediatek@archiver.kernel.org>; Thu,  1 Oct 2026 04:45:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=w4ijuTp5svOtTgrjejnJF22Eh5tEOHO/CkeB5GXCR3I=; b=E5MgR3AmwAd51KHVp9LJVFGLtu
-	+Wnw2dwzwVZdk5iJDvtqY7e01NTCjtsixaAs9/SewsfUXCS49FRLt1WgUX+sdQ2k+b2WA83mR7qSu
-	0qlAGkYD2JRNcPFWkWyG/Lw3qEQOwCyzwg2awq2t738dh8YwjoDTBKEKGzu+5GMA7UbYhcPo3q8Ba
-	tIWrjHGiyA6ukeroYgyQQFUCNlflGmpBA8yYcOYkcAx25AWcdoOA49o2M+6US7fRO01+73QpvqFIU
-	64iGPiFNQjYaX4dwVIakoFSCn9qML+tutsHL6WmUvHYQxpqAsOX37p/Ij0oToqnqfc8TTmITHRp5D
-	2MfswjhQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Message-ID:Date
+	:Cc:To:From:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=NKNnYWlZ4y0T7QFRMYOGoByQhzd8uC503fuBr3CdBm4=; b=DgIeq2u/4REBVFwvyCKtJ3vC/u
+	4flNHNXLLWOETCQT8w9Ku/y3+O0F0on3Zqd1USMsgSVfm1J3l008ySXV/omWlEwxtb1XhO59pUICt
+	F1Ppe+K6+kH0xATIGs4u3JpUAj9Z0YCX3o/KdPG+pOkGf47u/DLbAcHjgvBcm5iDq7krAM3XsVLkf
+	NLfJ7W1KdY55PPvkj6zQJIHFZE6wYjPcG8mxbzWLOkm1SxMbg4/obW4PyW32HhoIK4O2r5+g0XfZS
+	V3s94lI3PNChvegSCENoKC4/LHm9F2hhZMaJbeYO8JOlJg+jY5hiKbYCM+ypsgXOtUMpamhGMTwMm
+	tE7K1sFA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xC7iS-00000007guk-1m2M;
-	Thu, 01 Oct 2026 03:44:16 +0000
-Received: from mail-ot1-x334.google.com ([2607:f8b0:4864:20::334])
+	id 1xC8fi-00000007kdZ-1IKt;
+	Thu, 01 Oct 2026 04:45:30 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xC7iP-00000007gt9-1upb
-	for linux-mediatek@lists.infradead.org;
-	Thu, 01 Oct 2026 03:44:14 +0000
-Received: by mail-ot1-x334.google.com with SMTP id 46e09a7af769-8198a3a54d7so2272035a34.1
-        for <linux-mediatek@lists.infradead.org>; Wed, 30 Sep 2026 20:44:12 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1790826252; cv=none;
-        d=google.com; s=arc-20260327;
-        b=ZjWAuX09XKQMj28OtdYer0Jrx9J4VdQ7d5+6tthjTsya7uPdZ1/iDzNyo9WBHUPfc1
-         5AhOKmrUzmUou0qbY2mDz1NgWm2O8CC9In10DYKH3HCW+/YqpJSuEjdm3CQ48nxp85OF
-         YQ26PxScL8v6UiVt98ARAskhSnbFdSm5sXw9VQlkadzNp3ucUDTvXJJH4IiTbfoWPZPX
-         P48PtycdzK1BNV0ijJj98pU5OJJmKDwzbUjeSLOYmMKM+VJ4plcYm9pg1GX2wnCBUgGN
-         Qe4CM/kJ4wmPOgfnMBO4DxbpWNphfYmaBOHj09k2XsSkJbwwHt5GxlGNCQVh90LGha1K
-         miQQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20260327;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=w4ijuTp5svOtTgrjejnJF22Eh5tEOHO/CkeB5GXCR3I=;
-        fh=PJVOHfPVF/tGV6Ng13HrhkMD83pX/sLpDjHr6mQCckg=;
-        b=IKM89DOfzg93Nn7N/2uB1inIPKm5Xp/BnO1jLHdITdk5bFsWg9UyZAU1+LvcVNybTC
-         oYlruWbl63At6iv52izrw0lmcUX/00dfML0nGQJsgVFfEh2Jft/Zji8hCvCIqHGtcIL+
-         0uU5y39sRRE8I+KECPSHXtLhCpajXDnfOWz3ECyWV1eSxSf4TCsWvomqqjqwSfGAqDHJ
-         ojAUbveVuu1sdBggpTAjLHNhVlNx46Y1H6eKfC5Dai+5YC78YVkRzwy2o+CV2bifQY/O
-         1gDm0e2HVbZnMbjcgKhA/KWYfK61/OpG2UgzmPjyy5O2xe9Yc4q0tawmTUd1iIZ/NPV0
-         dO7Q==;
-        darn=lists.infradead.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1790826252; x=1791431052; darn=lists.infradead.org;
-        h=content-transfer-encoding:content-type:cc:to:subject:message-id
-         :date:from:in-reply-to:references:mime-version:from:to:cc:subject
-         :date:message-id:reply-to:content-type;
-        bh=w4ijuTp5svOtTgrjejnJF22Eh5tEOHO/CkeB5GXCR3I=;
-        b=MPdSxzunuqBpc/isMDSJBdZTpjxlRHnLusP0cBm41B/idI+zGqS2xQyhL6gTXM9NoN
-         0Cg01w5TAhr78K13mQdUa0cMhTeYxVLmmau0EkoZaMW0y0O5RUJlvwHRNV7RvF5ExDoy
-         VN0r5ngl+CavejHQMGeMgwwnAPExkcl9aH9vEca8QsKtRrOY89riF9Ec/QWuBrFE82aI
-         abeHInl6dWnO3Wih6yoKCeteoaE0snEwYKX/M94uzT3Rnt3TKo7J6NmJsD22rJIPjj5+
-         i7i7RrVfUXy3lyQYzCObJmtpfYYeNdZq70BHTpf/ciW7mLNFsP2dmZt5uvZEq5F8Aq6w
-         i30A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1790826252; x=1791431052;
-        h=content-transfer-encoding:content-type:cc:to:subject:message-id
-         :date:from:in-reply-to:references:mime-version:x-gm-gg
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
-         :content-type;
-        bh=w4ijuTp5svOtTgrjejnJF22Eh5tEOHO/CkeB5GXCR3I=;
-        b=Byy6n+SEDUd92GNMw/Xse9onJkQ+HmILNiz69ZDoiciIc/rMANirYGG72Z+9oaNTDp
-         CEjRgU/hoZ5CaAGctTADnnntxsZtL+j2MxkKWzzMqZO9BXE2uOK8ddDQzvheZPi8TxwO
-         P2CgQt5FjNI8ltiZmjc1WezeIUHlpbAvwoBeDgBphDFFEF0HvgxYMOO18ECC8lCCs88A
-         S89J6KLpo0SdPG6KMFGUC2zCzg+Wk4H0ZGKcm9dMxEhAKiPJyc4K65wAVYilHEKeMVZx
-         gbR1mas43P3tGIs20BUaqjsH4DvIccWBVbqkzKm2/ZMPvmi6QnGwJa0arw68r0vAeJva
-         6jLQ==
-X-Forwarded-Encrypted: i=1; AKwUvBxJyUVFD3EdfA1M2P1eCN8/86UWigi56apt8q73aBwV/WpZGpsM9+d6S+2uLSMRZCp9+jzk5uDrdJt8W6/y1A==@lists.infradead.org
-X-Gm-Message-State: AFuF++kcM0VSp2CIyJ99sBD3P3wDuAz9bsUVs1Bwo0xPLSPZOLKVX+Sr
-	8MUdhtb6XwYB/lvibTb23eHEV41gpChOyC0/SmylmQfGlhZpfltIz0Niv8EAavqv0v9btWZJNql
-	liYBj5tcwmT2xYtY/1JAhlwp2vDOK/WQ=
-X-Gm-Gg: AYBFou2Xbuv3dAvgzESYkl0sJs3l2GMsEwbwNVIySgaDnCSbTBDSeRgBQ1o7D62/S7e
-	MKPyH5Xh4Ojii3PR6xUpHl6WKGEX8XLNtw6/Tbsz0iwgSuCwSaV0lVi1n8B6ObmgmF9T/xM+VfE
-	YZ51JyRpB299/N02hMEGeb29IyVqGAjOQzIHRvV3aJvnb7qyNyXdDxB/dxQ4T0K1irK6irrx7a0
-	X6i3cqzXi6mYHhGCI6s12jGCf1UeT1qH81XeiIckddeDQUUUHDEQJrbWLUT+pzCmvIgLAdkfyJk
-	KIfg/bRywsuZpzVGcvecvy0qzaPbr3nGVK5enm9yUKVQu057nJz4dK6RdrW2/m93kAI=
-X-Received: by 2002:a05:6820:4cc7:b0:6d9:58a1:824 with SMTP id
- 006d021491bc7-6ddba7942ffmr1480642eaf.22.1790826251774; Wed, 30 Sep 2026
- 20:44:11 -0700 (PDT)
+	id 1xC8fg-00000007kcs-45mG;
+	Thu, 01 Oct 2026 04:45:29 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by tor.source.kernel.org (Postfix) with ESMTP id DF0BC60A52;
+	Thu,  1 Oct 2026 04:45:27 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3B89B1F000FF;
+	Thu,  1 Oct 2026 04:45:26 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1790829927;
+	bh=NKNnYWlZ4y0T7QFRMYOGoByQhzd8uC503fuBr3CdBm4=;
+	h=Subject:From:To:Cc:Date:In-Reply-To:References;
+	b=FZtJESE+BWot7p5Ro5S53bhfOHS/d90XihLGl4ORxXaFnpZaZ8Y+AVbqp/eAPgj4h
+	 eWWFyEgqQy+q4c6Hq/YZS3/PYhfVUd6HoToVW/Xhb+dJCNPbuIuiFOpJWHZCZ8E6Bm
+	 LQTWoK82V8/DkcHXYprDNo2olbZBEkgacbGrkIX3F+RgVji2ycf+AJ3nCSWIDvtXCT
+	 F/hCUMlkmWJVMdnv+KJntrtIv3IR5a+IkuA1dnPdByzAlMmvH8rGNANHrDaiYY8FX1
+	 u91k9XZtQs0HrmiXxeOK2ni6VYGpva0a0rSvrzo7XTwGYfo5LFBZTXnhkLqrCYiq9U
+	 LmzsM7c5rbugw==
+Subject: Re: [PATCH net-next v24 01/10] dt-bindings: net: dsa: Document
+ support for Airoha AN8855 DSA Switch
+From: netdev-bot+sashiko@kernel.org
+To: ansuelsmth@gmail.com
+Cc: lee@kernel.org, robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
+ andrew+netdev@lunn.ch, davem@davemloft.net, edumazet@google.com,
+ kuba@kernel.org, pabeni@redhat.com, olteanv@gmail.com, matthias.bgg@gmail.com,
+ angelogioacchino.delregno@collabora.com, chester.a.unal@arinc9.com,
+ daniel@makrotopia.org, hkallweit1@gmail.com, linux@armlinux.org.uk,
+ horms@kernel.org, joey@tinyisr.com, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, netdev@vger.kernel.org,
+ mfd@lists.linux.dev, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ andrew@lunn.ch
+Date: Thu, 01 Oct 2026 04:45:25 +0000
+Message-ID: <179082992577.434549.3218874144788071107@kernel.org>
+In-Reply-To: <20260928194511.41878-2-ansuelsmth@gmail.com>
+References: <20260928194511.41878-2-ansuelsmth@gmail.com>
+X-sashiko-severity: Low
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
 MIME-Version: 1.0
-References: <20260926-b4-mt7629-toprgu-v1-0-c124bf9ac273@gmail.com>
- <20260926-b4-mt7629-toprgu-v1-1-c124bf9ac273@gmail.com> <20260929-spiffy-harrier-of-snow-b78e7b@quoll>
-In-Reply-To: <20260929-spiffy-harrier-of-snow-b78e7b@quoll>
-From: Chuanhong Guo <gch981213@gmail.com>
-Date: Thu, 1 Oct 2026 11:44:00 +0800
-X-Gm-Features: AclHuK9LNVBWetA4umqzLuoUjfCXVTn1WDE30aATZ75mv1-R3SpbZ9mzZOo88bg
-Message-ID: <CAJsYDVLimYZXk6mFrnsObCYFnK3HxqVJpuee+msnCi-GAUTXbQ@mail.gmail.com>
-Subject: Re: [PATCH 1/3] dt-bindings: reset: mediatek: add MT7629 TOPRGU reset indices
-To: Krzysztof Kozlowski <krzk@kernel.org>
-Cc: Philipp Zabel <p.zabel@pengutronix.de>, Rob Herring <robh@kernel.org>, 
-	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	Wim Van Sebroeck <wim@linux-watchdog.org>, Guenter Roeck <linux@roeck-us.net>, devicetree@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org, linux-watchdog@vger.kernel.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20260930_204413_508140_10B56604 
-X-CRM114-Status: GOOD (  18.78  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -123,59 +76,73 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi!
+Thank you for your contribution! Sashiko AI review found more severe
+issue(s) in other patches of this series. This mail is only an FYI, in case
+you want to address the nit picks below when you respin.
 
-On Tue, Sep 29, 2026 at 4:44=E2=80=AFPM Krzysztof Kozlowski <krzk@kernel.or=
-g> wrote:
->
-> On Sat, Sep 26, 2026 at 07:13:59PM +0800, Chuanhong Guo wrote:
-> > Define all seven reset IDs documented in the MT7629 TOPRGU SWSYSRST
-> > register: INFRA, ETHDMA, DDRPHY, INFRA_AO, CONN, APMIXED and CONN_MCU.
-> > Use their register bit positions as reset IDs.
->
-> If so, I say you don't need bindings then... but fine except:
->
-> >
-> > Signed-off-by: Chuanhong Guo <gch981213@gmail.com>
-> > ---
-> >  include/dt-bindings/reset/mt7629-resets.h | 9 +++++++++
-> >  1 file changed, 9 insertions(+)
-> >
-> > diff --git a/include/dt-bindings/reset/mt7629-resets.h b/include/dt-bin=
-dings/reset/mt7629-resets.h
-> > index 6bb85734f68d..828919eee298 100644
-> > --- a/include/dt-bindings/reset/mt7629-resets.h
-> > +++ b/include/dt-bindings/reset/mt7629-resets.h
-> > @@ -53,6 +53,15 @@
-> >  #define MT7629_PCIE0_USER_RST                        30
-> >  #define MT7629_PCIE0_PIPE_RST                        31
-> >
-> > +/* TOPRGU resets */
->
-> Didn't new bindings switch to continues indexes?
->
+Low priority / nit picks for your consideration:
 
-This is written for the existing reset driver in mtk_wdt.c. I don't
-want to add a reset id remap when all the other SoCs in that
-driver use binding ids matching their hardware bits.
-
-Is this OK for existing drivers?
-I can also live with plain numbers in the device tree if that's preferred.
-
-Another option would be to include mt7622-resets.h for mt7629 dt
-as their TOPRGU definitions match exactly. But that would bring other
-unused mt7622 definitions into mt7629 dt, probably not ideal.
-
-> > +#define MT7629_TOPRGU_INFRA_SW_RST           0
-> > +#define MT7629_TOPRGU_ETHDMA_SW_RST          1
-> > +#define MT7629_TOPRGU_DDRPHY_SW_RST          6
-> > +#define MT7629_TOPRGU_INFRA_AO_SW_RST                8
->
-> Best regards,
-> Krzysztof
->
+- [Low]
+  Documentation/devicetree/bindings/net/dsa/airoha,an8855-switch.yaml…
 
 --
-Regards,
-Chuanhong Guo
+
+dt-bindings: net: dsa: Document support for Airoha AN8855 DSA Switch
+
+This commit adds a YAML binding for the Airoha AN8855 5-port Gigabit
+Switch. The binding references the generic DSA ethernet-ports
+definition and adds a single compatible string.
+
+> diff --git a/Documentation/devicetree/bindings/net/dsa/airoha,an8855-switch.yaml b/Documentation/devicetree/bindings/net/dsa/airoha,an8855-switch.yaml
+> new file mode 100644
+> index 0000000000000..5ad9b9e139831
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/net/dsa/airoha,an8855-switch.yaml
+
+[ ... ]
+
+> +description: >
+> +  Airoha AN8855 is a 5-port Gigabit Switch.
+> +
+> +  It does expose the 5 Internal PHYs on the MDIO bus and each port
+> +  can access the Switch register space by configuring the PHY page.
+> +
+> +$ref: dsa.yaml#/$defs/ethernet-ports
+
+[Severity: Low]
+Should the port unit addresses be limited to what the hardware has?
+
+This binding inherits the generic port node pattern from
+dsa.yaml#/$defs/ethernet-ports without narrowing it:
+
+Documentation/devicetree/bindings/net/dsa/dsa.yaml:
+          "^(ethernet-)?port@[0-9a-f]+$":
+
+The AN8855 has 6 ports. Ports 0-4 are user ports with internal PHYs and
+port 5 is the CPU port, and the driver later in the series sets
+ds->num_ports = AN8855_NUM_PORTS.
+
+As a result, a DT with port@7 or port@1f still passes dt_binding_check
+and dtbs_check. It is only rejected at probe time, and then the whole
+switch fails to probe:
+
+net/dsa/dsa.c:dsa_switch_parse_ports_of() {
+    ...
+		if (reg >= ds->num_ports) {
+			dev_err(ds->dev, "port %pOF index %u exceeds num_ports (%u)\n",
+    ...
+}
+
+Other DSA bindings with a fixed port count narrow the pattern under
+ports: patternProperties. For example, mediatek,mt7530.yaml and
+qca8k.yaml use "^(ethernet-)?port@[0-6]$", and renesas,rzn1-a5psw.yaml
+uses "^(ethernet-)?port@[0-4]$".
+
+Would something like "^(ethernet-)?port@[0-5]$" make sense here? This
+file is unchanged at the end of the series.
+
+[ ... ]
+
+-- 
+Sashiko AI review · https://netdev-ai.bots.linux.dev/sashiko/#/patchset/20260928194511.41878-1-ansuelsmth%40gmail.com
 
