@@ -4,48 +4,48 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B6154CA5FDD
-	for <linux-mediatek@archiver.kernel.org>; Fri,  2 Oct 2026 17:32:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5A17BCA5FD4
+	for <linux-mediatek@archiver.kernel.org>; Fri,  2 Oct 2026 18:11:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=RVpkGJ1xxwLinZ+PqsTSo9xnvUSVxp77MIy/WKYmLyE=; b=FsiYnQVlNyURxHv2LIiVuu51cp
-	xNyWMsLOkq6Q7s5nQG+k/egqqDrJwSPG8qMB1JpNvt66U3rMCP/0AAuVHx6KdOSQ9udlFeS/63ciP
-	ylLz24fCFqlSz5Sff3PcGcFSCIdYBmeTg+iRTNA5OFnmyl4dJG1r3hBQs9wbZoK5768OEOcle4KDR
-	TYnyzW8AFBzrzNFNeggx2DVnNMnUJgvi603gKUH67jWG2zATjeiN1mgmt+R7AaWlKiiLNR3+h4PAH
-	y9IBmuLCNz3LqYynS+iPSsguXvIVgUxCaO1syFu7TGBEi3myKqA73j5TIzVVlxCBD0GnAibK8RQCr
-	hFNA6cLw==;
+	bh=FQXYj5vzNTW49jPfnwyMevRJEY7OOX+I2jx8ra6cAeU=; b=njELIZUTpMvn+J2VnWBPcfN4Ft
+	WMwThZWSNuq3K/LD4btMJWvxdCrekDNFRPJVPMVQIWwkzbGRjJI9Fa2HnWZfCAmw3IUq6dv3PeMC9
+	XVgryTaU1osRDlz1j7XcRjYFVsJ8Nv8A4QMtfs9f9cP7P2eLntZsqqvREmu53blWiXPsHExoKjX4V
+	7tz8HdwyGZK1iLat5XUGmxrbxKxVdgiOb7P71tCyPBdHKFI+dGdGwC8w3tViJnWj7sErAK+5RXIsA
+	tjWnbxgLSa/5vBhkpFEVk/S9WequTdNPSxl2/6pj/LZIOehNtCydVeyQZ5raq5dPghNH5SweEm7+r
+	xd3j4flg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xCh76-0000000CAGZ-1fIM;
-	Fri, 02 Oct 2026 17:32:04 +0000
-Received: from mout01.posteo.de ([185.67.36.65])
+	id 1xChiy-0000000CFlQ-3B2S;
+	Fri, 02 Oct 2026 18:11:12 +0000
+Received: from mout02.posteo.de ([185.67.36.66])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xCh73-0000000CAFs-32XG
+	id 1xChis-0000000CFkO-0srZ
 	for linux-mediatek@lists.infradead.org;
-	Fri, 02 Oct 2026 17:32:03 +0000
+	Fri, 02 Oct 2026 18:11:10 +0000
 Received: from submission (posteo.de [185.67.36.169]) 
-	by mout01.posteo.de (Postfix) with ESMTPS id AA95B240027
-	for <linux-mediatek@lists.infradead.org>; Fri,  2 Oct 2026 19:31:55 +0200 (CEST)
+	by mout02.posteo.de (Postfix) with ESMTPS id 86713240105
+	for <linux-mediatek@lists.infradead.org>; Fri,  2 Oct 2026 20:11:02 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=posteo.de;
-	s=1984.8680eb; t=1790962315;
-	bh=RVpkGJ1xxwLinZ+PqsTSo9xnvUSVxp77MIy/WKYmLyE=;
+	s=1984.8680eb; t=1790964662;
+	bh=FQXYj5vzNTW49jPfnwyMevRJEY7OOX+I2jx8ra6cAeU=;
 	h=Message-ID:Date:MIME-Version:Subject:To:Cc:From:Content-Type:
 	 Content-Transfer-Encoding:From;
-	b=Yo7jqArnMBYJ7KtXMfzz996WdcYsoeysPeJs8tspFWd7Z4QgtnmOB7rxTjNqZjWWW
-	 +g5NMznaMNDRpI61BOkLXhCS4mXLcD1i75i1XU10oVxFmNmTOpnMwuy7Jx97vb+VIf
-	 I/VQAcwL+OfQ2PH1TEA6UaDyVM7z0YRs8FGO/xtH7ERtkKqRo0C/o+y/GnezMrQA1U
-	 LYnn++DCZVIszMjyMFPRo58YM452mGVo3jyg+HFHvNryKgWPHR3ricww/YFWC7zb96
-	 BZ6chLTnujFB5cltQPqbshz9eChz+rfr16etpGjdKrphCYj38B1NmNJfEipn2u72uE
-	 3ieS1gKBWUJng==
+	b=BEvsMMIh+99TUyEf90jTp5qFk31b+Hh1i1Di8InZzWayemsQDtK+SW5Qh2LFJilIX
+	 OgysMd2B5H7G4G61tzHK94lM6gehdpPbfyiPNcUDmGlqizEIqU19vRpPuTA+6otyvm
+	 b1TYcD4tczEe8vDJRRGs4PAKyI/zEAouIMedSVU+hQn+Cqx7Cjxgh9QXAiUPCHUPoA
+	 fzsdXOXzmkDOmx6IloO+LQSujUajnBvSMNmkkgG42FVEkeLTcBfdR9ZDVZn+I29GEg
+	 NAi2a4GZlgF+/S1+u3EgNs8SP0CmKhcoGSrcwu3Y8i/mVW1D9yArlS0cEZMWS66Z1A
+	 3bXoledpY3UCg==
 Received: from customer (localhost [127.0.0.1])
-	by submission (posteo.de) with ESMTPSA id 4hxG6x74FMz6txy;
-	Fri,  2 Oct 2026 19:31:53 +0200 (CEST)
-Message-ID: <d10ae529-968e-4cf8-bf28-b704755f124f@posteo.de>
-Date: Fri, 02 Oct 2026 17:31:55 +0000
+	by submission (posteo.de) with ESMTPSA id 4hxH043lzRz6v1h;
+	Fri,  2 Oct 2026 20:11:00 +0200 (CEST)
+Message-ID: <d245c4b1-dfba-4507-85a2-c6883f5eae64@posteo.de>
+Date: Fri, 02 Oct 2026 18:11:01 +0000
 MIME-Version: 1.0
 Subject: Re: [REGRESSION] mt7925: MLO connectivity silently stalls with 6GHz
  link active
@@ -67,8 +67,8 @@ In-Reply-To: <20260829221319.25334-1-lucid_duck@justthetip.ca>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261002_103202_070592_41F84235 
-X-CRM114-Status: GOOD (  22.67  )
+X-CRM114-CacheID: sfid-20261002_111107_915397_8E31678D 
+X-CRM114-Status: GOOD (  22.06  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,14 +85,19 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 Hi all,
 
-Friendly ping on this one - any news on the mt7925 MLO stall?
+I just came across this patch from Andrei Rusu de Castro, posted on
+2026-09-02 with "Fixes: ff643b81bc38" (the commit I bisected to):
 
-No pressure, I know everyone's busy. My setup is still in place, so
-I'm happy to build and test patches or collect further traces if
-that would help. Nothing has changed here: still reproducible with
-the 5 GHz + 6 GHz pair.
+Patch wifi: mt76: mt7925: stabilize STA_REC_MLD link selection
+https://ratatoskr.run/linux-wireless/2026/09/17497919
 
-Thanks for all the help so far.
+Could this be the fix for this regression? Devin, you mentioned the
+link count undercount is real but likely not the root cause - does
+this patch change that assessment?
+
+I'm happy to test it on my hardware if that helps.
+
+Thanks,
 Jonas
 
 Am 30.08.26 um 00:13 schrieb Devin Wittmayer:
