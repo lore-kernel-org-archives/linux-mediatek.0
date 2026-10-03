@@ -4,67 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D9956CA5FEC
-	for <linux-mediatek@archiver.kernel.org>; Sat,  3 Oct 2026 18:03:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1AE98CA5FE6
+	for <linux-mediatek@archiver.kernel.org>; Sat,  3 Oct 2026 18:32:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=bpgDRZ2WVE9/RIYpoegXOjD+9cyeHWpJxGiOpeqh42g=; b=rXLhxofcKKXVrptpW25+k64MJ9
-	d7Z+eJ/ia5HrbJEhdZZQHLav2MmcK6kBcowLQZTwmksvzMf7TPh8Cf14+lCQUKL5opP7R6OCBfild
-	NV7WMTMjhilZ73CggT4yqrFZzTo0jtmt5321aWciGZJ+Q0JnnLdn1fd3SeCWUbCUbdoyEh4MBVnxt
-	NaeG7pnkraFnPqW6ze51Vz0EZSaLHwEKzC+EE2j2wJg9lD4kNpJlUkZc4PS7RZIzYpSgU0XEy82sr
-	H23hIdJPMZSi2C9d8Hmf5f9AMy22noWYJozGphlD5a9t4gjJbH6W8IYQ/nXanYEL6T4cSSqSwsOvc
-	oQlmV6ng==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:Message-Id:Date:MIME-Version:Subject:References:
+	In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=QJVrIB7qkSU0nHkAG5G7mRwWRLxDg1bGwqOVq12cvos=; b=ZyOucjnY6kcS+4mHpEMfStPMB+
+	g/uclzFqmYZBAN9ClqZ8r+ENR9ayiM91FjlKsNe3u14aa5kxbTa1aC4UXbuN0B3tX9ep0cKW85Cyb
+	IbuZx2wJZZDIZV+vLbjJELMVcVwIu+z8jxo3aPgxzWXcVxah7wduUXnRX4AAnKEVwxF55YeOkBPsx
+	AqXW76K9HZEMIMhPfn8vSINxhhDcxl+uylqWNAJ/FM1V4aFHkwrplEL9s9nz+c9c5U8v1NtpuLmfz
+	F4TUKlEQoRyvagqnDDs8RASNWqM37eakFjrHXL9EeTfIa3Uq3QJP+I99m9VJk2P/hGZRy8uq6C58D
+	wmKZjrJw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xD45O-0000000DtPi-27QT;
-	Sat, 03 Oct 2026 18:03:50 +0000
-Received: from out-111.mta0.migadu.com ([2001:41d0:1004:224b::6f] helo=mta0.migadu.com)
+	id 1xD4XR-0000000DuQd-3thd;
+	Sat, 03 Oct 2026 18:32:49 +0000
+Received: from forward502d.mail.yandex.net ([2a02:6b8:c41:1300:1:45:d181:d502])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xD45K-0000000DtPD-3NjY
+	id 1xD4XN-0000000DuQH-0M7c
 	for linux-mediatek@lists.infradead.org;
-	Sat, 03 Oct 2026 18:03:49 +0000
-X-Envelope-To: linux-mediatek@lists.infradead.org
-DKIM-Signature: a=rsa-sha256; bh=MqfQmQPpVqKDB8QrNFhFRvqM+3chzQRjnc5dl+pTy3I=;
- c=simple/simple; d=justthetip.ca;
- h=from:to:subject:date:message-id:mime-version:content-type; s=key1;
- t=1791050621; v=1; x=1791655421;
- b=BtNT9YMu31hjnaQNL4xfydF2w7oX+qCOqnLDFY/AVbeAQpgyR7EI6L03BBVNUeU1JriB9DC/
- 69rvNnkJeXCHF9FBHmWXyp/FtMLIfZyINzSv0puguB7StEKOBLqaiHc1EYC3cWHzN3QoAdAqp6f
- NG6nVYE0aOiskJPKyevx/LyzMgV23NyfQlPWYL8dwsVcTVdQseADfGtTIaZsACerGweRV5+PTu1
- 94RzuLGSLBflZqVMLFzvLUBR8NfhuDxZ1C0Vq63CzP/+2Stj9q8Ak3+S/Obnxl7DpG8Is8PlXs4
- hEEEx+YMkIi58Dy7SATK9r+1T9kbGrqUf2Ffesye9N5zg==
-X-Envelope-To: linux-mediatek@lists.infradead.org
-Received: by smtp.migadu.com with ESMTPS id d500d405151bf338;
-	Sat, 03 Oct 2026 18:03:41 +0000
-X-Mizu-Trace-ID: d500d405151bf338
-X-Migadu-Flow: FLOW_OUT
-From: Devin Wittmayer <lucid_duck@justthetip.ca>
-To: Jonas Hort <jonas.hort@posteo.de>,
-	Sean Wang <sean.wang@kernel.org>,
-	Thorsten Leemhuis <regressions@leemhuis.info>
-Cc: Sean Wang <sean.wang@mediatek.com>,
-	Felix Fietkau <nbd@nbd.name>,
-	lorenzo.bianconi83@gmail.com,
-	Andrei Rusu de Castro <arc@empyreal.works>,
-	regressions@lists.linux.dev,
-	linux-wireless@vger.kernel.org,
+	Sat, 03 Oct 2026 18:32:48 +0000
+Received: from mail-nwsmtp-mxback-production-main-57.klg.yp-c.yandex.net (mail-nwsmtp-mxback-production-main-57.klg.yp-c.yandex.net [IPv6:2a02:6b8:c43:4d0f:0:640:45ce:0])
+	by forward502d.mail.yandex.net (postfix) with ESMTPS id C3285CE5A8;
+	Sat, 03 Oct 2026 21:32:36 +0300 (MSK)
+Received: from mail.yandex.ru (2a02:6b8:c42:de41:0:640:5afa:0 [2a02:6b8:c42:de41:0:640:5afa:0])
+	by mail-nwsmtp-mxback-production-main-57.klg.yp-c.yandex.net (mxback) with HTTPS id IWrqV77AbSw0-ABx8XyaZ;
+	Sat, 03 Oct 2026 21:32:36 +0300
+X-Yandex-Fwd: 1
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=0upti.me; s=mail;
+	t=1791052356; bh=QJVrIB7qkSU0nHkAG5G7mRwWRLxDg1bGwqOVq12cvos=;
+	h=Message-Id:References:Date:Cc:Subject:In-Reply-To:To:From;
+	b=J/v5eIrF7NViugMMQhMTIDg39zldRxtdqinS9p8wXp5xLxKzSJakvbeeY7RuECUi+
+	 2+wWOPxpt6oBqxYUKRS23FaEM5GrQXbJg3s41vtuoX+vpfhH1searzqyVVksDiV9mb
+	 Yq82fteD1AK4F1KER1lqqDdESEMECdHZ45/RdeVo=
+Authentication-Results: mail-nwsmtp-mxback-production-main-57.klg.yp-c.yandex.net; dkim=pass header.i=@0upti.me
+Received: by mail-sendbernar-production-main-55.klg.yp-c.yandex.net (sendbernar) with HTTPS id c21a6e1b34ae069be1de7566bbbe38f6;
+	Sat, 03 Oct 2026 21:32:35 +0300
+From: Ilya K <me@0upti.me>
+To: Ben Greear <greearb@candelatech.com>
+Cc: linux-wireless@vger.kernel.org,
+	netdev@vger.kernel.org,
 	linux-mediatek@lists.infradead.org
-Subject: Re: [REGRESSION] mt7925: MLO connectivity silently stalls with 6GHz link active
-Date: Sat,  3 Oct 2026 11:03:34 -0700
-Message-ID: <20261003180334.83575-1-lucid_duck@justthetip.ca>
-X-Mailer: git-send-email 2.55.0
-In-Reply-To: <d245c4b1-dfba-4507-85a2-c6883f5eae64@posteo.de>
-References: <503eb10e-80cf-493e-95fd-04fc0f94ce01@posteo.de> <e4bc5ce3-9a6f-4365-9d36-f6440ded0865@posteo.de> <c64f5fa6-4c61-45b6-a513-b971e59d7723@posteo.de> <476e7721-580e-4a6b-86e5-5ed782a2c7ec@leemhuis.info> <c9f984c4-e3c4-4e41-a502-99db97ce724b@posteo.de> <20260829221319.25334-1-lucid_duck@justthetip.ca> <d245c4b1-dfba-4507-85a2-c6883f5eae64@posteo.de>
+In-Reply-To: <c4286904-2a9a-41fd-93ce-be57964909f6@candelatech.com>
+References: <1767631788532094@64c4e675-cd08-4a74-816f-886742f9bfcd> <529a79bc-dab7-aa41-00bd-c47ecbefaa00@candelatech.com> <471221788538289@323ca970-5bd2-4c6b-b52d-2b863a718615> <3acf531c-bcc7-412b-b3bb-665069260e46@candelatech.com> <2028561788553569@f088f4ec-f441-47a1-b7e4-75a1052aa4df> <2418461788691106@84aa39c5-f501-4e64-8418-6a8b6eb88e21> <eb405366-6574-4e4c-a89d-363751ed848b@candelatech.com> <4175721788798939@f00554c7-d809-471c-9bcf-78e5d8eceab4> <1556871789207706@7dc9deb3-4292-4932-8568-de9b411208d8> <1443771789748846@4a8ec5ae-80ed-44bc-b7d3-6bc660c90136> <211851789913261@df1900ea-d467-4ed7-a7f1-de68a4c3e6dd> <143991791036721@40be7595-980b-4665-ba66-1601e10a0899> <c4286904-2a9a-41fd-93ce-be57964909f6@candelatech.com>
+Subject: Re:[bug] Triple whammy of mt7996e bugs on 7.2+
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
+X-Mailer: Yamail [ http://yandex.ru ] 5.0
+Date: Sat, 03 Oct 2026 21:32:35 +0300
+Message-Id: <221941791052355@558b3e58-c2b1-4e14-91fe-beb5649d18f6>
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261003_110347_637387_7950AFE8 
-X-CRM114-Status: GOOD (  10.67  )
+X-CRM114-CacheID: sfid-20261003_113245_315989_3B1F8642 
+X-CRM114-Status: UNSURE (   5.76  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,46 +75,12 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, 2026-10-02 at 18:11 +0000, Jonas Hort wrote:
-> I just came across this patch from Andrei Rusu de Castro, posted on
-> 2026-09-02 with "Fixes: ff643b81bc38" (the commit I bisected to):
->
-> Patch wifi: mt76: mt7925: stabilize STA_REC_MLD link selection
->
-> Could this be the fix for this regression? Devin, you mentioned the
-> link count undercount is real but likely not the root cause - does
-> this patch change that assessment?
+>  Our kernel should warn pretty loudly in this case, so if you are still hitting it you should see signs.
 
-The patch you found does not fix this stall. Andrei never claimed it
-would and it did no harm here, so this is not an argument against it.
+Any specific log lines to look out for? I have all the logs from this machine piped into Loki so I can check quickly.
 
-  bench A   2 Sep   MT7925 PCIe, 7.2.0-rc5 + lockdep, morrownr @ 6b0ef22e
-  bench B   3 Oct   MT7925U USB, 7.2.6, morrownr @ 8e9309b
-  both      firmware 20260813113118, DevLabMLD on 5745 and 6135 MHz,
-            iw scan every 4 s under bulk upload. Neither is in-tree.
+> And, if you can reproduce the deadlock with lockdep enabled, that may
+help.
 
-  run                     bench   last worked   at 600 s
-  stock                     A        120 s        dead
-  + the patch               A        141 s        dead
-  stock                     B        122 s        dead
-  + the patch, run 1        B        123 s        dead
-  + the patch, run 2        B        123 s        dead
-  primary link only         B        583 s        alive
-
-Every two-link run died between 120 and 141 seconds, patched or not, and
-none recovered. Each stayed associated on both links, reporting a healthy
-rate while the AP heard nothing from the client.
-
-The patch describes both links on every update. In August I got to that
-same record another way, dropping the undercounting update, and it
-stalled then too.
-
-The arm that stays up describes the primary link only. Not a fix, it
-hides the second link, but the stall tracks whether that second link is
-in the record.
-
-Thanks for your patience, and for the bisect and for finding the patch
-yourself.
-
-Devin
+I'll try building a kernel with minimal patches + lockdep and crashing it some time next week probably, would do it tomorrow but have a dental appointment that will take up most of the day :(
 
