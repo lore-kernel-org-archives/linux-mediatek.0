@@ -4,63 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D0EB0CA5FEC
-	for <linux-mediatek@archiver.kernel.org>; Sat,  3 Oct 2026 14:12:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BFB35CA5FDD
+	for <linux-mediatek@archiver.kernel.org>; Sat,  3 Oct 2026 14:28:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:Message-Id:Date:MIME-Version:Subject:References:
-	In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=p1iE9IJuA9vzahQdkL4uD4ZoYz14exJJjYG0KNLd2AU=; b=xAqhVvN+fEKao8aRW96IRqGXaH
-	O0jQlXXTe4saeD7D8SpjpJX44vMvWVvANWHMFRUL9g8XF/QJ/0mmqL0cCGS3luUdL/hrqQ46mKiWo
-	WMDRc/87rF/5E9XrxA7tGXQFUWD2Qt4fF8w6mUP2PiUr++lmOoB6j4iLBXEhDkUQZCSv+hZ7QvTDg
-	wPFVQdvf1M+Hhyea0s5DpWnwZyYJGxNHwatcRMZZcffUTtZgg5fXQaGHMe6CPApErYnM4TtGrvRj4
-	FCFruRnw0uT5gzW0u18QXFKw+c+5y4ENE2Ccewxe1hV9XtZl17oxX8kCphfsmp71JZxmAekP520KY
-	9DjgSTIg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=i7Pxqkmjt5iCbblP6tL95SkDHA/mfjdEN60DSU5pzNo=; b=yCxgWBiR0vFAt8bKkYItlQp6Tg
+	m7CX5g0M4krAS+q8hF3MC59Owf58qOSkboA2AsMnBcPvCxtT2oPoaovKyhlbcnqpq6eLuSHNVZiR1
+	7kq3yK1gIMJlQG6licz30OoXyDxlCiZq6rDLc+jEb+VmCC1WGFP4+ZOk19UF2GQllsWVlNdclAdE+
+	k4B1RXapL+iCi6jsW1YVCpyOsjmRycxlxv7B5WiGmNaRAVSNVELP0XdK4lzkKdHzAFmFhITJ9WOY9
+	7P0hz3i5LU1a7yqg0dGn7gn5+zYkgFaEteWkdcOG4CZHhZ3U8SFRFeyZ4m3SqFkxO4LBBAwXQiyBA
+	BBKy1UBQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xD0TK-0000000DaEP-1SMP;
-	Sat, 03 Oct 2026 14:12:18 +0000
-Received: from forward500a.mail.yandex.net ([178.154.239.80])
+	id 1xD0iW-0000000Dbcd-2bUG;
+	Sat, 03 Oct 2026 14:28:00 +0000
+Received: from mail.nozomi.space ([139.162.184.125])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xD0TG-0000000DaDR-04JJ
-	for linux-mediatek@lists.infradead.org;
-	Sat, 03 Oct 2026 14:12:16 +0000
-Received: from mail-nwsmtp-mxback-production-main-813.iva.yp-c.yandex.net (mail-nwsmtp-mxback-production-main-813.iva.yp-c.yandex.net [IPv6:2a02:6b8:c0c:5a80:0:640:5f14:0])
-	by forward500a.mail.yandex.net (postfix) with ESMTPS id 0EDB4C1A3E;
-	Sat, 03 Oct 2026 17:12:03 +0300 (MSK)
-Received: from mail.yandex.ru (2a02:6b8:c0c:5c14:0:640:a57b:0 [2a02:6b8:c0c:5c14:0:640:a57b:0])
-	by mail-nwsmtp-mxback-production-main-813.iva.yp-c.yandex.net (mxback) with HTTPS id ZBnmCa5JU0U0-uaRxgpvu;
-	Sat, 03 Oct 2026 17:12:02 +0300
-X-Yandex-Fwd: 1
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=0upti.me; s=mail;
-	t=1791036722; bh=p1iE9IJuA9vzahQdkL4uD4ZoYz14exJJjYG0KNLd2AU=;
-	h=Message-Id:References:Date:Cc:Subject:In-Reply-To:To:From;
-	b=GQdg3GxMKnjDtrIjZh0QrCu5kM1xhINdJesJyy4yrZFahZoGEghildQm5SzcpOyF8
-	 eolunvKhE4ANInoHCfjW/QEx/wGRIQzTHNviK19rFLiKc8JU7gl4zuPOFlGP1IHX1a
-	 eORP3jrRt73DwL9U8oIouuXCGiIrB0GOIvGUrIWU=
-Authentication-Results: mail-nwsmtp-mxback-production-main-813.iva.yp-c.yandex.net; dkim=pass header.i=@0upti.me
-Received: by mail-sendbernar-production-main-60.iva.yp-c.yandex.net (sendbernar) with HTTPS id ee00c04c1aa76ab2be9247f83e4d4341;
-	Sat, 03 Oct 2026 17:12:01 +0300
-From: Ilya K <me@0upti.me>
-To: Ben Greear <greearb@candelatech.com>
-Cc: linux-wireless@vger.kernel.org,
-	netdev@vger.kernel.org,
-	linux-mediatek@lists.infradead.org
-In-Reply-To: <211851789913261@df1900ea-d467-4ed7-a7f1-de68a4c3e6dd>
-References: <1767631788532094@64c4e675-cd08-4a74-816f-886742f9bfcd> <529a79bc-dab7-aa41-00bd-c47ecbefaa00@candelatech.com> <471221788538289@323ca970-5bd2-4c6b-b52d-2b863a718615> <3acf531c-bcc7-412b-b3bb-665069260e46@candelatech.com> <2028561788553569@f088f4ec-f441-47a1-b7e4-75a1052aa4df> <2418461788691106@84aa39c5-f501-4e64-8418-6a8b6eb88e21> <eb405366-6574-4e4c-a89d-363751ed848b@candelatech.com> <4175721788798939@f00554c7-d809-471c-9bcf-78e5d8eceab4> <1556871789207706@7dc9deb3-4292-4932-8568-de9b411208d8> <1443771789748846@4a8ec5ae-80ed-44bc-b7d3-6bc660c90136> <211851789913261@df1900ea-d467-4ed7-a7f1-de68a4c3e6dd>
-Subject: Re:[bug] Triple whammy of mt7996e bugs on 7.2+
+	id 1xD0iS-0000000DbaY-3kY9;
+	Sat, 03 Oct 2026 14:27:58 +0000
+From: =?UTF-8?q?Micha=C5=82=20Kope=C4=87?= <michal@nozomi.space>
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=nozomi.space;
+	s=mail; t=1791037665;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding;
+	bh=i7Pxqkmjt5iCbblP6tL95SkDHA/mfjdEN60DSU5pzNo=;
+	b=QXDuUr847hdXKosbPGOjGatRrlxzNdEPHSMCpGdU2j5Jb4BI0iaKlQV0UN2RKmeTa6vkbU
+	9cohl3V0IayrHLri/XsTdtLQ7bU9lSRrHBgcGcH+F/uPaa5Iuf6HQDcacXXxHHOpemDKq5
+	iZFMMw6Cv+LvK37JfrN26ui60HkWbWivTYPyADninIngEqcGwof29x8ABo1gET1njrosKS
+	CcB6nXhTt3T2FfVlX2iof9B0WJhdWVLWAATyYZimluJUAkAd54Qw1jNL/Iiaggu8MoO3ET
+	6Z64KkP20/7onmLVk5L5srqu4mB5j2BywpCLLnoj7n68dsAjz+UCm+Dwb4B86g==
+To: linux-input@vger.kernel.org
+Cc: devicetree@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	Jiri Kosina <jikos@kernel.org>,
+	Benjamin Tissoires <bentiss@kernel.org>,
+	Dmitry Torokhov <dmitry.torokhov@gmail.com>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Allen Lin <allencl_lin@hotmail.com>,
+	Tylor Yang <tylor_yang@himax.corp-partner.google.com>,
+	Felix Kaechele <felix@kaechele.ca>,
+	Douglas Anderson <dianders@chromium.org>,
+	=?UTF-8?q?Micha=C5=82=20Kope=C4=87?= <michal@nozomi.space>
+Subject: [PATCH v5 0/6] HID: Add support for the Himax HX83102J touchscreen
+Date: Sat,  3 Oct 2026 16:27:35 +0200
+Message-ID: <20261003142741.48634-1-michal@nozomi.space>
 MIME-Version: 1.0
-X-Mailer: Yamail [ http://yandex.ru ] 5.0
-Date: Sat, 03 Oct 2026 17:12:01 +0300
-Message-Id: <143991791036721@40be7595-980b-4665-ba66-1601e10a0899>
-Content-Transfer-Encoding: 7bit
-Content-Type: text/plain
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261003_071214_255360_4AB76307 
-X-CRM114-Status: UNSURE (   4.10  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20261003_072757_756019_A6C58033 
+X-CRM114-Status: GOOD (  17.62  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,5 +79,84 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-OK, so another update: my current branch which is basically 7.2.8 + bpi-r4 specific stuff + any patches from Ben's tree that touch net/wireless or mt76 code (http://github.com/K900/linux/tree/bpi-r4-728-ct) survived an entire week of no crashes, which is a very good sign. Unfortunately, it's still >500 commits with a total of +20k -2k lines of diff, so I'll have to go through it again and strip it down even more before I can have any idea of what is actually helping...
+This series adds support for the touch function of the Himax HX83102J,
+a touch and display driver integrated (TDDI) controller that reports HID
+packets over SPI. It is used in the MediaTek MT8188 based Lenovo
+Chromebook Duet ("Ciri").
+
+This is a respin of Allen Lin's v4 [1], which stalled after the review.
+I have kept Allen as the author of his patches and noted my changes in
+each of them. Patch 5 is based on Tylor Yang's heatmap support in the
+ChromeOS kernel driver, which I have credited there.
+
+On Ciri the controller has no flash, so the firmware is loaded from a
+file (himax_i2chid_1002.bin or himax_i2chid_1003.bin, depending on the
+panel, the names ChromeOS uses). These files are not in linux-firmware.
+
+Tested on Ciri (sku0, BOE panel): touch, stylus and suspend/resume.
+
+The firmware report descriptor declares feature report 68 (usage
+0xff0000c5), which the driver does not serve, so hid-multitouch logs
+"failed to fetch feature 68" once per probe. Touch works regardless.
+
+Changes in v5:
+- Rebase onto v7.3 (spi->master is now spi->controller).
+- dt-bindings: rename ddreset-gpios to display-reset-gpios and describe
+  it and the supplies shared with the display (Conor). Dropping the "dd"
+  entirely would clash with reset-gpios, the reset of the touch
+  function, so I used display-reset-gpios instead.
+- dt-bindings: drop Rob's Reviewed-by because of the above.
+- Use family-wide names for the MCU helpers that are shared by the
+  HX831xx controllers, e.g. himax_mcu_sense_off(), himax_chip_detect()
+  and HIMAX_SAFE_MODE_PASSWORD (Felix). The remaining HX83102J names
+  are chip specific: the TCON reset (0x80020004) and raw output select
+  (0x100072ec) registers differ from the HX831xx defaults (0x80020020,
+  0x800204b4), the hardware CRC registers are only used by the flashless
+  parts, and the sizes are per chip. I have not tried to share code with
+  himax_hx83112b, which talks to its I2C controllers with a custom event
+  format, while the HX83102J sends HID reports over SPI.
+- Unregister the panel follower on remove. Without it, unbinding the
+  driver left a dangling entry in the panel's follower list.
+- New patch: report the touch report and the heatmap. With the Ciri
+  firmware, every frame carries the touch report, the stylus report and
+  a 12-bit packed heatmap, which the firmware declares as report 97;
+  only the stylus report was passed on.
+- New patch: add the touchscreen to the Ciri device tree.
+- List myself as the maintainer of the driver and the binding.
+- Fix checkpatch --strict issues and expand the Kconfig help.
+- Reword the commit messages.
+
+[1] https://lore.kernel.org/all/TY0PR06MB56110754EB9D827BE3304A259E0F2@TY0PR06MB5611.apcprd06.prod.outlook.com/
+
+Allen_Lin (4):
+  dt-bindings: input: Add Himax HX83102J touchscreen
+  HID: Add Himax HX83102J touchscreen driver
+  HID: himax: Add DRM panel follower support
+  HID: himax: Load the firmware from a file
+
+Michał Kopeć (2):
+  HID: himax: Report the touch and heatmap data
+  arm64: dts: mediatek: mt8188-geralt-ciri: Add the touchscreen
+
+ .../input/touchscreen/himax,hx83102j.yaml     |   98 +
+ MAINTAINERS                                   |    7 +
+ .../dts/mediatek/mt8188-geralt-ciri-sku1.dts  |    4 +
+ .../dts/mediatek/mt8188-geralt-ciri-sku3.dts  |    4 +
+ .../dts/mediatek/mt8188-geralt-ciri-sku5.dts  |    4 +
+ .../dts/mediatek/mt8188-geralt-ciri-sku7.dts  |    4 +
+ .../boot/dts/mediatek/mt8188-geralt-ciri.dtsi |   33 +
+ drivers/hid/Kconfig                           |   13 +
+ drivers/hid/Makefile                          |    2 +
+ drivers/hid/hid-himax.c                       | 3187 +++++++++++++++++
+ drivers/hid/hid-himax.h                       |  466 +++
+ 11 files changed, 3822 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/input/touchscreen/himax,hx83102j.yaml
+ create mode 100644 drivers/hid/hid-himax.c
+ create mode 100644 drivers/hid/hid-himax.h
+
+
+base-commit: fd179f8a05be3ccae366b9b96e176b51fbe54aab
+-- 
+2.55.0
+
 
