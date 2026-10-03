@@ -4,67 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6AB2ACA5FE4
-	for <linux-mediatek@archiver.kernel.org>; Sat,  3 Oct 2026 19:45:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 87EB4CA5FE6
+	for <linux-mediatek@archiver.kernel.org>; Sat,  3 Oct 2026 20:01:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:
 	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=wgr4pHrZo2qwDF8ZFgFdxiB9TN8wC+wKv8BCpLbDH7E=; b=KwTDzn1U+jszw6qVBGr27ljmXv
-	r2VTZKpBreDQBJfRWNrQCBHGNt5O6WY7iqlBrdi4b2MXhghogJfMn4tA0LcFs8rFGg2tIXVpKfZlM
-	ICGCLK+DXwPC4WVBKxjwdBpijomEHCxPnWHrBv44NRYE2qmldkwKunxxsL1sYP9+/48nW9ak0Gws1
-	q401lEthACth3z6lyk6eGy5bU5jmSA7/pw5EMoGtb3GfZ3w97L9Jen19YpkilFynRZb9C4du0ybxM
-	VeAtyJU0tjQ8Lg1X4+LZikNbxUBUWt0zS4ZiQLRCERVTz2TAFFdOomvBL5rk5UPerXYr430B/DlN1
-	YmgyUV9Q==;
+	bh=ujjA/EfqFrllDMkLjfG6+3nwCZQypQgUzS75H0VKhkU=; b=HoF8LK06YXMiQcBaTt5lSeLOhK
+	KAco5XV5l56eoJcn9ZBPh/r2wMoWdbUjIMBdJoeIz3eUFM5hY9R+Sd+rrCZdBDfVfeSnnpoAgS+S2
+	yXFkAqGWhobMHCp8sJ6rvz8IMVi+Oyn7DH/GYpFQeJiyOJ0oG3R2S0nidKriPqcx0VFyg9Ii5Pa/x
+	78MUVDWVdJGNiv5Q1B73AQ9RRHbp3nv4MdZQuDcnh1gzeDgnySID45KgPJQjcXI6AXPhUkdUiqe77
+	drSRO3MhsWJ/PNtb5R+rDK0Wi2wYYcrMn3rfTA/qcvD0ZAmwFRRtlNMgPXkUuO+Ybt5VIC8uR2xp9
+	iLX3DudQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xD5fZ-0000000DxSd-0rOE;
-	Sat, 03 Oct 2026 19:45:17 +0000
+	id 1xD5vT-0000000Dyzo-1hRd;
+	Sat, 03 Oct 2026 20:01:43 +0000
 Received: from mail.nozomi.space ([139.162.184.125])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xD5fS-0000000DxKX-2p2w;
-	Sat, 03 Oct 2026 19:45:11 +0000
+	id 1xD5vN-0000000DyyN-31ss;
+	Sat, 03 Oct 2026 20:01:41 +0000
 From: =?UTF-8?q?Micha=C5=82=20Kope=C4=87?= <michal@nozomi.space>
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=nozomi.space;
-	s=mail; t=1791056709;
+	s=mail; t=1791057695;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=wgr4pHrZo2qwDF8ZFgFdxiB9TN8wC+wKv8BCpLbDH7E=;
-	b=ahClsdTe7cTeQLSsKzawVavy2VEKP8wACr6NNn/bpmUr22gaHMmD7Ss26vtIV3m3VyVq2E
-	ESrK47hKYUW0hXF+DMn6Ys7G8BrdEQN+YZOM6Tlmu8Jhdqr29W8cUFPQ9AGHybyBg/LcrW
-	Q1CT5EX/iq/DxY9TeHP9QmL77bnd4HDfLiy8QJC1q/xCOjTUlaAEdux/nhv8aZ0jiXLOqu
-	wc+olNPcYIQGy9W0bvH+CqlbF0UgUecIn5BP/Jdvd+64QV1xA9Z87D9Ii4srWVgmJg9kDk
-	hynjeLat4Wh1D3u5yRgVww++j/74rj+9fWPqWX1XjJ6+fDLcTU5B1A0keKHurA==
-To: Mark Brown <broonie@kernel.org>,
-	Liam Girdwood <lgirdwood@gmail.com>
-Cc: Jaroslav Kysela <perex@perex.cz>,
-	Takashi Iwai <tiwai@suse.com>,
+	bh=ujjA/EfqFrllDMkLjfG6+3nwCZQypQgUzS75H0VKhkU=;
+	b=s3y7zaA/vOa/6nJn9RV1/S648MlfyLxv6NYSbtwk56kRlvGiddXt6T4G8FGyk/cDSkwh3r
+	3w70x96Kjew76d2ZtIsu6Zr6+zQdiASBIgvvRG5/F8EvxvhK1wzVHx0A4FQ90cPAms3P2h
+	KZJCA0SFLK5aozVZ+TwtuDNKCBtrP3w2aNMLr9iWJjy3dL4v+Mh6qRocsMQLTqYnwFqxZi
+	vxo/xeTgHZjOaBPPNaEFCI/9UeNBevdDVKBXe94vDT604KmuyR1V/jIsLH/1VLT44toa7c
+	7xOEzQjFm1Tf6HR99gmDrS6izV+UxHRdTgYsZzuLZ3InJgD40n7BWHuf0i9QpQ==
+To: Boris Brezillon <boris.brezillon@collabora.com>,
+	Steven Price <steven.price@arm.com>,
+	=?UTF-8?q?Adri=C3=A1n=20Larumbe?= <adrian.larumbe@collabora.com>
+Cc: Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Alexandre Mergnat <amergnat@baylibre.com>,
-	Kuninori Morimoto <kuninori.morimoto.gx@renesas.com>,
-	Peter Ujfalusi <peter.ujfalusi@linux.intel.com>,
-	Trevor Wu <trevor.wu@mediatek.com>,
-	linux-sound@vger.kernel.org,
+	dri-devel@lists.freedesktop.org,
+	devicetree@vger.kernel.org,
 	linux-mediatek@lists.infradead.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
 	=?UTF-8?q?Micha=C5=82=20Kope=C4=87?= <michal@nozomi.space>
-Subject: [PATCH 4/4] ASoC: hdmi-codec: Don't parse an empty ELD on startup
-Date: Sat,  3 Oct 2026 21:45:01 +0200
-Message-ID: <20261003194501.832558-5-michal@nozomi.space>
-In-Reply-To: <20261003194501.832558-1-michal@nozomi.space>
-References: <20261003194501.832558-1-michal@nozomi.space>
+Subject: [PATCH 1/3] dt-bindings: gpu: mali-bifrost: Add the MT8188 MFGCFG phandle
+Date: Sat,  3 Oct 2026 22:01:30 +0200
+Message-ID: <20261003200132.866240-2-michal@nozomi.space>
+In-Reply-To: <20261003200132.866240-1-michal@nozomi.space>
+References: <20261003200132.866240-1-michal@nozomi.space>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261003_124510_882408_34D72CA7 
-X-CRM114-Status: GOOD (  10.11  )
+X-CRM114-CacheID: sfid-20261003_130139_745523_F6202A4F 
+X-CRM114-Status: GOOD (  10.19  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,41 +78,57 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-A bridge's get_eld() returns an all-zero ELD when no sink is connected.
-hdmi_codec_startup() parses it unconditionally, so every open of a
-disconnected HDMI/DP PCM logs:
+On MT8188 the GPU timestamp counter only counts once a register in the
+MFG configuration block routes the SoC system timer to it, and the
+setting is lost whenever the GPU power domain is turned off. The GPU
+driver has to restore it on every power-up, so it needs a reference to
+that block.
 
-  hdmi-audio-codec: HDMI: Unknown ELD version 0
-
-Skip parsing when the ELD is empty and clear the previously parsed
-copy instead. The ELD hw constraint already falls back to basic stereo
-rates for an empty ELD, so stream setup is unchanged. plugged_cb()
-likewise treats a parse failure as debug-only.
+Add an optional mediatek,mfgcfg phandle. Allow it on MT8370 as well,
+which shares the GPU and the MFG block with MT8188 and its GPU node in
+mt8188.dtsi. It is optional so that existing devicetrees stay valid;
+without it the timestamp counter reads zero, as before.
 
 Signed-off-by: Michał Kopeć <michal@nozomi.space>
 ---
- sound/soc/codecs/hdmi-codec.c | 8 ++++++--
- 1 file changed, 6 insertions(+), 2 deletions(-)
+ .../bindings/gpu/arm,mali-bifrost.yaml          | 17 +++++++++++++++++
+ 1 file changed, 17 insertions(+)
 
-diff --git a/sound/soc/codecs/hdmi-codec.c b/sound/soc/codecs/hdmi-codec.c
-index 7aa50c5bd3df8..0e1e532dfc634 100644
---- a/sound/soc/codecs/hdmi-codec.c
-+++ b/sound/soc/codecs/hdmi-codec.c
-@@ -475,8 +475,12 @@ static int hdmi_codec_startup(struct snd_pcm_substream *substream,
- 		if (ret)
- 			return ret;
+diff --git a/Documentation/devicetree/bindings/gpu/arm,mali-bifrost.yaml b/Documentation/devicetree/bindings/gpu/arm,mali-bifrost.yaml
+index 9db9f84ad964b..08c1c22a270cb 100644
+--- a/Documentation/devicetree/bindings/gpu/arm,mali-bifrost.yaml
++++ b/Documentation/devicetree/bindings/gpu/arm,mali-bifrost.yaml
+@@ -122,6 +122,12 @@ properties:
+   nvmem-cells:
+     maxItems: 1
  
--		snd_parse_eld(dai->dev, &hcp->eld_parsed,
--			      hcp->eld, sizeof(hcp->eld));
-+		/* An empty ELD means no sink is connected; nothing to parse. */
-+		if (hcp->eld[0])
-+			snd_parse_eld(dai->dev, &hcp->eld_parsed,
-+				      hcp->eld, sizeof(hcp->eld));
-+		else
-+			memset(&hcp->eld_parsed, 0, sizeof(hcp->eld_parsed));
- 
- 		ret = snd_pcm_hw_constraint_eld(substream->runtime, hcp->eld);
- 		if (ret)
++  mediatek,mfgcfg:
++    $ref: /schemas/types.yaml#/definitions/phandle
++    description:
++      Phandle to the MFG configuration block, which routes the SoC system
++      timer to the GPU timestamp counter.
++
+ required:
+   - compatible
+   - reg
+@@ -226,6 +232,17 @@ allOf:
+       required:
+         - power-domains
+         - power-domain-names
++  - if:
++      properties:
++        compatible:
++          not:
++            contains:
++              enum:
++                - mediatek,mt8188-mali
++                - mediatek,mt8370-mali
++    then:
++      properties:
++        mediatek,mfgcfg: false
+   - if:
+       properties:
+         compatible:
 -- 
 2.55.0
 
