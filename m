@@ -4,63 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8A639CA5FDD
-	for <linux-mediatek@archiver.kernel.org>; Sat,  3 Oct 2026 10:25:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 96453CA5FC1
+	for <linux-mediatek@archiver.kernel.org>; Sat,  3 Oct 2026 12:25:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Message-ID:Date
-	:Cc:To:From:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=vXMtAL44iVcAA9WhOxwAITTnVgekcVqTaNx1U8S7snU=; b=qsZicVOPHbP24dr0zHVEqqNwlC
-	+zoNNmUNDlJKp3uJDoNELVaK0rdP+m/2W4gdfoWF8F4MOM22wxe4TwlrVKVwuRmxiRwJnfeeaV/tA
-	yLwyQ47FuKBF3oYvO2n0zKwtrmlG06bbTm+5XFkcw+TQImMySUBL8p69mwOXB5gYvcc3jx2Z5HXGX
-	FN2aUmwGhxHi6Zga2t9ycz6hDVU/9xdl8Iv15UNq5Kt/Yh28lr8L92rKiMVrCeXB2ewBA9uCSlHT1
-	hE1GOQVsO5j1Otr+nBF5zDeQkW5Nw7pQ8z9Trk/z/FaHnVrAVQ8tsSMIIRMzZ2TW7NwDUQd/keJ86
-	opVtMQmQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-ID:Date:Subject:To:From:Reply-To:Cc:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=0ZbbJm+lfh2Wh0Z0ij1lckp1wazeBCFcbooFUg1LvwM=; b=gJZxzX84MQGzs/qULIdmNryjaI
+	iRGF+5Ox2R9xtyqO/+LUQX/zVbKp7J3F3RtvJmZ/DNbQ9NtqEHAA84sg4h3IQY/x1owcdqHWnrJB2
+	u6w2YR0EouaFM5HzzJB1YqOxRISlvnuS1YsMBTCg4JviKXi/gq7mcTQe3Ynh873QNukpFHECESX19
+	RF+8QM/siric5+tk7d3nm3v0dqCPmlSo1l8GtYCq/hPwnyJMRD7VJ4g4ilK71vYVn5POR3fNjnStx
+	CY7kQrut20ENtj/wkUh4P7ABYoTqfWNkOYbDykmUc9ssjZ1CYioNJCjYUKZJZHhcMfD7OOqVDulGT
+	0PlHbQHg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xCwvh-0000000DMZK-0CtE;
-	Sat, 03 Oct 2026 10:25:21 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1xCynw-0000000DUUA-3OZq;
+	Sat, 03 Oct 2026 12:25:29 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xCwvf-0000000DMYS-0VqX;
-	Sat, 03 Oct 2026 10:25:19 +0000
+	id 1xCynw-0000000DUU4-0lRN
+	for linux-mediatek@lists.infradead.org;
+	Sat, 03 Oct 2026 12:25:28 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 37A4960A56;
-	Sat,  3 Oct 2026 10:25:18 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id C3F751F0089B;
-	Sat,  3 Oct 2026 10:25:16 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 89A0743A97;
+	Sat,  3 Oct 2026 12:25:27 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6891F1F0089B;
+	Sat,  3 Oct 2026 12:25:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1791023117;
-	bh=vXMtAL44iVcAA9WhOxwAITTnVgekcVqTaNx1U8S7snU=;
-	h=Subject:From:To:Cc:Date:In-Reply-To:References;
-	b=ObKK7SNvJ4iK/TmrgstzeGLH8c/hvCwqZD1SP+BrFfC/TwLDEx/D3pvSBA2br3NZg
-	 QylWtd/Dml3XK2wrm+x3CG4NsZ388JrygzvySxe1ouHnZA6yBTWMCxyAQ8h3UPPVwU
-	 /X9lkwxNa1hbIxBf00Jmpzf0N7XtF5hag4S0X2WAGC0A61AVKuagROT5uyIldsHofd
-	 NKILFHMZnCaoFnwVgjm3spo7MHjpuDexFsvsXfhonXEebVNtLDZaotfuhBq7sa9Lhg
-	 VUrts4oRZUjdEE3EQwETkySLZP5u1q+HXpK92Spl8tAi97lYFqT3R9t3fK0eEM6Gpt
-	 ZhkeZJUjj8mLA==
-Subject: Re: [PATCH] net: gro: mark frag_list GRO packets as SKB_GSO_DODGY
- when a list element exceeds gso_size
-From: netdev-bot+sashiko@kernel.org
-To: shiming.cheng@mediatek.com
-Cc: davem@davemloft.net, edumazet@google.com, kuba@kernel.org,
- pabeni@redhat.com, horms@kernel.org, matthias.bgg@gmail.com,
- angelogioacchino.delregno@collabora.com, willemb@google.com,
- daniel.zahka@gmail.com, alice@isovalent.com, sd@queasysnail.net,
- eilaimemedsnaimel@gmail.com, imv4bel@gmail.com, nbd@nbd.name,
- dsahern@kernel.org, netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- stable@vger.kernel.org, steffen.klassert@secunet.com, lena.wang@mediatek.com
-Date: Sat, 03 Oct 2026 10:25:16 +0000
-Message-ID: <179102311631.434549.14789093097225958254@kernel.org>
-In-Reply-To: <20260929100256.23192-1-shiming.cheng@mediatek.com>
-References: <20260929100256.23192-1-shiming.cheng@mediatek.com>
-X-sashiko-severity: Medium
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
+	s=k20260515; t=1791030327;
+	bh=0ZbbJm+lfh2Wh0Z0ij1lckp1wazeBCFcbooFUg1LvwM=;
+	h=From:To:Subject:Date;
+	b=ZyPDR5UmXxIZmEE9B2Te6W09Lcua4g6UAbX1SQ/0zCY1WC2yaNq4IgWwQw0VKJtVz
+	 h+dM2ruxa1YSD14zBhtC3WJ8zrICShY4O0aJOZ5InfUiOEt74kgucHvUnRbsJ9YpLq
+	 ETldFs8KfXEuZJJZzwesycdyS8XBrGvzT/+vZh3rWI20R+4d4DXfvaWA6OTzaa0ZIq
+	 BDbHcZfiA9ZZIaMkjUIqflTQWAeez05Tvea8nj3D8sItA6VrKqtfRprUqma0506hCD
+	 BLoB80zGlV07OX7wNs13JkDOddMV+ueGQ2EWKR+GAxGK6E9TolCNz1E7Li+ateb50U
+	 OX3Bd8PUVs2Hw==
+From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+To: David Airlie <airlied@linux.ie>,
+	Simona Vetter <simona@ffwll.ch>,
+	dri-devel@lists.freedesktop.org,
+	linux-mediatek@lists.infradead.org,
+	Luca Leonardo Scorcia <l.scorcia@gmail.com>
+Subject: [GIT PULL] mediatek drm next - 20261003
+Date: Sat,  3 Oct 2026 12:25:24 +0000
+Message-ID: <20261003122524.12578-1-chunkuang.hu@kernel.org>
+X-Mailer: git-send-email 2.53.0
 MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -75,141 +68,38 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Thank you for your contribution! Sashiko AI review found 2 potential
-issue(s) to consider.
+Hi, Dave & Sima:
 
-Critical: 0 · High: 0 · Medium: 2 · Low: 0
+This includes:
+1. Add support for the mt8167 display pipeline
 
-If you believe none of the issues are legitimate, please reply to each
-issue of Medium severity or higher and explain why the AI is wrong.
-If any of them are legitimate and you plan to respin, please let patchwork
-know by including "pw-bot: cr" as a separate line at the end of your reply
-(one such reply per series is enough).
+Regards,
+Chun-Kuang.
 
-- [Medium] The patch's premise does not hold on this tree, so the new
-  check in skb_gro_receive_list() (net/core/gro.c:262-264) can never…
-- [Medium] The Fixes: tag points at the wrong commit, and the message
-  leaves out the commit the patch depends on.
+The following changes since commit cee9395acd8043be0644b25c34bfa86623f2b935:
 
---
+  Linux 7.3-rc1 (2026-08-30 13:34:40 -0700)
 
-net: gro: mark frag_list GRO packets as SKB_GSO_DODGY when a list element exceeds gso_size
+are available in the Git repository at:
 
-This commit sets SKB_GSO_DODGY on the aggregated skb in
-skb_gro_receive_list() when an appended frag_list element is longer than
-skb_shinfo(p)->gso_size. The goal is to push LRO-produced aggregates
-onto the conservative segmentation path instead of skb_segment_list().
+  https://git.kernel.org/pub/scm/linux/kernel/git/chunkuang.hu/linux.git tags/mediatek-drm-next-20261003
 
-> Fixes: 3a1296a38d0c ("net: Support GRO/GSO fraglist chaining.")
-> Cc: <stable@vger.kernel.org>
+for you to fetch changes up to 265b9bea1a2f4c3361da82e922f9f08982d43978:
 
-[Severity: Medium]
-Is this the right Fixes: tag?
+  drm/mediatek: Add support for mt8167 Digital Parallel Interface (2026-10-03 12:08:26 +0000)
 
-3a1296a38d0c added the generic fraglist chaining that UDP uses. The
-condition tested here doesn't look reachable through UDP fraglist GRO.
-GSO UDP skbs are flushed in dev_gro_receive():
+----------------------------------------------------------------
+Mediatek DRM Next - 20261003
 
-net/core/gro.c:dev_gro_receive() {
-    ...
-		if (!skb_is_gso_tcp(skb) ||
-		    (skb_shinfo(skb)->gso_type & SKB_GSO_DODGY))
-			NAPI_GRO_CB(skb)->flush = 1;
-    ...
-}
+1. Add support for the mt8167 display pipeline
 
-Also, udp_gro_receive_segment() stops merging once an skb's ulen is larger
-than the head's, so no element can be longer than gso_size.
+----------------------------------------------------------------
+Luca Leonardo Scorcia (2):
+      dt-bindings: display: mediatek: dpi: Add compatible for mt8167
+      drm/mediatek: Add support for mt8167 Digital Parallel Interface
 
-An element longer than gso_size could only come from TCP fraglist GRO.
-That was added by 8d95dc474f85 ("net: add code for TCP fraglist GRO").
-The existing fix for this scenario, 66817a9794263c, also names
-8d95dc474f85.
-
-The DODGY bit set here only has an effect through the checks in
-tcp4_gso_segment() and tcp6_gso_segment():
-
-net/ipv4/tcp_offload.c:tcp4_gso_segment() {
-    ...
-		if ((skb_pagelen(skb) - th->doff * 4 == skb_shinfo(skb)->gso_size) &&
-		    !(skb_shinfo(skb)->gso_type & SKB_GSO_DODGY))
-			return __tcp4_gso_segment_list(skb, features);
-    ...
-}
-
-426ca15c7f6c ("net: fix segmentation of forwarding fraglist GRO") added
-the DODGY test there. 17bd3bd82f9f79 added the skb_pagelen() check next
-to it.
-
-With Cc: stable, the current tag would pull this patch into 5.10, 5.15,
-6.1 and 6.6. Those trees do not have TCP fraglist GRO, so the change
-does nothing there. Trees that have TCP fraglist GRO but not
-426ca15c7f6c never read the new bit either.
-
-Should the tag point at 8d95dc474f85 instead? Should the dependency on
-426ca15c7f6c be mentioned? The commit those stable trees seem to need is
-66817a9794263c.
-
-> diff --git a/net/core/gro.c b/net/core/gro.c
-> index 29b4d02bf5198..6c5b11b63d3b5 100644
-> --- a/net/core/gro.c
-> +++ b/net/core/gro.c
-> @@ -259,6 +259,9 @@ int skb_gro_receive_list(struct sk_buff *p, struct sk_buff *skb)
->  	skb_shinfo(p)->flags |= skb_shinfo(skb)->flags & SKBFL_SHARED_FRAG;
->  
->  	NAPI_GRO_CB(skb)->same_flow = 1;
-> +	/* frag_list element larger than gso_size (already coalesced before list-append) */
-> +	if (skb_shinfo(p)->gso_size && skb->len > skb_shinfo(p)->gso_size)
-> +		skb_shinfo(p)->gso_type |= SKB_GSO_DODGY;
-
-[Severity: Medium]
-Can this condition ever be true on the current tree?
-
-Commit 66817a9794263c ("net: gro: Fix nesting of TCP GSO SKBs in
-skb_gro_receive_list()") is already an ancestor of this patch. It covers
-the same HW-GRO case by keeping GSO skbs out of fraglist GRO:
-
-net/ipv4/tcp_offload.c:tcp4_check_fraglist_gro() {
-    ...
-		/* flist GRO applies to consecutive non-GSO skbs */
-		if (!skb_is_gso(skb) || !NAPI_GRO_CB(p)->is_flist) {
-    ...
-}
-
-tcp6_check_fraglist_gro() has the same guard. A GSO skb therefore ends
-up with is_flist == 0. tcp_gro_receive() then flushes before it calls
-skb_gro_receive_list():
-
-	flush |= NAPI_GRO_CB(p)->is_flist != NAPI_GRO_CB(skb)->is_flist;
-
-A GSO skb that starts a new flow also gets
-is_flist = !sk && !skb_is_gso(skb), which is 0.
-
-For non-GSO TCP skbs, tcp_gro_receive() also flushes on:
-
-	flush |= (len - 1) >= mss;
-
-Here mss is skb_shinfo(p)->gso_size and len is skb_gro_len(skb). After
-the skb_pull(skb, skb_gro_offset(skb)) in skb_gro_receive_list(), len
-equals skb->len. So skb->len > gso_size can't hold at this point.
-
-For UDP, dev_gro_receive() flushes GSO skbs, as well as skbs that already
-carry a frag_list:
-
-	NAPI_GRO_CB(skb)->flush = skb_has_frag_list(skb);
-
-udp_gro_receive_segment() also stops merging when
-ulen > udp_get_len_short(uh2).
-
-Is there a reproducer that still hits this after 66817a9794263c? If not,
-this looks like dead code, and the stable tag would send it in place of
-66817a9794263c. Should this patch be dropped in favor of the existing
-fix?
-
->  
->  	return 0;
->  }
-
--- 
-Sashiko AI review · https://netdev-ai.bots.linux.dev/sashiko/#/patchset/20260929100256.23192-1-shiming.cheng%40mediatek.com
+ .../bindings/display/mediatek/mediatek,dpi.yaml    |  1 +
+ drivers/gpu/drm/mediatek/mtk_dpi.c                 | 23 ++++++++++++++++++++++
+ drivers/gpu/drm/mediatek/mtk_drm_drv.c             |  2 ++
+ 3 files changed, 26 insertions(+)
 
