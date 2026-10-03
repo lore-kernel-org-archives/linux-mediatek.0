@@ -4,64 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 48979CA5FE4
-	for <linux-mediatek@archiver.kernel.org>; Sat,  3 Oct 2026 20:49:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 382A7CA5FDD
+	for <linux-mediatek@archiver.kernel.org>; Sat,  3 Oct 2026 22:38:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=1BuU7jC4i69chPY01RNYqlbIN9dzYHsP3HeLG1L5754=; b=Mfget0XiOk7GHv3zv/hRPjk9CK
-	iZWr8mE/XqK/KZf7pO1XN0+32ZLaXA/yauSY040RniZTMaFG77/RLsF93eXOu3TblFhIMfEB7Cxbe
-	U/+yzNFH2+S6haCzcIG1ZHbswbFH110F6/ycq2NSOXplt74iJrmS2M9PTHmskR9u2854SFdLSUJvg
-	GF+E6CgBR+M8LVzsZ5MCtKJFkkbpK1/aiJRc67eUwzffS1hkFMTR8ApVFOrqyp223n+Ryhfkft146
-	qh2fel2VSj72gx6dWMmmdD90k7gzv8BsLyNaS4aoW0m9+eyucfH6UNbGiXuv4VuWr3b3DFkGm/Mla
-	V2zMczsw==;
+	bh=xO5R81dRFmvXP+oBvrJJLiArFPxToNNZBXws0YgONPU=; b=zit0iZmJIl8+UzQWr3BobNwb3q
+	U5HzMlR7/58ppFWHTprgci7z5/Z3wPSVqkbNjofAUaGywNPMRbrexZ8QvH/foEmZH25PEL1fjDdS/
+	QDETZb4JqajWuin1R1jzPhxY1esaxFrRE40npUWR6OkFHKG4kNt3wWiH1UTh9QiKf/18E18SjT3ap
+	/whqAS0Kn5AmCrtrfchhFb4VeWsRTiXxGwYLaKJjId2tzrBMkjJH/vtIOR80lwcAJxTD0gcdcdF+i
+	iG1DI3dBKBL0ld4YYk/M55gkvj7xXMxOYXG8oupJa5DES1eOxUrlxMgn8tVw2tg9L76H/Gd2KuDq7
+	QF30IKwA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xD6g1-0000000E25r-1fW1;
-	Sat, 03 Oct 2026 20:49:49 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1xD8NX-0000000E7xj-3FrH;
+	Sat, 03 Oct 2026 22:38:51 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xD6fz-0000000E25J-29xD;
-	Sat, 03 Oct 2026 20:49:47 +0000
+	id 1xD8NW-0000000E7x9-3eBx;
+	Sat, 03 Oct 2026 22:38:50 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id D17114027E;
-	Sat,  3 Oct 2026 20:49:46 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7D9AA1F0089B;
-	Sat,  3 Oct 2026 20:49:43 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id F257660214;
+	Sat,  3 Oct 2026 22:38:49 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 898EF1F0089C;
+	Sat,  3 Oct 2026 22:38:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1791060586;
-	bh=1BuU7jC4i69chPY01RNYqlbIN9dzYHsP3HeLG1L5754=;
-	h=From:To:Cc:In-Reply-To:References:Subject:Date;
-	b=GM3ziYP9DJpdpqyZUdsiOItfTiwlDIV53YabQDxNKLKY6JpkOms/6aC9WNsXAc85A
-	 ijv6PbGX04i93Vu8W0mWkMuzDrJpy+A1k58fCuYuwqbgsxIMrZQ64rlQGukUtbZrnX
-	 KX1mUDuQ2BNtOKdU5C1ZsI5QhzeGYH0C8cQbVQrUur3uMLkDBzcotnk4sdPuo7GZkl
-	 HrJs6d9bGceDMMIuCx2eJ/5UaYb2NyYfnodkBJ6lF/tChW7qqXp+Fugy5vS58zJQeu
-	 plRpQUFpk709ZQbPlv805TmwWB2rSIGtr3yAkC/YMZlXzyLErCI3W5um9I88z1yL2E
-	 e/EYllVn/5DLA==
-From: Vinod Koul <vkoul@kernel.org>
-To: kernel@collabora.com, Chunfeng Yun <chunfeng.yun@mediatek.com>, 
- Neil Armstrong <neil.armstrong@linaro.org>, Rob Herring <robh@kernel.org>, 
- Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Julien Massot <julien.massot@collabora.com>
-Cc: linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, linux-phy@lists.infradead.org, 
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org
-In-Reply-To: <20260826-mtk-usb2-repeater-usb2-v1-0-e8e48e2fd6d8@collabora.com>
-References: <20260826-mtk-usb2-repeater-usb2-v1-0-e8e48e2fd6d8@collabora.com>
-Subject: Re: [PATCH 0/2] phy: mediatek: xsphy: add eUSB2 repeater support
- for USB2 ports
-Message-Id: <179106058316.240943.4391434773392918237.b4-ty@kernel.org>
-Date: Sat, 03 Oct 2026 22:49:43 +0200
+	s=k20260515; t=1791067129;
+	bh=xO5R81dRFmvXP+oBvrJJLiArFPxToNNZBXws0YgONPU=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References;
+	b=a8gsQoBhJC5EYlxZ27z608xFzxwPohUilz2EuP2ADNGIfR8h3+S2DcTuy5XPEmdOT
+	 7RHHGx+t9S4U6X6No7yx2d/jgaeVJ36MhyypFTYXDgK0D+lHqLzwyvPGPa6hg8uFmd
+	 YwCWjdIZY0Ip+gSgouzHbEMQ4SMeRpCyZuZ9s4ofNBUYPeGodVKFvmHWDSDbHC2xm1
+	 VFBwuM8JECPeh324dFaO9qLdx+2hjEJLonsWjTrGQR/EI3QrhLKhcCM6SMkLme+N/d
+	 uFbZ/W99f+oU/Z9ixdyc0LHchzEeZomG5lQ2Jqd6JSbrmj2s9nbeXMxE2xP6Q3H8Dm
+	 +BhzzRg5YecvA==
+From: Sasha Levin <sashal@kernel.org>
+To: stable@vger.kernel.org
+Cc: Sasha Levin <sashal@kernel.org>,
+	Artem Dinaburg <artem@trailofbits.com>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	Dan Carpenter <dan.carpenter@linaro.org>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	CK Hu <ck.hu@mediatek.com>,
+	Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+	Philipp Zabel <p.zabel@pengutronix.de>,
+	David Airlie <airlied@gmail.com>,
+	Daniel Vetter <daniel@ffwll.ch>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	dri-devel@lists.freedesktop.org,
+	linux-mediatek@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	Simona Vetter <simona@ffwll.ch>,
+	jason-jh.lin@mediatek.com
+Subject: Re: [PATCH 6.1.y] drm/mediatek: Fix potential NULL dereference in mtk_crtc_destroy()
+Date: Sat,  3 Oct 2026 18:33:03 -0400
+Message-ID: <2026-10-03-1-daily-reply-0022-re-mediatek-crtc-destroy-null-6-1@kernel.org>
+X-Mailer: git-send-email 2.53.0
+In-Reply-To: <20261002194413.20810-1-artem@trailofbits.com>
+References: <20261002194413.20810-1-artem@trailofbits.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-X-Mailer: b4 0.14.3
+Content-Transfer-Encoding: 8bit
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,31 +82,11 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+> [ Upstream commit 4018651ba5c409034149f297d3dd3328b91561fd ]
 
-On Wed, 26 Aug 2026 14:38:34 +0200, Julien Massot wrote:
-> Some USB2 PHY ports are connected to an external eUSB2 repeater chip
-> that sits between the PHY and the USB connector. To support such
-> configurations, this series adds an optional phys property to the
-> MediaTek xsphy port sub-node and integrates the repeater into the USB2
-> PHY init, exit and mode handling.
-> 
-> The binding follows the same pattern as the Synopsys eUSB2 PHY, which
-> already uses a phys property at the sub-node level to reference an
-> external repeater. The driver change similarly manages the repeater PHY
-> alongside the MediaTek USB2 PHY.
-> 
-> [...]
+Queued for 6.1, thanks.
 
-Applied, thanks!
-
-[1/2] dt-bindings: phy: mediatek,xsphy: add optional repeater phys property
-      commit: e95b476302852ac1fb5bffaa824ac2cd35178e58
-[2/2] phy: mediatek: xsphy: add optional repeater support for USB2 ports
-      commit: bda1af7b177a94f6d169f0b359c61e7a7d39a36e
-
-Best regards,
 -- 
-~Vinod
-
-
+Thanks,
+Sasha
 
