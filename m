@@ -4,56 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 96453CA5FC1
-	for <linux-mediatek@archiver.kernel.org>; Sat,  3 Oct 2026 12:25:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D0EB0CA5FEC
+	for <linux-mediatek@archiver.kernel.org>; Sat,  3 Oct 2026 14:12:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:To:From:Reply-To:Cc:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=0ZbbJm+lfh2Wh0Z0ij1lckp1wazeBCFcbooFUg1LvwM=; b=gJZxzX84MQGzs/qULIdmNryjaI
-	iRGF+5Ox2R9xtyqO/+LUQX/zVbKp7J3F3RtvJmZ/DNbQ9NtqEHAA84sg4h3IQY/x1owcdqHWnrJB2
-	u6w2YR0EouaFM5HzzJB1YqOxRISlvnuS1YsMBTCg4JviKXi/gq7mcTQe3Ynh873QNukpFHECESX19
-	RF+8QM/siric5+tk7d3nm3v0dqCPmlSo1l8GtYCq/hPwnyJMRD7VJ4g4ilK71vYVn5POR3fNjnStx
-	CY7kQrut20ENtj/wkUh4P7ABYoTqfWNkOYbDykmUc9ssjZ1CYioNJCjYUKZJZHhcMfD7OOqVDulGT
-	0PlHbQHg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:Message-Id:Date:MIME-Version:Subject:References:
+	In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=p1iE9IJuA9vzahQdkL4uD4ZoYz14exJJjYG0KNLd2AU=; b=xAqhVvN+fEKao8aRW96IRqGXaH
+	O0jQlXXTe4saeD7D8SpjpJX44vMvWVvANWHMFRUL9g8XF/QJ/0mmqL0cCGS3luUdL/hrqQ46mKiWo
+	WMDRc/87rF/5E9XrxA7tGXQFUWD2Qt4fF8w6mUP2PiUr++lmOoB6j4iLBXEhDkUQZCSv+hZ7QvTDg
+	wPFVQdvf1M+Hhyea0s5DpWnwZyYJGxNHwatcRMZZcffUTtZgg5fXQaGHMe6CPApErYnM4TtGrvRj4
+	FCFruRnw0uT5gzW0u18QXFKw+c+5y4ENE2Ccewxe1hV9XtZl17oxX8kCphfsmp71JZxmAekP520KY
+	9DjgSTIg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xCynw-0000000DUUA-3OZq;
-	Sat, 03 Oct 2026 12:25:29 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1xD0TK-0000000DaEP-1SMP;
+	Sat, 03 Oct 2026 14:12:18 +0000
+Received: from forward500a.mail.yandex.net ([178.154.239.80])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xCynw-0000000DUU4-0lRN
+	id 1xD0TG-0000000DaDR-04JJ
 	for linux-mediatek@lists.infradead.org;
-	Sat, 03 Oct 2026 12:25:28 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id 89A0743A97;
-	Sat,  3 Oct 2026 12:25:27 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6891F1F0089B;
-	Sat,  3 Oct 2026 12:25:26 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1791030327;
-	bh=0ZbbJm+lfh2Wh0Z0ij1lckp1wazeBCFcbooFUg1LvwM=;
-	h=From:To:Subject:Date;
-	b=ZyPDR5UmXxIZmEE9B2Te6W09Lcua4g6UAbX1SQ/0zCY1WC2yaNq4IgWwQw0VKJtVz
-	 h+dM2ruxa1YSD14zBhtC3WJ8zrICShY4O0aJOZ5InfUiOEt74kgucHvUnRbsJ9YpLq
-	 ETldFs8KfXEuZJJZzwesycdyS8XBrGvzT/+vZh3rWI20R+4d4DXfvaWA6OTzaa0ZIq
-	 BDbHcZfiA9ZZIaMkjUIqflTQWAeez05Tvea8nj3D8sItA6VrKqtfRprUqma0506hCD
-	 BLoB80zGlV07OX7wNs13JkDOddMV+ueGQ2EWKR+GAxGK6E9TolCNz1E7Li+ateb50U
-	 OX3Bd8PUVs2Hw==
-From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
-To: David Airlie <airlied@linux.ie>,
-	Simona Vetter <simona@ffwll.ch>,
-	dri-devel@lists.freedesktop.org,
-	linux-mediatek@lists.infradead.org,
-	Luca Leonardo Scorcia <l.scorcia@gmail.com>
-Subject: [GIT PULL] mediatek drm next - 20261003
-Date: Sat,  3 Oct 2026 12:25:24 +0000
-Message-ID: <20261003122524.12578-1-chunkuang.hu@kernel.org>
-X-Mailer: git-send-email 2.53.0
+	Sat, 03 Oct 2026 14:12:16 +0000
+Received: from mail-nwsmtp-mxback-production-main-813.iva.yp-c.yandex.net (mail-nwsmtp-mxback-production-main-813.iva.yp-c.yandex.net [IPv6:2a02:6b8:c0c:5a80:0:640:5f14:0])
+	by forward500a.mail.yandex.net (postfix) with ESMTPS id 0EDB4C1A3E;
+	Sat, 03 Oct 2026 17:12:03 +0300 (MSK)
+Received: from mail.yandex.ru (2a02:6b8:c0c:5c14:0:640:a57b:0 [2a02:6b8:c0c:5c14:0:640:a57b:0])
+	by mail-nwsmtp-mxback-production-main-813.iva.yp-c.yandex.net (mxback) with HTTPS id ZBnmCa5JU0U0-uaRxgpvu;
+	Sat, 03 Oct 2026 17:12:02 +0300
+X-Yandex-Fwd: 1
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=0upti.me; s=mail;
+	t=1791036722; bh=p1iE9IJuA9vzahQdkL4uD4ZoYz14exJJjYG0KNLd2AU=;
+	h=Message-Id:References:Date:Cc:Subject:In-Reply-To:To:From;
+	b=GQdg3GxMKnjDtrIjZh0QrCu5kM1xhINdJesJyy4yrZFahZoGEghildQm5SzcpOyF8
+	 eolunvKhE4ANInoHCfjW/QEx/wGRIQzTHNviK19rFLiKc8JU7gl4zuPOFlGP1IHX1a
+	 eORP3jrRt73DwL9U8oIouuXCGiIrB0GOIvGUrIWU=
+Authentication-Results: mail-nwsmtp-mxback-production-main-813.iva.yp-c.yandex.net; dkim=pass header.i=@0upti.me
+Received: by mail-sendbernar-production-main-60.iva.yp-c.yandex.net (sendbernar) with HTTPS id ee00c04c1aa76ab2be9247f83e4d4341;
+	Sat, 03 Oct 2026 17:12:01 +0300
+From: Ilya K <me@0upti.me>
+To: Ben Greear <greearb@candelatech.com>
+Cc: linux-wireless@vger.kernel.org,
+	netdev@vger.kernel.org,
+	linux-mediatek@lists.infradead.org
+In-Reply-To: <211851789913261@df1900ea-d467-4ed7-a7f1-de68a4c3e6dd>
+References: <1767631788532094@64c4e675-cd08-4a74-816f-886742f9bfcd> <529a79bc-dab7-aa41-00bd-c47ecbefaa00@candelatech.com> <471221788538289@323ca970-5bd2-4c6b-b52d-2b863a718615> <3acf531c-bcc7-412b-b3bb-665069260e46@candelatech.com> <2028561788553569@f088f4ec-f441-47a1-b7e4-75a1052aa4df> <2418461788691106@84aa39c5-f501-4e64-8418-6a8b6eb88e21> <eb405366-6574-4e4c-a89d-363751ed848b@candelatech.com> <4175721788798939@f00554c7-d809-471c-9bcf-78e5d8eceab4> <1556871789207706@7dc9deb3-4292-4932-8568-de9b411208d8> <1443771789748846@4a8ec5ae-80ed-44bc-b7d3-6bc660c90136> <211851789913261@df1900ea-d467-4ed7-a7f1-de68a4c3e6dd>
+Subject: Re:[bug] Triple whammy of mt7996e bugs on 7.2+
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+X-Mailer: Yamail [ http://yandex.ru ] 5.0
+Date: Sat, 03 Oct 2026 17:12:01 +0300
+Message-Id: <143991791036721@40be7595-980b-4665-ba66-1601e10a0899>
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20261003_071214_255360_4AB76307 
+X-CRM114-Status: UNSURE (   4.10  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -68,38 +75,5 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi, Dave & Sima:
-
-This includes:
-1. Add support for the mt8167 display pipeline
-
-Regards,
-Chun-Kuang.
-
-The following changes since commit cee9395acd8043be0644b25c34bfa86623f2b935:
-
-  Linux 7.3-rc1 (2026-08-30 13:34:40 -0700)
-
-are available in the Git repository at:
-
-  https://git.kernel.org/pub/scm/linux/kernel/git/chunkuang.hu/linux.git tags/mediatek-drm-next-20261003
-
-for you to fetch changes up to 265b9bea1a2f4c3361da82e922f9f08982d43978:
-
-  drm/mediatek: Add support for mt8167 Digital Parallel Interface (2026-10-03 12:08:26 +0000)
-
-----------------------------------------------------------------
-Mediatek DRM Next - 20261003
-
-1. Add support for the mt8167 display pipeline
-
-----------------------------------------------------------------
-Luca Leonardo Scorcia (2):
-      dt-bindings: display: mediatek: dpi: Add compatible for mt8167
-      drm/mediatek: Add support for mt8167 Digital Parallel Interface
-
- .../bindings/display/mediatek/mediatek,dpi.yaml    |  1 +
- drivers/gpu/drm/mediatek/mtk_dpi.c                 | 23 ++++++++++++++++++++++
- drivers/gpu/drm/mediatek/mtk_drm_drv.c             |  2 ++
- 3 files changed, 26 insertions(+)
+OK, so another update: my current branch which is basically 7.2.8 + bpi-r4 specific stuff + any patches from Ben's tree that touch net/wireless or mt76 code (http://github.com/K900/linux/tree/bpi-r4-728-ct) survived an entire week of no crashes, which is a very good sign. Unfortunately, it's still >500 commits with a total of +20k -2k lines of diff, so I'll have to go through it again and strip it down even more before I can have any idea of what is actually helping...
 
