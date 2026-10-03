@@ -4,58 +4,149 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4CD10CA5FC1
-	for <linux-mediatek@archiver.kernel.org>; Sat,  3 Oct 2026 04:56:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 766A0CA5FC1
+	for <linux-mediatek@archiver.kernel.org>; Sat,  3 Oct 2026 06:39:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:From:
-	To:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=niTaM0Ytht8ZXyLM0MwX4xCOD3K0NhKmQijvDp7U30k=; b=ktzDy7bKUZ1G66Drwnr8VnX0B2
-	Rgyw5soTBZ4TPh8foTcPUvCb2QgZ2lpJbGICsmd+y8MUhvlQJgvlVCW5jCrEp81gHA3Ob3LsTW3xp
-	sFlpr6waS454bWK4A7S7o6WXlUIdoqpL3v8w8nCdXIId+265/INceobggSUDmwXupJgfm+RF7hwoT
-	9RW1q6SOp218q+6S3y+5PVB7/iw6W2duAeALTkeFGK9Ccf/gzG/1JEKKyQko+rSlWTdrMw0D8860t
-	B50W3GtZKxSdIpvWRtZfDfLfxWLZJwLsX4b9GdNp8c/56pDieUv8Z7u5kUUwkKhw2w9UQtKSwDf/f
-	0nzrD0SA==;
+	Content-Type:MIME-Version:References:In-Reply-To:Subject:Cc:To:From:
+	Message-ID:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=5h0oB/zkwwpgZk+rc+sqnXw4bOmMSkziWKlHnKZN85o=; b=mogl7ctmVhMNw8JAn5NqNwnv3l
+	iEcYM27z7/O8p+nbNcCBZfkSmtUXg1pN9CGkZHoSiqV3jlQcfUQ65kXR4IN7ivOssUQ/jxIJO4Sds
+	7JfC+z1LzX3cNnP8Bgk76h0o1a4c/kguX/s/4WrQQNSXaht1rVjWEmOW9+wLqLwJg9cIrx8P4YQEa
+	LqadJtNZfhFrDXrvPs9A9wvQOV1EHt4sugw87M7HcP6GjboVFHBaDJV9AbZVhIK2qONElX6KLwEnI
+	fC6fHkYV4XY+HjVrgfNomj6UVxGhk+K+C0hGBfW7UaiTB2WY4qR0faBRrp0tUbX9IhU4YFCtpeS9x
+	u13cIrnQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xCrn3-0000000D36Y-3Ddp;
-	Sat, 03 Oct 2026 04:56:05 +0000
-Received: from mail-106103.protonmail.ch ([79.135.106.103])
+	id 1xCtPA-0000000D5h4-07pY;
+	Sat, 03 Oct 2026 06:39:32 +0000
+Received: from smtp-out1.suse.de ([195.135.223.130])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xCrn0-0000000D35p-2koh
-	for linux-mediatek@lists.infradead.org;
-	Sat, 03 Oct 2026 04:56:04 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=protonmail.com;
-	s=protonmail3; t=1791003357; x=1791262557;
-	bh=niTaM0Ytht8ZXyLM0MwX4xCOD3K0NhKmQijvDp7U30k=;
-	h=Date:To:From:Cc:Subject:Message-ID:In-Reply-To:References:
-	 Feedback-ID:From:To:Cc:Date:Subject:Reply-To:Feedback-ID:
-	 Message-ID:BIMI-Selector;
-	b=oC1P9QLpD3Zd2SCU4d1B25i9piQKAaoKWQ/oxpO+Rg2RvxKPonfEs9V+XbWl01k6/
-	 j7PQ+pActwi2ReECCamLXcYG2jv6gVN9PCXfGy+P7NLFi4xxqTjW2j0M2ncmEgA4NP
-	 QJLRPP2tllXA6GbNRZ3V+9kYm+Ln/jUYD11cc40hAzE3xNT3+/9p/STZQ/KQtS0xFA
-	 uR677LGFlGGrvF/iEfWmTlHci8/TueBVMUJUXnZ0QK18477XjDr/kCCaMwR1CgSZJm
-	 LpPYXi9mN+XNHjW4gVtgDf3+5XlfOSJ4e4quQaRX6zV9sw+S+CYXTW1byyKMYtZ6iz
-	 mYc1bPZciPW1A==
-Date: Sat, 03 Oct 2026 04:55:53 +0000
-To: Felix Fietkau <nbd@nbd.name>, linux-wireless@vger.kernel.org
-From: untilscour <untilscour@protonmail.com>
-Cc: Lorenzo Bianconi <lorenzo@kernel.org>, Ryder Lee <ryder.lee@mediatek.com>, Shayne Chen <shayne.chen@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, untilscour@protonmail.com
-Subject: Re: [PATCH v5] wifi: mt76: mt7996: add thermal zone device registration
-Message-ID: <9ZfPhagV0EDMq7if1ebyvRXfPIHZvPjlbWFuqTK1OuoqpcNj1AQCFwYy8vTQf8w8De3Vx3pFCydfiEOcAmx7ZqC9q5lrBqoepqoip8FyuaE=@protonmail.com>
-In-Reply-To: <20261003-mt7996-thermal-zone-v5-1-d7cf8820d187@protonmail.com>
-References: <20261003-mt7996-thermal-zone-v5-1-d7cf8820d187@protonmail.com>
-Feedback-ID: 184418679:user:proton
-X-Pm-Message-ID: 98bac8e5a6c23d3e373790a3d61e63916fe1e3dd
-MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
+	id 1xCtP6-0000000D5ga-3VQQ;
+	Sat, 03 Oct 2026 06:39:30 +0000
+Received: from imap1.dmz-prg2.suse.org (imap1.dmz-prg2.suse.org [IPv6:2a07:de40:b281:104:10:150:64:97])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	by smtp-out1.suse.de (Postfix) with ESMTPS id 3BD8B21B02;
+	Sat,  3 Oct 2026 06:39:18 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
+	t=1791009562; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	 mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=5h0oB/zkwwpgZk+rc+sqnXw4bOmMSkziWKlHnKZN85o=;
+	b=KAyDF+XOrg9b8Wr9+kJ3zqOXm697eHGDQ8fFCe2lLQAIz6Leit+XdOVJJRYQpxre9A0xdp
+	U4c86F8J5T5v4yq8+5b6TdkR68oYXf/eAsTpP531QDjY9bXVisFLPFiryWkbuBNGwkWk/f
+	uQKQCCGXmXWGXyD6WZsqqwwbHbvePP0=
+DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
+	s=susede2_ed25519; t=1791009562;
+	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	 mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=5h0oB/zkwwpgZk+rc+sqnXw4bOmMSkziWKlHnKZN85o=;
+	b=kF4JtyU/3LOEHjQBfY7qE10jZI8z+EVLGwuqqgtLmnYZJktULZw7w9cImkxBgpjWpzTEyI
+	zmTHianPnkANq8Aw==
+Authentication-Results: smtp-out1.suse.de;
+	dkim=pass header.d=suse.de header.s=susede2_rsa header.b=T+DZ6MhP;
+	dkim=pass header.d=suse.de header.s=susede2_ed25519 header.b=6FJAh52+
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
+	t=1791009558; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	 mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=5h0oB/zkwwpgZk+rc+sqnXw4bOmMSkziWKlHnKZN85o=;
+	b=T+DZ6MhP5XYLdPUuAzT/xpVwqesWts2vKCzkSASzMUEDZZNJmO+s13tJYxIrT4ay7cyC2j
+	aMU4Z3xemjSb8p1t533vRHJLubmqQeCwrUglWiwscy7fzD7iO/ypx2LZ8FxscM9EfsBGcD
+	0caU2R5OFvVSCVh4UGp0k0Fv/Ycp2kU=
+DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
+	s=susede2_ed25519; t=1791009558;
+	h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+	 mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=5h0oB/zkwwpgZk+rc+sqnXw4bOmMSkziWKlHnKZN85o=;
+	b=6FJAh52+hKBECMpEzhZhDMl+zgwrTQjPGj9lw5zb6aRkUV1o9Ra+cPXjJmyDLdSgLiz/oI
+	1ASo8i0FYZjIp+DQ==
+Received: from imap1.dmz-prg2.suse.org (localhost [127.0.0.1])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	by imap1.dmz-prg2.suse.org (Postfix) with ESMTPS id 1C27813707;
+	Sat,  3 Oct 2026 06:39:17 +0000 (UTC)
+Received: from dovecot-director2.suse.de ([2a07:de40:b281:106:10:150:64:167])
+	by imap1.dmz-prg2.suse.org with ESMTPSA
+	id MU+pNxSjwGqQCwAAD6G6ig
+	(envelope-from <tiwai@suse.de>); Sat, 03 Oct 2026 06:39:17 +0000
+Date: Sat, 03 Oct 2026 08:39:16 +0200
+Message-ID: <87wlrzxp7v.wl-tiwai@suse.de>
+From: Takashi Iwai <tiwai@suse.de>
+To: James Calligeros <jcalligeros99@gmail.com>
+Cc: Takashi Iwai <tiwai@suse.de>,	Martin =?ISO-8859-2?Q?Povi=B9er?=
+ <povik+lin@cutebit.org>,	Liam Girdwood <lgirdwood@gmail.com>,	Mark Brown
+ <broonie@kernel.org>,	Rob Herring <robh@kernel.org>,	Krzysztof Kozlowski
+ <krzk+dt@kernel.org>,	Conor Dooley <conor+dt@kernel.org>,	Sven Peter
+ <sven@kernel.org>,	Janne Grunau <j@jannau.net>,	Neal Gompa
+ <neal@gompa.dev>,	David Rhodes <david.rhodes@cirrus.com>,	Richard
+ Fitzgerald <rf@opensource.cirrus.com>,	Jaroslav Kysela <perex@perex.cz>,
+	Takashi Iwai <tiwai@suse.com>,	Ulf Hansson <ulfh@kernel.org>,	Amit Kucheria
+ <amit.kucheria@linaro.org>,	"Rafael J. Wysocki"
+ <rafael.j.wysocki@intel.com>,	Lars-Peter Clausen <lars@metafoo.de>,	Vinod
+ Koul <vkoul@kernel.org>,	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Shenghao Ding <shenghao-ding@ti.com>,	Kevin Lu <kevin-lu@ti.com>,	Baojun Xu
+ <baojun.xu@ti.com>,	Sen Wang <sen@ti.com>,	James Schulman
+ <james.schulman@cirrus.com>,	asahi@lists.linux.dev,
+	linux-sound@vger.kernel.org,	devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,	linux-arm-kernel@lists.infradead.org,
+	patches@opensource.cirrus.com,	linux-mediatek@lists.infradead.org,	Hector
+ Martin <marcan@marcan.st>
+Subject: Re: [PATCH 08/28] ALSA: control: Add kcontrol callbacks for lock/unlock
+In-Reply-To: <u9VW29vaRPGENsSTq9RHUg@gmail.com>
+References: <20260920-macaudio-v1-0-741cc20a74e5@gmail.com>
+	<20260920-macaudio-v1-8-741cc20a74e5@gmail.com>
+	<878q4k2xl0.wl-tiwai@suse.de>
+	<u9VW29vaRPGENsSTq9RHUg@gmail.com>
+User-Agent: Wanderlust/2.15.9 (Almost Unreal) Emacs/30.2 Mule/6.0
+MIME-Version: 1.0 (generated by SEMI-EPG 1.14.7 - "Harue")
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-Rspamd-Server: rspamd2.dmz-prg2.suse.org
+X-Rspamd-Queue-Id: 3BD8B21B02
+X-Rspamd-Action: no action
+X-Spamd-Result: default: False [-2.01 / 50.00];
+	BAYES_HAM(-3.00)[99.99%];
+	SUSPICIOUS_RECIPS(1.50)[];
+	MID_CONTAINS_FROM(1.00)[];
+	NEURAL_HAM_LONG(-1.00)[-1.000];
+	R_DKIM_ALLOW(-0.20)[suse.de:s=susede2_rsa,suse.de:s=susede2_ed25519];
+	NEURAL_HAM_SHORT(-0.20)[-1.000];
+	MIME_GOOD(-0.10)[text/plain];
+	MX_GOOD(-0.01)[];
+	MIME_TRACE(0.00)[0:+];
+	FREEMAIL_TO(0.00)[gmail.com];
+	DKIM_SIGNED(0.00)[suse.de:s=susede2_rsa,suse.de:s=susede2_ed25519];
+	TO_MATCH_ENVRCPT_ALL(0.00)[];
+	ARC_NA(0.00)[];
+	FREEMAIL_ENVRCPT(0.00)[gmail.com];
+	RCVD_TLS_ALL(0.00)[];
+	RCPT_COUNT_TWELVE(0.00)[35];
+	RCVD_COUNT_TWO(0.00)[2];
+	FROM_EQ_ENVFROM(0.00)[];
+	FROM_HAS_DN(0.00)[];
+	FREEMAIL_CC(0.00)[suse.de,cutebit.org,gmail.com,kernel.org,jannau.net,gompa.dev,cirrus.com,opensource.cirrus.com,perex.cz,suse.com,linaro.org,intel.com,metafoo.de,collabora.com,ti.com,lists.linux.dev,vger.kernel.org,lists.infradead.org,marcan.st];
+	DNSWL_BLOCKED(0.00)[2a07:de40:b281:106:10:150:64:167:received,2a07:de40:b281:104:10:150:64:97:from];
+	RCVD_VIA_SMTP_AUTH(0.00)[];
+	TAGGED_RCPT(0.00)[lin,dt];
+	DKIM_TRACE(0.00)[suse.de:+];
+	R_RATELIMIT(0.00)[to_ip_from(RLs9qncch5cpanyka9neihc978)];
+	TO_DN_SOME(0.00)[]
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261002_215602_855908_6B97930F 
-X-CRM114-Status: UNSURE (   3.64  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20261002_233929_027415_B481D4F9 
+X-CRM114-Status: GOOD (  25.84  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,19 +161,48 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello,
+On Sat, 03 Oct 2026 03:34:07 +0200,
+James Calligeros wrote:
+> 
+> On Tuesday, 29 September 2026 7:52:59 pm Australian Eastern Standard Time 
+> Takashi Iwai wrote:
+> > On Sun, 20 Sep 2026 06:53:47 +0200,
+> > 
+> > James Calligeros wrote:
+> > > From: Hector Martin <marcan@marcan.st>
+> > > 
+> > > This allows drivers to implement policy around locking/unlocking
+> > > controls, such as enforcing that a group of controls may only be locked
+> > > by the same process/file, and taking actions when the controls
+> > > lock/unlock (such as granting special access on lock and resetting
+> > > values on unlock).
+> > > 
+> > > This is, in particular, useful to implement volume safety controls, such
+> > > that only a particular process (that locks controls and completes a
+> > > handshake) may increase volumes above a given safe limit. It also allows
+> > > the volume to be automatically lowered if that process dies (which will
+> > > trigger an implicit unlock).
+> > > 
+> > > Signed-off-by: Hector Martin <marcan@marcan.st>
+> > > Signed-off-by: James Calligeros <jcalligeros99@gmail.com>
+> > 
+> > This doesn't sound like a good approach to me, and this looks rather
+> > irrelevant with the purpose of the series.
+> 
+> I'm not sure what you mean by it being irrelevant. A significant portion
+> of the machine driver is dedicated to implementing safety interlocks based
+> on the functionality added via this patch. It would be impossible to prevent
+> badly-behaving users{,pace} from defeating the safety guarantees made by
+> speakersafetyd (and thus permanently damaging the machine) without giving
+> speakersafetd exclusive ownership over the safety interlock kcontrol.
 
-Please ignore this v5 patch - I misunderstood the thermal sysfs API.
+Improving the lock/unlock itself can be an interesting idea (but we
+should do in a different way instead of blindly extending each kernel
+control ops).  OTOH, the whole implementation of the driver and the
+feature depending on that stuff sounds rather fragile.
 
-Sorry for the noise.
 
-However, the v4 patch [1],[2] still remains for consideration.
+thanks,
 
-Best regards,
-Ryan
-
-[1]: https://patch.msgid.link/20260811-mt7996-thermal-zone-v4-1-9ca715a8ae1=
-f@protonmail.com
-[2]: https://patchwork.kernel.org/project/linux-wireless/patch/20260811-mt7=
-996-thermal-zone-v4-1-9ca715a8ae1f@protonmail.com/
+Takashi
 
