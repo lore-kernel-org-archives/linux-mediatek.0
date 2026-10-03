@@ -4,41 +4,41 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4D932CA5FEC
-	for <linux-mediatek@archiver.kernel.org>; Sat,  3 Oct 2026 19:45:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6AB2ACA5FE4
+	for <linux-mediatek@archiver.kernel.org>; Sat,  3 Oct 2026 19:45:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:
 	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ElBWia5JS4/SUpc+pf3CM3tN4U00hfaycVh4BT6HqIY=; b=Y1ewBSF/IMFrzfdewpqhsKZLad
-	7ouAYfb4u1yFVHiArlbASNRd+D6iI8sQZcoWdui2VvoXIYkLKqYZhyws0vOPBY/nQ0oCPHIOrg+Jv
-	VQcDwp+Amp9ri/qT9NAxhbbYiqaJzbK8UWNosqMUE986PLKmnDdOuzrhw7xjEKHUGk3gj4LswFUzh
-	rfGyqfyXstPL84sdRZp/ErgIcZdyE9zoKbKUax81FpcdCefCUnP3Jti7jDbuNKiTtCOat/NwpkeOV
-	WPvr02hGGPjJTMR6C0nV4yaJQ5c/pzL4mUlIOi0LLTaPpCmTgX2vKhalheeOPkfR5VkPnRrhOfxWt
-	ypdzGh/A==;
+	bh=wgr4pHrZo2qwDF8ZFgFdxiB9TN8wC+wKv8BCpLbDH7E=; b=KwTDzn1U+jszw6qVBGr27ljmXv
+	r2VTZKpBreDQBJfRWNrQCBHGNt5O6WY7iqlBrdi4b2MXhghogJfMn4tA0LcFs8rFGg2tIXVpKfZlM
+	ICGCLK+DXwPC4WVBKxjwdBpijomEHCxPnWHrBv44NRYE2qmldkwKunxxsL1sYP9+/48nW9ak0Gws1
+	q401lEthACth3z6lyk6eGy5bU5jmSA7/pw5EMoGtb3GfZ3w97L9Jen19YpkilFynRZb9C4du0ybxM
+	VeAtyJU0tjQ8Lg1X4+LZikNbxUBUWt0zS4ZiQLRCERVTz2TAFFdOomvBL5rk5UPerXYr430B/DlN1
+	YmgyUV9Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xD5fX-0000000DxQt-1bTJ;
-	Sat, 03 Oct 2026 19:45:15 +0000
+	id 1xD5fZ-0000000DxSd-0rOE;
+	Sat, 03 Oct 2026 19:45:17 +0000
 Received: from mail.nozomi.space ([139.162.184.125])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xD5fR-0000000DxJo-465I;
+	id 1xD5fS-0000000DxKX-2p2w;
 	Sat, 03 Oct 2026 19:45:11 +0000
 From: =?UTF-8?q?Micha=C5=82=20Kope=C4=87?= <michal@nozomi.space>
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=nozomi.space;
-	s=mail; t=1791056708;
+	s=mail; t=1791056709;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=ElBWia5JS4/SUpc+pf3CM3tN4U00hfaycVh4BT6HqIY=;
-	b=UgcKNCTOuCw8LJyD0onRpa/oupvCUmsEBzixnV3SGgApXsXwHN+dAmNE0kQyzBILLgedKV
-	23j+YH1hcAJS44e8b3yclgAFSgAdqibeLIH/jfbR66DovW5mStRf3QCpdtZzrGPXyiFV8v
-	5AtcGH6UOLfvxdWA+haU4uixLSGKKt5qv5QzbXIvdFyKyWPrEanXLCWiFlUj7061yEZks4
-	9aE0qR8eGbsmllBaLBEVx51MTBBJg7MZTxuq+pAlhfZHUWxZG9Far9LSlFl+y5GWvu6p3/
-	ogJ+iCoBWvk6hlqFjwhitbc1sUT8TWFJm1GUuPmNpJBQ4H9Zw+brtWkYLvx0yw==
+	bh=wgr4pHrZo2qwDF8ZFgFdxiB9TN8wC+wKv8BCpLbDH7E=;
+	b=ahClsdTe7cTeQLSsKzawVavy2VEKP8wACr6NNn/bpmUr22gaHMmD7Ss26vtIV3m3VyVq2E
+	ESrK47hKYUW0hXF+DMn6Ys7G8BrdEQN+YZOM6Tlmu8Jhdqr29W8cUFPQ9AGHybyBg/LcrW
+	Q1CT5EX/iq/DxY9TeHP9QmL77bnd4HDfLiy8QJC1q/xCOjTUlaAEdux/nhv8aZ0jiXLOqu
+	wc+olNPcYIQGy9W0bvH+CqlbF0UgUecIn5BP/Jdvd+64QV1xA9Z87D9Ii4srWVgmJg9kDk
+	hynjeLat4Wh1D3u5yRgVww++j/74rj+9fWPqWX1XjJ6+fDLcTU5B1A0keKHurA==
 To: Mark Brown <broonie@kernel.org>,
 	Liam Girdwood <lgirdwood@gmail.com>
 Cc: Jaroslav Kysela <perex@perex.cz>,
@@ -54,18 +54,17 @@ Cc: Jaroslav Kysela <perex@perex.cz>,
 	linux-arm-kernel@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
 	=?UTF-8?q?Micha=C5=82=20Kope=C4=87?= <michal@nozomi.space>
-Subject: [PATCH 3/4] ASoC: mediatek: mt8188: Constrain UL8 FE to its back end's capabilities
-Date: Sat,  3 Oct 2026 21:45:00 +0200
-Message-ID: <20261003194501.832558-4-michal@nozomi.space>
+Subject: [PATCH 4/4] ASoC: hdmi-codec: Don't parse an empty ELD on startup
+Date: Sat,  3 Oct 2026 21:45:01 +0200
+Message-ID: <20261003194501.832558-5-michal@nozomi.space>
 In-Reply-To: <20261003194501.832558-1-michal@nozomi.space>
 References: <20261003194501.832558-1-michal@nozomi.space>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261003_124510_189829_41CA5FBF 
-X-CRM114-Status: UNSURE (   9.25  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20261003_124510_882408_34D72CA7 
+X-CRM114-Status: GOOD (  10.11  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,37 +79,41 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-UL8 advertises up to 24 channels, but its only back end, ETDM1_IN,
-supports at most 16, and its bit clock is limited to 24.576 MHz.
-Without merged constraints, userspace can open UL8 with 48 kHz, 24
-channels and 32-bit slots, which then fails in hw_params:
+A bridge's get_eld() returns an all-zero ELD when no sink is connected.
+hdmi_codec_startup() parses it unconditionally, so every open of a
+disconnected HDMI/DP PCM logs:
 
-  mtk_dai_etdm_configure bck rate 36864000 not support
-  ASoC error (-22): at snd_soc_dai_hw_params() on ETDM1_IN
+  hdmi-audio-codec: HDMI: Unknown ELD version 0
 
-Set dpcm_merged_chan/rate/format, as the DL front ends already do, so
-the FE only offers configurations the back end can accept.
+Skip parsing when the ELD is empty and clear the previously parsed
+copy instead. The ELD hw constraint already falls back to basic stereo
+rates for an empty ELD, so stream setup is unchanged. plugged_cb()
+likewise treats a parse failure as debug-only.
 
-Fixes: 96035d46d4b4 ("ASoC: mediatek: mt8188: add machine driver with mt6359")
 Signed-off-by: Michał Kopeć <michal@nozomi.space>
 ---
- sound/soc/mediatek/mt8188/mt8188-mt6359.c | 3 +++
- 1 file changed, 3 insertions(+)
+ sound/soc/codecs/hdmi-codec.c | 8 ++++++--
+ 1 file changed, 6 insertions(+), 2 deletions(-)
 
-diff --git a/sound/soc/mediatek/mt8188/mt8188-mt6359.c b/sound/soc/mediatek/mt8188/mt8188-mt6359.c
-index 75c90d1d165f7..f07aeb6371083 100644
---- a/sound/soc/mediatek/mt8188/mt8188-mt6359.c
-+++ b/sound/soc/mediatek/mt8188/mt8188-mt6359.c
-@@ -1142,6 +1142,9 @@ static struct snd_soc_dai_link mt8188_mt6359_dai_links[] = {
- 		},
- 		.dynamic = 1,
- 		.capture_only = 1,
-+		.dpcm_merged_chan = 1,
-+		.dpcm_merged_rate = 1,
-+		.dpcm_merged_format = 1,
- 		SND_SOC_DAILINK_REG(capture8),
- 	},
- 	[DAI_LINK_UL9_FE] = {
+diff --git a/sound/soc/codecs/hdmi-codec.c b/sound/soc/codecs/hdmi-codec.c
+index 7aa50c5bd3df8..0e1e532dfc634 100644
+--- a/sound/soc/codecs/hdmi-codec.c
++++ b/sound/soc/codecs/hdmi-codec.c
+@@ -475,8 +475,12 @@ static int hdmi_codec_startup(struct snd_pcm_substream *substream,
+ 		if (ret)
+ 			return ret;
+ 
+-		snd_parse_eld(dai->dev, &hcp->eld_parsed,
+-			      hcp->eld, sizeof(hcp->eld));
++		/* An empty ELD means no sink is connected; nothing to parse. */
++		if (hcp->eld[0])
++			snd_parse_eld(dai->dev, &hcp->eld_parsed,
++				      hcp->eld, sizeof(hcp->eld));
++		else
++			memset(&hcp->eld_parsed, 0, sizeof(hcp->eld_parsed));
+ 
+ 		ret = snd_pcm_hw_constraint_eld(substream->runtime, hcp->eld);
+ 		if (ret)
 -- 
 2.55.0
 
