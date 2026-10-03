@@ -4,66 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4EF58CA5FE4
-	for <linux-mediatek@archiver.kernel.org>; Sat,  3 Oct 2026 20:02:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 48979CA5FE4
+	for <linux-mediatek@archiver.kernel.org>; Sat,  3 Oct 2026 20:49:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:
+	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
 	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=aD28cj3L4bP16bv1SX5AbEY1u/TeDOJmTI3lqvzpdB0=; b=DtiZgqCIMJ/lKhKRTrW5JIjoiB
-	AnlEX7mRFDsffVhj0f0gb76Hvb1dNO4hYZoeGZFLbZKt+ZMI2aec3ywC+h+g0zWvlQPnap7AM7bra
-	orG7kJbxVYl73q7TyZHc7POYJFb5dbmrSEU+r43iEx95gb5BAY4ZQzCzCBVLSjWWaz7vH9xSKG9GQ
-	af44J2SEuBagWQhiJDC4cDuggQGTQtYuz5H38E2aruLFsoSx76ubwl/og1MT42fMYgvSS/a0+Rm7h
-	Bo+XzK1i79cXhIDyN6rxCNmT9aU8BDu8c69jWpigpVKZi4Ou5UW5zifJWH/GU1FpV/7h+WLOO5Fem
-	UPS2HNjQ==;
+	bh=1BuU7jC4i69chPY01RNYqlbIN9dzYHsP3HeLG1L5754=; b=Mfget0XiOk7GHv3zv/hRPjk9CK
+	iZWr8mE/XqK/KZf7pO1XN0+32ZLaXA/yauSY040RniZTMaFG77/RLsF93eXOu3TblFhIMfEB7Cxbe
+	U/+yzNFH2+S6haCzcIG1ZHbswbFH110F6/ycq2NSOXplt74iJrmS2M9PTHmskR9u2854SFdLSUJvg
+	GF+E6CgBR+M8LVzsZ5MCtKJFkkbpK1/aiJRc67eUwzffS1hkFMTR8ApVFOrqyp223n+Ryhfkft146
+	qh2fel2VSj72gx6dWMmmdD90k7gzv8BsLyNaS4aoW0m9+eyucfH6UNbGiXuv4VuWr3b3DFkGm/Mla
+	V2zMczsw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xD5vm-0000000Dz8n-1BIU;
-	Sat, 03 Oct 2026 20:02:02 +0000
-Received: from mail.nozomi.space ([139.162.184.125])
+	id 1xD6g1-0000000E25r-1fW1;
+	Sat, 03 Oct 2026 20:49:49 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xD5vO-0000000DyyO-2i9j;
-	Sat, 03 Oct 2026 20:01:43 +0000
-From: =?UTF-8?q?Micha=C5=82=20Kope=C4=87?= <michal@nozomi.space>
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=nozomi.space;
-	s=mail; t=1791057696;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=aD28cj3L4bP16bv1SX5AbEY1u/TeDOJmTI3lqvzpdB0=;
-	b=zgkxqL8pm7Y0xGAGOr4pq7/MAekzWZvjKJUmlQTrCA1jtbY2tB6voTZaoLojnKt9Ort18a
-	O+j0hNRpC4aSSkWvaovUfvdyjQg8Gj1Cxo91SUbRrTcms7/h+MuHqHY0WxHHvYc35TnzSz
-	UtQi2Rd7SQZb0zfyKh3PKvP2cvgkHFMLr0djytusbHpm5VKIj0zmpzZAAforcHSaVx39mW
-	b52PsRR8ChhHgJESto11dTWQCqZ86tI2Sw4PRlh1Eniz7WY6jVU22ChrflwrSr6qSmPDqQ
-	ZTZwcHS1pi0ibRXLxgl/gXC6Y7/TVPfPmFwI4YUpG3cy6FANGFnYuLRFdSz69g==
-To: Boris Brezillon <boris.brezillon@collabora.com>,
-	Steven Price <steven.price@arm.com>,
-	=?UTF-8?q?Adri=C3=A1n=20Larumbe?= <adrian.larumbe@collabora.com>
-Cc: Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	dri-devel@lists.freedesktop.org,
-	devicetree@vger.kernel.org,
-	linux-mediatek@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	=?UTF-8?q?Micha=C5=82=20Kope=C4=87?= <michal@nozomi.space>
-Subject: [PATCH 2/3] drm/panfrost: Enable the GPU timestamp counter on MT8188
-Date: Sat,  3 Oct 2026 22:01:31 +0200
-Message-ID: <20261003200132.866240-3-michal@nozomi.space>
-In-Reply-To: <20261003200132.866240-1-michal@nozomi.space>
-References: <20261003200132.866240-1-michal@nozomi.space>
+	id 1xD6fz-0000000E25J-29xD;
+	Sat, 03 Oct 2026 20:49:47 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by sea.source.kernel.org (Postfix) with ESMTP id D17114027E;
+	Sat,  3 Oct 2026 20:49:46 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7D9AA1F0089B;
+	Sat,  3 Oct 2026 20:49:43 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1791060586;
+	bh=1BuU7jC4i69chPY01RNYqlbIN9dzYHsP3HeLG1L5754=;
+	h=From:To:Cc:In-Reply-To:References:Subject:Date;
+	b=GM3ziYP9DJpdpqyZUdsiOItfTiwlDIV53YabQDxNKLKY6JpkOms/6aC9WNsXAc85A
+	 ijv6PbGX04i93Vu8W0mWkMuzDrJpy+A1k58fCuYuwqbgsxIMrZQ64rlQGukUtbZrnX
+	 KX1mUDuQ2BNtOKdU5C1ZsI5QhzeGYH0C8cQbVQrUur3uMLkDBzcotnk4sdPuo7GZkl
+	 HrJs6d9bGceDMMIuCx2eJ/5UaYb2NyYfnodkBJ6lF/tChW7qqXp+Fugy5vS58zJQeu
+	 plRpQUFpk709ZQbPlv805TmwWB2rSIGtr3yAkC/YMZlXzyLErCI3W5um9I88z1yL2E
+	 e/EYllVn/5DLA==
+From: Vinod Koul <vkoul@kernel.org>
+To: kernel@collabora.com, Chunfeng Yun <chunfeng.yun@mediatek.com>, 
+ Neil Armstrong <neil.armstrong@linaro.org>, Rob Herring <robh@kernel.org>, 
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Julien Massot <julien.massot@collabora.com>
+Cc: linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, linux-phy@lists.infradead.org, 
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org
+In-Reply-To: <20260826-mtk-usb2-repeater-usb2-v1-0-e8e48e2fd6d8@collabora.com>
+References: <20260826-mtk-usb2-repeater-usb2-v1-0-e8e48e2fd6d8@collabora.com>
+Subject: Re: [PATCH 0/2] phy: mediatek: xsphy: add eUSB2 repeater support
+ for USB2 ports
+Message-Id: <179106058316.240943.4391434773392918237.b4-ty@kernel.org>
+Date: Sat, 03 Oct 2026 22:49:43 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261003_130139_750202_FBA018DD 
-X-CRM114-Status: GOOD (  19.43  )
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+X-Mailer: b4 0.14.3
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,128 +76,31 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On MediaTek SoCs the GPU timestamp counter is fed by the SoC system timer
-only once the TOP_TSVALUEB enable bits are set in the MFGCFG block. The
-setting is lost whenever the GPU power domain is turned off.
 
-Without it, GPU_TIMESTAMP reads zero, so the SYSTEM_TIMESTAMP query and
-timestamps written by jobs are always zero, which breaks timestamp
-queries in userspace drivers.
+On Wed, 26 Aug 2026 14:38:34 +0200, Julien Massot wrote:
+> Some USB2 PHY ports are connected to an external eUSB2 repeater chip
+> that sits between the PHY and the USB connector. To support such
+> configurations, this series adds an optional phys property to the
+> MediaTek xsphy port sub-node and integrates the repeater into the USB2
+> PHY init, exit and mode handling.
+> 
+> The binding follows the same pattern as the Synopsys eUSB2 PHY, which
+> already uses a phys property at the sub-node level to reference an
+> external repeater. The driver change similarly manages the repeater PHY
+> alongside the MediaTek USB2 PHY.
+> 
+> [...]
 
-Look up the MFGCFG block from the mediatek,mfgcfg phandle and set the
-bits from the vendor quirk hook, which runs on every power-up, as the
-downstream kbase driver does. Without the phandle nothing changes.
+Applied, thanks!
 
-Signed-off-by: Michał Kopeć <michal@nozomi.space>
----
- drivers/gpu/drm/panfrost/panfrost_device.h |  1 +
- drivers/gpu/drm/panfrost/panfrost_drv.c    |  1 +
- drivers/gpu/drm/panfrost/panfrost_gpu.c    | 39 ++++++++++++++++++++++
- drivers/gpu/drm/panfrost/panfrost_gpu.h    |  1 +
- 4 files changed, 42 insertions(+)
+[1/2] dt-bindings: phy: mediatek,xsphy: add optional repeater phys property
+      commit: e95b476302852ac1fb5bffaa824ac2cd35178e58
+[2/2] phy: mediatek: xsphy: add optional repeater support for USB2 ports
+      commit: bda1af7b177a94f6d169f0b359c61e7a7d39a36e
 
-diff --git a/drivers/gpu/drm/panfrost/panfrost_device.h b/drivers/gpu/drm/panfrost/panfrost_device.h
-index 1fe1554f2652b..0a73939a023c3 100644
---- a/drivers/gpu/drm/panfrost/panfrost_device.h
-+++ b/drivers/gpu/drm/panfrost/panfrost_device.h
-@@ -134,6 +134,7 @@ struct panfrost_device {
- 	int mmu_irq;
- 
- 	void __iomem *iomem;
-+	struct regmap *mtk_mfgcfg;
- 	struct clk *clock;
- 	struct clk *bus_clock;
- 	struct clk *bus_ace_clock;
-diff --git a/drivers/gpu/drm/panfrost/panfrost_drv.c b/drivers/gpu/drm/panfrost/panfrost_drv.c
-index 70c05210ea846..e811652e2384d 100644
---- a/drivers/gpu/drm/panfrost/panfrost_drv.c
-+++ b/drivers/gpu/drm/panfrost/panfrost_drv.c
-@@ -1133,6 +1133,7 @@ static const struct panfrost_compatible mediatek_mt8188_data = {
- 	.pm_domain_names = mediatek_pm_domains,
- 	.pm_features = BIT(GPU_PM_CLK_DIS) | BIT(GPU_PM_VREG_OFF),
- 	.gpu_quirks = BIT(GPU_QUIRK_FORCE_AARCH64_PGTABLE),
-+	.vendor_quirk = panfrost_gpu_mt8188_quirk,
- };
- 
- static const struct panfrost_compatible mediatek_mt8192_data = {
-diff --git a/drivers/gpu/drm/panfrost/panfrost_gpu.c b/drivers/gpu/drm/panfrost/panfrost_gpu.c
-index 29ac0dce5ff89..971abc9cc222c 100644
---- a/drivers/gpu/drm/panfrost/panfrost_gpu.c
-+++ b/drivers/gpu/drm/panfrost/panfrost_gpu.c
-@@ -9,8 +9,11 @@
- #include <linux/interrupt.h>
- #include <linux/io.h>
- #include <linux/iopoll.h>
-+#include <linux/mfd/syscon.h>
-+#include <linux/of.h>
- #include <linux/platform_device.h>
- #include <linux/pm_runtime.h>
-+#include <linux/regmap.h>
- 
- #include <drm/drm_print.h>
- 
-@@ -114,6 +117,40 @@ void panfrost_gpu_amlogic_quirk(struct panfrost_device *pfdev)
- 	gpu_write(pfdev, GPU_PWR_OVERRIDE1, 0xfff | (0x20 << 16));
- }
- 
-+#define MTK_MFG_TIMESTAMP			0x130
-+#define   MTK_MFG_TIMESTAMP_TOP_TSVALUEB_EN	0x3
-+
-+void panfrost_gpu_mt8188_quirk(struct panfrost_device *pfdev)
-+{
-+	/*
-+	 * The GPU timestamp counter only counts once MFGCFG routes the SoC
-+	 * system timer to it. The setting is lost whenever the GPU power
-+	 * domain is turned off, so it has to be restored on every power-up.
-+	 */
-+	if (pfdev->mtk_mfgcfg)
-+		regmap_write(pfdev->mtk_mfgcfg, MTK_MFG_TIMESTAMP,
-+			     MTK_MFG_TIMESTAMP_TOP_TSVALUEB_EN);
-+}
-+
-+static void panfrost_gpu_get_mtk_mfgcfg(struct panfrost_device *pfdev)
-+{
-+	struct device_node *np;
-+	struct regmap *regmap;
-+
-+	np = of_parse_phandle(pfdev->base.dev->of_node, "mediatek,mfgcfg", 0);
-+	if (!np)
-+		return;
-+
-+	regmap = device_node_to_regmap(np);
-+	of_node_put(np);
-+	if (IS_ERR(regmap)) {
-+		dev_warn(pfdev->base.dev, "failed to get MFGCFG: %pe\n", regmap);
-+		return;
-+	}
-+
-+	pfdev->mtk_mfgcfg = regmap;
-+}
-+
- static void panfrost_gpu_init_quirks(struct panfrost_device *pfdev)
- {
- 	u32 quirks = 0;
-@@ -519,6 +556,8 @@ int panfrost_gpu_init(struct panfrost_device *pfdev)
- {
- 	int err;
- 
-+	panfrost_gpu_get_mtk_mfgcfg(pfdev);
-+
- 	err = panfrost_gpu_soft_reset(pfdev);
- 	if (err)
- 		return err;
-diff --git a/drivers/gpu/drm/panfrost/panfrost_gpu.h b/drivers/gpu/drm/panfrost/panfrost_gpu.h
-index b4fef11211d5f..2b974576b96e9 100644
---- a/drivers/gpu/drm/panfrost/panfrost_gpu.h
-+++ b/drivers/gpu/drm/panfrost/panfrost_gpu.h
-@@ -23,5 +23,6 @@ unsigned long long panfrost_cycle_counter_read(struct panfrost_device *pfdev);
- unsigned long long panfrost_timestamp_read(struct panfrost_device *pfdev);
- 
- void panfrost_gpu_amlogic_quirk(struct panfrost_device *pfdev);
-+void panfrost_gpu_mt8188_quirk(struct panfrost_device *pfdev);
- 
- #endif
+Best regards,
 -- 
-2.55.0
+~Vinod
+
 
 
