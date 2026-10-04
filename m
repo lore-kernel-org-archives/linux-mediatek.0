@@ -4,74 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 21EF4CA5FF0
-	for <linux-mediatek@archiver.kernel.org>; Sun,  4 Oct 2026 17:16:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 525D6CA5FF0
+	for <linux-mediatek@archiver.kernel.org>; Sun,  4 Oct 2026 17:16:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=TlaQzqtT4L/X0UVb7t9+uS9vqwfYnLXqmrlooszQDxo=; b=xffD5RDfLPpl3ib9VGC145EAFx
-	xdJhzDQN5V/XGaDdG971DWfoLXd1sljnvuOZcE4FKgcZbg9YhshRX7UMbFVbhyIDE+cEjoYbUwg9i
-	jpfEeobcTb3/bzsF7yDIU8b3NeBqtjIeKA8byYdbh5bkeFMLjvrdA9FTt/RE79k5zb7ap7z/QXr44
-	KACaqOzhXkxt1BB+X+pTBNQRFDPUSLD4PpbNgy217hPHUpWXaeIjxsMXEn+mZ5VU1dXpAbi2rOUE3
-	anvdn0KMjNXXTu7H0s5x4Ny3Dd9LET17bPTmb0S9VwppC8am9kGkB9OTUFJJ2gOrqGn9tuaPZFzac
-	UGRrD/1A==;
+	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=aLYtPbQjZgcuVs2CGURwKTgeknAxIQmlp31jFys2sGU=; b=V10mug6E5XslXyiFcnK2Gvbrn1
+	OE6srNzjajNETngY6AkPRkYLgxwvAP7CGKDOZz7vmzMxynLj6qeCRhAE9DaQyRaRWBX0z2t+z7/1Z
+	jyWlmCzHYOhP3iZWXKoA/xE5wTfPIrAQK049fzx52rOa7LORAdOxHtzRjIIaPEQSN7paSKefcV18e
+	l3Lp52jUzeBQnoiKeP51noRn9jxwse0BBNreY8WvHzVxCReK38Z0GN7jeN/G4zOS0yGNB/OZBkG57
+	3t0eviwOE9Qeb/bcRYFa3BPgoAtE7JnJhQKcUOIdMknee92cE5FlWNNkYZGJgnrCyp6NtgApNQi+v
+	VxdTSLTQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xDPpL-0000000F5fk-0m3X;
-	Sun, 04 Oct 2026 17:16:43 +0000
-Received: from mail-ed1-x52f.google.com ([2a00:1450:4864:20::52f])
+	id 1xDPpN-0000000F5i2-2JDz;
+	Sun, 04 Oct 2026 17:16:45 +0000
+Received: from mail-ed2-x2b.google.com ([2a00:1450:4864:33::2b])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xDPpI-0000000F5dt-20Rz
+	id 1xDPpL-0000000F5er-0OlX
 	for linux-mediatek@lists.infradead.org;
-	Sun, 04 Oct 2026 17:16:41 +0000
-Received: by mail-ed1-x52f.google.com with SMTP id 4fb4d7f45d1cf-6aa850436d3so1050485a12.2
-        for <linux-mediatek@lists.infradead.org>; Sun, 04 Oct 2026 10:16:40 -0700 (PDT)
+	Sun, 04 Oct 2026 17:16:44 +0000
+Received: by mail-ed2-x2b.google.com with SMTP id 4fb4d7f45d1cf-6ae19319854so1296843a12.3
+        for <linux-mediatek@lists.infradead.org>; Sun, 04 Oct 2026 10:16:42 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=bairaktaris.de; s=google; t=1791134199; x=1791738999; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
-        bh=TlaQzqtT4L/X0UVb7t9+uS9vqwfYnLXqmrlooszQDxo=;
-        b=ZRlG1iqIUvGKUmqxzMYHjaOigKTCYbdXMctQ/AWbumY8fS7KS2s85PydcWWZuewFNr
-         B+w+eyXhIT9T84jRa5RapC57t9vqMeXtdHLeBEmxR/sJzIYYHvIvYcgXptE6u6zsCHEV
-         oT/KPknqJzQl/Fh4kbHXiV+5iiG1XZ/zPFIiyGsZfF3wye0OG9IDI1KgkEz2i9BzY6p2
-         uwGip++0dys4q2umgoY1A1jxuDmGcPLQJzLSvedB4KZTyNISXatF/ggWirY6beyxtLBh
-         xQne7W79vvHUybLbTkQSp9UFjZlpfQCLObdY5iY24x/uCsxlHL6kry4r/dEKuvHMmVyT
-         VPBQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1791134199; x=1791738999;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+        d=bairaktaris.de; s=google; t=1791134200; x=1791739000; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to:content-type;
-        bh=TlaQzqtT4L/X0UVb7t9+uS9vqwfYnLXqmrlooszQDxo=;
-        b=JifzUOFpxD7hfsutyvqckolvhYB16DXrV8F1RgGOUkHOgDqqKafoC1GzsbaQtpWG1J
-         OqWC+DK+2PdQMcETmdH6BhiisMHZq8E+QRVrJHPRvkD6aeokMTnvKZsbW9pt9GLg8nMB
-         3gD6KKGHbtR2dtnbkOcXpyCQgdtXs4X4RxPr6PRoXqaYJNgqVa013SnVtpwW93WWis2P
-         412qhESdsN35c4Mm6k59DSkHh3BKoG9vkzyGa/0zUHIXxQ+TcFC1/i1RNaBl3XudGHqM
-         DnNR1HHVjvz4RO2gBVNUACYSa+o/jNDY52rywXNDL0TD2lT59ZErDBVCiFKjxmM+U9xx
-         vSQg==
-X-Forwarded-Encrypted: i=1; AKwUvBxCDZRymV0fZXbHlwhnv+7y7WRROEqH8zUOURkceTXWn+AKlX6in2G3mn4MIj9ieZr23y90rELHoQCXWWOOUw==@lists.infradead.org
-X-Gm-Message-State: AFq9FYJT4U/F3RPE+o0ZCTgAv/LcmJaeMLkuCgdyZuuTAuVtFjWHQCiV
-	RXII8QFQqRTEfd1ge/v5edhyrn24yntJccdvX5LQ/RVtrayecvuTnZn8LnXlZ1DnCw==
-X-Gm-Gg: AYBFou2E+LcP/Cfo0Q9z9ZG1Ud4JxBxfyZKynlTbqKOJEBXoz1c4rBcMdk2OLQN48Yx
-	Q+Fpj7QFvSDXpCDp5InEx4ZZBWn0SdhIvnTkQoCP7nVch4q/lJQbrGb3xe1AVRwaudUXSooYAu7
-	nDgtL0DxU+LPVYPiES1jZ8ye/Svfq6TMO7TAk/ZvgCVi/EifbCSSuuPJXXrXQdpDixgDzZhtGa/
-	gSRiI7MwuXAzv3+hZUVEAZU5xT6aaYl2VZuZIIxnE+GVNs5qSUrtvAdQP/dNpfg0iiTcMeLiLhp
-	ByL25WFP06ZuluTsXWTMmSZ7239eAUkoGsSVD+woznVgUJ2qEiZESRlqr+LYjRFW6PjKAMclfkv
-	c869FUEDE20zdazx/h+31zJ7wjpXX8qnSm1eFqRzZnYbCUhR8XNVwvvUNzr+ypMTRLF3lhQzIMD
-	Bk6eYeSuBC257Cn7i+8M2kBYohj2vZbb/PlGXjEv/XfwOVbh62IqWU/yoyjNIa7EcY0mamrm730
-	eQrvxRi8T/jKLpBFy7VQw4I3KwyIgb3esKCLoXaUH1jQX4JJ7xmUy+wDx2IcZk9AwhrGyu7yMQe
-	HsQfbsoHma8hu/fUoPAxhp0YsxsPsL/yTIwUEyqP46HLKhhfy9Ye9pHuY9KgUeybbFAiKTQb8Ex
-	wGOZLIkw1aS4v1xxYKuFG66fCTm3D6OF6GNcNy0ClBxc3ZqkubGQxyJoHWXdKWPCq60H735njwu
-	VxSwJEsQU78vkxgPe62F9OMYk=
-X-Received: by 2002:a05:6402:2709:b0:6af:a64f:bd44 with SMTP id 4fb4d7f45d1cf-6afada35853mr4633290a12.45.1791134198617;
-        Sun, 04 Oct 2026 10:16:38 -0700 (PDT)
+        bh=aLYtPbQjZgcuVs2CGURwKTgeknAxIQmlp31jFys2sGU=;
+        b=FVPIdHuq66eilIC25uwgazE6GYh+35enWrtxOvIjuvDGnFtjKnt3I2SoI6z/ZTgd0E
+         3S4qRakP8dWFyBOAl2qX3d4fDc+fJr5WafNGAP+3KeolphmH4dcUcjcPUUGZBe34IrPX
+         IKrKdkGQG2J4TuaOzybc0b1IEdz1WT+/PziwtXw0/FeC8hoggkdp5DZUqQyquASAOWc4
+         GcjLGYtBPiKriCQuP5Hh2eR5c8gNqpp88svlCgDANAGYLIaa+3xMf4NOoEtQrtlR0zhm
+         /iImn3+xqnBc1P3JRd/WvA4Jv32PDIz9aJ2SSeDkjm/SA/Xsilgchi7esJilBbPkETVo
+         UpGA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20260707; t=1791134200; x=1791739000;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
+         :to:cc:subject:date:message-id:reply-to:content-type;
+        bh=aLYtPbQjZgcuVs2CGURwKTgeknAxIQmlp31jFys2sGU=;
+        b=XqdZtB5hY9pOf53272qWTb39euOvXQ9kcwhF06ut3oZFrW6veVeWirvKPEGaAjE4GV
+         vSz3+wN1PqIKydxts1l2PVuR5Er6Gr+x5Nf8Ft2yN8DYfo/LcJDXqyWtQ3JKL8SKsxhd
+         IKFJHMIVBdPzyXcp3odHICrKUoBfb2RT5mUYWj3pKUaQfKEtdo6BMG2+SrXFPzD5nCqS
+         zSNGPv7wo7ugj4kDRszLbQF82+HHbuqoaeESgCrczmvNoso7vsxRsMcw+MiGZkzu1o0j
+         E1sJfcCBMOxNf7pVzzCx0ZJqDMnEl3hKFQozyHxXHN4QIluH7BFWGbwPlq70c2ZMNS69
+         caDQ==
+X-Forwarded-Encrypted: i=1; AKwUvBzt0ocm5+b37NhKbKgy1woeIKwhZZ8HG3h/YriZ5eyvbQ+BXFdzE1+gZLI+miQmBj1r9Vc9vr1TQ6WibJkLvQ==@lists.infradead.org
+X-Gm-Message-State: AFq9FYI8o2EAblOVE+4vfavYHvHlT/vMLp4bWcSv3Kj4MNrGZAc4q+6o
+	dbkdRhiuCBU979AwAN+RrijUbZ1IX80PsHb0UhtfmhjFuSumZFyoFT4XCT1MPRKQ7Q==
+X-Gm-Gg: AYBFou2FX8lJ4B9HIkdXWO/Xcyfeq6SWgYqJrHEA9VALIQf4oacxwriSTzpZg4R9Xqn
+	6ChHrZixnJhbxJsX3qqMCyHfQX+Kyx8OjoNOlDJwHz/kXJJO7isksNWhBKkfraT8ce7YYsU0qWC
+	Qszn6jAh2l7e3UlBLbyjhyeOxdOoHYYkNwSfjEvSV8nCd/WYoOToTuZATeTWDg9ZJ+HDnf1fW2C
+	qI+ZHo5I7rCDwdADb1e0z6aEP7+NA/7RXxSPwqs+xiS3oEU2qMFc+Mt2Ae8ZHCmiRHZCKWREmg9
+	JjGxO4f5Td6wrNilytAbx1xrPoH9i3PGIJGFdQ+9aD6L9kWkffYnJyoVIX+p6QGu5g9rd9ORysa
+	vZZuXZ8h0Jf1ONh/KgAJF84igO1ED56EUopoMu+IwHj19vyrdLzanVxhMwGzqPjdBzvCvPduQXZ
+	XdbWQMAHexsIZ2KyINZ38J6h6CWjD+dKJTAbAnruKU1Tb3SAdjOSedYZcfoNzFd/9TBxGcnSEQa
+	MscWQ58RQqHIxzXXFrKlkqlQe0M2nM3iE+SnXowJi1xr4D9FOIwZQblfyA0qfpK00bJBBQqgVff
+	dfe2zP6KYYf+itlWgygmLjhjO5T8BtjHWpYd+AF/rhHl9nOvh6uqlp8/vKLMie3gZFGx+dVQdrK
+	tQ36shRa5hRHA+KtUGC7bFsIG2X9v4x57wUk0f4IigqqUOxKCoQIDmoqYrSW0Qx1f1Hp/xvriVt
+	C87xsqdtqukWHyCrZCxJdU4fpA
+X-Received: by 2002:a05:6402:3905:b0:6aa:e46b:2ca with SMTP id 4fb4d7f45d1cf-6af9e2fe4ddmr6623554a12.30.1791134200443;
+        Sun, 04 Oct 2026 10:16:40 -0700 (PDT)
 Received: from Desktop (pd9513667.dip0.t-ipconnect.de. [217.81.54.103])
-        by smtp.gmail.com with ESMTPSA id 4fb4d7f45d1cf-6afb014784bsm2256819a12.3.2026.10.04.10.16.37
+        by smtp.gmail.com with ESMTPSA id 4fb4d7f45d1cf-6afb014784bsm2256819a12.3.2026.10.04.10.16.38
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 04 Oct 2026 10:16:37 -0700 (PDT)
+        Sun, 04 Oct 2026 10:16:39 -0700 (PDT)
 From: Julius Bairaktaris <julius@bairaktaris.de>
 To: pablo@netfilter.org,
 	fw@strlen.de
@@ -102,15 +103,17 @@ Cc: phil@nwl.cc,
 	mbloch@nvidia.com,
 	linux-rdma@vger.kernel.org,
 	linux-kernel@vger.kernel.org
-Subject: [PATCH nf-next v3 0/3] netfilter: flowtable: carry a priority into the offload
-Date: Sun,  4 Oct 2026 19:16:33 +0200
-Message-ID: <20261004171636.3545085-1-julius@bairaktaris.de>
+Subject: [PATCH nf-next v3 1/3] net/mlx5e: Ignore FLOW_ACTION_PRIORITY on flowtable offload
+Date: Sun,  4 Oct 2026 19:16:34 +0200
+Message-ID: <20261004171636.3545085-2-julius@bairaktaris.de>
 X-Mailer: git-send-email 2.53.0
+In-Reply-To: <20261004171636.3545085-1-julius@bairaktaris.de>
+References: <20261004171636.3545085-1-julius@bairaktaris.de>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261004_101640_531864_F118037F 
-X-CRM114-Status: GOOD (  11.62  )
+X-CRM114-CacheID: sfid-20261004_101643_160206_E451B6A5 
+X-CRM114-Status: GOOD (  15.86  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -125,64 +128,90 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Packets forwarded by the flowtable skip the ruleset, so a priority set
-with "meta priority set" before "flow add" is lost after the first
-packets. Patch 2 stores skb->priority in the flow, applies it in the
-software fast path and passes it to drivers as FLOW_ACTION_PRIORITY.
-Patch 1 makes mlx5 ignore that action on flowtable flows, so flows it
-offloads today stay offloaded. Patch 3 adds a selftest.
+The next patch makes the flowtable emit FLOW_ACTION_PRIORITY for flows
+with a non-zero skb->priority, which on IPv4 includes the priority
+ip_forward() derives from the TOS by default. mlx5 would reject these
+rules and stop offloading flows it offloads today.
 
-v2 review asked whether this should be a flowtable attribute instead.
-A per-flow priority covers both one class per flowtable and a class
-chosen per connection, with existing syntax:
+The eswitch does not use skb->priority for these flows, so accept the
+action on flowtable flows and ignore it. tc flower rules with skbedit
+priority are still rejected.
 
-  meta priority set 1:3 flow add @ft
-  udp dport 5060 meta priority set 1:3 flow add @ft
-
-An attribute needs one flowtable per class. nft rejects a device in
-two flowtables of the same table with -EEXIST, so it also needs one
-table per class. Pablo, is the per-flow approach fine with you?
-
-mlx5 maintainers: patch 1 is needed before patch 2 and is meant to go
-through nf-next; an Acked-by would allow that.
-
-The selftest passes with the series, and its priority checks fail with
-only patch 3 applied (QEMU, three runs). The mlx5, airoha and mtk
-changes are compile-tested only; Lorenzo, a Tested-by on airoha would
-be welcome. struct flow_offload grows by 8 bytes.
-
-Changes in v3:
-- new patch 1 for mlx5
-- airoha uses the priority for its QoS queue (Lorenzo Bianconi)
-- describe the tc flower effect and the TOS-derived priority
-- rebased onto nf-next
-
-v2: https://lore.kernel.org/netfilter-devel/20260902155136.4963-1-julius@bairaktaris.de/
-v1: https://lore.kernel.org/netfilter-devel/20260901092632.369248-1-julius@bairaktaris.de/
-
-Julius Bairaktaris (3):
-  net/mlx5e: Ignore FLOW_ACTION_PRIORITY on flowtable offload
-  netfilter: flowtable: carry a priority into the offload
-  selftests: netfilter: nft_flowtable.sh: check the priority a flow
-    carries
-
- Documentation/networking/nf_flowtable.rst     |   4 +-
- drivers/net/ethernet/airoha/airoha_ppe.c      |   3 +
- .../net/ethernet/mediatek/mtk_ppe_offload.c   |   1 +
- .../net/ethernet/mellanox/mlx5/core/Makefile  |   2 +-
- .../mellanox/mlx5/core/en/tc/act/act.c        |   1 +
- .../mellanox/mlx5/core/en/tc/act/act.h        |   1 +
- .../mellanox/mlx5/core/en/tc/act/prio.c       |  22 ++++
- include/net/netfilter/nf_flow_table.h         |   1 +
- net/netfilter/nf_flow_table_ip.c              |   6 +
- net/netfilter/nf_flow_table_offload.c         |  11 ++
- net/netfilter/nft_flow_offload.c              |   2 +
- .../selftests/net/netfilter/nft_flowtable.sh  | 110 ++++++++++++++++++
- 12 files changed, 162 insertions(+), 2 deletions(-)
+Assisted-by: Claude:claude-opus-5-5
+Signed-off-by: Julius Bairaktaris <julius@bairaktaris.de>
+---
+ .../net/ethernet/mellanox/mlx5/core/Makefile  |  2 +-
+ .../mellanox/mlx5/core/en/tc/act/act.c        |  1 +
+ .../mellanox/mlx5/core/en/tc/act/act.h        |  1 +
+ .../mellanox/mlx5/core/en/tc/act/prio.c       | 22 +++++++++++++++++++
+ 4 files changed, 25 insertions(+), 1 deletion(-)
  create mode 100644 drivers/net/ethernet/mellanox/mlx5/core/en/tc/act/prio.c
 
-
-base-commit: 87b80c2f6b05cad9f0ff9136709c62a0f59923e3
+diff --git a/drivers/net/ethernet/mellanox/mlx5/core/Makefile b/drivers/net/ethernet/mellanox/mlx5/core/Makefile
+index 19e50f0d55af..8bd352e7f20d 100644
+--- a/drivers/net/ethernet/mellanox/mlx5/core/Makefile
++++ b/drivers/net/ethernet/mellanox/mlx5/core/Makefile
+@@ -54,7 +54,7 @@ mlx5_core-$(CONFIG_MLX5_CLS_ACT)     += en/tc/act/act.o en/tc/act/drop.o en/tc/a
+ 					en/tc/act/accept.o en/tc/act/mark.o en/tc/act/goto.o \
+ 					en/tc/act/tun.o en/tc/act/csum.o en/tc/act/pedit.o \
+ 					en/tc/act/vlan.o en/tc/act/vlan_mangle.o en/tc/act/mpls.o \
+-					en/tc/act/mirred.o en/tc/act/mirred_nic.o \
++					en/tc/act/mirred.o en/tc/act/mirred_nic.o en/tc/act/prio.o \
+ 					en/tc/act/ct.o en/tc/act/sample.o en/tc/act/ptype.o \
+ 					en/tc/act/redirect_ingress.o en/tc/act/police.o
+ 
+diff --git a/drivers/net/ethernet/mellanox/mlx5/core/en/tc/act/act.c b/drivers/net/ethernet/mellanox/mlx5/core/en/tc/act/act.c
+index 0380a04c3691..91a3bab5e498 100644
+--- a/drivers/net/ethernet/mellanox/mlx5/core/en/tc/act/act.c
++++ b/drivers/net/ethernet/mellanox/mlx5/core/en/tc/act/act.c
+@@ -23,6 +23,7 @@ static struct mlx5e_tc_act *tc_acts_fdb[NUM_FLOW_ACTIONS] = {
+ 	[FLOW_ACTION_ADD] = &mlx5e_tc_act_pedit,
+ 	[FLOW_ACTION_CSUM] = &mlx5e_tc_act_csum,
+ 	[FLOW_ACTION_PTYPE] = &mlx5e_tc_act_ptype,
++	[FLOW_ACTION_PRIORITY] = &mlx5e_tc_act_prio,
+ 	[FLOW_ACTION_SAMPLE] = &mlx5e_tc_act_sample,
+ 	[FLOW_ACTION_POLICE] = &mlx5e_tc_act_police,
+ 	[FLOW_ACTION_CT] = &mlx5e_tc_act_ct,
+diff --git a/drivers/net/ethernet/mellanox/mlx5/core/en/tc/act/act.h b/drivers/net/ethernet/mellanox/mlx5/core/en/tc/act/act.h
+index 2e528b2c34d6..bacbc862970e 100644
+--- a/drivers/net/ethernet/mellanox/mlx5/core/en/tc/act/act.h
++++ b/drivers/net/ethernet/mellanox/mlx5/core/en/tc/act/act.h
+@@ -81,6 +81,7 @@ extern struct mlx5e_tc_act mlx5e_tc_act_goto;
+ extern struct mlx5e_tc_act mlx5e_tc_act_tun_encap;
+ extern struct mlx5e_tc_act mlx5e_tc_act_tun_decap;
+ extern struct mlx5e_tc_act mlx5e_tc_act_csum;
++extern struct mlx5e_tc_act mlx5e_tc_act_prio;
+ extern struct mlx5e_tc_act mlx5e_tc_act_pedit;
+ extern struct mlx5e_tc_act mlx5e_tc_act_vlan;
+ extern struct mlx5e_tc_act mlx5e_tc_act_vlan_mangle;
+diff --git a/drivers/net/ethernet/mellanox/mlx5/core/en/tc/act/prio.c b/drivers/net/ethernet/mellanox/mlx5/core/en/tc/act/prio.c
+new file mode 100644
+index 000000000000..2a047059574b
+--- /dev/null
++++ b/drivers/net/ethernet/mellanox/mlx5/core/en/tc/act/prio.c
+@@ -0,0 +1,22 @@
++// SPDX-License-Identifier: GPL-2.0 OR Linux-OpenIB
++
++#include "act.h"
++#include "en/tc_priv.h"
++
++static int
++tc_act_parse_prio(struct mlx5e_tc_act_parse_state *parse_state,
++		  const struct flow_action_entry *act,
++		  struct mlx5e_priv *priv,
++		  struct mlx5_flow_attr *attr)
++{
++	/* The eswitch does not apply skb->priority to flowtable flows. */
++	if (mlx5e_is_ft_flow(parse_state->flow))
++		return 0;
++
++	NL_SET_ERR_MSG_MOD(parse_state->extack, "skbedit priority is not supported");
++	return -EOPNOTSUPP;
++}
++
++struct mlx5e_tc_act mlx5e_tc_act_prio = {
++	.parse_action = tc_act_parse_prio,
++};
 -- 
 2.53.0
 
