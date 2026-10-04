@@ -4,64 +4,115 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1FCE2CA5FF4
-	for <linux-mediatek@archiver.kernel.org>; Sun,  4 Oct 2026 09:12:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 79A20CA5FE6
+	for <linux-mediatek@archiver.kernel.org>; Sun,  4 Oct 2026 11:03:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Message-ID:Date
-	:Cc:To:From:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:Content-Type:
+	References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Zna8m+vw1RWGEQgBqdQPaVJmN/rHO5KCpQzP/sBKZ78=; b=bjV2SqQPVlDCD65/ZlWjr/t+n2
-	M7BORKAw6ioAthjbL8SSCT8BcRFIwlKIMMnNMgK79EhHvpakHqHKG68G9fae60ve+uhbZLklPyT+h
-	VDfcbV0nKBJ0e5zdEHL3EGMeDqZu64nGwrgxr4juq1HE89FreXcGaR36eXMfL5DJfO57BWZ1hblgF
-	J6fT1lxltC4coWSuWiWvr+g4rF4BrmNILW/odZ99wrKVBwRXjk/vBvDaHPdQ3XzK82oAkIMmvc3Ov
-	772o7KncSkzfR0Q6uQ/PI25MyIYCtkZFACPuMDL65d1kCV8UHJRyV/uB+vz2Ep6ZuL5jJ/FV7PyHp
-	5BCn4f3w==;
+	bh=BRY4iUwoy0k7A4Q+WlcGtk6KJOn/v2ablV6+SEfz6BM=; b=E1HDw4L8k/aky0sIMUQd9rYkDH
+	e34IeReju4vIBSmMc+n7OqEOnFy7hVtiiFKiqjxKvX9l5g6dFd1OG9HqZQ6QUlLto6uiYwzX9YzP3
+	Wr8QA4q9jdDqe5hHBWrBncnhPPtYGW2GlSUYVsp0LqL05rEl9AboEZ64fiTRMEtLvoXlLh2gLWbLC
+	cFyUp/wh7Ml2kmgQdxXeClt9ar8yD2QL+OWENINzBDH10To8joa8gv4YMbfs1FRwRfme1De8WH6Mh
+	qE6zlZJxvtqyGJVUp6KJ8KBJU9j3wTKDji/e3VQWfVJK+Ouow29CS5SwrJbsUpqZDvKg+7zcwuFt7
+	/gSyDS8w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xDIH2-0000000Eaza-0iNH;
-	Sun, 04 Oct 2026 09:12:48 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1xDK0H-0000000Eh73-0VtK;
+	Sun, 04 Oct 2026 11:03:37 +0000
+Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xDIGv-0000000Earv-2eiC;
-	Sun, 04 Oct 2026 09:12:41 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id E11CC60514;
-	Sun,  4 Oct 2026 09:12:40 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 395131F00899;
-	Sun,  4 Oct 2026 09:12:39 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1791105160;
-	bh=Zna8m+vw1RWGEQgBqdQPaVJmN/rHO5KCpQzP/sBKZ78=;
-	h=Subject:From:To:Cc:Date:In-Reply-To:References;
-	b=j8dYDMBPS8oIzpb2EOIEaWeR2glu/blQr58/rYM/pkeCEMrsTfyyep14jBIKRitNq
-	 yBMY6BpkLic2S4h+4VLjIPEHo54fxLbfa3THsbXDRlECzF1PMpmvtTmEId9lyBNRMN
-	 kZK1P2jgUGWdiOLveiQzqk3EkSYL8vBUrIaCcTUk/M4j6ZF0lyG/JL5uMpx7rNtLKb
-	 z9kwkIsWX9eFzOYTJOfrua+BP2470vop3qwgW1bksqSaBk1L7K9MKHggPbEDCbJ9v0
-	 SvijqnjtmrPjvlyPfF9QPF5INs+G9XTXZ4Azq4VJWMUjk+zTsz82g8+9Yo3hd1OJdi
-	 sfdrr5HYYPDkA==
-Subject: Re: [PATCH v9 5/6] net: wwan: t9xx: Add FSM thread
-From: netdev-bot+sashiko@kernel.org
-To: jackbb_wu@compal.com
-Cc: loic.poulain@oss.qualcomm.com, ryazanov.s.a@gmail.com,
- johannes@sipsolutions.net, andrew+netdev@lunn.ch, davem@davemloft.net,
- edumazet@google.com, kuba@kernel.org, pabeni@redhat.com,
- wen-zhi.huang@mediatek.com, shi-wei.yeh@mediatek.com,
- Minano.tseng@mediatek.com, matthias.bgg@gmail.com,
- angelogioacchino.delregno@collabora.com, horms@kernel.org, corbet@lwn.net,
- skhan@linuxfoundation.org, robert_yu@compal.com, Jeff_Chang@compal.com,
- linux-kernel@vger.kernel.org, netdev@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-doc@vger.kernel.org
-Date: Sun, 04 Oct 2026 09:12:38 +0000
-Message-ID: <179110515875.434549.15342661090118032987@kernel.org>
-In-Reply-To: <20260930-t9xx_driver_v1-v9-5-3248b9256956@compal.com>
-References: <20260930-t9xx_driver_v1-v9-5-3248b9256956@compal.com>
-X-sashiko-severity: High
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
+	id 1xDK0C-0000000Eh59-1bjH
+	for linux-mediatek@lists.infradead.org;
+	Sun, 04 Oct 2026 11:03:36 +0000
+Received: by mail-wm1-x32c.google.com with SMTP id 5b1f17b1804b1-4a1635f7c89so9402765e9.2
+        for <linux-mediatek@lists.infradead.org>; Sun, 04 Oct 2026 04:03:31 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=ndufresne-ca.20251104.gappssmtp.com; s=20251104; t=1791111810; x=1791716610; darn=lists.infradead.org;
+        h=mime-version:user-agent:content-type:autocrypt:references
+         :in-reply-to:date:cc:to:from:subject:message-id:from:to:cc:subject
+         :date:message-id:reply-to:content-type;
+        bh=BRY4iUwoy0k7A4Q+WlcGtk6KJOn/v2ablV6+SEfz6BM=;
+        b=thoYrUzbHCPMz9fozHRA4NhSAkaXQO5ga5eB6Wyjy4Ow5hc3cl8eZg/o0C6ETW0scG
+         BCuVf6YmkkKWXFNQzl0iUum44G4tKqrPoAXLeDxfm6N89f2RkBwRsJw0qCXpa5tfoT3M
+         H3focm3aBPHL/CH5ke6U/UnIWSEFmij+U2OQw4m+aijOZKVIp7GaH7GGj7sPUZpHl8EP
+         OOqLkFxpIs/7PPi5tWWWCxKtHkzAfQ/m5IAcFFAOcLFWdV1T/2XU+HUw1C+8mkiGNTRF
+         UW0p8Am99STjy9kl/snM+7yfgGOeIeq866ztoA0FoHxKnl5BTtwZvRQEXSV/6xlQJ3Fr
+         hHGQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20260707; t=1791111810; x=1791716610;
+        h=mime-version:user-agent:content-type:autocrypt:references
+         :in-reply-to:date:cc:to:from:subject:message-id:x-gm-gg
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+         :content-type;
+        bh=BRY4iUwoy0k7A4Q+WlcGtk6KJOn/v2ablV6+SEfz6BM=;
+        b=qOFRzNPsHAd6m0WgeP0L/GcgSe6K8cio8auahGJTuriBheaTMKzvU4yyfWdC1b57r/
+         p6kPKjaUJlqp8a+b8x8dN+Nk5jDudhG6SztPFsmEX3x7VItmusxCuejr4bchRXZ7QLmj
+         gFb7sgJMzRtXkFmuJ2sCD/lsooTXUeySADRQR6fs9th92RSHgiMDYwmDhb+ClsKnEA8f
+         7fFbYjpRZHkb3ZGXF91kBwYUw1MQsQLvjXXWzhx1Cxt2mp1K8UV1gPmQipKKsChjUDde
+         VeC0TGwXPMAhuRRDuNfocrCo21WpGV8Nh3jTTd9CZn8HZH/l3k1PTtXOOrPonZnNRyfZ
+         UGWg==
+X-Forwarded-Encrypted: i=1; AKwUvBxJ6fEYmSOSb5qsIsB9qMe2IfF6/RPqBHuHIzRNIqj+yleASQOCcahhVhrXFpLWWsvDM8nm5YIWGzkc2JpRcg==@lists.infradead.org
+X-Gm-Message-State: AFuF++ldV/H/0NxVA7NNX0feYkiKmsCfHfuG6pH8a1o9mFgo5qY54Tai
+	VSMd1Fm4mOfLCgQAYFmMq1BcKp/UhEQMjVbUg1FsAOwUqtBRRF/jiBqgjMVPBGYSFc0=
+X-Gm-Gg: AYBFou3t46B9iJqyrH1HqprX+PGBCrMAHKrEhn+JwoSB6n1tFn9/Uma6MskKBlL7/xQ
+	7hCf50EDBQ6NLIHMsNV0vK9azKE/jnynxV+tgE8qovuezcYemInukxaZ+ArI2X54iQ/xBoR4vbU
+	gSNo0/nzrZTRUbII2zU6VI+u8IHbgdccg1HLdt102Sh7CcG0/muIYeKTS7xuRnCX5ud9Cbs134J
+	D5Uhpl9Nd5gpa/kEkPSmCl6mD3ASB6B7xL91sBY5aBkOo3b4TmQ/b9X8gSEHLg0+vHE6vGCYcRY
+	jXwQIDUDODfp5W52cWeyVKWNYXgd1wWS9I55TyMTfCZc0eFzisrPbP4El4GV7vmTgmF3W9lrCyQ
+	G2lPgXDwkdocVCOWE4ZOpKINiPO4G0JJSfXGBUy8mmaopD2/ofBfmSAdFKx1+sKv8HB9lzL39Xb
+	Se79TTed9bi+BmGbJugYYotm5sXMrhwByn9uSJaG+btJmdoASMpGFJHBceU4KknYdDdtO3sysp7
+	TfuoixkB7q5IwEt1RD+ZmihnjfXyw394TcRqZSYRj2ATw3FuBdYlKZHOSOflVNbtqGvJUxR+VpS
+	lTZ2JXN14uwNug13uvIPHXMX9AvRuhXvMy55Wj5z
+X-Received: by 2002:a05:600c:3509:b0:4a1:69c0:a1f7 with SMTP id 5b1f17b1804b1-4a169c0a338mr59304215e9.34.1791111809834;
+        Sun, 04 Oct 2026 04:03:29 -0700 (PDT)
+Received: from ?IPv6:2001:1aeb:400:6f00:73f4:bfe7:a3e6:c16f? (2001-1aeb-400-6f00-73f4-bfe7-a3e6-c16f.ip6.tmcz.cz. [2001:1aeb:400:6f00:73f4:bfe7:a3e6:c16f])
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-4a027740a2fsm283591575e9.13.2026.10.04.04.03.28
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sun, 04 Oct 2026 04:03:29 -0700 (PDT)
+Message-ID: <5c6b215401bd705f2023102e9d8b779ee4ae8c4a.camel@ndufresne.ca>
+Subject: Re: [PATCH v2 6/6] media: mtk-vpu: rename IPI_MAX to IPI_VPU_MAX
+From: Nicolas Dufresne <nicolas@ndufresne.ca>
+To: Radu Rendec <radu@rendec.net>, "GUO Ren (XuanTie)" <guoren@kernel.org>, 
+ Paul Walmsley	 <pjw@kernel.org>, Palmer Dabbelt <palmer@dabbelt.com>,
+ Albert Ou	 <aou@eecs.berkeley.edu>, Alexandre Ghiti <alex@ghiti.fr>, Daniel
+ Lezcano	 <daniel.lezcano@kernel.org>, Thomas Gleixner <tglx@kernel.org>,
+ Anup Patel	 <anup@brainfault.org>, Tiffany Lin <tiffany.lin@mediatek.com>,
+ Andrew-CT Chen	 <andrew-ct.chen@mediatek.com>, Yunfei Dong
+ <yunfei.dong@mediatek.com>,  Minghsiu Tsai <minghsiu.tsai@mediatek.com>,
+ Houlong Wei <houlong.wei@mediatek.com>, Mauro Carvalho Chehab	
+ <mchehab@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: linux-riscv@lists.infradead.org, linux-kernel@vger.kernel.org, 
+	linux-media@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-mediatek@lists.infradead.org, Nathan Chancellor <nathan@kernel.org>
+Date: Sun, 04 Oct 2026 07:03:27 -0400
+In-Reply-To: <2b23ecf7ae8baf0266c3701060858abec901a71c.camel@rendec.net>
+References: <20260911-ipi_max-v2-0-a77826ff189e@kernel.org>
+		 <20260911-ipi_max-v2-6-a77826ff189e@kernel.org>
+	 <2b23ecf7ae8baf0266c3701060858abec901a71c.camel@rendec.net>
+Autocrypt: addr=nicolas@ndufresne.ca; prefer-encrypt=mutual;
+ keydata=mDMEaCN2ixYJKwYBBAHaRw8BAQdAM0EHepTful3JOIzcPv6ekHOenE1u0vDG1gdHFrChD
+ /e0J05pY29sYXMgRHVmcmVzbmUgPG5pY29sYXNAbmR1ZnJlc25lLmNhPoicBBMWCgBEAhsDBQsJCA
+ cCAiICBhUKCQgLAgQWAgMBAh4HAheABQkJZfd1FiEE7w1SgRXEw8IaBG8S2UGUUSlgcvQFAmibrjo
+ CGQEACgkQ2UGUUSlgcvQlQwD/RjpU1SZYcKG6pnfnQ8ivgtTkGDRUJ8gP3fK7+XUjRNIA/iXfhXMN
+ abIWxO2oCXKf3TdD7aQ4070KO6zSxIcxgNQFtDFOaWNvbGFzIER1ZnJlc25lIDxuaWNvbGFzLmR1Z
+ nJlc25lQGNvbGxhYm9yYS5jb20+iJkEExYKAEECGwMFCwkIBwICIgIGFQoJCAsCBBYCAwECHgcCF4
+ AWIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCaCyyxgUJCWX3dQAKCRDZQZRRKWBy9ARJAP96pFmLffZ
+ smBUpkyVBfFAf+zq6BJt769R0al3kHvUKdgD9G7KAHuioxD2v6SX7idpIazjzx8b8rfzwTWyOQWHC
+ AAS0LU5pY29sYXMgRHVmcmVzbmUgPG5pY29sYXMuZHVmcmVzbmVAZ21haWwuY29tPoiZBBMWCgBBF
+ iEE7w1SgRXEw8IaBG8S2UGUUSlgcvQFAmibrGYCGwMFCQll93UFCwkIBwICIgIGFQoJCAsCBBYCAw
+ ECHgcCF4AACgkQ2UGUUSlgcvRObgD/YnQjfi4+L8f4fI7p1pPMTwRTcaRdy6aqkKEmKsCArzQBAK8
+ bRLv9QjuqsE6oQZra/RB4widZPvphs78H0P6NmpIJ
+Content-Type: multipart/signed; micalg="pgp-sha512";
+	protocol="application/pgp-signature"; boundary="=-TPZS9VL83/bL5Rbeq0pg"
+User-Agent: Evolution 3.60.2 (3.60.2-2.fc44) 
 MIME-Version: 1.0
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20261004_040333_309813_00C1E787 
+X-CRM114-Status: GOOD (  24.31  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,595 +127,136 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Thank you for your contribution! Sashiko AI review found 15 potential
-issue(s) to consider.
 
-Critical: 0 · High: 4 · Medium: 7 · Low: 4
-
-If you believe none of the issues are legitimate, please reply to each
-issue of Medium severity or higher and explain why the AI is wrong.
-If any of them are legitimate and you plan to respin, please let patchwork
-know by including "pw-bot: cr" as a separate line at the end of your reply
-(one such reply per series is enough).
-
-- [High] Recovery can unmap TX buffers the device still owns.
-- [High] Use-after-free of rxq in mtk_cldma_rxq_free().
-- [High] Use-after-free on trb_srv during HIF teardown.
-- [High] The RX DMA engine can be restarted after mtk_cldma_rxq_free()
-  has stopped it, and the buffers are then freed under live DMA.
-- [Medium] An RX error can be dropped for good in mtk_cldma_err_work().
-- [Medium] mtk_mhccif_isr_work() acks MHCCIF_EP2RC_SW_INT_ACK before it
-  dispatches callbacks, and it ignores their return values.
-- [Medium] The IRQ teardown in mtk_cldma_dev_exit() relies on 'mask first
-  so no new interrupt can fire, then wait out any in-flight handler'.
-- [Medium] In mtk_cldma_txq_free() and mtk_cldma_rxq_free(),
-  synchronize_irq() and flush_work(&drv_info->err_work) run before the…
-- [Medium] mtk_cldma_err_work() calls mtk_cldma_stop_queue(DIR_RX) with
-  no serialization against rxq->rx_done_work.
-- [Medium] An incompatible OPTIONAL_SUPPORT reply satisfies the handshake
-  even though the host marked the feature mandatory.
-- [Medium] HS1 masking race.
-- [Low] The justification for leaking the DMA pools contradicts itself.
-- [Low] The new comment in mtk_cldma_exit() says 'the caller holds
-  trans->submit_lock'.
-- [Low] In mtk_cldma_dev_exit(), WRITE_ONCE(cd->cldma_drv_info[hif_id],
-  NULL) carries the comment 'Unpublish before teardown; pairs with the…
-- [Low] In mtk_fsm_feature_set_match(), the
-  RTFT_TYPE_SUPPORT_BACKWARD_COMPAT case only compares versions and…
-
---
-
-net: wwan: t9xx: Add FSM thread
-
-This adds an FSM kthread. It serializes device and OS events into state
-transitions and notifies registered listeners before and after each one.
-The MD and SAP HS1/HS2/HS3 runtime feature handshake is wired into the
-FSM, and CLDMA bring-up and teardown are driven from FSM state
-transitions. That includes the IRQ registration and a new QUEUE_ERROR
-recovery worker.
-
-> diff --git a/drivers/net/wwan/t9xx/mtk_fsm.c b/drivers/net/wwan/t9xx/mtk_fsm.c
-> new file mode 100644
-> index 0000000000000..94617933e7713
-> --- /dev/null
-> +++ b/drivers/net/wwan/t9xx/mtk_fsm.c
-> @@ -0,0 +1,1174 @@
-
-[ ... ]
-
-> +static int mtk_fsm_feature_set_match(enum runtime_feature_support_type *cur_ft_spt,
-> +				     struct runtime_feature_info rtft_info_st,
-> +				     struct runtime_feature_info rtft_info_cfg)
-> +{
-
-[ ... ]
-
-> +	case RTFT_TYPE_OPTIONAL_SUPPORT:
-> +		if (FIELD_GET(FEATURE_TYPE, rtft_info_cfg.feature) == RTFT_TYPE_NOT_EXIST ||
-> +		    FIELD_GET(FEATURE_TYPE, rtft_info_cfg.feature) == RTFT_TYPE_NOT_SUPPORT) {
-> +			*cur_ft_spt = RTFT_TYPE_NOT_SUPPORT;
-> +		} else {
-> +			if (FIELD_GET(FEATURE_VER, rtft_info_st.feature) ==
-> +			    FIELD_GET(FEATURE_VER, rtft_info_cfg.feature))
-> +				*cur_ft_spt = RTFT_TYPE_MUST_SUPPORT;
-> +			else
-> +				*cur_ft_spt = RTFT_TYPE_NOT_SUPPORT;
-> +		}
-> +		break;
-
-[Severity: Medium]
-Should a version mismatch here fail the handshake when the host has
-marked the feature mandatory?
-
-mtk_fsm_hs_info_init_by_hsid() configures MD_PORT_ENUM and SAP_PORT_ENUM
-as RTFT_TYPE_MUST_SUPPORT, version 0. Suppose the device replies
-OPTIONAL_SUPPORT with a different version. This code sets cur_ft_spt to
-RTFT_TYPE_NOT_SUPPORT and returns 0. BACKWARD_COMPAT with a lower version
-gives NOT_EXIST in the same way.
-
-mtk_fsm_parse_hs2_msg() then skips the port enumeration action:
-
-    if (cur_ft_spt == RTFT_TYPE_MUST_SUPPORT && query_rtft_action[ft_id]) {
-
-HS3 still goes out, and the FSM can reach READY without the mandatory
-enumeration ever running. That seems to contradict the comment in the
-NOT_SUPPORT case above: "The device refusing a feature the host declared
-mandatory must fail the handshake".
-
-> +	case RTFT_TYPE_SUPPORT_BACKWARD_COMPAT:
-> +		if (FIELD_GET(FEATURE_VER, rtft_info_st.feature) >=
-> +		    FIELD_GET(FEATURE_VER, rtft_info_cfg.feature))
-> +			*cur_ft_spt = RTFT_TYPE_MUST_SUPPORT;
-> +		else
-> +			*cur_ft_spt = RTFT_TYPE_NOT_EXIST;
-> +		break;
-
-[Severity: Low]
-This case only compares versions and never looks at the host's
-configured type. For a feature the host never offered, query_ft_set[] is
-zero (NOT_EXIST, version 0). The >= check then always passes and
-cur_ft_spt becomes MUST_SUPPORT.
-
-mtk_fsm_parse_hs2_msg() will then run query_rtft_action[ft_id] on data
-supplied by the device. For example, during the MD handshake the device
-could trigger the SAP_PORT_ENUM action (mtk_port_status_update()).
-
-Should this case reject or downgrade when the host config is NOT_EXIST
-or NOT_SUPPORT, as the MUST_SUPPORT and OPTIONAL_SUPPORT cases do?
-
-[ ... ]
-
-> +static int mtk_fsm_idle_evt_handler(struct mtk_md_dev *mdev,
-> +				    u32 dev_state, struct mtk_md_fsm *fsm)
-> +{
-
-[ ... ]
-
-> +	/* On failure keep the handshake channels masked and report it, so
-> +	 * the device's next boot-flow notification can retrigger us.
-> +	 */
-> +	if (mtk_fsm_evt_submit(mdev, FSM_EVT_STARTUP, FSM_F_DFLT,
-> +			       NULL, 0, 0) == FSM_EVT_RET_FAIL) {
-> +		dev_err(mdev->dev, "Failed to submit STARTUP evt, waiting for retry\n");
-> +		return -ENOMEM;
-> +	}
-
-[Severity: Medium]
-Can this retry ever arrive?
-
-mtk_mhccif_isr_work() acks MHCCIF_EP2RC_SW_INT_ACK before it dispatches
-the callbacks, and it ignores their return values. mtk_mhccif_init()
-documents EP2RC notifications as one-shot: the device never re-sends
-them.
-
-The callback runs under spin_lock_bh, so mtk_fsm_evt_submit() allocates
-with GFP_ATOMIC here and can fail under memory pressure. When it fails,
-this function returns before it unmasks the HS channels. In addition,
-mtk_fsm_early_bootup_handler() leaves last_dev_state unlatched so that
-the repeated notification is not filtered out.
-
-mtk_fsm_hs1_handler() relies on the same assumption:
-
-    /* Only consume the notification once the event is queued; on a
-     * failed submit the channel stays unmasked and uncleared so the
-     * device's retry still reaches us.
-     */
-
-The status has already been acked, and DEV_STAGE_IDLE is the last stage,
-so no second notification seems to come. The FSM would then stay in ON
-with the HS channels masked, and the device would never reach READY.
-
-The callbacks also ack a second time through mtk_pci_clear_ext_evt().
-That contradicts the dispatcher's ack-first ordering, and it can erase
-an event that was re-asserted in the meantime.
-
-[ ... ]
-
-> +static int mtk_fsm_hs1_handler(u32 status, void *__hs_info)
-> +{
-
-[ ... ]
-
-> +	if (mtk_fsm_evt_submit(mdev, FSM_EVT_STARTUP, hs_info->fsm_flag_hs1,
-> +			       hs_info, sizeof(*hs_info), 0) == FSM_EVT_RET_FAIL) {
-> +		dev_err(mdev->dev, "Failed to submit HS1 evt(hs%d), waiting for retry\n",
-> +			hs_info->id);
-> +		return -ENOMEM;
-> +	}
-> +	mtk_pci_mask_ext_evt(mdev, hs_info->mhccif_ch);
-> +	mtk_pci_clear_ext_evt(mdev, hs_info->mhccif_ch);
-
-[Severity: Medium]
-Can the mask here undo the FSM thread's re-arm?
-
-mtk_fsm_evt_submit() queues the event and wakes the FSM thread before
-this callback masks and clears the channel. Meanwhile the FSM thread on
-another CPU can process the STARTUP event and fail. Examples are the
--EPROTO state check, a mtk_fsm_ctrl_ch_start() failure, or a failed HS1
-send. On failure it unmasks the HS channels in mtk_fsm_startup_act() so
-that a retry can come in:
-
-    hs_err:
-        for (int hs_id = 0; hs_id < HS_ID_MAX; hs_id++)
-            mtk_pci_unmask_ext_evt(mdev, fsm->hs_info[hs_id].mhccif_ch);
-
-This callback then masks the channel again, and later HS notifications
-stay masked.
-
-The FSM side does not take mhccif_lock, so the lock held here does not
-order the two paths. On PREEMPT_RT the spin_lock_bh section can also be
-preempted, which makes the window wider.
-
-[ ... ]
-
-> diff --git a/drivers/net/wwan/t9xx/pcie/mtk_cldma.c b/drivers/net/wwan/t9xx/pcie/mtk_cldma.c
-> index 0f281bfb38cc7..080ae29d3a887 100644
-> --- a/drivers/net/wwan/t9xx/pcie/mtk_cldma.c
-> +++ b/drivers/net/wwan/t9xx/pcie/mtk_cldma.c
-> @@ -32,11 +32,184 @@
-
-[ ... ]
-
-> +static int mtk_cldma_isr(int irq_id, void *param)
-> +{
-
-[ ... ]
-
-> +	mtk_pci_clear_irq(mdev, drv_info->pci_ext_irq_id);
-> +	mtk_pci_unmask_irq(mdev, drv_info->pci_ext_irq_id);
-> +
-> +	return IRQ_HANDLED;
-> +}
-
-[Severity: Medium]
-Does this unconditional unmask defeat the mask in mtk_cldma_dev_exit()?
-
-mtk_cldma_dev_exit() relies on this sequence:
-
-    mtk_pci_mask_irq(mdev, drv_info->pci_ext_irq_id);
-    synchronize_irq(virq_id);
-    mtk_pci_unregister_irq(mdev, drv_info->pci_ext_irq_id);
-
-Its comment says "mask first so no new interrupt can fire". A handler
-that is already running would unmask L1 again here before
-synchronize_irq() returns.
-
-mtk_pci_unregister_irq() uses the same mask plus synchronize_irq()
-sequence and then clears irq_cb_list[] and irq_cb_data[].
-mtk_pci_irq_handler() reads cb and data as two separate loads, without
-irq_cb_lock:
-
-    cb = READ_ONCE(priv->irq_cb_list[irq_id]);
-    if (likely(cb)) {
-        smp_rmb();
-        cb(irq_id, priv->irq_cb_data[irq_id]);
-
-A new interrupt could then call mtk_cldma_isr() with NULL data. It could
-also run against a drv_info whose workqueue is being destroyed and which
-is freed later.
-
-In the queue-timeout path, mtk_cldma_rearm_queues() and
-mtk_cldma_drv_init() can also rewrite int_mask and unmask L2 sources
-after the handler has been removed.
-
-mtk_pci_irq_msix() masks L1 before dispatch, so an interrupt that finds
-no handler leaves L1 masked rather than armed indefinitely.
-
-[ ... ]
-
-> @@ -679,8 +853,11 @@ static void mtk_cldma_txq_free(struct cldma_drv_info *drv_info, u32 txqno)
->  
->  	irq_id = mtk_pci_get_virq_id(mdev, drv_info->pci_ext_irq_id);
->  	synchronize_irq(irq_id);
-> -	/* flush on-going work */
-> +	/* flush on-going work; the error worker may have loaded this txq
-> +	 * before it was unpublished above, so it has to be retired too
-> +	 */
->  	flush_work(&txq->tx_done_work);
-> +	flush_work(&drv_info->err_work);
->  	mtk_cldma_mask_intr(drv_info, DIR_TX, txqno, QUEUE_XFER_DONE);
->  	mtk_cldma_mask_intr(drv_info, DIR_TX, txqno, QUEUE_ERROR);
-
-[Severity: Medium]
-Is err_work flushed too early here? synchronize_irq() and
-flush_work(&drv_info->err_work) both run before QUEUE_ERROR is masked
-for this queue.
-
-If a QUEUE_ERROR interrupt lands in between, mtk_cldma_isr() sets the
-tx_err_qs bit, unmasks QUEUE_ERROR again and queues err_work after the
-flush has finished.
-
-A later OPEN could reallocate the same queue number before the stale
-err_work runs. err_work would then stop the new queue and complete its
-pending TX requests with -EPIPE.
-
-mtk_cldma_rxq_free() uses the same ordering. On RX, a stale bit would
-stop and restart a healthy new queue, which is the case the new comment
-in rxq_free says the flush prevents.
-
-> @@ -987,8 +1165,11 @@ static void mtk_cldma_rxq_free(struct cldma_drv_info *drv_info, u32 rxqno)
->  
->  	irq_id = mtk_pci_get_virq_id(mdev, drv_info->pci_ext_irq_id);
->  	synchronize_irq(irq_id);
-> -	/* flush on-going work */
-> +	/* flush on-going work; the error worker may still be about to stop
-> +	 * this queue number, which a later allocation could already reuse
-> +	 */
->  	flush_work(&rxq->rx_done_work);
-> +	flush_work(&drv_info->err_work);
-
-[Severity: High]
-Is this flush ordering enough to keep rxq alive?
-
-mtk_cldma_err_work() can load rxq with
-smp_load_acquire(&drv_info->rxq[i]) before rxq_free() unpublishes the
-slot. It then spends time in mtk_cldma_stop_queue(DIR_RX), and finally
-does:
-
-    atomic_set(&rxq->need_restart, 1);
-    queue_work(drv_info->wq, &rxq->rx_done_work);
-
-If that queue_work() runs after flush_work(&rxq->rx_done_work) has
-returned, flush_work(&drv_info->err_work) waits only for err_work
-itself. rxq_free() then goes on to kfree(rxq) while rx_done_work is
-still pending, and mtk_cldma_rx_done_work() later runs on freed memory.
-
-need_exit does not help, because the work_struct itself is inside the
-freed rxq.
-
-Should err_work be flushed before rx_done_work? This path can be reached
-from both mtk_cldma_close() and mtk_cldma_dev_exit().
-
-[ ... ]
-
-> @@ -1072,6 +1254,67 @@ static int mtk_cldma_hw_recovery(struct cldma_drv_info *drv_info, u32 qno)
-
-[ ... ]
-
-> +static int mtk_cldma_dev_exit(struct cldma_dev *cd, int hif_id)
-> +{
-
-[ ... ]
-
-> +	/* quiesce the IP before releasing descriptor memory: disable its
-> +	 * interrupt output and reset it, so it cannot touch the rings again
-> +	 */
-> +	mtk_pci_write32(mdev, drv_info->base_addr + drv_info->hw_regs->reg_cldma_int_mask,
-> +			LINK_ERROR_VAL);
-> +	mtk_cldma_drv_reset(drv_info);
-> +
-> +	if (drv_info->ring_leaked) {
-> +		/* A ring is leaked and its descriptors live in these pools:
-> +		 * the device may still master DMA into them, so handing them
-> +		 * back to the allocator would open a use-after-free window.
-> +		 */
-> +		dev_err(mdev->dev, "CLDMA%d rings leaked, leaking DMA pools too\n",
-> +			drv_info->hw_id);
-> +	} else {
-> +		dma_pool_destroy(drv_info->bd_dma_pool);
-> +		dma_pool_destroy(drv_info->gpd_dma_pool);
-> +	}
-
-[Severity: Low]
-Which of these two comments is correct? The reset above is said to
-quiesce the IP "so it cannot touch the rings again". This branch then
-skips dma_pool_destroy() because "the device may still master DMA into
-them".
-
-ring_leaked is only set after txq_free() or rxq_free() has already reset
-the instance and the stop still timed out. So the code already assumes
-that a reset is not enough in that case.
-
-Either the pool leak is unnecessary, or the "cannot touch the rings
-again" claim is wrong. The leak policy in the commit message does not
-say which guarantee it relies on.
-
-> +
-> +	/* Unpublish before teardown; pairs with the acquire loads of this
-> +	 * slot. No release is needed, there is no prior store to expose.
-> +	 */
-> +	WRITE_ONCE(cd->cldma_drv_info[hif_id], NULL);
-> +	kfree(drv_info);
-
-[Severity: Low]
-Does this comment match the code? It says "Unpublish before teardown".
-The store actually runs after the IRQ unregister, the queue frees,
-destroy_workqueue(), the reset and dma_pool_destroy().
-
-The comment looks copied from txq_free() and rxq_free(), where the order
-really is the other way round. The protection today comes from
-mtk_cldma_exit() clearing trans->dev first and from the trb threads
-being joined.
-
-[ ... ]
-
-> @@ -1095,6 +1338,11 @@ static int mtk_cldma_start_xfer(struct cldma_drv_info *drv_info, u32 qno)
->  	 * names; tx_done_work advances free_idx under the same lock.
->  	 */
->  	spin_lock(&txq->ring_lock);
-> +	if (unlikely(txq->is_stopping)) {
-> +		spin_unlock(&txq->ring_lock);
-> +		return -EPIPE;
-> +	}
-
-[Severity: High]
-Can this -EPIPE return lead to unmapping TX buffers that the device
-still owns?
-
-mtk_cldma_tx() treats any error from mtk_cldma_start_xfer() as a reason
-to flush the ring:
-
-    ret = mtk_cldma_start_xfer(drv_info, que->txqno);
-    if (unlikely(ret)) {
-        dev_err(mdev->dev, "Failed to trigger cldma tx\n");
-        mtk_cldma_txq_flush(drv_info, txq, ret);
-    }
-
-mtk_cldma_txq_flush() clears CLDMA_GPD_FLAG_HWO, calls
-dma_unmap_single() and completes every pending skb.
-
-mtk_cldma_err_work() sets is_stopping before it polls
-mtk_cldma_stop_queue(). If the stop fails, it leaves is_stopping set on
-purpose and skips the flush, because the device may still be walking the
-ring. A TRB_CMD_TX that arrives during the stop poll, or any time after
-a failed stop, would flush exactly the requests err_work is trying to
-keep.
-
-mtk_cldma_submit_tx() also never checks is_stopping, although the new
-comment in struct txq says the producer reads it under ring_lock. So new
-HWO descriptors keep being published into the ring.
-
-Nothing clears is_stopping after a failed stop. Wouldn't every later TX
-on that queue take the flush path?
-
-[ ... ]
-
-> @@ -1124,11 +1372,22 @@ int mtk_cldma_init(struct mtk_ctrl_trans *trans)
-
-[ ... ]
-
-> +	/* Latch-and-clear up front: the caller holds trans->submit_lock, so
-> +	 * publishing the NULL here makes any later submit path bail out in
-> +	 * mtk_cldma_get_tx_budget() instead of walking freed queues.
-> +	 */
->  	trans->dev = NULL;
-
-[Severity: Low]
-Is the locking precondition in this comment accurate? The err_cldma_exit
-path in mtk_pcie_hif_init() is taken when mtk_ctrl_trb_srv_init() fails,
-and it calls mtk_cldma_exit() without holding submit_lock.
-
-That is harmless today because trans->available is still 0 on that
-path. Should the comment cover this case as well?
-
-[ ... ]
-
-> @@ -1250,6 +1510,82 @@ static void mtk_cldma_txq_flush(struct cldma_drv_info *drv_info,
-
-[ ... ]
-
-> +	tx_err = atomic_xchg(&drv_info->tx_err_qs, 0);
-> +	rx_err = atomic_xchg(&drv_info->rx_err_qs, 0);
-> +
-> +	for (i = 0; i < HW_QUEUE_NUM; i++) {
-> +		if (tx_err & BIT(i)) {
-> +			/* pairs with smp_store_release() in txq_alloc */
-> +			txq = smp_load_acquire(&drv_info->txq[i]);
-> +			if (!txq)
-> +				continue;
-
-[ ... ]
-
-> +			ret = mtk_cldma_stop_queue(drv_info, DIR_TX, i);
-> +			if (ret) {
-> +				/* the device may still be walking the ring:
-> +				 * unmapping its buffers here would leave it
-> +				 * writing into unmapped memory. is_stopping is
-> +				 * left set so nothing submits to it again.
-> +				 */
-> +				dev_err(drv_info->mdev->dev,
-> +					"TX queue %d stop failed (%d), keeping its requests\n",
-> +					i, ret);
-> +				continue;
-> +			}
-
-[Severity: Medium]
-Does this continue, and the one after the !txq check above, also skip
-RX error handling for the same queue index?
-
-Both masks are consumed up front with atomic_xchg(). When the TX branch
-hits either continue, the "if (rx_err & BIT(i))" branch for the same i
-never runs.
-
-The ISR has already cleared and unmasked the RX QUEUE_ERROR source. As
-the comment in the RX branch notes, a stopped RX queue raises no further
-interrupt. Wouldn't that RX queue then stay stalled until it is closed
-and reopened?
-
-[ ... ]
-
-> +		if (rx_err & BIT(i)) {
-> +			/* pairs with smp_store_release() in rxq_alloc */
-> +			rxq = smp_load_acquire(&drv_info->rxq[i]);
-> +			if (!rxq)
-> +				continue;
-> +			ret = mtk_cldma_stop_queue(drv_info, DIR_RX, i);
-
-[Severity: Medium]
-Is this stop serialized with rxq->rx_done_work? drv_info->wq is
-allocated with WQ_UNBOUND, so err_work and rx_done_work can run at the
-same time on different CPUs.
-
-Consider an rx_done_work near its end. It can read need_restart == 0 and
-call mtk_cldma_resume_queue(DIR_RX) right after this stop. err_work then
-sets need_restart and queues rx_done_work again. That call runs
-mtk_cldma_rxq_restart() and reprograms the start address on a queue that
-may already be running again.
-
-The comment below says the queue is handed back to its worker instead
-of being programmed here. The stop command is also queue programming,
-though, and it is not serialized with the owner's resume or restart.
-
-> +			if (ret) {
-
-[ ... ]
-
-> +			atomic_set(&rxq->need_restart, 1);
-> +			queue_work(drv_info->wq, &rxq->rx_done_work);
-
-[Severity: High]
-Can the RX engine be restarted after mtk_cldma_rxq_free() has stopped
-it?
-
-The end of mtk_cldma_rx_done_work() checks need_exit and then acts on
-it, with no lock:
-
-    if (!atomic_read(&rxq->need_exit)) {
-        if (atomic_xchg(&rxq->need_restart, 0))
-            mtk_cldma_rxq_restart(drv_info, rxq);
-        else if (ret != -ENXIO)
-            mtk_cldma_resume_queue(drv_info, DIR_RX, rxq->rxqno);
-    }
-
-rxq_free() sets need_exit and calls mtk_cldma_stop_queue(DIR_RX), then
-synchronize_irq() and flush_work(). A worker that read need_exit == 0
-before that can still call mtk_cldma_rxq_restart() after the stop has
-completed. flush_work() only waits for the restart to finish.
-
-The stop returned 0, so ring_leaked stays false. rxq_free() then unmaps
-and frees the RX skbs and returns the GPDs, while the SO engine may be
-running on HWO descriptors.
-
-Setting need_restart here on every RX QUEUE_ERROR makes this
-interleaving concrete. The added flush_work(&drv_info->err_work) in
-rxq_free() does not stop the hardware again.
-
-[ ... ]
-
-> diff --git a/drivers/net/wwan/t9xx/pcie/mtk_trans_ctrl.c b/drivers/net/wwan/t9xx/pcie/mtk_trans_ctrl.c
-> index d485bd7e3bf9c..658189dace01b 100644
-> --- a/drivers/net/wwan/t9xx/pcie/mtk_trans_ctrl.c
-> +++ b/drivers/net/wwan/t9xx/pcie/mtk_trans_ctrl.c
-> @@ -473,19 +473,23 @@ int mtk_pcie_hif_exit(struct mtk_md_dev *mdev)
-
-[ ... ]
-
->  	/* Join the service threads before freeing what they dereference: they
->  	 * read trans->dev without a lock, so clearing it cannot stop a
->  	 * consumer that has already loaded the pointer.
->  	 */
->  	mtk_ctrl_trb_srv_exit(trans);
->  	mtk_cldma_exit(trans);
-
-[Severity: High]
-Does this ordering leave a window where trb_srv is used after it has
-been freed?
-
-mtk_ctrl_trb_srv_exit() calls kthread_stop() and kfree(srv), and only
-then sets trans->trb_srv[i] = NULL. The CLDMA IRQ is masked, and
-drv_info->wq drained, only later in
-mtk_cldma_exit()->mtk_cldma_dev_exit().
-
-This patch registers mtk_cldma_isr(), so mtk_cldma_tx_done_work() and
-mtk_cldma_err_work()->mtk_cldma_txq_flush() can run inside that window.
-Both do this without a lock:
-
-    srv = trans->trb_srv[trans->srv_cfg[hif_id][txqno]];
-    if (was_starved && srv)
-        wake_up(&srv->trb_waitq);
-
-srv can already be freed at that point. It is even still non-NULL
-between the kfree() and the NULL store.
-
-The commit message says "mtk_pcie_hif_exit() joins the trb service
-threads before mtk_cldma_exit() frees what they dereference". However,
-the IRQ and work producers that also dereference trb_srv[] are not
-quiesced before srv is freed.
-
-A queue can still be open at this point. That happens, for example, when
-the DEV_RM submit fails and removal forces cleanup, or when
-mtk_port_ch_disable() times out.
-
--- 
-Sashiko AI review · https://netdev-ai.bots.linux.dev/sashiko/#/patchset/20260930-t9xx_driver_v1-v9-0-3248b9256956%40compal.com
+--=-TPZS9VL83/bL5Rbeq0pg
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+Le jeudi 17 septembre 2026 =C3=A0 21:21 -0400, Radu Rendec a =C3=A9crit=C2=
+=A0:
+> On Fri, 2026-09-11 at 03:27 +0000, GUO Ren (XuanTie) wrote:
+> > The last enumerator of this driver's firmware IPI id list is a bound
+> > for the VPU mailbox protocol, not a generic host IPI limit. Follow the
+> > existing naming in this header: IPI_VPU_INIT already carries a VPU
+> > prefix, so the terminator should match.
+> >=20
+> > The same convention is used by the SCP IPI enum, which ends with a
+> > prefixed SCP_IPI_MAX rather than a bare IPI_MAX.
+> >=20
+> > Rename IPI_MAX to IPI_VPU_MAX and update the descriptor table bounds
+> > and range checks. No functional change.
+> >=20
+> > Link: https://lore.kernel.org/linux-riscv/20260908222349.GA2324870@ax16=
+2
+> > Cc: Nathan Chancellor <nathan@kernel.org>
+> > Signed-off-by: GUO Ren (XuanTie) <guoren@kernel.org>
+
+Applied, ty.
+
+> > ---
+> > =C2=A0drivers/media/platform/mediatek/vpu/mtk_vpu.c | 12 ++++++------
+> > =C2=A0drivers/media/platform/mediatek/vpu/mtk_vpu.h |=C2=A0 4 ++--
+> > =C2=A02 files changed, 8 insertions(+), 8 deletions(-)
+> >=20
+> > diff --git a/drivers/media/platform/mediatek/vpu/mtk_vpu.c b/drivers/me=
+dia/platform/mediatek/vpu/mtk_vpu.c
+> > index 8d8319f0cd22..b3e9f8c4ab7a 100644
+> > --- a/drivers/media/platform/mediatek/vpu/mtk_vpu.c
+> > +++ b/drivers/media/platform/mediatek/vpu/mtk_vpu.c
+> > @@ -211,7 +211,7 @@ struct mtk_vpu {
+> > =C2=A0	struct vpu_regs reg;
+> > =C2=A0	struct vpu_run run;
+> > =C2=A0	struct vpu_wdt wdt;
+> > -	struct vpu_ipi_desc ipi_desc[IPI_MAX];
+> > +	struct vpu_ipi_desc ipi_desc[IPI_VPU_MAX];
+> > =C2=A0	struct share_obj __iomem *recv_buf;
+> > =C2=A0	struct share_obj __iomem *send_buf;
+> > =C2=A0	struct device *dev;
+> > @@ -221,7 +221,7 @@ struct mtk_vpu {
+> > =C2=A0	struct mutex vpu_mutex; /* for protecting vpu data data structur=
+e */
+> > =C2=A0	u32 wdt_refcnt;
+> > =C2=A0	wait_queue_head_t ack_wq;
+> > -	bool ipi_id_ack[IPI_MAX];
+> > +	bool ipi_id_ack[IPI_VPU_MAX];
+> > =C2=A0};
+> > =C2=A0
+> > =C2=A0static inline void vpu_cfg_writel(struct mtk_vpu *vpu, u32 val, u=
+32 offset)
+> > @@ -296,7 +296,7 @@ int vpu_ipi_register(struct platform_device *pdev,
+> > =C2=A0		return -EPROBE_DEFER;
+> > =C2=A0	}
+> > =C2=A0
+> > -	if (id < IPI_MAX && handler) {
+> > +	if (id < IPI_VPU_MAX && handler) {
+> > =C2=A0		ipi_desc =3D vpu->ipi_desc;
+> > =C2=A0		ipi_desc[id].name =3D name;
+> > =C2=A0		ipi_desc[id].handler =3D handler;
+> > @@ -319,7 +319,7 @@ int vpu_ipi_send(struct platform_device *pdev,
+> > =C2=A0	unsigned long timeout;
+> > =C2=A0	int ret =3D 0;
+> > =C2=A0
+> > -	if (id <=3D IPI_VPU_INIT || id >=3D IPI_MAX ||
+> > +	if (id <=3D IPI_VPU_INIT || id >=3D IPI_VPU_MAX ||
+> > =C2=A0	=C2=A0=C2=A0=C2=A0 len > sizeof(send_obj->share_buf) || !buf) {
+> > =C2=A0		dev_err(vpu->dev, "failed to send ipi message\n");
+> > =C2=A0		return -EINVAL;
+> > @@ -748,7 +748,7 @@ static void vpu_ipi_handler(struct mtk_vpu *vpu)
+> > =C2=A0	s32 id =3D readl(&rcv_obj->id);
+> > =C2=A0
+> > =C2=A0	memcpy_fromio(data, rcv_obj->share_buf, sizeof(data));
+> > -	if (id < IPI_MAX && ipi_desc[id].handler) {
+> > +	if (id < IPI_VPU_MAX && ipi_desc[id].handler) {
+> > =C2=A0		ipi_desc[id].handler(data, readl(&rcv_obj->len),
+> > =C2=A0				=C2=A0=C2=A0=C2=A0=C2=A0 ipi_desc[id].priv);
+> > =C2=A0		if (id > IPI_VPU_INIT) {
+> > @@ -934,7 +934,7 @@ static int mtk_vpu_probe(struct platform_device *pd=
+ev)
+> > =C2=A0#ifdef CONFIG_DEBUG_FS
+> > =C2=A0	debugfs_remove(vpu_debugfs);
+> > =C2=A0#endif
+> > -	memset(vpu->ipi_desc, 0, sizeof(struct vpu_ipi_desc) * IPI_MAX);
+> > +	memset(vpu->ipi_desc, 0, sizeof(struct vpu_ipi_desc) * IPI_VPU_MAX);
+> > =C2=A0vpu_mutex_destroy:
+> > =C2=A0	mutex_destroy(&vpu->vpu_mutex);
+> > =C2=A0disable_vpu_clk:
+> > diff --git a/drivers/media/platform/mediatek/vpu/mtk_vpu.h b/drivers/me=
+dia/platform/mediatek/vpu/mtk_vpu.h
+> > index 3951547e9ec5..44ab631ec904 100644
+> > --- a/drivers/media/platform/mediatek/vpu/mtk_vpu.h
+> > +++ b/drivers/media/platform/mediatek/vpu/mtk_vpu.h
+> > @@ -49,7 +49,7 @@ typedef void (*ipi_handler_t) (void *data,
+> > =C2=A0 *			 handle VP8 video encoder job,, and vice versa.
+> > =C2=A0 * @IPI_MDP:		 The interrupt from vpu is to notify kernel to
+> > =C2=A0 *			 handle MDP (Media Data Path) job, and vice versa.
+> > - * @IPI_MAX:		 The maximum IPI number
+> > + * @IPI_VPU_MAX:	 The maximum VPU IPI number
+> > =C2=A0 */
+> > =C2=A0
+> > =C2=A0enum ipi_id {
+> > @@ -60,7 +60,7 @@ enum ipi_id {
+> > =C2=A0	IPI_VENC_H264,
+> > =C2=A0	IPI_VENC_VP8,
+> > =C2=A0	IPI_MDP,
+> > -	IPI_MAX,
+> > +	IPI_VPU_MAX,
+> > =C2=A0};
+> > =C2=A0
+> > =C2=A0/**
+>=20
+> Reviewed-by: Radu Rendec <radu@rendec.net>
+
+--=-TPZS9VL83/bL5Rbeq0pg
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: This is a digitally signed message part
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCasIyfwAKCRDZQZRRKWBy
+9FPtAQDkOJhhuAzPdjhptdi8Ylku8gIEE5VszzwnAapD1IuDBQEAglHv3kKr78aE
+qCuExFYbYHz3OhJLH8ntRzJdldPqtQk=
+=d6+8
+-----END PGP SIGNATURE-----
+
+--=-TPZS9VL83/bL5Rbeq0pg--
 
