@@ -4,82 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B778BCA5FCE
-	for <linux-mediatek@archiver.kernel.org>; Sun,  4 Oct 2026 06:06:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5A810CA5FE6
+	for <linux-mediatek@archiver.kernel.org>; Sun,  4 Oct 2026 06:06:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=sCPGuiYL0vLRXDDm6MOp5xoRgl7DVlYqvCMkReNNZVo=; b=do5pCZO1F1xWjj3vY5pGaLVQGY
-	/29qdCbMtECs/9BFsftizQdTDcccDCYYUBOhePCBhKhdYSLbh+6ihOByRug3lZAACs1WhaKPpxolr
-	Y67RkqfCfou8F0CZtoFkpndPijjbMSw4ULwvloq2LixxcvcH0n6PpAqEpTs/pqDZ9inESoUTK/E45
-	0L5WVODVJ5X/WzE2pgje4pM0aKYR/tycfxnM6Qh771T6TnbbXLYAfUneGdN322GMymoYjwK/FsG7N
-	0b5DabjCB+eOh31yorGbuxVskmAcH1q2O3UFt4iz2saUJpZESsUTbULvQs6yobpEzT47ZKdlfxb20
-	PzZ7gwxg==;
+	bh=a3QHSkSxST2zAhLEr4m0t2e0b9c14pDjRMyYQ78t1Ts=; b=X4AWypRbkkg7n9PEt7LnNafAOz
+	0ltGsLfJIjPvQHmmhmMfVByJbZmgBp/bnXwxhyYoM3bentllSlonV3qB6X3y/egZBls4x/XhJExXT
+	K+2Ay180zKXfrk8DhsxJds9ghe8f1qppKbF6Zs4vtdS/3Y19O5VwMin3jNzHc9tMyV8SQrcz6sWPt
+	19GbSAN+QHWGrAkqr/IfJTKkOR1tpG0onCidUfqrIgEH8CwJpwYTfGCUa9x/BOATUXu0C0lG+0uEC
+	IDrwZ6iIM23NudTIEfuSl+0AwWhvFxaT6tdPnwLoivPN0Xv1MnMFJgWqexWaFCQdGw+eXWZbRbCCo
+	eym4XBGA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xDFMI-0000000EOCJ-3kYn;
-	Sun, 04 Oct 2026 06:06:02 +0000
-Received: from mail-pj1-x102d.google.com ([2607:f8b0:4864:20::102d])
+	id 1xDFMS-0000000EOMA-1Ztt;
+	Sun, 04 Oct 2026 06:06:12 +0000
+Received: from mail-pj2-x11.google.com ([2607:f8b0:4864:39::11])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xDFMH-0000000EO8y-147B
+	id 1xDFMO-0000000EOHY-1qYu
 	for linux-mediatek@lists.infradead.org;
-	Sun, 04 Oct 2026 06:06:02 +0000
-Received: by mail-pj1-x102d.google.com with SMTP id 98e67ed59e1d1-3856d6fbcb3so366690a91.2
-        for <linux-mediatek@lists.infradead.org>; Sat, 03 Oct 2026 23:06:00 -0700 (PDT)
+	Sun, 04 Oct 2026 06:06:10 +0000
+Received: by mail-pj2-x11.google.com with SMTP id 98e67ed59e1d1-39b2ad83dc6so459038a91.0
+        for <linux-mediatek@lists.infradead.org>; Sat, 03 Oct 2026 23:06:08 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1791093960; x=1791698760; darn=lists.infradead.org;
+        d=gmail.com; s=20251104; t=1791093968; x=1791698768; darn=lists.infradead.org;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :content-type:mime-version:subject:date:from:from:to:cc:subject:date
          :message-id:reply-to:content-type;
-        bh=sCPGuiYL0vLRXDDm6MOp5xoRgl7DVlYqvCMkReNNZVo=;
-        b=ZGdllZa7beFgM3bxImGf+xONTbNqrWGq3cKpQknYJR011UccArRAS8eYOIZ33B7J73
-         aCOViob0dsD39TyGgfCYjaP9GGIgYIKeGbXYe4JfSx5QvroMRaZgxNoXRXV9ldiYwiFI
-         2Wajr/Q9hEhBUSRAF9MQhY5V8iDUpUhQdZnI3uVMiGJtD4G/Ee2VDAAfqoBalhy69536
-         7rRdAcA9+L4AW1/wJcytoFISgYgmdAjCh+aT7wZAf5M6H96uVjGWE04LVVcMzGu9AX0C
-         LuETpOztFpjzy3TZebyUTgCiea/rEHZrGtpxA+OsVKk7JMLSwbfHdfhZ8dgU0JOIS6rf
-         lHyw==
+        bh=a3QHSkSxST2zAhLEr4m0t2e0b9c14pDjRMyYQ78t1Ts=;
+        b=VnFR/ANLG/KDZw5NS7mBxjul/uk3EdC7mQmTlnmoLcsvbbo4gQsYLgW00T4MNdSl7f
+         9WpYG3aOWGyZwsUfRUgh+W/rIgC8QkdB/RC2n7myStnGRlS78o1VZoIL46xWZPcHEM5Q
+         JJMAW+IktScvD0S6PVDprUEhlzF6+miVMmyJWFTD6/gbSsDsn7EQb/9ugV8rkx14q3/z
+         GfXun3TMXf/QifBoKXkBcgNJ0tYFrSxuHZf0NzV+/+FxBg5jZ8iG8QjUdfN2SPJ7BuMt
+         wm92vYsbWImd80fyRk0hxUL9thJSgFKj4yUBAx1eAL642YwPjKYg6+EHcTlTKLp2dGl8
+         DgbQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1791093960; x=1791698760;
+        d=1e100.net; s=20260707; t=1791093968; x=1791698768;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :content-type:mime-version:subject:date:from:x-gm-gg
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
          :content-type;
-        bh=sCPGuiYL0vLRXDDm6MOp5xoRgl7DVlYqvCMkReNNZVo=;
-        b=x5yIx2Qs6HVk2tecMBqOnEQXOPBIHT2ogX6Ve42cdfCIeKIwsFr82Fm0w4ff8GtEKP
-         OGvcxHRqwjk8GocJkiv4iBAL1nlNTsokn9DcOpcBqB5CJainy7DxS3lUJ13I9qbwrf/J
-         KHxT2A6RanhkhNsREIQsQCO6ZzKcg20dwJT7EcN/ufG9VMXaYFWUWZOPaZ783sYIswO4
-         KpCAe0THJ2PqU7Yku4SKwDH0yxsgz4/UyCHRU32NNKq+ZlqK5UqKRnVWMmt9KSNvtOYo
-         p8NoLViQ8KjI7e/tYUZpWwxdz4ydJUx9SE4cG7zRvcfUA+fbT7g4Wh8u7J7oVQfAxBSS
-         Fe4w==
-X-Forwarded-Encrypted: i=1; AKwUvBybANxN4CbtSa9QFg5bgiVV0Lqp2kEvnpV+XzbI+iJhEeFx7MnT77KUiXpR75qbg7vWYjUMyKxkFeF3EY5F1A==@lists.infradead.org
-X-Gm-Message-State: AFq9FYJobEPbNhwWS29u/W//LFaESfUrsYgh9PDWLuD0HT8t+KFgidY+
-	ytc7OAFPuNa8amROWCdDK6O5lqRUXxcRBxEuDKncNKDR6DLdVJLP7Qrk
-X-Gm-Gg: AYBFou23X0oER9ERJky4HVbijnxqSpm6fsD+yUiN5v0GC3UfYiqA/7/H5eK8SmOnWmF
-	EbLpG6VIpxKcUdO1Qd4ERLpRFWF722jeRjt+fVRrzIeAM9KVy/talZFcoPey5rk3PLn/hNorxnr
-	pVKAoTZf2Wv6oatNJK5tfmWQa0a3aCc4SLoutvBQFrBliqSqqFJvpAig/OCb6AOlIW2CEZv6gmh
-	0R0GVF9M29WPLw49ooBTeYRyEvoY2m778tINYdnapwuqK7RXH4LpJMWnJDCvbt3bPSeHdiftRzo
-	5uBbX9PnqnhY1OBmM0FzEL+Dxe2aSNkj1LodvkVKe13FEi65fyIYgmm+D1TbAa5VsimmLlP5viI
-	e0e+XKmP7wtD5qFbkR87jYDzwhOp08co81oaNegA/WaL27VkJx7KuWhWSYvMY1aeICDPC2sIjpk
-	FYoer1CD07kjAJeeXiRfk8/cJq+0hrDgVEs/dfu4CkNufCobEbZd6/TaV4+GblNuSsIHzKArKzR
-	udJv7dp+fbYi2sxxFvIr7/OhHW4q6KxSTHHmBvlc4904PFzwe6CsMQwehoHqzL9xZxBZpBwexQP
-	BAoedkRd4mm6vSAJt9IIYRyE1T+HIIfA0I37XovbvvyWamM=
-X-Received: by 2002:a17:90b:5345:b0:3a7:1339:c454 with SMTP id 98e67ed59e1d1-3a78750ccdamr3295837a91.47.1791093960302;
-        Sat, 03 Oct 2026 23:06:00 -0700 (PDT)
+        bh=a3QHSkSxST2zAhLEr4m0t2e0b9c14pDjRMyYQ78t1Ts=;
+        b=Q5MLASRpWBT/QCo8HuiowuYpEFJlbFTcA2ZeAKWg7AEDkOwB1KUgn27LxfWacGT2t0
+         iyDKKj3yAB3EHuwdHiYHoMIEDezUAEm+WPgXx6o6AqRsWGr1wKYxF3xebp8lkOSj6kdC
+         s2sU6mTyI4QhZoVsnHIT61wYiM6ItXmplA6O9UNxcOb3g3RRXtH67ZOAv3hvaxLBb2Sh
+         jLgd7m1DMOmbqGgEfVhF0GtaJKmbEAzsZPlAthA8qqfIJHsY3aCB0GENt7Kznguw1h8Y
+         Br71pLuDmNq8TI9JZ4hsv35yIs4vA0QvpMh3tVphrZOkbXVfeM5ri/NhcDon4laBnz6Q
+         W4bw==
+X-Forwarded-Encrypted: i=1; AKwUvBwMyIeaKYJXGxV3I9n2a9Pf3dK5gI/gsUQywhj7/3zAQZBCOv9/dSDQ9p7G+mvbrxWhiIKGcMIqFco1KQEBlA==@lists.infradead.org
+X-Gm-Message-State: AFq9FYL60F2q2XEehEPNr8w81OM4NJTiRuQrGfxE10Y2tzgXEeAfyg5L
+	R1UyXzE49/FpN+Z9L//fMqTQPizptgYsdSK+e6TunKSjer3ULaeLOFcP
+X-Gm-Gg: AYBFou17gs5cC/1CslKVcnb54jNPTd0ZcnFHNOqQctyvnZVlBfZh0PeAoDKQ8v0wcW8
+	ri3QcuSZrarg16yRjxHh27PWv8l4lQjrkieg4QHFZIivRPP59BbhqGc/77OjJqekvHsYhDHg394
+	2QT8b9cC9Zti3AbSLKW5ghJjxi6Ed6DKw92pxLdW865FU/fDol48mUxZmXc+sfUVFVyDqGb0bwZ
+	2vaQxlU0N4IVpPTxnmKOMEhmsBJED44cMeeJUYpssT/Emll+6T0T797QGFUSQzRRHeteKNFJf7G
+	bqINzSBHn2moIZmTC6FKuzbby8ouAdfcTobHR8Y2NoHoEuE75cAexAIF5B0PRR1kqLEiEgqn52x
+	r1PRcRv7T7jEDfWZjJo1FVHbq5rPlhOPeGHvBybSPoWILLjgDUaZ9I2J9W0FgNBDaFnm1LWUdD7
+	99v4JXUVO9DYAdNluf48zfzmIsiMoGsRQkLeHRymsi3r9+j3BSvlSDd1z3CZXVn3xWn3KO7iW6j
+	XcOuQx+8vwwe/JI0wXq4pNL4dNzOHHkppOSoDj26JLhRjDtxwXtJCOl0mWL6RJSf2Qc3qUxhgti
+	Vha+9voamX0bBvrI4gyRW3jFcB6xbynxGzgOIsFOkGLAmy8=
+X-Received: by 2002:a17:90b:3903:b0:39e:261:4e0d with SMTP id 98e67ed59e1d1-3a6ce75d5a2mr6439953a91.25.1791093967799;
+        Sat, 03 Oct 2026 23:06:07 -0700 (PDT)
 Received: from [192.168.2.3] ([2403:581e:d87e:0:fc2d:ed31:e80e:412d])
-        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-3a78d4a869esm5844094a91.2.2026.10.03.23.05.53
+        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-3a78d4a869esm5844094a91.2.2026.10.03.23.06.00
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 03 Oct 2026 23:06:00 -0700 (PDT)
+        Sat, 03 Oct 2026 23:06:07 -0700 (PDT)
 From: James Calligeros <jcalligeros99@gmail.com>
-Date: Sun, 04 Oct 2026 16:03:38 +1000
-Subject: [PATCH v2 11/21] arm64: dts: apple: t8103-j313: Add
+Date: Sun, 04 Oct 2026 16:03:39 +1000
+Subject: [PATCH v2 12/21] arm64: dts: apple: t8103-j293: Add
  speaker/headset jack nodes
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20261004-macaudio-v2-11-7b47ed6335a8@gmail.com>
+Message-Id: <20261004-macaudio-v2-12-7b47ed6335a8@gmail.com>
 References: <20261004-macaudio-v2-0-7b47ed6335a8@gmail.com>
 In-Reply-To: <20261004-macaudio-v2-0-7b47ed6335a8@gmail.com>
 To: David Rhodes <david.rhodes@cirrus.com>, 
@@ -101,18 +101,18 @@ Cc: asahi@lists.linux.dev, linux-sound@vger.kernel.org,
  linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
  linux-mediatek@lists.infradead.org
 X-Mailer: b4 0.15.2
-X-Developer-Signature: v=1; a=openpgp-sha256; l=2368;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=3228;
  i=jcalligeros99@gmail.com; h=from:subject:message-id;
- bh=mJddJwm7KZ1uNbWRbS6abM2+DhqXtUFRofNbxKEJICc=;
- b=owGbwMvMwCV2xczoYuD3ygTG02pJDFkH3+Ty8flGpH+8zah85ePzDT7f9z23WbqmeWefwPw0b
- e/0s5crOyayMIhxMViKKbJsaBLymG3EdrNfpHIvzBxWJpAh0iINDEDAwsCXm5hXaqRjpGeqbahn
- aKRjrGPEwMUpAFN9/iLDX+nXfjbNp7y3RS+TkE1IixG9Xb0+mrPL1rbCq7zroWmjG8P/GF2xxj6
- 2/x8j8oJjHA7z5xTVMWwJWZyd5fDw08aS6hJmAA==
+ bh=fs1ai4BpjRrKf1Z6N1gXbBVEIUvHZAvrJK8NPJKhhz0=;
+ b=owGbwMvMwCV2xczoYuD3ygTG02pJDFkH3+ReN1+v3V95y/atworQPe6OPrPKF8wxlV2+xsjf9
+ d8uj7PFHRNZGMS4GCzFFFk2NAl5zDZiu9kvUrkXZg4rE8gQaZEGBiBgYeDLTcwrNdIx0jPVNtQz
+ NNIx1jFi4OIUgKk+9pnhf3BKnfevWe4+XwXOOdVorvkdZB1/evG3vruFp/ZclNK3d2L4KzMldv8
+ 9gQd+zm2zt4cVreSS4jp5f9uBCDPud7ZPmHVmsQMA
 X-Developer-Key: i=jcalligeros99@gmail.com; a=openpgp;
  fpr=B08212489B3206D98F1479BDD43632D151F77960
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261003_230601_308892_C290A64F 
-X-CRM114-Status: UNSURE (   9.22  )
+X-CRM114-CacheID: sfid-20261003_230608_557120_636A5A61 
+X-CRM114-Status: UNSURE (   9.33  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -128,52 +128,52 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The M1 MacBook Air integrates Apple-specific variants of the TI TAS2770
+The M1 MacBook Pro integrates Apple-specific variants of the TI TAS2770
 and Cirrus CS42L42. Add these nodes and advertise them to the machine
 driver via the sound node.
 
 Signed-off-by: James Calligeros <jcalligeros99@gmail.com>
 ---
- arch/arm64/boot/dts/apple/t8103-j313.dts | 82 +++++++++++++++++++++++++
- 1 file changed, 82 insertions(+)
+ arch/arm64/boot/dts/apple/t8103-j293.dts | 111 +++++++++++++++++++++++++
+ 1 file changed, 111 insertions(+)
 
-diff --git a/arch/arm64/boot/dts/apple/t8103-j313.dts b/arch/arm64/boot/dts/apple/t8103-j313.dts
-index f8b2b1637b9d..cdda63ca8b34 100644
---- a/arch/arm64/boot/dts/apple/t8103-j313.dts
-+++ b/arch/arm64/boot/dts/apple/t8103-j313.dts
-@@ -55,4 +55,86 @@ &typec1 {
- 	label = "USB-C Left-front";
+diff --git a/arch/arm64/boot/dts/apple/t8103-j293.dts b/arch/arm64/boot/dts/apple/t8103-j293.dts
+index 1d074b9e6018..42f1127151fa 100644
+--- a/arch/arm64/boot/dts/apple/t8103-j293.dts
++++ b/arch/arm64/boot/dts/apple/t8103-j293.dts
+@@ -133,5 +133,116 @@ &displaydfr_dart {
+ 	status = "okay";
  };
  
 +/* Audio codecs */
 +&i2c1 {
 +	status = "okay";
 +
-+	speaker_left: codec@31 {
++	speaker_left_rear: codec@31 {
 +		compatible = "ti,tas5770l";
 +		reg = <0x31>;
 +		interrupts-extended = <&pinctrl_ap 182 IRQ_TYPE_LEVEL_LOW>;
 +		shutdown-gpios = <&pinctrl_ap 181 GPIO_ACTIVE_HIGH>;
 +		#sound-dai-cells = <0>;
-+		sound-name-prefix = "Left";
++		sound-name-prefix = "Left Rear";
++		ti,imon-slot-no = <8>;
++		ti,vmon-slot-no = <10>;
++	};
++
++	speaker_left_front: codec@32 {
++		compatible = "ti,tas5770l";
++		reg = <0x32>;
++		interrupts-extended = <&pinctrl_ap 182 IRQ_TYPE_LEVEL_LOW>;
++		shutdown-gpios = <&pinctrl_ap 181 GPIO_ACTIVE_HIGH>;
++		#sound-dai-cells = <0>;
++		sound-name-prefix = "Left Front";
 +		ti,imon-slot-no = <0>;
 +		ti,vmon-slot-no = <2>;
 +	};
 +};
 +
-+&i2c3 {
++&i2c2 {
 +	status = "okay";
-+
-+	speaker_right: codec@34 {
-+		compatible = "ti,tas5770l";
-+		reg = <0x34>;
-+		interrupts-extended = <&pinctrl_ap 182 IRQ_TYPE_LEVEL_LOW>;
-+		shutdown-gpios = <&pinctrl_ap 181 GPIO_ACTIVE_HIGH>;
-+		#sound-dai-cells = <0>;
-+		sound-name-prefix = "Right";
-+		ti,imon-slot-no = <4>;
-+		ti,vmon-slot-no = <6>;
-+	};
 +
 +	jack_codec: codec@48 {
 +		compatible = "cirrus,cs42l83";
@@ -186,10 +186,36 @@ index f8b2b1637b9d..cdda63ca8b34 100644
 +	};
 +};
 +
++&i2c3 {
++	status = "okay";
++
++	speaker_right_rear: codec@34 {
++		compatible = "ti,tas5770l";
++		reg = <0x34>;
++		interrupts-extended = <&pinctrl_ap 182 IRQ_TYPE_LEVEL_LOW>;
++		shutdown-gpios = <&pinctrl_ap 181 GPIO_ACTIVE_HIGH>;
++		#sound-dai-cells = <0>;
++		sound-name-prefix = "Right Rear";
++		ti,imon-slot-no = <12>;
++		ti,vmon-slot-no = <14>;
++	};
++
++	speaker_right_front: codec@35 {
++		compatible = "ti,tas5770l";
++		reg = <0x35>;
++		interrupts-extended = <&pinctrl_ap 182 IRQ_TYPE_LEVEL_LOW>;
++		shutdown-gpios = <&pinctrl_ap 181 GPIO_ACTIVE_HIGH>;
++		#sound-dai-cells = <0>;
++		sound-name-prefix = "Right Front";
++		ti,imon-slot-no = <4>;
++		ti,vmon-slot-no = <6>;
++	};
++};
++
 +/ {
 +	sound: sound {
-+		compatible = "apple,j313-macaudio";
-+		model = "MacBook Air J313";
++		compatible = "apple,j293-macaudio";
++		model = "MacBook Pro J293";
 +
 +		#address-cells = <1>;
 +		#size-cells = <0>;
@@ -197,13 +223,16 @@ index f8b2b1637b9d..cdda63ca8b34 100644
 +		dai-link@0 {
 +			reg = <0>;
 +
-+			dai-tdm-idle-mode-0 = "zero";
-+			dai-tdm-idle-mode-1 = "zero";
++			dai-tdm-idle-mode-0 = "pulldown";
++			dai-tdm-idle-mode-2 = "pulldown";
 +
 +			link-name = "Speakers";
 +
 +			codec {
-+				sound-dai = <&speaker_left>, <&speaker_right>;
++				sound-dai = <&speaker_left_front>,
++					    <&speaker_left_rear>,
++					    <&speaker_right_front>,
++					    <&speaker_right_rear>;
 +			};
 +
 +			cpu {
@@ -228,6 +257,7 @@ index f8b2b1637b9d..cdda63ca8b34 100644
 +};
 +
  #include "hwmon-laptop.dtsi"
+ #include "hwmon-fan.dtsi"
 
 -- 
 2.55.0
