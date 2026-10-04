@@ -4,116 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 11316CA5FF0
-	for <linux-mediatek@archiver.kernel.org>; Sun,  4 Oct 2026 17:16:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 28B5FCA5FE6
+	for <linux-mediatek@archiver.kernel.org>; Sun,  4 Oct 2026 17:46:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=O5uUcI1/RkV6pA20Ka1TbaV7lMFxccYVTKU3RyjDpPg=; b=HTK+fJkJ4R67Vqr+X8uHau+i9P
-	x28UjNIwJIP2esdfF5Aj7L/IYH11QqTJGoHhvltVFVvPtETppx3iua5+hfUYZs3cVOknrVe6wFzrM
-	Y5mnDqz3et5tg7+DtfyPWUE4VKRVXTmxyk5AdKxwwEp+8FaplG0TMWzYvpe1EjztCLK2DvGJBLL+R
-	FIJGBqixfUzq7+zcVty/PE7eILGKCsd/9PagbSzKjprWtX14ytDkIDSspaIllcvL/9w3fWD+s9SEW
-	zwDnXgbWnLRc+XYpCJpHUQ207HM7qAO2VazFsREh5nEf8bGfSAixG5Tp7vceqQAnA/7SJRlt0P1cu
-	HsFf59xQ==;
+	bh=69DHlsir6ZosfzMet4YEklAxrs9GZDpWfJvTKMA8vnc=; b=C6ywWjwe/qtHHRzSz2RavsGGnu
+	Tx8PXqgTZ3HMV7iijqsnwXpSgVV4rAbfxGwQoHBFkWurLCm1q7/DDJTfPaFLphXAdLN/Fdk4v+yQ8
+	s1/SlUYz6xBTVudl06IslP6pKpny4tpUmWDvv6eWyZjKpwmAmj4rx5l+DiNbpxXScR5HF+E9T37SZ
+	jnFttwgzaepFdObpuE/s20Xa7aGyW6JRoqGpASwKrgB52Y9lZdBk4ci7qRSL1xrKMK10RDEf4Kpt9
+	BmmqOU7ttPjcb8+c4bH2ECwD0T4+rlJM6Jtwm/bRGLD44YsA7Ue1d+AFmnfv4RfYX0zHtzU+QXkkz
+	QLc4BRXw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xDPpS-0000000F5nI-0dW0;
-	Sun, 04 Oct 2026 17:16:50 +0000
-Received: from mail-ed2-x0c.google.com ([2a00:1450:4864:33::c])
+	id 1xDQIP-0000000F8Ua-2IKn;
+	Sun, 04 Oct 2026 17:46:45 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xDPpL-0000000F5fH-3Dco
-	for linux-mediatek@lists.infradead.org;
-	Sun, 04 Oct 2026 17:16:46 +0000
-Received: by mail-ed2-x0c.google.com with SMTP id 4fb4d7f45d1cf-6af7d408b51so716655a12.1
-        for <linux-mediatek@lists.infradead.org>; Sun, 04 Oct 2026 10:16:43 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=bairaktaris.de; s=google; t=1791134202; x=1791739002; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to:content-type;
-        bh=O5uUcI1/RkV6pA20Ka1TbaV7lMFxccYVTKU3RyjDpPg=;
-        b=yGMhF/gYyNho5yXSTFjAjtg/11MybZblNkFmA+VERLwIHjYk55NRNL6qqgApLgxCUA
-         qYStuCWzGMzJyHG3yPo+7jtMI13hCVsYHyimTuK6Clasr7N5FITlLyVyX7xJQ9iS5lXe
-         ilLo9Iga2x6DiydQ0ipcFgNPeFhIjWRrKPZ914Zz4CFnsSvcGrvn7FB93rjpvsyha2Ql
-         5PTw3h6iKmpO7r9gigYZoJba8nsn4erxSQeJimh/gSBYuFnpXt/h/4zVWUnc14CwotQW
-         KNZJ8eWgVFz0vDX6L/4y7eybVLu3TyOePSTQZv4Lf2TOwGSvF29v+5q1gWt9mRYO6hBc
-         +CLA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1791134202; x=1791739002;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
-         :to:cc:subject:date:message-id:reply-to:content-type;
-        bh=O5uUcI1/RkV6pA20Ka1TbaV7lMFxccYVTKU3RyjDpPg=;
-        b=mOfgGQSFo+1KYD0ZOj14CtgO+laYf+7Vi6uL95uoogdUeK981FZzmk137KmfS8JVd3
-         7jreZU+ADnzFQElOGhd6G2C05WDWp0wxrxTWszGF3TjUTr8PiWDQRcv+Afy5Ctbsk4hy
-         qs+jta5GigbziSYasROkKCpzwwnpPfqcks2J8u7i9Ks+wWQKfJzu2cc3YYb3jp3uA2/f
-         J9h/AQ1FsLz2ZDNnvxcR2KTIDOZ3tR7OljvjrG2d8a2D+ufLqptaRuHzjW/KmDQljt7U
-         knEaoPeFmWPwwtMiiLhG7XXS5EiZ4gVlrhDpNtWQNkkvcwZnUiYnCFbTVsaxm0sSwmLq
-         U1vg==
-X-Forwarded-Encrypted: i=1; AKwUvBytSDs0iLQViwjj8OR3IvqLXfGcDd9L2bpnoMffZ/kX5cRc5ijsfhOIZLOqLNk2LgJQmHjHDIJFsfILuLCEqw==@lists.infradead.org
-X-Gm-Message-State: AFq9FYIX+I82FEA03SukxKk22c3f5XDB1/vOGtnZz9/FeMtGuFI7qYE0
-	cpOwgtl+/V1qhhuGo0L9wIjKnC37xzw1wrQKI3r1wXsX82VCuG5O+bcb3c7/WDpQ7Q==
-X-Gm-Gg: AYBFou2PIHTwTDavl5D4cptmWZq4JZ1VzzpMdh7SJ+GBZgz1S4ARt9XaPuR6BOqBinF
-	J3bchQb15iN1XhIkhQJbLo2CxseRHHaym6sGWMjVDviLv69lVyVTUwXIbZXsaj1Xnlt8KMdr5l5
-	8WIpLZc+r2LVXblU6OrOIYQVMlDAGwXOqOw5xcBpyf8u6M3xO5HXclhvU57tsQEncNyBqMkrGvU
-	npnorlWrysoBzGBZhvOp9blwqaKUzT6Mua5G/acw0BJRqy5rntcUj2z0V9LsY8r0p0Xm4Q8USEJ
-	ZTZQuPsNJQ0T9PUqqlMAXvdkl/Akqq31tonq8woNvQl7cXhsKEhThOhJoLuJ+3rX9mXn1eKpLZK
-	mCvxhfzi6MxCv6/yfi+b8ek/w70o/BU7vwfcKFtzZrdkOwriSAWr9f+mfz+oYfGzO7qcT9dAsjL
-	AxeMn30UBUPtQmXUCUZmqVf4v8q0dDhAApXtlQfOAU1D415TyvECoFfsJZf2jGv9k/5TIimlUps
-	2h1amL/90axWI5Mlyefn+0AiDWMzEGNY5bH7QMpUWD+TvbsuD7CCPyHk0DuWxTdL9vdbi1PfaBY
-	z3XOvZIYCbGI0JNbCUTslAwYEQDuDVp/DO9AjlZFUx8pJhtkPx5S3VAljXexbi64YcFIiW4lRc4
-	7epJ8Fu7dy5OSme9IUXWFnT+0nkAsRoycXXveARX62ao8OyN4Nr86ExTndHTZXaVvmOIdvKzTQm
-	QdZXOeR0U5NtxCSIDEgLGtTMRdcx4Lg38y1g==
-X-Received: by 2002:a05:6402:27c9:b0:6aa:e251:ecb4 with SMTP id 4fb4d7f45d1cf-6af9e0468eamr6985282a12.2.1791134202135;
-        Sun, 04 Oct 2026 10:16:42 -0700 (PDT)
-Received: from Desktop (pd9513667.dip0.t-ipconnect.de. [217.81.54.103])
-        by smtp.gmail.com with ESMTPSA id 4fb4d7f45d1cf-6afb014784bsm2256819a12.3.2026.10.04.10.16.40
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 04 Oct 2026 10:16:40 -0700 (PDT)
-From: Julius Bairaktaris <julius@bairaktaris.de>
-To: pablo@netfilter.org,
-	fw@strlen.de
-Cc: phil@nwl.cc,
-	netfilter-devel@vger.kernel.org,
-	coreteam@netfilter.org,
-	netdev@vger.kernel.org,
-	lorenzo@kernel.org,
-	nbd@nbd.name,
-	matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com,
-	andrew+netdev@lunn.ch,
-	davem@davemloft.net,
-	edumazet@google.com,
-	kuba@kernel.org,
-	pabeni@redhat.com,
-	horms@kernel.org,
-	corbet@lwn.net,
-	rdunlap@infradead.org,
-	skhan@linuxfoundation.org,
-	linux-doc@vger.kernel.org,
-	linux-kselftest@vger.kernel.org,
-	linux-mediatek@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org,
-	saeedm@nvidia.com,
-	leon@kernel.org,
-	tariqt@nvidia.com,
-	mbloch@nvidia.com,
-	linux-rdma@vger.kernel.org,
-	linux-kernel@vger.kernel.org
-Subject: [PATCH nf-next v3 2/3] netfilter: flowtable: carry a priority into the offload
-Date: Sun,  4 Oct 2026 19:16:35 +0200
-Message-ID: <20261004171636.3545085-3-julius@bairaktaris.de>
-X-Mailer: git-send-email 2.53.0
-In-Reply-To: <20261004171636.3545085-1-julius@bairaktaris.de>
-References: <20261004171636.3545085-1-julius@bairaktaris.de>
+	id 1xDQIO-0000000F8UN-3keb;
+	Sun, 04 Oct 2026 17:46:44 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by sea.source.kernel.org (Postfix) with ESMTP id 355ED43E33;
+	Sun,  4 Oct 2026 17:46:44 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id AAF0F1F008A1;
+	Sun,  4 Oct 2026 17:46:43 +0000 (UTC)
+Received: by venus (Postfix, from userid 1000)
+	id 49544182ABF; Sun, 04 Oct 2026 19:46:38 +0200 (CEST)
+From: Sebastian Reichel <sebastian.reichel@collabora.com>
+To: rafael@kernel.org, krzk@kernel.org, amit.kachhap@gmail.com, 
+ daniel.lezcano@kernel.org, thara.gopinath@gmail.com, talel@amazon.com, 
+ hayashi.kunihiko@socionext.com, mhiramat@kernel.org, mmayer@broadcom.com, 
+ viresh.kumar@linaro.org, sumitg@nvidia.com, peter.griffin@linaro.org, 
+ myungjoo.ham@samsung.com, kyungmin.park@samsung.com, cw00.choi@samsung.com, 
+ Frank.Li@nxp.com, s.hauer@pengutronix.de, matthias.bgg@gmail.com, 
+ angelogioacchino.delregno@collabora.com, sven@kernel.org, j@jannau.net, 
+ marcan@marcan.st, casey.connolly@linaro.org, sre@kernel.org, 
+ wens@kernel.org, t.schramm@manjaro.org, 
+ Sumeet Pawnikar <sumeet4linux@gmail.com>
+Cc: bcm-kernel-feedback-list@broadcom.com, 
+ linux-samsung-soc@vger.kernel.org, kernel@pengutronix.de, 
+ imx@lists.linux.dev, linux-mediatek@lists.infradead.org, 
+ linux-arm-kernel@lists.infradead.org, linux-arm-msm@vger.kernel.org, 
+ linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org
+In-Reply-To: <20260912191156.185448-1-sumeet4linux@gmail.com>
+References: <20260912191156.185448-1-sumeet4linux@gmail.com>
+Subject: Re: (subset) [PATCH v2 0/5] PM: Use %pe to print error pointers
+ symbolically
+Message-Id: <179113599828.190565.13465201522154084612.b4-ty@b4>
+Date: Sun, 04 Oct 2026 19:46:38 +0200
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261004_101643_839537_446A27B2 
-X-CRM114-Status: GOOD (  19.09  )
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+X-Mailer: b4 0.16.0
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -128,147 +73,29 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Packets forwarded by the flowtable skip the ruleset, so a priority set
-by "meta priority set" before "flow add" only applies to the first
-packets of a connection, and drivers never see it.
 
-Store skb->priority of the packet that creates the flow, apply it in
-the software fast path and emit it as FLOW_ACTION_PRIORITY, the action
-act_skbedit uses. Flows without a priority are unchanged. On IPv4,
-ip_forward() derives a priority from the TOS by default, so a flow can
-carry one without a rule. The priority applies to both directions.
+On Sun, 13 Sep 2026 00:41:50 +0530, Sumeet Pawnikar wrote:
+> This patch series is a cleanup for subsystems under power management
+> (linux-pm) that converts several instances of error pointer printing
+> to use the `%pe` format specifier instead of explicitly casting with
+> `PTR_ERR()`.
+> 
+> Currently, many drivers use `PTR_ERR()` paired with `%ld` or `%li` to
+> print error codes returned as pointers. By switching to `%pe` and passing
+> the error pointer directly, the logging subsystem will automatically
+> print the symbolic error name (e.g., `-ENOMEM`, `-EPROBE_DEFER`) when
+> `CONFIG_SYMBOLIC_ERRNAME` is enabled, and gracefully fall back to the
+> numeric value otherwise.
+> 
+> [...]
 
-airoha uses it as the QoS queue of flows that leave through a GDM port,
-as its software path does, mtk ignores it like FLOW_ACTION_CSUM, and
-mlx5 ignores it on flowtable flows (previous patch). airoha and mtk
-parse tc flower rules in the same function, so they now also accept
-skbedit priority there.
+Applied, thanks!
 
-Assisted-by: Claude:claude-opus-5
-Signed-off-by: Julius Bairaktaris <julius@bairaktaris.de>
----
- Documentation/networking/nf_flowtable.rst       |  4 +++-
- drivers/net/ethernet/airoha/airoha_ppe.c        |  3 +++
- drivers/net/ethernet/mediatek/mtk_ppe_offload.c |  1 +
- include/net/netfilter/nf_flow_table.h           |  1 +
- net/netfilter/nf_flow_table_ip.c                |  6 ++++++
- net/netfilter/nf_flow_table_offload.c           | 11 +++++++++++
- net/netfilter/nft_flow_offload.c                |  2 ++
- 7 files changed, 27 insertions(+), 1 deletion(-)
+[1/5] power: Use %pe to print error pointers symbolically
+      commit: 8761a4577c4fd489fb7af435f4b11ab6762dab66
 
-diff --git a/Documentation/networking/nf_flowtable.rst b/Documentation/networking/nf_flowtable.rst
-index d757c21c10f2..5844ab19aec6 100644
---- a/Documentation/networking/nf_flowtable.rst
-+++ b/Documentation/networking/nf_flowtable.rst
-@@ -71,7 +71,9 @@ forwarding path including the Netfilter hooks and the flowtable fastpath bypass.
- 
- The flowtable entry also stores the NAT configuration, so all packets are
- mangled according to the NAT policy that is specified from the classic IP
--forwarding path. The TTL is decremented before calling neigh_xmit(). Fragmented
-+forwarding path. The TTL is decremented before calling neigh_xmit(). The flow
-+also stores the priority of the packet that created it, so a priority set before
-+``flow add`` applies to the packets that the flowtable forwards. Fragmented
- traffic is passed up to follow the classic IP forwarding path given that the
- transport header is missing, in this case, flowtable lookups are not possible.
- TCP RST and FIN packets are also passed up to the classic IP forwarding path to
-diff --git a/drivers/net/ethernet/airoha/airoha_ppe.c b/drivers/net/ethernet/airoha/airoha_ppe.c
-index 92611802801e..e790305ea955 100644
---- a/drivers/net/ethernet/airoha/airoha_ppe.c
-+++ b/drivers/net/ethernet/airoha/airoha_ppe.c
-@@ -1161,6 +1161,9 @@ static int airoha_ppe_flow_offload_replace(struct airoha_eth *eth,
- 		case FLOW_ACTION_REDIRECT:
- 			odev = act->dev;
- 			break;
-+		case FLOW_ACTION_PRIORITY:
-+			priority = act->priority;
-+			break;
- 		case FLOW_ACTION_CSUM:
- 			break;
- 		case FLOW_ACTION_VLAN_PUSH:
-diff --git a/drivers/net/ethernet/mediatek/mtk_ppe_offload.c b/drivers/net/ethernet/mediatek/mtk_ppe_offload.c
-index 99b28aaa7cc4..4ee99e8e4a34 100644
---- a/drivers/net/ethernet/mediatek/mtk_ppe_offload.c
-+++ b/drivers/net/ethernet/mediatek/mtk_ppe_offload.c
-@@ -378,6 +378,7 @@ mtk_flow_offload_replace(struct mtk_eth *eth, struct flow_cls_offload *f,
- 		case FLOW_ACTION_REDIRECT:
- 			odev = act->dev;
- 			break;
-+		case FLOW_ACTION_PRIORITY:
- 		case FLOW_ACTION_CSUM:
- 			break;
- 		case FLOW_ACTION_VLAN_PUSH:
-diff --git a/include/net/netfilter/nf_flow_table.h b/include/net/netfilter/nf_flow_table.h
-index f2e2771f188f..23218c8cbc3d 100644
---- a/include/net/netfilter/nf_flow_table.h
-+++ b/include/net/netfilter/nf_flow_table.h
-@@ -202,6 +202,7 @@ struct flow_offload {
- 	unsigned long				flags;
- 	u16					type;
- 	u32					timeout;
-+	u32					priority;
- 	struct rcu_head				rcu_head;
- };
- 
-diff --git a/net/netfilter/nf_flow_table_ip.c b/net/netfilter/nf_flow_table_ip.c
-index c8c29a9a1684..c85e2d608c32 100644
---- a/net/netfilter/nf_flow_table_ip.c
-+++ b/net/netfilter/nf_flow_table_ip.c
-@@ -509,6 +509,9 @@ static int nf_flow_offload_forward(struct nf_flowtable_ctx *ctx,
- 	ip_decrease_ttl(iph);
- 	skb_clear_tstamp(skb);
- 
-+	if (flow->priority)
-+		skb->priority = flow->priority;
-+
- 	if (flow_table->flags & NF_FLOWTABLE_COUNTER)
- 		nf_ct_acct_update(flow->ct, tuplehash->tuple.dir, skb->len);
- 
-@@ -1104,6 +1107,9 @@ static int nf_flow_offload_ipv6_forward(struct nf_flowtable_ctx *ctx,
- 	ip6h->hop_limit--;
- 	skb_clear_tstamp(skb);
- 
-+	if (flow->priority)
-+		skb->priority = flow->priority;
-+
- 	if (flow_table->flags & NF_FLOWTABLE_COUNTER)
- 		nf_ct_acct_update(flow->ct, tuplehash->tuple.dir, skb->len);
- 
-diff --git a/net/netfilter/nf_flow_table_offload.c b/net/netfilter/nf_flow_table_offload.c
-index 801a3dd9ceea..caaadffc2563 100644
---- a/net/netfilter/nf_flow_table_offload.c
-+++ b/net/netfilter/nf_flow_table_offload.c
-@@ -696,6 +696,17 @@ nf_flow_rule_route_common(struct net *net, const struct flow_offload *flow,
- 	    flow_offload_eth_dst(net, flow, dir, flow_rule) < 0)
- 		return -1;
- 
-+	if (flow->priority) {
-+		struct flow_action_entry *entry;
-+
-+		entry = flow_action_entry_next(flow_rule);
-+		if (!entry)
-+			return -1;
-+
-+		entry->id = FLOW_ACTION_PRIORITY;
-+		entry->priority = flow->priority;
-+	}
-+
- 	tuple = &flow->tuplehash[dir].tuple;
- 
- 	for (i = 0; i < tuple->encap_num; i++) {
-diff --git a/net/netfilter/nft_flow_offload.c b/net/netfilter/nft_flow_offload.c
-index 32b4281038dd..c8eaf7bc356d 100644
---- a/net/netfilter/nft_flow_offload.c
-+++ b/net/netfilter/nft_flow_offload.c
-@@ -117,6 +117,8 @@ static void nft_flow_offload_eval(const struct nft_expr *expr,
- 	if (tcph)
- 		flow_offload_ct_tcp(ct);
- 
-+	flow->priority = pkt->skb->priority;
-+
- 	__set_bit(NF_FLOW_HW_BIDIRECTIONAL, &flow->flags);
- 	ret = flow_offload_add(flowtable, flow);
- 	if (ret < 0)
+Best regards,
 -- 
-2.53.0
+Sebastian Reichel <sebastian.reichel@collabora.com>
 
 
