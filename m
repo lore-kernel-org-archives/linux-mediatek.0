@@ -4,76 +4,112 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1D0F9CA5FCE
-	for <linux-mediatek@archiver.kernel.org>; Mon,  5 Oct 2026 08:39:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 71012CA5FFC
+	for <linux-mediatek@archiver.kernel.org>; Mon,  5 Oct 2026 09:36:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=l8ieC+rilEmgPn2tpFeyk5Ca9rP0sqcwbMniIbRuVfc=; b=voC74gBdk8XC/zLDaEskaz20KU
-	RX/WVbI9XuiC/48PzwOAwiY3Eqkyr3EACt0gawAJtD5triHL336AQ4t3OEp+9MJbMxG8mr3I8PX0r
-	eVy+uvN+RCHIQPfdjAczziICnfD56UVBeHo6H7ZiMCTQazINiXNxN2cvskObt7jKtS8oAVcYlcbdP
-	KUvap37woJ2HMlfCP2QoVFVC3UVRMPwsz8AqVUeF2j0rVJeKS+n5gTDCy+XmuWF8eBgHDzU04Blwp
-	hXV61vMe7KqraBoaYh4EU5vQcezIgn3WOgKSaz2GK8hnJ0roCQ6RxjIZX4RLk+jNqm6zltixPbuS5
-	HA+4re0w==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
+	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=ALY8PRLZB7eYZm4BgZsEwueCWb0wgVU/gIyTN+rhhkE=; b=kgX8Vc1zYrisgKSrDmVDEfE1s2
+	Jvq/TWE+kMdzY298e06fzpxyKEl4YVlbM1ZD7n39y7eFD3Khhs3dQyUdDBehOh/Q0xtcpRHOPUDar
+	AdkCp+z35I1ZqysraRp84Ku+GBvXlP0Eu6FrEfmwAePSC6aV0XeDk79djspTzm8hTAHIt4RyJqp48
+	E+ZgZ4aYBgdXwc73kPZCq0xRFeiTapb4SUq9B2J6yFxMW61SWq0Tyz737IV7xhTCrFfF14FFgLS2T
+	6eJKKPcJ8TzsMGsXP7WH6RertDJn6VcywR4mL5vCkDNuePNjIZx/XF9Lo6ca7hMtHQayht5Hl1Yuv
+	S7Z+q+Qg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xDeE7-0000000FuEQ-0vw4;
-	Mon, 05 Oct 2026 08:39:15 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1xDf7t-0000000G1AM-0Am1;
+	Mon, 05 Oct 2026 09:36:53 +0000
+Received: from mail-pz2-x28.google.com ([2607:f8b0:4864:3b::28])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xDeE4-0000000FuDu-3Dzx
+	id 1xDf7q-0000000G19e-0cTd
 	for linux-mediatek@lists.infradead.org;
-	Mon, 05 Oct 2026 08:39:13 +0000
-X-UUID: 3ae6c388c09811f1acbe4559397dec65-20261005
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=l8ieC+rilEmgPn2tpFeyk5Ca9rP0sqcwbMniIbRuVfc=;
-	b=rPY5myzAhIUtqi6lQTf+T8uCifBBBEehkLfQEuBELYBOwxJhEPubpmPqa15c/C21LVQ0EI8o7aAEvjypvrq/Rtyk+G6ZeySBjmPhXAt6XjyIkcb7K4p4G9sC3priqE0CUXtEKXGq2XFjB9CARlNK0sBGyhrqkkHgE0wkJ74MQu4=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.20,REQID:055ec5b2-bed2-4abb-82d0-bc8f7b901698,IP:0,U
-	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
-	:release,TS:-5
-X-CID-META: VersionHash:291e20b,CLOUDID:bf995c56-66df-4ed9-ba9a-e32623d07625,B
-	ulkID:nil,BulkQuantity:0,SF:102|836|865|888|898,TC:-5,Content:0|15|50|99,E
-	DM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:-1,COL:0,OSI:0,OSA:0,
-	AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 2,SSN|SDN
-X-CID-BAS: 2,SSN|SDN,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: 3ae6c388c09811f1acbe4559397dec65-20261005
-Received: from mtkmbs14n1.mediatek.inc [(172.21.101.75)] by mailgw02.mediatek.com
-	(envelope-from <anthony.liu@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 587155534; Mon, 05 Oct 2026 01:39:08 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.29; Mon, 5 Oct 2026 16:39:05 +0800
-Received: from mtksitap99.mediatek.inc (10.233.130.16) by
- mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.2562.29 via Frontend Transport; Mon, 5 Oct 2026 16:39:05 +0800
-From: Anthony Liu <anthony.liu@mediatek.com>
-To: <nbd@nbd.name>, <lorenzo@kernel.org>
-CC: <Sean.Wang@mediatek.com>, <Leon.Yen@mediatek.com>,
-	<Quan.Zhou@mediatek.com>, <Ryder.lee@mediatek.com>,
-	<litien.chang@mediatek.com>, <kun.wu@mediatek.com>, <jb.tsai@mediatek.com>,
-	<emery.hsin@mediatek.com>, <linux-wireless@vger.kernel.org>,
-	<linux-mediatek@lists.infradead.org>, Anthony Liu <anthony.liu@mediatek.com>
-Subject: [PATCH] wifi: mt76: mt7928: makes struct beacon_tlv 4-byte aligned.
-Date: Mon, 5 Oct 2026 16:39:04 +0800
-Message-ID: <20261005083904.107527-1-anthony.liu@mediatek.com>
-X-Mailer: git-send-email 2.45.2
+	Mon, 05 Oct 2026 09:36:52 +0000
+Received: by mail-pz2-x28.google.com with SMTP id d2e1a72fcca58-88a0f29ce98so654154b3a.3
+        for <linux-mediatek@lists.infradead.org>; Mon, 05 Oct 2026 02:36:49 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1791193009; cv=none;
+        d=google.com; s=arc-20260327;
+        b=QxBjjecUuCWhUD0N5ACnboYk360Zx9Gy5jfRRosXIQmbZ4ZwvjSKM5zyQNKSkLvOXg
+         wID4m768zv9P31LylnEB1zZFrNXL6iMXWu2HeJ08rhyGq+fcUZWLflErb5UZbf8VwxEO
+         sKAIEpfHSW2z0bevM8KBEcYxUoCFJcsB5Ymir562xkZWqJnnyoCVE3npH54pNekXAlO3
+         Hy0HnHEx/P2iwgtaS57CBDxEqeqlfIdGMPpBWPsqz91Iyv8CfWFE2boNF7Ws/W2L/6xM
+         Y6iL6uAec4jY+IWPR7TIJu0/oyLAhxieJKBo0sD7VdIsrWFa+mBLIOdAsJjU0fcn22Mq
+         ONMA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20260327;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:dkim-signature;
+        bh=ALY8PRLZB7eYZm4BgZsEwueCWb0wgVU/gIyTN+rhhkE=;
+        fh=9JwRYYj4/rDNgBdWAqfgy5QedUd5NDXeF8/ijIzWOYM=;
+        b=qvU8+4D0+s02cITxFQ9AQNlaAQeoj6bLI1mUkmbI3HCd9TewA9PSkZ0O3ncucgYTJV
+         2L0IsdjzioWs2czcEZvSS9K3ZI8K33CvQkvifzRnBVs+VRgz+BeKePDoBjV2KIpLluFb
+         oqae6rmLZyuY7meaQRUnMndNP3V+jA6Dwn8VmjTtKdIQhGsE6blaWhH63VPYrNJ9yFIk
+         jjefj8iDna/sSW7DHqpJX80MvQc3os7vO1PnU8864oy1KFJD2hyBMTdupF+VWMvxTGlG
+         JDmrxQe+Fx7920tAtI5W4f3nt6x5vTffhBl22Q7SdT4qQUfe/IHPpWi2EPo8R4clHoig
+         hhrQ==;
+        darn=lists.infradead.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20251104; t=1791193009; x=1791797809; darn=lists.infradead.org;
+        h=content-type:cc:to:subject:message-id:date:from:in-reply-to
+         :references:mime-version:from:to:cc:subject:date:message-id:reply-to
+         :content-type;
+        bh=ALY8PRLZB7eYZm4BgZsEwueCWb0wgVU/gIyTN+rhhkE=;
+        b=N6jWEqz2ECZvGMe38NZj3ZhnIjuU5pl27MAQDkVa47bi7Lz+O8YBFNnBDZ6au9aJ63
+         U39Q+kFb6ziBJRHYWgZLcaPOWZVT4W5g+mwVfSpzWeMrbTSCDwlLPuxwvIcUoXLunQdp
+         jNIsWsVrMcPsOkJxCbeCS03jP+8K/oS3sYcbz0d6gNsroMlLHfm8ToHDf4AHpbatdtVH
+         sbGDe1c8kBZVFDSnNUnpLF/D4fveMITP0Q08xo38bdn06cNLhKRwuGaAriTOhb7UR6ts
+         lqScKBV3uoq6E5/s6FC1OMKKPtP7Ra+L78YIZ5C0mK8MWMu4WYeQMZ3DfMkzffuo9roV
+         yGbA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20260707; t=1791193009; x=1791797809;
+        h=content-type:cc:to:subject:message-id:date:from:in-reply-to
+         :references:mime-version:x-gm-gg:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to:content-type;
+        bh=ALY8PRLZB7eYZm4BgZsEwueCWb0wgVU/gIyTN+rhhkE=;
+        b=v9f6+o0S3xDMBEwcqLqi/ij+k5NeaMg/hqIn2d5x51yYe2I3o3h18WgO4hF0Vyaw4g
+         esBgbFtm9fJsyVfoT6SrkwlX0WYalMITcMcaPgum74waFLpS4F4CsIo2IM34R1ZSr0bp
+         J6xSKBIUEDg2tUyWfBDrn7viY4h/fwgDf5qLo4XQBBi47oMnOTQYsX4Igi+3rQJ0F0od
+         ch01bVA0coCg/wHcIMwOoxc0nOg9IyZZS9efSowuNmAyY6YFJUfkbB7uKEkFjcElPD4n
+         mIibSfJXbGax/ydmHQtg3k42xGALW7PW2cFvOFTLfIQ1m+6FpmaRtawbnuGYlCzjzDLy
+         O1ig==
+X-Forwarded-Encrypted: i=1; AKwUvBwBTo6lskMVTtQSyrg3d1CGNU9X6nHtd++XNLkn3kl3mJlIMVqYt5XtWxYPK6GyRu/zFEmE9c4kWFcbejlwWg==@lists.infradead.org
+X-Gm-Message-State: AFuF++l3ZjpQNCe9AjGAoL10SIqeTsO8FRZcennunNH7eJGwbxlHqSCQ
+	3BW0bGBdY44JJnmyG9bo4DUotYphXV1/OUyoEMabJWadlXdXr5jIp4AuOKLKVxo66LqpVTlWDAQ
+	86rSf1HhjKfYkvwUUzGEqZWNyOKzF6kk=
+X-Gm-Gg: AYBFou3NYiFU/JvRv+IkeUYPWPKMH7TDqGgccIvr7CR0kp/uaoDPeBPW+aLj6ueMpWu
+	P7r4VZ67Ou4IjfFNj4l4X1RF6Zj9tElnebM1b3p72rc87vMQEL+v3pnBNSheboGn7BXPru+PB+p
+	sfO3dKPGCZ6h+SAzqFUcQx7rvnF8c4jmL0RiI0XgOlgJ0td/ZswlUqmcc0WCjivV2yCZZZ+Rh94
+	c8OCdKSaFLG/1niHXBcTs6sRJbri6eA2zZafQyic0JPcwatuNTw+XV4UZblKAmNpD7Lz7jo7tB7
+	pXu5APmEpGz4NRTXb7kwJvRvo5xRvVsnq+OoMS2iWmgucp7jXoL7oc8Vev9OOWbU6avuxWOOx2l
+	8jBdxuZBu9WrLpXCTwoMK8un2+Xk1ARORHOTOeIDAeEtXrzbXDYfauc7hJI0bSYpY+QM=
+X-Received: by 2002:a05:6a20:ad98:b0:3dd:a196:308f with SMTP id
+ adf61e73a8af0-3e0bd41280fmr9275066637.63.1791193009054; Mon, 05 Oct 2026
+ 02:36:49 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-MTK: N
+References: <20260925044908.450775-1-phucduc.bui@gmail.com>
+ <20260925044908.450775-7-phucduc.bui@gmail.com> <asKt42FgsbhSbQUP@sirena.org.uk>
+ <CAABR9nFyEJBwXP=4SjuGNfGQJub2y_DPE87c6j6BPmqMBgjESA@mail.gmail.com> <asNbjSrPYVbeqSae@sirena.co.uk>
+In-Reply-To: <asNbjSrPYVbeqSae@sirena.co.uk>
+From: Bui Duc Phuc <phucduc.bui@gmail.com>
+Date: Mon, 5 Oct 2026 16:36:37 +0700
+X-Gm-Features: AclHuK8rGaIRVCf1BZigYTPKZbRcvBezN-u_N5cJZ31HBEOmlU5r-ZSIA4c-8uQ
+Message-ID: <CAABR9nEXM1OSnV6L4=N1YCbtWn5yMNr+OMEZ4p8h3WMaQXbgmA@mail.gmail.com>
+Subject: Re: [PATCH 06/14] ASoC: mediatek: mt8195: Fix FE startup error handling
+To: Mark Brown <broonie@kernel.org>
+Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	Trevor Wu <trevor.wu@mediatek.com>, Liam Girdwood <lgirdwood@gmail.com>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, 
+	Kuninori Morimoto <kuninori.morimoto.gx@renesas.com>, cassiogabrielcontato@gmail.com, 
+	Mukesh Ojha <mukesh.ojha@oss.qualcomm.com>, Liviu Dudau <liviu.dudau@arm.com>, 
+	Haotian Zhang <vulab@iscas.ac.cn>, HariKrishna Sagala <hariconscious@gmail.com>, linux-sound@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+	linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261005_013912_812547_552A882D 
-X-CRM114-Status: UNSURE (   8.49  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20261005_023651_281923_5D9EA75A 
+X-CRM114-Status: GOOD (  14.15  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,47 +124,35 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-mt76 fails when offloading beacon to MT7928 FW.
+Hi Mark,
 
-This is caused by newly added 4-byte alignment check in MT7928 FW
-and works when beacon_tlv is 4-byte aligned. MT7925 is not affected
-because it accepts same struct with or without extra padding bytes.
+Thank you for your feedback.
 
-Signed-off-by: Anthony Liu <anthony.liu@mediatek.com>
----
- drivers/net/wireless/mediatek/mt76/mt7925/mcu.c | 6 +++++-
- 1 file changed, 5 insertions(+), 1 deletion(-)
+>
+> > > This will return 1 if a new constraint is installed which is not a
+> > > failure.
+>
+> > Do you mean snd_pcm_hw_constraint_integer() rather than
+> > snd_pcm_hw_constraint_step()?
+>
+> Sorry, yes - Noticed it in the _fe_startup() that was called just
+> before as you say and didn't specifically check that function.
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
-index 376cc4833242..ff51d8189b46 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
-@@ -2392,10 +2392,13 @@ mt7925_mcu_uni_add_beacon_offload(struct mt792x_dev *dev,
- 			u8 pad[3];
- 		} __packed hdr;
- 		struct bcn_content_tlv {
-+			/* DW 0 */
- 			__le16 tag;
- 			__le16 len;
-+			/* DW 1 */
- 			__le16 tim_ie_pos;
- 			__le16 csa_ie_pos;
-+			/* DW 2 */
- 			__le16 bcc_ie_pos;
- 			/* 0: disable beacon offload
- 			 * 1: enable beacon offload
-@@ -2406,8 +2409,9 @@ mt7925_mcu_uni_add_beacon_offload(struct mt792x_dev *dev,
- 			 * 1: only cap field IE
- 			 */
- 			u8 type;
-+			/* DW 3~130 */
- 			__le16 pkt_len;
--			u8 pkt[512];
-+			u8 pkt[510];
- 		} __packed beacon_tlv;
- 	} req = {
- 		.hdr = {
--- 
-2.45.2
+Some MediaTek *_fe_startup() functions (mt8195, mt2701, mt8188) can
+return a positive value on success, e.g. because they return the result
+of snd_pcm_hw_constraint_integer(), which is 1 when it sets the integer
+flag. Others, such as mt8186, return 0 on success. This looks
+inconsistent.
 
+On the core side, snd_soc_dai_startup() only treats ret == 0 as success:
+it calls soc_dai_mark_push() only in that case.
+
+Is a positive return from startup intentional/allowed?
+If not, I can send a patch making the MediaTek startup functions return 0
+on success.
+If it is allowed, I can instead change snd_soc_dai_startup() to call
+soc_dai_mark_push() when ret >= 0.
+
+Best regards,
+Phuc
 
