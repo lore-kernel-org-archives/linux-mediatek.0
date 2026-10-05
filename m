@@ -4,43 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EABFDCA5FF0
-	for <linux-mediatek@archiver.kernel.org>; Mon,  5 Oct 2026 20:39:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E9837CA5FF0
+	for <linux-mediatek@archiver.kernel.org>; Mon,  5 Oct 2026 20:52:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=7CIz5GCzQTx1u9zSREPXq6K8PDjPziXPtPA+hC7sFVE=; b=qVEb1xNiSKy/Bw54NZbRTAUFKZ
-	pr7hW+xOBQlY4IjpD5SvPjPyMmoKcYd64WbAf88f+atp3b6rz4sqAysElWKutvowWqt9CB+Syg9FH
-	LJ7D0wuSXIK9Yuco2UYco7dSBj5FQt58P7S3LcdroeIM+vSFJpdrVwWC23vvMdYNo8CsQy5taKyY6
-	2xAxNYyw9wUbpaMZONzicbKl7Vof70fQ7GIi3VS48erd8yUn7Ef8dt8uz6t+7KzjuV8QnPFrJywbL
-	uuBfq7VQ+a4hUD3m3NrQnpJm8uRiCRnUW6T3PCWPTSCwLyd7VA8LIcVjIZlAeayKD8d9hf++ljybr
-	XYTmfdzw==;
+	bh=S2E/Dy2w6ortPriAK1av9RdRN/CI3NUf43JeugdDCvI=; b=ohdexewSA+/0qZIGaeXedaE3Mm
+	L+kbYXIURLnLw1nTQobvCcq1ondNZem9vshRHrltSI1KUvzIK+zx5ZBd4r3jgWnury9UpTHVnI7Md
+	urQrV/RxX8exHfaZPTDqKpn7sDcRVtRDCcXSQuH+zWCiq124lRlEWSmoyduAMVZtRUzkrC2NydlZx
+	0qc1fqkxLFsVoLmByeghbLTuUFqw3eLmsjhSGdSyoo1z48tXXUAqg84G/n/FQ1SXc01PrtnBFRZP8
+	koOyKKjcVMcYM1zlJsADMoKxJ3hBRzK9q3xtSHXBTUZt3Ppw95m+VRo6cDuoFDlGPcR6+KUG2yB56
+	PvCOMR1Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xDpSb-0000000H98c-46yG;
-	Mon, 05 Oct 2026 20:38:57 +0000
-Received: from out-84.mta0.migadu.com ([2001:41d0:1004:224b::54] helo=mta0.migadu.com)
+	id 1xDpg2-0000000H9xn-0hcd;
+	Mon, 05 Oct 2026 20:52:50 +0000
+Received: from out-109.mta1.migadu.com ([2001:41d0:203:375::6d] helo=mta1.migadu.com)
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xDpSX-0000000H98B-1wEg
+	id 1xDpfz-0000000H9xC-21gJ
 	for linux-mediatek@lists.infradead.org;
-	Mon, 05 Oct 2026 20:38:56 +0000
+	Mon, 05 Oct 2026 20:52:49 +0000
 X-Envelope-To: linux-mediatek@lists.infradead.org
-DKIM-Signature: a=rsa-sha256; bh=YrYyR/6BX+th5kqG38wmrgA+/1vrNlDI2jJdQhFFI3w=;
+DKIM-Signature: a=rsa-sha256; bh=Wog0iRSGKClsxMyBudxgkKM7R3EtgCsLpg841Y7blQ8=;
  c=simple/simple; d=justthetip.ca;
  h=from:to:subject:date:message-id:mime-version:content-type; s=key1;
- t=1791232729; v=1; x=1791837529;
- b=DvE0DMbmUyYPAkBFz0mJ6mSEb8FoLLrSgc9o5+pphOeXczzfnRv8aqNVlUBKhGdNpfk98qN8
- b+pNk/fth+D6G0Mt7cO1THxrVBJocVnms6hUsUEAwsP81HhP/qL0NqyuxM0aXu+WQj3UCeU69Uq
- sLKoCkh0/+SdGCgPrLExC2XUUn5haC6MYD44hG75/xrdCYHIuGsq+ZpUx7TJQzgMBy5F+DuUFma
- DoFHeGLPiiFqfkvhyMp9iWoX/IKAht1K/ScmWu2uLSo+lGf9FXgDux51Ua3Edw3l+u5XaDmpcue
- sB7S0ggUnhcPJqrrboUQ1zUekcqQX1GM2CYy5/4/1aXAg==
+ t=1791233563; v=1; x=1791838363;
+ b=nEKZGjN7wlOHxGzRSTtaE0ho3DibDAUgw9qNi94cRcFnhVTXC3w4J4BO2ufMxeFKtoPnviYK
+ Y7gZx/JPzy1vm6aDw//xVFEktBhPNZV7itWTbXWAChJEyqsmccwh/O3tPL4xNc7DF+/66F2CnBK
+ Wh3j9hDsultdxNZfbnJQec6uabwFeGOH1l63+G3PMaP8227Pvzs9IQx/HPt+dVIrul5z5v12WAA
+ bTjQzhNXfBuGZqA9UkTFoeDM/IT1y9Vstecomj+bmxX1a6Rd3pOxb1nh0VIXmhLvocPmzXPdYW6
+ vFGt/gpKdJzimG9ohnTSVA+siyKXHgdETD1NQnLPLXkmg==
 X-Envelope-To: linux-mediatek@lists.infradead.org
-Received: by smtp.migadu.com with ESMTPS id fcdd8944095dfdfa;
-	Mon, 05 Oct 2026 20:38:48 +0000
-X-Mizu-Trace-ID: fcdd8944095dfdfa
+Received: by smtp.migadu.com with ESMTPS id 12bd7bdb79995992;
+	Mon, 05 Oct 2026 20:52:43 +0000
+X-Mizu-Trace-ID: 12bd7bdb79995992
 X-Migadu-Flow: FLOW_OUT
 From: Devin Wittmayer <lucid_duck@justthetip.ca>
 To: Felix Fietkau <nbd@nbd.name>,
@@ -49,18 +49,19 @@ To: Felix Fietkau <nbd@nbd.name>,
 Cc: Deren Wu <deren.wu@mediatek.com>,
 	Sean Wang <sean.wang@mediatek.com>,
 	Shayne Chen <shayne.chen@mediatek.com>,
+	Ming Yen Hsieh <mingyen.hsieh@mediatek.com>,
 	linux-wireless@vger.kernel.org,
 	linux-mediatek@lists.infradead.org,
 	Mark Anthony Agarro <markanthonyagarro@gmail.com>
-Subject: [PATCH wireless] wifi: mt76: mt7921: keep the join ROC until the station is authorized
-Date: Mon,  5 Oct 2026 13:38:46 -0700
-Message-ID: <20261005203846.239445-1-lucid_duck@justthetip.ca>
+Subject: [PATCH wireless] wifi: mt76: mt76_connac: scan 6 GHz wildcard requests passively on connac2
+Date: Mon,  5 Oct 2026 13:52:40 -0700
+Message-ID: <20261005205240.241136-1-lucid_duck@justthetip.ca>
 X-Mailer: git-send-email 2.55.0
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261005_133853_924895_46FD9ED8 
-X-CRM114-Status: GOOD (  18.21  )
+X-CRM114-CacheID: sfid-20261005_135247_936652_C2C1292D 
+X-CRM114-Status: GOOD (  14.44  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,107 +78,75 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Mark Anthony Agarro <markanthonyagarro@gmail.com>
 
-When an association succeeds mac80211 calls mgd_complete_tx(), and
-mt7921 aborts the join ROC there. The AP starts the 4-way handshake
-right away, so the abort lands where message 3 arrives. On an MT7922
-this loses message 3 often enough to matter: the supplicant sends
-message 2 (acked), never receives message 3, and the connection ends
-with reason 15 (4WAY_HANDSHAKE_TIMEOUT) after about 3.3 s. The mt7925
-capture in the linked issue shows the same ordering: abort, message 2
-out, then message 3 retried by the AP several times without an answer.
+With WIPHY_FLAG_SPLIT_SCAN_6GHZ cfg80211 puts the 6 GHz channels in a
+request of their own and lists the APs it wants to find there in
+scan_6ghz_params. mt76_connac_mcu_hw_scan() does not read them, and the
+connac2 scan command has no field for per-target data (only a single
+bssid), so a wildcard request is sent as an active scan with an empty
+SSID. On an MT7922 the firmware then listens for about 58 ms on a
+single channel, shorter than a 102.4 ms beacon interval, and the AP used
+for testing does not answer a broadcast probe request, so the beacon is
+often missed. A scan of channel 37 (6135 MHz) found the AP in 9 to 17
+of 30 attempts, and wpa_supplicant, which scans 6 GHz this way after
+the legacy bands, ended up on 5 GHz in about four connections in ten.
 
-Keep the ROC after a successful (re)association on a station interface
-and release it when the station is authorized, on disassociation, or
-when the station is removed. The ROC timer still ends it if none of
-that happens. The state lives in a flag in struct mt792x_vif so that an
-unrelated ROC, for example a user remain-on-channel, is never aborted
-by the authorize hook.
+Send the wildcard-only 6 GHz request as a passive scan (scan_type 0, no
+probe requests). The single-channel window becomes about 119 ms. The
+6 GHz stage is identified by sreq->scan_6ghz and not by counting
+channels. Requests with a directed SSID stay active, legacy-band
+requests are untouched, and mt7925 builds its own command from the RNR
+targets and does not use this function.
 
-Tested on an MT7922 (PCIe), kernel 7.3.0-rc4, WPA3-SAE AP, two rounds
-of 20 disconnect/reconnect cycles per build in the same boot, unpatched
-and patched in ABAB order:
+Tested on an MT7922 (PCIe), kernel 7.3.0-rc4, one UniFi AP with a PSC
+channel 37 BSS, same boot, random order, 30 scans per cell:
 
-  unpatched   34 of 73 association attempts: M1 rx, M2 tx acked,
-              no M3, reason 15
-  patched      0 of 40
+                             before    after
+  wildcard 6135 MHz           9/30     30/30
+  5320 + 6135 MHz            10/30     30/30
+  explicit passive           30/30     30/30
+  directed SSID              30/30     30/30
+  5320 MHz only              30/30     30/30
+  2.4 GHz channels           30/30     30/30
 
-Delaying the abort by 20 ms before it made no difference (8 of 29),
-and delaying 20 ms after it removed the failures (0 of 20), so what
-matters is where the abort lands relative to the handshake. The
-firmware behaviour after the abort is inferred from these outcomes, not
-observed directly.
+wpa_supplicant cold start picked 6 GHz in 18 of 30 attempts before and
+in 30 of 30 after; the 6 GHz stage takes about 0.35 s longer. Sending
+scan_type 1 with no probe requests behaves like the unmodified request,
+while scan_type 0 with probe requests works, so the effect comes from
+the scan type and the listen window, not from the probes.
 
-Not tested: MT7921 and other connac2 parts, USB and SDIO, APs other
-than the one above, open or WPA2 networks, scheduled scan, suspend and
-resume.
+Not tested: non-PSC channels, scheduled scan, other APs, MT7921 and
+MT7902 parts. This does not fix the 4-way handshake timeout in #106.
 
-Fixes: 41ac53c899bd ("wifi: mt76: mt7921: introduce chanctx support")
-Link: https://github.com/morrownr/mt76/issues/106
+Fixes: 0e5911bb7cc9 ("wifi: mt76: mt7921: fix non-PSC channel scan fail")
 Signed-off-by: Mark Anthony Agarro <markanthonyagarro@gmail.com>
 Signed-off-by: Devin Wittmayer <lucid_duck@justthetip.ca>
 ---
- .../net/wireless/mediatek/mt76/mt7921/main.c  | 21 +++++++++++++++++++
- drivers/net/wireless/mediatek/mt76/mt792x.h   |  1 +
- 2 files changed, 22 insertions(+)
+ drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c | 12 ++++++++++++
+ 1 file changed, 12 insertions(+)
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/main.c b/drivers/net/wireless/mediatek/mt76/mt7921/main.c
-index 68a059504e83..828b5b5df343 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7921/main.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7921/main.c
-@@ -865,6 +865,12 @@ int mt7921_mac_sta_event(struct mt76_dev *mdev, struct ieee80211_vif *vif,
- 	if (sta->aid > MT7921_MAX_AID)
- 		return -ENOENT;
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
+index 2f925d22b9aa..d684fd306fee 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
++++ b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
+@@ -1850,6 +1850,18 @@ int mt76_connac_mcu_hw_scan(struct mt76_phy *phy, struct ieee80211_vif *vif,
+ 	req->ssid_type_ext = n_ssids ? BIT(0) : 0;
+ 	req->ssids_num = n_ssids;
  
-+	if (mvif->roc_join_held && !sta->tdls &&
-+	    (ev == MT76_STA_EVENT_AUTHORIZE || ev == MT76_STA_EVENT_DISASSOC)) {
-+		mvif->roc_join_held = false;
-+		mt7921_abort_roc(mvif->phy, mvif);
-+	}
-+
- 	if (ev != MT76_STA_EVENT_ASSOC)
- 	    return 0;
- 
-@@ -906,6 +912,7 @@ void mt7921_mac_sta_remove(struct mt76_dev *mdev, struct ieee80211_vif *vif,
- 		struct mt792x_vif *mvif = (struct mt792x_vif *)vif->drv_priv;
- 
- 		mvif->wep_sta = NULL;
-+		mvif->roc_join_held = false;
- 		ewma_rssi_init(&mvif->bss_conf.rssi);
- 		if (!sta->tdls)
- 			mt76_connac_mcu_uni_add_bss(&dev->mphy, vif,
-@@ -1447,6 +1454,20 @@ static void mt7921_mgd_complete_tx(struct ieee80211_hw *hw,
- {
- 	struct mt792x_vif *mvif = (struct mt792x_vif *)vif->drv_priv;
- 
-+	/* The AP starts the 4-way handshake as soon as the association
-+	 * succeeds. Releasing the join ROC at this point makes the firmware
-+	 * unresponsive for several ms right when message 3 arrives, so it
-+	 * can be lost and the handshake times out. Keep the ROC until the
-+	 * station is authorized; mt7921_mac_sta_event() releases it. If that
-+	 * never happens, the ROC timer or the station removal does.
++	/* cfg80211 splits the 6 GHz channels into their own request and
++	 * describes the APs to look for in scan_6ghz_params, which this
++	 * command cannot carry. As an active wildcard scan the firmware only
++	 * listens for a short time per channel and often misses the beacon.
++	 * Scan the wildcard-only 6 GHz stage passively; directed scans stay
++	 * active.
 +	 */
-+	if (vif->type == NL80211_IFTYPE_STATION && info->success &&
-+	    (info->subtype == IEEE80211_STYPE_ASSOC_REQ ||
-+	     info->subtype == IEEE80211_STYPE_REASSOC_REQ)) {
-+		mvif->roc_join_held = true;
-+		return;
++	if (is_connac2(phy->dev) && sreq->scan_6ghz && !n_ssids) {
++		req->scan_type = 0;
++		req->probe_req_num = 0;
 +	}
 +
- 	mt7921_abort_roc(mvif->phy, mvif);
- }
- 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt792x.h b/drivers/net/wireless/mediatek/mt76/mt792x.h
-index 9efc251cb745..d4bbfaeb54b8 100644
---- a/drivers/net/wireless/mediatek/mt76/mt792x.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt792x.h
-@@ -191,6 +191,7 @@ struct mt792x_vif {
- 	struct mt792x_sta *wep_sta;
- 
- 	struct mt792x_phy *phy;
-+	bool roc_join_held; /* join ROC kept until the STA is authorized */
- 	u16 valid_links;
- 	u8 deflink_id;
- 	enum mt792x_mlo_pm_state mlo_pm_state;
+ 	duration = is_connac2(phy->dev) ? 0 : MT76_CONNAC_SCAN_CHANNEL_TIME;
+ 	/* increase channel time for passive scan */
+ 	if (!sreq->n_ssids)
 -- 
 2.55.0
 
