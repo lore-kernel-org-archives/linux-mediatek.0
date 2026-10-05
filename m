@@ -4,60 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 254F3CA5FF0
-	for <linux-mediatek@archiver.kernel.org>; Mon,  5 Oct 2026 10:20:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 184AECA5FFD
+	for <linux-mediatek@archiver.kernel.org>; Mon,  5 Oct 2026 10:29:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=BBZu3H0Bx6rtd/133+q6MGFZh6JR1+IEl9gcErsM3o0=; b=U4mhGoeQ2T8Z6FbSQtvpnqXbmR
-	bOnzjhfy7kHHN3CmsVPmTMahrlY28QwVRvnj9BJ33O4fDarcFExp8bWGyBOKetmHtb6v4lF5oIUY3
-	C529Zwi3aEGh1w0MhSXHHyXR51ayFvR2xJpgTbxURkfk+PuiDQ08mqF6868ZS7RMmo+B3kf+1Xmdz
-	RwI2gpkfKKY248k/fVMFE8WclMBlB6NbhPwWLdfCHqq2ZLS67CGNb9u3k7YHjgX+pT7ZM8kKxzagW
-	pq+HYyuzw8JjKXQGlCG8O6OPDN+JzbAoFslvwQre5Pbh2mTa8ym/ro8TCjnw/BcuBHgz7HYCr9iNq
-	uSE4Z3Ug==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=VCdtdx1IUP8ShAtMruchd0VuoPIMEYgJy8nEzHLCc7A=; b=4U7AVOhF6vbNKuJL80/+6DP2wL
+	YGrlfqOIw65+WpJ9ZMUv/ZQ4uKJFmfKUsrIM1CDgv22yH8shKJ7AxmFx3g4XR2EO/Vo6560O6o4fJ
+	CrqWkesCydlJLbAwtphovFSjbL+uUUjgnxlfjcXKEwHcJuH3hPWxotGux2Rf3zP6cvryJ9ZdzZhvi
+	Gualp4X6lE2b7iV46RKsBx8qJSHaeAk70lFbIV+3lFlXcYyee9DOY/jez8QA7My269gmvXlhe0nsX
+	ZUSELLMrgNxhhPBEBVsm3+wuSaPaWuyJKro4VA420rEnLx7GbQkw8FpW/zKUVipgJu7lA71sR/JZr
+	tJX5RW6A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xDfoU-0000000G9c2-0UKC;
-	Mon, 05 Oct 2026 10:20:54 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1xDfxG-0000000GBG8-0vwG;
+	Mon, 05 Oct 2026 10:29:58 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xDfoS-0000000G9as-2b9q;
-	Mon, 05 Oct 2026 10:20:52 +0000
+	id 1xDfxC-0000000GBFG-2b7p;
+	Mon, 05 Oct 2026 10:29:54 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 1446B60A7F;
-	Mon,  5 Oct 2026 10:20:52 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id EADC41F000FF;
-	Mon,  5 Oct 2026 10:20:48 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id F1B9B41E47;
+	Mon,  5 Oct 2026 10:29:53 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9D6B91F00893;
+	Mon,  5 Oct 2026 10:29:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1791195651;
-	bh=BBZu3H0Bx6rtd/133+q6MGFZh6JR1+IEl9gcErsM3o0=;
-	h=From:To:Cc:In-Reply-To:References:Subject:Date;
-	b=YA7pMzaNehf2X3TgCxFjiGYJ0RwhihrvMCma8vPnk7RhGH7AW3mNejHHBHFDHDygG
-	 kLVoFtnxBgPRAqIgsaIQilj+UyrfNTPMKJ/Ru5Why5puNFxN19X96OmlAZsOus8SGY
-	 1VAmmxrtoQxBtd4khvhKfiDh9BVJ+vbW4VWYdOiKfQ3U/DWy6MkpmCJlYRhzmQf7Xk
-	 u7PATVwyADCqeDmRt806why6ke38dmb2lTQpruToK2nCchYlNK0F7hnBKm7Inkji/U
-	 VOoEzP5hye/p/kLz6kNE/DF3a1yBq9N/de4QqJDFGqCP2Kt/hFsfkRpigZN2NT720t
-	 t4PWXR7HFnFog==
-From: Vinod Koul <vkoul@kernel.org>
-To: chunfeng.yun@mediatek.com, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: neil.armstrong@linaro.org, robh@kernel.org, krzk+dt@kernel.org, 
- conor+dt@kernel.org, matthias.bgg@gmail.com, 
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
- linux-phy@lists.infradead.org, devicetree@vger.kernel.org, 
- linux-kernel@vger.kernel.org, kernel@collabora.com
-In-Reply-To: <20260915101022.23852-1-angelogioacchino.delregno@collabora.com>
-References: <20260915101022.23852-1-angelogioacchino.delregno@collabora.com>
-Subject: Re: [PATCH v4 0/2] PHY: Add MediaTek PCI-Express Gen4 S-PHY Driver
-Message-Id: <179119564860.316652.15464320957974464041.b4-ty@kernel.org>
-Date: Mon, 05 Oct 2026 12:20:48 +0200
+	s=k20260515; t=1791196193;
+	bh=VCdtdx1IUP8ShAtMruchd0VuoPIMEYgJy8nEzHLCc7A=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To;
+	b=EdQS5stBnMbPXiRcjd4FuvNTHjketIOyyw9D0JFaCumzZVZiPnWrOaetdc0vwicTZ
+	 4ecyytPDbThwviIHN3oPcSx7ugGG8y0+n3Q/LUP81tbL8TKA8vaD1sjs+YzooUfQkr
+	 QEHqbcZY1L+tqfXgoHMx3QH6mexfus4vVuLQdiat3S3MRgvJTVs9x1rKucNaTyHOLZ
+	 EsJj7+hSjix2AZc8cSImvumDcXgb2r4IZuFLVbqUonmICQ1030jKOs9wd9fCMtAvDJ
+	 MAPeT2YO2zSUymyPUW7hae8tlv8bhEW/FzW24KWRF6xS8BUOdd1hbW9/yVaUTMnBq1
+	 j1Hq7F9YL/EwQ==
+Received: by finisterre.sirena.org.uk (Postfix, from userid 1000)
+	id 537931AC57CE; Mon, 05 Oct 2026 11:29:51 +0100 (BST)
+Date: Mon, 5 Oct 2026 12:29:51 +0200
+From: Mark Brown <broonie@kernel.org>
+To: Bui Duc Phuc <phucduc.bui@gmail.com>
+Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Trevor Wu <trevor.wu@mediatek.com>,
+	Liam Girdwood <lgirdwood@gmail.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>,
+	Kuninori Morimoto <kuninori.morimoto.gx@renesas.com>,
+	cassiogabrielcontato@gmail.com,
+	Mukesh Ojha <mukesh.ojha@oss.qualcomm.com>,
+	Liviu Dudau <liviu.dudau@arm.com>,
+	Haotian Zhang <vulab@iscas.ac.cn>,
+	HariKrishna Sagala <hariconscious@gmail.com>,
+	linux-sound@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH 06/14] ASoC: mediatek: mt8195: Fix FE startup error
+ handling
+Message-ID: <asN8HzfxSHmBjfu1@sirena.co.uk>
+References: <20260925044908.450775-1-phucduc.bui@gmail.com>
+ <20260925044908.450775-7-phucduc.bui@gmail.com>
+ <asKt42FgsbhSbQUP@sirena.org.uk>
+ <CAABR9nFyEJBwXP=4SjuGNfGQJub2y_DPE87c6j6BPmqMBgjESA@mail.gmail.com>
+ <asNbjSrPYVbeqSae@sirena.co.uk>
+ <CAABR9nEXM1OSnV6L4=N1YCbtWn5yMNr+OMEZ4p8h3WMaQXbgmA@mail.gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-X-Mailer: b4 0.14.3
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="cO30F3djDKDguik/"
+Content-Disposition: inline
+In-Reply-To: <CAABR9nEXM1OSnV6L4=N1YCbtWn5yMNr+OMEZ4p8h3WMaQXbgmA@mail.gmail.com>
+X-Cookie: You will forget that you ever knew me.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,28 +89,29 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
 
-On Tue, 15 Sep 2026 12:10:20 +0200, AngeloGioacchino Del Regno wrote:
-> Changes in v4:
->  - Mentioned MT6991 in the commit description for commit 2 (Mani)
->  - Added comment to clarify that if one calibration is missing, no
->    calibration should be trusted
->  - Changed Kconfig to mention module build (Mani)
->  - Changed header comment to add "Author" and change indentation (Mani)
->  - Moved cktx_impsel, tx_impsel to the top (Mani)
->  - Added pm_runtime_no_callbacks() call (Mani)
-> 
-> [...]
+--cO30F3djDKDguik/
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 
-Applied, thanks!
+On Mon, Oct 05, 2026 at 04:36:37PM +0700, Bui Duc Phuc wrote:
 
-[1/2] dt-bindings: phy: Document MT8196 MediaTek PCI-Express Gen4 S-PHY
-      commit: c5e6a552846b253294d0b37f447aeea20c1938a1
-[2/2] phy: mediatek: Add support for PCI-Express Gen4 S-PHY
-      commit: e9434ed4effaf46351fce729380d3c8d7d918f20
+> On the core side, snd_soc_dai_startup() only treats ret == 0 as success:
+> it calls soc_dai_mark_push() only in that case.
 
-Best regards,
--- 
-~Vinod
+> Is a positive return from startup intentional/allowed?
 
+It shouldn't be, no.
 
+--cO30F3djDKDguik/
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQReagvpf3TrrA7BoYYv73Ows9A4iQUCasN8DAAKCRAv73Ows9A4
+ia6oAPwKWuMtsVlLKHYETHbUSa6bMxHSYmnL0pqfug21qnTy2AEAm5OXh1XSYpqm
+8UdNRFdnbnPy7SX5g/RLbguKIMWCBQA=
+=Obcm
+-----END PGP SIGNATURE-----
+
+--cO30F3djDKDguik/--
 
