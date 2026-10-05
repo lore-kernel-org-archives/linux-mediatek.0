@@ -4,68 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1385BCA5FF0
-	for <linux-mediatek@archiver.kernel.org>; Mon,  5 Oct 2026 17:10:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id ADCD3CA5FF0
+	for <linux-mediatek@archiver.kernel.org>; Mon,  5 Oct 2026 17:17:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=aHp1IwBXNu4k0HS2L7U3npvTY1+CW3Wkn5yoUJOYsuA=; b=yEwq2KI4GAIBmyeOZnrGgmN6Js
-	T99mbc57HDZqTP/GtVSfqvRFcxq98ZgwEoRyl/1+ZMCPnqU8Ve55MXwhz3bRJ6vz46FotbLw4dQgv
-	T7lxlg7LTckq1UqXakCp2Ff+QmeRH3AkjbQ4EX1uAesbmPn7FwVtSRCPITkAUmCBYIE+mhr2nwp8E
-	B+LnzhuEt93KU7NQb0zRU41FPeEMQKdm9YI587xOqY+89HqR1hClGcYezEjrsD+lvCsNTqLN33M1X
-	+oSftuKyEOE7AultmLsSRvFttrNVJD8+0c3lKFgOFcd5kODXbNIP78Iuh8hPqdG5jowEdNLRrK6a7
-	ZjxreMgQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=1ah6BRYlOqcajJUdl5DlnBTDzNHXdGvo5x5zaQWEpp8=; b=eSaurw04NIvkR/J9un/1GoRc83
+	sTBn7xFFx2TAlwsrx32AYO0uEiUzIMNOIFpnKh5uqeVvXfCaNp+wmgQBUlF/l6yb+v2uJ8zF/vZF0
+	IFdxo1mNlqzMuUfUIRrDh2IFflHoBU10oCiseMd2ridEmpNmjXLWfbbvmTODu9Mo9IW1/ax5tfD92
+	9BD7aM8KTWiy++RHf/bBxJn4yrKGxO9CJevOoSyJ33xWTEWd9S0HCKfsUSUylOYg4VHGx7+UfXFde
+	CkJ9g43vyXdYlqlyt7XyaPPZ7UST0SGttjQBeVbSUk2dF8q+3vOaEcwu2Q3A6jrvS9GoZ5x+kRj1o
+	/2VIYBWA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xDmDE-0000000GtRU-0F7Z;
-	Mon, 05 Oct 2026 17:10:52 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1xDmJc-0000000GuCD-0ykn;
+	Mon, 05 Oct 2026 17:17:28 +0000
+Received: from mail.scd31.com ([205.209.125.10])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xDmBw-0000000GtJH-15dx;
-	Mon, 05 Oct 2026 17:10:47 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id BC00043939;
-	Mon,  5 Oct 2026 17:09:31 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 64ADE1F000FF;
-	Mon,  5 Oct 2026 17:09:31 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1791220171;
-	bh=aHp1IwBXNu4k0HS2L7U3npvTY1+CW3Wkn5yoUJOYsuA=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=BZPXBoaR3tiQDmCQTXaxLXDI5OHnWaCqTZYnEBoUv2blrhAwqXC10QDNvxNBlydFU
-	 n2+ZcJ0RxU2GdyuN67yut49U0UwWXcgOLlgY75rzLbsIzsPU+nOdKDa29RltG8U+xu
-	 WBlz3cNtjzjcMCUHyyjZ/Do1LwpDNK1DpI8XUGDms/ByoRRPEh0FdxhS4/NQArZYm0
-	 BwYwYq98upKB7VSjMnRvK2c8AHBBljDs2/TS8iaLnTHA093YWYQCC0qP1ZAf/C5I32
-	 BaSZXUPrftwJpzlNz6U+9VuaWcYeGhstwGbdz3NgWbF8LnJu4AXMBD9UifIVtfafe3
-	 4bfSF3LIrWh2Q==
-Received: by traversing.sirena.org.uk (Postfix, from userid 1000)
-	id A229716EA206; Mon, 05 Oct 2026 18:09:27 +0100 (BST)
-Date: Mon, 5 Oct 2026 19:09:27 +0200
-From: Mark Brown <broonie@kernel.org>
-To: Chen-Yu Tsai <wenst@chromium.org>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Dmitry Torokhov <dmitry.torokhov@gmail.com>,
-	Jiri Kosina <jikos@kernel.org>, Andi Shyti <andi.shyti@kernel.org>,
-	Benson Leung <bleung@chromium.org>,
-	Tzung-Bi Shih <tzungbi@kernel.org>,
-	linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org,
+	id 1xDmJY-0000000GuBZ-0CmG;
+	Mon, 05 Oct 2026 17:17:26 +0000
+From: Sophie D <patches@scd31.com>
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=scd31.com; s=mail;
+	t=1791220639;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:
+	 content-transfer-encoding:content-transfer-encoding;
+	bh=1ah6BRYlOqcajJUdl5DlnBTDzNHXdGvo5x5zaQWEpp8=;
+	b=NkIZVHIe/NEIztwGEg5rftAncOzAtTd97OTgds4MCRjaTV/u3umbjksfKTQ9FIca5njqWK
+	nMg0AiLZCR5QQctw/NiPKpQoIP2TcGME8CvMv/oxmWWUj0e3t+ysmtH0Hoqqig9DzG7SV/
+	DCfTWlZTeL9Lz47VpWivUgLmhuRTkPUExavQDbOmRiOMb8I9JvaxzphsY7U/jbN0I/8cdm
+	TB9YZ/dTHE8dC1mprBE1sYQ71q7dG4euLmlK+5bozG8LqXkHfzCV/qb1oh0zQU76aKH4MJ
+	JDw0USNlv8wLTnmUEVuTsch++5vFwgnc06pl333eMOUBVHLENZlQmZei4I6Rcg==
+To: Michael Turquette <mturquette@baylibre.com>,
+	Stephen Boyd <sboyd@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: linux-clk@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
-	chrome-platform@lists.linux.dev, linux-input@vger.kernel.org,
-	linux-i2c@vger.kernel.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v6 1/8] regulator: core: Add "enable and wait" functions
-Message-ID: <asPZxyprhyZtnPtc@sirena.org.uk>
-References: <20260901074930.764550-1-wenst@chromium.org>
- <20260901074930.764550-2-wenst@chromium.org>
+	linux-mediatek@lists.infradead.org,
+	Sophie D <patches@scd31.com>
+Subject: [PATCH] clk: mediatek: mt2701: Enable all subsystem clocks by default
+Date: Mon,  5 Oct 2026 13:17:05 -0400
+Message-ID: <20261005171706.2164743-1-patches@scd31.com>
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="YrEJvP9azbYsig5Q"
-Content-Disposition: inline
-In-Reply-To: <20260901074930.764550-2-wenst@chromium.org>
-X-Cookie: Use the Force, Luke.
+Content-Transfer-Encoding: 8bit
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20261005_101724_195036_444282C2 
+X-CRM114-Status: UNSURE (   8.14  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,53 +70,84 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Only the core MT2701 clock driver is enabled by default when building
+for ARCH_MEDIATEK on ARM; none of the subsystem clock drivers are. As a
+result, multi_v7_defconfig produces a kernel where Ethernet, PCIe, USB,
+display, GPU and audio do not work on MT7623 boards such as the Banana
+Pi BPI-R2, as their clocks live in ethsys, hifsys, mmsys, g3dsys and
+audsys.
 
---YrEJvP9azbYsig5Q
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+Default all of the MT2701 subsystem clock drivers to
+COMMON_CLK_MT2701, in line with newer SoCs such as MT8173, MT8183 and
+MT7986.
 
-On Tue, Sep 01, 2026 at 03:49:19PM +0800, Chen-Yu Tsai wrote:
-> In device power sequencing and initialization use cases, it is common
-> for the driver to enable the regulator and then wait for a certain
-> period of time to pass before continuing.
+Signed-off-by: Sophie D <patches@scd31.com>
+---
+ drivers/clk/mediatek/Kconfig | 8 ++++++++
+ 1 file changed, 8 insertions(+)
 
-This breaks the build:
+diff --git a/drivers/clk/mediatek/Kconfig b/drivers/clk/mediatek/Kconfig
+index 0e8dd82aa84e..a449ec878abc 100644
+--- a/drivers/clk/mediatek/Kconfig
++++ b/drivers/clk/mediatek/Kconfig
+@@ -29,48 +29,56 @@ config COMMON_CLK_MT2701
+ config COMMON_CLK_MT2701_MMSYS
+ 	bool "Clock driver for MediaTek MT2701 mmsys"
+ 	depends on COMMON_CLK_MT2701
++	default COMMON_CLK_MT2701
+ 	help
+ 	  This driver supports MediaTek MT2701 mmsys clocks.
+ 
+ config COMMON_CLK_MT2701_IMGSYS
+ 	bool "Clock driver for MediaTek MT2701 imgsys"
+ 	depends on COMMON_CLK_MT2701
++	default COMMON_CLK_MT2701
+ 	help
+ 	  This driver supports MediaTek MT2701 imgsys clocks.
+ 
+ config COMMON_CLK_MT2701_VDECSYS
+ 	bool "Clock driver for MediaTek MT2701 vdecsys"
+ 	depends on COMMON_CLK_MT2701
++	default COMMON_CLK_MT2701
+ 	help
+ 	  This driver supports MediaTek MT2701 vdecsys clocks.
+ 
+ config COMMON_CLK_MT2701_HIFSYS
+ 	bool "Clock driver for MediaTek MT2701 hifsys"
+ 	depends on COMMON_CLK_MT2701
++	default COMMON_CLK_MT2701
+ 	help
+ 	  This driver supports MediaTek MT2701 hifsys clocks.
+ 
+ config COMMON_CLK_MT2701_ETHSYS
+ 	bool "Clock driver for MediaTek MT2701 ethsys"
+ 	depends on COMMON_CLK_MT2701
++	default COMMON_CLK_MT2701
+ 	help
+ 	  This driver supports MediaTek MT2701 ethsys clocks.
+ 
+ config COMMON_CLK_MT2701_BDPSYS
+ 	bool "Clock driver for MediaTek MT2701 bdpsys"
+ 	depends on COMMON_CLK_MT2701
++	default COMMON_CLK_MT2701
+ 	help
+ 	  This driver supports MediaTek MT2701 bdpsys clocks.
+ 
+ config COMMON_CLK_MT2701_AUDSYS
+ 	bool "Clock driver for Mediatek MT2701 audsys"
+ 	depends on COMMON_CLK_MT2701
++	default COMMON_CLK_MT2701
+ 	help
+ 	  This driver supports Mediatek MT2701 audsys clocks.
+ 
+ config COMMON_CLK_MT2701_G3DSYS
+ 	bool "Clock driver for MediaTek MT2701 g3dsys"
+ 	depends on COMMON_CLK_MT2701
++	default COMMON_CLK_MT2701
+ 	help
+ 	  This driver supports MediaTek MT2701 g3dsys clocks.
+ 
+-- 
+2.55.0
 
-make --silent --keep-going --jobs=15 O=/build/stage/build-work ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu- CROSS_COMPILE_COMPAT=arm-linux-gnueabihf-
-error[E0425]: cannot find function `regulator_enable` in crate `bindings`
-      --> /build/stage/linux/rust/kernel/regulator.rs:288:38
-       |
-   288 |         to_result(unsafe { bindings::regulator_enable(self.inner) })
-       |                                      ^^^^^^^^^^^^^^^^
-       |
-      ::: /build/stage/build-work/rust/bindings/bindings_generated.rs:129557:5
-       |
-129557 |     pub fn regulator_disable(regulator: *mut regulator) -> ffi::c_int;
-       |     ------------------------------------------------------------------ similarly named function `regulator_disable` defined here
-       |
-help: a function with a similar name exists
-       |
-   288 -         to_result(unsafe { bindings::regulator_enable(self.inner) })
-   288 +         to_result(unsafe { bindings::regulator_disable(self.inner) })
-       |
-
-error: aborting due to 1 previous error
-
-
---YrEJvP9azbYsig5Q
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmrD2cMACgkQJNaLcl1U
-h9AfZQf+PsDxB00eDcNx08x42/Y8fiZnF71clFrO1HwZnCiLdc7yCTPXLLx4zDKy
-ANBnVA3TnNa3XkujT86RslaDWHZ/xHJYKTYJk/8g3m4jlsT+zqnuczwjSSbw1/P2
-qBRBVMVH/M/Z/QcEBFqUJFripURbPuBSgKCpFCIq3AMxLBlKRdzfyqT385RQDRG0
-VOuQEn6cpSkP3ZhzyNJN210Ahh1lxoP0tekk7fBsgZJrgYiaFv5WFJUsNRx4NMtp
-x9rrsIqG0LOba3RVAkgbQBNUaEXcHWzrOZlmWPbAA77QXS9CMUSWbehYaLg+fsX/
-SnC0TnX4r3B6xm0zeLZoBD+3zij8dA==
-=mSZA
------END PGP SIGNATURE-----
-
---YrEJvP9azbYsig5Q--
 
