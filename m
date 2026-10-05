@@ -4,66 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6CDB1CA5FF0
-	for <linux-mediatek@archiver.kernel.org>; Mon,  5 Oct 2026 16:56:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1385BCA5FF0
+	for <linux-mediatek@archiver.kernel.org>; Mon,  5 Oct 2026 17:10:54 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=3EkFb2rmMItvPU09Xj3/yToO50k6JsJJgTdjvGqh2xU=; b=ee8m0j6wWO7wK3r9WVhz+IYqMy
-	rW2aF/QCXMw4qZcf+vDrF3E4CcOD8OG9SQ3HwdAacOwaWTTzLKsJy5zfVnrSceJZ/eVA53wZs4z//
-	gB6hGs2JyYK7aZGvxfy/G5yYTcnfaWupTwPQl481HrdVt+DwplYiSDISO3btbKykS+f9/lLcRs1Tx
-	dEa2m8eEkwgs2U7nwbxwbj8R/dub52SkpLrbYOmEAgLDFbk863UF03WLVQBn0D1UzMaipelP+3ofq
-	3ceuZCslwEx1qxCrMHrImDbvE/Hs/ntvt4Ifvj1FR9PgmZm1PghXFsaAJU+AXe61pH3crlsKuS2vn
-	2gYhB7SQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=aHp1IwBXNu4k0HS2L7U3npvTY1+CW3Wkn5yoUJOYsuA=; b=yEwq2KI4GAIBmyeOZnrGgmN6Js
+	T99mbc57HDZqTP/GtVSfqvRFcxq98ZgwEoRyl/1+ZMCPnqU8Ve55MXwhz3bRJ6vz46FotbLw4dQgv
+	T7lxlg7LTckq1UqXakCp2Ff+QmeRH3AkjbQ4EX1uAesbmPn7FwVtSRCPITkAUmCBYIE+mhr2nwp8E
+	B+LnzhuEt93KU7NQb0zRU41FPeEMQKdm9YI587xOqY+89HqR1hClGcYezEjrsD+lvCsNTqLN33M1X
+	+oSftuKyEOE7AultmLsSRvFttrNVJD8+0c3lKFgOFcd5kODXbNIP78Iuh8hPqdG5jowEdNLRrK6a7
+	ZjxreMgQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xDlzI-0000000GsQh-1fVw;
-	Mon, 05 Oct 2026 16:56:28 +0000
-Received: from out-61.mta1.migadu.com ([2001:41d0:203:375::3d] helo=mta1.migadu.com)
+	id 1xDmDE-0000000GtRU-0F7Z;
+	Mon, 05 Oct 2026 17:10:52 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xDlzF-0000000GsQ8-3hg0
-	for linux-mediatek@lists.infradead.org;
-	Mon, 05 Oct 2026 16:56:27 +0000
-X-Envelope-To: linux-mediatek@lists.infradead.org
-DKIM-Signature: a=rsa-sha256; bh=3EkFb2rmMItvPU09Xj3/yToO50k6JsJJgTdjvGqh2xU=;
- c=simple/simple; d=justthetip.ca;
- h=from:to:subject:date:message-id:mime-version:content-type; s=key1;
- t=1791219383; v=1; x=1791824183;
- b=ZFtR6SbgZg/nDmQYTZB1BLD6EZ73Gcdq+qgslN2/aFjmFWiP2kUWvAWjBnrN4xzoctwe6/HR
- PW/CZRZ87PYKTN0h+W88tJZP/BkM4f2kKPhUIqlJBkTJMU/6obFdKSqoBg3IQfLi3+72ehDvuc9
- CQL27ZboyJVgLG38hVlzGUfY/M7Biuvv39VuNELw450q0GV42lA2m1tDu3KGpmWPGwMAhcL/ReZ
- HyxzQamxpKI8sTw6BjynNNLWg33ypN7oO99t6frGuNBgi9jA0a6rzXIXXVpPSyv944IeV7y/8hP
- IXPKSTBTp/wgixfKxJKbPUdrpoSAuBUy0xtcMBd1+czSg==
-X-Envelope-To: linux-mediatek@lists.infradead.org
-Received: by smtp.migadu.com with ESMTPS id 60ac52aa7a996f8e;
-	Mon, 05 Oct 2026 16:56:23 +0000
-X-Mizu-Trace-ID: 60ac52aa7a996f8e
-X-Migadu-Flow: FLOW_OUT
-From: Devin Wittmayer <lucid_duck@justthetip.ca>
-To: Quentin Herique <quentinherique07@gmail.com>
-Cc: linux-wireless@vger.kernel.org,
-	nbd@nbd.name,
-	lorenzo@kernel.org,
-	ryder.lee@mediatek.com,
-	shayne.chen@mediatek.com,
-	sean.wang@mediatek.com,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [BUG] mt7925e/MT7927: panic in mt76_dma_add_buf when hw_scan runs after a failed WFSYS reset
-Date: Mon,  5 Oct 2026 09:56:20 -0700
-Message-ID: <20261005165620.218829-1-lucid_duck@justthetip.ca>
-X-Mailer: git-send-email 2.55.0
-In-Reply-To: <CAK8JKts+x7ioj2omw+hrQrKtRDbZ3yCYXavVpfjodOG6ro7t9w@mail.gmail.com>
-References: <CAK8JKts+x7ioj2omw+hrQrKtRDbZ3yCYXavVpfjodOG6ro7t9w@mail.gmail.com>
+	id 1xDmBw-0000000GtJH-15dx;
+	Mon, 05 Oct 2026 17:10:47 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by sea.source.kernel.org (Postfix) with ESMTP id BC00043939;
+	Mon,  5 Oct 2026 17:09:31 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 64ADE1F000FF;
+	Mon,  5 Oct 2026 17:09:31 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1791220171;
+	bh=aHp1IwBXNu4k0HS2L7U3npvTY1+CW3Wkn5yoUJOYsuA=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To;
+	b=BZPXBoaR3tiQDmCQTXaxLXDI5OHnWaCqTZYnEBoUv2blrhAwqXC10QDNvxNBlydFU
+	 n2+ZcJ0RxU2GdyuN67yut49U0UwWXcgOLlgY75rzLbsIzsPU+nOdKDa29RltG8U+xu
+	 WBlz3cNtjzjcMCUHyyjZ/Do1LwpDNK1DpI8XUGDms/ByoRRPEh0FdxhS4/NQArZYm0
+	 BwYwYq98upKB7VSjMnRvK2c8AHBBljDs2/TS8iaLnTHA093YWYQCC0qP1ZAf/C5I32
+	 BaSZXUPrftwJpzlNz6U+9VuaWcYeGhstwGbdz3NgWbF8LnJu4AXMBD9UifIVtfafe3
+	 4bfSF3LIrWh2Q==
+Received: by traversing.sirena.org.uk (Postfix, from userid 1000)
+	id A229716EA206; Mon, 05 Oct 2026 18:09:27 +0100 (BST)
+Date: Mon, 5 Oct 2026 19:09:27 +0200
+From: Mark Brown <broonie@kernel.org>
+To: Chen-Yu Tsai <wenst@chromium.org>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Dmitry Torokhov <dmitry.torokhov@gmail.com>,
+	Jiri Kosina <jikos@kernel.org>, Andi Shyti <andi.shyti@kernel.org>,
+	Benson Leung <bleung@chromium.org>,
+	Tzung-Bi Shih <tzungbi@kernel.org>,
+	linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	chrome-platform@lists.linux.dev, linux-input@vger.kernel.org,
+	linux-i2c@vger.kernel.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v6 1/8] regulator: core: Add "enable and wait" functions
+Message-ID: <asPZxyprhyZtnPtc@sirena.org.uk>
+References: <20260901074930.764550-1-wenst@chromium.org>
+ <20260901074930.764550-2-wenst@chromium.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261005_095626_390786_E924E3E0 
-X-CRM114-Status: UNSURE (   5.89  )
-X-CRM114-Notice: Please train this message.
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="YrEJvP9azbYsig5Q"
+Content-Disposition: inline
+In-Reply-To: <20260901074930.764550-2-wenst@chromium.org>
+X-Cookie: Use the Force, Luke.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,14 +80,53 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sun, 04 Oct 2026 12:52:54 +0200, Quentin Herique wrote:
-> Workaround in place: blacklist mt7925e. I can test patches on this
-> machine.
 
-This should be fixed from 7.2.6 by f544bcba4721 (mainline
-915672c5ae32). Its DMA index check is in the shared mt76 code, so it
-covers the 7925 driver too. The drv_pmctrl patch you mention is in
-Felix's fixes pull request.
+--YrEJvP9azbYsig5Q
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 
-Devin
+On Tue, Sep 01, 2026 at 03:49:19PM +0800, Chen-Yu Tsai wrote:
+> In device power sequencing and initialization use cases, it is common
+> for the driver to enable the regulator and then wait for a certain
+> period of time to pass before continuing.
+
+This breaks the build:
+
+make --silent --keep-going --jobs=15 O=/build/stage/build-work ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu- CROSS_COMPILE_COMPAT=arm-linux-gnueabihf-
+error[E0425]: cannot find function `regulator_enable` in crate `bindings`
+      --> /build/stage/linux/rust/kernel/regulator.rs:288:38
+       |
+   288 |         to_result(unsafe { bindings::regulator_enable(self.inner) })
+       |                                      ^^^^^^^^^^^^^^^^
+       |
+      ::: /build/stage/build-work/rust/bindings/bindings_generated.rs:129557:5
+       |
+129557 |     pub fn regulator_disable(regulator: *mut regulator) -> ffi::c_int;
+       |     ------------------------------------------------------------------ similarly named function `regulator_disable` defined here
+       |
+help: a function with a similar name exists
+       |
+   288 -         to_result(unsafe { bindings::regulator_enable(self.inner) })
+   288 +         to_result(unsafe { bindings::regulator_disable(self.inner) })
+       |
+
+error: aborting due to 1 previous error
+
+
+--YrEJvP9azbYsig5Q
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmrD2cMACgkQJNaLcl1U
+h9AfZQf+PsDxB00eDcNx08x42/Y8fiZnF71clFrO1HwZnCiLdc7yCTPXLLx4zDKy
+ANBnVA3TnNa3XkujT86RslaDWHZ/xHJYKTYJk/8g3m4jlsT+zqnuczwjSSbw1/P2
+qBRBVMVH/M/Z/QcEBFqUJFripURbPuBSgKCpFCIq3AMxLBlKRdzfyqT385RQDRG0
+VOuQEn6cpSkP3ZhzyNJN210Ahh1lxoP0tekk7fBsgZJrgYiaFv5WFJUsNRx4NMtp
+x9rrsIqG0LOba3RVAkgbQBNUaEXcHWzrOZlmWPbAA77QXS9CMUSWbehYaLg+fsX/
+SnC0TnX4r3B6xm0zeLZoBD+3zij8dA==
+=mSZA
+-----END PGP SIGNATURE-----
+
+--YrEJvP9azbYsig5Q--
 
