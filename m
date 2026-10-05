@@ -4,73 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B4213CA5FF0
-	for <linux-mediatek@archiver.kernel.org>; Mon,  5 Oct 2026 11:03:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6A60ECA5FF0
+	for <linux-mediatek@archiver.kernel.org>; Mon,  5 Oct 2026 11:03:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=dtvWIRp9yO8uIIIbpOsaLthb3JvQZmMy0vJI9vWrQ+o=; b=VKnZeG+lI82LA6UEAFoOYxhWpd
-	0/Mnyf6g9L40t46MyA2OTyiP2vnwArCjk3gU0Qmrq25ZItREL26Zbco7408HITobaa0Ir5WHLPiZT
-	ScXZoycWnMCSfGAr5U/QsQTnCP6MlwFThHODH/KXqnxL4lmEkZN1/5ds0LgRNjViwOX51asX8HJkP
-	/wIfPPnnCPp+V2noLyINymG4KT8wSwah9t4Ur9eV+eZ5quVbucARkRvH+NduUi0nx05CDHuzPbdU3
-	VHa63p49VvOyjlp23/s35Snvk4AKURPmvxpUZ30l7WXP3gwgp+wXZIZwNJ+VnhBzgjeR7WfKTICM/
-	TqHq+3KQ==;
+	bh=9TPAdVO6cx1GivG1fZmlwZJr0XNJ9YraoDL81c+GXj4=; b=vfMzy8AtO3pF7YIngkFwZS1Oe/
+	65zpV54WAwLOzECiwM4ncfM4Xb8JREg2svcvTBTjvcxNljEZypiI9kgWDBNtXg4GJPH5Oe0GCLUrQ
+	cUZPNaxfkSIax6xakBlclr1YWn9El34Ytx+DWePsyMUXAUDJ7Gfg1P9BlA/90FKuVqy5RhJXHYohp
+	eujCGMS0Xfa5V84xIPnS26RXNOhxj+17tXCRY6I5nlwIBTeOqzA11n7x3tuPp0atgL4A36PTm67Eu
+	gL7A3k2YX/HkTwmzfx8hs/seG9Rg0WWij7DUSCDeIol9sPxztZZmFENHfbPc4rE6vfXtEwPXqHHjy
+	Tj9Oe4cA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xDgTa-0000000GGng-3fXA;
-	Mon, 05 Oct 2026 11:03:22 +0000
-Received: from mail-pj2-x0f.google.com ([2607:f8b0:4864:39::f])
+	id 1xDgTk-0000000GGv4-1pha;
+	Mon, 05 Oct 2026 11:03:32 +0000
+Received: from mail-pz2-x29.google.com ([2607:f8b0:4864:3b::29])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xDgTY-0000000GGlz-2Lfh
+	id 1xDgTc-0000000GGpX-3xIi
 	for linux-mediatek@lists.infradead.org;
-	Mon, 05 Oct 2026 11:03:22 +0000
-Received: by mail-pj2-x0f.google.com with SMTP id 98e67ed59e1d1-396ccc02279so903406a91.1
-        for <linux-mediatek@lists.infradead.org>; Mon, 05 Oct 2026 04:03:20 -0700 (PDT)
+	Mon, 05 Oct 2026 11:03:30 +0000
+Received: by mail-pz2-x29.google.com with SMTP id d2e1a72fcca58-887ba76d5afso611398b3a.2
+        for <linux-mediatek@lists.infradead.org>; Mon, 05 Oct 2026 04:03:24 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1791198200; x=1791803000; darn=lists.infradead.org;
+        d=gmail.com; s=20251104; t=1791198204; x=1791803004; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to:content-type;
-        bh=dtvWIRp9yO8uIIIbpOsaLthb3JvQZmMy0vJI9vWrQ+o=;
-        b=THcZO1i0M66y9NJ9DJif5PdiJqkytEeGFhhV78M5BluAo+0oq4h+ZE2tc9vAA8kp1z
-         yyi0rAssBQp6GrFwYUkaLRM+jKVzNOMa0Zxux6b1WCP84BIyyHgROtWOO8lKLVkabftA
-         yDUswItHgq+6KO0HCCfq6FoR5BXBfkefmLH9nD4cxd3Ar+9AMzzmT3+CFhbGFhyvBbtw
-         JQHVwqDya+D3tKGvMwdE+E3jcc1UQc7B/iT9C4wxtx1ZJOGv7o5DG5EArQ+a40I2O3D8
-         +WL95X3Nv5dn2aAkwja70EbJbHbWZmGf8/4IjsJ/FpQ9QYzKRHK6u4uHnyh0MKUachmx
-         eB2g==
+        bh=9TPAdVO6cx1GivG1fZmlwZJr0XNJ9YraoDL81c+GXj4=;
+        b=Vz3Nkg8eHX+w1FtXwVak5CmoqOs15bO4iv6GZtEZG++hLlufsvLM5/cFW/pvUEAP4h
+         As+Q1D66OuhSxBBkrZ3KOLqIQxsFxDpD+ijFuGe+Ue8hLZyAyG9S60dOtxVgcWQAtxeE
+         IfbX/IIhJzq5xCK2ZysKH/y+pDAUJeYP99uMzZo1FO9l2iN+mDMsDqaujJV+wJ8/2waI
+         8h0dVVYMA44oPw8jyzOxSyX19ia/q/0yGj4tublXtHS9okf7/UVdqwy1ggSWgRa4PB+t
+         SkHGrDwuCPo8UeR2wHIC/nbq5YkisYHvofJVs9LGYRRqLiZCeD0RVJ7Ic6HGCGFnvOdE
+         vjrw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1791198200; x=1791803000;
+        d=1e100.net; s=20260707; t=1791198204; x=1791803004;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
          :to:cc:subject:date:message-id:reply-to:content-type;
-        bh=dtvWIRp9yO8uIIIbpOsaLthb3JvQZmMy0vJI9vWrQ+o=;
-        b=JG2FGaY4mRKu8bEUTaoM4u80Jl4g1XStfcfkGkIOiTxrL9R7/Vp1m52MFhgqOndzhm
-         Mzcn1QqImcfa7u0sArm6N0XYk1TqH5XvJXNGD58FkCssGTfhdrobTEZCZaaIFGXQGcyv
-         PO6D3KGxv2AOinWCebguPRt6UTdkdOFEg10OaaPZrtyJVvPxTjbcg1GHiw0UWn1CF54l
-         hiTysDeltv8ANFq9prh+UHd4cj9pItVAV5A/2rWsVFb1iC7aa7uIB75VwnghMIkkFoun
-         0gW+wRLeEvHortY0R2dHILRFSr24pzOawdzUBrgoeSvxWJtCI5C4rkD5ZBBeeSO1vvpg
-         mlQA==
-X-Forwarded-Encrypted: i=1; AKwUvByReMQj61jI3y8BQPcbMshE/bLuD/8Ky8LyFl0qqqITo4Jla/Q7/vvNxYNov8nFqhJc45abdIwdA5xbbY85Ug==@lists.infradead.org
-X-Gm-Message-State: AFq9FYLuB0aH/yDx0K0mNhggQC0iaHh4hju9stct8Ci8C8TD8cpaZazf
-	Ke6bn/B+bhvF0L/cQKPeZbLLFkJu2D04r0K2zPgFtP/tqTYOHNaJa+q/
-X-Gm-Gg: AYBFou0Xg7xojWDyK4XvPLV1QvZgjCWcj0zuJNXrjz7luvX7m5KoZ50EYKd2heSiBEZ
-	QSVTvdxHzkgjutbkXLiFHBKX/AS6YibwKXGQX51I+15hyuiiJEWIqTSDkdjxHSy5NlDlyEIzGZ3
-	GpB1ZjARcgG80yEU/ZUcmhKaoOU/Qm7ugm4Nt1/aQKfh175JNoNmNhzCzmrmADzZQ7QWkNo6QWe
-	lO31BV7LNUAj+TEHFsXbSOnse+bUHt3Lmo90XrOKv87NCo54um1VroEJ/0d9Qq1YJ5WuBpgqkgx
-	B7BXjQBSQyvUa3+1nRxNaEErTQDsaKCi7BzHdSh6urHD2kqSTK5UUGNwgRUj8qU+zzV/UIyP4uf
-	BNMqdTnFzQ9GeVlbiEykBO+kHgOtaTUoVi9pDXquGx54bIH3zvG+SybdnaHNFQfDOdipKyEvpj4
-	nAFuWeRcL8n6HuGYYAur9KMc+e2VKrF3P5+I30G/vxdbZSOUl6v4dYX6AkjIxA3Kysp7cbYy8UJ
-	h2kVRCLLRHwF/+KQYWqKPmOF5rJcWFHQBsrZhYoX3BB0dT5/NtFJQdNs9L0ZaQUaGs0XbvG2zFy
-	b4cTXrc61GpIPw==
-X-Received: by 2002:a17:90b:586e:b0:3a0:f5fe:74d9 with SMTP id 98e67ed59e1d1-3a6ce3a97e0mr9329608a91.4.1791198199561;
-        Mon, 05 Oct 2026 04:03:19 -0700 (PDT)
+        bh=9TPAdVO6cx1GivG1fZmlwZJr0XNJ9YraoDL81c+GXj4=;
+        b=M8F0qjTw59/kv4NWdm94+QrEi4t4fw2qFDhM2/wNcHDXLC5bdKrZgEVLtCs4lHFJBA
+         SCfL08Abi3qF4M0l0mEgRnIVmlTr0b4pUBZSjvD4UV1pSS13iphAYr/kUkJ0GSi+xqJH
+         Gk09zOdgkaqJSzORUF/xq7NZr16NpbpmWTKgKKj8r4bPPk2rZ/Zt5WnP4t0lXppnVM+n
+         lXggqILo0nQ+hxEvzLAGxlX4KUMchuJ+sGMLJe/BoFR3i8GGJmOKUIQiwf4YWmIlB/Mx
+         ySV3a2+6zBdFble1u8eV2Z/I78FrXhAKzI3+g0Aw+JuUcB+gxFnbbRBdZBFqY53GOBAi
+         zeug==
+X-Forwarded-Encrypted: i=1; AKwUvByvSAfqdXFAFzNXHDcXXBe/XcxB757j9KKNzwZiFZbDOo/9F8+gmeh4YZJemqYTHLf8pySCRuZV/IPqhDlirQ==@lists.infradead.org
+X-Gm-Message-State: AFuF++m510q3OHVKX5wJkKQPi8gRWBv7x70lhfQ/zzT7KrEC6cXP39c0
+	niZOnz2RxCuv1f01VZMe5wlfBbA0QvO5JuMPszkYXci+Q3n1rKG4DZ3s
+X-Gm-Gg: AYBFou0sdcPtc3xdCdaB0toqJObOfVXArz7IfrDuSVZHANBljq8XivrVuP2D2MlC6Z8
+	wwQj4QyVMWOZoRqL5Q/viKEjqBIEzbWYiobZGB0NFpk26qZGtqWYtUUGB5RdgvMuUgaUu8oYgNd
+	c3NyZpH/9BsKD05fmWmeqlEKb/Q/kyeF46IAAk4BMjgySbFivH4E0nCCnEzZp+IC6IbSIrka1Vq
+	/lEC61/gjP51ZUT8ExV3WW8a0RoEePALL0zs0o3RMOoMbOVQKVlvx1n2lxVQ2kVz7mgsHPj0odt
+	7frIYhhzc2w1CP5wmwrC4BaOLlzCdSwUqnhUuNmyH2An4rF4SzYQD5fPuyN5LahL8RR5O9au3ZM
+	eI5s5VIm7AtqO0umL4+PkyFg1ZvEdFzmFFF3ZIWx9J9CV1kxwC90ZCvg3sKzp34RgA2dyx2iMB8
+	X/lIqUm0KEJZYUSSeLNdjlyxPUnMlTjfqeLmIySuxLYIyL72C+ZE3CCa0W92VmIpxbmCnFeHKqB
+	EXbeDpnOgt5YDmXWBxRhbNQO+Q+TD68i2tTKfNeh2BvEx49RePlcKevFXGBQ6PM3fgpRHfumcN7
+	aSxZWw/QQ1sKjg==
+X-Received: by 2002:a05:6a20:9c95:b0:3e0:da23:8746 with SMTP id adf61e73a8af0-3e0da2392f7mr6761110637.18.1791198204336;
+        Mon, 05 Oct 2026 04:03:24 -0700 (PDT)
 Received: from phuc-desktop.. ([183.91.15.56])
-        by smtp.gmail.com with ESMTPSA id 41be03b00d2f7-cce6d334de5sm626498a12.11.2026.10.05.04.03.15
+        by smtp.gmail.com with ESMTPSA id 41be03b00d2f7-cce6d334de5sm626498a12.11.2026.10.05.04.03.20
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 05 Oct 2026 04:03:19 -0700 (PDT)
+        Mon, 05 Oct 2026 04:03:23 -0700 (PDT)
 From: phucduc.bui@gmail.com
 To: Mark Brown <broonie@kernel.org>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
@@ -90,17 +90,17 @@ Cc: Liam Girdwood <lgirdwood@gmail.com>,
 	linux-mediatek@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
 	bui duc phuc <phucduc.bui@gmail.com>
-Subject: [PATCH v2 01/14] ASoC: mediatek: mt8195: Fix tuner clock error handling
-Date: Mon,  5 Oct 2026 18:02:44 +0700
-Message-ID: <20261005110257.50145-2-phucduc.bui@gmail.com>
+Subject: [PATCH v2 02/14] ASoC: mediatek: mt8195: Use dev_err_probe() in mt8195_afe_init_clock()
+Date: Mon,  5 Oct 2026 18:02:45 +0700
+Message-ID: <20261005110257.50145-3-phucduc.bui@gmail.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20261005110257.50145-1-phucduc.bui@gmail.com>
 References: <20261005110257.50145-1-phucduc.bui@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261005_040320_940641_586E969F 
-X-CRM114-Status: GOOD (  10.88  )
+X-CRM114-CacheID: sfid-20261005_040324_993465_E5712B31 
+X-CRM114-Status: GOOD (  10.46  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -117,60 +117,34 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: bui duc phuc <phucduc.bui@gmail.com>
 
-Check and propagate errors from mt8195_afe_enable_clk(). If enabling
-the tuner clock fails, disable the previously enabled APLL clock.
+Use dev_err_probe() when obtaining clocks to avoid redundant error
+messages, particularly for probe deferral.
 
-Fixes: ff5a90173d98 ("ASoC: mediatek: mt8195: enable apll tuner")
 Signed-off-by: bui duc phuc <phucduc.bui@gmail.com>
 ---
- sound/soc/mediatek/mt8195/mt8195-afe-clk.c | 24 +++++++++++++++++-----
- 1 file changed, 19 insertions(+), 5 deletions(-)
+ sound/soc/mediatek/mt8195/mt8195-afe-clk.c | 9 +++------
+ 1 file changed, 3 insertions(+), 6 deletions(-)
 
 diff --git a/sound/soc/mediatek/mt8195/mt8195-afe-clk.c b/sound/soc/mediatek/mt8195/mt8195-afe-clk.c
-index 618d8400913a..ec1ea5b988ff 100644
+index ec1ea5b988ff..12d8159338be 100644
 --- a/sound/soc/mediatek/mt8195/mt8195-afe-clk.c
 +++ b/sound/soc/mediatek/mt8195/mt8195-afe-clk.c
-@@ -241,21 +241,35 @@ static int mt8195_afe_enable_tuner_clk(struct mtk_base_afe *afe,
- 				       unsigned int id)
- {
- 	struct mt8195_afe_private *afe_priv = afe->platform_priv;
-+	int ret;
+@@ -397,12 +397,9 @@ int mt8195_afe_init_clock(struct mtk_base_afe *afe)
  
- 	switch (id) {
- 	case MT8195_AUD_PLL1:
--		mt8195_afe_enable_clk(afe, afe_priv->clk[MT8195_CLK_AUD_APLL]);
--		mt8195_afe_enable_clk(afe, afe_priv->clk[MT8195_CLK_AUD_APLL1_TUNER]);
-+		ret = mt8195_afe_enable_clk(afe, afe_priv->clk[MT8195_CLK_AUD_APLL]);
-+		if (ret)
-+			return ret;
-+		ret = mt8195_afe_enable_clk(afe, afe_priv->clk[MT8195_CLK_AUD_APLL1_TUNER]);
-+		if (ret) {
-+			mt8195_afe_disable_clk(afe, afe_priv->clk[MT8195_CLK_AUD_APLL]);
-+			return ret;
-+		}
- 		break;
- 	case MT8195_AUD_PLL2:
--		mt8195_afe_enable_clk(afe, afe_priv->clk[MT8195_CLK_AUD_APLL2]);
--		mt8195_afe_enable_clk(afe, afe_priv->clk[MT8195_CLK_AUD_APLL2_TUNER]);
-+		ret = mt8195_afe_enable_clk(afe, afe_priv->clk[MT8195_CLK_AUD_APLL2]);
-+		if (ret)
-+			return ret;
-+		ret = mt8195_afe_enable_clk(afe, afe_priv->clk[MT8195_CLK_AUD_APLL2_TUNER]);
-+		if (ret) {
-+			mt8195_afe_disable_clk(afe, afe_priv->clk[MT8195_CLK_AUD_APLL2]);
-+			return ret;
-+		}
- 		break;
- 	default:
-+		ret = 0;
- 		break;
+ 	for (i = 0; i < MT8195_CLK_NUM; i++) {
+ 		afe_priv->clk[i] = devm_clk_get(afe->dev, aud_clks[i]);
+-		if (IS_ERR(afe_priv->clk[i])) {
+-			dev_dbg(afe->dev, "%s(), devm_clk_get %s fail, ret %ld\n",
+-				__func__, aud_clks[i],
+-				PTR_ERR(afe_priv->clk[i]));
+-			return PTR_ERR(afe_priv->clk[i]);
+-		}
++		if (IS_ERR(afe_priv->clk[i]))
++			return dev_err_probe(afe->dev, PTR_ERR(afe_priv->clk[i]),
++					     "failed to get clock %s\n", aud_clks[i]);
  	}
  
--	return 0;
-+	return ret;
- }
- 
- static int mt8195_afe_disable_tuner_clk(struct mtk_base_afe *afe,
+ 	/* initial tuner */
 -- 
 2.43.0
 
