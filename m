@@ -4,109 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C4B08CA5FF0
-	for <linux-mediatek@archiver.kernel.org>; Mon,  5 Oct 2026 15:45:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9D842CA5FF0
+	for <linux-mediatek@archiver.kernel.org>; Mon,  5 Oct 2026 15:52:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
-	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Type:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=qH589Eati1pjOXOcBnGXShBFqiglBE/4FOHESK73PA0=; b=17p4PQrKfKzRbcuGjQJtdYygoh
-	cj1UmlaGj4FaCzbyZuS7auMvgBhs/U3Yf9zenOWgZcUouLg44d8+kz05M6V2QGS08Geb9VzYosWru
-	HxmZRMrZXuIErQitEjgyYJfbU7ZWm/Rf4CuuqciaPQ/Qm/poBdsc3VgaZAKMxGYJdARdQ7CHMhvLb
-	XC+pkW1Jc+TZXUQkl1kbqnwg6DTQm6PAfC/gjFKgXHaZf75p/ROXDoJzxJ5/V8PhHAmcB6RUVKaMj
-	Am/cxzyLe2GtlhCjEJldfQu2D2/REi9lTbeydSkWFt6qvFog1wyjCih79R0tBPhSTBuomEgj99fPA
-	fjznJdMw==;
+	bh=46ZVVigjyvvAf7dNbGOfKkj9CKPHjaCvDzpMNiRjm98=; b=E0BKsW6zF3GvRXsp765VDjrNXX
+	0K4epoZ5HSieDV3j6RQHHmjByDrBEP+HZXyK5MhHB01SoEn/USQnTWUCwj346dTWlin4RWMG7JS8v
+	TtCjSjs+z06fczxWuddss//v+QDcYNf++hxhnnWwm2262gCQmrF1XDDOMhsW32wyDyAQcYUjkRpGo
+	epuZ0QDZasZxUzjfC5r6D1cKcGyRIJLDbbTYsMaNapuaF7dPMBn/qeA70dsSZ4RMiyILh5XAFQRgv
+	Mrx4U6vmZ4Z3rXEPXfkjE8/W01mUv3ktRHVzSu8simHlrOeKTyoqns+QF8cURvVzKt0GxyDndkD4f
+	WsKbbNAg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xDkt2-0000000Gmfb-3KXM;
-	Mon, 05 Oct 2026 15:45:56 +0000
-Received: from mail-ej2-x0f.google.com ([2a00:1450:4864:34::f])
+	id 1xDkyx-0000000GnXZ-2iCm;
+	Mon, 05 Oct 2026 15:52:03 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xDkt0-0000000Gmew-1NgS
-	for linux-mediatek@lists.infradead.org;
-	Mon, 05 Oct 2026 15:45:55 +0000
-Received: by mail-ej2-x0f.google.com with SMTP id a640c23a62f3a-c2e27d11f43so127398266b.0
-        for <linux-mediatek@lists.infradead.org>; Mon, 05 Oct 2026 08:45:52 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1791215151; cv=none;
-        d=google.com; s=arc-20260327;
-        b=PMLOpso17Hi7dnrTxf5Ap/n/aD+hHhbXDbyj+ibmfYpkRXCGeBxcMPQevoxnRjucc+
-         i/JfYiEu3UadvdT2FRQHBa2Sakw/AYJYYK2Zlo0r/NBGxFa95VyMfH/CySYkcIajP0HU
-         8d3kHa7tmnvAG2GOWvbkiSj+VqTUQMPGkkb4QZvbntF/YjVRu9l14cghpndLm08nNBSo
-         0hBDpMy/X514rHx+qFcq9pbTsEC5bG8aVRLTSmfCAGKUqAbS8mTWs24C4tJzc4IXQDxG
-         JTXPnjMxysTv3d5THlhQ3sKZLsssQKiuAOSeD6C3e0+OS52F/+Hepy+NrhMmAiA3DYMF
-         rVXw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20260327;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:dkim-signature;
-        bh=qH589Eati1pjOXOcBnGXShBFqiglBE/4FOHESK73PA0=;
-        fh=+rZryI48UWIdszaOAB5t1bY9gjt5zekyih4ZVDlSBVE=;
-        b=rTmQz3cyXkoA119R9gT5wfSwFwF+IExLpxnSXOeHJVvavPLGTSkuB7VtIvkio+q094
-         jqxn7zk7xLjOqCfTDkRENJSsH+Zp3kNd8ez3zPujpsMD91EpmKWLHUIOsErQeFJq4Hcy
-         DHOB2GVE4BvzYs/2ea800sg1d+XRVjQgprNO/2BNzshVlkB+9HzHBybr6U2JhOC4BSTg
-         HJqt6RXEDxl52qhxDfCRrJ2ocF/r+eFat9VCINqRM457jYD5T7Xv0TtI7SybvhIiK5Y5
-         PgRZI5UFvuGyMYazk67JIU0+85iR17DMurUmxFBaPPwk/2Pj6Sa6OG2mitdqEKawUfNc
-         nbpA==;
-        darn=lists.infradead.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=google.com; s=20251104; t=1791215151; x=1791819951; darn=lists.infradead.org;
-        h=content-type:cc:to:subject:message-id:date:from:in-reply-to
-         :references:mime-version:from:to:cc:subject:date:message-id:reply-to
-         :content-type;
-        bh=qH589Eati1pjOXOcBnGXShBFqiglBE/4FOHESK73PA0=;
-        b=cuaDb3HVGsUI+LDSnIVbPh9onvJGu12y9UOdh4kP6g9v3Axn107HP4ov8sSPQU+gMF
-         trrWhXDX3IR37trFrW/luEDh4G+dFkRMqZT0EhvOEYdzhNb90WcV2GmUs/YpY9PtUyz4
-         48xRB7nUc3JFek5OclXp1zIzJGTxKqaS3mtVwr4mbHCVjgQJvSTBMf5x8OtHGr7JRQ2f
-         CQzc3T22wmh+OTUKzDlTd6qH/ula8BJ549bbAVTXx94fuMiP5vBuv/3dS8c4IsRu/752
-         c5Vdrnz383BL5HRwl9atVsHh6ar4e5Ho1i4MpYDrGtQXtrKK3uTzaFbrtsd8o96rL5n/
-         FjIg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1791215151; x=1791819951;
-        h=content-type:cc:to:subject:message-id:date:from:in-reply-to
-         :references:mime-version:x-gm-gg:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to:content-type;
-        bh=qH589Eati1pjOXOcBnGXShBFqiglBE/4FOHESK73PA0=;
-        b=dy0JYdnGe5MMluyCZVMJV2aVwzQ5M0CRtBkh8qQ/nhvy8abb12Fmtf25k74xMcOFCd
-         9pIyAnr20n2vXclNbKV3wZgOMUT3s9h5ilZFijVSHUQXJHsUUX+3+JXW6c/PhIdjvP8I
-         QZpaxrZpPzZbzkWhwFC2gpwqs/svq5OVVfx61D9Fx8y5C1CsIKGQrL1SgzXu7rLu3xgR
-         0PaVar6hTp5XuInpjUjM+SJurGdn5pijkZGMxwLuAgA0rL35+Q/hYOst3Hh7MD0m7DZA
-         zzYcV5d2j0EhlMzNYa25SdRhCmzVkTRzN+OOvQPHFlP184gWR9ZbL8p2x7VBBasNUj7n
-         1LIQ==
-X-Forwarded-Encrypted: i=1; AKwUvBzkBcQugVVjPBOEwF3b+VjkVbBfFdmzjjpUhAG8Bac8EZ3K91nyOHxpnNQIkAUPvhMiBnckXzIHFZSmA4qFMw==@lists.infradead.org
-X-Gm-Message-State: AFuF++lUFoUCM8dI/q5DfNPJfDZ1L77FA40RQTE6TRStICu7umyDSzeY
-	pF5rvybaXmaW2idga0CGH+X4sdNCtxhx7dgXesv9S6TFRuS9fdgZdHIRGN9oEwGCrHh5bAazct2
-	89iHwcvahsW8A2AEQlKCyzjDkrZh/dEO4EL+ctaJV
-X-Gm-Gg: AYBFou2xN4gFPa3l1GKJZSnyVMuDmIYFpj04WW46rpP9IivxdkcrloETcbChQwlpvAv
-	AMQID65Zja4XRD1h3Vw/7E+gFNU/1/yP0IZ1FI1+NyP5CpTZffhcMrt/bRDDXP0vMyMiD3xrRGU
-	5Y7L40lxQN6692ohHAeelxF1nckb2bRzhOE9OVKYgXQp9Ssaq7ATqs8GIKxlkSlZd7EWcAV3U4e
-	zedVfY05KdErFMqrhJiveMpMXM1vXuJhBT9keNYjlkLlt3oclRKDtlNzYRtQB9vN4CBaWmcUkzC
-	wzEHnLAuLEhOgsmQYAMzoKJpmX8jJKYaFiaTgp92IGiJ0Av4XY2YGR0W
-X-Received: by 2002:a17:907:3f14:b0:c25:f7db:4beb with SMTP id
- a640c23a62f3a-c3160f1d01fmr894266b.17.1791215150701; Mon, 05 Oct 2026
- 08:45:50 -0700 (PDT)
+	id 1xDkyv-0000000GnX8-0Le6;
+	Mon, 05 Oct 2026 15:52:01 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by tor.source.kernel.org (Postfix) with ESMTP id 84A9560514;
+	Mon,  5 Oct 2026 15:52:00 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3DE2A1F000FF;
+	Mon,  5 Oct 2026 15:52:00 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1791215520;
+	bh=46ZVVigjyvvAf7dNbGOfKkj9CKPHjaCvDzpMNiRjm98=;
+	h=Date:From:To:Cc:Subject:Reply-To:References:In-Reply-To;
+	b=JW4Da7VmLg5UlNJuwwbIPkoXPZG/rObH/E7LS2VKa03p4WdEbCdiagTdNmApWu7bM
+	 l/W9xN4LA4ajCb1HbFzA7Cj3hcUP4CFZvaXaV2s1EhLZlQkmeicpmRlkhtR6/Ml7Y1
+	 Yqz6yMwHgze5wtsGBt7yzRLywVPJ+HRPc3Mhm1wyJZNDZKkcWWs2bl/Hqm0RiS8zQ0
+	 sC5iytUf2VMxZWfZspJI1iIFwqLICZdhSTUIBRQow5TYfkuneF5gx/BVAUmQkytmVd
+	 jtW2zP34W4AOqsdbWkvPIpmC6ByqG+wqamIfY16+jjx+6hJugIKDWX6iVdOwFsMQxy
+	 U1a8sWhEsaoFQ==
+Received: by paulmck-ThinkPad-P17-Gen-1.home (Postfix, from userid 1000)
+	id BBC62CE0ACB; Mon,  5 Oct 2026 08:51:59 -0700 (PDT)
+Date: Mon, 5 Oct 2026 08:51:59 -0700
+From: "Paul E. McKenney" <paulmck@kernel.org>
+To: Vladimir Murzin <vladimir.murzin@arm.com>
+Cc: linux-usb@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
+	chunfeng.yun@mediatek.com, gregkh@linuxfoundation.org,
+	rostedt@goodmis.org, mark.rutland@arm.com
+Subject: Re: [PATCH] usb: mtu3: Fix double dereference in TP_printk
+Message-ID: <2cec51ab-cb71-4635-b14c-ee38c84f3c9d@paulmck-laptop>
+References: <20260922103756.104846-1-vladimir.murzin@arm.com>
+ <845ef1a3-8d85-4007-aa2c-05e59e79afcd@arm.com>
+ <315259c9-d7b9-44bc-8896-ecb9429a6eb5@paulmck-laptop>
+ <b138ae28-bd90-414c-9e57-c493877c9bad@arm.com>
 MIME-Version: 1.0
-References: <20260914085148.136429-1-peter.wang@mediatek.com> <yq1jyo8pwwc.fsf@mail.kernel.org>
-In-Reply-To: <yq1jyo8pwwc.fsf@mail.kernel.org>
-From: Sandeep Dhavale <dhavale@google.com>
-Date: Mon, 5 Oct 2026 08:45:39 -0700
-X-Gm-Features: AclHuK82KgNqsjE8F2p-fNUCpJ_mW3iXi9stcn4dXlH9FUwkkuZqdBeXATzDN5I
-Message-ID: <CAB=BE-QT1oy=XD_MFWaR+VvKG_Kpk3jszDpAtUy=EyK9uU5fbQ@mail.gmail.com>
-Subject: Re: [PATCH v2 0/2] ufs: fix POST_CHANGE pairing and AHIT race condition
-To: "Martin K. Petersen (Oracle)" <mkp@kernel.org>
-Cc: peter.wang@mediatek.com, linux-scsi@vger.kernel.org, 
-	martin.petersen@oracle.com, avri.altman@sandisk.com, alim.akhtar@samsung.com, 
-	bvanassche@acm.org, santosh.sy@samsung.com, h.vinayak@samsung.com, 
-	wsd_upstream@mediatek.com, linux-mediatek@lists.infradead.org, 
-	chun-hung.wu@mediatek.com, alice.chao@mediatek.com, cc.chou@mediatek.com, 
-	chaotian.jing@mediatek.com, tun-yu.yu@mediatek.com, naomi.chu@mediatek.com, 
-	ed.tsai@mediatek.com
-Content-Type: text/plain; charset="UTF-8"
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261005_084554_385530_647FB450 
-X-CRM114-Status: UNSURE (   6.60  )
-X-CRM114-Notice: Please train this message.
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <b138ae28-bd90-414c-9e57-c493877c9bad@arm.com>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -118,21 +71,129 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Reply-To: paulmck@kernel.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
->
-> Applied to 7.4/scsi-staging, thanks!
->
-> --
-> Martin K. Petersen
+On Mon, Oct 05, 2026 at 01:07:18PM +0100, Vladimir Murzin wrote:
+> Hi All,
+> 
+> On 9/28/26 19:21, Paul E. McKenney wrote:
+> > On Mon, Sep 28, 2026 at 02:11:42PM +0100, Vladimir Murzin wrote:
+> >> Hi All,
+> >>
+> >> Gentle ping... spat is still present in v7.3-rc5
+> > If no one else wants to push it, I can do so.  I gotta admit that the
+> > resulting test failures when I forget to apply it are a bit annoying.  ;-)
+> > 
+> > 							Thanx, Paul
+> > 
+> 
+> FYI, splat is still present in v7.3-rc6 :(
 
-Hi Martin,
-I don't see this series in in 7.4/scsi-staging at [1], or perhaps just
-push is missing?
+OK, I was thinking in terms of pushing it into the upcoming merge window,
+but I could be persuaded to see if Linus will take it this week.  I have
+one other commit I need to push anyway.
 
-Thanks,
-Sandeep.
+							Thanx, Paul
 
-[1]: https://git.kernel.org/pub/scm/linux/kernel/git/mkp/scsi.git/log/?h=7.4/scsi-staging
+> Thanks
+> Vladimir
+> 
+> >> Cheers
+> >> Vladimir
+> >>
+> >> On 9/22/26 11:37, Vladimir Murzin wrote:
+> >>> Paul reported kernel splat:
+> >>>
+> >>> [    0.000000] TRACE EVENT ERROR: Event mtu3_gadget_ep_set_halt has double dereference in TP_printk: &REC->gpd_ring->dma
+> >>> [    0.000000] ------------[ cut here ]------------
+> >>> [    0.000000] Event mtu3_gadget_ep_set_halt has double dereference in TP_printk: &REC->gpd_ring->dma
+> >>> [    0.000000] WARNING: kernel/trace/trace_events.c:420 at test_double_dereference+0x144/0x14c, CPU#0: swapper/0/0
+> >>> [    0.000000] Modules linked in:
+> >>> [    0.000000] CPU: 0 UID: 0 PID: 0 Comm: swapper/0 Not tainted 7.3.0-rc1 #15247 PREEMPT
+> >>> [    0.000000] Hardware name: linux,dummy-virt (DT)
+> >>> [    0.000000] pstate: 600000c5 (nZCv daIF -PAN -UAO -TCO -DIT -SSBS BTYPE=--)
+> >>> [    0.000000] pc : test_double_dereference+0x144/0x14c
+> >>> [    0.000000] lr : test_double_dereference+0x144/0x14c
+> >>> [    0.000000] sp : ffffc80aa7633bf0
+> >>> [    0.000000] x29: ffffc80aa7633bf0 x28: ffffc80aa7c0f047 x27: 000508b58019388f
+> >>> [    0.000000] x26: 0000000000000003 x25: 0000000000000007 x24: ffffc80aa5fceff8
+> >>> [    0.000000] x23: ffffc80aa7c0f05a x22: ffffc80aa64edfe8 x21: ffffc80aa7c0fce8
+> >>> [    0.000000] x20: ffffc80aa7c0f047 x19: 0000000000000013 x18: 0000000000000001
+> >>> [    0.000000] x17: 6572656420656c62 x16: 756f642073616820 x15: 746c61685f746573
+> >>> [    0.000000] x14: 0000000000000000 x13: ffff000139d90000 x12: 0000000000000045
+> >>> [    0.000000] x11: 00000000000000cf x10: ffff00013f546428 x9 : ffff000139d90000
+> >>> [    0.000000] x8 : 3fffffffffffc000 x7 : 0000000000000001 x6 : 0000000000000001
+> >>> [    0.000000] x5 : ffff00013f4e6440 x4 : 0000000000000000 x3 : 0000000000000000
+> >>> [    0.000000] x2 : 0000000000000000 x1 : 0000000000000000 x0 : ffffc80aa764a700
+> >>> [    0.000000] Call trace:
+> >>> [    0.000000]  test_double_dereference+0x144/0x14c (P)
+> >>> [    0.000000]  trace_event_raw_init+0x37c/0x5d8
+> >>> [    0.000000]  event_init+0x34/0xc0
+> >>> [    0.000000]  trace_event_init+0xec/0x588
+> >>> [    0.000000]  trace_init+0x24/0x6e0
+> >>> [    0.000000]  start_kernel+0x4a0/0x8ec
+> >>> [    0.000000]  __primary_switched+0x88/0x90
+> >>> [    0.000000] irq event stamp: 0
+> >>> [    0.000000] hardirqs last  enabled at (0): [<0000000000000000>] 0x0
+> >>> [    0.000000] hardirqs last disabled at (0): [<0000000000000000>] 0x0
+> >>> [    0.000000] softirqs last  enabled at (0): [<0000000000000000>] 0x0
+> >>> [    0.000000] softirqs last disabled at (0): [<0000000000000000>] 0x0
+> >>> [    0.000000] ---[ end trace 0000000000000000 ]---
+> >>> [    0.000000] TRACE EVENT ERROR: Event mtu3_gadget_ep_disable has double dereference in TP_printk: &REC->gpd_ring->dma
+> >>> [    0.000000] TRACE EVENT ERROR: Event mtu3_gadget_ep_enable has double dereference in TP_printk: &REC->gpd_ring->dma
+> >>>
+> >>> Which also observed by Mark and myself.
+> >>>
+> >>> The splat it result of new check introduced by b5cc230af5e5 ("tracing:
+> >>> Warn when an event dereferences a pointer in TP_printk()") which
+> >>> correctly catches issue with %pad dereferencing the address saved in
+> >>> the ring buffer. TP_fast_assign() logic gets executed when the
+> >>> tracepoint is triggered, however the TP_printk() is executed when the
+> >>> user reads the trace buffer which could be seconds, minutes, hours,
+> >>> days, even months later and nothing guarantee that __entry->gpd_ring
+> >>> pointer will still be pointing to what it was when it was recorded.
+> >>>
+> >>> Fix the issue by capturing immediate value of gpd_ring.dma when trace
+> >>> point is triggered.
+> >>>
+> >>> Reported-by: Paul E. McKenney <paulmck@kernel.org>
+> >>> Tested-by: Mark Rutland <mark.rutland@arm.com>
+> >>> Reviewed-by: Steven Rostedt <rostedt@goodmis.org>
+> >>> Signed-off-by: Vladimir Murzin <vladimir.murzin@arm.com>
+> >>> ---
+> >>>  drivers/usb/mtu3/mtu3_trace.h | 4 +++-
+> >>>  1 file changed, 3 insertions(+), 1 deletion(-)
+> >>>
+> >>> diff --git a/drivers/usb/mtu3/mtu3_trace.h b/drivers/usb/mtu3/mtu3_trace.h
+> >>> index 89870175d635..9aaa167d69c1 100644
+> >>> --- a/drivers/usb/mtu3/mtu3_trace.h
+> >>> +++ b/drivers/usb/mtu3/mtu3_trace.h
+> >>> @@ -224,6 +224,7 @@ DECLARE_EVENT_CLASS(mtu3_log_ep,
+> >>>  		__field(unsigned int, flags)
+> >>>  		__field(unsigned int, direction)
+> >>>  		__field(struct mtu3_gpd_ring *, gpd_ring)
+> >>> +		__field(dma_addr_t, gpd_ring_dma)
+> >>>  	),
+> >>>  	TP_fast_assign(
+> >>>  		__assign_str(name);
+> >>> @@ -235,12 +236,13 @@ DECLARE_EVENT_CLASS(mtu3_log_ep,
+> >>>  		__entry->flags = mep->flags;
+> >>>  		__entry->direction = mep->is_in;
+> >>>  		__entry->gpd_ring = &mep->gpd_ring;
+> >>> +		__entry->gpd_ring_dma = mep->gpd_ring.dma
+> >>>  	),
+> >>>  	TP_printk("%s: type %s maxp %d slot %d mult %d burst %d ring %p/%pad flags %c:%c%c%c:%c",
+> >>>  		__get_str(name), usb_ep_type_string(__entry->type),
+> >>>  		__entry->maxp, __entry->slot,
+> >>>  		__entry->mult, __entry->maxburst,
+> >>> -		__entry->gpd_ring, &__entry->gpd_ring->dma,
+> >>> +		__entry->gpd_ring, &__entry->gpd_ring_dma,
+> >>>  		__entry->flags & MTU3_EP_ENABLED ? 'E' : 'e',
+> >>>  		__entry->flags & MTU3_EP_STALL ? 'S' : 's',
+> >>>  		__entry->flags & MTU3_EP_WEDGE ? 'W' : 'w',
+> >>> -- 2.34.1
+> >>>
+> 
 
