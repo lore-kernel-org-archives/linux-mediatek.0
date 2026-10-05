@@ -4,102 +4,112 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 345D8CA5FCE
-	for <linux-mediatek@archiver.kernel.org>; Mon,  5 Oct 2026 04:08:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 261EDCA5FCE
+	for <linux-mediatek@archiver.kernel.org>; Mon,  5 Oct 2026 07:12:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
+	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=LoOBU3dKUoijTmAk3p1LupdivqwWNOCTytdFGuDGRd8=; b=T8g8NOVdCqvWkp4jU/VzufgKu7
-	u8Se2FLJ7NwQyraSpY4A9tpzERSMmsBel36bTXDGqDIaqWD7Lk8DY4n4lIoGpjhsK8pNqiNudoGa+
-	kjDc+c5Bd24szxnzEm+4kRJ2zlF4ijnBhHjE2RJvlsdI7/W1f+YtlL79Z+eT2Gz0pKDeLUrjW2FRq
-	fegAjBKN8qiW3QWrRXVdBChJF6afqb42k5BDWXHq3P4Nr1WEsUFFnEyjohbPUSDKNAQh3y3ZPQnLp
-	1VFHsEEPvZy/jw9bZLx40hnz/wLr/BbOWYXEDOXfsEbHejClvy0BtFUwwfTTCDg8pcefItk7StZ/x
-	Vt36aggg==;
+	bh=OpaxwB2ZrsJszCEJA0sJve13Y/99r5lc2MZ3LWkGqeM=; b=j1EV8P7449qTsYla+AUj2aNeeC
+	XSIwt1UwsZa/8VdOd1BlrW8EYMadLHGibrSrkzBBReh4w0GPajvhRZTz09hEQrw8knpwphyaKZRaq
+	yXGhxb2hciq9q19b/bpkURWHCeRPD2IbtcYdQM1rsmmbNH9jsNlCDOKuFRaHd8/joVjI4OU64dvZl
+	uNbEJG4pislFGm+FaeShEIQ3TuXtpk8xOPZAO2JqE12SXRQgYYUQS50W31lh5VBtG5OcyOwjzWm6N
+	Kg7ZHWwjkpQi/dACTxZREtu0pBV9zsoHXmKbZTEfnkGGVsFqBS+9I6MzZ6lZmTpHf1OX3utHS87lU
+	pBa4eQRg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xDZzg-0000000Fdye-3TB2;
-	Mon, 05 Oct 2026 04:08:04 +0000
-Received: from mail-dy2-x0f.google.com ([2607:f8b0:4864:36::f])
+	id 1xDcsY-0000000Fm48-2vrb;
+	Mon, 05 Oct 2026 07:12:54 +0000
+Received: from mail-pg1-x52c.google.com ([2607:f8b0:4864:20::52c])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xDZze-0000000Fdy0-2sR4
+	id 1xDcsV-0000000Fm3Q-3kDn
 	for linux-mediatek@lists.infradead.org;
-	Mon, 05 Oct 2026 04:08:03 +0000
-Received: by mail-dy2-x0f.google.com with SMTP id 5a478bee46e88-33c11ef641aso2280383eec.1
-        for <linux-mediatek@lists.infradead.org>; Sun, 04 Oct 2026 21:08:01 -0700 (PDT)
+	Mon, 05 Oct 2026 07:12:53 +0000
+Received: by mail-pg1-x52c.google.com with SMTP id 41be03b00d2f7-cc4be0e5351so366041a12.0
+        for <linux-mediatek@lists.infradead.org>; Mon, 05 Oct 2026 00:12:51 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1791184371; cv=none;
+        d=google.com; s=arc-20260327;
+        b=B1mbUgSPUNeTBqpyq75F7dKwRPVBbMfVMyfjr4IF1T3gspUh9NBH5O6v7TfYCC+10/
+         d9rOKrWfhmGBQ4UH/HbqyT4dqbE4sqSGZeXw6HWXFWaLmp27hAs7zJx6GdLoW3qcZoHs
+         I4dDZn6MsyuAd9nwIUN7QK9ARh6n6GmB+3WS5Ru6xHTW1AuKPkauM7B0fxWSXnLDm09t
+         C0jHGV1Gc8T1USs0xA2vorHEr0QQyN5swXZhtj2d14Q7Za6oXHWzJPF+drvrTrmQEhrE
+         wYb+rtuzg2TEZxjXfjVa1rL+U0UX0tXC2vNbr7hZZatYXr4c3WvRF0aWAt+4cuVP3ASg
+         szdg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20260327;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:dkim-signature;
+        bh=OpaxwB2ZrsJszCEJA0sJve13Y/99r5lc2MZ3LWkGqeM=;
+        fh=PcztCnGjYYxmGwIay7w4izKdU9bvgFaZUY2pQsDKZgw=;
+        b=d81y3r3SyXeCyGUNbo7XvXBoJxMMbxB7i0hmFfqfeMUNVKoQ7r4bvtnlj2lGBvyIrg
+         fssz84hNAsuReR0LRK3KFIsSTgyYiiEi10MzZ8V1O1mRcXZYaUUcYTQSnt2cgt3y4f41
+         ZxOOLw7b9a0SSjHNQlyCHXls5Gu8Wogo4zDVS8bjkxzQQNAs8lCV0TrQA+YyygH6lAsW
+         kwD6hmlaG2B2OpW/OTd6KslkA6qVtoNWunY3KTLCtQcJ4B8zgeOi3E6Aj2eNe17hfhAv
+         hexHb5pG0CzDLeOKzA4dUgwZMOXHaVJKvkBFmmC43oAZXrrlFNStF96X1HkUYlUK8VID
+         E/zQ==;
+        darn=lists.infradead.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1791173281; x=1791778081; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:content-type:mime-version
-         :references:message-id:subject:cc:to:from:date:from:to:cc:subject
-         :date:message-id:reply-to:content-type;
-        bh=LoOBU3dKUoijTmAk3p1LupdivqwWNOCTytdFGuDGRd8=;
-        b=yOmalqbLJ3eRVsrbmp2RDV8lvbf5a8e0dTsbF3V+d6Ar2ZwKm8DCUTVPCWf7a8IAn6
-         mMs0jW5BdHaGUXAHQoAJmH5bfZvJ7QOwer/CDqhCa1RBEsJ5WDmIrBoH4dMEV7syLVsS
-         VnZfy/R+5eVzRZDOZ1CL7qfKnr/26PTScM2OSH4Fxu5ZBSTJ2pnRloOPyFotPsHZHBUj
-         fxRPcmwEyZC2t+lDNofSuyg1uyUivRxSgd0TAlyRNYYxQJUd7a74EAM4RSilMRzMqU9Q
-         haDRNMw9/3rZMvF2JBuOrMaswDG7s0q33/YJtUbPIbgYcm+xAlCcBZqP+/QJurKvk93W
-         OWIg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1791173281; x=1791778081;
-        h=in-reply-to:content-disposition:content-type:mime-version
-         :references:message-id:subject:cc:to:from:date:x-gm-gg
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+        d=gmail.com; s=20251104; t=1791184371; x=1791789171; darn=lists.infradead.org;
+        h=content-type:cc:to:subject:message-id:date:from:in-reply-to
+         :references:mime-version:from:to:cc:subject:date:message-id:reply-to
          :content-type;
-        bh=LoOBU3dKUoijTmAk3p1LupdivqwWNOCTytdFGuDGRd8=;
-        b=o84R77zIolrKbvqytveXMv7ImhO+/kJhOb7PxiLtNnTAa60hFD9Bj1Hmsx59mMiUxD
-         bDmcWla4eFoyZdHGo+c8+eNVpui0SW+m88y/bDO8HclNfqdiEZDhD/ZR93Psn2cDcFrc
-         r3DkyqMf0BXRPtM33niqKcBwhyBMccnlTOT5Ws8v3fyo3TFNfVb2tWaYTKu7r9jLPgW8
-         05cc2aV8I5J5wFNeacSAHeB2b0Wosn5v1pOCJBIvEc6ctbCNjlBF2fvQ4ISKtz0LzI3C
-         ouBtAgklDPWBe8PoqDVjZsMJzMqNXjMo5yiUBgRpK8bD9jueM4+HTylt0tpehT+D4nRP
-         pGuA==
-X-Forwarded-Encrypted: i=1; AKwUvByGX7xE2r8JlHCINIY13cH2QX1t04guxxBCN8J6AsXaEtLzpGyhnre9rf6/Ll4t4ynil4hN82pJaNoRrOA73g==@lists.infradead.org
-X-Gm-Message-State: AFuF++mA6D6+xy+n2n5W0N7tCq9XJ396HVzjKikHjTbhdRisCgKm8TFt
-	3hFciNO8WhEK3Ht1yUZlS/CAHYjk64ONG5D72wch9a4aHgW3anaymuXo1h12CAbb+Zw=
-X-Gm-Gg: AYBFou0CKYFzoTAtwn1FXrmmkLh3xdWkLtkjLFfaSlKlPfhVQdyN4bPsgIC1yqsv2JC
-	RS/8JcojnkZgCONqkJ/9VTsfwKUBD16GKXe+cFB3UMxe75tjUxDwZYb1uNhbzPFsc0ecRvTlVr8
-	R67UGSDtbDL+mIFegQ9FFfvCKP9leZi8hLzX23bnD0Azii7d3KHCJ2BS4JgpRMzq1mP/jBGcYQS
-	dKIZz12ftvmgGe36UIsd7TCGSZraSlpcjO6rQR1KAZydGo7EbWdMGGCXwGARWg+Nb5wDzRpPaey
-	bR4Cnq9LaC0JkxYgJvmrgCg6GrUiOVYYJH30obQImrdGdA8pVbxxDDJ71r3EJIgViHgX/hsRZ3S
-	Ya1uj6lIV4rGMQFgWhsqgchoIiJHAhUZ7nSOD/7wDdL4EeH5yTpGcsoEVuBzMmxGRfgzu/xH1DE
-	qv6AZCqsEAyUvScJ/1GXmZg3QM5tSrAjiX7BcdeqLGMVWVa1WP7gSzqDCcFSCRT3+xfE5m6eyz
-X-Received: by 2002:a05:701b:2810:b0:149:cfa4:9b3b with SMTP id a92af1059eb24-14f58de5451mr12982932c88.3.1791173281135;
-        Sun, 04 Oct 2026 21:08:01 -0700 (PDT)
-Received: from localhost ([122.172.87.224])
-        by smtp.gmail.com with ESMTPSA id a92af1059eb24-151fcec9a95sm18805270c88.15.2026.10.04.21.07.59
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 04 Oct 2026 21:08:00 -0700 (PDT)
-Date: Mon, 5 Oct 2026 09:37:57 +0530
-From: Viresh Kumar <viresh.kumar@linaro.org>
-To: Sumeet Pawnikar <sumeet4linux@gmail.com>
-Cc: rafael@kernel.org, krzk@kernel.org, amit.kachhap@gmail.com,
-	daniel.lezcano@kernel.org, thara.gopinath@gmail.com,
-	talel@amazon.com, hayashi.kunihiko@socionext.com,
-	mhiramat@kernel.org, mmayer@broadcom.com, sumitg@nvidia.com,
-	peter.griffin@linaro.org, myungjoo.ham@samsung.com,
-	kyungmin.park@samsung.com, cw00.choi@samsung.com, Frank.Li@nxp.com,
-	s.hauer@pengutronix.de, matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com, sven@kernel.org,
-	j@jannau.net, marcan@marcan.st, casey.connolly@linaro.org,
-	sre@kernel.org, wens@kernel.org, t.schramm@manjaro.org,
-	bcm-kernel-feedback-list@broadcom.com,
-	linux-samsung-soc@vger.kernel.org, kernel@pengutronix.de,
-	imx@lists.linux.dev, linux-mediatek@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org, linux-arm-msm@vger.kernel.org,
-	linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v2 3/5] cpufreq: Use %pe to print error pointers
- symbolically
-Message-ID: <asMinVwyd7gcvRlo@vireshk-B250M-D3H>
-References: <20260912191156.185448-1-sumeet4linux@gmail.com>
- <20260912191156.185448-4-sumeet4linux@gmail.com>
+        bh=OpaxwB2ZrsJszCEJA0sJve13Y/99r5lc2MZ3LWkGqeM=;
+        b=O7+wjL5N12Aq5Jb63mMRXk1Q/h9UcQsQWVq/ORerjJCIHZQ7Be4nsBVt1jbgwha26F
+         G6q2fGgYcLtTkHQiLSbNidSTI2JbW1aJRMTFWuUzrzZA0jODpN1Y4yRP+qVajZuwNtw4
+         Drm1QO3XUzNsuPPU05K+c+YYISjba+GBjv1XdkJK8OgEVria45LNcXIohOJQymDHVU5m
+         Qcst1xhOPZYLaMVjUWpK71ktWhNO1nGxkQt/SWbXD1wSPHueWzrqg3lZUi2onY5QQkZm
+         nsEoQ2HkETmzcjNYWN6yXVE4PckOUWJPlTIq0PQsCS1Ctzz6LDNRAXT6Yv5HZOCgYtQp
+         QGkw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20260707; t=1791184371; x=1791789171;
+        h=content-type:cc:to:subject:message-id:date:from:in-reply-to
+         :references:mime-version:x-gm-gg:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to:content-type;
+        bh=OpaxwB2ZrsJszCEJA0sJve13Y/99r5lc2MZ3LWkGqeM=;
+        b=bW6pOJuhiLo/mCOCHLw+Xuk8EMGNbgxWZas4eHJjq8Q+BvvNz8+weiqay2PyhVG1bL
+         VE3Ybsg+INnWI6FSEYfm8vwgFRo4Oy6umNmPqJYMjMFcE5ka2Rko7BRSkC9QQn8K5GMX
+         KtQDXu7rjo1DG46qqNOwDLcaUQJQa0/txqWZT6y0h9k3nmr1W+V9rvKxhF97+clqfa31
+         Y5F8zYGBCY9E0ljqkIP6WF6dFaJFy7xDODbKRa6fR/YXb5EK4vq/QwLyl0cBVJqfGh1P
+         cBC6paWjydfgtUvV4kAWHwXyGInzEoSvpmVG1u52K9E/jKiJSHxBvNGdG9AAiBU2RLnN
+         QqdQ==
+X-Forwarded-Encrypted: i=1; AKwUvBwenq6uUE9wJMsVtGNBfmponDWf5JU3oWqRSrV+6NTEdb7ZrMzV7oyUiiG10oGS3FLlxWxSH/pvQSflXrloxw==@lists.infradead.org
+X-Gm-Message-State: AFq9FYLFiM3cvn4OJHdJuOCJQ9weAKqkT2VogeNa2sUVrjBLK1w1llFR
+	zv99i2Jrq1Jz6DF014LzsMsxDVQxM5tHUTQ9We6ow+14omTfWXfGoFgOLmgRhZ62oXUA0Kc77f4
+	pttdD5vRisJi/xS4NgmD5QD6jCD5GAR8=
+X-Gm-Gg: AYBFou0JWqsWriwsBpOyy5TdBUal5jLb29Mz/VAjE027kWG7r6eCYzIgoCaE8tEVBsF
+	zgZfGFJptyea0d4ivpneSs2DEKnmNv5jA4v91ocy9nWAmmsDrlViDYx8ymN+x+HyC1jABUbreiS
+	j5weYm3WC36fe3Gjb1oY2AKlqMqKWyFYnvpPhGt+J61dqaZoA1vLQsFkJkzmNoknBqvrN37dMgw
+	HrvCED2XcnAPiklKaaM0YKdHEBq1VLEKluKPHeLo/3UowdQ1K2EYdtqjTr3TS7JFEwfB6LVuopD
+	PJUMWPpdw0bR7Gdbmk2Gn7n78i+7KGb7Jxp4cUxVw3gV1ax8iI3Urf7uRTDe7E1c5DmCxqPdSS8
+	aRg9z2xhIO+n7NHRdZEDiBGaKtEeftz+RkS40pZWRWIjgStxavtB2AAmcWO+CnVgfsyn8wDSYUc
+	tRMA==
+X-Received: by 2002:a17:90b:514e:b0:3a8:10e2:ad05 with SMTP id
+ 98e67ed59e1d1-3a810e2d610mr1367843a91.50.1791184370925; Mon, 05 Oct 2026
+ 00:12:50 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20260912191156.185448-4-sumeet4linux@gmail.com>
+References: <20260925044908.450775-1-phucduc.bui@gmail.com>
+ <20260925044908.450775-7-phucduc.bui@gmail.com> <asKt42FgsbhSbQUP@sirena.org.uk>
+In-Reply-To: <asKt42FgsbhSbQUP@sirena.org.uk>
+From: Bui Duc Phuc <phucduc.bui@gmail.com>
+Date: Mon, 5 Oct 2026 14:12:38 +0700
+X-Gm-Features: AclHuK-Et_fC8GWEQTaTqwFWDt-VY_3yjba5DhCZkN25S8jgTJ6mltQqi4wer9o
+Message-ID: <CAABR9nFyEJBwXP=4SjuGNfGQJub2y_DPE87c6j6BPmqMBgjESA@mail.gmail.com>
+Subject: Re: [PATCH 06/14] ASoC: mediatek: mt8195: Fix FE startup error handling
+To: Mark Brown <broonie@kernel.org>
+Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	Trevor Wu <trevor.wu@mediatek.com>, Liam Girdwood <lgirdwood@gmail.com>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, 
+	Kuninori Morimoto <kuninori.morimoto.gx@renesas.com>, cassiogabrielcontato@gmail.com, 
+	Mukesh Ojha <mukesh.ojha@oss.qualcomm.com>, Liviu Dudau <liviu.dudau@arm.com>, 
+	Haotian Zhang <vulab@iscas.ac.cn>, HariKrishna Sagala <hariconscious@gmail.com>, linux-sound@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+	linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261004_210802_724821_F3CA739C 
-X-CRM114-Status: GOOD (  16.24  )
+X-CRM114-CacheID: sfid-20261005_001251_931502_71B260C7 
+X-CRM114-Status: GOOD (  13.68  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -114,91 +124,40 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 13-09-26, 00:41, Sumeet Pawnikar wrote:
-> Replace PTR_ERR() and %ld with %pe and pass the original pointer directly
-> to pr_err() and pr_warn(). The %pe format specifier prints a symbolic error
-> name (e.g. -ENOMEM) when CONFIG_SYMBOLIC_ERRNAME is enabled, otherwise it
-> falls back gracefully and prints the raw integer value. This makes messages
-> more readable without any functional change.
-> 
-> Signed-off-by: Sumeet Pawnikar <sumeet4linux@gmail.com>
-> ---
->  drivers/cpufreq/bmips-cpufreq.c   | 4 ++--
->  drivers/cpufreq/cppc_cpufreq.c    | 4 ++--
->  drivers/cpufreq/qoriq-cpufreq.c   | 4 ++--
->  drivers/cpufreq/s3c64xx-cpufreq.c | 5 ++---
->  4 files changed, 8 insertions(+), 9 deletions(-)
-> 
-> diff --git a/drivers/cpufreq/bmips-cpufreq.c b/drivers/cpufreq/bmips-cpufreq.c
-> index a8e35bc75fb2..389fff5e6f65 100644
-> --- a/drivers/cpufreq/bmips-cpufreq.c
-> +++ b/drivers/cpufreq/bmips-cpufreq.c
-> @@ -132,8 +132,8 @@ static int bmips_cpufreq_init(struct cpufreq_policy *policy)
->  
->  	freq_table = bmips_cpufreq_get_freq_table(policy);
->  	if (IS_ERR(freq_table)) {
-> -		pr_err("%s: couldn't determine frequency table (%ld).\n",
-> -			BMIPS_CPUFREQ_NAME, PTR_ERR(freq_table));
-> +		pr_err("%s: couldn't determine frequency table (%pe).\n",
-> +			BMIPS_CPUFREQ_NAME, freq_table);
->  		return PTR_ERR(freq_table);
->  	}
->  
-> diff --git a/drivers/cpufreq/cppc_cpufreq.c b/drivers/cpufreq/cppc_cpufreq.c
-> index 80893844353c..f767898ebfb5 100644
-> --- a/drivers/cpufreq/cppc_cpufreq.c
-> +++ b/drivers/cpufreq/cppc_cpufreq.c
-> @@ -230,8 +230,8 @@ static void cppc_fie_kworker_init(void)
->  
->  	kworker_fie = kthread_run_worker(0, "cppc_fie");
->  	if (IS_ERR(kworker_fie)) {
-> -		pr_warn("%s: failed to create kworker_fie: %ld\n", __func__,
-> -			PTR_ERR(kworker_fie));
-> +		pr_warn("%s: failed to create kworker_fie: %pe\n", __func__,
-> +			kworker_fie);
->  		fie_disabled = FIE_DISABLED;
->  		kworker_fie = NULL;
->  		return;
-> diff --git a/drivers/cpufreq/qoriq-cpufreq.c b/drivers/cpufreq/qoriq-cpufreq.c
-> index 42edb41ad459..0652e5df0278 100644
-> --- a/drivers/cpufreq/qoriq-cpufreq.c
-> +++ b/drivers/cpufreq/qoriq-cpufreq.c
-> @@ -57,8 +57,8 @@ static u32 get_bus_freq(void)
->  	/* get platform freq by its clock name */
->  	pltclk = clk_get(NULL, "cg-pll0-div1");
->  	if (IS_ERR(pltclk)) {
-> -		pr_err("%s: can't get bus frequency %ld\n",
-> -		       __func__, PTR_ERR(pltclk));
-> +		pr_err("%s: can't get bus frequency %pe\n",
-> +		       __func__, pltclk);
->  		return PTR_ERR(pltclk);
->  	}
->  
-> diff --git a/drivers/cpufreq/s3c64xx-cpufreq.c b/drivers/cpufreq/s3c64xx-cpufreq.c
-> index 9cef71528076..9a01592425ee 100644
-> --- a/drivers/cpufreq/s3c64xx-cpufreq.c
-> +++ b/drivers/cpufreq/s3c64xx-cpufreq.c
-> @@ -152,15 +152,14 @@ static int s3c64xx_cpufreq_driver_init(struct cpufreq_policy *policy)
->  
->  	policy->clk = clk_get(NULL, "armclk");
->  	if (IS_ERR(policy->clk)) {
-> -		pr_err("Unable to obtain ARMCLK: %ld\n",
-> -		       PTR_ERR(policy->clk));
-> +		pr_err("Unable to obtain ARMCLK: %pe\n", policy->clk);
->  		return PTR_ERR(policy->clk);
->  	}
->  
->  #ifdef CONFIG_REGULATOR
->  	vddarm = regulator_get(NULL, "vddarm");
->  	if (IS_ERR(vddarm)) {
-> -		pr_err("Failed to obtain VDDARM: %ld\n", PTR_ERR(vddarm));
-> +		pr_err("Failed to obtain VDDARM: %pe\n", vddarm);
->  		pr_err("Only frequency scaling available\n");
->  		vddarm = NULL;
->  	} else {
+Hi Mark,
 
-Applied. Thanks.
+Thank you for your review.
 
--- 
-viresh
+> > +     ret = snd_pcm_hw_constraint_step(runtime, 0,
+> > +                                      SNDRV_PCM_HW_PARAM_BUFFER_BYTES,
+> > +                                      MT8195_MEMIF_BUFFER_BYTES_ALIGN);
+> > +     if (ret)
+> > +             goto err_fe_shutdow;
+>
+> This will return 1 if a new constraint is installed which is not a
+> failure.
+
+Do you mean snd_pcm_hw_constraint_integer() rather than
+snd_pcm_hw_constraint_step()?
+
+snd_pcm_hw_constraint_step() returns zero on success or a negative
+error code on failure,
+so it does not return 1 when a new constraint is installed.
+
+snd_pcm_hw_constraint_integer() is also called from
+mtk_afe_fe_startup(), and it can
+return a positive value when the interval is changed, zero when it is
+unchanged,
+or a negative error code on failure.
+
+I will change the caller to check for a negative return value:
+
+-------------------------------------------------------
+ret = mtk_afe_fe_startup(substream, dai);
+if (ret < 0)
+        goto err_clk_unprepare;
+-------------------------------------------------------
+
+Best regards,
+Phuc
 
