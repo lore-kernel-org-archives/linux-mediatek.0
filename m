@@ -4,99 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E058CCA5FF0
-	for <linux-mediatek@archiver.kernel.org>; Mon,  5 Oct 2026 11:54:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DDC03CA5FF0
+	for <linux-mediatek@archiver.kernel.org>; Mon,  5 Oct 2026 12:07:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
-	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ck8/UTx5CCxvmelK4jSyBm8N+nwsqu5R9ItOFQBEQH8=; b=wuXCZHz2d4x/06TF5E6UaVwbav
-	MSYqvONM8Geh7mUTwI6WHjxVhpAlJJxGmvM6QQ8HcufdOMIN+G79BtOpjzgQZk9TCjZmvJOYmEGt7
-	OYb3JbpiKYvdUh7Se3yb0Zis1ICjxd+dO9HMQH2YWNCrn3K+WnRF4x5mCDfGDxy1j+2El31t0vpDV
-	cd8coIP3v6W695p/VxPnW9okIT2+2NvUb7xNkQNl/BgXraQ5CkTZIERAqB2e40BQUpqpQCR2kuV4X
-	wdxmcJNuBdDzn6Gjh/ThhiAZnNfamKIsxXQx+G/ZJh0JMohmQePJjxJO1JhZ9oadOEsljDAhjvm8b
-	YDUxyf4A==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=+6k1mdZtwEgz1KO8lXOKSUbhxVxxBDU+Qo+cKaKMlYU=; b=aYAMkj5oftqQDc5NG61vtoXPnq
+	+jyme8ONC6HuryiZPlgBTQJi2ZlyxNUSoT4WPLwp3r13VRPqIoyBUy2eurkC7lBXUvN7ow+rKX7IT
+	ivqV1PNWxprWOFO1yz3qVq/D0ZBFhBj37YX1FoK24wb7O771gm3XM/uvQ7mqOVdOfHZ0qMCfHrDoH
+	1Wmb9nMldOgFLTVS2GLi6psnIMacM5HCaufxV4QMmzBpEoajTDOOQCa3PIMYKCvccp+Zqy+qWV5kF
+	qjpC5yt3HXNxb61OYA/5KKr/Al9sMzEuaNXHTWcFTcfdRdfQiOhScfep+QKEO7aapRUu7tsYE94ld
+	ovwfzP1w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xDhHJ-0000000GMkf-1ZnU;
-	Mon, 05 Oct 2026 11:54:45 +0000
-Received: from mo4-p01-ob.smtp.rzone.de ([85.215.255.52])
-	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xDhHC-0000000GMkI-31Y4
-	for linux-mediatek@lists.infradead.org;
-	Mon, 05 Oct 2026 11:54:43 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1791201271; cv=none;
-    d=strato.com; s=strato-dkim-0002;
-    b=GZjD9ZxuN4+NRA9jvrOsL27KMR/E04LwmXRwbn3flrtQXOCS5tCwajYixVuLsyns9h
-    OerJLKd5xnDtpHTXjkT9IZG4EBR1jBNIzcQ88ZlbV2UH0I9d63iSPkG/PZlKCkCqQNAk
-    rHrxOFxJ4aNg56i+Lw3Msd7GoDwxwSpvF9kfViYweYn8O7XBjPW93daBRuMksB3op+jG
-    HqEL/QFfPClPV9Qc3kkRfLWz0BymR4S2rNVy1fOkXWYEugLHvUS455z8SHd0NvDa9O9o
-    mS46X9UKuXFK+45Fd9Fa4gauOAbBHhJSUCMlLsknxgfJZVIZXQMtlONaS6JMGLsOBWsb
-    kDoQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; t=1791201271;
-    s=strato-dkim-0002; d=strato.com;
-    h=References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:Cc:Date:
-    From:Subject:Sender;
-    bh=ck8/UTx5CCxvmelK4jSyBm8N+nwsqu5R9ItOFQBEQH8=;
-    b=e+ktHQR7CNoduKojQMY3gFx5Kn1ucuyGEjn1rTQo0Mjk9lpZk9Fo8IdY4XHsDuegmc
-    uA0GSAxwwB59aCLULGrr4+fkMYXRiUPS1qV+AiHdhtDF0QNXehMWxGMDPvttDwxRV8PE
-    3q6SJibcRN+E7rLe2HN95j5lY07ntV4/caRcRakCGqlz9QPz9JGczaufzs1/BunwC52t
-    e9ggp/BKZwMA3KD5vMM6mQJq2ZvVMoKk2mhkHa5jkffqnPe3wgfjQpk2VlXm5Wws/SzN
-    KT3Cb1Jg3NrkhXiui0Ma/zDbjzNJlcpgIoQ03jxp3tmk4TPk3NnvIhzsdH9O/f9ONyXE
-    jhJw==
-ARC-Authentication-Results: i=1; strato.com;
-    arc=none;
-    dkim=none
-X-RZG-CLASS-ID: mo01
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; t=1791201271;
-    s=strato-dkim-0002; d=iokpp.de;
-    h=References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:Cc:Date:
-    From:Subject:Sender;
-    bh=ck8/UTx5CCxvmelK4jSyBm8N+nwsqu5R9ItOFQBEQH8=;
-    b=GQJ/rxyYVHg2reXyHUkB1teDDR55KuAGVsA5mYGvlFb1DGbIr0/tm2yWOGiOb8XqqF
-    5kqK02aTX6penZxg/9c7SyIRsH1O92TPkpeSuVeqwsH1HhhyPbowXm7NMMP+RjO+jV+h
-    RHLbQmccyJ8rSIupA/IxJh0wvjblTFI2NE7GvnHkCeF/LLcAXRdcBwI1zuhqpi4i1Lx4
-    6FkXYFgqvU7bYynUvPMCpWG2coLC2Axu0zIL+Lo9cRDHrYwRMRRcD88h6yTx8J1b3O9v
-    IMo9MYPDyFmP5BjfbnB/g10k0MdSF6z0J6DsKnhw9WiJBiBMUPpcB433busY8BzvqxbR
-    SCgQ==
-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; t=1791201271;
-    s=strato-dkim-0003; d=iokpp.de;
-    h=References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:Cc:Date:
-    From:Subject:Sender;
-    bh=ck8/UTx5CCxvmelK4jSyBm8N+nwsqu5R9ItOFQBEQH8=;
-    b=BjTpxYHYhclzhR1ha2zFbnNNVuuyZTHA9ELB+Ty4toBOFsrKsSAZR8q3EgQI7FgF2H
-    KKPhn2W9H0Z6dptrzKBg==
-X-RZG-AUTH: ":LmkFe0i9dN8c2t4QQyGBB/NDXvjDB6pBSe9tgBDSDt0V0DBslXBtZUxPOub3IZuk"
-Received: from [10.176.237.163]
-    by smtp.strato.de (RZmta 55.6.2 AUTH)
-    with ESMTPSA id z04e1c295BsTQ3d
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256 bits))
-	(Client did not present a certificate);
-    Mon, 5 Oct 2026 13:54:29 +0200 (CEST)
-Message-ID: <1912caf84d99bc2388960c907184f06689806ee6.camel@iokpp.de>
-Subject: Re: [PATCH 6.18.y] scsi: ufs: core: Re-arm the device command
- completion before submitting
-From: Bean Huo <beanhuo@iokpp.de>
-To: alice.chao@mediatek.com, stable@vger.kernel.org
-Cc: linux-scsi@vger.kernel.org, linux-kernel@vger.kernel.org, 
- martin.petersen@oracle.com, James.Bottomley@HansenPartnership.com, 
- bvanassche@acm.org, avri.altman@sandisk.com, alim.akhtar@samsung.com, 
- wsd_upstream@mediatek.com, linux-mediatek@lists.infradead.org, 
- peter.wang@mediatek.com, chun-hung.wu@mediatek.com, cc.chou@mediatek.com, 
- chaotian.jing@mediatek.com, tun-yu.yu@mediatek.com, naomi.chu@mediatek.com,
-  ed.tsai@mediatek.com
-Date: Mon, 05 Oct 2026 13:54:28 +0200
-In-Reply-To: <20260915052638.459390-1-alice.chao@mediatek.com>
-References: <20260915052638.459390-1-alice.chao@mediatek.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-User-Agent: Evolution 3.44.4-0ubuntu2.1 
+	id 1xDhTl-0000000GNRs-0nD1;
+	Mon, 05 Oct 2026 12:07:37 +0000
+Received: from foss.arm.com ([217.140.110.172])
+	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
+	id 1xDhTg-0000000GNQw-21tK;
+	Mon, 05 Oct 2026 12:07:36 +0000
+Received: from usa-sjc-imap-foss1.foss.arm.com (unknown [10.121.207.14])
+	by usa-sjc-mx-foss1.foss.arm.com (Postfix) with ESMTP id 54873152B;
+	Mon,  5 Oct 2026 05:07:23 -0700 (PDT)
+Received: from [192.168.147.49] (usa-sjc-mx-foss1.foss.arm.com [172.31.20.19])
+	by usa-sjc-imap-foss1.foss.arm.com (Postfix) with ESMTPSA id A7D8D3F86F;
+	Mon,  5 Oct 2026 05:07:24 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple; d=arm.com; s=foss;
+	t=1791202046; bh=3FgcCnbV9YRK9cWAc5HYLFiWEjRwfbEEYLqixQdU520=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=EJjN4Ffqe2Y68JHHRmfhnLQ2jkZ6dkZdRpINSBf9H3ljFLGnSO/iS3BmoeQbGd2qV
+	 caYdW4R837bIczfSbfRSnS83xo8hcHgy5M+2lu4ErmrqhHNwLyHsakUcOzDv+0TMqS
+	 IFNGxJmJAcAJ3NEyprpWvdFaOk7a/oGUTtn20C0M=
+Message-ID: <b138ae28-bd90-414c-9e57-c493877c9bad@arm.com>
+Date: Mon, 5 Oct 2026 13:07:18 +0100
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] usb: mtu3: Fix double dereference in TP_printk
+To: paulmck@kernel.org
+Cc: linux-usb@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
+ chunfeng.yun@mediatek.com, gregkh@linuxfoundation.org, rostedt@goodmis.org,
+ mark.rutland@arm.com
+References: <20260922103756.104846-1-vladimir.murzin@arm.com>
+ <845ef1a3-8d85-4007-aa2c-05e59e79afcd@arm.com>
+ <315259c9-d7b9-44bc-8896-ecb9429a6eb5@paulmck-laptop>
+Content-Language: en-GB
+From: Vladimir Murzin <vladimir.murzin@arm.com>
+In-Reply-To: <315259c9-d7b9-44bc-8896-ecb9429a6eb5@paulmck-laptop>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261005_045439_177298_E1CCB253 
-X-CRM114-Status: GOOD (  26.88  )
+X-CRM114-CacheID: sfid-20261005_050732_727376_0C7FEE4D 
+X-CRM114-Status: GOOD (  17.47  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -111,181 +73,118 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, 2026-09-15 at 13:26 +0800, alice.chao@mediatek.com wrote:
-> From: Alice Chao <alice.chao@mediatek.com>
->=20
-> Commit 20b97acc4caf ("scsi: ufs: core: Fix a race condition related to
-> device commands") moved the device management command completion into
-> struct ufs_hba, initialized once by ufshcd_init(), and dropped the
->=20
-> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0hba->dev_cmd.complete =3D=
- NULL;
->=20
-> assignments that used to make ufshcd_compl_one_cqe() discard completions
-> the submitter had already given up on. Nothing replaced them, so the
-> completion is never reset between two device commands:
->=20
-> =C2=A0 Task A (device command submitter) IRQ (tag =3D=3D hba->reserved_sl=
-ot)
-> =C2=A0 --------------------------------- ------------------------------
-> =C2=A0 ufshcd_read_desc_param()
-> =C2=A0=C2=A0 ufshcd_query_descriptor_retry()
-> =C2=A0=C2=A0=C2=A0 __ufshcd_query_descriptor()
-> =C2=A0=C2=A0=C2=A0=C2=A0 ufshcd_exec_dev_cmd()
-> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 ufshcd_issue_dev_cmd()
-> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 ufshcd_send_command()
-> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 ufshcd_wait_for_dev_cmd()
-> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 wait_for_completion_timeout()
-> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 /* times out, done =3D=3D 0 */
-> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 ufshcd_clear_cmd()
-> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 /* returns 0, no effect */
-> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 return -EAGAIN
-> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 ufs_mtk_mcq=
-_intr()
-> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 ufshc=
-d_mcq_poll_cqe_lock()
-> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
- ufshcd_mcq_process_cqe()
-> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0 ufshcd_compl_one_cqe()
-> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0 /* lrbp->cmd =3D=3D NULL */
-> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0 complete(&hba->dev_cmd.complete)
-> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0 /* done: 0 -> 1 */
-> =C2=A0 ufshcd_query_attr_retry()
-> =C2=A0=C2=A0 ufshcd_query_attr()
-> =C2=A0=C2=A0=C2=A0 ufshcd_exec_dev_cmd()
-> =C2=A0=C2=A0=C2=A0=C2=A0 ufshcd_issue_dev_cmd()
-> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 ufshcd_send_command()
-> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 ufshcd_wait_for_dev_cmd()
-> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 wait_for_completion_timeout()
-> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 /* returns at once, done: 1 -> 0 */
-> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 ufshcd_dev_cmd_completion()
-> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 /* response UPIU not written yet */
-> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 return -EINVAL
->=20
-> Task A then rejects what it reads out of the response UPIU:
->=20
-> =C2=A0 ufshcd_dev_cmd_completion: Invalid device management cmd response:=
- 0
-> =C2=A0 ufshcd_dev_cmd_completion: unexpected response in Query RSP: ff
->=20
-> The skew does not self-correct. On a UFS 4.0 controller in MCQ mode it
-> persisted across more than a thousand consecutive device commands,
-> failing every descriptor and attribute read until the link was reset.
->=20
-> The controller can still complete the timed-out command because in MCQ
-> mode ufshcd_clear_cmd() only issues an SQ cleanup (SQRTC.ICU), which
-> shows the command left the submission queue but not that a CQE is not
-> already posted. The MCQ path also skips the hba->outstanding_reqs
-> re-check that the SDB path does, so it returns -EAGAIN with the
-> completion still armed.
->=20
-> Re-arm the completion in ufshcd_issue_dev_cmd(), immediately before
-> submitting. All submitters - ufshcd_exec_dev_cmd(),
-> ufshcd_issue_devman_upiu_cmd() and ufshcd_advanced_rpmb_op() - reach it
-> holding hba->dev_cmd.lock, so no extra serialization is needed.
->=20
-> This narrows the window rather than closing it: the CQE only carries the
-> tag and every device command uses hba->reserved_slot, so a late
-> completion is still indistinguishable from the expected one. It no
-> longer spans the idle time between two commands.
->=20
-> No mainline commit: commit 08b12cda6c44 ("scsi: ufs: core: Switch to
-> scsi_get_internal_cmd()") moved this path onto the block layer and
-> removed struct ufs_dev_cmd::complete and ufshcd_wait_for_dev_cmd(). Each
-> device command now waits on its own request via blk_execute_rq(), so
-> mainline has no shared completion to skew. That refactor is not a
-> reasonable stable backport; this is the minimal alternative.
->=20
-> Affected versions: v6.15 through v6.18, i.e. the kernels that carry the
-> commit named in the Fixes: tag but not the mainline rewrite above.
->=20
-> Fixes: 20b97acc4caf ("scsi: ufs: core: Fix a race condition related to de=
-vice
-> commands")
-> Cc: stable@vger.kernel.org
-> Signed-off-by: Alice Chao <alice.chao@mediatek.com>
-> ---
-> =C2=A0drivers/ufs/core/ufshcd.c | 9 +++++++++
-> =C2=A01 file changed, 9 insertions(+)
->=20
-> diff --git a/drivers/ufs/core/ufshcd.c b/drivers/ufs/core/ufshcd.c
-> index 87578e8824d2..003fa8af4f4d 100644
-> --- a/drivers/ufs/core/ufshcd.c
-> +++ b/drivers/ufs/core/ufshcd.c
-> @@ -3312,6 +3312,15 @@ static int ufshcd_issue_dev_cmd(struct ufs_hba *hb=
-a,
-> struct ufshcd_lrb *lrbp,
-> =C2=A0{
-> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0int err;
-> =C2=A0
-> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0/*
-> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 * A device command that timed=
- out may still be completed by the
-> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 * controller later on. hba->d=
-ev_cmd.complete is shared by all device
-> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 * commands, so re-arm it here=
-, immediately before submitting, to keep
-> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 * such a late completion from=
- being mistaken for the completion of
-> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 * this command.
-> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 */
-> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0reinit_completion(&hba->dev_cm=
-d.complete);
-> +
-> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0ufshcd_add_query_upiu_tra=
-ce(hba, UFS_QUERY_SEND, lrbp->ucd_req_ptr);
-> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0ufshcd_send_command(hba, =
-tag, hba->dev_cmd_queue);
-> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0err =3D ufshcd_wait_for_d=
-ev_cmd(hba, lrbp, timeout);
-> --
+Hi All,
 
+On 9/28/26 19:21, Paul E. McKenney wrote:
+> On Mon, Sep 28, 2026 at 02:11:42PM +0100, Vladimir Murzin wrote:
+>> Hi All,
+>>
+>> Gentle ping... spat is still present in v7.3-rc5
+> If no one else wants to push it, I can do so.  I gotta admit that the
+> resulting test failures when I forget to apply it are a bit annoying.  ;-)
+> 
+> 							Thanx, Paul
+> 
 
-I have one question:
+FYI, splat is still present in v7.3-rc6 :(
 
-The late CQE can come after the re-arm:
+Thanks
+Vladimir
 
-timeout -> cleanup -> retry B -> re-arm -> send B -> A's CQE arrives, and t=
-hen B
-is woken up early and fails, if B's own CQE in turn comes after C's re-arm,=
- C
-fails the same way, and C may even read B's response as its own.=C2=A0
+>> Cheers
+>> Vladimir
+>>
+>> On 9/22/26 11:37, Vladimir Murzin wrote:
+>>> Paul reported kernel splat:
+>>>
+>>> [    0.000000] TRACE EVENT ERROR: Event mtu3_gadget_ep_set_halt has double dereference in TP_printk: &REC->gpd_ring->dma
+>>> [    0.000000] ------------[ cut here ]------------
+>>> [    0.000000] Event mtu3_gadget_ep_set_halt has double dereference in TP_printk: &REC->gpd_ring->dma
+>>> [    0.000000] WARNING: kernel/trace/trace_events.c:420 at test_double_dereference+0x144/0x14c, CPU#0: swapper/0/0
+>>> [    0.000000] Modules linked in:
+>>> [    0.000000] CPU: 0 UID: 0 PID: 0 Comm: swapper/0 Not tainted 7.3.0-rc1 #15247 PREEMPT
+>>> [    0.000000] Hardware name: linux,dummy-virt (DT)
+>>> [    0.000000] pstate: 600000c5 (nZCv daIF -PAN -UAO -TCO -DIT -SSBS BTYPE=--)
+>>> [    0.000000] pc : test_double_dereference+0x144/0x14c
+>>> [    0.000000] lr : test_double_dereference+0x144/0x14c
+>>> [    0.000000] sp : ffffc80aa7633bf0
+>>> [    0.000000] x29: ffffc80aa7633bf0 x28: ffffc80aa7c0f047 x27: 000508b58019388f
+>>> [    0.000000] x26: 0000000000000003 x25: 0000000000000007 x24: ffffc80aa5fceff8
+>>> [    0.000000] x23: ffffc80aa7c0f05a x22: ffffc80aa64edfe8 x21: ffffc80aa7c0fce8
+>>> [    0.000000] x20: ffffc80aa7c0f047 x19: 0000000000000013 x18: 0000000000000001
+>>> [    0.000000] x17: 6572656420656c62 x16: 756f642073616820 x15: 746c61685f746573
+>>> [    0.000000] x14: 0000000000000000 x13: ffff000139d90000 x12: 0000000000000045
+>>> [    0.000000] x11: 00000000000000cf x10: ffff00013f546428 x9 : ffff000139d90000
+>>> [    0.000000] x8 : 3fffffffffffc000 x7 : 0000000000000001 x6 : 0000000000000001
+>>> [    0.000000] x5 : ffff00013f4e6440 x4 : 0000000000000000 x3 : 0000000000000000
+>>> [    0.000000] x2 : 0000000000000000 x1 : 0000000000000000 x0 : ffffc80aa764a700
+>>> [    0.000000] Call trace:
+>>> [    0.000000]  test_double_dereference+0x144/0x14c (P)
+>>> [    0.000000]  trace_event_raw_init+0x37c/0x5d8
+>>> [    0.000000]  event_init+0x34/0xc0
+>>> [    0.000000]  trace_event_init+0xec/0x588
+>>> [    0.000000]  trace_init+0x24/0x6e0
+>>> [    0.000000]  start_kernel+0x4a0/0x8ec
+>>> [    0.000000]  __primary_switched+0x88/0x90
+>>> [    0.000000] irq event stamp: 0
+>>> [    0.000000] hardirqs last  enabled at (0): [<0000000000000000>] 0x0
+>>> [    0.000000] hardirqs last disabled at (0): [<0000000000000000>] 0x0
+>>> [    0.000000] softirqs last  enabled at (0): [<0000000000000000>] 0x0
+>>> [    0.000000] softirqs last disabled at (0): [<0000000000000000>] 0x0
+>>> [    0.000000] ---[ end trace 0000000000000000 ]---
+>>> [    0.000000] TRACE EVENT ERROR: Event mtu3_gadget_ep_disable has double dereference in TP_printk: &REC->gpd_ring->dma
+>>> [    0.000000] TRACE EVENT ERROR: Event mtu3_gadget_ep_enable has double dereference in TP_printk: &REC->gpd_ring->dma
+>>>
+>>> Which also observed by Mark and myself.
+>>>
+>>> The splat it result of new check introduced by b5cc230af5e5 ("tracing:
+>>> Warn when an event dereferences a pointer in TP_printk()") which
+>>> correctly catches issue with %pad dereferencing the address saved in
+>>> the ring buffer. TP_fast_assign() logic gets executed when the
+>>> tracepoint is triggered, however the TP_printk() is executed when the
+>>> user reads the trace buffer which could be seconds, minutes, hours,
+>>> days, even months later and nothing guarantee that __entry->gpd_ring
+>>> pointer will still be pointing to what it was when it was recorded.
+>>>
+>>> Fix the issue by capturing immediate value of gpd_ring.dma when trace
+>>> point is triggered.
+>>>
+>>> Reported-by: Paul E. McKenney <paulmck@kernel.org>
+>>> Tested-by: Mark Rutland <mark.rutland@arm.com>
+>>> Reviewed-by: Steven Rostedt <rostedt@goodmis.org>
+>>> Signed-off-by: Vladimir Murzin <vladimir.murzin@arm.com>
+>>> ---
+>>>  drivers/usb/mtu3/mtu3_trace.h | 4 +++-
+>>>  1 file changed, 3 insertions(+), 1 deletion(-)
+>>>
+>>> diff --git a/drivers/usb/mtu3/mtu3_trace.h b/drivers/usb/mtu3/mtu3_trace.h
+>>> index 89870175d635..9aaa167d69c1 100644
+>>> --- a/drivers/usb/mtu3/mtu3_trace.h
+>>> +++ b/drivers/usb/mtu3/mtu3_trace.h
+>>> @@ -224,6 +224,7 @@ DECLARE_EVENT_CLASS(mtu3_log_ep,
+>>>  		__field(unsigned int, flags)
+>>>  		__field(unsigned int, direction)
+>>>  		__field(struct mtu3_gpd_ring *, gpd_ring)
+>>> +		__field(dma_addr_t, gpd_ring_dma)
+>>>  	),
+>>>  	TP_fast_assign(
+>>>  		__assign_str(name);
+>>> @@ -235,12 +236,13 @@ DECLARE_EVENT_CLASS(mtu3_log_ep,
+>>>  		__entry->flags = mep->flags;
+>>>  		__entry->direction = mep->is_in;
+>>>  		__entry->gpd_ring = &mep->gpd_ring;
+>>> +		__entry->gpd_ring_dma = mep->gpd_ring.dma
+>>>  	),
+>>>  	TP_printk("%s: type %s maxp %d slot %d mult %d burst %d ring %p/%pad flags %c:%c%c%c:%c",
+>>>  		__get_str(name), usb_ep_type_string(__entry->type),
+>>>  		__entry->maxp, __entry->slot,
+>>>  		__entry->mult, __entry->maxburst,
+>>> -		__entry->gpd_ring, &__entry->gpd_ring->dma,
+>>> +		__entry->gpd_ring, &__entry->gpd_ring_dma,
+>>>  		__entry->flags & MTU3_EP_ENABLED ? 'E' : 'e',
+>>>  		__entry->flags & MTU3_EP_STALL ? 'S' : 's',
+>>>  		__entry->flags & MTU3_EP_WEDGE ? 'W' : 'w',
+>>> -- 2.34.1
+>>>
 
-Whether this stops depends on device latency against our retry path, not on=
- the
-patch.=C2=A0
-
-The root cause is that all device commands share hba->reserved_slot and the=
- CQE
-carries only the tag. Since a successful SQ cleanup must post an ABORTED CQ=
-E,
-could the MCQ timeout path wait for and consume that CQE before=C2=A0return=
-ing -
-EAGAIN?=C2=A0
-
-does this patch only covers a late CQE arriving while no device command is =
-in
-flight. Did you test it with injected timeouts to see whether it recovers?
-
-
-Kind regards,
-Bean
 
