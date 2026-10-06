@@ -4,63 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 344F6CA5FFD
-	for <linux-mediatek@archiver.kernel.org>; Tue,  6 Oct 2026 02:44:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 15F28CA5FF0
+	for <linux-mediatek@archiver.kernel.org>; Tue,  6 Oct 2026 02:44:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:
 	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=3Dxub2OIKlJbgbQwnT0clqTj/0Io9aNg27HTao1ESOk=; b=fiO1aLe5H6qyQPhCTEc2xKVqwW
-	TLPv0v1SVBY4QkPOsiwXI4ePgjkDGdckUGi0oKYybYzB/qmwCrmCbLq2C4bIdKfm7F0r0TMwn0B3Y
-	lWLEUrzgJdjBuFhmHDecBNuTzi9hrCYJf3LciEk0qQ1LPLx5fxozpsLDC2BrV49Aw4IV7uIxwZmCr
-	wsXFUU6oS60YGHm/+xn4aUeSTQ91cs1DE7YecLREvcTI4G8S6gh2bMtcLhCvXaVZw7hL2oXAf4RUl
-	0R1GkJnwvVJnrWubLF76czEOLBoe3MYxkV1GjoOxsv7BgzruChQbOnzIVVbHIJqs04ltvXGOcX/1S
-	MRVnD7GQ==;
+	bh=w3eMaA/dAfZyaaGYxGAXlh6BdUVFikHvMq+/MCgOaIU=; b=VrSk6JtJQDrQ3kXKU2NcydI44R
+	fSRJuprzCIDroN6EeNVFGEHDu2SUGscMlZIo6rnqJuMVSSnFJzU2yyz4VWFvQsCbcQPjxSuz16+t3
+	bLj6ywb0E79hNLH3H6z2FJh9XC6hONP77CmkzatMW1mNUGi2Dgw5/mGS+9mMUWAff+88RLXuXiSqA
+	Q6FwxF4g7wzdKPqrptbQpq/TPqCCCa/bG8lcjqr6GNSpuKvVKUHBMVEPKDmm34GWejDGrFTK3+K21
+	6wIZkMoo13pCrO8YEEc1TcEI3oCwTrpn9Zd3bQ128JpqjY33SlOAxZsqPBFJW8ZZzb5txm9n4tsCv
+	9u0UaEIA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xDv9t-0000000HWEP-449e;
-	Tue, 06 Oct 2026 02:44:01 +0000
+	id 1xDv9v-0000000HWFB-0P89;
+	Tue, 06 Oct 2026 02:44:03 +0000
 Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xDv9s-0000000HWDr-0wH2;
-	Tue, 06 Oct 2026 02:44:00 +0000
+	id 1xDv9t-0000000HWE5-2RxZ
+	for linux-mediatek@lists.infradead.org;
+	Tue, 06 Oct 2026 02:44:01 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id 7832F43B34;
+	by sea.source.kernel.org (Postfix) with ESMTP id 4BEBE44784;
+	Tue,  6 Oct 2026 02:44:01 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9F3D71F00898;
 	Tue,  6 Oct 2026 02:43:59 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 005811F00893;
-	Tue,  6 Oct 2026 02:43:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1791254639;
-	bh=3Dxub2OIKlJbgbQwnT0clqTj/0Io9aNg27HTao1ESOk=;
+	s=k20260515; t=1791254641;
+	bh=w3eMaA/dAfZyaaGYxGAXlh6BdUVFikHvMq+/MCgOaIU=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References;
-	b=SAF2AiqUeS9WRFiufDP4pIYM9g5LxvnLUCxi9scPLYPoGoP9vFBe2ZGNdfMZD/Hk4
-	 q9y7uOLhb/vtl9OU0jfb7TrcHmkwGpS11zkDvKp6z5i96rA9Pe8aBxG0E8R5uS9Er8
-	 TzUJ5uTieVDMFoAyuQ+uk6ZL3/nDFUPB0+3kJ+z7dTx6f1PyhIBwB4H+liFswYTU+L
-	 bSoD/VZFk0M4nZ8eG0erNz6Zn2gOa4LnZUqQHE3PuHXH+/6/XuDt84xC7Wpaqnw89i
-	 ffudlGArDdKARbIJk/Avu5dL/R6nNZZOoieuQv9wcz8gvNg0Q2dBJBlZmspjcaDq4b
-	 2/YCwLeuSYFiA==
+	b=EfA/Km37Mj1DsqWmYwF/N9WuXnilKwPt5410n92WnDb+mGs/nL7NfFJdcaN8QKUdD
+	 QFnk9vQSAJLjvr9hxZENYxD6E90WhURJLJXbLSzRdiI2aJCvQJbkEobIYhmsHkTe2J
+	 jCDum9UnGplArfF0WgAikdUWtz/mJDZtZagnS6H4TPaP9mny4FHcnOM7ZTY/J8JK2L
+	 dUrfdqqUS1Uj4OKbkSOBnacuco5gI9JaF8inB2PxM/qV4oT8NTSXU3Kf3TOeziieyY
+	 zAbnDkOiyWOVCEYnW0ramUvMdzVKtZn7PyIovNInFvwyMUOzhU3JnWflA8cby3sjhG
+	 l1uClUDRfdlWw==
 From: "Martin K. Petersen (Oracle)" <mkp@kernel.org>
-To: peter.wang@mediatek.com,
-	Pengpeng Hou <hppiscas@163.com>
+To: linux-scsi@vger.kernel.org,
+	avri.altman@sandisk.com,
+	alim.akhtar@samsung.com,
+	James.Bottomley@HansenPartnership.com,
+	bvanassche@acm.org,
+	Naomi Chu <naomi.chu@mediatek.com>
 Cc: "Martin K . Petersen" <mkp@kernel.org>,
-	chaotian.jing@mediatek.com,
-	chu.stanley@gmail.com,
-	james.bottomley@hansenpartnership.com,
-	linux-scsi@vger.kernel.org,
+	wsd_upstream@mediatek.com,
+	peter.wang@mediatek.com,
+	alice.chao@mediatek.com,
+	chun-hung.wu@mediatek.com,
 	linux-mediatek@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
-	matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com,
-	linux-arm-kernel@lists.infradead.org,
-	stanleyjhu@google.com
-Subject: Re: [PATCH v2] scsi: ufs: mediatek: handle mPHY power-on failures
-Date: Mon,  5 Oct 2026 22:43:51 -0400
-Message-ID: <179125457805.2089616.5429696204542801966.b4-ty@b4>
+	ed.tsai@mediatek.com
+Subject: Re: [PATCH v1] scsi: ufs: core: Hold a clock reference across the probe
+Date: Mon,  5 Oct 2026 22:43:52 -0400
+Message-ID: <179125457799.2089616.17339382964055151353.b4-ty@b4>
 X-Mailer: git-send-email 2.55.0
-In-Reply-To: <20260920034953.19535-1-hppiscas@163.com>
-References: <20260920034953.19535-1-hppiscas@163.com>
+In-Reply-To: <20260909091045.1134956-1-naomi.chu@mediatek.com>
+References: <20260909091045.1134956-1-naomi.chu@mediatek.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
@@ -78,24 +80,22 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sun, 20 Sep 2026 11:49:53 +0800, Pengpeng Hou wrote:
+On Wed, 09 Sep 2026 17:10:45 +0800, Naomi Chu wrote:
 
-> The MediaTek helper enables VA09 before powering on the mPHY, but
-> ignores the PHY result. A failure can leave VA09 enabled and publish
-> mphy_powered_on as true, so a later power-on attempt is skipped.
-> 
-> Check phy_power_on(), attempt to unwind VA09 on failure, and leave the
-> state flag unchanged. Propagate the helper result from host
-> initialization as well as its existing resume caller. Keep the original
-> PHY error if the supply rollback also fails, and report that rollback
-> separately.
+> Clock gating becomes possible as soon as ufshcd_init_clk_gating() has
+> run, and from that point on the probe keeps accessing host registers
+> without ever taking a clock reference. This has been safe only because
+> of the state check in __ufshcd_release(): gate_work is not queued
+> unless hba->ufshcd_state is UFSHCD_STATE_OPERATIONAL, and the promotion
+> to that state used to happen after the last register access of the
+> probe, at the end of ufshcd_probe_hba().
 > 
 > [...]
 
 Applied to 7.3/scsi-fixes, thanks!
 
-[1/1] scsi: ufs: mediatek: handle mPHY power-on failures
-      https://git.kernel.org/mkp/scsi/c/78e04810542d
+[1/1] scsi: ufs: core: Hold a clock reference across the probe
+      https://git.kernel.org/mkp/scsi/c/02a317831963
 
 -- 
 Martin K. Petersen
