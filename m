@@ -4,72 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A4786CA5FF0
-	for <linux-mediatek@archiver.kernel.org>; Tue,  6 Oct 2026 10:16:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7D13FCA5FF0
+	for <linux-mediatek@archiver.kernel.org>; Tue,  6 Oct 2026 10:16:36 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=qoB87xt/si/5SQ89z++VwfJlgKEBpZZ8oa5UH367RG0=; b=B6tnuHuprcrcOJIDD6TF6nEFrn
-	AnqCEra4l0j21qofNXGxxAvwlnYocmy5OQ3L5N3Iv9CEx/B66R2CrTaBLJtVTmItSscfp0zTysI27
-	HwhGQmNzh4xwko6B2sL3AEPVAzXm8QqN3Lb0nLsO+WdvXaYayJ+tpJSAmC2o0/LR4kp8dQ+7/KFOV
-	WxRB3HHSQtibihe22hlDXje8sI0rE5otqdy+tIo7Iolgh/fHoTLusLMqEACE1l+yt/TYkoyCegHgn
-	WL+vSxyXEAMHNC18zjVCER31vmP6D9FJx6SF1klXXihhxYjyRua/KC0q2IAJwEIYFs7gMge7fPNFY
-	bHJ/ujfQ==;
+	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=SACGOLnAL8mTnZGcUa8MVcCzBnwjTHmyT/MfByO6AXo=; b=UgvMamAV/KuU2c+inKsoiBFlyp
+	yyecQK9T0+SH0/5RRSsc63nJjbh97HxvbiBhIE7H1InKIMc1IoMHkkiUfIsBhRDRpa3xjENlmWgd9
+	kFb9dFVT4+GICAA5wrnbqJOGtPJoMZJjdOph/tqlaJZDlJgE6IbrmPb+3xVHc1bM1N+O0S12la7eS
+	2wUNK54t7LxvmusG1kDu+xZ5D4+kkRIciFqGuKppYC/dqE4Fi5SKgDqKye0mpQq6tH2gYlfDDTZIT
+	MlBLA1mZexaXzQohlL3+oQt+OOa/a7pCcW2SKh2I5BwnMcZhEAcW8JirlktlqeqeI/SM4e4Ql58ua
+	KwN0rVBw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xE2Dk-00000000TaF-1ZgK;
-	Tue, 06 Oct 2026 10:16:28 +0000
-Received: from mail-pf1-x431.google.com ([2607:f8b0:4864:20::431])
+	id 1xE2Dr-00000000Tdt-2hej;
+	Tue, 06 Oct 2026 10:16:35 +0000
+Received: from mail-pf1-x432.google.com ([2607:f8b0:4864:20::432])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xE2Dh-00000000TZR-1PQX
+	id 1xE2Do-00000000Tbs-2amz
 	for linux-mediatek@lists.infradead.org;
-	Tue, 06 Oct 2026 10:16:26 +0000
-Received: by mail-pf1-x431.google.com with SMTP id d2e1a72fcca58-88834d30002so280724b3a.1
-        for <linux-mediatek@lists.infradead.org>; Tue, 06 Oct 2026 03:16:24 -0700 (PDT)
+	Tue, 06 Oct 2026 10:16:34 +0000
+Received: by mail-pf1-x432.google.com with SMTP id d2e1a72fcca58-88bc25fcd0eso2291956b3a.2
+        for <linux-mediatek@lists.infradead.org>; Tue, 06 Oct 2026 03:16:32 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1791281784; x=1791886584; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
-        bh=qoB87xt/si/5SQ89z++VwfJlgKEBpZZ8oa5UH367RG0=;
-        b=eANorSAxRI3t9p056K3TxzoAGQgh9Kqzm2yvAzgRf2JHGuugK5isEoCHRUZmEX+6M1
-         hNrq522o30llh3QlmHIikUFkYXmHi2FCjlGjODgBE8PmCSAh+fZL1sJQNZnCMTRUI0ng
-         w0tKj2dHkIFtGPFJ6VTGWsd5VVzTBZvrd4CKSqjYlUJ8+HLrW6G9+oVEnCEOs+EuIiNn
-         bol0vQ1Wt4pD/2KkQ5nGfkBhB1zoZg2NC9xpm/xXVcaHT8qX6d5a6exLzTaUei0vqS0e
-         hCEaCqC2HrB7jabX0TfYpvBouGsjYjk6OhcH6lzf0KBwSlVMhZNgFtAInCzHYASWULvR
-         dlHw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1791281784; x=1791886584;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+        d=gmail.com; s=20251104; t=1791281791; x=1791886591; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to:content-type;
-        bh=qoB87xt/si/5SQ89z++VwfJlgKEBpZZ8oa5UH367RG0=;
-        b=Mv+oM03u2lfBfl76v+fPJsLZvb6A6C1qaStidwwpnOfYvFKdSyim4Z2UPEZOlhN2Ox
-         6bxbLjxqeaqCKLqe4YfeG5cvtrmGjLku6s8YWnp83awTc1Cm7f2iImeN3gvuaTn904gF
-         W0/VzDaL83gB6WSIaydCTVeYC5SIrQxQrkB/5EQQPReXb0kC/h9G1/9TRNDHhAPUN1qC
-         eDJoXb9TOYG03HGYHfW3Ntk1MbX4jrmTsVwihC2iUvWXe+wddplYpPqAUhQPTfvIhW/S
-         n5v8k53CFakhiIRfSDjZWCC/dHXd/7OFQbJlitJvHI4nZvjt54t6jNXzaMyaGdCwnypJ
-         VvxA==
-X-Forwarded-Encrypted: i=1; AKwUvBzm+mgx5SHRhTNXT66gPMkRonC99d8q+14NJ0k1DJ3Cdc9hTeXB5MdYaw7wxLZBBVg8gTQPeqRhIpQOywk+lg==@lists.infradead.org
-X-Gm-Message-State: AFuF++l2/1TZPL4zfX+tXUtpb6HTZqQwT+CUYNfc6WLYLGqpURrn2PiR
-	wO8dJZd0paFzuFVbAdS8Dv981z21HvG98QTUDNprGCx+Gttbo5JQjPmz
-X-Gm-Gg: AYBFou0wf4QJ72hnKrrgTbzVa0m3BClPF74ZPihOsxSTxYaqyQXBe46Yp9TO4VxKQ2z
-	JjEFDE5wbtp+h+CJrDZM1HLmaNymyZn6D5PknNawcOK8p1tx2N1dgrcekfFH9wYngO+NLPc++3w
-	LGlK/N76HQjc/TAJ8fV6GsEgwlZFwZUDyCxtfSTGXwY9sHZiSBHbLo9GzdXFim9Fz0fxDePasZW
-	TEtMjk2M2+5wIffwTbgJPe4Vc9WBpKq1SwU12seZnuu6viw1I5LKUYujebD9kkVbqSu6MNQHrsf
-	xmweBhCWitl5DjJPrttn+zfKzfpukdoVbl06JUHB94Vc1Zod541HQqJgRnTHFfbmvxhquCTwkSf
-	fFF6k14gpIlpaI+rNMGw0dRAoaNvihqFcBGk3AnAYUaai0D2QNp4E13aGYWU/HgtnJ4sCBATNvX
-	/o/In27ibyLbIllL7Ke6MlcfCYRqLp1jitiIxMEq+/prV+NKf0Ya9a0SUksZPb8JSzAUrwS9ngR
-	3AVc9xDjW1icmkSyHjUZmmrxtI8K2J5mvxPXrUcdMszUPXAl294122BnsMR9bSIflfq/c3uog+I
-	jaEDtkk/eNqLMtWbasZKjZ1w
-X-Received: by 2002:a05:6a21:511:b0:3e0:da23:874a with SMTP id adf61e73a8af0-3e1246e1ec9mr796494637.18.1791281784146;
-        Tue, 06 Oct 2026 03:16:24 -0700 (PDT)
+        bh=SACGOLnAL8mTnZGcUa8MVcCzBnwjTHmyT/MfByO6AXo=;
+        b=aZ5M58PxYOuk2x11beT3Sng1M+OrMhp988rwCoAc8Od3s4jsH5mIvQohv3bRGNtBnF
+         M6eBCKkBLSLXmZ4eb7wM2TstCWVFhoeUu1F2R1Rky1QhMnW3RXsXJKRfGHgy5DX9qHzV
+         1tOuHSSOJ1e7g55Cp6xzTKKuQt6GN5QfVN4OKicvxEM67f+aAsDfFo5608OBmvAoQLlo
+         1ITaGnshBbSnwTl/iI8lGcMtPJ9r67TPYWjFgV5pNuHghv0mupi+8FmdDrS7YoPEXBXe
+         6oGRHQL+W2WgKf8Q6DVlpiJ+XULMZ75pN6sFsMnPPMMrUqh3U5UeYp6RhQJa9X2XBws+
+         0QwA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20260707; t=1791281791; x=1791886591;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
+         :to:cc:subject:date:message-id:reply-to:content-type;
+        bh=SACGOLnAL8mTnZGcUa8MVcCzBnwjTHmyT/MfByO6AXo=;
+        b=jUjpTtjfKc1Of2X86OPyTKIyw0U4pC1tei/RGq/PNcVLxPcS1rSD89B7hha91cypi6
+         YAXmiaGXKnWZEViGU0oz06bRibWaBK0wsyhE1siufw9L+WY8gIiw3wSDaiONN8at0GpT
+         lJ275XtxcZh9Q83MtzQzneuc+5sJq+hLrm0JSJ5D3Wcw59ZZpSnnFx1THDJpAYPpm0RP
+         TgxiT79/rWF6WUUF/Ql2Lo85Cs5wDOyveLGdXp8DjTNLQZK0g7LAFwfCOPtcjjYIkGIc
+         H9TZvDr1b6kjq5sWRB8i0ytGf41oK7wDZH8EcjG4AjZc8bFS5kS8hpkyWUs+W1m7veCm
+         KTIw==
+X-Forwarded-Encrypted: i=1; AKwUvBzKQlGMKCmFPGdwXQh2nPLwRGxdoEjs2+NoEcKRgtnzz3Njg3ZzVavl8q5WSG3ASyVEhPzDiDg+QfLlK4BCUg==@lists.infradead.org
+X-Gm-Message-State: AFuF++keQqhn88SXRJy7wptErB8kiuFlqJsdpCi4ERMxuLLZJr97koLB
+	fo8wnt3V7FP7vltgbdt52vAh9o7Tdu9sUbj2XWe7dxTqjTv4Pewq2Y7C
+X-Gm-Gg: AYBFou2UCeb7JHK9GXHdGGovIzda3Niq+Rth1S43xOXSguUMs+SRHVU96NPikL/VVRc
+	8JJ+4b3HP2E7kIyLrwRd4YELlZO/MIxgYKKr6mQI09yfZ4V2mJ+Q8KF5/8D3bDzWWTx9pr5vc61
+	AkhG7LJXzLVfakN3nudSXFCBvhE2jR5zHFfnP9tlXhe66xmk5epGMgirn2RCs8XoKnf84HHEQ0z
+	U0okw3jAfc8FZHpYwaQsKLwvZX+HZe95krCdRd++NPq0wsRd1SFh6Zx0yZDSQOJygATVAnYbRX7
+	xRJAMfkuFA9kiQX+L9qpurCKHrv2wD5l+bzyqZVCgYSFzi+1z3F5c5lsWn3B+7dKEw0LqO122yJ
+	GNGK2Hrk5GLKQ1JpIDY+3UdRCNunPd4yCooicI53Xy7DpGLYWzzGFhKWpHQ8vFlOLE0aecQLSaB
+	YZBYmiIDrFwNDGrAnzGJ/Z0dggqYFrfO8NSQyGDioeeZO6Czjv4KVApH/10SeY469ef0mV01DG+
+	e/S3JpDCCbiiqjnhF/rYUtZNjFHKr64bLQa4ZPwjRko2d9Vr6+KCETincHFTJP7OOfrrdyOx6pZ
+	uy3TyTiw/klc5g==
+X-Received: by 2002:a05:6a00:14c2:b0:885:e24e:16c5 with SMTP id d2e1a72fcca58-88c64d112b6mr9929947b3a.50.1791281791595;
+        Tue, 06 Oct 2026 03:16:31 -0700 (PDT)
 Received: from phuc-desktop.. ([183.91.15.56])
-        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-88b0d152432sm4547505b3a.53.2026.10.06.03.16.18
+        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-88b0d152432sm4547505b3a.53.2026.10.06.03.16.26
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 06 Oct 2026 03:16:23 -0700 (PDT)
+        Tue, 06 Oct 2026 03:16:31 -0700 (PDT)
 From: phucduc.bui@gmail.com
 To: Mark Brown <broonie@kernel.org>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
@@ -94,16 +95,17 @@ Cc: Liam Girdwood <lgirdwood@gmail.com>,
 	linux-mediatek@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
 	bui duc phuc <phucduc.bui@gmail.com>
-Subject: [PATCH 0/4] ASoC: mediatek: Return 0 from FE startup on success
-Date: Tue,  6 Oct 2026 17:16:02 +0700
-Message-ID: <20261006101606.54079-1-phucduc.bui@gmail.com>
+Subject: [PATCH 1/4] ASoC: mediatek: common: return 0 from mtk_afe_fe_startup() on success
+Date: Tue,  6 Oct 2026 17:16:03 +0700
+Message-ID: <20261006101606.54079-2-phucduc.bui@gmail.com>
 X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20261006101606.54079-1-phucduc.bui@gmail.com>
+References: <20261006101606.54079-1-phucduc.bui@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261006_031625_371051_A558314E 
-X-CRM114-Status: UNSURE (   7.17  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20261006_031632_668972_9E221FD1 
+X-CRM114-Status: GOOD (  12.20  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -120,33 +122,47 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: bui duc phuc <phucduc.bui@gmail.com>
 
-Hi all,
-
-Some FE startup callbacks may return a positive value from constraint 
-helpers, but ASoC expects 0 on success. This can cause .shutdown() to be 
-skipped during rollback.
+snd_pcm_hw_constraint_integer() may return 1, which is then returned
+from mtk_afe_fe_startup(). ASoC only treats 0 as success when marking
+the DAI as started, so .shutdown() can be skipped on rollback.
 
 Return 0 explicitly on success.
 
-Compile-tested only.
-
-Best regards,
-Phuc
-
-bui duc phuc (4):
-  ASoC: mediatek: common: return 0 from mtk_afe_fe_startup() on success
-  ASoC: mediatek: mt8188: return 0 from mt8188_afe_fe_startup() on
-    success
-  ASoC: mediatek: mt8189:return 0 from mt8189_fe_startup() on success
-  ASoC: mediatek: mt8365: return 0 from mt8365_afe_fe_startup() on
-    success
-
+Fixes: 283b612429a2 ("ASoC: mediatek: implement mediatek common structure")
+Signed-off-by: bui duc phuc <phucduc.bui@gmail.com>
+---
  sound/soc/mediatek/common/mtk-afe-fe-dai.c | 8 +++++---
- sound/soc/mediatek/mt8188/mt8188-afe-pcm.c | 5 ++++-
- sound/soc/mediatek/mt8189/mt8189-afe-pcm.c | 8 +++++---
- sound/soc/mediatek/mt8365/mt8365-afe-pcm.c | 7 +++++--
- 4 files changed, 19 insertions(+), 9 deletions(-)
+ 1 file changed, 5 insertions(+), 3 deletions(-)
 
+diff --git a/sound/soc/mediatek/common/mtk-afe-fe-dai.c b/sound/soc/mediatek/common/mtk-afe-fe-dai.c
+index 948f606cbaf2..ec99bc4a5d5e 100644
+--- a/sound/soc/mediatek/common/mtk-afe-fe-dai.c
++++ b/sound/soc/mediatek/common/mtk-afe-fe-dai.c
+@@ -75,8 +75,10 @@ int mtk_afe_fe_startup(struct snd_pcm_substream *substream,
+ 
+ 	ret = snd_pcm_hw_constraint_integer(runtime,
+ 					    SNDRV_PCM_HW_PARAM_PERIODS);
+-	if (ret < 0)
++	if (ret < 0) {
+ 		dev_err(afe->dev, "snd_pcm_hw_constraint_integer failed\n");
++		return ret;
++	}
+ 
+ 	/* dynamic allocate irq to memif */
+ 	if (memif->irq_usage < 0) {
+@@ -88,10 +90,10 @@ int mtk_afe_fe_startup(struct snd_pcm_substream *substream,
+ 		} else {
+ 			dev_err(afe->dev, "%s() error: no more asys irq\n",
+ 				__func__);
+-			ret = -EBUSY;
++			return -EBUSY;
+ 		}
+ 	}
+-	return ret;
++	return 0;
+ }
+ EXPORT_SYMBOL_GPL(mtk_afe_fe_startup);
+ 
 -- 
 2.43.0
 
