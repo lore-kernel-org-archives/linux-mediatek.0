@@ -4,75 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4F751CA5FF0
-	for <linux-mediatek@archiver.kernel.org>; Tue,  6 Oct 2026 02:54:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7674DCA5FFD
+	for <linux-mediatek@archiver.kernel.org>; Tue,  6 Oct 2026 03:14:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=5VTeKzkIO51ShpToukGucYWkxiVIYMznDCJ6lNQojjo=; b=EFjNdAcVhdm23SYZ/bvS9fTA4o
-	pWoMwTS8dk+aur7gNTCUGfRCJ+AlOWcF01BHCVdjJBJgqJBMAwliOZUra0pp0lcyR6g3asfvqD/45
-	zF66aO82YAm2zQGvoGPAhqNPASGikDZ86pOJSMHWq4J5niEEI0aOUjqAilxT/kcMcb+n3BPTjMsl+
-	1n7aLMnkVA7KNI3rF7NdPzrCbzMDHJicQ7J7EzeYnYhxzRSpVqGYsBl31lZRGYVU7DvolzpAoVaH9
-	Nyl1BHJrcV5xE8w99KJRf50mbz7fK08XyfPu7DlemVrvkIb98vnCr7VZ/TUCOGT6oCjfL1IBGWd8K
-	3WrMn6Rw==;
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=ePDX/Jy5LXCj2eR69AARLee6n2woWI2SDFWyzAeSubY=; b=v/uXY1Grg1HMCmZnTWX0Vp9Hio
+	aIJWnCBMNyPypRbShmcEmzdvsOr6da4JSBTro/M1Y2dy2dxkFEBgsjoK/MHPElBaaAEKV8xq8Gz2D
+	lbZEFaEqc0C6agO5jCEMg5yP+VcQAppl1OKjuBX/xSsRIsYL4YPZNG6LdrIn+wiDPONRkQrZLakIZ
+	LxQ3Hy9fP12J9owWOAwssVQjG+S6BO+00zWR4xd5grB6DXv4+211M5dsqSPERD+pRxf+tb+9yBowE
+	dCTn0zmohpFExF0GJmAxLKjyF3DiYRENDfO4bHP/eo/cc7xCdBFVj4obQa9QXyfPX90VQqV0Kb4e8
+	becDUDWQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xDvK4-0000000HWv1-45aI;
-	Tue, 06 Oct 2026 02:54:32 +0000
-Received: from mail.haxxors.com ([85.14.200.35])
+	id 1xDvdX-0000000HYIx-3od0;
+	Tue, 06 Oct 2026 03:14:39 +0000
+Received: from out-17.mta1.migadu.com ([2001:41d0:203:375::11] helo=mta1.migadu.com)
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xDvJz-0000000HWpu-2UE5;
-	Tue, 06 Oct 2026 02:54:31 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple; d=buechner.me; s=mail;
-	t=1791255265; bh=IN1+YcOwY+FTqBiIa+Re4S3jHnglM2aBHQuLytSJ6rs=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=C40ZPFY+/sjT8W69RY+eIig37QPy4WDZXCjAPfUyuYi/Ll6+YQw7NN54J5wu6/vVq
-	 xMWBNWN7mLoib2rGPIEQ5ol9TjfHKdUx4gDPqQ2EhH3CKKxzviZ3sAmCkz8fZEG/Fd
-	 t/TEscoT5sftYG9SWnVunry0tV0LdVoSseq3O6Vg=
-Received: from localhost (localhost [127.0.0.1])
-	by mail.haxxors.com (Postfix) with ESMTP id B522653113;
-	Tue, 06 Oct 2026 04:54:25 +0200 (CEST)
-X-Virus-Scanned: Debian amavis at mail.haxxors.com
-Received: from mail.haxxors.com ([127.0.0.1])
- by localhost (mail.haxxors.com [127.0.0.1]) (amavis, port 10024) with ESMTP
- id c61zZGrjNMzN; Tue,  6 Oct 2026 04:54:24 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple; d=buechner.me; s=mail;
-	t=1791255264; bh=IN1+YcOwY+FTqBiIa+Re4S3jHnglM2aBHQuLytSJ6rs=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
-	b=D3jcTAtV1os3sypZ8DPwjWfzkHKq5eOj2vBvckGVFCJ/hc28fKqS0kCol7nHPrEOI
-	 zEgQuoPZzGU0Utr9O2jy72HhB4scVdzEJCsftB+Bua7XQjoLwXiaqvYtkfZe9CoxGq
-	 gW2r/H/195/6qUwHWaMHPMkoWpy9lySKNoQo22Nk=
-Received: from esports.myloc.de (p200300ee8f09a300264bfefffe4ffb4b.dip0.t-ipconnect.de [IPv6:2003:ee:8f09:a300:264b:feff:fe4f:fb4b])
-	(Authenticated sender: nils@buechner.me)
-	by mail.haxxors.com (Postfix) with ESMTPSA id E85C95310C;
-	Tue, 06 Oct 2026 04:54:23 +0200 (CEST)
-From: =?UTF-8?q?Nils=20B=C3=BCchner?= <nils@buechner.me>
-To: Daniel Lezcano <daniel.lezcano@kernel.org>,
-	"Rafael J . Wysocki" <rafael@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: Zhang Rui <rui.zhang@intel.com>,
-	Lukasz Luba <lukasz.luba@arm.com>,
-	linux-pm@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
+	id 1xDvdS-0000000HYIO-3wgM
+	for linux-mediatek@lists.infradead.org;
+	Tue, 06 Oct 2026 03:14:38 +0000
+X-Envelope-To: linux-mediatek@lists.infradead.org
+DKIM-Signature: a=rsa-sha256; bh=iNqFz5VVYLu8BOKksEYSpdAHzluhTXveXGhG/FJMs7I=;
+ c=simple/simple; d=justthetip.ca;
+ h=from:to:subject:date:message-id:mime-version:content-type; s=key1;
+ t=1791256469; v=1; x=1791861269;
+ b=vDnxcwCM5nkwYZwdjbGKg/lffMGpz+Dy2QPvOHOQIiU0erkZFmGQZobci29FZHzrkVlFuM5Q
+ y5NhwQ6O3PkrOzCUTJePwhUGk6icHSXLq6ApHu5TRvfdy9qDFDRf8k0hg3ivAXF6c3eM2wwRrjj
+ Se01PWEqRqUii9CjCMB2mTRR9uPPmeNmVxvAInr30t3T4nfoL3WGvnM0lzCKEbEO1rcWd8aMD49
+ 0SHMroDbI1aqM5OgoJof2U+4Opi4wirioa+y5AHX2wCa83fC33CAcM4AwfOv/4QAualL9xVg9VL
+ 5X1RPkVPX+MfYXgiW3IjJG8RlBOtA2jNmyIHptlNxNCLw==
+X-Envelope-To: linux-mediatek@lists.infradead.org
+Received: by smtp.migadu.com with ESMTPS id 0cbea5d174a8d1de;
+	Tue, 06 Oct 2026 03:14:28 +0000
+X-Mizu-Trace-ID: 0cbea5d174a8d1de
+X-Migadu-Flow: FLOW_OUT
+From: Devin Wittmayer <lucid_duck@justthetip.ca>
+To: Felix Fietkau <nbd@nbd.name>,
+	Lorenzo Bianconi <lorenzo@kernel.org>,
+	Ryder Lee <ryder.lee@mediatek.com>
+Cc: Deren Wu <deren.wu@mediatek.com>,
+	Sean Wang <sean.wang@mediatek.com>,
+	Shayne Chen <shayne.chen@mediatek.com>,
+	linux-wireless@vger.kernel.org,
 	linux-mediatek@lists.infradead.org,
-	=?UTF-8?q?Nils=20B=C3=BCchner?= <nils@buechner.me>
-Subject: [PATCH 2/2] soc: mediatek: mtk-svs: Don't fail init01 on a bank whose buck is not at vboot yet
-Date: Tue,  6 Oct 2026 04:54:10 +0200
-Message-ID: <20261006025410.506443-3-nils@buechner.me>
-X-Mailer: git-send-email 2.53.0
-In-Reply-To: <20261006025410.506443-1-nils@buechner.me>
-References: <20261006025410.506443-1-nils@buechner.me>
+	Mark Anthony Agarro <markanthonyagarro@gmail.com>,
+	Mark Junker <fubar-coder@live.de>
+Subject: [PATCH wireless] wifi: mt76: mt7925: keep the join ROC until the station is authorized
+Date: Mon,  5 Oct 2026 20:14:25 -0700
+Message-ID: <20261006031425.20922-1-lucid_duck@justthetip.ca>
+X-Mailer: git-send-email 2.55.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261005_195427_926985_245D3C3C 
-X-CRM114-Status: GOOD (  17.03  )
+X-CRM114-CacheID: sfid-20261005_201435_530750_B55A4662 
+X-CRM114-Status: GOOD (  19.50  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,115 +76,114 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-svs_init01() moves every bank to its vboot OPP and then immediately
-requires the bank's buck to read back exactly vboot. For the MT8183 GPU
-banks the buck follows panfrost devfreq, which has not necessarily acted
-on the OPP change yet (an idle GPU stays at its lowest OPP), so the
-check fails and the whole SVS probe aborts with -EPERM, leaving the CPU
-and CCI banks uncalibrated as well:
+From: Mark Anthony Agarro <markanthonyagarro@gmail.com>
 
-  SVSB_GPU: buck voltage: 700000uV, expected vboot: 800000uV
-  mtk-svs 1100bc00.svs: error -EPERM: svs start fail
+When a non-MLO station associates, mgd_complete_tx() aborts the join ROC
+as soon as the association succeeds, which is right before the supplicant
+sends message 2 of the 4-way handshake. With the abort that close to
+message 2, the adapter acknowledges nothing the AP sends for the next
+several ms: the AP sends message 3 and its seven retries within about
+5 ms, none is acknowledged, and the handshake ends with reason 15
+(4WAY_HANDSHAKE_TIMEOUT).
 
-Poll the buck for up to 500ms before giving up. If it still is not at
-vboot, skip only that bank: restore its default OPP voltages, disable it,
-and calibrate the others.
+Keep the ROC after a successful (re)association on a non-MLD station
+interface and release it when the station is authorized, on
+disassociation, or when the station is removed. The ROC timer still ends
+it if none of that happens. MLD interfaces keep the old behaviour: there
+the ROC that is active at this point is the MLO ROC set up by
+mt7925_mac_set_links(), and holding it makes mt7925_set_mlo_roc() fail
+with -EBUSY in the link activation work, which leaves one link instead of
+two.
 
-On Acer Chromebook Spin 311 (MT8183) the GPU buck reaches vboot within
-the poll window and all four banks complete init01/init02.
+Tested by a reporter on an MT7925U (USB) against a FRITZ!Box 5690 Pro on
+a 6 GHz-only, non-MLO SSID, kernel 7.2.3, from traces and monitor
+captures taken in separate runs:
 
-Runtime-tested on an Acer Chromebook Spin 311 (MT8183, juniper) with a
-7.0-based kernel (the hardware is not set up to boot mainline);
-build-tested on mainline with W=1. On the device together with
-the auxadc_thermal per-sensor zone change: all four banks complete
-init01/init02 at boot (CPU little 1.99 GHz 1050 -> 1000 mV), stable
-under 60 s of full load on all cores at maximum frequency.
+                       handshakes   first M3 acked   abort before M2
+  unpatched               8 of 84         0 of 83           84 of 84
+  this patch             30 of 30        31 of 31            0 of 30
 
-The change and this changelog were drafted with an AI coding assistant
-during a debugging session on the hardware; they were reviewed and
-tested by the submitter.
+With the patch the AP sends message 3 once and the adapter acknowledges
+it straight away; the ROC is released right after the station is
+authorized. A 20 ms delay after the abort instead of this change gave
+15 of 15, which points at the abort timing and not at the delay.
 
-Fixes: 681a02e95000 ("soc: mediatek: SVS: introduce MTK SVS engine")
-Assisted-by: Claude Opus 5.5
-Signed-off-by: Nils Büchner <nils@buechner.me>
+Tested here on an MT7925 and an MT7927 (PCIe), kernel 7.3.0-rc4: on a
+non-MLO SSID neither build showed the failure (1 stalled handshake in 110
+unpatched, none patched), so no effect could be measured there. On an MLO
+connection the change is inert: 16 of 16 link activations succeeded in
+two rounds per build, with two active links and the same ROC order as
+before.
+
+Not tested: other APs, other USB parts, MT7927 over USB, MLO connections
+beyond the check above.
+
+Fixes: c948b5da6bbe ("wifi: mt76: mt7925: add Mediatek Wi-Fi7 driver for mt7925 chips")
+Reported-by: Mark Junker <fubar-coder@live.de>
+Closes: https://github.com/morrownr/mt76/issues/106
+Tested-by: Mark Junker <fubar-coder@live.de>
+Signed-off-by: Mark Anthony Agarro <markanthonyagarro@gmail.com>
+Signed-off-by: Devin Wittmayer <lucid_duck@justthetip.ca>
 ---
- drivers/soc/mediatek/mtk-svs.c | 34 +++++++++++++++++++++++++++-------
- 1 file changed, 27 insertions(+), 7 deletions(-)
+This goes on top of the mt7921 version, which adds the flag both use:
+https://lore.kernel.org/linux-wireless/20261005203846.239445-1-lucid_duck@justthetip.ca/
 
-diff --git a/drivers/soc/mediatek/mtk-svs.c b/drivers/soc/mediatek/mtk-svs.c
-index 99edecb20..2598a1ccb 100644
---- a/drivers/soc/mediatek/mtk-svs.c
-+++ b/drivers/soc/mediatek/mtk-svs.c
-@@ -16,6 +16,7 @@
- #include <linux/device.h>
- #include <linux/init.h>
- #include <linux/interrupt.h>
-+#include <linux/iopoll.h>
- #include <linux/kernel.h>
- #include <linux/kthread.h>
- #include <linux/module.h>
-@@ -1439,6 +1440,7 @@ static int svs_init01(struct svs_platform *svsp)
- 	bool search_done;
- 	int ret = 0, r;
- 	u32 opp_freq, opp_vboot, buck_volt, idx, i;
-+	unsigned long skipped = 0;
- 
- 	if (!svs_mode_available(svsp, SVSB_MODE_INIT01))
- 		return 0;
-@@ -1542,13 +1544,20 @@ static int svs_init01(struct svs_platform *svsp)
- 						      bdata->volt_step,
- 						      bdata->volt_base);
- 
--		buck_volt = regulator_get_voltage(svsb->buck);
--		if (buck_volt != opp_vboot) {
--			dev_err(svsb->dev,
--				"buck voltage: %uuV, expected vboot: %uuV\n",
--				buck_volt, opp_vboot);
--			ret = -EPERM;
--			goto svs_init01_finish;
-+		/*
-+		 * The consumer's DVFS (e.g. GPU devfreq while the GPU is idle)
-+		 * may not have moved to the vboot OPP yet. Give it a moment,
-+		 * then calibrate the remaining banks without this one instead
-+		 * of failing the whole SVS probe.
-+		 */
-+		if (read_poll_timeout(regulator_get_voltage, buck_volt,
-+				      buck_volt == opp_vboot, 10000, 500000,
-+				      false, svsb->buck)) {
-+			dev_warn(svsb->dev,
-+				 "buck voltage: %uuV, expected vboot: %uuV, skipping bank\n",
-+				 buck_volt, opp_vboot);
-+			__set_bit(idx, &skipped);
-+			continue;
- 		}
- 
- 		spin_lock_irqsave(&svs_lock, flags);
-@@ -1578,6 +1587,14 @@ static int svs_init01(struct svs_platform *svsp)
- 			if (r)
- 				dev_err(svsb->dev, "opp %uHz enable fail: %d\n",
- 					svsb->opp_dfreq[i], r);
+ .../net/wireless/mediatek/mt76/mt7925/main.c  | 27 +++++++++++++++++++
+ 1 file changed, 27 insertions(+)
+
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/main.c b/drivers/net/wireless/mediatek/mt76/mt7925/main.c
+index 5993b31e1aae..6b0a09e2f6cd 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7925/main.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7925/main.c
+@@ -1243,6 +1243,13 @@ int mt7925_mac_sta_event(struct mt76_dev *mdev, struct ieee80211_vif *vif,
+ {
+ 	struct mt792x_dev *dev = container_of(mdev, struct mt792x_dev, mt76);
+ 	struct ieee80211_link_sta *link_sta = &sta->deflink;
++	struct mt792x_vif *mvif = (struct mt792x_vif *)vif->drv_priv;
 +
-+			/* A skipped bank keeps its default OPP voltages */
-+			if (test_bit(idx, &skipped))
-+				dev_pm_opp_adjust_voltage(svsb->opp_dev,
-+							  svsb->opp_dfreq[i],
-+							  svsb->opp_dvolt[i],
-+							  svsb->opp_dvolt[i],
-+							  svsb->opp_dvolt[i]);
- 		}
++	if (mvif->roc_join_held && !sta->tdls &&
++	    (ev == MT76_STA_EVENT_AUTHORIZE || ev == MT76_STA_EVENT_DISASSOC)) {
++		mvif->roc_join_held = false;
++		mt7925_abort_roc(mvif->phy, &mvif->bss_conf);
++	}
  
- 		if (svsb->volt_flags & SVSB_INIT01_PD_REQ) {
-@@ -1599,6 +1616,9 @@ static int svs_init01(struct svs_platform *svsp)
- 		if (r)
- 			dev_err(svsb->dev, "%s disable fail: %d\n",
- 				bdata->buck_name, r);
-+
-+		if (test_bit(idx, &skipped))
-+			svsb->mode_support = SVSB_MODE_ALL_DISABLE;
+ 	switch (ev) {
+ 	case MT76_STA_EVENT_ASSOC:
+@@ -1438,6 +1445,7 @@ void mt7925_mac_sta_remove(struct mt76_dev *mdev, struct ieee80211_vif *vif,
+ 
+ 	if (vif->type == NL80211_IFTYPE_STATION) {
+ 		mvif->wep_sta = NULL;
++		mvif->roc_join_held = false;
+ 		ewma_rssi_init(&mvif->bss_conf.rssi);
  	}
  
- svs_init01_resume_cpuidle:
+@@ -2089,6 +2097,25 @@ static void mt7925_mgd_complete_tx(struct ieee80211_hw *hw,
+ {
+ 	struct mt792x_vif *mvif = (struct mt792x_vif *)vif->drv_priv;
+ 
++	/* The AP starts the 4-way handshake as soon as the association
++	 * succeeds. Releasing the join ROC at this point makes the firmware
++	 * unresponsive for several ms right when message 3 arrives, so it
++	 * can be lost and the handshake times out. Keep the ROC until the
++	 * station is authorized; mt7925_mac_sta_event() releases it. If that
++	 * never happens, the ROC timer or the station removal does.
++	 *
++	 * Not for MLO: there the ROC active here is the MLO ROC set up by
++	 * mt7925_mac_set_links(), which has to be released before the link
++	 * activation work sets its own.
++	 */
++	if (vif->type == NL80211_IFTYPE_STATION && !ieee80211_vif_is_mld(vif) &&
++	    info->success &&
++	    (info->subtype == IEEE80211_STYPE_ASSOC_REQ ||
++	     info->subtype == IEEE80211_STYPE_REASSOC_REQ)) {
++		mvif->roc_join_held = true;
++		return;
++	}
++
+ 	mt7925_abort_roc(mvif->phy, &mvif->bss_conf);
+ }
+ 
 -- 
-2.53.0
+2.55.0
 
 
