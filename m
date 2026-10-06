@@ -4,84 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 02D1ECA5FED
-	for <linux-mediatek@archiver.kernel.org>; Tue,  6 Oct 2026 20:25:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9BD00CA5FFC
+	for <linux-mediatek@archiver.kernel.org>; Tue,  6 Oct 2026 20:25:52 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=emWWp9zQLotPqVu53IbNyTMqcxVh3ZiXLOMaxjjb42A=; b=OYIF3exr4iZtep
-	uAxlIVpXbIletksX5fPOam/aRJ2VPJUMc2lFPV29vRHUTktIjweH65fqxNlBTQgZajH6R0hexVC07
-	B2mHxw6Ool1d5qYXMWgR5CHKPMPBYIQjmP1bQZA0OYT1tWJdKVJ2bFjD4TyJFyvpTEmKPddp2U9eB
-	6g7A/wSypKPA0n/IfZLDuwQt4yojtSXbMPfvhJZgG6NPL/8SEjC3wpXsz0JsJKHwx/39j1wTjsNOT
-	CmkDtLrUAkTkOnyhPuwLlkCTdqDqtigaz3abLNUrzCmuwGlx73kk2j6Dem+sjy3NM6XLol+tLN5qB
-	NP/gbx++2bsm6s8EnMIQ==;
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=B7d8+d8Jg6e4zgR7b55B5I4HUSkrjz23uBlGgAf5rGA=; b=aw82F7jZThjvL9RrrOYOG4/oNN
+	TguZJ0O7wi1JAE3DtdFq6IkR/RCdJ4KrtYDOKUZE6B/AojAovQwRFePA1w/UxAu5hRtfnwF+bTfn7
+	3SaAWb9YgpKXnJ1FudMrEXkzDJp34pZ5Eeoi08dF8LVAu+3wHDfN0/dpVheCf1NQUgsSNRs/2YHIk
+	3VgTg43VvV73yv2DlhrVI0iEom6UA+GvgahNtcV4wTs7qBP+95gR2dryzOuP4rCQt5TVP/KIMz6Em
+	yUmETf1Mfjis07O3s8WyNtjuDw2iZ/lGpQii+N8W95XF5bSbiE9bDRERNALF0X/xmwuvqLfi46uv4
+	sX3sEFyw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xEBjO-00000001MM2-2djV;
-	Tue, 06 Oct 2026 20:25:46 +0000
-Received: from mail-oo1-xc35.google.com ([2607:f8b0:4864:20::c35])
+	id 1xEBjR-00000001MNQ-0DJm;
+	Tue, 06 Oct 2026 20:25:51 +0000
+Received: from mail-oo1-xc2b.google.com ([2607:f8b0:4864:20::c2b])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xEBjL-00000001MKb-1rwd
+	id 1xEBjM-00000001MLA-39QD
 	for linux-mediatek@lists.infradead.org;
-	Tue, 06 Oct 2026 20:25:45 +0000
-Received: by mail-oo1-xc35.google.com with SMTP id 006d021491bc7-6deb848ddd7so2430083eaf.0
-        for <linux-mediatek@lists.infradead.org>; Tue, 06 Oct 2026 13:25:42 -0700 (PDT)
+	Tue, 06 Oct 2026 20:25:46 +0000
+Received: by mail-oo1-xc2b.google.com with SMTP id 006d021491bc7-6b1afdf5196so424685eaf.2
+        for <linux-mediatek@lists.infradead.org>; Tue, 06 Oct 2026 13:25:44 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre.com; s=google; t=1791318341; x=1791923141; darn=lists.infradead.org;
-        h=cc:to:content-transfer-encoding:content-type:mime-version
-         :message-id:date:subject:from:from:to:cc:subject:date:message-id
-         :reply-to:content-type;
-        bh=emWWp9zQLotPqVu53IbNyTMqcxVh3ZiXLOMaxjjb42A=;
-        b=VjMVbxq/3KAYHJ4ogiwzK7TXH8hXvJsUUmc4BNLKBrCZhNxujgL8XZ0DRxjjn6vfVB
-         Auu63FNoTjDrGleoRsWnH4hxFqdbc4vjPewZwZAwoDS/7khJ11d+amdkdVufibGtgo4Z
-         5TycF9/mwinGIKvAzrj7JvN2MMWfLpUTih6Mk870Eoeq3RoVItM3JhCKe022Dn4eUtYk
-         C6lWditVyU7MTSw7ZujaGAxKi2AzOTXr4LpXiOfKJw+RrgWtuBugvH5169Tyi7K4YCcS
-         7bQzqbZmwo5JZA3yyY/dpA/Ncp3u45aWQNKzkWxffHoktuHCki6VPuMCaeFd4p0up8Nl
-         rCmQ==
+        d=baylibre.com; s=google; t=1791318344; x=1791923144; darn=lists.infradead.org;
+        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
+         :content-type:mime-version:subject:date:from:from:to:cc:subject:date
+         :message-id:reply-to:content-type;
+        bh=B7d8+d8Jg6e4zgR7b55B5I4HUSkrjz23uBlGgAf5rGA=;
+        b=ahWTMuqDOYu/NAOs+1m8dBwTk+gBJIJhRQaNOkGTTJEb1Uojqz/VKRRO6Wt5+FV4P4
+         k9dU5rlJqkcWCsJP4CBvyk58Uhct0Ev0MYP1yza6vv+8QwV30RXTeANF+nXk6TDKsMvx
+         ymyCl+bZAOGxwkYLFkmciGeIyGLRH7JbewHAyakSX9SxdrRe9kGuhp+++Xuf6ZYLYhiO
+         8HlroZ+5ENgDjg79lboUzA1HE+tlsLqS5/6umB5d7VOKF3rEOpyNn6aEfKc01G+1rdYr
+         v/5RTHhTPtm5mPezMVR7PGO0I/MVlGHCmiad1V0gJo1hRb4qCiuT7bhQrhAOouNBK4q8
+         eHrw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1791318341; x=1791923141;
-        h=cc:to:content-transfer-encoding:content-type:mime-version
-         :message-id:date:subject:from:x-gm-gg:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to:content-type;
-        bh=emWWp9zQLotPqVu53IbNyTMqcxVh3ZiXLOMaxjjb42A=;
-        b=0DgiKddqBqY6jXyF+31XKrPsjpyoI1sWgMUUAveV4eJfdBgzQxJ3VgxT5jTLEcr8ma
-         oCtc/8SJap9JZj7/qw2eaMeEXNdQtQDLaJaAx5lj2Yo/Sfzk+Ol2OjYMjNmfLAkGW8UI
-         Q44OTq6HbHvjGin/uLWq2BqFJbSPWzmjhqkhoV2EJBJ8kq2ZQ/aNkNdQ7inkga9HqtFb
-         c7HDE9s7k4FaTKkbk1F5H1fqd+V2pjNLXv5mMWpLVpw2e5um6UrXKiWyITFU1UUESmwL
-         huJDLdcDW6Jk6JKYHUm6YwDuHfETowa9O8c9Zmh6PnTgZQ9PWGZaGGR3aC12Vc1DnGXR
-         YrKQ==
-X-Forwarded-Encrypted: i=1; AKwUvBzx2knC6M0q+IayMELxNFZodPXcgsxgQISHcMjjEw5o1p4rIIYFUkGE+kS9IPzmiFPp6lzo/vCP5sOV6YX6cQ==@lists.infradead.org
-X-Gm-Message-State: AFuF++l/dhY6WQaWlnTA0ignNF5ljb2OTl0Kp1maeDOO9ZV+rtN3kCv3
-	mlKRXXdzuXjYzluaZBf7NlfdV1u3NfahUKWNlXWIb7pLJcqoKIWePQlzZLxWArCRAkI=
-X-Gm-Gg: AYBFou32xFKjyQZMnlnfgN4YhTnBYWMnlrucR6fv3tWocKpMMggadEAMPPqQymwhVBt
-	falocp9LVpaGLhNg6F1IoMLeIpOm+v3gXi0u66pa1/mXAUMPDPapUHvN5zrr1cuXUtpfP/2y3Ao
-	+ubYWgp7SI0jDXSWB84jCu/LAT3EKVQnmP7eRh406+Lc1pXG9AjmeFEQY4hoMa+s7Mp0ngWS/tN
-	vZyMUCn5Z+Kbp33/UfSJ3OvoSUsPYnsKAFxwjo90VRDfE9OdhCi3/yEt63qHCqmVeArS62OjVVi
-	nG7aXat49F0ONT72++DSE/9Aud9Z74fzB/alGDeVeYYjCxDJa+UITgSjz5bDFHPcSz52oreAXTd
-	60AY6UZm5ms5aDgSw3wpEy443X9Tv4ezuolV+EESg0BJssmLBXvWfgBVjwo7R/KAzl7xsyIqr2F
-	EVSOoJwGY5IGaY0+iS85CC1OfJqECRa1/Qvv3og3c6PC0Cz/KjApaXwWDvefyxQlStZL1W2bmuz
-	g==
-X-Received: by 2002:a05:6820:80c8:b0:6dd:696d:b245 with SMTP id 006d021491bc7-6e7a7185793mr353926eaf.53.1791318341561;
-        Tue, 06 Oct 2026 13:25:41 -0700 (PDT)
+        d=1e100.net; s=20260707; t=1791318344; x=1791923144;
+        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
+         :content-type:mime-version:subject:date:from:x-gm-gg
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+         :content-type;
+        bh=B7d8+d8Jg6e4zgR7b55B5I4HUSkrjz23uBlGgAf5rGA=;
+        b=B5ANvUhWsUSiuLI1s4G5X/JbOYf01ympPgvrBroSCvqCkzIjFAzpKOuGKdoRpfgIp7
+         KLSYbQtUYs2i/nNk2CaQpepQwlmFHXJFhZ6R8LDXwMS/Av59FZuxVK5IEQoyFZvuudJ2
+         HQQqacecReYDCdWLsQ1uiYNcQ2NXYwPmj+P4ZBPBOuXCiSy0x6191X8JhGqA3m0bsAh5
+         0r3MnqPvdMhQ9YuCflM6bu8zjkSPJa7xNpxUx1kn5E32zNUWbQOtz+ubez3E+FOZL/Vf
+         XKJhB8Mfp0V/cGz/TzJqFxj5jvISmi3V06Eepf7JZwcIf3G79udepTU6AH1ZodF+sigN
+         Y00w==
+X-Forwarded-Encrypted: i=1; AKwUvBwBqyKtnMpi68dKWJoQUdQU2XnVRs26qecGh1FOmOWt01y7NxFr9LcQDshbMN8QFYYwnERiS1qgUyRaQ2G7gg==@lists.infradead.org
+X-Gm-Message-State: AFuF++lu+AjYSshamOHVYEWZz1QRkJB4uqnV1bqilAwMRJMKAjhNe9Ck
+	SP/m4O1xDqo7ImcNm45nyPQcrAp+Y0QDNNoQ1UiD6/8mJbIWZlIYdx8zz5EG1Ups5Mw=
+X-Gm-Gg: AYBFou3HgaS8ThfTjMgJJeTNpxao8d5jUREVtVbeTqLBkk/JJegeLDfZ6AcMbtfqFCv
+	eMsIn3XCCRWrFYNOIyXqdXHtkmG0whAe4mJYWePD4QYJTEnDpDlmxNKTPz57Dz3QSyh2/PRVvRL
+	HHXIfQ336o1TZzlsEce6+bJUI8oZ03he3Ip3/in11PNT7FBIC7FDXekSgXVg2Ksf3GPl8Mk3qZr
+	wLF3axDj8RhWzmUsCvv5bDRHwpIZQQA9UyYkNoke3OnFb9hct6hjftf8KNoOg3zOtb8iz79NMHR
+	Kg0s80UQznhvfCs5qTd8MiLHyvknDVh0+L1g2luuI8Pjw33yVVt4jDXhcsf1g2vIewOi1oIgU2x
+	y+BUoix1j6h4o00NE+p7BkLkbcY3K7ngHWZYLXpujw9datN9bf8JhYnBVSflyYtMMrIRw4f+f7m
+	PpnsAPZ5+t7YNZ6Y01L9up5tAgaP1NCCixi0W5aCLGIQP5yRw/FDZ+z/52T5QGbp5nzoHBwDxm9
+	6Q=
+X-Received: by 2002:a05:6820:c89:b0:6e0:8fc2:84a3 with SMTP id 006d021491bc7-6e7a9125036mr295388eaf.39.1791318343680;
+        Tue, 06 Oct 2026 13:25:43 -0700 (PDT)
 Received: from [127.0.1.1] ([2600:8803:e7e4:500:372:3180:ce34:1fe7])
-        by smtp.gmail.com with ESMTPSA id 006d021491bc7-6e793f68bf6sm463442eaf.8.2026.10.06.13.25.38
+        by smtp.gmail.com with ESMTPSA id 006d021491bc7-6e793f68bf6sm463442eaf.8.2026.10.06.13.25.41
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 06 Oct 2026 13:25:40 -0700 (PDT)
+        Tue, 06 Oct 2026 13:25:43 -0700 (PDT)
 From: David Lechner <dlechner@baylibre.com>
-Subject: [PATCH 0/4] drm/panel: himax-hx8279: add VDDP supply for Startek
- KD070FHFID078
-Date: Tue, 06 Oct 2026 15:25:00 -0500
-Message-Id: <20261006-panel-himax-hx8279-vddp-v1-0-50d884b42aae@baylibre.com>
+Date: Tue, 06 Oct 2026 15:25:01 -0500
+Subject: [PATCH 1/4] dt-bindings: display: panel: himax,hx8279: add
+ vddp-supply
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-X-B4-Tracking: v=1; b=H4sIAAAAAAAC/yXMTQrDIBBA4auEWXfACE1qrlK68GeMU1oj2gYh5
- O41zfJbvLdBocxUYOo2yLRy4SU29JcObNBxJmTXDFLIoRdiwKQjvTDwW1cM9SZHhatzCa9OGzL
- eS6sUtDpl8lz/5/vjdPmaJ9nPsYN9/wF2kTCEewAAAA==
-X-Change-ID: 20261006-panel-himax-hx8279-vddp-5dabebff2c99
+Message-Id: <20261006-panel-himax-hx8279-vddp-v1-1-50d884b42aae@baylibre.com>
+References: <20261006-panel-himax-hx8279-vddp-v1-0-50d884b42aae@baylibre.com>
+In-Reply-To: <20261006-panel-himax-hx8279-vddp-v1-0-50d884b42aae@baylibre.com>
 To: Neil Armstrong <neil.armstrong@linaro.org>, 
  Jessica Zhang <jesszhan0024@gmail.com>, 
  Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
@@ -95,20 +94,20 @@ Cc: dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org,
  linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
  linux-mediatek@lists.infradead.org, David Lechner <dlechner@baylibre.com>
 X-Mailer: b4 0.17-dev
-X-Developer-Signature: v=1; a=openpgp-sha256; l=2033; i=dlechner@baylibre.com;
- h=from:subject:message-id; bh=pzE7TBtHaXQdTUaCA18apuhFLo+Jj6/WeoKJzFQFzDo=;
- b=owEBbQGS/pANAwAKAcLMIAH/AY/AAcsmYgBqxVkes7QQS6aQ71ndy4RUpYujm7OFMzt2sBzSY
- kEu4bXRqfeJATMEAAEKAB0WIQTsGNmeYg6D1pzYaJjCzCAB/wGPwAUCasVZHgAKCRDCzCAB/wGP
- wGuSB/44mamJHa1OYsjk/6qCu9iX+nj2K3lZ+OPUrj2F/Tu1EPxYNTztwaI0acbMEtPAOin2fWA
- A8UERPrClUfDtJtQXleqD4fA4k4PCtaUDej9JuJpGH0hwuJm7y/s8SLzyqYDDgx8vj+fMDE9xFQ
- C8DBJBTejRaGWQn6OSrJ+aTu4QkEVuoMCMsKtLs3rsvMgLVaPz0bfKummw3fPVfhnIuG1Wqf9CY
- BQAhcSUE7ntQRjbKr1VUnFFZ853aN+Zvq9RG4Yd/9n8KBIejxnfEwMHGgMxKOb/oI4bLK8v/o7E
- n5On7Txi/XfsGkgGSlQtP53KKDh5xDd6iYFUeK6QSIK21wJa
+X-Developer-Signature: v=1; a=openpgp-sha256; l=2205; i=dlechner@baylibre.com;
+ h=from:subject:message-id; bh=+6mowQPvO5/qbWu07+JM4tpqCNNR0Oy6FVUyr6NCfh4=;
+ b=owEBbQGS/pANAwAKAcLMIAH/AY/AAcsmYgBqxVklqqKz9ZZ5EYTPs3b/ghtQnZoefwxQSM+W0
+ GisMCHkGeSJATMEAAEKAB0WIQTsGNmeYg6D1pzYaJjCzCAB/wGPwAUCasVZJQAKCRDCzCAB/wGP
+ wOHSCACcvVmVgg5xUxBOP/pHIgPMZ2Lhcfg4VZwwLRNcQLQE+uS/SQ4GV4kNd5pon4GVAyGLWMA
+ hluJJJ+r7f4HXO+LMEXHe4siAm4FrOxhHWzzfvdZbpAes5TzM2ZzBI35cytFG01QQjODNLk31Ju
+ ok2s6QEW3pyKLzVkkCJX1n4NCk4D0Tpcxu+wDjeWatZ49EPobpXz/MDhRyCL5eucimvRxWQkN+c
+ q+XA6vMhr3/TSrVZwvozFK8v9/O75FHHxwIqe3DrzkJYxxRzxfNfE1s3Vh2BidaQN4hdgc0/qc3
+ 88m33Uam4PLXxnMeUHzrcdShGxwdILR/UCB3o87IYotFEd3M
 X-Developer-Key: i=dlechner@baylibre.com; a=openpgp;
  fpr=8A73D82A6A1F509907F373881F8AF88C82F77C03
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261006_132543_827800_FF47F077 
-X-CRM114-Status: GOOD (  10.93  )
+X-CRM114-CacheID: sfid-20261006_132544_801660_48A7F18D 
+X-CRM114-Status: GOOD (  12.46  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -123,47 +122,70 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The Startek KD070FHFID078 panel has a VDDP power input, which feeds its
-DC-DC converter in addition to VDD and IOVCC. On the MediaTek Genio 520
-and 720 EVKs, VDDP is switched by its own regulator, and on the Genio
-1200 EVK it comes from its own PMIC LDO, so it needs to be described and
-enabled. The existing Genio 1200 EVK device tree also turned out to
-describe the panel supplies incorrectly, so this series fixes that too.
+Add a vddp-supply property and make it required for the Startek
+KD070FHFID078 panel.
 
-Patch 1 adds vddp-supply to the binding, required for the Startek panel
-only, since it is not known whether the Aoly panel has a VDDP input.
-Patch 2 enables the new supply in the driver. Boards without a
-vddp-supply in their device tree get a dummy regulator and keep working
-so nothing breaks.
+The Startek KD070FHFID078 panel has a separate VDDP power input, which
+feeds its DC-DC converter, in addition to VDD and IOVCC. On the MediaTek
+Genio 520 and 720 EVKs, VDDP is switched by its own GPIO-controlled
+regulator, and on the Genio 1200 EVK it comes from its own PMIC LDO.
+In both cases it is separate from the other two supplies, so it needs to
+be described to power the panel.
 
-Patch 3 adds the property to the Genio 510 and 700 EVK device trees,
-where VDDP and VDD share the same VSYS_LCM1 rail. Patch 4 fixes the
-panel supplies on the Genio 1200 EVK: its device tree pointed vdd-supply
-at the VDDP rail and used the backlight (VDD) switch as the IOVCC
-regulator.
+Making it required means existing device trees with this panel without
+it no longer validate. This is ok since the Linux driver will still work
+with them because the regulator core uses a dummy regulator for any
+missing supply. And anyone who sees the warning about the missing
+supply should add it to their device tree.
 
-The Genio 520 and 720 EVK device trees are not upstream yet; U-Boot
-support for them is being submitted separately and uses this property.
+It stays optional for the Aoly SL101PM1794FOG-V15 panel, as it is not
+known whether that panel has a VDDP input.
 
 Signed-off-by: David Lechner <dlechner@baylibre.com>
 ---
-David Lechner (4):
-      dt-bindings: display: panel: himax,hx8279: add vddp-supply
-      drm/panel: himax-hx8279: add the VDDP supply
-      arm64: dts: mediatek: mt8390-genio-common: add the panel vddp-supply
-      arm64: dts: mediatek: mt8395-genio-common: fix the panel supplies
+ .../devicetree/bindings/display/panel/himax,hx8279.yaml     | 13 +++++++++++++
+ 1 file changed, 13 insertions(+)
 
- .../bindings/display/panel/himax,hx8279.yaml        | 13 +++++++++++++
- .../boot/dts/mediatek/mt8390-genio-common.dtsi      |  1 +
- .../boot/dts/mediatek/mt8395-genio-common.dtsi      | 21 ++++++++-------------
- drivers/gpu/drm/panel/panel-himax-hx8279.c          |  3 ++-
- 4 files changed, 24 insertions(+), 14 deletions(-)
----
-base-commit: 5d7b464a4f517d1db533b1b231f42ddcf4e1dff4
-change-id: 20261006-panel-himax-hx8279-vddp-5dabebff2c99
+diff --git a/Documentation/devicetree/bindings/display/panel/himax,hx8279.yaml b/Documentation/devicetree/bindings/display/panel/himax,hx8279.yaml
+index f619aea82bdf..c79056c39037 100644
+--- a/Documentation/devicetree/bindings/display/panel/himax,hx8279.yaml
++++ b/Documentation/devicetree/bindings/display/panel/himax,hx8279.yaml
+@@ -37,6 +37,9 @@ properties:
+   vdd-supply:
+     description: Panel power supply
+ 
++  vddp-supply:
++    description: Panel DC-DC converter power supply (VDDP)
++
+ required:
+   - compatible
+   - reg
+@@ -45,6 +48,15 @@ required:
+   - iovcc-supply
+   - vdd-supply
+ 
++if:
++  properties:
++    compatible:
++      contains:
++        const: startek,kd070fhfid078
++then:
++  required:
++    - vddp-supply
++
+ unevaluatedProperties: false
+ 
+ examples:
+@@ -63,6 +75,7 @@ examples:
+             reset-gpios = <&pio 45 GPIO_ACTIVE_HIGH>;
+             iovcc-supply = <&vreg_lcm_vio>;
+             vdd-supply = <&vreg_lcm_vdd>;
++            vddp-supply = <&vreg_lcm_vddp>;
+ 
+             port {
+                 panel_in: endpoint {
 
-Best regards,
---  
-David Lechner <dlechner@baylibre.com>
+-- 
+2.53.0
 
 
