@@ -4,95 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 08E61CA5FF0
-	for <linux-mediatek@archiver.kernel.org>; Mon,  5 Oct 2026 21:20:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 844BECA5FF0
+	for <linux-mediatek@archiver.kernel.org>; Tue,  6 Oct 2026 01:00:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
+	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=6rc7IAhff66GVhjOkCyBspogq0Dd5n6sEZ9HS+Dhw3U=; b=rHyh3qNI5ytgQufnrWW305X9Nj
-	WQCpZAc9Lx2MPVxFZxRnBBAc0m69kXHT9O4ssn3TtrLS57uuVNtTX3jEWDjc7XE4PeiOJboGw4iBH
-	+tE5X4vUfZygY4EpmSDjiGXdMWNbnSq6H2+/JzzkxvMWs7h8Zs5ioQxLqfS9sQeV3Wn4LlR8kP7pb
-	bPbTK07qok/H6iUFZ8e9cvQgHHY3J4C0U/wXtrzRIFkWJufyhLBCp4Sw5/DkhRblsxXTs1c+rLH8R
-	cF5Q4+hdlkrF/fxzW664PboMqmZDZZU+ei/WU5iNbaN4HVS4D93syOXDbN6z5u2fHD6mHxguEV2+T
-	FMuMsizg==;
+	bh=fmSHdEOjLyNe+GHx6L6yhQrxZwZE1u9619dhybyCLx8=; b=MOZqfqswDN1gat6tc6JR1Z63N5
+	OBvV/dJ7xHf7mmcWpwbvcjv4o7ae3mGXONk6DjEek55DOllN4AHu7FzS1FxGxHfBlPNZNkDOEyoFi
+	6M2oVU0KaOby8vY/K3Oqw49s59e+4iw3mW95ryP+vmAPfvC42C67KXEfSQuIoMZ5sP8KHrqu+DxKV
+	RH12RMI5+SC3/8JvRJfrPEy96EbaP3AQXhDjPPXvaO4klTzjnKkZ+u60b91T7ZKCjSUKWIpglE5s/
+	pnoJoYr/l8BQZpyS211YsGg7q/+XULCaNeGGgVgMOVyTfEKGgS7im8gK2As2lWaVYzkgkEiYjJSAd
+	DTbE1c+Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xDq6m-0000000HBue-2hig;
-	Mon, 05 Oct 2026 21:20:28 +0000
-Received: from mail-wm2-x10.google.com ([2a00:1450:4864:31::10])
+	id 1xDtXO-0000000HRIk-2D8y;
+	Tue, 06 Oct 2026 01:00:10 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xDq6g-0000000HBu5-39An
-	for linux-mediatek@lists.infradead.org;
-	Mon, 05 Oct 2026 21:20:27 +0000
-Received: by mail-wm2-x10.google.com with SMTP id 5b1f17b1804b1-49b912d8239so18811025e9.0
-        for <linux-mediatek@lists.infradead.org>; Mon, 05 Oct 2026 14:20:21 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=bairaktaris.de; s=google; t=1791235219; x=1791840019; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to:content-type;
-        bh=6rc7IAhff66GVhjOkCyBspogq0Dd5n6sEZ9HS+Dhw3U=;
-        b=PYwLR9YN2Xh0He04hAQvcMo8dEZLj3Hr1hTyPGIcnmeEnyIOMlbXgnyVk56J9/gWxt
-         GOvEaQGL67SsBmbRAZF4S49fBlN4uQkYaIzyJPFIDNxkiU2y1EfDOnRKii8+YelJcqL+
-         3jjaqUbfNkJNj0HpVS7I4/+QUe+gvZqfxjKWfAFup8PE7BkDBLbmWZ74r4q4/Ov4Ee64
-         QVNwWqVtnewHz9/5RrE/xG9ZbBB3wLBz7xp2B9YZoEYDNGrtv0XOJbS9DKutB/3V3LzZ
-         p8wmdgc5fVQzhg+vnFpc0SHQrGjx3E6uJakTOAlgY8L0RTvt5aYmOOe3p89YD6Gj0pT3
-         julg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1791235219; x=1791840019;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
-         :to:cc:subject:date:message-id:reply-to:content-type;
-        bh=6rc7IAhff66GVhjOkCyBspogq0Dd5n6sEZ9HS+Dhw3U=;
-        b=kzhiazPQVXVBq3nZCwOcn+P89xkbe8eEE083yxt/oMfUS2nc7N+lA/5Zh2uhJOgQCC
-         du+TCfH/gqLtr1nZe/6WeSet6mmcZhji3VQxXJqWBY21AhluBLZ6njtyZAZMHYzTggBD
-         jPpzGIufOa0FJOnRL0InBPfDU1Fqg56G3f8T5ClJdOAigiBhc5Mr58dBwchVMSU5u8cZ
-         dSSEcn4Vw4e62uRLLQlfuCejUoWrwqM6SsysvM0onAaIbGAkCUo4MHJUC/vRENMRAupb
-         iC9R9/teJTa0KTJuweXQe8ibhN2DANdyMf80BanlIJMnFQweDQXoQtWvqh25o+vETaTt
-         T5Rw==
-X-Forwarded-Encrypted: i=1; AKwUvBzeUIbaPd4g2xnPIVJDkBfDN17FDLQ8sva/6FeMsoPIR45AK7itrH4lEomjqg9KYG1MgTVj2sE8ysnLOfGrkQ==@lists.infradead.org
-X-Gm-Message-State: AFuF++krzet4wnkrWTc+cup63KIJGMJsrh48vvCdLdWsmf7/xBqBtbKv
-	kseTwKUbEZlWWoZ1RhR2RXBBpjSph7bCkIvg/o2DU935ZJATOj2IRRrokDFu25Xq/amkcWRxLC2
-	hJphB5g==
-X-Gm-Gg: AYBFou3cTwuL2qftg3cpdySVM0RFvhewCSnm4nwjxA770REks5N28AFJYqwzLud4Noq
-	Iyx0n3mElf8QJIJ5kUra4/AqQntYggA+5rKIsH3ZFbm0m4uRobnp72my1s2DTZEMaI2ElGXYzCw
-	8gSJc3QB2pGteKH6+3SilSUXM4qHAJ9BLUDvFbddPHZq3NPjaArylhV2fjcvm1bXDr1uoHS2c1A
-	iFfucwye2UqpNpTNYV4H1Wg+8Eq6pXJMdgeRkJHEZtTmP1p/CsWFkHjNGHbHZXXkarSNn6kpkA0
-	BVDxmzWkQFO6tJ1dosv+5Vgv1++PzQxhGwrrJ/VQNVI+m8rWAT8EwwBB6vqRhbzOeDzRe2knchW
-	ZM0VxB68+tErRXAjEi22sM9e/e+lReuJmnB9ickBKPShadQvVTku2+cDXmKpWLd5C2NbsoQ7XZv
-	S0e1RS5VpRBV9dWcRgmA6oLBUMaCQq4AMWxwjiCWNHdlhX531COYVHs2x64VeZN3p7KTS5E0pxW
-	oZfr4ytmf3NRf23zL9wBjR9726cugNDsXji2RKRn3gkJoMghY/JieXnUxQFvUFQU3aYxuSvsXnG
-	n6QevyTOgAovTDLFC6u4FKKH3BFfUV4EairZyG6rLGHh72alk8tgbvUEmxjkebxjT4TNoytKGAx
-	58vlH+yg94iJUB6OvlmCBc6tfpsdC0xTPuIaUrn1FiuRfKtUaKdocTYM+lgxvpMomrEQ=
-X-Received: by 2002:a05:600c:3510:b0:4a0:c4:a1e0 with SMTP id 5b1f17b1804b1-4a02756729dmr208314965e9.9.1791235219172;
-        Mon, 05 Oct 2026 14:20:19 -0700 (PDT)
-Received: from Desktop ([187.40.54.22])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-4a178cafaa5sm21526585e9.5.2026.10.05.14.20.18
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 05 Oct 2026 14:20:18 -0700 (PDT)
-From: Julius Bairaktaris <julius@bairaktaris.de>
-To: sashiko-reviews@lists.linux.dev
-Cc: netfilter-devel@vger.kernel.org,
-	netdev@vger.kernel.org,
-	pablo@netfilter.org,
-	fw@strlen.de,
-	lorenzo@kernel.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH nf-next v3 2/3] netfilter: flowtable: carry a priority into the offload
-Date: Mon,  5 Oct 2026 23:19:54 +0200
-Message-ID: <20261005211955.2971-1-julius@bairaktaris.de>
-X-Mailer: git-send-email 2.53.0
-In-Reply-To: <20261005171647.CCCB51F0089B@smtp.kernel.org>
-References: <20261005171647.CCCB51F0089B@smtp.kernel.org>
+	id 1xDtXM-0000000HRIR-273E;
+	Tue, 06 Oct 2026 01:00:08 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by tor.source.kernel.org (Postfix) with ESMTP id 185F7601F1;
+	Tue,  6 Oct 2026 01:00:07 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8417C1F000FF;
+	Tue,  6 Oct 2026 01:00:06 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1791248406;
+	bh=fmSHdEOjLyNe+GHx6L6yhQrxZwZE1u9619dhybyCLx8=;
+	h=Subject:From:Date:References:In-Reply-To:To:Cc;
+	b=AZ4hZHttCyXm7ZE36P8yA6Hr+o+dgADV1/ZWhB8sAPBr2wTczj2cJ7F2hsNeAf5YX
+	 RuvsdPE7lP9Uy+DxyR3JuC7kweFufqpJI7EcWnPm/hJdR2VDOsdke+IaUDeWyNC/e5
+	 lhUdltCi4wZngBz1AcKPMNUniLR4V4bnOKhAS1BLdcV6UMJoZKxbzxG0zb+qnECT3Z
+	 +1ErjRqIvmx1dHxd6s8X3EZheMZmOpUVIfSBgWbhX1y5saTR8ufp9rp/EUtEZ4eVdr
+	 psM/lzeTKjgFU/aLhruA29ALhzTFwD15HNGDe1Vs25O6FijtYusrSZ/Oz/E3n/rhks
+	 SiWbNHzhLinBg==
+Received: from [10.30.226.235] (localhost [IPv6:::1])
+	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id 77382392667F;
+	Tue,  6 Oct 2026 01:00:06 +0000 (UTC)
+Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261005_142022_999100_56B4EE50 
-X-CRM114-Status: UNSURE (   5.27  )
-X-CRM114-Notice: Please train this message.
+Subject: Re: [PATCH net v6] net: airoha: Add retry mechanism to
+ airoha_qdma_set_trtcm_param()
+From: patchwork-bot+netdevbpf@kernel.org
+Message-Id: <179124840530.1963510.8749215756359738246.git-patchwork-notify@kernel.org>
+Date: Tue, 06 Oct 2026 01:00:05 +0000
+References: <20260930065855.46171-1-ansuelsmth@gmail.com>
+In-Reply-To: <20260930065855.46171-1-ansuelsmth@gmail.com>
+To: Christian Marangi (Ansuel) <ansuelsmth@gmail.com>
+Cc: lorenzo@kernel.org, andrew+netdev@lunn.ch, davem@davemloft.net,
+ edumazet@google.com, kuba@kernel.org, pabeni@redhat.com,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ netdev@vger.kernel.org, linux-kernel@vger.kernel.org, Leto.Liu@airoha.com
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -107,23 +73,31 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-> Does this silently ignore explicit QoS queuing requests from TC flower?
+Hello:
 
-Yes, and the commit message says so. mtk gets tc flower rules and
-flowtable flows through the same block callback, so
-mtk_flow_offload_replace() cannot reject one and accept the other.
+This patch was applied to netdev/net.git (main)
+by Jakub Kicinski <kuba@kernel.org>:
 
-Rejecting the action would stop offload for every IPv4 flow with a
-non-zero TOS, because ip_forward() sets the priority from the TOS by
-default:
+On Wed, 30 Sep 2026 08:58:48 +0200 you wrote:
+> From: Leto Liu (刘涛) <Leto.Liu@airoha.com>
+> 
+> CPU accesses QDMA via the bus. When multiple modules are using the bus
+> simultaneously, CPU access to QDMA may encounter bus timeouts and fails,
+> resulting in QDMA configuration failures and potentially causing packet
+> transmission issues. In order to mitigate the issue, introduce a retry
+> mechanism to airoha_qdma_set_trtcm_param routine in order to ensure the
+> configuration is correctly applied to the hardware.
+> 
+> [...]
 
-    net/ipv4/ip_forward.c, ip_forward():
-        if (READ_ONCE(net->ipv4.sysctl_ip_fwd_update_priority))
-                skb->priority = rt_tos2priority(iph->tos);
+Here is the summary with links:
+  - [net,v6] net: airoha: Add retry mechanism to airoha_qdma_set_trtcm_param()
+    https://git.kernel.org/netdev/net/c/7e170da2edec
 
-A flow forwarded by the mtk PPE does not go through the egress qdisc, so
-the priority has nothing to select there. mtk already accepts and
-ignores FLOW_ACTION_CSUM in the same way.
+You are awesome, thank you!
+-- 
+Deet-doot-dot, I am a bot.
+https://korg.docs.kernel.org/patchwork/pwbot.html
 
-No change planned for this one.
+
 
