@@ -4,87 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9057DCA5FF0
-	for <linux-mediatek@archiver.kernel.org>; Tue,  6 Oct 2026 09:26:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 27487CA5FED
+	for <linux-mediatek@archiver.kernel.org>; Tue,  6 Oct 2026 09:55:19 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=F3rilO8Ga7DTvA+Nv87c5I1cpSI7cgFoLmBkXO3Wgkw=; b=Munu2OEQPJZuz5ZX+zuNYx7WsH
-	HivwgeSoQpPG0pFZnwmjkT6a27JFjwc6eFakU5ApMV7EU2Hnyk6QPD2eF0YDaYFnb9F+XDvy9rio0
-	hmSELEm+wC3kkoIQAvc3njscekEzlFdlWDWxeKuShUz1IPPgWxuWaOD8qmRhxT6S/cDoVl69RCnFm
-	YGtPvz2o/8CGMT0EzWKMDrLPh9d6RpqXXRvksLs4wDE+ujscsaWa85GKAnlZMxRKtWd3Zi85dUXl/
-	uwjpt2SlFOIy66SnrdCbZAift6Xs1v0y4ekgTRl5fK5hsnMoX/k894GxX3eoNVwe9eAKzrxR/bul1
-	wH9yES2g==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:CC:To:From
+	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=tloYHaVbYNU0rRAf4/HuoJhNrp+JOWU7kTTUF5xT1v0=; b=Pz6QsMuvfUofzuwNF0tBsRyF0o
+	tJsMrqYxqkK9jkYiJfSJkwL1VER5UZOI7EOiH6T19042UfBPaVJ2wJkdTWf9s6TSuz/6VvJYYErcn
+	qsVRGYIBjJj4n1BGH3wgrneBd9zOHjivBDeomUc+gJU/0RQsJC0hdvnf0KhO/bsLWaS3mDnodBCcL
+	xWVklHp0HcmTk7Suj39PRXP6P1UVrq/U1mSQhDW+z0rX77v6GZv4/GEQLp7fy7jXysOVG1u4wR/k7
+	FZsXhpLqgaVomOSt0PTXxjGE3uwhQamGbVScG4gzlKr0udcCs7lX98M8i0Hvv8ZXWUpZlXNPVOphX
+	LIohg58A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xE1R0-00000000NRI-12uw;
-	Tue, 06 Oct 2026 09:26:06 +0000
-Received: from nbd.name ([46.4.11.11])
+	id 1xE1tD-00000000QyR-0Sl1;
+	Tue, 06 Oct 2026 09:55:15 +0000
+Received: from [216.200.240.184] (helo=mailgw01.mediatek.com)
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xE1Qw-00000000NQY-13VU
+	id 1xE1tA-00000000Qxl-41xU
 	for linux-mediatek@lists.infradead.org;
-	Tue, 06 Oct 2026 09:26:04 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=nbd.name;
-	s=20160729; h=Content-Transfer-Encoding:Content-Type:In-Reply-To:From:
-	References:Cc:To:Subject:MIME-Version:Date:Message-ID:Sender:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
-	List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=F3rilO8Ga7DTvA+Nv87c5I1cpSI7cgFoLmBkXO3Wgkw=; b=cbFBOFwEiQsV0cgOIIuKoQ1PBP
-	ZaQ/jBmflQ2/aG187W+a3RZX7M69ExPYG9xLm47Dy2yppAWogm6CLfn5bJ8GEkxSwnIvvonX08EEf
-	xs55vV6JFEqPSi8+MqVImN8Do8/4UbwlaxCtnWoLilddUbZMwKpcKSerCEBZm9um/dJ4=;
-Received: from p54a434bb.dip0.t-ipconnect.de ([84.164.52.187] helo=nf.local)
-	by ds12 with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
-	(Exim 4.96)
-	(envelope-from <nbd@nbd.name>)
-	id 1xE1Qq-00GqWr-11;
-	Tue, 06 Oct 2026 11:25:56 +0200
-Message-ID: <8dec78e7-1f4a-4d68-a592-15ad0f1fdac0@nbd.name>
-Date: Tue, 6 Oct 2026 11:25:55 +0200
+	Tue, 06 Oct 2026 09:55:14 +0000
+X-UUID: 022d4f88c16c11f1afed4741b24580c9-20261006
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=MIME-Version:Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID; bh=tloYHaVbYNU0rRAf4/HuoJhNrp+JOWU7kTTUF5xT1v0=;
+	b=m9c9hcc0s17okh7Ck/7RJruZyLI/v/3fxQZ8Bti9xWMalm7xQl0BWWA+brCXSdmv27vCHdZbvxGb19bUhkcCPRKfPCfCipvkIW6QzGOZlcg0kNYqmsk1v5GCXt29VNLV1PeQNX/i+c7DNretKj1d7yLGVWZVPLiRpSCAiAB7yus=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.3.20,REQID:b47803f0-ab1e-45af-babb-77b4318013a9,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:291e20b,CLOUDID:21b76856-66df-4ed9-ba9a-e32623d07625,B
+	ulkID:nil,BulkQuantity:0,SF:80|81|82|83|102|836|865|888|898,TC:-5,Content:
+	0|15|50|99,EDM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:-1,COL:0,
+	OSI:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 2,SSN|SDN
+X-CID-BAS: 2,SSN|SDN,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
+X-UUID: 022d4f88c16c11f1afed4741b24580c9-20261006
+Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw01.mediatek.com
+	(envelope-from <alice.chao@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 242151255; Tue, 06 Oct 2026 02:55:06 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+ MTKMBS09N1.mediatek.inc (172.21.101.35) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.2562.29; Tue, 6 Oct 2026 17:55:03 +0800
+Received: from [10.233.130.16] (10.233.130.16) by mtkmbs11n1.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.2.2562.29 via Frontend
+ Transport; Tue, 6 Oct 2026 17:55:03 +0800
+Message-ID: <ac1b17147198b189e606083e181db8802b72fac1.camel@mediatek.com>
+Subject: Re: [PATCH 6.18.y] scsi: ufs: core: Re-arm the device command
+ completion before submitting
+From: Alice Chao <alice.chao@mediatek.com>
+To: Bean Huo <beanhuo@iokpp.de>, <stable@vger.kernel.org>
+CC: <linux-scsi@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+	<martin.petersen@oracle.com>, <James.Bottomley@HansenPartnership.com>,
+	<bvanassche@acm.org>, <avri.altman@sandisk.com>, <alim.akhtar@samsung.com>,
+	<wsd_upstream@mediatek.com>, <linux-mediatek@lists.infradead.org>,
+	<peter.wang@mediatek.com>, <chun-hung.wu@mediatek.com>,
+	<cc.chou@mediatek.com>, <chaotian.jing@mediatek.com>,
+	<tun-yu.yu@mediatek.com>, <naomi.chu@mediatek.com>, <ed.tsai@mediatek.com>
+Date: Tue, 6 Oct 2026 17:55:03 +0800
+In-Reply-To: <1912caf84d99bc2388960c907184f06689806ee6.camel@iokpp.de>
+References: <20260915052638.459390-1-alice.chao@mediatek.com>
+	 <1912caf84d99bc2388960c907184f06689806ee6.camel@iokpp.de>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+User-Agent: Evolution 3.52.3-0ubuntu1.1 
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 02/23] wifi: mt76: mt7925: add NMI/NDI MAC address setter
- helpers
-To: Sean Wang <sean.wang@kernel.org>
-Cc: linux-wireless@vger.kernel.org, linux-mediatek@lists.infradead.org,
- yu-ching.liu@mediatek.com, jenhao.yang@mediatek.com, posh.sun@mediatek.com,
- Chengwei Yu <chengwei.yu@mediatek.com>, Sean Wang <sean.wang@mediatek.com>
-References: <20260927210306.737669-1-sean.wang@kernel.org>
- <20260927210306.737669-3-sean.wang@kernel.org>
-Content-Language: en-US
-From: Felix Fietkau <nbd@nbd.name>
-Autocrypt: addr=nbd@nbd.name; keydata=
- xsDiBEah5CcRBADIY7pu4LIv3jBlyQ/2u87iIZGe6f0f8pyB4UjzfJNXhJb8JylYYRzIOSxh
- ExKsdLCnJqsG1PY1mqTtoG8sONpwsHr2oJ4itjcGHfn5NJSUGTbtbbxLro13tHkGFCoCr4Z5
- Pv+XRgiANSpYlIigiMbOkide6wbggQK32tC20QxUIwCg4k6dtV/4kwEeiOUfErq00TVqIiEE
- AKcUi4taOuh/PQWx/Ujjl/P1LfJXqLKRPa8PwD4j2yjoc9l+7LptSxJThL9KSu6gtXQjcoR2
- vCK0OeYJhgO4kYMI78h1TSaxmtImEAnjFPYJYVsxrhay92jisYc7z5R/76AaELfF6RCjjGeP
- wdalulG+erWju710Bif7E1yjYVWeA/9Wd1lsOmx6uwwYgNqoFtcAunDaMKi9xVQW18FsUusM
- TdRvTZLBpoUAy+MajAL+R73TwLq3LnKpIcCwftyQXK5pEDKq57OhxJVv1Q8XkA9Dn1SBOjNB
- l25vJDFAT9ntp9THeDD2fv15yk4EKpWhu4H00/YX8KkhFsrtUs69+vZQwc0cRmVsaXggRmll
- dGthdSA8bmJkQG5iZC5uYW1lPsJgBBMRAgAgBQJGoeQnAhsjBgsJCAcDAgQVAggDBBYCAwEC
- HgECF4AACgkQ130UHQKnbvXsvgCgjsAIIOsY7xZ8VcSm7NABpi91yTMAniMMmH7FRenEAYMa
- VrwYTIThkTlQzsFNBEah5FQQCACMIep/hTzgPZ9HbCTKm9xN4bZX0JjrqjFem1Nxf3MBM5vN
- CYGBn8F4sGIzPmLhl4xFeq3k5irVg/YvxSDbQN6NJv8o+tP6zsMeWX2JjtV0P4aDIN1pK2/w
- VxcicArw0VYdv2ZCarccFBgH2a6GjswqlCqVM3gNIMI8ikzenKcso8YErGGiKYeMEZLwHaxE
- Y7mTPuOTrWL8uWWRL5mVjhZEVvDez6em/OYvzBwbkhImrryF29e3Po2cfY2n7EKjjr3/141K
- DHBBdgXlPNfDwROnA5ugjjEBjwkwBQqPpDA7AYPvpHh5vLbZnVGu5CwG7NAsrb2isRmjYoqk
- wu++3117AAMFB/9S0Sj7qFFQcD4laADVsabTpNNpaV4wAgVTRHKV/kC9luItzwDnUcsZUPdQ
- f3MueRJ3jIHU0UmRBG3uQftqbZJj3ikhnfvyLmkCNe+/hXhPu9sGvXyi2D4vszICvc1KL4RD
- aLSrOsROx22eZ26KqcW4ny7+va2FnvjsZgI8h4sDmaLzKczVRIiLITiMpLFEU/VoSv0m1F4B
- FtRgoiyjFzigWG0MsTdAN6FJzGh4mWWGIlE7o5JraNhnTd+yTUIPtw3ym6l8P+gbvfoZida0
- TspgwBWLnXQvP5EDvlZnNaKa/3oBes6z0QdaSOwZCRA3QSLHBwtgUsrT6RxRSweLrcabwkkE
- GBECAAkFAkah5FQCGwwACgkQ130UHQKnbvW2GgCeMncXpbbWNT2AtoAYICrKyX5R3iMAoMhw
- cL98efvrjdstUfTCP2pfetyN
-In-Reply-To: <20260927210306.737669-3-sean.wang@kernel.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261006_022602_298921_DDE28D38 
-X-CRM114-Status: GOOD (  15.07  )
+X-CRM114-CacheID: sfid-20261006_025513_026153_D7EEABCE 
+X-CRM114-Status: GOOD (  17.48  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,74 +93,69 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 27.09.26 23:02, Sean Wang wrote:
-> From: Chengwei Yu <chengwei.yu@mediatek.com>
-> 
-> Add mt7925_nan_set_nmi_address() and mt7925_nan_set_ndi_address() for
-> runtime MAC address changes: NMI goes through the MCU (firmware owns
-> the hardware address), NDI updates vif->addr directly.
-> 
-> Co-developed-by: Sean Wang <sean.wang@mediatek.com>
-> Signed-off-by: Sean Wang <sean.wang@mediatek.com>
-> Signed-off-by: Chengwei Yu <chengwei.yu@mediatek.com>
-> ---
->   .../net/wireless/mediatek/mt76/mt7925/nan.c   | 48 +++++++++++++++++++
->   .../net/wireless/mediatek/mt76/mt7925/nan.h   |  8 ++++
->   2 files changed, 56 insertions(+)
-> 
-> diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/nan.c b/drivers/net/wireless/mediatek/mt76/mt7925/nan.c
-> index 8a59f7b1aee2..abbd3f7b081c 100644
-> --- a/drivers/net/wireless/mediatek/mt76/mt7925/nan.c
-> +++ b/drivers/net/wireless/mediatek/mt76/mt7925/nan.c
-> @@ -697,6 +697,54 @@ void mt7925_nan_mcu_event(struct mt792x_dev *dev, struct sk_buff *skb)
->   	}
->   }
->   
-> +int mt7925_nan_set_nmi_address(struct ieee80211_vif *vif,
-> +			       struct mt792x_dev *dev,
-> +			       const u8 *mac_address)
-> +{
-> +	struct mt76_dev *mdev = &dev->mt76;
-> +	struct {
-> +		u8 rsv[4];
-> +		struct mt7925_nan_nmi_addr_tlv nmi_addr_tlv;
-> +	} nmi_cmd = {
-> +		.nmi_addr_tlv = {
-> +			.tag = cpu_to_le16(NAN_UNI_CMD_CHANGE_NMI_ADDRESS),
-> +			.len = cpu_to_le16(sizeof(struct mt7925_nan_nmi_addr_tlv)),
-> +		},
-> +	};
-> +
-> +	if (!dev || !vif || !mac_address)
-> +		return -EINVAL;
-> +
-> +	if (is_zero_ether_addr(mac_address) ||
-> +	    is_multicast_ether_addr(mac_address))
-> +		return -EINVAL;
-> +
-> +	memcpy(nmi_cmd.nmi_addr_tlv.nmi_addr, mac_address, ETH_ALEN);
-> +
-> +	return mt76_mcu_send_msg(mdev, MCU_UNI_CMD(NAN), &nmi_cmd,
-> +				 sizeof(nmi_cmd), true);
-> +}
-> +
-> +int mt7925_nan_set_ndi_address(struct ieee80211_vif *vif,
-> +			       struct mt792x_dev *dev,
-> +			       const u8 *mac_address)
-> +{
-> +	if (!dev || !vif || !mac_address)
-> +		return -EINVAL;
-> +
-> +	if (is_zero_ether_addr(mac_address) ||
-> +	    is_multicast_ether_addr(mac_address))
-> +		return -EINVAL;
-> +
-> +	/*
-> +	 * The NDI address is not managed by firmware; it is the vif's own
-> +	 * hardware address, so updating it locally is sufficient.
-> +	 */
-> +	memcpy(vif->addr, mac_address, ETH_ALEN);
-What about bss_conf->addr and the netdev addr. Do those need to be updated?
+On Mon, 2026-10-05 at 13:54 +0200, Bean Huo wrote:
+> The late CQE can come after the re-arm:
+>=20
+> timeout -> cleanup -> retry B -> re-arm -> send B -> A's CQE arrives,
+> and then B
+> is woken up early and fails, if B's own CQE in turn comes after C's
+> re-arm, C
+> fails the same way, and C may even read B's response as its own.
+>=20
+> Whether this stops depends on device latency against our retry path,
+> not on the
+> patch.
+>=20
 
-- Felix
+You are right. Re-arming only covers a late CQE that arrives while no
+device command is in flight. The query retry wrappers resubmit right
+away, so the next re-arm will usually happen before the previous CQE
+lands, and the skew can cascade exactly as you describe. It is also
+worse than an early wakeup: every device command shares the reserved
+slot's response UPIU, so C can parse B's response as its own and
+return a wrong value rather than an error.
+
+> The root cause is that all device commands share hba->reserved_slot
+> and the CQE
+> carries only the tag. Since a successful SQ cleanup must post an
+> ABORTED CQE,
+> could the MCQ timeout path wait for and consume that CQE before
+> returning -
+> EAGAIN?
+>=20
+
+Agreed, that closes the window instead of narrowing it. In v2 the MCQ
+timeout path will:
+
+ - after the SQ cleanup, wait (bounded) for the reserved slot's CQE -
+   the ABORTED one, or the regular one if the command completed
+   anyway - before returning;
+ - if no CQE shows up in time (e.g. cleanup failed, or
+   UFSHCD_QUIRK_MCQ_BROKEN_RTC), force a host reset and refuse device
+   commands outside the error handler until it has happened, so the
+   slot is not reused while that CQE can still arrive;
+ - keep reinit_completion() at submission time as a safety net.
+
+> does this patch only covers a late CQE arriving while no device
+> command is in
+> flight. Did you test it with injected timeouts to see whether it
+> recovers?
+>=20
+
+Yes, v1 only covers that case. And no, I have not tested it with
+injected timeouts yet.
+
+Before posting v2 I will run it with injected device command timeouts
+in MCQ mode: periodic fake timeouts under a descriptor/attribute read
+loop, with the values checked against known-good ones, and the case
+where the CQE never arrives, to check that the host gets reset and
+device commands recover. This will also show whether our controller
+actually posts the ABORTED CQE after the SQ cleanup. I will run the
+same injection on v1 and on the unpatched kernel for comparison and
+put the results in the v2 changelog.
+
+Thanks for the careful review.
+
+Alice
+
 
