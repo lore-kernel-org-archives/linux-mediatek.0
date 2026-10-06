@@ -4,71 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1941ACA5FF0
-	for <linux-mediatek@archiver.kernel.org>; Tue,  6 Oct 2026 02:44:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 34C19CA5FFD
+	for <linux-mediatek@archiver.kernel.org>; Tue,  6 Oct 2026 02:53:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=XNYD+CpNcWz00HBG+LHdcTGmGAdIXiwkIYdQxEuIMOE=; b=ACqsbwBlfpPPOJQimKIAMLU09K
-	uDqhy6ATOnuqfdV+JjS4BsFXB8N/9VRIFyafLklryXgUCH7IDQEwHGvP6W8N2arAESbXlgm30gQJG
-	keGq0gigv7Ilu4Q0mVakrmYtPSMlg2SjPy1oZ03lk2hdDIqmGarSUR2tCB5hAuJASVHDH0YQVQOX/
-	iu0iUqsY0wT6ZAMUbi1DMzUTmGM+a2vGbfGScWFiZ0Z2mhlN2H7bfQqj1fz6g2jOPom2VEknJ/4kP
-	Lba+56ggiN+83wD/l8nbU0Zuo2al9vyaD25bc1erBqtk8aXmh2N43X/Am/2geoi2ma52pvBA/hI7h
-	qCAmgeog==;
+	Content-Type:MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=pnA79/yMUobrP+H+M+1462+fcHHeEWmkC7DmTbPe43Y=; b=X2IPcrRrTwjIFl67UBCWcmscsd
+	utxcyUExkZrtKpgVRDnmq+CiY6ZqS5YtRszG3ud/vNPUjWtncJEf7YW6snDoCU+EqK1eyKe245R7z
+	+r2MJiVonroVMbMopUwglzuavnQr4q4I/nal5XY69maSXVdYzfxB4cX7SvVS3nb3a1pG98mOEsCgP
+	WRfikMBsu0yVCQMbyx7b5hqex3DdVJ/86q4PEzbcg/gyLVYBoq/lK1CuNif4JOGX5XhJpK3V+Mpch
+	F84xMROSRO+MeKhSbaOc2f9mk13QVtMY9Fl0PyXfbn4B3q48VcqpqR31aN6+N0qi0WoiqJSxjuAz0
+	Jkrd/ZEQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xDvAf-0000000HWQa-0p7T;
-	Tue, 06 Oct 2026 02:44:49 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1xDvJQ-0000000HWgc-0qrE;
+	Tue, 06 Oct 2026 02:53:52 +0000
+Received: from mail.haxxors.com ([85.14.200.35])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xDvAd-0000000HWQH-3TSo
-	for linux-mediatek@lists.infradead.org;
-	Tue, 06 Oct 2026 02:44:47 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id E0C04601FF;
-	Tue,  6 Oct 2026 02:44:46 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id DC4171F00893;
-	Tue,  6 Oct 2026 02:44:44 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1791254686;
-	bh=XNYD+CpNcWz00HBG+LHdcTGmGAdIXiwkIYdQxEuIMOE=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References;
-	b=QeMWcZmMVwkBXBy5HmXohbAOEdEszM74TAkTH/Twx2dNH91LmiQI5jdMZPf02Mm+4
-	 ZQbKZwGvR8H26qj/LX8fuZNqKLqgspvfabI85oVHlECEbvoOsgtaaHs4HP/dtODT1i
-	 UdQUWZdYgDwUIU0CS79NkMvJ7unnMPia6dHosJkCtyuRFazp6k3Szu/kCSaaDJVp00
-	 fYQEBFboYWmpG2eNzGA4SIYs3LOAjRcwUKgQRxiEKSZHwU+vpA4g9vFvmF8pBjg8L8
-	 ikckrItQFBTKYBbTmTmRGR3M8lnaLOtlDk5lvOxTw6XOQe9FF03Yma2UoD8nxD+fi4
-	 u0RqhsdiD+c5w==
-From: "Martin K. Petersen (Oracle)" <mkp@kernel.org>
-To: linux-scsi@vger.kernel.org,
-	avri.altman@sandisk.com,
-	alim.akhtar@samsung.com,
-	bvanassche@acm.org,
-	santosh.sy@samsung.com,
-	h.vinayak@samsung.com,
-	"Martin K. Petersen" <mkp@kernel.org>,
-	peter.wang@mediatek.com
-Cc: wsd_upstream@mediatek.com,
+	id 1xDvJM-0000000HWfa-148x;
+	Tue, 06 Oct 2026 02:53:49 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple; d=buechner.me; s=mail;
+	t=1791255225; bh=n6BEXt7OYkjTFNdfwFEm8H3uUmWyU4uREug1p7Xp2Ig=;
+	h=From:To:Cc:Subject:Date:From;
+	b=IpbGy6nT9XalwC+s4hIvwnobAp+w3EdPb4RYSf8pVolG/uQ3Y4h1BEQGBeEE5i2hT
+	 KVJUkNJagXZMYOz76g3NPi40FZItps/P1Xbd2Evh0DCZCQEy+STqopbsY8ebU7jSVh
+	 H7jjoP7/sYeZF1Iw389C76T/LfdTxr/Il6X6j3SM=
+Received: from localhost (localhost [127.0.0.1])
+	by mail.haxxors.com (Postfix) with ESMTP id 37FF953061;
+	Tue, 06 Oct 2026 04:53:45 +0200 (CEST)
+X-Virus-Scanned: Debian amavis at mail.haxxors.com
+Received: from mail.haxxors.com ([127.0.0.1])
+ by localhost (mail.haxxors.com [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id 4vRzOVYAH2xc; Tue,  6 Oct 2026 04:53:43 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple; d=buechner.me; s=mail;
+	t=1791255223; bh=n6BEXt7OYkjTFNdfwFEm8H3uUmWyU4uREug1p7Xp2Ig=;
+	h=From:To:Cc:Subject:Date:From;
+	b=Lh7MOB+DA/gLdxJT+fsE/Tpoh0SiKYi3MW+Oz+rxHNh0/JQpsmAAmRb3hrxqI7/JE
+	 GHpydLHOFqIoyhiiW8BsUcPggeNhqJlc4YcljDds4X5rLQwM/qaq5DzWKcxtm1+g2u
+	 PWzOqcKcT7IVgVOeRCaSgbzaEa9kuIy+cisFpFgQ=
+Received: from esports.myloc.de (p200300ee8f09a300264bfefffe4ffb4b.dip0.t-ipconnect.de [IPv6:2003:ee:8f09:a300:264b:feff:fe4f:fb4b])
+	(Authenticated sender: nils@buechner.me)
+	by mail.haxxors.com (Postfix) with ESMTPSA id 3C5A0530B1;
+	Tue, 06 Oct 2026 04:53:43 +0200 (CEST)
+From: =?UTF-8?q?Nils=20B=C3=BCchner?= <nils@buechner.me>
+To: Ulf Hansson <ulfh@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: linux-pm@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org,
-	chun-hung.wu@mediatek.com,
-	alice.chao@mediatek.com,
-	cc.chou@mediatek.com,
-	chaotian.jing@mediatek.com,
-	tun-yu.yu@mediatek.com,
-	naomi.chu@mediatek.com,
-	ed.tsai@mediatek.com
-Subject: Re: [PATCH v2 0/2] ufs: fix POST_CHANGE pairing and AHIT race condition
-Date: Mon,  5 Oct 2026 22:44:37 -0400
-Message-ID: <179103513133.923653.2927639008481783507.b4-ty@b4>
-X-Mailer: git-send-email 2.55.0
-In-Reply-To: <20260914085148.136429-1-peter.wang@mediatek.com>
-References: <20260914085148.136429-1-peter.wang@mediatek.com>
+	=?UTF-8?q?Nils=20B=C3=BCchner?= <nils@buechner.me>
+Subject: [PATCH] pmdomain: mediatek: Don't power off default-off domains in probe cleanup
+Date: Tue,  6 Oct 2026 04:53:18 +0200
+Message-ID: <20261006025318.503422-1-nils@buechner.me>
+X-Mailer: git-send-email 2.53.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20261005_195348_647077_56FCE651 
+X-CRM114-Status: GOOD (  17.08  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,26 +82,76 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, 14 Sep 2026 16:49:23 +0800, peter.wang@mediatek.com wrote:
+scpsys_remove_one_domain() runs the power-off sequence for every domain
+that reads back as on. Domains with MTK_SCPD_KEEP_DEFAULT_OFF are
+registered with genpd as off and are never powered on by the driver
+before the provider is added, so their clocks are not enabled. When the
+bootloader left such a domain on and scpsys_probe() fails (typically
+-EPROBE_DEFER) after it was added, the cleanup disables those clocks
+anyway, triggering "already disabled"/"already unprepared" warnings from
+the clock core.
 
-> Patch 1 fixes a bug where POST_CHANGE was skipped on a failed gear
-> switch, leaving the host in an inconsistent state if resources acquired
-> in PRE_CHANGE were never released.
-> 
-> Patch 2 fixes a race between the sysfs AHIT update path and the
-> MediaTek host driver's power mode change path. A mutex and depth
-> counter are introduced to serialize AHIT register access and ensure
-> AHIT is correctly restored after the last disabler completes.
-> 
-> [...]
+Seen on MT8183 Juniper once the audio domain is KEEP_DEFAULT_OFF: six
+clk_core_disable/unprepare WARNs with backtraces on every boot.
 
-Applied to 7.4/scsi-queue, thanks!
+Skip the power-off sequence for these domains; only drop the clock
+references.
 
-[1/2] ufs: always notify POST_CHANGE even on gear switch failure
-      https://git.kernel.org/mkp/scsi/c/6efee14ca0ae
-[2/2] ufs: serialize AHIT register access between sysfs and host driver
-      https://git.kernel.org/mkp/scsi/c/7dec5cedf7b2
+Runtime-tested on an Acer Chromebook Spin 311 (MT8183, juniper) with a
+7.0-based kernel (the hardware is not set up to boot mainline);
+build-tested on mainline with W=1. On the device with the audio
+domain marked MTK_SCPD_KEEP_DEFAULT_OFF: the six clk core warnings on
+the deferred first probe are gone and audio still works.
 
+The change and this changelog were drafted with an AI coding assistant
+during a debugging session on the hardware; they were reviewed and
+tested by the submitter.
+
+Fixes: c1f3163d8ff3 ("soc: mediatek: pm-domains: Add default power off flag")
+Assisted-by: Claude Opus 5.5
+Signed-off-by: Nils Büchner <nils@buechner.me>
+---
+
+This is a follow-up to "pmdomain: mediatek: mt8183: Fix silent audio
+from premature sync_state" (sent 2026-10-05), which marks the MT8183
+audio domain MTK_SCPD_KEEP_DEFAULT_OFF. With that applied, the firmware
+leaves the audio domain on at boot, so a deferred first probe of
+scpsys runs into this cleanup path on every boot. The fix itself is
+independent and applies on its own.
+
+ drivers/pmdomain/mediatek/mtk-pm-domains.c | 11 +++++++++++
+ 1 file changed, 11 insertions(+)
+
+diff --git a/drivers/pmdomain/mediatek/mtk-pm-domains.c b/drivers/pmdomain/mediatek/mtk-pm-domains.c
+index f0fa79e01..2b41bb8ed 100644
+--- a/drivers/pmdomain/mediatek/mtk-pm-domains.c
++++ b/drivers/pmdomain/mediatek/mtk-pm-domains.c
+@@ -1100,6 +1100,16 @@ static void scpsys_remove_one_domain(struct scpsys_domain *pd)
+ 			"failed to remove domain '%s' : %d - state may be inconsistent\n",
+ 			pd->genpd.name, ret);
+ 
++	/*
++	 * Domains with MTK_SCPD_KEEP_DEFAULT_OFF are registered as off and were
++	 * never powered on by this driver (nothing can use them before the
++	 * provider is added), so their clocks were never enabled. If the
++	 * bootloader left one on, running the power-off sequence here would
++	 * disable clocks that are not enabled.
++	 */
++	if (MTK_SCPD_CAPS(pd, MTK_SCPD_KEEP_DEFAULT_OFF))
++		goto put_clocks;
++
+ 	if (scpsys->soc_data->type == SCPSYS_MTCMOS_TYPE_HW_VOTER) {
+ 		if (scpsys_hwv_domain_is_enable_done(pd))
+ 			scpsys_hwv_power_off_internal(pd);
+@@ -1108,6 +1118,7 @@ static void scpsys_remove_one_domain(struct scpsys_domain *pd)
+ 			scpsys_power_off_internal(pd);
+ 	}
+ 
++put_clocks:
+ 	clk_bulk_put(pd->num_clks, pd->clks);
+ 	clk_bulk_put(pd->num_subsys_clks, pd->subsys_clks);
+ }
 -- 
-Martin K. Petersen
+2.53.0
+
 
