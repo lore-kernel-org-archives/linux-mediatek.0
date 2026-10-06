@@ -4,65 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4E834CA5FFD
-	for <linux-mediatek@archiver.kernel.org>; Tue,  6 Oct 2026 02:42:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 344F6CA5FFD
+	for <linux-mediatek@archiver.kernel.org>; Tue,  6 Oct 2026 02:44:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Date:References:Message-ID:In-Reply-To:From:Subject:Cc:To:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=UqSzphL/B2G51xbd5d08UxQzg64DGWrIWeuZEENfUTw=; b=tAit0m5uu8vxZogSp1ZVNrLoN0
-	flc7tVyoAGABvc7Z8UiXfqsEmkllge7DFAKQdCy7qNR19rvCKGvkq2bsTtluxXtoYfj5WyQg313RW
-	UQKQhSSsDBH6O8XBIEo+jIUkLqlcmC3P3zEE9FhTQGWFdHLZQabLoce0yrVV8UlE6bbHFc7hIgcUE
-	tgpbqJWDN5HL3PgwvbntQFZ+bZJybWNPUgylofPT7uOC/sOh65VmLP6s3Zhe8y/OGAzpcLpGY+KEX
-	1h+MFkug1i8E30qCm+Cxbxm1ujNsouwMLmye9NV6hDIamExHgEQFVBdZku5WGg/ll53mlLfX1BztA
-	QLiVE8zw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=3Dxub2OIKlJbgbQwnT0clqTj/0Io9aNg27HTao1ESOk=; b=fiO1aLe5H6qyQPhCTEc2xKVqwW
+	TLPv0v1SVBY4QkPOsiwXI4ePgjkDGdckUGi0oKYybYzB/qmwCrmCbLq2C4bIdKfm7F0r0TMwn0B3Y
+	lWLEUrzgJdjBuFhmHDecBNuTzi9hrCYJf3LciEk0qQ1LPLx5fxozpsLDC2BrV49Aw4IV7uIxwZmCr
+	wsXFUU6oS60YGHm/+xn4aUeSTQ91cs1DE7YecLREvcTI4G8S6gh2bMtcLhCvXaVZw7hL2oXAf4RUl
+	0R1GkJnwvVJnrWubLF76czEOLBoe3MYxkV1GjoOxsv7BgzruChQbOnzIVVbHIJqs04ltvXGOcX/1S
+	MRVnD7GQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xDv8Y-0000000HW8g-2q1l;
-	Tue, 06 Oct 2026 02:42:38 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1xDv9t-0000000HWEP-449e;
+	Tue, 06 Oct 2026 02:44:01 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xDv8W-0000000HW8P-3f6V
-	for linux-mediatek@lists.infradead.org;
-	Tue, 06 Oct 2026 02:42:37 +0000
+	id 1xDv9s-0000000HWDr-0wH2;
+	Tue, 06 Oct 2026 02:44:00 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id E7574601F1;
-	Tue,  6 Oct 2026 02:42:35 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 4F4A81F000FF;
-	Tue,  6 Oct 2026 02:42:35 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 7832F43B34;
+	Tue,  6 Oct 2026 02:43:59 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 005811F00893;
+	Tue,  6 Oct 2026 02:43:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1791254555;
-	bh=UqSzphL/B2G51xbd5d08UxQzg64DGWrIWeuZEENfUTw=;
-	h=To:Cc:Subject:From:In-Reply-To:References:Date;
-	b=E0BdGj6aJh9tiWoTLbiFqMbcg5GEYafztt1so8p4/pLaVhu9HtF95zhrYK0qeSOgB
-	 1uvahyvdMkunLGE60mo2AyEYGWY+kG7L6GL5iuxht4Z4lzzlDPkphaH7oAIkeENjM4
-	 3O0f1pyu1SZzdXbcHKSfBAb/0pKg87DXuz9KmelH356Tzskmc/zQ1I8p7McKVLPThy
-	 2hc+TRIyhCMROLMbLQCfRmtMfqJvkGxRvqb8JNZVmZpREEies96QPbw0vq2tGTV+Mo
-	 LY52zBJhFnHo4/LXwc4Gn8BluKmrJiseKaeJgfYXXux6UADPJmIhISHd6RlrO6+qUL
-	 WCes/LhH626kg==
-To: Sandeep Dhavale <dhavale@google.com>
-Cc: "Martin K. Petersen (Oracle)" <mkp@kernel.org>,
-  peter.wang@mediatek.com,  linux-scsi@vger.kernel.org,
-  martin.petersen@oracle.com,  avri.altman@sandisk.com,
-  alim.akhtar@samsung.com,  bvanassche@acm.org,  santosh.sy@samsung.com,
-  h.vinayak@samsung.com,  wsd_upstream@mediatek.com,
-  linux-mediatek@lists.infradead.org,  chun-hung.wu@mediatek.com,
-  alice.chao@mediatek.com,  cc.chou@mediatek.com,
-  chaotian.jing@mediatek.com,  tun-yu.yu@mediatek.com,
-  naomi.chu@mediatek.com,  ed.tsai@mediatek.com
-Subject: Re: [PATCH v2 0/2] ufs: fix POST_CHANGE pairing and AHIT race
- condition
-From: "Martin K. Petersen" <mkp@kernel.org>
-In-Reply-To: <CAB=BE-QT1oy=XD_MFWaR+VvKG_Kpk3jszDpAtUy=EyK9uU5fbQ@mail.gmail.com>
-Message-ID: <yq1se2jim7z.fsf@mail.kernel.org>
-References: <20260914085148.136429-1-peter.wang@mediatek.com>
-	<yq1jyo8pwwc.fsf@mail.kernel.org>
-	<CAB=BE-QT1oy=XD_MFWaR+VvKG_Kpk3jszDpAtUy=EyK9uU5fbQ@mail.gmail.com>
-Date: Mon, 05 Oct 2026 22:42:34 -0400
+	s=k20260515; t=1791254639;
+	bh=3Dxub2OIKlJbgbQwnT0clqTj/0Io9aNg27HTao1ESOk=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References;
+	b=SAF2AiqUeS9WRFiufDP4pIYM9g5LxvnLUCxi9scPLYPoGoP9vFBe2ZGNdfMZD/Hk4
+	 q9y7uOLhb/vtl9OU0jfb7TrcHmkwGpS11zkDvKp6z5i96rA9Pe8aBxG0E8R5uS9Er8
+	 TzUJ5uTieVDMFoAyuQ+uk6ZL3/nDFUPB0+3kJ+z7dTx6f1PyhIBwB4H+liFswYTU+L
+	 bSoD/VZFk0M4nZ8eG0erNz6Zn2gOa4LnZUqQHE3PuHXH+/6/XuDt84xC7Wpaqnw89i
+	 ffudlGArDdKARbIJk/Avu5dL/R6nNZZOoieuQv9wcz8gvNg0Q2dBJBlZmspjcaDq4b
+	 2/YCwLeuSYFiA==
+From: "Martin K. Petersen (Oracle)" <mkp@kernel.org>
+To: peter.wang@mediatek.com,
+	Pengpeng Hou <hppiscas@163.com>
+Cc: "Martin K . Petersen" <mkp@kernel.org>,
+	chaotian.jing@mediatek.com,
+	chu.stanley@gmail.com,
+	james.bottomley@hansenpartnership.com,
+	linux-scsi@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com,
+	linux-arm-kernel@lists.infradead.org,
+	stanleyjhu@google.com
+Subject: Re: [PATCH v2] scsi: ufs: mediatek: handle mPHY power-on failures
+Date: Mon,  5 Oct 2026 22:43:51 -0400
+Message-ID: <179125457805.2089616.5429696204542801966.b4-ty@b4>
+X-Mailer: git-send-email 2.55.0
+In-Reply-To: <20260920034953.19535-1-hppiscas@163.com>
+References: <20260920034953.19535-1-hppiscas@163.com>
 MIME-Version: 1.0
-Content-Type: text/plain
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,13 +78,24 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+On Sun, 20 Sep 2026 11:49:53 +0800, Pengpeng Hou wrote:
 
-Sandeep,
+> The MediaTek helper enables VA09 before powering on the mPHY, but
+> ignores the PHY result. A failure can leave VA09 enabled and publish
+> mphy_powered_on as true, so a later power-on attempt is skipped.
+> 
+> Check phy_power_on(), attempt to unwind VA09 on failure, and leave the
+> state flag unchanged. Propagate the helper result from host
+> initialization as well as its existing resume caller. Keep the original
+> PHY error if the supply rollback also fails, and report that rollback
+> separately.
+> 
+> [...]
 
-> I don't see this series in in 7.4/scsi-staging at [1], or perhaps just
-> push is missing?
+Applied to 7.3/scsi-fixes, thanks!
 
-Just pushed.
+[1/1] scsi: ufs: mediatek: handle mPHY power-on failures
+      https://git.kernel.org/mkp/scsi/c/78e04810542d
 
 -- 
 Martin K. Petersen
