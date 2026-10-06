@@ -4,58 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D382FCA5FFE
-	for <linux-mediatek@archiver.kernel.org>; Tue,  6 Oct 2026 14:48:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 06863CA5FFC
+	for <linux-mediatek@archiver.kernel.org>; Tue,  6 Oct 2026 15:40:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:References:Cc:To:Subject:From:MIME-Version:Date:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Oucqut4+PItL4Z7D8mOArQh/3IGpy12z1U4M2PMEnEk=; b=klyNy13dKHRTOoeJrHIedliKdO
-	PJBxsr+OTrWX/mobCQ8slOq5qHzpZXFxV8mgVG4bbPIKJW6hs8rGxsHQ3JxrTUDlEtayNQ7h8DyOt
-	mARLh/fFxitvfPtWDS6jSVuLVzDzBazsagZ+UgBomdhGBBmaN1IO4er1jY5IjcC3tydW9tMRg/C2+
-	UUn5dx9bTMy6SxEjBcai4j2vMy1rXbUPL4ObHXoXIKqkuwWO8CojyQsS8IaW2X2+IL/7Y+mx9d9rW
-	UBZi076JjFydxVczC/3F3ofPPxrqARmekYLlyCBq6VD8VIDIhKnUB95lRSBkJEeXI9ZOf0n3A3qyP
-	7Qdr2lFg==;
+	bh=rxl3tZbFF5iOdiovHswFmJJfkFXMsEGerLI8jCvxhiQ=; b=NVlrxGKG4WVIcB048u/v+5vigo
+	0cVHp6OSC7zyjTiTlE+IQUabPUyunozS4LDFJ55PmrSBttDW1cizmMRTv0PgjGkOW+JPsYsrCype6
+	PCSxPqOwHtV6ivLFhhw67LmGaXNlQEt3YmMkJceD+U+zTKQhxn1RuJjsmy5YmpdGSfTlVDrU+I/nC
+	4UAUVwhfq35RZw0yHaXUL+Acpfw7fzIIECeQgX4zCKYeYK4Mtg67aQBbrh26t489Q93+gqenB95L/
+	nN1eACxuWJ/gK0fUAMBVgLNiwh9pntmI/ud1+yMXQgFrHpzV7D2Y6wru+BiY4Lac/ppDX2sVmOtrx
+	bGmwWMOA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xE6TD-00000000yR6-2jFf;
-	Tue, 06 Oct 2026 14:48:43 +0000
+	id 1xE7HE-000000013Du-21Ej;
+	Tue, 06 Oct 2026 15:40:24 +0000
 Received: from nbd.name ([46.4.11.11])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xE6TB-00000000yQg-1PuH
+	id 1xE7HC-000000013D5-2WRw
 	for linux-mediatek@lists.infradead.org;
-	Tue, 06 Oct 2026 14:48:42 +0000
+	Tue, 06 Oct 2026 15:40:23 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=nbd.name;
-	s=20160729; h=Content-Transfer-Encoding:Content-Type:In-Reply-To:References:
-	Cc:To:Subject:From:MIME-Version:Date:Message-ID:Sender:Reply-To:Content-ID:
-	Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
-	:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
-	List-Post:List-Owner:List-Archive;
-	bh=Oucqut4+PItL4Z7D8mOArQh/3IGpy12z1U4M2PMEnEk=; b=X5XxRCQ4/JxjoOoyPFror9nb/U
-	xELFsSyPqjGZlk2UET7UZEWFh/Ivjct0ObKcnxKgTdHHFCu2qSmcJfLyWcxmVqo3RdlGdTkOM3Xcb
-	Pl4lFRg2gG783CNshi6NLbTzu8+MIaiwZCZSIttRHb7FexF/2i5rrrxb7twdixOOAmf8=;
+	s=20160729; h=Content-Transfer-Encoding:Content-Type:In-Reply-To:From:
+	References:Cc:To:Subject:MIME-Version:Date:Message-ID:Sender:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
+	List-Subscribe:List-Post:List-Owner:List-Archive;
+	bh=rxl3tZbFF5iOdiovHswFmJJfkFXMsEGerLI8jCvxhiQ=; b=lGT0EV1hgifFh5K9NRNV//HE/r
+	W03paMPd7YZTaZ+iTx2dVHn5J6amgAZOW14lCzfllKIazqgOEnDT4ycQ6ya55SgL9iQQWmtHCyFJZ
+	G7fDDwHCGvsAAjDwi41AzJVTaW3ItBt28ryDEW0HahQ76vd+LBFv/HThvVQjAddQb694=;
 Received: from p54a434bb.dip0.t-ipconnect.de ([84.164.52.187] helo=nf.local)
 	by ds12 with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
 	(Exim 4.96)
 	(envelope-from <nbd@nbd.name>)
-	id 1xE6T2-00Gzw8-1o;
-	Tue, 06 Oct 2026 16:48:32 +0200
-Message-ID: <cb2f423f-b3eb-4d19-9fe1-ccc19c9690b2@nbd.name>
-Date: Tue, 6 Oct 2026 16:48:31 +0200
+	id 1xE7H5-00H1SN-32;
+	Tue, 06 Oct 2026 17:40:15 +0200
+Message-ID: <8a070d0a-177f-41a3-bddf-0f8b06e82baa@nbd.name>
+Date: Tue, 6 Oct 2026 17:40:15 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-From: Felix Fietkau <nbd@nbd.name>
-Subject: Re: [PATCH v4 5/5] [PATCH v4] [PATCH 05/05] wifi: mt76:
- mt7922/mt7928: send Tx/Rx statistics to FW for link tuning
-To: Anthony Liu <anthony.liu@mediatek.com>, lorenzo@kernel.org
-Cc: Sean.Wang@mediatek.com, Leon.Yen@mediatek.com, Quan.Zhou@mediatek.com,
- Ryder.lee@mediatek.com, litien.chang@mediatek.com, kun.wu@mediatek.com,
- jb.tsai@mediatek.com, emery.hsin@mediatek.com,
- linux-wireless@vger.kernel.org, linux-mediatek@lists.infradead.org
-References: <20261005083155.104718-1-anthony.liu@mediatek.com>
+Subject: Re: [PATCH] wifi: mt76: mt7928: only do CLC hw type sanity check on
+ MT7925
+To: JB Tsai <jb.tsai@mediatek.com>, lorenzo@kernel.org
+Cc: linux-wireless@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ Sean.Wang@mediatek.com, Quan.Zhou@mediatek.com, Ryder.Lee@mediatek.com,
+ litien.chang@mediatek.com, Charlie-cy.Wu@mediatek.com
+References: <20260909055750.929102-1-jb.tsai@mediatek.com>
 Content-Language: en-US
+From: Felix Fietkau <nbd@nbd.name>
 Autocrypt: addr=nbd@nbd.name; keydata=
  xsDiBEah5CcRBADIY7pu4LIv3jBlyQ/2u87iIZGe6f0f8pyB4UjzfJNXhJb8JylYYRzIOSxh
  ExKsdLCnJqsG1PY1mqTtoG8sONpwsHr2oJ4itjcGHfn5NJSUGTbtbbxLro13tHkGFCoCr4Z5
@@ -79,13 +78,12 @@ Autocrypt: addr=nbd@nbd.name; keydata=
  TspgwBWLnXQvP5EDvlZnNaKa/3oBes6z0QdaSOwZCRA3QSLHBwtgUsrT6RxRSweLrcabwkkE
  GBECAAkFAkah5FQCGwwACgkQ130UHQKnbvW2GgCeMncXpbbWNT2AtoAYICrKyX5R3iMAoMhw
  cL98efvrjdstUfTCP2pfetyN
-In-Reply-To: <20261005083155.104718-1-anthony.liu@mediatek.com>
+In-Reply-To: <20260909055750.929102-1-jb.tsai@mediatek.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261006_074841_450216_B8582A58 
-X-CRM114-Status: UNSURE (   8.13  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20261006_084022_647141_5FF73C4A 
+X-CRM114-Status: GOOD (  10.88  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,25 +98,26 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
-
-On 05.10.26 10:31, Anthony Liu wrote:
-> Update Tx/Rx statistics to FW for link speed tuning in FW.
+On 09.09.26 07:57, JB Tsai wrote:
+> From: Charlie-cy Wu <Charlie-cy.Wu@mediatek.com>
 > 
-> Signed-off-by: Anthony Liu <anthony.liu@mediatek.com>
-A few issues in this series:
-1. Please fix the email subject
-2. It seems that some places may need checks to exclude mt7921.
-3. Some duplication in debugfs.c
-4. mt792x_mcu_set_perf_ind could be static
-5. Check if the pointer derefs in mt792x_perf_account_rx are safe.
-
-Aside from this, I also have some questions:
-- is this on by default or can it only be enabled via debugfs?
-- why does the host have to keep statistics on tx/rx, when the firmware 
-could do that and handle it internally?
-
-Thanks,
+> mt7925_load_clc() is shared by MT7925, MT7927 and MT7928 (0x7935 is
+> folded into 0x7928 in pci.c). The hw type sanity check it does on every
+> CLC region is MT7925-specific twice over: the encap bits live at
+> efuse offset MT_EE_HW_TYPE (0xa71) in the MT7925 layout, and only
+> MT7925 CLC blobs carry that hw type in their t0/t2 header. On
+> MT7927/MT7928 the driver therefore reads a byte that means nothing on
+> those parts and compares it against a header field that was never
+> populated, so a mismatch silently skips every CLC region and leaves
+> phy->clc[] empty - no country/regd table gets installed at all.
+> 
+> Gate both the efuse read and the two header checks on is_mt7925(), so
+> MT7927/MT7928 accept the CLC regions from their own firmware as-is.
+> No functional change for MT7925: PCIe still reads 0xa71 and filters by
+> encap type, USB still runs with hw_encap = 0 as before.
+> 
+> Fixes: 356b39285559 ("wifi: mt76: connac3: refactor CLC header type validation logic")
+Patch doesn't apply, and I can't find the commit mentioned above.
 
 - Felix
 
