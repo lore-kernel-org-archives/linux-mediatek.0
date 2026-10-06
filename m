@@ -4,81 +4,106 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 27487CA5FED
-	for <linux-mediatek@archiver.kernel.org>; Tue,  6 Oct 2026 09:55:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A4786CA5FF0
+	for <linux-mediatek@archiver.kernel.org>; Tue,  6 Oct 2026 10:16:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:CC:To:From
-	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=tloYHaVbYNU0rRAf4/HuoJhNrp+JOWU7kTTUF5xT1v0=; b=Pz6QsMuvfUofzuwNF0tBsRyF0o
-	tJsMrqYxqkK9jkYiJfSJkwL1VER5UZOI7EOiH6T19042UfBPaVJ2wJkdTWf9s6TSuz/6VvJYYErcn
-	qsVRGYIBjJj4n1BGH3wgrneBd9zOHjivBDeomUc+gJU/0RQsJC0hdvnf0KhO/bsLWaS3mDnodBCcL
-	xWVklHp0HcmTk7Suj39PRXP6P1UVrq/U1mSQhDW+z0rX77v6GZv4/GEQLp7fy7jXysOVG1u4wR/k7
-	FZsXhpLqgaVomOSt0PTXxjGE3uwhQamGbVScG4gzlKr0udcCs7lX98M8i0Hvv8ZXWUpZlXNPVOphX
-	LIohg58A==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=qoB87xt/si/5SQ89z++VwfJlgKEBpZZ8oa5UH367RG0=; b=B6tnuHuprcrcOJIDD6TF6nEFrn
+	AnqCEra4l0j21qofNXGxxAvwlnYocmy5OQ3L5N3Iv9CEx/B66R2CrTaBLJtVTmItSscfp0zTysI27
+	HwhGQmNzh4xwko6B2sL3AEPVAzXm8QqN3Lb0nLsO+WdvXaYayJ+tpJSAmC2o0/LR4kp8dQ+7/KFOV
+	WxRB3HHSQtibihe22hlDXje8sI0rE5otqdy+tIo7Iolgh/fHoTLusLMqEACE1l+yt/TYkoyCegHgn
+	WL+vSxyXEAMHNC18zjVCER31vmP6D9FJx6SF1klXXihhxYjyRua/KC0q2IAJwEIYFs7gMge7fPNFY
+	bHJ/ujfQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xE1tD-00000000QyR-0Sl1;
-	Tue, 06 Oct 2026 09:55:15 +0000
-Received: from [216.200.240.184] (helo=mailgw01.mediatek.com)
+	id 1xE2Dk-00000000TaF-1ZgK;
+	Tue, 06 Oct 2026 10:16:28 +0000
+Received: from mail-pf1-x431.google.com ([2607:f8b0:4864:20::431])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xE1tA-00000000Qxl-41xU
+	id 1xE2Dh-00000000TZR-1PQX
 	for linux-mediatek@lists.infradead.org;
-	Tue, 06 Oct 2026 09:55:14 +0000
-X-UUID: 022d4f88c16c11f1afed4741b24580c9-20261006
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=MIME-Version:Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID; bh=tloYHaVbYNU0rRAf4/HuoJhNrp+JOWU7kTTUF5xT1v0=;
-	b=m9c9hcc0s17okh7Ck/7RJruZyLI/v/3fxQZ8Bti9xWMalm7xQl0BWWA+brCXSdmv27vCHdZbvxGb19bUhkcCPRKfPCfCipvkIW6QzGOZlcg0kNYqmsk1v5GCXt29VNLV1PeQNX/i+c7DNretKj1d7yLGVWZVPLiRpSCAiAB7yus=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.20,REQID:b47803f0-ab1e-45af-babb-77b4318013a9,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:291e20b,CLOUDID:21b76856-66df-4ed9-ba9a-e32623d07625,B
-	ulkID:nil,BulkQuantity:0,SF:80|81|82|83|102|836|865|888|898,TC:-5,Content:
-	0|15|50|99,EDM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:-1,COL:0,
-	OSI:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 2,SSN|SDN
-X-CID-BAS: 2,SSN|SDN,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: 022d4f88c16c11f1afed4741b24580c9-20261006
-Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw01.mediatek.com
-	(envelope-from <alice.chao@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 242151255; Tue, 06 Oct 2026 02:55:06 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- MTKMBS09N1.mediatek.inc (172.21.101.35) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.29; Tue, 6 Oct 2026 17:55:03 +0800
-Received: from [10.233.130.16] (10.233.130.16) by mtkmbs11n1.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.2.2562.29 via Frontend
- Transport; Tue, 6 Oct 2026 17:55:03 +0800
-Message-ID: <ac1b17147198b189e606083e181db8802b72fac1.camel@mediatek.com>
-Subject: Re: [PATCH 6.18.y] scsi: ufs: core: Re-arm the device command
- completion before submitting
-From: Alice Chao <alice.chao@mediatek.com>
-To: Bean Huo <beanhuo@iokpp.de>, <stable@vger.kernel.org>
-CC: <linux-scsi@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-	<martin.petersen@oracle.com>, <James.Bottomley@HansenPartnership.com>,
-	<bvanassche@acm.org>, <avri.altman@sandisk.com>, <alim.akhtar@samsung.com>,
-	<wsd_upstream@mediatek.com>, <linux-mediatek@lists.infradead.org>,
-	<peter.wang@mediatek.com>, <chun-hung.wu@mediatek.com>,
-	<cc.chou@mediatek.com>, <chaotian.jing@mediatek.com>,
-	<tun-yu.yu@mediatek.com>, <naomi.chu@mediatek.com>, <ed.tsai@mediatek.com>
-Date: Tue, 6 Oct 2026 17:55:03 +0800
-In-Reply-To: <1912caf84d99bc2388960c907184f06689806ee6.camel@iokpp.de>
-References: <20260915052638.459390-1-alice.chao@mediatek.com>
-	 <1912caf84d99bc2388960c907184f06689806ee6.camel@iokpp.de>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-User-Agent: Evolution 3.52.3-0ubuntu1.1 
+	Tue, 06 Oct 2026 10:16:26 +0000
+Received: by mail-pf1-x431.google.com with SMTP id d2e1a72fcca58-88834d30002so280724b3a.1
+        for <linux-mediatek@lists.infradead.org>; Tue, 06 Oct 2026 03:16:24 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20251104; t=1791281784; x=1791886584; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
+        bh=qoB87xt/si/5SQ89z++VwfJlgKEBpZZ8oa5UH367RG0=;
+        b=eANorSAxRI3t9p056K3TxzoAGQgh9Kqzm2yvAzgRf2JHGuugK5isEoCHRUZmEX+6M1
+         hNrq522o30llh3QlmHIikUFkYXmHi2FCjlGjODgBE8PmCSAh+fZL1sJQNZnCMTRUI0ng
+         w0tKj2dHkIFtGPFJ6VTGWsd5VVzTBZvrd4CKSqjYlUJ8+HLrW6G9+oVEnCEOs+EuIiNn
+         bol0vQ1Wt4pD/2KkQ5nGfkBhB1zoZg2NC9xpm/xXVcaHT8qX6d5a6exLzTaUei0vqS0e
+         hCEaCqC2HrB7jabX0TfYpvBouGsjYjk6OhcH6lzf0KBwSlVMhZNgFtAInCzHYASWULvR
+         dlHw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20260707; t=1791281784; x=1791886584;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to:content-type;
+        bh=qoB87xt/si/5SQ89z++VwfJlgKEBpZZ8oa5UH367RG0=;
+        b=Mv+oM03u2lfBfl76v+fPJsLZvb6A6C1qaStidwwpnOfYvFKdSyim4Z2UPEZOlhN2Ox
+         6bxbLjxqeaqCKLqe4YfeG5cvtrmGjLku6s8YWnp83awTc1Cm7f2iImeN3gvuaTn904gF
+         W0/VzDaL83gB6WSIaydCTVeYC5SIrQxQrkB/5EQQPReXb0kC/h9G1/9TRNDHhAPUN1qC
+         eDJoXb9TOYG03HGYHfW3Ntk1MbX4jrmTsVwihC2iUvWXe+wddplYpPqAUhQPTfvIhW/S
+         n5v8k53CFakhiIRfSDjZWCC/dHXd/7OFQbJlitJvHI4nZvjt54t6jNXzaMyaGdCwnypJ
+         VvxA==
+X-Forwarded-Encrypted: i=1; AKwUvBzm+mgx5SHRhTNXT66gPMkRonC99d8q+14NJ0k1DJ3Cdc9hTeXB5MdYaw7wxLZBBVg8gTQPeqRhIpQOywk+lg==@lists.infradead.org
+X-Gm-Message-State: AFuF++l2/1TZPL4zfX+tXUtpb6HTZqQwT+CUYNfc6WLYLGqpURrn2PiR
+	wO8dJZd0paFzuFVbAdS8Dv981z21HvG98QTUDNprGCx+Gttbo5JQjPmz
+X-Gm-Gg: AYBFou0wf4QJ72hnKrrgTbzVa0m3BClPF74ZPihOsxSTxYaqyQXBe46Yp9TO4VxKQ2z
+	JjEFDE5wbtp+h+CJrDZM1HLmaNymyZn6D5PknNawcOK8p1tx2N1dgrcekfFH9wYngO+NLPc++3w
+	LGlK/N76HQjc/TAJ8fV6GsEgwlZFwZUDyCxtfSTGXwY9sHZiSBHbLo9GzdXFim9Fz0fxDePasZW
+	TEtMjk2M2+5wIffwTbgJPe4Vc9WBpKq1SwU12seZnuu6viw1I5LKUYujebD9kkVbqSu6MNQHrsf
+	xmweBhCWitl5DjJPrttn+zfKzfpukdoVbl06JUHB94Vc1Zod541HQqJgRnTHFfbmvxhquCTwkSf
+	fFF6k14gpIlpaI+rNMGw0dRAoaNvihqFcBGk3AnAYUaai0D2QNp4E13aGYWU/HgtnJ4sCBATNvX
+	/o/In27ibyLbIllL7Ke6MlcfCYRqLp1jitiIxMEq+/prV+NKf0Ya9a0SUksZPb8JSzAUrwS9ngR
+	3AVc9xDjW1icmkSyHjUZmmrxtI8K2J5mvxPXrUcdMszUPXAl294122BnsMR9bSIflfq/c3uog+I
+	jaEDtkk/eNqLMtWbasZKjZ1w
+X-Received: by 2002:a05:6a21:511:b0:3e0:da23:874a with SMTP id adf61e73a8af0-3e1246e1ec9mr796494637.18.1791281784146;
+        Tue, 06 Oct 2026 03:16:24 -0700 (PDT)
+Received: from phuc-desktop.. ([183.91.15.56])
+        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-88b0d152432sm4547505b3a.53.2026.10.06.03.16.18
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 06 Oct 2026 03:16:23 -0700 (PDT)
+From: phucduc.bui@gmail.com
+To: Mark Brown <broonie@kernel.org>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Trevor Wu <trevor.wu@mediatek.com>
+Cc: Liam Girdwood <lgirdwood@gmail.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Jaroslav Kysela <perex@perex.cz>,
+	Takashi Iwai <tiwai@suse.com>,
+	Kuninori Morimoto <kuninori.morimoto.gx@renesas.com>,
+	cassiogabrielcontato@gmail.com,
+	Haotian Zhang <vulab@iscas.ac.cn>,
+	Christian Marangi <ansuelsmth@gmail.com>,
+	Cezary Rojewski <cezary.rojewski@intel.com>,
+	Cyril Chao <Cyril.Chao@mediatek.com>,
+	Tuo Li <islituo@gmail.com>,
+	Rosen Penev <rosenp@gmail.com>,
+	Garlic Tseng <garlic.tseng@mediatek.com>,
+	Alexandre Mergnat <amergnat@baylibre.com>,
+	Dan Carpenter <error27@gmail.com>,
+	linux-sound@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	bui duc phuc <phucduc.bui@gmail.com>
+Subject: [PATCH 0/4] ASoC: mediatek: Return 0 from FE startup on success
+Date: Tue,  6 Oct 2026 17:16:02 +0700
+Message-ID: <20261006101606.54079-1-phucduc.bui@gmail.com>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
-X-MTK: N
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261006_025513_026153_D7EEABCE 
-X-CRM114-Status: GOOD (  17.48  )
+X-CRM114-CacheID: sfid-20261006_031625_371051_A558314E 
+X-CRM114-Status: UNSURE (   7.17  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,69 +118,36 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, 2026-10-05 at 13:54 +0200, Bean Huo wrote:
-> The late CQE can come after the re-arm:
->=20
-> timeout -> cleanup -> retry B -> re-arm -> send B -> A's CQE arrives,
-> and then B
-> is woken up early and fails, if B's own CQE in turn comes after C's
-> re-arm, C
-> fails the same way, and C may even read B's response as its own.
->=20
-> Whether this stops depends on device latency against our retry path,
-> not on the
-> patch.
->=20
+From: bui duc phuc <phucduc.bui@gmail.com>
 
-You are right. Re-arming only covers a late CQE that arrives while no
-device command is in flight. The query retry wrappers resubmit right
-away, so the next re-arm will usually happen before the previous CQE
-lands, and the skew can cascade exactly as you describe. It is also
-worse than an early wakeup: every device command shares the reserved
-slot's response UPIU, so C can parse B's response as its own and
-return a wrong value rather than an error.
+Hi all,
 
-> The root cause is that all device commands share hba->reserved_slot
-> and the CQE
-> carries only the tag. Since a successful SQ cleanup must post an
-> ABORTED CQE,
-> could the MCQ timeout path wait for and consume that CQE before
-> returning -
-> EAGAIN?
->=20
+Some FE startup callbacks may return a positive value from constraint 
+helpers, but ASoC expects 0 on success. This can cause .shutdown() to be 
+skipped during rollback.
 
-Agreed, that closes the window instead of narrowing it. In v2 the MCQ
-timeout path will:
+Return 0 explicitly on success.
 
- - after the SQ cleanup, wait (bounded) for the reserved slot's CQE -
-   the ABORTED one, or the regular one if the command completed
-   anyway - before returning;
- - if no CQE shows up in time (e.g. cleanup failed, or
-   UFSHCD_QUIRK_MCQ_BROKEN_RTC), force a host reset and refuse device
-   commands outside the error handler until it has happened, so the
-   slot is not reused while that CQE can still arrive;
- - keep reinit_completion() at submission time as a safety net.
+Compile-tested only.
 
-> does this patch only covers a late CQE arriving while no device
-> command is in
-> flight. Did you test it with injected timeouts to see whether it
-> recovers?
->=20
+Best regards,
+Phuc
 
-Yes, v1 only covers that case. And no, I have not tested it with
-injected timeouts yet.
+bui duc phuc (4):
+  ASoC: mediatek: common: return 0 from mtk_afe_fe_startup() on success
+  ASoC: mediatek: mt8188: return 0 from mt8188_afe_fe_startup() on
+    success
+  ASoC: mediatek: mt8189:return 0 from mt8189_fe_startup() on success
+  ASoC: mediatek: mt8365: return 0 from mt8365_afe_fe_startup() on
+    success
 
-Before posting v2 I will run it with injected device command timeouts
-in MCQ mode: periodic fake timeouts under a descriptor/attribute read
-loop, with the values checked against known-good ones, and the case
-where the CQE never arrives, to check that the host gets reset and
-device commands recover. This will also show whether our controller
-actually posts the ABORTED CQE after the SQ cleanup. I will run the
-same injection on v1 and on the unpatched kernel for comparison and
-put the results in the v2 changelog.
+ sound/soc/mediatek/common/mtk-afe-fe-dai.c | 8 +++++---
+ sound/soc/mediatek/mt8188/mt8188-afe-pcm.c | 5 ++++-
+ sound/soc/mediatek/mt8189/mt8189-afe-pcm.c | 8 +++++---
+ sound/soc/mediatek/mt8365/mt8365-afe-pcm.c | 7 +++++--
+ 4 files changed, 19 insertions(+), 9 deletions(-)
 
-Thanks for the careful review.
-
-Alice
+-- 
+2.43.0
 
 
