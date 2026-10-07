@@ -4,63 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 63DCFCA5FF1
-	for <linux-mediatek@archiver.kernel.org>; Wed,  7 Oct 2026 11:31:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6118CCA5FF1
+	for <linux-mediatek@archiver.kernel.org>; Wed,  7 Oct 2026 11:31:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
 	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=xgxM6FYn0isBdsQMlcFrK2TIeGVsguqdQQK2vRxPUi8=; b=gTQsepMipOPvoy7+xEbSk5hvjw
-	O2EswhfdUi5OFHkkyEJjLXGgVUdvyVr0QA4EH52eWHWMi3RB2jLdntTWtxpyMmMtgLne1PtIJYu85
-	Zj5uyjlAcV2ySA4ps0tFMH7u8CZ4quFA/BNS+rkqc1Jtbf95/rswEhvO7apW6OcIAqD4pfdU3wA6D
-	lebkHMg9BzET06/Ig6z1r6/P97uDX5W681GPrYi2d23tcEWnwc6pmoY+tU92nxsHhqUP1mYKT+k53
-	nhqS6yRtFevsGcBmszkc61DMbomG1o3hoR3P0fo5S9NJq+xLgqanuv+BwE2wBhw7uspUsbnZy+0xE
-	VKP99nYg==;
+	bh=g6P+spmMmmlUm27GqFei7PSvg2i8zHuoJmMtTND1pM0=; b=HRaB1eqhHs1COtsOkdSiFydp7r
+	47+JrduHT6b77cS0cFNrIkKwb+I+RkuYDcmHfDv53Vtl28c1Q0Sf0RRfc+A2YZo49jSwGum2rsE/D
+	0MXvuZ5imTHBODXem5c3MZjKhFco4IxUDb2V0GT7+k0Ia6kdujWaJGtqQxcxa3fv86l4Sc6ge2lxU
+	c4MTgZ/UIoT2JPi2HCOzf7i6aeYA5TbwSW7HPpTfPf02vmA8dS29/EHLBpCAJGI3S8lyRUv0A+2t9
+	fr/W2ZpefDJNKxoBxWB5nLVEel2vd8A2mMNUOIflHcLkckgj8zU+YIIeyHRvACtxZDpJLW4/hkAQs
+	o6FW5osA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xEPrP-00000002JnQ-0ytk;
-	Wed, 07 Oct 2026 11:30:59 +0000
+	id 1xEPs7-00000002JuT-1lIO;
+	Wed, 07 Oct 2026 11:31:43 +0000
 Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xEPrO-00000002Jn4-17oH
+	id 1xEPs6-00000002JuG-30E9
 	for linux-mediatek@lists.infradead.org;
-	Wed, 07 Oct 2026 11:30:58 +0000
+	Wed, 07 Oct 2026 11:31:42 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id A922442E2A
-	for <linux-mediatek@lists.infradead.org>; Wed,  7 Oct 2026 11:30:57 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8D3981F0089C
-	for <linux-mediatek@lists.infradead.org>; Wed,  7 Oct 2026 11:30:57 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 6AFB443E5E
+	for <linux-mediatek@lists.infradead.org>; Wed,  7 Oct 2026 11:31:42 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 4FA341F008A4
+	for <linux-mediatek@lists.infradead.org>; Wed,  7 Oct 2026 11:31:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1791372657;
-	bh=xgxM6FYn0isBdsQMlcFrK2TIeGVsguqdQQK2vRxPUi8=;
+	s=k20260515; t=1791372702;
+	bh=g6P+spmMmmlUm27GqFei7PSvg2i8zHuoJmMtTND1pM0=;
 	h=References:In-Reply-To:From:Date:Subject:To:Cc;
-	b=fTndUSvpRAekw3zXE5G11CMv1qCMbLi2OZaH+lz3aO0TRCtwePQGkAwqXXphnaXOY
-	 0nvxmDMb0M3623XjCr6t0+CC5r5SKRLQoWauL+zC9fBlvZDuj4lDYXocFzzSfxRAvj
-	 x/VVqxPc/IKcaF2El984fvL1LPzAj0SmtUT7B+nQ3GWo/uJd6nWmx/H4ZxnHCVD49z
-	 hJms/ncDgLh1d1hk0bDRHb3XIuaPRPj6Or2s7PasdonV/+iHtLAgRQ4yv8oim6yR4c
-	 PScE5zDJjvT+wqwCInQ7AYfXsG37ZxYcXzEAvB6eVLQjEzaQvLSokpOaIhnwKDfSWt
-	 qIEo6wI9e6WHw==
-Received: by mail-oo1-f41.google.com with SMTP id 006d021491bc7-6d7a9e2eb24so2309556eaf.1
-        for <linux-mediatek@lists.infradead.org>; Wed, 07 Oct 2026 04:30:57 -0700 (PDT)
-X-Forwarded-Encrypted: i=1; AKwUvBxzB/pAW6zNuN2berajEAjv25n/1eLrms2PH9bENd7+rEEvjJeEdBep5OrVgPEwtMOYs5G43PEtORsQz08WOw==@lists.infradead.org
-X-Gm-Message-State: AFuF++nJJON1lzipnEfPBu2UcV3mT3JS8vSQW+z+KfvSHhKS5jfV+nBA
-	I60TvAmIfGoLUsTnriQHOImR1MJbpWmKV5DTU3Vjg2s4WoVPcIEiDyarBPsIuGcA27ElA1h1i/o
-	Zgj+Litqq5D2CKr4jrC0wJu0P/3y8UkU=
-X-Received: by 2002:a05:6820:80c4:b0:6dc:5532:c64a with SMTP id
- 006d021491bc7-6e7a6f7ea8emr1872351eaf.50.1791372656927; Wed, 07 Oct 2026
- 04:30:56 -0700 (PDT)
+	b=jC6/zyQh9ODKwfOcpqoO4mtMRkqQMCJucyGcR6GXptshw+GURUSMyeBn4lWmiWa2U
+	 BrNgESCGY3cr2zlNEAYXcMTZYJrHqNr8puETHH2U10uupAiL2xaNUQPxsilMLUrFH8
+	 fK9Lle9Cz/efba9vdUYtTMM8+jXYxJcisfNF0CX4IlMgfOLYOHa4QhFjJ8f+BgObXh
+	 N/GAfqt6dKc8Fcd24DzzHIhf8ymAvi1a0Xol2sg2z3m2GS+fLkSdxbeUCtGAyXQItN
+	 twPEegs6RvVfhosT4JI4Mxg6Gr7EmB35d/FYY/fy8jLVkOJkTuJSUfAyTOXCuKJhub
+	 CYEDbfTkKX84w==
+Received: by mail-oa1-f42.google.com with SMTP id 586e51a60fabf-49e20441e45so1302641fac.0
+        for <linux-mediatek@lists.infradead.org>; Wed, 07 Oct 2026 04:31:42 -0700 (PDT)
+X-Forwarded-Encrypted: i=1; AKwUvBwxNxicOpphKXP3wonUwDs6iaeo7M8IN/7YcEFKPbDluQGaIn/Udgtez8IBx+gv9xr3JlptRmf9FUwY/x08Ng==@lists.infradead.org
+X-Gm-Message-State: AFq9FYKrcfuFHfm0D77sYEfBvAU2TQhFvd4F10cbzhPLIDVn+xBzpoCg
+	mCNgr4ouGZnqJJrLHKBB7GUWvXt347QSLizQ0W4g0iZYNDhVpxXRO3YoKqtEUu92veXIPJcmMAt
+	Kk4Gv/aunvVylNmS/1orjuhx8BtebzpA=
+X-Received: by 2002:a05:6871:7d8f:b0:48f:e0f6:bd4e with SMTP id
+ 586e51a60fabf-49f4f0b8d3dmr3544055fac.35.1791372701659; Wed, 07 Oct 2026
+ 04:31:41 -0700 (PDT)
 MIME-Version: 1.0
-References: <20260925-mt6735-pinctrl-v9-v10-1-cc042983c565@protonmail.com>
-In-Reply-To: <20260925-mt6735-pinctrl-v9-v10-1-cc042983c565@protonmail.com>
+References: <20260925-mt6735-pinctrl-v9-v10-2-cc042983c565@protonmail.com>
+In-Reply-To: <20260925-mt6735-pinctrl-v9-v10-2-cc042983c565@protonmail.com>
 From: Linus Walleij <linusw@kernel.org>
-Date: Wed, 7 Oct 2026 13:30:42 +0200
-X-Gmail-Original-Message-ID: <CAD++jLk9OwY1oQOhD5gGrTtwbiaf04YF0NeFN7VAXhTM4CO5UA@mail.gmail.com>
-X-Gm-Features: AclHuK8H3quu5l1-b_eOsuvpMh14N3vpR9eJtEK6ctWPpCH8KQlDYSG-vDGgNc0
-Message-ID: <CAD++jLk9OwY1oQOhD5gGrTtwbiaf04YF0NeFN7VAXhTM4CO5UA@mail.gmail.com>
-Subject: Re: [PATCH v10 1/6] dt-bindings: pinctrl: mediatek,mt6779-pinctrl:
- Pull pinctrl node changes from MT6795 document
+Date: Wed, 7 Oct 2026 13:31:26 +0200
+X-Gmail-Original-Message-ID: <CAD++jL=Lf5NQh1s543XS6ZMTuV6dKD1ebVJYcHcQjvLN2sv8jQ@mail.gmail.com>
+X-Gm-Features: AclHuK91yzMdnow7AVBRSKC7FQKTFDXkxwc5yS2wNsCnGspgKIcoIoO9YB0evBI
+Message-ID: <CAD++jL=Lf5NQh1s543XS6ZMTuV6dKD1ebVJYcHcQjvLN2sv8jQ@mail.gmail.com>
+Subject: Re: [PATCH v10 2/6] dt-bindings: pinctrl: mediatek,mt6779-pinctrl:
+ Improve pinctrl subnode and property descriptions
 To: Yassine Oudjana <y.oudjana@protonmail.com>
 Cc: Sean Wang <sean.wang@kernel.org>, Rob Herring <robh@kernel.org>, 
 	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
@@ -85,19 +85,19 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Sep 25, 2026 at 8:52=E2=80=AFPM Yassine Oudjana
+On Fri, Sep 25, 2026 at 8:53=E2=80=AFPM Yassine Oudjana
 <y.oudjana@protonmail.com> wrote:
 
-> mediatek,pinctrl-mt6795.yaml has different node name patterns which match
-> bindings of other MediaTek pin controllers, ref for pinmux-node.yaml whic=
-h
-> has a description of the pinmux property, as well as some additional
-> descriptions for some pin configuration properties. Pull those changes
-> into mediatek,mt6779-pinctrl.yaml and adjust the example DTS to match in
-> preparation to combine the MT6795 document into it.
+> Change "subnodes" to "subnode" in subnode description for better
+> grammatical accuracy, wrap all descriptions at 80 characters, and remove
+> literal style indicators from descriptions that don't need their new line=
+s
+> preserved.
 >
 > Signed-off-by: Yassine Oudjana <y.oudjana@protonmail.com>
-> Reviewed-by: Rob Herring (Arm) <robh@kernel.org>
+> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collab=
+ora.com>
+> Acked-by: Rob Herring <robh@kernel.org>
 
 Patch applied.
 
