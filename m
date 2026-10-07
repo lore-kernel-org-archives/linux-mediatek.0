@@ -4,145 +4,179 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E173ECA5FF1
-	for <linux-mediatek@archiver.kernel.org>; Wed,  7 Oct 2026 11:51:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 60D53CA5FFC
+	for <linux-mediatek@archiver.kernel.org>; Wed,  7 Oct 2026 14:03:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=XtdNBtyuMYUvpdnC3AqmffuEoE7lo8mm8sw8bIFZvDA=; b=ho4R+EL+JnwTHa0eHAYE6mghIZ
-	SghIViejvJ27JBJQ0wNu7YgyRSOJPWcQgXtGeLI6BYc7YeO/Z7a6e/GLg4UNhJ90+KjtB3ZC4jJiB
-	vg2YuMEtd72Gk5HHZ5A4IiKy2WYOI/9TESujVq02asV8LT781MbYeSSAHjfoQXgUHWmCCrYVWL84h
-	Nbb4v/SIcAdU1doFOkS+PndnKhErWbBo2f6oHqB5R1A9DE39xRaY3fElmdjr12ur7dv/9nLBUysr+
-	vvKpPdK4hY04kH3e+K/8f/PfY1IwDlBSdcwrne+6Cax843HH1sB8Du/Zu1zPepvbsvei2S9SgTGSd
-	vzeDGW5A==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:CC:To:
+	Subject:Date:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=JIAa6c1/ya6A1pR6VXnqS2q0OUKafY3Rm1R7x6BCEmI=; b=D0X0oMZ4A/K7KwX3hKrsEDKDm1
+	I1ggZnsugdyLzCTbLuGoB0PHTJt7qRCU3RDKR8Tw2+7mO8NAXoBDChEXA+8s1RbO4KOte9YxlHErR
+	PJnQ4RoQ+MhQ2PBzs/k3G5chIDJAMzbT2/p/b5gyLLNhVQNO/AVUxQKQFeeI94CN5fKeyJkICHH21
+	zKuW9ODarXeYHRVyEkaxlGfLGQW2J7HUbrvtf9VCMxlz3JBmB+rbNnfq75gPhYsVPitOeKaHZ0Kgi
+	G3ZhtzKuDKffEcFJ4Ah1Na+asloWXSJKrORJxufg6Ly2YciVHIUBgFtslhVn6Nw2j4mKwCT3S00s2
+	ksxwjWGg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xEQBC-00000002OLD-3BkX;
-	Wed, 07 Oct 2026 11:51:26 +0000
-Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
+	id 1xESF8-00000002ZoT-089M;
+	Wed, 07 Oct 2026 14:03:38 +0000
+Received: from mgamail.intel.com ([198.175.65.14])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xEQB6-00000002OJu-2sMx
-	for linux-mediatek@lists.infradead.org;
-	Wed, 07 Oct 2026 11:51:25 +0000
-Received: from pps.filterd (m0279863.ppops.net [127.0.0.1])
-	by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id 697BV8vx3821198
-	for <linux-mediatek@lists.infradead.org>; Wed, 7 Oct 2026 11:51:20 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
-	cc:content-transfer-encoding:content-type:date:from:in-reply-to
-	:message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
-	XtdNBtyuMYUvpdnC3AqmffuEoE7lo8mm8sw8bIFZvDA=; b=jCpXFkwVbJv22Gtp
-	PfcOpQJynVnz4u4uXnFSYjyjYXDH4dvY8rsSKtmSqpqJbRHlKFclK0AmuRD6ECe7
-	tN6Gmb9HUAl5YF3oKIsZZc0Blymr3e30s74AHayPsChoqSO/ezS1V95lI3DhR/j7
-	7c9YGqTA0yO2aJ0DrhgOWDG6du7LQSnsap1K5KenZhGsh+81c4RiYnHP1/2TSn5y
-	NGJ1l+e7VCkN5Zhg0t7WD+p0b2blnDUj8kVhY6d4O4HMibIkK3mPxXRJKgtPOZ0G
-	Z4h7xe5nWDangcEAg62F5ChmHJlewNj6B7dw2G/41n4XTAK1sxCwpu06rx7Wj31l
-	cUtI7A==
-Received: from mail-qk1-f198.google.com (mail-qk1-f198.google.com [209.85.222.198])
-	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4h54623v84-1
-	(version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
-	for <linux-mediatek@lists.infradead.org>; Wed, 07 Oct 2026 11:51:19 +0000 (GMT)
-Received: by mail-qk1-f198.google.com with SMTP id af79cd13be357-93dea1b6c89so674781385a.2
-        for <linux-mediatek@lists.infradead.org>; Wed, 07 Oct 2026 04:51:19 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=oss.qualcomm.com; s=google; t=1791373879; x=1791978679; darn=lists.infradead.org;
-        h=content-transfer-encoding:content-type:in-reply-to:from
-         :content-language:references:cc:to:subject:user-agent:mime-version
-         :date:message-id:from:to:cc:subject:date:message-id:reply-to
-         :content-type;
-        bh=XtdNBtyuMYUvpdnC3AqmffuEoE7lo8mm8sw8bIFZvDA=;
-        b=PaxsjEoNpJn15GHsAPhAgOPGeUP4mioP94GnUP4x3zc9+ghNsKzD0nipV8MMk+CLSf
-         Oqb46QIjtzF/fT60pUKAT0eIXTOI5s97fEPvabPXHszTg476tSgqeU7QIm/GyAN1YU3d
-         SK8BPeZukgPj8ESzexki60FToR50dy9FpkdI928+t+V1AxYV/upDzycnmXXzqmWA7Q52
-         Scxg3Epnrhea4YeYWUSmP3w/4aBySFGzCMf3vWo1djvh49qKVYduYRKcHjuvv5QbrdyO
-         SQqVSF+JNLvL9e1boEGVVdYfyWekDvBU+q3iTvGljCeX/g7g/FuRxnCjxZ2kWN6t6lxp
-         ru9w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1791373879; x=1791978679;
-        h=content-transfer-encoding:content-type:in-reply-to:from
-         :content-language:references:cc:to:subject:user-agent:mime-version
-         :date:message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to:content-type;
-        bh=XtdNBtyuMYUvpdnC3AqmffuEoE7lo8mm8sw8bIFZvDA=;
-        b=h/SqLxgAtuLCi7aByutaZx56MGjWAC3dOw3BPv+xXUarEVOzRotjdO1j8v/gjkhnUd
-         Q1Yuli/r0jsIXZFQMrpoj63tpQtgoQs/kIe5/5W71Hz110kS2EtQ05lv0OX4eS3Ng4CF
-         rofTozKh4+uaEp++sFZkUntIzHkRkatfMCtaG3YvztrwMdaotndyuKjeRZLJA+6X13if
-         xY4dEoUjAUX1yP6PhtA7v0edzNJwZIsK6iOKulNSBkW1Bw2mEkpQFwvIAcnmQd8z/Iub
-         xZmdCyfHIESGYYq+gIOV+LotqNLtk+O9vac+yShAv3ko2qM73ALVtIwmfrX+LdcYfVn3
-         l/TA==
-X-Forwarded-Encrypted: i=1; AKwUvBxcObDODcoizpGt24ho6NZfElqNJ4BvQ4vy4PMW5n4kXNXTVwvZ4PPcWOKtpBk01DPqfKNFtc+nO6uVZGSMUw==@lists.infradead.org
-X-Gm-Message-State: AFuF++nm7pshP/KsC18I8mviQQ80kFb2E5hNGF8EyVvMCZSmQNY8Gb9R
-	q+PLgO55aTh3w40MMCnocnf3c6DCGByJk90duP24YAFv8unmajXEvUCNqVrA05d5PJmMO0B07Fg
-	4XlUxdaWBO3iPTZbhLtZzYWTNsFqvQuGwWEceNYJlfCe9F7885w7pqNg96qLFXhq8d4W9oLT/Wx
-	Q=
-X-Gm-Gg: AYBFou0hjIGhhU4/hBZz4w7bQ42pTuIs5P0IHMGPgqTC4d0HnhYDSIpJHJy50hWJkBW
-	9Sp4j0zGtDN2YZfGEs4LbcDzafXdGGPcw4KnREW4Ssw/YVT6JByphPF66JiMNY/vg8itS0vUJZO
-	oMZ8HgpWn0g8GVgH+hRl6nkNsCXqFHOsnxEUYq/+Ud0DbhLJocEogslY+LLS0NS7mDBeQCz9+Zk
-	S+hZhOQdB80NJXPdYp5vXXoY2en9DBc2I8DZRcVi9FLgzlxcXh/EaxETnYubP2WsvEBlNa3jvQm
-	RV8JRpaSWtujytJ5PboWf/yG6fY7sZv879ePzFZQ50UVshmyWzrFJmelPut+QMzvAfbVl6mgf5o
-	JZJNVgCNQjX8tpwV0LJxnwxU55+Taprjc4I0Pebj9OfNT
-X-Received: by 2002:a05:620a:31a8:b0:93e:634a:99c8 with SMTP id af79cd13be357-93e9b71c00cmr339090885a.25.1791373878652;
-        Wed, 07 Oct 2026 04:51:18 -0700 (PDT)
-X-Received: by 2002:a05:620a:31a8:b0:93e:634a:99c8 with SMTP id af79cd13be357-93e9b71c00cmr339084385a.25.1791373877989;
-        Wed, 07 Oct 2026 04:51:17 -0700 (PDT)
-Received: from [192.168.2.1] (146725694.box.freepro.com. [130.180.211.218])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-48c71d2d563sm4984894f8f.41.2026.10.07.04.51.14
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 07 Oct 2026 04:51:17 -0700 (PDT)
-Message-ID: <7bb74631-6703-4a30-a7a7-424ce6340a03@oss.qualcomm.com>
-Date: Wed, 7 Oct 2026 13:51:11 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird Beta
-Subject: Re: [PATCH 1/2] thermal/drivers/mediatek/auxadc: Register per-sensor
- thermal zones
-To: =?UTF-8?Q?Nils_B=C3=BCchner?= <nils@buechner.me>,
-        Daniel Lezcano <daniel.lezcano@kernel.org>,
-        "Rafael J . Wysocki" <rafael@kernel.org>,
-        Matthias Brugger <matthias.bgg@gmail.com>,
-        AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: Zhang Rui <rui.zhang@intel.com>, Lukasz Luba <lukasz.luba@arm.com>,
-        linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org,
-        linux-arm-kernel@lists.infradead.org,
-        linux-mediatek@lists.infradead.org
-References: <20261006025410.506443-1-nils@buechner.me>
- <20261006025410.506443-2-nils@buechner.me>
+	id 1xESF4-00000002ZnM-1JUm;
+	Wed, 07 Oct 2026 14:03:36 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1791381814; x=1822917814;
+  h=message-id:date:subject:to:cc:references:from:
+   in-reply-to:content-transfer-encoding:mime-version;
+  bh=lruYiW0uBRs3Qb+ISAnc3bg66XCAEI8Fxt7qhfUbxLo=;
+  b=Xz32aq+8JrHbXdv1mxEKFY48mrjmEl9Zq9nceviKXNWt42RIoO8kplRz
+   JpagSqYx6dtTj+Mg3ZNLmiD4vdljpiaenB7s6PbH5JmBAuTO2wHKJKs4s
+   BsnZwg3QRFUszzgJuprDFgbGgeX32ZCwgkvi4JHEJwLDeqDJEn8te5dxb
+   zMyH/UDxTvdKRGY4u/kLcjobzuc8/tZlqvdfv5Xr4U2scCDGaN7oZDYgi
+   nM4Xh4IqmxpWVxM+/bRbLYbbIZ+621gxu3v3v1flgVObaesPd5FpwqoPV
+   aoWINdoVRuROXeSi5ErFlKuHCr49mdGt2VP5uhoScU0Z71DOmT0+1hccd
+   g==;
+X-CSE-ConnectionGUID: nKHkr2LkSfeUpf1yd2Mhgw==
+X-CSE-MsgGUID: Pvi1vQ9ZQxOmNZnXCLrIdw==
+X-IronPort-AV: E=McAfee;i="6800,10657,11928"; a="29609"
+X-IronPort-AV: E=Sophos;i="6.27,144,1787036400"; 
+   d="scan'208";a="29609"
+Received: from orviesa005.jf.intel.com ([10.64.159.145])
+  by orvoesa106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 07 Oct 2026 07:03:29 -0700
+X-CSE-ConnectionGUID: zmTy/GKTS2GmXgdB4cVmoQ==
+X-CSE-MsgGUID: d1TjUYqeSMuMFx3z1uSyAA==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.27,144,1787036400"; 
+   d="scan'208";a="281209335"
+Received: from orsmsx903.amr.corp.intel.com ([10.22.229.25])
+  by orviesa005.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 07 Oct 2026 07:03:26 -0700
+Received: from ORSMSX901.amr.corp.intel.com (10.22.229.23) by
+ ORSMSX903.amr.corp.intel.com (10.22.229.25) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.2562.49; Wed, 7 Oct 2026 07:03:25 -0700
+Received: from ORSEDG902.ED.cps.intel.com (10.7.248.12) by
+ ORSMSX901.amr.corp.intel.com (10.22.229.23) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.2562.49 via Frontend Transport; Wed, 7 Oct 2026 07:03:25 -0700
+Received: from CY7PR03CU001.outbound.protection.outlook.com (40.93.198.47) by
+ edgegateway.intel.com (134.134.137.112) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.2562.49; Wed, 7 Oct 2026 07:03:24 -0700
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=PL5ymIeOLTsE2lvYsdlxp3bzcQOMpNk0qejlXxGlVD1CWw0FL7DZB8dQ25fmGuLTxErDSR5+fUwQUm5NM1KGV9kVyIKwaZIrJmemKUph5XaEnw1bkKhbv3NUowPFBk3cAto4Jt3xQituVDlmQJK13FeRldHCtF16xdBpq7M2uFAzuIAZlt3A2cI/3YJYqOmhsfRSVDJ8eD5IuV6dHJ12PNwEEG1XEM7PDFDEtxjLImMN+FbeDiJnhjzsE4i9srAF2rngl9+Uwf6vkHyJDXV6mKP3BqjUKpLr2ItzrKfd7NZd+1QwFCfWcf6AUqAy7nsKbYKxMCXwoVbh8HzCCWUQMA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=JIAa6c1/ya6A1pR6VXnqS2q0OUKafY3Rm1R7x6BCEmI=;
+ b=SpSWfuZ/ZeMj3aaCvI+D3Ejmz2oSxtTfeEoL/ndhp0jPD9cYm5jj7HQ3t7w7Jeze2rA5hhHQoAQxViJR3V2A8TLvAgJTXhYDxziIHnJ0upe2UiZmKaDW76z4NjFE82IHm8jCVNgJmwrjvqL0x3j73an9XaqIvc1w2206WOdzFzzbSyYwoxW1Y6vYUIZGXe/jG9y7YloeMdq7dmHJpURJIK6P9rp3CDQQZMaTBaZOBHCpypABoeNgJ5sMtvdRRlJW9Yh8/6C1H6CTbXRmdDOFexBV1ViMksAMLGtk6zRAteKsHSakwrcjR9p2YUq53Zf9afwV8ChRjUrFTNwH+ggq5A==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+Authentication-Results: mx.microsoft.com 1; dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=intel.com;
+Received: from PH7PR11MB6006.namprd11.prod.outlook.com (2603:10b6:510:1e1::13)
+ by PH7PR11MB6723.namprd11.prod.outlook.com (2603:10b6:510:1af::10) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.472.18; Wed, 7 Oct
+ 2026 14:03:21 +0000
+Received: from PH7PR11MB6006.namprd11.prod.outlook.com
+ ([fe80::4e2d:28f0:ede9:73bd]) by PH7PR11MB6006.namprd11.prod.outlook.com
+ ([fe80::4e2d:28f0:ede9:73bd%6]) with mapi id 15.21.0472.015; Wed, 7 Oct 2026
+ 14:03:21 +0000
+Message-ID: <d00880e3-01b6-476a-93f5-79ea6e536a1c@intel.com>
+Date: Wed, 7 Oct 2026 16:03:12 +0200
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 0/4] ASoC: mediatek: Handle constraint return value in
+ FE startup
+To: <phucduc.bui@gmail.com>
+CC: Liam Girdwood <lgirdwood@gmail.com>, Matthias Brugger
+	<matthias.bgg@gmail.com>, Jaroslav Kysela <perex@perex.cz>, Takashi Iwai
+	<tiwai@suse.com>, Kuninori Morimoto <kuninori.morimoto.gx@renesas.com>,
+	<cassiogabrielcontato@gmail.com>, Haotian Zhang <vulab@iscas.ac.cn>,
+	Christian Marangi <ansuelsmth@gmail.com>, Cyril Chao
+	<Cyril.Chao@mediatek.com>, Tuo Li <islituo@gmail.com>, Rosen Penev
+	<rosenp@gmail.com>, Garlic Tseng <garlic.tseng@mediatek.com>, "Alexandre
+ Mergnat" <amergnat@baylibre.com>, Dan Carpenter <error27@gmail.com>,
+	<linux-sound@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>, "Mark
+ Brown" <broonie@kernel.org>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>, Trevor Wu <trevor.wu@mediatek.com>
+References: <20261007110858.509341-1-phucduc.bui@gmail.com>
 Content-Language: en-US
-From: Daniel Lezcano <daniel.lezcano@oss.qualcomm.com>
-In-Reply-To: <20261006025410.506443-2-nils@buechner.me>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-Proofpoint-GUID: 759Lnuq_nNo3KAyvt1woHydY946EEOTq
-X-Authority-Analysis: v=2.4 cv=ZZiIpcVA c=1 sm=1 tr=0 ts=6ac63237 cx=c_pps
- a=qKBjSQ1v91RyAK45QCPf5w==:117 a=uw/3876vWhRnNVL35W6mqQ==:17
- a=IkcTkHD0fZMA:10 a=660iZSQnnn4A:10 a=s4-Qcg_JpJYA:10
- a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=yOCtJkima9RkubShWh1s:22
- a=twVTte8M8PIwAJgjBN8A:9 a=3ZKOabzyN94A:10 a=QEXdDO2ut3YA:10
- a=NFOGd7dJGGMPyQGDc5-O:22
-X-Proofpoint-Spam-Info: AW1haW4tMjYxMDA3MDA0NyBTYWx0ZWRfX3n4FpLTUpWCd
- a7alF61VJzK0cj3cqkPobNYlC0vUP4sctKJ0eunxGrFCkT7hOaND5b5gp09xFdHrTP4tUf/z7+6
- tUq8woTb3F3sITWipADsLqGLIox6mQ4=
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYxMDA3MDA0NyBTYWx0ZWRfX2HM5eSfom5yv
- sLOA9GQz/RuhSu+EgSkXjxsOKmc7CgyIA9E8T7YHTfAXHv+iporR/19cU1uqGnfBFkMg3+CrNHn
- XRxRfK2S07IeOS4LM0HJctCHQAmWnBBCeHkUmhWTSQZXcxJAzQJwqR/pfG2QmJoOxKrv6aOszfh
- E269Cuf8K9PA46j4iTyZL8Bw0gSML96ZReqPU8xBI4ueM481wmkqMaloKcdYHoy+gTlZPaEJB8S
- dnK9HDN8bMv7TE6X+bk86VyefJCqfsIkBLfVYjYt0GjV/2TwheeUGRPbNCKNGl0gCI6wqj3glVi
- BqCqI1FoM62od+IF1LOzZ0u3Xyf1i3OoWJAzceoFT6mqLckF5HqcUaRbiJjseW+CEH7FHN2prn+
- 3JVS4TLvSXXFEWmycl5CT1H3G7WaIEnSbQZ6ypptpDWzwHX6jeNwpYJ4PacCM0HrxNov/kvY1Fx
- E+cXukH1gJ9a1AuNIuQ==
-X-Proofpoint-ORIG-GUID: 759Lnuq_nNo3KAyvt1woHydY946EEOTq
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1176,Hydra:6.1.134,FMLib:17.12.100.49
- definitions=2026-10-07_04,2026-10-06_03,2025-10-01_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- malwarescore=0 spamscore=0 priorityscore=1501 impostorscore=0 bulkscore=0
- phishscore=0 lowpriorityscore=0 suspectscore=0 clxscore=1015 adultscore=0
- classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
- reason=mlx scancount=1 engine=8.22.0-2609040000 definitions=main-2610070047
+From: Cezary Rojewski <cezary.rojewski@intel.com>
+In-Reply-To: <20261007110858.509341-1-phucduc.bui@gmail.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
+X-ClientProxiedBy: VIUP296CA0035.AUTP296.PROD.OUTLOOK.COM
+ (2603:10a6:800:34d::14) To PH7PR11MB6006.namprd11.prod.outlook.com
+ (2603:10b6:510:1e1::13)
+MIME-Version: 1.0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: PH7PR11MB6006:EE_|PH7PR11MB6723:EE_
+X-MS-Office365-Filtering-Correlation-Id: 3c724bf8-2ed0-4a86-e488-08df247bbef2
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230040|366016|1800799024|7416014|23010399003|376014|18002099003|11063799006|56012099006|22082099003|10067099003;
+X-Microsoft-Antispam-Message-Info: 0jMmbFu5pN1KqVHM4MXtGUpSS/GRa3ENfH+FYa+iXOg75tMXJI6CM8hk1LDWbsdUI9DIpH9mLEq1hKaVKajvn925tzApaJVVNFmf7QEAsolQ1G7pXpTaNL2WZht5EPFG4r7vSYfDW75F9zHF0FKf7eiz3trjF8SlVk/kU9odlmhqMZ30wGepEXprpeyheS9bp5v0GqjOhJoxMtXGAMlrVvzetgIb/C0Qb9J6XK73r/ZArLTbLnlBoki/loEVW+Sr6DZL1ewUkvcIC3FDYdXUztpCEsnIov26iVe2PCclSJE8n5/yO/1ysurZyrA79NSshi2a2KCp1U66C7U4gY2M3XBI2GV0G6gHknJ6jqSJijngkXFGVw3apTdla55VvNLKqBuU/f9pYP8TWG1EPyy7MqtRtJnBiALA+HiWikNJlfd3akGnesaJzQgLsFqMIJCabljxCDTY64WkiBo+uXwu2nJr0MoL2ZsRuPbm8N559ZRWn1LPZKUTRDWfb4Yu8Z2llYPoetnKLOSifBKVrfiO43zGC0ScpW+kL56I7SwEd3N8EiePoHUWb930mszag0wNY7fP+8/Ck5pItxD/jUJw0hJL9Eam9EB4eZDZqRH5ktXkxX84/gZeLoxAWqu1CL3Jj8p5KZiSJPC8M/NvIZcZEdDbqBWDO66ULk1FhnvS8VY=
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:PH7PR11MB6006.namprd11.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(366016)(1800799024)(7416014)(23010399003)(376014)(18002099003)(11063799006)(56012099006)(22082099003)(10067099003);DIR:OUT;SFP:1101;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?TjlObWdsalJIc21oU3p3czhRaVNQWkt0eTBzU1dFNXpDbmRydmFEK05vK1JJ?=
+ =?utf-8?B?ZlYwTW9UdktJcENtZ0xqZzJVbXI5Q1hXK3REeHVlbjB0ZU01SXRCdUtDbXZ2?=
+ =?utf-8?B?Rk9WUU1xQllQY0pjdnJzUGNaSm5DVmJ5UlVTNGttdGhtK1Yrd3ZrY29sS1RR?=
+ =?utf-8?B?MVdVZ3BhakdYTmd2QTZFNHBDMnlvdGxoT1dmMnpIakFmbEJCTmh6UUdCdS9M?=
+ =?utf-8?B?cmFsazRWTk5vR09FMWhrV2lDNTMyd2x3d2xkTmJzV202YWhsU2NEOEZTYkR6?=
+ =?utf-8?B?ZmxPQmlRUkZQdVhWTVB4T09qY0tSeEZ6QzhQRyt1YWNFNVhhSGc3azFQZGxv?=
+ =?utf-8?B?YjBUbjNURXhiZyt3eWVMbFZZWUNWSFlXMm5hZEk3bzJvR0hiREJyditmS3hK?=
+ =?utf-8?B?aU1BN1gxTk0rNEJ2cStLS21rSXVmOW1JT0dLZEhjOFVoV3Rva1RBbS83a2Js?=
+ =?utf-8?B?cnJjcGtVd3R1QlIrS1VVTnRGL1ZrejhuRXRoaU1WNlhlc2hCWlplQThqcHRN?=
+ =?utf-8?B?MGFYcGx0WkgwRW4wSWp1bk9LeWlkZmNGYml2VzlpeVJRSG04N3lwTnYvbzVH?=
+ =?utf-8?B?SGc1dGpYQlJkUm45MURjRStTcGJGelBON01WMTlWM2Y2S29tVlRZR3cyUWZu?=
+ =?utf-8?B?MEJDdCt5aUVCVXhMeVRYaWNKOWVqNTN2RmRPZjRqSHdRZlB5d3MrS2VoR1dv?=
+ =?utf-8?B?cFVDdUJqZllxbEJGbURiK2h1NGpyTi9qSFFhRkpvK3Q3eHFNQXl0bmRad3BO?=
+ =?utf-8?B?TDZqZEt4MFB6Ukw0K2lFR3krUERwelI5MWhhT2M3d3NUREZTZC9mMUZxSmRm?=
+ =?utf-8?B?Q1V3RnBIWmNLMWZQVGJmNHZIc1NLMEtUZHBZaUt3eCtlN3QxaXZrRjlZRWVV?=
+ =?utf-8?B?WC80Tzl6OVprK3pzbnJLY3hyTitUWkJCTVFNS0dzT3FGaGQvY0VBVFNMbzZs?=
+ =?utf-8?B?Tyt1ZzF0c09OOGk2eGl4aHA3TUhPdVArci9kY2dyRVlCQVlvUFJzZmgwdnBG?=
+ =?utf-8?B?eHY3bmlVM2xsN3dTRDNjaVVBMXZBNzQ2dHZyd3hNMGh1RnE5cE9OTFBGVUdL?=
+ =?utf-8?B?b0JpN0cxd2J3RWZOejhncnFTWjE4Q1JERUVQbFZJeGRQTnUxQUYwRFordElz?=
+ =?utf-8?B?N1BKWVpCNnFVQkFuVHlXaWZvTkpnUUw0ejNFdVJJK3NVSnJBYTdVR3pNUHNx?=
+ =?utf-8?B?Wm0rQ0R5ZytXRTMxUVlxRkFMbFZpVEpqNHlXSExackhQUkhDSDQ4YTNyOHJs?=
+ =?utf-8?B?Ukxha1NINjllemlja3pNdzVtUC83cHNha1AwZFV5QVhidTBGbkc0a3lZWXg0?=
+ =?utf-8?B?cTJ2dWplZXV0aFFoL2xmbkhOMGMyM1ovVE5vZGp0cnVkQWtTWllLYzJTZk1z?=
+ =?utf-8?B?U0xkUzRLcTlOb205Z25wR24xRjVOdUtuYXBMMG1PM3A1dG5oSFRidmFOTWdz?=
+ =?utf-8?B?eUREOHFJaFMrS2hFN05jaDdPWUVrMWpnRDBienhPYnNHMkc4ejl1aEZoZUR5?=
+ =?utf-8?B?WU0xU1lFbENlZU81eGcrR1lwUVg3alNPa2pGYjRnZkE1VEgza2xucGw4REc3?=
+ =?utf-8?B?dUVaZEtNTkZ3ZjN3SDN5eENaa3lHeDA2TE1BeHYwKzkvZ1BsZjYwaHB6QVNE?=
+ =?utf-8?B?cDhJa2tKd1NKWXdjTUNzaXZLdFFYdTBlOHhBWkhVRk4vbXF3NVJJalpnV3pq?=
+ =?utf-8?B?WGdRYnh6WGhaN01lTXJJZi9CQWFZbDJQelhSejlBVnVMek1Rc2FKZllLNXBy?=
+ =?utf-8?B?M04yakZIeFRybis3MHRkc3ZsNWZMYUxFNHFpUkN2RmRWYTB2aElHRHBDb0Jh?=
+ =?utf-8?B?UG44VDB3YncxTlBoZXc5S2kxNjJ0NmRhK3NpeVZxMEw4UVpuUzIxUE9QelVX?=
+ =?utf-8?B?Yy9uY2t4Y1QwNnNveDdvaUwvT1RCWGp1aWxOUjZDRDJzeVJIUkVmQTE4Y2xq?=
+ =?utf-8?B?TTl5S3ZwTHNuKzhMNXh5dmNoWENibG1nc2IxQlJqSGNYa0FXOEZ6eVd0SlY2?=
+ =?utf-8?B?Z3hlWDRxQ3BFV0xHMzFkeG5XZnJkN2E4MGhxamdORHNwQkVRWS9zWUFySE1R?=
+ =?utf-8?B?dmhndG9MdHl2UTVHaWU4UmZ3bC8wN1ZXM3dZQytVOWZQSlZXNjJDOEw4Y3Ft?=
+ =?utf-8?B?ZEk5bnVlMXQrRCtqYkZnVFBhZEVtampmMlpVbEVVVnhtZHF2ZXVqblIwT0JJ?=
+ =?utf-8?B?RUV3Rm9XWmpNK3VVVGRId2NOOEQ4VnBVSXVKUHUwL051QnBwVmRuamtqWjNw?=
+ =?utf-8?B?c1lMREdPMTVRdThTSFpkR1NnVVNXMWhDcEdqc2hSUVgxTUFGa3R2SmEvZHM0?=
+ =?utf-8?B?aDdiMXN6YnJWckVqZExXV29jejAxamt6RnRrS3pCYVJ2Si9mUHJ2Zz09?=
+X-Exchange-RoutingPolicyChecked: 5SdafyU7x2CJ5vCNhAD9nOLt3Yx3D0IsnHZ4+6PqNTCrV6hTHQOYVIPZafjIT5JoM5JWmTEzOQ19KLjdTAKZLQ+JdVn7G65sHDHzz4iaOBEwP99Oh0r141VKv8B0O+1CFmO6eY3BJKtkDSlF1eIxV41XlgucJYAYHn5sVB9Up3cnZPVz37UjMWuiUsOGoYi6DxJnfoIaIKGug7k5rqVoR/swOVhjLwDiF2D0bPn6wt2NUd0qC/Wu+GFo4xRzYDYRPYKL2DQz73Ln3ksySBrVnHM0ZlgFEifxJrFF/JEZNIo6vnxNyPVwXJ0joeQzMTIwigvfLtNMeC/+f3qqrqtVFQ==
+X-MS-Exchange-CrossTenant-Network-Message-Id: 3c724bf8-2ed0-4a86-e488-08df247bbef2
+X-MS-Exchange-CrossTenant-AuthSource: PH7PR11MB6006.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 07 Oct 2026 14:03:21.4317
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: LDwVwcFRDO2vEQI4op2cLMtfJGHWk8l7pvK2bbALjWMUnZzJabNaK3EhHZftNYHMXqzbjix6u5UUMSOPQ4Fo5UCHWqwWwk/Cgiz8Sv1runM=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: PH7PR11MB6723
+X-OriginatorOrg: intel.com
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261007_045120_777857_277F56D5 
-X-CRM114-Status: GOOD (  32.47  )
+X-CRM114-CacheID: sfid-20261007_070335_416734_30DDB380 
+X-CRM114-Status: GOOD (  10.75  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -157,147 +191,24 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 10/6/26 04:54, Nils Büchner wrote:
-> The driver registers only thermal zone 0, which reports the hottest of
-> all sensors. The MT8183 devicetree also describes a zone per sensor
-> (soc, gpu, md1, cpu-little, cpu-big, abb as sensor ids 1-6), and
-> mtk-svs looks up the "gpu-thermal" zone for its GPU banks. Without it
-> SVS fails to probe on MT8183:
+On 10/7/2026 1:08 PM, phucduc.bui@gmail.com wrote:
+> From: bui duc phuc <phucduc.bui@gmail.com>
 > 
->    SVSB_GPU: cannot get "gpu-thermal" thermal zone
->    mtk-svs 1100bc00.svs: error -ENODEV: svs bank resource setup fail
+> Hi all,
 > 
-> so the SoC never gets its calibrated, lower voltages.
+> Some FE startup callbacks may return a positive value from constraint 
+> helpers, but ASoC expects 0 on success. This can cause .shutdown() to be 
+> skipped during rollback.
 > 
-> Additionally register every sensor that has a devicetree zone, using
-> sensor id = sensor number + 1, read from that sensor's own measurement
-> register. Sensors without a zone are skipped, so SoCs whose devicetrees
-> only describe zone 0 are unaffected.
+> Return 0 explicitly on success.
 > 
-> Runtime-tested on an Acer Chromebook Spin 311 (MT8183, juniper) with a
-> 7.0-based kernel (the hardware is not set up to boot mainline);
-> build-tested on mainline with W=1. On the device: all six
-> sensor zones register and read plausible values (31-34 C idle, close
-> to the board sensors), and mtk-svs finds gpu-thermal.
+> Compile-tested only.
 > 
-> The change and this changelog were drafted with an AI coding assistant
-> during a debugging session on the hardware; they were reviewed and
-> tested by the submitter.
-> 
-> Assisted-by: Claude Opus 5.5
-> Signed-off-by: Nils Büchner <nils@buechner.me>
-> ---
->   drivers/thermal/mediatek/auxadc_thermal.c | 80 ++++++++++++++++++++++-
->   1 file changed, 79 insertions(+), 1 deletion(-)
-> 
-> diff --git a/drivers/thermal/mediatek/auxadc_thermal.c b/drivers/thermal/mediatek/auxadc_thermal.c
-> index 9ee2e7283..59c8eaf87 100644
-> --- a/drivers/thermal/mediatek/auxadc_thermal.c
-> +++ b/drivers/thermal/mediatek/auxadc_thermal.c
-> @@ -308,6 +308,13 @@ struct mtk_thermal_bank {
->   	int id;
->   };
->   
-> +/* A single sensor, exposed as its own thermal zone (DT sensor id = sensor + 1) */
-> +struct mtk_thermal_sensor {
-> +	struct mtk_thermal *mt;
-> +	int bank;
-> +	int index;
-> +};
-> +
->   struct mtk_thermal_data {
->   	s32 num_banks;
->   	s32 num_sensors;
-> @@ -870,6 +877,77 @@ static const struct thermal_zone_device_ops mtk_thermal_ops = {
->   	.get_temp = mtk_read_temp,
->   };
->   
-> +static int mtk_read_sensor_temp(struct thermal_zone_device *tz, int *temperature)
-> +{
-> +	struct mtk_thermal_sensor *sensor = thermal_zone_device_priv(tz);
-> +	struct mtk_thermal *mt = sensor->mt;
-> +	const struct mtk_thermal_data *conf = mt->conf;
-> +	struct mtk_thermal_bank *bank = &mt->banks[sensor->bank];
-> +	int temp;
-> +	u32 raw;
-> +
-> +	mtk_thermal_get_bank(bank);
-> +	raw = readl(mt->thermal_base + conf->msr[sensor->index]);
-> +	temp = mt->raw_to_mcelsius(mt, conf->bank_data[sensor->bank].sensors[sensor->index],
-> +				   raw);
-> +	mtk_thermal_put_bank(bank);
-> +
-> +	if (!mtk_thermal_temp_is_valid(temp))
-> +		return -EAGAIN;
-> +
-> +	*temperature = temp;
-> +
-> +	return 0;
-> +}
-> +
-> +static const struct thermal_zone_device_ops mtk_thermal_sensor_ops = {
-> +	.get_temp = mtk_read_sensor_temp,
-> +};
-> +
-> +/*
-> + * Zone 0 reports the hottest sensor. Also register every individual sensor
-> + * the devicetree describes (sensor id = sensor number + 1): MT8183 SVS looks
-> + * up its GPU bank temperature through the "gpu-thermal" zone and cannot
-> + * probe without it. Sensors without a devicetree zone are skipped.
-> + */
-> +static int mtk_thermal_register_sensors(struct mtk_thermal *mt)
-> +{
-> +	const struct mtk_thermal_data *conf = mt->conf;
-> +	struct thermal_zone_device *tzdev;
-> +	struct mtk_thermal_sensor *sensor;
-> +	int id, b, i;
-> +
-> +	for (id = 1; id <= conf->num_sensors; id++) {
-> +		sensor = NULL;
-> +		for (b = 0; b < conf->num_banks && !sensor; b++) {
-> +			for (i = 0; i < conf->bank_data[b].num_sensors; i++) {
-> +				if (conf->bank_data[b].sensors[i] != id - 1)
-> +					continue;
-> +				sensor = devm_kzalloc(mt->dev, sizeof(*sensor), GFP_KERNEL);
-> +				if (!sensor)
-> +					return -ENOMEM;
-> +				sensor->mt = mt;
-> +				sensor->bank = b;
-> +				sensor->index = i;
-> +				break;
-> +			}
-> +		}
-> +		if (!sensor)
-> +			continue;
+> Changes in v2:
+>  - Rename the patch subject.
+>  - Simplify the code change as suggested by Cezary. 
+Thank you for the update. The snd_pcm_hw_constraint_xxx() finding is a
+good catch.
 
-Please move routines into self-explanatory functions and make this 
-initialization function simpler to understand
-
-> +
-> +		tzdev = devm_thermal_of_zone_register(mt->dev, id, sensor,
-> +						      &mtk_thermal_sensor_ops);
-> +		if (IS_ERR(tzdev)) {
-> +			if (PTR_ERR(tzdev) == -ENODEV)
-> +				continue;
-> +			return dev_err_probe(mt->dev, PTR_ERR(tzdev),
-> +					     "failed to register sensor %d\n", id);
-> +		}
-> +	}
-> +
-> +	return 0;
-> +}
-> +
->   static void mtk_thermal_init_bank(struct mtk_thermal *mt, int num,
->   				  u32 apmixed_phys_base, u32 auxadc_phys_base,
->   				  int ctrl_id)
-> @@ -1294,7 +1372,7 @@ static int mtk_thermal_probe(struct platform_device *pdev)
->   	if (ret)
->   		dev_warn(&pdev->dev, "error in thermal_add_hwmon_sysfs");
->   
-> -	return 0;
-> +	return mtk_thermal_register_sensors(mt);
->   }
->   
->   static struct platform_driver mtk_thermal_driver = {
-
+Reviewed-by: Cezary Rojewski <cezary.rojewski@intel.com>
 
