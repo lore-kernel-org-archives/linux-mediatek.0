@@ -4,67 +4,106 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 39F3ACA5FF1
-	for <linux-mediatek@archiver.kernel.org>; Wed,  7 Oct 2026 10:28:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9B6EBCA5FFC
+	for <linux-mediatek@archiver.kernel.org>; Wed,  7 Oct 2026 11:09:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=lTL0TETi6wov8+6DSxxvFjg0nJ80CdLa2nOZg+tVLAE=; b=XBb5/f50cNxytuzmDYRvh6IvUZ
-	5I9jHErkJoIjDhw9y7hSxkhfm+XvGYYLbGNiw+OPiJk4a+QCfa0cdLEjaPXsehul6jPPJtnFiCU2r
-	YA2Q5ZQZUF7wz4XMs+aAPynS6WkY9DOGL3Yxbqy00Jf/1BHlw3LcXAfW5O0JncjyBYsEwUrsYI/9e
-	u1fPMCbK2zKqFyUBBUhTRWDkNAxU7mxzCUQefhb+R+0l2n5GCJ1sre4h4yTTjiikrztYpYawVX52o
-	zxHFwOuL+38S53EgqVMzOkDlf7MR/lAaL46V2n7UQKEG1ax5vzu578rVRFGE+s5kdrRsm5PLk/MSJ
-	vjwJzx8Q==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=5tPW28u/y25LsoprSZgjrTYuNMeOHBtCHRS1PxOld3s=; b=xV0NqY0sHDJLxx6lBYvzRe4G5N
+	821T3NlCPrdgGrjzE5XQY8cd56y17uouCNNwWIaZlTvxe+aiTpgPp1YYX0mcLWUxEGYQoab9PW8Yj
+	vyHLL4rx1M90clAq8JkeuZ4UbMVwFB27AVq5bnMWf1ovkDyckLm6WX9U0XUFnhBwxeqZ1xXwHZIxJ
+	SvYdpeUVY8wDEcYSUEEbOA6h0l75eHCdIESQawqDlQEi4dl8JWSNRK9ZxijGREj9xsTMzYRxVr9II
+	emHoxRY5tX/ISJrtHkZAQZPGHCugdvAF/ZbvLyIn8IklIqAw+59dhIRl/85gnTsVSV2W+7C6c8/Uq
+	jvBFT0+g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xEOsv-000000029VG-11Qn;
-	Wed, 07 Oct 2026 10:28:29 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1xEPWi-00000002GqN-2QAk;
+	Wed, 07 Oct 2026 11:09:36 +0000
+Received: from mail-pj1-x102e.google.com ([2607:f8b0:4864:20::102e])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xEOst-000000029Ud-0z0u;
-	Wed, 07 Oct 2026 10:28:27 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id A8BC043AFD;
-	Wed,  7 Oct 2026 10:28:26 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id ABCB41F0089B;
-	Wed,  7 Oct 2026 10:28:23 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1791368906;
-	bh=lTL0TETi6wov8+6DSxxvFjg0nJ80CdLa2nOZg+tVLAE=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=SOXb73hCTRuSHIAJ72hkQiFKZEpX+WBJt7tordjKDFEXlItLFDM4M39jauirdGgBu
-	 5Ig8ZZ7tFAthJBWZgfBcTe4mO4+T/m+Df5Wyl5a3SxRK58gwOzOuSqYhbZMYqE89Nm
-	 UbgdMw8kHZjwD4b/tj8nw/N+crp5BaBAhwKKcDCsQZthV3ZCbTco0g0IgH+LErURS7
-	 9nUTFrwhkwQWgp7zY+AxXzvnuUQOi1GjUu3ZB51tmoSzaeETfVjN9PRXxOCpBg6Q7i
-	 JXE1ts/2tcByzlEjeWpziuxtrW9P4IEkRNdY3he1nBpoivM1YnQiCdEOXZLM6V8MOt
-	 3xwH30eb5F45Q==
-Date: Wed, 7 Oct 2026 11:28:21 +0100
-From: Conor Dooley <conor@kernel.org>
-To: Chuanhong Guo <gch981213@gmail.com>
-Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Stephen Boyd <sboyd@kernel.org>,
-	Brian Masney <bmasney+clk@redhat.com>,
-	Jerome Brunet <jbrunet+clk@baylibre.com>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
+	id 1xEPWg-00000002GpN-0zqQ
+	for linux-mediatek@lists.infradead.org;
+	Wed, 07 Oct 2026 11:09:35 +0000
+Received: by mail-pj1-x102e.google.com with SMTP id 98e67ed59e1d1-3a0a911e8d6so1994080a91.1
+        for <linux-mediatek@lists.infradead.org>; Wed, 07 Oct 2026 04:09:33 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20251104; t=1791371373; x=1791976173; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
+        bh=5tPW28u/y25LsoprSZgjrTYuNMeOHBtCHRS1PxOld3s=;
+        b=YIPqDshDp6P/yFXbAZ+pCrDNrLNJqUH140CTEHOK5h7pO2oMp2MxMnOH/wtqJoE+Gb
+         ODn1qAfQEjryWDiyTYjMaANuhIH8ICb9YSqzscijEWWNk7urq4LElZu9nKRhXj1VZ4EU
+         OGDcdFP4w083cmUzrXy+MEdTw7LR6ExDUFvU/KBNv8+utXZr+ZXvw5gMUzZRgCtsaDdt
+         YsZBBymRtnYNgUdNFEdWgYxWiY+oPdSuUZSlM4zxhul32MW5kqYpBIAaO58txPgGEDOI
+         mZXEuP/DFncVwzoAwfSI5nPP0CHECPDbeWN5bJdnmtgBg3895gjQTT7EsY/yh3tB70fN
+         7Bhg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20260707; t=1791371373; x=1791976173;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to:content-type;
+        bh=5tPW28u/y25LsoprSZgjrTYuNMeOHBtCHRS1PxOld3s=;
+        b=d7ZlQYYEghxWBVOhUQq0kaSw+sAjv9kYq7mRrQxCFD+LiHbeUSXPt8hLovqqT+CKVO
+         yCulSsukv8hka0zCTkZNROHPvmhVMwYuprotEyl7EiGFgVfBvbDg1TBJ/p9v8cufYBEs
+         sLX4jzHFock9aE2LfL9FUC5FBtLrqR3zhl3utfyyowN+UFN3hf6pszNix3uYX5BdpD7v
+         F4ioKU/vcOmMVTziHUCzsEtoEIXUc+/JZC3rQm2uw27RJYZgSI58uW69gVLFaAFYBkIF
+         mRKnILUa6ci26hXG584H/0hliyCv2WngRJRieTb6JbCc5DvS3jMN5jv93svv1nbK0J+M
+         pBcA==
+X-Forwarded-Encrypted: i=1; AKwUvByxE0xeMOnCIlerJ6bovpDafXRKac5KOr2ZvcmqtT3MKHQUm8DdDfIoVr3CtehQ8NvNV1TWCnhbxzcGuKlPJw==@lists.infradead.org
+X-Gm-Message-State: AFq9FYK7ZRo7lN0SLz67XpepoJO6sdQ/Nf2BnF1R8LFi4qVMuwDcp4Vt
+	nXe6TMv+ggklGQPeLVhhFiVfDtQHV2aeh9uolMzEKKwGfuDmtjRwQCkQ
+X-Gm-Gg: AYBFou1uu9LvuJSVl3ABTi+z1wXTB1zcfouqUF7uNo+eTKzkvBP3aiwtu5+4M5RT675
+	uTRkroEeuJ5efGnnXd6WTzjBvMtEpnWNBHuRZNCNYvYmC+QjaJkW412+cbQu6WT1WQTuFWuG0wD
+	ilvJRzPQFAMsZdRJwziMeUCzX33MlLRzWqXsGereVskPzVQFGCO5KC+pfQaOyuctOkQJCXGFycS
+	fgaLWpr0HTSzKFyI7b4O58AKKJYC4nNok14K4fyfdkJQwxoZowOEQxUmf4FigRiwQWuh8jJTbls
+	Z4viFgTEL8ddZzoxpvQECSzGHb0QLKsSpuK/RjIkD7hTzVty3L2/mdnnKTrQmE6acWpseBx7tBW
+	b9okccgaAKt9V8bSiOW8EULJlIfjbTt5DVWpDkqnVy4ZfCli7+15zPeRsPH9nJFho2NdiEJ53uW
+	gCoA15id/lMVW5jrphYUxAFRPLzntwpld+4CIigeBe3QbNbHw45GGb3rP/VSiFmR06zJGBb+/lL
+	527vSzjnxPzqY2l2NkgXkkigm6lZiwr6gWe/Pyun7IDzhPl1bB0E8hXOk4TKHyaZIdbE3evjbMW
+	OMR0eZQSdCxiGA==
+X-Received: by 2002:a17:90b:2246:b0:3a7:aeb4:e6eb with SMTP id 98e67ed59e1d1-3a8a1ceeb73mr1617868a91.67.1791371373155;
+        Wed, 07 Oct 2026 04:09:33 -0700 (PDT)
+Received: from phuc-desktop.. ([183.91.15.56])
+        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-3a8a5ec70dbsm1328745a91.2.2026.10.07.04.09.27
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 07 Oct 2026 04:09:32 -0700 (PDT)
+From: phucduc.bui@gmail.com
+To: Mark Brown <broonie@kernel.org>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Trevor Wu <trevor.wu@mediatek.com>
+Cc: Liam Girdwood <lgirdwood@gmail.com>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
-	linux-clk@vger.kernel.org, linux-mediatek@lists.infradead.org,
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org
-Subject: Re: [PATCH 1/2] dt-bindings: clock: mediatek: mt7629: add RTC clock
- IDs
-Message-ID: <20261007-fd52cb4e1451642185a6589f@squawk>
-References: <20261006-b4-mt7629-rtc-v1-0-e556386df816@gmail.com>
- <20261006-b4-mt7629-rtc-v1-1-e556386df816@gmail.com>
+	Jaroslav Kysela <perex@perex.cz>,
+	Takashi Iwai <tiwai@suse.com>,
+	Kuninori Morimoto <kuninori.morimoto.gx@renesas.com>,
+	cassiogabrielcontato@gmail.com,
+	Haotian Zhang <vulab@iscas.ac.cn>,
+	Christian Marangi <ansuelsmth@gmail.com>,
+	Cezary Rojewski <cezary.rojewski@intel.com>,
+	Cyril Chao <Cyril.Chao@mediatek.com>,
+	Tuo Li <islituo@gmail.com>,
+	Rosen Penev <rosenp@gmail.com>,
+	Garlic Tseng <garlic.tseng@mediatek.com>,
+	Alexandre Mergnat <amergnat@baylibre.com>,
+	Dan Carpenter <error27@gmail.com>,
+	linux-sound@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	bui duc phuc <phucduc.bui@gmail.com>
+Subject: [PATCH v2 0/4] ASoC: mediatek: Handle constraint return value in FE startup
+Date: Wed,  7 Oct 2026 18:08:54 +0700
+Message-ID: <20261007110858.509341-1-phucduc.bui@gmail.com>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="s4wIikCK1FzuJJqu"
-Content-Disposition: inline
-In-Reply-To: <20261006-b4-mt7629-rtc-v1-1-e556386df816@gmail.com>
+Content-Transfer-Encoding: 8bit
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20261007_040934_321861_92EE5779 
+X-CRM114-Status: UNSURE (   9.12  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,60 +118,38 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
---s4wIikCK1FzuJJqu
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+From: bui duc phuc <phucduc.bui@gmail.com>
 
-On Tue, Oct 06, 2026 at 02:42:23PM +0800, Chuanhong Guo wrote:
-> Expose the 40 MHz / 1221 RTC source and the RTC clock mux. Keep the
-> existing CLK_TOP_RTC ID for the 40 MHz / 1024 source.
->=20
-> Signed-off-by: Chuanhong Guo <gch981213@gmail.com>
-> ---
->  include/dt-bindings/clock/mt7629-clk.h | 4 +++-
->  1 file changed, 3 insertions(+), 1 deletion(-)
->=20
-> diff --git a/include/dt-bindings/clock/mt7629-clk.h b/include/dt-bindings=
-/clock/mt7629-clk.h
-> index ad8e6d7f0154..aa94a398ae05 100644
-> --- a/include/dt-bindings/clock/mt7629-clk.h
-> +++ b/include/dt-bindings/clock/mt7629-clk.h
-> @@ -115,7 +115,9 @@
->  #define CLK_TOP_CRYPTO_SEL		105
->  #define CLK_TOP_SGMII_REF_1_SEL		106
->  #define CLK_TOP_10M_SEL			107
-> -#define CLK_TOP_NR_CLK			108
-> +#define CLK_TOP_RTC_32K			108
-> +#define CLK_TOP_RTC_SEL			109
-> +#define CLK_TOP_NR_CLK			110
+Hi all,
 
-Since you can change NR_CLK, its not a binding.
-Please remove it, and put it in a driver or w/e uses it.
+Some FE startup callbacks may return a positive value from constraint 
+helpers, but ASoC expects 0 on success. This can cause .shutdown() to be 
+skipped during rollback.
 
-pw-bot: changes-requested
+Return 0 explicitly on success.
 
-Thanks,
-Conor.
+Compile-tested only.
 
-> =20
->  /* INFRACFG */
->  #define CLK_INFRA_MUX1_SEL		0
->=20
-> --=20
-> 2.55.0
->=20
+Changes in v2:
+ - Rename the patch subject.
+ - Simplify the code change as suggested by Cezary. 
 
---s4wIikCK1FzuJJqu
-Content-Type: application/pgp-signature; name=signature.asc
+Best regards,
+Phuc
 
------BEGIN PGP SIGNATURE-----
+bui duc phuc (4):
+  ASoC: mediatek: common: Handle constraint return value in FE startup
+  ASoC: mediatek: mt8188: Handle constraint return value in FE startup
+  ASoC: mediatek: mt8189: Handle constraint return value in FE startup
+  ASoC: mediatek: mt8365: Handle constraint return value in FE startup
 
-iHUEARYKAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCasYexQAKCRB4tDGHoIJi
-0gzPAQDCkxgZs1Pry9OFkFX1+k2jkE9trqoJYE7GdRSabNdexwD/dtbqGFDDuYqS
-8F5IjTUa7gRFcntcEi5/OLTRiGCg4Qo=
-=bYV2
------END PGP SIGNATURE-----
+ sound/soc/mediatek/common/mtk-afe-fe-dai.c | 8 +++++---
+ sound/soc/mediatek/mt8188/mt8188-afe-pcm.c | 3 +++
+ sound/soc/mediatek/mt8189/mt8189-afe-pcm.c | 8 +++++---
+ sound/soc/mediatek/mt8365/mt8365-afe-pcm.c | 7 +++++--
+ 4 files changed, 18 insertions(+), 8 deletions(-)
 
---s4wIikCK1FzuJJqu--
+-- 
+2.43.0
+
 
