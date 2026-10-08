@@ -4,61 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CE8E7CA6002
-	for <linux-mediatek@archiver.kernel.org>; Wed,  7 Oct 2026 20:23:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D863CCA6007
+	for <linux-mediatek@archiver.kernel.org>; Thu,  8 Oct 2026 04:47:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	MIME-Version:Message-ID:Subject:Cc:To:From:Date:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=xhLP80GXVtS6CE3RvF7MHseUyKQXwhqc65xg2C8JDq8=; b=4kxLkU69MDQPx/5qy2BTdmIUsJ
-	svt4rtEeR3r9jXMd8UbbkHWNtpLcojN3nDc6Dzy20DT3d+zBRd1WoOqu+aBXC4lZ0YpUQtioKu33V
-	0GYUTqfB9FU5bByK3Ad2Rzv7RH03M3XuLjEELd/kL+grIVMn3VJBFXLcoTze/uB+X7iUaIUCTfoK6
-	Ikfgzn0Fjhp16BCdYCYDa85Ox06f2biXcblO++oMMmFPLoPsaAp2K6Yw3OyDp3P30MaqE+VIX53bU
-	IAnuR3c683/x1BGTJF94uSV+8R6UEx3goYUyChwxmTk5ZKnJGXy87NgNIv/w+lrSSGbit0f4H1//U
-	q7B8ahfQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Date:Message-Id:
+	References:In-Reply-To:From:Subject:Reply-To:MIME-Version:Content-Type:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=K+V99tD0dAB278UZdrVVbEhFXi9UBbQWSwdIYxhfq3M=; b=ELshHVG4Edd/Cpb7BfYfnQkQ1t
+	w49ezQTUDNkdMVv1NsRkSX9Gz14Sd0OdHlw2JnE8Ji0WkrZ5yxYuhXoXcvY5KmcC5Eo76iUQjr69j
+	uPgRwMchxjlVlExcjF5f6uNyvi3q/UuaIBfj5llyzmVlXqb/VxKUHOuf7hbDDTlzbu1Olbq7MoFs+
+	SKkzzkWKmraPcsOwl0H+5iaDxYV9QvMGgPq25IWYQwNrhRzfSeyEWgakVop5t/ewh8kIgg74r+FtU
+	DCOFnIwGEQOn2q+ag9J3nuhyp51lD/viF9EhrM+4EYoBEA8GvIxKlZIWdU2Bd1HSfjKFuepNL1H5S
+	Ef1Gy/4A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xEYAw-000000037sg-3T8h;
-	Wed, 07 Oct 2026 20:23:42 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1xEg2H-00000003WVk-360J;
+	Thu, 08 Oct 2026 04:47:17 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xEYAu-000000037sN-3vE0;
-	Wed, 07 Oct 2026 20:23:41 +0000
+	id 1xEg2G-00000003WV7-2gsz;
+	Thu, 08 Oct 2026 04:47:16 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id 5390C42D92;
-	Wed,  7 Oct 2026 20:23:40 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 36BBE1F000FF;
-	Wed,  7 Oct 2026 20:23:40 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id C87A26025A;
+	Thu,  8 Oct 2026 04:47:15 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8091D1F00893;
+	Thu,  8 Oct 2026 04:47:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1791404620;
-	bh=xhLP80GXVtS6CE3RvF7MHseUyKQXwhqc65xg2C8JDq8=;
-	h=Date:From:To:Cc:Subject:Reply-To;
-	b=j8RcSFVTqWJYNtcD5cHQrg/tBRXhIiK0v0z6JiB9gxdGY8hdAmF1jYl8QxNOeIRuX
-	 9ypyelNNLYJNylDJIA2yqEtxUKGahYoeGYRv6U4Qza8frbpi26hhxKj7yOqbnf9V1+
-	 xv2WDRFBRkIOGQYDuprqK0tbidn0CWNR4Vj6oSFsjiavyl9WrEapvnsJUP3yRveVi+
-	 s4hDL3jy57ZALN+qPx2U5NXiastyEfGt+ly9IxDmwveWmVHhkK9dQ17bNpp5l1hliZ
-	 hNqji7Xy4ZjNECzFan8mf70UD2A2PaLygusmXZTreARPxn+qgXyuV0pI6eSwBL4VaB
-	 3Hk12uTt6NfEQ==
-Received: by paulmck-ThinkPad-P17-Gen-1.home (Postfix, from userid 1000)
-	id D9780CE0D79; Wed,  7 Oct 2026 13:23:39 -0700 (PDT)
-Date: Wed, 7 Oct 2026 13:23:39 -0700
-From: "Paul E. McKenney" <paulmck@kernel.org>
-To: torvalds@linux-foundation.org
-Cc: linux-kernel@vger.kernel.org, kernel-team@meta.com,
-	Vladimir Murzin <vladimir.murzin@arm.com>,
-	Mark Rutland <mark.rutland@arm.com>,
-	Steven Rostedt <rostedt@goodmis.org>,
-	Chunfeng Yun <chunfeng.yun@mediatek.com>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	linux-usb@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: [GIT RFC PULL] Fix double dereference in TP_printk() in usb mtu3
-Message-ID: <84064d39-6f44-4b4b-98f8-895a0294a3cf@paulmck-laptop>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+	s=k20260515; t=1791434835;
+	bh=K+V99tD0dAB278UZdrVVbEhFXi9UBbQWSwdIYxhfq3M=;
+	h=Subject:From:In-Reply-To:References:Date:To:Cc;
+	b=IIHlcj3qVjsUm7oj8dvns9xXQgqD2bQT6b+hNHON0IWGsxjKkZyzOHKwaDEdwGaos
+	 npkdtJHw3/v01cjPPFzrOumYM0Yqu5jhnlPXG+5ZLLuKUawW5eSxwUvgTTHrB1pvI4
+	 mROFAJCNP/uu1FT89jSFd9VXg3f+P2b5gS2FvjaODfBT2s2CK1654GJA/SRlWjmWxA
+	 bkh1z4BCjZ4Iga75ybslYMazM5ZCc3FNfSPHKwfQJ3wQ9MkT07dDwdbvQDc+Boqc5J
+	 dFv1e7JDVw1weya93j/59joa5fvDqTlg7ImVaVtryaJgsb91xKjBh6ZQjZ1MyQMr3/
+	 BNhIYaIzTl1Ng==
+Received: from [10.30.226.235] (localhost [IPv6:::1])
+	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id 773EB3809A13;
+	Thu,  8 Oct 2026 04:47:15 +0000 (UTC)
+Subject: Re: [GIT RFC PULL] Fix double dereference in TP_printk() in usb mtu3
+From: pr-tracker-bot@kernel.org
+In-Reply-To: <84064d39-6f44-4b4b-98f8-895a0294a3cf@paulmck-laptop>
+References: <84064d39-6f44-4b4b-98f8-895a0294a3cf@paulmck-laptop>
+X-PR-Tracked-List-Id: <linux-kernel.vger.kernel.org>
+X-PR-Tracked-Message-Id: <84064d39-6f44-4b4b-98f8-895a0294a3cf@paulmck-laptop>
+X-PR-Tracked-Remote: git://git.kernel.org/pub/scm/linux/kernel/git/paulmck/linux-rcu.git tags/usb-mtu3.2026.10.06a
+X-PR-Tracked-Commit-Id: cfb3293c4573289f11f913611f530ea6b1926d67
+X-PR-Merge-Tree: torvalds/linux.git
+X-PR-Merge-Refname: refs/heads/master
+X-PR-Merge-Commit-Id: 8fc6e594884a65ec99c78ad05e7fae110ad714d9
+Message-Id: <179143483406.3815904.5949191380648245003.pr-tracker-bot@kernel.org>
+Date: Thu, 08 Oct 2026 04:47:14 +0000
+To: "Paul E. McKenney" <paulmck@kernel.org>
+Cc: torvalds@linux-foundation.org, linux-kernel@vger.kernel.org, kernel-team@meta.com, Vladimir Murzin <vladimir.murzin@arm.com>, Mark Rutland <mark.rutland@arm.com>, Steven Rostedt <rostedt@goodmis.org>, Chunfeng Yun <chunfeng.yun@mediatek.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, linux-usb@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,31 +70,19 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Reply-To: paulmck@kernel.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hello, Linus,
+The pull request you sent on Wed, 7 Oct 2026 13:23:39 -0700:
 
-Please pull this urgent fix for a tracing splat in usb mtu3, which is a
-pre-existing bug that can corrupt tracing output, but which was exposed
-this cycle by additional checking that was added to the tracing subsystem.
+> git://git.kernel.org/pub/scm/linux/kernel/git/paulmck/linux-rcu.git tags/usb-mtu3.2026.10.06a
 
-  git://git.kernel.org/pub/scm/linux/kernel/git/paulmck/linux-rcu.git tags/usb-mtu3.2026.10.06a
-  # HEAD: cfb3293c4573289f11f913611f530ea6b1926d67: usb: mtu3: Fix double dereference in TP_printk (2026-09-29 17:26:50 -0700)
+has been merged into torvalds/linux.git:
+https://git.kernel.org/torvalds/c/8fc6e594884a65ec99c78ad05e7fae110ad714d9
 
-----------------------------------------------------------------
-usb: mtu3: Fix a double-dereference splat in TP_printk
+Thank you!
 
-This splat is reporting a double-dereference that can result in garbage
-traces being dumped due to the possibility of the TP_printk() being
-executed without the benefit of main memory being present.  The fix is to
-move the extra dereference from TP_printk() time to TP_fast_assign() time.
-
-----------------------------------------------------------------
-Vladimir Murzin (1):
-      usb: mtu3: Fix double dereference in TP_printk
-
- drivers/usb/mtu3/mtu3_trace.h | 4 +++-
- 1 file changed, 3 insertions(+), 1 deletion(-)
+-- 
+Deet-doot-dot, I am a bot.
+https://korg.docs.kernel.org/prtracker.html
 
