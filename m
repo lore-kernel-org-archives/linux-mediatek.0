@@ -4,120 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 44F2ECA600A
-	for <linux-mediatek@archiver.kernel.org>; Thu,  8 Oct 2026 08:46:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 31514CA6007
+	for <linux-mediatek@archiver.kernel.org>; Thu,  8 Oct 2026 08:53:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=fhGDVCOgQLncQuplToj/mW7JvsPvLFBB1CNf9MUb7AU=; b=S6o5QxXktZS3Ri1E++0ZS1ZWZE
-	320V1j4CDntXlNMGT2gkAWHknBkPgBYvrY+k9sMqkWMyasNnu+Ex1KzEhETl3VtymenWbSEAJhLOv
-	9p0X5bud2kY5t49CFxh/B3Vx1uUCCp21S1VpW3YAM3+nedN9K347q3hJJs6m7qYR/5dIN1jCZDSdb
-	fvE19A+1hydubb0DjL+rY/9Pr8+81r/iQd7OwbipNd/a/GKnu4BUYOH9kQ4zuQWbovmUui0JHkAgf
-	NO8ug9zbh9qgP0DhI0A4yIAYNPYzi0gw9zhSNeTk3uI2qMdmt/Gd7pXv4uLJwMk1bNVmFaYF9J5Wf
-	iWeLHWRw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=jGdz7yLAg+mrvuFLQWM7yy6NK755mXWFHUSIqMTw69A=; b=gG+efzpnE8eIQ8hdXUL4Qkcrh2
+	wDKjCqIciKmz7vMFKAiZoQpoRqrwcsWBRMcEWNpcdomfm83zuy3QgOsW7v4a4OB5bFLp9YckhMawB
+	O/Mp4jV2FcVtJtmDd+zRwQ9pf8ydkJKEhDzsR4tDNmLDXuxRB7GDdZNVa0vt8ZcceRCGzydPJKd4l
+	Le0XRZQXYjgWQvpHq2F2+tyTZxGrTx/wHCtfGWQMEPK0qOwopWHg9Me0WXpBHY1j5G04yJY9qHsfI
+	h6iTv1cUIfoTly82UAeMIlbkA7j4pbyNVWlG3jt7hbBsekA3fLBpqcoHkF1Kk8X6L7+FT5fcVi2y3
+	YW2tEyTg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xEjm9-00000003ugB-179d;
-	Thu, 08 Oct 2026 08:46:53 +0000
-Received: from mail-oi1-x236.google.com ([2607:f8b0:4864:20::236])
+	id 1xEjsn-00000003vgI-3QfG;
+	Thu, 08 Oct 2026 08:53:45 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xEjm6-00000003ufY-3dQ1
-	for linux-mediatek@lists.infradead.org;
-	Thu, 08 Oct 2026 08:46:52 +0000
-Received: by mail-oi1-x236.google.com with SMTP id 5614622812f47-4c27f0df6e8so2290381b6e.0
-        for <linux-mediatek@lists.infradead.org>; Thu, 08 Oct 2026 01:46:50 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1791449209; cv=none;
-        d=google.com; s=arc-20260327;
-        b=Bsqr0DEUsOyTKQFgICRfjs1ClkneRngvq5T//9Tnj3385bfir5rCEL1wnHhklpedQe
-         9OXt8KfIcmbvIDj9Syd4BDmguzVfNzp2hg0RZPvRJDp/ba9rWMycUQef7DLPCY0AU46y
-         u9bZtkxbU7mN7WfG35xshgrR2CsNViOGph6k3SYu99Z3gqh8D0FR6xJO1Kpq1Q4esKXM
-         Ogq8RzlXt/sif47/nIhnLORom+osBH83FpwR3UU0J/CJ6A4UtWhH2RvvpimwjDLxh3dI
-         3Q9RSkhw77xuB/ISLRuPenkpwy8OtvpbtPP6QudMmSVaEkOS7IpoBbpSDK7wCyQpyiEU
-         rLQg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20260327;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=fhGDVCOgQLncQuplToj/mW7JvsPvLFBB1CNf9MUb7AU=;
-        fh=9C3vwuY/e1X8I8PVuMNCxgdVZwMygf/IyYM8pStohH4=;
-        b=b7ZklZpCP93bd0xkVMYl8qmUrFNnXfoGE5XtH9rJSxPUH3yCZm3S0epye5t6CLGYhR
-         zZS/0biSRUg2ZlFeWpvWckDvRgHMRsCoVZggf3uFgdlLW2oD+bVevELpfSyYXDZ52LIf
-         MWv9wv5pyqm2Pd9UgP7kA3Vh1hGDO3UvXCz8eHAIh3CqdbrrmNxBJ5b9NKpzPExjIpRN
-         op5V7a/BusKNtPUkM4VsrIvXLyzPIF/f8U6nvASShm1IyNDaw1JEGdvjbG5llTqbiYph
-         +UifVFJO67BubDa0+XQExM8f18LEJhGIFFRZT2RFWqat2C1W6hqNLZ6R8W3klluwlSiz
-         Tzzw==;
-        darn=lists.infradead.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1791449209; x=1792054009; darn=lists.infradead.org;
-        h=content-transfer-encoding:content-type:cc:to:subject:message-id
-         :date:from:in-reply-to:references:mime-version:from:to:cc:subject
-         :date:message-id:reply-to:content-type;
-        bh=fhGDVCOgQLncQuplToj/mW7JvsPvLFBB1CNf9MUb7AU=;
-        b=Uh/xuvCi+PUZ7PI9bakU6wsN1PeCC6jqVe1K8ptS6LdfIBLp4IEDloM4Jwz8bHVF3S
-         0tBQwQB8U2IPMGvhjD5mC9VNXuz5w2LJCUWNS2VFg6F/I/wsFpTgVqMTY84kkrhtUyZY
-         DjB8G8mpsXlgzkjllEYxdw8wYQYDeK8NY5JLpB3KhvY+gKWNsEYhLw3n6Ta5Ks9el0X/
-         bNjWJO8Kml3ACm/MRU2wHCJabpscVOrwUwx3ytDYpbdY1TNNeB/SGhk1KgFySJHQwHjs
-         kHoZfy1t/kkC4OZc1gv/dIo585+3kIKobka26I2AHVUGeNeaMbQ2hCTjDtxJPqFr2yMG
-         5fbw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1791449209; x=1792054009;
-        h=content-transfer-encoding:content-type:cc:to:subject:message-id
-         :date:from:in-reply-to:references:mime-version:x-gm-gg
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
-         :content-type;
-        bh=fhGDVCOgQLncQuplToj/mW7JvsPvLFBB1CNf9MUb7AU=;
-        b=NTZrWg8bxf2tmCgXuoAtJCWNU8gLt//yZseVaGv+5+wiDMTB5AuvA0NqNQS2IFjX5y
-         DQ0WnN7iQp1wfEnUGj4r6h4hiCQbbc4CY6rIIKymkVKBiujjTnXpz+fzhl/XzUX5R7Gq
-         H4wk2zvBRsR7FvxdRTQfzcmWBh2RgrFvxq9I83UvWcLJdfU6cYoBtqv2NJWSET6nGrtt
-         5QwQGmP1iE9JX6TI8ZQHBUGHx12vDx+MuCzkNxDYu/wo2UHaHVd3ffH0FXqdUZzjeeJT
-         ITayaJZHzXA+KIvJD6wnDS+cwYd7Gc2EzZ+MbXn7dkJ1OfGaGMB0UrKruATpjsPKVhKN
-         Ubmw==
-X-Forwarded-Encrypted: i=1; AKwUvBw276mVMzrvoLy+xSe3H25euFbG36L9WJvW13b4qT+UEpXBvOiWa1hSC4EBALa8ro37tdIbsc3fUU8bNWnuXA==@lists.infradead.org
-X-Gm-Message-State: AFuF++lOGftSM2jd0hORd8X94oX/KxMH8Q/8KO5U9NIVeP9cBZ17ezMs
-	dOFEd3QuAmI0fbPQVSIClGAGvYaZ14DeHexIsByikxxHev9v69XISLdNXHvM0WAGC+TQCpIqHos
-	FS4demcujlUV8/0dnSks7R4T3+62HxqA=
-X-Gm-Gg: AYBFou3UZO7WK85Av5DBVgXdXht909KLynHxvHN2cXivdMu1cuQaw2Afui2ORl091g8
-	in6eXH6wpDM07tRuWA6S+cMDpXTGoCpxrHCvYM9gMtOBxjVCJfiZuqxo/7KrilM2frOT7NqlxFi
-	f9YC1qlTIjWcckO3z0C4F+wAuPz7pojRaBwSDp32FGvUaTpxDDUk5rR7PDieb3+U4q7cdX9bAoT
-	IJwZCg/I8HANLsfvUJXYPKN3G/+qEZS2MpQY27XUE9D23kXiVhIZH3VTihn4dxz20gkpNxr2OD3
-	YaAKrknnUBd14YciUoc55PhSy23hxRJ9bZQg9e6INXEKqnpT5DDsbAAiSO6hwMvsFSC7P0+RMn6
-	R3Yvs9F5yQ1jQclYN2MAmMMxdoj7YfwKOsI7xKENN1VK3Gma17+XZGO5XC/j9bVlj9Q9pE8eqh7
-	dLyOyURHRK8gGY04n5iEwZqSTMpfpCopCKCO/B+6Ic7+lb/pbGvbc=
-X-Received: by 2002:a05:6808:2e43:b0:4f3:36ff:e521 with SMTP id
- 5614622812f47-4fc46c92bc4mr4767586b6e.58.1791449209535; Thu, 08 Oct 2026
- 01:46:49 -0700 (PDT)
+	id 1xEjsl-00000003vf0-1kwL;
+	Thu, 08 Oct 2026 08:53:44 +0000
+X-UUID: bfd5e240c2f511f1acbe4559397dec65-20261008
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=jGdz7yLAg+mrvuFLQWM7yy6NK755mXWFHUSIqMTw69A=;
+	b=DIVk3fhoVRf5HnQ8d5hgar0cfOevqlZAGccPWHa9c3fxyLYfs2zb9gnDriRHSzvY4sg4OyGLjAFs6qiYNCycMiY884Mx5UX17psRWtX/KwkvQjYK4OrNQOLB9fdf3WMY5rqfhhJ8hLhLI1KM8gMiqrw5vel+m8/VWgUpk/BeeiQ=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.3.20,REQID:44d65cbe-3bf0-4182-bcfe-deeeae570941,IP:0,U
+	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
+	N:release,TS:-25
+X-CID-META: VersionHash:291e20b,CLOUDID:829b59ec-a538-4631-9c6c-6898e3cb1d37,B
+	ulkID:nil,BulkQuantity:0,SF:81|82|102|136|836|865|888|898,TC:-5,Content:0|
+	15|50|99,EDM:-3|-100,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:-1,COL
+	:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 2,SSN|SDN
+X-CID-BAS: 2,SSN|SDN,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
+X-UUID: bfd5e240c2f511f1acbe4559397dec65-20261008
+Received: from mtkmbs10n2.mediatek.inc [(172.21.101.183)] by mailgw02.mediatek.com
+	(envelope-from <tim.kuo@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1801533946; Thu, 08 Oct 2026 01:53:36 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+ MTKMBS09N1.mediatek.inc (172.21.101.35) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.2562.29; Thu, 8 Oct 2026 16:53:34 +0800
+Received: from mtksitap99.mediatek.inc (10.233.130.16) by
+ mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.2562.29 via Frontend Transport; Thu, 8 Oct 2026 16:53:34 +0800
+From: Tim Kuo <Tim.Kuo@mediatek.com>
+To: Mark Brown <broonie@kernel.org>, Rob Herring <robh@kernel.org>, Krzysztof
+ Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, Matthias
+ Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>
+CC: <linux-spi@vger.kernel.org>, <devicetree@vger.kernel.org>,
+	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-mediatek@lists.infradead.org>, Steven Liu <Steven.Liu@mediatek.com>,
+	Sky Huang <Skylake.Huang@mediatek.com>, Sam Shih <Sam.Shih@mediatek.com>, Tim
+ Kuo <Tim.Kuo@mediatek.com>
+Subject: [PATCH v3 2/2] spi: mt65xx: support wider tick delay field on MT7987/MT7989
+Date: Thu, 8 Oct 2026 16:53:32 +0800
+Message-ID: <20261008085332.802898-2-Tim.Kuo@mediatek.com>
+X-Mailer: git-send-email 2.45.2
+In-Reply-To: <20261008085332.802898-1-Tim.Kuo@mediatek.com>
+References: <20261008085332.802898-1-Tim.Kuo@mediatek.com>
 MIME-Version: 1.0
-References: <20261004-macaudio-v2-0-7b47ed6335a8@gmail.com>
- <20261004-macaudio-v2-11-7b47ed6335a8@gmail.com> <31d91f44-3f16-4a4c-916c-f4d8107d371e@oss.qualcomm.com>
-In-Reply-To: <31d91f44-3f16-4a4c-916c-f4d8107d371e@oss.qualcomm.com>
-From: James Calligeros <jcalligeros99@gmail.com>
-Date: Thu, 8 Oct 2026 18:46:37 +1000
-X-Gm-Features: AclHuK9CHquST79ZWASmiEF-eCVAGlz1SqIt2DEtZen9lPzYSl_ASrQBijUe-o4
-Message-ID: <CAHgNfTy-h8m-XBBzW6jSNBz0dVe=vXL6nJ3VOqgMjCbsK_t6gA@mail.gmail.com>
-Subject: Re: [PATCH v2 11/21] arm64: dts: apple: t8103-j313: Add
- speaker/headset jack nodes
-To: Ajay Kumar Nandam <ajay.nandam@oss.qualcomm.com>
-Cc: David Rhodes <david.rhodes@cirrus.com>, Richard Fitzgerald <rf@opensource.cirrus.com>, 
-	=?UTF-8?Q?Martin_Povi=C5=A1er?= <povik+lin@cutebit.org>, 
-	Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, Rob Herring <robh@kernel.org>, 
-	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
-	Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	Shenghao Ding <shenghao-ding@ti.com>, Kevin Lu <kevin-lu@ti.com>, Baojun Xu <baojun.xu@ti.com>, 
-	Sen Wang <sen@ti.com>, Sven Peter <sven@kernel.org>, Janne Grunau <j@jannau.net>, 
-	Neal Gompa <neal@gompa.dev>, asahi@lists.linux.dev, linux-sound@vger.kernel.org, 
-	patches@opensource.cirrus.com, devicetree@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261008_014650_909577_1A933539 
-X-CRM114-Status: GOOD (  14.96  )
+X-CRM114-CacheID: sfid-20261008_015343_464748_3D1F10BB 
+X-CRM114-Status: GOOD (  17.27  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -132,37 +91,128 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Oct 8, 2026 at 4:33=E2=80=AFAM Ajay Kumar Nandam
-<ajay.nandam@oss.qualcomm.com> wrote:
->
->
->
-> On 10/4/2026 11:33 AM, James Calligeros wrote:
-> > +&i2c3 {
-> > +     status =3D "okay";
-> > +
-> > +     speaker_right: codec@34 {
-> > +             compatible =3D "ti,tas5770l";
-> > +             reg =3D <0x34>;
-> > +             interrupts-extended =3D <&pinctrl_ap 182 IRQ_TYPE_LEVEL_L=
-OW>;
-> > +             shutdown-gpios =3D <&pinctrl_ap 181 GPIO_ACTIVE_HIGH>;
-> > +             #sound-dai-cells =3D <0>;
->
-> Both speaker codec nodes reference the same shutdown GPIO. Is that
-> intentional for this board?
->
-> The TAS2770 driver requests 'shutdown-gpios' per codec instance, and
-> GPIO requests are exclusive by default. So I would expect only one codec
-> instance to own this line, while the other appears to fall back to the
-> register-only path after the GPIO request fails.
->
-> If GPIO181 is a shared physical shutdown line for both amps, how is the
-> power/reset ordering expected to work across probe, suspend, and resume
-> when only one of the two codec driver instances controls that line?
+The MT7987 and MT7989 SPI IPs widen the tick delay field in SPI_CMD_REG
+from 3 bits (bits 24:22) to 7 bits (bits 28:22), so the field width can
+no longer be hardcoded in mtk_spi_hw_init().
 
-We use the new(ish) shared GPIO proxy stuff[1] and it all Just Works.
+Add a tick_dly_mask member to struct mtk_spi_compatible and use
+field_prep() with the per-SoC mask instead of the open-coded
+mask-and-shift, then add a mt7987_compat entry carrying the wider mask
+and match it against both "mediatek,mt7987-spi" and
+"mediatek,mt7989-spi".
 
-[1] https://lore.kernel.org/asahi/20260831-apple-shared-gpio-v1-0-e855b12e1=
-8ce@gmail.com/
+Existing IPM designs keep GENMASK(24, 22) and are functionally
+unchanged.
+
+Signed-off-by: Tim Kuo <Tim.Kuo@mediatek.com>
+---
+v2: remove unused tickdly offset deadcode
+v3: 
+  - remove spi-ipm-v59 compatible
+  - add mt7987 and mt7989 compatible
+
+ drivers/spi/spi-mt65xx.c | 28 +++++++++++++++++++++++-----
+ 1 file changed, 23 insertions(+), 5 deletions(-)
+
+diff --git a/drivers/spi/spi-mt65xx.c b/drivers/spi/spi-mt65xx.c
+index b845a599f7c6..0603c9f051a8 100644
+--- a/drivers/spi/spi-mt65xx.c
++++ b/drivers/spi/spi-mt65xx.c
+@@ -4,6 +4,7 @@
+  * Author: Leilk Liu <leilk.liu@mediatek.com>
+  */
+ 
++#include <linux/bitfield.h>
+ #include <linux/clk.h>
+ #include <linux/device.h>
+ #include <linux/err.h>
+@@ -78,9 +79,9 @@
+ #define SPI_CMD_PAUSE_IE		BIT(17)
+ #define SPI_CMD_IPM_NONIDLE_MODE	BIT(19)
+ #define SPI_CMD_IPM_SPIM_LOOP		BIT(21)
+-#define SPI_CMD_IPM_GET_TICKDLY_OFFSET	22
+ 
+ #define SPI_CMD_IPM_GET_TICKDLY_MASK	GENMASK(24, 22)
++#define SPI_CMD_IPM_V59_GET_TICKDLY_MASK	GENMASK(28, 22)
+ 
+ #define PIN_MODE_CFG(x)	((x) / 2)
+ 
+@@ -120,6 +121,7 @@
+  * @dma_ext:		DMA address extension supported
+  * @no_need_unprepare:	Don't unprepare the SPI clk during runtime
+  * @ipm_design:		Adjust/extend registers to support IPM design IP features
++ * @tick_dly_mask:	Tick delay field of SPI_CMD_REG, IPM designs only
+  */
+ struct mtk_spi_compatible {
+ 	bool need_pad_sel;
+@@ -128,6 +130,7 @@ struct mtk_spi_compatible {
+ 	bool dma_ext;
+ 	bool no_need_unprepare;
+ 	bool ipm_design;
++	u32 tick_dly_mask;
+ };
+ 
+ /**
+@@ -187,6 +190,14 @@ static const struct mtk_spi_compatible mtk_ipm_compat = {
+ 	.enhance_timing = true,
+ 	.dma_ext = true,
+ 	.ipm_design = true,
++	.tick_dly_mask = SPI_CMD_IPM_GET_TICKDLY_MASK,
++};
++
++static const struct mtk_spi_compatible mt7987_compat = {
++	.enhance_timing = true,
++	.dma_ext = true,
++	.ipm_design = true,
++	.tick_dly_mask = SPI_CMD_IPM_V59_GET_TICKDLY_MASK,
+ };
+ 
+ static const struct mtk_spi_compatible mt6765_compat = {
+@@ -226,6 +237,7 @@ static const struct mtk_spi_compatible mt6991_compat = {
+ 	.enhance_timing = true,
+ 	.dma_ext = true,
+ 	.ipm_design = true,
++	.tick_dly_mask = SPI_CMD_IPM_GET_TICKDLY_MASK,
+ };
+ 
+ /*
+@@ -262,6 +274,12 @@ static const struct of_device_id mtk_spi_of_match[] = {
+ 	{ .compatible = "mediatek,mt7629-spi",
+ 		.data = (void *)&mt7622_compat,
+ 	},
++	{ .compatible = "mediatek,mt7987-spi",
++		.data = (void *)&mt7987_compat,
++	},
++	{ .compatible = "mediatek,mt7989-spi",
++		.data = (void *)&mt7987_compat,
++	},
+ 	{ .compatible = "mediatek,mt8135-spi",
+ 		.data = (void *)&mtk_common_compat,
+ 	},
+@@ -366,7 +384,7 @@ static int mtk_spi_hw_init(struct spi_controller *host,
+ 			   struct spi_device *spi)
+ {
+ 	u16 cpha, cpol;
+-	u32 reg_val;
++	u32 reg_val, mask;
+ 	struct mtk_chip_config *chip_config = spi->controller_data;
+ 	struct mtk_spi *mdata = spi_controller_get_devdata(host);
+ 
+@@ -443,10 +461,10 @@ static int mtk_spi_hw_init(struct spi_controller *host,
+ 	/* tick delay */
+ 	if (mdata->dev_comp->enhance_timing) {
+ 		if (mdata->dev_comp->ipm_design) {
++			mask = mdata->dev_comp->tick_dly_mask;
+ 			reg_val = readl(mdata->base + SPI_CMD_REG);
+-			reg_val &= ~SPI_CMD_IPM_GET_TICKDLY_MASK;
+-			reg_val |= ((chip_config->tick_delay & 0x7)
+-				    << SPI_CMD_IPM_GET_TICKDLY_OFFSET);
++			reg_val &= ~mask;
++			reg_val |= field_prep(mask, chip_config->tick_delay);
+ 			writel(reg_val, mdata->base + SPI_CMD_REG);
+ 		} else {
+ 			reg_val = readl(mdata->base + SPI_CFG1_REG);
+-- 
+2.45.2
+
 
