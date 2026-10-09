@@ -4,60 +4,196 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 592D2CA5FED
-	for <linux-mediatek@archiver.kernel.org>; Fri,  9 Oct 2026 07:44:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id ACB7CCA5FED
+	for <linux-mediatek@archiver.kernel.org>; Fri,  9 Oct 2026 08:17:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:CC:To:
+	Subject:Date:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=NpZ7XaceTucaY86C62zOlPu+VQmlzvfFU9YRREd4CxU=; b=ZG9icyvVzV8Ebuc7BdPEwx/ohZ
-	JDaGVvXYAak2TiQKtrma3pES/eUZJCN+O5yw//K2d3ISI5d78SOM7t6v/1r26OmkwS1QMrgMMACmI
-	Gu7SNPoopkvndV7JZVkx4oROqSq52HQZXep38vQv4XpAnyyqZsOrbpO0jKRBECHEF/dzCr3942nWi
-	JrHpg0y8R65q8cmJ8/0Wuyg/q04E9Dp/eHypt3A5/AGV2d2aH9kk/2cBUEg1Lz8bi9kXjCepEHxlX
-	YCkjo5fbJHa+FztgCXRccOWqqW1hlYykpDCruULjrIJyBBblvLLP8XPqdKDPJwQObxhYcdWFwdI/V
-	hFrkgFow==;
+	bh=pDiB7kup0nlUwdeeMcie428u/Pp6JxQSQcqLOmB4IF0=; b=w0im8/+LZqj+yd1R7m4TNHM0ZX
+	LaF8qDwYLfkLfBByGdyJVt/mA+0g4STNfLA1tS/zCuXGnppTVe/UGwTsWLMphZAC0lhtoDQ8ym3sZ
+	iyS3h1It2Y98vard6l+TuRKjMNQfOMdlXlHitObOPhn0wpdD6Uv49ny8cRhHK13MWa0dg8qyBqf57
+	mFOe1lrQloXRhzqfrR3VNmCkabElARdZri+YH7FBUT9eHDYvgV6MHeYFYuTnaZsDnkKE2vtYN/jT0
+	KZmVSK5GANuIzwrfNsiHvUQZmQFQQf1rP71m3AepMigq1nrlZr+F1YHSVB9ScBcOeseOunWuC172E
+	fa1h2vAA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xF5Hb-00000005kyP-30GL;
-	Fri, 09 Oct 2026 07:44:47 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1xF5mw-00000005nYF-3s5A;
+	Fri, 09 Oct 2026 08:17:10 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xF5Ha-00000005kxq-1hh1;
-	Fri, 09 Oct 2026 07:44:46 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id C0D8942E3F;
-	Fri,  9 Oct 2026 07:44:45 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2711F1F00893;
-	Fri,  9 Oct 2026 07:44:44 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1791531885;
-	bh=NpZ7XaceTucaY86C62zOlPu+VQmlzvfFU9YRREd4CxU=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=IcW0L1szOmI+K95UFpUOxmCcHjnJ/pBfcccJqrW7jxT91VyW1LYAoh/NpoDt22f+g
-	 n+jWOzIjD+F8l65MyLNfs0AxpindYSVONDRDZNjD/e9aI7Mi+l+MmfyJKPgSEcegjK
-	 2tO/g1zVojMkYR7tAsQHApQS9YfwqNImgRyNOa3rgtqS4IJJuD+fV2jzCITHXCzij0
-	 D+rN4JoP/hNwjzoH4+yfqy9MA/mHhYddOSeJRCw/SYa4I2Q3fxsQPyhBOV4l105JMC
-	 MrkHUTOE72EeYz1S2zQLcihgZQfJxzlkuv4hLq98W2DFuEBnnCmWa/3CK+/ab/MBw7
-	 g8VREvLkZ57PA==
-Date: Fri, 9 Oct 2026 09:44:43 +0200
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-To: SAYANTAN NANDY <sayantann11@gmail.com>
-Cc: netdev@vger.kernel.org, andrew+netdev@lunn.ch,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, bread.hsu@airoha.com,
-	sayantan.nandy@airoha.com
-Subject: Re: [PATCH net v2] net: airoha: keep PPE offload when NPU refuses
- flow stats
-Message-ID: <asiba_Sw-i2ht_S9@lore-desk>
-References: <20261008094828.15458-1-sayantann11@gmail.com>
- <20261009050322.39060-1-sayantann11@gmail.com>
+	id 1xF5mv-00000005nY0-2neJ;
+	Fri, 09 Oct 2026 08:17:09 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=MIME-Version:Content-Transfer-Encoding
+	:Content-Type:In-Reply-To:From:References:CC:To:Subject:Date:Message-ID:
+	Sender:Reply-To:Content-ID:Content-Description;
+	bh=pDiB7kup0nlUwdeeMcie428u/Pp6JxQSQcqLOmB4IF0=; b=okROyXg3SVTnOyuduP1R17Zj4f
+	8qYNTI15UHsWutfUj0K7klLwXO4CFaiIECCDUmmexvIpLuXb79fTlMTuq/FK+hWV6R/XPclJ6jeuc
+	8KS8PB4FvxCQM2HfIxO2CZWiFeVi/w7GeZxq3nr8zndSfnT7n9KGSfbnq571dfJGQhUUAKTErmWZR
+	EDw0QektZFnBgb2SknHVolwWEoe6yKAuO5oROPLaFZ6bd+AJLKxFOxLWBbsEcLp2kW76z1unJbJZB
+	V/Xiy5RRaWFeJM1bBmvFqTT/51Y9veyeL663KOdG4GV46TGRU8wUmqEs0BemJ9QobRqGvHmzIK+0Q
+	O556S3gA==;
+Received: from mgamail.intel.com ([192.198.163.7])
+	by desiato.infradead.org with esmtps (Exim 4.99.2 #2 (Red Hat Linux))
+	id 1xF5ms-0000000B1KI-0x5i;
+	Fri, 09 Oct 2026 08:17:08 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1791533827; x=1823069827;
+  h=message-id:date:subject:to:cc:references:from:
+   in-reply-to:content-transfer-encoding:mime-version;
+  bh=vROYfeursea5rZoJmaeNDovDBPM+F9gN78iwCAPpRCA=;
+  b=lF3eJYa7ATv8j5Ys4dDUyB2YpjJsIZ5yCv4oHZy2R6nKGtgB+bW5KWPK
+   NqC5IS8KAa6Uz7fBgX+wYem0f4ZH9002kT1anyi06o3l0tix0qZ84ayov
+   ysJR+DaFm4HZP9RPTA1SFzrdz6bL2O2W7eI3fkYNSUaWs69IyYy0ZztlE
+   /lAaM7daR78NrexSjg64kTzLe08LO7QmWEfg6iohjPNBK1OQf0a3Gdyg/
+   h/d9e8Rh7AkNX193Si5tAH/B6p68ict8+XDJNaDWTKRIi5QDPNfnKVM83
+   JPiilDKDDORANEYtKscpYkmgk8v1LsCeiQXo5dU5BhHbzhjD9vePZCfDQ
+   A==;
+X-CSE-ConnectionGUID: lr7R4JMZROKC5iWwoJ5ziw==
+X-CSE-MsgGUID: +e1kHXeYTMO1WqPPmTJjVg==
+X-IronPort-AV: E=McAfee;i="6800,10657,11929"; a="222438"
+X-IronPort-AV: E=Sophos;i="6.27,147,1787036400"; 
+   d="scan'208";a="222438"
+Received: from fmviesa013.fm.intel.com ([10.60.135.153])
+  by fmvoesa101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 09 Oct 2026 01:16:56 -0700
+X-CSE-ConnectionGUID: dyBO2hbzQZGRclI1Q+Xwrg==
+X-CSE-MsgGUID: eoPJ5/KjSXSyom+H19yk/A==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.27,147,1787036400"; 
+   d="scan'208";a="2000075"
+Received: from fmsmsx901.amr.corp.intel.com ([10.18.126.90])
+  by fmviesa013.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 09 Oct 2026 01:16:56 -0700
+Received: from FMSMSX903.amr.corp.intel.com (10.18.126.92) by
+ fmsmsx901.amr.corp.intel.com (10.18.126.90) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.2562.49; Fri, 9 Oct 2026 01:16:55 -0700
+Received: from fmsedg903.ED.cps.intel.com (10.1.192.145) by
+ FMSMSX903.amr.corp.intel.com (10.18.126.92) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.2562.49 via Frontend Transport; Fri, 9 Oct 2026 01:16:55 -0700
+Received: from MW6PR02CU001.outbound.protection.outlook.com (52.101.48.13) by
+ edgegateway.intel.com (192.55.55.83) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.2562.49; Fri, 9 Oct 2026 01:16:55 -0700
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=PMH6sjQNXA+VlIHNfvkwqcFWuCFY7X3VrCf+49F60S0eNqSVtdeeLAmFz6VzQJ1mMFcHdsWu3j3UDsA7GrVUwmq4FgKbv81IPMbYdgmjuJEjKuGy2FT4D5hSJBZvJzdoWNUxMQpxPZBqiGUaPfrVDg9twsj7UJxlbplyFP0SPK1jB9tsVXLhw59C8Zx2WN4osCN/Qx4S3gUD6ZcFSi+MYJOihfHUhrqi3faWfBC7riSHOE1iHcR/yGQ6K/LYTvZORPq3hmVXe5fF/Pt1H4hXXG3StT+fFHLxYnackbKudIRC6fsixbpxe0IwphOjsldmc7Xveb069ux9Rral70tKjQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=pDiB7kup0nlUwdeeMcie428u/Pp6JxQSQcqLOmB4IF0=;
+ b=ktMbSizJMPK12y593VLuYfrmJ5b7YxS4myoE2ATr2PUIKLg42oCPrKhyCnwPDKHvIPDN989VoYd7ajM0dzThRlXy/F4EniMy1/gp85TIaQG/tTnyZjvzexGDPSd1XYQelRKQt29Couc0MGdRZVl48649ntNi9Z1ovaozm72G8762sUxdbN288cfLBGHxD8cuff1rZmrQq537y2Vu+jKgXhCQrTeSHjtAhn2WGHm6byi2ZWNsy8xRBDFIUyPzTwnlq3n1+PxoEYYTmoBsE2aXkiaOmHGWoI6YX3bYjy3PrjoM0BElMxIa+I8YtiAA9cIM7fU0j9WZjEFTnGIKoiTdYw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+Authentication-Results: mx.microsoft.com 1; dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=intel.com;
+Received: from PH7PR11MB6006.namprd11.prod.outlook.com (2603:10b6:510:1e1::13)
+ by MW6PR11MB8339.namprd11.prod.outlook.com (2603:10b6:303:24b::7) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.496.15; Fri, 9 Oct
+ 2026 08:16:53 +0000
+Received: from PH7PR11MB6006.namprd11.prod.outlook.com
+ ([fe80::4e2d:28f0:ede9:73bd]) by PH7PR11MB6006.namprd11.prod.outlook.com
+ ([fe80::4e2d:28f0:ede9:73bd%6]) with mapi id 15.21.0496.015; Fri, 9 Oct 2026
+ 08:16:53 +0000
+Message-ID: <731a8c1a-df71-4480-9c1b-47b3afd51e20@intel.com>
+Date: Fri, 9 Oct 2026 10:16:44 +0200
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 06/21] ASoC: ops: Introduce 'snd_soc_deactivate_kctl'
+To: James Calligeros <jcalligeros99@gmail.com>
+CC: <asahi@lists.linux.dev>, <linux-sound@vger.kernel.org>,
+	<patches@opensource.cirrus.com>, <devicetree@vger.kernel.org>,
+	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-mediatek@lists.infradead.org>, David Rhodes <david.rhodes@cirrus.com>,
+	Richard Fitzgerald <rf@opensource.cirrus.com>,
+	=?UTF-8?Q?Martin_Povi=C5=A1er?= <povik+lin@cutebit.org>, Liam Girdwood
+	<lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, Rob Herring
+	<robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
+	<conor+dt@kernel.org>, Jaroslav Kysela <perex@perex.cz>, Takashi Iwai
+	<tiwai@suse.com>, Matthias Brugger <matthias.bgg@gmail.com>,
+	"AngeloGioacchino Del Regno" <angelogioacchino.delregno@collabora.com>,
+	Shenghao Ding <shenghao-ding@ti.com>, Kevin Lu <kevin-lu@ti.com>, Baojun Xu
+	<baojun.xu@ti.com>, Sen Wang <sen@ti.com>, Sven Peter <sven@kernel.org>,
+	Janne Grunau <j@jannau.net>, Neal Gompa <neal@gompa.dev>
+References: <20261004-macaudio-v2-0-7b47ed6335a8@gmail.com>
+ <20261004-macaudio-v2-6-7b47ed6335a8@gmail.com>
+Content-Language: en-US
+From: Cezary Rojewski <cezary.rojewski@intel.com>
+In-Reply-To: <20261004-macaudio-v2-6-7b47ed6335a8@gmail.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 8bit
+X-ClientProxiedBy: WA2P291CA0026.POLP291.PROD.OUTLOOK.COM
+ (2603:10a6:1d0:1f::22) To PH7PR11MB6006.namprd11.prod.outlook.com
+ (2603:10b6:510:1e1::13)
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="NOajDJ9cSUpeZ4E4"
-Content-Disposition: inline
-In-Reply-To: <20261009050322.39060-1-sayantann11@gmail.com>
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: PH7PR11MB6006:EE_|MW6PR11MB8339:EE_
+X-MS-Office365-Filtering-Correlation-Id: 6bdb2acd-a2bc-454d-0f9f-08df25ddacbe
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230040|23010399003|376014|7416014|1800799024|366016|18002099003|22082099003|10067099003|4143699003|11063799006|56012099006;
+X-Microsoft-Antispam-Message-Info: VzqMo0vrBzCCNtE3grAcFPwgUPupZfaa+WueTV1CZ+9voDTp3SMgOXtzqOYMp9Nbw/rRwnvsUTyblwbjURc0t9QmI2x0PLgwRwD1wgz5lHBDiJOqxiY/dJMUHfW4jBP3AoX8vOF7dejqrXIglHBu+/Rld67rWYqE3iy2pjBPHieqeU+eDrOM5Ww+mX2y7VBOl7nn8pF+JM8h1KbnckTu5t3C54k0jfDytK913WTVqi78YSZ18rpuVDHrCe0uKYoiHoSfCsFpHMHsHbj2xCJRp6tTOnp2v6LdTzs5XyLLhYyCxcC6+sAcG9+9Pr1LdIqLgsumg5Sxek6jjjmhbHPInaXqGd37evEGdSafC5e4+VD6xA473A0J2uLmH5TvJXW+trQvytL2heIeTUmbc/LllXn7nMQhx+wsfN97G9NyznXBK5E05yjq18Q8+4mX89vHX/bj5cc2F5JmzI0F0zMQ4X/M+IxnI9Yu0NRH/T3RomAyN/BzXWbgEUi23zDX246f36/j5ciJioo8bswQ5jm8i7nRRFcvK3E+P7dr93pGiwbvc1WORvMrCtVog3rWRKe8iAnju1rUV3pMbFwAV+rc2DkuPn2Y1/Mjq5v9nDCteEr8Uu15DnpLk7pW3qETka3qPX6tzlyTgcuoI8Ufo7hWoOHH+yMkUlA6r/l+h/Q9cP8=
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:PH7PR11MB6006.namprd11.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(23010399003)(376014)(7416014)(1800799024)(366016)(18002099003)(22082099003)(10067099003)(4143699003)(11063799006)(56012099006);DIR:OUT;SFP:1101;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?YWl4ZE05N2FEMDNBSE9DVWJoODh6T1FGSDJnSTlLUzVWc0hJd3RmcmR2a3pP?=
+ =?utf-8?B?TTFlOXlyMVhCK3ZJV2tnL2RQNzJLOEYyWUJGdk05VWxua1NpSzJZU3VaYzNZ?=
+ =?utf-8?B?ZTRVNWZmQ2ZxaTA0bGZSVVJLNE9GSG1FbjBnNDJ3ck56QXU1RDNScEFUbzlB?=
+ =?utf-8?B?aGI2aXZQdjZJeVZmR2Z0SGRLaWQrNDVWdEJqRUhwK252d2RIMEg4MEpBdEo0?=
+ =?utf-8?B?Y0dpdlhhalNDelNnY0VpUG0xMFN2SnYvay9DMGxUSHRKMG5hSGNwWEx6Qksx?=
+ =?utf-8?B?N2Jka2R3SndydVNhdnRqOC9RMHloTDkwSmNyUFhiVEtsbnF6S3gxazk0L2hr?=
+ =?utf-8?B?UFFPelpyZWNMdlBZYmcyYmNyOW5mSXYvdkJYUUZ4SDRGSVRObUZXQXBDVUdh?=
+ =?utf-8?B?a1N0M2Y5c2lGQTgwTHM4eWh5UjcxZzAyeEZQMkdTaXlHTFRMSE02RXdqRC93?=
+ =?utf-8?B?NjJFYUt3QTdPYnpGRkFEMnRGeUpNczJrSGhlbHFvMWxxZWMzL1BrMzhweVgz?=
+ =?utf-8?B?V0dzWTZvSTh5MUVpWGllOGhlc2JKNGJsVGpmNE5Qc0xndVJucFdOSVFWbkVZ?=
+ =?utf-8?B?VmdKOG13OVRUQTF5Znh6SDhHV2pja0s5R2lJRTlYTWVOcmk2MzdiS1pZZmZ6?=
+ =?utf-8?B?c3A4Ym4xd2U2MWpmUGx0cnFTV1V5dWdvSkVVcWFSbkovR3JWMmFWbmZlc0xn?=
+ =?utf-8?B?VG5uM3ZhRWE3RjZMTVRKL1B5ZXZZM0JTcVl2RDV2K1A4dEczY1RubXBLVENC?=
+ =?utf-8?B?VFhHK3g1Q3VSdithQVdyWldaandiRnNXR25TWlNkZllqaUxGMHhqdTdtai9X?=
+ =?utf-8?B?cXlJeVdBdVErS2t4b3cwakpMbGZvVzBiQkhaTG10aDI1bC9pRXJ1VUh5VnN6?=
+ =?utf-8?B?T2UyUDNRd09Wc3ZWNnVVNjFwWHg5MFNickpjME5KTGEvby85ZzVoRjhGa1hv?=
+ =?utf-8?B?K1M5TUVTUzBQV0d0RkNKRFd1VzMrdzhMZ2tpbzNOVlFabUczL3AxZ2I3Z29H?=
+ =?utf-8?B?ZlNPVE4zSFBDQlJvZ0l1UitVbUJmbVNBWE9zRzVsamVBQTZZVklkanNOV1M3?=
+ =?utf-8?B?S0phOG5VeURtWWlhSUZmOUd2WG0vOXF2VHg0VGxFMDFyMHBlTjNBdEZlZUZo?=
+ =?utf-8?B?VlJRV0YxaXNnVTJsRXZJSDRxTi9pdXg3QU5oQ0dxRFFzYmRzZmxSQ1daaHBz?=
+ =?utf-8?B?NG5mM2NZQ3hiUW0zZ1d3ZGswejF5TnFSUDJXZk1TT3FxeVptYUwrcDNtM21z?=
+ =?utf-8?B?bWtGUjErbVdZeHRpenRHeUpuK0wxU3I0Y0xBdG1VWnhqUzFWSWdMYVMzTDR4?=
+ =?utf-8?B?NEZ3VFl4dzFmR0dBNEI3ajcrWXhXblhCWGNOcmxZeDRnVmlnZXBLZlIrU0pq?=
+ =?utf-8?B?d0pReWFHQ0VOSyt5Tm91MUZYaHRBTTJ2TkNteXJ6MnV1c0t3VHZyWlNXcFA0?=
+ =?utf-8?B?TmhPVFQ3SzZYOTNqU2VUR1hzWE5DbnFXUG9Pb3d0NXdVYzNacE05ZzNqRUdZ?=
+ =?utf-8?B?dnBuRERhc0Zsd3lIMjlaUzFuWXNKb2tpdVNuanRrVTlhNGZXRzNDSFQ5Qm1i?=
+ =?utf-8?B?Rk1jMG1IRXJNWE5vcmgwNTAwb2ZadU53YUx2YVNNZG13cmhwTzRvVlZ0NHBZ?=
+ =?utf-8?B?c2RUeFpNc2F2OTVQWHVsRktsU2orNndzQjN4dkI2dG8yT2J0LzBqb1J4YWFX?=
+ =?utf-8?B?VWprUTk0TXpMeXp1YU5EM2FxSjJVdXI4czNQUnNLdFR6SWNwSnZreTVtT1dp?=
+ =?utf-8?B?Uk5OZk9GaUVjVDYrVG5UcGxsQTRFci9uQ0szN1pKY1JCa3U2RG1wV09aRGE0?=
+ =?utf-8?B?ai9pZ01DYXNabWludUZKUk9CSzFnVkowdHpkN3JWbURBZjVvK2JYeXB4THhS?=
+ =?utf-8?B?cmNYUjBTUXNhUExjSUNXZUtZSzhwaDR2bDNiTTNTWFF2Q3dSb3FlQm1hbHlC?=
+ =?utf-8?B?S0dpL1FkcVkzK0cyMUJWYk0wakpRUFBiWnFvaXlrbmpMY0QyRHpSYmxnc1BI?=
+ =?utf-8?B?M2xHOFZmRUJaQmdRa1U5NHg5N0Q5d0ltSGlOQkxlSUNKV3dnUDVhd2JIMjRz?=
+ =?utf-8?B?bDBxT1BXd094NHAxYytYa1k0a0dBbkhlOXdTRHNEZHFyaWh3dGlkM2tXeCtv?=
+ =?utf-8?B?dnlUY1NHdkxTWTZVOUpRcFFhSWFGTkpTVlFMUmVIU1Nnc3RhS0JldTh2WWRN?=
+ =?utf-8?B?NWU4Vk85WjU2eUhsWFFCUXh3SWxJejJjM3YyMGJWRzVrWkRISUllWS9HVExP?=
+ =?utf-8?B?RlJtd2gyNUcxc2xXZkNxYUNXeUw2V1c1V2p2azBYVVBhcGpKckZ2MzlnZFpn?=
+ =?utf-8?B?dEhrRXdaWkVTREZxMi9BSFFBNzdtVVltUEhra1A0Y0R1dVhxWVY2ZDdKck43?=
+ =?utf-8?Q?sAe5jUKCQk6DiuE8=3D?=
+X-Exchange-RoutingPolicyChecked: lZRjcy7Udyc29W9DDuAITMZgdv6uVysHkRIygsY31XqONVeDgnY3RKSt5qVWEUajjb4YBdl/AB5t9EB6jK0vHxAnCrb7tqiHbA03JTBjZZWWXFsJTZ8/eCEdOC1tTTolOYBWUKmA9ZICfo4/Ol9RZ8MYHkeDnTYF1UfZtKhs5SgbD84Kq+79sZk/5FWUFCiPsuZqKdfTHuDA5UW+R/FSFMPJXVv5X7pa9QRo0Bd0IbMc9JvSC03a+5YEKRHbVKOai3hxWwqHs40tcFXd/L3gqZ+OOWFJukZFIUY89N9VA7t0Bnjl+f1RyZtXaeZgztc5rVPKFY9OLatjJIe0nprrDQ==
+X-MS-Exchange-CrossTenant-Network-Message-Id: 6bdb2acd-a2bc-454d-0f9f-08df25ddacbe
+X-MS-Exchange-CrossTenant-AuthSource: PH7PR11MB6006.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 09 Oct 2026 08:16:53.3171
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: sAkp1aZPXB7aN5DeGIGnkuJbtNQ7CDF7zX3h/KWlvQm4P4QiEcrQg3H28Z/bhLgP4T1qtCiTvtazcI3yU2Kozpesshx5fpH/BvMnQ/bhxys=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: MW6PR11MB8339
+X-OriginatorOrg: intel.com
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20261009_091706_707603_62C892A5 
+X-CRM114-Status: GOOD (  19.83  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,201 +208,64 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
---NOajDJ9cSUpeZ4E4
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+On 10/4/2026 8:03 AM, James Calligeros wrote:
+> From: Martin Povišer <povik+lin@cutebit.org>
+> 
+> The new function can be used to deactivate controls. It is something
+> a machine driver may call in fixup_controls.
 
-> From: Chad Monroe <chad@monroe.io>
->=20
-> With flow stats enabled, PPE offload setup requests flow statistics
-> from the NPU. If the running NPU firmware does not support flow
-> counters, the request fails and the current setup path aborts PPE
-> offload.
->=20
-> Treat flow statistics as an optional capability so that a failure to
-> set up the counters does not prevent normal PPE offload. Record
-> whether flow statistics are available and continue PPE initialization
-> when the NPU refuses the flow-statistics request.
->=20
-> Also treat a zero NPU statistics address returned by the firmware as a
-> refusal. The host-side DMA buffer (foe_stats_dma) is allocated by
-> dmam_alloc_coherent() in airoha_ppe_init() from system memory. The NPU
-> statistics address (npu_stats_addr) is a separate allocation from the
-> NPU firmware's internal SRAM pool. When that pool is exhausted, the
-> firmware replies with success and npu_stats_addr =3D 0. A zero address
-> does not provide a usable counter region and must not be passed to
-> devm_ioremap().
->=20
-> When flow stats are available, clear PSE_PORT6_SHARE_DIS so that PSE
-> port 6 (CDM3 path to the NPU) participates in shared-buffer flow
-> control, which the counter traffic path needs.
->=20
-> When flow statistics are unavailable, PPE continues to operate without
-> NPU flow counters while retaining normal offload functionality.
->=20
-> This combines the original SmartRG/Airoha fixes for:
-> - keeping PPE offload active when the NPU refuses flow statistics
-> - treating a zero NPU statistics address as a flow-statistics refusal
->=20
-> Based on the original SmartRG/Airoha work by Chad Monroe:
-> 5ce96ab ("SDG-9458: keep PPE offload when NPU refuses flow stats")
-> 0ad8528 ("SDG-9458: airoha: treat a zero NPU stats address as a refusal")
-> Fixes: b81e0f2b58be ("net: airoha: Add FLOW_CLS_STATS callback support")
-> Tested-on: AN7581 with MT7992
-> Signed-off-by: Chad Monroe <chad@monroe.io>
-> Signed-off-by: SAYANTAN NANDY <sayantann11@gmail.com>
-> ---
->=20
-> Changes since v1:
-> - Rename flow_stats to flow_stats_cap (Lorenzo).
-> - Explain that npu_stats_addr is an NPU firmware SRAM allocation,
->   distinct from the host-side foe_stats_dma buffer (Lorenzo).
-> - Explain why PSE_PORT6_SHARE_DIS is cleared for counter traffic
->   (Lorenzo).
-> - Use airoha_fe_clear() and shorten the warning message (Lorenzo).
-> - Add hardware testing information requested by netdev-bot.
->=20
->  drivers/net/ethernet/airoha/airoha_eth.h  |  1 +
->  drivers/net/ethernet/airoha/airoha_npu.c  |  8 ++++++++
->  drivers/net/ethernet/airoha/airoha_ppe.c  | 17 +++++++++++------
->  drivers/net/ethernet/airoha/airoha_regs.h |  2 ++
->  4 files changed, 22 insertions(+), 6 deletions(-)
->=20
-> diff --git a/drivers/net/ethernet/airoha/airoha_eth.h b/drivers/net/ether=
-net/airoha/airoha_eth.h
-> index 8277c1c87bb3..da4a3ba69e3c 100644
-> --- a/drivers/net/ethernet/airoha/airoha_eth.h
-> +++ b/drivers/net/ethernet/airoha/airoha_eth.h
-> @@ -617,6 +617,7 @@ struct airoha_ppe {
-> =20
->  	void *foe;
->  	dma_addr_t foe_dma;
-> +	bool flow_stats_cap;
-> =20
->  	struct rhashtable l2_flows;
-> =20
-> diff --git a/drivers/net/ethernet/airoha/airoha_npu.c b/drivers/net/ether=
-net/airoha/airoha_npu.c
-> index 4d3195eb00f7..b32a01dbe06b 100644
-> --- a/drivers/net/ethernet/airoha/airoha_npu.c
-> +++ b/drivers/net/ethernet/airoha/airoha_npu.c
-> @@ -450,6 +450,14 @@ static int airoha_npu_ppe_stats_setup(struct airoha_=
-npu *npu,
->  	if (err)
->  		goto out;
-> =20
-> +	/* The firmware reports success with a zero address when its SRAM
-> +	 * pool has no room left for the counters.
-> +	 */
-> +	if (!ppe_data->stats_info.npu_stats_addr) {
-> +		err =3D -ENOSPC;
-> +		goto out;
+> +/**
+> + * snd_soc_deactivate_kctl - Activate/deactivate control matching a name
+> + *
+> + * @card: where to look for the controls
+> + * @name: name
+> + * @active: non-zero to activate, zero to deactivate
+> + *
+> + * Return 0 for success, else error.
+> + */
+> +int snd_soc_deactivate_kctl(struct snd_soc_card *card,
+
+The name sounds weird with 'int active' in its parameter list. Either
+pair of wrappers:
+	snd_soc_ctl_activate()
+	snd_soc_ctl_deactivate()
+
+or something of snd_soc_ctl_set_status() sort. I see that sound/core
+uses: snd_ctl_activate_id(). Perhaps snd_soc_ctl_activate() is winner
+here by being cohesive with sound/core even with some confusion around
+'int activate' part.
+
+> +	const char *name, int active)
+> +{
+> +	struct snd_kcontrol *kctl;
+> +	int ret = -EINVAL;
+> +
+> +	/* Sanity check for name */
+> +	if (unlikely(!name))
+> +		return -EINVAL;
+
+Not a fan of unlikely() in not performance-critical code.
+
+> +
+> +	kctl = snd_soc_card_get_kcontrol(card, name);
+> +
+> +	if (kctl) {
+> +		ret = snd_ctl_activate_id(card->snd_card, &kctl->id, active);
+> +		if (ret < 0)
+> +			return ret;
+
+The if-statement can be dropped.
+
+> +	} else {
+> +		dev_dbg(card->dev, "Tried to de/activate unknown control '%s'\n",
+> +			name);
+
+One line.
+
 > +	}
 > +
->  	npu->stats =3D devm_ioremap(npu->dev,
->  				  ppe_data->stats_info.npu_stats_addr,
->  				  size);
-> diff --git a/drivers/net/ethernet/airoha/airoha_ppe.c b/drivers/net/ether=
-net/airoha/airoha_ppe.c
-> index 92611802801e..0957f331478a 100644
-> --- a/drivers/net/ethernet/airoha/airoha_ppe.c
-> +++ b/drivers/net/ethernet/airoha/airoha_ppe.c
-> @@ -37,10 +37,7 @@ static const struct rhashtable_params airoha_l2_flow_t=
-able_params =3D {
-> =20
->  static int airoha_ppe_get_num_stats_entries(struct airoha_ppe *ppe)
->  {
-> -	if (!IS_ENABLED(CONFIG_NET_AIROHA_FLOW_STATS))
-> -		return -EOPNOTSUPP;
-> -
-> -	if (airoha_is_7583(ppe->eth))
-> +	if (!ppe->flow_stats_cap)
->  		return -EOPNOTSUPP;
-
-Looking again at the code flow_stats_cap is only used here. Why do we need =
-it
-in the first place? I guess you it is enough to just not return an error in
-airoha_ppe_offload_setup() and log the error instead (as you did).
-
-> =20
->  	return PPE_STATS_NUM_ENTRIES;
-> @@ -144,6 +141,9 @@ static void airoha_ppe_hw_init(struct airoha_ppe *ppe)
->  	sram_ppe_num_data_entries =3D
->  		PPE_RAM_NUM_ENTRIES_SHIFT(sram_ppe_num_data_entries);
-> =20
-> +	if (ppe->flow_stats_cap)
-> +		airoha_fe_clear(eth, PSE_FC_CFG, PSE_PORT6_SHARE_DIS);
-
-can you please explain what this configuration is doing? This register is n=
-ot
-documented.
-
+> +	return ret;
+> +}
+> +EXPORT_SYMBOL_GPL(snd_soc_deactivate_kctl);
 > +
->  	for (i =3D 0; i < eth->soc->num_ppe; i++) {
->  		airoha_fe_wr(eth, REG_PPE_TB_BASE(i),
->  			     ppe->foe_dma + sram_tb_size);
-> @@ -1456,8 +1456,11 @@ static int airoha_ppe_offload_setup(struct airoha_=
-eth *eth)
->  	if (ppe_num_stats_entries > 0) {
->  		err =3D npu->ops.ppe_init_stats(npu, ppe->foe_stats_dma,
->  					      ppe_num_stats_entries);
-> -		if (err)
-> -			goto error_npu_put;
-> +		if (err) {
-> +			dev_warn(eth->dev, "NPU refused flow stats (%d)\n",
-> +				 err);
-> +			ppe->flow_stats_cap =3D false;
-
-please see above.
-
-> +		}
->  	}
-> =20
->  	airoha_ppe_hw_init(ppe);
-> @@ -1608,6 +1611,8 @@ int airoha_ppe_init(struct airoha_eth *eth)
->  	ppe->dev.priv =3D ppe;
->  	ppe->eth =3D eth;
->  	eth->ppe =3D ppe;
-> +	ppe->flow_stats_cap =3D IS_ENABLED(CONFIG_NET_AIROHA_FLOW_STATS) &&
-> +			  !airoha_is_7583(eth);
-
-please see above.
-
-Regards,
-Lorenzo
-
-> =20
->  	ppe_num_entries =3D airoha_ppe_get_total_num_entries(ppe);
->  	foe_size =3D ppe_num_entries * sizeof(struct airoha_foe_entry);
-> diff --git a/drivers/net/ethernet/airoha/airoha_regs.h b/drivers/net/ethe=
-rnet/airoha/airoha_regs.h
-> index 442b48c9b991..aee06c058586 100644
-> --- a/drivers/net/ethernet/airoha/airoha_regs.h
-> +++ b/drivers/net/ethernet/airoha/airoha_regs.h
-> @@ -72,6 +72,8 @@
->  #define PSE_CFG_OQ_RSV_MASK		GENMASK(13, 0)
-> =20
->  #define PSE_FQ_CFG			0x008c
-> +#define PSE_FC_CFG			0x0098
-> +#define PSE_PORT6_SHARE_DIS		BIT(22)
->  #define PSE_FQ_LIMIT_MASK		GENMASK(14, 0)
-> =20
->  #define REG_FE_PSE_BUF_SET		0x0090
-> --=20
-> 2.43.0
->=20
-
---NOajDJ9cSUpeZ4E4
-Content-Type: application/pgp-signature; name=signature.asc
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCasibawAKCRA6cBh0uS2t
-rK8sAQCcVwqGDaZNFDjbktsKV7mzp98FVx4rbcZGJlo+MhlRDwD/XXQapB/RcFIs
-7ItldqyvtIw7uHMNN4sLeGtM0R01uw4=
-=UgeO
------END PGP SIGNATURE-----
-
---NOajDJ9cSUpeZ4E4--
 
