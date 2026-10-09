@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9175ECA9EBD
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8B513CA601F
 	for <linux-mediatek@archiver.kernel.org>; Fri,  9 Oct 2026 18:32:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
@@ -12,73 +12,73 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=t3TR1mx/d+lJPdCos6SlZvIHemcM3rDJJZi+7utetLY=; b=PzmIjI7SmkBfPWUYlipW0eg8hh
-	Yk9jEAcAyHz+vSjzwsBLEEvL8Pe9HuRq8c+bOLS8mcDXd3pFESm5VH/Dnu53FfQQxCwY5hynWAsMi
-	xPLpCdz8H7chQ41pQodMQE5tOaPPJyD9laiqwa+PPaK9hsg2tX9cVnICOs8wuqIKSbFqbVEgri/4h
-	9eN/F/HLDVkSI5mSsvobmzhrQa4faLe9xvZTmdk8Eq6a0j/YneiL1seo2FNTYZ01bgl0Hm7zFl9At
-	DjoCH6zjDnDsd+jwOZgM40R3TScx4KegAFA0LMtCu/DP49ArtOJysMvbrr4XINsJFrJGA+Kt3CcZX
-	46ocUSIg==;
+	bh=5+W1hX4qQ116GBN/dEZOF3zgezRpS4RsRBfyuf5dXS8=; b=HGNJNGaUqD+iUrlFsu318dJn8N
+	nW20zXvFgod7dE1LdkNJAurwj7LVUFLNo/i11dkknnP7yBeklAkeCGhFdRbDmf+7ai8Iq7CCaZ4li
+	/C4IdsW//9Cni8KQTOpBNb2nL1kz8eQ0aZAMPhLIwaXHhVjoIJ7g9Xc1ohil7gTzpTwU+/JmlLJE6
+	KL7kAq2BBE00f4Wgg4pzNcFG8Zmjz73DftPZLKBYQ+OXe/cYHcNCZSxpk5RZvypwEvF14dqq2KZq7
+	VkOLuQSsFJH+1EEdlzYW7lacMu7ER+DYam6ZdUEwti0p0PcgP27c8cbyo7+7OBGhWP/LqEUiKbg6a
+	4v0RTGJQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xFFNw-00000006z9a-2cus;
+	id 1xFFNw-00000006z9P-1gEW;
 	Fri, 09 Oct 2026 18:32:00 +0000
 Received: from mail-qk2-x06.google.com ([2607:f8b0:4864:34::6])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xFFNt-00000006z74-09vh
+	id 1xFFNr-00000006z5v-2Zyk
 	for linux-mediatek@lists.infradead.org;
-	Fri, 09 Oct 2026 18:31:58 +0000
-Received: by mail-qk2-x06.google.com with SMTP id af79cd13be357-93bfb25817cso521768985a.0
-        for <linux-mediatek@lists.infradead.org>; Fri, 09 Oct 2026 11:31:56 -0700 (PDT)
+	Fri, 09 Oct 2026 18:31:57 +0000
+Received: by mail-qk2-x06.google.com with SMTP id af79cd13be357-93c56ac78c5so70890285a.1
+        for <linux-mediatek@lists.infradead.org>; Fri, 09 Oct 2026 11:31:55 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1791570716; x=1792175516; darn=lists.infradead.org;
+        d=gmail.com; s=20251104; t=1791570714; x=1792175514; darn=lists.infradead.org;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :content-type:mime-version:subject:date:from:from:to:cc:subject:date
          :message-id:reply-to:content-type;
-        bh=t3TR1mx/d+lJPdCos6SlZvIHemcM3rDJJZi+7utetLY=;
-        b=Te8wr+CX6sJ0B4Ipu74EK1M6nHeRYM2UGkIZS6UTU6gHsxM8s5f4KKP57twYv4IBod
-         QYqiGNCIZRG2Fnj4bkZY4q9tOaAnBqQ5TPQWUdk9BABO+yFydINOJdHb5LFCj7PTApCZ
-         ERReCbgX3sMEJ+PqnbVXqiX3YxOh+U/RbIAN6RA/rLXNo3GzdpAnKCDp4ScvaSomk20F
-         pX3NAWyUJdpySYXZXr3TbKDMWzt1chxYW6mBg549n8MO9Bg3Tw+1xIej4pBPMIV/x+OC
-         hqOf/2gbQLFg2kcZqSnXXafxeJPuUujOnVni5TzTbsupm2Mz3usac/KR3BD3kn2IzXC/
-         PqWQ==
+        bh=5+W1hX4qQ116GBN/dEZOF3zgezRpS4RsRBfyuf5dXS8=;
+        b=CdUHg335Cu/TVSj5Rvg62uIt0vCXZSIbxT5GgGMWkY9dudfKHUdBlhGwYvDmXuysme
+         l0WKaVjlT0zbW7WP4IJjQ8mKtIV3d3vREIop3a+AfqgyL6XzTzQsuSRxAkxkLqkMmN4C
+         Z+vSZh0+MmhwdBdFmqMy3x1loipVkdM/+OxJvmN9HxzqPCpRdQ5LOM8KPHywEYtHoxa3
+         kotoDIGv6HUt83PFSOpwviCj4m7CfjPBZqzNdkc7Ri69KMQBF2ygdPNIjz3Oyxh/0ZUX
+         nqsLlK1Lc9EANtXrqwfgEcs/cBMG+hyD/ymTv1uqtFdbSiocKP7IEgz2qNqbkXu4YH9M
+         W+qg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1791570716; x=1792175516;
+        d=1e100.net; s=20260707; t=1791570714; x=1792175514;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :content-type:mime-version:subject:date:from:x-gm-gg
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
          :content-type;
-        bh=t3TR1mx/d+lJPdCos6SlZvIHemcM3rDJJZi+7utetLY=;
-        b=eFfVorkQ/oC9m5Krjv2Sp4D1Fw5HlGc6Q+YINL70ThLknR7mMTOvBj3syd4UqU+ZBi
-         8pqOjvlyeNugCFqsqm7B+0Q7jyaOOLM99vsj/qK7hF1P33QNCJC3OGai0Oi+P4ENwy/v
-         AtfE06kAFyNENryvCJ7SCOlPijgztWNzASLuyDWGMCcL4i8ib3sbxLykACTJKD//lG3q
-         nufHykAm8beqZtU4DxqH4mOyBPgFzAsBFSAHZKZoRnu8xY8sfJ9YyHuyEvRwiIhEzVZ/
-         OeQLZ0h/bEdl4JlRDUWOT3RtcEifgDF8bnlSFx0x18+m9x0n1V7pGWXuGPiiV0BTPjww
-         m8Xg==
-X-Forwarded-Encrypted: i=1; AKwUvByP5yExmcVSiUXhGJoppxXnkTQY4tjexpg3aJrXRlH/iQRK916LoWbOESdHEBn6zQOANyi20Og5M9Tkyb0s2w==@lists.infradead.org
-X-Gm-Message-State: AFq9FYIoeGcPLPw+vLMk2pBKuaiRDohizDqv1EMNXq6G4NL98MQ1Z8rf
-	/PTWF3GdGmQZqFkAit8lnAv2OTi86QvF45bswbskYamZS2vekSK75fRK
-X-Gm-Gg: AYBFou0SCAa50xs9cOj+CCspqOz4FLA6z3nuSdoh0XvgiFwLr7oiENQ2fGSMkjefWgf
-	Pu9UG7OzfE7u53JqHcL7Tf9FBLlR4wsRAjfUDnk4VSssy3Wui8Pspclpuz0Ogjuztzkx30ou+t+
-	1EeDh3b3dm6NUhHl/b8YQqYXMmQaX2hoc1SCOIHhPHd+1TTOzui6vOsJnnrWbKjCHzilACUUpvM
-	lkuwoOu1XAUj4M9fQWRc7OATuc3nyn+FFPBlPvzlro8S8kfsR4pDCCR++Ilekijo0zUT4sgyNKm
-	qydnZTn0XKEE0GNQ9hFPAMRPpiBWJ1rhuuGum/b6IFacY4RYUJCcO9FNcSPRRf18N6tWEvd6URG
-	BEyiVrmgOzxXJCEt95J5/XVYWJnC2H1rPug62y0UavOQyhc3kQgWR5Oh9dFv3Wdfw47+bU8PmDA
-	Zv0VSVZu8auqtsIqMowVo7Q8NBhUKOGLBJMgtaWrDKiogI9HlTCJ34rY++o+xQ3t4FxJyaK7hUQ
-	fLSrV/iYSuPi6jISirzWeujKvQqfo6xLI6yJDK+e2q0QYORkTSETXOwAHRs3yLJrg7+z7ICkv8=
-X-Received: by 2002:a05:620a:2719:b0:93e:c12c:9b6a with SMTP id af79cd13be357-93ec12c9ec2mr324347685a.69.1791570716065;
-        Fri, 09 Oct 2026 11:31:56 -0700 (PDT)
+        bh=5+W1hX4qQ116GBN/dEZOF3zgezRpS4RsRBfyuf5dXS8=;
+        b=Gm8cH40PDETZZx4Dw56Tfk4qZbsvJ2AVnXJ6n5ppnzfjcNDdybtQRjLaT6UBWRIpnE
+         HCuIMrwG5YO/mqXUILF5J85msmPoOuzdwz5zJkLSa3xT2+whJghfluQZE5KiLf1sdnpH
+         7/2ZWFN8azYlb7N4EWR9pz+mo/0oSTkZKrLkf22xJNFRConQmSkYOd22Rn1JH2kKvwfl
+         aa4CAu2NgYRT4n2nLeYAnBc5ToeOfGKSBt86tR6RlQZZNa7oueS1GLFmngbN7NjQEOi9
+         FGP0OUpohXY8l/1oQ9/qpPjIdoMeCSL7coCCX3E4RypVpF4hfggNTvc0/P9KnoBveD0m
+         IM4w==
+X-Forwarded-Encrypted: i=1; AKwUvBzmQjwlvXo4MgFKkWHfgbEmwXiNZiJ5ThktNwvrKbEbiffj2Y37IiWszeA7ImIEeDokPYyDXMnMvmndqYbRfw==@lists.infradead.org
+X-Gm-Message-State: AFq9FYIcVhsQ8rOoj2eBr84vBQg0MIKSq2CJoI6vi6tPAx3xrCnIJ4OH
+	VU0KErBOg3SRP3M7NlnqXu1uvttPcuUETPwGW3mBQnQ/74rsZx0Wfi6Blcacb7XPp0A=
+X-Gm-Gg: AYBFou0JRVku2uVzD+Ia2cUjnZHne7zd08ydtuOVoeWSoTcZnXwT3PdrBq4JOxMqWbJ
+	+R9Qca+4tj4Le+ufBRRVeU1Yxug82qta45hIGWo70OdXTJriNoG67ojCaK/xqPtOOxCPua79FM+
+	l+1CxRTHjb01EG1OeXYd5/Nmc3apwHPwmqR/jX5cd1+3va4aUEA8HLXws8ZpEn0YnBGmLTKMogM
+	/2SoAN8bnHIpgF5R0iHfZIwiVGuHvaOt+kbthoYV6JTyP4BDes60nD3b8t7kWm0TisoGmpBhlwU
+	jJEB1R5IOmcDwjZ31YL6OJpVP0DvxqICd+8B+n2xgdTZHvcR5OnJaL+dOUqG0dPoQQhLzRPPNRC
+	3hBduu4RmqeK5VA4apaXUS2MB0I6VPzgaNJy3J2PRLNeBxMuJUnnRjLsKmJGAyPQZUJDetLpEUj
+	fPFZtxjViPOgYa1LOO4KjqKQ7DHkstJ26fX2HwzrYZPwdEvuJ5xabdWh0Co/7rNsL2bWqNvll6G
+	sF+Ld1gXg0hIDiIg5y7SMCiI6gPku6QrJ/go4MeqWNJlISt3H+hQ/qo+ExDcxTn8A==
+X-Received: by 2002:a05:620a:6844:b0:93e:7156:f814 with SMTP id af79cd13be357-93ec134f9f3mr293228985a.11.1791570714330;
+        Fri, 09 Oct 2026 11:31:54 -0700 (PDT)
 Received: from [10.10.18.223] (wsip-64-207-253-118.tu.ok.cox.net. [64.207.253.118])
-        by smtp.gmail.com with ESMTPSA id af79cd13be357-93eb9898b5fsm245594685a.32.2026.10.09.11.31.54
+        by smtp.gmail.com with ESMTPSA id af79cd13be357-93eb9898b5fsm245594685a.32.2026.10.09.11.31.52
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 09 Oct 2026 11:31:55 -0700 (PDT)
+        Fri, 09 Oct 2026 11:31:53 -0700 (PDT)
 From: Ryan Brue <ryanbrue.dev@gmail.com>
-Date: Fri, 09 Oct 2026 13:31:47 -0500
-Subject: [PATCH 2/2] arm64: dts: mediatek: mt8173: Mark the lowest CPU OPPs
- for suspend
+Date: Fri, 09 Oct 2026 13:31:46 -0500
+Subject: [PATCH 1/2] cpufreq: mediatek: Enter system sleep at the suspend
+ OPP
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20261009-rbrue-suez-upstreaming-mtk-cpufreq-suspend-opp-v1-2-9100f79b4080@gmail.com>
+Message-Id: <20261009-rbrue-suez-upstreaming-mtk-cpufreq-suspend-opp-v1-1-9100f79b4080@gmail.com>
 References: <20261009-rbrue-suez-upstreaming-mtk-cpufreq-suspend-opp-v1-0-9100f79b4080@gmail.com>
 In-Reply-To: <20261009-rbrue-suez-upstreaming-mtk-cpufreq-suspend-opp-v1-0-9100f79b4080@gmail.com>
 To: "Rafael J. Wysocki" <rafael@kernel.org>, 
@@ -91,17 +91,16 @@ Cc: Roman Vivchar <rva333@protonmail.com>, linux-pm@vger.kernel.org,
  linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
  linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org
 X-Mailer: b4 0.16.0
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1791570710; l=1226;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1791570710; l=1447;
  i=ryanbrue.dev@gmail.com; s=20260906; h=from:subject:message-id;
- bh=LyDjS/8+V+if69g/8tSmRRGt/NJFu3rP46F002zZ4Cs=;
- b=J47TQSnGOTnk7vsmC3v8Kas19C3nd1y/Zu6+lW8xPqNDlmOqarof7ubUNN1IzHNMZfvh7R48y
- usvOVSj7ssJB5+xrCWh60GlbUy9459bvWBzwCVFOTeRmefrkRGhAbr5
+ bh=zKnuEKqqe7edCKaus1RgpjuKXXy74FsY9bBojL49qiI=;
+ b=TKIssWZbu9V/Rs0l3vFTMGDGJenHiseLmnrhDQeH01mZIX62p3RKiyzvqCiREuXBeGpC/DcER
+ 7x+myhDBZs8CLEektz10sDGJuS0qBbKpqx4vsozFQjfwzRdJRvxM5Ep
 X-Developer-Key: i=ryanbrue.dev@gmail.com; a=ed25519;
  pk=KsUvVaP//v/2q+ZBuacc7cLbsyEYn+AD71Sn28oZWKo=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261009_113157_089833_D0FEF956 
-X-CRM114-Status: UNSURE (   9.06  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20261009_113155_667819_F73B0B75 
+X-CRM114-Status: GOOD (  10.20  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -116,38 +115,42 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Both clusters otherwise enter system sleep at whatever OPP the governor
-last chose. On the Amazon Fire HD 10 (2017), entering suspend-to-RAM with
-both clusters at their highest OPP measured 63.5 mA, against 52.0 mA
-when they suspend at 507 MHz. Mark the 507 MHz OPP of each cluster, the
-lowest in both tables, as the one to suspend at. mediatek-cpufreq uses
-it for system sleep, and a kernel without that support ignores it.
+cpufreq_suspend() stops the governors at the start of system suspend, and
+this driver has no .suspend callback, so each cluster sleeps at whatever
+OPP it was last left at. On an MT8173 tablet (Amazon Fire HD 10, 2017),
+entering suspend-to-RAM with both clusters at their highest OPP measured
+63.5 mA. With this change and the lowest OPP marked, the same entry
+measured 52.0 mA.
+
+Use the generic suspend-frequency support, as cpufreq-dt does. Tables
+without an opp-suspend entry leave suspend_freq at 0, which makes
+cpufreq_generic_suspend() a no-op, so they are unaffected.
 
 Assisted-by: LLM
 ---
- arch/arm64/boot/dts/mediatek/mt8173.dtsi | 2 ++
+ drivers/cpufreq/mediatek-cpufreq.c | 2 ++
  1 file changed, 2 insertions(+)
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8173.dtsi b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-index 78c2ccd5be13..7f1af15cb934 100644
---- a/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-@@ -56,6 +56,7 @@ cluster0_opp: opp-table-0 {
- 		opp-507000000 {
- 			opp-hz = /bits/ 64 <507000000>;
- 			opp-microvolt = <859000>;
-+			opp-suspend;
- 		};
- 		opp-702000000 {
- 			opp-hz = /bits/ 64 <702000000>;
-@@ -93,6 +94,7 @@ cluster1_opp: opp-table-1 {
- 		opp-507000000 {
- 			opp-hz = /bits/ 64 <507000000>;
- 			opp-microvolt = <828000>;
-+			opp-suspend;
- 		};
- 		opp-702000000 {
- 			opp-hz = /bits/ 64 <702000000>;
+diff --git a/drivers/cpufreq/mediatek-cpufreq.c b/drivers/cpufreq/mediatek-cpufreq.c
+index 052ca7cd2f4f..f9b1eca176eb 100644
+--- a/drivers/cpufreq/mediatek-cpufreq.c
++++ b/drivers/cpufreq/mediatek-cpufreq.c
+@@ -603,6 +603,7 @@ static int mtk_cpufreq_init(struct cpufreq_policy *policy)
+ 	policy->freq_table = freq_table;
+ 	policy->driver_data = info;
+ 	policy->clk = info->cpu_clk;
++	policy->suspend_freq = dev_pm_opp_get_suspend_opp_freq(info->cpu_dev) / 1000;
+ 
+ 	return 0;
+ }
+@@ -624,6 +625,7 @@ static struct cpufreq_driver mtk_cpufreq_driver = {
+ 	.init = mtk_cpufreq_init,
+ 	.exit = mtk_cpufreq_exit,
+ 	.register_em = cpufreq_register_em_with_opp,
++	.suspend = cpufreq_generic_suspend,
+ 	.name = "mtk-cpufreq",
+ };
+ 
 
 -- 
 2.55.0
