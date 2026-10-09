@@ -4,95 +4,110 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C301ACA6019
-	for <linux-mediatek@archiver.kernel.org>; Fri,  9 Oct 2026 13:11:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5E470CA6019
+	for <linux-mediatek@archiver.kernel.org>; Fri,  9 Oct 2026 16:11:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:To:From:Reply-To:
+	Cc:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ivHyAXb3qjEaUwwmjdkwnHy9ML1o2ap0QHUHYjbwF8g=; b=F9KXkPM+FE2/WnSEZdgiCih9sL
-	PJegg0JlJswr8le4a8OnqWOtT6EEMfq0ju/rFTo/j5mB220KPWTehYre1dt9jG+TkOflfn/AqkFMG
-	kJEeu7ibTEtLzwbEc+zXSZ6OUq+PnayBI3C7sTZXI++zCAsK9S8TqsbTDZCKQw7MRshhzcZxoL9La
-	oWgQdGu13pAbY/0m+MVwxLOyzyhVmcevq0jRSTFkfr8LhgBoEBSVpXgyR/TLXHlNKzP5AA+nTizPX
-	jZZ05Zw1es/lYv2b/tjVEVSYpzEo2PY01xA+CkWRkQyh+wlj/SrWHU1407G6Gh6ATNMUA/hmOp+Pf
-	fXkX6WRg==;
+	bh=sGFrWQujhzJh9uPF6notnBiKMTrdwWirz/MP50Av2KE=; b=3+xSlkx/+OiV68zYPwpjjGNtSX
+	R/F61zPPRPim/DpTJHmx/bhuedaTgL4o6VxqPTTJYldUWWn/MoMSdZCTwJG6u2vVEeRKKULBFaUgh
+	5zs8ucVXFSphOA4fSAtD4v2WFloM/uCkRIQZHuHwj/R5PWwScRnBohVPEmjD50FfPggxAag2lb4SZ
+	F4nCyhHKFOs+AG5tWeyScKbg8zsigYBpn4CWEgRA0DqvWxMOZZMx523ChVwViC2NUt8A0qdE5qq0U
+	sRD9petzFPr6tzzD7A831ejXlE1jIGiWsX9ftz6UMX8E9dHEIV4M6TMgP81k9jKhz2EaNYhBiK7TO
+	vAlf+Uwg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xFANg-00000006MQU-3K1X;
-	Fri, 09 Oct 2026 13:11:24 +0000
-Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f])
+	id 1xFDBn-00000006cNI-11KM;
+	Fri, 09 Oct 2026 16:11:19 +0000
+Received: from mail-wr1-x42d.google.com ([2a00:1450:4864:20::42d])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xFANd-00000006MPQ-2vfp
+	id 1xFDBj-00000006cMJ-0lRw
 	for linux-mediatek@lists.infradead.org;
-	Fri, 09 Oct 2026 13:11:23 +0000
-Received: by mail-wm1-x32f.google.com with SMTP id 5b1f17b1804b1-4a140e7405dso66212095e9.3
-        for <linux-mediatek@lists.infradead.org>; Fri, 09 Oct 2026 06:11:19 -0700 (PDT)
+	Fri, 09 Oct 2026 16:11:17 +0000
+Received: by mail-wr1-x42d.google.com with SMTP id ffacd0b85a97d-48af27fe287so3234405f8f.0
+        for <linux-mediatek@lists.infradead.org>; Fri, 09 Oct 2026 09:11:14 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1791551478; x=1792156278; darn=lists.infradead.org;
-        h=content-transfer-encoding:content-type:in-reply-to:from
-         :content-language:references:cc:to:subject:user-agent:mime-version
-         :date:message-id:from:to:cc:subject:date:message-id:reply-to
-         :content-type;
-        bh=ivHyAXb3qjEaUwwmjdkwnHy9ML1o2ap0QHUHYjbwF8g=;
-        b=gRh6+lLGcST2GoOJkO4MBJXXL+s4xQI52CWAqYOHdWxfWfokcu8BAZyZ9mndkjO+rN
-         OFl76hH3ceMKQEyu0NMa9+SuKN4vZ89YKD6nWsHRZJIBxmC4L8qm3phKFbnEFmtfXQRX
-         w8QYszFnbMTRYgACAGSEB6k4hpURiwkUkRfX+gbxzXV0py/CcurjNrgu+gtDv7WECbCY
-         niZExWzScGP/3Pt+/WvZ+BuzA6qNRKFqokN7zuX4E/kDMd+yeMMJEKhiyfYAJ4H/0G+y
-         TjfxRNzW8EGSb8T4lxq7GM9PQNflkq/fR5MXAi5hIfVXVGAeWQISucnQUgglIzA30RYi
-         yGCg==
+        d=gmail.com; s=20251104; t=1791562273; x=1792167073; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:to:from:from:to:cc:subject:date:message-id
+         :reply-to:content-type;
+        bh=sGFrWQujhzJh9uPF6notnBiKMTrdwWirz/MP50Av2KE=;
+        b=WOCWo1imHeaV6y7yCHV8TXOg2t42HQLmbd9BqPjA6H3OO69azyLjzPseMlffwIOKKP
+         05o+RYVUDxUb2LgwvuwyEXNhb0tiYOYkeG9cr3FJz3cYjnnewdo79kiwnSNhtZj54UL5
+         gTNRgeavHvPwPRwddtBDSHSoUZIJCDZeMqsQJKiiFS0vamdXYE4ywUN40fUEBIkBRN1S
+         AhX7ZNHYUJfIuCyWZRedCQebDCHLl4OpkCsM/jQ5GDVe9sMSETdoLw/CPRQdivxBk8Qz
+         pp4z+Hjfhdy/MChj0C4PNEQUs1NyU7tlMchdjzIsbWYTRiuiWPBywHGHgB4P+RjX7ma+
+         DuWA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1791551478; x=1792156278;
-        h=content-transfer-encoding:content-type:in-reply-to:from
-         :content-language:references:cc:to:subject:user-agent:mime-version
-         :date:message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to:content-type;
-        bh=ivHyAXb3qjEaUwwmjdkwnHy9ML1o2ap0QHUHYjbwF8g=;
-        b=2ETxVdYJHG3hkep+o0uZ/SQHUtosQhVy+N9yJVBC6fVfZurY7QiIlIHoCD59oRfFrk
-         cdrmxzPZUZe4kWemrdq2l8kdZlRznBLTUxUXCfZ29qq3gy2ThL0Pc2bHnbHZjGLXqhJl
-         lLRBUeXg9iEjXQo2l6rGQKrXpFMxSS5qWxKIBFjkoeEk/e738B0iTCjCYYbftHvohWsd
-         Fkg9/Qbi9AM9oyatpFm2JDun9l93fRnrVnz8hnDt8da0Y3q/oQxI9ctPx5ve31aImuUa
-         SwpqigaN9OaicMU83kcWwpVkt88bKW3Loj/Mmzdeb7vzNUmMVa0oQS6APurRqqlC8p6K
-         4jhg==
-X-Forwarded-Encrypted: i=1; AKwUvBzD/d/rf2zf3tOX+PX7Rmat9XKfTitR+u8Q53mCKX/F6T2S7WLznoMlK7Xk4970vm37rsCu3npAGPWOyuHhHA==@lists.infradead.org
-X-Gm-Message-State: AFuF++m6eobZR7pVOZJd+cpftMmjZ8eRV8MkBzHYgB5j11w98woqS451
-	PWjjFnhH+ej9EAGu7Uu9K3ldD5EmhoNZ9OfZFoMIfHky196JXTKgy1My
-X-Gm-Gg: AYBFou3Y1x3bETglyG/Fl1gXcdqkXottQUtr0N37hjYVOvPl0GDRkaICB6+XrTic8Ta
-	Y4ffz/Q/ohCIcRlI1Rm+dFLoX+0h91U+oPoS0LTxfP5f6PLhGWpVL5Mhot6uZLn+UoLzWWahIRL
-	iV1nyi3LVOdV2NKcq+aY4ZGfGgkHVXQiItUd/e9HNk7p4fbjib6tqG8MdUPfRUHXRlpCb83iZO+
-	ufE/GgyWlmUG05Hs/PKcCxllKb7yhVbRqWic3S8wNmFyTUUUxv7DQOzR5LwoBG1OoPshSfmw6sR
-	d0Oi0IN8leBrX4g0cUC/E5UZsJNmcvdtVmwPi0Bnh14Fz0dOQ73mZKB7EiZtsBEP/ShFWKd8UrO
-	TAeGEL9c8BeNEiGn4oU3iuVKD9eBZthKEZYMXD7uSYGG3orFir3Gzv4dvJio9AzINvKGjzDRPLj
-	K30yOuJFJj4ina/ZXGIPMBXNLUcDryNnjKSnikq2zqdIstRm1kYrNg2ssQcNlgqHs2rqMEHbp+7
-	BjGhEVlW9uI3Guq
-X-Received: by 2002:a05:600c:6989:b0:4a0:236c:8601 with SMTP id 5b1f17b1804b1-4a18e3ec3c7mr35198895e9.0.1791551477871;
-        Fri, 09 Oct 2026 06:11:17 -0700 (PDT)
-Received: from [192.168.1.50] ([81.196.40.70])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-48db9463a9dsm4005314f8f.6.2026.10.09.06.11.15
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 09 Oct 2026 06:11:16 -0700 (PDT)
-Message-ID: <7ededd2f-98d0-41ac-91b4-2977963c4637@gmail.com>
-Date: Fri, 9 Oct 2026 16:11:14 +0300
+        d=1e100.net; s=20260707; t=1791562273; x=1792167073;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:to:from:x-gm-gg:x-gm-message-state:from:to
+         :cc:subject:date:message-id:reply-to:content-type;
+        bh=sGFrWQujhzJh9uPF6notnBiKMTrdwWirz/MP50Av2KE=;
+        b=1l4p4ZYi28tEvIRqq8O3ATlGP4l9OB3fLMCsTaCwG5XhtrmlN++NasIZjFzRDlIpve
+         SbeKJ48dCJUFJ50IUzezgGxnEsBHqiR3juuFBTbnA5uYVnjB2GXfg5SR1kgBLh/fCL7c
+         tBMXoppiLPar+SusWbSyd7jJIh5DJAzAxi6zeqj/KtIrMmOTOhRskji/GysCRwWiTiUB
+         MoQmJr6GlZwOvUxX83Tzfcz7ZAPLcbgfNewDunHqPNVh41KxnAYRXv1ZphKLOAuqwuCM
+         QX44Ri+Zva6jgTgwBz7erBnugG+JVnVJHIsn8qHP/YXGFNQeVUEJ6pstgkvchDFx+6/R
+         7ezQ==
+X-Forwarded-Encrypted: i=1; AKwUvBwAi9SVJ/T5T1M6UGXEw5UM+rmoW51kuIvnQjqbFkRXQts5G6tT/M2T13A/jPP+tQw+pf5B7wPOtXz1hUXmnw==@lists.infradead.org
+X-Gm-Message-State: AFq9FYJsdpJo209AjabFPEM924wHlmBcM2gYI8NtJJyDTj4/WlHDLe4i
+	7idlkjQROEhXJMyJjgi6k+gI1nW5nAAq/S0Mrognzr1JSroreTpzihmD
+X-Gm-Gg: AYBFou3lNWp3FSQN3fomQ67hOWHKfik5P8h3h65+aEWE2RemDsCFroYl/YnxMBdys0o
+	91pQ4f8Vgl3Tupu7HV+WBTTqn8n3z1RMkfjOOhspn0n9ni4mmH2BzVNfYMLGc2xV/I0H/rE0KU5
+	iy41g4Od78dFe6NrrjwnQqbJMgUUAFwVGJMDbC6RkhaFOKA2wLtMB0Df3pc2pQsO8lbUFC9bNjf
+	JMFzzDRw6WHFsbW5n/8bHWXIL+FvwO8KwaEmOXcdkGewxq72HlfHcL19hbKco4yPIUQ36uL999Y
+	5UW2d/Ntko1GcCcof0jc03BOWQxqaIliXsYSFXh7lxPTdx64fq3IoisWV1tHKQ8pw5/vaw5Lx8P
+	mnkJvIZBHHIpQs2/SmSPGHa3VjAaeSYtgTrYKlTAt+36ezDc9BoyJ4mJh1e9HPYrkqqhKGCzNGg
+	u/bP9vvlL65shgI6RCuzuo6Ef5ylv8O1tkng3oKc4jWCuJ4VegSvQwnDM+pTcX2QlE7a3WUL26H
+	lzLsbbY5gVEqqPK6LHfymfQMtmhk1W7BS2xFUi0+QUvvnE9szEIGnYdLNua8H+kljbAbYysA+FD
+	6m7IfwYnMKNHnJ+IIw==
+X-Received: by 2002:adf:e007:0:20b0:48c:656a:f36c with SMTP id ffacd0b85a97d-48dba77cefbmr3915875f8f.3.1791562272816;
+        Fri, 09 Oct 2026 09:11:12 -0700 (PDT)
+Received: from Ansuel-XPS24.localdomain (host-213-45-9-252.retail.telecomitalia.it. [213.45.9.252])
+        by smtp.googlemail.com with ESMTPSA id ffacd0b85a97d-48db94e2f08sm4744701f8f.15.2026.10.09.09.11.10
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 09 Oct 2026 09:11:12 -0700 (PDT)
+From: Christian Marangi <ansuelsmth@gmail.com>
+To: Christian Marangi <ansuelsmth@gmail.com>,
+	Lee Jones <lee@kernel.org>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Andrew Lunn <andrew+netdev@lunn.ch>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@kernel.org>,
+	Jakub Kicinski <kuba@kernel.org>,
+	Paolo Abeni <pabeni@redhat.com>,
+	Vladimir Oltean <olteanv@gmail.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	"Chester A. Unal" <chester.a.unal@arinc9.com>,
+	Daniel Golle <daniel@makrotopia.org>,
+	Heiner Kallweit <hkallweit1@gmail.com>,
+	Russell King <linux@armlinux.org.uk>,
+	Simon Horman <horms@kernel.org>,
+	Joris Vaisvila <joey@tinyisr.com>,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	netdev@vger.kernel.org,
+	mfd@lists.linux.dev,
+	devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org
+Subject: [PATCH net-next v25 01/10] dt-bindings: net: dsa: Document support for Airoha AN8855 DSA Switch
+Date: Fri,  9 Oct 2026 18:10:46 +0200
+Message-ID: <20261009161102.38961-2-ansuelsmth@gmail.com>
+X-Mailer: git-send-email 2.55.0
+In-Reply-To: <20261009161102.38961-1-ansuelsmth@gmail.com>
+References: <20261009161102.38961-1-ansuelsmth@gmail.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH wireless-next] wifi: mt76: mt7601u: add support for AP and
- P2P concurrent modes
-To: John Robin <johnrobin044@gmail.com>, linux-wireless@vger.kernel.org
-Cc: Jakub Kicinski <kuba@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org
-References: <20260815124547.329654-1-johnrobin044@gmail.com>
-Content-Language: en-US
-From: Bitterblue Smith <rtl8821cerfe2@gmail.com>
-In-Reply-To: <20260815124547.329654-1-johnrobin044@gmail.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261009_061121_890259_77FA8364 
-X-CRM114-Status: GOOD (  31.39  )
+X-CRM114-CacheID: sfid-20261009_091115_252244_738DCDFA 
+X-CRM114-Status: GOOD (  13.37  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -107,407 +122,111 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 15/08/2026 15:41, John Robin wrote:
-> Enable Access Point (AP) and Wi-Fi Direct (P2P_GO/P2P_CLIENT) interface
-> modes on MT7601U device, allowing concurrent Station and AP.
-> 
-> Register AP, P2P_GO, P2P_CLIENT, and ADHOC modes and
-> defined an interface combination to support 2 concurrent modes.
-> Set NEEDS_UNIQUE_STA_ADDR to allow mac80211 to generate MACs for
-> virtual interfaces.
-> 
-> Implement start_ap() and stop_ap() to clear WCID tables and
-> manage the hardware Pre-TBTT timer. Update mt7601u_bss_info_changed()
-> to handle BSS_CHANGED_BEACON and BSS_CHANGED_BEACON_ENABLED.
-> 
-> Add beacon frame handling through mt7601u_mac_set_beacon() and
-> set appropriate SYNC Modes for AP and ADHOC interfaces.
-> 
-> Add bounds checking to rate->idx to prevent out of bounds access and
-> safely fall back to CCK rates.
-> 
-> Route management and injected frames to the Voice (VO) queue
-> to bypass firmware queue suspension also avoid requesting ACKs for
-> multicast frames and skip data rate fallbacks for management frames
+Document support for Airoha AN8855 5-port Gigabit Switch.
 
-It sounds like this should be split into ~4 separate patches, each one
-doing one thing.
+It does expose the 5 Internal PHYs on the MDIO bus and each port
+can access the Switch register space by configuring the PHY page.
 
-> 
-> All implemented modes were verified to be working. Tested AP mode and
-> simultaneous STA+AP with iperf3 to verify stability.
-> 
-> Signed-off-by: John Robin <johnrobin044@gmail.com>
-> ---
->  drivers/net/wireless/mediatek/mt7601u/init.c  | 31 ++++++-
->  drivers/net/wireless/mediatek/mt7601u/mac.c   | 91 +++++++++++++++----
->  drivers/net/wireless/mediatek/mt7601u/mac.h   |  3 +-
->  drivers/net/wireless/mediatek/mt7601u/main.c  | 56 +++++++++++-
->  .../net/wireless/mediatek/mt7601u/mt7601u.h   |  3 +-
->  drivers/net/wireless/mediatek/mt7601u/tx.c    | 19 +++-
->  6 files changed, 175 insertions(+), 28 deletions(-)
-> 
-> diff --git a/drivers/net/wireless/mediatek/mt7601u/init.c b/drivers/net/wireless/mediatek/mt7601u/init.c
-> index 5d9e952b29664..e871f7b63cb35 100644
-> --- a/drivers/net/wireless/mediatek/mt7601u/init.c
-> +++ b/drivers/net/wireless/mediatek/mt7601u/init.c
-> @@ -12,6 +12,25 @@
->  
->  #include "initvals.h"
->  
-> +static const struct ieee80211_iface_limit if_limits[] = {
-> +	{ .max = 1, .types = BIT(NL80211_IFTYPE_ADHOC) },
-> +	{ .max = 8,
-> +	  .types = BIT(NL80211_IFTYPE_STATION) |
-> +#ifdef CONFIG_MAC80211_MESH
-> +		   BIT(NL80211_IFTYPE_MESH_POINT) |
-> +#endif
-> +		   BIT(NL80211_IFTYPE_P2P_CLIENT) | BIT(NL80211_IFTYPE_P2P_GO) |
-> +		   BIT(NL80211_IFTYPE_AP) },
-> +};
-> +
-> +static const struct ieee80211_iface_combination if_comb[] = { {
-> +	.limits = if_limits,
-> +	.n_limits = ARRAY_SIZE(if_limits),
-> +	.max_interfaces = 2,
-> +	.num_different_channels = 1,
-> +	.beacon_int_infra_match = true,
-> +} };
-> +
->  static void
->  mt7601u_set_wlan_state(struct mt7601u_dev *dev, u32 val, bool enable)
->  {
-> @@ -599,6 +618,7 @@ int mt7601u_register_device(struct mt7601u_dev *dev)
->  	ieee80211_hw_set(hw, AMPDU_AGGREGATION);
->  	ieee80211_hw_set(hw, SUPPORTS_RC_TABLE);
->  	ieee80211_hw_set(hw, MFP_CAPABLE);
-> +	ieee80211_hw_set(hw, NEEDS_UNIQUE_STA_ADDR);
->  	hw->max_rates = 1;
->  	hw->max_report_rates = 7;
->  	hw->max_rate_tries = 1;
-> @@ -607,9 +627,16 @@ int mt7601u_register_device(struct mt7601u_dev *dev)
->  	hw->vif_data_size = sizeof(struct mt76_vif);
->  
->  	SET_IEEE80211_PERM_ADDR(hw, dev->macaddr);
-> -
-> +	wiphy->interface_modes =
-> +		BIT(NL80211_IFTYPE_STATION) | BIT(NL80211_IFTYPE_AP) |
-> +#ifdef CONFIG_MAC80211_MESH
-> +		BIT(NL80211_IFTYPE_MESH_POINT) |
-> +#endif
-> +		BIT(NL80211_IFTYPE_P2P_CLIENT) | BIT(NL80211_IFTYPE_P2P_GO) |
-> +		BIT(NL80211_IFTYPE_ADHOC);
-> +	wiphy->iface_combinations = if_comb;
-> +	wiphy->n_iface_combinations = ARRAY_SIZE(if_comb);
->  	wiphy->features |= NL80211_FEATURE_ACTIVE_MONITOR;
-> -	wiphy->interface_modes = BIT(NL80211_IFTYPE_STATION);
->  	wiphy->flags |= WIPHY_FLAG_SUPPORTS_TDLS;
->  
->  	wiphy_ext_feature_set(wiphy, NL80211_EXT_FEATURE_CQM_RSSI_LIST);
-> diff --git a/drivers/net/wireless/mediatek/mt7601u/mac.c b/drivers/net/wireless/mediatek/mt7601u/mac.c
-> index ca9cf628eb10d..5e2dec131331c 100644
-> --- a/drivers/net/wireless/mediatek/mt7601u/mac.c
-> +++ b/drivers/net/wireless/mediatek/mt7601u/mac.c
-> @@ -118,19 +118,27 @@ u16 mt76_mac_tx_rate_val(struct mt7601u_dev *dev,
->  		if (rate->flags & IEEE80211_TX_RC_40_MHZ_WIDTH)
->  			bw = 1;
->  	} else {
-> -		const struct ieee80211_rate *r;
-> -		int band = dev->chandef.chan->band;
-> -		u16 val;
-> -
-> -		r = &dev->hw->wiphy->bands[band]->bitrates[rate->idx];
-> -		if (rate->flags & IEEE80211_TX_RC_USE_SHORT_PREAMBLE)
-> -			val = r->hw_value_short;
-> -		else
-> -			val = r->hw_value;
->  
-> -		phy = val >> 8;
-> -		rate_idx = val & 0xff;
-> -		bw = 0;
-> +		int band = dev->chandef.chan->band;
-> +		struct ieee80211_supported_band *sband =
-> +			dev->hw->wiphy->bands[band];
-> +
-> +		if (rate->idx < 0 || rate->idx >= sband->n_bitrates) {
-> +			phy = MT_PHY_TYPE_CCK;
-> +			rate_idx = 0;
-> +		} else {
-> +			const struct ieee80211_rate *r =
-> +				&sband->bitrates[rate->idx];
-> +			u16 val;
-> +
-> +			if (rate->flags & IEEE80211_TX_RC_USE_SHORT_PREAMBLE)
-> +				val = r->hw_value_short;
-> +			else
-> +				val = r->hw_value;
-> +
-> +			phy = val >> 8;
-> +			rate_idx = val & 0xff;
-> +		}
->  	}
->  
->  	rateval = FIELD_PREP(MT_RXWI_RATE_MCS, rate_idx);
-> @@ -264,13 +272,13 @@ void mt7601u_mac_set_short_preamble(struct mt7601u_dev *dev, bool short_preamb)
->  		mt76_clear(dev, MT_AUTO_RSP_CFG, MT_AUTO_RSP_PREAMB_SHORT);
->  }
->  
-> -void mt7601u_mac_config_tsf(struct mt7601u_dev *dev, bool enable, int interval)
-> +void mt7601u_mac_config_tsf(struct mt7601u_dev *dev, struct ieee80211_vif *vif,
-> +			    bool enable, int interval)
->  {
->  	u32 val = mt7601u_rr(dev, MT_BEACON_TIME_CFG);
->  
-> -	val &= ~(MT_BEACON_TIME_CFG_TIMER_EN |
-> -		 MT_BEACON_TIME_CFG_SYNC_MODE |
-> -		 MT_BEACON_TIME_CFG_TBTT_EN);
-> +	val &= ~(MT_BEACON_TIME_CFG_TIMER_EN | MT_BEACON_TIME_CFG_SYNC_MODE |
-> +		 MT_BEACON_TIME_CFG_TBTT_EN | MT_BEACON_TIME_CFG_BEACON_TX);
->  
->  	if (!enable) {
->  		mt7601u_wr(dev, MT_BEACON_TIME_CFG, val);
-> @@ -279,9 +287,22 @@ void mt7601u_mac_config_tsf(struct mt7601u_dev *dev, bool enable, int interval)
->  
->  	val &= ~MT_BEACON_TIME_CFG_INTVAL;
->  	val |= FIELD_PREP(MT_BEACON_TIME_CFG_INTVAL, interval << 4) |
-> -		MT_BEACON_TIME_CFG_TIMER_EN |
-> -		MT_BEACON_TIME_CFG_SYNC_MODE |
-> -		MT_BEACON_TIME_CFG_TBTT_EN;
-> +	       MT_BEACON_TIME_CFG_TIMER_EN | MT_BEACON_TIME_CFG_TBTT_EN;
-> +
-> +	/* AP Mode */
-> +	if (vif && (vif->type == NL80211_IFTYPE_AP ||
-> +		    vif->type == NL80211_IFTYPE_P2P_GO))
-> +		val |= FIELD_PREP(MT_BEACON_TIME_CFG_SYNC_MODE, 3) |
-> +		       MT_BEACON_TIME_CFG_BEACON_TX;
-> +	/* IBSS / Ad-Hoc Mode */
-> +	else if (vif && vif->type == NL80211_IFTYPE_ADHOC)
-> +		val |= FIELD_PREP(MT_BEACON_TIME_CFG_SYNC_MODE, 2) |
-> +		       MT_BEACON_TIME_CFG_BEACON_TX;
-> +	/* Station mode */
-> +	else
-> +		val |= FIELD_PREP(MT_BEACON_TIME_CFG_SYNC_MODE, 1);
-> +
-> +	mt7601u_wr(dev, MT_BEACON_TIME_CFG, val);
->  }
->  
->  static void mt7601u_check_mac_err(struct mt7601u_dev *dev)
-> @@ -393,6 +414,38 @@ void mt7601u_mac_set_ampdu_factor(struct mt7601u_dev *dev)
->  		   FIELD_PREP(MT_MAX_LEN_CFG_AMPDU, min_factor));
->  }
->  
-> +int mt7601u_mac_set_beacon(struct mt7601u_dev *dev, struct ieee80211_vif *vif,
-> +			   struct ieee80211_bss_conf *info)
-> +{
-> +	struct sk_buff *skb = ieee80211_beacon_get(dev->hw, vif, 0);
-> +	struct mt76_txwi *txwi;
-> +	int err, words;
-> +
-> +	if (!skb)
-> +		return 0;
-> +
-> +	/* USB devices already reserve enough skb headroom */
-> +	err = skb_cow_head(skb, sizeof(struct mt76_txwi));
-> +	if (err) {
-> +		dev_kfree_skb(skb);
-> +		return err;
-> +	}
-> +
-> +	txwi = (struct mt76_txwi *)skb_push(skb, sizeof(struct mt76_txwi));
-> +	memset(txwi, 0, sizeof(*txwi));
-> +
-> +	txwi->wcid = 0;
-> +	txwi->len_ctl = cpu_to_le16(skb->len - sizeof(struct mt76_txwi));
-> +	txwi->rate_ctl = cpu_to_le16(0);
-> +
-> +	words = DIV_ROUND_UP(skb->len, 4);
-> +	err = mt7601u_burst_write_regs(dev, MT_BEACON_BASE,
-> +				       (const u32 *)skb->data, words);
-> +	dev_kfree_skb(skb);
-> +
-> +	return err;
-> +}
-> +
->  static void
->  mt76_mac_process_rate(struct ieee80211_rx_status *status, u16 rate)
->  {
-> diff --git a/drivers/net/wireless/mediatek/mt7601u/mac.h b/drivers/net/wireless/mediatek/mt7601u/mac.h
-> index 54bd4fac54d83..528756ccf4725 100644
-> --- a/drivers/net/wireless/mediatek/mt7601u/mac.h
-> +++ b/drivers/net/wireless/mediatek/mt7601u/mac.h
-> @@ -167,5 +167,6 @@ struct mt76_tx_status
->  mt7601u_mac_fetch_tx_status(struct mt7601u_dev *dev);
->  void mt76_send_tx_status(struct mt7601u_dev *dev, struct mt76_tx_status *stat);
->  void mt7601u_set_macaddr(struct mt7601u_dev *dev, const u8 *addr);
-> -
-> +int mt7601u_mac_set_beacon(struct mt7601u_dev *dev, struct ieee80211_vif *vif,
-> +			   struct ieee80211_bss_conf *info);
->  #endif
-> diff --git a/drivers/net/wireless/mediatek/mt7601u/main.c b/drivers/net/wireless/mediatek/mt7601u/main.c
-> index 05ba43e1985c8..4389e332dfe19 100644
-> --- a/drivers/net/wireless/mediatek/mt7601u/main.c
-> +++ b/drivers/net/wireless/mediatek/mt7601u/main.c
-> @@ -149,7 +149,7 @@ mt7601u_bss_info_changed(struct ieee80211_hw *hw, struct ieee80211_vif *vif,
->  		 *	 rt2x00 doesn't seem to be bothered though.
->  		 */
->  		if (is_zero_ether_addr(info->bssid))
-> -			mt7601u_mac_config_tsf(dev, false, 0);
-> +			mt7601u_mac_config_tsf(dev, vif, false, 0);
->  	}
->  
->  	if (changed & BSS_CHANGED_BASIC_RATES) {
-> @@ -161,7 +161,20 @@ mt7601u_bss_info_changed(struct ieee80211_hw *hw, struct ieee80211_vif *vif,
->  	}
->  
->  	if (changed & BSS_CHANGED_BEACON_INT)
-> -		mt7601u_mac_config_tsf(dev, true, info->beacon_int);
-> +		mt7601u_mac_config_tsf(dev, vif, true, info->beacon_int);
-> +
-> +	if ((changed & BSS_CHANGED_BEACON) && vif->type == NL80211_IFTYPE_AP)
-> +		mt7601u_mac_set_beacon(dev, vif, info);
-> +
-> +	if ((changed & BSS_CHANGED_BEACON_ENABLED) &&
-> +	    vif->type == NL80211_IFTYPE_AP) {
-> +		if (info->enable_beacon)
-> +			mt76_set(dev, MT_BEACON_TIME_CFG,
-> +				 MT_BEACON_TIME_CFG_BEACON_TX);
-> +		else
-> +			mt76_clear(dev, MT_BEACON_TIME_CFG,
-> +				   MT_BEACON_TIME_CFG_BEACON_TX);
-> +	}
->  
->  	if (changed & BSS_CHANGED_HT || changed & BSS_CHANGED_ERP_CTS_PROT)
->  		mt7601u_mac_set_protection(dev, info->use_cts_prot,
-> @@ -183,6 +196,43 @@ mt7601u_bss_info_changed(struct ieee80211_hw *hw, struct ieee80211_vif *vif,
->  	mutex_unlock(&dev->mutex);
->  }
->  
-> +static int mt7601u_start_ap(struct ieee80211_hw *hw, struct ieee80211_vif *vif,
-> +			    struct ieee80211_bss_conf *link_conf)
-> +{
-> +	struct mt7601u_dev *dev = hw->priv;
-> +	int err = 0;
-> +
-> +	mutex_lock(&dev->mutex);
-> +
-> +	/* Clear the wcid Table */
-> +	for (int i = 1; i < 128; i++)
-> +		mt7601u_mac_wcid_setup(dev, i, 0, NULL);
-> +
-> +	/* Set pre TBTT to 6ms */
-> +	mt76_rmw_field(dev, MT_INT_TIMER_CFG, MT_INT_TIMER_CFG_PRE_TBTT, 6);
-> +	mt76_set(dev, MT_INT_TIMER_EN, MT_INT_TIMER_EN_PRE_TBTT_EN);
-> +
-> +	mt7601u_mac_config_tsf(dev, vif, true, link_conf->beacon_int);
-> +
-> +	mutex_unlock(&dev->mutex);
-> +
-> +	return err;
-> +}
-> +
-> +static void mt7601u_stop_ap(struct ieee80211_hw *hw, struct ieee80211_vif *vif,
-> +			    struct ieee80211_bss_conf *link_conf)
-> +{
-> +	struct mt7601u_dev *dev = hw->priv;
-> +
-> +	mutex_lock(&dev->mutex);
-> +
-> +	mt7601u_mac_config_tsf(dev, vif, false, 0);
-> +
-> +	mt76_clear(dev, MT_INT_TIMER_EN, MT_INT_TIMER_EN_PRE_TBTT_EN);
-> +
-> +	mutex_unlock(&dev->mutex);
-> +}
-> +
->  static int
->  mt76_wcid_alloc(struct mt7601u_dev *dev)
->  {
-> @@ -419,6 +469,8 @@ const struct ieee80211_ops mt7601u_ops = {
->  	.config = mt7601u_config,
->  	.configure_filter = mt76_configure_filter,
->  	.bss_info_changed = mt7601u_bss_info_changed,
-> +	.start_ap = mt7601u_start_ap,
-> +	.stop_ap = mt7601u_stop_ap,
->  	.sta_add = mt7601u_sta_add,
->  	.sta_remove = mt7601u_sta_remove,
->  	.sta_notify = mt7601u_sta_notify,
-> diff --git a/drivers/net/wireless/mediatek/mt7601u/mt7601u.h b/drivers/net/wireless/mediatek/mt7601u/mt7601u.h
-> index 118d437078537..7366e1c476339 100644
-> --- a/drivers/net/wireless/mediatek/mt7601u/mt7601u.h
-> +++ b/drivers/net/wireless/mediatek/mt7601u/mt7601u.h
-> @@ -359,7 +359,8 @@ void mt7601u_mac_work(struct work_struct *work);
->  void mt7601u_mac_set_protection(struct mt7601u_dev *dev, bool legacy_prot,
->  				int ht_mode);
->  void mt7601u_mac_set_short_preamble(struct mt7601u_dev *dev, bool short_preamb);
-> -void mt7601u_mac_config_tsf(struct mt7601u_dev *dev, bool enable, int interval);
-> +void mt7601u_mac_config_tsf(struct mt7601u_dev *dev, struct ieee80211_vif *vif,
-> +			    bool enable, int interval);
->  void
->  mt7601u_mac_wcid_setup(struct mt7601u_dev *dev, u8 idx, u8 vif_idx, u8 *mac);
->  void mt7601u_mac_set_ampdu_factor(struct mt7601u_dev *dev);
-> diff --git a/drivers/net/wireless/mediatek/mt7601u/tx.c b/drivers/net/wireless/mediatek/mt7601u/tx.c
-> index 5aeeac0dd9fe7..47c78c4ff5144 100644
-> --- a/drivers/net/wireless/mediatek/mt7601u/tx.c
-> +++ b/drivers/net/wireless/mediatek/mt7601u/tx.c
-> @@ -27,6 +27,14 @@ static u8 q2hwq(u8 q)
->  static u8 skb2q(struct sk_buff *skb)
->  {
->  	int qid = skb_get_queue_mapping(skb);
-> +	struct ieee80211_tx_info *info = IEEE80211_SKB_CB(skb);
-> +	struct ieee80211_hdr *hdr = (struct ieee80211_hdr *)skb->data;
-> +
-> +	if (ieee80211_is_mgmt(hdr->frame_control) ||
-> +	    (info->flags & IEEE80211_TX_CTL_INJECTED)) {
-> +		skb_set_queue_mapping(skb, MT_TXQ_VO);
-> +		return q2hwq(MT_TXQ_VO);
-> +	}
->  
->  	if (WARN_ON(qid >= MT_TXQ_PSD)) {
->  		qid = MT_TXQ_BE;
-> @@ -134,6 +142,9 @@ mt7601u_push_txwi(struct mt7601u_dev *dev, struct sk_buff *skb,
->  	struct ieee80211_tx_info *info = IEEE80211_SKB_CB(skb);
->  	struct ieee80211_tx_rate *rate = &info->control.rates[0];
->  	struct mt76_txwi *txwi;
-> +	struct ieee80211_hdr *hdr = (struct ieee80211_hdr *)skb->data;
-> +	bool is_mgmt = ieee80211_is_mgmt(hdr->frame_control);
-> +	bool is_mcast = is_multicast_ether_addr(hdr->addr1);
->  	unsigned long flags;
->  	bool is_probe;
->  	u32 pkt_id;
-> @@ -148,14 +159,14 @@ mt7601u_push_txwi(struct mt7601u_dev *dev, struct sk_buff *skb,
->  				       info->control.rates, 1);
->  
->  	spin_lock_irqsave(&dev->lock, flags);
-> -	if (rate->idx < 0 || !rate->count)
-> +	if (!is_mgmt && (rate->idx < 0 || !rate->count))
->  		rate_ctl = wcid->tx_rate;
->  	else
->  		rate_ctl = mt76_mac_tx_rate_val(dev, rate, &nss);
->  	spin_unlock_irqrestore(&dev->lock, flags);
->  	txwi->rate_ctl = cpu_to_le16(rate_ctl);
->  
-> -	if (!(info->flags & IEEE80211_TX_CTL_NO_ACK))
-> +	if (!(info->flags & IEEE80211_TX_CTL_NO_ACK) && sta && !is_mcast)
->  		txwi->ack_ctl |= MT_TXWI_ACK_CTL_REQ;
->  	if (info->flags & IEEE80211_TX_CTL_ASSIGN_SEQ)
->  		txwi->ack_ctl |= MT_TXWI_ACK_CTL_NSEQ;
-> @@ -197,6 +208,8 @@ void mt7601u_tx(struct ieee80211_hw *hw, struct ieee80211_tx_control *control,
->  	struct mt76_sta *msta = NULL;
->  	struct mt76_wcid *wcid = dev->mon_wcid;
->  	struct mt76_txwi *txwi;
-> +	struct ieee80211_hdr *hdr = (struct ieee80211_hdr *)skb->data;
-> +	bool is_mcast = is_multicast_ether_addr(hdr->addr1);
->  	int pkt_len = skb->len;
->  	int hw_q = skb2q(skb);
->  
-> @@ -211,7 +224,7 @@ void mt7601u_tx(struct ieee80211_hw *hw, struct ieee80211_tx_control *control,
->  	if (sta) {
->  		msta = (struct mt76_sta *) sta->drv_priv;
->  		wcid = &msta->wcid;
-> -	} else if (vif) {
-> +	} else if (vif && is_mcast) {
->  		struct mt76_vif *mvif = (struct mt76_vif *)vif->drv_priv;
->  
->  		wcid = &mvif->group_wcid;
+Signed-off-by: Christian Marangi <ansuelsmth@gmail.com>
+Reviewed-by: Rob Herring (Arm) <robh@kernel.org>
+---
+ .../net/dsa/airoha,an8855-switch.yaml         | 86 +++++++++++++++++++
+ 1 file changed, 86 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/net/dsa/airoha,an8855-switch.yaml
+
+diff --git a/Documentation/devicetree/bindings/net/dsa/airoha,an8855-switch.yaml b/Documentation/devicetree/bindings/net/dsa/airoha,an8855-switch.yaml
+new file mode 100644
+index 000000000000..5ad9b9e13983
+--- /dev/null
++++ b/Documentation/devicetree/bindings/net/dsa/airoha,an8855-switch.yaml
+@@ -0,0 +1,86 @@
++# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/net/dsa/airoha,an8855-switch.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
++
++title: Airoha AN8855 Gigabit Switch
++
++maintainers:
++  - Christian Marangi <ansuelsmth@gmail.com>
++
++description: >
++  Airoha AN8855 is a 5-port Gigabit Switch.
++
++  It does expose the 5 Internal PHYs on the MDIO bus and each port
++  can access the Switch register space by configuring the PHY page.
++
++$ref: dsa.yaml#/$defs/ethernet-ports
++
++properties:
++  compatible:
++    const: airoha,an8855-switch
++
++required:
++  - compatible
++
++unevaluatedProperties: false
++
++examples:
++  - |
++    ethernet-switch {
++        compatible = "airoha,an8855-switch";
++
++        ports {
++            #address-cells = <1>;
++            #size-cells = <0>;
++
++            port@0 {
++                reg = <0>;
++                label = "lan1";
++                phy-mode = "internal";
++                phy-handle = <&internal_phy1>;
++            };
++
++            port@1 {
++                reg = <1>;
++                label = "lan2";
++                phy-mode = "internal";
++                phy-handle = <&internal_phy2>;
++            };
++
++            port@2 {
++                reg = <2>;
++                label = "lan3";
++                phy-mode = "internal";
++                phy-handle = <&internal_phy3>;
++            };
++
++            port@3 {
++                reg = <3>;
++                label = "lan4";
++                phy-mode = "internal";
++                phy-handle = <&internal_phy4>;
++            };
++
++            port@4 {
++                reg = <4>;
++                label = "wan";
++                phy-mode = "internal";
++                phy-handle = <&internal_phy5>;
++            };
++
++            port@5 {
++                reg = <5>;
++                label = "cpu";
++                ethernet = <&gmac0>;
++                phy-mode = "2500base-x";
++
++                fixed-link {
++                    speed = <2500>;
++                    full-duplex;
++                    pause;
++                };
++            };
++        };
++    };
+-- 
+2.55.0
 
 
