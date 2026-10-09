@@ -4,114 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D3655CA6012
-	for <linux-mediatek@archiver.kernel.org>; Fri,  9 Oct 2026 07:03:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D4DC9CA5FED
+	for <linux-mediatek@archiver.kernel.org>; Fri,  9 Oct 2026 07:09:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
-	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=u/66UyK1G/RrLnhVcSi5x21gKzF8iMZFM8iJW73420s=; b=etPcfaas+1XWZJRAxptK16Wjb0
-	kIyrrkAAZO7AnLygze1a+Y7N0wlMBR7CpecX/1B4gyDV9uI8iqIwpleI1Cv24OfU86lrF+A8hb/Kg
-	qUr+L5/Gjg2Tc52fjWfEgyd8QhKWnUxsDv8/5MZbMyZ2UHXJASZ84F+XPciuaNDOeGe3n3nEqS2zJ
-	LmxBvqrWsnJsMMlhJj3cQs4MsGExtz+TgElsz+/IEIJoe9ZcghHOtvl5Kq0FmepjL+Sxhxj0505f8
-	vZE6oiWl1nxU5kYQSX0Ib6dKSjxd+7Rj7O27lnrwxVxobkSZcMW+cYkvKaR192/l9EGClWiPYz6GY
-	iR7kVQfA==;
+	bh=/bxYgc+BIWyTHTpIoYsKHTtIpwISik8NaCfsLHWZJJE=; b=Ql0E7EOtc4jxm21xm5AIiWwj5i
+	0Z06htiLGaUtXp+8APSZ1eu2w3zc8dO96jAwt7VJ7MbSK+QvUdk33t9xdKigPN8+e5yhc1TgC1QvA
+	2PjXxB71rWA1rcWy4ZrDq/1KpBJxjwBhlwamlE2ET9XYbZv7ODRI2jGJ+V5LYXorVrWurfvM2aazD
+	vjV6QVfnQ13yZJh/yZYohAROKg2etnd13XZG9nmN8TOu9EdOi47OxRg6+mqOYGwiJAPBh/KgvG7Z0
+	eU7aKoyicSrGZna7q0cAwF8mXWcEIqFhrahOpfJngvD2jITt+WKFN4/M8LIQ9+fHstXFKMHQUkObA
+	heDCDugA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xF4da-00000005gMH-436X;
-	Fri, 09 Oct 2026 07:03:26 +0000
-Received: from mail-pf1-x431.google.com ([2607:f8b0:4864:20::431])
+	id 1xF4jF-00000005gka-2s6u;
+	Fri, 09 Oct 2026 07:09:18 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xF4dY-00000005gLY-3GE3
-	for linux-mediatek@lists.infradead.org;
-	Fri, 09 Oct 2026 07:03:25 +0000
-Received: by mail-pf1-x431.google.com with SMTP id d2e1a72fcca58-88bc25fcd0eso4961775b3a.2
-        for <linux-mediatek@lists.infradead.org>; Fri, 09 Oct 2026 00:03:24 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1791529403; cv=none;
-        d=google.com; s=arc-20260327;
-        b=Mu1amBioeI0q0Clt2Um4msvsf5GNlQSKddCuNsYENIBoMwW0BNG2bx8x8gvS4Y9d/a
-         qyx29/vmScR1bNAh4mslgwO54oZQImN5+N2gkJ84ulRPmQZwD6/drqm0NIwcwY0zj7to
-         CS8rh7DU8Dls5G1K2QKkI4UlIjkrklXAyKaNpkyhjZ6sTOS11gLkIAqkS4YU+f7rjCbC
-         FruQBSB3eb7qwZxJw/HpzllS6Tgt2IMe38imsdUr1OgYmkvGHC4OjDbCDDg1OeL9lCq7
-         HJY5WIh+Ce2cpe8/ytgN4Bc0xjJjN47+jK/hzTwqqLWpKwttoGCmxFtic8HrtBvjgqjy
-         T6Dg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20260327;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:dkim-signature;
-        bh=u/66UyK1G/RrLnhVcSi5x21gKzF8iMZFM8iJW73420s=;
-        fh=TU/9frnyuNIzCbRObiYoxyV3K9hdPp4HFeRPfTyxiFs=;
-        b=QP4kN2xB2HTcw22XNdTPB0PF0f5kFWAXSAeWbCM4dYdoTZ491h8r+zayIp+x60G43e
-         CLE+IrG7Wu++7x1pDHL06gDYGQ69HCmqWZDMNjeFrpEZcTprtem6RMXL19TmKvnF2rEc
-         A7gc71p0jYl5PhcbDVQemyIqgvgsO41Dmg8Dyrl/LgxQF4JeqnaBb3Q0sjxHdoRRvqmA
-         2Iqlje7dvmr4Xc+vlCQWP6EWAGY7mVSjmVzfiC0XTPRSq3cgIKOWURvafhX1CyUdGGjX
-         y22lFTWH+2QHHFFYj4YnVcbpmsnsn8uzZz9e3Hg2Xhq6CzknCdqmGWMfvZHVOjBjGXEo
-         PHeA==;
-        darn=lists.infradead.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1791529403; x=1792134203; darn=lists.infradead.org;
-        h=content-type:cc:to:subject:message-id:date:from:in-reply-to
-         :references:mime-version:from:to:cc:subject:date:message-id:reply-to
-         :content-type;
-        bh=u/66UyK1G/RrLnhVcSi5x21gKzF8iMZFM8iJW73420s=;
-        b=Tgk6rdSrvpPhHrBW03koFMAvROmi4a7wAqNKu0cKlwVWpd7OCv9nW/qOxCGA4H0dvu
-         7YlxIt2zNVXhxCUt5ROOfMN+1nxfwi12/i7pSBre/vw7V8jNSDgQgIV2qyQhdjU+Ajvg
-         xuXCNYOyPQlOozz2KHHpqoZ/P4Lj9FYbAizo6yYUbrHU+xOiu9uCHkpyS+cUUEY5EIjT
-         kMQI4iS9Mwe69pGGCQsinKVBOLbuL8r6h8u0yX8bfznuqOZdhboMEIi2okUAcxnxGjiL
-         gfG10DsNhq9fLL1IUNE50/1tz9miwzyMupxqcyfdPokSrmha3u5Va4100C5TwA45a9K6
-         Jddg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1791529403; x=1792134203;
-        h=content-type:cc:to:subject:message-id:date:from:in-reply-to
-         :references:mime-version:x-gm-gg:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to:content-type;
-        bh=u/66UyK1G/RrLnhVcSi5x21gKzF8iMZFM8iJW73420s=;
-        b=e/uUXzgsD4VWZr9jVrnWifbki/eeTmO883nSPfYjBgbCgWbOt1uYOwT6V7G9KmWN9V
-         QWke+/Q2tpjCZ+BBANDSgn2ncqNJ5hgxEgPS1t8WibS2orecEnvzgQtz4SE0ZPOB+fxo
-         ePo2Qw2HdnT1XjfAAhvEGlZutmTax87jdANczIHczRsGk+3ILQ2omHKYvzK9Q0uKpYA3
-         Dv3c9GIQ9CGLCCwdGrzrkl4G1mJSQhGRbbbe8Rst9vZKyKmn9SnwCxbTHmQFM1fA5oJ5
-         8E48EQvmlYusvjYQNy6fdJLVCCqjTresVgdySyt3nREOYSDdcUpYJN3fK2I9W3TvjWym
-         OxEA==
-X-Forwarded-Encrypted: i=1; AKwUvBzU8EgCdp8kis48vCCFKWsnWiBu3RYUGQYQyf33a8aWeLLefNUPKigHrXAJbKl4iu1Vf3yjlVxlCq+NOYmvOQ==@lists.infradead.org
-X-Gm-Message-State: AFq9FYJPAHs1ovcO85hFoLpnfrMirZQ+SUPxPpEqSBWxsHy899rFhOw9
-	1KWj5CbUSjGLZB1a8/bEeoXKP5hBNsAmpq4tgbkHz2R1l0WJyuPVCpf5MxsxHssS8Gw13Gw/YpK
-	p4WqKyXiDRK/SMz4hB1r+wJt/LEOw1w0=
-X-Gm-Gg: AYBFou0dIY9I1CnLGLneKTaSnbGQwl/abeevGoJ6radHOjzcXX1mo/TBY9l0L4UlK49
-	u/4PJ9rcmNT9k7yujvYmUW15wnuEqqtFHx/xxsghjWWfIMvCC/ZAZ1T3HldoZ6CMipLqcLAo/jD
-	HdYEwnHVYdgkcm/G2yGIryeZ13mr7k46S0XIfP4qtABbd7baqhZ8yVb/fX01SmlN4iYqyPMxvTd
-	B6/3pObpjuRz0rO5QYEbWMUTbKFcVY0wgLY0Ehu7SGxUYx3CSehnx280DZ/NrmmkdKe1zCcR4E3
-	wlH+vvVpL678BEOyVIiA+Pu2Q2ttKa7UT83V3A25U0P3iBEItUdCEcVmn9bsWu8TMhdBkNQpU9c
-	oUTfnzbitDAyHgp9tMEC8ZNyfN7ijPT360IQ5QXsadhxl7t3MxyTqFdLvnfW4fU4UAp3q+jqiyV
-	omLA==
-X-Received: by 2002:a05:6a00:aa04:b0:885:fcc1:d55c with SMTP id
- d2e1a72fcca58-897c7ec5a0amr846999b3a.43.1791529403528; Fri, 09 Oct 2026
- 00:03:23 -0700 (PDT)
+	id 1xF4jD-00000005gjf-3NF0;
+	Fri, 09 Oct 2026 07:09:15 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by sea.source.kernel.org (Postfix) with ESMTP id 49FC143670;
+	Fri,  9 Oct 2026 07:09:15 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6D2451F000FF;
+	Fri,  9 Oct 2026 07:09:14 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1791529755;
+	bh=/bxYgc+BIWyTHTpIoYsKHTtIpwISik8NaCfsLHWZJJE=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To;
+	b=avLoLWDSeATNSyKLU6aWZlJTBy1To5PXYpH2ocPDV3UNfsGGrvHtgYIl0GJHlIALv
+	 rJrpi1OFqokCT06+NXJFsC9HBjo43n084vwduZvy8//hW8e9DdXmYpZgJZDJ0s3vhZ
+	 E4qHkdvH11SHh2eyDUXEr3eOXbiR5fKPvr+8FrTF9UG4aCG5GEO1i7J7IcwVgEMwWl
+	 F8g0ihEihi0kXLrCRECgANDv0Y6JmUi0qujNG2jf3xJJiKMYEkmzxltxhi8t5xNHPj
+	 +16x0WapHBldX0OAOdoZ683THeQnkE/ZXEvLVbaD8o7QA2mVbRC7Yf2WMdvHRCmhbZ
+	 nE8XtVOT3yW2g==
+Date: Fri, 9 Oct 2026 09:09:11 +0200
+From: Krzysztof Kozlowski <krzk@kernel.org>
+To: James Calligeros <jcalligeros99@gmail.com>
+Cc: David Rhodes <david.rhodes@cirrus.com>, 
+	Richard Fitzgerald <rf@opensource.cirrus.com>, Martin =?utf-8?Q?Povi=C5=A1er?= <povik+lin@cutebit.org>, 
+	Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, Rob Herring <robh@kernel.org>, 
+	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
+	Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Shenghao Ding <shenghao-ding@ti.com>, Kevin Lu <kevin-lu@ti.com>, 
+	Baojun Xu <baojun.xu@ti.com>, Sen Wang <sen@ti.com>, Sven Peter <sven@kernel.org>, 
+	Janne Grunau <j@jannau.net>, Neal Gompa <neal@gompa.dev>, asahi@lists.linux.dev, 
+	linux-sound@vger.kernel.org, patches@opensource.cirrus.com, devicetree@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH v2 01/21] ASoC: dt-bindings: cs42l84: Document
+ sound-name-prefix property
+Message-ID: <20261009-kind-crouching-sparrow-1bcd94@quoll>
+References: <20261004-macaudio-v2-0-7b47ed6335a8@gmail.com>
+ <20261004-macaudio-v2-1-7b47ed6335a8@gmail.com>
 MIME-Version: 1.0
-References: <20261005110257.50145-1-phucduc.bui@gmail.com> <20261005110257.50145-2-phucduc.bui@gmail.com>
- <56ca274e-5b56-413a-9fcd-9ccf1631d8b9@oss.qualcomm.com>
-In-Reply-To: <56ca274e-5b56-413a-9fcd-9ccf1631d8b9@oss.qualcomm.com>
-From: Bui Duc Phuc <phucduc.bui@gmail.com>
-Date: Fri, 9 Oct 2026 14:03:11 +0700
-X-Gm-Features: AclHuK9K_mTmShroHQ2NxfLYvmjGvCBUVZdlzaaqulcpuz6FtNuEKnD6JjCP8qA
-Message-ID: <CAABR9nG6RyjjmGhYKgMJrjbO+E5+UxBq5JBfeoG1qj1VxOZn1Q@mail.gmail.com>
-Subject: Re: [PATCH v2 01/14] ASoC: mediatek: mt8195: Fix tuner clock error handling
-To: Ajay Kumar Nandam <ajay.nandam@oss.qualcomm.com>
-Cc: Mark Brown <broonie@kernel.org>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	Trevor Wu <trevor.wu@mediatek.com>, Liam Girdwood <lgirdwood@gmail.com>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, 
-	Kuninori Morimoto <kuninori.morimoto.gx@renesas.com>, cassiogabrielcontato@gmail.com, 
-	Mukesh Ojha <mukesh.ojha@oss.qualcomm.com>, Liviu Dudau <liviu.dudau@arm.com>, 
-	Haotian Zhang <vulab@iscas.ac.cn>, HariKrishna Sagala <hariconscious@gmail.com>, linux-sound@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
-	linux-kernel@vger.kernel.org
-Content-Type: text/plain; charset="UTF-8"
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261009_000324_880821_EA523E73 
-X-CRM114-Status: UNSURE (   9.86  )
-X-CRM114-Notice: Please train this message.
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+In-Reply-To: <20261004-macaudio-v2-1-7b47ed6335a8@gmail.com>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -126,21 +79,31 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Ajay,
+On Sun, Oct 04, 2026 at 04:03:28PM +1000, James Calligeros wrote:
+> Some consumers may wish to prepend the codec's name with a known value
+> to identify a specific codec among many. Enable this with the common
+> sound-name-prefix property.
+> 
+> Signed-off-by: James Calligeros <jcalligeros99@gmail.com>
+> ---
+>  .../bindings/sound/cirrus,cs42l84.yaml   | 3 +++
+>  1 file changed, 3 insertions(+)
+> 
+> diff --git a/Documentation/devicetree/bindings/sound/cirrus,cs42l84.yaml b/Documentation/devicetree/bindings/sound/cirrus,cs42l84.yaml
+> index 94062c1d9d45..2637aa5f4326 100644
+> --- a/Documentation/devicetree/bindings/sound/cirrus,cs42l84.yaml
+> +++ b/Documentation/devicetree/bindings/sound/cirrus,cs42l84.yaml
+> @@ -32,6 +32,9 @@ properties:
+>    '#sound-dai-cells':
+>      const: 0
+>  
+> +  sound-name-prefix:
+> +    $ref: component-common.yaml#/properties/sound-name-prefix
 
-Thank you for your review.
-
->
-> Should mt8195_afe_enable_main_clock() also check these return values,
-> and unwind APLL1 if enabling the APLL2 tuner fails?
->
-
-Yes, I think it should.
-
-However, since I don't have MT8195 hardware to test with, I'd like
-to wait for feedback from the MediaTek side before sending the next
-version of this patch series.
+That's a codec device, so why aren't you just using dai-common.yaml
+($ref) like others?
 
 Best regards,
-Phuc
+Krzysztof
+
 
