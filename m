@@ -4,117 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 300E7CA6012
-	for <linux-mediatek@archiver.kernel.org>; Fri,  9 Oct 2026 07:29:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 592D2CA5FED
+	for <linux-mediatek@archiver.kernel.org>; Fri,  9 Oct 2026 07:44:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=/s3Lbiloemf0P5lVKd7CO+NXtdjl9lXaZ6C19RxmqW0=; b=2HCkxmuyOAOupeJB1qZXkpauP/
-	kPKlj/zd2LMC9NERITtM0Ij/W/vsFA+t4ESCsiNd0+mCs2RTC0xbRd4wz8gZXLlslSsUyjL1exn9p
-	yf4WZReJ7oGW56jS2EXlVPizk7WrIql3w1+i+j6Z+dcFoLypEW7ufcGn71U6eTYwRxr5BConuGPst
-	F5bn2e3FzWld8zfSgcylV7wL5hzaNqxCVmb/5T+m2pDPSxB2FVnpcbcRbAjLfwkmqxdON8iab4tSC
-	RGjl9xrQdaH22u0T7kzOvoKIZVOYGojYJCxVJCIprLHavjqBf09pX8bbE1Z1/FOE52IctP4ZBupZx
-	WiyxcMow==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=NpZ7XaceTucaY86C62zOlPu+VQmlzvfFU9YRREd4CxU=; b=ZG9icyvVzV8Ebuc7BdPEwx/ohZ
+	JDaGVvXYAak2TiQKtrma3pES/eUZJCN+O5yw//K2d3ISI5d78SOM7t6v/1r26OmkwS1QMrgMMACmI
+	Gu7SNPoopkvndV7JZVkx4oROqSq52HQZXep38vQv4XpAnyyqZsOrbpO0jKRBECHEF/dzCr3942nWi
+	JrHpg0y8R65q8cmJ8/0Wuyg/q04E9Dp/eHypt3A5/AGV2d2aH9kk/2cBUEg1Lz8bi9kXjCepEHxlX
+	YCkjo5fbJHa+FztgCXRccOWqqW1hlYykpDCruULjrIJyBBblvLLP8XPqdKDPJwQObxhYcdWFwdI/V
+	hFrkgFow==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xF539-00000005j0y-0XJx;
-	Fri, 09 Oct 2026 07:29:51 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1xF5Hb-00000005kyP-30GL;
+	Fri, 09 Oct 2026 07:44:47 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xF537-00000005j0T-2Ilw;
-	Fri, 09 Oct 2026 07:29:49 +0000
+	id 1xF5Ha-00000005kxq-1hh1;
+	Fri, 09 Oct 2026 07:44:46 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id CB1A8602C3;
-	Fri,  9 Oct 2026 07:29:48 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8F6661F00893;
-	Fri,  9 Oct 2026 07:29:40 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id C0D8942E3F;
+	Fri,  9 Oct 2026 07:44:45 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2711F1F00893;
+	Fri,  9 Oct 2026 07:44:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1791530988;
-	bh=/s3Lbiloemf0P5lVKd7CO+NXtdjl9lXaZ6C19RxmqW0=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To;
-	b=ASsMTGOC32s6aRYigVMmUQeV7zp1Hf6b3fNWY7FBM2nbBfgHAMV0hvTq1FOMmt3uC
-	 AlDWrO9PdjPggh+EZRE0M0wnwCzlSwqWv6A1q3KAVnoVM9FXOzO+uIb4CQ6RL5QEd4
-	 XrMbkj9im5A5QvpbPvmNIvS4k84VdKLgVUU1zFHHhmngSXIS1uTz3nhM0dJlBPyHNr
-	 /oc97sd/SgVvE4L0LanE9bTeqVoBtrjgKWLhLHhYtgkttzsXUaZN38FtC23D2PeSyX
-	 oNrmADhUd8uxUReUGYyfjaLgQSq76RI4e+S4vkslAAqopjnFFKOxCtxHm4ZLt+RZ9L
-	 FX0q6iUolIGmg==
-Message-ID: <2d7acd00-0cb5-4002-9663-a39dc4e55ad3@kernel.org>
-Date: Fri, 9 Oct 2026 09:29:38 +0200
+	s=k20260515; t=1791531885;
+	bh=NpZ7XaceTucaY86C62zOlPu+VQmlzvfFU9YRREd4CxU=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To;
+	b=IcW0L1szOmI+K95UFpUOxmCcHjnJ/pBfcccJqrW7jxT91VyW1LYAoh/NpoDt22f+g
+	 n+jWOzIjD+F8l65MyLNfs0AxpindYSVONDRDZNjD/e9aI7Mi+l+MmfyJKPgSEcegjK
+	 2tO/g1zVojMkYR7tAsQHApQS9YfwqNImgRyNOa3rgtqS4IJJuD+fV2jzCITHXCzij0
+	 D+rN4JoP/hNwjzoH4+yfqy9MA/mHhYddOSeJRCw/SYa4I2Q3fxsQPyhBOV4l105JMC
+	 MrkHUTOE72EeYz1S2zQLcihgZQfJxzlkuv4hLq98W2DFuEBnnCmWa/3CK+/ab/MBw7
+	 g8VREvLkZ57PA==
+Date: Fri, 9 Oct 2026 09:44:43 +0200
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+To: SAYANTAN NANDY <sayantann11@gmail.com>
+Cc: netdev@vger.kernel.org, andrew+netdev@lunn.ch,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, bread.hsu@airoha.com,
+	sayantan.nandy@airoha.com
+Subject: Re: [PATCH net v2] net: airoha: keep PPE offload when NPU refuses
+ flow stats
+Message-ID: <asiba_Sw-i2ht_S9@lore-desk>
+References: <20261008094828.15458-1-sayantann11@gmail.com>
+ <20261009050322.39060-1-sayantann11@gmail.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 05/21] ASoC: dt-bindings: Add binding for Apple Silicon
- Mac audio
-To: James Calligeros <jcalligeros99@gmail.com>
-Cc: David Rhodes <david.rhodes@cirrus.com>,
- Richard Fitzgerald <rf@opensource.cirrus.com>,
- =?UTF-8?Q?Martin_Povi=C5=A1er?= <povik+lin@cutebit.org>,
- Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>,
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>, Jaroslav Kysela <perex@perex.cz>,
- Takashi Iwai <tiwai@suse.com>, Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Shenghao Ding <shenghao-ding@ti.com>, Kevin Lu <kevin-lu@ti.com>,
- Baojun Xu <baojun.xu@ti.com>, Sen Wang <sen@ti.com>,
- Sven Peter <sven@kernel.org>, Janne Grunau <j@jannau.net>,
- Neal Gompa <neal@gompa.dev>, asahi@lists.linux.dev,
- linux-sound@vger.kernel.org, patches@opensource.cirrus.com,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-References: <20261004-macaudio-v2-0-7b47ed6335a8@gmail.com>
- <20261004-macaudio-v2-5-7b47ed6335a8@gmail.com>
- <20261009-daring-objective-flounder-c0b66d@quoll>
- <rT1KWd0SSiuQLd7MLQWREA@gmail.com>
-From: Krzysztof Kozlowski <krzk@kernel.org>
-Content-Language: en-US
-Autocrypt: addr=krzk@kernel.org; keydata=
- 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
-In-Reply-To: <rT1KWd0SSiuQLd7MLQWREA@gmail.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="NOajDJ9cSUpeZ4E4"
+Content-Disposition: inline
+In-Reply-To: <20261009050322.39060-1-sayantann11@gmail.com>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -129,60 +72,201 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 09/10/2026 09:21, James Calligeros wrote:
-> On Friday, 9 October 2026 5:17:53 pm Australian Eastern Standard Time 
-> Krzysztof Kozlowski wrote:
->> On Sun, Oct 04, 2026 at 04:03:32PM +1000, James Calligeros wrote:
->>> +examples:
->>> +  - |
->>> +    sound {
->>> +      compatible = "apple,j416-macaudio", "apple,j316-macaudio";
->>> +      model = "MacBook Pro J416";
->>> +
->>> +      #address-cells = <1>;
->>> +      #size-cells = <0>;
->>> +
->>> +      dai-link@0 {
->>> +        reg = <0>;
->>> +        link-name = "Speakers";
->>> +
->>> +        dai-tdm-idle-mode-0 = "zero";
->>> +        dai-tdm-idle-mode-3 = "zero";
->>> +        dai-tdm-slot-tx-idle-mask-0 = <0xf0f0f0>;
->>> +        dai-tdm-slot-tx-idle-mask-3 = <0x0f0f0f>;
->>> +
->>> +        codec {
->>> +          sound-dai = <&speaker_left_woof1>,
->>> +                      <&speaker_left_tweet>,
->>> +                      <&speaker_left_woof2>,
->>> +                      <&speaker_right_woof1>,
->>> +                      <&speaker_right_tweet>,
->>> +                      <&speaker_right_woof2>;
->>> +        };
->>> +
->>> +        cpu {
->>> +          sound-dai = <&mca 0>, <&mca 1>;
->>> +        };
->>> +      };
->>> +
->>> +      dai-link@1 {
->>> +        reg = <1>;
->>> +        link-name = "Headphone Jack";
->>> +
->>> +        codec {
->>> +          sound-dai = <&jack_codec>;
->>> +        };
->>> +
->>> +        cpu {
->>> +          sound-dai = <&mca 2>;
->>
->> Example looks incomplete, you miss TDM slot properties.
-> 
-> The machine driver generates the TDM slot assignments for the DAIs
-> and sets them at runtime.
+--NOajDJ9cSUpeZ4E4
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-Ah, I found them in dai-link node, one level up.
+> From: Chad Monroe <chad@monroe.io>
+>=20
+> With flow stats enabled, PPE offload setup requests flow statistics
+> from the NPU. If the running NPU firmware does not support flow
+> counters, the request fails and the current setup path aborts PPE
+> offload.
+>=20
+> Treat flow statistics as an optional capability so that a failure to
+> set up the counters does not prevent normal PPE offload. Record
+> whether flow statistics are available and continue PPE initialization
+> when the NPU refuses the flow-statistics request.
+>=20
+> Also treat a zero NPU statistics address returned by the firmware as a
+> refusal. The host-side DMA buffer (foe_stats_dma) is allocated by
+> dmam_alloc_coherent() in airoha_ppe_init() from system memory. The NPU
+> statistics address (npu_stats_addr) is a separate allocation from the
+> NPU firmware's internal SRAM pool. When that pool is exhausted, the
+> firmware replies with success and npu_stats_addr =3D 0. A zero address
+> does not provide a usable counter region and must not be passed to
+> devm_ioremap().
+>=20
+> When flow stats are available, clear PSE_PORT6_SHARE_DIS so that PSE
+> port 6 (CDM3 path to the NPU) participates in shared-buffer flow
+> control, which the counter traffic path needs.
+>=20
+> When flow statistics are unavailable, PPE continues to operate without
+> NPU flow counters while retaining normal offload functionality.
+>=20
+> This combines the original SmartRG/Airoha fixes for:
+> - keeping PPE offload active when the NPU refuses flow statistics
+> - treating a zero NPU statistics address as a flow-statistics refusal
+>=20
+> Based on the original SmartRG/Airoha work by Chad Monroe:
+> 5ce96ab ("SDG-9458: keep PPE offload when NPU refuses flow stats")
+> 0ad8528 ("SDG-9458: airoha: treat a zero NPU stats address as a refusal")
+> Fixes: b81e0f2b58be ("net: airoha: Add FLOW_CLS_STATS callback support")
+> Tested-on: AN7581 with MT7992
+> Signed-off-by: Chad Monroe <chad@monroe.io>
+> Signed-off-by: SAYANTAN NANDY <sayantann11@gmail.com>
+> ---
+>=20
+> Changes since v1:
+> - Rename flow_stats to flow_stats_cap (Lorenzo).
+> - Explain that npu_stats_addr is an NPU firmware SRAM allocation,
+>   distinct from the host-side foe_stats_dma buffer (Lorenzo).
+> - Explain why PSE_PORT6_SHARE_DIS is cleared for counter traffic
+>   (Lorenzo).
+> - Use airoha_fe_clear() and shorten the warning message (Lorenzo).
+> - Add hardware testing information requested by netdev-bot.
+>=20
+>  drivers/net/ethernet/airoha/airoha_eth.h  |  1 +
+>  drivers/net/ethernet/airoha/airoha_npu.c  |  8 ++++++++
+>  drivers/net/ethernet/airoha/airoha_ppe.c  | 17 +++++++++++------
+>  drivers/net/ethernet/airoha/airoha_regs.h |  2 ++
+>  4 files changed, 22 insertions(+), 6 deletions(-)
+>=20
+> diff --git a/drivers/net/ethernet/airoha/airoha_eth.h b/drivers/net/ether=
+net/airoha/airoha_eth.h
+> index 8277c1c87bb3..da4a3ba69e3c 100644
+> --- a/drivers/net/ethernet/airoha/airoha_eth.h
+> +++ b/drivers/net/ethernet/airoha/airoha_eth.h
+> @@ -617,6 +617,7 @@ struct airoha_ppe {
+> =20
+>  	void *foe;
+>  	dma_addr_t foe_dma;
+> +	bool flow_stats_cap;
+> =20
+>  	struct rhashtable l2_flows;
+> =20
+> diff --git a/drivers/net/ethernet/airoha/airoha_npu.c b/drivers/net/ether=
+net/airoha/airoha_npu.c
+> index 4d3195eb00f7..b32a01dbe06b 100644
+> --- a/drivers/net/ethernet/airoha/airoha_npu.c
+> +++ b/drivers/net/ethernet/airoha/airoha_npu.c
+> @@ -450,6 +450,14 @@ static int airoha_npu_ppe_stats_setup(struct airoha_=
+npu *npu,
+>  	if (err)
+>  		goto out;
+> =20
+> +	/* The firmware reports success with a zero address when its SRAM
+> +	 * pool has no room left for the counters.
+> +	 */
+> +	if (!ppe_data->stats_info.npu_stats_addr) {
+> +		err =3D -ENOSPC;
+> +		goto out;
+> +	}
+> +
+>  	npu->stats =3D devm_ioremap(npu->dev,
+>  				  ppe_data->stats_info.npu_stats_addr,
+>  				  size);
+> diff --git a/drivers/net/ethernet/airoha/airoha_ppe.c b/drivers/net/ether=
+net/airoha/airoha_ppe.c
+> index 92611802801e..0957f331478a 100644
+> --- a/drivers/net/ethernet/airoha/airoha_ppe.c
+> +++ b/drivers/net/ethernet/airoha/airoha_ppe.c
+> @@ -37,10 +37,7 @@ static const struct rhashtable_params airoha_l2_flow_t=
+able_params =3D {
+> =20
+>  static int airoha_ppe_get_num_stats_entries(struct airoha_ppe *ppe)
+>  {
+> -	if (!IS_ENABLED(CONFIG_NET_AIROHA_FLOW_STATS))
+> -		return -EOPNOTSUPP;
+> -
+> -	if (airoha_is_7583(ppe->eth))
+> +	if (!ppe->flow_stats_cap)
+>  		return -EOPNOTSUPP;
 
-Best regards,
-Krzysztof
+Looking again at the code flow_stats_cap is only used here. Why do we need =
+it
+in the first place? I guess you it is enough to just not return an error in
+airoha_ppe_offload_setup() and log the error instead (as you did).
+
+> =20
+>  	return PPE_STATS_NUM_ENTRIES;
+> @@ -144,6 +141,9 @@ static void airoha_ppe_hw_init(struct airoha_ppe *ppe)
+>  	sram_ppe_num_data_entries =3D
+>  		PPE_RAM_NUM_ENTRIES_SHIFT(sram_ppe_num_data_entries);
+> =20
+> +	if (ppe->flow_stats_cap)
+> +		airoha_fe_clear(eth, PSE_FC_CFG, PSE_PORT6_SHARE_DIS);
+
+can you please explain what this configuration is doing? This register is n=
+ot
+documented.
+
+> +
+>  	for (i =3D 0; i < eth->soc->num_ppe; i++) {
+>  		airoha_fe_wr(eth, REG_PPE_TB_BASE(i),
+>  			     ppe->foe_dma + sram_tb_size);
+> @@ -1456,8 +1456,11 @@ static int airoha_ppe_offload_setup(struct airoha_=
+eth *eth)
+>  	if (ppe_num_stats_entries > 0) {
+>  		err =3D npu->ops.ppe_init_stats(npu, ppe->foe_stats_dma,
+>  					      ppe_num_stats_entries);
+> -		if (err)
+> -			goto error_npu_put;
+> +		if (err) {
+> +			dev_warn(eth->dev, "NPU refused flow stats (%d)\n",
+> +				 err);
+> +			ppe->flow_stats_cap =3D false;
+
+please see above.
+
+> +		}
+>  	}
+> =20
+>  	airoha_ppe_hw_init(ppe);
+> @@ -1608,6 +1611,8 @@ int airoha_ppe_init(struct airoha_eth *eth)
+>  	ppe->dev.priv =3D ppe;
+>  	ppe->eth =3D eth;
+>  	eth->ppe =3D ppe;
+> +	ppe->flow_stats_cap =3D IS_ENABLED(CONFIG_NET_AIROHA_FLOW_STATS) &&
+> +			  !airoha_is_7583(eth);
+
+please see above.
+
+Regards,
+Lorenzo
+
+> =20
+>  	ppe_num_entries =3D airoha_ppe_get_total_num_entries(ppe);
+>  	foe_size =3D ppe_num_entries * sizeof(struct airoha_foe_entry);
+> diff --git a/drivers/net/ethernet/airoha/airoha_regs.h b/drivers/net/ethe=
+rnet/airoha/airoha_regs.h
+> index 442b48c9b991..aee06c058586 100644
+> --- a/drivers/net/ethernet/airoha/airoha_regs.h
+> +++ b/drivers/net/ethernet/airoha/airoha_regs.h
+> @@ -72,6 +72,8 @@
+>  #define PSE_CFG_OQ_RSV_MASK		GENMASK(13, 0)
+> =20
+>  #define PSE_FQ_CFG			0x008c
+> +#define PSE_FC_CFG			0x0098
+> +#define PSE_PORT6_SHARE_DIS		BIT(22)
+>  #define PSE_FQ_LIMIT_MASK		GENMASK(14, 0)
+> =20
+>  #define REG_FE_PSE_BUF_SET		0x0090
+> --=20
+> 2.43.0
+>=20
+
+--NOajDJ9cSUpeZ4E4
+Content-Type: application/pgp-signature; name=signature.asc
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCasibawAKCRA6cBh0uS2t
+rK8sAQCcVwqGDaZNFDjbktsKV7mzp98FVx4rbcZGJlo+MhlRDwD/XXQapB/RcFIs
+7ItldqyvtIw7uHMNN4sLeGtM0R01uw4=
+=UgeO
+-----END PGP SIGNATURE-----
+
+--NOajDJ9cSUpeZ4E4--
 
