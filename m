@@ -4,61 +4,178 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0E4ABCA6012
-	for <linux-mediatek@archiver.kernel.org>; Fri,  9 Oct 2026 10:18:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AB28FCA6019
+	for <linux-mediatek@archiver.kernel.org>; Fri,  9 Oct 2026 11:25:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:CC:References:To:
+	Subject:Date:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=2IK08WvoWJC1h6DlgEI7ITQrkIpsRhrwFymhPxbueT8=; b=pNVw/+PeCJLTgsDXrUfmgit5/I
-	F3Ti9pGI6irhd4LIJmNd3LsRTvJgXL5NFgy7Br32AM84ZcTsgRwCIEnaQ70EhZa7bQDVBBvUv/gB7
-	uwEZitOEwlZxD8H35VdMtVXGeTpe8ixXFY5DjdmxMZSy+A4tXxx3diBcbHASFXEPm8N+SedZhqdiQ
-	an8hSvAci0Hv5eMUfszd95OU4j4u1T0OKBJLBhdL01lPDhHpWHpWBp/q+4Gnr9nv/QiFwNPhArFmj
-	s+3sbJmOUhh20xTAKbPyaTvcU+POCsiO2746TNbNrZ3coiHtAE8Tl70NBlgF/SkamdZHQeaMBQ3yv
-	hjaor9XA==;
+	bh=6omFu4x4lIlhC2dCvJ7vVyU9j1paEZ0TN2Fgnu5NZhc=; b=2Yg0s9Rxv0xbZl/1mmjk0m9BHT
+	/biK3BP/RVAd6Uu/s9+j+UXswY+A9nKpNYhMAXWlvgrF/ezr4isgDLmAuBM0puZ3FUdKYD0EFirHj
+	16qjStpI48t281V9iunlcGCWxOWT7N+HC67eSW0pAjiwzUYq5LmgldmttFm+u/sqDcbCgsW2tEukf
+	Hz7+DccmibimySSo6r22t/7bw0OKT7IL2uisrhYt7TPBoeWxKJcC1kCGzqi90dk/ntnzlU5IFbyVu
+	x6L3jkb9uAmMoeszO1sOqhKFb8NO2kB0g75K3by/WmIS8a9FgTtVYWg2d9qkKXsbcibNHH7zG6RIP
+	9hgLt8FA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xF7g2-000000061mN-1bej;
-	Fri, 09 Oct 2026 10:18:10 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1xF8jW-00000006A8n-0Olj;
+	Fri, 09 Oct 2026 11:25:50 +0000
+Received: from mgamail.intel.com ([192.198.163.11])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xF7g1-000000061m9-0v4f;
-	Fri, 09 Oct 2026 10:18:09 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id 705AC41471;
-	Fri,  9 Oct 2026 10:18:07 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 4AE501F000FF;
-	Fri,  9 Oct 2026 10:18:06 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1791541087;
-	bh=2IK08WvoWJC1h6DlgEI7ITQrkIpsRhrwFymhPxbueT8=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=MIDk5/IU6tP3YARpKWHfyeeG7ABschktkAyCEp43D1TgmMbNhOnbWuBEzKUe9lWMR
-	 /CeFpSIl8ufe90s/Wj6YSXA790NYrCVsD/XaiFPrAXIUoy5zv077JDbwfOGfBHnyE/
-	 sYHwIJ6/3zjaaO/jmSOCGbNfKnCqX4PMK8LZEGaoxVzmJ0SWiD3f9xAnAAu3gdQZsl
-	 rP020XSgCfBZJozzUCXHBjZlzD9pHyfe1LVKQZcyQU+wwfTu4KrSPWEs2Tv7/4Jpv5
-	 hsvQXwOCt7ynkBKCapGo5icvAj5mPENhu6iEZFYuyLRzhlSD6Chd9NXO7gQtP/ABb1
-	 3FJyzVLyxAj7A==
-Date: Fri, 9 Oct 2026 12:18:03 +0200
-From: Krzysztof Kozlowski <krzk@kernel.org>
-To: Tim Kuo <Tim.Kuo@mediatek.com>
-Cc: Mark Brown <broonie@kernel.org>, Rob Herring <robh@kernel.org>, 
-	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, linux-spi@vger.kernel.org, devicetree@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org, Steven Liu <Steven.Liu@mediatek.com>, 
-	Sky Huang <Skylake.Huang@mediatek.com>, Sam Shih <Sam.Shih@mediatek.com>
-Subject: Re: [PATCH v3 1/2] spi: dt-bindings: mediatek,spi-mt65xx: add
- MT7987/MT7989 compatibles
-Message-ID: <20261009-tricky-fine-aardwolf-cca31a@quoll>
-References: <20261008085332.802898-1-Tim.Kuo@mediatek.com>
+	id 1xF8jS-00000006A7r-1xDb;
+	Fri, 09 Oct 2026 11:25:47 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1791545146; x=1823081146;
+  h=message-id:date:subject:to:references:cc:from:
+   in-reply-to:content-transfer-encoding:mime-version;
+  bh=6k125EOUrQhSg9/AURp5MxCxGT4aejrDJgIyHqoKxLs=;
+  b=R9t+4S7fWoASByo+BmPAoaswvF1jLh3HkzrKUnsKs7HdGkdMoNCgeFU0
+   KbamkSXrpQYsHhRL0vv28pKss8r4JXRek6NvJHrzAqr9aMQjhUY5UBQ1U
+   Py+awYmA4SDJTR0Rg7hZzJ6HU5smy5ADYco0EVXpbnRACqaZ3wQMunXJd
+   NGi1mv2p5KK+kXW+ZGSDPxXv3sCYsIDLKu1k+LtFLvC4UxuX33lU9b5I2
+   nxWkJiesr/1cFm7ucoLAvQR1ko8hpS1CUtcRy1RfnJuF+V53NJTXm6FsA
+   75sLQQHQSX1TaYJ68V0fuqSFD+mx2htNc+jcYvrom5N+AhE3nR/LrtcwS
+   Q==;
+X-CSE-ConnectionGUID: P17wTKcwT+aAzhbHmUV5EA==
+X-CSE-MsgGUID: EkD/Bp0yTd66q+q9IsztBQ==
+X-IronPort-AV: E=McAfee;i="6800,10657,11929"; a="243530"
+X-IronPort-AV: E=Sophos;i="6.27,148,1787036400"; 
+   d="scan'208";a="243530"
+Received: from fmviesa008.fm.intel.com ([10.60.135.148])
+  by fmvoesa105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 09 Oct 2026 04:25:44 -0700
+X-CSE-ConnectionGUID: woROhCUURbe2fN6pJ+WcsA==
+X-CSE-MsgGUID: 6va47AKsTsW6ODJG6igLew==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.27,148,1787036400"; 
+   d="scan'208";a="619775"
+Received: from orsmsx903.amr.corp.intel.com ([10.22.229.25])
+  by fmviesa008.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 09 Oct 2026 04:25:43 -0700
+Received: from ORSMSX901.amr.corp.intel.com (10.22.229.23) by
+ ORSMSX903.amr.corp.intel.com (10.22.229.25) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.2562.49; Fri, 9 Oct 2026 04:25:42 -0700
+Received: from ORSEDG903.ED.cps.intel.com (10.7.248.13) by
+ ORSMSX901.amr.corp.intel.com (10.22.229.23) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.2562.49 via Frontend Transport; Fri, 9 Oct 2026 04:25:42 -0700
+Received: from CH4PR04CU002.outbound.protection.outlook.com (40.107.201.63) by
+ edgegateway.intel.com (134.134.137.113) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.2562.49; Fri, 9 Oct 2026 04:25:42 -0700
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=R2rf4MOKP9XLIqw6IKzx7kreIy/xNVgMea6b4ggpQHgyp4zGUS5IF6DZKjh4p0ChmLGjct8RsWe8f9reahhCx9pOOAc1Ny5n31Mr7wMq5lWJEEv02brFPcdE7q2GJcokm3TQhXk/g7VTZUfqU5MuqRXjvK7cKXZBkSbRv3mjA1wC4UmhTJwBnD81E+S9IyC5vlTmToDHpdshfMgM2EEszllQT2WnnQxF86IH7d80vPd32r/jksLoibxLeIR2saRk6bWzbLJ4YzDmAci9FIK0RPAWkYLXtt1+x8CjJJkjHqGx9OM9VLE0exkjTDVm4Lk+pvEacLwMyN8ktletaP20eg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=6omFu4x4lIlhC2dCvJ7vVyU9j1paEZ0TN2Fgnu5NZhc=;
+ b=gbDCdX2ZjCLndhImG1csikn8/Fk3tlg0JhfDKOsg7PsZpUOFAEq9GhEmhVdlxMCK4R8wTgHYzgUSUtIsaQHQsW9D6qSAFvKHKrViTgiZwlLc8bce15suAF6VtBiyG9yRcV8AdYkKy+Y3vqGaQKMxARe3VHoR7SpyIrOg4eDbW9OXU7SXIcNRm8VsS78Zz8s1q/QelJTL8QsGphDvSIluAEp1u854DP+wMfHif2jXBkdJdMcNFrPiXWbauf/xxBkcSlIxMYR7DocBUU4nbKuEuFCFoc4c45JPwZuBx9Ky9u4SDtP6nS9eL4cDN1K05w2kHnnQkZGsl0IK3fZpFo+g7Q==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+Authentication-Results: mx.microsoft.com 1; dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=intel.com;
+Received: from PH7PR11MB6006.namprd11.prod.outlook.com (2603:10b6:510:1e1::13)
+ by SJ0PR11MB5939.namprd11.prod.outlook.com (2603:10b6:a03:42e::21) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.496.17; Fri, 9 Oct
+ 2026 11:23:55 +0000
+Received: from PH7PR11MB6006.namprd11.prod.outlook.com
+ ([fe80::4e2d:28f0:ede9:73bd]) by PH7PR11MB6006.namprd11.prod.outlook.com
+ ([fe80::4e2d:28f0:ede9:73bd%6]) with mapi id 15.21.0496.015; Fri, 9 Oct 2026
+ 11:23:55 +0000
+Message-ID: <6c610758-5f34-4408-a6e5-f3718218ba94@intel.com>
+Date: Fri, 9 Oct 2026 13:23:47 +0200
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v6 0/5] ASoC: Add support for Airoha AN7581
+To: Christian Marangi <ansuelsmth@gmail.com>
+References: <20260908090448.3332-1-ansuelsmth@gmail.com>
+Content-Language: en-US
+CC: Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, "Rob
+ Herring" <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, "Conor
+ Dooley" <conor+dt@kernel.org>, Jaroslav Kysela <perex@perex.cz>, Takashi Iwai
+	<tiwai@suse.com>, Matthias Brugger <matthias.bgg@gmail.com>,
+	"AngeloGioacchino Del Regno" <angelogioacchino.delregno@collabora.com>,
+	Philipp Zabel <p.zabel@pengutronix.de>, Cyril Chao <Cyril.Chao@mediatek.com>,
+	Darren Ye <darren.ye@mediatek.com>, Rosen Penev <rosenp@gmail.com>, Daniel
+ Golle <daniel@makrotopia.org>, bui duc phuc <phucduc.bui@gmail.com>,
+	<linux-sound@vger.kernel.org>, <devicetree@vger.kernel.org>,
+	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-mediatek@lists.infradead.org>
+From: Cezary Rojewski <cezary.rojewski@intel.com>
+In-Reply-To: <20260908090448.3332-1-ansuelsmth@gmail.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: 7bit
+X-ClientProxiedBy: WA2PEPF000008B0.POLP291.PROD.OUTLOOK.COM
+ (2603:10a6:1d8::65a) To PH7PR11MB6006.namprd11.prod.outlook.com
+ (2603:10b6:510:1e1::13)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-In-Reply-To: <20261008085332.802898-1-Tim.Kuo@mediatek.com>
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: PH7PR11MB6006:EE_|SJ0PR11MB5939:EE_
+X-MS-Office365-Filtering-Correlation-Id: c080b978-30d5-43ac-6bbe-08df25f7cdfa
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230040|23010399003|7416014|376014|366016|1800799024|56012099006|11063799006|22082099003|18002099003|10067099003|3023799007;
+X-Microsoft-Antispam-Message-Info: 41hVtRS/hhSreG23NTzo2zneZ6NzjES707aHVn4j3HULlOoLyMv0qAiLqlBZ+Huf1npbrD0YVMrO5TYbbic65rUQrJnos9j9CArHiTGUn6q6a/AlnOw8wYBI6PsTSZquT5ZFc2LorLyVl9f8YK/LNLE6euJpje6VT/SslIBOdYovVNOUFkBW5B4FCvn0CUyVOkzXZHbFRe0+i7tOd5Jc5s7dbc1bCg1dy7lF9Xr0DqN+/6v7Tq+zbgbPAS/qjnSRXPMAKL1WEceg9npeRwK1jjaqofEoefItohBSXEs3hfWepehA5Tu/1gwQPhVRYkUkfjPIujHtJvCHoXXaYBP60fI60EAr+ea7mgJRchLQ8ejTFfWeDmQ3ZW9nCzNY9e5WAlFpmXmJi50GEbw7ZyzK/FR02TPVf7ZTeHDk1WvWnoTsapDBflZMMzPBKmSAXZ8D0avdF2NDwdZkGBFyUTgQoFx0Gtrh7DfT04fDwzpnKIqtnXGnHNY9f+a6NoueGjZ7J7dUe9ozXuQF0/2zeuaPvCanKk0bJNsLGjkpCCn5EUNh8aV1quDOxF2FwOtFyG8HBg2bLegzVbzw9KUNvFt4UcoZQoatTtipRwbtAq7MH1v2EM2irJjy/TrsYEQV7vP4AlVr+YP8PT0G7VcwbHYm3lELG+DE+rTbGyiSEj83fU0=
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:PH7PR11MB6006.namprd11.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(23010399003)(7416014)(376014)(366016)(1800799024)(56012099006)(11063799006)(22082099003)(18002099003)(10067099003)(3023799007);DIR:OUT;SFP:1101;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?UXFIaE9nclJUVENyVjRncFNxT0pTNkRsR3h0Y1dtT2g0SWlhUTJNQ3N2RHgr?=
+ =?utf-8?B?K2Fid21PZWhWeFVGZnd6VU1YMFRFNk1zc0FZNllDendUbjN3WXdRY0pwSmlW?=
+ =?utf-8?B?V3JSbzY4eDdwL2VyZlFZV2tyTXZFa1ZpMTRKSCtpVDJJN3lISlIxbmZUTTk2?=
+ =?utf-8?B?cEFpYjNQMG5ENXdtcXNQeWJWeG1vM3hFbXd1WFYraFA1RmE1OGNPd1NIdXF5?=
+ =?utf-8?B?ZEVLcGxjL21YNlBXaEEwQm0rMytPamkzTEdrei9Ib2ptR3BEUTlOcmlCeUhy?=
+ =?utf-8?B?V2VMeGRPd1ZYdnl0ZWpnWHZTR2ZPbmhBZ2g1bDVWWEdRY3U1QWFnWFVJaFVH?=
+ =?utf-8?B?Z3A5eVlGQWloMjZCaml0L0VZT3p6ZlhyMHU5NDR6NC9ZZ2pCaU1BL1VZQ1dQ?=
+ =?utf-8?B?RUoyTXRMcGpXUFg0dFc2cmZ5QnlQTWZTemJCZjBNWCsrSUZIS1RVMnFDanE1?=
+ =?utf-8?B?UHRUTXQvODgzWmlMYlZ0S2kxK3AvcVFZUWl5aHBWQXBVNm9OY3YrRFhxdHlz?=
+ =?utf-8?B?alQ5UzJ5enBqMjdlOHlTdHpxN1F1SEYxcGtYOWZmM0huRmNING14cUpTRUlX?=
+ =?utf-8?B?dTVnWXAvZlFpK3BHajJUZVowUGpyVjZqK3dCVGxsN3BZRnFMTSsvUUdvWHFq?=
+ =?utf-8?B?TUU4U0ZuNnNtdDNsUE5NSjFBbEpRWC90Qk9EYndCSWFwKzZDLzJ5czhDWjRI?=
+ =?utf-8?B?Y0ZvNEc4RkdDMHhObmVtelVVZzNDZ1pDS1lFQk5kMHg3UWF4MXVxVlRib1NT?=
+ =?utf-8?B?T1QxQ3hRRkNVbmF4UXJ1OFVaUGR4aVZWU0tkS0VwMlZKdGwxdkJpNnd0OXU1?=
+ =?utf-8?B?b0tkdGdTWXU1UW5qZi82azFQc1k2L3NZRVlTQWZ1L05ORlNMY3R3SnpYSzAv?=
+ =?utf-8?B?TWpndmlYU0U1QkRnYy9qOTBBekY3eHZWOVFiSVBoS0xxNW4xcjdtYXFFVlNQ?=
+ =?utf-8?B?Z0NITFRqQjd0MGtMMUVWS0FwZEticWhBeElvcy9tb1RMOGE1eEUvMTJPbFZt?=
+ =?utf-8?B?d1o2YTk1OEhpNm9aNUF4eU5QUTQwU3Npbk1Ka0lzTitldnVsa3FhNjhqMS9w?=
+ =?utf-8?B?YXB0aGs2L0k1Rm1Oa2xDZElUaGJtbzhTRXpUTC9aNEZVZ2MzbXNPcllEVHVv?=
+ =?utf-8?B?ZVVCVzBWeVI5aXlPQ3dtcCs3YWFhQ1JGK1h5cEhSVmRlYjhZa2lRNGpOMFQy?=
+ =?utf-8?B?NUtjUWNXWXkyQnRFODFWSkRPYm5vbGFjQzVDeGtUTnR1RG1ub1lDa3VqTUFw?=
+ =?utf-8?B?QzMwbXVkYjBVemFZT3NWSTFvS0FhcHdaa3NURzltVzhvbG9JeHJtRjhnVDU5?=
+ =?utf-8?B?UEVOUWlIRkhnYzBPa0I5b1VqVnN0T1VVRXduUElEMzhRclo1dHFiK0MweHQ1?=
+ =?utf-8?B?YXFBUkIxMnlYclZLakVDbTI0Uk5peUp6MHRpK0tkY2diM2VvZ0lJbWdqUCsy?=
+ =?utf-8?B?dTUvQjlvdG9wVWIwZlNIRVBuTGVBd1o1STkwOWhueFJveUFIb2ZZSk1ua3pI?=
+ =?utf-8?B?MGdqZ0NwaEpKZ0xIUVpTVjgvM3pvcnl6bkxua0pVZkkyZnEwaWw5Z1pkend5?=
+ =?utf-8?B?dU1EbUxSUDRlZC9wczA1Y3F3cnRubjRCcmVSdUxlcW50dGI2TFVmK2EwMFBh?=
+ =?utf-8?B?ODlML2t0MWdhcU16MGh2dmw1MnBvLzlUbEN4cjBIRDVtRU9NMmJMcnJWODhh?=
+ =?utf-8?B?YXhTaWVxaUI3U1NYcTlZcVRDckxNUDkxcDRBcFNhRTNQZkdIczA2SzNqNldk?=
+ =?utf-8?B?YlFLNmZiOFgvYkZHSUUxVUlFa05HYjEvRkwvK25CcVM0WWxhbnBvaDROMmRi?=
+ =?utf-8?B?NWMrZmlsa3ppc2w2end3dXp0anNYV21VSjN0TjlkUjB4T01lREVrUnlqUGpP?=
+ =?utf-8?B?UVJ6elNlRW12VlVPWVc2bm5WenMvZVJqeGxVYXJHdEdXK2NZOEU3TGFKTTZB?=
+ =?utf-8?B?MXVNY215Nm9wQlF1V1lYMGNoVzVhLzVVMjBqeGIwcCtFT0VEOTVuLzQ0Q1Aw?=
+ =?utf-8?B?c053amcrdll0eHdzQ3ZYZEIvbDYxNW14OWV4dG9LVzhBTm1tUmJ5ZVArWElE?=
+ =?utf-8?B?T0FWU1o0VTh2aG52eDJMYTRhYUdOSjFod05oSFZJdTFQTXB0dGwwNkMzMGFS?=
+ =?utf-8?B?OTBRUTd4dE9vMUVMQ1hKOEN4cUZvakgrWVhxdmNmMVdzcmRJYStwSnEwQWxX?=
+ =?utf-8?B?dlNOdDNxMno2MlJtbGhKQSt0dHhkN0ozS2lCdU8xNFlpSUZCV2FlZUJVeDI3?=
+ =?utf-8?B?d0hSMDY2Y2VsYVZEVFFrN25jb05lcXptTHZwUWxTeXpJZHd3bUdldm1EYVVO?=
+ =?utf-8?B?QzJiM1ZqMDN2Q2RmTGFkbGFmZFVFaTZZQzNnQXNpTmRlZDY4YUV5RmVoSTQ3?=
+ =?utf-8?Q?IcBKI/M1lvNaZR+8=3D?=
+X-Exchange-RoutingPolicyChecked: 07liWeMWp6/v84WihyKYlE79K13eFC8roTjA4UH5/mXQDiI5Smc9OYDK5so9dMCDx+zhQsVUHhx+5/jVe3K+rLjNRM/G1rMSqUJ8ovEdUP1pSg8E6yl5kqlQZSfFPVvrh1NpWzTKXL77JQ/JKn8SWitV11Deb+yDDrvUblGmerKdn/5RYiRkNiiZ0vsqbwpq0Al5pbL3c6YOsti/3qtm31dS67MRS4bg236qSPWc6Clx7DDY8hHOzU2+ekzNm+5J2kNlz4hbouT2ciK8S4pOkvVuXmsZPF/Snf8rqRPDb5WPIhJBpRBB/QML2TMqRcOGzaRDC4zu6TSjZmzKnlETwQ==
+X-MS-Exchange-CrossTenant-Network-Message-Id: c080b978-30d5-43ac-6bbe-08df25f7cdfa
+X-MS-Exchange-CrossTenant-AuthSource: PH7PR11MB6006.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 09 Oct 2026 11:23:55.5450
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: mAE9fc326D363fzGIDB8YPI/1S5E3q0hcW3kZ9M2l+c34n9Rw/nnQP8UqYtqvqW6NsWWo/2M0kmnaQT7jTFs1tVuwXJfGZD99plfGTQQye0=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SJ0PR11MB5939
+X-OriginatorOrg: intel.com
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20261009_042546_526197_9E41A8CF 
+X-CRM114-Status: GOOD (  16.18  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,41 +190,41 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, Oct 08, 2026 at 04:53:31PM +0800, Tim Kuo wrote:
-> The MT7987 and MT7989 SPI IPs are IPM designs, so they keep
-> "mediatek,spi-ipm" as their fallback compatible, but they widen the tick
-> delay field of SPI_CMD_REG and therefore need compatibles of their own.
+On 9/8/2026 11:04 AM, Christian Marangi wrote:
+> Add all the patch and documentation to support Airoha AN7581
+> sound driver.
 > 
-> Signed-off-by: Tim Kuo <Tim.Kuo@mediatek.com>
-> ---
-> v2: Add mt7987 and mt7989 real device compatible
-> v3:
->  - Drop "mediatek,spi-ipm-v59" 
->  - Move compatible of mt7987 and mt7989 to group of spi-ipm fallback
+> The card follows similar implementation with Mediatek with
+> the codec present on i2c but with a simplified implementation
+> register wise and additional frequency supported.
 > 
->  Documentation/devicetree/bindings/spi/mediatek,spi-mt65xx.yaml | 2 ++
->  1 file changed, 2 insertions(+)
-> 
-> diff --git a/Documentation/devicetree/bindings/spi/mediatek,spi-mt65xx.yaml b/Documentation/devicetree/bindings/spi/mediatek,spi-mt65xx.yaml
-> index 3bf3eb1f8728..63b23928c734 100644
-> --- a/Documentation/devicetree/bindings/spi/mediatek,spi-mt65xx.yaml
-> +++ b/Documentation/devicetree/bindings/spi/mediatek,spi-mt65xx.yaml
-> @@ -35,8 +35,10 @@ properties:
->            - enum:
->                - mediatek,mt7981-spi-ipm
->                - mediatek,mt7986-spi-ipm
-> +              - mediatek,mt7987-spi
->                - mediatek,mt7988-spi-quad
->                - mediatek,mt7988-spi-single
-> +              - mediatek,mt7989-spi
->                - mediatek,mt8188-spi-ipm
->            - const: mediatek,spi-ipm
+> Changes v6:
+> - Fix PCM probe allocation logic
+> - Split driver patch to dedicated PCM/ETDM patch and machine driver
+> Changes v5:
+> - Address comments from bot
+> - Better handle concurrent irq status bit
+> - Protect enable etdm
+> - Add Review tag for documentation patch
+> - Address formal comments from Cezary
 
-Nope. How is this a specific compatible?
+You've not included all the reviewers in the Cc list despite addressing
+some of the comments. I hope that wasn't done in bad faith to avoid
+further review.
 
-Look at git or even read the REST of this file.
+> Changes v4:
+> - Improve Documentation YAML
+> - Move IRQ regmap to mtk_base_afe_irq
+> - Use mutex for user tracking in ETDM
+> - Register IRQ after memif allocation
+> - Address suggestion from bot
+> Changes v3:
+> - Major fix to the ETDM code
+> - Add duplex support
+> - Improve Kconfig setup
+> - Rework and improve YAML schema
+> Changes v2:
+> - Fix wrong edit in MAINTAINERS file
 
-Best regards,
-Krzysztof
 
 
