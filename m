@@ -4,67 +4,113 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6610BCA5FED
-	for <linux-mediatek@archiver.kernel.org>; Fri,  9 Oct 2026 07:18:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8CA7DCA6012
+	for <linux-mediatek@archiver.kernel.org>; Fri,  9 Oct 2026 07:21:33 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
+	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=qI+415q4E5u/K30Ei0He1md1f8jr5YcEgEriT1ap3tw=; b=uAq0OcvA//T9bk/5wZ1rFJu4rn
-	jU+6KkOk2GWfIll3j7uVgWtbNpzgOMgtXUqz9G1GAjEpohzw9m5fMdxK6/SE68s9qOt9Qh4hsRUbd
-	C/in2Wb/NS8PWMTrSxODKLO9TPKBirXvnJ3b9Xedk1dvO//HT4e/bskDMVTghEUGtF+9Gp2nwKVU8
-	Uh6690wPADPPDy2QeCfRdLOP5GcC27Ag1san/9grWFrEbGNPWfqwg5obBqzKrboy2MLWHJDxZ/4fM
-	rqmgZc3x1ub9EYnyHOUD6iHT5QCmWIta2eoBwbnRuKcKyde/UvxBKGv8nfv1F5syL8HdtTP09QRqP
-	zBxKp7eQ==;
+	bh=ZWFUNR7NkCd2nR7CmmLol21VHCNc/dGraaedEy4x8BE=; b=2ZcoOiHXKowOO2dN1HJH/VRt5C
+	VB1ZC9vcArIA1YDD7WNePjYmszqxzrfieZVE7cxMfj5C9f7tdEniQLoxvmsGSZfW0eYZ4O2RRJnXo
+	5TH9987WsZy+Uoc4MqBD9Y/C06sEa5/xFmDD/aDgbKsQBagtoCe1pHG5eIRyW21TyXaBth4F9Z22q
+	w9eN1DjF+tDyfr41Gvx5PbcGodF+zNZBDwyo+N77cTbMpsO4n0rGQx87k9kmk8Fl4UiWNJKjBLaO/
+	exW2IqfrZx9O+oXrGyGO7P7YuE+vEmycrEZ3lwVMVaYjv4TUSF5xbWHBO+ehHMkntsji/Lsa4VFYT
+	fmwWh0Hg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xF4rf-00000005hoi-2JQl;
-	Fri, 09 Oct 2026 07:17:59 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1xF4v6-00000005iCg-1c9r;
+	Fri, 09 Oct 2026 07:21:32 +0000
+Received: from mail-ed1-x534.google.com ([2a00:1450:4864:20::534])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xF4rd-00000005hoM-2FxZ;
-	Fri, 09 Oct 2026 07:17:57 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id AEBCA602C3;
-	Fri,  9 Oct 2026 07:17:56 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id A37961F000FF;
-	Fri,  9 Oct 2026 07:17:55 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1791530276;
-	bh=qI+415q4E5u/K30Ei0He1md1f8jr5YcEgEriT1ap3tw=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=h9FEAAmJC9FwS+gXSVDcQG2rNWk/F0ybQyI6n7qzSoip58Nl9ThMoyvqF+6WcgQL5
-	 kqUeOASwzAl9jrF09PpglkvIK82uu4OUH2tliTQ+1GYS/Q3VM+oBRCJ94qgdYpvAe6
-	 8WyWXY6EAJE3vbPHBeE3eS5G2jx4jE/VZmm0UKoXOzU0dAbvFPzItfZKlfmG0n+8jq
-	 FIOI8qu07S2kMlItCyKzr/DotJp2tYgIWKs4Kf7a+nd/bIv4aYaQ7YFxK2ZX8o+Ssj
-	 5ePs4YSReTuDQnwi9wFotP7OKwOAA2xepcLR59pgzbsv4pVQrJ0So9NW4U2cw0lVNe
-	 j65j+vgpPjjTA==
-Date: Fri, 9 Oct 2026 09:17:53 +0200
-From: Krzysztof Kozlowski <krzk@kernel.org>
-To: James Calligeros <jcalligeros99@gmail.com>
-Cc: David Rhodes <david.rhodes@cirrus.com>, 
-	Richard Fitzgerald <rf@opensource.cirrus.com>, Martin =?utf-8?Q?Povi=C5=A1er?= <povik+lin@cutebit.org>, 
-	Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, Rob Herring <robh@kernel.org>, 
-	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
-	Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Shenghao Ding <shenghao-ding@ti.com>, Kevin Lu <kevin-lu@ti.com>, 
-	Baojun Xu <baojun.xu@ti.com>, Sen Wang <sen@ti.com>, Sven Peter <sven@kernel.org>, 
-	Janne Grunau <j@jannau.net>, Neal Gompa <neal@gompa.dev>, asahi@lists.linux.dev, 
-	linux-sound@vger.kernel.org, patches@opensource.cirrus.com, devicetree@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH v2 05/21] ASoC: dt-bindings: Add binding for Apple
- Silicon Mac audio
-Message-ID: <20261009-daring-objective-flounder-c0b66d@quoll>
-References: <20261004-macaudio-v2-0-7b47ed6335a8@gmail.com>
- <20261004-macaudio-v2-5-7b47ed6335a8@gmail.com>
+	id 1xF4v4-00000005iC0-0RHA
+	for linux-mediatek@lists.infradead.org;
+	Fri, 09 Oct 2026 07:21:31 +0000
+Received: by mail-ed1-x534.google.com with SMTP id 4fb4d7f45d1cf-6a9e5ba741aso5705743a12.3
+        for <linux-mediatek@lists.infradead.org>; Fri, 09 Oct 2026 00:21:29 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1791530488; cv=none;
+        d=google.com; s=arc-20260327;
+        b=ptQBieY38xYZwT9EV44Ys5QNHW16cVI7RTH5G/tjk26uAQlrJp4wShUd3Mkq2OA86R
+         npdIeN5IuzCXUXTOnLzS+qBmDMSTdHwwv5NpVbJ0vRHePrFBxzqWkb6qO/i285XFS4cX
+         nURwqEmhtyvyH+SaV5A9duKqY4g19Xc6BnChYH41v2KDpeToOcLGyF/D5p4rXHzwRNQD
+         oHvCk/p6aN8qbRJDtMDHafULlPoyJ8o7ZPrf6WJzZyWAyUo6XthdBW/hKIqSnJWD2o1y
+         jRdxmSsknYchRMJO2T/MhqN81OyKr+F/raMWiAUk/sK/YLWxlkt0Ms6m2sCOpftk0pYY
+         DEPQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20260327;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:dkim-signature;
+        bh=ZWFUNR7NkCd2nR7CmmLol21VHCNc/dGraaedEy4x8BE=;
+        fh=Bqy/CuCBTHiR2mR1l/Rk1O3W2x2uPn3rwJlvKuZzWSc=;
+        b=Bf/0b/AmLyHSHC/Nkx7QNDyFeUPsh4kQYi9632K0BXeuuhzo/iwcF9Oe0hjAObIGOO
+         4YKIllGUx1Mk70nDDboYizcPfwEbG4vfGvzxw/X+iyJuiXL6XaIdHWito1vzjewN5rCl
+         SYQRGPpocwpIT0SNzqsoeMqMbbs/dMA4ItD+gY9QueUtB7Kx2M6P6fbdetR6nly/eH5g
+         DeHjHWD1KJowa07uq8BYxGzcsExDkrIob7tQr5MOCC0MwWAb8xphbLbVdmd2eiu/trr7
+         3gb5noXvcMkO6I3pOOieKzsIzgxI7jsd4NbZKFY7vMmU489rNzzqqYZPQqr1roJq7+37
+         mFyQ==;
+        darn=lists.infradead.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20251104; t=1791530488; x=1792135288; darn=lists.infradead.org;
+        h=content-type:cc:to:subject:message-id:date:from:in-reply-to
+         :references:mime-version:from:to:cc:subject:date:message-id:reply-to
+         :content-type;
+        bh=ZWFUNR7NkCd2nR7CmmLol21VHCNc/dGraaedEy4x8BE=;
+        b=Wz2YaPZWP1Fsrx6/nIaSQRB+6UI2mdn8SNqXRFZ1DMxMSddHROFcbN1THBV50YVqXk
+         gqfATVQ8Pjc0wYcigg1KQOza0PHM+/3ZQgR+2XaHwU8oI61T+PsCvySOAQuvbCHSEJVg
+         vG1FtaEL7CNQ1gyLuifcFWqRgCnUohFWddSf9uNpepBZYEtd9C0sgUs3RjdFhXlMBhf2
+         OudZUp/XjcJQeqwidaIVt88VKUgLZwCLBqlQ+n8Ca7bTf5nUElcABKzB/HMooI3dL6PD
+         CDWVypHP6YSkjErPskmItkcmLanPTPdDT8+jEAbREfT8OYEMnL2jJCtmXPR1CN/+f47K
+         zN2Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20260707; t=1791530488; x=1792135288;
+        h=content-type:cc:to:subject:message-id:date:from:in-reply-to
+         :references:mime-version:x-gm-gg:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to:content-type;
+        bh=ZWFUNR7NkCd2nR7CmmLol21VHCNc/dGraaedEy4x8BE=;
+        b=nDM08EUebZUrvI2guK/o2RfQOpSJu4CPhT8OnRKQJlM2gnEM7wlRZ4BMtOAjVnev4I
+         1SpGsz/SEUrKIjpNKMrS0cSHQsGPk/zGLY4g2EtWByMeUU7DTsPig4hKGzJNzJJ5Lpim
+         y9bdFyl8Di9ayuJh1JRu7nFV0En6yWr7IABIyO/XSkYI9sBem4ZwzPln59nf93/GnvxC
+         EdvaWq6uu9O5ulWS5KIyTCL3B3CYgRkvW2cchL0ovE9ziAUedIRsZdOxxlte54reRB4J
+         4HDf2PEh4Erir5rYBTx1Kc/UTwI224QknK5iyFaTPiDh7PKefewQ4Z/IyA5zZ9AL/nhX
+         1ZLQ==
+X-Forwarded-Encrypted: i=1; AKwUvBwkoU/xcFYVAf2hXFSFArgW8RbnM/WhC56Q0AfY8ZAypfU9+dOqprksOqz6uBzgiWX8maBbwy1ZPfjc98yHhw==@lists.infradead.org
+X-Gm-Message-State: AFq9FYKU3uJKBq9YaJSba6gnROECcVIw6Ij+SXDNXhvvJWMqfVAsIQ8n
+	WG4Wq9YXObe/QGSd7Qo3/vUEUNlr1tZPHjmRt15qq7VwN+vsoKdfQrNoVRva/K1zbm9K0cA/Y5e
+	Q8FxXhBfOPK6xULjCOAmHyERB0Clqa7A=
+X-Gm-Gg: AYBFou0lzIPNwS2nT7sAef6mQ9WGVpJSG+aFbSb/OeDOMZN94dpaQ2HPe/FjnJHwEjv
+	vwbLoyPWwlUadx7tCbB3cZgKEMAvX7R6lpq08um5iEcoK0KONnZIROT0bfFIyrz/R9hJpCF6Mt/
+	g5AzDOcKPmDQCRjoeJEeNQ3dX/ky79OLXvzKWG2KemvFR5K+EHQXkt3KGNZqjuCQHSqGdamhVfP
+	8Wb0lxy5jaak4aoeTHLs9LovTfZ3kBEhwkLbtrL5FMI9A5vaPG/NPnhqPcbbuw0z6CTJ/oqYfCx
+	cKawWNcRLI+M9BR16g0sm1F39uX4/QVMaTRPtAdsyanvUO2V2C+scPo0aFuqIY8/Gm7TMg8cWyA
+	J9gO95+DbkRv/gQ+47LBwqvCt6VrsjHA0kjErheBLMGMXEV1/0QYILmxaaVnU8/R82T8=
+X-Received: by 2002:a05:6402:2489:b0:6a9:aabb:5364 with SMTP id
+ 4fb4d7f45d1cf-6b17c2406a9mr722739a12.11.1791530487888; Fri, 09 Oct 2026
+ 00:21:27 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-In-Reply-To: <20261004-macaudio-v2-5-7b47ed6335a8@gmail.com>
+References: <20261005110257.50145-1-phucduc.bui@gmail.com> <20261005110257.50145-15-phucduc.bui@gmail.com>
+ <24ffbf82-adad-4153-a2b9-f2123189c722@oss.qualcomm.com>
+In-Reply-To: <24ffbf82-adad-4153-a2b9-f2123189c722@oss.qualcomm.com>
+From: Bui Duc Phuc <phucduc.bui@gmail.com>
+Date: Fri, 9 Oct 2026 14:21:13 +0700
+X-Gm-Features: AclHuK9p57z2uGUnULQbpxyjyLXl9q0M8bfa39_8UwomVGEzhtoBlELb83gkc1g
+Message-ID: <CAABR9nETXgKCex=sDx6Y=eJOTg42oj0egGv6268T14v510Zf5Q@mail.gmail.com>
+Subject: Re: [PATCH v2 14/14] ASoC: mediatek: mt8195: Fix clock parent error handling
+To: Ajay Kumar Nandam <ajay.nandam@oss.qualcomm.com>
+Cc: Mark Brown <broonie@kernel.org>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	Trevor Wu <trevor.wu@mediatek.com>, Liam Girdwood <lgirdwood@gmail.com>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, 
+	Kuninori Morimoto <kuninori.morimoto.gx@renesas.com>, cassiogabrielcontato@gmail.com, 
+	Mukesh Ojha <mukesh.ojha@oss.qualcomm.com>, Liviu Dudau <liviu.dudau@arm.com>, 
+	Haotian Zhang <vulab@iscas.ac.cn>, HariKrishna Sagala <hariconscious@gmail.com>, linux-sound@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+	linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="UTF-8"
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20261009_002130_162297_A1AB5D3B 
+X-CRM114-Status: UNSURE (   9.25  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,184 +125,15 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sun, Oct 04, 2026 at 04:03:32PM +1000, James Calligeros wrote:
-> +properties:
-> +  compatible:
-> +    oneOf:
-> +      - items:
-> +          - enum:
-> +              - apple,j180-macaudio
-> +              - apple,j274-macaudio
-> +              - apple,j293-macaudio
-> +              - apple,j313-macaudio
-> +              - apple,j314-macaudio
-> +              - apple,j316-macaudio
-> +              - apple,j375-macaudio
-> +              - apple,j413-macaudio
-> +              - apple,j415-macaudio
-> +              - apple,j473-macaudio
-> +              - apple,j456-macaudio
-> +              - apple,j457-macaudio
+> Was the intent only to get the DAPM error log
+> here, or should the commit message/code be adjusted so the behavior
+> matches the "properly handled by the caller" wording?
+>
 
-Keep this list sorted.
+The intent was only to get the error reported instead of silently
+ignored; the commit message wording was imprecise. I'll reword it
+in the next version.
 
-> +      - items:
-> +          - enum:
-> +              - apple,j493-macaudio
-> +          - const: apple,j293-macaudio
-
-...
-
-> +  model:
-> +    description:
-> +      Model name for presentation to users
-> +    $ref: /schemas/types.yaml#/definitions/string
-> +
-> +patternProperties:
-> +  "^dai-link(@[0-9a-f]+)?$":
-> +    description: |
-> +      Node for each sound peripheral such as the speaker array, headphones jack,
-> +      or microphone.
-> +    type: object
-> +    $ref: tdm-slot.yaml#
-> +
-
-Drop blank line
-
-> +    additionalProperties: false
-> +
-> +    properties:
-> +      reg:
-> +        maxItems: 1
-> +
-> +      link-name:
-> +        description: Name for the peripheral
-> +        enum: [ Headphone Jack, Speaker, Speakers ]
-> +        $ref: /schemas/types.yaml#/definitions/string
-> +
-> +      codec:
-> +        type: object
-> +
-
-Drop blank line
-
-> +        additionalProperties: false
-> +
-> +        properties:
-> +          sound-dai:
-> +            minItems: 1
-> +            maxItems: 8
-> +            description: |
-> +              DAI list with the CODEC-side DAIs connected to the above CPU-side
-> +              DAIs and involved in this sound peripheral.
-> +
-> +              The list is in left/right order if applicable. If there are more
-> +              than one CPU-side DAIs (there can be two), the CODECs must be
-> +              listed first those connected to the first CPU, then those
-> +              connected to the second.
-> +
-> +              In addition, on some machines with many speaker codecs, the CODECs
-> +              are listed in this fixed order:
-> +
-> +              Four speakers: Left Front, Left Rear, Right Front, Right Rear
-> +              Six speakers: Left Woofer 1, Left Tweeter, Left Woofer 2,
-> +                            Right Woofer 1, Right Tweeter, Right Woofer 2
-> +
-> +        required:
-> +          - sound-dai
-> +
-> +      cpu:
-> +        type: object
-> +
-
-Drop blank line
-
-> +        additionalProperties: false
-> +
-> +        properties:
-> +          sound-dai:
-> +            minItems: 1
-> +            maxItems: 2
-> +            description: |
-> +              DAI list with CPU-side I2S ports involved in this peripheral.
-> +
-> +        required:
-> +          - sound-dai
-> +
-> +    patternProperties:
-> +      "^dai-tdm-idle-mode-[0-9]$":
-> +        $ref: tdm-slot.yaml#/properties/dai-tdm-idle-mode
-
-This looks like you put several slots into one. TDM slot is for one
-slot, no?
-
-> +
-> +      "^dai-tdm-slot-tx-idle-mask-[0-9]$":
-> +        $ref: /schemas/types.yaml#/definitions/uint32
-> +        description: Idle slot mask. A bit being set to 1 indicates
-> +          that the corresponding TDM slot is inactive/idle.
-> +
-> +    required:
-> +      - reg
-> +      - codec
-> +      - cpu
-> +
-> +required:
-> +  - compatible
-> +  - model
-> +
-> +additionalProperties: false
-> +
-> +examples:
-> +  - |
-> +    sound {
-> +      compatible = "apple,j416-macaudio", "apple,j316-macaudio";
-> +      model = "MacBook Pro J416";
-> +
-> +      #address-cells = <1>;
-> +      #size-cells = <0>;
-> +
-> +      dai-link@0 {
-> +        reg = <0>;
-> +        link-name = "Speakers";
-> +
-> +        dai-tdm-idle-mode-0 = "zero";
-> +        dai-tdm-idle-mode-3 = "zero";
-> +        dai-tdm-slot-tx-idle-mask-0 = <0xf0f0f0>;
-> +        dai-tdm-slot-tx-idle-mask-3 = <0x0f0f0f>;
-> +
-> +        codec {
-> +          sound-dai = <&speaker_left_woof1>,
-> +                      <&speaker_left_tweet>,
-> +                      <&speaker_left_woof2>,
-> +                      <&speaker_right_woof1>,
-> +                      <&speaker_right_tweet>,
-> +                      <&speaker_right_woof2>;
-> +        };
-> +
-> +        cpu {
-> +          sound-dai = <&mca 0>, <&mca 1>;
-> +        };
-> +      };
-> +
-> +      dai-link@1 {
-> +        reg = <1>;
-> +        link-name = "Headphone Jack";
-> +
-> +        codec {
-> +          sound-dai = <&jack_codec>;
-> +        };
-> +
-> +        cpu {
-> +          sound-dai = <&mca 2>;
-
-Example looks incomplete, you miss TDM slot properties.
-
-> +        };
-> +      };
-> +    };
-> 
-> -- 
-> 2.55.0
-> 
+Best regards,
+Phuc
 
