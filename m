@@ -4,119 +4,110 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F1BEACA601E
-	for <linux-mediatek@archiver.kernel.org>; Fri,  9 Oct 2026 19:44:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7FA2DCA9EBB
+	for <linux-mediatek@archiver.kernel.org>; Fri,  9 Oct 2026 22:04:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=euHLhhJIoJOkj7GaOyOYBfCDgPoUg6f5MHX5Oe6p4Tw=; b=1x6rQz+LEcTnIrvjXjfTSK3x2E
-	CDPdDNUs3soPjc7rWKXHHtX2Ayv0jkF63Qt5bVcY8D6jvvs4tSr0M8Mxl4/FGgE+dRBQFVqjKKdJQ
-	sL5pnxaOqrSvkIu1XIILi+30hC8x0Gp98fdwVAEr5UGtE7KN/93kqNc5ctLxpzuSdIEUZgLPvg7jV
-	kUhX4qQoS6KBoXd3Fr+HPCEI0AHZWrjArXQiIC+Q/fpyvpKvQ0R/0FBHERR1vAf1vKy48R2//kzEj
-	KYikDZirTCNCJe7mpL3GCJkDEoje8YAASZh/7v/YUMUIYgcvmDCuAthKmmsZHoIrAkusQe39Gf9Aq
-	v7qIJjcw==;
+	bh=Oz+mubEJi9OTuwRjam7n0ruAb9lpR9EULifx4BafNbY=; b=OHw+goyu+YCOWUvb47NPl3L8oP
+	KcBwXF67sUmrMZyGteVDVN5PSP48Jms6/tlIMUweW+O+ka9lQMtAkM4U7W7AAFm+0BUzRYIdvELwK
+	g+ULSCy7fFOjod4QyKHhXI3buwdx/thIWUDps63GVwWSYVjog1/bX0Z200BRRkKjna3bCufCKhbgJ
+	hFwju/QtP2WsC/9qD1Tl8Srzn4vHCPgDdbfveKyE4fms9S4O/pA1r32cbhuXTEoaxBn2wGce6LKqX
+	f1dBjwnEI9nN7FyK0M//wFBMFybVSCwF24PU6CeayA5D7zULccrhf/8e2VHqJFO5hGieDtOtDFKG4
+	kdrMh/fw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xFGWX-000000077pw-07mq;
-	Fri, 09 Oct 2026 19:44:57 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1xFIhD-00000007GWn-26nB;
+	Fri, 09 Oct 2026 22:04:07 +0000
+Received: from mail-dy1-x1331.google.com ([2607:f8b0:4864:20::1331])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xFGWV-000000077ni-27fB
-	for linux-mediatek@bombadil.infradead.org;
-	Fri, 09 Oct 2026 19:44:55 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Cc:To:In-Reply-To:References:
-	Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Sender:Reply-To:Content-ID:Content-Description;
-	bh=euHLhhJIoJOkj7GaOyOYBfCDgPoUg6f5MHX5Oe6p4Tw=; b=YD3maYFQ/b15byewyklXUnZyYh
-	1TsVumeFEjeLnbgAqHWUQwXeKYsm+Ficiqo5VlK6gxDb+fyQUOQvuS+njJGV8n+dgOJu8EnSxFkCG
-	HvydDd+vvJKNt81DSKyBx8rZnvILof+jsZalqzu+RGSjVP+AUILCcelF2L6o9ayjsXyyNI9/kDm5o
-	gqyghFjpHAT0LrX2sb6LZ3T+4aoUDg6hIi3xOu6ErjUSMuvLx3YrMNk0cB3JrROIvLPcrnFD/HqWY
-	CfRJzGg/Apfob/6QAo+M/8MRTD8FDP9j6BBzrN9dxqbCqPFfCkTwYXyE4vDbCGTlxypNPCjtjcmZO
-	LIGIpnzQ==;
-Received: from mail-qk2-x06.google.com ([2607:f8b0:4864:34::6])
-	by desiato.infradead.org with esmtps (Exim 4.99.2 #2 (Red Hat Linux))
-	id 1xFGWS-0000000BbPb-30Ni
+	id 1xFIhA-00000007GVT-3jxQ
 	for linux-mediatek@lists.infradead.org;
-	Fri, 09 Oct 2026 19:44:54 +0000
-Received: by mail-qk2-x06.google.com with SMTP id d75a77b69052e-52e3a588bbcso114461cf.0
-        for <linux-mediatek@lists.infradead.org>; Fri, 09 Oct 2026 12:44:51 -0700 (PDT)
+	Fri, 09 Oct 2026 22:04:06 +0000
+Received: by mail-dy1-x1331.google.com with SMTP id 5a478bee46e88-35829219da8so114394eec.0
+        for <linux-mediatek@lists.infradead.org>; Fri, 09 Oct 2026 15:04:04 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1791575090; x=1792179890; darn=lists.infradead.org;
-        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
-         :content-type:mime-version:subject:date:from:from:to:cc:subject:date
+        d=gmail.com; s=20251104; t=1791583444; x=1792188244; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to:content-type;
-        bh=euHLhhJIoJOkj7GaOyOYBfCDgPoUg6f5MHX5Oe6p4Tw=;
-        b=B9f5/vldpuqxsCsRfaKbDgTZILToD5gCPbkfnZsVVh9Fw5Eaifm6Za4oyxFUgyOoj+
-         cB1/QFnlkvG+KYQHF+Mmofoug3CW4yZrHh5yRgh0N8G4xMyMJRwT7PIM9Rj7vSqVsN9+
-         5tok0ftBSYYqfooGHFlP8Xv2XjQh7vXNcMNY94rny9o+96ulOn36IWhjpocQDFxJpNTZ
-         PeXhuYfjPJiKzDTaabakra3e+fpUkaR774obzh0XnPlcTLJezcPhFdFNRwhh6YzG7hky
-         TEWvSb9ln7oWeK5W6v/iZTwSCIksxo48xhrQii+MTte2qF47tYdIUhn7J+opfhgmFlvT
-         cybA==
+        bh=Oz+mubEJi9OTuwRjam7n0ruAb9lpR9EULifx4BafNbY=;
+        b=C00FDh77teFFiGwwPUVehD0sWQ9rA44yiIQoNG/sZMp3MmMpTmo13MKw6sAm3yo07Z
+         R0HffQ9qVPXFH1tKRPq0vJU1NdY0WHQMbcuZrEksyf9Df6gseT9bFUTr5eejlaZ78aOA
+         5CP3tpYoP873wsbovKliKOPG7NlicyLLpkdVO8Z0klVUEuD2cRjF2a3jnX9/x5V7RFrn
+         WXUUOaZ8GL8Ksu2qJNDugvgbL557vI5lBh1/+umvTipkHIoNalfIsKfoiLEsIUGoqR9J
+         uwW8BRbnBu/4b1I9PilG+O/v2YN+xgPQWKQHjOjkv9CmiTW8/4Rx+kMfOMzOin8t++Nb
+         I4Zg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1791575090; x=1792179890;
-        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
-         :content-type:mime-version:subject:date:from:x-gm-gg
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
-         :content-type;
-        bh=euHLhhJIoJOkj7GaOyOYBfCDgPoUg6f5MHX5Oe6p4Tw=;
-        b=ltYkw0RYm4RmVMFOkeX02wd/xvxcOWCVvnbofH+XlmMZaG+30SSywwSXtiwaEmrbsg
-         ss+XUr/JTnJLhWmWEnz+7pjwJ1Tr09i67j8AKT3bgx7hXUidJ0tGkHqCsLai0wfRe1aj
-         IbtAIplgxNXuzNYtLo1VEwqN4AIc+zvUlioR04G5d8r//kAme7IUj91dy5cdb05dcTmP
-         bL0k2ZIRxpFoPHPdOjkBLpNMeCvbnFoQM41CpFi9aSSaa4FD9+IuyO14t4hfwkHD5awx
-         OVM8HdUB8TdCP8aKD8FZKZctNAYHILT3EB5iMcofcttVK/u98quHxtfqcjvAC8xePftH
-         nrYQ==
-X-Forwarded-Encrypted: i=1; AKwUvBwZjfGuqFOH1b4jp8zPHolCyg5izLi79JZHmykL3+LAT25EM0XI2Kg6kaONFhuyU5JfGy60HM9styT0CGkgYA==@lists.infradead.org
-X-Gm-Message-State: AFuF++lhavttEHfcfeKcw0Jl5WuNJ9zsx6XswsRSzevrenV8UmGDxofJ
-	THtoaI8DYeJES3f40NjlMKrLpL63HDlnzWNCoBewK0vbulTqW/xM2pAx
-X-Gm-Gg: AYBFou1iwYOU9zLXLTvBUMK5r/8tegl7K2Jha/mYub4XFXyzwmYTlCec+/eadfhg2uq
-	1BN308vTUwm4m+WQmD4bvh1EqKuLPCVytjrGIg8dv3MyH9mhf1EqG5J/iTTXP/MzoRHFvb8FgOF
-	yQf6fdjWFf7SnS647cKSO84crX8e5wcv1vFZFJ5O0r1ZyVekCn5pYieXIsDwczV1NnqeKV3YU5k
-	6dt8YyFyWl/RsZuR8xSzNJpmf5EfFJcfHYnZzZCPYsMl7eQ/VG4HAx3ENFI58YqE5W5Q78XaywB
-	wg0Am1yoztS5l6BKoKLkkUF07Mx7Jlu2LnNCVoVdseenTVYMsBZQN0cHLzDtR7H3NAaiklh7R+A
-	9dc7ic7r+zaJhFaWoiABBOEXexPVF+l5Sme1D+uVT1FSl6krf4vjQU+72/GaVt6AfOBkQi/teZy
-	fvmHaDPNdU/W+FFTslf5jNtl+db0RM82O+slKuY2fcUXQ4pAux9DXjpQk8Xpyw3q6KZawC6Zr8v
-	J24t96ogEuJpyVqZqe8gTusqPs09irlK6fpXmEKuXVL+3mIMK7KJ+I27/YRygPswtRatvTQ8to=
-X-Received: by 2002:a05:620a:4114:b0:93e:c173:f692 with SMTP id af79cd13be357-93ec1740673mr344729485a.38.1791575090195;
-        Fri, 09 Oct 2026 12:44:50 -0700 (PDT)
-Received: from [10.10.18.223] (wsip-64-207-253-118.tu.ok.cox.net. [64.207.253.118])
-        by smtp.gmail.com with ESMTPSA id af79cd13be357-93eb98c5633sm259293485a.35.2026.10.09.12.44.48
+        d=1e100.net; s=20260707; t=1791583444; x=1792188244;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
+         :to:cc:subject:date:message-id:reply-to:content-type;
+        bh=Oz+mubEJi9OTuwRjam7n0ruAb9lpR9EULifx4BafNbY=;
+        b=iEZry92Uzsi1PxmGTaWhmu/hIWlPuYZo6JGbsPDkf1FtDspMmxRv7w3c4JmzqKjtAb
+         R8yYPdCUnjUb9EMI1qBEBtsh2N9uul9l0yBdAeauna9PqAD8sTTYOKz6H6TKrBsSOy+1
+         0jAOG5yLEGI+Z3z+I0y8Tt5MLunHWBr2wuH2gsBfuMUiNTM5muRIaPUogQjbSCP2UO4I
+         UwfbFK1HS0gvU0b7TSIoBgqANfd/jsQMJ8yrx0Zqbe8B643BKUONeIYRsqL2lzfbjwe6
+         4smmpx1puLcZNFesnV2gApfOrXyHIK0IOwC/+7CSjGff5yIFz6CFJkY1T9AQ5bPLlEsI
+         us+w==
+X-Forwarded-Encrypted: i=1; AKwUvBxd8Hf1r/t3tToC4Ja6B1nzxJpxSyep2SJrgn3QofEqH63/J4hUX6pyaJ6vQys+K0/fAu+Stjf3NPjFYCvOBQ==@lists.infradead.org
+X-Gm-Message-State: AFq9FYJQUWUqeVMshYAC7uAqjV4VN+G1I31npjEb5NW9WluIcQp1PVRv
+	M8rbwkGUOnoAVNj0G/jU+jry8S6cOdsCo6r6N5pEzt7nPnuJX4GYh/HkgM8CXV64
+X-Gm-Gg: AYBFou3cz1bu5pzvGiDGN0MtLNnKxEVwGUdKBfvLt1SHm/KhjIxQIxLC5SADokm1e3a
+	g5jevFjbYedeI5SHtW+j+dKAjInMYrRBgwXUo/PSqB114a17T9J1SapT9xdLBwOLDSayvXr5rZn
+	BfTgo8+XWAwsE0N5gCJ15ziBM/RzSDBhiQ5rUvYMlOxR3bDF+/NRLHYJc9oCf6qpYpor3Zgv8FK
+	X3n4siLjSyZaRHebHifroqtB2QspcRpoy+ZkQ7tMctYN4AIVwKVbb2La1aLzBHdxN1V0XvQZ/AA
+	lYa4K3ST5DGfbCagz7IL9s3BbVmQGr6hURA/fQyQP9vtRYKI9Am6rDwm3KcIcya2y0wyeAe2Pri
+	oOe1ak6QhHFnsbVSJc4+zLV3Uaw+K4B0vzkClz9+xQz1giaYbOrtJ4z8Ef6gagS2gkZ3rHru46x
+	OvCmk1H7laAscYjGTX1Olxa258mXzAJE2i2i5jFxkwNBFkJegjydztUeaxj3mLrjPPynulgkRKs
+	n7yx6qabhMpitGAb4Rjx4loDqxmCFo0sH87sayvAhk=
+X-Received: by 2002:a05:693c:821a:b0:357:ee3a:267a with SMTP id 5a478bee46e88-357ee3a2dd9mr962923eec.2.1791583443330;
+        Fri, 09 Oct 2026 15:04:03 -0700 (PDT)
+Received: from DESKTOP-1E7V4GR.lan ([190.177.131.57])
+        by smtp.gmail.com with ESMTPSA id 5a478bee46e88-3537cb2fd33sm8279558eec.28.2026.10.09.15.03.57
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 09 Oct 2026 12:44:49 -0700 (PDT)
-From: Ryan Brue <ryanbrue.dev@gmail.com>
-Date: Fri, 09 Oct 2026 14:44:44 -0500
-Subject: [PATCH v2 2/2] arm64: dts: mediatek: mt8173: Mark the lowest CPU
- OPPs for suspend
+        Fri, 09 Oct 2026 15:04:02 -0700 (PDT)
+From: Cristian Papa <pcristian292@gmail.com>
+To: benjamin.larsson@genexis.eu
+Cc: Landen.Chao@mediatek.com,
+	andrew@lunn.ch,
+	angelogioacchino.delregno@collabora.com,
+	arinc.unal@arinc9.com,
+	chester.a.unal@arinc9.com,
+	cjd@cjdns.fr,
+	conor+dt@kernel.org,
+	daniel@makrotopia.org,
+	davem@davemloft.net,
+	devicetree@vger.kernel.org,
+	dqfext@gmail.com,
+	edumazet@google.com,
+	krzk+dt@kernel.org,
+	kuba@kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	linux@armlinux.org.uk,
+	matthias.bgg@gmail.com,
+	naseefkm@gmail.com,
+	netdev@vger.kernel.org,
+	olteanv@gmail.com,
+	pabeni@redhat.com,
+	robh@kernel.org,
+	sean.wang@mediatek.com
+Subject: Re: [PATCH v2 net-next 7/7] net: dsa: mediatek: support EN751221 switch
+Date: Fri,  9 Oct 2026 19:03:48 -0300
+Message-ID: <20261009220348.4531-1-pcristian292@gmail.com>
+X-Mailer: git-send-email 2.47.3
+In-Reply-To: <4310cd4d-d9e5-4bc4-bdee-7f6f6b3a2409@genexis.eu>
+References: <4310cd4d-d9e5-4bc4-bdee-7f6f6b3a2409@genexis.eu>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20261009-rbrue-suez-upstreaming-mtk-cpufreq-suspend-opp-v2-2-ba13f826eae1@gmail.com>
-References: <20261009-rbrue-suez-upstreaming-mtk-cpufreq-suspend-opp-v2-0-ba13f826eae1@gmail.com>
-In-Reply-To: <20261009-rbrue-suez-upstreaming-mtk-cpufreq-suspend-opp-v2-0-ba13f826eae1@gmail.com>
-To: "Rafael J. Wysocki" <rafael@kernel.org>, 
- Viresh Kumar <viresh.kumar@linaro.org>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>
-Cc: Roman Vivchar <rva333@protonmail.com>, linux-pm@vger.kernel.org, 
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, 
- Ryan Brue <ryanbrue.dev@gmail.com>
-X-Mailer: b4 0.16.0
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1791575085; l=1277;
- i=ryanbrue.dev@gmail.com; s=20260906; h=from:subject:message-id;
- bh=6mQzJb6HQwk/MiupaE++x+vH8v5ByWD2TN9pKFcfIxw=;
- b=gj/o9tBfq/u6ETFIfGltk7J8BWOdbJWMwl2Y6rCdaGMSFsSW0ix2W8xJy55yWtCQ3zXD6INIY
- 13nPrTKxq5nAiEXuBKEl34WBlW0aJ9qkX1kzvEvLJvSkxByDdA/pOB5
-X-Developer-Key: i=ryanbrue.dev@gmail.com; a=ed25519;
- pk=KsUvVaP//v/2q+ZBuacc7cLbsyEYn+AD71Sn28oZWKo=
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261009_204452_881163_F5FC0C3E 
-X-CRM114-Status: GOOD (  10.79  )
+X-CRM114-CacheID: sfid-20261009_150404_939242_2CBC019A 
+X-CRM114-Status: GOOD (  14.60  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -131,41 +122,66 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Both clusters otherwise enter system sleep at whatever OPP the governor
-last chose. On the Amazon Fire HD 10 (2017), entering suspend-to-RAM with
-both clusters at their highest OPP measured 63.5 mA, against 52.0 mA
-when they suspend at 507 MHz. Mark the 507 MHz OPP of each cluster, the
-lowest in both tables, as the one to suspend at. mediatek-cpufreq uses
-it for system sleep, and a kernel without that support ignores it.
+On Sun, 20 Sep 2026 12:33:21 +0200, Benjamin Larsson wrote:
+> Thus I suggest that dts property also is added and that the calibration
+> is performed if that property is not present.
+>
+> The original SDK and production units seem to have a fixed setting and
+> user testing also indicate that a fixed value results in a working
+> trgmii link.
 
-Assisted-by: LLM
-Signed-off-by: Ryan Brue <ryanbrue.dev@gmail.com>
----
- arch/arm64/boot/dts/mediatek/mt8173.dtsi | 2 ++
- 1 file changed, 2 insertions(+)
+Some of that user testing may be mine (fixed RX taps on an XR500v in
+Matheus Sampaio Queiroga's airoha tree, airoha/kernel PR #54 on his
+Gitea, https://sirherobrine23.com.br/airoha/kernel/pulls/54 - viewing
+it needs a login there), so here are the numbers behind it. One unit:
+TP-Link Archer XR500v v1 (EN7526G, on-die switch plus MCM), running
+that tree's driver on Linux 6.18, not v2.
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8173.dtsi b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-index 78c2ccd5be13..7f1af15cb934 100644
---- a/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-@@ -56,6 +56,7 @@ cluster0_opp: opp-table-0 {
- 		opp-507000000 {
- 			opp-hz = /bits/ 64 <507000000>;
- 			opp-microvolt = <859000>;
-+			opp-suspend;
- 		};
- 		opp-702000000 {
- 			opp-hz = /bits/ 64 <702000000>;
-@@ -93,6 +94,7 @@ cluster1_opp: opp-table-1 {
- 		opp-507000000 {
- 			opp-hz = /bits/ 64 <507000000>;
- 			opp-microvolt = <828000>;
-+			opp-suspend;
- 		};
- 		opp-702000000 {
- 			opp-hz = /bits/ 64 <702000000>;
+That driver uses the same PLL frequency (362.5 MHz) and TX drive values
+as v2, but the rest of the sequence differs. v2 sets the MCM TX delay
+to 0 (it reads 8 here), writes RCK_RTT and 0x7a14 on the on-die side
+and disables SSC on the MCM; that driver does none of that and instead
+writes the full vendor MTRAP word (0x01017e8f, between TOP_SIG_CTRL 0
+and 1) on both switches, where v2 only changes individual MTRAP bits,
+and the vendor CKGCR value (0x30f0 = 0x1e02) on the MCM, which v2 does
+not touch. So the taps may shift with v2.
 
--- 
-2.55.0
+With the 0x55 pattern, sweeping RD_TAP from 1, all five lanes pass up
+to tap 37-45 for SoC->MCM and up to tap 16-18 for MCM->SoC (one boot).
+The eye with real traffic is much narrower. With all lanes on the same
+tap, iperf3 through the cascade and the RX CRC counter of the receiving
+port (same result on two boots):
 
+  SoC->MCM (MCM port 6):    clean up to tap 24, nearly dead at 28
+                            (1-6 Mbit/s with CRC errors), dead from 32
+  MCM->SoC (on-die port 5): clean up to tap 10, CRC errors at 12,
+                            unusable from 14 to 64, and a second
+                            narrow eye around 72
+
+Tap 1, the lowest I tried, was clean in both directions, so the lower
+edge of the eye never showed up. The midpoints of the 0x55 windows
+(19-23 and 8-9 here) are only 1-5 and 1-2 taps below the last clean
+tap measured.
+
+That driver uses RX tap 4 in both directions (for SoC->MCM the 0x55
+sweep still runs, as a check). With it, 12 boots (8 warm reboots and 4
+power cycles of about 30 s) had 0 CRC errors on both cascade ports
+after 6 s of iperf3 each way, 29k-101k frames per direction. One value
+(4) works for both directions here, although the margin to the last
+clean tap differs (about 20 taps vs 6).
+
+Separately: an out-of-tree U-Boot port for this board (since fixed)
+left the on-die switch's PHY auto-polling on (AP_EN in PPSC, 0x7018).
+With it on, 8 of 240 TFTP boots trained no SoC->MCM lane until the
+switch was re-probed, and a stress test found repeated tap writes
+landing in the MCM's 0x7a04 (4 of 4 boots, 0 of 4 with AP_EN off).
+Clearing AP_EN before registering the MDIO bus gave 120 of 120 boots
+with all lanes trained. In v2 the on-die switch is set up (and reset)
+before the MCM, which should clear it, but I have not tested that; it
+may matter if v3 touches the MCM earlier.
+
+Per-boot logs on request. Happy to test whichever approach v3 takes.
+
+Thanks,
+Cristian
 
