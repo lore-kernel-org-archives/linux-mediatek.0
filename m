@@ -4,44 +4,44 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 22AB5CA6012
-	for <linux-mediatek@archiver.kernel.org>; Fri,  9 Oct 2026 07:10:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E32B1CA6012
+	for <linux-mediatek@archiver.kernel.org>; Fri,  9 Oct 2026 07:11:53 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Cbqcw/ZcJpAS2N0wcQ+lROnRhzGRuCryFX/mxseCRCo=; b=L+joZAjXdXrPdPIlSOv4gjagbH
-	ydMQ/Hfv+jcdk6W4KfmcWDwEZmtkNDV/Bjy06JNE1ctg1JKGxoU3Lx3EV+N6yPtECW25wUC2HN8Xu
-	nm9oldeRwSO+TUQ9Ibb5HKGsmfP8ezG2ZHZqxncmR+TEnfdYRCPRnTxlaV10tlvg2HO00FWbSkv7T
-	85Si/2Lgzqyg9PLuzZNgzpRjR53/QkW+pLVZLk5FWQVQThc75rdJahbZUi15cjiIVesKeYyyvgECK
-	lSWM0B8gUEmqd5+qbjXPbiFK4n4DoV5L47C7o2oxKvHfdt9M4EHRWPGE6I77jIvF7OsdlUkrO9n8q
-	rXLdWWZA==;
+	bh=ev/NmiRklbf7MpR6x3GqJ6NVg6ju9b3tRe0belW+GrQ=; b=SvjeeVw38PON4OqPlyyUK62Ztk
+	jmyiXQlpzslNKGIQuZHkai6LKoKfjRZ13j8HqvHk9a5AHbdu8jplO5HNLjrFOgzFmoafhvgcsMHg6
+	d7+bnPVjnIVcbK+0OFW5y2vBNDUVzGzTMOcmnWMJuPWLuYd9zdO6EPssOh8YzLMDfW76Uqp3Mbqp1
+	Sb8ZeXoR7imdKfgkp8K4WY0yBxfy2fPcrSPVHpe+eHkLAXhYTpXqU5OkR3DotbJPOaSHX2/1f7Hea
+	hDszPU3cxuxMRiAAPWgY10xUvPlan2eUYPS4Mkg67Cy05/fvoPTKtxbxmkBcrehKS+jh/6hpbwisJ
+	PGOue+3g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xF4kl-00000005gyI-0eKV;
-	Fri, 09 Oct 2026 07:10:51 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1xF4lk-00000005h87-2CJY;
+	Fri, 09 Oct 2026 07:11:52 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xF4kj-00000005gxL-1Hzv;
-	Fri, 09 Oct 2026 07:10:49 +0000
+	id 1xF4li-00000005h6o-0q2r;
+	Fri, 09 Oct 2026 07:11:50 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 73F57602C3;
-	Fri,  9 Oct 2026 07:10:48 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 665D61F000FF;
-	Fri,  9 Oct 2026 07:10:47 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 79E4E602C3;
+	Fri,  9 Oct 2026 07:11:49 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6D48A1F00893;
+	Fri,  9 Oct 2026 07:11:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1791529848;
-	bh=Cbqcw/ZcJpAS2N0wcQ+lROnRhzGRuCryFX/mxseCRCo=;
+	s=k20260515; t=1791529909;
+	bh=ev/NmiRklbf7MpR6x3GqJ6NVg6ju9b3tRe0belW+GrQ=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=KpmbKJJ3kS+Y4PM3xApljYc4t4pcQ2/wqbIzf0sWre1HvkdbkCqmep6MNmZYSxNph
-	 aB9hRUL7q01A0DMzkD+Bo8lZi6ImwTQhKJLlLkdmrnQ6kdyWO683Ya9Rl0+YSv7YgI
-	 BFBO/Jhh188Ty66vLgC4SS87vdG7IzMCLYubwyvGJ4TLC1nPwytaPh2liXYESYypFJ
-	 lh7QK6dao5n9RDwk9/Z6EyzBDsA9BSSSxWsW9rCBqUqeGtU5oXt3Ztxw73kcl2hX8S
-	 msGxSCdsYFZjOjxCifUC/IXQIQCRLRdWsdpAQhPLb+3g4BKE9UYgGMIYtKmennE+II
-	 VYTV59atDvz3A==
-Date: Fri, 9 Oct 2026 09:10:44 +0200
+	b=JBLCCVARNQZjCVwaKE7AvOVM94/5/weCbcxR8bc5UFMLbCNAcLT/fTp5h4pbn08qW
+	 8NJd5dgSEgtr/9G4nUmxjnOXqgjKeMErK1T6cw8RuntpPSkJfW7bCflwQHvlLCrNj+
+	 HLkBOizDCX2+nPGTiS4yf+j+J3HmG7eqDZBTkY6F+/Cd4Ki/+4/qQW14Aaihkln3J5
+	 oK5ea3QtI+UtDG9k3NIF9Ktot8Bw0NTAM+gIubWxSzyNCDEY/BYS6//6abYBBWftwj
+	 hwf28Ds5v+9ZRTA+vi7WXeJTX9u28mGwkRFX8zcWjjNowUVW82JDXNc1i+3xX4NZzN
+	 BzGF1rBnZSEEQ==
+Date: Fri, 9 Oct 2026 09:11:46 +0200
 From: Krzysztof Kozlowski <krzk@kernel.org>
 To: James Calligeros <jcalligeros99@gmail.com>
 Cc: David Rhodes <david.rhodes@cirrus.com>, 
@@ -56,15 +56,15 @@ Cc: David Rhodes <david.rhodes@cirrus.com>,
 	linux-sound@vger.kernel.org, patches@opensource.cirrus.com, devicetree@vger.kernel.org, 
 	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
 	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH v2 03/21] ASoC: dt-bindings: cs42l42: Document
- #sound-dai-cells property
-Message-ID: <20261009-daft-raspberry-woodpecker-a88efd@quoll>
+Subject: Re: [PATCH v2 04/21] ASoC: dt-bindings: cs42l42: Document
+ sound-name-prefix property
+Message-ID: <20261009-festive-able-nautilus-b92ffd@quoll>
 References: <20261004-macaudio-v2-0-7b47ed6335a8@gmail.com>
- <20261004-macaudio-v2-3-7b47ed6335a8@gmail.com>
+ <20261004-macaudio-v2-4-7b47ed6335a8@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
-In-Reply-To: <20261004-macaudio-v2-3-7b47ed6335a8@gmail.com>
+In-Reply-To: <20261004-macaudio-v2-4-7b47ed6335a8@gmail.com>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,10 +79,10 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sun, Oct 04, 2026 at 04:03:30PM +1000, James Calligeros wrote:
-> We may need to define #sound-dai-cells on some machines where this
-> codec is part of a simple DAI. Document this property to keep the style
-> checker happy.
+On Sun, Oct 04, 2026 at 04:03:31PM +1000, James Calligeros wrote:
+> Some consumers may wish to prepend the codec's name with a known value
+> to identify a specific codec among many. Enable this with the common
+> sound-name-prefix property.
 > 
 > Signed-off-by: James Calligeros <jcalligeros99@gmail.com>
 > ---
@@ -90,17 +90,23 @@ On Sun, Oct 04, 2026 at 04:03:30PM +1000, James Calligeros wrote:
 >  1 file changed, 3 insertions(+)
 > 
 > diff --git a/Documentation/devicetree/bindings/sound/cirrus,cs42l42.yaml b/Documentation/devicetree/bindings/sound/cirrus,cs42l42.yaml
-> index 6c100cb36699..bc759eaadeca 100644
+> index bc759eaadeca..035463be1456 100644
 > --- a/Documentation/devicetree/bindings/sound/cirrus,cs42l42.yaml
 > +++ b/Documentation/devicetree/bindings/sound/cirrus,cs42l42.yaml
-> @@ -26,6 +26,9 @@ properties:
->        The I2C address of the CS42L42.
->      maxItems: 1
+> @@ -29,6 +29,9 @@ properties:
+>    '#sound-dai-cells':
+>      const: 0
 >  
-> +  '#sound-dai-cells':
-> +    const: 0
+> +  sound-name-prefix:
 
-So a DAI? Then just like for every codec you need dai-common.yaml.
+No. You reference respective schemas.
+
+> +    $ref: component-common.yaml#/properties/sound-name-prefix
+
+git grep 'properties/sound-name-prefix'
+
+You cannot find such code. This should give you a hint, that you are
+doing something odd.
 
 Best regards,
 Krzysztof
