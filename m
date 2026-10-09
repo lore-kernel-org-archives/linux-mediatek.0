@@ -4,183 +4,95 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 704DECA601E
-	for <linux-mediatek@archiver.kernel.org>; Fri,  9 Oct 2026 11:52:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C301ACA6019
+	for <linux-mediatek@archiver.kernel.org>; Fri,  9 Oct 2026 13:11:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:CC:To:
-	Subject:Date:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=tBsVzpNhtQkj2g2E34XSnsFIgc3dqndUQQTnjxA8m3s=; b=I5jNtcmdJjMpOzVvy3uqj7Mv9l
-	x3K4U5UNgrDXFDXHCc/f7+g2RNP4VvGrjL/ZnJkfmKtojBuBdzz2qmIYT+EPkKKTEKa/tW+hE8K0M
-	cIyKbIVGGwbFJIissrpXUA+Onc8/r0fCp1ASBdKA50m5J7VhMLXe0vFBZlZctoCEtR38E+LR1Dr1h
-	z1jOZlwXM1YvKzQIRe0bKfE2dclVUxxO7yQ5dia47S3Xjuivt9yfMU/GO4UwGv+MkHaHPthFNY62h
-	+ahOBe4Jj9gcgTM3gGM6SEf/OVSVCY4PgjIMDo+kEgXvwg4++j4Jgp4FTDkWiArzlfmrCDFaAE86e
-	GKrPPhdg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=ivHyAXb3qjEaUwwmjdkwnHy9ML1o2ap0QHUHYjbwF8g=; b=F9KXkPM+FE2/WnSEZdgiCih9sL
+	PJegg0JlJswr8le4a8OnqWOtT6EEMfq0ju/rFTo/j5mB220KPWTehYre1dt9jG+TkOflfn/AqkFMG
+	kJEeu7ibTEtLzwbEc+zXSZ6OUq+PnayBI3C7sTZXI++zCAsK9S8TqsbTDZCKQw7MRshhzcZxoL9La
+	oWgQdGu13pAbY/0m+MVwxLOyzyhVmcevq0jRSTFkfr8LhgBoEBSVpXgyR/TLXHlNKzP5AA+nTizPX
+	jZZ05Zw1es/lYv2b/tjVEVSYpzEo2PY01xA+CkWRkQyh+wlj/SrWHU1407G6Gh6ATNMUA/hmOp+Pf
+	fXkX6WRg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xF99L-00000006Eal-1EFr;
-	Fri, 09 Oct 2026 11:52:31 +0000
-Received: from mgamail.intel.com ([192.198.163.14])
+	id 1xFANg-00000006MQU-3K1X;
+	Fri, 09 Oct 2026 13:11:24 +0000
+Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xF99H-00000006EaC-37Va;
-	Fri, 09 Oct 2026 11:52:29 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1791546748; x=1823082748;
-  h=message-id:date:subject:to:cc:references:from:
-   in-reply-to:content-transfer-encoding:mime-version;
-  bh=+DnBTogc33iJWnHPJpF0KtE2Bm+3u1wHyYFNh9uMwPY=;
-  b=jJ1GIoNyQcvGv+tismZxY5fXbOIZyQFwr0fgBuZjwaiP3pNoVO927xLv
-   XX6yZmhw5seKJxKf+rFZY6cPYzxYE6grUusyed4BLwlJ+h/ymDtjzcyUl
-   E2JhQ9UavckA32/Esavqhiz8k8DdD0ct+/VceRxbnBM3hww8XvAhCtWO7
-   uFeRbzLsQjcfX6DFWXzeU2QX++qJeFNaTcqfjLwXJvcO+XPFXPuEsNVUt
-   fnmBF6jXODelXQ9yrPZdqmY5JdPfa5A5z2oQ1aeLY4Fe+99/ieHWN+JtS
-   lMfYCOunPbKxgxcIOVbOInHub2X1Khg//XdMKUpZPMd9qtXd7AiK4BYey
-   A==;
-X-CSE-ConnectionGUID: +nW1RG6jSJK/GCSNbqqZZQ==
-X-CSE-MsgGUID: sIawno05Qb+VSNDNIDHs9A==
-X-IronPort-AV: E=McAfee;i="6800,10657,11929"; a="350909"
-X-IronPort-AV: E=Sophos;i="6.27,148,1787036400"; 
-   d="scan'208";a="350909"
-Received: from orviesa003.jf.intel.com ([10.64.159.143])
-  by fmvoesa108.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 09 Oct 2026 04:52:27 -0700
-X-CSE-ConnectionGUID: qS08SzRVSH2i97rHEDRxIg==
-X-CSE-MsgGUID: u/n9HAVgRYeWOEcA9IEE0w==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.27,148,1787036400"; 
-   d="scan'208";a="296414"
-Received: from orsmsx903.amr.corp.intel.com ([10.22.229.25])
-  by orviesa003.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 09 Oct 2026 04:52:26 -0700
-Received: from ORSMSX902.amr.corp.intel.com (10.22.229.24) by
- ORSMSX903.amr.corp.intel.com (10.22.229.25) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.49; Fri, 9 Oct 2026 04:52:26 -0700
-Received: from ORSEDG903.ED.cps.intel.com (10.7.248.13) by
- ORSMSX902.amr.corp.intel.com (10.22.229.24) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.49 via Frontend Transport; Fri, 9 Oct 2026 04:52:26 -0700
-Received: from BN8PR05CU002.outbound.protection.outlook.com (52.101.57.37) by
- edgegateway.intel.com (134.134.137.113) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.49; Fri, 9 Oct 2026 04:52:25 -0700
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=d4enefriVbklbtODAdEusn8f6zNw0EYn7eRggzw2v39xIRC2TXV9vOKzdLoT89USogUcIOUrN0ORkY610uTF4/CsJL1wutN1jJ2XDTfxkQzYYE9kq2P/HHZ2rvyN1Zsuw5PY1vb4yYrLEyhqcU2ViNF386HdheC20FIMS3H8qAlJUwY5ZPqxEhLNKWtnplcn4xjJgk8taTgUxZR8ODNETEEGLFly/a059HX4a60SD62AjgYB/I2LPUENnSBSAkvckTGzVAOQZFSVIsoVt8XP2075TImwNFE3X4tl7d9UzpTIfh5aRVFIgV1FVvQ3G9iKScV/lz3ivvbVfcOSoq6kSA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=tBsVzpNhtQkj2g2E34XSnsFIgc3dqndUQQTnjxA8m3s=;
- b=hUg0WBubecl+3I524af28hfmjOukU/W+wkrbp9hsvZ/1R+CVU8xOZObjeRk0YzL1wS4ng5Vcc9n+d9MqVlLBFn4aX6yeLg5jhxWPdFQpkjqavrF5i9BTed4mxq38d0wR/jVbHm7oJogYMpFPO6DFbld/WQLw00h7xYYyR/+ALYHm2MiYzUylTiLH4jV2RaeIKE0EiodXlQkFEX0DVgNzX6CII5zBQw1ZbYd1bV227/WbweLzUoMwRG0+K0+2I+eykVrJJBpcOrH1W7tZ0RR3PET7lpmIF8ZU2Rxf8NQ7fhOO12dCjWv8ouSE3IoPnFJ4uXTf/EeL6yZcOHlOBXltqA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
- dkim=pass header.d=intel.com; arc=none
-Authentication-Results: mx.microsoft.com 1; dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=intel.com;
-Received: from PH7PR11MB6006.namprd11.prod.outlook.com (2603:10b6:510:1e1::13)
- by EAYPR11MB838216.namprd11.prod.outlook.com (2603:10b6:303:2fa::24) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.496.17; Fri, 9 Oct
- 2026 11:52:18 +0000
-Received: from PH7PR11MB6006.namprd11.prod.outlook.com
- ([fe80::4e2d:28f0:ede9:73bd]) by PH7PR11MB6006.namprd11.prod.outlook.com
- ([fe80::4e2d:28f0:ede9:73bd%6]) with mapi id 15.21.0496.015; Fri, 9 Oct 2026
- 11:52:18 +0000
-Message-ID: <3698d260-13c5-4050-8f03-61f7b7185514@intel.com>
-Date: Fri, 9 Oct 2026 13:52:09 +0200
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 09/21] ASoC: apple: Add macaudio machine driver
-To: James Calligeros <jcalligeros99@gmail.com>
-CC: <asahi@lists.linux.dev>, <linux-sound@vger.kernel.org>,
-	<patches@opensource.cirrus.com>, <devicetree@vger.kernel.org>,
-	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
-	<linux-mediatek@lists.infradead.org>, Hector Martin <marcan@marcan.st>,
-	"Sasha Finkelstein" <k@chaosmail.tech>, David Rhodes
-	<david.rhodes@cirrus.com>, Richard Fitzgerald <rf@opensource.cirrus.com>,
-	=?UTF-8?Q?Martin_Povi=C5=A1er?= <povik+lin@cutebit.org>, Liam Girdwood
-	<lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, Rob Herring
-	<robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
-	<conor+dt@kernel.org>, Jaroslav Kysela <perex@perex.cz>, Takashi Iwai
-	<tiwai@suse.com>, Matthias Brugger <matthias.bgg@gmail.com>,
-	"AngeloGioacchino Del Regno" <angelogioacchino.delregno@collabora.com>,
-	Shenghao Ding <shenghao-ding@ti.com>, Kevin Lu <kevin-lu@ti.com>, Baojun Xu
-	<baojun.xu@ti.com>, Sen Wang <sen@ti.com>, Sven Peter <sven@kernel.org>,
-	Janne Grunau <j@jannau.net>, Neal Gompa <neal@gompa.dev>
-References: <20261004-macaudio-v2-0-7b47ed6335a8@gmail.com>
- <20261004-macaudio-v2-9-7b47ed6335a8@gmail.com>
-Content-Language: en-US
-From: Cezary Rojewski <cezary.rojewski@intel.com>
-In-Reply-To: <20261004-macaudio-v2-9-7b47ed6335a8@gmail.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 8bit
-X-ClientProxiedBy: WA2PEPF000008B4.POLP291.PROD.OUTLOOK.COM
- (2603:10a6:1d8::68a) To PH7PR11MB6006.namprd11.prod.outlook.com
- (2603:10b6:510:1e1::13)
+	id 1xFANd-00000006MPQ-2vfp
+	for linux-mediatek@lists.infradead.org;
+	Fri, 09 Oct 2026 13:11:23 +0000
+Received: by mail-wm1-x32f.google.com with SMTP id 5b1f17b1804b1-4a140e7405dso66212095e9.3
+        for <linux-mediatek@lists.infradead.org>; Fri, 09 Oct 2026 06:11:19 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20251104; t=1791551478; x=1792156278; darn=lists.infradead.org;
+        h=content-transfer-encoding:content-type:in-reply-to:from
+         :content-language:references:cc:to:subject:user-agent:mime-version
+         :date:message-id:from:to:cc:subject:date:message-id:reply-to
+         :content-type;
+        bh=ivHyAXb3qjEaUwwmjdkwnHy9ML1o2ap0QHUHYjbwF8g=;
+        b=gRh6+lLGcST2GoOJkO4MBJXXL+s4xQI52CWAqYOHdWxfWfokcu8BAZyZ9mndkjO+rN
+         OFl76hH3ceMKQEyu0NMa9+SuKN4vZ89YKD6nWsHRZJIBxmC4L8qm3phKFbnEFmtfXQRX
+         w8QYszFnbMTRYgACAGSEB6k4hpURiwkUkRfX+gbxzXV0py/CcurjNrgu+gtDv7WECbCY
+         niZExWzScGP/3Pt+/WvZ+BuzA6qNRKFqokN7zuX4E/kDMd+yeMMJEKhiyfYAJ4H/0G+y
+         TjfxRNzW8EGSb8T4lxq7GM9PQNflkq/fR5MXAi5hIfVXVGAeWQISucnQUgglIzA30RYi
+         yGCg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20260707; t=1791551478; x=1792156278;
+        h=content-transfer-encoding:content-type:in-reply-to:from
+         :content-language:references:cc:to:subject:user-agent:mime-version
+         :date:message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to:content-type;
+        bh=ivHyAXb3qjEaUwwmjdkwnHy9ML1o2ap0QHUHYjbwF8g=;
+        b=2ETxVdYJHG3hkep+o0uZ/SQHUtosQhVy+N9yJVBC6fVfZurY7QiIlIHoCD59oRfFrk
+         cdrmxzPZUZe4kWemrdq2l8kdZlRznBLTUxUXCfZ29qq3gy2ThL0Pc2bHnbHZjGLXqhJl
+         lLRBUeXg9iEjXQo2l6rGQKrXpFMxSS5qWxKIBFjkoeEk/e738B0iTCjCYYbftHvohWsd
+         Fkg9/Qbi9AM9oyatpFm2JDun9l93fRnrVnz8hnDt8da0Y3q/oQxI9ctPx5ve31aImuUa
+         SwpqigaN9OaicMU83kcWwpVkt88bKW3Loj/Mmzdeb7vzNUmMVa0oQS6APurRqqlC8p6K
+         4jhg==
+X-Forwarded-Encrypted: i=1; AKwUvBzD/d/rf2zf3tOX+PX7Rmat9XKfTitR+u8Q53mCKX/F6T2S7WLznoMlK7Xk4970vm37rsCu3npAGPWOyuHhHA==@lists.infradead.org
+X-Gm-Message-State: AFuF++m6eobZR7pVOZJd+cpftMmjZ8eRV8MkBzHYgB5j11w98woqS451
+	PWjjFnhH+ej9EAGu7Uu9K3ldD5EmhoNZ9OfZFoMIfHky196JXTKgy1My
+X-Gm-Gg: AYBFou3Y1x3bETglyG/Fl1gXcdqkXottQUtr0N37hjYVOvPl0GDRkaICB6+XrTic8Ta
+	Y4ffz/Q/ohCIcRlI1Rm+dFLoX+0h91U+oPoS0LTxfP5f6PLhGWpVL5Mhot6uZLn+UoLzWWahIRL
+	iV1nyi3LVOdV2NKcq+aY4ZGfGgkHVXQiItUd/e9HNk7p4fbjib6tqG8MdUPfRUHXRlpCb83iZO+
+	ufE/GgyWlmUG05Hs/PKcCxllKb7yhVbRqWic3S8wNmFyTUUUxv7DQOzR5LwoBG1OoPshSfmw6sR
+	d0Oi0IN8leBrX4g0cUC/E5UZsJNmcvdtVmwPi0Bnh14Fz0dOQ73mZKB7EiZtsBEP/ShFWKd8UrO
+	TAeGEL9c8BeNEiGn4oU3iuVKD9eBZthKEZYMXD7uSYGG3orFir3Gzv4dvJio9AzINvKGjzDRPLj
+	K30yOuJFJj4ina/ZXGIPMBXNLUcDryNnjKSnikq2zqdIstRm1kYrNg2ssQcNlgqHs2rqMEHbp+7
+	BjGhEVlW9uI3Guq
+X-Received: by 2002:a05:600c:6989:b0:4a0:236c:8601 with SMTP id 5b1f17b1804b1-4a18e3ec3c7mr35198895e9.0.1791551477871;
+        Fri, 09 Oct 2026 06:11:17 -0700 (PDT)
+Received: from [192.168.1.50] ([81.196.40.70])
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-48db9463a9dsm4005314f8f.6.2026.10.09.06.11.15
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Fri, 09 Oct 2026 06:11:16 -0700 (PDT)
+Message-ID: <7ededd2f-98d0-41ac-91b4-2977963c4637@gmail.com>
+Date: Fri, 9 Oct 2026 16:11:14 +0300
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: PH7PR11MB6006:EE_|EAYPR11MB838216:EE_
-X-MS-Office365-Filtering-Correlation-Id: e99117aa-0aac-4e2b-4e0f-08df25fbc4c5
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|376014|23010399003|366016|7416014|1800799024|56012099006|4143699003|11063799006|10067099003|22082099003|18002099003|6133799003;
-X-Microsoft-Antispam-Message-Info: jys+9JVxc2YYP79Y0LAVn4h6oPVGEgXCmXRiKtSnuKIDLoTr2UedXMf9IdLSEHMTejouhx+saJ8KaAqv42h6jksQlNcIG7Argpmx6mZPq/ql1hF01gQrowq9xvCkHVBg1uIYIY0sPERYTk8Oq6JUgycdzrrJPOW/AShnzq5+wsXIVMvICSQnHqaUBR2/1VSxq3SNAQuYFHFi/QasTMrD5ny8qeVgkQLcnRSwIxYZ1orTUZZk9a3qLqFszU72wPwtZrBw/2q+nc9u90G012y1VcnSNJXfppREAF0R3khrePaIMRnV2L2cehTrqFAE9+3YKr6RVVpNdxYp9SFbDD8OnjvJfG8bNZR15o1umU6f4a/y7eppWpIHc+hJ6Fi91OGlXpmHVuTSt6jQ4pKC0SbGWw4oo7VPSSxxiPd6p4kQfXkS27DPs2WPJqME4u2Hr3/GHYOSpDY6epgUhmxaq+HKiVwumOEwaxZmup1dh7U3BhmukHm71hWsD/ioCX/Tcc72vHV2/5jsQk1Y0l/kFay7AgxqlLedY4JIvcrRI1/TVsNFCWcR8sltpW5AuC7QaeJjUcJ1EapiYLiyojFA7wteZkWgjA6wIkkFvLB5yUs0kSYIXjja6+6GeYfA7KzwfZLWsUzPbSfVHgZ/1xvaeQu8ZDG98jS9GHn4fWCtcLJhWaw=
-X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:PH7PR11MB6006.namprd11.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(376014)(23010399003)(366016)(7416014)(1800799024)(56012099006)(4143699003)(11063799006)(10067099003)(22082099003)(18002099003)(6133799003);DIR:OUT;SFP:1101;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?K2NYbVhEcXhrYWlwTmx5RG9mNlIzRW5PL3Boa2RJaXJXSnJhYVJlby9PS2Va?=
- =?utf-8?B?clJUZlI3M3RjMmlDTEF2YlhGNW8vNlJQWllQRmhRUjZMeGNLZkdOenNWMW1j?=
- =?utf-8?B?cEFDUE9WcVRBZUN4Rkt1VThKRmdTWm5wanJmeUNKM0VnVVBTeEVEbTJWT2t0?=
- =?utf-8?B?TUkxVURPSWY4ZzZDbXBtZEhtZ0NDVkgzbnN3Vlg0V3NrcEJ4QWhxSnpjZzVC?=
- =?utf-8?B?WW5TdVRzOFR6dW1TTTNrdUJNREh4VU1TOXVBU01makRUL1VUTm1VTkpsQ2hE?=
- =?utf-8?B?bGcwK3BKOEpxdzkxMmdOb05zUWMwUUNINHQ4VHo5WDVlWEdab0NWNm95TzFn?=
- =?utf-8?B?QXU2VlpIS1loQVQ5REtoQU93ZWpoQ0lrZkpEbWNxR2Z3NWhrNFpsQ3lkWjZ6?=
- =?utf-8?B?czJGTDlPbkNNTHFBSEc4WGFXTTZXNEJXMEZiYTdKSFQwZFR1aGkxbUErQ2JG?=
- =?utf-8?B?U1crRUE1cmw5aEFlUDB6N0JLdmhZY254MlJlRTRTc1hkbXpENjREbUtxc0M2?=
- =?utf-8?B?N0tyam55TVFnWnplb1R2ejk4ODg1ZlNxRWMvKytkcGJBckpWK2tqcXBuc3Zt?=
- =?utf-8?B?eTJyZ09vU2tJWi91cVo2bU9oeUtJUXRxR0RqT1dGczBHRzAzSVdBM05iOEZJ?=
- =?utf-8?B?T2JXZ0I1WEpiU1pzQ1V2RC9CS3Z6WU03SFB6YzhEQmRDVXpMM3ZESVRoSjlW?=
- =?utf-8?B?blBxVTA1Qml5Kzc5QjhUNHlha2xFREhzU3hRdXZuMmZUZHBMUmpYeU5Vckts?=
- =?utf-8?B?UkNiaUt0WU1QMXR5K1JjL1h6S0xYcE1Pd2JtTXJlK1UxUWtYSElIUlo3MW5J?=
- =?utf-8?B?T1p0YVlPaUlNK2wvdzZmVkEwbUdKRmlTeWlxdDlKR2RPY0NYL3Z6QUNmeUZC?=
- =?utf-8?B?aEdLQXowODlrZVhoZ253ODBBZnRFbXJZY2xEWEV3UXR0OFBYVHExQzVlL1Av?=
- =?utf-8?B?NmN4azVQQnMwcHdSamFIV2tXVWNrbDFNRmhlYytUaURWSW15ZElhWEx1Uzg2?=
- =?utf-8?B?L2hacWtuRWxsMXMwaTRXS3RNRmE2NnlYdFY1Y210Ti9TUGR1MUZVcWNodjdr?=
- =?utf-8?B?aWZMTXkrM0c1T2pqUmdwamN6VkY4aWd2UzBDdnJrSzJtd2VxNU00SDkrTVlW?=
- =?utf-8?B?VldKSjgxbjF2TjlBNXEzaFMrekVRWkRlbnZOQUh2RG1tMnI2MFVsQUdBL2hV?=
- =?utf-8?B?N1dyay9TQVNPOVpMenQvZ0k0TlowaTlzUTFBVXdMUmdlMDF3VnZHc0JaenNj?=
- =?utf-8?B?MjFBQ2dGR0l1alN5OXMwaXUyME4vZWZwTUdNY1RpMERuc3JTeXNMRzRCZ0xs?=
- =?utf-8?B?ak1RclZFWE9ZUG0vYXZySm1lU0ZqaStGZS9DaFRyWFMra2hNTVEyK0RGNTQ3?=
- =?utf-8?B?M1hUanE4aXI2YkZvUE1RZXBIVFdDQUs2RDdnRVlQUlBWNEZhT01nUGtNcGll?=
- =?utf-8?B?aGtyRXRWd29ORGxvY2RmOE1jVG5sRGZ6VWhEbkFNNW9sRTY1Zi9NRHdHYmNl?=
- =?utf-8?B?aXZHczRFMTRNcG1SaFNXcWUzRnF6d29LL3FhTnVkcHdnSVllWXhmNmN4RDdw?=
- =?utf-8?B?V24zTnl6OFFqMEQ1OGNFYjlSSmY2a2xDRHhxa21scUp5TnJScy94dGF3c1VF?=
- =?utf-8?B?aGN0Qkt6bnRlZklMdkc0TmdjSFNvbEV5cjFBOURBa1ZMTEVrTTZmaytOMjNF?=
- =?utf-8?B?akpZdnZ1WFpjdWVtQjBXM0dpdXFXY0tkY3NVWTVVKy9FVFJoZDc0eStKUzdt?=
- =?utf-8?B?aTdQSWtVdndCWE5aQm5WanBqWFJWNFdCRGQxZXhmTElXY2FjMVMrcDRTenNB?=
- =?utf-8?B?NzV4NFk4NXpKUDRvc0xiU21XTS9Cc0FIYlFrS0lZQnFLMnJiQjFOMjVMc0d4?=
- =?utf-8?B?cXRaOVVUbitrdU1mT0FRZThoYzN3QVY1ek5RdERlQzkrWXNHVDV0cFNiRkt2?=
- =?utf-8?B?eTB0RHBsaU0vaE1IeDJHNytORlk2YnU3VUN5OE5WdE43L0Q1TEk5dG9ZandD?=
- =?utf-8?B?VWNVQkc1MFRlZXErU3FUMnc0dTJRcVJSNkR6RWpGQ05KL1FQTHh0a0wxditk?=
- =?utf-8?B?VytwbTI5VmY1S0JKdU1pc2hSdFEzeVY2UHpLWXA2WXFSeEVCMTFaajlqWEJa?=
- =?utf-8?B?L1lNcWhIaGE3SUJsdXFYczhoUk5SanJyWVFOMXBpVEp1WWJmV1Fab2tWdlJL?=
- =?utf-8?B?Z2E4YVhjYlA5elk3SkpzSks1TUdsZWlLa1ppcWQ4TDZqTXdvT2JlaHhiVGJY?=
- =?utf-8?B?M2c1clJ1R3Z2WGM2b3BIVVdzSnFBNmtrNUN0YlRoSlBHR3ZPdnhsK0Y4dXkz?=
- =?utf-8?B?UkdpMjEyeVJzWmRidE94SjZiZ2hBVUJpamErZW1hYXMrU2pvaTdLcHlYR2Y2?=
- =?utf-8?Q?BI2oQb18I4JRH6VE=3D?=
-X-Exchange-RoutingPolicyChecked: ECx6KQ5HBWLzMr6HZGac1xw5h90VStnRxmpYGxJU+5+IYnpVdqjTUVDR5U2CS+1LYfqp/JXkQ1nQcxtINkVC1a6LeAuzs6Sa28sHSX94Pzq3c6uxxLVI37rTt1npWQ+JiDm1+eXGUQ1C2tSjSXf6kzoRKihCzuK4YyD4SbulOVFgyk4+3R8SzRqCqLr83iw7jykTwxsNKNBhIFKVXx73bW6RPaZeBnbNwQjeWIqS/Bi/HTh+stzX/D9proGfJBqdRUT+QnoX3OLfKP1xxT8knoGbOrW/Tl0odHDlaDAfl9plxQ4tE2bUxeSj4WuOsfWp9Y8U8Rs1mSvUb2uniicKNg==
-X-MS-Exchange-CrossTenant-Network-Message-Id: e99117aa-0aac-4e2b-4e0f-08df25fbc4c5
-X-MS-Exchange-CrossTenant-AuthSource: PH7PR11MB6006.namprd11.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 09 Oct 2026 11:52:18.0519
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 46c98d88-e344-4ed4-8496-4ed7712e255d
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: D4TaObi22jHD99kuk7eNYOfGrzR4bKdSpDGvVU0nowYAPsbqGfJeyRcskqYeLFIAnURAtCOinV3M4fGWFkvte0T8nkKtTyxar88Y+J1D1wo=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: EAYPR11MB838216
-X-OriginatorOrg: intel.com
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH wireless-next] wifi: mt76: mt7601u: add support for AP and
+ P2P concurrent modes
+To: John Robin <johnrobin044@gmail.com>, linux-wireless@vger.kernel.org
+Cc: Jakub Kicinski <kuba@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org
+References: <20260815124547.329654-1-johnrobin044@gmail.com>
+Content-Language: en-US
+From: Bitterblue Smith <rtl8821cerfe2@gmail.com>
+In-Reply-To: <20260815124547.329654-1-johnrobin044@gmail.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261009_045227_829971_6FD1D364 
-X-CRM114-Status: GOOD (  20.48  )
+X-CRM114-CacheID: sfid-20261009_061121_890259_77FA8364 
+X-CRM114-Status: GOOD (  31.39  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -195,140 +107,407 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 10/4/2026 8:03 AM, James Calligeros wrote:
-> From: Martin Povišer <povik+lin@cutebit.org>
+On 15/08/2026 15:41, John Robin wrote:
+> Enable Access Point (AP) and Wi-Fi Direct (P2P_GO/P2P_CLIENT) interface
+> modes on MT7601U device, allowing concurrent Station and AP.
 > 
-> Apple Silicon Macs have a complex audio subsystem consisting
-> of an I2S peripheral (MCA) and multiple codecs of various
-> models and capabilities. Some machines have a basic mono
-> speaker with hardware downmix, while others have a very
-> intricate stereo system consisting of multiple codecs and
-> drivers per L/R channel. Some machines report voice coil
-> voltage and current information back to the SoC, and others
-> do not. All machines have a headset jack.
+> Register AP, P2P_GO, P2P_CLIENT, and ADHOC modes and
+> defined an interface combination to support 2 concurrent modes.
+> Set NEEDS_UNIQUE_STA_ADDR to allow mac80211 to generate MACs for
+> virtual interfaces.
 > 
-> Add an ASoC machine driver for this platform.
+> Implement start_ap() and stop_ap() to clear WCID tables and
+> manage the hardware Pre-TBTT timer. Update mt7601u_bss_info_changed()
+> to handle BSS_CHANGED_BEACON and BSS_CHANGED_BEACON_ENABLED.
+> 
+> Add beacon frame handling through mt7601u_mac_set_beacon() and
+> set appropriate SYNC Modes for AP and ADHOC interfaces.
+> 
+> Add bounds checking to rate->idx to prevent out of bounds access and
+> safely fall back to CCK rates.
+> 
+> Route management and injected frames to the Voice (VO) queue
+> to bypass firmware queue suspension also avoid requesting ACKs for
+> multicast frames and skip data rate fallbacks for management frames
 
-> +struct ma_codec_idle {
-> +	int idle_mode;
-> +	u32 idle_mask;
+It sounds like this should be split into ~4 separate patches, each one
+doing one thing.
+
+> 
+> All implemented modes were verified to be working. Tested AP mode and
+> simultaneous STA+AP with iperf3 to verify stability.
+> 
+> Signed-off-by: John Robin <johnrobin044@gmail.com>
+> ---
+>  drivers/net/wireless/mediatek/mt7601u/init.c  | 31 ++++++-
+>  drivers/net/wireless/mediatek/mt7601u/mac.c   | 91 +++++++++++++++----
+>  drivers/net/wireless/mediatek/mt7601u/mac.h   |  3 +-
+>  drivers/net/wireless/mediatek/mt7601u/main.c  | 56 +++++++++++-
+>  .../net/wireless/mediatek/mt7601u/mt7601u.h   |  3 +-
+>  drivers/net/wireless/mediatek/mt7601u/tx.c    | 19 +++-
+>  6 files changed, 175 insertions(+), 28 deletions(-)
+> 
+> diff --git a/drivers/net/wireless/mediatek/mt7601u/init.c b/drivers/net/wireless/mediatek/mt7601u/init.c
+> index 5d9e952b29664..e871f7b63cb35 100644
+> --- a/drivers/net/wireless/mediatek/mt7601u/init.c
+> +++ b/drivers/net/wireless/mediatek/mt7601u/init.c
+> @@ -12,6 +12,25 @@
+>  
+>  #include "initvals.h"
+>  
+> +static const struct ieee80211_iface_limit if_limits[] = {
+> +	{ .max = 1, .types = BIT(NL80211_IFTYPE_ADHOC) },
+> +	{ .max = 8,
+> +	  .types = BIT(NL80211_IFTYPE_STATION) |
+> +#ifdef CONFIG_MAC80211_MESH
+> +		   BIT(NL80211_IFTYPE_MESH_POINT) |
+> +#endif
+> +		   BIT(NL80211_IFTYPE_P2P_CLIENT) | BIT(NL80211_IFTYPE_P2P_GO) |
+> +		   BIT(NL80211_IFTYPE_AP) },
 > +};
 > +
-> +struct macaudio_snd_data {
-> +	struct snd_soc_card card;
-> +	struct snd_soc_jack jack;
-
-Hi,
-
-Typically storing both card and jack heralds that the design is off.
-Especially when stored as fields. Looks to me as if you've made a one
-structure to catch them all.
-
-Let's start with the card. Below are the users - I'll skip dev_xxx()s as
-that's an easy fix:
-
-macaudio_dpcm_hw_params()
-macaudio_be_hw_free()
-	both can access the card from the substream/dai without
-	relying on the ma-context
-
-macaudio_parse_of()
-macaudio_parse_of_be_dai_link()
-	called in context which creates the very card
-
-macaudio_vlimit_enable_timeout()
-macaudio_vlimit_disable_timeout()
-macaudio_vlimit_update()
-	called in context of delayed part of the trigger() callback.
-	I'd need more information on the trigger() implementation of
-	yours to present a solution. See the comments below.
-
-Skipped macaudio_vlimit_unlock() as it's called in context of
-macaudio_vlimit_update() and macaudio_late_probe(). The latter has
-direct access to the card while the former is mentioned above.
-
-
-> +	int jack_plugin_state;
+> +static const struct ieee80211_iface_combination if_comb[] = { {
+> +	.limits = if_limits,
+> +	.n_limits = ARRAY_SIZE(if_limits),
+> +	.max_interfaces = 2,
+> +	.num_different_channels = 1,
+> +	.beacon_int_infra_match = true,
+> +} };
 > +
-> +	const struct macaudio_platform_cfg *cfg;
-> +	bool has_speakers;
-> +	bool has_sense;
-> +	bool has_safety;
-> +	unsigned int max_channels;
+>  static void
+>  mt7601u_set_wlan_state(struct mt7601u_dev *dev, u32 val, bool enable)
+>  {
+> @@ -599,6 +618,7 @@ int mt7601u_register_device(struct mt7601u_dev *dev)
+>  	ieee80211_hw_set(hw, AMPDU_AGGREGATION);
+>  	ieee80211_hw_set(hw, SUPPORTS_RC_TABLE);
+>  	ieee80211_hw_set(hw, MFP_CAPABLE);
+> +	ieee80211_hw_set(hw, NEEDS_UNIQUE_STA_ADDR);
+>  	hw->max_rates = 1;
+>  	hw->max_report_rates = 7;
+>  	hw->max_rate_tries = 1;
+> @@ -607,9 +627,16 @@ int mt7601u_register_device(struct mt7601u_dev *dev)
+>  	hw->vif_data_size = sizeof(struct mt76_vif);
+>  
+>  	SET_IEEE80211_PERM_ADDR(hw, dev->macaddr);
+> -
+> +	wiphy->interface_modes =
+> +		BIT(NL80211_IFTYPE_STATION) | BIT(NL80211_IFTYPE_AP) |
+> +#ifdef CONFIG_MAC80211_MESH
+> +		BIT(NL80211_IFTYPE_MESH_POINT) |
+> +#endif
+> +		BIT(NL80211_IFTYPE_P2P_CLIENT) | BIT(NL80211_IFTYPE_P2P_GO) |
+> +		BIT(NL80211_IFTYPE_ADHOC);
+> +	wiphy->iface_combinations = if_comb;
+> +	wiphy->n_iface_combinations = ARRAY_SIZE(if_comb);
+>  	wiphy->features |= NL80211_FEATURE_ACTIVE_MONITOR;
+> -	wiphy->interface_modes = BIT(NL80211_IFTYPE_STATION);
+>  	wiphy->flags |= WIPHY_FLAG_SUPPORTS_TDLS;
+>  
+>  	wiphy_ext_feature_set(wiphy, NL80211_EXT_FEATURE_CQM_RSSI_LIST);
+> diff --git a/drivers/net/wireless/mediatek/mt7601u/mac.c b/drivers/net/wireless/mediatek/mt7601u/mac.c
+> index ca9cf628eb10d..5e2dec131331c 100644
+> --- a/drivers/net/wireless/mediatek/mt7601u/mac.c
+> +++ b/drivers/net/wireless/mediatek/mt7601u/mac.c
+> @@ -118,19 +118,27 @@ u16 mt76_mac_tx_rate_val(struct mt7601u_dev *dev,
+>  		if (rate->flags & IEEE80211_TX_RC_40_MHZ_WIDTH)
+>  			bw = 1;
+>  	} else {
+> -		const struct ieee80211_rate *r;
+> -		int band = dev->chandef.chan->band;
+> -		u16 val;
+> -
+> -		r = &dev->hw->wiphy->bands[band]->bitrates[rate->idx];
+> -		if (rate->flags & IEEE80211_TX_RC_USE_SHORT_PREAMBLE)
+> -			val = r->hw_value_short;
+> -		else
+> -			val = r->hw_value;
+>  
+> -		phy = val >> 8;
+> -		rate_idx = val & 0xff;
+> -		bw = 0;
+> +		int band = dev->chandef.chan->band;
+> +		struct ieee80211_supported_band *sband =
+> +			dev->hw->wiphy->bands[band];
 > +
-> +	struct macaudio_link_props {
-> +		/* frontend props */
-> +		unsigned int bclk_ratio;
-> +		bool is_sense;
+> +		if (rate->idx < 0 || rate->idx >= sband->n_bitrates) {
+> +			phy = MT_PHY_TYPE_CCK;
+> +			rate_idx = 0;
+> +		} else {
+> +			const struct ieee80211_rate *r =
+> +				&sband->bitrates[rate->idx];
+> +			u16 val;
 > +
-> +		/* backend props */
-> +		bool is_speakers;
-> +		bool is_headphones;
-> +		unsigned int tdm_mask;
-> +		struct ma_codec_idle *codecs;
-> +	} *link_props;
+> +			if (rate->flags & IEEE80211_TX_RC_USE_SHORT_PREAMBLE)
+> +				val = r->hw_value_short;
+> +			else
+> +				val = r->hw_value;
 > +
-> +	int speaker_sample_rate;
-> +	struct snd_kcontrol *speaker_sample_rate_kctl;
-> +
-> +	struct mutex be_link_mutex;
-> +
-> +	struct mutex volume_lock_mutex;
-> +	bool speaker_volume_unlocked;
-> +	bool speaker_volume_was_locked;
-> +	struct snd_kcontrol *speaker_lock_kctl;
-> +	u64 bes_active;
-> +	bool speaker_lock_timeout_enabled;
-> +	ktime_t speaker_lock_timeout;
-> +	ktime_t speaker_lock_remain;
-> +	struct delayed_work lock_timeout_work;
-> +	struct work_struct lock_update_work;
-> +
-> +};
-
-> +static int macaudio_be_trigger(struct snd_pcm_substream *substream, int cmd)
-> +{
-> +	struct snd_soc_pcm_runtime *rtd = snd_soc_substream_to_rtd(substream);
-> +	struct macaudio_snd_data *ma = snd_soc_card_get_drvdata(rtd->card);
-> +	struct macaudio_link_props *props = &ma->link_props[rtd->dai_link->id];
-> +
-> +	guard(mutex)(&ma->be_link_mutex);
-
-As already pointed out by Ajay, there is no 'nonatomic' flag set and
-without such, you will hit a problem, eventually.
-
-> +	if (props->is_speakers && substream->stream == SNDRV_PCM_STREAM_PLAYBACK) {
-> +		switch (cmd) {
-> +		case SNDRV_PCM_TRIGGER_START:
-> +		case SNDRV_PCM_TRIGGER_RESUME:
-> +		case SNDRV_PCM_TRIGGER_PAUSE_RELEASE:
-> +			ma->bes_active |= BIT(rtd->dai_link->id);
-> +			break;
-> +		case SNDRV_PCM_TRIGGER_SUSPEND:
-> +		case SNDRV_PCM_TRIGGER_PAUSE_PUSH:
-> +		case SNDRV_PCM_TRIGGER_STOP:
-> +			ma->bes_active &= ~BIT(rtd->dai_link->id);
-> +			break;
-> +		default:
-> +			return -EINVAL;
+> +			phy = val >> 8;
+> +			rate_idx = val & 0xff;
 > +		}
+>  	}
+>  
+>  	rateval = FIELD_PREP(MT_RXWI_RATE_MCS, rate_idx);
+> @@ -264,13 +272,13 @@ void mt7601u_mac_set_short_preamble(struct mt7601u_dev *dev, bool short_preamb)
+>  		mt76_clear(dev, MT_AUTO_RSP_CFG, MT_AUTO_RSP_PREAMB_SHORT);
+>  }
+>  
+> -void mt7601u_mac_config_tsf(struct mt7601u_dev *dev, bool enable, int interval)
+> +void mt7601u_mac_config_tsf(struct mt7601u_dev *dev, struct ieee80211_vif *vif,
+> +			    bool enable, int interval)
+>  {
+>  	u32 val = mt7601u_rr(dev, MT_BEACON_TIME_CFG);
+>  
+> -	val &= ~(MT_BEACON_TIME_CFG_TIMER_EN |
+> -		 MT_BEACON_TIME_CFG_SYNC_MODE |
+> -		 MT_BEACON_TIME_CFG_TBTT_EN);
+> +	val &= ~(MT_BEACON_TIME_CFG_TIMER_EN | MT_BEACON_TIME_CFG_SYNC_MODE |
+> +		 MT_BEACON_TIME_CFG_TBTT_EN | MT_BEACON_TIME_CFG_BEACON_TX);
+>  
+>  	if (!enable) {
+>  		mt7601u_wr(dev, MT_BEACON_TIME_CFG, val);
+> @@ -279,9 +287,22 @@ void mt7601u_mac_config_tsf(struct mt7601u_dev *dev, bool enable, int interval)
+>  
+>  	val &= ~MT_BEACON_TIME_CFG_INTVAL;
+>  	val |= FIELD_PREP(MT_BEACON_TIME_CFG_INTVAL, interval << 4) |
+> -		MT_BEACON_TIME_CFG_TIMER_EN |
+> -		MT_BEACON_TIME_CFG_SYNC_MODE |
+> -		MT_BEACON_TIME_CFG_TBTT_EN;
+> +	       MT_BEACON_TIME_CFG_TIMER_EN | MT_BEACON_TIME_CFG_TBTT_EN;
 > +
-> +		schedule_work(&ma->lock_update_work);
-
-trigger() should enable DMA work and/or signal other components
-participating in the streaming to start their tasks too.
-
-Please correct me if I'm wrong but it seems the scheduled work does
-speaker-volume operations only. Moreover, it seems that
-->lock_update_work may schedule a follow up work in form of
-->lock_timeout_work. Are you sure trigger() is the right place to do
-volume-control in delayed manner?
-
-Once we clear the mist around the main structure and the trigger()
-callback, I can happily review the "easier" parts of the patch.
-
+> +	/* AP Mode */
+> +	if (vif && (vif->type == NL80211_IFTYPE_AP ||
+> +		    vif->type == NL80211_IFTYPE_P2P_GO))
+> +		val |= FIELD_PREP(MT_BEACON_TIME_CFG_SYNC_MODE, 3) |
+> +		       MT_BEACON_TIME_CFG_BEACON_TX;
+> +	/* IBSS / Ad-Hoc Mode */
+> +	else if (vif && vif->type == NL80211_IFTYPE_ADHOC)
+> +		val |= FIELD_PREP(MT_BEACON_TIME_CFG_SYNC_MODE, 2) |
+> +		       MT_BEACON_TIME_CFG_BEACON_TX;
+> +	/* Station mode */
+> +	else
+> +		val |= FIELD_PREP(MT_BEACON_TIME_CFG_SYNC_MODE, 1);
+> +
+> +	mt7601u_wr(dev, MT_BEACON_TIME_CFG, val);
+>  }
+>  
+>  static void mt7601u_check_mac_err(struct mt7601u_dev *dev)
+> @@ -393,6 +414,38 @@ void mt7601u_mac_set_ampdu_factor(struct mt7601u_dev *dev)
+>  		   FIELD_PREP(MT_MAX_LEN_CFG_AMPDU, min_factor));
+>  }
+>  
+> +int mt7601u_mac_set_beacon(struct mt7601u_dev *dev, struct ieee80211_vif *vif,
+> +			   struct ieee80211_bss_conf *info)
+> +{
+> +	struct sk_buff *skb = ieee80211_beacon_get(dev->hw, vif, 0);
+> +	struct mt76_txwi *txwi;
+> +	int err, words;
+> +
+> +	if (!skb)
+> +		return 0;
+> +
+> +	/* USB devices already reserve enough skb headroom */
+> +	err = skb_cow_head(skb, sizeof(struct mt76_txwi));
+> +	if (err) {
+> +		dev_kfree_skb(skb);
+> +		return err;
 > +	}
 > +
-> +	return 0;
+> +	txwi = (struct mt76_txwi *)skb_push(skb, sizeof(struct mt76_txwi));
+> +	memset(txwi, 0, sizeof(*txwi));
+> +
+> +	txwi->wcid = 0;
+> +	txwi->len_ctl = cpu_to_le16(skb->len - sizeof(struct mt76_txwi));
+> +	txwi->rate_ctl = cpu_to_le16(0);
+> +
+> +	words = DIV_ROUND_UP(skb->len, 4);
+> +	err = mt7601u_burst_write_regs(dev, MT_BEACON_BASE,
+> +				       (const u32 *)skb->data, words);
+> +	dev_kfree_skb(skb);
+> +
+> +	return err;
 > +}
+> +
+>  static void
+>  mt76_mac_process_rate(struct ieee80211_rx_status *status, u16 rate)
+>  {
+> diff --git a/drivers/net/wireless/mediatek/mt7601u/mac.h b/drivers/net/wireless/mediatek/mt7601u/mac.h
+> index 54bd4fac54d83..528756ccf4725 100644
+> --- a/drivers/net/wireless/mediatek/mt7601u/mac.h
+> +++ b/drivers/net/wireless/mediatek/mt7601u/mac.h
+> @@ -167,5 +167,6 @@ struct mt76_tx_status
+>  mt7601u_mac_fetch_tx_status(struct mt7601u_dev *dev);
+>  void mt76_send_tx_status(struct mt7601u_dev *dev, struct mt76_tx_status *stat);
+>  void mt7601u_set_macaddr(struct mt7601u_dev *dev, const u8 *addr);
+> -
+> +int mt7601u_mac_set_beacon(struct mt7601u_dev *dev, struct ieee80211_vif *vif,
+> +			   struct ieee80211_bss_conf *info);
+>  #endif
+> diff --git a/drivers/net/wireless/mediatek/mt7601u/main.c b/drivers/net/wireless/mediatek/mt7601u/main.c
+> index 05ba43e1985c8..4389e332dfe19 100644
+> --- a/drivers/net/wireless/mediatek/mt7601u/main.c
+> +++ b/drivers/net/wireless/mediatek/mt7601u/main.c
+> @@ -149,7 +149,7 @@ mt7601u_bss_info_changed(struct ieee80211_hw *hw, struct ieee80211_vif *vif,
+>  		 *	 rt2x00 doesn't seem to be bothered though.
+>  		 */
+>  		if (is_zero_ether_addr(info->bssid))
+> -			mt7601u_mac_config_tsf(dev, false, 0);
+> +			mt7601u_mac_config_tsf(dev, vif, false, 0);
+>  	}
+>  
+>  	if (changed & BSS_CHANGED_BASIC_RATES) {
+> @@ -161,7 +161,20 @@ mt7601u_bss_info_changed(struct ieee80211_hw *hw, struct ieee80211_vif *vif,
+>  	}
+>  
+>  	if (changed & BSS_CHANGED_BEACON_INT)
+> -		mt7601u_mac_config_tsf(dev, true, info->beacon_int);
+> +		mt7601u_mac_config_tsf(dev, vif, true, info->beacon_int);
+> +
+> +	if ((changed & BSS_CHANGED_BEACON) && vif->type == NL80211_IFTYPE_AP)
+> +		mt7601u_mac_set_beacon(dev, vif, info);
+> +
+> +	if ((changed & BSS_CHANGED_BEACON_ENABLED) &&
+> +	    vif->type == NL80211_IFTYPE_AP) {
+> +		if (info->enable_beacon)
+> +			mt76_set(dev, MT_BEACON_TIME_CFG,
+> +				 MT_BEACON_TIME_CFG_BEACON_TX);
+> +		else
+> +			mt76_clear(dev, MT_BEACON_TIME_CFG,
+> +				   MT_BEACON_TIME_CFG_BEACON_TX);
+> +	}
+>  
+>  	if (changed & BSS_CHANGED_HT || changed & BSS_CHANGED_ERP_CTS_PROT)
+>  		mt7601u_mac_set_protection(dev, info->use_cts_prot,
+> @@ -183,6 +196,43 @@ mt7601u_bss_info_changed(struct ieee80211_hw *hw, struct ieee80211_vif *vif,
+>  	mutex_unlock(&dev->mutex);
+>  }
+>  
+> +static int mt7601u_start_ap(struct ieee80211_hw *hw, struct ieee80211_vif *vif,
+> +			    struct ieee80211_bss_conf *link_conf)
+> +{
+> +	struct mt7601u_dev *dev = hw->priv;
+> +	int err = 0;
+> +
+> +	mutex_lock(&dev->mutex);
+> +
+> +	/* Clear the wcid Table */
+> +	for (int i = 1; i < 128; i++)
+> +		mt7601u_mac_wcid_setup(dev, i, 0, NULL);
+> +
+> +	/* Set pre TBTT to 6ms */
+> +	mt76_rmw_field(dev, MT_INT_TIMER_CFG, MT_INT_TIMER_CFG_PRE_TBTT, 6);
+> +	mt76_set(dev, MT_INT_TIMER_EN, MT_INT_TIMER_EN_PRE_TBTT_EN);
+> +
+> +	mt7601u_mac_config_tsf(dev, vif, true, link_conf->beacon_int);
+> +
+> +	mutex_unlock(&dev->mutex);
+> +
+> +	return err;
+> +}
+> +
+> +static void mt7601u_stop_ap(struct ieee80211_hw *hw, struct ieee80211_vif *vif,
+> +			    struct ieee80211_bss_conf *link_conf)
+> +{
+> +	struct mt7601u_dev *dev = hw->priv;
+> +
+> +	mutex_lock(&dev->mutex);
+> +
+> +	mt7601u_mac_config_tsf(dev, vif, false, 0);
+> +
+> +	mt76_clear(dev, MT_INT_TIMER_EN, MT_INT_TIMER_EN_PRE_TBTT_EN);
+> +
+> +	mutex_unlock(&dev->mutex);
+> +}
+> +
+>  static int
+>  mt76_wcid_alloc(struct mt7601u_dev *dev)
+>  {
+> @@ -419,6 +469,8 @@ const struct ieee80211_ops mt7601u_ops = {
+>  	.config = mt7601u_config,
+>  	.configure_filter = mt76_configure_filter,
+>  	.bss_info_changed = mt7601u_bss_info_changed,
+> +	.start_ap = mt7601u_start_ap,
+> +	.stop_ap = mt7601u_stop_ap,
+>  	.sta_add = mt7601u_sta_add,
+>  	.sta_remove = mt7601u_sta_remove,
+>  	.sta_notify = mt7601u_sta_notify,
+> diff --git a/drivers/net/wireless/mediatek/mt7601u/mt7601u.h b/drivers/net/wireless/mediatek/mt7601u/mt7601u.h
+> index 118d437078537..7366e1c476339 100644
+> --- a/drivers/net/wireless/mediatek/mt7601u/mt7601u.h
+> +++ b/drivers/net/wireless/mediatek/mt7601u/mt7601u.h
+> @@ -359,7 +359,8 @@ void mt7601u_mac_work(struct work_struct *work);
+>  void mt7601u_mac_set_protection(struct mt7601u_dev *dev, bool legacy_prot,
+>  				int ht_mode);
+>  void mt7601u_mac_set_short_preamble(struct mt7601u_dev *dev, bool short_preamb);
+> -void mt7601u_mac_config_tsf(struct mt7601u_dev *dev, bool enable, int interval);
+> +void mt7601u_mac_config_tsf(struct mt7601u_dev *dev, struct ieee80211_vif *vif,
+> +			    bool enable, int interval);
+>  void
+>  mt7601u_mac_wcid_setup(struct mt7601u_dev *dev, u8 idx, u8 vif_idx, u8 *mac);
+>  void mt7601u_mac_set_ampdu_factor(struct mt7601u_dev *dev);
+> diff --git a/drivers/net/wireless/mediatek/mt7601u/tx.c b/drivers/net/wireless/mediatek/mt7601u/tx.c
+> index 5aeeac0dd9fe7..47c78c4ff5144 100644
+> --- a/drivers/net/wireless/mediatek/mt7601u/tx.c
+> +++ b/drivers/net/wireless/mediatek/mt7601u/tx.c
+> @@ -27,6 +27,14 @@ static u8 q2hwq(u8 q)
+>  static u8 skb2q(struct sk_buff *skb)
+>  {
+>  	int qid = skb_get_queue_mapping(skb);
+> +	struct ieee80211_tx_info *info = IEEE80211_SKB_CB(skb);
+> +	struct ieee80211_hdr *hdr = (struct ieee80211_hdr *)skb->data;
+> +
+> +	if (ieee80211_is_mgmt(hdr->frame_control) ||
+> +	    (info->flags & IEEE80211_TX_CTL_INJECTED)) {
+> +		skb_set_queue_mapping(skb, MT_TXQ_VO);
+> +		return q2hwq(MT_TXQ_VO);
+> +	}
+>  
+>  	if (WARN_ON(qid >= MT_TXQ_PSD)) {
+>  		qid = MT_TXQ_BE;
+> @@ -134,6 +142,9 @@ mt7601u_push_txwi(struct mt7601u_dev *dev, struct sk_buff *skb,
+>  	struct ieee80211_tx_info *info = IEEE80211_SKB_CB(skb);
+>  	struct ieee80211_tx_rate *rate = &info->control.rates[0];
+>  	struct mt76_txwi *txwi;
+> +	struct ieee80211_hdr *hdr = (struct ieee80211_hdr *)skb->data;
+> +	bool is_mgmt = ieee80211_is_mgmt(hdr->frame_control);
+> +	bool is_mcast = is_multicast_ether_addr(hdr->addr1);
+>  	unsigned long flags;
+>  	bool is_probe;
+>  	u32 pkt_id;
+> @@ -148,14 +159,14 @@ mt7601u_push_txwi(struct mt7601u_dev *dev, struct sk_buff *skb,
+>  				       info->control.rates, 1);
+>  
+>  	spin_lock_irqsave(&dev->lock, flags);
+> -	if (rate->idx < 0 || !rate->count)
+> +	if (!is_mgmt && (rate->idx < 0 || !rate->count))
+>  		rate_ctl = wcid->tx_rate;
+>  	else
+>  		rate_ctl = mt76_mac_tx_rate_val(dev, rate, &nss);
+>  	spin_unlock_irqrestore(&dev->lock, flags);
+>  	txwi->rate_ctl = cpu_to_le16(rate_ctl);
+>  
+> -	if (!(info->flags & IEEE80211_TX_CTL_NO_ACK))
+> +	if (!(info->flags & IEEE80211_TX_CTL_NO_ACK) && sta && !is_mcast)
+>  		txwi->ack_ctl |= MT_TXWI_ACK_CTL_REQ;
+>  	if (info->flags & IEEE80211_TX_CTL_ASSIGN_SEQ)
+>  		txwi->ack_ctl |= MT_TXWI_ACK_CTL_NSEQ;
+> @@ -197,6 +208,8 @@ void mt7601u_tx(struct ieee80211_hw *hw, struct ieee80211_tx_control *control,
+>  	struct mt76_sta *msta = NULL;
+>  	struct mt76_wcid *wcid = dev->mon_wcid;
+>  	struct mt76_txwi *txwi;
+> +	struct ieee80211_hdr *hdr = (struct ieee80211_hdr *)skb->data;
+> +	bool is_mcast = is_multicast_ether_addr(hdr->addr1);
+>  	int pkt_len = skb->len;
+>  	int hw_q = skb2q(skb);
+>  
+> @@ -211,7 +224,7 @@ void mt7601u_tx(struct ieee80211_hw *hw, struct ieee80211_tx_control *control,
+>  	if (sta) {
+>  		msta = (struct mt76_sta *) sta->drv_priv;
+>  		wcid = &msta->wcid;
+> -	} else if (vif) {
+> +	} else if (vif && is_mcast) {
+>  		struct mt76_vif *mvif = (struct mt76_vif *)vif->drv_priv;
+>  
+>  		wcid = &mvif->group_wcid;
+
 
