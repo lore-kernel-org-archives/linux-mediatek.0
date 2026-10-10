@@ -4,56 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0CB97CA9EC0
-	for <linux-mediatek@archiver.kernel.org>; Sat, 10 Oct 2026 08:07:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 780EDCA9EBE
+	for <linux-mediatek@archiver.kernel.org>; Sat, 10 Oct 2026 08:07:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=zBADeLLdYab1h+lZVbD25EN9gkPq27ksjFhjBzwzzYs=; b=s5IUL2f5R66X3f9O33DWqj8gG5
-	ZeiOjloesbCu1aDSL7RgocBmwikKxgCGH2VI4VnqXtM2AsBi4R0ZcDGrNubpF7HeDSQ1Kg72zAIRM
-	Ltbx5fELcMMEjmagh+3tXC/AKpx35hyTJ3ZdFQ9g35ztFs43OHU/KTyRGu67RrgPqUPJ7pwr+WT6M
-	54LfAxDXlhDDMsxLC8RMN1r7/nbKv88UWLq37a1zNqnELkMzdIR2JgOs6tU5Kl3cgGr9boRIqNAad
-	eoUYuhvCywGqkMHL/epvgHDz2ev9dXIRBYkjKruF3RzZFiqJfZvaRBi0gSLeIpFoSAEFM51dHYaXK
-	/+ptcBbw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=+OW8tTSCFzMhIHhbZF7r32KMo8bVPe6J+saiKq+/0SA=; b=cVvQUz18oao82hV1zByUjNS8oY
+	Me8e8v8wSxcFvkGttwhuXKxKm9yLrdyegqwaqYGufL6qEzJ74Y1rgRLOziE/o1FK2/Jn+rFNHjfoo
+	y65j2G7J3utP4P3J0rXeeLMEbilQ718oWW+wDFb5Gy3cUy0p0w16c8DkaJkB6eIzbli8O0w5vg0CE
+	ILg1L7PwwfzyFwMf1wQIsGtj9lvrwHiU2k1qklo9rpheVrpEH4ynDPlaucnFt9Dug9nfejKpcUlC4
+	Qt7/T8v4IoBFQcL73i4xSgPC7f5EfwTTHAFCoCZcqtW3TkroNg0I25rcbKFRK8tanJACLiXXg/Ur+
+	PNwvSJ2g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xFS7L-00000007d79-3SlZ;
-	Sat, 10 Oct 2026 08:07:43 +0000
-Received: from [216.200.240.184] (helo=mailgw01.mediatek.com)
+	id 1xFS7W-00000007dH6-0iSG;
+	Sat, 10 Oct 2026 08:07:54 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xFS7I-00000007d2e-3B4x;
-	Sat, 10 Oct 2026 08:07:42 +0000
-X-UUID: a0871eeec48111f1afed4741b24580c9-20261010
+	id 1xFS7M-00000007d8I-1S3V;
+	Sat, 10 Oct 2026 08:07:49 +0000
+X-UUID: a83cb1c6c48111f1acbe4559397dec65-20261010
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=zBADeLLdYab1h+lZVbD25EN9gkPq27ksjFhjBzwzzYs=;
-	b=igRFxKKOlgt17ziGbrFo4sPOdzP2/hrS5UakYUxBn9aKnj+IUKsM+YGQcgCJ23JZ+7HJiN5PFs2Ald7RlZF+34+tJ+E181B+OEqZpbusDlkZRXYsPZouzsX4aHf742/+8XPJyaAhy9EAyaRKghQbOcCxcVzsoKQxOg36MzElOj8=;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=+OW8tTSCFzMhIHhbZF7r32KMo8bVPe6J+saiKq+/0SA=;
+	b=uBYXPK+6lHQwzA1DStp6BH5artCE457OXRpAS4tuKRNZkLcQzjPWk1I6/gtTxuLFnfSR65hVdn4sF+HVZRx6EIEerOxyUwGn4HLNciwJFaQ3HfgGTOb27BlZ3dWv5HdaviPMuerM/p7Y9QAaLDRf5+sApQ7jw9H930WQbZ4I3Vk=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.20,REQID:34d66618-e4ef-49f1-a359-fce001d46bc5,IP:0,U
+X-CID-O-INFO: VERSION:1.3.20,REQID:4df6a116-8b72-48ef-adc0-fe36bd858d44,IP:0,U
 	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
 	release,TS:0
-X-CID-META: VersionHash:291e20b,CLOUDID:56572c20-2f17-48f6-b8a0-2bb5971c52b4,B
-	ulkID:nil,BulkQuantity:0,SF:102|136|836|865|888|898,TC:-5,Content:0|15|52|
-	99,EDM:-3|-100,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:-1,COL:0,OSI
-	:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-META: VersionHash:291e20b,CLOUDID:a1f0a7e6-95a1-45f3-98c6-df48b47455e1,B
+	ulkID:nil,BulkQuantity:0,SF:81|82|102|836|865|888|898,TC:-5,Content:0|15|5
+	0|99,EDM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:-1,COL:0,OSI:0,
+	OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
 X-CID-BVR: 2,SSN|SDN
 X-CID-BAS: 2,SSN|SDN,0,_
 X-CID-FACTOR: TF_CID_SPAM_SNR
 X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: a0871eeec48111f1afed4741b24580c9-20261010
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw01.mediatek.com
+X-UUID: a83cb1c6c48111f1acbe4559397dec65-20261010
+Received: from mtkmbs09n1.mediatek.inc [(172.21.101.35)] by mailgw02.mediatek.com
 	(envelope-from <kyrie.wu@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1148663820; Sat, 10 Oct 2026 01:07:24 -0700
+	with ESMTP id 566170269; Sat, 10 Oct 2026 01:07:37 -0700
 Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.29; Sat, 10 Oct 2026 16:07:22 +0800
+ 15.2.2562.29; Sat, 10 Oct 2026 16:07:35 +0800
 Received: from gcnsap21.gcn.mediatek.inc (10.17.81.22) by
  mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.2562.29 via Frontend Transport; Sat, 10 Oct 2026 16:07:21 +0800
+ 15.2.2562.29 via Frontend Transport; Sat, 10 Oct 2026 16:07:34 +0800
 From: Kyrie Wu <kyrie.wu@mediatek.com>
 To: Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring <robh@kernel.org>,
 	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>,
@@ -64,18 +64,20 @@ To: Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring <robh@kernel.org>,
 	<nicolas.dufresne@collabora.com>, <linux-media@vger.kernel.org>,
 	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
 	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>
-CC: =?UTF-8?q?Kyrie=20Wu=20=28=E5=90=B4=E6=99=97=29?= <kyrie.wu@mediatek.com>
-Subject: [PATCH v18 00/13] media: mediatek: jpeg: add MT8196 JPEG support
-Date: Sat, 10 Oct 2026 16:07:04 +0800
-Message-ID: <cover.1791614327.git.kyrie.wu@mediatek.com>
+CC: Kyrie Wu <kyrie.wu@mediatek.com>
+Subject: [PATCH v18 13/13] media: mediatek: jpeg: add jpeg smmu sid setting
+Date: Sat, 10 Oct 2026 16:07:17 +0800
+Message-ID: <844186eba43ba7e3c956ad9264cd4ae41a0f2548.1791614327.git.kyrie.wu@mediatek.com>
 X-Mailer: git-send-email 2.43.0
+In-Reply-To: <cover.1791614327.git.kyrie.wu@mediatek.com>
+References: <cover.1791614327.git.kyrie.wu@mediatek.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261010_010740_811640_C7F2162A 
-X-CRM114-Status: GOOD (  12.87  )
+X-CRM114-CacheID: sfid-20261010_010748_502410_E2B9AC5F 
+X-CRM114-Status: GOOD (  18.67  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -90,130 +92,250 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Kyrie Wu (吴晗) <kyrie.wu@mediatek.com>
+Add a configuration to set jpeg dec & enc smmu sid
 
-This series have the follow changing:
-Firstly fix some bugs, including resolution change handleing, stop
-streaming sw flow, fix buffer layout and clock setting to support multi-hw
-jpeg working and others.
-Secondly add mt8196 jpegdec and jpegenc compatible to support MT8196
-kernel driver.
-Lastly, Add smmu setting to support smmu and iommu at the same time.
-
-This series has been tested with MT8196 tast test.
-Encoding and decoding worked for this chip.
-
-Patches 1 fix jpeg hw count setting to support different chips.
-Patches 2 fix jpeg buffer payload setting to handle buffer
-size bug while resolution changed.
-Patches 3 fix jpeg dst buffer layout.
-Patches 4 fix multi-core stop streaming flow
-Patches 5 fix multi-core clk suspend/resume setting
-Patches 6 fix buffer state update timing
-Patches 7 fix decoding resolution change operation
-Patches 8 fix remove buffer operation
-Patches 9-11 add jpeg encoder and decoder compatible.
-Patch 12 adds MT8196 JPEG SMMU bindings.
-Patch 13 adds jpeg smmu sid setting.
+Signed-off-by: Kyrie Wu <kyrie.wu@mediatek.com>
+Reviewed-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
 ---
-Changes compared with v17:
---Keep suspend/resume callbacks and clock ownership on multi-hw component
-  devices. Leave single-hw callbacks on the master, and wait for the active
-  job before disabling component clocks.
---Add a standalone DT binding patch for mediatek,smmu-config and the
-  dedicated MT8196 JPEG SMMU configuration syscon at 0x38d0000.
+ .../platform/mediatek/jpeg/mtk_jpeg_core.c    | 29 +++++++++++++++++++
+ .../platform/mediatek/jpeg/mtk_jpeg_core.h    | 15 ++++++++++
+ .../platform/mediatek/jpeg/mtk_jpeg_dec_hw.c  | 23 +++++++++++++++
+ .../platform/mediatek/jpeg/mtk_jpeg_enc_hw.c  | 23 +++++++++++++++
+ 4 files changed, 90 insertions(+)
 
-Changes compared with v16:
---Rebased on top of the latest media tree
-
-Changes compared with v15:
---Set max_hw_count from the DT child count and update hw_rdy from child hardware probes in patch 1.
---Fix patch 2 commit message wording per review.
---Rework patch 6 commit message per review.
---Remove redundant devm_clk_bulk_get() calls in patch 5 per review comments.
---Use %pe to print smmu_regmap error pointer in patch 12 to fix media-ci/static warnings.
-
-Changes compared with v14:
---Rebased on top of the latest media tree
-
-Changes compared with v13:
---Rebased on top of the latest media tree
-
-Changes compared with v12:
---Rebased on top of the latest media tree
---fix kernel rebot build warnings in patch 5
-
-Changes compared with v11:
---Rebased on top of the latest media tree
---Some modifications for patch v11's review comments.
---add reviewer to commit messages
-
-Changes compared with v10:
---Rebased on top of the latest media tree
---add reviewer to commit messages
-
-Changes compared with v9:
---Rebased on top of the latest media tree
-
-Changes compared with v8:
---Rebased on top of the latest media tree
-
-Changes compared with v7:
---Rebased on top of the latest media tree
-
-Changes compared with v6:
---Rebased on top of the latest media tree
-
-Changes compared with v5:
---reorder the patches set.
---fix commit message of patch 1-8.
-
-Changes compared with v4:
---fix kernel robot build errors for patch 4.
---add reviewer for patch 1 and patch 2.
-
-Changes compared with v3:
---change patch subject of jpeg encoder and decoder compatible.
-
-Changes compared with v2:
---refactor smmu sid setting function interface
---Some modifications for patch v2's review comments.
-
-Changes compared with v1:
---refine jpeg dt-bindings for MT8196
---optimize software code to manage jpeg HW count
---refactor smmu sid setting function interface
---Some modifications for patch v1's review comments.
-
-Kyrie Wu (13):
-  media: mediatek: jpeg: fix jpeg cores' amounts setting
-  media: mediatek: jpeg: fix jpeg buffer payload size setting
-  media: mediatek: jpeg: fix buffer structure size and layout
-  media: mediatek: jpeg: Fix buffer completion on multi-core streaming
-    stop
-  media: mediatek: jpeg: Fix multi-core clk suspend and resume setting
-  media: mediatek: jpeg: fix buffer state update timing
-  media: mediatek: jpeg: fix resolution change event handling in decoder
-  media: mediatek: jpeg: fix remove buffer removal timing for multi-core
-  media: dt-bindings: mediatek,jpeg: Add mediatek, mt8196-jpgdec
-    compatible
-  media: dt-bindings: mediatek,jpeg: Add mediatek, mt8196-jpgenc
-    compatible
-  media: mediatek: jpeg: add jpeg compatible
-  dt-bindings: mediatek: Add MT8196 JPEG SMMU bindings
-  media: mediatek: jpeg: add jpeg smmu sid setting
-
- .../media/mediatek,mt8195-jpegdec.yaml        |  24 ++-
- .../media/mediatek,mt8195-jpegenc.yaml        |  24 ++-
- .../mediatek/mediatek,mt8196-jpeg-smmu.yaml   |  41 +++++
- MAINTAINERS                                   |   2 +
- .../platform/mediatek/jpeg/mtk_jpeg_core.c    | 156 +++++++++++++-----
- .../platform/mediatek/jpeg/mtk_jpeg_core.h    |  19 ++-
- .../platform/mediatek/jpeg/mtk_jpeg_dec_hw.c  |  85 +++++++++-
- .../platform/mediatek/jpeg/mtk_jpeg_enc_hw.c  |  83 +++++++++-
- 8 files changed, 377 insertions(+), 57 deletions(-)
- create mode 100644 Documentation/devicetree/bindings/soc/mediatek/mediatek,mt8196-jpeg-smmu.yaml
-
+diff --git a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
+index 8e96501..bb9bdd9 100644
+--- a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
++++ b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
+@@ -15,6 +15,7 @@
+ #include <linux/of_platform.h>
+ #include <linux/platform_device.h>
+ #include <linux/pm_runtime.h>
++#include <linux/regmap.h>
+ #include <linux/slab.h>
+ #include <linux/spinlock.h>
+ #include <media/v4l2-event.h>
+@@ -1602,6 +1603,22 @@ static irqreturn_t mtk_jpeg_enc_done(struct mtk_jpeg_dev *jpeg)
+ 	return IRQ_HANDLED;
+ }
+ 
++static void mtk_jpeg_set_smmu_sid(struct regmap *smmu_regmap, unsigned int sid)
++{
++	if (sid == JPG_REG_GUSER_ID_DEC_SID)
++		regmap_update_bits(smmu_regmap, JPEG_DEC_SMMU_SID,
++				   JPG_REG_GUSER_ID_MASK <<
++				   JPG_REG_DEC_GUSER_ID_SHIFT,
++				   JPG_REG_GUSER_ID_DEC_SID <<
++				   JPG_REG_DEC_GUSER_ID_SHIFT);
++	else
++		regmap_update_bits(smmu_regmap, JPEG_ENC_SMMU_SID,
++				   JPG_REG_GUSER_ID_MASK <<
++				   JPG_REG_ENC_GUSER_ID_SHIFT,
++				   JPG_REG_GUSER_ID_ENC_SID <<
++				   JPG_REG_ENC_GUSER_ID_SHIFT);
++}
++
+ static void mtk_jpegenc_worker(struct work_struct *work)
+ {
+ 	struct mtk_jpegenc_comp_dev *comp_jpeg[MTK_JPEGENC_HW_MAX];
+@@ -1663,6 +1680,11 @@ static void mtk_jpegenc_worker(struct work_struct *work)
+ 	jpeg_dst_buf->frame_num = ctx->total_frame_num;
+ 	ctx->total_frame_num++;
+ 	mtk_jpeg_enc_reset(comp_jpeg[hw_id]->reg_base);
++
++	if (jpeg->variant->support_smmu && comp_jpeg[hw_id]->smmu_regmap)
++		mtk_jpeg_set_smmu_sid(comp_jpeg[hw_id]->smmu_regmap,
++				      JPG_REG_GUSER_ID_ENC_SID);
++
+ 	mtk_jpeg_set_enc_dst(ctx,
+ 			     comp_jpeg[hw_id]->reg_base,
+ 			     &dst_buf->vb2_buf);
+@@ -1772,6 +1794,11 @@ static void mtk_jpegdec_worker(struct work_struct *work)
+ 	jpeg_dst_buf->frame_num = ctx->total_frame_num;
+ 	ctx->total_frame_num++;
+ 	mtk_jpeg_dec_reset(comp_jpeg[hw_id]->reg_base);
++
++	if (jpeg->variant->support_smmu && comp_jpeg[hw_id]->smmu_regmap)
++		mtk_jpeg_set_smmu_sid(comp_jpeg[hw_id]->smmu_regmap,
++				      JPG_REG_GUSER_ID_DEC_SID);
++
+ 	mtk_jpeg_dec_set_config(comp_jpeg[hw_id]->reg_base,
+ 				jpeg->variant->support_34bit,
+ 				&jpeg_src_buf->dec_param,
+@@ -1931,6 +1958,7 @@ static struct mtk_jpeg_variant mtk8196_jpegenc_drvdata = {
+ 	.multi_core = true,
+ 	.jpeg_worker = mtk_jpegenc_worker,
+ 	.support_34bit = true,
++	.support_smmu = true,
+ };
+ 
+ static const struct mtk_jpeg_variant mtk8195_jpegdec_drvdata = {
+@@ -1958,6 +1986,7 @@ static const struct mtk_jpeg_variant mtk8196_jpegdec_drvdata = {
+ 	.multi_core = true,
+ 	.jpeg_worker = mtk_jpegdec_worker,
+ 	.support_34bit = true,
++	.support_smmu = true,
+ };
+ 
+ static const struct of_device_id mtk_jpeg_match[] = {
+diff --git a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.h b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.h
+index 148fd41..186cd18 100644
+--- a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.h
++++ b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.h
+@@ -11,6 +11,7 @@
+ 
+ #include <linux/clk.h>
+ #include <linux/interrupt.h>
++#include <linux/mfd/syscon.h>
+ #include <media/v4l2-ctrls.h>
+ #include <media/v4l2-device.h>
+ #include <media/v4l2-fh.h>
+@@ -34,6 +35,14 @@
+ 
+ #define MTK_JPEG_MAX_EXIF_SIZE	(64 * 1024)
+ 
++#define JPEG_DEC_SMMU_SID				0
++#define JPEG_ENC_SMMU_SID				0
++#define JPG_REG_GUSER_ID_MASK			0x7
++#define JPG_REG_GUSER_ID_DEC_SID		0x4
++#define JPG_REG_GUSER_ID_ENC_SID		0x5
++#define JPG_REG_DEC_GUSER_ID_SHIFT		8
++#define JPG_REG_ENC_GUSER_ID_SHIFT		4
++
+ #define MTK_JPEG_ADDR_MASK GENMASK(1, 0)
+ 
+ /**
+@@ -65,6 +74,7 @@ enum mtk_jpeg_ctx_state {
+  * @multi_core:		mark jpeg hw is multi_core or not
+  * @jpeg_worker:		jpeg dec or enc worker
+  * @support_34bit:	flag to check support for 34-bit DMA address
++ * @support_smmu:	flag to check if support smmu
+  */
+ struct mtk_jpeg_variant {
+ 	struct clk_bulk_data *clks;
+@@ -82,6 +92,7 @@ struct mtk_jpeg_variant {
+ 	bool multi_core;
+ 	void (*jpeg_worker)(struct work_struct *work);
+ 	bool support_34bit;
++	bool support_smmu;
+ };
+ 
+ struct mtk_jpeg_src_buf {
+@@ -150,6 +161,7 @@ struct mtk_jpegdec_clk {
+  * @hw_param:		jpeg encode hw parameters
+  * @hw_state:		record hw state
+  * @hw_lock:		spinlock protecting the hw device resource
++ * @smmu_regmap:	SMMU registers mapping
+  */
+ struct mtk_jpegenc_comp_dev {
+ 	struct device *dev;
+@@ -163,6 +175,7 @@ struct mtk_jpegenc_comp_dev {
+ 	enum mtk_jpeg_hw_state hw_state;
+ 	/* spinlock protecting the hw device resource */
+ 	spinlock_t hw_lock;
++	struct regmap *smmu_regmap;
+ };
+ 
+ /**
+@@ -177,6 +190,7 @@ struct mtk_jpegenc_comp_dev {
+  * @hw_param:			jpeg decode hw parameters
+  * @hw_state:			record hw state
+  * @hw_lock:			spinlock protecting hw
++ * @smmu_regmap:		SMMU registers mapping
+  */
+ struct mtk_jpegdec_comp_dev {
+ 	struct device *dev;
+@@ -190,6 +204,7 @@ struct mtk_jpegdec_comp_dev {
+ 	enum mtk_jpeg_hw_state hw_state;
+ 	/* spinlock protecting the hw device resource */
+ 	spinlock_t hw_lock;
++	struct regmap *smmu_regmap;
+ };
+ 
+ /**
+diff --git a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_dec_hw.c b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_dec_hw.c
+index 2bd2c3f..dfea301 100644
+--- a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_dec_hw.c
++++ b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_dec_hw.c
+@@ -613,6 +613,25 @@ static int mtk_jpegdec_hw_init_irq(struct mtk_jpegdec_comp_dev *dev)
+ 	return 0;
+ }
+ 
++static int mtk_jpegdec_smmu_init(struct mtk_jpegdec_comp_dev *dev)
++{
++	struct mtk_jpeg_dev *master_dev = dev->master_dev;
++
++	if (!master_dev->variant->support_smmu)
++		return 0;
++
++	dev->smmu_regmap =
++		syscon_regmap_lookup_by_phandle(dev->plat_dev->dev.of_node,
++						"mediatek,smmu-config");
++	if (IS_ERR(dev->smmu_regmap)) {
++		return dev_err_probe(dev->dev, PTR_ERR(dev->smmu_regmap),
++				     "mmap smmu_base failed(%pe)\n",
++				     dev->smmu_regmap);
++	}
++
++	return 0;
++}
++
+ static int mtk_jpegdec_hw_probe(struct platform_device *pdev)
+ {
+ 	struct mtk_jpegdec_clk *jpegdec_clk;
+@@ -665,6 +684,10 @@ static int mtk_jpegdec_hw_probe(struct platform_device *pdev)
+ 	master_dev->reg_decbase[i] = dev->reg_base;
+ 	dev->master_dev = master_dev;
+ 
++	ret = mtk_jpegdec_smmu_init(dev);
++	if (ret)
++		return ret;
++
+ 	platform_set_drvdata(pdev, dev);
+ 	pm_runtime_enable(&pdev->dev);
+ 
+diff --git a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_enc_hw.c b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_enc_hw.c
+index 7c6474c..cd91bc0 100644
+--- a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_enc_hw.c
++++ b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_enc_hw.c
+@@ -338,6 +338,25 @@ static int mtk_jpegenc_hw_init_irq(struct mtk_jpegenc_comp_dev *dev)
+ 	return 0;
+ }
+ 
++static int mtk_jpegenc_smmu_init(struct mtk_jpegenc_comp_dev *dev)
++{
++	struct mtk_jpeg_dev *master_dev = dev->master_dev;
++
++	if (!master_dev->variant->support_smmu)
++		return 0;
++
++	dev->smmu_regmap =
++		syscon_regmap_lookup_by_phandle(dev->plat_dev->dev.of_node,
++						"mediatek,smmu-config");
++	if (IS_ERR(dev->smmu_regmap)) {
++		return dev_err_probe(dev->dev, PTR_ERR(dev->smmu_regmap),
++				     "mmap smmu_base failed(%pe)\n",
++				     dev->smmu_regmap);
++	}
++
++	return 0;
++}
++
+ static int mtk_jpegenc_hw_probe(struct platform_device *pdev)
+ {
+ 	struct mtk_jpegenc_clk *jpegenc_clk;
+@@ -388,6 +407,10 @@ static int mtk_jpegenc_hw_probe(struct platform_device *pdev)
+ 	master_dev->reg_encbase[i] = dev->reg_base;
+ 	dev->master_dev = master_dev;
+ 
++	ret = mtk_jpegenc_smmu_init(dev);
++	if (ret)
++		return ret;
++
+ 	platform_set_drvdata(pdev, dev);
+ 	pm_runtime_enable(&pdev->dev);
+ 
 -- 
 2.51.0.windows.2
+
 
