@@ -4,112 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1CA78CA9ECC
-	for <linux-mediatek@archiver.kernel.org>; Sat, 10 Oct 2026 11:57:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 13B90CA9EC1
+	for <linux-mediatek@archiver.kernel.org>; Sat, 10 Oct 2026 16:01:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=XawY6rGwERNjw0CFRz+0ONBwu0wfWrlBMNsKmysKmec=; b=EqU8HLh+EO7QjEo8Lga+bQt7U3
-	CUqTOTcJdVYcRTO32+mDT7My/h6A5plinFWyBPOg/nXk/Nf2q4Q7VCW1iEjb8QPuk/i89sSTFWKd+
-	Wc11q19SMVt0p+W4KhxyY9j/7cfGVRnuG25mG1c7XwUZeAsSddHX+rzdnuDioI2WPIFJR/d85oeVJ
-	0ZdtwTU4YV7AH222oqeJZ8MNRmWxijDU9lUICGbpZZ0azVMo9Oo/xWlR8njfL5F9+wQESa2ffxqZv
-	3kRboxDcZDe3be55/SdRlNYTKRLob70PPeyMbX5t+UCUprDio5uwHex6qXoPnoWHQPy0sovBC4ggT
-	USBPeuWA==;
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=MEIQwNWMcMY7HhQDtjEWtbdNYuCPb8sPCT17bZmYgvk=; b=y/ZBFeXvt/MZi13UVSY+OjKWfp
+	ct23AqAIM1TfO/f/qWBPkJe4qH30ehwM+xx3HNfKQ7kJ67zw1Mzk2O+BbSTUw2OELCIXDW5hfPa6T
+	I1Jbs+7oIrpLCztJh6W/3MNbqaXajxZt3fskDDd3Uk0Vd+zw/roK5ny0MSSK0s2ImYXdc7SnkYEki
+	1ttnBMVjygj5wry/krLHt9v0c3wm6s1WnzAqpfz2TfuE4IaLstIHfFZ7UqwZs6KVHgRIfC6yFLDWU
+	Cotn9ro7cOQQOddyx7514RsLl4g3ZT1UA5hMXxg4+wR366ibLK2PYGd1WzglJSqui4kwmu7UwyQj3
+	VajG3osw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xFVhF-00000007ygb-1vc2;
-	Sat, 10 Oct 2026 11:57:01 +0000
-Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f])
+	id 1xFZWF-00000008FJx-0Ef7;
+	Sat, 10 Oct 2026 16:01:55 +0000
+Received: from mail-wr1-x436.google.com ([2a00:1450:4864:20::436])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xFVgY-00000007y5G-3dFY
+	id 1xFZWB-00000008FJC-3f06
 	for linux-mediatek@lists.infradead.org;
-	Sat, 10 Oct 2026 11:56:21 +0000
-Received: by mail-wm1-x32f.google.com with SMTP id 5b1f17b1804b1-4998b5a63e2so6723585e9.1
-        for <linux-mediatek@lists.infradead.org>; Sat, 10 Oct 2026 04:56:18 -0700 (PDT)
+	Sat, 10 Oct 2026 16:01:53 +0000
+Received: by mail-wr1-x436.google.com with SMTP id ffacd0b85a97d-48b0584ad71so346736f8f.0
+        for <linux-mediatek@lists.infradead.org>; Sat, 10 Oct 2026 09:01:51 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1791633377; x=1792238177; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to:content-type;
-        bh=XawY6rGwERNjw0CFRz+0ONBwu0wfWrlBMNsKmysKmec=;
-        b=JWWTUbZIdg7WsyHda0Swm0t1BbxxN2aiFvRotTS908u2wnnWrCd1IBFUtJUpJ3W4T6
-         P23G/x9Ookg4nmgFT6C1rL403I6ZjwCO4QGxuZyDhie6jVT1RxNIRHZiV+Ncyzxn7F/6
-         cI9jLpeoI3SLUzvgk+H7HZ0fp4H8ptRjLyhpKKMGY9KeczryGmMqrNUj7BY+A0scZBBb
-         QpP1F56pmaT+tmOekIeD4SxOPclGdVQ23GwFIqu7lzj6Dx5Wbjeb6oRmMejxM/7GgUBc
-         kq981lwu+MBrXuOysUddNpdopitkQ1UYgvfx3+/UwResDUqamfb1Cjq4dcy2R6TksymE
-         c7Yg==
+        d=gmail.com; s=20251104; t=1791648110; x=1792252910; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
+        bh=MEIQwNWMcMY7HhQDtjEWtbdNYuCPb8sPCT17bZmYgvk=;
+        b=HlMMPBzrbCQy5/35KzT0oMac9H/5wFICJVk4evVO1Gj/8zCXj7bKL9xV+cHCot9Rux
+         xgO4/2IIwPwd9YlMFn5kV9T9YP8wsMMsPmJRbrH7JQvKGHZT55xXSVSv27uCmUFwHCOX
+         1NaYQ5UCdzlLACbNiGCIY6Rjy3RB7n5z/rcZ8jCduWvtbqRRAhUaOHUDaXcOjwN/CE+L
+         HfiDyIkqP9GfEERbqPrs12vkwIKgz/WSq9RN+c1ACIRFhiH/ldXTLJa+APhoYtlvF9r/
+         vFhkg52oSJkg4LJaiYN+JzQa/KZvlFYg/R2JtA8YYIxOyINRHtEymV5IjKyE6C5RhqEK
+         1n8Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1791633377; x=1792238177;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
-         :to:cc:subject:date:message-id:reply-to:content-type;
-        bh=XawY6rGwERNjw0CFRz+0ONBwu0wfWrlBMNsKmysKmec=;
-        b=wlF1uM9K3S3peT7K2ijaPJMyrJMyD0A6cZr84yeVF0mhBlD1X4hpm7fcBXu3mCdeN4
-         Q6iCq9rZ7noMTpqFhuZPY07MxBdSaLYT8qkTXkH7IBaYxViXVaKYLIinCRVYm37v2JsQ
-         25FzTGlrNOCgb6l9sf6p8ljPHizBaKO7NsC/9QVaSK2JdlxnUmOlRTwgZHpNOimNXGpc
-         +Z41CM5Rw38dzXhd7xHjQ/ZlPJW89NjEDBQf3p8xQf+EgVnkBX7VmA1It6atPm34EFJs
-         JArXkWMEQQxGy9/tWPFKEZtP5ZE5HApI+Hb5uoYg4nsBOSo0QSvwSTX24h5xc7ZGYU0D
-         l+Eg==
-X-Gm-Message-State: AFq9FYJ7xSKOumK7y3i8adGvZ/5w3hu6AnR3VwIagA8XYf+MbfBcAomO
-	ZMpHYEiDsghymbWY+qB8vYtT1dqUfMp6+2Ady1UJ5OuZaVu3f07MZczJtiCZA2pl
-X-Gm-Gg: AYBFou2cQ1de8C2GrwWi82RgZJpwlCno0hXI07h0HoIoRzCN/XOs5cl5hcHIkJVJmi2
-	dGpN6UKTp8CxrkfBXJB7lPuY5ghDD2HIHmYpjrFrl//A816Fk90fSvv/Lt6ZLAQBY+arrnA5wr4
-	su2RcRXB5La0gwBi/9+RlShGbHPZh1qa0KgxFnGqQpE09/xhI4NTyAN6wDOEDdndXnPv5PYzzus
-	I13rVlLhdLMnKv7NaXu5EDqz1tDSRvTCb4n92UXyXVxfWcoPcrikVPCZrrcCmo0lH2jEb6Djdl9
-	Ix8g9N89nrqMPggaaBsAvmpO1fOV33M4A72fKu3r/lSeep7YE43mFrcpHhbvjgTIu6PvkKzSp79
-	Am0WDzxMgj7A0qiu7plKIZpAg/Vswx0qfwJQUJyqQX+5tRizfgUBOB00CSLgAwQyNURpIWzN5IR
-	+Yyxw6w2GU5mtcMV6y38F0flOx7o0d7AX4UBpCe1I02xjlxDS+fMxCkIYwUM6LDB4dEQ==
-X-Received: by 2002:a05:600c:820a:b0:4a0:98c:e082 with SMTP id 5b1f17b1804b1-4a18e4a3f0dmr88323785e9.13.1791633377176;
-        Sat, 10 Oct 2026 04:56:17 -0700 (PDT)
+        d=1e100.net; s=20260707; t=1791648110; x=1792252910;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to:content-type;
+        bh=MEIQwNWMcMY7HhQDtjEWtbdNYuCPb8sPCT17bZmYgvk=;
+        b=MwzO6U4wMylu3JRBZAgT5NJ0lFmiKq1hD0WVaIHBFVGb8j3ZZsZT2ecwfI1SOcmsmv
+         T8YD4/PC+YSh/rMtWomno9PNaFaMxCkkCelH3TiDiu1xY9lJRIwimAA6rPN4NY2aajXE
+         teRrbymaPg4oPdqLkIlSphvgD4/pbGNp6fCsFsTj+0J3PeCHoo3Pb2EJaNOVdQ+f2BSi
+         bSIyx53IB7+erOrcXbgJMT6jxvQQOvkoKkmjTyZWUaxAeK9dgCER1Z8AI78WpNwerBP6
+         C+OgNFEU+NoH2yScCI/ntKO+1BnPpsJFtbY3bCAxsJfIZBWLRtDgjJhEEaVCdhpCa1+G
+         mxoA==
+X-Gm-Message-State: AFq9FYLWiBHtO+gbbLFsxwB3m7DpYRBOks8yV7hfm/FRqG+F2c2fJmok
+	u9T+rryXAY1ez8VKoeHsnG2r6SBEDVYcoDih7XoHhHClaDP21otXocTicfImCWO89DU=
+X-Gm-Gg: AYBFou2oNA8fzQyus2y2K0ghLhhiEusHVoxXXki6ZgYpHW9c/3ghRrTytn2AnSE7567
+	acKaPhb7U+FYQKv6FRkJwlAXiXJVv+PjE7GGExCb8MmQXQCgl8O1UBAqaecj00/I6XPi2YTWTpS
+	QCzHQwif+AMzQj07Kjz4v35tKbJWGDXJl+OZ1jYueSbUqNsaa9Lni7F3Uq9cESzpADA8vjGHiyh
+	9V84orClghNUKOBeGICQxVU/CES3CpkF6zeyLCiRqrihpcXrIwyosd4HFV5O9Ft4B8xnlCtFTzJ
+	w74SvsEaUlLXG5iylh7K3ZjoBHgwX6kc8LTaeWwWuahq41G+JVtxKihhQzwrUqVKahIdjP4E0io
+	B/d/daqxsdJbEh0u1MgonqzHRj83J24kDEywPMxb2PppstRc42I3vvnLjPIYI3n8Yixz4cepre6
+	c+CtoGhBVZQzoYwKBGVkvaX73KX4xuiSr0i++CXCOxzjgJrBwguYOfjoOyeAgIm4Ne7A==
+X-Received: by 2002:a05:6000:184e:b0:488:8904:cf19 with SMTP id ffacd0b85a97d-48dbaceb60cmr10490477f8f.10.1791648108898;
+        Sat, 10 Oct 2026 09:01:48 -0700 (PDT)
 Received: from luca-vm.lan ([154.61.61.58])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-48db9aca657sm8746340f8f.43.2026.10.10.04.56.15
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-48db9ac6a91sm8579603f8f.41.2026.10.10.09.01.47
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 10 Oct 2026 04:56:16 -0700 (PDT)
+        Sat, 10 Oct 2026 09:01:48 -0700 (PDT)
 From: Luca Leonardo Scorcia <l.scorcia@gmail.com>
 To: linux-mediatek@lists.infradead.org
 Cc: Luca Leonardo Scorcia <l.scorcia@gmail.com>,
-	Chunfeng Yun <chunfeng.yun@mediatek.com>,
-	Vinod Koul <vkoul@kernel.org>,
-	Neil Armstrong <neil.armstrong@linaro.org>,
-	Manivannan Sadhasivam <mani@kernel.org>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
 	Stephen Boyd <sboyd@kernel.org>,
 	Brian Masney <bmasney+clk@redhat.com>,
 	Jerome Brunet <jbrunet+clk@baylibre.com>,
-	Chun-Kuang Hu <chunkuang.hu@kernel.org>,
-	Philipp Zabel <p.zabel@pengutronix.de>,
-	David Airlie <airlied@gmail.com>,
-	Simona Vetter <simona@ffwll.ch>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
 	Nicolas Frattaroli <nicolas.frattaroli@collabora.com>,
-	Chen-Yu Tsai <wenst@chromium.org>,
-	Fabien Parent <fparent@baylibre.com>,
-	chunhui dai <chunhui.dai@mediatek.com>,
-	CK Hu <ck.hu@mediatek.com>,
-	linux-arm-kernel@lists.infradead.org,
-	linux-phy@lists.infradead.org,
-	devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
 	linux-clk@vger.kernel.org,
-	dri-devel@lists.freedesktop.org
-Subject: [PATCH 7/7] arm64: dts: mediatek: mt8167: Add HDMI display nodes
-Date: Sat, 10 Oct 2026 13:54:07 +0200
-Message-ID: <20261010115539.9237-8-l.scorcia@gmail.com>
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org
+Subject: [PATCH] clk: mediatek: clk-mt8173-apmixedsys: Invoke platform_set_drvdata on probe
+Date: Sat, 10 Oct 2026 18:01:30 +0200
+Message-ID: <20261010160134.112136-1-l.scorcia@gmail.com>
 X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20261010115539.9237-1-l.scorcia@gmail.com>
-References: <20261010115539.9237-1-l.scorcia@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261010_045618_973741_E5AE2032 
-X-CRM114-Status: UNSURE (   9.89  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20261010_090151_909793_597143D4 
+X-CRM114-Status: GOOD (  11.53  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -124,100 +102,33 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add the required nodes to drive HDMI output on the mt8167 SoC.
+The remove function for mt8173-apmixedsys needs drvdata to correctly
+unregister apmixedsys clocks, but the probe function never calls
+platform_set_drvdata. Add the missing call to platform_set_drvdata on
+probe success.
 
+Fixes: 4c02c9af3cb9 ("clk: mediatek: mt8173: Break down clock drivers and allow module build")
 Signed-off-by: Luca Leonardo Scorcia <l.scorcia@gmail.com>
 ---
- arch/arm64/boot/dts/mediatek/mt8167.dtsi | 62 ++++++++++++++++++++++++
- 1 file changed, 62 insertions(+)
+This issue was identified by Sashiko while I was working on the mt8167
+apmixedsys, but it is present on the current mt8173 driver too.
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8167.dtsi b/arch/arm64/boot/dts/mediatek/mt8167.dtsi
-index 27cf32d7ae35..ab76e0637eb1 100644
---- a/arch/arm64/boot/dts/mediatek/mt8167.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8167.dtsi
-@@ -112,6 +112,27 @@ apmixedsys: apmixedsys@10018000 {
- 			#clock-cells = <1>;
- 		};
+ drivers/clk/mediatek/clk-mt8173-apmixedsys.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/drivers/clk/mediatek/clk-mt8173-apmixedsys.c b/drivers/clk/mediatek/clk-mt8173-apmixedsys.c
+index d7d416172ab3..65dc4489a09c 100644
+--- a/drivers/clk/mediatek/clk-mt8173-apmixedsys.c
++++ b/drivers/clk/mediatek/clk-mt8173-apmixedsys.c
+@@ -179,6 +179,8 @@ static int clk_mt8173_apmixed_probe(struct platform_device *pdev)
+ 	if (r)
+ 		goto unregister_ref2usb;
  
-+		hdmi_phy: hdmi-phy@10018300 {
-+			compatible = "mediatek,mt8167-hdmi-phy";
-+			reg = <0 0x10018300 0 0x20>;
-+			clocks = <&apmixedsys CLK_APMIXED_HDMI_REF>;
-+			clock-names = "pll_ref";
-+			clock-output-names = "hdmtx_dig_cts";
-+			mediatek,ibias = <0xa>;
-+			mediatek,ibias_up = <0x1c>;
-+			#clock-cells = <0>;
-+			#phy-cells = <0>;
-+			status = "disabled";
-+		};
++	platform_set_drvdata(pdev, clk_data);
 +
-+		cec: cec@1001a000 {
-+			compatible = "mediatek,mt8167-cec", "mediatek,mt8173-cec";
-+			reg = <0 0x1001a000 0 0xbc>;
-+			interrupts = <GIC_SPI 148 IRQ_TYPE_LEVEL_LOW>;
-+			clocks = <&topckgen CLK_TOP_26M_CEC>;
-+			status = "disabled";
-+		};
-+
- 		iommu: m4u@10203000 {
- 			compatible = "mediatek,mt8167-m4u";
- 			reg = <0 0x10203000 0 0x1000>;
-@@ -120,6 +141,15 @@ iommu: m4u@10203000 {
- 			#iommu-cells = <1>;
- 		};
+ 	return 0;
  
-+		hdmiddc: i2c@11011000 {
-+			compatible = "mediatek,mt8167-hdmi-ddc", "mediatek,mt8173-hdmi-ddc";
-+			reg = <0 0x11011000 0 0x10>;
-+			interrupts = <GIC_SPI 110 IRQ_TYPE_LEVEL_LOW>;
-+			clocks = <&topckgen CLK_TOP_26M_HDMI_SIFM>;
-+			clock-names = "ddc-i2c";
-+			status = "disabled";
-+		};
-+
- 		mmsys: syscon@14000000 {
- 			compatible = "mediatek,mt8167-mmsys", "syscon";
- 			reg = <0 0x14000000 0 0x1000>;
-@@ -145,6 +175,38 @@ smi_common: smi@14017000 {
- 			power-domains = <&spm MT8167_POWER_DOMAIN_MM>;
- 		};
- 
-+		hdmi: hdmi@1401b000 {
-+			compatible = "mediatek,mt8167-hdmi";
-+			reg = <0 0x1401b000 0 0x400>;
-+			clocks = <&mmsys CLK_MM_HDMI_PXL>,
-+				 <&mmsys CLK_MM_HDMI_PLL>,
-+				 <&mmsys CLK_MM_HDMI_ADSP_BCK>,
-+				 <&mmsys CLK_MM_HDMI_SPDIF>;
-+			clock-names = "pixel", "pll", "bclk", "spdif";
-+			interrupts = <GIC_SPI 148 IRQ_TYPE_LEVEL_LOW>;
-+			phys = <&hdmi_phy>;
-+			phy-names = "hdmi";
-+			mediatek,syscon-hdmi = <&mmsys 0x900>;
-+			status = "disabled";
-+
-+			ports {
-+				#address-cells = <1>;
-+				#size-cells = <0>;
-+
-+				port@0 {
-+					reg = <0>;
-+
-+					hdmi0_in: endpoint { };
-+				};
-+
-+				port@1 {
-+					reg = <1>;
-+
-+					hdmi0_out: endpoint { };
-+				};
-+			};
-+		};
-+
- 		imgsys: syscon@15000000 {
- 			compatible = "mediatek,mt8167-imgsys", "syscon";
- 			reg = <0 0x15000000 0 0x1000>;
+ unregister_ref2usb:
 -- 
 2.43.0
 
