@@ -4,56 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9EB4ACA9EC0
-	for <linux-mediatek@archiver.kernel.org>; Sat, 10 Oct 2026 08:36:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9F617CA9EC6
+	for <linux-mediatek@archiver.kernel.org>; Sat, 10 Oct 2026 08:36:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
 	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
 	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=T/vpP0OK0D1mFMy/+611inzLXJXf1ODaDBwah2sD8x8=; b=Qiacf2OjHLcSAezrg5MqJ+ANei
-	SH/B7pHyiAg1s5AB20UcUncqoyRvK4D9nnPNpYqsT/eY2uIvZbL8wn0MPvasfNNgE3B99KFrTuIoN
-	SPDEcnoSJF5BNiPfDMZ31b7f1NPWfLXv09UTtgmGJgCKj7+Pf5vhElYL8j43bCLmkwK5xiVm6ew/V
-	gzS8+EsZ+K7UuzkBXCzUupJr4/7w/+v845vb+ZUl+wegSe4rjfo+8ro78CRlL3YYtOR+qXFVZpwCF
-	cFBvd46SXNTfyghHfil2qABsVCoFoCzK0/x6QCd7nmqfwVcdt8YfL+muSeKXE5gz7VQeDjgix6MWn
-	8tMqaung==;
+	bh=skkcTlxnAM35aqC5K45Izyhl65Hcf07/7R5QkNLRCyM=; b=iSLvztdM7Li+GrwCj2AndvYLuV
+	0pz/gLma/qVUaVLpCZBXeolVHsZpRm5lrjLN5kv3Ko63RaxF66/vqRJyQD0XQJRJGcBQQcaadCeqU
+	OjqCSohdwodezaaNocoOlml5XPvM/3OZTesPSSkZJRQ1JEGDF0ySLTpxbQ6RGiQAA8fnTsFzu8nVU
+	kCZi/MRoPDxsQVKYgFi2x9jq98z1mh679SaPMElUyrivDJowuva5LsHVmHDjaUDkAKf3l+xVBTveH
+	HE19CTWvelBfMLyytQJuUA9x7xzfdS+P2ghBrvQAF+lKZrql/9+XNOd6r9xl60jPMOpxsZ+8uQgML
+	HGNTaS9A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xFSZP-00000007fnQ-1whJ;
-	Sat, 10 Oct 2026 08:36:43 +0000
+	id 1xFSZR-00000007fr9-0e0q;
+	Sat, 10 Oct 2026 08:36:45 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xFSZJ-00000007fdB-2Mc9;
-	Sat, 10 Oct 2026 08:36:39 +0000
-X-UUID: b20a53f8c48511f1acbe4559397dec65-20261010
+	id 1xFSZK-00000007fex-2BH2;
+	Sat, 10 Oct 2026 08:36:40 +0000
+X-UUID: b2f37ef2c48511f1acbe4559397dec65-20261010
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=T/vpP0OK0D1mFMy/+611inzLXJXf1ODaDBwah2sD8x8=;
-	b=Csn+/rl+T2WbHD6+5JG6dzSJ4ylZG7RXgPuTDw5zTn3NXjhoHvw7XPLqcEWu3DPV/4SpCnTZKUrFJz9Y/N+9MvlJLq44E7So+93riuQCUIQdRHVtRs2K7XsO/JuMxNLcsj7/k+3Nc03d5SUuGGBAALSGPmrX8zGUAZ6JMc5sqRg=;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=skkcTlxnAM35aqC5K45Izyhl65Hcf07/7R5QkNLRCyM=;
+	b=Z0odqScfxcH5cuWLvwcNGUtGjVk8NQMRytwGfu8ewfVrBRYomZLshyChmq3Os1XboTEJgCbAlTPlRhWYD6HLLdP0E+yPjktIwJlLaEMFr2JaP0pwc8GhjJZUCYkr403RutjVCLvqCSbVtXADIWMei0xYgrbgVbNZqFpJGbskBX8=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.20,REQID:06ed34ab-aaf7-437a-9efd-7cde774c851e,IP:0,U
+X-CID-O-INFO: VERSION:1.3.20,REQID:fb07b1da-24c7-4712-95c8-ad53be9db153,IP:0,U
 	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
 	release,TS:0
-X-CID-META: VersionHash:291e20b,CLOUDID:5028edb8-514b-419b-be8a-53f1868a3ee6,B
-	ulkID:nil,BulkQuantity:0,SF:81|82|102|836|865|888|898,TC:-5,Content:0|15|5
-	0|99,EDM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:-1,COL:0,OSI:0,
-	OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-META: VersionHash:291e20b,CLOUDID:f0b12e95-3103-4fdb-b79c-08de0e281a5d,B
+	ulkID:nil,BulkQuantity:0,SF:81|82|102|136|836|865|888|898,TC:-5,Content:0|
+	15|50|99,EDM:-3|-100,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:-1,COL
+	:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
 X-CID-BVR: 2,SSN|SDN
 X-CID-BAS: 2,SSN|SDN,0,_
 X-CID-FACTOR: TF_CID_SPAM_SNR
 X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: b20a53f8c48511f1acbe4559397dec65-20261010
-Received: from mtkmbs10n1.mediatek.inc [(172.21.101.34)] by mailgw02.mediatek.com
+X-UUID: b2f37ef2c48511f1acbe4559397dec65-20261010
+Received: from mtkmbs09n2.mediatek.inc [(172.21.101.94)] by mailgw02.mediatek.com
 	(envelope-from <kyrie.wu@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1963980132; Sat, 10 Oct 2026 01:36:32 -0700
+	with ESMTP id 1590818201; Sat, 10 Oct 2026 01:36:33 -0700
 Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
- MTKMBS14N1.mediatek.inc (172.21.101.75) with Microsoft SMTP Server
+ MTKMBS09N1.mediatek.inc (172.21.101.35) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.29; Sat, 10 Oct 2026 16:36:29 +0800
+ 15.2.2562.29; Sat, 10 Oct 2026 16:36:31 +0800
 Received: from gcnsap21.gcn.mediatek.inc (10.17.81.22) by
  mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.2562.29 via Frontend Transport; Sat, 10 Oct 2026 16:36:28 +0800
+ 15.2.2562.29 via Frontend Transport; Sat, 10 Oct 2026 16:36:29 +0800
 From: Kyrie Wu <kyrie.wu@mediatek.com>
 To: Tiffany Lin <tiffany.lin@mediatek.com>, Andrew-CT Chen
 	<andrew-ct.chen@mediatek.com>, Yunfei Dong <yunfei.dong@mediatek.com>, Mauro
@@ -74,9 +74,9 @@ To: Tiffany Lin <tiffany.lin@mediatek.com>, Andrew-CT Chen
 	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
 	<linux-mediatek@lists.infradead.org>
 CC: Sakari Ailus <sakari.ailus@linux.intel.com>
-Subject: [PATCH v8 08/14] dt-bindings: media: mediatek,vcodec-subdev-decoder: Add MT8196
-Date: Sat, 10 Oct 2026 16:36:07 +0800
-Message-ID: <e756699a4be5b530338e373842365e6698ed066b.1791619743.git.kyrie.wu@mediatek.com>
+Subject: [PATCH v8 09/14] media: mediatek: vcodec: add decoder compatible to support mt8196
+Date: Sat, 10 Oct 2026 16:36:08 +0800
+Message-ID: <2949412508ace7f0e1693b078f9ee4a2c076465e.1791619743.git.kyrie.wu@mediatek.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <cover.1791619742.git.kyrie.wu@mediatek.com>
 References: <cover.1791619742.git.kyrie.wu@mediatek.com>
@@ -85,8 +85,8 @@ Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261010_013637_614548_B71B28D0 
-X-CRM114-Status: GOOD (  11.24  )
+X-CRM114-CacheID: sfid-20261010_013638_624248_56A15220 
+X-CRM114-Status: GOOD (  12.57  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,96 +101,49 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Compared to previous ICs, the MT8196 supports a 10-bit decoder
-and has a decoding capability of 4K@120fps. It also supports
-36-bit DRAM IOVA address and Video Power Control to optimize
-bandwidth and voltage usage.
+MT8196 is lat single core architecture. Support its compatible and
+use `mtk_lat_sig_core_pdata` to initialize platform data.
 
 Signed-off-by: Kyrie Wu <kyrie.wu@mediatek.com>
-Acked-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
 ---
- .../media/mediatek,vcodec-subdev-decoder.yaml | 49 ++++++++++++++++++-
- 1 file changed, 48 insertions(+), 1 deletion(-)
+ .../platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.c   | 6 ++++++
+ .../platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.h   | 1 +
+ 2 files changed, 7 insertions(+)
 
-diff --git a/Documentation/devicetree/bindings/media/mediatek,vcodec-subdev-decoder.yaml b/Documentation/devicetree/bindings/media/mediatek,vcodec-subdev-decoder.yaml
-index d1d209cb..d8f25ccd 100644
---- a/Documentation/devicetree/bindings/media/mediatek,vcodec-subdev-decoder.yaml
-+++ b/Documentation/devicetree/bindings/media/mediatek,vcodec-subdev-decoder.yaml
-@@ -76,6 +76,7 @@ properties:
-       - mediatek,mt8186-vcodec-dec
-       - mediatek,mt8188-vcodec-dec
-       - mediatek,mt8195-vcodec-dec
-+      - mediatek,mt8196-vcodec-dec
+diff --git a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.c b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.c
+index ab5f6c01..0d27adbf 100644
+--- a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.c
++++ b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.c
+@@ -347,6 +347,8 @@ static void mtk_vcodec_dec_get_chip_name(struct mtk_vcodec_dec_dev *vdec_dev)
+ 		vdec_dev->chip_name = MTK_VDEC_MT8186;
+ 	else if (of_device_is_compatible(dev->of_node, "mediatek,mt8188-vcodec-dec"))
+ 		vdec_dev->chip_name = MTK_VDEC_MT8188;
++	else if (of_device_is_compatible(dev->of_node, "mediatek,mt8196-vcodec-dec"))
++		vdec_dev->chip_name = MTK_VDEC_MT8196;
+ 	else
+ 		vdec_dev->chip_name = MTK_VDEC_INVAL;
+ }
+@@ -566,6 +568,10 @@ static const struct of_device_id mtk_vcodec_match[] = {
+ 		.compatible = "mediatek,mt8188-vcodec-dec",
+ 		.data = &mtk_lat_sig_core_pdata,
+ 	},
++	{
++		.compatible = "mediatek,mt8196-vcodec-dec",
++		.data = &mtk_lat_sig_core_pdata,
++	},
+ 	{},
+ };
  
-   reg:
-     minItems: 1
-@@ -96,6 +97,11 @@ properties:
-       The node of system control processor (SCP), using
-       the remoteproc & rpmsg framework.
+diff --git a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.h b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.h
+index 15e43732..53d1708b 100644
+--- a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.h
++++ b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.h
+@@ -29,6 +29,7 @@ enum mtk_vcodec_dec_chip_name {
+ 	MTK_VDEC_MT8188 = 8188,
+ 	MTK_VDEC_MT8192 = 8192,
+ 	MTK_VDEC_MT8195 = 8195,
++	MTK_VDEC_MT8196 = 8196,
+ };
  
-+  mediatek,vcp:
-+    $ref: /schemas/types.yaml#/definitions/phandle
-+    description: Phandle to the Video Companion Processor (VCP) that runs the
-+      video decoder firmware.
-+
-   "#address-cells":
-     const: 2
- 
-@@ -163,7 +169,6 @@ required:
-   - compatible
-   - reg
-   - iommus
--  - mediatek,scp
-   - ranges
- 
- if:
-@@ -179,6 +184,48 @@ then:
-     - interrupts
- 
- allOf:
-+  - if:
-+      properties:
-+        compatible:
-+          contains:
-+            const: mediatek,mt8196-vcodec-dec
-+
-+    then:
-+      required:
-+        - mediatek,vcp
-+
-+      properties:
-+        mediatek,scp: false
-+
-+      patternProperties:
-+        '^video-codec@[0-9a-f]+$':
-+          properties:
-+            compatible:
-+              enum:
-+                - mediatek,mtk-vcodec-core
-+                - mediatek,mtk-vcodec-lat
-+
-+            clock-names:
-+              items:
-+                - const: sel
-+                - const: vdec
-+                - const: lat
-+                - const: top
-+
-+  - if:
-+      properties:
-+        compatible:
-+          contains:
-+            enum:
-+              - mediatek,mt8192-vcodec-dec
-+              - mediatek,mt8186-vcodec-dec
-+              - mediatek,mt8188-vcodec-dec
-+              - mediatek,mt8195-vcodec-dec
-+
-+    then:
-+      required:
-+        - mediatek,scp
-+
-   - if:
-       properties:
-         compatible:
+ /*
 
