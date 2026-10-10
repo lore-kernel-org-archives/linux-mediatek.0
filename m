@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 45696CA9EBE
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2EBDECA9EC1
 	for <linux-mediatek@archiver.kernel.org>; Sat, 10 Oct 2026 16:19:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
@@ -12,37 +12,37 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Message-ID:Date
 	:Cc:To:From:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=CEh+OP+AcjYhR6oKB2h8hBH3yA6V2LOkzyhQyArnj+A=; b=kir+yJQIahlC67d46rFverxo9z
-	PrG/CNsmoEdTKe6GA2e8lgeT5/5PsJYBDQUt6KD0LRNFJoajrcHQTKIaNfTf6+llM1VZksdtzXAVJ
-	MYGpoCLmZGcSxEp33BOM+ecmjDuQ5vtssVJ6kP8burvUP76AbBJ5vOrxYbZ3rjsIAH79JjcjW5Zgq
-	5O52+qeH+OlMv15F+0q3CqLZdQp09afLvabjk2LzUDSYNPgoF8iMTvrUMlV08jhkSaMcQ62Rq6GnW
-	w/t2SDb2Abq/nilN1qn6dAxFRA9NJgWcNPG308IqxK1MYDUaXQgdH2C2X/9he/ItzzfcZ4XiKN6gS
-	Bh8ricoA==;
+	bh=Yn2lBah6xI+UynibkzP0mMoar1PQ6rju9miwSdYL3cg=; b=a5SeWSI8l3B6yOb/YCUnAhXppW
+	cPryg6fnn9Sec1t49oRc5mgHU/UKVeY9lSYPxTaVzk0igdjZpedWZIj6Rzlhm1jViGQiog0m7DYaf
+	RCwif9tn9Llad6rNEZuIgT31T8E3kU/y4XI0zD1JjyNg0ca0o2EWFE1I2skJa8Okizz8gstmuS9h+
+	KSKLqIkAiTPtF2+ZRZr8OPiSMNYSYutTMZWgtbGUUobrW4Y8s4ALmoGHOpDKCuS/tQFr1ccdNsKop
+	OhzQbmtNnUZEGfTKTope9jcciS3NOM5VSQU6/upUkuAb08eJ2mYwptOLcHc8JHts5php9ClTUs2zJ
+	VM8GoP+w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xFZn9-00000008FrA-02Qz;
-	Sat, 10 Oct 2026 16:19:23 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1xFZn8-00000008Fqz-3ve3;
+	Sat, 10 Oct 2026 16:19:22 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xFZn3-00000008FpH-1DpF;
+	id 1xFZn1-00000008FpE-3FP1;
 	Sat, 10 Oct 2026 16:19:20 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id A920244812;
-	Sat, 10 Oct 2026 16:19:16 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id D73691F000FF;
+	by tor.source.kernel.org (Postfix) with ESMTP id 791DE600D4;
 	Sat, 10 Oct 2026 16:19:14 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9A9CC1F00893;
+	Sat, 10 Oct 2026 16:19:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1791649156;
-	bh=CEh+OP+AcjYhR6oKB2h8hBH3yA6V2LOkzyhQyArnj+A=;
+	s=k20260515; t=1791649154;
+	bh=Yn2lBah6xI+UynibkzP0mMoar1PQ6rju9miwSdYL3cg=;
 	h=Subject:From:To:Cc:Date:In-Reply-To:References;
-	b=Ualu43NzJCXN1uI9AIW5f3AkQM2OGnJiDfICaNKenL5MPZlyKcfQskaWmpMhTNToC
-	 4WTGUG9s9ycqc7uaCf9WgZHdEVxXuVNMiruNac4Vi8igrKi3k2odJaJZp3cYtXxmIu
-	 hNaLMjoGKPR81Scq9NNT55Whmd8r/qQEEJ9W2seixXgEQMVXcaOXvORTE9zOELR5e0
-	 e522Pztz3SYdS4bzU7/eUg6lDPzFDSihT3Fiq20X06tfYk1eSyxfw4hoRDw9WUwG6B
-	 ruQG1dRA/sD0j1wDE/95m9OsMFgg1VfOO625MBNnIvXUgrOpd9fnnQ6we/DaWkB2d7
-	 slACVnEUs8uDw==
-Subject: Re: [PATCH net-next v25 03/10] dt-bindings: mfd: Document support for
- Airoha AN8855 Switch SoC
+	b=GA5hs3b3tl0ADvVrI8j6CezxXK0m12HIsRI3rRPXOqkJXU9fY1lkvyNRTEJQJi7JZ
+	 600cNvV1uBU6k7EPoOeh2OONUWKy9UrHbrhXRBTeH9OnyWRJnySnmKAU8HgvgvBwLP
+	 rQQOK+/DsLSBflUoYj5s/kWtjGce7ac6kFjwW2M1s/vaJaUUsbLieApTm/DB4eC1x1
+	 IDYLO+UA9Q8AYPRhK97cJiPUR8PzrLNL2Nyr7f9x9+89nCN9Rg4TAlUXzUDXba4AtQ
+	 qnku2AOCkOGUrKC241nomPniShwmPjgXwGcOjnICITRdSc/KEeVS+BWSqVAX6W3QLY
+	 0MGhUuL3E89Dg==
+Subject: Re: [PATCH net-next v25 02/10] dt-bindings: net: Document support for
+ AN8855 Switch Internal PHY
 From: netdev-bot+sashiko@kernel.org
 To: ansuelsmth@gmail.com
 Cc: lee@kernel.org, robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
@@ -54,10 +54,10 @@ Cc: lee@kernel.org, robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
  linux-mediatek@lists.infradead.org, netdev@vger.kernel.org,
  mfd@lists.linux.dev, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
  andrew@lunn.ch
-Date: Sat, 10 Oct 2026 16:19:14 +0000
-Message-ID: <179164915433.434549.5287414575554706963@kernel.org>
-In-Reply-To: <20261009161102.38961-4-ansuelsmth@gmail.com>
-References: <20261009161102.38961-4-ansuelsmth@gmail.com>
+Date: Sat, 10 Oct 2026 16:19:12 +0000
+Message-ID: <179164915210.434549.18428989361576378283@kernel.org>
+In-Reply-To: <20261009161102.38961-3-ansuelsmth@gmail.com>
+References: <20261009161102.38961-3-ansuelsmth@gmail.com>
 X-sashiko-severity: Medium
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
@@ -76,10 +76,10 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Thank you for your contribution! Sashiko AI review found 1 potential
+Thank you for your contribution! Sashiko AI review found 2 potential
 issue(s) to consider.
 
-Critical: 0 · High: 0 · Medium: 1 · Low: 0
+Critical: 0 · High: 0 · Medium: 1 · Low: 1
 
 If you believe none of the issues are legitimate, please reply to each
 issue of Medium severity or higher and explain why the AI is wrong.
@@ -87,75 +87,123 @@ If any of them are legitimate and you plan to respin, please let patchwork
 know by including "pw-bot: cr" as a separate line at the end of your reply
 (one such reply per series is enough).
 
-- [Medium] The two AN8855 binding examples disagree on how the internal
-  PHYs are accessed.
+- [Medium] In the example of
+  Documentation/devicetree/bindings/net/airoha,an8855-phy.yaml, both PHY…
+- [Low] In the example of
+  Documentation/devicetree/bindings/net/airoha,an8855-phy.yaml,…
 
 --
 
-dt-bindings: mfd: Document support for Airoha AN8855 Switch SoC
+dt-bindings: net: Document support for AN8855 Switch Internal PHY
 
-This commit adds a YAML binding for the Airoha AN8855 Switch SoC. The SoC
-exposes an Ethernet switch, an eFUSE NVMEM provider and internal Ethernet
-PHYs. The example puts the internal PHYs on a nested mdio node.
+This adds a YAML binding for the internal PHYs of the Airoha AN8855
+5-port Gigabit Switch. These PHYs are exposed on the MDIO bus. The binding
+also lets each PHY node reference the SoC eFUSE NVMEM cells (tx_a..tx_d)
+used for calibration.
 
-> diff --git a/Documentation/devicetree/bindings/mfd/airoha,an8855.yaml b/Documentation/devicetree/bindings/mfd/airoha,an8855.yaml
+> diff --git a/Documentation/devicetree/bindings/net/airoha,an8855-phy.yaml b/Documentation/devicetree/bindings/net/airoha,an8855-phy.yaml
 > new file mode 100644
-> index 0000000000000..48127e956c965
+> index 0000000000000..d2f86116badf4
 > --- /dev/null
-> +++ b/Documentation/devicetree/bindings/mfd/airoha,an8855.yaml
-> @@ -0,0 +1,176 @@
+> +++ b/Documentation/devicetree/bindings/net/airoha,an8855-phy.yaml
+> @@ -0,0 +1,83 @@
 
 [ ... ]
 
-> +            mdio {
-> +                #address-cells = <1>;
-> +                #size-cells = <0>;
+> +examples:
+> +  - |
+> +    mdio {
+> +        #address-cells = <1>;
+> +        #size-cells = <0>;
 > +
-> +                internal_phy1: ethernet-phy@1 {
-> +                  compatible = "ethernet-phy-idc0ff.0410",
-> +                               "ethernet-phy-ieee802.3-c22";
+> +        ethernet-phy@1 {
+> +            compatible = "ethernet-phy-idc0ff.0410",
+> +                         "ethernet-phy-ieee802.3-c45";
 
 [Severity: Medium]
-This example gives the internal PHYs the ethernet-phy-ieee802.3-c22
-compatible. The PHY binding added earlier in this series uses the C45
-compatible for the same PHY ID:
+Should this be "ethernet-phy-ieee802.3-c22" (or just the ID compatible)?
+The same applies to ethernet-phy@2 below.
 
-Documentation/devicetree/bindings/net/airoha,an8855-phy.yaml:
-        ethernet-phy@1 {
-            compatible = "ethernet-phy-idc0ff.0410",
-                         "ethernet-phy-ieee802.3-c45";
-
-Which of the two is correct?
-
-The PHY binding selects on ethernet-phy-idc0ff.0410, so it also applies
-to the PHY nodes nested here. Its $ref to ethernet-phy.yaml accepts both
-c22 and c45, which means dt_binding_check won't catch the mismatch.
-
-Later in the series, the MFD driver puts each PHY on a bus created with
+Later in the series, an8855_core_probe() in drivers/mfd/airoha-an8855.c
+registers each internal PHY on a bus created by
 devm_mdio_regmap_register(). That bus only provides C22 accessors:
 
-drivers/net/mdio/mdio-regmap.c:devm_mdio_regmap_register()
+drivers/net/mdio/mdio-regmap.c:devm_mdio_regmap_register() {
+    ...
     mii->read = mdio_regmap_read_c22;
     mii->write = mdio_regmap_write_c22;
+    ...
+}
 
-Would a board DT that copies the PHY binding example end up on this path?
+When the c45 compatible is present, fwnode_mdiobus_register_phy() ignores
+the explicit c0ff.0410 ID and forces Clause 45 probing:
 
-an8855_core_probe()
-  fwnode_mdiobus_register_phy()      /* is_c45 is true */
-    get_phy_device(bus, addr, true)
-      get_phy_c45_ids()
-        get_phy_c45_devs_in_pkg()
-          mdiobus_c45_read()
-            __mdiobus_c45_read()     /* -EOPNOTSUPP, no read_c45 */
+    is_c45 = fwnode_device_is_compatible(child, "ethernet-phy-ieee802.3-c45");
+    if (is_c45 || fwnode_get_phy_id(child, &phy_id))
+        phy = get_phy_device(bus, addr, is_c45);
 
-That error turns into -EIO. an8855_core_probe() then jumps to
-err_put_fwnodes, so the switch, eFUSE and PHYs never get registered.
+bus->read_c45 is NULL, so __mdiobus_c45_read() returns -EOPNOTSUPP. The
+call chain is:
 
-The switch binding says its registers are reached by configuring the PHY
-page. That also points to C22 access.
+get_phy_device()->get_phy_c45_ids()->get_phy_c45_devs_in_pkg()
 
-Should the PHY binding example use ethernet-phy-ieee802.3-c22, or drop the
-C45 compatible, so the two bindings agree?
+and get_phy_c45_ids() turns that error into -EIO. an8855_core_probe()
+treats a fwnode_mdiobus_register_phy() failure as fatal
+(goto err_put_fwnodes). So a DT copied from this example would make the
+whole AN8855 MFD fail to probe, and neither the switch nor the eFUSE
+device would be created.
+
+The PHY driver later in the series (drivers/net/phy/air_an8855.c) also
+uses C22 paged access, and the MFD binding in the same series
+("dt-bindings: mfd: Document support for Airoha AN8855 Switch SoC") uses
+"ethernet-phy-ieee802.3-c22" for these same PHYs. ethernet-phy.yaml
+accepts both strings, so dt_binding_check won't flag the mismatch.
+
+> +
+> +            reg = <1>;
+> +        };
+> +
+> +        ethernet-phy@2 {
+> +            compatible = "ethernet-phy-idc0ff.0410",
+> +                         "ethernet-phy-ieee802.3-c45";
+> +
+> +            reg = <2>;
+> +
+> +            nvmem-cells = <&shift_sel_port0_tx_a>,
+> +                          <&shift_sel_port0_tx_b>,
+> +                          <&shift_sel_port0_tx_c>,
+> +                          <&shift_sel_port0_tx_d>;
+
+[Severity: Low]
+Is the PHY at reg 2 meant to use port 0's calibration cells here? In this
+example ethernet-phy@1 has no cells and ethernet-phy@2 uses
+shift_sel_port0_tx_*.
+
+The MFD binding later in the series maps them differently:
+ethernet-phy@1 (internal_phy1) uses shift_sel_port0_tx_*, ethernet-phy@2
+(internal_phy2) uses shift_sel_port1_tx_*, port@0 is internal_phy1 and
+port@1 is internal_phy2.
+
+an8855_phy_bus_register() computes the port from the address:
+
+    phy_offset = addr - priv->switch_addr;
+    if (phy_offset >= AN8855_MAX_PHY_PORT)
+        return -EINVAL;
+
+So when both reg 1 and reg 2 are present, the PHY at reg 2 can't be
+port 0.
+
+air_an8855.c reads tx_a..tx_d in an8855_probe() and writes them into the
+VEND1 R50OHM_RSEL registers in an8855_config_init(). A DTS copied from this
+example would put port 0's trim on a different PHY and leave the port 0 PHY
+uncalibrated.
+
+Would it make sense to match the MFD example, with port0 cells on
+ethernet-phy@1 and port1 cells on ethernet-phy@2?
+
+> +            nvmem-cell-names = "tx_a", "tx_b", "tx_c", "tx_d";
+> +        };
+> +    };
 
 -- 
 Sashiko AI review · https://netdev-ai.bots.linux.dev/sashiko/#/patchset/20261009161102.38961-1-ansuelsmth%40gmail.com
