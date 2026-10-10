@@ -4,62 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 92DB1CA6004
-	for <linux-mediatek@archiver.kernel.org>; Sat, 10 Oct 2026 06:38:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 87485CA6017
+	for <linux-mediatek@archiver.kernel.org>; Sat, 10 Oct 2026 08:07:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Message-ID:Date
-	:Cc:To:From:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=fEEO3v1L3zz+tLSI6RWGQzmGcrPEPkcaUTB011Qb2S8=; b=ZsHv7Z1swJ6poEmgIF0kKPxKJm
-	UrcNIPtk+7hcK2HrUGYXe93j8r/tRDwHYk8Agx7CsT4hUOWt9Kh4d3kecX5mHcE+9wDsZM2DQFqsk
-	sPaJ+qbWp3L22NgKy89sdKKNz+/+bC+3xJCFKgdv4TcduSpZ6X1/Mu0OiA7kmxtfxl7JHyVlo5B50
-	D9uG1zFxEYN8fKIHcjfiHj3GWd2hAMgK+3KJ0q09LsCoaSbFS6If463QqU2IZqL/r4fz5i4t8rz1T
-	j05npJz0rzpPEjQ6MKR4tlF82wQGEhggrOV4YT74hc5DpN5zURJLBVRu00ezgWvEzmoFPCv5mXgtA
-	Ua7u0JUA==;
+	bh=2Q9o8X67cLcd5wpuB8jLL9VwIWbBM83PwmCeCDKeN9I=; b=dPlK4BqOdw80ukiG4k4EkYku59
+	LWezdPSpoyA68s+YpIfgtzTl/Q0UedrIiZGv1lOP/+mBjRK1eUcS7MqpwZwZxO2FaWCNy8ffYhrqk
+	m82gBa/OgMTWzHfO2AWT0malKpuS6APQtgz7s+8vgGfT5V47AqG6+V+je8IZSVUhPe45e9qYZxFuk
+	qaPYopZHO7GgBdL4sNKn4PbGJMPANTdy0/oPWGuuJDIGUOjoHHgXEaokR3IXV2h0T7+P8tf9ybmzc
+	92U4kifVAepSjoDiAuGceEAUiU83117Cot8JnD1rMOBBudti69DdO9TC3Z7UvVCzYcJs21XiWVXzv
+	ellppQ+w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xFQii-00000007aF4-1HY6;
-	Sat, 10 Oct 2026 06:38:12 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1xFS7B-00000007d2z-17Ie;
+	Sat, 10 Oct 2026 08:07:33 +0000
+Received: from [216.200.240.185] (helo=mailgw02.mediatek.com)
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xFQif-00000007aEm-2sXe;
-	Sat, 10 Oct 2026 06:38:10 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id C0BB8601F0;
-	Sat, 10 Oct 2026 06:38:08 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 16C791F000FF;
-	Sat, 10 Oct 2026 06:38:07 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1791614288;
-	bh=fEEO3v1L3zz+tLSI6RWGQzmGcrPEPkcaUTB011Qb2S8=;
-	h=Subject:From:To:Cc:Date:In-Reply-To:References;
-	b=ScY9z2HBS55TpFj0u/jp+mgxV3kvlpmSRjNnJwhT3vxjz8n5PtBJ8QmYav7gk2kzV
-	 h77fGdHtwleuZ2hxt0u2JOzixIaQMHxGc925jqJHriq1HQK6Fk3zJRvUmm6ylPrzcE
-	 rKV4NAV9HezJ4JfjBJ4T8hhR928JS+ZngCDDvPb5pc68ELbwgJdHDrB0OFMewp+vZZ
-	 kHV830Bw9MtvSSfkATSMZUMUt+6QiaJU2WARDy0nejQ1UiZLQOGYqxMK54umdc1mdi
-	 orUC0LbKopG+05P3fo2bDJecwAU0uajwwuWr+4IUCRI+KZ5wbFjHoUJrgZdJTCeWuZ
-	 5UxLPTPMZldGA==
-Subject: Re: [PATCH] net: tcp: fix fraglist GRO flushing on alternating TCP PSH flag
-From: netdev-bot+sashiko@kernel.org
-To: shiming.cheng@mediatek.com
-Cc: davem@davemloft.net, edumazet@google.com, kuba@kernel.org,
- pabeni@redhat.com, horms@kernel.org, matthias.bgg@gmail.com,
- angelogioacchino.delregno@collabora.com, willemb@google.com,
- daniel.zahka@gmail.com, alice@isovalent.com, sd@queasysnail.net,
- eilaimemedsnaimel@gmail.com, imv4bel@gmail.com, nbd@nbd.name,
- dsahern@kernel.org, netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- stable@vger.kernel.org, steffen.klassert@secunet.com
-Date: Sat, 10 Oct 2026 06:38:06 +0000
-Message-ID: <179161428655.434549.7066789783316941855@kernel.org>
-In-Reply-To: <20261009060319.6229-1-shiming.cheng@mediatek.com>
-References: <20261009060319.6229-1-shiming.cheng@mediatek.com>
-X-sashiko-severity: High
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
+	id 1xFS79-00000007d2Y-1rd0;
+	Sat, 10 Oct 2026 08:07:32 +0000
+X-UUID: a249c63cc48111f1acbe4559397dec65-20261010
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=2Q9o8X67cLcd5wpuB8jLL9VwIWbBM83PwmCeCDKeN9I=;
+	b=ZzwzWNUgFfyJdjXyqb61zo7C4mxdqvlqkKSvl4d4S9QmdzKh4+Lclud4OzBOf+AdKTlbUmdKocDGjVZ2DvMB/khFzhaDytWx2YennmohhlM4f4R97CSFTvZFKwutWfwQVnCWOY0d+cTuJkvUsISIaPIl5JY1xC6QcZIhKZqDEJo=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.3.20,REQID:f0997618-f4a1-437c-91da-cdb991fc73a6,IP:0,U
+	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
+	:release,TS:-5
+X-CID-META: VersionHash:291e20b,CLOUDID:1bfeecb8-514b-419b-be8a-53f1868a3ee6,B
+	ulkID:nil,BulkQuantity:0,SF:81|82|102|836|865|888|898,TC:-5,Content:0|15|5
+	0|99,EDM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:-1,COL:0,OSI:0,
+	OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 2,SSN|SDN
+X-CID-BAS: 2,SSN|SDN,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
+X-UUID: a249c63cc48111f1acbe4559397dec65-20261010
+Received: from mtkmbs14n2.mediatek.inc [(172.21.101.76)] by mailgw02.mediatek.com
+	(envelope-from <kyrie.wu@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 852933315; Sat, 10 Oct 2026 01:07:27 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.2562.29; Sat, 10 Oct 2026 16:07:25 +0800
+Received: from gcnsap21.gcn.mediatek.inc (10.17.81.22) by
+ mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.2562.29 via Frontend Transport; Sat, 10 Oct 2026 16:07:24 +0800
+From: Kyrie Wu <kyrie.wu@mediatek.com>
+To: Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>, Bin Liu <bin.liu@mediatek.com>,
+	kyrie wu <kyrie.wu@mediatek.corp-partner.google.com>, Hans Verkuil
+	<hverkuil@kernel.org>, irui wang <irui.wang@mediatek.com>, Nicolas Dufresne
+	<nicolas.dufresne@collabora.com>, <linux-media@vger.kernel.org>,
+	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>
+CC: Kyrie Wu <kyrie.wu@mediatek.com>
+Subject: [PATCH v18 03/13] media: mediatek: jpeg: fix buffer structure size and layout
+Date: Sat, 10 Oct 2026 16:07:07 +0800
+Message-ID: <70578cea826dc419f3d754f1288eafca2cdd331f.1791614327.git.kyrie.wu@mediatek.com>
+X-Mailer: git-send-email 2.43.0
+In-Reply-To: <cover.1791614327.git.kyrie.wu@mediatek.com>
+References: <cover.1791614327.git.kyrie.wu@mediatek.com>
 MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-MTK: N
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20261010_010731_526826_7D393C5F 
+X-CRM114-Status: GOOD (  15.11  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,166 +92,55 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Thank you for your contribution! Sashiko AI review found 3 potential
-issue(s) to consider.
+Updates the `buf_struct_size` in the JPEG driver to use the correct
+structure `mtk_jpeg_src_buf` instead of `v4l2_m2m_buffer`, ensuring
+proper handling of source buffers. The previous buffer size led to
+mismatches and potential issues during video buffer handling.
 
-Critical: 0 · High: 2 · Medium: 1 · Low: 0
+Moves `frame_num` in the `mtk_jpeg_src_buf` structure to align with
+other members appropriately. The first field of the driver-specific
+buffer structure must be the subsystem-specificstruct
+(vb2_v4l2_buffer in the case of V4L2).
 
-If you believe none of the issues are legitimate, please reply to each
-issue of Medium severity or higher and explain why the AI is wrong.
-If any of them are legitimate and you plan to respin, please let patchwork
-know by including "pw-bot: cr" as a separate line at the end of your reply
-(one such reply per series is enough).
+Fixes: 5fb1c2361e56 ("mtk-jpegenc: add jpeg encode worker interface")
+Signed-off-by: Kyrie Wu <kyrie.wu@mediatek.com>
+Reviewed-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+---
+ drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c | 2 +-
+ drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.h | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
 
-- [High] Forwarded TCP FIN/PSH can be dropped from the wire when a
-  fraglist GRO skb falls back to tcp_gso_segment()/skb_segment().
-- [High] FIN/PSH in a fraglist tail segment is invisible to netfilter,
-  conntrack, flowtable, tc and BPF, which all read only the aggregate's…
-- [Medium] The commit message calls the removed check 'redundant' and
-  only discusses PSH.
-
---
-
-net: tcp: fix fraglist GRO flushing on alternating TCP PSH flag
-
-This patch removes the unmasked TCP flag word comparison from the is_flist
-branch of tcp_gro_receive(). Segments whose PSH/FIN flags differ from the
-held packet can then be appended to a fraglist GRO skb. The goal is to stop
-premature flushes when a sender alternates [ACK] and [PSH, ACK] segments
-in forwarding and tethering setups.
-
-> This redundant check causes premature flushing on any incoming PSH packet,
-> shattering aggregation and increasing softirq overhead.
-
-[ ... ]
-
-> a single fraglist, and are safely flushed together upon encountering the
-> PSH flag at `out_check_final`, preserving the required TCP push semantics.
-
-[Severity: Medium]
-Is the removed check really redundant? Commit 8d95dc474f85 ("net: add code
-for TCP fraglist GRO") added it to the is_flist branch on purpose.
-
-The general path can mask FIN|PSH out of its first comparison only because
-it later ORs those flags into the held packet's header:
-
-    tcp_flag_word(th2) |= flags & (TCP_FLAG_FIN | TCP_FLAG_PSH);
-
-The is_flist branch jumps to out_check_final before it reaches that line.
-So the unmasked comparison was what kept every fraglist member's flags
-identical to the head's.
-
-The removal also relaxes FIN, not only PSH. Data-carrying FIN segments,
-such as the last segment of a response, can now join a fraglist. The
-commit message doesn't mention this.
-
-The claim that push semantics are preserved seems to hold only when the
-skb goes through skb_segment_list(). Could the commit message describe the
-FIN change and the cases raised in the comments on the diff below?
-
-> diff --git a/net/ipv4/tcp_offload.c b/net/ipv4/tcp_offload.c
-> index e74d99ca9face..54b40ec95a080 100644
-> --- a/net/ipv4/tcp_offload.c
-> +++ b/net/ipv4/tcp_offload.c
-> @@ -328,7 +328,6 @@ struct sk_buff *tcp_gro_receive(struct list_head *head, struct sk_buff *skb,
->  	flush |= skb_cmp_decrypted(p, skb);
->  
->  	if (unlikely(NAPI_GRO_CB(p)->is_flist)) {
-> -		flush |= (__force int)(flags ^ tcp_flag_word(th2));
-
-[Severity: High]
-Can this drop a forwarded FIN or PSH from the wire?
-
-Without this check, skb_gro_receive_list() links an in-sequence [PSH, ACK]
-or [FIN, ACK] data segment into the held skb's frag_list. The is_flist
-branch then jumps to out_check_final. That skips the only place where
-FIN/PSH reach the head header:
-
-    tcp_flag_word(th2) |= flags & (TCP_FLAG_FIN | TCP_FLAG_PSH);
-
-tcp4_gro_complete() and tcp6_gro_complete() return early for is_flist.
-The head can't carry FIN/PSH itself, because out_check_final would have
-flushed it. So the head header has neither flag, while the last frag_list
-member has them.
-
-tcp4_gso_segment() uses __tcp4_gso_segment_list() only when the geometry
-still matches and SKB_GSO_DODGY is clear:
-
-    if ((skb_pagelen(skb) - th->doff * 4 == skb_shinfo(skb)->gso_size) &&
-        !(skb_shinfo(skb)->gso_type & SKB_GSO_DODGY))
-        return __tcp4_gso_segment_list(skb, features);
-
-Otherwise it falls back to tcp_gso_segment()->skb_segment(). That path
-copies head_skb's headers, TCP flags included, into every segment.
-
-tcp_gso_segment() then clears fin/psh on every segment except the last:
-
-    while (skb->next) {
-        th->fin = th->psh = 0;
-
-The last segment keeps the head's flags, which never had FIN/PSH.
-tcp6_gso_segment() has the same fallback.
-
-These can trigger the fallback on forwarded traffic:
-
-  bpf_skb_proto_4_to_6() and bpf_skb_proto_6_to_4(), reached through
-  bpf_skb_change_proto() (for example CLAT/464xlat when tethering), set
-  SKB_GSO_DODGY on GSO skbs.
-
-  bpf_skb_net_grow() and bpf_skb_net_shrink() set SKB_GSO_DODGY.
-  bpf_skb_net_grow() can also linearize frag_list skbs when
-  BPF_F_ADJ_ROOM_FIXED_GSO is not set.
-
-  Any pull or linearize that changes the geometry has the same effect,
-  for example skb_ensure_writable(skb, skb->len) in NAT mangling.
-
-In those cases the receiver doesn't get the FIN until the sender
-retransmits it, and PSH is silently cleared.
-
-A fraglist skb redirected to a local TCP socket after GRO (DNAT/TPROXY) is
-also parsed from the head header only. TCP has nothing like UDP's
-local-delivery fraglist handling, so the FIN would be missed there too.
-
-ORing the tail's flags into th2 in the is_flist branch doesn't seem to fix
-this. skb_segment_list() emits the head skb with its own TCP header, so the
-first segment would then carry a spurious FIN/PSH.
-
-[Severity: High]
-Does this also hide the tail's FIN/PSH from netfilter, conntrack,
-flowtable, tc and BPF? All of these read only the aggregate's head header
-before segmentation.
-
-In conntrack, get_conntrack_index() only checks the head's tcph->fin, so
-the FIN transition never fires. tcp_in_window() computes:
-
-    end = segment_seq_plus_len(seq, skb->len, dataoff, tcph);
-
-skb->len covers all of the fraglist payload. The +1 for FIN is missing,
-because tcph is the head header. The peer's ACK of the FIN then hits:
-
-    if (!before(sack, receiver->td_end + 1))
-        return nf_tcp_store_invalid(ct, sender, log, NFCT_TCP_INVALID,
-                                    NF_TCP_LOG_ACK_OVER, receiver->td_end + 1);
-
-That ACK is classified invalid, and so are the peer's own FIN and the
-final ACK. A typical "ct state invalid drop" rule would then drop the
-teardown packets. Without such a rule, the entry stays ESTABLISHED instead
-of moving to FIN_WAIT/CLOSE_WAIT.
-
-In the flowtable, nf_flow_state_check() reads fin/rst only from the head
-header, so NF_FLOW_CLOSING is never set for the offloaded flow.
-
-tcp_mt() in xt_tcpudp and the nft tcp flags match also read only the head
-header, so a FORWARD rule that matches FIN or PSH won't fire.
-skb_segment_list() copies only the MAC header from the head and keeps each
-member's own TCP header. The FIN/PSH therefore still goes out on the wire
-and bypasses that policy.
-
-Before this patch, the unmasked comparison guaranteed that the head header
-described every member of the fraglist.
-
-[ ... ]
-
+diff --git a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
+index 3413570..7856a55 100644
+--- a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
++++ b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
+@@ -1092,7 +1092,7 @@ static int mtk_jpeg_queue_init(void *priv, struct vb2_queue *src_vq,
+ 	dst_vq->type = V4L2_BUF_TYPE_VIDEO_CAPTURE_MPLANE;
+ 	dst_vq->io_modes = VB2_DMABUF | VB2_MMAP;
+ 	dst_vq->drv_priv = ctx;
+-	dst_vq->buf_struct_size = sizeof(struct v4l2_m2m_buffer);
++	dst_vq->buf_struct_size = sizeof(struct mtk_jpeg_src_buf);
+ 	dst_vq->ops = jpeg->variant->qops;
+ 	dst_vq->mem_ops = &vb2_dma_contig_memops;
+ 	dst_vq->timestamp_flags = V4L2_BUF_FLAG_TIMESTAMP_COPY;
+diff --git a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.h b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.h
+index 6be5cf3..148fd41 100644
+--- a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.h
++++ b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.h
+@@ -85,10 +85,10 @@ struct mtk_jpeg_variant {
+ };
+ 
+ struct mtk_jpeg_src_buf {
+-	u32 frame_num;
+ 	struct vb2_v4l2_buffer b;
+ 	struct list_head list;
+ 	u32 bs_size;
++	u32 frame_num;
+ 	struct mtk_jpeg_dec_param dec_param;
+ 
+ 	struct mtk_jpeg_ctx *curr_ctx;
 -- 
-Sashiko AI review · https://netdev-ai.bots.linux.dev/sashiko/#/patchset/20261009060319.6229-1-shiming.cheng%40mediatek.com
+2.51.0.windows.2
+
 
