@@ -4,90 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 13B90CA9EC1
-	for <linux-mediatek@archiver.kernel.org>; Sat, 10 Oct 2026 16:01:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 45696CA9EBE
+	for <linux-mediatek@archiver.kernel.org>; Sat, 10 Oct 2026 16:19:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=MEIQwNWMcMY7HhQDtjEWtbdNYuCPb8sPCT17bZmYgvk=; b=y/ZBFeXvt/MZi13UVSY+OjKWfp
-	ct23AqAIM1TfO/f/qWBPkJe4qH30ehwM+xx3HNfKQ7kJ67zw1Mzk2O+BbSTUw2OELCIXDW5hfPa6T
-	I1Jbs+7oIrpLCztJh6W/3MNbqaXajxZt3fskDDd3Uk0Vd+zw/roK5ny0MSSK0s2ImYXdc7SnkYEki
-	1ttnBMVjygj5wry/krLHt9v0c3wm6s1WnzAqpfz2TfuE4IaLstIHfFZ7UqwZs6KVHgRIfC6yFLDWU
-	Cotn9ro7cOQQOddyx7514RsLl4g3ZT1UA5hMXxg4+wR366ibLK2PYGd1WzglJSqui4kwmu7UwyQj3
-	VajG3osw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Message-ID:Date
+	:Cc:To:From:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=CEh+OP+AcjYhR6oKB2h8hBH3yA6V2LOkzyhQyArnj+A=; b=kir+yJQIahlC67d46rFverxo9z
+	PrG/CNsmoEdTKe6GA2e8lgeT5/5PsJYBDQUt6KD0LRNFJoajrcHQTKIaNfTf6+llM1VZksdtzXAVJ
+	MYGpoCLmZGcSxEp33BOM+ecmjDuQ5vtssVJ6kP8burvUP76AbBJ5vOrxYbZ3rjsIAH79JjcjW5Zgq
+	5O52+qeH+OlMv15F+0q3CqLZdQp09afLvabjk2LzUDSYNPgoF8iMTvrUMlV08jhkSaMcQ62Rq6GnW
+	w/t2SDb2Abq/nilN1qn6dAxFRA9NJgWcNPG308IqxK1MYDUaXQgdH2C2X/9he/ItzzfcZ4XiKN6gS
+	Bh8ricoA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xFZWF-00000008FJx-0Ef7;
-	Sat, 10 Oct 2026 16:01:55 +0000
-Received: from mail-wr1-x436.google.com ([2a00:1450:4864:20::436])
+	id 1xFZn9-00000008FrA-02Qz;
+	Sat, 10 Oct 2026 16:19:23 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xFZWB-00000008FJC-3f06
-	for linux-mediatek@lists.infradead.org;
-	Sat, 10 Oct 2026 16:01:53 +0000
-Received: by mail-wr1-x436.google.com with SMTP id ffacd0b85a97d-48b0584ad71so346736f8f.0
-        for <linux-mediatek@lists.infradead.org>; Sat, 10 Oct 2026 09:01:51 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1791648110; x=1792252910; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
-        bh=MEIQwNWMcMY7HhQDtjEWtbdNYuCPb8sPCT17bZmYgvk=;
-        b=HlMMPBzrbCQy5/35KzT0oMac9H/5wFICJVk4evVO1Gj/8zCXj7bKL9xV+cHCot9Rux
-         xgO4/2IIwPwd9YlMFn5kV9T9YP8wsMMsPmJRbrH7JQvKGHZT55xXSVSv27uCmUFwHCOX
-         1NaYQ5UCdzlLACbNiGCIY6Rjy3RB7n5z/rcZ8jCduWvtbqRRAhUaOHUDaXcOjwN/CE+L
-         HfiDyIkqP9GfEERbqPrs12vkwIKgz/WSq9RN+c1ACIRFhiH/ldXTLJa+APhoYtlvF9r/
-         vFhkg52oSJkg4LJaiYN+JzQa/KZvlFYg/R2JtA8YYIxOyINRHtEymV5IjKyE6C5RhqEK
-         1n8Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1791648110; x=1792252910;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to:content-type;
-        bh=MEIQwNWMcMY7HhQDtjEWtbdNYuCPb8sPCT17bZmYgvk=;
-        b=MwzO6U4wMylu3JRBZAgT5NJ0lFmiKq1hD0WVaIHBFVGb8j3ZZsZT2ecwfI1SOcmsmv
-         T8YD4/PC+YSh/rMtWomno9PNaFaMxCkkCelH3TiDiu1xY9lJRIwimAA6rPN4NY2aajXE
-         teRrbymaPg4oPdqLkIlSphvgD4/pbGNp6fCsFsTj+0J3PeCHoo3Pb2EJaNOVdQ+f2BSi
-         bSIyx53IB7+erOrcXbgJMT6jxvQQOvkoKkmjTyZWUaxAeK9dgCER1Z8AI78WpNwerBP6
-         C+OgNFEU+NoH2yScCI/ntKO+1BnPpsJFtbY3bCAxsJfIZBWLRtDgjJhEEaVCdhpCa1+G
-         mxoA==
-X-Gm-Message-State: AFq9FYLWiBHtO+gbbLFsxwB3m7DpYRBOks8yV7hfm/FRqG+F2c2fJmok
-	u9T+rryXAY1ez8VKoeHsnG2r6SBEDVYcoDih7XoHhHClaDP21otXocTicfImCWO89DU=
-X-Gm-Gg: AYBFou2oNA8fzQyus2y2K0ghLhhiEusHVoxXXki6ZgYpHW9c/3ghRrTytn2AnSE7567
-	acKaPhb7U+FYQKv6FRkJwlAXiXJVv+PjE7GGExCb8MmQXQCgl8O1UBAqaecj00/I6XPi2YTWTpS
-	QCzHQwif+AMzQj07Kjz4v35tKbJWGDXJl+OZ1jYueSbUqNsaa9Lni7F3Uq9cESzpADA8vjGHiyh
-	9V84orClghNUKOBeGICQxVU/CES3CpkF6zeyLCiRqrihpcXrIwyosd4HFV5O9Ft4B8xnlCtFTzJ
-	w74SvsEaUlLXG5iylh7K3ZjoBHgwX6kc8LTaeWwWuahq41G+JVtxKihhQzwrUqVKahIdjP4E0io
-	B/d/daqxsdJbEh0u1MgonqzHRj83J24kDEywPMxb2PppstRc42I3vvnLjPIYI3n8Yixz4cepre6
-	c+CtoGhBVZQzoYwKBGVkvaX73KX4xuiSr0i++CXCOxzjgJrBwguYOfjoOyeAgIm4Ne7A==
-X-Received: by 2002:a05:6000:184e:b0:488:8904:cf19 with SMTP id ffacd0b85a97d-48dbaceb60cmr10490477f8f.10.1791648108898;
-        Sat, 10 Oct 2026 09:01:48 -0700 (PDT)
-Received: from luca-vm.lan ([154.61.61.58])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-48db9ac6a91sm8579603f8f.41.2026.10.10.09.01.47
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 10 Oct 2026 09:01:48 -0700 (PDT)
-From: Luca Leonardo Scorcia <l.scorcia@gmail.com>
-To: linux-mediatek@lists.infradead.org
-Cc: Luca Leonardo Scorcia <l.scorcia@gmail.com>,
-	Stephen Boyd <sboyd@kernel.org>,
-	Brian Masney <bmasney+clk@redhat.com>,
-	Jerome Brunet <jbrunet+clk@baylibre.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Nicolas Frattaroli <nicolas.frattaroli@collabora.com>,
-	linux-clk@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org
-Subject: [PATCH] clk: mediatek: clk-mt8173-apmixedsys: Invoke platform_set_drvdata on probe
-Date: Sat, 10 Oct 2026 18:01:30 +0200
-Message-ID: <20261010160134.112136-1-l.scorcia@gmail.com>
-X-Mailer: git-send-email 2.43.0
-MIME-Version: 1.0
+	id 1xFZn3-00000008FpH-1DpF;
+	Sat, 10 Oct 2026 16:19:20 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by sea.source.kernel.org (Postfix) with ESMTP id A920244812;
+	Sat, 10 Oct 2026 16:19:16 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id D73691F000FF;
+	Sat, 10 Oct 2026 16:19:14 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1791649156;
+	bh=CEh+OP+AcjYhR6oKB2h8hBH3yA6V2LOkzyhQyArnj+A=;
+	h=Subject:From:To:Cc:Date:In-Reply-To:References;
+	b=Ualu43NzJCXN1uI9AIW5f3AkQM2OGnJiDfICaNKenL5MPZlyKcfQskaWmpMhTNToC
+	 4WTGUG9s9ycqc7uaCf9WgZHdEVxXuVNMiruNac4Vi8igrKi3k2odJaJZp3cYtXxmIu
+	 hNaLMjoGKPR81Scq9NNT55Whmd8r/qQEEJ9W2seixXgEQMVXcaOXvORTE9zOELR5e0
+	 e522Pztz3SYdS4bzU7/eUg6lDPzFDSihT3Fiq20X06tfYk1eSyxfw4hoRDw9WUwG6B
+	 ruQG1dRA/sD0j1wDE/95m9OsMFgg1VfOO625MBNnIvXUgrOpd9fnnQ6we/DaWkB2d7
+	 slACVnEUs8uDw==
+Subject: Re: [PATCH net-next v25 03/10] dt-bindings: mfd: Document support for
+ Airoha AN8855 Switch SoC
+From: netdev-bot+sashiko@kernel.org
+To: ansuelsmth@gmail.com
+Cc: lee@kernel.org, robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
+ andrew+netdev@lunn.ch, davem@davemloft.net, edumazet@kernel.org,
+ kuba@kernel.org, pabeni@redhat.com, olteanv@gmail.com, matthias.bgg@gmail.com,
+ angelogioacchino.delregno@collabora.com, chester.a.unal@arinc9.com,
+ daniel@makrotopia.org, hkallweit1@gmail.com, linux@armlinux.org.uk,
+ horms@kernel.org, joey@tinyisr.com, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, netdev@vger.kernel.org,
+ mfd@lists.linux.dev, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ andrew@lunn.ch
+Date: Sat, 10 Oct 2026 16:19:14 +0000
+Message-ID: <179164915433.434549.5287414575554706963@kernel.org>
+In-Reply-To: <20261009161102.38961-4-ansuelsmth@gmail.com>
+References: <20261009161102.38961-4-ansuelsmth@gmail.com>
+X-sashiko-severity: Medium
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261010_090151_909793_597143D4 
-X-CRM114-Status: GOOD (  11.53  )
+MIME-Version: 1.0
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,34 +76,87 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The remove function for mt8173-apmixedsys needs drvdata to correctly
-unregister apmixedsys clocks, but the probe function never calls
-platform_set_drvdata. Add the missing call to platform_set_drvdata on
-probe success.
+Thank you for your contribution! Sashiko AI review found 1 potential
+issue(s) to consider.
 
-Fixes: 4c02c9af3cb9 ("clk: mediatek: mt8173: Break down clock drivers and allow module build")
-Signed-off-by: Luca Leonardo Scorcia <l.scorcia@gmail.com>
----
-This issue was identified by Sashiko while I was working on the mt8167
-apmixedsys, but it is present on the current mt8173 driver too.
+Critical: 0 · High: 0 · Medium: 1 · Low: 0
 
- drivers/clk/mediatek/clk-mt8173-apmixedsys.c | 2 ++
- 1 file changed, 2 insertions(+)
+If you believe none of the issues are legitimate, please reply to each
+issue of Medium severity or higher and explain why the AI is wrong.
+If any of them are legitimate and you plan to respin, please let patchwork
+know by including "pw-bot: cr" as a separate line at the end of your reply
+(one such reply per series is enough).
 
-diff --git a/drivers/clk/mediatek/clk-mt8173-apmixedsys.c b/drivers/clk/mediatek/clk-mt8173-apmixedsys.c
-index d7d416172ab3..65dc4489a09c 100644
---- a/drivers/clk/mediatek/clk-mt8173-apmixedsys.c
-+++ b/drivers/clk/mediatek/clk-mt8173-apmixedsys.c
-@@ -179,6 +179,8 @@ static int clk_mt8173_apmixed_probe(struct platform_device *pdev)
- 	if (r)
- 		goto unregister_ref2usb;
- 
-+	platform_set_drvdata(pdev, clk_data);
-+
- 	return 0;
- 
- unregister_ref2usb:
+- [Medium] The two AN8855 binding examples disagree on how the internal
+  PHYs are accessed.
+
+--
+
+dt-bindings: mfd: Document support for Airoha AN8855 Switch SoC
+
+This commit adds a YAML binding for the Airoha AN8855 Switch SoC. The SoC
+exposes an Ethernet switch, an eFUSE NVMEM provider and internal Ethernet
+PHYs. The example puts the internal PHYs on a nested mdio node.
+
+> diff --git a/Documentation/devicetree/bindings/mfd/airoha,an8855.yaml b/Documentation/devicetree/bindings/mfd/airoha,an8855.yaml
+> new file mode 100644
+> index 0000000000000..48127e956c965
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/mfd/airoha,an8855.yaml
+> @@ -0,0 +1,176 @@
+
+[ ... ]
+
+> +            mdio {
+> +                #address-cells = <1>;
+> +                #size-cells = <0>;
+> +
+> +                internal_phy1: ethernet-phy@1 {
+> +                  compatible = "ethernet-phy-idc0ff.0410",
+> +                               "ethernet-phy-ieee802.3-c22";
+
+[Severity: Medium]
+This example gives the internal PHYs the ethernet-phy-ieee802.3-c22
+compatible. The PHY binding added earlier in this series uses the C45
+compatible for the same PHY ID:
+
+Documentation/devicetree/bindings/net/airoha,an8855-phy.yaml:
+        ethernet-phy@1 {
+            compatible = "ethernet-phy-idc0ff.0410",
+                         "ethernet-phy-ieee802.3-c45";
+
+Which of the two is correct?
+
+The PHY binding selects on ethernet-phy-idc0ff.0410, so it also applies
+to the PHY nodes nested here. Its $ref to ethernet-phy.yaml accepts both
+c22 and c45, which means dt_binding_check won't catch the mismatch.
+
+Later in the series, the MFD driver puts each PHY on a bus created with
+devm_mdio_regmap_register(). That bus only provides C22 accessors:
+
+drivers/net/mdio/mdio-regmap.c:devm_mdio_regmap_register()
+    mii->read = mdio_regmap_read_c22;
+    mii->write = mdio_regmap_write_c22;
+
+Would a board DT that copies the PHY binding example end up on this path?
+
+an8855_core_probe()
+  fwnode_mdiobus_register_phy()      /* is_c45 is true */
+    get_phy_device(bus, addr, true)
+      get_phy_c45_ids()
+        get_phy_c45_devs_in_pkg()
+          mdiobus_c45_read()
+            __mdiobus_c45_read()     /* -EOPNOTSUPP, no read_c45 */
+
+That error turns into -EIO. an8855_core_probe() then jumps to
+err_put_fwnodes, so the switch, eFUSE and PHYs never get registered.
+
+The switch binding says its registers are reached by configuring the PHY
+page. That also points to C22 access.
+
+Should the PHY binding example use ethernet-phy-ieee802.3-c22, or drop the
+C45 compatible, so the two bindings agree?
+
 -- 
-2.43.0
-
+Sashiko AI review · https://netdev-ai.bots.linux.dev/sashiko/#/patchset/20261009161102.38961-1-ansuelsmth%40gmail.com
 
