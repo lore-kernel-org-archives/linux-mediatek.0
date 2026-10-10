@@ -4,105 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4F352CA6004
-	for <linux-mediatek@archiver.kernel.org>; Sat, 10 Oct 2026 04:41:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5D95CCA6004
+	for <linux-mediatek@archiver.kernel.org>; Sat, 10 Oct 2026 05:33:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Message-ID:Date
+	:Cc:To:From:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=sNrVsnb4FmKFTXfrSdVYo8TWlLsGj3AF2yF7SV7KZcs=; b=YqewMDDe5+qX/OhXQ/sfvabH2Z
-	KFl2dMNE+/O0JiIU9byWobklUzi8e3YMw625F3fHv+LIllyAvGyUplFGivZym162TzxNyGwrUBVVb
-	d86noylKiYi0v1rrGxoln5CCtx4K2Ucw6c76VtI/zqPAZTu5ngUWXx+I7OrFCT+rDRRGkPhjrCj8b
-	AOLgLKOOPf2gWSf8pVIiawhdV0fVAWIc4zrRGFdhk4b6vHsPichu1rkUDoHMJ8d+k4oYx/THJi86V
-	AkhCZULwMRDxt/VGPOUdf2Lle5U1HgqvJd1+qk8XktPtRH3k3T0eVjw1/WM2CaAooTYGOlDzMx4L8
-	9PeMzaLw==;
+	bh=ezlF0Xgn0ovcnr5QHVCWVve1aSdkeHaJOGXX2JmGseI=; b=pKSPNoLopnYbMQqSd/uIq5h1cw
+	mVq6eTVaCVAitAAm7WzyH4IyL2fuGIZRpXNRNoNY6PbOhEn+UHS/3tmBm26JYb2l/zPV5C5ybcrCB
+	8CxyiCjvcB1kGuBqZwaNkAjMkvNqTXiNYzCAOOGiZ2zoWIV/liBC5J1yFwqimCNOQDcrf4x5/zeAv
+	n14YhGunFWEvg3xUylygkPNQqHSNBTj1NwJ3e1WGUb9juI+5ARULZZlaRRg7YEIR/2/fw4XKuTN+v
+	zch9+FKRPbvOITLJq0ARtm0/SAckLpOzIXKiOahylOa+98Iy9Rm/SKFanaCD5OEs5n6JYUjXVULPe
+	kNqqA1QQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xFOtQ-00000007WK1-3qSG;
-	Sat, 10 Oct 2026 04:41:08 +0000
-Received: from mail-pl1-x632.google.com ([2607:f8b0:4864:20::632])
+	id 1xFPiL-00000007YCT-0cxO;
+	Sat, 10 Oct 2026 05:33:45 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xFOtP-00000007WJN-17va
-	for linux-mediatek@lists.infradead.org;
-	Sat, 10 Oct 2026 04:41:08 +0000
-Received: by mail-pl1-x632.google.com with SMTP id d9443c01a7336-2cfbbdfa60bso2073425ad.3
-        for <linux-mediatek@lists.infradead.org>; Fri, 09 Oct 2026 21:41:06 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1791607266; x=1792212066; darn=lists.infradead.org;
-        h=content-type:content-transfer-encoding:mime-version:references
-         :in-reply-to:message-id:date:subject:cc:to:from:from:to:cc:subject
-         :date:message-id:reply-to:content-type;
-        bh=sNrVsnb4FmKFTXfrSdVYo8TWlLsGj3AF2yF7SV7KZcs=;
-        b=dWfaccRXCwAX3Y3HtDxZGN017YbRwuZLV1wAuFoicmR64CnuuPiYarePiL3Xd28ZDQ
-         3/ve/zawbuYov+t9aMhA/vUz1vv8+RliYXuA9ZOQSSZSuLVEva1z99jDHdFVQn/VGNkf
-         cRD2qEo/jAbIxztfX5n7QxkcTjCMikH0M70ToEvC049xJWSrq5tIbUDfXMCAQt8IIagV
-         JKsdM0O91shx+1e/BPti3kV0pZc5rFy2lz3PVmL3aK3YFXfUKlbKT+AoFAIfS+g5tYAk
-         0AnYcifE3VMXoN3pN9Jvr/q8pFcNGRbCsE+nnllWrPI0j6QLT2KWe5rG9dcHcsGRmQNk
-         u3WA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1791607266; x=1792212066;
-        h=content-type:content-transfer-encoding:mime-version:references
-         :in-reply-to:message-id:date:subject:cc:to:from:x-gm-gg
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
-         :content-type;
-        bh=sNrVsnb4FmKFTXfrSdVYo8TWlLsGj3AF2yF7SV7KZcs=;
-        b=DppKRUWuRES9ykM0BrFuH9D3783zI96CScygo4jBrL1Mqmk1PmW412UZyMI3LDjz20
-         qUWPn3eqZjNi64f56AqPrp7END+oTpY5iz8H/c+0/eWhP8riUodDQ+oXFUDFEgMpMHU5
-         rgpK41WKqiJwoKia2QEwKRWdK5AHkAphGqk8jeoUKHPrRuw80+pm65DCV+CRzKQ4CHA1
-         VQu52zni6mIw7UO24NiYPrFNVFZK0fHGJcuRbiZ9KNp0GR+zFyVkawQUsGYYg/Cafw4d
-         RLxVTFXxapj+Q3BZJbfoH62+7aClMiVXLcpt14VXUVMorG6F2i8V4hoChWe9HB7Rp6pc
-         3hVw==
-X-Forwarded-Encrypted: i=1; AKwUvBy/M97/YzsrQoGZc9QqMeEIUuZLtzpXfC+Sc5kNLlKDxdPODQZSdXStRxZRkvFz44+LVW3hOARXQSsXld0mDw==@lists.infradead.org
-X-Gm-Message-State: AFq9FYL+an1Lme93zYv9dh3WG2FG3noZlDJqXGEbEv2b2Dvw2JUUV981
-	c8exKMYWhCRLhNlHTt4XOYut7Z54XSlhfiYaGD01hi6rjYDNhYIY0HJv
-X-Gm-Gg: AYBFou0I9UOVaJFuR3ZvvKlx6nkENKSEPyQonaZPwi7FfBJx7qAXY29IdiQmAFLwiPA
-	sWYuqr0gH+KWKmOTuEFDAHueg0LEKGmb4IJgbr7+vwoRh8VI9oVQFXOZffyEI6/xVeI/Myk9qDc
-	cgGzQ69oLFc7YzSu8P63W64XwwYCUbQ/4YvTWg+DR036aWLHR//hoGLoPHd7X64y7Tq3XSQ3zXk
-	8LmkMp2rfg5LqvvqTE6QP/IhomnFvBD6zGMAOPDoqDhqGfWqomVlkVODQdJwW4xbOODrAc2Mdz1
-	6IzxFbvX2XBt4ZWjwsOGat1zw/lz1HgRoSHqFuges6jlJ59RQilCyA2kuQpI3uyhmywLDIcyaLp
-	nrVU6tlqb2IPMOf+RO2Y/+5vsVYmTh5xnjnHyPDxsaBGMiJdXOxCEq+B7HjbSj1a3SQGuHqz3PM
-	LWly5w7lEl3KGjH2I+wZ4/ChQXgAX95mVQWhulyzYQjyZxrzaflLlrMPDgoJycmwzGb+NJkRYff
-	P6Xpg5E23SKeeqRLYBcjZwUh8zKqfyAaUEqpdimlxP3jFk1l2nQFnD2co/KcliEegWpoX9RqMrB
-	R7FLtZtICQzHK+H/94oTd2cxLIMvJ4Gb7cNwiZZOOZIbbswlzGc=
-X-Received: by 2002:a17:903:1a0e:b0:2dd:8639:9931 with SMTP id d9443c01a7336-2e842ab8200mr30793065ad.19.1791607266248;
-        Fri, 09 Oct 2026 21:41:06 -0700 (PDT)
-Received: from setsuna.localnet ([2403:581e:d87e:0:fc2d:ed31:e80e:412d])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-2e8422e171bsm19910975ad.73.2026.10.09.21.40.56
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 09 Oct 2026 21:41:05 -0700 (PDT)
-From: James Calligeros <jcalligeros99@gmail.com>
-To: Cezary Rojewski <cezary.rojewski@intel.com>
-Cc: asahi@lists.linux.dev, linux-sound@vger.kernel.org,
- patches@opensource.cirrus.com, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, Hector Martin <marcan@marcan.st>,
- Sasha Finkelstein <k@chaosmail.tech>, David Rhodes <david.rhodes@cirrus.com>,
- Richard Fitzgerald <rf@opensource.cirrus.com>,
- Martin =?UTF-8?B?UG92acWhZXI=?= <povik+lin@cutebit.org>,
- Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>,
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>, Jaroslav Kysela <perex@perex.cz>,
- Takashi Iwai <tiwai@suse.com>, Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Shenghao Ding <shenghao-ding@ti.com>, Kevin Lu <kevin-lu@ti.com>,
- Baojun Xu <baojun.xu@ti.com>, Sen Wang <sen@ti.com>,
- Sven Peter <sven@kernel.org>, Janne Grunau <j@jannau.net>,
- Neal Gompa <neal@gompa.dev>
-Subject: Re: [PATCH v2 09/21] ASoC: apple: Add macaudio machine driver
-Date: Sat, 10 Oct 2026 14:40:54 +1000
-Message-ID: <l_pd6lBHQaWNYoohhfxhFw@gmail.com>
-In-Reply-To: <3698d260-13c5-4050-8f03-61f7b7185514@intel.com>
-References: <20261004-macaudio-v2-0-7b47ed6335a8@gmail.com>
- <20261004-macaudio-v2-9-7b47ed6335a8@gmail.com>
- <3698d260-13c5-4050-8f03-61f7b7185514@intel.com>
-MIME-Version: 1.0
-Content-Transfer-Encoding: quoted-printable
+	id 1xFPiE-00000007YBx-3PXD;
+	Sat, 10 Oct 2026 05:33:42 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by sea.source.kernel.org (Postfix) with ESMTP id 4507143E43;
+	Sat, 10 Oct 2026 05:33:38 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8ED5A1F000FF;
+	Sat, 10 Oct 2026 05:33:37 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1791610418;
+	bh=ezlF0Xgn0ovcnr5QHVCWVve1aSdkeHaJOGXX2JmGseI=;
+	h=Subject:From:To:Cc:Date:In-Reply-To:References;
+	b=Yvi1VX5ffzPlh632ONR69e+gnig6iOes0XEXawTf2MYpJb2vwGRbjn2Umq+CAyyQq
+	 +gbfreljITXYvyPA0E6NAcKjEIypLZ7VUJhciMYCYmzTb+10etufXTkBwy6jQG3mAP
+	 yhYaSEZjz6KJMzrOyREueO3iWc3RyAG6GsDYsq/5NtNOMu20TtVFZkHoYOT/vhUqIQ
+	 kHfJdvxAoXd2YNhHZji90Y1AlwpceLGtJo7Et++N5ZByhuX7j5ixd+Vq2AxNfhyxiP
+	 9AJ3YwqbICN9yIT+AqLU3EMSc7h1zKIvLFcGt791XRkCdojtt1Yv/lpBIOv7Snnsfr
+	 vyqldFYNMhP3A==
+Subject: Re: [PATCH net v2] net: airoha: keep PPE offload when NPU refuses flow stats
+From: netdev-bot+sashiko@kernel.org
+To: sayantann11@gmail.com
+Cc: netdev@vger.kernel.org, lorenzo@kernel.org, andrew+netdev@lunn.ch,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ bread.hsu@airoha.com, sayantan.nandy@airoha.com, kuba@kernel.org
+Date: Sat, 10 Oct 2026 05:33:37 +0000
+Message-ID: <179161041702.434549.16966823821916973097@kernel.org>
+In-Reply-To: <20261009050322.39060-1-sayantann11@gmail.com>
+References: <20261009050322.39060-1-sayantann11@gmail.com>
+X-sashiko-severity: Medium
 Content-Type: text/plain; charset="utf-8"
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261009_214107_370198_13B06829 
-X-CRM114-Status: GOOD (  16.36  )
+Content-Transfer-Encoding: 8bit
+MIME-Version: 1.0
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -117,49 +69,133 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi,
+Thank you for your contribution! Sashiko AI review found 2 potential
+issue(s) to consider.
 
-On Friday, 9 October 2026 9:52:09=E2=80=AFpm Australian Eastern Standard Ti=
-me Cezary=20
-Rojewski wrote:
-> macaudio_dpcm_hw_params()
-> macaudio_be_hw_free()
-> 	both can access the card from the substream/dai without
-> 	relying on the ma-context
->=20
-> macaudio_parse_of()
-> macaudio_parse_of_be_dai_link()
-> 	called in context which creates the very card
+Critical: 0 · High: 0 · Medium: 1 · Low: 1
 
-I have fixed all of these by copying what rockchip/rockchip_max98090.c
-does to initialise the card, however
+If you believe none of the issues are legitimate, please reply to each
+issue of Medium severity or higher and explain why the AI is wrong.
+If any of them are legitimate and you plan to respin, please let patchwork
+know by including "pw-bot: cr" as a separate line at the end of your reply
+(one such reply per series is enough).
 
-> macaudio_vlimit_enable_timeout()
-> macaudio_vlimit_disable_timeout()
-> macaudio_vlimit_update()
-> 	called in context of delayed part of the trigger() callback.
-> 	I'd need more information on the trigger() implementation of
-> 	yours to present a solution. See the comments below.
+- [Medium] This patch makes flow_stats_cap a plain bool that can change
+  at runtime.
+- [Low] In airoha_regs.h, the new PSE_FC_CFG (0x0098) and
+  PSE_PORT6_SHARE_DIS defines are placed between PSE_FQ_CFG (0x008c) and…
 
-are slightly more difficult to deal with. These are called from workqueues
-which only have reference to the driver data struct. Other than keeping a
-pointer to the card around, I'm not sure how else to deal with this other
-than keeping a pointer to card around in the driver data struct.
+--
 
-> Please correct me if I'm wrong but it seems the scheduled work does
-> speaker-volume operations only. Moreover, it seems that
-> ->lock_update_work may schedule a follow up work in form of
-> ->lock_timeout_work. Are you sure trigger() is the right place to do
-> volume-control in delayed manner?
+net: airoha: keep PPE offload when NPU refuses flow stats
 
-The intention here is to activate the timeout when the stream starts
-so that if speakersafetyd dies at any point during playback, the speaker
-volume(s) are limited to prevent damage. We only want this running when
-speaker playback starts and we need to disable it when that playback stops,
-so trigger() seems like the natural place for this.
+This patch makes NPU flow statistics an optional capability, tracked in
+ppe->flow_stats_cap, so PPE offload keeps going when ppe_init_stats()
+fails. It also treats a zero npu_stats_addr from the firmware as a
+refusal. When flow stats are available, it clears PSE_PORT6_SHARE_DIS.
 
-James
+> diff --git a/drivers/net/ethernet/airoha/airoha_ppe.c b/drivers/net/ethernet/airoha/airoha_ppe.c
+> index 92611802801ea..0957f331478a6 100644
+> --- a/drivers/net/ethernet/airoha/airoha_ppe.c
+> +++ b/drivers/net/ethernet/airoha/airoha_ppe.c
 
+[ ... ]
 
+> @@ -1456,8 +1456,11 @@ static int airoha_ppe_offload_setup(struct airoha_eth *eth)
+>  	if (ppe_num_stats_entries > 0) {
+>  		err = npu->ops.ppe_init_stats(npu, ppe->foe_stats_dma,
+>  					      ppe_num_stats_entries);
+> -		if (err)
+> -			goto error_npu_put;
+> +		if (err) {
+> +			dev_warn(eth->dev, "NPU refused flow stats (%d)\n",
+> +				 err);
+> +			ppe->flow_stats_cap = false;
+> +		}
+>  	}
+>  
+>  	airoha_ppe_hw_init(ppe);
 
+[Severity: Medium]
+If ppe_init_stats() fails here, for example through the new -ENOSPC path
+in airoha_npu_ppe_stats_setup(), npu->stats is never ioremapped and stays
+NULL. This path then clears flow_stats_cap and continues on to:
+
+	airoha_ppe_hw_init(ppe);
+	airoha_ppe_foe_flow_stats_reset(ppe, npu);
+
+	rcu_assign_pointer(eth->npu, npu);
+
+That publishes eth->npu while npu->stats is still NULL. Before this patch
+that could not happen, because any failure jumped to error_npu_put.
+
+Can this race with the debugfs reader? airoha_ppe_debugfs_foe_show()
+calls airoha_ppe_foe_entry_get_stats() without taking flow_offload_mutex.
+The entries and bind files are created in airoha_ppe_init(), before
+offload setup runs.
+
+airoha_ppe_foe_entry_get_stats() reads the plain flow_stats_cap before it
+takes rcu_read_lock():
+
+drivers/net/ethernet/airoha/airoha_ppe.c:airoha_ppe_foe_entry_get_stats() {
+	ppe_num_stats_entries = airoha_ppe_get_total_num_stats_entries(ppe);
+	if (ppe_num_stats_entries < 0)
+		return;
+	...
+	rcu_read_lock();
+
+	npu = rcu_dereference(eth->npu);
+	if (npu) {
+		...
+		memcpy_fromio(&npu_stats, &npu->stats[index],
+			      sizeof(*npu->stats));
+	...
+}
+
+Here is one interleaving:
+
+1. The reader sees flow_stats_cap == true while setup is still waiting in
+   the stats mailbox.
+2. The reader is preempted.
+3. Setup clears the flag and publishes eth->npu.
+
+Would the reader then resume, see a non-NULL npu, and call
+memcpy_fromio() through a NULL-based iomem pointer?
+
+Would it be safer to check npu->stats after rcu_dereference(eth->npu)?
+Another option is to settle the capability before any reader can see it.
+
+[ ... ]
+
+> diff --git a/drivers/net/ethernet/airoha/airoha_regs.h b/drivers/net/ethernet/airoha/airoha_regs.h
+> index 442b48c9b991e..aee06c0585867 100644
+> --- a/drivers/net/ethernet/airoha/airoha_regs.h
+> +++ b/drivers/net/ethernet/airoha/airoha_regs.h
+> @@ -72,6 +72,8 @@
+>  #define PSE_CFG_OQ_RSV_MASK		GENMASK(13, 0)
+>  
+>  #define PSE_FQ_CFG			0x008c
+> +#define PSE_FC_CFG			0x0098
+> +#define PSE_PORT6_SHARE_DIS		BIT(22)
+>  #define PSE_FQ_LIMIT_MASK		GENMASK(14, 0)
+
+[Severity: Low]
+This isn't a bug, but the new defines sit between PSE_FQ_CFG and its
+field mask PSE_FQ_LIMIT_MASK. As a result, PSE_FQ_LIMIT_MASK now reads as
+a field of PSE_FC_CFG. Its only user is
+airoha_fe_set_pse_queue_rsv_pages():
+
+	fq_limit = airoha_fe_get(eth, PSE_FQ_CFG, PSE_FQ_LIMIT_MASK);
+
+The 0x0098 offset also now comes before REG_FE_PSE_BUF_SET (0x0090) and
+REG_PSE_SHARE_USED_THD (0x0094).
+
+Could these defines go after REG_PSE_SHARE_USED_THD and its masks, so the
+offsets stay in ascending order?
+
+>  
+>  #define REG_FE_PSE_BUF_SET		0x0090
+
+-- 
+Sashiko AI review · https://netdev-ai.bots.linux.dev/sashiko/#/patchset/20261009050322.39060-1-sayantann11%40gmail.com
 
