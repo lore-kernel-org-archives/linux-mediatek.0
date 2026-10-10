@@ -4,77 +4,107 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 45B89CA9ECA
-	for <linux-mediatek@archiver.kernel.org>; Sat, 10 Oct 2026 23:05:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 22E36CA9ECA
+	for <linux-mediatek@archiver.kernel.org>; Sat, 10 Oct 2026 23:55:41 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=LWAleCpYBlToJ7/WPCLhRt8yE2399HoszrhXc5+pn3Q=; b=GVKwSGDhYY2tVJSPrR0uuKCi2A
-	25orYJqSZAK45/qSoh5kjrccDt3BtqJfnN7e1+0nUCH3RL7WVzBhYI1OD1DyVKbvL22KrN/GozSx/
-	yDNfYTxjT9Aopc/TP4fIvT9CtBIFL1UtPXuZf2IP6YzNvqso9kgfH0wsqkkHIlsi7P7wJK0CdqGAZ
-	9uDBvFBo7bjdR4TkULi3G85xvLpupWhuOzw9jYLrZ8krBXVcxmFIjttCmi56zdLZ7PSYCVEIzc1Bb
-	FCrZdP97EWyyPovxkSajMzNm8Zkba4WpAEv1mWfyZ9f/mcg4JSTvtRIqY1qRDMtvk8eTq/opXp9So
-	Zsba491w==;
+	bh=9FybNLzC2qT6eMhACQiNU/7Tni+cNIjGAb7dFyWED4A=; b=XSmXBGQ/bJMI/Pu9RiciwvhwvI
+	5sFi4PJUQCAhZD1nCT1CM+59k5PAsBG9qSfRhnyxiZFIjRmjaw+B3pWcUu6aKFhHfhb+8VjHtCV2Q
+	dAcw/KTCuy1/8rRpann24wrv0JLx6DZVFT9mZr6kiEYwrFKx6NsBTukXx+u1fu/l9Wnwp0SqHSWMp
+	nv5Q1GK6oUORYvpz4Hn3uX5sTI/sfmnMlu8fCPFLG/gtK91JRDq+B36tfpGuV/FNEp1DcVX8gYdw9
+	aBfKXxrLpBr7btyH0pK2dxQ7ZJfAp8BQqpO4KKZ1rBzFYcVVWMHU7TpOeW6ci5S9Vcc3EXJxHPgHg
+	nIaxZkzw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xFg8V-00000008WWu-3qac;
-	Sat, 10 Oct 2026 23:05:53 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1xFgug-00000008Yt4-2HZT;
+	Sat, 10 Oct 2026 23:55:39 +0000
+Received: from mail-qk2-x0b.google.com ([2607:f8b0:4864:34::b])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xFg8G-00000008WUO-3r1y;
-	Sat, 10 Oct 2026 23:05:37 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 8A8C4602D1;
-	Sat, 10 Oct 2026 23:05:35 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 944071F000FF;
-	Sat, 10 Oct 2026 23:05:30 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1791673535;
-	bh=LWAleCpYBlToJ7/WPCLhRt8yE2399HoszrhXc5+pn3Q=;
-	h=From:To:Cc:In-Reply-To:References:Subject:Date;
-	b=LFn7uR61sXuM6F1QlLDwMGmHabCCyRsEvfFcMN3pktoGVHwFIXKYtE5EdTTqbYmXd
-	 4le7J3X74Euaxae+4+TUGuh97jL9qZVXBR6sYN049bu7IrCzhOWJIzVQ1Oru76qYdq
-	 oIjh3o7OEOi18V1B4yElYYTxwSs5giyp+uirMsmquG3WH1PUFsKjrsnnivSft4Kkc4
-	 SBwwpfsMiX5zB3tS2qCjQPU6jFChE3PmdWCqw3/naMdWg8Z3q45s0vzc3Xkg2HYCFI
-	 gJjaYoHW464PZtyrcxpWCfrjBKx4I8JXwlK/nO9BtEg72++03LD/C/5QIyeEDihceb
-	 txcMIV07pKPfA==
-From: Mark Brown <broonie@kernel.org>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Trevor Wu <trevor.wu@mediatek.com>, phucduc.bui@gmail.com
-Cc: Liam Girdwood <lgirdwood@gmail.com>, 
- Matthias Brugger <matthias.bgg@gmail.com>, Jaroslav Kysela <perex@perex.cz>, 
- Takashi Iwai <tiwai@suse.com>, 
- Kuninori Morimoto <kuninori.morimoto.gx@renesas.com>, 
- cassiogabrielcontato@gmail.com, Haotian Zhang <vulab@iscas.ac.cn>, 
- Christian Marangi <ansuelsmth@gmail.com>, 
- Cezary Rojewski <cezary.rojewski@intel.com>, 
- Cyril Chao <Cyril.Chao@mediatek.com>, Tuo Li <islituo@gmail.com>, 
- Rosen Penev <rosenp@gmail.com>, Garlic Tseng <garlic.tseng@mediatek.com>, 
- Alexandre Mergnat <amergnat@baylibre.com>, 
- Dan Carpenter <error27@gmail.com>, linux-sound@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
- linux-kernel@vger.kernel.org
-In-Reply-To: <20261006101606.54079-1-phucduc.bui@gmail.com>
-References: <20261006101606.54079-1-phucduc.bui@gmail.com>
-Subject: Re: [PATCH 0/4] ASoC: mediatek: Return 0 from FE startup on
- success
-Message-Id: <179145062463.2423942.16590148509796512242.b4-ty@b4>
-Date: Thu, 08 Oct 2026 11:10:24 +0200
+	id 1xFgua-00000008Yrv-2Xew
+	for linux-mediatek@lists.infradead.org;
+	Sat, 10 Oct 2026 23:55:34 +0000
+Received: by mail-qk2-x0b.google.com with SMTP id d75a77b69052e-5350beb1d49so8784841cf.1
+        for <linux-mediatek@lists.infradead.org>; Sat, 10 Oct 2026 16:55:31 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20251104; t=1791676531; x=1792281331; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to:content-type;
+        bh=9FybNLzC2qT6eMhACQiNU/7Tni+cNIjGAb7dFyWED4A=;
+        b=RS0vSO3yI+hW1ff1AtOO7sTYId4GEfv004pAY6tkU5fKvZ6AN5hWgQBZLCd2l4lBeP
+         KTRGpr7J0htwzc4xJAutt0+eQSMvOBKJKP/8mx57XQML3DlpWZSZvkOh4C/iX/vq35Fj
+         o0vF/rDCoAV+//jlusLdSVf9z/C1TGIehHNdM/H4llLhEGBThSETqYGg2ot54mft/PMC
+         FA7fpEBVnoUof3VZACDoig8i2zENCssdg4eFdB5POMfOumERZET2nSZdeGdJh7RsMRFA
+         m0UmzXzKDpemFjc8uRLtcqyiY/Hp7n3nQeoko3e1rQV0iG2OfTPPpyAUdtLkghkUtlnu
+         yvig==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20260707; t=1791676531; x=1792281331;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
+         :to:cc:subject:date:message-id:reply-to:content-type;
+        bh=9FybNLzC2qT6eMhACQiNU/7Tni+cNIjGAb7dFyWED4A=;
+        b=Dfl6660mf5675dQr3tZUrFkjgLH+bYyuH1y5/NU8LvqqPXPzuvexdSe28b5/hWYW2k
+         s2Pyk3HuplFAwDrnpTNDmd9jdTXBXmzte5J2Gba2Z0hT3kiam713/q/W2ZrSsWI8WfBb
+         Ef9woTgQ4CvI6aes8Pz5iGI8/inZWuv9kKlevxprAyuNALZ2CLYOQjjV7HWjdQg3bLNy
+         xxTPmZWxCx04CdpA4jdaclx6ihyK3W/ftDwAdhUFMpxsn5XCk4gtkaO3g9uKAt6refia
+         FDkR466ob2X6i5XIndAJC1rAdcOA5RQ4oQ/VWMtfjHhKPgAWmmO4xcfhdVv5euso+Z0N
+         H4HQ==
+X-Forwarded-Encrypted: i=1; AKwUvBxY4eFYpMG75ZStTeLK2UWhAzh6MZTBTqCx7Ih0lINO5eBENS2mY+IsV6QdJLy6YQ5MuRgHzuV2vVM8SLC3qw==@lists.infradead.org
+X-Gm-Message-State: AFq9FYKtvrZh8BlYGRZpZCvDzdeSDGAKDftIeGn1Y0s58sJmPYNbrvzR
+	1vvbTp9Ol8jkjbtx+ISFNwsR/8h7u0haxV+fIThJOupt/+U1CXwH1f8q
+X-Gm-Gg: AYBFou0gdKJOu3i/NmPhVCO437WsDvMcTSDbCIUZ8zJJpI61HGfG/lIzXdISoiGSFpF
+	88vdOg1Ie3TxFTCHxjEMnehHa4N+fDQxJFFeK3P9qDrJ37+/ql5XEYcudL/inCoOCExHir0KSXL
+	BodV2vtOtebzgz7oaAt+dUKWrzPW5ZC8F3uKCvhNORUtz64TIgyvzEMJk80V7+PAYw96TZupxtv
+	as2x1t2TJwmlo9qTTwtwdBJzWZFWf0CgDSHBzeiGiQ71Ba5+q7xhPQvm62qO5bxRyyMWTsG8P15
+	dHeeJL3abVYiyEnLVRWRhxvN2wKQgGyxKQW9V5Xz+TtthQcX710RTIggTp7jTTDjHcVTBR6KZp+
+	lEqskE2lK7JrPqASx1/deToNtFI3qc1bZrrI2cg8AqZrJCMhO6xJLjXZDsLabK0AEyq7B8jrAGk
+	5k17wZzV1VXhkbJvoqyy87LKF0uPN9ucdeAvqjTJ3eqq5ynzbvepJBRu0cm/sH+NcvQNY=
+X-Received: by 2002:a05:622a:1f8b:b0:533:96b4:8dd1 with SMTP id d75a77b69052e-5359faeacd8mr96963691cf.26.1791676530862;
+        Sat, 10 Oct 2026 16:55:30 -0700 (PDT)
+Received: from omarchy ([2601:804:8780:3df1:6ff:277e:31c7:ac13])
+        by smtp.gmail.com with ESMTPSA id d75a77b69052e-5359b755c35sm49184081cf.15.2026.10.10.16.55.27
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sat, 10 Oct 2026 16:55:29 -0700 (PDT)
+From: zoan37 <agentzoan@gmail.com>
+To: Kyrie Wu <kyrie.wu@mediatek.com>
+Cc: Tiffany Lin <tiffany.lin@mediatek.com>,
+	Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
+	Yunfei Dong <yunfei.dong@mediatek.com>,
+	Mauro Carvalho Chehab <mchehab@kernel.org>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Hans Verkuil <hverkuil@xs4all.nl>,
+	Nicolas Dufresne <nicolas.dufresne@collabora.com>,
+	Nathan Hebert <nhebert@chromium.org>,
+	Arnd Bergmann <arnd@arndb.de>,
+	Irui Wang <irui.wang@mediatek.com>,
+	George Sun <george.sun@mediatek.com>,
+	Neil Armstrong <neil.armstrong@linaro.org>,
+	Andrzej Pietrasiewicz <andrzejtp2010@gmail.com>,
+	Yilong Zhou <yilong.zhou@mediatek.com>,
+	linux-media@vger.kernel.org,
+	devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH v11 00/10] Enable video decoder & encoder for MT8189
+Date: Sat, 10 Oct 2026 19:55:18 -0400
+Message-ID: <20261010235518.1078376-1-agentzoan@gmail.com>
+X-Mailer: git-send-email 2.55.0
+In-Reply-To: <cover.1791623422.git.kyrie.wu@mediatek.com>
+References: <cover.1791623422.git.kyrie.wu@mediatek.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-X-Mailer: b4 0.17-dev
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1818; i=broonie@kernel.org;
- h=from:subject:message-id; bh=skJdmd3tUQHGVzD6TZQsGKOJkI7UvX0V36y4xyypgz4=;
- b=owGbwMvMwCWm/754w+YLFp2Mp9WSGLJOHdleNi2hpIbhRUL0FSYdlrW8e56+Onic74+E/DmTo
- 8eWc0gIdpSyMIhxMciKKbLEZXG/rC95vYbv4MI2mDmsTCBDGLg4BWAiP5cxMvSXKamwvzfYsz3n
- w2XGFztupbnJXpvpNPulI9vliSYzgxYyMrxpdFCYVvx7Y8v+Ksebos5y0ZtKry9ImtQq8Kl/30J
- JNhYA
-X-Developer-Key: i=broonie@kernel.org; a=openpgp;
- fpr=3F2568AAC26998F9E813A1C5C3F436CA30F5D8EB
+Content-Transfer-Encoding: 8bit
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20261010_165532_694114_A5F5C29B 
+X-CRM114-Status: GOOD (  13.17  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,51 +119,76 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, 06 Oct 2026 17:16:02 +0700, phucduc.bui@gmail.com wrote:
-> ASoC: mediatek: Return 0 from FE startup on success
-> 
-> From: bui duc phuc <phucduc.bui@gmail.com>
-> 
-> Hi all,
-> 
-> Some FE startup callbacks may return a positive value from constraint
-> helpers, but ASoC expects 0 on success. This can cause .shutdown() to be
-> skipped during rollback.
-> 
-> [...]
+Hi Kyrie,
 
-Applied to
+Thanks for the series. Test report from an MT8189 Chromebook (Lenovo
+IdeaPad Slim 3 Chromebook, board "quigon" of the skywalker family):
+next-20261008 with the other posted MT8189 series and this board's DT,
+plus MT8196 decoder v8, MT8196 encoder v8 and this v11 on top, and
+linux-firmware's mediatek/mt8189/scp.img (FW version e3c0782 Jan 30
+2026; identical to the image ChromeOS ships).
 
-   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-7.4
+VP9 decode: 240/240 frames bit-exact (1080p test stream through
+libva-v4l2-request, checked against software decoding).
 
-Thanks!
+H.264 decode: the SCP hangs (watchdog timeout) and every frame is wrong.
+The firmware has 'reserved' at the end of struct
+vdec_h264_slice_info_ext (after crc[8]), not after 'timeout'; with the
+current layout every slice parameter lands 8 bytes early. With only
+this change on top of v11, H.264 decodes 240/240 frames bit-exact:
 
-[1/4] ASoC: mediatek: common: return 0 from mtk_afe_fe_startup() on success
-      https://git.kernel.org/broonie/sound/c/5bbd6696d75e
-[2/4] ASoC: mediatek: mt8188: return 0 from mt8188_afe_fe_startup() on success
-      https://git.kernel.org/broonie/sound/c/b6b3dbee98f1
-[3/4] ASoC: mediatek: mt8189:return 0 from mt8189_fe_startup() on success
-      https://git.kernel.org/broonie/sound/c/f63317c826c4
-[4/4] ASoC: mediatek: mt8365: return 0 from mt8365_afe_fe_startup() on success
-      https://git.kernel.org/broonie/sound/c/240f11af9c80
+  	u16 timeout;
+ -	u32 reserved;
+  	u64 vdec_fb_va;
+  	u32 crc[8];
+ +	u32 reserved;
+  };
 
-All being well this means that it will be integrated into the linux-next
-tree (usually sometime in the next 24 hours) and sent to Linus during
-the next merge window (or sooner if it is a bug fix), however if
-problems are discovered then the patch may be dropped or reverted.
+I don't know which layout the MT8188/MT8195 firmware uses, so this may
+need to depend on the platform or the firmware.
 
-You may get further e-mails resulting from automated or manual testing
-and review of the tree, please engage with people reporting problems and
-send followup patches addressing any issues that are reported if needed.
+HEVC: MT8189 is pure single core, but the firmware capability makes the
+driver advertise HEVC_SLICE (and AV1). The HEVC backend only implements
+the LAT + core flow, and setting an HEVC format (here libva-v4l2-request
+probing its profiles when ffmpeg opened the VA-API device) sends an
+init message that crashes the SCP:
 
-If any updates are required or you are submitting further changes they
-should be sent as incremental updates against current git, existing
-patches will not be replaced.
+  mtk-scp 1c400000.scp: SCP watchdog timeout! 0x0
+  remoteproc remoteproc0: crash detected in scp: type watchdog
+  scp ipi 14 ack time out !
+   scp_ipi_send+0x2ec/0xd5c [mtk_scp_ipi]
+   vpu_dec_init+0xe0/0x29c [mtk_vcodec_dec]
+   vdec_hevc_slice_init+0x88/0x250 [mtk_vcodec_dec]
+   vidioc_vdec_s_fmt+0x2a8/0x450 [mtk_vcodec_dec]
 
-Please add any relevant lists and maintainers to the CCs when replying
-to this mail.
+Not advertising HEVC and AV1 on MTK_VDEC_PURE_SINGLE_CORE (clearing
+MTK_VDEC_FORMAT_HEVC_FRAME and MTK_VDEC_FORMAT_AV1_FRAME from
+dec_capability after reading it from the firmware) avoids it; that's
+what I run.
+
+H.264 encode (patches 9 and 10 on MT8196 encoder v8): works. A 720p30
+test pattern at 4 Mbit/s through ffmpeg's h264_v4l2m2m gives valid High
+profile H.264, 60/60 frames, about 49 dB PSNR against the source on the
+first frames.
+
+For patches 9 and 10:
+Tested-by: zoan37 <agentzoan@gmail.com>
+
+Two board-side notes from bringing this up, in case they help whoever
+writes the MT8189 DT and multimedia clocks: the VDE0 power domain needed
+the larb4 gate as a subsys clock ("vdec-0", as in ChromeOS's
+mt8189.dtsi), otherwise only the first decode after VDE0 powered up
+worked; and the VEN1 clock controller must not use runtime PM (VEN0
+then failed to prepare its subsys clock with -EACCES in the noirq resume
+phase, genpd marked it on anyway, and every resume warned about
+"already disabled" clocks).
+
+The board's patches and notes are at
+https://github.com/zoan37/lenovo-slim3-chromebook-omarchy
+
+The testing and the fixes were done with help from an AI assistant
+(Claude).
 
 Thanks,
-Mark
-
+zoan37
 
