@@ -4,94 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 73A05CA9EC5
-	for <linux-mediatek@archiver.kernel.org>; Sat, 10 Oct 2026 08:08:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id ADF8CCA6017
+	for <linux-mediatek@archiver.kernel.org>; Sat, 10 Oct 2026 08:36:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
 	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
 	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=/3VPvRSdYuSWm5k/oAdKI8FbgeswWe8hFqnm53gZ7iY=; b=0fnwHWipgmFJ3Z90SiziRpnLOY
-	ncjMrM8u3cj0xd25x4Wm0gjbLBHHytBIVltsHhkEUUOQr9I9f081ijUwoBnLUtN5iGqDSULgV2LUN
-	vffBIuTpBeRGsF3nINm6Xov4cYSqL52lbzlCkakLRof72uvKQpBbqqGLjhEAC5wZudZ/QrM3Q5IQA
-	3et9HqgNosLvgmh/jK897XftpugsiriCcCt8oaBeltzdM0KL5X/eejElzN0sDr/I2BAp+V9RVbr9U
-	Jnzbpb8rxYZFJSXspc6FA8p5aWycVkEqpDeYrBx28HjVN0o2SBqu5Y1TliKzICQ5T9mpcPwdS/j6L
-	XSrTd5/w==;
+	bh=LKdQhm5z4fHJ9MmkX5CPKKUnOd4BvwTrpIH7Df0H3GI=; b=dTRWjOJKiN0xqblbm8lMPaPJkx
+	DvT1QXfrirNIsPM0g7W1OBNOVWxA8xpDnuGc0X4W6T6/WJu0ILjVzG3jg8WprZ7Z3Ys5ccEXRm+3A
+	4/WAFkOHWYCoFIrjH1odLikDPoxO2JRHWmrn7R1UizsxDLg+13lMlwkvFNDQmj8TabAWSBmsDD5+3
+	8g/e4JjbX1MpNAFfM1PEkPPPl0fAYFu9qctHw402mo1AbMyuDtYcHPXhXRyHGKU1wjE2IVGvfpmdO
+	EkXNh/x8SJBX6BKa32LoF06JiatTUJUzUOfXgR4tz1isA8VAGocJCJA4unCOM6HEA7gI9i+6vKJnQ
+	B4/AKlEQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xFS7p-00000007dgl-08zj;
-	Sat, 10 Oct 2026 08:08:13 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
-	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xFS7Y-00000007dJc-2FSW;
-	Sat, 10 Oct 2026 08:07:56 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Type:Content-Transfer-Encoding
-	:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:
-	Sender:Reply-To:Content-ID:Content-Description;
-	bh=/3VPvRSdYuSWm5k/oAdKI8FbgeswWe8hFqnm53gZ7iY=; b=MbroaWrrgKF2dQXuMU5WeD2MKA
-	aAzzINAxoOR+DVWkqzhIyFnqvvHcPxwRQfcI2XWOdT0+ODMeEBqaItEGcgJswHMe7LL0UK3G1mxsS
-	UzYbh7eB5MahXN54nTq6sREPDChB+ar4iwpkiT9nHKPktZAgGU2vgyacJzSFJFjOQ0s0v+o6mm6MQ
-	+QLikuC7T0rfEkIAoioRm9S1/7aUra2jVkwV+kJ6RdeuNU5dnvXneVa2btprXxh1d9RmfQRdTt0Ib
-	qXLNtnUjAJBzHwpyFLE05elPVC8MsbbYZ9MjFdvx+qcl9tOC002Fiz8IxOcIHbX7YKaN2p9CcYLNo
-	b/W/XNkQ==;
+	id 1xFSZ9-00000007fTL-46AQ;
+	Sat, 10 Oct 2026 08:36:27 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
-	by desiato.infradead.org with esmtps (Exim 4.99.2 #2 (Red Hat Linux))
-	id 1xFS7U-0000000BvVg-45Qg;
-	Sat, 10 Oct 2026 08:07:55 +0000
-X-UUID: a7bc1c46c48111f1acbe4559397dec65-20261010
+	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
+	id 1xFSZ7-00000007fRj-3Cur;
+	Sat, 10 Oct 2026 08:36:26 +0000
+X-UUID: ab25ee6cc48511f1acbe4559397dec65-20261010
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=/3VPvRSdYuSWm5k/oAdKI8FbgeswWe8hFqnm53gZ7iY=;
-	b=hmcko8UGWDT5n1TerB0lHdwzG8TeUK3eFbYP9cYE9YG7ivjrSS1cA/xqgnrAH1YmlfhuQF7R1b1ovhyX7ozeNU4638dkTflXouAUW9ru04TRPr8fHOoI5YOnPd9owE2Tkafdih+fm0B7b2HmvpG8GiCSPYHe4QQJ8roezhyV6/k=;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=LKdQhm5z4fHJ9MmkX5CPKKUnOd4BvwTrpIH7Df0H3GI=;
+	b=FgblvUu8P5dNS2ufsUB1CjCLiGbVuGMjSXDQrEUArQJREZx3OZuqWbGTGbIkWNCP+r4tTSrD9aETfdVOQ3JTzRVcwW3M2z0raOVaPx9f8/65HbRk9E4d+pOkjT4jOwHHipwTowLk6vVwY0cdQp+VODcD0H4YK7k7DilXmGRYZt4=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.20,REQID:e6789c4e-d4fc-40a6-9b75-445637c573a7,IP:0,U
-	RL:25,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
-	N:release,TS:20
-X-CID-META: VersionHash:291e20b,CLOUDID:c6882e95-3103-4fdb-b79c-08de0e281a5d,B
-	ulkID:nil,BulkQuantity:0,SF:81|82|102|836|865|888|898,TC:-5,Content:0|15|5
-	0|99,EDM:-3,IP:nil,URL:97|99|83|106|11|81|1,File:130,RT:0,Bulk:nil,QS:nil,
-	BEC:-1,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-O-INFO: VERSION:1.3.20,REQID:4ca31e06-a281-4be9-a1fa-9b3910a96342,IP:0,U
+	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
+	:release,TS:-5
+X-CID-META: VersionHash:291e20b,CLOUDID:fb27edb8-514b-419b-be8a-53f1868a3ee6,B
+	ulkID:nil,BulkQuantity:0,SF:81|82|102|136|836|865|888|898,TC:-5,Content:0|
+	15|50|99,EDM:-3|-100,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:-1,COL
+	:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
 X-CID-BVR: 2,SSN|SDN
 X-CID-BAS: 2,SSN|SDN,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULN
+X-CID-FACTOR: TF_CID_SPAM_SNR
 X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: a7bc1c46c48111f1acbe4559397dec65-20261010
-Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
+X-UUID: ab25ee6cc48511f1acbe4559397dec65-20261010
+Received: from mtkmbs09n1.mediatek.inc [(172.21.101.35)] by mailgw02.mediatek.com
 	(envelope-from <kyrie.wu@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1311231139; Sat, 10 Oct 2026 01:07:36 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- MTKMBS14N1.mediatek.inc (172.21.101.75) with Microsoft SMTP Server
+	with ESMTP id 1134852112; Sat, 10 Oct 2026 01:36:20 -0700
+Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
+ mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.29; Sat, 10 Oct 2026 16:07:34 +0800
+ 15.2.2562.29; Sat, 10 Oct 2026 16:36:18 +0800
 Received: from gcnsap21.gcn.mediatek.inc (10.17.81.22) by
- mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.2562.29 via Frontend Transport; Sat, 10 Oct 2026 16:07:33 +0800
+ mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.2562.29 via Frontend Transport; Sat, 10 Oct 2026 16:36:16 +0800
 From: Kyrie Wu <kyrie.wu@mediatek.com>
-To: Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring <robh@kernel.org>,
+To: Tiffany Lin <tiffany.lin@mediatek.com>, Andrew-CT Chen
+	<andrew-ct.chen@mediatek.com>, Yunfei Dong <yunfei.dong@mediatek.com>, Mauro
+ Carvalho Chehab <mchehab@kernel.org>, Rob Herring <robh@kernel.org>,
 	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>,
 	Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>, Bin Liu <bin.liu@mediatek.com>,
-	kyrie wu <kyrie.wu@mediatek.corp-partner.google.com>, Hans Verkuil
-	<hverkuil@kernel.org>, irui wang <irui.wang@mediatek.com>, Nicolas Dufresne
-	<nicolas.dufresne@collabora.com>, <linux-media@vger.kernel.org>,
-	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>
-CC: Kyrie Wu <kyrie.wu@mediatek.com>
-Subject: [PATCH v18 12/13] dt-bindings: mediatek: Add MT8196 JPEG SMMU bindings
-Date: Sat, 10 Oct 2026 16:07:16 +0800
-Message-ID: <77ae5bfdedb1240420fd1aced446c9dfee38283e.1791614327.git.kyrie.wu@mediatek.com>
+	<angelogioacchino.delregno@collabora.com>, Kyrie Wu <kyrie.wu@mediatek.com>,
+	Nicolas Dufresne <nicolas.dufresne@collabora.com>, Ricardo Ribalda
+	<ribalda@chromium.org>, Kees Cook <kees@kernel.org>, Hans Verkuil
+	<hverkuil+cisco@kernel.org>, Fei Shao <fshao@chromium.org>, Haoxiang Li
+	<haoxiang_li2024@163.com>, Chen-Yu Tsai <wenst@chromium.org>, Laurent
+ Pinchart <laurent.pinchart+renesas@ideasonboard.com>, Tomasz Figa
+	<tfiga@chromium.org>, Philipp Zabel <p.zabel@pengutronix.de>, Benjamin
+ Gaignard <benjamin.gaignard@collabora.com>, Qianfeng Rong
+	<rongqianfeng@vivo.com>, Irui Wang <irui.wang@mediatek.com>, Jacopo Mondi
+	<jacopo.mondi@ideasonboard.com>, Fan Wu <fanwu01@zju.edu.cn>,
+	<linux-media@vger.kernel.org>, <devicetree@vger.kernel.org>,
+	<linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+	<linux-mediatek@lists.infradead.org>
+CC: Sakari Ailus <sakari.ailus@linux.intel.com>
+Subject: [PATCH v8 01/14] media: mediatek: vcodec: support vcp architecture
+Date: Sat, 10 Oct 2026 16:36:00 +0800
+Message-ID: <66c1928474ed08c2e8f0489086016e4bf33a725d.1791619742.git.kyrie.wu@mediatek.com>
 X-Mailer: git-send-email 2.43.0
-In-Reply-To: <cover.1791614327.git.kyrie.wu@mediatek.com>
-References: <cover.1791614327.git.kyrie.wu@mediatek.com>
+In-Reply-To: <cover.1791619742.git.kyrie.wu@mediatek.com>
+References: <cover.1791619742.git.kyrie.wu@mediatek.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261010_090753_668737_95FCECF8 
-X-CRM114-Status: GOOD (  17.98  )
+X-CRM114-CacheID: sfid-20261010_013625_816511_46FF4D46 
+X-CRM114-Status: GOOD (  13.24  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,140 +101,40 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Document the decoder and encoder phandles and describe the dedicated
-JPEG SMMU configuration syscon for MT8196.
+Some platforms expose the video codec through the VCP coprocessor.
+Use the VCP architecture when the VCP coprocessor is found.
 
 Signed-off-by: Kyrie Wu <kyrie.wu@mediatek.com>
+Reviewed-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
 ---
- .../media/mediatek,mt8195-jpegdec.yaml        | 16 ++++++++
- .../media/mediatek,mt8195-jpegenc.yaml        | 16 ++++++++
- .../mediatek/mediatek,mt8196-jpeg-smmu.yaml   | 41 +++++++++++++++++++
- MAINTAINERS                                   |  2 +
- 4 files changed, 75 insertions(+)
- create mode 100644 Documentation/devicetree/bindings/soc/mediatek/mediatek,mt8196-jpeg-smmu.yaml
+ drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_fw.h  | 1 +
+ .../platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.c      | 3 +++
+ 2 files changed, 4 insertions(+)
 
-diff --git a/Documentation/devicetree/bindings/media/mediatek,mt8195-jpegdec.yaml b/Documentation/devicetree/bindings/media/mediatek,mt8195-jpegdec.yaml
-index 28a9a9b..b1dccc3 100644
---- a/Documentation/devicetree/bindings/media/mediatek,mt8195-jpegdec.yaml
-+++ b/Documentation/devicetree/bindings/media/mediatek,mt8195-jpegdec.yaml
-@@ -73,6 +73,22 @@ patternProperties:
-       power-domains:
-         maxItems: 1
+diff --git a/drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_fw.h b/drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_fw.h
+index 300363a4..c1642fb0 100644
+--- a/drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_fw.h
++++ b/drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_fw.h
+@@ -14,6 +14,7 @@ struct mtk_vcodec_enc_dev;
+ enum mtk_vcodec_fw_type {
+ 	VPU,
+ 	SCP,
++	VCP,
+ };
  
-+      mediatek,smmu-config:
-+        $ref: /schemas/types.yaml#/definitions/phandle
-+        description:
-+          Phandle to the MT8196 JPEG SMMU configuration syscon used to
-+          program this decoder's GUSER_ID fields.
-+
-+    allOf:
-+      - if:
-+          properties:
-+            compatible:
-+              contains:
-+                const: mediatek,mt8196-jpgdec-hw
-+        then:
-+          required:
-+            - mediatek,smmu-config
-+
-     required:
-       - compatible
-       - reg
-diff --git a/Documentation/devicetree/bindings/media/mediatek,mt8195-jpegenc.yaml b/Documentation/devicetree/bindings/media/mediatek,mt8195-jpegenc.yaml
-index e2d772e..f099b5f 100644
---- a/Documentation/devicetree/bindings/media/mediatek,mt8195-jpegenc.yaml
-+++ b/Documentation/devicetree/bindings/media/mediatek,mt8195-jpegenc.yaml
-@@ -73,6 +73,22 @@ patternProperties:
-       power-domains:
-         maxItems: 1
- 
-+      mediatek,smmu-config:
-+        $ref: /schemas/types.yaml#/definitions/phandle
-+        description:
-+          Phandle to the MT8196 JPEG SMMU configuration syscon used to
-+          program this encoder's GUSER_ID fields.
-+
-+    allOf:
-+      - if:
-+          properties:
-+            compatible:
-+              contains:
-+                const: mediatek,mt8196-jpgenc-hw
-+        then:
-+          required:
-+            - mediatek,smmu-config
-+
-     required:
-       - compatible
-       - reg
-diff --git a/Documentation/devicetree/bindings/soc/mediatek/mediatek,mt8196-jpeg-smmu.yaml b/Documentation/devicetree/bindings/soc/mediatek/mediatek,mt8196-jpeg-smmu.yaml
-new file mode 100644
-index 0000000..2bc67a2
---- /dev/null
-+++ b/Documentation/devicetree/bindings/soc/mediatek/mediatek,mt8196-jpeg-smmu.yaml
-@@ -0,0 +1,41 @@
-+# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
-+%YAML 1.2
-+---
-+$id: http://devicetree.org/schemas/soc/mediatek/mediatek,mt8196-jpeg-smmu.yaml#
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
-+
-+title: MediaTek MT8196 JPEG SMMU configuration registers
-+
-+maintainers:
-+  - Kyrie Wu <kyrie.wu@mediatek.corp-partner.google.com>
-+
-+description:
-+  The MT8196 JPEG SMMU configuration register block contains the GUSER_ID
-+  fields used by the JPEG decoder and encoder hardware.
-+
-+properties:
-+  compatible:
-+    items:
-+      - const: mediatek,mt8196-jpeg-smmu
-+      - const: syscon
-+
-+  reg:
-+    maxItems: 1
-+
-+required:
-+  - compatible
-+  - reg
-+
-+additionalProperties: false
-+
-+examples:
-+  - |
-+    soc {
-+        #address-cells = <2>;
-+        #size-cells = <2>;
-+
-+        jpeg_smmu: syscon@38d0000 {
-+            compatible = "mediatek,mt8196-jpeg-smmu", "syscon";
-+            reg = <0 0x38d0000 0 0x1000>;
-+        };
-+    };
-diff --git a/MAINTAINERS b/MAINTAINERS
-index cc6a2d0..6e20f06 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -3164,6 +3164,7 @@ L:	linux-mediatek@lists.infradead.org (moderated for non-subscribers)
- S:	Maintained
- W:	https://mtk.wiki.kernel.org/
- C:	irc://irc.libera.chat/linux-mediatek
-+F:	Documentation/devicetree/bindings/soc/mediatek/mediatek,mt8196-jpeg-smmu.yaml
- F:	arch/arm/boot/dts/mediatek/
- F:	arch/arm/mach-mediatek/
- F:	arch/arm64/boot/dts/mediatek/
-@@ -16665,6 +16666,7 @@ F:	include/dt-bindings/memory/mt*-port.h
- MEDIATEK JPEG DRIVER
- M:	Bin Liu <bin.liu@mediatek.com>
- S:	Supported
-+F:	Documentation/devicetree/bindings/media/mediatek,mt8195-jpeg*.yaml
- F:	Documentation/devicetree/bindings/media/mediatek-jpeg-*.yaml
- F:	drivers/media/platform/mediatek/jpeg/
- 
--- 
-2.51.0.windows.2
-
+ enum mtk_vcodec_fw_use {
+diff --git a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.c b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.c
+index e936ed8d..d220b645 100644
+--- a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.c
++++ b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_drv.c
+@@ -379,6 +379,9 @@ static int mtk_vcodec_probe(struct platform_device *pdev)
+ 	} else if (!of_property_read_u32(pdev->dev.of_node, "mediatek,scp",
+ 					 &rproc_phandle)) {
+ 		fw_type = SCP;
++	} else if (!of_property_read_u32(pdev->dev.of_node, "mediatek,vcp",
++					 &rproc_phandle)) {
++		fw_type = VCP;
+ 	} else {
+ 		dev_dbg(&pdev->dev, "Could not get vdec IPI device");
+ 		return -ENODEV;
 
