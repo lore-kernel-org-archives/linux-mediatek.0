@@ -4,92 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9D91CCA9EBB
-	for <linux-mediatek@archiver.kernel.org>; Sat, 10 Oct 2026 02:48:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4F352CA6004
+	for <linux-mediatek@archiver.kernel.org>; Sat, 10 Oct 2026 04:41:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
 	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
 	:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Ol+wvlr2CdZCdXa+I/bU7xRVzRqJragTtCzufPOHHa8=; b=NI0XnA80tdwsaaMZHjCGYMlyJx
-	pWpPafTP331fvSRdutmF1o4iLkhZ8f9LwdbZ4CDudhf1ZQmIEn3okZ49Wzly+EGdxtn7kHuUAhM9M
-	3lGhVXTsaJ9BlulWdJhg2wK0JDjvdw+LuQqGNpOarFsTtJjk51A+0ZN/0a/qRF2S83HuZPIQmsYsd
-	zOlDlXaP+Xi26z/aha9aCovq36CskieiAmdFKOrTb7RDafhDjsa23gbN0uyKD/v+pDDPBsfIj/jqz
-	rvxEaFeoHy8hbxbRfEfjY/m5KnWMLhLBBl+ktzypOT6HK34GXNkFFexEiBmeDNZSsELRMkslTgk7D
-	9EkGu9Vg==;
+	bh=sNrVsnb4FmKFTXfrSdVYo8TWlLsGj3AF2yF7SV7KZcs=; b=YqewMDDe5+qX/OhXQ/sfvabH2Z
+	KFl2dMNE+/O0JiIU9byWobklUzi8e3YMw625F3fHv+LIllyAvGyUplFGivZym162TzxNyGwrUBVVb
+	d86noylKiYi0v1rrGxoln5CCtx4K2Ucw6c76VtI/zqPAZTu5ngUWXx+I7OrFCT+rDRRGkPhjrCj8b
+	AOLgLKOOPf2gWSf8pVIiawhdV0fVAWIc4zrRGFdhk4b6vHsPichu1rkUDoHMJ8d+k4oYx/THJi86V
+	AkhCZULwMRDxt/VGPOUdf2Lle5U1HgqvJd1+qk8XktPtRH3k3T0eVjw1/WM2CaAooTYGOlDzMx4L8
+	9PeMzaLw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xFN8n-00000007RS1-27wE;
-	Sat, 10 Oct 2026 02:48:53 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1xFOtQ-00000007WK1-3qSG;
+	Sat, 10 Oct 2026 04:41:08 +0000
+Received: from mail-pl1-x632.google.com ([2607:f8b0:4864:20::632])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xFN8l-00000007RRb-3uTs
-	for linux-mediatek@bombadil.infradead.org;
-	Sat, 10 Oct 2026 02:48:52 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Type:Content-Transfer-Encoding
-	:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Sender:Reply-To:Content-ID:Content-Description;
-	bh=Ol+wvlr2CdZCdXa+I/bU7xRVzRqJragTtCzufPOHHa8=; b=mEgS33hyeceHoeGmJP1/FGxU1R
-	KnEeZtUSM17HonIxsiPBQewGN1xzF8H73keexU0UFo/14GImQFfxGpYi7MGP5a4bixyV2F3s0nJU2
-	Jfw5+sjye7GIG0CV9xOo4lBQ97veWeQ7X2162HYvF/8tJWiRCiQnYEUtKTCWW3HSkQnt9oyQrCfrE
-	JOFmjTi8cOyorrUlY/006ZZ5wUBCwWau5wP/xQVKT9FHAyCJGo+hwsbcm+VfPzN+4TyJG4gxKP6Cw
-	xbeM3ghbuTAzzB9V3AiAkEYliMBEdezlOwygcRyLoU//5U9O8l6SEL6qsTsenct/XGX9XazjuZzOL
-	k+8KJllg==;
-Received: from mail-pj1-x1032.google.com ([2607:f8b0:4864:20::1032])
-	by desiato.infradead.org with esmtps (Exim 4.99.2 #2 (Red Hat Linux))
-	id 1xFN8i-0000000BmnO-0khs
+	id 1xFOtP-00000007WJN-17va
 	for linux-mediatek@lists.infradead.org;
-	Sat, 10 Oct 2026 02:48:50 +0000
-Received: by mail-pj1-x1032.google.com with SMTP id 98e67ed59e1d1-381b831d535so255819a91.0
-        for <linux-mediatek@lists.infradead.org>; Fri, 09 Oct 2026 19:48:46 -0700 (PDT)
+	Sat, 10 Oct 2026 04:41:08 +0000
+Received: by mail-pl1-x632.google.com with SMTP id d9443c01a7336-2cfbbdfa60bso2073425ad.3
+        for <linux-mediatek@lists.infradead.org>; Fri, 09 Oct 2026 21:41:06 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1791600525; x=1792205325; darn=lists.infradead.org;
+        d=gmail.com; s=20251104; t=1791607266; x=1792212066; darn=lists.infradead.org;
         h=content-type:content-transfer-encoding:mime-version:references
          :in-reply-to:message-id:date:subject:cc:to:from:from:to:cc:subject
          :date:message-id:reply-to:content-type;
-        bh=Ol+wvlr2CdZCdXa+I/bU7xRVzRqJragTtCzufPOHHa8=;
-        b=e/qgQwqzf5bbAv3C8ZBP+/k4yPFunHlPsSMi+GXm1gylqXhQdcGO7QElg1rB+j21hm
-         z2X9ZvpIuAu36rH70dxeeHYQ/JxI1tWf0xtFVBeUOh8VxUa6rQjQsppcNc16BBOQF6KP
-         nXsYyLCVMyoccPHKiE+rdFqW/+z4HYnPb9isUYEyxqVYTdEjOQkd8FNl8ioHvuDxXO21
-         YtG5UodLXQLWO7JxYhSSyUFqa1R5VNvruPhNgE3EdwCZgfgJXfnr/fGBgAnfs2NHdp3d
-         w9kzyq2zkJ356PyKrx42vjf/pUHjM+Sl3aCb0bagDG2VXMHptiFc0tQgGs+NmOo6xkQc
-         9aaw==
+        bh=sNrVsnb4FmKFTXfrSdVYo8TWlLsGj3AF2yF7SV7KZcs=;
+        b=dWfaccRXCwAX3Y3HtDxZGN017YbRwuZLV1wAuFoicmR64CnuuPiYarePiL3Xd28ZDQ
+         3/ve/zawbuYov+t9aMhA/vUz1vv8+RliYXuA9ZOQSSZSuLVEva1z99jDHdFVQn/VGNkf
+         cRD2qEo/jAbIxztfX5n7QxkcTjCMikH0M70ToEvC049xJWSrq5tIbUDfXMCAQt8IIagV
+         JKsdM0O91shx+1e/BPti3kV0pZc5rFy2lz3PVmL3aK3YFXfUKlbKT+AoFAIfS+g5tYAk
+         0AnYcifE3VMXoN3pN9Jvr/q8pFcNGRbCsE+nnllWrPI0j6QLT2KWe5rG9dcHcsGRmQNk
+         u3WA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1791600525; x=1792205325;
+        d=1e100.net; s=20260707; t=1791607266; x=1792212066;
         h=content-type:content-transfer-encoding:mime-version:references
          :in-reply-to:message-id:date:subject:cc:to:from:x-gm-gg
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
          :content-type;
-        bh=Ol+wvlr2CdZCdXa+I/bU7xRVzRqJragTtCzufPOHHa8=;
-        b=T62Y+AoOrfoaHJksFt9XBvSxZ47M7gcFtRqkKNVAgtZYSbGvdarqPoZkAC0zul+y/Q
-         ss3hZNDcM3nUIAcC9Jtwx3Ax5kQnsoK/5ZZ0dOF4f9M/9FmJwgCzkF5l5QNFb/7x7M4K
-         Hi3p1uljrJNjC6ssVss2BS6v1PyPSuJ1cbNdnPb/pmzaQHnN9vqzVVavB9h6vBYeND91
-         czKPJQW/YojVbqGCmfKB4ratQYKBVwLIQCnNJ8KpG5ZU04Da8/nNUevfyetANOpnbhlZ
-         H512JyGrY31tACEgy2AZjmp0REFoaEQln5dLg6DXpY9ZnRBRgSNS861naS1XlA+nRNnv
-         q4rg==
-X-Forwarded-Encrypted: i=1; AKwUvBzszgnEgt7QC4pe/LGswtssyocGNOKyTg2NBuTo+Ko5+WxKaSbN7UHdJWXFCZwWd+lCGecasflGkGta3DtGOA==@lists.infradead.org
-X-Gm-Message-State: AFq9FYLts6Cp2ZJRSqv8I0t9cqjM4m4Vsg9BsJAu+kVty0h3uQjxoqf7
-	3rPStfQSZf76SR6hLsyP22o5fnYohCOLLivEEPntSWI23itKgfpmGfW7
-X-Gm-Gg: AYBFou0eu0NQ2iL8BQLnfvK1nplUvFx+VWCXzOiPQnrufOIIxXr6lVfpxB3awxFu57+
-	VoyqWrIBJe0hLrSelywqnSMBqaJau/7yUhD4gnNDlSJgtelgN8VG0C4I4+Rclpijz+Ty9XuESJ/
-	Vll9RnA61O8Iuw7AaiR4cA7rBLlZqnqFrw+fbsnFsGzhkFeesoz8ZyS69K/KNRgGJHYZjDb3Q6Y
-	nGDcgaQosnNqKA+FBPnsP/0C38FVfYH8q/KsTROcRooRy8wg+eMqFtxROZ1EIcwrtqlR1loj5yh
-	Ndf2901gfitA177okSLER/SeP61hRltOPT09DAJ7ECr3gytGa1NvjCoMkZv/T+svCJap6G3Un3H
-	DvRgr38/d3NsX7d9Nf+BSJl1w0iArsX+BoNQhwyekZxNjlE/o6MBV4XFd7Dy5AAt5CgHNrCce7f
-	igiOamCXUOteKSgYPwjIbHJ7/WUayR20AWZdnQ9YjU3wmwwxcvBlxxpPexo0PpdScaidWU3Fp7/
-	CVyeEmC7iDRYyOvfVVi9TEp+P4IKYNiQC6yXfJtCT5HyqHWxTQYGP4KvD/S3jCGZFQ5rc96gH+d
-	a8RO6qetVJbm6QfOU0R1rljloqXbJddGNLdI22pg6VeGcDX8Mrs=
-X-Received: by 2002:a17:90b:5887:b0:3ab:364a:9532 with SMTP id 98e67ed59e1d1-3ab3acc548fmr3728946a91.44.1791600525144;
-        Fri, 09 Oct 2026 19:48:45 -0700 (PDT)
+        bh=sNrVsnb4FmKFTXfrSdVYo8TWlLsGj3AF2yF7SV7KZcs=;
+        b=DppKRUWuRES9ykM0BrFuH9D3783zI96CScygo4jBrL1Mqmk1PmW412UZyMI3LDjz20
+         qUWPn3eqZjNi64f56AqPrp7END+oTpY5iz8H/c+0/eWhP8riUodDQ+oXFUDFEgMpMHU5
+         rgpK41WKqiJwoKia2QEwKRWdK5AHkAphGqk8jeoUKHPrRuw80+pm65DCV+CRzKQ4CHA1
+         VQu52zni6mIw7UO24NiYPrFNVFZK0fHGJcuRbiZ9KNp0GR+zFyVkawQUsGYYg/Cafw4d
+         RLxVTFXxapj+Q3BZJbfoH62+7aClMiVXLcpt14VXUVMorG6F2i8V4hoChWe9HB7Rp6pc
+         3hVw==
+X-Forwarded-Encrypted: i=1; AKwUvBy/M97/YzsrQoGZc9QqMeEIUuZLtzpXfC+Sc5kNLlKDxdPODQZSdXStRxZRkvFz44+LVW3hOARXQSsXld0mDw==@lists.infradead.org
+X-Gm-Message-State: AFq9FYL+an1Lme93zYv9dh3WG2FG3noZlDJqXGEbEv2b2Dvw2JUUV981
+	c8exKMYWhCRLhNlHTt4XOYut7Z54XSlhfiYaGD01hi6rjYDNhYIY0HJv
+X-Gm-Gg: AYBFou0I9UOVaJFuR3ZvvKlx6nkENKSEPyQonaZPwi7FfBJx7qAXY29IdiQmAFLwiPA
+	sWYuqr0gH+KWKmOTuEFDAHueg0LEKGmb4IJgbr7+vwoRh8VI9oVQFXOZffyEI6/xVeI/Myk9qDc
+	cgGzQ69oLFc7YzSu8P63W64XwwYCUbQ/4YvTWg+DR036aWLHR//hoGLoPHd7X64y7Tq3XSQ3zXk
+	8LmkMp2rfg5LqvvqTE6QP/IhomnFvBD6zGMAOPDoqDhqGfWqomVlkVODQdJwW4xbOODrAc2Mdz1
+	6IzxFbvX2XBt4ZWjwsOGat1zw/lz1HgRoSHqFuges6jlJ59RQilCyA2kuQpI3uyhmywLDIcyaLp
+	nrVU6tlqb2IPMOf+RO2Y/+5vsVYmTh5xnjnHyPDxsaBGMiJdXOxCEq+B7HjbSj1a3SQGuHqz3PM
+	LWly5w7lEl3KGjH2I+wZ4/ChQXgAX95mVQWhulyzYQjyZxrzaflLlrMPDgoJycmwzGb+NJkRYff
+	P6Xpg5E23SKeeqRLYBcjZwUh8zKqfyAaUEqpdimlxP3jFk1l2nQFnD2co/KcliEegWpoX9RqMrB
+	R7FLtZtICQzHK+H/94oTd2cxLIMvJ4Gb7cNwiZZOOZIbbswlzGc=
+X-Received: by 2002:a17:903:1a0e:b0:2dd:8639:9931 with SMTP id d9443c01a7336-2e842ab8200mr30793065ad.19.1791607266248;
+        Fri, 09 Oct 2026 21:41:06 -0700 (PDT)
 Received: from setsuna.localnet ([2403:581e:d87e:0:fc2d:ed31:e80e:412d])
-        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-3ab36ed040dsm7675161a91.6.2026.10.09.19.48.36
+        by smtp.gmail.com with ESMTPSA id d9443c01a7336-2e8422e171bsm19910975ad.73.2026.10.09.21.40.56
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 09 Oct 2026 19:48:44 -0700 (PDT)
+        Fri, 09 Oct 2026 21:41:05 -0700 (PDT)
 From: James Calligeros <jcalligeros99@gmail.com>
-To: Krzysztof Kozlowski <krzk@kernel.org>
-Cc: David Rhodes <david.rhodes@cirrus.com>,
+To: Cezary Rojewski <cezary.rojewski@intel.com>
+Cc: asahi@lists.linux.dev, linux-sound@vger.kernel.org,
+ patches@opensource.cirrus.com, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, Hector Martin <marcan@marcan.st>,
+ Sasha Finkelstein <k@chaosmail.tech>, David Rhodes <david.rhodes@cirrus.com>,
  Richard Fitzgerald <rf@opensource.cirrus.com>,
  Martin =?UTF-8?B?UG92acWhZXI=?= <povik+lin@cutebit.org>,
  Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>,
@@ -100,24 +89,20 @@ Cc: David Rhodes <david.rhodes@cirrus.com>,
  Shenghao Ding <shenghao-ding@ti.com>, Kevin Lu <kevin-lu@ti.com>,
  Baojun Xu <baojun.xu@ti.com>, Sen Wang <sen@ti.com>,
  Sven Peter <sven@kernel.org>, Janne Grunau <j@jannau.net>,
- Neal Gompa <neal@gompa.dev>, asahi@lists.linux.dev,
- linux-sound@vger.kernel.org, patches@opensource.cirrus.com,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH v2 05/21] ASoC: dt-bindings: Add binding for Apple Silicon Mac
- audio
-Date: Sat, 10 Oct 2026 12:48:34 +1000
-Message-ID: <m3VYUqb-SXeeNuWXNMFX0A@gmail.com>
-In-Reply-To: <20261009-daring-objective-flounder-c0b66d@quoll>
+ Neal Gompa <neal@gompa.dev>
+Subject: Re: [PATCH v2 09/21] ASoC: apple: Add macaudio machine driver
+Date: Sat, 10 Oct 2026 14:40:54 +1000
+Message-ID: <l_pd6lBHQaWNYoohhfxhFw@gmail.com>
+In-Reply-To: <3698d260-13c5-4050-8f03-61f7b7185514@intel.com>
 References: <20261004-macaudio-v2-0-7b47ed6335a8@gmail.com>
- <20261004-macaudio-v2-5-7b47ed6335a8@gmail.com>
- <20261009-daring-objective-flounder-c0b66d@quoll>
+ <20261004-macaudio-v2-9-7b47ed6335a8@gmail.com>
+ <3698d260-13c5-4050-8f03-61f7b7185514@intel.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: quoted-printable
 Content-Type: text/plain; charset="utf-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261010_034848_964450_74BA51D2 
-X-CRM114-Status: GOOD (  11.91  )
+X-CRM114-CacheID: sfid-20261009_214107_370198_13B06829 
+X-CRM114-Status: GOOD (  16.36  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -132,23 +117,49 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Friday, 9 October 2026 5:17:53=E2=80=AFpm Australian Eastern Standard Ti=
-me=20
-Krzysztof Kozlowski wrote:
-> On Sun, Oct 04, 2026 at 04:03:32PM +1000, James Calligeros wrote:
-> > +    patternProperties:
-> > +      "^dai-tdm-idle-mode-[0-9]$":
-> > +        $ref: tdm-slot.yaml#/properties/dai-tdm-idle-mode
->=20
-> This looks like you put several slots into one. TDM slot is for one
-> slot, no?
+Hi,
 
-The codec bus keepers (which these properties exist to support) only
-need to be configured on one codec for the left and one codec for the
-right. We use the "main" L and R woofer codecs for this purpose, so
-the extension of the properties like this allows us to specify which
-codec's bus keeper should be set up, as we need to support machines
-with 6, 4, 2 and 1 speaker(s).
+On Friday, 9 October 2026 9:52:09=E2=80=AFpm Australian Eastern Standard Ti=
+me Cezary=20
+Rojewski wrote:
+> macaudio_dpcm_hw_params()
+> macaudio_be_hw_free()
+> 	both can access the card from the substream/dai without
+> 	relying on the ma-context
+>=20
+> macaudio_parse_of()
+> macaudio_parse_of_be_dai_link()
+> 	called in context which creates the very card
+
+I have fixed all of these by copying what rockchip/rockchip_max98090.c
+does to initialise the card, however
+
+> macaudio_vlimit_enable_timeout()
+> macaudio_vlimit_disable_timeout()
+> macaudio_vlimit_update()
+> 	called in context of delayed part of the trigger() callback.
+> 	I'd need more information on the trigger() implementation of
+> 	yours to present a solution. See the comments below.
+
+are slightly more difficult to deal with. These are called from workqueues
+which only have reference to the driver data struct. Other than keeping a
+pointer to the card around, I'm not sure how else to deal with this other
+than keeping a pointer to card around in the driver data struct.
+
+> Please correct me if I'm wrong but it seems the scheduled work does
+> speaker-volume operations only. Moreover, it seems that
+> ->lock_update_work may schedule a follow up work in form of
+> ->lock_timeout_work. Are you sure trigger() is the right place to do
+> volume-control in delayed manner?
+
+The intention here is to activate the timeout when the stream starts
+so that if speakersafetyd dies at any point during playback, the speaker
+volume(s) are limited to prevent damage. We only want this running when
+speaker playback starts and we need to disable it when that playback stops,
+so trigger() seems like the natural place for this.
+
+James
+
 
 
 
