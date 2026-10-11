@@ -4,109 +4,98 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E527FCA9EBD
-	for <linux-mediatek@archiver.kernel.org>; Sun, 11 Oct 2026 18:51:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DA4C9CA9EBD
+	for <linux-mediatek@archiver.kernel.org>; Sun, 11 Oct 2026 19:57:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=0KIupU1PlUnI74kbeA9rKFTjXf0bMD2fNsbxeKLKsfA=; b=fYCyIsIetdZtyFDIbsznfz+gAD
-	xMph0/v296XM5DtXr/dJhvHyco3YWdQyumZFxto0WDxkp14ctjScyGiaHEx84YSNLCPfTDE1pGSx5
-	wllXUx6DqI42UZ2UcDnw/4n1nsrZ5gKLET43v8BFOoEAM9sVWGcmVn6IqiAseI8UG3eMM0OqnbOFA
-	INecojheq1vi/+Y0wFmKTkqlmzLntl6CUgVIVtv1iSaz960M+scheq94vxBlKLoBD/Q/s5eSd/htT
-	/MlecW3sp9xLC/MBfPX/E0MffRH0Sgshgh826R5kbYmRX0LB2JrnXg7nzsFCO11hU94/lTmZBlSac
-	p4mTle8w==;
+	bh=ybYSdKsTtQmBTL9u8kO8sl68Iedi9IlFuOT60yw2EWU=; b=YckFbdv5ciWSZuK9fBCQ1Ru2Jp
+	J/w4aod5D5HaU0zE+jSP11cLK2DHDyouJpFIC1exKEIB3p58RNwvWsmjEXBvG2FcCqtUiAPI8gPe2
+	KRJJyf1fwT6ArUqYJHumLrFhFyO7chV0Nst/hExd4QQueG4ql6qJrgBtQf8f5qSIP3822vQwVovih
+	4OzLC61pRRlUXEeM0omR8pK6VY2gF7s0YdPt5asxOpYGQp7JSxkl/k0hUvI8kElj1br3ZZAjwz6Ne
+	gbhfk6s83J4pSq3yLsFlNhBXeq1YYawaG3yfcTAZuf06LMmYfaCMepsTy2VxKZWjiIn4l9askyRaA
+	TkzDlqbg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xFydi-00000009JqN-04Pe;
-	Sun, 11 Oct 2026 18:51:18 +0000
-Received: from mail-oo1-xc36.google.com ([2607:f8b0:4864:20::c36])
+	id 1xFzfh-00000009NAT-1Msw;
+	Sun, 11 Oct 2026 19:57:25 +0000
+Received: from mail-qk2-x04.google.com ([2607:f8b0:4864:34::4])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xFydf-00000009Jpi-0Sce
+	id 1xFzfc-00000009N9T-22lq
 	for linux-mediatek@lists.infradead.org;
-	Sun, 11 Oct 2026 18:51:16 +0000
-Received: by mail-oo1-xc36.google.com with SMTP id 006d021491bc7-6de08b2e447so491362eaf.3
-        for <linux-mediatek@lists.infradead.org>; Sun, 11 Oct 2026 11:51:14 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1791744674; cv=none;
-        d=google.com; s=arc-20260327;
-        b=Lq5bxMn9bRiCiDfP+CHT3cMxZiNqaskSRFJtNL4VwIcm86QJLUQCqwq+vIZy5cKBrT
-         qV7zS05sFxLnA9gnYcRAVqojhh6x/uzSb7VlbfW2R8cBjDx571YFKCFjj6cnPQVFypQW
-         /sNX0QuhE01o3MnpKV8poRNBagwtCddhSkJGnImVCYcRm3+2+Zv/bKDrrK+3ZNBkGx3r
-         LltAStW3uJnWQiVSvcMnxuxGIgqtx0fZYUJO7PEpOb6sj12YkOLYjE386ctCBJbBtCAX
-         HwJcUCY6CJH1+PZWoBor/cVbLy+sM2Xt1aHUqRmQRqy3Ff0ltkfW54jtF6uHi054W+0h
-         MgWQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20260327;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=0KIupU1PlUnI74kbeA9rKFTjXf0bMD2fNsbxeKLKsfA=;
-        fh=2a0z6UpwIDk3Qi5mq3OF1cC7IlrAwYqMys70rMx5nfE=;
-        b=a8phhi65jZkUiO5Cn/5woFviTYTRPOMWm86uhEhx+txY/F8zWNS69EjhwHmrDf3qGG
-         t+W8ULFh16O9Ux2G1Og+My1RbfD+B3aL2tbi/C6Q98gxYhM0WbMWt+34L3CaHY/M1dwP
-         fVaiMLf9JjrMI0kWpwcEsHUHAMrUx5Y9/8GbeUzRpErZJ4Ewc/NBR2fv/NSgNiIwLGKx
-         h46NWY+Y+OynZds7+k5DZkq8Ge972ZQteuJ8dbLamJ8u/83seeFDwowUAX/C6TAtLva/
-         opkizBWyFyCq31WIr2CLLH9hczjE+6U+XuIhvLTJRmaQ7M+R2vq6iMjWGni7iCy724H9
-         i25w==;
-        darn=lists.infradead.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
+	Sun, 11 Oct 2026 19:57:21 +0000
+Received: by mail-qk2-x04.google.com with SMTP id af79cd13be357-93cbbaba944so83072085a.0
+        for <linux-mediatek@lists.infradead.org>; Sun, 11 Oct 2026 12:57:20 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1791744673; x=1792349473; darn=lists.infradead.org;
-        h=content-transfer-encoding:content-type:cc:to:subject:message-id
-         :date:from:in-reply-to:references:mime-version:from:to:cc:subject
-         :date:message-id:reply-to:content-type;
-        bh=0KIupU1PlUnI74kbeA9rKFTjXf0bMD2fNsbxeKLKsfA=;
-        b=a7XkSvdAXLwvhpizlk39f7MIPy4TSoDtAoJPpYvXSQXiQNp4JCainv1HlduWnN/Hy0
-         xCsPzAMtsnk9nn1sK9r+aXfKMi2zgoz2TGl4R8e/4MAuGOjgJ7uwNhUWfV/zxTlARqaf
-         mPLsfHmUHvkcxa5oDTcaDn+7QPaLAdY4kgqh1zZs3qEcXb9/TTD0nsT1RSUgoiFWOHpH
-         1M681I3u4sZT5nL17PiODTtHMRSpfLK51e3rI3233yWj8/pYPtLUuT1N6Q5adTLbXS5t
-         Tij/IzcT5bASmaKZalWizwm7IG2Pi0JkI1yDSL8TEuxM1DecNg1Zkx21ODi0RPbEK7jX
-         x3yg==
+        d=gmail.com; s=20251104; t=1791748639; x=1792353439; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to:content-type;
+        bh=ybYSdKsTtQmBTL9u8kO8sl68Iedi9IlFuOT60yw2EWU=;
+        b=rCpwegb+Uw6DkVPOIBNGrvhj8cGpmUVo1wtcJk4m0VF+TvRNz9cGI9Setq1kroOpJX
+         ViNC2fy6FBHhARPb3xx6XLzkqjQ3lzdWJLm4Gf8dhpTlakbUDkwYaDErxcez9XXtWzkC
+         MzqPSdWnJpjqMKp8DCF8nAkjb7apNuAHw7auj50KFhHSODFngftMOiH8R2ZNHrr879rB
+         G7mVdHe5lMNR6FAy4IEeJ/9nZMlt2TwLi51cb+yrtn+XAzzl2cNpKla97lV9YflQpG/T
+         KfqkrexpNfp+b/sxFLucec843BhKvO/e6BUNBmpty0RivMZzqp77GwH+9fQEolKzPNoM
+         f1aA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1791744673; x=1792349473;
-        h=content-transfer-encoding:content-type:cc:to:subject:message-id
-         :date:from:in-reply-to:references:mime-version:x-gm-gg
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
-         :content-type;
-        bh=0KIupU1PlUnI74kbeA9rKFTjXf0bMD2fNsbxeKLKsfA=;
-        b=So+VXK+jCyvuxMPcdVF9c9Va/K9qxjIGKfLbmfBkJzLxZ6lwT52gml1BxupXcsa7fB
-         xChTmtWlSlJXLQMMeHooe4tQDq9CUo/KoZArKVCoALk9VdNmcupwUiV44/6WcC9gt/tf
-         RF1UmiMzTsuS+bZCopQUO9ae7I6pvU0+4F44ewuiXOwqsV9439snHGz3AHaACNiOpOCy
-         Dbq3HCsXP0zmVypUKN+G9xV/VZd1MoDFYn6yHhDGyYAoHZGvpx6JMc5Gn8OAkhWNc4bG
-         u+jt9De9WT3kfOrDzJQ/1SyKjbLuNEUuiVWxKn6ZGi8ynnAidL19SAqL0qvIbybGOiAp
-         /ZJw==
-X-Forwarded-Encrypted: i=1; AKwUvBxQxfSBZBgx7bE3575HwE5BPNlJV1g6/exN8tjtzMBeRUrJ/rZ5TgUYglH4zpsSQkkZDoVfZJ3Ps8Nqgcilrg==@lists.infradead.org
-X-Gm-Message-State: AFq9FYLL0IaU72VTCMn8qtYD3ARAq/7rORNg0Ccbx3FFdsR4pcxwx21t
-	82rzbPn8JhFexUB0aKNnbMq3PVpXS6oREb9Tt3+ZbkA/Hu8dbf+e1qV2IO1UY4H92MJ5qiQ6u8m
-	62oEfNjZCabiLgeQLGKBjj90Armc70wU=
-X-Gm-Gg: AYBFou0IkZmpGwdALs8IZds+oetaFqujKJiiKKlQQRx1qdWDYvym20blnR5gDU7KidI
-	vMNdURo4HPrOLqnz/Kd0PXCNP3MT/VZA+Si5aglLykmMypfhtVBMl71jWNWs1FGMu4tPE3GVUHX
-	k/VR6eeY4yx1WlxbK9fMUzu0P9aS/bjsnD47fON/+QUpXFm0JU48wiGYxNo9OD+D8t1run3ThHG
-	o5PP4hBcs/IvU+wypU8vU4TKBHBDp+/e9E8HqixODaB9BOTwAjO7sFPkCXXE+pFeI29Q/6gBGwZ
-	jY0mhq21vBBgmbH3rbxK/1PtxRNnJ8RIM+VU9dWnOh9YEd5Hi+tniHY=
-X-Received: by 2002:a05:6870:e311:b0:47d:a12f:3951 with SMTP id
- 586e51a60fabf-4a2a89f425bmr6103374fac.39.1791744673650; Sun, 11 Oct 2026
- 11:51:13 -0700 (PDT)
+        d=1e100.net; s=20260707; t=1791748639; x=1792353439;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
+         :to:cc:subject:date:message-id:reply-to:content-type;
+        bh=ybYSdKsTtQmBTL9u8kO8sl68Iedi9IlFuOT60yw2EWU=;
+        b=vVBgMLjAqAu4HVM1jT/SJcV3tFeCMXymvpwaZy5vo5qcxC0j5UpcKf6ORs35ZMeUjt
+         mBxPqqEy1azKASTcKfNfXfpH94xJwjNhc2SJWXHQoR3/FH0KjkEMxrSxMrYARTeDrAYg
+         N62xrTTumGfbLMZhd5IFzPja3QgZWczx/okAkEaFl6gZhhgInLq4reqGj5dvrDslsJVB
+         X7RedTQ06PBdAZklXb9Z+EBtNFPzjET1pYtYVZ8tYnuMufzOKRQDWSX9k7oNHVaJ6WF0
+         479p9h3705hbT+wzYpv0jrZPZ4y3aQn5h6ZkNa4qnUfM/iNqFoXZ2io1EdtUowh10PFR
+         KliQ==
+X-Forwarded-Encrypted: i=1; AKwUvBxx70V4NXWBGWSkBA38p6dHTQ3XuXrTUkH4PqT/75fyP08vYR4RIEHIVDFBo8y4zknGuk4E44rm17IBNOdKxQ==@lists.infradead.org
+X-Gm-Message-State: AFq9FYIq34d6z1u+keWqvVZ1VBuwu+Vhn8vehpoM2h5APE3X5Fie2IME
+	R6q7Nm+ZJdIOEXBW0FNP8yrs0cpGrG8sijxSD/jpV+ZZINU65gBTy0gc
+X-Gm-Gg: AYBFou1cbMGoZBY7nt0x9QWY/5WSksK3m49zvIw5YTIrv6IP72VSVFJNks3BnxWIecQ
+	IOrhDTJvKAs26QwYl+fIAV3PvWxFlnla27utxapy6Xew/Z480n3/PnxX/H3cCgBoQnwqt7bUoMU
+	XFbktv3XfYe90pTQQpgn5yIjIbxvawYXUZ6M4seGVD51/jDHO9/Uy3ZT5dXxSeAk5eA9mj1WwvG
+	XatTfGcdkffpwCyUWgKiTX2js/5RctySW5XxTEmHtSN78Q/hM+3jdr44uh4R6hazny0lAN7pLrz
+	7NJ0i8yYeo3q01+E88dyWTc9ZIbLdqTJ5ji7bR7GuxJuBjwePTvB5hLdx/8cfpkFO8vOJanp4bj
+	x/+JPbZMjqep6RV04MhG5VLZMNHbciMX8Nvw2mHILIWt4zRGslen2VOhx4UkzmHbVAT5/kBEllC
+	mMhnwFgbvg7eXySw0zK1eWij6EOzhccWS7x68S8ZxUqR+JkSZEIFaff+6eHd4P2sK11lo=
+X-Received: by 2002:a05:620a:2912:b0:93e:a818:c8b1 with SMTP id af79cd13be357-93ebd0d01edmr1283130285a.9.1791748639122;
+        Sun, 11 Oct 2026 12:57:19 -0700 (PDT)
+Received: from omarchy ([2601:804:8780:3df1:6ff:277e:31c7:ac13])
+        by smtp.gmail.com with ESMTPSA id 6a1803df08f44-91b54e832edsm77803306d6.4.2026.10.11.12.57.16
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sun, 11 Oct 2026 12:57:18 -0700 (PDT)
+From: zoan37 <agentzoan@gmail.com>
+To: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: Stephen Boyd <sboyd@kernel.org>,
+	Brian Masney <bmasney+clk@redhat.com>,
+	Jerome Brunet <jbrunet+clk@baylibre.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Chun-Jie Chen <chun-jie.chen@mediatek.com>,
+	Chen-Yu Tsai <wenst@chromium.org>,
+	Edward-JW Yang <edward-jw.yang@mediatek.com>,
+	Irving-CH Lin <irving-ch.lin@mediatek.com>,
+	kernel@collabora.com,
+	linux-clk@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org
+Subject: [PATCH] clk: mediatek: mt8189: Don't let the GPU reference mux retune MAINPLL
+Date: Sun, 11 Oct 2026 15:56:12 -0400
+Message-ID: <20261011195612.1663714-1-agentzoan@gmail.com>
+X-Mailer: git-send-email 2.55.0
+In-Reply-To: <20260904-mt8189-clocks-system-base-v6-19-5df247f56938@collabora.com>
+References: <20260904-mt8189-clocks-system-base-v6-19-5df247f56938@collabora.com>
 MIME-Version: 1.0
-References: <20260907-6572-gce-v2-0-412a5b037290@protonmail.com>
- <20260907-6572-gce-v2-2-412a5b037290@protonmail.com> <39494ea2-7fb5-4414-8560-47ddd40260cf@collabora.com>
-In-Reply-To: <39494ea2-7fb5-4414-8560-47ddd40260cf@collabora.com>
-From: Jassi Brar <jassisinghbrar@gmail.com>
-Date: Sun, 11 Oct 2026 13:51:01 -0500
-X-Gm-Features: AclHuK96ynSq9uLesTtRAZnhZ7wj24Xtpvp969Wwe99Ul08jW1tzra27V2b0o08
-Message-ID: <CABb+yY3oEfZrx+=igTVUOSGB1+J-pa6=k=+DGOxWozJnK_sJgQ@mail.gmail.com>
-Subject: Re: [PATCH v2 2/3] soc: mediatek: cmdq-helper: add legacy GCE ISA support
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: rva333@protonmail.com, Rob Herring <robh@kernel.org>, 
-	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, Houlong Wei <houlong.wei@mediatek.com>, 
-	linux-kernel@vger.kernel.org, devicetree@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261011_115115_161711_B4C4C335 
-X-CRM114-Status: GOOD (  16.76  )
+X-CRM114-CacheID: sfid-20261011_125720_539890_3CABEEC8 
+X-CRM114-Status: GOOD (  13.41  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -121,49 +110,68 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Wed, Sep 9, 2026 at 4:57=E2=80=AFAM AngeloGioacchino Del Regno
-<angelogioacchino.delregno@collabora.com> wrote:
->
-> On 9/7/26 20:03, Roman Vivchar via B4 Relay wrote:
-> > From: Roman Vivchar <rva333@protonmail.com>
-> >
-> > Some SoCs, such as mt6572, have different WRITE and POLL instruction
-> > encoding. Instead of 16-bit offset and 8-bit subsystem ID, old GCEs hav=
-e
-> > 22-bit offset and 2-bit subsystem ID.
-> >
-> > Extend cmdq_instruction struct with additional union and struct to hold
-> > the legacy format of instruction encoding. Add legacy_isa to select
-> > legacy GCE ISA when writing instruction. Finally, add special handing
-> > for legacy_isa cases.
-> >
-> > Also correct comment about PA writes, because it's incorrect for legacy
-> > ISA. Only v2 (mt8167, 8173) and v3 (mt8168, 6768, 6779, 6785, etc) have
-> > GPRs and SPRs for PA writes.
-> >
-> > While mt6572 GCE supports 22-bit offsets, the parameter type for offset
-> > remains 16 bit, because all mt6572 GCE mmsys consumers are in the 0xfff=
-f
-> > range.
-> >
-> > Signed-off-by: Roman Vivchar <rva333@protonmail.com>
->
-> Verified in the lab on multiple MediaTek boards.
->
-> ... but I either need an ack on patch 3/3 from mailbox maintainers, or th=
-ey need
-> an ack from me on this patch to pick everything.
->
-> I'm fine with anyone picking this, so...
->
-> Acked-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora=
-.com>
->
-I realize the patch order is messed up - it should have been 1-3-2
-instead. So maybe for this time...
+mfg_sel_mfgpll selects the GPU clock from mfg_ref_sel or mfgpll and has
+CLK_SET_RATE_PARENT, so a GPU rate request (Panfrost devfreq) goes
+through __clk_mux_determine_rate(), which evaluates both parents.
+mfg_ref_sel is a MUX_GATE_CLR_SET_UPD() and so also has
+CLK_SET_RATE_PARENT, as does its mainpll_d6 parent: through it, any GPU
+OPP can be met exactly by retuning MAINPLL to six times the requested
+rate. mfg_ref_sel is parent 0, so it wins over mfgpll whenever both match.
 
-Acked-by: Jassi Brar <jassisinghbrar@gmail.com>
+On an MT8189 Chromebook, MAINPLL therefore followed the GPU: 2340 MHz
+for the 390 MHz OPP instead of the 2184 MHz the firmware sets, and 3360
+or 3570 MHz while the GPU ran at 560 or 595 MHz. Everything else derived
+from MAINPLL moved with it: the peripheral and memory buses, and the
+display PWM, whose backlight frequency jumped from 2 to about 3 kHz for
+tens of milliseconds under GPU load. That showed as a visible brightness
+flicker.
 
-Thanks
-Jassi
+mfg_ref_sel is only the reference/bypass parent that the mux notifier
+switches to while MFGPLL relocks. Don't let it propagate rate changes,
+as MT8195 does for its top_mfg_core_tmp. The GPU then gets its rates
+from MFGPLL, and MAINPLL stays at its firmware rate.
+
+Assisted-by: LLM
+Signed-off-by: zoan37 <agentzoan@gmail.com>
+---
+Found on top of v6 ("[PATCH v6 19/27] clk: mediatek: Add MT8189 topckgen
+clock support"); it applies to that patch and can be squashed into it.
+
+Testing: Lenovo IdeaPad Slim 3 Chromebook (MT8189, "quigon"),
+next-20261008 plus this series and local board support, Panfrost on the
+Mali-G57 with devfreq. Before: MAINPLL 2340 MHz at idle and 3360/3570 MHz
+under GPU load, read from clk_summary; the display PWM's actual period
+(debugfs/pwm) went from 500 us to 348/328 us with it. After: every GPU
+OPP from 390 to 1100 MHz forced through devfreq min/max_freq, and
+scrolling a busy page: the GPU always on mfgpll, MAINPLL fixed at
+2184 MHz, the PWM steady, no flicker. No device tree change needed (the
+mux selects mfgpll by itself). Built with W=1.
+
+ drivers/clk/mediatek/clk-mt8189-topckgen.c | 10 +++++++---
+ 1 file changed, 7 insertions(+), 3 deletions(-)
+
+diff --git a/drivers/clk/mediatek/clk-mt8189-topckgen.c b/drivers/clk/mediatek/clk-mt8189-topckgen.c
+index 6ed7661119b8..ff9fd5115c5b 100644
+--- a/drivers/clk/mediatek/clk-mt8189-topckgen.c
++++ b/drivers/clk/mediatek/clk-mt8189-topckgen.c
+@@ -818,9 +818,13 @@ static const struct mtk_mux top_muxes[] = {
+ 			     dxcc_parents, 0x100, 0x104, 0x108,
+ 			     24, 2, 31, 0x0c, 1),
+ 	/* CLK_CFG_16 */
+-	MUX_GATE_CLR_SET_UPD(CLK_TOP_MFG_REF_SEL, "mfg_ref_sel",
+-			     mfg_ref_parents, 0x110, 0x114, 0x118,
+-			     0, 2, 7, 0x0c, 2),
++	/*
++	 * Reference/bypass parent of mfg_sel_mfgpll: don't propagate rate
++	 * requests, or GPU DVFS retunes MAINPLL through mainpll_d6.
++	 */
++	MUX_GATE_CLR_SET_UPD_FLAGS(CLK_TOP_MFG_REF_SEL, "mfg_ref_sel",
++				   mfg_ref_parents, 0x110, 0x114, 0x118,
++				   0, 2, 7, 0x0c, 2, 0),
+ 	MUX_GATE_CLR_SET_UPD(CLK_TOP_MDP0_SEL, "mdp0_sel",
+ 			     mmsys_parents, 0x110, 0x114, 0x118,
+ 			     8, 4, 15, 0x0c, 3),
+-- 
+2.43.0
+
 
