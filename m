@@ -4,94 +4,98 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EF7B3CA9EC5
-	for <linux-mediatek@archiver.kernel.org>; Sun, 11 Oct 2026 00:26:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7EB6ACA9ECA
+	for <linux-mediatek@archiver.kernel.org>; Sun, 11 Oct 2026 00:43:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=XeJjl/io3+aKvrUjCul3f6wSV2JN17uTopzSqxgAVR8=; b=OQZKghZftLz0V87qP0IyZQETsR
-	MPYBfDvFWi1Hz3sF5hFhzUqUJn069KiDgrxMk5OLWhIG0Fe0ONchJwDJHG3j4N6HcyxzmpQmYul22
-	P9k2Mo8Ga0OCL3kyvcVxQhZZcjuNOUz8Y+UoQsL3J568B2CLdtRdv20eadUOmyw7yLvzjq3mF7hnO
-	+8Qq3ET+6cqbYbSBioNsiZNm5usaWUXqjiwqJNSgNKTKSBcmocDrNzw4wr0vt3v6wZ9Jc9TUyTVEt
-	mGD2Rnbl8WnX5UUxybbkEbEB4S0fUAA5p/m2C+jObZmHgLP1k/EDJV38xD0FcE0mXtTnRlnZyLtBO
-	vfbExfwg==;
+	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=w/oAaJptKR3nQekIsHSFFz9kgi+8N/4Ku6bTVc5nJSg=; b=LN8vNmWo5X3EtWwTxhKPF8rkke
+	jn/nv31r65tVqbMMCW6SsSDinwLIRWzRU1NKBWcUire/zVaiWu9xIRfVeOvII8b3IckLIe/k3UgZR
+	HB5xHAlxuHWcZv0C6XHR+eidc8o1XH+0ni92j1+cs5sgDjomVM0KFbO0sYxc9VxwmO9v0brbU7Zga
+	uQzIX70XJUHezthl2OJZXwZcvRPKK40T5udH0jYDTaTOQ/mfVtCq/MqXOJbnL2LHzicjNJ/V/uOZZ
+	2CpcghG+Cig1IAw9t/leAs5fl1Tfaew2kynnQPXLJBcRxOa2Jps5cP3MuTBnTa+Yqsh3AJ34Wckzg
+	wJ+y2o+g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xFhOs-00000008ZkV-3BUN;
-	Sun, 11 Oct 2026 00:26:50 +0000
-Received: from mail-qv2-x02.google.com ([2607:f8b0:4864:33::2])
+	id 1xFhey-00000008abA-1Rlc;
+	Sun, 11 Oct 2026 00:43:28 +0000
+Received: from mail-qk2-x0a.google.com ([2607:f8b0:4864:34::a])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xFhOn-00000008Zji-10kv
+	id 1xFhec-00000008aXd-0WUo
 	for linux-mediatek@lists.infradead.org;
-	Sun, 11 Oct 2026 00:26:47 +0000
-Received: by mail-qv2-x02.google.com with SMTP id 6a1803df08f44-9195de4174fso6688886d6.0
-        for <linux-mediatek@lists.infradead.org>; Sat, 10 Oct 2026 17:26:44 -0700 (PDT)
+	Sun, 11 Oct 2026 00:43:14 +0000
+Received: by mail-qk2-x0a.google.com with SMTP id af79cd13be357-930f59d1dc6so59594485a.1
+        for <linux-mediatek@lists.infradead.org>; Sat, 10 Oct 2026 17:43:05 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1791678403; x=1792283203; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
-        bh=XeJjl/io3+aKvrUjCul3f6wSV2JN17uTopzSqxgAVR8=;
-        b=SK0GFWK9+6e0OgrUxIgW5Z9U7GnwlnKdQ/DXUMzr4IuXBRWdXTm71czbBecHdkGbgM
-         zqUiM7pqwcCRPa5PgM9a0svAu0jX0dGoJjSqrYc5p1W0p392zmEnccIxy1ql0SJWgr+1
-         xroqaBvq/tNv9IQsSwo1qd/ImDmboKnSR04P1+VsjclGQVykq+p+yICLqjQEjlyI47pR
-         hYx9ZgUqbPvv2LWnDtV0V2O1cewgP/mQqiyidjizLAcZTaxXl0l3hi1OnzTn7b0j//Zs
-         R9QrBPJhCibi7j6Y01HeJ4H/SKGMXkkTKE8iZB/9xuNtYnHT0/qQRMB32PARrNn0W2v8
-         gLVg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1791678403; x=1792283203;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+        d=gmail.com; s=20251104; t=1791679385; x=1792284185; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to:content-type;
-        bh=XeJjl/io3+aKvrUjCul3f6wSV2JN17uTopzSqxgAVR8=;
-        b=IriRl7u3FVfgUTW9U70djmm1NZo1uVwIQ77FcjJW6CTgaU0jAkWQYNfVDVFHQE2eXX
-         ir0GYhtGEkOO+sxlyp+eZ87sFD+uHhLhGWuefHl3OvejaQzDAipNAAlFBc3FqZGMtfs+
-         aJ6py5wgc7oz+Yxz8p6nbfLagAfU/Qpdw/Wu8EPNeYcTzS49/PzOuWlUXeKUo/5stLIG
-         sQ0khsKI5EGXDNm80drwv3izsyyb6nuLPeZP1TycTzp9ppLZgBl74lLjHcqAhpUFJywJ
-         6tBGh7+L3GTTjLRR2SryCs6mJo8v0VCsgisNKvH65DzQTJBz1k57jXBf/TMmLUjFRaWv
-         PvRQ==
-X-Forwarded-Encrypted: i=1; AKwUvBzB/MJwjA1ZB6/NSeE0bevgNlo0BSxJwnu0YZFKHO3d70o8S9061P9fTjkZgo+fRN9bZiHgW1AxIjz9PR5AXQ==@lists.infradead.org
-X-Gm-Message-State: AFq9FYK/vT/5XTx6XciNJ/ATNi8vJ4hq+GgyyoRhrQMpE6iiwUOyq3Rs
-	9zMGCR+TY5IfxS4W9xFy195bEYz4BAusoLST+ieNdVmuAmcdEfW20VjU
-X-Gm-Gg: AYBFou1Jm528boXYzGMzJdfgmmfcZrY0aXtkkY0NtjYhztZ3p08ZtplUDtOaqB7eyGw
-	2Am9PnWzIiEZs/8bUg1eZhEccffBaTqAwqBckEN5gwwunu5SzW24o13LgoPWL1SAulAeSYvkzy7
-	nc6HNg4MVJMe5SIRCot6oYFUT75yGaSWdznxvgFLnnI6zjypZSI6V+zHHL3WDUn0HIvUVYQKaKS
-	lIXHATdKRfuUi1ZfSxF/NZjya0Ncj8PN7GemK3VofFU1BjwO0w6xXOd/TwKJdBBkf1/hpRNZu0W
-	LCVNZeV5g/z+EPereGNNH80esaBQbt4TLM3AWFQ4cF4LbgJYbuq/IrcXrWEQsHPzectwyg5H2Lo
-	p+PRiVNOaYXRHmbbXLuB2c1eaJ+czuG44UXO1erZ/jd7MpydnOtT5InR7zfIRk9YEhcAYC/EDaD
-	wLENqQGPjuIGgLIaBuazrhmrSD3/rRgt069JkwQ6cgNmQa6vj4LyL/GY7hjfcHBLA9f3s=
-X-Received: by 2002:a05:6214:21a6:b0:914:53c0:1a4b with SMTP id 6a1803df08f44-91b557c2adcmr107067156d6.43.1791678403571;
-        Sat, 10 Oct 2026 17:26:43 -0700 (PDT)
+        bh=w/oAaJptKR3nQekIsHSFFz9kgi+8N/4Ku6bTVc5nJSg=;
+        b=doVQMTAKEcjZ+pUa1VoYFyBAPQz8fMiKlLuRuPnXHB9CVsJ7ZQmrt9h7Fku7Lja81Q
+         GXVujIg0WWMHA6dQ9shuH1vW5YcnQ2uoxqb+XWfwsERYKdf3XY1/jcdCWw810iaOUghY
+         LTS5fsU791gjadH1r0aT33ddkZ4yMqQdtsd6pzGROV82jfutJKMTN/QbWhxWyiCHhYjh
+         L3BB3uY13VxtVTZGIwF2bgPK20J3wjKzj0EZ3HCLzLLT0T/kDjpE2j3vs+49QpW8HWdj
+         U6aI83OAZy/1lW6EgQBejPvuSI+OxkfOGKivTCxzsCi0uOiN+0TExQVtY2bSv1DlOuhH
+         nI2Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20260707; t=1791679385; x=1792284185;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
+         :to:cc:subject:date:message-id:reply-to:content-type;
+        bh=w/oAaJptKR3nQekIsHSFFz9kgi+8N/4Ku6bTVc5nJSg=;
+        b=mRyjnue01gPnN16NNRElBfiWbTJDeUH1YMkNtXFWt6J2ZUJY6dGhfgL+wIN2YaeGrF
+         7CG/bc2YRStfMMmQntnZEKnRKar3+uFtXAmZREWNfT21hkF324qzZt5ExRVOzH2f02S1
+         aYL9cZzd3y68JcALXDiLRAXJbRcW1JlfwJ/O2Fz83py2Xi1f0MRL0ziIGvAdrKS7ImnK
+         Vk7WojlqIb9NNVVRpiG+GR+CQFpV5tqhgMH0jwXt9C9W2nxCpS3tHh8WhwxgIqdiN2Q5
+         55V9fT942szL0eErN9+zbjgeKlCdrW2ae62UCOtlAluZ0sMCiYnul4iMt7jqF0j23FmG
+         Jekw==
+X-Forwarded-Encrypted: i=1; AKwUvBwy/ddrNy1IcPhxKOu8ozNsqFCyeJkZvQqopQ1WpiO1kCCLQMR4fP8SSM9ZXJqtCp/8YoeZhgD+eCo4h/vqNg==@lists.infradead.org
+X-Gm-Message-State: AFq9FYI0N3oMS/DkBpi5IO0FhCg2LImrgZR6nAndSxg4Ih9IjoJouYZK
+	QbueFi1SHueJxVb1r8O1bq8uXUh0i57zT/5hq9dCZlmXCp9qn0x4VvCz
+X-Gm-Gg: AYBFou014aCSw5JpohLLQ7DeyY32xjFlhVC9XCVviGgs5RFYuBpTyjJ399mbjCFs0XV
+	lcE5IHzY/bYxDUEYu7M54CpgllASiTMxUMc75QfYe6Lx75VSGfknsw2o2VKMeamCVyfc6z7dWMn
+	PBG3JYvoeBrNwerIheubd7Vwty0ovN+oeaac04/6lfUzNa1w1bZfzlGsFBQaLQ9lyeJUF5+kg4/
+	dnuVG2oDwFWTJ16U7IVivEbXWnUqebRWAG4WEC3KJWUXbjL833puOmh1HW4qIJOrXA7htWhN+DN
+	IWbditpH66PvCh+n6wsz0tadhz4cvw+PEoeegiWdtrlDXPkPG3wpl5wSu+w8WKdAMGCZhS1iRh1
+	rr4bKoSD4lHUBifQPbIS4CCwKLnR4TVOnL4n0uXleaJ5HSIRY9f6iDH0s052xDqGhhx8yuq3VrW
+	DM0xY+w9OwUPB4ytxAXrBll4mRAOOO/CX8Kso2iLkK3xhd0JxuUDEGGOMNnwFH0hr1yQqG3FDrU
+	02UPw==
+X-Received: by 2002:a05:620a:c53:b0:93c:677c:778d with SMTP id af79cd13be357-93ebd29275cmr999021285a.59.1791679384961;
+        Sat, 10 Oct 2026 17:43:04 -0700 (PDT)
 Received: from omarchy ([2601:804:8780:3df1:6ff:277e:31c7:ac13])
-        by smtp.gmail.com with ESMTPSA id 6a1803df08f44-91b550dfb6csm57407466d6.45.2026.10.10.17.26.42
+        by smtp.gmail.com with ESMTPSA id af79cd13be357-93eb9848702sm532320085a.12.2026.10.10.17.43.03
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 10 Oct 2026 17:26:43 -0700 (PDT)
+        Sat, 10 Oct 2026 17:43:04 -0700 (PDT)
 From: zoan37 <agentzoan@gmail.com>
-To: Ryder Lee <ryder.lee@mediatek.com>,
-	Jianjun Wang <jianjun.wang@mediatek.com>
-Cc: Bjorn Helgaas <bhelgaas@google.com>,
-	Lorenzo Pieralisi <lpieralisi@kernel.org>,
-	=?UTF-8?q?Krzysztof=20Wilczy=C5=84ski?= <kwilczynski@kernel.org>,
-	Manivannan Sadhasivam <mani@kernel.org>,
-	Rob Herring <robh@kernel.org>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+To: Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+	Philipp Zabel <p.zabel@pengutronix.de>
+Cc: David Airlie <airlied@gmail.com>,
+	Simona Vetter <simona@ffwll.ch>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
-	Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>,
-	linux-pci@vger.kernel.org,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Jason-JH Lin <jason-jh.lin@mediatek.com>,
+	CK Hu <ck.hu@mediatek.com>,
+	Nancy Lin <nancy.lin@mediatek.com>,
+	Nathan Lu <nathan.lu@mediatek.com>,
+	dri-devel@lists.freedesktop.org,
 	linux-mediatek@lists.infradead.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-kernel@vger.kernel.org
-Subject: PCI: mediatek-gen3: MT8189 never wakes from s2idle with ASPM L1.2 enabled
-Date: Sat, 10 Oct 2026 20:26:31 -0400
-Message-ID: <20261011002631.1105346-1-agentzoan@gmail.com>
+Subject: [PATCH 2/3] drm/mediatek: mtk_crtc: Skip the empty connector route slot in destroy
+Date: Sat, 10 Oct 2026 20:42:47 -0400
+Message-ID: <20261011004248.1117649-3-agentzoan@gmail.com>
 X-Mailer: git-send-email 2.55.0
+In-Reply-To: <20261011004248.1117649-1-agentzoan@gmail.com>
+References: <20261011004248.1117649-1-agentzoan@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261010_172645_299044_24071BC1 
-X-CRM114-Status: GOOD (  13.20  )
+X-CRM114-CacheID: sfid-20261010_174313_622028_9AC9684F 
+X-CRM114-Status: GOOD (  11.41  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,102 +110,51 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Ryder, Jianjun,
+A CRTC created with connector routes gets one extra ddp_comp[] slot for
+its output component, and ddp_comp_nr counts it, but the slot stays
+NULL until mtk_crtc_update_output() fills it in the first atomic
+enable.
 
-I'm running mainline on an MT8189 Chromebook (Lenovo IdeaPad Slim 3
-Chromebook, board "quigon" in the skywalker family, with an MT7922
-Wi-Fi card, 14c3:0616, on the PCIe port). When ASPM L1.2 is enabled on
-that link, s2idle hangs every time. My question: on MT8189, does
-L1.2 across SPM sleep need anything beyond what pcie-mediatek-gen3
-does now?
+mtk_crtc_destroy() walks all ddp_comp_nr slots and passes each one to
+mtk_ddp_comp_unregister_vblank_cb(), which dereferences it. Tearing
+down a CRTC that was never enabled therefore dereferences NULL: unbinding
+or removing mediatek-drm while that display path was never used, or
+an error in mtk_drm_kms_init() after the CRTC was created.
 
-Setup
+Skip the empty slot. Nothing was registered for it anyway: the routed
+components (DSI, DPI, DP_INTF, ...) have no vblank callback.
 
-- next-20261008, plus the posted Genio 520/720-EVK series (which adds
-  mt8189.dtsi, from Louis-Alexis Eyraud), plus the board DT. The PCIe
-  node is the one in that mt8189.dtsi ("mediatek,mt8189-pcie",
-  "mediatek,mt8192-pcie"). It is the same as ChromeOS's node except
-  for the clock list. Pins: GPIO48 WAKEN, GPIO49 PERSTN, GPIO50
-  CLKREQN. The board overrides the T-PHY to generic-tphy-v2, as
-  ChromeOS has it; v3 froze the SoC at link-up.
-- System sleep: the firmware has no PSCI SYSTEM_SUSPEND. As in
-  ChromeOS's DT, s2idle uses an idle state with PSCI CPU_SUSPEND
-  0x020180ff (min-residency 0xffffffff). When the last CPU enters it,
-  TF-A and the SPM put the SoC to sleep.
-- mtk_pcie_suspend_noirq() returns early when
-  pm_suspend_default_s2idle(), as in ChromeOS's driver. The bridge
-  stays in D0 with its power and clocks on, and the link is left to
-  ASPM.
-- From ChromeOS's mtk_pcie_startup_port() I added
-  PCIE_LOW_POWER_CTRL_REG (0x194) BIT(8), which force-disables L0s,
-  and PCIE_AXI_IF_CTRL_REG (0x1a8) BIT(12), the AXI0 slave error mask.
-  PCIE_DISABLE_DVFSRC_VLT_REQ is set, as upstream already does.
+Fixes: 01389b324c97 ("drm/mediatek: Add connector dynamic selection capability")
+Assisted-by: LLM
+Signed-off-by: zoan37 <agentzoan@gmail.com>
+---
 
-Symptom
+Notes:
+    Testing: found by reading the code; not reproduced. The same check runs
+    on the MT8189 Chromebook described in patch 1 (boot, HDMI/DP hotplug,
+    suspend/resume), but that does not exercise the destroy path (the
+    driver is built in and was not unbound). Compile-tested (W=1) on
+    next-20261008.
 
-With pcie_aspm.policy=powersupersave, both ends get L1.1 and L1.2
-(ASPM and PCI-PM) enabled:
+ drivers/gpu/drm/mediatek/mtk_crtc.c | 4 ++++
+ 1 file changed, 4 insertions(+)
 
-  00:00.0 L1SubCtl1: PCI-PM_L1.2+ PCI-PM_L1.1+ ASPM_L1.2+ ASPM_L1.1+
-                     T_CommonMode=3us LTR1.2_Threshold=61440ns
-  00:00.0 L1SubCtl2: T_PwrOn=52us
-  01:00.0 L1SubCtl1: PCI-PM_L1.2+ PCI-PM_L1.1+ ASPM_L1.2+ ASPM_L1.1+
-  Link: 5GT/s x1, CommClk+, ClockPM- on both ends
+diff --git a/drivers/gpu/drm/mediatek/mtk_crtc.c b/drivers/gpu/drm/mediatek/mtk_crtc.c
+index b54f8565d2fa..704931b369b6 100644
+--- a/drivers/gpu/drm/mediatek/mtk_crtc.c
++++ b/drivers/gpu/drm/mediatek/mtk_crtc.c
+@@ -145,6 +145,10 @@ static void mtk_crtc_destroy(struct drm_crtc *crtc)
+ 		struct mtk_ddp_comp *comp;
+ 
+ 		comp = mtk_crtc->ddp_comp[i];
++		/* The connector route slot is empty until the first enable */
++		if (!comp)
++			continue;
++
+ 		mtk_ddp_comp_unregister_vblank_cb(comp);
+ 	}
+ 
+-- 
+2.43.0
 
-After that, every s2idle entry hangs:
-
-- All devices suspend. With console_suspend=N and pm_debug_messages,
-  the last line on the AP UART is "PM: suspend-to-idle".
-- The EC sees the AP go S0->S3, and S3->S0 never comes.
-- The RTC wake alarm doesn't bring it back. Only a hard reset (EC
-  reset through the GSC) recovers the machine.
-
-What works
-
-- L1.1 only, with link/l1_2_aspm and link/l1_2_pcipm cleared: 10/10
-  s2idle cycles, RTC wake, Wi-Fi back after each one.
-- L1.2 while awake: 200 MB over Wi-Fi with no AER errors and no ping
-  loss. At idle it saves another 25-50 mW over L1.1.
-- Workaround: clear l1_2_aspm and l1_2_pcipm just before suspend and
-  set them again after resume (a systemd sleep hook). 10/10 cycles.
-- Adding the L0s and AXI bits above made no difference to the hang.
-
-ChromeOS builds its MediaTek kernels with
-CONFIG_PCIEASPM_POWER_SUPERSAVE=y, and the comment in its
-mtk_pcie_suspend_noirq() says "It's recommended to enable L1ss
-support, so the link can be changed to L1.2 state during suspend."
-So L1.2 in SPM sleep seems to be meant to work on this SoC. I haven't
-checked the L1SS state under ChromeOS's own kernel on this machine.
-Since the AP gets as far as signalling S3, my guess is that something
-outside the MAC registers is missing.
-
-Questions
-
-1. Does MT8189 need anything else for L1.2 across SPM sleep? For
-   example:
-   a) The 26 MHz reference clock and CLKREQ# in L1.2. For MT8196,
-      the mainline PCIe sphy keeps pextp_ckm on in L1SS_L1S1
-      (RG_XTP_CKM_EN_L1S1). ChromeOS's MT8196 pre_init forces
-      pcie_26m_req and bypasses its ack (PEXTPCFG
-      PEXTP_REQ_CTRL_0_REG) and switches PEXTP_CLOCK_CON off the
-      low-power clock. Is there an MT8189 equivalent? The T-PHY
-      driver has no L1SS handling.
-   b) A resource request or constraint for the SPM/TF-A, telling it
-      that PCIe is in use so that a clock or bus resource stays
-      available during sleep.
-   c) PCIE_RESOURCE_CTRL_REG SYS_CLK_RDY_TIME. MT8196 sets it to
-      10 us; MT8189 leaves it at the reset value.
-2. Is anything in the setup above wrong for MT8189? For instance,
-   nothing on this DT platform programs the endpoint's LTR Max
-   Snoop/No-Snoop Latency (both are 0).
-
-I can test patches, read registers before and after a sleep attempt,
-or try other settings. I have the AP and EC consoles and can reset the
-machine remotely. The board files and patches are at
-https://github.com/zoan37/lenovo-slim3-chromebook-omarchy
-
-The debugging was done with help from an AI assistant (Claude).
-
-Thanks,
-zoan37
 
