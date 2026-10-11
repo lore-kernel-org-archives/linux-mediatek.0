@@ -4,98 +4,95 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D229ECA9ED3
-	for <linux-mediatek@archiver.kernel.org>; Sun, 11 Oct 2026 22:22:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7D60CCA9EC7
+	for <linux-mediatek@archiver.kernel.org>; Sun, 11 Oct 2026 23:06:31 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=OXZ1UsR/jsdDknoGUcyYR4VW8gmQlVsH7nZcsEdE/Yo=; b=VzKC+K6N23aQZMhLU9MIRu3lq4
-	SUAf2BHbf2F3qczY7V2r1nsa5eALbaIYnNf6TN+LD0xbHDrwoeTx8/NQHmWMalUhlL0DdDIPSCDmv
-	FRqqralVp/WL6xFoOC4UIVFeR7pHalm+a3TFgauscqWom1P0fzO0HdZaan3NJJVqOw0RypkFYOSNh
-	+ke9kzdM6iUTNewsQoGNxqT7jfk+MjnxBWpEpjdxONY9oVu3ZRAHMmPUW48O189BMopsnP6zon1Iv
-	RixJzVxUyj9U8y9tG/ODAK4qnOzqgUOc89VhVuPndPUUU/jMATnrzPEGRE7sdQoW/h+wlRCZVVkeC
-	CTQhARfw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=GId+tRXTCvTzFm3HINSe/LmkKEkAakiciV2ix96r7+k=; b=3rGoXvL/TmDLVV5U0bMApWzNqu
+	d8/QLyctbiaKnQEB8pJ1a70+eEjU/z5lm1MQ9Yq3Mks/es2SMKAWoYZ/4nT/UiKIWX6H1WexHQzqO
+	qMQwqwc9PRFZl9TMIA7Boq+i37lAyxXNch2/txmh56CCHYOdCSgZ7Ge8gfkfl1P6+y54Y/o95X/mU
+	ylczlfxRXHynuc7LSE/QuJB0h09XZiKgegBuFNS5tKKSnDOYijfvSV26TsuKhdy+dgSd2t0csXKQO
+	x0UVbSQzKJfn28CgpfeWE6MKA+Y5NJ4c0sc2e/Jp0UdQBGgtGwglHHsYPVmJ+dycm4su3w1nLAofp
+	ERKic9NA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xG1wQ-00000009SFA-2tH3;
-	Sun, 11 Oct 2026 22:22:50 +0000
-Received: from mail-qt1-x82f.google.com ([2607:f8b0:4864:20::82f])
+	id 1xG2ce-00000009Twm-1hGI;
+	Sun, 11 Oct 2026 23:06:28 +0000
+Received: from mail-wr1-x42c.google.com ([2a00:1450:4864:20::42c])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xG1wO-00000009SCL-1pZs
+	id 1xG2cY-00000009Tvy-2Axh
 	for linux-mediatek@lists.infradead.org;
-	Sun, 11 Oct 2026 22:22:49 +0000
-Received: by mail-qt1-x82f.google.com with SMTP id d75a77b69052e-5350c1b9e0dso19231551cf.0
-        for <linux-mediatek@lists.infradead.org>; Sun, 11 Oct 2026 15:22:48 -0700 (PDT)
+	Sun, 11 Oct 2026 23:06:26 +0000
+Received: by mail-wr1-x42c.google.com with SMTP id ffacd0b85a97d-48870973bddso750105f8f.1
+        for <linux-mediatek@lists.infradead.org>; Sun, 11 Oct 2026 16:06:21 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1791757367; x=1792362167; darn=lists.infradead.org;
-        h=content-transfer-encoding:content-type:mime-version:references
-         :in-reply-to:message-id:date:subject:cc:to:from:from:to:cc:subject
+        d=baylibre.com; s=google; t=1791759980; x=1792364780; darn=lists.infradead.org;
+        h=in-reply-to:content-disposition:content-type:mime-version
+         :references:message-id:subject:cc:to:from:date:from:to:cc:subject
          :date:message-id:reply-to:content-type;
-        bh=OXZ1UsR/jsdDknoGUcyYR4VW8gmQlVsH7nZcsEdE/Yo=;
-        b=K61oPN8NSiVGjEepnUNDoNLtFPypfws/Nr62ERTZbZTcgetJ/iFK7xCHl4BdzTmou4
-         w0GqWjFSztkOhzI2FKk+/EqWnPZ7OQ5buaQHTFWOHMrxAyLROOtH/ovKKBODRMiqFom7
-         JYFxy6zURJyrqbnB7v3pypBlzUUFdiTXPKCjz8ah4HXpMtAAeJuQvbijmEddyP2soTzd
-         Tf+Sfp9GJMvfx2dx0IrzPuB/zUePIRxubBuStj6tGS0nDcawLMyQnnoJQhx2adBNOWye
-         0aelqJUQDnZdYQ1bSo8LBbUNaT9AQCKnPsd7zmaE5yjRa/zDod92m45+ghlEnO+uvV6X
-         Sd/w==
+        bh=GId+tRXTCvTzFm3HINSe/LmkKEkAakiciV2ix96r7+k=;
+        b=YSAPy71IHA1Z9YdNqFkPYWM1U5yTF82Q1KjlMP4Cee8fTRr89QnvzUIfx3jEY3SyIV
+         3+xj1W3cUj8RvK6axQWvqgbPiQ9OUwPYu65axRlvsbmViS7Xr6UXZpLg0mXKfcb/3l9I
+         CaKn0/mtOXgo3uar9qMXGWUIg2MFSLod9WP1ff4YvzSCjmXNln7YAzqwwQJsYRhgjdqD
+         4bwxJXaq98ZQ8VvcazEFDcodzUd8b/rfdMdwTlMgCiKjPNLeC9Zm1S1cSYk6SrPmiMS9
+         3qa2FB2gh1AkFAMnGGm3elvbIuY2Yy4ekPlwuuGFSltx58XXx+9Z48qUGmdFWftQOcMw
+         3uWQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1791757367; x=1792362167;
-        h=content-transfer-encoding:content-type:mime-version:references
-         :in-reply-to:message-id:date:subject:cc:to:from:x-gm-gg
+        d=1e100.net; s=20260707; t=1791759980; x=1792364780;
+        h=in-reply-to:content-disposition:content-type:mime-version
+         :references:message-id:subject:cc:to:from:date:x-gm-gg
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
          :content-type;
-        bh=OXZ1UsR/jsdDknoGUcyYR4VW8gmQlVsH7nZcsEdE/Yo=;
-        b=UYorzxd6AZmI9yAYchqjiTjxJ1Fqz4yxuI0wTbUO9QnIBvxqrACllWH67FDlC80iNC
-         /Y53TmRVIq9D75UGD5YDqI5aGv61NMlKfAfR3ci859ZNnNPXfuzwrqiJdOGG4sD7gd29
-         HG5A8Dw5rptRsWoadhr8GGljCY/wy3Hh7h1rAtbGM1WDCYjEV1iBIFBYVzBo1eHcz88E
-         CAbimKijg2daik7vlKGjvSeqmYyQ53RP4/lnnB/G/W/V0CLf7w2ahtchkGWEidZFv3Yl
-         VAMeOopev6mHYogYTBYLj5NgOxAJc/XdSvSUHAZY1zT5o1yi6NUzTU/qNT/iw7qkWofw
-         YmGw==
-X-Forwarded-Encrypted: i=1; AKwUvBzxJYHbc7l6Nn3zKF+9UV3RNfSyTYWBow72lbQFK3dPGgIOOCU+P9aMuThFRkXyDjcRxfTkQseLZupB7SoMSg==@lists.infradead.org
-X-Gm-Message-State: AFq9FYIfnCmzwVAH+I8mhFP5XKBb+CyHFHIdMT0rRZFtxURhzWHjjrAn
-	5qBLdArkV4D6WNVhCg1jmdrT2Tx09LJKeDOBg1EAAG8s3M8b7zgY94Q=
-X-Gm-Gg: AYBFou064jbiUUp3vchiGg4GcXoIbZCh4bBzmREgKahsYWY43CKraUIBlKgzlIofwRv
-	zAFo+IULEgNOygnllojYt4YTfd0i9ppKy+wfkdhSY7YjyRTUJPdyRQ+3VjZMRfa06eBpbMwUJ57
-	seeVid6xV6Uwf2wyGMAQ7iuHdZ9Pws+jLJ0Zvi1rLB/pwLP4v1/SPD6/nFjrNdaqviN+C+dADjl
-	Hm6Hc427mtL1el+wtOK7+oaCQE/Lcf+WM+hSzvHjAYqx8h6AjnMJCs8UEtb9jkZsQEYBIMthvja
-	TUgO0WgIy527VJBp2hLlmCetC/kEsZh6LbSAK/iWlC/zF9HxzM9RrPfr/d0rt8A0cjqCjnZ7na1
-	KuhkkgnNEAKMCdeVS+5p1ilhoeXh83fHIBIsY/lxGxBeJLK6iOSEHsnTCbFtom05nikK+22nv+m
-	lxxi/A18YmLYtnMv4fsleOAa9AYrrvLXhDBgBivw6EVmjKed3n+qC83nb1zke+EocNnJngsBAkv
-	z4szt44N1vctffmClAGubmDJ05jukGuBJk7AOf5awA2pDYblEtBALqhkJvbcfRq7NwfTJy6iWSZ
-	Fc0wDYT6XtjEZqmAM9J7KqUzXEfehA6wMWmDbyU=
-X-Received: by 2002:a05:622a:260b:b0:533:32f3:1db9 with SMTP id d75a77b69052e-5359f46f5ccmr130647001cf.11.1791757367164;
-        Sun, 11 Oct 2026 15:22:47 -0700 (PDT)
-Received: from i4-gl-tmk5904-1.ad.psu.edu ([130.203.156.90])
-        by smtp.gmail.com with ESMTPSA id d75a77b69052e-5359b7ecccdsm66288831cf.30.2026.10.11.15.22.45
+        bh=GId+tRXTCvTzFm3HINSe/LmkKEkAakiciV2ix96r7+k=;
+        b=fpAnrsFlIgRs2VkB0ZeozRDbAv3G1lCiRqe6ez9iK7bk4FWHJhwoCZX0sqPP/OtJc/
+         nmCAtlxB+36rbcvlKQCy7HGd/XhRcBIFkx6zM2lttSjnz6AdW/OdQw6cDDpaflY8WCY2
+         4q9G3rpdfO8Uiu2oD5ukV9dJG6XQ2xZwFeUeirJwEGD2KfMFLLuTDh6vDHt3aB+XlAub
+         b+TkIMzcCEb1RhTsPjGW8EzjTRBZ6uuyillTypgSKU/cl9clUTsrOEg5E8R5SmBxf8rj
+         09wxuNeP9sFdm35DFGkTinXRR+QII1gAXvC7TYAQZuduzTuYlO0hosbS4RFP2OvxAgi8
+         iJGw==
+X-Forwarded-Encrypted: i=1; AKwUvBz05kkkUjbKOw+L+TLmRVy+EzxxpaV2+NDfI5tVLV2nHdrqcWyC2FlZMdiyuijN8XgO9HMoeVXfzF7as3HOGg==@lists.infradead.org
+X-Gm-Message-State: AFq9FYKwmiTlGcVWy4roMVIXSdiGsH8LNcCQW/OfsHweSJAtGywJ1bzv
+	eHVUrY0lNyWCweuK1bPRc2dTHvBCv786IyB2z2JGYJE4qAKhMSfdeouKw1xsFbF2lD0=
+X-Gm-Gg: AYBFou0B7wenJlEsxLo3kusIZ7Pe7r1V6MOAxF0jE7vfedzo9JmkVivUQNosHgEHNbe
+	xt4KTwsltyx1l6rx2J/69ze93e0ex8BuwsZW0QvTPyX2jzVqTyG4eXnbm03YZM3XxTbFY0MLenO
+	7zRCpl9HUT5H/Ds1W/GwOpRVRi4ZCu49sl56LXdMJAGIt6cwNXvKKKHMEq64blY1OpE8vKRtQEd
+	vGtvX2qhqx5yxkeBofEz8ToJkncLoDPyKw0HRjKuCfi7BKSCYI2hG+aaQBR2Z6ZERNmde+wB/Pc
+	QRob1F0jWzO0n0fx+JYPqPQ20F3o76z1eKh4VjWH0oaiMbPC8EP/Kfq1gioKPlzZvOQ2lqzBbqr
+	m11numYHFK92DUT5As1xGhDkFUGZBMy3yE6J2kd9pcwd1E/Qzn3eL+sKPO3n0HjnMxj9jNhpVyF
+	VGJ+JLRcgTG8eh5VHG1gxJjopA1WtajhVLZRsziyBWyaNtjIvq1oIHDhrmXhyiLciHKD3O4ywVJ
+	Z4=
+X-Received: by 2002:a05:6000:2306:b0:488:8347:a110 with SMTP id ffacd0b85a97d-48dba9e6163mr13299157f8f.7.1791759979566;
+        Sun, 11 Oct 2026 16:06:19 -0700 (PDT)
+Received: from localhost ([2a02:8071:56d1:2de0:1d24:d58d:2b65:c291])
+        by smtp.gmail.com with UTF8SMTPSA id ffacd0b85a97d-48dc1abcaecsm12488698f8f.18.2026.10.11.16.06.15
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 11 Oct 2026 15:22:45 -0700 (PDT)
-From: Myeonghun Pak <mhun512@gmail.com>
-To: Liam Girdwood <lgirdwood@gmail.com>,
-	Mark Brown <broonie@kernel.org>,
-	Jaroslav Kysela <perex@perex.cz>,
-	Takashi Iwai <tiwai@suse.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: linux-sound@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	Ijae Kim <ae878000@gmail.com>
-Subject: [PATCH 3/3] ASoC: mediatek: mt8196: Keep the AFE IRQ within its resource lifetime
-Date: Sun, 11 Oct 2026 18:22:34 -0400
-Message-ID: <20261011222234.2098904-4-mhun512@gmail.com>
-X-Mailer: git-send-email 2.53.0
-In-Reply-To: <20261011222234.2098904-1-mhun512@gmail.com>
-References: <20261011222234.2098904-1-mhun512@gmail.com>
+        Sun, 11 Oct 2026 16:06:17 -0700 (PDT)
+Date: Mon, 12 Oct 2026 01:06:14 +0200
+From: Uwe =?utf-8?Q?Kleine-K=C3=B6nig?= <u.kleine-koenig@baylibre.com>
+To: =?utf-8?B?TWljaGHFgiBLb3BlxIc=?= <michal@nozomi.space>
+Cc: linux-input@vger.kernel.org, devicetree@vger.kernel.org, 
+	linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
+	linux-kernel@vger.kernel.org, jikos@kernel.org, bentiss@kernel.org, dmitry.torokhov@gmail.com, 
+	robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org, matthias.bgg@gmail.com, 
+	angelogioacchino.delregno@collabora.com, allencl_lin@hotmail.com, 
+	tylor_yang@himax.corp-partner.google.com, felix@kaechele.ca, dianders@chromium.org
+Subject: Re: [PATCH v6 2/3] HID: Add Himax HX83102J SPI touchscreen driver
+Message-ID: <aswV0ATke05Aa-q5@monoceros>
+References: <20261011181633.1778969-1-michal@nozomi.space>
+ <20261011181633.1778969-3-michal@nozomi.space>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="2zn2xrgow5dc2xy6"
+Content-Disposition: inline
+In-Reply-To: <20261011181633.1778969-3-michal@nozomi.space>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261011_152248_497736_7A4F6A4C 
-X-CRM114-Status: GOOD (  16.91  )
+X-CRM114-CacheID: sfid-20261011_160623_071344_F857A1EA 
+X-CRM114-Status: UNSURE (   8.95  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -110,86 +107,42 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The managed AFE IRQ is requested before the regmap is allocated. The
-handler can therefore run before its regmap exists, and devres releases
-the regmap before joining the IRQ. The remove callback also suspends the
-AFE and disables its clocks before devres releases the IRQ.
 
-Request the IRQ after initializing the regmap and before enabling MCU
-IRQ routing. A failed request then takes the existing runtime PM unwind
-without enabling that routing. Release the IRQ at the start of removal
-before the explicit clock shutdown, using the IRQ number saved at probe.
-The regmap's managed lifetime also encloses the IRQ on probe errors.
+--2zn2xrgow5dc2xy6
+Content-Type: text/plain; protected-headers=v1; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+Subject: Re: [PATCH v6 2/3] HID: Add Himax HX83102J SPI touchscreen driver
+MIME-Version: 1.0
 
-This issue was found by static analysis.
+Hello,
 
-Fixes: 57513aabfe5b ("ASoC: mediatek: mt8196: add platform driver")
-Assisted-by: LLM
-Co-developed-by: Ijae Kim <ae878000@gmail.com>
-Signed-off-by: Ijae Kim <ae878000@gmail.com>
-Signed-off-by: Myeonghun Pak <mhun512@gmail.com>
----
-Compile-tested with Clang 22.1.2, W=1 (arm64).
+On Sun, Oct 11, 2026 at 08:16:32PM +0200, Micha=C5=82 Kope=C4=87 wrote:
+> +#include <linux/mod_devicetable.h>
 
- sound/soc/mediatek/mt8196/mt8196-afe-common.h |  1 +
- sound/soc/mediatek/mt8196/mt8196-afe-pcm.c    | 18 ++++++++++++------
- 2 files changed, 13 insertions(+), 6 deletions(-)
+Please don't include <linux/mod_devicetable.h>. This file introduces a
+big amount of unneeded dependencies. You can rely on <linux/spi/spi.h>
+to provide of_device_id and spi_device_id (which are the ones you
+actually use). Alternatively---if you want to go full iwyu---include
+linux/device-id/of.h and linux/device-id/spi.h directly.
 
-diff --git a/sound/soc/mediatek/mt8196/mt8196-afe-common.h b/sound/soc/mediatek/mt8196/mt8196-afe-common.h
-index 4951a6f32abb..ce5d586721db 100644
---- a/sound/soc/mediatek/mt8196/mt8196-afe-common.h
-+++ b/sound/soc/mediatek/mt8196/mt8196-afe-common.h
-@@ -186,6 +186,7 @@ struct clk;
- struct mtk_base_afe;
- 
- struct mt8196_afe_private {
-+	int irq_id;
- 	struct clk **clk;
- 	/* dai */
- 	void *dai_priv[MT8196_DAI_NUM];
-diff --git a/sound/soc/mediatek/mt8196/mt8196-afe-pcm.c b/sound/soc/mediatek/mt8196/mt8196-afe-pcm.c
-index a1ae8322d8b6..39d9103bd5e7 100644
---- a/sound/soc/mediatek/mt8196/mt8196-afe-pcm.c
-+++ b/sound/soc/mediatek/mt8196/mt8196-afe-pcm.c
-@@ -2393,12 +2393,7 @@ static int mt8196_afe_pcm_dev_probe(struct platform_device *pdev)
- 	irq_id = platform_get_irq(pdev, 0);
- 	if (irq_id < 0)
- 		return dev_err_probe(dev, irq_id, "no irq found");
--
--	ret = devm_request_irq(dev, irq_id, mt8196_afe_irq_handler,
--			       IRQF_TRIGGER_NONE,
--			       "Afe_ISR_Handle", afe);
--	if (ret)
--		return dev_err_probe(dev, ret, "could not request_irq for Afe_ISR_Handle\n");
-+	afe_priv->irq_id = irq_id;
- 
- 	/* init sub_dais */
- 	INIT_LIST_HEAD(&afe->sub_dais);
-@@ -2453,6 +2448,14 @@ static int mt8196_afe_pcm_dev_probe(struct platform_device *pdev)
- 		goto err_pm_put;
- 	}
- 
-+	ret = devm_request_irq(dev, irq_id, mt8196_afe_irq_handler,
-+			       IRQF_TRIGGER_NONE,
-+			       "Afe_ISR_Handle", afe);
-+	if (ret) {
-+		dev_err_probe(dev, ret, "could not request_irq for Afe_ISR_Handle\n");
-+		goto err_pm_put;
-+	}
-+
- 	regmap_read(afe->regmap, AFE_IRQ_MCU_EN, &tmp_reg);
- 	regmap_write(afe->regmap, AFE_IRQ_MCU_EN, 0xffffffff);
- 	regmap_read(afe->regmap, AFE_IRQ_MCU_EN, &tmp_reg);
-@@ -2482,8 +2485,11 @@ err_pm_put:
- static void mt8196_afe_pcm_dev_remove(struct platform_device *pdev)
- {
- 	struct mtk_base_afe *afe = platform_get_drvdata(pdev);
-+	struct mt8196_afe_private *afe_priv = afe->platform_priv;
- 	struct device *dev = &pdev->dev;
- 
-+	devm_free_irq(dev, afe_priv->irq_id, afe);
-+
- 	if (!pm_runtime_status_suspended(dev))
- 		mt8196_afe_runtime_suspend(dev);
- 
+Best regards
+Uwe
+
+--2zn2xrgow5dc2xy6
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCgAdFiEEP4GsaTp6HlmJrf7Tj4D7WH0S/k4FAmrMFmMACgkQj4D7WH0S
+/k4MXgf9EcZ3GfDdHxsy9EN8ExCwEfNg60ObLE8QD0gdVxF+YdCbdpGNF2XrpYvk
+exy5MWNHx1evhGI8uT/bu9C/jyhN3agP3CnjN8IYUDxTDMIt6AnsMR8o/K87exej
+Jwx8C3Y9Yo3SQpDDR4mJF9ftPo4LgbCWne5l9cEAMH4M2i2xBYSZrMNHdPsRZ8rh
+91JD5Nl0fgYKcD290dVrM6Yyzy0jTpbUgTEm039g0ev8eEvvylQcfsP30oqEDaI9
+sHPHaxeZY+jPpKiOqzfBMP1IzFSQNXt86mzcWDLKLVHalJWEh7O1dnfv1SqWhPEA
+s2aLRmZvKqCLimKqBYM+vLnmUtqynA==
+=yG/u
+-----END PGP SIGNATURE-----
+
+--2zn2xrgow5dc2xy6--
 
