@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5FAECCA9ED2
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5BDB8CA9ED1
 	for <linux-mediatek@archiver.kernel.org>; Sun, 11 Oct 2026 18:48:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
@@ -12,33 +12,33 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:
 	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=dBk6RvESsUkBNpRPMX5rC24GOsvOOpZPbOMsGvS5hwM=; b=NaGO3Pg/cDAK2Swu8a0HLdIf+1
-	aNpNcK6zWAQH2vyqZAnUnXRQmmJfcBouLDmv1/jqqWPKTyhut9HPkL3m40fWvPXQuVl/64m/xMdJL
-	/HxrnuNNn6DgXBQckXWK1cTNdIyZeX7Il1YkPQGhm/StLwucyKr0/5GgLtbfCFg4YEuDveMDT78PG
-	JbZ7qL1xPt14dqEuoUNIYkS4lQURbxutAYhlyaVfKUTaAxplkFAvVLgbbGk4/VhICMCGybplooX06
-	Dw1GbX2rCeE0tk+VyqP4qmExmSABaJf9Ehnz1ifL3KZFNgcfCEjlNubDgsgt1dVxlXuqC9ep42SAe
-	5rw9C48g==;
+	bh=u009rK8NBkfDo1e7Yz5QlxEzEoGCc9HxaXbQXCuXZqs=; b=2o3G7p6uGP3kMGmim4n69+UFX7
+	eblRpCw4OaHAjaSqX+sRMkUutEdLGknKzl101H2CynYn5kxTRNvzs5H6HfK2sm7QO27R5uy3pVtNy
+	o+jmHEYt8RMUGEvWaOFzbFm1bjkMVoS8dteokOOarp2nX0Kyngn3v0uPcEA7Qt+AwL2Sko5q8A9YO
+	z0rCJhqd6hFl3RuqX0Vel2GjozzWv1J3YuyOpIst1i8JzXU3OuBpnPhRA2Lm8OxCIEP0kTtrHjc4R
+	rkMB78KPVDlqM3nNvKqnRdTv1cDj8xD0qoAB1d+e4AdGZ57DGHGK69KRPhqhFnwliuoMGYpE9cy+L
+	KlSj92qQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xFyad-00000009JO0-08QU;
+	id 1xFyad-00000009JOQ-122D;
 	Sun, 11 Oct 2026 18:48:07 +0000
 Received: from mail.nozomi.space ([139.162.184.125])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xFyaZ-00000009JKz-0VyL;
-	Sun, 11 Oct 2026 18:48:04 +0000
+	id 1xFyaa-00000009JLM-0atB;
+	Sun, 11 Oct 2026 18:48:05 +0000
 From: =?UTF-8?q?Micha=C5=82=20Kope=C4=87?= <michal@nozomi.space>
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=nozomi.space;
-	s=mail; t=1791744481;
+	s=mail; t=1791744482;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=dBk6RvESsUkBNpRPMX5rC24GOsvOOpZPbOMsGvS5hwM=;
-	b=rDViF5s02EchedYv9di9cRE9J3e4LCXOkFhpcC8/xaLiAJ0IvFCB6V0ihjrJBPzhdma77j
-	24Dncz47e60EcX3cV+qNd17LaZ0H3xmf75Brt/kpYO9DKQJ/pmBHJ7sc3m/XQaCF+9JujK
-	/qtM1es7L9aRlzmEll8bo58nTn0FaQyx46jin1uJOJVu/dmosxn7I4uKeGZNatpp74G990
-	8yBrkZEfrmL3lVqws7QBa0y5KB9C1sOkbqvECvHjhq7DVJIGpivnYp/UQNlmVZjM1ZLhOe
-	rrpMvq4PX5s3bJKjv9etyoaEKcW1NVOJeZ/T+Bx7CxRM4Ls3I5GkFqUKLjwOgQ==
+	bh=u009rK8NBkfDo1e7Yz5QlxEzEoGCc9HxaXbQXCuXZqs=;
+	b=NL3Lv06R2LADRYVeayP35rIkdbbC1D51GheIAHVayAoaf1logy/9PFsdeq7V9yl9tPaXg9
+	U9dp1YBiX4eKdkZhiQJc4CGj93yL4s2C/Wu1NzHkaqN27ovWcjSC1myyVUilWAEkLj/9qw
+	J5DJlBjFItleFfQppkvsht5Si95azAIAAyOIQFv6nHYaxpfArWwZUBi/QUImTfUMTjhdu6
+	N6tIlGRdmqKOwSRUw90NPzouIVR7vIQ0T110/hvDQyjwJIH07fjD8Uf9tWCZDqx4aYGK6e
+	jzxGBVMyohQp6rR3O2PPZKkB4bDNPwmr2iHg1DcM636aitVeT0XmEm1QtiHKzQ==
 To: ulfh@kernel.org,
 	angelogioacchino.delregno@collabora.com
 Cc: robh@kernel.org,
@@ -51,17 +51,17 @@ Cc: robh@kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
 	=?UTF-8?q?Micha=C5=82=20Kope=C4=87?= <michal@nozomi.space>
-Subject: [PATCH v2 2/4] pmdomain: mediatek: Restore a register after powering a domain on
-Date: Sun, 11 Oct 2026 20:47:53 +0200
-Message-ID: <20261011184755.2058017-3-michal@nozomi.space>
+Subject: [PATCH v2 3/4] pmdomain: mediatek: mt8188: Enable the GPU timestamp counter
+Date: Sun, 11 Oct 2026 20:47:54 +0200
+Message-ID: <20261011184755.2058017-4-michal@nozomi.space>
 In-Reply-To: <20261011184755.2058017-1-michal@nozomi.space>
 References: <20261011184755.2058017-1-michal@nozomi.space>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261011_114803_459969_222A0300 
-X-CRM114-Status: GOOD (  14.88  )
+X-CRM114-CacheID: sfid-20261011_114804_346098_0132CE78 
+X-CRM114-Status: GOOD (  12.23  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,125 +76,68 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Some blocks lose a setting when their power domain is turned off, and it
-has to be restored every time the domain is powered on again, before
-the devices in the domain use it.
+The GPU timestamp counter only counts once the TOP_TSVALUEB enable bits
+in MFGCFG feed it the SoC system timer, and MFGCFG loses them whenever
+the MFG1 power domain is turned off. Without them GPU_TIMESTAMP reads
+zero, so timestamp queries in userspace drivers and the timestamps
+written by GPU jobs are always zero.
 
-Let the domain data name such a register in one of the blocks listed in
-access-controllers, and write it once the bus protection of the domain
-has been released. Devicetrees that use the older per-domain phandles,
-or don't list the block, keep working without the setting.
+Add MFGCFG as the second MT8188 access controller and set the bits every
+time MFG1 has been powered on.
 
 Signed-off-by: Michał Kopeć <michal@nozomi.space>
 ---
- drivers/pmdomain/mediatek/mtk-pm-domains.c | 19 +++++++++++++++++++
- drivers/pmdomain/mediatek/mtk-pm-domains.h | 14 ++++++++++++++
- 2 files changed, 33 insertions(+)
+ drivers/pmdomain/mediatek/mt8188-pm-domains.h | 16 +++++++++++++++-
+ drivers/pmdomain/mediatek/mtk-pm-domains.h    |  1 +
+ 2 files changed, 16 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/pmdomain/mediatek/mtk-pm-domains.c b/drivers/pmdomain/mediatek/mtk-pm-domains.c
-index f0fa79e01f9c3..0585a663f48a6 100644
---- a/drivers/pmdomain/mediatek/mtk-pm-domains.c
-+++ b/drivers/pmdomain/mediatek/mtk-pm-domains.c
-@@ -72,6 +72,7 @@ struct scpsys_domain {
- 	int num_subsys_clks;
- 	struct clk_bulk_data *subsys_clks;
- 	struct regulator *supply;
-+	struct regmap *init_regmap;
- };
+diff --git a/drivers/pmdomain/mediatek/mt8188-pm-domains.h b/drivers/pmdomain/mediatek/mt8188-pm-domains.h
+index 3a989e83e9b79..88035cc6a808b 100644
+--- a/drivers/pmdomain/mediatek/mt8188-pm-domains.h
++++ b/drivers/pmdomain/mediatek/mt8188-pm-domains.h
+@@ -14,8 +14,21 @@
+  * MT8188 power domain support
+  */
  
- struct scpsys {
-@@ -79,6 +80,7 @@ struct scpsys {
- 	struct regmap *base;
- 	const struct scpsys_soc_data *soc_data;
- 	u8 bus_prot_index[BUS_PROT_BLOCK_COUNT];
-+	unsigned long bus_prot_avail;
- 	struct regmap **bus_prot;
- 	struct genpd_onecell_data pd_data;
- 	struct generic_pm_domain *domains[];
-@@ -755,6 +757,13 @@ static int scpsys_power_on(struct generic_pm_domain *genpd)
- 	if (ret < 0)
- 		goto err_disable_sram;
- 
-+	if (pd->init_regmap) {
-+		ret = regmap_write(pd->init_regmap, pd->data->reg_init->ofs,
-+				   pd->data->reg_init->val);
-+		if (ret)
-+			goto err_enable_bus_protect;
-+	}
++#define MT8188_MFG_TIMESTAMP			0x130
++#define MT8188_MFG_TIMESTAMP_EN			GENMASK(1, 0)
 +
- 	if (MTK_SCPD_CAPS(pd, MTK_SCPD_STRICT_BUS_PROTECTION)) {
- 		ret = clk_bulk_prepare_enable(pd->num_subsys_clks,
- 					      pd->subsys_clks);
-@@ -900,6 +909,14 @@ generic_pm_domain *scpsys_add_one_domain(struct scpsys *scpsys, struct device_no
- 	pd->hwv_data = hwv_domain_data;
- 	pd->scpsys = scpsys;
- 
-+	if (domain_data && domain_data->reg_init) {
-+		enum scpsys_bus_prot_block block = domain_data->reg_init->block;
-+
-+		/* Older devicetrees don't describe every block it needs */
-+		if (scpsys->bus_prot_avail & BIT(block))
-+			pd->init_regmap = scpsys->bus_prot[scpsys->bus_prot_index[block]];
-+	}
-+
- 	if (MTK_SCPD_CAPS(pd, MTK_SCPD_DOMAIN_SUPPLY)) {
- 		pd->supply = devm_of_regulator_get_optional(scpsys->dev, node, "domain");
- 		if (IS_ERR(pd->supply))
-@@ -1228,6 +1245,7 @@ static int scpsys_get_bus_protection_legacy(struct device *dev, struct scpsys *s
- 
- 		bp_type = bp_blocks[i];
- 		scpsys->bus_prot_index[bp_type] = j;
-+		scpsys->bus_prot_avail |= BIT(bp_type);
- 		scpsys->bus_prot[j] = regmap[i];
- 
- 		j++;
-@@ -1268,6 +1286,7 @@ static int scpsys_get_bus_protection(struct device *dev, struct scpsys *scpsys)
- 		 */
- 		bp_type = soc->bus_prot_blocks[i];
- 		scpsys->bus_prot_index[bp_type] = i;
-+		scpsys->bus_prot_avail |= BIT(bp_type);
- 
- 		scpsys->bus_prot[i] = device_node_to_regmap(node);
- 		of_node_put(node);
-diff --git a/drivers/pmdomain/mediatek/mtk-pm-domains.h b/drivers/pmdomain/mediatek/mtk-pm-domains.h
-index 45da83e9d649a..4c2c56addb3cc 100644
---- a/drivers/pmdomain/mediatek/mtk-pm-domains.h
-+++ b/drivers/pmdomain/mediatek/mtk-pm-domains.h
-@@ -152,6 +152,18 @@ enum scpsys_mtcmos_type {
- 	SCPSYS_MTCMOS_TYPE_MAX
- };
- 
-+/**
-+ * struct scpsys_reg_init - register set up after a domain is powered on
-+ * @block: The access controller block holding the register.
-+ * @ofs: The offset of the register.
-+ * @val: The value to write.
-+ */
-+struct scpsys_reg_init {
-+	enum scpsys_bus_prot_block block;
-+	u32 ofs;
-+	u32 val;
+ static enum scpsys_bus_prot_block scpsys_bus_prot_blocks_mt8188[] = {
+-	BUS_PROT_BLOCK_INFRA
++	BUS_PROT_BLOCK_INFRA, BUS_PROT_BLOCK_MFGCFG
 +};
 +
- /**
-  * struct scpsys_domain_data - scp domain data for power on/off flow
-  * @name: The name of the power domain.
-@@ -165,6 +177,7 @@ enum scpsys_mtcmos_type {
-  * @caps: The flag for active wake-up action.
-  * @rtff_type: The power domain RTFF HW type
-  * @bp_cfg: bus protection configuration for any subsystem
-+ * @reg_init: register that loses its setting when the domain is powered off
-  */
- struct scpsys_domain_data {
- 	const char *name;
-@@ -180,6 +193,7 @@ struct scpsys_domain_data {
- 	const struct scpsys_bus_prot_data bp_cfg[SPM_MAX_BUS_PROT_DATA];
- 	int pwr_sta_offs;
- 	int pwr_sta2nd_offs;
-+	const struct scpsys_reg_init *reg_init;
++/*
++ * The GPU timestamp counter only counts once MFGCFG feeds it the SoC system
++ * timer, which MFGCFG forgets whenever MFG1 is powered off.
++ */
++static const struct scpsys_reg_init mt8188_mfg_timestamp = {
++	.block = BUS_PROT_BLOCK_MFGCFG,
++	.ofs = MT8188_MFG_TIMESTAMP,
++	.val = MT8188_MFG_TIMESTAMP_EN,
  };
  
- /**
+ static const struct scpsys_domain_data scpsys_domain_data_mt8188[] = {
+@@ -70,6 +83,7 @@ static const struct scpsys_domain_data scpsys_domain_data_mt8188[] = {
+ 				    MT8188_TOP_AXI_PROT_EN_SUB_INFRA_VDNR_STA),
+ 		},
+ 		.caps = MTK_SCPD_KEEP_DEFAULT_OFF | MTK_SCPD_DOMAIN_SUPPLY,
++		.reg_init = &mt8188_mfg_timestamp,
+ 	},
+ 	[MT8188_POWER_DOMAIN_MFG2] = {
+ 		.name = "mfg2",
+diff --git a/drivers/pmdomain/mediatek/mtk-pm-domains.h b/drivers/pmdomain/mediatek/mtk-pm-domains.h
+index 4c2c56addb3cc..191d5cfb60fe7 100644
+--- a/drivers/pmdomain/mediatek/mtk-pm-domains.h
++++ b/drivers/pmdomain/mediatek/mtk-pm-domains.h
+@@ -71,6 +71,7 @@ enum scpsys_bus_prot_block {
+ 	BUS_PROT_BLOCK_CAM_SUB0,
+ 	BUS_PROT_BLOCK_IPE_SUB0,
+ 	BUS_PROT_BLOCK_VLP,
++	BUS_PROT_BLOCK_MFGCFG,
+ 	BUS_PROT_BLOCK_COUNT,
+ };
+ 
 -- 
 2.56.0
 
