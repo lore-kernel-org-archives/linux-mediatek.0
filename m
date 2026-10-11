@@ -4,41 +4,41 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BFB09CA9ED0
-	for <linux-mediatek@archiver.kernel.org>; Sun, 11 Oct 2026 18:16:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AFE7DCA9EC7
+	for <linux-mediatek@archiver.kernel.org>; Sun, 11 Oct 2026 18:17:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:
 	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=e+ZyLocKTaEdGSy/+OIgE6gDvQVDoIaLeI9kLrTDJqE=; b=IjkLVRd6YDusDGx/h6fysdUDT4
-	x8kBtHe5hil+U8uPa7oFnFcGedeFFPTqh/HvR11T68uYeJbl2/+TIEuoFG+tHHTdEbxrX+dxIPe3J
-	Xu7XIrQg3RUVBUzXr5Y88FmCm7KZ3wyKf99GCubgjrhn4Tlgb4rWE/l87Fqc/nI8hxb2wc+BN+VI8
-	ZGHnTXuKif4CMU62z3KPJFRzpPXMfwjmozoJbBl/7C/Mu9EArRIdhz8+Zp02dr7YF5q//jIGJmxGO
-	GHyedY1k1W90nT3T6lwdhmwzy8QDlOLTTaTzoExQZGIVyHw9QNlvhx0/9633HW8cQlFA8AMuYvwme
-	WGlUmMBg==;
+	bh=2HEH7oeKiBSjnbJC+gkf/Mqi6o2Ayip8oLyi5hJLcY4=; b=UAmjJarLqgisrjZ9gRsEyB2CtA
+	jyp2iuPSYUEu355LKyIhiM6dTjgeRHHA1/6OBQUAE9uaalZT6m+xpSM9zaq1WBgCm7Hqf2ZNIuvk1
+	E+Ut3DPnNZQDcX7px0Ug5JOvrrkT627GPDy18nzlxhZ7i2I2yYfipZHuDCQdeciS6apYkISOZDhao
+	59+OzBnLx9+TFa0G3n9I3yqDUV5qFIE5dhfoyeZ7CAN/9DJ0irjwyhu5DjnFJPwlIvOyOgyCf2Dov
+	RGS2ky3DuB9TAtBquw23rRmqX56QyPlHmQ7ZWsDcHtd8OHAI1s1962BLQ7OSCzndsM7aaj92lpSpJ
+	qIj7Ijog==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xFy6P-00000009HB6-19i5;
-	Sun, 11 Oct 2026 18:16:53 +0000
+	id 1xFy6V-00000009HDd-1tAu;
+	Sun, 11 Oct 2026 18:16:59 +0000
 Received: from mail.nozomi.space ([139.162.184.125])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xFy6L-00000009H9O-2H1f;
-	Sun, 11 Oct 2026 18:16:51 +0000
+	id 1xFy6M-00000009H9T-0vOt;
+	Sun, 11 Oct 2026 18:16:52 +0000
 From: =?UTF-8?q?Micha=C5=82=20Kope=C4=87?= <michal@nozomi.space>
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=nozomi.space;
-	s=mail; t=1791742597;
+	s=mail; t=1791742600;
 	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
 	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
 	 content-transfer-encoding:content-transfer-encoding:
 	 in-reply-to:in-reply-to:references:references;
-	bh=e+ZyLocKTaEdGSy/+OIgE6gDvQVDoIaLeI9kLrTDJqE=;
-	b=OewzcbOM1lSj7xGaToXFx+1iDVopWIvnWQfhWuX4uHYlIeWux764/6LKY1U+m4Z5zPSp9N
-	JHdbin2NEYjQsdDVJetilVMG+XdvyaeR+k8s9+Uya31mEE1o5dIAo5PKvNDeRD9pcdDhtY
-	rhIM/yqSTSVAH2IsQ/r2XRBJj6RqJYc6T5M53k+KFV1DQdfaelWp19WjgRw/+KLNPINUuJ
-	f4JIl0FZuZVW3LWoR5uldoGSNaICIGQk3jPX5I4c4i5ybHClA4IsCzK80UJYtw1EraFeiT
-	k3LfKlkv0My7UhTWuTl7/Fckzc9VeL8dqQNXWnk0MUWLIc26LGpyFtkynEC6Kg==
+	bh=2HEH7oeKiBSjnbJC+gkf/Mqi6o2Ayip8oLyi5hJLcY4=;
+	b=cCyVbH8hAniVsd4zmfUie2RIqtgWs6mX9w+Yu9fcOG8lHW6Ytm/cvRzeJSFxnm5JdvqHsS
+	51ESEXV5mnh6fdYbq4hfhjQKZpOC+B+d6OhjicJ0E5Nzl5cfscQtNrCEps14BXiBV5Xzux
+	SxVS8e/nvLd1v/D6Ymm+55P6rBqcBlm/7Jw/j0NgsNNctUhb8ep66DwbxgHNPjdZg5tCv9
+	O7HEJGrAya0Aqj50maSXRfD3FwDANG+lg8pCQZJT0RTw7pP55OFRX0NO5zbZwFy+aVOCD1
+	xjDiPoz21YIN36p9LzWPrT/nCBS0GlhGSp0C+AahBg+nuwhclnbtxfpsN1ryxw==
 To: linux-input@vger.kernel.org
 Cc: devicetree@vger.kernel.org,
 	linux-mediatek@lists.infradead.org,
@@ -57,17 +57,18 @@ Cc: devicetree@vger.kernel.org,
 	felix@kaechele.ca,
 	dianders@chromium.org,
 	=?UTF-8?q?Micha=C5=82=20Kope=C4=87?= <michal@nozomi.space>
-Subject: [PATCH v6 1/3] dt-bindings: input: Add Himax HX83102J touchscreen
-Date: Sun, 11 Oct 2026 20:16:31 +0200
-Message-ID: <20261011181633.1778969-2-michal@nozomi.space>
+Subject: [PATCH v6 3/3] arm64: dts: mediatek: mt8188-geralt-ciri: Add the touchscreen
+Date: Sun, 11 Oct 2026 20:16:33 +0200
+Message-ID: <20261011181633.1778969-4-michal@nozomi.space>
 In-Reply-To: <20261011181633.1778969-1-michal@nozomi.space>
 References: <20261011181633.1778969-1-michal@nozomi.space>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261011_111649_876737_1A1CA09C 
-X-CRM114-Status: GOOD (  14.88  )
+X-CRM114-CacheID: sfid-20261011_111650_412042_69440CA7 
+X-CRM114-Status: UNSURE (   9.97  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,142 +83,120 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add the binding for the touch function of the Himax HX83102J, a touch
-and display driver integrated (TDDI) controller. The touch function is
-connected over SPI and shares the analog supplies and the reset of the
-display function, so it is powered and reset together with the panel
-and has to follow it.
+Ciri uses the touch function of its Himax HX83102J TDDI controller,
+connected over SPI1. It shares the analog supplies and the reset with
+the panel, so describe those and follow the panel for power sequencing.
 
-Co-developed-by: Allen Lin <allencl_lin@hotmail.com>
-Signed-off-by: Allen Lin <allencl_lin@hotmail.com>
+The controller has no flash; the firmware is loaded from a file that
+depends on the panel: himax_i2chid_1002.bin for the BOE panel and
+himax_i2chid_1003.bin for the IVO panel, as on ChromeOS.
+
 Signed-off-by: Michał Kopeć <michal@nozomi.space>
 ---
- .../input/touchscreen/himax,hx83102j.yaml     | 98 +++++++++++++++++++
- MAINTAINERS                                   |  6 ++
- 2 files changed, 104 insertions(+)
- create mode 100644 Documentation/devicetree/bindings/input/touchscreen/himax,hx83102j.yaml
+ .../dts/mediatek/mt8188-geralt-ciri-sku1.dts  |  4 +++
+ .../dts/mediatek/mt8188-geralt-ciri-sku3.dts  |  4 +++
+ .../dts/mediatek/mt8188-geralt-ciri-sku5.dts  |  4 +++
+ .../dts/mediatek/mt8188-geralt-ciri-sku7.dts  |  4 +++
+ .../boot/dts/mediatek/mt8188-geralt-ciri.dtsi | 33 +++++++++++++++++++
+ 5 files changed, 49 insertions(+)
 
-diff --git a/Documentation/devicetree/bindings/input/touchscreen/himax,hx83102j.yaml b/Documentation/devicetree/bindings/input/touchscreen/himax,hx83102j.yaml
-new file mode 100644
-index 0000000000000..f0aca7a6662c9
---- /dev/null
-+++ b/Documentation/devicetree/bindings/input/touchscreen/himax,hx83102j.yaml
-@@ -0,0 +1,98 @@
-+# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-+%YAML 1.2
-+---
-+$id: http://devicetree.org/schemas/input/touchscreen/himax,hx83102j.yaml#
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
+diff --git a/arch/arm64/boot/dts/mediatek/mt8188-geralt-ciri-sku1.dts b/arch/arm64/boot/dts/mediatek/mt8188-geralt-ciri-sku1.dts
+index ef5ea9d12b1de..6377354440d68 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8188-geralt-ciri-sku1.dts
++++ b/arch/arm64/boot/dts/mediatek/mt8188-geralt-ciri-sku1.dts
+@@ -57,3 +57,7 @@ codec {
+ 		};
+ 	};
+ };
 +
-+title: Himax hx83102j touchscreen
++&touchscreen {
++	firmware-name = "himax_i2chid_1003.bin";
++};
+diff --git a/arch/arm64/boot/dts/mediatek/mt8188-geralt-ciri-sku3.dts b/arch/arm64/boot/dts/mediatek/mt8188-geralt-ciri-sku3.dts
+index 524f7f0064c1a..2a51c610758f7 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8188-geralt-ciri-sku3.dts
++++ b/arch/arm64/boot/dts/mediatek/mt8188-geralt-ciri-sku3.dts
+@@ -30,3 +30,7 @@ &sound {
+ 		"Left Spk", "Front Left BE_OUT",
+ 		"Right Spk", "Front Right BE_OUT";
+ };
 +
-+maintainers:
-+  - Michał Kopeć <michal@nozomi.space>
++&touchscreen {
++	firmware-name = "himax_i2chid_1003.bin";
++};
+diff --git a/arch/arm64/boot/dts/mediatek/mt8188-geralt-ciri-sku5.dts b/arch/arm64/boot/dts/mediatek/mt8188-geralt-ciri-sku5.dts
+index bf87201ccf273..8fb0036aa14d0 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8188-geralt-ciri-sku5.dts
++++ b/arch/arm64/boot/dts/mediatek/mt8188-geralt-ciri-sku5.dts
+@@ -70,3 +70,7 @@ codec {
+ 		};
+ 	};
+ };
 +
-+description:
-+  The Himax HX83102J is a touch and display driver integrated (TDDI)
-+  controller. Its touch function is connected over SPI and reports HID
-+  packets. The display and touch functions share the analog supplies and
-+  the display reset, so the touch function is powered and reset together
-+  with the panel it is part of.
++&touchscreen {
++	firmware-name = "himax_i2chid_1003.bin";
++};
+diff --git a/arch/arm64/boot/dts/mediatek/mt8188-geralt-ciri-sku7.dts b/arch/arm64/boot/dts/mediatek/mt8188-geralt-ciri-sku7.dts
+index 825015b452d59..2bd178116423b 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8188-geralt-ciri-sku7.dts
++++ b/arch/arm64/boot/dts/mediatek/mt8188-geralt-ciri-sku7.dts
+@@ -46,3 +46,7 @@ codec {
+ 		};
+ 	};
+ };
 +
-+allOf:
-+  - $ref: /schemas/input/touchscreen/touchscreen.yaml#
-+  - $ref: /schemas/spi/spi-peripheral-props.yaml#
-+
-+properties:
-+  compatible:
-+    const: himax,hx83102j
-+
-+  reg:
-+    maxItems: 1
-+
-+  interrupts:
-+    maxItems: 1
-+
-+  reset-gpios:
-+    maxItems: 1
-+    description:
-+      Reset of the touch function. Unlike display-reset-gpios, it only
-+      resets the touch MCU and leaves the display function running, so the
-+      touch function can be reset without disturbing the panel.
-+
-+  vccd-supply:
-+    description: Digital I/O supply of the touch function.
-+
-+  vsn-supply:
-+    description: Negative analog supply, shared with the display function.
-+
-+  vsp-supply:
-+    description: Positive analog supply, shared with the display function.
-+
-+  display-reset-gpios:
-+    maxItems: 1
-+    description:
-+      Reset of the display function, usually driven by the panel. Asserting
-+      it also resets the touch function.
-+
-+  spi-cpha: true
-+
-+  spi-cpol: true
-+
-+  firmware-name:
-+    description: Specify the file name for firmware loading.
-+
-+required:
-+  - compatible
-+  - reg
-+  - interrupts
-+  - reset-gpios
-+  - panel
-+  - vccd-supply
-+  - vsn-supply
-+  - vsp-supply
-+  - display-reset-gpios
-+
-+unevaluatedProperties: false
-+
-+examples:
-+  - |
-+    #include <dt-bindings/gpio/gpio.h>
-+    #include <dt-bindings/interrupt-controller/irq.h>
-+    spi {
-+      #address-cells = <1>;
-+      #size-cells = <0>;
-+      ap_ts: touchscreen@0 {
-+        compatible = "himax,hx83102j";
-+        reg = <0>;
-+        pinctrl-names = "default";
-+        pinctrl-0 = <&touch_int0 &touch_reset>;
-+        reset-gpios = <&gpio1 8 GPIO_ACTIVE_LOW>;
-+        spi-cpha;
-+        spi-cpol;
-+        interrupt-parent = <&gpio1>;
-+        interrupts = <7 IRQ_TYPE_LEVEL_LOW>;
-+        panel = <&panel>;
-+        vccd-supply = <&regulator>;
-+        vsn-supply = <&regulator>;
-+        vsp-supply = <&regulator>;
-+        display-reset-gpios = <&gpio1 9 GPIO_ACTIVE_LOW>;
-+      };
-+    };
-diff --git a/MAINTAINERS b/MAINTAINERS
-index 72294ddfa5b75..e209f0d44fa73 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -11729,6 +11729,12 @@ W:	http://www.highpoint-tech.com
- F:	Documentation/scsi/hptiop.rst
- F:	drivers/scsi/hptiop.c
++&touchscreen {
++	firmware-name = "himax_i2chid_1003.bin";
++};
+diff --git a/arch/arm64/boot/dts/mediatek/mt8188-geralt-ciri.dtsi b/arch/arm64/boot/dts/mediatek/mt8188-geralt-ciri.dtsi
+index 6815c435a57e1..e611fb73ddb01 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8188-geralt-ciri.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8188-geralt-ciri.dtsi
+@@ -121,6 +121,27 @@ codec {
+ 	};
+ };
  
-+HIMAX HID TOUCHSCREEN
-+M:	Michał Kopeć <michal@nozomi.space>
-+L:	linux-input@vger.kernel.org
-+S:	Maintained
-+F:	Documentation/devicetree/bindings/input/touchscreen/himax,hx83102j.yaml
++&spi1 {
++	#address-cells = <1>;
++	#size-cells = <0>;
 +
- HIMAX HX83112B TOUCHSCREEN SUPPORT
- M:	Job Noorman <job@noorman.info>
- L:	linux-input@vger.kernel.org
++	touchscreen: touchscreen@0 {
++		compatible = "himax,hx83102j";
++		reg = <0>;
++		spi-max-frequency = <12500000>;
++		interrupts-extended = <&pio 143 IRQ_TYPE_LEVEL_LOW>;
++		pinctrl-names = "default";
++		pinctrl-0 = <&touchscreen_pins>;
++		reset-gpios = <&pio 5 GPIO_ACTIVE_LOW>;
++		display-reset-gpios = <&pio 25 GPIO_ACTIVE_LOW>;
++		vccd-supply = <&mt6359_vm18_ldo_reg>;
++		vsp-supply = <&ppvar_mipi_disp_avdd>;
++		vsn-supply = <&ppvar_mipi_disp_avee>;
++		panel = <&dsi_panel>;
++		firmware-name = "himax_i2chid_1002.bin";
++	};
++};
++
+ &pio {
+ 	gpio-line-names =
+ 		"GSC_AP_INT_ODL",
+@@ -313,4 +334,16 @@ pins-en-spkr {
+ 			pinmux = <PINMUX_GPIO111__FUNC_B_GPIO111>;
+ 		};
+ 	};
++
++	touchscreen_pins: touchscreen-pins {
++		pins-int-odl {
++			pinmux = <PINMUX_GPIO143__FUNC_B_GPIO143>;
++			input-enable;
++		};
++
++		pins-rst-l {
++			pinmux = <PINMUX_GPIO5__FUNC_B_GPIO5>;
++			output-high;
++		};
++	};
+ };
 -- 
 2.56.0
 
