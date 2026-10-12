@@ -4,58 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D1062CA9EC5
-	for <linux-mediatek@archiver.kernel.org>; Mon, 12 Oct 2026 15:11:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A2E8BCA9ED1
+	for <linux-mediatek@archiver.kernel.org>; Mon, 12 Oct 2026 15:12:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Owner; bh=GGIXi1kV+kCR2h5S/gUS/WOZ0+fEirhDT48WZLYxblo=; b=t+K/krSDMtKzvM
-	L28aM8iCc09DgNbnI8zbXQNtAjJEtEQGBkzGxE5K+kR3wo6YGaLHwCTt2aCRY6himOGeW4CyfZRRi
-	oNUeQhc3M3udG8c32EbCHSW1zvNjhrvqJ32urfFJBYw8HBIwWwUNxvuAR/Vu6CyOD+YbC3QQ5bBFX
-	HTDmnHYGmiwZ5f4+9JeadAg6MG0EtDwk+uddAYFiF15mE1xMeTYMu612yGF+AJ6dIUTyb0juBv0aP
-	pbK6uFmO/u2xzNAKn/1eUVbc8te/bMhjo/ShwVKrG2IBkJliQwYeEXnNBblfOMzuxD3w9Mg1E4hCA
-	fskqxpTYewidQfpQMR3Q==;
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=WqTRuxy4JCbeUVmltZ7TumMmhfcU2SDhW7r+G3YaiPw=; b=4qii5jTdzWFXacXA987j6VqsJ0
+	a6ZikkSMkRbpJA9rethq2Pt+q7ro1H8WlBUbKCicvdp3EL4+vB5dp1AcPjDklQQJ5/x3NXms5siop
+	NorziNS6vUQVCIJchVGX3M+HWsFQ680NTleJccOLuPX3C8kQ+LFeQPLxTt6nfgC1E/UszCg9UFUbG
+	BSjc5Wkc/j3sx5u4SErE30C42xxmwNkfl0xh/427a5hP7K6ApOagJl+IKwZt7rpH3ggyy70u/YBmB
+	hWIgc2vz+MJcJxEh/znc5cqSLPHR0xsbYle4i9+7//KAPEa+omHPJcHLdfwOD7K1SVAoIywsl5SY6
+	Uc0KdCGA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xGHgl-0000000AlWR-0Tys;
-	Mon, 12 Oct 2026 15:11:43 +0000
-Received: from smtpout-02.galae.net ([185.246.84.56])
+	id 1xGHh9-0000000AlfF-1bJm;
+	Mon, 12 Oct 2026 15:12:07 +0000
+Received: from smtpout-03.galae.net ([185.246.85.4])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xGHgh-0000000AlUR-05xa
+	id 1xGHh4-0000000Alby-0gcd
 	for linux-mediatek@lists.infradead.org;
-	Mon, 12 Oct 2026 15:11:41 +0000
+	Mon, 12 Oct 2026 15:12:06 +0000
 Received: from smtpout-01.galae.net (smtpout-01.galae.net [212.83.139.233])
-	by smtpout-02.galae.net (Postfix) with ESMTPS id CDCD81A11E9;
-	Mon, 12 Oct 2026 15:11:30 +0000 (UTC)
+	by smtpout-03.galae.net (Postfix) with ESMTPS id 96AB64E411FB;
+	Mon, 12 Oct 2026 15:12:00 +0000 (UTC)
 Received: from mail.galae.net (mail.galae.net [212.83.136.155])
-	by smtpout-01.galae.net (Postfix) with ESMTPS id 9A0CD601A6;
-	Mon, 12 Oct 2026 15:11:30 +0000 (UTC)
-Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id B398E11D7012D;
-	Mon, 12 Oct 2026 17:11:14 +0200 (CEST)
+	by smtpout-01.galae.net (Postfix) with ESMTPS id 5C191601A6;
+	Mon, 12 Oct 2026 15:12:00 +0000 (UTC)
+Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id CF73911D70C32;
+	Mon, 12 Oct 2026 17:11:52 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=dkim;
-	t=1791817884; h=from:subject:date:message-id:to:cc:mime-version:content-type:
-	 content-transfer-encoding; bh=GGIXi1kV+kCR2h5S/gUS/WOZ0+fEirhDT48WZLYxblo=;
-	b=aHgUcb7RjoE/3nkLUjCiPBxyqhUMjDqJPhCa+pN1b8fpTJD/gqSpx+YouaDkYQA/mTax/5
-	R0+c3I8S9sYnzcBIxbWGuvToSypTC1NNzkvSMtbkKE1mhJ6V2+n2DwozTaXHcQH7yYzBxV
-	29jZ6mJhfARl0PQTBVOBsJCpl1IMd4d1vQjlE911WlQchP5bj5ZIH9RcZolFykQoL+PKrJ
-	5dBcEpD5k3Cu+76dmJkIckEM2wvQQgSali2uYyBX8veRRztGpC+dJEgQQg3GA2kltLTsfz
-	YxUR7a09D11CyahwWY9ML4kF82hL+VG5DqE+T05Cyp/JahZaAAe3nRa7KbPTow==
+	t=1791817917; h=from:subject:date:message-id:to:cc:mime-version:content-type:
+	 content-transfer-encoding:in-reply-to:references;
+	bh=WqTRuxy4JCbeUVmltZ7TumMmhfcU2SDhW7r+G3YaiPw=;
+	b=G5ut7oNHjVKVIx50wI9DjoIKDf7EaY9AeJjHYHX0+KaBnubMvRVbjCIPJ8BuPVcKd85Ywr
+	IakX/TO8DcCGyoVbrugimLOGUmJcZkx1xrxqaVbTr2F+fACcS9BCrDbkMKHDDPO4TghOyM
+	rsnzbI528489igc5MNAC1DNLs3ylb/jzUvdifqWpqFgcO3dTZtej5lTKFRxgCawRmA0Y/S
+	ji/K/pY2N7T++W/0koUKS68wV0m7mTifJPnefQn5DstO2JEFaOUABTmdvAP9TZadTDepIq
+	cSHtd3plN3poUO/yX3y6FQW6WOq+ZBTUWuFGrX5HgY9CqMmB6B5/a0TcGnH4hQ==
 From: Kory Maincent <kory.maincent@bootlin.com>
-Subject: [PATCH RFC v3 0/8] Add support for DisplayPort link training
- information report
-Date: Mon, 12 Oct 2026 17:10:55 +0200
-Message-Id: <20261012-feat_link_cap-v3-0-7517f4aba0f3@bootlin.com>
+Date: Mon, 12 Oct 2026 17:10:59 +0200
+Subject: [PATCH RFC v3 4/8] drm/i915/display/dp: Read DPCD DSC capabilities
+ in any case
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
-X-B4-Tracking: v=1; b=H4sIAH/4zGoC/2WNQQrCMBREr1L+2kjyW6JxJQgewK1ISZNfG9Smp
- CUopXc3ZCPqcmZ4b2YYKTgaYVfMECi60fk+hXJVgOl0fyXmbMqAHCVHlKwlPdV3199qoweG3DS
- NbEthKw6JGQK17pl9ZzgdD3BJZefGyYdX/ogiT1lXcfWji4JxtuFS0VYoZQj3jfdTmtfGP7Ir4
- oeX4o/HxOvSkqkMR23VN78syxv9+9NJ8QAAAA==
-X-Change-ID: 20260226-feat_link_cap-20cbb6f31d40
+Content-Transfer-Encoding: 7bit
+Message-Id: <20261012-feat_link_cap-v3-4-7517f4aba0f3@bootlin.com>
+References: <20261012-feat_link_cap-v3-0-7517f4aba0f3@bootlin.com>
+In-Reply-To: <20261012-feat_link_cap-v3-0-7517f4aba0f3@bootlin.com>
 To: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
  Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
  David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
@@ -85,8 +83,8 @@ Cc: Thomas Petazzoni <thomas.petazzoni@bootlin.com>,
 X-Mailer: b4 0.16.1-dev-17221
 X-Last-TLS-Session-Version: TLSv1.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261012_081139_333027_A89995D3 
-X-CRM114-Status: GOOD (  15.51  )
+X-CRM114-CacheID: sfid-20261012_081205_266759_21204F39 
+X-CRM114-Status: GOOD (  10.03  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,114 +99,37 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-DisplayPort link training negotiates the physical-layer parameters needed
-for a reliable connection: lane count, link rate, and optionally Display
-Stream Compression (DSC). Currently, each driver exposes this state in
-its own way, often through driver-specific debugfs entries, with no
-standard interface for userspace diagnostic and monitoring tools.
-
-This series introduces generic helpers, for exposing DP link capabilities
-and state as standard sysfs entries.
-
-The aim of such development is to guide users to select the most suitable
-DisplayPort connector for their needs. For example, if you have a USB-C
-hub with lesser capabilities than your computer’s native DisplayPort
-connector (such as HBR2 versus HBR3 support), the system could recommend
-connecting high-resolution displays directly to the computer’s port
-instead of through the hub to ensure optimal performance.
-
-The new drm_dp_source_set_caps and drm_dp_sink_set_caps helper expose
-source and sink training capabilities to userspace via sysfs attributes
-under dp_link. Finally drm_dp_set_cur_link_params helper is provided to
-report current link information at runtime.
-
-Three drivers are updated as reference implementations: i915 (direct
-connector path), ANX7625 and MediaTek (via the bridge connector framework
-using a new DRM_BRIDGE_OP_DP flag).
-
-Here is a sysfs example:
-
-cur_link_info_dsc            sink_link_caps_nlanes
-cur_link_info_link_rate      source_link_caps_dsc
-cur_link_info_nlanes         source_link_caps_link_rates
-sink_link_caps_dsc           source_link_caps_nlanes
-sink_link_caps_link_rates
-
-1620000 2160000 2700000 3240000 4320000 5400000
-
-1620000 2700000 5400000 10000000 20000000
-
-5400000
-
-This series is rebased on top of drm-misc and may conflict with the
-current state of the drm i915 tree. Which tree should pick this up,
-given that it mixes core development with driver changes?
-
-Patch 1,2: Move helpers out of i915
-Patch 3: Introduce DisplayPort link training capabilities and state helpers
-Patch 4: Read i915 DSC capabilities in any case
-Patch 5  Use dp_connector helpers in i915 to expose link training state
-Patch 6: Introduce DRM_BRIDGE_OP_DP and wire bridge connectors
-Patch 7: Use dp_connector helpers in anx7625 to expose link training state
-Patch 8: Use dp_connector helpers in mediatek to expose link training state
-
-Changes in v3:
-- Rework the core to use new helpers instead of an extension of
-  drmm_connector_init().
-- Add a new mutex to protect sysfs read write access instead of using
-  the global connection_mutex.
-- Move helpers out of i915.
-- Add the support in the anx7625 driver.
-- Link to v2: https://patch.msgid.link/20260619-feat_link_cap-v2-0-a3dec4c02ad9@bootlin.com
-
-Changes in v2:
-- Removed work converting i915 to DRM managed resource
-- Remove voltage swing and pre-emphasis properties
-- Expose link training state via sysfs dp_link/ group instead of
-  connector properties
-- Add comprehensive sysfs attributes for both source and sink capabilities
-- Add new helpers for managing sink capabilities and for current link
-  parameters
-- Link to v1: https://lore.kernel.org/r/20260409-feat_link_cap-v1-0-7069e8199ce2@bootlin.com
+In preparation for the support of reporting the sink capabilities we
+need to read the DSC sink capabilities even if the source does not
+support it.
 
 Signed-off-by: Kory Maincent <kory.maincent@bootlin.com>
 ---
-Kory Maincent (8):
-      drm: Move sink link rates reading helpers out of i915
-      drm: Move DSC capability reading helper out of i915
-      drm: Introduce DisplayPort link training capabilities and state helpers
-      drm/i915/display/dp: Read DPCD DSC capabilities in any case
-      drm/i915/display/dp: Use dp_connector helpers to expose link training state
-      drm/bridge: Expose link training state via new DRM_BRIDGE_OP_DP flag
-      drm/analogix/anx7625: Use dp_connector helpers to expose link training state
-      drm/mediatek: Use dp_connector helpers to expose link training state
-
- Documentation/ABI/testing/sysfs-class-drm-dp       |  85 +++
- drivers/gpu/drm/bridge/analogix/anx7625.c          |  68 +++
- drivers/gpu/drm/bridge/analogix/anx7625.h          |   1 +
- drivers/gpu/drm/display/Kconfig                    |   1 +
- drivers/gpu/drm/display/drm_bridge_connector.c     |  29 ++
- drivers/gpu/drm/display/drm_dp_helper.c            | 571 +++++++++++++++++++++
- drivers/gpu/drm/drm_connector.c                    |  11 +
- drivers/gpu/drm/drm_sysfs.c                        | 155 ++++++
- drivers/gpu/drm/i915/display/intel_display_types.h |   2 +
- drivers/gpu/drm/i915/display/intel_dp.c            | 249 ++++-----
- .../gpu/drm/i915/display/intel_dp_link_training.c  |  14 +
- drivers/gpu/drm/mediatek/mtk_dp.c                  |  79 ++-
- include/drm/display/drm_dp.h                       |   1 +
- include/drm/display/drm_dp_helper.h                |  25 +
- include/drm/drm_bridge.h                           |  13 +
- include/drm/drm_connector.h                        |  53 ++
- include/drm/drm_sysfs.h                            |   1 +
- 17 files changed, 1202 insertions(+), 156 deletions(-)
+Change in v3:
+- New patch
 ---
-base-commit: 34e9ab0182494d7599dc9759bc216550d814b396
-change-id: 20260226-feat_link_cap-20cbb6f31d40
+ drivers/gpu/drm/i915/display/intel_dp.c | 5 -----
+ 1 file changed, 5 deletions(-)
 
-Best regards,
---  
-Köry Maincent, Bootlin
-Embedded Linux and kernel engineering
-https://bootlin.com
+diff --git a/drivers/gpu/drm/i915/display/intel_dp.c b/drivers/gpu/drm/i915/display/intel_dp.c
+index 830fe6eda17d7..b769723a1c0fd 100644
+--- a/drivers/gpu/drm/i915/display/intel_dp.c
++++ b/drivers/gpu/drm/i915/display/intel_dp.c
+@@ -4521,12 +4521,7 @@ static void intel_edp_get_dsc_sink_cap(u8 edp_dpcd_rev, struct intel_connector *
+ static void
+ intel_dp_detect_dsc_caps(struct intel_dp *intel_dp, struct intel_connector *connector)
+ {
+-	struct intel_display *display = to_intel_display(intel_dp);
+-
+ 	/* Read DP Sink DSC Cap DPCD regs for DP v1.4 */
+-	if (!HAS_DSC(display))
+-		return;
+-
+ 	if (intel_dp_is_edp(intel_dp))
+ 		intel_edp_get_dsc_sink_cap(intel_dp->edp_dpcd[0],
+ 					   connector);
+
+-- 
+2.43.0
 
 
