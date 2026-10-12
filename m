@@ -4,75 +4,95 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CC2E0CA9EC5
-	for <linux-mediatek@archiver.kernel.org>; Mon, 12 Oct 2026 03:27:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E1513CA9ED1
+	for <linux-mediatek@archiver.kernel.org>; Mon, 12 Oct 2026 04:19:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=j+X2bbuAWMu4UtRzKtDwm0weo+RhlVdQme8SbcEpY1s=; b=kXitXoMUDOgk1WsPE0J2dCxZm9
-	qFmiq29m1jDYnUnWlX9sE+wODJ51LsoIiRzTzYIxx7o6Cmv0HQFvYshI87eLPVp1OfgsYNbLa9/pO
-	qWRunYZpjRPpmK2v4sWsPuURhWwF6u3Ej31vvixWGVNRIArSOBlo894PUPvfZBsllcoF/QXt4dytc
-	AnBHUqo1M/uk+s1qtCIwMGfLg3CH1B0DG0rmLVhzWU7LMnzC8kxEt6kvopxmTgJzmQB1kvHRrDbIj
-	c3wqaJbl55aNrnSYDggR5C9C4hkhoNFqexNDtk1+YmUoeCyK/Tsq8ZYfu9Dxh+uRn40I379CeRg+1
-	WUAr8Ltw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=efFkaQFetsAOpWM7VNvA0yYFgrxZuGTjrhnbsOnuNRI=; b=ehsYYI6Sp2cJeRbeHfkXj759kv
+	m9NxEhIu4U9WsLaQcFvjPV75/1ukCqw6dQ5dj2xzodpvqYoE430VqOm3YNEQVLPXiG6IqZ19yzeCI
+	N85WKIrQlWEQPvPgPBHuAIiN60n+FzHEX4SuPRHAvMkgwWx8L4gcAzavaajA49ZqkWl9NKzxsV80Q
+	8tLqRl/h23qqvG0eyUujHghPtEBOgtk5+A7fkylrQWAqlnLKvYZXt7jed0OKcDa9e/vSpGfRcJ8uu
+	es+9QVjyCIro+391L3guZspoyDJT1TAISq9JXjv0VFDT9hEaFTI3P/bu9P8PBFRFHaPzwlIvmyH2x
+	mGIKCOkA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xG6gv-00000009bxZ-1iLE;
-	Mon, 12 Oct 2026 03:27:09 +0000
-Received: from [216.200.240.184] (helo=mailgw01.mediatek.com)
+	id 1xG7Vd-00000009dfW-0nPk;
+	Mon, 12 Oct 2026 04:19:33 +0000
+Received: from mail-dy1-x1333.google.com ([2607:f8b0:4864:20::1333])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xG6gt-00000009bx0-1UfV
+	id 1xG7VZ-00000009del-2hR1
 	for linux-mediatek@lists.infradead.org;
-	Mon, 12 Oct 2026 03:27:08 +0000
-X-UUID: c9bc0902c5ec11f1afed4741b24580c9-20261011
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=j+X2bbuAWMu4UtRzKtDwm0weo+RhlVdQme8SbcEpY1s=;
-	b=GHN1hE4eUr829EsJXKTJwDQ6oDJHlfhZyJ0Yh+4lqxvY0/S1taNo4FSGd5AonMYj1mNMCEGCfDrp6Hw/t/k/t9fjCuL3uZ2iv1I67PqM5uq7eRQLqfbtTZw7BfywhfYCQSkRwbjVekfEIwX0daZNrch6JFcMCGah0E8dlt6AGRo=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.20,REQID:ab05792f-43b4-4e8c-96f4-39b81b4f3bc7,IP:0,U
-	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
-	:release,TS:-5
-X-CID-META: VersionHash:291e20b,CLOUDID:fee51a63-31b9-4e78-8da7-ad53bd779c56,B
-	ulkID:nil,BulkQuantity:0,SF:102|836|865|888|898,TC:-5,Content:0|15|50|99,E
-	DM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:-1,COL:0,OSI:0,OSA:0,
-	AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 2,SSN|SDN
-X-CID-BAS: 2,SSN|SDN,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: c9bc0902c5ec11f1afed4741b24580c9-20261011
-Received: from mtkmbs14n2.mediatek.inc [(172.21.101.76)] by mailgw01.mediatek.com
-	(envelope-from <eason.lai@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 790853191; Sun, 11 Oct 2026 20:27:01 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- MTKMBS14N1.mediatek.inc (172.21.101.75) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.29; Mon, 12 Oct 2026 11:26:58 +0800
-Received: from mtksitap99.mediatek.inc (10.233.130.16) by
- mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.2562.29 via Frontend Transport; Mon, 12 Oct 2026 11:26:58 +0800
-From: Eason Lai <eason.lai@mediatek.com>
-To: <nbd@nbd.name>, <lorenzo@kernel.org>
-CC: <linux-wireless@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
-	<kun.wu@mediatek.com>, <deren.wu@mediatek.com>, <sean.wang@mediatek.com>,
-	<quan.zhou@mediatek.com>, <ryder.lee@mediatek.com>, <leon.yen@mediatek.com>,
-	<litien.chang@mediatek.com>, <jb.tsai@mediatek.com>, <jeff.hsu@mediatek.com>,
-	<eason.lai@mediatek.com>, Jeff Hsu <Jeff.Hsu@mediatek.com>
-Subject: [PATCH] SER: mt7925: race condition in mt7925e_mac_reset allows compromised WiFi firmware to trigger host sk_buff use-after-free
-Date: Mon, 12 Oct 2026 11:26:57 +0800
-Message-ID: <20261012032657.58631-1-eason.lai@mediatek.com>
-X-Mailer: git-send-email 2.45.2
+	Mon, 12 Oct 2026 04:19:31 +0000
+Received: by mail-dy1-x1333.google.com with SMTP id 5a478bee46e88-354ba08cfd1so2672870eec.1
+        for <linux-mediatek@lists.infradead.org>; Sun, 11 Oct 2026 21:19:28 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=linaro.org; s=google; t=1791778768; x=1792383568; darn=lists.infradead.org;
+        h=in-reply-to:content-disposition:content-type:mime-version
+         :references:message-id:subject:cc:to:from:date:from:to:cc:subject
+         :date:message-id:reply-to:content-type;
+        bh=efFkaQFetsAOpWM7VNvA0yYFgrxZuGTjrhnbsOnuNRI=;
+        b=jUBO3N9uH0yWW2bO2Dpo8Vi7h/BJQHKkLOys9R+dWodUHMybEd050cSNlcXS8eWsQk
+         bvZWihsyCVXp4iCEudIh4kZBbXC8U1Nz03vjRFEuEsMMPsoXgL4dLLBpZ9VEQviR3yOL
+         C46la7FVPXJ+COYZ9QD5i74xNvZZuC3Ba56ps8yzm+yP1pMNxAvUG4s9IuYZT6BfqeEz
+         zJR68s5uXXsKsAdShSVRoKMbdzXe0WzkeRcR/GOGASjjlH1OAMHwdmqy5QbK36531Cty
+         Dk6gFA49QDJbd0J0Vp/+F0k/lRd/E2+K0CspsTPXF8XfqGWQH6/FlOcxQNLnuiGjwBdB
+         YAWA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20260707; t=1791778768; x=1792383568;
+        h=in-reply-to:content-disposition:content-type:mime-version
+         :references:message-id:subject:cc:to:from:date:x-gm-gg
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+         :content-type;
+        bh=efFkaQFetsAOpWM7VNvA0yYFgrxZuGTjrhnbsOnuNRI=;
+        b=AXE7EwJ+NhfCw4TSWULGl9Cantt1zY9KFVvXCRZN+0sm59R92G/H14Nd6i2c0CQBe2
+         HWcsMroneZ2MeCsrtin2WGE70wkagQhvAWw8HyattGpnmAOUMaQi39x3r7BLrSiypURN
+         7i3JuZ/tYu8+ejLsGZycV/ZQ/vdW3NJFQcnBAwNWkzKMO88+IvFp4LU/a4qgI5CnbBRh
+         4BjLgFaXshX9mAykpgLdG+mFDyTxVSgksfrrW9mXXoHj5mORqxGpKK2vU5pBI/9qvXdd
+         VXVPDp3hL8HPKlDitT3tPvfvKf4U8t20iVlJFuKRHdWUOt/NT3ZMvPLuADIvNqzBYfEv
+         hRJA==
+X-Forwarded-Encrypted: i=1; AKwUvBwKARLP2UHDhlIIWt8Nj+3YsOWucrmt5J1UJQfHk1q/T3VaUzmyG0miwQer91mKFGPi71kKc6xoXfUFqeJuoQ==@lists.infradead.org
+X-Gm-Message-State: AFq9FYJO7fpuOG+nm87s0R6l6hmMo3htSyD5vJ2QzsdLu8ZQUZ6iOmE+
+	r//ZtyrH6wldnKzc1us1IhEFTdf1CQS2iJdbFmPkNzXwgFLYhf0KL+obJZtAlji/zno=
+X-Gm-Gg: AYBFou3oe4BGguTX63Dgm+4nZW9uPrB6zMhX4Qa8kLHDrmZxTpgrKrb1hm2F0P2UYh9
+	SD4VdbuqntOcrKWRJIWLspMeaJf5y3znt3okED3hBq2rwpFV+Z67jy/uaJLvmpjS9WVXXm6MNWc
+	oDgVSqVEzvVvMnviniYZDf+ZZ/KcrbQURFfNI9oJJiYp1HMePgcZPrKfRThq9x7RbhNAhZmc9aD
+	x8usmaC+MMbMXz7IuB+dDqn/Jf0gzDPKiBsMYFKu++NO7j9QbdoKt/IsqdZtRgqQ/u4i3hrOn3u
+	YJgIAquae31To05r16SuvybtcFNwLf6stGSjdofpOKiKhY5zb4oWEM0kfya/GPYkPbC0WlNmgIa
+	eN8QmCKpfSmsXPBsI+U32CHNvKPilxAgjX1ufBaknvnHqkdv+aXQQRgQmljzjUi80G9k20iBV+5
+	qfWYj7flf+5TelwtddGAYvkGf9tNRyuWyGAL7OGffSlN2MLv7aoTICXmf6KfGkXlTzCcMIYsqM
+X-Received: by 2002:a05:7023:a47:10b0:14c:1f57:3e86 with SMTP id a92af1059eb24-16a5f5ddf6bmr11356001c88.47.1791778767995;
+        Sun, 11 Oct 2026 21:19:27 -0700 (PDT)
+Received: from localhost ([122.172.82.240])
+        by smtp.gmail.com with ESMTPSA id a92af1059eb24-169a1becefdsm25739266c88.7.2026.10.11.21.19.26
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sun, 11 Oct 2026 21:19:27 -0700 (PDT)
+Date: Mon, 12 Oct 2026 09:49:24 +0530
+From: Viresh Kumar <viresh.kumar@linaro.org>
+To: Ryan Brue <ryanbrue.dev@gmail.com>
+Cc: "Rafael J. Wysocki" <rafael@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Roman Vivchar <rva333@protonmail.com>, linux-pm@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org
+Subject: Re: [PATCH v2 0/2] cpufreq: mediatek: Suspend at the opp-suspend
+ OPP, and mark one on MT8173
+Message-ID: <asxfzG7bNohf-gcB@vireshk-B250M-D3H>
+References: <20261009-rbrue-suez-upstreaming-mtk-cpufreq-suspend-opp-v2-0-ba13f826eae1@gmail.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20261009-rbrue-suez-upstreaming-mtk-cpufreq-suspend-opp-v2-0-ba13f826eae1@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261011_202707_409253_B03A6C47 
-X-CRM114-Status: UNSURE (   7.69  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20261011_211929_691604_40F1AC23 
+X-CRM114-Status: GOOD (  15.89  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,33 +107,36 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Jeff Hsu <Jeff.Hsu@mediatek.com>
+On 09-10-26, 14:44, Ryan Brue wrote:
+> mediatek-cpufreq has no .suspend callback, so each cluster enters system
+> sleep at whatever OPP the governor last chose. On the Amazon Fire HD 10
+> (2017), an MT8173 tablet that is not upstream yet, entering
+> suspend-to-RAM with both clusters at their highest OPP (2106 and
+> 1703 MHz) measured 63.5 and 63.6 mA, against 52.0 and 52.0 mA with this
+> series. Those are 15-minute windows of the PMIC's coulomb counter,
+> alternating with and without the change; one count is about 2.9 mA.
+> Earlier, on the board's previous firmware path, s2idle drew 210-232 mA
+> against 158 mA.
+> 
+> Patch 1 takes the suspend frequency from the OPP table's opp-suspend
+> entry, as cpufreq-dt does, rather than always using the lowest OPP. That
+> keeps it opt-in per SoC: this driver also runs mt2701, mt7622, mt8183,
+> mt8186 and others I cannot test, and no MediaTek table has opp-suspend
+> today, so they are unchanged. Patch 2 marks the lowest OPP of both MT8173
+> clusters.
+> 
+> Patch 2 also reaches elm, hana and the EVB, which I cannot test either.
+> What they get is a switch to 507 MHz in cpufreq_suspend(), which runs
+> before any device is suspended, so the regulators it needs should still
+> be up. cpufreq_suspend() also runs from device_shutdown(), so reboot and
+> power-off switch first as well; on the tablet, reboot -f still resets in
+> 1.4 s.
+> 
+> Patch 2 does nothing without patch 1 and is harmless on its own, so the
+> two can go through the cpufreq and MediaTek trees independently.
 
-Fix racing condition in reset handler result sk_buff use-after-free
+Applied. Thanks.
 
-Signed-off-by: Jeff Hsu <Jeff.Hsu@mediatek.com>
----
- drivers/net/wireless/mediatek/mt76/mt7925/pci_mac.c | 4 +++-
- 1 file changed, 3 insertions(+), 1 deletion(-)
-
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/pci_mac.c b/drivers/net/wireless/mediatek/mt76/mt7925/pci_mac.c
-index c3db814b2788..555eeb74d023 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7925/pci_mac.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7925/pci_mac.c
-@@ -73,9 +73,11 @@ void mt7925_tx_token_put(struct mt792x_dev *dev)
- int mt7925e_mac_reset(struct mt792x_dev *dev)
- {
- 	const struct mt792x_irq_map *irq_map = dev->irq_map;
-+	struct mt76_phy *mphy = &dev->mt76.phy;
- 	int i, err;
- 
--	mt792xe_mcu_drv_pmctrl(dev);
-+	__mt792xe_mcu_drv_pmctrl(dev);
-+	clear_bit(MT76_STATE_PM, &mphy->state);
- 
- 	mt76_connac_free_pending_tx_skbs(&dev->pm, NULL);
- 
 -- 
-2.45.2
-
+viresh
 
