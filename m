@@ -4,57 +4,93 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B347FCA9ED0
-	for <linux-mediatek@archiver.kernel.org>; Mon, 12 Oct 2026 10:05:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B3E5ECA9ED0
+	for <linux-mediatek@archiver.kernel.org>; Mon, 12 Oct 2026 12:53:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Message-ID:Date
-	:Cc:To:From:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=9pOOHCwPYM2BW6pFsz1VPyDKQK/ppxdFhtSXZN1wVsc=; b=Mkvj3m6O0319T+zR6QVi5b1OVE
-	rfKlBt4VMyvSsQsC1QcuOPbXGyo7D39lR2X3ogFIydLb8QQ62GDDbk0d40gu7fHoAMwsJBWfZQpb3
-	icnQ320ZcytS66Vt+uYkgozV0tlK7jmS2DJWG5dXXPe39Rsd6M4LYzN9zzGdFO2DcOGFX1gAglttu
-	BLqVnqpYNszr43kSaX0QrWC/Jvpw4d2ODeareQd+rWu6rza2mmUeY1iYI4YL/cG8hTEyXusREIScb
-	Jn715rJR7I2xDoFo9QobglKWaKgKbZLz1ZkbyMNdKHARsOpnRXBYHxRXXwl6p8n4rc3Wl7kXbub8O
-	c1GCj5zA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=//6PZzEPE4dWFH43EiRfnDXZN2OFddxQZ9MFM56YAAU=; b=L9/21yHCXXN3+SauSNLsUK11ub
+	mNQe+nxxfk8NFnU/qzSkMt8npQ3Q/P09qUHZ7KRgg/wuB3SK0dILGw339nsLiula6mOIqrts7Xv/W
+	fY/buXbhgY4qcFDG9Y2YHrMk8UEhVsev++1ERsxnKMfnF6UF0Y91E6SFeGvCse+W7C5H8rUU6OlIU
+	y+1/XR8CdDPfusQfUEYUTUWAQCF5Subihx9vhfjUt5xa6TEo/zK0WSty1JS080/msIJXo00zMg9I5
+	P+CRnvQZYG6n6a/QvULMI3+RrllnX3JiwpRsjfeK39AZWREItb30wgPkvGFc1sSKgFOtCxahCrrM6
+	cEggGC+A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xGCur-0000000A9o3-2X0n;
-	Mon, 12 Oct 2026 10:05:57 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1xGFWn-0000000AVIg-0ZOA;
+	Mon, 12 Oct 2026 12:53:17 +0000
+Received: from mail-wm1-x329.google.com ([2a00:1450:4864:20::329])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xGCup-0000000A9nb-1lYZ;
-	Mon, 12 Oct 2026 10:05:55 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id BF00060213;
-	Mon, 12 Oct 2026 10:05:54 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id F26EA1F0089B;
-	Mon, 12 Oct 2026 10:05:53 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1791799554;
-	bh=9pOOHCwPYM2BW6pFsz1VPyDKQK/ppxdFhtSXZN1wVsc=;
-	h=Subject:From:To:Cc:Date:In-Reply-To:References;
-	b=cYWk47xs5RcH0WdPcyffx7nRb+ajPrkjs6zI9A3RWdvCk2xK0T9k+8Yw+fgWZyH/W
-	 sGufyZ08PberHcU1pKmCqFnBnafpo2J8dK8+kiI4adlCSM7TEnr+QRHiNaBSweXrYC
-	 L/wC9BMa3I75WVWCAxGZfwGz2o7z4Yucym2l4osGe+tD/iGF/5OyAK/TqPgrgUpAG2
-	 O2TOEmJGbmjlrcq5J6Sr74Y8EGl7HlDxHPGMxaYz5qOYp8Uiv37/3Wyvz/SetaFk4i
-	 Kuy8xX3cv/rWgQJWEIVzJZkMVorrmBNNfDHBGbOzfmBzyUSCo97WRCPPfT+QHl4MuH
-	 stuaZOqA5s66w==
-Subject: Re: [PATCH net] net: airoha: keep PPE offload when NPU refuses flow stats
-From: netdev-bot+sashiko@kernel.org
-To: sayantann11@gmail.com
-Cc: netdev@vger.kernel.org, lorenzo@kernel.org, andrew+netdev@lunn.ch,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- bread.hsu@airoha.com, sayantan.nandy@airoha.com, kuba@kernel.org
-Date: Mon, 12 Oct 2026 10:05:53 +0000
-Message-ID: <179179955348.434549.1772581551578097881@kernel.org>
-In-Reply-To: <20261008094828.15458-1-sayantann11@gmail.com>
-References: <20261008094828.15458-1-sayantann11@gmail.com>
-X-sashiko-severity: High
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
+	id 1xGFWk-0000000AVI9-1lAP
+	for linux-mediatek@lists.infradead.org;
+	Mon, 12 Oct 2026 12:53:15 +0000
+Received: by mail-wm1-x329.google.com with SMTP id 5b1f17b1804b1-4a018dc1f98so14645715e9.3
+        for <linux-mediatek@lists.infradead.org>; Mon, 12 Oct 2026 05:53:13 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20251104; t=1791809592; x=1792414392; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
+        bh=//6PZzEPE4dWFH43EiRfnDXZN2OFddxQZ9MFM56YAAU=;
+        b=SpNkFHSy7n59ORhl5JkRo/YcD3gH4QGtYpuQWCXVCD1BYsRZILvgvpIsVmTgs5Oqf+
+         pmiDE47HtEQoxdVC8aG+5hoGQ+q7APstVOAMZeOlvmbkDTVjSjtsV3Y6P0Gqeuv9Gg1a
+         qj2I7SFteA3OV5AP/JdThtXE3hzSZ8H4k9JIqHcL7J/fnnXwbUQVONdpu/jmy8r6omcv
+         kRJXWPmnK70mBBtQQwXL3LPvMmdLKlFHF9iS5a2fszEypJ+Ft2CDzeMxrkPVOb2u8295
+         BDDmgWVM3wX7vXb3uL1kkMA1DlBf6bk7/NaDvSLzTSbfch6DxpUg98ZzGbhyBlSIlrx0
+         Eq0A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20260707; t=1791809592; x=1792414392;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to:content-type;
+        bh=//6PZzEPE4dWFH43EiRfnDXZN2OFddxQZ9MFM56YAAU=;
+        b=p6/U7DCh7HFoUTpBu4gLvAViP+nfRFPCn3VPGPefolXi3SXkaG2mPVz+/LfUO+l1oi
+         BriWou7q/E8sYBddAVr5c2KEwrOZGdBDWtoKSjFo1SQtLHvRnou4Fo1ICMZ3FsUy2b/k
+         f1TqFI/RmKIDwTZXvjb9zlC1Ja8AMPj9C7i35jAkVunQd30xgrCPJooeVnv7zkolsaqs
+         lMPyvBhnWw0lPza6jEUMfEpYhAt37nzUlY4MRNhUv/ACBc0ZTZp/9sHjAHER5PW1KnSb
+         w33TgUKqOow0C8KZC9wanNQ7LVnawXTbMZE21fgHXzxdIVIflKMJHACE/T/brXFvGcwf
+         /DgQ==
+X-Forwarded-Encrypted: i=1; AKwUvBxhH/kV+758kNxHWYuPQH+VYDmE8WB/gzp3Q6lD3QZnCgj1qJOzLRYcrWA0THSRuFcOlM3pBrdsnk5Gi1QUJg==@lists.infradead.org
+X-Gm-Message-State: AFq9FYLTWWZ8rM2MSiOXp8jULbpTa7MVgEzhuFNIhFIRicP9sLae58W4
+	81obMmzwkSsRvPz+FvMumihvp0NiZXvT7vPIaWvmQL2YL1Y5sDlPyy05
+X-Gm-Gg: AYBFou2zqlfXMKeeVMDOYELQIZOoBCJl4AZ+icGVgk9sMrsTqg73JaiS9FD/9B7jj1/
+	6qxj5vz6ET0TcKgmj64qDfBCS4hRGVeFf3MrbXhroJUe1yihRFGRYWLFDCfjVK8XCqQsdeaCDmu
+	KBaaTLQVRYnkR1gJ87xhnVzQurYH67hFXH3R5ZBPYcazeGL/h1MA0HUJIn7UTCcPi+cH71OxqWx
+	AFqhUZRHUl311elfQkDJW2w1krAnEUwMlY/0N6IQWCdoThKhDP1XqmmDSWCphN4OMJ6wED1yYg8
+	7AOVUOS/BRhEWorqB2G3X7qQxT3M4UJhy8immucjUAYlcBU0998w53G0ShTPp7imYUTtckE1UOw
+	U1F7V2+fstbM7L9FV0X9IQE2lJwiqqaQvPkw/tct/BDYjBdTd6SdZyZXFSBT1jps1kcue80fLsq
+	IPkUt7o+204bEybFExEKUZouCdf57utVe8ulAoZSLcuXQHC3myQ+Jwq5eWj1qOA2Zrunht9saFN
+	V6Ib9mVXpKTiVRBaQ8wDeFEoZq6nUYfguopNOTCMVlxhvoSLclEy1EsXxujvSNG8M+EQMc+TNUY
+	mOj9bQrmo7dKNnw8wL6B4K15e2RgvbRUFnvz1l0EtDYUVHyWWI9rnWW+I22xqAnsN/cjzizJ1nB
+	6I8mEHU3xTPobpznOQoljXk/Gfk5B8g==
+X-Received: by 2002:a05:600c:1d0b:b0:4a0:13ea:2ec3 with SMTP id 5b1f17b1804b1-4a18e4ddca6mr180915645e9.35.1791809591922;
+        Mon, 12 Oct 2026 05:53:11 -0700 (PDT)
+Received: from localhost.localdomain (dynamic-2a00-1028-c000-0ddf-7da7-06ec-e37a-072d.ipv6.o2.cz. [2a00:1028:c000:ddf:7da7:6ec:e37a:72d])
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-4a18e49792bsm460701895e9.4.2026.10.12.05.53.10
+        (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
+        Mon, 12 Oct 2026 05:53:11 -0700 (PDT)
+From: Josef Schlehofer <pepe.schlehofer@gmail.com>
+To: Sean Wang <sean.wang@mediatek.com>,
+	JB Tsai <jb.tsai@mediatek.com>,
+	Allan Wang <allan.wang@mediatek.com>
+Cc: Felix Fietkau <nbd@nbd.name>,
+	Lorenzo Bianconi <lorenzo@kernel.org>,
+	Ryder Lee <ryder.lee@mediatek.com>,
+	Shayne Chen <shayne.chen@mediatek.com>,
+	Quan Zhou <quan.zhou@mediatek.com>,
+	linux-wireless@vger.kernel.org,
+	linux-mediatek@lists.infradead.org
+Subject: mt7925: status LED of USB adapters and linux-firmware
+Date: Mon, 12 Oct 2026 14:53:10 +0200
+Message-ID: <20261012125310.13917-1-pepe.schlehofer@gmail.com>
+X-Mailer: git-send-email 2.54.0
 MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20261012_055314_482775_89C47CBF 
+X-CRM114-Status: GOOD (  10.17  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -69,210 +105,37 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Thank you for your contribution! Sashiko AI review found 3 potential
-issue(s) to consider.
+Hi,
 
-Critical: 0 · High: 1 · Medium: 2 · Low: 0
+The status LED of MT7925 USB adapters stays off on Linux. I
+investigated this with a NETGEAR A9000 (0846:9072), see [1].
 
-If you believe none of the issues are legitimate, please reply to each
-issue of Medium severity or higher and explain why the AI is wrong.
-If any of them are legitimate and you plan to respin, please let patchwork
-know by including "pw-bot: cr" as a separate line at the end of your reply
-(one such reply per series is enough).
+MediaTek's Windows driver for the A9000 (mtkwecxu.sys 5.3.0.3230)
+controls the LED using UNI command 0x2a, with GPIO 8 and a TLV (tag 1)
+specifying the LED state (on/off). Sending the same command from mt76
+works with the firmware from the Windows driver package
+(MT7925_E1_ASIC_ROM_RAM_CE_2249_CCN10_USB, 20250424), but not with
+linux-firmware builds (CE_2249_CCN16, tested with 20231227 and
+20260813). The latter return status 0 but do not change the LED state.
+All 16 MT7925 firmware releases currently in linux-firmware are CCN16
+builds.
 
-- [High] The patch introduces a NULL-based MMIO dereference race through
-  the new mutable ppe->flow_stats flag.
-- [Medium] The patch makes an undocumented PSE hardware change that is
-  unrelated to the stated fix.
-- [Medium] airoha_ppe_offload_setup() (airoha_ppe.c:1456-1466) treats
-  every non-zero return from npu->ops.ppe_init_stats() as a firmware…
+Could you clarify:
 
---
+1. Can GPIO-based LED control be enabled in the linux-firmware build
+   for MT7925 USB adapters?
 
-net: airoha: keep PPE offload when NPU refuses flow stats
+2. If not, what is the intended way to control these LEDs on Linux?
 
-This patch makes NPU flow statistics optional for PPE offload. A new
-ppe->flow_stats flag records whether flow counters are available. If
-ppe_init_stats() fails, offload setup logs a warning, clears the flag and
-continues instead of aborting. A zero npu_stats_addr returned by the
-firmware is also treated as a refusal (-ENOSPC).
+3. Is GPIO 8 common to all MT7925 USB adapters, or is it
+   board-specific?
 
-> diff --git a/drivers/net/ethernet/airoha/airoha_ppe.c b/drivers/net/ethernet/airoha/airoha_ppe.c
-> index 92611802801ea..fbc200614de3f 100644
-> --- a/drivers/net/ethernet/airoha/airoha_ppe.c
-> +++ b/drivers/net/ethernet/airoha/airoha_ppe.c
+I have a small mt76 patch that registers the LED for MT7925 USB devices
+and sends this command. I will submit it once firmware support and GPIO
+selection are clarified.
 
-[ ... ]
+[1] https://github.com/morrownr/USB-WiFi/issues/731
 
-> @@ -144,6 +141,10 @@ static void airoha_ppe_hw_init(struct airoha_ppe *ppe)
->  	sram_ppe_num_data_entries =
->  		PPE_RAM_NUM_ENTRIES_SHIFT(sram_ppe_num_data_entries);
->  
-> +	if (ppe->flow_stats)
-> +		airoha_fe_rmw(eth, PSE_FC_CFG, PSE_PORT6_SHARE_DIS,
-> +			      FIELD_PREP(PSE_PORT6_SHARE_DIS, 0));
-
-[Severity: Medium]
-Is this write meant to be part of this patch? It clears
-PSE_PORT6_SHARE_DIS in PSE_FC_CFG, which turns on shared buffer use for
-PSE port 6 (CDM3). The commit message only covers the NPU refusal fallback
-and the zero address check, and it doesn't mention this register.
-
-The write runs on every system where flow stats work, not on the refusal
-path the commit message describes. Port 6 is the port that
-airoha_ppe_foe_flow_stats_update() sends stats-enabled flows to:
-
-	*ib2 |= FIELD_PREP(AIROHA_FOE_IB2_PSE_PORT, 6) |
-		FIELD_PREP(AIROHA_FOE_IB2_NBQ, nbq);
-
-Also, airoha_fe_pse_ports_init() gives that port's queues zero reserved
-pages. If this bit resets to 1, this hunk would be quietly fixing drops
-on the existing flow stats datapath. Should that go in a separate patch,
-with its own reasoning and Fixes tag?
-
-When flow_stats is false, nothing writes the bit, so it stays at whatever
-value reset or firmware left. Is that intended?
-
-In airoha_regs.h, the new defines sit between PSE_FQ_CFG and its field
-mask, and ahead of REG_FE_PSE_BUF_SET (0x0090):
-
- #define PSE_FQ_CFG			0x008c
-+#define PSE_FC_CFG			0x0098
-+#define PSE_PORT6_SHARE_DIS		BIT(22)
- #define PSE_FQ_LIMIT_MASK		GENMASK(14, 0)
-
-That makes PSE_FQ_LIMIT_MASK look like a field of PSE_FC_CFG, but
-airoha_fe_set_pse_oq_rsv() reads it from PSE_FQ_CFG. Could these defines
-be moved so the register addresses stay in order?
-
-> +
->  	for (i = 0; i < eth->soc->num_ppe; i++) {
->  		airoha_fe_wr(eth, REG_PPE_TB_BASE(i),
->  			     ppe->foe_dma + sram_tb_size);
-> @@ -1456,10 +1457,13 @@ static int airoha_ppe_offload_setup(struct airoha_eth *eth)
->  	if (ppe_num_stats_entries > 0) {
->  		err = npu->ops.ppe_init_stats(npu, ppe->foe_stats_dma,
->  					      ppe_num_stats_entries);
-> -		if (err)
-> -			goto error_npu_put;
-> +		if (err) {
-> +			dev_warn(eth->dev,
-> +				 "NPU firmware refused flow stats setup (%d), offload runs without flow counters\n",
-> +				 err);
-> +			ppe->flow_stats = false;
-> +		}
-
-[Severity: Medium]
-Is every error from ppe_init_stats() really a firmware refusal? Only two
-cases look like refusals: -EINVAL from a mailbox status other than
-NPU_MBOX_SUCCESS, and the new -ENOSPC. But airoha_npu_ppe_stats_setup()
-and airoha_npu_send_msg() can also return:
-
-  - -ENOMEM from the GFP_ATOMIC kzalloc_obj()
-  - an error code from dma_mapping_error()
-  - -ETIMEDOUT from regmap_read_poll_timeout_atomic() if the mailbox
-    never completes
-  - -ENOMEM from devm_ioremap()
-
-Before this patch, these errors made airoha_ppe_offload_setup() fail, and
-the next tc block callback tried again. Now a short-lived allocation
-failure turns off flow counters for the lifetime of the device. A stuck
-NPU mailbox is also reported as "NPU firmware refused flow stats setup".
-
-In the -ENOSPC and devm_ioremap() cases, the firmware has already
-accepted PPE_FUNC_SET_WAIT_FLOW_STATS_SETUP with foe_stats_addr set to
-ppe->foe_stats_dma:
-
-	err = airoha_npu_send_msg(npu, NPU_FUNC_PPE, ppe_data,
-				  sizeof(*ppe_data));
-	if (err)
-		goto out;
-	...
-	npu->stats = devm_ioremap(npu->dev,
-				  ppe_data->stats_info.npu_stats_addr,
-				  size);
-	if (!npu->stats)
-		err = -ENOMEM;
-
-Nothing tells the firmware to stop using stats. Meanwhile,
-airoha_ppe_hw_init() switches to the no-stats layout: it drops the
-PPE_STATS_NUM_ENTRIES SRAM reservation and programs SRAM_TB_NUM_ENTRY
-with the full PPE_SRAM_NUM_ENTRIES. Can the driver and the firmware end
-up disagreeing about whether stats are active?
-
-Would it make sense to fall back to no stats only for the refusal codes,
-and keep failing setup for the other errors?
-
->  	}
-> -
->  	airoha_ppe_hw_init(ppe);
->  	airoha_ppe_foe_flow_stats_reset(ppe, npu);
-
-[Severity: High]
-Can this lead to an MMIO access through a NULL npu->stats in
-airoha_ppe_foe_entry_get_stats()?
-
-Before this patch, a failed ppe_init_stats() aborted setup. So whenever
-eth->npu was published, npu->stats was a valid mapping. Now the rest of
-airoha_ppe_offload_setup() publishes the npu while npu->stats is still
-NULL:
-
-	rcu_assign_pointer(eth->npu, npu);
-	synchronize_rcu();
-
-After that, only the plain ppe->flow_stats bool keeps readers away from
-npu->stats. airoha_ppe_foe_entry_get_stats() checks that bool before it
-enters the RCU section, and afterwards it only checks npu:
-
-	ppe_num_stats_entries = airoha_ppe_get_total_num_stats_entries(ppe);
-	if (ppe_num_stats_entries < 0)
-		return;
-	...
-	rcu_read_lock();
-
-	npu = rcu_dereference(eth->npu);
-	if (npu) {
-		...
-		memcpy_fromio(&npu_stats, &npu->stats[index],
-			      sizeof(*npu->stats));
-
-airoha_ppe_debugfs_foe_show() (ppe/entries and ppe/bind) calls this
-without holding flow_offload_mutex. Those files exist from
-airoha_ppe_init() onwards:
-
-CPU0 (debugfs read)
-airoha_ppe_foe_entry_get_stats()
-  sees flow_stats == true (initial value from airoha_ppe_init())
-  <preempted before rcu_read_lock()>
-
-CPU1
-airoha_ppe_setup_tc_block_cb()
-  airoha_ppe_offload_setup()
-    ppe_init_stats() fails
-    ppe->flow_stats = false
-    rcu_assign_pointer(eth->npu, npu)
-    synchronize_rcu()   <- returns, CPU0 is not in a read section
-
-CPU0
-  rcu_read_lock()
-  npu = rcu_dereference(eth->npu)   <- non-NULL
-  memcpy_fromio(&npu_stats, &npu->stats[index], ...)   <- stats is NULL
-
-There is a similar case on the NAPI path,
-airoha_ppe_foe_commit_entry()->airoha_ppe_foe_flow_stats_update(). It
-reads flow_stats after rcu_dereference(eth->npu), with no dependency
-ordering between the two loads. It then calls memset_io() on
-npu->stats[index] through airoha_ppe_foe_flow_stat_entry_reset(). On
-arm64, can the flow_stats load be reordered against the npu load?
-
-The flow_stats store and loads are plain accesses from different
-contexts, so this also looks like a data race that KCSAN would flag.
-
-Would it be more robust to check npu->stats inside the RCU section, or to
-take flow_offload_mutex on the debugfs path?
-
-[ ... ]
-
--- 
-Sashiko AI review · https://netdev-ai.bots.linux.dev/sashiko/#/patchset/20261008094828.15458-1-sayantann11%40gmail.com
+Thanks,
+Josef
 
