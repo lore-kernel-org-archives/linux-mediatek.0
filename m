@@ -4,72 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4B567CC6B1A
-	for <linux-mediatek@archiver.kernel.org>; Tue, 13 Oct 2026 17:48:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C3E49CC6B19
+	for <linux-mediatek@archiver.kernel.org>; Tue, 13 Oct 2026 17:49:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=kdjJLp46k2BPwmLC33J0kywCk31frcLWWFqL0o2dTNE=; b=x91hHC3lNOkPc/bUQ27BX25yDk
-	4SwWmD0vA1JpyeYhp6NfrbuulkkbKO2nIZoEUTgvecMidunYEkqDHZc31bRyG22KO3qy6+B8q4Yg7
-	v6l0tnxRZMRvkV/jPQH0qL0YGeI4Q66rHhcvmuMXWRw6Nz4I9WEVAG27VPQL+/6Ijc2YYVbpOu+7L
-	MgYE4t9f9qI79eGtzcbEcNxRC2aPgAXeiDpuDrpsQYmrsmMDqDRPVBdZnzyeUUnImZVWtsXfAo3SI
-	MNx05zPeVC2IkG/TdrtNtVd+/4QabSz0so/idAiwlN54b+x0HrzITDKxt7LX/7VFUJf8aW+kA3Ryx
-	SJ5qkgog==;
+	bh=CY/snekrJ2jbr2xcfeIZ0vrbUr9dIQOslPzIssPtkas=; b=eQ+MmAY254SUj3+P2v/sRbm67g
+	ft4OlLRlBIrgsLpFLKmFZvzte+WckcGrWqo0R0GHJr4c47ixKi5C+Uyt/iFu24E7+zVYEJDsGfl7M
+	i2pLurBQXjswhKJAheWyKvQwhQt3OLrk3Rk7n4TSllZ4i2CNKi54PFp6pJCYmyYYhVlWyS87iM2fU
+	1enmLrQsQfWAN6ASpiHTiS4wuKvm8NuroymVQAebPtryvnGQQkeHNOr0fGIYdcA/6ZPyUuWgM+CRq
+	CQOJQpgwNr73RFEk7QC65S8QAyIVlzxEr9LU0xI1ZW/M2BO/A7CiZhJv5E7FV2uVueqKuMwxxoQkF
+	vnNsRmXw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xGgbv-0000000DkeJ-0vXr;
-	Tue, 13 Oct 2026 17:48:23 +0000
-Received: from smtpout-04.galae.net ([185.171.202.116])
+	id 1xGgce-0000000Dkml-2JPY;
+	Tue, 13 Oct 2026 17:49:10 +0000
+Received: from smtpout-03.galae.net ([185.246.85.4])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xGgbr-0000000DkcF-1erB
+	id 1xGgca-0000000DklG-14eK
 	for linux-mediatek@lists.infradead.org;
-	Tue, 13 Oct 2026 17:48:21 +0000
+	Tue, 13 Oct 2026 17:49:05 +0000
 Received: from smtpout-01.galae.net (smtpout-01.galae.net [212.83.139.233])
-	by smtpout-04.galae.net (Postfix) with ESMTPS id B7D95C653F6
-	for <linux-mediatek@lists.infradead.org>; Tue, 13 Oct 2026 17:49:10 +0000 (UTC)
+	by smtpout-03.galae.net (Postfix) with ESMTPS id D3D644E41217
+	for <linux-mediatek@lists.infradead.org>; Tue, 13 Oct 2026 17:49:01 +0000 (UTC)
 Received: from mail.galae.net (mail.galae.net [212.83.136.155])
-	by smtpout-01.galae.net (Postfix) with ESMTPS id 20C7E60362
-	for <linux-mediatek@lists.infradead.org>; Tue, 13 Oct 2026 17:48:15 +0000 (UTC)
+	by smtpout-01.galae.net (Postfix) with ESMTPS id A290360362
+	for <linux-mediatek@lists.infradead.org>; Tue, 13 Oct 2026 17:49:01 +0000 (UTC)
 Received: by mail.galae.net (Postcow, from userid 0)
-	id 789A611D70C37; Tue, 13 Oct 2026 19:47:53 +0200 (CEST)
+	id 4E5BE11D7159B; Tue, 13 Oct 2026 19:48:09 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=dkim;
-	t=1791913694; h=from:subject:date:message-id:to:cc:mime-version:content-type:
+	t=1791913741; h=from:subject:date:message-id:to:cc:mime-version:content-type:
 	 content-transfer-encoding:in-reply-to:references;
-	bh=kdjJLp46k2BPwmLC33J0kywCk31frcLWWFqL0o2dTNE=;
-	b=Y62mA4AHVazrzEg4JXZFUBQb7oyXK80xX+tA8Ek2JmN1eg2UV10tlSE9xF8Ubjl1XqDdKK
-	WhnJ/eIELaFdYrnxqrQEb8RUnz5Ip0gWXTIldADccIhV1Xq9gQBLZJE7ZcWU6VnujRFpnI
-	eJDP7LoRj3BKUGFHt1ZxnVaErgmWjegRkNEmvl8bsgByUMufBQYLp+zh41/3K6BLb6YEHZ
-	+nRvRf7lLf3hLxcvOZWlqdXdELF8F9ZlTIoe90j/gX6g1rQLZ5dt/PQnfb4/aLud8vBwBd
-	luYL+ktYdbPvyTnBgMcxRk5cHDXC3N914g9yMK+hAwwtC0XSPH+pBH6iCTvzVg==
+	bh=CY/snekrJ2jbr2xcfeIZ0vrbUr9dIQOslPzIssPtkas=;
+	b=a0PevOqRAsYgd6fYMaYKhPdF/LMp9yt6DVdU1qKNmd8i1jrLR3rkJUDCNytivYHtdiiPya
+	LUg1s3utklanazGuZDlhBMn0BKmhrAX9f2VbUgiColPS01oGeQmRMVfx+aGqCvN55JMz27
+	WmHAFOKhUj4ATk3LcRwaX2qYkrmTni9aHZMCf/s9ukxRafMaLwqyk2BJN+xd0oFUGeaY2W
+	5M69NPzlW4n2FuzA2RJaDZofhoM62rYPrWZVSk5euQxBPqG13Mw6ZfgwRjKMLYl1xwM3Zu
+	vYkH6jzlV0qMY6ehkDfac1e3aGclSuPc2uA0MUSiRvgy11n+Dr+J6u+rlNd3DQ==
 Authentication-Results: mail.galae.net;
 	none
 Received: from mail.galae.net ([172.22.1.253])
 	by 9e7fea892943 with LMTP
-	id 0NzwG6r4zGr4hhEAtaWaaQ
+	id oCLnFM34zGoogBEAtaWaaQ
 	(envelope-from <kory.maincent@bootlin.com>)
-	for <kory.maincent@bootlin.com>; Mon, 12 Oct 2026 17:11:38 +0200
-Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id 9240B11D7061E;
-	Mon, 12 Oct 2026 17:11:28 +0200 (CEST)
+	for <kory.maincent@bootlin.com>; Mon, 12 Oct 2026 17:12:13 +0200
+Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id 1287311D70211;
+	Mon, 12 Oct 2026 17:12:06 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=dkim;
-	t=1791817892; h=from:subject:date:message-id:to:cc:mime-version:content-type:
+	t=1791817931; h=from:subject:date:message-id:to:cc:mime-version:content-type:
 	 content-transfer-encoding:in-reply-to:references;
-	bh=kdjJLp46k2BPwmLC33J0kywCk31frcLWWFqL0o2dTNE=;
-	b=PTL2csR3qH8J65pkB83hcObsePBvtr4A0P5dmFm/WDHewJNNaoHtmkJ04jKf8Pu3ebnefv
-	xMmVTyHrgNGrjulyPTO6ZQTqQBsuPwBznR311eDk8pC8rTYtzjNKpDCaUEujVUPwG/wjHn
-	Mq2cjH62ZgdDSoAFiIMvd7zL/pY/Qi3WjsvORV8hMRAfPHaqtR5VR9PeaxOJteM+DKl050
-	03lV73RycMzB8Je/mZLmhIkmokTQ4JbbTgwhpUBWFVa9uUMVBSaV2RROWj2RhH7vG+Ys5e
-	1BHWIcY42v5hJS7+cusCBzUFN13oezlGL+hbPbGeuxeAeOWYCvFlhE5CC1eMww==
+	bh=CY/snekrJ2jbr2xcfeIZ0vrbUr9dIQOslPzIssPtkas=;
+	b=TGgCMtlj91Z2mqCWy754IMuKuubSH3Ua67cehuDX7NW1UO/8VFgTMslXLtwnN/H0PW1Og5
+	Ty9F9hCQAVguEwm2UIHIuYYlXBQ2CR+3QQlGu2lZ56FvfMSNsx5+stEesFPRRoFzaVDM/d
+	fem6gGcP69WhmRIhKmubEw3Aq3116Gn2hNcLdnkWvXF9ZoFNaJNWHHF4KpEgTdKHAr1WKI
+	+C/TKcm3hKLswDgqXceAN9j4SOgVEJKdu1J7SnW6uSD2Je0t1hstj7LyYDczPBM50YjQ1t
+	Sb+I3fqpEca0Agu5QZo+siPiHLiShO4sTpQGIM6k6zkYJA7mi1mkh3ZN2GXycw==
 From: Kory Maincent <kory.maincent@bootlin.com>
-Date: Mon, 12 Oct 2026 17:10:56 +0200
-Subject: [PATCH RFC v3 1/8] drm: Move sink link rates reading helpers out
- of i915
+Date: Mon, 12 Oct 2026 17:11:02 +0200
+Subject: [PATCH RFC v3 7/8] drm/analogix/anx7625: Use dp_connector helpers
+ to expose link training state
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20261012-feat_link_cap-v3-1-7517f4aba0f3@bootlin.com>
+Message-Id: <20261012-feat_link_cap-v3-7-7517f4aba0f3@bootlin.com>
 References: <20261012-feat_link_cap-v3-0-7517f4aba0f3@bootlin.com>
 In-Reply-To: <20261012-feat_link_cap-v3-0-7517f4aba0f3@bootlin.com>
 To: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
@@ -101,13 +101,13 @@ Cc: Thomas Petazzoni <thomas.petazzoni@bootlin.com>,
 X-Mailer: b4 0.16.1-dev-17221
 X-Last-TLS-Session-Version: TLSv1.3
 X-Last-TLS-Session-Version: None
-X-Rspamd-Queue-Id: 789A611D70C37
+X-Rspamd-Queue-Id: 4E5BE11D7159B
 X-Spamd-Result: default: False [2.50 / 30.00];
 	SUSPICIOUS_RECIPS(1.50)[];
 	DATE_IN_PAST(1.00)[26];
 	RCVD_NO_TLS_LAST(0.10)[];
 	MIME_GOOD(-0.10)[text/plain];
-	BAYES_HAM(-0.00)[22.08%];
+	BAYES_HAM(-0.00)[25.05%];
 	BCC(0.00)[];
 	TAGGED_RCPT(0.00)[];
 	DKIM_SIGNED(0.00)[bootlin.com:s=dkim];
@@ -129,8 +129,8 @@ X-Spamd-Result: default: False [2.50 / 30.00];
 	NEURAL_HAM(-0.00)[-1.000];
 	FROM_EQ_ENVFROM(0.00)[]
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261013_104819_755151_B2359902 
-X-CRM114-Status: GOOD (  26.11  )
+X-CRM114-CacheID: sfid-20261013_104904_598947_09FE567B 
+X-CRM114-Status: GOOD (  16.39  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -145,515 +145,158 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-In preparation for adding generic DRM properties to report source and
-sink capabilities, move the sink link rates reading functions out of
-the i915 driver into the generic DRM helpers. These functions provide
-everything needed to properly extract link rate capabilities from the
-DPCD.
-
-Keep the Intel-specific quirk handling in the driver.
-
-No functional change intended.
+Adopt the DRM core DisplayPort helpers by setting DRM_BRIDGE_OP_DP and
+populating the bridge dp_link_caps at probe time. Report the sink
+capabilities on hotplug, reset them on disconnect, and report the link
+parameters once link training succeeds.
 
 Signed-off-by: Kory Maincent <kory.maincent@bootlin.com>
 ---
 Change in v3:
 - New patch
 ---
- drivers/gpu/drm/display/drm_dp_helper.c | 237 ++++++++++++++++++++++++++++++++
- drivers/gpu/drm/i915/display/intel_dp.c | 169 ++++++-----------------
- include/drm/display/drm_dp.h            |   1 +
- include/drm/display/drm_dp_helper.h     |  11 ++
- 4 files changed, 293 insertions(+), 125 deletions(-)
+ drivers/gpu/drm/bridge/analogix/anx7625.c | 68 +++++++++++++++++++++++++++++++
+ drivers/gpu/drm/bridge/analogix/anx7625.h |  1 +
+ 2 files changed, 69 insertions(+)
 
-diff --git a/drivers/gpu/drm/display/drm_dp_helper.c b/drivers/gpu/drm/display/drm_dp_helper.c
-index e623ccb4c1d8a..8ef096a0138e4 100644
---- a/drivers/gpu/drm/display/drm_dp_helper.c
-+++ b/drivers/gpu/drm/display/drm_dp_helper.c
-@@ -4912,3 +4912,240 @@ int drm_dp_max_dprx_data_rate(int max_link_rate, int max_lanes)
- 				  1000000 * 8);
- }
- EXPORT_SYMBOL(drm_dp_max_dprx_data_rate);
-+
-+/**
-+ * drm_dp_read_dpcd_supported_link_rates() - read DPCD supported link rates
-+ * @aux: DisplayPort AUX channel
-+ * @link_rates: Buffer to store the resulting link rates supported
-+ *
-+ * Attempts to read the DPCD supported link rates for @aux.
-+ *
-+ * Returns: The number or supported link rates, negative error code otherwise.
-+ */
-+static int drm_dp_read_dpcd_supported_link_rates(struct drm_dp_aux *aux,
-+						 int link_rates[DP_MAX_SUPPORTED_RATES])
-+{
-+	__le16 dpcd_link_rates[DP_MAX_SUPPORTED_RATES] = {0};
-+	int ret, i;
-+
-+	ret = drm_dp_dpcd_read_data(aux, DP_SUPPORTED_LINK_RATES,
-+				    dpcd_link_rates, sizeof(dpcd_link_rates));
-+	if (ret < 0)
-+		return ret;
-+
-+	for (i = 0; i < ARRAY_SIZE(dpcd_link_rates) && dpcd_link_rates[i]; i++)
-+		link_rates[i] = le16_to_cpu(dpcd_link_rates[i]) * 20;
-+
-+	return i;
-+}
-+
-+#if IS_ENABLED(CONFIG_DRM_DISPLAY_DP_TUNNEL)
-+
-+static u8 drm_dprx_128b132b_link_rates(const struct drm_dp_tunnel *tunnel,
-+				       u8 uhbr_rates)
-+{
-+	if (!drm_dp_tunnel_bw_alloc_is_enabled(tunnel))
-+		return uhbr_rates;
-+
-+	static_assert(DP_TUNNELING_10GBPS_PER_LANE_SUPPORT == DP_UHBR10 &&
-+		      DP_TUNNELING_13_5GBPS_PER_LANE_SUPPORT == DP_UHBR13_5 &&
-+		      DP_TUNNELING_20GBPS_PER_LANE_SUPPORT == DP_UHBR20);
-+
-+	return drm_dp_tunnel_128b132b_dprx_rates(tunnel);
-+}
-+
-+static bool drm_dprx_supports_128b132b(const struct drm_dp_tunnel *tunnel,
-+				       const u8 dpcd[DP_RECEIVER_CAP_SIZE])
-+{
-+	if (tunnel && drm_dp_tunnel_bw_alloc_is_enabled(tunnel))
-+		return drm_dp_tunnel_128b132b_supported(tunnel);
-+	else
-+		return drm_dp_128b132b_supported(dpcd);
-+}
-+
-+#else
-+
-+static u8 drm_dprx_128b132b_link_rates(const struct drm_dp_tunnel *tunnel,
-+				       u8 uhbr_rates)
-+{
-+	return uhbr_rates;
-+}
-+
-+static bool drm_dprx_supports_128b132b(const struct drm_dp_tunnel *tunnel,
-+				       const u8 dpcd[DP_RECEIVER_CAP_SIZE])
-+{
-+		return drm_dp_128b132b_supported(dpcd);
-+}
-+
-+#endif
-+
-+/**
-+ * drm_dp_get_128b132b_link_rates() - get the supported 128b/132b link rates
-+ * @lttpr_common_caps: LTTPR common capabilities
-+ * @tunnel: DP tunnel object (NULL if not supported)
-+ * @uhbr_rates: UHBR rate mask read from the DPCD
-+ *		DP_128B132B_SUPPORTED_LINK_RATES register
-+ * @link_rates: Buffer of DP_MAX_128B132B_SUPPORTED_RATES entries to store the
-+ *		resulting link rates
-+ *
-+ * Limit the UHBR rate mask @uhbr_rates by the capabilities of the DP tunnel
-+ * and of the LTTPRs, if any is present, then expand the remaining rates into
-+ * @link_rates in ascending order.
-+ *
-+ * Returns: The number of link rates stored in @link_rates.
-+ */
-+static int
-+drm_dp_get_128b132b_link_rates(const u8 lttpr_common_caps[DP_LTTPR_COMMON_CAP_SIZE],
-+			       const struct drm_dp_tunnel *tunnel,
-+			       u8 uhbr_rates,
-+			       int link_rates[DP_MAX_128B132B_SUPPORTED_RATES])
-+{
-+	int i = 0;
-+
-+	if (tunnel)
-+		uhbr_rates = drm_dprx_128b132b_link_rates(tunnel, uhbr_rates);
-+
-+	if (drm_dp_lttpr_count(lttpr_common_caps)) {
-+		/* We have a repeater */
-+		if (lttpr_common_caps[0] >= 0x20 &&
-+		    dp_lttpr_common_cap(lttpr_common_caps,
-+					DP_MAIN_LINK_CHANNEL_CODING_PHY_REPEATER) &
-+		    DP_PHY_REPEATER_128B132B_SUPPORTED) {
-+			/* Repeater supports 128b/132b, valid UHBR rates */
-+			uhbr_rates &= dp_lttpr_common_cap(lttpr_common_caps,
-+							  DP_PHY_REPEATER_128B132B_RATES);
-+		} else {
-+			/* Does not support 128b/132b */
-+			uhbr_rates = 0;
-+		}
-+	}
-+
-+	if (uhbr_rates & DP_UHBR10)
-+		link_rates[i++] = 1000000;
-+	if (uhbr_rates & DP_UHBR13_5)
-+		link_rates[i++] = 1350000;
-+	if (uhbr_rates & DP_UHBR20)
-+		link_rates[i++] = 2000000;
-+
-+	return i;
-+}
-+
-+/**
-+ * drm_dp_read_dpcd_sink_rates() - read the sink rates from the DPCD
-+ * @aux: DisplayPort AUX channel
-+ * @dpcd: DPCD receiver capabilities
-+ * @lttpr_common_caps: LTTPR common capabilities
-+ * @desc: DisplayPort sink descriptor
-+ * @tunnel: Tunnel object (NULL if not supported)
-+ * @sink_rates: Array of DP_MAX_SUPPORTED_RATES entries to store the sink rates
-+ *
-+ * Read the link rates supported by a DisplayPort sink from the DPCD
-+ * DP_MAX_LINK_RATE and DP_128B132B_SUPPORTED_LINK_RATES registers, limited by
-+ * the capabilities of the LTTPRs if any is present. The rates are stored in
-+ * @sink_rates in ascending order.
-+ *
-+ * The DPCD receiver capabilities, the LTTPR common capabilities and the sink
-+ * descriptor are passed by the caller instead of being read from the DPCD.
-+ * Drivers which already read them, like i915, can pass them to avoid
-+ * duplicate DPCD reads.
-+ *
-+ * Returns: The number of supported sink rates.
-+ */
-+int drm_dp_read_dpcd_sink_rates(struct drm_dp_aux *aux,
-+				const u8 dpcd[DP_RECEIVER_CAP_SIZE],
-+				const u8 lttpr_common_caps[DP_LTTPR_COMMON_CAP_SIZE],
-+				const struct drm_dp_desc *desc,
-+				const struct drm_dp_tunnel *tunnel,
-+				int sink_rates[DP_MAX_SUPPORTED_RATES])
-+{
-+	static const int dp_rates[] = {
-+		162000, 270000, 540000, 810000
-+	};
-+	int max_rate, max_lttpr_rate = 0, ret, i;
-+	u8 uhbr_rates = 0;
-+
-+	BUILD_BUG_ON(ARRAY_SIZE(dp_rates) + DP_MAX_128B132B_SUPPORTED_RATES >
-+		     DP_MAX_SUPPORTED_RATES);
-+
-+	if (drm_dp_has_quirk(desc, DP_DPCD_QUIRK_CAN_DO_MAX_LINK_RATE_3_24_GBPS)) {
-+		/* Needed, e.g., for Apple MBP 2017, 15 inch eDP Retina panel */
-+		static const int quirk_rates[] = { 162000, 270000, 324000 };
-+
-+		memcpy(sink_rates, quirk_rates, sizeof(quirk_rates));
-+
-+		return ARRAY_SIZE(quirk_rates);
-+	}
-+
-+	/*
-+	 * Sink rates for 8b/10b.
-+	 */
-+	max_rate = drm_dp_bw_code_to_link_rate(dpcd[DP_MAX_LINK_RATE]);
-+	if (lttpr_common_caps)
-+		max_lttpr_rate = drm_dp_lttpr_max_link_rate(lttpr_common_caps);
-+	if (max_lttpr_rate)
-+		max_rate = min(max_rate, max_lttpr_rate);
-+
-+	for (i = 0; i < ARRAY_SIZE(dp_rates); i++) {
-+		if (dp_rates[i] > max_rate)
-+			break;
-+		sink_rates[i] = dp_rates[i];
-+	}
-+
-+	/*
-+	 * The following register must be read unconditionally for the later
-+	 * DP tunnel 128b132b detection to work, see DP Standard v2.1 5.14.3 .
-+	 */
-+	ret = drm_dp_dpcd_read_byte(aux, DP_128B132B_SUPPORTED_LINK_RATES,
-+				    &uhbr_rates);
-+	if (ret < 0) {
-+		drm_dbg_kms(aux->drm_dev,
-+			    "%s: Failed to read DPCD 128B/132B supported link rates (%d)\n",
-+			    aux->name, ret);
-+		uhbr_rates = 0;
-+	}
-+
-+	/*
-+	 * Sink rates for 128b/132b. If set, sink should support all 8b/10b
-+	 * rates and 10 Gbps.
-+	 */
-+	if (drm_dprx_supports_128b132b(tunnel, dpcd))
-+		i += drm_dp_get_128b132b_link_rates(lttpr_common_caps,
-+						    tunnel,
-+						    uhbr_rates,
-+						    &sink_rates[i]);
-+
-+	return i;
-+}
-+EXPORT_SYMBOL_GPL(drm_dp_read_dpcd_sink_rates);
-+
-+/**
-+ * drm_dp_read_edp_sink_rates() - read the sink rates from the eDP DPCD
-+ * @aux: DisplayPort AUX channel
-+ * @edp_dpcd_rev: eDP DPCD revision of the sink
-+ * @sink_rates: Array of DP_MAX_SUPPORTED_RATES entries to store the sink rates
-+ *
-+ * Read the link rates supported by an eDP sink from the DPCD
-+ * DP_SUPPORTED_LINK_RATES registers, available on eDP 1.4 and later sinks.
-+ *
-+ * Returns: The number of supported sink rates, 0 if the sink does not support
-+ * the DP_SUPPORTED_LINK_RATES register, negative error code otherwise.
-+ */
-+int drm_dp_read_edp_sink_rates(struct drm_dp_aux *aux, u8 edp_dpcd_rev,
-+			       int sink_rates[DP_MAX_SUPPORTED_RATES])
-+{
-+	int num_sink_rates;
-+
-+	if (edp_dpcd_rev < DP_EDP_14)
-+		return 0;
-+
-+	num_sink_rates = drm_dp_read_dpcd_supported_link_rates(aux, sink_rates);
-+	if (num_sink_rates < 0) {
-+		drm_dbg_kms(aux->drm_dev,
-+			    "%s: Unable to read eDP supported link rates (%d)\n",
-+			    aux->name, num_sink_rates);
-+		return 0;
-+	}
-+
-+	return num_sink_rates;
-+}
-+EXPORT_SYMBOL_GPL(drm_dp_read_edp_sink_rates);
-diff --git a/drivers/gpu/drm/i915/display/intel_dp.c b/drivers/gpu/drm/i915/display/intel_dp.c
-index 0cd5e6b5034cf..da73ad11e9cac 100644
---- a/drivers/gpu/drm/i915/display/intel_dp.c
-+++ b/drivers/gpu/drm/i915/display/intel_dp.c
-@@ -191,102 +191,47 @@ static void intel_dp_set_default_sink_rates(struct intel_dp *intel_dp)
- 	intel_dp->num_sink_rates = 1;
+diff --git a/drivers/gpu/drm/bridge/analogix/anx7625.c b/drivers/gpu/drm/bridge/analogix/anx7625.c
+index c3af88e14f8b2..2b1235efc9fa4 100644
+--- a/drivers/gpu/drm/bridge/analogix/anx7625.c
++++ b/drivers/gpu/drm/bridge/analogix/anx7625.c
+@@ -2558,6 +2558,31 @@ static int anx7625_bridge_atomic_check(struct drm_bridge *bridge,
+ 	return 0;
  }
  
--static bool dprx_supports_128b132b(struct intel_dp *intel_dp)
--{
--	if (intel_dp_tunnel_bw_alloc_is_enabled(intel_dp))
--		return drm_dp_tunnel_128b132b_supported(intel_dp->tunnel);
--	else
--		return drm_dp_128b132b_supported(intel_dp->dpcd);
--}
--
--static u8 dprx_128b132b_link_rates(struct intel_dp *intel_dp, u8 no_bwa_rates)
--{
--	u8 ret;
--
--	if (!intel_dp_tunnel_bw_alloc_is_enabled(intel_dp))
--		return no_bwa_rates;
--
--	ret = drm_dp_tunnel_128b132b_dprx_rates(intel_dp->tunnel);
--	static_assert(DP_TUNNELING_10GBPS_PER_LANE_SUPPORT == DP_UHBR10 &&
--		      DP_TUNNELING_13_5GBPS_PER_LANE_SUPPORT == DP_UHBR13_5 &&
--		      DP_TUNNELING_20GBPS_PER_LANE_SUPPORT == DP_UHBR20);
--
--	return ret;
--}
--
- /* update sink rates from dpcd */
- static void intel_dp_set_dpcd_sink_rates(struct intel_dp *intel_dp)
++static void anx7625_report_link_train(struct anx7625_data *ctx,
++				      struct drm_connector *connector)
++{
++	int bw_code, rate, nlanes;
++
++	/*
++	 * The DP link training is handled by the internal OCM firmware, read
++	 * back the negotiated link rate and lane count.
++	 */
++	bw_code = anx7625_reg_read(ctx, ctx->i2c.tx_p0_client,
++				   SP_TX_LINK_BW_SET_REG);
++	if (bw_code < 0)
++		return;
++
++	rate = drm_dp_bw_code_to_link_rate(bw_code & SP_TX_LINK_BW_SET_MASK);
++
++	nlanes = anx7625_reg_read(ctx, ctx->i2c.tx_p0_client,
++				  SP_TX_LANE_COUNT_SET_REG);
++	if (nlanes < 0)
++		return;
++	nlanes &= DP_MAX_LANE_COUNT_MASK;
++
++	drm_dp_set_cur_link_params(connector, rate, nlanes, false);
++}
++
+ static void anx7625_bridge_atomic_enable(struct drm_bridge *bridge,
+ 					 struct drm_atomic_commit *state)
  {
--	static const int dp_rates[] = {
--		162000, 270000, 540000, 810000
--	};
--	int i, max_rate;
--	int max_lttpr_rate;
--	u8 uhbr_rates = 0;
--
--	if (drm_dp_has_quirk(&intel_dp->desc, DP_DPCD_QUIRK_CAN_DO_MAX_LINK_RATE_3_24_GBPS)) {
--		/* Needed, e.g., for Apple MBP 2017, 15 inch eDP Retina panel */
--		static const int quirk_rates[] = { 162000, 270000, 324000 };
--
--		memcpy(intel_dp->sink_rates, quirk_rates, sizeof(quirk_rates));
--		intel_dp->num_sink_rates = ARRAY_SIZE(quirk_rates);
--
--		return;
--	}
--
--	/*
--	 * Sink rates for 8b/10b.
--	 */
--	max_rate = max_dprx_rate(intel_dp);
--	max_lttpr_rate = drm_dp_lttpr_max_link_rate(intel_dp->lttpr_common_caps);
--	if (max_lttpr_rate)
--		max_rate = min(max_rate, max_lttpr_rate);
-+	int num_sink_rates;
-+	int max_rate;
-+	int i, num;
+@@ -2565,6 +2590,7 @@ static void anx7625_bridge_atomic_enable(struct drm_bridge *bridge,
+ 	struct device *dev = ctx->dev;
+ 	struct drm_connector *connector;
+ 	struct drm_connector_state *conn_state;
++	int ret;
  
--	for (i = 0; i < ARRAY_SIZE(dp_rates); i++) {
--		if (dp_rates[i] > max_rate)
--			break;
--		intel_dp->sink_rates[i] = dp_rates[i];
--	}
-+	num_sink_rates = drm_dp_read_dpcd_sink_rates(&intel_dp->aux,
-+						     intel_dp->dpcd,
-+						     intel_dp->lttpr_common_caps,
-+						     &intel_dp->desc,
-+						     intel_dp->tunnel,
-+						     intel_dp->sink_rates);
-+	if (num_sink_rates < 0)
-+		num_sink_rates = 0;
+ 	dev_dbg(dev, "drm atomic enable\n");
  
- 	/*
--	 * The following register must be read unconditionally for the later
--	 * DP tunnel 128b132b detection to work, see DP Standard v2.1 5.14.3 .
-+	 * Don't limit the rates of sinks with the 3.24 Gbps DPCD quirk
-+	 * (needed, e.g., for Apple MBP 2017, 15 inch eDP Retina panels),
-+	 * they support rates not advertised by DP_MAX_LINK_RATE.
- 	 */
--	drm_dp_dpcd_read_byte(&intel_dp->aux, DP_128B132B_SUPPORTED_LINK_RATES, &uhbr_rates);
-+	if (!drm_dp_has_quirk(&intel_dp->desc, DP_DPCD_QUIRK_CAN_DO_MAX_LINK_RATE_3_24_GBPS)) {
-+		/*
-+		 * Limit the 8b/10b rates to the maximum rate the source can
-+		 * drive. The 128b/132b rates are all above the maximum 8b/10b
-+		 * rate and are not limited by the source's DP_MAX_LINK_RATE.
-+		 */
-+		max_rate = max_dprx_rate(intel_dp);
-+		num = 0;
-+		for (i = 0; i < num_sink_rates; i++) {
-+			if (!drm_dp_is_uhbr_rate(intel_dp->sink_rates[i]) &&
-+			    intel_dp->sink_rates[i] > max_rate)
-+				continue;
+@@ -2580,6 +2606,17 @@ static void anx7625_bridge_atomic_enable(struct drm_bridge *bridge,
  
--	/*
--	 * Sink rates for 128b/132b. If set, sink should support all 8b/10b
--	 * rates and 10 Gbps.
--	 */
--	if (dprx_supports_128b132b(intel_dp)) {
--		BUILD_BUG_ON(ARRAY_SIZE(intel_dp->sink_rates) < ARRAY_SIZE(dp_rates) + 3);
--
--		uhbr_rates = dprx_128b132b_link_rates(intel_dp, uhbr_rates);
--
--		if (drm_dp_lttpr_count(intel_dp->lttpr_common_caps)) {
--			/* We have a repeater */
--			if (intel_dp->lttpr_common_caps[0] >= 0x20 &&
--			    intel_dp->lttpr_common_caps[DP_MAIN_LINK_CHANNEL_CODING_PHY_REPEATER -
--							DP_LT_TUNABLE_PHY_REPEATER_FIELD_DATA_STRUCTURE_REV] &
--			    DP_PHY_REPEATER_128B132B_SUPPORTED) {
--				/* Repeater supports 128b/132b, valid UHBR rates */
--				uhbr_rates &= intel_dp->lttpr_common_caps[DP_PHY_REPEATER_128B132B_RATES -
--									  DP_LT_TUNABLE_PHY_REPEATER_FIELD_DATA_STRUCTURE_REV];
--			} else {
--				/* Does not support 128b/132b */
--				uhbr_rates = 0;
--			}
-+			intel_dp->sink_rates[num++] = intel_dp->sink_rates[i];
- 		}
+ 	anx7625_dp_start(ctx);
  
--		if (uhbr_rates & DP_UHBR10)
--			intel_dp->sink_rates[i++] = 1000000;
--		if (uhbr_rates & DP_UHBR13_5)
--			intel_dp->sink_rates[i++] = 1350000;
--		if (uhbr_rates & DP_UHBR20)
--			intel_dp->sink_rates[i++] = 2000000;
-+		num_sink_rates = num;
++	/* On DisplayPort case, the caps are set in the detect callback. */
++	if (bridge->type == DRM_MODE_CONNECTOR_eDP) {
++		ret = drm_dp_sink_sync_caps(connector, &ctx->aux, NULL);
++		if (ret)
++			DRM_DEV_DEBUG_DRIVER(dev,
++					     "error sink caps synchronisation (%d)\n",
++					     ret);
++	}
++
++	anx7625_report_link_train(ctx, connector);
++
+ 	conn_state = drm_atomic_get_new_connector_state(state, connector);
+ 
+ 	if (WARN_ON(!conn_state))
+@@ -2616,6 +2653,12 @@ static void anx7625_bridge_atomic_disable(struct drm_bridge *bridge,
+ 		dev_dbg(dev, "update CP to DESIRE\n");
  	}
  
--	intel_dp->num_sink_rates = i;
-+	intel_dp->num_sink_rates = num_sink_rates;
++	/* On DisplayPort unplug, the caps are already reset in the detect
++	 * callback.
++	 */
++	if (bridge->type == DRM_MODE_CONNECTOR_eDP)
++		drm_dp_sink_reset_caps(ctx->connector);
++
+ 	ctx->connector = NULL;
+ 	anx7625_dp_stop(ctx);
+ 
+@@ -2634,11 +2677,25 @@ anx7625_bridge_detect(struct drm_bridge *bridge, struct drm_connector *connector
+ 	struct anx7625_data *ctx = bridge_to_anx7625(bridge);
+ 	struct device *dev = ctx->dev;
+ 	enum drm_connector_status status;
++	int ret;
+ 
+ 	DRM_DEV_DEBUG_DRIVER(dev, "drm bridge detect\n");
+ 
+ 	status = anx7625_sink_detect(ctx);
+ 	anx7625_audio_update_connector_status(ctx, status);
++
++	if (status == connector_status_connected) {
++		ret = drm_dp_sink_sync_caps(connector, &ctx->aux, NULL);
++		if (ret)
++			DRM_DEV_DEBUG_DRIVER(dev,
++					     "error sink caps synchronisation (%d)\n",
++					     ret);
++
++		anx7625_report_link_train(ctx, connector);
++	} else {
++		drm_dp_sink_reset_caps(connector);
++	}
++
+ 	return status;
  }
  
- static void intel_dp_set_sink_rates(struct intel_dp *intel_dp)
-@@ -4722,50 +4667,24 @@ static void
- intel_edp_set_sink_rates(struct intel_dp *intel_dp)
- {
- 	struct intel_display *display = to_intel_display(intel_dp);
-+	int num_sink_rates;
+@@ -2765,6 +2822,14 @@ static const struct dev_pm_ops anx7625_pm_ops = {
+ 			   anx7625_runtime_pm_resume, NULL)
+ };
  
--	intel_dp->num_sink_rates = 0;
--
--	if (intel_dp->edp_dpcd[0] >= DP_EDP_14) {
--		__le16 sink_rates[DP_MAX_SUPPORTED_RATES];
--		int ret;
--		int i;
--
--		ret = drm_dp_dpcd_read_data(&intel_dp->aux,
--					    DP_SUPPORTED_LINK_RATES,
--					    sink_rates, sizeof(sink_rates));
--		if (ret < 0) {
--			drm_dbg_kms(display->drm,
--				    "Unable to read eDP supported link rates, using default rates\n");
--			memset(sink_rates, 0, sizeof(sink_rates));
--		}
--
--		for (i = 0; i < ARRAY_SIZE(sink_rates); i++) {
--			int rate;
-+	num_sink_rates = drm_dp_read_edp_sink_rates(&intel_dp->aux,
-+						    intel_dp->edp_dpcd[0],
-+						    intel_dp->sink_rates);
-+	if (num_sink_rates < 0)
-+		num_sink_rates = 0;
- 
--			/* Value read multiplied by 200kHz gives the per-lane
--			 * link rate in kHz. The source rates are, however,
--			 * stored in terms of LS_Clk kHz. The full conversion
--			 * back to symbols is
--			 * (val * 200kHz)*(8/10 ch. encoding)*(1/8 bit to Byte)
--			 */
--			rate = le16_to_cpu(sink_rates[i]) * 200 / 10;
--
--			if (rate == 0)
--				break;
--
--			/*
--			 * Some platforms cannot reliably drive HBR3 rates due to PHY limitations,
--			 * even if the sink advertises support. Reject any sink rates above HBR2 on
--			 * the known machines for stable output.
--			 */
--			if (rate > 540000 &&
--			    intel_has_quirk(display, QUIRK_EDP_LIMIT_RATE_HBR2))
--				break;
-+	/*
-+	 * Some platforms cannot reliably drive HBR3 rates due to PHY limitations,
-+	 * even if the sink advertises support. Reject any sink rates above HBR2 on
-+	 * the known machines for stable output.
-+	 */
-+	if (num_sink_rates && intel_has_quirk(display, QUIRK_EDP_LIMIT_RATE_HBR2))
-+		num_sink_rates = intel_dp_rate_limit_len(intel_dp->sink_rates,
-+							 num_sink_rates, 540000);
- 
--			intel_dp->sink_rates[i] = rate;
--		}
--		intel_dp->num_sink_rates = i;
--	}
-+	intel_dp->num_sink_rates = num_sink_rates;
- 
- 	/*
- 	 * Use DP_LINK_RATE_SET if DP_SUPPORTED_LINK_RATES are available,
-diff --git a/include/drm/display/drm_dp.h b/include/drm/display/drm_dp.h
-index e63c7f075f54c..9db924ff7c53e 100644
---- a/include/drm/display/drm_dp.h
-+++ b/include/drm/display/drm_dp.h
-@@ -1228,6 +1228,7 @@
- # define DP_UHBR10                             (1 << 0)
- # define DP_UHBR20                             (1 << 1)
- # define DP_UHBR13_5                           (1 << 2)
-+# define DP_MAX_128B132B_SUPPORTED_RATES	3
- 
- #define DP_128B132B_TRAINING_AUX_RD_INTERVAL                    0x2216 /* 2.0 */
- # define DP_128B132B_TRAINING_AUX_RD_INTERVAL_1MS_UNIT          (1 << 7)
-diff --git a/include/drm/display/drm_dp_helper.h b/include/drm/display/drm_dp_helper.h
-index 5b05a7fbe174a..d7f4c6f2ba4c7 100644
---- a/include/drm/display/drm_dp_helper.h
-+++ b/include/drm/display/drm_dp_helper.h
-@@ -32,6 +32,8 @@
- struct drm_device;
- struct drm_dp_aux;
- struct drm_panel;
-+struct drm_dp_tunnel;
-+struct drm_dp_desc;
- 
- bool drm_dp_channel_eq_ok(const u8 link_status[DP_LINK_STATUS_SIZE],
- 			  int lane_count);
-@@ -700,6 +702,15 @@ static inline int drm_dp_dpcd_write_byte(struct drm_dp_aux *aux,
- int drm_dp_read_dpcd_caps(struct drm_dp_aux *aux,
- 			  u8 dpcd[DP_RECEIVER_CAP_SIZE]);
- 
-+int drm_dp_read_dpcd_sink_rates(struct drm_dp_aux *aux,
-+				const u8 dpcd[DP_RECEIVER_CAP_SIZE],
-+				const u8 lttpr_common_caps[DP_LTTPR_COMMON_CAP_SIZE],
-+				const struct drm_dp_desc *desc,
-+				const struct drm_dp_tunnel *tunnel,
-+				int sink_rates[DP_MAX_SUPPORTED_RATES]);
-+int drm_dp_read_edp_sink_rates(struct drm_dp_aux *aux, u8 edp_dpcd_rev,
-+			       int sink_rates[DP_MAX_SUPPORTED_RATES]);
++static int anx7625_dp_rates[] = {162000, 270000, 540000, 675000};
 +
- int drm_dp_dpcd_read_link_status(struct drm_dp_aux *aux,
- 				 u8 status[DP_LINK_STATUS_SIZE]);
++static struct drm_connector_dp_link_caps anx7625_dp_link_caps = {
++	.nlanes = 2,
++	.nlink_rates = ARRAY_SIZE(anx7625_dp_rates),
++	.link_rates = anx7625_dp_rates,
++};
++
+ static int anx7625_link_bridge(struct drm_dp_aux *aux)
+ {
+ 	struct anx7625_data *platform = container_of(aux, struct anx7625_data, aux);
+@@ -2787,6 +2852,9 @@ static int anx7625_link_bridge(struct drm_dp_aux *aux)
+ 				    DRM_MODE_CONNECTOR_DisplayPort;
+ 	platform->bridge.support_hdcp = true;
  
++	platform->bridge.dp_link_caps = &anx7625_dp_link_caps;
++	platform->bridge.ops |= DRM_BRIDGE_OP_DP;
++
+ 	drm_bridge_add(&platform->bridge);
+ 
+ 	if (!platform->pdata.is_dpi) {
+diff --git a/drivers/gpu/drm/bridge/analogix/anx7625.h b/drivers/gpu/drm/bridge/analogix/anx7625.h
+index 957d234ec07c8..b9a0f62f6398c 100644
+--- a/drivers/gpu/drm/bridge/analogix/anx7625.h
++++ b/drivers/gpu/drm/bridge/analogix/anx7625.h
+@@ -90,6 +90,7 @@
+ #define HDCP2TX_FW_EN			BIT(4)
+ 
+ #define SP_TX_LINK_BW_SET_REG		0xA0
++#define SP_TX_LINK_BW_SET_MASK		0x1F
+ #define SP_TX_LANE_COUNT_SET_REG	0xA1
+ 
+ #define M_VID_0 0xC0
 
 -- 
 2.43.0
