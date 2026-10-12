@@ -4,110 +4,117 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E4783CA9ED0
-	for <linux-mediatek@archiver.kernel.org>; Mon, 12 Oct 2026 17:34:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1F8A6CA9EDE
+	for <linux-mediatek@archiver.kernel.org>; Mon, 12 Oct 2026 17:44:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=yF/Iy3Hd3jJ7PHeSixb0MK6yhBJ3J2UORZlYHvOyz9w=; b=X1k4wqwrftrfta2E++5OYWzKps
-	C9JIwNjg9dOspM3yuZE/2MQOdW9c3QJbpcHxsXQVU8vOE3r1+91K9T5kSoiLg/7v7pRrcGyHUhFBR
-	Tom3k2hLz+pnkpPQxa3bBLm0Q0M01HDl6vl8vHaCi6CU0VTnm5naCbf4WmsSvrSXsbh2L2agJ5m3k
-	LVbYJ9eAgz/Jxe+7mDyV2aM1ovsztB3Xw1XafrCOXaknAu38QI8eA+puKNzJv7RGXDT/Mv64kXkSM
-	CZpepQewV97hn6pLNEAbJRp9RyQkzAvxXOLGZQdmAQh7ahk+bX+wlSWjtUN46vtfviCNbTbrOjVqJ
-	OH2NdRKw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
+	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=aQmNTGROGdvgxfWPGJ1OogqSDxU0dKMs1Ijyj+pgCT8=; b=f8HPXP3AhvP0g9IMEh4HnGyxLR
+	bArmT4+Q670UfXOG0BdT9bqpAaNMhuYnM7mAOMEv1Wc66NOPgLz9Q/R3Wzs6uN6PTYTS+AxIjr9Qd
+	IxPyw8vTns2Eu/xnZ3pjLKLkF1OPL+7U9B7/JsQ8uhOvdG4G8i3oAhqRl/+Kp51PvETTGsWAHyNzY
+	WAxgXPAfhgVqXNNTmvRKb2KCGCfA/7ChwHY0k6vVccWhcEAoLoaZhIM66uZ9AEzk4I+briJS8s5hc
+	Ze0lCgEQb/DVA47fZ0rQADyVpu9tCRsMcZkLhgxwxrvSI65m01ZJ2NH2vrLUJiG4jb44MXt8LPp68
+	3lHLoBSw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xGJue-0000000B7Is-448u;
-	Mon, 12 Oct 2026 17:34:12 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1xGK48-0000000B8rE-3rFX;
+	Mon, 12 Oct 2026 17:44:01 +0000
+Received: from mail-ed1-x532.google.com ([2a00:1450:4864:20::532])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xGJuc-0000000B7Hp-3wzH
-	for linux-mediatek@bombadil.infradead.org;
-	Mon, 12 Oct 2026 17:34:11 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
-	:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:Content-ID:
-	Content-Description:In-Reply-To:References;
-	bh=yF/Iy3Hd3jJ7PHeSixb0MK6yhBJ3J2UORZlYHvOyz9w=; b=k7CN9oAZZ7sneaiEwsPvA70FuM
-	JDYuz1SI8lEIs7I2lzM8RGCb2Yd6cImxn/OCxskZiAbMaEAOjpSHzw+lL6m+mBZXRAjkGODNhlRvW
-	MIjzI7i5AKngzRrdgn0IZ8O2eoZeo/mDnVyOlQQDgqcHRt1HyrihOMZ+b4reftYXtqeIpKQmSWdKM
-	sRfMV2MX0RxgRSJGVwGmPBgSxEPX1WNsuUgQdjZtyLLzOJFXLl4oQz9eXUQj9VSJHOfDR7pz2F9/e
-	M+925GpNsP0wqm5LCk3XR0FAtEc3s4uK+EiWbmd3j5YjvdhuEEys0bE5u7gM1FD4booo56iSR3+F6
-	Q31nBzcQ==;
-Received: from mail-pf1-x42a.google.com ([2607:f8b0:4864:20::42a])
-	by desiato.infradead.org with esmtps (Exim 4.99.5 #2 (Red Hat Linux))
-	id 1xGJuZ-0000000Ehmm-1M5D
+	id 1xGK44-0000000B8pB-3gqq
 	for linux-mediatek@lists.infradead.org;
-	Mon, 12 Oct 2026 17:34:09 +0000
-Received: by mail-pf1-x42a.google.com with SMTP id d2e1a72fcca58-88b5f43cb8aso608368b3a.3
-        for <linux-mediatek@lists.infradead.org>; Mon, 12 Oct 2026 10:34:06 -0700 (PDT)
+	Mon, 12 Oct 2026 17:43:59 +0000
+Received: by mail-ed1-x532.google.com with SMTP id 4fb4d7f45d1cf-6acbdbc1725so2627632a12.3
+        for <linux-mediatek@lists.infradead.org>; Mon, 12 Oct 2026 10:43:55 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1791827035; cv=none;
+        d=google.com; s=arc-20260327;
+        b=X8m72iOzYA2izNzBtlFNZ3uSr2hmUxMFbY5ncQajpBXRKvy7+itDPFD7MuUgDI9T9O
+         qsUbWa+8tJkfa4RzKSEU3nFJ/D2y8EYhjRShI0341hJR+Tbc2MKubGjL6CPNfVND9Jcl
+         ozXwKhfkzMUJHJ+wNcgvPqS49udGFha+n448OulyBa5eBo2d/GY2UZDJcA6EkRZREzzJ
+         LsxSPCXVmTqw0OcCHPGKwuZYPog0vqQc75/3x8LwzwnadZoVrjE0b2ojvC/09YZrg+GM
+         UcKVhZ1mdKD6NV5PRkMbTSyo+FO50vDkAyoe+HWUHVS4AAek+DwQzk758ud9PEIdQ82B
+         OP9g==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20260327;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:dkim-signature;
+        bh=aQmNTGROGdvgxfWPGJ1OogqSDxU0dKMs1Ijyj+pgCT8=;
+        fh=s5WrDbZ0TqWrSRVeEwnK1+e0JrHsagPRHBFXnNEYDUk=;
+        b=lVcYv9wb0rX0474PbL53i6urklruWx7+1VdqBa6Aah69R7EiA0ApVGkno+gNuRqzNC
+         Kjzpe7HGXfnIuEOl2GUle3XfvBCNq+XVsT+Q7MtIN0ceJr49ghLzPAs7rFXMe1Fw5XkP
+         gKKaoto+SQ6Hvtw+UD9hXmTVaujv9SNrg2aWxrJPZOh3HVGOKuWf1goKRnujOSsCQ9oD
+         qIjgAbjfvNOlQj6RG0pegVa0CFtPjF37jk5ajDD3G+1d9866g60OG0eCfxjwY/yTmH4z
+         yP57Xp9Ed/z0gaoKGEa0P6N90r0pTxS3oG9ENlEC/EO9+uN7nS89DgMI3r8CduLTja0N
+         beMw==;
+        darn=lists.infradead.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1791826445; x=1792431245; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
-        bh=yF/Iy3Hd3jJ7PHeSixb0MK6yhBJ3J2UORZlYHvOyz9w=;
-        b=E45cnrxnQlGouqqTueDGUsE14BUz04uDz5DalDoiIA9x98lvsL12b/6W6H2nW9zKC5
-         k7zosc19eZPF3bPWlj1RUuuPH/fVhsdEDT33j+w3Ixyqu3+N63/sOSyDhWgKSy6YZtFF
-         9SUMkD18RKFHLtlNRej5xQ16tDRgIhar1Zhdt3UHNjmO147znPTPKYbLyb48+rL54BrO
-         B8XyqN9S2betAPz2J5t+FQ8SrLbQMyt6oONGtspUjWjwDprmC+e4z/b7kblMqgd2e1Nw
-         4ALhOWIuvvshU8/KqWA4+G9MeLRqQidGELkPZpgR7JqZPaPQPHa8IZHEmkhLOo4r7CFp
-         OfeA==
+        d=gmail.com; s=20251104; t=1791827035; x=1792431835; darn=lists.infradead.org;
+        h=content-type:cc:to:subject:message-id:date:from:in-reply-to
+         :references:mime-version:from:to:cc:subject:date:message-id:reply-to
+         :content-type;
+        bh=aQmNTGROGdvgxfWPGJ1OogqSDxU0dKMs1Ijyj+pgCT8=;
+        b=r5pqoxkgDMpNNApP+YitL2xWGnQm7iFZgg06hXWmqgkr11mpVkoa7LZS2gKuqPX1sk
+         hQUXIXsT95hHIEDYpLZ9ILTnIWd3V3x+ekNdYJRy2O+3TTAD55NJD8bnFvQd5I1kC7N/
+         REhBqRoA9Kbuje77A+F6Ig7XXdkZoP8IEUj/+HCafdm8KzTeD/1JRjTw2kKYDRZjDIgT
+         fI/ovDwZoTwXIBSPzRuN4dxye/bYGDtomJdEmRviObcZAGYMkMHY4+pRw68i3oBrO7VR
+         IZr03HX/CVdUKuv64sQ0UHDQ/B5IU7623frLMbyO5PxUvpDs7+WDj9kZ3cBc9VYIsrxd
+         rXEQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1791826445; x=1792431245;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to:content-type;
-        bh=yF/Iy3Hd3jJ7PHeSixb0MK6yhBJ3J2UORZlYHvOyz9w=;
-        b=pI2ScBkMoSew3zMvzqHMltnsMGX0H/hfGOZQ557boaX43KjQTmEAnPfjeRiXpwi5ux
-         4698K4hBckwsUVg/Lg9wqYhv/weB2fAhpLiNyzlWAnpNqCkaPKosQ3JjHhqTcjLi1/xE
-         tYuTRkcqF5lMBuMXpPP5quIwoj/B74DL1nscoCij9FkVKbkSYsogDOjwS0ocbbb+YrqH
-         qwMsujyK+PLJYo4UvjnkE4G+Lef9HAnFr6XzLYUtFvhrFFEc8na/gxPM95o92dTY+rHb
-         XvXuJXAFhxcCzxiCPtGt9grL3OuXbY+PremWOw8uSzxbgODJudHDbxjdxZLhGdQrkIbc
-         I3Tg==
-X-Forwarded-Encrypted: i=1; AKwUvBwxpP2uGb5tuDQKEB8wn83LivatLYkz2ekCelgcVwIRCED6FpTdW+CxyZy6cRrD3xtBzVkAQFVulsIZo5Mkrw==@lists.infradead.org
-X-Gm-Message-State: AFq9FYKWxEmEniXA5DSb57d0EXTduhyKkkLzTwIDTGvhR3LcK4dDc1sh
-	Ad85NgbgXMm/hPaBofz9ogIm1eXs97BleUZophSP5Bxyrk/Cax8kNsOj
-X-Gm-Gg: AYBFou0kXSXN7j4UQpXla4+V2sFs7tTKMIC3DXmEA0WsNGju4T7ZPF9DOlIwqcw4adV
-	m2gktjr1AfareSvttO8vPt7VWKJU94ExwEIPyPJfL3AN5pCubrvLoVm7SMwYvYmbpRTKnvSDSvD
-	BY9RAoBDC7YRMug80EDvyGlcw4ymryd7KHWJ8Ar2ip0FhIO0krOHAJ8K1kwjZaQDyKDp5ThO7Oc
-	19DlaRTFbW6qjPzxMLoTbHNBQMuZ2FjHPv0gYM+YkrL8f47MbEHGkNWJbNJ6uE60zayyewHjgr7
-	bRxF7QHD7X0J0MD7EBO4IfGmfyGGWTdlrhem9L7Z3M9cqM2MozL0uNVS2qhqIFRVDvLk2zQL3dh
-	vrd1mZtvvbV3RuecbO/z+MFroonL9TQarCDdCpBL+UH0XTCClc/fn4mdaItbXoGEhrt8ZNIGFIR
-	3jVR0QLehX0maPbX7WUYk5dpBR4ZRHxJUkR+Eb9BPrp8Ip7ahspSh65cFStstaRuCR4DWZih4cY
-	vhz75IvAmw11y/Ll1CHkGyZWEvboDsLvO1aoLlXlFheT0HfxUR26Hssa9vDPtWBboEtrX7iQ5T6
-	OvsZsIw0jh05TXd0KQSzlJSQd0s5PhR+5GiaHCICiRKDKHvcIA==
-X-Received: by 2002:a05:6a00:e0a:b0:88d:4b30:1c11 with SMTP id d2e1a72fcca58-897c3efd912mr8494544b3a.6.1791826444565;
-        Mon, 12 Oct 2026 10:34:04 -0700 (PDT)
-Received: from ryzen.lan ([2601:644:8000:7a86::e34])
-        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-896c49901fesm4166886b3a.57.2026.10.12.10.34.03
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 12 Oct 2026 10:34:03 -0700 (PDT)
-From: Rosen Penev <rosenp@gmail.com>
-To: linux-phy@lists.infradead.org
-Cc: Chunfeng Yun <chunfeng.yun@mediatek.com>,
-	Vinod Koul <vkoul@kernel.org>,
-	Neil Armstrong <neil.armstrong@linaro.org>,
-	Manivannan Sadhasivam <mani@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Kees Cook <kees@kernel.org>,
-	"Gustavo A. R. Silva" <gustavoars@kernel.org>,
-	linux-arm-kernel@lists.infradead.org (moderated list:ARM/Mediatek USB3 PHY DRIVER),
-	linux-mediatek@lists.infradead.org (moderated list:ARM/Mediatek USB3 PHY DRIVER),
-	linux-kernel@vger.kernel.org (open list:ARM/Mediatek SoC support),
-	linux-hardening@vger.kernel.org (open list:KERNEL HARDENING (not covered by other areas):Keyword:\b__counted_by(_le|_be|_ptr)?\b)
-Subject: [PATCH v3] phy: mediatek: tphy: simplify main allocation
-Date: Mon, 12 Oct 2026 10:34:02 -0700
-Message-ID: <20261012173402.24568-1-rosenp@gmail.com>
-X-Mailer: git-send-email 2.56.0
+        d=1e100.net; s=20260707; t=1791827035; x=1792431835;
+        h=content-type:cc:to:subject:message-id:date:from:in-reply-to
+         :references:mime-version:x-gm-gg:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to:content-type;
+        bh=aQmNTGROGdvgxfWPGJ1OogqSDxU0dKMs1Ijyj+pgCT8=;
+        b=VJG+Qc8kb1BkW7S8St5asjakXQKEaU+TNYM+S7waaj8CtTbdfCWlo/z544cA0wUfHC
+         F1zWdZ5XHE/bcl2BXA719d/eSMKJdnWDGxN4HY2VGLOPR/NW8PNXTqv36W0iE4wHyG6C
+         WBjBlzrQcSuWjv7oYqfEQh3k1Uk4O6hh8hlntsQjGLTMEN1uq9pUMdij1QkdzEgL4Tg2
+         9pWLeFOP3R5SDWtJi2Qnnkf2twX71wA/ehex1uUHrIKdfJ2cvuKuQnFE/FCNbgflFT2Y
+         mjP5ntv/MoX4xFES52yOK16Fiy27Z28YmPvJgYT2RMt39t185y2BoJmSX6X1fEWEbtZH
+         2ARA==
+X-Gm-Message-State: AFq9FYJTKyyn1hPyHFX5aM2IfZ7kh8YKsYU9/e+bC4v3Wse/maS++D5O
+	aoQFAJoe5tJ4EbeS4HWGKtXD+V4xDR0arGxjgaq0NlqeYztk8e8YpVnkjdWJSteaqabVibqT1Z7
+	eAfA6oHFekg+Tv0Hov3sAsLhD+ZwQxD0=
+X-Gm-Gg: AYBFou2ED+YKk5c+Ip6U+AHw8jS5gu9LQaEoLMDb9qXVBHLVbSwV413z4rlA3clodez
+	bZvHe+dh/6iKHERR6WSZpDiRTFHH5e45Rr1M8+hbVf8df/jmE3Ntkddz6D7ipBYqiAqGgyvY+T2
+	mU0EUlfaFjgTNvhlzoQVxFNQd5NW8pIXrBXotypFyF3WWx4+Gp2dJ/XLqqHHqeWjqk2pzKHD6E6
+	lQzbteLM1OnvDvcfmNUS7sXzKU5AmxTYzbK5MmtkYX/AvUY/b1Yn6udfMD7Ha8uniugYtezIxDx
+	+CDo88PD/5FrpJR3gRA1B/q+G7el2uQTOcSSHXD/l7FuEkADL1MbtA==
+X-Received: by 2002:a05:6402:4341:b0:6ac:8761:17a1 with SMTP id
+ 4fb4d7f45d1cf-6b17c27a7famr8072014a12.36.1791827034421; Mon, 12 Oct 2026
+ 10:43:54 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+References: <20261010115539.9237-1-l.scorcia@gmail.com> <20261010115539.9237-2-l.scorcia@gmail.com>
+ <20261012-quirky-emu-of-renovation-c217dc@quoll>
+In-Reply-To: <20261012-quirky-emu-of-renovation-c217dc@quoll>
+From: Luca Leonardo Scorcia <l.scorcia@gmail.com>
+Date: Mon, 12 Oct 2026 19:43:42 +0200
+X-Gm-Features: AclHuK-aSGZTx-4HZF0vtpTq6BBo_BN-ay9Tv6iz0b611lBgirjVShAwSUrYMCA
+Message-ID: <CAORyz2KgX-7=gfax06+Pb5SFq4dVTtcTY2pbH+FDCRNZ+AVXOA@mail.gmail.com>
+Subject: Re: [PATCH 1/7] dt-bindings: mediatek: hdmi-phy: Add compatible for mt8167
+To: Krzysztof Kozlowski <krzk@kernel.org>
+Cc: linux-mediatek@lists.infradead.org, 
+	Chunfeng Yun <chunfeng.yun@mediatek.com>, Vinod Koul <vkoul@kernel.org>, 
+	Neil Armstrong <neil.armstrong@linaro.org>, Manivannan Sadhasivam <mani@kernel.org>, 
+	Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Stephen Boyd <sboyd@kernel.org>, 
+	Brian Masney <bmasney+clk@redhat.com>, Jerome Brunet <jbrunet+clk@baylibre.com>, 
+	Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>, 
+	David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
+	Nicolas Frattaroli <nicolas.frattaroli@collabora.com>, Chen-Yu Tsai <wenst@chromium.org>, 
+	Fabien Parent <fparent@baylibre.com>, CK Hu <ck.hu@mediatek.com>, 
+	chunhui dai <chunhui.dai@mediatek.com>, linux-arm-kernel@lists.infradead.org, 
+	linux-phy@lists.infradead.org, devicetree@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, linux-clk@vger.kernel.org, 
+	dri-devel@lists.freedesktop.org
+Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261012_183407_476804_671D76AD 
-X-CRM114-Status: GOOD (  12.98  )
+X-CRM114-CacheID: sfid-20261012_104356_929079_C0E9770B 
+X-CRM114-Status: UNSURE (   9.75  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -122,65 +129,21 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Use a flexible array member to replace kzalloc + kcalloc with a single
-kzalloc.
+> Why do you have flexible clocks?
 
-Shuffled some code around as __counted_by requires the counting variable
-to be assigned before any array access.
+Hi, I'm sorry but I need a little help in understanding your comment.
+If you meant "Why isn't there a constraint on the clocks' names", it
+is already provided by the existing conditional block [1].
 
-Signed-off-by: Rosen Penev <rosenp@gmail.com>
----
- v3: remove of_device_get_match_data message as it's now stale
- v2: add back NULL check
- drivers/phy/mediatek/phy-mtk-tphy.c | 17 +++++++----------
- 1 file changed, 7 insertions(+), 10 deletions(-)
+If you meant "Why does clock-output-names have only the maxItems
+number and does not specify the clock name", it was there before [2].
+It could probably be added back with another conditional expression.
+If you meant something else entirely I apologize and would appreciate
+some additional guidance.
 
-diff --git a/drivers/phy/mediatek/phy-mtk-tphy.c b/drivers/phy/mediatek/phy-mtk-tphy.c
-index acf506529507..e9b9e667b319 100644
---- a/drivers/phy/mediatek/phy-mtk-tphy.c
-+++ b/drivers/phy/mediatek/phy-mtk-tphy.c
-@@ -340,10 +340,10 @@ struct mtk_tphy {
- 	struct device *dev;
- 	void __iomem *sif_base;	/* only shared sif */
- 	const struct mtk_phy_pdata *pdata;
--	struct mtk_phy_instance **phys;
--	int nphys;
- 	int src_ref_clk; /* MHZ, reference clock for slew rate calibrate */
- 	int src_coef; /* coefficient for slew rate calibrate */
-+	int nphys;
-+	struct mtk_phy_instance *phys[] __counted_by(nphys);
- };
- 
- #if IS_ENABLED(CONFIG_DEBUG_FS)
-@@ -1572,22 +1572,19 @@ static int mtk_tphy_probe(struct platform_device *pdev)
- 	struct mtk_tphy *tphy;
- 	struct resource res;
- 	int port, ret;
-+	size_t nphys;
- 
--	tphy = devm_kzalloc(dev, sizeof(*tphy), GFP_KERNEL);
-+	nphys = of_get_child_count(np);
-+	tphy = devm_kzalloc(dev, struct_size(tphy, phys, nphys), GFP_KERNEL);
- 	if (!tphy)
- 		return -ENOMEM;
- 
-+	tphy->nphys = nphys;
-+	tphy->dev = dev;
- 	tphy->pdata = of_device_get_match_data(dev);
- 	if (!tphy->pdata)
- 		return -EINVAL;
- 
--	tphy->nphys = of_get_child_count(np);
--	tphy->phys = devm_kcalloc(dev, tphy->nphys,
--				       sizeof(*tphy->phys), GFP_KERNEL);
--	if (!tphy->phys)
--		return -ENOMEM;
--
--	tphy->dev = dev;
- 	platform_set_drvdata(pdev, tphy);
- 
- 	sif_res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
--- 
-2.56.0
+Thank you,
+Luca
 
+[1] https://github.com/torvalds/linux/blob/master/Documentation/devicetree/bindings/phy/mediatek%2Chdmi-phy.yaml#L90-L102
+[2] https://lore.kernel.org/all/20251217-mtk-genio-evk-hdmi-support-v2-1-a994976bb39a@collabora.com/
 
