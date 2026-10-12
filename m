@@ -4,86 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 748C4CA9ED1
-	for <linux-mediatek@archiver.kernel.org>; Mon, 12 Oct 2026 15:12:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6D3B5CA9ED0
+	for <linux-mediatek@archiver.kernel.org>; Mon, 12 Oct 2026 16:36:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Message-ID:Date:References:In-Reply-To:Subject:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=P/Q4nFBYsii5RLmePNAPJ+fdVFCY7TJHBVJr5R7oOUU=; b=ptBboF/VLcBauxrtTarTMUX5YB
-	jCKL+c10v5PbX1eFgbPQJwDVcTQGF5Zu5MInPjbwes7fGCOevQmLWn8nNXTOxQ8FOYt0A/Hyf8lSj
-	5yaXHlKgtCtExmz6aYU8ImOtY+AXDLSFel5et/xSs0rvh8U3i1pjjrJQ5QANI89FpX7xxb3pRfHSA
-	MZT6hJr2ko89OaG8LkOR9/95QKOQOaf3xencBuficybvZXqlaoMqYNb6xhe+End9ISYJiSgIETjhf
-	c89YhIiXx1JLiNe2BmCy74nB5GnKfItp+qF78jHrEjNIhBsg7JTI15z85eVRGZZr1sXDWSu2zfUZm
-	AQLgtOow==;
+	bh=nHOetBiDekJwWPGeGPktITGpQNmqnuv3FWLxPY57pPs=; b=AwzfWC68mCFSqJ1ImEliRdWpWY
+	3nI+DcAdn1x68KuuYpwsY1aVqmFOeo6p/dRN06YKKCa46HOUvm4ZzB330wbOw30AaQfcw7A3ApCd2
+	IpYaWVxTjpiI5SpY45DgEIyvmdPhDRhEznIB39Q6L1WYaTHoCjPwtmNqZ8J1VKPhg48UxymocE7W7
+	tEQB8XtTtqjWX+hVAjsq+3Kjp9/rod/wI92RuKEWIuMdm2ti+TKQK7mGco3BvXguLvZcMzFveuz0z
+	ymeCJCkId+dgKgRnhEvJnCI0u66yWsollEmaZRcFpJx04kjnedj+W+7S8xp+E919tFewHrGOrSrGr
+	q7IjXxeQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xGHha-0000000Alzn-1A47;
-	Mon, 12 Oct 2026 15:12:34 +0000
-Received: from smtpout-02.galae.net ([185.246.84.56])
+	id 1xGJ0g-0000000Ayjm-0SSM;
+	Mon, 12 Oct 2026 16:36:22 +0000
+Received: from dilbert.mork.no ([2a01:4f9:c010:a439::d])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xGHhL-0000000AloZ-1TDB;
-	Mon, 12 Oct 2026 15:12:21 +0000
-Received: from smtpout-01.galae.net (smtpout-01.galae.net [212.83.139.233])
-	by smtpout-02.galae.net (Postfix) with ESMTPS id A5D541A11E9;
-	Mon, 12 Oct 2026 15:12:17 +0000 (UTC)
-Received: from mail.galae.net (mail.galae.net [212.83.136.155])
-	by smtpout-01.galae.net (Postfix) with ESMTPS id 71B30601A6;
-	Mon, 12 Oct 2026 15:12:17 +0000 (UTC)
-Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id AFF8411D70CD6;
-	Mon, 12 Oct 2026 17:12:11 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=dkim;
-	t=1791817935; h=from:subject:date:message-id:to:cc:mime-version:content-type:
-	 content-transfer-encoding:in-reply-to:references;
-	bh=P/Q4nFBYsii5RLmePNAPJ+fdVFCY7TJHBVJr5R7oOUU=;
-	b=QEw4ceLzWeB8qinUu3mC0wNsLS4KwoVzdMeNR1LuDZOqpeG4PwWut/oihiBkHGQnbMZxhl
-	OZp32Dlsdo/K2c61sEs2QPrVvPALXX8V2EcPeErhamuicCpfdVR20vOzkjxnlgKCaJU0Yr
-	exCKtpfmW3UbWGlASwH576cy09yT7rUudgRtXAeGCZNYkyHiGgHQwOTi9/PvsrPO8E6Lls
-	N2qpi/NxPYL9Cm/9PeF0JNTF7bdFq7AaEr90/6sAOncIfSe0wPcROPU/Prd7nCb56dQ7c9
-	rdyz+0CVJcpxqT964ronT75nEzdCaq9aXxGrcGzf01uBswPl3tFKxLGSMOIsqA==
-From: Kory Maincent <kory.maincent@bootlin.com>
-Date: Mon, 12 Oct 2026 17:11:03 +0200
-Subject: [PATCH RFC v3 8/8] drm/mediatek: Use dp_connector helpers to
- expose link training state
+	id 1xGJ0a-0000000AyhM-3wiJ;
+	Mon, 12 Oct 2026 16:36:20 +0000
+Authentication-Results: dilbert.mork.no;
+	dkim=pass (1024-bit key; secure) header.d=mork.no header.i=@mork.no header.a=rsa-sha256 header.s=b header.b=aCJvWEq3;
+	dkim-atps=neutral
+Received: from canardo.dyn.mork.no ([IPv6:2a01:799:10e2:d900:0:0:0:1])
+	(authenticated bits=0)
+	by dilbert.mork.no (8.18.2/8.18.2) with ESMTPSA id 69CGZWEc790305
+	(version=TLSv1.3 cipher=TLS_AES_256_GCM_SHA384 bits=256 verify=OK);
+	Mon, 12 Oct 2026 17:35:34 +0100
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=mork.no; s=b;
+	t=1791822932; bh=nHOetBiDekJwWPGeGPktITGpQNmqnuv3FWLxPY57pPs=;
+	h=From:To:Cc:Subject:References:Date:Message-ID:From;
+	b=aCJvWEq33ThyxGcgvykeF24eHjFSIln8357sLW74qJt9qmu21hG2zoZxYBn+Z2HE1
+	 /Z6xkZ3UOgcgYbpC8nE8k6rPREVBMYkx0lf9MMfUqsBuIf5BN2DwcnZ8BLRRKYUdJV
+	 1KRZBb0ul1kl22HnJAox9twwuc7POS/pmTHIrf0g=
+Received: from miraculix.mork.no ([IPv6:2a01:799:10e2:d90a:6f50:7559:681d:630c])
+	(authenticated bits=0)
+	by canardo.dyn.mork.no (8.18.2/8.18.2) with ESMTPSA id 69CGZWcL894584
+	(version=TLSv1.3 cipher=TLS_AES_256_GCM_SHA384 bits=256 verify=OK);
+	Mon, 12 Oct 2026 18:35:32 +0200
+Received: (nullmailer pid 905597 invoked by uid 1000);
+	Mon, 12 Oct 2026 16:35:32 -0000
+From: =?utf-8?Q?Bj=C3=B8rn_Mork?= <bjorn@mork.no>
+To: Vladislav Karmanov <vladislav.karmanov.dev@gmail.com>
+Cc: netdev@vger.kernel.org, andrew@lunn.ch, daniel@makrotopia.org,
+        dqfext@gmail.com, SkyLake.Huang@mediatek.com, hkallweit1@gmail.com,
+        linux@armlinux.org.uk, davem@davemloft.net, edumazet@google.com,
+        kuba@kernel.org, pabeni@redhat.com, matthias.bgg@gmail.com,
+        angelogioacchino.delregno@collabora.com, chester.a.unal@arinc9.com,
+        sean.wang@mediatek.com, olteanv@gmail.com, yangshiji66@outlook.com,
+        linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+        linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH net v3] net: phy: mediatek-ge: disable EEE on the MT7530
+ PHY
+In-Reply-To: <20260904202800.3410838-1-vladislav.karmanov.dev@gmail.com>
+	(Vladislav Karmanov's message of "Fri, 4 Sep 2026 23:28:00 +0300")
+Organization: m
+References: <20260904202800.3410838-1-vladislav.karmanov.dev@gmail.com>
+Date: Mon, 12 Oct 2026 18:35:32 +0200
+Message-ID: <87cxteri5n.fsf@miraculix.mork.no>
+User-Agent: Gnus/5.13 (Gnus v5.13)
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20261012-feat_link_cap-v3-8-7517f4aba0f3@bootlin.com>
-References: <20261012-feat_link_cap-v3-0-7517f4aba0f3@bootlin.com>
-In-Reply-To: <20261012-feat_link_cap-v3-0-7517f4aba0f3@bootlin.com>
-To: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
- David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
- Jani Nikula <jani.nikula@linux.intel.com>, 
- Rodrigo Vivi <rodrigo.vivi@intel.com>, 
- Joonas Lahtinen <joonas.lahtinen@linux.intel.com>, 
- Tvrtko Ursulin <tursulin@ursulin.net>, 
- Andrzej Hajda <andrzej.hajda@intel.com>, 
- Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, 
- Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, 
- Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
- Luca Ceresoli <luca.ceresoli@bootlin.com>, 
- Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
- Philipp Zabel <p.zabel@pengutronix.de>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Dmitry Baryshkov <lumag@kernel.org>, Daniel Stone <daniels@collabora.com>
-Cc: Thomas Petazzoni <thomas.petazzoni@bootlin.com>, 
- Mark Yacoub <markyacoub@google.com>, Sean Paul <seanpaul@google.com>, 
- Manasi Navare <navaremanasi@google.com>, 
- Drew Davenport <ddavenport@google.com>, 
- Louis Chauvet <louis.chauvet@bootlin.com>, dri-devel@lists.freedesktop.org, 
- linux-kernel@vger.kernel.org, intel-gfx@lists.freedesktop.org, 
- intel-xe@lists.freedesktop.org, linux-mediatek@lists.infradead.org, 
- linux-arm-kernel@lists.infradead.org, 
- Kory Maincent <kory.maincent@bootlin.com>
-X-Mailer: b4 0.16.1-dev-17221
-X-Last-TLS-Session-Version: TLSv1.3
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-Virus-Scanned: clamav-milter 1.4.3 at canardo.mork.no
+X-Virus-Status: Clean
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261012_081219_735250_4921782D 
-X-CRM114-Status: GOOD (  23.07  )
+X-CRM114-CacheID: sfid-20261012_093617_614221_DDBE7594 
+X-CRM114-Status: GOOD (  21.98  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,198 +88,164 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Adopt the DRM core DisplayPort helpers by setting DRM_BRIDGE_OP_DP and
-populating the bridge dp_link_caps at probe time. Report the sink
-capabilities on hotplug, reset them on disconnect, and report the link
-parameters once link training succeeds.
+Vladislav Karmanov <vladislav.karmanov.dev@gmail.com> writes:
 
-Signed-off-by: Kory Maincent <kory.maincent@bootlin.com>
----
-Not tested. I believed I had a board with this device, but it actually uses
-an anx7625 bridge. I'm unable to test it; it would be appreciated if
-someone else could, so the change isn't dropped.
+> The MT7530 internal GE PHY advertises EEE by hardware default, but its
+> EEE support is defective: with EEE advertised, some link partners fail
+> to establish a stable link. On a 2-pair (4-wire) cable where both ends
+> advertise gigabit, 1000BASE-T training cannot succeed, and instead of
+> falling back to 100 Mbps the port loops, so no link or DHCP lease is
+> ever obtained.
 
-Changes in v3:
-- Sync and report sink capabilities from the HPD thread for DisplayPort,
-  or in atomic_enable for eDP. Reset them on unplug, or atomic disable
-  and only report link parameters after successful training.
-- Add connection_mutex lock for DisplayPort in the IRQ thread.
+I realize that I'm too late at the party here, but I still want to state
+this for the record:
 
-Changes in v2:
-- Remove voltage swing and pre emphasis properties.
----
- drivers/gpu/drm/mediatek/mtk_dp.c | 79 +++++++++++++++++++++++++++++++++++++--
- 1 file changed, 75 insertions(+), 4 deletions(-)
+I just tried to reproduce this bug on a Zyxel NR7101, using a cable with
+pair 4 cut, connecting to the I219-LM controller in my laptop.  Without
+success.
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_dp.c b/drivers/gpu/drm/mediatek/mtk_dp.c
-index f656b85b84212..2e2596eaa342e 100644
---- a/drivers/gpu/drm/mediatek/mtk_dp.c
-+++ b/drivers/gpu/drm/mediatek/mtk_dp.c
-@@ -1812,6 +1812,35 @@ static void mtk_dp_train_change_mode(struct mtk_dp *mtk_dp)
- 	mtk_dp_reset_swing_pre_emphasis(mtk_dp);
- }
- 
-+static void _mtk_dp_report_link_train(struct mtk_dp *mtk_dp)
-+{
-+	u32 rate, nlanes;
-+	bool dsc = false;
-+
-+	rate = drm_dp_bw_code_to_link_rate(mtk_dp->train_info.link_rate);
-+	nlanes = mtk_dp->train_info.lane_count;
-+
-+	drm_dp_set_cur_link_params(mtk_dp->conn, rate, nlanes, dsc);
-+}
-+
-+static void mtk_dp_report_link_train(struct mtk_dp *mtk_dp)
-+{
-+	struct drm_modeset_lock *lock;
-+	int ret;
-+
-+	if (!mtk_dp->conn)
-+		return;
-+
-+	lock = &mtk_dp->conn->dev->mode_config.connection_mutex;
-+	ret = drm_modeset_lock_single_interruptible(lock);
-+	if (ret)
-+		return;
-+
-+	_mtk_dp_report_link_train(mtk_dp);
-+
-+	drm_modeset_unlock(lock);
-+}
-+
- static int mtk_dp_training(struct mtk_dp *mtk_dp)
- {
- 	int ret;
-@@ -2015,6 +2044,8 @@ static irqreturn_t mtk_dp_hpd_event_thread(int hpd, void *dev)
- 			ret = mtk_dp_training(mtk_dp);
- 			if (ret)
- 				drm_err(mtk_dp->drm_dev, "Training failed, %d\n", ret);
-+			else
-+				mtk_dp_report_link_train(mtk_dp);
- 
- 			mtk_dp->enabled = true;
- 		}
-@@ -2145,9 +2176,12 @@ mtk_dp_bdg_detect(struct drm_bridge *bridge, struct drm_connector *connector)
- 	struct mtk_dp *mtk_dp = mtk_dp_from_bridge(bridge);
- 	enum drm_connector_status ret = connector_status_disconnected;
- 	bool enabled = mtk_dp->enabled;
-+	int err;
- 
--	if (!mtk_dp->train_info.cable_plugged_in)
-+	if (!mtk_dp->train_info.cable_plugged_in) {
-+		drm_dp_sink_reset_caps(connector);
- 		return ret;
-+	}
- 
- 	if (!enabled)
- 		mtk_dp_aux_panel_poweron(mtk_dp, true);
-@@ -2160,9 +2194,18 @@ mtk_dp_bdg_detect(struct drm_bridge *bridge, struct drm_connector *connector)
- 	 * whether we connect to a sink device.
- 	 */
- 
--	if (drm_dp_read_sink_count(&mtk_dp->aux) > 0)
-+	if (drm_dp_read_sink_count(&mtk_dp->aux) > 0) {
- 		ret = connector_status_connected;
- 
-+		err = drm_dp_sink_sync_caps(connector, &mtk_dp->aux, NULL);
-+		if (err)
-+			drm_dbg_kms(mtk_dp->aux.drm_dev,
-+				    "%s: error sink caps synchronisation (%d)\n",
-+				    mtk_dp->aux.name, err);
-+	} else {
-+		drm_dp_sink_reset_caps(connector);
-+	}
-+
- 	if (!enabled)
- 		mtk_dp_aux_panel_poweron(mtk_dp, false);
- 
-@@ -2390,12 +2433,20 @@ static void mtk_dp_bridge_atomic_enable(struct drm_bridge *bridge,
- 	if (mtk_dp->data->bridge_type == DRM_MODE_CONNECTOR_eDP) {
- 		mtk_dp_aux_panel_poweron(mtk_dp, true);
- 
-+		ret = drm_dp_sink_sync_caps(mtk_dp->conn, &mtk_dp->aux, NULL);
-+		if (ret)
-+			drm_dbg_kms(mtk_dp->aux.drm_dev,
-+				    "%s: error sink caps synchronisation (%d)\n",
-+				    mtk_dp->aux.name, ret);
-+
- 		/* Training */
- 		ret = mtk_dp_training(mtk_dp);
- 		if (ret) {
- 			drm_err(mtk_dp->drm_dev, "Training failed, %d\n", ret);
- 			goto power_off_aux;
- 		}
-+
-+		_mtk_dp_report_link_train(mtk_dp);
- 	}
- 
- 	ret = mtk_dp_video_config(mtk_dp);
-@@ -2435,6 +2486,7 @@ static void mtk_dp_bridge_atomic_disable(struct drm_bridge *bridge,
- 	if (mtk_dp->data->bridge_type == DRM_MODE_CONNECTOR_eDP) {
- 		mtk_dp->enabled = false;
- 		mtk_dp_aux_panel_poweron(mtk_dp, false);
-+		drm_dp_sink_reset_caps(mtk_dp->conn);
- 	}
- 
- 	mtk_dp_update_plugged_status(mtk_dp);
-@@ -2740,11 +2792,14 @@ static int mtk_dp_edp_link_panel(struct drm_dp_aux *mtk_aux)
- 	return 0;
- }
- 
-+static int mtk_dp_rates[] = {162000, 270000, 540000, 810000};
-+
- static int mtk_dp_probe(struct platform_device *pdev)
- {
-+	struct drm_connector_dp_link_caps *source_caps;
- 	struct mtk_dp *mtk_dp;
- 	struct device *dev = &pdev->dev;
--	int ret;
-+	int ret, i, max_rate;
- 
- 	mtk_dp = devm_drm_bridge_alloc(dev, struct mtk_dp, bridge,
- 				       &mtk_dp_bridge_funcs);
-@@ -2758,6 +2813,20 @@ static int mtk_dp_probe(struct platform_device *pdev)
- 	if (ret)
- 		return dev_err_probe(dev, ret, "Failed to parse dt\n");
- 
-+	source_caps = devm_kzalloc(dev, sizeof(*source_caps), GFP_KERNEL);
-+	if (!source_caps)
-+		return -ENOMEM;
-+
-+	source_caps->nlanes = mtk_dp->max_lanes;
-+	source_caps->link_rates = mtk_dp_rates;
-+
-+	max_rate = drm_dp_bw_code_to_link_rate(mtk_dp->max_linkrate);
-+	for (i = 0; i < ARRAY_SIZE(mtk_dp_rates); i++)
-+		if (mtk_dp_rates[i] > max_rate)
-+			break;
-+
-+	source_caps->nlink_rates = i;
-+
- 	/*
- 	 * Request the interrupt and install service routine only if we are
- 	 * on full DisplayPort.
-@@ -2809,6 +2878,8 @@ static int mtk_dp_probe(struct platform_device *pdev)
- 
- 	mtk_dp->bridge.of_node = dev->of_node;
- 	mtk_dp->bridge.type = mtk_dp->data->bridge_type;
-+	mtk_dp->bridge.dp_link_caps = source_caps;
-+	mtk_dp->bridge.ops = DRM_BRIDGE_OP_DP;
- 
- 	if (mtk_dp->bridge.type == DRM_MODE_CONNECTOR_eDP) {
- 		/*
-@@ -2849,7 +2920,7 @@ static int mtk_dp_probe(struct platform_device *pdev)
- 			}
- 		}
- 	} else {
--		mtk_dp->bridge.ops = DRM_BRIDGE_OP_DETECT |
-+		mtk_dp->bridge.ops |= DRM_BRIDGE_OP_DETECT |
- 				     DRM_BRIDGE_OP_EDID | DRM_BRIDGE_OP_HPD;
- 		ret = devm_drm_bridge_add(dev, &mtk_dp->bridge);
- 		if (ret)
+EEE enabled or not does not make any difference.  The link is negotiated
+as 100Mb/s as expected, and it is completely stable.  Absolutely no
+issues observed.  I even added a .link_change_notify callback with a
+counter and a printk to the phy driver to make sure I didn't miss any
+flapping.
 
--- 
-2.43.0
+MT7621 side:
 
+root@OpenWrt:~# ethtool --show-eee lan
+EEE settings for lan:
+        EEE status: enabled - active
+        Tx LPI: 30 (us)
+        Supported EEE link modes:  100baseT/Full
+                                   1000baseT/Full
+        Advertised EEE link modes:  100baseT/Full
+                                    1000baseT/Full
+        Link partner advertised EEE link modes:  100baseT/Full
+                                                 1000baseT/Full
+root@OpenWrt:~# ethtool lan
+Settings for lan:
+        Supported ports: [ TP    MII ]
+        Supported link modes:   10baseT/Half 10baseT/Full
+                                100baseT/Half 100baseT/Full
+                                1000baseT/Full
+        Supported pause frame use: Symmetric Receive-only
+        Supports auto-negotiation: Yes
+        Supported FEC modes: Not reported
+        Advertised link modes:  10baseT/Half 10baseT/Full
+                                100baseT/Half 100baseT/Full
+                                1000baseT/Full
+        Advertised pause frame use: Symmetric Receive-only
+        Advertised auto-negotiation: Yes
+        Advertised FEC modes: Not reported
+        Link partner advertised link modes:  10baseT/Half 10baseT/Full
+                                             100baseT/Half 100baseT/Full
+        Link partner advertised pause frame use: No
+        Link partner advertised auto-negotiation: Yes
+        Link partner advertised FEC modes: Not reported
+        Speed: 100Mb/s
+        Duplex: Full
+        Auto-negotiation: on
+        master-slave cfg: preferred master
+        master-slave status: master
+        Port: Twisted Pair
+        PHYAD: 2
+        Transceiver: external
+        MDI-X: Unknown
+        Supports Wake-on: d
+        Wake-on: d
+        Link detected: yes
+
+I219-LM side:
+
+root@miraculix:/tmp# ethtool --show-eee eth0
+EEE settings for eth0:
+        EEE status: enabled - active
+        Tx LPI: 17 (us)
+        Supported EEE link modes:  100baseT/Full
+                                   1000baseT/Full
+        Advertised EEE link modes:  100baseT/Full
+                                    1000baseT/Full
+        Link partner advertised EEE link modes:  100baseT/Full
+                                                 1000baseT/Full
+root@miraculix:/tmp# ethtool eth0
+Settings for eth0:
+        Supported ports: [ TP ]
+        Supported link modes:   10baseT/Half 10baseT/Full
+                                100baseT/Half 100baseT/Full
+                                1000baseT/Full
+        Supported pause frame use: Symmetric Receive-only
+        Supports auto-negotiation: Yes
+        Supported FEC modes: Not reported
+        Advertised link modes:  10baseT/Half 10baseT/Full
+                                100baseT/Half 100baseT/Full
+                                1000baseT/Full
+        Advertised pause frame use: Symmetric Receive-only
+        Advertised auto-negotiation: Yes
+        Advertised FEC modes: Not reported
+        Link partner advertised link modes:  10baseT/Half 10baseT/Full
+                                             100baseT/Half 100baseT/Full
+        Link partner advertised pause frame use: Symmetric Receive-only
+        Link partner advertised auto-negotiation: Yes
+        Link partner advertised FEC modes: Not reported
+        Speed: 100Mb/s
+        Duplex: Full
+        Auto-negotiation: on
+        Port: Twisted Pair
+        PHYAD: 2
+        Transceiver: internal
+        MDI-X: on (auto)
+        Supports Wake-on: pumbg
+        Wake-on: d
+        Current message level: 0x00000007 (7)
+                               drv probe link
+        Link detected: yes
+
+
+So now I am curious to know:  What am I doing wrong here?
+
+I primarily did this test because I wanted to implement a smarter
+workaround, without forcibly disabling EEE for everyone based on one
+pretty obscure configuration.  But that's hard without being able to
+reproduce the problem.
+
+So let me ask you, who seem to be able to reproduce it:  Why is it
+necessary to block EEE for everyone? Why can't you disable EEE by
+default, but let me enable it on my systems - where I know it works?
+
+Or even better:  Why can't you detect the link flaps and only disable
+EEE when required? (this was my plan)
+
+FWIW, I have been using EEE on MT7621 devices for years without ever
+noticing the claimed issue.  I have heard the rumours that the SoC is
+supposed to have occasional link issues, and that they are related to
+EEE.  But reproducing the issue has so far been impossible.
+
+> MediaTek confirms the hardware is the root cause (Landen
+> Chao, 2021): "EEE of the 10-year-old MT7530 internal gephy has many IOT
+> problems, so it is recommended to disable its EEE."
+
+This is BS. I don't doubt that there are bugs in the MT7530 gephy. But
+the EEE feature of the MT7530 internal gephy works fine for me.  And
+always has.
+
+Vendors have no interest in making older hardware work. There is no
+reason to ask them or trust them when it comes to hardware they don't
+sell anymore.
+
+We can do better. And we have, by for example bringing DSA to the
+MT7621. Please, let's try to make even old hardware work as good as
+possible.  Disabling features is not the way to go.
+
+> Auto-negotiation then falls back to a stable 100 Mbps link instead of
+> looping at gigabit. Tested on ASUS RT-AX53U (MT7621): with a 2-pair
+> cable on the WAN port, a single clean 100 Mbps link comes up and a
+> DHCP lease is obtained, where the unpatched driver loops.
+
+And no I've tested the same configuration with EEE enabled, and it
+doesn't loop either.
+
+Where does that put us?
+
+
+Bj=C3=B8rn
 
