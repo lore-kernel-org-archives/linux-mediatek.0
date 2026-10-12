@@ -4,104 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 401DDCA9EC5
-	for <linux-mediatek@archiver.kernel.org>; Mon, 12 Oct 2026 14:56:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D1062CA9EC5
+	for <linux-mediatek@archiver.kernel.org>; Mon, 12 Oct 2026 15:11:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
-	Message-ID:Date:From:MIME-Version:Reply-To:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=Kb5s/1sQG9XYIwryOKTCf1h4HlcDSiYJw6L+9ETpVF8=; b=Y84jYITKazPFAu4a2My19W/fWE
-	ROKvM0816qChnqZwMZGdRyVrkgVicZpJ1WI3bRzT5zM9c3vcFaOrZ7sXde+Fnew6STJwM7EH5biFF
-	Fu9F2vSztZn/plPGNlfEZpdFXCoNW+/Q9jVnBHVliqjzdYFDgkdk6tn9FiKitiAjPej/5zwPFsViw
-	sEPB6hJifY93YP1fp+4BprmaEp9auKDT/t/c5r3ons7sNJ2V8YaHPpC9AV0UmpJKD5dqMWLuH0kTs
-	GHopnTDBsAhJfGJv2DPBChSZGym8VRKijR9flEcMVtyyKZVV2XLg5sH3p+A6tBtF5bNHAINOde5fV
-	AnWNnqrg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
+	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=GGIXi1kV+kCR2h5S/gUS/WOZ0+fEirhDT48WZLYxblo=; b=t+K/krSDMtKzvM
+	L28aM8iCc09DgNbnI8zbXQNtAjJEtEQGBkzGxE5K+kR3wo6YGaLHwCTt2aCRY6himOGeW4CyfZRRi
+	oNUeQhc3M3udG8c32EbCHSW1zvNjhrvqJ32urfFJBYw8HBIwWwUNxvuAR/Vu6CyOD+YbC3QQ5bBFX
+	HTDmnHYGmiwZ5f4+9JeadAg6MG0EtDwk+uddAYFiF15mE1xMeTYMu612yGF+AJ6dIUTyb0juBv0aP
+	pbK6uFmO/u2xzNAKn/1eUVbc8te/bMhjo/ShwVKrG2IBkJliQwYeEXnNBblfOMzuxD3w9Mg1E4hCA
+	fskqxpTYewidQfpQMR3Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xGHS1-0000000Ajld-0RFh;
-	Mon, 12 Oct 2026 14:56:29 +0000
-Received: from mail-ed1-x52d.google.com ([2a00:1450:4864:20::52d])
+	id 1xGHgl-0000000AlWR-0Tys;
+	Mon, 12 Oct 2026 15:11:43 +0000
+Received: from smtpout-02.galae.net ([185.246.84.56])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xGHRy-0000000Ajl7-1COu
+	id 1xGHgh-0000000AlUR-05xa
 	for linux-mediatek@lists.infradead.org;
-	Mon, 12 Oct 2026 14:56:27 +0000
-Received: by mail-ed1-x52d.google.com with SMTP id 4fb4d7f45d1cf-6afa651700eso2907318a12.2
-        for <linux-mediatek@lists.infradead.org>; Mon, 12 Oct 2026 07:56:25 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1791816984; cv=none;
-        d=google.com; s=arc-20260327;
-        b=aRXPurtZdFjlNugSmZgsQA8g0S4zsqvCnJ6uXImHnFvXF21lArUCiEG3DCejWy5/SH
-         U7zacer3b7ytjocBil8jK/n192XWcCbWKbohOUkq0hr11Cshg+5moXQ+nOA8zgsYjChQ
-         hL8fHO4fVeqZgChPYNngm8YzCHc/V99WgWhtTQbgQwG/0EkxxNv8P0F1UnHVnx4XuORG
-         ClpjIsQclgObgDQCN2UChTTWgpO1DhZ6UZaQECOwo18L2TgzKe11ws+c2dwIKc4ldK6D
-         B5VBZr/XOw4QjMjMcPhmpqizfPmoCQ98UJvOwYh1CsrzPPsdYMzkvJwwVNNuI5Jy5pKN
-         CCvA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20260327;
-        h=cc:to:subject:message-id:date:from:mime-version:dkim-signature;
-        bh=Kb5s/1sQG9XYIwryOKTCf1h4HlcDSiYJw6L+9ETpVF8=;
-        fh=/acI75oUyf3hxOWF84TIewT++qCuL8SD3mTY18fsTZU=;
-        b=gcAuMtFRJ+v21tgTKuZowjzersc2Z2QqrPJz5nV6Z6nUpYB+0ODsv4MyqpnxbZXLJA
-         hB61TAijVnd0jZytEUIS+i5s7Y3FNZnJrkf7SsZlTR9GluUmaz+E7xMTRIKxaq6oQTwl
-         TMHjOeP9vmDHFTnWMz/rmOCMG2w4TIOXVDEOaYwOOTe0c+KH005ClI/AvkgJHtVtHQOw
-         VeXiT4Ech7XO6n3Wot8TwjQ0eySf1zlaTKQXRR1GKpCimFaFiF4UD6H2z6WsMob9Qqc0
-         8EMmcHTcYHfGBpm3gyx4+WmPoDJRdO/IKwEyFEw41NVrd2yBdZgcETFBfr/J/QhBsF8g
-         eiZA==;
-        darn=lists.infradead.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1791816984; x=1792421784; darn=lists.infradead.org;
-        h=content-type:cc:to:subject:message-id:date:from:mime-version:from
-         :to:cc:subject:date:message-id:reply-to:content-type;
-        bh=Kb5s/1sQG9XYIwryOKTCf1h4HlcDSiYJw6L+9ETpVF8=;
-        b=cQ8tI8bHS707eiJAjHBCcXy+1sWLGo1Fk0Q90t0ENcAkgRKDy2kd2vGD97+qn5GCAD
-         kVL6axqoohDFyHxA9ZMBRqLaMKheP4ZUdIpm6g5taZW2tj1LsXnhJ640gP7pQILqBGY4
-         pEs1FfCD8/TxQ0s1loyVelqkPOLQvQKmu3Pt5SRDni7v5YYfamTtfaA0Wc4Nm8hFIEAa
-         VLDsLyTOC750G53gl3PjZeZde0gFqsIBhW90LD/K1I3TxkIOANgve/87xnSSL5MMb1tc
-         phPpfvetwkesTlVhtwssiywxEq2wvegEpfFJ38EcbRWxc8Yl5M8DFEVyBRXQ94o42SfD
-         JFDg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1791816984; x=1792421784;
-        h=content-type:cc:to:subject:message-id:date:from:mime-version
-         :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to:content-type;
-        bh=Kb5s/1sQG9XYIwryOKTCf1h4HlcDSiYJw6L+9ETpVF8=;
-        b=ejf9OwEEf7jIxHXcXnsV632QaYDG5+qCWYsjLH+EcnbcqT6vKKp0vfvSXoxafgU3XE
-         m+dTnaIHKvev56WQ9G+9bNf+qU6piW+KPsXwx6Ttuw2YeXxbH0NYU6ceDzDSZIvgkpaW
-         Cp3ZiCFyNzT9b2NOXY+NDJm5ADf1KL4dvdcuGjAtU5hCUSblpjc0pdH1ipUP90rF2QcO
-         KIAojmidtk5EBqkZ+saBb5FAK31q+V5xSlV4bBH+pzIvN9REI/VN63qZlH6xQIFxdAJJ
-         UFDoeLH2mNGTkmPgjos2u9mvm7IjY0to9s1rSlqv0MdKS1FNR3wXIn9JD/gkkTY7QK2H
-         +dRw==
-X-Forwarded-Encrypted: i=1; AKwUvByO+/FNo8/A7Poz53yeflh4gAKpfxOPQL057Q9Ett1GHwE+68MqT4l/jXsJ7Idb5PJsT7U30S+b6rwAgXmYDg==@lists.infradead.org
-X-Gm-Message-State: AFq9FYLv1p6rvoJpAF2CHQoPKxqgtLXR/oyyh1P6ljspoa5SN9LurWIf
-	nKDRC/TwE8cbOYWBpmu8bHWcgbjNQ0wyBwcZmKlbTIT6+glizarK7iEM1la7az5qm+jRHD1lMVF
-	B5YynTKrcyPx97c+crKUMsxMag68R1UM=
-X-Gm-Gg: AYBFou3jvlQUQqEMsU/y3qkLcBtibS/T/BmHlq25Z2Q6EPVD9HE6gEZI0l7F9n2hia8
-	KGe9dFmZJI43Pb+uuGjXUN7s25W3WiE5FAktOGYeMn2mC9zdfVyOZMuWcY2Pm4KE19+4VUVSaOk
-	bxJAx8fUu45vNj2SCQRuE9603+q1JHi0UWOIEAfzRh0nvqhgKZPtNdsYDX/FoV5x+FDyf7T9xPx
-	+Zn4n7r7WkwDaYn/XuRgg4zDHCOkmSLNCrfbwlSqFxvZvhiWUjEuyZDAhrA+HOsB+703YUfyP+g
-	R2zUMLkV9Oc8NRHaNM5YXWRtFmyRnX/8hdU3F6CK9eBP2HQldsh4xVeYQnQ57SlttJfVLh4DuHd
-	aCX9y7z1cGQS1
-X-Received: by 2002:a05:6402:354b:b0:6ae:550e:5a04 with SMTP id
- 4fb4d7f45d1cf-6b17c267f12mr7897936a12.30.1791816983901; Mon, 12 Oct 2026
- 07:56:23 -0700 (PDT)
+	Mon, 12 Oct 2026 15:11:41 +0000
+Received: from smtpout-01.galae.net (smtpout-01.galae.net [212.83.139.233])
+	by smtpout-02.galae.net (Postfix) with ESMTPS id CDCD81A11E9;
+	Mon, 12 Oct 2026 15:11:30 +0000 (UTC)
+Received: from mail.galae.net (mail.galae.net [212.83.136.155])
+	by smtpout-01.galae.net (Postfix) with ESMTPS id 9A0CD601A6;
+	Mon, 12 Oct 2026 15:11:30 +0000 (UTC)
+Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id B398E11D7012D;
+	Mon, 12 Oct 2026 17:11:14 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=dkim;
+	t=1791817884; h=from:subject:date:message-id:to:cc:mime-version:content-type:
+	 content-transfer-encoding; bh=GGIXi1kV+kCR2h5S/gUS/WOZ0+fEirhDT48WZLYxblo=;
+	b=aHgUcb7RjoE/3nkLUjCiPBxyqhUMjDqJPhCa+pN1b8fpTJD/gqSpx+YouaDkYQA/mTax/5
+	R0+c3I8S9sYnzcBIxbWGuvToSypTC1NNzkvSMtbkKE1mhJ6V2+n2DwozTaXHcQH7yYzBxV
+	29jZ6mJhfARl0PQTBVOBsJCpl1IMd4d1vQjlE911WlQchP5bj5ZIH9RcZolFykQoL+PKrJ
+	5dBcEpD5k3Cu+76dmJkIckEM2wvQQgSali2uYyBX8veRRztGpC+dJEgQQg3GA2kltLTsfz
+	YxUR7a09D11CyahwWY9ML4kF82hL+VG5DqE+T05Cyp/JahZaAAe3nRa7KbPTow==
+From: Kory Maincent <kory.maincent@bootlin.com>
+Subject: [PATCH RFC v3 0/8] Add support for DisplayPort link training
+ information report
+Date: Mon, 12 Oct 2026 17:10:55 +0200
+Message-Id: <20261012-feat_link_cap-v3-0-7517f4aba0f3@bootlin.com>
 MIME-Version: 1.0
-From: =?UTF-8?B?0JjQu9GM0Y8g0KjQuNC00LvQvtCy0YHQutC40Lk=?= <shidlovskiyilya@gmail.com>
-Date: Mon, 12 Oct 2026 17:56:12 +0300
-X-Gm-Features: AclHuK_V_Gr_BzvbzmCXZnPpQdlQCrW27JXkLvyBO5_v8U3WJkVXi-60BRN7WX4
-Message-ID: <CAGjg407dj0uZ0rCrL4G=PDkQv4-QC_og9Eeg7ewWzxqBvU4b2w@mail.gmail.com>
-Subject: [REGRESSION] 7.3: mt7925e hangs on hibernation restore; fix
- c182bfe944eb only queued for 7.4
-To: nbd@nbd.name, johannes@sipsolutions.net
-Cc: lorenzo@kernel.org, ck.chang@mediatek.com, eason.lai@mediatek.com, 
-	emery.hsin@mediatek.com, sean.wang@mediatek.com, 
-	linux-wireless@vger.kernel.org, linux-mediatek@lists.infradead.org, 
-	regressions@lists.linux.dev
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+X-B4-Tracking: v=1; b=H4sIAH/4zGoC/2WNQQrCMBREr1L+2kjyW6JxJQgewK1ISZNfG9Smp
+ CUopXc3ZCPqcmZ4b2YYKTgaYVfMECi60fk+hXJVgOl0fyXmbMqAHCVHlKwlPdV3199qoweG3DS
+ NbEthKw6JGQK17pl9ZzgdD3BJZefGyYdX/ogiT1lXcfWji4JxtuFS0VYoZQj3jfdTmtfGP7Ir4
+ oeX4o/HxOvSkqkMR23VN78syxv9+9NJ8QAAAA==
+X-Change-ID: 20260226-feat_link_cap-20cbb6f31d40
+To: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
+ David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
+ Jani Nikula <jani.nikula@linux.intel.com>, 
+ Rodrigo Vivi <rodrigo.vivi@intel.com>, 
+ Joonas Lahtinen <joonas.lahtinen@linux.intel.com>, 
+ Tvrtko Ursulin <tursulin@ursulin.net>, 
+ Andrzej Hajda <andrzej.hajda@intel.com>, 
+ Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, 
+ Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, 
+ Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
+ Luca Ceresoli <luca.ceresoli@bootlin.com>, 
+ Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
+ Philipp Zabel <p.zabel@pengutronix.de>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Dmitry Baryshkov <lumag@kernel.org>, Daniel Stone <daniels@collabora.com>
+Cc: Thomas Petazzoni <thomas.petazzoni@bootlin.com>, 
+ Mark Yacoub <markyacoub@google.com>, Sean Paul <seanpaul@google.com>, 
+ Manasi Navare <navaremanasi@google.com>, 
+ Drew Davenport <ddavenport@google.com>, 
+ Louis Chauvet <louis.chauvet@bootlin.com>, dri-devel@lists.freedesktop.org, 
+ linux-kernel@vger.kernel.org, intel-gfx@lists.freedesktop.org, 
+ intel-xe@lists.freedesktop.org, linux-mediatek@lists.infradead.org, 
+ linux-arm-kernel@lists.infradead.org, 
+ Kory Maincent <kory.maincent@bootlin.com>
+X-Mailer: b4 0.16.1-dev-17221
+X-Last-TLS-Session-Version: TLSv1.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261012_075626_342162_77C7D056 
-X-CRM114-Status: UNSURE (   7.41  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20261012_081139_333027_A89995D3 
+X-CRM114-Status: GOOD (  15.51  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -116,43 +101,114 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Felix, Johannes,
+DisplayPort link training negotiates the physical-layer parameters needed
+for a reliable connection: lane count, link rate, and optionally Display
+Stream Compression (DSC). Currently, each driver exposes this state in
+its own way, often through driver-specific debugfs entries, with no
+standard interface for userspace diagnostic and monitoring tools.
 
-commit c4edf9e3e0e5 ("wifi: mt76: mt7925: replace shared rx irq masks
-with per-chip definitions"), merged for v7.3-rc1, breaks resume from
-hibernation on MT7925 (PCIe). After the image is restored, the chip
-reset path ends up on the MCU_WA NAPI, which is never set up on
-MT7925, and the machine hangs hard (no console output, only a power-off
-helps). Bert Karwatzki reported the same problem in August.
+This series introduces generic helpers, for exposing DP link capabilities
+and state as standard sysfs entries.
 
-The fix is already applied:
+The aim of such development is to guide users to select the most suitable
+DisplayPort connector for their needs. For example, if you have a USB-C
+hub with lesser capabilities than your computer’s native DisplayPort
+connector (such as HBR2 versus HBR3 support), the system could recommend
+connecting high-resolution displays directly to the computer’s port
+instead of through the hub to ensure optimal performance.
 
-c182bfe944eb ("wifi: mt76: mt7925: fix reset panic caused by the WM2
-rx irq mask")
+The new drm_dp_source_set_caps and drm_dp_sink_set_caps helper expose
+source and sink training capabilities to userspace via sysfs attributes
+under dp_link. Finally drm_dp_set_cur_link_params helper is provided to
+report current link information at runtime.
 
-but only in wireless-next. As things stand, v7.3 will be released with
-this regression and the fix will only arrive with 7.4-rc1. It is a small
-fix for a regression introduced in this cycle and already carries a
-Fixes: tag. Could it go to Linus through the wireless tree for v7.3? If
-that is too late, please make sure it is picked up for 7.3.y stable.
+Three drivers are updated as reference implementations: i915 (direct
+connector path), ANX7625 and MediaTek (via the bridge connector framework
+using a new DRM_BRIDGE_OP_DP flag).
 
-Hardware:
-Gigabyte Z890M AORUS ELITE WIFI7 ICE, BIOS F21
-MT7925 [14c3:7925], subsystem [105b:e112], ASIC revision 79250000
-Ubuntu 26.10 kernel 7.3.0-9-generic (based on v7.3-rc6)
+Here is a sysfs example:
 
-Without the fix, every hibernation restore hangs. I narrowed it down by
-unbinding groups of drivers before hibernating: only mt7925e triggers
-it, and the 7.0 kernel is fine on the same machine. With c182bfe944eb
-applied on top of 7.3.0-9 (built as an out-of-tree module), hibernation
-and resume work again, including resume after booting another OS in
-between.
+cur_link_info_dsc            sink_link_caps_nlanes
+cur_link_info_link_rate      source_link_caps_dsc
+cur_link_info_nlanes         source_link_caps_link_rates
+sink_link_caps_dsc           source_link_caps_nlanes
+sink_link_caps_link_rates
 
-Tested-by: Ilya Shidlovskiy <shidlovskiyilya@gmail.com>
+1620000 2160000 2700000 3240000 4320000 5400000
 
-#regzbot introduced: c4edf9e3e0e5
-#regzbot fix: c182bfe944eb
+1620000 2700000 5400000 10000000 20000000
 
-Thanks,
-Ilya
+5400000
+
+This series is rebased on top of drm-misc and may conflict with the
+current state of the drm i915 tree. Which tree should pick this up,
+given that it mixes core development with driver changes?
+
+Patch 1,2: Move helpers out of i915
+Patch 3: Introduce DisplayPort link training capabilities and state helpers
+Patch 4: Read i915 DSC capabilities in any case
+Patch 5  Use dp_connector helpers in i915 to expose link training state
+Patch 6: Introduce DRM_BRIDGE_OP_DP and wire bridge connectors
+Patch 7: Use dp_connector helpers in anx7625 to expose link training state
+Patch 8: Use dp_connector helpers in mediatek to expose link training state
+
+Changes in v3:
+- Rework the core to use new helpers instead of an extension of
+  drmm_connector_init().
+- Add a new mutex to protect sysfs read write access instead of using
+  the global connection_mutex.
+- Move helpers out of i915.
+- Add the support in the anx7625 driver.
+- Link to v2: https://patch.msgid.link/20260619-feat_link_cap-v2-0-a3dec4c02ad9@bootlin.com
+
+Changes in v2:
+- Removed work converting i915 to DRM managed resource
+- Remove voltage swing and pre-emphasis properties
+- Expose link training state via sysfs dp_link/ group instead of
+  connector properties
+- Add comprehensive sysfs attributes for both source and sink capabilities
+- Add new helpers for managing sink capabilities and for current link
+  parameters
+- Link to v1: https://lore.kernel.org/r/20260409-feat_link_cap-v1-0-7069e8199ce2@bootlin.com
+
+Signed-off-by: Kory Maincent <kory.maincent@bootlin.com>
+---
+Kory Maincent (8):
+      drm: Move sink link rates reading helpers out of i915
+      drm: Move DSC capability reading helper out of i915
+      drm: Introduce DisplayPort link training capabilities and state helpers
+      drm/i915/display/dp: Read DPCD DSC capabilities in any case
+      drm/i915/display/dp: Use dp_connector helpers to expose link training state
+      drm/bridge: Expose link training state via new DRM_BRIDGE_OP_DP flag
+      drm/analogix/anx7625: Use dp_connector helpers to expose link training state
+      drm/mediatek: Use dp_connector helpers to expose link training state
+
+ Documentation/ABI/testing/sysfs-class-drm-dp       |  85 +++
+ drivers/gpu/drm/bridge/analogix/anx7625.c          |  68 +++
+ drivers/gpu/drm/bridge/analogix/anx7625.h          |   1 +
+ drivers/gpu/drm/display/Kconfig                    |   1 +
+ drivers/gpu/drm/display/drm_bridge_connector.c     |  29 ++
+ drivers/gpu/drm/display/drm_dp_helper.c            | 571 +++++++++++++++++++++
+ drivers/gpu/drm/drm_connector.c                    |  11 +
+ drivers/gpu/drm/drm_sysfs.c                        | 155 ++++++
+ drivers/gpu/drm/i915/display/intel_display_types.h |   2 +
+ drivers/gpu/drm/i915/display/intel_dp.c            | 249 ++++-----
+ .../gpu/drm/i915/display/intel_dp_link_training.c  |  14 +
+ drivers/gpu/drm/mediatek/mtk_dp.c                  |  79 ++-
+ include/drm/display/drm_dp.h                       |   1 +
+ include/drm/display/drm_dp_helper.h                |  25 +
+ include/drm/drm_bridge.h                           |  13 +
+ include/drm/drm_connector.h                        |  53 ++
+ include/drm/drm_sysfs.h                            |   1 +
+ 17 files changed, 1202 insertions(+), 156 deletions(-)
+---
+base-commit: 34e9ab0182494d7599dc9759bc216550d814b396
+change-id: 20260226-feat_link_cap-20cbb6f31d40
+
+Best regards,
+--  
+Köry Maincent, Bootlin
+Embedded Linux and kernel engineering
+https://bootlin.com
+
 
