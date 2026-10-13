@@ -4,108 +4,107 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 30D73CC6B03
-	for <linux-mediatek@archiver.kernel.org>; Tue, 13 Oct 2026 07:33:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6E628CC6B03
+	for <linux-mediatek@archiver.kernel.org>; Tue, 13 Oct 2026 07:47:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=TGN8I51EsiCeoMuqdEJrefdQGvxBjSECOZmfLFe8Da8=; b=Sb14r/DcMEQTXWr0IflgvRpEdH
-	MGGvPeOJ2KzQJPt1FUcfccTx0xu21R339MNo0Og192riRHuT9XpuV7rn4M2NeHKwAgJh8yRtk8ZAx
-	93O1tZk79GKCZQRfdKB6MGiUN1vKE81fxgTw1AMetzZJt6y+Vj/hnuaKxKjZCUMMk5M37hhHdUK9r
-	5jxLX62MU9lgYhePDTKdqxW7ZLL7rDf9VeDn25JhM0hVYrpdMYZv8YcpBXm5tYgbccA3IFzKVVBrY
-	ZkriX6gDQecwXKJWylqiGCWw1n0/tYg6lyqcWhAaOqbZ+HFnV75YN9M05ulWVmDYnTrnrJLRLk5bQ
-	StXBoPkA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=98Qa2o/S1XoEMPrlowsac7BQiNC+nqGa1kAsrr8UqXY=; b=f5FrL/EuU6gqDpJ62salVU44/3
+	7Hzea8NAuuvCEVpspbayqvAC6pzpu7pV5iCo6zwINN9pQQJxdrsjQd/NfG8ZNP1xa6UhbfacSEc2G
+	uB6Me7yE0L9Ia1UCt9xUus4dCIc8Gp5XaifUFPPY2jpYlsn9T/j3jgErAqWNMw2fZJQCV5LYMlq9m
+	ByEca6DTae24YMRiWG0DT3zwlwk5O6/XXq60eoMdJbqC4uMUlGU8F1erXnIb+A2YMM3WkAYoaJkEa
+	lhEwHVMqL89IynsVa4yulVwX49kKeBOHGY0aYfcw+HPhij6a9TIy7Q+lYEGtFxPmqDTmRghwvzG9H
+	4Frp1ihg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xGX0n-0000000CDvR-2aLJ;
-	Tue, 13 Oct 2026 07:33:25 +0000
-Received: from mgamail.intel.com ([198.175.65.11])
+	id 1xGXEq-0000000CFbb-1u9Z;
+	Tue, 13 Oct 2026 07:47:56 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xGX0k-0000000CDu9-1nF5;
-	Tue, 13 Oct 2026 07:33:23 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1791876802; x=1823412802;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:content-transfer-encoding:in-reply-to;
-  bh=NzspRS2hDrJsjAe8AK0YYi1dL16p14T9VINuEY50WDA=;
-  b=bFRfs8gFtJYPRvsEwQnkjIiT6kZygTHZrKXXIbugGiOQQnYj3Sep/8+l
-   s99BKD7zOaivQFrXhQ6N9zm0o9uS/u6i9E84L/uZ+Dc+VAfCxUOUCpOSY
-   DFIT4XEYsVSHdoVJO+1A3HRKDs618nMZKQdSkZYOwmnPEE8dhQ/kDCBEv
-   zSuyuIOmDB73AULfA9AvKUeNxIQ1j2swOeD5JHCEvx+m/2/02TfSgGpEp
-   oRmLmw3nnEnhVRv3UpHlievPG/4ujN9mmPLTh9W9HJfhLMB8Uh7H2wl/A
-   xTBEyw41v2vuINTqixuzSJirhZSuOAb1W22TDuXczU8O2n9POxroZuYMr
-   A==;
-X-CSE-ConnectionGUID: YCTLMrwZQe2fcjiuEFjbXA==
-X-CSE-MsgGUID: VmF+icJyQriCJXe5U0K/og==
-X-IronPort-AV: E=McAfee;i="6800,10657,11933"; a="479793"
-X-IronPort-AV: E=Sophos;i="6.27,155,1787036400"; 
-   d="scan'208";a="479793"
-Received: from fmviesa005.fm.intel.com ([10.60.135.145])
-  by orvoesa103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 13 Oct 2026 00:33:21 -0700
-X-CSE-ConnectionGUID: xXh+qmemSsK620RE9vOEtA==
-X-CSE-MsgGUID: vIyL18cTQ/SYvrImMz4a5w==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.27,155,1787036400"; 
-   d="scan'208";a="1193790"
-Received: from ncintean-mobl1.ger.corp.intel.com (HELO localhost) ([10.245.245.48])
-  by smtpauth.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 13 Oct 2026 00:33:13 -0700
-Date: Tue, 13 Oct 2026 10:33:10 +0300
-From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-To: "Jiri Slaby (SUSE)" <jirislaby@kernel.org>
-Cc: gregkh@linuxfoundation.org, linux-serial@vger.kernel.org,
-	Ilpo =?iso-8859-1?Q?J=E4rvinen?= <ilpo.jarvinen@linux.intel.com>,
-	Vadim Fedorenko <vadim.fedorenko@linux.dev>,
-	Richard Cochran <richardcochran@gmail.com>,
-	Andrew Lunn <andrew+netdev@lunn.ch>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@kernel.org>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Joel Stanley <joel@jms.id.au>,
-	Andrew Jeffery <andrew@codeconstruct.com.au>,
-	Ryan Chen <ryan_chen@aspeedtech.com>,
-	Billy Tsai <billy_tsai@aspeedtech.com>,
-	Florian Fainelli <florian.fainelli@broadcom.com>,
-	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>,
-	Ray Jui <ray.jui@broadcom.com>,
-	Scott Branden <scott.branden@broadcom.com>,
-	Al Cooper <alcooperx@gmail.com>,
-	Paul Cercueil <paul@crapouillou.net>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
+	id 1xGXEo-0000000CFav-1Hmr
+	for linux-mediatek@bombadil.infradead.org;
+	Tue, 13 Oct 2026 07:47:54 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
+	:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:Content-ID:
+	Content-Description:In-Reply-To:References;
+	bh=98Qa2o/S1XoEMPrlowsac7BQiNC+nqGa1kAsrr8UqXY=; b=Z7nhkwDi9D9gHkR2B4X2kMhHE9
+	aNU0KCxgNYTyC7DWL7z6E6bJ3tr7g9x6d37d8NL2aQsaOnzAZ7lAexOZRDP/jERk0aYLhXO0qxuG9
+	RofjWOibG03tJG1E/jj7YaotHKUYp3AxVfNszLn2+hRWpnMeywtPDvY9/TbIRkZPoJRwpoYNfqNgj
+	62PdLNBs1OXWve+vK+C7WnWBllxWS0CGB/kAEK5Q0HOGy/XaKbe/bSpJRBrprONvC65FNe672gmLr
+	IYpAjzv16jU8mJ8L9ddJ/3MVggZsw3tUFOFnMKZRwHUWwN+gOYiwOHIkPIh3rPfs4+2IB5S1m6dEV
+	Gm5bWPTA==;
+Received: from mail-wm1-x331.google.com ([2a00:1450:4864:20::331])
+	by desiato.infradead.org with esmtps (Exim 4.99.5 #2 (Red Hat Linux))
+	id 1xGXEl-0000000FDTu-1D1W
+	for linux-mediatek@lists.infradead.org;
+	Tue, 13 Oct 2026 07:47:53 +0000
+Received: by mail-wm1-x331.google.com with SMTP id 5b1f17b1804b1-4a1ad2e2391so2452655e9.0
+        for <linux-mediatek@lists.infradead.org>; Tue, 13 Oct 2026 00:47:49 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20251104; t=1791877668; x=1792482468; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
+        bh=98Qa2o/S1XoEMPrlowsac7BQiNC+nqGa1kAsrr8UqXY=;
+        b=Jqbfd2ZVcN9pofmX1E8QdjPB+PDGvTSJSTbo9uw5QgrCMVb6pC6tLfeXORUA82n3aC
+         NAzU7SVEPJGu0d0g1/0x1OE8LfWOmjUWelC0T+TaUmVWZnzQeQUfJ42HCH59g3uv8Jkw
+         Ujw1uWaHginevIVyiqlPbjZqbwzEbWQHuwvzRmIXG4rRBXzG6bxxGkGcoaAXk7KUDqcW
+         2l1g3BAvWwGC22jJhNnxrnQEbUoq6hs3x1XRXw7ku8Sb0p213zqyawPpo40lDSZtmPm7
+         Xn3BdeOZZxnJN2XYgrFhBiFp5LfwPzXay5ktEbYUayffemzpYkQkLR2EwSDUhSU9eAX6
+         Gsxw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20260707; t=1791877668; x=1792482468;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to:content-type;
+        bh=98Qa2o/S1XoEMPrlowsac7BQiNC+nqGa1kAsrr8UqXY=;
+        b=L99Gcb1CcDA6zcj1ZSfasdB3W0lLgpvp3HKq2Gem7iPA0NRrwgTD3kRP+rHbUZjFN8
+         PEZgBvl4HCfXffjO+ogJ9yHkK7E/uspVsj8ZSbYuH+gdSDVwvBAWeXyoGKNidh+qxgk6
+         c+bFWdhdHKQHjvk6mx2c9MaewdoA5gC+F8wpTkYQswmyMIgIk0P0xyEiQm6ybnFDZDQU
+         OOXkzhi2XURdPZwTryvVyYBOs6A8XSPlJjJH/mJ+KXrHEhL7iUJzw682RxIRWVnysVXo
+         2pua7+vfMvSFgpkaAbKbEtmhnrCA4RUTiJCe/WafZ0Rf/yFZkoPrLHbn5VnRuUUEfr13
+         iA1g==
+X-Forwarded-Encrypted: i=1; AKwUvBwFce57H9A1TwTN9nL74A9Zbo/6n+Q6QhSfXpW+iCYu9uUIqTiIiYLwoYTiwQukiNFNO12C8vYp4/uO+ANANA==@lists.infradead.org
+X-Gm-Message-State: AFq9FYIFSqTlx8BhlIv/vdLuCKimNBH3cSww5AWcSQKd4MIUVN4IL9xH
+	pCT412BXA31b9ozv5px7iVIVhKXtT6BxSQRnGH5ewvqPE+nStu+7yWD7
+X-Gm-Gg: AYBFou1E3ibMCIqTSE6+lESDhez3OnN/2gaRJa5RX4A3Ktx+HLd1K3v2ylKNDqC7fFI
+	TcI2jhO5kW9ul8G3KUUlLHczkfp02sQTSI+w82zytrNhsPrpTSlAmzzLj5rbeQ4obz1L/jJQac2
+	4Fb7T0eGBqvUrEj+FVtYpsEUgFZRx/Y4Z4PCCDqt0vkAAwpyl8MdZH1AlJwqAIPQvR6oYkW34Am
+	3gZ4g7Y6Se7nGRTUSE0xfZ99WHq5eNpKxq4Wg3Wav+21NmyViJNoukuQ1oG2/O364wUDUX6lm8f
+	oVmvrzXmqmJ0Wa+nvGakM7uFZi3GdkF8z06z0gt+SMlurClPlCXbqJSBaLFjXLQ12hkJ9fKzZcd
+	LxFiJIlmRvXlxeZALwJhV9lwMLaWwz9J2GxSEyYdJe0jFMXi/HAHQ4DOc/bRU+MiIpzYZQwzu3X
+	GuLVj3p/g1QxfHx/is4DH76J2auIUUihjz6Sv4Q0EvSuEQ4rU6Uf4IVLVIyBM1CgBw9wUhRTE2+
+	EX6mw==
+X-Received: by 2002:a05:600c:1c21:b0:49c:cee0:f383 with SMTP id 5b1f17b1804b1-4a18e4b6241mr274887295e9.16.1791877668407;
+        Tue, 13 Oct 2026 00:47:48 -0700 (PDT)
+Received: from LAPTOP-AVI.lan ([2a06:c701:4778:c500:c7f5:a913:e714:a9c3])
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-4a19f249692sm274850085e9.3.2026.10.13.00.47.46
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 13 Oct 2026 00:47:48 -0700 (PDT)
+From: Avi Weiss <thnkslprpt@gmail.com>
+To: Bjorn Andersson <andersson@kernel.org>,
+	Mathieu Poirier <mathieu.poirier@linaro.org>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Chaitanya Vadrevu <chaitanya.vadrevu@emerson.com>,
-	"James E.J. Bottomley" <James.Bottomley@hansenpartnership.com>,
-	Helge Deller <deller@gmx.de>,
-	Kumaravel Thiagarajan <kumaravel.thiagarajan@microchip.com>,
-	Thierry Reding <thierry.reding@kernel.org>,
-	Jonathan Hunter <jonathanh@nvidia.com>,
-	Kunihiko Hayashi <hayashi.kunihiko@socionext.com>,
-	Masami Hiramatsu <mhiramat@kernel.org>, Kees Cook <kees@kernel.org>,
-	"Gustavo A. R. Silva" <gustavoars@kernel.org>,
-	Uwe =?iso-8859-1?Q?Kleine-K=F6nig_=28The_Capable_Hub=29?= <u.kleine-koenig@baylibre.com>,
-	netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-aspeed@lists.ozlabs.org, linux-rpi-kernel@lists.infradead.org,
-	linux-mips@vger.kernel.org, linux-mediatek@lists.infradead.org,
-	linux-parisc@vger.kernel.org, linux-tegra@vger.kernel.org,
-	linux-hardening@vger.kernel.org
-Subject: Re: [PATCH v2 6/6] serial: 8250: make port operations work on struct
- uart_8250_port
-Message-ID: <as3etnbZatn4sbfx@ashevche-desk.local>
-References: <cover.1791873876.git.jirislaby@kernel.org>
- <c59fa203f325e0fe7601ea0fbc0d222c8b37f9eb.1791873876.git.jirislaby@kernel.org>
+	Pi-Hsun Shih <pihsun@chromium.org>,
+	linux-remoteproc@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	Avi Weiss <thnkslprpt@gmail.com>
+Subject: [PATCH] rpmsg: mtk: release channel OF node on device teardown
+Date: Tue, 13 Oct 2026 10:47:44 +0300
+Message-ID: <20261013074744.942560-1-thnkslprpt@gmail.com>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <c59fa203f325e0fe7601ea0fbc0d222c8b37f9eb.1791873876.git.jirislaby@kernel.org>
-Organization: Intel Finland Oy - BIC 0357606-4 - c/o Alberga Business Park, 6
- krs, Bertel Jungin Aukio 5, 02600 Espoo
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261013_003322_554275_A70D70CB 
-X-CRM114-Status: GOOD (  29.25  )
+X-CRM114-CacheID: sfid-20261013_084751_617354_066112F2 
+X-CRM114-Status: UNSURE (   9.63  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -120,159 +119,35 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Tue, Oct 13, 2026 at 08:48:51AM +0200, Jiri Slaby (SUSE) wrote:
-> serial8250_register_8250_port() returns a line number and the other
-> port operations (serial8250_unregister_port(), serial8250_suspend_port(),
-> serial8250_resume_port()) accept it. Many drivers then convert the line
-> back to the port using serial8250_get_port() anyway.
-> 
-> Switch the interface to struct uart_8250_port:
-> * serial8250_register_8250_port() now returns the registered port, or
-> an ERR_PTR() on failure.
-> * serial8250_unregister_port(), serial8250_suspend_port() and
-> serial8250_resume_port() accept the port.
-> 
-> Convert all users accordingly. Drivers store the port pointer instead
-> of the line number. Several drivers kept a private struct only to hold
-> the line (airoha, dfl, em, fsl, ioc3); these are dropped and the port
-> is stored as drvdata directly.
-> 
-> This also fixes two latent issues:
-> * For a CIR port, serial8250_register_8250_port() used to return 0.
-> Callers stored this as the line, so a later unregister/suspend/resume
-> operated on ttyS0. Now the CIR port itself is returned.
-> * 8250_acorn checked ports[i] > 0 on removal, so a port registered as
-> line 0 was never unregistered.
-> 
-> There are no more users of serial8250_get_port() outside of the 8250
-> core, so drop its EXPORT.
-> 
-> Signed-off-by: Jiri Slaby (SUSE) <jirislaby@kernel.org>
+mtk_rpmsg_match_device_subnode() returns a referenced OF child
+node, which is stored in rpdev->dev.of_node.
 
-> Cc: "Ilpo Järvinen" <ilpo.jarvinen@linux.intel.com>
+mtk_rpmsg_release_device() later frees the containing allocation
+without dropping that ref.
 
-Why not having Ilpo's Cc in the below list?
+Release the OF node when the RPMsg device is destroyed.
 
-> Assisted-by: LLM
-> ---
-> Cc: Vadim Fedorenko <vadim.fedorenko@linux.dev>
-> Cc: Richard Cochran <richardcochran@gmail.com>
-> Cc: Andrew Lunn <andrew+netdev@lunn.ch>
-> Cc: "David S. Miller" <davem@davemloft.net>
-> Cc: Eric Dumazet <edumazet@kernel.org>
-> Cc: Jakub Kicinski <kuba@kernel.org>
-> Cc: Paolo Abeni <pabeni@redhat.com>
-> Cc: Joel Stanley <joel@jms.id.au>
-> Cc: Andrew Jeffery <andrew@codeconstruct.com.au>
-> Cc: Ryan Chen <ryan_chen@aspeedtech.com>
-> Cc: Billy Tsai <billy_tsai@aspeedtech.com>
-> Cc: Florian Fainelli <florian.fainelli@broadcom.com>
-> Cc: Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>
-> Cc: Ray Jui <ray.jui@broadcom.com>
-> Cc: Scott Branden <scott.branden@broadcom.com>
-> Cc: Al Cooper <alcooperx@gmail.com>
-> Cc: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-> Cc: Paul Cercueil <paul@crapouillou.net>
-> Cc: Matthias Brugger <matthias.bgg@gmail.com>
-> Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-> Cc: Chaitanya Vadrevu <chaitanya.vadrevu@emerson.com>
-> Cc: "James E.J. Bottomley" <James.Bottomley@HansenPartnership.com>
-> Cc: Helge Deller <deller@gmx.de>
-> Cc: Kumaravel Thiagarajan <kumaravel.thiagarajan@microchip.com>
-> Cc: Thierry Reding <thierry.reding@kernel.org>
-> Cc: Jonathan Hunter <jonathanh@nvidia.com>
-> Cc: Kunihiko Hayashi <hayashi.kunihiko@socionext.com>
-> Cc: Masami Hiramatsu <mhiramat@kernel.org>
-> Cc: Kees Cook <kees@kernel.org>
-> Cc: "Gustavo A. R. Silva" <gustavoars@kernel.org>
-> Cc: "Uwe Kleine-König (The Capable Hub)" <u.kleine-koenig@baylibre.com>
-> Cc: netdev@vger.kernel.org
-> Cc: linux-serial@vger.kernel.org
-> Cc: linux-arm-kernel@lists.infradead.org
-> Cc: linux-aspeed@lists.ozlabs.org
-> Cc: linux-rpi-kernel@lists.infradead.org
-> Cc: linux-mips@vger.kernel.org
-> Cc: linux-mediatek@lists.infradead.org
-> Cc: linux-parisc@vger.kernel.org
-> Cc: linux-tegra@vger.kernel.org
-> Cc: linux-hardening@vger.kernel.org
+Fixes: 7017996951fd ("rpmsg: add rpmsg support for mt8183 SCP.")
+Signed-off-by: Avi Weiss <thnkslprpt@gmail.com>
+---
+ drivers/rpmsg/mtk_rpmsg.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-> [v2] include err.h (Ilpo)
-> ---
+diff --git a/drivers/rpmsg/mtk_rpmsg.c b/drivers/rpmsg/mtk_rpmsg.c
+index 1b670ed54cfa2..430a9b2aa7bb9 100644
+--- a/drivers/rpmsg/mtk_rpmsg.c
++++ b/drivers/rpmsg/mtk_rpmsg.c
+@@ -168,6 +168,7 @@ static void mtk_rpmsg_release_device(struct device *dev)
+ 	struct rpmsg_device *rpdev = to_rpmsg_device(dev);
+ 	struct mtk_rpmsg_device *mdev = to_mtk_rpmsg_device(rpdev);
+ 
++	of_node_put(dev->of_node);
+ 	kfree(mdev);
+ }
+ 
 
-...
-
->  	seq_printf(s, "%7s: /dev/ptp%d\n", "PTP", ptp_clock_index(bp->ptp));
->  	for (i = 0; i < __PORT_COUNT; i++) {
-
-What about
-
-		struct uart_8250_port *uport = bp->port[i].uport;
-
-here and use it accordingly in the below code?
-
-> -		if (bp->port[i].line != -1)
-> +		if (bp->port[i].uport)
->  			seq_printf(s, "%7s: /dev/ttyS%d\n", ptp_ocp_tty_port_name(i),
-> -				   bp->port[i].line);
-> +				   bp->port[i].uport->port.line);
->  	}
-
-...
-
->  	for (i = 0; i < __PORT_COUNT; i++)
-> -		if (bp->port[i].line != -1)
-> -			serial8250_unregister_port(bp->port[i].line);
-> +		if (bp->port[i].uport)
-> +			serial8250_unregister_port(bp->port[i].uport);
-
-Since it takes a pointer now, make it error pointer and NULL-aware
-
-	if (IS_ERR_OR_NULL(...))
-		return;
-
-there. With that being done, all this redundant NULL-checks will gone.
-
-...
-
-> static void serial_card_remove(struct expansion_card *ec)
-
->  	ecard_set_drvdata(ec, NULL);
->  
->  	for (i = 0; i < info->num_ports; i++)
-> -		if (info->ports[i] > 0)
-> +		if (!IS_ERR_OR_NULL(info->ports[i]))
->  			serial8250_unregister_port(info->ports[i]);
-
-See my point?
-
-...
-
-> static int aspeed_vuart_probe(struct platform_device *pdev)
-
->  	if (of_property_read_bool(np, "auto-flow-control"))
->  		port.capabilities |= UART_CAP_AFE;
->  
-> -	rc = serial8250_register_8250_port(&port);
-> -	if (rc < 0)
-> +	struct uart_8250_port *uport = serial8250_register_8250_port(&port);
-> +	if (IS_ERR(uport)) {
-> +		rc = PTR_ERR(uport);
->  		goto err_sysfs_remove;
-> +	}
-
-You can get rid of these {} by using PTR_ERR_OR_ZERO(). Also do not define
-variables in the middle of the code (it's only allowed for auto cleanup
-variables and for-loop iterators).
-
-...
-
-I stopped here, I believe there are many similar cases which may be amended in
-the same way as pointed out above.
-
+base-commit: 24a19b953e2a3d0ea5a8c4951a0ab8f32720c907
 -- 
-With Best Regards,
-Andy Shevchenko
-
+2.43.0
 
 
