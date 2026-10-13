@@ -4,136 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5FC5FCC6B08
-	for <linux-mediatek@archiver.kernel.org>; Tue, 13 Oct 2026 10:15:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 28DD4CA9ED2
+	for <linux-mediatek@archiver.kernel.org>; Tue, 13 Oct 2026 10:52:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=T05vzeiPYCAD9ha/zYBcdJZOcJv8hbGGQej4+CwcNis=; b=J02Mj7Z3A0O8eWnDS3QXSEZB7o
-	alhyPai2UFS44fUjZ12pRtVwFzc4uhWo/wEZjmM2jRtpkAejwm0sDW6COKfemokHToyzX6Bq9VhkW
-	sf4T15jnmTyw/B7Ab0BquVoCAihjnwQFyCVzQrtEZoqwtFb3EcEYHwSMiqGW5Yoeok41M1zELDk2z
-	yi2oQajgkEd/bI6rOkFtqVvYZrJPdGEZonULXAMnP1cl6BMxQWjZ1LeS7Y+mg917baJmiXsW5/oNR
-	6WtKQkE+FYx+fa0zLTNYdwKEnQyCRRXtgqrbCleDe7j31MdYeU5C4dXNdeJcbp/cAuAOVTG7jG6d8
-	gDli4WMg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=NmoaT3+F+QCTM5d3Nx2zwWv/bCDXlxs9igceUs3R3l4=; b=B1y7XhbfFHcLQYb8scuUg3/VvR
+	aCdaUn7NimxgYv3GLJdw95x8ngmW2oVx1ml/4ngtAK5odIPJK1GCNGgmA2zdG8TYY41IVRtjf8r5a
+	cXAMTuiKut0Pd3cK1o3Vexqop2F5TQ5yZ3NhM0kv33kky5x6pcwubYHZSf89+bK2fHTFCIk8v5LGB
+	sKcAWyLG5vR20wU75ciA9V38SzAlmWkdheJFU1gidQUA0saJSit5Pcn37zGjzy/ezscvAGYX1GQCH
+	tJa+CfAmHOWqxds4bdRy9bLnbJN117OG1GTuRsOteYRGaMEgOUXFDg0vJBCwaxiqNl9PvTnV8uKPn
+	xKPXFLVw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xGZXv-0000000CXJH-363H;
-	Tue, 13 Oct 2026 10:15:47 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1xGa77-0000000Cd6f-3xWP;
+	Tue, 13 Oct 2026 10:52:09 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xGZXt-0000000CXIb-3Vge;
-	Tue, 13 Oct 2026 10:15:45 +0000
+	id 1xGa74-0000000Cd5k-05Vl;
+	Tue, 13 Oct 2026 10:52:08 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id 6271E408C2;
-	Tue, 13 Oct 2026 10:15:45 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2BDB41F000FF;
-	Tue, 13 Oct 2026 10:15:36 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 28FC641AAD;
+	Tue, 13 Oct 2026 10:52:05 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 00D251F000FF;
+	Tue, 13 Oct 2026 10:51:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1791886545;
-	bh=T05vzeiPYCAD9ha/zYBcdJZOcJv8hbGGQej4+CwcNis=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To;
-	b=hktXkihhv440HGGkgdGsZEbr9oMbyg+EgOWMpAxtFBlr6aQbnoYSL6Wuas6jGFM6d
-	 V0xX9RwH9/rrdqBuOfCQJ4aRDS5pExi6C+bz/YZf/co+hdpMJiqExS5xhjKzGJJGoq
-	 DlFhQFDXpXEWS7cp4hFg+6xagwZgQ0jnbN9h2i8wdUArD3NW6Wsa7qg31LFfpSQOx4
-	 lmdNQv4XgB25O/pbwR7UhOh8PAZKI5oePw/Qmschw2YDOPqXO5VqYq4FA2WZubX2bw
-	 NkAgGxI0rXPAdE8PCelwRptp/ieU+wMKwrbOS95//EynggUIlhlw2TE9nwLPHjB6Yl
-	 o7DW5zhazUf2g==
-Message-ID: <cc5463cf-1e31-4a5f-9341-22769a7b0af5@kernel.org>
-Date: Tue, 13 Oct 2026 12:15:35 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
+	s=k20260515; t=1791888725;
+	bh=NmoaT3+F+QCTM5d3Nx2zwWv/bCDXlxs9igceUs3R3l4=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To;
+	b=mlgl82H/76jyp3QVFGTfmvDhqe4IEDwaDJUnrcU/u/3wDDV81a1YHtW7dL19WqH0B
+	 Cc2qSvqyo0IQ8CFsdNqgnz6PQ0tw0RnNGTtY79A/PmFoK2G4XKqJ7IMtg4LIJN5POb
+	 WmEuYc/AINieJMo1EB0Hz/llOApLXqZCcr27FrQVTRKbT7vFl4yoZgxH70W8jUYA11
+	 TRdiN+re3Zt25rttpmGe7sAtV6CxYo9f58MZ3pLh2olty4oSH0LIySjF9Stgmqnbwm
+	 2k0qH4ecd9irYArmfv9uy/C3KtDCsdBMT/NVV+91yfGbN/oxp0ZOPswZZUzTHS0A//
+	 mbeeCV09WzG5g==
+Date: Tue, 13 Oct 2026 12:51:48 +0200
+From: Alejandro Colomar <alx+linux-hardening@kernel.org>
+To: Jiri Slaby <jirislaby@kernel.org>
+Cc: Andy Shevchenko <andriy.shevchenko@linux.intel.com>, 
+	gregkh@linuxfoundation.org, linux-serial@vger.kernel.org, 
+	Ilpo =?utf-8?B?SsOkcnZpbmVu?= <ilpo.jarvinen@linux.intel.com>, Vadim Fedorenko <vadim.fedorenko@linux.dev>, 
+	Richard Cochran <richardcochran@gmail.com>, Andrew Lunn <andrew+netdev@lunn.ch>, 
+	"David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@kernel.org>, 
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Joel Stanley <joel@jms.id.au>, 
+	Andrew Jeffery <andrew@codeconstruct.com.au>, Ryan Chen <ryan_chen@aspeedtech.com>, 
+	Billy Tsai <billy_tsai@aspeedtech.com>, Florian Fainelli <florian.fainelli@broadcom.com>, 
+	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>, Ray Jui <ray.jui@broadcom.com>, 
+	Scott Branden <scott.branden@broadcom.com>, Al Cooper <alcooperx@gmail.com>, 
+	Paul Cercueil <paul@crapouillou.net>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Chaitanya Vadrevu <chaitanya.vadrevu@emerson.com>, 
+	"James E.J. Bottomley" <James.Bottomley@hansenpartnership.com>, Helge Deller <deller@gmx.de>, 
+	Kumaravel Thiagarajan <kumaravel.thiagarajan@microchip.com>, Thierry Reding <thierry.reding@kernel.org>, 
+	Jonathan Hunter <jonathanh@nvidia.com>, Kunihiko Hayashi <hayashi.kunihiko@socionext.com>, 
+	Masami Hiramatsu <mhiramat@kernel.org>, Kees Cook <kees@kernel.org>, 
+	"Gustavo A. R. Silva" <gustavoars@kernel.org>, 
+	Uwe =?utf-8?Q?Kleine-K=C3=B6nig_=28The_Capable_Hub=29?= <u.kleine-koenig@baylibre.com>, netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-aspeed@lists.ozlabs.org, linux-rpi-kernel@lists.infradead.org, linux-mips@vger.kernel.org, 
+	linux-mediatek@lists.infradead.org, linux-parisc@vger.kernel.org, linux-tegra@vger.kernel.org, 
+	linux-hardening@vger.kernel.org
 Subject: Re: [PATCH v2 6/6] serial: 8250: make port operations work on struct
  uart_8250_port
-To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-Cc: gregkh@linuxfoundation.org, linux-serial@vger.kernel.org,
- =?UTF-8?Q?Ilpo_J=C3=A4rvinen?= <ilpo.jarvinen@linux.intel.com>,
- Vadim Fedorenko <vadim.fedorenko@linux.dev>,
- Richard Cochran <richardcochran@gmail.com>,
- Andrew Lunn <andrew+netdev@lunn.ch>, "David S. Miller"
- <davem@davemloft.net>, Eric Dumazet <edumazet@kernel.org>,
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
- Joel Stanley <joel@jms.id.au>, Andrew Jeffery <andrew@codeconstruct.com.au>,
- Ryan Chen <ryan_chen@aspeedtech.com>, Billy Tsai
- <billy_tsai@aspeedtech.com>, Florian Fainelli
- <florian.fainelli@broadcom.com>,
- Broadcom internal kernel review list
- <bcm-kernel-feedback-list@broadcom.com>, Ray Jui <ray.jui@broadcom.com>,
- Scott Branden <scott.branden@broadcom.com>, Al Cooper <alcooperx@gmail.com>,
- Paul Cercueil <paul@crapouillou.net>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Chaitanya Vadrevu <chaitanya.vadrevu@emerson.com>,
- "James E.J. Bottomley" <James.Bottomley@hansenpartnership.com>,
- Helge Deller <deller@gmx.de>,
- Kumaravel Thiagarajan <kumaravel.thiagarajan@microchip.com>,
- Thierry Reding <thierry.reding@kernel.org>,
- Jonathan Hunter <jonathanh@nvidia.com>,
- Kunihiko Hayashi <hayashi.kunihiko@socionext.com>,
- Masami Hiramatsu <mhiramat@kernel.org>, Kees Cook <kees@kernel.org>,
- "Gustavo A. R. Silva" <gustavoars@kernel.org>,
- =?UTF-8?Q?Uwe_Kleine-K=C3=B6nig_=28The_Capable_Hub=29?=
- <u.kleine-koenig@baylibre.com>, netdev@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-aspeed@lists.ozlabs.org,
- linux-rpi-kernel@lists.infradead.org, linux-mips@vger.kernel.org,
- linux-mediatek@lists.infradead.org, linux-parisc@vger.kernel.org,
- linux-tegra@vger.kernel.org, linux-hardening@vger.kernel.org
+Message-ID: <as4JDXOIGvCbAnE_@debian>
 References: <cover.1791873876.git.jirislaby@kernel.org>
  <c59fa203f325e0fe7601ea0fbc0d222c8b37f9eb.1791873876.git.jirislaby@kernel.org>
  <as3etnbZatn4sbfx@ashevche-desk.local>
  <c6b08f53-b5ee-44c8-93d1-54fdf5994ed2@kernel.org>
  <as31PsESOgLUhMB6@ashevche-desk.local>
  <b404f3d7-1b2d-418a-8634-72c61ce33f8b@kernel.org>
- <as4BML-VUC9xUgOf@ashevche-desk.local>
-Content-Language: en-US
-From: Jiri Slaby <jirislaby@kernel.org>
-Autocrypt: addr=jirislaby@kernel.org; keydata=
- xsFNBE6S54YBEACzzjLwDUbU5elY4GTg/NdotjA0jyyJtYI86wdKraekbNE0bC4zV+ryvH4j
- rrcDwGs6tFVrAHvdHeIdI07s1iIx5R/ndcHwt4fvI8CL5PzPmn5J+h0WERR5rFprRh6axhOk
- rSD5CwQl19fm4AJCS6A9GJtOoiLpWn2/IbogPc71jQVrupZYYx51rAaHZ0D2KYK/uhfc6neJ
- i0WqPlbtIlIrpvWxckucNu6ZwXjFY0f3qIRg3Vqh5QxPkojGsq9tXVFVLEkSVz6FoqCHrUTx
- wr+aw6qqQVgvT/McQtsI0S66uIkQjzPUrgAEtWUv76rM4ekqL9stHyvTGw0Fjsualwb0Gwdx
- ReTZzMgheAyoy/umIOKrSEpWouVoBt5FFSZUyjuDdlPPYyPav+hpI6ggmCTld3u2hyiHji2H
- cDpcLM2LMhlHBipu80s9anNeZhCANDhbC5E+NZmuwgzHBcan8WC7xsPXPaiZSIm7TKaVoOcL
- 9tE5aN3jQmIlrT7ZUX52Ff/hSdx/JKDP3YMNtt4B0cH6ejIjtqTd+Ge8sSttsnNM0CQUkXps
- w98jwz+Lxw/bKMr3NSnnFpUZaxwji3BC9vYyxKMAwNelBCHEgS/OAa3EJoTfuYOK6wT6nadm
- YqYjwYbZE5V/SwzMbpWu7Jwlvuwyfo5mh7w5iMfnZE+vHFwp/wARAQABzSFKaXJpIFNsYWJ5
- IDxqaXJpc2xhYnlAa2VybmVsLm9yZz7CwXcEEwEIACEFAlW3RUwCGwMFCwkIBwIGFQgJCgsC
- BBYCAwECHgECF4AACgkQvSWxBAa0cEnVTg//TQpdIAr8Tn0VAeUjdVIH9XCFw+cPSU+zMSCH
- eCZoA/N6gitEcnvHoFVVM7b3hK2HgoFUNbmYC0RdcSc80pOF5gCnACSP9XWHGWzeKCARRcQR
- 4s5YD8I4VV5hqXcKo2DFAtIOVbHDW+0okOzcecdasCakUTr7s2fXz97uuoc2gIBB7bmHUGAH
- XQXHvdnCLjDjR+eJN+zrtbqZKYSfj89s/ZHn5Slug6w8qOPT1sVNGG+eWPlc5s7XYhT9z66E
- l5C0rG35JE4PhC+tl7BaE5IwjJlBMHf/cMJxNHAYoQ1hWQCKOfMDQ6bsEr++kGUCbHkrEFwD
- UVA72iLnnnlZCMevwE4hc0zVhseWhPc/KMYObU1sDGqaCesRLkE3tiE7X2cikmj/qH0CoMWe
- gjnwnQ2qVJcaPSzJ4QITvchEQ+tbuVAyvn9H+9MkdT7b7b2OaqYsUP8rn/2k1Td5zknUz7iF
- oJ0Z9wPTl6tDfF8phaMIPISYrhceVOIoL+rWfaikhBulZTIT5ihieY9nQOw6vhOfWkYvv0Dl
- o4GRnb2ybPQpfEs7WtetOsUgiUbfljTgILFw3CsPW8JESOGQc0Pv8ieznIighqPPFz9g+zSu
- Ss/rpcsqag5n9rQp/H3WW5zKUpeYcKGaPDp/vSUovMcjp8USIhzBBrmI7UWAtuedG9prjqfO
- wU0ETpLnhgEQAM+cDWLL+Wvc9cLhA2OXZ/gMmu7NbYKjfth1UyOuBd5emIO+d4RfFM02XFTI
- t4MxwhAryhsKQQcA4iQNldkbyeviYrPKWjLTjRXT5cD2lpWzr+Jx7mX7InV5JOz1Qq+P+nJW
- YIBjUKhI03ux89p58CYil24Zpyn2F5cX7U+inY8lJIBwLPBnc9Z0An/DVnUOD+0wIcYVnZAK
- DiIXODkGqTg3fhZwbbi+KAhtHPFM2fGw2VTUf62IHzV+eBSnamzPOBc1XsJYKRo3FHNeLuS8
- f4wUe7bWb9O66PPFK/RkeqNX6akkFBf9VfrZ1rTEKAyJ2uqf1EI1olYnENk4+00IBa+BavGQ
- 8UW9dGW3nbPrfuOV5UUvbnsSQwj67pSdrBQqilr5N/5H9z7VCDQ0dhuJNtvDSlTf2iUFBqgk
- 3smln31PUYiVPrMP0V4ja0i9qtO/TB01rTfTyXTRtqz53qO5dGsYiliJO5aUmh8swVpotgK4
- /57h3zGsaXO9PGgnnAdqeKVITaFTLY1ISg+Ptb4KoliiOjrBMmQUSJVtkUXMrCMCeuPDGHo7
- 39Xc75lcHlGuM3yEB//htKjyprbLeLf1y4xPyTeeF5zg/0ztRZNKZicgEmxyUNBHHnBKHQxz
- 1j+mzH0HjZZtXjGu2KLJ18G07q0fpz2ZPk2D53Ww39VNI/J9ABEBAAHCwV8EGAECAAkFAk6S
- 54YCGwwACgkQvSWxBAa0cEk3tRAAgO+DFpbyIa4RlnfpcW17AfnpZi9VR5+zr496n2jH/1ld
- wRO/S+QNSA8qdABqMb9WI4BNaoANgcg0AS429Mq0taaWKkAjkkGAT7mD1Q5PiLr06Y/+Kzdr
- 90eUVneqM2TUQQbK+Kh7JwmGVrRGNqQrDk+gRNvKnGwFNeTkTKtJ0P8jYd7P1gZb9Fwj9YLx
- jhn/sVIhNmEBLBoI7PL+9fbILqJPHgAwW35rpnq4f/EYTykbk1sa13Tav6btJ+4QOgbcezWI
- wZ5w/JVfEJW9JXp3BFAVzRQ5nVrrLDAJZ8Y5ioWcm99JtSIIxXxt9FJaGc1Bgsi5K/+dyTKL
- wLMJgiBzbVx8G+fCJJ9YtlNOPWhbKPlrQ8+AY52Aagi9WNhe6XfJdh5g6ptiOILm330mkR4g
- W6nEgZVyIyTq3ekOuruftWL99qpP5zi+eNrMmLRQx9iecDNgFr342R9bTDlb1TLuRb+/tJ98
- f/bIWIr0cqQmqQ33FgRhrG1+Xml6UXyJ2jExmlO8JljuOGeXYh6ZkIEyzqzffzBLXZCujlYQ
- DFXpyMNVJ2ZwPmX2mWEoYuaBU0JN7wM+/zWgOf2zRwhEuD3A2cO2PxoiIfyUEfB9SSmffaK/
- S4xXoB6wvGENZ85Hg37C7WDNdaAt6Xh2uQIly5grkgvWppkNy4ZHxE+jeNsU7tg=
-In-Reply-To: <as4BML-VUC9xUgOf@ashevche-desk.local>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+MIME-Version: 1.0
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="s7yswkjhiyfpvc3p"
+Content-Disposition: inline
+In-Reply-To: <b404f3d7-1b2d-418a-8634-72c61ce33f8b@kernel.org>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -148,47 +93,275 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 13. 10. 26, 12:00, Andy Shevchenko wrote:
->>>> First, it is used in the kernel quite a few times already
->>>> [1]. Second, while it is sort of c++ism (and I like to use modern c++), it
->>>> makes the life of the variable a lot more obvious.
->>>>
->>>> [1] eg. see output of: rg -U -C 5 '}\n+\s+struct .*\*.*=' drivers/
->>>
->>> (you made me to install something I haven't heard about, it's better to use
->>>    `git grep` though)
->>
->> rg is order of magnitude faster (searches in parallel). More importantly in
->> this case, supports multiline matches. (And respects .git ignores.)
-> 
-> Isn't `git grep` fast enough due to looking into index and not into the files?
-> `rg` may not look at the Git index, right? So I may not to use an arbitrary
-> hash without checking it out first.
 
-Of course rg is not git grep.
+--s7yswkjhiyfpvc3p
+Content-Type: text/plain; protected-headers=v1; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+From: Alejandro Colomar <alx+linux-hardening@kernel.org>
+To: Jiri Slaby <jirislaby@kernel.org>
+Cc: Andy Shevchenko <andriy.shevchenko@linux.intel.com>, 
+	gregkh@linuxfoundation.org, linux-serial@vger.kernel.org, 
+	Ilpo =?utf-8?B?SsOkcnZpbmVu?= <ilpo.jarvinen@linux.intel.com>, Vadim Fedorenko <vadim.fedorenko@linux.dev>, 
+	Richard Cochran <richardcochran@gmail.com>, Andrew Lunn <andrew+netdev@lunn.ch>, 
+	"David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@kernel.org>, 
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Joel Stanley <joel@jms.id.au>, 
+	Andrew Jeffery <andrew@codeconstruct.com.au>, Ryan Chen <ryan_chen@aspeedtech.com>, 
+	Billy Tsai <billy_tsai@aspeedtech.com>, Florian Fainelli <florian.fainelli@broadcom.com>, 
+	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>, Ray Jui <ray.jui@broadcom.com>, 
+	Scott Branden <scott.branden@broadcom.com>, Al Cooper <alcooperx@gmail.com>, 
+	Paul Cercueil <paul@crapouillou.net>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Chaitanya Vadrevu <chaitanya.vadrevu@emerson.com>, 
+	"James E.J. Bottomley" <James.Bottomley@hansenpartnership.com>, Helge Deller <deller@gmx.de>, 
+	Kumaravel Thiagarajan <kumaravel.thiagarajan@microchip.com>, Thierry Reding <thierry.reding@kernel.org>, 
+	Jonathan Hunter <jonathanh@nvidia.com>, Kunihiko Hayashi <hayashi.kunihiko@socionext.com>, 
+	Masami Hiramatsu <mhiramat@kernel.org>, Kees Cook <kees@kernel.org>, 
+	"Gustavo A. R. Silva" <gustavoars@kernel.org>, 
+	Uwe =?utf-8?Q?Kleine-K=C3=B6nig_=28The_Capable_Hub=29?= <u.kleine-koenig@baylibre.com>, netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-aspeed@lists.ozlabs.org, linux-rpi-kernel@lists.infradead.org, linux-mips@vger.kernel.org, 
+	linux-mediatek@lists.infradead.org, linux-parisc@vger.kernel.org, linux-tegra@vger.kernel.org, 
+	linux-hardening@vger.kernel.org
+Subject: Re: [PATCH v2 6/6] serial: 8250: make port operations work on struct
+ uart_8250_port
+Message-ID: <as4JDXOIGvCbAnE_@debian>
+References: <cover.1791873876.git.jirislaby@kernel.org>
+ <c59fa203f325e0fe7601ea0fbc0d222c8b37f9eb.1791873876.git.jirislaby@kernel.org>
+ <as3etnbZatn4sbfx@ashevche-desk.local>
+ <c6b08f53-b5ee-44c8-93d1-54fdf5994ed2@kernel.org>
+ <as31PsESOgLUhMB6@ashevche-desk.local>
+ <b404f3d7-1b2d-418a-8634-72c61ce33f8b@kernel.org>
+MIME-Version: 1.0
+In-Reply-To: <b404f3d7-1b2d-418a-8634-72c61ce33f8b@kernel.org>
 
->>> Note excluded __free() if I get regexp correctly
->>>
->>> $ rg -U -l '}\n+\s+struct .*\*[^)]*=' drivers/ | less
->>> drivers/ufs/host/ufs-qcom.c
->> ...
->>> drivers/gpu/drm/amd/amdgpu/amdgpu_psp.c
->>>
->>> So, less than dozen of drivers doing wrong is not an argument, try something
->>> better. But thanks, I will check and address this in some of the above.
->>
->> Well, it's only an example of a declaration after a previous opening brace
->> "{" -- this one turned out to be easy to search for. There is a lot of more,
->> of course. kernel/ included.
-> 
-> Please, provide a better search line, I will look at that. For now it's just
-> a hypothetical assumption, I am afraid.
+Hi Jiri,
 
-I am not much into writing a semi-parser at this point :D. This'd be a 
-task eg. for clang's ASTMatcher.
+> Date: 2026-10-13 11:39:00+0200
+> From: Jiri Slaby <jirislaby@kernel.org>
+>
+> On 13. 10. 26, 11:09, Andy Shevchenko wrote:
+> > On Tue, Oct 13, 2026 at 09:53:26AM +0200, Jiri Slaby wrote:
+> > > On 13. 10. 26, 9:33, Andy Shevchenko wrote:
+> > > > On Tue, Oct 13, 2026 at 08:48:51AM +0200, Jiri Slaby (SUSE) wrote:
+> >=20
+> > ...
+> >=20
+> > > > > -	rc =3D serial8250_register_8250_port(&port);
+> > > > > -	if (rc < 0)
+> > > > > +	struct uart_8250_port *uport =3D serial8250_register_8250_port(=
+&port);
+> > > > > +	if (IS_ERR(uport)) {
+> > > > > +		rc =3D PTR_ERR(uport);
+> > > > >    		goto err_sysfs_remove;
+> > > > > +	}
+> > >=20
+> > > > Also do not define
+> > > > variables in the middle of the code (it's only allowed for auto cle=
+anup
+> > > > variables and for-loop iterators).
+> > >=20
+> > > Why, actually?
+> >=20
+> > Because it's the style.
+>=20
+> There is no hard style though. It varies across subsystems.
+>=20
+> > Linus also told it many times
+>=20
+> Which is neither an argument. Linus is wrong at times ("Link:" use as an
+> example).
+>=20
+> All in all, I do not insist on this at all. It's easier to read and follow
+> the code for me. Not necessarily the case for others...
+>=20
+> > > First, it is used in the kernel quite a few times already
+> > > [1]. Second, while it is sort of c++ism (and I like to use modern c++=
+), it
+> > > makes the life of the variable a lot more obvious.
+> > >=20
+> > > [1] eg. see output of: rg -U -C 5 '}\n+\s+struct .*\*.*=3D' drivers/
+> >=20
+> > (you made me to install something I haven't heard about, it's better to=
+ use
+> >   `git grep` though)
+>=20
+> rg is order of magnitude faster (searches in parallel). More importantly =
+in
+> this case, supports multiline matches. (And respects .git ignores.)
 
-thanks,
--- 
-js
-suse labs
+Is that really true?
+
+	alx@debian:~/src/linux/linux/master$ time \
+			find * -type f \
+			| grep '\.[ch]' \
+			| sort \
+			| xargs grep -n ARRAY_SIZE /dev/null \
+			| wc -l;
+	58852
+
+	real	0m1.022s
+	user	0m0.726s
+	sys	0m0.358s
+	alx@debian:~/src/linux/linux/master$ time \
+			git ls-files \
+			| grep '\.[ch]' \
+			| xargs grep -n ARRAY_SIZE /dev/null \
+			| wc -l;
+	58854
+
+	real	0m0.923s
+	user	0m0.650s
+	sys	0m0.333s
+
+There seems to be a difference of two occurences, which is due to
+symlinks:
+
+	alx@debian:~/src/linux/linux/master$ diff -u \
+			<(find * -type f \
+				| grep '\.[ch]' \
+				| sort \
+				| xargs grep -n ARRAY_SIZE /dev/null) \
+			<(git ls-files \
+				| grep '\.[ch]' \
+				| xargs grep -n ARRAY_SIZE /dev/null);
+	--- /dev/fd/63	2026-10-13 12:40:11.675302047 +0200
+	+++ /dev/fd/62	2026-10-13 12:40:11.675302047 +0200
+	@@ -57769,6 +57769,7 @@
+	 tools/testing/selftests/bpf/benchs/bench_sockmap.c:128:	for (i =3D 0; i <=
+ ARRAY_SIZE(ctx.fds); i++) {
+	 tools/testing/selftests/bpf/bpf_util.h:69:#ifndef ARRAY_SIZE
+	 tools/testing/selftests/bpf/bpf_util.h:70:# define ARRAY_SIZE(x) (sizeof(=
+x) / sizeof((x)[0]))
+	+tools/testing/selftests/bpf/disasm.c:23:	BUILD_BUG_ON(ARRAY_SIZE(func_id_=
+str) !=3D __BPF_FUNC_MAX_ID);
+	 tools/testing/selftests/bpf/map_tests/lpm_trie_map_basic_ops.c:1006:	cons=
+t char *sorted_keys[ARRAY_SIZE(keys)];
+	 tools/testing/selftests/bpf/map_tests/lpm_trie_map_basic_ops.c:1012:	fd =
+=3D lpm_trie_create(sizeof(key), sizeof(value), ARRAY_SIZE(keys));
+	 tools/testing/selftests/bpf/map_tests/lpm_trie_map_basic_ops.c:1014:	for =
+(i =3D 0; i < ARRAY_SIZE(keys); i++) {
+	@@ -58786,6 +58787,7 @@
+	 tools/testing/selftests/vfio/lib/drivers/dsa/dsa.c:215:	dsa->max_copies_p=
+er_batch =3D min(dsa->max_copies_per_batch, ARRAY_SIZE(dsa->copy));
+	 tools/testing/selftests/vfio/lib/drivers/dsa/dsa.c:340:	for (i =3D 0; i <=
+ ARRAY_SIZE(dsa->copy); i++) {
+	 tools/testing/selftests/vfio/lib/drivers/dsa/dsa.c:349:	for (i =3D 0; i <=
+ ARRAY_SIZE(dsa->batch) && count; i++) {
+	+tools/testing/selftests/vfio/lib/drivers/igb/e1000_82575.h:240:#define E1=
+000_VLVF_ARRAY_SIZE     32
+	 tools/testing/selftests/vfio/lib/drivers/nv_falcon/hw.h:249:#define VERIF=
+IED_GPU_MAP_SIZE ARRAY_SIZE(verified_gpu_map)
+	 tools/testing/selftests/vfio/lib/iommu.c:59:	for (i =3D 0; i < ARRAY_SIZE=
+(iommu_modes); i++) {
+	 tools/testing/selftests/vfio/lib/sysfs.c:48:	VFIO_ASSERT_GT(read(fd, buf,=
+ ARRAY_SIZE(buf)), 0);
+
+And here goes rg(1):
+
+	alx@debian:~/src/linux/linux/master$ time rg -n ARRAY_SIZE | wc -l
+	58957
+
+	real	0m0.512s
+	user	0m0.490s
+	sys	0m0.974s
+
+It's around 50% faster, which I wouldn't call orders of magnitude.
+rg(1) inherits the bogus design of find(1) in trying to filter the file
+names with multiple subtly different options.  grep(1) can do that much
+better, and by using a pipe, you have a dedicated process (often in a
+dedicated CPU) for that task, which is likely more efficient.
+
+And here's plain grep(1):
+
+	alx@debian:~/src/linux/linux/master$ time grep -r -n ARRAY_SIZE \
+			| wc -l
+	58957
+
+	real	0m1.140s
+	user	0m0.663s
+	sys	0m0.489s
+
+Multiline matches are also supported by pcre2grep(1), BTW, which uses
+PCRE2, which are way more useful than that.
+
+pcre2grep(1) is itself a bit slower than grep(1) --especially if you try
+very complex regexes--:
+
+	alx@debian:~/src/linux/linux/master$ time \
+			find * -type f \
+			| grep '\.[ch]' \
+			| sort \
+			| xargs pcre2grep -n ARRAY_SIZE /dev/null \
+			| wc -l;
+	58852
+
+	real	0m1.857s
+	user	0m1.408s
+	sys	0m0.516s
+
+But if you pre-filter the files with a simpler regex, then it comes back
+to usual time:
+
+	alx@debian:~/src/linux/linux/master$ time \
+			find * -type f \
+			| grep '\.[ch]' \
+			| sort \
+			| xargs grep -l ARRAY_SIZE \
+			| xargs pcre2grep -n ARRAY_SIZE /dev/null \
+			| wc -l;
+	58852
+
+	real	0m0.919s
+	user	0m0.830s
+	sys	0m0.462s
+
+
+Have a lovely day!
+Alex
+
+> > Note excluded __free() if I get regexp correctly
+> >=20
+> > $ rg -U -l '}\n+\s+struct .*\*[^)]*=3D' drivers/ | less
+> > drivers/ufs/host/ufs-qcom.c
+> ...
+> > drivers/gpu/drm/amd/amdgpu/amdgpu_psp.c
+> >=20
+> > So, less than dozen of drivers doing wrong is not an argument, try some=
+thing
+> > better. But thanks, I will check and address this in some of the above.
+>=20
+> Well, it's only an example of a declaration after a previous opening brace
+> "{" -- this one turned out to be easy to search for. There is a lot of mo=
+re,
+> of course. kernel/ included.
+>=20
+> thanks,
+> --=20
+> js
+> suse labs
+>=20
+
+--=20
+<https://www.alejandro-colomar.es>
+
+--s7yswkjhiyfpvc3p
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAABCgAdFiEES7Jt9u9GbmlWADAi64mZXMKQwqkFAmrODT0ACgkQ64mZXMKQ
+wqmSbg/+Kju6cdcJwKw+4RB5Y9NYD3/4h30SzLAQqWN9I3eKY84fT/BFFDoaJ7hi
+43SSIJlOBL5aHdVoLJnH8NHMhjDni9S7v/ICfAwWVczFVPuTnwPT7I0qvy58w2Pr
+PvNuZmAO06suQoxLddO85y/EBEm7AgNOSzdcU2zJsoCbLAiuH0n3OpYF9sb5Ew5z
+zINiYzCOqYUeExVNGJXjIHOIN9pwj/cb/SfrDgRdXW9Y0QEcbqLTEz5Z5xBiCiJl
+eJulybBXYjKgDTAATmxOFCysshiNeA592E4LgD4Te2Xn4euC3Mcu6IMlALtNU/m2
+/LABEfV2L5Qa7Q0d3sMxaDNrXrZlUJld+97MFJZbWDFUvhBFE2olcmOghQDebQBP
+F9XjCs6ItuyPuhyO7G2XJJNfPYOZMR8Rqhmsa5FBgoCOCUhTzfkhQoo22gJmsTcN
+hgTManJTpSlBejON9o46dnV4f6G7xO2vOA69VC3xMcEI5NA6Apik/0eVJYht9O2g
+AcnuL6Jk29oiuS9l1Z7T+hEvqEFF3PDYfqujobxTS3ta0/UlVUZ6Q42/+DyrGwAh
+FjogH/PnfuEaMHW2byuxaZqGh7rpp/+80Ep92FhZOgemaUkDgLlKK7TIHwBf+kqV
+OHqTtEU61AdsLz8ghooeiJCWPAK3nwOJ46EOnBLL7wWcAEn7T2s=
+=poO+
+-----END PGP SIGNATURE-----
+
+--s7yswkjhiyfpvc3p--
 
