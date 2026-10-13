@@ -4,62 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D347BCC6B14
-	for <linux-mediatek@archiver.kernel.org>; Tue, 13 Oct 2026 14:09:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 63991CC6B08
+	for <linux-mediatek@archiver.kernel.org>; Tue, 13 Oct 2026 14:20:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
+	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=FBLRaGHH3amBrp1ker/5Wm3P1tvMuI98VZU57fGqM6k=; b=WnWlSHIQrgg1ngqn2oJpSwr1Rb
-	96gC3EghME4I5mNITWHgFwl9X5J07azw0G6zA2YUIXoRGRy2t4W6EGIFAfHVf+gH0XJmxzuTcI25h
-	zY8KehNap6K1wGw54tEWeJakA+f8HQGb/dRIgzPoKOWFHv21U4g66oeVD+d/qs7ik4iyhV9Qz1SmI
-	p9gsMWuYACwzllcwDM9tvgRgIEHznJ/DPQElb04nqxcUE30wU3iaLBA0VFjtcRdflIn2eejsunHQv
-	kT8vN2pci0u5GCL/hcyuDlflA70zXkeg37RFHEG/t5ip6840uTRTmjUzkoa5TxZRgRPONXL5dvm8e
-	66ntamaQ==;
+	bh=2kyLZJ/2rfXN5bZbtrxEBotazNxgP7vYhNpb4oPxzhY=; b=kQYyDqMZFaqGPi8Cm41WAVIlNY
+	bVqwvVxOTpPPVthrvOBwKiUTYUKQr0nHwc3f3lSovN7LrG5bB6i+NTo6lNkpOtT2dYtCGj/vouNIt
+	pTZ+t48iN6iAfGdw5ch/Bd09C6SaeTLnrOtUux5zJW1HYHgc7RUJntCaPsCY4xd1eB7skhiULio9E
+	UgXU+Dli369qEjmMPRtb9GJiu4WM+SJUpz02q5PHMzyLILmIXSBBj4fVEOI5BLhe6B8w3VJi05fYV
+	zNWe4uFYbV4PVKxWnfzvQaTPOrwtNZZqZ0CK5iOKdpQmsNBZdo06pN5O9jiox2unX0rPVi8/7mUHU
+	BHDxb62A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xGdBs-0000000D2ey-3lPB;
-	Tue, 13 Oct 2026 14:09:16 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1xGdMR-0000000D4NR-15QK;
+	Tue, 13 Oct 2026 14:20:11 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xGdBq-0000000D2ds-3Sdp;
-	Tue, 13 Oct 2026 14:09:14 +0000
+	id 1xGdMQ-0000000D4Mh-0qas
+	for linux-mediatek@lists.infradead.org;
+	Tue, 13 Oct 2026 14:20:10 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 203C460A83;
-	Tue, 13 Oct 2026 14:09:14 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 713251F000FF;
-	Tue, 13 Oct 2026 14:09:11 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 9E2AE4394B;
+	Tue, 13 Oct 2026 14:20:09 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 81F901F00893;
+	Tue, 13 Oct 2026 14:20:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1791900553;
-	bh=FBLRaGHH3amBrp1ker/5Wm3P1tvMuI98VZU57fGqM6k=;
-	h=From:To:Cc:In-Reply-To:References:Subject:Date;
-	b=og5cDjPdB/txlT5QRXFShUR51U6MJsvUPagqbrdWP9858xoL+DyCk0bLf+WGce8EI
-	 MG6u3fTXg/yp78n0RBvdLuOS6iB8g1+eUD5pBrLCjE+B9Hq14FcoUDdbh9DN8zkg8S
-	 RNzSMUBzPaUQJhyGTDiYN3cQfybyW64ITlz8ALE8Ov/sILPDzMIeUwWLjME7FYR0++
-	 atWHGjlnu+lLLmgDc3WWMMzcmwW7LrzwTvBBaUGo1nUx0vKXz4PeMrQF4FrZtzPZ08
-	 zCzKZq2XcT8iD/Basr81k95xnHx+BOueMWvuAnIqHg9u4+zIGRs2zX7a2OoYYMshg+
-	 6QajJ9qCZTiYQ==
-From: Lee Jones <lee@kernel.org>
-To: Lee Jones <lee@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Gene Chen <gene_chen@richtek.com>, "Rob Herring (Arm)" <robh@kernel.org>
-Cc: mfd@lists.linux.dev, devicetree@vger.kernel.org, 
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org
-In-Reply-To: <20260921232701.3133291-1-robh@kernel.org>
-References: <20260921232701.3133291-1-robh@kernel.org>
-Subject: Re: (subset) [PATCH] dt-bindings: mfd: Allow MT6360 interrupt
- flags
-Message-Id: <179190055118.3948780.1611547752673476334.b4-ty@b4>
-Date: Tue, 13 Oct 2026 15:09:11 +0100
-MIME-Version: 1.0
+	s=k20260515; t=1791901209;
+	bh=2kyLZJ/2rfXN5bZbtrxEBotazNxgP7vYhNpb4oPxzhY=;
+	h=Subject:From:Date:References:In-Reply-To:To:Cc;
+	b=MfpQ2EdMaE/194szPZg+JGL4yINUy7oRhQg0hdw31KFf74oNOPNS8kK/cJrAyA+W2
+	 rbTeJJb2NXa3k8EUAxzg6tScLag8ug1HgMus1vXP8NV7tUetCFLgJHnC2yE2ugkbNd
+	 JCYIX2hA1dRvfRt3yrcu+DzOXB57eVP+HZeeZQsqDodV/xA6XReGIvZIPts1L20wDU
+	 UpHSM6AH2/oTLaVugq3voH2RknWEPV8j0vHViu3vAKopVFNTNewwwoWkcvtxu+KWpp
+	 /6d1ixxn17pW4QpB+YrA0jMZxZ79GYSvo5OFRmv9yhnN8J+61xHyEZ8cH0PHIh38O5
+	 sHUXH1PrOGISw==
+Received: from [10.30.226.235] (localhost [IPv6:::1])
+	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id 773FA39D237D;
+	Tue, 13 Oct 2026 14:20:09 +0000 (UTC)
 Content-Type: text/plain; charset="utf-8"
+MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-Mailer: b4 0.16-dev-ad80c
+Subject: Re: [PATCH v4] Bluetooth: btmtk: Add MT7928 support
+From: patchwork-bot+bluetooth@kernel.org
+Message-Id: <179190120801.334087.12991106842776362785.git-patchwork-notify@kernel.org>
+Date: Tue, 13 Oct 2026 14:20:08 +0000
+References: <20261008085559.813654-1-chris.lu@mediatek.com>
+In-Reply-To: <20261008085559.813654-1-chris.lu@mediatek.com>
+To: Chris Lu <chris.lu@mediatek.com>
+Cc: marcel@holtmann.org, johan.hedberg@gmail.com, luiz.dentz@gmail.com,
+ sean.wang@mediatek.com, will-cy.Lee@mediatek.com, ss.wu@mediatek.com,
+ linux-bluetooth@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-mediatek@lists.infradead.org
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,17 +73,29 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Mon, 21 Sep 2026 18:27:00 -0500, Rob Herring (Arm) wrote:
-> MT6360 interrupt controllers use either one interrupt cell or two
-> cells, with the optional second cell carrying trigger flags. Allow both
-> forms.
+Hello:
 
-Applied, thanks!
+This patch was applied to bluetooth/bluetooth-next.git (master)
+by Luiz Augusto von Dentz <luiz.von.dentz@intel.com>:
 
-[1/1] dt-bindings: mfd: Allow MT6360 interrupt flags
-      commit: ee76e520857352ec34aaa5786db41610a4a25de7
+On Thu, 8 Oct 2026 16:55:59 +0800 you wrote:
+> Add support for MT7928 (internal device ID is MT7935) which requires
+> additional firmware (CBMCU firmware) loading before Bluetooth firmware.
+> 
+> CBMCU is a new component on MT7928 to handle common part shared across
+> the combo chip, providing a better user experience through improved
+> coordination between subsystems.
+> 
+> [...]
 
---
-Lee Jones [李琼斯]
+Here is the summary with links:
+  - [v4] Bluetooth: btmtk: Add MT7928 support
+    https://git.kernel.org/bluetooth/bluetooth-next/c/2c5f7c9b12f8
+
+You are awesome, thank you!
+-- 
+Deet-doot-dot, I am a bot.
+https://korg.docs.kernel.org/patchwork/pwbot.html
+
 
 
