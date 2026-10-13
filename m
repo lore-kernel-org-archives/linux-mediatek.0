@@ -4,150 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9D46CCC6B33
-	for <linux-mediatek@archiver.kernel.org>; Thu, 15 Oct 2026 09:48:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E97DCCC6B33
+	for <linux-mediatek@archiver.kernel.org>; Thu, 15 Oct 2026 10:31:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=m3KAG7YDGqOBR2D8Zn+sxc9jTExC3PMBl+koNYY0A4Q=; b=axGrXdZlhHRS/2zGrs59JfS4Ev
-	/a4IBMQWYq5G77OcBLCVEP3IYF8Mwz6A1JuqHSa+fSKhMIL4BgkFzeZOAh4MDW4Ed56ARbTg8pmn+
-	pcqE1wnGCH+RA6EWpiYrdmCHLOgeWADq9E2h+gQRNSNjxRurlehmwrufS40tncfDzkNJPT12zVVZN
-	Cu5WSiOr4FBcxB8F07xXLmPagDcEyKZiMnORTC6x9LMs6cAkEncnV5KFro4nCP+8fywfe0TNqagtZ
-	dqmtS0J+4/0AQWJ3IKcmBDZfpgfZ6BNW5HxdXsr921mt17owW2qIxafUuzZCB4GZFz0dNbvlZi+R0
-	mxf9I3IQ==;
+	bh=eoYh+wmGkfMuCrYWAfzCPGRay9LfK9IhzqEdYF+ddbs=; b=CJTAjaPKs2M7ZOuL/IwTXZmh14
+	feC/3Nb2AN02L8AoieACsRH1sqNMjq+Io1aU+pGtkMeAYLppMvxokcxSveMEhcyv55V6kpb+Ydp0g
+	VVyVTy17C3edq5XlsKreO5HzG/RzZ9m7DKXldJkCwZyzmFPb1W36ShIxIDo6/cDRr3UcydqY4qouo
+	Z3JZT6IBVjb+Yvfj+hkMIrmk85b339SuR+ad0tTKbQU65ABG9FqlWNxwx/iBOsYgQQWeFAi5ANTyE
+	VAWMYApl5IXRrT3GrRE674a6HhVN3cTMf/+IGLBdeOc6E5JeYapGNcDnKL04M1V/ICQaK/IHYZRq5
+	iEZJ9GSQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xHI4l-0000000HKcm-2qZ2;
-	Thu, 15 Oct 2026 09:48:39 +0000
-Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
+	id 1xHIjv-0000000HRgE-3P1h;
+	Thu, 15 Oct 2026 10:31:11 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xHI4i-0000000HKah-1eTE
-	for linux-mediatek@lists.infradead.org;
-	Thu, 15 Oct 2026 09:48:38 +0000
-Received: from pps.filterd (m0279869.ppops.net [127.0.0.1])
-	by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id 69F9jnVo3408836
-	for <linux-mediatek@lists.infradead.org>; Thu, 15 Oct 2026 09:48:35 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
-	cc:content-transfer-encoding:content-type:date:from:in-reply-to
-	:message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
-	m3KAG7YDGqOBR2D8Zn+sxc9jTExC3PMBl+koNYY0A4Q=; b=PYQ2LI9aj27depOZ
-	qeweAXNBoA1cgejsFBYuNOalTEdQi3dhHBovBh4X5s67yygNgxEewsmXMGVxJwUJ
-	xknMYhgUc0U7Sl1gvwmfoSE5dAGNJJuDkn+GDtdTh7un98iVQ654iXublSoIG3Sg
-	f8/PFJQdbcAqm40e55coyKkeZVOK6GRgywvAcUQXGRBcvkXlnuBLxfiHkaHOdsz1
-	wmwCWbaM+/YW1xU8d9Nq/H2ax0JHCw5413mffdzYSGHYgbysfsd7RDtp7UYVhM9L
-	wNHziNWZ6WJxj9qi4gJBZqjatGt/8HL8VCV/ZVmkfN3Qytu6KTQuq4NVby86xgfi
-	1zT+xg==
-Received: from mail-qt1-f199.google.com (mail-qt1-f199.google.com [209.85.160.199])
-	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4hakwn246m-1
-	(version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
-	for <linux-mediatek@lists.infradead.org>; Thu, 15 Oct 2026 09:48:35 +0000 (GMT)
-Received: by mail-qt1-f199.google.com with SMTP id d75a77b69052e-533758f24f4so13287081cf.1
-        for <linux-mediatek@lists.infradead.org>; Thu, 15 Oct 2026 02:48:35 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=oss.qualcomm.com; s=google; t=1792057715; x=1792662515; darn=lists.infradead.org;
-        h=content-transfer-encoding:content-type:in-reply-to:from
-         :content-language:references:cc:to:subject:user-agent:mime-version
-         :date:message-id:from:to:cc:subject:date:message-id:reply-to
-         :content-type;
-        bh=m3KAG7YDGqOBR2D8Zn+sxc9jTExC3PMBl+koNYY0A4Q=;
-        b=DnN7rC8gaVCrkULBZXWOmFKHO0ep8WqLS09+mJ+Yhx9PuxELbg9Rcg8Rjm6U6sqGBD
-         tct/bQoRjSdGXcFNU+KIDwN9FOsJAsGSkTf2ft89fpcWNs3mAaFks6EO9UD0DiJo2T11
-         nWzFEUY5nHqEdrzbhDfdlhVQxvf5Bx2dHtFBLd4QxfiKj2LaN/asEqIZJnhoZRB985QX
-         wzk6X8p/26Wq6pFoQO8x2mxw8R93F8xibqP8XjBCAU2u4ma1eFvp5pAn6yPe9tLrGNi9
-         GxNHVjkA23/FyrKyjFCkq2xX8uW6/q19LaUIBIbOgrxm0P1vpCIAldLxzb3GE0usrQ2l
-         dRMg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1792057715; x=1792662515;
-        h=content-transfer-encoding:content-type:in-reply-to:from
-         :content-language:references:cc:to:subject:user-agent:mime-version
-         :date:message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to:content-type;
-        bh=m3KAG7YDGqOBR2D8Zn+sxc9jTExC3PMBl+koNYY0A4Q=;
-        b=Lr/cshk8gLd2XZSmOwW1NRBa+mpGlElzHr4N9ahIM+Wjexl64UmimhvqkHLp8eQ98V
-         BzECXC7UlAtaXHQWPRTusygefjH8okq8MlwNEzx6QgykW51MlCxpVAnPY7LNDOpuTgae
-         SHu2Eju/v+MrAnNl7Lywlvvepn+UbRkuOMXpjD0LQSwdRAV+3obXr9g4voFb6GMZwyDw
-         YBpcvGJ0jZ/vlhJzU4KcK+z13hL3OziZcXhHVFy1BQFC92QZnl9xakFRZZ332S17QU5G
-         GWVyMljGldUoi/lEVpVf+RAFO+v1nHtt6VNkWVsGZ76sFJ7P3d/zumw1hvyVNE4ALBIt
-         UErw==
-X-Forwarded-Encrypted: i=1; AKwUvBxxfb1r1S3RqOxs/O3R6iC2NqyCRppJY/OS/vOHEW+j8bsSL9vmUhWZtEOo1J4lRcPXWOruQYofULBLrYfhwg==@lists.infradead.org
-X-Gm-Message-State: AFq9FYIdWkDqKu2qN6ahV/4bYumInw1LIJiuidkuFF7E5aMLakTs/G18
-	sZHwWEUNNqWwsU8BVtiNstx4nTddPKEsxl6Alj/sEDBFvnUuONhGyvJvmnJXN5eOAemXe1Z68cU
-	CGjw2S/JtTxzjkTM7/DGoXcNuhNCHB7qqKJrc+nzdy8hBxO9I3nQaoh64pVqa0d6g+ibRbL6EDQ
-	o=
-X-Gm-Gg: AYBFou3Rt+Hc4bnq490CRsEW6qjSifQBPLVhTtTBqBLBdU9tX0brC+dD03v6rJrrR8u
-	tVpeQQp56UxyoaJ6xe6VHEFqCFb65E37NusBm0eqcwRfx2UKsB63YXqwpqwXhdPUKkH5XQqM/aK
-	pHuZM9C8Uf/5w8J1pt3tec4hUtW5T3wxbOJUhw5aZrfRaEhu/SPvX7VRoQHEHVFd9DULzWfXnf/
-	OxFysiE8tIwNZkQILxPtGdrtqoDBBbn+mTYPybly+nlZLbi2tJkhJVHvzOE0U/zCUsi1e5fLy/e
-	K92A7Yap0fo6MzO9H1mRIILl9wItS0tFL/VJTq0w91bD/uFA7yqKmJRYmO7Sy1XmQ15cLoVtwqj
-	JLLT3kQsstWZFc+UHmizsnQ==
-X-Received: by 2002:a05:622a:507:b0:532:d67e:bc2e with SMTP id d75a77b69052e-5359f0634femr356798251cf.0.1792057714874;
-        Thu, 15 Oct 2026 02:48:34 -0700 (PDT)
-X-Received: by 2002:a05:622a:507:b0:532:d67e:bc2e with SMTP id d75a77b69052e-5359f0634femr356797601cf.0.1792057713501;
-        Thu, 15 Oct 2026 02:48:33 -0700 (PDT)
-Received: from [192.168.226.26] ([178.235.128.140])
-        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-c3eda622246sm102601366b.70.2026.10.15.02.48.30
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 15 Oct 2026 02:48:32 -0700 (PDT)
-Message-ID: <812d0272-db2a-4dd4-8e6c-e66145af2db5@oss.qualcomm.com>
-Date: Thu, 15 Oct 2026 11:48:29 +0200
+	id 1xHIjs-0000000HRfQ-1ehE;
+	Thu, 15 Oct 2026 10:31:09 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by sea.source.kernel.org (Postfix) with ESMTP id D5AEE41078;
+	Thu, 15 Oct 2026 10:31:07 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7EADF1F000C5;
+	Thu, 15 Oct 2026 10:31:05 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1792060267;
+	bh=eoYh+wmGkfMuCrYWAfzCPGRay9LfK9IhzqEdYF+ddbs=;
+	h=From:To:Cc:In-Reply-To:References:Subject:Date;
+	b=ZXqyQrV6Y7qejDD9SlNYEzQBYR5GGe5ROFqdWd53NW2wZQ9yh1ft+y6dpqkI+3uRs
+	 qTfJqdBvZTQ5qHICsZjul3pBTF59hlac8Fr8dEDPC2TcmnDVRYEH+RsCUjMYC78C2r
+	 YRKjwN2oi8BguEWhyuFdGws2IlgyhBO2/+ohgq0c1oAfkQ1dfYmbU8SF6DigX38KeO
+	 ZQxeIadKVXb2qSVKBj65xTLXyGDjY6pLBmx1AgN6ylVv0kfh1V53IxbcEoDlmSrrZ2
+	 QPDpjOrijyCUv6X79cx7cO6dqXjMPZdtxmJcOg8fE3kDW7iIF/nMbUSVppXrcssx+J
+	 0+UE/oMtoJ8DQ==
+From: Mark Brown <broonie@kernel.org>
+To: Liam Girdwood <lgirdwood@gmail.com>, 
+ Priyanka Mani <priyankamani2100@gmail.com>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Alexandre Mergnat <amergnat@baylibre.com>, linux-sound@vger.kernel.org, 
+ linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
+ linux-kernel@vger.kernel.org, Dan Carpenter <error27@gmail.com>
+In-Reply-To: <403cc04bb103dff096edf72b99ae6868ee91f359.1791782072.git.priyankamani2100@gmail.com>
+References: <403cc04bb103dff096edf72b99ae6868ee91f359.1791782072.git.priyankamani2100@gmail.com>
+Subject: Re: [PATCH] ASoC: mediatek: mt8365: Fix out-of-bounds read in
+ get_iir_coef()
+Message-Id: <179192115331.1606900.11418539527267482059.b4-ty@b4>
+Date: Tue, 13 Oct 2026 20:52:33 +0100
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 4/4] arm64: dts: qcom: Use DP AltMode defines
-To: Sebastian Reichel <sre@kernel.org>,
-        Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-        Rob Herring <robh@kernel.org>,
-        Krzysztof Kozlowski <krzk+dt@kernel.org>,
-        Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
-        Matthias Brugger <matthias.bgg@gmail.com>,
-        AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-        Bjorn Andersson <andersson@kernel.org>,
-        Konrad Dybcio <konradybcio@kernel.org>
-Cc: linux-usb@vger.kernel.org, devicetree@vger.kernel.org,
-        linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-        linux-rockchip@lists.infradead.org, linux-mediatek@lists.infradead.org,
-        linux-arm-msm@vger.kernel.org, kernel@collabora.com,
-        Sebastian Reichel <sebastian.reichel@collabora.com>
-References: <20261014-dp-altmode-dt-defines-v1-0-b657c9b6e4c3@collabora.com>
- <20261014-dp-altmode-dt-defines-v1-4-b657c9b6e4c3@collabora.com>
-Content-Language: en-US
-From: Konrad Dybcio <konrad.dybcio@oss.qualcomm.com>
-In-Reply-To: <20261014-dp-altmode-dt-defines-v1-4-b657c9b6e4c3@collabora.com>
-Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYxMDE1MDAzOCBTYWx0ZWRfX9bBQa9efQtuT
- O7d2sfeBlLifapEHdTkiG63+h+bpmR6ghPDs3r0lOm5RN+secuIjU41mGDck3u/HZucDsJe02Io
- 2KVUn8eYZjdBuza53ZS6c+9v46KeUgOoxD0Fi8qDfHC4/TK+IMACKuBVGu0RsHABKgVfF6dkiLw
- tDBsMAZrcdcAIl4agPXeQFQFkaaep5f4FNB8CwM3yf9yEBYOTVpTCV3y7P4NLes1pc3wtVBPnFk
- xRnkQKd9M9TkaJ5NeWEX8/b4ok5smo+mh0xyUCHt/qIe2x8ZDmKQnHnrP42YtiiafXX5NkOL4WR
- DCcRpCJsMzcR2WWpqyxV95LDenKRLEMhrpISbJpjy9DK9rozzvg2jNF3YbB78w/sidopQVxz2tU
- 4IueDnQHLXdbqJkstqGrpaR43L+dlysUYesqzIqRWSDg/k4vf5oWgUZ/eeMO21UC4sYEtjfWjuy
- rgmNivAhHpE9leIBRgg==
-X-Proofpoint-GUID: r3Xg19otc041tQmAQufmfaUyZUly6lHo
-X-Proofpoint-Spam-Info: AW1haW4tMjYxMDE1MDAzOCBTYWx0ZWRfX+1XjgMXRa1N6
- ISrZgpOrG1FYMga/ijUEGJKbg3XKU3U50zl1BPRMnj/7IhQlLBREDlUMiSSsJgou5VwRO/ZsM6S
- wFg59vooOXjJ46OKLGFaVwC+8Guag08=
-X-Authority-Analysis: v=2.4 cv=BqUIUoX5 c=1 sm=1 tr=0 ts=6ad0a173 cx=c_pps
- a=WeENfcodrlLV9YRTxbY/uA==:117 a=PRfkaYvzSr8QmIIGAkY2Sg==:17
- a=IkcTkHD0fZMA:10 a=660iZSQnnn4A:10 a=s4-Qcg_JpJYA:10
- a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=_glEPmIy2e8OvE2BGh3C:22
- a=QX4gbG5DAAAA:8 a=EUspDBNiAAAA:8 a=C_hJBzH1aKR8969NbtkA:9 a=QEXdDO2ut3YA:10
- a=kacYvNCVWA4VmyqE58fU:22 a=AbAUZ8qAyYyZVLSsDulk:22
-X-Proofpoint-ORIG-GUID: r3Xg19otc041tQmAQufmfaUyZUly6lHo
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1176,Hydra:6.1.134,FMLib:17.12.100.49
- definitions=2026-10-14_01,2026-10-14_01,2025-10-01_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- impostorscore=0 adultscore=0 spamscore=0 bulkscore=0 suspectscore=0
- clxscore=1015 malwarescore=0 phishscore=0 lowpriorityscore=0
- priorityscore=1501 classifier=typeunknown authscore=0 authtc= authcc=
- route=outbound adjust=0 reason=mlx scancount=1 engine=8.22.0-2610080000
- definitions=main-2610150038
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261015_024836_542593_A0391E29 
-X-CRM114-Status: GOOD (  10.44  )
+X-Mailer: b4 0.17-dev
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1147; i=broonie@kernel.org;
+ h=from:subject:message-id; bh=OeNecRvAZ2xIg1KwKkSy3lnhgYoQ9dQyV2iwg36Y1C8=;
+ b=owGbwMvMwCWm/754w+YLFp2Mp9WSGLIurE6P8+r9axAV+TZqMgNber7dtH0Jq1NyvtYzer+5z
+ W+2KOt4RykLgxgXg6yYIktcFvfL+pLXa/gOLmyDmcPKBDKEgYtTACbC8peRYf8Zj9463o86y/9b
+ 3S5ZUKJxYc+ZhLMNGks3/YyaJH/e5AkjQ1Odr1Prn7xu2zzfKedVVtivXsYr+C86dd3uQ7v0OE/
+ 1cgEA
+X-Developer-Key: i=broonie@kernel.org; a=openpgp;
+ fpr=3F2568AAC26998F9E813A1C5C3F436CA30F5D8EB
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -162,16 +81,35 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On 10/14/26 11:31 PM, Sebastian Reichel wrote:
-> From: Sebastian Reichel <sebastian.reichel@collabora.com>
-> 
-> Use the new USB-C DP AltMode defines for the SVID and the capabilities
-> VDO to make the DTs more readable.
-> 
-> Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
-> ---
+On Mon, 12 Oct 2026 05:31:19 +0000, Priyanka Mani wrote:
+> ASoC: mediatek: mt8365: Fix out-of-bounds read in get_iir_coef()
 
-Reviewed-by: Konrad Dybcio <konrad.dybcio@oss.qualcomm.com>
+Applied to
 
-Konrad
+   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-7.4
+
+Thanks!
+
+[1/1] ASoC: mediatek: mt8365: Fix out-of-bounds read in get_iir_coef()
+      https://git.kernel.org/broonie/sound/c/e913917febd3
+
+All being well this means that it will be integrated into the linux-next
+tree (usually sometime in the next 24 hours) and sent to Linus during
+the next merge window (or sooner if it is a bug fix), however if
+problems are discovered then the patch may be dropped or reverted.
+
+You may get further e-mails resulting from automated or manual testing
+and review of the tree, please engage with people reporting problems and
+send followup patches addressing any issues that are reported if needed.
+
+If any updates are required or you are submitting further changes they
+should be sent as incremental updates against current git, existing
+patches will not be replaced.
+
+Please add any relevant lists and maintainers to the CCs when replying
+to this mail.
+
+Thanks,
+Mark
+
 
