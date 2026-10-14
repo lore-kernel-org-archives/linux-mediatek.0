@@ -4,119 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 88802CC6B24
-	for <linux-mediatek@archiver.kernel.org>; Wed, 14 Oct 2026 07:18:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1BBC4CC6B1A
+	for <linux-mediatek@archiver.kernel.org>; Wed, 14 Oct 2026 08:35:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:To:From:Reply-To:
-	Cc:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=AkOBHEcCTf9OU+UBBL5N7jsT1bYfXZfP7rniTkyuak0=; b=FNihIAGR+Aar56yNhYQbsiKf2R
-	ax4OfZ0XXZ4YEy1SWHjotkbBBPN3Pe/dh0A9yCbe/l+5VjHO9Qwmfoua6thcSrJeBLgjj/k9bmLRq
-	ikwQeBUQRNakEviuf12QtoySNAX3XBPIX0w0esGUy8jNQoZucWYKa2+q6VzFSvTc+9vBXwDYZnrzX
-	NJour4aBIFdAE5LKEXvsaR3xWsazGoa6COHPDrPFLf55un8QShqDybenNZVJDwmPjchuc7l5FVxud
-	vuBVvpK52hyKl4Djy8A5NOY2xumnxGypcJZQic44CgL0w9i6n5MuJmuKVsppyqNBdpuQRsAd3LBrN
-	kwNeLE7g==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:Message-Id:Date:MIME-Version:Subject:References:
+	In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=QFT/+BhkdYdoXf5v5CBA3OcjOICHpHy7/Ndrrgblf7Q=; b=NCi0gv21bPHdSV9mQXJHL4/n/Y
+	5nPgQo849QlFbbzKccXXDJqgc8mxZhDulZEq1UdYl9UTXGSCR+HZ407Ph0QLQh2oWDTJ3POulXz0G
+	+YhKpxqV3dXV17a47pSjgaiYqiZXlq9lyvbgvK0M07xcap7tTHVD1rowOJnu2HW4CDzVBy8c5Ef6u
+	dwhFSkfzn8zNGOJX2TErsU+G3fijPBT4dtU5/VM4ypoeCSWfW67JbaN14Ncl40J1XRIONnbvIpVJ7
+	QadhOsHWVwuQflfGatopg8tuG3T5ArT+7uGLuETkPjLRCXlUZcyu6l5VxXWJY4/LE2ORmIpQQinTm
+	v0GwcyIQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xGtGF-0000000EiQU-1yPX;
-	Wed, 14 Oct 2026 07:18:51 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1xGuSL-0000000EuXl-38l6;
+	Wed, 14 Oct 2026 08:35:25 +0000
+Received: from forward501d.mail.yandex.net ([31.44.14.17])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xGtFk-0000000EiAr-2aX0
-	for linux-mediatek@bombadil.infradead.org;
-	Wed, 14 Oct 2026 07:18:26 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
-	:References:In-Reply-To:Message-ID:Date:Subject:To:From:Sender:Reply-To:Cc:
-	Content-Type:Content-ID:Content-Description;
-	bh=AkOBHEcCTf9OU+UBBL5N7jsT1bYfXZfP7rniTkyuak0=; b=ARHuJKXguXhP8p7ckCHvt/f6PY
-	TNBtOvxTYEheQ5+71BE2xzrkoxqu9mVcYeILdrl0b0TsUg3dCLcXNd8KzT/aSj2bHyufD0T8I2C9Y
-	kmwmATtX1viGi3ujkNwSts3jxbucyiaYkm7IvTeDP82Lbu0EKqcBOx0fimPoDqCMUnWAZ5i7j9nZi
-	0sJ/YUh+acEkbPhdM8jilAuTqKPM4IoXOoJ3MsXeccG42TJgTeYGdgLOG3HjzF75IjwsTZroDTdy8
-	XrZMeAA7TuU3px2Y8I0x7cZTFNu+iXOeKiH73OvjwnWPFZwIVu/SWPYmcaxWC/+NHiWR/2c6SvzBS
-	QEe5xkOg==;
-Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
-	by desiato.infradead.org with esmtps (Exim 4.99.5 #2 (Red Hat Linux))
-	id 1xGtFh-0000000GRJs-29F2
+	id 1xGuSH-0000000EuW1-0SWo
 	for linux-mediatek@lists.infradead.org;
-	Wed, 14 Oct 2026 07:18:19 +0000
-Received: by mail-wm1-x330.google.com with SMTP id 5b1f17b1804b1-4a1682bff3cso2611025e9.1
-        for <linux-mediatek@lists.infradead.org>; Wed, 14 Oct 2026 00:18:17 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1791962296; x=1792567096; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:to:from:from:to:cc:subject:date:message-id
-         :reply-to:content-type;
-        bh=AkOBHEcCTf9OU+UBBL5N7jsT1bYfXZfP7rniTkyuak0=;
-        b=OYOdq/QdI/kURavctSD5/n3ly9x4ptyctYM8VmAy7vmKoazo/nZeYyDP57VedvXKTs
-         Xfp4dDlnHGxcFYeEnE9IZzizYU5uQwtYHRTlEyh9q7VZ/6vJ54qRFPCCT76NInvAoQTM
-         BPXXGgeLPnDd+deF0JJlXT1RZTzl+6c7ECYwAZuNPItYMceP1R5pQtUU3hkM/kUIX+fp
-         VWxw+XjPDZPxo/HaxcmsxhavZifJL3V9D6cTpAPP+wMqJ1ESTd7zB9ZIjnhtzKcuhABA
-         qmlAJ+95Xwi7cYfWYkOZc+3s6nlbvaID65YU+teqA+3hgnU3A43X3pC6wQv48tH6RTkx
-         +u5g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1791962296; x=1792567096;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:to:from:x-gm-gg:x-gm-message-state:from:to
-         :cc:subject:date:message-id:reply-to:content-type;
-        bh=AkOBHEcCTf9OU+UBBL5N7jsT1bYfXZfP7rniTkyuak0=;
-        b=2G3GvrN3mQwuSfT4iKNmhNNY+wJIf/DM2qmTQrUd6mWDZV+r7YdhEqG5KVI33xrwIp
-         eNaHUz0lcY2r2hlB4+G1J3seGEaOzuH9eMdYuoMD9Huida7wXyiyt2Q2imdYibGcKniK
-         LlNEbkq9hpIM6X1vdU952RlXhaf4mrZi9OIhdqQDz8cZ93JtXxwm3F7iWMe37Trf2wIN
-         D7EesPr+zoEMTbHNfxkkyOFlfdvKV0Md8XN6Is0YwRGhSmbIaGRiG/w799wO8QYtTkyH
-         xBtI4C6qsbsxZ6FT7G/y7znpKo77QUmk6DhrouuGDdXlmMCRvL1xx6xcgfJ6vDwXx2c1
-         U2sw==
-X-Forwarded-Encrypted: i=1; AKwUvBwc5N7aPnF6ro2sNqmIlDXg3bm1HGNRO+a/gNgaIzXYPJcorTlTLmrJ+lFyGPRjsahPOekH4igCic/AVjREMw==@lists.infradead.org
-X-Gm-Message-State: AFq9FYK9xoMfne9HgOEl2Xqk+a+7uUve4YtDsGPQH+SkzSROkMwZ24T6
-	OctBDzaCAbjpTYm+VLWbgX5NNu6sSsDuZp+jCJQFJxf+cPmYji4K7P/B
-X-Gm-Gg: AYBFou0W1pCuhRTbz0H2J8YL4i2NXHEC0CH/a+K94Richtk1EN46yUWG3kc1UEqcOmK
-	qq8spBMsa6q/tyH5n1whoXOuROH3mEWGhVq/8ZXk/8Hb0cZIgOuRQkDMOjGZGY5Z/f4RAToLboi
-	JnYaCpNT36OQRGjf/eSl+a4LEpUmorpMn4PAEqOEaE7Vx/lFdR1vXzCrvPYeHU/4YDwpbndJiUv
-	Dvk/oZSIaIZcg1BWTOzPURL9Jwj3ghqRhFRIqVihIx1vngRyokVTk8ZHAv48vtLo/8grGwBj7kl
-	eDhzv47P3i1NZnOJFiTYJTt05yaJLV29YZoeIHKu61H1xYwiRc542J/aujOTfN49DmUs0LcMSm5
-	RSjPP9p59sFUKkaZ6OJuJzCS2ZOI77FmCo4oIA5n3l+/f6X3BCi8hF6rAAy7sVRNzNjPNxMZ9f4
-	rLyZoIS6OpjhvncJda0AryUGq+1fuXHqXcz6C4/hvxlcTBLtBLrlqectOr614FnJH1gFMtFVqjt
-	RLlFSk7I9qsjrreC4aIoY8EeuFEeCXsfpYWnkrf0Vtpz271/lIbJbfRV5tVRHDy/JZEtCkjpyxD
-	+DAY6r2LhnguU3dO4+t3AA==
-X-Received: by 2002:a05:600c:4fd5:b0:4a0:5b:7bc0 with SMTP id 5b1f17b1804b1-4a18e49a7e3mr304316745e9.21.1791962295788;
-        Wed, 14 Oct 2026 00:18:15 -0700 (PDT)
-Received: from Ansuel-XPS24.localdomain (host-95-235-252-189.retail.telecomitalia.it. [95.235.252.189])
-        by smtp.googlemail.com with ESMTPSA id 5b1f17b1804b1-4a1b35d64e4sm18756285e9.0.2026.10.14.00.18.13
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 14 Oct 2026 00:18:15 -0700 (PDT)
-From: Christian Marangi <ansuelsmth@gmail.com>
-To: Andrew Lunn <andrew@lunn.ch>,
-	Heiner Kallweit <hkallweit1@gmail.com>,
-	Russell King <linux@armlinux.org.uk>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@kernel.org>,
-	Jakub Kicinski <kuba@kernel.org>,
-	Paolo Abeni <pabeni@redhat.com>,
-	Christian Marangi <ansuelsmth@gmail.com>,
-	Daniel Golle <daniel@makrotopia.org>,
-	Qingfang Deng <dqfext@gmail.com>,
-	SkyLake Huang <SkyLake.Huang@mediatek.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Ahmed Naseef <naseefkm@gmail.com>,
-	Joris Vaisvila <joey@tinyisr.com>,
-	linux-kernel@vger.kernel.org,
+	Wed, 14 Oct 2026 08:35:24 +0000
+Received: from mail-nwsmtp-mxback-production-main-60.iva.yp-c.yandex.net (mail-nwsmtp-mxback-production-main-60.iva.yp-c.yandex.net [IPv6:2a02:6b8:c0c:6718:0:640:45f5:0])
+	by forward501d.mail.yandex.net (postfix) with ESMTPS id 4E3998B9B7;
+	Wed, 14 Oct 2026 11:35:11 +0300 (MSK)
+Received: from mail.yandex.ru (2a02:6b8:c0c:7888:0:640:d17b:0 [2a02:6b8:c0c:7888:0:640:d17b:0])
+	by mail-nwsmtp-mxback-production-main-60.iva.yp-c.yandex.net (mxback) with HTTPS id 8ZPi9s02JiE0-4a05ILdO;
+	Wed, 14 Oct 2026 11:35:10 +0300
+X-Yandex-Fwd: 1
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=0upti.me; s=mail;
+	t=1791966910; bh=QFT/+BhkdYdoXf5v5CBA3OcjOICHpHy7/Ndrrgblf7Q=;
+	h=Message-Id:References:Date:Cc:Subject:In-Reply-To:To:From;
+	b=WI3km828KsDttE99nyfjt/pXjPlHNsBw1kFmwaZ0T5FUKY18CDaCwvdQmhFrPqHBC
+	 HPsbQn9i8cAuk46I8BtN1qu6oUYdepIRLnYnBAIA/W4r1iE+e1X3JChqECb46QD0PE
+	 QA5NOcl0+qnHzVFmyurUCMMctg7zgtHBU2g2CNs4=
+Authentication-Results: mail-nwsmtp-mxback-production-main-60.iva.yp-c.yandex.net; dkim=pass header.i=@0upti.me
+Received: by ybzyx5bgt3byggqr.iva.yp-c.yandex.net (sendbernar) with HTTPS id 9583a2851fa81df7e03c6027b58d62c3;
+	Wed, 14 Oct 2026 11:35:10 +0300
+From: Ilya K <me@0upti.me>
+To: Ben Greear <greearb@candelatech.com>
+Cc: linux-wireless@vger.kernel.org,
 	netdev@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
-Subject: [PATCH net-next v3 6/6] net: phy: mediatek: add calibration logic for AN7583
-Date: Wed, 14 Oct 2026 09:17:37 +0200
-Message-ID: <20261014071739.216345-7-ansuelsmth@gmail.com>
-X-Mailer: git-send-email 2.55.0
-In-Reply-To: <20261014071739.216345-1-ansuelsmth@gmail.com>
-References: <20261014071739.216345-1-ansuelsmth@gmail.com>
+In-Reply-To: <221941791052355@558b3e58-c2b1-4e14-91fe-beb5649d18f6>
+References: <1767631788532094@64c4e675-cd08-4a74-816f-886742f9bfcd> <529a79bc-dab7-aa41-00bd-c47ecbefaa00@candelatech.com> <471221788538289@323ca970-5bd2-4c6b-b52d-2b863a718615> <3acf531c-bcc7-412b-b3bb-665069260e46@candelatech.com> <2028561788553569@f088f4ec-f441-47a1-b7e4-75a1052aa4df> <2418461788691106@84aa39c5-f501-4e64-8418-6a8b6eb88e21> <eb405366-6574-4e4c-a89d-363751ed848b@candelatech.com> <4175721788798939@f00554c7-d809-471c-9bcf-78e5d8eceab4> <1556871789207706@7dc9deb3-4292-4932-8568-de9b411208d8> <1443771789748846@4a8ec5ae-80ed-44bc-b7d3-6bc660c90136> <211851789913261@df1900ea-d467-4ed7-a7f1-de68a4c3e6dd> <143991791036721@40be7595-980b-4665-ba66-1601e10a0899> <c4286904-2a9a-41fd-93ce-be57964909f6@candelatech.com> <221941791052355@558b3e58-c2b1-4e14-91fe-beb5649d18f6>
+Subject: Re:[bug] Triple whammy of mt7996e bugs on 7.2+
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+X-Mailer: Yamail [ http://yandex.ru ] 5.0
+Date: Wed, 14 Oct 2026 11:35:10 +0300
+Message-Id: <5955851791966910@d362902e-9931-4ad0-8e86-72401cc67703>
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261014_081817_814495_2C50C514 
-X-CRM114-Status: GOOD (  19.37  )
+X-CRM114-CacheID: sfid-20261014_013521_339820_CAAAEB39 
+X-CRM114-Status: UNSURE (   5.56  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -131,290 +75,9 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Similar to Airoha AN7581 Switch PHY also the Airoha AN7583 SoC
-requires dedicated calibration and tuneup to make EEE correctly work.
+OK, so I took some time off of this because of real life, but during that time, my 7.2-stable-with-Ben's-patches frankentree actually crashed! I am not sure if this is the same issue or a different one, but I thought it's at least interesting. 
 
-Airoha AN7583 differ from AN7581 by having a dedicated table for
-calibration and additional EEE logic tuneup.
+Here's the logs from the ~hour when it crashed (exported from Loki, so sorry for the weird format): https://gist.github.com/K900/e2e5b21d6a49f450fe353c7cc3057916
 
-Signed-off-by: Christian Marangi <ansuelsmth@gmail.com>
----
- drivers/net/phy/mediatek/airoha-ge-soc.c | 226 ++++++++++++++++++++++-
- drivers/net/phy/mediatek/mtk.h           |   1 +
- 2 files changed, 224 insertions(+), 3 deletions(-)
-
-diff --git a/drivers/net/phy/mediatek/airoha-ge-soc.c b/drivers/net/phy/mediatek/airoha-ge-soc.c
-index 6c8557ac1349..1d88f66e4773 100644
---- a/drivers/net/phy/mediatek/airoha-ge-soc.c
-+++ b/drivers/net/phy/mediatek/airoha-ge-soc.c
-@@ -159,6 +159,106 @@ static u8 an7581_zcal_to_r45ohm[64] = {
- 	 52,  50,  48,  46,  44,  42,  40,  39,  36,  35,  32,  32,  30,  28,  27,  25
- };
- 
-+/*
-+ * 2 chip revision
-+ * TXMR or discrete
-+ * 2 MDI type
-+ * TX AMP test/TX AMP 1G/TX AMP 100M/TX AMP 10M/R50
-+ * 4 PHY
-+ */
-+static int an7583_tx_amp_compensation_tbl[TRANSFORMER_TYPE_MAX][MDI_TYPE_MAX][CALIB_CONST_TYPE_MAX][4] = {
-+	[DISCRETE] = {
-+		[MDI_0R] = {
-+			[TX_AMP_TEST_A] = { -3, -3, -3, -3 },
-+			[TX_AMP_TEST_B] = { -3, -3, -3, -3 },
-+			[TX_AMP_TEST_C] = { -3, -3, -3, -3 },
-+			[TX_AMP_TEST_D] = { -3, -3, -3, -3 },
-+			[TX_AMP_1G_A] = { 0, 0, 0, 0 },
-+			[TX_AMP_1G_B] = { 0, 0, 0, 0 },
-+			[TX_AMP_1G_C] = { 0, 0, 0, 0 },
-+			[TX_AMP_1G_D] = { 0, 0, 0, 0 },
-+			[TX_AMP_100M_A] = { 4, 4, 4, 4 },
-+			[TX_AMP_100M_B] = { 4, 4, 4, 4 },
-+			[TX_AMP_10M_A] = { 0, 0, 0, 0 },
-+			[TX_AMP_10M_B] = { 0, 0, 0, 0 },
-+			[R50_A] = { 4, 4, 4, 4 },
-+			[R50_B] = { 4, 4, 4, 4 },
-+			[R50_C] = { 6, 6, 6, 6 },
-+			[R50_D] = { 4, 4, 4, 4 },
-+		},
-+		[MDI_5R] = {
-+			[TX_AMP_TEST_A] = { -3, -3, -3, -3 },
-+			[TX_AMP_TEST_B] = { -3, -3, -3, -3 },
-+			[TX_AMP_TEST_C] = { -3, -3, -3, -3 },
-+			[TX_AMP_TEST_D] = { -3, -3, -3, -3 },
-+			[TX_AMP_1G_A] = { 0, 0, 0, 0 },
-+			[TX_AMP_1G_B] = { 0, 0, 0, 0 },
-+			[TX_AMP_1G_C] = { 0, 0, 0, 0 },
-+			[TX_AMP_1G_D] = { 0, 0, 0, 0 },
-+			[TX_AMP_100M_A] = { 4, 4, 4, 4 },
-+			[TX_AMP_100M_B] = { 4, 4, 4, 4 },
-+			[TX_AMP_10M_A] = { 0, 0, 0, 0 },
-+			[TX_AMP_10M_B] = { 0, 0, 0, 0 },
-+			[R50_A] = { 0, 0, 0, 0 },
-+			[R50_B] = { 0, 0, 0, 0 },
-+			[R50_C] = { 0, 0, 0, 0 },
-+			[R50_D] = { 0, 0, 0, 0 },
-+		},
-+	},
-+	[TXMR] = {
-+		[MDI_0R] = {
-+			[TX_AMP_TEST_A] = { -3, -3, -3, -3 },
-+			[TX_AMP_TEST_B] = { -3, -3, -3, -3 },
-+			[TX_AMP_TEST_C] = { -3, -3, -3, -3 },
-+			[TX_AMP_TEST_D] = { -3, -3, -3, -3 },
-+			[TX_AMP_1G_A] = { 0, 0, 0, 0 },
-+			[TX_AMP_1G_B] = { 0, 0, 0, 0 },
-+			[TX_AMP_1G_C] = { 0, 0, 0, 0 },
-+			[TX_AMP_1G_D] = { 0, 0, 0, 0 },
-+			[TX_AMP_100M_A] = { 4, 4, 4, 4 },
-+			[TX_AMP_100M_B] = { 4, 4, 4, 4 },
-+			[TX_AMP_10M_A] = { 0, 0, 0, 0 },
-+			[TX_AMP_10M_B] = { 0, 0, 0, 0 },
-+			[R50_A] = { 4, 4, 0, 0 },
-+			[R50_B] = { 4, 4, 0, 0 },
-+			[R50_C] = { 5, 5, 3, 4 },
-+			[R50_D] = { 4, 4, 4, 0 },
-+		},
-+		[MDI_5R] = {
-+			[TX_AMP_TEST_A] = { -3, -3, -3, -3 },
-+			[TX_AMP_TEST_B] = { -3, -3, -3, -3 },
-+			[TX_AMP_TEST_C] = { -3, -3, -3, -3 },
-+			[TX_AMP_TEST_D] = { -3, -3, -3, -3 },
-+			[TX_AMP_1G_A] = { 0, 0, 0, 0 },
-+			[TX_AMP_1G_B] = { 0, 0, 0, 0 },
-+			[TX_AMP_1G_C] = { 0, 0, 0, 0 },
-+			[TX_AMP_1G_D] = { 0, 0, 0, 0 },
-+			[TX_AMP_100M_A] = { 4, 4, 4, 4 },
-+			[TX_AMP_100M_B] = { 4, 4, 4, 4 },
-+			[TX_AMP_10M_A] = { 0, 0, 0, 0 },
-+			[TX_AMP_10M_B] = { 0, 0, 0, 0 },
-+			[R50_A] = { -4, -4, -4, -4 },
-+			[R50_B] = { -4, -4, -4, -4 },
-+			[R50_C] = { -2, -2, -2, -2 },
-+			[R50_D] = { -3, -3, -2, -2 },
-+		},
-+	},
-+};
-+
-+static u8 an7583_zcal_to_r50ohm_0R[64] = {
-+	127, 127, 127, 127, 127, 127, 127, 127, 127, 127, 127, 127, 127, 127, 127, 127,
-+	127, 127, 127, 122, 118, 114, 110, 106, 102,  98,  96,  92,  88,  85,  82,  80,
-+	 76,  72,  70,  68,  64,  62,  60,  57,  55,  52,  50,  48,  46,  44,  41,  40,
-+	 38,  36,  33,  32,  30,  28,  26,  24,  24,  22,  20,  18,  16,  16,  14,  12,
-+};
-+
-+static u8 an7583_zcal_to_r50ohm_5R[64] = {
-+	127, 127, 127, 127, 127, 127, 127, 127, 127, 127, 127, 127, 127, 127, 127, 127,
-+	127, 127, 127, 127, 127, 127, 127, 127, 127, 124, 120, 116, 112, 110, 106, 102,
-+	 99,  96,  93,  90,  88,  84,  81,  79,  76,  73,  71,  68,  66,  64,  61,  59,
-+	 56,  54,  52,  50,  48,  46,  44,  42,  40,  39,  37,  36,  33,  32,  31,  29,
-+};
-+
- static int airoha_cal_cycle(struct phy_device *phydev, int devad,
- 			    u32 regnum, u16 mask, u16 cal_val)
- {
-@@ -783,8 +883,9 @@ static int airoha_rx_offset_cal_sw(struct phy_device *phydev)
- 	phy_write_mmd(phydev, MDIO_MMD_VEND2, 0x100, 0x0);
- 	phy_write_mmd(phydev, MDIO_MMD_VEND1, 0x145, 0x1000);
- 
--	phy_write_mmd(phydev, MDIO_MMD_VEND1, MTK_PHY_RG_ANA_CAL_RG6,
--		      0x1);
-+	if (phydev->drv->phy_id == AIROHA_GPHY_ID_AN7581)
-+		phy_write_mmd(phydev, MDIO_MMD_VEND1,
-+			      MTK_PHY_RG_ANA_CAL_RG6, 0x1);
- 
- 	return 0;
- }
-@@ -1567,8 +1668,125 @@ static int en7528_phy_config_init(struct phy_device *phydev)
- 
- static int an7583_phy_config_init(struct phy_device *phydev)
- {
-+	struct airoha_socphy_shared *shared = phy_package_get_priv(phydev);
-+	struct phy_device *phydev_p0;
-+	u8 phy_offset;
-+	int ret;
-+
- 	/* BMCR_PDOWN is enabled by default */
--	return phy_clear_bits(phydev, MII_BMCR, BMCR_PDOWN);
-+	phy_clear_bits(phydev, MII_BMCR, BMCR_PDOWN);
-+
-+	phydev_p0 = shared->phydev_p0;
-+	phy_offset = phydev->mdio.addr - phydev_p0->mdio.addr;
-+
-+	/* FIXME: Read SoC MDI Resister Type if available or default to 5R */
-+	shared->mdi_resister_type = MDI_5R;
-+
-+	if (shared->mdi_resister_type == MDI_0R)
-+		shared->r50_cal_tbl = an7583_zcal_to_r50ohm_0R;
-+	if (shared->mdi_resister_type == MDI_5R)
-+		shared->r50_cal_tbl = an7583_zcal_to_r50ohm_5R;
-+	shared->tx_amp_compensation_tbl = &an7583_tx_amp_compensation_tbl;
-+
-+	ret = airoha_phy_calib(phydev);
-+	if (ret)
-+		return ret;
-+
-+	ret = airoha_phy_auto_select_transformer(phydev);
-+	if (ret)
-+		return ret;
-+
-+	ret = airoha_phy_tx_amp_compensation(phydev);
-+	if (ret)
-+		return ret;
-+
-+	/* Enable Idle Mode Power Setting */
-+	if (phy_offset == 0) {
-+		phy_write_mmd(phydev, MDIO_MMD_VEND2, 0x268, 0x07F1);
-+		phy_write_mmd(phydev, MDIO_MMD_VEND2, 0x703, 0x3111);
-+		phy_write_mmd(phydev, MDIO_MMD_VEND2, 0x271, 0x3C24);
-+		phy_write_mmd(phydev, MDIO_MMD_VEND2, 0x701, 0x1023);
-+	}
-+
-+	if (shared->transformer_type[phy_offset] == TXMR) {
-+		phy_write_mmd(phydev, MDIO_MMD_VEND1, 0x23, 0x0881);
-+		phy_write_mmd(phydev, MDIO_MMD_VEND1, 0x24, 0x0881);
-+		phy_write_mmd(phydev, MDIO_MMD_VEND1, 0x25, 0x0881);
-+		phy_write_mmd(phydev, MDIO_MMD_VEND1, 0x26, 0x0881);
-+
-+		if (shared->mdi_resister_type == MDI_5R)
-+			phy_write_mmd(phydev, MDIO_MMD_VEND1, 0x05, 0x0205);
-+		else
-+			phy_write_mmd(phydev, MDIO_MMD_VEND1, 0x05, 0x0200);
-+	} else {
-+		if (shared->mdi_resister_type == MDI_5R) {
-+			/* RX setting for 5R_TXMR before AN setting */
-+			phy_write_mmd(phydev, MDIO_MMD_VEND1, 0xe7, 0x6666);
-+			phy_write_mmd(phydev, MDIO_MMD_VEND1, 0xe9, 0x0003);
-+			phy_write_mmd(phydev, MDIO_MMD_VEND1, 0xfe, 0x0006);
-+			phy_write_mmd(phydev, MDIO_MMD_VEND1, 0xe6, 0x1111);
-+			/* 100M sharp */
-+			phy_write_mmd(phydev, MDIO_MMD_VEND1, 0x23, 0x0c86);
-+			phy_write_mmd(phydev, MDIO_MMD_VEND1, 0x24, 0x0c86);
-+			phy_write_mmd(phydev, MDIO_MMD_VEND1, 0x25, 0x0c86);
-+			phy_write_mmd(phydev, MDIO_MMD_VEND1, 0x26, 0x0c86);
-+			phy_write_mmd(phydev, MDIO_MMD_VEND1, 0x01, 0x01cb);
-+			phy_write_mmd(phydev, MDIO_MMD_VEND1, 0x02, 0x01c2);
-+			phy_write_mmd(phydev, MDIO_MMD_VEND1, 0x03, 0x0108);
-+			phy_write_mmd(phydev, MDIO_MMD_VEND1, 0x04, 0x0211);
-+			phy_write_mmd(phydev, MDIO_MMD_VEND1, 0x05, 0x0205);
-+			phy_write_mmd(phydev, MDIO_MMD_VEND1, 0x06, 0x0387);
-+			phy_write_mmd(phydev, MDIO_MMD_VEND1, 0x07, 0x03ce);
-+			phy_write_mmd(phydev, MDIO_MMD_VEND1, 0x08, 0x03c8);
-+			phy_write_mmd(phydev, MDIO_MMD_VEND1, 0x0b, 0x0005);
-+		} else {
-+			/* 100M sharp */
-+			phy_write_mmd(phydev, MDIO_MMD_VEND1, 0x23, 0x0886);
-+			phy_write_mmd(phydev, MDIO_MMD_VEND1, 0x24, 0x0886);
-+			phy_write_mmd(phydev, MDIO_MMD_VEND1, 0x25, 0x0886);
-+			phy_write_mmd(phydev, MDIO_MMD_VEND1, 0x26, 0x0886);
-+			phy_write_mmd(phydev, MDIO_MMD_VEND1, 0x00, 0x0195);
-+			phy_write_mmd(phydev, MDIO_MMD_VEND1, 0x01, 0x01cb);
-+			phy_write_mmd(phydev, MDIO_MMD_VEND1, 0x02, 0x01c2);
-+			phy_write_mmd(phydev, MDIO_MMD_VEND1, 0x03, 0x0108);
-+			phy_write_mmd(phydev, MDIO_MMD_VEND1, 0x04, 0x0211);
-+			phy_write_mmd(phydev, MDIO_MMD_VEND1, 0x05, 0x0205);
-+			phy_write_mmd(phydev, MDIO_MMD_VEND1, 0x06, 0x0387);
-+			phy_write_mmd(phydev, MDIO_MMD_VEND1, 0x07, 0x03ce);
-+			phy_write_mmd(phydev, MDIO_MMD_VEND1, 0x08, 0x03c3);
-+			phy_write_mmd(phydev, MDIO_MMD_VEND1, 0x0a, 0x0010);
-+			phy_write_mmd(phydev, MDIO_MMD_VEND1, 0x0b, 0x0005);
-+		}
-+	}
-+
-+	/* RX Setting */
-+	phy_write_mmd(phydev, MDIO_MMD_VEND1, 0x3c, 0xc000);
-+	phy_write_mmd(phydev, MDIO_MMD_VEND1, 0x3d, 0x0000);
-+	phy_write_mmd(phydev, MDIO_MMD_VEND1, 0x3e, 0xc000);
-+
-+	/* EEE setting */
-+	phy_write_mmd(phydev, MDIO_MMD_AN, 0x3c, 0x0000);
-+
-+	/* 10M settings */
-+	phy_write_mmd(phydev, MDIO_MMD_VEND1, 0x1a3, 0x00d2);
-+	phy_write_mmd(phydev, MDIO_MMD_VEND1, 0x1a4, 0x010e);
-+	phy_write_mmd(phydev, MDIO_MMD_VEND2, 0x27b, 0x1177);
-+	phy_write_mmd(phydev, MDIO_MMD_VEND2, 0x27c, 0x0808);
-+
-+	phy_select_page(phydev, MTK_PHY_PAGE_EXTENDED_3);
-+	__phy_write(phydev, 0x14, 0x190);
-+	phy_restore_page(phydev, MTK_PHY_PAGE_STANDARD, 0);
-+
-+	phy_select_page(phydev, MTK_PHY_PAGE_EXTENDED_1);
-+	__phy_write(phydev, 0x14, 0x3a18);
-+	phy_restore_page(phydev, MTK_PHY_PAGE_STANDARD, 0);
-+
-+	phy_write(phydev, 0x9, 0x0600);
-+
-+	/* EEE keep only Pair A ON */
-+	phy_write_mmd(phydev, MDIO_MMD_VEND1, 0x630, 0x006E);
-+
-+	return 0;
- }
- 
- static struct phy_driver mtk_socphy_driver[] = {
-@@ -1611,6 +1829,8 @@ static struct phy_driver mtk_socphy_driver[] = {
- 		.led_hw_control_set = mt798x_phy_led_hw_control_set,
- 		.led_hw_control_get = mt798x_phy_led_hw_control_get,
- 		.led_polarity_set = an7581_phy_led_polarity_set,
-+		.read_page	= mtk_phy_read_page,
-+		.write_page	= mtk_phy_write_page,
- 	},
- };
- 
-diff --git a/drivers/net/phy/mediatek/mtk.h b/drivers/net/phy/mediatek/mtk.h
-index bc46646a95fd..608e5e3d754f 100644
---- a/drivers/net/phy/mediatek/mtk.h
-+++ b/drivers/net/phy/mediatek/mtk.h
-@@ -13,6 +13,7 @@
- 
- #define MTK_EXT_PAGE_ACCESS			0x1f
- #define MTK_PHY_PAGE_EXTENDED_1			0x0001
-+#define MTK_PHY_PAGE_EXTENDED_3			0x0003
- #define MTK_PHY_PAGE_STANDARD			0x0000
- #define MTK_PHY_PAGE_EXTENDED_52B5		0x52b5
- 
--- 
-2.55.0
-
+If there's any more info you need, please tell me.
 
