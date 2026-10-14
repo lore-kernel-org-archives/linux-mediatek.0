@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 14A16CC6B31
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 115FDCC6B30
 	for <linux-mediatek@archiver.kernel.org>; Wed, 14 Oct 2026 21:32:12 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
@@ -12,44 +12,44 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=QxD3BXUgROx/DxBHF5mVwQDAczDItWWb9ZAdyiuH0/k=; b=XSjRq6IwqK9oqp3lutE43Dntej
-	s8KoAUi2mI3JR0klUeRKRqp95MZOqAn4JcDpHvxPlsd9RfnyhlXcfpNoYvuJQrKidWaA+6n5/1yay
-	Kv0gMgRJdGTqgbL7RxcT22n0Ay2U/p5YjUXHVvyrsY89YfIxfYXumeW2rg3zGSmk1KYM4ySU6xm/J
-	2TpcdwVEE2rQSUvJZsIK4leg6QCdiYNLjm3VcUk0Um9Qp2mvorr1CBHnt3ifjxbz0ZEsINXvC1RVp
-	zt0jA0WV1TdjN2YGDEfScVkiPRbaEps4v0hmwse2djBwPbSofVtqOSS6vKpJLlnAElvgudA4GYVDk
-	EXgLr+Lg==;
+	bh=vli4XWkCGgE+k+Bp7PajRgTaGj17Lg4tJrd8O22L1MA=; b=I98Osx0Fm71iHwFbfQqSWffaL+
+	yiv9PnuN6dQmOF19PVFUXXek0IOzvtIJjQGkBfPkM5jrEfa5oq5nsWSgHxwFo+KDx/7ZHxzFcxJbS
+	eabEHw/21oA9FLn8ondy9wyI5F69DjBQnPuuE/x0OIzCXc93syZKdLypuaA0NJO3KfKTuvw9lbcp0
+	jDyyvdHoD3IY2/5Bq8ks18rGbMPldYWWhth6i5DDC/bY7zw6U51/0lX5FkBhdLKPPlMt8LtUxlilc
+	pXSbKSW9cFJ3qXj0U4LWCU9n7cZzp4wpB/4Pi8XkhJJ6HS8GYRN5mJNDHFrJZXXRUebLxCvz6pSf0
+	/UgGP65w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xH6a0-0000000GKW6-0yVG;
+	id 1xH6a0-0000000GKW2-0jiP;
 	Wed, 14 Oct 2026 21:32:08 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xH6Zx-0000000GKUM-2gnl;
+	id 1xH6Zx-0000000GKUK-3PlN;
 	Wed, 14 Oct 2026 21:32:06 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id E33D8447AF;
+	by tor.source.kernel.org (Postfix) with ESMTP id E18B660230;
 	Wed, 14 Oct 2026 21:32:04 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 890F01F000C8;
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6F6631F000C5;
 	Wed, 14 Oct 2026 21:32:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
 	s=k20260515; t=1792013524;
-	bh=QxD3BXUgROx/DxBHF5mVwQDAczDItWWb9ZAdyiuH0/k=;
+	bh=vli4XWkCGgE+k+Bp7PajRgTaGj17Lg4tJrd8O22L1MA=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc;
-	b=E9AkLw6tAD0kA5ArjdRs0LblZckVSPSg/FPhl9yxq9UP5syH5ZpuOwVtiPprhKK8Y
-	 sWvIRn8kf0YtGfDDcJ07iIPUwSHtOyKgzC2QFo8cUFxHT3jRXiqRpmqWC3Oedw85Wn
-	 uVV8rGaNM08S/kQXGqtLB05U/M7rrtA+/7ZUufVUppQsOmrDMLevOEQNGFqb6E+HHt
-	 PPwD77IRH49R9PPZvfDvwnrSHcbSlApAsywFpUhMVSrfm+LNr+mUsj9RlHlVa0CxCr
-	 SkTO2/vM9Z3XbTTmndYILnSAyigIjRsU36235ZjyqJEW8TVplNA5wIvzEzryWrey3Y
-	 /TBJNaEhicy9g==
+	b=Gg7xzYci6dE6NvCUlsdbYHcGCbGqLqtFTrvhHjOuK7pyPaPRKmpl9s9Bpp+UeDvaW
+	 5FitQOsLJYiWtr53spW33Le//5yhjGEtC3SNHTDtOpKaAgb9gaVtzdTB1/utlX0Zcf
+	 IAHH6FaUAarKp20UCKaSy+YcV/wuQDXPq25ZzUbXkjD6alFBC7vk6GOH9upCUYL7Cq
+	 NXj1z1NRNGpopMkuj6nnYit1vIl3H6d2yQinSlf8Y7W1n9u32iA1pbWbTgxiJVFNuL
+	 /K1lWWsG43I1UO/6jSckokidTe75ULeLibFVxVTGKiqFehHKUsafdBwt2FpW/UWjZj
+	 5AG5PrOVtwKqQ==
 Received: by venus (Postfix, from userid 1000)
-	id 6C8F7180F63; Wed, 14 Oct 2026 23:32:02 +0200 (CEST)
+	id 70E1D181256; Wed, 14 Oct 2026 23:32:02 +0200 (CEST)
 From: Sebastian Reichel <sre@kernel.org>
-Date: Wed, 14 Oct 2026 23:31:50 +0200
-Subject: [PATCH 2/4] arm64: dts: rockchip: Use DP AltMode defines
+Date: Wed, 14 Oct 2026 23:31:52 +0200
+Subject: [PATCH 4/4] arm64: dts: qcom: Use DP AltMode defines
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20261014-dp-altmode-dt-defines-v1-2-b657c9b6e4c3@collabora.com>
+Message-Id: <20261014-dp-altmode-dt-defines-v1-4-b657c9b6e4c3@collabora.com>
 References: <20261014-dp-altmode-dt-defines-v1-0-b657c9b6e4c3@collabora.com>
 In-Reply-To: <20261014-dp-altmode-dt-defines-v1-0-b657c9b6e4c3@collabora.com>
 To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
@@ -65,21 +65,21 @@ Cc: linux-usb@vger.kernel.org, devicetree@vger.kernel.org,
  linux-arm-msm@vger.kernel.org, kernel@collabora.com, 
  Sebastian Reichel <sebastian.reichel@collabora.com>
 X-Mailer: b4 0.16.0
-X-Developer-Signature: v=1; a=openpgp-sha256; l=4708;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1760;
  i=sebastian.reichel@collabora.com; h=from:subject:message-id;
- bh=hAKWppt69P3aSMCFACqtI8ev1qvUb4LfXXuZCSsxsJE=;
- b=owEBbQKS/ZANAwAKAdju1/PIO/qaAcsmYgBqz/TRDYL+ZY48L0pAQgXPJQ8MxkIoe1sy96tv1
- p25eTfs0LaJAjMEAAEKAB0WIQTvZg0HRj+Lcmp5VBPY7tfzyDv6mgUCas/00QAKCRDY7tfzyDv6
- msY+D/9SXed8OsNRA3EGSwTIyxz6k7KL1l6mRG2IB0BaVnekybkikbn1x8oM+1i0qm21nlXppa9
- wHIrUgoZdG7u6hZhCQxe1+Ul0jYHRrAhn4K3Rn06g7UWBkLBM0Q6JdG13HKpJ5Zm2fLA8B0Tdw6
- WK+Gl2yl58jAq2et9YejxyQeVDRRjxlMJruOQ1BHz1bHBing4GxaRws2QJLvZwmRyGYcrt+7bft
- bKtILMmTaUM4hwD/mWGH5BEHNFHjz088pioTX1WNoibRXc7PQfJCo8Jvt4iPSCwUa4KeSQx3MaL
- LfFm/SIVCdXTOm+KPnFv7ef2FO0GCOt+sqv5MqlXB5kUQg5Z03jqhWlT3+dItN91Xk+M76beEnr
- Gm/7gX+CIXJghqO9GXw5RujuBwGwJcnu7wGccH/Yo6D47HVp3ytlfE5IwQVvFlSBc1A5N529+fn
- 0Plcn+XsK1O1j3eiAx43WHTnB7Zz54OMZxOuuEp+4wyiS1zTQfqUINHBEkdIBqlnHbZDCW9RfdJ
- VheT3dBKaSkgwzKiqaAkBqX8n68jxJJwdBzEQ67KPrB7eIyjmqHTnduBJ2vJQfGOMFTLEoXrrFk
- xM9SZWeubtqJSxhVY5tWwP8k67K6FhKVQAoA+eC1M+w413hOKJ1+tED8YMn26KaCC+j0x50/i/H
- SXATn+d6lPam+Zw==
+ bh=FNkZ2ecgtAZu035MahbG+CkbV9GSNyIveV9yT//RHgc=;
+ b=owEBbQKS/ZANAwAKAdju1/PIO/qaAcsmYgBqz/TSLz4dULI0PmDmsCpwfPt9dmMUXuu4VNKi1
+ ulOIwVMoiuJAjMEAAEKAB0WIQTvZg0HRj+Lcmp5VBPY7tfzyDv6mgUCas/00gAKCRDY7tfzyDv6
+ mnawD/9EjsxdoO7IEhSYuKYaie84j6N16zaWLa9H0gBWVY+CCxKFYRn1xjEdpDuXBTa5GNl3mfT
+ mCECi7BHbshUeyq5N5E5pC/deRzsTtKtx8z/rFyshkkQCBtBxoJLODxCzlWAnmrsXxPR8YKmP6Q
+ w0Y1llhNLcGvmusQbCXmlqBUhbp5VomfmOKOQwiZpxAOT0JL6dHkyuxukXa/ERq1MPQNFdRFr2r
+ M0tc9HKZAMXg6r6d8ykD3pa/mSspMqrHM+e2nCVmQ3LD1k0sTkPYj8GYt4s6azirHD5/4+lxar2
+ qgMKXi5VqjILPW3nvE08jfNVW4MMx3rVfppw3Fj9EnxOIKlSInFBSPLxwtc2fo6tEwuFEXAXRjq
+ U6xiOv4/cEDgwWPAuWFQyioXuMGnug64m1zvM6dE7+yp3DvPQ8+Wp70yj/F7yrxd7xKFA3V0PBD
+ s93VikuMLVySm/qwR5DKE/s+hHz4FtBN8fLeD8om94C1Bl2LaKDS2YQ7rUSLt858qq1cM1RMa0k
+ anld6cdvFw8/abiG+EiLep7sQIG3sYGuNZp/sthe9XmY7j3Ej5sbxFCC9e41XZzQSwXddAw3JNT
+ umhQXh9+bmTpkzTCRlktme1yZQkq/uJ/WTBk85BGqeXQvzz/VTpHjIzQBHCFPX7FjRtajCJpIB6
+ 1LN+8eUqwjMQgTQ==
 X-Developer-Key: i=sebastian.reichel@collabora.com; a=openpgp;
  fpr=EF660D07463F8B726A795413D8EED7F3C83BFA9A
 X-BeenThere: linux-mediatek@lists.infradead.org
@@ -99,114 +99,52 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 From: Sebastian Reichel <sebastian.reichel@collabora.com>
 
 Use the new USB-C DP AltMode defines for the SVID and the capabilities
-VDO to make the DTs more readable. This also fixes up announcing
-0xffffffff, which is simply wrong as that allows using the port in
-upfacing mode (i.e. the board receiving DisplayPort data, bandwidth
-above HBR3 or pin configurations not handled by USBDP.
+VDO to make the DTs more readable.
 
 Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
 ---
- arch/arm64/boot/dts/rockchip/rk3576-anbernic-rg-vita-pro.dts | 8 ++++++--
- arch/arm64/boot/dts/rockchip/rk3576-armsom-cm5-io.dts        | 8 ++++++--
- arch/arm64/boot/dts/rockchip/rk3576-armsom-sige5.dts         | 8 ++++++--
- arch/arm64/boot/dts/rockchip/rk3588-rock-5b-5bp-5t.dtsi      | 8 ++++++--
- arch/arm64/boot/dts/rockchip/rk3588s-indiedroid-nova.dts     | 8 ++++++--
- 5 files changed, 30 insertions(+), 10 deletions(-)
+ arch/arm64/boot/dts/qcom/qrb5165-rb5.dts | 8 ++++++--
+ arch/arm64/boot/dts/qcom/sm8150-hdk.dts  | 9 +++++++--
+ 2 files changed, 13 insertions(+), 4 deletions(-)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3576-anbernic-rg-vita-pro.dts b/arch/arm64/boot/dts/rockchip/rk3576-anbernic-rg-vita-pro.dts
-index 358dea43f9b6..621f786147d5 100644
---- a/arch/arm64/boot/dts/rockchip/rk3576-anbernic-rg-vita-pro.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3576-anbernic-rg-vita-pro.dts
-@@ -911,8 +911,12 @@ connector {
+diff --git a/arch/arm64/boot/dts/qcom/qrb5165-rb5.dts b/arch/arm64/boot/dts/qcom/qrb5165-rb5.dts
+index d6af679abe1a..d21b94e872ce 100644
+--- a/arch/arm64/boot/dts/qcom/qrb5165-rb5.dts
++++ b/arch/arm64/boot/dts/qcom/qrb5165-rb5.dts
+@@ -1508,8 +1508,12 @@ PDO_FIXED_USB_COMM |
  
- 			altmodes {
- 				displayport {
--					svid = /bits/ 16 <0xff01>;
--					vdo = <0xffffffff>;
-+					svid = /bits/ 16 <USB_SVID_DP_ALTMODE>;
-+					vdo = <VDO_DP(DP_CAP_DPAM_V2_0, DP_CAP_CABLE_TYPE_PASSIVE,
-+						      DP_CAP_UHBR_13_5_UNSUPPORTED,
-+						      DP_PIN_UFP_NONE, DP_PIN_DFP_C_D_E,
-+						      DP_CAP_USB2_USED, DP_CAP_RECEPTACLE,
-+						      DP_CAP_SIGNALLING_HBR3, DP_CAP_DFP_D)>;
- 				};
+ 		altmodes {
+ 			displayport {
+-				svid = /bits/ 16 <0xff01>;
+-				vdo = <0x00001c46>;
++				svid = /bits/ 16 <USB_SVID_DP_ALTMODE>;
++				vdo = <VDO_DP(DP_CAP_DPAM_V2_0, DP_CAP_CABLE_TYPE_PASSIVE,
++					      DP_CAP_UHBR_13_5_UNSUPPORTED,
++					      DP_PIN_UFP_NONE, DP_PIN_DFP_C_D_E,
++					      DP_CAP_USB2_USED, DP_CAP_RECEPTACLE,
++					      DP_CAP_SIGNALLING_HBR3, DP_CAP_DFP_D)>;
  			};
+ 		};
  
-diff --git a/arch/arm64/boot/dts/rockchip/rk3576-armsom-cm5-io.dts b/arch/arm64/boot/dts/rockchip/rk3576-armsom-cm5-io.dts
-index ebb231271e45..d154e9037ed0 100644
---- a/arch/arm64/boot/dts/rockchip/rk3576-armsom-cm5-io.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3576-armsom-cm5-io.dts
-@@ -204,8 +204,12 @@ PDO_FIXED(9000, 3000, PDO_FIXED_USB_COMM)
+diff --git a/arch/arm64/boot/dts/qcom/sm8150-hdk.dts b/arch/arm64/boot/dts/qcom/sm8150-hdk.dts
+index cdced5c848d3..3d83dd305954 100644
+--- a/arch/arm64/boot/dts/qcom/sm8150-hdk.dts
++++ b/arch/arm64/boot/dts/qcom/sm8150-hdk.dts
+@@ -581,8 +581,13 @@ PDO_FIXED_USB_COMM |
  
- 			altmodes {
- 				displayport {
--					svid = /bits/ 16 <0xff01>;
--					vdo = <0xffffffff>;
-+					svid = /bits/ 16 <USB_SVID_DP_ALTMODE>;
-+					vdo = <VDO_DP(DP_CAP_DPAM_V2_0, DP_CAP_CABLE_TYPE_PASSIVE,
-+						      DP_CAP_UHBR_13_5_UNSUPPORTED,
-+						      DP_PIN_UFP_NONE, DP_PIN_DFP_C_D_E,
-+						      DP_CAP_USB2_USED, DP_CAP_RECEPTACLE,
-+						      DP_CAP_SIGNALLING_HBR3, DP_CAP_DFP_D)>;
- 				};
+ 		altmodes {
+ 			displayport {
+-				svid = /bits/ 16 <0xff01>;
+-				vdo = <0x00001c46>;
++				svid = /bits/ 16 <USB_SVID_DP_ALTMODE>;
++				vdo = <VDO_DP(DP_CAP_DPAM_V2_0, DP_CAP_CABLE_TYPE_PASSIVE,
++					      DP_CAP_UHBR_13_5_UNSUPPORTED,
++					      DP_PIN_UFP_NONE, DP_PIN_DFP_C_D_E,
++					      DP_CAP_USB2_USED, DP_CAP_RECEPTACLE,
++					      DP_CAP_SIGNALLING_HBR3, DP_CAP_DFP_D)>;
++
  			};
- 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3576-armsom-sige5.dts b/arch/arm64/boot/dts/rockchip/rk3576-armsom-sige5.dts
-index 4ac4465e39a5..e457fb37f3b3 100644
---- a/arch/arm64/boot/dts/rockchip/rk3576-armsom-sige5.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3576-armsom-sige5.dts
-@@ -711,8 +711,12 @@ connector {
- 
- 			altmodes {
- 				displayport {
--					svid = /bits/ 16 <0xff01>;
--					vdo = <0xffffffff>;
-+					svid = /bits/ 16 <USB_SVID_DP_ALTMODE>;
-+					vdo = <VDO_DP(DP_CAP_DPAM_V2_0, DP_CAP_CABLE_TYPE_PASSIVE,
-+						      DP_CAP_UHBR_13_5_UNSUPPORTED,
-+						      DP_PIN_UFP_NONE, DP_PIN_DFP_C_D_E,
-+						      DP_CAP_USB2_USED, DP_CAP_RECEPTACLE,
-+						      DP_CAP_SIGNALLING_HBR3, DP_CAP_DFP_D)>;
- 				};
- 			};
- 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588-rock-5b-5bp-5t.dtsi b/arch/arm64/boot/dts/rockchip/rk3588-rock-5b-5bp-5t.dtsi
-index 13aaf63ad093..163ad7eef4fd 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588-rock-5b-5bp-5t.dtsi
-+++ b/arch/arm64/boot/dts/rockchip/rk3588-rock-5b-5bp-5t.dtsi
-@@ -346,8 +346,12 @@ usb_con: connector {
- 
- 			altmodes {
- 				displayport {
--					svid = /bits/ 16 <0xff01>;
--					vdo = <0xffffffff>;
-+					svid = /bits/ 16 <USB_SVID_DP_ALTMODE>;
-+					vdo = <VDO_DP(DP_CAP_DPAM_V2_0, DP_CAP_CABLE_TYPE_PASSIVE,
-+						      DP_CAP_UHBR_13_5_UNSUPPORTED,
-+						      DP_PIN_UFP_NONE, DP_PIN_DFP_C_D_E,
-+						      DP_CAP_USB2_USED, DP_CAP_RECEPTACLE,
-+						      DP_CAP_SIGNALLING_HBR3, DP_CAP_DFP_D)>;
- 				};
- 			};
- 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3588s-indiedroid-nova.dts b/arch/arm64/boot/dts/rockchip/rk3588s-indiedroid-nova.dts
-index ed36c27c2320..8f6f32ee2074 100644
---- a/arch/arm64/boot/dts/rockchip/rk3588s-indiedroid-nova.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3588s-indiedroid-nova.dts
-@@ -392,8 +392,12 @@ usb_con: connector {
- 
- 			altmodes {
- 				displayport {
--					svid = /bits/ 16 <0xff01>;
--					vdo = <0xffffffff>;
-+					svid = /bits/ 16 <USB_SVID_DP_ALTMODE>;
-+					vdo = <VDO_DP(DP_CAP_DPAM_V2_0, DP_CAP_CABLE_TYPE_PASSIVE,
-+						      DP_CAP_UHBR_13_5_UNSUPPORTED,
-+						      DP_PIN_UFP_NONE, DP_PIN_DFP_C_D_E,
-+						      DP_CAP_USB2_USED, DP_CAP_RECEPTACLE,
-+						      DP_CAP_SIGNALLING_HBR3, DP_CAP_DFP_D)>;
- 				};
- 			};
+ 		};
  
 
 -- 
