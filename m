@@ -4,144 +4,112 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 07EEFCC6B1A
-	for <linux-mediatek@archiver.kernel.org>; Wed, 14 Oct 2026 03:18:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5614DCC6B1A
+	for <linux-mediatek@archiver.kernel.org>; Wed, 14 Oct 2026 04:10:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:Cc:To:
-	Subject:Date:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=7kL8oBs/1JPwv1vs8iPTM+H3vHOob8w+C+Ebxc7ulJk=; b=y1ysFOE6KX1UvXcsJv7fx+5qG4
-	bwHiE9nEptajy0YcQGkojkye/tyiV4BKUync6uVr+bSjJF7rrg2M6tqM720qexYhyIWMTZLGtX0TJ
-	dK9H5mXtYoeheF4GJaXq2pPy2kSkMspyxC0hPm+PZCwvbGGSEJMMtaAnZQm5WtXTIB6zzWwfMQY+A
-	HJDNh3PaD9PgV3QmRWSGxzVFH/XnuQOZHEilD/MdEW3cdv24CoRIynoYzxbybTDBiy+vSjxVg53fd
-	x6NwAXlAqSYqP+d8DxamaZHw3qtAdZcaTatmLjQdXZQ52wR0sCvq8foGkDzcdkmH5BacI65BT/r6S
-	ynKLOE4A==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Subject:References:In-Reply-To:Message-ID:Cc:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=ljQtddetZrnHdZkhpewiA0nv8+K0Dn1c6TsFqcV3Ues=; b=EtsIPvlmPl4P4HPxWqzMbxG/7X
+	lshClkFxfWGiibHj+bfnH3sokWDK1c/N63M5At84jqKIyy0tkPuZKT7niyENh4UssFo6QaEKmE4ON
+	0/2LttDkCqcxxPs6fwZ0otArkJpBIHZUz42U6Ovnbplgal93EKRg3Yc8It/wp/dWyh9RPCprG/mat
+	UlIvgj5i1oM1DDtTYRr2iYq8DGGjEoRmU1RSrfZG/Y300tsAWp1cT1o7pfWBJpbrYMqU1Uhxk6kUa
+	tSW8BZs8GEMhFkFf3sqstR0P4ELEkBBxb6vg1LY39teF/IOzRFwiygQXANtOT5WGcng7yL5mYMjFN
+	SyA45piw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xGpV6-0000000EQEa-2XYo;
-	Wed, 14 Oct 2026 03:17:56 +0000
-Received: from mail-northcentralusazon11013018.outbound.protection.outlook.com ([40.107.201.18] helo=CH4PR04CU002.outbound.protection.outlook.com)
+	id 1xGqK1-0000000EU63-09Pl;
+	Wed, 14 Oct 2026 04:10:33 +0000
+Received: from mail-yx1-xb130.google.com ([2607:f8b0:4864:20::b130])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xGpV2-0000000EQDR-3Mi1;
-	Wed, 14 Oct 2026 03:17:55 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=B9lEVvDgYYmxMfeYB8rxEywFZY8N8Ujt7oRL+OYJnlA3oJ5gSTTKr/rFxJxNkqqviCQ3FrfSxK+CWoT6Lwb/zHJzNJyTMBetBcHfytswrh9PG/Mv/lRe1vOAR/9sSPJ+XK+PQ6nlDrY7YKZCOo4iZymRfR4FCBRN/XhHvBMv9tk6ZqOh40jw4gTMV4Y6NJofmJADLzg+Xw/b7zqBbg7yNAtAPc06pgruX8+mA8KNdcx9tr336gzmIfiJIczgQTKWxqUMbVJWgibM3rWzxmM+PzpYtQmb4C+kXmxAewryt3I5NcazdccA//H6MnoMQitj4CcBd2GXsYlHTW58r8jU7A==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=7kL8oBs/1JPwv1vs8iPTM+H3vHOob8w+C+Ebxc7ulJk=;
- b=PtrEx2l6Q/IhcrtAXbsxvQHvn3DkXagd5E6uXLMLmvL2Xx/kWuhk/lP10P6HMpf05H3QmXirxX7h3r4Un5gSdNoRlrGDZ6eAHZ5aXJIwFv1w6/ks83fbMcdsqiEIoXuM/hk384b0F85BdGFKeeSksn3SWULGaa+y7LDAhtwXD5+ObUr/G7bQo42HnvdgXrjgJU3TEOA5pgkF63k7wh8kK5qyrLVSJBDd+s0X+7YSmQ/qDCp5wyTC5dHwDjIkpjwfXOyjSzf+tRrbIwinnCy/wkqoe7n3DV2XgIDXO7X4ipIAbCS+fJqciuzhWrSb7xcZSL7HTxgDSD3MRX7dZl8EBQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
- dkim=pass header.d=nvidia.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=7kL8oBs/1JPwv1vs8iPTM+H3vHOob8w+C+Ebxc7ulJk=;
- b=FukwMs5co0TsVm1Qjnwn8EDCw+ZAStWsrK5eFWtL0IRtTFUyYL68CIgo2IqcAzgd6LfxyyT/+SmIRBdCF+nh3dDtp+HRTW6oywNnGE/mqPwQK19N59D/ivnn2EQblYtoVizHDP9mFxZmx/5Y3C0fDutu6OWWZlNWo6w6VselhbJrNtZpYjaN9ygpTLQPN70X6orn5DUE79X0puYkH8cdhpw5oxBHaKOn0fx2TOCqJW+DalYRhDbLbpMVYnl3wN7MdYw927+PngVr83A/5JdsaP9UTIhm7tDCMUk2vqkmT2CBdRGkrlzGDfYpGotDZwTtnI5CBYKjdQ83LgSzFwuv9A==
-Authentication-Results: mx.microsoft.com 1; dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=nvidia.com;
-Received: from SAVPR12MB999143.namprd12.prod.outlook.com
- (2603:10b6:806:4e5::21) by DS7PR12MB5909.namprd12.prod.outlook.com
- (2603:10b6:8:7a::10) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.496.23; Wed, 14 Oct
- 2026 03:17:41 +0000
-Received: from SAVPR12MB999143.namprd12.prod.outlook.com
- ([fe80::219e:6553:2ec0:3761]) by SAVPR12MB999143.namprd12.prod.outlook.com
- ([fe80::219e:6553:2ec0:3761%4]) with mapi id 15.21.0496.021; Wed, 14 Oct 2026
- 03:17:41 +0000
-Message-ID: <b4aa46a5-dd8a-4520-8574-d008a3877f28@nvidia.com>
-Date: Wed, 14 Oct 2026 11:17:29 +0800
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH nf-next v3 1/3] net/mlx5e: Ignore FLOW_ACTION_PRIORITY on
- flowtable offload
-To: Julius Bairaktaris <julius@bairaktaris.de>, pablo@netfilter.org,
- fw@strlen.de
-Cc: phil@nwl.cc, netfilter-devel@vger.kernel.org, coreteam@netfilter.org,
- netdev@vger.kernel.org, lorenzo@kernel.org, nbd@nbd.name,
- matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
- andrew+netdev@lunn.ch, davem@davemloft.net, edumazet@google.com,
- kuba@kernel.org, pabeni@redhat.com, horms@kernel.org, corbet@lwn.net,
- rdunlap@infradead.org, skhan@linuxfoundation.org, linux-doc@vger.kernel.org,
- linux-kselftest@vger.kernel.org, linux-mediatek@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org, saeedm@nvidia.com, leon@kernel.org,
- tariqt@nvidia.com, mbloch@nvidia.com, linux-rdma@vger.kernel.org,
- linux-kernel@vger.kernel.org
-References: <20261004171636.3545085-1-julius@bairaktaris.de>
- <20261004171636.3545085-2-julius@bairaktaris.de>
-Content-Language: en-US
-From: Jianbo Liu <jianbol@nvidia.com>
-In-Reply-To: <20261004171636.3545085-2-julius@bairaktaris.de>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-ClientProxiedBy: SI2PR02CA0022.apcprd02.prod.outlook.com
- (2603:1096:4:195::23) To SAVPR12MB999143.namprd12.prod.outlook.com
- (2603:10b6:806:4e5::21)
+	id 1xGqJv-0000000EU4y-1jx2
+	for linux-mediatek@lists.infradead.org;
+	Wed, 14 Oct 2026 04:10:32 +0000
+Received: by mail-yx1-xb130.google.com with SMTP id 956f58d0204a3-6776efd4ff1so3188617d50.1
+        for <linux-mediatek@lists.infradead.org>; Tue, 13 Oct 2026 21:10:26 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20251104; t=1791951025; x=1792555825; darn=lists.infradead.org;
+        h=content-transfer-encoding:content-type:mime-version:subject
+         :references:in-reply-to:message-id:cc:to:from:date:from:to:cc
+         :subject:date:message-id:reply-to:content-type;
+        bh=ljQtddetZrnHdZkhpewiA0nv8+K0Dn1c6TsFqcV3Ues=;
+        b=OIMWUIhyl1uL9m161+ot2O6DJxls0fEK0RNgeyzuRwA5Zro8KgdjIL7nuKvFBYfHFq
+         MxmelRo5DH76ecRCpqYCqXwXXMo1zuq0OZ71rNqv1tOgKx7OkESW0at7+OySJ0FTIbqp
+         pDR8m3dhqCdOjqypr+F83VPg1EblUomnOB0W22K9UzCwwQ8VPr54OCaGxzkk/win1wT6
+         iyFBk15REszwoWIjp+tx7U3pxv1DCRb69ClQaSsJ4EbazGmzoiuvhCWGGtj/whTxyne+
+         Xgt8SfBDouZ1UPWgfr5Qga9mE9E0Fq/kKTPUcLZOuBkMcA8CEDbMzMQ1Ux3+q9zaSYbi
+         /nKw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20260707; t=1791951025; x=1792555825;
+        h=content-transfer-encoding:content-type:mime-version:subject
+         :references:in-reply-to:message-id:cc:to:from:date:x-gm-gg
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+         :content-type;
+        bh=ljQtddetZrnHdZkhpewiA0nv8+K0Dn1c6TsFqcV3Ues=;
+        b=IGI8LyteDZVP9LHiJ+bE5537g4iiJ4wzixvVR5THWQiT+uvnzBMhre6fB7CpeNc9OC
+         2jjmT4Q1UX367ws/AqrVr3oKFYSLghH9QFkVhg7kVHmfvdgG6auNxnETxMi0EwYLbptf
+         cKIQcuephQD0tMEOgZ67jcjgo/td6fabpvqx3EVJYrmS/N1q2oKUwZvNy28milLZWsQW
+         PvfiYp+qBjmHUq907R2wXfgWN8g2T0SLADOiJfcuK6bwVhpEk2k3kDwUaDnwHBaRyBbO
+         yFWuFVrqqrytyhk7wPuDxwuYJDvnGnhYqUcaoi4p5K+BX/vRbOa1dhxtX7zrHGIPtWMa
+         IH2w==
+X-Forwarded-Encrypted: i=1; AKwUvBxgdFVq/SKsQsHPAEpU+bXjpH3jtfzDOqFKIdWMRkbLfIZJXXl9OQZ2qWxYbhLDP+wAvB74LbznlKr1e02t7Q==@lists.infradead.org
+X-Gm-Message-State: AFq9FYIk+ygbvJmRLMZuoN5fnKAGdEu3n64IifvwUZKo67rj6/LkhV2b
+	IToTtMXbeJwqrKQSNlJdC+BZ2BAffeNWk+f75mzbqs1clFdlgPlDOga2
+X-Gm-Gg: AYBFou1hpSjd9Sx9Wb6hQSYcJ04AP86Dv+2R+V6H9kG6h5lcBk98TpMY8SjtzV1oCDb
+	yoL9+oxiboqw9NPHmeRjSPspCTn5yNLYNmEKhs1jb0RNXkWPybE+eP0+ikveRt+Q2gTuQXuuhgW
+	1b34UHYBrwRVVd3lb/dodlXfHCmbiq8sqwgKq9As4EXwsoleVvshJlxlo580EW24e8pdq8wn8Jz
+	qhTCCqHPfk3NV4iq5T+HyxGzTDfTZB4YwAK21CSflURrGUfuWCljOReyHY4J6Xc23is5ragaoHd
+	BDusCQIFQR3T9E5TPz58wVIaJ+BFN3fvbe16xM/nwAgkBvPlHjpSMc7TcUEVgPqP36r/wF2OFnt
+	AzGSpynhnnzTi2YeMZbaZloppmrPRkSiz0vP+As1irGQCfZ6DqDljP+7+R5oYIMjMc9lDLRojk9
+	ltc6pUCp8c4aNKCQ+vGXBIFmBvgp86gN5i7KhmBN7qigm6EBMP3MjkKpwaQ34R97p/1XR2pv72p
+	UD3stlYnrt89Rl+2/MrR4/pixxxF7mWjU/3m/tGOtAORR16vNnUhJC80WgREiYwmc+I5HJX9TYu
+	UEKIgqJrjpJO3yKfFUy924gFgYcUSzhsP0WSiQ==
+X-Received: by 2002:a05:690e:e8b:b0:675:4269:156b with SMTP id 956f58d0204a3-679369e3642mr4947534d50.59.1791951024885;
+        Tue, 13 Oct 2026 21:10:24 -0700 (PDT)
+Received: from gmail.com (111.46.245.35.bc.googleusercontent.com. [35.245.46.111])
+        by smtp.gmail.com with ESMTPSA id 956f58d0204a3-67986a16470sm592229d50.4.2026.10.13.21.10.23
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 13 Oct 2026 21:10:24 -0700 (PDT)
+Date: Wed, 14 Oct 2026 00:10:23 -0400
+From: Willem de Bruijn <willemdebruijn.kernel@gmail.com>
+To: netdev-bot+sashiko@kernel.org, 
+ shiming.cheng@mediatek.com
+Cc: davem@davemloft.net, 
+ edumazet@google.com, 
+ kuba@kernel.org, 
+ pabeni@redhat.com, 
+ horms@kernel.org, 
+ matthias.bgg@gmail.com, 
+ angelogioacchino.delregno@collabora.com, 
+ willemb@google.com, 
+ daniel.zahka@gmail.com, 
+ alice@isovalent.com, 
+ sd@queasysnail.net, 
+ eilaimemedsnaimel@gmail.com, 
+ imv4bel@gmail.com, 
+ nbd@nbd.name, 
+ dsahern@kernel.org, 
+ netdev@vger.kernel.org, 
+ linux-kernel@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, 
+ stable@vger.kernel.org, 
+ steffen.klassert@secunet.com
+Message-ID: <willemdebruijn.kernel.26605ed441a3a@gmail.com>
+In-Reply-To: <179161428655.434549.7066789783316941855@kernel.org>
+References: <20261009060319.6229-1-shiming.cheng@mediatek.com>
+ <179161428655.434549.7066789783316941855@kernel.org>
+Subject: Re: [PATCH] net: tcp: fix fraglist GRO flushing on alternating TCP
+ PSH flag
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: SAVPR12MB999143:EE_|DS7PR12MB5909:EE_
-X-MS-Office365-Filtering-Correlation-Id: 5dc0b751-8545-4b35-ea38-08df29a1b4c1
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|7416014|366016|1800799024|376014|23010399003|56012099006|4143699003|11063799006|22082099003|18002099003|6133799003|10067099003;
-X-Microsoft-Antispam-Message-Info: kA8f/qsQS36PB7mSdciJr1MEQjR9QaammDV/YaeJZ0bk4Luia2GQREKKY6e+kw6LlWWoWPYyanzIYbORr0MBh69CxV6LMmN3peVwVw2/uXmHbO2r4FeumSa4t4ULwN1mnaGNx+f0FpaTVXaB0QiAB4mEUWviKyCcCd2H8Ccyn/GybmgfCrjhpddbRZJZdO57OLE7EIQTazVqVoSw7JIiKc2POw+2bNmP+/UzfU7hiquldjJfel0LXHclYdGPdfe+FQAeSG29Yc2302DJzDwGLuXtd1TT9DKVjvXO4Q90YkeuLVeRUsuTo58w5daURiJVKdWQnInRwbjDCGJlN0i68B5K+wG9XYmmpL1wAoUBc35s14ndYpUn2ymgg4jhIABFW8dmTP/OuG9He0W86TQOOv3DOw5FBH2XWO9cIhvc+Epis1F4BvbpOwqTunndsShlVfYN6F6+MqWb+x/lU/gHko8B46AellhYGB6GQ5RxhgNiPGtNWhrdZxLxtLJ0fEQ82qNIrFGvN7KHFub28JHepbwQuhoytmxWYPNYX2CLNOSDRh6eIBwHMkMGrlHqWEJFYblrSrzGOocAi4yTQ6sNmCO9ggFnZOfsz5BZr4MnKkKYDf80eMNDyY9JXq4uzsGCBTV8tw55bHK/HCsx26husA==
-X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:SAVPR12MB999143.namprd12.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(7416014)(366016)(1800799024)(376014)(23010399003)(56012099006)(4143699003)(11063799006)(22082099003)(18002099003)(6133799003)(10067099003);DIR:OUT;SFP:1101;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?djJWTEtkTUMwU3IxWTRwTHZ4dy9mU3RzOEZ4L0NQN2lnc05NMjJ1S0xpM2d6?=
- =?utf-8?B?MFF0M1pMUDNZZkhvbi9jbUJnSnBNYm1ZbHJTcGRmbi9obG9jUU5idnUrWkNN?=
- =?utf-8?B?SVVjaitHYW5JbklaRVE2L0JOL2p0SGM4TU02dkxWbEZENU1wVzUvTFZESmFK?=
- =?utf-8?B?YmNUZ0QzOWlUdFJoMUlObVlpRStERXdBd3c0VTIvWFZLdDlFNDhtcU1TakQx?=
- =?utf-8?B?WlgvMTJLMGk1bXdTTExqYmd6VDJ4UmNCbFY0bXhGaEVMNThjeTYrY254Sk1w?=
- =?utf-8?B?a3NweS9ydW5DNXByR1FqS1ZHYlpMUWY5T2pUcmV2NkpISTN5TnFsY0tsSWpz?=
- =?utf-8?B?S0NBYUxseG9nNElyRWxiNjI5YXJ5VUx4TmR5dTFWV3hSNUZWK0ZTM2ljbkcw?=
- =?utf-8?B?N0IxNXpTL0JIZG8zTUJBYUJxRERIOGlZcERLMFY0dTFhMTFNN2VPOVVkNzNs?=
- =?utf-8?B?bmVtYUh4c1B3QlNjNEttWmdMTmx5d2hYamI3N0R5Y0NHK25TdGFqMlc0Mmhq?=
- =?utf-8?B?M3N3bGVHc0RYQ1M1TzlUaFVvY0pUUCtTSTYxa0g2YUNHR3U5OHRjcHo3cERT?=
- =?utf-8?B?eDQwVHdjK2UvZTVOcGNRdGRoT2dqVnVEOUFKMERHUCtYeG5sSk13SVhESElt?=
- =?utf-8?B?bG1IVTFLSVBZQkZzYTRhN1JuK1J3b3pIelRQNHdIUTJkV0ZBaVkzYjdzR2Mx?=
- =?utf-8?B?L1VmV2xhYXhQYVR2a1RKanMrUy9LSmk1TWVQZFZVWDRlZCtlUUZZMnpVRjlx?=
- =?utf-8?B?QWF5cno5Nk9POVVBdW4yaEQ5T1pVMWZnRGhCMGttYlFETDRRTXl1cFUreHFT?=
- =?utf-8?B?Sk81NnVmYXRzVmlwc0Vna1pVcGhwZ1FobjYvOGlsaUN3SW5SNXE0aHhQY09D?=
- =?utf-8?B?VE05cEtZN2lxbHpLY3JHVUR3WEQ3Z1ZOVXJWZEFyOTc2WXE5aXJiUWUzYmxJ?=
- =?utf-8?B?MG1ObzB5ZFJOUUVzYjc3RWZPTVlHQ0JVM3c0THJiR0NMb1JvZ0J6UjlWZ295?=
- =?utf-8?B?OGJoMjVPcU90RXVhaUJEbEJjcVNzRnVQb2FsL1ZBNTVnZXQ2ZHE4SER1MzlN?=
- =?utf-8?B?emd0dm82YVdVVVR4amE4OHZqS2QvV1B6MTNYQ2lxMElRbk5za2RQYm5XUXM1?=
- =?utf-8?B?MWIyaUtsYXVKa1gzNVBRcUxGOUZSL1RySXRFRHdGQ0FCbEVFcGZ2Yk9pOWla?=
- =?utf-8?B?MGFEWE5vdHkxUDBiejVaMnlseHJLMkRGVklHdXNqYW5INldTL0VQOGNReWlO?=
- =?utf-8?B?UDdYUkVDMUp2NUZwS1gxTlo1M1V0WTZiNGlYVVR1Mkd6MGxYdDc1TEM3S2J4?=
- =?utf-8?B?Wm1YZnlOcFppQlpiSGdOZnc4cWovVFJsT1VqaUczUys4b0pmT3UwdTIrT0JL?=
- =?utf-8?B?Q2oyM1RoaWU3VElQeDZPYkFKdTR1Z3VzNDR3bGJGNHpLWnd6WnFPbGwwT0tW?=
- =?utf-8?B?ZktnbXVmVU9EZlZVYkNOREQwYktueTdDRm5yZ3o0bHFCT3JkazFqTG16N1c5?=
- =?utf-8?B?UmZxMzcvQ21TcFlrVDFZazV0ckdrRE1VWTZvclpQL0RFdlB1NklMSXZzRXBF?=
- =?utf-8?B?QnhpNXVBdDl2Snl5ZlpBSWtKcXN5U1ZieWRYbTZ1bHFWYXArSmJWUnB0VjQ3?=
- =?utf-8?B?REpoUmxtaFNOaUlha1lMMGVRUVlpNzVRWlI3L0JybVZHa082am95b080bG1p?=
- =?utf-8?B?S3oyT05oNHFFWmt1Y0V5WnpMblVLQzhCVkprQk4wZ0VHZnFOVEFkeFdPcnd5?=
- =?utf-8?B?L1V0aFdhSXo0NUhjR1hiQWJpSWtQazYzRVhHS2VrODhCUUEzVXlFR3F3MFBI?=
- =?utf-8?B?czRtSmZ1OU9XOXp2T2RTQkYrNWtBS0FVZlAxUGJHT0lnbCtuZG5YZmR5OHdN?=
- =?utf-8?B?OHdOTU9SaUV2cDlBaTlCaVFadytveG96MnlUY0ljd3h6OHhvUTIzWDVBenla?=
- =?utf-8?B?OVd4MUJLSGM2dVRmUEl2Z3JUakJva1NUS3d1M1d1cTBlYkdZT1VtNWxCR0lm?=
- =?utf-8?B?YUNlZnZnSHJ5L2YwWFFZYklwMXhEdS96L0JWTnpNR3BWaDhMQThpTFQxRWVK?=
- =?utf-8?B?dUtrQzNiM3hPZWhCS2ZVR1JYUW5HMGoxWHlNaWVEZnNPTDhKbU96WDFlMVd2?=
- =?utf-8?B?L09uMG1pdTNncUhTYnBvS2VzV3RoelZocUlCRWRFVURSbEdpeXlwU1ZXNW95?=
- =?utf-8?B?aUtOdFZtSUJ0dXYvbUpLUUFwQTd0cVZLSUg2OExIQjAwNWs1MWdvTEtrSlFx?=
- =?utf-8?B?UjhjOTNBTmNzNmxKTDFtSjRpaVJ4c2haem1zeW1LT1lDMmc0bEdqeVJOVERK?=
- =?utf-8?B?VE9UMDZidVhjUjJCbDE4WUovbzN5VEVIckhNUWZrRzZQa093ZURwUT09?=
-X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 5dc0b751-8545-4b35-ea38-08df29a1b4c1
-X-MS-Exchange-CrossTenant-AuthSource: SAVPR12MB999143.namprd12.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 14 Oct 2026 03:17:41.0156
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: ADuRsCGrOiriwqV0vWjcxR1hNuzm0gqdRffuL7ryKcXnwmwidk503AdJTK3X4oUhbdn2aKF/j9tJEoJ9tk0D6A==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DS7PR12MB5909
+Content-Type: text/plain;
+ charset=utf-8
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261013_201754_238345_FD41931E 
-X-CRM114-Status: GOOD (  12.03  )
+X-CRM114-CacheID: sfid-20261013_211027_467353_CFE36EF7 
+X-CRM114-Status: GOOD (  39.09  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -156,37 +124,256 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+netdev-bot+sashiko@ wrote:
+> Thank you for your contribution! Sashiko AI review found 3 potential
+> issue(s) to consider.
+> =
+
+> Critical: 0 =C2=B7 High: 2 =C2=B7 Medium: 1 =C2=B7 Low: 0
+> =
+
+> If you believe none of the issues are legitimate, please reply to each
+> issue of Medium severity or higher and explain why the AI is wrong.
+> If any of them are legitimate and you plan to respin, please let patchw=
+ork
+> know by including "pw-bot: cr" as a separate line at the end of your re=
+ply
+> (one such reply per series is enough).
+> =
+
+> - [High] Forwarded TCP FIN/PSH can be dropped from the wire when a
+>   fraglist GRO skb falls back to tcp_gso_segment()/skb_segment().
+> - [High] FIN/PSH in a fraglist tail segment is invisible to netfilter,
+>   conntrack, flowtable, tc and BPF, which all read only the aggregate's=
+=E2=80=A6
+> - [Medium] The commit message calls the removed check 'redundant' and
+>   only discusses PSH.
+> =
+
+> --
+> =
+
+> net: tcp: fix fraglist GRO flushing on alternating TCP PSH flag
+> =
+
+> This patch removes the unmasked TCP flag word comparison from the is_fl=
+ist
+> branch of tcp_gro_receive(). Segments whose PSH/FIN flags differ from t=
+he
+> held packet can then be appended to a fraglist GRO skb. The goal is to =
+stop
+> premature flushes when a sender alternates [ACK] and [PSH, ACK] segment=
+s
+> in forwarding and tethering setups.
+> =
+
+> > This redundant check causes premature flushing on any incoming PSH pa=
+cket,
+> > shattering aggregation and increasing softirq overhead.
+> =
+
+> [ ... ]
+> =
+
+> > a single fraglist, and are safely flushed together upon encountering =
+the
+> > PSH flag at `out_check_final`, preserving the required TCP push seman=
+tics.
+> =
+
+> [Severity: Medium]
+> Is the removed check really redundant? Commit 8d95dc474f85 ("net: add c=
+ode
+> for TCP fraglist GRO") added it to the is_flist branch on purpose.
+>
+> The general path can mask FIN|PSH out of its first comparison only beca=
+use
+> it later ORs those flags into the held packet's header:
+> =
+
+>     tcp_flag_word(th2) |=3D flags & (TCP_FLAG_FIN | TCP_FLAG_PSH);
+
+Indeed. PSH bits are important information and are expected to close
+a context.
+ =
+
+> The is_flist branch jumps to out_check_final before it reaches that lin=
+e.
+> So the unmasked comparison was what kept every fraglist member's flags
+> identical to the head's.
+> =
+
+> The removal also relaxes FIN, not only PSH. Data-carrying FIN segments,=
+
+> such as the last segment of a response, can now join a fraglist. The
+> commit message doesn't mention this.
+> =
+
+> The claim that push semantics are preserved seems to hold only when the=
+
+> skb goes through skb_segment_list(). Could the commit message describe =
+the
+> FIN change and the cases raised in the comments on the diff below?
+> =
+
+> > diff --git a/net/ipv4/tcp_offload.c b/net/ipv4/tcp_offload.c
+> > index e74d99ca9face..54b40ec95a080 100644
+> > --- a/net/ipv4/tcp_offload.c
+> > +++ b/net/ipv4/tcp_offload.c
+> > @@ -328,7 +328,6 @@ struct sk_buff *tcp_gro_receive(struct list_head =
+*head, struct sk_buff *skb,
+> >  	flush |=3D skb_cmp_decrypted(p, skb);
+> >  =
+
+> >  	if (unlikely(NAPI_GRO_CB(p)->is_flist)) {
+> > -		flush |=3D (__force int)(flags ^ tcp_flag_word(th2));
+> =
+
+> [Severity: High]
+> Can this drop a forwarded FIN or PSH from the wire?
+> =
+
+> Without this check, skb_gro_receive_list() links an in-sequence [PSH, A=
+CK]
+> or [FIN, ACK] data segment into the held skb's frag_list. The is_flist
+> branch then jumps to out_check_final. That skips the only place where
+> FIN/PSH reach the head header:
+> =
+
+>     tcp_flag_word(th2) |=3D flags & (TCP_FLAG_FIN | TCP_FLAG_PSH);
+> =
+
+> tcp4_gro_complete() and tcp6_gro_complete() return early for is_flist.
+> The head can't carry FIN/PSH itself, because out_check_final would have=
+
+> flushed it. So the head header has neither flag, while the last frag_li=
+st
+> member has them.
+> =
+
+> tcp4_gso_segment() uses __tcp4_gso_segment_list() only when the geometr=
+y
+> still matches and SKB_GSO_DODGY is clear:
+> =
+
+>     if ((skb_pagelen(skb) - th->doff * 4 =3D=3D skb_shinfo(skb)->gso_si=
+ze) &&
+>         !(skb_shinfo(skb)->gso_type & SKB_GSO_DODGY))
+>         return __tcp4_gso_segment_list(skb, features);
+> =
+
+> Otherwise it falls back to tcp_gso_segment()->skb_segment(). That path
+> copies head_skb's headers, TCP flags included, into every segment.
+> =
+
+> tcp_gso_segment() then clears fin/psh on every segment except the last:=
+
+> =
+
+>     while (skb->next) {
+>         th->fin =3D th->psh =3D 0;
+> =
+
+> The last segment keeps the head's flags, which never had FIN/PSH.
+> tcp6_gso_segment() has the same fallback.
+> =
+
+> These can trigger the fallback on forwarded traffic:
+> =
+
+>   bpf_skb_proto_4_to_6() and bpf_skb_proto_6_to_4(), reached through
+>   bpf_skb_change_proto() (for example CLAT/464xlat when tethering), set=
+
+>   SKB_GSO_DODGY on GSO skbs.
+> =
+
+>   bpf_skb_net_grow() and bpf_skb_net_shrink() set SKB_GSO_DODGY.
+>   bpf_skb_net_grow() can also linearize frag_list skbs when
+>   BPF_F_ADJ_ROOM_FIXED_GSO is not set.
+> =
+
+>   Any pull or linearize that changes the geometry has the same effect,
+>   for example skb_ensure_writable(skb, skb->len) in NAT mangling.
+> =
+
+> In those cases the receiver doesn't get the FIN until the sender
+> retransmits it, and PSH is silently cleared.
+> =
+
+> A fraglist skb redirected to a local TCP socket after GRO (DNAT/TPROXY)=
+ is
+> also parsed from the head header only. TCP has nothing like UDP's
+> local-delivery fraglist handling, so the FIN would be missed there too.=
+
+> =
+
+> ORing the tail's flags into th2 in the is_flist branch doesn't seem to =
+fix
+> this. skb_segment_list() emits the head skb with its own TCP header, so=
+ the
+> first segment would then carry a spurious FIN/PSH.
+> =
+
+> [Severity: High]
+> Does this also hide the tail's FIN/PSH from netfilter, conntrack,
+> flowtable, tc and BPF? All of these read only the aggregate's head head=
+er
+> before segmentation.
+> =
+
+> In conntrack, get_conntrack_index() only checks the head's tcph->fin, s=
+o
+> the FIN transition never fires. tcp_in_window() computes:
+> =
+
+>     end =3D segment_seq_plus_len(seq, skb->len, dataoff, tcph);
+> =
+
+> skb->len covers all of the fraglist payload. The +1 for FIN is missing,=
+
+> because tcph is the head header. The peer's ACK of the FIN then hits:
+> =
+
+>     if (!before(sack, receiver->td_end + 1))
+>         return nf_tcp_store_invalid(ct, sender, log, NFCT_TCP_INVALID,
+>                                     NF_TCP_LOG_ACK_OVER, receiver->td_e=
+nd + 1);
+> =
+
+> That ACK is classified invalid, and so are the peer's own FIN and the
+> final ACK. A typical "ct state invalid drop" rule would then drop the
+> teardown packets. Without such a rule, the entry stays ESTABLISHED inst=
+ead
+> of moving to FIN_WAIT/CLOSE_WAIT.
+> =
+
+> In the flowtable, nf_flow_state_check() reads fin/rst only from the hea=
+d
+> header, so NF_FLOW_CLOSING is never set for the offloaded flow.
+> =
+
+> tcp_mt() in xt_tcpudp and the nft tcp flags match also read only the he=
+ad
+> header, so a FORWARD rule that matches FIN or PSH won't fire.
+> skb_segment_list() copies only the MAC header from the head and keeps e=
+ach
+> member's own TCP header. The FIN/PSH therefore still goes out on the wi=
+re
+> and bypasses that policy.
+> =
+
+> Before this patch, the unmasked comparison guaranteed that the head hea=
+der
+> described every member of the fraglist.
+> =
+
+> [ ... ]
+> =
+
+> -- =
+
+> Sashiko AI review =C2=B7 https://netdev-ai.bots.linux.dev/sashiko/#/pat=
+chset/20261009060319.6229-1-shiming.cheng%40mediatek.com
 
 
-On 10/5/2026 1:16 AM, Julius Bairaktaris wrote:
-> The next patch makes the flowtable emit FLOW_ACTION_PRIORITY for flows
-> with a non-zero skb->priority, which on IPv4 includes the priority
-> ip_forward() derives from the TOS by default. mlx5 would reject these
-> rules and stop offloading flows it offloads today.
-> 
-[...]
-> +	/* The eswitch does not apply skb->priority to flowtable flows. */
-> +	if (mlx5e_is_ft_flow(parse_state->flow))
-> +		return 0;
-
-The handler is only in tc_acts_fdb[] and only accepts flowtable flows,
-so NIC mode and tc flower rules are rejected as before. Looks good.
-
-The comment says what the code does, but the consequence is worth a line
-in the commit message. Because the action is ignored, the priority only
-reaches packets still on the software fast path, where
-nf_flow_offload_forward() sets skb->priority. Once the flow is offloaded
-to the FDB, mlx5 forwards it without touching skb->priority, so the
-offloaded packets do not carry it. Refusing the flow to honor the
-priority would keep it in software, so ignoring the action and keeping
-the offload is the better tradeoff, it is just not obvious from the code.
-
-I checked this on ConnectX-7: with the series the priority-carrying 
-flows stay offloaded to the FDB like plain flows, and without patch 1/3 
-they fallback to software.
-
-Nit: "prio" already means flow table priority in mlx5; skbedit_prio
-would be clearer. Not a blocker.
-
-Reviewed-by: Jianbo Liu <jianbol@nvidia.com>
 
