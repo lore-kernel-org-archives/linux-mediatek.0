@@ -4,72 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AB74BCC6B1A
-	for <linux-mediatek@archiver.kernel.org>; Wed, 14 Oct 2026 07:18:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2E7DBCC6B26
+	for <linux-mediatek@archiver.kernel.org>; Wed, 14 Oct 2026 07:18:09 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:To:From:Reply-To:Cc:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=kNifP+lNRe64+F/AhAXVYl+xl398Z2+g6GcnWg6zy8g=; b=v7jvm28EB1uT472pbcuK7KxD0N
-	I06VacwONmhVLMnSnzQ1qnhLVfhohmPU2QcDD339zRqQdpl1xf/OcRviqeQOkI8da1R1n1Ow7JKv8
-	vlVhalBVYlGeBe/TT5pdb57T0+Rgqbq5i2FvboUSuVoph/pdnz6cPor1VEcNRbwDWuKtBPUFeu67c
-	6nmNrNR1zE2WHV7p+F0JDIQnvUeW7edjAB2Dzw6NvURIpIZV2dUoS8XGm3+F/lI8Cxdai8qwafaJ/
-	rs1KDjUc5jvehWjcrDwPZ1NdLsop3yvKFt2H5r1gJ8hasRK+IfCjTHMYmlJ/lcNFVDSI8HIUZJXce
-	ht4QdubQ==;
+	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:To:From:Reply-To:
+	Cc:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=+Gr5bWZcYgumQbnVFUL+12XP1Z/UJrPiizeHxuglwVk=; b=qCo/e34zHycD8gZwgKnjZgO1Ud
+	KiSO3rJOvI01tAEG5U8Nv2LSpLSHabQrHbhQrKYR1lAwoNTGA224+IMUgp2Bdt0NIejD8jgJnecAe
+	usvpJil26qgd1qZG70Y/NKUJP6lXWCcfMUCLgPL3+CDrwEKOGY7N2cOGBPfrTQieww1XHaYeOeCSq
+	mkbsMhyV9SucID+KcjP3dhb1VPhzDO0RJm75JsnV4FVbH543DCP4a5ZiZiT84pfpFfCGPWahMF4YS
+	1cJ6RSGParcVyvwwebKNnnYj7ZCLCNRf4f5dOWzUmMrvwSHb3YBCDDAH3hqcOtgk+8y9u9C+/QeRr
+	4S49OoDg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xGtFR-0000000EhyB-2iN3;
-	Wed, 14 Oct 2026 07:18:01 +0000
-Received: from mail-wm1-x32b.google.com ([2a00:1450:4864:20::32b])
+	id 1xGtFV-0000000Ei1V-3VHL;
+	Wed, 14 Oct 2026 07:18:05 +0000
+Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xGtFO-0000000Ehtg-2E9r
+	id 1xGtFR-0000000Ehwg-1YB5
 	for linux-mediatek@lists.infradead.org;
-	Wed, 14 Oct 2026 07:18:00 +0000
-Received: by mail-wm1-x32b.google.com with SMTP id 5b1f17b1804b1-4a16aaf2067so7684775e9.0
-        for <linux-mediatek@lists.infradead.org>; Wed, 14 Oct 2026 00:17:57 -0700 (PDT)
+	Wed, 14 Oct 2026 07:18:02 +0000
+Received: by mail-wm1-x336.google.com with SMTP id 5b1f17b1804b1-4a16c399641so37024015e9.2
+        for <linux-mediatek@lists.infradead.org>; Wed, 14 Oct 2026 00:18:00 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1791962276; x=1792567076; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:to
-         :from:from:to:cc:subject:date:message-id:reply-to:content-type;
-        bh=kNifP+lNRe64+F/AhAXVYl+xl398Z2+g6GcnWg6zy8g=;
-        b=hXzG3EQPcuugvejCcPoktYF46LR+gCWSY6MnP3pmuMxZK0wxYSheHUEtbzRrw22F36
-         yAIbckvFpKXbPZOknzKQj7TNgKtv64yhK8yswkpXv1vTh7lg68YxIJdF+vYJDgWDbM7A
-         Q+DPdV3w1XwP30uG9VBzDH1zuAwSpfZOL26yi4uOhC76pC+S/CSsBGc8V/pKtehIZanj
-         Io62kDfFGJM+R6tVODx48tYV5ICHxt3vGpEbDMdAbiaIH5A1+auKtnf8C6pTHDO4fm8k
-         LTKE22olgCUviGvG6vjvvilKAsyUsDvbVZ3vi0jT3eW+YClGBsU9/KJFkMsH1hCEyW7p
-         s5pw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1791962276; x=1792567076;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:to
-         :from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
+        d=gmail.com; s=20251104; t=1791962279; x=1792567079; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:to:from:from:to:cc:subject:date:message-id
          :reply-to:content-type;
-        bh=kNifP+lNRe64+F/AhAXVYl+xl398Z2+g6GcnWg6zy8g=;
-        b=izDB8g++PTF2cIMWL+PAhU+tC+xwvEgs8jnVOEgPBB2GLtEMpaaUlmthFRk10wp2Kd
-         AxfIzOG1cbwDjBbcA6ofyPRQYQtMHNHsKiC2uwNQZlG0ZOXBfTrYOWzrG6wESxsUASe/
-         rs6vpcqNrm7iQzsTOSizSok6ypmQDZSBe99264LOfotEFHtmiUimFSgO0fxUE55yqZ10
-         UoyuKNlHMurqp9uL6jjiXaL4iMc0y2sjvYK/RqDNkjB23QmQngnQtd1c1sQ1AyYFASl1
-         B/rXmBrVVDSwX/VS9JOdxOT8V8gUlJrCDj61Qh1lJYC7ceOFTEykJHhnzcW4GZx192sa
-         LiEw==
-X-Forwarded-Encrypted: i=1; AKwUvBzDq+PpYKisiSjiEW1KodDUVUWNTJxaLUK0prkSRCXp/JoE9zXbnfQz9BAlujXfFBzMrn8uLRVky455XplmjQ==@lists.infradead.org
-X-Gm-Message-State: AFq9FYIIUh4fn/yVinh43bMCHfzlATwKnxbS1fzkGoUR4Myng7Q23u/3
-	PnZj3B7sTpngistZ/Qo7Lkr5wMb9sbz31Ku8oSqt9Ae5t6jPFBAyZ4nw
-X-Gm-Gg: AYBFou38f/dF1pPSqzTScShj9DgYbastQexVBWAlFqlh+Ad2nlHY9NO14viV8suSJ6J
-	jMtonPGMjEurBXFCmAuM/h1XvMF8U2pdMBfMzfu44PtZzNOUem8KeEYit804Psu6jwp74ufgwwP
-	wtsVs4ih5ghuXY0+D9yI6jHZkQUcVBkeeSGn07Z/t40gUARH5QBKUEfovZ12KjnGN4azLiu7/NY
-	Ybq9Ct3SO7K/ZpJkFlXlxYfxFs/4hJ3jCSWNsepHY5XicMzthLYjEOA2Li1sHIYEfu43qh5fmwV
-	Y2AcsWIdwu5/hS5SYautv2qDDn5lWhZ/6p3rW0CzOr6B+1ezoPQDxlnF1mwKoUolJBju89lq0A/
-	URDMXCKDm5/tmWc/RXn8HJpoMd5fE5uylPQS3Vv7WgViFI1HujHHMYAJrlthd8qvwwLXTxLnjF/
-	QJGcNjC8QzE72MOS2nZabZJzOoGCRl4I9OnAVJybsCwfIDzgpYIIawLH3w5b5LkKFSWBUZCU0Tm
-	ycwq42qJGM/+SiUAmQ3tXzbelt58wyxLhkBF/QBNIbZySx8dgl/VJmGyzxPIh6PlgBKRf00pL6G
-	ilKg8oguMdbFkmGpAYMaWQ==
-X-Received: by 2002:a05:600c:524a:b0:49b:9202:6f80 with SMTP id 5b1f17b1804b1-4a18e4a4f2amr296146185e9.6.1791962276389;
-        Wed, 14 Oct 2026 00:17:56 -0700 (PDT)
+        bh=+Gr5bWZcYgumQbnVFUL+12XP1Z/UJrPiizeHxuglwVk=;
+        b=CZU9KDGTqQtlwGxAGsywmh7mwBWI2Tc9IZK3wPa874A5FLrE87fqQu5Kc3RPD+jvDx
+         ajwG/PBQ4pUTdGuCQxUexBiVFcm6GX+qvMD8mUy6/FBicoEKBC/HBtsiWYiQhRM6uqej
+         QHAO4vBTRNdUQKpxBhCUzYlZZJHgT9LGgPWDW9UiSgcziT5XW89mIOT3Unlb9m/S5SHp
+         e8c7RyOjGv3u3q0g8namu0Rxp0VZcEhjDTbbfhJw6fYf6LlRzMtduoMS0QkRt6dLtmnU
+         zmfrU9bF6TLb17RChglCZExvacnoVH/kKWIOPrCNy5MnqZPQWzx96T22dRzVJsErRDk8
+         y2Xw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20260707; t=1791962279; x=1792567079;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:to:from:x-gm-gg:x-gm-message-state:from:to
+         :cc:subject:date:message-id:reply-to:content-type;
+        bh=+Gr5bWZcYgumQbnVFUL+12XP1Z/UJrPiizeHxuglwVk=;
+        b=tEykcNTPaul+iQ8QCemYh7RUyb5S8eOCpOqkIJfPh98e0J1QAltOis699nbB6rJEKt
+         MnppAmNdg0qCxj7uU842SXPXhm1G3DSixtcPFusPfU9Xrf4j3XbMPQFTWeVgTCn8XmeB
+         Y9j7I24I9hPRUrZlISWVz14oEiZuy5AjI7rSbfoJlYI2QqNrDTNIDvtxiRaLeiAHCo2y
+         bsX6vmJ5+pLR/4bQFnFLx1KTy2ayVIZSk1KZUOvrp14HJ+L3IncSZZjSDl8PV/ZjoA5G
+         +AF5/YhYcsNaU2nl8Go68Y0Kjq6sPKTkYao4Z6GxxbkYB+omqSz84fL9845SWsgCIsi3
+         axCg==
+X-Forwarded-Encrypted: i=1; AKwUvBxerBSNN/lMTEx/FPDQSyRYPzU9atNoL08XZjzPeknpjAcwQ+lPJmXNeniS+UMV6hujzx+vj6fFZ2SmVUXojg==@lists.infradead.org
+X-Gm-Message-State: AFq9FYLrrSA0ylSoSYWqcr4ivnosE5upOVtpvns2ZMLl0VViJrMQZ2+g
+	qZRtYJRUDtbTiglwpBXxQ9sLAG2MzglXiKcYHcYsZKz+a65O/XPM16l0
+X-Gm-Gg: AYBFou2dTnpRd8mM5kXzZbwcT2xEDz1WCfHJ3GV0aUJONbsNZdDLDaZ9eUKKGthrAUS
+	qRLoiWAmVOTbI7AQqnaS33/8uAWM8uqzVgVURiaOntL6/BZzeue0Om9juZzKy1dknZlW2t7YbCM
+	UISatVlY/gpMaxBUE4OFQFnwXxOaZ3iwEteopATxf2o6O+Ld2EynEtLtZgEyd6xVwKaG01Ur992
+	2zyD4JKWwvs0taG316/i8VwhbDi9C4fuDOVYGckyt78bvIfaV0rq0opIE2IPou7ck2FyxqJtz9k
+	ydteS/8tPiifd5HpDNplMd/ie0YTfLDkUcbEpBvcez4aTo/9zcWQhu0cY7jUPKesg/sWPTBTVI/
+	PYgcNjJta6bMinyCf5nD2FgaFWW+M9qEPN1Q1Prj+0aK5XMrO/GiHJMpqXc39VfdSfREepbQL/X
+	tCdeF9c95OuY2tvsZ6CVHRQz4I4q0ZS8eRsDErC+eXrUJ5/MbI+01a6Bl0RDBEOVN+/+3aExgc7
+	oJ5r0MRtovgGTvx1DBS4lYqbdJmLrj8aa89G0nc4l1vn4jVjtV/cvEauWbQRygc2Jyb0ib9J9jU
+	1ip3R6m6j/dWuh4qoV//0I/IIbpKrBc4
+X-Received: by 2002:a05:600c:3f0c:b0:4a1:85d9:13be with SMTP id 5b1f17b1804b1-4a18e498471mr318247985e9.20.1791962279370;
+        Wed, 14 Oct 2026 00:17:59 -0700 (PDT)
 Received: from Ansuel-XPS24.localdomain (host-95-235-252-189.retail.telecomitalia.it. [95.235.252.189])
-        by smtp.googlemail.com with ESMTPSA id 5b1f17b1804b1-4a1b35d64e4sm18756285e9.0.2026.10.14.00.17.52
+        by smtp.googlemail.com with ESMTPSA id 5b1f17b1804b1-4a1b35d64e4sm18756285e9.0.2026.10.14.00.17.56
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 14 Oct 2026 00:17:54 -0700 (PDT)
+        Wed, 14 Oct 2026 00:17:58 -0700 (PDT)
 From: Christian Marangi <ansuelsmth@gmail.com>
 To: Andrew Lunn <andrew@lunn.ch>,
 	Heiner Kallweit <hkallweit1@gmail.com>,
@@ -90,15 +91,17 @@ To: Andrew Lunn <andrew@lunn.ch>,
 	netdev@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
-Subject: [PATCH net-next v3 0/6] net: phy: mediatek: calibration for AN7581/3
-Date: Wed, 14 Oct 2026 09:17:31 +0200
-Message-ID: <20261014071739.216345-1-ansuelsmth@gmail.com>
+Subject: [PATCH net-next v3 1/6] net: phy: mediatek: export __mtk_tr_write
+Date: Wed, 14 Oct 2026 09:17:32 +0200
+Message-ID: <20261014071739.216345-2-ansuelsmth@gmail.com>
 X-Mailer: git-send-email 2.55.0
+In-Reply-To: <20261014071739.216345-1-ansuelsmth@gmail.com>
+References: <20261014071739.216345-1-ansuelsmth@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261014_001758_592253_C671BB7F 
-X-CRM114-Status: GOOD (  15.04  )
+X-CRM114-CacheID: sfid-20261014_001801_431759_79557F90 
+X-CRM114-Status: GOOD (  10.73  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -113,63 +116,50 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-This small series adds calibration support for Airoha AN7581 and
-AN7583 integrated PHYs.
+Export __mtk_tr_write to directly write to debug register.
 
-The calibration logic is quite big so I decided to split
-the driver from the mediatek one to keep things organized.
+Signed-off-by: Christian Marangi <ansuelsmth@gmail.com>
+---
+ drivers/net/phy/mediatek/mtk-phy-lib.c | 5 +++--
+ drivers/net/phy/mediatek/mtk.h         | 2 ++
+ 2 files changed, 5 insertions(+), 2 deletions(-)
 
-Minor change were needed and just additional symbol to use what
-is common between mediatek and airoha PHYs.
-
-I followed the naming pattern of mtk by calling the new source
-airoha-ge-soc and related config.
-
-The calibration use lots of static table and software calibration
-at runtime instead of using efuse to calibrate.
-
-There is one pecularity where some register and calibration needs
-to be done on port0 first and then with the related port.
-
-This is O.K. as port0 presence is mandatory for the functionality
-of the integrated switch and it's assumed to be always present
-on the MDIO bus.
-
-MAINTAINERS is updated to reflect the changed code.
-
-(this was tested from a long time and also verified by Airoha for
-correct order of calibration)
-
-Changes v3:
-- Address comments from sashiko bot
-- Apply review and suggested changes from Airoha
-- Rebase on top of net-next
-
-Changes v2:
-- Split header register patch from cal_cycle part
-- Fix missing EXPORT_SYMBOL_GPL
-
-Christian Marangi (6):
-  net: phy: mediatek: export __mtk_tr_write
-  net: phy: mediatek: move MTK GE SoC registers define to dedicated
-    header
-  net: phy: mediatek: generalize cal_cycle function for GE SoC
-  net: phy: mediatek: split Airoha code to dedicated source
-  net: phy: mediatek: add calibration logic for AN7581
-  net: phy: mediatek: add calibration logic for AN7583
-
- MAINTAINERS                              |    9 +
- drivers/net/phy/mediatek/Kconfig         |   18 +-
- drivers/net/phy/mediatek/Makefile        |    1 +
- drivers/net/phy/mediatek/airoha-ge-soc.c | 1851 ++++++++++++++++++++++
- drivers/net/phy/mediatek/mtk-ge-soc.c    |  553 +------
- drivers/net/phy/mediatek/mtk-ge-soc.h    |  377 +++++
- drivers/net/phy/mediatek/mtk-phy-lib.c   |   77 +-
- drivers/net/phy/mediatek/mtk.h           |   15 +
- 8 files changed, 2365 insertions(+), 536 deletions(-)
- create mode 100644 drivers/net/phy/mediatek/airoha-ge-soc.c
- create mode 100644 drivers/net/phy/mediatek/mtk-ge-soc.h
-
+diff --git a/drivers/net/phy/mediatek/mtk-phy-lib.c b/drivers/net/phy/mediatek/mtk-phy-lib.c
+index 4c4eca870bde..3e4fb899a85b 100644
+--- a/drivers/net/phy/mediatek/mtk-phy-lib.c
++++ b/drivers/net/phy/mediatek/mtk-phy-lib.c
+@@ -36,8 +36,8 @@ static void __mtk_tr_read(struct phy_device *phydev, u8 ch_addr, u8 node_addr,
+ 		*tr_high, *tr_low);
+ }
+ 
+-static void __mtk_tr_write(struct phy_device *phydev, u8 ch_addr, u8 node_addr,
+-			   u8 data_addr, u32 tr_data)
++void __mtk_tr_write(struct phy_device *phydev, u8 ch_addr, u8 node_addr,
++		    u8 data_addr, u32 tr_data)
+ {
+ 	__phy_write(phydev, 0x11, tr_data & 0xffff);
+ 	__phy_write(phydev, 0x12, tr_data >> 16);
+@@ -45,6 +45,7 @@ static void __mtk_tr_write(struct phy_device *phydev, u8 ch_addr, u8 node_addr,
+ 		tr_data >> 16, tr_data & 0xffff);
+ 	__mtk_tr_access(phydev, false, ch_addr, node_addr, data_addr);
+ }
++EXPORT_SYMBOL_GPL(__mtk_tr_write);
+ 
+ void __mtk_tr_modify(struct phy_device *phydev, u8 ch_addr, u8 node_addr,
+ 		     u8 data_addr, u32 mask, u32 set)
+diff --git a/drivers/net/phy/mediatek/mtk.h b/drivers/net/phy/mediatek/mtk.h
+index 79e09727b81b..3565e39b96a8 100644
+--- a/drivers/net/phy/mediatek/mtk.h
++++ b/drivers/net/phy/mediatek/mtk.h
+@@ -72,6 +72,8 @@ struct mtk_socphy_priv {
+ 	unsigned long		led_state;
+ };
+ 
++void __mtk_tr_write(struct phy_device *phydev, u8 ch_addr, u8 node_addr,
++		    u8 data_addr, u32 tr_data);
+ void __mtk_tr_modify(struct phy_device *phydev, u8 ch_addr, u8 node_addr,
+ 		     u8 data_addr, u32 mask, u32 set);
+ void mtk_tr_modify(struct phy_device *phydev, u8 ch_addr, u8 node_addr,
 -- 
 2.55.0
 
