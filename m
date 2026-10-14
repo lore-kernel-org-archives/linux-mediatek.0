@@ -4,74 +4,101 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E5D1ACC6B19
-	for <linux-mediatek@archiver.kernel.org>; Wed, 14 Oct 2026 05:27:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AB74BCC6B1A
+	for <linux-mediatek@archiver.kernel.org>; Wed, 14 Oct 2026 07:18:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=byZ4N/qHoBXhW8OYlmCrDCXnuN86R6tnu29nZnp05sg=; b=3MP0GfIG80hiomIBIQ8sU52oUV
-	KAeJFnss21zj61pKy3FmkzWjTO5GRuUZeKjPSF0I/uiUp1Zr7vn5Et/aal2wKtuZ+2LoffHAgp9Gw
-	9739pCcXT9IfsGEkfM7GKwXW1ziKz5+zISfE+aL9SWmkDfwf5QU7QV4/yrUY1N9UTGQCCPgP/LSpt
-	hJo5s6JKHu0LhCKSdqd/5TYWu991Jtnju0/QPL0n+3dtuQGMbAKPD73OG9FywSRXUePXM7jKPBc2Z
-	/3W3ytC3H4IO7C+vvvfPSIM5ukSzD/904L7U3u4sbVf6WcHvGzEgG6SQvVhYPnUGpnGK976cRNYUw
-	rrqrRYTg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-ID:Date:Subject:To:From:Reply-To:Cc:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=kNifP+lNRe64+F/AhAXVYl+xl398Z2+g6GcnWg6zy8g=; b=v7jvm28EB1uT472pbcuK7KxD0N
+	I06VacwONmhVLMnSnzQ1qnhLVfhohmPU2QcDD339zRqQdpl1xf/OcRviqeQOkI8da1R1n1Ow7JKv8
+	vlVhalBVYlGeBe/TT5pdb57T0+Rgqbq5i2FvboUSuVoph/pdnz6cPor1VEcNRbwDWuKtBPUFeu67c
+	6nmNrNR1zE2WHV7p+F0JDIQnvUeW7edjAB2Dzw6NvURIpIZV2dUoS8XGm3+F/lI8Cxdai8qwafaJ/
+	rs1KDjUc5jvehWjcrDwPZ1NdLsop3yvKFt2H5r1gJ8hasRK+IfCjTHMYmlJ/lcNFVDSI8HIUZJXce
+	ht4QdubQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xGrVy-0000000EXwi-0tr0;
-	Wed, 14 Oct 2026 05:26:58 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1xGtFR-0000000EhyB-2iN3;
+	Wed, 14 Oct 2026 07:18:01 +0000
+Received: from mail-wm1-x32b.google.com ([2a00:1450:4864:20::32b])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xGrVq-0000000EXvH-2kxT
+	id 1xGtFO-0000000Ehtg-2E9r
 	for linux-mediatek@lists.infradead.org;
-	Wed, 14 Oct 2026 05:26:54 +0000
-X-UUID: d86848aec78f11f1acbe4559397dec65-20261013
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=byZ4N/qHoBXhW8OYlmCrDCXnuN86R6tnu29nZnp05sg=;
-	b=WDEgaDGHl8B2pljRx9aOAek00ZlGteNxXOsoiwaXKelnknZxk1K/kDNt0WblwFxFhI3wwxNgBXiUAX7dnOeYFn6xi8qJAttXfOTbcRapcuzOwjCX03tvxhSk0D14X411WQBZ3e1Clm/gM6fJ9N5U+xkwH4ygBaMu2Prmg8f7ABU=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.20,REQID:05623dba-afd0-43c6-b06b-9b0081c7e02e,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:291e20b,CLOUDID:3b9de48e-30c3-40e7-8d8d-945c5af6df70,B
-	ulkID:nil,BulkQuantity:0,SF:102|136|836|865|888|898,TC:-5,Content:0|15|50|
-	99,EDM:-3|-100,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:-1,COL:0,OSI
-	:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 2,SSN|SDN
-X-CID-BAS: 2,SSN|SDN,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: d86848aec78f11f1acbe4559397dec65-20261013
-Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw02.mediatek.com
-	(envelope-from <eason.lai@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 797076604; Tue, 13 Oct 2026 22:26:45 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.29; Wed, 14 Oct 2026 13:26:42 +0800
-Received: from mtksitap99.mediatek.inc (10.233.130.16) by
- mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.2562.29 via Frontend Transport; Wed, 14 Oct 2026 13:26:42 +0800
-From: Eason Lai <eason.lai@mediatek.com>
-To: <nbd@nbd.name>, <lorenzo@kernel.org>
-CC: <linux-wireless@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
-	<kun.wu@mediatek.com>, <deren.wu@mediatek.com>, <sean.wang@mediatek.com>,
-	<quan.zhou@mediatek.com>, <ryder.lee@mediatek.com>, <leon.yen@mediatek.com>,
-	<litien.chang@mediatek.com>, <jb.tsai@mediatek.com>,
-	<eason.lai@mediatek.com>, yin-chun.tsai <yin-chun.tsai@mediatek.com>
-Subject: [PATCH] wifi: mt76: mt7925/mt7928: add debug cmds to check TX/RX status
-Date: Wed, 14 Oct 2026 13:26:40 +0800
-Message-ID: <20261014052641.1609444-1-eason.lai@mediatek.com>
-X-Mailer: git-send-email 2.45.2
+	Wed, 14 Oct 2026 07:18:00 +0000
+Received: by mail-wm1-x32b.google.com with SMTP id 5b1f17b1804b1-4a16aaf2067so7684775e9.0
+        for <linux-mediatek@lists.infradead.org>; Wed, 14 Oct 2026 00:17:57 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20251104; t=1791962276; x=1792567076; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:to
+         :from:from:to:cc:subject:date:message-id:reply-to:content-type;
+        bh=kNifP+lNRe64+F/AhAXVYl+xl398Z2+g6GcnWg6zy8g=;
+        b=hXzG3EQPcuugvejCcPoktYF46LR+gCWSY6MnP3pmuMxZK0wxYSheHUEtbzRrw22F36
+         yAIbckvFpKXbPZOknzKQj7TNgKtv64yhK8yswkpXv1vTh7lg68YxIJdF+vYJDgWDbM7A
+         Q+DPdV3w1XwP30uG9VBzDH1zuAwSpfZOL26yi4uOhC76pC+S/CSsBGc8V/pKtehIZanj
+         Io62kDfFGJM+R6tVODx48tYV5ICHxt3vGpEbDMdAbiaIH5A1+auKtnf8C6pTHDO4fm8k
+         LTKE22olgCUviGvG6vjvvilKAsyUsDvbVZ3vi0jT3eW+YClGBsU9/KJFkMsH1hCEyW7p
+         s5pw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20260707; t=1791962276; x=1792567076;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:to
+         :from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to:content-type;
+        bh=kNifP+lNRe64+F/AhAXVYl+xl398Z2+g6GcnWg6zy8g=;
+        b=izDB8g++PTF2cIMWL+PAhU+tC+xwvEgs8jnVOEgPBB2GLtEMpaaUlmthFRk10wp2Kd
+         AxfIzOG1cbwDjBbcA6ofyPRQYQtMHNHsKiC2uwNQZlG0ZOXBfTrYOWzrG6wESxsUASe/
+         rs6vpcqNrm7iQzsTOSizSok6ypmQDZSBe99264LOfotEFHtmiUimFSgO0fxUE55yqZ10
+         UoyuKNlHMurqp9uL6jjiXaL4iMc0y2sjvYK/RqDNkjB23QmQngnQtd1c1sQ1AyYFASl1
+         B/rXmBrVVDSwX/VS9JOdxOT8V8gUlJrCDj61Qh1lJYC7ceOFTEykJHhnzcW4GZx192sa
+         LiEw==
+X-Forwarded-Encrypted: i=1; AKwUvBzDq+PpYKisiSjiEW1KodDUVUWNTJxaLUK0prkSRCXp/JoE9zXbnfQz9BAlujXfFBzMrn8uLRVky455XplmjQ==@lists.infradead.org
+X-Gm-Message-State: AFq9FYIIUh4fn/yVinh43bMCHfzlATwKnxbS1fzkGoUR4Myng7Q23u/3
+	PnZj3B7sTpngistZ/Qo7Lkr5wMb9sbz31Ku8oSqt9Ae5t6jPFBAyZ4nw
+X-Gm-Gg: AYBFou38f/dF1pPSqzTScShj9DgYbastQexVBWAlFqlh+Ad2nlHY9NO14viV8suSJ6J
+	jMtonPGMjEurBXFCmAuM/h1XvMF8U2pdMBfMzfu44PtZzNOUem8KeEYit804Psu6jwp74ufgwwP
+	wtsVs4ih5ghuXY0+D9yI6jHZkQUcVBkeeSGn07Z/t40gUARH5QBKUEfovZ12KjnGN4azLiu7/NY
+	Ybq9Ct3SO7K/ZpJkFlXlxYfxFs/4hJ3jCSWNsepHY5XicMzthLYjEOA2Li1sHIYEfu43qh5fmwV
+	Y2AcsWIdwu5/hS5SYautv2qDDn5lWhZ/6p3rW0CzOr6B+1ezoPQDxlnF1mwKoUolJBju89lq0A/
+	URDMXCKDm5/tmWc/RXn8HJpoMd5fE5uylPQS3Vv7WgViFI1HujHHMYAJrlthd8qvwwLXTxLnjF/
+	QJGcNjC8QzE72MOS2nZabZJzOoGCRl4I9OnAVJybsCwfIDzgpYIIawLH3w5b5LkKFSWBUZCU0Tm
+	ycwq42qJGM/+SiUAmQ3tXzbelt58wyxLhkBF/QBNIbZySx8dgl/VJmGyzxPIh6PlgBKRf00pL6G
+	ilKg8oguMdbFkmGpAYMaWQ==
+X-Received: by 2002:a05:600c:524a:b0:49b:9202:6f80 with SMTP id 5b1f17b1804b1-4a18e4a4f2amr296146185e9.6.1791962276389;
+        Wed, 14 Oct 2026 00:17:56 -0700 (PDT)
+Received: from Ansuel-XPS24.localdomain (host-95-235-252-189.retail.telecomitalia.it. [95.235.252.189])
+        by smtp.googlemail.com with ESMTPSA id 5b1f17b1804b1-4a1b35d64e4sm18756285e9.0.2026.10.14.00.17.52
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 14 Oct 2026 00:17:54 -0700 (PDT)
+From: Christian Marangi <ansuelsmth@gmail.com>
+To: Andrew Lunn <andrew@lunn.ch>,
+	Heiner Kallweit <hkallweit1@gmail.com>,
+	Russell King <linux@armlinux.org.uk>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@kernel.org>,
+	Jakub Kicinski <kuba@kernel.org>,
+	Paolo Abeni <pabeni@redhat.com>,
+	Christian Marangi <ansuelsmth@gmail.com>,
+	Daniel Golle <daniel@makrotopia.org>,
+	Qingfang Deng <dqfext@gmail.com>,
+	SkyLake Huang <SkyLake.Huang@mediatek.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Ahmed Naseef <naseefkm@gmail.com>,
+	Joris Vaisvila <joey@tinyisr.com>,
+	linux-kernel@vger.kernel.org,
+	netdev@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: [PATCH net-next v3 0/6] net: phy: mediatek: calibration for AN7581/3
+Date: Wed, 14 Oct 2026 09:17:31 +0200
+Message-ID: <20261014071739.216345-1-ansuelsmth@gmail.com>
+X-Mailer: git-send-email 2.55.0
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261013_222650_747879_C8862E92 
-X-CRM114-Status: GOOD (  15.44  )
+X-CRM114-CacheID: sfid-20261014_001758_592253_C671BB7F 
+X-CRM114-Status: GOOD (  15.04  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,694 +113,64 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: "yin-chun.tsai" <yin-chun.tsai@mediatek.com>
+This small series adds calibration support for Airoha AN7581 and
+AN7583 integrated PHYs.
 
-Add some debug cmd including, WTBL, DMASHDL, PLE, and PSE info
-for checking TX/RX path status.
+The calibration logic is quite big so I decided to split
+the driver from the mediatek one to keep things organized.
 
-Signed-off-by: yin-chun.tsai <yin-chun.tsai@mediatek.com>
----
- .../wireless/mediatek/mt76/mt7925/debugfs.c   | 531 ++++++++++++++++++
- .../net/wireless/mediatek/mt76/mt7925/regs.h  |  15 +
- drivers/net/wireless/mediatek/mt76/mt792x.h   |   1 +
- .../net/wireless/mediatek/mt76/mt792x_regs.h  |  70 +++
- 4 files changed, 617 insertions(+)
+Minor change were needed and just additional symbol to use what
+is common between mediatek and airoha PHYs.
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/debugfs.c b/drivers/net/wireless/mediatek/mt76/mt7925/debugfs.c
-index d01ff49de47a..442275dcc128 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7925/debugfs.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7925/debugfs.c
-@@ -2,6 +2,7 @@
- /* Copyright (C) 2023 MediaTek Inc. */
- 
- #include "mt7925.h"
-+#include "mac.h"
- #include "mcu.h"
- 
- static int
-@@ -286,6 +287,524 @@ static int mt7925_chip_reset(void *data, u64 val)
- 
- DEFINE_DEBUGFS_ATTRIBUTE(fops_reset, NULL, mt7925_chip_reset, "%lld\n");
- 
-+/* WTBL dump
-+ *
-+ * Usage:
-+ *   echo <idx> > /sys/kernel/debug/ieee80211/phy1/mt76/wtbl_idx
-+ *   cat  /sys/kernel/debug/ieee80211/phy1/mt76/get_wtbl
-+ *
-+ * LMAC WTBL has 36 dwords per entry (connac3x).
-+ */
-+#define MT792x_WTBL_LMAC_DWORDS	36
-+
-+static int
-+mt7925_wtbl_idx_set(void *data, u64 val)
-+{
-+	struct mt792x_dev *dev = data;
-+
-+	dev->wtbl_dump_idx = (u32)val;
-+
-+	return 0;
-+}
-+
-+static int
-+mt7925_wtbl_idx_get(void *data, u64 *val)
-+{
-+	struct mt792x_dev *dev = data;
-+
-+	*val = dev->wtbl_dump_idx;
-+
-+	return 0;
-+}
-+
-+DEFINE_DEBUGFS_ATTRIBUTE(fops_wtbl_idx, mt7925_wtbl_idx_get,
-+			 mt7925_wtbl_idx_set, "%llu\n");
-+
-+static int
-+mt7925_wtbl_read(struct seq_file *s, void *data)
-+{
-+	struct mt792x_dev *dev = dev_get_drvdata(s->private);
-+	u32 idx = dev->wtbl_dump_idx;
-+	u32 wdu_cr, wducr_val, base;
-+	u32 dw0, dw1;
-+	int i;
-+
-+	if (!mt76_is_mmio(&dev->mt76)) {
-+		seq_puts(s, "WTBL direct dump not supported on this interface\n");
-+		return 0;
-+	}
-+
-+	if (idx >= MT792x_WTBL_SIZE) {
-+		seq_printf(s, "Invalid WTBL idx %u (max %u)\n",
-+			   idx, MT792x_WTBL_SIZE - 1);
-+		return 0;
-+	}
-+
-+	mt792x_mutex_acquire(dev);
-+
-+	/* mt7925_mac_wtbl_lmac_addr() writes WDUCR group selection and
-+	 * returns the mapped register address for DW 0 of this WCID.
-+	 */
-+	base = mt7925_mac_wtbl_lmac_addr(dev, idx, 0);
-+	wdu_cr = is_mt7928(&dev->mt76) ? MT7928_WTBLON_TOP_WDUCR :
-+					  MT7925_WTBLON_TOP_WDUCR;
-+	wducr_val = mt76_rr(dev, wdu_cr);
-+
-+	/* DW0[15:0] + DW1[31:0] encode the link address */
-+	dw0 = mt76_rr(dev, base);
-+	dw1 = mt76_rr(dev, base + 4);
-+
-+	seq_printf(s, "Dump WTBL info of WLAN_IDX: %u\n", idx);
-+	seq_printf(s, "LMAC WTBL Addr: group:0x%08x=0x%08x addr: 0x%08x\n",
-+		   wdu_cr, wducr_val, base);
-+	seq_printf(s, "LinkAddr: %02x:%02x:%02x:%02x:%02x:%02x\n",
-+		   dw1 & 0xff, (dw1 >> 8) & 0xff,
-+		   (dw1 >> 16) & 0xff, (dw1 >> 24) & 0xff,
-+		   dw0 & 0xff, (dw0 >> 8) & 0xff);
-+
-+	seq_puts(s, "\nLMAC WTBL raw data:\n");
-+	for (i = 0; i < MT792x_WTBL_LMAC_DWORDS; i++)
-+		seq_printf(s, "DW%02d: 0x%08x\n", i,
-+			   mt76_rr(dev, base + i * 4));
-+
-+	mt792x_mutex_release(dev);
-+
-+	return 0;
-+}
-+
-+/* mt7925_dmashdl_read: standard DMASHDL (MT7925/MT7927 only).
-+ * MT7928 uses DMASHDL Lite; see mt7928_dmashdl_lite_read below.
-+ */
-+static int
-+mt7925_dmashdl_read(struct seq_file *s, void *data)
-+{
-+	struct mt792x_dev *dev = dev_get_drvdata(s->private);
-+	u32 total_src = 0, total_rsv = 0;
-+	u32 ffa_cnt, free_pg_cnt;
-+	u32 ple_rsv, ple_src;
-+	u32 val;
-+	int i;
-+
-+	if (!mt76_is_mmio(&dev->mt76)) {
-+		seq_puts(s, "DMASHDL dump not supported on this interface\n");
-+		return 0;
-+	}
-+
-+	mt792x_mutex_acquire(dev);
-+
-+	seq_puts(s, "DMASHDL Info:\n");
-+
-+	val = mt76_rr(dev, MT_DMASHDL_REFILL);
-+	seq_printf(s, "\tRefill control(0x%08x): 0x%08x\n",
-+		   MT_DMASHDL_REFILL, val);
-+
-+	val = mt76_rr(dev, MT_DMASHDL_PKT_MAX_SIZE);
-+	seq_printf(s, "\tPkt max size(0x%08x): 0x%08x\n",
-+		   MT_DMASHDL_PKT_MAX_SIZE, val);
-+	seq_printf(s, "\t\tPLE pkt max=0x%03lx, PSE pkt max=0x%03lx\n",
-+		   FIELD_GET(MT_DMASHDL_PKT_MAX_SIZE_PLE, val),
-+		   FIELD_GET(MT_DMASHDL_PKT_MAX_SIZE_PSE, val));
-+
-+	val = mt76_rr(dev, MT_DMASHDL_ERROR_FLAG_CTRL);
-+	seq_printf(s, "\tError flag ctrl(0x%08x): 0x%08x\n",
-+		   MT_DMASHDL_ERROR_FLAG_CTRL, val);
-+
-+	for (i = 0; i < 15; i++) {
-+		u32 quota = mt76_rr(dev, MT_DMASHDL_GROUP_QUOTA(i));
-+		u32 status = mt76_rr(dev, MT_DMASHDL_STATUS_RD_GP(i));
-+		u32 rsv = FIELD_GET(MT_DMASHDL_STATUS_RD_GP_RSV, status);
-+		u32 src = FIELD_GET(MT_DMASHDL_STATUS_RD_GP_SRC, status);
-+
-+		seq_printf(s, "\tGroup %2d: quota(min/max)=0x%03lx/0x%03lx, used/rsv=0x%03x/0x%03x\n",
-+			   i,
-+			   FIELD_GET(MT_DMASHDL_GROUP_QUOTA_MIN, quota),
-+			   FIELD_GET(MT_DMASHDL_GROUP_QUOTA_MAX, quota),
-+			   src, rsv);
-+		total_src += src;
-+		total_rsv += rsv;
-+	}
-+
-+	val = mt76_rr(dev, MT_DMASHDL_STATUS_RD);
-+	free_pg_cnt = FIELD_GET(MT_DMASHDL_STATUS_RD_FREE_PG, val);
-+	ffa_cnt = FIELD_GET(MT_DMASHDL_STATUS_RD_FFA, val);
-+	seq_printf(s, "\tStatus_RD(0x%08x): 0x%08x\n",
-+		   MT_DMASHDL_STATUS_RD, val);
-+	seq_printf(s, "\t\tfree page cnt=0x%03x, ffa cnt=0x%03x\n",
-+		   free_pg_cnt, ffa_cnt);
-+
-+	/* Counter mismatch check against PLE HIF page counters */
-+	seq_puts(s, "\nDMASHDL Counter Check:\n");
-+	val = mt76_rr(dev, MT_PLE_HIF_PG_INFO);
-+	ple_rsv = FIELD_GET(MT_WF_PG_INFO_RSV_CNT, val);
-+	ple_src = FIELD_GET(MT_WF_PG_INFO_SRC_CNT, val);
-+	seq_printf(s, "\tPLE: used/rsv pages of HIF group=0x%03x/0x%03x\n",
-+		   ple_src, ple_rsv);
-+	seq_printf(s, "\tDMASHDL: total used pages of group0~14=0x%03x\n",
-+		   total_src);
-+	if (ple_src != total_src)
-+		seq_puts(s, "\t[MISMATCH] PLE used pages != DMASHDL total used\n");
-+	seq_printf(s, "\tDMASHDL: total rsv pages of group0~14=0x%03x\n",
-+		   total_rsv);
-+	seq_printf(s, "\tDMASHDL: total ffa pages=0x%03x, total free pages=0x%03x\n",
-+		   ffa_cnt, free_pg_cnt);
-+	if (free_pg_cnt != total_rsv + ffa_cnt)
-+		seq_puts(s, "\t[MISMATCH] free pages != rsv + ffa\n");
-+	if (free_pg_cnt != ple_rsv)
-+		seq_puts(s, "\t[MISMATCH] free pages != PLE rsv pages\n");
-+	if (ple_src == total_src && free_pg_cnt == total_rsv + ffa_cnt &&
-+	    free_pg_cnt == ple_rsv)
-+		seq_puts(s, "\tDMASHDL: no counter mismatch\n");
-+
-+	mt792x_mutex_release(dev);
-+	return 0;
-+}
-+
-+/* mt7928_dmashdl_lite_read: DMASHDL Lite (MT7928 only, base 0x20026200).
-+ * Unlike full DMASHDL, Lite splits runtime state into separate registers:
-+ *   GROUP_CONTROL (+0x100): min/max quota (config)
-+ *   GROUP_SRC_CNT (+0x200): pages sourced (in-use) per group (runtime)
-+ *   GROUP_ACK_CNT (+0x300): pages acknowledged (returned) per group (runtime)
-+ *   GROUP_VALID   (+0x400): bitmap of groups with active page allocations
-+ */
-+static int
-+mt7928_dmashdl_lite_read(struct seq_file *s, void *data)
-+{
-+	struct mt792x_dev *dev = dev_get_drvdata(s->private);
-+	u32 disable0, disable1, valid0, valid1;
-+	u32 total_src = 0, total_ack = 0;
-+	u32 ple_rsv, ple_src;
-+	u32 val;
-+	int i;
-+
-+	if (!mt76_is_mmio(&dev->mt76)) {
-+		seq_puts(s, "DMASHDL Lite dump not supported on this interface\n");
-+		return 0;
-+	}
-+
-+	mt792x_mutex_acquire(dev);
-+
-+	seq_puts(s, "DMASHDL Lite Info (MT7928):\n");
-+
-+	val = mt76_rr(dev, MT_DMASHDL_LITE_MAIN_CONTROL);
-+	seq_printf(s, "\tMain control(0x%08x): 0x%08x\n",
-+		   MT_DMASHDL_LITE_MAIN_CONTROL, val);
-+
-+	val = mt76_rr(dev, MT_DMASHDL_LITE_PAGE_SIZE);
-+	seq_printf(s, "\tPage size(0x%08x): 0x%08x\n",
-+		   MT_DMASHDL_LITE_PAGE_SIZE, val);
-+	seq_printf(s, "\t\tPSE page size=0x%04lx, PLE page size=0x%04lx\n",
-+		   FIELD_GET(MT_DMASHDL_LITE_PSE_PAGE_SIZE_MASK, val),
-+		   FIELD_GET(MT_DMASHDL_LITE_PLE_PAGE_SIZE_MASK, val));
-+
-+	val = mt76_rr(dev, MT_DMASHDL_LITE_PKT_MAX_SIZE);
-+	seq_printf(s, "\tPkt max size(0x%08x): 0x%08x\n",
-+		   MT_DMASHDL_LITE_PKT_MAX_SIZE, val);
-+	seq_printf(s, "\t\tPSE pkt max=0x%04lx, PLE pkt max=0x%04lx\n",
-+		   FIELD_GET(MT_DMASHDL_LITE_PSE_PKT_MAX_SIZE_MASK, val),
-+		   FIELD_GET(MT_DMASHDL_LITE_PLE_PKT_MAX_SIZE_MASK, val));
-+
-+	val = mt76_rr(dev, MT_DMASHDL_LITE_GROUP_SN_CHK0);
-+	seq_printf(s, "\tGroup SN check[31:0](0x%08x):  0x%08x\n",
-+		   MT_DMASHDL_LITE_GROUP_SN_CHK0, val);
-+	val = mt76_rr(dev, MT_DMASHDL_LITE_GROUP_SN_CHK1);
-+	seq_printf(s, "\tGroup SN check[63:32](0x%08x): 0x%08x\n",
-+		   MT_DMASHDL_LITE_GROUP_SN_CHK1, val);
-+	val = mt76_rr(dev, MT_DMASHDL_LITE_GROUP_UDF_CHK0);
-+	seq_printf(s, "\tGroup UDF check[31:0](0x%08x):  0x%08x\n",
-+		   MT_DMASHDL_LITE_GROUP_UDF_CHK0, val);
-+	val = mt76_rr(dev, MT_DMASHDL_LITE_GROUP_UDF_CHK1);
-+	seq_printf(s, "\tGroup UDF check[63:32](0x%08x): 0x%08x\n",
-+		   MT_DMASHDL_LITE_GROUP_UDF_CHK1, val);
-+
-+	disable0 = mt76_rr(dev, MT_DMASHDL_LITE_GROUP_DISABLE0);
-+	seq_printf(s, "\tGroup disable[31:0](0x%08x):  0x%08x\n",
-+		   MT_DMASHDL_LITE_GROUP_DISABLE0, disable0);
-+	disable1 = mt76_rr(dev, MT_DMASHDL_LITE_GROUP_DISABLE1);
-+	seq_printf(s, "\tGroup disable[63:32](0x%08x): 0x%08x\n",
-+		   MT_DMASHDL_LITE_GROUP_DISABLE1, disable1);
-+
-+	valid0 = mt76_rr(dev, MT_DMASHDL_LITE_GROUP_VALID_0_31);
-+	seq_printf(s, "\tGroup valid[31:0](0x%08x):  0x%08x\n",
-+		   MT_DMASHDL_LITE_GROUP_VALID_0_31, valid0);
-+	valid1 = mt76_rr(dev, MT_DMASHDL_LITE_GROUP_VALID_32_63);
-+	seq_printf(s, "\tGroup valid[63:32](0x%08x): 0x%08x\n",
-+		   MT_DMASHDL_LITE_GROUP_VALID_32_63, valid1);
-+
-+	seq_puts(s, "\tQ mapping (q2group):\n");
-+	for (i = 0; i < 8; i++) {
-+		val = mt76_rr(dev, MT_DMASHDL_LITE_Q_MAP(i));
-+		seq_printf(s, "\t\tQ_MAP[%d](0x%08x): 0x%08x\n",
-+			   i, MT_DMASHDL_LITE_Q_MAP(i), val);
-+	}
-+
-+	seq_puts(s, "\tGroup status (skipping disabled+zero quota):\n");
-+	for (i = 0; i < DMASHDL_LITE_GROUP_NUM; i++) {
-+		u32 disable = i < 32 ? disable0 : disable1;
-+		bool enabled = !(disable & BIT(i % 32));
-+		u32 quota, min_q, max_q, src, ack_reg;
-+		u32 pktin, add_ret, ret;
-+
-+		quota = mt76_rr(dev, MT_DMASHDL_LITE_GROUP_QUOTA(i));
-+		if (!enabled && !quota)
-+			continue;
-+
-+		min_q = FIELD_GET(MT_DMASHDL_LITE_GROUP_MIN_QUOTA_MASK, quota);
-+		max_q = FIELD_GET(MT_DMASHDL_LITE_GROUP_MAX_QUOTA_MASK, quota);
-+		src     = mt76_rr(dev, MT_DMASHDL_LITE_GROUP_SRC_CNT(i));
-+		src     = FIELD_GET(MT_DMASHDL_LITE_GROUP_SRC_CNT_MASK, src);
-+		ack_reg = mt76_rr(dev, MT_DMASHDL_LITE_GROUP_ACK_CNT(i));
-+		pktin   = FIELD_GET(MT_DMASHDL_LITE_ACK_PKTIN_CNT,   ack_reg);
-+		add_ret = FIELD_GET(MT_DMASHDL_LITE_ACK_ADD_RET_CNT, ack_reg);
-+		ret     = FIELD_GET(MT_DMASHDL_LITE_ACK_RET_CNT,     ack_reg);
-+
-+		seq_printf(s, "\tGroup %2d: quota(min/max)=0x%03x/0x%03x, src=0x%02x, ack(add_ret/pktin/ret)=0x%02x/0x%02x/0x%02x%s\n",
-+			   i, min_q, max_q, src, add_ret, pktin, ret,
-+			   enabled ? "" : " [disabled]");
-+		if (enabled) {
-+			total_src += src;
-+			total_ack += ret;
-+		}
-+	}
-+	seq_printf(s, "\tTotal (enabled groups): src=0x%03x, ack_ret=0x%03x\n",
-+		   total_src, total_ack);
-+
-+	/* Counter mismatch check against PLE HIF page counters */
-+	seq_puts(s, "\nDMASHDL Lite Counter Check:\n");
-+	val = mt76_rr(dev, MT_PLE_HIF_PG_INFO);
-+	ple_rsv = FIELD_GET(MT_WF_PG_INFO_RSV_CNT, val);
-+	ple_src = FIELD_GET(MT_WF_PG_INFO_SRC_CNT, val);
-+	seq_printf(s, "\tPLE: used/rsv pages of HIF group=0x%03x/0x%03x\n",
-+		   ple_src, ple_rsv);
-+	seq_printf(s, "\tDMASHDL Lite: total src=0x%03x, total ack_ret=0x%03x\n",
-+		   total_src, total_ack);
-+	if (ple_src != total_src)
-+		seq_puts(s, "\t[MISMATCH] PLE used pages != DMASHDL Lite total src\n");
-+	else
-+		seq_puts(s, "\tDMASHDL Lite: no counter mismatch\n");
-+
-+	seq_puts(s, "\nPLE Page Counters:\n");
-+
-+	val = mt76_rr(dev, MT_PLE_FREEPG_CNT);
-+	seq_printf(s, "\tPLE free pages(0x%08x): total=0x%03lx, ffa=0x%03lx\n",
-+		   MT_PLE_FREEPG_CNT,
-+		   FIELD_GET(MT_WF_FREEPG_FREE_CNT, val),
-+		   FIELD_GET(MT_WF_FREEPG_FFA_CNT, val));
-+
-+	val = mt76_rr(dev, MT_PLE_HIF_WMTXD_PG_INFO);
-+	seq_printf(s, "\tPLE WMTXD group(0x%08x):     used/rsv=0x%03lx/0x%03lx\n",
-+		   MT_PLE_HIF_WMTXD_PG_INFO,
-+		   FIELD_GET(MT_WF_PG_INFO_SRC_CNT, val),
-+		   FIELD_GET(MT_WF_PG_INFO_RSV_CNT, val));
-+
-+	val = mt76_rr(dev, MT_PLE_HIF_TXCMD_PG_INFO);
-+	seq_printf(s, "\tPLE HIF_TXCMD group(0x%08x): used/rsv=0x%03lx/0x%03lx\n",
-+		   MT_PLE_HIF_TXCMD_PG_INFO,
-+		   FIELD_GET(MT_WF_PG_INFO_SRC_CNT, val),
-+		   FIELD_GET(MT_WF_PG_INFO_RSV_CNT, val));
-+
-+	val = mt76_rr(dev, MT_PLE_CPU_PG_INFO);
-+	seq_printf(s, "\tPLE CPU group(0x%08x):       used/rsv=0x%03lx/0x%03lx\n",
-+		   MT_PLE_CPU_PG_INFO,
-+		   FIELD_GET(MT_WF_PG_INFO_SRC_CNT, val),
-+		   FIELD_GET(MT_WF_PG_INFO_RSV_CNT, val));
-+
-+	mt792x_mutex_release(dev);
-+	return 0;
-+}
-+
-+static int
-+mt7925_ple_read(struct seq_file *s, void *data)
-+{
-+	struct mt792x_dev *dev = dev_get_drvdata(s->private);
-+	u32 pbuf_ctrl, val;
-+	u32 fpg_cnt, ffa_cnt, fpg_head, fpg_tail;
-+	u32 max_q, min_q, rsv_pg, used_pg;
-+
-+	if (!mt76_is_mmio(&dev->mt76)) {
-+		seq_puts(s, "PLE dump not supported on this interface\n");
-+		return 0;
-+	}
-+
-+	mt792x_mutex_acquire(dev);
-+
-+	pbuf_ctrl = mt76_rr(dev, MT_PLE_PBUF_CTRL);
-+	seq_puts(s, "PLE Configuration Info:\n");
-+	seq_printf(s, "\tPacket Buffer Control(0x%08x): 0x%08x\n",
-+		   MT_PLE_PBUF_CTRL, pbuf_ctrl);
-+	seq_printf(s, "\t\tPage Size=%d(%d bytes/page), Offset=%d, Total=%d pages\n",
-+		   (int)FIELD_GET(MT_WF_PBUF_PAGE_SIZE, pbuf_ctrl),
-+		   FIELD_GET(MT_WF_PBUF_PAGE_SIZE, pbuf_ctrl) ? 128 : 64,
-+		   (int)FIELD_GET(MT_WF_PBUF_PBUF_OFFSET, pbuf_ctrl),
-+		   (int)FIELD_GET(MT_WF_PBUF_TOTAL_PAGES, pbuf_ctrl));
-+
-+	val = mt76_rr(dev, MT_PLE_INT_N9_ERR_STS);
-+	seq_printf(s, "\tINT_N9_ERR_STS(0x%08x): 0x%08x\n",
-+		   MT_PLE_INT_N9_ERR_STS, val);
-+	val = mt76_rr(dev, MT_PLE_INT_N9_ERR_STS_1);
-+	seq_printf(s, "\tINT_N9_ERR_STS_1(0x%08x): 0x%08x\n",
-+		   MT_PLE_INT_N9_ERR_STS_1, val);
-+
-+	seq_puts(s, "PLE Page Flow Control:\n");
-+
-+	val = mt76_rr(dev, MT_PLE_FREEPG_CNT);
-+	fpg_cnt = FIELD_GET(MT_WF_FREEPG_FREE_CNT, val);
-+	ffa_cnt = FIELD_GET(MT_WF_FREEPG_FFA_CNT, val);
-+	seq_printf(s, "\tFree page counter(0x%08x): 0x%08x\n",
-+		   MT_PLE_FREEPG_CNT, val);
-+	seq_printf(s, "\t\ttotal free=0x%03x, ffa=0x%03x\n", fpg_cnt, ffa_cnt);
-+
-+	val = mt76_rr(dev, MT_PLE_FREEPG_HEAD_TAIL);
-+	fpg_head = FIELD_GET(MT_WF_FREEPG_HEAD, val);
-+	fpg_tail = FIELD_GET(MT_WF_FREEPG_TAIL, val);
-+	seq_printf(s, "\tFree page head/tail(0x%08x): 0x%08x\n",
-+		   MT_PLE_FREEPG_HEAD_TAIL, val);
-+	seq_printf(s, "\t\ttail/head=0x%03x/0x%03x\n", fpg_tail, fpg_head);
-+
-+	/* HIF group */
-+	val = mt76_rr(dev, MT_PLE_PG_HIF_GROUP);
-+	max_q = FIELD_GET(MT_WF_GROUP_QUOTA_MAX, val);
-+	min_q = FIELD_GET(MT_WF_GROUP_QUOTA_MIN, val);
-+	seq_printf(s, "\tHIF group quota(0x%08x): 0x%08x (max/min=0x%03x/0x%03x)\n",
-+		   MT_PLE_PG_HIF_GROUP, val, max_q, min_q);
-+	val = mt76_rr(dev, MT_PLE_HIF_PG_INFO);
-+	used_pg = FIELD_GET(MT_WF_PG_INFO_SRC_CNT, val);
-+	rsv_pg  = FIELD_GET(MT_WF_PG_INFO_RSV_CNT, val);
-+	seq_printf(s, "\tHIF group status(0x%08x): 0x%08x (used/rsv=0x%03x/0x%03x)\n",
-+		   MT_PLE_HIF_PG_INFO, val, used_pg, rsv_pg);
-+
-+	/* WMTXD group */
-+	val = mt76_rr(dev, MT_PLE_PG_HIF_WMTXD_GROUP);
-+	max_q = FIELD_GET(MT_WF_GROUP_QUOTA_MAX, val);
-+	min_q = FIELD_GET(MT_WF_GROUP_QUOTA_MIN, val);
-+	seq_printf(s, "\tWMTXD group quota(0x%08x): 0x%08x (max/min=0x%03x/0x%03x)\n",
-+		   MT_PLE_PG_HIF_WMTXD_GROUP, val, max_q, min_q);
-+	val = mt76_rr(dev, MT_PLE_HIF_WMTXD_PG_INFO);
-+	used_pg = FIELD_GET(MT_WF_PG_INFO_SRC_CNT, val);
-+	rsv_pg  = FIELD_GET(MT_WF_PG_INFO_RSV_CNT, val);
-+	seq_printf(s, "\tWMTXD group status(0x%08x): 0x%08x (used/rsv=0x%03x/0x%03x)\n",
-+		   MT_PLE_HIF_WMTXD_PG_INFO, val, used_pg, rsv_pg);
-+
-+	/* HIF_TXCMD group */
-+	val = mt76_rr(dev, MT_PLE_PG_HIF_TXCMD_GROUP);
-+	max_q = FIELD_GET(MT_WF_GROUP_QUOTA_MAX, val);
-+	min_q = FIELD_GET(MT_WF_GROUP_QUOTA_MIN, val);
-+	seq_printf(s, "\tHIF_TXCMD group quota(0x%08x): 0x%08x (max/min=0x%03x/0x%03x)\n",
-+		   MT_PLE_PG_HIF_TXCMD_GROUP, val, max_q, min_q);
-+	val = mt76_rr(dev, MT_PLE_HIF_TXCMD_PG_INFO);
-+	used_pg = FIELD_GET(MT_WF_PG_INFO_SRC_CNT, val);
-+	rsv_pg  = FIELD_GET(MT_WF_PG_INFO_RSV_CNT, val);
-+	seq_printf(s, "\tHIF_TXCMD group status(0x%08x): 0x%08x (used/rsv=0x%03x/0x%03x)\n",
-+		   MT_PLE_HIF_TXCMD_PG_INFO, val, used_pg, rsv_pg);
-+
-+	/* CPU group */
-+	val = mt76_rr(dev, MT_PLE_PG_CPU_GROUP);
-+	max_q = FIELD_GET(MT_WF_GROUP_QUOTA_MAX, val);
-+	min_q = FIELD_GET(MT_WF_GROUP_QUOTA_MIN, val);
-+	seq_printf(s, "\tCPU group quota(0x%08x): 0x%08x (max/min=0x%03x/0x%03x)\n",
-+		   MT_PLE_PG_CPU_GROUP, val, max_q, min_q);
-+	val = mt76_rr(dev, MT_PLE_CPU_PG_INFO);
-+	used_pg = FIELD_GET(MT_WF_PG_INFO_SRC_CNT, val);
-+	rsv_pg  = FIELD_GET(MT_WF_PG_INFO_RSV_CNT, val);
-+	seq_printf(s, "\tCPU group status(0x%08x): 0x%08x (used/rsv=0x%03x/0x%03x)\n",
-+		   MT_PLE_CPU_PG_INFO, val, used_pg, rsv_pg);
-+
-+	val = mt76_rr(dev, MT_PLE_QUEUE_EMPTY);
-+	seq_printf(s, "\tQueue empty(0x%08x): 0x%08x%s\n",
-+		   MT_PLE_QUEUE_EMPTY, val,
-+		   (val & MT_PLE_QUEUE_EMPTY_ALL_AC) ? " [ALL AC EMPTY]" : "");
-+
-+	mt792x_mutex_release(dev);
-+	return 0;
-+}
-+
-+static int
-+mt7925_pse_read(struct seq_file *s, void *data)
-+{
-+	struct mt792x_dev *dev = dev_get_drvdata(s->private);
-+	u32 pbuf_ctrl, val;
-+	u32 fpg_cnt, ffa_cnt, fpg_head, fpg_tail;
-+	u32 max_q, min_q, rsv_pg, used_pg;
-+	static const struct {
-+		const char *name;
-+		u32 qreg, ireg;
-+	} pse_groups[] = {
-+		{ "HIF0",  MT_PSE_PG_HIF0_GROUP,  MT_PSE_HIF0_PG_INFO },
-+		{ "HIF1",  MT_PSE_PG_HIF1_GROUP,  MT_PSE_HIF1_PG_INFO },
-+		{ "HIF2",  MT_PSE_PG_HIF2_GROUP,  MT_PSE_HIF2_PG_INFO },
-+		{ "CPU",   MT_PSE_PG_CPU_GROUP,   MT_PSE_CPU_PG_INFO },
-+		{ "PLE",   MT_PSE_PG_PLE_GROUP,   MT_PSE_PLE_PG_INFO },
-+		{ "LMAC0", MT_PSE_PG_LMAC0_GROUP, MT_PSE_LMAC0_PG_INFO },
-+		{ "LMAC1", MT_PSE_PG_LMAC1_GROUP, MT_PSE_LMAC1_PG_INFO },
-+		{ "LMAC2", MT_PSE_PG_LMAC2_GROUP, MT_PSE_LMAC2_PG_INFO },
-+		{ "LMAC3", MT_PSE_PG_LMAC3_GROUP, MT_PSE_LMAC3_PG_INFO },
-+		{ "MDP",   MT_PSE_PG_MDP_GROUP,   MT_PSE_MDP_PG_INFO },
-+	};
-+	int i;
-+
-+	if (!mt76_is_mmio(&dev->mt76)) {
-+		seq_puts(s, "PSE dump not supported on this interface\n");
-+		return 0;
-+	}
-+
-+	mt792x_mutex_acquire(dev);
-+
-+	pbuf_ctrl = mt76_rr(dev, MT_PSE_PBUF_CTRL);
-+	seq_puts(s, "PSE Configuration Info:\n");
-+	seq_printf(s, "\tPacket Buffer Control(0x%08x): 0x%08x\n",
-+		   MT_PSE_PBUF_CTRL, pbuf_ctrl);
-+	seq_printf(s, "\t\tPage Size=%d(%d bytes/page), Offset=%d, Total=%d pages\n",
-+		   (int)FIELD_GET(MT_WF_PBUF_PAGE_SIZE, pbuf_ctrl),
-+		   FIELD_GET(MT_WF_PBUF_PAGE_SIZE, pbuf_ctrl) ? 256 : 128,
-+		   (int)FIELD_GET(MT_WF_PBUF_PBUF_OFFSET, pbuf_ctrl),
-+		   (int)FIELD_GET(MT_WF_PBUF_TOTAL_PAGES, pbuf_ctrl));
-+
-+	val = mt76_rr(dev, MT_PSE_INT_N9_ERR_STS);
-+	seq_printf(s, "\tINT_N9_ERR_STS(0x%08x): 0x%08x\n",
-+		   MT_PSE_INT_N9_ERR_STS, val);
-+	val = mt76_rr(dev, MT_PSE_INT_N9_ERR1_STS);
-+	seq_printf(s, "\tINT_N9_ERR1_STS(0x%08x): 0x%08x\n",
-+		   MT_PSE_INT_N9_ERR1_STS, val);
-+
-+	val = mt76_rr(dev, MT_PSE_QUEUE_EMPTY);
-+	seq_printf(s, "\tQueue empty(0x%08x): 0x%08x\n",
-+		   MT_PSE_QUEUE_EMPTY, val);
-+
-+	seq_puts(s, "PSE Page Flow Control:\n");
-+
-+	val = mt76_rr(dev, MT_PSE_FREEPG_CNT);
-+	fpg_cnt = FIELD_GET(MT_WF_FREEPG_FREE_CNT, val);
-+	ffa_cnt = FIELD_GET(MT_WF_FREEPG_FFA_CNT, val);
-+	seq_printf(s, "\tFree page counter(0x%08x): 0x%08x\n",
-+		   MT_PSE_FREEPG_CNT, val);
-+	seq_printf(s, "\t\ttotal free=0x%03x, ffa=0x%03x\n", fpg_cnt, ffa_cnt);
-+
-+	val = mt76_rr(dev, MT_PSE_FREEPG_HEAD_TAIL);
-+	fpg_head = FIELD_GET(MT_WF_FREEPG_HEAD, val);
-+	fpg_tail = FIELD_GET(MT_WF_FREEPG_TAIL, val);
-+	seq_printf(s, "\tFree page head/tail(0x%08x): 0x%08x\n",
-+		   MT_PSE_FREEPG_HEAD_TAIL, val);
-+	seq_printf(s, "\t\ttail/head=0x%03x/0x%03x\n", fpg_tail, fpg_head);
-+
-+	for (i = 0; i < ARRAY_SIZE(pse_groups); i++) {
-+		u32 qreg = pse_groups[i].qreg, ireg = pse_groups[i].ireg;
-+
-+		val = mt76_rr(dev, qreg);
-+		max_q = FIELD_GET(MT_WF_GROUP_QUOTA_MAX, val);
-+		min_q = FIELD_GET(MT_WF_GROUP_QUOTA_MIN, val);
-+		seq_printf(s, "\t%s group quota(0x%08x): 0x%08x (max/min=0x%03x/0x%03x)\n",
-+			   pse_groups[i].name, qreg, val, max_q, min_q);
-+
-+		val = mt76_rr(dev, ireg);
-+		used_pg = FIELD_GET(MT_WF_PG_INFO_SRC_CNT, val);
-+		rsv_pg  = FIELD_GET(MT_WF_PG_INFO_RSV_CNT, val);
-+		seq_printf(s, "\t%s group status(0x%08x): 0x%08x (used/rsv=0x%03x/0x%03x)\n",
-+			   pse_groups[i].name, ireg, val, used_pg, rsv_pg);
-+	}
-+
-+	mt792x_mutex_release(dev);
-+	return 0;
-+}
-+
- int mt7925_init_debugfs(struct mt792x_dev *dev)
- {
- 	struct dentry *dir;
-@@ -313,5 +832,17 @@ int mt7925_init_debugfs(struct mt792x_dev *dev)
- 				    mt792x_pm_stats);
- 	debugfs_create_file("deep-sleep", 0600, dir, dev, &fops_ds);
- 
-+	debugfs_create_file("wtbl_idx", 0600, dir, dev, &fops_wtbl_idx);
-+	debugfs_create_devm_seqfile(dev->mt76.dev, "get_wtbl", dir,
-+				    mt7925_wtbl_read);
-+	debugfs_create_devm_seqfile(dev->mt76.dev, "dmashdl_info", dir,
-+				    is_mt7928(&dev->mt76) ?
-+				    mt7928_dmashdl_lite_read :
-+				    mt7925_dmashdl_read);
-+	debugfs_create_devm_seqfile(dev->mt76.dev, "ple_info", dir,
-+				    mt7925_ple_read);
-+	debugfs_create_devm_seqfile(dev->mt76.dev, "pse_info", dir,
-+				    mt7925_pse_read);
-+
- 	return 0;
- }
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/regs.h b/drivers/net/wireless/mediatek/mt76/mt7925/regs.h
-index e040dff321dd..8d7e995c8fb8 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7925/regs.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt7925/regs.h
-@@ -131,8 +131,23 @@
- #define MT_DMASHDL_LITE_GROUP_UDF_CHK0		MT_DMASHDL_LITE(0x020)
- #define MT_DMASHDL_LITE_GROUP_UDF_CHK1		MT_DMASHDL_LITE(0x024)
- #define MT_DMASHDL_LITE_Q_MAPPING0		MT_DMASHDL_LITE(0x028)
-+#define MT_DMASHDL_LITE_Q_MAP(_n)	MT_DMASHDL_LITE(0x028 + ((_n) << 2))
- #define MT_DMASHDL_LITE_GROUP0_QUOTA		MT_DMASHDL_LITE(0x100)
-+#define MT_DMASHDL_LITE_GROUP_QUOTA(_n)	MT_DMASHDL_LITE(0x100 + ((_n) << 2))
- #define MT_DMASHDL_LITE_GROUP_MIN_QUOTA_MASK		GENMASK(12, 0)
- #define MT_DMASHDL_LITE_GROUP_MAX_QUOTA_MASK		GENMASK(28, 16)
- 
-+/* DMASHDL Lite per-group runtime status registers */
-+#define MT_DMASHDL_LITE_GROUP_SRC_CNT(_n)	\
-+	MT_DMASHDL_LITE(0x200 + ((_n) << 2))
-+#define MT_DMASHDL_LITE_GROUP_SRC_CNT_MASK	GENMASK(12, 0)
-+#define MT_DMASHDL_LITE_GROUP_ACK_CNT(_n)	\
-+	MT_DMASHDL_LITE(0x300 + ((_n) << 2))
-+/* ACK_CNT[23:0]: [7:0]=pktin_cnt, [15:8]=add_return_cnt, [23:16]=return_cnt */
-+#define MT_DMASHDL_LITE_ACK_PKTIN_CNT		GENMASK(7, 0)
-+#define MT_DMASHDL_LITE_ACK_ADD_RET_CNT		GENMASK(15, 8)
-+#define MT_DMASHDL_LITE_ACK_RET_CNT		GENMASK(23, 16)
-+#define MT_DMASHDL_LITE_GROUP_VALID_0_31	MT_DMASHDL_LITE(0x400)
-+#define MT_DMASHDL_LITE_GROUP_VALID_32_63	MT_DMASHDL_LITE(0x404)
-+
- #endif
-diff --git a/drivers/net/wireless/mediatek/mt76/mt792x.h b/drivers/net/wireless/mediatek/mt76/mt792x.h
-index a7d71e007da0..361e87a0f867 100644
---- a/drivers/net/wireless/mediatek/mt76/mt792x.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt792x.h
-@@ -324,6 +324,7 @@ struct mt792x_dev {
- 
- 	u8 fw_debug;
- 	u8 fw_features;
-+	u32 wtbl_dump_idx;
- 
- 	struct mt76_connac_pm pm;
- 	struct mt76_connac_coredump coredump;
-diff --git a/drivers/net/wireless/mediatek/mt76/mt792x_regs.h b/drivers/net/wireless/mediatek/mt76/mt792x_regs.h
-index 3587f61e098a..be15ca62ef6e 100644
---- a/drivers/net/wireless/mediatek/mt76/mt792x_regs.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt792x_regs.h
-@@ -526,4 +526,74 @@
- #define MT7927_PCIE2AP_REMAP_WF_0_54_VAL	0x00001807
- #define MT7927_SEMA_OWN_STA			0x40000
- #define MT7927_SEMA_OWN_STA_REP			0x40400
-+
-+/* PLE additional registers for debugfs */
-+#define MT_PLE_PBUF_CTRL		MT_PLE(0x004)
-+#define MT_PLE_PG_HIF_GROUP		MT_PLE(0x00c)
-+#define MT_PLE_PG_HIF_WMTXD_GROUP	MT_PLE(0x010)
-+#define MT_PLE_PG_HIF_TXCMD_GROUP	MT_PLE(0x014)
-+#define MT_PLE_PG_CPU_GROUP		MT_PLE(0x018)
-+#define MT_PLE_INT_N9_ERR_STS		MT_PLE(0x304)
-+#define MT_PLE_INT_N9_ERR_STS_1	MT_PLE(0x308)
-+#define MT_PLE_QUEUE_EMPTY		MT_PLE(0x360)
-+#define MT_PLE_QUEUE_EMPTY_ALL_AC	BIT(24)
-+#define MT_PLE_FREEPG_CNT		MT_PLE(0x3a0)
-+#define MT_PLE_FREEPG_HEAD_TAIL		MT_PLE(0x3a4)
-+#define MT_PLE_HIF_PG_INFO		MT_PLE(0x3a8)
-+#define MT_PLE_HIF_WMTXD_PG_INFO	MT_PLE(0x3ac)
-+#define MT_PLE_HIF_TXCMD_PG_INFO	MT_PLE(0x3b0)
-+#define MT_PLE_CPU_PG_INFO		MT_PLE(0x3b4)
-+
-+/* Common field masks shared by PLE/PSE group quota and page info registers */
-+#define MT_WF_GROUP_QUOTA_MAX		GENMASK(27, 16)
-+#define MT_WF_GROUP_QUOTA_MIN		GENMASK(11, 0)
-+#define MT_WF_PG_INFO_SRC_CNT		GENMASK(27, 16)
-+#define MT_WF_PG_INFO_RSV_CNT		GENMASK(11, 0)
-+#define MT_WF_FREEPG_FFA_CNT		GENMASK(27, 16)
-+#define MT_WF_FREEPG_FREE_CNT		GENMASK(11, 0)
-+#define MT_WF_FREEPG_TAIL		GENMASK(27, 16)
-+#define MT_WF_FREEPG_HEAD		GENMASK(11, 0)
-+#define MT_WF_PBUF_PAGE_SIZE		BIT(31)
-+#define MT_WF_PBUF_PBUF_OFFSET		GENMASK(25, 17)
-+#define MT_WF_PBUF_TOTAL_PAGES		GENMASK(11, 0)
-+
-+/* PSE */
-+#define MT_PSE(ofs)			(MT_PSE_BASE + (ofs))
-+#define MT_PSE_PBUF_CTRL		MT_PSE(0x004)
-+#define MT_PSE_INT_N9_ERR_STS		MT_PSE(0x034)
-+#define MT_PSE_INT_N9_ERR1_STS		MT_PSE(0x038)
-+#define MT_PSE_QUEUE_EMPTY		MT_PSE(0x0b0)
-+#define MT_PSE_PG_HIF0_GROUP		MT_PSE(0x110)
-+#define MT_PSE_PG_HIF1_GROUP		MT_PSE(0x114)
-+#define MT_PSE_PG_CPU_GROUP		MT_PSE(0x118)
-+#define MT_PSE_PG_PLE_GROUP		MT_PSE(0x11c)
-+#define MT_PSE_PG_LMAC0_GROUP		MT_PSE(0x124)
-+#define MT_PSE_PG_LMAC1_GROUP		MT_PSE(0x128)
-+#define MT_PSE_PG_LMAC2_GROUP		MT_PSE(0x12c)
-+#define MT_PSE_PG_LMAC3_GROUP		MT_PSE(0x130)
-+#define MT_PSE_PG_MDP_GROUP		MT_PSE(0x134)
-+#define MT_PSE_PG_HIF2_GROUP		MT_PSE(0x140)
-+#define MT_PSE_HIF0_PG_INFO		MT_PSE(0x150)
-+#define MT_PSE_HIF1_PG_INFO		MT_PSE(0x154)
-+#define MT_PSE_CPU_PG_INFO		MT_PSE(0x158)
-+#define MT_PSE_PLE_PG_INFO		MT_PSE(0x15c)
-+#define MT_PSE_LMAC0_PG_INFO		MT_PSE(0x164)
-+#define MT_PSE_LMAC1_PG_INFO		MT_PSE(0x168)
-+#define MT_PSE_LMAC2_PG_INFO		MT_PSE(0x16c)
-+#define MT_PSE_LMAC3_PG_INFO		MT_PSE(0x170)
-+#define MT_PSE_MDP_PG_INFO		MT_PSE(0x174)
-+#define MT_PSE_HIF2_PG_INFO		MT_PSE(0x180)
-+#define MT_PSE_FREEPG_CNT		MT_PSE(0x3a0)
-+#define MT_PSE_FREEPG_HEAD_TAIL		MT_PSE(0x3a4)
-+
-+/* DMASHDL additional registers for debugfs */
-+#define MT_DMASHDL_ERROR_FLAG_CTRL	MT_DMA_SHDL(0x0dc)
-+#define MT_DMASHDL_STATUS_RD		MT_DMA_SHDL(0x100)
-+#define MT_DMASHDL_STATUS_RD_FREE_PG	GENMASK(27, 16)
-+#define MT_DMASHDL_STATUS_RD_FFA	GENMASK(11, 0)
-+#define MT_DMASHDL_STATUS_RD_GP(_n)	MT_DMA_SHDL(0x140 + ((_n) << 2))
-+#define MT_DMASHDL_STATUS_RD_GP_RSV	GENMASK(27, 16)
-+#define MT_DMASHDL_STATUS_RD_GP_SRC	GENMASK(11, 0)
-+#define MT_DMASHDL_RD_GP_PKT_CNT(_n)	MT_DMA_SHDL(0x180 + ((_n) << 2))
-+
- #endif /* __MT792X_REGS_H */
+I followed the naming pattern of mtk by calling the new source
+airoha-ge-soc and related config.
+
+The calibration use lots of static table and software calibration
+at runtime instead of using efuse to calibrate.
+
+There is one pecularity where some register and calibration needs
+to be done on port0 first and then with the related port.
+
+This is O.K. as port0 presence is mandatory for the functionality
+of the integrated switch and it's assumed to be always present
+on the MDIO bus.
+
+MAINTAINERS is updated to reflect the changed code.
+
+(this was tested from a long time and also verified by Airoha for
+correct order of calibration)
+
+Changes v3:
+- Address comments from sashiko bot
+- Apply review and suggested changes from Airoha
+- Rebase on top of net-next
+
+Changes v2:
+- Split header register patch from cal_cycle part
+- Fix missing EXPORT_SYMBOL_GPL
+
+Christian Marangi (6):
+  net: phy: mediatek: export __mtk_tr_write
+  net: phy: mediatek: move MTK GE SoC registers define to dedicated
+    header
+  net: phy: mediatek: generalize cal_cycle function for GE SoC
+  net: phy: mediatek: split Airoha code to dedicated source
+  net: phy: mediatek: add calibration logic for AN7581
+  net: phy: mediatek: add calibration logic for AN7583
+
+ MAINTAINERS                              |    9 +
+ drivers/net/phy/mediatek/Kconfig         |   18 +-
+ drivers/net/phy/mediatek/Makefile        |    1 +
+ drivers/net/phy/mediatek/airoha-ge-soc.c | 1851 ++++++++++++++++++++++
+ drivers/net/phy/mediatek/mtk-ge-soc.c    |  553 +------
+ drivers/net/phy/mediatek/mtk-ge-soc.h    |  377 +++++
+ drivers/net/phy/mediatek/mtk-phy-lib.c   |   77 +-
+ drivers/net/phy/mediatek/mtk.h           |   15 +
+ 8 files changed, 2365 insertions(+), 536 deletions(-)
+ create mode 100644 drivers/net/phy/mediatek/airoha-ge-soc.c
+ create mode 100644 drivers/net/phy/mediatek/mtk-ge-soc.h
+
 -- 
-2.18.0
+2.55.0
 
 
