@@ -4,60 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 35363CC6B34
-	for <linux-mediatek@archiver.kernel.org>; Thu, 15 Oct 2026 07:44:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6C9BECC6B34
+	for <linux-mediatek@archiver.kernel.org>; Thu, 15 Oct 2026 08:15:13 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=LEG361a6pDP+9DS65uWsMHb0ylN+/ee1WZlLzfsbLsw=; b=UmOThEo1j0GqwvKbkZj/W+7NMS
-	Qqp+xNwqPvDHCHz8eELF3b3liLUVeTTCJei0KOhvAia6DYQELjTbD4j/wIb1iYOj56ZwnlEARSEdw
-	eI9d7DRzjux6jgK3ROWcWNz6UcfptEPQvAFIfFZmAlqpr8+KgvlSOozvfEe/lBJwxaLC1NpSaiCn0
-	nSAHWneel+ESwYuJPD5wv2kWFpJn/M8AE0zU6mzfHy5glEggAg+SE+X6ld2QOnthDYfJO/tNmyUVq
-	Y1/preCs7SYxlCTemnQXxE0CBgDL6GS+jdHYo1iBJ7ExXhAq8adOr1mUsGA/JT+imwtBZ3iQaagS2
-	qWXHYdWQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=dtGFljm52cyuIn+hi7p/IuJvrI5isfxkKWbhMEgIJIk=; b=31/By/rls1LGPGMENRAcb9sWA9
+	WuacdmCmFKN7ZtxBnkKEeMBecGIHraKj2yhMDeK5sKkSF/AxSLb9mg+3EUvvJ2ZjNdzsJHABUQggn
+	VC6ZE57G70VjOKD4YXolhTBytsylOzwJy3MIP520YAQ+j2+Eb1eDZZTgYvlm5/DP51btw6cJv8a/4
+	EVrYapMkJKOzVpYdAizUjaoMzmJWAm7qaR7WPtJWMLgbgx/bIPzLn0+/1p4eIa3brbbJtfdpNpob8
+	sEQpctaJNfBtNU81/K6rxAUWgKMd6LrsG5lBbGWOGFjpbzHFJBXGBkTk7MQB6jeIaHaSOquaJZvDC
+	ji21yfbQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xHG8L-0000000H3X8-2RBE;
-	Thu, 15 Oct 2026 07:44:13 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1xHGcJ-0000000H7ll-3uGK;
+	Thu, 15 Oct 2026 08:15:11 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xHG8K-0000000H3Wb-0q1w;
-	Thu, 15 Oct 2026 07:44:12 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id A5115432BA;
-	Thu, 15 Oct 2026 07:44:11 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 08B3E1F000C4;
-	Thu, 15 Oct 2026 07:44:10 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1792050251;
-	bh=LEG361a6pDP+9DS65uWsMHb0ylN+/ee1WZlLzfsbLsw=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=J0a+FVn4WjRhHJ38DOu0W5/c8zAoX3QZ/kESKgLIx9ZhrIZoPfjBEpPHpJGpAFKkE
-	 xuMX87ZqJjES76RQ/NYKYDv348s/FfCaN7UEtUnAnldt4dK67MnxjUIc+jjisg17DD
-	 jWts+Ry4O0MdlYxGpXINFk+B896R8xt/zGhrwUeZhvAS10DRFqVRHuspHfQIqgk7IE
-	 tyrKQktT1GgGykGoYP+6vDITeeawDmRqaLQOgr8KkQmaOdqpDzrCO7ll9S04y3Kvg7
-	 05TCBMLJl1+L5GaDV2zAL1Erjjr+h0E4YzOkInoESwbJbnHxqfqBFyQEJKd+DYu5w9
-	 bXba4Ztf36dig==
-Date: Thu, 15 Oct 2026 09:44:09 +0200
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-To: SAYANTAN NANDY <sayantann11@gmail.com>
-Cc: netdev@vger.kernel.org, andrew+netdev@lunn.ch,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, bread.hsu@airoha.com,
-	sayantan.nandy@airoha.com
-Subject: Re: [PATCH net v3] net: airoha: keep PPE offload when NPU refuses
- flow stats
-Message-ID: <atCESCD8aDoR32nW@lore-desk>
-References: <20261008094828.15458-1-sayantann11@gmail.com>
- <20261015045607.12999-1-sayantann11@gmail.com>
+	id 1xHGcI-0000000H7lF-1fmg
+	for linux-mediatek@bombadil.infradead.org;
+	Thu, 15 Oct 2026 08:15:10 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Content-Type:Content-Transfer-Encoding
+	:MIME-Version:Message-ID:Date:Subject:CC:To:From:Sender:Reply-To:Content-ID:
+	Content-Description:In-Reply-To:References;
+	bh=dtGFljm52cyuIn+hi7p/IuJvrI5isfxkKWbhMEgIJIk=; b=G9jrpLx+lD4rR+/y1u33nPGk0x
+	PTIK4I1AnSO5in2NZacx2ssh3NuX+aS58tzJUFu3E7b4aCsZH3On3s2/e4zry4z0l/joZvH80kLra
+	uPIv2oHyuPlIYrgEEwbE7BX+75cLBll54lniD3FWdPeT1CyGsVL4nFTHNo3P6PTm5NtNIT4356Srh
+	zVMOpqE35GWXYRry2hZY3cISg7x+TZchFsbteHW7XU35vzRM+iZXhnTXVLrH+LNHZJHMBzk3fpMgm
+	EimNAcSEBYPj6/2O9oPNrvx+Ycaq5+csdLE6NdSkHGA3FhlF7VXpXIW25PNbkIEVWKkZ3kREz8lvM
+	4KvyZ74w==;
+Received: from mailgw01.mediatek.com ([216.200.240.184])
+	by desiato.infradead.org with esmtps (Exim 4.99.5 #2 (Red Hat Linux))
+	id 1xHGcE-000000005mL-2cuy
+	for linux-mediatek@lists.infradead.org;
+	Thu, 15 Oct 2026 08:15:09 +0000
+X-UUID: 80c8b246c87011f1afed4741b24580c9-20261015
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=dtGFljm52cyuIn+hi7p/IuJvrI5isfxkKWbhMEgIJIk=;
+	b=ZzUqmt9SnQv6fzU3ZuNiohVhxwaO9YMFE1NBjSvxiy9y+O+te0jWa9E2lewl7zGgMirXV/QYTHlPsGwgQoxg7VXcVNPfVBBgObf6a3RygdplyHJfI5CFFa4iTOtKVQm5qlQUNFSfHYH2a22W17YE0y5R/s4wCxkJd/7HqtrVrNQ=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.3.20,REQID:43634d41-d47c-41a9-9ab0-4e1f09ba00a8,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:291e20b,CLOUDID:1a6ae3fc-d852-4ec7-93a7-9872a6d9e58d,B
+	ulkID:nil,BulkQuantity:0,SF:102|836|865|888|898,TC:-5,Content:0|15|50|99,E
+	DM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:-1,COL:0,OSI:0,OSA:0,
+	AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 2,SSN|SDN
+X-CID-BAS: 2,SSN|SDN,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
+X-UUID: 80c8b246c87011f1afed4741b24580c9-20261015
+Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw01.mediatek.com
+	(envelope-from <chris.lu@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 655837005; Thu, 15 Oct 2026 01:14:54 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+ MTKMBS14N1.mediatek.inc (172.21.101.75) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.2562.29; Thu, 15 Oct 2026 16:14:52 +0800
+Received: from mtksitap99.mediatek.inc (10.233.130.16) by
+ mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.2562.29 via Frontend Transport; Thu, 15 Oct 2026 16:14:52 +0800
+From: Chris Lu <chris.lu@mediatek.com>
+To: Marcel Holtmann <marcel@holtmann.org>, Johan Hedberg
+	<johan.hedberg@gmail.com>, Luiz Von Dentz <luiz.dentz@gmail.com>
+CC: Hao Qin <hao.qin@mediatek.com>, Wenlong Tian
+	<ot_wenlong.tian@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, Will Lee
+	<will-cy.Lee@mediatek.com>, SS Wu <ss.wu@mediatek.com>, linux-bluetooth
+	<linux-bluetooth@vger.kernel.org>, linux-kernel
+	<linux-kernel@vger.kernel.org>, linux-mediatek
+	<linux-mediatek@lists.infradead.org>, Chris Lu <chris.lu@mediatek.com>
+Subject: [PATCH v2 0/3] Bluetooth: btmtk: fix ISO data reception
+Date: Thu, 15 Oct 2026 16:14:47 +0800
+Message-ID: <20261015081450.1241194-1-chris.lu@mediatek.com>
+X-Mailer: git-send-email 2.45.2
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="as81oyFgOPbUaC9b"
-Content-Disposition: inline
-In-Reply-To: <20261015045607.12999-1-sayantann11@gmail.com>
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20261015_091507_352181_80530331 
+X-CRM114-Status: GOOD (  11.20  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,152 +103,47 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
---as81oyFgOPbUaC9b
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+Three fixes for ISO data handling in btmtk, found while debugging LE Audio
+on MT7925. The code is shared by every MediaTek USB controller that
+supports ISO data, so none of this is specific to that part.
 
-> From: Chad Monroe <chad@monroe.io>
->=20
-> With flow stats enabled, PPE offload setup requests flow statistics
-> from the NPU. If the running NPU firmware does not support flow
-> counters, the request fails and the current setup path aborts PPE
-> offload.
->=20
-> Treat flow statistics as an optional capability so that a failure to
-> set up the counters does not prevent normal PPE offload. Continue PPE
-> initialization when the NPU refuses the flow-statistics request.
->=20
-> Also treat a zero NPU statistics address returned by the firmware as a
-> refusal. The host-side DMA buffer (foe_stats_dma) is allocated by
-> dmam_alloc_coherent() in airoha_ppe_init() from system memory. The NPU
-> statistics address (npu_stats_addr) is a separate allocation from the
-> NPU firmware's internal SRAM pool. When that pool is exhausted, the
-> firmware replies with success and npu_stats_addr =3D 0. A zero address
-> does not provide a usable counter region and must not be passed to
-> devm_ioremap().
->=20
-> When flow stats entries are available, clear PSE_PORT6_SHARE_DIS so
-> that PSE port 6 (CDM3 path to the NPU) participates in shared-buffer
-> flow control. PSE_FC_CFG bits 26:16 control per-port whether flow
-> control considers the shared buffer pool. Bit 22 is port 6.
->=20
-> When flow statistics are unavailable, PPE continues to operate without
-> NPU flow counters while retaining normal offload functionality.
->=20
-> This combines the original SmartRG/Airoha fixes for:
-> - keeping PPE offload active when the NPU refuses flow statistics
-> - treating a zero NPU statistics address as a flow-statistics refusal
->=20
-> Based on the original SmartRG/Airoha work by Chad Monroe:
-> 5ce96ab ("SDG-9458: keep PPE offload when NPU refuses flow stats")
-> 0ad8528 ("SDG-9458: airoha: treat a zero NPU stats address as a refusal")
-> Fixes: b81e0f2b58be ("net: airoha: Add FLOW_CLS_STATS callback support")
-> Tested-on: AN7581 with MT7992
-> Signed-off-by: Chad Monroe <chad@monroe.io>
-> Signed-off-by: SAYANTAN NANDY <sayantann11@gmail.com>
+Patch 1 drops the zero padding that the ISO interrupt IN endpoint appends
+to each transfer instead of parsing it as ISO packets. The driver turns
+that padding into handle 0 packets with a Data_Total_Length of zero and
+hands them to the stack, which is what fills the HCI log with malformed
+ISO frames, and a valid SDU is lost whenever handle 0 belongs to a live
+CIS/BIS.
 
-Acked-by: Lorenzo Bianconi <lorenzo@kernel.org>
+Patch 2 bounds Data_Total_Length by hdev->iso_mtu. The existing
+skb_tailroom() test enforces no protocol limit, because the skb head
+allocation is rounded up to a kmalloc bucket and skb_tailroom() reports
+the bucket size rather than what was requested.
 
-> ---
->=20
-> Changes since v2:
-> - Drop flow_stats_cap entirely (Lorenzo).
-> - Keep the original airoha_ppe_get_num_stats_entries() checks (Lorenzo).
-> - Guard airoha_fe_clear() with sram_num_stats_entries > 0 (Lorenzo).
-> - Replace the error assignment and goto with a direct if check and
->   dev_warn() (Lorenzo).
->=20
-> Changes since v1:
-> - Explain the NPU SRAM allocation separately from the host-side DMA
->   buffer (Lorenzo).
-> - Use airoha_fe_clear() and shorten the warning message (Lorenzo).
-> - Include hardware testing information requested by netdev-bot.
->=20
->  drivers/net/ethernet/airoha/airoha_npu.c  |  8 ++++++++
->  drivers/net/ethernet/airoha/airoha_ppe.c  | 10 ++++++----
->  drivers/net/ethernet/airoha/airoha_regs.h |  2 ++
->  3 files changed, 16 insertions(+), 4 deletions(-)
->=20
-> diff --git a/drivers/net/ethernet/airoha/airoha_npu.c b/drivers/net/ether=
-net/airoha/airoha_npu.c
-> index 4d3195eb00f7..b32a01dbe06b 100644
-> --- a/drivers/net/ethernet/airoha/airoha_npu.c
-> +++ b/drivers/net/ethernet/airoha/airoha_npu.c
-> @@ -450,6 +450,14 @@ static int airoha_npu_ppe_stats_setup(struct airoha_=
-npu *npu,
->  	if (err)
->  		goto out;
-> =20
-> +	/* The firmware reports success with a zero address when its SRAM
-> +	 * pool has no room left for the counters.
-> +	 */
-> +	if (!ppe_data->stats_info.npu_stats_addr) {
-> +		err =3D -ENOSPC;
-> +		goto out;
-> +	}
-> +
->  	npu->stats =3D devm_ioremap(npu->dev,
->  				  ppe_data->stats_info.npu_stats_addr,
->  				  size);
-> diff --git a/drivers/net/ethernet/airoha/airoha_ppe.c b/drivers/net/ether=
-net/airoha/airoha_ppe.c
-> index 92611802801e..74ac3791cb63 100644
-> --- a/drivers/net/ethernet/airoha/airoha_ppe.c
-> +++ b/drivers/net/ethernet/airoha/airoha_ppe.c
-> @@ -144,6 +144,9 @@ static void airoha_ppe_hw_init(struct airoha_ppe *ppe)
->  	sram_ppe_num_data_entries =3D
->  		PPE_RAM_NUM_ENTRIES_SHIFT(sram_ppe_num_data_entries);
-> =20
-> +	if (sram_num_stats_entries > 0)
-> +		airoha_fe_clear(eth, PSE_FC_CFG, PSE_PORT6_SHARE_DIS);
-> +
->  	for (i =3D 0; i < eth->soc->num_ppe; i++) {
->  		airoha_fe_wr(eth, REG_PPE_TB_BASE(i),
->  			     ppe->foe_dma + sram_tb_size);
-> @@ -1454,10 +1457,9 @@ static int airoha_ppe_offload_setup(struct airoha_=
-eth *eth)
-> =20
->  	ppe_num_stats_entries =3D airoha_ppe_get_total_num_stats_entries(ppe);
->  	if (ppe_num_stats_entries > 0) {
-> -		err =3D npu->ops.ppe_init_stats(npu, ppe->foe_stats_dma,
-> -					      ppe_num_stats_entries);
-> -		if (err)
-> -			goto error_npu_put;
-> +		if (npu->ops.ppe_init_stats(npu, ppe->foe_stats_dma,
-> +					    ppe_num_stats_entries))
-> +			dev_warn(eth->dev, "NPU refused flow stats\n");
->  	}
-> =20
->  	airoha_ppe_hw_init(ppe);
-> diff --git a/drivers/net/ethernet/airoha/airoha_regs.h b/drivers/net/ethe=
-rnet/airoha/airoha_regs.h
-> index 442b48c9b991..aee06c058586 100644
-> --- a/drivers/net/ethernet/airoha/airoha_regs.h
-> +++ b/drivers/net/ethernet/airoha/airoha_regs.h
-> @@ -72,6 +72,8 @@
->  #define PSE_CFG_OQ_RSV_MASK		GENMASK(13, 0)
-> =20
->  #define PSE_FQ_CFG			0x008c
-> +#define PSE_FC_CFG			0x0098
-> +#define PSE_PORT6_SHARE_DIS		BIT(22)
->  #define PSE_FQ_LIMIT_MASK		GENMASK(14, 0)
-> =20
->  #define REG_FE_PSE_BUF_SET		0x0090
-> --=20
-> 2.43.0
->=20
+Patch 3 updates the mt79xx ISO data transmission setting.
 
---as81oyFgOPbUaC9b
-Content-Type: application/pgp-signature; name=signature.asc
+The three hunks do not overlap, so any prefix of the series applies on its
+own.
 
------BEGIN PGP SIGNATURE-----
+Changes in v2:
+- Patch 2 reworked and retitled. v1 only enlarged the receive skb, which
+  turned out to be a no-op, and added no bound at all. v2 bounds
+  Data_Total_Length by hdev->iso_mtu and sizes the skb from the same
+  value.
+- Patch 3 added.
+- Patch 1 unchanged.
 
-iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCatCESAAKCRA6cBh0uS2t
-rM+IAP9ikDHBBKnIbhaPOyfL3BDcnLXD91dFbc2vkrCv0RzncQEAo+k88MojIK0p
-bkxd6hs4y7q3pCPiAxtvnW5InsrHnQI=
-=UXx2
------END PGP SIGNATURE-----
+Based on bluetooth-next.
 
---as81oyFgOPbUaC9b--
+Chris Lu (3):
+  Bluetooth: btmtk: drop zero-length ISO packets from endpoint padding
+  Bluetooth: btmtk: bound the ISO payload length by the controller's MTU
+  Bluetooth: btmtk: derive the firmware ISO setting from
+    MTK_ISO_THRESHOLD
+
+ drivers/bluetooth/btmtk.c | 37 ++++++++++++++++++++++++++++++++-----
+ 1 file changed, 32 insertions(+), 5 deletions(-)
+
+-- 
+2.45.2
+
 
