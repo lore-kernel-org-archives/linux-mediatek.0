@@ -4,66 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8FBBCCC6B34
-	for <linux-mediatek@archiver.kernel.org>; Thu, 15 Oct 2026 14:19:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DFDF0CC6B33
+	for <linux-mediatek@archiver.kernel.org>; Thu, 15 Oct 2026 14:45:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=CeSzBwDNP1bLe2YHsb8NqKTNfjCsvy23Eg0OzCMcErs=; b=T7gtTMCv9ihJwPHeW/ZnMD8Njc
-	vRCFkhHXjQYcBc9N0IcODgcsBasEJZgAPOLGqS36eki/J6BznI9e2HrRTRUKpGhVdXbrk60PrY/t6
-	hDIRiB38Agguy8qvV7WWAgXtu/z7U1NVIlqS74yVN+TNpzEkr9yuCSDY2npH5u07GTgfISj13A494
-	BpT4F8MJ+Yjy4Po1RxytmzxCBCNBKq0/6iSVpT3KqCwKAa2Ch8vaDEP8eIWuLDtAC2jeQ/osbbtWf
-	bpJDGtYhdF/j17Pole10TOsY81OGjuWc0cJBqnSCmrPilFglIFqMxOd0ylA2SgLQvmsKNxT0QASrp
-	lCNhUWgA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Cu+kqaxp2LTtL66kVYg1eFWIE3LmRxniGoxkUb1pV6Q=; b=Nwqq76K6GpHiblKsui4MROpXXP
+	TkRac1LGXwtpfuPb/xrlpFkTn1+eMYQwvogEkwU1UsN4iyFpiTplPZB8N/1tj/JdZiEkd5iBGg+zm
+	S4QU3cuzDNssGK52ClhYNMS4SAY5c5bqmL8/JOa/z9po5Dz6z2ZdkgvAdQc5vl0PQJIXHEAPpvUEp
+	aROsSVtt/www1V7aShj9nwlrN7WuGc9odBo4oQC2v7PnaM23n0iA0QQKXs3TW7M+IHxbww5ZDa1VE
+	kNBuqK07cjgZU+7FD3cYeO2qfwzHog2FzVzsvNwOnttm4aU1FCtDxc5EyjawaCBFtg5RsKmyeds5A
+	Ce+mHFvg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xHMIV-00000000Lc0-07aU;
-	Thu, 15 Oct 2026 14:19:07 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1xHMiA-00000000Qid-1H8d;
+	Thu, 15 Oct 2026 14:45:38 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xHMIS-00000000Lbh-3xzn;
-	Thu, 15 Oct 2026 14:19:05 +0000
+	id 1xHMi6-00000000Qi9-2IKM;
+	Thu, 15 Oct 2026 14:45:36 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 52DC46022C;
-	Thu, 15 Oct 2026 14:19:04 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 821511F000C5;
-	Thu, 15 Oct 2026 14:19:03 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id EEA4E439EE;
+	Thu, 15 Oct 2026 14:45:33 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 304AC1F000C4;
+	Thu, 15 Oct 2026 14:45:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1792073944;
-	bh=CeSzBwDNP1bLe2YHsb8NqKTNfjCsvy23Eg0OzCMcErs=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=ofmvxIX5sFpS2nZjQ3emTsjKbeA08Ybf3LomWAMA3CsTaar+cmLX3XueVahpMtYcH
-	 WMCw/oQF7fS1Sb0U4FyUO+HAhNdMddq8U8mAjH0avlpGkBb56o+0JoxcDwfPw9Hi8w
-	 /z9I2IrSb9hYzftzMkXcGbx9rqa+RV2p5NQDVFs+KbO5xA/KcNOVIUwVkGrs1nl+qb
-	 nwQl79/n9lPdozVJSpDHav3zP9i+CydbsJDi43lhAwIxWVS5kQy/j91BdLtkG67epg
-	 35MlKf91qFXiOfPqcUYVfkSGcK3lcwdmORnho8mZtZtcZzbSmrDd5/HZ7RhIRexmwd
-	 qREot1TN3cJHQ==
-Date: Thu, 15 Oct 2026 16:19:01 +0200
-From: Lorenzo Bianconi <lorenzo@kernel.org>
-To: Thomas Fourier <fourier.thomas@gmail.com>
-Cc: Felix Fietkau <nbd@nbd.name>, Andrew Lunn <andrew+netdev@lunn.ch>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@kernel.org>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Sujuan Chen <sujuan.chen@mediatek.com>,
-	"open list:MEDIATEK ETHERNET DRIVER" <netdev@vger.kernel.org>,
-	"open list:ARM/Mediatek SoC support" <linux-kernel@vger.kernel.org>,
-	"moderated list:ARM/Mediatek SoC support" <linux-arm-kernel@lists.infradead.org>,
-	"moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>
-Subject: Re: [PATCH net-next] net: ethernet: mtk_wed: Fix dma_unmap_single()
- size
-Message-ID: <atDg1UFw9CJpvsxF@lore-desk>
-References: <20261015140110.41988-2-fourier.thomas@gmail.com>
+	s=k20260515; t=1792075533;
+	bh=Cu+kqaxp2LTtL66kVYg1eFWIE3LmRxniGoxkUb1pV6Q=;
+	h=From:To:Cc:In-Reply-To:References:Subject:Date;
+	b=A8KDxOcVlxsVPVeUTb9z6c3kNCv2Dr1lrWDr9l40cOoWUXL1Aa9evg1lXL0HZO/Zz
+	 WJ4G1FmtHGdIq/yYXMZfJZqNjbt9NMUpVkN/vtR4Mzvfp5GKzKyrwAvEA453Qd7RpW
+	 wP99QRrUSELooIlXaxd1eJvNM5QC1IenKNGjpIg+zB2LT2WeunlLmM1UJXSCo5WA7b
+	 tyATQpPi99r6EB7JJg8bBX4cwJ1lBgWXeHKfDPeFIj7696IzdLwoN8rt3vtje0v0Gd
+	 +YNvLWNOlpLLsoSztfgUpWU3yPeS6wL7TT0rhUUVmx10YQEsGxxMH8vU7g+oNU15gg
+	 PK543lonFLSyA==
+From: Lee Jones <lee@kernel.org>
+To: Sen Chu <sen.chu@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, 
+ Macpaul Lin <macpaul.lin@mediatek.com>, Lee Jones <lee@kernel.org>, 
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Eddie Huang <eddie.huang@mediatek.com>, 
+ Alexandre Belloni <alexandre.belloni@bootlin.com>, 
+ Ryan Brue <ryanbrue.dev@gmail.com>
+Cc: linux-pm@vger.kernel.org, mfd@lists.linux.dev, 
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+ linux-rtc@vger.kernel.org
+In-Reply-To: <20260917-rbrue-suez-upstreaming-mt6397-rtc-nvmem-v1-1-558b8f95cfbc@gmail.com>
+References: <20260917-rbrue-suez-upstreaming-mt6397-rtc-nvmem-v1-1-558b8f95cfbc@gmail.com>
+Subject: Re: (subset) [PATCH 1/2] dt-bindings: mfd: mediatek: mt6397:
+ describe the RTC's nvmem layout
+Message-Id: <179207552993.2025354.8082190784295988343.b4-ty@b4>
+Date: Thu, 15 Oct 2026 15:45:29 +0100
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="bf2LvNtCjkzeEFGh"
-Content-Disposition: inline
-In-Reply-To: <20261015140110.41988-2-fourier.thomas@gmail.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+X-Mailer: b4 0.16-dev-ad80c
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,69 +79,25 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
---bf2LvNtCjkzeEFGh
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+On Thu, 17 Sep 2026 23:57:46 -0500, Ryan Brue wrote:
+> Four of the MT6397 RTC's alarm registers use only their low bits; the
+> high byte of each is storage the clock and the alarm don't touch.
+> MediaTek's documentation names them RTC_NEW_SPARE0 to RTC_NEW_SPARE3 and
+> assigns the first to a fuel gauge, which is what a battery driver reads
+> at boot so that the reported capacity does not jump across a reboot.
+> 
+> They sit in the RTC's always-on domain, so the driver can offer them as
+> a battery-backed nvmem provider. Allow a board to lay cells out over
+> them.
+> 
+> [...]
 
-> In mtk_wed_wo_queue_refill(), the entry->buf is DMA mapped with length
-> q->buf_size which saved in entry->len. However, in mtk_wed_wo_dequeue(),
-> the same buffer is DMA unmapped with length buf_len which is set to
-> SKB_WITH_OVERHEAD(q->buf_size).
->=20
-> Change the size to q->buf_size.
->=20
-> This was discovered with static analysis and was only compile-tested.
->=20
-> Fixes: 799684448e3e ("net: ethernet: mtk_wed: introduce wed wo support")
-> Signed-off-by: Thomas Fourier <fourier.thomas@gmail.com>
-> ---
->  drivers/net/ethernet/mediatek/mtk_wed_wo.c | 3 +--
->  1 file changed, 1 insertion(+), 2 deletions(-)
->=20
-> diff --git a/drivers/net/ethernet/mediatek/mtk_wed_wo.c b/drivers/net/eth=
-ernet/mediatek/mtk_wed_wo.c
-> index 7063c78bd35f..4f720ec53e20 100644
-> --- a/drivers/net/ethernet/mediatek/mtk_wed_wo.c
-> +++ b/drivers/net/ethernet/mediatek/mtk_wed_wo.c
-> @@ -99,7 +99,6 @@ static void *
->  mtk_wed_wo_dequeue(struct mtk_wed_wo *wo, struct mtk_wed_wo_queue *q, u3=
-2 *len,
->  		   bool flush)
->  {
-> -	int buf_len =3D SKB_WITH_OVERHEAD(q->buf_size);
->  	int index =3D (q->tail + 1) % q->n_desc;
->  	struct mtk_wed_wo_queue_entry *entry;
->  	struct mtk_wed_wo_queue_desc *desc;
-> @@ -123,7 +122,7 @@ mtk_wed_wo_dequeue(struct mtk_wed_wo *wo, struct mtk_=
-wed_wo_queue *q, u32 *len,
->  		*len =3D FIELD_GET(MTK_WED_WO_CTL_SD_LEN0,
->  				 le32_to_cpu(READ_ONCE(desc->ctrl)));
->  	if (buf)
-> -		dma_unmap_single(wo->hw->dev, entry->addr, buf_len,
-> +		dma_unmap_single(wo->hw->dev, entry->addr, q->buf_size,
+Applied, thanks!
 
-I guess you can use entry->len here to align with the tx side. Anyway:
+[1/2] dt-bindings: mfd: mediatek: mt6397: describe the RTC's nvmem layout
+      commit: 3606288af5e8c09a14ab5b19e121feec75296354
 
-Acked-by: Lorenzo Bianconi <lorenzo@kernel.org>
+--
+Lee Jones [李琼斯]
 
->  				 DMA_FROM_DEVICE);
->  	entry->buf =3D NULL;
-> =20
-> --=20
-> 2.53.0
->=20
-
---bf2LvNtCjkzeEFGh
-Content-Type: application/pgp-signature; name=signature.asc
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCatDg1QAKCRA6cBh0uS2t
-rAHDAQCBk2/JP1GlWzVrZmGmNrnZUmPT6fHOUTTZRcN+7YPm+gD9GGJ0a5/HxB8d
-rhhirUOm4xPSbbOd9R0UefDOqX6KUwQ=
-=PNQo
------END PGP SIGNATURE-----
-
---bf2LvNtCjkzeEFGh--
 
