@@ -4,135 +4,150 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D4529CC6B34
-	for <linux-mediatek@archiver.kernel.org>; Thu, 15 Oct 2026 09:12:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9D46CCC6B33
+	for <linux-mediatek@archiver.kernel.org>; Thu, 15 Oct 2026 09:48:40 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:In-Reply-To:References:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=lfNaC7G0CFtt6g5HK84/0GmEi2YR+Up4b6D59qzUdj8=; b=oHILfnHArIQIqS0PcfXi+PpUse
-	/8vNB9ijXtcEYQzH+RUZW8F3GPx0F8P1VUPoTKFZ0w/sEy8WnX1VbMm+Odqln+uP8GU+/V5in/h+E
-	jIz/Odin0YHIomXbEVKg9dju/D8dURfzy677FD3hDnKt/8O9OHOS4u1f7KtNmaRo9DxAzHCJ+aC9i
-	h6iGW/c6hpcfT+51NMIY55Bp8BwzE/fSoT8gwKERuYPqghu9mHRc83+aZ5ajpXNdPIGI+SgNOW3nP
-	//mWpNdpFQ/13vJjKYv0Ei2mAkt98mR65szGS8qW3/W0EIkxcvKx6DecI7nqqJbp/K6vN7LYm/QAP
-	Ch75QT6Q==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=m3KAG7YDGqOBR2D8Zn+sxc9jTExC3PMBl+koNYY0A4Q=; b=axGrXdZlhHRS/2zGrs59JfS4Ev
+	/a4IBMQWYq5G77OcBLCVEP3IYF8Mwz6A1JuqHSa+fSKhMIL4BgkFzeZOAh4MDW4Ed56ARbTg8pmn+
+	pcqE1wnGCH+RA6EWpiYrdmCHLOgeWADq9E2h+gQRNSNjxRurlehmwrufS40tncfDzkNJPT12zVVZN
+	Cu5WSiOr4FBcxB8F07xXLmPagDcEyKZiMnORTC6x9LMs6cAkEncnV5KFro4nCP+8fywfe0TNqagtZ
+	dqmtS0J+4/0AQWJ3IKcmBDZfpgfZ6BNW5HxdXsr921mt17owW2qIxafUuzZCB4GZFz0dNbvlZi+R0
+	mxf9I3IQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xHHW6-0000000HEAR-3Ikx;
-	Thu, 15 Oct 2026 09:12:50 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1xHI4l-0000000HKcm-2qZ2;
+	Thu, 15 Oct 2026 09:48:39 +0000
+Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xHHW5-0000000HE9G-32D4;
-	Thu, 15 Oct 2026 09:12:49 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=MIME-Version:Content-Transfer-Encoding
-	:Content-Type:In-Reply-To:References:Message-ID:Date:Subject:CC:To:From:
-	Sender:Reply-To:Content-ID:Content-Description;
-	bh=lfNaC7G0CFtt6g5HK84/0GmEi2YR+Up4b6D59qzUdj8=; b=bdZUEbceMkzdN+aORzkkO78arR
-	0Dev+bSmk8dDcjRJzwIHr+gLZ/QiK7p4nDS8KR97VKU/HBA0nAb22NtUj10qqlCWffQpIpSRgNyad
-	k/TEg4ae/tA2rec7sFEe82yfpQ/abBSeHeGEssF439lWebdHzZqG1C5NvJ3/Q/XVlWJiHh7VaU/UW
-	iU0KGHAbqlBNbUf0Ay0VPEJ7tdwOBJkFjgFWn7Eg+vU2CMebLEhHF4IFQump7aHWkAJKqGW2wtsv0
-	KB2ElLmZ2F+CJYie9rBEJkXJdornoU+cijZ0kCOSxfRBJxKh/WhF4i6G0pcsmtY9DekGXnDxtl7v2
-	UWz3lnvA==;
-Received: from exmail3.compal.com ([59.120.207.196] helo=tpecef22.compal.com)
-	by desiato.infradead.org with esmtps (Exim 4.99.5 #2 (Red Hat Linux))
-	id 1xHHW0-000000009cG-0sE0;
-	Thu, 15 Oct 2026 09:12:47 +0000
-X-UUID: 8946baf0c87811f1a87c2323a98e90a4-20261015
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.20,REQID:fccc4dd7-6bdf-4c38-a5f6-ae467af890c4,IP:0,U
-	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
-	:release,TS:-5
-X-CID-META: VersionHash:291e20b,CLOUDID:7e5718fd-82fa-4755-85ae-ebe9525ab585,B
-	ulkID:nil,BulkQuantity:0,SF:80|81|82|83|102|110|111|836|865|888|898,TC:-5,
-	Content:0|15|50|99,EDM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:n
-	il,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 2,SSN|SDN
-X-CID-BAS: 2,SSN|SDN,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: 8946baf0c87811f1a87c2323a98e90a4-20261015
-Received: from sdmg12.sdbg.compal.com [(10.113.168.10)] by tpecef22.compal.com
-	(envelope-from <jackbb_wu@compal.com>)
-	(Generic MTA with TLSv1.3 TLS_AES_256_GCM_SHA384 256/256)
-	with ESMTP id 149126805; Thu, 15 Oct 2026 17:12:24 +0800
-X-UUID: 85f07972c87811f1a9f9c99e036204b4-20261015
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.15,REQID:6c0fc86c-41a4-4d2d-8bb1-fd28e0d23b8d,IP:0,U
-	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
-	:release,TS:-5
-X-CID-META: VersionHash:e276073,CLOUDID:42af6095-3103-4fdb-b79c-08de0e281a5d,B
-	ulkID:nil,BulkQuantity:0,Recheck:0,SF:80|81|82|83|102|110|111|836|865|888|
-	898,TC:-5,Content:0|15|50|99,EDM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS
-	:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,A
-	RC:0
-X-CID-BVR: 2,SSN|SDN
-X-CID-BAS: 2,SSN|SDN,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: 85f07972c87811f1a9f9c99e036204b4-20261015
-Received: from sdbmbx11.tpe.compalcomm.com [(10.113.2.135)] by sdmg12.sdbg.compal.com
-	(envelope-from <jackbb_wu@compal.com>)
-	(Compal Mail Service with TLSv1.2 ECDHE-RSA-AES128-SHA 128/128)
-	with ESMTP id 985879827; Thu, 15 Oct 2026 17:12:19 +0800
-Received: from SDBMBX13.tpe.compalcomm.com (10.113.2.137) by
- SDBMBX11.tpe.compalcomm.com (10.113.2.135) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA) id 15.2.2562.43;
- Thu, 15 Oct 2026 17:12:17 +0800
-Received: from SDBMBX13.tpe.compalcomm.com ([fe80::d3a3:2665:d306:e36a]) by
- SDBMBX13.tpe.compalcomm.com ([fe80::d3a3:2665:d306:e36a%11]) with mapi id
- 15.02.2562.043; Thu, 15 Oct 2026 17:12:17 +0800
-From: "Wu. JackBB (GSM)" <JackBB_Wu@compal.com>
-To: Loic Poulain <loic.poulain@oss.qualcomm.com>
-CC: Sergey Ryazanov <ryazanov.s.a@gmail.com>, Johannes Berg
-	<johannes@sipsolutions.net>, Andrew Lunn <andrew+netdev@lunn.ch>, "David S.
- Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@google.com>, "Jakub
- Kicinski" <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Wen-Zhi Huang
-	<wen-zhi.huang@mediatek.com>, Shi-Wei Yeh <shi-wei.yeh@mediatek.com>, "Minano
- Tseng" <Minano.tseng@mediatek.com>, Matthias Brugger
-	<matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>, "Simon Horman" <horms@kernel.org>,
-	Jonathan Corbet <corbet@lwn.net>, Shuah Khan <skhan@linuxfoundation.org>,
-	"Yu. Robert (GSM)" <robert_yu@compal.com>, "Chang. Jeff (GSM)"
-	<Jeff_Chang@compal.com>, "linux-kernel@vger.kernel.org"
-	<linux-kernel@vger.kernel.org>, "netdev@vger.kernel.org"
-	<netdev@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org"
-	<linux-arm-kernel@lists.infradead.org>, "linux-mediatek@lists.infradead.org"
-	<linux-mediatek@lists.infradead.org>, "linux-doc@vger.kernel.org"
-	<linux-doc@vger.kernel.org>
-Subject: Re: [PATCH v10 1/6] net: wwan: t9xx: Add PCIe core
-Thread-Topic: [PATCH v10 1/6] net: wwan: t9xx: Add PCIe core
-Thread-Index: AQHdXIVGsyD+Aq2AK0OYcS5BD0f6eA==
-Date: Thu, 15 Oct 2026 09:12:17 +0000
-Message-ID: <1686fe2dfdfd4a0890c037a53818aec1@compal.com>
-References: <20261014-t9xx_driver_v1-v10-0-4d0dde3613f5@compal.com>
- <20261014-t9xx_driver_v1-v10-1-4d0dde3613f5@compal.com>,<CAFEp6-0d86Mx1gardmN74WNFCerY00Pm1B=720tqOqKhz5EE1Q@mail.gmail.com>
-In-Reply-To: <CAFEp6-0d86Mx1gardmN74WNFCerY00Pm1B=720tqOqKhz5EE1Q@mail.gmail.com>
-Accept-Language: zh-TW, en-US
-Content-Language: zh-TW
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-originating-ip: [10.113.2.241]
-x-tm-as-product-ver: SMEX-14.0.0.3239-9.1.2019-30258.005
-x-tm-as-result: No-10--15.752000-8.000000
-x-tmase-matchedrid: q6+TWfRxf4cuv++HU7VXryRFbfQbCufdN0X64jGy2dZJTOxleK2tZuZd
-	NI5cmL7EqJ63gZLKrOBDdLXYWGnDb52vFMfvZjTGiu6u4shZ+fFtT5dsVizXEi+IwZW+xLvQ9PE
-	ncRVMUNt0GOgwQ+Y9+BEz71V9WVMe28Nv2hpJvnB4lyF1lyvUrRnz+kO152KHwnWkERiSip3i9D
-	rRYAMc5Df8MHPNq3cEyrzRjZhtElOvngkjHjojpPe3el8uYlFT28gAxP/Ts6IH2l80MvY9heUo4
-	N9PjSkTthRFAcCnfMqUTGVAhB5EbQ==
-x-tm-as-user-approved-sender: No
-x-tm-as-user-blocked-sender: No
-x-tmase-result: 10--15.752000-8.000000
-x-tmase-version: SMEX-14.0.0.3239-9.1.2019-30258.005
-x-tm-snts-smtp: 6D4F98746250E19D728C3E331916E799E093B7B9BF113165B5D1611D73E97CB82000:8
-Content-Type: text/plain; charset="big5"
-Content-Transfer-Encoding: base64
+	id 1xHI4i-0000000HKah-1eTE
+	for linux-mediatek@lists.infradead.org;
+	Thu, 15 Oct 2026 09:48:38 +0000
+Received: from pps.filterd (m0279869.ppops.net [127.0.0.1])
+	by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id 69F9jnVo3408836
+	for <linux-mediatek@lists.infradead.org>; Thu, 15 Oct 2026 09:48:35 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
+	cc:content-transfer-encoding:content-type:date:from:in-reply-to
+	:message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
+	m3KAG7YDGqOBR2D8Zn+sxc9jTExC3PMBl+koNYY0A4Q=; b=PYQ2LI9aj27depOZ
+	qeweAXNBoA1cgejsFBYuNOalTEdQi3dhHBovBh4X5s67yygNgxEewsmXMGVxJwUJ
+	xknMYhgUc0U7Sl1gvwmfoSE5dAGNJJuDkn+GDtdTh7un98iVQ654iXublSoIG3Sg
+	f8/PFJQdbcAqm40e55coyKkeZVOK6GRgywvAcUQXGRBcvkXlnuBLxfiHkaHOdsz1
+	wmwCWbaM+/YW1xU8d9Nq/H2ax0JHCw5413mffdzYSGHYgbysfsd7RDtp7UYVhM9L
+	wNHziNWZ6WJxj9qi4gJBZqjatGt/8HL8VCV/ZVmkfN3Qytu6KTQuq4NVby86xgfi
+	1zT+xg==
+Received: from mail-qt1-f199.google.com (mail-qt1-f199.google.com [209.85.160.199])
+	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4hakwn246m-1
+	(version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
+	for <linux-mediatek@lists.infradead.org>; Thu, 15 Oct 2026 09:48:35 +0000 (GMT)
+Received: by mail-qt1-f199.google.com with SMTP id d75a77b69052e-533758f24f4so13287081cf.1
+        for <linux-mediatek@lists.infradead.org>; Thu, 15 Oct 2026 02:48:35 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=oss.qualcomm.com; s=google; t=1792057715; x=1792662515; darn=lists.infradead.org;
+        h=content-transfer-encoding:content-type:in-reply-to:from
+         :content-language:references:cc:to:subject:user-agent:mime-version
+         :date:message-id:from:to:cc:subject:date:message-id:reply-to
+         :content-type;
+        bh=m3KAG7YDGqOBR2D8Zn+sxc9jTExC3PMBl+koNYY0A4Q=;
+        b=DnN7rC8gaVCrkULBZXWOmFKHO0ep8WqLS09+mJ+Yhx9PuxELbg9Rcg8Rjm6U6sqGBD
+         tct/bQoRjSdGXcFNU+KIDwN9FOsJAsGSkTf2ft89fpcWNs3mAaFks6EO9UD0DiJo2T11
+         nWzFEUY5nHqEdrzbhDfdlhVQxvf5Bx2dHtFBLd4QxfiKj2LaN/asEqIZJnhoZRB985QX
+         wzk6X8p/26Wq6pFoQO8x2mxw8R93F8xibqP8XjBCAU2u4ma1eFvp5pAn6yPe9tLrGNi9
+         GxNHVjkA23/FyrKyjFCkq2xX8uW6/q19LaUIBIbOgrxm0P1vpCIAldLxzb3GE0usrQ2l
+         dRMg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20260707; t=1792057715; x=1792662515;
+        h=content-transfer-encoding:content-type:in-reply-to:from
+         :content-language:references:cc:to:subject:user-agent:mime-version
+         :date:message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to:content-type;
+        bh=m3KAG7YDGqOBR2D8Zn+sxc9jTExC3PMBl+koNYY0A4Q=;
+        b=Lr/cshk8gLd2XZSmOwW1NRBa+mpGlElzHr4N9ahIM+Wjexl64UmimhvqkHLp8eQ98V
+         BzECXC7UlAtaXHQWPRTusygefjH8okq8MlwNEzx6QgykW51MlCxpVAnPY7LNDOpuTgae
+         SHu2Eju/v+MrAnNl7Lywlvvepn+UbRkuOMXpjD0LQSwdRAV+3obXr9g4voFb6GMZwyDw
+         YBpcvGJ0jZ/vlhJzU4KcK+z13hL3OziZcXhHVFy1BQFC92QZnl9xakFRZZ332S17QU5G
+         GWVyMljGldUoi/lEVpVf+RAFO+v1nHtt6VNkWVsGZ76sFJ7P3d/zumw1hvyVNE4ALBIt
+         UErw==
+X-Forwarded-Encrypted: i=1; AKwUvBxxfb1r1S3RqOxs/O3R6iC2NqyCRppJY/OS/vOHEW+j8bsSL9vmUhWZtEOo1J4lRcPXWOruQYofULBLrYfhwg==@lists.infradead.org
+X-Gm-Message-State: AFq9FYIdWkDqKu2qN6ahV/4bYumInw1LIJiuidkuFF7E5aMLakTs/G18
+	sZHwWEUNNqWwsU8BVtiNstx4nTddPKEsxl6Alj/sEDBFvnUuONhGyvJvmnJXN5eOAemXe1Z68cU
+	CGjw2S/JtTxzjkTM7/DGoXcNuhNCHB7qqKJrc+nzdy8hBxO9I3nQaoh64pVqa0d6g+ibRbL6EDQ
+	o=
+X-Gm-Gg: AYBFou3Rt+Hc4bnq490CRsEW6qjSifQBPLVhTtTBqBLBdU9tX0brC+dD03v6rJrrR8u
+	tVpeQQp56UxyoaJ6xe6VHEFqCFb65E37NusBm0eqcwRfx2UKsB63YXqwpqwXhdPUKkH5XQqM/aK
+	pHuZM9C8Uf/5w8J1pt3tec4hUtW5T3wxbOJUhw5aZrfRaEhu/SPvX7VRoQHEHVFd9DULzWfXnf/
+	OxFysiE8tIwNZkQILxPtGdrtqoDBBbn+mTYPybly+nlZLbi2tJkhJVHvzOE0U/zCUsi1e5fLy/e
+	K92A7Yap0fo6MzO9H1mRIILl9wItS0tFL/VJTq0w91bD/uFA7yqKmJRYmO7Sy1XmQ15cLoVtwqj
+	JLLT3kQsstWZFc+UHmizsnQ==
+X-Received: by 2002:a05:622a:507:b0:532:d67e:bc2e with SMTP id d75a77b69052e-5359f0634femr356798251cf.0.1792057714874;
+        Thu, 15 Oct 2026 02:48:34 -0700 (PDT)
+X-Received: by 2002:a05:622a:507:b0:532:d67e:bc2e with SMTP id d75a77b69052e-5359f0634femr356797601cf.0.1792057713501;
+        Thu, 15 Oct 2026 02:48:33 -0700 (PDT)
+Received: from [192.168.226.26] ([178.235.128.140])
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-c3eda622246sm102601366b.70.2026.10.15.02.48.30
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 15 Oct 2026 02:48:32 -0700 (PDT)
+Message-ID: <812d0272-db2a-4dd4-8e6c-e66145af2db5@oss.qualcomm.com>
+Date: Thu, 15 Oct 2026 11:48:29 +0200
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 4/4] arm64: dts: qcom: Use DP AltMode defines
+To: Sebastian Reichel <sre@kernel.org>,
+        Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+        Rob Herring <robh@kernel.org>,
+        Krzysztof Kozlowski <krzk+dt@kernel.org>,
+        Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>,
+        Matthias Brugger <matthias.bgg@gmail.com>,
+        AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+        Bjorn Andersson <andersson@kernel.org>,
+        Konrad Dybcio <konradybcio@kernel.org>
+Cc: linux-usb@vger.kernel.org, devicetree@vger.kernel.org,
+        linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+        linux-rockchip@lists.infradead.org, linux-mediatek@lists.infradead.org,
+        linux-arm-msm@vger.kernel.org, kernel@collabora.com,
+        Sebastian Reichel <sebastian.reichel@collabora.com>
+References: <20261014-dp-altmode-dt-defines-v1-0-b657c9b6e4c3@collabora.com>
+ <20261014-dp-altmode-dt-defines-v1-4-b657c9b6e4c3@collabora.com>
+Content-Language: en-US
+From: Konrad Dybcio <konrad.dybcio@oss.qualcomm.com>
+In-Reply-To: <20261014-dp-altmode-dt-defines-v1-4-b657c9b6e4c3@collabora.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYxMDE1MDAzOCBTYWx0ZWRfX9bBQa9efQtuT
+ O7d2sfeBlLifapEHdTkiG63+h+bpmR6ghPDs3r0lOm5RN+secuIjU41mGDck3u/HZucDsJe02Io
+ 2KVUn8eYZjdBuza53ZS6c+9v46KeUgOoxD0Fi8qDfHC4/TK+IMACKuBVGu0RsHABKgVfF6dkiLw
+ tDBsMAZrcdcAIl4agPXeQFQFkaaep5f4FNB8CwM3yf9yEBYOTVpTCV3y7P4NLes1pc3wtVBPnFk
+ xRnkQKd9M9TkaJ5NeWEX8/b4ok5smo+mh0xyUCHt/qIe2x8ZDmKQnHnrP42YtiiafXX5NkOL4WR
+ DCcRpCJsMzcR2WWpqyxV95LDenKRLEMhrpISbJpjy9DK9rozzvg2jNF3YbB78w/sidopQVxz2tU
+ 4IueDnQHLXdbqJkstqGrpaR43L+dlysUYesqzIqRWSDg/k4vf5oWgUZ/eeMO21UC4sYEtjfWjuy
+ rgmNivAhHpE9leIBRgg==
+X-Proofpoint-GUID: r3Xg19otc041tQmAQufmfaUyZUly6lHo
+X-Proofpoint-Spam-Info: AW1haW4tMjYxMDE1MDAzOCBTYWx0ZWRfX+1XjgMXRa1N6
+ ISrZgpOrG1FYMga/ijUEGJKbg3XKU3U50zl1BPRMnj/7IhQlLBREDlUMiSSsJgou5VwRO/ZsM6S
+ wFg59vooOXjJ46OKLGFaVwC+8Guag08=
+X-Authority-Analysis: v=2.4 cv=BqUIUoX5 c=1 sm=1 tr=0 ts=6ad0a173 cx=c_pps
+ a=WeENfcodrlLV9YRTxbY/uA==:117 a=PRfkaYvzSr8QmIIGAkY2Sg==:17
+ a=IkcTkHD0fZMA:10 a=660iZSQnnn4A:10 a=s4-Qcg_JpJYA:10
+ a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=_glEPmIy2e8OvE2BGh3C:22
+ a=QX4gbG5DAAAA:8 a=EUspDBNiAAAA:8 a=C_hJBzH1aKR8969NbtkA:9 a=QEXdDO2ut3YA:10
+ a=kacYvNCVWA4VmyqE58fU:22 a=AbAUZ8qAyYyZVLSsDulk:22
+X-Proofpoint-ORIG-GUID: r3Xg19otc041tQmAQufmfaUyZUly6lHo
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1176,Hydra:6.1.134,FMLib:17.12.100.49
+ definitions=2026-10-14_01,2026-10-14_01,2025-10-01_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ impostorscore=0 adultscore=0 spamscore=0 bulkscore=0 suspectscore=0
+ clxscore=1015 malwarescore=0 phishscore=0 lowpriorityscore=0
+ priorityscore=1501 classifier=typeunknown authscore=0 authtc= authcc=
+ route=outbound adjust=0 reason=mlx scancount=1 engine=8.22.0-2610080000
+ definitions=main-2610150038
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261015_101245_054564_DB6A5385 
-X-CRM114-Status: GOOD (  12.20  )
+X-CRM114-CacheID: sfid-20261015_024836_542593_A0391E29 
+X-CRM114-Status: GOOD (  10.44  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -147,27 +162,16 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-SGkgTG9pYywNCg0KVGhhbmtzIGZvciB0aGUgcmV2aWV3Lg0KDQpPbiBXZWQsIE9jdCAxNCwgMjAy
-NiBhdCA4OjQ5IFBNIExvaWMgUG91bGFpbg0KPGxvaWMucG91bGFpbkBvc3MucXVhbGNvbW0uY29t
-PiB3cm90ZToNCj4gPiArI2luY2x1ZGUgPGxpbnV4L2RtYS1tYXBwaW5nLmg+DQo+ID4gKyNpbmNs
-dWRlIDxsaW51eC9kbWFwb29sLmg+DQo+ID4gKyNpbmNsdWRlIDxsaW51eC9rZXJuZWwuaD4NCj4g
-PiArI2luY2x1ZGUgPGxpbnV4L21vZHVsZS5oPg0KPiA+ICsjaW5jbHVkZSA8bGludXgvc2NoZWQu
-aD4NCj4gPiArI2luY2x1ZGUgPGxpbnV4L3NsYWIuaD4NCj4gPiArI2luY2x1ZGUgPGxpbnV4L3Nw
-aW5sb2NrLmg+DQo+DQo+IExvb2tzIGxpa2UgYSBsb3Qgb2YgaGVhZGVycyBmb3Igc3VjaCBhIHNt
-YWxsIGhlYWRlciBmaWxlLiBDb3VsZCB5b3UNCj4gdHJpbSB0aGUgdW5uZWNlc3NhcnkgaW5jbHVk
-ZXM/IEZvciBleGFtcGxlLCBzcGlubG9jay5oIGRvZXNuJ3QgYXBwZWFyDQo+IHRvIGJlIHVzZWQu
-DQoNCldpbGwgZml4IGluIHYxMS4gIEFsbCBzZXZlbiBnbzogdGhlIGhlYWRlciBvbmx5IHVzZXMg
-QklUKCkgYW5kIHUzMiwgc28NCjxsaW51eC9iaXRzLmg+IGFuZCA8bGludXgvdHlwZXMuaD4gYXJl
-IGxlZnQsIHBsdXMgYSBmb3J3YXJkIGRlY2xhcmF0aW9uDQpmb3Igc3RydWN0IGRldmljZS4NCg0K
-PiA+ICsjZGVmaW5lIFNFVF9IV19CSVRTKGRlc3QsIGNocywgbWhjY2lmLCBkZXYpCQlcDQo+ID4g
-KwkoewkJCQkJCVwNCj4gPiArCQlpZiAoKGNocykgJiAoZGV2KSkJCQkJCVwNCj4gPiArCQkJKGRl
-c3QpIHw9IEZJRUxEX1BSRVAobWhjY2lmLCAxKTsJCVwNCj4gPiArCX0pDQo+DQo+IEEgc3RhdGlj
-IGlubGluZSBoZWxwZXIgd291bGQgYmUgY2xlYW5lci4NCg0KV2lsbCBmaXggaW4gdjExOg0KDQog
-IHN0YXRpYyBpbmxpbmUgdTMyIG10a19wY2lfbWFwX2V2dF9iaXQodTMyIHZhbCwgdTMyIGZyb20s
-IHUzMiB0bykNCiAgew0KCXJldHVybiAodmFsICYgZnJvbSkgPyB0byA6IDA7DQogIH0NCg0KRXZl
-cnkgbWFzayBpbnZvbHZlZCBpcyBhIHNpbmdsZSBiaXQsIHNvIEZJRUxEX1BSRVAobWFzaywgMSkg
-d2FzIGp1c3QNCm1hc2suICBUaGUgc2FtZSBoZWxwZXIgYWxzbyByZXBsYWNlcyB0aGUgRklFTERf
-UFJFUChGSUVMRF9HRVQoKSkgcGFpcnMNCmluIG10a19wY2lfZXh0X2QyaF9ldnRfY2hzKCksIHdo
-aWNoIGlzIHRoaXMgdHJhbnNsYXRpb24gaW4gdGhlIG90aGVyDQpkaXJlY3Rpb24uDQoNClRoYW5r
-cywNCkphY2s=
+On 10/14/26 11:31 PM, Sebastian Reichel wrote:
+> From: Sebastian Reichel <sebastian.reichel@collabora.com>
+> 
+> Use the new USB-C DP AltMode defines for the SVID and the capabilities
+> VDO to make the DTs more readable.
+> 
+> Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
+> ---
+
+Reviewed-by: Konrad Dybcio <konrad.dybcio@oss.qualcomm.com>
+
+Konrad
 
