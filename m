@@ -4,89 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 674AFCC6B2F
-	for <linux-mediatek@archiver.kernel.org>; Thu, 15 Oct 2026 05:06:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 35363CC6B34
+	for <linux-mediatek@archiver.kernel.org>; Thu, 15 Oct 2026 07:44:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=FTefudUOIMhv7UBh8pwkS/cjy0B36XdA6+uyE55CwNs=; b=S2wmLLtQJZpAo9Vj0r2lGlvT1J
-	s3xsJwlzZWCkn6XnN1TvvTJjc7waAXUsLXC6vxVJdW42MIrTYWNQKp6dgy073fOY+P04PFnpsNyHa
-	TLJe22ylyg10uDgkOPpOB/JbkvzpxhaIETFylAVPzOpPny8eTkvbrXv3EwwKTF1yf9dcZ4uaKLXww
-	dNVp9OIt+C7W1ENE0Wd74kPAXFOZ4MB5ZZJD5iyDsE4QwWfte6pl5WEkNYHz6G8dKmIzpgwyJ0Ztq
-	mnmkkNizscmqO2eenRfzfwMutMMawv98pYWUjjsIJQ0BsniDrzE1lcqjWra7zJrESAEtkbQh+AM0A
-	gSTsA8uQ==;
+	bh=LEG361a6pDP+9DS65uWsMHb0ylN+/ee1WZlLzfsbLsw=; b=UmOThEo1j0GqwvKbkZj/W+7NMS
+	Qqp+xNwqPvDHCHz8eELF3b3liLUVeTTCJei0KOhvAia6DYQELjTbD4j/wIb1iYOj56ZwnlEARSEdw
+	eI9d7DRzjux6jgK3ROWcWNz6UcfptEPQvAFIfFZmAlqpr8+KgvlSOozvfEe/lBJwxaLC1NpSaiCn0
+	nSAHWneel+ESwYuJPD5wv2kWFpJn/M8AE0zU6mzfHy5glEggAg+SE+X6ld2QOnthDYfJO/tNmyUVq
+	Y1/preCs7SYxlCTemnQXxE0CBgDL6GS+jdHYo1iBJ7ExXhAq8adOr1mUsGA/JT+imwtBZ3iQaagS2
+	qWXHYdWQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xHDg5-0000000GqAJ-3Be4;
-	Thu, 15 Oct 2026 05:06:53 +0000
-Received: from mgamail.intel.com ([198.175.65.17])
+	id 1xHG8L-0000000H3X8-2RBE;
+	Thu, 15 Oct 2026 07:44:13 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xHDg2-0000000Gq9n-37et;
-	Thu, 15 Oct 2026 05:06:52 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1792040811; x=1823576811;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=rPrN/b17tzrrWFqjgXZe93Dbw+hG8QAaSFVecQYWGdw=;
-  b=fluiyHCpyIuJvXdx4XhMVSv/L/zXvTtcmE8/g+l7H7Iw60L7FnCeSDiZ
-   1t4O+8ip46tYZ9HqZNhcc1cyiz6DQIMujrYsLKsMTXdUQLDyZUWNETlwS
-   BBtEVWOL2zeDnQq+MJ5PXNPnPNotCGoSuEPchQMWGYfrLiNcyfEB8S/T0
-   mwDwfxOqLlxCd/hS1YzMPIrqVdyVZ5bw8Xmb82P/veDpQpgVxPK8gwNxs
-   h9OZOzCEQxz5+tro39XUjyXTxeYf81Q9ErBAmrzkOBZywvNtTR8jQYyf2
-   MPH08zDmgDIlRcM3mHV6nLxQUHJ6jAX9VkO70vGf7ioaFruA3KCLRxwy/
-   A==;
-X-CSE-ConnectionGUID: yOI9e1Q9RV6Cp7xDncTRKQ==
-X-CSE-MsgGUID: Bef2YbdFRFiZ1gHmBYW0GA==
-X-IronPort-AV: E=McAfee;i="6800,10657,11935"; a="808554"
-X-IronPort-AV: E=Sophos;i="6.27,159,1787036400"; 
-   d="scan'208";a="808554"
-Received: from fmviesa001.fm.intel.com ([10.60.135.141])
-  by orvoesa109.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 14 Oct 2026 22:06:50 -0700
-X-CSE-ConnectionGUID: 8jAOmFopSaOf2TggeW3cqg==
-X-CSE-MsgGUID: 8tGAU8DZTY63RexvDIrB6w==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.27,159,1787036400"; 
-   d="scan'208";a="1847050"
-Received: from lkp-server01.sh.intel.com (HELO 0caa9d2d175c) ([10.239.97.150])
-  by fmviesa001.fm.intel.com with ESMTP; 14 Oct 2026 22:06:45 -0700
-Received: from kbuild by 0caa9d2d175c with local (Exim 4.98.2)
-	(envelope-from <lkp@intel.com>)
-	id 1xHDfu-00000000FqJ-0wLc;
-	Thu, 15 Oct 2026 05:06:42 +0000
-Date: Thu, 15 Oct 2026 13:06:09 +0800
-From: kernel test robot <lkp@intel.com>
-To: Christian Marangi <ansuelsmth@gmail.com>, Andrew Lunn <andrew@lunn.ch>,
-	Heiner Kallweit <hkallweit1@gmail.com>,
-	Russell King <linux@armlinux.org.uk>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@kernel.org>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Daniel Golle <daniel@makrotopia.org>,
-	Qingfang Deng <dqfext@gmail.com>,
-	SkyLake Huang <SkyLake.Huang@mediatek.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Ahmed Naseef <naseefkm@gmail.com>,
-	Joris Vaisvila <joey@tinyisr.com>, linux-kernel@vger.kernel.org,
+	id 1xHG8K-0000000H3Wb-0q1w;
+	Thu, 15 Oct 2026 07:44:12 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by sea.source.kernel.org (Postfix) with ESMTP id A5115432BA;
+	Thu, 15 Oct 2026 07:44:11 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 08B3E1F000C4;
+	Thu, 15 Oct 2026 07:44:10 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1792050251;
+	bh=LEG361a6pDP+9DS65uWsMHb0ylN+/ee1WZlLzfsbLsw=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To;
+	b=J0a+FVn4WjRhHJ38DOu0W5/c8zAoX3QZ/kESKgLIx9ZhrIZoPfjBEpPHpJGpAFKkE
+	 xuMX87ZqJjES76RQ/NYKYDv348s/FfCaN7UEtUnAnldt4dK67MnxjUIc+jjisg17DD
+	 jWts+Ry4O0MdlYxGpXINFk+B896R8xt/zGhrwUeZhvAS10DRFqVRHuspHfQIqgk7IE
+	 tyrKQktT1GgGykGoYP+6vDITeeawDmRqaLQOgr8KkQmaOdqpDzrCO7ll9S04y3Kvg7
+	 05TCBMLJl1+L5GaDV2zAL1Erjjr+h0E4YzOkInoESwbJbnHxqfqBFyQEJKd+DYu5w9
+	 bXba4Ztf36dig==
+Date: Thu, 15 Oct 2026 09:44:09 +0200
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+To: SAYANTAN NANDY <sayantann11@gmail.com>
+Cc: netdev@vger.kernel.org, andrew+netdev@lunn.ch,
 	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Cc: llvm@lists.linux.dev, oe-kbuild-all@lists.linux.dev,
-	netdev@vger.kernel.org
-Subject: Re: [PATCH net-next v3 5/6] net: phy: mediatek: add calibration
- logic for AN7581
-Message-ID: <202610151259.WmaEeHMH-lkp@intel.com>
-References: <20261014071739.216345-6-ansuelsmth@gmail.com>
+	linux-mediatek@lists.infradead.org, bread.hsu@airoha.com,
+	sayantan.nandy@airoha.com
+Subject: Re: [PATCH net v3] net: airoha: keep PPE offload when NPU refuses
+ flow stats
+Message-ID: <atCESCD8aDoR32nW@lore-desk>
+References: <20261008094828.15458-1-sayantann11@gmail.com>
+ <20261015045607.12999-1-sayantann11@gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="as81oyFgOPbUaC9b"
 Content-Disposition: inline
-In-Reply-To: <20261014071739.216345-6-ansuelsmth@gmail.com>
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261014_220650_862573_0E9C4E3F 
-X-CRM114-Status: GOOD (  11.10  )
+In-Reply-To: <20261015045607.12999-1-sayantann11@gmail.com>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,72 +72,152 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Christian,
+--as81oyFgOPbUaC9b
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-kernel test robot noticed the following build warnings:
+> From: Chad Monroe <chad@monroe.io>
+>=20
+> With flow stats enabled, PPE offload setup requests flow statistics
+> from the NPU. If the running NPU firmware does not support flow
+> counters, the request fails and the current setup path aborts PPE
+> offload.
+>=20
+> Treat flow statistics as an optional capability so that a failure to
+> set up the counters does not prevent normal PPE offload. Continue PPE
+> initialization when the NPU refuses the flow-statistics request.
+>=20
+> Also treat a zero NPU statistics address returned by the firmware as a
+> refusal. The host-side DMA buffer (foe_stats_dma) is allocated by
+> dmam_alloc_coherent() in airoha_ppe_init() from system memory. The NPU
+> statistics address (npu_stats_addr) is a separate allocation from the
+> NPU firmware's internal SRAM pool. When that pool is exhausted, the
+> firmware replies with success and npu_stats_addr =3D 0. A zero address
+> does not provide a usable counter region and must not be passed to
+> devm_ioremap().
+>=20
+> When flow stats entries are available, clear PSE_PORT6_SHARE_DIS so
+> that PSE port 6 (CDM3 path to the NPU) participates in shared-buffer
+> flow control. PSE_FC_CFG bits 26:16 control per-port whether flow
+> control considers the shared buffer pool. Bit 22 is port 6.
+>=20
+> When flow statistics are unavailable, PPE continues to operate without
+> NPU flow counters while retaining normal offload functionality.
+>=20
+> This combines the original SmartRG/Airoha fixes for:
+> - keeping PPE offload active when the NPU refuses flow statistics
+> - treating a zero NPU statistics address as a flow-statistics refusal
+>=20
+> Based on the original SmartRG/Airoha work by Chad Monroe:
+> 5ce96ab ("SDG-9458: keep PPE offload when NPU refuses flow stats")
+> 0ad8528 ("SDG-9458: airoha: treat a zero NPU stats address as a refusal")
+> Fixes: b81e0f2b58be ("net: airoha: Add FLOW_CLS_STATS callback support")
+> Tested-on: AN7581 with MT7992
+> Signed-off-by: Chad Monroe <chad@monroe.io>
+> Signed-off-by: SAYANTAN NANDY <sayantann11@gmail.com>
 
-[auto build test WARNING on net-next/main]
+Acked-by: Lorenzo Bianconi <lorenzo@kernel.org>
 
-url:    https://github.com/intel-lab-lkp/linux/commits/Christian-Marangi/net-phy-mediatek-export-__mtk_tr_write/20261014-091732
-base:   net-next/main
-patch link:    https://lore.kernel.org/r/20261014071739.216345-6-ansuelsmth%40gmail.com
-patch subject: [PATCH net-next v3 5/6] net: phy: mediatek: add calibration logic for AN7581
-config: hexagon-allmodconfig (https://download.01.org/0day-ci/archive/20261015/202610151259.WmaEeHMH-lkp@intel.com/config)
-compiler: clang version 24.0.0git (https://github.com/llvm/llvm-project 6719b9e31d6a93099612c474eec76d9f41d0275a)
-reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20261015/202610151259.WmaEeHMH-lkp@intel.com/reproduce)
+> ---
+>=20
+> Changes since v2:
+> - Drop flow_stats_cap entirely (Lorenzo).
+> - Keep the original airoha_ppe_get_num_stats_entries() checks (Lorenzo).
+> - Guard airoha_fe_clear() with sram_num_stats_entries > 0 (Lorenzo).
+> - Replace the error assignment and goto with a direct if check and
+>   dev_warn() (Lorenzo).
+>=20
+> Changes since v1:
+> - Explain the NPU SRAM allocation separately from the host-side DMA
+>   buffer (Lorenzo).
+> - Use airoha_fe_clear() and shorten the warning message (Lorenzo).
+> - Include hardware testing information requested by netdev-bot.
+>=20
+>  drivers/net/ethernet/airoha/airoha_npu.c  |  8 ++++++++
+>  drivers/net/ethernet/airoha/airoha_ppe.c  | 10 ++++++----
+>  drivers/net/ethernet/airoha/airoha_regs.h |  2 ++
+>  3 files changed, 16 insertions(+), 4 deletions(-)
+>=20
+> diff --git a/drivers/net/ethernet/airoha/airoha_npu.c b/drivers/net/ether=
+net/airoha/airoha_npu.c
+> index 4d3195eb00f7..b32a01dbe06b 100644
+> --- a/drivers/net/ethernet/airoha/airoha_npu.c
+> +++ b/drivers/net/ethernet/airoha/airoha_npu.c
+> @@ -450,6 +450,14 @@ static int airoha_npu_ppe_stats_setup(struct airoha_=
+npu *npu,
+>  	if (err)
+>  		goto out;
+> =20
+> +	/* The firmware reports success with a zero address when its SRAM
+> +	 * pool has no room left for the counters.
+> +	 */
+> +	if (!ppe_data->stats_info.npu_stats_addr) {
+> +		err =3D -ENOSPC;
+> +		goto out;
+> +	}
+> +
+>  	npu->stats =3D devm_ioremap(npu->dev,
+>  				  ppe_data->stats_info.npu_stats_addr,
+>  				  size);
+> diff --git a/drivers/net/ethernet/airoha/airoha_ppe.c b/drivers/net/ether=
+net/airoha/airoha_ppe.c
+> index 92611802801e..74ac3791cb63 100644
+> --- a/drivers/net/ethernet/airoha/airoha_ppe.c
+> +++ b/drivers/net/ethernet/airoha/airoha_ppe.c
+> @@ -144,6 +144,9 @@ static void airoha_ppe_hw_init(struct airoha_ppe *ppe)
+>  	sram_ppe_num_data_entries =3D
+>  		PPE_RAM_NUM_ENTRIES_SHIFT(sram_ppe_num_data_entries);
+> =20
+> +	if (sram_num_stats_entries > 0)
+> +		airoha_fe_clear(eth, PSE_FC_CFG, PSE_PORT6_SHARE_DIS);
+> +
+>  	for (i =3D 0; i < eth->soc->num_ppe; i++) {
+>  		airoha_fe_wr(eth, REG_PPE_TB_BASE(i),
+>  			     ppe->foe_dma + sram_tb_size);
+> @@ -1454,10 +1457,9 @@ static int airoha_ppe_offload_setup(struct airoha_=
+eth *eth)
+> =20
+>  	ppe_num_stats_entries =3D airoha_ppe_get_total_num_stats_entries(ppe);
+>  	if (ppe_num_stats_entries > 0) {
+> -		err =3D npu->ops.ppe_init_stats(npu, ppe->foe_stats_dma,
+> -					      ppe_num_stats_entries);
+> -		if (err)
+> -			goto error_npu_put;
+> +		if (npu->ops.ppe_init_stats(npu, ppe->foe_stats_dma,
+> +					    ppe_num_stats_entries))
+> +			dev_warn(eth->dev, "NPU refused flow stats\n");
+>  	}
+> =20
+>  	airoha_ppe_hw_init(ppe);
+> diff --git a/drivers/net/ethernet/airoha/airoha_regs.h b/drivers/net/ethe=
+rnet/airoha/airoha_regs.h
+> index 442b48c9b991..aee06c058586 100644
+> --- a/drivers/net/ethernet/airoha/airoha_regs.h
+> +++ b/drivers/net/ethernet/airoha/airoha_regs.h
+> @@ -72,6 +72,8 @@
+>  #define PSE_CFG_OQ_RSV_MASK		GENMASK(13, 0)
+> =20
+>  #define PSE_FQ_CFG			0x008c
+> +#define PSE_FC_CFG			0x0098
+> +#define PSE_PORT6_SHARE_DIS		BIT(22)
+>  #define PSE_FQ_LIMIT_MASK		GENMASK(14, 0)
+> =20
+>  #define REG_FE_PSE_BUF_SET		0x0090
+> --=20
+> 2.43.0
+>=20
 
-If you fix the issue in a separate patch/commit (i.e. not just a new version of
-the same patch/commit), kindly add following tags
-| Reported-by: kernel test robot <lkp@intel.com>
-| Closes: https://lore.kernel.org/oe-kbuild-all/202610151259.WmaEeHMH-lkp@intel.com/
+--as81oyFgOPbUaC9b
+Content-Type: application/pgp-signature; name=signature.asc
 
-All warnings (new ones prefixed by >>):
+-----BEGIN PGP SIGNATURE-----
 
->> drivers/net/phy/mediatek/airoha-ge-soc.c:1522:3: warning: variable 'shared' is uninitialized when used here [-Wuninitialized]
-    1522 |                 shared->phydev_p0 = phydev;
-         |                 ^~~~~~
-   drivers/net/phy/mediatek/airoha-ge-soc.c:1501:37: note: initialize the variable 'shared' to silence this warning
-    1501 |         struct airoha_socphy_shared *shared;
-         |                                            ^
-         |                                             = NULL
-   1 warning generated.
+iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCatCESAAKCRA6cBh0uS2t
+rM+IAP9ikDHBBKnIbhaPOyfL3BDcnLXD91dFbc2vkrCv0RzncQEAo+k88MojIK0p
+bkxd6hs4y7q3pCPiAxtvnW5InsrHnQI=
+=UXx2
+-----END PGP SIGNATURE-----
 
-
-vim +/shared +1522 drivers/net/phy/mediatek/airoha-ge-soc.c
-
-  1498	
-  1499	static int an7581_phy_probe(struct phy_device *phydev)
-  1500	{
-  1501		struct airoha_socphy_shared *shared;
-  1502		struct mtk_socphy_priv *priv;
-  1503		struct pinctrl *pinctrl;
-  1504		int ret;
-  1505	
-  1506		/* Toggle pinctrl to enable PHY LED */
-  1507		pinctrl = devm_pinctrl_get_select(&phydev->mdio.dev, "gbe-led");
-  1508		if (IS_ERR(pinctrl))
-  1509			dev_err(&phydev->mdio.bus->dev,
-  1510				"Failed to setup PHY LED pinctrl\n");
-  1511	
-  1512		ret = devm_phy_package_join(&phydev->mdio.dev, phydev, 0,
-  1513					    sizeof(struct airoha_socphy_shared));
-  1514		if (ret)
-  1515			return ret;
-  1516	
-  1517		priv = devm_kzalloc(&phydev->mdio.dev, sizeof(*priv), GFP_KERNEL);
-  1518		if (!priv)
-  1519			return -ENOMEM;
-  1520	
-  1521		if (phydev->mdio.addr == AIROHA_DEFAULT_PORT0_ADDR)
-> 1522			shared->phydev_p0 = phydev;
-  1523	
-  1524		phydev->priv = priv;
-  1525	
-  1526		return 0;
-  1527	}
-  1528	
-
---
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
+--as81oyFgOPbUaC9b--
 
