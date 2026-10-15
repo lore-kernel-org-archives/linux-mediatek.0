@@ -4,67 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DFDF0CC6B33
-	for <linux-mediatek@archiver.kernel.org>; Thu, 15 Oct 2026 14:45:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7C50BCC6B33
+	for <linux-mediatek@archiver.kernel.org>; Thu, 15 Oct 2026 15:10:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Cu+kqaxp2LTtL66kVYg1eFWIE3LmRxniGoxkUb1pV6Q=; b=Nwqq76K6GpHiblKsui4MROpXXP
-	TkRac1LGXwtpfuPb/xrlpFkTn1+eMYQwvogEkwU1UsN4iyFpiTplPZB8N/1tj/JdZiEkd5iBGg+zm
-	S4QU3cuzDNssGK52ClhYNMS4SAY5c5bqmL8/JOa/z9po5Dz6z2ZdkgvAdQc5vl0PQJIXHEAPpvUEp
-	aROsSVtt/www1V7aShj9nwlrN7WuGc9odBo4oQC2v7PnaM23n0iA0QQKXs3TW7M+IHxbww5ZDa1VE
-	kNBuqK07cjgZU+7FD3cYeO2qfwzHog2FzVzsvNwOnttm4aU1FCtDxc5EyjawaCBFtg5RsKmyeds5A
-	Ce+mHFvg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=bjuxcVNkrpGx/wj0HdomDPX683PeD8aNSzaXEvZNzqE=; b=gHiEPsYnpeXCD0o8weAIGYbcoD
+	XpsN/8GKjNC92kksfmK13k/Wv02kYwignj4COR98boQUfBmtim7UmHLDX6CQCgcVbP1zoxKjugxep
+	BnFsMcqbbPxwnIRNcBQVfBw+JWbhsJLVqvLhNssBe7rKfe6sUvqf2TmNpU3I5PYiq+Ou4qVLLKrUQ
+	A7AlgFS8A7HHYf310YZ9GLMkcBm79uonYkGPXlGXlXZ0sHrtXeiPqEt/1cwi7gORj+kM0ODWP8Boq
+	bOqDvhg4c4x7K0iUc/tUezWsOCkPtfk5lBhZz7PF/bydvh/5h+VYeCTVBGv3boMvE1yNrc+LFE+he
+	5V1ZMKAQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xHMiA-00000000Qid-1H8d;
-	Thu, 15 Oct 2026 14:45:38 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1xHN6F-00000000Wig-1Kis;
+	Thu, 15 Oct 2026 15:10:31 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xHMi6-00000000Qi9-2IKM;
-	Thu, 15 Oct 2026 14:45:36 +0000
+	id 1xHN6D-00000000Wi8-3uUH;
+	Thu, 15 Oct 2026 15:10:29 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id EEA4E439EE;
-	Thu, 15 Oct 2026 14:45:33 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 304AC1F000C4;
-	Thu, 15 Oct 2026 14:45:30 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 6E2A7403B8;
+	Thu, 15 Oct 2026 15:10:29 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id EAC3A1F000C5;
+	Thu, 15 Oct 2026 15:10:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1792075533;
-	bh=Cu+kqaxp2LTtL66kVYg1eFWIE3LmRxniGoxkUb1pV6Q=;
-	h=From:To:Cc:In-Reply-To:References:Subject:Date;
-	b=A8KDxOcVlxsVPVeUTb9z6c3kNCv2Dr1lrWDr9l40cOoWUXL1Aa9evg1lXL0HZO/Zz
-	 WJ4G1FmtHGdIq/yYXMZfJZqNjbt9NMUpVkN/vtR4Mzvfp5GKzKyrwAvEA453Qd7RpW
-	 wP99QRrUSELooIlXaxd1eJvNM5QC1IenKNGjpIg+zB2LT2WeunlLmM1UJXSCo5WA7b
-	 tyATQpPi99r6EB7JJg8bBX4cwJ1lBgWXeHKfDPeFIj7696IzdLwoN8rt3vtje0v0Gd
-	 +YNvLWNOlpLLsoSztfgUpWU3yPeS6wL7TT0rhUUVmx10YQEsGxxMH8vU7g+oNU15gg
-	 PK543lonFLSyA==
-From: Lee Jones <lee@kernel.org>
-To: Sen Chu <sen.chu@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, 
- Macpaul Lin <macpaul.lin@mediatek.com>, Lee Jones <lee@kernel.org>, 
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Eddie Huang <eddie.huang@mediatek.com>, 
- Alexandre Belloni <alexandre.belloni@bootlin.com>, 
- Ryan Brue <ryanbrue.dev@gmail.com>
-Cc: linux-pm@vger.kernel.org, mfd@lists.linux.dev, 
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
- linux-rtc@vger.kernel.org
-In-Reply-To: <20260917-rbrue-suez-upstreaming-mt6397-rtc-nvmem-v1-1-558b8f95cfbc@gmail.com>
-References: <20260917-rbrue-suez-upstreaming-mt6397-rtc-nvmem-v1-1-558b8f95cfbc@gmail.com>
-Subject: Re: (subset) [PATCH 1/2] dt-bindings: mfd: mediatek: mt6397:
- describe the RTC's nvmem layout
-Message-Id: <179207552993.2025354.8082190784295988343.b4-ty@b4>
-Date: Thu, 15 Oct 2026 15:45:29 +0100
+	s=k20260515; t=1792077029;
+	bh=bjuxcVNkrpGx/wj0HdomDPX683PeD8aNSzaXEvZNzqE=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To;
+	b=C0SiRam/v5sF8z2A7JVUrDJQeex3O3UCt8+Te1bdfLjW5z0az5Y7Aonu723Xb5Jzx
+	 f2y/evPdcMvF6XSZ9OoXagy6JOyW2hx7VQYx+yEnMZeR4EWtKtwZ8DKeS1ZV306DCa
+	 BLMGmH9YuSHKPxtxWESzgShD94o3yTCcM/K75SJK8F4gJ6uZvj10Qo85FVJOzfDfcI
+	 Z754EzS0emuAdR1JWWppEp0BubbQdL/ux2YQqUw8y7JLzC/C2DgGZz+4je573kR8U/
+	 a1arCEq+7kD5m/F547xVUXNS3tPP83MuG4/cgDcqkg9Gu3MdbyyuVyDrCL3CyieQ+5
+	 PqzOHVMEYK5PQ==
+Date: Thu, 15 Oct 2026 10:10:26 -0500
+From: "Rob Herring (Arm)" <robh@kernel.org>
+To: "Rob Herring (Arm)" <robh@kernel.org>
+Cc: linux-kernel@vger.kernel.org, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	devicetree@vger.kernel.org,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Conor Dooley <conor+dt@kernel.org>,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH v2] dt-bindings: power: Convert mediatek,mt2701-scpsys to
+ DT schema
+Message-ID: <179207702584.621839.15589697887509592009.robh@kernel.org>
+References: <20260928222552.1118609-1-robh@kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
-X-Mailer: b4 0.16-dev-ad80c
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20260928222552.1118609-1-robh@kernel.org>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,25 +73,27 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Thu, 17 Sep 2026 23:57:46 -0500, Ryan Brue wrote:
-> Four of the MT6397 RTC's alarm registers use only their low bits; the
-> high byte of each is storage the clock and the alarm don't touch.
-> MediaTek's documentation names them RTC_NEW_SPARE0 to RTC_NEW_SPARE3 and
-> assigns the first to a fuel gauge, which is what a battery driver reads
-> at boot so that the reported capacity does not jump across a reboot.
+
+On Mon, 28 Sep 2026 17:25:51 -0500, Rob Herring (Arm) wrote:
+> Convert the mediatek,mt2701-scpsys binding to DT schema. The mt6735 and
+> mt6765 don't exist anywhere. The mt8183 is covered by
+> mediatek,mt8195-scpsys.yaml schema. With those dropped, the clock-names
+> are trimmed to drop mm-*, isp-*, cam-*, and venc_lt. The venc_lt and
+> mfg_2d supplies are dropped as well.
 > 
-> They sit in the RTC's always-on domain, so the driver can offer them as
-> a battery-backed nvmem provider. Allow a board to lay cells out over
-> them.
+> Assisted-by: LLM
+> Signed-off-by: Rob Herring (Arm) <robh@kernel.org>
+> ---
+> v2:
+>  - Add per compatible clocks/clock-names constraints
+> ---
+>  .../power/mediatek,mt2701-scpsys.yaml         | 184 ++++++++++++++++++
+>  .../bindings/soc/mediatek/scpsys.txt          |  79 --------
+>  2 files changed, 184 insertions(+), 79 deletions(-)
+>  create mode 100644 Documentation/devicetree/bindings/power/mediatek,mt2701-scpsys.yaml
+>  delete mode 100644 Documentation/devicetree/bindings/soc/mediatek/scpsys.txt
 > 
-> [...]
 
 Applied, thanks!
-
-[1/2] dt-bindings: mfd: mediatek: mt6397: describe the RTC's nvmem layout
-      commit: 3606288af5e8c09a14ab5b19e121feec75296354
-
---
-Lee Jones [李琼斯]
 
 
