@@ -4,110 +4,97 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2CF2FCC6B3A
-	for <linux-mediatek@archiver.kernel.org>; Thu, 15 Oct 2026 13:48:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 38E87CC6B3A
+	for <linux-mediatek@archiver.kernel.org>; Thu, 15 Oct 2026 14:04:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=0zsThSPhIE6QGWwQEvDK4me/jRV2aNmYqF2LqA0tXlY=; b=Bj+ehwhF1HNqG3bRzqPapS80ok
-	geCceFZaBhw7ePpjfEh7aMwB2IabQ7xybtX2MN8Jjq8nu3YlebYV9hBvS1ffDufyruLtN6F6Sp86s
-	+678OtfsiJo1++i1TInCSxxOuarVUy42hsYHBvDtIXnoCAJA4WhqIJxix0U1AjIfBFOiUU/3f4ssg
-	tdlAXFqARK/FJHecY4siqZzFpPqIdTb8dXVn6p+tmQl3FS9PVO9DaPVWrPi8AFLGX/VLt5MrFTPhp
-	o1ETdWNxMbIxKg9iVsumhBLA0DIIyXTk/TSHGfvE69p6q8xX06P/JcHG9R3V6SMDYWeJbJ5HBe/dJ
-	86E8diVg==;
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=ECSIoPsbBe7MVS/DDfDiHhRGxqZFQJYHVqA1SbJwU1E=; b=2UgWjF/MyPSVIiTAnkiSDHTeDv
+	XQTa4iKRymWdnIzvurHLiB8qzBKUTAIg7UcCfUP10YK6FZsI31Od7EGAYY9ZUy8mp2j3NM77W/dRM
+	bzAmWff2UM9l/QxNevlBaShQeyQh/sYsLwjqI6/oz1OZGhaiiCg9rHk1o+cI0J84Y+XygooPOpFkZ
+	FIb+aRjXahVrmvrNeYawjz8J7u04FrFSBFjHmMu+P0iRcHbDXE8a42kck16sT/aJq7/Iuu96KXzrp
+	rF8rhpbDnWoQ97tzqtdE5osVnc6ascsKbFukHALPNo3CyJtzSXj9ddITAHUsDUXgtNulWA3Gf8arp
+	FLwUjM0g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xHLoQ-00000000I9G-3oWH;
-	Thu, 15 Oct 2026 13:48:02 +0000
-Received: from mail-yw1-x1130.google.com ([2607:f8b0:4864:20::1130])
+	id 1xHM40-00000000Jud-0rBo;
+	Thu, 15 Oct 2026 14:04:08 +0000
+Received: from mail-lf1-x12b.google.com ([2a00:1450:4864:20::12b])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xHLoN-00000000I84-2UjH
+	id 1xHM3x-00000000JtN-0tz9
 	for linux-mediatek@lists.infradead.org;
-	Thu, 15 Oct 2026 13:48:01 +0000
-Received: by mail-yw1-x1130.google.com with SMTP id 00721157ae682-8b0d91601bdso4543637b3.1
-        for <linux-mediatek@lists.infradead.org>; Thu, 15 Oct 2026 06:47:58 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1792072078; cv=none;
-        d=google.com; s=arc-20260327;
-        b=TmtBdpyPMOkoJPFcOxRnTiQ0zOzy1fXx7lJbLNJsxhhCpwlBmScb8T5HVhMPuY2p3W
-         aPuITmEW4Wv63xyWgraN8pp5JJbwgvaTTQysUCp++mcnr9U0gBHDRURqU/wDmNarBI2i
-         TEphybt+K+uW5GMyOIY4UvUrcEGH2ts1dKm04YoTagX8hgRexMoRA1WCdotx6+nFJSRP
-         naJwdPdGMQVrcrRdPuYk0kLlM7i/UUsovIZnQvLPFSdl+d9AYQpoLqOyW9MTKyr8ZW1T
-         M+UVkAsJ9BCn3LWsVkmNLiqCp1pygGBsAQmbbfv6VTzwl5OB3IqF3WpH03BPBC4YEUGQ
-         Z3eQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20260327;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=0zsThSPhIE6QGWwQEvDK4me/jRV2aNmYqF2LqA0tXlY=;
-        fh=6VxLZU5hIa7kHrHPp6djRYzenvIDaJkp6QVPuXweGTA=;
-        b=ThQtjbqult4pZzH1XIyqwE++GrhwlWO+k+NpeS9MVQPVlVfBknehJSPcrY4b7XiA+b
-         nS+wHPXX1NlMQR2gqfuma/izURsHrVMk5jcMPjyRJlYzFoboA8kRDIuJ3FiFE2+MR1Bn
-         6ZnBHcZfcjSyXk5kh1uMHXykZWW2M2ke1PDTx4jILnA4dCKnmUfO/D1ODdy4pAj1KTJL
-         W7BAiSfWfzhJtd62WmuqKBMTo8y6rlWYWgvKeWLWvA23Q+UgIK3CjBI+4ZQQx80JrVEJ
-         fn0AX8gaCn1CRQJk8YMevZD1un6nl8WGyyn8jkMCaQJaAE1by1Bq7GXp31G9o11dpX7l
-         WMTQ==;
-        darn=lists.infradead.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
+	Thu, 15 Oct 2026 14:04:07 +0000
+Received: by mail-lf1-x12b.google.com with SMTP id 2adb3069b0e04-5bcce71205eso468814e87.2
+        for <linux-mediatek@lists.infradead.org>; Thu, 15 Oct 2026 07:04:03 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1792072078; x=1792676878; darn=lists.infradead.org;
-        h=content-transfer-encoding:content-type:cc:to:subject:message-id
-         :date:from:in-reply-to:references:mime-version:from:to:cc:subject
-         :date:message-id:reply-to:content-type;
-        bh=0zsThSPhIE6QGWwQEvDK4me/jRV2aNmYqF2LqA0tXlY=;
-        b=ovdRxKuyBDVa/4wDpARz5wWIvDHkUlq8UdXUdrkmFgKvk01rTalE7d5VgvWN7kTXqd
-         8roN8XoiZ5fgcwMXBs8hjcbkteQGDQ/y2KYVwQUVZ4utdVN1Q8hX3MkE98bVbQmNKDoN
-         Cj0BEFpW/WEv1PfgoKs2DBWCP8Bn1hkWg/Lgg9ecZqPwKl3VbkZWaKD/k6Kl9pwpRtNP
-         SW08X4uPHp/0FjDOjpbGFaH9BCccXbX8N4XQpld4H6n1cJPO79M6e56oZ8TP93Tnr4kb
-         bs9lC1ahsAm/FpogzSRCeGC2sPUzMETjrZ14ig83wC6yoXbAhUeQQjcpkMVpI+o9is3x
-         fyEA==
+        d=gmail.com; s=20251104; t=1792073042; x=1792677842; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
+        bh=ECSIoPsbBe7MVS/DDfDiHhRGxqZFQJYHVqA1SbJwU1E=;
+        b=h5tDw3sNa2EKjy/rQNEAmTzxQP7HEhHAlQ4YiU/TlB66VB67Iu+UhJkuHFULPn/1uG
+         6QQ8fEFMIGxMr75cr90V+O5gL42FY5wG3dbQw0e4DQZgIQrHgGrAEkJg5TB2j2cP9Fig
+         NyT4qfi3Pxe/Qdr2pi6jcMUpSfUUX29/3ZxiVwoepp0ZVNQ3tEGKubdVwB7PUN/1lbsw
+         KC6RqRoPc9+lwbQ5cT8RAq/jjRo/cZhhyvxzD92u96QC9Qz6DzGTJPurocbCO1mXIx6X
+         zoD7NmKZ3g8WMd9/UgE+ZxidK/9gGsyj/Jk0J9TI8V28WQ89WjgguJ3v8w/LkGcxE/mX
+         R5PA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1792072078; x=1792676878;
-        h=content-transfer-encoding:content-type:cc:to:subject:message-id
-         :date:from:in-reply-to:references:mime-version:x-gm-gg
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
-         :content-type;
-        bh=0zsThSPhIE6QGWwQEvDK4me/jRV2aNmYqF2LqA0tXlY=;
-        b=QzMJ0z5bNWIzuLY64LL160szvm4cuoO+AGixWj8/tAY9cuSj9GMARiugi0PhLtoKFD
-         I9s9I+cGXzk7Z4yEWg9HNv3CgA/Q8XD4KfwSaq68YgT+p2tEjvv6d7ezDcozp9W0vbCJ
-         tP1L7Vktlcvz7zxR5qyIBmHgy1zuR76vqpN1B+GlxM6aBEEys4y00xDRibdy3A08qLTb
-         jVN4aKu4nIp8Knq0+u0hauuASMy36T4HRLXrBsHlKTDKE1d2LkXP/xSft49+R4WOBcIJ
-         Nc9y6Yx/INiUv5cfbX7h9LEGSh7oCAGVH8cXl/7BIRmNBsD4bytgLr0H9JXzUQRlFfHD
-         W3eA==
-X-Forwarded-Encrypted: i=1; AKwUvBwE0UDlAnOedNne01wcOHJqn5A/g3pn81oaH3w/UTvpS+0DLVlB3PhJpHYytLJXZM6/tU2X7/0eGr7M1kpV/g==@lists.infradead.org
-X-Gm-Message-State: AFq9FYKWwukl+UD7Ibf1VF2uzffM9sX9WEF8zeIfBPWYTryor4kt1WkL
-	4XuyxF09x8oOiNXZ+lY9sgFrl16syXtJT7sOIEs6Tt4hvrTguIOb8pcBcsk2vaavCG8OedzXt7l
-	4nSM6YUarf/QzOey0AxXDcRDJbeZPuLZbfVwto7/nxA==
-X-Gm-Gg: AYBFou3dgTTzCkGQCnKHQ+nLNQmF05CZbUgQVDqyRVbOxKUlbRgY+QDQIz5FSSxpxLt
-	SnHNmLLP3FdxO/Ls1spIgyMqYp/4YFyT9B3ELJobDPFPYhItXpkYSWrHvvfL2n5GXuYQtgbsJ57
-	X5ZFawrmdTElcOG0PJMLNVQVoGbmqWrl0YqEiiWTWJbnhLnZ6M5ceNGWENJ/+hxPo0k9MUgMVgX
-	a6DNS0PmLMNhwMyonkLLCwoePtwzjAPBnXaMa0ko3x4qR49JRQOrwxrNDZZPZiDtG+aw+geII/X
-	ogbguUdiX3IEdHXnDKdqSUraJXH6/MyPNnNOGseti1M/rkc+fDwV9a6hbEEiAaGoRpeUFJh+ovP
-	vfFzauHEuOzsl2KOQYEk1tH0+zX3jFxyr8+Ym2xI=
-X-Received: by 2002:a05:690c:e694:10b0:8ae:b617:712d with SMTP id
- 00721157ae682-8b0e2c154cemr221067b3.13.1792072077811; Thu, 15 Oct 2026
- 06:47:57 -0700 (PDT)
+        d=1e100.net; s=20260707; t=1792073042; x=1792677842;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to:content-type;
+        bh=ECSIoPsbBe7MVS/DDfDiHhRGxqZFQJYHVqA1SbJwU1E=;
+        b=OBnS/JKpo6ZPwoRzo8tgCScyU2Y49PHVHC0foII1G7GdHJFX5grv9ztOcfS+40TAZ4
+         DYfJnVQGFjoS70Z9Pu4SN33yanQKhmHpj2zVJU6IcIg5fH+wcO1UGdKCuHGvUtP7ke5l
+         QLFuLH/XvPR17PVodN4vVTeq/eXZslWwEXW5NNeT+LCQrqw/6FWikn5FIs0j/O8oh0Vm
+         XR3Kke66mH/u53yp29j62/eMq4Qu0Qs7B2cFt/plRXGB+vLB1V2Wz4jDJrBkII4bKZPh
+         f2bqs8LqCzlgAzbaTicz0neOva3kzauvZEdaL0IlLG7l7ZaSNOCMPxZtO0uAvQfdHor9
+         b9Ww==
+X-Forwarded-Encrypted: i=1; AKwUvByJwZLmflHFJmEAR4ITtyOw1+CPQr+YJFQ2zDg3I0d0kORPipXrKwluaeJ1n40MajB3ZNGYlZ7bGDhdoUFc1Q==@lists.infradead.org
+X-Gm-Message-State: AFq9FYL3t3ylyoozrum1FSZDZeER9DzrXpSv9dP6NUbVenpOCgzvzlO/
+	fO2+YGg5TmYr1VwlBnv4zv4hsy2ugcpOC1UOHwfOqpBo6UGy1EquwP0c
+X-Gm-Gg: AYBFou1tZp0nPfHeyCWaOGgSc9QJPDT+Ht9kREikOYDYmBUODGhaWivJL0lYpaaivOL
+	MjbtDmMf7yJ6DA2gKOybyKzhAufmmTla+LKi/g3ulZz9mV4lDYdFM2SHbenVNL/I/lClqp4MK1O
+	TwLjQotzucWNNM43+iSxNZwxQL6iMqA7V0ebazvw3BFCIfVJT6H8jqLxBi8w37zuukni/xGmJg0
+	ZtahLLNO6KtnpcSRLI+vxI3yLDPKQLkVL1lefMeXG87TKiggiLZuIyNm03EH1ZEwvProNiDPGpU
+	OHvaAMc41djdgqWNmWTrKSaRQV2JRFFvlNLWQz/WODNwlxnTIHEE5X1mWvAldIr+VTjyyy4KXBC
+	h/0BgdLb+DIbWpLBdk0uz/qIBYlXvQDVTzks++ycYWDDOWnT2u5I9HjefeP6rVpifzNU88+MXRG
+	trev827lpruM1mHmM7/Mvkl2WJfihYzbHXPi4VI1OZ6bQ/0MKDQbbEihqqIUUlgx48punl3QO0U
+	0Y4XftvMQaKC6AjtX8SobC0s5sjRyG9FVrDta3rbw0zGMDNIXctDSop95A5L3LVWNc=
+X-Received: by 2002:a05:6512:3c9f:b0:5bc:f871:2810 with SMTP id 2adb3069b0e04-5bcf8712b1bmr4822198e87.5.1792073040655;
+        Thu, 15 Oct 2026 07:04:00 -0700 (PDT)
+Received: from thomas-precision3591.paris.inria.fr (wifi-pro-83-149.paris.inria.fr. [128.93.83.149])
+        by smtp.googlemail.com with ESMTPSA id ffacd0b85a97d-48defca3fd0sm8412267f8f.15.2026.10.15.07.03.59
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 15 Oct 2026 07:03:59 -0700 (PDT)
+From: Thomas Fourier <fourier.thomas@gmail.com>
+To: 
+Cc: Thomas Fourier <fourier.thomas@gmail.com>,
+	Felix Fietkau <nbd@nbd.name>,
+	Lorenzo Bianconi <lorenzo@kernel.org>,
+	Andrew Lunn <andrew+netdev@lunn.ch>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@kernel.org>,
+	Jakub Kicinski <kuba@kernel.org>,
+	Paolo Abeni <pabeni@redhat.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Sujuan Chen <sujuan.chen@mediatek.com>,
+	netdev@vger.kernel.org (open list:MEDIATEK ETHERNET DRIVER),
+	linux-kernel@vger.kernel.org (open list:ARM/Mediatek SoC support),
+	linux-arm-kernel@lists.infradead.org (moderated list:ARM/Mediatek SoC support),
+	linux-mediatek@lists.infradead.org (moderated list:ARM/Mediatek SoC support)
+Subject: [PATCH net-next] net: ethernet: mtk_wed: Fix dma_unmap_single() size
+Date: Thu, 15 Oct 2026 16:01:09 +0200
+Message-ID: <20261015140110.41988-2-fourier.thomas@gmail.com>
+X-Mailer: git-send-email 2.53.0
 MIME-Version: 1.0
-References: <20261015081450.1241194-1-chris.lu@mediatek.com>
-In-Reply-To: <20261015081450.1241194-1-chris.lu@mediatek.com>
-From: Luiz Augusto von Dentz <luiz.dentz@gmail.com>
-Date: Thu, 15 Oct 2026 09:47:44 -0400
-X-Gm-Features: AclHuK-9IwK4gtIgFJ0IOoJ2ujxMQ8YcnWXIl-i3b10cUaiVlWQ4WrWnE6daL6c
-Message-ID: <CABBYNZKaRo1SLa33mWwxE0Vp+3Wd=tJpvTFru-q8uraysdw4Qw@mail.gmail.com>
-Subject: Re: [PATCH v2 0/3] Bluetooth: btmtk: fix ISO data reception
-To: Chris Lu <chris.lu@mediatek.com>
-Cc: Marcel Holtmann <marcel@holtmann.org>, Johan Hedberg <johan.hedberg@gmail.com>, 
-	Hao Qin <hao.qin@mediatek.com>, Wenlong Tian <ot_wenlong.tian@mediatek.com>, 
-	Sean Wang <sean.wang@mediatek.com>, Will Lee <will-cy.Lee@mediatek.com>, 
-	SS Wu <ss.wu@mediatek.com>, linux-bluetooth <linux-bluetooth@vger.kernel.org>, 
-	linux-kernel <linux-kernel@vger.kernel.org>, 
-	linux-mediatek <linux-mediatek@lists.infradead.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261015_064759_643840_70E788BC 
-X-CRM114-Status: GOOD (  20.98  )
+X-CRM114-CacheID: sfid-20261015_070405_269184_E5CFA69A 
+X-CRM114-Status: GOOD (  10.85  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -122,65 +109,43 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Chris,
+In mtk_wed_wo_queue_refill(), the entry->buf is DMA mapped with length
+q->buf_size which saved in entry->len. However, in mtk_wed_wo_dequeue(),
+the same buffer is DMA unmapped with length buf_len which is set to
+SKB_WITH_OVERHEAD(q->buf_size).
 
-On Thu, Oct 15, 2026 at 4:15=E2=80=AFAM Chris Lu <chris.lu@mediatek.com> wr=
-ote:
->
-> Three fixes for ISO data handling in btmtk, found while debugging LE Audi=
-o
-> on MT7925. The code is shared by every MediaTek USB controller that
-> supports ISO data, so none of this is specific to that part.
->
-> Patch 1 drops the zero padding that the ISO interrupt IN endpoint appends
-> to each transfer instead of parsing it as ISO packets. The driver turns
-> that padding into handle 0 packets with a Data_Total_Length of zero and
-> hands them to the stack, which is what fills the HCI log with malformed
-> ISO frames, and a valid SDU is lost whenever handle 0 belongs to a live
-> CIS/BIS.
->
-> Patch 2 bounds Data_Total_Length by hdev->iso_mtu. The existing
-> skb_tailroom() test enforces no protocol limit, because the skb head
-> allocation is rounded up to a kmalloc bucket and skb_tailroom() reports
-> the bucket size rather than what was requested.
->
-> Patch 3 updates the mt79xx ISO data transmission setting.
->
-> The three hunks do not overlap, so any prefix of the series applies on it=
-s
-> own.
->
-> Changes in v2:
-> - Patch 2 reworked and retitled. v1 only enlarged the receive skb, which
->   turned out to be a no-op, and added no bound at all. v2 bounds
->   Data_Total_Length by hdev->iso_mtu and sizes the skb from the same
->   value.
-> - Patch 3 added.
-> - Patch 1 unchanged.
->
-> Based on bluetooth-next.
->
-> Chris Lu (3):
->   Bluetooth: btmtk: drop zero-length ISO packets from endpoint padding
->   Bluetooth: btmtk: bound the ISO payload length by the controller's MTU
->   Bluetooth: btmtk: derive the firmware ISO setting from
->     MTK_ISO_THRESHOLD
->
->  drivers/bluetooth/btmtk.c | 37 ++++++++++++++++++++++++++++++++-----
->  1 file changed, 32 insertions(+), 5 deletions(-)
->
-> --
-> 2.45.2
->
+Change the size to q->buf_size.
 
-In case you haven't seen it sashiko flagged a problem with this set:
+This was discovered with static analysis and was only compile-tested.
 
-https://sashiko.dev/#/patchset/20261015081450.1241194-1-chris.lu%40mediatek=
-.com
+Fixes: 799684448e3e ("net: ethernet: mtk_wed: introduce wed wo support")
+Signed-off-by: Thomas Fourier <fourier.thomas@gmail.com>
+---
+ drivers/net/ethernet/mediatek/mtk_wed_wo.c | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
 
-Unsuccessful packets shall still be delivered to the host, this is
-used, for example, to implement Packet Loss Concealment (PLC) logic.
+diff --git a/drivers/net/ethernet/mediatek/mtk_wed_wo.c b/drivers/net/ethernet/mediatek/mtk_wed_wo.c
+index 7063c78bd35f..4f720ec53e20 100644
+--- a/drivers/net/ethernet/mediatek/mtk_wed_wo.c
++++ b/drivers/net/ethernet/mediatek/mtk_wed_wo.c
+@@ -99,7 +99,6 @@ static void *
+ mtk_wed_wo_dequeue(struct mtk_wed_wo *wo, struct mtk_wed_wo_queue *q, u32 *len,
+ 		   bool flush)
+ {
+-	int buf_len = SKB_WITH_OVERHEAD(q->buf_size);
+ 	int index = (q->tail + 1) % q->n_desc;
+ 	struct mtk_wed_wo_queue_entry *entry;
+ 	struct mtk_wed_wo_queue_desc *desc;
+@@ -123,7 +122,7 @@ mtk_wed_wo_dequeue(struct mtk_wed_wo *wo, struct mtk_wed_wo_queue *q, u32 *len,
+ 		*len = FIELD_GET(MTK_WED_WO_CTL_SD_LEN0,
+ 				 le32_to_cpu(READ_ONCE(desc->ctrl)));
+ 	if (buf)
+-		dma_unmap_single(wo->hw->dev, entry->addr, buf_len,
++		dma_unmap_single(wo->hw->dev, entry->addr, q->buf_size,
+ 				 DMA_FROM_DEVICE);
+ 	entry->buf = NULL;
+ 
+-- 
+2.53.0
 
---=20
-Luiz Augusto von Dentz
 
