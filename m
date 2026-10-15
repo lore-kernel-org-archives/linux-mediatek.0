@@ -4,97 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 38E87CC6B3A
-	for <linux-mediatek@archiver.kernel.org>; Thu, 15 Oct 2026 14:04:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D99B2CC6B34
+	for <linux-mediatek@archiver.kernel.org>; Thu, 15 Oct 2026 14:17:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-Type:MIME-Version:Message-ID:Subject:Cc:From:To:Date:Reply-To:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=ECSIoPsbBe7MVS/DDfDiHhRGxqZFQJYHVqA1SbJwU1E=; b=2UgWjF/MyPSVIiTAnkiSDHTeDv
-	XQTa4iKRymWdnIzvurHLiB8qzBKUTAIg7UcCfUP10YK6FZsI31Od7EGAYY9ZUy8mp2j3NM77W/dRM
-	bzAmWff2UM9l/QxNevlBaShQeyQh/sYsLwjqI6/oz1OZGhaiiCg9rHk1o+cI0J84Y+XygooPOpFkZ
-	FIb+aRjXahVrmvrNeYawjz8J7u04FrFSBFjHmMu+P0iRcHbDXE8a42kck16sT/aJq7/Iuu96KXzrp
-	rF8rhpbDnWoQ97tzqtdE5osVnc6ascsKbFukHALPNo3CyJtzSXj9ddITAHUsDUXgtNulWA3Gf8arp
-	FLwUjM0g==;
+	bh=wsNMQzzgvlWtCoxTSYtt92+3Z52KFEZCq2UStG5/12g=; b=Ua4KTDqLCyC33v0wTnnlNanWG5
+	C7mKV0YxBsy+lnP72M25KSGsU9pFSZUVCHpLj52aFH8etlS49NltUUl5BMGGInJdpGBOlk7rjU3c5
+	2sqW/++GqLHKQm6Qnq0c6FDXxmfT5pJBbJpBGXKGALldLvO6ZY02zEpOtPLhb7d8cw7SI2XwEsn7J
+	fnqbMCUZJhAIOx+b246hqosjpECSDUhK/7z2joq0R0cOR99ewOWdU/CnvYo7pwmRiB+i6uQyx+cDA
+	vx2jB3tpWeh3MdU7loVZ5jq8yZGOu3Q/9LnZUOc6rFpcIIVBeNL421Hw8RnOPFbWQhLqYYvc0DWWG
+	xfPbxtYw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xHM40-00000000Jud-0rBo;
-	Thu, 15 Oct 2026 14:04:08 +0000
-Received: from mail-lf1-x12b.google.com ([2a00:1450:4864:20::12b])
+	id 1xHMHK-00000000LVg-2jru;
+	Thu, 15 Oct 2026 14:17:54 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xHM3x-00000000JtN-0tz9
+	id 1xHMHI-00000000LVX-1n4d
+	for linux-mediatek@bombadil.infradead.org;
+	Thu, 15 Oct 2026 14:17:53 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
+	:MIME-Version:Message-ID:Subject:Cc:From:To:Date:Sender:Reply-To:Content-ID:
+	Content-Description:In-Reply-To:References;
+	bh=wsNMQzzgvlWtCoxTSYtt92+3Z52KFEZCq2UStG5/12g=; b=Vsv1jryEFvdUVOvbXZIG9WpVCV
+	szeu135rOhSqbMfNP65CGTBY5vqYfcpMGARA4kAUTWwwGd0oD8ThBTg6glPT18Jemi91siFaFZH9M
+	1f6kMON18NvmzfqGke43VkjbheAN8rzfWd8NCcMjAo6rwxdm7f/1vz/iwxVCFo4Hs8DLUPTsyErQn
+	3WrBzYg3VoB+dKzOux+kRvJ+3qNcKeiyuLAmT/E6c76NxxKbkNVjfkeUiiP0WYHUW/QZczDFENmbY
+	c3lK+87ZW9atYc4/pQPwqXnHbs5GA+8uzhS1XbTd6qF/3727JKdhqVA/3z29RHEbZ1+ypLk1h4p+m
+	snMafckw==;
+Received: from mail-4319.protonmail.ch ([185.70.43.19])
+	by desiato.infradead.org with esmtps (Exim 4.99.5 #2 (Red Hat Linux))
+	id 1xHMHF-00000000Sdu-0ich
 	for linux-mediatek@lists.infradead.org;
-	Thu, 15 Oct 2026 14:04:07 +0000
-Received: by mail-lf1-x12b.google.com with SMTP id 2adb3069b0e04-5bcce71205eso468814e87.2
-        for <linux-mediatek@lists.infradead.org>; Thu, 15 Oct 2026 07:04:03 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1792073042; x=1792677842; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
-        bh=ECSIoPsbBe7MVS/DDfDiHhRGxqZFQJYHVqA1SbJwU1E=;
-        b=h5tDw3sNa2EKjy/rQNEAmTzxQP7HEhHAlQ4YiU/TlB66VB67Iu+UhJkuHFULPn/1uG
-         6QQ8fEFMIGxMr75cr90V+O5gL42FY5wG3dbQw0e4DQZgIQrHgGrAEkJg5TB2j2cP9Fig
-         NyT4qfi3Pxe/Qdr2pi6jcMUpSfUUX29/3ZxiVwoepp0ZVNQ3tEGKubdVwB7PUN/1lbsw
-         KC6RqRoPc9+lwbQ5cT8RAq/jjRo/cZhhyvxzD92u96QC9Qz6DzGTJPurocbCO1mXIx6X
-         zoD7NmKZ3g8WMd9/UgE+ZxidK/9gGsyj/Jk0J9TI8V28WQ89WjgguJ3v8w/LkGcxE/mX
-         R5PA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1792073042; x=1792677842;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to:content-type;
-        bh=ECSIoPsbBe7MVS/DDfDiHhRGxqZFQJYHVqA1SbJwU1E=;
-        b=OBnS/JKpo6ZPwoRzo8tgCScyU2Y49PHVHC0foII1G7GdHJFX5grv9ztOcfS+40TAZ4
-         DYfJnVQGFjoS70Z9Pu4SN33yanQKhmHpj2zVJU6IcIg5fH+wcO1UGdKCuHGvUtP7ke5l
-         QLFuLH/XvPR17PVodN4vVTeq/eXZslWwEXW5NNeT+LCQrqw/6FWikn5FIs0j/O8oh0Vm
-         XR3Kke66mH/u53yp29j62/eMq4Qu0Qs7B2cFt/plRXGB+vLB1V2Wz4jDJrBkII4bKZPh
-         f2bqs8LqCzlgAzbaTicz0neOva3kzauvZEdaL0IlLG7l7ZaSNOCMPxZtO0uAvQfdHor9
-         b9Ww==
-X-Forwarded-Encrypted: i=1; AKwUvByJwZLmflHFJmEAR4ITtyOw1+CPQr+YJFQ2zDg3I0d0kORPipXrKwluaeJ1n40MajB3ZNGYlZ7bGDhdoUFc1Q==@lists.infradead.org
-X-Gm-Message-State: AFq9FYL3t3ylyoozrum1FSZDZeER9DzrXpSv9dP6NUbVenpOCgzvzlO/
-	fO2+YGg5TmYr1VwlBnv4zv4hsy2ugcpOC1UOHwfOqpBo6UGy1EquwP0c
-X-Gm-Gg: AYBFou1tZp0nPfHeyCWaOGgSc9QJPDT+Ht9kREikOYDYmBUODGhaWivJL0lYpaaivOL
-	MjbtDmMf7yJ6DA2gKOybyKzhAufmmTla+LKi/g3ulZz9mV4lDYdFM2SHbenVNL/I/lClqp4MK1O
-	TwLjQotzucWNNM43+iSxNZwxQL6iMqA7V0ebazvw3BFCIfVJT6H8jqLxBi8w37zuukni/xGmJg0
-	ZtahLLNO6KtnpcSRLI+vxI3yLDPKQLkVL1lefMeXG87TKiggiLZuIyNm03EH1ZEwvProNiDPGpU
-	OHvaAMc41djdgqWNmWTrKSaRQV2JRFFvlNLWQz/WODNwlxnTIHEE5X1mWvAldIr+VTjyyy4KXBC
-	h/0BgdLb+DIbWpLBdk0uz/qIBYlXvQDVTzks++ycYWDDOWnT2u5I9HjefeP6rVpifzNU88+MXRG
-	trev827lpruM1mHmM7/Mvkl2WJfihYzbHXPi4VI1OZ6bQ/0MKDQbbEihqqIUUlgx48punl3QO0U
-	0Y4XftvMQaKC6AjtX8SobC0s5sjRyG9FVrDta3rbw0zGMDNIXctDSop95A5L3LVWNc=
-X-Received: by 2002:a05:6512:3c9f:b0:5bc:f871:2810 with SMTP id 2adb3069b0e04-5bcf8712b1bmr4822198e87.5.1792073040655;
-        Thu, 15 Oct 2026 07:04:00 -0700 (PDT)
-Received: from thomas-precision3591.paris.inria.fr (wifi-pro-83-149.paris.inria.fr. [128.93.83.149])
-        by smtp.googlemail.com with ESMTPSA id ffacd0b85a97d-48defca3fd0sm8412267f8f.15.2026.10.15.07.03.59
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 15 Oct 2026 07:03:59 -0700 (PDT)
-From: Thomas Fourier <fourier.thomas@gmail.com>
-To: 
-Cc: Thomas Fourier <fourier.thomas@gmail.com>,
-	Felix Fietkau <nbd@nbd.name>,
-	Lorenzo Bianconi <lorenzo@kernel.org>,
-	Andrew Lunn <andrew+netdev@lunn.ch>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@kernel.org>,
-	Jakub Kicinski <kuba@kernel.org>,
-	Paolo Abeni <pabeni@redhat.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Sujuan Chen <sujuan.chen@mediatek.com>,
-	netdev@vger.kernel.org (open list:MEDIATEK ETHERNET DRIVER),
-	linux-kernel@vger.kernel.org (open list:ARM/Mediatek SoC support),
-	linux-arm-kernel@lists.infradead.org (moderated list:ARM/Mediatek SoC support),
-	linux-mediatek@lists.infradead.org (moderated list:ARM/Mediatek SoC support)
-Subject: [PATCH net-next] net: ethernet: mtk_wed: Fix dma_unmap_single() size
-Date: Thu, 15 Oct 2026 16:01:09 +0200
-Message-ID: <20261015140110.41988-2-fourier.thomas@gmail.com>
-X-Mailer: git-send-email 2.53.0
+	Thu, 15 Oct 2026 14:17:51 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=proton.me;
+	s=protonmail2; t=1792073858; x=1792333058;
+	bh=wsNMQzzgvlWtCoxTSYtt92+3Z52KFEZCq2UStG5/12g=;
+	h=Date:To:From:Cc:Subject:Message-ID:Feedback-ID:From:To:Cc:Date:
+	 Subject:Reply-To:Feedback-ID:Message-ID:BIMI-Selector;
+	b=unDSlsRoK4loq+SmgwC6Barc2X8GzYt2NMnfqJz5kE+cT74DQ50crF7nKrJkeQXQC
+	 Ka8IvhJZbDeDGQEIsNmiDEYJaT9S78bDF+bm+rNSGCreyyOjWpeF3m+zCLBTtgta2N
+	 AKZNQx5gCAtREBpBeOuIyk3ISZBW3hParige9oZ/2HGHjcBy1mW4kRoYhv9xEWbR3D
+	 4/qgFNUehXPnu146PAKGRVcS3N7WbqaqlXx0FhA5iGj6BWxa24ksCnkbS5U3TKgomg
+	 8VrEaumZAlhV/NCXpTplaFpznj/nBsvwxPTunDJh9D7l0ARBFC88tPNN/bePFfYUaP
+	 5aysCwnFCVjnQ==
+Date: Thu, 15 Oct 2026 14:17:35 +0000
+To: "linux-bluetooth@vger.kernel.org" <linux-bluetooth@vger.kernel.org>
+From: overfion <overfion@proton.me>
+Cc: Sean Wang <sean.wang@mediatek.com>, Chris Lu <chris.lu@mediatek.com>, Luiz Augusto von Dentz <luiz.dentz@gmail.com>, "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>
+Subject: [BUG] btmtk: MT7925 (0e8d:e025) firmware ASSERT in sys_log_interface_emi.c #1185 during A2DP streaming, regression since fw 20260605184935
+Message-ID: <aIInPl7g7dGa1ySgQwHytJmvMjs9REEFRg37v2cHI_wVJB7-yXeJyH6OHIGGkvJVxlmNBdBLmu5mh15kd16JgHUVeBktDvoaSBPelTrpXLU=@proton.me>
+Feedback-ID: 45576258:user:proton
+X-Pm-Message-ID: 0504454dd0ae47e7df29a6c9e60ef3e9e0b502df
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261015_070405_269184_E5CFA69A 
-X-CRM114-Status: GOOD (  10.85  )
+X-CRM114-CacheID: sfid-20261015_151749_508871_B5522BB0 
+X-CRM114-Status: UNSURE (   4.75  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -109,43 +82,65 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-In mtk_wed_wo_queue_refill(), the entry->buf is DMA mapped with length
-q->buf_size which saved in entry->len. However, in mtk_wed_wo_dequeue(),
-the same buffer is DMA unmapped with length buf_len which is set to
-SKB_WITH_OVERHEAD(q->buf_size).
+Hi,
 
-Change the size to q->buf_size.
+The MT7925 Bluetooth firmware on my laptop asserts several times per day
+while streaming A2DP to a headset. btmtk collects a coredump, btusb
+resets the USB device and the controller re-enumerates as a new hciN,
+dropping the headset.
 
-This was discovered with static analysis and was only compile-tested.
+Hardware:  Lenovo ThinkPad P14s Gen 6 AMD (21QMS1HT00), BIOS R2XET42W (1.22=
+) 2026-09-07
+Chip:      MT7925, BT over USB 0e8d:e025 (WiFi on PCIe 14c3:7925, mt7925e)
+BT fw:     BT_RAM_CODE_MT7925_1_1_hdr.bin, Build Time 20260813113236
+           (t-neptune-main-mt7925-2249-MT7925_E1_ASIC_ROM_RAM_CE_2249_CCN16=
+-20260813112803)
+Kernels:   reproduced on Arch linux, linux-lts, linux-zen and CachyOS linux
+           kernels, 7.0.12 through 7.2.9
+Userspace: bluez 5.87, pipewire + wireplumber
+Headset:   Logitech G435, A2DP sink, AAC codec
+WiFi:      connected on 5 GHz (channel 48)
 
-Fixes: 799684448e3e ("net: ethernet: mtk_wed: introduce wed wo support")
-Signed-off-by: Thomas Fourier <fourier.thomas@gmail.com>
----
- drivers/net/ethernet/mediatek/mtk_wed_wo.c | 3 +--
- 1 file changed, 1 insertion(+), 2 deletions(-)
+Firmware assert (identical in every dump I collected):
 
-diff --git a/drivers/net/ethernet/mediatek/mtk_wed_wo.c b/drivers/net/ethernet/mediatek/mtk_wed_wo.c
-index 7063c78bd35f..4f720ec53e20 100644
---- a/drivers/net/ethernet/mediatek/mtk_wed_wo.c
-+++ b/drivers/net/ethernet/mediatek/mtk_wed_wo.c
-@@ -99,7 +99,6 @@ static void *
- mtk_wed_wo_dequeue(struct mtk_wed_wo *wo, struct mtk_wed_wo_queue *q, u32 *len,
- 		   bool flush)
- {
--	int buf_len = SKB_WITH_OVERHEAD(q->buf_size);
- 	int index = (q->tail + 1) % q->n_desc;
- 	struct mtk_wed_wo_queue_entry *entry;
- 	struct mtk_wed_wo_queue_desc *desc;
-@@ -123,7 +122,7 @@ mtk_wed_wo_dequeue(struct mtk_wed_wo *wo, struct mtk_wed_wo_queue *q, u32 *len,
- 		*len = FIELD_GET(MTK_WED_WO_CTL_SD_LEN0,
- 				 le32_to_cpu(READ_ONCE(desc->ctrl)));
- 	if (buf)
--		dma_unmap_single(wo->hw->dev, entry->addr, buf_len,
-+		dma_unmap_single(wo->hw->dev, entry->addr, q->buf_size,
- 				 DMA_FROM_DEVICE);
- 	entry->buf = NULL;
- 
--- 
-2.53.0
+  <ASSERT> ../bluetooth/system/debug/sys_log_interface_emi.c #1185 - 0, 0x6=
+454,
+  0x1010707, 0xFF150001, BTSYS, id=3D0x0 idle, isr=3D0x943CA8, irq=3D0x3,
+  lr=3D0x960AC8, asr_t=3D103074398
+  ;etype:ASSERT, sp=3D0x2215A30, lp=3D0x960AC8
+  ;exp_main: jump from cos_assert
+
+A btmon capture shows no HCI commands from the host in the 316 seconds
+before the assert, only A2DP ACL data (dlen ~530-555, every ~21 ms) and
+Number of Completed Packets events. The assert fires in ISR context in
+the firmware's log/EMI path, not in response to a host command.
+
+Kernel side:
+
+  Bluetooth: hci0: Mediatek coredump end
+  usb 3-5.1: reset high-speed USB device number 5 using xhci_hcd
+  Bluetooth: hci1: HW/SW Version: 0x00000000, Build Time: 20260813113236
+  Bluetooth: hci1: Device setup in 1750899 usecs
+
+Sometimes it asserts again seconds after recovery, followed by a
+command timeout and another reset:
+
+  Bluetooth: hci1: Mediatek coredump end
+  Bluetooth: hci1: Opcode 0x2039 failed: -110
+  usb 3-5.1: reset high-speed USB device number 5 using xhci_hcd
+
+Regression: no failures on fw 20260414153243 (5 weeks, same headset and
+usage). Failures started the day 20260605184935 was installed and
+continue on 20260813113236.
+
+Already tried, no effect: btusb.enable_autosuspend=3D0, mt7925e
+disable_aspm=3D1, WiFi power save off.
+
+I have 2 devcoredumps (~1 MB each) and the btmon capture (12 MB). I can
+send them off-list, test firmware builds or patches, or collect more
+traces.
+
+Thanks,
+fion
 
 
