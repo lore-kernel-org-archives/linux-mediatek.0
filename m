@@ -4,61 +4,114 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7C50BCC6B33
-	for <linux-mediatek@archiver.kernel.org>; Thu, 15 Oct 2026 15:10:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B2426CC6B38
+	for <linux-mediatek@archiver.kernel.org>; Thu, 15 Oct 2026 17:24:39 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=bjuxcVNkrpGx/wj0HdomDPX683PeD8aNSzaXEvZNzqE=; b=gHiEPsYnpeXCD0o8weAIGYbcoD
-	XpsN/8GKjNC92kksfmK13k/Wv02kYwignj4COR98boQUfBmtim7UmHLDX6CQCgcVbP1zoxKjugxep
-	BnFsMcqbbPxwnIRNcBQVfBw+JWbhsJLVqvLhNssBe7rKfe6sUvqf2TmNpU3I5PYiq+Ou4qVLLKrUQ
-	A7AlgFS8A7HHYf310YZ9GLMkcBm79uonYkGPXlGXlXZ0sHrtXeiPqEt/1cwi7gORj+kM0ODWP8Boq
-	bOqDvhg4c4x7K0iUc/tUezWsOCkPtfk5lBhZz7PF/bydvh/5h+VYeCTVBGv3boMvE1yNrc+LFE+he
-	5V1ZMKAQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=QJ7AwNTLGK0qJotpIP2/0w2WrkX374IVRj5Elec6DwE=; b=RbDhrNPJmCX8zi7GPC0T98byaV
+	MsX+S/oz4xM4wjFDmsdKUp3KV7b7OfCVFQnfadBmUCWDNDU5I6E+AXZIQNu7/l4Nx4udUq73jOKRe
+	OqH6yTJUDooVlKxHXk26MPj1mAyKI8WHcSi8jYXGqsWGL2Urh3EKXxLFaNhKiLL3BXSq/y69zBLEz
+	Uvvr/NoiJi1Sa1Jroz4x9wOcxwGZP/rMW6LSfAvb/pfG3sTT/kFBzQt5PRBgYPnF1QmhynXFO2BLI
+	myJbx28aFTPDXpbalTn6IeYapLpNNdrsaaxe/coKlAjh0MPnWwSMnSxP/gIUsm8Xhm9FNO8N0Xwx0
+	gZ2569wg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xHN6F-00000000Wig-1Kis;
-	Thu, 15 Oct 2026 15:10:31 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1xHPBy-00000000z4V-2ZS0;
+	Thu, 15 Oct 2026 17:24:34 +0000
+Received: from mail-yx1-xb129.google.com ([2607:f8b0:4864:20::b129])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xHN6D-00000000Wi8-3uUH;
-	Thu, 15 Oct 2026 15:10:29 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id 6E2A7403B8;
-	Thu, 15 Oct 2026 15:10:29 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id EAC3A1F000C5;
-	Thu, 15 Oct 2026 15:10:28 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1792077029;
-	bh=bjuxcVNkrpGx/wj0HdomDPX683PeD8aNSzaXEvZNzqE=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=C0SiRam/v5sF8z2A7JVUrDJQeex3O3UCt8+Te1bdfLjW5z0az5Y7Aonu723Xb5Jzx
-	 f2y/evPdcMvF6XSZ9OoXagy6JOyW2hx7VQYx+yEnMZeR4EWtKtwZ8DKeS1ZV306DCa
-	 BLMGmH9YuSHKPxtxWESzgShD94o3yTCcM/K75SJK8F4gJ6uZvj10Qo85FVJOzfDfcI
-	 Z754EzS0emuAdR1JWWppEp0BubbQdL/ux2YQqUw8y7JLzC/C2DgGZz+4je573kR8U/
-	 a1arCEq+7kD5m/F547xVUXNS3tPP83MuG4/cgDcqkg9Gu3MdbyyuVyDrCL3CyieQ+5
-	 PqzOHVMEYK5PQ==
-Date: Thu, 15 Oct 2026 10:10:26 -0500
-From: "Rob Herring (Arm)" <robh@kernel.org>
-To: "Rob Herring (Arm)" <robh@kernel.org>
-Cc: linux-kernel@vger.kernel.org, Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	devicetree@vger.kernel.org,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Conor Dooley <conor+dt@kernel.org>,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH v2] dt-bindings: power: Convert mediatek,mt2701-scpsys to
- DT schema
-Message-ID: <179207702584.621839.15589697887509592009.robh@kernel.org>
-References: <20260928222552.1118609-1-robh@kernel.org>
+	id 1xHPBv-00000000z3m-33Cs
+	for linux-mediatek@lists.infradead.org;
+	Thu, 15 Oct 2026 17:24:32 +0000
+Received: by mail-yx1-xb129.google.com with SMTP id 956f58d0204a3-676804a3a22so5597600d50.1
+        for <linux-mediatek@lists.infradead.org>; Thu, 15 Oct 2026 10:24:30 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1792085070; cv=none;
+        d=google.com; s=arc-20260327;
+        b=FfL42K5kRBehT7UKhclhjVy3rbpAaJaE0rD+TjLWMHg4mh/Ie9EESHQyJ4hKzhBLRr
+         8N0XCx610yiVLoKE1NniBpbDtn0XrZS+dxrKDqcAXwJYhoz0OQe037SqVOqbMfjCR4Cj
+         jtxx0Z+ppnwfT9sNYpKjy6cvn5own9R/N1U/tTH3oaLdakCJVefPoWsf8WmlV5Cizoyy
+         bbkYHwCVna4ZhTBPbTxjOCHrlfJH13k3W8hcEwhuFPC5kHIuDpuunjqVDXxLpt8UvpvR
+         /PclVSEbTnVHfjNL+W2oWw5ZKlvouXA0oM8vW0mXFsOQFsW9T29NEt4n64QeSbSW7fOB
+         SbIw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20260327;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=QJ7AwNTLGK0qJotpIP2/0w2WrkX374IVRj5Elec6DwE=;
+        fh=3jdEdQakXgjsSu/YoXnAwhx1h+27ZgwrwxrfBJxZVVE=;
+        b=sHRGdhzFzmNExzoYH9SC5AsyvZUDOdpHQX3piKnp61B5LX48Fn1jbLzNKGNQ4OloNt
+         RQDDeikVWXVzOmXCZWs6QyS40jNGLKbm8rOFZuo/i9JE1oWFaDVt34ppIhc6Bl03wigL
+         OFL9zEVu++RQsOODTZbLBVtwK2zzobY0jYyB49eeKk59mieH5n42v9xWB+3CV3JWG/zS
+         Zghk0Z40L9FCW+r1nKExtuTMXleVF/m49qjl93KcQhsCbdzTbvon9bJfH8SeIt+0yRj4
+         fxPpeROalmI4zv+oRGjY5dqCsa+u8v/BNQCmL3c2LWoBrf864dsMoOZeKpMp7w1GV5/B
+         sCkw==;
+        darn=lists.infradead.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20251104; t=1792085070; x=1792689870; darn=lists.infradead.org;
+        h=content-transfer-encoding:content-type:cc:to:subject:message-id
+         :date:from:in-reply-to:references:mime-version:from:to:cc:subject
+         :date:message-id:reply-to:content-type;
+        bh=QJ7AwNTLGK0qJotpIP2/0w2WrkX374IVRj5Elec6DwE=;
+        b=Ti7HYClGUbBNkexVgTX/6TJsIAlmBmHlkARL07hPSs0eABZnorzKqpHlzQzodyhpHf
+         /RomfWsO0gidt85B5H1yxDSc6J5GuwneclFiZw4uMt5snAv26kUo6cbd+QwJNB/RwSSX
+         5d1y/veij/E9M51H8HRvD5t4wCDZLlMiHFtZ9uGhf0+SP4lRfTuOXGXk82uX23oWW91f
+         o77KIgm4e1xIxlPplepxMjaU4mRLVUQyTy/hxka8Uh5qu6lLX/fR5L6biAN4tFgIw/Nz
+         C88vx1KLo6R4miPWoVjA4crRNOrcR+HdgQRihjBIJD44vFwJsDMtJd032kIttp7qGCSS
+         5vyw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20260707; t=1792085070; x=1792689870;
+        h=content-transfer-encoding:content-type:cc:to:subject:message-id
+         :date:from:in-reply-to:references:mime-version:x-gm-gg
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+         :content-type;
+        bh=QJ7AwNTLGK0qJotpIP2/0w2WrkX374IVRj5Elec6DwE=;
+        b=rad/3ObYmJCBFQUouWrwMUh4fSW0XhzZvNTZnjtNL3d30lW3mDkIt38eM8ZMsLsnAK
+         bf9BeD3w1DcFhsQ9xy+EIKQqhRvJZ7Tu7B8nIJBfPXDQqlIFo76V9QlqIZuxUYFZnbMe
+         Hzop7oJTk0Dep3gT+viKSl2dBLBQ7/eB6b0FWBMkTaJzqE97yo16wxpkaLC95JWP4HWm
+         wNg5+s/PVy855zgUJkpMPFB3dU3wHJiO0fNDlJQwr36FUyVe4RYutpppok4+iPl1UOqw
+         lgMpZwD9cpsiQN2NiceHlcd8lwHsEs+Zb1lAkV2HlI0LmkXeCvf1T/RR7Givy7G/NpAY
+         1lXQ==
+X-Forwarded-Encrypted: i=1; AKwUvBzqA5N0B4dyRbYu3IfpzgEq8ZCntNGxPgMnTgz3/VYSBLM3APk8mXHEsI2KmISrGajiWLNv09tfqgmUHYe5ew==@lists.infradead.org
+X-Gm-Message-State: AFq9FYKZ8Jds6oe7CjXbNzT5PpWPom+DSRrydvyV7h+k9wWvJPXmxs7c
+	NCFOSs088ljItM6cr6wI1UEw4qHr35xYD4HB6EpjYNWNvbi6aOmUGOckDt54kY83k8hpqNRUHbi
+	7/EPHnuE8qoychGLjnoVPNkhZoewgsmA=
+X-Gm-Gg: AYBFou1WQ0XtjZ0pBChZuftqzURUd+8EP9hm0I82drwR43LFjbU9Z2iOwPeaQ9WBJv1
+	Edaue/12+A1auyW8lsXZilJ0VGX4Kih2squ81BzELGf04wjSya9o3l20M4Ojn6DX79EZk021HuH
+	gJ6VNS1pb+IHEhYspW+Ki0Dnctx7RQ1q32TZkGU1LUZUXD3BQDyMGcRy84AF0H8wPcE/kC8bydy
+	VLWXKEBbn//nxwwFhSCpzvgi9ifJVNonmG+LWXnIaqereQkfBMioZqOE53f+pn1RA4zJMdqoHLk
+	B4UDKt5uKy928/FFlAAWNhESHIiRw1e7NWM9AU8QL5z02qKbBXn4pEVljBqOAPr3k0gAcWcQcXN
+	vZkTr1HAKov4rcepWImo=
+X-Received: by 2002:a05:690e:1689:b0:672:f272:f629 with SMTP id
+ 956f58d0204a3-6793630d90emr8360068d50.104.1792085069711; Thu, 15 Oct 2026
+ 10:24:29 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20260928222552.1118609-1-robh@kernel.org>
+References: <20260923055103.949540-1-gongtao0607@gmail.com> <10d0c5a6-98d0-45d5-a196-aa839b452172@redhat.com>
+In-Reply-To: <10d0c5a6-98d0-45d5-a196-aa839b452172@redhat.com>
+From: Tao Gong <gongtao0607@gmail.com>
+Date: Thu, 15 Oct 2026 10:24:19 -0700
+X-Gm-Features: AclHuK8ES2Kd8skfs6udor0Fpl5ne5f6cGaytsMa82tMXcwNkOjHwfvDn2lGZGA
+Message-ID: <CACmSHQse_McSbBfEiyvCCePp97Azb7a5c7q5rr3AdXncrcSfUg@mail.gmail.com>
+Subject: Re: [PATCH net v2 0/2] net: dsa: mt7530: fix trapped frame forwarding
+ and egress tagging
+To: Paolo Abeni <pabeni@redhat.com>
+Cc: netdev@vger.kernel.org, "Chester A . Unal" <chester.a.unal@arinc9.com>, 
+	Daniel Golle <daniel@makrotopia.org>, Andrew Lunn <andrew@lunn.ch>, 
+	Vladimir Oltean <olteanv@gmail.com>, "David S . Miller" <davem@davemloft.net>, 
+	Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	Lorenzo Bianconi <lorenzo@kernel.org>, =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>, 
+	Florian Fainelli <florian.fainelli@broadcom.com>, linux-kernel@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20261015_102431_815603_F4ED7AB1 
+X-CRM114-Status: GOOD (  17.44  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,27 +126,55 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
+Sorry, I overlooked the existing fix, commit 4cb3cd670b2a ("net: dsa:
+mt7530: untag VLAN-aware bridge PVID"). I saw the issue on real
+hardware (AN7581) running a 6.18 stable kernel, which doesn't have
+that commit. After picking it up, the issue is gone and neither patch
+is needed. Please drop this series.
 
-On Mon, 28 Sep 2026 17:25:51 -0500, Rob Herring (Arm) wrote:
-> Convert the mediatek,mt2701-scpsys binding to DT schema. The mt6735 and
-> mt6765 don't exist anywhere. The mt8183 is covered by
-> mediatek,mt8195-scpsys.yaml schema. With those dropped, the clock-names
-> are trimmed to drop mm-*, isp-*, cam-*, and venc_lt. The venc_lt and
-> mfg_2d supplies are dropped as well.
-> 
-> Assisted-by: LLM
-> Signed-off-by: Rob Herring (Arm) <robh@kernel.org>
-> ---
-> v2:
->  - Add per compatible clocks/clock-names constraints
-> ---
->  .../power/mediatek,mt2701-scpsys.yaml         | 184 ++++++++++++++++++
->  .../bindings/soc/mediatek/scpsys.txt          |  79 --------
->  2 files changed, 184 insertions(+), 79 deletions(-)
->  create mode 100644 Documentation/devicetree/bindings/power/mediatek,mt2701-scpsys.yaml
->  delete mode 100644 Documentation/devicetree/bindings/soc/mediatek/scpsys.txt
-> 
+On Tue, Sep 29, 2026 at 2:08=E2=80=AFAM Paolo Abeni <pabeni@redhat.com> wro=
+te:
+>
+> On 9/23/26 07:51, Tao Gong wrote:
+> > This series resolves two issues in the MT7530 DSA switch driver prevent=
+ing
+> > trapped link-local control frames (such as STP BPDUs) from reaching the=
+ CPU
+> > host when bridge VLAN filtering is enabled:
+> >
+> > 1. Commit 3ac85bcfd404 ("net: dsa: mt7530: preserve VLAN tags on trappe=
+d
+> >     link-local frames") set MT7530_VLAN_EG_DISABLED to preserve VLAN ta=
+gs,
+> >     but in hardware this disables the per-packet override and causes
+> >     trapped frames to follow the CPU port's active VLAN table (VAWD2) r=
+ule.
+> >     When bridge VLAN filtering is active, the CPU port is in stack mode=
+,
+> >     causing incoming untagged BPDUs (01:80:C2:00:00:00) to be egressed =
+with
+> >     a VLAN tag, which userspace STP daemons (such as ustpd) and the ker=
+nel
+> >     bridge drop. MT7530_VLAN_EG_CONSISTENT correctly preserves wire sta=
+te
+> >     (untagged frames stay untagged, tagged frames stay tagged).
+> >
+> > 2. On Airoha EN7581 and AN7583 switch IP, setting MT7531_CFC (0x04)
+> >     CPU_PMAP alone is insufficient; the switch MAC forwarding control
+> >     (MT753X_MFC, 0x10) must also have CPU_EN and CPU_PORT configured fo=
+r
+> >     trapped frames to exit to the CPU conduit.
+> It's unclear to me if you are observing the issue with real H/W or if the
+> patches comes from LLMs or static analysis. Please clarify such info
+> in the next iteration.
+>
+> Also clashiko feedback looks relevant, please have a look. You should
+> address LLM's feedback proactively.
+>
+> /P
+>
 
-Applied, thanks!
 
+--=20
+~Tao
 
