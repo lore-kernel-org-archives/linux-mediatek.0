@@ -4,93 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 71909CC6B39
-	for <linux-mediatek@archiver.kernel.org>; Thu, 15 Oct 2026 08:15:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 23F57CC6B34
+	for <linux-mediatek@archiver.kernel.org>; Thu, 15 Oct 2026 08:41:34 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:CC:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=bpxjN2Rvl+YfUl0+XO3Q4bMQQ3s3XqRur7QXJlWCn4I=; b=aPr6BDZhQEqd85N80F0+h0ibI2
-	2Gt7lp0cU962CC+J0lGkgk3VIKrozVDPSEblc/vGZeTTYb/yKANgd9nRt4crK1qyl0Cf8F3X9/D6s
-	vfun98vimgSXRcqk7WTswqaOYlG2a1+lYRdPMrpYv65c+SkcOT9TsssKa0rOhSJHjJpbY4OlPKJjH
-	pW/yT9EV7YADkR7kBd/ndYeYhGnS97PCHAuHlz+tpSxWdNPURelnQbWQo+DA/Gxv2FBftulUBI/w0
-	FrVhgbB+cthq0JLx8Pqwu8FFFuV7vRloqp590sOEq3kZfGs4W6ZBVI18F2TCak98QmQqDk81CPtyL
-	pZOKMIgA==;
+	bh=1TG6EaszwqcVuJqwSi/vXz+tyLYa/MdcQh36mn2UMKc=; b=ismyMHkqosyjiz2oLtG4eKOtrd
+	RCX0ufGWyE98bE1w5v4te2krOdu3x2AJBI0FZXfbDUhlgMF6JkS/Y1fuDp1dTRm5t7YR7DZFqc9vW
+	doQMjfs7+3DWTj8L5hQqiFA7uKs1NdTlVzRmzxUKiZ2G+Xy9bffU/ouqTz8arK1fDKATk9OvxEE0s
+	X4Ze3diR4WJZ3gCCtnYXNSiVmt4mgtVsxFObzo8/LTeMTswrRbTo3hqR/h783b8cNucjUdlRAm/WQ
+	zl/iUaycFcO5jRZE8WOIXhszaMAiFdlkFHtYYkq8KhBARKnaxgCc/i8siUvz+aF/VEkrOhs5I996K
+	dKlURVRg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xHGcP-0000000H7o8-1JSM;
-	Thu, 15 Oct 2026 08:15:17 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1xHH1o-0000000HAsp-2wQh;
+	Thu, 15 Oct 2026 08:41:32 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xHGcL-0000000H7m9-1Czv
-	for linux-mediatek@bombadil.infradead.org;
-	Thu, 15 Oct 2026 08:15:15 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Type:Content-Transfer-Encoding
-	:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From:
-	Sender:Reply-To:Content-ID:Content-Description;
-	bh=bpxjN2Rvl+YfUl0+XO3Q4bMQQ3s3XqRur7QXJlWCn4I=; b=AaDDxE+KXlkM/jqiQuUeat+t+f
-	N1J6+nHs19kqLVfrizr+6AH1l0labPuTXA0c2b5+YkkCHYN8vMR/6thFNqTLtEw5TWjtp7uaIMuwu
-	DTWZ8OT0q9Gf7umKGvlVBwOLDPc/7EZyKenTcGCrzKmwGXxFE8lNJdl9rxj0orsZERNE0ncp9Xn/a
-	yiCz/aeV8dO0pydi/x1Nz5Ato/0PBM4CLEJwrxuOfR85GLvTEBbIylhlbgAnzkaJiqMToR5cGNsHD
-	mS63uUjEs8gg074rCcfC1RsRgOgP4Rj9skwkpbU6qH/JSuShi9DBIsSJ7sGDOFzP+qvUoW/vLkMCP
-	PlY0I4xA==;
-Received: from [216.200.240.185] (helo=mailgw02.mediatek.com)
-	by desiato.infradead.org with esmtps (Exim 4.99.5 #2 (Red Hat Linux))
-	id 1xHGcI-000000005m6-0M53
-	for linux-mediatek@lists.infradead.org;
-	Thu, 15 Oct 2026 08:15:12 +0000
-X-UUID: 80f74e58c87011f1acbe4559397dec65-20261015
+	id 1xHH1m-0000000HAsC-1oJF;
+	Thu, 15 Oct 2026 08:41:31 +0000
+X-UUID: 34bfe3fcc87411f1acbe4559397dec65-20261015
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=bpxjN2Rvl+YfUl0+XO3Q4bMQQ3s3XqRur7QXJlWCn4I=;
-	b=YMYEH0OrzhifdsfQDWIjsrDHP7t+VtJxf9lJ9ucO4YtmZwsd/IOzv3l4TrbvB5lME2xlJHiLKsSKhHuU5Wt8cbjBEcQX/0wu9tp2YSDynYeZC+708ITl/Zr82aTwEvpEgvEbkp/e4omzDokbDwIaoyErQwYvwuRyJ8nTCxENG70=;
+	h=In-Reply-To:Content-Type:MIME-Version:References:Message-ID:Subject:CC:To:From:Date; bh=1TG6EaszwqcVuJqwSi/vXz+tyLYa/MdcQh36mn2UMKc=;
+	b=H4Q1odMDUk2qt2xD9nhbmqkfcVfTZLq8ldMvRk4ES8cVVZ+rOk/uX7LTrXvF3qac/EnFzIqhtu7Y8VoWRr4qjqCYKcCdz5WGZdHWfdOiF3xlOcxaIZBsD65xE3R5KuBRXrJuUlGwiURXJGi1zcWYkKRkP7/vpoPY7FZXlFuTeUI=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.20,REQID:5c185468-274d-42b4-ac4d-e53bad975ec3,IP:0,U
+X-CID-O-INFO: VERSION:1.3.20,REQID:af1974a2-557b-4f3c-a770-875b17c6b3ae,IP:0,U
 	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
 	release,TS:0
-X-CID-META: VersionHash:291e20b,CLOUDID:106ae3fc-d852-4ec7-93a7-9872a6d9e58d,B
-	ulkID:nil,BulkQuantity:0,SF:81|82|102|836|865|888|898,TC:-5,Content:0|15|5
-	0|99,EDM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:-1,COL:0,OSI:0,
-	OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-META: VersionHash:291e20b,CLOUDID:2d4b6095-3103-4fdb-b79c-08de0e281a5d,B
+	ulkID:nil,BulkQuantity:0,SF:80|81|82|83|102|836|865|888|898,TC:-5,Content:
+	0|15|50|99,EDM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:-1,COL:0,
+	OSI:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
 X-CID-BVR: 2,SSN|SDN
 X-CID-BAS: 2,SSN|SDN,0,_
 X-CID-FACTOR: TF_CID_SPAM_SNR
 X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: 80f74e58c87011f1acbe4559397dec65-20261015
-Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw02.mediatek.com
-	(envelope-from <chris.lu@mediatek.com>)
+X-UUID: 34bfe3fcc87411f1acbe4559397dec65-20261015
+Received: from mtkmbs09n1.mediatek.inc [(172.21.101.35)] by mailgw02.mediatek.com
+	(envelope-from <zhengping.zhang@airoha.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1481101911; Thu, 15 Oct 2026 01:14:55 -0700
-Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- MTKMBS09N2.mediatek.inc (172.21.101.94) with Microsoft SMTP Server
+	with ESMTP id 468354417; Thu, 15 Oct 2026 01:41:25 -0700
+Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
+ mtkmbs13n2.mediatek.inc (172.21.101.108) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.29; Thu, 15 Oct 2026 16:14:52 +0800
-Received: from mtksitap99.mediatek.inc (10.233.130.16) by
- mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.2562.29 via Frontend Transport; Thu, 15 Oct 2026 16:14:52 +0800
-From: Chris Lu <chris.lu@mediatek.com>
-To: Marcel Holtmann <marcel@holtmann.org>, Johan Hedberg
-	<johan.hedberg@gmail.com>, Luiz Von Dentz <luiz.dentz@gmail.com>
-CC: Hao Qin <hao.qin@mediatek.com>, Wenlong Tian
-	<ot_wenlong.tian@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, Will Lee
-	<will-cy.Lee@mediatek.com>, SS Wu <ss.wu@mediatek.com>, linux-bluetooth
-	<linux-bluetooth@vger.kernel.org>, linux-kernel
-	<linux-kernel@vger.kernel.org>, linux-mediatek
-	<linux-mediatek@lists.infradead.org>, Chris Lu <chris.lu@mediatek.com>
-Subject: [PATCH v2 3/3] Bluetooth: btmtk: derive the firmware ISO setting from MTK_ISO_THRESHOLD
-Date: Thu, 15 Oct 2026 16:14:50 +0800
-Message-ID: <20261015081450.1241194-4-chris.lu@mediatek.com>
-X-Mailer: git-send-email 2.45.2
-In-Reply-To: <20261015081450.1241194-1-chris.lu@mediatek.com>
-References: <20261015081450.1241194-1-chris.lu@mediatek.com>
+ 15.2.2562.29; Thu, 15 Oct 2026 16:41:22 +0800
+Received: from mediatek.com (172.18.153.129) by mtkmbs11n2.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.2.2562.29 via Frontend
+ Transport; Thu, 15 Oct 2026 16:41:22 +0800
+Date: Thu, 15 Oct 2026 16:41:22 +0800
+From: Zhengping Zhang <zhengping.zhang@airoha.com>
+To: Daniel Pawlik <pawlik.dan@gmail.com>
+CC: <netdev@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
+	<linux-arm-kernel@lists.infradead.org>, <kuba@kernel.org>,
+	<lorenzo@kernel.org>, <nbd@nbd.name>, <sean.wang@mediatek.com>,
+	<Mark-MC.Lee@mediatek.com>, <davem@davemloft.net>, <edumazet@google.com>,
+	<pabeni@redhat.com>, <andrew+netdev@lunn.ch>, <yangshiji66@outlook.com>,
+	<upstream@airoha.com>, <szymon.datko@gmail.com>, <lei.dong@airoha.com>,
+	<ansuelsmth@gmail.com>
+Subject: Re: [PATCH v10 2/2] net: airoha: npu: use cacheline-sized buffers
+ for mailbox DMA
+Message-ID: <atCRsquzA1UxSpCc@mediatek.com>
+References: <20260820085941.380401-1-pawlik.dan@gmail.com>
+ <20260820085941.380401-2-pawlik.dan@gmail.com>
+ <CALC2AphzQ=dHOk2Yjtaw=i2euCLxo+Lk0kO50ixtYydO0yzBHA@mail.gmail.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
+Content-Type: text/plain; charset="utf-8"
+Content-Disposition: inline
+In-Reply-To: <CALC2AphzQ=dHOk2Yjtaw=i2euCLxo+Lk0kO50ixtYydO0yzBHA@mail.gmail.com>
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261015_091510_580007_63A6FC4D 
-X-CRM114-Status: GOOD (  12.49  )
+X-CRM114-CacheID: sfid-20261015_014130_487168_9F196D6F 
+X-CRM114-Status: GOOD (  20.53  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -105,50 +92,135 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The ISO data transfer size is spelled out twice: as a raw byte pair in the
-vendor command sent by btmtk_usb_isointf_init(), and as MTK_ISO_THRESHOLD
-for the padding in btmtk_isopkt_pad(). Build the command payload from the
-macro so the size is stated once, and update the setting for current
-MediaTek controllers.
+Hi Daniel,
 
-Fixes: ceac1cb0259d ("Bluetooth: btusb: mediatek: add ISO data transmission functions")
-Signed-off-by: Chris Lu <chris.lu@mediatek.com>
----
- drivers/bluetooth/btmtk.c | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+We investigated the NPU V2 address handling and confirmed that the NPU
+exposes only a 1 GiB DRAM address window.
 
-diff --git a/drivers/bluetooth/btmtk.c b/drivers/bluetooth/btmtk.c
-index 7c3fffcefdf1..9424125ce539 100644
---- a/drivers/bluetooth/btmtk.c
-+++ b/drivers/bluetooth/btmtk.c
-@@ -24,7 +24,7 @@
- #define MTK_SEC_MAP_NEED_SEND_SIZE	52
- 
- /* It is for mt79xx iso data transmission setting */
--#define MTK_ISO_THRESHOLD	264
-+#define MTK_ISO_THRESHOLD	342
- 
- struct btmtk_patch_header {
- 	u8 datetime[16];
-@@ -1347,7 +1347,7 @@ static int btmtk_submit_intr_urb(struct hci_dev *hdev, gfp_t mem_flags)
- static int btmtk_usb_isointf_init(struct hci_dev *hdev)
- {
- 	struct btmtk_data *btmtk_data = hci_get_priv(hdev);
--	u8 iso_param[2] = { 0x08, 0x01 };
-+	__le16 iso_param = cpu_to_le16(MTK_ISO_THRESHOLD);
- 	struct sk_buff *skb;
- 	int err;
- 
-@@ -1362,7 +1362,7 @@ static int btmtk_usb_isointf_init(struct hci_dev *hdev)
- 		return err;
- 	}
- 
--	skb = __hci_cmd_sync(hdev, 0xfd98, sizeof(iso_param), iso_param,
-+	skb = __hci_cmd_sync(hdev, 0xfd98, sizeof(iso_param), &iso_param,
- 			     HCI_INIT_TIMEOUT);
- 	if (IS_ERR(skb)) {
- 		bt_dev_err(hdev, "Failed to apply iso setting (%ld)", PTR_ERR(skb));
--- 
-2.45.2
+The relevant vendor definitions are:
 
+    #define DRAM_RANGE_1GB 0xbfffffff
+
+    #define DRAM_CAC_TO_UNC(x) \
+            ((x & 0x3fffffff) | 0x40000000)
+
+    #define DRAM_UNC_TO_CAC(x) \
+            ((x & 0x3fffffff) | 0x80000000)
+
+Therefore, the supported host cached DRAM range is:
+
+    0x80000000 - 0xbfffffff
+
+The corresponding NPU uncached address range is:
+
+    0x40000000 - 0x7fffffff
+
+As a result, the upper 1 GiB of a 2 GiB DRAM configuration aliases the
+lower 1 GiB from the NPU's point of view.
+
+The WLAN NPU firmware also checks the address range for packet buffers
+and TX ring addresses:
+
+    if (addr > DRAM_RANGE_1GB)
+            printf("out of available range");
+
+NPU debug output is disabled by default. To enable it for debugging,
+change the value written to REG_CR_NPU_MIB(21) from 1 to 0 in
+airoha_npu.c:
+
+-    regmap_write(npu->regmap, REG_CR_NPU_MIB(21), 1);
++    regmap_write(npu->regmap, REG_CR_NPU_MIB(21), 0);
+
+The recommended platform integration is to reserve all NPU-owned WLAN
+buffers inside the supported DRAM window. For example:
+
+    reserved-memory {
+            #address-cells = <2>;
+            #size-cells = <2>;
+            ranges;
+
+            npu_pkt: npu-pkt@8a000000 {
+                    no-map;
+                    reg = <0x0 0x8a000000 0x0 0x2c00000>;
+            };
+
+            npu_txpkt: npu-txpkt@8cc00000 {
+                    no-map;
+                    reg = <0x0 0x8cc00000 0x0 0x4000000>;
+            };
+
+            npu_txbufid: npu-txbufid@90c00000 {
+                    no-map;
+                    reg = <0x0 0x90c00000 0x0 0x6800>;
+            };
+
+            npu_ba: npu-ba@90c06800 {
+                    no-map;
+                    reg = <0x0 0x90c06800 0x0 0x200000>;
+            };
+    };
+
+The regions should then be referenced by name from the NPU device node:
+
+    npu {
+            memory-region = <&npu_pkt>,
+                            <&npu_txpkt>,
+                            <&npu_txbufid>,
+                            <&npu_ba>;
+            memory-region-names = "pkt", "tx-pkt", "tx-bufid", "ba";
+    };
+
+This reserved-memory configuration covers the NPU WLAN packet buffers,
+TX packet buffers, buffer IDs, and BA memory.
+
+It does not automatically constrain the temporary mailbox buffers
+allocated with kzalloc(). If the same NPU address-window restriction
+also applies to mailbox DMA, those buffers must be allocated from a
+low-address DMA pool or otherwise guaranteed to map to an address
+within the supported window.
+
+Best regards,
+Zhengping
+
+Wed, Sep 30, 2026 at 06:19:31PM +0200, Daniel Pawlik wrote:
+> Hi Kuba, Lorenzo, Airoha team,
+> 
+> I found a concrete lead for the unresolved cacheline patch in the vendor
+> firmware. The installed en7581_MT7996_npu_rv32.bin matches the blob in
+> linux-firmware commit 1043c0303910 by SHA-256.
+> 
+> At file offset 0x3a9c, the Wi-Fi mailbox handler converts the supplied
+> buffer address before reading the command:
+> 
+>   lui   a5,0x40000
+>   addi  a4,a5,-1
+>   and   a4,a4,a0
+>   or    a4,a4,a5
+>   lw    a1,0(a4)
+> 
+> This implements (address & 0x3fffffff) | 0x40000000. Both 0xbf6cf000
+> and 0xff6cf000 produce 0x7f6cf000. W1700K has 2 GiB of RAM starting
+> at 0x80000000; its current SWIOTLB pool starts at 0xff6cf000.
+> 
+> The handler also returns 1 (success) for an unsupported operation type
+> at file offset 0x3b4a. My earlier claim that mailbox success proved a
+> correct command read was therefore unjustified. The traces do not
+> establish a read-succeeds/write-fails limitation.
+> 
+> This suggests an address-window problem, but the NPU-side bus mapping
+> still needs confirmation. The cacheline patch avoids the observed bounce
+> path without constraining the address of future direct allocations.
+> 
+> Can Airoha confirm which host DRAM range this alias covers, and whether
+> mailbox buffers above 0xbfffffff are supported?
+> 
+> I have prepared, but not yet run, a test retaining all 2 GiB of RAM and
+> the 12-byte DMA_BIDIRECTIONAL mapping, with the SWIOTLB boot pool below
+> 0xc0000000. A successful version response through a verified bounced
+> mapping there would help distinguish the address limitation from a
+> SWIOTLB copy/cache issue.
+> 
+> Thanks,
+> Dan
+> 
 
