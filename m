@@ -4,62 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4921ECCA464
-	for <linux-mediatek@archiver.kernel.org>; Fri, 16 Oct 2026 09:19:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 76D3DCC6B38
+	for <linux-mediatek@archiver.kernel.org>; Fri, 16 Oct 2026 10:29:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Message-ID:Date
-	:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=R4WIaVmgxMJzlsaERAlBqwLuDwVcuzfSzsQMDWtKV3E=; b=LNPWEErdEtmLbVa9936MjD8fHc
-	GLyPqkiunWsZPXVOgxyLCgbeqRIKLpRuyw1A9msk9ONs/MqluaTWwu4pQTv2A8GsDOqsLawSwMQ96
-	+hQ/iT5rVwGnkivAhJTXJyhusn7fJ4/pK87OrDzkk0mqp809l12VDZk+IP/5s581fzH/QYXqRo1hb
-	bb3mjXczBbAD/4M8j8nMyxQg+hOabhT4oqsf2T5DygjJUXG3ENL8atw7/q0T8CJvX6W8KrryywHsp
-	KpkljgjcmJJHjMoqahzAF9odGuWc+o1t4OzHEEK7FhyruvV4ZecJZYTnx6S3fOUrQORHTq+FbZZeM
-	zpqif39w==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Fupo3qVQI2pxjW/yxgqOTHlZPzPsqE2ts6oU7cgw2DA=; b=FAsOmEDoyUnJsSCVPOc9DJp7pv
+	1YXkl36Z0Yq+aWjEDt1Z1ndfCjrOsyRBvD1KdAW/lJJaLEd/jixuMGnZRiUH5TifxLSel1fRGejmC
+	G77VCIKmWXuerQ45gB8+au00Rus+V+99iG9t2c5aOvKMxkuz1v6vXqfuqPt1oOtBV3b8tRm+TYr6S
+	PlnRtVdQNzLLTYsgzMNOqlZDMuPKibsyPnRtx9CHjJPgipUXYXGnhh/H8SytNeHAch/zBdPJWI2x1
+	kkvL3ESvDDAOPBGbU3DTJo3OLJGVuPFwFuGOK+g7mGmWzMPEAgIs0TfuG2o3jdf99S3tkKYFXll6q
+	ap1B4rJA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xHe5o-00000002SZA-1Hmi;
-	Fri, 16 Oct 2026 09:19:12 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1xHfBT-00000002c5V-418R;
+	Fri, 16 Oct 2026 10:29:07 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xHe5m-00000002SYu-3EMi;
-	Fri, 16 Oct 2026 09:19:10 +0000
+	id 1xHfBR-00000002c4u-2lsJ;
+	Fri, 16 Oct 2026 10:29:05 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 3A94560018;
-	Fri, 16 Oct 2026 09:19:10 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 179381F000C4;
-	Fri, 16 Oct 2026 09:19:09 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 1EF8460018;
+	Fri, 16 Oct 2026 10:29:05 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5691B1F000C4;
+	Fri, 16 Oct 2026 10:29:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1792142349;
-	bh=R4WIaVmgxMJzlsaERAlBqwLuDwVcuzfSzsQMDWtKV3E=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References;
-	b=R7mT5XDP+2oPGJhvdpCOK/511QiGEeN7bLMU3Bip4mljZXwdc3HKRiTwWMfFBmVz2
-	 9vtGszLeSkIP/MK3fmyTqmi9cKVNnR2QRVx9DbbTAMadPNqehqRznEwf6+9Sp+IJVg
-	 MpWw6qZ6dXuE8EBoHojDeqR5oZ27QVLUq3W+KuTxMJxenDFAx0PqyETroc4qYnxmwA
-	 GY1Xm+55yGbsADcEO4rubxIdYoEpU60CAaSyMnJV0Df1ApkkyJpak2t1mmfrr8EGdf
-	 At5nB8yiKDM+y9VEX9Hd6sAZwMqyXD2lsDLGrDSAtQU9mws+pJVi3bRKbJjxqKely6
-	 tbfGRUPorGlGw==
-From: netdev-bot+sinfo@kernel.org
-To: Zhi-Jun You <hujy652@gmail.com>
-Cc: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo@kernel.org>,
- Andrew Lunn <andrew+netdev@lunn.ch>, "David S. Miller" <davem@davemloft.net>,
- Eric Dumazet <edumazet@kernel.org>, Jakub Kicinski <kuba@kernel.org>,
- Paolo Abeni <pabeni@redhat.com>, Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Sujuan Chen <sujuan.chen@mediatek.com>, Rex Lu <rex.lu@mediatek.com>,
- netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH net v5 0/5] net: ethernet: mtk_wed: misc fixes
-Date: Fri, 16 Oct 2026 09:19:08 +0000
-Message-ID: <179214234859.408196.13768026652794039093@kernel.org>
-In-Reply-To: <20261016-wedfix-v5-0-8b02e78fd34f@gmail.com>
-References: <20261016-wedfix-v5-0-8b02e78fd34f@gmail.com>
-Auto-Submitted: auto-generated
+	s=k20260515; t=1792146544;
+	bh=Fupo3qVQI2pxjW/yxgqOTHlZPzPsqE2ts6oU7cgw2DA=;
+	h=From:To:Cc:In-Reply-To:References:Subject:Date;
+	b=VGPQfZVbRThd2e8iprQYEPOUs0X+ngE0wfYnIyy8UEx6+zOguaCbIiZBhtzPsjicb
+	 YsGQSs1bBQqy7bj8GCRiA7MQw9gmzRGpGN/7lfooSOh0A0HQcUxIStioTnApgg2X4X
+	 PP917JW0LTzqTasxVWsumro6ZLXivRk4imnPbYVWj1CxOCHkN99LtOhbZn1yVddTeb
+	 thfGihva+3KaTwK1XTadhCfjeMZQEdBYYxlRkyrJUX9/MV4bxLONLnq7FTOARG6285
+	 czuKceIbFBxohW+rGVP56n2fh+J3vV/KOeBWf0V6lteewshCyyH/Uw3e6JRNlvRENc
+	 sdIxKHO/FlUTQ==
+From: Mark Brown <broonie@kernel.org>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Trevor Wu <trevor.wu@mediatek.com>, 
+ Ajay Kumar Nandam <ajay.nandam@oss.qualcomm.com>, phucduc.bui@gmail.com
+Cc: Liam Girdwood <lgirdwood@gmail.com>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, Jaroslav Kysela <perex@perex.cz>, 
+ Takashi Iwai <tiwai@suse.com>, 
+ Kuninori Morimoto <kuninori.morimoto.gx@renesas.com>, 
+ cassiogabrielcontato@gmail.com, Mukesh Ojha <mukesh.ojha@oss.qualcomm.com>, 
+ Liviu Dudau <liviu.dudau@arm.com>, Haotian Zhang <vulab@iscas.ac.cn>, 
+ HariKrishna Sagala <hariconscious@gmail.com>, linux-sound@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+ linux-kernel@vger.kernel.org
+In-Reply-To: <20261014112752.683032-1-phucduc.bui@gmail.com>
+References: <20261014112752.683032-1-phucduc.bui@gmail.com>
+Subject: Re: [PATCH v3 00/16] ASoC: mediatek: mt8195: Fix clock error
+ handling
+Message-Id: <179210283368.134795.1901521604596560361.b4-ty@b4>
+Date: Thu, 15 Oct 2026 23:20:33 +0100
+MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-MIME-Version: 1.0
+X-Mailer: b4 0.17-dev
+X-Developer-Signature: v=1; a=openpgp-sha256; l=3281; i=broonie@kernel.org;
+ h=from:subject:message-id; bh=6zqTom2WlZPTwEEtyh3GxcUXytYw4YtB15LlXVi6qP8=;
+ b=owGbwMvMwCWm/754w+YLFp2Mp9WSGLIu/sm+ejBlzx6b75GzeiTOSM154fpUbf+8KVxXWHa47
+ P0soTKltaOUhUGMi0FWTJElLov7ZX3J6zV8Bxe2wcxhZQIZwsDFKQATUd7LyHBi2v1rgTuv/jLj
+ ENK4PGuj7LPGxQs2L1us9OvBwikfeOasYmTYnSs09yqjeJ6wVnQBo3O1Ypbhx+s3Q4QO3X152yh
+ J/jALAA==
+X-Developer-Key: i=broonie@kernel.org; a=openpgp;
+ fpr=3F2568AAC26998F9E813A1C5C3F436CA30F5D8EB
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,25 +86,74 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi!
+On Wed, 14 Oct 2026 18:27:35 +0700, phucduc.bui@gmail.com wrote:
+> ASoC: mediatek: mt8195: Fix clock error handling
+> 
+> From: bui duc phuc <phucduc.bui@gmail.com>
+> 
+> Hi all,
+> 
+> This series improves error handling in the MT8195 ASoC driver,
+> mainly by checking and propagating errors from clock operations.
+> 
+> [...]
 
-This is an automated message. This series looks like a fix, but its
-commit messages seem to be missing some information:
+Applied to
 
- - Whether the issue was actually triggered, or is only theoretical
-   (e.g. found by code inspection). If it was triggered please include
-   the symptoms, like the stack trace or error messages.
+   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-7.4
 
- - What hardware the change was tested on. For driver fixes please
-   mention the device (and if relevant firmware version) used for
-   testing, or say that the change was not tested on real hardware.
+Thanks!
 
-Please do not repost the series just to address the above. Instead,
-reply to this email with the missing information, so that reviewers
-can take it into account. If the series needs another revision for
-other reasons, please include the information in the commit messages
-then.
+[01/16] ASoC: mediatek: mt8195: Fix tuner clock error handling
+        https://git.kernel.org/broonie/sound/c/8e5a2eabb0d7
+[02/16] ASoC: mediatek: mt8195: Use dev_err_probe() in mt8195_afe_init_clock()
+        https://git.kernel.org/broonie/sound/c/ad1617e53609
+[03/16] ASoC: mediatek: mt8195: Fix register access clock error handling
+        https://git.kernel.org/broonie/sound/c/c23390ecf5c0
+[04/16] ASoC: mediatek: mt8195: Fix timing system clock error handling
+        https://git.kernel.org/broonie/sound/c/f18c0a8e528e
+[05/16] ASoC: mediatek: mt8195: Fix main clock error handling
+        https://git.kernel.org/broonie/sound/c/9f1b48c658ac
+[06/16] ASoC: mediatek: mt8195: Fix paired memif clock error handling
+        https://git.kernel.org/broonie/sound/c/c0ec135cf3fd
+[07/16] ASoC: mediatek: mt8195: Fix FE startup error handling
+        https://git.kernel.org/broonie/sound/c/b1db7408c8e0
+[08/16] ASoC: mediatek: mt8195: Check paired MEMIF clock enable in FE trigger
+        https://git.kernel.org/broonie/sound/c/a2ae972c75a1
+[09/16] ASoC: mediatek: mt8195: Fix runtime resume error handling
+        https://git.kernel.org/broonie/sound/c/933fbfb66488
+[10/16] ASoC: mediatek: mt8195: Remove redundant error message
+        https://git.kernel.org/broonie/sound/c/9f9ba582ac82
+[11/16] ASoC: mediatek: mt8195: Propagate IRQ lookup errors
+        https://git.kernel.org/broonie/sound/c/9d5dedb285fb
+[12/16] ASoC: mediatek: mt8195: Fix ETDM MCLK error handling
+        https://git.kernel.org/broonie/sound/c/91dce9c7eec2
+[13/16] ASoC: mediatek: mt8195: Fix ETDM startup error handling
+        https://git.kernel.org/broonie/sound/c/8e67c67f3fd2
+[14/16] ASoC: mediatek: mt8195: Fix HDMI TX startup error handling
+        https://git.kernel.org/broonie/sound/c/1d6f1785d903
+[15/16] ASoC: mediatek: mt8195: Fix ETDM probe error handling
+        https://git.kernel.org/broonie/sound/c/ca3ac9a7eec1
+[16/16] ASoC: mediatek: mt8195: Fix clock parent error handling
+        https://git.kernel.org/broonie/sound/c/a4276a80c62e
 
-The evaluation is done by an LLM so it may be wrong, if you think
-that is the case please reply and explain.
+All being well this means that it will be integrated into the linux-next
+tree (usually sometime in the next 24 hours) and sent to Linus during
+the next merge window (or sooner if it is a bug fix), however if
+problems are discovered then the patch may be dropped or reverted.
+
+You may get further e-mails resulting from automated or manual testing
+and review of the tree, please engage with people reporting problems and
+send followup patches addressing any issues that are reported if needed.
+
+If any updates are required or you are submitting further changes they
+should be sent as incremental updates against current git, existing
+patches will not be replaced.
+
+Please add any relevant lists and maintainers to the CCs when replying
+to this mail.
+
+Thanks,
+Mark
+
 
