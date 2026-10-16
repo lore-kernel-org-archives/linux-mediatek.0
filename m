@@ -4,66 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 66020CCF2CC
-	for <linux-mediatek@archiver.kernel.org>; Fri, 16 Oct 2026 12:33:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 28FE9CCF2CD
+	for <linux-mediatek@archiver.kernel.org>; Fri, 16 Oct 2026 12:33:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=s1C9diKxpqsE/iNRAA1eCcro3inoj/bahh0/u4u1u3U=; b=4J5bayZ66SWSKhVPzPH7N6s4lN
-	kxseFThgqZHhvGw+E3oLWi2YnwXmCFFEjkILRmIMthCFCJEq4M6mPyH765uqHqe835IuMohdCzX0D
-	kVB7XAPqj2WKGmw7avUxNm/bFCBkW3lqThJlv6gdARU1R7nB6I3AVc22oeUS0Pb+f4+md3LYkb+41
-	STBAd3+Mw63t69aHxijoUgOhe0pl5begW2kXVmi6QWbWpTcBh5+wbZA1IxT/Sy/0nAfuNFixPkfNy
-	V9IF0w8o6T0WriJZdxVZNKWeHHtauxp0W4N2s6O27HepVVImEx9P8DjGIa1fHFefqIaWP4S4St9Em
-	MPguZClg==;
+	bh=Rvm8OBzhQTTfVH1WKV2Qv9Ve23EL13SDm3/jUL+bWWk=; b=DMXkeK8gDGYqqECuTVXXsOY5Mc
+	G4BdltcpEou3AOFbfwjuVFpCW2v4onKHM+lYP5NJZI/RSZwDmD2x0sHxCvfo5FhrX6rn2OleZxEWA
+	Pz7O/nID9uH9TM48rid/xcgsM8fxdXHPFHoFY0gK7JCYmVdTNl6U5JnztrCZo+CztjX2XHOFAOW8M
+	wJtJaFDwI9pPmWzF2SF5jVODqx8yFBZZdkG0LaDFtp07xFRupugaVwiFmMvSLRLrLSRZEabVyfMCk
+	KukmqWBk7Xk0lpko7nNJGfXxacDhcdTDghkKNMLbq03puORQZkc9Kfy9wUtSLL1pGncL8wGK6jGwY
+	FR3bqf3Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xHh8G-00000002tYi-0bAn;
-	Fri, 16 Oct 2026 12:33:56 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1xHh8H-00000002teF-3FrQ;
+	Fri, 16 Oct 2026 12:33:57 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xHh88-00000002tD0-2D8E;
-	Fri, 16 Oct 2026 12:33:48 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Cc:To:In-Reply-To:References:
-	Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Sender:Reply-To:Content-ID:Content-Description;
-	bh=s1C9diKxpqsE/iNRAA1eCcro3inoj/bahh0/u4u1u3U=; b=m+I+gggIvISICDGt8X0JMUQZ6v
-	qmoXUafui0v4J+Zcoq+RAKpTcBdpTP7PLWycS9zvsNZVCMvg4gD/B6rPESeSVYZ70zJHGgAS6op9e
-	a1bpDfiuK5klJ7uTQ1LUXAiLkh3qXehTGoMA/+2+fpc9v/9Hfo0PW+CjcsboHmITdrzg1GemJTpvj
-	w6VijBpdYtwkup1Vb1UQP/U06x9/3U2nGMIezTYo3Xi1CqoKeYy8z8iUImY/DH/f0yy878yTNmi4f
-	+g82AgVvMA6if1vNJW+5geNilsmbf9MvOpsphSLv57TRNWcLAhw6elTpkgQkxLcHWDC1k2enMPl85
-	AaaP7fcA==;
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
-	by desiato.infradead.org with esmtps (Exim 4.99.5 #2 (Red Hat Linux))
-	id 1xHh81-00000001UAR-3P1Z;
-	Fri, 16 Oct 2026 12:33:46 +0000
+	id 1xHh88-00000002tCD-1D5V;
+	Fri, 16 Oct 2026 12:33:49 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1792154020;
-	bh=9lCyn40IwF4rDvXDZ0j+eeMRIyFJb+e+Y3gZ62CCvmk=;
+	s=mail; t=1792154026;
+	bh=9IWkSOAA/9OmHCvBDUJbz8n9sCcMZcke+alN8NoiQJ8=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=FYcZ+V74jU6fm8vQ8DyF2xFH4G9h4v1GnmQNM3xYfhTNBVXYRoSIBGJIeV7irltMS
-	 D3RYF/Hw8aco1y1Anc5OpO4yYR9FtU1cynxI3aJAABzzqjkcThiINEx8FJiuGlEyw8
-	 GyilLXMkJpHQLzFQLBuD37sLDYxtaZol/JgFB0nPPg8qrPcAGEMC+xgzHp6VUU6jC3
-	 /u8LK3KMlVnYiQzkLlmGk4NS9DKab1JbefsCt9fxPo1cj4CAemKRYspPOw++k8ZlN7
-	 KFEtkNhDGNvE5lf0cB+OZn1/FK+vz4u/NERE2RHadDsluUy1OKE7JKZxfKssgEK8Hb
-	 YDYK8BtIZBvog==
+	b=m1pLWdDtKTpLLfSh73pKEC9pDAHPjcXvVTscraNVPsUiwW/tP8dn4NiYodxjwgz65
+	 cOxuqYsIaNObKXkujNs53dHFl5V8xoqRwglV76bWkPBDS291MOQUBvi4X6bGkVuvPg
+	 dCf9Ht/qj82G1JQ58tfGIEPHB6ZGB27O9TvlkXrbLWFGwlcQUi9ZIZZS7h87WFCLe9
+	 Xw/BE02ZIkbga8WHOx05lP5OKTvT4EaEptjIph8QBZNZ86RAgrInpTOV9f5izJpMGE
+	 uhWWh8TJZ2DT5s83XgNXazlrM3cfCh8ES1Pa7EBn9gpe8CPthPaZae/HDEgKVb384L
+	 C+Xx4JkwxCHKA==
 Received: from yukiji.home (unknown [100.64.0.131])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: laeyraud)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id B70F117E12B9;
-	Fri, 16 Oct 2026 14:33:39 +0200 (CEST)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 3D7AF17E05D6;
+	Fri, 16 Oct 2026 14:33:45 +0200 (CEST)
 From: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
-Date: Fri, 16 Oct 2026 14:33:01 +0200
-Subject: [PATCH v14 09/23] scsi: ufs: mediatek: Rework init function
+Date: Fri, 16 Oct 2026 14:33:06 +0200
+Subject: [PATCH v14 14/23] scsi: ufs: mediatek: Use the common PHY
+ framework
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20261016-mt8196-ufs-v14-9-e8d565e0cd45@collabora.com>
+Message-Id: <20261016-mt8196-ufs-v14-14-e8d565e0cd45@collabora.com>
 References: <20261016-mt8196-ufs-v14-0-e8d565e0cd45@collabora.com>
 In-Reply-To: <20261016-mt8196-ufs-v14-0-e8d565e0cd45@collabora.com>
 To: Chunfeng Yun <chunfeng.yun@mediatek.com>, Vinod Koul <vkoul@kernel.org>, 
@@ -86,18 +73,19 @@ Cc: kernel@collabora.com, linux-arm-kernel@lists.infradead.org,
  linux-mediatek@lists.infradead.org, linux-phy@lists.infradead.org, 
  devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
  linux-scsi@vger.kernel.org, 
- Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+ Nicolas Frattaroli <nicolas.frattaroli@collabora.com>, 
+ Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
 X-Mailer: b4 0.14.3
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1792154009; l=3160;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1792154009; l=7542;
  i=louisalexis.eyraud@collabora.com; s=20250113; h=from:subject:message-id;
- bh=KAU9OtojZVx+ojOXDguAoNC8iNg+6Jtr1nYCzbwN/t8=;
- b=3xDTZiSaveiiAFNpD1CgoQElhLtSJi9VPth6jF2Tuk89QvvtojQng1nMoVl7bM2Hn2WZFPZxd
- efLiB74zQpEBZnb+qY/W44cPpE/MnT8rKBLT47vSrNhLeZUITxElMQ0
+ bh=gWMMd9Ff7DLofb/nHlubyewkrk3IkvkM05Vfs2d1Px8=;
+ b=SOhDQdWms34j2hEuUTyODyk3bWWxPT46Qr5eh9OVLM2K2V+peDQPAHBJaAolhq4lgJ0WT0tJr
+ K+r6SvaIRKWBHRXzPztmbjI2NoCVOL8r12bC4bb9XxvXUU16Wn616FM
 X-Developer-Key: i=louisalexis.eyraud@collabora.com; a=ed25519;
  pk=CHFBDB2Kqh4EHc6JIqFn69GhxJJAzc0Zr4e8QxtumuM=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261016_133343_930746_B692D736 
-X-CRM114-Status: GOOD (  17.54  )
+X-CRM114-CacheID: sfid-20261016_053348_644199_E3B84594 
+X-CRM114-Status: GOOD (  23.80  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -114,112 +102,265 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
 
-Printing an error message on ENOMEM is pointless. The print will not
-work because there is no memory.
+There is no need to reinvent the PHY framework, especially not its OF
+parsing.
 
-Adding an of_match_device to the init function is pointless. Why would a
-different device with a different probe function ever use the same init
-function? Get rid of it.
+Change the code to simply use the PHY framework to acquire the device's
+PHY in the ufshcd init, so that it's device linked to the right device.
 
-zero-initialising an error variable just so you can then goto a bare
-return statement with that error variable to signal success is also
-pointless, just return directly, there's no unwind being done.
-
-Reviewed-by: Peter Wang <peter.wang@mediatek.com>
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+Reviewed-by: Chaotian Jing <chaotian.jing@mediatek.com>
+Signed-off-by: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
 ---
- drivers/ufs/host/ufs-mediatek.c | 43 +++++++++++++++--------------------------
- 1 file changed, 16 insertions(+), 27 deletions(-)
+ drivers/ufs/host/ufs-mediatek.c | 134 +++++++++++++---------------------------
+ drivers/ufs/host/ufs-mediatek.h |   1 -
+ 2 files changed, 42 insertions(+), 93 deletions(-)
 
 diff --git a/drivers/ufs/host/ufs-mediatek.c b/drivers/ufs/host/ufs-mediatek.c
-index c8c5f85507af..1be533020ed4 100644
+index 41e2e9f86701..808365b880fd 100644
 --- a/drivers/ufs/host/ufs-mediatek.c
 +++ b/drivers/ufs/host/ufs-mediatek.c
-@@ -54,18 +54,6 @@ static const struct ufs_dev_quirk ufs_mtk_dev_fixups[] = {
- 	{}
- };
+@@ -296,44 +296,6 @@ static int ufs_mtk_hce_enable_notify(struct ufs_hba *hba,
+ 	return 0;
+ }
  
--static const struct ufs_mtk_soc_data mt8183_data = {
--	.has_avdd09 = true,
--};
--
--static const struct of_device_id ufs_mtk_of_match[] = {
--	{ .compatible = "mediatek,mt8183-ufshci", .data = &mt8183_data },
--	{ .compatible = "mediatek,mt8192-ufshci" },
--	{ .compatible = "mediatek,mt8195-ufshci" },
--	{},
--};
--MODULE_DEVICE_TABLE(of, ufs_mtk_of_match);
--
- /*
-  * Details of UIC Errors
-  */
-@@ -1321,29 +1309,19 @@ static int ufs_mtk_get_supplies(struct ufs_mtk_host *host)
-  */
- static int ufs_mtk_init(struct ufs_hba *hba)
- {
--	const struct of_device_id *id;
- 	struct device *dev = hba->dev;
- 	struct ufs_mtk_host *host;
- 	struct Scsi_Host *shost = hba->host;
+-static int ufs_mtk_bind_mphy(struct ufs_hba *hba)
+-{
+-	struct ufs_mtk_host *host = ufshcd_get_variant(hba);
+-	struct device *dev = hba->dev;
+-	struct device_node *np = dev->of_node;
 -	int err = 0;
-+	int err;
- 	struct arm_smccc_res res;
- 
- 	host = devm_kzalloc(dev, sizeof(*host), GFP_KERNEL);
--	if (!host) {
--		err = -ENOMEM;
--		dev_info(dev, "%s: no memory for mtk ufs host\n", __func__);
--		goto out;
--	}
-+	if (!host)
-+		return -ENOMEM;
- 
- 	host->hba = hba;
- 	ufshcd_set_variant(hba, host);
- 
--	id = of_match_device(ufs_mtk_of_match, dev);
--	if (!id) {
--		err = -EINVAL;
--		goto out;
+-
+-	host->mphy = devm_of_phy_get_by_index(dev, np, 0);
+-
+-	if (host->mphy == ERR_PTR(-EPROBE_DEFER)) {
+-		/*
+-		 * UFS driver might be probed before the phy driver does.
+-		 * In that case we would like to return EPROBE_DEFER code.
+-		 */
+-		err = -EPROBE_DEFER;
+-		dev_info(dev,
+-			 "%s: required phy hasn't probed yet. err = %d\n",
+-			__func__, err);
+-	} else if (IS_ERR(host->mphy)) {
+-		err = PTR_ERR(host->mphy);
+-		if (err != -ENODEV) {
+-			dev_info(dev, "%s: PHY get failed %d\n", __func__,
+-				 err);
+-		}
 -	}
 -
- 	/* Initialize host capability */
- 	ufs_mtk_init_host_caps(hba);
+-	if (err)
+-		host->mphy = NULL;
+-	/*
+-	 * Allow unbound mphy because not every platform needs specific
+-	 * mphy control.
+-	 */
+-	if (err == -ENODEV)
+-		err = 0;
+-
+-	return err;
+-}
+-
+ static int ufs_mtk_setup_ref_clk(struct ufs_hba *hba, bool on)
+ {
+ 	struct ufs_mtk_host *host = ufshcd_get_variant(hba);
+@@ -1247,13 +1209,21 @@ static int ufs_mtk_init(struct ufs_hba *hba)
  
-@@ -1419,11 +1397,10 @@ static int ufs_mtk_init(struct ufs_hba *hba)
+ 	ufs_mtk_init_mcq_irq(hba);
  
- 	ufs_mtk_get_hw_ip_version(hba);
+-	err = ufs_mtk_bind_mphy(hba);
+-	if (err)
++	host->mphy = devm_phy_optional_get(dev, NULL);
++	if (IS_ERR(host->mphy)) {
++		err = dev_err_probe(dev, PTR_ERR(host->mphy), "Failed to get PHY\n");
++		goto out_variant_clear;
++	}
++
++	err = phy_init(host->mphy);
++	if (err) {
++		dev_err_probe(dev, err, "Failed to initialize PHY\n");
+ 		goto out_variant_clear;
++	}
  
--	goto out;
-+	return 0;
+ 	err = ufs_mtk_init_reset(hba);
+ 	if (err)
+-		goto out_variant_clear;
++		goto out_phy_exit;
  
+ 	/* Enable runtime autosuspend */
+ 	hba->caps |= UFSHCD_CAP_RPM_AUTOSUSPEND;
+@@ -1292,7 +1262,7 @@ static int ufs_mtk_init(struct ufs_hba *hba)
+ 
+ 	err = ufs_mtk_get_supplies(host);
+ 	if (err)
+-		goto out_variant_clear;
++		goto out_phy_exit;
+ 
+ 	/*
+ 	 * ufshcd_vops_init() is invoked after
+@@ -1319,11 +1289,22 @@ static int ufs_mtk_init(struct ufs_hba *hba)
+ 
+ 	return 0;
+ 
++out_phy_exit:
++	phy_exit(host->mphy);
  out_variant_clear:
  	ufshcd_set_variant(hba, NULL);
--out:
  	return err;
  }
  
-@@ -2473,6 +2450,18 @@ static const struct ufs_hba_variant_ops ufs_hba_mtk_vops = {
- 	.config_scsi_dev     = ufs_mtk_config_scsi_dev,
++static void ufs_mtk_exit(struct ufs_hba *hba)
++{
++	struct ufs_mtk_host *host = ufshcd_get_variant(hba);
++
++	ufs_mtk_mphy_power_on(hba, false);
++
++	phy_exit(host->mphy);
++}
++
+ static int ufs_mtk_negotiate_pwr_mode(struct ufs_hba *hba,
+ 				      const struct ufs_pa_layer_attr *dev_max_params,
+ 				      struct ufs_pa_layer_attr *dev_req_params)
+@@ -2344,6 +2325,7 @@ static void ufs_mtk_config_scsi_dev(struct scsi_device *sdev)
+ static const struct ufs_hba_variant_ops ufs_hba_mtk_vops = {
+ 	.name                = "mediatek.ufshci",
+ 	.init                = ufs_mtk_init,
++	.exit                = ufs_mtk_exit,
+ 	.get_ufs_hci_version = ufs_mtk_get_ufs_hci_version,
+ 	.setup_clocks        = ufs_mtk_setup_clocks,
+ 	.hce_enable_notify   = ufs_mtk_hce_enable_notify,
+@@ -2404,48 +2386,15 @@ MODULE_DEVICE_TABLE(of, ufs_mtk_of_match);
+  */
+ static int ufs_mtk_probe(struct platform_device *pdev)
+ {
+-	int err;
++	struct device *dev = &pdev->dev;
+ 	struct ufs_hba *hba;
+-	struct platform_device *phy_pdev = NULL;
+-	struct device *dev = &pdev->dev, *phy_dev = NULL;
+-	struct device_node *phy_node = NULL;
+-	struct ufs_mtk_host *host;
+-
+-	/* find phy node */
+-	phy_node = of_parse_phandle(dev->of_node, "phys", 0);
+-
+-	if (phy_node) {
+-		phy_pdev = of_find_device_by_node(phy_node);
+-		if (!phy_pdev)
+-			goto skip_phy;
+-		phy_dev = &phy_pdev->dev;
+-
+-		pm_runtime_set_active(phy_dev);
+-		pm_runtime_enable(phy_dev);
+-		pm_runtime_get_sync(phy_dev);
+-
+-		put_device(phy_dev);
+-		dev_info(dev, "phys node found\n");
+-	} else {
+-		dev_notice(dev, "phys node not found\n");
+-	}
++	int ret;
+ 
+-skip_phy:
+-	/* perform generic probe */
+-	err = ufshcd_pltfrm_init(pdev, &ufs_hba_mtk_vops);
+-	if (err) {
+-		dev_err(dev, "probe failed %d\n", err);
+-		goto out;
+-	}
++	ret = ufshcd_pltfrm_init(pdev, &ufs_hba_mtk_vops);
++	if (ret)
++		return dev_err_probe(dev, ret, "Generic platform probe failed\n");
+ 
+ 	hba = platform_get_drvdata(pdev);
+-	if (!hba)
+-		goto out;
+-
+-	if (phy_node && phy_dev) {
+-		host = ufshcd_get_variant(hba);
+-		host->phy_dev = phy_dev;
+-	}
+ 
+ 	/*
+ 	 * Because the default power setting of VSx (the upper layer of
+@@ -2454,16 +2403,12 @@ static int ufs_mtk_probe(struct platform_device *pdev)
+ 	 */
+ 	ufs_mtk_dev_vreg_set_lpm(hba, false);
+ 
+-out:
+-	of_node_put(phy_node);
+-	return err;
++	return 0;
+ }
+ 
+ /**
+  * ufs_mtk_remove - set driver_data of the device to NULL
+  * @pdev: pointer to platform device handle
+- *
+- * Always return 0
+  */
+ static void ufs_mtk_remove(struct platform_device *pdev)
+ {
+@@ -2520,9 +2465,8 @@ static int ufs_mtk_system_resume(struct device *dev)
+ static int ufs_mtk_runtime_suspend(struct device *dev)
+ {
+ 	struct ufs_hba *hba = dev_get_drvdata(dev);
+-	struct ufs_mtk_host *host = ufshcd_get_variant(hba);
+ 	struct arm_smccc_res res;
+-	int ret = 0;
++	int ret;
+ 
+ 	ret = ufshcd_runtime_suspend(dev);
+ 	if (ret)
+@@ -2533,8 +2477,11 @@ static int ufs_mtk_runtime_suspend(struct device *dev)
+ 	if (ufs_mtk_is_rtff_mtcmos(hba))
+ 		ufs_mtk_mtcmos_ctrl(false, res);
+ 
+-	if (host->phy_dev)
+-		pm_runtime_put_sync(host->phy_dev);
++	ret = ufs_mtk_mphy_power_on(hba, false);
++	if (ret) {
++		dev_err(dev, "Failed to power off PHY: %pe\n", ERR_PTR(ret));
++		return ret;
++	}
+ 
+ 	return 0;
+ }
+@@ -2542,14 +2489,17 @@ static int ufs_mtk_runtime_suspend(struct device *dev)
+ static int ufs_mtk_runtime_resume(struct device *dev)
+ {
+ 	struct ufs_hba *hba = dev_get_drvdata(dev);
+-	struct ufs_mtk_host *host = ufshcd_get_variant(hba);
+ 	struct arm_smccc_res res;
++	int ret;
+ 
+ 	if (ufs_mtk_is_rtff_mtcmos(hba))
+ 		ufs_mtk_mtcmos_ctrl(true, res);
+ 
+-	if (host->phy_dev)
+-		pm_runtime_get_sync(host->phy_dev);
++	ret = ufs_mtk_mphy_power_on(hba, true);
++	if (ret) {
++		dev_err(dev, "Failed to power on PHY: %pe\n", ERR_PTR(ret));
++		return ret;
++	}
+ 
+ 	ufs_mtk_dev_vreg_set_lpm(hba, false);
+ 
+diff --git a/drivers/ufs/host/ufs-mediatek.h b/drivers/ufs/host/ufs-mediatek.h
+index 477fb9e36555..bde2b53f5798 100644
+--- a/drivers/ufs/host/ufs-mediatek.h
++++ b/drivers/ufs/host/ufs-mediatek.h
+@@ -196,7 +196,6 @@ struct ufs_mtk_host {
+ 	bool is_mcq_intr_enabled;
+ 	int mcq_nr_intr;
+ 	struct ufs_mtk_mcq_intr_info mcq_intr_info[UFSHCD_MAX_Q_NR];
+-	struct device *phy_dev;
  };
  
-+static const struct ufs_mtk_soc_data mt8183_data = {
-+	.has_avdd09 = true,
-+};
-+
-+static const struct of_device_id ufs_mtk_of_match[] = {
-+	{ .compatible = "mediatek,mt8183-ufshci", .data = &mt8183_data },
-+	{ .compatible = "mediatek,mt8192-ufshci" },
-+	{ .compatible = "mediatek,mt8195-ufshci" },
-+	{},
-+};
-+MODULE_DEVICE_TABLE(of, ufs_mtk_of_match);
-+
- /**
-  * ufs_mtk_probe - probe routine of the driver
-  * @pdev: pointer to Platform device handle
+ /* MTK delay of autosuspend: 500 ms */
 
 -- 
 2.56.0
