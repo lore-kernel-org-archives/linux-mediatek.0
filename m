@@ -4,54 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E77F0CCA462
-	for <linux-mediatek@archiver.kernel.org>; Fri, 16 Oct 2026 08:14:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 58167CCA464
+	for <linux-mediatek@archiver.kernel.org>; Fri, 16 Oct 2026 08:14:38 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:
 	References:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:
 	Subject:Date:From:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=IUGOkTgheWy5CuEi5lF+7B+pWPq6Cz4YPHhejKlj5Ew=; b=IXAi1Tc3iUDd0qFN/k13rEFQaK
-	WptdWObScOLyBl10adgvCMjnGw03OuN/09yuPXSNm0CRU4gtvQUUeCSP62VpkCGPpvxirYP158R3w
-	s8Vhca/47CxU5O2Xrsxb3qkCqIAMC9sJmHNh40DctMJ8WdopGUbbTwTHRCTKrgXQ4J98pNNnlO+iX
-	M8QNi0RUkGZdC/lQ6rGG3lg1DyvvpTLla9tqlYJppTqQXILuxk3ryXX0bjxheEGnlxPqjcPcRGU7x
-	eDQ/zI4h31DQ2TGpNBqZjmcjsLnlXxcuxPwxZz5i5cdU7BdbnJS77ByoeG9nbSYUA8/FIuJE72DA+
-	LgEWv5Tw==;
+	bh=i5esaWPxMUGK7t0EWOjFX9TzIxcPZqzOYkch8s/dvl0=; b=PRIlO3nKR4dwG8ElPNw5r5nD+L
+	Jt4Ct0ebGNqlS9ELtrk+E34gP0gbFdOKqcEeXUvnQ1uIGAIvokfa06QgurmAkq8SrlyX/gs5Z/ON3
+	FXSvh1MIC0FPTkDwK2tApUCa8aGC3uEnEbr/nPLTbN9O77d38QLYFifqGjzugzb0W/w+0fHgHiD+R
+	q9IZXBpG3VnxjuHDR/4SOX/hlS9I345hG6/n/yjzbdksK7olCNzrgLftUzG3QBhADUn5ktNyEGE8O
+	VycgaCeuz1B8ZUvIHmcPaIi+hEefy+hZWqLu2LahSkW0PlTydKBDEU9GYEzKMMT8GmNyu2PiQ1xoY
+	upDcn5Bg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xHd5D-00000002ItQ-49kX;
-	Fri, 16 Oct 2026 08:14:31 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1xHd5J-00000002IwQ-1Lxz;
+	Fri, 16 Oct 2026 08:14:37 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xHd5C-00000002Ise-2KYX;
-	Fri, 16 Oct 2026 08:14:30 +0000
+	id 1xHd5C-00000002Isg-3tRb;
+	Fri, 16 Oct 2026 08:14:31 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 0673942E38;
+	by tor.source.kernel.org (Postfix) with ESMTP id 2256B601F0;
 	Fri, 16 Oct 2026 08:14:30 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id CFB05C2BCFC;
+Received: by smtp.kernel.org (Postfix) with ESMTPS id C3B5EC2BCF5;
 	Fri, 16 Oct 2026 08:14:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
 	s=k20201202; t=1792138469;
-	bh=6MzXY6URcuyZMGe9mH9bcydnzkC4AGYAyCDj4+DY9rE=;
+	bh=QfV/FfI0HFrMwE+wPOrU8KzDic6Baj5DsowHTCH1FjY=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To:From;
-	b=mMCA8c7+7OQUi9TopRTWXNRVcMFFZ+I8byPWFUaWakF503vQHPhFeDaDzrBm1TZFI
-	 hCSaBoSfuaI1zqVATP0dgJKLwmtwOg6wgZfxwVoKq3qbDcusZZxGCcuvhb23ck31Jm
-	 zc7nk0jdFEcu9eZdHIxuYi1YxpcBlx/ruD9hiqFqYo3kJwONHdmxDQZfyk5wJA+i0F
-	 CEmelynrJbNP7JQLnVnejxlfuIJ6xpnoxTg8S5MW1RQJKygvlzKWLAXwqjzIlFfdfl
-	 I1yM/y9vhjefoR8OYgfwgp7D3byF3KgoEnc2R1dUa9JBWxqfxY9EJobDH0YIm/1KfG
-	 YbG8lhgZTWazA==
+	b=AgMq8VDncSrFU6NyWjV3WevYLz7faBi/TJguBSpO2GMnj+l0OKrALgSrtqj3yGUPg
+	 0iFMIqkZyLgYHCmaFzqJ0A527IJfcH7QH8qzgEQyqjSMKwGZ0/U/wmRwt9ETo7cffj
+	 SPi6N3O1FZm5wY7n7I0I0rMdwNdVTndyBE3pCTnZ2yxucu5d4Pqn8RtUaQXYoQP8Cu
+	 W+ykdRI9+4XN2Vsw89r+x+U9q0SmHvKfCYDNUb5et2CW78wADcswo/SVPiWdmnvFlA
+	 igfcLid9FSAjIJzoUSYYGVjyV0jpABc+tvUkZq0IWuXxfPCkUwk0Ek0EibRoHtv86a
+	 j4fSt0tv59oeA==
 Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id B3361CCA462;
+	by smtp.lore.kernel.org (Postfix) with ESMTP id A3F70CC6B38;
 	Fri, 16 Oct 2026 08:14:29 +0000 (UTC)
 From: HuskerMinion via B4 Relay <devnull+mocker-mug-unwoven.duck.com@kernel.org>
-Date: Fri, 16 Oct 2026 02:14:02 -0600
-Subject: [PATCH 2/2] ASoC: mediatek: mt8183: Fix UL1_CH2 I2S0_CH2 routing
- register
+Date: Fri, 16 Oct 2026 02:14:01 -0600
+Subject: [PATCH 1/2] ASoC: mediatek: mt8183: Leave cache-only mode before
+ enabling clocks
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20261016-mt8183-afe-fixes-v1-2-f0db51e0c073@duck.com>
+Message-Id: <20261016-mt8183-afe-fixes-v1-1-f0db51e0c073@duck.com>
 References: <20261016-mt8183-afe-fixes-v1-0-f0db51e0c073@duck.com>
 In-Reply-To: <20261016-mt8183-afe-fixes-v1-0-f0db51e0c073@duck.com>
 To: Mark Brown <broonie@kernel.org>, Liam Girdwood <lgirdwood@gmail.com>
@@ -60,13 +60,13 @@ Cc: Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>,
  AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
  linux-sound@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
  linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, 
- HuskerMinion <mocker-mug-unwoven@duck.com>
+ stable@vger.kernel.org, HuskerMinion <mocker-mug-unwoven@duck.com>
 X-Mailer: b4 0.16.0
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1792138468; l=1450;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1792138468; l=2642;
  i=mocker-mug-unwoven@duck.com; s=20261016; h=from:subject:message-id;
- bh=mEWhlclh4rsOZ/4zrF6u9RE5QWi0z/CRm0Rz/ciL1HE=;
- b=6YXlyoF5BZSa8qalNwQEhwPQZX15OAoWl6Cwl3SmMzWojxGvBMbRuyUf4ivpDoMJbSHk0bkXW
- k1493RQj8XmBmDpzzjLmThkLYOaOUD56lijYARzfS8X/I4voQADCpZL
+ bh=zfpo94JkGvQ2yQUBuXqzym/mB6mYvui+lp17sFP9VUg=;
+ b=SHKWVz3Ac5OanWSlHksMbUBv4Otf/d62j9t1248uqxkqmUt08CThxbFzD1ksClZrJ7WQGwJuZ
+ eZxRoSbAYFSAj41XHL/f8/m7MMh+vZ77DBTQK/zRLF7Qm7pbrb3Dtjt
 X-Developer-Key: i=mocker-mug-unwoven@duck.com; a=ed25519;
  pk=Q7l9BnP4XnFimCK28K+NVowcECqTaJNXicdBAInot0k=
 X-Endpoint-Received: by B4 Relay for mocker-mug-unwoven@duck.com/20261016
@@ -89,39 +89,70 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: HuskerMinion <mocker-mug-unwoven@duck.com>
 
-The "I2S0_CH2" switch of the UL1_CH2 mixer writes AFE_CONN21. That is
-the interconnect register for UL1 channel 1 (O21). Channel 2 is O22,
-which is AFE_CONN22, as the "ADDA_UL_CH2" switch of the same mixer
-already uses.
+The audiosys clock gates are bits in AUDIO_TOP_CON0 and AUDIO_TOP_CON1.
+The clock driver writes them through the audiosys syscon regmap, which
+is the same regmap the AFE driver uses. The AFE marks both registers
+volatile, so while the regmap is cache-only, regmap_update_bits() on
+them returns -EBUSY and nothing reaches the hardware. The MediaTek gate
+clock ops ignore that error.
 
-So enabling the switch routes I2S0 channel 2 into UL1 channel 1, mixed
-with channel 1, and UL1 channel 2 gets nothing from I2S0.
+mt8183_afe_runtime_resume() calls mt8183_afe_enable_clock() first and
+only then takes the regmap out of cache-only mode. After probe the
+regmap is always cache-only at that point, so the gate enables are
+dropped. The clock framework then counts the AFE and I2S gates as
+enabled while they are still closed in hardware.
 
-Use AFE_CONN22.
+On the Amazon Echo Show 8 (2nd gen) the bootloader leaves these gates
+closed. Playback and capture never start: the memif current pointer
+stays at 0, no AFE interrupt fires and aplay fails with an I/O error.
+clk_summary lists aud_afe and aud_i2s1 as enabled, but with hardware
+enable N, and their power-down bits in AUDIO_TOP_CON0 are still set.
 
-Found while adding UL1 capture routes for the four microphones of the
-Amazon Echo Show 8 (2nd gen). That board captures from I2S2, so the
-I2S0 path itself is only compile tested.
+Leave cache-only mode before enabling the clocks, and go back to
+cache-only mode if enabling them fails. The bypass case used during
+probe is unchanged.
 
-Fixes: d232591c9482 ("ASoC: Mediatek: MT8183: add I2S2 control path from UL2 and UL3")
+Fixes: a94aec035a12 ("ASoC: mediatek: mt8183: add platform driver")
+Cc: stable@vger.kernel.org
 Signed-off-by: HuskerMinion <mocker-mug-unwoven@duck.com>
 ---
- sound/soc/mediatek/mt8183/mt8183-afe-pcm.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ sound/soc/mediatek/mt8183/mt8183-afe-pcm.c | 16 +++++++++++++---
+ 1 file changed, 13 insertions(+), 3 deletions(-)
 
 diff --git a/sound/soc/mediatek/mt8183/mt8183-afe-pcm.c b/sound/soc/mediatek/mt8183/mt8183-afe-pcm.c
-index d6175da3b..2b2ee0575 100644
+index d8938542b..d6175da3b 100644
 --- a/sound/soc/mediatek/mt8183/mt8183-afe-pcm.c
 +++ b/sound/soc/mediatek/mt8183/mt8183-afe-pcm.c
-@@ -301,7 +301,7 @@ static const struct snd_kcontrol_new memif_ul1_ch1_mix[] = {
- static const struct snd_kcontrol_new memif_ul1_ch2_mix[] = {
- 	SOC_DAPM_SINGLE_AUTODISABLE("ADDA_UL_CH2", AFE_CONN22,
- 				    I_ADDA_UL_CH2, 1, 0),
--	SOC_DAPM_SINGLE_AUTODISABLE("I2S0_CH2", AFE_CONN21,
-+	SOC_DAPM_SINGLE_AUTODISABLE("I2S0_CH2", AFE_CONN22,
- 				    I_I2S0_CH2, 1, 0),
- };
+@@ -706,16 +706,26 @@ static int mt8183_afe_runtime_resume(struct device *dev)
+ {
+ 	struct mtk_base_afe *afe = dev_get_drvdata(dev);
+ 	struct mt8183_afe_private *afe_priv = afe->platform_priv;
++	bool reg_ctl = afe->regmap && !afe_priv->pm_runtime_bypass_reg_ctl;
+ 	int ret;
  
++	/*
++	 * The audiosys clock gates are written through this same regmap and
++	 * are volatile, so their writes are dropped while it is cache-only.
++	 */
++	if (reg_ctl)
++		regcache_cache_only(afe->regmap, false);
++
+ 	ret = mt8183_afe_enable_clock(afe);
+-	if (ret)
++	if (ret) {
++		if (reg_ctl)
++			regcache_cache_only(afe->regmap, true);
+ 		return ret;
++	}
+ 
+-	if (!afe->regmap || afe_priv->pm_runtime_bypass_reg_ctl)
++	if (!reg_ctl)
+ 		goto skip_regmap;
+ 
+-	regcache_cache_only(afe->regmap, false);
+ 	regcache_sync(afe->regmap);
+ 
+ 	/* enable audio sys DCM for power saving */
 
 -- 
 2.43.0
