@@ -4,67 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A37B7CCF2C3
-	for <linux-mediatek@archiver.kernel.org>; Fri, 16 Oct 2026 12:33:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3547BCCF2C5
+	for <linux-mediatek@archiver.kernel.org>; Fri, 16 Oct 2026 12:33:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=2oAmGIlpdPl2AN1PftE2Ur8HmShgIa7sf5IdyJU07Fw=; b=tuxf+dknXf7NZmXpk+4WOx9BNN
-	o1XN1CGSH+qKLqhMvio5kzROr8WPZzIb9VSCyTWuYppaHu+i/sBGyGVJZEiCsTqrRIyGON5qZR+Sn
-	PGHc2YbjofdYMkinPdSxr/cLcbsWK4iKFEpJvgUpNc5+XreDAJxm+Ffy4mprbcmSjCl+I5+V/AWPR
-	5nUzSF3RCYLuncOTyLDYD2rfBmWbBOua9vEICB9cXrgENBWxABhR1paGUU5bxsdJF3koNVPp074n6
-	6mNroakGXkkoh2LSwbY9gish5bhL28RJtL9Xa08gSR5WJmCKmsHguEGNA/R5sPvaMG7CVRE/zZdkr
-	RSolohsg==;
+	bh=lGEBRcJuBadT0nEChufnBWhb95U4eWHE7CdKm+Xledo=; b=M4jOoCXNEIGNjJohRKsdAAGr3F
+	LtV6uLhRVbRgrBlMuipCmdWxT9ez9qqxhjatSVX1GEuN+6Y763WIP787feA95droqH3cxz9fwPKSC
+	Fz4wqaHJCJCgGkf57rRRAkjiSkhDjorR8cmxmXMeFfYjwZWp+Vg2F3Mq0HCYpDUgnB0sC7Y5Ltayi
+	Aq/EJVMjO2zdcCRVFaHdQAb52xfLyPEHXrq7E0ZN1riMcxN+OcQq68X1cy7FbXmtrIvrErdJdM0+O
+	cAZsHBSG+Y0APiee/1aAhFRVnu+iDNVTJPM12sUfs9mdiCvADK48An8tM3emUs6HW2oEaeLf78xqs
+	q3XC91vw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xHh8D-00000002tQ3-0yjj;
-	Fri, 16 Oct 2026 12:33:53 +0000
+	id 1xHh8F-00000002tXb-3GZx;
+	Fri, 16 Oct 2026 12:33:55 +0000
 Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xHh85-00000002t9S-0R5H;
-	Fri, 16 Oct 2026 12:33:45 +0000
+	id 1xHh88-00000002tD7-2f8h;
+	Fri, 16 Oct 2026 12:33:48 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=infradead.org; s=desiato.20200630; h=Cc:To:In-Reply-To:References:
 	Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Sender:Reply-To:Content-ID:Content-Description;
-	bh=2oAmGIlpdPl2AN1PftE2Ur8HmShgIa7sf5IdyJU07Fw=; b=QIHxeSZXwnrhLLqXgDeDkaBsB7
-	YO1grsSfaEHq1QEGtR7kPqpqlRr1bUT5A+0sx5YhVTEy1VHJxYNtylUweYs0/de7/m3K7KboIaXSl
-	Kn+dH4TQimH5ft9jJZF5Jm4VfaGPlEWMXxqDRCXtOwZvuSk12jHBrUPGlvKdg+Kuj63eaa+FaIJSO
-	m+qoDhzqBXhRLn2GVRZHpVC2lnAeM/LvQW8ut9MNEB8rPDNNTvqGc6XzSQyLn/B7yn/uZXE2NOMVK
-	eUH+GKpylkqENWWvtbvTymmqWVXiI4NJh+BZljZsmYGsrlT+yUpKjk8rrTmXNwkH7EIgp/0VOmbn+
-	z1LGyFVw==;
+	bh=lGEBRcJuBadT0nEChufnBWhb95U4eWHE7CdKm+Xledo=; b=WBIqQr1fZtLTnsNjG0MRpHFrH+
+	ZVd2hgKK/ZCGVleW7bc0LY8SOldDx4KNCdiunZ4X8Hyfkpx9VMfICv2mu4qzE6Q2i1XcVy3/3rDgP
+	hC16MDwazFzM8u6CrZ8MAuW/2licfMIOIAfDbFB6s3Y4Saz8gzp/OYtmN46zeyKtquTSSeR5993UY
+	9+Cv5qTiZGaq/shzgrhYLguOZJg3lVogRSa621BbnGqT60fEIIuX1vytFyd5KS/xjuXSfrECjQ4ru
+	BdFeKt3HJmzI/7BJVlKts3ZxHFjjK244J3ksjCkIQmetI6z9XJPofV6xfireyRi7qbQZGCYlQeWfo
+	YDXktOCQ==;
 Received: from bali.collaboradmins.com ([148.251.105.195])
 	by desiato.infradead.org with esmtps (Exim 4.99.5 #2 (Red Hat Linux))
-	id 1xHh7x-00000001U9O-13St;
-	Fri, 16 Oct 2026 12:33:43 +0000
+	id 1xHh84-00000001UB5-0kOz;
+	Fri, 16 Oct 2026 12:33:46 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1792154014;
-	bh=m5hJfIrVYgzyNoAPyhFPMGOJ7BJWLS/eKC+SWXbrdVE=;
+	s=mail; t=1792154022;
+	bh=gVXDkcgwtLBOI6Ilf1aoJ5viLS6I+n9IayoxZynJ/x0=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=dVEfJGNWzq86haeY9ndZyivAyUvzSqrI57+Ovmd8GZceHLiUa/R4V3STE4rK0Vq0b
-	 gHXr96h2dv1eudtBhGCb1PR3A7GPDnEGmhOsXOUq4XWPZooem0J030HOp4M51o5i7J
-	 nKV7tIaSjq2z9dTztaLeRseclDh4iXv/zyi2k0jsZ0H2TFNaQXQmsJHc8ntN1h+iI+
-	 HsDXkC/Ez2fpXqtzcR1KltZHWeZ5r8wzufH/EiIKoZqTAy8MivPlmaRMEP6v2zjMCH
-	 hABCcc8W8mnnEg+ZiZJylgON7BfHpI07DbPYpTn58CsBTzb0hHw0tKTUYTYz+zO4Qi
-	 EqHu4CwSMdIRQ==
+	b=etkA+EdJqHenSzoVcNNELCxfwSwCpxo5etmfsUiil27XqJmLfmbdKi0h+8KUTSZRR
+	 efm2YiCo7qZUqtIVy9ZKx3/E5RyLzREVBtikD57L7wEFHoy4k1P/AnUo423ISTGWQf
+	 kge/QNVWv+Y/EosEzIZFuN49Gr49ga6xJjfVOe0OpaMpfiPXGH8s572luHURZ/0ttG
+	 CSXc1k9NThvRxR8PPVu99HsdJl1gH1sNcfp9mvR433qG6gHKRjepXJzvXSu47KplJh
+	 jHBNHQEcaAJsvA9/WsZVJIHcnA57G3f60Ika9AWwrK7ebn+Q5Wf+Ey2OE+VE0Y+1oG
+	 lAqe/IC58WFGA==
 Received: from yukiji.home (unknown [100.64.0.131])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: laeyraud)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 29B6217E1509;
-	Fri, 16 Oct 2026 14:33:33 +0200 (CEST)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id DEE6117E36BA;
+	Fri, 16 Oct 2026 14:33:41 +0200 (CEST)
 From: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
-Date: Fri, 16 Oct 2026 14:32:55 +0200
-Subject: [PATCH v14 03/23] dt-bindings: ufs: mediatek,ufs: Add mt8196
- variant
+Date: Fri, 16 Oct 2026 14:33:03 +0200
+Subject: [PATCH v14 11/23] scsi: ufs: mediatek: Handle misc host voltage
+ regulators
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20261016-mt8196-ufs-v14-3-e8d565e0cd45@collabora.com>
+Message-Id: <20261016-mt8196-ufs-v14-11-e8d565e0cd45@collabora.com>
 References: <20261016-mt8196-ufs-v14-0-e8d565e0cd45@collabora.com>
 In-Reply-To: <20261016-mt8196-ufs-v14-0-e8d565e0cd45@collabora.com>
 To: Chunfeng Yun <chunfeng.yun@mediatek.com>, Vinod Koul <vkoul@kernel.org>, 
@@ -90,16 +90,16 @@ Cc: kernel@collabora.com, linux-arm-kernel@lists.infradead.org,
  Nicolas Frattaroli <nicolas.frattaroli@collabora.com>, 
  Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
 X-Mailer: b4 0.14.3
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1792154009; l=2540;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1792154009; l=3082;
  i=louisalexis.eyraud@collabora.com; s=20250113; h=from:subject:message-id;
- bh=Fu9MfrHRxOqGq0SuEgCjBQkvUm2tW9NvFGGI8VG1HyQ=;
- b=1/2z1sYlEqYqWvUjCr1bFKPYOg+fGPuR+qxM0EZDMaRkQhteiSyfOGvcrTpF7IuvlDPu870EN
- gSReGPSA1l+BxbjNpGO5YlgIZ6KdbTvprRO2e3se/wH9KohmybDbpTY
+ bh=OdtFgKBxIwzWhhGlcZ/KbXGq3zzN9DoI7wIcozTVuEM=;
+ b=jJkVfMtPkVKkMmzNat4mUFMNPUt0hAhxwBH3JSlKrZMGk9/s+iIas7cYJ1yTqRuzFBbKlixVL
+ NCBz00eHxlEAmbnsb3iVZI7ANrLXo5dIGKepp5u+B19FcmB7pO9gnNd
 X-Developer-Key: i=louisalexis.eyraud@collabora.com; a=ed25519;
  pk=CHFBDB2Kqh4EHc6JIqFn69GhxJJAzc0Zr4e8QxtumuM=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261016_133341_976236_8A9B4855 
-X-CRM114-Status: GOOD (  11.72  )
+X-CRM114-CacheID: sfid-20261016_133344_493364_48A696AD 
+X-CRM114-Status: GOOD (  15.34  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -116,83 +116,91 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
 
-The MediaTek MT8196 SoC's UFS controller uses a different set of supplies.
-It is therefore not compatible with the MT8195. It also have an additional
-0.9V supply pin (AVDD09_UFS_1), that is specific to this SoC, thus not
-currently described in the binding.
+MediaTek SoCs handled by this driver contain a per-SoC specific set of
+miscellaneous supplies. These feed parts of the UFS controller silicon
+inside the SoC, as opposed to the UFS card.
 
-Add a compatible for this SoC and new property for the additional supply,
-and modify the binding correspondingly.
+Add the necessary driver code to acquire these supplies using the
+regulator bulk API. They should be kept on during suspend, so enable
+them when acquiring.
 
-Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-Reviewed-by: Chaotian Jing <chaotian.jing@mediatek.com>
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Reviewed-by: Rob Herring (Arm) <robh@kernel.org>
+Reviewed-by: Peter Wang <peter.wang@mediatek.com>
+Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
 Signed-off-by: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
 ---
- .../devicetree/bindings/ufs/mediatek,ufs.yaml       | 21 +++++++++++++++++++++
- 1 file changed, 21 insertions(+)
+ drivers/ufs/host/ufs-mediatek.c | 34 ++++++++++++++++++++++++++++++++--
+ 1 file changed, 32 insertions(+), 2 deletions(-)
 
-diff --git a/Documentation/devicetree/bindings/ufs/mediatek,ufs.yaml b/Documentation/devicetree/bindings/ufs/mediatek,ufs.yaml
-index 945cb986b06b..99181ec9dda0 100644
---- a/Documentation/devicetree/bindings/ufs/mediatek,ufs.yaml
-+++ b/Documentation/devicetree/bindings/ufs/mediatek,ufs.yaml
-@@ -16,6 +16,7 @@ properties:
-       - mediatek,mt8183-ufshci
-       - mediatek,mt8192-ufshci
-       - mediatek,mt8195-ufshci
-+      - mediatek,mt8196-ufshci
+diff --git a/drivers/ufs/host/ufs-mediatek.c b/drivers/ufs/host/ufs-mediatek.c
+index 2bcf35bfabb7..58ae8499ebf7 100644
+--- a/drivers/ufs/host/ufs-mediatek.c
++++ b/drivers/ufs/host/ufs-mediatek.c
+@@ -42,6 +42,8 @@ static void _ufs_mtk_clk_scale(struct ufs_hba *hba, bool scale_up);
+ struct ufs_mtk_soc_data {
+ 	bool has_avdd09;
+ 	bool has_avdd09_1;
++	u8 num_reg_names;
++	const char *const *reg_names;
+ };
  
-   clocks:
-     minItems: 1
-@@ -60,6 +61,9 @@ properties:
-   avdd09-supply:
-     description: Phandle to the 0.9V supply powering the AVDD09_UFS pin
+ static const struct ufs_dev_quirk ufs_mtk_dev_fixups[] = {
+@@ -1237,10 +1239,22 @@ static int ufs_mtk_get_supplies(struct ufs_mtk_host *host)
+ {
+ 	struct device *dev = host->hba->dev;
+ 	const struct ufs_mtk_soc_data *data = of_device_get_match_data(dev);
++	int ret;
  
-+  avdd09-1-supply:
-+    description: Phandle to the 0.9V supply powering the AVDD09_UFS_1 pin
+ 	if (!data)
+ 		return 0;
+ 
++	if (data->num_reg_names) {
++		ret = devm_regulator_bulk_get_enable(dev, data->num_reg_names,
++						     data->reg_names);
++		if (ret) {
++			dev_err_probe(dev, ret,
++				      "Failed to get misc regulators: %pe\n",
++				      ERR_PTR(ret));
++			return ret;
++		}
++	}
 +
-   avdd12-supply:
-     description: Phandle to the 1.2V supply powering the AVDD12_UFS pin
+ 	if (data->has_avdd09) {
+ 		host->reg_avdd09 = devm_regulator_get_optional(dev, "avdd09");
+ 		if (IS_ERR(host->reg_avdd09)) {
+@@ -2423,14 +2437,30 @@ static const struct ufs_hba_variant_ops ufs_hba_mtk_vops = {
+ 	.config_scsi_dev     = ufs_mtk_config_scsi_dev,
+ };
  
-@@ -104,6 +108,7 @@ allOf:
-         clock-names:
-           items:
-             - const: main
-+        avdd09-1-supply: false
-         avdd12-ckbuf-supply: false
-   - if:
-       properties:
-@@ -119,6 +124,7 @@ allOf:
-           minItems: 3
-           maxItems: 3
-         avdd09-supply: false
-+        avdd09-1-supply: false
-   - if:
-       properties:
-         compatible:
-@@ -131,6 +137,21 @@ allOf:
-         clock-names:
-           minItems: 10
-         avdd09-supply: false
-+        avdd09-1-supply: false
-+  - if:
-+      properties:
-+        compatible:
-+          contains:
-+            const: mediatek,mt8196-ufshci
-+    then:
-+      properties:
-+        clocks:
-+          minItems: 10
-+        clock-names:
-+          minItems: 10
-+        avdd18-supply: false
-+      required:
-+        - operating-points-v2
++static const char *const ufs_mtk_regs_avdd12_avdd18[] = {
++	"avdd12", "avdd18"
++};
++
++static const char *const ufs_mtk_regs_avdd12_ckbuf_avdd18[] = {
++	"avdd12", "avdd12-ckbuf", "avdd18"
++};
++
+ static const struct ufs_mtk_soc_data mt8183_data = {
+ 	.has_avdd09 = true,
++	.reg_names = ufs_mtk_regs_avdd12_avdd18,
++	.num_reg_names = ARRAY_SIZE(ufs_mtk_regs_avdd12_avdd18),
++};
++
++static const struct ufs_mtk_soc_data mt8192_8195_data = {
++	.has_avdd09 = false,
++	.reg_names = ufs_mtk_regs_avdd12_ckbuf_avdd18,
++	.num_reg_names = ARRAY_SIZE(ufs_mtk_regs_avdd12_ckbuf_avdd18),
+ };
  
- examples:
-   - |
+ static const struct of_device_id ufs_mtk_of_match[] = {
+ 	{ .compatible = "mediatek,mt8183-ufshci", .data = &mt8183_data },
+-	{ .compatible = "mediatek,mt8192-ufshci" },
+-	{ .compatible = "mediatek,mt8195-ufshci" },
++	{ .compatible = "mediatek,mt8192-ufshci", .data = &mt8192_8195_data },
++	{ .compatible = "mediatek,mt8195-ufshci", .data = &mt8192_8195_data },
+ 	{},
+ };
+ MODULE_DEVICE_TABLE(of, ufs_mtk_of_match);
 
 -- 
 2.56.0
