@@ -4,88 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6EF09CCA46C
-	for <linux-mediatek@archiver.kernel.org>; Fri, 16 Oct 2026 12:34:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EA452CCA46C
+	for <linux-mediatek@archiver.kernel.org>; Fri, 16 Oct 2026 15:34:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=cSo6xDDqDcMAieZyogfT7giwvjMP45W7/mSrGPEdfpA=; b=XDZaPZnMiO0PxkHCIS0nyH8TVs
-	tDZ5IPzvr7AuY5ovm8uSp3fjVvWcnxStqYGhETrKPubIHAHo27TFyrqseoqHRG5pKamf0jqUerE1N
-	qEJq1vxoNJxX97PeKb+eHZ5uE4MG0fDjpGRCvyoR11pK5iTkHiunAY7hzj6DctkwVvDV0CGcuLt0p
-	V0balDoe7jyNOTj9YWrKyTJXMYkk4aCKQF6Rj00dXFcIHljAXTZbf30N4wiW2LwDWzL2GLd+b5xdv
-	zQlB0IErSbd1Xqy9IC8dC+zKskr6arLfR7xvKyImFZwl0KGVsOAK43HOXfTtnXpj2cXcu7aFDyVJA
-	3woAtyPw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Of12R2/s6Y32nqdMblu5w/EJ2U82C1Y9iZtrzWl2jI8=; b=eJOQmabob1kuhOz3uqgCdFAPX7
+	bTPGz07CGUxIe2BKNTd1q7rBvq8AW0fhALx4ZOOmrPWW/EFw8jheCkycEa2iXST3vMFrfIwljz2LI
+	RmPHiKZkv1CHUigd8JfWO8dRkFeIwDEisyWU6NjAW+XhoeV0ouRPsVejSbcL0Bk55TNJ2CJUDRraA
+	SWpJx4dPxiEkGPsA2EjKijYJSpB5eWWSAUa1JLXtP0dyATsjNG3qn2hiTVYPfpD1L2TU+ZDC5kwmv
+	fZeT/pjCn0QLftDAmRKAOr6eqdIZwkb4NJnSy7pv+mU0TII+JbgN8BqV5oWNXsDbWPXSg0UdE5nVt
+	usfyhvTg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xHh9C-00000002vGB-1hXO;
-	Fri, 16 Oct 2026 12:34:54 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1xHjwZ-00000003I2S-2bQL;
+	Fri, 16 Oct 2026 15:34:03 +0000
+Received: from vps0.lunn.ch ([156.67.10.101])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xHh8J-00000002tbd-0BeS;
-	Fri, 16 Oct 2026 12:34:00 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1792154036;
-	bh=wHpgJ12qsqOceZTMy6v8+WhnPVqpiFP/V++jZdD/x9I=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=psUbeXq+xijo2sJ3u0F6sGRMbqiU50ThTw0VQ4dnq06Qaj9gYuOi51/3jZICEU2Cn
-	 JwGfa5LjlIRBv3dz1FcvSUl7jIFXEwiYLuibSEAcRKG0jP36N6N3iaAF09QEXDiKD7
-	 6WKL6/0eb/qgnJA4lICMfu3hkac2KR5f4iJnjDnrBPEXrzKazk2786NLnvQTlYRs/r
-	 8o0bZsyYPnmFm8NFS8m+o82X18VtrAd0BxY94txKcr9T04lnuA5ZwsqqUKFfMK33St
-	 PmFUMheTbdLTV/ozM2sYUpFyt8ZeBgU1igtiO9H9/1v2rhphgw2w6Vn+YzkLLrLgZA
-	 QcJ3pMN+Osmmw==
-Received: from yukiji.home (unknown [100.64.0.131])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: laeyraud)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 20A9A17E1509;
-	Fri, 16 Oct 2026 14:33:55 +0200 (CEST)
-From: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
-Date: Fri, 16 Oct 2026 14:33:15 +0200
-Subject: [PATCH v14 23/23] scsi: ufs: mediatek: Add MT8196 compatible,
- update copyright
+	id 1xHjwX-00000003I1C-0fOY;
+	Fri, 16 Oct 2026 15:34:02 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
+	s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
+	References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
+	Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
+	bh=Of12R2/s6Y32nqdMblu5w/EJ2U82C1Y9iZtrzWl2jI8=; b=p43ClLlAXvrwzZYF3VFMYYYtp1
+	MulZNOFu+FXdeWWlGCXD15G2to0kiVJ91U8VBIEk9U+L+awogmOX6qOt9ZX6+nbAH+U4wJttS8DbH
+	bddjkx5W0RQAGOeV2O3FMNrUIG/K84Czya4QJSRqHmSUgfDQgogBOAVFveqHT7lTHS8A=;
+Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
+	(envelope-from <andrew@lunn.ch>)
+	id 1xHjwE-00BAjb-1Y; Fri, 16 Oct 2026 17:33:42 +0200
+Date: Fri, 16 Oct 2026 17:33:42 +0200
+From: Andrew Lunn <andrew@lunn.ch>
+To: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
+Cc: Andrew Lunn <andrew+netdev@lunn.ch>,
+	"David S. Miller" <davem@davemloft.net>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Richard Cochran <richardcochran@gmail.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Biao Huang <biao.huang@mediatek.com>,
+	Maxime Chevallier <maxime.chevallier@bootlin.com>,
+	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+	Alexandre Torgue <alexandre.torgue@foss.st.com>,
+	Eric Dumazet <edumazet@kernel.org>, kernel@collabora.com,
+	netdev@vger.kernel.org, devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	linux-stm32@st-md-mailman.stormreply.com
+Subject: Re: [PATCH net-next v3 1/9] dt-bindings: net: mediatek-dwmac: fix
+ unit in rx/tx delay property description
+Message-ID: <08b7abcf-a738-4ad8-956d-a6205046151e@lunn.ch>
+References: <20261016-dwmac-mediatek-mt8189-v3-0-25daf2bbcf35@collabora.com>
+ <20261016-dwmac-mediatek-mt8189-v3-1-25daf2bbcf35@collabora.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20261016-mt8196-ufs-v14-23-e8d565e0cd45@collabora.com>
-References: <20261016-mt8196-ufs-v14-0-e8d565e0cd45@collabora.com>
-In-Reply-To: <20261016-mt8196-ufs-v14-0-e8d565e0cd45@collabora.com>
-To: Chunfeng Yun <chunfeng.yun@mediatek.com>, Vinod Koul <vkoul@kernel.org>, 
- Neil Armstrong <neil.armstrong@linaro.org>, 
- Manivannan Sadhasivam <mani@kernel.org>, Rob Herring <robh@kernel.org>, 
- Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Peter Wang <peter.wang@mediatek.com>, 
- Chaotian Jing <chaotian.jing@mediatek.com>, 
- Alim Akhtar <alim.akhtar@samsung.com>, Bart Van Assche <bvanassche@acm.org>, 
- Bean Huo <beanhuo@micron.com>, Stanley Jhu <stanleyjhu@google.com>, 
- Stanley Jhu <chu.stanley@gmail.com>, 
- "James E.J. Bottomley" <James.Bottomley@HansenPartnership.com>, 
- "Martin K. Petersen" <mkp@kernel.org>, 
- Philipp Zabel <p.zabel@pengutronix.de>, Liam Girdwood <lgirdwood@gmail.com>, 
- Mark Brown <broonie@kernel.org>
-Cc: kernel@collabora.com, linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, linux-phy@lists.infradead.org, 
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
- linux-scsi@vger.kernel.org, 
- Nicolas Frattaroli <nicolas.frattaroli@collabora.com>, 
- Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
-X-Mailer: b4 0.14.3
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1792154009; l=2479;
- i=louisalexis.eyraud@collabora.com; s=20250113; h=from:subject:message-id;
- bh=F+xJD4NokUgugq0lpphacZHCauVezznIgj/cPkDIZyg=;
- b=Qem980F3Qk2pcP7/bBgVxgEhNwXq2anlQDq+zd0sy8p0K6XuuT9t2AjQp4zHYkU8I70QbeKHM
- EPZ2qbZZI6wCoeNk0HOGKE+xP4PpU+CSXLEz9MrDHPp2q4Vb7CltOlk
-X-Developer-Key: i=louisalexis.eyraud@collabora.com; a=ed25519;
- pk=CHFBDB2Kqh4EHc6JIqFn69GhxJJAzc0Zr4e8QxtumuM=
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20261016-dwmac-mediatek-mt8189-v3-1-25daf2bbcf35@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261016_053359_330052_0F0DCF66 
-X-CRM114-Status: GOOD (  11.74  )
+X-CRM114-CacheID: sfid-20261016_083401_198120_8F918EBA 
+X-CRM114-Status: GOOD (  10.96  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,73 +84,20 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+On Fri, Oct 16, 2026 at 12:31:05PM +0200, Louis-Alexis Eyraud wrote:
+> The "mediatek,rx-delay-ps" and "mediatek,tx-delay-ps" descriptions say
+> their values are in nanoseconds but their names with the "ps" suffix
+> suggest it is picoseconds.
+> They are in fact used in both driver and devicetree as picosecond.
+> So, modify the two properties unit description to fix their unit.
+> 
+> Fixes: 150b6adda6b1 ("net: dt-bindings: dwmac: Convert mediatek-dwmac to DT schema")
+> Signed-off-by: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
 
-The MT8196's UFS controller has a new compatible. Add the necessary
-struct definitions to support it.
+Maybe this patch should be for net, not net-next. Documentation fixes
+often are. Lets see what the Device Tree Maintainers say.
 
-Also update the copyrights and authors, without tabs following spaces to
-avoid checkpatch errors, to list myself as having contributed to this
-driver after the preceding rework patches.
+Reviewed-by: Andrew Lunn <andrew@lunn.ch>
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Reviewed-by: Peter Wang <peter.wang@mediatek.com>
-Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
-Signed-off-by: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
----
- drivers/ufs/host/ufs-mediatek.c | 18 ++++++++++++++++--
- 1 file changed, 16 insertions(+), 2 deletions(-)
-
-diff --git a/drivers/ufs/host/ufs-mediatek.c b/drivers/ufs/host/ufs-mediatek.c
-index 0ffd377ca395..c4ff74eff617 100644
---- a/drivers/ufs/host/ufs-mediatek.c
-+++ b/drivers/ufs/host/ufs-mediatek.c
-@@ -1,9 +1,11 @@
- // SPDX-License-Identifier: GPL-2.0
- /*
-  * Copyright (C) 2019 MediaTek Inc.
-+ * Copyright (C) 2026 Collabora Ltd.
-  * Authors:
-- *	Stanley Chu <stanley.chu@mediatek.com>
-- *	Peter Wang <peter.wang@mediatek.com>
-+ *      Stanley Chu <stanley.chu@mediatek.com>
-+ *      Peter Wang <peter.wang@mediatek.com>
-+ *      Nicolas Frattaroli <nicolas.frattaroli@collabora.com> (Major cleanups)
-  */
- 
- #include <linux/arm-smccc.h>
-@@ -2278,6 +2280,10 @@ static const char *const ufs_mtk_regs_avdd12_ckbuf_avdd18[] = {
- 	"avdd12", "avdd12-ckbuf", "avdd18"
- };
- 
-+static const char *const ufs_mtk_regs_avdd12_ckbuf[] = {
-+	"avdd12", "avdd12-ckbuf"
-+};
-+
- static const struct ufs_mtk_soc_data mt8183_data = {
- 	.has_avdd09 = true,
- 	.reg_names = ufs_mtk_regs_avdd12_avdd18,
-@@ -2290,10 +2296,18 @@ static const struct ufs_mtk_soc_data mt8192_8195_data = {
- 	.num_reg_names = ARRAY_SIZE(ufs_mtk_regs_avdd12_ckbuf_avdd18),
- };
- 
-+static const struct ufs_mtk_soc_data mt8196_data = {
-+	.has_avdd09 = true,
-+	.has_avdd09_1 = true,
-+	.reg_names = ufs_mtk_regs_avdd12_ckbuf,
-+	.num_reg_names = ARRAY_SIZE(ufs_mtk_regs_avdd12_ckbuf),
-+};
-+
- static const struct of_device_id ufs_mtk_of_match[] = {
- 	{ .compatible = "mediatek,mt8183-ufshci", .data = &mt8183_data },
- 	{ .compatible = "mediatek,mt8192-ufshci", .data = &mt8192_8195_data },
- 	{ .compatible = "mediatek,mt8195-ufshci", .data = &mt8192_8195_data },
-+	{ .compatible = "mediatek,mt8196-ufshci", .data = &mt8196_data },
- 	{},
- };
- MODULE_DEVICE_TABLE(of, ufs_mtk_of_match);
-
--- 
-2.56.0
-
+    Andrew
 
