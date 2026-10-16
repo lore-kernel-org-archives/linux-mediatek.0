@@ -4,62 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5D47BCCA46C
-	for <linux-mediatek@archiver.kernel.org>; Fri, 16 Oct 2026 16:15:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 631A1CCA46C
+	for <linux-mediatek@archiver.kernel.org>; Fri, 16 Oct 2026 16:58:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=fpOnpHUlmYdOv4gPzZ2omqt3CmZEZdq9OSzIodZ303E=; b=Mr7k5VDZ5k/QblCSNSBwtN23R2
-	Wf/aO2qOKJfO4IkT+PgwQ6m9ZKciVZbvj87KztNgbL9gj1mIdtbAO08WH2y5AMN2xmZDY2lZWbugb
-	2Vx6mp2AuXiDXwCoXnnCd6zALS+ASSvBjMAQlUVMZKixLGAbR9uCD4OXNvGycS9fcJHIaLHuSRNOY
-	1b+XpXhZVpnw8tAy4v8Gq2Df1ckX4Ys7GvAAE6oKNAeSp33+QSi8giedgWqa/ZcBXsIKlBuSaSYfn
-	Rk7k9RQkncpUGd4NSi8YFoQB+IjLKQ53LDQzUXYmQsVyUcL63/Qe5XSfXOmInJgvU1Mhl5NRG5bJa
-	hUiOZbow==;
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:From:
+	To:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=sdidUHHaw9wa6g9W7a3mjfR2MSS9GT2Fsx2RaFzHYK8=; b=G8395mNgMnI30k5yFenyUig0ut
+	D4x5DMO6XRzOUwkG9MRw0qBeM3R2duMs+7czS4NP7tlTw49g3hX7KmcA4OhAGAaknAoKn8XLmGsWX
+	IbsImRdIOQZiEtF7OvxPjwAiy+Ds5eairtlVvoCsgqJyMcCdQZLEIk64lEtsBeh6QIOY1khzp0aaw
+	MXLTR06xCQ8q7YOJ66I13sfdXmq0euc60asMIMNDEg2tZVjNvbHi8zUjQKe+0Aon7FmqlQMexHsv1
+	VSR2ALw34s6MGSb9PBk4DIVy2SgMtD9HYAzUGDc5p/vph0aaI8P62ZXieVvCgqiNSi+hfWb9pt+/K
+	UBMQ0mjA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xHkaP-00000003PbY-0w4I;
-	Fri, 16 Oct 2026 16:15:13 +0000
-Received: from mail.nozomi.space ([139.162.184.125])
+	id 1xHlGF-00000003VcW-1VNu;
+	Fri, 16 Oct 2026 16:58:27 +0000
+Received: from mail-10699.protonmail.ch ([79.135.106.99])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xHkaL-00000003Pa6-3Jtt;
-	Fri, 16 Oct 2026 16:15:11 +0000
-From: =?UTF-8?q?Micha=C5=82=20Kope=C4=87?= <michal@nozomi.space>
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=nozomi.space;
-	s=mail; t=1792167298;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding;
-	bh=fpOnpHUlmYdOv4gPzZ2omqt3CmZEZdq9OSzIodZ303E=;
-	b=ZQ66W5hlir9wlHKTxyRZAIejQYiTE71r65GNC8e+3zI19L/8bXcCyf2/P+ugU9jHxlAbwE
-	kXKjuovaoxn13FoA8XT7wf75nF1JMiJJjE7R/5S5LecsOTD2o2le53pZOZFWkO65XissoI
-	UCrKue2X7BOEwTx9YY3fFvvy4JB/zu+mUyalrBdwX1pdU1yMiKoUmOTZGuqzEnKos3ksO2
-	lOMNdYaiF4voVLgXeYPTACJ0jb8KynTEGQS7Si/nidZygn3p1Ihz4IzQizalfiXPOsatw1
-	bCDxunfUSkMwia71YSTxc6oKTDosXMSruEvap1CAKUibwOLuTceWLZ7kpQ7VoA==
-To: Mark Brown <broonie@kernel.org>,
-	Liam Girdwood <lgirdwood@gmail.com>
-Cc: Jaroslav Kysela <perex@perex.cz>,
-	Takashi Iwai <tiwai@suse.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Trevor Wu <trevor.wu@mediatek.com>,
-	linux-sound@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	=?UTF-8?q?Micha=C5=82=20Kope=C4=87?= <michal@nozomi.space>
-Subject: [PATCH] ASoC: mediatek: mt8188: Suspend the AFE across system sleep
-Date: Fri, 16 Oct 2026 18:14:55 +0200
-Message-ID: <20261016161455.194400-1-michal@nozomi.space>
+	id 1xHlGD-00000003Vb4-18rD
+	for linux-mediatek@lists.infradead.org;
+	Fri, 16 Oct 2026 16:58:26 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=protonmail.com;
+	s=protonmail3; t=1792169900; x=1792429100;
+	bh=sdidUHHaw9wa6g9W7a3mjfR2MSS9GT2Fsx2RaFzHYK8=;
+	h=Date:To:From:Cc:Subject:Message-ID:In-Reply-To:References:
+	 Feedback-ID:From:To:Cc:Date:Subject:Reply-To:Feedback-ID:
+	 Message-ID:BIMI-Selector;
+	b=UaxTjVaf7U4SI48KUi4MOxnLqzHm/hraLYRWrE+n6HazQNRkS1M0liTFs4qwSQjNq
+	 VmNMp0gjwFnYYhdNXMbtzu5tRm8z0gqIumic2EWyjjo20DmstDiW9DpZ+yXcQjL+8/
+	 2XXmNOrsar0M6QTf8pp461fBbsBvYtJnJX1Gmc2rRj2wLuE89QpUCOTFFOEyYqls+f
+	 ou3Zao0eCzyzpJ0OcRF51Lk93g1YefbRNsgOUJQm2BIsVu+F6VgZuZP/odmsa1V3mm
+	 fP3JAeEBuo8Bgk8QPsyCS+wHMJHupl3PgCX+6K+p9FLu7d8xJan8x8MiRwCSPNO9wJ
+	 wFeFcRM3pxTIg==
+Date: Fri, 16 Oct 2026 16:58:14 +0000
+To: Ryan Brue <ryanbrue.dev@gmail.com>
+From: Roman Vivchar <rva333@protonmail.com>
+Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+Subject: Re: [PATCH RESEND] drm/mediatek: dsi: force command mode in mtk_dsi_poweron()
+Message-ID: <5YDZiRpFJP0aWb7TVPf0B1RZnD7z_d94cL8JhkMGSFrplp49jELQy6a9qKP4NsVXpqlTzh20O8pRoR0S3XBB0powa7ajhNmLIupt54ldTIY=@protonmail.com>
+In-Reply-To: <20261004-rbrue-suez-upstreaming-mtk-dsi-cmd-mode-v1-1-53a4f46ca489@gmail.com>
+References: <20261004-rbrue-suez-upstreaming-mtk-dsi-cmd-mode-v1-1-53a4f46ca489@gmail.com>
+Feedback-ID: 173184497:user:proton
+X-Pm-Message-ID: 67cb0910836930895d2ef1e4849652f6d1d2aa8d
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261016_091510_016466_09ACF490 
-X-CRM114-Status: UNSURE (   9.08  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20261016_095825_455042_CF63C81F 
+X-CRM114-Status: GOOD (  11.86  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,37 +69,40 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The AFE only has runtime PM callbacks. When a stream is open across
-system suspend, the AFE stays runtime active, so its clocks stay enabled
-and its register cache isn't marked dirty, while its power domain is
-turned off in the noirq phase. On resume, the deferred card resume work
-powers the DAPM widgets back up and writes the AFE registers, whose
-clocks are off after the domain was power cycled. The write stalls the
-bus and the system hangs.
+On Sunday, October 4th, 2026 at 11:49 PM, Ryan Brue <ryanbrue.dev@gmail.com=
+> wrote:
 
-Force the AFE into runtime suspend for system sleep, and back to its
-previous state on resume, so that the domain sidebands, the clocks and
-the register cache are restored before anything touches the AFE.
+> mtk_dsi_reset_engine() does not touch DSI_MODE_CTRL, so whatever the
+> bootloader left there survives power-on. On boards where the bootloader
+> lights the panel for a boot logo and hands the DSI over still running, th=
+e
+> leftover value is a video mode, and the first mtk_dsi_host_transfer() the=
+n
+> takes the "already streaming" path: it stops the stream and waits for
+> VM_DONE, which never arrives, because the engine reset has already stoppe=
+d
+> the stream. The panel's very first command fails and it is never
+> initialised:
+>=20
+>   [drm] Wait DSI IRQ(0x00000008) Timeout
+>   *ERROR* failed to switch cmd mode
+>   sending dcs data 8f a5 failed: -62
+>=20
+> Set command mode right after the engine reset, so DSI_MODE_CTRL describes
+> the state the reset leaves the engine in. The video mode is programmed by
+> mtk_dsi_set_mode() when the stream is actually started, exactly as today.
+>=20
+> Seen on the Amazon Fire HD 10 (2017), whose LK bootloader draws its logo
+> over DSI in video mode and never stops the stream before jumping to the
+> kernel.
+>=20
+> Assisted-by: LLM
+> Signed-off-by: Ryan Brue <ryanbrue.dev@gmail.com>
 
-Fixes: bf106bf09376 ("ASoC: mediatek: mt8188: add platform driver")
-Signed-off-by: Michał Kopeć <michal@nozomi.space>
----
- sound/soc/mediatek/mt8188/mt8188-afe-pcm.c | 1 +
- 1 file changed, 1 insertion(+)
+This is useful for quite lot of mobile SoCs, at least mt6572 and 6768.
 
-diff --git a/sound/soc/mediatek/mt8188/mt8188-afe-pcm.c b/sound/soc/mediatek/mt8188/mt8188-afe-pcm.c
-index 7b1f5d05f4d61..1710a9be2bcff 100644
---- a/sound/soc/mediatek/mt8188/mt8188-afe-pcm.c
-+++ b/sound/soc/mediatek/mt8188/mt8188-afe-pcm.c
-@@ -3379,6 +3379,7 @@ static const struct of_device_id mt8188_afe_pcm_dt_match[] = {
- MODULE_DEVICE_TABLE(of, mt8188_afe_pcm_dt_match);
- 
- static const struct dev_pm_ops mt8188_afe_pm_ops = {
-+	SYSTEM_SLEEP_PM_OPS(pm_runtime_force_suspend, pm_runtime_force_resume)
- 	RUNTIME_PM_OPS(mt8188_afe_runtime_suspend,
- 		       mt8188_afe_runtime_resume, NULL)
- };
--- 
-2.56.0
+Acked-by: Roman Vivchar <rva333@protonmail.com>
 
+Best regards,
+Roman
 
