@@ -4,114 +4,96 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B2426CC6B38
-	for <linux-mediatek@archiver.kernel.org>; Thu, 15 Oct 2026 17:24:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9F7B6CC6B38
+	for <linux-mediatek@archiver.kernel.org>; Fri, 16 Oct 2026 03:40:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=QJ7AwNTLGK0qJotpIP2/0w2WrkX374IVRj5Elec6DwE=; b=RbDhrNPJmCX8zi7GPC0T98byaV
-	MsX+S/oz4xM4wjFDmsdKUp3KV7b7OfCVFQnfadBmUCWDNDU5I6E+AXZIQNu7/l4Nx4udUq73jOKRe
-	OqH6yTJUDooVlKxHXk26MPj1mAyKI8WHcSi8jYXGqsWGL2Urh3EKXxLFaNhKiLL3BXSq/y69zBLEz
-	Uvvr/NoiJi1Sa1Jroz4x9wOcxwGZP/rMW6LSfAvb/pfG3sTT/kFBzQt5PRBgYPnF1QmhynXFO2BLI
-	myJbx28aFTPDXpbalTn6IeYapLpNNdrsaaxe/coKlAjh0MPnWwSMnSxP/gIUsm8Xhm9FNO8N0Xwx0
-	gZ2569wg==;
+	MIME-Version:Content-Type:Message-ID:Date:Subject:Cc:To:From:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=FiSWddY//7cIxkgjPTVJ04fT7tu3WDIsuOMUv0HXBC4=; b=sE97hpIU7F30IwNxxJ/7ZV36Wu
+	t/RiFS8Y6mI/Mgj4gi9FntEjA9DosyCURuJDSAeTc/z1/MSv884PlhdKzXCr7eZh+m4D2mZijFdfQ
+	TOaxm/Zjuug/ph/QPLMxSMY3iPG25NNi+wiXTW6pMWf+YeCbYSsINyP2GJm863+Zocx8Bq4MZg7iV
+	6climsxeqjFsjAmoTVuMEWWj7ay4Zeepu7NOhKiX5Gjmyzu9XaqfMTmFX5qjSv7hs5pi8Tx3Np5Qy
+	7qQ+sDpkG0kqDpDJBCytY3BYjSGkccH9sf8lUiYm/JEjpjMNhXOZoOWLuIy8mLJaq7H5KNBbWhfLp
+	0B6aeNFw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xHPBy-00000000z4V-2ZS0;
-	Thu, 15 Oct 2026 17:24:34 +0000
-Received: from mail-yx1-xb129.google.com ([2607:f8b0:4864:20::b129])
+	id 1xHYoP-00000001rwh-10a2;
+	Fri, 16 Oct 2026 03:40:53 +0000
+Received: from mail-qv1-xf33.google.com ([2607:f8b0:4864:20::f33])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xHPBv-00000000z3m-33Cs
+	id 1xHYoM-00000001rvz-2mOm
 	for linux-mediatek@lists.infradead.org;
-	Thu, 15 Oct 2026 17:24:32 +0000
-Received: by mail-yx1-xb129.google.com with SMTP id 956f58d0204a3-676804a3a22so5597600d50.1
-        for <linux-mediatek@lists.infradead.org>; Thu, 15 Oct 2026 10:24:30 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1792085070; cv=none;
-        d=google.com; s=arc-20260327;
-        b=FfL42K5kRBehT7UKhclhjVy3rbpAaJaE0rD+TjLWMHg4mh/Ie9EESHQyJ4hKzhBLRr
-         8N0XCx610yiVLoKE1NniBpbDtn0XrZS+dxrKDqcAXwJYhoz0OQe037SqVOqbMfjCR4Cj
-         jtxx0Z+ppnwfT9sNYpKjy6cvn5own9R/N1U/tTH3oaLdakCJVefPoWsf8WmlV5Cizoyy
-         bbkYHwCVna4ZhTBPbTxjOCHrlfJH13k3W8hcEwhuFPC5kHIuDpuunjqVDXxLpt8UvpvR
-         /PclVSEbTnVHfjNL+W2oWw5ZKlvouXA0oM8vW0mXFsOQFsW9T29NEt4n64QeSbSW7fOB
-         SbIw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20260327;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=QJ7AwNTLGK0qJotpIP2/0w2WrkX374IVRj5Elec6DwE=;
-        fh=3jdEdQakXgjsSu/YoXnAwhx1h+27ZgwrwxrfBJxZVVE=;
-        b=sHRGdhzFzmNExzoYH9SC5AsyvZUDOdpHQX3piKnp61B5LX48Fn1jbLzNKGNQ4OloNt
-         RQDDeikVWXVzOmXCZWs6QyS40jNGLKbm8rOFZuo/i9JE1oWFaDVt34ppIhc6Bl03wigL
-         OFL9zEVu++RQsOODTZbLBVtwK2zzobY0jYyB49eeKk59mieH5n42v9xWB+3CV3JWG/zS
-         Zghk0Z40L9FCW+r1nKExtuTMXleVF/m49qjl93KcQhsCbdzTbvon9bJfH8SeIt+0yRj4
-         fxPpeROalmI4zv+oRGjY5dqCsa+u8v/BNQCmL3c2LWoBrf864dsMoOZeKpMp7w1GV5/B
-         sCkw==;
-        darn=lists.infradead.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
+	Fri, 16 Oct 2026 03:40:51 +0000
+Received: by mail-qv1-xf33.google.com with SMTP id 6a1803df08f44-9178510f3bdso76240026d6.2
+        for <linux-mediatek@lists.infradead.org>; Thu, 15 Oct 2026 20:40:49 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1792085070; x=1792689870; darn=lists.infradead.org;
-        h=content-transfer-encoding:content-type:cc:to:subject:message-id
-         :date:from:in-reply-to:references:mime-version:from:to:cc:subject
-         :date:message-id:reply-to:content-type;
-        bh=QJ7AwNTLGK0qJotpIP2/0w2WrkX374IVRj5Elec6DwE=;
-        b=Ti7HYClGUbBNkexVgTX/6TJsIAlmBmHlkARL07hPSs0eABZnorzKqpHlzQzodyhpHf
-         /RomfWsO0gidt85B5H1yxDSc6J5GuwneclFiZw4uMt5snAv26kUo6cbd+QwJNB/RwSSX
-         5d1y/veij/E9M51H8HRvD5t4wCDZLlMiHFtZ9uGhf0+SP4lRfTuOXGXk82uX23oWW91f
-         o77KIgm4e1xIxlPplepxMjaU4mRLVUQyTy/hxka8Uh5qu6lLX/fR5L6biAN4tFgIw/Nz
-         C88vx1KLo6R4miPWoVjA4crRNOrcR+HdgQRihjBIJD44vFwJsDMtJd032kIttp7qGCSS
-         5vyw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1792085070; x=1792689870;
-        h=content-transfer-encoding:content-type:cc:to:subject:message-id
-         :date:from:in-reply-to:references:mime-version:x-gm-gg
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+        d=gmail.com; s=20251104; t=1792122049; x=1792726849; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:content-type:message-id:date
+         :subject:cc:to:from:from:to:cc:subject:date:message-id:reply-to
          :content-type;
-        bh=QJ7AwNTLGK0qJotpIP2/0w2WrkX374IVRj5Elec6DwE=;
-        b=rad/3ObYmJCBFQUouWrwMUh4fSW0XhzZvNTZnjtNL3d30lW3mDkIt38eM8ZMsLsnAK
-         bf9BeD3w1DcFhsQ9xy+EIKQqhRvJZ7Tu7B8nIJBfPXDQqlIFo76V9QlqIZuxUYFZnbMe
-         Hzop7oJTk0Dep3gT+viKSl2dBLBQ7/eB6b0FWBMkTaJzqE97yo16wxpkaLC95JWP4HWm
-         wNg5+s/PVy855zgUJkpMPFB3dU3wHJiO0fNDlJQwr36FUyVe4RYutpppok4+iPl1UOqw
-         lgMpZwD9cpsiQN2NiceHlcd8lwHsEs+Zb1lAkV2HlI0LmkXeCvf1T/RR7Givy7G/NpAY
-         1lXQ==
-X-Forwarded-Encrypted: i=1; AKwUvBzqA5N0B4dyRbYu3IfpzgEq8ZCntNGxPgMnTgz3/VYSBLM3APk8mXHEsI2KmISrGajiWLNv09tfqgmUHYe5ew==@lists.infradead.org
-X-Gm-Message-State: AFq9FYKZ8Jds6oe7CjXbNzT5PpWPom+DSRrydvyV7h+k9wWvJPXmxs7c
-	NCFOSs088ljItM6cr6wI1UEw4qHr35xYD4HB6EpjYNWNvbi6aOmUGOckDt54kY83k8hpqNRUHbi
-	7/EPHnuE8qoychGLjnoVPNkhZoewgsmA=
-X-Gm-Gg: AYBFou1WQ0XtjZ0pBChZuftqzURUd+8EP9hm0I82drwR43LFjbU9Z2iOwPeaQ9WBJv1
-	Edaue/12+A1auyW8lsXZilJ0VGX4Kih2squ81BzELGf04wjSya9o3l20M4Ojn6DX79EZk021HuH
-	gJ6VNS1pb+IHEhYspW+Ki0Dnctx7RQ1q32TZkGU1LUZUXD3BQDyMGcRy84AF0H8wPcE/kC8bydy
-	VLWXKEBbn//nxwwFhSCpzvgi9ifJVNonmG+LWXnIaqereQkfBMioZqOE53f+pn1RA4zJMdqoHLk
-	B4UDKt5uKy928/FFlAAWNhESHIiRw1e7NWM9AU8QL5z02qKbBXn4pEVljBqOAPr3k0gAcWcQcXN
-	vZkTr1HAKov4rcepWImo=
-X-Received: by 2002:a05:690e:1689:b0:672:f272:f629 with SMTP id
- 956f58d0204a3-6793630d90emr8360068d50.104.1792085069711; Thu, 15 Oct 2026
- 10:24:29 -0700 (PDT)
+        bh=FiSWddY//7cIxkgjPTVJ04fT7tu3WDIsuOMUv0HXBC4=;
+        b=oFc2FbsPE4638AnYx5IfOozy/lsOpXrW5q39plFj+ooMNHp9sIP7MlICyFv7LnSdC3
+         cNOIUd/aEU/vDOhYPK8FH0oHdkS1Lf5Hr/rZ+Q63AYxwiHFitsyebeKrBLNAzkXrPRBV
+         Jn/6Esixb22Zuv9KF+L4iK7Uf+pQ53Y1uGpK22kExzDyaLsShNiakX4tEYL0nImqbfhO
+         1wy515KWU80+0uCe8Va8pKGWXicAjzNJdL6w/uLV4tI9Uz7OrVq7e9T2/mXtVMTzP4ii
+         XTyIiro78sYSSC0js0JBnu5QcPxHNAj/XZ1sZo0rHnuHZ1SzNgmrjOaqBVWMr5w+KQ47
+         1aTQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20260707; t=1792122049; x=1792726849;
+        h=content-transfer-encoding:mime-version:content-type:message-id:date
+         :subject:cc:to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject
+         :date:message-id:reply-to:content-type;
+        bh=FiSWddY//7cIxkgjPTVJ04fT7tu3WDIsuOMUv0HXBC4=;
+        b=dryoEH9UcW+2rMYmEalixhebJ0FqD2CrSjrgWN1BYu3Gf1EnI5US9H5PJtRcJ52+qS
+         eRHgIehG04LdU3b2k5bJrtYs2qE1cq3Y5yL2CYOngrcCtVYqb9sNpuuARBsLC3V/i6FN
+         vzcN4gWxtwupeTEuSjfMKgFw0qa6opv1Dx2wTyZg2Q5eGv6C1LJqLtBIMc+rgj5k+r2s
+         U0OnHnaEnwhK0aaWB1Mnj/An8qn+SxNK4GgK3WBvPbkriVWLzYZ6hKrr87duxww35p0s
+         UXAeCoscQHxhLE0UtZ226EQOla+u0xtUJLILwUYYXxV8+GhTN9X8i+uISntDGSWcT0+P
+         NvpQ==
+X-Forwarded-Encrypted: i=1; AKwUvBwS8G/t7206sFJbpyUkZQnSlnit3qpbRf6PaLgVqURBOYC7Li09gNZdwtnfcFBzV8BVy6IZD6cHYO2Sa3V0kw==@lists.infradead.org
+X-Gm-Message-State: AFq9FYL8My0EPEGO9crTcbMyPDpiWsc7UpD7m3FjNua70/EGyJH8981f
+	iWerGsM+8i8YM+vSukEJUHmqGj06aDLUW7+XmwH4sCY85JS5+vvYHUc=
+X-Gm-Gg: AYBFou2y9FT1PSKpAdeT0EVuo3c3w2/Wolr9CbfPH5smxAic+mZJIOQOzBN5K8FPD0g
+	/Soc1KiwWPl8XnsRnsFEFCV9ZPN5CHcXwQNcNGT7HbHzY43oEKORSy72KMt6SW8mv8vIMkizcZm
+	UBor5Qqj6V4iK2Y5vvO/hU0ujho1/QztoJ0EYARx4+Bt5FfFf2/Oh20RI5KiKkJIyJCQJEw249b
+	g6oVLVJhlMTa67tIBtZhKVZotw7nx2e6QQlAts/jktTGEBCcg1W1q1eIK88Od2BTSg6CXkmo7Fr
+	65RvfzELw7FMwWR45Rn/QOUP4O5icw0WdWmdmQiR/4YEIaoCAZI0aQNahg4Q+Vedhu0WKaBFiKg
+	xJ3jApbUp1bq69qNonZnESFC0AdJsZ+osuQ4Cc+mM4gJI+HBNFvYiSKcLj2VEP8buML89f7Oskz
+	2gJyp3JnyzsUJteGxBFxaRb8AL9XIz+zBrIwR7vzyJwjU0DCcSaDhTmMB9bWYSURTCMMG4cdVQe
+	s7/wcpHagOXOY0xeq48XeRKuB5YkHgFwklMPhLcMJH/C7bucKskXnzBYfYTWeO9GPlV0X+itQe6
+	vJAQEMWDNLphGLY0/Pic5UA8/aGs
+X-Received: by 2002:a05:622a:558c:b0:535:232f:ca21 with SMTP id d75a77b69052e-5359f486ebemr346542441cf.11.1792122048786;
+        Thu, 15 Oct 2026 20:40:48 -0700 (PDT)
+Received: from i4-gl-tmk5904-1.ad.psu.edu ([130.203.156.90])
+        by smtp.gmail.com with ESMTPSA id d75a77b69052e-5362a9dbdb5sm11198881cf.22.2026.10.15.20.40.47
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 15 Oct 2026 20:40:47 -0700 (PDT)
+From: Myeonghun Pak <mhun512@gmail.com>
+To: Liam Girdwood <lgirdwood@gmail.com>,
+	Mark Brown <broonie@kernel.org>,
+	Jaroslav Kysela <perex@perex.cz>,
+	Takashi Iwai <tiwai@suse.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: Myeonghun Pak <mhun512@gmail.com>,
+	linux-sound@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	Ijae Kim <ae878000@gmail.com>
+Subject: [PATCH] ASoC: mediatek: mt2701: join the IRQ before managed cleanup
+Date: Thu, 15 Oct 2026 23:40:45 -0400
+Message-ID: <gm-top10-20261015191529-g154-c729db287fde@mhun512.gmail.com>
+X-Mailer: git-send-email 2.53.0
+Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
-References: <20260923055103.949540-1-gongtao0607@gmail.com> <10d0c5a6-98d0-45d5-a196-aa839b452172@redhat.com>
-In-Reply-To: <10d0c5a6-98d0-45d5-a196-aa839b452172@redhat.com>
-From: Tao Gong <gongtao0607@gmail.com>
-Date: Thu, 15 Oct 2026 10:24:19 -0700
-X-Gm-Features: AclHuK8ES2Kd8skfs6udor0Fpl5ne5f6cGaytsMa82tMXcwNkOjHwfvDn2lGZGA
-Message-ID: <CACmSHQse_McSbBfEiyvCCePp97Azb7a5c7q5rr3AdXncrcSfUg@mail.gmail.com>
-Subject: Re: [PATCH net v2 0/2] net: dsa: mt7530: fix trapped frame forwarding
- and egress tagging
-To: Paolo Abeni <pabeni@redhat.com>
-Cc: netdev@vger.kernel.org, "Chester A . Unal" <chester.a.unal@arinc9.com>, 
-	Daniel Golle <daniel@makrotopia.org>, Andrew Lunn <andrew@lunn.ch>, 
-	Vladimir Oltean <olteanv@gmail.com>, "David S . Miller" <davem@davemloft.net>, 
-	Eric Dumazet <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	Lorenzo Bianconi <lorenzo@kernel.org>, =?UTF-8?B?QXLEsW7DpyDDnE5BTA==?= <arinc.unal@arinc9.com>, 
-	Florian Fainelli <florian.fainelli@broadcom.com>, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261015_102431_815603_F4ED7AB1 
-X-CRM114-Status: GOOD (  17.44  )
+X-CRM114-CacheID: sfid-20261015_204050_727939_46BFC56A 
+X-CRM114-Status: GOOD (  19.90  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -126,55 +108,183 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Sorry, I overlooked the existing fix, commit 4cb3cd670b2a ("net: dsa:
-mt7530: untag VLAN-aware bridge PVID"). I saw the issue on real
-hardware (AN7581) running a 6.18 stable kernel, which doesn't have
-that commit. After picking it up, the issue is gone and neither patch
-is needed. Please drop this series.
+The IRQ is published before the handler's arrays, regmap and clock state
+are ready. Remove drops the PM reference before managed IRQ release, so
+a handler may also overlap clock shutdown or subsequent resource
+cleanup.
 
-On Tue, Sep 29, 2026 at 2:08=E2=80=AFAM Paolo Abeni <pabeni@redhat.com> wro=
-te:
->
-> On 9/23/26 07:51, Tao Gong wrote:
-> > This series resolves two issues in the MT7530 DSA switch driver prevent=
-ing
-> > trapped link-local control frames (such as STP BPDUs) from reaching the=
- CPU
-> > host when bridge VLAN filtering is enabled:
-> >
-> > 1. Commit 3ac85bcfd404 ("net: dsa: mt7530: preserve VLAN tags on trappe=
-d
-> >     link-local frames") set MT7530_VLAN_EG_DISABLED to preserve VLAN ta=
-gs,
-> >     but in hardware this disables the per-packet override and causes
-> >     trapped frames to follow the CPU port's active VLAN table (VAWD2) r=
-ule.
-> >     When bridge VLAN filtering is active, the CPU port is in stack mode=
-,
-> >     causing incoming untagged BPDUs (01:80:C2:00:00:00) to be egressed =
-with
-> >     a VLAN tag, which userspace STP daemons (such as ustpd) and the ker=
-nel
-> >     bridge drop. MT7530_VLAN_EG_CONSISTENT correctly preserves wire sta=
-te
-> >     (untagged frames stay untagged, tagged frames stay tagged).
-> >
-> > 2. On Airoha EN7581 and AN7583 switch IP, setting MT7531_CFC (0x04)
-> >     CPU_PMAP alone is insufficient; the switch MAC forwarding control
-> >     (MT753X_MFC, 0x10) must also have CPU_EN and CPU_PORT configured fo=
-r
-> >     trapped frames to exit to the CPU conduit.
-> It's unclear to me if you are observing the issue with real H/W or if the
-> patches comes from LLMs or static analysis. Please clarify such info
-> in the next iteration.
->
-> Also clashiko feedback looks relevant, please have a look. You should
-> address LLM's feedback proactively.
->
-> /P
->
+Initialize the dependencies and acquire the PM reference before
+requesting the IRQ. Register a PM cleanup action before the IRQ
+resource, and a final IRQ-disable action after component registration.
+Reverse release then joins the IRQ, removes the components, frees the
+IRQ and drops PM before releasing the backing arrays.
 
+Disable and join the IRQ explicitly when component registration fails.
+Use pm_runtime_resume_and_get() so a failed resume does not retain a new
+usage reference. If manual clock resume succeeded while runtime PM
+stayed disabled, unwind those clocks if the later PM get fails.
 
---=20
-~Tao
+This issue was identified as part of our ongoing research while
+reviewing kernel code.
+
+Fixes: 43a6a7e71063 ("ASoC: mediatek: add mt2701 platform driver implementation.")
+Assisted-by: LLM
+Co-developed-by: Ijae Kim <ae878000@gmail.com>
+Signed-off-by: Ijae Kim <ae878000@gmail.com>
+Signed-off-by: Myeonghun Pak <mhun512@gmail.com>
+---
+The final devres action disables the IRQ rather than looking up and
+freeing another managed resource during devres release. Independent
+PCM/card lifetime and system-suspend clock ordering are outside this
+change.
+
+Compiled with Clang 22.1.2 and W=1 in the accompanying validation
+bundle. The prior G154 diff received independent source review. The
+revised manual-resume failure cleanup received coordinator
+counterexample review. No runtime reproducer, hardware test or
+full-kernel link was performed.
+
+Base: 0fcb05b72344f40806cbe810de8872f1698bf053
+
+ sound/soc/mediatek/mt2701/mt2701-afe-common.h |  1 +
+ sound/soc/mediatek/mt2701/mt2701-afe-pcm.c    | 65 ++++++++++++-------
+ 2 files changed, 44 insertions(+), 22 deletions(-)
+
+diff --git a/sound/soc/mediatek/mt2701/mt2701-afe-common.h b/sound/soc/mediatek/mt2701/mt2701-afe-common.h
+index c9477bc24ee9..c7ffae5b6fb0 100644
+--- a/sound/soc/mediatek/mt2701/mt2701-afe-common.h
++++ b/sound/soc/mediatek/mt2701/mt2701-afe-common.h
+@@ -89,6 +89,7 @@ struct mt2701_soc_variants {
+ };
+ 
+ struct mt2701_afe_private {
++	int irq_id;
+ 	struct clk *base_ck[MT2701_BASE_CLK_NUM];
+ 	struct clk *mrgif_ck;
+ 	struct clk *hadds2pll_ck;
+diff --git a/sound/soc/mediatek/mt2701/mt2701-afe-pcm.c b/sound/soc/mediatek/mt2701/mt2701-afe-pcm.c
+index d56b498e8c0c..ef051157a0c7 100644
+--- a/sound/soc/mediatek/mt2701/mt2701-afe-pcm.c
++++ b/sound/soc/mediatek/mt2701/mt2701-afe-pcm.c
+@@ -1591,12 +1591,31 @@ static int mt2701_afe_runtime_resume(struct device *dev)
+ 	return mt2701_afe_enable_clock(afe);
+ }
+ 
++static void mt2701_afe_pm_disable(void *data)
++{
++	struct device *dev = data;
++
++	pm_runtime_put_sync(dev);
++	pm_runtime_disable(dev);
++	if (!pm_runtime_status_suspended(dev))
++		mt2701_afe_runtime_suspend(dev);
++}
++
++static void mt2701_afe_irq_disable(void *data)
++{
++	struct mtk_base_afe *afe = data;
++	struct mt2701_afe_private *afe_priv = afe->platform_priv;
++
++	disable_irq(afe_priv->irq_id);
++}
++
+ static int mt2701_afe_pcm_dev_probe(struct platform_device *pdev)
+ {
+ 	const struct mt2701_soc_variants *soc;
+ 	struct mtk_base_afe *afe;
+ 	struct mt2701_afe_private *afe_priv;
+ 	struct device *dev;
++	bool manual_resume = false;
+ 	int i, irq_id, ret;
+ 
+ 	afe = devm_kzalloc(&pdev->dev, sizeof(*afe), GFP_KERNEL);
+@@ -1619,13 +1638,7 @@ static int mt2701_afe_pcm_dev_probe(struct platform_device *pdev)
+ 	irq_id = platform_get_irq_byname(pdev, "asys");
+ 	if (irq_id < 0)
+ 		return irq_id;
+-
+-	ret = devm_request_irq(dev, irq_id, mt2701_asys_isr,
+-			       IRQF_TRIGGER_NONE, "asys-isr", (void *)afe);
+-	if (ret) {
+-		dev_err(dev, "could not request_irq for asys-isr\n");
+-		return ret;
+-	}
++	afe_priv->irq_id = irq_id;
+ 
+ 	afe->regmap = syscon_node_to_regmap(dev->parent->of_node);
+ 	if (IS_ERR(afe->regmap)) {
+@@ -1687,14 +1700,27 @@ static int mt2701_afe_pcm_dev_probe(struct platform_device *pdev)
+ 		ret = mt2701_afe_runtime_resume(dev);
+ 		if (ret)
+ 			goto err_pm_disable;
++		manual_resume = true;
+ 	}
+-	pm_runtime_get_sync(dev);
++	ret = pm_runtime_resume_and_get(dev);
++	if (ret)
++		goto err_pm_disable;
++
++	/* Keep the AFE powered until the components and IRQ are released. */
++	ret = devm_add_action_or_reset(dev, mt2701_afe_pm_disable, dev);
++	if (ret)
++		return ret;
++
++	ret = devm_request_irq(dev, irq_id, mt2701_asys_isr,
++			       IRQF_TRIGGER_NONE, "asys-isr", afe);
++	if (ret)
++		return ret;
+ 
+ 	ret = devm_snd_soc_register_component(&pdev->dev, &mtk_afe_pcm_platform,
+ 					      NULL, 0);
+ 	if (ret) {
+ 		dev_warn(dev, "err_platform\n");
+-		goto err_platform;
++		goto err_irq_disable;
+ 	}
+ 
+ 	ret = devm_snd_soc_register_component(&pdev->dev,
+@@ -1703,27 +1729,23 @@ static int mt2701_afe_pcm_dev_probe(struct platform_device *pdev)
+ 					 ARRAY_SIZE(mt2701_afe_pcm_dais));
+ 	if (ret) {
+ 		dev_warn(dev, "err_dai_component\n");
+-		goto err_platform;
++		goto err_irq_disable;
+ 	}
+ 
+-	return 0;
++	/* Drain the IRQ before releasing the managed components. */
++	return devm_add_action_or_reset(dev, mt2701_afe_irq_disable, afe);
+ 
+-err_platform:
+-	pm_runtime_put_sync(dev);
++err_irq_disable:
++	disable_irq(irq_id);
++	return ret;
+ err_pm_disable:
+ 	pm_runtime_disable(dev);
++	if (manual_resume)
++		mt2701_afe_runtime_suspend(dev);
+ 
+ 	return ret;
+ }
+ 
+-static void mt2701_afe_pcm_dev_remove(struct platform_device *pdev)
+-{
+-	pm_runtime_put_sync(&pdev->dev);
+-	pm_runtime_disable(&pdev->dev);
+-	if (!pm_runtime_status_suspended(&pdev->dev))
+-		mt2701_afe_runtime_suspend(&pdev->dev);
+-}
+-
+ static const struct mt2701_soc_variants mt2701_soc_v1 = {
+ 	.i2s_num = 4,
+ };
+@@ -1752,7 +1774,6 @@ static struct platform_driver mt2701_afe_pcm_driver = {
+ 		   .pm = pm_ptr(&mt2701_afe_pm_ops),
+ 	},
+ 	.probe = mt2701_afe_pcm_dev_probe,
+-	.remove = mt2701_afe_pcm_dev_remove,
+ };
+ 
+ module_platform_driver(mt2701_afe_pcm_driver);
 
