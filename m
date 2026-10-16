@@ -4,83 +4,98 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A0926CCA462
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id ABB4ACCA48B
 	for <linux-mediatek@archiver.kernel.org>; Fri, 16 Oct 2026 09:13:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=DaRwbulkkTIJ93wv1Wgx1yqKGJXajwFFEDheAhreMvw=; b=Gac+zBg/XYWC5dvP7P4DiYncf5
-	utBxf/wse+F4cHo1Y7JTfY04FsHi/agbDEJhNKdQUTRo9WA5DwsMb9Kji5qX/k5fvpLD9KO+Xoepp
-	Jkz05oKVpaFAIsopphtQRTRvCBnp6/+f6Ilw+tzCl6i88X2jaQzHgBFSH2JmNssRtTYm1sL7pvEAs
-	PwgP3HoXtWYqaEO6wdOLdVXY1m5V6zMpI5H1VkUiC5oaSfAnTjyihXTOl2hWmU5HvT0arp34yGfaX
-	X3dYheWTcVy6eeKRYQ1S9kWdLItyTMokqKbKwuXU0epQm4GEr/4s0FtCtJ4AHX/MYY9jJ+L+g+4Wb
-	O5fCZ8Mg==;
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=R5dwpMdeDtafkrSIKilmZHw+Byk+8y+YTLJ/JPrzYVs=; b=TJhkHPqd95Lrg1
+	U+0e7whnpkICV83ScpCqMBEPoGYpY9N487Zoms1ZQ8mx3BW9EJ44GLHAafmbCKOOOskOBc6dKMo7f
+	pzKE651vtZkoJcS2Z1exf2Z96S30YvG9FNok8BsETpve9R8y+AVZ2/51WdTJncvbfHfs0DNSzRJCV
+	qrvMARrwptOsYOhMypXDTXeNaaqu1WFNFlhQvPflwxuR5CU8DN8PXi6eb54ofwTUaOqeERJhYUGYu
+	QiJqqdMvRd0iFs8MkBlLtkDnvg76FnpaJV0ToVqjDOlIXt+ys01OIQ0tqSxyXEdtVV6ljJJEXNrjG
+	QJlXpW0zTk2lc+femt9g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xHdzr-00000002RLk-30ua;
+	id 1xHdzr-00000002RLo-3GQK;
 	Fri, 16 Oct 2026 09:13:03 +0000
-Received: from mail-pg1-x52c.google.com ([2607:f8b0:4864:20::52c])
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xHdzn-00000002RJM-11GY
+	id 1xHdzp-00000002RK5-0TPf
+	for linux-mediatek@bombadil.infradead.org;
+	Fri, 16 Oct 2026 09:13:01 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Cc:To:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Message-Id:Date:Subject:From:Sender:Reply-To:
+	Content-ID:Content-Description:In-Reply-To:References;
+	bh=R5dwpMdeDtafkrSIKilmZHw+Byk+8y+YTLJ/JPrzYVs=; b=AWPbCYUWspoflxCZ7qi5iXoCHA
+	/aq/9f84TeBYq1bSvNZiPP6nwA2fGgBiveXFa/+CXr8ohduGRjfr50aLJKgJPzA+/Ivrx7WqVlnsE
+	/KDjPRu2rlkkhOQZ9CzEiCcvPTqou7z8e2d9IBxOh7tU5H+eWhaZ4uuvay3rXwBPySNjqS3lVBh2S
+	F1tTc4s0WnwfkGmr7s4L4hghY4vqX2aO5oey8GbpXx9XbRVVpu3TMpk8y/GPKOmmNGWfIWI4oWBPO
+	GxnMbSNUvhbffmoOl3AuBfHZN6kX2e1/uiFjjQOOZIwV2spQfYkIe4joSEKxANptvX0c6196v0zTX
+	PmFuMElA==;
+Received: from mail-pj1-x102d.google.com ([2607:f8b0:4864:20::102d])
+	by desiato.infradead.org with esmtps (Exim 4.99.5 #2 (Red Hat Linux))
+	id 1xHdzl-00000001J2G-2IJ1
 	for linux-mediatek@lists.infradead.org;
-	Fri, 16 Oct 2026 09:13:00 +0000
-Received: by mail-pg1-x52c.google.com with SMTP id 41be03b00d2f7-cd61cef87f1so1605701a12.0
-        for <linux-mediatek@lists.infradead.org>; Fri, 16 Oct 2026 02:12:58 -0700 (PDT)
+	Fri, 16 Oct 2026 09:12:59 +0000
+Received: by mail-pj1-x102d.google.com with SMTP id 98e67ed59e1d1-38ec1402b05so1717448a91.2
+        for <linux-mediatek@lists.infradead.org>; Fri, 16 Oct 2026 02:12:56 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1792141978; x=1792746778; darn=lists.infradead.org;
-        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
-         :content-type:mime-version:subject:date:from:from:to:cc:subject:date
-         :message-id:reply-to:content-type;
-        bh=DaRwbulkkTIJ93wv1Wgx1yqKGJXajwFFEDheAhreMvw=;
-        b=eCmkCRhPNCB424jvEWUTaZyWfk0mFNVx/o4YlpKOUeX2iTuIc8yNB63hV/nsT0Z4jO
-         +UK3aIjHUbxrqcrmBDxRqZqGyIidJYN66jqmCHz7WyGwXhQDhatOhjFtMfemk6YyAmMS
-         ywrIYVgJ1qbJSuMI97p7guPSmUQD1gsYvFtQPC898OcBaw2kfgMuCutBTUaoTNLcb0Vn
-         edS9SivOLXS1Y6F56BRRTI+8plnKIfb961CCzgnLmu3CUnwV3RudGbMs1+unYeDknvxw
-         a6GlhX2dctfLKrTwFCJhls+/ysNLwzU2yGkzmuFnc2z4aZxPSspyLFuYJGfJ4pDcI3Wn
-         Fwyg==
+        d=gmail.com; s=20251104; t=1792141974; x=1792746774; darn=lists.infradead.org;
+        h=cc:to:content-transfer-encoding:content-type:mime-version
+         :message-id:date:subject:from:from:to:cc:subject:date:message-id
+         :reply-to:content-type;
+        bh=R5dwpMdeDtafkrSIKilmZHw+Byk+8y+YTLJ/JPrzYVs=;
+        b=Oh9B9utSCLSgp2PRxsyAKRnaZup6ZCY/gDAsA21Snt7rbTpv3MfqnO5y7RPoSPtVra
+         xXo+xllyIzudUgCD5uZbf3X8EZ7NxDd+mrCjdr/CMdMMqRoU22Q0RrLPwPqaajaHA3tn
+         1zpzNGOuzh3iVOkwjw4tX8bJy3Rtx1naydCMfATvH/fX7XwNw5zzgLCbxt6lJhWFnk0d
+         M4oeBZTXR2dAe1gEWvZqs0wvOt1L/xF5OGiMgPLSPG56y0xckuG/lo2onI9/kzACiki6
+         xHTAYWgPmbZuMWQTshk23piKhhJvguO1OuVXWjDy73ug+dH8fnXOQwv2sQjitHvrqivU
+         /fUw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1792141978; x=1792746778;
-        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
-         :content-type:mime-version:subject:date:from:x-gm-gg
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
-         :content-type;
-        bh=DaRwbulkkTIJ93wv1Wgx1yqKGJXajwFFEDheAhreMvw=;
-        b=nQ7pBxQpzBsdwLOxKBhSsoXWQfSjRDKlFeE1lLpS/HimB27LaBmFy/uzKYqV55cy/r
-         +F+qCLaSKMpcG86yp6ho67MElOqHXfahr80f3Gdju5fVUlDfaC2KG4xYbXTnWWafBq9T
-         nJSiZEKs7bpLjGRVI04usBprGa2CH0AiPBqC9ccqMCfX0SYNOOgf5bzI0CylBNfVP8xq
-         uWAwwGS4QnfLtZ4ZBnlv+V0NxVqXtPX4AiEIn8COk2ym29S5f1/eidMSJRm15uwLl2TQ
-         lGEGIl6ye8EZ+Zt3QCFf3AqLPPWvndmsRCedSqIq6d8MuIQ+1NGk7hRgm71ndDFdp9+d
-         xdTQ==
-X-Forwarded-Encrypted: i=1; AKwUvByh4UfWMJ4mZyZ6tG2+k5tS3LVSVOKUbm9rXkBiCkD3Cxww3Afej1wHNB6UQNgc/vNlgs7706nIfPXvbv87Lg==@lists.infradead.org
-X-Gm-Message-State: AFq9FYLkt+g8zhIi4F7fFjsK42gfs7eMSXQWPRtT5Z+VE/kXHq+DOBIn
-	69E6K5Ykgjc3RqRY6DXrIMYto963OSsSFMqSOPFJB/B+3JDKAOOMEj+i
-X-Gm-Gg: AYBFou2OnlPLi2NdCFfgrR9ABmJknvHzIZdQI1LkoKagJyRLl3SC7cT8UQYatcfpstH
-	R2uzb5LAwqHswNmpwmMQvBVndGSniR1YCTJJ/8ZAi088MP1/dAd1hObmdqCTM5EoOBoammtQyHm
-	aExDFwtycuVi+tAGQPnjgRBOazui/lKIVgTymGjUQKsywTFF2FWpZEwVb6zABWKNOXbqv5kUMEf
-	FijVXG7objBzDpGvEAnHULUailPVoZ/o7/4HeXmtyXxg8RNAPRsOFcbD3k/32IkOrz8vKpPN4Hn
-	nC8YLWoa3Ocd1TilmxyvKA0uTqAhGUYEJfTQmL/t/L3XkmMxG/Jw17I5wssNOxxFOnUOXtSMZFv
-	Gsy29ripb2krir9JdVEwpXB5FUWH0vWIPJs1Eu+07B8T+zZRXv0k2YVBbITXaMb+SLydjc9MUEf
-	NGxmQlKEu3p84zf42rTdGyNWVmeWKf4ctuObrmTpTqCFehlazbcNRtrNNXDTIc5Y668AqI/rEhY
-	MunnK1oAxLVth6Ok9we6AXClhfrOuO67iijnps4mv7BGfpmqU6JxaKpBWIn
-X-Received: by 2002:a17:90b:4ac2:b0:3ac:adce:60b5 with SMTP id 98e67ed59e1d1-3acadce670bmr3331774a91.14.1792141978314;
-        Fri, 16 Oct 2026 02:12:58 -0700 (PDT)
+        d=1e100.net; s=20260707; t=1792141974; x=1792746774;
+        h=cc:to:content-transfer-encoding:content-type:mime-version
+         :message-id:date:subject:from:x-gm-gg:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to:content-type;
+        bh=R5dwpMdeDtafkrSIKilmZHw+Byk+8y+YTLJ/JPrzYVs=;
+        b=E1HdpupIQq3wMcdASeuRcA/72eh3FzMZlKC5y9W3TLW1dwbi9ErgXlSxVsF0St9g0M
+         Au4MmW4MTBfdKUr3cE/C0yFjYZzxY1Ijn923pPAD06iujwHc2JdOnZJO+JPJPI+0kdX4
+         qo5PnNmyZx1/e3H4oPCTT+jHquMnEPMi8Hlk47UZnrKQFaTq3m3XE+DQ1udd9+4icKFt
+         nwjBYNeZQ53+jCcxvQCcXlW/o+YoGLy2uln80H3HJbTfmFj5GNC0ZHvjr4VrPui4pumi
+         7iQYm9WESSXfT8ihbWW3QHJV1khCI75oFLlcGMocgjE2HZtz3MkfXHyE+E1Qoah/gbmI
+         JHDg==
+X-Forwarded-Encrypted: i=1; AKwUvBwfH68n5V54bVFPHGuYyOUXrZamiPuONHWov71bbKbVj0DUkfHO0YWY8LynXn1gY4rgJY4rtXu8ODhUDwk9DQ==@lists.infradead.org
+X-Gm-Message-State: AFq9FYLTbR/9axX9PzZEFc8c5NwJuwtoDH7hZ/ep5mtNVFMx70o/xdby
+	urSURz9QrQzRJ+x3X1HFBS91U+7yaFgnCUTlkL0MrrwXuj2Q4bPowJJa
+X-Gm-Gg: AYBFou3bmWpeYXZDoehJ9vY4iesBgaLr/YMXeLXAq5E8OeX2MMFUgeCD5P+k19SF5Pp
+	YSJRk9J3CSsYfpGWTqevMv4A6IIPtFZ2uqQ8FhjwA4zcIrtpRVYveycdRfIv3Eg/J60xWUL8DJm
+	QppPKOFg5bJMxFv9hDl4TdX4Amdzk6bo5rFSz/pG1RvqgiHu8l2LJ3CA3LM0KCCJUCcRBpsy58W
+	lWxBc3EkgPsFpqHzc8rewbxmKt5s8D6O7OyaIc3Gar3NCbfnUJ4f+Mk63c4ojazXggAna41WwdD
+	knyC2822dV/GyQvIN2Ct/tT0BbLJ6DKoAzaqfciFN0ztxZSGRVZZXqewQ6eJljL+7Qhhs4OZxdz
+	i/XiNZ1SYzyQGcRlbpCMwEMoGj+/l2GwLLaXNFlUAPSdtB0gw1C5uyXs6PTgN9KdAVj2ktCCD5C
+	zMVopHg1HTGiHVHQuAuPZrC4r5l+nYebvkvhzKCXC8XfxaJa1k8FhjBK3UpmLnXbAKzVEwPftUG
+	+PA4tcaNLPSy4mipUY+7QAKddGy+3ocwXXD8WE7QiPIyGJokg==
+X-Received: by 2002:a17:90b:52c4:b0:3ac:9ed8:f319 with SMTP id 98e67ed59e1d1-3ac9ed8f5ffmr4225776a91.2.1792141974372;
+        Fri, 16 Oct 2026 02:12:54 -0700 (PDT)
 Received: from DESKTOP-VNSSJ2S.localdomain (59-127-145-64.hinet-ip.hinet.net. [59.127.145.64])
-        by smtp.gmail.com with ESMTPSA id 41be03b00d2f7-cd65497e28esm767274a12.7.2026.10.16.02.12.54
+        by smtp.gmail.com with ESMTPSA id 41be03b00d2f7-cd65497e28esm767274a12.7.2026.10.16.02.12.50
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 16 Oct 2026 02:12:57 -0700 (PDT)
+        Fri, 16 Oct 2026 02:12:53 -0700 (PDT)
 From: Zhi-Jun You <hujy652@gmail.com>
-Date: Fri, 16 Oct 2026 17:12:33 +0800
-Subject: [PATCH net v5 1/5] net: ethernet: mtk_wed: skip ring reset in
- wdma_tx_ring_setup for WED v3
+Subject: [PATCH net v5 0/5] net: ethernet: mtk_wed: misc fixes
+Date: Fri, 16 Oct 2026 17:12:32 +0800
+Message-Id: <20261016-wedfix-v5-0-8b02e78fd34f@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20261016-wedfix-v5-1-8b02e78fd34f@gmail.com>
-References: <20261016-wedfix-v5-0-8b02e78fd34f@gmail.com>
-In-Reply-To: <20261016-wedfix-v5-0-8b02e78fd34f@gmail.com>
+X-B4-Tracking: v=1; b=H4sIAIDq0WoC/yWMyw5AMBQFf0XOWpOSqMeviAV6y7Uoab0S8e+K5
+ Uwmc8GTY/KooguOdvY82wBZHKEfWzuQYB0YqUxVIhMlDtKGT1HIvDRZoTsjFUK8OAr6G9WwtKL
+ 5pd+6ifr1XeC+H49dyXVvAAAA
+X-Change-ID: 20261016-wedfix-8079f58dbf06
 To: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo@kernel.org>, 
  Andrew Lunn <andrew+netdev@lunn.ch>, 
  "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@kernel.org>, 
@@ -92,16 +107,16 @@ Cc: netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
  Zhi-Jun You <hujy652@gmail.com>
 X-Mailer: b4 0.16.0
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1792141973; l=1202;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1792141973; l=1968;
  i=hujy652@gmail.com; s=20261016; h=from:subject:message-id;
- bh=3VzB1FLCd2mLzCjg7kaS/GAexp/k2KRl3VSTok/MVlE=;
- b=5XzbtZKpJ+yde/h6N2QHggLRyxZpPRxz/vp+RwYavuMpb/33Vc1ZKXfd0XtsE81ayaRaOHReS
- YZ2HLm9vrG6D+qpPZXfGoeFt2VcsBtBboe9mx3MoHFVkvVsdGMvmXBw
+ bh=cAYyzvBvABdQ3mPgVmEus3vWnqb83GFBiX1p5PjH1a8=;
+ b=VVf24T35ucw91qTXLscFnfuQBIvCNVXax72WvCgQBWP7iRYfg2a2Md92x1wnbvy6rlwhXt0Zk
+ geGFIrchTdnCstRJxHrqpZ+TlRCUsxcoNV+xlqHXS8CgRTcmeul1YBc
 X-Developer-Key: i=hujy652@gmail.com; a=ed25519;
  pk=AYHrGhtLNb9z7JIsGOOYWmKKIoVPH7ZZgT+CLIDMuEM=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261016_021259_289962_E0A7BCA0 
-X-CRM114-Status: GOOD (  11.22  )
+X-CRM114-CacheID: sfid-20261016_101257_843119_D8BAF6CE 
+X-CRM114-Status: GOOD (  10.82  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -116,37 +131,53 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Currently WED v3 tx wdma ring, ring reset happens in a separate code
-block unconditionally.
+Ths patch series includes some fixes for issues that were discovered
+by Sashiko and one original patch fixing issue I encountered.
 
-Moreover, v3 has double the size of wdma_desc and has different init
-values. mtk_wed_ring_reset doens't deal with that and would corrupt the
-wdma_desc.
+Patch 1,2,3,5 fix issues that were found by Sashiko
+Patch 1 fixes tx wdma ring reset for WED v3
+Patch 2 fixes the reset condition for rx wdma.
+Patch 3 fixes rx ring and tx wdma ring not being freed up
+Patch 4 fixes WED on non-DBDC mt7986.
+Patch 5 adds error messages and bail out when wed_start fail
 
-Fix this by skipping mtk_wed_ring_reset in mtk_wdma_tx_ring_setup for
-WED v3.
-
-Fixes: e2f64db13aa1 ("net: ethernet: mtk_wed: introduce WED support for MT7988")
-Signed-off-by: Zhi-Jun You <hujy652@gmail.com>
 ---
- drivers/net/ethernet/mediatek/mtk_wed.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Changes in v5:
+- Add cover letter.
+- Add patch 3 to address Sashiko review on rx ring and tx wdma ring not
+  being freed up.
+- Add patch 5 to address Sashiko review on error handling.
+- Link to review: https://lore.kernel.org/all/179000700034.2160803.10594281691384015089@kernel.org/
 
-diff --git a/drivers/net/ethernet/mediatek/mtk_wed.c b/drivers/net/ethernet/mediatek/mtk_wed.c
-index 53d3b7e00e1c..d55042ccaff1 100644
---- a/drivers/net/ethernet/mediatek/mtk_wed.c
-+++ b/drivers/net/ethernet/mediatek/mtk_wed.c
-@@ -1938,7 +1938,7 @@ mtk_wed_wdma_tx_ring_setup(struct mtk_wed_device *dev, int idx, int size,
- 	wdma_w32(dev, MTK_WDMA_RING_TX(idx) + MTK_WED_RING_OFS_CPU_IDX, 0);
- 	wdma_w32(dev, MTK_WDMA_RING_TX(idx) + MTK_WED_RING_OFS_DMA_IDX, 0);
- 
--	if (reset)
-+	if (!mtk_wed_is_v3_or_greater(dev->hw) && reset)
- 		mtk_wed_ring_reset(wdma, MTK_WED_WDMA_RING_SIZE, true);
- 
- 	if (!idx)  {
+Changes in v4:
+- Add patch 2 to address Sashiko review on rx wdma reset condition.
+- Link to review: https://lore.kernel.org/all/20260730090030.201100-1-pabeni@redhat.com/
 
--- 
-2.47.3
+Changes in v3:
+- Add patch 1 to address Sashiko review on WED v3 tx wdma ring reset.
+- Link to review: https://lore.kernel.org/netdev/20260706101044.161059-1-pabeni@redhat.com/
+
+Changes in v2:
+- Address issues raisied by Sashiko in patch 4
+- Link to review: https://lore.kernel.org/all/20260706101044.161059-1-pabeni@redhat.com/
+- Add comment to explain the special case
+
+---
+Zhi-Jun You (5):
+      net: ethernet: mtk_wed: skip ring reset in wdma_tx_ring_setup for WED v3
+      net: ethernet: mtk_wed: fix reset condition for rx wdma
+      net: ethernet: mtk_wed: free up rings during detach
+      net: ethernet: mtk_wed: setup WDMA_RING_TX(0) for non-DBDC MT7986
+      net: ethernet: mtk_wed: bail out when failed to set up rings in wed_start
+
+ drivers/net/ethernet/mediatek/mtk_wed.c | 40 ++++++++++++++++++++++++++++-----
+ 1 file changed, 35 insertions(+), 5 deletions(-)
+---
+base-commit: 191aa41548b2d2b6af534a6d5cf84a552435c74c
+change-id: 20261016-wedfix-8079f58dbf06
+
+Best regards,
+--  
+Zhi-Jun You <hujy652@gmail.com>
 
 
