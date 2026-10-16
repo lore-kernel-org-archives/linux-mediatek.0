@@ -4,40 +4,40 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EA452CCA46C
-	for <linux-mediatek@archiver.kernel.org>; Fri, 16 Oct 2026 15:34:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E689DCC6B38
+	for <linux-mediatek@archiver.kernel.org>; Fri, 16 Oct 2026 15:40:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
 	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Of12R2/s6Y32nqdMblu5w/EJ2U82C1Y9iZtrzWl2jI8=; b=eJOQmabob1kuhOz3uqgCdFAPX7
-	bTPGz07CGUxIe2BKNTd1q7rBvq8AW0fhALx4ZOOmrPWW/EFw8jheCkycEa2iXST3vMFrfIwljz2LI
-	RmPHiKZkv1CHUigd8JfWO8dRkFeIwDEisyWU6NjAW+XhoeV0ouRPsVejSbcL0Bk55TNJ2CJUDRraA
-	SWpJx4dPxiEkGPsA2EjKijYJSpB5eWWSAUa1JLXtP0dyATsjNG3qn2hiTVYPfpD1L2TU+ZDC5kwmv
-	fZeT/pjCn0QLftDAmRKAOr6eqdIZwkb4NJnSy7pv+mU0TII+JbgN8BqV5oWNXsDbWPXSg0UdE5nVt
-	usfyhvTg==;
+	bh=zV1tkuQVhB7asiK+J7N184oVAmpF7qz9rFGuGv/mKyw=; b=HGy1oZdQu6VRaem/shbPmcCGzg
+	r7D99QG+yMk7dDRkfN2aEEqltCDg8RimolhUPHsJ9HUycpo9Qbc9qsIci0U5CEIQglA9EhxE4jLYa
+	05EVg4b8Yxg1oMjLITwKAMdbU5hrpVn7fZDbSPX7ves63V6tm99WsPK9f8pZKjJ6YQ8FUduYuKGqn
+	U8TdqNEvwbvYvzV6WJfEiu+0PuBurosLRkxdGM0KRc2ROtx2d/EZYsvKDiAYBWqBaknd1CwDAXeUz
+	xc954Ma7NnwArj0eXhAw8Kl/a4te42Xm6HoDOsS+Y+AhvbBvQ+TJEyyxrMqF0ZRdD7qEAu8EIi1AL
+	NMA34W7A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xHjwZ-00000003I2S-2bQL;
-	Fri, 16 Oct 2026 15:34:03 +0000
+	id 1xHk3D-00000003J9t-2aLt;
+	Fri, 16 Oct 2026 15:40:55 +0000
 Received: from vps0.lunn.ch ([156.67.10.101])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xHjwX-00000003I1C-0fOY;
-	Fri, 16 Oct 2026 15:34:02 +0000
+	id 1xHk3A-00000003J7r-3gYP;
+	Fri, 16 Oct 2026 15:40:54 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
 	s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
 	References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
 	Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
 	Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
-	bh=Of12R2/s6Y32nqdMblu5w/EJ2U82C1Y9iZtrzWl2jI8=; b=p43ClLlAXvrwzZYF3VFMYYYtp1
-	MulZNOFu+FXdeWWlGCXD15G2to0kiVJ91U8VBIEk9U+L+awogmOX6qOt9ZX6+nbAH+U4wJttS8DbH
-	bddjkx5W0RQAGOeV2O3FMNrUIG/K84Czya4QJSRqHmSUgfDQgogBOAVFveqHT7lTHS8A=;
+	bh=zV1tkuQVhB7asiK+J7N184oVAmpF7qz9rFGuGv/mKyw=; b=nW8dNfcxTDYiFECGGfWoIX/Ku7
+	sNm/7PDt5sXWvnWyXzhpOQ2gJNbHyuDrk9MvdSwog/lwmUtPRdYxf/cY8s5vrupvCYCd5nLhfXZkc
+	T+HCLAIsl4EYA1mG6U13D3Fg74Ln3knSk4rATAMC7bC7iRz98pywJkmpdcpg8OX3tMa0=;
 Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
 	(envelope-from <andrew@lunn.ch>)
-	id 1xHjwE-00BAjb-1Y; Fri, 16 Oct 2026 17:33:42 +0200
-Date: Fri, 16 Oct 2026 17:33:42 +0200
+	id 1xHk2y-00BArn-3k; Fri, 16 Oct 2026 17:40:40 +0200
+Date: Fri, 16 Oct 2026 17:40:40 +0200
 From: Andrew Lunn <andrew@lunn.ch>
 To: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
 Cc: Andrew Lunn <andrew+netdev@lunn.ch>,
@@ -58,18 +58,18 @@ Cc: Andrew Lunn <andrew+netdev@lunn.ch>,
 	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org,
 	linux-stm32@st-md-mailman.stormreply.com
-Subject: Re: [PATCH net-next v3 1/9] dt-bindings: net: mediatek-dwmac: fix
- unit in rx/tx delay property description
-Message-ID: <08b7abcf-a738-4ad8-956d-a6205046151e@lunn.ch>
+Subject: Re: [PATCH net-next v3 2/9] dt-bindings: net: mediatek-dwmac: add
+ support for MT8189 SoC
+Message-ID: <b4950f82-0163-4482-9799-a5e3c6eb5964@lunn.ch>
 References: <20261016-dwmac-mediatek-mt8189-v3-0-25daf2bbcf35@collabora.com>
- <20261016-dwmac-mediatek-mt8189-v3-1-25daf2bbcf35@collabora.com>
+ <20261016-dwmac-mediatek-mt8189-v3-2-25daf2bbcf35@collabora.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20261016-dwmac-mediatek-mt8189-v3-1-25daf2bbcf35@collabora.com>
+In-Reply-To: <20261016-dwmac-mediatek-mt8189-v3-2-25daf2bbcf35@collabora.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261016_083401_198120_8F918EBA 
-X-CRM114-Status: GOOD (  10.96  )
+X-CRM114-CacheID: sfid-20261016_084052_917893_D233084B 
+X-CRM114-Status: GOOD (  10.11  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,20 +84,41 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Fri, Oct 16, 2026 at 12:31:05PM +0200, Louis-Alexis Eyraud wrote:
-> The "mediatek,rx-delay-ps" and "mediatek,tx-delay-ps" descriptions say
-> their values are in nanoseconds but their names with the "ps" suffix
-> suggest it is picoseconds.
-> They are in fact used in both driver and devicetree as picosecond.
-> So, modify the two properties unit description to fix their unit.
-> 
-> Fixes: 150b6adda6b1 ("net: dt-bindings: dwmac: Convert mediatek-dwmac to DT schema")
-> Signed-off-by: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
+> Finally, update "mediatek,rx-delay-ps" and "mediatek,tx-delay-ps" property
+> description to add MT8189 RX/TX delay stage divider values, as they
+> differ from existing supported SoC.
 
-Maybe this patch should be for net, not net-next. Documentation fixes
-often are. Lets see what the Device Tree Maintainers say.
+These should be mark deprecated and the standard rx-internal-delay-ps
+and tx-internal-delay-ps used in there place for new devices.
 
-Reviewed-by: Andrew Lunn <andrew@lunn.ch>
+> @@ -86,8 +85,10 @@ properties:
+>        or will round down. Range 0~31*170.
+>        For MT2712 RMII/MII interface, Allowed value need to be a multiple of 550,
+>        or will round down. Range 0~31*550.
+> -      For MT8188/MT8195 RGMII/RMII/MII interface, Allowed value need to be a multiple of 290,
+> -      or will round down. Range 0~31*290.
+> +      For MT8188/MT8195 RGMII/RMII/MII interface, Allowed value need to be a
+> +      multiple of 290, or will round down. Range 0~31*290.
+> +      For MT8189 RGMII/RMII/MII interface, Allowed value need to
+> +      be a multiple of 180, or will round down. Range 0~31*180.
 
-    Andrew
+Please make this:
+
+For MT8189 RGMII/RMII/MII interface, this property is not used, the
+standard tx-internal-delay-ps should be used instead.
+
+> @@ -96,8 +97,10 @@ properties:
+>        or will round down. Range 0~31*170.
+>        For MT2712 RMII/MII interface, Allowed value need to be a multiple of 550,
+>        or will round down. Range 0~31*550.
+> -      For MT8188/MT8195 RGMII/RMII/MII interface, Allowed value need to be a multiple
+> -      of 290, or will round down. Range 0~31*290.
+> +      For MT8188/MT8195 RGMII/RMII/MII interface, Allowed value need to be a
+> +      multiple of 290, or will round down. Range 0~31*290.
+> +      For MT8189 RGMII/RMII/MII interface, Allowed value need to
+> +      be a multiple of 180, or will round down. Range 0~31*180.
+
+Same here.
+
+     Andrew
 
