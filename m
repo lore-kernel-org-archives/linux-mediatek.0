@@ -4,59 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 09FCECCF2C4
-	for <linux-mediatek@archiver.kernel.org>; Sat, 17 Oct 2026 19:43:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 53493CCF2CF
+	for <linux-mediatek@archiver.kernel.org>; Sat, 17 Oct 2026 19:59:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=feAW8sNvX4y7Z/iBdWCH/eXYB2pXonRKpjrqViUaCfw=; b=qVQrDqd6oUUUCzDu4K2oafjOja
-	qrsOHI6MBJ83tG2cb5mwmCGFbPwUD1rdtx9dHwMsMbf3/EhdI/kieDlUTfi+Z+s6KUv0UL6LjCWWE
-	ep5YqwbD8ri7ym+cjYOvwc2I6Z9RSa3mKpxfgYkBMLa2va7j5y0LCH9+XMKnwzfTdGEqhqlZ9wghS
-	ujVI89qwxyfN16tz//mpeGAL2aHLLiq4JZBIObXxWK/5VOfzoZ8UZRdfzdUnGK1pGjQ9q8KT6X0jq
-	Tgmf19ukokyARGrvjnNsoXcosqkGUR2Nd9ny+USw5+rhh2u28ChNVRzljoOfuwD6pLSJQCLaZN+dB
-	wmOVAcwg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
+	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=Z6VTzkNz3lljWq1ttScTRs6n3O7AGKj08rTBFz2E/vc=; b=nB3LKWzlxXzFGLWnxT+TWVBHgj
+	kzkX1vI0JMAHGDmky8czuUldT7b/b4S+ojVmKtD4d/FZxALt54fhJ/4tpkP1av7lhZQaBb0lzuMai
+	44SNkIQNIdR7xz6Po32YMFmUvhHyRa2MgsiRN/2R5oPEznuGvjassfLnq7UcmBLO8aR84rleyr26Y
+	ZFkOOSRDyTM+RhH5nGvt2HEnWpd/V0Rqlik5cib5Ltcv/RjkMAKkPdTimebZNqupejlKdyBelf1JL
+	qW5Y5ln76YFQ/g4XJ2NT3JfbFc4X9R+oJ38VWOkzZejb9epd0FXQ2LNI0KiCvN11NzowhE3rVZfjD
+	RDf342Kw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xIAJe-000000058Yw-3WBH;
-	Sat, 17 Oct 2026 19:43:38 +0000
-Received: from mx1.bren.win ([51.81.56.14])
+	id 1xIAZP-00000005BqR-1hks;
+	Sat, 17 Oct 2026 19:59:55 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xIAJc-000000058YK-08GW;
-	Sat, 17 Oct 2026 19:43:37 +0000
-DKIM-Signature: v=1; a=ed25519-sha256; s=v1-ed25519-20260901; d=bren.win; c=relaxed/relaxed; r=y;
-	h=Message-ID:Date:Subject:To:From; t=1792266203; bh=feAW8sNvX4y7Z/iBdWCH/eX
-	YB2pXonRKpjrqViUaCfw=; b=LIkwzP9V92PBqPzeHSEYssjkW1cD5WqMubuWZRTPQmweF6U2Dq
-	NMSnzmDUeEOIHVblVLST0Pm29K0CRfxLHnBQ==;
-DKIM-Signature: v=1; a=rsa-sha256; s=v1-rsa-20260901; d=bren.win; c=relaxed/relaxed; r=y;
-	h=Message-ID:Date:Subject:To:From; t=1792266203; bh=feAW8sNvX4y7Z/iBdWCH/eX
-	YB2pXonRKpjrqViUaCfw=; b=r9yuZ0ALtiW9PXG2nnS3Y7Gd1cjrhjSP6xDouXjnw4K49c0pAC
-	2/BEYj7HvE3+0Y+wq7cvmz2yCJS4AOd79L4FZcR24Zcvyt2/7FY/Tjklt9jJtEhG2LVLRTVq9Tf
-	Wz5vA5XBtCsv1C2l1S23k4mz16XthaRcpqlNAQWnFVs2TkdlN2hPtxNWPIAK3Dlaj5G7Q9Fwd38
-	yjfL1JDFNXYou9EdKxyRsd4vyaDxqtVInNnkRUTTcSqRIpjcsiu/Iq0Wv2FPnbm6+NDY0ysD77X
-	XfRVOn8HdKTgmxBb1VR6KMZYDZJ5T9LEDzMmyLEqQ0qyCRejjY5x3z4CmO8VxBIKeMg==;
-From: "Brendon C." <bren@bren.win>
-To: linux-clk@vger.kernel.org,
-	linux-mediatek@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org
-Cc: linux-kernel@vger.kernel.org,
-	Michael Turquette <mturquette@baylibre.com>,
-	Stephen Boyd <sboyd@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Daniel Golle <daniel@makrotopia.org>,
-	stable@vger.kernel.org
-Subject: [PATCH v2] clk: mediatek: mt7981: feed MSDC from emmc_208m, not emmc_400m
-Date: Sat, 17 Oct 2026 14:43:08 -0500
-Message-ID: <20261017194308.1541507-1-bren@bren.win>
-X-Mailer: git-send-email 2.55.0
+	id 1xIAZM-00000005BpI-0Pk5;
+	Sat, 17 Oct 2026 19:59:52 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by tor.source.kernel.org (Postfix) with ESMTP id 5401460D77;
+	Sat, 17 Oct 2026 19:59:51 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id AF6071F000C6;
+	Sat, 17 Oct 2026 19:59:50 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1792267191;
+	bh=Z6VTzkNz3lljWq1ttScTRs6n3O7AGKj08rTBFz2E/vc=;
+	h=From:Date:Subject:References:In-Reply-To:To:Cc;
+	b=I3Z9AJwlEDJ3hEEbUpZgPu5mDx2UniT1FMTwNIrV39TPl9YB6mBOTcmdvOM5PoEty
+	 Gd8bfKrIsLNYecEDsEAppsAtEI46+IT4e7W22nenqied6QoTTucs1S957XqdHSw2Jp
+	 tfoLwogxvnc9NZXpyZTNyYoycrnxC68k/sn7DNKPJKKS6lX2RHiCh2ggQLDH+uv5Tw
+	 Y8ZyebOlJUb9gwApXPZyVAIaLsIUoSPmRRyGJ8BGyAp5hRUoy8A9stJ7WMTxPFwoG6
+	 JGDaXfEm7wNrE+gUjqSkD2VY9/EehNAWh1j13G5ueXQB043L7AGAe6EIg4YSy/neh3
+	 KhmpHW/QN+9Xw==
+Received: by venus (Postfix, from userid 1000)
+	id E5332182303; Sat, 17 Oct 2026 21:59:47 +0200 (CEST)
+From: Sebastian Reichel <sre@kernel.org>
+Date: Sat, 17 Oct 2026 21:59:30 +0200
+Subject: [PATCH v2 1/4] dt-bindings: connector: Add DP AltMode VDO
+ definitions
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261017_124336_157569_C1EE3762 
-X-CRM114-Status: GOOD (  13.02  )
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Message-Id: <20261017-dp-altmode-dt-defines-v2-1-7ab3d93553dd@collabora.com>
+References: <20261017-dp-altmode-dt-defines-v2-0-7ab3d93553dd@collabora.com>
+In-Reply-To: <20261017-dp-altmode-dt-defines-v2-0-7ab3d93553dd@collabora.com>
+To: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Bjorn Andersson <andersson@kernel.org>, 
+ Konrad Dybcio <konradybcio@kernel.org>
+Cc: linux-usb@vger.kernel.org, devicetree@vger.kernel.org, 
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-rockchip@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+ linux-arm-msm@vger.kernel.org, kernel@collabora.com, 
+ Sebastian Reichel <sebastian.reichel@collabora.com>, 
+ Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
+X-Mailer: b4 0.16.0
+X-Developer-Signature: v=1; a=openpgp-sha256; l=3086;
+ i=sebastian.reichel@collabora.com; h=from:subject:message-id;
+ bh=DdeBUOCYvUk0SPwWOcib78tj6lKNiGNHfOqgeC+j5L4=;
+ b=owEBbQKS/ZANAwAKAdju1/PIO/qaAcsmYgBq09Oy99LFXrodoWSUSElKdFj7JV5R+WhvMznjr
+ 0MlWUnuiI+JAjMEAAEKAB0WIQTvZg0HRj+Lcmp5VBPY7tfzyDv6mgUCatPTsgAKCRDY7tfzyDv6
+ mrMdD/9+HvJ6ObmxML/8/RtfTM84m2rQCM5E6/R/Ld0ZEWuHbER6ldNPo9wkIjrxoaAKTG2S7y5
+ nuSH+2p8bvyNiBwYSXEQhP0MHUDDzPPceuX1wvrC9n9yNieBCd8N2grQbImRxvJs8jVvMvMKD9+
+ OKfMq3RZWDpjBx4FlK+6Blp1sgYuTINewZ58Gpg1CqT1nEojJXiKY3JP+OTWVcD+R4j2DKrtHrq
+ 8flld79PIHY9PM0aVPdAAdCrkGq5S+oRJGfadQ7pbXPEZKM7aSL83RUc0l1ojU9iRTFZjGR5Stk
+ b39hRBuU/Gq5SKVe6R7h5Nf4KP81ga6fr7lRB8wTbHL4aiplpa5VzsGxDAFKgn8S0I5sL3wFr/N
+ pxr2uVdqLAuVjXPlFCzgcAQxnlWdM7TaOaMK4MMfCpfYJos3jg8L4bCik5q5wYFHo0rFIfWvhe7
+ bwGdhdLFPC3xwpunNDQdp+GNYeXCACUbSo9riyP1AvQwNav6wMceQmLNP6GHXutLhfrecjMAt4L
+ hb8o/c38BitSnqWW7Wc3hgOnzK9Gz66wmAWeCXfE+xloEtWV45ZRy4CpSASogTA1BHxLdhWQGo3
+ LxpufGx5QeseQlvJ2mqfAlVS4zVStFaZ6j/AJAiF1I+Oyorb6goyMI6bcYd1aA7TKKQ13xi5Ue5
+ 6FOD58lIg/lebew==
+X-Developer-Key: i=sebastian.reichel@collabora.com; a=openpgp;
+ fpr=EF660D07463F8B726A795413D8EED7F3C83BFA9A
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,56 +98,111 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The MT7981B datasheet specifies the storage interface as "eMMC v4.5 @52
-MHz 3.3V", MediaTek's SDK kernel parents CLK_INFRA_MSDC_CK from
-emmc_208m, and both the SDK and U-Boot device trees hand the controller
-CK_TOP_EMMC_208M as its "source" clock with max-frequency 52 MHz (52 =
-208/4). Mainline parents the gate from emmc_400m instead. mtk-sd derives
-its divider, the reported actual_clock and its data timeouts from that
-source rate, so with a device tree asking for 26 MHz it programs CKDIV=4
-and believes the bus runs at 25 MHz while the real bus clock is 13 MHz,
-and every clock-derived timeout is sized for a bus twice as fast as the
-real one.
+From: Sebastian Reichel <sebastian.reichel@collabora.com>
 
-On a GL.iNet GL-X3000 (Samsung 8GTF4R eMMC, 8-bit, 3.3 V, HS) this shows
-up as msdc_track_cmd_data write data errors (host->error=0x4) on
-roughly every 40 MB written, escalating under sustained multi-segment
-writes to exhausted retries, "I/O error, dev mmcblk0", lost page writes
-and a stopped f2fs overlay. Raw direct reads top out at 11 MB/s where
-the vendor kernel reaches 23 MB/s on the same card.
+The typical USB-C DisplayPort AltMode capabilities for a down facing
+port (i.e. sending out video data) looks like this:
 
-With the correct parent the same device tree yields a real 26 MHz bus,
-23 MB/s reads, and four rounds of a 1.4 GB mixed direct/buffered write
-stress complete with zero retries and zero I/O errors, matching the
-vendor firmware.
+altmodes {
+	displayport {
+		svid = /bits/ 16 <0xff01>;
+		vdo = <0x00001c46>;
+	};
+};
 
-Fixes: 813c3b53b55b ("clk: mediatek: add MT7981 clock support")
-Cc: stable@vger.kernel.org
-Signed-off-by: Brendon C. <bren@bren.win>
+Improve the readability by adding defines for the numbers, so that
+the above instead looks like this:
+
+altmodes {
+	displayport {
+		svid = /bits/ 16 <USB_SVID_DP_ALTMODE>;
+		vdo = <VDO_DP(DP_CAP_DPAM_V2_0, DP_CAP_CABLE_TYPE_PASSIVE,
+			      DP_CAP_UHBR_13_5_UNSUPPORTED,
+			      DP_PIN_UFP_NONE, DP_PIN_DFP_C_D_E,
+			      DP_CAP_USB2_USED, DP_CAP_RECEPTACLE,
+			      DP_CAP_SIGNALLING_HBR3, DP_CAP_DFP_D)>;
+	};
+};
+
+The generated DT binary will stay unchanged.
+
+Reviewed-by: Dmitry Baryshkov <dmitry.baryshkov@oss.qualcomm.com>
+Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
 ---
-v2: add Fixes: and Cc: stable tags so the fix reaches 6.12 and other
-    stable series; no code change. v1:
-    https://lore.kernel.org/all/20261017190729.1369302-1-bren@bren.win/
+ include/dt-bindings/usb/pd.h | 58 ++++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 58 insertions(+)
 
- drivers/clk/mediatek/clk-mt7981-infracfg.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+diff --git a/include/dt-bindings/usb/pd.h b/include/dt-bindings/usb/pd.h
+index 1e64a1f563f9..6cea6165fc0f 100644
+--- a/include/dt-bindings/usb/pd.h
++++ b/include/dt-bindings/usb/pd.h
+@@ -483,6 +483,64 @@
+ 	 | ((vbm) & 0x3) << 15 | (curr) << 14 | ((vbi) & 0x3f) << 7	\
+ 	 | ((gi) & 0x3f) << 1 | (ct))
+ 
++/*
++ * Displayport AltMode VDO
++ * -----------------------
++ * <30>    :: DPAM version
++ * <29:28> :: Cable type
++ * <26>    :: UHBR 13.5 support
++ * <23:16> :: UFP Pin assignment
++ * <15:8>  :: DFP Pin assignment
++ * <7>     :: USB
++ * <6>     :: Receptacle
++ * <5:2>   :: Signalling
++ * <1:0>   :: Capabilities
++ */
++#define DP_CAP_UFP_D			1
++#define DP_CAP_DFP_D			2
++#define DP_CAP_DFP_D_AND_UFP_D		3
++
++#define DP_CAP_SIGNALLING_HBR3		1
++#define DP_CAP_SIGNALLING_UHBR10	2
++#define DP_CAP_SIGNALLING_UHBR20	3
++
++#define DP_CAP_PLUG			0
++#define DP_CAP_RECEPTACLE		1
++
++#define DP_CAP_USB2_USED		0
++#define DP_CAP_USB2_UNUSED		1
++
++#define DP_PIN_ASSIGN_A			0x01 /* Not supported after v1.0b */
++#define DP_PIN_ASSIGN_B			0x02 /* Not supported after v1.0b */
++#define DP_PIN_ASSIGN_C			0x04
++#define DP_PIN_ASSIGN_D			0x08
++#define DP_PIN_ASSIGN_E			0x10
++#define DP_PIN_ASSIGN_F			0x20 /* Not supported after v1.0b */
++
++#define DP_PIN_UFP_NONE		0x00
++#define DP_PIN_DFP_C_D_E	(DP_PIN_ASSIGN_C | \
++				DP_PIN_ASSIGN_D | \
++				DP_PIN_ASSIGN_E)
++
++#define DP_CAP_UHBR_13_5_UNSUPPORTED	0
++#define DP_CAP_UHBR_13_5_SUPPORTED	1
++
++#define DP_CAP_CABLE_TYPE_PASSIVE	0
++#define DP_CAP_CABLE_TYPE_RE_TIMER	1
++#define DP_CAP_CABLE_TYPE_RE_DRIVER	2
++#define DP_CAP_CABLE_TYPE_OPTICAL	3
++
++#define DP_CAP_DPAM_V2_0		0
++#define DP_CAP_DPAM_V2_1		1
++
++#define VDO_DP(dpam, cable, uhbr, ufp_pins, dfp_pins, usb, rcpt, sig, caps)	\
++	(((dpam) & 1) << 30 | ((cable) & 3) << 28 | ((uhbr) & 1) << 26		\
++	 | ((ufp_pins) & 0xff) << 16 | ((dfp_pins) & 0xff) << 8			\
++	 | ((usb) & 1) << 7 | ((rcpt) & 1) << 6 | ((sig) & 0xf) << 2		\
++	 | ((caps) & 3))
++
++#define USB_SVID_DP_ALTMODE		0xff01
++
+ /*
+  * Sink Load Characteristics
+  * -------------------------
 
-diff --git a/drivers/clk/mediatek/clk-mt7981-infracfg.c b/drivers/clk/mediatek/clk-mt7981-infracfg.c
-index 68a102d..3d98bff 100644
---- a/drivers/clk/mediatek/clk-mt7981-infracfg.c
-+++ b/drivers/clk/mediatek/clk-mt7981-infracfg.c
-@@ -157,7 +157,7 @@ static const struct mtk_gate infra_clks[] = {
- 	GATE_INFRA1(CLK_INFRA_SPI1_HCK_CK, "infra_spi1_hck", "infra_66m_mck",
- 		    14),
- 	GATE_INFRA1(CLK_INFRA_FRTC_CK, "infra_frtc", "cb_rtc_32k", 15),
--	GATE_INFRA1(CLK_INFRA_MSDC_CK, "infra_msdc", "emmc_400m", 16),
-+	GATE_INFRA1(CLK_INFRA_MSDC_CK, "infra_msdc", "emmc_208m", 16),
- 	GATE_INFRA1(CLK_INFRA_MSDC_HCK_CK, "infra_msdc_hck", "emmc_208m", 17),
- 	GATE_INFRA1(CLK_INFRA_MSDC_133M_CK, "infra_msdc_133m", "sysaxi", 18),
- 	GATE_INFRA1(CLK_INFRA_MSDC_66M_CK, "infra_msdc_66m", "sysaxi", 19),
-
-base-commit: 58161ead29e50d70a317ea26b472e0c7508e69da
 -- 
-2.55.0
+2.53.0
 
 
