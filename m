@@ -4,117 +4,94 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 81339CCF2C7
-	for <linux-mediatek@archiver.kernel.org>; Sun, 18 Oct 2026 02:38:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2DB62CCF2C4
+	for <linux-mediatek@archiver.kernel.org>; Sun, 18 Oct 2026 03:44:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=uuVxX/jLPtohDOq387cSqeqHjD2U6i5S+xDw1QtsGiQ=; b=CnVOJiyP9btySiZ6dwtVAX77R/
-	cVniqK7/qVcxmzxmFavf81+/nogzfQHTNlVqbJzjqH0nBrSA8sk62tLZ2tIVlucvohPbanqeigKEG
-	v96mG0QNJa7EQ/U+/T6qq7MIjRW0DH04zA0ef8xJaC98MTHL6dY/T3NsRSaMZuxBwHN7YO3su4Z46
-	AWL05+f3pWVBQMBr6AIaV0UvfX0wwHFNKtgQPyLJcwYE4rwOM5nSzpNZYOg1EZx1lXhB2UohgYKJP
-	sYSfG918sKG228ssx9JpNP2+Pz1O36znYvNuRosB10mUgxtxyxCS1p6EPwT078UHLwHAS5K2CUlML
-	pAUoLw8Q==;
+	MIME-Version:Content-Type:Message-ID:Date:Subject:Cc:To:From:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=T5pPwZ/48zpt+uZ5MPec+XhKwRcnWB3U80AGWU6HU3U=; b=y9slOM0vr3AAkGOGresGkZZYfc
+	f6UOH9ry2q2sfPwP6nR7e//pTRyYI0+V21f0u5TALMgJmZV67y9xMFtO7I2TNiekZ9zFasbzsuEL/
+	C2g/diU+h3Ma8+3CjeX3LbWSDvRtK0UnV0yvmHZpVS1vphf8D8a+5QparrN85zBJiqHsyf+cS0Tc8
+	iXg2jf3dygrKRCXB+dRCtwiSoyaqS3ghu81yckYxJ2C50VjeVvxp6u5RU7WP7JJ4MDCTzJ7caMNSp
+	AMSivosVLriOfWIs4DXgukRS6qkYU6ZoPNjzucCmQEnQNGNb9U1c2IrTbKi1UtIO4xg4VVCi7yy87
+	/2CyYfTQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xIGmy-00000005SVH-1NZK;
-	Sun, 18 Oct 2026 02:38:20 +0000
-Received: from mail-ed1-x52d.google.com ([2a00:1450:4864:20::52d])
+	id 1xIHpM-00000005UUf-1aus;
+	Sun, 18 Oct 2026 03:44:52 +0000
+Received: from mail-qv1-xf33.google.com ([2607:f8b0:4864:20::f33])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xIGmv-00000005STl-1vvM
+	id 1xIHpK-00000005UTx-0amk
 	for linux-mediatek@lists.infradead.org;
-	Sun, 18 Oct 2026 02:38:18 +0000
-Received: by mail-ed1-x52d.google.com with SMTP id 4fb4d7f45d1cf-6b1cc392d8bso1134787a12.1
-        for <linux-mediatek@lists.infradead.org>; Sat, 17 Oct 2026 19:38:16 -0700 (PDT)
+	Sun, 18 Oct 2026 03:44:51 +0000
+Received: by mail-qv1-xf33.google.com with SMTP id 6a1803df08f44-91b89c6caffso8311256d6.2
+        for <linux-mediatek@lists.infradead.org>; Sat, 17 Oct 2026 20:44:49 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=bairaktaris.de; s=google; t=1792291094; x=1792895894; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to:content-type;
-        bh=uuVxX/jLPtohDOq387cSqeqHjD2U6i5S+xDw1QtsGiQ=;
-        b=yd4el5cCeHaqT5ZMYS7j4sjS7UxwEh/Mc2ZQSfvTLmrdPurtRpIXoB0+EDGWd/tI4k
-         z5z3PfP04Tb48xgDTV4u6IqLxSJjuP+xzGKMWwZNKYu7XqRkAiRZjdkW2N1haWzvnsSu
-         A0jOf11yr55pEuok1Ig/GbOaBjbu5kKn/9gIj4AxH6xRgeqxGpWas2bKrbgxXW6gtlyE
-         RvtDtQPMRAb6TKBAEIIJLIqddQBLKZ+wcZojTDTugrS0dcpv+qFs+iUKdLisgbG5Rxkn
-         x/uc7Dn4SqoAqM9xFkOVIwib8QWCJWzEt4qGL5+SyFDmjw5ZeDWFikOYpW/ioXPqXTDL
-         m5Og==
+        d=gmail.com; s=20251104; t=1792295088; x=1792899888; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:content-type:message-id:date
+         :subject:cc:to:from:from:to:cc:subject:date:message-id:reply-to
+         :content-type;
+        bh=T5pPwZ/48zpt+uZ5MPec+XhKwRcnWB3U80AGWU6HU3U=;
+        b=Rtxmi3kZbeQ9+MF3MEMdSHeoJvblJb2U78Sn8N/dImf4TKcMpm4Pvs78mcW77XOUhw
+         Y/hRiNyP8m4vXLLnkBSbRW9TJt7RBo9NdyZv5M0Ab/je1HQry0ZXkbaMkiDHIYsSgZBT
+         2gVQhZWkgJZMjD7D28qqgx4Il3jwaEwESrF1BtOweLrFV+FjhpfHmcfnRpKsePcsmxAN
+         jnZrej24UoRkc1l7UojQ5UIo1B2l6E2u+Ngk770D+5/ZoV0Xm+R96QPfC+LS13tKog3H
+         ED/oYZdGBKs+oKpQtUnTHcW7po879r2oeZldrmPn7Un6P1ROqZzKW/rEPPOYEocsbAUc
+         uETA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1792291094; x=1792895894;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
-         :to:cc:subject:date:message-id:reply-to:content-type;
-        bh=uuVxX/jLPtohDOq387cSqeqHjD2U6i5S+xDw1QtsGiQ=;
-        b=EoGU51+r+XORhO5W4tE49WxBgck7yrB/Fi8gX1t6StV5MxBPa1tIWrpwU7usI93RSu
-         4n0d5QHQwEIbEvW7AC/soOGknDj1hdcZ23V/8HqSUjxtcxrKPtr5s32/BMFU0qGYB6zT
-         d8iO/VrAH3o14wyqHn6It62SmE+z2mrteO+B5gUI9P7F5+O64VyWtnyK2e8o7vW31kI+
-         cS3CuaS1Lq8Uodtx+arVU1DqHReCHf/ljYXO60oa1yU7+OpkQAvfd1USaIeGoG+Eh5dN
-         j8g06DuiAKa41uWOXuGT9epumX5k/DHCZxB/RTlJx3bJRW8rsAfWZXH0dRPThUj6ulDl
-         MaFQ==
-X-Forwarded-Encrypted: i=1; AKwUvBw2YBEOe6lvlyisXsIHJZ7KWGM2AnAWCOuo4rubW8F7LEmJTx7pg+Gd7RdjwOwD8Xqwak6BWHgcXT2uB2wS+g==@lists.infradead.org
-X-Gm-Message-State: AFq9FYJ9q6sIpGQFo+PNWyyqLtEEdargz0bGkk3DMM9kODBrMG/q6qb2
-	SM5Y68H/7f/yg+310bsxFipYY/MxKzdfohEWL//cOQewy7tXaWxPD07RTa48vhWf2Q==
-X-Gm-Gg: AYBFou08QYSRawpb6yiJe5pQQtrJgyohU72+eRIheKwVQbZ3GkDNrsTmC3QTpKhfck6
-	V5Wg9KF8RuQkbhFvfEoiiQhdVwGVm/V8rqB4nHJN7cKw07DEYmAL5zJgzZwBNNVswPztb6Uy1Iw
-	aMbFfeuZ5o0gKmTCFHwIIy9tFJnomMpQ5WSaHb9vCwQWuDlQGNtdsDU0Z1JBPVIUmjCLLp10DKA
-	AET7Z1O96FuKpZ9HCBZG58vPPwuM1kcC+lV4xvl1B9Iw312bkUGM28+dIbFErC8fRcXwO7bzNtp
-	yWcdbW24avlKCucpO5L8GDhZIUdw3zrbAP7PuBgY1rv8QWwfmf5sRcmIOMmDzUo2Al836dCewAT
-	ueMxL657KohN/u0IcTR/1Lel10Na73Oj87jOnkAwvImnW6NBmjzsa9M/wYACII1y34yGIXgg3Jn
-	Y6H5aUf1Y6IONXvewB75h1lHlso6u8Ws6+KnuCU4GoGfrjNm5Arg4ezuCxQt0IPf6rgBdjDBTnz
-	zuRG7pYK12GlSpLF59Z0j6Vn9BVf03V/AyQ2Ns1/wmr53uzPOXURzzxwha5G4BuouXnOiEqY2K4
-	CgOYfY6Uuw22nissytAEAOHJIPqPo2UFy8eVgnUJF7C1pQ218+SQ2JzMbK3HyH5VMANyD4GgFsk
-	tdJPCB4+lH6JsR48K4QmrAn6TKGUizByqbik74VQiS4zES3yOz9ROH4w+SE2kCFhLQzOZpTA5tS
-	AEopXsqRKy40vFzBBd9es=
-X-Received: by 2002:a05:6402:2489:b0:6a9:850d:bb38 with SMTP id 4fb4d7f45d1cf-6b3a81766camr2392870a12.10.1792291094015;
-        Sat, 17 Oct 2026 19:38:14 -0700 (PDT)
-Received: from Desktop.fritz.box ([185.181.130.213])
-        by smtp.gmail.com with ESMTPSA id 4fb4d7f45d1cf-6b38a1c80desm2356771a12.20.2026.10.17.19.38.08
+        d=1e100.net; s=20260707; t=1792295088; x=1792899888;
+        h=content-transfer-encoding:mime-version:content-type:message-id:date
+         :subject:cc:to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject
+         :date:message-id:reply-to:content-type;
+        bh=T5pPwZ/48zpt+uZ5MPec+XhKwRcnWB3U80AGWU6HU3U=;
+        b=wo+qCbGjcPmDCXOhoMecsEYdseLCCWxjQBVzqh+VbgkTBzd+ZdL/EAGcze7hwMWaWz
+         WA/i+Tx2wnSyMQnZz3e1qoTnZ0hxtE+aPCsM/4DLbzV1p10q6fIZIKWM5T5JAMQWIjzE
+         JOMT/iviSdNq54U4gGE3dYbK29dGQcHhQU4+92uiC/8DbJn9kp0ka51W1V5gYSfligj+
+         e0dXniF2uP1NRtYP5AFg+fiY471Qhn1Z+TmPUps1hD5HbfhAlWHH4/pL5jehodMXORgK
+         24IUPFCSdC6r3I/Yr10Cxs8Um4rZlbmu2D7HOFI3MBhMcuBFZ3Qe3HvsYvwo6sfcOUex
+         R+LA==
+X-Forwarded-Encrypted: i=1; AKwUvByK3q5Hgb+yVmouJWL5p7OimyVp/rV+Bf97x9Hdz6cHgfF52AEgv5TtqylGjGDnmGd3oD7iLo4TPizuvPGlgg==@lists.infradead.org
+X-Gm-Message-State: AFq9FYLMhRZlR5l8TahETC9GHzaXInJdkgbXsF0tvlJnbkZvMWI/TFF3
+	sVcdJIp3Dkfq+Y/HMIah8Pw3x9doe15KLiJ4LiukNXuHaPLjDdvLrFQ=
+X-Gm-Gg: AYBFou1qLmTabvA8gLnL16XSygV8uAXaWzxSPNq4/KhxR/wy0mH9H5v7GAPSWwn1j5J
+	/v+cdN+BKkQiXlMSqB71OrJlCC6yWGIcy4ec75ZsRR1AJ4QGHXPaV4PtpUz0llyAXhy/zC6h4IR
+	cAWrepZrDFPDziCKY8KwUsA8An9eRoi+zJDIuvT7TskB3FRKUqMpsq6kNhsv5qBfqM5UZ8M9zab
+	CVxds3xCux3AdZqYU1ZYCN+2cIPgnP7ZgR+4KTd43vPqTQYRcSrwtSZzMtsmvHODtBhNsgOGi0i
+	ELyPpVctO28W/0faKb0P8zcVLoDhOJxvgsGEaLOL/D3cFWX02lp2gmYi/ifI8qZNnFCbMyHyOnG
+	hNiaQ3wkQ3AmVkN6Erz0UhyKrm/OFUBWZQ9f0mXsNRQ6QpIkbfIP9obfbMgW/856hbWME19RO3j
+	lPMadKyONsE6hBm65Az5bqtP7BsCA84SgCuGAsGCK1qSfhyBa3N2ZzJuAeFxLG9fSvQdrvVHVZf
+	LL6sBqhF4MtrcpO+Hc7yEg4nh2UL79i24HrvHmd6CSW7p2X//b5JQWJ3ovZboZk5dZUF1E0BAsq
+	3M5FiZqQxcXSDJ3RkGidDbGimFsI
+X-Received: by 2002:a05:6214:2f89:b0:912:588d:55e8 with SMTP id 6a1803df08f44-91bdf0aa995mr67665616d6.9.1792295088031;
+        Sat, 17 Oct 2026 20:44:48 -0700 (PDT)
+Received: from i4-gl-tmk5904-1.ad.psu.edu ([130.203.156.90])
+        by smtp.gmail.com with ESMTPSA id 6a1803df08f44-91bea60e66esm22559866d6.26.2026.10.17.20.44.46
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 17 Oct 2026 19:38:12 -0700 (PDT)
-From: Julius Bairaktaris <julius@bairaktaris.de>
-To: pablo@netfilter.org
-Cc: fw@strlen.de,
-	phil@nwl.cc,
-	netfilter-devel@vger.kernel.org,
-	coreteam@netfilter.org,
-	netdev@vger.kernel.org,
-	lorenzo@kernel.org,
-	nbd@nbd.name,
-	matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com,
-	andrew+netdev@lunn.ch,
-	davem@davemloft.net,
-	edumazet@google.com,
-	kuba@kernel.org,
-	pabeni@redhat.com,
-	horms@kernel.org,
-	corbet@lwn.net,
-	rdunlap@infradead.org,
-	skhan@linuxfoundation.org,
-	linux-doc@vger.kernel.org,
-	linux-kselftest@vger.kernel.org,
+        Sat, 17 Oct 2026 20:44:46 -0700 (PDT)
+From: Myeonghun Pak <mhun512@gmail.com>
+To: Eddie Huang <eddie.huang@mediatek.com>,
+	Sean Wang <sean.wang@mediatek.com>,
+	Alexandre Belloni <alexandre.belloni@bootlin.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org,
-	saeedm@nvidia.com,
-	leon@kernel.org,
-	tariqt@nvidia.com,
-	mbloch@nvidia.com,
-	linux-rdma@vger.kernel.org,
-	linux-kernel@vger.kernel.org
-Subject: Re: [PATCH nf-next v3 0/3] netfilter: flowtable: carry a priority into the offload
-Date: Sun, 18 Oct 2026 04:38:04 +0200
-Message-ID: <20261018023804.562323-1-julius@bairaktaris.de>
+	linux-rtc@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	Ijae Kim <ae878000@gmail.com>
+Subject: [PATCH] rtc: mt7622: allocate the RTC before requesting its IRQ
+Date: Sat, 17 Oct 2026 23:44:43 -0400
+Message-ID: <179229507333.3965554.17726204422948048488.rtc-mt7622-irq-init-order@gmail.com>
 X-Mailer: git-send-email 2.53.0
-In-Reply-To: <atQk1d8Tv03iPN7d@chamomile>
-References: <atQk1d8Tv03iPN7d@chamomile>
+Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261017_193817_714764_E6251816 
-X-CRM114-Status: UNSURE (   7.37  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20261017_204450_467125_4C3E8E24 
+X-CRM114-Status: GOOD (  12.17  )
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -129,22 +106,73 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sun, Oct 18, 2026 at 03:45:57AM +0200, Pablo Neira Ayuso wrote:
-> I don't understand the "one flowtable per class".
+The alarm handler passes hw->rtc to rtc_update_irq(). Currently, the
+managed IRQ is requested before the RTC is allocated. On detach, devres
+unregisters the RTC and drops its allocation reference before freeing the
+IRQ. If no other references remain, the RTC can be freed while the alarm
+handler is still registered or running.
 
-If the priority is a flowtable attribute, every flow in that flowtable
-gets the same one. To give sip 1:3 and https 1:5, you need two
-flowtables with the same devices. nf_tables rejects a device in two
-flowtables of one table (nft_register_flowtable_net_hooks() returns
--EEXIST), so you also need two tables.
+Allocate the RTC before requesting the IRQ, and initialize the hardware
+and RTC operations before installing the handler. Register the RTC last,
+once these dependencies are ready. Managed cleanup then unregisters the
+RTC, frees the IRQ and waits for running handlers, and finally drops the
+RTC allocation reference. The final irqwork cancellation therefore runs
+after the IRQ producer has stopped.
 
-With the per-flow priority it is one flowtable and the rules that set
-the priority today:
+This issue was identified as part of our ongoing research while
+reviewing kernel code.
 
-  udp dport 5060 meta priority set 1:3 flow add @ft
-  tcp dport 443 meta priority set 1:5 flow add @ft
+Fixes: ba5d018135ef ("rtc: mediatek: add driver for RTC on MT7622 SoC")
+Assisted-by: LLM
+Co-developed-by: Ijae Kim <ae878000@gmail.com>
+Signed-off-by: Ijae Kim <ae878000@gmail.com>
+Signed-off-by: Myeonghun Pak <mhun512@gmail.com>
 
-v4 waits until the fdb series is done.
+---
+Compile-tested with Clang, W=1. No hardware runtime testing.
 
-Julius
+Based on mainline 0fcb05b72344f40806cbe810de8872f1698bf053.
+
+diff --git a/drivers/rtc/rtc-mt7622.c b/drivers/rtc/rtc-mt7622.c
+index 9e17dd09d567..c86c8cf3f2d7 100644
+--- a/drivers/rtc/rtc-mt7622.c
++++ b/drivers/rtc/rtc-mt7622.c
+@@ -324,11 +324,20 @@
+ 	if (ret)
+ 		return ret;
+ 
++	hw->rtc = devm_rtc_allocate_device(&pdev->dev);
++	if (IS_ERR(hw->rtc)) {
++		ret = PTR_ERR(hw->rtc);
++		goto err;
++	}
++
+ 	hw->irq = platform_get_irq(pdev, 0);
+ 	if (hw->irq < 0) {
+ 		ret = hw->irq;
+ 		goto err;
+ 	}
++
++	mtk_rtc_hw_init(hw);
++	hw->rtc->ops = &mtk_rtc_ops;
+ 
+ 	ret = devm_request_irq(&pdev->dev, hw->irq, mtk_rtc_alarmirq,
+ 			       0, dev_name(&pdev->dev), hw);
+@@ -337,14 +346,10 @@
+ 		goto err;
+ 	}
+ 
+-	mtk_rtc_hw_init(hw);
+-
+ 	device_init_wakeup(&pdev->dev, true);
+ 
+-	hw->rtc = devm_rtc_device_register(&pdev->dev, pdev->name,
+-					   &mtk_rtc_ops, THIS_MODULE);
+-	if (IS_ERR(hw->rtc)) {
+-		ret = PTR_ERR(hw->rtc);
++	ret = devm_rtc_register_device(hw->rtc);
++	if (ret) {
+ 		dev_err(&pdev->dev, "Unable to register device\n");
+ 		goto err;
+ 	}
 
