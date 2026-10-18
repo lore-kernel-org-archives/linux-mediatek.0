@@ -4,82 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 783FECCF2C9
-	for <linux-mediatek@archiver.kernel.org>; Sun, 18 Oct 2026 05:56:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BC745CCF2C9
+	for <linux-mediatek@archiver.kernel.org>; Sun, 18 Oct 2026 05:56:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=hF4JMWs272sSEGsqzXfRRdeL0HGexoAGbLW26/BzJH4=; b=s0ewbfhTKGK8GZoXZ++Jt5bWc/
-	AcB6xs5YqH61bVKY7uqnLAXgiHnuxZe46H5HLmFd1oYN/4SqATmkz9Xnvidr/9X7SdWygfLKJTF7Z
-	rbDnwJHquVk+VTA7/z2a2sfo8fwzXKio97rKarWtzq14J3ZXTwdlN2jNxWNs85Df4+7m399hUN6Fv
-	tyjBblRegb+Hcv9RMAvDtnILidhvb5IN4ozKI/7ylYAFpWHugBAR7+N9Xu0xy9prRoGT6Oy2h3EHZ
-	euKiJ2mblx9Du9rtaJSNfH53KW49qJPWrglGx7GcoOUFs3LkUl9GLdNCd90+N3nQLUAb+LkN/6EDN
-	FqvtxKCA==;
+	bh=LrWabHNJwVCKT8rO401JvBzl+Yh/bItuPD7jZ9TyRbU=; b=X3ubXSZrkd4AbAICKDnRJX8QFk
+	VaQWf0NtYpmKVIq7TUeU9q4qLqYiMalzbNZykMHgGmN+potEoVdwqEv7VTqHBxDvXclW4fb7EbO/Q
+	uaTkidOsFzv/54UM17yq+aS+jHTBRgQSA89YqKCfJ5jEUw9rnU9FMiTgfwHMbtSeF0P75prMsMRAu
+	XZgiW0BR0TeOpGEk9fW83RC1uPZCjtwRPYztCOxlDQlIiAAau+AjoQCoBjiEzdX1m1nIsPHqoFgEU
+	DNPf8ZWEZk52DAJzt0fftN1j9ELjzlOFk219n9JHQk9TWFP4z49mLS6fT7AhfSWlA6RtTkgAWYVTj
+	HVJi0GkQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xIJsM-00000005aFd-1LMA;
-	Sun, 18 Oct 2026 05:56:06 +0000
-Received: from mail-pj1-x102e.google.com ([2607:f8b0:4864:20::102e])
+	id 1xIJsT-00000005aLw-2ljr;
+	Sun, 18 Oct 2026 05:56:13 +0000
+Received: from mail-pj1-x1032.google.com ([2607:f8b0:4864:20::1032])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xIJsH-00000005aCC-0tkf
+	id 1xIJsQ-00000005aJN-3jvr
 	for linux-mediatek@lists.infradead.org;
-	Sun, 18 Oct 2026 05:56:05 +0000
-Received: by mail-pj1-x102e.google.com with SMTP id 98e67ed59e1d1-3a4b9732d5aso1021229a91.3
-        for <linux-mediatek@lists.infradead.org>; Sat, 17 Oct 2026 22:56:01 -0700 (PDT)
+	Sun, 18 Oct 2026 05:56:12 +0000
+Received: by mail-pj1-x1032.google.com with SMTP id 98e67ed59e1d1-3a0aaa0fd13so1101815a91.2
+        for <linux-mediatek@lists.infradead.org>; Sat, 17 Oct 2026 22:56:10 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1792302960; x=1792907760; darn=lists.infradead.org;
+        d=gmail.com; s=20251104; t=1792302970; x=1792907770; darn=lists.infradead.org;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :content-type:mime-version:subject:date:from:from:to:cc:subject:date
          :message-id:reply-to:content-type;
-        bh=hF4JMWs272sSEGsqzXfRRdeL0HGexoAGbLW26/BzJH4=;
-        b=sOAvbxgDFdbNYmGTbEgTI8h1aHNkYBqQM5eh36wUdF2yEj37NFZ8ztc3pLCGyyPTOm
-         +fCmA9t/Rurd3EZciwdiCtt8P9e1dbJmR6tlCI4qyUIs2+ojMs3xw8hODN0QOwkOIYFJ
-         Oswv2In9yHwo9Gk/J6Ovo/PQjYKN6vrYzM3un3aS5LpfcVJNXTx1xQ3oRcJEZSuL6M4/
-         CmZxbzPTBYPav8qbZbM30GVJmQ7X+vO/74ju8+1t1/uls5t8fd9T4ntbBoipPvxmqGzx
-         /YtBqELh2WGuYUZjdEHuOGyj0GgiX6WrKop0HAMojrRv+K4GiKhB5TFehSvrJmy1BpnJ
-         QD8g==
+        bh=LrWabHNJwVCKT8rO401JvBzl+Yh/bItuPD7jZ9TyRbU=;
+        b=KotsXi88Kr/y5BNUJDPMheT+HN4XdHwEPwwBt+Q2c3+Alz23OGxXDVTs+i+jIH57lE
+         qDzrQ5wo4hyulNbyYN1caMo8CDXsjpF/rEdvaFAxZ1CD6nAk//DnNEknbWkOZXegFDR2
+         v8EEPlnVTNot4ClJIsgZitEvwjcZ4ZUqkeaM/Puh+9YxeMaYbo/Zyw3lWeLJNa4IlwBX
+         tp03BOYfWFlXCQYWjHaNEM1Wt/lJ7v76ZXHEREwiLH1ATe0IfvWPh0Tr28ajl4E6D82E
+         KLl+pQiHAPw4gG7Cj1v6S61x2kSjjcyUPbjTOt7uX4nk3JAayE3xrDDbgs2Jj0U8ONVS
+         cmXg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1792302960; x=1792907760;
+        d=1e100.net; s=20260707; t=1792302970; x=1792907770;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :content-type:mime-version:subject:date:from:x-gm-gg
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
          :content-type;
-        bh=hF4JMWs272sSEGsqzXfRRdeL0HGexoAGbLW26/BzJH4=;
-        b=KDvCVYTzFnl5V3N5CfHzdI6asE14LlJA0tGif/Uh0NtK+oipT+5/edyUcyLtSm9kvM
-         FxJu4YKHWr6HVwEsQ/V+q0LE4ulWde8Itzmmfak/mYMc5hxP5jDdLBkKemuvyvYSUrYk
-         UQw7evAaLAB9YsKODHi9B4wX2q/vcdkESaRVYx6iMEJo6eouftmJyPeDLs0mgS5IjjYp
-         iQvbaOkv//lGqUhcx+BhwakRDnfeEipmmUfvGiZyO0CHBLnBNo7pV82YqSZtISFDJbsJ
-         6Hm/w9unhTppfzOUTEmmNYX6pPUftOUV3ADCsJ1C+165pjRRx+C21J3RFzQE1jtclWjG
-         yhdw==
-X-Forwarded-Encrypted: i=1; AKwUvBwEKYPp+O8biohzY3AZ9X9N4IyRx+cD4GzXTApYRBVt689Zs1mFgQcJjx238mxBwMWzCkMMX13taoZuxRaI2g==@lists.infradead.org
-X-Gm-Message-State: AFq9FYJkGc6V3Ft5uDC8khcK6s1SLvtzBe95mePyXxwCNQh2zFYIYRZ0
-	id8Cw7LkMNvCNKL6ozDCzw4O/o39jUlQmCjhdzSrXvelw/mhcNHWjF3x
-X-Gm-Gg: AYBFou2xCX9Ige5kWmXT2UJKbJrzQudn+JuldUSPO7PLJACddV6MoEdowZl1IvVwUBU
-	T917Lk1jYXxJ6OrhxJ2BT9qmws50PdmukJkmirpxJWSexvLTDRvORllTb5EmaJc0NkvGloY+Cyf
-	aD9Uqb49pv4ct4PNOIGVRbxwstzpjO0y4qm/tBGdN1bT7w5+WjUVmeeAaEef21Q1kLJvnPz4HeX
-	wGZao7tnP7be/VoWC4HKXV/BiAh5avFqHHu8EwrrZUkcY8s/Ku6Zkv+cr30RDLN0HbXyFLw5HUd
-	3hE1UIFhsVuG6X6Zth2qkb0uTjRnJVyZw49hDxw2cdePopIWsz5+1qj+qfIVJ8/UshddqPhiWeY
-	dTSR4uELuabUIcpwWunqzPiOsEKt6D409zUtFGQS575J9BInCmU3FMrk7jd48F2c1GNtLXObQZc
-	AHGIzmFyaV33j7mb1Cfbqis+rU7yDOyv9hOvTJs04LgG/+YExIoY/b/j+5pbI3n5tKsgrmXXDd0
-	E8ERAumF9rFsq4hxzY5Dwzi+NvTUXHAhtPHNP+cA/HpNsexaaedAModeEtEfmzPydVaGlCtE++2
-	/qzejYsiHYis/O4KlMikcZXCOUyGmsckxR+5LG1IDoUGEA==
-X-Received: by 2002:a17:90b:5643:b0:3ac:95d7:2f9e with SMTP id 98e67ed59e1d1-3acef4e492fmr3874379a91.38.1792302960536;
-        Sat, 17 Oct 2026 22:56:00 -0700 (PDT)
+        bh=LrWabHNJwVCKT8rO401JvBzl+Yh/bItuPD7jZ9TyRbU=;
+        b=Rm+Ds9Q0qbMi7vXNdZ3HFqPAuNPc3Zpe3xIRUHSxtpMas2H86rxVD40yBIesi/KAAq
+         v9je8ZWRpxDxAhryNwmEhIg5viA6oPbMiRpZMEKLaCvfbt/pQ0SL8p61/GYJ5iiP1v14
+         hVITgZfEmN08QjykAYGzbwJHcZzlDtzt6ogQ2RDGuSyLRv5UofhBWFEwGJul7VZ0crOK
+         Y46INJ3jIMrUiYrx4WZ7AnATWORI3BqOnBzcb9gVUzGHX9CTbWmYf8U2TxG5thMsIXvP
+         5iL4FEWw1uwDZGr4eHNqHScyLKO4IdqYu5vgIp+luxXWkzpArzXwmZGbTN98a9NCrYuy
+         XHAQ==
+X-Forwarded-Encrypted: i=1; AKwUvBxe/H4ctrhYqkKKAL3ttpKvxBnkY34d+CnfRTAVL7zH1esk2NErGTRhPgcKaj+zizFwTybuAB412zYWCEJDLw==@lists.infradead.org
+X-Gm-Message-State: AFq9FYKm894JiSr1rjMUcINCgnFROIPSse84Oi8XwrBgq3D+uZja5Wce
+	YHQwNSFa+aT1akefuM86qD/EwzSvghu1N9UEM4vKnGV57/7yK/ozLsGg
+X-Gm-Gg: AYBFou0jTB1ldMaXVKpd/eN3sPRDduJZTG9YtX6B0KR19pSky9aLsyQDzT9OHiMKqxI
+	nrAbPVDIFf6+MVKGbIVwZIOZSfZevII5M2GgSDYgWd1ZtBFLpKnVqih5zR7ubNAchP16jEaQAgo
+	UkfiZ/8cwaOtMwNhsxHn1xvMjjSK7GM7WtwiXv1mfAPRg7YX5KwxJR6ztHMHoEk1snSsjBdL1L3
+	W/sImxP+YGeh89+QoBLN+USFc6rOItaBVIwk+wQP+fsLJYMFzZThwx3iASx98EBjGG4/2OYADGI
+	WYvCNhu/SNzHIzQD6D9XXlW+6n0jeaJ8a8ZAp8ToolIem9s5yIvZHHLQTKLKHPtbS6gCq7uOg0V
+	BfAoPHtEMedPwqRhN4imaiDNOSdWCxW8EQHr53bUSp6UbH1eMT9yl7vvn3PdtpjP2OlSAj7geDU
+	dMQPc+OSN+543BlIqTHpokVn5f3GbA3LocWFox8AZH+FrJcWp0NQTThA5TXxs6MmuZq0pxBBPgL
+	aFktNpgYWIvxkichyMJW24Vxxkt10WtUDijmnj6iFX/lWPlvm6OGhlnhdYxTYwnuEOMmd2/UPBf
+	Xr0vk1Chwiht8+eWsiwDzEUqV+4viu0RojFYypBVkAP/YmknJVhBowD0
+X-Received: by 2002:a17:90a:c10e:b0:3ac:a521:95c with SMTP id 98e67ed59e1d1-3acef10a76emr3948159a91.58.1792302970047;
+        Sat, 17 Oct 2026 22:56:10 -0700 (PDT)
 Received: from [10.0.70.21] ([2403:581e:d87e:0:fc2d:ed31:e80e:412d])
-        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-3acd0cde4fdsm5511292a91.4.2026.10.17.22.55.51
+        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-3acd0cde4fdsm5511292a91.4.2026.10.17.22.56.00
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 17 Oct 2026 22:55:59 -0700 (PDT)
+        Sat, 17 Oct 2026 22:56:09 -0700 (PDT)
 From: James Calligeros <jcalligeros99@gmail.com>
-Date: Sun, 18 Oct 2026 15:54:03 +1000
-Subject: [PATCH v3 09/21] arm64: dts: apple: t8103-jxxx: Add regulators for
- CS42L83 power supply
+Date: Sun, 18 Oct 2026 15:54:04 +1000
+Subject: [PATCH v3 10/21] arm64: dts: apple: t8103-j274: Add
+ speaker/headset jack nodes
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20261018-macaudio-v3-9-abdff7741dea@gmail.com>
+Message-Id: <20261018-macaudio-v3-10-abdff7741dea@gmail.com>
 References: <20261018-macaudio-v3-0-abdff7741dea@gmail.com>
 In-Reply-To: <20261018-macaudio-v3-0-abdff7741dea@gmail.com>
 To: David Rhodes <david.rhodes@cirrus.com>, 
@@ -101,18 +101,19 @@ Cc: asahi@lists.linux.dev, linux-sound@vger.kernel.org,
  linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
  linux-mediatek@lists.infradead.org
 X-Mailer: b4 0.16.0
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1782;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=2046;
  i=jcalligeros99@gmail.com; h=from:subject:message-id;
- bh=KU3BimG1w/tGdivUHCFc4QDicVE1ue8ULpff7ZYuYZc=;
- b=owGbwMvMwCV2xczoYuD3ygTG02pJDFlX4nkOfZBinBN/YGlX0O5SvnfvnwlviQh5vf3pG8Wow
- u1aYrPYOiayMIhxMViKKbJsaBLymG3EdrNfpHIvzBxWJpAh0iINDEDAwsCXm5hXaqRjpGeqbahn
- aKRjrGPEwMUpAFPtH8vwV0hFKrt3PdNppgyXZRkNSyQVK5OOKKUtnDtdWvvKqVv31RgZnvPLX/9
- g9pT3TfXN1ROaHBufK3Ku+GX6Y3bd+yu27Cw5TAA=
+ bh=7YjUxx5cRZKi+klFXhj4dazdV+HixE7bGSBpAbaz/eY=;
+ b=owGbwMvMwCV2xczoYuD3ygTG02pJDFlX4nnv5xU5ifpW3Y8/1tgrVHjA1jpI9H2itEec0gq5j
+ cLG1eIdE1kYxLgYLMUUWTY0CXnMNmK72S9SuRdmDisTyBBpkQYGIGBh4MtNzCs10jHSM9U21DM0
+ 0jHWMWLg4hSAqdafychw6fvlqiSXi6yOnRG7j4qU8a7tZ3v0/xjfpoCN0V+n9UyRZ2RYk7e4/Dy
+ XRAJ37yHxqKNftsdpXTjstlGpi+NdoK04pwMnAA==
 X-Developer-Key: i=jcalligeros99@gmail.com; a=openpgp;
  fpr=B08212489B3206D98F1479BDD43632D151F77960
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261017_225603_600116_42D381B0 
-X-CRM114-Status: GOOD (  11.18  )
+X-CRM114-CacheID: sfid-20261017_225610_934828_DAF54785 
+X-CRM114-Status: UNSURE (   9.37  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -127,62 +128,96 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The CS42L83 codec found on M1 series Apple Silicon Macs gets its voltages
-from fixed regulators managed by the platform. Add these to the template
-Devicetree so that they can be referenced on the relevant devices.
-
-We do not (officially) know how the power is delivered to the chip
-(voltage rail names, commoned pins, physical regulators, etc.) so
-the regulators expressed here are just stand-ins.
+The M1 Mac mini integrates Apple-specific variants of the TI TAS2770
+and Cirrus CS42L42. Add these nodes and advertise them to the machine
+driver via the sound node.
 
 Signed-off-by: James Calligeros <jcalligeros99@gmail.com>
 ---
- .../arm64/boot/dts/apple/t8103-jxxx.dtsi | 32 +++++++++++++++++++++++++
- 1 file changed, 32 insertions(+)
+ arch/arm64/boot/dts/apple/t8103-j274.dts | 72 +++++++++++++++++++++++++
+ 1 file changed, 72 insertions(+)
 
-diff --git a/arch/arm64/boot/dts/apple/t8103-jxxx.dtsi b/arch/arm64/boot/dts/apple/t8103-jxxx.dtsi
-index 686fb1dd215d..7483fc5cbd20 100644
---- a/arch/arm64/boot/dts/apple/t8103-jxxx.dtsi
-+++ b/arch/arm64/boot/dts/apple/t8103-jxxx.dtsi
-@@ -38,6 +38,38 @@ memory@800000000 {
- 		device_type = "memory";
- 		reg = <0x8 0 0x2 0>; /* To be filled by loader */
- 	};
-+
-+	/*
-+	 * The CS42L83 found on all T8103 boards requires VA, VCP, VCP_FILT,
-+	 * VL, VD and VP regulators. We don't (officially) know how power
-+	 * gets to the codec, so these fixed regulators are stand-ins.
-+	 */
-+	jack_va_reg: regulator {
-+		compatible = "regulator-fixed";
-+		regulator-name = "jack-va";
-+	};
-+
-+	/* CS42L83 VCP and VCP_FILT */
-+	jack_vcp_reg: regulator {
-+		compatible = "regulator-fixed";
-+		regulator-name = "jack-vcp";
-+	};
-+
-+	jack_vl_reg: regulator {
-+		compatible = "regulator-fixed";
-+		regulator-name = "jack-vl";
-+	};
-+
-+	/* VD_FILT */
-+	jack_vd_reg: regulator {
-+		compatible = "regulator-fixed";
-+		regulator-name = "jack-vd";
-+	};
-+
-+	jack_vp_reg: regulator {
-+		compatible = "regulator-fixed";
-+		regulator-name = "jack-vp";
-+	};
+diff --git a/arch/arm64/boot/dts/apple/t8103-j274.dts b/arch/arm64/boot/dts/apple/t8103-j274.dts
+index 1212852251e0..150d778565f0 100644
+--- a/arch/arm64/boot/dts/apple/t8103-j274.dts
++++ b/arch/arm64/boot/dts/apple/t8103-j274.dts
+@@ -75,4 +75,76 @@ &i2c2 {
+ 	status = "okay";
  };
  
- &serial0 {
++/* Audio codecs */
++&i2c1 {
++	status = "okay";
++
++	speaker: codec@31 {
++		compatible = "ti,tas5770l";
++		reg = <0x31>;
++		interrupts-extended = <&pinctrl_ap 182 IRQ_TYPE_LEVEL_LOW>;
++		shutdown-gpios = <&pinctrl_ap 181 GPIO_ACTIVE_HIGH>;
++		#sound-dai-cells = <0>;
++		ti,imon-slot-no = <0>;
++		ti,vmon-slot-no = <2>;
++	};
++};
++
++&i2c2 {
++	status = "okay";
++
++	jack_codec: codec@48 {
++		compatible = "cirrus,cs42l83";
++		reg = <0x48>;
++		interrupts-extended = <&pinctrl_ap 183 IRQ_TYPE_LEVEL_LOW>;
++		reset-gpios = <&pinctrl_nub 11 GPIO_ACTIVE_HIGH>;
++		#sound-dai-cells = <0>;
++		sound-name-prefix = "Jack";
++		cirrus,ts-inv = <1>;
++		VA-supply = <&jack_va_reg>;
++		VP-supply = <&jack_vp_reg>;
++		VCP-supply = <&jack_vcp_reg>;
++		VD_FILT-supply = <&jack_vd_reg>;
++		VL-supply = <&jack_vl_reg>;
++	};
++};
++
++/ {
++	sound: sound {
++		compatible = "apple,j274-macaudio";
++		model = "Mac mini J274";
++
++		#address-cells = <1>;
++		#size-cells = <0>;
++
++		dai-link@0 {
++			reg = <0>;
++
++			link-name = "Speaker";
++
++			codec {
++				sound-dai = <&speaker>;
++			};
++
++			cpu {
++				sound-dai = <&mca 0>;
++			};
++		};
++
++		dai-link@1 {
++			reg = <1>;
++
++			link-name = "Headphone Jack";
++
++			codec {
++				sound-dai = <&jack_codec>;
++			};
++
++			cpu {
++				sound-dai = <&mca 2>;
++			};
++		};
++	};
++};
++
+ #include "hwmon-mini.dtsi"
 
 -- 
 2.56.0
