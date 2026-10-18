@@ -4,79 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A5438CCF2C7
-	for <linux-mediatek@archiver.kernel.org>; Sun, 18 Oct 2026 02:25:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 81339CCF2C7
+	for <linux-mediatek@archiver.kernel.org>; Sun, 18 Oct 2026 02:38:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=cOWgL4Y5aOSoL3opS9VqD9bwE2Ik8UunaS8+RLwbmv0=; b=ibKinrEYX2brDPBAylapRWPrtP
-	HPI3akjx7TUVYCGHtb0T40Kvi4hjsv+jRVhpVcCCeYkg0DJK6KNUOpyNxmwQ/Dv5JFSqDpchJwl2j
-	9jxEnl4dtNZOz7/GKRSfBixXW9NR8ejTj3xh+24SCWJfVJID79tEdEPvD2FekkBP8J40rKiPm4+jh
-	LQgdV74ISJJ6bUcfCsbBKOmagOpACNNmUBF5jBU7u1DI7bHmJIECqLyO1sxh398WNrQWaNryv7w8X
-	PXbLvcUW4uceh9m3KhuCX0bAFHSWcc/ll9Y5SbeSk7ek63PqqHNxI9c2FJU5oReQ8XNLofGUHkl8g
-	0NaXaXhA==;
+	bh=uuVxX/jLPtohDOq387cSqeqHjD2U6i5S+xDw1QtsGiQ=; b=CnVOJiyP9btySiZ6dwtVAX77R/
+	cVniqK7/qVcxmzxmFavf81+/nogzfQHTNlVqbJzjqH0nBrSA8sk62tLZ2tIVlucvohPbanqeigKEG
+	v96mG0QNJa7EQ/U+/T6qq7MIjRW0DH04zA0ef8xJaC98MTHL6dY/T3NsRSaMZuxBwHN7YO3su4Z46
+	AWL05+f3pWVBQMBr6AIaV0UvfX0wwHFNKtgQPyLJcwYE4rwOM5nSzpNZYOg1EZx1lXhB2UohgYKJP
+	sYSfG918sKG228ssx9JpNP2+Pz1O36znYvNuRosB10mUgxtxyxCS1p6EPwT078UHLwHAS5K2CUlML
+	pAUoLw8Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xIGae-00000005RkW-0EU1;
-	Sun, 18 Oct 2026 02:25:36 +0000
-Received: from mail-ej1-x62e.google.com ([2a00:1450:4864:20::62e])
+	id 1xIGmy-00000005SVH-1NZK;
+	Sun, 18 Oct 2026 02:38:20 +0000
+Received: from mail-ed1-x52d.google.com ([2a00:1450:4864:20::52d])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xIGac-00000005Rjm-0X9S
+	id 1xIGmv-00000005STl-1vvM
 	for linux-mediatek@lists.infradead.org;
-	Sun, 18 Oct 2026 02:25:35 +0000
-Received: by mail-ej1-x62e.google.com with SMTP id a640c23a62f3a-c4301e334ceso12878666b.1
-        for <linux-mediatek@lists.infradead.org>; Sat, 17 Oct 2026 19:25:33 -0700 (PDT)
+	Sun, 18 Oct 2026 02:38:18 +0000
+Received: by mail-ed1-x52d.google.com with SMTP id 4fb4d7f45d1cf-6b1cc392d8bso1134787a12.1
+        for <linux-mediatek@lists.infradead.org>; Sat, 17 Oct 2026 19:38:16 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=bairaktaris.de; s=google; t=1792290332; x=1792895132; darn=lists.infradead.org;
+        d=bairaktaris.de; s=google; t=1792291094; x=1792895894; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to:content-type;
-        bh=cOWgL4Y5aOSoL3opS9VqD9bwE2Ik8UunaS8+RLwbmv0=;
-        b=wf6L5k31BbVnEuaYDaSFFEMfrW6576wxwHi9Q/MR9OGu2PfkdXruCU9wMqDkd5dpdY
-         wcYpkMWGHFK6CytTPOWcMu0toVLpbVf1vtZo6+a7I7JVzB0sYz7jSHhZUZaXADgonnJd
-         BdtmaE8riClMi8J5iphDZcmEHGmtN/vKZa2/Y3YkT1gTzdoiZzo1VLRPTXjG/JIfxH1c
-         5OaQVKUFEVaZkKr7HkSF7Tiv2R4/DNLAso8z+qOgUO8bBwckyFzB8c/0VfxC8/eBp3GT
-         FrOodl1YPJhym/y2ENujGSGMyEr+wbUifGHC/hrB2oQZd5pSiTTcVoSgPAFL/T12X1GT
-         /V9g==
+        bh=uuVxX/jLPtohDOq387cSqeqHjD2U6i5S+xDw1QtsGiQ=;
+        b=yd4el5cCeHaqT5ZMYS7j4sjS7UxwEh/Mc2ZQSfvTLmrdPurtRpIXoB0+EDGWd/tI4k
+         z5z3PfP04Tb48xgDTV4u6IqLxSJjuP+xzGKMWwZNKYu7XqRkAiRZjdkW2N1haWzvnsSu
+         A0jOf11yr55pEuok1Ig/GbOaBjbu5kKn/9gIj4AxH6xRgeqxGpWas2bKrbgxXW6gtlyE
+         RvtDtQPMRAb6TKBAEIIJLIqddQBLKZ+wcZojTDTugrS0dcpv+qFs+iUKdLisgbG5Rxkn
+         x/uc7Dn4SqoAqM9xFkOVIwib8QWCJWzEt4qGL5+SyFDmjw5ZeDWFikOYpW/ioXPqXTDL
+         m5Og==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1792290332; x=1792895132;
+        d=1e100.net; s=20260707; t=1792291094; x=1792895894;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
          :to:cc:subject:date:message-id:reply-to:content-type;
-        bh=cOWgL4Y5aOSoL3opS9VqD9bwE2Ik8UunaS8+RLwbmv0=;
-        b=K/IC3pPj2YgnSlcBzjj7G80xIT2RfefbFNpL/ZvxT0otPUcCqucLcRj9nSQK4QTZmT
-         PqFRA8gHXwpYUj7lL2bY20I8ypOQpgo87o3FeOUoVUR95kU8aYqdMZ8b199wymb8wv6m
-         Lomp13QACSeDDBikW0dHDUN0WALoW9EZ+fNt9EbxzzbEHXYRs0bf7v8bHvjGnXbkbdf3
-         F7GxCOxTcll5S55Kn2vYPwtMmPREl9q8ukqHqCQenwNZbmcMcC8/TcxoSkViqZJeN1QL
-         f6+9G058l2sZsypKk1MsC6s2Oh1vU7gx70adfo3deWgyiue7gWcvwx8a50oAjR9YIqka
-         YIIw==
-X-Forwarded-Encrypted: i=1; AKwUvBw1UHLt0ZDtYJWcS66fSbnvajOTlB8t4vdAcCmMYG9iL85u/v4JW+aDM9qLb1LRHBdPJ4WQG46umpoqZoCbJQ==@lists.infradead.org
-X-Gm-Message-State: AFq9FYKcNETrBUs1B7mncBpBPWt6L3ZWK0SE/lgI1e0y8WM7YLVnkOcc
-	Ow+EenmHlrxDMGDvuJG5GmPXgizNT36FeZ2s6a4HqEJFgdwIkkAFnyKGsuDnPhOOyQ==
-X-Gm-Gg: AYBFou3wQ4xjRle2ZOzzG87FhTG6BEWlN0r+t5httTiCIR9CJ2ElTxVipKdNBtv8wHV
-	SaNAOoz5tizFi0K+qGmeOzS2XIf9DYzyB96g/kkKpdLh8WlRdh4ruDClqrDsZvFWcGPwazcLKrJ
-	ngihGsEDfXvu7zOT6BeuccYeeqP9bqmO+DX2HEoYWLw01SQ6+PgxziH3SL3mroFlNBtaLBjSZds
-	iT5/LOGTe/gqLjn501IICmTLONuyRJlSelC8RyYZWo44CgtvMb3JUv5533vxfv4EuQTpAk6J4fS
-	9g1dF97pvwoK5ZPdRuoZhOiyjuBvmPC3Jf0dwLTc5gOlX+BVSmgeILIoKNhUF7FIaG3KJ9snOuf
-	fw5oh9meUW6O/5ZySgVemUG7rph/KB2u6oSqUjqZeziOoLfFGftpvyCRE7mMQZ+44vXIwtIzd9c
-	MV2fvOLXuvq4koY+UHg1kRlTzyo/5LGjjIV4f9SwxBeDWVSF0vsf7+6e5JrP/zPNJX08FPzb+zi
-	jaHWBUhUacC426pnK6kbRZGgLy6wyJuDJbNrkvW+DJqv0ZjZxyf4IWYtupeN9exYb9UG1Kk5rdS
-	F/u/QBaQEVlpZNsFHj5c/gwMPkLCbdXNnb3EkWvaWE386QGE5WdwZXrNsUxFCxTkLF5PpR+oTng
-	xtkYOXaOwPrvGy7EhTXCxSedKIGlUryglzUyqSL0VFCT0bHccRJ/O6fJQa/j9+Op1VDzPvt+6k0
-	hDeg8DyeJfgBU6IH+nJsAWQW2nmolFTMnlbA+7WjdA+TfFxGTHNrsqQnEeG/qSjg==
-X-Received: by 2002:a17:907:e849:b0:c40:4320:de2c with SMTP id a640c23a62f3a-c419e73e2a1mr277700866b.15.1792290331870;
-        Sat, 17 Oct 2026 19:25:31 -0700 (PDT)
-Received: from Desktop.fritz.box (p200300f247429d100000000000000a27.dip0.t-ipconnect.de. [2003:f2:4742:9d10::a27])
-        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-c40913c4c5dsm222994366b.39.2026.10.17.19.25.29
+        bh=uuVxX/jLPtohDOq387cSqeqHjD2U6i5S+xDw1QtsGiQ=;
+        b=EoGU51+r+XORhO5W4tE49WxBgck7yrB/Fi8gX1t6StV5MxBPa1tIWrpwU7usI93RSu
+         4n0d5QHQwEIbEvW7AC/soOGknDj1hdcZ23V/8HqSUjxtcxrKPtr5s32/BMFU0qGYB6zT
+         d8iO/VrAH3o14wyqHn6It62SmE+z2mrteO+B5gUI9P7F5+O64VyWtnyK2e8o7vW31kI+
+         cS3CuaS1Lq8Uodtx+arVU1DqHReCHf/ljYXO60oa1yU7+OpkQAvfd1USaIeGoG+Eh5dN
+         j8g06DuiAKa41uWOXuGT9epumX5k/DHCZxB/RTlJx3bJRW8rsAfWZXH0dRPThUj6ulDl
+         MaFQ==
+X-Forwarded-Encrypted: i=1; AKwUvBw2YBEOe6lvlyisXsIHJZ7KWGM2AnAWCOuo4rubW8F7LEmJTx7pg+Gd7RdjwOwD8Xqwak6BWHgcXT2uB2wS+g==@lists.infradead.org
+X-Gm-Message-State: AFq9FYJ9q6sIpGQFo+PNWyyqLtEEdargz0bGkk3DMM9kODBrMG/q6qb2
+	SM5Y68H/7f/yg+310bsxFipYY/MxKzdfohEWL//cOQewy7tXaWxPD07RTa48vhWf2Q==
+X-Gm-Gg: AYBFou08QYSRawpb6yiJe5pQQtrJgyohU72+eRIheKwVQbZ3GkDNrsTmC3QTpKhfck6
+	V5Wg9KF8RuQkbhFvfEoiiQhdVwGVm/V8rqB4nHJN7cKw07DEYmAL5zJgzZwBNNVswPztb6Uy1Iw
+	aMbFfeuZ5o0gKmTCFHwIIy9tFJnomMpQ5WSaHb9vCwQWuDlQGNtdsDU0Z1JBPVIUmjCLLp10DKA
+	AET7Z1O96FuKpZ9HCBZG58vPPwuM1kcC+lV4xvl1B9Iw312bkUGM28+dIbFErC8fRcXwO7bzNtp
+	yWcdbW24avlKCucpO5L8GDhZIUdw3zrbAP7PuBgY1rv8QWwfmf5sRcmIOMmDzUo2Al836dCewAT
+	ueMxL657KohN/u0IcTR/1Lel10Na73Oj87jOnkAwvImnW6NBmjzsa9M/wYACII1y34yGIXgg3Jn
+	Y6H5aUf1Y6IONXvewB75h1lHlso6u8Ws6+KnuCU4GoGfrjNm5Arg4ezuCxQt0IPf6rgBdjDBTnz
+	zuRG7pYK12GlSpLF59Z0j6Vn9BVf03V/AyQ2Ns1/wmr53uzPOXURzzxwha5G4BuouXnOiEqY2K4
+	CgOYfY6Uuw22nissytAEAOHJIPqPo2UFy8eVgnUJF7C1pQ218+SQ2JzMbK3HyH5VMANyD4GgFsk
+	tdJPCB4+lH6JsR48K4QmrAn6TKGUizByqbik74VQiS4zES3yOz9ROH4w+SE2kCFhLQzOZpTA5tS
+	AEopXsqRKy40vFzBBd9es=
+X-Received: by 2002:a05:6402:2489:b0:6a9:850d:bb38 with SMTP id 4fb4d7f45d1cf-6b3a81766camr2392870a12.10.1792291094015;
+        Sat, 17 Oct 2026 19:38:14 -0700 (PDT)
+Received: from Desktop.fritz.box ([185.181.130.213])
+        by smtp.gmail.com with ESMTPSA id 4fb4d7f45d1cf-6b38a1c80desm2356771a12.20.2026.10.17.19.38.08
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 17 Oct 2026 19:25:30 -0700 (PDT)
+        Sat, 17 Oct 2026 19:38:12 -0700 (PDT)
 From: Julius Bairaktaris <julius@bairaktaris.de>
-To: jianbol@nvidia.com
-Cc: pablo@netfilter.org,
-	fw@strlen.de,
+To: pablo@netfilter.org
+Cc: fw@strlen.de,
 	phil@nwl.cc,
 	netfilter-devel@vger.kernel.org,
 	coreteam@netfilter.org,
@@ -104,17 +103,17 @@ Cc: pablo@netfilter.org,
 	mbloch@nvidia.com,
 	linux-rdma@vger.kernel.org,
 	linux-kernel@vger.kernel.org
-Subject: Re: [PATCH nf-next v3 1/3] net/mlx5e: Ignore FLOW_ACTION_PRIORITY on flowtable offload
-Date: Sun, 18 Oct 2026 04:25:27 +0200
-Message-ID: <20261018022527.4065122-1-julius@bairaktaris.de>
+Subject: Re: [PATCH nf-next v3 0/3] netfilter: flowtable: carry a priority into the offload
+Date: Sun, 18 Oct 2026 04:38:04 +0200
+Message-ID: <20261018023804.562323-1-julius@bairaktaris.de>
 X-Mailer: git-send-email 2.53.0
-In-Reply-To: <CAC1t37K0tEMzxmRhLeHnH-TPx61pZmCHt0xxTJ5Wq2Wxvzv8Jw@mail.gmail.com>
-References: <CAC1t37K0tEMzxmRhLeHnH-TPx61pZmCHt0xxTJ5Wq2Wxvzv8Jw@mail.gmail.com>
+In-Reply-To: <atQk1d8Tv03iPN7d@chamomile>
+References: <atQk1d8Tv03iPN7d@chamomile>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261017_192534_218271_4E6806AC 
-X-CRM114-Status: UNSURE (   5.03  )
+X-CRM114-CacheID: sfid-20261017_193817_714764_E6251816 
+X-CRM114-Status: UNSURE (   7.37  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -130,13 +129,22 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Jianbo,
+On Sun, Oct 18, 2026 at 03:45:57AM +0200, Pablo Neira Ayuso wrote:
+> I don't understand the "one flowtable per class".
 
-v4 is ready with your Reviewed-by on 1/3, the rename to
-skbedit_prio.c and the consequence line. Pablo asked to handle one
-series at a time, so I will post it once the fdb roaming series is
-merged.
+If the priority is a flowtable attribute, every flow in that flowtable
+gets the same one. To give sip 1:3 and https 1:5, you need two
+flowtables with the same devices. nf_tables rejects a device in two
+flowtables of one table (nft_register_flowtable_net_hooks() returns
+-EEXIST), so you also need two tables.
 
-Thanks,
+With the per-flow priority it is one flowtable and the rules that set
+the priority today:
+
+  udp dport 5060 meta priority set 1:3 flow add @ft
+  tcp dport 443 meta priority set 1:5 flow add @ft
+
+v4 waits until the fdb series is done.
+
 Julius
 
