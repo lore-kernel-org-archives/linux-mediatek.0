@@ -4,62 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F06F6CCF2DE
-	for <linux-mediatek@archiver.kernel.org>; Mon, 19 Oct 2026 14:04:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 30092CCF2E6
+	for <linux-mediatek@archiver.kernel.org>; Mon, 19 Oct 2026 14:04:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:
 	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=gyiydqPIB402NHvOlfWp8G1/q2d5b9orTcF5s5wfi3k=; b=m+UoeNHQ6qB2SY/l71MI4tMHjL
-	/vcxkMEeeeYhtdjISztdgyM9WnU8ZCbNxU2xexm/BCdZEn9wAwtjHtwNWMS8MNlVVtPXyCYpyDxor
-	zgW7nW6fOgcIxIqdKytJVuWhcs7wUqUIIBJn5Xyzr6nhUCWNdbnI8m05WOxHtvHujDrjTkI2swcYh
-	iF+rUcHHwxKWGMm5ASP8CUmAyYKPDUMs97OFG0oMtdq9k5kJxTBpowTp+snw0rTpyo3faPAOX58wh
-	yZJwC+2QF6Fyc4JtbAoxW1e4QGMZilVHHeKacVZhJLxpjedJAKCiNILUROIkZLCVutTycOyE1r9Mx
-	FPvCtxaw==;
+	bh=37GP2gLah2l9LWaV6Z4HyU7YDGSYfHzI1n89yuM5wqM=; b=Po0hli/13nYpennbvG0dmtVs7+
+	/olaL04BwEXMMm6BO74k7HrOfmMMC8JKvJX43c5YZwymoaxrMSc5xykzyOafGgGItY+vVIPapCbMo
+	JXa6f2sesOazGIh7BKpiUyJOglL69vGEKTsVCEKTMe5pf6IagPEAKqScf4wYYchJtBJFJLMVRO7Da
+	QcE9Q0TdORJ5LoEu3VDK+X4lI52/Pp2lB8+TU+gaddSPgWlMcqaJKqe0C9rHPMo489xFk0axzgqXR
+	3KCSB751P2noWHagonpg+5kh6AGNNTKWu3SZqqoHttCS/j+KInOMTq+uvO32SqHW6CduYNViZ9uZt
+	TBc4aM2w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xInyU-00000007fZb-1TRs;
-	Mon, 19 Oct 2026 14:04:26 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1xInyq-00000007fnM-30vv;
+	Mon, 19 Oct 2026 14:04:48 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xInyS-00000007fYD-1Mar;
-	Mon, 19 Oct 2026 14:04:24 +0000
+	id 1xInyp-00000007flp-1ke2;
+	Mon, 19 Oct 2026 14:04:47 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id 12F1641A9C;
-	Mon, 19 Oct 2026 14:04:24 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 755491F000C4;
-	Mon, 19 Oct 2026 14:04:22 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id C635C60213;
+	Mon, 19 Oct 2026 14:04:46 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id DFF2A1F000C5;
+	Mon, 19 Oct 2026 14:04:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1792418664;
-	bh=gyiydqPIB402NHvOlfWp8G1/q2d5b9orTcF5s5wfi3k=;
+	s=k20260515; t=1792418686;
+	bh=37GP2gLah2l9LWaV6Z4HyU7YDGSYfHzI1n89yuM5wqM=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References;
-	b=fOuufbP3Nf1awuWPKTfmjJKfVuk6DZZEeVgJ8mO++uD2M/5qF/T9xl1alJKTz6mps
-	 jo+rNhpE5JIZaFdM2onr8IeHNd7re7RuwMHBU+CI0KAloUWZsERnSI467sOs0QyAtx
-	 Uk4lxcFU6Cm5DRRq37bvfuPj17J6HDE1BQaDWaE14/jHPoDi3mfOEz3pXhQ2EzLlBf
-	 8u3FcJuiO46FtpnurDWOK5n5kwNBFe2gGXvOFnCJ893EiuBvPS84HRZQpVFNPphth0
-	 gjBmtoJoIfrHwYWIr1qeE3JxLVuY1MEddK5k/4UsKmEFTl1nPVmxKzIjnJODja3hhD
-	 XTXel5xgZLsRA==
+	b=lpQOtIuE6kLyWsW+yZy6ecufrml/MWrDOH6SDBmvskDMt9oetftV1XOEyFFL/Ix9r
+	 5kwl1tWimpZJlBJWK7lP3bvT7VyNSTxMRWvbiehErk4U2BQVxljzW3wHqhMblLll9y
+	 b84jN9mRfb3MmNHwGc5bV5Gy2ivcH39k8OtlR0AJHHQZs3gHQumaqvWdpJrKEMxYBe
+	 Nn0vpN9Xd0ukzZVbNSvi/guiW3JwlLWFgvn3qtuAgVlHEDJ4Yf9Q0ejz5kZk1ajsYF
+	 6Wx1EbGJr2Y5XBVGTva6uvOmkJqt5ghaB9B+CujapN/TWMUTPJPIrED2J9RnOZVJkS
+	 kREW+ydX9q7hw==
 From: Sasha Levin <sashal@kernel.org>
 To: patches@lists.linux.dev,
 	stable@vger.kernel.org
-Cc: Pengpeng Hou <pengpeng@iscas.ac.cn>,
-	Brian Masney <bmasney@redhat.com>,
+Cc: Daniel Golle <daniel@makrotopia.org>,
+	Andrew Lunn <andrew@lunn.ch>,
+	Jakub Kicinski <kuba@kernel.org>,
 	Sasha Levin <sashal@kernel.org>,
-	y.oudjana@protonmail.com,
-	sboyd@kernel.org,
-	bmasney+clk@redhat.com,
-	jbrunet+clk@baylibre.com,
+	lynxis@fe80.eu,
+	hkallweit1@gmail.com,
+	davem@davemloft.net,
+	edumazet@kernel.org,
+	pabeni@redhat.com,
 	matthias.bgg@gmail.com,
 	angelogioacchino.delregno@collabora.com,
-	linux-clk@vger.kernel.org,
-	linux-mediatek@lists.infradead.org,
+	netdev@vger.kernel.org,
 	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org
-Subject: [PATCH AUTOSEL 6.18] clk: mediatek: mt6735-vdecsys: add missing MODULE_DEVICE_TABLE()
-Date: Mon, 19 Oct 2026 09:51:40 -0400
-Message-ID: <20261019135441.1420968-409-sashal@kernel.org>
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: [PATCH AUTOSEL 6.18-6.6] net: pcs: mtk-lynxi: check regmap reads in mtk_pcs_lynxi_get_state()
+Date: Mon, 19 Oct 2026 09:51:55 -0400
+Message-ID: <20261019135441.1420968-424-sashal@kernel.org>
 X-Mailer: git-send-email 2.53.0
 In-Reply-To: <20261019135441.1420968-1-sashal@kernel.org>
 References: <20261019135441.1420968-1-sashal@kernel.org>
@@ -83,375 +85,308 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Pengpeng Hou <pengpeng@iscas.ac.cn>
+From: Daniel Golle <daniel@makrotopia.org>
 
-[ Upstream commit 096ab64a0e69460bfb3557d09e17d2933280a1c6 ]
+[ Upstream commit 5cc65c01cdc577621d1320f4aa03a1382c5a4a45 ]
 
-The driver has an OF match table wired to .of_match_table, but does
-not export the table with MODULE_DEVICE_TABLE().
+mtk_pcs_lynxi_get_state() ignores regmap_read()'s return value; a
+failed read leaves bm and adv holding uninitialized stack values
+which are then decoded into the reported link state. The regmaps
+backing the MT7531 SGMII PCS instances sit on an MDIO bus where
+reads can fail. Check both reads and report the link as down on
+error; phylink presets state->link before the callback, so a bare
+return would leave a failed read reported as link-up.
 
-Add the missing MODULE_DEVICE_TABLE(of, ...) entry so module alias
-information is generated for OF based module autoloading.
-
-This is a source-level fix.  It does not claim dynamic hardware
-reproduction; the evidence is the driver-owned match table, its use by
-the platform driver, and the missing module alias publication.
-
-Signed-off-by: Pengpeng Hou <pengpeng@iscas.ac.cn>
-Reviewed-by: Brian Masney <bmasney@redhat.com>
-Signed-off-by: Brian Masney <bmasney@redhat.com>
+Signed-off-by: Daniel Golle <daniel@makrotopia.org>
+Reviewed-by: Andrew Lunn <andrew@lunn.ch>
+Link: https://patch.msgid.link/fce70657fc03bbaf60a04c0fbf2f418531135c4f.1785811140.git.daniel@makrotopia.org
+Signed-off-by: Jakub Kicinski <kuba@kernel.org>
 Signed-off-by: Sasha Levin <sashal@kernel.org>
 ---
 
 LLM Generated explanations, may be completely bogus:
 
-The local tree is **7.3.0-rc4** (`v7.3-rc4-27-gf0100363d8c37`). The
-vdecsys driver is present here; the change is a one-line
-`MODULE_DEVICE_TABLE(of, ...)` so OF module aliases are generated.
+This is a real uninitialized-data bug in MediaTek LynxI PCS link
+polling, and the buggy path exists in this 6.12 tree. It should be
+backported.
 
-===============================================================
-PHASE 1: COMMIT MESSAGE FORENSICS
-===============================================================
+## Phase 1: Commit message forensics
 
-**Step 1.1: PARSE THE SUBJECT LINE**
-Record: [clk: mediatek] [add] [missing MODULE_DEVICE_TABLE() for
-mt6735-vdecsys]
+**Step 1.1:** Record: `[net: pcs: mtk-lynxi:]` `[check]` `[validate
+regmap_read() in mtk_pcs_lynxi_get_state() so failed MDIO reads are not
+decoded as link state]`
 
-**Step 1.2: PARSE ALL COMMIT MESSAGE TAGS**
-Record:
-- Signed-off-by: Pengpeng Hou \<pengpeng@iscas.ac.cn\> (author)
-- Reviewed-by: Brian Masney \<bmasney@redhat.com\> (clk co-maintainer;
-  also committed the patch)
-- Signed-off-by: Brian Masney \<bmasney@redhat.com\>
-- No Fixes:, Reported-by:, Tested-by:, Link:, or Cc: stable
-- Ignore any pipeline-added Sasha Levin SOB (none on this commit)
+**Step 1.2:** Record: tags in the candidate message:
+- `Signed-off-by: Daniel Golle <daniel@makrotopia.org>` (author; driver
+  co-maintainer)
+- `Reviewed-by: Andrew Lunn <andrew@lunn.ch>` (netdev/DSA reviewer)
+- `Link: https://patch.msgid.link/fce70657fc03bbaf60a04c0fbf2f418531135c
+  4f.1785811140.git.daniel@makrotopia.org`
+- `Signed-off-by: Jakub Kicinski <kuba@kernel.org>` (netdev maintainer)
+- No `Reported-by`, `Tested-by`, `Cc: stable` in the candidate text
+  (absence is expected)
+- Original mailing-list submission **did** include `Fixes: 4765a9722e09
+  ("net: pcs: add driver for MediaTek SGMII PCS")`; that tag is not in
+  the candidate body
 
-**Step 1.3: ANALYZE THE COMMIT BODY TEXT**
-Record:
-- Bug: OF match table is wired to `.of_match_table` but not exported
-  with `MODULE_DEVICE_TABLE()`, so modpost does not emit `of:` aliases.
-- Symptom: when `CONFIG_COMMON_CLK_MT6735_VDECSYS=m`, udev/kmod cannot
-  autoload `clk-mt6735-vdecsys.ko` from the DT compatible string;
-  vdecsys clocks/resets never register unless the module is loaded by
-  hand.
-- Version info: none in the message. Driver introduced in
-  `0bd9b1211f741` (contained in v6.13-rc1); this fix is contained in
-  v7.3-rc1.
-- Root cause: omission at driver introduction, not a later regression.
+**Step 1.3:** Record: `[Bug: ignored regmap_read() errors leave
+`bm`/`adv` uninitialized and phylink decodes them as BMSR/LPA]`
+`[Symptom: false or garbage link/speed/duplex; failed read can be
+reported as link-up because phylink presets `state->link`]` `[Version:
+bug dates to driver introduction]` `[Root cause: MDIO-backed MT7531
+SGMII PCS regmaps can fail; output is not written on error]`
 
-**Step 1.4: DETECT HIDDEN BUG FIXES**
-Record: Not hidden. It is an explicit autoload/alias publication fix.
-Author calls it a “source-level fix” with no hardware reproduction; that
-is accurate (the missing macro is visible in the file) and does not make
-the bug theoretical.
+**Step 1.4:** Record: `[Not a disguised cleanup. This is an explicit
+missing-check / uninitialized-use fix. v2 of the patch added
+`state->link = false` after review, because a bare return left phylink's
+preset link-up.]`
 
-===============================================================
-PHASE 2: DIFF ANALYSIS - LINE BY LINE
-===============================================================
+## Phase 2: Diff analysis
 
-**Step 2.1: INVENTORY THE CHANGES**
-Record:
-- File: `drivers/clk/mediatek/clk-mt6735-vdecsys.c` (+1 / -0)
-- Function/data: file-scope after `of_match_mt6735_vdecsys[]`
-- Scope: single-file, one-line surgical fix
+**Step 2.1:** Record: `[drivers/net/pcs/pcs-mtk-lynxi.c: +5 / -2 in
+`mtk_pcs_lynxi_get_state()`]` `[single-file surgical fix]`
 
-**Step 2.2: UNDERSTAND THE CODE FLOW CHANGE**
-Record: Before: match table exists and is used for in-kernel platform
-matching, but no module alias is published. After:
-`MODULE_DEVICE_TABLE(of, of_match_mt6735_vdecsys)` aliases the table for
-`file2alias`/modpost. Affects the modular autoload path only;
-probe/remove logic is unchanged.
+**Step 2.2:** Record: `[Before: two unchecked `regmap_read()`s, then
+`phylink_mii_c22_pcs_decode_state()` on `bm`/`adv`. After: if either
+read fails, set `state->link = false` and return; otherwise decode as
+before. Error path only.]`
 
-**Step 2.3: IDENTIFY THE BUG MECHANISM**
-Record: [Hardware enablement / module autoload] `MODULE_DEVICE_TABLE` is
-the OF analog of exporting PCI/USB IDs. Without it, `modules.alias`
-lacks `of:N*T*Cmediatek,mt6735-vdecsys`. Platform matching still works
-if the module is already loaded or built-in.
+**Step 2.3:** Record: `[Category: initialization / missing return-value
+check]` `[Mechanism: failed `regmap_read()` does not write `*val`;
+`unsigned int bm, adv` stay uninitialized;
+`phylink_mii_c22_pcs_decode_state()` does `state->link = !!(bmsr &
+BMSR_LSTATUS)` on that garbage. Fix matches
+`phylink_mii_c22_pcs_get_state()`, which already treats read errors as
+link-down.]`
 
-**Step 2.4: ASSESS THE FIX QUALITY**
-Record: Obviously correct; matches the established MediaTek clk pattern
-(`65c9ad77cbc0e` “Add MODULE_DEVICE_TABLE() where appropriate”).
-Compile-time alias generation only; no locking, no API, no runtime path
-change. Regression risk is negligible. Sibling `clk-mt6735-imgsys.c` /
-`clk-mt6735-mfgcfg.c` still lack the macro in this tree; that does not
-make this hunk wrong.
+**Step 2.4:** Record: `[Obviously correct, 5-line change, no
+API/locking/refcount changes.]` `[Regression risk: very low. Worst case
+is reporting link-down on a failed register read, which is the intended
+fail-safe.]`
 
-===============================================================
-PHASE 3: GIT HISTORY INVESTIGATION
-===============================================================
+## Phase 3: Git history
 
-**Step 3.1: BLAME THE CHANGED LINES**
-Record: Match table from `0bd9b1211f741` (Yassine Oudjana, 2024-11-06;
-contained in v6.13-rc1). `MODULE_DEVICE_TABLE` line is this commit
-`096ab64a0e694`. Bug present from first introduction of the driver.
+**Step 3.1:** Record: `[Buggy reads introduced in 4765a9722e0976 ("net:
+pcs: add driver for MediaTek SGMII PCS", Daniel Golle, 2023-03-19)]`
+`[First appeared in v6.4-rc1; present for the life of this driver]`
 
-**Step 3.2: FOLLOW THE FIXES: TAG**
-Record: No Fixes: tag on this commit. A later unrelated series (`[PATCH
-07/32] clk: mediatek: mt6735: Add missing MODULE_DEVICE_TABLE()`) cited
-`Fixes: 0bd9b1211f74` for the same omission across four files. Intro
-commit is an ancestor of HEAD.
+**Step 3.2:** Record: `[Fixes target 4765a9722e0976 is an ancestor of
+HEAD. No later lynxi get_state error-handling in this tree.]`
 
-**Step 3.3: CHECK FILE HISTORY FOR RELATED CHANGES**
-Record: Only two commits on this file: intro + this fix. Sibling same-
-day commit `36cf8d279ff90` does the same for vencsys. Standalone for
-vdecsys; no prerequisite refactor.
+**Step 3.3:** Record: `[File history on this tree: 4765a9722e097 (add
+driver), 3b2de56a146f3 (neg_mode), 90308679c297f (pcs_disable),
+be884c15de370 (MODULE_DESCRIPTION).]` `[Standalone functionally; series
+patch 1/6, other patches touch `mt7530.c` only.]` `[Prerequisite already
+here: 93d46870c5440 ("net: dsa: mt7530: check bus->read() errors in the
+MDIO regmap backend") — after that, a failed MDIO read returns an error
+and leaves the output unwritten instead of truncated garbage.]`
 
-**Step 3.4: CHECK THE AUTHOR'S OTHER COMMITS**
-Record: Pengpeng Hou is not the MT6735 clk maintainer (that is Yassine
-Oudjana). Same-day vencsys twin plus several other `MODULE_DEVICE_TABLE`
-additions (rtc, vdpa, watchdog). Brian Masney, clk co-maintainer,
-reviewed and applied it.
+**Step 3.4:** Record: `[Daniel Golle is listed as maintainer of MEDIATEK
+ETHERNET PCS DRIVER. Related MDIO error-propagation work on mt7530 is by
+the same author.]`
 
-**Step 3.5: CHECK FOR DEPENDENT/PREREQUISITE COMMITS**
-Record: None. Macro has long existed in `include/linux/module.h`.
-Applies standalone.
+**Step 3.5:** Record: `[No missing functions. This tree's
+`mtk_pcs_lynxi_get_state()` still has the 6.12 signature (no
+`neg_mode`); the check itself is independent. Can apply standalone with
+a small context adaptation.]`
 
-===============================================================
-PHASE 4: MAILING LIST AND EXTERNAL RESEARCH
-===============================================================
+## Phase 4: Mailing list
 
-**Step 4.1: FIND THE ORIGINAL PATCH DISCUSSION**
-Record:
-- Lore/msgid:
-  https://patch.msgid.link/20260704124450.11035-1-pengpeng@iscas.ac.cn
-- `b4 dig -a`: v1 only, applied as submitted
-- Thread (mbox): author post + Brian Masney `Reviewed-by:` on
-  2026-07-06. No NAK, no stable nomination, no requested revisions.
-- WebFetch of lore/spinics: 403/500; thread recovered via `b4 dig -m`.
+**Step 4.1:** Record: `[Lore thread retrieved via b4 mbox: msgid fce7065
+7fc03bbaf60a04c0fbf2f418531135c4f.1785811140.git.daniel@makrotopia.org]`
+`[v1 of this remaining-errors series was `[PATCH net 1/4]`; v2 is
+`[PATCH net v2 1/6]`. Applied version is v2.]` `[v2 change: set
+`state->link = false` because phylink presets link-up (Sashiko
+review).]` `[Andrew Lunn Reviewed-by on v1; author kept it on v2 for the
+small in-spirit change. No NAKs.]` `[Patchwork bot: applied by Jakub
+Kicinski as netdev commit 5cc65c01cdc5.]`
 
-**Step 4.2: CHECK WHO REVIEWED THE PATCH**
-Record (`b4 dig -w`): linux-clk, linux-mediatek, Stephen Boyd, Brian
-Masney, AngeloGioacchino Del Regno, Matthias Brugger, Yassine Oudjana.
-Review came from clk co-maintainer Brian Masney.
+**Step 4.2:** Record: `[To/Cc included Andrew Lunn, Vladimir Oltean,
+Russell King, netdev, linux-mediatek, DSA and MediaTek maintainers.
+Right audience.]`
 
-**Step 4.3: SEARCH FOR THE BUG REPORT**
-Record: No Reported-by, no bugzilla/syzbot. Author states source-level
-evidence only. No in-tree DTS uses `mediatek,mt6735-vdecsys` (binding
-only in `Documentation/devicetree/bindings/clock/mediatek,syscon.yaml`).
+**Step 4.3:** Record: `[No syzbot/bugzilla user report. Found during
+mt7530 MDIO error-handling review. Still a concrete, reachable bug:
+`pcs.poll = true` so this runs from phylink's 1 Hz poll.]`
 
-**Step 4.4: CHECK FOR RELATED PATCHES AND SERIES**
-Record: Twin vencsys patch applied in the same pile. Later 07/32 series
-(Akari Tsuyukusa, Aug 2026) would have covered
-imgsys+mfgcfg+vdecsys+vencsys together; vdecsys/vencsys were already
-fixed here. This commit does not depend on that series.
+**Step 4.4:** Record: `[Series: "fix remaining swallowed MDIO access
+errors". Patch 1 is the only pcs-mtk-lynxi change and does not depend on
+patches 2–6.]` `[Earlier companion 93d46870c5440 / 96e0f5184af69 are
+already in this tree.]`
 
-**Step 4.5: CHECK STABLE MAILING LIST HISTORY**
-Record: No dedicated stable thread found for this subject. UNVERIFIED
-whether an AUTOSEL pick already exists; that must not drive the verdict.
+**Step 4.5:** Record: `[UNVERIFIED: lore.kernel.org/stable search
+blocked by Anubis. No stable-list discussion found via b4.]`
 
-===============================================================
-PHASE 5: CODE SEMANTIC ANALYSIS
-===============================================================
+## Phase 5: Semantic analysis
 
-**Step 5.1: IDENTIFY KEY FUNCTIONS IN THE DIFF**
-Record: No function body changed. Added `MODULE_DEVICE_TABLE` next to
-`of_match_mt6735_vdecsys`. Driver uses `mtk_clk_simple_probe` /
-`mtk_clk_simple_remove` via `module_platform_driver`.
+**Step 5.1:** Record: `[Modified: `mtk_pcs_lynxi_get_state`. Wired as
+`.pcs_get_state`.]`
 
-**Step 5.2: TRACE CALLERS**
-Record: Probe is invoked by the platform core when a device matches
-`mediatek,mt6735-vdecsys`. Autoload (udev/kmod) is the path that was
-broken for `=m`. Built-in (`=y`) matching already worked via
-`.of_match_table`.
+**Step 5.2:** Record: `[Callers: `phylink_mac_pcs_get_state()` → in-band
+resolve (`MLO_AN_INBAND`), ethtool `phylink_ethtool_ksettings_get()`,
+and MII emulation. `mpcs->pcs.poll = true` so `phylink_fixed_poll` runs
+`phylink_run_resolve()` every HZ.]`
 
-**Step 5.3: TRACE CALLEES**
-Record: `mtk_clk_simple_probe()` (`drivers/clk/mediatek/clk-mtk.c`)
-registers the vdecsys gates and resets from `vdecsys_clks`. Unchanged by
-this patch.
+**Step 5.3:** Record: `[Callees: `regmap_read`,
+`phylink_mii_c22_pcs_decode_state`.]`
 
-**Step 5.4: FOLLOW THE CALL CHAIN**
-Record: DT node `compatible = "mediatek,mt6735-vdecsys"` → (modular)
-udev alias lookup → `clk-mt6735-vdecsys.ko` → platform probe → video-
-decoder clocks. Reachable on MT6735 boards that describe that syscon; no
-in-tree board DTS. Unprivileged userspace cannot trigger it except by
-loading the module.
+**Step 5.4:** Record: `[Reachable from userspace: ethtool link settings,
+and continuously while the netdev is up in in-band
+SGMII/1000Base-X/2500Base-X.]` `[Hardware: MT7531 DSA ports 5/6
+(`mt7531_create_sgmii()` uses an MDIO-backed regmap) and MediaTek SoC
+SGMII (`mtk_eth_soc` syscon/MMIO, rarely fails). The MDIO path is the
+one that matters.]`
 
-**Step 5.5: SEARCH FOR SIMILAR PATTERNS**
-Record: Most MediaTek clk drivers already have `MODULE_DEVICE_TABLE`.
-MT6735 core clocks (apmixedsys/infracfg/pericfg/topckgen) have it;
-imgsys and mfgcfg in this tree still do not. Same class of omission as
-the 2023 sweep `65c9ad77cbc0e`.
+**Step 5.5:** Record: `[Same pattern already handled in
+`phylink_mii_c22_pcs_get_state()` and `phylink_mii_c45_pcs_get_state()`
+in this tree. Lynx PCS uses those helpers; lynxi did not.]`
 
-===============================================================
-PHASE 6: CROSS-REFERENCING AGAINST THE LOCAL TREE
-===============================================================
+## Phase 6: Local tree (6.12.111, `pending-6.12`)
 
-**Step 6.1: DOES THE BUGGY CODE EXIST IN THIS TREE?**
-Record: Yes. File exists; driver from `0bd9b1211f741` (v6.13-rc1).
-Kconfig `COMMON_CLK_MT6735_VDECSYS` is **tristate**, Makefile maps it to
-`clk-mt6735-vdecsys.o`. HEAD already contains `096ab64a0e694`
-(v7.3-rc1); the pre-fix omission is the code this candidate addresses.
+**Step 6.1:** Record: `[Yes. `drivers/net/pcs/pcs-mtk-lynxi.c:98-99`
+still has unchecked `regmap_read()` into uninitialized `bm`/`adv`.
+Introduced v6.4, present here.]` `[Verified: `git describe HEAD` →
+p-6.12-4-gbf6fcdf761abd; `make kernelversion` → 6.12.111.]`
 
-**Step 6.2: CHECK FOR BACKPORT COMPLICATIONS**
-Record: Clean apply. One added line at a stable match-table site; no
-refactor around it.
+**Step 6.2:** Record: `[Minor context rework, not a semantic fork. This
+tree has no `mtk_pcs_lynxi_inband_caps`, no `neg_mode` argument, and
+`phylink_mii_c22_pcs_decode_state(state, bmsr, lpa)` not the later 4-arg
+form. The 5-line check ports 1:1 into the existing function body.]`
 
-**Step 6.3: CHECK IF RELATED FIXES ARE ALREADY HERE**
-Record: This exact line is present (commit `096ab64a0e694`). No
-alternate fix. imgsys/mfgcfg still missing aliases — separate omissions.
+**Step 6.3:** Record: `[No lynxi get_state error-check already present.
+Prerequisite MDIO backend error propagation is already here, which is
+why this follow-up is needed: failed reads no longer write `*val`.]`
 
-===============================================================
-PHASE 7: SUBSYSTEM AND MAINTAINER CONTEXT
-===============================================================
+## Phase 7: Subsystem context
 
-**Step 7.1: IDENTIFY THE SUBSYSTEM AND ITS CRITICALITY**
-Record: [drivers/clk/mediatek] [PERIPHERAL] — SoC-specific video-decoder
-clock/reset driver for MT6735 (Helio T1 era). Not core mm/net/fs.
+**Step 7.1:** Record: `[drivers/net/pcs + consumers in net/dsa/mt7530
+and net/ethernet/mediatek]` `[IMPORTANT: common OpenWrt/router SGMII CPU
+ports, not core mm/VFS, but production networking]`
 
-**Step 7.2: ASSESS SUBSYSTEM ACTIVITY**
-Record: MediaTek clk is actively developed; this file itself is quiet
-(two commits). MT6735 clk is listed Maintained (Yassine Oudjana).
+**Step 7.2:** Record: `[Driver is mature since v6.4; this file has only
+a handful of commits on this tree. Bug is long-standing, newly exposed
+as true uninitialized use after the MDIO backend fix.]`
 
-===============================================================
-PHASE 8: IMPACT AND RISK ASSESSMENT
-===============================================================
+## Phase 8: Impact and risk
 
-**Step 8.1: DETERMINE WHO IS AFFECTED**
-Record: Users of MT6735 with `CONFIG_COMMON_CLK_MT6735_VDECSYS=m`. No
-in-tree defconfig enables `COMMON_CLK_MT6735`; no in-tree DTS
-instantiates the node. Built-in builds are unaffected.
+**Step 8.1:** Record: `[Driver-specific: MT7531 SGMII (MDIO) and
+MediaTek SoC SGMII (MMIO).]`
 
-**Step 8.2: DETERMINE THE TRIGGER CONDITIONS**
-Record: Boot/enumeration with the DT node while the driver is a module.
-Not a race. Not unprivileged-exploitable. Workaround: `modprobe clk-
-mt6735-vdecsys` or build `=y`.
+**Step 8.2:** Record: `[Trigger: failed `regmap_read` on the PCS map.
+Common on flaky/timeout MDIO; not every boot. Unprivileged userspace can
+observe the result via ethtool/carrier; the poll path runs while the
+interface is up.]`
 
-**Step 8.3: DETERMINE THE FAILURE MODE SEVERITY**
-Record: Video-decoder clocks/resets never appear unless the module is
-loaded manually → decode/VPU consumers fail clock lookup. Not
-panic/UAF/corruption. Severity: MEDIUM for modular MT6735 vdec; LOW
-overall population. Failure is “device feature does not come up,” same
-class as missing device IDs.
+**Step 8.3:** Record: `[Failure mode: uninitialized stack decoded as
+link/speed/duplex; false carrier possible because phylink presets
+`state->link = 1`.]` `[Severity: HIGH for wrong datapath/carrier on MDIO
+error; not a panic. Uninitialized use is the same class as KMSAN-class
+bugs.]`
 
-**Step 8.4: CALCULATE RISK-BENEFIT RATIO**
-Record: Benefit: modular autoload for this clock controller. Risk: very
-low (one compile-time alias line). Ratio: favorable because risk is
-essentially zero.
+**Step 8.4:** Record: `[Benefit: high for MT7531 in-band SGMII — stops
+garbage link state after a bus error, especially now that the backend
+returns real errors.]` `[Risk: very low — 5 lines, fail-closed to link-
+down.]` `[Ratio: strongly favors backport.]`
 
-===============================================================
-PHASE 9: FINAL SYNTHESIS
-===============================================================
+## Phase 9: Synthesis
 
-**Step 9.1: COMPILE THE EVIDENCE**
+**For backporting:**
+- Real bug: uninitialized `bm`/`adv` decoded into phylink link state
+- User-visible: false/garbage carrier, speed, duplex; ethtool reports it
+- Tiny, obviously correct, matches phylink's own C22 helper
+- Reviewed by Andrew Lunn, applied by Jakub Kicinski, written by the PCS
+  maintainer
+- Buggy code has been in this driver since v6.4 and is in 6.12.111
+- Companion to MDIO error-propagation already in this tree
+  (93d46870c5440); without this, a failed MT7531 PCS read now leaves
+  stack garbage instead of even truncated-but-defined data
+- No new API/feature
 
-FOR:
-- Real autoload bug on a tristate, `module_platform_driver` clock driver
-- One-line, obviously correct, clk co-maintainer Reviewed-by + applied
-- Same class as device-ID / quirk enablement (OF alias publication)
-- Established MediaTek clk precedent (`65c9ad77cbc0e`: “allow auto-load
-  at boot”)
-- Zero runtime/API/locking risk; applies cleanly
-- Buggy driver exists in this 7.3 tree (since v6.13)
+**Against:**
+- Not a crash/UAF/deadlock
+- Raw upstream hunk will not apply cleanly (later `neg_mode` /
+  `inband_caps` context)
+- No external user/syzbot report
+- Series 1/6, but this patch does not need 2–6
 
-AGAINST:
-- Not crash/security/corruption/deadlock
-- No user report or hardware test
-- Niche SoC; no in-tree DTS/defconfig
-- Built-in configs already work
-- Author framed it as source-level only
+**Unresolved:** stable-list discussion (lore/stable fetch blocked)
 
-UNRESOLVED:
-- Whether AUTOSEL/stable already discussed this hash (lore.kernel.org
-  stable search not useful)
-- Direct fetch of lore HTML (403)
+**Stable rules:**
+1. Obviously correct and tested? **PASS** — same pattern as
+   `phylink_mii_c22_pcs_get_state()`; Reviewed-by Andrew Lunn; merged
+2. Fixes a real bug that affects users? **PASS** — wrong link state /
+   uninitialized data on MDIO failure for MT7531 SGMII
+3. Important issue? **PASS** — uninitialized memory used as live link
+   state on a 1 Hz poll; can keep carrier up after a failed read
+4. Small and contained? **PASS** — 5 lines, one function
+5. No new features or APIs? **PASS**
+6. Can apply to this tree? **PASS** — needs a trivial context backport,
+   not missing code
 
-**Step 9.2: APPLY THE STABLE RULES CHECKLIST**
-1. Obviously correct and tested? **PASS** — one-line alias export;
-   reviewed by clk co-maintainer. No HW test, but correctness does not
-   depend on runtime.
-2. Fixes a real bug that affects users? **PASS** — modular OF autoload
-   is broken by construction when the table is not exported.
-3. Important issue? **PASS** (MEDIUM) — hardware clocks do not come up
-   on the intended modular path; same practical class as missing device
-   IDs, not a panic.
-4. Small and contained? **PASS** — +1 line, one file.
-5. No new features or APIs? **PASS** — publishes an existing match
-   table.
-6. Can apply to the local tree? **PASS** — file and match table exist;
-   hunk is identical.
+**Exception category:** none (normal small correctness fix)
 
-**Step 9.3: CHECK FOR EXCEPTION CATEGORIES**
-Record: Device-ID / module-alias publication for an existing driver (OF
-`MODULE_DEVICE_TABLE`). That exception applies.
-
-**Step 9.4: MAKE YOUR DECISION**
-The bug is real for `=m` builds, the fix is trivial and already the
-subsystem’s standard pattern, and this tree has the driver. Conservative
-stable practice still takes this class because the downside is nil and
-the upside is the driver actually binding.
-
-===============================================================
-What the commit solves, and why it matters here
-===============================================================
-
-Without `MODULE_DEVICE_TABLE(of, of_match_mt6735_vdecsys)`, modpost
-never emits the `of:N*T*Cmediatek,mt6735-vdecsys` alias. On this tree
-the Kconfig is tristate, so a modular vdecsys driver will not autoload;
-video-decoder clocks and resets never register until someone loads the
-module by name. Built-in matching via `.of_match_table` was already
-fine.
-
-It meets stable rules: obviously correct, one line, no new API, no
-dependencies, and it is the OF equivalent of adding a device ID to an
-existing driver. Risk is compile-time alias generation only.
-
-Concerns: no in-tree board uses this compatible, no reporter, not a
-crash. Those lower breadth of impact; they do not make the hunk unsafe
-or non-bugfix.
+The problem for 6.12 users is that `mtk_pcs_lynxi_get_state()` still
+consumes uninitialized stack as BMSR/LPA. Phylink presets `state->link =
+1` (`phylink.c:1328`) and this PCS polls every second. After the
+already-landed MT7530 MDIO backend fix, a failed read returns an error
+and does not fill `*val`, so this is the necessary follow-up. Benefit is
+preventing false/garbage link state; risk is a fail-closed link-down on
+I/O error.
 
 Verification:
-- [Phase 1] Parsed commit `096ab64a0e694`: SOB Pengpeng Hou; Reviewed-
-  by/SOB Brian Masney; no Fixes/Reported-by/Cc: stable
-- [Phase 2] Diff: +1 `MODULE_DEVICE_TABLE(of, of_match_mt6735_vdecsys)`
-  in `clk-mt6735-vdecsys.c`
-- [Phase 3] `git blame`: match table from `0bd9b1211f741`; `git describe
-  --contains` intro v6.13-rc1, fix v7.3-rc1
-- [Phase 3] `git merge-base --is-ancestor 0bd9b1211f741 HEAD` and
-  `096ab64a0e694 HEAD`: both true
-- [Phase 3] `git log --oneline -- drivers/clk/mediatek/clk-
-  mt6735-vdecsys.c`: only intro + this fix
-- [Phase 3] Sibling `36cf8d279ff90` vencsys same change; earlier sweep
-  `65c9ad77cbc0e`
-- [Phase 4] `b4 dig -c 096ab64a0e694`: msgid
-  `20260704124450.11035-1-pengpeng@iscas.ac.cn`; v1 only
-- [Phase 4] `b4 dig -m`: Brian Masney Reviewed-by; no NAK/stable
-  discussion
-- [Phase 4] WebFetch lore/spinics: 403/500; used mbox instead
-- [Phase 5] Kconfig `COMMON_CLK_MT6735_VDECSYS` tristate; Makefile
-  builds `clk-mt6735-vdecsys.o`; probe is `mtk_clk_simple_probe`
-- [Phase 5] `MODULE_DEVICE_TABLE` in `include/linux/module.h` creates
-  file2alias symbol
-- [Phase 6] `git describe HEAD` = v7.3-rc4-27-gf0100363d8c37; `make
-  kernelversion` = 7.3.0-rc4
-- [Phase 6] No in-tree dts/dtsi for mt6735-vdecsys; binding listed in
-  `mediatek,syscon.yaml`
-- [Phase 6] No defconfig sets `COMMON_CLK_MT6735`
-- [Phase 6] imgsys/mfgcfg still lack MODULE_DEVICE_TABLE (verified by
-  grep)
-- [Phase 7] MAINTAINERS: COMMON CLK FRAMEWORK includes Brian Masney;
-  MT6735 CLOCK maintained by Yassine Oudjana
-- [Phase 8] Failure mode: modular autoload miss → vdec clocks absent;
-  severity MEDIUM/narrow
-- UNVERIFIED: whether stable@ already queued this hash; lore stable
-  search did not return this commit
+- [Phase 1] Parsed candidate tags; original lore patch had `Fixes:
+  4765a9722e09`
+- [Phase 2] Diff is 5 lines in `mtk_pcs_lynxi_get_state()` wrapping two
+  `regmap_read()`s
+- [Phase 2] Confirmed `phylink_mac_pcs_get_state()` sets `state->link =
+  1` before the callback
+- [Phase 2] Confirmed `phylink_mii_c22_pcs_decode_state()` uses `bmsr`
+  for `state->link` and that `phylink_mii_c22_pcs_get_state()` already
+  sets `state->link = false` on read failure
+- [Phase 3] `git blame` on lines 98–99: 4765a9722e0976; `git describe
+  --contains` → v6.4-rc1
+- [Phase 3] `git merge-base --is-ancestor 4765a9722e0976 HEAD` succeeded
+- [Phase 3] `git merge-base --is-ancestor 93d46870c5440 HEAD` succeeded
+  (MDIO backend now returns errors without writing `*val`)
+- [Phase 4] `b4 mbox` on the msgid: 8-message thread; series v2 1/6;
+  Andrew Lunn Reviewed-by; no NAK
+- [Phase 4] Cover letter: this check was added because a failed read can
+  now leave output unwritten
+- [Phase 4] UNVERIFIED: lore.kernel.org/stable search (Anubis 403)
+- [Phase 5] Callers: phylink in-band resolve, ethtool get, 1 Hz
+  `link_poll`; consumers `mt7530-mdio.c` and `mtk_eth_soc.c`
+- [Phase 6] `git describe HEAD` / `make kernelversion`: 6.12.111 on
+  `pending-6.12`; unchecked reads still at `pcs-mtk-lynxi.c:98-99`
+- [Phase 6] Function signature here lacks `neg_mode`; backport is a
+  local 5-line edit
+- [Phase 8] Failure mode: uninitialized link state / possible false
+  carrier, severity HIGH, not a panic
+- UNVERIFIED: whether this SHA is already in some other stable series
+  (decision is for this tree only)
 
 **YES**
 
- drivers/clk/mediatek/clk-mt6735-vdecsys.c | 1 +
- 1 file changed, 1 insertion(+)
+ drivers/net/pcs/pcs-mtk-lynxi.c | 7 +++++--
+ 1 file changed, 5 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/clk/mediatek/clk-mt6735-vdecsys.c b/drivers/clk/mediatek/clk-mt6735-vdecsys.c
-index 8817085fc1db4..d53ebf92e878d 100644
---- a/drivers/clk/mediatek/clk-mt6735-vdecsys.c
-+++ b/drivers/clk/mediatek/clk-mt6735-vdecsys.c
-@@ -63,6 +63,7 @@ static const struct of_device_id of_match_mt6735_vdecsys[] = {
- 	{ .compatible = "mediatek,mt6735-vdecsys", .data = &vdecsys_clks },
- 	{ /* sentinel */ }
- };
-+MODULE_DEVICE_TABLE(of, of_match_mt6735_vdecsys);
+diff --git a/drivers/net/pcs/pcs-mtk-lynxi.c b/drivers/net/pcs/pcs-mtk-lynxi.c
+index 87df3a9dfc9bc..64fb17c189afc 100644
+--- a/drivers/net/pcs/pcs-mtk-lynxi.c
++++ b/drivers/net/pcs/pcs-mtk-lynxi.c
+@@ -110,8 +110,11 @@ static void mtk_pcs_lynxi_get_state(struct phylink_pcs *pcs,
+ 	unsigned int bm, adv;
  
- static struct platform_driver clk_mt6735_vdecsys = {
- 	.probe = mtk_clk_simple_probe,
+ 	/* Read the BMSR and LPA */
+-	regmap_read(mpcs->regmap, SGMSYS_PCS_CONTROL_1, &bm);
+-	regmap_read(mpcs->regmap, SGMSYS_PCS_ADVERTISE, &adv);
++	if (regmap_read(mpcs->regmap, SGMSYS_PCS_CONTROL_1, &bm) ||
++	    regmap_read(mpcs->regmap, SGMSYS_PCS_ADVERTISE, &adv)) {
++		state->link = false;
++		return;
++	}
+ 
+ 	phylink_mii_c22_pcs_decode_state(state, neg_mode,
+ 					 FIELD_GET(SGMII_BMSR, bm),
 -- 
 2.53.0
 
