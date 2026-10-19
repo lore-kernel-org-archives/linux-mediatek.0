@@ -4,84 +4,120 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CF966CCF2DB
-	for <linux-mediatek@archiver.kernel.org>; Mon, 19 Oct 2026 06:09:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 721B7CCF2DA
+	for <linux-mediatek@archiver.kernel.org>; Mon, 19 Oct 2026 07:06:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:To:From:Reply-To:Content-Type:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Owner; bh=KhnH2Fl7Ngxx8M1a91ckV8yYy0vtR+vF5EQHpmiM6YM=; b=akUl6Z3tr8jqce
-	Ctpcr68SWNmocNiqMxBWPu3dL/oGsL+Gk3Ou6TIdWX1u/r7hGs3LtBhSD19OusCe0Kfx2hWsumcBj
-	tVbxwymsF/f8hHN+CCQfsFroiVRTJwBnqpqP1J+LX8bwRhbn1VFJ4LLCp6xAc6AdmSNXg8To83ZlW
-	scW8RSj3Euz8VfWfTAsm1uKbPmGRFmXIgSNclurxoOu6hFIIO/Rod5sbmjQFb+MzqajwyDplHPOVn
-	1UCmBQIvqwV/R1KbmiabCtYxrAoXoU3I6OmzIpH6b/7jaL4LlASD9SsG/5e3+UztWk/jgQ4iw+u2Y
-	AgZ5VAimNC7GxUsseAXw==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=RBG5N+FfEFIehrCqR4e6P+vf/JRBTRr9M3vIsyWq9gA=; b=Ird5FrbdVccM9IBUOWLtTQJmsg
+	oL38KlyBdr7cnkHGem0TFq7QTpQjTpR9hjDXqLfhBh6SdryGc4Kmx1CdoP59kmE1T18YVun3Wnj0s
+	qYrBE46lF7XA0IeU2oIXyV+GQ6eEJA303PBVSMzS0yC9ShniSk+STOj0nGilBYS8gY+tp7wAhDpMx
+	HfCZZBUcPl74X2nRMUkm/Y+eLVN0u7m65pGBvljuiiQTHGHiqDIYft56YIDVdJpFuuNAfQ/YGGxQK
+	5Dp3ZbXERL8rNJrdAKF6d1kGwfMtmEKFvbpkHJ+ElP8dpkfmew3DjXGbu/cOj5Qs0vkT6hFt4dbEj
+	B+x0U3Ng==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xIgYO-00000006fuk-3MK9;
-	Mon, 19 Oct 2026 06:09:00 +0000
-Received: from mail-dy1-x1332.google.com ([2607:f8b0:4864:20::1332])
+	id 1xIhSF-00000006kJx-0iX0;
+	Mon, 19 Oct 2026 07:06:43 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xIgYK-00000006fsV-18q0
-	for linux-mediatek@lists.infradead.org;
-	Mon, 19 Oct 2026 06:08:59 +0000
-Received: by mail-dy1-x1332.google.com with SMTP id 5a478bee46e88-33bf40b0c8bso5019131eec.0
-        for <linux-mediatek@lists.infradead.org>; Sun, 18 Oct 2026 23:08:55 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1792390135; x=1792994935; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to:content-type;
-        bh=KhnH2Fl7Ngxx8M1a91ckV8yYy0vtR+vF5EQHpmiM6YM=;
-        b=O+276bPyF9AFSlpgAGEbOuH+hs6B1g5hc0obyECs2nNlU6Fze6tjrnoeFpc1dPvrVX
-         S9kOuGiFmB62VptF8doSdhz8PC6tQepY1dPCktYEfju6YG7M8nBg3zs6vLoAKfLMGJPt
-         psLuw/VttnSn4eAdZCRIZS0DXlt2fkVkEN3Og=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1792390135; x=1792994935;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
-         :to:cc:subject:date:message-id:reply-to:content-type;
-        bh=KhnH2Fl7Ngxx8M1a91ckV8yYy0vtR+vF5EQHpmiM6YM=;
-        b=C5N92NHSJILfCJ3zvfeB0VWbfcgOJpnTdDK4iPgoqp2IO26RKEVa2NP1NkJPYXPQFu
-         WdnEryVMFxdvzgsJFQxAe+tGhquyvbLte+O3YCj05iubV/u+s8APcdIDzFuV6oMjjCF0
-         DJYUUgBP5BhXQOv6evSDtZDYaUnzy3ROi7/v2fnBKO1vKp1d/EBPADOfnxCCjRYHPGVd
-         mIzmiiCFFpFpW64CveHiwAjE52bvH+SNJKxOlDnpG7h4AZZrBIk3ZxaIQiLP5qu0ZOIi
-         cFt2Y3YJ8tBWLVEgu9BjOMd63yh4zP8so9QgFOxR3DqhtauyOpmbBYG0tj+5UThA9dNN
-         VlEQ==
-X-Forwarded-Encrypted: i=1; AKwUvByrXDP/rsC7f/QAkWwoCHhoeESY29s9IpCG/b9QIBwzNGqnwNo02vBkzqyVHgwaEUmpPuCmP/xw80DgGH5UsQ==@lists.infradead.org
-X-Gm-Message-State: AFq9FYJuqyuwRKD6101GRQHCm5VlGg8B2haxhFkao+xk645+yurMrZRQ
-	Z0Y22+Xx9DsizikzqPRsZsLm7Waol+VbqI/NEAV6ygT6YTtommvBK3t83QYmpaYeFA==
-X-Gm-Gg: AYBFou2l21DD8DZ0nKGz4IoTlwSI8WHocNv9ajAkmkaHRdKtbZhEAJxHKlQPg0IGt6E
-	r9S8ZtEDrBP1u1/1ycF/0xJ/qOi/lB802swvbvgqFU8Hu0E58j/hTJBiQwTLe8YAnHVvT/euG5q
-	55MeUP2ckeztSG28b5wsF6HoJztpHFeYxQlZA/W5XrHHOn6H5ieZLi1RnTGIe7s4LNf/ppxcP2v
-	NJd4/84ZfM9wMMv22D9bxx0XAYWUY1BQ/iTETaWGzNtk+Nh8Uve5/s2ZqNphSQIxG7WtfDwP6Ai
-	PyR1971M+dmqbicJS5qN1i8R4joR8EvOf7Jc+JIJ+mXgVXVsslDcNLj+rwAOJJC7SDgnO9v2B2M
-	TMO1wkJzDXOM3xNc4Jx0n3YsZ2KqLBolc/6lFtNvcMbxp5fruXjPgVwLQh6JzAczBbDv5fnljQ1
-	r/GzyVG+zodny/CheGH3CzbiTBHpNJX55LXMrME+UIW8389gxpjZpLwFB8hvyINiGKpXkPBV8fQ
-	uvD9Pf2WUWg7DO4yhJbPAlPFg4395nZAMDlhR8CNsix3DmGaOyYIaNacQ==
-X-Received: by 2002:a05:7022:28a:b0:150:6c0e:2ce2 with SMTP id a92af1059eb24-185139aa4d9mr10544613c88.31.1792390135205;
-        Sun, 18 Oct 2026 23:08:55 -0700 (PDT)
-Received: from fshao-p620.tpe.corp.google.com ([2a00:79e0:203d:7:b024:9aa2:76e6:57d4])
-        by smtp.gmail.com with ESMTPSA id a92af1059eb24-183190aa3ebsm23281190c88.8.2026.10.18.23.08.52
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 18 Oct 2026 23:08:54 -0700 (PDT)
-From: Fei Shao <fshao@chromium.org>
-To: Yunfei Dong <yunfei.dong@mediatek.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Mauro Carvalho Chehab <mchehab@kernel.org>
-Subject: [PATCH 2/2] media: mediatek: vcodec: Complete request on NULL va in stateless decoder
-Date: Mon, 19 Oct 2026 14:06:20 +0800
-Message-ID: <20261019060825.4163770-3-fshao@chromium.org>
-X-Mailer: git-send-email 2.56.0.176.g3575e65682-goog
-In-Reply-To: <20261019060825.4163770-1-fshao@chromium.org>
-References: <20261019060825.4163770-1-fshao@chromium.org>
+	id 1xIhSB-00000006kJb-0pHq;
+	Mon, 19 Oct 2026 07:06:39 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by sea.source.kernel.org (Postfix) with ESMTP id 7BACB43B62;
+	Mon, 19 Oct 2026 07:06:38 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 072531F000C4;
+	Mon, 19 Oct 2026 07:06:30 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1792393598;
+	bh=RBG5N+FfEFIehrCqR4e6P+vf/JRBTRr9M3vIsyWq9gA=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To;
+	b=PbEOhqpo3axFdDlnmaH2aTonn5RGDJRgHrjGwsbQLTYa+aASv0CA/MES1FVCtag5T
+	 DyPdpRa3TNuGmmUuWTvxijZkpkOCdwhozJUSAg8Fqu4XwJkvl8k6zckeIeuJ2QnWJ1
+	 JQiQko1Ykyi1fpHbPvREIvGSNF/JRmgeMVvjvXd30qjk3l5CkX0kEfAylhrqd5Op2d
+	 W/FQ9Gn9ljkyQ085N5hQqVhWWmK4kHDraXSvcMaPsB/yKw/LxT0hx41U+qb8EXZYgA
+	 vSUYDArtuPoZMpr2rjcfV43lz6ATWI6AbElUEa5nLNzrbt4v9gKlPfGkDxBY1FtfTe
+	 TtIYQhAiDhSWQ==
+Message-ID: <cd5bd24e-2dce-45da-a3cd-19d04f10167c@kernel.org>
+Date: Mon, 19 Oct 2026 09:06:27 +0200
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261018_230856_324125_FF4685A4 
-X-CRM114-Status: GOOD (  15.61  )
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 1/7] dt-bindings: mediatek: hdmi-phy: Add compatible for
+ mt8167
+To: Luca Leonardo Scorcia <l.scorcia@gmail.com>
+Cc: linux-mediatek@lists.infradead.org,
+ Chunfeng Yun <chunfeng.yun@mediatek.com>, Vinod Koul <vkoul@kernel.org>,
+ Neil Armstrong <neil.armstrong@linaro.org>,
+ Manivannan Sadhasivam <mani@kernel.org>, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
+ <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Stephen Boyd <sboyd@kernel.org>, Brian Masney <bmasney+clk@redhat.com>,
+ Jerome Brunet <jbrunet+clk@baylibre.com>,
+ Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+ Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@gmail.com>,
+ Simona Vetter <simona@ffwll.ch>,
+ Nicolas Frattaroli <nicolas.frattaroli@collabora.com>,
+ Chen-Yu Tsai <wenst@chromium.org>, Fabien Parent <fparent@baylibre.com>,
+ CK Hu <ck.hu@mediatek.com>, chunhui dai <chunhui.dai@mediatek.com>,
+ linux-arm-kernel@lists.infradead.org, linux-phy@lists.infradead.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-clk@vger.kernel.org, dri-devel@lists.freedesktop.org
+References: <20261010115539.9237-1-l.scorcia@gmail.com>
+ <20261010115539.9237-2-l.scorcia@gmail.com>
+ <20261012-quirky-emu-of-renovation-c217dc@quoll>
+ <CAORyz2KgX-7=gfax06+Pb5SFq4dVTtcTY2pbH+FDCRNZ+AVXOA@mail.gmail.com>
+From: Krzysztof Kozlowski <krzk@kernel.org>
+Content-Language: en-US
+Autocrypt: addr=krzk@kernel.org; keydata=
+ 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
+In-Reply-To: <CAORyz2KgX-7=gfax06+Pb5SFq4dVTtcTY2pbH+FDCRNZ+AVXOA@mail.gmail.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,82 +129,20 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org, linux-media@vger.kernel.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-If vb2_plane_vaddr() returns NULL for the source buffer because it has
-no kernel mapping, mtk_vdec_worker() finishes the m2m job without
-returning any buffer or completing the media request, so userspace
-waiting on the request never gets a result. The source buffer was only
-peeked and stays at the head of the ready list, so
-v4l2_m2m_job_finish() also schedules the same job again, which fails
-the same way.
+On 12/10/2026 19:43, Luca Leonardo Scorcia wrote:
+>> Why do you have flexible clocks?
+> 
+> Hi, I'm sorry but I need a little help in understanding your comment.
+> If you meant "Why isn't there a constraint on the clocks' names", it
+> is already provided by the existing conditional block [1].
 
-Handle it like a decode error, which takes three steps:
+Ack
 
-- Complete the request controls. The request cannot complete while its
-  control object is still pending.
-- Remove the source buffer from the ready list and return it with an
-  error, so that the job is not scheduled again.
-- Call mtk_vdec_stateless_cap_to_disp(). It returns the capture buffer
-  and drops the driver's reference to the request, which completes the
-  request under manual completion.
+Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
 
-The media request is now looked up before the address check because
-this path needs it, and the error is printed first because the buffer
-must not be touched once it is returned.
-
-Fixes: 7b182b8d9c85 ("media: mediatek: vcodec: Refactor get and put capture buffer flow")
-Signed-off-by: Fei Shao <fshao@chromium.org>
----
-
- .../vcodec/decoder/mtk_vcodec_dec_stateless.c | 22 ++++++++++++-------
- 1 file changed, 14 insertions(+), 8 deletions(-)
-
-diff --git a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_stateless.c b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_stateless.c
-index ab1894fba0d9..c97835f50ca1 100644
---- a/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_stateless.c
-+++ b/drivers/media/platform/mediatek/vcodec/decoder/mtk_vcodec_dec_stateless.c
-@@ -342,23 +342,29 @@ static void mtk_vdec_worker(struct work_struct *work)
- 	bs_src->va = vb2_plane_vaddr(vb2_src, 0);
- 	bs_src->dma_addr = vb2_dma_contig_plane_dma_addr(vb2_src, 0);
- 	bs_src->size = (size_t)vb2_src->planes[0].bytesused;
--	if (!bs_src->va) {
-+
-+	mreq = vb2_src->req_obj.req;
-+	if (WARN_ON(!mreq)) {
- 		v4l2_m2m_job_finish(dev->m2m_dev_dec, ctx->m2m_ctx);
-+		mtk_v4l2_vdec_err(ctx, "vb2 buffer media request is NULL");
-+		return;
-+	}
-+
-+	if (!bs_src->va) {
- 		mtk_v4l2_vdec_err(ctx, "[%d] id=%d source buffer is NULL", ctx->id,
- 				  vb2_src->index);
-+		v4l2_ctrl_request_complete(mreq, &ctx->ctrl_hdl);
-+		v4l2_m2m_src_buf_remove(ctx->m2m_ctx);
-+		v4l2_m2m_buf_done(vb2_v4l2_src, VB2_BUF_STATE_ERROR);
-+		mtk_vdec_stateless_cap_to_disp(ctx, -EFAULT, mreq);
-+		v4l2_m2m_job_finish(dev->m2m_dev_dec, ctx->m2m_ctx);
- 		return;
- 	}
- 
- 	mtk_v4l2_vdec_dbg(3, ctx, "[%d] Bitstream VA=%p DMA=%pad Size=%zx vb=%p",
- 			  ctx->id, bs_src->va, &bs_src->dma_addr, bs_src->size, vb2_src);
--	/* Apply request controls. */
--	mreq = vb2_src->req_obj.req;
--	if (WARN_ON(!mreq)) {
--		v4l2_m2m_job_finish(dev->m2m_dev_dec, ctx->m2m_ctx);
--		mtk_v4l2_vdec_err(ctx, "vb2 buffer media request is NULL");
--		return;
--	}
- 
-+	/* Apply request controls. */
- 	v4l2_ctrl_request_setup(mreq, &ctx->ctrl_hdl);
- 
- 	/* Keep a reference so that if the processing completes before this function
--- 
-2.56.0.176.g3575e65682-goog
-
+Best regards,
+Krzysztof
 
