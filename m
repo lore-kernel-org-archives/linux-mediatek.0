@@ -4,48 +4,49 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2D48BCCF2DE
-	for <linux-mediatek@archiver.kernel.org>; Mon, 19 Oct 2026 14:01:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AE9EBCCF2DE
+	for <linux-mediatek@archiver.kernel.org>; Mon, 19 Oct 2026 14:03:55 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:
 	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=stDIY3cut1La0RIQyUHVoHa5of1PPIvTxAd31vWKrJA=; b=RFTS1MQABw8ccs6ydA/Y5bQgbU
-	9AJV+3hJYhc/drP38gENutnktuNiwAUiehky8fL1EfMJ/2ePj6zUDPO6EngSKqUklJGjjthkHeVNA
-	lMTw53Kd94MyBoKtHjM16iWgufgNX53mSSceeFrqcqzOG7WIDdB2TKb8Y/+2PtxKiqqhC1knj3gVd
-	RoxoryI6FiTyirQXKmWSExv54/pJRX463JmesRAzyYNocDlfyK7IkI5EOliMHmru1Ubc12tplp/lN
-	oRGF/AFA/15o2rsbxc7eiQRm71y2VOt8h3BxOOE7kzALYuNgJa2RGizN8prST0da975w5wO8t4UfO
-	elqQW2zw==;
+	bh=sv6rVlir+RBR5HytJBd1kxyg8GjuUSzazSxRgHWQXJ0=; b=K27kkcMftYEVVrWOeCXk7KBzYl
+	WKN8iCiPk+4UUeW36Bu0q0VQ0Bh6/nOHJLJrBC+fVxISiYOLfKoWD+VRctXZgaGiq2qJAvRiNSgwX
+	kZkMgld2OPzPtFOUZ2QhFEfZsl4i9gubbuFYvs9elH34rbab92lwXdpTh00DZNS0K1DULt2/Jo6r7
+	OfSBelgTR40+ATBmubyLVGmOdUQa6J74KuVLKdcnjUaTSmvR0UbPYnS02iX8qRnAs8PAZ+dEs97Mf
+	h0ESX+NTh9TrQBMcbPc+SfXwQr3iaqwKB8zKFSnTgRTu5cmCbToMuwOiRC7w7qQPa8I92zZKSrVCR
+	RqVyV1UA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xInvy-00000007dfW-10pt;
-	Mon, 19 Oct 2026 14:01:50 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1xInxy-00000007fAd-1SF6;
+	Mon, 19 Oct 2026 14:03:54 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xInvx-00000007deE-0Pcw;
-	Mon, 19 Oct 2026 14:01:49 +0000
+	id 1xInxw-00000007f98-3SVx;
+	Mon, 19 Oct 2026 14:03:52 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 7AEF56025A;
-	Mon, 19 Oct 2026 14:01:48 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id E3B551F000C9;
-	Mon, 19 Oct 2026 14:01:46 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 8CC41417B1;
+	Mon, 19 Oct 2026 14:03:52 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1A3661F000C9;
+	Mon, 19 Oct 2026 14:03:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1792418508;
-	bh=stDIY3cut1La0RIQyUHVoHa5of1PPIvTxAd31vWKrJA=;
+	s=k20260515; t=1792418632;
+	bh=sv6rVlir+RBR5HytJBd1kxyg8GjuUSzazSxRgHWQXJ0=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References;
-	b=OHUPQiOImUOmKZXmKhJrqwHGcIC6mw8ayygxuj25hw9R0sNeiHncPOCc082PnD31H
-	 kXhsYZKEIB7BfdJhtW2gnSYyVXm0/Wqi90nX4ylhkhuZSRVW+X6v/7TyOTgYCGxyD+
-	 zBZ1H3x9e5RFeHFPu6RPp37dn5T2I+MIW0XqfUS04h6uTWauPLjh1jrA3ZU1aAQ0YR
-	 vws7O/CHrSSx9evCGSKYaX80nZm7rTnIut+RRZqVmQGvLTYtEVHANPb0I+EgFAoEKq
-	 bGM9TXDm9i3vzwkyHX1s7CV9MtaVDJQ4uiToMpYMkZ0YN2LzBfxsioOpunkeZQ3c2W
-	 ncWL/WGDAjFvA==
+	b=Sy9eVxO9FHnAsiqFgAgXpgE0EwvnrsF0PJpA7VSNtfd2K7T62sa28615clRyVNi3o
+	 PIWSaau5ob1MLGp6BPhUCD13+q5CXtSSZzq2z4+p0jOqLIv63N8rWnlXBN5buFWmPU
+	 /HFPX4EobkxsXTr09K14UrmHtHnLCSG7u1yly+zqEbUmZNOloSAJ7L5An59BQyAHpg
+	 rGfL8KwESeQH89wBj+LkBYfMU2n9ALSDyY2UwkEHtDhuW86ARpQu5Vx1M12efksrbN
+	 rMlWynmFS2Fp6/SCImuirwMkJFJkwX7XBk8kTYpHoGooGmv/tk3KHxdqV4p/QIvT8+
+	 u7aUJxTelWYxQ==
 From: Sasha Levin <sashal@kernel.org>
 To: patches@lists.linux.dev,
 	stable@vger.kernel.org
-Cc: Felix Fietkau <nbd@nbd.name>,
-	Chad Monroe <chad@monroe.io>,
+Cc: Devin Wittmayer <lucid_duck@justthetip.ca>,
+	0072a70 <90307219+0072a70@users.noreply.github.com>,
+	Felix Fietkau <nbd@nbd.name>,
 	Sasha Levin <sashal@kernel.org>,
 	lorenzo@kernel.org,
 	ryder.lee@mediatek.com,
@@ -55,9 +56,9 @@ Cc: Felix Fietkau <nbd@nbd.name>,
 	linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
-Subject: [PATCH AUTOSEL 6.18-6.1] wifi: mt76: mt7615: fix NULL deref in mt7615_mac_set_rates
-Date: Mon, 19 Oct 2026 09:49:49 -0400
-Message-ID: <20261019135441.1420968-298-sashal@kernel.org>
+Subject: [PATCH AUTOSEL 6.18-5.10] wifi: mt76: mt76x02: report rx FCS errors to mac80211
+Date: Mon, 19 Oct 2026 09:51:18 -0400
+Message-ID: <20261019135441.1420968-387-sashal@kernel.org>
 X-Mailer: git-send-email 2.53.0
 In-Reply-To: <20261019135441.1420968-1-sashal@kernel.org>
 References: <20261019135441.1420968-1-sashal@kernel.org>
@@ -81,30 +82,25 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Felix Fietkau <nbd@nbd.name>
+From: Devin Wittmayer <lucid_duck@justthetip.ca>
 
-[ Upstream commit 98aff74779da9f417386c589c36848e9c568f0f9 ]
+[ Upstream commit ddae0bcb01e71c1184bb3f526f9622e31dc38f3b ]
 
-mt7615_tx() falls back to the vif BSS wcid when mac80211 hands a frame
-over without a station, e.g. while a station is being torn down, and to
-the global wcid when there is no vif either. Both tx_prepare_skb
-implementations derive a mt7615_sta from that wcid unconditionally and,
-if the rate control probe flag is set, pass it to mt7615_mac_set_rates(),
-which dereferences the NULL vif backpointer of the per-vif embedded sta:
+When the fcsfail filter is enabled the hardware passes frames with a bad
+FCS up to the driver, but mt76x02_mac_process_rx() never checks
+MT_RXINFO_CRCERR and hands them to mac80211 without
+RX_FLAG_FAILED_FCS_CRC. In monitor mode the radiotap flags byte then
+never gets IEEE80211_RADIOTAP_F_BADFCS set and corrupted frames cannot be
+told apart from clean ones.
 
-  Unable to handle kernel read from unreadable memory at virtual
-  address 0000000000000002
-  ...
-  pc : mt7615_mac_set_rates
-  lr : mt7615_tx_prepare_skb
+Set RX_FLAG_FAILED_FCS_CRC from the descriptor CRC error bit, matching
+mt7603, mt7615, mt7915, mt7921, mt7925 and mt7996.
 
-Neither entry is rate controlled by mac80211: the embedded sta has an
-empty rate set, and for the global wcid the container_of does not yield a
-valid mt7615_sta at all. Only resolve the sta for wcids that belong to a
-station.
-
-Reported-by: Chad Monroe <chad@monroe.io>
-Link: https://patch.msgid.link/20260724124813.3961474-23-nbd@nbd.name
+Reported-by: 0072a70 <90307219+0072a70@users.noreply.github.com>
+Closes: https://github.com/morrownr/mt76/issues/38
+Tested-by: 0072a70 <90307219+0072a70@users.noreply.github.com>
+Signed-off-by: Devin Wittmayer <lucid_duck@justthetip.ca>
+Link: https://patch.msgid.link/20260613002544.27750-3-lucid_duck@justthetip.ca
 Signed-off-by: Felix Fietkau <nbd@nbd.name>
 Signed-off-by: Sasha Levin <sashal@kernel.org>
 ---
@@ -114,349 +110,380 @@ LLM Generated explanations, may be completely bogus:
 ## Phase 1: Commit message forensics
 
 **Step 1.1 — Subject**
-Record: `[wifi: mt76: mt7615]` `[fix]` `[NULL deref in
-mt7615_mac_set_rates when TX uses a non-station wcid]`
+- Record: `[wifi: mt76: mt76x02]` `[report]` `[report rx FCS errors to
+  mac80211]`
+- Subsystem is MediaTek mt76, mt76x02 family (mt76x0 / mt76x2 PCI and
+  USB). “Report” here is a correctness fix: the driver already receives
+  CRC-failed frames and must mark them.
 
 **Step 1.2 — Tags**
-Record:
-- `Reported-by: Chad Monroe <chad@monroe.io>` — real user hit this
-- `Link:
-  https://patch.msgid.link/20260724124813.3961474-23-nbd@nbd.name` —
-  patch 23/29 of an mt76-next series
-- `Signed-off-by: Felix Fietkau <nbd@nbd.name>` — mt76 maintainer
-- No `Fixes:`, no `Cc: stable` (expected for this review)
-- No `Reviewed-by` / `Tested-by` / `Acked-by` on the commit itself
-- Ignore `Signed-off-by: Sasha Levin` / `[Upstream commit ...]` if
-  present (pipeline)
+- Record:
+  - `Reported-by: 0072a70 <90307219+0072a70@users.noreply.github.com>` —
+    real user hit
+  - `Closes: https://github.com/morrownr/mt76/issues/38`
+  - `Tested-by:` same reporter, on real hardware
+  - `Signed-off-by: Devin Wittmayer` (author)
+  - `Link: https://patch.msgid.link/20260613002544.27750-3-
+    lucid_duck@justthetip.ca`
+  - `Signed-off-by: Felix Fietkau` (mt76 maintainer)
+  - No `Fixes:` tag (expected for this review)
+  - No `Cc: stable` (expected; not a negative)
+  - Ignore any pipeline `Signed-off-by: Sasha Levin` / `[Upstream commit
+    ...]`
 
 **Step 1.3 — Body**
-Record:
-- Bug: `mt7615_tx()` falls back to the vif BSS wcid when mac80211 TX has
-  no station (e.g. station teardown), and to `global_wcid` if there is
-  no vif. Both `tx_prepare_skb` paths `container_of` that wcid into
-  `mt7615_sta` and, if `IEEE80211_TX_CTL_RATE_CTRL_PROBE` is set, call
-  `mt7615_mac_set_rates()`.
-- Symptom: kernel NULL deref / oops:
-  `Unable to handle kernel read from unreadable memory at virtual
-  address 0000000000000002`, `pc: mt7615_mac_set_rates`, `lr:
-  mt7615_tx_prepare_skb`
-- Root cause: BSS-embedded sta has a NULL `vif` backpointer;
-  `global_wcid` is not a `mt7615_sta` at all. Neither is rate-
-  controlled.
-- Fix: only resolve `msta` when `wcid->sta` is set.
+- Record:
+  - **Bug:** With the `fcsfail` filter enabled, hardware delivers frames
+    with `MT_RXINFO_CRCERR` set. `mt76x02_mac_process_rx()` never reads
+    that bit, so mac80211 never gets `RX_FLAG_FAILED_FCS_CRC`.
+  - **Symptom:** In monitor mode, radiotap never sets
+    `IEEE80211_RADIOTAP_F_BADFCS`; corrupted frames look identical to
+    clean ones.
+  - **Root cause:** Missing descriptor-bit → `rx_status` translation.
+    Other mt76 chips already do this.
+  - **Version info in the message:** none. Reporter used kernel 7.0.x;
+    the code path is much older (see Phase 3).
 
 **Step 1.4 — Hidden bug fix?**
-Record: Not hidden. Explicit crash fix with a stack trace and a
-reporter.
+- Record: Not disguised. It is an explicit missing-flag fix that
+  implements the documented mac80211 contract for `FIF_FCSFAIL`.
 
 ## Phase 2: Diff analysis
 
 **Step 2.1 — Inventory**
-Record:
-- `drivers/net/wireless/mediatek/mt76/mt7615/pci_mac.c`:
-  `mt7615_tx_prepare_skb` — ~3 lines
-- `drivers/net/wireless/mediatek/mt76/mt7615/usb_sdio.c`:
-  `mt7663_usb_sdio_tx_prepare_skb` — ~3 lines
-- Scope: single-driver surgical fix, two TX prepare paths (PCIe/MMIO and
-  USB/SDIO)
+- Record: one file, `drivers/net/wireless/mediatek/mt76/mt76x02_mac.c`.
+  Three lines added, none removed. Function: `mt76x02_mac_process_rx()`.
+  Surgical single-file change.
 
-**Step 2.2 — Code flow**
-Record: Before, any non-NULL `wcid` was treated as `mt7615_sta`. After,
-`msta` is set only if `wcid && wcid->sta`. The existing `if (...
-RATE_CTRL_PROBE && msta)` already skips `mt7615_mac_set_rates()` when
-`msta` is NULL.
+**Step 2.2 — Flow**
+- Record: After the existing `MT_RXINFO_L2PAD` check, if `rxinfo &
+  MT_RXINFO_CRCERR`, set `status->flag |= RX_FLAG_FAILED_FCS_CRC`.
+  Normal RX is unchanged for clean frames. Error/monitor path for CRC-
+  failed frames is now marked.
 
 **Step 2.3 — Bug mechanism**
-Record: `[NULL pointer dereference]` — `mt7615_mac_set_rates()` does
-`sta->vif->mt76.omac_idx`. For the per-vif embedded sta, `vif` is never
-set. For `global_wcid`, `container_of` is invalid. The fix uses the
-existing `wcid->sta` flag.
+- Record: **Logic / correctness** (driver contract). Hardware already
+  passes CRC-failed frames when `FIF_FCSFAIL` is on
+  (`MT76_FILTER(FCSFAIL, MT_RX_FILTR_CFG_CRC_ERR)` in
+  `mt76x02_configure_filter()`). The driver failed to set the flag
+  mac80211 requires (`include/net/mac80211.h`: *“pass frames with failed
+  FCS (but you need to set RX_FLAG_FAILED_FCS_CRC for them)”*).
+
+Verified mac80211 consequences in this tree:
+- `ieee80211_add_rx_radiotap_header()` sets
+  `IEEE80211_RADIOTAP_F_BADFCS` only if that flag is present
+  (`net/mac80211/rx.c`).
+- `should_drop_frame()` treats `RX_FLAG_FAILED_FCS_CRC` as drop-from-
+  cooked-path. Without it, `ieee80211_rx_monitor()` copies the frame to
+  monitor and **returns the original skb** to
+  `__ieee80211_rx_handle_packet()`. FCS-failed frames can therefore
+  enter the cooked RX path whenever `fcsfail` is enabled (including
+  concurrent monitor + STA/AP).
 
 **Step 2.4 — Fix quality**
-Record: Obviously correct. Same pattern already used in this tree
-(`wcid_to_sta()`, `mt76_connac_pm_dequeue_skbs()`,
-`mt7615_rx_get_wcid()`). Skipping rate-probe setup for non-station wcids
-is intended: those entries are not rate-controlled. Regression risk is
-very low. No API change.
+- Record: Obviously correct; same pattern as
+  `mt7603`/`mt7615`/`mt7915`/`mt7921`/`mt7996` in this tree. Minimal.
+  Regression risk is low: only CRCERR frames get a flag they should
+  already have. Clean frames are untouched. Does not add APIs or change
+  locking.
 
 ## Phase 3: Git history
 
 **Step 3.1 — Blame**
-Record: The incomplete NULL check is `8d3cdc1bbb1d3` (“mt76: mt7615: fix
-NULL pointer dereference in tx_prepare_skb()”, Lorenzo Bianconi, 2021).
-That only handled `wcid == NULL` (then `global_wcid`). The BSS-wcid
-fallback in `mt7615_tx()` is from 2019 (`04b8e65922f631` /
-`2b8cdfb28d3402`). The bug has been in this lineage since mt7615 TX was
-added.
+- Record: Insertion point is the 2018 `mt76x02_mac_process_rx()` body
+  from `d9f8934ed147b3` (“mt76: move mt76x02_mac_process_rx in
+  mt76x02-lib module”), 2018-10-04, first contained in **v4.20-rc1**.
+  `MT_RXINFO_CRCERR` is defined in `mt76x02_mac.h:54` since
+  `5327b5ea13910d` (2018-09-04). The bit has been defined for years and
+  never consumed in RX processing.
 
 **Step 3.2 — Fixes: tag**
-Record: None. The incomplete 2021 fix is already in this tree (`git
-merge-base --is-ancestor 8d3cdc1bbb1d3 HEAD` succeeded). This commit
-closes the remaining hole.
+- Record: None. The omission dates to the original mt76x02 RX path, not
+  a later regression.
 
 **Step 3.3 — File history**
-Record: Recent mt7615 changes in this tree are unrelated (runtime-pm
-timeout, TSF, DMA reset). No prerequisite refactor for this two-line
-guard. Standalone.
+- Record: Same-function sibling from the same series is already in this
+  tree: `b6e7958602bd1` (“do not WARN on invalid rx descriptor length”).
+  That is patch 1/2 of `[PATCH 0/2] wifi: mt76: mt76x02: rx fixes for
+  fcsfail monitor mode`. This candidate is patch 2/2. They touch
+  different lines; this one does not depend on patch 1. `git apply
+  --check` of this hunk on HEAD is **clean**. No other FCS reporting
+  commit exists on this file.
 
 **Step 3.4 — Author**
-Record: Felix Fietkau is the mt76 maintainer. Related earlier NULL-deref
-fix was also signed off by him.
+- Record: Devin Wittmayer; not the subsystem maintainer. Maintainer
+  Felix Fietkau signed off. Author also submitted the sibling WARN fix.
+  Related author commits in this tree: `b6e7958602bd1`, plus unrelated
+  mt7615/mt7921 TXRX_NOTIFY drops.
 
-**Step 3.5 — Dependencies**
-Record: Patch 23/29 of an mt76-next batch, but the other patches are
-independent (mt7996/mt7915/scan/WED). This hunk only needs `wcid->sta`
-and the existing `msta` NULL check, both present here. Standalone.
+**Step 3.5 — Prerequisites**
+- Record: None beyond symbols already in 6.6: `MT_RXINFO_CRCERR`,
+  `RX_FLAG_FAILED_FCS_CRC`, `status->flag`. Commit text mentions mt7925;
+  that chip need not exist here — it is comparison only. Standalone
+  apply: yes.
 
-## Phase 4: Mailing list / external
+## Phase 4: Mailing list / external research
 
 **Step 4.1 — Original discussion**
-Record: `b4 mbox` saved the thread. Subject: `[PATCH mt76-next 23/29]
-wifi: mt76: mt7615: fix NULL deref in mt7615_mac_set_rates`. Sent 24 Jul
-2026 by Felix to linux-wireless. 29-message thread is the series itself,
-not a v2/v3 of this patch. No NAK. No reviewer `Cc: stable`. Lore HTTP
-fetch returned 403; discussion was recovered via `b4`.
+- Record: `b4 dig -c <sha>` cannot match because this commit is not in
+  the local history. Fallback: `b4 mbox
+  20260613002544.27750-3-lucid_duck@justthetip.ca`.
+  - Cover: https://patch.msgid.link/20260613002544.27750-1-
+    lucid_duck@justthetip.ca
+  - Series: v1 only (`b4 am --check-newer-revisions`: no later
+    revision).
+  - Two patches; this is 2/2.
+  - Cover: tested on MT7612U and MT7610U; fcsfail monitor captures get
+    BADFCS on corrupted frames, clean frames unchanged.
+  - No NAKs in the retrieved thread (cover + 2 patches, no review
+    replies). Applied by Felix Fietkau.
+  - Lore HTTP fetch returned 403; b4 was used instead.
 
 **Step 4.2 — Recipients**
-Record: To: linux-wireless@vger.kernel.org. Maintainer is the author.
+- Record: To Felix Fietkau, Lorenzo Bianconi; Cc Ryder Lee, Shayne Chen,
+  Sean Wang, linux-wireless, linux-kernel. Right maintainers/lists.
 
 **Step 4.3 — Bug report**
-Record: Reported-by Chad Monroe with a concrete oops (`pc:
-mt7615_mac_set_rates`, `lr: mt7615_tx_prepare_skb`). Chad also authored
-other patches in the same series, so this is a real device user, not a
-theoretical report.
+- Record: GitHub issue #38 (closed). Hardware: Alfa AWUS036ACM, mt7612u,
+  driver mt76x2u. With `iw set monitor fcsfail`, radiotap flags were
+  always `0x00`; `radiotap.flags.badfcs == 1` matched 0 of 2978 frames.
+  After this exact three-line change: 956/7353 frames had BADFCS `0x40`,
+  clean frames stayed `0x00`. Confirmed on-list/issue by the reporter
+  (`Tested-by`).
 
-**Step 4.4 — Series**
-Record: Independent mt76 bug-fix dump. mt7996 patches are irrelevant to
-5.15. This patch does not need 1–22 or 24–29.
+**Step 4.4 — Series context**
+- Record: Patch 1 (WARN on bogus MPDU length under fcsfail) is already
+  in this 6.6 tree. Patch 2 is the functional reporting fix.
+  Independent; both target the same user-visible fcsfail path.
 
-**Step 4.5 — Stable list**
-Record: UNVERIFIED — lore.kernel.org/stable HTTP 403. No evidence it was
-rejected for stable.
+**Step 4.5 — stable@ discussion**
+- Record: lore.kernel.org/stable HTTP 403. No separate stable-thread
+  evidence retrieved. Absence is not a negative for this review.
 
-## Phase 5: Semantic / call-chain
+## Phase 5: Semantic / call-chain analysis
 
 **Step 5.1 — Functions**
-Record: `mt7615_tx_prepare_skb`, `mt7663_usb_sdio_tx_prepare_skb`
-(callers of `mt7615_mac_set_rates`).
+- Record: `mt76x02_mac_process_rx()`.
 
 **Step 5.2 — Callers**
-Record:
-- PCIe/MMIO: `mt7615_tx_prepare_skb` via `mt7615/mmio.c`
-  `.tx_prepare_skb`, from `mt76_dma_tx_queue_skb` (`dma.c:409`)
-- USB: `usb.c:917`; SDIO: `sdio.c:263`
-- Upstream of that: `mt7615_tx()` → `mt76_tx()` /
-  `mt76_connac_pm_queue_skb()`
+- Record: Only `mt76x02_queue_rx_skb()` in `mt76x02_txrx.c` (data RX,
+  not MCU queue). That is the USB/PCI RX completion path for mt76x0 and
+  mt76x2.
 
-**Step 5.3 — Callees**
-Record: `mt7615_mac_set_rates()` immediately uses
-`sta->vif->mt76.omac_idx` (mac.c:1063 in this tree).
+**Step 5.3 — Callees (relevant)**
+- Record: Sets `struct mt76_rx_status` in `skb->cb`, then `mt76_rx()` →
+  mac80211. `mt76_rx()` already counts `RX_FLAG_FAILED_FCS_CRC` for
+  testmode FCS stats (`mac80211.c`).
 
 **Step 5.4 — Reachability**
-Record: Yes, from normal wireless TX. `mt7615_tx()`:
-
-```737:743:drivers/net/wireless/mediatek/mt76/mt7615/main.c
-        if (vif && !control->sta) {
-                struct mt7615_vif *mvif;
-                mvif = (struct mt7615_vif *)vif->drv_priv;
-                msta = &mvif->sta;
-                wcid = &msta->wcid;
-        }
-```
-
-mac80211 can pass `control->sta == NULL` while
-`IEEE80211_TX_CTL_RATE_CTRL_PROBE` is still set on a previously rate-
-controlled skb (station teardown). That is a userspace-reachable
-AP/client path.
+- Record: Userspace-reachable: `iw set type monitor` + `iw set monitor
+  fcsfail` (nl80211 `NL80211_MNTR_FLAG_FCSFAIL` →
+  `ieee80211_adjust_monitor_flags()` → `fif_fcsfail` → `FIF_FCSFAIL` →
+  hardware CRC filter cleared). Common on USB adapters used for capture
+  (Alfa AWUS036ACM and similar).
 
 **Step 5.5 — Similar patterns**
-Record: Same `wcid && wcid->sta` guard already exists in
-`mt76x02_mac.c`, `mt76_connac_mac.c`, `wcid_to_sta()`.
-`mt7615_rx_get_wcid()` already refuses non-station wcids. `wcid.sta = 1`
-is set only in `mt7615_mac_sta_add()`, not in `mt7615_add_interface()`.
+- Record: Same `status->flag |= RX_FLAG_FAILED_FCS_CRC` already present
+  in this tree for mt7603, mt7615, mt7915, mt7921, mt7996. mt76x02 is
+  the gap. `MT_RXINFO_ICVERR` / `MT_RXINFO_MICERR` are also unused here;
+  out of scope for this patch.
 
-## Phase 6: Local tree (5.15.221 / pending-5.15)
+## Phase 6: This tree (6.6.157 / pending-6.6)
 
-**Step 6.1 — Buggy code present?**
-Record: Yes.
-- `pci_mac.c:142`: `msta = wcid ? container_of(wcid, struct mt7615_sta,
-  wcid) : NULL;`
-- `usb_sdio.c:200`: same
-- `mac.c:1063`: `u16 idx = sta->vif->mt76.omac_idx;`
-- `add_interface` sets `mvif->sta.wcid` but never `mvif->sta.vif` or
-  `wcid.sta`
-- `wcid->sta` exists in `struct mt76_wcid` (`mt76.h:251`)
+**Step 6.1 — Does the buggy code exist?**
+- Record: Yes. `mt76x02_mac_process_rx()` at `mt76x02_mac.c:794–797` has
+  L2PAD then DECRYPT; no CRCERR check. `MT_RXINFO_CRCERR` is defined.
+  `git merge-base --is-ancestor d9f8934ed147b3 HEAD` succeeded. Bug
+  present since ~v4.20, so it is in 6.6.y.
+
+Local tree identity:
+- `git describe HEAD` → `p-6.6-3-g04810563abb71`
+- `make kernelversion` → **6.6.157**
+- Branch: `pending-6.6`
 
 **Step 6.2 — Backport difficulty**
-Record: Minor context mismatch, easy rework. Mainline USB path has extra
-locals (`key`, `pktid`) and an in-function `global_wcid` fallback that
-5.15 keeps in `mt7663_usb_sdio_write_txwi()`. PCIe path uses
-`MT_TX_HW_QUEUE_EXT_PHY` / `mdev->phy2` here vs later `phys[MT_BAND1]`.
-The semantic change is the same two-line `wcid->sta` check.
-`mt76_vif_link` in the provided hunk context is *not* required.
+- Record: **Clean apply.** Context matches; `git apply --check`
+  succeeded. Surrounding code is the same as the patch’s index.
 
-**Step 6.3 — Related fixes already here?**
-Record: `8d3cdc1bbb1d3` is present and is incomplete. No later
-`mt7615_mac_set_rates` NULL-deref fix in this tree.
+**Step 6.3 — Related fixes already here**
+- Record: No existing CRCERR → `RX_FLAG_FAILED_FCS_CRC` translation.
+  Sibling WARN fix `b6e7958602bd1` is present (different hunk).
+  `63fe66f102837` (mt7996 FCS bit in wrong RXD word) is a different
+  chip.
 
 ## Phase 7: Subsystem context
 
 **Step 7.1**
-Record: `[drivers/net/wireless/mediatek/mt76/mt7615]` `[IMPORTANT]` —
-not core kernel, but a widely used 802.11ac chipset (MT7615E/MT7663E
-PCIe, MT7663U USB, MT7663S SDIO, MT7622 SoC WMAC). Common on routers and
-embedded boards, including 5.15 LTS/Android/OpenWrt-class systems.
+- Record: `drivers/net/wireless/mediatek/mt76` — **IMPORTANT** (widely
+  used WiFi, not core mm/vfs). Covers MT76x0U/E and MT76x2U/E (`Kconfig`
+  MT7610/MT7612 USB and PCIe). Peripheral relative to core kernel, but
+  these USB NICs are common in the field.
 
 **Step 7.2**
-Record: Mature driver; this bug is old, not a new-subsystem issue.
+- Record: mt76 is active; mt76x02 RX processing itself has been stable
+  for years. This is a long-standing omission, not churn from a new
+  subsystem.
 
 ## Phase 8: Impact and risk
 
 **Step 8.1 — Who is affected**
-Record: Users of MT7615/MT7663/MT7622 (`CONFIG_MT7615E` /
-`CONFIG_MT7663U` / `CONFIG_MT7663S` / `CONFIG_MT7622_WMAC`). Driver-
-specific, not universal.
+- Record: Users of mt76x0/mt76x2 (USB and PCIe) who enable monitor
+  `fcsfail`. Normal STA/AP-only operation keeps the hardware CRC filter
+  on, so those users are not on this path. Mixed monitor+managed on the
+  same phy is affected for cooked RX.
 
 **Step 8.2 — Trigger**
-Record: TX without a station while `IEEE80211_TX_CTL_RATE_CTRL_PROBE` is
-set — typically station teardown / disconnect with a probe rate sample
-in flight. Not every packet, but a normal Wi-Fi event. Unprivileged
-clients disconnecting from an AP can induce it.
+- Record: Explicit monitor `fcsfail` (and typically a busy channel). Not
+  every boot. Unprivileged users cannot enable monitor without
+  privileges, so this is not a generic local-priv-esc path; it is a
+  privileged capture/correctness bug.
 
 **Step 8.3 — Failure mode**
-Record: `[Kernel oops / NULL deref in hard TX path]` `[CRITICAL]`
+- Record:
+  - Monitor: corrupted frames indistinguishable from good ones (broken
+    advertised filter). **MEDIUM** for dedicated capture.
+  - Cooked path: FCS-failed frames can be processed as valid 802.11 when
+    `fcsfail` is on. That is frame-integrity / stack-correctness, not a
+    panic. **MEDIUM–HIGH** in mixed-iface setups; not a guaranteed oops.
+  - Overall severity: **MEDIUM**, with a real user-visible functional
+    break and a documented driver-API violation.
 
 **Step 8.4 — Risk vs benefit**
-Record: Benefit high for that hardware (prevents oops). Risk very low
-(~6 lines, existing flag, same pattern as sibling code). Skipping
-`mac_set_rates` on BSS/global wcid is the correct behavior.
+- Record: **Benefit: medium** (correct FCS reporting; stop garbage
+  frames leaking into cooked RX). **Risk: very low** (3 lines, same
+  pattern as sibling chips, no lock/API change). Ratio favors backport.
 
 ## Phase 9: Synthesis
 
 **Step 9.1 — Evidence**
 
-FOR:
-- Real oops with reporter and stack trace
-- Bug and incomplete 2021 fix both exist in this 5.15 tree
-- Small, obviously correct guard
-- Maintainer-authored
-- Matches stable rules (crash, contained, no new API)
-- Hardware is common on 5.15-era devices
+For:
+- Real, reproduced bug (GitHub #38; Tested-by on MT7612U; author also
+  tested MT7610U).
+- Violates mac80211 `FIF_FCSFAIL` contract; radiotap BADFCS never set.
+- FCS-failed frames can continue into `__ieee80211_rx_handle_packet()`
+  without the flag.
+- Three-line, obviously correct, matches every other mt76 MAC in this
+  tree.
+- Applies cleanly to 6.6.157; symbols and call path exist.
+- Maintainer SOB (Felix Fietkau).
+- Popular USB hardware (e.g. Alfa AWUS036ACM).
 
-AGAINST:
-- Driver-specific, not core
-- Won’t `git am` cleanly (context only)
-- Part of a 29-patch series (other patches are unrelated)
-- No `Fixes:` / `Cc: stable` (not a negative under these rules)
-- No mailing-list review tags on this specific patch
+Against:
+- Not a crash/UAF/deadlock; mainly monitor-mode correctness plus cooked-
+  path leakage only when `fcsfail` is enabled.
+- No `Fixes:` (omission from original driver, not a later regression).
+- Affects a subset of mt76x02 users, not all machines.
 
-UNRESOLVED:
-- Could not fetch lore/stable over HTTP (403); recovered the thread with
-  `b4`
-- Exact crash address `...0002` matches a newer `vif` layout; in 5.15
-  `omac_idx` is at offset 1. Same NULL `vif` deref either way.
+Unresolved:
+- Direct lore.kernel.org HTTP was 403; discussion recovered via b4.
+- No independent stable@ thread found.
 
 **Step 9.2 — Stable rules**
-1. Obviously correct and tested? **PASS** — maintainer fix; user-
-   reported oops; logic matches existing `wcid->sta` usage
-2. Real bug affecting users? **PASS** — Chad Monroe crash
-3. Important (crash/security/corruption/deadlock)? **PASS** — kernel
-   oops in TX
-4. Small and contained? **PASS** — two functions, ~6 lines
-5. No new features/APIs? **PASS**
-6. Can apply to this tree? **PASS** — code is here; needs a trivial
-   context tweak, not a rewrite
+1. Obviously correct and tested? **PASS** — 3 lines, hardware-tested,
+   maintainer-acked.
+2. Real bug affecting users? **PASS** — reporter could not tell bad-FCS
+   frames apart; contract violation is in-tree.
+3. Important issue? **PASS** (medium) — broken advertised monitor filter
+   plus cooked-path delivery of CRC-failed frames. Not a panic, but it
+   is a real correctness/integrity bug, not a feature.
+4. Small and contained? **PASS** — +3 lines, one function.
+5. No new features/APIs? **PASS** — sets an existing `rx_status` flag
+   other mt76 chips already set.
+6. Can apply to this tree? **PASS** — clean apply on 6.6.157.
 
-**Step 9.3 — Exceptions**
-Record: None (not a device-ID/quirk/DT/build/docs exception). It
-qualifies as a normal crash fix.
+**Step 9.3 — Exception category**
+- Record: Not a device-ID/quirk/DT/build/docs exception. Ordinary small
+  driver correctness fix.
 
 **Step 9.4 — Decision**
-This is a real NULL deref in the mt7615 TX path that 5.15 still has. The
-2021 patch only covered a NULL wcid; the BSS-wcid fallback still
-crashes. Backport it.
+This tree is **6.6.157**. The buggy RX path, `MT_RXINFO_CRCERR`, and
+mac80211 flag handling are all present. The patch is a tiny, tested,
+maintainer-accepted fix for a user-visible bug on hardware this driver
+supports. Benefit clearly outweighs risk.
 
-## What the commit solves for this tree
+---
 
-On 5.15.221, `mt7615_tx()` still substitutes the per-vif embedded sta
-when mac80211 has no station. `tx_prepare_skb` still `container_of`s
-that wcid and can call `mt7615_mac_set_rates()`, which immediately loads
-`sta->vif->mt76.omac_idx` while `vif` is NULL. That oopses. Restricting
-`msta` to `wcid->sta` stops it. Same change belongs in both PCIe and
-USB/SDIO prepare paths.
+### What the commit solves for 6.6 users
 
-Risk is a skipped rate-probe update on wcids that were never valid for
-rate control. Benefit is avoiding a driver oops during client teardown.
+mt76x02 already programs the hardware to deliver CRC-failed frames when
+monitor `fcsfail` is set, but never tells mac80211. Users of
+MT7610/MT7612 USB and PCIe adapters then see every frame as clean in
+radiotap, and those frames can also continue into the normal RX
+handlers. The fix sets `RX_FLAG_FAILED_FCS_CRC` from `MT_RXINFO_CRCERR`,
+which is what this tree already does for later mt76 chips.
 
-## Verification
-- [Phase 1] Parsed tags: Reported-by Chad Monroe; Link to 23/29
-  mt76-next; SOB Felix Fietkau; no Fixes/Cc stable
-- [Phase 2] Diff: two `msta` assignments; require `wcid->sta` before
-  `container_of`
-- [Phase 3] Blame: 8d3cdc1bbb1d3 (2021) only NULL-wcid; BSS fallback
-  since 2019
-- [Phase 3] `git merge-base --is-ancestor 8d3cdc1bbb1d3 HEAD`: yes,
-  incomplete fix is here
-- [Phase 3] `git log --grep="fix NULL deref in mt7615_mac_set_rates" --
-  mt7615/`: not in this tree
-- [Phase 4] `b4 mbox 20260724124813.3961474-23-nbd@nbd.name`: 29-message
-  independent mt76 series; this patch standalone; no NAK
-- [Phase 4] lore HTTP 403; UNVERIFIED stable@ discussion
-- [Phase 5] Call chain: mac80211 `drv_tx` → `mt7615_tx` → `mt76_tx` /
-  DMA `tx_prepare_skb` → `mt7615_mac_set_rates`
-- [Phase 5] `mt7615_add_interface` does not set `mvif->sta.vif` or
-  `wcid.sta`; only `mt7615_mac_sta_add` sets `wcid.sta = 1`
-- [Phase 6] `make kernelversion` / Makefile: **5.15.221**, branch
-  `pending-5.15`
-- [Phase 6] Buggy lines present in `pci_mac.c:142` and `usb_sdio.c:200`;
-  deref at `mac.c:1063`
-- [Phase 6] Surrounding context differs (phy2 vs phys[MT_BAND1], USB
-  locals); semantic apply is still two lines
-- [Phase 8] Failure: NULL deref oops in TX; severity CRITICAL for
-  MT7615/MT7663/MT7622 users
+### Stable-rule fit
+
+Small, obviously correct, no new API, applies cleanly, real user-visible
+bug. Importance is monitor/FCS integrity rather than a panic; that is
+still within what stable takes for driver contract bugs of this size.
+
+### Risk vs benefit
+
+Very low risk (three lines, clean frames unchanged). Medium benefit for
+mt76x02 monitor users and mixed-iface setups.
+
+### Concerns
+
+No functional dependencies. Series mate (WARN drop) is already in this
+tree but is not required for this hunk. mt7925 in the commit message is
+comparison only.
+
+---
+
+Verification:
+- [Phase 1] Parsed tags: Reported-by/Tested-by 0072a70, Closes
+  github.com/morrownr/mt76/issues/38, Link msgid `...27750-3...`, SOB
+  Felix Fietkau; no Fixes/Cc:stable
+- [Phase 2] Diff: +3 lines in `mt76x02_mac_process_rx()` after L2PAD;
+  sets `RX_FLAG_FAILED_FCS_CRC` from `MT_RXINFO_CRCERR`
+- [Phase 2] Confirmed `mt76x02_configure_filter()` maps `FIF_FCSFAIL` →
+  clear `MT_RX_FILTR_CFG_CRC_ERR`
+- [Phase 2] Confirmed mac80211 `should_drop_frame()` / radiotap BADFCS /
+  `ieee80211_rx_monitor()` cooked-path return behavior in this tree
+- [Phase 3] `git blame`: insertion region from `d9f8934ed147b3` (2018);
+  `git merge-base --is-ancestor` true; `git describe --contains` →
+  v4.20-rc1
+- [Phase 3] `MT_RXINFO_CRCERR` defined at `mt76x02_mac.h:54`; `git grep`
+  shows it is unused in `.c` files in this tree
+- [Phase 3] Sibling `b6e7958602bd1` already in HEAD; this hunk
+  independent; `git apply --check` CLEAN
+- [Phase 4] `b4 mbox` saved 3-message series; cover tested
+  MT7612U/MT7610U; `b4 am --check-newer-revisions` = v1 only, no NAKs
+- [Phase 4] WebFetch of GitHub issue #38: reproduced 0 BADFCS; after
+  patch 956/7353 frames flagged
+- [Phase 4] lore.kernel.org WebFetch: 403 — UNVERIFIED via HTTP;
+  recovered via b4
+- [Phase 5] Only caller: `mt76x02_queue_rx_skb()`; chips: MT76x0U/E,
+  MT76x2U/E
+- [Phase 5] Same flag already set in mt7603/mt7615/mt7915/mt7921/mt7996
+  in this checkout
+- [Phase 6] `git describe HEAD` p-6.6-3-g04810563abb71; `make
+  kernelversion` 6.6.157; buggy code present; fix not applied
+- [Phase 8] Failure mode: wrong radiotap + possible cooked-path delivery
+  of CRC-failed frames; not a panic
+- UNVERIFIED: stable@ mailing-list thread content (HTTP 403)
 
 **YES**
 
- drivers/net/wireless/mediatek/mt76/mt7615/pci_mac.c  | 5 +++--
- drivers/net/wireless/mediatek/mt76/mt7615/usb_sdio.c | 5 +++--
- 2 files changed, 6 insertions(+), 4 deletions(-)
+ drivers/net/wireless/mediatek/mt76/mt76x02_mac.c | 3 +++
+ 1 file changed, 3 insertions(+)
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/pci_mac.c b/drivers/net/wireless/mediatek/mt76/mt7615/pci_mac.c
-index b795d11d943d0..61efdf59133f5 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7615/pci_mac.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7615/pci_mac.c
-@@ -68,10 +68,11 @@ int mt7615_tx_prepare_skb(struct mt76_dev *mdev, void *txwi_ptr,
- 	int pid, id;
- 	u8 *txwi = (u8 *)txwi_ptr;
- 	struct mt76_txwi_cache *t;
--	struct mt7615_sta *msta;
-+	struct mt7615_sta *msta = NULL;
- 	void *txp;
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76x02_mac.c b/drivers/net/wireless/mediatek/mt76/mt76x02_mac.c
+index 06f17da2c0106..17c9782915315 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76x02_mac.c
++++ b/drivers/net/wireless/mediatek/mt76/mt76x02_mac.c
+@@ -792,6 +792,9 @@ int mt76x02_mac_process_rx(struct mt76x02_dev *dev, struct sk_buff *skb,
+ 	if (rxinfo & MT_RXINFO_L2PAD)
+ 		pad_len += 2;
  
--	msta = wcid ? container_of(wcid, struct mt7615_sta, wcid) : NULL;
-+	if (wcid && wcid->sta)
-+		msta = container_of(wcid, struct mt7615_sta, wcid);
- 	if (!wcid)
- 		wcid = &dev->mt76.global_wcid;
- 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7615/usb_sdio.c b/drivers/net/wireless/mediatek/mt76/mt7615/usb_sdio.c
-index 820b395900275..01e79f37649c1 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7615/usb_sdio.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7615/usb_sdio.c
-@@ -187,10 +187,11 @@ int mt7663_usb_sdio_tx_prepare_skb(struct mt76_dev *mdev, void *txwi_ptr,
- 	struct sk_buff *skb = tx_info->skb;
- 	struct ieee80211_tx_info *info = IEEE80211_SKB_CB(skb);
- 	struct ieee80211_key_conf *key = info->control.hw_key;
--	struct mt7615_sta *msta;
-+	struct mt7615_sta *msta = NULL;
- 	int pad, err, pktid;
- 
--	msta = wcid ? container_of(wcid, struct mt7615_sta, wcid) : NULL;
-+	if (wcid && wcid->sta)
-+		msta = container_of(wcid, struct mt7615_sta, wcid);
- 	if (!wcid)
- 		wcid = &dev->mt76.global_wcid;
- 
++	if (rxinfo & MT_RXINFO_CRCERR)
++		status->flag |= RX_FLAG_FAILED_FCS_CRC;
++
+ 	if (rxinfo & MT_RXINFO_DECRYPT) {
+ 		status->flag |= RX_FLAG_DECRYPTED;
+ 		status->flag |= RX_FLAG_MMIC_STRIPPED;
 -- 
 2.53.0
 
