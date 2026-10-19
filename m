@@ -4,64 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 30092CCF2E6
-	for <linux-mediatek@archiver.kernel.org>; Mon, 19 Oct 2026 14:04:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CB3CFCCF2E6
+	for <linux-mediatek@archiver.kernel.org>; Mon, 19 Oct 2026 14:06:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:
 	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=37GP2gLah2l9LWaV6Z4HyU7YDGSYfHzI1n89yuM5wqM=; b=Po0hli/13nYpennbvG0dmtVs7+
-	/olaL04BwEXMMm6BO74k7HrOfmMMC8JKvJX43c5YZwymoaxrMSc5xykzyOafGgGItY+vVIPapCbMo
-	JXa6f2sesOazGIh7BKpiUyJOglL69vGEKTsVCEKTMe5pf6IagPEAKqScf4wYYchJtBJFJLMVRO7Da
-	QcE9Q0TdORJ5LoEu3VDK+X4lI52/Pp2lB8+TU+gaddSPgWlMcqaJKqe0C9rHPMo489xFk0axzgqXR
-	3KCSB751P2noWHagonpg+5kh6AGNNTKWu3SZqqoHttCS/j+KInOMTq+uvO32SqHW6CduYNViZ9uZt
-	TBc4aM2w==;
+	bh=+hnr5cnCaJtPv+XMTDF1DDp93i8WLqg/i31uZJe89tM=; b=kFufb2y2ApuO/lvwHxPB7fkB+9
+	9NbZshArB9qnKj1wdd1Ya9I/oCv6BMYzcFSKix5pCekAFXsyIwzKb1yrRRtVNorEJA88Yzeg76iVr
+	iHKkDmBRf1WFHRZEoCpXqOQ2JTURY2c6B/HY7uJ4rjSJQEmR2YV6jEogi+a0VElAyOqMzQzoNB57C
+	CSZtBipdmSdAa7P/OYqK9Hw7Mu7pMEmCq6IojR8Jlt0V1nw2qdr8SLw14zbrpfA40GsDqJ3T++7Qe
+	bjYZ5Nf9D07pv4goRnHp4whNCrcFAVW8iNK2vZFz0LqR8gdyMvNYpgnflW3KpESdhzmW5OdTVbhef
+	lKeTYInw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xInyq-00000007fnM-30vv;
-	Mon, 19 Oct 2026 14:04:48 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1xIo01-00000007gbm-2ukE;
+	Mon, 19 Oct 2026 14:06:01 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xInyp-00000007flp-1ke2;
-	Mon, 19 Oct 2026 14:04:47 +0000
+	id 1xInzx-00000007gZS-3j9V;
+	Mon, 19 Oct 2026 14:05:57 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id C635C60213;
-	Mon, 19 Oct 2026 14:04:46 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id DFF2A1F000C5;
-	Mon, 19 Oct 2026 14:04:44 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id A0FE840B60;
+	Mon, 19 Oct 2026 14:05:57 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 4928E1F000C8;
+	Mon, 19 Oct 2026 14:05:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1792418686;
-	bh=37GP2gLah2l9LWaV6Z4HyU7YDGSYfHzI1n89yuM5wqM=;
+	s=k20260515; t=1792418757;
+	bh=+hnr5cnCaJtPv+XMTDF1DDp93i8WLqg/i31uZJe89tM=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References;
-	b=lpQOtIuE6kLyWsW+yZy6ecufrml/MWrDOH6SDBmvskDMt9oetftV1XOEyFFL/Ix9r
-	 5kwl1tWimpZJlBJWK7lP3bvT7VyNSTxMRWvbiehErk4U2BQVxljzW3wHqhMblLll9y
-	 b84jN9mRfb3MmNHwGc5bV5Gy2ivcH39k8OtlR0AJHHQZs3gHQumaqvWdpJrKEMxYBe
-	 Nn0vpN9Xd0ukzZVbNSvi/guiW3JwlLWFgvn3qtuAgVlHEDJ4Yf9Q0ejz5kZk1ajsYF
-	 6Wx1EbGJr2Y5XBVGTva6uvOmkJqt5ghaB9B+CujapN/TWMUTPJPIrED2J9RnOZVJkS
-	 kREW+ydX9q7hw==
+	b=Pov3Fl5un3Fm24nIIzd7YM1J8Vew9JzLYpivCm7jsNewQkKeb5iaVYt2fi4YBO3RC
+	 g56jhEvz5wiCJ+C6KprHUrEDm45qssACkP+3/2PoohF+zVxMmHbuLe/R+OkADOfBTO
+	 Sev5spqvPn78cMjujmap2bovoqcR7GomjqYYzBCbGl4Tvm8rT5X1DL0kMeKQz0dHkp
+	 NpA5iCowEyDXZ5X0/2d2LGh9HZabEBS28WOpvZP8koIUNHP4bUsEdXEJjqJIfvxnfd
+	 4AFJKZ2MLEelRitlWZ1bFqEgmOUktLkvNKx4fREvFjO1QYJho80a7I0mLNlusBFvsJ
+	 VolHlCRBPiO6g==
 From: Sasha Levin <sashal@kernel.org>
 To: patches@lists.linux.dev,
 	stable@vger.kernel.org
-Cc: Daniel Golle <daniel@makrotopia.org>,
-	Andrew Lunn <andrew@lunn.ch>,
-	Jakub Kicinski <kuba@kernel.org>,
+Cc: Felix Fietkau <nbd@nbd.name>,
 	Sasha Levin <sashal@kernel.org>,
-	lynxis@fe80.eu,
-	hkallweit1@gmail.com,
-	davem@davemloft.net,
-	edumazet@kernel.org,
-	pabeni@redhat.com,
+	lorenzo@kernel.org,
+	ryder.lee@mediatek.com,
 	matthias.bgg@gmail.com,
 	angelogioacchino.delregno@collabora.com,
-	netdev@vger.kernel.org,
+	linux-wireless@vger.kernel.org,
 	linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
-Subject: [PATCH AUTOSEL 6.18-6.6] net: pcs: mtk-lynxi: check regmap reads in mtk_pcs_lynxi_get_state()
-Date: Mon, 19 Oct 2026 09:51:55 -0400
-Message-ID: <20261019135441.1420968-424-sashal@kernel.org>
+Subject: [PATCH AUTOSEL 6.18] wifi: mt76: mt7603: restore hardware PS buffering after a service period
+Date: Mon, 19 Oct 2026 09:52:45 -0400
+Message-ID: <20261019135441.1420968-474-sashal@kernel.org>
 X-Mailer: git-send-email 2.53.0
 In-Reply-To: <20261019135441.1420968-1-sashal@kernel.org>
 References: <20261019135441.1420968-1-sashal@kernel.org>
@@ -85,308 +80,546 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Daniel Golle <daniel@makrotopia.org>
+From: Felix Fietkau <nbd@nbd.name>
 
-[ Upstream commit 5cc65c01cdc577621d1320f4aa03a1382c5a4a45 ]
+[ Upstream commit 636a883e2feef5e4ff95695d3c372ceff03960f5 ]
 
-mtk_pcs_lynxi_get_state() ignores regmap_read()'s return value; a
-failed read leaves bm and adv holding uninitialized stack values
-which are then decoded into the reported link state. The regmaps
-backing the MT7531 SGMII PCS instances sit on an MDIO bus where
-reads can fail. Check both reads and report the link as down on
-error; phylink presets state->link before the callback, so a bare
-return would leave a failed read reported as link-up.
+Releasing buffered frames has to turn off the PSE redirect for the
+station, otherwise the released frames are looped straight back into the
+driver PS queue. Nothing ever turns it back on: mt7603_sta_ps() only runs
+on an observed PM bit transition, and MT_WCID_FLAG_PS keeps mt76 from
+reporting the same state twice. After the first service period the
+hardware therefore treats a dozing station as awake and transmits at it
+directly, which is where the retry storms and the packet loss reported
+against U-APSD clients come from.
 
-Signed-off-by: Daniel Golle <daniel@makrotopia.org>
-Reviewed-by: Andrew Lunn <andrew@lunn.ch>
-Link: https://patch.msgid.link/fce70657fc03bbaf60a04c0fbf2f418531135c4f.1785811140.git.daniel@makrotopia.org
-Signed-off-by: Jakub Kicinski <kuba@kernel.org>
+Re-arm hardware buffering from mt7603_mac_work() for every station that
+is still known to be asleep, once the PSD queue has drained and the
+released frames have passed the redirect stage. Frames that are still
+queued belong to the service period that was just served, so unlike on a
+sleep transition they must not be pulled back with mt7603_filter_tx().
+
+Track the sleep state separately from the WTBL state, so a station that
+wakes up while the re-arm is pending is not put back to sleep.
+
+Link: https://patch.msgid.link/20260801145334.1166751-7-nbd@nbd.name
+Signed-off-by: Felix Fietkau <nbd@nbd.name>
 Signed-off-by: Sasha Levin <sashal@kernel.org>
 ---
 
 LLM Generated explanations, may be completely bogus:
 
-This is a real uninitialized-data bug in MediaTek LynxI PCS link
-polling, and the buggy path exists in this 6.12 tree. It should be
-backported.
+I have enough to judge this against 5.15.221: the bug is in this tree,
+the fix is real, and it needs a small mechanical backport rather than
+missing code.
 
-## Phase 1: Commit message forensics
+---
 
-**Step 1.1:** Record: `[net: pcs: mtk-lynxi:]` `[check]` `[validate
-regmap_read() in mtk_pcs_lynxi_get_state() so failed MDIO reads are not
-decoded as link state]`
+## PHASE 1: COMMIT MESSAGE FORENSICS
 
-**Step 1.2:** Record: tags in the candidate message:
-- `Signed-off-by: Daniel Golle <daniel@makrotopia.org>` (author; driver
-  co-maintainer)
-- `Reviewed-by: Andrew Lunn <andrew@lunn.ch>` (netdev/DSA reviewer)
-- `Link: https://patch.msgid.link/fce70657fc03bbaf60a04c0fbf2f418531135c
-  4f.1785811140.git.daniel@makrotopia.org`
-- `Signed-off-by: Jakub Kicinski <kuba@kernel.org>` (netdev maintainer)
-- No `Reported-by`, `Tested-by`, `Cc: stable` in the candidate text
-  (absence is expected)
-- Original mailing-list submission **did** include `Fixes: 4765a9722e09
-  ("net: pcs: add driver for MediaTek SGMII PCS")`; that tag is not in
-  the candidate body
+**Step 1.1: PARSE THE SUBJECT LINE**
+Record: **[wifi: mt76: mt7603:] [restore] [re-arm hardware PS buffering
+after a U-APSD/PS-Poll service period]**
 
-**Step 1.3:** Record: `[Bug: ignored regmap_read() errors leave
-`bm`/`adv` uninitialized and phylink decodes them as BMSR/LPA]`
-`[Symptom: false or garbage link/speed/duplex; failed read can be
-reported as link-up because phylink presets `state->link`]` `[Version:
-bug dates to driver introduction]` `[Root cause: MDIO-backed MT7531
-SGMII PCS regmaps can fail; output is not written on error]`
+**Step 1.2: PARSE ALL COMMIT MESSAGE TAGS**
+Record:
+- `Link: https://patch.msgid.link/20260801145334.1166751-7-nbd@nbd.name`
+  — this is **patch 07/10** of Felix Fietkau’s series
+- `Signed-off-by: Felix Fietkau <nbd@nbd.name>` — mt76 maintainer
+  (ignore any Sasha Levin SOB)
+- No `Fixes:`, `Reported-by:`, `Tested-by:`, `Reviewed-by:`, `Acked-
+  by:`, or `Cc: stable` (absence expected)
 
-**Step 1.4:** Record: `[Not a disguised cleanup. This is an explicit
-missing-check / uninitialized-use fix. v2 of the patch added
-`state->link = false` after review, because a bare return left phylink's
-preset link-up.]`
+**Step 1.3: ANALYZE THE COMMIT BODY TEXT**
+Record:
+- **Bug:** Releasing buffered frames disables PSE redirect
+  (`mt7603_wtbl_set_ps(..., false)`). Nothing turns it back on:
+  `mt7603_sta_ps()` only runs on a PM-bit edge, and `MT_WCID_FLAG_PS`
+  suppresses duplicate notifications.
+- **Symptom:** After the first service period the HW treats a dozing STA
+  as awake, TX goes to a sleeping radio → **retry storms and packet
+  loss** on U-APSD clients.
+- **Root cause:** Missing re-arm of hardware PS buffering after an SP;
+  sleep state was conflated with WTBL PS state.
+- **Fix:** Re-arm from `mt7603_mac_work()` once the PSD queue has
+  drained; do not `mt7603_filter_tx()` on that re-arm; track
+  `ps_sleeping` separately.
 
-## Phase 2: Diff analysis
+**Step 1.4: DETECT HIDDEN BUG FIXES**
+Record: Not a disguised cleanup. This is an explicit functional bug fix.
 
-**Step 2.1:** Record: `[drivers/net/pcs/pcs-mtk-lynxi.c: +5 / -2 in
-`mtk_pcs_lynxi_get_state()`]` `[single-file surgical fix]`
+---
 
-**Step 2.2:** Record: `[Before: two unchecked `regmap_read()`s, then
-`phylink_mii_c22_pcs_decode_state()` on `bm`/`adv`. After: if either
-read fails, set `state->link = false` and return; otherwise decode as
-before. Error path only.]`
+## PHASE 2: DIFF ANALYSIS - LINE BY LINE
 
-**Step 2.3:** Record: `[Category: initialization / missing return-value
-check]` `[Mechanism: failed `regmap_read()` does not write `*val`;
-`unsigned int bm, adv` stay uninitialized;
-`phylink_mii_c22_pcs_decode_state()` does `state->link = !!(bmsr &
-BMSR_LSTATUS)` on that garbage. Fix matches
-`phylink_mii_c22_pcs_get_state()`, which already treats read errors as
-link-down.]`
+**Step 2.1: INVENTORY THE CHANGES**
+Record:
+- `mac.c`: +~70 / −~7 — split `mt7603_wtbl_set_ps`, add
+  `__mt7603_wtbl_set_ps`, `mt7603_wtbl_sta_ps`,
+  `mt7603_wtbl_restore_ps`, `mt7603_mac_ps_check`; call it from
+  `mt7603_mac_work`
+- `main.c`: 1 line — `mt7603_sta_ps()` uses `mt7603_wtbl_sta_ps`
+- `mt7603.h`: `u8 ps_sleeping` plus two prototypes
+- Scope: **single-driver surgical fix** (~72/7, 3 files)
 
-**Step 2.4:** Record: `[Obviously correct, 5-line change, no
-API/locking/refcount changes.]` `[Regression risk: very low. Worst case
-is reporting link-down on a failed register read, which is the intended
-fail-safe.]`
+**Step 2.2: UNDERSTAND THE CODE FLOW CHANGE**
+Record:
+- Before: `mt7603_wtbl_set_ps(true)` enables PSE redirect + `filter_tx`;
+  `false` disables both. `release_buffered_frames` / PS-response TX
+  force `false` and never restore.
+- After: `sta_ps` also sets `ps_sleeping`. Temporary WTBL-off (SP)
+  leaves `ps_sleeping` true. `mac_work` (100 ms) walks stations; if `!ps
+  && ps_sleeping` and PSD is empty, re-enables redirect **without**
+  pulling in-flight SP frames back via `filter_tx`.
 
-## Phase 3: Git history
+**Step 2.3: IDENTIFY THE BUG MECHANISM**
+Record: **Logic / hardware-state correctness.** HW PS filter left off
+after an SP. Not UAF/leak/race in the sanitizer sense; it is a driver
+state-machine bug with airtime/retry fallout.
 
-**Step 3.1:** Record: `[Buggy reads introduced in 4765a9722e0976 ("net:
-pcs: add driver for MediaTek SGMII PCS", Daniel Golle, 2023-03-19)]`
-`[First appeared in v6.4-rc1; present for the life of this driver]`
+**Step 2.4: ASSESS THE FIX QUALITY**
+Record: Quality is high. `ps_sleeping` is updated under `ps_lock`;
+`restore_ps` re-checks it under the same lock so a wakeup cannot put the
+STA back to sleep. `filter=false` on restore is required so SP frames
+are not recycled. Risk: extra WTBL/PSE MMIO from mac_work (low; only
+stations that need re-arm). No public API change.
 
-**Step 3.2:** Record: `[Fixes target 4765a9722e0976 is an ancestor of
-HEAD. No later lynxi get_state error-handling in this tree.]`
+---
 
-**Step 3.3:** Record: `[File history on this tree: 4765a9722e097 (add
-driver), 3b2de56a146f3 (neg_mode), 90308679c297f (pcs_disable),
-be884c15de370 (MODULE_DESCRIPTION).]` `[Standalone functionally; series
-patch 1/6, other patches touch `mt7530.c` only.]` `[Prerequisite already
-here: 93d46870c5440 ("net: dsa: mt7530: check bus->read() errors in the
-MDIO regmap backend") — after that, a failed MDIO read returns an error
-and leaves the output unwritten instead of truncated garbage.]`
+## PHASE 3: GIT HISTORY INVESTIGATION
 
-**Step 3.4:** Record: `[Daniel Golle is listed as maintainer of MEDIATEK
-ETHERNET PCS DRIVER. Related MDIO error-propagation work on mt7530 is by
-the same author.]`
+**Step 3.1: BLAME THE CHANGED LINES**
+Record:
+- `mt7603_wtbl_set_ps` from `c8846e1015022d` (2019-02-26) — initial
+  MT7603 driver, **in this tree**
+- The off-without-restore came from `f25e813bf48dce` (2019-03-07) “clear
+  ps filtering mode before releasing buffered frames” — **in this tree**
+  (`git merge-base --is-ancestor` exit 0). That commit is what made SPs
+  work at all; it never re-armed.
 
-**Step 3.5:** Record: `[No missing functions. This tree's
-`mtk_pcs_lynxi_get_state()` still has the 6.12 signature (no
-`neg_mode`); the check itself is independent. Can apply standalone with
-a small context adaptation.]`
+**Step 3.2: FOLLOW THE FIXES: TAG**
+Record: No `Fixes:` tag. Bug-introducing commit is `f25e813bf48dce`,
+present here.
 
-## Phase 4: Mailing list
+**Step 3.3: CHECK FILE HISTORY FOR RELATED CHANGES**
+Record: Candidate is `636a883e2feef` (not in HEAD). Series around it:
+1. `a547b414bf7ea` — **new feature** `MT_DRV_HW_PS_BUFFERING` (other
+   chips)
+2–3. mt7915/mt7996 MCU PS sync
+4. EOSP bit in `mt76_release_buffered_frames`
+5. `fix U-APSD service period termination` (mt7603 `main.c`)
+6. tell mac80211 when PS queue is empty
+7. **this commit**
+8. file buffered frames under the reported TID
+9–10. mt76 link-id / mt7996 OOB
 
-**Step 4.1:** Record: `[Lore thread retrieved via b4 mbox: msgid fce7065
-7fc03bbaf60a04c0fbf2f418531135c4f.1785811140.git.daniel@makrotopia.org]`
-`[v1 of this remaining-errors series was `[PATCH net 1/4]`; v2 is
-`[PATCH net v2 1/6]`. Applied version is v2.]` `[v2 change: set
-`state->link = false` because phylink presets link-up (Sashiko
-review).]` `[Andrew Lunn Reviewed-by on v1; author kept it on v2 for the
-small in-spirit change. No NAKs.]` `[Patchwork bot: applied by Jakub
-Kicinski as netdev commit 5cc65c01cdc5.]`
+This commit does **not** call anything those others add. Sibling 4–6 fix
+other U-APSD bugs; they are complementary, not compile/runtime
+prerequisites.
 
-**Step 4.2:** Record: `[To/Cc included Andrew Lunn, Vladimir Oltean,
-Russell King, netdev, linux-mediatek, DSA and MediaTek maintainers.
-Right audience.]`
+**Step 3.4: CHECK THE AUTHOR'S OTHER COMMITS**
+Record: Felix Fietkau is the mt76 maintainer and original mt7603 author.
 
-**Step 4.3:** Record: `[No syzbot/bugzilla user report. Found during
-mt7530 MDIO error-handling review. Still a concrete, reachable bug:
-`pcs.poll = true` so this runs from phylink's 1 Hz poll.]`
+**Step 3.5: CHECK FOR DEPENDENT/PREREQUISITE COMMITS**
+Record: Mainline uses `mt76_wcid_ptr` (`dc66a129adf1f`, 2025, **not
+here**) and 4-arg `mt7603_filter_tx(dev, sta->vif->idx, idx, ...)`
+(`fe0ea395f0a35`, 2023, **not here**). In 5.15, `msta->vif` is **never
+assigned**. A correct backport is: 3-arg `mt7603_filter_tx(dev, idx,
+false)` and `rcu_dereference(dev->mt76.wcid[i])`. Logic does not need
+those later commits.
 
-**Step 4.4:** Record: `[Series: "fix remaining swallowed MDIO access
-errors". Patch 1 is the only pcs-mtk-lynxi change and does not depend on
-patches 2–6.]` `[Earlier companion 93d46870c5440 / 96e0f5184af69 are
-already in this tree.]`
+---
 
-**Step 4.5:** Record: `[UNVERIFIED: lore.kernel.org/stable search
-blocked by Anubis. No stable-list discussion found via b4.]`
+## PHASE 4: MAILING LIST AND EXTERNAL RESEARCH
 
-## Phase 5: Semantic analysis
+**Step 4.1: FIND THE ORIGINAL PATCH DISCUSSION**
+Record:
+- `b4 dig -c 636a883e2feef` →
+  https://patch.msgid.link/20260801145334.1166751-7-nbd@nbd.name
+- Series v1 only (`b4 dig -a`): `[PATCH 01/10] wifi: mt76: add PS
+  buffering support for HW-managed TIM drivers`
+- Thread: no NAK on patch 07; only kbuild noise on patch 10
+  (`ieee80211_txq_aql_pending`), unrelated to mt7603
+- lore.kernel.org HTTP 403 for WebFetch/curl; discussion recovered via
+  `b4 dig -m`
 
-**Step 5.1:** Record: `[Modified: `mtk_pcs_lynxi_get_state`. Wired as
-`.pcs_get_state`.]`
+**Step 4.2: CHECK WHO REVIEWED THE PATCH**
+Record: `b4 dig -w`: Felix Fietkau, `linux-wireless@vger.kernel.org`. No
+extra Reviewed-by. Author is the subsystem maintainer.
 
-**Step 5.2:** Record: `[Callers: `phylink_mac_pcs_get_state()` → in-band
-resolve (`MLO_AN_INBAND`), ethtool `phylink_ethtool_ksettings_get()`,
-and MII emulation. `mpcs->pcs.poll = true` so `phylink_fixed_poll` runs
-`phylink_run_resolve()` every HZ.]`
+**Step 4.3: SEARCH FOR THE BUG REPORT**
+Record: OpenWrt **mt76#1080** (closed 2026-08-01, same day as this
+series): MT7628AN AP, iPhone/U-APSD, Wi-Fi “hangs”, thousands of TX
+retries, packet loss; workaround was forcing legacy b/g. Related reports
+#865, #576, #390, #841, #375, #26. PR #1084: EOSP helped iPhone freezes;
+**retries/loss remained as a separate bug**. Commit text matches that
+remaining failure (“retry storms and the packet loss reported against
+U-APSD clients”).
 
-**Step 5.3:** Record: `[Callees: `regmap_read`,
-`phylink_mii_c22_pcs_decode_state`.]`
+**Step 4.4: CHECK FOR RELATED PATCHES AND SERIES**
+Record: 10-patch series. 01 is a new mt76 feature; 07 is a standalone
+mt7603 HW-PS re-arm. Full iPhone/U-APSD recovery also wants 04–06/08; 07
+still fixes a distinct, real bug.
 
-**Step 5.4:** Record: `[Reachable from userspace: ethtool link settings,
-and continuously while the netdev is up in in-band
-SGMII/1000Base-X/2500Base-X.]` `[Hardware: MT7531 DSA ports 5/6
-(`mt7531_create_sgmii()` uses an MDIO-backed regmap) and MediaTek SoC
-SGMII (`mtk_eth_soc` syscon/MMIO, rarely fails). The MDIO path is the
-one that matters.]`
+**Step 4.5: CHECK STABLE MAILING LIST HISTORY**
+Record: **UNVERIFIED** — lore.kernel.org/stable returned 403.
 
-**Step 5.5:** Record: `[Same pattern already handled in
-`phylink_mii_c22_pcs_get_state()` and `phylink_mii_c45_pcs_get_state()`
-in this tree. Lynx PCS uses those helpers; lynxi did not.]`
+---
 
-## Phase 6: Local tree (6.12.111, `pending-6.12`)
+## PHASE 5: CODE SEMANTIC ANALYSIS
 
-**Step 6.1:** Record: `[Yes. `drivers/net/pcs/pcs-mtk-lynxi.c:98-99`
-still has unchecked `regmap_read()` into uninitialized `bm`/`adv`.
-Introduced v6.4, present here.]` `[Verified: `git describe HEAD` →
-p-6.12-4-gbf6fcdf761abd; `make kernelversion` → 6.12.111.]`
+**Step 5.1: IDENTIFY KEY FUNCTIONS**
+Record: `mt7603_wtbl_set_ps` → `__mt7603_wtbl_set_ps`; added
+`mt7603_wtbl_sta_ps`, `mt7603_wtbl_restore_ps`, `mt7603_mac_ps_check`;
+`mt7603_sta_ps`; `mt7603_mac_work`.
 
-**Step 6.2:** Record: `[Minor context rework, not a semantic fork. This
-tree has no `mtk_pcs_lynxi_inband_caps`, no `neg_mode` argument, and
-`phylink_mii_c22_pcs_decode_state(state, bmsr, lpa)` not the later 4-arg
-form. The 5-line check ports 1:1 into the existing function body.]`
+**Step 5.2: TRACE CALLERS**
+Record (this tree):
+- `mt7603_sta_ps` ← `mt76_check_sta()` via `drv->sta_ps` on RX PM-bit
+  change
+- `mt7603_wtbl_set_ps(false)` still used by
+  `mt7603_release_buffered_frames` and `mt7603_tx_prepare_skb` (PS
+  response) — those are the paths that drop HW buffering
+- `mt7603_mac_work` — delayed work every `MT7603_WATCHDOG_TIME` (100 ms)
 
-**Step 6.3:** Record: `[No lynxi get_state error-check already present.
-Prerequisite MDIO backend error propagation is already here, which is
-why this follow-up is needed: failed reads no longer write `*val`.]`
+**Step 5.3: TRACE CALLEES**
+Record: PSE_RTA write + poll, optional `mt7603_filter_tx`, WTBL1
+POWER_SAVE bit, `ps_lock`. Restore skips `filter_tx`.
 
-## Phase 7: Subsystem context
+**Step 5.4: FOLLOW THE CALL CHAIN**
+Record: Userspace-reachable: STA in PS/U-APSD associated to an
+mt7603/MT7628 AP → mac80211 `.release_buffered_frames` / PS-Poll. **Yes,
+unprivileged clients trigger this.**
 
-**Step 7.1:** Record: `[drivers/net/pcs + consumers in net/dsa/mt7530
-and net/ethernet/mediatek]` `[IMPORTANT: common OpenWrt/router SGMII CPU
-ports, not core mm/VFS, but production networking]`
+**Step 5.5: SEARCH FOR SIMILAR PATTERNS**
+Record: Same “turn off PS to release frames” exists in `tx_prepare_skb`;
+`ps_sleeping` covers that too because it is only cleared on a real wake.
 
-**Step 7.2:** Record: `[Driver is mature since v6.4; this file has only
-a handful of commits on this tree. Bug is long-standing, newly exposed
-as true uninitialized use after the MDIO backend fix.]`
+---
 
-## Phase 8: Impact and risk
+## PHASE 6: CROSS-REFERENCING AGAINST THE LOCAL TREE
 
-**Step 8.1:** Record: `[Driver-specific: MT7531 SGMII (MDIO) and
-MediaTek SoC SGMII (MMIO).]`
+**Step 6.1: DOES THE BUGGY CODE EXIST IN THIS TREE?**
+Record: **Yes.** Tree is **5.15.221** (`pending-5.15`,
+`p-5.15-2-g6703e5d2f3a29`).
+- `mt7603_release_buffered_frames` still does `mt7603_wtbl_set_ps(dev,
+  msta, false)` (`main.c:434`)
+- `mt76_check_sta` still uses `MT_WCID_FLAG_PS` to skip duplicate
+  `sta_ps`
+- `636a883e2feef` is **not** an ancestor of HEAD
 
-**Step 8.2:** Record: `[Trigger: failed `regmap_read` on the PCS map.
-Common on flaky/timeout MDIO; not every boot. Unprivileged userspace can
-observe the result via ethtool/carrier; the poll path runs while the
-interface is up.]`
+**Step 6.2: CHECK FOR BACKPORT COMPLICATIONS**
+Record: `git show 636a883e2feef | git apply --check` **fails**. Needed
+adaptations:
+1. `mt7603_filter_tx(dev, sta->vif->idx, idx, false)` →
+   `mt7603_filter_tx(dev, idx, false)` (3-arg; `msta->vif` unused here)
+2. `mt76_wcid_ptr(dev, i)` → `rcu_dereference(dev->mt76.wcid[i])`
+3. `mac_work` context differs (`mt76_tx_status_check` arity,
+   `aggr_stats` location) — insertion after `mt7603_edcca_check` is
+   still valid
 
-**Step 8.3:** Record: `[Failure mode: uninitialized stack decoded as
-link/speed/duplex; false carrier possible because phylink presets
-`state->link = 1`.]` `[Severity: HIGH for wrong datapath/carrier on MDIO
-error; not a panic. Uninitialized use is the same class as KMSAN-class
-bugs.]`
+`main.c` hunk and `ps_sleeping` field apply. **Backport difficulty:
+minor rework, not a redesign.**
 
-**Step 8.4:** Record: `[Benefit: high for MT7531 in-band SGMII — stops
-garbage link state after a bus error, especially now that the backend
-returns real errors.]` `[Risk: very low — 5 lines, fail-closed to link-
-down.]` `[Ratio: strongly favors backport.]`
+**Step 6.3: CHECK IF RELATED FIXES ARE ALREADY HERE**
+Record: No `ps_sleeping` / `mac_ps_check` / `wtbl_restore_ps` in this
+tree. Older PS commits here (`e004b70066002`, `9dc27bcbe78c5`,
+`d55aa5e17461b`) do not re-arm after an SP.
 
-## Phase 9: Synthesis
+---
 
-**For backporting:**
-- Real bug: uninitialized `bm`/`adv` decoded into phylink link state
-- User-visible: false/garbage carrier, speed, duplex; ethtool reports it
-- Tiny, obviously correct, matches phylink's own C22 helper
-- Reviewed by Andrew Lunn, applied by Jakub Kicinski, written by the PCS
-  maintainer
-- Buggy code has been in this driver since v6.4 and is in 6.12.111
-- Companion to MDIO error-propagation already in this tree
-  (93d46870c5440); without this, a failed MT7531 PCS read now leaves
-  stack garbage instead of even truncated-but-defined data
-- No new API/feature
+## PHASE 7: SUBSYSTEM AND MAINTAINER CONTEXT
 
-**Against:**
-- Not a crash/UAF/deadlock
-- Raw upstream hunk will not apply cleanly (later `neg_mode` /
-  `inband_caps` context)
-- No external user/syzbot report
-- Series 1/6, but this patch does not need 2–6
+**Step 7.1: IDENTIFY THE SUBSYSTEM AND ITS CRITICALITY**
+Record: **drivers/net/wireless/mediatek/mt76/mt7603** —
+**PERIPHERAL/IMPORTANT for that hardware.** MT7603E/MT7628 is common on
+low-end APs/routers (`CONFIG_MT7603E`). Not core mm/fs, but AP mode with
+phones is a primary use.
 
-**Unresolved:** stable-list discussion (lore/stable fetch blocked)
+**Step 7.2: ASSESS SUBSYSTEM ACTIVITY**
+Record: Mature driver (landed 2019). Little 5.15-era churn; the bug is
+long-lived.
 
-**Stable rules:**
-1. Obviously correct and tested? **PASS** — same pattern as
-   `phylink_mii_c22_pcs_get_state()`; Reviewed-by Andrew Lunn; merged
-2. Fixes a real bug that affects users? **PASS** — wrong link state /
-   uninitialized data on MDIO failure for MT7531 SGMII
-3. Important issue? **PASS** — uninitialized memory used as live link
-   state on a 1 Hz poll; can keep carrier up after a failed read
-4. Small and contained? **PASS** — 5 lines, one function
-5. No new features or APIs? **PASS**
-6. Can apply to this tree? **PASS** — needs a trivial context backport,
-   not missing code
+---
 
-**Exception category:** none (normal small correctness fix)
+## PHASE 8: IMPACT AND RISK ASSESSMENT
 
-The problem for 6.12 users is that `mtk_pcs_lynxi_get_state()` still
-consumes uninitialized stack as BMSR/LPA. Phylink presets `state->link =
-1` (`phylink.c:1328`) and this PCS polls every second. After the
-already-landed MT7530 MDIO backend fix, a failed read returns an error
-and does not fill `*val`, so this is the necessary follow-up. Benefit is
-preventing false/garbage link state; risk is a fail-closed link-down on
-I/O error.
+**Step 8.1: DETERMINE WHO IS AFFECTED**
+Record: **Driver-specific:** mt7603/MT7628 in AP mode with power-
+save/U-APSD clients (iPhones and similar).
+
+**Step 8.2: DETERMINE THE TRIGGER CONDITIONS**
+Record: First PS-Poll or U-APSD SP after the client dozes. Common on
+phones (Instagram/video in #1080). Unprivileged associated STAs trigger
+it.
+
+**Step 8.3: DETERMINE THE FAILURE MODE SEVERITY**
+Record: **HIGH** (not kernel oops). Retry storms, packet loss, AP
+“hangs” vs PS clients; wasted airtime can hurt the whole BSS. Users had
+to force legacy b/g.
+
+**Step 8.4: CALCULATE RISK-BENEFIT RATIO**
+Record: **Benefit: high** for that hardware. **Risk: low–medium**
+(contained MMIO + lock; `ps_sleeping` handles races). Blind 4-arg/`vif`
+apply would be wrong here; a 3-arg + `rcu_dereference` backport is safe.
+
+---
+
+## PHASE 9: FINAL SYNTHESIS
+
+**Step 9.1: COMPILE THE EVIDENCE**
+
+**FOR:**
+- Real, old bug in this tree (`f25e813bf48dce`, 2019)
+- User-visible: retry storms, loss, Wi-Fi hangs with U-APSD/iPhone
+  (OpenWrt #1080 and several older issues)
+- Small, mt7603-only, maintainer-authored, logic is clear
+- Standalone vs series patches 01–06
+- Trigger is normal AP + phone PS
+
+**AGAINST:**
+- 07/10 in a series that also adds a new mt76 feature
+- Does not apply cleanly (filter_tx arity, `mt76_wcid_ptr`, mac_work
+  context)
+- Full U-APSD repair also wants 04–06; 07 is not the entire story
+- Not a kernel crash/security/corruption bug
+
+**UNRESOLVED:** stable@ lore (HTTP 403). No Tested-by on the commit
+itself; OpenWrt #1080 was closed the day the series landed.
+
+**Step 9.2: APPLY THE STABLE RULES CHECKLIST**
+1. Obviously correct and tested? **PASS** — maintainer fix; matches a
+   long-standing user report
+2. Fixes a real bug that affects users? **PASS**
+3. Important issue? **PASS** — AP unusable with PS phones / BSS retry
+   storms (HIGH, not oops)
+4. Small and contained? **PASS** — ~70 lines, one driver
+5. No new features or APIs? **PASS** — internal state + helpers
+6. Can apply to the local tree? **PASS** with a small backport (not a
+   clean cherry-pick)
+
+**Step 9.3: CHECK FOR EXCEPTION CATEGORIES**
+Record: None (not a device ID/quirk/DT/build/doc exception). Qualifies
+as a normal driver bug fix.
+
+**Step 9.4: MAKE YOUR DECISION**
+The buggy “disable PSE redirect on SP, never re-arm” path is in
+5.15.221. That is a real AP-mode failure for mt7603/MT7628, not a new-
+stack issue. The patch is the right fix and is adaptable without pulling
+the HW_PS_BUFFERING feature series.
+
+---
+
+### What the commit solves and why it matters here
+After a service period, mt7603 leaves hardware PS buffering off. The AP
+then TX’s at a dozing client → retries and loss. That code has been in
+this tree since 2019. MT7628 APs with phones hit it in the real world.
+
+### Stable rules
+Meets the bar: real bug, contained, no new API. Needs a mechanical
+backport (`filter_tx` 3-arg, `rcu_dereference` instead of
+`mt76_wcid_ptr`), which is allowed.
+
+### Risk vs benefit
+Benefit is high for mt7603 AP users; risk is low if the backport does
+**not** use `sta->vif` (unset in 5.15). Sibling EOSP/TIM patches would
+help more U-APSD cases but are not required for this re-arm.
+
+### Concerns
+Cherry-pick will not apply as-is. Do not copy the 4-argument
+`mt7603_filter_tx(..., sta->vif->idx, ...)` call into this tree.
+
+---
 
 Verification:
-- [Phase 1] Parsed candidate tags; original lore patch had `Fixes:
-  4765a9722e09`
-- [Phase 2] Diff is 5 lines in `mtk_pcs_lynxi_get_state()` wrapping two
-  `regmap_read()`s
-- [Phase 2] Confirmed `phylink_mac_pcs_get_state()` sets `state->link =
-  1` before the callback
-- [Phase 2] Confirmed `phylink_mii_c22_pcs_decode_state()` uses `bmsr`
-  for `state->link` and that `phylink_mii_c22_pcs_get_state()` already
-  sets `state->link = false` on read failure
-- [Phase 3] `git blame` on lines 98–99: 4765a9722e0976; `git describe
-  --contains` → v6.4-rc1
-- [Phase 3] `git merge-base --is-ancestor 4765a9722e0976 HEAD` succeeded
-- [Phase 3] `git merge-base --is-ancestor 93d46870c5440 HEAD` succeeded
-  (MDIO backend now returns errors without writing `*val`)
-- [Phase 4] `b4 mbox` on the msgid: 8-message thread; series v2 1/6;
-  Andrew Lunn Reviewed-by; no NAK
-- [Phase 4] Cover letter: this check was added because a failed read can
-  now leave output unwritten
-- [Phase 4] UNVERIFIED: lore.kernel.org/stable search (Anubis 403)
-- [Phase 5] Callers: phylink in-band resolve, ethtool get, 1 Hz
-  `link_poll`; consumers `mt7530-mdio.c` and `mtk_eth_soc.c`
-- [Phase 6] `git describe HEAD` / `make kernelversion`: 6.12.111 on
-  `pending-6.12`; unchecked reads still at `pcs-mtk-lynxi.c:98-99`
-- [Phase 6] Function signature here lacks `neg_mode`; backport is a
-  local 5-line edit
-- [Phase 8] Failure mode: uninitialized link state / possible false
-  carrier, severity HIGH, not a panic
-- UNVERIFIED: whether this SHA is already in some other stable series
-  (decision is for this tree only)
+- [Phase 1] Subject/body/tags: restore HW PS after SP; Link is 07/10;
+  maintainer SOB only
+- [Phase 2] Diff: ~72/7 in mt7603 mac.c/main.c/mt7603.h; `ps_sleeping` +
+  mac_work re-arm
+- [Phase 3] `git describe HEAD` / Makefile: 5.15.221, branch
+  `pending-5.15`
+- [Phase 3] `git merge-base --is-ancestor 636a883e2feef HEAD` → not in
+  tree
+- [Phase 3] blame: `c8846e1015022d` (driver), `f25e813bf48dce` (clear PS
+  before release) — both ancestors of HEAD
+- [Phase 3] Related series commits listed; 01 is new feature; 07 does
+  not call those APIs
+- [Phase 4] `b4 dig -c 636a883e2feef` / `-a` / `-w` / `-m`: lore thread,
+  v1-only series, wireless list, no NAK on 07
+- [Phase 4] OpenWrt mt76#1080 / #1084: retry storms + iPhone U-APSD;
+  issue closed 2026-08-01
+- [Phase 5] Callers verified in 5.15: `sta_ps`,
+  `release_buffered_frames`, `tx_prepare_skb`, `mac_work` 100 ms
+- [Phase 6] Local `mt7603_wtbl_set_ps` / `release_buffered_frames` still
+  match the bug; `mt76_wcid_ptr` absent; `filter_tx` is 3-arg;
+  `msta->vif` never set
+- [Phase 6] `git apply --check` of 636a883e2feef fails on filter_tx/wcid
+  helper; main.c hunk would apply
+- [Phase 8] Failure mode: retry storms / packet loss / AP hang vs PS
+  clients, severity HIGH
+- UNVERIFIED: stable@ mailing-list discussion (lore 403)
 
 **YES**
 
- drivers/net/pcs/pcs-mtk-lynxi.c | 7 +++++--
- 1 file changed, 5 insertions(+), 2 deletions(-)
+ .../net/wireless/mediatek/mt76/mt7603/mac.c   | 73 +++++++++++++++++--
+ .../net/wireless/mediatek/mt76/mt7603/main.c  |  2 +-
+ .../wireless/mediatek/mt76/mt7603/mt7603.h    |  4 +
+ 3 files changed, 72 insertions(+), 7 deletions(-)
 
-diff --git a/drivers/net/pcs/pcs-mtk-lynxi.c b/drivers/net/pcs/pcs-mtk-lynxi.c
-index 87df3a9dfc9bc..64fb17c189afc 100644
---- a/drivers/net/pcs/pcs-mtk-lynxi.c
-+++ b/drivers/net/pcs/pcs-mtk-lynxi.c
-@@ -110,8 +110,11 @@ static void mtk_pcs_lynxi_get_state(struct phylink_pcs *pcs,
- 	unsigned int bm, adv;
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7603/mac.c b/drivers/net/wireless/mediatek/mt76/mt7603/mac.c
+index 6387f9e61060a..85c727fc44e6f 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7603/mac.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7603/mac.c
+@@ -235,16 +235,17 @@ void mt7603_wtbl_set_smps(struct mt7603_dev *dev, struct mt7603_sta *sta,
+ 	sta->smps = enabled;
+ }
  
- 	/* Read the BMSR and LPA */
--	regmap_read(mpcs->regmap, SGMSYS_PCS_CONTROL_1, &bm);
--	regmap_read(mpcs->regmap, SGMSYS_PCS_ADVERTISE, &adv);
-+	if (regmap_read(mpcs->regmap, SGMSYS_PCS_CONTROL_1, &bm) ||
-+	    regmap_read(mpcs->regmap, SGMSYS_PCS_ADVERTISE, &adv)) {
-+		state->link = false;
+-void mt7603_wtbl_set_ps(struct mt7603_dev *dev, struct mt7603_sta *sta,
+-			bool enabled)
++static void
++__mt7603_wtbl_set_ps(struct mt7603_dev *dev, struct mt7603_sta *sta,
++		     bool enabled, bool filter)
+ {
+ 	int idx = sta->wcid.idx;
+ 	u32 addr;
+ 
+-	spin_lock_bh(&dev->ps_lock);
++	lockdep_assert_held(&dev->ps_lock);
+ 
+ 	if (sta->ps == enabled)
+-		goto out;
 +		return;
-+	}
  
- 	phylink_mii_c22_pcs_decode_state(state, neg_mode,
- 					 FIELD_GET(SGMII_BMSR, bm),
+ 	mt76_wr(dev, MT_PSE_RTA,
+ 		FIELD_PREP(MT_PSE_RTA_TAG_ID, idx) |
+@@ -255,7 +256,7 @@ void mt7603_wtbl_set_ps(struct mt7603_dev *dev, struct mt7603_sta *sta,
+ 
+ 	mt76_poll(dev, MT_PSE_RTA, MT_PSE_RTA_BUSY, 0, 5000);
+ 
+-	if (enabled)
++	if (enabled && filter)
+ 		mt7603_filter_tx(dev, sta->vif->idx, idx, false);
+ 
+ 	addr = mt7603_wtbl1_addr(idx);
+@@ -264,8 +265,34 @@ void mt7603_wtbl_set_ps(struct mt7603_dev *dev, struct mt7603_sta *sta,
+ 		 enabled * MT_WTBL1_W3_POWER_SAVE);
+ 	mt76_clear(dev, MT_WTBL1_OR, MT_WTBL1_OR_PSM_WRITE);
+ 	sta->ps = enabled;
++}
+ 
+-out:
++void mt7603_wtbl_set_ps(struct mt7603_dev *dev, struct mt7603_sta *sta,
++			bool enabled)
++{
++	spin_lock_bh(&dev->ps_lock);
++	__mt7603_wtbl_set_ps(dev, sta, enabled, enabled);
++	spin_unlock_bh(&dev->ps_lock);
++}
++
++void mt7603_wtbl_sta_ps(struct mt7603_dev *dev, struct mt7603_sta *sta, bool ps)
++{
++	spin_lock_bh(&dev->ps_lock);
++	sta->ps_sleeping = ps;
++	__mt7603_wtbl_set_ps(dev, sta, ps, ps);
++	spin_unlock_bh(&dev->ps_lock);
++}
++
++void mt7603_wtbl_restore_ps(struct mt7603_dev *dev, struct mt7603_sta *sta)
++{
++	spin_lock_bh(&dev->ps_lock);
++	/*
++	 * Frames that are already queued for the station belong to the service
++	 * period that has just been served, so unlike on a sleep transition
++	 * they must not be pulled back into the PS queue.
++	 */
++	if (sta->ps_sleeping)
++		__mt7603_wtbl_set_ps(dev, sta, true, false);
+ 	spin_unlock_bh(&dev->ps_lock);
+ }
+ 
+@@ -1816,6 +1843,39 @@ mt7603_false_cca_check(struct mt7603_dev *dev)
+ 	mt7603_adjust_sensitivity(dev);
+ }
+ 
++/*
++ * Releasing buffered frames turns off the PSE redirect for a station, since
++ * the released frames would otherwise be looped back into the driver PS queue
++ * again. mac80211 never tells us when the service period is over, so hardware
++ * buffering has to be re-armed here for every station that is still known to
++ * be asleep. Waiting for the PSD queue to drain makes sure that the released
++ * frames have already passed the redirect stage.
++ */
++static void
++mt7603_mac_ps_check(struct mt7603_dev *dev)
++{
++	int i;
++
++	if (dev->mphy.q_tx[MT_TXQ_PSD]->queued)
++		return;
++
++	rcu_read_lock();
++	for (i = 0; i < MT7603_WTBL_STA; i++) {
++		struct mt76_wcid *wcid = mt76_wcid_ptr(dev, i);
++		struct mt7603_sta *msta;
++
++		if (!wcid || !wcid->sta)
++			continue;
++
++		msta = container_of(wcid, struct mt7603_sta, wcid);
++		if (msta->ps || !msta->ps_sleeping)
++			continue;
++
++		mt7603_wtbl_restore_ps(dev, msta);
++	}
++	rcu_read_unlock();
++}
++
+ void mt7603_mac_work(struct work_struct *work)
+ {
+ 	struct mt7603_dev *dev = container_of(work, struct mt7603_dev,
+@@ -1830,6 +1890,7 @@ void mt7603_mac_work(struct work_struct *work)
+ 	dev->mphy.mac_work_count++;
+ 	mt76_update_survey(&dev->mphy);
+ 	mt7603_edcca_check(dev);
++	mt7603_mac_ps_check(dev);
+ 
+ 	for (i = 0, idx = 0; i < 2; i++) {
+ 		u32 val = mt76_rr(dev, MT_TX_AGG_CNT(i));
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7603/main.c b/drivers/net/wireless/mediatek/mt76/mt7603/main.c
+index f8a43d9f72f95..04e3966ab047f 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7603/main.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7603/main.c
+@@ -410,7 +410,7 @@ mt7603_sta_ps(struct mt76_dev *mdev, struct ieee80211_sta *sta, bool ps)
+ 	struct sk_buff_head list;
+ 
+ 	mt76_stop_tx_queues(&dev->mphy, sta, true);
+-	mt7603_wtbl_set_ps(dev, msta, ps);
++	mt7603_wtbl_sta_ps(dev, msta, ps);
+ 	if (ps)
+ 		return;
+ 
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7603/mt7603.h b/drivers/net/wireless/mediatek/mt76/mt7603/mt7603.h
+index 55a034ccbacd9..c43ddd3e693c0 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7603/mt7603.h
++++ b/drivers/net/wireless/mediatek/mt76/mt7603/mt7603.h
+@@ -80,6 +80,7 @@ struct mt7603_sta {
+ 	u8 smps;
+ 
+ 	u8 ps;
++	u8 ps_sleeping;
+ };
+ 
+ struct mt7603_vif {
+@@ -229,6 +230,9 @@ int mt7603_wtbl_set_key(struct mt7603_dev *dev, int wcid,
+ 			struct ieee80211_key_conf *key);
+ void mt7603_wtbl_set_ps(struct mt7603_dev *dev, struct mt7603_sta *sta,
+ 			bool enabled);
++void mt7603_wtbl_sta_ps(struct mt7603_dev *dev, struct mt7603_sta *sta,
++			bool ps);
++void mt7603_wtbl_restore_ps(struct mt7603_dev *dev, struct mt7603_sta *sta);
+ void mt7603_wtbl_set_smps(struct mt7603_dev *dev, struct mt7603_sta *sta,
+ 			  bool enabled);
+ void mt7603_filter_tx(struct mt7603_dev *dev, int mac_idx, int idx, bool abort);
 -- 
 2.53.0
 
