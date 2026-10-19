@@ -4,67 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D43FECCF2DA
-	for <linux-mediatek@archiver.kernel.org>; Mon, 19 Oct 2026 08:54:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 407A6CCF2DA
+	for <linux-mediatek@archiver.kernel.org>; Mon, 19 Oct 2026 09:33:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=deOppFeydKzw0+yILTrtXYZ1PYcVSBm6AiEBoif93gI=; b=Oph03931XjN5jhuJs0wGmCURAS
-	MHxqaC2FZOvUNfQ5zAneGuP+opkW3m4KSih15n3V+T4RmkKFHN8lo/DcYx7Z4DkvFHeA/XL8gvoUI
-	pHDW9520vf3KStQ10p+uJDlootMqQfUrAxpSOiF4hpUFBh09+SzWcNCcGM2qtTm/g+ULMGO6Icah1
-	d9IMxjPrajbdYCjhnd0F/xQGYUGvrI6Jy0qgRN5t9lcRM27sA1b8KpV8HPyRM64UacgSpgVXVpISi
-	oei3LBYBB9DLwwghr4b70jWB5ar3iko/nGbOh9SQ5mU4aNDo7IclNZdBNUpaJTGTcqCQ4f9/5wezB
-	gRCl71YQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=VBomzRk9uUTgk753tHBnspcaDlOQMppIF8orQT9r2mI=; b=x+h+CaqwYbQQApUo9x3KkB0RvY
+	E6I0VSJ4Ejhz6IFPZoa8rDpVWrVNjPx2RAEBkpFkiWEU+YC+9UOmozpjoMinck7l9wE9rvdg8YPSl
+	roCv1A5LnDDZ9oA7Vbfe7xokYRIOCBFlsB3cFNzKezy9GwrAOxHqSxqHnErEFdcKRNYKNtRojwrhr
+	DZxhkQnppetV8VMt01m3KCHq4hdeYsK5uHnjWUHRot/EjAwbBFAWdOhhsW03NVdWt1cEcEQ08Qz+A
+	27OqF66qcPUQFr6ohCj+WUvBdgzzJsWDNcj9xb30lDOSOSLmdLf5qi5Uak6jXTNAihDwIdFptMGpn
+	cHWRpEug==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xIj89-00000006utE-3xLD;
-	Mon, 19 Oct 2026 08:54:05 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1xIjkF-000000070z7-457d;
+	Mon, 19 Oct 2026 09:33:27 +0000
+Received: from m16.mail.163.com ([117.135.210.5])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xIj89-00000006usd-0o5C;
-	Mon, 19 Oct 2026 08:54:05 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 9D42D601DB;
-	Mon, 19 Oct 2026 08:54:04 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8ABD81F000C4;
-	Mon, 19 Oct 2026 08:54:03 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1792400044;
-	bh=deOppFeydKzw0+yILTrtXYZ1PYcVSBm6AiEBoif93gI=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=bUTpvRewgEZ03yMjzvH2QCsI5DzsapK6kjzNUurje84l1cm+lOD6KgigKLw7YnyEK
-	 sBtDeRmMeyvMUWt11tgVnAsFxPsZs8yrG2ftACdfiLe1M2xPX1h/rrW3i0Z16r0oDn
-	 fFdCPxPUom0VseerOYR90OtWOmk2SrgkT1zfqBE18xBqr6t+XRAEalqJCt1FMsWDCr
-	 ZhbRf1Mmt2K0dzHs4tIdlBa4Rmw/TKuKWfM3urkY/8XRLBuyStn4WGAUh8YNrLrX5K
-	 mo4jMpprjgN+jGmY3EYqVxHmSBkDePyGLOuLd9L7wi16aQo4Dw4KktGNIdSKB5x6kV
-	 YKjhowKZci9bQ==
-Date: Mon, 19 Oct 2026 10:54:01 +0200
-From: Krzysztof Kozlowski <krzk@kernel.org>
-To: James Calligeros <jcalligeros99@gmail.com>
-Cc: David Rhodes <david.rhodes@cirrus.com>, 
-	Richard Fitzgerald <rf@opensource.cirrus.com>, Martin =?utf-8?Q?Povi=C5=A1er?= <povik+lin@cutebit.org>, 
-	Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, Rob Herring <robh@kernel.org>, 
-	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
-	Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Shenghao Ding <shenghao-ding@ti.com>, Kevin Lu <kevin-lu@ti.com>, 
-	Baojun Xu <baojun.xu@ti.com>, Sen Wang <sen@ti.com>, Sven Peter <sven@kernel.org>, 
-	Janne Grunau <j@jannau.net>, Neal Gompa <neal@gompa.dev>, asahi@lists.linux.dev, 
-	linux-sound@vger.kernel.org, patches@opensource.cirrus.com, devicetree@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	id 1xIjkC-000000070xY-0UId;
+	Mon, 19 Oct 2026 09:33:26 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
+	s=s110527; h=From:To:Subject:Date:Message-Id:MIME-Version; bh=VB
+	omzRk9uUTgk753tHBnspcaDlOQMppIF8orQT9r2mI=; b=LI7XT3pKwH1BQw30Gm
+	3Mpv/Wk+Ex+kdYYifhKsQM2TjcXW74AaQfqYDZ2GXm0fCyRT9Y3kh02uYq2TNTiC
+	4TsAWS9pihgdCBa4/MjYOJGi4FksYb+W6fVIAXrGbOyy3KbIN7gcRRpD6atTW/PY
+	fOvFWpU9ZxE/u0cZEAnxzstEI=
+Received: from pc.localdomain (unknown [])
+	by gzga-smtp-mtada-g0-4 (Coremail) with SMTP id _____wD3H73U49VqbIAVBQ--.320S2;
+	Mon, 19 Oct 2026 17:33:11 +0800 (CST)
+From: Jiale Yao <yaojiale02@163.com>
+To: Felix Fietkau <nbd@nbd.name>,
+	Lorenzo Bianconi <lorenzo@kernel.org>,
+	Ryder Lee <ryder.lee@mediatek.com>,
+	Shayne Chen <shayne.chen@mediatek.com>,
+	Sean Wang <sean.wang@mediatek.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	MeiChia Chiu <meichia.chiu@mediatek.com>,
+	Howard Hsu <howard-yh.hsu@mediatek.com>,
+	linux-wireless@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH v3 02/21] ASoC: dt-bindings: cs42l42: Document additional
- dai-common properties
-Message-ID: <20261019-overjoyed-outgoing-wren-4fdcc7@quoll>
-References: <20261018-macaudio-v3-0-abdff7741dea@gmail.com>
- <20261018-macaudio-v3-2-abdff7741dea@gmail.com>
+Cc: Jiale Yao <jiale.yao@example.com>
+Subject: [PATCH 0/2] wifi: mt76: mt7996: clamp beamforming NSS
+Date: Mon, 19 Oct 2026 17:33:05 +0800
+Message-Id: <20261019093307.1869749-1-yaojiale02@163.com>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-In-Reply-To: <20261018-macaudio-v3-2-abdff7741dea@gmail.com>
+Content-Transfer-Encoding: 8bit
+X-CM-TRANSID: _____wD3H73U49VqbIAVBQ--.320S2
+X-Coremail-Antispam: 1Uf129KBjvdXoWrKFyrurWrJr1UZFyxJw4UCFg_yoW3trg_C3
+	4vyr98JF48tFWrKF17Kwn7XryI9ay8Kr1DG34Yy398Xw1xJrs3WrZ7Jr17XwsrWay8XF13
+	Jrn3XFyxA34SvjkaLaAFLSUrUUUUjb8apTn2vfkv8UJUUUU8Yxn0WfASr-VFAUDa7-sFnT
+	9fnUUvcSsGvfC2KfnxnUUI43ZEXa7IUjLL07UUUUU==
+X-CM-SenderInfo: x1dryxhdohiji6rwjhhfrp/xtbC7xc+eGrV49dfWAAA3y
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20261019_023324_797414_E01AC3AF 
+X-CRM114-Status: UNSURE (   5.52  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,44 +80,27 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-On Sun, Oct 18, 2026 at 03:53:56PM +1000, James Calligeros wrote:
-> We may need to define both #sound-dai-cells and sound-name-prefix on some
-> machines where this codec is part of a simple DAI. Document them with
-> reference to dai-common to keep the style checker happy.
-> 
-> Signed-off-by: James Calligeros <jcalligeros99@gmail.com>
-> ---
->  .../bindings/sound/cirrus,cs42l42.yaml   | 7 +++++++
->  1 file changed, 7 insertions(+)
-> 
-> diff --git a/Documentation/devicetree/bindings/sound/cirrus,cs42l42.yaml b/Documentation/devicetree/bindings/sound/cirrus,cs42l42.yaml
-> index ab4c7d22dc0e..aba2121ac64a 100644
-> --- a/Documentation/devicetree/bindings/sound/cirrus,cs42l42.yaml
-> +++ b/Documentation/devicetree/bindings/sound/cirrus,cs42l42.yaml
-> @@ -9,6 +9,9 @@ title: Cirrus Logic CS42L42 audio CODEC
->  maintainers:
->    - patches@opensource.cirrus.com
->  
-> +allOf:
-> +  - $ref: dai-common.yaml#
-> +
->  description:
->    The CS42L42 is a low-power audio codec designed for portable applications.
->    It provides a high-dynamic range, stereo DAC for audio playback and a mono
-> @@ -26,6 +29,10 @@ properties:
->        The I2C address of the CS42L42.
->      maxItems: 1
->  
-> +  '#sound-dai-cells': true
+From: Jiale Yao <jiale.yao@example.com>
 
-Instead const.
+The mt7996 beamforming configuration converts a peer maximum NSS to a
+zero-based column count.  A peer may report no receive streams for a
+VHT, HE, or EHT MCS range.  Decrementing that zero value underflows and
+can send an invalid beamforming configuration to firmware.
 
-> +
-> +  sound-name-prefix: true
+Patch 1 fixes the shared VHT and HE MCS-map conversion.  Patch 2 fixes
+the corresponding EHT conversions for 80, 160, and 320 MHz operation.
 
-And drop this one.
+The series was checked with scripts/checkpatch.pl, and each patch was
+checked for application against the common base.
 
-Best regards,
-Krzysztof
+Jiale Yao (2):
+  wifi: mt76: mt7996: clamp VHT/HE beamforming NSS
+  wifi: mt76: mt7996: clamp EHT beamforming NSS
+
+ drivers/net/wireless/mediatek/mt76/mt7996/mcu.c | 11 +++++++----
+ 1 file changed, 7 insertions(+), 4 deletions(-)
+
+-- 
+2.34.1
 
 
