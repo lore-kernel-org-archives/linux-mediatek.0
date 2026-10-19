@@ -4,65 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7DC0ECCF2E3
-	for <linux-mediatek@archiver.kernel.org>; Mon, 19 Oct 2026 13:54:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AEC5BCCF2DE
+	for <linux-mediatek@archiver.kernel.org>; Mon, 19 Oct 2026 13:55:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=+rMuxlEzta/xwXzh9GPR/CubwMf9s0sAxRcpqXWWx8M=; b=FfKRmVuwcKU6rOPKaGeiD2pfIB
-	WdSFRDoGfXtrTmAqGmKGzFcqXHhqMO/7SlerbXx9YSTmUoOpuUnHlOM+n+PH/mH4ZrrcyBfsgUJzt
-	CoXHjdSofVbSZJXf/qeyY/8ZoX2jwi6hJuJq5FYyTvTXM2tz0QJtIqqpF+e9rFT04qP4jg2toDq/E
-	LsgxEkJQOXDFTF3uan4WA0nu3kk1WDavObTEHV8TrXVtUfH+QzpH5vuqsZ+iiJk9Oxox5GSPGtnE/
-	J0JfKjQ8pc1F0lD9Ljnm5W/dozO5snvjoPMnywyl9N2zP3Wmf5XFMLK2tFWqMFZmN7QLp88Pzk9+0
-	dqs3yPsg==;
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=7MLSX91YXWGMiDuQOVHG7eM6KF/4ZfqZKFra9uborK0=; b=vn20W5jRAZKysEl7vq8VQiy7oS
+	iRtArE1dLAQMSRoLeDOua/fK8vFXhp/3pC/bZS+fYXFG40+nM6ZIPnyTrYhOm4rQJLd8kam5ziH5F
+	mK8eCS/lrCOpzun3g0KBDfyzkCm3LHDqLeKDQdhSPlED1JLUP0Vo2FAQwKlo8YGjVCpYYShSkzE/T
+	dh4UDOX04T9OHVJrugKbx/csFu8YRPSgLeknZu5/ByKTp4vVRteSsxMti8HW4l///Nq2lBCJ+rdsD
+	/dxoAPZBB8K0+4bYcCZl41UdM23/Wbro4i5Or/DUaTSb7ECI0wbQ74klnDfZMuMT2PLASSsPD8kjr
+	fYDA4BIw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xInp8-00000007Zau-1EzM;
-	Mon, 19 Oct 2026 13:54:46 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1xInpU-00000007Zpi-3Um3;
+	Mon, 19 Oct 2026 13:55:10 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xInp7-00000007ZaG-0XGh;
-	Mon, 19 Oct 2026 13:54:45 +0000
+	id 1xInpP-00000007ZmQ-41e1;
+	Mon, 19 Oct 2026 13:55:04 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id 81C0B43986;
-	Mon, 19 Oct 2026 13:54:44 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id C7A381F000C5;
-	Mon, 19 Oct 2026 13:54:42 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id B15FC40BF3;
+	Mon, 19 Oct 2026 13:55:03 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2AD571F000C4;
+	Mon, 19 Oct 2026 13:55:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1792418084;
-	bh=+rMuxlEzta/xwXzh9GPR/CubwMf9s0sAxRcpqXWWx8M=;
-	h=From:To:Cc:Subject:Date;
-	b=WfEUdrgfwgbrC9/23O5Nbaey4oT1D1nSaA9w/0Z22Nh+9PYIX4hDk/z3+I4zagQoE
-	 73DJAxYXXPVxhygfubRJ5YpPDtvlGyQSE1xHylG6agT3TTT7Hkppl+IWlEdmCPqS32
-	 aysGmuhkqryms/zDxuJf6PVZXZ+StAmU9+WDJ2DKgEdUyjvad4xO0j3hwphw4ZaHc8
-	 Z1ep0klBKA3rgVA+n6nT903PGhtLOyi0Qz82IjcW4uh9sCK7O0CURZT8g/7naOoubN
-	 AEruD50qqmeRMfd82wxkdxqdN47ivlkPRw0dtg+CaQpF6zVkXkUrys4lJQd12ENlTy
-	 wfXr0PeRqFAGA==
+	s=k20260515; t=1792418103;
+	bh=7MLSX91YXWGMiDuQOVHG7eM6KF/4ZfqZKFra9uborK0=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References;
+	b=FmYu8/tdyWkdcrQpj/khJ7b5PDJxrClr1nJ8vxdwP5lv6vqqflev+AgE3GHsHSVUX
+	 3UudM1472T2OlmQ64pgVUhgY5f2T8WfFiaQSsKJramM/06aOvlUZ2iPgaeCEq1v3a8
+	 axdqzqf9tF2T+ILUCfHUEmS3l0UPQS3TAULUIFf/yPXVJaW/h2X5f+I6Z+Pc47lDZK
+	 Jq7I0aBFkeUTlSVI6wPE+fU81laS2iqNpUfzsSQWZkULd+drIqC0fHC50iw58b1LXj
+	 42U0JxBQxWGAgrGIbBpC0Z5fdx5ZsdBngWd77SaHPvIL/VTKZDH4a5O8jnb89JnLP6
+	 ity1oV8sMmTrg==
 From: Sasha Levin <sashal@kernel.org>
 To: patches@lists.linux.dev,
 	stable@vger.kernel.org
-Cc: Daniel Golle <daniel@makrotopia.org>,
-	Jakub Kicinski <kuba@kernel.org>,
+Cc: Pengpeng Hou <pengpeng@iscas.ac.cn>,
+	Brian Masney <bmasney@redhat.com>,
 	Sasha Levin <sashal@kernel.org>,
-	chester.a.unal@arinc9.com,
-	andrew@lunn.ch,
-	olteanv@gmail.com,
-	davem@davemloft.net,
-	edumazet@kernel.org,
-	pabeni@redhat.com,
+	y.oudjana@protonmail.com,
+	sboyd@kernel.org,
+	bmasney+clk@redhat.com,
+	jbrunet+clk@baylibre.com,
 	matthias.bgg@gmail.com,
 	angelogioacchino.delregno@collabora.com,
-	netdev@vger.kernel.org,
+	linux-clk@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: [PATCH AUTOSEL 6.18-6.12] net: dsa: mt7530: check CORE_PLL_GROUP4 access in mt7531_setup()
-Date: Mon, 19 Oct 2026 09:44:52 -0400
-Message-ID: <20261019135441.1420968-1-sashal@kernel.org>
+	linux-arm-kernel@lists.infradead.org
+Subject: [PATCH AUTOSEL 6.18] clk: mediatek: mt6735-vencsys: add missing MODULE_DEVICE_TABLE()
+Date: Mon, 19 Oct 2026 09:45:05 -0400
+Message-ID: <20261019135441.1420968-14-sashal@kernel.org>
 X-Mailer: git-send-email 2.53.0
+In-Reply-To: <20261019135441.1420968-1-sashal@kernel.org>
+References: <20261019135441.1420968-1-sashal@kernel.org>
 MIME-Version: 1.0
 X-stable: review
 X-Patchwork-Hint: Ignore
@@ -83,408 +83,351 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Daniel Golle <daniel@makrotopia.org>
+From: Pengpeng Hou <pengpeng@iscas.ac.cn>
 
-[ Upstream commit 1ae63b018d3d70e96d420b59a1334860cf232bc6 ]
+[ Upstream commit 36cf8d279ff90835f4b002dec28eedb059554842 ]
 
-mt7531_setup() reads CORE_PLL_GROUP4 through the MT7531 indirect c45
-PHY access, modifies it and writes it back to enable the PHY core
-PLL, but checks neither the read nor the write. Now that the indirect
-access functions propagate command-write failures, a failed read
-returns a negative errno that would be bit-modified and written back
-into the PLL register, and a failed write-back would go unnoticed.
-Check both and bail out. The adjacent EEE advertisement writes push a
-constant value and cannot corrupt state, so they are left as is.
+The driver has an OF match table wired to .of_match_table, but does
+not export the table with MODULE_DEVICE_TABLE().
 
-Signed-off-by: Daniel Golle <daniel@makrotopia.org>
-Link: https://patch.msgid.link/a7dfe3b66ea6ac1ae7915034de0527060e6ddcd4.1785811140.git.daniel@makrotopia.org
-Signed-off-by: Jakub Kicinski <kuba@kernel.org>
+Add the missing MODULE_DEVICE_TABLE(of, ...) entry so module alias
+information is generated for OF based module autoloading.
+
+This is a source-level fix.  It does not claim dynamic hardware
+reproduction; the evidence is the driver-owned match table, its use by
+the platform driver, and the missing module alias publication.
+
+Signed-off-by: Pengpeng Hou <pengpeng@iscas.ac.cn>
+Reviewed-by: Brian Masney <bmasney@redhat.com>
+Signed-off-by: Brian Masney <bmasney@redhat.com>
 Signed-off-by: Sasha Levin <sashal@kernel.org>
 ---
 
 LLM Generated explanations, may be completely bogus:
 
-This is a real, small error-path fix for this 6.12 tree: an unchecked
-CORE_PLL_GROUP4 RMW can write a negative errno into the MT7531 PHY PLL.
-The buggy code is present here, and a related callee change already
-landed.
+Connection lost, reconnecting to https://agentn.us.api5.cursor.sh
+(attempt 1)...
+Retry attempt 1...
+This tree is **Linux 7.3.0-rc4** (`v7.3-rc4-27-gf0100363d8c37`). The
+driver exists here; the change is a one-line `MODULE_DEVICE_TABLE(of,
+...)` so the vencsys clock module can autoload from DT.
 
 ## Phase 1: Commit message forensics
 
-**Step 1.1 — Subject**
-Record: `[net: dsa: mt7530]` `[check]` Check CORE_PLL_GROUP4 read/write
-results in `mt7531_setup()`. “check” is used as a missing-return-value
-fix, not a feature add.
+**Step 1.1: Subject line**
+- Record: `[clk/mediatek] [add] add missing MODULE_DEVICE_TABLE() for
+  mt6735-vencsys`
 
-**Step 1.2 — Tags (from the candidate message)**
-Record:
-- `Signed-off-by: Daniel Golle <daniel@makrotopia.org>` (author)
-- `Link: https://patch.msgid.link/a7dfe3b66ea6ac1ae7915034de0527060e6ddc
-  d4.1785811140.git.daniel@makrotopia.org`
-- `Signed-off-by: Jakub Kicinski <kuba@kernel.org>` (netdev maintainer
-  applied it)
+**Step 1.2: Tags**
+- Record:
+  - **Fixes:** none (expected for this review)
+  - **Reported-by:** none
+  - **Tested-by:** none
+  - **Reviewed-by:** Brian Masney `<bmasney@redhat.com>` (COMMON CLK
+    FRAMEWORK maintainer)
+  - **Acked-by:** none
+  - **Link:** none in the commit; mailing list found via `b4 dig`
+  - **Cc: stable:** none (not a negative signal)
+  - **Signed-off-by:** Pengpeng Hou `<pengpeng@iscas.ac.cn>` (author);
+    Brian Masney `<bmasney@redhat.com>` (clk maintainer who applied it)
+  - Notable: maintainer review + maintainer SOB; no user/syzbot report
 
-Ignored per instructions: any pipeline “already selected” markers.
+**Step 1.3: Body**
+- Record:
+  - **Bug:** OF match table is wired to `.of_match_table` but not
+    exported with `MODULE_DEVICE_TABLE()`, so `file2alias` does not emit
+    `of:` aliases.
+  - **Symptom:** when `CONFIG_COMMON_CLK_MT6735_VENCSYS=m`,
+    udev/modprobe cannot autoload `clk-mt6735-vencsys` from
+    `mediatek,mt6735-vencsys`.
+  - **Version info:** none in the message. Git: driver added in
+    **v6.13-rc1** (`0bd9b1211f741`); this fix first appears in
+    **v7.3-rc1**.
+  - **Root cause:** omitted alias publication, not a runtime logic
+    error.
 
-Original mailing-list version (openwall/lkml, same msgid) also had:
-- `Fixes: c288575f7810 ("net: dsa: mt7530: Add the support of MT7531
-  switch")`
-- No `Cc: stable`, no `Reported-by`, no `Reviewed-by` on this patch
-  itself
-
-Cover letter for the series: Andrew Lunn’s `Reviewed-by` was collected
-on patches 1–3 and 6, not on this one (it was new in v2).
-
-**Step 1.3 — Body**
-Record:
-- Bug: `mt7531_setup()` RMW of `CORE_PLL_GROUP4` via
-  `mt7531_ind_c45_phy_read/write` does not check either result.
-- Failure mode: a failed read returns a negative errno that is bit-
-  modified and written into the PHY core PLL; a failed write is ignored.
-- Author’s framing: this became acute once the indirect helpers
-  propagate command-write failures.
-- Adjacent EEE advertisement writes are constant `0`, so they cannot
-  corrupt RMW state and are left alone.
-
-**Step 1.4 — Hidden bug fix?**
-Record: Not hidden. It is an explicit missing-error-check fix. The “now
-that …” wording is series context (patch 3/6), not a cleanup-only
-change.
+**Step 1.4: Hidden bug fix?**
+- Record: Not hidden. It is a real functional gap (module autoload), not
+  a crash/UAF. The “source-level fix / no hardware reproduction” wording
+  matches the original lore submission, not pipeline decoration.
 
 ## Phase 2: Diff analysis
 
-**Step 2.1 — Inventory**
-Record:
-- File: `drivers/net/dsa/mt7530.c` only
-- Function: `mt7531_setup()`
-- ~10 insertions, ~4 deletions (candidate hunk); net +6 lines of checks
-- Scope: single-file surgical caller fix
+**Step 2.1: Inventory**
+- Record:
+  - `drivers/clk/mediatek/clk-mt6735-vencsys.c`: **+1 / -0**
+  - Function/data: `of_match_mt6735_vencsys[]` (file scope)
+  - Scope: single-file, one-line surgical change
 
-**Step 2.2 — Flow**
-Record: Before, `u32 val = mt7531_ind_c45_phy_read(...)` then OR/AND
-bits and write back, ignoring errors. After, store the `int` in `ret`,
-return if `ret < 0`, copy into `val` only on success, check the write,
-return on write failure. Probe/`sw_setup` fails instead of programming
-PLL from an errno.
+**Step 2.2: Code flow**
+- Record: Before, the table is only consumed by
+  `platform_driver.driver.of_match_table` (bind if the module is already
+  loaded or built-in). After, `MODULE_DEVICE_TABLE(of,
+  of_match_mt6735_vencsys)` also creates a `__mod_device_table` alias so
+  `scripts/mod/file2alias.c` `do_of_entry()` emits
+  `of:N*T*Cmediatek,mt6735-vencsys`. Build-time metadata only; no probe-
+  path change.
 
-**Step 2.3 — Bug mechanism**
-Record: **Logic / error-path correctness**, specifically “treat errno as
-register data.”
-- `mt7531_ind_c45_phy_read()` returns `int` (PHY data or negative
-  errno).
-- Assigned to `u32 val`, then modified (`MT7531_RG_SYSPLL_DMY2 |
-  MT7531_PHY_PLL_BYPASS_MODE`, clear `MT7531_PHY_PLL_OFF`).
-- Written through `mt7531_ind_c45_phy_write(..., u16 data)`, so a value
-  such as `(u32)-ETIMEDOUT` (`0xFFFFFF92`) truncates to
-  `0xFF92`/`0xFFD2` and is programmed into the PHY PLL.
-- Write errors (already returned on poll timeout in this tree) are
-  ignored.
+**Step 2.3: Bug mechanism**
+- Record: **Hardware matching / module autoload** (same class as missing
+  device IDs). Match table exists but is not published for modules.
 
-**Step 2.4 — Fix quality**
-Record: Obviously correct. `ret` is already declared in
-`mt7531_setup()`. No API/locking/data-structure change. Regression risk
-is that a failing MDIO access now fails switch setup instead of
-continuing with a bogus PLL; that is the intended behavior. Risk of the
-fix itself is very low.
+**Step 2.4: Fix quality**
+- Record: Obviously correct; matches sibling MT6735 files that shipped
+  with `MODULE_DEVICE_TABLE` (`apmixedsys`, `infracfg`, `pericfg`,
+  `topckgen`). No runtime lock/API/data-structure change. Regression
+  risk is essentially none. `imgsys` and `mfgcfg` still lack the macro;
+  this patch does not depend on those.
 
 ## Phase 3: Git history
 
-**Step 3.1 — Blame**
-Record:
-- Unchecked RMW originates in `c288575f7810` (Landen Chao, 2020-09-14):
-  “Add the support of MT7531 switch”.
-- Helper names/`MT753X_CTRL_PHY_ADDR` from later Arınç ÜNAL refactors
-  (`868ff5f4944aa9`, `06dfcd4098cfdc`, 2024).
-- Poll path in this tree already uses `regmap_read_poll_timeout()` from
-  `96e0f5184af69` (Daniel Golle, applied 2026-08-09): “error out on
-  failed reads in MT7531 PHY polling”.
+**Step 3.1: Blame**
+- Record: Match table and driver introduced by `0bd9b1211f741` (“clk:
+  mediatek: Add drivers for MT6735 syscon clock and reset controllers”,
+  Yassine Oudjana, 2024-11-06, applied 2024-11-14). First in
+  **v6.13-rc1**. `MODULE_DEVICE_TABLE` line is this commit
+  `36cf8d279ff90`.
 
-**Step 3.2 — Fixes: target**
-Record: `c288575f7810` **is** an ancestor of this tree. The original
-MT7531 support (and this RMW) has been here since well before 6.12.
+**Step 3.2: Fixes: tag**
+- Record: No `Fixes:` tag. The omission dates from the introducing
+  commit `0bd9b1211f741`, which **is** an ancestor of this tree.
 
-**Step 3.3 — Related file history**
-Record:
-- `96e0f5184af69` — already in this tree. Makes poll/read failures
-  return negative errno instead of continuing with garbage “success”
-  data.
-- `93d46870c5440` — already in this tree. Same class: do not treat
-  `bus->read()` errno as register data.
-- This candidate is the missing **caller** check for the one in-driver
-  RMW of `mt7531_ind_c45_phy_read()`.
+**Step 3.3: File history**
+- Record: Only two commits on this file: introducer + this fix. No later
+  conflicting refactor. Sibling same-day commit `096ab64a0e694` does the
+  same for `clk-mt6735-vdecsys.c`. Standalone; not patch 2/N.
 
-**Step 3.4 — Author**
-Record: Daniel Golle is a regular MT7530 contributor (PLL/PHY access,
-MT7988, MT7531BE). Same author as the already-backported poll-error fix.
+**Step 3.4: Author**
+- Record: Pengpeng Hou is not the MT6735 clk maintainer (that is Yassine
+  Oudjana). Same author also added `MODULE_DEVICE_TABLE` in `clk-
+  mt6735-vdecsys.c` and two i.MX clk drivers. Applied by clk co-
+  maintainer Brian Masney.
 
-**Step 3.5 — Prerequisites**
-Record: This is patch **4/6** of “fix remaining swallowed MDIO access
-errors”. Patch 3 (`error out on failed PHY_IAC command writes`, upstream
-`1c95dcb7e923`) is **not** in this tree. It is not required to compile
-or to apply this hunk: the helpers already return `int`, and
-`mt7531_ind_c45_phy_read/write` already return negative errno on
-`regmap_read_poll_timeout()` failure. Patch 3 only adds extra error
-returns from discarded `mt7530_mii_write()` of `MT7531_PHY_IAC`.
-Standalone apply: **yes**.
+**Step 3.5: Dependencies**
+- Record: None. Uses existing `MODULE_DEVICE_TABLE` / `of_device_id`.
+  Applies on top of the original driver with no prerequisites.
 
-## Phase 4: Mailing list / external
+## Phase 4: Mailing list and external research
 
-**Step 4.1 — Original discussion**
-Record:
-- `b4 dig` on the msgid failed (`Cannot find a commit matching …`).
-- lore.kernel.org fetches returned 403.
-- Fallback: openwall + lkml + cover letter.
-- Lore/openwall URL: msgid `a7dfe3b66ea6ac1ae7915034de0527060e6ddcd4.178
-  5811140.git.daniel@makrotopia.org` (Tue 4 Aug 2026).
-- Cover: https://lists.openwall.net/netdev/2026/08/04/90
-- This patch was **new in v2**, flagged by Sashiko AI review of v1 as
-  another swallowed MDIO error.
-- Cover letter: “the call site exposed once patch 3 makes the MT7531
-  indirect c45 access propagate command-write failures.”
-- Applied by Jakub Kicinski; patchwork bot lists upstream as
-  `1ae63b018d3d`.
-- No NAK found in the material that could be retrieved.
+**Step 4.1: Original discussion**
+- Record: `b4 dig -c 36cf8d279ff90` →
+  https://patch.msgid.link/20260704124808.19916-1-pengpeng@iscas.ac.cn
+- `b4 dig -a`: **v1 only** (2026-07-04). Applied version is that v1.
+- Thread (mbox): author patch + Brian Masney `Reviewed-by`. No NAK, no
+  stable nomination, no risk discussion.
 
-**Step 4.2 — Recipients**
-Record: To/Cc included Andrew Lunn, Vladimir Oltean, netdev maintainers,
-MediaTek/DSA people, `netdev@`, `linux-mediatek@`. Appropriate audience.
-Andrew reviewed 1–3 and 6; this patch 4 had no `Reviewed-by` in the
-submission.
+**Step 4.2: Recipients (`b4 dig -w`)**
+- Record: Yassine Oudjana (MT6735 clk maintainer), Stephen Boyd, Brian
+  Masney, Michael Turquette, Matthias Brugger, AngeloGioacchino Del
+  Regno; `linux-clk`, `linux-mediatek`, `linux-arm-kernel`, `linux-
+  kernel`. Right maintainers and lists.
 
-**Step 4.3 — Bug report**
-Record: No syzbot/bugzilla. Found by AI review of the MDIO-error series,
-not a user crash report.
+**Step 4.3: Bug report**
+- Record: No Reported-by, no syzbot, no bugzilla. Author states there
+  was no hardware reproduction.
 
-**Step 4.4 — Series**
-Record: v2 6-patch series. Patches 1, 2, 3, 5, 6 are **not** in this
-tree. This patch is self-contained at the `mt7531_setup()` call site.
+**Step 4.4: Series**
+- Record: Independent single patches (vencsys + vdecsys), not a numbered
+  series. This commit does not need the vdecsys patch.
 
-**Step 4.5 — Stable list**
-Record: No stable-specific discussion found (lore.kernel.org/stable
-search did not return this subject). UNVERIFIED: whether anyone later
-nominated it on stable@.
+**Step 4.5: Stable list**
+- Record: **UNVERIFIED.** `curl` to lore.kernel.org/stable returned HTTP
+  403. No in-tree evidence this was rejected for stable.
 
 ## Phase 5: Code semantic analysis
 
-**Step 5.1 — Functions**
-Record: `mt7531_setup()` only. Helpers `mt7531_ind_c45_phy_read/write`
-are not modified.
+**Step 5.1: Functions**
+- Record: No function body changed. Adds `MODULE_DEVICE_TABLE` next to
+  `of_match_mt6735_vencsys[]`. Driver still uses
+  `module_platform_driver` → `mtk_clk_simple_probe` /
+  `mtk_clk_simple_remove`.
 
-**Step 5.2 — Callers**
-Record:
-- `mt7531_setup` is `.sw_setup` for `ID_MT7531` only (`mt753x_table`).
-- `mt753x_setup()` calls `priv->info->sw_setup(ds)` and aborts on error.
-- `mt753x_setup` is `.setup` in `mt7530_switch_ops` → DSA switch setup /
-  probe.
-- MT7988/EN7581 use `mt7988_setup()` → `mt7531_setup_common()`; they do
-  **not** run this PLL RMW.
+**Step 5.2: Callers**
+- Record: Platform core binds via OF compatible. Probe is boot/device-
+  instantiation, not a syscall hot path. Impact is whether the **module
+  is loaded at all**.
 
-**Step 5.3 — Callees**
-Record: `mt7531_ind_c45_phy_read/write` lock the MDIO mutex, write
-`MT7531_PHY_IAC`, poll `MT7531_PHY_ACS_ST`. On poll/read failure they
-`goto out` and return negative `ret`. `mt7530_mii_write()` already
-returns `regmap_write` errors, but those returns are still discarded in
-this tree (patch 3).
+**Step 5.3: Callees**
+- Record: Unchanged. `mtk_clk_simple_probe()` in `clk-mtk.c` registers
+  the vencsys gates from `vencsys_clks`.
 
-**Step 5.4 — Reachability**
-Record: Probe-time only, when an MT7531 DSA switch is instantiated
-(`CONFIG_NET_DSA_MT7530`). Not a syscall hot path. Userspace cannot
-trigger it except by causing device probe. Trigger is MDIO/regmap
-failure or IAC poll timeout during setup.
+**Step 5.4: Reachability**
+- Record: Reachable when DT has `mediatek,mt6735-vencsys` and the driver
+  is a module. **No in-tree `.dts`/`.dtsi` uses that compatible** (only
+  `Documentation/devicetree/bindings/clock/mediatek,syscon.yaml`). Users
+  need out-of-tree DT (typical for older MT6735 phones). Built-in (`=y`)
+  is unaffected.
 
-**Step 5.5 — Similar patterns**
-Record: The only in-driver `mt7531_ind_c45_phy_read()` call site is this
-PLL RMW. Other `mt7531_ind_c45_phy_write()` uses in the same function
-are constant EEE-adv `0`. Phylib also uses these as `.phy_read_c45` /
-`.phy_write_c45`.
+**Step 5.5: Similar patterns**
+- Record: Same omission still present in `clk-mt6735-imgsys.c` and `clk-
+  mt6735-mfgcfg.c`. Four other MT6735 clk files had
+  `MODULE_DEVICE_TABLE` from day one (`43c04ed791892` for apmixedsys).
+  Pattern is systematic but this patch is complete for vencsys.
 
-## Phase 6: Local tree (6.12.111 / `pending-6.12`)
+## Phase 6: Local tree cross-reference
 
-**Step 6.1 — Buggy code present?**
-Record: **Yes.** `drivers/net/dsa/mt7530.c` `mt7531_setup()` still does:
+**Step 6.1: Buggy code in this tree?**
+- Record: Yes. File exists; current tree already has the fix at line 40.
+  Bug was the missing alias from v6.13 until v7.3-rc1.
+  `CONFIG_COMMON_CLK_MT6735_VENCSYS` is **tristate**.
 
-```2665:2672:drivers/net/dsa/mt7530.c
-        val = mt7531_ind_c45_phy_read(priv,
-MT753X_CTRL_PHY_ADDR(priv->mdiodev->addr),
-                                      MDIO_MMD_VEND2, CORE_PLL_GROUP4);
-        val |= MT7531_RG_SYSPLL_DMY2 | MT7531_PHY_PLL_BYPASS_MODE;
-        val &= ~MT7531_PHY_PLL_OFF;
-        mt7531_ind_c45_phy_write(priv,
-MT753X_CTRL_PHY_ADDR(priv->mdiodev->addr),
-                                 MDIO_MMD_VEND2, CORE_PLL_GROUP4, val);
-```
+**Step 6.2: Backport difficulty**
+- Record: **Clean apply.** File is essentially unchanged since
+  introduction. One inserted line after the match table.
 
-Bug introduced with MT7531 support (`c288575f7810`, v5.10-era). Present
-in 6.12.
-
-**Step 6.2 — Backport difficulty**
-Record: **Clean apply** aside from line-number offset (2665 here vs 2764
-in the candidate diff). Surrounding comments and EEE loop match. `ret`
-is already in scope.
-
-**Step 6.3 — Related fixes already here**
-Record: `96e0f5184af69` already backported. That change makes failed IAC
-polls/reads return errno into this unchecked caller, so this tree
-already has the callee half of the fix without the caller half. No
-equivalent caller check exists yet.
+**Step 6.3: Related fixes already here**
+- Record: This exact commit is already an ancestor of HEAD (`git merge-
+  base --is-ancestor 36cf8d279ff90 HEAD` → yes). That is mainline
+  history, not a reason to reject on merit. No alternate fix. Sibling
+  vdecsys fix is also present; imgsys/mfgcfg still missing.
 
 ## Phase 7: Subsystem context
 
-**Step 7.1**
-Record: `drivers/net/dsa/mt7530.c` — MediaTek MT7530/MT7531 DSA.
-**IMPORTANT** for MediaTek routers/SBCs (MT7621/MT7622/MT7531), not core
-mm/vfs. `CONFIG_NET_DSA_MT7530`.
+**Step 7.1: Subsystem / criticality**
+- Record: `drivers/clk/mediatek/` — SoC clock driver. **PERIPHERAL**
+  (MT6735 video-encoder clocks only). Not mm/fs/net core.
 
-**Step 7.2**
-Record: File is actively maintained; recent 6.12 backports already
-include two MDIO-error fixes from the same author.
+**Step 7.2: Activity**
+- Record: Mediatek clk is actively maintained; this file is not. Two
+  commits total. Mature omission, not churn.
 
 ## Phase 8: Impact and risk
 
-**Step 8.1 — Who is affected**
-Record: Driver-specific: MT7531 switch users (common on MediaTek ARM
-routers). Not MT7988/EN7581 setup (`mt7988_setup`).
+**Step 8.1: Who is affected**
+- Record: Only MT6735 systems with `CONFIG_COMMON_CLK_MT6735_VENCSYS=m`
+  and a DT node `mediatek,mt6735-vencsys`. Driver- and config-specific;
+  small population (no in-tree board DTS).
 
-**Step 8.2 — Trigger**
-Record: MDIO/regmap failure or PHY_IAC poll timeout during `dsa_switch`
-setup. Uncommon on healthy hardware. Not an unprivileged syscall
-trigger. After `96e0f5184af69`, a failed bus read during poll is a
-**negative errno**, not silent garbage success — so this caller bug is
-easier to hit than before that backport.
+**Step 8.2: Trigger**
+- Record: Modular boot + OF device present. Not a race. Unprivileged
+  users do not trigger it; udev autoload fails. Built-in and manual
+  `modprobe` work.
 
-**Step 8.3 — Failure mode**
-Record: Hardware misconfiguration: PHY core PLL programmed from a
-truncated errno instead of a real `CORE_PLL_GROUP4` value, then setup
-continues. Switch can probe “successfully” with PHYs/PLL in a bad state.
-Not a KASAN crash. Severity: **HIGH** for that hardware (silent wrong
-PLL), not a generic kernel panic. Failing probe is the correct outcome.
+**Step 8.3: Failure mode**
+- Record: Module does not autoload → vencsys clocks (smi_larb3, venc,
+  jpgenc, jpgdec) never register → video encode/JPEG on that SoC can
+  fail. **Severity: MEDIUM** (functional miss, not
+  oops/corruption/deadlock). Fits stable-rules “oh, that’s not good” and
+  the device-ID-style enablement exception.
 
-**Step 8.4 — Risk/benefit**
-Record:
-- Benefit: medium-high for MT7531 — closes a hole opened/worsened by the
-  already-applied poll-error backport; avoids writing errno into PLL.
-- Risk: very low (6 lines of `if (ret < 0) return ret`).
-- Ratio: favorable.
+**Step 8.4: Risk-benefit**
+- Record: **Benefit:** correct autoload for a supported tristate driver;
+  one line. **Risk:** negligible (modinfo/depmod metadata only). Ratio
+  favors applying it on trees that have this driver.
 
-## Phase 9: Synthesis
+## Phase 9: Final synthesis
 
-**Evidence FOR**
-- Real bug: negative errno used as PLL register data, then written back.
-- Buggy RMW is in this 6.12 tree; `Fixes:` target `c288575f7810` is
-  here.
-- Companion to `96e0f5184af69`, already in this tree: that commit made
-  failed reads return errno; this caller still treats the result as PHY
-  data.
-- Small, obviously correct, no new API, applies cleanly.
-- Same class as other swallowed-MDIO fixes already accepted here
-  (`93d46870c5440`, `96e0f5184af69`).
-- Author intended it as a bug fix (`Fixes: c288575f7810` on the list).
-- Applied to mainline by Jakub Kicinski (`1ae63b018d3d`).
+**Step 9.1: Evidence**
 
-**Evidence AGAINST**
-- Error path only; no syzbot/user crash report.
-- Driver-specific, probe-time, not a UAF/panic/CVE.
-- Series patch 4/6; Andrew Lunn did not `Reviewed-by` this specific
-  patch.
-- Patch 3 (PHY_IAC command-write checks) is not in this tree; the
-  author’s “now that writes propagate” story is only fully true after
-  patch 3.
+FOR:
+- Real autoload bug: match table used, aliases not published
+- One line, obviously correct, reviewed and applied by clk maintainer
+  Brian Masney
+- Driver is tristate; modular build is an intended config
+- Same class as device-ID additions (publish existing OF IDs)
+- Sibling MT6735 files already had the macro; this was an omission from
+  `0bd9b1211f741`
+- Zero runtime regression risk; applies cleanly
+- Driver and bug exist in this 7.3 tree (introduced v6.13)
 
-**Unresolved / UNVERIFIED**
-- Full lore thread (403); no individual review replies beyond cover
-  letter and patchwork apply notice.
-- Whether patch 3 will be evaluated separately for this tree (not
-  required for this hunk).
+AGAINST:
+- Not a crash, UAF, deadlock, or security issue
+- No user report and no hardware reproduction
+- No in-tree DT consumer for this compatible
+- Niche SoC; often clocks are built-in
 
-**Stable rules**
-1. Obviously correct and tested? **PASS** — trivial return-value checks;
-   merged to net by Kicinski.
-2. Real bug affecting users? **PASS** — MT7531 setup can program PHY PLL
-   from errno on MDIO/poll failure.
-3. Important? **PASS** — hardware PLL corruption and silent “success”
-   after a failed access; worsened by an already-backported callee fix.
-   Not a generic oops, but it is serious for this switch.
-4. Small and contained? **PASS** — one function, ~6 net lines.
-5. No new features/APIs? **PASS**.
-6. Can apply to this tree? **PASS**.
+UNRESOLVED:
+- Whether this was discussed on the stable list (lore HTTP 403)
 
-**Exception category:** none (not a device ID/quirk/DT/build/docs
-exception). It qualifies on ordinary bug-fix rules.
+**Step 9.2: Stable rules checklist**
+1. Obviously correct and tested? **PASS** — one-line, standard macro,
+   maintainer Reviewed-by/SOB. No runtime test; correctness is
+   mechanical.
+2. Real bug that affects users? **PASS** — modular OF autoload is
+   broken. User set is small but real if they use `=m`.
+3. Important issue? **PASS** (low end of “oh, that’s not good” /
+   hardware-enablement), not CRITICAL.
+4. Small and contained? **PASS** — +1 line, one file.
+5. No new features or APIs? **PASS** — publishes existing match table.
+6. Can apply to this tree? **PASS** — file and table exist; patch is a
+   clean one-liner.
 
-The missing patch 3 does not make this a NO: poll timeout and failed
-`regmap_read_poll_timeout()` already return errno here, and those values
-are what get written into `CORE_PLL_GROUP4` today.
+**Step 9.3: Exception category**
+- Record: Closest match is **device ID / hardware matching** (OF module
+  aliases), not a new driver.
 
-### What it solves for this tree
-On MT7531 probe, a failed indirect C45 read of `CORE_PLL_GROUP4` is
-currently folded into the PLL enable RMW and written back. This tree
-already backported the helper change that returns those failures as
-errno. Without this caller check, 6.12 can program the PHY core PLL from
-that errno and keep going. The fix fails setup instead. It is small,
-matches local code, and does not need the rest of the series.
+**Step 9.4: Decision**
 
-Verification:
-- [Phase 1] Parsed subject/tags/body; list version has `Fixes:
-  c288575f7810`; candidate message has Link + Golle/Kicinski SOBs
-- [Phase 2] Diff: `mt7531_setup()` only; check read and write; `ret`
-  already declared
-- [Phase 3] `git blame` on 2660–2686: RMW from `c288575f7810`; helpers
-  renamed later; poll uses `96e0f5184af69`
-- [Phase 3] `git merge-base --is-ancestor c288575f7810 HEAD` → yes
-- [Phase 3] `git merge-base --is-ancestor 96e0f5184af69 HEAD` → yes
-  (callee error propagation already here)
-- [Phase 3] `git log --grep="PHY_IAC command writes"` → patch 3 **not**
-  in this tree
-- [Phase 3] `git show 96e0f5184af69` confirms
-  `regmap_read_poll_timeout()` returns negative on failed reads
-- [Phase 4] `b4 dig` on msgid failed; lore 403; used openwall/lkml/cover
-  letter; upstream SHA `1ae63b018d3d`; v2 new patch; Andrew reviewed 1–3
-  and 6 only
-- [Phase 4] UNVERIFIED: full review-reply text; stable@ thread
-- [Phase 5] grep: only in-driver `mt7531_ind_c45_phy_read` call is this
-  RMW; `.sw_setup = mt7531_setup` for `ID_MT7531`; `mt753x_setup()`
-  returns that error
-- [Phase 6] `git describe HEAD` → `p-6.12-4-gbf6fcdf761abd`; `make
-  kernelversion` → 6.12.111; buggy code at mt7530.c:2665–2672
-- [Phase 6] Pre-image matches the candidate hunk; clean apply expected
-- [Phase 8] Failure mode: PHY PLL programmed from truncated errno on
-  probe MDIO failure; severity HIGH for MT7531, trigger uncommon but
-  real after `96e0f5184af69`
+Backport this. It is a one-line, obviously correct fix for failed OF
+module autoload on an existing tristate driver. That is the same kind of
+enablement stable already takes for new device IDs, with no runtime
+behavior change if the module is built-in or loaded by other means. This
+7.3 tree has the driver (since v6.13); there are no missing
+prerequisites. Limited hardware and no crash report lower urgency, not
+correctness.
+
+### What it solves for stable users
+If `clk-mt6735-vencsys` is a module, userspace cannot match
+`mediatek,mt6735-vencsys` and load it. Video-encoder clocks then never
+appear. `MODULE_DEVICE_TABLE(of, ...)` generates the aliases
+`file2alias` already knows how to emit.
+
+### Risk vs benefit
+Benefit is correct autoload on MT6735 modular configs. Risk is
+negligible: no probe, locking, or ABI change.
+
+## Verification
+- [Phase 1] Parsed tags: Reviewed-by + SOB Brian Masney; no
+  Fixes/Reported-by/Cc:stable
+- [Phase 1] `git show -s 36cf8d279ff90`: body matches the candidate;
+  “source-level fix” is in the real commit and lore v1
+- [Phase 2] Diff: +1 `MODULE_DEVICE_TABLE(of, of_match_mt6735_vencsys)`
+  in `clk-mt6735-vencsys.c`
+- [Phase 2] `include/linux/module.h` and `scripts/mod/file2alias.c`
+  `do_of_entry()`: confirmed alias generation from that macro
+- [Phase 3] `git blame`: table from `0bd9b1211f741` (v6.13-rc1); macro
+  from `36cf8d279ff90`
+- [Phase 3] `git describe --contains 0bd9b1211f741`: v6.13-rc1; fix
+  contained in v7.3-rc1; `git merge-base --is-ancestor` vs v7.2: not in
+  v7.2
+- [Phase 3] File log: only introducer + this commit; sibling
+  `096ab64a0e694` for vdecsys
+- [Phase 4] `b4 dig -c/-a/-w/-m`: v1 lore thread; Masney Reviewed-by;
+  correct clk/mediatek CCs; no NAK
+- [Phase 4] WebFetch lore/msgid.link: HTTP 403; used mbox instead
+- [Phase 5] Kconfig: `COMMON_CLK_MT6735_VENCSYS` tristate; Makefile
+  `obj-$(CONFIG_COMMON_CLK_MT6735_VENCSYS)`
+- [Phase 5] `mtk_clk_simple_probe` in `clk-mtk.c` used unchanged
+- [Phase 5] Grep: no in-tree dts/dtsi `mediatek,mt6735-vencsys`; binding
+  in `mediatek,syscon.yaml`
+- [Phase 5] imgsys/mfgcfg still lack `MODULE_DEVICE_TABLE`
+- [Phase 6] `make kernelversion` / `git describe HEAD`: 7.3.0-rc4 /
+  v7.3-rc4-27-gf0100363d8c37
+- [Phase 6] File currently contains the macro; `git merge-base --is-
+  ancestor 36cf8d279ff90 HEAD` = yes
+- [Phase 7] MAINTAINERS: MT6735 clk → Yassine Oudjana; COMMON CLK →
+  Stephen Boyd, Brian Masney, Jerome Brunet
+- [Phase 8] Failure mode: missing module autoload, not oops; severity
+  MEDIUM
+- UNVERIFIED: stable@ lore discussion (HTTP 403)
 
 **YES**
 
- drivers/net/dsa/mt7530.c | 14 ++++++++++----
- 1 file changed, 10 insertions(+), 4 deletions(-)
+ drivers/clk/mediatek/clk-mt6735-vencsys.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
-index d2dcc2f1522f4..4f391ef797ea3 100644
---- a/drivers/net/dsa/mt7530.c
-+++ b/drivers/net/dsa/mt7530.c
-@@ -2758,14 +2758,20 @@ mt7531_setup(struct dsa_switch *ds)
- 	 * phy_[read,write]_mmd_indirect is called, we provide our own
- 	 * mt7531_ind_mmd_phy_[read,write] to complete this function.
- 	 */
--	val = mt7531_ind_c45_phy_read(priv,
-+	ret = mt7531_ind_c45_phy_read(priv,
- 				      MT753X_CTRL_PHY_ADDR(priv->mdiodev->addr),
- 				      MDIO_MMD_VEND2, CORE_PLL_GROUP4);
-+	if (ret < 0)
-+		return ret;
-+
-+	val = ret;
- 	val |= MT7531_RG_SYSPLL_DMY2 | MT7531_PHY_PLL_BYPASS_MODE;
- 	val &= ~MT7531_PHY_PLL_OFF;
--	mt7531_ind_c45_phy_write(priv,
--				 MT753X_CTRL_PHY_ADDR(priv->mdiodev->addr),
--				 MDIO_MMD_VEND2, CORE_PLL_GROUP4, val);
-+	ret = mt7531_ind_c45_phy_write(priv,
-+				       MT753X_CTRL_PHY_ADDR(priv->mdiodev->addr),
-+				       MDIO_MMD_VEND2, CORE_PLL_GROUP4, val);
-+	if (ret < 0)
-+		return ret;
+diff --git a/drivers/clk/mediatek/clk-mt6735-vencsys.c b/drivers/clk/mediatek/clk-mt6735-vencsys.c
+index 8dec7f98492ac..64ba9da9fd427 100644
+--- a/drivers/clk/mediatek/clk-mt6735-vencsys.c
++++ b/drivers/clk/mediatek/clk-mt6735-vencsys.c
+@@ -37,6 +37,7 @@ static const struct of_device_id of_match_mt6735_vencsys[] = {
+ 	{ .compatible = "mediatek,mt6735-vencsys", .data = &vencsys_clks },
+ 	{ /* sentinel */ }
+ };
++MODULE_DEVICE_TABLE(of, of_match_mt6735_vencsys);
  
- 	/* Disable EEE advertisement on the switch PHYs. */
- 	for (i = MT753X_CTRL_PHY_ADDR(priv->mdiodev->addr);
+ static struct platform_driver clk_mt6735_vencsys = {
+ 	.probe = mtk_clk_simple_probe,
 -- 
 2.53.0
 
