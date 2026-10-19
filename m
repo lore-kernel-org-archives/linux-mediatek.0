@@ -4,109 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C9A96CCF2DA
-	for <linux-mediatek@archiver.kernel.org>; Mon, 19 Oct 2026 08:31:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A7036CCF2DA
+	for <linux-mediatek@archiver.kernel.org>; Mon, 19 Oct 2026 08:53:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:References:
-	In-Reply-To:Cc:To:From:Subject:Content-Transfer-Encoding:Content-Type:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=l7oxDA8ZM54hjX0LF1jWr12XxVGQQXbDbmOXq61AZsk=; b=QrkMPqz/Xh11Pq1t+JIdtekBOC
-	GiRxPu4ZeQRwa1iy6KVJ/W/HPA9otV+70eytkX+YHW/25lXgveO8Pdg1kCR9jzemDyj7lPjSt+gEK
-	l3Jho++wVlFA8JZ736kjk7nIt/AO07A7ICetx9d0z/jCsyhK/NKTU24bk4e+ORhNC7gdchxyxCJd5
-	RNpe1493RIrdGpr2E2+Mo7ukx29bZP5SEYZmpOOP0gN5OvGvRnOFNh6DAFiiExpDH7FnzkZt+nfG2
-	5ui0R13uApvf3g3Q4jIAV/nbegfV3jtODvX5hJcVfSg6CeoazYTC1Ey5mFDKNL/4IkwGGwEQQ8zDf
-	0XUt74pg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=wVbdW4U5nHvILqR2Sarhn6+ygp6qQGiqBjV2V8YyhjM=; b=CZfpHFMs+LZiEnt5ZDmnb4xg8l
+	vTpKeeR1M6t9Y7v2CYbS9Lh6Iy/uGM5JfFqjuaz+NUImXHmnBkGmSCbRHbdswhvt6ZzlwcYWTSdn9
+	6mUTzU/5MQptF2br70M8pAALFQaM0hYy7NlS2cqs1xnc2Z4kCrVIYG+C5sW+NEgCugx4rZkcGHZfY
+	dn/gFzK2vmaVddD58YyoAN19v4JuzfV0I+y/6bZqbdw/jEmaWrqfdGVaFG8nplKfD+hvkTZ1g2tNw
+	nP+fPOigwfLrptM5IdcsrmGzgRb75wVP1X2D0td64tVlOBT8bazER39MfhiYoZCKYqDquO2BCP/Hz
+	ZvMbFQ1w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xIimR-00000006sPu-2jLm;
-	Mon, 19 Oct 2026 08:31:39 +0000
-Received: from mail-wm1-x32d.google.com ([2a00:1450:4864:20::32d])
+	id 1xIj7n-00000006ume-38Ds;
+	Mon, 19 Oct 2026 08:53:43 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xIimP-00000006sP2-1TjN
-	for linux-mediatek@lists.infradead.org;
-	Mon, 19 Oct 2026 08:31:38 +0000
-Received: by mail-wm1-x32d.google.com with SMTP id 5b1f17b1804b1-49d05d51553so12106815e9.2
-        for <linux-mediatek@lists.infradead.org>; Mon, 19 Oct 2026 01:31:36 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre.com; s=google; t=1792398695; x=1793003495; darn=lists.infradead.org;
-        h=message-id:date:references:in-reply-to:cc:to:from:subject
-         :content-transfer-encoding:content-type:mime-version:from:to:cc
-         :subject:date:message-id:reply-to:content-type;
-        bh=l7oxDA8ZM54hjX0LF1jWr12XxVGQQXbDbmOXq61AZsk=;
-        b=hkM+WOKDTCdgf+HAeuTHlRkpu+UxaNWdAyBRp+IgL+GB7ol3vISyydM2G/3lbtjW+a
-         zIQyg2+6T9lvTZnJCY8h0m4157uejwt0pb9YAO6qnbW7W0AJggyUjmqf+mr5Y367sprz
-         GSrdB6CvZmV2rYE+tYXF+Xj6nY8YBj8doxcIqXZSwC1YPrK9PijfZ6E71WSYjnet4tak
-         MzXIGM3IsqrXc1zRmVj/6wfkATrqdBgwcF/7dk3ms+9vMpYiPnfrMORAvWEGPX71ZI0O
-         MoNeGSVpX9SiDuyBEXW0/GyQSISNlnxNT2OACaXX9qzZAkZ8kauu9nEgFvJHgJwmAO4a
-         dBag==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1792398695; x=1793003495;
-        h=message-id:date:references:in-reply-to:cc:to:from:subject
-         :content-transfer-encoding:content-type:mime-version:x-gm-gg
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
-         :content-type;
-        bh=l7oxDA8ZM54hjX0LF1jWr12XxVGQQXbDbmOXq61AZsk=;
-        b=pC4t0KQUw6h5bOsiStRrFyEn94+GhJ2ZiiRKYR3Ocrf+5I0WA3OCC/MhiNImx1P/8i
-         g8yO3v5gRbW/OpLyIseKRjlVwIcAk5pZbgbwWfn9y7LhCTWJoVr2mLlRl0tzYtKDyCut
-         OSQH0uKWE+2yr2gUqtp3chDzRJJ7//MOGkkUlzU0uJTWCVaerNYJ6g9sdxHXmUWmauuo
-         TiSYvL2QTZUcMfw58anVNcwl6HcEgD1KpoYx0IzqvxcIc7OgXYf6Z2vE/Q3Iu5BQoRK9
-         mPqBt4YSG5ToAKtj6y4kZip2QzpFj4dZlnjx9iVTI4cFom/hVx43bkooF43z1Uus9iOx
-         zaPQ==
-X-Gm-Message-State: AFq9FYKrJXqqSTT+SsxXbvn1lnf8Y652aQGopPPvosYa+tZ1wfcK9Bjm
-	heWRev0AYEeehA14YRHI9VPZFCox17bBfBD6XIPCX1TQZPiXqc5RaydMM0ktHJbf5uQ=
-X-Gm-Gg: AYBFou1lk2qFO+zit6Oa5eMOdSAN0m8AVkvbZcI1UkEYrYbfnBHjw3GSzTDmDwOxe8i
-	DPfBlolr3m3Zd/0eIIQ/ja6kOhOWnXrwAOdpqYDcA54UajHS0CcQwwtqMVZty01ARHaD0jlMAr3
-	tut4Iz34K7EhLf4+Lr4h+Q8zIyh3sPMO365biSM9pepyEmoGo5g9zmgOnoxxu7Kq8OSFhakqn0p
-	rm81uXLeN/IXnLG0R55J58V9V2ZB4vwnSfP1DPPcJ3oU4g5qDABM9QurbfPYBlponpoMlr6Ao3a
-	1xk8NWeHOGkArVAdzobcXS/e3xVo4OXXFd/bvHNyloNWTGmHB5Cym0N134NSG4R1SoLJ6aZGneR
-	LCCBsSdSXnLDqh9nuK8S/jlFJe3EDvdapO1ULWKomM8+FW2Jqr4eTeBHzMYSPIpVJrO+gl/whJe
-	ujdAaxQ6yAkxKzWeeJXwFoxLJNixss+sU+CV4XTAErb5mlnx8N8iAIz19E8BE5DNivq3lCnLNfz
-	uRgYYb8/iR5+m/0H4G171Jv3+9AGDGG
-X-Received: by 2002:a05:600c:37cf:b0:4a1:df14:ad07 with SMTP id 5b1f17b1804b1-4a1df14b4d3mr115190655e9.18.1792398694579;
-        Mon, 19 Oct 2026 01:31:34 -0700 (PDT)
-Received: from [192.168.7.218] (82-230-44-19.subs.proxad.net. [82.230.44.19])
-        by smtp.googlemail.com with ESMTPSA id 5b1f17b1804b1-4a1c10fe9d3sm316410855e9.13.2026.10.19.01.31.33
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 19 Oct 2026 01:31:34 -0700 (PDT)
+	id 1xIj7j-00000006ult-3BDG;
+	Mon, 19 Oct 2026 08:53:42 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by tor.source.kernel.org (Postfix) with ESMTP id CCAC06020A;
+	Mon, 19 Oct 2026 08:53:38 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id EBD951F000C4;
+	Mon, 19 Oct 2026 08:53:37 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1792400018;
+	bh=wVbdW4U5nHvILqR2Sarhn6+ygp6qQGiqBjV2V8YyhjM=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To;
+	b=FS66MYHDGt9FkU4MDgxc6VyocLm3TND5YW6PM98TIB4hzWG1Z43tt7Wbc9QkTbT1f
+	 poWIuR7Rc8+l3kpDP4+/MkDFLjQyYrSOL5Yu1DbWumqO+qLOVAf6SrLR51W35J9/ph
+	 kx1u5nBcM6IlY+RoWwy6Lg3hV9suKE7xljLmC+Krw0geCojFdpNvm64i8al+cQrxy5
+	 60eUlfiZtBR1NoGTw5hcbR7QDt/jdqHy3Dj8+5L7BwBdYU8TDT2yTKeTY9gmwHqw8n
+	 dzlTbS0QEnhhSB4MGhUYnY2fuRjnEAAqjRSd4vcOYR+OqvAKUhE3iWLBufp9AVQsxe
+	 Q2Lqbf0Wc7EeQ==
+Date: Mon, 19 Oct 2026 10:53:34 +0200
+From: Krzysztof Kozlowski <krzk@kernel.org>
+To: James Calligeros <jcalligeros99@gmail.com>
+Cc: David Rhodes <david.rhodes@cirrus.com>, 
+	Richard Fitzgerald <rf@opensource.cirrus.com>, Martin =?utf-8?Q?Povi=C5=A1er?= <povik+lin@cutebit.org>, 
+	Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, Rob Herring <robh@kernel.org>, 
+	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
+	Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Shenghao Ding <shenghao-ding@ti.com>, Kevin Lu <kevin-lu@ti.com>, 
+	Baojun Xu <baojun.xu@ti.com>, Sen Wang <sen@ti.com>, Sven Peter <sven@kernel.org>, 
+	Janne Grunau <j@jannau.net>, Neal Gompa <neal@gompa.dev>, asahi@lists.linux.dev, 
+	linux-sound@vger.kernel.org, patches@opensource.cirrus.com, devicetree@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH v3 01/21] ASoC: dt-bindings: cs42l84: Document
+ sound-name-prefix property
+Message-ID: <20261019-zealous-origami-angelfish-207da7@quoll>
+References: <20261018-macaudio-v3-0-abdff7741dea@gmail.com>
+ <20261018-macaudio-v3-1-abdff7741dea@gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Subject: Re: [PATCH PARTIAL-RESEND v12 0/5] Add support MT6316/6363/MT6373
- PMICs regulators and MFD
-From: Alexandre Mergnat <amergnat@baylibre.com>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: linux-mediatek@lists.infradead.org, lee@kernel.org, robh@kernel.org, 
- krzk+dt@kernel.org, conor+dt@kernel.org, matthias.bgg@gmail.com, 
- lgirdwood@gmail.com, broonie@kernel.org, devicetree@vger.kernel.org, 
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- kernel@collabora.com, wenst@chromium.org
-In-Reply-To: <20260511101355.122478-1-angelogioacchino.delregno@collabora.com>
-References: <20260511101355.122478-1-angelogioacchino.delregno@collabora.com>
-Date: Mon, 19 Oct 2026 10:31:10 +0200
-Message-Id: <179239867012.642420.15110854236483587234.b4-review@b4>
-X-Mailer: b4 0.16.0
-X-Developer-Signature: v=1; a=openpgp-sha256; l=409; i=amergnat@baylibre.com;
- h=from:subject:message-id; bh=PBtDG7IaGArA5oidyV57104ug2/3g9vZYpC1ajDvsoU=;
- b=owEBbQKS/ZANAwAKAStGSZ1+MdRFAcsmYgBq1dVWFu5n7LST9XjNvuRmDW3m8PImRaa/WwJvF
- aGMwo1WH0WJAjMEAAEKAB0WIQQjG17X8+qqcA5g/osrRkmdfjHURQUCatXVVgAKCRArRkmdfjHU
- RYoYD/9v5gmSdVR1pNcJamGYwCTaV5rT+OL0L7Hy0d0zenqBBKLBoB5ULjy1XzRycl4z3uzaIyh
- HQUxpufXinchYoRParULVTDzEU4bDge3j+RivbJcNFkvXnPCQgkpifnmkNcDXTB9oUboxK1rI7r
- +tAfXnNtM2XECrhINjZemeKSzTK4o8hFFQJpNqZ4vaEGd+p+yQ4OydfroxrsQ4ussOJJPt11pGq
- XYPpjNtd0I0txUKPm4uxzqeKXpecqVNan77gYpf2Zy4bqjyPIJ4J8QL6kPbR5WqdRvNYsOHGDqJ
- dl7xZBqbcEbBuPZcPfrVa/SSbEyzcEhseR1YtAQVTAC6839HIwcR1jpJFaDI9G9Ir3/FpYJQLmE
- aeNNSiYLiXr7xplXwVUPfNl1T2lJVnqdJG3AIkiGgPrgG/ejs1a4kvLbqWOHQj/tmmEwDk4AIfb
- xtYYBpnPtu5B8G7FThL3jY6+qKUYBxCqmMmqQlOJspghF2IILNdA+7mnxsIhLRfzU2Rl6nFTl8z
- Geg76d4ZObp7A2TIzxpiApY+ZYVr1BBhu+N8aEMC2oJlVTeBUzWsCz0zgnTHPk8MSX7lzXsUqAV
- Us+8pkPLCQTVvlh75nO0i+L8I/yvjmltf99bYdYnK2F2Zi6T6c96vwUg8+NuXxvyDa5WIYTa2nc
- 0xA7MHt6FvBAylQ==
-X-Developer-Key: i=amergnat@baylibre.com; a=openpgp;
- fpr=231B5ED7F3EAAA700E60FE8B2B46499D7E31D445
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261019_013137_411077_551D3D78 
-X-CRM114-Status: UNSURE (   8.21  )
-X-CRM114-Notice: Please train this message.
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+In-Reply-To: <20261018-macaudio-v3-1-abdff7741dea@gmail.com>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -121,20 +80,41 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Hi Angelo,
+On Sun, Oct 18, 2026 at 03:53:55PM +1000, James Calligeros wrote:
+> Some consumers may wish to prepend the codec's name with a known value
+> to identify a specific codec among many. Enable this with the common
+> sound-name-prefix property.
+>=20
+> Signed-off-by: James Calligeros <jcalligeros99@gmail.com>
+> ---
+>  .../bindings/sound/cirrus,cs42l84.yaml   | 5 +++++
+>  1 file changed, 5 insertions(+)
+>=20
+> diff --git a/Documentation/devicetree/bindings/sound/cirrus,cs42l84.yaml =
+b/Documentation/devicetree/bindings/sound/cirrus,cs42l84.yaml
+> index 94062c1d9d45..ca137aa57461 100644
+> --- a/Documentation/devicetree/bindings/sound/cirrus,cs42l84.yaml
+> +++ b/Documentation/devicetree/bindings/sound/cirrus,cs42l84.yaml
+> @@ -9,6 +9,9 @@ title: Cirrus Logic CS42L84 audio CODEC
+>  maintainers:
+>    - Martin Povi=C5=A1er <povik+lin@cutebit.org>
+> =20
+> +allOf:
+> +  - $ref: dai-common.yaml#
+> +
+>  description: |
+>    The CS42L84 is a headphone jack codec made by Cirrus Logic and embedded
+>    in personal computers sold by Apple. It was first seen in 2021 Macbook
+> @@ -32,6 +35,8 @@ properties:
+>    '#sound-dai-cells':
+>      const: 0
+> =20
+> +  sound-name-prefix: true
 
-I'm working on mainline support for the MT6363 MFD PMIC.
+Drop. Repeating myself from v2: just use the same code as others, e.g.
+cirrus,cs42l51 or other codecs. You only need ref and unevaluatedProps.
 
-Are you planning to send a new revision addressing the review feedback
-on v12? If you don't have time to pick it up again, I'd be happy to
-help address the remaining comments and prepare a new revision,
-if that works for you.
+Best regards,
+Krzysztof
 
-Thanks for your work on this!
-
-Cheers,
-Alexandre
-
--- 
-Alexandre Mergnat <amergnat@baylibre.com>
 
