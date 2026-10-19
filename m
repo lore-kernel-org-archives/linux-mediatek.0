@@ -4,7 +4,7 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8C5E1CCF2DA
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C1E43CCF2DB
 	for <linux-mediatek@archiver.kernel.org>; Mon, 19 Oct 2026 09:33:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
@@ -12,29 +12,29 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=//Nz9GXytPYhtZz3+9TgaX3FgtxnYUSmb1UPwYaHVGc=; b=vBKtpIsVzn43uyLB5eCocA76FG
-	ne1bDNulx8+zIiiDgWNGk06XKOSoh8DTuG7kZ68Z6VUv8RN1iteoj0ab8DxbAMF3skUAMTPsKmgQJ
-	f43W2KYSMU1jZixr1ctnSOf2YvPro1tPuKEADEURN8PReLFCzBR5m535oyDdqLbcxUwpkvpOA/Nez
-	lQIfuEBrKNHyjAkWCewnF9rEzyLvzZUQ6I5CrXbXfReoe1n+cPD2nmbC5mcDdjTKSwT+icypupOL1
-	wj3yUljbO6ZTzrOSozguRa1+BZObmXrjGL1pKoxeLU5udIkmUDeYc2KGcr4yL6KEt/rp+NiunEy10
-	/HnuwO1Q==;
+	bh=HGoDgbos5+KdTiduVlTaFvmQwj1yhcEDAezKlFJuiUM=; b=SuLu3iCCZ340m6vVN0CwZO7MBO
+	B++LXwVuAqONHdhTesxhDH/flZBdgo0xanQ8+tsVEEeYgzpfQm6Maz3sdo+KZlDdOqPG94xTRLKpS
+	nCp/8pbm3Szk4g3hf+pl+uUzxh0wY98HxVMOF/NusEqKLH90sBy9+1We1iOR+mJC7FgbuNKKXWqbm
+	RM2ifDHBLDAGGq7gDW718GIO0AIQ8AUKnyZOU55WthtQcFbxxJEBLwdXoY77XcD9wlK1BxsyYVTWO
+	zeyXAYK9SBvBjUyO3iFhTAgv/eKd8LLGMbcCNp1SqcnZTo9eU0VO3Mnt0W8m3OdgJwqE3svOHrBR5
+	Tu+yyJVQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xIjkN-0000000712A-3mNZ;
-	Mon, 19 Oct 2026 09:33:35 +0000
+	id 1xIjkO-00000007130-0W5i;
+	Mon, 19 Oct 2026 09:33:36 +0000
 Received: from m16.mail.163.com ([220.197.31.5])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xIjkC-000000070xZ-09ml;
+	id 1xIjkD-000000070xn-2rty;
 	Mon, 19 Oct 2026 09:33:27 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
-	s=s110527; h=From:To:Subject:Date:Message-Id:MIME-Version; bh=//
-	Nz9GXytPYhtZz3+9TgaX3FgtxnYUSmb1UPwYaHVGc=; b=TQRl2KGuZr1+dpMKVe
-	GY6tGtlGGS2DXNI89cY5d3ZAHQ/+FW28BS/PJjYHxi8GIy6LswE4jk04sbTI34Jm
-	lwXHwef0lS/xj2MTqwLD+cyFCT4Itvra1G9MOXK7cMuOVYxlD9Ofqcg3u5kPe3Mv
-	e0pCFiw6yRS5PSIHzARXR9/gE=
+	s=s110527; h=From:To:Subject:Date:Message-Id:MIME-Version; bh=HG
+	oDgbos5+KdTiduVlTaFvmQwj1yhcEDAezKlFJuiUM=; b=VIDLGR7h9Gf7GRW2CC
+	13+mY+KznJtEuEr7MvA8Mkpgu8xFI4xjkCHnrYENkN6YlH1DZysP6tKagS5kmvoV
+	6ByaWkpDqQ6emK8UYsWMWbD055vyGhdhHY9y8+6NWOx0/xwKtGZQmKyTk5bpiVFM
+	Ci2j2qOzskLkx0UTEGwWcl7Yg=
 Received: from pc.localdomain (unknown [])
-	by gzga-smtp-mtada-g0-4 (Coremail) with SMTP id _____wD3H73U49VqbIAVBQ--.320S3;
-	Mon, 19 Oct 2026 17:33:13 +0800 (CST)
+	by gzga-smtp-mtada-g0-4 (Coremail) with SMTP id _____wD3H73U49VqbIAVBQ--.320S4;
+	Mon, 19 Oct 2026 17:33:15 +0800 (CST)
 From: Jiale Yao <yaojiale02@163.com>
 To: Felix Fietkau <nbd@nbd.name>,
 	Lorenzo Bianconi <lorenzo@kernel.org>,
@@ -43,32 +43,30 @@ To: Felix Fietkau <nbd@nbd.name>,
 	Sean Wang <sean.wang@mediatek.com>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Money Wang <Money.Wang@mediatek.com>,
 	MeiChia Chiu <meichia.chiu@mediatek.com>,
-	Bo Jiao <Bo.Jiao@mediatek.com>,
-	StanleyYP Wang <StanleyYP.Wang@mediatek.com>,
 	linux-wireless@vger.kernel.org,
 	linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
 Cc: Jiale Yao <jiale.yao@example.com>
-Subject: [PATCH 1/2] wifi: mt76: mt7996: clamp VHT/HE beamforming NSS
-Date: Mon, 19 Oct 2026 17:33:06 +0800
-Message-Id: <20261019093307.1869749-2-yaojiale02@163.com>
+Subject: [PATCH 2/2] wifi: mt76: mt7996: clamp EHT beamforming NSS
+Date: Mon, 19 Oct 2026 17:33:07 +0800
+Message-Id: <20261019093307.1869749-3-yaojiale02@163.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20261019093307.1869749-1-yaojiale02@163.com>
 References: <20261019093307.1869749-1-yaojiale02@163.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-CM-TRANSID: _____wD3H73U49VqbIAVBQ--.320S3
-X-Coremail-Antispam: 1Uf129KBjvdXoWrKFyxXry8Gr17GFWxuw45ZFb_yoWDGrcE9F
-	n5ZF1IqF48Kr1jyr47ta9xCrySkay8Xr1kG3y3t3saga17J39rCFy0vF1DWrsrCF17ZF17
-	Gr9xXFyjk3yagjkaLaAFLSUrUUUUjb8apTn2vfkv8UJUUUU8Yxn0WfASr-VFAUDa7-sFnT
-	9fnUUvcSsGvfC2KfnxnUUI43ZEXa7IUjMKZJUUUUU==
-X-CM-SenderInfo: x1dryxhdohiji6rwjhhfrp/xtbC8Bk-eWrV49nb2QAA3o
+X-CM-TRANSID: _____wD3H73U49VqbIAVBQ--.320S4
+X-Coremail-Antispam: 1Uf129KBjvJXoWxGrW7ZFy3Xry8ArykCw4rZrb_yoW5WF1kp3
+	yfZa42vr4xA3y8W3WfArs7tr98Ga13G34akw4kWrs3CryfKFyxJF4xuF9xJFyrAF4UAry3
+	Zw1DArn8Wa4Y9FDanT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
+	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x07Utb1nUUUUU=
+X-CM-SenderInfo: x1dryxhdohiji6rwjhhfrp/xtbC7xs-eWrV49tfsQAA3b
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261019_023324_796588_E9D47108 
-X-CRM114-Status: GOOD (  10.26  )
+X-CRM114-CacheID: sfid-20261019_023326_081299_8461FEFA 
+X-CRM114-Status: UNSURE (   8.92  )
+X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,31 +83,60 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Jiale Yao <jiale.yao@example.com>
 
-A peer can advertise a VHT or HE MCS map with no supported
-spatial streams.  In that case mt7996_mcu_get_sta_nss() decrements
-zero and produces 255 for the beamforming configuration.
+An EHT peer can advertise zero receive spatial streams for an MCS
+range.  The beamforming setup decrements that value, causing an
+underflow and sending an invalid column count to firmware.
 
-Return zero when the MCS map has no supported streams.
+Clamp the converted NSS value to zero for 80, 160, and 320 MHz
+beamforming configurations.
 
-Fixes: 98686cd21624 ("wifi: mt76: mt7996: add driver for MediaTek Wi-Fi 7 (802.11be) devices")
+Fixes: ba01944adee9 ("wifi: mt76: mt7996: add EHT beamforming support")
 Signed-off-by: Jiale Yao <jiale.yao@example.com>
 ---
- drivers/net/wireless/mediatek/mt76/mt7996/mcu.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ drivers/net/wireless/mediatek/mt76/mt7996/mcu.c | 9 ++++++---
+ 1 file changed, 6 insertions(+), 3 deletions(-)
 
 diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c
-index cd7587ce5b8a..e6243dd33c31 100644
+index e6243dd33c31..29b67248fad7 100644
 --- a/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c
 +++ b/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c
-@@ -120,7 +120,7 @@ mt7996_mcu_get_sta_nss(u16 mcs_map)
- 			break;
- 	}
+@@ -1969,7 +1969,7 @@ mt7996_mcu_sta_bfer_eht(struct ieee80211_link_sta *link_sta,
+ 	struct ieee80211_eht_cap_elem_fixed *pe = &pc->eht_cap_elem;
+ 	struct ieee80211_eht_mcs_nss_supp *eht_nss = &pc->eht_mcs_nss_supp;
+ 	u8 nss_mcs = u8_get_bits(eht_nss->bw._80.rx_tx_mcs9_max_nss,
+-				 IEEE80211_EHT_MCS_NSS_RX) - 1;
++				 IEEE80211_EHT_MCS_NSS_RX);
+ 	const struct ieee80211_eht_cap_elem_fixed *ve;
+ 	const struct ieee80211_sta_eht_cap *vc;
+ 	u8 snd_dim, sts;
+@@ -1988,6 +1988,7 @@ mt7996_mcu_sta_bfer_eht(struct ieee80211_link_sta *link_sta,
+ 	snd_dim = EHT_PHY(CAP2_SOUNDING_DIM_80MHZ_MASK, ve->phy_cap_info[2]);
+ 	sts = EHT_PHY(CAP0_BEAMFORMEE_SS_80MHZ_MASK, pe->phy_cap_info[0]) +
+ 	      (EHT_PHY(CAP1_BEAMFORMEE_SS_80MHZ_MASK, pe->phy_cap_info[1]) << 1);
++	nss_mcs = nss_mcs ? nss_mcs - 1 : 0;
+ 	bf->nrow = min_t(u8, snd_dim, sts);
+ 	bf->ncol = min_t(u8, nss_mcs, bf->nrow);
+ 	bf->ibf_ncol = explicit ? min_t(u8, MT7996_IBF_MAX_NC, bf->ncol) :
+@@ -2001,7 +2002,8 @@ mt7996_mcu_sta_bfer_eht(struct ieee80211_link_sta *link_sta,
+ 		snd_dim = EHT_PHY(CAP2_SOUNDING_DIM_160MHZ_MASK, ve->phy_cap_info[2]);
+ 		sts = EHT_PHY(CAP1_BEAMFORMEE_SS_160MHZ_MASK, pe->phy_cap_info[1]);
+ 		nss_mcs = u8_get_bits(eht_nss->bw._160.rx_tx_mcs9_max_nss,
+-				      IEEE80211_EHT_MCS_NSS_RX) - 1;
++				      IEEE80211_EHT_MCS_NSS_RX);
++		nss_mcs = nss_mcs ? nss_mcs - 1 : 0;
  
--	return nss - 1;
-+	return nss ? nss - 1 : 0;
- }
+ 		bf->nrow_gt_bw80 = min_t(u8, snd_dim, sts);
+ 		bf->ncol_gt_bw80 = nss_mcs;
+@@ -2012,7 +2014,8 @@ mt7996_mcu_sta_bfer_eht(struct ieee80211_link_sta *link_sta,
+ 				   ve->phy_cap_info[3]) << 1);
+ 		sts = EHT_PHY(CAP1_BEAMFORMEE_SS_320MHZ_MASK, pe->phy_cap_info[1]);
+ 		nss_mcs = u8_get_bits(eht_nss->bw._320.rx_tx_mcs9_max_nss,
+-				      IEEE80211_EHT_MCS_NSS_RX) - 1;
++				      IEEE80211_EHT_MCS_NSS_RX);
++		nss_mcs = nss_mcs ? nss_mcs - 1 : 0;
  
- static void
+ 		bf->nrow_gt_bw80 = min_t(u8, snd_dim, sts) << 4;
+ 		bf->ncol_gt_bw80 = nss_mcs << 4;
 -- 
 2.34.1
 
