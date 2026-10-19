@@ -4,60 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 590CACCF2E6
-	for <linux-mediatek@archiver.kernel.org>; Mon, 19 Oct 2026 13:57:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BA6E0CCF2DE
+	for <linux-mediatek@archiver.kernel.org>; Mon, 19 Oct 2026 13:58:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:
 	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=wE1RMnUDMMnvpx7rc/PtXVu9rOvIEpslybb3iEFRjXM=; b=Pv+H+I5wMZf/dPvh4CB5h6ZhfJ
-	Gj3TmyLQp03hT8SwpfU+v+PUNhTTKUlPa6mbhXK3pHHG/L9faKdC+oEsG131ZjwFWQs1mJn0tGK6X
-	Wk2ndxgpnbo28R73pmdj1GDJ0ECl1MT4l4qhfLNQwuESpYXDRWm6c0JR+YEQsqqydOIBZgrhKiBCv
-	YlsdHMXhcQGlT+8JASRDlxSOktEHAvnVTK9mT8j8BvigTiDqsvCgLQG0xHzMNc5MQuri94s/eq90g
-	xiYUvcNto7lIB+k2xJ5s8XlQF6sg6ekubgl3t/tbZXOUTZOmuOEYnSd6ehCH3zGVF6diUR7LSJged
-	4ziDBzzw==;
+	bh=85qfeiOa1NVqqULnFXLwgWZiYeXT6dY9AfFlRUE5iw8=; b=Yyqg2WYv3cIogc1qOC+kSDhLNR
+	hc7hhqLmXcl4OQLxqVLPNoO8c6Eqv7FC+iTZuUsahaseuA8waf2QsnTyDopabLwrgW65qb6ka6HdT
+	bbUaLcPqvCtBoU2JkclJCsxHXpaCHwAWf4JZ2//FNGVV6rmne4aCEW6GH52aK1iJWHWwK0V8uTWKs
+	eR4j6VuS6uVGNThDHSLbPB1tMisiYOWTqSQLIqFvMXvRnP0iJT+7B4UgMP7rap4PmvmTyvSmIsXiF
+	fjkYeyuMyhxBuTjmzpmL7+UjNhtQZ833UxczPV7tLOGMnKV+wq76xEfItoeaG4aB2jXR6jn5Kauyv
+	q3hoQ6nA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xInro-00000007bBG-1JSO;
-	Mon, 19 Oct 2026 13:57:32 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1xInsb-00000007bdu-1r3Z;
+	Mon, 19 Oct 2026 13:58:21 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xInrm-00000007b9t-1pgp;
-	Mon, 19 Oct 2026 13:57:30 +0000
+	id 1xInsV-00000007bZq-1msE;
+	Mon, 19 Oct 2026 13:58:15 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id CBE496020A;
-	Mon, 19 Oct 2026 13:57:29 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 36D231F000C6;
-	Mon, 19 Oct 2026 13:57:28 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 2E8DF43B86;
+	Mon, 19 Oct 2026 13:58:15 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2978E1F000C8;
+	Mon, 19 Oct 2026 13:58:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1792418249;
-	bh=wE1RMnUDMMnvpx7rc/PtXVu9rOvIEpslybb3iEFRjXM=;
+	s=k20260515; t=1792418295;
+	bh=85qfeiOa1NVqqULnFXLwgWZiYeXT6dY9AfFlRUE5iw8=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References;
-	b=M725uWwsj1cRTG9dlepKZGKCbKlT+pQxQ1bmvu6kd6At8mUHoS0CKsYa7lCGndK6A
-	 LrCOeQMqmQWi7mP0nuQFIVsY7+AvrUGsrW3LYKPgGN0gStxehGWs43Oimh84msw6Pc
-	 Rjzp7XQl9sfvSZLBzwbq3x27tNbBDLLpklfcWEex/OW8KugWC+kwaCKeqjcDU2zuio
-	 ctNgle8cbWordTQ0VtpUPQUvw7m+gcYCufEnYZ3ft4c8exiGx/QUuetdXSAHThB9c2
-	 d5bAoPDI460llKrGeicKi2CX3e1b6QzSjLabypBqHBUsamh7iFSwUekkDZgWMYuoHO
-	 fA9n5qKdqM14A==
+	b=kULE8PDikPIzShVcGLPn5Nh0DfRKBhqDeqjIL3t5PS3CQjM+tDEMJwW7juq1o25qp
+	 yzBdPpFOTIeYSrnMogcj0aWBbUfPtJv72TJTWwDloMznErHMmmevGQHDOQPqx2hqU8
+	 uDboGUE2CCyDRYaJS5v2H9DvcRJZly11JP73kwfj894Ql75cl8DLaSm2wYcCwjzoUR
+	 ZL+k3fzsU39WNuXMRL7y73YSg/JiNyQOV156Kn8O32eI0oR6923MGbL+c+26dbeTKo
+	 NMGsnRfiSd3wbbZ8/hKmiuGzqvgvqy2dD5sV+sTGjGjQJbHyttMlTw+RSrSeIqNJla
+	 3Ah/u1FVyk6Uw==
 From: Sasha Levin <sashal@kernel.org>
 To: patches@lists.linux.dev,
 	stable@vger.kernel.org
-Cc: Zhi-Jun You <hujy652@gmail.com>,
-	Felix Fietkau <nbd@nbd.name>,
+Cc: Pengpeng Hou <pengpeng@iscas.ac.cn>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
 	Sasha Levin <sashal@kernel.org>,
-	lorenzo@kernel.org,
-	ryder.lee@mediatek.com,
 	matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com,
-	linux-wireless@vger.kernel.org,
 	linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
-Subject: [PATCH AUTOSEL 6.18] wifi: mt76: wed: fix kernel panic on non-DBDC MT7986
-Date: Mon, 19 Oct 2026 09:46:49 -0400
-Message-ID: <20261019135441.1420968-118-sashal@kernel.org>
+Subject: [PATCH AUTOSEL 6.18] soc: mediatek: add missing MODULE_DEVICE_TABLE()
+Date: Mon, 19 Oct 2026 09:47:17 -0400
+Message-ID: <20261019135441.1420968-146-sashal@kernel.org>
 X-Mailer: git-send-email 2.53.0
 In-Reply-To: <20261019135441.1420968-1-sashal@kernel.org>
 References: <20261019135441.1420968-1-sashal@kernel.org>
@@ -81,489 +77,400 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Zhi-Jun You <hujy652@gmail.com>
+From: Pengpeng Hou <pengpeng@iscas.ac.cn>
 
-[ Upstream commit 8a177dabeeead47dda4d4f91331282790eed0097 ]
+[ Upstream commit ec762057868d70d474a9816e9c293c2ef801c3c9 ]
 
-In mt76_wed_init_rx_buf, it's hardcoded to use MT_RXQ_MAIN.
-But for non-DBDC MT7986 MT_RXQ_BAND1 is used for RX data queue which
-leads to kernel panic when attaching WED.
+The driver has an OF match table wired to .of_match_table, but does
+not export the table with MODULE_DEVICE_TABLE().
 
-Use the correct RX queue by checking WED version and band_idx.
+Add the missing MODULE_DEVICE_TABLE(of, ...) entry so module alias
+information is generated for OF based module autoloading.
 
-v2 and band 1 -> MT_RXQ_BAND1
-Others -> MT_RXQ_MAIN
+This is a source-level fix.  It does not claim dynamic hardware
+reproduction; the evidence is the driver-owned match table, its use by
+the platform driver, and the missing module alias publication.
 
-Kernel panic:
-
-Unable to handle kernel access to user memory outside uaccess routines at virtual address 0000000000000000
-Mem abort info:
-  ESR = 0x0000000096000005
-  EC = 0x25: DABT (current EL), IL = 32 bits
-  SET = 0, FnV = 0
-  EA = 0, S1PTW = 0
-  FSC = 0x05: level 1 translation fault
-Data abort info:
-  ISV = 0, ISS = 0x00000005, ISS2 = 0x00000000
-  CM = 0, WnR = 0, TnD = 0, TagAccess = 0
-  GCS = 0, Overlay = 0, DirtyBit = 0, Xs = 0
-Internal error: Oops: 0000000096000005 [#1]  SMP
-CPU: 1 UID: 0 PID: 925 Comm: kmodloader Tainted: G           O        6.18.26 #0 NONE
-Tainted: [O]=OOT_MODULE
-Hardware name: Acer Connect Vero W6m (DT)
-pstate: 40400005 (nZcv daif +PAN -UAO -TCO -DIT -SSBS BTYPE=--)
-pc : page_pool_alloc_frag_netmem+0x1c/0x1bc
-lr : page_pool_alloc_frag+0xc/0x34
-sp : ffffffc081dab660
-x29: ffffffc081dab660 x28: ffffffc081dabc60 x27: ffffff80091af040
-x26: 0000008000000000 x25: ffffff80091a8898 x24: ffffff80091a5440
-x23: 0000000000001000 x22: 0000000140000000 x21: ffffff80091a2040
-x20: ffffff8003f1d780 x19: 0000000000000000 x18: 0000000000000020
-x17: ffffffbfbf0ac000 x16: ffffffc080ee0000 x15: ffffff80049d47ca
-x14: 000000000000037b x13: 000000000000037b x12: 0000000000000001
-x11: 0000000000000000 x10: 0000000000000000 x9 : 0000000000000000
-x8 : ffffff8003f1d7c0 x7 : 0000000000000000 x6 : ffffff8003f1d780
-x5 : 0000000000000680 x4 : 0000000000000000 x3 : 0000000000002824
-x2 : 0000000000000000 x1 : ffffffc081dab71c x0 : 0000000000000000
-Call trace:
- page_pool_alloc_frag_netmem+0x1c/0x1bc (P)
- page_pool_alloc_frag+0xc/0x34
- mt76_wed_init_rx_buf+0xf8/0x2ac [mt76]
- mtk_wed_start+0x79c/0x12ac
- mt7915_dma_start+0x274/0x63c [mt7915e]
- mt7915_dma_start+0x5b4/0x63c [mt7915e]
- mt7915_dma_init+0x49c/0x81c [mt7915e]
- mt7915_register_device+0x24c/0x530 [mt7915e]
- mt7915_mmio_probe+0x91c/0x1980 [mt7915e]
- platform_probe+0x58/0xa0
- really_probe+0xb8/0x2a8
- __driver_probe_device+0x74/0x118
- driver_probe_device+0x3c/0xe0
- __driver_attach+0x88/0x154
- bus_for_each_dev+0x60/0xb0
- driver_attach+0x20/0x28
- bus_add_driver+0xdc/0x200
- driver_register+0x64/0x118
- __platform_driver_register+0x20/0x30
- init_module+0x74/0x1000 [mt7915e]
- do_one_initcall+0x4c/0x1f8
- do_init_module+0x50/0x210
- load_module+0x15f8/0x1b10
- __do_sys_init_module+0x1a8/0x260
- __arm64_sys_init_module+0x18/0x20
- invoke_syscall.constprop.0+0x4c/0xd0
- do_el0_svc+0x3c/0xd0
- el0_svc+0x18/0x60
- el0t_64_sync_handler+0x98/0xdc
- el0t_64_sync+0x158/0x15c
-Code: aa0003f3 a9025bf5 a90363f7 d2820017 (b9400000)
-
-Signed-off-by: Zhi-Jun You <hujy652@gmail.com>
-Link: https://patch.msgid.link/20260715152113.553-1-hujy652@gmail.com
-Signed-off-by: Felix Fietkau <nbd@nbd.name>
+Signed-off-by: Pengpeng Hou <pengpeng@iscas.ac.cn>
+Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Signed-off-by: Sasha Levin <sashal@kernel.org>
 ---
 
 LLM Generated explanations, may be completely bogus:
 
-This tree is **6.6.157** (`pending-6.6`). The panic is real here, but
-the mainline patch has to be rewritten onto `mt7915/mmio.c` because
-`wed.c` does not exist yet.
+The local checkout is **7.3-rc4**. The DVFSRC driver is modular, had an
+OF match table, and did not publish aliases, so autoload is broken for
+`CONFIG_MTK_DVFSRC=m`. That is a real, one-line hardware-enablement bug.
 
 ===============================================================
 PHASE 1: COMMIT MESSAGE FORENSICS
 ===============================================================
 
-**Step 1.1: PARSE THE SUBJECT LINE**
-Record: `[wifi: mt76: wed:] [fix] [kernel panic on non-DBDC MT7986 when
-attaching WED because RX buf init used the wrong queue]`
+Step 1.1: PARSE THE SUBJECT LINE
+Record: **[soc: mediatek] [add] [missing MODULE_DEVICE_TABLE() for OF
+module autoload]**
+- Subsystem: `soc: mediatek`
+- Verb: **add** (missing export; the body is a fix, not a feature)
+- Intent: publish the existing OF match table as module aliases
 
-**Step 1.2: PARSE ALL COMMIT MESSAGE TAGS**
+Step 1.2: PARSE ALL COMMIT MESSAGE TAGS
+Verified from `git show ec762057868d70`:
+- Signed-off-by: Pengpeng Hou \<pengpeng@iscas.ac.cn\> (author)
+- Signed-off-by: AngeloGioacchino Del Regno
+  \<angelogioacchino.delregno@collabora.com\> (MediaTek SoC maintainer;
+  applied the patch)
+- No Fixes:, Reported-by, Tested-by, Reviewed-by, Acked-by, Link:, or
+  Cc: stable
+- Absence of Fixes:/Cc: stable is expected for this review and is not a
+  negative
+
+Step 1.3: ANALYZE THE COMMIT BODY TEXT
 Record:
-- `Signed-off-by: Zhi-Jun You <hujy652@gmail.com>` (author)
-- `Link:
-  https://patch.msgid.link/20260715152113.553-1-hujy652@gmail.com` (v2
-  1/2 of a 2-patch series)
-- `Signed-off-by: Felix Fietkau <nbd@nbd.name>` (mt76 maintainer)
-- No `Fixes:` tag (expected for this review)
-- No `Cc: stable@vger.kernel.org` (expected)
-- No `Reported-by:` / `Tested-by:` / `Reviewed-by:` / `Acked-by:`
-- Sibling patch 2/2 has the same msgid stem `20260715152113.553-2` and
-  **is already in this 6.6 tree** as `8eae5e5aa09da` (`wifi: mt76:
-  mt7915: fix net_fill_forward_path for non-DBDC mt7986`)
+- **Bug:** OF match table is wired to `.of_match_table` but not exported
+  via `MODULE_DEVICE_TABLE(of, ...)`
+- **Symptom:** `depmod`/`file2alias` never emit
+  `of:N*T*Cmediatek,mtXXXX-dvfsrc` aliases, so udev/kmod will not
+  autoload `mtk-dvfsrc.ko`
+- **Version info:** none in the message. Driver landed in v6.13; this
+  fix is in v7.3-rc4
+- **Root cause:** forgotten alias publication on a tristate
+  `module_platform_driver`
 
-**Step 1.3: ANALYZE THE COMMIT BODY TEXT**
-Record:
-- **Bug:** `mt76_wed_init_rx_buf` always uses `MT_RXQ_MAIN`. Non-DBDC
-  MT7986 uses `MT_RXQ_BAND1` for the RX data queue.
-- **Symptom:** NULL deref oops while attaching WED, in
-  `page_pool_alloc_frag_netmem`. Full oops from **Acer Connect Vero
-  W6m**, kernel 6.18.26, PID `kmodloader` during `mt7915e` probe.
-- **Root cause:** wrong RX queue → uninitialized `page_pool` (NULL) →
-  fault at `page_pool_alloc_frag*`.
-- **Fix:** `wed->version == 2 && dev->phy.band_idx` → `MT_RXQ_BAND1`,
-  else `MT_RXQ_MAIN`.
-- Crash taint includes `O` (OOT module), but the call trace is in-tree
-  `mt76` / `mt7915e` / `mtk_wed_start`.
+The extra “source-level fix / no dynamic hardware reproduction”
+paragraph is in the original lore submission as well (not a stable-
+pipeline marker).
 
-**Step 1.4: DETECT HIDDEN BUG FIXES**
-Record: Not hidden. Explicit panic fix with a stack trace. Not
-cleanup/refactor.
+Step 1.4: DETECT HIDDEN BUG FIXES
+Record: **Not hidden.** It is an explicit autoload/modalias bug fix
+disguised only by the verb “add”. Same class as a missing device-ID
+table export.
 
 ===============================================================
 PHASE 2: DIFF ANALYSIS - LINE BY LINE
 ===============================================================
 
-**Step 2.1: INVENTORY THE CHANGES**
+Step 2.1: INVENTORY THE CHANGES
 Record:
-- File: `drivers/net/wireless/mediatek/mt76/wed.c` (+6 / −1)
-- Function: `mt76_wed_init_rx_buf`
-- Scope: single-file, surgical (~5 lines of logic)
+- File: `drivers/soc/mediatek/mtk-dvfsrc.c` (**+1 / −0**)
+- One line after `mtk_dvfsrc_of_match[]`
+- Scope: **single-file surgical fix**
 
-**Step 2.2: UNDERSTAND THE CODE FLOW CHANGE**
+Step 2.2: UNDERSTAND THE CODE FLOW CHANGE
 Record:
-- **Before:** `q = &dev->q_rx[MT_RXQ_MAIN]` always, then
-  `mt76_get_page_pool_buf(q, ...)`.
-- **After:** pick `MT_RXQ_BAND1` for WED v2 + band 1; otherwise
-  `MT_RXQ_MAIN`.
-- Path: WED RX buffer init during `mtk_wed_start` from
-  `mt7915_dma_start` (probe / DMA start), not a rare error path.
+- **Before:** match table exists and is used for platform binding, but
+  no `__mod_of__mtk_dvfsrc_of_match` alias is generated
+- **After:** `MODULE_DEVICE_TABLE(of, mtk_dvfsrc_of_match)` creates that
+  alias for `scripts/mod/file2alias.c`
+- Affected path: **module build / autoload**, not probe logic. Built-in
+  (`=y`) is unchanged at runtime
 
-**Step 2.3: IDENTIFY THE BUG MECHANISM**
+Step 2.3: IDENTIFY THE BUG MECHANISM
 Record:
-- Category: **NULL pointer dereference** (memory safety) from **wrong-
-  queue logic**.
-- Mechanism: for non-DBDC MT7986, `mt7915_band_config` sets `band_idx =
-  1` and DMA only allocates `q_rx[MT_RXQ_BAND1]`. `MT_RXQ_MAIN` is left
-  with `page_pool == NULL`. `mt76_get_page_pool_buf` →
-  `page_pool_dev_alloc_frag(NULL)` → oops.
+- **Category:** hardware enablement / missing module alias (OF
+  equivalent of a missing device ID table)
+- **Mechanism:** without `MODULE_DEVICE_TABLE`, kmod cannot map DT
+  `compatible` to `mtk-dvfsrc.ko`. Probe never runs unless the module is
+  loaded by hand
+- Not UAF, leak, race, or locking
 
-**Step 2.4: ASSESS THE FIX QUALITY**
+Step 2.4: ASSESS THE FIX QUALITY
 Record:
-- Obviously correct given DMA queue allocation in `mt7915/dma.c`.
-- Minimal; no API/locking/refcount changes.
-- Regression risk low: DBDC and band-0 devices still use `MT_RXQ_MAIN`.
-- Backport caveat: in 6.6 the same logic lives in
-  `mt7915_mmio_wed_init_rx_buf` (`dev` is `struct mt7915_dev *`), so the
-  condition must use `dev->mt76.phy.band_idx` (or
-  `dev->phy.mt76->band_idx`), not `dev->phy.band_idx`.
+- **Obviously correct:** one standard macro next to the table, same
+  pattern as `mtk-mmsys.c`, `mtk-svs.c`, `mtk-mutex.c` in this tree
+- **Regression risk: negligible.** No runtime code, locking, or API
+  change; only `.modinfo` aliases when built as a module
 
 ===============================================================
 PHASE 3: GIT HISTORY INVESTIGATION
 ===============================================================
 
-**Step 3.1: BLAME THE CHANGED LINES**
+Step 3.1: BLAME THE CHANGED LINES
 Record:
-- Hardcoded `MT_RXQ_MAIN` in 6.6: `mt7915/mmio.c:635`, from
-  `2f5c3c77fc9b6` (`wifi: mt76: switch to page_pool allocator`,
-  2023-02-03). Present in this tree.
-- WED RX itself: `4f831d18d12da` (`wifi: mt76: mt7915: enable WED RX
-  support`, 2022-12-01). Present.
-- MT7986 one-A-die `band_idx = 1`: `mt7915_band_config` in `init.c`.
-  Present.
+- Match table introduced in **192514ae05687** (“Add MediaTek DVFS
+  Resource Collector (DVFSRC) driver”, AngeloGioacchino Del Regno, 2024)
+- Present in **v6.13-rc1**; **not** in v6.12 or v6.6
+- Original file already had `.of_match_table` and
+  `module_platform_driver` and **never** had `MODULE_DEVICE_TABLE` (`git
+  show 192514ae05687a:drivers/soc/mediatek/mtk-dvfsrc.c`)
+- The one-line fix is **ec762057868d70** (Pengpeng Hou, 2026-07-04;
+  applied 2026-07-30)
 
-**Step 3.2: FOLLOW THE FIXES: TAG**
-Record: No `Fixes:` tag. Bug is the hardcoded MAIN queue vs MT7986
-band-1 mapping, present since WED RX + page_pool.
+Step 3.2: FOLLOW THE FIXES: TAG
+Record: **No Fixes: tag.** Bug is the original omission in
+192514ae05687, which **is** an ancestor of this tree.
 
-**Step 3.3: CHECK FILE HISTORY FOR RELATED CHANGES**
-Record:
-- `wed.c` added later by `8a7386e787ef4` (`wifi: mt76: move wed common
-  utilities in wed.c`, 2024-02-22). **Not in pending-6.6** (`git merge-
-  base --is-ancestor` → not ancestor).
-- Related 6.6 history: WED enable for MT7986, WED RX, page_pool switch,
-  several WED robustness fixes.
+Step 3.3: CHECK FILE HISTORY FOR RELATED CHANGES
+Record: later DVFSRC work (MT6893, MT8196, bandwidth rework) only grew
+the match table. No prerequisite refactor is required for this one line.
+**Standalone.**
 
-**Step 3.4: CHECK THE AUTHOR'S OTHER COMMITS**
-Record:
-- Author is not the mt76 maintainer; maintainer Felix Fietkau signed
-  off.
-- Same author, same series date: `8eae5e5aa09da` already on pending-6.6
-  (patch 2/2).
-- Felix has many mt7915/WED fixes on this branch.
+Step 3.4: CHECK THE AUTHOR'S OTHER COMMITS
+Record: Pengpeng Hou has a series of the same “add missing
+MODULE_DEVICE_TABLE()” fixes (rtc, vdpa, watchdog, hwmon, aspeed,
+ixp4xx). This is a systematic audit, not a one-off. The applying
+maintainer is the MediaTek SoC co-maintainer.
 
-**Step 3.5: CHECK FOR DEPENDENT/PREREQUISITE COMMITS**
-Record:
-- Standalone logic; does **not** need the `wed.c` move.
-- Needed in 6.6: `wed->version` (exists, `u8 version` in
-  `mtk_wed_device`), `phy.band_idx`, `MT_RXQ_BAND1`, page_pool RX — all
-  present.
-- Series 1/2; 2/2 is independent (forward-path queue) and already
-  applied.
+Step 3.5: CHECK FOR DEPENDENT/PREREQUISITE COMMITS
+Record: **None.** Needs only `mtk_dvfsrc_of_match` and `module.h`, both
+present since the driver was added. Applies standalone.
 
 ===============================================================
 PHASE 4: MAILING LIST AND EXTERNAL RESEARCH
 ===============================================================
 
-**Step 4.1: FIND THE ORIGINAL PATCH DISCUSSION**
+Step 4.1: FIND THE ORIGINAL PATCH DISCUSSION
 Record:
-- `b4 dig` on sibling `8eae5e5aa09da` matched msgid
-  `20260715152113.553-*`.
-- RFC (2026-06-13): “single band MT7986”
-- v1 (2026-06-30):
-  https://patch.msgid.link/20260630150649.1629-1-hujy652@gmail.com (and
-  1629-2)
-- v2 (2026-07-15, applied):
-  https://patch.msgid.link/20260715152113.553-1-hujy652@gmail.com
-- v2 1/2 is the committed version. Change vs RFC: “single band” → “non-
-  DBDC”.
-- lore.kernel.org fetches returned 403; thread text confirmed via
-  ratatoskr mirrors.
-- No NAK found. Merged by Felix Fietkau (2026-07-31) as `8a177dabeeead`.
+- `b4 dig -c ec762057868d70` →
+  https://patch.msgid.link/20260704124308.6241-1-pengpeng@iscas.ac.cn
+- `b4 dig -a`: **v1 only** (no v2/v3)
+- Thread (saved via `b4 dig -m`): maintainer reply “Applied to
+  v7.2-next/soc, thanks!” (commit 0ef07f74aff2 while in the MTK tree)
+- No NAKs, no requested changes, no Cc: stable in review
 
-**Step 4.2: CHECK WHO REVIEWED THE PATCH**
-Record (`b4 dig -w` on sibling): Zhi-Jun You; Felix Fietkau
-(`nbd@nbd.name`); Lorenzo Bianconi; Ryder Lee / Shayne Chen / Sean Wang
-(MediaTek); `linux-wireless`; `linux-mediatek`; Benjamin Larsson
-(Suggested-by on 2/2). Maintainer merged it.
+Step 4.2: CHECK WHO REVIEWED THE PATCH
+Record (`b4 dig -w`): To/Cc included both MediaTek SoC maintainers
+(Matthias Brugger, AngeloGioacchino Del Regno) and linux-mediatek /
+linux-arm-kernel / linux-kernel. Applied by the subsystem maintainer.
 
-**Step 4.3: SEARCH FOR THE BUG REPORT**
-Record: No syzbot/bugzilla. Concrete oops from Acer Connect Vero W6m
-(MT7986). Real hardware, probe-time crash with WED.
+Step 4.3: SEARCH FOR THE BUG REPORT
+Record: **No Reported-by / bugzilla / syzbot.** Evidence is the source
+mismatch (match table vs missing export), which is deterministic for
+`=m` builds.
 
-**Step 4.4: CHECK FOR RELATED PATCHES AND SERIES**
-Record: 2-patch v2 series. 1/2 = this panic. 2/2 =
-`net_fill_forward_path` wrong WDMA queue; already in 6.6. Independent;
-1/2 is the crash fix.
+Step 4.4: CHECK FOR RELATED PATCHES AND SERIES
+Record: not a numbered series. Sibling same-cycle fixes exist (`soc:
+aspeed`, `soc: ixp4xx: npe/qmgr`). Each is self-contained. Historical
+MediaTek analogs: `6f42f5e73bb43` (mtk-svs), `10687632307c0` (mtk-
+mmsys).
 
-**Step 4.5: CHECK STABLE MAILING LIST HISTORY**
-Record: lore.kernel.org/stable returned 403. **UNVERIFIED** whether
-anyone mailed stable@. 2/2 of the same series is already in this 6.6
-tree, so the series is treated as 6.6-relevant.
+Step 4.5: CHECK STABLE MAILING LIST HISTORY
+Record: **UNVERIFIED.** lore.kernel.org returned HTTP 403 for WebFetch
+and curl. No local evidence of a stable NAK.
 
 ===============================================================
 PHASE 5: CODE SEMANTIC ANALYSIS
 ===============================================================
 
-**Step 5.1: IDENTIFY KEY FUNCTIONS IN THE DIFF**
-Record: Mainline `mt76_wed_init_rx_buf`. In this tree:
-`mt7915_mmio_wed_init_rx_buf`.
+Step 5.1: IDENTIFY KEY FUNCTIONS IN THE DIFF
+Record: **No function body changed.** The new line is
+`MODULE_DEVICE_TABLE(of, mtk_dvfsrc_of_match)` beside the existing
+table. Related runtime entry is `mtk_dvfsrc_probe`.
 
-**Step 5.2: TRACE CALLERS**
+Step 5.2: TRACE CALLERS
 Record:
-- Assigned as `wed->wlan.init_rx_buf` in `mt7915_mmio_wed_init`.
-- Called from `mtk_wed_rx_buffer_alloc` → `dev->wlan.init_rx_buf(dev,
-  dev->wlan.rx_npkt)` (`mtk_wed.c`).
-- That runs from `mtk_wed_start` ← `mt7915_dma_start` ←
-  `mt7915_dma_init` ← `mt7915_register_device` ← probe.
-- Reachable on device probe when WED is attached (`wed_enable` module
-  param).
+- `module_platform_driver(mtk_dvfsrc_driver)` → OF platform probe
+- Exported `mtk_dvfsrc_send_request` / `mtk_dvfsrc_query_info` used by:
+  - `drivers/interconnect/mediatek/icc-emi.c`
+    (`INTERCONNECT_MTK_DVFSRC_EMI` depends on `MTK_DVFSRC`)
+  - `drivers/regulator/mtk-dvfsrc-regulator.c` (`REGULATOR_MTK_DVFSRC`
+    depends on `MTK_DVFSRC`)
+- Probe also `devm_of_platform_populate()`, so child
+  interconnect/regulator nodes never appear if this module never loads
 
-**Step 5.3: TRACE CALLEES**
-Record: `mt76_get_rxwi`, `mt76_get_page_pool_buf` →
-`page_pool_dev_alloc_frag(q->page_pool)`, `mt76_rx_token_consume`. First
-page_pool alloc is the crash site.
+Step 5.3: TRACE CALLEES
+Record: probe does SMC init/start of the DVFSRC IP, clock enable, child
+populate. Autoload failure means that entire stack never starts.
 
-**Step 5.4: FOLLOW THE CALL CHAIN**
-Record:
-```
-module load mt7915e
-  → mt7915_mmio_probe / register_device
-  → mt7915_dma_init → mt7915_dma_start
-  → mtk_wed_device_start → mtk_wed_rx_buffer_alloc
-  → mt7915_mmio_wed_init_rx_buf
-  → mt76_get_page_pool_buf(uninitialized MT_RXQ_MAIN)
-  → oops
-```
-Userspace-reachable via loading the driver (typically root). Not a
-syscall fuzz path; it is a boot/probe crash on affected hardware.
+Step 5.4: FOLLOW THE CALL CHAIN
+Record: **Userspace-reachable via normal boot on MediaTek DT platforms**
+(kmod/udev matching `compatible`). Unprivileged users do not need a
+special syscall; they just boot. Trigger requires `CONFIG_MTK_DVFSRC=m`
+and a matching DT node.
 
-**Step 5.5: SEARCH FOR SIMILAR PATTERNS**
-Record: `mt7915/testmode.c` already uses `q = phy->mt76->band_idx ?
-MT_RXQ_BAND1 : MT_RXQ_MAIN`. DMA init uses the same band_idx split. Same
-author’s 2/2 fixes the matching forward-path mistake.
+Step 5.5: SEARCH FOR SIMILAR PATTERNS
+Record: other `drivers/soc/mediatek/` drivers already have
+`MODULE_DEVICE_TABLE(of, ...)`. This was the omission.
 
 ===============================================================
 PHASE 6: CROSS-REFERENCING AGAINST THE LOCAL TREE
 ===============================================================
 
-**Step 6.1: DOES THE BUGGY CODE EXIST IN THIS TREE?**
-Record: **Yes.** Tree is 6.6.157 (`pending-6.6`). `wed.c` is absent.
-Equivalent bug:
+Step 6.1: DOES THE BUGGY CODE EXIST IN THIS TREE?
+Record:
+- `git describe HEAD` → **v7.3-rc4-27-gf0100363d8c37**; `make
+  kernelversion` → **7.3.0-rc4**
+- File and match table exist. Before ec762057868d70 there was **no**
+  `MODULE_DEVICE_TABLE` (`git show ec762057868d70^:...`)
+- Bug introduced with the driver in **v6.13** (192514ae05687)
+- `git merge-base --is-ancestor ec762057868d70 HEAD` → yes (this
+  checkout already contains the fix as mainline, which does not change
+  whether the bug class is real)
 
-```
-mt7915_mmio_wed_init_rx_buf:
-    q = &dev->mt76.q_rx[MT_RXQ_MAIN];   /* mmio.c:635 */
-```
+Step 6.2: CHECK FOR BACKPORT COMPLICATIONS
+Record: **clean apply.** One line after the sentinel entry. Compatible
+strings may differ on older stables, but the macro is independent of
+table contents.
 
-`mt7915_dma.c`: allocate `MT_RXQ_MAIN` only if
-`!dev->phy.mt76->band_idx`; allocate `MT_RXQ_BAND1` if `dbdc_support ||
-band_idx`. `mt7915_band_config` sets `band_idx = 1` for MT7986 one-A-die
-(non-DBDC). Introduced with WED RX + page_pool (2022–2023), well before
-6.6.
-
-`git merge-base --is-ancestor 8a177dabeeead pending-6.6` → **not
-present**.
-
-**Step 6.2: CHECK FOR BACKPORT COMPLICATIONS**
-Record: **Needs a small backport**, not a clean apply. Same if/else in
-`mt7915/mmio.c`, with `dev->mt76.phy.band_idx` /
-`dev->phy.mt76->band_idx`. `wed->version` exists and is set to 2 for
-non-netsys-v1 (MT7986) in `mtk_wed.c`. Minor conflict, not a rewrite.
-
-**Step 6.3: CHECK IF RELATED FIXES ARE ALREADY HERE**
-Record: No equivalent RX-buf queue selection. 2/2 (`8eae5e5aa09da`) is
-here and addresses the same hardware mapping, not this NULL deref.
+Step 6.3: CHECK IF RELATED FIXES ARE ALREADY HERE
+Record: this is the fix. No earlier equivalent. Sibling SoC drivers
+already had the macro.
 
 ===============================================================
 PHASE 7: SUBSYSTEM AND MAINTAINER CONTEXT
 ===============================================================
 
-**Step 7.1: IDENTIFY THE SUBSYSTEM AND ITS CRITICALITY**
-Record: `drivers/net/wireless/mediatek/mt76` + MediaTek WED.
-**IMPORTANT** (common Filogic/MT7986 WiFi, OpenWrt/embedded), not core
-mm/VFS.
+Step 7.1: IDENTIFY THE SUBSYSTEM AND ITS CRITICALITY
+Record:
+- **Subsystem:** `drivers/soc/mediatek` (MediaTek SoC DVFS resource
+  collector)
+- **Criticality: IMPORTANT** on ARCH_MEDIATEK (Chromebooks/boards with
+  MT8183/MT8195/MT8196/MT6893), **PERIPHERAL** globally
+- Kconfig: `config MTK_DVFSRC` **tristate**, `depends on ARCH_MEDIATEK`
 
-**Step 7.2: ASSESS SUBSYSTEM ACTIVITY**
-Record: Mature and actively fixed on 6.6 (WED null-ptr, register
-mapping, MT7981, chainmask for non-DBDC band 1).
+Step 7.2: ASSESS SUBSYSTEM ACTIVITY
+Record: actively maintained (MT8196/DVFSRCv4, bandwidth rework,
+mmsys/cmdq work). DVFSRC itself is a few years old (6.13), not brand-new
+staging code.
 
 ===============================================================
 PHASE 8: IMPACT AND RISK ASSESSMENT
 ===============================================================
 
-**Step 8.1: DETERMINE WHO IS AFFECTED**
-Record: Driver-specific: MT7986 (and similar mt798x) **non-DBDC**
-(single A-die) with `CONFIG_NET_MEDIATEK_SOC_WED` and `wed_enable`. Real
-product: Acer Connect Vero W6m. Default `wed_enable` is false, but WED
-is used on these SoCs.
+Step 8.1: DETERMINE WHO IS AFFECTED
+Record: **platform-specific / config-specific** — `ARCH_MEDIATEK` +
+`CONFIG_MTK_DVFSRC=m` + DT `compatible` in the match table. Built-in
+configs are unaffected.
 
-**Step 8.2: DETERMINE THE TRIGGER CONDITIONS**
-Record: Every probe with WED attached on that SKU. Not a race. Needs
-privilege to load the module; typical as a platform driver at boot.
-
-**Step 8.3: DETERMINE THE FAILURE MODE SEVERITY**
-Record: Kernel oops/panic on WiFi/WED attach. **CRITICAL** for those
-devices (WiFi unusable; can panic the box).
-
-**Step 8.4: CALCULATE RISK-BENEFIT RATIO**
+Step 8.2: DETERMINE THE TRIGGER CONDITIONS
 Record:
-- **Benefit:** high for MT7986 non-DBDC + WED (prevents probe oops).
-- **Risk:** low (5-line queue index; other SKUs unchanged).
-- **Ratio:** benefit ≫ risk. Backport must retarget `mmio.c`.
+- Trigger: boot (or DT overlay) with the module not already loaded
+- Common on distro-style `=m` kernels; Chromebook/embedded images often
+  use `=y` (then a no-op)
+- Not a race; **100%** for modular builds
+- Unprivileged user is not required beyond using the machine
+
+Step 8.3: DETERMINE THE FAILURE MODE SEVERITY
+Record:
+- **Failure:** DVFSRC module does not autoload → probe skipped → child
+  devices not populated → interconnect EMI bandwidth votes and DVFSRC
+  regulators return failure/`-ENODEV`
+- Not an oops/UAF/corruption
+- **Severity: MEDIUM** (device/stack does not come up; power/bandwidth
+  management broken on those SoCs). For users who ship this as a module,
+  it is a real “hardware doesn’t work” bug, in the same bucket as
+  missing device IDs
+
+Step 8.4: CALCULATE RISK-BENEFIT RATIO
+Record:
+- **Benefit:** high for modular MediaTek kernels; zero elsewhere
+- **Risk:** very low (1 line, `.modinfo` only)
+- **Ratio:** strongly favors including it
 
 ===============================================================
 PHASE 9: FINAL SYNTHESIS
 ===============================================================
 
-**Step 9.1: COMPILE THE EVIDENCE**
+Step 9.1: COMPILE THE EVIDENCE
 
 FOR:
-- Documented oops: NULL `page_pool` in WED RX init.
-- Same bug in this tree (`mt7915_mmio_wed_init_rx_buf` + DMA not
-  allocating MAIN when `band_idx == 1`).
-- Small, obviously correct queue selection.
-- mt76 maintainer signed off; RFC → v1 → v2.
-- Sibling 2/2 already on 6.6.
-- MT7986 + WED RX + page_pool all exist here.
-- `wed->version` and `band_idx` exist.
+- Real, deterministic autoload bug on a **tristate** driver that already
+  has an OF table
+- DVFSRC is the parent of interconnect and regulator children; missing
+  autoload takes down that DVFS/bandwidth stack
+- 1-line, standard `MODULE_DEVICE_TABLE(of, ...)` pattern already used
+  by sibling MediaTek SoC drivers
+- Applied by the MediaTek SoC maintainer; v1 accepted unchanged
+- Same class as device-ID additions (explicit stable exception):
+  existing driver, existing hardware, missing match publication
+- Driver has been in this lineage since v6.13; the omission is old, not
+  a just-landed feature
 
 AGAINST:
-- Patch file `wed.c` is not in 6.6 (moved in 6.8-era `8a7386e787ef4`).
-- Needs a few-line context backport.
-- WED off by default; subset of MT7986 boards.
-- Crash log tainted OOT; still in-tree frames.
+- No user/syzbot report; author describes it as source-level
+- Not a crash, deadlock, or data-corruption fix
+- `=y` builds are unaffected; no in-tree defconfig sets
+  `CONFIG_MTK_DVFSRC`
+- No Cc: stable (expected here; not used as a negative)
 
 UNRESOLVED:
-- Stable ML discussion (lore/stable 403).
-- Whether every reviewer asked for Cc: stable (not seen on v2 1/2).
+- lore.kernel.org stable-list search (HTTP 403)
+- Whether a given distro actually builds this as `=m` (unverified)
 
-**Step 9.2: APPLY THE STABLE RULES CHECKLIST**
-1. Obviously correct and tested? **PASS** — matches DMA allocation;
-   maintainer merged; oops on real HW.
-2. Fixes a real bug that affects users? **PASS** — probe oops on non-
-   DBDC MT7986 + WED.
-3. Important issue? **PASS** — kernel oops, severity CRITICAL for that
-   hardware.
-4. Small and contained? **PASS** — ~5 lines, one function.
-5. No new features or APIs? **PASS**.
-6. Can apply to the local tree? **PASS** with a backport to
-   `mt7915/mmio.c` (stable rule: apply cleanly **or come with a
-   backport**). Not a missing-feature case.
+Step 9.2: APPLY THE STABLE RULES CHECKLIST
+1. Obviously correct and tested? **PASS** — one established macro;
+   maintainer applied v1
+2. Fixes a real bug that affects users? **PASS** — module will not
+   autoload for OF devices (`stable-kernel-rules.rst`: “real bug that
+   bothers people **or** just add a device ID”)
+3. Important issue? **PASS** as hardware-does-not-bind / missing ID-
+   table export, not as a panic. Severity MEDIUM but in the device-ID
+   exception class
+4. Small and contained? **PASS** — +1 line, one file
+5. No new features or APIs? **PASS** — only publishes an existing table
+6. Can apply to the local tree? **PASS** — file and table exist; the
+   line is already the correct form here
 
-**Step 9.3: CHECK FOR EXCEPTION CATEGORIES**
-Record: None (not a device ID/quirk/DT/build/doc). Ordinary crash fix.
+Step 9.3: CHECK FOR EXCEPTION CATEGORIES
+Record: **Device ID / match-table publication for an existing driver.**
+Closest documented exception: “just add a device ID.”
 
-**Step 9.4: MAKE YOUR DECISION**
-The 6.6 tree has the same panic path under a pre-`wed.c` name. Selecting
-this for 6.6 is justified; apply the same `version == 2 && band_idx`
-check in `mt7915_mmio_wed_init_rx_buf`.
+Step 9.4: MAKE YOUR DECISION
+This is a one-line, obviously correct fix for a real modular-boot
+failure on MediaTek SoCs that already have this driver. Risk is
+negligible. It belongs in this tree’s stable lineage.
 
----
+### What it solves for stable users
+If `mtk-dvfsrc` is built as a module, kmod never gets `of:` aliases for
+`mediatek,mt8183-dvfsrc` and the other compatibles. The driver never
+probes, so DVFSRC children (EMI interconnect, DVFSRC regulators) never
+appear. Adding `MODULE_DEVICE_TABLE` is the supported way to generate
+those aliases (`include/linux/module.h` + `scripts/mod/file2alias.c`).
 
-**What the commit solves for this tree:** On non-DBDC MT7986, the main
-phy is band 1, so only `MT_RXQ_BAND1` is allocated. WED RX init still
-pulls from `MT_RXQ_MAIN`, whose `page_pool` is NULL, and the kernel
-oopses in `page_pool_alloc_frag` during `mt7915e` probe. That mapping is
-already in 6.6 `init.c`/`dma.c`; only the RX-buf picker is wrong.
+### Risk vs benefit
+Benefit is restoring autoload for a SoC DVFS block; risk is a `.modinfo`
+addition with no runtime logic change.
 
-**Stable rules:** Real, important crash; tiny logic fix; no new API.
-File path changed after 6.6, so it needs a short backport, not a NAK.
-
-**Risk vs benefit:** Low risk, high benefit on Filogic devices that
-enable WED (including the reported Acer Vero W6m class).
-
-**Concerns:** Must edit
-`drivers/net/wireless/mediatek/mt76/mt7915/mmio.c` and use
-`dev->mt76.phy.band_idx` (or `dev->phy.mt76->band_idx`) because `dev` is
-`struct mt7915_dev *` here. Do not require `8a7386e787ef4`.
+### Concerns
+Needs no extra commits. Older stables without `mtk-dvfsrc.c` (pre-6.13)
+would not apply; **this** checkout has the driver. Lore stable
+discussion could not be fetched (403).
 
 Verification:
-- [Phase 1] Subject/tags: fix panic; SOB Zhi-Jun You + Felix Fietkau;
-  Link `20260715152113.553-1`; no Fixes/Cc-stable
-- [Phase 1] Series: v2 1/2; 2/2 already `8eae5e5aa09da` on pending-6.6
-- [Phase 2] Diff: 6 insertions in `mt76_wed_init_rx_buf`; queue MAIN vs
-  BAND1
-- [Phase 3] Blame on 6.6: `q = &dev->mt76.q_rx[MT_RXQ_MAIN]` from
-  `2f5c3c77fc9b6` (page_pool); present
-- [Phase 3] `8a7386e787ef4` (wed.c split) **not** ancestor of
-  pending-6.6
-- [Phase 3] Fix `8a177dabeeead` **not** ancestor of pending-6.6
-- [Phase 4] b4 dig: RFC → v1 → v2; applied v2; Felix merged 2026-07-31
-- [Phase 4] Recipients: mt76 maintainers + linux-wireless/mediatek
-- [Phase 4] UNVERIFIED: lore.kernel.org and lore.kernel.org/stable HTTP
-  403; used ratatoskr mirrors
-- [Phase 5] Caller: `mtk_wed_rx_buffer_alloc` → `wlan.init_rx_buf` from
-  `mtk_wed_start` / probe
-- [Phase 6] `git show pending-6.6:Makefile`: VERSION 6 / PATCHLEVEL 6 /
-  SUBLEVEL 157
-- [Phase 6] `git cat-file` pending-6.6 `wed.c`: path does not exist
-- [Phase 6] pending-6.6 `mmio.c:635`: hardcoded `MT_RXQ_MAIN`; `init.c`
-  sets `band_idx = 1` for one-A-die MT7986
-- [Phase 6] DMA: MAIN allocated only if `!band_idx`; BAND1 if
-  `dbdc_support || band_idx`
-- [Phase 6] `wed->version` exists; set to 2 for MT7986-class WED
-- [Phase 8] Failure: NULL page_pool deref → oops; CRITICAL for that
-  SKU+WED
-- UNVERIFIED: whether an out-of-tree module contributed besides in-tree
-  frames (taint `O`)
+- [Phase 1] `git show ec762057868d70`: subject/tags/body as above; no
+  Fixes/Cc stable/Reported-by
+- [Phase 2] Diff is exactly `+MODULE_DEVICE_TABLE(of,
+  mtk_dvfsrc_of_match);` in `mtk-dvfsrc.c`
+- [Phase 3] Blame: table from 192514ae05687; MODULE_DEVICE_TABLE line
+  from ec762057868d70
+- [Phase 3] `git show 192514ae05687a:drivers/soc/mediatek/mtk-dvfsrc.c`:
+  of_match_table + module_platform_driver, no MODULE_DEVICE_TABLE
+- [Phase 3] `git merge-base --is-ancestor 192514ae05687 v6.13-rc1` yes;
+  not in v6.12
+- [Phase 3] `git merge-base --is-ancestor ec762057868d70 HEAD` yes
+- [Phase 4] `b4 dig -c/-a/-w/-m`: lore msgid
+  20260704124308.6241-1-pengpeng@iscas.ac.cn; v1 only; maintainers CC’d;
+  Angelo applied to v7.2-next/soc
+- [Phase 4] lore.kernel.org HTTP 403 — stable-list discussion UNVERIFIED
+- [Phase 5] Callers: `icc-emi.c`, `mtk-dvfsrc-regulator.c`; Kconfig
+  `depends on MTK_DVFSRC`; probe uses `devm_of_platform_populate`
+- [Phase 5] `CONFIG_MTK_DVFSRC` is tristate in
+  `drivers/soc/mediatek/Kconfig`
+- [Phase 6] `git describe HEAD` = v7.3-rc4-27-gf0100363d8c37;
+  kernelversion 7.3.0-rc4
+- [Phase 6] Pre-commit file has match table and no MODULE_DEVICE_TABLE
+- [Phase 7] MAINTAINERS: ARM/Mediatek SoC support → AngeloGioacchino Del
+  Regno (applier)
+- [Phase 8] Failure mode: module not autoloaded → DVFSRC/DVFS stack
+  down; not an oops
+- UNVERIFIED: distro `=m` vs `=y` defaults; stable@ lore thread
 
 **YES**
 
- drivers/net/wireless/mediatek/mt76/wed.c | 7 ++++++-
- 1 file changed, 6 insertions(+), 1 deletion(-)
+ drivers/soc/mediatek/mtk-dvfsrc.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/drivers/net/wireless/mediatek/mt76/wed.c b/drivers/net/wireless/mediatek/mt76/wed.c
-index fbd7e59c73aaf..2ebf4edc689e9 100644
---- a/drivers/net/wireless/mediatek/mt76/wed.c
-+++ b/drivers/net/wireless/mediatek/mt76/wed.c
-@@ -33,10 +33,15 @@ u32 mt76_wed_init_rx_buf(struct mtk_wed_device *wed, int size)
- {
- 	struct mtk_wed_bm_desc *desc = wed->rx_buf_ring.desc;
- 	struct mt76_dev *dev = mt76_wed_to_dev(wed);
--	struct mt76_queue *q = &dev->q_rx[MT_RXQ_MAIN];
- 	struct mt76_txwi_cache *t = NULL;
-+	struct mt76_queue *q;
- 	int i;
+diff --git a/drivers/soc/mediatek/mtk-dvfsrc.c b/drivers/soc/mediatek/mtk-dvfsrc.c
+index 41add5636b03c..af35d71615baf 100644
+--- a/drivers/soc/mediatek/mtk-dvfsrc.c
++++ b/drivers/soc/mediatek/mtk-dvfsrc.c
+@@ -562,6 +562,7 @@ static const struct of_device_id mtk_dvfsrc_of_match[] = {
+ 	{ .compatible = "mediatek,mt8195-dvfsrc", .data = &mt8195_data },
+ 	{ /* sentinel */ }
+ };
++MODULE_DEVICE_TABLE(of, mtk_dvfsrc_of_match);
  
-+	if (wed->version == 2 && dev->phy.band_idx)
-+		q = &dev->q_rx[MT_RXQ_BAND1];
-+	else
-+		q = &dev->q_rx[MT_RXQ_MAIN];
-+
- 	for (i = 0; i < size; i++) {
- 		dma_addr_t addr;
- 		u32 offset;
+ static struct platform_driver mtk_dvfsrc_driver = {
+ 	.probe	= mtk_dvfsrc_probe,
 -- 
 2.53.0
 
