@@ -2,82 +2,72 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 46711606A323
-	for <linux-mediatek@archiver.kernel.org>; Mon, 19 Oct 2026 21:26:59 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 867F4606A31A
+	for <linux-mediatek@archiver.kernel.org>; Mon, 19 Oct 2026 23:42:54 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=FNV3ky/z;
-	dkim=pass (2048-bit key, unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=jr27XPWF
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=l5JwNBML;
+	dkim=pass (2048-bit key, unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=FD861fDb
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=2/oTajujBgQv2lM0tHVLlqdb7xrNZwTMKNXeSsiaOWc=; b=FNV3ky/zZC8g3rtpJdKCnfdMHR
-	3L99FvU32p7e+/uWsSyz/pEfWlZjFr097Q4/PHp2I6uhLIPlsFMYpuGXAfRVw1XRZzP4c7Tvm1ctM
-	XC4wIUtDdl11+E1wwSsKG8nJLMBJ3jw2NsmAJfJlCUjNywHv9xAiUTZbgkSE7X6nDIxOK5KoXuLzk
-	SKpnDXx/POdTocfX6BO4ad430fuWe6jB9hTwZHWrMDb9kbAZG4yXvRo3yWZ8+vxwperBcl1SEvgTi
-	Gj/Xyc7dgEdMKsIjaB2P3UoSZws6qfos2iaOtaazLBviXqToVDjbPqWM/Hxp6WacmvTrg1CwKndCn
-	9cff1ZKg==;
+	bh=FYa8dnTvUVmkNxFv7StTWYj3kgHUq3JoGbZV2fZG/0o=; b=l5JwNBML5hK0e535zBX5hqHnIF
+	UsSQ43kXAm2vdG3/D3yoXb4qhfDBFEqnInU/ZGLc9AnKJSb+LD4hn3XnOX+EBtSsZgYJ2UPON+Q9R
+	K76oksnxJBlzITM0znq/rQnreycDPr/OADs75HJq8DrRRpRUr9/jDfZJPEXH2DtqHR/srdq0f5KMf
+	u9teA9NiIcdvoDRJoSBSPF8OxP3z/Reju/5n17TZpzjPs/3mgsc7eJKcU6Fwn7JX2k8sThf/rRYeL
+	mfTd3taOXPH5dTqYYLNrbqMAi2Q4IoYCTR/XZkpk25mvhlT9Au63agbdH/2a88wcna/561lcycq0r
+	oQ2EwxuA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xIusk-00000008NOv-1YPp;
-	Mon, 19 Oct 2026 21:26:58 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1xIx0H-00000008YDu-1Peq;
+	Mon, 19 Oct 2026 23:42:53 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xIusj-00000008NO5-0Fcx
-	for linux-mediatek@lists.infradead.org;
-	Mon, 19 Oct 2026 21:26:57 +0000
+	id 1xIx0F-00000008YDW-0xE9;
+	Mon, 19 Oct 2026 23:42:51 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id 85D624375C
-	for <linux-mediatek@lists.infradead.org>; Mon, 19 Oct 2026 21:26:56 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 670621F000CA
-	for <linux-mediatek@lists.infradead.org>; Mon, 19 Oct 2026 21:26:56 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 57A1F60098;
+	Mon, 19 Oct 2026 23:42:50 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 581C81F000C6;
+	Mon, 19 Oct 2026 23:42:49 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1792445216;
-	bh=2/oTajujBgQv2lM0tHVLlqdb7xrNZwTMKNXeSsiaOWc=;
-	h=References:In-Reply-To:From:Date:Subject:To:Cc;
-	b=jr27XPWFooKKoEeXO0QG8u/hyF5wNO0Ouh7l74J4PhTBsLJpZBMh4KqS1y/0+kL4z
-	 dtCdVOkZ8syA1Wc2nIspEhfWs4nm2M6Hauz0nnMHIgje7yBkdm+Efy5EaG+3CRB94Z
-	 0KvnE5E9XoS537a1MkzfHucZcLsWI0b5qrw36Jszl6bXn/AdH+2wvG++t6xKhHpVqH
-	 QLxR0H8CiJcL9O0fHHo6TAlqdENzs2hdaXvP9tL8zQ6UJyUobsaBrh5sHgOyF9JVs7
-	 KM5C5SHyEppfUi9jKgfr552Bd6vEU3YHHchlRM+S2qRcTbW+d5HsfZ3yZP9yztQWnc
-	 ZCCX5r8tmsWcg==
-Received: by mail-ej1-f53.google.com with SMTP id a640c23a62f3a-c411e139259so242396866b.2
-        for <linux-mediatek@lists.infradead.org>; Mon, 19 Oct 2026 14:26:56 -0700 (PDT)
-X-Forwarded-Encrypted: i=1; AKwUvBwjjbmcIV5THqjApk7vLQ4Y3JEjH1czXJlhuWw97VMTgN0bb7eRJYjLdIeTC2PcPBDHTJplI1uo8LZkaC+tEA==@lists.infradead.org
-X-Gm-Message-State: AFq9FYIJ6vm3SBhV8Dvg7VERjI0jwn3H6tY6dYGweIy20LSu0rT3/faa
-	0i0nzgXMIFDCOQ2wLTPMdSs+8NyzPbqmd/Q8giyq75nP8b9SLWahOBa+hWySFRR4mPD7E7a93lR
-	lgSb0p7L+X8nyFWt7y+PlO0hudZG9CA==
-X-Received: by 2002:a17:907:b046:20b0:c42:102f:15d3 with SMTP id
- a640c23a62f3a-c42102f35damr377191666b.34.1792445215032; Mon, 19 Oct 2026
- 14:26:55 -0700 (PDT)
+	s=k20260515; t=1792453370;
+	bh=FYa8dnTvUVmkNxFv7StTWYj3kgHUq3JoGbZV2fZG/0o=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:References;
+	b=FD861fDbm8GtaxjHtgQ5PMUOMr0YwWlb/t/5/S/OJfxB1zoGoLnAOCSdf2VnLyN0i
+	 oparZiRwQHeuDBkTg9qh7DJBucW1pK2jk/Y6yHptT2FBLiWRkE+30t6Y3bbecYI0U7
+	 2q76LTQGsJzDLloZ4LlmamzH5ftVhdiklYJvyp9A4nxStdHqgzInDItodWnDNU4iBi
+	 cNsnQ9qnfxgvzJjQjDJn0sGiSlZzvZqFcqBmtonx9CVxCf8o0tY1sXV9UOIVe0ittp
+	 VIVDG3cwaXFvM2TaS0xe2MM2PhSyxGcAEAlLghSCuUmXaVCanYNjJGIEbJ1PitP5Id
+	 HtwOfdN3Tt52A==
+Date: Mon, 19 Oct 2026 16:42:48 -0700
+From: Jakub Kicinski <kuba@kernel.org>
+To: Christian Marangi <ansuelsmth@gmail.com>
+Cc: Lee Jones <lee@kernel.org>, Rob Herring <robh@kernel.org>, Krzysztof
+ Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, Andrew
+ Lunn <andrew+netdev@lunn.ch>, "David S. Miller" <davem@davemloft.net>, Eric
+ Dumazet <edumazet@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Vladimir
+ Oltean <olteanv@gmail.com>, Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ "Chester A. Unal" <chester.a.unal@arinc9.com>, Daniel Golle
+ <daniel@makrotopia.org>, Heiner Kallweit <hkallweit1@gmail.com>, Russell
+ King <linux@armlinux.org.uk>, Simon Horman <horms@kernel.org>, Joris
+ Vaisvila <joey@tinyisr.com>, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, netdev@vger.kernel.org,
+ mfd@lists.linux.dev, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org
+Subject: Re: [PATCH net-next v25 04/10] mfd: an8855: Add support for Airoha
+ AN8855 Switch
+Message-ID: <20261019164248.037971c8@kernel.org>
+In-Reply-To: <20261009161102.38961-5-ansuelsmth@gmail.com>
+References: <20261009161102.38961-1-ansuelsmth@gmail.com>
+	<20261009161102.38961-5-ansuelsmth@gmail.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-References: <cover.1791623422.git.kyrie.wu@mediatek.com> <951691c0a3d4ccf1cdfbeaead6d576145c731520.1791623422.git.kyrie.wu@mediatek.com>
-In-Reply-To: <951691c0a3d4ccf1cdfbeaead6d576145c731520.1791623422.git.kyrie.wu@mediatek.com>
-From: Rob Herring <robh@kernel.org>
-Date: Mon, 19 Oct 2026 16:26:43 -0500
-X-Gmail-Original-Message-ID: <CAL_JsqL3+ySM=XEt3SfT_ukXm_x0i5_Qa3p_2Etu+SMiA3mMew@mail.gmail.com>
-X-Gm-Features: AclHuK8cez5FtL6SKEsML9LRxKLTKpwdtokleLqyHyBFJ3_4ydfzJsav_z0NLA0
-Message-ID: <CAL_JsqL3+ySM=XEt3SfT_ukXm_x0i5_Qa3p_2Etu+SMiA3mMew@mail.gmail.com>
-Subject: Re: [PATCH v11 01/10] dt-bindings: media: mediatek: decoder: Add
- MT8189 mediatek,vcodec-decoder
-To: Kyrie Wu <kyrie.wu@mediatek.com>
-Cc: Tiffany Lin <tiffany.lin@mediatek.com>, Andrew-CT Chen <andrew-ct.chen@mediatek.com>, 
-	Yunfei Dong <yunfei.dong@mediatek.com>, Mauro Carvalho Chehab <mchehab@kernel.org>, 
-	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Hans Verkuil <hverkuil@xs4all.nl>, 
-	Nicolas Dufresne <nicolas.dufresne@collabora.com>, Nathan Hebert <nhebert@chromium.org>, 
-	Arnd Bergmann <arnd@arndb.de>, Irui Wang <irui.wang@mediatek.com>, 
-	George Sun <george.sun@mediatek.com>, linux-media@vger.kernel.org, 
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
-	Neil Armstrong <neil.armstrong@linaro.org>, Andrzej Pietrasiewicz <andrzejtp2010@gmail.com>, 
-	Yilong Zhou <yilong.zhou@mediatek.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,35 +78,22 @@ List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-16.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-11.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,
-	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=ham
-	autolearn_force=no version=4.0.1
+	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On Sat, Oct 10, 2026 at 4:24=E2=80=AFAM Kyrie Wu <kyrie.wu@mediatek.com> wr=
-ote:
->
-> Add compatible for video decoder on MT8189 platform. Compared with
-> former ICs, the MT8189 decoder use iommu to instead of smmu, and
-> use scp architecture, the frequency is only 406MHZ, and cannot reach
-> more than 700MHZ. It uses only one clock. At the same time, the decoder
-> supports the vp9 decoding protocol for the first time in single IC.
->
-> Signed-off-by: Kyrie Wu <kyrie.wu@mediatek.com>
-> Acked-by: Rob Herring (Arm) <robh@kernel.org>
+On Fri,  9 Oct 2026 18:10:49 +0200 Christian Marangi wrote:
+>  drivers/mfd/Kconfig         |  14 +
+>  drivers/mfd/Makefile        |   1 +
+>  drivers/mfd/airoha-an8855.c | 579 ++++++++++++++++++++++++++++++++++++
 
-Withdrawn. You need to define the clock names. But that is a mess and
-I just sent a fix for it:
-
-https://lore.kernel.org/all/20261019212431.4109371-1-robh@kernel.org/
-
-> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collab=
-ora.com>
-> Reviewed-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
-> ---
->  .../bindings/media/mediatek,vcodec-subdev-decoder.yaml       | 5 +++--
->  1 file changed, 3 insertions(+), 2 deletions(-)
+You didn't explain why the MFD is needed and more importantly what
+merging path you expect. We need an ack from Lee, at the very least.
+Given the merge window has already started I don't think we can
+do the necessary dance in time.
+-- 
+pw-bot: defer
 
