@@ -1,146 +1,213 @@
-Return-Path: <linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org>
-X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
-	aws-us-west-2-korg-lkml-1.web.codeaurora.org
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
-	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C2BAACCF2E3
-	for <linux-mediatek@archiver.kernel.org>; Mon, 19 Oct 2026 14:19:10 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 100F2606A31F
+	for <linux-mediatek@archiver.kernel.org>; Mon, 19 Oct 2026 21:24:46 +0000 (UTC)
+Authentication-Results: smtp.subspace.kernel.org;
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=iwt2/174;
+	dkim=pass (2048-bit key, unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=cOFZulKP
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=gZMXThPsw5Hj3K9EBxanaGodYWwNvyn38pa2n05siwg=; b=Gd+SGIIZx2Cn0VFQIl6yC8ASLx
-	jB35DkykcgoruSHc7w5frPIh4YVZIopIhJZVCqTJ2/RK6TJI88pVEyMGC/5KZ+14j4Y3eU8F6O/fC
-	6LEGbg+CaX0GK985is7maPolv902CZETJLlLcMpVsfFQTbB4371dItJlo7aTqiTE3zvIkXs8s7syP
-	wyi47XPWputdoG+3ZxD1Hf4LnjwH5e18/HuwteJa6NV+XVUTG6MqTYbRUoJKP8m79QoCYj42Lx7vX
-	9HqmLvHTK2B6H0cW9MvEQt7J0XO7hoi29XyJBJv8C52l4ziYfEvXEanjN+C2ZQsqv/nKDYW5UktLr
-	r6YTLt2g==;
+	bh=/1AN1ESpWi5jgJPYsy5btghJQVKGbBKJpkxKtYBKunU=; b=iwt2/174eP8nfvn0YuFuQCCZfS
+	AI72tin+NY1mglFlo6ysMK491a8/5u7Pd+OpPlZua+9VOHO6RYvnKctBQyBJl3oiurqb+NH0e1OXS
+	75NJuwYOY3gJ+bK5SNPHgt9qK6oHGxnEuM5NVeR0Roi6h6rci088WuxCvc6zENPBoA3SEhkNNXRUI
+	CXmYmT4q4peBkWr74R2QtEskGa5REx5c3OvRXuxCkSCIYuAdqH1NI3MaSb0bJuY2xd6rw5Rlf/NXK
+	0kyk4expyb75F7NePso9/7wUniKxxCH9fkv/lsEBnEqG6W9C7J7b+9MYMbznwojmiMCHDK4l9d+id
+	K4WTvN8w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xIoCj-00000007jDq-3KRW;
-	Mon, 19 Oct 2026 14:19:09 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1xIuqX-00000008NAY-3r0F;
+	Mon, 19 Oct 2026 21:24:41 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xIoCh-00000007jCu-3eqy;
-	Mon, 19 Oct 2026 14:19:07 +0000
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by tor.source.kernel.org (Postfix) with ESMTP id EB5E560136;
-	Mon, 19 Oct 2026 14:19:06 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id 9AF70C2BCFC;
-	Mon, 19 Oct 2026 14:19:06 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
-	s=k20201202; t=1792419546;
-	bh=bYO4N5qhTzU/pGIBZQIQ9ttnK/MV86W/KSJjUFVZp2A=;
-	h=From:Date:Subject:To:Cc:Reply-To:From;
-	b=tuvsVyzz9arOsSFCN3WbXoK5l6Fm8TlJw1KIpZUbaHUL3xNQ5YSdEZV2LEBgnPSt0
-	 9Ol5abm2n+8Ng5SjyYDIOQodfcIGE/ENAaFqjNs6NhND6zsMdTAWmIJmXvKXhnd16b
-	 J1+EjWJYZqIrJzduz0lkpMRawvq2Kw04Nwy5Z/2FhSl1HVbnHLQaf1z9xQU5BTQfdV
-	 ylvoKMCcwwLs84XvDT2fLm+Q+6AJqgFCNFASslGImTvXqNZkwWgMx1LMmhcdbBS//H
-	 8J+sDwYjLPQgJvL6n+BOdAJkZVxuyVPc1rMJHzQEepKbu7EwsAfhuXTgqS6AQ3Q6gF
-	 Au62+MMsZEWvA==
-Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 75077CCF2E3;
-	Mon, 19 Oct 2026 14:19:06 +0000 (UTC)
-From: Ben Grisdale via B4 Relay <devnull+bengris32.protonmail.ch@kernel.org>
-Date: Mon, 19 Oct 2026 15:18:35 +0100
-Subject: [PATCH] drm/mediatek: dsi: Fix handling of long packet reads
+	id 1xIuqW-00000008NA7-2kdi;
+	Mon, 19 Oct 2026 21:24:40 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by tor.source.kernel.org (Postfix) with ESMTP id CE21C601F6;
+	Mon, 19 Oct 2026 21:24:39 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5FA2A1F000C4;
+	Mon, 19 Oct 2026 21:24:39 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1792445079;
+	bh=/1AN1ESpWi5jgJPYsy5btghJQVKGbBKJpkxKtYBKunU=;
+	h=From:To:Cc:Subject:Date;
+	b=cOFZulKPhn3MYRu1y0ekb0riZp6D6+qjITek6qm7uSCUrIRhXej4s05s57YMCr+6R
+	 l9mBahUFYFhvc7w2ix0N8x9aQ6Mwwu2F2Fg7BBIn7J+mmHjsDFOW0VB/Rn0nYlQER8
+	 /S3nqNBneUgY9cILeuTL0YQs6pgKWXClNmMTfW1Yrgzf78mjQLHVC3ZbpFP4ZVRzfR
+	 cXc6risAA0iNkB/Iqu2LnGmgTiF8JSbBllRZ7IJtTMQcIB+cgwQioYpPS+6BtmMJ8i
+	 P28h/368CrhAldiB29+cQ5YdimVjxuQN6uzqJy+ozUzD2QMOe/rNhSMSaXQY6mUdQy
+	 X/XITcVyGGz5Q==
+From: "Rob Herring (Arm)" <robh@kernel.org>
+To: Tiffany Lin <tiffany.lin@mediatek.com>,
+	Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
+	Yunfei Dong <yunfei.dong@mediatek.com>,
+	Mauro Carvalho Chehab <mchehab@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Hans Verkuil <hverkuil@kernel.org>,
+	Chen-Yu Tsai <wenst@chromium.org>,
+	Allen-KH Cheng <allen-kh.cheng@mediatek.com>
+Cc: Kyrie Wu <kyrie.wu@mediatek.com>,
+	linux-media@vger.kernel.org,
+	devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: [PATCH] media: dt-bindings: mediatek,vcodec-subdev-decoder: Fix child node if/then schemas
+Date: Mon, 19 Oct 2026 16:24:29 -0500
+Message-ID: <20261019212431.4109371-1-robh@kernel.org>
+X-Mailer: git-send-email 2.53.0
+X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20261019-mtk-dsi-long-read-v1-1-9bddcac1def5@protonmail.ch>
-X-B4-Tracking: v=1; b=H4sIAAAAAAAC/yXMTQqDMBBA4avIrDuQiIp6ldKFSUYdf6JkbBHEu
- 5vq8lu8d4BQYBKokwMC/Vh48RH6lYDtG98RsouGVKWFVrrCeRvRCeO0+A4DNQ6z3NiSssqp0kD
- s1kAt7/fz/XksXzOQ3f4jOM8LrCgPOXUAAAA=
-X-Change-ID: 20261019-mtk-dsi-long-read-45bc8e49d08b
-To: Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
- Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@gmail.com>, 
- Simona Vetter <simona@ffwll.ch>, Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- CK Hu <ck.hu@mediatek.com>, shaoming chen <shaoming.chen@mediatek.com>
-Cc: dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, 
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- stable@vger.kernel.org, Ben Grisdale <bengris32@protonmail.ch>
-X-Mailer: b4 0.15.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1792419545; l=1720;
- i=bengris32@protonmail.ch; s=20261018; h=from:subject:message-id;
- bh=utZT4oI0+pnVMGUZYDb6g2+lkw+nMH2Vwu5HGoj/nEc=;
- b=UZfIFZ6FmaVoqnOm2wvWHsyQ6MhVLAPWmfmeo+EP9rxXaQKQ7Ua0xrmAJYM6XA0NDsMoO4A7e
- UD47LZefiDVCzyt+xu5j2Xr/kOEfbS0kRlSJ7eMSRPbqlWl4NybXCd1
-X-Developer-Key: i=bengris32@protonmail.ch; a=ed25519;
- pk=4ewFRC2yNph/tXokHVzIDlgOA9Hxecf1AlBuD4eOnaU=
-X-Endpoint-Received: by B4 Relay for bengris32@protonmail.ch/20261018 with
- auth_id=1233
-X-Original-From: Ben Grisdale <bengris32@protonmail.ch>
+Content-Transfer-Encoding: 8bit
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
 List-Id: <linux-mediatek.lists.infradead.org>
-List-Unsubscribe: <http://lists.infradead.org/mailman/options/linux-mediatek>,
- <mailto:linux-mediatek-request@lists.infradead.org?subject=unsubscribe>
 List-Archive: <http://lists.infradead.org/pipermail/linux-mediatek/>
 List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Reply-To: bengris32@protonmail.ch
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
-Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
+X-Spam-Status: No, score=-19.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,
+	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=ham
+	autolearn_force=no version=4.0.1
+X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
+	aws-us-west-2-korg-listserv-alma10-1
 
-From: Ben Grisdale <bengris32@protonmail.ch>
+The if/then schemas in mediatek,vcodec-subdev-decoder are all at the
+wrong level as they apply to child nodes. The clock-names schemas
+applies to the parent node, but the clock-names properties are in the
+child nodes. Move the clock-names definitions to the child node
+clock-names property. This exposes that the MT8186 clocks are not
+documented, so add them as well.
 
-mtk_dsi_host_transfer() decides where the payload starts in the
-received data based on the byte count returned by mtk_dsi_recv_cnt(),
-treating anything longer than 2 bytes as a long packet.
+The interrupts if/then schema is never true as the parent compatible
+will never match the child compatible. The subschema also belongs in the
+child node.
 
-This breaks long read responses with a 1 or 2 byte payload: they are
-treated as short packets, so the word count from the packet header is
-copied into rx_buf instead of the payload.
-
-Fix this by checking the packet's data type instead of inferring it
-from the length.
-
-Fixes: 21898816831f ("drm/mediatek: add dsi transfer function")
-Cc: stable@vger.kernel.org
-Signed-off-by: Ben Grisdale <bengris32@protonmail.ch>
+Fixes: 3fbf1eac01b5 ("media: dt-bindings: media: mediatek: vcodec: Adds decoder dt-bindings for lat soc")
+Closes: https://sashiko.dev/#/bug/linux-5ab90035-1914-412f-8310-097fb05bda15
+Fixes: 355e9472ccb0 ("media: dt-bindings: media: mediatek: vcodec: adapt to the 'clock-names' of different platforms")
+Closes: https://sashiko.dev/#/bug/linux-caa6adb1-38de-4889-9517-2beede7c8f96
+Signed-off-by: Rob Herring (Arm) <robh@kernel.org>
 ---
- drivers/gpu/drm/mediatek/mtk_dsi.c | 6 +++++-
- 1 file changed, 5 insertions(+), 1 deletion(-)
+ .../media/mediatek,vcodec-subdev-decoder.yaml | 77 ++++++++-----------
+ 1 file changed, 31 insertions(+), 46 deletions(-)
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_dsi.c b/drivers/gpu/drm/mediatek/mtk_dsi.c
-index f82506e10fd5..de4414b51abb 100644
---- a/drivers/gpu/drm/mediatek/mtk_dsi.c
-+++ b/drivers/gpu/drm/mediatek/mtk_dsi.c
-@@ -165,6 +165,10 @@
- 	(type == MIPI_DSI_GENERIC_READ_REQUEST_2_PARAM) || \
- 	(type == MIPI_DSI_DCS_READ))
+diff --git a/Documentation/devicetree/bindings/media/mediatek,vcodec-subdev-decoder.yaml b/Documentation/devicetree/bindings/media/mediatek,vcodec-subdev-decoder.yaml
+index d1d209cbbd43..6033ecffd707 100644
+--- a/Documentation/devicetree/bindings/media/mediatek,vcodec-subdev-decoder.yaml
++++ b/Documentation/devicetree/bindings/media/mediatek,vcodec-subdev-decoder.yaml
+@@ -135,8 +135,26 @@ patternProperties:
+         maxItems: 5
  
-+#define MTK_DSI_IS_LONG_RESP(type) \
-+	(((type) == MIPI_DSI_RX_GENERIC_LONG_READ_RESPONSE) || \
-+	((type) == MIPI_DSI_RX_DCS_LONG_READ_RESPONSE))
+       clock-names:
+-        minItems: 4
+-        maxItems: 5
++        oneOf:
++          - description: MT8186 clocks
++            items:
++              - const: vdec-sel
++              - const: vdec-soc-vdec
++              - const: vdec
++              - const: vdec-top
++          - description: MT8192 clocks
++            items:
++              - const: sel
++              - const: soc-vdec
++              - const: soc-lat
++              - const: vdec
++              - const: top
++          - description: MT8195 clocks
++            items:
++              - const: sel
++              - const: vdec
++              - const: lat
++              - const: top
+ 
+       assigned-clocks:
+         maxItems: 1
+@@ -159,6 +177,17 @@ patternProperties:
+ 
+     additionalProperties: false
+ 
++    if:
++      properties:
++        compatible:
++          contains:
++            enum:
++              - mediatek,mtk-vcodec-core
++              - mediatek,mtk-vcodec-lat
++    then:
++      required:
++        - interrupts
 +
- struct mtk_phy_timing {
- 	u32 lpx;
- 	u32 da_hs_prepare;
-@@ -1171,7 +1175,7 @@ static ssize_t mtk_dsi_host_transfer(struct mipi_dsi_host *host,
+ required:
+   - compatible
+   - reg
+@@ -166,50 +195,6 @@ required:
+   - mediatek,scp
+   - ranges
  
- 	recv_cnt = mtk_dsi_recv_cnt(read_data[0], read_data);
+-if:
+-  properties:
+-    compatible:
+-      contains:
+-        enum:
+-          - mediatek,mtk-vcodec-core
+-          - mediatek,mtk-vcodec-lat
+-
+-then:
+-  required:
+-    - interrupts
+-
+-allOf:
+-  - if:
+-      properties:
+-        compatible:
+-          contains:
+-            enum:
+-              - mediatek,mt8192-vcodec-dec
+-    then:
+-      properties:
+-        clock-names:
+-          items:
+-            - const: sel
+-            - const: soc-vdec
+-            - const: soc-lat
+-            - const: vdec
+-            - const: top
+-
+-  - if:
+-      properties:
+-        compatible:
+-          contains:
+-            enum:
+-              - mediatek,mt8195-vcodec-dec
+-    then:
+-      properties:
+-        clock-names:
+-          items:
+-            - const: sel
+-            - const: vdec
+-            - const: lat
+-            - const: top
+-
+ additionalProperties: false
  
--	if (recv_cnt > 2)
-+	if (MTK_DSI_IS_LONG_RESP(read_data[0]))
- 		src_addr = &read_data[4];
- 	else
- 		src_addr = &read_data[1];
-
----
-base-commit: 2efb7a11f1aa4d2dc285fe2680cca22cb9f72f64
-change-id: 20261019-mtk-dsi-long-read-45bc8e49d08b
-
-Best regards,
---  
-Ben Grisdale <bengris32@protonmail.ch>
-
+ examples:
+-- 
+2.53.0
 
 
