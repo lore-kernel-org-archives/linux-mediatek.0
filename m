@@ -4,37 +4,37 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F01D0CCF2E3
-	for <linux-mediatek@archiver.kernel.org>; Mon, 19 Oct 2026 10:15:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 23603CCF2DB
+	for <linux-mediatek@archiver.kernel.org>; Mon, 19 Oct 2026 10:15:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=JMdvjLbmygaAxKZ4470P9jf9J5rCOTHbqfSHY5SXp9A=; b=R73GTFdmJUkwTmWxxsTIG89oTS
-	hPzijLgcfl5mODIlkNSD16NMlD6dB+8K+sY07c8vnk1bU/DJhqm2fwxus2RiHWigzLgoEPtV6Q4XP
-	NAVoniKlh63vQvlNP1MrH3ywi09QokC6rfvkxkG2B4SIZLQtomiXV2IYvr1CsfbSLw+u29ItH8mFU
-	cteuYU5/qzynPT72ljPgZLzLomUtkpIyBg1XayU/Ry1iwpyEK38F3xP1ObEsWdtonnMQov8lJQ5na
-	3gnlXIvXkoqX7X/EpOE4kjrwyaS+hoOgkTkygg4gPBNmJmcdD9lKGxMh3jBldvdZqqM49czYdMT+7
-	g0PAs/Lw==;
+	bh=44nY6J6XiDlqL4AiN+jyRzejpQtk9NdoZSmq8/1VDHg=; b=sqFb820BAD/2wF1fUucCJXVAZS
+	x1grSJrG8WKXUMVlFqEr34u8O6KhLMinbK3wwFbKqs6DoD7ihVJgLx/UIJsKI33+XWFFMuHB4VSnA
+	Otay1Qsxx2z8tHKWLU8xrRAN/i+DnR2S/chGsq6q8Mb9rBuPIo96QbGgiiDmXng/sL9nI7IhWlPKp
+	iRxKqoNv4YL21zXAIjzHtnqg/bwpSqmVRfGvoOj+gJkhRxbXyr0X6/4taV5GkIwNv5owT4B0vkhyy
+	Y2U5XU66aKSh5mX/WmA6ohz8zGUfVJxt0WhsoenEBW8RygKEjdAbwGE1CDm4WsOosCKktQKVIO6cm
+	4EXgw9rg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xIkP9-000000078xT-2sST;
-	Mon, 19 Oct 2026 10:15:43 +0000
-Received: from m16.mail.163.com ([220.197.31.4])
+	id 1xIkPG-00000007981-05mi;
+	Mon, 19 Oct 2026 10:15:50 +0000
+Received: from m16.mail.163.com ([117.135.210.2])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xIkP2-000000078n7-3V70;
-	Mon, 19 Oct 2026 10:15:38 +0000
+	id 1xIkP4-000000078o8-08kh;
+	Mon, 19 Oct 2026 10:15:39 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
-	s=s110527; h=From:To:Subject:Date:Message-Id:MIME-Version; bh=JM
-	dvjLbmygaAxKZ4470P9jf9J5rCOTHbqfSHY5SXp9A=; b=BIY9THpN9z3EpLKmw6
-	4URT/x8Kal0nnp8LhuXSCxTBtnN/5V3sL4UiJBDx+a5+ZCA83gqPH5NJOWLa5Suy
-	8FqvlrgAH4H2QHR3+1e6wxEnHqpXWncVSXbY4XoMyFpKcOuVlg1BCHws04oUVd/c
-	RCQUxVyiHd6O+gtpnrrn5Q5Sc=
+	s=s110527; h=From:To:Subject:Date:Message-Id:MIME-Version; bh=44
+	nY6J6XiDlqL4AiN+jyRzejpQtk9NdoZSmq8/1VDHg=; b=Tld/xJBgjfHpuHYLHb
+	8hpQdwil+6PAYmsQYiJDg6bRVnHsNC2becAn/o/s2Tn4iHuXWK9A02lAHy5Uk40O
+	6X4x0QeDI9bQMbWWow4A8d47vhroeeTYg57JeoixGBcLq73qP7UaKMyeWBy52OcH
+	NrmgjWg0tJh3M23r8p79EetRI=
 Received: from pc.localdomain (unknown [])
-	by gzga-smtp-mtada-g0-0 (Coremail) with SMTP id _____wD3Hxax7dVq4twABQ--.41578S9;
-	Mon, 19 Oct 2026 18:15:27 +0800 (CST)
+	by gzga-smtp-mtada-g0-0 (Coremail) with SMTP id _____wD3Hxax7dVq4twABQ--.41578S10;
+	Mon, 19 Oct 2026 18:15:28 +0800 (CST)
 From: Jiale Yao <yaojiale02@163.com>
 To: Felix Fietkau <nbd@nbd.name>,
 	Lorenzo Bianconi <lorenzo@kernel.org>,
@@ -48,23 +48,23 @@ To: Felix Fietkau <nbd@nbd.name>,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
 Cc: Jiale Yao <yaojiale02@163.com>
-Subject: [PATCH 07/10] wifi: mt76: mt7915: validate channel MIB response length
-Date: Mon, 19 Oct 2026 18:15:02 +0800
-Message-Id: <20261019101506.1926943-8-yaojiale02@163.com>
+Subject: [PATCH 08/10] wifi: mt76: mt7915: validate RX rate response length
+Date: Mon, 19 Oct 2026 18:15:03 +0800
+Message-Id: <20261019101506.1926943-9-yaojiale02@163.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20261019101506.1926943-1-yaojiale02@163.com>
 References: <20261019101506.1926943-1-yaojiale02@163.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-CM-TRANSID: _____wD3Hxax7dVq4twABQ--.41578S9
-X-Coremail-Antispam: 1Uf129KBjvdXoWrtFW8tr4UXFy8ur47Gr18uFg_yoWkArX_ur
-	nY9rnxKr18Gw1qkr12k3y293yqy395X3WkZrZ3trW3XwsrAFWfCr9rZwnrGrZF9rn2vF45
-	Gr98CayUAa4agjkaLaAFLSUrUUUUjb8apTn2vfkv8UJUUUU8Yxn0WfASr-VFAUDa7-sFnT
+X-CM-TRANSID: _____wD3Hxax7dVq4twABQ--.41578S10
+X-Coremail-Antispam: 1Uf129KBjvdXoWrur4Utr1rGFWkCry5Ww43GFg_yoWkJrX_ur
+	4v9r9xGr18Gw4qkr12kr47uFWqyaykA3Z5urWrt3yrJ3y7ArWDCrn7ZwnrGrZrW3Z2vF45
+	Jrn8Xa45X34a9jkaLaAFLSUrUUUUjb8apTn2vfkv8UJUUUU8Yxn0WfASr-VFAUDa7-sFnT
 	9fnUUvcSsGvfC2KfnxnUUI43ZEXa7sRiuWl7UUUUU==
-X-CM-SenderInfo: x1dryxhdohiji6rwjhhfrp/xtbCzR+69GrV7b+MHgAA3j
+X-CM-SenderInfo: x1dryxhdohiji6rwjhhfrp/xtbC8AG79WrV7cG0KgAA3y
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261019_031537_252923_51FE0624 
-X-CRM114-Status: UNSURE (   8.36  )
+X-CRM114-CacheID: sfid-20261019_031538_447155_334517E1 
+X-CRM114-Status: UNSURE (   8.38  )
 X-CRM114-Notice: Please train this message.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -80,32 +80,32 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-The channel survey query reads several MIB entries at a chip-specific
-offset without checking that the firmware response reaches those
-entries. A truncated response can cause out-of-bounds reads.
+The RX rate query reads a complete PHY information structure without
+checking the response length. A truncated firmware response can cause
+out-of-bounds reads while decoding the rate.
 
-Validate the offset and complete MIB array before processing it.
+Require the complete PHY RX information structure before using it.
 
-Fixes: 654300281196 ("mt76: mt7915: use mt7915_mcu_get_mib_info() to get survey data")
+Fixes: 11553d88d0b9 ("mt76: mt7915: query station rx rate from firmware")
 Signed-off-by: Jiale Yao <yaojiale02@163.com>
 ---
  drivers/net/wireless/mediatek/mt76/mt7915/mcu.c | 4 ++++
  1 file changed, 4 insertions(+)
 
 diff --git a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
-index 05614b99165b..955c0e6c7cb6 100644
+index 955c0e6c7cb6..00a528694255 100644
 --- a/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
 +++ b/drivers/net/wireless/mediatek/mt76/mt7915/mcu.c
-@@ -3239,6 +3239,10 @@ int mt7915_mcu_get_chan_mib_info(struct mt7915_phy *phy, bool chan_switch)
- 					req, len * sizeof(req[0]), true, &skb);
+@@ -3942,6 +3942,10 @@ int mt7915_mcu_get_rx_rate(struct mt7915_phy *phy, struct ieee80211_vif *vif,
+ 					&req, sizeof(req), true, &skb);
  	if (ret)
  		return ret;
-+	if (skb->len < offs_cc + len * sizeof(*res)) {
++	if (skb->len < sizeof(*res)) {
 +		dev_kfree_skb(skb);
 +		return -EINVAL;
 +	}
  
- 	res = (struct mt7915_mcu_mib *)(skb->data + offs_cc);
+ 	res = (struct mt7915_mcu_phy_rx_info *)skb->data;
  
 -- 
 2.34.1
