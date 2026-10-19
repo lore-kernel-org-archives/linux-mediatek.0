@@ -4,61 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AE9EBCCF2DE
-	for <linux-mediatek@archiver.kernel.org>; Mon, 19 Oct 2026 14:03:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F06F6CCF2DE
+	for <linux-mediatek@archiver.kernel.org>; Mon, 19 Oct 2026 14:04:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:
 	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=sv6rVlir+RBR5HytJBd1kxyg8GjuUSzazSxRgHWQXJ0=; b=K27kkcMftYEVVrWOeCXk7KBzYl
-	WKN8iCiPk+4UUeW36Bu0q0VQ0Bh6/nOHJLJrBC+fVxISiYOLfKoWD+VRctXZgaGiq2qJAvRiNSgwX
-	kZkMgld2OPzPtFOUZ2QhFEfZsl4i9gubbuFYvs9elH34rbab92lwXdpTh00DZNS0K1DULt2/Jo6r7
-	OfSBelgTR40+ATBmubyLVGmOdUQa6J74KuVLKdcnjUaTSmvR0UbPYnS02iX8qRnAs8PAZ+dEs97Mf
-	h0ESX+NTh9TrQBMcbPc+SfXwQr3iaqwKB8zKFSnTgRTu5cmCbToMuwOiRC7w7qQPa8I92zZKSrVCR
-	RqVyV1UA==;
+	bh=gyiydqPIB402NHvOlfWp8G1/q2d5b9orTcF5s5wfi3k=; b=m+UoeNHQ6qB2SY/l71MI4tMHjL
+	/vcxkMEeeeYhtdjISztdgyM9WnU8ZCbNxU2xexm/BCdZEn9wAwtjHtwNWMS8MNlVVtPXyCYpyDxor
+	zgW7nW6fOgcIxIqdKytJVuWhcs7wUqUIIBJn5Xyzr6nhUCWNdbnI8m05WOxHtvHujDrjTkI2swcYh
+	iF+rUcHHwxKWGMm5ASP8CUmAyYKPDUMs97OFG0oMtdq9k5kJxTBpowTp+snw0rTpyo3faPAOX58wh
+	yZJwC+2QF6Fyc4JtbAoxW1e4QGMZilVHHeKacVZhJLxpjedJAKCiNILUROIkZLCVutTycOyE1r9Mx
+	FPvCtxaw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xInxy-00000007fAd-1SF6;
-	Mon, 19 Oct 2026 14:03:54 +0000
+	id 1xInyU-00000007fZb-1TRs;
+	Mon, 19 Oct 2026 14:04:26 +0000
 Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xInxw-00000007f98-3SVx;
-	Mon, 19 Oct 2026 14:03:52 +0000
+	id 1xInyS-00000007fYD-1Mar;
+	Mon, 19 Oct 2026 14:04:24 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id 8CC41417B1;
-	Mon, 19 Oct 2026 14:03:52 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1A3661F000C9;
-	Mon, 19 Oct 2026 14:03:51 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 12F1641A9C;
+	Mon, 19 Oct 2026 14:04:24 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 755491F000C4;
+	Mon, 19 Oct 2026 14:04:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1792418632;
-	bh=sv6rVlir+RBR5HytJBd1kxyg8GjuUSzazSxRgHWQXJ0=;
+	s=k20260515; t=1792418664;
+	bh=gyiydqPIB402NHvOlfWp8G1/q2d5b9orTcF5s5wfi3k=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References;
-	b=Sy9eVxO9FHnAsiqFgAgXpgE0EwvnrsF0PJpA7VSNtfd2K7T62sa28615clRyVNi3o
-	 PIWSaau5ob1MLGp6BPhUCD13+q5CXtSSZzq2z4+p0jOqLIv63N8rWnlXBN5buFWmPU
-	 /HFPX4EobkxsXTr09K14UrmHtHnLCSG7u1yly+zqEbUmZNOloSAJ7L5An59BQyAHpg
-	 rGfL8KwESeQH89wBj+LkBYfMU2n9ALSDyY2UwkEHtDhuW86ARpQu5Vx1M12efksrbN
-	 rMlWynmFS2Fp6/SCImuirwMkJFJkwX7XBk8kTYpHoGooGmv/tk3KHxdqV4p/QIvT8+
-	 u7aUJxTelWYxQ==
+	b=fOuufbP3Nf1awuWPKTfmjJKfVuk6DZZEeVgJ8mO++uD2M/5qF/T9xl1alJKTz6mps
+	 jo+rNhpE5JIZaFdM2onr8IeHNd7re7RuwMHBU+CI0KAloUWZsERnSI467sOs0QyAtx
+	 Uk4lxcFU6Cm5DRRq37bvfuPj17J6HDE1BQaDWaE14/jHPoDi3mfOEz3pXhQ2EzLlBf
+	 8u3FcJuiO46FtpnurDWOK5n5kwNBFe2gGXvOFnCJ893EiuBvPS84HRZQpVFNPphth0
+	 gjBmtoJoIfrHwYWIr1qeE3JxLVuY1MEddK5k/4UsKmEFTl1nPVmxKzIjnJODja3hhD
+	 XTXel5xgZLsRA==
 From: Sasha Levin <sashal@kernel.org>
 To: patches@lists.linux.dev,
 	stable@vger.kernel.org
-Cc: Devin Wittmayer <lucid_duck@justthetip.ca>,
-	0072a70 <90307219+0072a70@users.noreply.github.com>,
-	Felix Fietkau <nbd@nbd.name>,
+Cc: Pengpeng Hou <pengpeng@iscas.ac.cn>,
+	Brian Masney <bmasney@redhat.com>,
 	Sasha Levin <sashal@kernel.org>,
-	lorenzo@kernel.org,
-	ryder.lee@mediatek.com,
+	y.oudjana@protonmail.com,
+	sboyd@kernel.org,
+	bmasney+clk@redhat.com,
+	jbrunet+clk@baylibre.com,
 	matthias.bgg@gmail.com,
 	angelogioacchino.delregno@collabora.com,
-	linux-wireless@vger.kernel.org,
+	linux-clk@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: [PATCH AUTOSEL 6.18-5.10] wifi: mt76: mt76x02: report rx FCS errors to mac80211
-Date: Mon, 19 Oct 2026 09:51:18 -0400
-Message-ID: <20261019135441.1420968-387-sashal@kernel.org>
+	linux-arm-kernel@lists.infradead.org
+Subject: [PATCH AUTOSEL 6.18] clk: mediatek: mt6735-vdecsys: add missing MODULE_DEVICE_TABLE()
+Date: Mon, 19 Oct 2026 09:51:40 -0400
+Message-ID: <20261019135441.1420968-409-sashal@kernel.org>
 X-Mailer: git-send-email 2.53.0
 In-Reply-To: <20261019135441.1420968-1-sashal@kernel.org>
 References: <20261019135441.1420968-1-sashal@kernel.org>
@@ -82,408 +83,375 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Devin Wittmayer <lucid_duck@justthetip.ca>
+From: Pengpeng Hou <pengpeng@iscas.ac.cn>
 
-[ Upstream commit ddae0bcb01e71c1184bb3f526f9622e31dc38f3b ]
+[ Upstream commit 096ab64a0e69460bfb3557d09e17d2933280a1c6 ]
 
-When the fcsfail filter is enabled the hardware passes frames with a bad
-FCS up to the driver, but mt76x02_mac_process_rx() never checks
-MT_RXINFO_CRCERR and hands them to mac80211 without
-RX_FLAG_FAILED_FCS_CRC. In monitor mode the radiotap flags byte then
-never gets IEEE80211_RADIOTAP_F_BADFCS set and corrupted frames cannot be
-told apart from clean ones.
+The driver has an OF match table wired to .of_match_table, but does
+not export the table with MODULE_DEVICE_TABLE().
 
-Set RX_FLAG_FAILED_FCS_CRC from the descriptor CRC error bit, matching
-mt7603, mt7615, mt7915, mt7921, mt7925 and mt7996.
+Add the missing MODULE_DEVICE_TABLE(of, ...) entry so module alias
+information is generated for OF based module autoloading.
 
-Reported-by: 0072a70 <90307219+0072a70@users.noreply.github.com>
-Closes: https://github.com/morrownr/mt76/issues/38
-Tested-by: 0072a70 <90307219+0072a70@users.noreply.github.com>
-Signed-off-by: Devin Wittmayer <lucid_duck@justthetip.ca>
-Link: https://patch.msgid.link/20260613002544.27750-3-lucid_duck@justthetip.ca
-Signed-off-by: Felix Fietkau <nbd@nbd.name>
+This is a source-level fix.  It does not claim dynamic hardware
+reproduction; the evidence is the driver-owned match table, its use by
+the platform driver, and the missing module alias publication.
+
+Signed-off-by: Pengpeng Hou <pengpeng@iscas.ac.cn>
+Reviewed-by: Brian Masney <bmasney@redhat.com>
+Signed-off-by: Brian Masney <bmasney@redhat.com>
 Signed-off-by: Sasha Levin <sashal@kernel.org>
 ---
 
 LLM Generated explanations, may be completely bogus:
 
-## Phase 1: Commit message forensics
+The local tree is **7.3.0-rc4** (`v7.3-rc4-27-gf0100363d8c37`). The
+vdecsys driver is present here; the change is a one-line
+`MODULE_DEVICE_TABLE(of, ...)` so OF module aliases are generated.
 
-**Step 1.1 — Subject**
-- Record: `[wifi: mt76: mt76x02]` `[report]` `[report rx FCS errors to
-  mac80211]`
-- Subsystem is MediaTek mt76, mt76x02 family (mt76x0 / mt76x2 PCI and
-  USB). “Report” here is a correctness fix: the driver already receives
-  CRC-failed frames and must mark them.
+===============================================================
+PHASE 1: COMMIT MESSAGE FORENSICS
+===============================================================
 
-**Step 1.2 — Tags**
-- Record:
-  - `Reported-by: 0072a70 <90307219+0072a70@users.noreply.github.com>` —
-    real user hit
-  - `Closes: https://github.com/morrownr/mt76/issues/38`
-  - `Tested-by:` same reporter, on real hardware
-  - `Signed-off-by: Devin Wittmayer` (author)
-  - `Link: https://patch.msgid.link/20260613002544.27750-3-
-    lucid_duck@justthetip.ca`
-  - `Signed-off-by: Felix Fietkau` (mt76 maintainer)
-  - No `Fixes:` tag (expected for this review)
-  - No `Cc: stable` (expected; not a negative)
-  - Ignore any pipeline `Signed-off-by: Sasha Levin` / `[Upstream commit
-    ...]`
+**Step 1.1: PARSE THE SUBJECT LINE**
+Record: [clk: mediatek] [add] [missing MODULE_DEVICE_TABLE() for
+mt6735-vdecsys]
 
-**Step 1.3 — Body**
-- Record:
-  - **Bug:** With the `fcsfail` filter enabled, hardware delivers frames
-    with `MT_RXINFO_CRCERR` set. `mt76x02_mac_process_rx()` never reads
-    that bit, so mac80211 never gets `RX_FLAG_FAILED_FCS_CRC`.
-  - **Symptom:** In monitor mode, radiotap never sets
-    `IEEE80211_RADIOTAP_F_BADFCS`; corrupted frames look identical to
-    clean ones.
-  - **Root cause:** Missing descriptor-bit → `rx_status` translation.
-    Other mt76 chips already do this.
-  - **Version info in the message:** none. Reporter used kernel 7.0.x;
-    the code path is much older (see Phase 3).
+**Step 1.2: PARSE ALL COMMIT MESSAGE TAGS**
+Record:
+- Signed-off-by: Pengpeng Hou \<pengpeng@iscas.ac.cn\> (author)
+- Reviewed-by: Brian Masney \<bmasney@redhat.com\> (clk co-maintainer;
+  also committed the patch)
+- Signed-off-by: Brian Masney \<bmasney@redhat.com\>
+- No Fixes:, Reported-by:, Tested-by:, Link:, or Cc: stable
+- Ignore any pipeline-added Sasha Levin SOB (none on this commit)
 
-**Step 1.4 — Hidden bug fix?**
-- Record: Not disguised. It is an explicit missing-flag fix that
-  implements the documented mac80211 contract for `FIF_FCSFAIL`.
+**Step 1.3: ANALYZE THE COMMIT BODY TEXT**
+Record:
+- Bug: OF match table is wired to `.of_match_table` but not exported
+  with `MODULE_DEVICE_TABLE()`, so modpost does not emit `of:` aliases.
+- Symptom: when `CONFIG_COMMON_CLK_MT6735_VDECSYS=m`, udev/kmod cannot
+  autoload `clk-mt6735-vdecsys.ko` from the DT compatible string;
+  vdecsys clocks/resets never register unless the module is loaded by
+  hand.
+- Version info: none in the message. Driver introduced in
+  `0bd9b1211f741` (contained in v6.13-rc1); this fix is contained in
+  v7.3-rc1.
+- Root cause: omission at driver introduction, not a later regression.
 
-## Phase 2: Diff analysis
+**Step 1.4: DETECT HIDDEN BUG FIXES**
+Record: Not hidden. It is an explicit autoload/alias publication fix.
+Author calls it a “source-level fix” with no hardware reproduction; that
+is accurate (the missing macro is visible in the file) and does not make
+the bug theoretical.
 
-**Step 2.1 — Inventory**
-- Record: one file, `drivers/net/wireless/mediatek/mt76/mt76x02_mac.c`.
-  Three lines added, none removed. Function: `mt76x02_mac_process_rx()`.
-  Surgical single-file change.
+===============================================================
+PHASE 2: DIFF ANALYSIS - LINE BY LINE
+===============================================================
 
-**Step 2.2 — Flow**
-- Record: After the existing `MT_RXINFO_L2PAD` check, if `rxinfo &
-  MT_RXINFO_CRCERR`, set `status->flag |= RX_FLAG_FAILED_FCS_CRC`.
-  Normal RX is unchanged for clean frames. Error/monitor path for CRC-
-  failed frames is now marked.
+**Step 2.1: INVENTORY THE CHANGES**
+Record:
+- File: `drivers/clk/mediatek/clk-mt6735-vdecsys.c` (+1 / -0)
+- Function/data: file-scope after `of_match_mt6735_vdecsys[]`
+- Scope: single-file, one-line surgical fix
 
-**Step 2.3 — Bug mechanism**
-- Record: **Logic / correctness** (driver contract). Hardware already
-  passes CRC-failed frames when `FIF_FCSFAIL` is on
-  (`MT76_FILTER(FCSFAIL, MT_RX_FILTR_CFG_CRC_ERR)` in
-  `mt76x02_configure_filter()`). The driver failed to set the flag
-  mac80211 requires (`include/net/mac80211.h`: *“pass frames with failed
-  FCS (but you need to set RX_FLAG_FAILED_FCS_CRC for them)”*).
+**Step 2.2: UNDERSTAND THE CODE FLOW CHANGE**
+Record: Before: match table exists and is used for in-kernel platform
+matching, but no module alias is published. After:
+`MODULE_DEVICE_TABLE(of, of_match_mt6735_vdecsys)` aliases the table for
+`file2alias`/modpost. Affects the modular autoload path only;
+probe/remove logic is unchanged.
 
-Verified mac80211 consequences in this tree:
-- `ieee80211_add_rx_radiotap_header()` sets
-  `IEEE80211_RADIOTAP_F_BADFCS` only if that flag is present
-  (`net/mac80211/rx.c`).
-- `should_drop_frame()` treats `RX_FLAG_FAILED_FCS_CRC` as drop-from-
-  cooked-path. Without it, `ieee80211_rx_monitor()` copies the frame to
-  monitor and **returns the original skb** to
-  `__ieee80211_rx_handle_packet()`. FCS-failed frames can therefore
-  enter the cooked RX path whenever `fcsfail` is enabled (including
-  concurrent monitor + STA/AP).
+**Step 2.3: IDENTIFY THE BUG MECHANISM**
+Record: [Hardware enablement / module autoload] `MODULE_DEVICE_TABLE` is
+the OF analog of exporting PCI/USB IDs. Without it, `modules.alias`
+lacks `of:N*T*Cmediatek,mt6735-vdecsys`. Platform matching still works
+if the module is already loaded or built-in.
 
-**Step 2.4 — Fix quality**
-- Record: Obviously correct; same pattern as
-  `mt7603`/`mt7615`/`mt7915`/`mt7921`/`mt7996` in this tree. Minimal.
-  Regression risk is low: only CRCERR frames get a flag they should
-  already have. Clean frames are untouched. Does not add APIs or change
-  locking.
+**Step 2.4: ASSESS THE FIX QUALITY**
+Record: Obviously correct; matches the established MediaTek clk pattern
+(`65c9ad77cbc0e` “Add MODULE_DEVICE_TABLE() where appropriate”).
+Compile-time alias generation only; no locking, no API, no runtime path
+change. Regression risk is negligible. Sibling `clk-mt6735-imgsys.c` /
+`clk-mt6735-mfgcfg.c` still lack the macro in this tree; that does not
+make this hunk wrong.
 
-## Phase 3: Git history
+===============================================================
+PHASE 3: GIT HISTORY INVESTIGATION
+===============================================================
 
-**Step 3.1 — Blame**
-- Record: Insertion point is the 2018 `mt76x02_mac_process_rx()` body
-  from `d9f8934ed147b3` (“mt76: move mt76x02_mac_process_rx in
-  mt76x02-lib module”), 2018-10-04, first contained in **v4.20-rc1**.
-  `MT_RXINFO_CRCERR` is defined in `mt76x02_mac.h:54` since
-  `5327b5ea13910d` (2018-09-04). The bit has been defined for years and
-  never consumed in RX processing.
+**Step 3.1: BLAME THE CHANGED LINES**
+Record: Match table from `0bd9b1211f741` (Yassine Oudjana, 2024-11-06;
+contained in v6.13-rc1). `MODULE_DEVICE_TABLE` line is this commit
+`096ab64a0e694`. Bug present from first introduction of the driver.
 
-**Step 3.2 — Fixes: tag**
-- Record: None. The omission dates to the original mt76x02 RX path, not
-  a later regression.
+**Step 3.2: FOLLOW THE FIXES: TAG**
+Record: No Fixes: tag on this commit. A later unrelated series (`[PATCH
+07/32] clk: mediatek: mt6735: Add missing MODULE_DEVICE_TABLE()`) cited
+`Fixes: 0bd9b1211f74` for the same omission across four files. Intro
+commit is an ancestor of HEAD.
 
-**Step 3.3 — File history**
-- Record: Same-function sibling from the same series is already in this
-  tree: `b6e7958602bd1` (“do not WARN on invalid rx descriptor length”).
-  That is patch 1/2 of `[PATCH 0/2] wifi: mt76: mt76x02: rx fixes for
-  fcsfail monitor mode`. This candidate is patch 2/2. They touch
-  different lines; this one does not depend on patch 1. `git apply
-  --check` of this hunk on HEAD is **clean**. No other FCS reporting
-  commit exists on this file.
+**Step 3.3: CHECK FILE HISTORY FOR RELATED CHANGES**
+Record: Only two commits on this file: intro + this fix. Sibling same-
+day commit `36cf8d279ff90` does the same for vencsys. Standalone for
+vdecsys; no prerequisite refactor.
 
-**Step 3.4 — Author**
-- Record: Devin Wittmayer; not the subsystem maintainer. Maintainer
-  Felix Fietkau signed off. Author also submitted the sibling WARN fix.
-  Related author commits in this tree: `b6e7958602bd1`, plus unrelated
-  mt7615/mt7921 TXRX_NOTIFY drops.
+**Step 3.4: CHECK THE AUTHOR'S OTHER COMMITS**
+Record: Pengpeng Hou is not the MT6735 clk maintainer (that is Yassine
+Oudjana). Same-day vencsys twin plus several other `MODULE_DEVICE_TABLE`
+additions (rtc, vdpa, watchdog). Brian Masney, clk co-maintainer,
+reviewed and applied it.
 
-**Step 3.5 — Prerequisites**
-- Record: None beyond symbols already in 6.6: `MT_RXINFO_CRCERR`,
-  `RX_FLAG_FAILED_FCS_CRC`, `status->flag`. Commit text mentions mt7925;
-  that chip need not exist here — it is comparison only. Standalone
-  apply: yes.
+**Step 3.5: CHECK FOR DEPENDENT/PREREQUISITE COMMITS**
+Record: None. Macro has long existed in `include/linux/module.h`.
+Applies standalone.
 
-## Phase 4: Mailing list / external research
+===============================================================
+PHASE 4: MAILING LIST AND EXTERNAL RESEARCH
+===============================================================
 
-**Step 4.1 — Original discussion**
-- Record: `b4 dig -c <sha>` cannot match because this commit is not in
-  the local history. Fallback: `b4 mbox
-  20260613002544.27750-3-lucid_duck@justthetip.ca`.
-  - Cover: https://patch.msgid.link/20260613002544.27750-1-
-    lucid_duck@justthetip.ca
-  - Series: v1 only (`b4 am --check-newer-revisions`: no later
-    revision).
-  - Two patches; this is 2/2.
-  - Cover: tested on MT7612U and MT7610U; fcsfail monitor captures get
-    BADFCS on corrupted frames, clean frames unchanged.
-  - No NAKs in the retrieved thread (cover + 2 patches, no review
-    replies). Applied by Felix Fietkau.
-  - Lore HTTP fetch returned 403; b4 was used instead.
+**Step 4.1: FIND THE ORIGINAL PATCH DISCUSSION**
+Record:
+- Lore/msgid:
+  https://patch.msgid.link/20260704124450.11035-1-pengpeng@iscas.ac.cn
+- `b4 dig -a`: v1 only, applied as submitted
+- Thread (mbox): author post + Brian Masney `Reviewed-by:` on
+  2026-07-06. No NAK, no stable nomination, no requested revisions.
+- WebFetch of lore/spinics: 403/500; thread recovered via `b4 dig -m`.
 
-**Step 4.2 — Recipients**
-- Record: To Felix Fietkau, Lorenzo Bianconi; Cc Ryder Lee, Shayne Chen,
-  Sean Wang, linux-wireless, linux-kernel. Right maintainers/lists.
+**Step 4.2: CHECK WHO REVIEWED THE PATCH**
+Record (`b4 dig -w`): linux-clk, linux-mediatek, Stephen Boyd, Brian
+Masney, AngeloGioacchino Del Regno, Matthias Brugger, Yassine Oudjana.
+Review came from clk co-maintainer Brian Masney.
 
-**Step 4.3 — Bug report**
-- Record: GitHub issue #38 (closed). Hardware: Alfa AWUS036ACM, mt7612u,
-  driver mt76x2u. With `iw set monitor fcsfail`, radiotap flags were
-  always `0x00`; `radiotap.flags.badfcs == 1` matched 0 of 2978 frames.
-  After this exact three-line change: 956/7353 frames had BADFCS `0x40`,
-  clean frames stayed `0x00`. Confirmed on-list/issue by the reporter
-  (`Tested-by`).
+**Step 4.3: SEARCH FOR THE BUG REPORT**
+Record: No Reported-by, no bugzilla/syzbot. Author states source-level
+evidence only. No in-tree DTS uses `mediatek,mt6735-vdecsys` (binding
+only in `Documentation/devicetree/bindings/clock/mediatek,syscon.yaml`).
 
-**Step 4.4 — Series context**
-- Record: Patch 1 (WARN on bogus MPDU length under fcsfail) is already
-  in this 6.6 tree. Patch 2 is the functional reporting fix.
-  Independent; both target the same user-visible fcsfail path.
+**Step 4.4: CHECK FOR RELATED PATCHES AND SERIES**
+Record: Twin vencsys patch applied in the same pile. Later 07/32 series
+(Akari Tsuyukusa, Aug 2026) would have covered
+imgsys+mfgcfg+vdecsys+vencsys together; vdecsys/vencsys were already
+fixed here. This commit does not depend on that series.
 
-**Step 4.5 — stable@ discussion**
-- Record: lore.kernel.org/stable HTTP 403. No separate stable-thread
-  evidence retrieved. Absence is not a negative for this review.
+**Step 4.5: CHECK STABLE MAILING LIST HISTORY**
+Record: No dedicated stable thread found for this subject. UNVERIFIED
+whether an AUTOSEL pick already exists; that must not drive the verdict.
 
-## Phase 5: Semantic / call-chain analysis
+===============================================================
+PHASE 5: CODE SEMANTIC ANALYSIS
+===============================================================
 
-**Step 5.1 — Functions**
-- Record: `mt76x02_mac_process_rx()`.
+**Step 5.1: IDENTIFY KEY FUNCTIONS IN THE DIFF**
+Record: No function body changed. Added `MODULE_DEVICE_TABLE` next to
+`of_match_mt6735_vdecsys`. Driver uses `mtk_clk_simple_probe` /
+`mtk_clk_simple_remove` via `module_platform_driver`.
 
-**Step 5.2 — Callers**
-- Record: Only `mt76x02_queue_rx_skb()` in `mt76x02_txrx.c` (data RX,
-  not MCU queue). That is the USB/PCI RX completion path for mt76x0 and
-  mt76x2.
+**Step 5.2: TRACE CALLERS**
+Record: Probe is invoked by the platform core when a device matches
+`mediatek,mt6735-vdecsys`. Autoload (udev/kmod) is the path that was
+broken for `=m`. Built-in (`=y`) matching already worked via
+`.of_match_table`.
 
-**Step 5.3 — Callees (relevant)**
-- Record: Sets `struct mt76_rx_status` in `skb->cb`, then `mt76_rx()` →
-  mac80211. `mt76_rx()` already counts `RX_FLAG_FAILED_FCS_CRC` for
-  testmode FCS stats (`mac80211.c`).
+**Step 5.3: TRACE CALLEES**
+Record: `mtk_clk_simple_probe()` (`drivers/clk/mediatek/clk-mtk.c`)
+registers the vdecsys gates and resets from `vdecsys_clks`. Unchanged by
+this patch.
 
-**Step 5.4 — Reachability**
-- Record: Userspace-reachable: `iw set type monitor` + `iw set monitor
-  fcsfail` (nl80211 `NL80211_MNTR_FLAG_FCSFAIL` →
-  `ieee80211_adjust_monitor_flags()` → `fif_fcsfail` → `FIF_FCSFAIL` →
-  hardware CRC filter cleared). Common on USB adapters used for capture
-  (Alfa AWUS036ACM and similar).
+**Step 5.4: FOLLOW THE CALL CHAIN**
+Record: DT node `compatible = "mediatek,mt6735-vdecsys"` → (modular)
+udev alias lookup → `clk-mt6735-vdecsys.ko` → platform probe → video-
+decoder clocks. Reachable on MT6735 boards that describe that syscon; no
+in-tree board DTS. Unprivileged userspace cannot trigger it except by
+loading the module.
 
-**Step 5.5 — Similar patterns**
-- Record: Same `status->flag |= RX_FLAG_FAILED_FCS_CRC` already present
-  in this tree for mt7603, mt7615, mt7915, mt7921, mt7996. mt76x02 is
-  the gap. `MT_RXINFO_ICVERR` / `MT_RXINFO_MICERR` are also unused here;
-  out of scope for this patch.
+**Step 5.5: SEARCH FOR SIMILAR PATTERNS**
+Record: Most MediaTek clk drivers already have `MODULE_DEVICE_TABLE`.
+MT6735 core clocks (apmixedsys/infracfg/pericfg/topckgen) have it;
+imgsys and mfgcfg in this tree still do not. Same class of omission as
+the 2023 sweep `65c9ad77cbc0e`.
 
-## Phase 6: This tree (6.6.157 / pending-6.6)
+===============================================================
+PHASE 6: CROSS-REFERENCING AGAINST THE LOCAL TREE
+===============================================================
 
-**Step 6.1 — Does the buggy code exist?**
-- Record: Yes. `mt76x02_mac_process_rx()` at `mt76x02_mac.c:794–797` has
-  L2PAD then DECRYPT; no CRCERR check. `MT_RXINFO_CRCERR` is defined.
-  `git merge-base --is-ancestor d9f8934ed147b3 HEAD` succeeded. Bug
-  present since ~v4.20, so it is in 6.6.y.
+**Step 6.1: DOES THE BUGGY CODE EXIST IN THIS TREE?**
+Record: Yes. File exists; driver from `0bd9b1211f741` (v6.13-rc1).
+Kconfig `COMMON_CLK_MT6735_VDECSYS` is **tristate**, Makefile maps it to
+`clk-mt6735-vdecsys.o`. HEAD already contains `096ab64a0e694`
+(v7.3-rc1); the pre-fix omission is the code this candidate addresses.
 
-Local tree identity:
-- `git describe HEAD` → `p-6.6-3-g04810563abb71`
-- `make kernelversion` → **6.6.157**
-- Branch: `pending-6.6`
+**Step 6.2: CHECK FOR BACKPORT COMPLICATIONS**
+Record: Clean apply. One added line at a stable match-table site; no
+refactor around it.
 
-**Step 6.2 — Backport difficulty**
-- Record: **Clean apply.** Context matches; `git apply --check`
-  succeeded. Surrounding code is the same as the patch’s index.
+**Step 6.3: CHECK IF RELATED FIXES ARE ALREADY HERE**
+Record: This exact line is present (commit `096ab64a0e694`). No
+alternate fix. imgsys/mfgcfg still missing aliases — separate omissions.
 
-**Step 6.3 — Related fixes already here**
-- Record: No existing CRCERR → `RX_FLAG_FAILED_FCS_CRC` translation.
-  Sibling WARN fix `b6e7958602bd1` is present (different hunk).
-  `63fe66f102837` (mt7996 FCS bit in wrong RXD word) is a different
-  chip.
+===============================================================
+PHASE 7: SUBSYSTEM AND MAINTAINER CONTEXT
+===============================================================
 
-## Phase 7: Subsystem context
+**Step 7.1: IDENTIFY THE SUBSYSTEM AND ITS CRITICALITY**
+Record: [drivers/clk/mediatek] [PERIPHERAL] — SoC-specific video-decoder
+clock/reset driver for MT6735 (Helio T1 era). Not core mm/net/fs.
 
-**Step 7.1**
-- Record: `drivers/net/wireless/mediatek/mt76` — **IMPORTANT** (widely
-  used WiFi, not core mm/vfs). Covers MT76x0U/E and MT76x2U/E (`Kconfig`
-  MT7610/MT7612 USB and PCIe). Peripheral relative to core kernel, but
-  these USB NICs are common in the field.
+**Step 7.2: ASSESS SUBSYSTEM ACTIVITY**
+Record: MediaTek clk is actively developed; this file itself is quiet
+(two commits). MT6735 clk is listed Maintained (Yassine Oudjana).
 
-**Step 7.2**
-- Record: mt76 is active; mt76x02 RX processing itself has been stable
-  for years. This is a long-standing omission, not churn from a new
-  subsystem.
+===============================================================
+PHASE 8: IMPACT AND RISK ASSESSMENT
+===============================================================
 
-## Phase 8: Impact and risk
+**Step 8.1: DETERMINE WHO IS AFFECTED**
+Record: Users of MT6735 with `CONFIG_COMMON_CLK_MT6735_VDECSYS=m`. No
+in-tree defconfig enables `COMMON_CLK_MT6735`; no in-tree DTS
+instantiates the node. Built-in builds are unaffected.
 
-**Step 8.1 — Who is affected**
-- Record: Users of mt76x0/mt76x2 (USB and PCIe) who enable monitor
-  `fcsfail`. Normal STA/AP-only operation keeps the hardware CRC filter
-  on, so those users are not on this path. Mixed monitor+managed on the
-  same phy is affected for cooked RX.
+**Step 8.2: DETERMINE THE TRIGGER CONDITIONS**
+Record: Boot/enumeration with the DT node while the driver is a module.
+Not a race. Not unprivileged-exploitable. Workaround: `modprobe clk-
+mt6735-vdecsys` or build `=y`.
 
-**Step 8.2 — Trigger**
-- Record: Explicit monitor `fcsfail` (and typically a busy channel). Not
-  every boot. Unprivileged users cannot enable monitor without
-  privileges, so this is not a generic local-priv-esc path; it is a
-  privileged capture/correctness bug.
+**Step 8.3: DETERMINE THE FAILURE MODE SEVERITY**
+Record: Video-decoder clocks/resets never appear unless the module is
+loaded manually → decode/VPU consumers fail clock lookup. Not
+panic/UAF/corruption. Severity: MEDIUM for modular MT6735 vdec; LOW
+overall population. Failure is “device feature does not come up,” same
+class as missing device IDs.
 
-**Step 8.3 — Failure mode**
-- Record:
-  - Monitor: corrupted frames indistinguishable from good ones (broken
-    advertised filter). **MEDIUM** for dedicated capture.
-  - Cooked path: FCS-failed frames can be processed as valid 802.11 when
-    `fcsfail` is on. That is frame-integrity / stack-correctness, not a
-    panic. **MEDIUM–HIGH** in mixed-iface setups; not a guaranteed oops.
-  - Overall severity: **MEDIUM**, with a real user-visible functional
-    break and a documented driver-API violation.
+**Step 8.4: CALCULATE RISK-BENEFIT RATIO**
+Record: Benefit: modular autoload for this clock controller. Risk: very
+low (one compile-time alias line). Ratio: favorable because risk is
+essentially zero.
 
-**Step 8.4 — Risk vs benefit**
-- Record: **Benefit: medium** (correct FCS reporting; stop garbage
-  frames leaking into cooked RX). **Risk: very low** (3 lines, same
-  pattern as sibling chips, no lock/API change). Ratio favors backport.
+===============================================================
+PHASE 9: FINAL SYNTHESIS
+===============================================================
 
-## Phase 9: Synthesis
+**Step 9.1: COMPILE THE EVIDENCE**
 
-**Step 9.1 — Evidence**
+FOR:
+- Real autoload bug on a tristate, `module_platform_driver` clock driver
+- One-line, obviously correct, clk co-maintainer Reviewed-by + applied
+- Same class as device-ID / quirk enablement (OF alias publication)
+- Established MediaTek clk precedent (`65c9ad77cbc0e`: “allow auto-load
+  at boot”)
+- Zero runtime/API/locking risk; applies cleanly
+- Buggy driver exists in this 7.3 tree (since v6.13)
 
-For:
-- Real, reproduced bug (GitHub #38; Tested-by on MT7612U; author also
-  tested MT7610U).
-- Violates mac80211 `FIF_FCSFAIL` contract; radiotap BADFCS never set.
-- FCS-failed frames can continue into `__ieee80211_rx_handle_packet()`
-  without the flag.
-- Three-line, obviously correct, matches every other mt76 MAC in this
-  tree.
-- Applies cleanly to 6.6.157; symbols and call path exist.
-- Maintainer SOB (Felix Fietkau).
-- Popular USB hardware (e.g. Alfa AWUS036ACM).
+AGAINST:
+- Not crash/security/corruption/deadlock
+- No user report or hardware test
+- Niche SoC; no in-tree DTS/defconfig
+- Built-in configs already work
+- Author framed it as source-level only
 
-Against:
-- Not a crash/UAF/deadlock; mainly monitor-mode correctness plus cooked-
-  path leakage only when `fcsfail` is enabled.
-- No `Fixes:` (omission from original driver, not a later regression).
-- Affects a subset of mt76x02 users, not all machines.
+UNRESOLVED:
+- Whether AUTOSEL/stable already discussed this hash (lore.kernel.org
+  stable search not useful)
+- Direct fetch of lore HTML (403)
 
-Unresolved:
-- Direct lore.kernel.org HTTP was 403; discussion recovered via b4.
-- No independent stable@ thread found.
+**Step 9.2: APPLY THE STABLE RULES CHECKLIST**
+1. Obviously correct and tested? **PASS** — one-line alias export;
+   reviewed by clk co-maintainer. No HW test, but correctness does not
+   depend on runtime.
+2. Fixes a real bug that affects users? **PASS** — modular OF autoload
+   is broken by construction when the table is not exported.
+3. Important issue? **PASS** (MEDIUM) — hardware clocks do not come up
+   on the intended modular path; same practical class as missing device
+   IDs, not a panic.
+4. Small and contained? **PASS** — +1 line, one file.
+5. No new features or APIs? **PASS** — publishes an existing match
+   table.
+6. Can apply to the local tree? **PASS** — file and match table exist;
+   hunk is identical.
 
-**Step 9.2 — Stable rules**
-1. Obviously correct and tested? **PASS** — 3 lines, hardware-tested,
-   maintainer-acked.
-2. Real bug affecting users? **PASS** — reporter could not tell bad-FCS
-   frames apart; contract violation is in-tree.
-3. Important issue? **PASS** (medium) — broken advertised monitor filter
-   plus cooked-path delivery of CRC-failed frames. Not a panic, but it
-   is a real correctness/integrity bug, not a feature.
-4. Small and contained? **PASS** — +3 lines, one function.
-5. No new features/APIs? **PASS** — sets an existing `rx_status` flag
-   other mt76 chips already set.
-6. Can apply to this tree? **PASS** — clean apply on 6.6.157.
+**Step 9.3: CHECK FOR EXCEPTION CATEGORIES**
+Record: Device-ID / module-alias publication for an existing driver (OF
+`MODULE_DEVICE_TABLE`). That exception applies.
 
-**Step 9.3 — Exception category**
-- Record: Not a device-ID/quirk/DT/build/docs exception. Ordinary small
-  driver correctness fix.
+**Step 9.4: MAKE YOUR DECISION**
+The bug is real for `=m` builds, the fix is trivial and already the
+subsystem’s standard pattern, and this tree has the driver. Conservative
+stable practice still takes this class because the downside is nil and
+the upside is the driver actually binding.
 
-**Step 9.4 — Decision**
-This tree is **6.6.157**. The buggy RX path, `MT_RXINFO_CRCERR`, and
-mac80211 flag handling are all present. The patch is a tiny, tested,
-maintainer-accepted fix for a user-visible bug on hardware this driver
-supports. Benefit clearly outweighs risk.
+===============================================================
+What the commit solves, and why it matters here
+===============================================================
 
----
+Without `MODULE_DEVICE_TABLE(of, of_match_mt6735_vdecsys)`, modpost
+never emits the `of:N*T*Cmediatek,mt6735-vdecsys` alias. On this tree
+the Kconfig is tristate, so a modular vdecsys driver will not autoload;
+video-decoder clocks and resets never register until someone loads the
+module by name. Built-in matching via `.of_match_table` was already
+fine.
 
-### What the commit solves for 6.6 users
+It meets stable rules: obviously correct, one line, no new API, no
+dependencies, and it is the OF equivalent of adding a device ID to an
+existing driver. Risk is compile-time alias generation only.
 
-mt76x02 already programs the hardware to deliver CRC-failed frames when
-monitor `fcsfail` is set, but never tells mac80211. Users of
-MT7610/MT7612 USB and PCIe adapters then see every frame as clean in
-radiotap, and those frames can also continue into the normal RX
-handlers. The fix sets `RX_FLAG_FAILED_FCS_CRC` from `MT_RXINFO_CRCERR`,
-which is what this tree already does for later mt76 chips.
-
-### Stable-rule fit
-
-Small, obviously correct, no new API, applies cleanly, real user-visible
-bug. Importance is monitor/FCS integrity rather than a panic; that is
-still within what stable takes for driver contract bugs of this size.
-
-### Risk vs benefit
-
-Very low risk (three lines, clean frames unchanged). Medium benefit for
-mt76x02 monitor users and mixed-iface setups.
-
-### Concerns
-
-No functional dependencies. Series mate (WARN drop) is already in this
-tree but is not required for this hunk. mt7925 in the commit message is
-comparison only.
-
----
+Concerns: no in-tree board uses this compatible, no reporter, not a
+crash. Those lower breadth of impact; they do not make the hunk unsafe
+or non-bugfix.
 
 Verification:
-- [Phase 1] Parsed tags: Reported-by/Tested-by 0072a70, Closes
-  github.com/morrownr/mt76/issues/38, Link msgid `...27750-3...`, SOB
-  Felix Fietkau; no Fixes/Cc:stable
-- [Phase 2] Diff: +3 lines in `mt76x02_mac_process_rx()` after L2PAD;
-  sets `RX_FLAG_FAILED_FCS_CRC` from `MT_RXINFO_CRCERR`
-- [Phase 2] Confirmed `mt76x02_configure_filter()` maps `FIF_FCSFAIL` →
-  clear `MT_RX_FILTR_CFG_CRC_ERR`
-- [Phase 2] Confirmed mac80211 `should_drop_frame()` / radiotap BADFCS /
-  `ieee80211_rx_monitor()` cooked-path return behavior in this tree
-- [Phase 3] `git blame`: insertion region from `d9f8934ed147b3` (2018);
-  `git merge-base --is-ancestor` true; `git describe --contains` →
-  v4.20-rc1
-- [Phase 3] `MT_RXINFO_CRCERR` defined at `mt76x02_mac.h:54`; `git grep`
-  shows it is unused in `.c` files in this tree
-- [Phase 3] Sibling `b6e7958602bd1` already in HEAD; this hunk
-  independent; `git apply --check` CLEAN
-- [Phase 4] `b4 mbox` saved 3-message series; cover tested
-  MT7612U/MT7610U; `b4 am --check-newer-revisions` = v1 only, no NAKs
-- [Phase 4] WebFetch of GitHub issue #38: reproduced 0 BADFCS; after
-  patch 956/7353 frames flagged
-- [Phase 4] lore.kernel.org WebFetch: 403 — UNVERIFIED via HTTP;
-  recovered via b4
-- [Phase 5] Only caller: `mt76x02_queue_rx_skb()`; chips: MT76x0U/E,
-  MT76x2U/E
-- [Phase 5] Same flag already set in mt7603/mt7615/mt7915/mt7921/mt7996
-  in this checkout
-- [Phase 6] `git describe HEAD` p-6.6-3-g04810563abb71; `make
-  kernelversion` 6.6.157; buggy code present; fix not applied
-- [Phase 8] Failure mode: wrong radiotap + possible cooked-path delivery
-  of CRC-failed frames; not a panic
-- UNVERIFIED: stable@ mailing-list thread content (HTTP 403)
+- [Phase 1] Parsed commit `096ab64a0e694`: SOB Pengpeng Hou; Reviewed-
+  by/SOB Brian Masney; no Fixes/Reported-by/Cc: stable
+- [Phase 2] Diff: +1 `MODULE_DEVICE_TABLE(of, of_match_mt6735_vdecsys)`
+  in `clk-mt6735-vdecsys.c`
+- [Phase 3] `git blame`: match table from `0bd9b1211f741`; `git describe
+  --contains` intro v6.13-rc1, fix v7.3-rc1
+- [Phase 3] `git merge-base --is-ancestor 0bd9b1211f741 HEAD` and
+  `096ab64a0e694 HEAD`: both true
+- [Phase 3] `git log --oneline -- drivers/clk/mediatek/clk-
+  mt6735-vdecsys.c`: only intro + this fix
+- [Phase 3] Sibling `36cf8d279ff90` vencsys same change; earlier sweep
+  `65c9ad77cbc0e`
+- [Phase 4] `b4 dig -c 096ab64a0e694`: msgid
+  `20260704124450.11035-1-pengpeng@iscas.ac.cn`; v1 only
+- [Phase 4] `b4 dig -m`: Brian Masney Reviewed-by; no NAK/stable
+  discussion
+- [Phase 4] WebFetch lore/spinics: 403/500; used mbox instead
+- [Phase 5] Kconfig `COMMON_CLK_MT6735_VDECSYS` tristate; Makefile
+  builds `clk-mt6735-vdecsys.o`; probe is `mtk_clk_simple_probe`
+- [Phase 5] `MODULE_DEVICE_TABLE` in `include/linux/module.h` creates
+  file2alias symbol
+- [Phase 6] `git describe HEAD` = v7.3-rc4-27-gf0100363d8c37; `make
+  kernelversion` = 7.3.0-rc4
+- [Phase 6] No in-tree dts/dtsi for mt6735-vdecsys; binding listed in
+  `mediatek,syscon.yaml`
+- [Phase 6] No defconfig sets `COMMON_CLK_MT6735`
+- [Phase 6] imgsys/mfgcfg still lack MODULE_DEVICE_TABLE (verified by
+  grep)
+- [Phase 7] MAINTAINERS: COMMON CLK FRAMEWORK includes Brian Masney;
+  MT6735 CLOCK maintained by Yassine Oudjana
+- [Phase 8] Failure mode: modular autoload miss → vdec clocks absent;
+  severity MEDIUM/narrow
+- UNVERIFIED: whether stable@ already queued this hash; lore stable
+  search did not return this commit
 
 **YES**
 
- drivers/net/wireless/mediatek/mt76/mt76x02_mac.c | 3 +++
- 1 file changed, 3 insertions(+)
+ drivers/clk/mediatek/clk-mt6735-vdecsys.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76x02_mac.c b/drivers/net/wireless/mediatek/mt76/mt76x02_mac.c
-index 06f17da2c0106..17c9782915315 100644
---- a/drivers/net/wireless/mediatek/mt76/mt76x02_mac.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt76x02_mac.c
-@@ -792,6 +792,9 @@ int mt76x02_mac_process_rx(struct mt76x02_dev *dev, struct sk_buff *skb,
- 	if (rxinfo & MT_RXINFO_L2PAD)
- 		pad_len += 2;
+diff --git a/drivers/clk/mediatek/clk-mt6735-vdecsys.c b/drivers/clk/mediatek/clk-mt6735-vdecsys.c
+index 8817085fc1db4..d53ebf92e878d 100644
+--- a/drivers/clk/mediatek/clk-mt6735-vdecsys.c
++++ b/drivers/clk/mediatek/clk-mt6735-vdecsys.c
+@@ -63,6 +63,7 @@ static const struct of_device_id of_match_mt6735_vdecsys[] = {
+ 	{ .compatible = "mediatek,mt6735-vdecsys", .data = &vdecsys_clks },
+ 	{ /* sentinel */ }
+ };
++MODULE_DEVICE_TABLE(of, of_match_mt6735_vdecsys);
  
-+	if (rxinfo & MT_RXINFO_CRCERR)
-+		status->flag |= RX_FLAG_FAILED_FCS_CRC;
-+
- 	if (rxinfo & MT_RXINFO_DECRYPT) {
- 		status->flag |= RX_FLAG_DECRYPTED;
- 		status->flag |= RX_FLAG_MMIC_STRIPPED;
+ static struct platform_driver clk_mt6735_vdecsys = {
+ 	.probe = mtk_clk_simple_probe,
 -- 
 2.53.0
 
