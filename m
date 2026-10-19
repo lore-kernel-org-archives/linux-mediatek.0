@@ -4,53 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A1E4BCCA490
-	for <linux-mediatek@archiver.kernel.org>; Mon, 19 Oct 2026 00:40:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 14EF3CCF2DA
+	for <linux-mediatek@archiver.kernel.org>; Mon, 19 Oct 2026 00:40:47 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:
 	References:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:
 	Subject:Date:From:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=Nn+V9t1PELaizRF/AoG9gO3G2xspyApIsm6lYreLqh0=; b=IY3iqADoPVGXsNLagxMoUrUX/0
-	2sg8ka4dl8OS/RSyYQolGEhRjTR7DhNqIa1Vi7zEjZouYx5O3MSM6JfRdRjclMrbS3kMlW5wOhGwv
-	Wk7nt5bQLfofRp5/VAt9cJsdwb0jcxPboGqfhfWeN6JfVqqWlckBKwYGXfDBeAmDAO9WR/TedqUmV
-	X7ZapINJaSx86fZOivkUcQendg0EgEuUHuMiLmRevJOx79SoeCkQLg+bH2MYi0ASAur3t8xGJr/1E
-	YAvCdjDIq3kXOmQ67xuUdLO7Xob4l4/WMOoQciiMmZiRO1x1Ce2MBlCHU4KdXds1yun+wH68Pgf4H
-	RclfCMuA==;
+	bh=pVlYHqb7y9q0zT/BuMfeM7ah4viIJaQgIHxAEZZw7fQ=; b=zG8OSDfyGMYRKg8vQCig7Vg71K
+	gs0hvQTxWUGM8/vuexs/hBNu4yemHYQRxD+fVH0PiiNTKmJ/qCkB2S9k94QvS8aWZHFWI9I2AHG1T
+	gCOFZGabofQAUgjLjxwczZ9noQ8jZL2j21dytogzsjc0fI++hzVQKxKvYrk0aronEcO/FKqfpASE+
+	awXrFFycIE9pSzvr4OVAuKWMXc/knUclERqICeKECsBNdhsQzYmCrejW9j8eXgLJTcRCp8wsM6HFG
+	f5LeRBr//NGlitqd+6eoGYkbyQdYtzwZkPZgBZzGVO8HbmZ3gL/QkxYx3qyRDftTCcQBTymtYtQRL
+	4CXKScGQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xIbQj-00000006LEt-1azx;
+	id 1xIbQj-00000006LEx-1pnD;
 	Mon, 19 Oct 2026 00:40:45 +0000
 Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xIbQi-00000006LDT-0RNy;
+	id 1xIbQi-00000006LDR-0RME;
 	Mon, 19 Oct 2026 00:40:44 +0000
 Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
-	by sea.source.kernel.org (Postfix) with ESMTP id 7AA00447BB;
+	by sea.source.kernel.org (Postfix) with ESMTP id 6A6884477F;
 	Mon, 19 Oct 2026 00:40:43 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPS id 449F8C2BCFD;
+Received: by smtp.kernel.org (Postfix) with ESMTPS id 3CD80C2BD00;
 	Mon, 19 Oct 2026 00:40:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
 	s=k20201202; t=1792370443;
-	bh=jznJ0Z7RYsRj9sXHfcC1phHU7GFTQm+3wdEjEdHvxUk=;
+	bh=Ul8j6b/OMgDbNJmDs3HrzxJ8CN+a8ZabmqPVjjzsVr8=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To:From;
-	b=NQd+uDF97j4rrMsbJpW7xxI88ff8Okb8JuHDG0H9RfGlyqhkJI4eNrFYXTkd/2iXe
-	 k7nKMXFkiBFQQmPHKAyH2rSICjTTb2co+2mmZxCuPITCaPEpES8HiKuCNyCENoGYqz
-	 xHN1qh+7UtFp2+LddMJ/OQJCrqVDJzE1TD+peZJ0ILUdkZOR716C0g7mg36B6Hl2D3
-	 MDRc2Qwbr6fOllH3CvUL2VO0XmD8CyFwkRV8T71LWlQWJnw4gHHO03OZ7GLHNeUARS
-	 lfNENZi9ki36n9Kg/HJEMQQaWLkuTlj1YXIjCwFPTAhfDzQ47irngiFvqmg1q56166
-	 6W6ziEGkQYDpQ==
+	b=alMLu22LKFZ7YkTXPG7zwtua6wuvDBTNgra11qMpwXe+QW0+/x32hU0FoqWptPRCH
+	 Lbxm+uFnOn2oZokv9CXVa31OlD57sFRC3eT4ONDPSs734sb80eywyNk3rwHmlJul2v
+	 XI+Mla3zJChs5Gfji5YP7BaYTrq3eczlBauwiNcaS/61DDuoqnXQJOYcp33LIYP1YJ
+	 GOSZPm3LIcEPFPkzXfNwz4ggox/eJ6dnaXlm9BPaLkoM8OLY2AZ5tjCWommMsBIOxT
+	 3g7n5pDbPbrwcBCH2SpnNPWo7DHqHjU8vW+6DML0eEakL+HN5VUlwTCVVxzJZ+u9x2
+	 u9tDtjTssy3Rg==
 Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
-	by smtp.lore.kernel.org (Postfix) with ESMTP id 2F698CCF2D8;
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 1D8ABCCF2D5;
 	Mon, 19 Oct 2026 00:40:43 +0000 (UTC)
 From: Ben Grisdale via B4 Relay <devnull+bengris32.protonmail.ch@kernel.org>
-Date: Mon, 19 Oct 2026 01:39:59 +0100
-Subject: [PATCH 3/8] dt-bindings: timer: mediatek,timer: Add MT8163
+Date: Mon, 19 Oct 2026 01:39:58 +0100
+Subject: [PATCH 2/8] dt-bindings: interrupt-controller:
+ mediatek,mt6577-sysirq: Add MT8163
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20261019-arm64-initial-support-for-mediatek-mt8163-soc-v1-3-f2462b2d2437@protonmail.ch>
+Message-Id: <20261019-arm64-initial-support-for-mediatek-mt8163-soc-v1-2-f2462b2d2437@protonmail.ch>
 References: <20261019-arm64-initial-support-for-mediatek-mt8163-soc-v1-0-f2462b2d2437@protonmail.ch>
 In-Reply-To: <20261019-arm64-initial-support-for-mediatek-mt8163-soc-v1-0-f2462b2d2437@protonmail.ch>
 To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
@@ -68,11 +69,11 @@ Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
  linux-serial@vger.kernel.org, linux-watchdog@vger.kernel.org, 
  Ben Grisdale <bengris32@protonmail.ch>
 X-Mailer: b4 0.15.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1792370441; l=938;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1792370441; l=1057;
  i=bengris32@protonmail.ch; s=20261018; h=from:subject:message-id;
- bh=3xuTm8KVqqOy+c6wEveW1qrzh5JMWbSUP68J1edcFPE=;
- b=5xxeKM3jCTOI/3iVDXFYvJrKS+VRr9DQVdy5HzvvIIUdOf8zZbPJoalhzEb8LxpZBVaw8gLSe
- VnqCvW4kL+GAsCr+0wnFHM4Lp4LWHUWe4f6fFjCvvUctZsyKsvd/EIQ
+ bh=HZvnmqsfzINWEfrRhIepftjE6COAYK/b8YuTyS5bQgM=;
+ b=698Q+CEQDCJ3A6XknWlGTDX7ayPZNsO1KMPbAIxSubRinrTQ0EQaaqli2OXhKRvU6rXAPmmso
+ 1Nc/WpE3cMmDvpAyWejudA1XtX9HcPbCDNk8M3oW9KI3KTfX3pjkzNl
 X-Developer-Key: i=bengris32@protonmail.ch; a=ed25519;
  pk=4ewFRC2yNph/tXokHVzIDlgOA9Hxecf1AlBuD4eOnaU=
 X-Endpoint-Received: by B4 Relay for bengris32@protonmail.ch/20261018 with
@@ -95,26 +96,26 @@ Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infra
 
 From: Ben Grisdale <bengris32@protonmail.ch>
 
-Add a compatible string for the general purpose timer (GPT) on the
-MediaTek MT8163 SoC, which is compatible with the MT6577 timer.
+Add a compatible string for the SYSIRQ interrupt polarity controller on
+the MediaTek MT8163 SoC, which is compatible with the MT6577 SYSIRQ.
 
 Signed-off-by: Ben Grisdale <bengris32@protonmail.ch>
 ---
- Documentation/devicetree/bindings/timer/mediatek,timer.yaml | 1 +
+ .../devicetree/bindings/interrupt-controller/mediatek,mt6577-sysirq.yaml | 1 +
  1 file changed, 1 insertion(+)
 
-diff --git a/Documentation/devicetree/bindings/timer/mediatek,timer.yaml b/Documentation/devicetree/bindings/timer/mediatek,timer.yaml
-index 337580dc77d8..fcf4303e1426 100644
---- a/Documentation/devicetree/bindings/timer/mediatek,timer.yaml
-+++ b/Documentation/devicetree/bindings/timer/mediatek,timer.yaml
-@@ -34,6 +34,7 @@ properties:
-               - mediatek,mt7623-timer
-               - mediatek,mt8127-timer
-               - mediatek,mt8135-timer
-+              - mediatek,mt8163-timer
-               - mediatek,mt8173-timer
-               - mediatek,mt8516-timer
-           - const: mediatek,mt6577-timer
+diff --git a/Documentation/devicetree/bindings/interrupt-controller/mediatek,mt6577-sysirq.yaml b/Documentation/devicetree/bindings/interrupt-controller/mediatek,mt6577-sysirq.yaml
+index b94fc3cec175..9d2fc15fc81d 100644
+--- a/Documentation/devicetree/bindings/interrupt-controller/mediatek,mt6577-sysirq.yaml
++++ b/Documentation/devicetree/bindings/interrupt-controller/mediatek,mt6577-sysirq.yaml
+@@ -36,6 +36,7 @@ properties:
+               - mediatek,mt7629-sysirq
+               - mediatek,mt8127-sysirq
+               - mediatek,mt8135-sysirq
++              - mediatek,mt8163-sysirq
+               - mediatek,mt8173-sysirq
+               - mediatek,mt8183-sysirq
+               - mediatek,mt8365-sysirq
 
 -- 
 2.56.0
