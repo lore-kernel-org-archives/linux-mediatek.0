@@ -4,65 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 29AC4CCA490
-	for <linux-mediatek@archiver.kernel.org>; Mon, 19 Oct 2026 01:32:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 411C1CCF2D4
+	for <linux-mediatek@archiver.kernel.org>; Mon, 19 Oct 2026 02:13:42 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=cNR3vb579dXsDYsujzLCTLqAAOGxXjoVkILSQWP2oe8=; b=2fPhgnocx19EmMT77kHLZO6Nhb
-	C6+iBBCxqBK4u+CdDFrSnS74czCS42g53JrEcARAWWSdNIU4LjNcL3NILUvj2iPOm1ejNvmR4/PYQ
-	NqJEcguYjOK5A1OJlvprOIzn7V4BLaCgN/KZnWg4lPJ2Fj2rS8aqSDPpv+Cs1K8Dq15IgKnrGxfwz
-	EOFpWbkccnYloWfzK+1p/7zZZ4Uz8OOEpEwwN5m/44/UddTpHp//055cfF3nz2Z7AtqMCFJRDRV1i
-	m+g3JL6EvUt7GzsS5XPzJBsXMbjeCTB5Ao7PEqrIUDmz2I/imJrJB786kMkWY3eojG++BRaB5r5dv
-	Dh0xNLdg==;
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=OTeAHhDu6rLdIC+c7Ig9cS6MPdi5FFeMFdNOO55dM1c=; b=nofckiu7n4SJYIwQX86amTZROk
+	79/PJ8PfsVVapT/qqyHAUg2ngaeeAPeHDQDCL2KUygUB+20dDJg5b7SRGwCTwHsQQDdGKqBAR2ewe
+	tQdnZnPArSJZxcqO8wOpWnu0iC/B4+OpEB0KBKtHGKA7nmskCRuVbGH1T04riPEhXKkjYFPhTPA+/
+	PhxIzkrzYGEtJg3gRytkaa6olFRCHpThqtkIv7bWOOC2XKn1mJHasD+0pt9DSsoaTrCKyJtUUAsD2
+	SnJNOkqIDXgI1L9UE9xCRhIjAK4Wjhjk4ZF1Le71TIAweNN0DLCsLuxyyVxfFiha21j/eFdrSZAUM
+	dppkdh+g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xIcES-00000006OPb-2CJf;
-	Mon, 19 Oct 2026 01:32:08 +0000
-Received: from m16.mail.163.com ([117.135.210.2])
+	id 1xIcse-00000006Rym-3xuV;
+	Mon, 19 Oct 2026 02:13:40 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xIcEN-00000006OOs-3bKp;
-	Mon, 19 Oct 2026 01:32:06 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
-	s=s110527; h=From:To:Subject:Date:Message-Id:MIME-Version; bh=cN
-	R3vb579dXsDYsujzLCTLqAAOGxXjoVkILSQWP2oe8=; b=fQWPm5mfBDj4rk4TrJ
-	5C5lGQqMiOE4ZJLQ468NXt9Rxv0Z8YlJoJtp+nzgKDkFJC45sCjDnIxUgkr7WzNL
-	q9JxzgCXNRWO9CqMNAtLCX2G/ba11RIASARGABhOb547LTvJIol7dMS53pfL+9nu
-	AGfaBkN6nhywuuO5OgauW8rio=
-Received: from pc.localdomain (unknown [])
-	by gzga-smtp-mtada-g1-1 (Coremail) with SMTP id _____wCnj78Dc9VqcUAyAw--.1470S2;
-	Mon, 19 Oct 2026 09:31:48 +0800 (CST)
-From: Jiale Yao <yaojiale02@163.com>
-To: Felix Fietkau <nbd@nbd.name>,
-	Lorenzo Bianconi <lorenzo@kernel.org>,
-	Ryder Lee <ryder.lee@mediatek.com>,
-	Shayne Chen <shayne.chen@mediatek.com>,
-	Sean Wang <sean.wang@mediatek.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-wireless@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Cc: Jiale Yao <yaojiale02@163.com>
-Subject: [PATCH] wifi: mt76: mt7996: stop radios after add failure
-Date: Mon, 19 Oct 2026 09:31:45 +0800
-Message-Id: <20261019013146.1488644-1-yaojiale02@163.com>
-X-Mailer: git-send-email 2.34.1
+	id 1xIcsd-00000006RyZ-2qxZ;
+	Mon, 19 Oct 2026 02:13:39 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by sea.source.kernel.org (Postfix) with ESMTP id 1C0B3419F1;
+	Mon, 19 Oct 2026 02:13:39 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9F52E1F000C4;
+	Mon, 19 Oct 2026 02:13:36 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1792376019;
+	bh=OTeAHhDu6rLdIC+c7Ig9cS6MPdi5FFeMFdNOO55dM1c=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:References;
+	b=GKU6XjhhijXdkLvmKWqe2lHLbB69e8YJyKEBgRBXBX0UKQ9bA6S9G+Om7USxlUmSe
+	 0pQX1fEdIOiBPTfh2TQf6BFvoNNh9Ga0CwTWmPoeeEQcp3d9kVQVatwi84yNU75fD3
+	 rwxyaZcB1ozG7EuT5EpDA/o1xO+w/wN4s4C7IaxDzKSuZuC+TQJXSy2+EL9wOSJzM5
+	 AV+CEses5L1/LgQBDoJVCtXOCizpoHWfDmsJC/Nc1g9v11BEr+Z7/Xm2wfBPrTWM4x
+	 DkE92auy1x01Gcu2YXObxGdnKnjqOizVA83Mw/k7G3lFUiEJs+taTrAmvtC1vDggBi
+	 07MykhZB0Xhnw==
+Date: Mon, 19 Oct 2026 03:13:33 +0100
+From: Jonathan Cameron <jic23@kernel.org>
+To: Ryan Brue <ryanbrue.dev@gmail.com>
+Cc: David Lechner <dlechner@baylibre.com>, Nuno =?UTF-8?B?U8Oh?=
+ <nuno.sa@analog.com>, Andy Shevchenko <andy@kernel.org>, Rob Herring
+ <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
+ <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Lee
+ Jones <lee@kernel.org>, linux-iio@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ mfd@lists.linux.dev, Roman Vivchar <rva333@protonmail.com>, Luca Leonardo
+ Scorcia <l.scorcia@gmail.com>, Andy Shevchenko
+ <andriy.shevchenko@intel.com>
+Subject: Re: [PATCH v4 2/3] iio: adc: mt6397-auxadc: add mt6397 PMIC AUXADC
+ driver
+Message-ID: <20261019031333.1010682f@jic23-hlaptop>
+In-Reply-To: <20260928-rbrue-suez-upstreaming-mt6397-auxadc-v4-2-23533a0d30e3@gmail.com>
+References: <20260928-rbrue-suez-upstreaming-mt6397-auxadc-v4-0-23533a0d30e3@gmail.com>
+	<20260928-rbrue-suez-upstreaming-mt6397-auxadc-v4-2-23533a0d30e3@gmail.com>
+X-Mailer: Claws Mail 4.4.0 (GTK 3.24.52; x86_64-pc-linux-gnu)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-CM-TRANSID: _____wCnj78Dc9VqcUAyAw--.1470S2
-X-Coremail-Antispam: 1Uf129KBjvJXoWxXF43ZF4DCw48AFy3Zw15twb_yoW5Xr4fp3
-	yjka90yr4UArn5XF18Cr4jvF1rC3yxGry7CrWku3Z8Crn7CrZ3Jr40vF9FvF1rCrWxC3Wa
-	vr40y3ZrWanxWFDanT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
-	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x0piJPE3UUUUU=
-X-CM-SenderInfo: x1dryxhdohiji6rwjhhfrp/xtbC8ATtKGrVcwQqoQAA3y
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261018_183204_243418_B07F5667 
-X-CRM114-Status: GOOD (  11.11  )
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,93 +79,107 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-A multi-radio interface can start one radio before starting a later
-radio fails. add_interface returns without stopping the radios started
-by that failed request. mt7996_run can also leave firmware radio state
-enabled when setup fails after radio enablement.
+On Mon, 28 Sep 2026 15:57:20 -0500
+Ryan Brue <ryanbrue.dev@gmail.com> wrote:
 
-Disable a radio when mt7996_run fails and track radios newly started by
-add_interface so they and their monitor state are rolled back on a later
-failure.
+> The mt6397 AUXADC is a 10-bit ADC behind the SoC's PMIC wrapper. On boards
+> built around this PMIC it is the only way to read the battery: the SoC's
+> AUXADC is wired to board thermistors and the charger ICs these boards use
+> have no ADC of their own.
+> 
+> Add a driver exposing the battery voltage and battery temperature
+> channels. Only those two are described, so a channel ID in the device tree
+> indexes the driver's channel array rather than the PMIC's channel number,
+> as mt6323-auxadc does. The ready bit lives in a channel's raw result
+> register, but the value comes from the chip's factory-calibrated copy.
+> 
+> The battery voltage is measured through ISENSE, because a board with a
+> switching charger in the power path leaves BATSNS on the charger's system
+> rail instead of on the pack. The thermistor only reads correctly with the
+> PMIC's battery-detect bias and input buffer enabled, which take 20 ms to
+> settle. Both are switched back off afterwards.
+> 
+> Reads average sixteen conversions in software; the chip's sample
+> accumulator makes no measurable difference at any setting, so it is left
+> at one sample per conversion.
+> 
+> Assisted-by: LLM
+> Signed-off-by: Ryan Brue <ryanbrue.dev@gmail.com>
+Hi Ryan
 
-Fixes: 69d54ce7491d ("wifi: mt76: mt7996: switch to single multi-radio wiphy")
-Signed-off-by: Jiale Yao <yaojiale02@163.com>
----
- .../net/wireless/mediatek/mt76/mt7996/main.c  | 26 ++++++++++++++++---
- 1 file changed, 23 insertions(+), 3 deletions(-)
+Sorry for the delay.
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/main.c b/drivers/net/wireless/mediatek/mt76/mt7996/main.c
-index dd7a01c02a7c..1cea0515a413 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7996/main.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7996/main.c
-@@ -24,15 +24,15 @@ int mt7996_run(struct mt7996_phy *phy)
- 
- 	ret = mt7996_mcu_set_chan_info(phy, UNI_CHANNEL_RX_PATH);
- 	if (ret)
--		return ret;
-+		goto disable_radio;
- 
- 	ret = mt7996_mcu_set_thermal_throttling(phy, MT7996_THERMAL_THROTTLE_MAX);
- 	if (ret)
--		return ret;
-+		goto disable_radio;
- 
- 	ret = mt7996_mcu_set_thermal_protect(phy, true);
- 	if (ret)
--		return ret;
-+		goto disable_radio;
- 
- 	set_bit(MT76_STATE_RUNNING, &phy->mt76->state);
- 
-@@ -45,6 +45,11 @@ int mt7996_run(struct mt7996_phy *phy)
- 	}
- 
- 	return 0;
-+
-+disable_radio:
-+	mt7996_mcu_set_radio_en(phy, false);
-+
-+	return ret;
- }
- 
- static int mt7996_start(struct ieee80211_hw *hw)
-@@ -558,6 +563,7 @@ static int mt7996_add_interface(struct ieee80211_hw *hw,
- 	struct mt7996_vif *mvif = (struct mt7996_vif *)vif->drv_priv;
- 	struct wireless_dev *wdev = ieee80211_vif_to_wdev(vif);
- 	struct mt7996_dev *dev = mt7996_hw_dev(hw);
-+	unsigned long started = 0;
- 	int i, err = 0;
- 
- 	mutex_lock(&dev->mt76.mutex);
-@@ -572,6 +578,7 @@ static int mt7996_add_interface(struct ieee80211_hw *hw,
- 		err = mt7996_run(phy);
- 		if (err)
- 			goto out;
-+		set_bit(i, &started);
- 
- 		if (vif->type == NL80211_IFTYPE_MONITOR)
- 			mt7996_set_monitor(phy, true);
-@@ -584,6 +591,19 @@ static int mt7996_add_interface(struct ieee80211_hw *hw,
- 
- out:
- 	mutex_unlock(&dev->mt76.mutex);
-+	if (err) {
-+		for_each_set_bit(i, &started, MT7996_MAX_RADIOS) {
-+			struct mt7996_phy *phy = dev->radio_phy[i];
-+
-+			if (vif->type == NL80211_IFTYPE_MONITOR) {
-+				mutex_lock(&dev->mt76.mutex);
-+				mt7996_set_monitor(phy, false);
-+				mutex_unlock(&dev->mt76.mutex);
-+			}
-+
-+			mt7996_stop_phy(phy);
-+		}
-+	}
- 
- 	return err;
- }
--- 
-2.34.1
+Just one thing inline. If I wasn't tired from a long day
+of review I might just have made the change and asked you
+to check it. So bad luck on that!
+
+Thanks,
+
+Jonathan
+
+> diff --git a/drivers/iio/adc/mt6397-auxadc.c b/drivers/iio/adc/mt6397-auxadc.c
+> new file mode 100644
+> index 000000000000..8d1702658876
+> --- /dev/null
+> +++ b/drivers/iio/adc/mt6397-auxadc.c
+
+> +static void mt6397_auxadc_release(struct mt6397_auxadc *adc,
+> +				  const struct iio_chan_spec *chan)
+> +{
+> +	/* Lowering START leaves the converter unarmed between reads. */
+> +	regmap_clear_bits(adc->regmap, MT6397_AUXADC_CON1, MT6397_AUXADC_CON1_START);
+> +
+> +	if (chan->channel == MT6397_AUXADC_ISENSE)
+> +		mt6397_auxadc_isense_disable(adc);
+> +	else
+> +		mt6397_auxadc_battemp_bias_off(adc);
+> +}
+> +
+> +static int mt6397_auxadc_read_channel(struct iio_dev *indio_dev,
+> +				      const struct iio_chan_spec *chan,
+> +				      int *val)
+> +{
+> +	struct mt6397_auxadc *adc = iio_priv(indio_dev);
+> +	int ret;
+> +
+> +	mutex_lock(&adc->lock);
+> +
+> +	if (chan->channel == MT6397_AUXADC_ISENSE) {
+> +		ret = mt6397_auxadc_isense_enable(adc);
+> +		if (ret)
+> +			goto out_release;
+> +
+> +		fsleep(MT6397_AUXADC_ISENSE_SETTLE_US);
+> +	} else {
+> +		ret = mt6397_auxadc_battemp_bias_on(adc);
+> +		if (ret)
+> +			goto out_release;
+> +
+> +		fsleep(MT6397_AUXADC_BATTEMP_SETTLE_US);
+> +	}
+> +
+> +	ret = mt6397_auxadc_read_burst(adc, chan, val);
+> +
+> +out_release:
+> +	mt6397_auxadc_release(adc, chan);
+This ends up rather confusing.  Would you mind instead doing it as a pair of helpers
+and a top level bit of code that does.
+
+	guard(mutex)(&adc->lock);
+	if (chan->channel == MT6397_AUXADC_ISENSE) {
+		return mt6397_auxadc_isense_read();
+	else
+		return mt6397_auxadc_battemp_read();
+
+
+The only thing that get duplicated is the call to read_burst()
+which seems simpler than having a pair of if / else on the channel
+(one hidden in this release).
+
+> +	mutex_unlock(&adc->lock);
+> +
+> +	return ret;
+> +}
+
 
 
