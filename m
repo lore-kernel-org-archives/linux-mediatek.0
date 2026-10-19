@@ -4,62 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AEC5BCCF2DE
-	for <linux-mediatek@archiver.kernel.org>; Mon, 19 Oct 2026 13:55:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9CC76CCF2DE
+	for <linux-mediatek@archiver.kernel.org>; Mon, 19 Oct 2026 13:56:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:
 	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=7MLSX91YXWGMiDuQOVHG7eM6KF/4ZfqZKFra9uborK0=; b=vn20W5jRAZKysEl7vq8VQiy7oS
-	iRtArE1dLAQMSRoLeDOua/fK8vFXhp/3pC/bZS+fYXFG40+nM6ZIPnyTrYhOm4rQJLd8kam5ziH5F
-	mK8eCS/lrCOpzun3g0KBDfyzkCm3LHDqLeKDQdhSPlED1JLUP0Vo2FAQwKlo8YGjVCpYYShSkzE/T
-	dh4UDOX04T9OHVJrugKbx/csFu8YRPSgLeknZu5/ByKTp4vVRteSsxMti8HW4l///Nq2lBCJ+rdsD
-	/dxoAPZBB8K0+4bYcCZl41UdM23/Wbro4i5Or/DUaTSb7ECI0wbQ74klnDfZMuMT2PLASSsPD8kjr
-	fYDA4BIw==;
+	bh=FASpZ5k/JyiXygAwiIimxKfKoMxwFYX/5kYDuwsYLlo=; b=dpib36jq84ikbRAeehFHtyWeul
+	J5MZT8WXfvnISJEJv45lxBWs01KN2uGl+/wHDWrAsBlNz6uJdYl1KS1IzoTczf/hcB7HKyyxFPRnJ
+	ZVVNtUoC69em9twBBPe2IeWgnrm5XHEyTj6+CcVXa9MqDMyPPJP/0RZMKv1TpKy995KklxnNZ5RNb
+	JCwSB15EWw7Dl5zUt/VYbC+64uHTJHGD0Qe9x6svZk5QlCYqpIYZu3y5SDygc1JniTjQ0zLNXVy+q
+	EMO9dJHBH0+G2cP8aOMkPOTYnX1BhmvKbEGYM8MdE//Yfpk90VqrNzwDzLG0BIomyg4dZbMtZQooX
+	EJsd21ag==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xInpU-00000007Zpi-3Um3;
-	Mon, 19 Oct 2026 13:55:10 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1xInqs-00000007aZ8-2JO5;
+	Mon, 19 Oct 2026 13:56:34 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xInpP-00000007ZmQ-41e1;
-	Mon, 19 Oct 2026 13:55:04 +0000
+	id 1xInqr-00000007aXo-0j1Y;
+	Mon, 19 Oct 2026 13:56:33 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id B15FC40BF3;
-	Mon, 19 Oct 2026 13:55:03 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2AD571F000C4;
-	Mon, 19 Oct 2026 13:55:02 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 8C5876021C;
+	Mon, 19 Oct 2026 13:56:32 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 085991F000C8;
+	Mon, 19 Oct 2026 13:56:30 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1792418103;
-	bh=7MLSX91YXWGMiDuQOVHG7eM6KF/4ZfqZKFra9uborK0=;
+	s=k20260515; t=1792418192;
+	bh=FASpZ5k/JyiXygAwiIimxKfKoMxwFYX/5kYDuwsYLlo=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References;
-	b=FmYu8/tdyWkdcrQpj/khJ7b5PDJxrClr1nJ8vxdwP5lv6vqqflev+AgE3GHsHSVUX
-	 3UudM1472T2OlmQ64pgVUhgY5f2T8WfFiaQSsKJramM/06aOvlUZ2iPgaeCEq1v3a8
-	 axdqzqf9tF2T+ILUCfHUEmS3l0UPQS3TAULUIFf/yPXVJaW/h2X5f+I6Z+Pc47lDZK
-	 Jq7I0aBFkeUTlSVI6wPE+fU81laS2iqNpUfzsSQWZkULd+drIqC0fHC50iw58b1LXj
-	 42U0JxBQxWGAgrGIbBpC0Z5fdx5ZsdBngWd77SaHPvIL/VTKZDH4a5O8jnb89JnLP6
-	 ity1oV8sMmTrg==
+	b=lazK86t40XxcY2NDAWhd4CJpRHyqnNboR/sDOMjLe8rcn8zw7OOPAEmZ5Bkgb0ooi
+	 s71ErRauZZbFvuhm8xAU+Y8IEwRhamyHRD5W8hksKUYPrfFxpEEaWMlaOlBGRm0B2J
+	 Xu0Ez/0ZCzTUU48f6TJbHRmuRq4YYhfC6xHUFMGzs/Q+sWTaq9kLZibDwBpQ6IoyUD
+	 r5/Yhi8ZZJ+TmvT/czLkFCscdnEDhjIcZQYJo0cs39zueunImfwqqHJVaXriF6s/wS
+	 xDwacxPKkBzZa1c8o7t4E+sQt0/tW6f3ri6qFioet1oVpASDHYRa4zVaBA7M+UunPh
+	 yEr1GRnUfepsA==
 From: Sasha Levin <sashal@kernel.org>
 To: patches@lists.linux.dev,
 	stable@vger.kernel.org
-Cc: Pengpeng Hou <pengpeng@iscas.ac.cn>,
-	Brian Masney <bmasney@redhat.com>,
+Cc: Prashant Rahul <prashantrahul23@gmail.com>,
+	Felix Fietkau <nbd@nbd.name>,
 	Sasha Levin <sashal@kernel.org>,
-	y.oudjana@protonmail.com,
-	sboyd@kernel.org,
-	bmasney+clk@redhat.com,
-	jbrunet+clk@baylibre.com,
+	lorenzo@kernel.org,
+	ryder.lee@mediatek.com,
 	matthias.bgg@gmail.com,
 	angelogioacchino.delregno@collabora.com,
-	linux-clk@vger.kernel.org,
-	linux-mediatek@lists.infradead.org,
+	linux-wireless@vger.kernel.org,
 	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org
-Subject: [PATCH AUTOSEL 6.18] clk: mediatek: mt6735-vencsys: add missing MODULE_DEVICE_TABLE()
-Date: Mon, 19 Oct 2026 09:45:05 -0400
-Message-ID: <20261019135441.1420968-14-sashal@kernel.org>
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: [PATCH AUTOSEL 6.18-6.1] wifi: mt76: mt7921: fix memory leak when skb_linearize fails in mcu rx event
+Date: Mon, 19 Oct 2026 09:46:08 -0400
+Message-ID: <20261019135441.1420968-77-sashal@kernel.org>
 X-Mailer: git-send-email 2.53.0
 In-Reply-To: <20261019135441.1420968-1-sashal@kernel.org>
 References: <20261019135441.1420968-1-sashal@kernel.org>
@@ -83,351 +81,414 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-From: Pengpeng Hou <pengpeng@iscas.ac.cn>
+From: Prashant Rahul <prashantrahul23@gmail.com>
 
-[ Upstream commit 36cf8d279ff90835f4b002dec28eedb059554842 ]
+[ Upstream commit 4361f1660101270611eb5dc39799f620b35f2e4d ]
 
-The driver has an OF match table wired to .of_match_table, but does
-not export the table with MODULE_DEVICE_TABLE().
+The ownership of sk_buff skb is passed to mt7921_queue_rx_skb, each
+path inside it under the switch case handles cleaning of skb and it
+is true for mt7921_mcu_rx_event as well.
 
-Add the missing MODULE_DEVICE_TABLE(of, ...) entry so module alias
-information is generated for OF based module autoloading.
+mt7921_mcu_rx_event, on a success path, either queues skb via
+mt76_mcu_rx_event or cleans it immediately inside
+mt7921_mcu_uni_rx_unsolicited_event.
 
-This is a source-level fix.  It does not claim dynamic hardware
-reproduction; the evidence is the driver-owned match table, its use by
-the platform driver, and the missing module alias publication.
+However inside mt7921_mcu_rx_event, if skb_linearize fails, the function
+returns immediately and never bothers cleaning skb which leaks skb.
 
-Signed-off-by: Pengpeng Hou <pengpeng@iscas.ac.cn>
-Reviewed-by: Brian Masney <bmasney@redhat.com>
-Signed-off-by: Brian Masney <bmasney@redhat.com>
+Since skb is fully owned at this point, it is safe to call
+dev_kfree_skb which fixes the leak.
+
+Granted, the skb_linearize failure is rare as it can only fail under
+heavy memory usage, but at the same time, leaking memory under heavy
+memory usage can worsen the OOM condition.
+
+Signed-off-by: Prashant Rahul <prashantrahul23@gmail.com>
+Link: https://patch.msgid.link/20260716-mt7921-mem-leak-v1-1-6e9c0ea19f63@gmail.com
+Signed-off-by: Felix Fietkau <nbd@nbd.name>
 Signed-off-by: Sasha Levin <sashal@kernel.org>
 ---
 
 LLM Generated explanations, may be completely bogus:
 
-Connection lost, reconnecting to https://agentn.us.api5.cursor.sh
-(attempt 1)...
-Retry attempt 1...
-This tree is **Linux 7.3.0-rc4** (`v7.3-rc4-27-gf0100363d8c37`). The
-driver exists here; the change is a one-line `MODULE_DEVICE_TABLE(of,
-...)` so the vencsys clock module can autoload from DT.
+# Stable backport analysis: mt7921 MCU RX skb leak
 
-## Phase 1: Commit message forensics
+**Tree decided:** `pending-6.6` (6.6.157), SHA `04810563abb71`.
+At the start of this evaluation `git describe`/`make kernelversion`
+reported **6.6.157**. The working copy later moved to v7.3-rc4; every
+presence/absence claim below was rechecked against **`pending-6.6`**,
+not that later checkout.
 
-**Step 1.1: Subject line**
-- Record: `[clk/mediatek] [add] add missing MODULE_DEVICE_TABLE() for
-  mt6735-vencsys`
+The candidate is mainline `4361f16601012` (`wifi: mt76: mt7921: fix
+memory leak when skb_linearize fails in mcu rx event`).
 
-**Step 1.2: Tags**
-- Record:
-  - **Fixes:** none (expected for this review)
-  - **Reported-by:** none
-  - **Tested-by:** none
-  - **Reviewed-by:** Brian Masney `<bmasney@redhat.com>` (COMMON CLK
-    FRAMEWORK maintainer)
-  - **Acked-by:** none
-  - **Link:** none in the commit; mailing list found via `b4 dig`
-  - **Cc: stable:** none (not a negative signal)
-  - **Signed-off-by:** Pengpeng Hou `<pengpeng@iscas.ac.cn>` (author);
-    Brian Masney `<bmasney@redhat.com>` (clk maintainer who applied it)
-  - Notable: maintainer review + maintainer SOB; no user/syzbot report
+---
 
-**Step 1.3: Body**
-- Record:
-  - **Bug:** OF match table is wired to `.of_match_table` but not
-    exported with `MODULE_DEVICE_TABLE()`, so `file2alias` does not emit
-    `of:` aliases.
-  - **Symptom:** when `CONFIG_COMMON_CLK_MT6735_VENCSYS=m`,
-    udev/modprobe cannot autoload `clk-mt6735-vencsys` from
-    `mediatek,mt6735-vencsys`.
-  - **Version info:** none in the message. Git: driver added in
-    **v6.13-rc1** (`0bd9b1211f741`); this fix first appears in
-    **v7.3-rc1**.
-  - **Root cause:** omitted alias publication, not a runtime logic
-    error.
+## PHASE 1: COMMIT MESSAGE FORENSICS
 
-**Step 1.4: Hidden bug fix?**
-- Record: Not hidden. It is a real functional gap (module autoload), not
-  a crash/UAF. The “source-level fix / no hardware reproduction” wording
-  matches the original lore submission, not pipeline decoration.
+**Step 1.1 — Subject**
+Record: **[wifi: mt76: mt7921]** **[fix]** memory leak when
+`skb_linearize` fails in MCU RX event.
 
-## Phase 2: Diff analysis
+**Step 1.2 — Tags**
+- `Signed-off-by: Prashant Rahul <prashantrahul23@gmail.com>` (author)
+- `Link: https://patch.msgid.link/20260716-mt7921-mem-
+  leak-v1-1-6e9c0ea19f63@gmail.com`
+- `Signed-off-by: Felix Fietkau <nbd@nbd.name>` (mt76 maintainer;
+  applied the patch)
+- No `Fixes:`, `Reported-by:`, `Tested-by:`, `Reviewed-by:`, `Acked-
+  by:`, or `Cc: stable` (absence of Fixes/Cc-stable is expected for this
+  review).
+Record: Maintainer SOB; msgid shows **v1 patch 1/1** (standalone).
 
-**Step 2.1: Inventory**
-- Record:
-  - `drivers/clk/mediatek/clk-mt6735-vencsys.c`: **+1 / -0**
-  - Function/data: `of_match_mt6735_vencsys[]` (file scope)
-  - Scope: single-file, one-line surgical change
+**Step 1.3 — Body**
+Record:
+- **Bug:** `mt7921_queue_rx_skb` transfers skb ownership into
+  `mt7921_mcu_rx_event`. Success paths free or queue the skb. If
+  `skb_linearize()` fails, the function returns without freeing.
+- **Symptom:** skb leak. Author notes failure is rare (ENOMEM) but
+  leaking under memory pressure can worsen OOM.
+- **Root cause:** missing `dev_kfree_skb` on the linearize error path.
+- **Version info in message:** none.
 
-**Step 2.2: Code flow**
-- Record: Before, the table is only consumed by
-  `platform_driver.driver.of_match_table` (bind if the module is already
-  loaded or built-in). After, `MODULE_DEVICE_TABLE(of,
-  of_match_mt6735_vencsys)` also creates a `__mod_device_table` alias so
-  `scripts/mod/file2alias.c` `do_of_entry()` emits
-  `of:N*T*Cmediatek,mt6735-vencsys`. Build-time metadata only; no probe-
-  path change.
+**Step 1.4 — Hidden bug fix?**
+Record: **No disguise.** This is an explicit leak fix, not cleanup-as-
+fix.
 
-**Step 2.3: Bug mechanism**
-- Record: **Hardware matching / module autoload** (same class as missing
-  device IDs). Match table exists but is not published for modules.
+---
 
-**Step 2.4: Fix quality**
-- Record: Obviously correct; matches sibling MT6735 files that shipped
-  with `MODULE_DEVICE_TABLE` (`apmixedsys`, `infracfg`, `pericfg`,
-  `topckgen`). No runtime lock/API/data-structure change. Regression
-  risk is essentially none. `imgsys` and `mfgcfg` still lack the macro;
-  this patch does not depend on those.
+## PHASE 2: DIFF ANALYSIS
 
-## Phase 3: Git history
+**Step 2.1 — Inventory**
+Record:
+- File: `drivers/net/wireless/mediatek/mt76/mt7921/mcu.c` (**+3 / −1**)
+- Function: `mt7921_mcu_rx_event`
+- Scope: **single-file surgical fix**
 
-**Step 3.1: Blame**
-- Record: Match table and driver introduced by `0bd9b1211f741` (“clk:
-  mediatek: Add drivers for MT6735 syscon clock and reset controllers”,
-  Yassine Oudjana, 2024-11-06, applied 2024-11-14). First in
-  **v6.13-rc1**. `MODULE_DEVICE_TABLE` line is this commit
-  `36cf8d279ff90`.
+**Step 2.2 — Flow**
+Before (pending-6.6 `mcu.c:312-313`):
 
-**Step 3.2: Fixes: tag**
-- Record: No `Fixes:` tag. The omission dates from the introducing
-  commit `0bd9b1211f741`, which **is** an ancestor of this tree.
+```
+if (skb_linearize(skb))
+    return;
+```
 
-**Step 3.3: File history**
-- Record: Only two commits on this file: introducer + this fix. No later
-  conflicting refactor. Sibling same-day commit `096ab64a0e694` does the
-  same for `clk-mt6735-vdecsys.c`. Standalone; not patch 2/N.
+After:
 
-**Step 3.4: Author**
-- Record: Pengpeng Hou is not the MT6735 clk maintainer (that is Yassine
-  Oudjana). Same author also added `MODULE_DEVICE_TABLE` in `clk-
-  mt6735-vdecsys.c` and two i.MX clk drivers. Applied by clk co-
-  maintainer Brian Masney.
+```
+if (skb_linearize(skb)) {
+    dev_kfree_skb(skb);
+    return;
+}
+```
 
-**Step 3.5: Dependencies**
-- Record: None. Uses existing `MODULE_DEVICE_TABLE` / `of_device_id`.
-  Applies on top of the original driver with no prerequisites.
+Record: **error path only.** Success paths unchanged.
 
-## Phase 4: Mailing list and external research
+**Step 2.3 — Bug mechanism**
+Record: **[resource leak]** On `skb_linearize` failure (`-ENOMEM` for
+nonlinear skbs), the still-owned skb is dropped. Caller
+`mt7921_queue_rx_skb` does not free after `PKT_TYPE_RX_EVENT`. Other
+switch arms in the same caller (`dev_kfree_skb` / `napi_consume_skb`)
+and other arms of `mt7921_mcu_rx_event` (`dev_kfree_skb`,
+`mt76_mcu_rx_event` queue) already consume the skb.
 
-**Step 4.1: Original discussion**
-- Record: `b4 dig -c 36cf8d279ff90` →
-  https://patch.msgid.link/20260704124808.19916-1-pengpeng@iscas.ac.cn
-- `b4 dig -a`: **v1 only** (2026-07-04). Applied version is that v1.
-- Thread (mbox): author patch + Brian Masney `Reviewed-by`. No NAK, no
-  stable nomination, no risk discussion.
+**Step 2.4 — Fix quality**
+Record: **Obviously correct.** Matches established kernel pattern (`if
+(skb_linearize(skb)) { dev_kfree_skb(_any)(skb); return; }`). Same free
+helper already used in this MCU event path. No API/lock/data-structure
+change. Regression risk: **very low** (could only be a double-free if
+linearize already freed; it does not — see Phase 5).
 
-**Step 4.2: Recipients (`b4 dig -w`)**
-- Record: Yassine Oudjana (MT6735 clk maintainer), Stephen Boyd, Brian
-  Masney, Michael Turquette, Matthias Brugger, AngeloGioacchino Del
-  Regno; `linux-clk`, `linux-mediatek`, `linux-arm-kernel`, `linux-
-  kernel`. Right maintainers and lists.
+---
 
-**Step 4.3: Bug report**
-- Record: No Reported-by, no syzbot, no bugzilla. Author states there
-  was no hardware reproduction.
+## PHASE 3: GIT HISTORY
 
-**Step 4.4: Series**
-- Record: Independent single patches (vencsys + vdecsys), not a numbered
-  series. This commit does not need the vdecsys patch.
+**Step 3.1 — Blame**
+Record: Leak introduced by **`f0ff5d3aa64812`** (`mt76: mt7921: make all
+event parser reusable between mt7921s and mt7921e`, Sean Wang,
+2021-10-19). That commit added `skb_linearize` + early return and never
+freed on failure. Present since ~5.16-era; **`git merge-base --is-
+ancestor f0ff5d3aa64812 pending-6.6` succeeds.**
 
-**Step 4.5: Stable list**
-- Record: **UNVERIFIED.** `curl` to lore.kernel.org/stable returned HTTP
-  403. No in-tree evidence this was rejected for stable.
+**Step 3.2 — Fixes: tag**
+Record: **None.** Introducer identified by blame: `f0ff5d3aa64812`,
+which **is** in this 6.6 tree.
 
-## Phase 5: Code semantic analysis
+**Step 3.3 — File history (pending-6.6)**
+Recent 6.6 work on this file is CLC firmware validation, not MCU RX. No
+competing leak fix. Record: **standalone**; not part of a multi-patch
+series.
 
-**Step 5.1: Functions**
-- Record: No function body changed. Adds `MODULE_DEVICE_TABLE` next to
-  `of_match_mt6735_vencsys[]`. Driver still uses
-  `module_platform_driver` → `mtk_clk_simple_probe` /
-  `mtk_clk_simple_remove`.
+**Step 3.4 — Author**
+Prashant Rahul has **no other commits** in this tree’s mt76 history.
+Applied by **Felix Fietkau**, listed maintainer of MEDIATEK MT76 in
+`MAINTAINERS`. Record: one-off contributor; **maintainer-applied**.
 
-**Step 5.2: Callers**
-- Record: Platform core binds via OF compatible. Probe is boot/device-
-  instantiation, not a syscall hot path. Impact is whether the **module
-  is loaded at all**.
+**Step 3.5 — Dependencies**
+The hunk only needs `mt7921_mcu_rx_event` + `skb_linearize` +
+`dev_kfree_skb`, all present. Mailing-list patch context matches 6.6
+(the extra `MCU_EVENT_RSSI_NOTIFY` in later mainline is **below** the
+change). Record: **applies standalone**.
 
-**Step 5.3: Callees**
-- Record: Unchanged. `mtk_clk_simple_probe()` in `clk-mtk.c` registers
-  the vencsys gates from `vencsys_clks`.
+---
 
-**Step 5.4: Reachability**
-- Record: Reachable when DT has `mediatek,mt6735-vencsys` and the driver
-  is a module. **No in-tree `.dts`/`.dtsi` uses that compatible** (only
-  `Documentation/devicetree/bindings/clock/mediatek,syscon.yaml`). Users
-  need out-of-tree DT (typical for older MT6735 phones). Built-in (`=y`)
-  is unaffected.
+## PHASE 4: MAILING LIST / EXTERNAL
 
-**Step 5.5: Similar patterns**
-- Record: Same omission still present in `clk-mt6735-imgsys.c` and `clk-
-  mt6735-mfgcfg.c`. Four other MT6735 clk files had
-  `MODULE_DEVICE_TABLE` from day one (`43c04ed791892` for apmixedsys).
-  Pattern is systematic but this patch is complete for vencsys.
+**Step 4.1 — Original discussion**
+- `b4 dig -c <msgid>` / `b4 mbox`: no match (404).
+- lore.kernel.org: **403**.
+- Recovered from Openwall and Ratatoskr:
+  https://lists.openwall.net/linux-kernel/2026/07/16/1707
+  msgid `20260716-mt7921-mem-leak-v1-1-6e9c0ea19f63@gmail.com`
+Record: **v1, single patch**, applied as submitted (`4361f16601012`
+matches that diff). No v2/v3.
 
-## Phase 6: Local tree cross-reference
+**Step 4.2 — Recipients (`b4 dig -w` unavailable; headers from
+Openwall)**
+To: Felix Fietkau, Lorenzo Bianconi, Ryder Lee, Shayne Chen, Sean Wang
+(mt76 maintainers/reviewers), plus MediaTek ARM contacts. Cc: linux-
+wireless, linux-kernel, linux-mediatek, linux-arm-kernel. Record:
+**correct maintainer set**.
 
-**Step 6.1: Buggy code in this tree?**
-- Record: Yes. File exists; current tree already has the fix at line 40.
-  Bug was the missing alias from v6.13 until v7.3-rc1.
-  `CONFIG_COMMON_CLK_MT6735_VENCSYS` is **tristate**.
+**Step 4.3 — Bug report**
+Record: **No syzbot/bugzilla.** Static ownership analysis; author states
+the leak is rare.
 
-**Step 6.2: Backport difficulty**
-- Record: **Clean apply.** File is essentially unchanged since
-  introduction. One inserted line after the match table.
+**Step 4.4 — Series**
+Record: **1/1 standalone.** No sibling mt7925/mt7915 patches required
+for this tree (only mt7921 has this `skb_linearize` in pending-6.6).
 
-**Step 6.3: Related fixes already here**
-- Record: This exact commit is already an ancestor of HEAD (`git merge-
-  base --is-ancestor 36cf8d279ff90 HEAD` → yes). That is mainline
-  history, not a reason to reject on merit. No alternate fix. Sibling
-  vdecsys fix is also present; imgsys/mfgcfg still missing.
+**Step 4.5 — Stable list**
+Search for this subject on lore stable returned unrelated hits. Record:
+**no prior stable NAK found** (lore 403 limited this).
 
-## Phase 7: Subsystem context
+---
 
-**Step 7.1: Subsystem / criticality**
-- Record: `drivers/clk/mediatek/` — SoC clock driver. **PERIPHERAL**
-  (MT6735 video-encoder clocks only). Not mm/fs/net core.
+## PHASE 5: CODE SEMANTIC ANALYSIS
 
-**Step 7.2: Activity**
-- Record: Mediatek clk is actively maintained; this file is not. Two
-  commits total. Mature omission, not churn.
+**Step 5.1 — Functions**
+Record: `mt7921_mcu_rx_event` only.
 
-## Phase 8: Impact and risk
+**Step 5.2 — Callers**
+`mt7921_queue_rx_skb()` (`mac.c`) `case PKT_TYPE_RX_EVENT:` calls it and
+does **not** free afterwards.
 
-**Step 8.1: Who is affected**
-- Record: Only MT6735 systems with `CONFIG_COMMON_CLK_MT6735_VENCSYS=m`
-  and a DT node `mediatek,mt6735-vencsys`. Driver- and config-specific;
-  small population (no in-tree board DTS).
+That `rx_skb` hook is registered for **PCIe, USB, and SDIO**:
+- `mt7921/pci.c`, `usb.c`, `sdio.c` → `.rx_skb = mt7921_queue_rx_skb`
+- Invoked from `mt76_dma_rx_process` (NAPI), `mt76u` USB RX,
+  `mt76s_process_rx_queue` (SDIO)
 
-**Step 8.2: Trigger**
-- Record: Modular boot + OF device present. Not a race. Unprivileged
-  users do not trigger it; udev autoload fails. Built-in and manual
-  `modprobe` work.
+Record: **hot RX path** for MT7921E/S/U.
 
-**Step 8.3: Failure mode**
-- Record: Module does not autoload → vencsys clocks (smi_larb3, venc,
-  jpgenc, jpgdec) never register → video encode/JPEG on that SoC can
-  fail. **Severity: MEDIUM** (functional miss, not
-  oops/corruption/deadlock). Fits stable-rules “oh, that’s not good” and
-  the device-ID-style enablement exception.
+**Step 5.3 — Callees**
+`skb_linearize` → `__skb_linearize` → `__pskb_pull_tail`; returns
+`-ENOMEM` on failure and **does not free** the skb
+(`include/linux/skbuff.h`: “If there is no free memory -ENOMEM is
+returned”). Success continues to `mt7921_mcu_uni_rx_unsolicited_event` /
+`mt76_mcu_rx_event` / `mt7921_mcu_rx_unsolicited_event`.
 
-**Step 8.4: Risk-benefit**
-- Record: **Benefit:** correct autoload for a supported tristate driver;
-  one line. **Risk:** negligible (modinfo/depmod metadata only). Ratio
-  favors applying it on trees that have this driver.
+**Step 5.4 — Reachability**
+Nonlinear MCU events are real:
+- SDIO `mt76s_build_rx_skb` uses `skb_add_rx_frag` when payload >
+  `MT_SKB_HEAD_LEN` — this is **why** `f0ff5d3aa64812` added linearize
+  (“paged fragment skb for the SDIO device”).
+- USB `mt76u_build_rx_skb` same pattern.
+- DMA `mt76_add_fragment` builds fraglists for multi-buffer RX.
 
-## Phase 9: Final synthesis
+Record: reachable from normal firmware MCU events; unprivileged users
+can generate MCU traffic by using WiFi. Failure needs **ENOMEM during
+linearize**.
 
-**Step 9.1: Evidence**
+**Step 5.5 — Similar patterns**
+In pending-6.6, `skb_linearize` appears **only here** under mt76. No
+duplicate site left unfixed in this tree.
 
-FOR:
-- Real autoload bug: match table used, aliases not published
-- One line, obviously correct, reviewed and applied by clk maintainer
-  Brian Masney
-- Driver is tristate; modular build is an intended config
-- Same class as device-ID additions (publish existing OF IDs)
-- Sibling MT6735 files already had the macro; this was an omission from
-  `0bd9b1211f741`
-- Zero runtime regression risk; applies cleanly
-- Driver and bug exist in this 7.3 tree (introduced v6.13)
+---
 
-AGAINST:
-- Not a crash, UAF, deadlock, or security issue
-- No user report and no hardware reproduction
-- No in-tree DT consumer for this compatible
-- Niche SoC; often clocks are built-in
+## PHASE 6: LOCAL TREE (pending-6.6 / 6.6.157)
 
-UNRESOLVED:
-- Whether this was discussed on the stable list (lore HTTP 403)
+**Step 6.1 — Buggy code present?**
+Record: **Yes.**
+`pending-6.6:drivers/net/wireless/mediatek/mt76/mt7921/mcu.c:312-313`:
 
-**Step 9.2: Stable rules checklist**
-1. Obviously correct and tested? **PASS** — one-line, standard macro,
-   maintainer Reviewed-by/SOB. No runtime test; correctness is
-   mechanical.
-2. Real bug that affects users? **PASS** — modular OF autoload is
-   broken. User set is small but real if they use `=m`.
-3. Important issue? **PASS** (low end of “oh, that’s not good” /
-   hardware-enablement), not CRITICAL.
-4. Small and contained? **PASS** — +1 line, one file.
-5. No new features or APIs? **PASS** — publishes existing match table.
-6. Can apply to this tree? **PASS** — file and table exist; patch is a
-   clean one-liner.
+```
+if (skb_linearize(skb))
+    return;
+```
 
-**Step 9.3: Exception category**
-- Record: Closest match is **device ID / hardware matching** (OF module
-  aliases), not a new driver.
+`git merge-base --is-ancestor 4361f16601012 pending-6.6` → **false**
+(fix not here).
+`git merge-base --is-ancestor f0ff5d3aa64812 pending-6.6` → **true**
+(bug intro is here).
+Bug age: **2021**, well before 6.6.
 
-**Step 9.4: Decision**
+**Step 6.2 — Backport difficulty**
+Submitted hunk is 4 lines around `skb_linearize` with context that
+matches 6.6 (`struct mt76_connac2_mcu_rxd *rxd` then the if).
+`MCU_EVENT_RSSI_NOTIFY` is later mainline-only context **below** the
+edit. Record: **clean apply / trivial**.
 
-Backport this. It is a one-line, obviously correct fix for failed OF
-module autoload on an existing tristate driver. That is the same kind of
-enablement stable already takes for new device IDs, with no runtime
-behavior change if the module is built-in or loaded by other means. This
-7.3 tree has the driver (since v6.13); there are no missing
-prerequisites. Limited hardware and no crash report lower urgency, not
-correctness.
+**Step 6.3 — Related fixes already here?**
+`git log --grep=skb_linearize` on mt76 in this tree: **empty**. No
+alternate fix. Record: **none**.
 
-### What it solves for stable users
-If `clk-mt6735-vencsys` is a module, userspace cannot match
-`mediatek,mt6735-vencsys` and load it. Video-encoder clocks then never
-appear. `MODULE_DEVICE_TABLE(of, ...)` generates the aliases
-`file2alias` already knows how to emit.
+---
 
-### Risk vs benefit
-Benefit is correct autoload on MT6735 modular configs. Risk is
-negligible: no probe, locking, or ABI change.
+## PHASE 7: SUBSYSTEM CONTEXT
+
+**Step 7.1**
+Record: **wifi / mt76 / mt7921**. Criticality: **IMPORTANT** — MT7921E
+is a common laptop WiFi 6 adapter (PCIe); USB/SDIO variants exist
+(`MT7921E/S/U` in Kconfig). Not core mm/net, not staging.
+
+**Step 7.2**
+Record: Mature driver (MCU support from `1c099ab44727c8`, 2021). 6.6
+still receives mt76 bugfixes (CLC, etc.).
+
+---
+
+## PHASE 8: IMPACT AND RISK
+
+**Step 8.1 — Who is affected**
+Record: **driver-specific**, users with MediaTek MT7921 (very common on
+laptops). Config: `CONFIG_MT7921E/S/U`.
+
+**Step 8.2 — Trigger**
+Record: Firmware MCU RX event whose skb is nonlinear, **and**
+`skb_linearize` fails (GFP/ENOMEM). Unprivileged WiFi use can generate
+events; the failure itself is **uncommon**. SDIO long events are the
+originally cited nonlinear case; USB/DMA can also fragment.
+
+**Step 8.3 — Failure mode**
+Record: **skb leak under memory pressure**, which can deepen OOM. Not a
+panic/UAF. Severity: **MEDIUM–HIGH** (hot-path leak, not a one-time
+probe leak).
+
+**Step 8.4 — Risk/benefit**
+- Benefit: **medium** — stops a real leak on a widely shipped chip; most
+  valuable when the system is already under memory pressure.
+- Risk: **very low** — 3 lines, error path, same free as sibling paths.
+- Ratio: **favor backport**.
+
+---
+
+## PHASE 9: SYNTHESIS
+
+**Step 9.1 — Evidence**
+
+**For:**
+- Real leak with verified ownership (caller does not free).
+- Code and introducer are in 6.6.157; fix is not.
+- Tiny, obviously correct, maintainer-applied.
+- MT7921 is production hardware, not staging.
+- Leak on an RX path under OOM is a stability issue, not a style
+  cleanup.
+
+**Against:**
+- Trigger is rare (`skb_linearize` ENOMEM).
+- No crash/syzbot/CVE.
+- No explicit `Cc: stable` (not a negative per the review rules).
+
+**Unresolved:** Full lore thread (403/404); no reviewer comments beyond
+maintainer merge. Does not change the technical verdict.
+
+**Step 9.2 — Stable rules**
+1. Obviously correct and tested — **PASS** (3-line ownership fix; in
+   mainline via Felix).
+2. Real bug affecting users — **PASS** (skb leak on MT7921 MCU RX).
+3. Important (crash/security/corruption/deadlock) — **PASS** as an RX-
+   path leak that can worsen OOM; not a panic, but in the leak class
+   stable regularly takes.
+4. Small and contained — **PASS** (4 lines, one function).
+5. No new features/APIs — **PASS**.
+6. Can apply to this tree — **PASS** (hunk matches 6.6).
+
+**Step 9.3 — Exceptions**
+Record: none needed (not an ID/quirk/DT/build/doc exception). Ordinary
+small leak fix.
+
+**Step 9.4 — Decision**
+Backport to **this** 6.6.157 tree. The bug exists here, the fix is
+surgical, and regression risk is negligible.
+
+---
+
+## What the commit solves for stable users
+
+On MT7921, firmware MCU events are handed to `mt7921_mcu_rx_event` with
+full skb ownership. Nonlinear events (especially SDIO, also USB/DMA
+fragments) are linearized first. If that allocation fails, 6.6 returns
+and leaks the skb. Under memory pressure that leak makes OOM worse.
+Adding `dev_kfree_skb(skb)` on that path closes the leak without
+changing success behavior.
+
+## Risk vs benefit
+
+Benefit is a real leak fix on a common WiFi chip; risk is a three-line
+error-path free that matches existing code in the same function.
+
+## Concerns
+
+None material: no prerequisites, no API change, no locking, expected
+clean apply. Trigger rarity is the only weak point and is not enough to
+reject a contained leak fix.
+
+---
 
 ## Verification
-- [Phase 1] Parsed tags: Reviewed-by + SOB Brian Masney; no
-  Fixes/Reported-by/Cc:stable
-- [Phase 1] `git show -s 36cf8d279ff90`: body matches the candidate;
-  “source-level fix” is in the real commit and lore v1
-- [Phase 2] Diff: +1 `MODULE_DEVICE_TABLE(of, of_match_mt6735_vencsys)`
-  in `clk-mt6735-vencsys.c`
-- [Phase 2] `include/linux/module.h` and `scripts/mod/file2alias.c`
-  `do_of_entry()`: confirmed alias generation from that macro
-- [Phase 3] `git blame`: table from `0bd9b1211f741` (v6.13-rc1); macro
-  from `36cf8d279ff90`
-- [Phase 3] `git describe --contains 0bd9b1211f741`: v6.13-rc1; fix
-  contained in v7.3-rc1; `git merge-base --is-ancestor` vs v7.2: not in
-  v7.2
-- [Phase 3] File log: only introducer + this commit; sibling
-  `096ab64a0e694` for vdecsys
-- [Phase 4] `b4 dig -c/-a/-w/-m`: v1 lore thread; Masney Reviewed-by;
-  correct clk/mediatek CCs; no NAK
-- [Phase 4] WebFetch lore/msgid.link: HTTP 403; used mbox instead
-- [Phase 5] Kconfig: `COMMON_CLK_MT6735_VENCSYS` tristate; Makefile
-  `obj-$(CONFIG_COMMON_CLK_MT6735_VENCSYS)`
-- [Phase 5] `mtk_clk_simple_probe` in `clk-mtk.c` used unchanged
-- [Phase 5] Grep: no in-tree dts/dtsi `mediatek,mt6735-vencsys`; binding
-  in `mediatek,syscon.yaml`
-- [Phase 5] imgsys/mfgcfg still lack `MODULE_DEVICE_TABLE`
-- [Phase 6] `make kernelversion` / `git describe HEAD`: 7.3.0-rc4 /
-  v7.3-rc4-27-gf0100363d8c37
-- [Phase 6] File currently contains the macro; `git merge-base --is-
-  ancestor 36cf8d279ff90 HEAD` = yes
-- [Phase 7] MAINTAINERS: MT6735 clk → Yassine Oudjana; COMMON CLK →
-  Stephen Boyd, Brian Masney, Jerome Brunet
-- [Phase 8] Failure mode: missing module autoload, not oops; severity
-  MEDIUM
-- UNVERIFIED: stable@ lore discussion (HTTP 403)
+
+- **[Phase 1]** Parsed tags: author SOB, Link msgid, Felix Fietkau SOB;
+  no Fixes/Reported-by/Cc-stable.
+- **[Phase 2]** Diff: +3/−1 in `mt7921_mcu_rx_event`; adds
+  `dev_kfree_skb` on `skb_linearize` failure.
+- **[Phase 3]** `git blame` on pending-6.6: leak from `f0ff5d3aa64812`
+  (2021-10-19); `git merge-base --is-ancestor f0ff5d3aa64812
+  pending-6.6` true.
+- **[Phase 3]** `git show f0ff5d3aa64812`: added `if
+  (skb_linearize(skb)) return;` with no free.
+- **[Phase 3]** `git log --author=Prashant Rahul`: no other mt76 commits
+  in this history.
+- **[Phase 4]** Openwall/Ratatoskr: v1 1/1, same diff as
+  `4361f16601012`; mt76 maintainers on To:.
+- **[Phase 4]** `b4 mbox` msgid: 404; lore.kernel.org: 403.
+  **UNVERIFIED:** full review replies / explicit stable nomination.
+- **[Phase 5]** Callers: `mt7921_queue_rx_skb` (no free on
+  `PKT_TYPE_RX_EVENT`); hooked from pci/usb/sdio `.rx_skb`.
+- **[Phase 5]** `skb_linearize` documented to return `-ENOMEM` and not
+  free; USB/SDIO `skb_add_rx_frag` makes nonlinear skbs.
+- **[Phase 6]** `git describe` at start: `p-6.6-3-g04810563abb71`, `make
+  kernelversion` 6.6.157.
+- **[Phase 6]** `git grep` on `pending-6.6`: leak at `mcu.c:312-313`.
+- **[Phase 6]** `git merge-base --is-ancestor 4361f16601012 pending-6.6`
+  false.
+- **[Phase 8]** Failure mode: skb leak under ENOMEM on MCU RX; severity
+  MEDIUM–HIGH.
+- **UNVERIFIED:** complete lore thread text after 403.
+
+The fix is small, matches stable leak-fix practice, and the buggy code
+is in this 6.6 tree.
 
 **YES**
 
- drivers/clk/mediatek/clk-mt6735-vencsys.c | 1 +
- 1 file changed, 1 insertion(+)
+ drivers/net/wireless/mediatek/mt76/mt7921/mcu.c | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/clk/mediatek/clk-mt6735-vencsys.c b/drivers/clk/mediatek/clk-mt6735-vencsys.c
-index 8dec7f98492ac..64ba9da9fd427 100644
---- a/drivers/clk/mediatek/clk-mt6735-vencsys.c
-+++ b/drivers/clk/mediatek/clk-mt6735-vencsys.c
-@@ -37,6 +37,7 @@ static const struct of_device_id of_match_mt6735_vencsys[] = {
- 	{ .compatible = "mediatek,mt6735-vencsys", .data = &vencsys_clks },
- 	{ /* sentinel */ }
- };
-+MODULE_DEVICE_TABLE(of, of_match_mt6735_vencsys);
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7921/mcu.c
+index 8c8b35cba856c..f63ef02542387 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7921/mcu.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7921/mcu.c
+@@ -354,8 +354,10 @@ void mt7921_mcu_rx_event(struct mt792x_dev *dev, struct sk_buff *skb)
+ {
+ 	struct mt76_connac2_mcu_rxd *rxd;
  
- static struct platform_driver clk_mt6735_vencsys = {
- 	.probe = mtk_clk_simple_probe,
+-	if (skb_linearize(skb))
++	if (skb_linearize(skb)) {
++		dev_kfree_skb(skb);
+ 		return;
++	}
+ 
+ 	rxd = (struct mt76_connac2_mcu_rxd *)skb->data;
+ 
 -- 
 2.53.0
 
