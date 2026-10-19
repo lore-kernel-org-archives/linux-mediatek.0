@@ -4,93 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 41CCECCF2E4
-	for <linux-mediatek@archiver.kernel.org>; Mon, 19 Oct 2026 12:33:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1931BCCF2DB
+	for <linux-mediatek@archiver.kernel.org>; Mon, 19 Oct 2026 13:23:25 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=XMgbNhwoeuCGyN6Tie1PzlNRtNa+QjScRMtBLI/9URY=; b=CIm7kzCpjdas8m2alSToil/6SI
-	zyH+9AMojskBsSbFMp7msmyB1UaLBx4gu/G8hiV3g4FJxofA9lByoqQcNiT2/Lvfpodl2mR8b2vkT
-	jPZhm0zeIceJDPReepG4XFDtiM0rWPU80UgX3gvmz8V/VtuVs5d7amHdJtlnqvAwfUY19ILck8SX6
-	Ii0dAOz9fhVcn5izMqOoDP0ddApT6Giv/rnEK6RIO0Rbu7SHkApcPaPUnkt/DlKgwgFosDmQq0xWi
-	4GJpRmNEtz7QJQIoGSLsR+koNXf+EzejNW/klrjAfheoj0TrOm/7ZX+GRTxSWf+/Oh6yYk7cfzxFj
-	EKzmfMeA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
+	bh=fu/TrZnstogzqvJdvOum2UV9GJ7DoNDtuRSFASpeMPw=; b=HqIZXPPG9tnpoFI03mrz0D6Yeg
+	G72cey2U5KsmLmDptY52iMWzRC1CJUx125hdRgUim9J9d8r746dBOX88FONhYJi2NqQyrdE5/9x3T
+	Pv/SfQY7gptvFpVsYVWbPwLHKOwskPLdy3fz9WEVOtfkX8/wq6AiCMw3+3QDfTlkEBLNQWVjetlVx
+	d+VETHcSF/fa/+48CoPQIgEemsDVbzdFIhgVPkXOS13qjF2ibrAIQb8rgyg58jEyTm/g4AuI7lAHp
+	s/pGScIywG5yw7mfAf28vd0TB/IIYAuaDFiXMm4RBazMDQpRZLX/qYrnREnbOb1hlwxa1qL5iwb3V
+	M7dSlyHQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xImYh-00000007Oof-45O4;
-	Mon, 19 Oct 2026 12:33:43 +0000
-Received: from mail-wr1-x431.google.com ([2a00:1450:4864:20::431])
+	id 1xInKl-00000007VL2-3dHJ;
+	Mon, 19 Oct 2026 13:23:23 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xImYe-00000007OmB-2Ham
-	for linux-mediatek@lists.infradead.org;
-	Mon, 19 Oct 2026 12:33:42 +0000
-Received: by mail-wr1-x431.google.com with SMTP id ffacd0b85a97d-48de72fc832so1540596f8f.1
-        for <linux-mediatek@lists.infradead.org>; Mon, 19 Oct 2026 05:33:40 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre.com; s=google; t=1792413219; x=1793018019; darn=lists.infradead.org;
-        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
-         :content-type:mime-version:subject:date:from:from:to:cc:subject:date
-         :message-id:reply-to:content-type;
-        bh=XMgbNhwoeuCGyN6Tie1PzlNRtNa+QjScRMtBLI/9URY=;
-        b=mDBEmicqX9i9R0UO7Jm2jwKHfRxxZNeJIgxib5+4huLuoz9NK2IJneAPZQdNGie7tn
-         /stdJquT0KAAqZYE+CvkDaHDMV0BrAw4z/yYWtiMkcl3NePnZMgtsp07CHoB5BSr6M8E
-         DX3Xrl23f0OgxW/m4L0QSn4AGoZ+ipSdMcxt1Y3Sg75QZd98kc6Z1useHmJVcE/F+FkC
-         l+Cpv3oqzPQD+YWGdph/FD01DZ+BB8qug4zZ7OHwi/Aw3P145r2Z4LkChSHpWl3PxXPL
-         0d3V5qUHI1Xzl+RpwlCfqrquOSfV1o6kVPFwwODxFXVLE/tvBwBcS1kVdtcrlOOw5/k+
-         rW3g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1792413219; x=1793018019;
-        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
-         :content-type:mime-version:subject:date:from:x-gm-gg
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
-         :content-type;
-        bh=XMgbNhwoeuCGyN6Tie1PzlNRtNa+QjScRMtBLI/9URY=;
-        b=uYfjgT/oYxTHSrspo6EJ6RGzJfnR4q66PCYsc7Xdze+aok1wYpZVy95L/cbFXXC4wS
-         ArHnBfXkvdAlHa4NHFDjyYe+F/oyrL1WX651r/5U7LTFGigZGQ8nKtUclhZznCIky67A
-         kB1IN4W4mmdB1MYSeO9Jvawfy4mGqHwTu8mTvBKwUHa8R1BZj/CkRXteVWppTXyEjsRd
-         acOxND3OIkxzKE48eOvYHFS168OlPkZkdOp2F/C0/ojyt/VNVXhQRKHUBkS/nZVFPXWk
-         0if9e12ibr+0nHPLMm/0JH7XgeoTrS4cOYkTeuf6/Q1bHuttHmcUODM8FPdnHc7avyN1
-         sovA==
-X-Forwarded-Encrypted: i=1; AKwUvBztYM+dl0ASFqCHnoWS3D5CpuTbpVX5llvpuiymvtiR76H6mflu5AapVBbVZCN7z5n0k7s9lbihhKcftRZ4kQ==@lists.infradead.org
-X-Gm-Message-State: AFq9FYJmAzfl0640RVAP/biIezmfzjN1OPY+zafAx7oZP+KBkGn7Q4k3
-	uW4wJjJSQHhC96rCvt35pJwXnaCvuyHMnnlgA5jrLj2qGluNI/3W3GWfWs+BBKBD1J4=
-X-Gm-Gg: AYBFou1Vak+BcoH7l8UZWzQAdUVSrC6g7ZzpqIMVPkB+4lO7fplN+nUn26KK1zpcrgT
-	g+ftTTbrlMm8KrKfpoA8HBEIuaFhUvCajHYdlWWw5nRWsfc+3weTJuwNa/yNjh4dZkTTs5Ce0BT
-	/wcFiDrFrSik3qOu8kP4G+C24X2H+MV/DaEcQrzwJ/RooPw4LxBPzuC01KyoZ5XK5t71umfey40
-	WnnySXUh+oGhjGhxh2CeYdR3ZANVv9jqTqYca3xCdMlJpIawqVghWf/r+Et00cmnCRFTTMFBofn
-	aK22Tj59WSQfKx+cKLhJbJuAv4In1p0vfj1XL3tpqTZQhN++p75m0hWgBNwkYwoUfbLjpwWDlUC
-	CEeBsLlaP1fS66mlQ3BFaemfX6y990GLqxEScJcZIU6pfF23U8K8l/XYYmz9Yl+qpl/LCeqhWEt
-	YRsZ3eHZsdr1WSSPao7KPkqDrx6GQnwg6MStte8fPKgce8MOk05L4tUXIAQJNQoUvK4ILk5otkk
-	NvZdupVacs5FXPfDupn0F/3EuAUyOu6EIXullQ783lNjBRXSwetYWCo47HLRWNLMlUDp3KgXxAh
-	yAepK4RK3Q2pvd/oGA9tFVVDYOArkm4L8gM77+LreQlS6cu4npRYM/A=
-X-Received: by 2002:a5d:5e03:0:b0:48a:fbcf:6f43 with SMTP id ffacd0b85a97d-48e07fbc4camr16385796f8f.54.1792413218623;
-        Mon, 19 Oct 2026 05:33:38 -0700 (PDT)
-Received: from [192.168.1.100] (2a02-8434-7c41-c701-8278-849f-666b-c282.rev.sfr.net. [2a02:8434:7c41:c701:8278:849f:666b:c282])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-48dfd4f576asm24677930f8f.32.2026.10.19.05.33.37
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 19 Oct 2026 05:33:38 -0700 (PDT)
-From: Julien Stephan <jstephan@baylibre.com>
-Date: Mon, 19 Oct 2026 14:33:56 +0200
-Subject: [PATCH 2/2] pmdomain: mediatek: mt8365: add missing define
+	id 1xInKk-00000007VKF-1kzn;
+	Mon, 19 Oct 2026 13:23:22 +0000
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+	by sea.source.kernel.org (Postfix) with ESMTP id CB97240F1D;
+	Mon, 19 Oct 2026 13:23:21 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPS id A5A7CC2BCFF;
+	Mon, 19 Oct 2026 13:23:21 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+	s=k20201202; t=1792416201;
+	bh=0Q+jjdHxXlgos+CB1NzOXLhHht+j0bFdH5lh194GtwE=;
+	h=From:Date:Subject:To:Cc:Reply-To:From;
+	b=u9Uzxucpym8wJKzGZhvf6V0/S6oBEI0Z2lfACv+KpZmSBZ0LL76SNnBZoZT1Tau8P
+	 aV5djgP73zXGCkWi/SSfcEi99+oJ5iODsbBlY7xuFTsCIZVPd2SooWxnlUUoeDC1uv
+	 mPVLX4FX8gRCwtkhQykwFxLJqiQiiZZBouAOrLF1PTUjrWWYoXxEfmoGvcaOaTmxKe
+	 8i5F/bOWz/4G8qqt15qY2S9jsT56RmMfUbb0F4y+KorRH/MxPm9W/WWJ7yOqKh/Lh3
+	 EGZE0yOVJgwCPW2fq2fnVlV+XgsKP0tyFDkX7SKzPwlD0z7rMWaEu0D7tHxeqtvIVm
+	 Pau1iAcjIB6JA==
+Received: from aws-us-west-2-korg-lkml-1.web.codeaurora.org (localhost.localdomain [127.0.0.1])
+	by smtp.lore.kernel.org (Postfix) with ESMTP id 7AA80CCF2D6;
+	Mon, 19 Oct 2026 13:23:21 +0000 (UTC)
+From: Roman Vivchar via B4 Relay <devnull+rva333.protonmail.com@kernel.org>
+Date: Mon, 19 Oct 2026 16:23:19 +0300
+Subject: [PATCH] drm/mediatek: mtk_dsi: do not enable HS clock in
+ pre-enable for LPM panels
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20261019-pmdomain-mtk-mt8365-fix-defines-v1-2-dfd445dc3763@baylibre.com>
-References: <20261019-pmdomain-mtk-mt8365-fix-defines-v1-0-dfd445dc3763@baylibre.com>
-In-Reply-To: <20261019-pmdomain-mtk-mt8365-fix-defines-v1-0-dfd445dc3763@baylibre.com>
-To: Ulf Hansson <ulfh@kernel.org>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
- Julien Stephan <jstephan@baylibre.com>
-X-Mailer: b4 0.16.0
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261019_053340_605157_6A597DF4 
-X-CRM114-Status: GOOD (  10.93  )
+Message-Id: <20261019-6768-dsi-fix-v1-1-3e5616b45a67@protonmail.com>
+X-B4-Tracking: v=1; b=H4sIAAAAAAAC/6tWKk4tykwtVrJSqFYqSi3LLM7MzwNyDHUUlJIzE
+ vPSU3UzU4B8JSMDIzNDA0NLXTNzMwvdlOJM3bTMCl3LNINko+REo6REyzQloJaColSgMNi46Fg
+ Iv7g0KSs1uQRkhlJtLQAoHfg2cAAAAA==
+X-Change-ID: 20261019-6768-dsi-fix-9f0c2ca2ba9f
+To: Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
+ Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@gmail.com>, 
+ Simona Vetter <simona@ffwll.ch>, Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ CK Hu <ck.hu@mediatek.com>, Gary Bisson <bisson.gary@gmail.com>
+Cc: dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, 
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ stable@vger.kernel.org, Roman Vivchar <rva333@protonmail.com>
+X-Mailer: b4 0.15.2
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1792416200; l=2272;
+ i=rva333@protonmail.com; s=20260510; h=from:subject:message-id;
+ bh=JSG4TWGCcAQcls3Iu49KLqCH7zkim5ue4YYLwNCf0vg=;
+ b=a1priHrWzzd5wggrEpf0KowBgM/lZiW5nLcwsUa91RhGy3yUoUHijxKnHdjdQOHPpFcIKUe5F
+ nDuzITpaye8CDsDEK32e6TtMCcHv+eia4EKvKhzllTtgq97gUzNtITe
+X-Developer-Key: i=rva333@protonmail.com; a=ed25519;
+ pk=zww/nWjBGoQ4POXCG0BV6fx2iuXK6jx77rsKPA5YK5Y=
+X-Endpoint-Received: by B4 Relay for rva333@protonmail.com/20260510 with
+ auth_id=777
+X-Original-From: Roman Vivchar <rva333@protonmail.com>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,48 +86,68 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Reply-To: rva333@protonmail.com
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 Errors-To: linux-mediatek-bounces+linux-mediatek=archiver.kernel.org@lists.infradead.org
 
-Add missing define for BIT(25) inside MT8365_POWER_DOMAIN_MFG
-declaration.
+From: Roman Vivchar <rva333@protonmail.com>
 
-No functional changes expected.
+Commit 76255024cadb ("drm/mediatek: mtk_dsi: enable hs clock during
+pre-enable") moved HS clock enablement from the mtk_output_dsi_enable()
+to mtk_dsi_poweron(). Later, the commit 3e191eddbdcb ("drm/mediatek:
+mtk_dsi: Enable HS clock only at pre-enable") moved the call to the
+mtk_dsi_bridge_atomic_pre_enable().
 
-Signed-off-by: Julien Stephan <jstephan@baylibre.com>
+However, mtk_dsi_lane_ready() explicitly sets mtk_dsi_clk_hs_mode(dsi, 0)
+so that DSI panels with MIPI_DSI_MODE_LPM can transmit initialization
+commands in Low-Power mode during their prepare() callback. Enabling the
+HS clock unconditionally in mtk_dsi_bridge_atomic_pre_enable() overrides
+this before panel prepare() runs, causing command transmission to fail.
+
+Only enable the HS clock in mtk_dsi_bridge_atomic_pre_enable(), when
+MIPI_DSI_MODE_LPM is not set, and restore mtk_dsi_clk_hs_mode(dsi, 1) in
+mtk_output_dsi_enable(). This is no-op for non-LPM bridges.
+
+Fixes: 76255024cadb ("drm/mediatek: mtk_dsi: enable hs clock during pre-enable")
+Fixes: 3e191eddbdcb ("drm/mediatek: mtk_dsi: Enable HS clock only at pre-enable")
+Cc: stable@vger.kernel.org
+Signed-off-by: Roman Vivchar <rva333@protonmail.com>
 ---
- drivers/pmdomain/mediatek/mt8365-pm-domains.h | 3 ++-
- include/linux/soc/mediatek/infracfg.h         | 1 +
- 2 files changed, 3 insertions(+), 1 deletion(-)
+This fix was tested with the Tianma NT36672A panel on the mt6768 platform.
+---
+ drivers/gpu/drm/mediatek/mtk_dsi.c | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/pmdomain/mediatek/mt8365-pm-domains.h b/drivers/pmdomain/mediatek/mt8365-pm-domains.h
-index 3775e4dc2c91..e360fe142027 100644
---- a/drivers/pmdomain/mediatek/mt8365-pm-domains.h
-+++ b/drivers/pmdomain/mediatek/mt8365-pm-domains.h
-@@ -126,7 +126,8 @@ static const struct scpsys_domain_data scpsys_domain_data_mt8365[] = {
- 		.sram_pdn_bits = GENMASK(9, 8),
- 		.sram_pdn_ack_bits = GENMASK(13, 12),
- 		.bp_cfg = {
--			MT8365_BUS_PROT_INFRA_WR_TOPAXI(BIT(25)),
-+			MT8365_BUS_PROT_INFRA_WR_TOPAXI(
-+				MT8365_INFRA_TOPAXI_PROTECTEN_INFRA2MFG),
- 			MT8365_BUS_PROT_INFRA_WR_TOPAXI(
- 				MT8365_INFRA_TOPAXI_PROTECTEN_MFG_M0 |
- 				MT8365_INFRA_TOPAXI_PROTECTEN_MFG_M1),
-diff --git a/include/linux/soc/mediatek/infracfg.h b/include/linux/soc/mediatek/infracfg.h
-index d2cfa09f81ba..ddc53675529e 100644
---- a/include/linux/soc/mediatek/infracfg.h
-+++ b/include/linux/soc/mediatek/infracfg.h
-@@ -14,6 +14,7 @@
- #define MT8365_INFRA_TOPAXI_PROTECTEN_CONN2INFRA_AHB			BIT(14)
- #define MT8365_INFRA_TOPAXI_PROTECTEN_MFG_M0				BIT(21)
- #define MT8365_INFRA_TOPAXI_PROTECTEN_MFG_M1				BIT(22)
-+#define MT8365_INFRA_TOPAXI_PROTECTEN_INFRA2MFG				BIT(25)
- #define MT8365_INFRA_TOPAXI_PROTECTEN_1_STA1				0x258
- #define MT8365_INFRA_TOPAXI_PROTECTEN_1_SET				0x2a8
- #define MT8365_INFRA_TOPAXI_PROTECTEN_1_CLR				0x2ac
+diff --git a/drivers/gpu/drm/mediatek/mtk_dsi.c b/drivers/gpu/drm/mediatek/mtk_dsi.c
+index 7961139333ad..e5b433f353d5 100644
+--- a/drivers/gpu/drm/mediatek/mtk_dsi.c
++++ b/drivers/gpu/drm/mediatek/mtk_dsi.c
+@@ -794,6 +794,7 @@ static void mtk_output_dsi_enable(struct mtk_dsi *dsi)
+ 		return;
+ 
+ 	mtk_dsi_set_mode(dsi);
++	mtk_dsi_clk_hs_mode(dsi, 1);
+ 	mtk_dsi_start(dsi);
+ 
+ 	dsi->enabled = true;
+@@ -858,7 +859,8 @@ static void mtk_dsi_bridge_atomic_pre_enable(struct drm_bridge *bridge,
+ 		drm_err(drm, "failed to power on dsi\n");
+ 
+ 	mtk_dsi_lane_ready(dsi);
+-	mtk_dsi_clk_hs_mode(dsi, 1);
++	if (!(dsi->mode_flags & MIPI_DSI_MODE_LPM))
++		mtk_dsi_clk_hs_mode(dsi, 1);
+ }
+ 
+ static void mtk_dsi_bridge_atomic_post_disable(struct drm_bridge *bridge,
 
--- 
-2.56.0
+---
+base-commit: c03c1a14507dfaf8b856c2608f9ac216021fc222
+change-id: 20261019-6768-dsi-fix-9f0c2ca2ba9f
+
+Best regards,
+--  
+Roman Vivchar <rva333@protonmail.com>
+
 
 
