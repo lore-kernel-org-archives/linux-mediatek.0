@@ -2,96 +2,87 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 01199606A320
-	for <linux-mediatek@archiver.kernel.org>; Tue, 20 Oct 2026 07:30:33 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 949BD606A31B
+	for <linux-mediatek@archiver.kernel.org>; Tue, 20 Oct 2026 07:32:46 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=ruLKSa4U;
-	dkim=pass (2048-bit key, unprotected) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20251104 header.b=gzLhMIRm
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=O4RXxmDR;
+	dkim=pass (2048-bit key, unprotected) header.d=linutronix.de header.i=@linutronix.de header.a=rsa-sha256 header.s=2020 header.b=K477aKgm;
+	dkim=pass header.d=linutronix.de header.i=@linutronix.de header.a=ed25519-sha256 header.s=2020e header.b=CY4xOlG9
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=5tXRrlu6pVIT1vr+YhxUcVgo6aTbfODu2mQd8Xde0q8=; b=ruLKSa4UsWbAMxHsKpXmMgKs26
-	SqMd/e/nwGVQvnOihIoVbksu9X2BLTVy5WRFSz6/RLq1/6gPzsocm6MDVTDpVftSPXodwnnMjIx+L
-	6AfQy5tbXw6H8ws99Y7DEdi+e7mQsInIPmWWLPGTvO/zXc3cx6y83xDIeR/ymSIiryIoLut7KusG6
-	NR1W4YgSLe+b3y57LCZaEw7vrCKhTldfHb1MKCeHMA0Y9JWRKswir35C0Y+wQ0AjoXJmbTEp25Jpw
-	z8GRU4Fg673r05DWOEGEaS53G+kinUqqyO9Y2VzKXTtuAfenbtqkhoEgtbFjD22oohGVLCPrawz4l
-	k0uGOXLA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=AbbG2Q6j4Hecrtu/PulD9TnwIM8oYREi3XENRG9e+T0=; b=O4RXxmDRAxRaIQp+RgGxiGdyqo
+	MWZ427MiETifMpiQuzVnoWQU8ou8SSZ6l+l6QwZvtkgnMKB3TY07pTrB0YbN+lUqVhY5Wk/UgKvCh
+	Bnu1petN15oEuOyJL25FpTZ7P9NMbxwCeyUvUuA8P87X/kVhPgydX64c49A91xj8fo5TcTU3ABXnj
+	28f7S+7gx163fLZMY6nMphUOMgeyER+lgMgSiTOaIEaJr2ej8Av92/76iAabWrYPAUTA0pI4Lh7s7
+	Z1n5eXRpDEi0OGHzNgs8ijuPRVwMIA9EhikVwL39r8aG+N7fCgkUXp5Uq44bL2I1JvQhRbaEH9fmg
+	DM5JP+HQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xJ4In-000000092df-3Od6;
-	Tue, 20 Oct 2026 07:30:29 +0000
-Received: from mail-wr1-x42e.google.com ([2a00:1450:4864:20::42e])
+	id 1xJ4Kz-000000093QI-2dEr;
+	Tue, 20 Oct 2026 07:32:45 +0000
+Received: from galois.linutronix.de ([193.142.43.55])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xJ4Ik-000000092YX-0LxC
-	for linux-mediatek@lists.infradead.org;
-	Tue, 20 Oct 2026 07:30:27 +0000
-Received: by mail-wr1-x42e.google.com with SMTP id ffacd0b85a97d-48e0d1da913so321483f8f.1
-        for <linux-mediatek@lists.infradead.org>; Tue, 20 Oct 2026 00:30:23 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1792481422; x=1793086222; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
-        bh=5tXRrlu6pVIT1vr+YhxUcVgo6aTbfODu2mQd8Xde0q8=;
-        b=gzLhMIRmtJ0KCUf8rLjy0vatnwn8bdoMkeFJ4anJEwNS/4pD98GpF+aaUdy0sMn10z
-         nSdPo71elfHHoh3c91m+mHf/CQxMSd2TYim9jtQPxCcSOMPfznCvQ5L1TYbcFTbhddbz
-         U9jQ2bsxY2vWK8YM4G/Fm91tKvba81BDxOiljdT3qFWKOSkrb1MoEtCzC9bpVd97C0ob
-         +xaFmkKUURf1McD3+KoBgjw0PglDb/nvXdCZAXbvrJ1LQboAARZmHjYgNp9RAVdrJ51p
-         iOgbrlsozejZyF0kaX09ruy0xgNBl6A2eHirlsyZ1aPesANBDQZCjD4aode5naSxS0q4
-         W9uQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1792481422; x=1793086222;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to:content-type;
-        bh=5tXRrlu6pVIT1vr+YhxUcVgo6aTbfODu2mQd8Xde0q8=;
-        b=eiKrCKmpaHczSho8HheXCWDBc161ZTaEWks6y7cphXu9koFH3mCmvs3V9URzNXl/7+
-         12NECqjyg538oxvncGY+QgW/qlJ9uz4g8hOpSeGHgCPZuVwcFJRE9hzWeAvmhvfe21Wi
-         Tjy8W43fDi5nn2VJdqBU9kecLzSRrxTZUl5QaregAnDizerzM8OWjg4yQpotTT0zhqOg
-         r2g24OmhAkhoM03Vh6ZFZLPwUC2ZiE9aobBAeEHkbfYsP6vVzIc3Qdu9jp+korTGOLto
-         DEhgG/NJCZCPQ/Lo5wfhENyMSTxPukJf2WeyRIr1UnGx/ZsdzSyo+hA1K6aKhBEGBeT/
-         kNbg==
-X-Forwarded-Encrypted: i=1; AKwUvBwLx6EFxIfFZp28C1jCJb0kqe2cm0/owY7civh3rRnTA/W+Xx1DS+NFPyhYbI50kbX5fchK/v7q4k1TmgFSLg==@lists.infradead.org
-X-Gm-Message-State: AFq9FYKEjwbWi7lJZ6Lzl8hV/WlbsNZuiy3yyPujy86pJG8FsOd0CrrZ
-	+8gKLwc+NcU4waik5STV1j0Hn7XYsPxkDlin7StttRLBNEFqfhhIiwmO
-X-Gm-Gg: AYBFou0ORFHQqvBYD9zFKJDvpiMFuyR4xFz8y9TMS+j1X9i984yDVb2EV9Ya8S4tiMQ
-	JNWmuCZQtDeo+NPhoksfjyxIMxs02M5RynsdckfK6pLIf53jmYeFq+G3O9tLhAHU7Z/9fVgsdny
-	C5u8vXz34VduS4zq9sHh2+iFiQBYDQ2GNp1AdIkPCT5AX1s01sGbJv2YrbO9MnsyRRp+hWfUIYM
-	6Oa2lAsjsJMSfn3RepilCvQIu7Jd3j2lKhefUuAVRdx6/OjbifZggla4koL6UrMWj1lMP02TlQK
-	pqxC+Xu/C8j6G7EAROTipGzj4eLJWnLaHAADedF7lRnLiZ8cjAGUTX8FcGd1QvRxCyS7QZZTrjS
-	/sOkv9gCGJh713GYmLdUKl05CUZ7EFkbhPIR9/N0sp+rDN91lt44IcTmiSbTECwXeZqWoNBkRLF
-	DrU6zaFqZGxJ9Nud1HGgIpOrqgdCEILNbHXViaIFhf90Wkz8hMypcVHB/ThriwQyS8cvLXSDYNT
-	b15V68LL7bOxw+qm9sc1lM=
-X-Received: by 2002:a05:6000:617:b0:48d:f160:efad with SMTP id ffacd0b85a97d-48e1e9f12c3mr3046877f8f.30.1792481421580;
-        Tue, 20 Oct 2026 00:30:21 -0700 (PDT)
-Received: from kali ([102.209.31.129])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-48e1d817d75sm4747712f8f.25.2026.10.20.00.30.19
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 20 Oct 2026 00:30:21 -0700 (PDT)
-From: Bashirah Lawal <bashirahlawal017@gmail.com>
-To: outreachy@lists.linux.dev
-Cc: Bashirah Lawal <bashirahlawal017@gmail.com>,
-	Jakub Kicinski <kuba@kernel.org>,
+	id 1xJ4Kw-000000093P8-25il;
+	Tue, 20 Oct 2026 07:32:43 +0000
+Date: Tue, 20 Oct 2026 09:32:36 +0200
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linutronix.de;
+	s=2020; t=1792481557;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=AbbG2Q6j4Hecrtu/PulD9TnwIM8oYREi3XENRG9e+T0=;
+	b=K477aKgmkz+L+RRd+uucEpbLJ0f0xKJRbJMfRt+6Ovxjrea0w0kLPKBE5pAcVCIEDbo1l5
+	mT0KYpEsopt8ZkoUShMmn45KL4YIHT3PvAwNfUPHN73uzIG1rdp4RQlRpVNduOaSunwJ1I
+	fFI6AZFYjFCqqDkshKZ1oSh6lyYxhQjWWrNKyyZv5s6IxcBDyREqjG6ss/H7Ouja4XWYig
+	3nGe9jgw5DNxc0PaBrFMUPvEEG8JbQXAUsnIQXEW40UkFvqcvoS7nhV+9dO4VdiACU7tLX
+	9FrRFppKhgnJvIikvN2imkbISyzdfwGDbZvSYQUBa0dC2Ff13nHAYlrzkWZ4hA==
+DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=linutronix.de;
+	s=2020e; t=1792481557;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=AbbG2Q6j4Hecrtu/PulD9TnwIM8oYREi3XENRG9e+T0=;
+	b=CY4xOlG9QFW8DCbV7CCf/a69uJonoMF1BH+tVAs9yDlMABxmZbFtFiTlS0+2B5nu9/U1+T
+	INrARMRaDy1GEgBA==
+From: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
+To: Ryan Brue <ryanbrue.dev@gmail.com>
+Cc: Chen-Yu Tsai <wenst@chromium.org>, Mark Brown <broonie@kernel.org>,
+	Lee Jones <lee@kernel.org>, Arnd Bergmann <arnd@arndb.de>,
+	Sean Wang <sean.wang@kernel.org>, Linus Walleij <linusw@kernel.org>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-wireless@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: [PATCH] wifi: mt7601u: remove unused ee_read tracepoint
-Date: Tue, 20 Oct 2026 03:29:46 -0400
-Message-ID: <20261020072947.124586-1-bashirahlawal017@gmail.com>
-X-Mailer: git-send-email 2.53.0
+	Bartosz Golaszewski <brgl@kernel.org>,
+	Clark Williams <clrkwllms@kernel.org>,
+	Steven Rostedt <rostedt@goodmis.org>,
+	Yingjoe Chen <yingjoe.chen@mediatek.com>,
+	Chaotian Jing <chaotian.jing@mediatek.com>,
+	Hongzhou Yang <hongzhou.yang@mediatek.com>,
+	linux-mediatek@lists.infradead.org, linux-gpio@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-rt-devel@lists.linux.dev, mfd@lists.linux.dev
+Subject: Re: [PATCH] pinctrl: mediatek: common-v1: Use a raw spinlock for the
+ pinctrl regmap
+Message-ID: <20261020073236.dDVmd3BW@linutronix.de>
+References: <20260929-rbrue-suez-upstreaming-mtk-pinctrl-raw-regmap-v1-1-db92943f42cb@gmail.com>
+ <20260930080609.dnK1-Uta@linutronix.de>
+ <CAGXv+5FssQL3Go3VDFbLAT6HP12RS3U3OgxhYOeapzs64QTdUw@mail.gmail.com>
+ <d3d3e7b3-eb8b-456d-9a2c-116334e86c14@gmail.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+In-Reply-To: <d3d3e7b3-eb8b-456d-9a2c-116334e86c14@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261020_003026_131768_118ACEED 
-X-CRM114-Status: UNSURE (   8.55  )
-X-CRM114-Notice: Please train this message.
-X-Spam-Score: 1.5 (+)
+X-CRM114-CacheID: sfid-20261020_003242_704505_F40C519A 
+X-CRM114-Status: GOOD (  20.82  )
+X-Spam-Score: -4.4 (----)
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -102,54 +93,55 @@ List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-15.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
-	DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,FREEMAIL_FORGED_FROMDOMAIN,
-	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
+X-Spam-Status: No, score=-6.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,
+	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS autolearn=no autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-The ee_read trace event was added with the driver in commit
-c869f77d6abb ("add mt7601u driver"), but no call to
-trace_ee_read() has ever existed in the tree. Building with
-UT=1 reports the tracepoint as unused.
+On 2026-10-06 19:57:01 [-0500], Ryan Brue wrote:
+> Hi Chen-Yu and Sebastian,
+>=20
+> Thanks for looking at this.
+>=20
+> On 9/30/26 3:17 AM, Chen-Yu Tsai wrote:
+> > The syscon node is the provider of the regmap. You need to fix it there,
+> > not duplicate it in the consumer.
+>=20
+> Unless I'm misunderstanding, no driver binds to that node, so its regmap
+> comes from the generic syscon code, and changing it there would affect ev=
+ery
+> syscon. Lee, Arnd, Mark, would that be acceptable?
+>=20
+> These are the options I see. Please let me know if there's a better one:
+>=20
+> - Do what Sebastian suggested and make syscon use a raw spinlock, except
+> when the node has a clock, since regmap-mmio calls clk_enable() under the
+> lock. Off PREEMPT_RT, nothing changes. On RT the lock would no longer be
+> preemptible for most syscons, including across bulk writes. Most syscon
+> users that do bulk writes only write a few registers, but enabling the
+> Amlogic G12A PCIe PLL writes a sequence with 40 us of udelay() under the
+> lock.
 
-Each unused trace event wastes several KB of kernel memory.
-Remove it to avoid that waste.
+bulk writes could be a concern. The 40us delay is within the lock
+acquired? If so, could this be done without the lock? I assume this is
+part of the init sequence so nothing should use the HW so the writes
+should not be interrupted by other writes to the device.
 
-Signed-off-by: Bashirah Lawal <bashirahlawal017@gmail.com>
----
- drivers/net/wireless/mediatek/mt7601u/trace.h | 15 ---------------
- 1 file changed, 15 deletions(-)
+> - Have the pinctrl ioremap() the node a second time alongside syscon's
+> mapping and read the input register (DIN) with readl(). That read is the
+> only access the EINT code makes in raw context. This would go around the
+> syscon, and it requires that DIN never be written in a multi-step sequenc=
+e,
+> which is currently the case.
 
-diff --git a/drivers/net/wireless/mediatek/mt7601u/trace.h b/drivers/net/wireless/mediatek/mt7601u/trace.h
-index 07696b672161..208ab8b0117a 100644
---- a/drivers/net/wireless/mediatek/mt7601u/trace.h
-+++ b/drivers/net/wireless/mediatek/mt7601u/trace.h
-@@ -123,21 +123,6 @@ TRACE_EVENT(mt_vend_req,
- 		  !!__entry->buf, __entry->buflen)
- );
- 
--TRACE_EVENT(ee_read,
--	TP_PROTO(struct mt7601u_dev *dev, int offset, u16 val),
--	TP_ARGS(dev, offset, val),
--	TP_STRUCT__entry(
--		DEV_ENTRY
--		__field(int, o) __field(u16, v)
--	),
--	TP_fast_assign(
--		DEV_ASSIGN;
--		__entry->o = offset;
--		__entry->v = val;
--	),
--	TP_printk(DEV_PR_FMT "%04x=%04x", DEV_PR_ARG, __entry->o, __entry->v)
--);
--
- DECLARE_EVENT_CLASS(dev_rf_reg_evt,
- 	TP_PROTO(struct mt7601u_dev *dev, u8 bank, u8 reg, u8 val),
- 	TP_ARGS(dev, bank, reg, val),
--- 
-2.53.0
+So it would be safe for now=E2=80=A6
 
+> I'd like to know the best approach before sending out a v2.
+>=20
+> Best regards,
+> Ryan Brue
+
+Sebastian
 
