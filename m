@@ -2,40 +2,40 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id AA061606A336
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id CE36B606A338
 	for <linux-mediatek@archiver.kernel.org>; Tue, 20 Oct 2026 02:50:08 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=wimUFdDV;
-	dkim=pass (1024-bit key, unprotected) header.d=163.com header.i=@163.com header.a=rsa-sha256 header.s=s110527 header.b=Ys3yJNEl
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=rGEm00NV;
+	dkim=pass (1024-bit key, unprotected) header.d=163.com header.i=@163.com header.a=rsa-sha256 header.s=s110527 header.b=Cr+WWcS/
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:To:From:Reply-To:
 	Cc:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=uD9iLC9u0+i53WqbXenU4Sedkd6VmeyujwIgM/Ul8mg=; b=wimUFdDVflhRAbmPKTLPQvXfu+
-	kVbHsmmprGoyrdvtIosT4r5QNU8M/VjoGXXYYg9M+uRbJOXHHGtXqPWmHdh30a86Ut4w20znaUvSP
-	pJ2ejiLR/Y0Z0RDoQ9+wIXh+pFC2JM34J7mic25cFcskcAnJwrakC5x5IcoY61HjKCYPOtfG9wU3t
-	lJLCm4f1CieJdElA6RwgT/iAC/sxdJEtgFJqr9qD3bG0glciGUqxj956AE9A/xfLxVWPeYi4L/R5H
-	oILsectETqmCKB3/aCjPAHHHcUF+6/hopMGi/l8B77fJ10KsxP/R8c6Z4hTAD2v2hrzmhYFm9uP9S
-	kKglUJbg==;
+	bh=qSqZs6kvQ73jpKV//X6SsqeslDJs9OL8i3dqvINNPv8=; b=rGEm00NVUNXm81IYZ8ACDomB2D
+	y3/RVIkL8ozi/dNWpIAdqF5/091SzJve5/G+5vRQ8+5XkH/eNONsM22rHrMbhN4kGRmSCtlEHprmK
+	HJntMgHIWvLV6OSL7sJcYAg7TiJF2hVrC5Fi9hrUOIKlli3mrGm6+n7TC+seUjSGUm7TMqfZ8iOCh
+	gtEUBbfSU4kl3DkOKCcpwoVq7Ik8nEn5x3H/ru3P0kOqcjrVDsJZGOwzokUUEPA9j4qulLUVEAf+e
+	/io4FjOQdGPzlTS9wgnvl3TatxKmDj8qn5wzHdp8TLfseZPvOl8JZYZSn3d5eAh6yps59y6CePwRr
+	XrsET3pg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xIzvS-00000008jOB-1mGi;
-	Tue, 20 Oct 2026 02:50:06 +0000
+	id 1xIzvT-00000008jQ8-0cJv;
+	Tue, 20 Oct 2026 02:50:07 +0000
 Received: from m16.mail.163.com ([117.135.210.3])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xIzvG-00000008jE1-3LdL;
-	Tue, 20 Oct 2026 02:49:59 +0000
+	id 1xIzvH-00000008jFA-1ZJ2;
+	Tue, 20 Oct 2026 02:50:00 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
-	s=s110527; h=From:To:Subject:Date:Message-Id:MIME-Version; bh=uD
-	9iLC9u0+i53WqbXenU4Sedkd6VmeyujwIgM/Ul8mg=; b=Ys3yJNElDXDx/8YhgS
-	5kz6NqPdGdOB3IDzNisIIiXWme0srucIdVdUoxGdTKwxoj7V5Y14EkWjKQECDwkT
-	WvVHRpgMjBSZ+aZgN2Ck8A/jaWsk6i0P79Bmv+aNl2WwMeWiJQmHFhaXP6NfEBDJ
-	AFn6xfXhZhDKISWStm8xFLpis=
+	s=s110527; h=From:To:Subject:Date:Message-Id:MIME-Version; bh=qS
+	qZs6kvQ73jpKV//X6SsqeslDJs9OL8i3dqvINNPv8=; b=Cr+WWcS/vDlwgfM9TA
+	zmmFWxnFaSAEYN63MwVeOVcDhXvfSNnGubjHlrqRnHSnNrO1vfOkIRVSERO0ttAo
+	WuK8zUU5xV1iiA3Rqfk9s4fpu3Lb5lyImNu3vk8JMpjAz42X/hnh/ljCme2SJOO3
+	eq+WG1WycGCfdg+MHkLKxM+FY=
 Received: from pc.localdomain (unknown [])
-	by gzga-smtp-mtada-g1-1 (Coremail) with SMTP id _____wDnr8C+1tZqMLhIBA--.5123S5;
-	Tue, 20 Oct 2026 10:49:40 +0800 (CST)
+	by gzga-smtp-mtada-g1-1 (Coremail) with SMTP id _____wDnr8C+1tZqMLhIBA--.5123S8;
+	Tue, 20 Oct 2026 10:49:44 +0800 (CST)
 From: Jiale Yao <yaojiale02@163.com>
 To: Felix Fietkau <nbd@nbd.name>,
 	Lorenzo Bianconi <lorenzo@kernel.org>,
@@ -44,32 +44,30 @@ To: Felix Fietkau <nbd@nbd.name>,
 	Sean Wang <sean.wang@mediatek.com>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	StanleyYP Wang <StanleyYP.Wang@mediatek.com>,
-	Evelyn Tsai <evelyn.tsai@mediatek.com>,
-	Bo Jiao <Bo.Jiao@mediatek.com>,
-	Elwin Huang <s09289728096@gmail.com>,
+	Howard Hsu <howard-yh.hsu@mediatek.com>,
 	linux-wireless@vger.kernel.org,
 	linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
-Subject: [PATCH 3/7] wifi: mt76: mt7996: validate EEPROM response lengths
-Date: Tue, 20 Oct 2026 10:49:29 +0800
-Message-Id: <20261020024933.3205681-4-yaojiale02@163.com>
+Subject: [PATCH 6/7] wifi: mt76: mt7996: validate temperature response length
+Date: Tue, 20 Oct 2026 10:49:32 +0800
+Message-Id: <20261020024933.3205681-7-yaojiale02@163.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20261020024933.3205681-1-yaojiale02@163.com>
 References: <20261020024933.3205681-1-yaojiale02@163.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-CM-TRANSID: _____wDnr8C+1tZqMLhIBA--.5123S5
-X-Coremail-Antispam: 1Uf129KBjvJXoWxur1xZr1UZrWrWw4rZrWrXwb_yoW5WFWfpF
-	y3KFyjyr1rJr1kXr4SyFs2ya4Fg3WrWr13Kw43Wwn8W34aywn5AayFvFyvgr1YkrWUA3W8
-	Gw4UtFnrGF90qrDanT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
-	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x07j7a9-UUUUU=
-X-CM-SenderInfo: x1dryxhdohiji6rwjhhfrp/xtbCzQQ3cWrW1sScIQAA3c
+X-CM-TRANSID: _____wDnr8C+1tZqMLhIBA--.5123S8
+X-Coremail-Antispam: 1Uf129KBjvdXoW7Xw4rAFW3AF48uryDAr1fJFb_yoWDZFg_uw
+	na9FnxJr18Kw4UKr42kwsrCryakay8u3Z5C3yrt3yfJay7JFW7ur93Zrn3GrZ2k3Z29F1D
+	Grn8Za47Za43ujkaLaAFLSUrUUUUjb8apTn2vfkv8UJUUUU8Yxn0WfASr-VFAUDa7-sFnT
+	9fnUUvcSsGvfC2KfnxnUUI43ZEXa7IUbG-e7UUUUU==
+X-CM-SenderInfo: x1dryxhdohiji6rwjhhfrp/xtbCzgg4cmrW1sildwAA38
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261019_194955_199255_EB74D53D 
-X-CRM114-Status: GOOD (  12.31  )
+X-CRM114-CacheID: sfid-20261019_194955_738975_59AE1010 
+X-CRM114-Status: UNSURE (   8.60  )
+X-CRM114-Notice: Please train this message.
 X-Spam-Score: -1.8 (-)
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -90,94 +88,32 @@ X-Spam-Status: No, score=-15.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-The EEPROM query reads fixed event fields and copies EFUSE or external
-EEPROM data without checking the firmware response length. A truncated
-response or an oversized external data length can cause out-of-bounds
-reads.
+The temperature query reads a fixed firmware event without checking the
+response length. A truncated response can cause an out-of-bounds read.
 
-Validate the fixed event, the requested EFUSE bytes, and both the
-external data-length field and its payload before copying data.
+Require the complete thermal event before accessing its temperature.
 
-Fixes: 98686cd21624 ("wifi: mt76: mt7996: add driver for MediaTek Wi-Fi 7 (802.11be) devices")
-Fixes: f456e1f56c4c ("wifi: mt76: add external EEPROM support for mt799x chipsets")
+Fixes: 6879b2e94172 ("wifi: mt76: mt7996: add thermal sensor device support")
 Signed-off-by: Jiale Yao <yaojiale02@163.com>
 ---
- .../net/wireless/mediatek/mt76/mt7996/mcu.c   | 30 +++++++++++++++++--
- 1 file changed, 28 insertions(+), 2 deletions(-)
+ drivers/net/wireless/mediatek/mt76/mt7996/mcu.c | 4 ++++
+ 1 file changed, 4 insertions(+)
 
 diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c
-index 1f7af6359dd7..eb868c2d5108 100644
+index 5391666553d9..d87851c5fc1d 100644
 --- a/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c
 +++ b/drivers/net/wireless/mediatek/mt76/mt7996/mcu.c
-@@ -4399,6 +4399,7 @@ int mt7996_mcu_get_eeprom(struct mt7996_dev *dev, u32 offset, u8 *buf, u32 buf_l
- 	};
- 	struct mt7996_mcu_eeprom_access_event *event;
- 	struct sk_buff *skb;
-+	size_t data_offset;
- 	int ret, cmd;
- 	u32 addr;
- 
-@@ -4424,9 +4425,14 @@ int mt7996_mcu_get_eeprom(struct mt7996_dev *dev, u32 offset, u8 *buf, u32 buf_l
+@@ -4702,6 +4702,10 @@ int mt7996_mcu_get_temperature(struct mt7996_phy *phy)
+ 					&req, sizeof(req), true, &skb);
  	if (ret)
  		return ret;
- 
-+	data_offset = offsetof(struct mt7996_mcu_eeprom_access_event, eeprom);
-+	if (skb->len < data_offset) {
-+		ret = -EINVAL;
-+		goto out;
++	if (skb->len < sizeof(*res)) {
++		dev_kfree_skb(skb);
++		return -EINVAL;
 +	}
-+
- 	event = (struct mt7996_mcu_eeprom_access_event *)skb->data;
- 	if (event->valid) {
--		u32 ret_len = le32_to_cpu(event->eeprom.ext_eeprom.data_len);
- 		u32 block = mode == EEPROM_MODE_EXT ? MT7996_EXT_EEPROM_BLOCK_SIZE :
- 						      MT7996_EEPROM_BLOCK_SIZE;
  
-@@ -4444,16 +4450,35 @@ int mt7996_mcu_get_eeprom(struct mt7996_dev *dev, u32 offset, u8 *buf, u32 buf_l
- 		case EEPROM_MODE_EFUSE:
- 			if (!buf_len || buf_len > MT7996_EEPROM_BLOCK_SIZE)
- 				buf_len = MT7996_EEPROM_BLOCK_SIZE;
-+			if (skb->len - data_offset < buf_len) {
-+				ret = -EINVAL;
-+				break;
-+			}
- 
- 			memcpy(buf, event->eeprom.efuse, buf_len);
- 			break;
--		case EEPROM_MODE_EXT:
-+		case EEPROM_MODE_EXT: {
-+			u32 ret_len;
-+
-+			if (skb->len - data_offset < sizeof(__le32)) {
-+				ret = -EINVAL;
-+				break;
-+			}
-+
-+			ret_len = le32_to_cpu(event->eeprom.ext_eeprom.data_len);
-+			data_offset += sizeof(__le32);
-+			if (ret_len > skb->len - data_offset) {
-+				ret = -EINVAL;
-+				break;
-+			}
-+
- 			if (!buf_len || buf_len > MT7996_EXT_EEPROM_BLOCK_SIZE)
- 				buf_len = MT7996_EXT_EEPROM_BLOCK_SIZE;
- 
- 			memcpy(buf, event->eeprom.ext_eeprom.data,
- 			       ret_len < buf_len ? ret_len : buf_len);
- 			break;
-+		}
- 		default:
- 			ret = -EINVAL;
- 			break;
-@@ -4462,6 +4487,7 @@ int mt7996_mcu_get_eeprom(struct mt7996_dev *dev, u32 offset, u8 *buf, u32 buf_l
- 		ret = -EINVAL;
- 	}
- 
-+out:
- 	dev_kfree_skb(skb);
- 
- 	return ret;
+ 	res = (void *)skb->data;
+ 	temp = le32_to_cpu(res->temperature);
 -- 
 2.34.1
 
