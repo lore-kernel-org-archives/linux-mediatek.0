@@ -2,115 +2,68 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id E0B90606A323
-	for <linux-mediatek@archiver.kernel.org>; Tue, 20 Oct 2026 12:42:33 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 658AB60A2627
+	for <linux-mediatek@archiver.kernel.org>; Tue, 20 Oct 2026 13:10:57 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=fOmgUuz8;
-	dkim=pass (2048-bit key, unprotected) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20251104 header.b=Z0yvMw1I
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=UoPb4kOP;
+	dkim=pass (2048-bit key, unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=b5XeuGiX
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=czINu4tNn892A/gqG20V0sIiMq+iNhxvP3cIYEKn6GM=; b=fOmgUuz81/KbwwJlEC9ALp4kgR
-	j96LMUEQbnD/gf0V8lXiF5a7fOq+2KW4Lx60IvROPKXvahaBQ5IcxTF5hsUvQc0zFJn7DzTmN2drW
-	iI+X0oqaX2rvzGpfWQmcQ2iWoQGlv5bYJaTtnQW08729sDPlcoX8mVKaBRZe2rx6IuYd6O91AkZ3i
-	w+p++s6r+ntk3HpVrfDlVZiXAgnnyhxqmX69Rx5dKCP5AHhCj+kkHMJBs2QnClyDPqewgjblRT0sy
-	6MgHE2qbMz9R6Wmct5Qd9jQCQYwDeIbKUeN4u/k2QBevQzwBKo6pZorPLl1hxxyhzRssbmR8y8P7B
-	1r3G3pCg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Message-ID:Date
+	:Cc:To:From:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=XuD6zr6E/WXraw+qY7ed3x7Km9phQJZA6ZLc39olELM=; b=UoPb4kOPi+qCZySZjdbJ6U3ZyX
+	vpXBfeRr/zdtRTzp60OZI/+xbacPRvtWWy1ELixhbcZl5KnaZoc3frjImIGrF03FvRKOUD6pi9FZL
+	kDKqBNo6d7gRtcr8nZVOc6bNIQ5WkzvJ5HZSqGsh624ZYykrxeBj8xo0/w8rmuY4NdFgcnfvSB53u
+	9v68yOqyG2p05kJV16pJM10neyG1onXXLCjVIlGgwsxDiZMP4BwLoLVt66Exv2bXy8fKnqFORtPF+
+	q85TPBDIa5cpSxtm71b1oHxDLpH2edYrhx7pBqkp1HvhRqv2CpVOjasGmR1Z2yAJOrdOuV1ZmtSXE
+	fbBftYag==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xJ9Am-00000009hKD-3p2H;
-	Tue, 20 Oct 2026 12:42:32 +0000
-Received: from mail-oo1-xc34.google.com ([2607:f8b0:4864:20::c34])
+	id 1xJ9cF-00000009kNr-1vYb;
+	Tue, 20 Oct 2026 13:10:55 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xJ9Ak-00000009hJ6-2JUM
-	for linux-mediatek@lists.infradead.org;
-	Tue, 20 Oct 2026 12:42:31 +0000
-Received: by mail-oo1-xc34.google.com with SMTP id 006d021491bc7-6b1afdf5196so1138622eaf.2
-        for <linux-mediatek@lists.infradead.org>; Tue, 20 Oct 2026 05:42:30 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1792500149; cv=none;
-        d=google.com; s=arc-20260327;
-        b=RGIPXR4nErNFtjFHd73tQkk1hw/I7qSv0Gyca0bsU3kGN++5H9kYc8EINmz/slvWq6
-         U7sRp8JsMHBIm4eYpqjvdcz/y95iZsoPZALskjTZayvA7mebx++uhfL//xTez6gTtg7z
-         LdS27t7vrbp4EohB38zKXsdzwK3Biu6GVYsxq3KbA3lotnsg8YZtc08fq264BY73BVZu
-         XrI5BDphPzMX/M7Siv6yGHjsXH5Zbl2IKeFKKxaMTXjtRbFZHJZGJC2+DXYY05US7jgP
-         E6vd4cIa4/uqYKMnWLRvlMXcUdvlnuCOn9lbT7zp36rcxLddr6MWU844ja3L16hafDvL
-         VKgw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20260327;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=czINu4tNn892A/gqG20V0sIiMq+iNhxvP3cIYEKn6GM=;
-        fh=TBbnC5EmtuDpW18ryoTglHY5AUKYL4/YF6Ckmsj+Jc4=;
-        b=kspwZr0wydi1fJDyJz8MdjQkOVTUPYG6F+KvpBERP96OXOE5lTi1M0zzKJSOKCHBi9
-         TEfLeaAXlL7w8yyvizV+bjeOWj4+61T82Y/qjFlEYHYFKwCA9bgQrqwWUl4zuDOMVl4I
-         kKwfxmTvdJYlKuk0WQgV7qidQb3CkB1zUVFQLgqHJZTXahZk9zkixerX3dtM+9fEtSaN
-         GWjCQ7dqLOkyISs0Yk2ssvyFDaM8nhWPq2F3/tkxWKnlKWHLJtKNotCIMjAlMHx2idSG
-         GKbb7lD9PbRjicyqYhW7ZGSAxHmXQeEQkBugdrQHAX9BX3dY+AQAVKp35CM3pmrd9U79
-         779w==;
-        darn=lists.infradead.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1792500149; x=1793104949; darn=lists.infradead.org;
-        h=content-transfer-encoding:content-type:cc:to:subject:message-id
-         :date:from:in-reply-to:references:mime-version:from:to:cc:subject
-         :date:message-id:reply-to:content-type;
-        bh=czINu4tNn892A/gqG20V0sIiMq+iNhxvP3cIYEKn6GM=;
-        b=Z0yvMw1It8kL63+w47kF84ZirYmxOdGlUwQSSNjyOTVXarVUGawmqWm7uAmCH2UC3R
-         RAKDtBD7g59RzO9Z/tZ+QWFQVJMR6SbirlxtH5OgeFVVQn4b5a4ZEyXbc92tDD48rRpv
-         7iI1oaRVitOiQLGrccmmxyP1EgCUILeaYWMnOMvk/QdjkTuIWodsm4WKBmbjX721xk6o
-         WxgWoyJ1jkrnXr+PG3dkGm5hlxPME54qieU/npq3qedwzNSCUiJbXjuqJps3p0MDoorh
-         I/146mRh7Hvsu5NeNM1hu9cW02NoLqoctJBDmPMrW6Oi35yIuA7gfDQncSVI4HeKUq+d
-         5k6A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1792500149; x=1793104949;
-        h=content-transfer-encoding:content-type:cc:to:subject:message-id
-         :date:from:in-reply-to:references:mime-version:x-gm-gg
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
-         :content-type;
-        bh=czINu4tNn892A/gqG20V0sIiMq+iNhxvP3cIYEKn6GM=;
-        b=CztgE6/vR03CfFJ78A4vUZvI1nPLhCaRhWCf0OE/Kp8PQAwPS4TgE80cIQC/w2yYoP
-         SXWhuijxU1dqN3nDP7XhImlLgqt7OaWfuHYLjdjJOxvjEBaoeGAtJla6Z3348Xa0nzOz
-         68SzQ8Vido+UbDpZyEl77jQHdcKWNzxjhPcYLz7MNYR/6L9FWNvGmurUbknL8Ze0unXk
-         kf0bXIzcoew1ocJ0rAFy+R0wqAmUdMTQXLox3h1rTgmTYD1NUB9ppeT0VA4BofFHDiWQ
-         tTV/FJ3MMRJw5GePf6mAVPDM2BK7AIMUb8XhyqutCvGZhL07VnAPN6C/IzOnRePrdoTv
-         PtXQ==
-X-Forwarded-Encrypted: i=1; AKwUvByqGFwz66EsqDZcYl7KDJ6yoCyUgGIowfzY7bH2204qvsSzz8iStxZT08I+eTvGzOmilv0Ed6l4H8QIXIIcBA==@lists.infradead.org
-X-Gm-Message-State: AFq9FYLyRAVh89gYrM2dcB6/6WUumbrWnRmgQgd3Bdqlheq8P5lJpSSt
-	j4N3pxTo2zWUPYVEmsLUcqunrb0YVrQbxJDduV2z6m9oi5cukU78isq/gzFhyLhIkxfsH3YQ3aH
-	DmxQTXanEcPuy249itNpHu33hPfvD/FU=
-X-Gm-Gg: AYBFou3IbsnhpTOA+KB4UEhDOCmZWbdXpOVL9ZBuMt1v/KdTx+ewdfEgCAOMpqKO+41
-	Fvi/QQWM3LXe6mXbpKuzGgfn21QIz04L6Iz5z8QcVVTsdgFfxm09gpoWrItGUqwrwJbaE2AWUze
-	J8zUkPmWd54UVDROHTtIe86zzUYbDiFMaH/gzxqjuO4HrVJmo4eVv3oBQLQCA0FaIws5rIsUB6d
-	hKfX290jDk1mI7BRNhnXMTdn2+VmAqSpyhx/vmYYKmBZoDgaQani9CzKZ2UU4GqzMi6PVQYeb1O
-	cEVKnHGZ1b+I+3xwIpr2VwS8sSKoxf8UDzCSUD3URi+fm4OehNnmgnZK2QkVpdjQQA==
-X-Received: by 2002:a05:6808:4f62:b0:4f4:b5ba:a236 with SMTP id
- 5614622812f47-53ccaf299bdmr10702127b6e.10.1792500149414; Tue, 20 Oct 2026
- 05:42:29 -0700 (PDT)
+	id 1xJ9cD-00000009kMn-1Fbz;
+	Tue, 20 Oct 2026 13:10:53 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by tor.source.kernel.org (Postfix) with ESMTP id 8A96860DB8;
+	Tue, 20 Oct 2026 13:10:52 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id E8F401F000C4;
+	Tue, 20 Oct 2026 13:10:50 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1792501852;
+	bh=XuD6zr6E/WXraw+qY7ed3x7Km9phQJZA6ZLc39olELM=;
+	h=Subject:From:To:Cc:Date:In-Reply-To:References;
+	b=b5XeuGiXV9gmpP0zjxDKguhvUm/0MEXDjHw/i5xVGXRYCHUofj/VsmDz858ZnEUH/
+	 BKf7eKAHoM9GdHXBqq2xDXVSyqYyOyGmJIVigTZvd1lMGWv5cf8OiTKmv0fUyklVFE
+	 YrGbF/P7Di5bGSFNs0RCsWQhgXiGZb3BFBIvLFenk0A2HtotRCJwoUaQwk8y+ei2IS
+	 /al52OXUUZgBFdJAgBb7Jzu0p4P+KF10flkclPJzSnFm60toe7nf4j6H3Oe/ADszjY
+	 2jSw3arIPF/AftSt0yXxwtLWmsoMP7BtXG89UNDcIOumV/eW3oXjLIWIabM/F7mYHB
+	 MNr/mIx1oHVbQ==
+Subject: Re: [PATCH net-next v3 4/9] net: stmmac: mediatek: simplify TX/RX
+ delay handling in mt2712_set_delay
+From: netdev-bot+sashiko@kernel.org
+To: louisalexis.eyraud@collabora.com
+Cc: andrew+netdev@lunn.ch, davem@davemloft.net, kuba@kernel.org,
+ pabeni@redhat.com, robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
+ richardcochran@gmail.com, matthias.bgg@gmail.com,
+ angelogioacchino.delregno@collabora.com, biao.huang@mediatek.com,
+ maxime.chevallier@bootlin.com, mcoquelin.stm32@gmail.com,
+ alexandre.torgue@foss.st.com, edumazet@kernel.org, kernel@collabora.com,
+ netdev@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-stm32@st-md-mailman.stormreply.com
+Date: Tue, 20 Oct 2026 13:10:50 +0000
+Message-ID: <179250185040.3135.9271701401823597487@kernel.org>
+In-Reply-To: <20261016-dwmac-mediatek-mt8189-v3-4-25daf2bbcf35@collabora.com>
+References: <20261016-dwmac-mediatek-mt8189-v3-4-25daf2bbcf35@collabora.com>
+X-sashiko-severity: High
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-References: <20261016-wedfix-v5-5-8b02e78fd34f@gmail.com> <179249104567.3135.3150268582386164073@kernel.org>
-In-Reply-To: <179249104567.3135.3150268582386164073@kernel.org>
-From: Zhi-Jun You <hujy652@gmail.com>
-Date: Tue, 20 Oct 2026 20:42:18 +0800
-X-Gm-Features: AclHuK9W4Es3s2qEoBcM8btZ9Y3bS_NG69-SBXVVPIf84hDXQvp4ykMnqjjWBv0
-Message-ID: <CAHGaMk9LPyH-kCGLxP0q8s4-_Soed_NBqLVtdvUB7KOB1xJikw@mail.gmail.com>
-Subject: Re: [PATCH net v5 5/5] net: ethernet: mtk_wed: bail out when failed
- to set up rings in wed_start
-To: netdev-bot+sashiko@kernel.org
-Cc: nbd@nbd.name, lorenzo@kernel.org, andrew+netdev@lunn.ch, 
-	davem@davemloft.net, edumazet@kernel.org, kuba@kernel.org, pabeni@redhat.com, 
-	matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com, 
-	sujuan.chen@mediatek.com, rex.lu@mediatek.com, netdev@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261020_054230_613070_409548CC 
-X-CRM114-Status: GOOD (  48.31  )
-X-Spam-Score: -1.9 (-)
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -121,241 +74,200 @@ List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-7.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
-	DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,FREEMAIL_FORGED_FROMDOMAIN,
-	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=no
-	autolearn_force=no version=4.0.1
+X-Spam-Status: No, score=-11.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,
+	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On Tue, Oct 20, 2026 at 6:10=E2=80=AFPM <netdev-bot+sashiko@kernel.org> wro=
-te:
->
-> Thank you for your contribution! Sashiko AI review found 3 potential
-> issue(s) to consider.
->
-> Critical: 0 (1) =C2=B7 High: 0 =C2=B7 Medium: 2 =C2=B7 Low: 1
->
-> If you believe none of the issues are legitimate, please reply to each
-> issue of Medium severity or higher and explain why the AI is wrong.
-> If any of them are legitimate and you plan to respin, please let patchwor=
-k
-> know by including "pw-bot: cr" as a separate line at the end of your repl=
-y
-> (one such reply per series is enough).
->
-> - [Medium] The new bail-outs in mtk_wed_start()
->   (drivers/net/ethernet/mediatek/mtk_wed.c) log a dev_err() and return,=
-=E2=80=A6
-> - [Medium] net: ethernet: mtk_wed: memory leak on ring setup error paths
-> - [Low] The commit fixes error handling for two calls in mtk_wed_start()
->   but has no Fixes: tag.
->
-> Pre-existing issues:
-> - [Critical] This problem wasn't introduced by this patch, but it is a
->   double free in the same reset -> start lifecycle.
->
-> --
->
-> net: ethernet: mtk_wed: bail out when failed to set up rings in wed_start
->
-> This commit checks the return values of mtk_wed_wdma_rx_ring_setup() and
-> mtk_wed_wdma_tx_ring_setup() in mtk_wed_start(). When either one fails, i=
-t
-> prints an error and returns early.
->
-> Link: https://lore.kernel.org/all/179000700034.2160803.105942816913840150=
-89@kernel.org/
->
-> > Add error message and return when fail to set up tx/rx wdma rings.
-> >
-> > This is suggested by Sashiko.
->
-> [Severity: Low]
-> Should this patch have a Fixes: tag?
->
-> The previous patch in this series, "net: ethernet: mtk_wed: setup
-> WDMA_RING_TX(0) for non-DBDC MT7986", added the
-> mtk_wed_wdma_tx_ring_setup(dev, 0, ...) call checked here, and that patch
-> carries Fixes: 4c5de09eb0d0. Without a tag on this patch, a stable
-> backport of the earlier one could land without its error check.
->
-> The unchecked mtk_wed_wdma_rx_ring_setup() call comes from commit
-> 23dca7a90017 ("net: ethernet: mtk_wed: add reset to tx_ring_setup
-> callback").
->
-> Every other patch in this series has a Fixes: tag. The line "This is
-> suggested by Sashiko." is free text and does not say which bug is being
-> fixed.
->
-> > diff --git a/drivers/net/ethernet/mediatek/mtk_wed.c b/drivers/net/ethe=
-rnet/mediatek/mtk_wed.c
-> > index 3a7c2bb33691f..86845893ae20f 100644
-> > --- a/drivers/net/ethernet/mediatek/mtk_wed.c
-> > +++ b/drivers/net/ethernet/mediatek/mtk_wed.c
-> > @@ -2353,14 +2353,20 @@ mtk_wed_start(struct mtk_wed_device *dev, u32 i=
-rq_mask)
-> >
-> >       for (i =3D 0; i < ARRAY_SIZE(dev->rx_wdma); i++)
-> >               if (!dev->rx_wdma[i].desc)
-> > -                     mtk_wed_wdma_rx_ring_setup(dev, i, 16, false);
-> > +                     if (mtk_wed_wdma_rx_ring_setup(dev, i, 16, false)=
-) {
-> > +                             dev_err(dev->hw->dev, "wdma rx ring %d se=
-tup failed\n", i);
-> > +                             return;
-> > +                     }
->
-> [Severity: Medium]
-> Does the caller ever find out that start failed here? The same question
-> applies to the tx_wdma[0] return below.
->
-> mtk_wed_start() is static void and is installed as the .start op. In
-> include/linux/soc/mediatek/mtk_wed.h the op is declared as:
->
->         void (*start)(struct mtk_wed_device *dev, u32 irq_mask);
->
-> The early return therefore skips mtk_wed_hw_init(),
-> mtk_wed_configure_irq(), mtk_wed_set_ext_int(), the v1 PCIe mirror map
-> write, mtk_wed_rro_cfg(), mtk_wed_amsdu_init(), mtk_wed_dma_enable() and
-> dev->running =3D true, and nothing is reported back.
->
-> mtk_wed_device_active() only checks the ops pointer:
->
-> #define mtk_wed_device_active(_dev) !!(_dev)->ops
->
-> so mt76 still treats WED as active. mt7915_dma_start() has already put
-> WFDMA into WED mode and written MT_INT_WED_MASK_CSR before it gets here:
->
->                 mtk_wed_device_start(&dev->mt76.mmio.wed, wed_irq_mask);
->         }
->
->         irq_mask =3D reset ? MT_INT_MCU_CMD : irq_mask;
->
->         mt7915_irq_enable(dev, irq_mask);
->
-> It then returns 0, even though it returns int and could pass an error up.
-> mt7996_dma_start() does the same after writing MT_INT_MASK_CSR.
->
-> On WED v3 with hw_rro, mt76 later calls mtk_wed_start_hw_rro(). That
-> function has no init or running check. It writes MTK_WED_WPDMA_INT_MASK
-> and MTK_WED_INT_MASK and sets MTK_WED_RRO_MSDU_PG_DRV_EN. Because of the
-> early return, mtk_wed_hw_init() never programmed MTK_WED_RX_BM_BASE or
-> MTK_WED_RRO_PG_BM_BASE.
->
-> Can this leave a half-initialized WED that the wlan driver keeps using as
-> if it had started, with only the dev_err() to show anything went wrong?
->
-> Would it be better to have ->start return an int, so that mtk_wed_start()
-> and the mt76 callers can propagate the error and unwind?
+Thank you for your contribution! Sashiko AI review found 1 potential
+issue(s) to consider.
 
-I will let the maintainer decide what to do there.
+Critical: 0 · High: 1 · Medium: 0 (1) · Low: 0
 
-Best regards,
-Zhi-Jun
+If you believe none of the issues are legitimate, please reply to each
+issue of Medium severity or higher and explain why the AI is wrong.
+If any of them are legitimate and you plan to respin, please let patchwork
+know by including "pw-bot: cr" as a separate line at the end of your reply
+(one such reply per series is enough).
 
->
-> >
-> >       /*
-> >        * non-DBDC MT7986 allocates only rx_ring[1] and tx_wdma[1] durin=
-g setup
-> >        * but tx_wdma[0] is also needed for WED to function.
-> >        */
-> >       if (mtk_wed_is_v2(dev->hw) && !dev->rx_ring[0].desc)
-> > -             mtk_wed_wdma_tx_ring_setup(dev, 0, MTK_WED_WDMA_RING_SIZE=
-, !!dev->tx_wdma[0].desc);
-> > +             if (mtk_wed_wdma_tx_ring_setup(dev, 0, MTK_WED_WDMA_RING_=
-SIZE, !!dev->tx_wdma[0].desc)) {
-> > +                     dev_err(dev->hw->dev, "wdma tx ring 0 setup faile=
-d\n");
-> > +                     return;
-> > +             }
->
-> [Severity: Medium]
-> This is outside the lines changed here. It is the same ring setup
-> error handling this patch is tightening, though, so it seems worth
-> raising.
->
-> In mtk_wed_rx_ring_setup(), mtk_wed_ring_alloc() first allocates the
-> descriptor memory for dev->rx_ring[idx]. If the following
-> mtk_wed_wdma_tx_ring_setup() call fails, the function returns -ENOMEM
-> without setting MTK_WED_RING_CONFIGURED on that ring.
->
-> mtk_wed_tx_ring_setup() has the same shape. dev->tx_ring[idx] is
-> allocated, and a failure from mtk_wed_wdma_rx_ring_setup() returns
-> without setting the flag.
->
-> The teardown helpers only free rings that have
-> MTK_WED_RING_CONFIGURED set. In both cases the coherent DMA buffer
-> for the wlan-facing ring is therefore never released by
-> mtk_wed_free_tx_rings() or mtk_wed_free_rx_rings(). If setup is
-> later retried with reset =3D=3D false, mtk_wed_ring_alloc() overwrites
-> ring->desc and the old buffer is lost for good.
->
-> mtk_wed_free_rx_rings() also looks like it tests the wrong array. It
-> frees dev->rx_ring[i] based on dev->tx_ring[i].flags. Whether an rx
-> ring is freed or skipped then depends on the tx ring with the same
-> index, not on the rx ring itself. That makes the rx side leak more
-> easily still.
->
-> Should the error paths in mtk_wed_rx_ring_setup() and
-> mtk_wed_tx_ring_setup() free the ring they just allocated? Or should
-> the free helpers key off ring->desc instead of the flag? And should
-> the check in mtk_wed_free_rx_rings() test dev->rx_ring[i].flags?
->
-> [ ... ]
->
-> [Severity: Critical]
-> This isn't a bug introduced by this patch, but it sits in the same reset
-> and start lifecycle. mtk_wed_rx_reset() does:
->
->         mtk_wed_free_rx_buffer(dev);
->         mtk_wed_hwrro_free_buffer(dev);
->
-> When dev->rx_buf_ring.desc is non-NULL, mtk_wed_free_rx_buffer() already
-> ends with its own call:
->
->         dev->wlan.release_rx_buf(dev);
->         dma_free_coherent(dev->hw->dev, dev->rx_buf_ring.size * sizeof(*d=
-esc),
->                           desc, dev->rx_buf_ring.desc_phys);
->
->         mtk_wed_hwrro_free_buffer(dev);
->
-> mtk_wed_hwrro_free_buffer() frees everything but never clears
-> dev->hw_rro.pages or dev->hw_rro.desc:
->
->         dma_free_coherent(dev->hw->dev, dev->hw_rro.size * sizeof(*desc),
->                           desc, dev->hw_rro.desc_phys);
->
-> free_pagelist:
->         kfree(page_list);
->
-> Does the second call in mtk_wed_rx_reset() then read page_list[] from
-> freed memory? It would also __free_page() the hw_rro pages,
-> dma_free_coherent() hw_rro.desc and kfree() the page list a second time.
->
-> This looks reachable on every SER/DMA reset on WED v3 with wlan.hw_rro
-> set, which mt7996 does for the primary WED:
->
-> mt7996_dma_reset()
->   mtk_wed_device_dma_reset()
->     mtk_wed_reset_dma()
->       mtk_wed_rx_reset()
->         mtk_wed_free_rx_buffer()
->           mtk_wed_hwrro_free_buffer()
->         mtk_wed_hwrro_free_buffer()
->
-> There is a second, separate issue: mtk_wed_free_rx_buffer() leaves
-> dev->rx_buf_ring.desc pointing at freed memory. Suppose the next
-> mtk_wed_start()->mtk_wed_rx_buffer_alloc() fails at dma_alloc_coherent()
-> before that pointer is reassigned. Could a later
-> __mtk_wed_detach()->mtk_wed_free_rx_rings()->mtk_wed_free_rx_buffer() the=
-n
-> free it again?
->
-> --
-> Sashiko AI review =C2=B7 https://netdev-ai.bots.linux.dev/sashiko/#/patch=
-set/20261016-wedfix-v5-0-8b02e78fd34f%40gmail.com
+- [High] In drivers/net/ethernet/stmicro/stmmac/dwmac-mediatek.c,
+  mt2712_set_delay() now uses the wrong picosecond-per-stage divisor for…
+
+Pre-existing issues:
+- [Medium] This problem wasn't introduced by this patch, but
+  mt2712_gmac_variant uses a single rx_delay_max/tx_delay_max of 17600ps…
+
+--
+
+net: stmmac: mediatek: simplify TX/RX delay handling in mt2712_set_delay
+
+This commit removes mt2712_delay_ps2stage() and mt2712_delay_stage2ps().
+Those helpers converted the TX/RX delays in the driver data in place. The
+stage values are now computed in local variables inside mt2712_set_delay(),
+and new defines are added for the MT2712 delay stage dividers and maximum
+values.
+
+> diff --git a/drivers/net/ethernet/stmicro/stmmac/dwmac-mediatek.c b/drivers/net/ethernet/stmicro/stmmac/dwmac-mediatek.c
+> index f7eb85110df08..596411d4a5b2b 100644
+> --- a/drivers/net/ethernet/stmicro/stmmac/dwmac-mediatek.c
+> +++ b/drivers/net/ethernet/stmicro/stmmac/dwmac-mediatek.c
+> @@ -36,6 +36,14 @@
+>  #define ETH_FINE_DLY_GTXC	BIT(1)
+>  #define ETH_FINE_DLY_RXC	BIT(0)
+>  
+> +#define MT2712_RMII_DLY_RXC_STAGE_DIV	170 /* 170ps per stage */
+> +#define MT2712_RMII_DLY_TXC_STAGE_DIV	170 /* 170ps per stage */
+> +
+> +#define MT2712_RGMII_DLY_RXC_STAGE_DIV	550 /* 550ps per stage */
+> +#define MT2712_RGMII_DLY_RXC_MAX	17600 /* 32 x 550ps */
+> +#define MT2712_RGMII_DLY_TXC_STAGE_DIV	550 /* 550ps per stage */
+> +#define MT2712_RGMII_DLY_TXC_MAX	17600 /* 32 x 550ps */
+> +
+
+[ ... ]
+
+> @@ -129,71 +137,36 @@ static int mt2712_set_interface(struct mediatek_dwmac_plat_data *plat,
+>  	return 0;
+>  }
+>  
+> -static void mt2712_delay_ps2stage(struct mediatek_dwmac_plat_data *plat)
+> -{
+> -	struct mac_delay_struct *mac_delay = &plat->mac_delay;
+> -
+> -	switch (plat->phy_mode) {
+> -	case PHY_INTERFACE_MODE_MII:
+> -	case PHY_INTERFACE_MODE_RMII:
+> -		/* 550ps per stage for MII/RMII */
+> -		mac_delay->tx_delay /= 550;
+> -		mac_delay->rx_delay /= 550;
+> -		break;
+> -	case PHY_INTERFACE_MODE_RGMII:
+> -	case PHY_INTERFACE_MODE_RGMII_TXID:
+> -	case PHY_INTERFACE_MODE_RGMII_RXID:
+> -	case PHY_INTERFACE_MODE_RGMII_ID:
+> -		/* 170ps per stage for RGMII */
+> -		mac_delay->tx_delay /= 170;
+> -		mac_delay->rx_delay /= 170;
+> -		break;
+
+[ ... ]
+
+>  static int mt2712_set_delay(struct mediatek_dwmac_plat_data *plat)
+>  {
+>  	struct mac_delay_struct *mac_delay = &plat->mac_delay;
+> -	u32 delay_val = 0, fine_val = 0;
+> +	u32 rx_delay_stage_val, tx_delay_stage_val;
+> +	u16 rx_delay_stage_div, tx_delay_stage_div;
+> +	u32 delay_val = 0;
+> +	u32 fine_val = 0;
+>  
+> -	mt2712_delay_ps2stage(plat);
+> +	if (phy_interface_mode_is_rgmii(plat->phy_mode)) {
+> +		rx_delay_stage_div = MT2712_RGMII_DLY_RXC_STAGE_DIV;
+> +		tx_delay_stage_div = MT2712_RGMII_DLY_TXC_STAGE_DIV;
+> +	} else {
+> +		rx_delay_stage_div = MT2712_RMII_DLY_RXC_STAGE_DIV;
+> +		tx_delay_stage_div = MT2712_RMII_DLY_TXC_STAGE_DIV;
+> +	}
+> +	rx_delay_stage_val = mac_delay->rx_delay / rx_delay_stage_div;
+> +	tx_delay_stage_val = mac_delay->tx_delay / tx_delay_stage_div;
+
+[Severity: High]
+Are the RGMII and MII/RMII stage dividers swapped here?
+
+The removed mt2712_delay_ps2stage() divided MII/RMII delays by 550 and
+RGMII delays by 170. The binding in
+Documentation/devicetree/bindings/net/mediatek-dwmac.yaml says the same
+thing for mediatek,tx-delay-ps and mediatek,rx-delay-ps:
+
+    For MT2712 RGMII interface, Allowed value need to be a multiple of 170,
+    or will round down. Range 0~31*170.
+    For MT2712 RMII/MII interface, Allowed value need to be a multiple of 550,
+    or will round down. Range 0~31*550.
+
+The new defines use 550 for RGMII and 170 for MII/RMII. The commit message
+describes the same reversed mapping:
+
+    by dividing them by a constant (550 for RGMII, 170 for MII/RMII)
+
+The in-tree arch/arm64/boot/dts/mediatek/mt2712-evb.dts uses
+phy-mode = "rgmii-rxid" and mediatek,tx-delay-ps = <1530> (9 x 170ps).
+For that board, the GTXC stage count written to PERI_ETH_DLY drops from 9
+to 1530 / 550 = 2.
+
+In MII/RMII mode, a binding-valid 1100ps (2 x 550ps) now becomes 6 stages,
+which is roughly 3300ps on the hardware. Any value above 31 * 170 no longer
+fits in the 5-bit ETH_DLY_*_STAGES fields, and FIELD_PREP() truncates it.
+
+This path runs on every probe and resume through mediatek_dwmac_init() ->
+mt2712_set_delay(). Could it keep the link from coming up, or corrupt
+TX/RX data, on MT2712 boards that set a delay property?
+
+The problem is still there at the end of the series. In the later patch
+"net: stmmac: mediatek: add RX/TX delay stage divider in platform data",
+mt2712_gmac_variant sets .rx_rgmii_delay_stage_div to
+MT2712_RGMII_DLY_RXC_STAGE_DIV (550) and the rmii dividers to 170. It also
+sets .tx_rgmii_delay_stage_div to MT2712_RMII_DLY_TXC_STAGE_DIV (170),
+which looks like a typo.
+
+That typo happens to restore the RGMII TX divider for mt2712-evb. RGMII RX
+and all MII/RMII delays still appear to use the wrong divider.
+
+[ ... ]
+
+> @@ -263,19 +248,17 @@ static int mt2712_set_delay(struct mediatek_dwmac_plat_data *plat)
+
+[ ... ]
+
+>  static const struct mediatek_dwmac_variant mt2712_gmac_variant = {
+> -		.dwmac_set_phy_interface = mt2712_set_interface,
+> -		.dwmac_set_delay = mt2712_set_delay,
+> -		.clk_list = mt2712_dwmac_clk_l,
+> -		.num_clks = ARRAY_SIZE(mt2712_dwmac_clk_l),
+> -		.rx_delay_max = 17600,
+> -		.tx_delay_max = 17600,
+> -		.dma_bit_mask = 33,
+> +	.dwmac_set_phy_interface = mt2712_set_interface,
+> +	.dwmac_set_delay = mt2712_set_delay,
+> +	.clk_list = mt2712_dwmac_clk_l,
+> +	.num_clks = ARRAY_SIZE(mt2712_dwmac_clk_l),
+> +	.rx_delay_max = MT2712_RGMII_DLY_RXC_MAX,
+> +	.tx_delay_max = MT2712_RGMII_DLY_TXC_MAX,
+> +	.dma_bit_mask = 33,
+>  };
+
+[Severity: Medium]
+This is a pre-existing issue and was not introduced by this patch. Should
+the MT2712 delay limit depend on the phy mode?
+
+mt2712_gmac_variant applies one 17600ps rx_delay_max/tx_delay_max to every
+interface mode. mediatek_dwmac_config_dt() only rejects values at or above
+that limit:
+
+    if (tx_delay_ps < plat->variant->tx_delay_max) {
+        mac_delay->tx_delay = tx_delay_ps;
+
+The ETH_DLY_GTXC_STAGES, ETH_DLY_TXC_STAGES and ETH_DLY_RXC_STAGES fields
+are 5 bits wide, so each holds at most 31 stages.
+
+In the 170ps per stage mode (RGMII per the binding), any accepted value
+above 31 * 170 = 5270ps gives a stage count between 32 and 103. FIELD_PREP()
+on a runtime value just masks it (for example 100 & 0x1f = 4). The result
+is an unrelated delay, written with the ENABLE bit still set and no error
+reported.
+
+The binding documents a separate range for each mode (RGMII 0~31*170,
+MII/RMII 0~31*550).
+
+This patch also moves the limit into macros named MT2712_RGMII_DLY_*_MAX
+with the comment "32 x 550ps". That does not match the 170ps RGMII stage
+given in the binding.
+
+Because of the swapped dividers above, binding-valid MII/RMII values can
+now overflow as well. That part goes away once the divider swap is fixed.
+
+-- 
+Sashiko AI review · https://netdev-ai.bots.linux.dev/sashiko/#/patchset/20261016-dwmac-mediatek-mt8189-v3-0-25daf2bbcf35%40collabora.com
 
