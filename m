@@ -2,87 +2,72 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 949BD606A31B
-	for <linux-mediatek@archiver.kernel.org>; Tue, 20 Oct 2026 07:32:46 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 2CA02606A31A
+	for <linux-mediatek@archiver.kernel.org>; Tue, 20 Oct 2026 09:07:44 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=O4RXxmDR;
-	dkim=pass (2048-bit key, unprotected) header.d=linutronix.de header.i=@linutronix.de header.a=rsa-sha256 header.s=2020 header.b=K477aKgm;
-	dkim=pass header.d=linutronix.de header.i=@linutronix.de header.a=ed25519-sha256 header.s=2020e header.b=CY4xOlG9
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=gIgcv3YL;
+	dkim=pass (2048-bit key, unprotected) header.d=collabora.com header.i=@collabora.com header.a=rsa-sha256 header.s=mail header.b=JEWtc8B5
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=AbbG2Q6j4Hecrtu/PulD9TnwIM8oYREi3XENRG9e+T0=; b=O4RXxmDRAxRaIQp+RgGxiGdyqo
-	MWZ427MiETifMpiQuzVnoWQU8ou8SSZ6l+l6QwZvtkgnMKB3TY07pTrB0YbN+lUqVhY5Wk/UgKvCh
-	Bnu1petN15oEuOyJL25FpTZ7P9NMbxwCeyUvUuA8P87X/kVhPgydX64c49A91xj8fo5TcTU3ABXnj
-	28f7S+7gx163fLZMY6nMphUOMgeyER+lgMgSiTOaIEaJr2ej8Av92/76iAabWrYPAUTA0pI4Lh7s7
-	Z1n5eXRpDEi0OGHzNgs8ijuPRVwMIA9EhikVwL39r8aG+N7fCgkUXp5Uq44bL2I1JvQhRbaEH9fmg
-	DM5JP+HQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=4bn3cWdwZrpBaWzYJtec/Ntiw0Eowff++j505Mm5iEg=; b=gIgcv3YLIDnFSrLkQADR1Pch+T
+	de4HVCuXxb2wTKSjgBkwnOFBWp0CC+EfyQl/1KtszsuE4SCBlruKJ4rJQW6ofGWIRvB+VsMu1nvyo
+	UISGz4SzuUsTEVySmGqteoEUEFbBUvQdIMA0DcDU1oEr+GI+jr9M0VO0eQcHrfNR6pEEkwTpuyKMa
+	8zlY822lRSLOX4cHqSOMPTYi8FnnQltANsgNvG26lb10xhzJ2njnNEHhrEPSQ5qOKijB9pHBC0Fwo
+	6pM86LFW/FJcSYb+vWT7zGb2kND4VxX8P82aXn+MykXSEVg7DaT/8WQrvql+iaHpiVXXhz8xOQgJW
+	L5CRlR1w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xJ4Kz-000000093QI-2dEr;
-	Tue, 20 Oct 2026 07:32:45 +0000
-Received: from galois.linutronix.de ([193.142.43.55])
+	id 1xJ5oq-00000009GMi-08zu;
+	Tue, 20 Oct 2026 09:07:40 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xJ4Kw-000000093P8-25il;
-	Tue, 20 Oct 2026 07:32:43 +0000
-Date: Tue, 20 Oct 2026 09:32:36 +0200
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linutronix.de;
-	s=2020; t=1792481557;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=AbbG2Q6j4Hecrtu/PulD9TnwIM8oYREi3XENRG9e+T0=;
-	b=K477aKgmkz+L+RRd+uucEpbLJ0f0xKJRbJMfRt+6Ovxjrea0w0kLPKBE5pAcVCIEDbo1l5
-	mT0KYpEsopt8ZkoUShMmn45KL4YIHT3PvAwNfUPHN73uzIG1rdp4RQlRpVNduOaSunwJ1I
-	fFI6AZFYjFCqqDkshKZ1oSh6lyYxhQjWWrNKyyZv5s6IxcBDyREqjG6ss/H7Ouja4XWYig
-	3nGe9jgw5DNxc0PaBrFMUPvEEG8JbQXAUsnIQXEW40UkFvqcvoS7nhV+9dO4VdiACU7tLX
-	9FrRFppKhgnJvIikvN2imkbISyzdfwGDbZvSYQUBa0dC2Ff13nHAYlrzkWZ4hA==
-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=linutronix.de;
-	s=2020e; t=1792481557;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=AbbG2Q6j4Hecrtu/PulD9TnwIM8oYREi3XENRG9e+T0=;
-	b=CY4xOlG9QFW8DCbV7CCf/a69uJonoMF1BH+tVAs9yDlMABxmZbFtFiTlS0+2B5nu9/U1+T
-	INrARMRaDy1GEgBA==
-From: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
-To: Ryan Brue <ryanbrue.dev@gmail.com>
-Cc: Chen-Yu Tsai <wenst@chromium.org>, Mark Brown <broonie@kernel.org>,
-	Lee Jones <lee@kernel.org>, Arnd Bergmann <arnd@arndb.de>,
-	Sean Wang <sean.wang@kernel.org>, Linus Walleij <linusw@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Bartosz Golaszewski <brgl@kernel.org>,
-	Clark Williams <clrkwllms@kernel.org>,
-	Steven Rostedt <rostedt@goodmis.org>,
-	Yingjoe Chen <yingjoe.chen@mediatek.com>,
-	Chaotian Jing <chaotian.jing@mediatek.com>,
-	Hongzhou Yang <hongzhou.yang@mediatek.com>,
-	linux-mediatek@lists.infradead.org, linux-gpio@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-rt-devel@lists.linux.dev, mfd@lists.linux.dev
-Subject: Re: [PATCH] pinctrl: mediatek: common-v1: Use a raw spinlock for the
- pinctrl regmap
-Message-ID: <20261020073236.dDVmd3BW@linutronix.de>
-References: <20260929-rbrue-suez-upstreaming-mtk-pinctrl-raw-regmap-v1-1-db92943f42cb@gmail.com>
- <20260930080609.dnK1-Uta@linutronix.de>
- <CAGXv+5FssQL3Go3VDFbLAT6HP12RS3U3OgxhYOeapzs64QTdUw@mail.gmail.com>
- <d3d3e7b3-eb8b-456d-9a2c-116334e86c14@gmail.com>
+	id 1xJ5oo-00000009GLF-01Dh;
+	Tue, 20 Oct 2026 09:07:39 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1792487254;
+	bh=oRGsM1bXUyoQFClOurpdXPfqoj3kEqrQ7E5LuNfjomU=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=JEWtc8B5ei7AdnCgumD9wkGPxVmZIML9X0/Yp+0gePGNvkKYFhQ6trIgjFIuJmcmw
+	 +juMBVqWVYgBwBNztcO+GKU0qVKV5/YR8lmSZ8sKcjBG4hoaXh/X7/GJ2HFXvwiXHn
+	 GQl7ZKuGv6Ni3JlB1R3rHGeOA6WlV+nKUZVE5vE5DN+bCw7T8Ir1IURKlvcvq8CMty
+	 1ODove3DUBjKOYLnRfNmRSmyBOxkrVCRuEJz2gBQIqtS38KjLiyrA4GsXEUmbq2x2P
+	 mbTUdVmwVjtuOuaWphb36gnoQ8njOl7BO7TmpxKu1CLiBZ5p2pj+Z0GzLlr9lq7p4j
+	 sOM/TsMdMYt1A==
+Received: from [100.64.1.21] (unknown [100.64.1.21])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 1320317E05F3;
+	Tue, 20 Oct 2026 11:07:34 +0200 (CEST)
+Message-ID: <afc3ec2a-90b5-440d-9710-2b3892b01b6c@collabora.com>
+Date: Tue, 20 Oct 2026 11:07:33 +0200
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-In-Reply-To: <d3d3e7b3-eb8b-456d-9a2c-116334e86c14@gmail.com>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH PARTIAL-RESEND v12 0/5] Add support MT6316/6363/MT6373
+ PMICs regulators and MFD
+To: Alexandre Mergnat <amergnat@baylibre.com>
+Cc: linux-mediatek@lists.infradead.org, lee@kernel.org, robh@kernel.org,
+ krzk+dt@kernel.org, conor+dt@kernel.org, matthias.bgg@gmail.com,
+ lgirdwood@gmail.com, broonie@kernel.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ kernel@collabora.com, wenst@chromium.org
+References: <20260511101355.122478-1-angelogioacchino.delregno@collabora.com>
+ <179239867012.642420.15110854236483587234.b4-review@b4>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
+In-Reply-To: <179239867012.642420.15110854236483587234.b4-review@b4>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261020_003242_704505_F40C519A 
-X-CRM114-Status: GOOD (  20.82  )
-X-Spam-Score: -4.4 (----)
+X-CRM114-CacheID: sfid-20261020_020738_199900_33B64B6A 
+X-CRM114-Status: GOOD (  13.09  )
+X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,55 +78,33 @@ List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-6.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-7.7 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,
 	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS autolearn=no autolearn_force=no version=4.0.1
+	SPF_PASS,USER_AGENT_SANE_1 autolearn=no autolearn_force=no
+	version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On 2026-10-06 19:57:01 [-0500], Ryan Brue wrote:
-> Hi Chen-Yu and Sebastian,
->=20
-> Thanks for looking at this.
->=20
-> On 9/30/26 3:17 AM, Chen-Yu Tsai wrote:
-> > The syscon node is the provider of the regmap. You need to fix it there,
-> > not duplicate it in the consumer.
->=20
-> Unless I'm misunderstanding, no driver binds to that node, so its regmap
-> comes from the generic syscon code, and changing it there would affect ev=
-ery
-> syscon. Lee, Arnd, Mark, would that be acceptable?
->=20
-> These are the options I see. Please let me know if there's a better one:
->=20
-> - Do what Sebastian suggested and make syscon use a raw spinlock, except
-> when the node has a clock, since regmap-mmio calls clk_enable() under the
-> lock. Off PREEMPT_RT, nothing changes. On RT the lock would no longer be
-> preemptible for most syscons, including across bulk writes. Most syscon
-> users that do bulk writes only write a few registers, but enabling the
-> Amlogic G12A PCIe PLL writes a sequence with 40 us of udelay() under the
-> lock.
+On 10/19/26 10:31, Alexandre Mergnat wrote:
+> Hi Angelo,
+> 
+> I'm working on mainline support for the MT6363 MFD PMIC.
+> 
+> Are you planning to send a new revision addressing the review feedback
+> on v12? If you don't have time to pick it up again, I'd be happy to
+> help address the remaining comments and prepare a new revision,
+> if that works for you.
+> 
+> Thanks for your work on this!
+> 
+> Cheers,
+> Alexandre
+> 
 
-bulk writes could be a concern. The 40us delay is within the lock
-acquired? If so, could this be done without the lock? I assume this is
-part of the init sequence so nothing should use the HW so the writes
-should not be interrupted by other writes to the device.
+Yes, I do have a new version locally which didn't get sent because of the SPMI
+series (introducing the new helpers) that didn't get picked yet.
 
-> - Have the pinctrl ioremap() the node a second time alongside syscon's
-> mapping and read the input register (DIN) with readl(). That read is the
-> only access the EINT code makes in raw context. This would go around the
-> syscon, and it requires that DIN never be written in a multi-step sequenc=
-e,
-> which is currently the case.
-
-So it would be safe for now=E2=80=A6
-
-> I'd like to know the best approach before sending out a v2.
->=20
-> Best regards,
-> Ryan Brue
-
-Sebastian
+Cheers,
+Angelo
 
