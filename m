@@ -2,101 +2,102 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 5B96E606A31E
-	for <linux-mediatek@archiver.kernel.org>; Tue, 20 Oct 2026 12:37:52 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 26A59606A32E
+	for <linux-mediatek@archiver.kernel.org>; Tue, 20 Oct 2026 12:40:12 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=eSKU64mh;
-	dkim=pass (2048-bit key, unprotected) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20251104 header.b=HN/6YiN5
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=F5u26+6A;
+	dkim=pass (2048-bit key, unprotected) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20251104 header.b=hD0Mi7Gk
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
 	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=sAk8vAv8nUAyr6JPeIhpU/yIjHpAZXyzJ6Jytkg7sB4=; b=eSKU64mhpBF6MmC2QB3HCg+Ibf
-	Qfja1xR08b/op+qSw7v6aGWUIMFlUzJG5PPgWxx9XCMb/ojoplLMKhdBezoGY0FVLQy1XngRjBHD2
-	9YV/chnXR4f8S2fEOcrD4RuJBNum9wnY8p8pn5pL7MZwZbfmkQJptvhDp4Qi/GdfOwktGcfT7CJ32
-	uUC9l/4uGiGkOWDw1NY+pX2HvUSRbpAkDqgRqMyi8jX71snybLoBhQ2JUohkEmzCQG8dGfOsyY5YN
-	BPlBQBTt8l+LQn2nDPFVCKY1s6u9anbshlanPSEy8x9aKIRoEgL31mthM9NwjltXrjvaiuMPtq9xq
-	kdLJze4A==;
+	bh=BetBMRYgFSc2DhIuFhDdmiOw1ARuIusJ4xRACgSZqH4=; b=F5u26+6APkaosd87v7RVqAbyAC
+	5zOIM1mAIFyJC0nFYPRjdjdjTB73HidxvqOlA/ZPgou3EuKQWR6um5196lYrSr3ShmhKftEuZsUEW
+	Ziah/qRHZm7SgxocgLy6mZgZ76dKzYAr+Bgah2MAsm1W5x/CMxbg0kVvrhpZPcQjLVZfC9PoioMHN
+	NSDETpi0o8+KlHVoQ7R2SR0ZUJr5GW0wBlfRjjt+tFg3XoHiqSIV71EikNS2MNKH9Cxs3zNusGpiS
+	1fm/52zUmRPynA2zjPD4C5oyN1VxrWscdyy0Nm4UHBz7efYKP3FXrh2GFg7cuUJ4ONHzc3OEiY8Af
+	gZrxU7Sw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xJ96F-00000009gdp-0fOG;
-	Tue, 20 Oct 2026 12:37:51 +0000
-Received: from mail-oo1-xc2a.google.com ([2607:f8b0:4864:20::c2a])
+	id 1xJ98V-00000009gv9-0afC;
+	Tue, 20 Oct 2026 12:40:11 +0000
+Received: from mail-oa1-x2c.google.com ([2001:4860:4864:20::2c])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xJ96C-00000009gcs-2hYm
+	id 1xJ98S-00000009gtm-1rYj
 	for linux-mediatek@lists.infradead.org;
-	Tue, 20 Oct 2026 12:37:50 +0000
-Received: by mail-oo1-xc2a.google.com with SMTP id 006d021491bc7-6fbf1ba31fbso1197061eaf.0
-        for <linux-mediatek@lists.infradead.org>; Tue, 20 Oct 2026 05:37:48 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1792499867; cv=none;
+	Tue, 20 Oct 2026 12:40:09 +0000
+Received: by mail-oa1-x2c.google.com with SMTP id 586e51a60fabf-483a66818edso1609209fac.0
+        for <linux-mediatek@lists.infradead.org>; Tue, 20 Oct 2026 05:40:08 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1792500007; cv=none;
         d=google.com; s=arc-20260327;
-        b=exeILwLC3RTF/9zadrTXmp7JVTD9/jFQpkAMgX5xA3Y7PlFACDWZZ5tqeQOWnS1otr
-         4oGleO/NMwrE04l/dSh9jaItegsCTtKY3iK1oWHzhex1GHcC6u8KeTLcHFV1YMStJxHb
-         bzeGDXlD5YZKDu/ouF6ftch4SgRrpheZf4NkVlHksZVM1aSyjHfcZZPrPq+83VW1//02
-         W86BYrSjeGqOTwk03EbEt1pEns21nBLH5XeQPhP5uZOOrvRKEuD9xb3Z7wl6dWUTCeuD
-         WBG0jSxgdlAUYRdddkSfGBzPguXq5ffCe/CUgObBysgdMr/4keTHNTfgk6Bn73MfeUyG
-         UFxw==
+        b=eC9GpoAszYfiD2XZmYNGVzDNx64iBSinfIrN7L8OSdBTsLqJ8P/bDsuE57/LBUCf+z
+         ++huQPWhEc8CaWGy+9jkLTV8JK2xh7Boki0d2H3ZMJ+q+YJ0aVsLguj3QEG4K3ao/zFQ
+         TWZg0FOHcs7nL9CTTgaI1KDr5DGfXEaD27xW553L2JlRHa7nNr5sfprB7o3eJIpOUMYa
+         4hBY90sintKA0gS8QlAreC3pR1DoWmSCLJ4XdYO9oIj/EUaYYPMGwMCPYl12pEwUe4SK
+         a7Ydax0QihK8atjCgX1IDdT7G1R/iZhOx3It/yg8nfAKkqwwBzbL2dJtrMg21VLd3eJN
+         7Kiw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20260327;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:dkim-signature;
-        bh=sAk8vAv8nUAyr6JPeIhpU/yIjHpAZXyzJ6Jytkg7sB4=;
-        fh=n6ZHaEqsl2yT3QEpvkL50t3zQ1YaFYTjPbzEQ7r7Sps=;
-        b=qU+/KmaUUxi8PkliL8WWCkTWv/OvHh8bvpXGMcSV6e/dp1lHzCZbdMdjzj96PjNUhL
-         tW9V2nLBi/LqFri9qDaIjqrOitflIDf3/RZcGIaehmwEvQBhfi1PjTPxTg1yETCaklOm
-         yk9LQIKS7K8eKYlQMZY9wu7ZC8A4IK+pqhEU82cqCMPG+H0NFyuAwn0TddDJdYuQi2oK
-         6vtHxudor+PMO//C3kQCMvuL8/XsEcWIq7o8lL1JMmPpf65D954oOiLrXP8sGWuea/9i
-         e6QN2fU2FZrdiBiKYtRZlRnJb0bGj0cO4SWiz5omwU1FaAP2LALMbcpsZdeyqBQm5GWy
-         Qrbw==;
+        bh=BetBMRYgFSc2DhIuFhDdmiOw1ARuIusJ4xRACgSZqH4=;
+        fh=L436ujZeg9hAyOFdGWL0IFLu8QUpwRCwsBg6ozGpO/M=;
+        b=B7KgrZK8OOnonSKjts2h0l5pr9mhpSYltwxFi0KFqR+HxS/Ee1/0f9WdY1lqaVQ8gV
+         201yvSniQucZqJeHrf6KWo993XTlRf3RqOiaxdPvH4sD5AMmnSsu+bst6ihAGs8seKbd
+         JQhV2ZzxlFSGwX9egnCFvpQQ95pimx4Oa6fWFWyRCsOoDCrPZebmSlCUApRRK+R3laW2
+         DRoKDeecnLWEzHD/WVV1MTkW8VhGOc4dcCHOpxm8sOCx8QrGCRuD3V3x/FRvbZHK6nMy
+         nLpUcbPT86Olzz9GJF8x1DE8xuCBhKO2ztVyKUXdfsTLvHouH8yslVkbmbdLIiNCdFnc
+         /S4g==;
         darn=lists.infradead.org
 ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1792499867; x=1793104667; darn=lists.infradead.org;
+        d=gmail.com; s=20251104; t=1792500007; x=1793104807; darn=lists.infradead.org;
         h=content-transfer-encoding:content-type:cc:to:subject:message-id
          :date:from:in-reply-to:references:mime-version:from:to:cc:subject
          :date:message-id:reply-to:content-type;
-        bh=sAk8vAv8nUAyr6JPeIhpU/yIjHpAZXyzJ6Jytkg7sB4=;
-        b=HN/6YiN5meoqsm0L3J6kUmPCu6LEhJupkl/6y5mN4wrtCbbqsrrGLfczD/TRpY7RzM
-         HmenDTxj71t8qM+5ZJBOXIH/+O743ompveHjIWMRK5cwCoN7uMkRTRLLeyL2cw3UXgAf
-         L/YWyKDrd8zLVesnXHTB74jAV1Qfo0qg2kdrsg7eIKPEVnDBDAu4maN3S5rpRjRD3aGj
-         LPB9wdNhAgCdWFOT7JiBlffRUxIy37n7WhMvFGE/cjqbdJMFWfHHCR83ITwfoO4uuIjf
-         /S8qBB7zktwEE7Q+Et2ZJbPmACf5EQtsDGGyVzerG1jWodOfzW3kkImhXk0ncwL41pdd
-         VMsA==
+        bh=BetBMRYgFSc2DhIuFhDdmiOw1ARuIusJ4xRACgSZqH4=;
+        b=hD0Mi7GkOXXrRFWMZerxDPugk32n+EKtbCLz1NyHipUWEw9V4snTesKRGBJlrN+4Sx
+         gMaGvFycSvN23GxHgKWScHyWG2MUjuqUgZXyMVXOwhm+KMYzASXe/zCEhzxy6HjYhrjY
+         QLM712hSRpLV64IbaUc/GtHEqzjjHizNsXOVbHhiraKUzQJcljlwvY4aq9Xq95dsnJp9
+         zBNLi5I/B7f1xDVakfdmdnWA8u153uiFrMTzpDsdnYnJmgxeKcMEyK1NJMwnzcSjIAKj
+         IGXURWtg2nMe+utjmo5VYh0CK85+svrqMTO/7GrsWnkNfu9FWNw1dsam/wZHdsl9cAKD
+         TS+g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1792499867; x=1793104667;
+        d=1e100.net; s=20260707; t=1792500007; x=1793104807;
         h=content-transfer-encoding:content-type:cc:to:subject:message-id
          :date:from:in-reply-to:references:mime-version:x-gm-gg
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
          :content-type;
-        bh=sAk8vAv8nUAyr6JPeIhpU/yIjHpAZXyzJ6Jytkg7sB4=;
-        b=dTj0nEcrVEElAIJgvdABuUmik83iPPCOAOQRdhni/ZnZsUA1H0dQY1RVViioR1UCr4
-         mhxtfR5yn72d71OO+gtVxAIuwNwupcgytj9w1nnwXfm0IxNRURfuoLNZa1EoGWgX+70L
-         +iuPWpnEdPvOpIz99dB9kupOd7qcJj1LdfBDj2OS2FLZ+zg+gREzCgV8TbMxOVRm4Cig
-         1bh1I1DsozDNF5K9L/+aSjl8RcTOORN+1FwnCYTLpEnHbo4c8NQaxubw2MvfOvhRdsrE
-         2KzrsqtAvymAboArpWm4da5YlMz89i7f5MNwNfEZhiCZLBprGpO5MnuQAhfrJzSGGJcH
-         9pSQ==
-X-Forwarded-Encrypted: i=1; AKwUvByWcRYn75D9oCR/2KeLSbyWgtILBQ33Al66XzGk8C/ob2MxcIsH8uo+bYsgcsYBIDHTi8gHTEwUt+z3ZTTZiQ==@lists.infradead.org
-X-Gm-Message-State: AFq9FYK0ER/0rZCk8uPNrVwWwkGvVCn77BixOv8XRejCgiVPFHQlPzWg
-	h+vXaKgj2G+F+h7dAWs7uN4U5HZNlpQds3ZpEkiPN4aU1L3RchOCeptgQbHvRI2cM4UvC2qGf7Z
-	npnoN8UPRCe2IFSqsaExp9jgXXbEcW4E=
-X-Gm-Gg: AYBFou14vmz/2+O4MWu2dFJPRA6t4r8lUf+rpMrEZw2R7RO6sDJ72CdBxE3B81o6ou0
-	mkAY5gYi73xomGurtpH67sHCAdL4wje172moDinmWHA8UfS3exg79mMd2VnX23jLHbTZg36/dvC
-	xrce5xYpgeadm53q40yEA5mn8jerDK4T4qzwLfxSB20scx95hp0j+gFk+1rjazc1htE7hAQzmEu
-	Q37Ea73pTQFvErKPEe/yjqZ7ClRGaHRiJdla4IgI+mOFMPzbhmN9/0437i/b2ZnZIP4dHabEDJI
-	Fkz51AfDVIpwm9emnkD5Ledddu2MGOBBLzQQJXtFzyQ6CNnhqq4AXMk=
-X-Received: by 2002:a05:6820:f023:b0:6f5:a49:6175 with SMTP id
- 006d021491bc7-70355983cd8mr7947845eaf.14.1792499867428; Tue, 20 Oct 2026
- 05:37:47 -0700 (PDT)
+        bh=BetBMRYgFSc2DhIuFhDdmiOw1ARuIusJ4xRACgSZqH4=;
+        b=v/CTuSIxnQxBmuDYYXtyJi/9LVsLWAew1bw0E5HBD8UUXdYrHfx5/3cz2FXVYABAtS
+         xR7gMjbKtcaWRDvx5PT5xCADQ5SQK9W4+b1roeCFQrhGXlsGcnaOkWBfVwCENDa0Idzg
+         QfCmNpjbLNZPHcVpieSvpOGfJDZ1rBKu9rAUTeLmo/637ewe7q6mQQDTgUwGrT/Gz6h1
+         ksJLV8//VfHN0TxEWDvHsniyMfczkrSV3FbcHfJtzDbY73DxMOCD40svHGdrhpvKNe3Z
+         Y/QN04AxGVTUNgIk0+rlG0+SD57vOXz6aMAzcLfXh7IsQJ4+kAPpQZD7oVmAl2uIR6hu
+         l8Pg==
+X-Forwarded-Encrypted: i=1; AKwUvBxydPNCJMt3I2AAX0MTi7zfaAdZMUfJca53E8b2Sl0eEqLPwWlxXJrgtu/MgpjLtyfv3psItyngke4raJStdA==@lists.infradead.org
+X-Gm-Message-State: AFq9FYJZTstbdhC3mKuPb8FxQJAyz325h4bzJEKUCUzXYpYsfEFzOOAb
+	JgNWt2ANwBa0UcRzRoWUJuXpt6089DFE4x72+XPRg/CkzIX2lI1Tij/hP07YlIHJn+/UQOAIJ/P
+	JrEtZrUBvZeibaJwSwiLEEhovemgv53Y=
+X-Gm-Gg: AYBFou2j2vibvLkgp81lNYS5QpkD+7QcTHClJ2TxqeKy5F/OG/1z644/pF9ws/nwEaa
+	CMvaJ0az+KrtN17xNg2UXXwgkoNIIgJoojCHBsgv7UxD0P2tEn/CILrapP6mp/B8Zz7UOfA1eJk
+	tr9TOFP0lT7dVQPAR7HkRS+u7ZZ+pEbhRqzbNcPKk6FvN8B+6B3EJveaDXNkEpJiJsASwMrvhEF
+	It0BDRva1becWAmv9SCF4VTDgZXB2DJffnk7xmqDPShDX/VA0BX99LhdX1sB5vJrPXQdBmHiOJg
+	P9eLNYcAigi/blw2jDqnWQ8KlYOIIkNybf2bY6xj1VUZ2AIasgsCyQWx
+X-Received: by 2002:a05:6871:3318:b0:48f:e107:9092 with SMTP id
+ 586e51a60fabf-4a757aae6afmr8050396fac.59.1792500007232; Tue, 20 Oct 2026
+ 05:40:07 -0700 (PDT)
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-References: <20261016-wedfix-v5-3-8b02e78fd34f@gmail.com> <179249104276.3135.12420565113536395663@kernel.org>
-In-Reply-To: <179249104276.3135.12420565113536395663@kernel.org>
+References: <20261016-wedfix-v5-4-8b02e78fd34f@gmail.com> <179249104422.3135.15395792602371896876@kernel.org>
+In-Reply-To: <179249104422.3135.15395792602371896876@kernel.org>
 From: Zhi-Jun You <hujy652@gmail.com>
-Date: Tue, 20 Oct 2026 20:37:35 +0800
-X-Gm-Features: AclHuK9NT-9EOIYyPIth6-MRT74ZwJUNVrZ8OhqVSMXdfi7sbVHRzVyLo962vUM
-Message-ID: <CAHGaMk9E7b=3vJku55Qs2shoV8pkXF5OtBsDC37-H7AuEu0iJg@mail.gmail.com>
-Subject: Re: [PATCH net v5 3/5] net: ethernet: mtk_wed: free up rings during detach
+Date: Tue, 20 Oct 2026 20:39:57 +0800
+X-Gm-Features: AclHuK_65U3PRBzb3igZvto9UCP0w6AudGK3kTF-_hnuxHejq2eqf-9Bb3Meip0
+Message-ID: <CAHGaMk_vCEyCB2_oeH89VNdaizKQ9uRd2a_Xj1Lz7FEDEbyC0Q@mail.gmail.com>
+Subject: Re: [PATCH net v5 4/5] net: ethernet: mtk_wed: setup WDMA_RING_TX(0)
+ for non-DBDC MT7986
 To: netdev-bot+sashiko@kernel.org
 Cc: nbd@nbd.name, lorenzo@kernel.org, andrew+netdev@lunn.ch, 
 	davem@davemloft.net, edumazet@kernel.org, kuba@kernel.org, pabeni@redhat.com, 
@@ -107,8 +108,8 @@ Cc: nbd@nbd.name, lorenzo@kernel.org, andrew+netdev@lunn.ch,
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261020_053748_703541_A897527D 
-X-CRM114-Status: GOOD (  37.21  )
+X-CRM114-CacheID: sfid-20261020_054008_518949_DD7F434A 
+X-CRM114-Status: GOOD (  37.87  )
 X-Spam-Score: -1.9 (-)
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -120,11 +121,11 @@ List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-12.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
+X-Spam-Status: No, score=-7.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
 	DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,FREEMAIL_FORGED_FROMDOMAIN,
 	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,SPF_HELO_NONE,SPF_PASS
-	autolearn=ham autolearn_force=no version=4.0.1
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=no
+	autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
@@ -134,7 +135,7 @@ te:
 > Thank you for your contribution! Sashiko AI review found 3 potential
 > issue(s) to consider.
 >
-> Critical: 0 =C2=B7 High: 1 =C2=B7 Medium: 2 =C2=B7 Low: 0
+> Critical: 0 =C2=B7 High: 0 =C2=B7 Medium: 2 =C2=B7 Low: 1
 >
 > If you believe none of the issues are legitimate, please reply to each
 > issue of Medium severity or higher and explain why the AI is wrong.
@@ -144,193 +145,134 @@ k
 y
 > (one such reply per series is enough).
 >
-> - [High] Copy-paste bug in the new rx_ring cleanup loop in
->   mtk_wed_free_rx_rings()=E2=80=A6
-> - [Medium] The new flag gating in mtk_wed_free_tx_rings() causes a leak
->   on partial setup failure.
-> - [Medium] The patch now frees the rx_ring descriptor memory in
->   __mtk_wed_detach() =E2=86=92 mtk_wed_free_rx_rings(), but WED never dis=
-ables=E2=80=A6
+> - [Medium] In mtk_wed_start()
+>   (drivers/net/ethernet/mediatek/mtk_wed.c:2362-2363), this commit adds=
+=E2=80=A6
+> - [Medium] mtk_wed_free_rx_rings()
+>   (drivers/net/ethernet/mediatek/mtk_wed.c:954-956) decides whether to=E2=
+=80=A6
+> - [Low] The new comment in mtk_wed_start() describes the motivating case,
+>   a non-DBDC MT7986 that allocates only rx_ring[1]/tx_wdma[1].
 >
 > --
 >
-> net: ethernet: mtk_wed: free up rings during detach
+> net: ethernet: mtk_wed: setup WDMA_RING_TX(0) for non-DBDC MT7986
 >
-> This commit adds frees for rx_ring and tx_wdma in mtk_wed_free_rx_rings()
-> during __mtk_wed_detach(). It also sets MTK_WED_RING_CONFIGURED in the
-> tx/rx ring and wdma tx/rx ring setup paths, and only frees rings that hav=
-e
-> that flag set.
->
-> Link: https://github.com/mediatek/mtk-openwrt-feeds/blob/main/25.12/files=
-/target/linux/mediatek/patches-6.12/999-wed-04-Fix-reinsert-wifi-module-cau=
-se-memory-leak-issue.patch
+> This patch makes mtk_wed_start() set up WDMA_RING_TX(0) on WED v2 devices
+> when rx_ring[0] was not allocated. This is the case on a non-DBDC MT7986,
+> which only sets up ring index 1. If tx_wdma[0] is already allocated, it i=
+s
+> reset instead of being allocated again.
 >
 > > diff --git a/drivers/net/ethernet/mediatek/mtk_wed.c b/drivers/net/ethe=
 rnet/mediatek/mtk_wed.c
-> > index 3f0be70c3f145..b8264435acbe5 100644
+> > index b8264435acbe5..3a7c2bb33691f 100644
 > > --- a/drivers/net/ethernet/mediatek/mtk_wed.c
 > > +++ b/drivers/net/ethernet/mediatek/mtk_wed.c
-> > @@ -949,6 +949,16 @@ mtk_wed_free_ring(struct mtk_wed_device *dev, stru=
-ct mtk_wed_ring *ring)
-> >  static void
-> >  mtk_wed_free_rx_rings(struct mtk_wed_device *dev)
-> >  {
-> > +     int i;
-> > +
-> > +     for (i =3D 0; i < ARRAY_SIZE(dev->rx_ring); i++)
-> > +             if ((dev->tx_ring[i].flags & MTK_WED_RING_CONFIGURED))
-> > +                     mtk_wed_free_ring(dev, &dev->rx_ring[i]);
->
-> [Severity: High]
-> Should this check dev->rx_ring[i].flags instead of dev->tx_ring[i].flags?
->
-> The flag on rx_ring[idx] is set in mtk_wed_rx_ring_setup(), and that
-> function never touches tx_ring[idx]. The existing reader in
-> mtk_wed_dma_enable() also tests the flag on the rx ring itself:
-
-ACK will fix it.
-
->
->         for (i =3D 0; i < MTK_WED_RX_QUEUES; i++) {
->                 struct mtk_wed_ring *ring =3D &dev->rx_ring[i];
->                 ...
->                 if (!(ring->flags & MTK_WED_RING_CONFIGURED))
->                         continue; /* queue is not configured by mt76 */
->
-> TX and RX rings are set up separately, so their flags can differ. Take
-> MT7992 with a second HIF:
->
-> - mt7996_dma_init() puts band1 RX on the primary WED's rx_ring[1].
-> - mt7996_register_phy() sends band1 TX to wed_hif2.
-> - mt7996_init_tx_queues() then uses MT_WED_Q_TX(0) on wed_hif2.
->
-> So the primary WED's tx_ring[1] is never configured.
->
-> In that case, is the rx_ring[1] descriptor memory still leaked on every
-> detach? This loop skips it, and the pointer is then lost to the
-> memset(dev, 0, sizeof(*dev)) at the end of __mtk_wed_detach(). That looks
-> like the same leak the commit message says it fixes.
->
-> mtk_wed_free_ring() already returns early when ring->desc is NULL. Would
-> dropping the flag check here be enough?
->
-> > +
-> > +     for (i =3D 0; i < ARRAY_SIZE(dev->tx_wdma); i++)
-> > +             if ((dev->tx_wdma[i].flags & MTK_WED_RING_CONFIGURED))
-> > +                     mtk_wed_free_ring(dev, &dev->tx_wdma[i]);
-> > +
-> >       mtk_wed_free_rx_buffer(dev);
-> >       mtk_wed_free_ring(dev, &dev->rro.ring);
-> >  }
->
-> [Severity: Medium]
-> Can rx_ring[i] be freed here while the WLAN chip's WFDMA RX engine still
-> points at it?
->
-> mtk_wed_rx_ring_setup() writes ring->desc_phys into the WLAN chip's PDMA
-> RX ring registers through wpdma_rx_w32(). mtk_wed_dma_enable() then turns
-> on the chip's RX DMA:
->
->                 val =3D wifi_r32(dev,
->                                dev->wlan.wpdma_rx_glo -
->                                dev->wlan.phy_base) | MTK_WFMDA_RX_DMA_EN;
->                 wifi_w32(dev,
->                          dev->wlan.wpdma_rx_glo - dev->wlan.phy_base,
->                          val);
->
-> mtk_wed_dma_disable() never clears MTK_WFMDA_RX_DMA_EN. On normal teardow=
-n
-> mt7915/mt7996 disable DMA before mt76_dma_cleanup() detaches WED. The
-> mt7915 probe error path does not seem to do that:
->
-> mt7915_init_hardware()
->   mt7915_dma_init()
->     mt7915_dma_enable()
->       mt7915_dma_start()
->         mtk_wed_device_start()     <- WFDMA RX enabled
->   mt7915_mcu_init()                <- fails, returns without DMA disable
->
-> The probe error label in mt7915/pci.c or mt7915/soc.c then runs:
->
-> mtk_wed_device_detach()
->   __mtk_wed_detach()
->     mtk_wed_free_rx_rings()
->       mtk_wed_free_ring(dev, &dev->rx_ring[i])
->         dma_free_coherent()
->
-> If the chip writes back an RX descriptor after this point, would that
-> corrupt memory that has since been reused? Before this patch the ring
-> leaked, so such writes landed in memory that was still allocated.
->
-> The error path leaving DMA armed predates this patch, and the RX packet
-> buffers were already freed in this window. Whether the chip really writes
-> descriptors after MCU init fails depends on hardware behaviour. Freeing
-> the descriptor ring here is the new part.
->
-> > @@ -959,9 +969,11 @@ mtk_wed_free_tx_rings(struct mtk_wed_device *dev)
-> >       int i;
+> > @@ -2355,6 +2355,13 @@ mtk_wed_start(struct mtk_wed_device *dev, u32 ir=
+q_mask)
+> >               if (!dev->rx_wdma[i].desc)
+> >                       mtk_wed_wdma_rx_ring_setup(dev, i, 16, false);
 > >
-> >       for (i =3D 0; i < ARRAY_SIZE(dev->tx_ring); i++)
-> > -             mtk_wed_free_ring(dev, &dev->tx_ring[i]);
-> > +             if ((dev->tx_ring[i].flags & MTK_WED_RING_CONFIGURED))
-> > +                     mtk_wed_free_ring(dev, &dev->tx_ring[i]);
+> > +     /*
+> > +      * non-DBDC MT7986 allocates only rx_ring[1] and tx_wdma[1] durin=
+g setup
+> > +      * but tx_wdma[0] is also needed for WED to function.
+> > +      */
+> > +     if (mtk_wed_is_v2(dev->hw) && !dev->rx_ring[0].desc)
+>
+> [Severity: Low]
+> This isn't a bug, but the comment covers less than the condition does. Th=
+e
+> guard matches any WED v2 device where rx_ring[0] was not set up, and MT79=
+81
+> also has .version =3D 2. It is not limited to a non-DBDC MT7986.
+>
+
+This is incorrect. MT7981 is DBDC which means two rx_rings.
+My condition check is correct.
+
+> Could the comment describe the condition as it is implemented, the way th=
+e
+> commit message does?
+>
+> > +             mtk_wed_wdma_tx_ring_setup(dev, 0, MTK_WED_WDMA_RING_SIZE=
+, !!dev->tx_wdma[0].desc);
 >
 > [Severity: Medium]
-> Does this leak the tx_ring[idx] descriptor buffer when
-> mtk_wed_tx_ring_setup() fails partway?
+> Should the return value of mtk_wed_wdma_tx_ring_setup() be checked here?
 >
-> mtk_wed_tx_ring_setup() allocates the descriptor before it sets the flag:
+> On the first start, tx_wdma[0].desc is NULL, so reset is false and the
+> helper allocates the ring. If the allocation fails, the helper returns
+> before it programs any WDMA or WED ring register:
 >
->         if (!reset && mtk_wed_ring_alloc(dev, ring, MTK_WED_TX_RING_SIZE,
->                                          sizeof(*ring->desc), true))
+> mtk_wed_wdma_tx_ring_setup() {
+>         ...
+>         if (!reset && mtk_wed_ring_alloc(dev, wdma, MTK_WED_WDMA_RING_SIZ=
+E,
+>                                          dev->hw->soc->wdma_desc_size, tr=
+ue))
 >                 return -ENOMEM;
+>         ...
+> }
 >
->         if (mtk_wed_wdma_rx_ring_setup(dev, idx, MTK_WED_WDMA_RING_SIZE,
+> mtk_wed_start() keeps going anyway. It calls mtk_wed_hw_init() and then
+> mtk_wed_dma_enable(), which does:
+>
+>         wed_set(dev, MTK_WED_WDMA_GLO_CFG,
+>                 MTK_WED_WDMA_GLO_CFG_TX_DRV_EN |
+>                 MTK_WED_WDMA_GLO_CFG_TX_DDONE_CHK);
+>
+> It then sets dev->running =3D true. At that point WDMA TX is enabled but =
+the
+> ring 0 base was never programmed.
+>
+> The other caller of this helper, mtk_wed_rx_ring_setup(), does pass the
+> failure back:
+>
+>         if (mtk_wed_wdma_tx_ring_setup(dev, idx, MTK_WED_WDMA_RING_SIZE,
 >                                        reset))
 >                 return -ENOMEM;
 >
->         ring->reg_base =3D MTK_WED_RING_TX(idx);
->         ring->wpdma =3D regs;
->         ring->flags |=3D MTK_WED_RING_CONFIGURED;
->
-> If the rx_wdma dma_alloc_coherent() fails, tx_ring[idx].desc stays
-> allocated but the flag is never set. The -ENOMEM travels up:
->
-> mt76_wed_dma_setup()
->   mt76_dma_alloc_queue()
->     mt7915/mt7996 dma init
->       probe error path
->         mtk_wed_device_detach()
->
-> Before this patch, mtk_wed_free_tx_rings() freed the ring because
-> mtk_wed_free_ring() only checks ring->desc. With the new check the ring
-> is skipped, and the memset in __mtk_wed_detach() then drops the pointer.
->
-> mtk_wed_rx_ring_setup() uses the same order. A failure in
-> mtk_wed_wdma_tx_ring_setup() returns before rx_ring[idx].flags is set, so
-> the flag-gated rx_ring free in mtk_wed_free_rx_rings() cannot reclaim
-> that ring either.
->
-> Since mtk_wed_free_ring() already guards on ring->desc, what does the
-> MTK_WED_RING_CONFIGURED check add in these free loops? The commit message
-> does not explain why the frees are gated.
+> A later patch in this series, "net: ethernet: mtk_wed: bail out when
+> failed to set up rings in wed_start", wraps this call with a dev_err()
+> and a return. With that patch applied, the end of the series is fine. Can
+> the check be added in this patch so it works on its own?
 
-The flag was from the original vendor patch.
-I will change to rely on ring->desc.
+ACK. Will do.
 
 Best regards,
 Zhi-Jun
-
-
->
-> >       for (i =3D 0; i < ARRAY_SIZE(dev->rx_wdma); i++)
-> > -             mtk_wed_free_ring(dev, &dev->rx_wdma[i]);
-> > +             if ((dev->rx_wdma[i].flags & MTK_WED_RING_CONFIGURED))
-> > +                     mtk_wed_free_ring(dev, &dev->rx_wdma[i]);
-> >  }
 >
 > [ ... ]
+>
+> [Severity: Medium]
+> This code is not part of this hunk. It comes from the earlier patch in
+> this series, "net: ethernet: mtk_wed: free up rings during detach". It is
+> mentioned here because mtk_wed_free_rx_rings() is also what frees the
+> tx_wdma[0] ring added above. Does the flag check test the right array?
+>
+> mtk_wed_free_rx_rings() {
+>         ...
+>         for (i =3D 0; i < ARRAY_SIZE(dev->rx_ring); i++)
+>                 if ((dev->tx_ring[i].flags & MTK_WED_RING_CONFIGURED))
+>                         mtk_wed_free_ring(dev, &dev->rx_ring[i]);
+>         ...
+> }
+>
+> mtk_wed_rx_ring_setup() sets MTK_WED_RING_CONFIGURED on
+> dev->rx_ring[idx].flags, not on tx_ring[idx]. So if rx_ring[i] is
+> configured and tx_ring[i] is not, the coherent descriptor buffer for
+> rx_ring[i] is not freed. After that, __mtk_wed_detach() calls
+> memset(dev, 0, sizeof(*dev)) and the pointer is lost.
+>
+> One setup where this appears to happen is MT7988 with an MT7992 using
+> hif2. mt7996_dma_init() registers the band1 rx queue on the primary WED
+> as MT_WED_Q_RX(1). mt7996_register_phy() sends band1 tx to wed_hif2. The
+> primary WED therefore has rx_ring[1] configured but not tx_ring[1].
+>
+> Does primary rx_ring[1] then leak on every detach, for example on a
+> module reload? Should this check dev->rx_ring[i].flags instead?
 >
 > --
 > Sashiko AI review =C2=B7 https://netdev-ai.bots.linux.dev/sashiko/#/patch=
