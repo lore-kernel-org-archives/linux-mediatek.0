@@ -2,67 +2,82 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id A4AD960A4AC5
-	for <linux-mediatek@archiver.kernel.org>; Tue, 20 Oct 2026 13:11:16 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 224EE606A328
+	for <linux-mediatek@archiver.kernel.org>; Tue, 20 Oct 2026 16:52:16 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=zkUEWgge;
-	dkim=pass (2048-bit key, unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=fNxqOimF
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=o8djfBGn;
+	dkim=pass (2048-bit key, unprotected) header.d=bootlin.com header.i=@bootlin.com header.a=rsa-sha256 header.s=dkim header.b=Bequcv+J
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Message-ID:Date
-	:Cc:To:From:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=WcNEi9CgsmU0LNhm6ygVBGSAUr7Sk7BxZ5A17QlLUg0=; b=zkUEWggesVT0oYR8jBZerBbOBM
-	rB21kvKRiArnpSxLbAIiBiJEmZl2zDinPlzqprZk6OvMuyVSVvBgb5qp8qd0EAV5oUFhNXMLFMRWR
-	30qoABMxMCn2WsBKol8MLgJBmrmJNEM6zcqp4FsxYBjW5Xo/kMyFqOZFjjJ32mfjxkEvlPQHhge5Q
-	bpylMZstY3I1Z7UNG8/ApOyCdeQxoUulCoSk8cNP9eJ8X+7y3XE83sl8u4ip4VUwZSGIJXMvVnwT1
-	nv+3QbKzO7aoXgq6wfUqMokLyaw5475N+kiwoO92mMIMqFRbTj57S0/mVLQ5RcGJd2NWbnoK2KUKs
-	H0MVc8Jg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:References:
+	In-Reply-To:Cc:To:From:Subject:Content-Transfer-Encoding:Content-Type:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=oSwcbatNs/0w1ybzYQUcJ96P49RIqvbDSPb+DvWsh68=; b=o8djfBGnY6TNetaIc3pFVPvejY
+	Y0cDIGpTu1VjMG4YEXrK+h9tyj2nuB1IBfnC6H0Y4tIPxU6NntYAnMhrmi7ZZKfJQSdsz9E8SfCS4
+	zwV5WGaJAZodImKJjHmDyeSdAUIHUYcJ88Fc+3+JATDZgsdhZAPIgflJRgnDQWK0IenfDxnETltab
+	JLMXvrvV5HBG/s2f7DD5ltBVOmAq2RZYQczH7G+h6Up8GQYmmmAYAx1qTBnetdMoz7N3ThPOnd9Co
+	J4jrfwPKKzRhmtw/9h8I7uBFtkaAm2Gxyt9d+kQ6rjGBF0/YoXut6YiDCbnqNxxoEy3SkneN8Ha0l
+	ULDHynQA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xJ9cZ-00000009kYa-0hd3;
-	Tue, 20 Oct 2026 13:11:15 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1xJD4O-0000000AFv7-3bXn;
+	Tue, 20 Oct 2026 16:52:12 +0000
+Received: from smtpout-02.galae.net ([185.246.84.56])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xJ9cI-00000009kPJ-2ieK;
-	Tue, 20 Oct 2026 13:10:58 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id 30DD7447F2;
-	Tue, 20 Oct 2026 13:10:58 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id D2A6E1F000C6;
-	Tue, 20 Oct 2026 13:10:56 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1792501858;
-	bh=WcNEi9CgsmU0LNhm6ygVBGSAUr7Sk7BxZ5A17QlLUg0=;
-	h=Subject:From:To:Cc:Date:In-Reply-To:References;
-	b=fNxqOimF6pNiEdwKUDbYKaNJUsg5JVDCfETgunUpmQNq2aG6FrZRNjfI04W1yg0Ox
-	 kJ7w8tOOFbOQHjuLKpDrJDo0CvOZ3ZjznN1nkI/TuYUdIDPybr3e2RE5Ev6D3HHHJq
-	 obmqonoXhZxlQUMrKZpe3n3GYUqjaVYUQ51CSkvZxlQftS1rE5IG73vLx/1iPf2p32
-	 znUrQZmQ9nsz6np8XwEnL8HBSf+FFPQ4ScPI+DSUU0pG1fvmA3QGxOdzzXduQHACEx
-	 Gn68hLNYeadrLx+TQER34PnmxpvUL1M8z52CusRzXXeB5pLjy0rvyWvwGGOFk2aMxk
-	 76fizPopi6ylw==
-Subject: Re: [PATCH net-next v3 9/9] net: stmmac: mediatek: add support for MT8189 SoC
-From: netdev-bot+sashiko@kernel.org
-To: louisalexis.eyraud@collabora.com
-Cc: andrew+netdev@lunn.ch, davem@davemloft.net, kuba@kernel.org,
- pabeni@redhat.com, robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
- richardcochran@gmail.com, matthias.bgg@gmail.com,
- angelogioacchino.delregno@collabora.com, biao.huang@mediatek.com,
- maxime.chevallier@bootlin.com, mcoquelin.stm32@gmail.com,
- alexandre.torgue@foss.st.com, edumazet@kernel.org, kernel@collabora.com,
- netdev@vger.kernel.org, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, linux-stm32@st-md-mailman.stormreply.com
-Date: Tue, 20 Oct 2026 13:10:56 +0000
-Message-ID: <179250185640.3135.8563969041455803395@kernel.org>
-In-Reply-To: <20261016-dwmac-mediatek-mt8189-v3-9-25daf2bbcf35@collabora.com>
-References: <20261016-dwmac-mediatek-mt8189-v3-9-25daf2bbcf35@collabora.com>
-X-sashiko-severity: Medium
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
+	id 1xJD4K-0000000AFtC-1XX9
+	for linux-mediatek@lists.infradead.org;
+	Tue, 20 Oct 2026 16:52:11 +0000
+Received: from smtpout-01.galae.net (smtpout-01.galae.net [212.83.139.233])
+	by smtpout-02.galae.net (Postfix) with ESMTPS id 6B6C01A1290;
+	Tue, 20 Oct 2026 16:52:03 +0000 (UTC)
+Received: from mail.galae.net (mail.galae.net [212.83.136.155])
+	by smtpout-01.galae.net (Postfix) with ESMTPS id 317CA60393;
+	Tue, 20 Oct 2026 16:52:03 +0000 (UTC)
+Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id D8C5110328D20;
+	Tue, 20 Oct 2026 18:51:44 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=dkim;
+	t=1792515117; h=from:subject:date:message-id:to:cc:mime-version:content-type:
+	 content-transfer-encoding:in-reply-to:references;
+	bh=oSwcbatNs/0w1ybzYQUcJ96P49RIqvbDSPb+DvWsh68=;
+	b=Bequcv+Jg52fBKJhrJ+2pPNgXW9jgM3F5Dw/WyO4tABcbekj85upeLJnZiyaBvB/ZHjBLF
+	KZZRwL+zYFedV4RXGhj24geCAZHpUyXOpigdOvjHH7QmBThF6dQUS6gGgTxLEVLd42VLYw
+	IF5yqtwsXSPyQ1vawmEa8b3SLSXZLZQJ3WJCqMCWqhPZhNCw6Ms0fhV6n2BaD8uJY4e+9b
+	A1HVp7ER6JVY9qzJo0bxRskh5dpH5yw3hSPzViWu2ix0QBXiYHAZj2MrMi7lUn5Dg1P2OE
+	wMu2NvCb0hTuT2VvDJKvEHo4KwocXunLgMPBqmuM5VSM2zd9hqfygVuN3bP6JA==
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Subject: Re: [PATCH v8 01/14] drm/bridge: it6505: quiesce event sources and
+ work on remove()
+From: Luca Ceresoli <luca.ceresoli@bootlin.com>
+To: Daniel Golle <daniel@makrotopia.org>
+Cc: Andrzej Hajda <andrzej.hajda@intel.com>, 
+ Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, 
+ Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, 
+ Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
+ Luca Ceresoli <luca.ceresoli@bootlin.com>, 
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
+ David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Hermes Wu <hermes.wu@ite.com.tw>, Allen Chen <allen.chen@ite.com.tw>, 
+ Pin-yen Lin <treapking@chromium.org>, Chen-Yu Tsai <wenst@chromium.org>, 
+ dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+In-Reply-To: <3f7ab3881c9dc575da02ddcd9b110a834a11f2ad.1790552614.git.daniel@makrotopia.org>
+References: <cover.1790552614.git.daniel@makrotopia.org>
+ <3f7ab3881c9dc575da02ddcd9b110a834a11f2ad.1790552614.git.daniel@makrotopia.org>
+Date: Tue, 20 Oct 2026 18:51:39 +0200
+Message-Id: <179251509973.78870.17205773072726643371.b4-review@b4>
+X-Mailer: b4 0.16.0
+X-Last-TLS-Session-Version: TLSv1.3
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20261020_095208_565024_C0B4A7FE 
+X-CRM114-Status: GOOD (  10.44  )
+X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,141 +88,40 @@ List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-11.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-14.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,
-	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS autolearn=ham autolearn_force=no version=4.0.1
+	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no
+	version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Thank you for your contribution! Sashiko AI review found 1 potential
-issue(s) to consider.
+> struct it6505 is freed by devres right after remove() returns, but
+> remove() cancels none of the driver's work items, so link_works,
+> hdcp_wait_ksv_list, hdcp_work and extcon_wq can still run afterwards
+> and dereference freed memory. Cancelling alone would not be enough:
+> the threaded IRQ and the extcon notifier stay live until devres
+> teardown and can requeue the works.
+>
+> Unregister the extcon notifier and disable the IRQ first, then cancel
+> all work. Make it6505_remove_notifier_module() idempotent, tracking
+> the registration in a flag under extcon_lock, as both .detach() and
+> remove() call it now. The notifier_call pointer is left intact:
+> extcon traverses its raw notifier chain without holding a lock, so a
+> traversal racing with the unregistration may still invoke the
+> callback. Also initialise extcon_wq in probe: cancel_work_sync() on a
+> never-initialised work item trips WARN_ON(!work->func).
+>
+> Fixes: b5c84a9edcd4 ("drm/bridge: add it6505 driver")
+> Signed-off-by: Daniel Golle <daniel@makrotopia.org>
 
-Critical: 0 · High: 0 · Medium: 1 · Low: 0 (1)
+Looks good:
 
-If you believe none of the issues are legitimate, please reply to each
-issue of Medium severity or higher and explain why the AI is wrong.
-If any of them are legitimate and you plan to respin, please let patchwork
-know by including "pw-bot: cr" as a separate line at the end of your reply
-(one such reply per series is enough).
-
-- [Medium] The series reverses the MT2712 delay-stage dividers compared
-  with the baseline driver and the binding.
-
-Pre-existing issues:
-- [Low] This problem wasn't introduced by this patch, but in
-  mediatek_dwmac_clks_config(), if clk_bulk_prepare_enable() succeeds…
-
---
-
-net: stmmac: mediatek: add support for MT8189 SoC
-
-This patch adds the mediatek,mt8189-gmac compatible to dwmac-mediatek,
-along with a clock list and variant platform data. The new variant reuses
-the MT8195 callbacks with a 0x270 pericfg offset and 180ps RX/TX delay
-stage dividers, and it enables the TX clock output.
-
-> diff --git a/drivers/net/ethernet/stmicro/stmmac/dwmac-mediatek.c b/drivers/net/ethernet/stmicro/stmmac/dwmac-mediatek.c
-> index 147e217b86620..d480c339a16d0 100644
-> --- a/drivers/net/ethernet/stmicro/stmmac/dwmac-mediatek.c
-> +++ b/drivers/net/ethernet/stmicro/stmmac/dwmac-mediatek.c
-> @@ -45,8 +45,15 @@
->  #define MT2712_RGMII_DLY_TXC_MAX	17600 /* 32 x 550ps */
-
-[Severity: Medium]
-The context here shows the MT2712 defines added earlier in this series. Are
-the MT2712 RGMII and RMII stage dividers swapped?
-
-The defines currently read:
-
-#define MT2712_RMII_DLY_RXC_STAGE_DIV	170 /* 170ps per stage */
-#define MT2712_RMII_DLY_TXC_STAGE_DIV	170 /* 170ps per stage */
-
-#define MT2712_RGMII_DLY_RXC_STAGE_DIV	550 /* 550ps per stage */
-#define MT2712_RGMII_DLY_RXC_MAX	17600 /* 32 x 550ps */
-#define MT2712_RGMII_DLY_TXC_STAGE_DIV	550 /* 550ps per stage */
-
-Before the series, mt2712_delay_ps2stage() divided RGMII delays by 170 and
-MII/RMII delays by 550. The mediatek-dwmac.yaml binding says the same:
-
-  For MT2712 RGMII interface, Allowed value need to be a multiple of 170,
-  ...
-  For MT2712 RMII/MII interface, Allowed value need to be a multiple of 550,
-
-mt2712_gmac_variant then uses:
-
-	.rx_rmii_delay_stage_div = MT2712_RMII_DLY_RXC_STAGE_DIV,
-	.tx_rmii_delay_stage_div = MT2712_RMII_DLY_TXC_STAGE_DIV,
-	.rx_rgmii_delay_stage_div = MT2712_RGMII_DLY_RXC_STAGE_DIV,
-	.tx_rgmii_delay_stage_div = MT2712_RMII_DLY_TXC_STAGE_DIV,
-
-mt2712_set_delay() picks these dividers based on the phy mode. RGMII TX
-still divides by 170, but only because it uses the RMII define. RGMII RX
-now divides by 550 instead of 170. MII/RMII TX and RX now divide by 170
-instead of 550.
-
-For example, an RGMII mediatek,rx-delay-ps = <1530> used to program 9
-stages and now programs 2. An MII/RMII delay of 1650 used to program 3
-stages and now programs 9.
-
-This came from two earlier patches in this series, not from this one:
-"net: stmmac: mediatek: simplify TX/RX delay handling in mt2712_set_delay"
-and "net: stmmac: mediatek: add RX/TX delay stage divider in platform
-data". The first one's commit message also describes the old code as
-"550 for RGMII, 170 for MII/RMII".
-
-Changing only tx_rgmii_delay_stage_div to MT2712_RGMII_DLY_TXC_STAGE_DIV
-would make things worse. mt2712-evb.dts (phy-mode "rgmii-rxid",
-mediatek,tx-delay-ps = <1530>) would drop from 9 stages to 2.
-
-Could the define values be swapped instead (RGMII = 170, RMII = 550), with
-tx_rgmii_delay_stage_div then using the RGMII define?
-
-[ ... ]
-
-> @@ -751,6 +777,8 @@ static void mediatek_dwmac_remove(struct platform_device *pdev)
->  static const struct of_device_id mediatek_dwmac_match[] = {
->  	{ .compatible = "mediatek,mt2712-gmac",
->  	  .data = &mt2712_gmac_variant },
-> +	{ .compatible = "mediatek,mt8189-gmac",
-> +	  .data = &mt8189_gmac_variant },
-
-[Severity: Low]
-This is a pre-existing issue and was not introduced by this patch, but
-MT8189 now uses the same probe path. In mediatek_dwmac_clks_config(), if
-clk_bulk_prepare_enable() succeeds and clk_prepare_enable() then fails on
-plat->rmii_internal_clk, do the bulk clocks stay enabled?
-
-drivers/net/ethernet/stmicro/stmmac/dwmac-mediatek.c:mediatek_dwmac_clks_config() {
-    ...
-	ret = clk_bulk_prepare_enable(variant->num_clks, plat->clks);
-	...
-	ret = clk_prepare_enable(plat->rmii_internal_clk);
-	if (ret) {
-		dev_err(plat->dev, "failed to enable rmii internal clk, err = %d\n", ret);
-		return ret;
-	}
-    ...
-}
-
-This path never calls clk_bulk_disable_unprepare(), and
-mediatek_dwmac_probe() returns the error directly:
-
-	ret = mediatek_dwmac_clks_config(priv_plat, true);
-	if (ret)
-		return ret;
-
-The resume path behaves the same way.
-
-For MT8189, rmii_internal_clk is only obtained when
-mediatek,rmii-clk-from-mac is present, and the MT8189 binding forbids that
-property. A binding-compliant MT8189 DT therefore gets a NULL clock and
-cannot hit this path, but the driver does not enforce the binding.
-
->  	{ .compatible = "mediatek,mt8195-gmac",
->  	  .data = &mt8195_gmac_variant },
->  	{ }
+Reviewed-by: Luca Ceresoli <luca.ceresoli@bootlin.com>
 
 -- 
-Sashiko AI review · https://netdev-ai.bots.linux.dev/sashiko/#/patchset/20261016-dwmac-mediatek-mt8189-v3-0-25daf2bbcf35%40collabora.com
+Luca Ceresoli, Bootlin
+Embedded Linux and Kernel engineering
+https://bootlin.com
+
 
