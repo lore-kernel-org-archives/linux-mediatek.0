@@ -2,113 +2,105 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id CF2F360A2616
-	for <linux-mediatek@archiver.kernel.org>; Tue, 20 Oct 2026 17:38:33 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 89152606A31E
+	for <linux-mediatek@archiver.kernel.org>; Tue, 20 Oct 2026 18:28:43 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=ejAjDVdj;
-	dkim=pass (2048-bit key, unprotected) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20251104 header.b=UBbC+PaP
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=NLfAofqv;
+	dkim=pass (2048-bit key, unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=FbopTNcg
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=ocwe/ua5bx6fTunJTjbDvG/Rp4d0BH8Fbx4UwIDjj0c=; b=ejAjDVdjC3S/5EKOlNxBAdB7Pq
-	aZoaU6BQCNkFoRzuCVaWqKCEiIGssO4GGcwlnoI4hOOtV6njVcTnRfZNIr1P5Sb12PbabdcN6MLJA
-	ss+qsmx9Nw8cIeJ4crBQ/BOuqtJizpVxIAFpauErNVwDoBP0PBakBeqS5uIImp2xXImH59DP46FSO
-	8aN+zF2ykvQifn4Hpa23Rp880G4dXZ/C/9PI18RbpUs6gqG0rFqn8+higkjlyhIEK4F5seh9rjYsf
-	R4/FnqicdClwiWnr/XenRDXL4JVL+ilhp78i710Qfh17XQv93+8o0Jhl3o4JPVRcrQsquUzmIpGZq
-	K53iHO+w==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:Cc:To:Message-Id:Content-Type:MIME-Version:Subject:
+	Date:From:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Owner; bh=Z5zSggzBne2c+TcNuspBgPLfuRtz5PeeaW0VSn/S1BU=; b=NLfAofqv98irrO
+	HJC9G8y8rtjfKhz7LraXhs/xDJeB09NqQ7MQcHj2lW8h6/tqP62x+1h1e22xuexvT94YuGVljVker
+	MgYfUEkSx7e+0D3O2FUbCanTxa3+4joSCFl+xs65iGpi5iv3ZgeMIiKWOBGpAqvl5xCBPQPGFn5dw
+	bynPqJ1R8+dMjXgiHiJbhqc8Yi5iXZDqxRd60TIJa6keJdAA7EGvI/eveypa7fSc1YBblNkcpd14c
+	OVdlTxXOCTbLfMhD2arz0Vv/GsYC3ss0g8XnxmxuPBrHf7RLO+HPlTanDIAEt5d0rqApMmvna0LDT
+	uVfnaZOLSSu88XWXgsAQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xJDnE-0000000AMte-3pIB;
-	Tue, 20 Oct 2026 17:38:32 +0000
-Received: from mail-wm1-f48.google.com ([209.85.128.48])
+	id 1xJEZm-0000000ARxu-0oS6;
+	Tue, 20 Oct 2026 18:28:42 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xJDnA-0000000AMqw-1kXG
-	for linux-mediatek@lists.infradead.org;
-	Tue, 20 Oct 2026 17:38:31 +0000
-Received: by mail-wm1-f48.google.com with SMTP id 5b1f17b1804b1-4a1dede3c2cso41621315e9.2
-        for <linux-mediatek@lists.infradead.org>; Tue, 20 Oct 2026 10:38:27 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1792517906; x=1793122706; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to:content-type;
-        bh=ocwe/ua5bx6fTunJTjbDvG/Rp4d0BH8Fbx4UwIDjj0c=;
-        b=UBbC+PaP4EGjvSoGTJHgrdSMA8ciJ/K7SEfPfjOOZdTwbv2UKNMu/3vPyX6bcA6OtU
-         +XehIQfZEjTajFix6HQx82onIQKWStgZB4S1LkHy3rMzjDga3PNy0upgMWaU9qs9taVT
-         GAZ8g/1UKfiCYqQ7Uv5JjvE3fRwGXLouU9roJF01u9GLzAlCVM8QMPs6QohVMVYmdtje
-         VIFdGUP63yewurSeN6TdxM3S/kg741Qo/GgPEFQl4aOFWRXQ9kgvz/GJn2MQvlhBS5XM
-         Cp9Oo1it6b8nt1N9Cdo38lW/rZ9LSoRS/yps7JsPTnd7VVAOJnAgmu9DECyg2Ml3tJRY
-         0Z+A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1792517906; x=1793122706;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
-         :to:cc:subject:date:message-id:reply-to:content-type;
-        bh=ocwe/ua5bx6fTunJTjbDvG/Rp4d0BH8Fbx4UwIDjj0c=;
-        b=pBgUdJ6stSUwypCsKaVTfwvNKihbDW/R3yRzFIG3BP2DxAVpp35KpznuB4zTSZj6tb
-         dojrLVc6DHyA1xwBt8BDhIlvT1bOvu9Q38UCTodL08O3J882Oot/KFLNIN1Q3QDwamfm
-         ZCC0tZu/OjuyYB2acTL8jvGVtKQ56uOClA4krTQi2o9n6vAIeJOsgedhj1tYIVi+9sdY
-         XgqZxHIP26mVChk8bLjuiocX81Jst4C0M1p/6TF/uY5IxY59KSzfDmykWXyqhd9Oxrj1
-         92JyZXb+AQCV+4x8wqXUL/M7NZnlJm4WHU7hcJiLD1s2jAIj1EYbILXscFdgqDc6HC69
-         wMJA==
-X-Gm-Message-State: AFq9FYKfzmTEkPEr5ecG9g91wVOTfxE9XV+ni7jugbBHt1ShjIXX7ONy
-	PZMGIyNs2NapnrrI7Bvm2bifghxvrW20f5tUABa2fWjJUNLKGRtridlqYs78Kvuo
-X-Gm-Gg: AYBFou2+zTgYDeIoaxOfNNW0HD314DSGZnUJGIc76W9kDJLreyC9DLW5Pf/Mf/4Vv/W
-	7VQSKvcvhxB9N5h2Xa0H8U30ZL4XAX8tCAd4a6w1Iz6MOgFJEMwIody7adai6NHSbUuDERCbNbW
-	3xSJOkjB/eVyQ4YdPFJpAw6nuoliIv7PBODlEkQk01w+TuO2Xw87EKKJzMIAeU5IngNHJmMkk9x
-	rda7O+aOgaURpf0UkCe5jcr65ScO7b1trs9JGesmhuM5Ybc/JPGrozBF2gjBdXDmaN3NdtZ3NZR
-	Eef6VnvPON4WaGiHPOBjnb3+FksoXdZ7rZFXF4DtRp7LevIXwTIbVmOqj1jjyjDzGn15/5SlLh3
-	x/0B5gzNSHvvC0IM3MshSECjDip6D4QPvsNzdULX2fvgq79CFo/kY9onH1WO5Z4hKzEaHgHX/h/
-	0Zm53Q4id3IH0gcEo+xL97Ppc+2gZyr+M0mVQu6Ty7eDQYmSh6FVEI/FVYcIPxFemn8Q==
-X-Received: by 2002:a05:600c:3b1e:b0:49f:fdca:c361 with SMTP id 5b1f17b1804b1-4a1d75f9341mr271641575e9.12.1792517906016;
-        Tue, 20 Oct 2026 10:38:26 -0700 (PDT)
-Received: from luca-vm.lan ([154.61.61.58])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-4a1f8016c93sm52505235e9.5.2026.10.20.10.38.24
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 20 Oct 2026 10:38:25 -0700 (PDT)
-From: Luca Leonardo Scorcia <l.scorcia@gmail.com>
-To: linux-mediatek@lists.infradead.org
-Cc: Val Packett <val@packett.cool>,
-	Luca Leonardo Scorcia <l.scorcia@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Dmitry Torokhov <dmitry.torokhov@gmail.com>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Sen Chu <sen.chu@mediatek.com>,
-	Sean Wang <sean.wang@mediatek.com>,
-	Macpaul Lin <macpaul.lin@mediatek.com>,
-	Lee Jones <lee@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Liam Girdwood <lgirdwood@gmail.com>,
-	Mark Brown <broonie@kernel.org>,
-	Linus Walleij <linusw@kernel.org>,
-	Fabien Parent <parent.f@gmail.com>,
-	Akari Tsuyukusa <akkun11.open@gmail.com>,
-	Chen Zhong <chen.zhong@mediatek.com>,
-	linux-input@vger.kernel.org,
-	devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-pm@vger.kernel.org,
-	mfd@lists.linux.dev,
-	linux-arm-kernel@lists.infradead.org,
-	linux-gpio@vger.kernel.org
-Subject: [PATCH RESEND v10 9/9] arm64: dts: mediatek: Add MediaTek MT6392 PMIC dtsi
-Date: Tue, 20 Oct 2026 19:33:30 +0200
-Message-ID: <20261020173556.632798-10-l.scorcia@gmail.com>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20261020173556.632798-1-l.scorcia@gmail.com>
-References: <20261020173556.632798-1-l.scorcia@gmail.com>
+	id 1xJEZk-0000000ARxE-1ypv;
+	Tue, 20 Oct 2026 18:28:40 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by sea.source.kernel.org (Postfix) with ESMTP id EBF6943627;
+	Tue, 20 Oct 2026 18:28:38 +0000 (UTC)
+Authentication-Results: smtp.kernel.org; arc=none smtp.remote-ip=100.80.115.77
+ARC-Seal: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256; cv=none;
+	t=1792520918;
+	b=bHBmN7+8naJrEZSTkCeMZ99WuA6LiVfI2/jXXPPgbCp3RJXq1SBB1en7VHU3Qv7o8WYX
+	 /RFwvd9KNcFmIW3Q/ytubzkUux12PmHwcDGQ/qFDnOtE/pjZ8eIqURKDg9u1/C2DLAGkH
+	 tceFInBm4k3lyS/YqqXSbAmbRDeKqluxOEbgMUV91BosuGVn+MLS8xP4j8UELVx5glNAa
+	 SUGhXKlWlWZ9PhTGETnd0Nz3r0HlJQHhD8LzxHlpqCfxSG1vVA3KxcrkvI+f2gT3aW2Rr
+	 k5ebBK5oZvzV08ZQpEQRjqvmOR28hKFtPXmos5ihOmXBhlEMiBHsKSj0Nz982wFL8Kw==
+ARC-Message-Signature: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256;
+	c=relaxed/relaxed; t=1792520918;
+	h=DKIM-Signature:Received:From:Date:Subject:MIME-Version:Content-Type:
+	 Message-Id:X-B4-Tracking:X-Change-ID:To:Cc:X-Mailer:
+	 X-Developer-Signature:X-Developer-Key:X-Endpoint-Received:
+	 X-Original-From:Reply-To:Content-Transfer-Encoding;
+	bh=Z5zSggzBne2c+TcNuspBgPLfuRtz5PeeaW0VSn/S1BU=;
+	b=pLCx7e2Krtjus3+4OxVZMOu9k50TC4y1Z2Xw0LWfSUDRwLv23Jc6+3BbV5k/WgF1bRyj
+	 Blb6nwnBB+ohy//UhTO6hCvN1qQ6fbpmLnzdRFSaFabUGwfd+z8bUBgCNPdv3a2Z3A+pR
+	 +OVKc8qI3RV52E3gYhG8bnOi/pCD8faw5/Fr0LGEVb1akp1G5B0lsKpTMNGW9QulpLkiv
+	 HMar1YB+zB9sHTZrbZRWPlsjKhVy6F7NpINzQkP0JuHtWm6c3EHAywjfK19zO3+ZWC6y9
+	 1+tR/FWML+UZDF7VEUQEDvNKbre3CoSc5R6aS1P9MQohO7zcb/ZqxMddbWDT6RepEHQ==
+ARC-Authentication-Results: i=1; smtp.kernel.org; 
+	arc=none smtp.remote-ip=100.80.115.77
+Received: from lkml.kernel.org (nexus.subspace.kernel.org [100.80.115.77])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
+	(No client certificate requested)
+	by smtp.kernel.org (Postfix) with ESMTPS id 577C11F000C9;
+	Tue, 20 Oct 2026 18:28:38 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1792520918;
+	bh=Z5zSggzBne2c+TcNuspBgPLfuRtz5PeeaW0VSn/S1BU=;
+	h=From:Date:Subject:To:Cc:Reply-To;
+	b=FbopTNcgrGFHEydP43sUD6i3obdVCrJp/i9aYVvUIk6oe1+vaz7PuS2Zad8XqPDHi
+	 hxw63hLUEecwwVIlR+1yPSmwRqghhhX3wEbfVX2mMRDJefifM7xcq9OJkwlX85eCKC
+	 ehUiT5RjMCeUAk9w3xTJfjEiJTFLztmKeVXL8l45u1T4SRJZBDHMjHtRSE1slfpg2e
+	 XQ96+0Un6YSxePyROISMK6qhYpwMhy28Ev2MN5YW/bAPKsBl81NMnWptg3aX2Pm93I
+	 NukpOrK5rlNVc7a2CY1Xiwot26lCKi/kx9H/SufEkH8vGJDDnR/k7AzzIU4B8XeYzg
+	 D0ujboI2A9GcA==
+Received: from nexus.subspace.kernel.org (localhost [IPv6:::1])
+	by lkml.kernel.org (Postfix) with ESMTP id AEFBD4320B;
+	Tue, 20 Oct 2026 18:28:37 +0000 (UTC)
+From: Fil Dunsky via B4 Relay <devnull+filipp.dunsky.gmail.com@kernel.org>
+Date: Tue, 20 Oct 2026 21:28:37 +0300
+Subject: [PATCH] wifi: mt76: dma: run threaded NAPI kthreads with
+ SCHED_FIFO low priority
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261020_103828_483511_3436DEF1 
-X-CRM114-Status: GOOD (  16.96  )
-X-Spam-Score: -2.1 (--)
+Content-Type: text/plain; charset="utf-8"
+Message-Id: <20261020-b4-mt76-napi-fifo-v1-1-ac8a24e2062a@gmail.com>
+X-B4-Tracking: v=1; b=H4sIAAAAAAAC/yXMQQqEMAxA0atI1gZqqQpeRVzYmsxEsEqrIhTvP
+ h1dvsX/CSIFoQhdkSDQKVFWn1GVBbjv6D+EMmWDVrqplFZoDS5726AfN0EWXnFyNbFhp401kLs
+ tEMv1PPvhdTzsTG7/j+C+f+QaXPF1AAAA
+X-Change-ID: 20261020-b4-mt76-napi-fifo-dc5ef4fc24b4
+To: nbd@nbd.name, lorenzo@kernel.org, ryder.lee@mediatek.com
+Cc: shayne.chen@mediatek.com, sean.wang@mediatek.com, 
+ matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com, 
+ linux-wireless@vger.kernel.org, linux-kernel@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+ Fil Dunsky <filipp.dunsky@gmail.com>
+X-Mailer: b4 0.16.0
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1792520916; l=2932;
+ i=filipp.dunsky@gmail.com; s=20260930; h=from:subject:message-id;
+ bh=gTH2kexAA/EJvNPz+GCLDxl2HKRZ9qNQnHFrv8bnx/A=;
+ b=1t7HqYA5U6ggeRCUvO/xOQ1LgjTa3bTc8sYP5vdhFE+66gXRT/Kqf1T8KfB6+5t+Sn/iNaxZ3
+ Hsw/op0cOlyAiCj2QCJUfMRemJtwrbQZj08yB4jhEnSdKO3pB16/try
+X-Developer-Key: i=filipp.dunsky@gmail.com; a=ed25519;
+ pk=JAYP8e2rJ54DHOmhNtXud8rl1igAaAXoOHxtJmVXI1g=
+X-Endpoint-Received: by B4 Relay for filipp.dunsky@gmail.com/20260930 with
+ auth_id=1085
+X-Original-From: Fil Dunsky <filipp.dunsky@gmail.com>
+Content-Transfer-Encoding: 7bit
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -118,208 +110,82 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Reply-To: filipp.dunsky@gmail.com
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-15.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
-	DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,FREEMAIL_FORGED_FROMDOMAIN,
-	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
+X-Spam-Status: No, score=-24.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,
+	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,SPF_HELO_NONE,SPF_PASS,
 	USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-From: Val Packett <val@packett.cool>
+From: Fil Dunsky <filipp.dunsky@gmail.com>
 
-Add the dtsi to be included by all boards using the MT6392 PMIC,
-providing support for regulator, keys, pinctrl and RTC.
+mt76 enables threaded NAPI for the dma rx queues, but the napi kthreads
+stay SCHED_OTHER, unlike the usb and sdio rx/status workers and the tx
+worker, which already use sched_set_fifo_low().
 
-Import the new file in the shared device tree for the Pumpkin boards.
+On MT7621 (MIPS 1004Kc, 2 cores / 4 threads, PREEMPT_NONE, HZ=100) with
+MT7612E (mt76x2e) as a 5 GHz client receiving ~200 Mbit/s while
+userspace keeps the CPUs busy, the napi kthread is regularly delayed by
+10-30 ms or more and the 256-entry rx ring fills up completely
+(instrumented: ~500 full-ring events in 5 minutes). Occasionally the
+chip's rx DMA does not resume after such an event: WPDMA_GLO_CFG reports
+rx and tx DMA busy, RXQ_STA shows the PBF rx queue at RX_MAX_PCNT, the
+host ring has free buffers, beacons are lost, then tx DMA stops (dma_idx
+stuck with frames queued), the tx hang watchdog fires, followed by
+"MCU message ... timed out" and a second restart. A series of these
+sometimes hangs the whole system.
 
-Signed-off-by: Val Packett <val@packett.cool>
-Signed-off-by: Luca Leonardo Scorcia <l.scorcia@gmail.com>
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+With the napi kthreads at SCHED_FIFO 1 the ring overflowed once in 5
+minutes, no watchdog resets occurred in repeated 5 minute runs and rx
+throughput in the same setup went from ~210 to ~280 Mbit/s. A larger rx
+ring (1024 entries) did not help: it still overflowed and resets were
+more frequent.
+
+Set the napi kthread priority right after netif_napi_add(), as done for
+the other workers.
+
+Signed-off-by: Fil Dunsky <filipp.dunsky@gmail.com>
 ---
- arch/arm64/boot/dts/mediatek/mt6392.dtsi      | 145 ++++++++++++++++++
- .../boot/dts/mediatek/pumpkin-common.dtsi     |   7 +
- 2 files changed, 152 insertions(+)
- create mode 100644 arch/arm64/boot/dts/mediatek/mt6392.dtsi
+Tested on Securifi Almond 3 (MT7621, MT7612E + MT7602E) with OpenWrt
+25.12.6 (kernel 6.12.112, mt76 2026-03-19 39c960c3 plus this change):
+iperf3 bidirectional, 4 streams, 5 GHz client link at -66 dBm, with a
+userspace proxy and a display daemon running. Without the change 2-3
+watchdog resets in most 5 minute runs and several full-system hangs;
+with it 0 resets over 6 runs.
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt6392.dtsi b/arch/arm64/boot/dts/mediatek/mt6392.dtsi
-new file mode 100644
-index 000000000000..cc4770d70246
---- /dev/null
-+++ b/arch/arm64/boot/dts/mediatek/mt6392.dtsi
-@@ -0,0 +1,145 @@
-+// SPDX-License-Identifier: GPL-2.0
-+/*
-+ * Copyright (c) 2019 MediaTek Inc.
-+ * Copyright (c) 2024 Val Packett <val@packett.cool>
-+ * Copyright (c) 2026 Luca Leonardo Scorcia <l.scorcia@gmail.com>
-+ */
-+
-+#include <dt-bindings/input/input.h>
-+#include <dt-bindings/regulator/mediatek,mt6392-regulator.h>
-+
-+&pwrap {
-+	pmic: pmic {
-+		compatible = "mediatek,mt6392";
-+		interrupt-controller;
-+		#interrupt-cells = <2>;
-+
-+		mt6392keys: keys {
-+			compatible = "mediatek,mt6392-keys";
-+
-+			key-power {
-+				linux,keycodes = <KEY_POWER>;
-+				wakeup-source;
-+			};
-+
-+			key-home {
-+				linux,keycodes = <KEY_HOME>;
-+				wakeup-source;
-+			};
-+		};
-+
-+		mt6392pio: pinctrl {
-+			compatible = "mediatek,mt6392-pinctrl";
-+
-+			gpio-controller;
-+			#gpio-cells = <2>;
-+		};
-+
-+		mt6392regulators: regulators {
-+			compatible = "mediatek,mt6392-regulator";
-+
-+			/* Fixed supply defined in the data sheet */
-+			avddldo-supply = <&mt6392_vsys_reg>;
-+
-+			mt6392_vcore_reg: vcore {
-+				regulator-allowed-modes = <MT6392_REGULATOR_MODE_NORMAL
-+							   MT6392_BUCK_MODE_FORCE_PWM>;
-+			};
-+			mt6392_vproc_reg: vproc {
-+				regulator-allowed-modes = <MT6392_REGULATOR_MODE_NORMAL
-+							   MT6392_BUCK_MODE_FORCE_PWM>;
-+			};
-+			mt6392_vsys_reg: vsys {
-+				regulator-allowed-modes = <MT6392_REGULATOR_MODE_NORMAL
-+							   MT6392_BUCK_MODE_FORCE_PWM>;
-+			};
-+			mt6392_vaud28_reg: vaud28 {
-+				regulator-allowed-modes = <MT6392_REGULATOR_MODE_NORMAL
-+							   MT6392_LDO_MODE_LP>;
-+			};
-+			mt6392_vxo22_reg: vxo22 {
-+				regulator-allowed-modes = <MT6392_REGULATOR_MODE_NORMAL
-+							   MT6392_LDO_MODE_LP>;
-+			};
-+			mt6392_vaud22_reg: vaud22 {
-+				regulator-allowed-modes = <MT6392_REGULATOR_MODE_NORMAL
-+							   MT6392_LDO_MODE_LP>;
-+			};
-+			mt6392_vadc18_reg: vadc18 {
-+				regulator-allowed-modes = <MT6392_REGULATOR_MODE_NORMAL
-+							   MT6392_LDO_MODE_LP>;
-+			};
-+			mt6392_vcama_reg: vcama { };
-+			mt6392_vcn35_reg: vcn35 {
-+				regulator-allowed-modes = <MT6392_REGULATOR_MODE_NORMAL
-+							   MT6392_LDO_MODE_LP>;
-+			};
-+			mt6392_vio28_reg: vio28 {
-+				regulator-allowed-modes = <MT6392_REGULATOR_MODE_NORMAL
-+							   MT6392_LDO_MODE_LP>;
-+			};
-+			mt6392_vusb_reg: vusb {
-+				regulator-allowed-modes = <MT6392_REGULATOR_MODE_NORMAL
-+							   MT6392_LDO_MODE_LP>;
-+			};
-+			mt6392_vmc_reg: vmc {
-+				regulator-allowed-modes = <MT6392_REGULATOR_MODE_NORMAL
-+							   MT6392_LDO_MODE_LP>;
-+			};
-+			mt6392_vmch_reg: vmch {
-+				regulator-allowed-modes = <MT6392_REGULATOR_MODE_NORMAL
-+							   MT6392_LDO_MODE_LP>;
-+			};
-+			mt6392_vemc3v3_reg: vemc3v3 {
-+				regulator-allowed-modes = <MT6392_REGULATOR_MODE_NORMAL
-+							   MT6392_LDO_MODE_LP>;
-+			};
-+			mt6392_vcamaf_reg: vcamaf {
-+				regulator-allowed-modes = <MT6392_REGULATOR_MODE_NORMAL
-+							   MT6392_LDO_MODE_LP>;
-+			};
-+			mt6392_vgp1_reg: vgp1 {
-+				regulator-allowed-modes = <MT6392_REGULATOR_MODE_NORMAL
-+							   MT6392_LDO_MODE_LP>;
-+			};
-+			mt6392_vgp2_reg: vgp2 {
-+				regulator-allowed-modes = <MT6392_REGULATOR_MODE_NORMAL
-+							   MT6392_LDO_MODE_LP>;
-+			};
-+			mt6392_vefuse_reg: vefuse {
-+				regulator-allowed-modes = <MT6392_REGULATOR_MODE_NORMAL
-+							   MT6392_LDO_MODE_LP>;
-+			};
-+			mt6392_vm25_reg: vm25 {
-+				regulator-allowed-modes = <MT6392_REGULATOR_MODE_NORMAL
-+							   MT6392_LDO_MODE_LP>;
-+			};
-+			mt6392_vdig18_reg: vdig18 { };
-+			mt6392_vm_reg: vm {
-+				regulator-allowed-modes = <MT6392_REGULATOR_MODE_NORMAL
-+							   MT6392_LDO_MODE_LP>;
-+			};
-+			mt6392_vio18_reg: vio18 {
-+				regulator-allowed-modes = <MT6392_REGULATOR_MODE_NORMAL
-+							   MT6392_LDO_MODE_LP>;
-+			};
-+			mt6392_vcn18_reg: vcn18 {
-+				regulator-allowed-modes = <MT6392_REGULATOR_MODE_NORMAL
-+							   MT6392_LDO_MODE_LP>;
-+			};
-+			mt6392_vcamd_reg: vcamd {
-+				regulator-allowed-modes = <MT6392_REGULATOR_MODE_NORMAL
-+							   MT6392_LDO_MODE_LP>;
-+			};
-+			mt6392_vcamio_reg: vcamio {
-+				regulator-allowed-modes = <MT6392_REGULATOR_MODE_NORMAL
-+							   MT6392_LDO_MODE_LP>;
-+			};
-+			mt6392_vrtc_reg: vrtc { };
-+		};
-+
-+		mt6392rtc: rtc {
-+			compatible = "mediatek,mt6392-rtc", "mediatek,mt6323-rtc";
-+		};
-+	};
-+};
-diff --git a/arch/arm64/boot/dts/mediatek/pumpkin-common.dtsi b/arch/arm64/boot/dts/mediatek/pumpkin-common.dtsi
-index 805fb82138a8..b19d5792bd89 100644
---- a/arch/arm64/boot/dts/mediatek/pumpkin-common.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/pumpkin-common.dtsi
-@@ -6,6 +6,8 @@
- 
- #include <dt-bindings/gpio/gpio.h>
- 
-+#include "mt6392.dtsi"
-+
- / {
- 	aliases {
- 		serial0 = &uart0;
-@@ -160,6 +162,11 @@ &i2c2 {
- 	status = "okay";
- };
- 
-+&pmic {
-+	interrupt-parent = <&pio>;
-+	interrupts = <28 IRQ_TYPE_LEVEL_HIGH>;
-+};
-+
- &uart0 {
- 	status = "okay";
- };
--- 
-2.43.0
+A similar reset chain under full CPU load on MT7620A + MT7612E is
+reported in https://github.com/openwrt/openwrt/issues/8984
+---
+ drivers/net/wireless/mediatek/mt76/dma.c | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/drivers/net/wireless/mediatek/mt76/dma.c b/drivers/net/wireless/mediatek/mt76/dma.c
+index a67880a92..8e66fad7b 100644
+--- a/drivers/net/wireless/mediatek/mt76/dma.c
++++ b/drivers/net/wireless/mediatek/mt76/dma.c
+@@ -1128,6 +1128,11 @@ mt76_dma_rx_queue_init(struct mt76_dev *dev, enum mt76_rxq_id qid,
+ 		       int (*poll)(struct napi_struct *napi, int budget))
+ {
+ 	netif_napi_add(dev->napi_dev, &dev->napi[qid], poll);
++	/* Same as the usb/sdio rx workers: under CPU load a SCHED_OTHER napi
++	 * thread can be starved long enough for the rx ring to overflow.
++	 */
++	if (dev->napi[qid].thread)
++		sched_set_fifo_low(dev->napi[qid].thread);
+ 	mt76_dma_rx_fill_buf(dev, &dev->q_rx[qid], false);
+ 	napi_enable(&dev->napi[qid]);
+ }
+
+---
+base-commit: 6474fa070f2b8013b4b87350b775b8c3be6e8aac
+change-id: 20261020-b4-mt76-napi-fifo-dc5ef4fc24b4
+
+Best regards,
+--  
+Fil Dunsky <filipp.dunsky@gmail.com>
+
 
 
