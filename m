@@ -2,40 +2,40 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 6E39A606A32F
-	for <linux-mediatek@archiver.kernel.org>; Tue, 20 Oct 2026 02:46:34 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id A8598606A326
+	for <linux-mediatek@archiver.kernel.org>; Tue, 20 Oct 2026 02:46:19 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=m1AZ+Z4q;
-	dkim=pass (1024-bit key, unprotected) header.d=163.com header.i=@163.com header.a=rsa-sha256 header.s=s110527 header.b=mpm4fxb4
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=dt216nx/;
+	dkim=pass (1024-bit key, unprotected) header.d=163.com header.i=@163.com header.a=rsa-sha256 header.s=s110527 header.b=UVUf0h9l
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:To:From:Reply-To:
 	Cc:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=+jhv8/rTp4UvkjzdJMvn38hW1Gb1uR8cATnvLgA89dE=; b=m1AZ+Z4qa4JbgLW4eSASQauyH6
-	zcpVY+BY4wOmc6ntMMAVNKRapzLH4h0LH5hSfMdThoNy3rONBPsggeMsh6EoKNoiJn4y5EwZmc5q/
-	rhMu6u+DpKSbt3K0SNVW7cQrbBAsqdphgkmOWH4RFO3iE3XBHHwUbPLxaPLmwBQ2oO03n/gwkIyoO
-	1Jvsv185kpHmYcqSbHSAyj8mrUlIKA3SG6tlKmL/mA9A/V9CX+htPL323xz1hQyBW8pbjZuQQYyK4
-	dAwh7+UrQ69KnKtOiGGonIrMyTzHGglHP4yKiWb57t5jWSgQYHa++ahPJgiX5XZnSDYYFes7DoVjY
-	+f7etciQ==;
+	bh=datRhPKvUt8Wm3BSwDl6dFeqU17AfptMGzHaScRNqKs=; b=dt216nx/CyG/pEIz4dNLLFCnpW
+	gWONRNGsvvwhgvFnFz54CCQK5lOeeV+9TBlZrvabMblKON0KQDsgJ0oW8Kbf6gCLpqvHnLCY8vUDR
+	8REJ8D8vtYmFmrlfr1ZQ4VKWB5eEpQYGSBeq8B/vidpuzJojWE5OSkQGa9Esr0Tb60j7rstzF94sL
+	n8dVIYHyxQOkaaN+Xv//2YZnEl8J2zS/XEwr6uMYR2AbS3Elg2g8+Ufuq9OJky7c/D5ukY3BEpNDN
+	wWFUzgSZ8yRceOKzForXobcLbYr06rf9+Hz6ZRlRxCnsNDaPeS/C9f0D7Gj0tqghO24f1VX9OGZ3W
+	tRIc93+Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xIzs1-00000008hzo-209C;
-	Tue, 20 Oct 2026 02:46:33 +0000
-Received: from m16.mail.163.com ([220.197.31.3])
+	id 1xIzrm-00000008hpp-3Rxz;
+	Tue, 20 Oct 2026 02:46:18 +0000
+Received: from m16.mail.163.com ([117.135.210.4])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xIzrb-00000008hfv-2EpC;
-	Tue, 20 Oct 2026 02:46:09 +0000
+	id 1xIzrY-00000008hfF-18wY;
+	Tue, 20 Oct 2026 02:46:06 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
-	s=s110527; h=From:To:Subject:Date:Message-Id:MIME-Version; bh=+j
-	hv8/rTp4UvkjzdJMvn38hW1Gb1uR8cATnvLgA89dE=; b=mpm4fxb4Tk5sW8/z80
-	jz/pj3mbDrnxQQeJd261MHATcgw0XoQp2eq+PA/xvqCUHEvrYH2OtkL/IPjMnBSD
-	NAt/jwoeDO5uhmpq5h1HTYWzDOiLJzu3H6orkfzlINitUR8ECunN4kRcgzYPMleK
-	D1Ix0uRHN9cSYn7TEoDl3UuOA=
+	s=s110527; h=From:To:Subject:Date:Message-Id:MIME-Version; bh=da
+	tRhPKvUt8Wm3BSwDl6dFeqU17AfptMGzHaScRNqKs=; b=UVUf0h9l1rqCxWV+ou
+	TQMAA0aj0AtvHKUeLPukGq5Dye1+QxBBUOZ+R+XK7d5ZRA4WkPKmqFWPwasaWQSP
+	x4aZoSFcQqkZKBa0cxd8xl4JAyEgpMFsAjpIQPxpQiH2HDNsYBMqoNflg+wgnD6U
+	/2XZDzhHBTDDwPT/pYHPUZQ9w=
 Received: from pc.localdomain (unknown [])
-	by gzga-smtp-mtada-g0-1 (Coremail) with SMTP id _____wD3H9HZ1dZq2OtmBQ--.60682S9;
-	Tue, 20 Oct 2026 10:45:56 +0800 (CST)
+	by gzga-smtp-mtada-g0-1 (Coremail) with SMTP id _____wD3H9HZ1dZq2OtmBQ--.60682S5;
+	Tue, 20 Oct 2026 10:45:51 +0800 (CST)
 From: Jiale Yao <yaojiale02@163.com>
 To: Felix Fietkau <nbd@nbd.name>,
 	Lorenzo Bianconi <lorenzo@kernel.org>,
@@ -44,30 +44,28 @@ To: Felix Fietkau <nbd@nbd.name>,
 	Sean Wang <sean.wang@mediatek.com>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Ming Yen Hsieh <mingyen.hsieh@mediatek.com>,
 	linux-wireless@vger.kernel.org,
 	linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
-Subject: [PATCH 07/11] wifi: mt76: mt7925: validate EEPROM response length
-Date: Tue, 20 Oct 2026 10:45:39 +0800
-Message-Id: <20261020024544.3101738-8-yaojiale02@163.com>
+Subject: [PATCH 03/11] wifi: mt76: mt7921: reject malformed TX power responses
+Date: Tue, 20 Oct 2026 10:45:35 +0800
+Message-Id: <20261020024544.3101738-4-yaojiale02@163.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20261020024544.3101738-1-yaojiale02@163.com>
 References: <20261020024544.3101738-1-yaojiale02@163.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-CM-TRANSID: _____wD3H9HZ1dZq2OtmBQ--.60682S9
-X-Coremail-Antispam: 1Uf129KBjvdXoW7Jr1rAr15ZryDKFy8Jr4Dtwb_yoWkXFg_ur
-	1v9rn7Jr18Gw1UKr42yF1furZFy3ykZ3WkCrWrtrWSg3y7JrW7urZavrs5GrZF9ws2vFW5
-	Cr9xJa45ZasxujkaLaAFLSUrUUUUjb8apTn2vfkv8UJUUUU8Yxn0WfASr-VFAUDa7-sFnT
-	9fnUUvcSsGvfC2KfnxnUUI43ZEXa7IUbW8BUUUUUU==
-X-CM-SenderInfo: x1dryxhdohiji6rwjhhfrp/xtbCzQT+OWrW1eSC4QAA3g
+X-CM-TRANSID: _____wD3H9HZ1dZq2OtmBQ--.60682S5
+X-Coremail-Antispam: 1Uf129KBjvJXoW7AFWfXF1fXr1fJr13WrWrAFb_yoW8Gryfpa
+	y0gayYkr4UGr4vqw1rAF4kAFySyan5KF13GFyruwn5WryfJrn0kF4F9Fyjqr4Yya1vkF1f
+	Jr4YqF9xGr9Yv37anT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
+	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x07j7J5rUUUUU=
+X-CM-SenderInfo: x1dryxhdohiji6rwjhhfrp/xtbCzR-8N2rW1d+CUgAA3-
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261019_194607_946220_4CCBCFE8 
-X-CRM114-Status: UNSURE (   9.28  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20261019_194604_694522_86CD0C9E 
+X-CRM114-Status: GOOD (  10.54  )
 X-Spam-Score: -1.8 (-)
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -88,33 +86,42 @@ X-Spam-Status: No, score=-15.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-The EEPROM reader indexes the response data array without checking that
-the complete firmware event is present. A truncated response can cause
-an out-of-bounds read.
+mt7921_get_txpwr_info() only warns when the firmware length differs from
+the skb length and then copies the response anyway. It also reads the
+length field before ensuring that the response header is present.
 
-Require the complete EEPROM event before indexing its data.
+Require the complete event and reject a mismatched firmware length
+before copying the TX power data.
 
-Fixes: f2027ef3f733 ("wifi: mt76: mt7925: load the appropriate CLC data based on hardware type")
+Fixes: ea29acc97c55 ("mt76: mt7921: add dumping Tx power table")
 Signed-off-by: Jiale Yao <yaojiale02@163.com>
 ---
- drivers/net/wireless/mediatek/mt76/mt7925/mcu.c | 4 ++++
- 1 file changed, 4 insertions(+)
+ drivers/net/wireless/mediatek/mt76/mt7921/mcu.c | 11 ++++++++++-
+ 1 file changed, 10 insertions(+), 1 deletion(-)
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
-index ce860e63a108..e5cacb12d367 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
-@@ -887,6 +887,10 @@ static int mt7925_mcu_read_eeprom(struct mt792x_dev *dev, u32 offset, u8 *val)
- 					&req, sizeof(req), true, &skb);
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7921/mcu.c
+index ef6660653723..96e5e13d3c47 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7921/mcu.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7921/mcu.c
+@@ -1167,8 +1167,17 @@ int mt7921_get_txpwr_info(struct mt792x_dev *dev, struct mt7921_txpwr *txpwr)
  	if (ret)
  		return ret;
-+	if (skb->len < sizeof(*res)) {
+ 
++	if (skb->len < sizeof(*event)) {
 +		dev_kfree_skb(skb);
 +		return -EINVAL;
 +	}
++
+ 	event = (struct mt7921_txpwr_event *)skb->data;
+-	WARN_ON(skb->len != le16_to_cpu(event->len));
++	if (skb->len != le16_to_cpu(event->len)) {
++		dev_kfree_skb(skb);
++		return -EINVAL;
++	}
++
+ 	memcpy(txpwr, &event->txpwr, sizeof(event->txpwr));
  
- 	res = (struct evt *)skb->data;
- 	*val = res->data[offset % MT7925_EEPROM_BLOCK_SIZE];
+ 	dev_kfree_skb(skb);
 -- 
 2.34.1
 
