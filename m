@@ -2,41 +2,41 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 8B110606A31B
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 8B202606A31C
 	for <linux-mediatek@archiver.kernel.org>; Wed, 21 Oct 2026 07:24:08 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=E5qlnPPT;
-	dkim=pass (1024-bit key, unprotected) header.d=mediatek.com header.i=@mediatek.com header.a=rsa-sha256 header.s=dk header.b=NL3VYw0n
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=RRlGLNqW;
+	dkim=pass (1024-bit key, unprotected) header.d=mediatek.com header.i=@mediatek.com header.a=rsa-sha256 header.s=dk header.b=MNvdkgAi
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
 	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
 	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=nCsIQozWbiChRVAnBeeMNJUrcxjUzwc0Cz0qWxIuZNg=; b=E5qlnPPT3vPI0aUCkuBhGqSp5/
-	5YVyLFGuMpgjureHZmNm81SFezyn7QHMzQurC9dTk70p/Zwwrfq3I/0MOZAsopNe3uoAT357TRz5B
-	9Vp+9ctotFde4IjYigDGFv+44DHhxdofr8dtx4EgCEPmi0AcprZObscppoGP83Erh0b8Pzh8+/I+e
-	Qa8I1WFh15xYdcv+kVAkRyOQwIZklPBsUYui0wJZDHMzzm4xSZ91JGFNfs15xs6Dhet6wihjqOknr
-	f7LSEBETeicy+7mDY+bcEllJF9D2Y9z2ZKZ7U6QBcxrmyvFHgiYEpM96QsqtkcUKAI0OjUhsXQIUp
-	NZ976InA==;
+	bh=3g0aFFqcRMK1xCooXVxIr/uzTUiT7C6yFr6obAG6xIQ=; b=RRlGLNqWRm5XsgnrqsIj66T1ck
+	PftdgJjEsUAaxaMGDXdg1N1txYpcebjHSshaM8SU88E/6t+n+F3IPvP1xEiexS85E4eJiwyK7whL9
+	p7J+enO8E/X1lB4VPvHb+gF4eC/X9XpVvQdsah/EUaOElgu/ZdlbSDJGo6fq4ovDZvvJUjXFb8i27
+	AWdEB1LHiP8VPIhg0xTSGxKJH4v3+Gw59w0i5NkPL8AJlbonM3ubiXqIvsUkAfvAHyrW9XZC8Zk5H
+	+V75pzRxKwacAstzR8LiGxryEM4ZfLFiin5j1ZCIp9BQypw+8ixe4gzClHmhObaAYpLy14lgfbUQm
+	8m72opig==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xJQgB-0000000BFUf-1lg0;
+	id 1xJQgB-0000000BFUk-1xb5;
 	Wed, 21 Oct 2026 07:24:07 +0000
 Received: from [216.200.240.185] (helo=mailgw02.mediatek.com)
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xJQg8-0000000BFTF-3ehB
+	id 1xJQg8-0000000BFTG-3fEg
 	for linux-mediatek@lists.infradead.org;
 	Wed, 21 Oct 2026 07:24:05 +0000
-X-UUID: 62b93050cd2011f1acbe4559397dec65-20261021
+X-UUID: 62bf9670cd2011f1acbe4559397dec65-20261021
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=nCsIQozWbiChRVAnBeeMNJUrcxjUzwc0Cz0qWxIuZNg=;
-	b=NL3VYw0n0lfQ+q17Mch6dwDZkxEpdi2dM9cbHFuz24Ztqi3QGDApZeu+qbkFDdJ72s6z2q4PBfCQ109kf7A2D6pw47KqVoiIYuTaxWOwDTf/XUlnCLw0P5bDzvzFe57uqDVZTVjMd0iSLo75Ey2Y9Rz9hVrJDEADx0IrugbkmlE=;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=3g0aFFqcRMK1xCooXVxIr/uzTUiT7C6yFr6obAG6xIQ=;
+	b=MNvdkgAif4zG3R6SPUZlETdeGn/nDJUaP/NIeGBXj6EH0pIhX7F2+Fr2YDvE5TQS9wIVLnqS3UdgcfVt/y5slMkz4dm1XlKjCpVY28cfV37WKfj5MTzpwMN+41PaPjgwVlJGV8akgTBIqadpG0zRBfrZ3YSmQzhgColP5LiVVcY=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.20,REQID:3ebd238d-4319-4941-a47c-c6325137b52a,IP:0,U
+X-CID-O-INFO: VERSION:1.3.20,REQID:975e9c02-6012-4519-b1af-f90229812951,IP:0,U
 	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
 	release,TS:0
-X-CID-META: VersionHash:291e20b,CLOUDID:573cdeba-4006-44bb-949c-6e25a7b8dad4,B
+X-CID-META: VersionHash:291e20b,CLOUDID:10d343ce-02bc-447e-ab88-2baec399874a,B
 	ulkID:nil,BulkQuantity:0,SF:81|82|102|836|865|888|898,TC:-5,Content:0|15|5
 	0|99,EDM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:-1,COL:0,OSI:0,
 	OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
@@ -44,13 +44,13 @@ X-CID-BVR: 2,SSN|SDN
 X-CID-BAS: 2,SSN|SDN,0,_
 X-CID-FACTOR: TF_CID_SPAM_SNR
 X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: 62b93050cd2011f1acbe4559397dec65-20261021
-Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw02.mediatek.com
+X-UUID: 62bf9670cd2011f1acbe4559397dec65-20261021
+Received: from mtkmbs10n1.mediatek.inc [(172.21.101.34)] by mailgw02.mediatek.com
 	(envelope-from <chris.lu@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 2041823890; Wed, 21 Oct 2026 00:24:00 -0700
+	with ESMTP id 871406453; Wed, 21 Oct 2026 00:24:00 -0700
 Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
- MTKMBS14N1.mediatek.inc (172.21.101.75) with Microsoft SMTP Server
+ MTKMBS09N1.mediatek.inc (172.21.101.35) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
  15.2.2562.29; Wed, 21 Oct 2026 15:23:57 +0800
 Received: from mtksitap99.mediatek.inc (10.233.130.16) by
@@ -65,9 +65,9 @@ CC: Hao Qin <hao.qin@mediatek.com>, Wenlong Tian
 	<linux-bluetooth@vger.kernel.org>, linux-kernel
 	<linux-kernel@vger.kernel.org>, linux-mediatek
 	<linux-mediatek@lists.infradead.org>, Chris Lu <chris.lu@mediatek.com>
-Subject: [PATCH v3 1/3] Bluetooth: btmtk: drop zero-length ISO packets from endpoint padding
-Date: Wed, 21 Oct 2026 15:23:53 +0800
-Message-ID: <20261021072356.1449539-2-chris.lu@mediatek.com>
+Subject: [PATCH v3 2/3] Bluetooth: btmtk: bound the ISO payload length by the controller's MTU
+Date: Wed, 21 Oct 2026 15:23:54 +0800
+Message-ID: <20261021072356.1449539-3-chris.lu@mediatek.com>
 X-Mailer: git-send-email 2.45.2
 In-Reply-To: <20261021072356.1449539-1-chris.lu@mediatek.com>
 References: <20261021072356.1449539-1-chris.lu@mediatek.com>
@@ -76,8 +76,8 @@ MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261021_002404_954843_825B3022 
-X-CRM114-Status: GOOD (  15.64  )
+X-CRM114-CacheID: sfid-20261021_002404_958566_7954C760 
+X-CRM114-Status: GOOD (  18.29  )
 X-Spam-Score: -1.3 (-)
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -97,25 +97,24 @@ X-Spam-Status: No, score=-19.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-The ISO interrupt IN endpoint delivers a fixed-size transfer that holds
-one HCI ISO packet and zero-fills the remainder. That padding belongs to
-the transfer rather than to the stream, so it has to be dropped instead of
-reported to the host.
+btmtk_recv_isopkt() bounds the Data_Total_Length reported by the
+controller with skb_tailroom(skb) < hci_skb_expect(skb). That keeps the
+reassembly inside the skb, but it enforces no protocol limit: the head
+allocation is rounded up to the next kmalloc bucket and skb_tailroom()
+reports what the bucket can hold rather than what was requested, which is
+several hundred bytes more. An oversized length therefore passes, and the
+parser keeps pulling bytes out of the following transfers to fill it,
+swallowing the real ISO packets they carry until the frame is handed to
+hci_recv_frame().
 
-btmtk_recv_isopkt() keeps parsing it: the zero bytes read as an ISO header
-with handle 0 and a Data_Total_Length of zero, and each one is passed to
-hci_recv_frame() as a complete frame. A single transfer yields a long run
-of them, which is what fills the HCI log with malformed ISO packets, and
-iso_recv() drops the SDU it is reassembling whenever handle 0 belongs to a
-live CIS/BIS.
+The controller reports the largest ISO_Data_Packet_Length it will send in
+LE Read Buffer Size [v2], which hci_cc_le_read_buffer_size_v2() keeps in
+hdev->iso_mtu. Once that is available, bound the length by it and size the
+receive skb to hold that much plus the 4-byte header. HCI_MAX_ISO_SIZE is
+kept only as a fallback for the window before the command completes.
 
-A zero Data_Total_Length carries no ISO Data Load, so such a packet is
-never part of the stream. Confirm that the rest of the transfer is
-zero-filled before dropping it, since the padding runs to the end of the
-transfer.
-
-This was observed on MT7925, but btmtk_recv_isopkt() is shared by every
-MediaTek USB controller that supports ISO data.
+Keep the skb_tailroom() test as well, because a fragment started before
+hdev->iso_mtu was populated sits in an skb sized for the fallback.
 
 Fixes: ceac1cb0259d ("Bluetooth: btusb: mediatek: add ISO data transmission functions")
 Co-developed-by: Hao Qin <hao.qin@mediatek.com>
@@ -124,47 +123,54 @@ Co-developed-by: Wenlong Tian <ot_wenlong.tian@mediatek.com>
 Signed-off-by: Wenlong Tian <ot_wenlong.tian@mediatek.com>
 Signed-off-by: Chris Lu <chris.lu@mediatek.com>
 ---
- drivers/bluetooth/btmtk.c | 20 ++++++++++++++++++++
- 1 file changed, 20 insertions(+)
+ drivers/bluetooth/btmtk.c | 18 ++++++++++++++++--
+ 1 file changed, 16 insertions(+), 2 deletions(-)
 
 diff --git a/drivers/bluetooth/btmtk.c b/drivers/bluetooth/btmtk.c
-index bdc85147b97f..63b4c99b20d8 100644
+index 63b4c99b20d8..d60e9db0d463 100644
 --- a/drivers/bluetooth/btmtk.c
 +++ b/drivers/bluetooth/btmtk.c
-@@ -7,6 +7,7 @@
- #include <linux/usb.h>
- #include <linux/iopoll.h>
- #include <linux/overflow.h>
-+#include <linux/string.h>
- #include <linux/unaligned.h>
+@@ -1170,8 +1170,15 @@ static int btmtk_recv_isopkt(struct hci_dev *hdev, void *buffer, int count)
+ 	struct btmtk_data *btmtk_data = hci_get_priv(hdev);
+ 	struct sk_buff *skb;
+ 	unsigned long flags;
++	unsigned int iso_mtu;
+ 	int err = 0;
  
- #include <net/bluetooth/bluetooth.h>
-@@ -1201,6 +1202,25 @@ static int btmtk_recv_isopkt(struct hci_dev *hdev, void *buffer, int count)
- 			/* Complete ISO header */
- 			hci_skb_expect(skb) = __le16_to_cpu(dlen);
++	/* The controller reports the largest Data_Total_Length it will send in
++	 * LE Read Buffer Size [v2]. Fall back to HCI_MAX_ISO_SIZE while that
++	 * command has not completed yet.
++	 */
++	iso_mtu = hdev->iso_mtu ? hdev->iso_mtu : HCI_MAX_ISO_SIZE;
++
+ 	spin_lock_irqsave(&btmtk_data->isorxlock, flags);
+ 	skb = btmtk_data->isopkt_skb;
  
-+			if (!hci_skb_expect(skb)) {
-+				/* The interrupt endpoint zero-fills the
-+				 * remainder of the transfer after the one
-+				 * packet it carries. Confirm that is what
-+				 * this is before dropping it.
-+				 */
-+				if (!mem_is_zero(buffer, count)) {
-+					kfree_skb(skb);
-+					skb = NULL;
-+
-+					err = -EILSEQ;
-+					break;
-+				}
-+
-+				kfree_skb(skb);
-+				skb = NULL;
-+				break;
-+			}
-+
- 			if (skb_tailroom(skb) < hci_skb_expect(skb)) {
+@@ -1179,7 +1186,8 @@ static int btmtk_recv_isopkt(struct hci_dev *hdev, void *buffer, int count)
+ 		int len;
+ 
+ 		if (!skb) {
+-			skb = bt_skb_alloc(HCI_MAX_ISO_SIZE, GFP_ATOMIC);
++			skb = bt_skb_alloc(HCI_ISO_HDR_SIZE + iso_mtu,
++					   GFP_ATOMIC);
+ 			if (!skb) {
+ 				err = -ENOMEM;
+ 				break;
+@@ -1221,7 +1229,13 @@ static int btmtk_recv_isopkt(struct hci_dev *hdev, void *buffer, int count)
+ 				break;
+ 			}
+ 
+-			if (skb_tailroom(skb) < hci_skb_expect(skb)) {
++			/* Reject a length the controller said it would never
++			 * send. The skb_tailroom() test is kept because a
++			 * fragment started before hdev->iso_mtu was populated
++			 * sits in a smaller skb than iso_mtu now allows.
++			 */
++			if (hci_skb_expect(skb) > iso_mtu ||
++			    skb_tailroom(skb) < hci_skb_expect(skb)) {
  				kfree_skb(skb);
  				skb = NULL;
+ 
 -- 
 2.45.2
 
