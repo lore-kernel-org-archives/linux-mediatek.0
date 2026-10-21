@@ -2,75 +2,78 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 0F226606A320
-	for <linux-mediatek@archiver.kernel.org>; Wed, 21 Oct 2026 02:32:52 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 6F4F5606A320
+	for <linux-mediatek@archiver.kernel.org>; Wed, 21 Oct 2026 03:30:30 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=KLsMs1HE;
-	dkim=pass (2048-bit key, unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=diMBHzPq
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=kqTfEpT4;
+	dkim=pass (2048-bit key, unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=lb1AQ8QN
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=5BIOTNs2nezs/HO6l5CjGvSoFAHf9bcbJ2W8/ufQESo=; b=KLsMs1HEp9YTwWVAyLnhUxANUK
-	YY6idbNPmJkFV7DvGEd3GfzXBiyWSz8Z39wiExSQsec8RWkxZ5uD0Fjkdop6seKlxFTXu7+oqlzXA
-	LmIPhvPNWL257KyHZ7w4QT3NzByiq5hd9/J8PUsZT8TMoMDnjGpMaBZOG8xS/dJkMlIuxh7+xkFvr
-	k076UFgxxJJNoeJvXb8OXnmAGnjTurajMXNiO8ctf5n6SLXgnoi+UkNRKFeTNaZNOVvTC/DwsgIZP
-	4kDV9A02ZF6KGtWPwuf2V0FJfJqNh5FBtVi+0VXCN88sldb7AccMOvmX0inxmHTPwchfFLqKJe5dk
-	aaKNWPhw==;
+	bh=jlz4yAXFlCLddpIKqlcUUKEQPJQbALduC2YYrpZf6jI=; b=kqTfEpT4rtQaxgYswTDvmM07l0
+	7fGmtK6GIRVMEAj17qEMUrHKD1zVB6XQrbGLqTCpLGdyAoaukg+jBuodJ0n3UCEdxWeyGeJ9wynLa
+	lMdkKIA1ej/M/va5IBghomSBCRNrh9bLGWXrNBHhCWKpaTVGW6DVPx4FIJlpBBbJtwmNnWvbCbMBB
+	YBTo0DAFN/k8bXR66Cig9jT+ZyW4wW2EqdPnHyGCDhts+amEt7boxAR1A+A+RUPLAgUlAUDplok0+
+	Da1g5Yb5yD0TzmdhzoN4K86oVzW/P+xzpG6/EsEcVFknSPaoTPPWwGbRvmXsg6WBOZuiqenLUYVUb
+	Npny1mwg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xJM8I-0000000AwrB-3TY3;
-	Wed, 21 Oct 2026 02:32:50 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1xJN24-0000000B0KA-0G2q;
+	Wed, 21 Oct 2026 03:30:28 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xJM8H-0000000Awqm-1hgU;
-	Wed, 21 Oct 2026 02:32:49 +0000
+	id 1xJN1y-0000000B0J8-2Rip;
+	Wed, 21 Oct 2026 03:30:22 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id E737E6021D;
-	Wed, 21 Oct 2026 02:32:46 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7BDC51F000C9;
-	Wed, 21 Oct 2026 02:32:46 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id DE15A43D6E;
+	Wed, 21 Oct 2026 03:30:21 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 159A51F000C9;
+	Wed, 21 Oct 2026 03:30:21 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1792549966;
-	bh=5BIOTNs2nezs/HO6l5CjGvSoFAHf9bcbJ2W8/ufQESo=;
+	s=k20260515; t=1792553421;
+	bh=jlz4yAXFlCLddpIKqlcUUKEQPJQbALduC2YYrpZf6jI=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=diMBHzPqA9Vic4uQ8X89NL3ds5Erirm7bqnEMM9F8MaK4G/aHh7ZF7+0MNhKPS5hx
-	 61KHv4SAHm5DleXqB3A5Pb5b97wVpin7wwzKB/IhRpj100ytyHJOHe6yljwTwRgIpU
-	 Bnfmb1fiu/qCs8yx7OaHzQNHZjvPuAJJoMCtLaTlUVeI1N9NAd+d9vb5i73u4H74ij
-	 /ptFC2xgm/gSE/LtGv++LlJCqefvj9tWCaNWD2JSVKLXXM5Pp2M4vzAeSKRSuf9jUv
-	 7O4SHv3g7ONDCg75OLq/XCrHshK6pcEzM8AXFmF+JjKvgMeYDNDiE6X/ISW+SykxO7
-	 NTNYOoWHNSn7A==
-Date: Tue, 20 Oct 2026 21:32:45 -0500
+	b=lb1AQ8QNcJ5TpHSken/esH7w1Q4cbkTAgABJzIhuwNKcrW75N23Pif2C1+BgVD1SZ
+	 +E4MI1zGyaa8cvK38W+AV+M6dL1Q+NPLOhrTN4TV1QJTjy+XW8prajnikO7QDecqIm
+	 ZIkMF2s/Vam4OXzlkbrRm3u7XQ4T1KH42W1KibzBMkGWgfumOpvRQiMtuVAjRy4qs+
+	 +PGn5h4s1dCW+N6DCRwr5rRZ4znI2lNjHlOu/bs9HleiZkFg3t65VIreR5+pD6t7Ya
+	 zxt5iPTb6FMjrWJYL4autYSkuZnQsZ6GLsJcSQMgpurxyPwBrHZMGICDHuEkoSEqBG
+	 +px0aasmivaRQ==
+Date: Tue, 20 Oct 2026 22:30:19 -0500
 From: Rob Herring <robh@kernel.org>
-To: Luca Leonardo Scorcia <l.scorcia@gmail.com>
-Cc: linux-mediatek@lists.infradead.org,
-	Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Dmitry Torokhov <dmitry.torokhov@gmail.com>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>, Sen Chu <sen.chu@mediatek.com>,
-	Sean Wang <sean.wang@mediatek.com>,
-	Macpaul Lin <macpaul.lin@mediatek.com>, Lee Jones <lee@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
+To: James Calligeros <jcalligeros99@gmail.com>
+Cc: David Rhodes <david.rhodes@cirrus.com>,
+	Richard Fitzgerald <rf@opensource.cirrus.com>,
+	Martin =?utf-8?Q?Povi=C5=A1er?= <povik+lin@cutebit.org>,
 	Liam Girdwood <lgirdwood@gmail.com>,
-	Mark Brown <broonie@kernel.org>, Linus Walleij <linusw@kernel.org>,
-	Val Packett <val@packett.cool>, Fabien Parent <parent.f@gmail.com>,
-	Akari Tsuyukusa <akkun11.open@gmail.com>,
-	Chen Zhong <chen.zhong@mediatek.com>, linux-input@vger.kernel.org,
+	Mark Brown <broonie@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Shenghao Ding <shenghao-ding@ti.com>, Kevin Lu <kevin-lu@ti.com>,
+	Baojun Xu <baojun.xu@ti.com>, Sen Wang <sen@ti.com>,
+	Sven Peter <sven@kernel.org>, Janne Grunau <j@jannau.net>,
+	Neal Gompa <neal@gompa.dev>, asahi@lists.linux.dev,
+	linux-sound@vger.kernel.org, patches@opensource.cirrus.com,
 	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-pm@vger.kernel.org, mfd@lists.linux.dev,
-	linux-arm-kernel@lists.infradead.org, linux-gpio@vger.kernel.org
-Subject: Re: [PATCH RESEND v10 1/9] dt-bindings: mfd: mt6397: Add MT6392 PMIC
-Message-ID: <20261021023245.GA3650393-robh@kernel.org>
-References: <20261020173556.632798-1-l.scorcia@gmail.com>
- <20261020173556.632798-2-l.scorcia@gmail.com>
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH v3 03/21] ASoC: dt-bindings: Add binding for Apple
+ Silicon Mac audio
+Message-ID: <20261021033019.GA4002608-robh@kernel.org>
+References: <20261018-macaudio-v3-0-abdff7741dea@gmail.com>
+ <20261018-macaudio-v3-3-abdff7741dea@gmail.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
-In-Reply-To: <20261020173556.632798-2-l.scorcia@gmail.com>
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <20261018-macaudio-v3-3-abdff7741dea@gmail.com>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,127 +92,200 @@ X-Spam-Status: No, score=-16.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On Tue, Oct 20, 2026 at 07:33:22PM +0200, Luca Leonardo Scorcia wrote:
-> Describe the MT6392 PMIC and its RTC and regulator devices. This device
-> is mostly based on MT6323 with some similarities to MT6397 and is usually
-> found on boards using the MT8516/MT8167 SoC.
+On Sun, Oct 18, 2026 at 03:53:57PM +1000, James Calligeros wrote:
+> From: Martin Povišer <povik+lin@cutebit.org>
 > 
-> Signed-off-by: Luca Leonardo Scorcia <l.scorcia@gmail.com>
-> Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
-> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> Add a binding for the primary audio subsystem found on Apple Silicon
+> Macs. This binding integrates the codecs and SoC I2S peripheral
+> used for driving the headset jack and speaker arrays on all Apple
+> Silicon Macs. The internal microphones on this platform are
+> connected to a distinct coprocessor and are not part of this
+> "main" audio subsystem.
+> 
+> Signed-off-by: Martin Povišer <povik+lin@cutebit.org>
+> Co-developed-by: James Calligeros <jcalligeros99@gmail.com>
+> Signed-off-by: James Calligeros <jcalligeros99@gmail.com>
 > ---
->  .../bindings/mfd/mediatek,mt6397.yaml         | 72 +++++++++++++++++++
->  1 file changed, 72 insertions(+)
-
-You need to reorder your patches to avoid errors.
-
+>  .../bindings/sound/apple,macaudio.yaml   | 212 +++++++++++++++++++++++++
+>  1 file changed, 212 insertions(+)
 > 
-> diff --git a/Documentation/devicetree/bindings/mfd/mediatek,mt6397.yaml b/Documentation/devicetree/bindings/mfd/mediatek,mt6397.yaml
-> index 3cbc0dc12c31..06e93c545e3b 100644
-> --- a/Documentation/devicetree/bindings/mfd/mediatek,mt6397.yaml
-> +++ b/Documentation/devicetree/bindings/mfd/mediatek,mt6397.yaml
-> @@ -39,6 +39,7 @@ properties:
->            - mediatek,mt6328
->            - mediatek,mt6358
->            - mediatek,mt6359
-> +          - mediatek,mt6392
->            - mediatek,mt6397
->        - items:
->            - enum:
-> @@ -72,6 +73,10 @@ properties:
->                - mediatek,mt6331-rtc
->                - mediatek,mt6358-rtc
->                - mediatek,mt6397-rtc
-> +          - items:
-> +              - enum:
-> +                  - mediatek,mt6392-rtc
-> +              - const: mediatek,mt6323-rtc
->            - items:
->                - enum:
->                    - mediatek,mt6359-rtc
-> @@ -99,6 +104,7 @@ properties:
->                - mediatek,mt6331-regulator
->                - mediatek,mt6358-regulator
->                - mediatek,mt6359-regulator
-> +              - mediatek,mt6392-regulator
->                - mediatek,mt6397-regulator
->            - items:
->                - enum:
-> @@ -663,3 +669,69 @@ examples:
->              compatible = "mediatek,mt6397-rtc";
->          };
->      };
+> diff --git a/Documentation/devicetree/bindings/sound/apple,macaudio.yaml b/Documentation/devicetree/bindings/sound/apple,macaudio.yaml
+> new file mode 100644
+> index 000000000000..af8e9686ba7b
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/sound/apple,macaudio.yaml
+> @@ -0,0 +1,212 @@
+> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
+> +%YAML 1.2
+> +---
+> +$id: http://devicetree.org/schemas/sound/apple,macaudio.yaml#
+> +$schema: http://devicetree.org/meta-schemas/core.yaml#
 > +
-> +  - |
-> +    #include <dt-bindings/input/input.h>
-> +    #include <dt-bindings/interrupt-controller/arm-gic.h>
+> +title: Sound peripheral integration for Apple Silicon Macs
 > +
-> +    pmic {
-> +        compatible = "mediatek,mt6392";
+> +description:
+> +  The speakers and headphone jack on Apple Silicon Macs are
+> +  part of an integrated audio subsystem comprising of Apple's
+> +  I2S peripheral (MCA) and a series of codecs. The machines
+> +  have a wide variety of topologies ranging from a simple
+> +  mono speaker in the desktops to complex stereo arrays with
+> +  dual-opposed woofers and tweeters all driven by their own
+> +  mono amplifiers. This arrangement can be expressed as a
+> +  set of DAI links, where the MCA ports each codec is connected
+> +  to are represented by the CPU side of the link.
 
-Or drop the example. Is this one really different enough from the 
-existing example(s)?
+Wrap lines at 80 chars.
 
 > +
-> +        interrupts-extended = <&pio 28 IRQ_TYPE_LEVEL_HIGH>;
-> +        interrupt-controller;
-> +        #interrupt-cells = <2>;
+> +maintainers:
+> +  - James Calligeros <jcalligeros99@gmail.com>
 > +
-> +        keys {
-> +          compatible = "mediatek,mt6392-keys";
+> +properties:
+> +  compatible:
+> +    oneOf:
+> +      - items:
+> +          - enum:
+> +              - apple,j180-macaudio
+> +              - apple,j274-macaudio
+> +              - apple,j293-macaudio
+> +              - apple,j313-macaudio
+> +              - apple,j314-macaudio
+> +              - apple,j316-macaudio
+> +              - apple,j375-macaudio
+> +              - apple,j413-macaudio
+> +              - apple,j415-macaudio
+> +              - apple,j456-macaudio
+> +              - apple,j473-macaudio
+> +      - items:
+> +          - enum:
+> +              - apple,j493-macaudio
+> +          - const: apple,j293-macaudio
+> +      - items:
+> +          - enum:
+> +              - apple,j414-macaudio
+> +              - apple,j504-macaudio
+> +              - apple,j514-macaudio
+> +          - const: apple,j314-macaudio
+> +      - items:
+> +          - enum:
+> +              - apple,j416-macaudio
+> +              - apple,j516-macaudio
+> +          - const: apple,j316-macaudio
+> +      - items:
+> +          - enum:
+> +              - apple,j475-macaudio
+> +              - apple,j575-macaudio
+> +          - const: apple,j375-macaudio
+> +      - items:
+> +          - enum:
+> +              - apple,j613-macaudio
+> +          - const: apple,j413-macaudio
+> +      - items:
+> +          - enum:
+> +              - apple,j615-macaudio
+> +          - const: apple,j415-macaudio
+> +      - items:
+> +          - enum:
+> +              - apple,j457-macaudio
+> +          - const: apple,j456-macaudio
+> +      - items:
+> +          - enum:
+> +              - apple,j474-macaudio
+> +          - const: apple,j473-macaudio
 > +
-> +          key-power {
-> +            linux,keycodes = <KEY_POWER>;
-> +            wakeup-source;
-> +          };
+> +  "#address-cells":
+> +    const: 1
 > +
-> +          key-home {
-> +            linux,keycodes = <KEY_HOME>;
-> +            wakeup-source;
-> +          };
-> +        };
+> +  "#size-cells":
+> +    const: 0
 > +
-> +        pinctrl {
-> +          compatible = "mediatek,mt6392-pinctrl";
+> +  model:
+> +    description:
+> +      Model name for presentation to users
+> +    $ref: /schemas/types.yaml#/definitions/string
 > +
-> +          gpio-controller;
-> +          #gpio-cells = <2>;
-> +        };
+> +patternProperties:
+> +  "^dai-link(@[0-9a-f]+)?$":
+> +    description: |
+
+Don't need '|'.
+
+> +      Node for each sound peripheral such as the speaker array, headphones jack,
+> +      or microphone.
+> +    type: object
+> +    $ref: tdm-slot.yaml#
+> +    additionalProperties: false
+
+Using tdm-slot.yaml properties, but then disallowing any of them?
+
 > +
-> +        regulators {
-> +          compatible = "mediatek,mt6392-regulator";
+> +    properties:
+> +      reg:
+> +        maxItems: 1
+
+Constraints on the reg values?
+
 > +
-> +          vproc {
-> +            regulator-allowed-modes = <0 1>;
-> +            regulator-initial-mode = <0>;
-> +            regulator-min-microvolt = < 700000>;
-> +            regulator-max-microvolt = <1350000>;
-> +            regulator-always-on;
-> +            regulator-boot-on;
-> +          };
+> +      link-name:
+> +        description: Name for the peripheral
+> +        enum: [ Headphone Jack, Speaker, Speakers ]
+> +        $ref: /schemas/types.yaml#/definitions/string
 > +
-> +          // ...
+> +      codec:
+> +        type: object
+> +        additionalProperties: false
 > +
-> +          vadc18 {
-> +            regulator-allowed-modes = <0 2>;
-> +            regulator-initial-mode = <0>;
-> +            regulator-min-microvolt = <1800000>;
-> +            regulator-max-microvolt = <1800000>;
-> +            regulator-boot-on;
-> +            regulator-always-on;
-> +          };
+> +        properties:
+> +          sound-dai:
+> +            minItems: 1
+> +            maxItems: 8
+> +            description: |
+> +              DAI list with the CODEC-side DAIs connected to the above CPU-side
+> +              DAIs and involved in this sound peripheral.
 > +
-> +          vefuse {
-> +            regulator-min-microvolt = <1800000>;
-> +            regulator-max-microvolt = <2000000>;
-> +          };
-> +        };
+> +              The list is in left/right order if applicable. If there are more
+> +              than one CPU-side DAIs (there can be two), the CODECs must be
+> +              listed first those connected to the first CPU, then those
+> +              connected to the second.
 > +
-> +        rtc {
-> +          compatible = "mediatek,mt6392-rtc", "mediatek,mt6323-rtc";
-> +        };
-> +    };
-> -- 
-> 2.43.0
-> 
+> +              In addition, on some machines with many speaker codecs, the CODECs
+> +              are listed in this fixed order:
+> +
+> +              Four speakers: Left Front, Left Rear, Right Front, Right Rear
+> +              Six speakers: Left Woofer 1, Left Tweeter, Left Woofer 2,
+> +                            Right Woofer 1, Right Tweeter, Right Woofer 2
+> +
+> +        required:
+> +          - sound-dai
+> +
+> +      cpu:
+> +        type: object
+> +        additionalProperties: false
+> +
+> +        properties:
+> +          sound-dai:
+> +            minItems: 1
+> +            maxItems: 2
+> +            description: |
+> +              DAI list with CPU-side I2S ports involved in this peripheral.
+> +
+> +        required:
+> +          - sound-dai
+> +
+> +    patternProperties:
+> +      "^dai-tdm-idle-mode-[0-9]$":
+> +        $ref: tdm-slot.yaml#/properties/dai-tdm-idle-mode
+
+Extend tdm-slot.yaml if it doesn't work for you instead of defining a 
+new property using an existing property.
+
+> +
+> +      "^dai-tdm-slot-tx-idle-mask-[0-9]$":
+> +        $ref: /schemas/types.yaml#/definitions/uint32
+> +        description: Idle slot mask. A bit being set to 1 indicates
+> +          that the corresponding TDM slot is inactive/idle.
+
+Extend tdm-slot.yaml...
+
+Rob
 
