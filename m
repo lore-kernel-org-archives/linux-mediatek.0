@@ -2,102 +2,82 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 6D2F3606A319
-	for <linux-mediatek@archiver.kernel.org>; Wed, 21 Oct 2026 08:28:32 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 001AB606A31A
+	for <linux-mediatek@archiver.kernel.org>; Wed, 21 Oct 2026 08:43:46 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=pMt8aRw/;
-	dkim=pass (2048-bit key, unprotected) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20251104 header.b=Sppg9SQN
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=Knwpe7J+;
+	dkim=pass (1024-bit key, unprotected) header.d=mediatek.com header.i=@mediatek.com header.a=rsa-sha256 header.s=dk header.b=rqAn8pPK
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=KQwxJWuJwVDn4Eefp3xWv+hEEpnKtDrA92KX9RcEi7U=; b=pMt8aRw//49NoyVLcUhTXMReCf
-	7WFKF9ULZWKSLYOUkDQN/roH1MGbrXJBAUu7RZkAyVyh7DyL4vo178TKJY0fYbwDG1R6vb366jgqc
-	GE4RpkcxvJGSvAvDCsEgus9m9EvaAW5cKzubawQxAYm9e1v6IMIsoVJjdPVjSlTfnVdyjHCDVDg4X
-	Ork/1v4tJi9xlEQT3c95UyFvpRvMzbLO+YZ3f6dhV9iXNEMe9hrbi8//m6j53GP4FFCrvUp7BMfXt
-	sjKZg8uSlyTNBRPiD6VcNLR83jIZlS06vUHfafh/CXfogA0kn8U4ftK5fKuJC/DdeQDHwz3HHwpeh
-	pvlRJ5iA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=1Q/Gh3x6yW6P8XJJtj/UojJ6c3+w9rN4cOin2QaMhHA=; b=Knwpe7J+8QidZaWq6/LMYAMvKJ
+	GFwhtH15c3eKcylpBtTKvALkGbebOMfKe9ZBJN9lRfMeX20RxGUIedi1ya7zchqDFP6vuhJHX3DMK
+	M1E+F8hnIRIN02Py1ubcKsiWRHxvrR7KUJ2xeoa6Jd03QvrRsg6GtYcFsEPgwBJpGz7MheO7E3PAQ
+	iwWSv/t0y3Xhs9j3trR29g2pqnjsKEVtmE7VkZC23pARkOEXd0EZ8EDacxoMJKeq5CpNAngvDKQ/i
+	+R5zs4uEreScMHuXPFNlNEHLdiX24+zIR8/Ue0V8wbIO+zCE9SGnEsJ5dUlbfiqQs7GcBiJehIw1Z
+	ycfwND/g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xJRgT-0000000BLiT-1fbn;
-	Wed, 21 Oct 2026 08:28:29 +0000
-Received: from mail-wr1-x430.google.com ([2a00:1450:4864:20::430])
+	id 1xJRvG-0000000BP7n-0B7e;
+	Wed, 21 Oct 2026 08:43:46 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xJRgQ-0000000BLhS-2DpM
+	id 1xJRvE-0000000BP6v-1ncl
 	for linux-mediatek@lists.infradead.org;
-	Wed, 21 Oct 2026 08:28:27 +0000
-Received: by mail-wr1-x430.google.com with SMTP id ffacd0b85a97d-48afcd7ba9bso267007f8f.3
-        for <linux-mediatek@lists.infradead.org>; Wed, 21 Oct 2026 01:28:25 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1792571304; x=1793176104; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to:content-type;
-        bh=KQwxJWuJwVDn4Eefp3xWv+hEEpnKtDrA92KX9RcEi7U=;
-        b=Sppg9SQNtmh0DiFEvcz1NTHkIaQKmtH+pkdGwG/rjKRuGpS8n3qgZ/R7Nzn5iy298K
-         fBvp15OIEXi0xGlVpzgHvNvzJ2of7bOdAcBoWf/Bpky3s/RdYvTyeumUAlNH8objndIg
-         RHLJz3VT4QeBmIYIEW6n0bpTckgFBz4+p61n5P2tsh2u06Mw522TiEzREweb0uza+wl/
-         dK8Gag8XfiFm52CpkTUL/oToTE8A5S9QZpxHo/XtWtdl63zuEcnsiISfdcRCy8j8U0OV
-         +T2KNOuAy96mwpm7bH+amt5bD+1GfMbXP4zU1z//ArRCKG3ro5HqC1Y/RMhz9Qawc1AE
-         jXSA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1792571304; x=1793176104;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
-         :to:cc:subject:date:message-id:reply-to:content-type;
-        bh=KQwxJWuJwVDn4Eefp3xWv+hEEpnKtDrA92KX9RcEi7U=;
-        b=Gwhlhdzkg8meRQA7/CH92PpZfcTut96vMyIspypSYyflNLhSdtEdubj0V/n7/6llyl
-         eCSfGDRBQGwQ1szoi6L/MVMRXnrHPJnKF3irDZgSFolIeSbqZCgT5wLruyu8ZNL9HxCT
-         MVq8RUQKBqY6Pkm22YpCCu4L0aRtO5A2lms2xbj1i0UaR0cX7AOx8UjiEMomBB7KmkfK
-         70C67VEu92vEmKhmKOA5Rkwus/BSt4U25+7nq8HGP67J7q3Wpj1FNkf2Hhe1CHskaN7E
-         3vJqLVFiKPnnbGkCRFD6E9IflEdU813IG9IGDa/dT1wu6IMc3QjjdB1SBB8WyUelGo1x
-         gOzw==
-X-Forwarded-Encrypted: i=1; AKwUvBwP0UoPS7fO4QpMMwykw3NgYlq3xke1+rO6+3lWFZh4V5gBBkeorrG3MJifMmvtTrb/uymM2omjxFWB+Wh+uQ==@lists.infradead.org
-X-Gm-Message-State: AFq9FYJSsaGK5T80Ooe7ap+fqNZWlGyWp3lMqJboRMOmuHpb94DSDdRg
-	be5YJo0oDTl3+Tw/FFN9XaUy2toW7Tg/vr1x3I0xvQ3hTEwlfI0e7Smm
-X-Gm-Gg: AYBFou3ZNR02cZBPnbjFTz7o7gH2dlEpKV5J/13BQNzjdAv5ut9SIXBw3o7duBgyefX
-	qHogwR1vM/R7baivW67U4Joiirmj3h2fGMWJmeGUyPrmVuBEhZIunUsEQZt9M7xytVfqFP3Djj/
-	zD2I+9PeIiihKJyIfnHeq/xtwLteZZdQoxF4x/g+qCrk0SOIHJI0vU8VrpPfHIKdMJ6PfYJJEXJ
-	IgGiYcm9OtrcJcrQANI5q8Bmym6z6vfzELoE1IOdptKwUsIOajUxQcW9MytVoMnAjtlkN3qgSSi
-	jQM2LdSZnKESSaidoD+5dzUvRCpEAaP/7m2r6DGdIcWgl4BKaFr841580PCadiTd66bXpoQsRJP
-	hhUBsQpbDl8rzIP6l5OJ3gPOiliX8/Z10xBU/F/R/K2svq55D7sVDWJBxVeHIutNZsZdrUTrw6B
-	IFl1bwgvJ9GX096iXGAYZbBXod4X18Y+vwuwzuWnRxzb8Styqo3/cP7D49kXOLKCSm/1jxGmct8
-	PZU2cdmfc6NP7tvrYC4AXMMJ+8aBaBObcSkcpwRzDd3d260IFFYLQymmUFgShW9IB9hD8VKfE1W
-	Xwxdxh4asFwzPCkajn4LUqjp5g+ZaDSQMv+iIyWriprhJLuRTSDGbA6f905n6LW8FBGr3gtd7IW
-	7IFHrKSNMU/P5iQAcuJgH5KkXmW83Y/hKCTeKdcmQYMr34L504Xo8ZHbcHI1mnRu1JI/GkpMKTw
-	b2yugmI3z8gB3K4eoKvHf+FI5tRg==
-X-Received: by 2002:a05:6000:230b:b0:48d:ee59:3a30 with SMTP id ffacd0b85a97d-48e264b6937mr2199313f8f.22.1792571304121;
-        Wed, 21 Oct 2026 01:28:24 -0700 (PDT)
-Received: from localhost.localdomain (dynamic-2a00-1028-8388-a84e-cc3c-7cf0-3932-52d3.ipv6.o2.cz. [2a00:1028:8388:a84e:cc3c:7cf0:3932:52d3])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-48e2581efd9sm3913928f8f.18.2026.10.21.01.28.23
-        (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
-        Wed, 21 Oct 2026 01:28:23 -0700 (PDT)
-From: Josef Schlehofer <pepe.schlehofer@gmail.com>
-To: Sean Wang <sean.wang@mediatek.com>,
-	JB Tsai <jb.tsai@mediatek.com>,
-	Allan Wang <allan.wang@mediatek.com>
-Cc: Felix Fietkau <nbd@nbd.name>,
-	Lorenzo Bianconi <lorenzo@kernel.org>,
-	Ryder Lee <ryder.lee@mediatek.com>,
-	Shayne Chen <shayne.chen@mediatek.com>,
-	Quan Zhou <quan.zhou@mediatek.com>,
-	linux-wireless@vger.kernel.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: mt7925: status LED of USB adapters and linux-firmware
-Date: Wed, 21 Oct 2026 10:28:22 +0200
-Message-ID: <20261021082822.65978-1-pepe.schlehofer@gmail.com>
-X-Mailer: git-send-email 2.54.0
-In-Reply-To: <20261012125310.13917-1-pepe.schlehofer@gmail.com>
-References: <20261012125310.13917-1-pepe.schlehofer@gmail.com>
+	Wed, 21 Oct 2026 08:43:45 +0000
+X-UUID: 84666f0acd2b11f1afed4741b24580c9-20261021
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=1Q/Gh3x6yW6P8XJJtj/UojJ6c3+w9rN4cOin2QaMhHA=;
+	b=rqAn8pPKB0iyuKLzBykHj4aYMK4YjFWLHFSJ3mDOvTOk8BPCuKrUKTLStLtyeIW/RwVm17eLKD1SM9gNybAWFQ3MU63166M6wqs9vnSuV5V0qexUhWHfjE3CAYKmutMZqEgt898fgkPSwYCU7B2cE+ELoe00J2iQaB2gerPPVaI=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.3.20,REQID:66f732a1-0fcd-47a4-bac1-bd60e5b615c5,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:291e20b,CLOUDID:31c244ce-02bc-447e-ab88-2baec399874a,B
+	ulkID:nil,BulkQuantity:0,SF:81|82|102|836|865|888|898,TC:-5,Content:0|15|5
+	0|99,EDM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:-1,COL:0,OSI:0,
+	OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 2,SSN|SDN
+X-CID-BAS: 2,SSN|SDN,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
+X-UUID: 84666f0acd2b11f1afed4741b24580c9-20261021
+Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw01.mediatek.com
+	(envelope-from <chris.lu@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 504900748; Wed, 21 Oct 2026 01:43:41 -0700
+Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
+ mtkmbs13n1.mediatek.inc (172.21.101.193) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.2562.29; Wed, 21 Oct 2026 16:43:38 +0800
+Received: from mtksitap99.mediatek.inc (10.233.130.16) by
+ mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.2562.29 via Frontend Transport; Wed, 21 Oct 2026 16:43:38 +0800
+From: Chris Lu <chris.lu@mediatek.com>
+To: Marcel Holtmann <marcel@holtmann.org>, Johan Hedberg
+	<johan.hedberg@gmail.com>, Luiz Von Dentz <luiz.dentz@gmail.com>
+CC: Hao Qin <hao.qin@mediatek.com>, Wenlong Tian
+	<ot_wenlong.tian@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, Will Lee
+	<will-cy.Lee@mediatek.com>, SS Wu <ss.wu@mediatek.com>, linux-bluetooth
+	<linux-bluetooth@vger.kernel.org>, linux-kernel
+	<linux-kernel@vger.kernel.org>, linux-mediatek
+	<linux-mediatek@lists.infradead.org>, Chris Lu <chris.lu@mediatek.com>
+Subject: [PATCH v3 RESEND 1/3] Bluetooth: btmtk: drop zero-length ISO packets from endpoint padding
+Date: Wed, 21 Oct 2026 16:43:35 +0800
+Message-ID: <20261021084337.1515468-2-chris.lu@mediatek.com>
+X-Mailer: git-send-email 2.45.2
+In-Reply-To: <20261021084337.1515468-1-chris.lu@mediatek.com>
+References: <20261021084337.1515468-1-chris.lu@mediatek.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261021_012826_571140_B90290EF 
-X-CRM114-Status: UNSURE (   8.93  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20261021_014344_496911_EC69A956 
+X-CRM114-Status: GOOD (  14.79  )
 X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -109,28 +89,83 @@ List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-5.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
-	DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,FREEMAIL_FORGED_FROMDOMAIN,
-	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=no autolearn_force=no
-	version=4.0.1
+X-Spam-Status: No, score=-19.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,
+	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Hi,
+The ISO interrupt IN endpoint delivers a fixed-size transfer that holds
+one HCI ISO packet and zero-fills the remainder. That padding belongs to
+the transfer rather than to the stream, so it has to be dropped instead of
+reported to the host.
 
-A short follow-up. The new MT7925 firmware in linux-firmware
-(20261016233029, added on 2026-10-19) still accepts UNI command 0x2a
-but does not change GPIO 8. With the same driver code, the firmware
-from the Windows driver package switches the LED on and off.
+btmtk_recv_isopkt() keeps parsing it: the zero bytes read as an ISO header
+with handle 0 and a Data_Total_Length of zero, and each one is passed to
+hci_recv_frame() as a complete frame. A single transfer yields a long run
+of them, which is what fills the HCI log with malformed ISO packets, and
+iso_recv() drops the SDU it is reassembling whenever handle 0 belongs to a
+live CIS/BIS.
 
-JB Tsai, since you maintain the MT7925 firmware in linux-firmware,
-could you check whether the LED GPIO control can be enabled in the
-CE_2249_CCN16 build, or forward this to the right person?
+A zero Data_Total_Length carries no ISO Data Load, so such a packet is
+never part of the stream. Confirm that the rest of the transfer is
+zero-filled before dropping it, since the padding runs to the end of the
+transfer.
 
-If the firmware cannot be changed, is there a supported way to drive
-this GPIO from the host, similar to the LED registers on mt7915?
+This was observed on MT7925, but btmtk_recv_isopkt() is shared by every
+MediaTek USB controller that supports ISO data.
 
-Thanks,
-Josef
+Fixes: ceac1cb0259d ("Bluetooth: btusb: mediatek: add ISO data transmission functions")
+Co-developed-by: Hao Qin <hao.qin@mediatek.com>
+Signed-off-by: Hao Qin <hao.qin@mediatek.com>
+Co-developed-by: Wenlong Tian <ot_wenlong.tian@mediatek.com>
+Signed-off-by: Wenlong Tian <ot_wenlong.tian@mediatek.com>
+Signed-off-by: Chris Lu <chris.lu@mediatek.com>
+---
+ drivers/bluetooth/btmtk.c | 20 ++++++++++++++++++++
+ 1 file changed, 20 insertions(+)
+
+diff --git a/drivers/bluetooth/btmtk.c b/drivers/bluetooth/btmtk.c
+index 75483d8230e1..90463208385b 100644
+--- a/drivers/bluetooth/btmtk.c
++++ b/drivers/bluetooth/btmtk.c
+@@ -7,6 +7,7 @@
+ #include <linux/usb.h>
+ #include <linux/iopoll.h>
+ #include <linux/overflow.h>
++#include <linux/string.h>
+ #include <linux/unaligned.h>
+ 
+ #include <net/bluetooth/bluetooth.h>
+@@ -1588,6 +1589,25 @@ static int btmtk_recv_isopkt(struct hci_dev *hdev, void *buffer, int count)
+ 			/* Complete ISO header */
+ 			hci_skb_expect(skb) = __le16_to_cpu(dlen);
+ 
++			if (!hci_skb_expect(skb)) {
++				/* The interrupt endpoint zero-fills the
++				 * remainder of the transfer after the one
++				 * packet it carries. Confirm that is what
++				 * this is before dropping it.
++				 */
++				if (!mem_is_zero(buffer, count)) {
++					kfree_skb(skb);
++					skb = NULL;
++
++					err = -EILSEQ;
++					break;
++				}
++
++				kfree_skb(skb);
++				skb = NULL;
++				break;
++			}
++
+ 			if (skb_tailroom(skb) < hci_skb_expect(skb)) {
+ 				kfree_skb(skb);
+ 				skb = NULL;
+-- 
+2.45.2
+
 
