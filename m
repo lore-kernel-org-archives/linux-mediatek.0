@@ -2,85 +2,67 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 72CF7606A31E
-	for <linux-mediatek@archiver.kernel.org>; Wed, 21 Oct 2026 10:37:10 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 842F3606A329
+	for <linux-mediatek@archiver.kernel.org>; Wed, 21 Oct 2026 10:47:39 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=ti+lLAdJ;
-	dkim=pass (1024-bit key, unprotected) header.d=collabora.com header.i=louisalexis.eyraud@collabora.com header.a=rsa-sha256 header.s=zohomail header.b=kwBQM5Nb
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=gbXmOtNX;
+	dkim=pass (1024-bit key, unprotected) header.d=163.com header.i=@163.com header.a=rsa-sha256 header.s=s110527 header.b=keeLRbDN
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:Cc:To:From
-	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=QjzGdWbiEqzzV/MbYQG4TopYjAr0X/I+MiCAzcAGLpI=; b=ti+lLAdJ5AEBwaLi/l1c0KGgWf
-	hnM87mRzSb9NKua1BdiBNTReGJTRok+PIV4gHOFmqBU1Ss9Smpgxd/bubbwLYCha5wlgf7qSgyBIA
-	3sfka688KsS6TZkkLcm5GJW5SpJI0h6oSww9dDTwks4Vy5y14bW79cHvvqxVq6ENQFU+5N47ikRnY
-	OFZzWLEatmy0/jENth/K9L1XSnvbtvE9QE7ajo5bFDm9b7695sDQPvkdZGYvJZ+deROuQC3tngDlx
-	zgrSeSeOnMIaLnby9tN8Zcff8hn2sbeXB8IpL2aPiK/LxGFx29slaoEHdZbN/zRA38d/goKyDOOpM
-	Ukekzd7Q==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=8rjo9E5I5jUw2GRnY9ilROcz1Nwl5H/IPAT/yzyrHdM=; b=gbXmOtNXfrSC9G1lIDcw1xHbjP
+	6lcKNkljEyVFiqrZXb0X17J4QIe8qhP2SPyQlaEllu+2OXvC2485Bi90bKXzWZzVP4AIrd6aW68Oo
+	8yW/bs3Q4MhqRUFMl8YB2Ri/UPb1wVpmuTdAILqfk9v+v5ukzzlFe3kOZWDKS+osQGy/YtACtuTYL
+	rd+gFX/jKgyIzhNuYFGLBKjhlz1f+dtfqolCzCxgbE6a5wxzQDx71CA7tI5rEcTzNiRhT/rTfn6oU
+	9iclsT9S3ww+7auYQ1GEYZHqZGgySzziIbGsv3SDH8dA4lRbY5c+EdDmLabQ0gn6X2U2XIw9jvZng
+	JkSNx3Bw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xJTgz-0000000BcSN-2Ptb;
-	Wed, 21 Oct 2026 10:37:09 +0000
-Received: from sender6-pp-g123.zoho.com ([165.173.180.123])
+	id 1xJTr8-0000000Bdxm-30Pz;
+	Wed, 21 Oct 2026 10:47:38 +0000
+Received: from m16.mail.163.com ([220.197.31.3])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xJTgw-0000000BcQu-1RKA;
-	Wed, 21 Oct 2026 10:37:07 +0000
-ARC-Seal: i=1; a=rsa-sha256; t=1792579004; cv=none; 
-	d=zohomail.com; s=zohoarc; 
-	b=Vg4ASxVe/gRrDD7T/H1HLXKpWWkQxEoEToUwf2gjVgQHhTYdsZF+0wcPe/aCT6kTTygdTn8+XsTD4KtGu2NKj4mneTRLu+o0VYhkjaQexiAmfxaPQXlcWkvJ8mu+as0fYuu1Z6VApa5hqNk6BEhCQW+lD4eLzEP2HGCw7Z54wTU=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
-	t=1792579004; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
-	bh=QjzGdWbiEqzzV/MbYQG4TopYjAr0X/I+MiCAzcAGLpI=; 
-	b=XcQSfehKD8VgFwklFZJegFzqLTSxt+T60vRuu/Y6MC3JjpjUtQNDXGycZu7OPrKJ/c3933kKqODgfJqZ/u94N6+w9cbvIoSw6xnfamF74sy/IM1OJvKgt6HY5wh8Ew7eOg21XWfIY6gwNQI+nlUupDgA0qMT0k+bvuRoeCygFlQ=
-ARC-Authentication-Results: i=1; mx.zohomail.com;
-	dkim=pass  header.i=collabora.com;
-	spf=pass  smtp.mailfrom=louisalexis.eyraud@collabora.com;
-	dmarc=pass header.from=<louisalexis.eyraud@collabora.com>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1792579004;
-	s=zohomail; d=collabora.com; i=louisalexis.eyraud@collabora.com;
-	h=Message-ID:Subject:Subject:From:From:To:To:Cc:Cc:Date:Date:In-Reply-To:Content-Type:Content-Transfer-Encoding:MIME-Version:Message-Id:Reply-To;
-	bh=QjzGdWbiEqzzV/MbYQG4TopYjAr0X/I+MiCAzcAGLpI=;
-	b=kwBQM5NbKMKpWskOQ/UK068FN2dUY6f3Tqfsgf0xMc4o9dWO9sF6V3kiGe08IUg7
-	+naym6+93bNkSscqYsND5A/H5/jtiUtWzKFSSmAXBBabwt41p9RF3uJQantmcB+nqwR
-	EgGGkjq59XEsOgSNwGVkJJUUh8lRFRFDV5IdN8ro=
-Received: by smtp.zohomail.com with SMTPS id 1792579002564512.9314975124558;
-	Wed, 21 Oct 2026 03:36:42 -0700 (PDT)
-Message-ID: <b7d26b378e3cfdb54a113cca1d8d53293cad966c.camel@collabora.com>
-Subject: Re: [PATCH net-next v3 5/9] net: stmmac: mediatek: add RX/TX delay
- stage divider in platform data
-From: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
-To: Maxime Chevallier <maxime.chevallier@bootlin.com>, Andrew Lunn	
- <andrew+netdev@lunn.ch>, "David S. Miller" <davem@davemloft.net>, Jakub
- Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, Rob Herring
- <robh@kernel.org>,  Krzysztof Kozlowski	 <krzk+dt@kernel.org>, Conor Dooley
- <conor+dt@kernel.org>, Richard Cochran	 <richardcochran@gmail.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,  AngeloGioacchino Del Regno
- <angelogioacchino.delregno@collabora.com>, Biao Huang
- <biao.huang@mediatek.com>, Maxime Coquelin	 <mcoquelin.stm32@gmail.com>,
- Alexandre Torgue <alexandre.torgue@foss.st.com>,  Eric Dumazet
- <edumazet@kernel.org>
-Cc: kernel@collabora.com, netdev@vger.kernel.org,
- devicetree@vger.kernel.org, 	linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, 	linux-mediatek@lists.infradead.org,
- linux-stm32@st-md-mailman.stormreply.com
-Date: Wed, 21 Oct 2026 12:36:37 +0200
-In-Reply-To: <34608ab8-18f3-4680-8276-cd8611c05cb1@bootlin.com>
-References: <20261016-dwmac-mediatek-mt8189-v3-0-25daf2bbcf35@collabora.com>
-	 <20261016-dwmac-mediatek-mt8189-v3-5-25daf2bbcf35@collabora.com>
-	 <34608ab8-18f3-4680-8276-cd8611c05cb1@bootlin.com>
-Organization: Collabora Ltd
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-User-Agent: Evolution 3.60.2 (3.60.2-2.fc44) 
+	id 1xJTr6-0000000Bdvz-2lTp;
+	Wed, 21 Oct 2026 10:47:38 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
+	s=s110527; h=From:To:Subject:Date:Message-Id:MIME-Version; bh=8r
+	jo9E5I5jUw2GRnY9ilROcz1Nwl5H/IPAT/yzyrHdM=; b=keeLRbDNGVOdaUCCEY
+	UDev274CypOiPvrdx9VKF8HolPrD66p7MmIxZkmjzIdrVM2HQfBpmPBwZeMG6Y3J
+	RXsYnPB4ej5Lzo1Utiq6AYaHkJjL51lcsrQzrI1n8VOk6lr/WYJuyUVF6MkRCnkr
+	AOECxd/UgaxK79n5yHj3Fc0i0=
+Received: from pc.localdomain (unknown [])
+	by gzga-smtp-mtada-g0-4 (Coremail) with SMTP id _____wDX3xM5mNhq3MNSBw--.27855S6;
+	Wed, 21 Oct 2026 18:47:25 +0800 (CST)
+From: Jiale Yao <yaojiale02@163.com>
+To: Chunfeng Yun <chunfeng.yun@mediatek.com>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	linux-usb@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	linux-kernel@vger.kernel.org
+Cc: stable@vger.kernel.org
+Subject: [PATCH 4/4] usb: mtu3: initialize debugfs command buffer
+Date: Wed, 21 Oct 2026 18:47:19 +0800
+Message-Id: <20261021104720.4106961-5-yaojiale02@163.com>
+X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20261021104720.4106961-1-yaojiale02@163.com>
+References: <20261021104720.4106961-1-yaojiale02@163.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-X-ZohoMailClient: External
+Content-Transfer-Encoding: 8bit
+X-CM-TRANSID: _____wDX3xM5mNhq3MNSBw--.27855S6
+X-Coremail-Antispam: 1Uf129KBjvdXoWrtrWUXw4kXrykKFy5ZrWkWFg_yoWkGFcEqw
+	1IkrWxJr1vyayjkr1xCrWqvayfK3W5Xrn5ZFnavasxAanFqrnYvws2grn7Zr4UXFW5Ja4D
+	Cr9rXrykWa10gjkaLaAFLSUrUUUUjb8apTn2vfkv8UJUUUU8Yxn0WfASr-VFAUDa7-sFnT
+	9fnUUvcSsGvfC2KfnxnUUI43ZEXa7IU0YhF7UUUUU==
+X-CM-SenderInfo: x1dryxhdohiji6rwjhhfrp/xtbCzh0GQGrYmD2HowAA3m
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261021_033706_486384_0FF5118E 
-X-CRM114-Status: GOOD (  26.15  )
-X-Spam-Score: -2.1 (--)
+X-CRM114-CacheID: sfid-20261021_034737_053635_DE156395 
+X-CRM114-Status: GOOD (  11.11  )
+X-Spam-Score: -1.8 (-)
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,105 +73,42 @@ List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-16.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,
-	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=ham
-	autolearn_force=no version=4.0.1
+X-Spam-Status: No, score=-15.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
+	DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,FREEMAIL_FORGED_FROMDOMAIN,
+	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
+	UNPARSEABLE_RELAY,USER_AGENT_GIT autolearn=ham autolearn_force=no
+	version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Hi Maxime,
+ssusb_mode_write() copies user input into an uninitialized stack buffer
+and compares fixed command lengths. A short write matching a command
+prefix can make strncmp() inspect bytes that were not initialized.
 
-On Fri, 2026-10-16 at 13:37 +0200, Maxime Chevallier wrote:
-> Hi Louis-Alexis,
->=20
-> On 10/16/26 12:31, Louis-Alexis Eyraud wrote:
-> > In preparation of newer SoC support, that have like MT8189 SoC
-> > different RX and TX internal delay stage steps than MT8188/MT8195,
-> > add
-> > the RX and TX delay stage divider values in the variant platform
-> > data
-> > and replace the hardcoded value uses in mt2712_set_delay and
-> > mt8195_set_delay.
-> >=20
-> > Reviewed-by: Maxime Chevallier <maxime.chevallier@bootlin.com>
-> > Signed-off-by: Louis-Alexis Eyraud
-> > <louisalexis.eyraud@collabora.com>
-> > ---
-> > =C2=A0.../net/ethernet/stmicro/stmmac/dwmac-mediatek.c=C2=A0=C2=A0 | 46
-> > ++++++++++++++++++----
-> > =C2=A01 file changed, 38 insertions(+), 8 deletions(-)
-> >=20
-> > diff --git a/drivers/net/ethernet/stmicro/stmmac/dwmac-mediatek.c
-> > b/drivers/net/ethernet/stmicro/stmmac/dwmac-mediatek.c
-> > index 596411d4a5b2..cb5bda53edb9 100644
-> > --- a/drivers/net/ethernet/stmicro/stmmac/dwmac-mediatek.c
-> > +++ b/drivers/net/ethernet/stmicro/stmmac/dwmac-mediatek.c
-> > @@ -108,6 +108,10 @@ struct mediatek_dwmac_variant {
-> > =C2=A0
-> > =C2=A0	u32 rx_delay_max;
-> > =C2=A0	u32 tx_delay_max;
-> > +	u16 rx_rmii_delay_stage_div;
-> > +	u16 tx_rmii_delay_stage_div;
-> > +	u16 rx_rgmii_delay_stage_div;
-> > +	u16 tx_rgmii_delay_stage_div;
-> > =C2=A0	u8 dma_bit_mask;
-> > =C2=A0};
-> > =C2=A0
-> > @@ -146,14 +150,22 @@ static int mt2712_set_delay(struct
-> > mediatek_dwmac_plat_data *plat)
-> > =C2=A0	u32 fine_val =3D 0;
-> > =C2=A0
-> > =C2=A0	if (phy_interface_mode_is_rgmii(plat->phy_mode)) {
-> > -		rx_delay_stage_div =3D
-> > MT2712_RGMII_DLY_RXC_STAGE_DIV;
-> > -		tx_delay_stage_div =3D
-> > MT2712_RGMII_DLY_TXC_STAGE_DIV;
-> > +		rx_delay_stage_div =3D plat->variant-
-> > >rx_rgmii_delay_stage_div;
-> > +		tx_delay_stage_div =3D plat->variant-
-> > >tx_rgmii_delay_stage_div;
-> > =C2=A0	} else {
-> > -		rx_delay_stage_div =3D
-> > MT2712_RMII_DLY_RXC_STAGE_DIV;
-> > -		tx_delay_stage_div =3D
-> > MT2712_RMII_DLY_TXC_STAGE_DIV;
-> > +		rx_delay_stage_div =3D plat->variant-
-> > >rx_rmii_delay_stage_div;
-> > +		tx_delay_stage_div =3D plat->variant-
-> > >tx_rmii_delay_stage_div;
->=20
-> Looking closer at this, what's RMII delay ? There's no delays in
-> RMII, and
-> it's a single clock not a RX and TX clock like RGMII, there's no RMII
-> TXC/RXC.
->=20
-You are right, these structures field and define names are wrong for
-RMII/MII cases.
-The mediatek,tx-delay-ps and mediatek,rx-delay-ps vendor properties are
-used by this driver to fine tune different clocks depending on the phy
-mode:
- - RX_CLK/TX_CLK in MII
- - REF_CLK in RMII
- - TXC/RXC in RGMII
+Zero-initialize the buffer so the copied input is always terminated.
 
-I'll fix the fields and define names in next series revision, along the
-issues the Sashiko reviews found.
+Fixes: 4aab6ad24a10 ("usb: mtu3: move vbus and mode debugfs interfaces into mtu3_debugfs.c")
+Cc: stable@vger.kernel.org
+Signed-off-by: Jiale Yao <yaojiale02@163.com>
+---
+ drivers/usb/mtu3/mtu3_debugfs.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-> I think it's the same as on allwinner, the delay handling has been
-> mixed-up between
-> RMII and RGMII in the glue, you should be able to simplify this even
-> more by
-> ditching the RMII case.
-The register fields that the driver sets in RMII or MII mode to tune
-the needed clock(s) are different than the ones set in RGMII.
-So I cannot really ditch the case but I'll simplify the delay handling.
-For instance I could use a single divider field per mode, since for all
-compatibles the value is the same in both RX and TX.
+diff --git a/drivers/usb/mtu3/mtu3_debugfs.c b/drivers/usb/mtu3/mtu3_debugfs.c
+index c003049bafbf..8976dbfaa585 100644
+--- a/drivers/usb/mtu3/mtu3_debugfs.c
++++ b/drivers/usb/mtu3/mtu3_debugfs.c
+@@ -423,7 +423,7 @@ static ssize_t ssusb_mode_write(struct file *file, const char __user *ubuf,
+ {
+ 	struct seq_file *sf = file->private_data;
+ 	struct ssusb_mtk *ssusb = sf->private;
+-	char buf[16];
++	char buf[16] = { };
+ 
+ 	if (copy_from_user(&buf, ubuf, min_t(size_t, sizeof(buf) - 1, count)))
+ 		return -EFAULT;
+-- 
+2.34.1
 
-Best regards,
-Louis-Alexis
->=20
-> Maxime
 
