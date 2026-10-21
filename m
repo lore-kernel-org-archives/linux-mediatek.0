@@ -2,65 +2,79 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 4916260A3815
-	for <linux-mediatek@archiver.kernel.org>; Wed, 21 Oct 2026 12:16:54 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 8A7ED60A2611
+	for <linux-mediatek@archiver.kernel.org>; Wed, 21 Oct 2026 12:45:00 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=t/wse0wP;
-	dkim=pass (2048-bit key, unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=SEGbK0x2
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=2Sncklw0;
+	dkim=fail reason="signature verification failed" (1024-bit key, unprotected) header.d=lunn.ch header.i=@lunn.ch header.a=rsa-sha256 header.s=20171124 header.b=YuDfAoht
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=qDdj9EcXghdTHqmlPF4Y2JQuf4DTn5FtoR3j1bfxYpI=; b=t/wse0wPGDK06oK/6msPQTPgUa
-	4UNPsaA1Nf+nU0qOuTJrbV6RAXvl+Xi0c3ZSk0EDwxDOUxYuMdmDRAMU8OMukRAkjCepCKPohdARQ
-	8RUyk8U+6McTGKy7+wreEj7cPW+MPMJHeDfFOA+8O77aRp2PzzCFte7puOzQh+w7p85MiGFReoNfj
-	O9yxXq8JlL/dqX0FttLldpipuDNQjRHavKxF7QBhWUXgWChuVO5zfGHbarkIpoUX9oG9psFly+3T5
-	UA9++Ku6/c5u6mz8CNdnz9a2KJTwQU47ir3xg/XAPWsyfYHNhJx9b3SJ0GeBzCl8he8Scjvd3xTRa
-	+zz2VkPQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=NbUxAF4+fhGaTwU6SyGGMBBPCIGMBSiSpExMIJK1rcE=; b=2Sncklw0RrduSX3ZOnMtuWZRCg
+	pbvNhSVe2QORZvYowEkQVKtU5MAm8R04Zzb3fL6vvquRP8K1Zs3IzAF9hVUXG3TcNuWBwq3yOBZGD
+	AsRB/Mc1vH7cfSlnYGZzz0yiPEGjSQilF0PvZdriLa06I+NzaErRg7fJ6N+SoxfqwhPRyO55lDeIB
+	cj3+cLTjR78TWQNVNztL/zTnRN0RzD4pftJcdOdXLPcp+1xjnvT6v3+0WrIU2Okm4DXhJ4GaY8LtX
+	Nd02YUnC6Crp9U9Euza1qmOaxAemmtflW+jYlaJRu8LYxrSpCjgIN/pat15A/cexonYFARwlLM33D
+	s1LHHSgA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xJVFV-0000000Bmoz-1sxY;
-	Wed, 21 Oct 2026 12:16:53 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1xJVgh-0000000BpLF-156S;
+	Wed, 21 Oct 2026 12:44:59 +0000
+Received: from vps0.lunn.ch ([156.67.10.101])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xJVFU-0000000Bmo9-1LLj;
-	Wed, 21 Oct 2026 12:16:52 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id C006460416;
-	Wed, 21 Oct 2026 12:16:51 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id C56261F000C9;
-	Wed, 21 Oct 2026 12:16:49 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1792585011;
-	bh=qDdj9EcXghdTHqmlPF4Y2JQuf4DTn5FtoR3j1bfxYpI=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References;
-	b=SEGbK0x2M190Jkl7em3f5e6FsOIFjriiIc4I4TlIIZr9PFsuEj5ryTt9DoOm8sJFL
-	 xQvmW89g0vFRd6n+yDBSPf1p2fjHPe5F7D/OWD7XPxiqwZd2W9FFwfWpSRlZf37RYG
-	 srS6aJstdvljL7BzDIjAe+e83+Zxccbag2QfoVMINFcRTrQDlT8QsslAbrA7vpjCVD
-	 qk0qMnyPjZCfx+K4CI27mG4g26owXn79Kpk9W/9zsnetyPwdDsZH4IuTb2n3vEFEGG
-	 TpoeCwVTHWvkW8ac7hMipYe91ieIeVL/O80tadGGJaH9khVE0ojSD6+B/5EjeoKF7v
-	 GJ2pvHUVrqLXQ==
-From: Lee Jones <lee@kernel.org>
-To: lee@kernel.org,
+	id 1xJVga-0000000BpI0-2JaT;
+	Wed, 21 Oct 2026 12:44:57 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
+	s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
+	References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
+	Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
+	bh=NbUxAF4+fhGaTwU6SyGGMBBPCIGMBSiSpExMIJK1rcE=; b=YuDfAoht/p9qIU3gcRDo1zQNIE
+	ZJewm00U8PJGJBWrNWIxjpN84vJBt1FRbw7fyx0Ar2B1AJmeukQ9k+kZNYws/CB1pu3y14Pmpu53S
+	JvCAhGDlO+aArpYaGHTFVQ2Vc84oPDyfJEKxJr8DQJZV5AnBdWVmupbXFYHvV3A/NdZ8=;
+Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
+	(envelope-from <andrew@lunn.ch>)
+	id 1xJVg9-00C5Go-1v; Wed, 21 Oct 2026 14:44:25 +0200
+Date: Wed, 21 Oct 2026 14:44:25 +0200
+From: Andrew Lunn <andrew@lunn.ch>
+To: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
+Cc: Andrew Lunn <andrew+netdev@lunn.ch>,
+	"David S. Miller" <davem@davemloft.net>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Richard Cochran <richardcochran@gmail.com>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>,
-	mfd@lists.linux.dev,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Cc: stable@vger.kernel.org
-Subject: [PATCH 26/28] mfd: mt6397: Unregister PM notifier on probe failure and unbind
-Date: Wed, 21 Oct 2026 12:09:48 +0000
-Message-ID: <20261021121245.3111563-26-lee@kernel.org>
-X-Mailer: git-send-email 2.56.0.218.g1ec904b173-goog
-In-Reply-To: <20261021121245.3111563-1-lee@kernel.org>
-References: <20261021121245.3111563-1-lee@kernel.org>
+	Biao Huang <biao.huang@mediatek.com>,
+	Maxime Chevallier <maxime.chevallier@bootlin.com>,
+	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+	Alexandre Torgue <alexandre.torgue@foss.st.com>,
+	Eric Dumazet <edumazet@kernel.org>, kernel@collabora.com,
+	netdev@vger.kernel.org, devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	linux-stm32@st-md-mailman.stormreply.com
+Subject: Re: [PATCH net-next v3 2/9] dt-bindings: net: mediatek-dwmac: add
+ support for MT8189 SoC
+Message-ID: <838136c0-5f4c-4ed9-a0dc-d05ff338582e@lunn.ch>
+References: <20261016-dwmac-mediatek-mt8189-v3-0-25daf2bbcf35@collabora.com>
+ <20261016-dwmac-mediatek-mt8189-v3-2-25daf2bbcf35@collabora.com>
+ <b4950f82-0163-4482-9799-a5e3c6eb5964@lunn.ch>
+ <c53928fbb9da11b0f32a84592742e6a26e1aed32.camel@collabora.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <c53928fbb9da11b0f32a84592742e6a26e1aed32.camel@collabora.com>
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20261021_054452_665959_A70CB991 
+X-CRM114-Status: GOOD (  23.62  )
+X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,64 +85,55 @@ List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-19.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,
-	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=ham
+X-Spam-Status: No, score=-4.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=no
 	autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-mt6397_irq_init() registers a power management notifier block embedded
-in the devres-managed struct mt6397_chip via register_pm_notifier(),
-but never unregisters it if mt6397_probe() later fails or when the
-driver is unbound.  Once devres frees struct mt6397_chip, the dangling
-notifier block corrupts the global PM notifier chain and causes a
-use-after-free on subsequent suspend or resume transitions.
+On Wed, Oct 21, 2026 at 11:43:39AM +0200, Louis-Alexis Eyraud wrote:
+> Hi Andrew,
+> 
+> On Fri, 2026-10-16 at 17:40 +0200, Andrew Lunn wrote:
+> > > Finally, update "mediatek,rx-delay-ps" and "mediatek,tx-delay-ps"
+> > > property
+> > > description to add MT8189 RX/TX delay stage divider values, as they
+> > > differ from existing supported SoC.
+> > 
+> > These should be mark deprecated and the standard rx-internal-delay-ps
+> > and tx-internal-delay-ps used in there place for new devices.
+> > 
+> I agree, it makes sense to use them to describe the RGMII internal
+> delay configurations rather than the two existing vendor properties
+> (mediatek,rx-delay-ps and mediatek,tx-delay-ps), and deprecate them, by
+> adding a deprecated flag and the comments you've suggested. It would
+> also need an additional patch for the driver to handle them (while
+> keeping backward compatibility).
+> 
+> But what is bothering me is these two vendor properties description
+> says they can be used in MII and RMII phy mode cases. The driver uses
+> them indeed also to fine tune the RX/TX_CLK (in MII) or the REF_CLK (in
+> RMII) configuration.
+> rx/tx-internal-delay-ps properties are limited to RGMII only ([1]).
+> So they can not substitute them as it and with their description it
+> would wrong to use them for MII/RMII.
+> 
+> At the moment, in the upstream devicetrees, there is no "mediatek,rx-
+> delay-ps" use and the "mediatek,tx-delay-ps" use are very few and only
+> for RGMII phy modes (either rgmii-rxid or rmgii-id), so no MII/RMII
+> real use cases.
+> 
+> So, how to proceed then to make these bindings right?
+> Use rx/tx-internal-delay-ps properties for RGMII and mediatek,rx/tx-
+> delay-ps for MII/RMII or do you see another solution ?
 
-Check the return value of register_pm_notifier() and register a devres
-action to unregister the PM notifier on probe failure or device unbind.
+If you say "mediatek,rx-delay-ps" is not actually used, then it is not
+an issue. As for "mediatek,tx-delay-ps", i would probably ignore it
+until somebody actually requires it for MII or RMII. At that point, we
+can add specific properties for MII and RMII, and not mix them up with
+RGMII delays.
 
-Fixes: 4e2e7cfec13a ("mfd: mt6397: Modify suspend/resume behavior")
-Closes: https://sashiko.dev/#/bug/linux-edb62fbc-213a-49a2-be55-c002e234e554
-Cc: stable@vger.kernel.org
-Signed-off-by: Lee Jones <lee@kernel.org>
----
- drivers/mfd/mt6397-irq.c | 15 +++++++++++++--
- 1 file changed, 13 insertions(+), 2 deletions(-)
-
-diff --git a/drivers/mfd/mt6397-irq.c b/drivers/mfd/mt6397-irq.c
-index 58645dbd8095..bc7ca22d6f17 100644
---- a/drivers/mfd/mt6397-irq.c
-+++ b/drivers/mfd/mt6397-irq.c
-@@ -179,6 +179,13 @@ static void mt6397_irq_domain_remove(void *data)
- 	irq_domain_remove(chip->irq_domain);
- }
- 
-+static void mt6397_unregister_pm_notifier(void *data)
-+{
-+	struct mt6397_chip *chip = data;
-+
-+	unregister_pm_notifier(&chip->pm_nb);
-+}
-+
- int mt6397_irq_init(struct mt6397_chip *chip)
- {
- 	int ret;
-@@ -247,6 +254,10 @@ int mt6397_irq_init(struct mt6397_chip *chip)
- 		return ret;
- 	}
- 
--	register_pm_notifier(&chip->pm_nb);
--	return 0;
-+	ret = register_pm_notifier(&chip->pm_nb);
-+	if (ret)
-+		return ret;
-+
-+	return devm_add_action_or_reset(chip->dev,
-+					mt6397_unregister_pm_notifier, chip);
- }
--- 
-2.56.0.218.g1ec904b173-goog
+      Andrew
 
 
