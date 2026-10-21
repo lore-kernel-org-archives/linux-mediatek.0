@@ -2,78 +2,99 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 8A7ED60A2611
-	for <linux-mediatek@archiver.kernel.org>; Wed, 21 Oct 2026 12:45:00 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 78C30606A31B
+	for <linux-mediatek@archiver.kernel.org>; Wed, 21 Oct 2026 13:21:36 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=2Sncklw0;
-	dkim=fail reason="signature verification failed" (1024-bit key, unprotected) header.d=lunn.ch header.i=@lunn.ch header.a=rsa-sha256 header.s=20171124 header.b=YuDfAoht
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=4khlxF7R;
+	dkim=pass (2048-bit key, unprotected) header.d=baylibre.com header.i=@baylibre.com header.a=rsa-sha256 header.s=google header.b=VaLGlG5u
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
+	Message-ID:Date:References:In-Reply-To:Subject:Cc:To:From:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=NbUxAF4+fhGaTwU6SyGGMBBPCIGMBSiSpExMIJK1rcE=; b=2Sncklw0RrduSX3ZOnMtuWZRCg
-	pbvNhSVe2QORZvYowEkQVKtU5MAm8R04Zzb3fL6vvquRP8K1Zs3IzAF9hVUXG3TcNuWBwq3yOBZGD
-	AsRB/Mc1vH7cfSlnYGZzz0yiPEGjSQilF0PvZdriLa06I+NzaErRg7fJ6N+SoxfqwhPRyO55lDeIB
-	cj3+cLTjR78TWQNVNztL/zTnRN0RzD4pftJcdOdXLPcp+1xjnvT6v3+0WrIU2Okm4DXhJ4GaY8LtX
-	Nd02YUnC6Crp9U9Euza1qmOaxAemmtflW+jYlaJRu8LYxrSpCjgIN/pat15A/cexonYFARwlLM33D
-	s1LHHSgA==;
+	bh=30kfx+f5OMbhpYMMm98MeKilykOWKFy2lcIJ5DpS4GQ=; b=4khlxF7Rat7qyVbLplV+DqmXNS
+	E9qeBZnIoHb9+KqqAjYnnQFOuL08rzx3YbCEBaS1iCzpq12AMJzSeYRMl1rad26z7QLQ8g+2ckGpJ
+	y9hi7uvci0Rziv5zgrJURlKBuxHmogr7OSSOIt5Lb156hus/HReA4IKdS/eo6Qk6U/aq6SVrsik3J
+	oK4cW/n9gsh8ch1B0sTI4enRY2owZhOmboi+Vmz258ku5bo2S6USreZeD2AE74mSIu3Xwkrm3EgcY
+	57U5eyPZKEmdk81NntnJkFqhb5Wdf3Q/6XRJJ+hs5hpqOE5zp+TkW9WIZwImC1nxSN4Y+AZQ0g6U7
+	+xPAYxTw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xJVgh-0000000BpLF-156S;
-	Wed, 21 Oct 2026 12:44:59 +0000
-Received: from vps0.lunn.ch ([156.67.10.101])
+	id 1xJWG6-0000000BtNJ-1Na4;
+	Wed, 21 Oct 2026 13:21:34 +0000
+Received: from mail-wm1-f52.google.com ([209.85.128.52])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xJVga-0000000BpI0-2JaT;
-	Wed, 21 Oct 2026 12:44:57 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
-	s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
-	References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
-	Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
-	bh=NbUxAF4+fhGaTwU6SyGGMBBPCIGMBSiSpExMIJK1rcE=; b=YuDfAoht/p9qIU3gcRDo1zQNIE
-	ZJewm00U8PJGJBWrNWIxjpN84vJBt1FRbw7fyx0Ar2B1AJmeukQ9k+kZNYws/CB1pu3y14Pmpu53S
-	JvCAhGDlO+aArpYaGHTFVQ2Vc84oPDyfJEKxJr8DQJZV5AnBdWVmupbXFYHvV3A/NdZ8=;
-Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
-	(envelope-from <andrew@lunn.ch>)
-	id 1xJVg9-00C5Go-1v; Wed, 21 Oct 2026 14:44:25 +0200
-Date: Wed, 21 Oct 2026 14:44:25 +0200
-From: Andrew Lunn <andrew@lunn.ch>
-To: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
-Cc: Andrew Lunn <andrew+netdev@lunn.ch>,
-	"David S. Miller" <davem@davemloft.net>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Richard Cochran <richardcochran@gmail.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Biao Huang <biao.huang@mediatek.com>,
-	Maxime Chevallier <maxime.chevallier@bootlin.com>,
-	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
-	Alexandre Torgue <alexandre.torgue@foss.st.com>,
-	Eric Dumazet <edumazet@kernel.org>, kernel@collabora.com,
-	netdev@vger.kernel.org, devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	linux-stm32@st-md-mailman.stormreply.com
-Subject: Re: [PATCH net-next v3 2/9] dt-bindings: net: mediatek-dwmac: add
- support for MT8189 SoC
-Message-ID: <838136c0-5f4c-4ed9-a0dc-d05ff338582e@lunn.ch>
-References: <20261016-dwmac-mediatek-mt8189-v3-0-25daf2bbcf35@collabora.com>
- <20261016-dwmac-mediatek-mt8189-v3-2-25daf2bbcf35@collabora.com>
- <b4950f82-0163-4482-9799-a5e3c6eb5964@lunn.ch>
- <c53928fbb9da11b0f32a84592742e6a26e1aed32.camel@collabora.com>
+	id 1xJWG3-0000000BtMG-1m7f
+	for linux-mediatek@lists.infradead.org;
+	Wed, 21 Oct 2026 13:21:33 +0000
+Received: by mail-wm1-f52.google.com with SMTP id 5b1f17b1804b1-49d0da752ffso5919575e9.3
+        for <linux-mediatek@lists.infradead.org>; Wed, 21 Oct 2026 06:21:29 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=baylibre.com; s=google; t=1792588888; x=1793193688; darn=lists.infradead.org;
+        h=content-type:mime-version:message-id:date:references:in-reply-to
+         :subject:cc:to:from:from:to:cc:subject:date:message-id:reply-to
+         :content-type;
+        bh=30kfx+f5OMbhpYMMm98MeKilykOWKFy2lcIJ5DpS4GQ=;
+        b=VaLGlG5uDeRGgaelcq4IywadSGQGNIMb4iXDgEBLFWZgMMf3jgQf9Z6lmnVBypTFjT
+         Kg00JL6hpZpVQkt9Y6ZJbwnuEhDweACgA81KLvsZ2BnOD1Qc0P7/QqE1l2IBbu4lOc4p
+         fahnnJs667zKD7Q6KOmvbX1prGtjED/boC30Zvq4EXPNdKoft5C4P84eGsRuqbP6CYeo
+         VxBtICZktUSb6+FWGXPa5YpGQZ0+tb5xN3tqBREGjCQC/R69qi8BoEHtacFE1/RYIW/N
+         9S0MKtidn5olYTFZv5xGB128kIW1OdtflOGiaQTEM8piTbt6VTTddXvobKyq37NpAwRt
+         bLRg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20260707; t=1792588888; x=1793193688;
+        h=content-type:mime-version:message-id:date:references:in-reply-to
+         :subject:cc:to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject
+         :date:message-id:reply-to:content-type;
+        bh=30kfx+f5OMbhpYMMm98MeKilykOWKFy2lcIJ5DpS4GQ=;
+        b=2Dl5oy1deJtlgZP3I6QjicnfpgALz4BC3nSv3wl8TnshZ16h/MvzOLq8wSck46o/9h
+         UGmNio7Bvw9Sw/WS5soaoMecclty8KwTqqZ6idQ4AhYYQPUpASIdUZjnKC6YWZYRvApY
+         rUYEFgmxfgmZgW58I//Wz+xSQWuWtr2Q9cnHT2/yst0FTawGbtcro0tTFeiPBPMwKTjq
+         uhhHN6VMxsw/eeB6wh3IoTCUMzYpr0uqNGHNXsfRDnQLGynqevIcDEbHNWgqCQExbc+5
+         TjAuNMLBlA2bUcAnrissXsVsLBzT8n9/cphtxOwdug2wBCnG/WBh/PndDiflMZAr5m/H
+         jqhw==
+X-Forwarded-Encrypted: i=1; AKwUvBxh+1e8cw6KNcdOmTmoG6KG9tE2oeBuFfLvlIGhSV03N22C1xC1nJZptSYNyLSYcQ8QRQQ2YXvBiV+XpKZrYQ==@lists.infradead.org
+X-Gm-Message-State: AFq9FYJ4oBScTAiQN+zPLF9zhoCFbkFiLWTAJO4VsGp+gaez3XcgHN6Y
+	mr6bmvRsabDEfWY2cJsR79t8dxQOEwgJ5gFY8RW+QrasYtVBYuKArVuoL1otpkzMhao=
+X-Gm-Gg: AYBFou2bUMj5Dck5cxIphNAiXafGezDHL+0ORhQ5VYjrLLx4jKYjPCrfIfl+KXQ7iXX
+	Wp2NW9Cqg1JEd4w/1oTfB+GuRhCO/F7BawDCs0kOD8N6+gCRGdXOltWyiDCkiO3Xr/xDXwDLWz9
+	PR4OXv0CV1GGC4SHo8XqU6qBlR3tPE3bj+xf5f3WyjghGRd35UlKpCk5Cfh/EbXorXG7TI9HdAE
+	xQ88yXNzEYv16LJs32D8MOTdpeKbFgRM8GO2dM6XFvXmqssZwYDjU9wO4S6tRyLNnuri2lmB5eS
+	d/vEjYMWCb1mbMD23mRGREZ0JwvwkSubPwaJMBkFymXrODcT8pUyjbFNnA1BftFkUI5DwVX41Dv
+	khDcJWUTKrB7vH7xf8t0vLX9Yrd5Ok2lMBlZhU+dCIAkD6fzAQcpMhbDllj8tLSoLbfhAREyykk
+	MwKTFej57vG3vP8O3Skb9sHAXAKymDtkU5s6J7fcabFaZqa/FBlgC8u9q5HHqSBrvmiz5sQCU9F
+	N3gyEHctQKGkAXuXABy29N7GowR6SPEczqa//NW9H6aB+x+piSZPFBYqwKXDzZbDuMJw00I3Po=
+X-Received: by 2002:a05:600c:6097:b0:4a1:d456:ddc8 with SMTP id 5b1f17b1804b1-4a1fdaef8b0mr39864365e9.7.1792588888044;
+        Wed, 21 Oct 2026 06:21:28 -0700 (PDT)
+Received: from localhost (82-67-6-57.subs.proxad.net. [82.67.6.57])
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-4a1f8016c93sm112679735e9.5.2026.10.21.06.21.25
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 21 Oct 2026 06:21:25 -0700 (PDT)
+From: Jerome Brunet <jbrunet@baylibre.com>
+To: Ryan Brue <ryanbrue.dev@gmail.com>, AngeloGioacchino Del Regno
+ <angelogioacchino.delregno@collabora.com>, Stephen Boyd
+ <sboyd@kernel.org>, Brian Masney <bmasney+clk@redhat.com>, Jerome Brunet
+ <jbrunet+clk@baylibre.com>, Matthias Brugger <matthias.bgg@gmail.com>,
+ Chen-Yu Tsai <wenst@chromium.org>
+Cc: linux-clk@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH 2/2] clk: mediatek: mt6795: fix the FHCTL DDS mask width
+In-Reply-To: <e8389c1c-e858-4171-adff-5bd94909120c@gmail.com>
+References: <20260912-mt8173-fix-dds-mask-width-v1-0-3d0c0292c85c@gmail.com>
+ <20260912-mt8173-fix-dds-mask-width-v1-2-3d0c0292c85c@gmail.com>
+ <88272aca-2a9e-4a75-b7f2-4f7aac8b6d18@collabora.com>
+ <1j33ux8of7.fsf@starbuckisacylon.baylibre.com>
+ <12e0953c-5181-45f2-b409-05163ab2a031@collabora.com>
+ <e8389c1c-e858-4171-adff-5bd94909120c@gmail.com>
+Date: Wed, 21 Oct 2026 15:21:24 +0200
+Message-ID: <1jy0brgpez.fsf@starbuckisacylon.baylibre.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <c53928fbb9da11b0f32a84592742e6a26e1aed32.camel@collabora.com>
+Content-Type: text/plain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261021_054452_665959_A70CB991 
-X-CRM114-Status: GOOD (  23.62  )
+X-CRM114-CacheID: sfid-20261021_062131_762286_F7F7AC8B 
+X-CRM114-Status: GOOD (  12.80  )
 X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -85,55 +106,48 @@ List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-4.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=no
-	autolearn_force=no version=4.0.1
+X-Spam-Status: No, score=-6.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,
+	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS autolearn=no autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On Wed, Oct 21, 2026 at 11:43:39AM +0200, Louis-Alexis Eyraud wrote:
-> Hi Andrew,
-> 
-> On Fri, 2026-10-16 at 17:40 +0200, Andrew Lunn wrote:
-> > > Finally, update "mediatek,rx-delay-ps" and "mediatek,tx-delay-ps"
-> > > property
-> > > description to add MT8189 RX/TX delay stage divider values, as they
-> > > differ from existing supported SoC.
-> > 
-> > These should be mark deprecated and the standard rx-internal-delay-ps
-> > and tx-internal-delay-ps used in there place for new devices.
-> > 
-> I agree, it makes sense to use them to describe the RGMII internal
-> delay configurations rather than the two existing vendor properties
-> (mediatek,rx-delay-ps and mediatek,tx-delay-ps), and deprecate them, by
-> adding a deprecated flag and the comments you've suggested. It would
-> also need an additional patch for the driver to handle them (while
-> keeping backward compatibility).
-> 
-> But what is bothering me is these two vendor properties description
-> says they can be used in MII and RMII phy mode cases. The driver uses
-> them indeed also to fine tune the RX/TX_CLK (in MII) or the REF_CLK (in
-> RMII) configuration.
-> rx/tx-internal-delay-ps properties are limited to RGMII only ([1]).
-> So they can not substitute them as it and with their description it
-> would wrong to use them for MII/RMII.
-> 
-> At the moment, in the upstream devicetrees, there is no "mediatek,rx-
-> delay-ps" use and the "mediatek,tx-delay-ps" use are very few and only
-> for RGMII phy modes (either rgmii-rxid or rmgii-id), so no MII/RMII
-> real use cases.
-> 
-> So, how to proceed then to make these bindings right?
-> Use rx/tx-internal-delay-ps properties for RGMII and mediatek,rx/tx-
-> delay-ps for MII/RMII or do you see another solution ?
+On sam. 17 oct. 2026 at 18:03, Ryan Brue <ryanbrue.dev@gmail.com> wrote:
 
-If you say "mediatek,rx-delay-ps" is not actually used, then it is not
-an issue. As for "mediatek,tx-delay-ps", i would probably ignore it
-until somebody actually requires it for MII or RMII. At that point, we
-can add specific properties for MII and RMII, and not mix them up with
-RGMII delays.
+> On 9/28/26 7:22 AM, AngeloGioacchino Del Regno wrote:
+>>
+>> Please collect the changes that I've reviewed for this cycle... I'll 
+>> start
+>> sending PRs from the next one.
+>>
+>> Thanks!
+>>
+>> Cheers,
+>> Angelo
+>
+> Hi Brian, Jerome, and Stephen,
+>
+> Gentle ping, in case these slipped through the collection Angelo asked 
+> for above: this two-patch series (FHCTL DDS mask width, mt8173 and 
+> mt6795) and the related mt8173-mfgtop fix [1], both reviewed by Angelo 
+> on 14 Sep. Neither is in clk-next yet, and both still apply cleanly to 
+> it. If it's too late for this cycle, just let me know, and I'll ask 
+> Angelo to take them in his PR for the next one.
 
-      Andrew
+Hi Ryan,
 
+If you do not see it in the clk-next now, it means we missed it and it
+too late for this cycle, sorry.
+
+>
+> [1] 
+> https://lore.kernel.org/all/20260913-mfgtop-no-clk-api-power-on-v2-1-b84771a3d5bd@gmail.com/
+>
+>
+> Best regards,
+> Ryan Brue
+
+-- 
+Jerome
 
