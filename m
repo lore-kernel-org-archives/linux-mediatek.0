@@ -2,78 +2,69 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 6F4F5606A320
-	for <linux-mediatek@archiver.kernel.org>; Wed, 21 Oct 2026 03:30:30 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id A486B606A31C
+	for <linux-mediatek@archiver.kernel.org>; Wed, 21 Oct 2026 05:15:02 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=kqTfEpT4;
-	dkim=pass (2048-bit key, unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=lb1AQ8QN
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=rBbfZ8eb;
+	dkim=pass (1024-bit key, unprotected) header.d=0upti.me header.i=@0upti.me header.a=rsa-sha256 header.s=mail header.b=dWOYFKWS
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:Message-Id:Date:MIME-Version:Subject:References:
+	In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
-	bh=jlz4yAXFlCLddpIKqlcUUKEQPJQbALduC2YYrpZf6jI=; b=kqTfEpT4rtQaxgYswTDvmM07l0
-	7fGmtK6GIRVMEAj17qEMUrHKD1zVB6XQrbGLqTCpLGdyAoaukg+jBuodJ0n3UCEdxWeyGeJ9wynLa
-	lMdkKIA1ej/M/va5IBghomSBCRNrh9bLGWXrNBHhCWKpaTVGW6DVPx4FIJlpBBbJtwmNnWvbCbMBB
-	YBTo0DAFN/k8bXR66Cig9jT+ZyW4wW2EqdPnHyGCDhts+amEt7boxAR1A+A+RUPLAgUlAUDplok0+
-	Da1g5Yb5yD0TzmdhzoN4K86oVzW/P+xzpG6/EsEcVFknSPaoTPPWwGbRvmXsg6WBOZuiqenLUYVUb
-	Npny1mwg==;
+	bh=jqWlW6zqb5Tv2gMRTIRS9fn3wqc6RPqo/Vw3J/4+54M=; b=rBbfZ8eberxzqGZCKgf4AC1e7U
+	xgcMVdS8BjZJYfnIPrA2UdLdZRaupEHIlmuqsm0xcGTsMwZT0tqzK4iXN1uo8DdmYkx8ur2Q50o8m
+	0IEuHA8TWEJ8Z31PEypDxkaILa9weVG5e/1XK6OcSLhTF//YA0lAuUvcNSSlcwBfsUPrOve5cQDC8
+	TvAl02m8arCQU+AJBzQ6qky4At3//HW5roteeFdLoiU4XTQqD0BSxwcAyFnneO48v0BmZotL5WlMG
+	rWO07Cg9FlOLf+bLKPhd1EUbseFB5nRZbEXOBBa0gmkVnMEHMH6on19Luwv6qz4KbF9ubd6dC2Lwy
+	YDW87T4g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xJN24-0000000B0KA-0G2q;
-	Wed, 21 Oct 2026 03:30:28 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1xJOfD-0000000B56S-3vvk;
+	Wed, 21 Oct 2026 05:14:59 +0000
+Received: from forward502d.mail.yandex.net ([31.44.14.18])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xJN1y-0000000B0J8-2Rip;
-	Wed, 21 Oct 2026 03:30:22 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id DE15A43D6E;
-	Wed, 21 Oct 2026 03:30:21 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 159A51F000C9;
-	Wed, 21 Oct 2026 03:30:21 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1792553421;
-	bh=jlz4yAXFlCLddpIKqlcUUKEQPJQbALduC2YYrpZf6jI=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=lb1AQ8QNcJ5TpHSken/esH7w1Q4cbkTAgABJzIhuwNKcrW75N23Pif2C1+BgVD1SZ
-	 +E4MI1zGyaa8cvK38W+AV+M6dL1Q+NPLOhrTN4TV1QJTjy+XW8prajnikO7QDecqIm
-	 ZIkMF2s/Vam4OXzlkbrRm3u7XQ4T1KH42W1KibzBMkGWgfumOpvRQiMtuVAjRy4qs+
-	 +PGn5h4s1dCW+N6DCRwr5rRZ4znI2lNjHlOu/bs9HleiZkFg3t65VIreR5+pD6t7Ya
-	 zxt5iPTb6FMjrWJYL4autYSkuZnQsZ6GLsJcSQMgpurxyPwBrHZMGICDHuEkoSEqBG
-	 +px0aasmivaRQ==
-Date: Tue, 20 Oct 2026 22:30:19 -0500
-From: Rob Herring <robh@kernel.org>
-To: James Calligeros <jcalligeros99@gmail.com>
-Cc: David Rhodes <david.rhodes@cirrus.com>,
-	Richard Fitzgerald <rf@opensource.cirrus.com>,
-	Martin =?utf-8?Q?Povi=C5=A1er?= <povik+lin@cutebit.org>,
-	Liam Girdwood <lgirdwood@gmail.com>,
-	Mark Brown <broonie@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Shenghao Ding <shenghao-ding@ti.com>, Kevin Lu <kevin-lu@ti.com>,
-	Baojun Xu <baojun.xu@ti.com>, Sen Wang <sen@ti.com>,
-	Sven Peter <sven@kernel.org>, Janne Grunau <j@jannau.net>,
-	Neal Gompa <neal@gompa.dev>, asahi@lists.linux.dev,
-	linux-sound@vger.kernel.org, patches@opensource.cirrus.com,
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
+	id 1xJOf9-0000000B562-15a1
+	for linux-mediatek@lists.infradead.org;
+	Wed, 21 Oct 2026 05:14:58 +0000
+Received: from mail-nwsmtp-mxback-production-main-369.yp-c.yandex.net (mail-nwsmtp-mxback-production-main-369.yp-c.yandex.net)
+	by forward502d.mail.yandex.net (postfix) with ESMTPS id 796A5C04E3;
+	Wed, 21 Oct 2026 08:14:45 +0300 (MSK)
+Received: from mail.yandex.ru
+	by mail-nwsmtp-mxback-production-main-369 with HTTPS id fETbd21Loa60-gchyJVsg;
+	Wed, 21 Oct 2026 08:14:45 +0300
+X-Yandex-Fwd: 1
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=0upti.me; s=mail;
+	t=1792559685; bh=jqWlW6zqb5Tv2gMRTIRS9fn3wqc6RPqo/Vw3J/4+54M=;
+	h=Message-Id:References:Date:Cc:Subject:In-Reply-To:To:From;
+	b=dWOYFKWSNM6yJL42a9a6nhJrPaTXHRCAXCDvXZfz0Mj8MvyfAC7uZ0GWpe9jAS71L
+	 FhE15RxA2+D6bYCjtCyfG3HcO1oYjnjjrN/j73Fn7xBU5sBdsxSfwdbjT+BcP3gsLF
+	 4X1wciVB/RM0CldypHt6nJ/wUxcHJMUaBw2qw8w8=
+Authentication-Results: mail-nwsmtp-mxback-production-main-369; dkim=pass header.i=@0upti.me
+Received: by mail-sendbernar-production-main-96 with HTTPS id 52484760394db31a8bc30851e3f601b2;
+	Wed, 21 Oct 2026 08:14:43 +0300
+From: Ilya K <me@0upti.me>
+To: Ben Greear <greearb@candelatech.com>
+Cc: linux-wireless@vger.kernel.org,
+	netdev@vger.kernel.org,
 	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH v3 03/21] ASoC: dt-bindings: Add binding for Apple
- Silicon Mac audio
-Message-ID: <20261021033019.GA4002608-robh@kernel.org>
-References: <20261018-macaudio-v3-0-abdff7741dea@gmail.com>
- <20261018-macaudio-v3-3-abdff7741dea@gmail.com>
+In-Reply-To: <04b8b928-b671-4236-a792-1141cd81a34b@candelatech.com>
+References: <1767631788532094@64c4e675-cd08-4a74-816f-886742f9bfcd> <529a79bc-dab7-aa41-00bd-c47ecbefaa00@candelatech.com> <471221788538289@323ca970-5bd2-4c6b-b52d-2b863a718615> <3acf531c-bcc7-412b-b3bb-665069260e46@candelatech.com> <2028561788553569@f088f4ec-f441-47a1-b7e4-75a1052aa4df> <2418461788691106@84aa39c5-f501-4e64-8418-6a8b6eb88e21> <eb405366-6574-4e4c-a89d-363751ed848b@candelatech.com> <4175721788798939@f00554c7-d809-471c-9bcf-78e5d8eceab4> <1556871789207706@7dc9deb3-4292-4932-8568-de9b411208d8> <1443771789748846@4a8ec5ae-80ed-44bc-b7d3-6bc660c90136> <211851789913261@df1900ea-d467-4ed7-a7f1-de68a4c3e6dd> <143991791036721@40be7595-980b-4665-ba66-1601e10a0899> <c4286904-2a9a-41fd-93ce-be57964909f6@candelatech.com> <221941791052355@558b3e58-c2b1-4e14-91fe-beb5649d18f6>
+	<5955851791966910@d362902e-9931-4ad0-8e86-72401cc67703> <04b8b928-b671-4236-a792-1141cd81a34b@candelatech.com>
+Subject: Re:[bug] Triple whammy of mt7996e bugs on 7.2+
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <20261018-macaudio-v3-3-abdff7741dea@gmail.com>
+X-Mailer: Yamail [ http://yandex.ru ] 5.0
+Date: Wed, 21 Oct 2026 08:14:43 +0300
+Message-Id: <93881792559683@cb540089-648e-4f63-be25-5737cfc54c1c>
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20261020_221455_493284_66E6F83F 
+X-CRM114-Status: UNSURE (   5.34  )
+X-CRM114-Notice: Please train this message.
+X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,208 +75,17 @@ List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-16.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-6.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,
-	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=ham
-	autolearn_force=no version=4.0.1
+	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS,UNPARSEABLE_RELAY autolearn=no autolearn_force=no
+	version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On Sun, Oct 18, 2026 at 03:53:57PM +1000, James Calligeros wrote:
-> From: Martin Povišer <povik+lin@cutebit.org>
-> 
-> Add a binding for the primary audio subsystem found on Apple Silicon
-> Macs. This binding integrates the codecs and SoC I2S peripheral
-> used for driving the headset jack and speaker arrays on all Apple
-> Silicon Macs. The internal microphones on this platform are
-> connected to a distinct coprocessor and are not part of this
-> "main" audio subsystem.
-> 
-> Signed-off-by: Martin Povišer <povik+lin@cutebit.org>
-> Co-developed-by: James Calligeros <jcalligeros99@gmail.com>
-> Signed-off-by: James Calligeros <jcalligeros99@gmail.com>
-> ---
->  .../bindings/sound/apple,macaudio.yaml   | 212 +++++++++++++++++++++++++
->  1 file changed, 212 insertions(+)
-> 
-> diff --git a/Documentation/devicetree/bindings/sound/apple,macaudio.yaml b/Documentation/devicetree/bindings/sound/apple,macaudio.yaml
-> new file mode 100644
-> index 000000000000..af8e9686ba7b
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/sound/apple,macaudio.yaml
-> @@ -0,0 +1,212 @@
-> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-> +%YAML 1.2
-> +---
-> +$id: http://devicetree.org/schemas/sound/apple,macaudio.yaml#
-> +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> +
-> +title: Sound peripheral integration for Apple Silicon Macs
-> +
-> +description:
-> +  The speakers and headphone jack on Apple Silicon Macs are
-> +  part of an integrated audio subsystem comprising of Apple's
-> +  I2S peripheral (MCA) and a series of codecs. The machines
-> +  have a wide variety of topologies ranging from a simple
-> +  mono speaker in the desktops to complex stereo arrays with
-> +  dual-opposed woofers and tweeters all driven by their own
-> +  mono amplifiers. This arrangement can be expressed as a
-> +  set of DAI links, where the MCA ports each codec is connected
-> +  to are represented by the CPU side of the link.
+> You might try the latest mt76 tree from Felix, it recently gained a large number of fixes.
 
-Wrap lines at 80 chars.
+Well, that survived for a few days, but nope, still crashing :(
 
-> +
-> +maintainers:
-> +  - James Calligeros <jcalligeros99@gmail.com>
-> +
-> +properties:
-> +  compatible:
-> +    oneOf:
-> +      - items:
-> +          - enum:
-> +              - apple,j180-macaudio
-> +              - apple,j274-macaudio
-> +              - apple,j293-macaudio
-> +              - apple,j313-macaudio
-> +              - apple,j314-macaudio
-> +              - apple,j316-macaudio
-> +              - apple,j375-macaudio
-> +              - apple,j413-macaudio
-> +              - apple,j415-macaudio
-> +              - apple,j456-macaudio
-> +              - apple,j473-macaudio
-> +      - items:
-> +          - enum:
-> +              - apple,j493-macaudio
-> +          - const: apple,j293-macaudio
-> +      - items:
-> +          - enum:
-> +              - apple,j414-macaudio
-> +              - apple,j504-macaudio
-> +              - apple,j514-macaudio
-> +          - const: apple,j314-macaudio
-> +      - items:
-> +          - enum:
-> +              - apple,j416-macaudio
-> +              - apple,j516-macaudio
-> +          - const: apple,j316-macaudio
-> +      - items:
-> +          - enum:
-> +              - apple,j475-macaudio
-> +              - apple,j575-macaudio
-> +          - const: apple,j375-macaudio
-> +      - items:
-> +          - enum:
-> +              - apple,j613-macaudio
-> +          - const: apple,j413-macaudio
-> +      - items:
-> +          - enum:
-> +              - apple,j615-macaudio
-> +          - const: apple,j415-macaudio
-> +      - items:
-> +          - enum:
-> +              - apple,j457-macaudio
-> +          - const: apple,j456-macaudio
-> +      - items:
-> +          - enum:
-> +              - apple,j474-macaudio
-> +          - const: apple,j473-macaudio
-> +
-> +  "#address-cells":
-> +    const: 1
-> +
-> +  "#size-cells":
-> +    const: 0
-> +
-> +  model:
-> +    description:
-> +      Model name for presentation to users
-> +    $ref: /schemas/types.yaml#/definitions/string
-> +
-> +patternProperties:
-> +  "^dai-link(@[0-9a-f]+)?$":
-> +    description: |
-
-Don't need '|'.
-
-> +      Node for each sound peripheral such as the speaker array, headphones jack,
-> +      or microphone.
-> +    type: object
-> +    $ref: tdm-slot.yaml#
-> +    additionalProperties: false
-
-Using tdm-slot.yaml properties, but then disallowing any of them?
-
-> +
-> +    properties:
-> +      reg:
-> +        maxItems: 1
-
-Constraints on the reg values?
-
-> +
-> +      link-name:
-> +        description: Name for the peripheral
-> +        enum: [ Headphone Jack, Speaker, Speakers ]
-> +        $ref: /schemas/types.yaml#/definitions/string
-> +
-> +      codec:
-> +        type: object
-> +        additionalProperties: false
-> +
-> +        properties:
-> +          sound-dai:
-> +            minItems: 1
-> +            maxItems: 8
-> +            description: |
-> +              DAI list with the CODEC-side DAIs connected to the above CPU-side
-> +              DAIs and involved in this sound peripheral.
-> +
-> +              The list is in left/right order if applicable. If there are more
-> +              than one CPU-side DAIs (there can be two), the CODECs must be
-> +              listed first those connected to the first CPU, then those
-> +              connected to the second.
-> +
-> +              In addition, on some machines with many speaker codecs, the CODECs
-> +              are listed in this fixed order:
-> +
-> +              Four speakers: Left Front, Left Rear, Right Front, Right Rear
-> +              Six speakers: Left Woofer 1, Left Tweeter, Left Woofer 2,
-> +                            Right Woofer 1, Right Tweeter, Right Woofer 2
-> +
-> +        required:
-> +          - sound-dai
-> +
-> +      cpu:
-> +        type: object
-> +        additionalProperties: false
-> +
-> +        properties:
-> +          sound-dai:
-> +            minItems: 1
-> +            maxItems: 2
-> +            description: |
-> +              DAI list with CPU-side I2S ports involved in this peripheral.
-> +
-> +        required:
-> +          - sound-dai
-> +
-> +    patternProperties:
-> +      "^dai-tdm-idle-mode-[0-9]$":
-> +        $ref: tdm-slot.yaml#/properties/dai-tdm-idle-mode
-
-Extend tdm-slot.yaml if it doesn't work for you instead of defining a 
-new property using an existing property.
-
-> +
-> +      "^dai-tdm-slot-tx-idle-mask-[0-9]$":
-> +        $ref: /schemas/types.yaml#/definitions/uint32
-> +        description: Idle slot mask. A bit being set to 1 indicates
-> +          that the corresponding TDM slot is inactive/idle.
-
-Extend tdm-slot.yaml...
-
-Rob
+Maybe I just need to make it log the last few firmware messages...
 
