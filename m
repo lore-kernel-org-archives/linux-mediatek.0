@@ -2,78 +2,97 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id AB460606A322
-	for <linux-mediatek@archiver.kernel.org>; Wed, 21 Oct 2026 14:52:21 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 229D6606A32E
+	for <linux-mediatek@archiver.kernel.org>; Wed, 21 Oct 2026 14:59:25 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=Jv0LvZXL;
-	dkim=pass (2048-bit key, unprotected) header.d=medichon.fr header.i=@medichon.fr header.a=rsa-sha256 header.s=ovhmo3801317-selector1 header.b=DR4MDDXn
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=f72HiZ4P;
+	dkim=pass (2048-bit key, unprotected) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20251104 header.b=ijmVvBpG
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:List-Owner;
-	bh=xir/Ekev5N4mjzLj0xcz0Rsjkx36hw6Go6Z6J+0jWHo=; b=Jv0LvZXLcx7X8NTxiFipjpQ2Ru
-	kF+qUAw75h/DFMEOIWwsIkthlcnQLb6NQFYcmpa0bFsb0gCOlfvXf//WAf3Y7Pe0HU7+BQofYLZxg
-	QnCsXlNmJ/mJ9+w0xkgciPJXxhjjNNXt2Nz677ZqpGqr1b0SiHkDqbYZfPO7Jqsd5RdtYkyBoun0t
-	9Z95zsKT2uoywI6CPX0+trdAeAgIiw8qiwMoNFHvAipaELOEslbjewT+YIKlErot0ODTiLkvZAfAN
-	djLEKBJ/+gDK+wwQCbX8SDCnqyKD7cRBFWFeHsXTAwhXA7xYg+euv+rBHMMyX+78t+vC7fzdimDZl
-	jubV8bIA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-Type:Message-ID:Date:References:In-Reply-To
+	:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Owner;
+	bh=hObvmucUS6t1rWR1L9u3AvYVQ+Nq1snLbT3mu1kE8f8=; b=f72HiZ4PFaAmkEggxbfQdsWyN4
+	6nYs4XQFpnIdI7zsSyqu7ndqjv6pbT+61gxaVm5AsuCZ77PIR0MrjZUZvZ1VCD8KaZgrhQznS76ur
+	+2sa4TQwWuWBR3DmAljPJx3r92+nPbPQKNMwnNLqrZ+ZSrgXYyEet1p7BbjKcsnV8M/5FEYIVrVLS
+	7v1XnwtJR2fltSMpsBsfjs0QuDoUv3aZw007B/F+OtBlgCOhL9ehxjlwz6rfaAI1Pv+Qc3pTNh6SB
+	UA3YSmuxE8j8TdlW9DaqlNOoA+RvStvM1xb88PeH4GagSFQJfhovfJ4v8djiuUfDAE3dlIJIci5h1
+	V/hBS1gw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xJXfv-0000000C9H8-0CwJ;
-	Wed, 21 Oct 2026 14:52:19 +0000
-Received: from 10.mo582.mail-out.ovh.net ([87.98.157.236])
+	id 1xJXmm-0000000CBGJ-07UB;
+	Wed, 21 Oct 2026 14:59:24 +0000
+Received: from mail-lf1-x12e.google.com ([2a00:1450:4864:20::12e])
 	by bombadil.infradead.org with esmtps (Exim 4.99.1 #2 (Red Hat Linux))
-	id 1xJXfs-0000000C9Eo-273U
+	id 1xJXmj-0000000CBF6-0Kc2
 	for linux-mediatek@lists.infradead.org;
-	Wed, 21 Oct 2026 14:52:17 +0000
-Received: from director8.ghost.mail-out.ovh.net (unknown [10.110.0.202])
-	by mo582.mail-out.ovh.net (Postfix) with ESMTP id 4j8sgl5GQbz5xxY
-	for <linux-mediatek@lists.infradead.org>; Wed, 21 Oct 2026 14:52:03 +0000 (UTC)
-Received: from ghost-submission-7ccd8bbbb6-gl4x5 (unknown [10.108.42.75])
-	by director8.ghost.mail-out.ovh.net (Postfix) with ESMTPS id 786C6C0106;
-	Wed, 21 Oct 2026 14:52:02 +0000 (UTC)
-Received: from medichon.fr ([37.59.142.98])
-	by ghost-submission-7ccd8bbbb6-gl4x5 with ESMTPSA
-	id 8cfNEZLR2GrcIAwAWDeZ3g
-	(envelope-from <abo@medichon.fr>); Wed, 21 Oct 2026 14:52:02 +0000
-Authentication-Results: garm.ovh; auth=pass (GARM-98R002b4da53ac-d7f1-47df-9405-bc8493e0641b,
-                    05BFDA4BFEC350FDF8004146BCFDBCA9DF17BA8C) smtp.auth=abo@medichon.fr
-X-OVh-ClientIp: 88.190.90.129
-From: Arnaud Bonnet <abo@medichon.fr>
-To: marcel@holtmann.org,
-	luiz.dentz@gmail.com,
-	matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com
-Cc: linux-bluetooth@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	jkoolstra@xs4all.nl,
-	skhan@linuxfoundation.org,
-	Arnaud Bonnet <abo@medichon.fr>
-Subject: [PATCH] Bluetooth: btmtk: remove redundant memory barrier with helper
-Date: Wed, 21 Oct 2026 16:51:12 +0200
-Message-ID: <20261021145112.64213-1-abo@medichon.fr>
-X-Mailer: git-send-email 2.53.0
+	Wed, 21 Oct 2026 14:59:22 +0000
+Received: by mail-lf1-x12e.google.com with SMTP id 2adb3069b0e04-5be3d5927ceso718280e87.3
+        for <linux-mediatek@lists.infradead.org>; Wed, 21 Oct 2026 07:59:20 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20251104; t=1792594758; x=1793199558; darn=lists.infradead.org;
+        h=mime-version:content-transfer-encoding:content-type:message-id:date
+         :references:in-reply-to:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to:content-type;
+        bh=hObvmucUS6t1rWR1L9u3AvYVQ+Nq1snLbT3mu1kE8f8=;
+        b=ijmVvBpGtk72lpki++f5XRUGr2fJU0s4pUlT3PACt94gIBEQ1XEaJjEy6WCuWmERJH
+         xEXJ4gjPfB3OD07OlDh5VMWc1R+zzbXHWoNmrCqVI8ZRpL6ZszPs0atit8DY5b5STCzE
+         tBcsZ/tAsNbt5ldCoH+HVrNTa6enpzJbXTTZLk43Kvtu8hd/v1mALjDQUSonB2XJ+ooP
+         DH1QAqUaiEfbMIrbh2o7VgtMdUj5cAF7eHWKTond98dnQo86Bb4ENcmRqeiGhuwi2qNo
+         4hWKR07n2eXZADWviXuTxCbFK4hPQ8cBihBxFOJHbRNM8NqsIQBlAU4hdUq5t9OPMe2l
+         NzpQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20260707; t=1792594758; x=1793199558;
+        h=mime-version:content-transfer-encoding:content-type:message-id:date
+         :references:in-reply-to:subject:cc:to:from:x-gm-gg
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+         :content-type;
+        bh=hObvmucUS6t1rWR1L9u3AvYVQ+Nq1snLbT3mu1kE8f8=;
+        b=DBR8sSX6hpJEeg1pSm0XLXobeEOv/g0rd8R3nTnOecbkSd63B2XAedlmNd52cqMOJe
+         qyKIjlQjGwrbh/6JANfe361wZSbUVsXG2u6WjUTv1RIki4lDIjXWGiC+NOx2u39//6eP
+         2WcN6Cn7DiA7ySQfr9yUFl2z1Eqd9dMAv6jSu893aMOHJiW6yavIT36oB4rPEEdY3Z6s
+         H5dAwFYwsuXH86ew/kkDEMPvkqTPFwNQrZnCfF6aWv7NMh0xqXnSwXFDX7jJpxQzzvyK
+         RLWes2cDSqkw++dhih7YFS7KFM1f5xajr9CUBvG8RqhkGmLg6JhKd7GwKUfO3BZwTbhR
+         yUNQ==
+X-Forwarded-Encrypted: i=1; AKwUvBzPk5Sg/elAt+Xlgdh4W2rC+cVxpISjpAMuTSIcaFasSOwYnqwmTDvO4wn+3uisNyCtdcnB/4WUjN5QJEGfcg==@lists.infradead.org
+X-Gm-Message-State: AFq9FYKxRk5xKJRJSBdz2/ypq6fYqoNNvS9NYqbrq6JU1Pd0k3KazAhV
+	H4VrzQ7a0fe8fTrB55fnpGClxrir/WnubkhIGSIqRN+rLdobony2yLV1
+X-Gm-Gg: AYBFou0rASTeLeg+k6XzZFw3hRcGc6PvO5f+tP3snr4cFYuO6jtBkpo8+7Gp/CRoR4b
+	lRvpe2lv74+eP840COyffwMHJiFcnMOUo5mk7l6Tr9ANQA3GJ79bhZyMe7KNzrv7d1YyLobVAtz
+	o7s/FM2VkGNc8rOOZtmAW4RuL5Nx78Vz/GzYvf5bo3TnSmtBCzO/Voqrad5ifVxLXe/JZPVywev
+	ZYsqCYr0Vcq9qfG8OEPwQGZqDRWrTcSV8DSEUJYk2GdXYkhow/x7yVfv2KyjlyfQW69BS/oQeoS
+	nvCLnT5kBNpkX1YU5VCmXcZ/I1bGuqf/oz7yIg2OWbX1DNOKa9M+hUo01RfbNw3Bz/OphXFvNHr
+	Rjye5erSQoQ9meqWpjXTEOdc1jSuA/Q3e2vzjxctDjUeBPn08p1U8AilWiPXKcpiQonp9yLQQm9
+	t/nxiqmsbeBNS6Mh9vhQ+W/XE8KI2X8KTD7Uh6HFA2ovLlc6RnUH8Aq9phDoe0LeQ5RiwNXgbna
+	iXFsX3BqEFyPyaYe+DmwbeVlBdBVs+RLwspDCnXVai3JjUrhapCJ9tB0iD2YBniLqDOgm6Eiflf
+	SfrlWjgl+zm7INGU
+X-Received: by 2002:a05:6512:65c9:10b0:5bf:a34f:b94d with SMTP id 2adb3069b0e04-5bfa34fb967mr478168e87.9.1792594758106;
+        Wed, 21 Oct 2026 07:59:18 -0700 (PDT)
+Received: from [127.0.1.1] ([85.249.168.112])
+        by smtp.gmail.com with ESMTPSA id 2adb3069b0e04-5bfa4b90999sm128327e87.68.2026.10.21.07.59.16
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 21 Oct 2026 07:59:17 -0700 (PDT)
+From: Fil Dunsky <filipp.dunsky@gmail.com>
+To: nbd@nbd.name, lorenzo@kernel.org, ryder.lee@mediatek.com
+Cc: shayne.chen@mediatek.com, sean.wang@mediatek.com, matthias.bgg@gmail.com,
+ angelogioacchino.delregno@collabora.com, linux-wireless@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, Fil Dunsky <filipp.dunsky@gmail.com>,
+ netdev@vger.kernel.org
+Subject: Re: [PATCH] wifi: mt76: dma: run threaded NAPI kthreads with
+ SCHED_FIFO low priority
+In-Reply-To: <20261020-b4-mt76-napi-fifo-v1-1-ac8a24e2062a@gmail.com>
+References: <20261020-b4-mt76-napi-fifo-v1-1-ac8a24e2062a@gmail.com>
+Date: Wed, 21 Oct 2026 17:25:53 +0300
+Message-ID: <179259275334.35963.15413466304986880275@gmail.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-x-ovh-tracer-id: 15101413975834975838
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: 0
-X-VR-SPAMCAUSE: dmFkZTF9qtoi3tSx1+QKyIGt9BUWZHYs30HfsfJ2N49k4rfwYUqUlZ2ZgIzqSeydFiP4LSuTwqmOg9zF5YWJqS/oVWKN7RLL2AF8sFyMIQrrbxqeZj7yvACIYYYqjObN2xIS1wCyz52VyMYQNVsllMnPoDQb0DqTihkGkKfb59TBse/3+OWKaY1dMjcHNxqHFn24rMkjMIW5up31Bicg+rYyswoQsz7Q23WuDGippsnh5+kyR1H7HvzYgXx3rHEKI2dQ9NvpT36r1GqsvgV2JRixe7YG9tqI2yk9fUR1koSWYrOyfdl68h1QrvunaVV+/oWfkXcgomWU+mvKvTrc9zA0e+TkB45lYs9zGGCG+xWTSx5GoO/oeKWlQy8ntwH9smD3cW3GwUk8E36uJpwyFco2FQAmwRWqVS5AYIjtUI5JPwMbLzAkddZwW5Z7vom5C4BjcyxeKJjBVfmqxQsnhrSDrD4p/SiktrZIDXVG8PpIGa0Dxs557SYQ+CjoYAShKP7GO1MvmokG2QVKRrNOFBkbnjL9iMyBNGfcJX8SPok4AFt4STPUGbnJF4xawwGN2E1OG6eI7kbmOLqA7iR3L6QMc5IHVlipErti62jeR0oU7nbvU4M9ryfZUXF9rcLRGwmyDjKDRE/bnAcCnh7srZTmz6yojJWmwpGtmVkABsKAEe/0FQ
-DKIM-Signature: a=rsa-sha256; bh=xir/Ekev5N4mjzLj0xcz0Rsjkx36hw6Go6Z6J+0jWHo=;
- c=relaxed/relaxed; d=medichon.fr; h=From; s=ovhmo3801317-selector1;
- t=1792594323; v=1;
- b=DR4MDDXn1q6Ibrz+eXo8ZjhVyasqFfbWAStu16K5UneoeqPiFqKBZF4SCghcmA+rUw1noZXu
- sZapgzGN58C/Xz3b/Zz65ympBiQlZRLsErq80QF/qSQXtWnUtHD73tqV0gPcLJBuy9VtfYpwpx8
- WtSw4suDL656bpjaOq6oy3k6fvwfbYHYHjc+33CTMU+l9mQGc7+l8Opi9DgaEDffrd+hjH7fsHy
- GcwaPrzxkTgiX3PrYG/Tbpiozh+ZLRHm9CWWpX+blsfFP4Dc2deifjYL/cNf5EMHrqdAEr1n/Ra
- lGwYiTmtZTvTs0SqUHRxczSOcwoi9wkmeKC9DTm4E2WaQ==
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261021_075216_678893_8101995C 
-X-CRM114-Status: UNSURE (   9.45  )
+X-CRM114-CacheID: sfid-20261021_075921_140577_272F82A5 
+X-CRM114-Status: UNSURE (   8.02  )
 X-CRM114-Notice: Please train this message.
 X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-mediatek@lists.infradead.org
@@ -86,51 +105,42 @@ List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-19.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,
-	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=ham
+X-Spam-Status: No, score=-7.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
+	DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,FREEMAIL_FORGED_FROMDOMAIN,
+	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	MENTIONS_GIT_HOSTING,SPF_HELO_NONE,SPF_PASS autolearn=no
 	autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-The test_and_clear_bit() call works as a full memory barrier, thus it is
-not required to emit a barrier using smp_mb__after_atomic() before
-wake_up_bit().
+Adding netdev to Cc, as suggested on the GitHub mirror of this patch [1],
+since it touches the scheduling policy of threaded NAPI kthreads.
 
-Replace the whole sequence with test_and_clear_wake_up_bit(), which was
-introduced later in commit 52d633def56c ("sched: Add
-test_and_clear_wake_up_bit() and atomic_dec_and_wake_up()") as a wrapper
-for the correct sequence.
+For context on why this is done in the driver rather than left to the
+admin (chrt / sysfs): mt76 already does exactly this for its other
+rx/status and tx workers (sched_set_fifo_low() for the usb and sdio
+workers and for the tx worker), so the dma napi kthreads were the only
+mt76 rx path left at SCHED_OTHER. A userspace chrt also has to race
+the creation of the napi threads at boot and module reload.
 
-Signed-off-by: Arnaud Bonnet <abo@medichon.fr>
----
-Tested by building and manually checking generated assembly on x86, arm64
-and riscv64.
+Numbers from the setup in the commit message (MT7621 + MT7612E as 5 GHz
+client, 3 runs x 5 min each, ~200-280 Mbit/s rx with userspace load):
 
- drivers/bluetooth/btmtk.c | 8 +-------
- 1 file changed, 1 insertion(+), 7 deletions(-)
+  stock:                  ~500 full-ring events / 5 min, watchdog
+                          resets and MCU timeouts, occasional hard hang
+  this patch:             0 resets in 3 runs, rx 276-288 Mbit/s
+  stock + chrt -f 1:      0 resets in 3 runs, rx 249-273 Mbit/s
+  napi_threaded=0:        0 resets
+  rx ring 1024 (stock):   800-1300 full-ring events / run, more resets
 
-diff --git a/drivers/bluetooth/btmtk.c b/drivers/bluetooth/btmtk.c
-index 75483d8230e1..a620e24b6c17 100644
---- a/drivers/bluetooth/btmtk.c
-+++ b/drivers/bluetooth/btmtk.c
-@@ -607,13 +607,7 @@ static void btmtk_usb_wmt_recv(struct urb *urb)
- 			return;
- 		}
- 
--		if (test_and_clear_bit(BTMTK_TX_WAIT_VND_EVT,
--				       &data->flags)) {
--			/* Barrier to sync with other CPUs */
--			smp_mb__after_atomic();
--			wake_up_bit(&data->flags,
--				    BTMTK_TX_WAIT_VND_EVT);
--		}
-+		test_and_clear_wake_up_bit(BTMTK_TX_WAIT_VND_EVT, &data->flags);
- 		kfree(urb->setup_packet);
- 		return;
- 	} else if (urb->status == -ENOENT) {
--- 
-2.53.0
+A similar restart pattern is reported on single-core MT7620 at much
+lower rates [2], which fits CPU contention rather than throughput as the
+trigger.
+
+[1] https://github.com/openwrt/mt76/pull/1164
+[2] https://github.com/openwrt/mt76/issues/457
+
+Thanks,
+Fil
 
 
