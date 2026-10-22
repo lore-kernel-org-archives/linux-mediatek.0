@@ -2,134 +2,95 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 36014606A320
-	for <linux-mediatek@archiver.kernel.org>; Thu, 22 Oct 2026 16:04:12 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 67405606A31D
+	for <linux-mediatek@archiver.kernel.org>; Thu, 22 Oct 2026 16:38:41 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=slRichTc;
-	dkim=pass (2048-bit key, unprotected) header.d=NXP1.onmicrosoft.com header.i=@NXP1.onmicrosoft.com header.a=rsa-sha256 header.s=selector1-NXP1-onmicrosoft-com header.b=PYjurc6j
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=ZWh6RaX3;
+	dkim=pass (2048-bit key, unprotected) header.d=bootlin.com header.i=@bootlin.com header.a=rsa-sha256 header.s=dkim header.b=05Dn9p5c
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:
-	Content-Type:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
+	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
 	List-Unsubscribe-Post:List-Owner;
-	bh=CX4s1nDn2NuvGZIT9wG8mO0WEOLJYhaIPl5szunQF2k=; b=slRichTcQZggMQHTzStL9kVSiB
-	ybYhRWHQO2tc7KW7RwEuaHRrH8JttwyoqXmBhkeC6JWAlS3ul2fckzlGblKO98awCOc0WKiHXPh5v
-	7beSnfKjYjfAMZrNxApqZxQFYbw5HwJur9zbUeh90dMJtPYkBHEqOjfOdXivdaU46Q3zbtkcpcoaI
-	9MI6KmdTEUELw+JfwX/tTg8AnUsZbSrKGpjCN58XNL5nNLu3tKJDW/po9jYvgWTlx2D1385eR28Tu
-	5kOBG0H5rZ5pEgMmdtjb7idyKoIPojC3CT+46eq8UtgXncGGuM7O+YYyQHaewbNG3ZNy2ekHq2JT0
-	8zPkKp7w==;
+	bh=T42Gqv1gUbqMFVHPTxAxcE7ab5XVsjECq2S74AXpAns=; b=ZWh6RaX3ixAmPvUr80xqGvaQE3
+	Xgyv5VnbVMiWj6uGy0x2QACWWNpLH7WG/EMA7EcKNwliMZI0DscKRWD+/rZbhd96sd5IAFg53wwq+
+	x/+mkqOytOmCY8D3/+O14yMlKO24VZdeYQhRhoTEctHAkqD37TTZ+rYzEo9CcN76rrXaTUxam72mt
+	+M7Ytq9lGTouy44s7OVwB1RscC9/nF0kCeCybiOigVDaJpYMW50NixjjpallFUzwY+/J3ulXq18D9
+	IOE+hDe9u82iH1WnsTyVpG7WTuUQfnVThffcpOCNVllv7yDvVFRcZyXXzKlVK+/4ovZ+1P6sjTzxp
+	zFDtyWEg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xJvGz-0000000ESVC-2u2o;
-	Thu, 22 Oct 2026 16:04:09 +0000
-Received: from mail-westeuropeazlp170110003.outbound.protection.outlook.com ([2a01:111:f403:c201::3] helo=AS8PR04CU009.outbound.protection.outlook.com)
+	id 1xJvoP-0000000EVbJ-05If;
+	Thu, 22 Oct 2026 16:38:41 +0000
+Received: from smtpout-03.galae.net ([185.246.85.4])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xJvGv-0000000ESUQ-1Rdg;
-	Thu, 22 Oct 2026 16:04:06 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=qOB8KQsqZIvxAYD+QGY78i7FrUfdEqfrMNZlgID8TsYMea0oS486PNlr7RwK8X9/bhVdS5z1ElbvUvCbjdDP9lUcpnM0X87yWv9OAcUzP3GFEajMtOcM02PFqA1U222DZeH7tS5xdHMO48KRWcDq/hw5XaNWYBABUHenIKxC18oYyYMwAUCjJFdRXUc3zMyN94YxucbwCXdERs3TstQFf3NlyuGmfQ5DfxhOtWbrLu2D8+iVDPzIM+kGtFakomgL/mvjZBI4DGDS6HVgOGIJUO+SkQmhwZUM0bHITkamvzaX45i+7IEyr/6gGAPk/V16RE+IRvzRH3X9++1/NHMmCQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=CX4s1nDn2NuvGZIT9wG8mO0WEOLJYhaIPl5szunQF2k=;
- b=sSWAI7BPa7N96Ji4fK+X12/1YWho2MvrhnjWH9ZBJ72bAUAetB39mZLXIdAenbaK+5B7Y8E0jxx77A5zQdtJuKJh65Mb1/Vi+z6ehZyd4xpp3qMonOy/JpY3mGOlTGVEbKYSwYwJwJoakw6NFdjXbmOozrY04tF4dOUVCig6PgQRLvwdd1zYSrw4HJuYJMS9eTf0yzU4+OSg0rQEJ/6emWzA6n3RttBYFMU/wzvDBZhqkXmPTutjQJHkJnVcT3KpaaApQJ7KZxEFhQvHOQPqgkcPd0WQA8Sd7xDB985lrhCj85TXFDO0YOmJeJURMO5n+Ya7FEUKviv5ptwp5G3xtQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=oss.nxp.com; dmarc=pass action=none header.from=oss.nxp.com;
- dkim=pass header.d=oss.nxp.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=NXP1.onmicrosoft.com;
- s=selector1-NXP1-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=CX4s1nDn2NuvGZIT9wG8mO0WEOLJYhaIPl5szunQF2k=;
- b=PYjurc6jdvcV60VMN1t9KMVZ2VhmjwrSUlYMqKwirvTPegCVM/FyMLMOXssAHAfL5NAQbHKM3ObaHTRsy9nWwLQShTDE1xFOHngvsd08GGpwpr/uiVhx7X9SBToRurE5xindFSbaPvEo0UlpNxUUOo+LN2rMq+VRHRfD5eN7SnUZY1/J+4skxv9UQfY88nwLS1NA0QUNpT0m2hMJkNVFfOuVang7sDmG/gyEh3e/TERm7RyiFsmhefc1b7PwKkJtERpcR1+DVUsgouorOtkdaadeAtvytlJhvARKk+PCYtYaI/7r0lP6JHUSsr6YsFRKzabUGLfDjZVU8LwU/SPs8w==
-Authentication-Results: mx.microsoft.com 1; dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=oss.nxp.com;
-Received: from MI3PR04MB12438.eurprd04.prod.outlook.com (2603:10a6:290:76::14)
- by AS8PR04MB9126.eurprd04.prod.outlook.com (2603:10a6:20b:449::16) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.546.16; Thu, 22 Oct
- 2026 16:04:01 +0000
-Received: from MI3PR04MB12438.eurprd04.prod.outlook.com
- ([fe80::c715:c32:8bb1:b70b]) by MI3PR04MB12438.eurprd04.prod.outlook.com
- ([fe80::c715:c32:8bb1:b70b%6]) with mapi id 15.21.0546.012; Thu, 22 Oct 2026
- 16:04:01 +0000
-Date: Thu, 22 Oct 2026 11:03:52 -0500
-From: Frank Li <Frank.li@oss.nxp.com>
-To: James Hilliard <james.hilliard1@gmail.com>
-Cc: Sean Wang <sean.wang@mediatek.com>, Vinod Koul <vkoul@kernel.org>,
-	Frank Li <Frank.Li@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Long Cheng <long.cheng@mediatek.com>, dmaengine@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH] dmaengine: mediatek: uart: synchronize completion
- callbacks
-Message-ID: <atoz6M7RHU14_a3J@SMW015318>
-References: <20261021-submit-mtk-uart-dma-synchronize-v1-v1-1-4f7718cfef41@gmail.com>
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20261021-submit-mtk-uart-dma-synchronize-v1-v1-1-4f7718cfef41@gmail.com>
-X-ClientProxiedBy: DS7PR03CA0202.namprd03.prod.outlook.com
- (2603:10b6:5:3b6::27) To MI3PR04MB12438.eurprd04.prod.outlook.com
- (2603:10a6:290:76::14)
+	id 1xJvoL-0000000EVaD-2MX1
+	for linux-mediatek@lists.infradead.org;
+	Thu, 22 Oct 2026 16:38:39 +0000
+Received: from smtpout-01.galae.net (smtpout-01.galae.net [212.83.139.233])
+	by smtpout-03.galae.net (Postfix) with ESMTPS id E11FD4E412B6;
+	Thu, 22 Oct 2026 16:38:32 +0000 (UTC)
+Received: from mail.galae.net (mail.galae.net [212.83.136.155])
+	by smtpout-01.galae.net (Postfix) with ESMTPS id 99F8260763;
+	Thu, 22 Oct 2026 16:38:32 +0000 (UTC)
+Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id B78F710328E8D;
+	Thu, 22 Oct 2026 18:38:16 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=dkim;
+	t=1792687106; h=from:subject:date:message-id:to:cc:mime-version:content-type:
+	 content-transfer-encoding; bh=T42Gqv1gUbqMFVHPTxAxcE7ab5XVsjECq2S74AXpAns=;
+	b=05Dn9p5c5F4yDZSEUXBc+einztw3kamf5mYqUhd2o4/IoY1LYm6/ZZr1xlwC6/3vsG1atc
+	jACHSsEEzlOKlDvT9+qTbnv/X6f4xqKax5UouDIys+akOXo81d4aRpuiVYNi8b/8dIKeEn
+	t9Oy5OZ780M4MxRwl7yOt/9KGrryPZvfPtYiqs1+ArRMvCIpQb8DxKHEcEM0H9IFhR6SJY
+	zJmPfvRGifF1pPwU8qaPMm7kG8ZpvlAFFmfFkNAVUHmFHIcrnd0rkg/JuY1onfX7UdFFjo
+	/WrjMEF5oOXvGTJPsBN6vt07g8y7ZWDd+eQnJEJ9Z04nw7hiOpIfVaH+JZ517g==
+From: Kory Maincent <kory.maincent@bootlin.com>
+Subject: [PATCH v4 0/8] Add support for DisplayPort link training
+ information report
+Date: Thu, 22 Oct 2026 18:37:56 +0200
+Message-Id: <20261022-feat_link_cap-v4-0-a4f3f6e8cad9@bootlin.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: MI3PR04MB12438:EE_|AS8PR04MB9126:EE_
-X-MS-Office365-Filtering-Correlation-Id: baebc57b-7246-492e-13e5-08df30561647
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|7416014|376014|23010399003|19092799006|366016|1800799024|11063799006|56012099006|261021121427099003|261009223027099003|10067099003|22082099003|18002099003;
-X-Microsoft-Antispam-Message-Info: mQH2Um/gHPE25UKMVSvKfwWs5lrdgBZ1nM3o1PoqhOVP8i+SMMSMufcB3Aakg75CZvIaI8lGTW4RiF83YN8RYlZAtyPutqCZ94fK/ZqZIeplPYx0jDh5fIyUt4b6eM7G3cqJWOjgljiq+QdnuCu8S4C67Zio3IDF0s8H8AXFEMSnf4wRWiirwHbBi4qAgWziqSxbYsgClB9Tla/cR+6IE7IhxXbIwskIPp27Eoxig7l9buLHvi4ZUo90VsIAx2gYXyHs5yvMVIB1w5fy5MRK/GsbWge1ItzOMiRAosUcQcEppUwiTfwEjb0f6+IPEA/ifH+i4o+kLOOTNPHlRFSDPAsWXsU32tNgES3NDWRWKvhr9snWg0Yp3zjPZd9vrpOIg8HdtQPN5UxBfBWNUqOsUZ27aO1bfUBrATW6cX0kXFMsg/okNmx4npeVllmfsRXq1u/gzdlIqhO1PHcfU+TGUAwI7GUjFJCCKez4c1AAeVzI1xBR8nUbOZQCynRjKrEUPyDvpMTINKdJ6Fw5sKzMK4LM1FxRO+1Rbi6QOunxedvnCF7MMVgADY589eSDeidDQs+pk3IRT3zUymGBwV6R41o5OlbWlDzxwUIRPPPZSR0VFlLp6Eq6AuH7ub7sU+mcrOkCeFNB95L6AH7bUEmzqj+Vt2LErJjPrAWAoXN54Po=
-X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:MI3PR04MB12438.eurprd04.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(7416014)(376014)(23010399003)(19092799006)(366016)(1800799024)(11063799006)(56012099006)(261021121427099003)(261009223027099003)(10067099003)(22082099003)(18002099003);DIR:OUT;SFP:1101;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?/qYC2wsf6VXtBItPfEC8ofDkhIWHQYvagEIdtVX7MGkJwxHxwFST/EwGxwWS?=
- =?us-ascii?Q?WipNN5/vNQBdBnWzN1QLEKGd852/wHMI7TjbpvZOEDc8SyhhddA+eXm5fOym?=
- =?us-ascii?Q?Q0TwQPnkiuE3um8ux+1MJT+0Eb8PiSrWx27Mp3/HPel9ai/pQTs8SeNCZDEQ?=
- =?us-ascii?Q?P6ILoTHPJVFSncn9h3t4kUk47j3kSsAj916EOaO5upRuOwYfmr+mETiK7XI8?=
- =?us-ascii?Q?mj6RsHIHc2cgU/09AEa7M883cSZbFGHoBSxAuUatwXAkiGwuz4z18/wFfdBJ?=
- =?us-ascii?Q?j+4fez/vwca8SmXFmnmq1h1MLCU2q7o72akmU3R6+V/aB4pul87P546CAebp?=
- =?us-ascii?Q?jk1jGbvkhB5JpRF8aT9h+1oCBSlNufxsxjihBV6RJpyqdltwOpHQmhQnspfA?=
- =?us-ascii?Q?HC4vMiR6LVvIFrmaCzGgJYZpg6pJVFwLWomo7RPslomPeBatyh00c5jaaKgh?=
- =?us-ascii?Q?po8KEOMD9oec9xX4FLTvpunEfIsQk9M06wi70jYOxrptqaDcuVJY15zFSP3y?=
- =?us-ascii?Q?mjkJlFNkJUHycmI4zACeeKQC0CFTdilMW8QlLeHqLI/L/Hnc8b6Zz3baPUsl?=
- =?us-ascii?Q?POAtLR3Mcdvq1+z/hMCpyzWVWkbLDtA6ZMuR+WvJBgZfPpHd0QQreB8BLmEL?=
- =?us-ascii?Q?Za2hTdacNCbYfwv+g30jD7hLYjmRCfjZ9D8qgQMc/41Gz0po6tImQ8z4oE0F?=
- =?us-ascii?Q?KZg2AEqUQLmB6zNj7hro6KnJk4Dk0VLWKoh3MqS8qoj5NsllPvlKB+rMvyvN?=
- =?us-ascii?Q?xUn267JuJ3nyTkulyOwkGW/9KgUL/PKFWk8eCZoDmql/5++SAw55+7cawF5L?=
- =?us-ascii?Q?9bwFrZ8IdBzFjr9IWv7+RWwBDq38LOd/TBCyzD94kFcG/8DCRskVsg7dVimo?=
- =?us-ascii?Q?evFxjYgCH3uImQTOulHBcD7IITa2r8t/5TDFlaBQPw5LW33dePV2BaXbQplG?=
- =?us-ascii?Q?68Z8Not8dfuW3gezkAIX3qHf3Pth1cvn+ghFesGDeoQYy0Z3Zf8/oe959mYH?=
- =?us-ascii?Q?sVhNy/Gu2Gqob90zsYOyba/Ef5M11g7EzCpBHurrEbIYWQMmHVPtuh+jhDFm?=
- =?us-ascii?Q?Jcz9dD2uor8ku9Yp+O2daeGMO9gcS4An5PcSF+/JWhs1ye2aBE0bYnr2S5Od?=
- =?us-ascii?Q?SEoq6mHYXpfgrElFL6smUzu3MHq7i9wyy3ya6FrGVR4hUjhg4SlyeXK2xl7j?=
- =?us-ascii?Q?bI7m6BsLputN19k3kD11wREdcmIklnwJ2epYR6B3FyT6ZKD/ekKp/PSurvs7?=
- =?us-ascii?Q?cadWxiX8GJBoEH+tMC7RDf0cs4EKInujafiYGj9rbecVzh/c9Lwh1m20O4gP?=
- =?us-ascii?Q?mfOXIR1jMHOqDI3mCWTcHFiVRwUK3Toa4NZPgokqlpx17spC4Ca5rYjPU7bx?=
- =?us-ascii?Q?e5iBedH7sqOsk3pJvz3M/SbsumM5HLUAzSwzNMUg3gOhJ2DU+EcZ+PzLOMiP?=
- =?us-ascii?Q?14lGcJZZdrHN5VfU74fJTGTL2L2XlOAJO77GdkBU7gu547xw9rosFg2E9Wnr?=
- =?us-ascii?Q?4Pcb2r/l5XHXE4tl4lhWOfctjQgUkwXVVlrcdIh7+Jy1TON67np25+nPpBST?=
- =?us-ascii?Q?f4U+yT8fWZlqK53MjIEHaX75ZxLmkniIjhBqRYDJ/9PtnNeybFhs7WW6K+eE?=
- =?us-ascii?Q?qSBfRfNxoIrA21B14E2HIslgDMZbgaP+bOUlp4DkwMZRVBaXMmUYKn80/x0N?=
- =?us-ascii?Q?3o0eoEUp88zXlY3KG9ylFbXuUW2COAB36Qq7gvGdMpFHKFH8Pc3Hw814BFen?=
- =?us-ascii?Q?peyWreFcF+cJTXiBBDvGjLjdZigeM4J4oiytOLFyuwtoWcGMQ0XX?=
-X-OriginatorOrg: oss.nxp.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: baebc57b-7246-492e-13e5-08df30561647
-X-MS-Exchange-CrossTenant-AuthSource: MI3PR04MB12438.eurprd04.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 22 Oct 2026 16:04:01.0701
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 686ea1d3-bc2b-4c6f-a92c-d99c5c301635
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: zFrb3JtVdg3wmxY6qfXqVvdsDV5nQrzmHV6JOMkNetcwbX+C2/TmqX49FibA55FIiL9jFwhJaxILhUwrFf89JVRhRyfkfEWReOtpDC7gEZsSaXdN8EO8YA6C0MZz4u2x
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: AS8PR04MB9126
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+X-B4-Tracking: v=1; b=H4sIAOQ72moC/2XN0QrCIBTG8VcJrzOOR3PZVe8REc4dm1QztjGKs
+ XfPLSjaLr8jv789a6gO1LD9qmc1daEJsUpDrVfMlba6EA9F2gwBNSBq7sm251uormdnHxzB5bn
+ 2UhQKWDKPmnx4Tr3jKe0yNG2sX1O+E+P1U1JgZqVOcOAZaEM7YYwjPOQxtul54+Kdja0Of16Lh
+ cfkrSzIKQdoC7P08usFCJx7Of6/FZlXNrfg5b8fhuENECys4iwBAAA=
+X-Change-ID: 20260226-feat_link_cap-20cbb6f31d40
+To: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
+ David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
+ Jani Nikula <jani.nikula@linux.intel.com>, 
+ Rodrigo Vivi <rodrigo.vivi@intel.com>, 
+ Joonas Lahtinen <joonas.lahtinen@linux.intel.com>, 
+ Tvrtko Ursulin <tursulin@ursulin.net>, 
+ Andrzej Hajda <andrzej.hajda@intel.com>, 
+ Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, 
+ Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, 
+ Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
+ Luca Ceresoli <luca.ceresoli@bootlin.com>, 
+ Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
+ Philipp Zabel <p.zabel@pengutronix.de>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Dmitry Baryshkov <lumag@kernel.org>, Daniel Stone <daniels@collabora.com>
+Cc: Thomas Petazzoni <thomas.petazzoni@bootlin.com>, 
+ Mark Yacoub <markyacoub@google.com>, Sean Paul <seanpaul@google.com>, 
+ Manasi Navare <navaremanasi@google.com>, 
+ Drew Davenport <ddavenport@google.com>, 
+ Louis Chauvet <louis.chauvet@bootlin.com>, dri-devel@lists.freedesktop.org, 
+ linux-kernel@vger.kernel.org, intel-gfx@lists.freedesktop.org, 
+ intel-xe@lists.freedesktop.org, linux-mediatek@lists.infradead.org, 
+ linux-arm-kernel@lists.infradead.org, 
+ Kory Maincent <kory.maincent@bootlin.com>
+X-Mailer: b4 0.16.1-dev-17221
+X-Last-TLS-Session-Version: TLSv1.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261022_090405_535911_EE7D45A6 
-X-CRM114-Status: GOOD (  20.87  )
-X-Spam-Score: 0.0 (/)
+X-CRM114-CacheID: sfid-20261022_093837_907745_D9C9197C 
+X-CRM114-Status: GOOD (  16.92  )
+X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -140,75 +101,128 @@ List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-13.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
-	DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS autolearn=ham autolearn_force=no version=4.0.1
+X-Spam-Status: No, score=-18.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,
+	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=ham
+	autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On Wed, Oct 21, 2026 at 03:13:24PM -0600, James Hilliard wrote:
-> Terminating a UART APDMA channel waits for its interrupt handler, but
-> completion callbacks run in the virt-dma tasklet. A callback already
-> removed from desc_completed can still be running after termination
-> returns. With no device_synchronize hook, dmaengine_synchronize() does
-> not wait for that callback either.
->
-> Implement the hook using vchan_synchronize(). This lets clients finish
-> asynchronous cancellation before reusing callback state or freeing DMA
-> buffers. Keep the callback wait out of device_terminate_all so it can be
-> performed without locks acquired by the callback.
->
-> Fixes: 9135408c3ace ("dmaengine: mediatek: Add MediaTek UART APDMA support")
-> Signed-off-by: James Hilliard <james.hilliard1@gmail.com>
-> ---
->  drivers/dma/mediatek/mtk-uart-apdma.c | 8 ++++++++
->  1 file changed, 8 insertions(+)
->
-> diff --git a/drivers/dma/mediatek/mtk-uart-apdma.c b/drivers/dma/mediatek/mtk-uart-apdma.c
-> index f74e9a328588..7583c287da5d 100644
-> --- a/drivers/dma/mediatek/mtk-uart-apdma.c
-> +++ b/drivers/dma/mediatek/mtk-uart-apdma.c
-> @@ -440,6 +440,13 @@ static int mtk_uart_apdma_terminate_all(struct dma_chan *chan)
->  	return 0;
->  }
->
-> +static void mtk_uart_apdma_synchronize(struct dma_chan *chan)
-> +{
-> +	struct mtk_chan *c = to_mtk_uart_apdma_chan(chan);
-> +
-> +	vchan_synchronize(&c->vc);
+DisplayPort link training negotiates the physical-layer parameters needed
+for a reliable connection: lane count, link rate, and optionally Display
+Stream Compression (DSC). Currently, each driver exposes this state in
+its own way, often through driver-specific debugfs entries, with no
+standard interface for userspace diagnostic and monitoring tools.
 
-Can you create vchan API, which use dma_chan as agurement like, basic
-move this function into vchan-dma.h
+This series introduces generic helpers, for exposing DP link capabilities
+and state as standard sysfs entries.
 
-vchan_dma_synchronize(struct dma_chan *chan)
+The aim of such development is to guide users to select the most suitable
+DisplayPort connector for their needs. For example, if you have a USB-C
+hub with lesser capabilities than your computer’s native DisplayPort
+connector (such as HBR2 versus HBR3 support), the system could recommend
+connecting high-resolution displays directly to the computer’s port
+instead of through the hub to ensure optimal performance.
 
-So below callback direct use this API and avoid other drivers duplicate
-this segment code.
+The new drm_dp_source_set_caps and drm_dp_sink_set_caps helper expose
+source and sink training capabilities to userspace via sysfs attributes
+under dp_link. Finally drm_dp_set_cur_link_params helper is provided to
+report current link information at runtime.
 
-Frank
+Three drivers are updated as reference implementations: i915 (direct
+connector path), ANX7625 and MediaTek (via the bridge connector framework
+using a new DRM_BRIDGE_OP_DP flag).
 
-> +}
-> +
->  static int mtk_uart_apdma_device_pause(struct dma_chan *chan)
->  {
->  	struct mtk_chan *c = to_mtk_uart_apdma_chan(chan);
-> @@ -514,6 +521,7 @@ static int mtk_uart_apdma_probe(struct platform_device *pdev)
->  	mtkd->ddev.device_config = mtk_uart_apdma_slave_config;
->  	mtkd->ddev.device_pause = mtk_uart_apdma_device_pause;
->  	mtkd->ddev.device_terminate_all = mtk_uart_apdma_terminate_all;
-> +	mtkd->ddev.device_synchronize = mtk_uart_apdma_synchronize;
->  	mtkd->ddev.src_addr_widths = BIT(DMA_SLAVE_BUSWIDTH_1_BYTE);
->  	mtkd->ddev.dst_addr_widths = BIT(DMA_SLAVE_BUSWIDTH_1_BYTE);
->  	mtkd->ddev.directions = BIT(DMA_DEV_TO_MEM) | BIT(DMA_MEM_TO_DEV);
->
-> ---
-> base-commit: 93f51579e7df248780214094418f205253383cc5
-> change-id: 20261021-submit-mtk-uart-dma-synchronize-v1-158c8303b574
->
-> Best regards,
-> --
-> James Hilliard <james.hilliard1@gmail.com>
->
+Here is a sysfs example:
+
+cur_link_info_dsc            sink_link_caps_nlanes
+cur_link_info_link_rate      source_link_caps_dsc
+cur_link_info_nlanes         source_link_caps_link_rates
+sink_link_caps_dsc           source_link_caps_nlanes
+sink_link_caps_link_rates
+
+1620000 2160000 2700000 3240000 4320000 5400000
+
+1620000 2700000 5400000 10000000 20000000
+
+5400000
+
+This series is rebased on top of drm-misc and may conflict with the
+current state of the drm i915 tree. Which tree should pick this up,
+given that it mixes core development with driver changes?
+
+Patch 1,2: Move helpers out of i915
+Patch 3: Introduce DisplayPort link training capabilities and state helpers
+Patch 4: Read i915 DSC capabilities in any case
+Patch 5  Use dp_connector helpers in i915 to expose link training state
+Patch 6: Introduce DRM_BRIDGE_OP_DP and wire bridge connectors
+Patch 7: Use dp_connector helpers in anx7625 to expose link training state
+Patch 8: Use dp_connector helpers in mediatek to expose link training state
+
+Changes in v4:
+- Add a new mutex to protect sysfs group update
+- Remove the check on the connection_mutex
+- Add the newly supported DisplayPort tunnel features in the series
+- Link to v3: https://patch.msgid.link/20261012-feat_link_cap-v3-0-7517f4aba0f3@bootlin.com
+
+Changes in v3:
+- Rework the core to use new helpers instead of an extension of
+  drmm_connector_init().
+- Add a new mutex to protect sysfs read write access instead of using
+  the global connection_mutex.
+- Move helpers out of i915.
+- Add the support in the anx7625 driver.
+- Link to v2: https://patch.msgid.link/20260619-feat_link_cap-v2-0-a3dec4c02ad9@bootlin.com
+
+Changes in v2:
+- Removed work converting i915 to DRM managed resource
+- Remove voltage swing and pre-emphasis properties
+- Expose link training state via sysfs dp_link/ group instead of
+  connector properties
+- Add comprehensive sysfs attributes for both source and sink capabilities
+- Add new helpers for managing sink capabilities and for current link
+  parameters
+- Link to v1: https://lore.kernel.org/r/20260409-feat_link_cap-v1-0-7069e8199ce2@bootlin.com
+
+Signed-off-by: Kory Maincent <kory.maincent@bootlin.com>
+---
+Kory Maincent (8):
+      drm: Move sink link rates reading helpers out of i915
+      drm: Move DSC capability reading helper out of i915
+      drm: Introduce DisplayPort link training capabilities and state helpers
+      drm/i915/display/dp: Read DPCD DSC capabilities in any case
+      drm/i915/display/dp: Use dp_connector helpers to expose link training state
+      drm/bridge: Expose link training state via new DRM_BRIDGE_OP_DP flag
+      drm/analogix/anx7625: Use dp_connector helpers to expose link training state
+      drm/mediatek: Use dp_connector helpers to expose link training state
+
+ Documentation/ABI/testing/sysfs-class-drm-dp       |  85 +++
+ drivers/gpu/drm/bridge/analogix/anx7625.c          |  68 +++
+ drivers/gpu/drm/bridge/analogix/anx7625.h          |   1 +
+ drivers/gpu/drm/display/Kconfig                    |   1 +
+ drivers/gpu/drm/display/drm_bridge_connector.c     |  29 +
+ drivers/gpu/drm/display/drm_dp_helper.c            | 590 +++++++++++++++++++++
+ drivers/gpu/drm/drm_connector.c                    |  13 +
+ drivers/gpu/drm/drm_sysfs.c                        | 160 ++++++
+ drivers/gpu/drm/i915/display/intel_display_types.h |   2 +
+ drivers/gpu/drm/i915/display/intel_dp.c            | 264 +++------
+ .../gpu/drm/i915/display/intel_dp_link_training.c  |  14 +
+ drivers/gpu/drm/mediatek/mtk_dp.c                  |  61 ++-
+ include/drm/display/drm_dp.h                       |   1 +
+ include/drm/display/drm_dp_helper.h                |  25 +
+ include/drm/drm_bridge.h                           |  13 +
+ include/drm/drm_connector.h                        |  59 +++
+ include/drm/drm_sysfs.h                            |   1 +
+ 17 files changed, 1200 insertions(+), 187 deletions(-)
+---
+base-commit: 932326f098877d9650c80ed428d82fc2dc14e841
+change-id: 20260226-feat_link_cap-20cbb6f31d40
+
+Best regards,
+--  
+Köry Maincent, Bootlin
+Embedded Linux and kernel engineering
+https://bootlin.com
+
 
