@@ -2,11 +2,11 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 8B87A606A31F
-	for <linux-mediatek@archiver.kernel.org>; Thu, 22 Oct 2026 21:11:47 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 98D99606A31E
+	for <linux-mediatek@archiver.kernel.org>; Thu, 22 Oct 2026 21:18:32 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=awpXf+LJ;
-	dkim=pass (2048-bit key, unprotected) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20251104 header.b=tH3A14tV
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=zsSkmSr3;
+	dkim=pass (2048-bit key, unprotected) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20251104 header.b=mxacBWXN
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
@@ -14,92 +14,90 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
 	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
 	List-Unsubscribe-Post:List-Owner;
-	bh=Mi3XzU0RNWFyJ4e7CUa62rc+wGnBh7UsoeyqdHtTKAc=; b=awpXf+LJMBeAuDY2n5Y6WxRf6t
-	em7aZQa3dk62gtEDxByWddji+1GvnPjux1P6ebpvjXi29r5PQkU6VZlITQsI876EyDWBiQ0f399N7
-	RyZ5NiFbdGbKmtm4noZ2RgpbBlHyviaRik+OliyGVNJiQIsHyQSdK6adlNL0JL/Z7WGUAiUXDR5M1
-	2w0bE/upt2XCJAIKRxPRcQyzt8tp9ygKT/6epeplnTBuj9PrgMhdI/COJJiZ417KYH1gtWh/f4L4q
-	sSqpERe2g7dCAqkX4fdQ7Nuqa5b/TjOgLVWx6Hiha05geIl2ZlptcUAbu4FUiEzgWzfKFUycyzvKa
-	mSKRyHDw==;
+	bh=WsTLwSG0j0rvcPTxUloruhaWzU98+XdsMcTu8lqR+tY=; b=zsSkmSr3TWhymhRqv2Kf/c9dXM
+	1bHz8mlLmv2tkiE6SOdVG/Xd7p21GrdA1mSsVYlfvxYKcQv8598Me5z8xt9jkyN9p2zGxlDdkBohm
+	VscOKS1+3ElD7l9feb7fgHFo3l3Brk4tZ0IoVlOxJ0quupccNvtPfnH+vUN+44ZEjaZS3IIrbqEHl
+	2gEceqrNkEAgO+NkZSfd/ZsxlQzPSgUeiZDPYWzOHk1+9tiXYr047c3K54BeK9uhDEvtkLXjMUK+h
+	KX0BGJsBtKfoai4UBnPRE5PDT5O5LUICQGM6dLvMIUe5oZ2P4TwSxS6ADZk34pdxAmvfYkPsdNvir
+	6eb4WYuQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xK04h-0000000EzRy-14c5;
-	Thu, 22 Oct 2026 21:11:47 +0000
-Received: from mail-oi1-x230.google.com ([2607:f8b0:4864:20::230])
+	id 1xK0BE-0000000Ezrj-0Tmi;
+	Thu, 22 Oct 2026 21:18:32 +0000
+Received: from mail-oo1-xc36.google.com ([2607:f8b0:4864:20::c36])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xK04e-0000000EzQW-1J0D
+	id 1xK0BB-0000000Ezqn-1Wc9
 	for linux-mediatek@lists.infradead.org;
-	Thu, 22 Oct 2026 21:11:45 +0000
-Received: by mail-oi1-x230.google.com with SMTP id 5614622812f47-504ae5941faso180248b6e.3
-        for <linux-mediatek@lists.infradead.org>; Thu, 22 Oct 2026 14:11:43 -0700 (PDT)
+	Thu, 22 Oct 2026 21:18:31 +0000
+Received: by mail-oo1-xc36.google.com with SMTP id 006d021491bc7-706113e92f9so155936eaf.2
+        for <linux-mediatek@lists.infradead.org>; Thu, 22 Oct 2026 14:18:29 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1792703503; x=1793308303; darn=lists.infradead.org;
+        d=gmail.com; s=20251104; t=1792703908; x=1793308708; darn=lists.infradead.org;
         h=cc:to:message-id:content-transfer-encoding:content-type
          :mime-version:subject:date:from:from:to:cc:subject:date:message-id
          :reply-to:content-type;
-        bh=Mi3XzU0RNWFyJ4e7CUa62rc+wGnBh7UsoeyqdHtTKAc=;
-        b=tH3A14tVUNUan2Vs+x8oyPbJRDbDmbsNkHca8hu6haYR2dwGj+WTrbgMHy8wWGLvSM
-         qBGRD+v4oJCd8GwTBfq87DsDtoQwPhw5Rad/auQECXQnoPq8+SsOvhc5JQSQ3oq5NeKP
-         ABg4PCstLHNC4k221ACUX3hKkeEt6Ie0CLhWArs/SdFMV/5V7dTaFSXD6EyOyGOu3yje
-         pzQHqG6uuyO/0Xg3z/QQZZ0CJYSyw1XxZqw5vnqZpgOW3RHrUsgT57Vp0BqfRRONp+Hy
-         CaZPWkKvXz8G7dVsmemSeTeOYlH5OCCGB3blCu+8ZOnV+v/msPywUZBnIctbiS/fe/pm
-         TV8A==
+        bh=WsTLwSG0j0rvcPTxUloruhaWzU98+XdsMcTu8lqR+tY=;
+        b=mxacBWXNG++6K28C+5tkDbOgVUtN+hqrfTMgoGVFOfIIAtgBIoRqQClXd8KfOCZSMe
+         Mq2+pEsYNGDFobFrp7MR1cb0G8bwM+nYwVKUdBsQgEHqYa625qnqL6HKX6xnt9stTphz
+         jVzXU6y/yHgFMUoNNVKlDjTwWC4JhTnZMJb/B9iJqWNiqikl8SK0l19jHll2P7oQo0Uc
+         iNjZfHqH49zmjPua1F8Q5Bow1NqBXD03/Ss5zLZvkx7gXyLHyOHa4Kih4aSJzBPuRomB
+         n8pF17cz8QPp+WhQnvkjp/H2bJDXsP5BDouP/1T5/ag8TSwLoG86aoVjO5dquqhDyjhu
+         phxg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1792703503; x=1793308303;
+        d=1e100.net; s=20260707; t=1792703908; x=1793308708;
         h=cc:to:message-id:content-transfer-encoding:content-type
          :mime-version:subject:date:from:x-gm-gg:x-gm-message-state:from:to
          :cc:subject:date:message-id:reply-to:content-type;
-        bh=Mi3XzU0RNWFyJ4e7CUa62rc+wGnBh7UsoeyqdHtTKAc=;
-        b=ACRYi6MCWU9JdbAEowT5IwcDdotf9HPqSQnAHuIbfS3iM0+vTNQslzbAChe34TS2QR
-         yXV9tEqCcHHHg2JK/WfR42v/GVMXCzehUkevmhJWIDP/spAOSCWNaCjpURWpaoKgwOvt
-         8KFZC4DGUEroBK/bevfNPfsn76pXGS8FxzC6IEK05GuVBj3dPJ1LkGNeyS16ELtiVLHc
-         KZn8uSqSwKEds+FMgzcyEWs+9Jh+b9A2DOFmywEA8Rj5flmHurSWJhI52JpzdaJ7+7z1
-         BxImvRuc7CK8GpfV4Keh+PldNHdOaVt+s06WFoy3jKrGlbuKuZqbTmzpa6BTo0qHtWW5
-         GgXw==
-X-Forwarded-Encrypted: i=1; AKwUvBxxw4GjNTg4+JNSbHc5mamCvnfcvpl8yqZGHXteBbPzJPm5kEhZM2Mxa3beLTF9rLCPz3GgWhFwqzSiLx6gMw==@lists.infradead.org
-X-Gm-Message-State: AFq9FYLFMMebe8KD+565mrSdqurFVQLNmlXvJNH/Xy2MH0n0PRrCBPGA
-	tqeaYEFrL2insuaCyJ7Q3gLjvUk6fKuiYHIV1aTTgGVeLZ0w1Ba/Cylz
-X-Gm-Gg: AYBFou12Mf6L6wDtSSAe+w/lLEwFbRJUIWgSVyEj97tNXTcIrPL9Ntjon/7MxbnMIiq
-	QD0P7xNx4sSTkEemW9TvKRr/KEy9xU6aI/yfizA/PisTzrys4sm64HnpFNbYSG56eAqwny16hHI
-	tv4Q376b5betYsCMB8Xj5urPRQAOyw1duYzOYo2POjw7/jbkO3cQ9kd4LUWR3L737meNokxu9pM
-	vFY4PmOJQEL9m1Vbq2rdjGvi4vG8YYYk44NpLgAcHO9H4+KTct1FlfXpZscxtXFaUmZpWsSjnXJ
-	/pGl6cRyr/Ug8UrH/SR0j7j/jjCSShHrouADC6PnP6gQIRhkFT3EAwgnQ+UK5P4FEcpKQzFflRN
-	RvXVDdfR5dwYS2ykiZMj7LpsI+QWdxoKRYNcovgXm33bm5xnPebga7FC9D1BV7ja4STHhw3tD4I
-	VOYPrH4o0tD74N39Mg1QjOu6/yyLoYDk4PubG0ZvtESskPqu+k6EZ/H99vroFi8Es4uQHn0jrxe
-	3LY26GoEoycOMvJe0BGrjnfTf1IOAyanQ0dK4UZ8JzLyrMkRWt/lafcEP3gttyBRNid3FyQhJVT
-	qwezv891rLRL3JhVWDNP6yjgllOQoYya2zHHrIBcR44yHu7LyCY112qUqydyVoQZV5qLnYnpyUG
-	sc4e7eLvoj5jvuXJGYmvknXAUc1fNLVafeDkANdHxOo/QQ2ALMrri8cKUuc6rE2lPr6SCms0C8Z
-	17RA==
-X-Received: by 2002:a05:6808:1715:b0:4d6:92d4:c806 with SMTP id 5614622812f47-55be87540e8mr194875b6e.62.1792703503249;
-        Thu, 22 Oct 2026 14:11:43 -0700 (PDT)
+        bh=WsTLwSG0j0rvcPTxUloruhaWzU98+XdsMcTu8lqR+tY=;
+        b=GnTloGX+u2FNzgQOLfJO1qFPvnq5X/L4bi2+/KLq1ce+OMGXlD4ogNZzAKDmQI21Sy
+         KbAm8+PWOI/BZ/BgYuwlJ4XoDk0F73BQRbi2x/uhM4dwJLC3q6/MvXN+ZmVglAwL1H1E
+         s45ocBPSG4X+QNkuRL9UGh964ZnOgbD2hxv4mQWaOm/Bg2NmDkJBwfjiagtY7aMeZdMg
+         DYfoVCaSB1eMy2DJRCTs5cg2fJ/hfeb6nZkHfb0SNS4Uhm9wzxxYJA0JrPgtvoeBIhIz
+         49+OlvMDQChBEGk7lttgNPnWjGUrRTpNxICGFDmnHlAlhpS5Fu2WtQ68ZpKksdRlImq0
+         dxVQ==
+X-Forwarded-Encrypted: i=1; AKwUvBxndtDUrm+HrNrMHm6vs2TavXQZUmOW384/uXQV8Y1+K8egRXTODz9nFTiI15zwcvWvFD2F3WT0dXnU8thxKA==@lists.infradead.org
+X-Gm-Message-State: AFq9FYLEoANYSTnOcJ955iBK8qMC4w4IUDfoWg9tYtMEfIZrg21bVCc4
+	541Qy7cI7KQO2OWoKbAZq1ADl1TvLwUEGbvteWMI5y1S5qKgPpUFoboL3yVHqPJr
+X-Gm-Gg: AYBFou3SGbXP2jDt841jDf1zKqAibZK2A2T9UDoIfDz/WySE3XwPcOZ99e4hIRBxDpm
+	Tn+IP8rdEwvJz48cBX+kNj1xer5LNYF7p/Cb5jbmJt3HSQlDNO9gK1y3Nb6G0rTOuSyU+7lSStg
+	iQH8qfFsGxTpYauA1XQm7FJLbx9W52da0N6n+6dBRRC1ShnMHPjxZhKhU4/CjWnWatpkh1qIQup
+	FexKyAdcn6S8T4sLSO6wXSG/4QZGDDeNvqmpraOspQlmgHxLfkVAbSd0zAr0Y22dPOx6Ue6zInW
+	L/34n8k2vXyFUcmbVsS7qgcfd88797tmoRrxHYyuaIGZ4nB7/fkuzFtqxzr/nG+OeJ/luRiT87Z
+	i4WTwC7bx8Cicw52BwJtTzOHG7IenqOnrZib3a8Onf3Oi/BP0ikjGTGhmuPJRtj+SOY1L2onuxa
+	bm5heCprSDFDag/PUkxuNjTGdH4b0ekZrjEZkxeav8ZL4yXvkGYbZIeeZl+pjjUm24sATQYlpk7
+	AE7mWOqb3gxwGsnubpbS0tSIKIbiEwRU6SiXC08cktDbCAdFleMbUZWqEaOLUerOJiFB7ObWuQL
+	S0WmJgyg8qc4dJAOlDdX6q3Xmj64F4IvlRUjNxBCQMyuh2SmOT+n+jIkEpU2yb1YXxhzgF27vHR
+	LeO3fg1Bf453PqW9DhGn+G5Vf/0FztlX+W7h4hu1Wn3N6is43/XCCKuOMl60j0Ixshvo3NpSmT/
+	zuKNc=
+X-Received: by 2002:a05:6820:3287:b0:709:529a:477c with SMTP id 006d021491bc7-70b88ac1066mr386352eaf.87.1792703908193;
+        Thu, 22 Oct 2026 14:18:28 -0700 (PDT)
 Received: from [127.0.1.1] (174-29-1-49.hlrn.qwest.net. [174.29.1.49])
-        by smtp.gmail.com with ESMTPSA id 5614622812f47-55be934e467sm78324b6e.1.2026.10.22.14.11.42
+        by smtp.gmail.com with ESMTPSA id 46e09a7af769-84fbd362c1fsm250873a34.4.2026.10.22.14.18.27
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 22 Oct 2026 14:11:42 -0700 (PDT)
+        Thu, 22 Oct 2026 14:18:27 -0700 (PDT)
 From: James Hilliard <james.hilliard1@gmail.com>
-Date: Thu, 22 Oct 2026 15:11:41 -0600
-Subject: [PATCH] dmaengine: mediatek: uart: clear the active descriptor on
- termination
+Date: Thu, 22 Oct 2026 15:18:26 -0600
+Subject: [PATCH] dmaengine: mediatek: uart: make channel termination atomic
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20261022-submit-mtk-uart-dma-retire-v1-v1-1-3f9b99a9d89a@gmail.com>
-X-B4-Tracking: v=1; b=H4sIAAAAAAAC/yXMQQrCMBCF4auUrB1sIrXgVcRFmr60oyTKJC1C6
- d1N7PIf5n2bShBGUrdmU4KVE79jCX1qlJttnEA8llamNVfdGkNpGQJnCvlFi5VMY7AkyCygVZN
- Hr/vu4jrtvSrGR+D5+/fvj6ML8ITLFa0fg02gQWx0cz0VDnHiiPOx2/cfk+Fa1qMAAAA=
-X-Change-ID: 20261022-submit-mtk-uart-dma-retire-v1-fe71753c51ff
+Message-Id: <20261022-submit-mtk-uart-dma-terminate-atomic-v1-v1-1-aa498ba5da25@gmail.com>
+X-B4-Tracking: v=1; b=H4sIAAAAAAAC/yWNwQqDMBBEf0Vy7lITS8D+SulhE7e6LYklWUUQ/
+ 71JPb5h5s2uMiWmrO7NrhKtnHmOBfSlUX7COBLwUFiZ1ljdGgN5cYEFgnxgwSQwBAShFDiiEKD
+ MgT2sGnRv+66zFunmVbF9E714+z89nicX1Zu8VH1tOMwELmH0U42KmOLIka7n7jh+D1/b660AA
+ AA=
+X-Change-ID: 20261022-submit-mtk-uart-dma-terminate-atomic-v1-19693366ae4c
 To: Sean Wang <sean.wang@mediatek.com>, Vinod Koul <vkoul@kernel.org>, 
  Frank Li <Frank.Li@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Guillaume Ranquet <granquet@baylibre.com>
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Cc: dmaengine@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
  linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, 
  stable@vger.kernel.org, James Hilliard <james.hilliard1@gmail.com>
 X-Mailer: b4 0.15.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261022_141144_379523_2BE48EFF 
-X-CRM114-Status: UNSURE (   9.67  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20261022_141829_441478_0302CDDD 
+X-CRM114-Status: GOOD (  13.73  )
 X-Spam-Score: -1.9 (-)
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -119,41 +117,93 @@ X-Spam-Status: No, score=-15.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-mtk_uart_apdma_issue_pending() keeps the active descriptor in desc_issued
-and stores an alias in c->desc. Terminating the channel collects and frees
-that list, but leaves c->desc pointing at the retired descriptor unless
-the completion interrupt has already cleared it.
+The 8250 transmit flush path calls dmaengine_terminate_async() with the
+UART port spinlock held and interrupts disabled. UART APDMA termination
+uses sleeping register polls and synchronize_irq(), which can also wait for
+a threaded handler or for an interrupt pending on the calling CPU.
 
-The next issue_pending() requires c->desc to be NULL before starting a
-transfer. Canceling an active transfer can therefore leave the channel
-unable to start subsequent transfers, even after synchronization.
+Serialize the stop sequence with the interrupt handler using the virtual
+channel lock and use atomic register polling. A handler that was waiting
+for that lock must check interrupt status before accessing a descriptor:
+termination may already have masked and acknowledged its interrupt. This
+allows termination to retire descriptors without waiting for the handler.
 
-Clear c->desc under the virtual-channel lock when collecting the terminated
-descriptors, after the existing interrupt shutdown and synchronization.
+If the channel does not stop, return the timeout and retain its descriptors
+instead of freeing state still owned by the transfer. Continue attempting
+STOP after a flush timeout, since stopping the channel is sufficient for
+termination even when the flush could not finish.
 
-Fixes: 2537b40b0a4f ("dmaengine: mediatek: do not issue a new desc if one is still current")
+Fixes: 9135408c3ace ("dmaengine: mediatek: Add MediaTek UART APDMA support")
 Cc: stable@vger.kernel.org
 Signed-off-by: James Hilliard <james.hilliard1@gmail.com>
 ---
- drivers/dma/mediatek/mtk-uart-apdma.c | 1 +
- 1 file changed, 1 insertion(+)
+ drivers/dma/mediatek/mtk-uart-apdma.c | 24 ++++++++++++++++--------
+ 1 file changed, 16 insertions(+), 8 deletions(-)
 
 diff --git a/drivers/dma/mediatek/mtk-uart-apdma.c b/drivers/dma/mediatek/mtk-uart-apdma.c
-index f74e9a328588..d9427d56bc50 100644
+index f74e9a328588..73d4b701ac85 100644
 --- a/drivers/dma/mediatek/mtk-uart-apdma.c
 +++ b/drivers/dma/mediatek/mtk-uart-apdma.c
-@@ -433,6 +433,7 @@ static int mtk_uart_apdma_terminate_all(struct dma_chan *chan)
+@@ -256,6 +256,12 @@ static irqreturn_t mtk_uart_apdma_irq_handler(int irq, void *dev_id)
+ 	unsigned long flags;
  
  	spin_lock_irqsave(&c->vc.lock, flags);
++	/* Termination may have acknowledged an interrupt before we got the lock. */
++	if (!mtk_uart_apdma_read(c, VFF_INT_FLAG)) {
++		spin_unlock_irqrestore(&c->vc.lock, flags);
++		return IRQ_NONE;
++	}
++
+ 	if (c->dir == DMA_DEV_TO_MEM)
+ 		mtk_uart_apdma_rx_handler(c);
+ 	else if (c->dir == DMA_MEM_TO_DEV)
+@@ -400,10 +406,12 @@ static int mtk_uart_apdma_terminate_all(struct dma_chan *chan)
+ 	LIST_HEAD(head);
+ 	int ret;
+ 
++	spin_lock_irqsave(&c->vc.lock, flags);
++
+ 	mtk_uart_apdma_write(c, VFF_FLUSH, VFF_FLUSH_B);
+ 
+-	ret = readx_poll_timeout(readl, c->base + VFF_FLUSH,
+-			  status, status != VFF_FLUSH_B, 10, 100);
++	ret = readx_poll_timeout_atomic(readl, c->base + VFF_FLUSH,
++					status, status != VFF_FLUSH_B, 10, 100);
+ 	if (ret)
+ 		dev_err(c->vc.chan.device->dev, "flush: fail, status=0x%x\n",
+ 			mtk_uart_apdma_read(c, VFF_DEBUG_STATUS));
+@@ -415,11 +423,14 @@ static int mtk_uart_apdma_terminate_all(struct dma_chan *chan)
+ 	 * 3. set stop as 0
+ 	 */
+ 	mtk_uart_apdma_write(c, VFF_STOP, VFF_STOP_B);
+-	ret = readx_poll_timeout(readl, c->base + VFF_EN,
+-			  status, !status, 10, 100);
+-	if (ret)
++	ret = readx_poll_timeout_atomic(readl, c->base + VFF_EN,
++					status, !status, 10, 100);
++	if (ret) {
+ 		dev_err(c->vc.chan.device->dev, "stop: fail, status=0x%x\n",
+ 			mtk_uart_apdma_read(c, VFF_DEBUG_STATUS));
++		spin_unlock_irqrestore(&c->vc.lock, flags);
++		return ret;
++	}
+ 
+ 	mtk_uart_apdma_write(c, VFF_STOP, VFF_STOP_CLR_B);
+ 	mtk_uart_apdma_write(c, VFF_INT_EN, VFF_INT_EN_CLR_B);
+@@ -429,9 +440,6 @@ static int mtk_uart_apdma_terminate_all(struct dma_chan *chan)
+ 	else if (c->dir == DMA_MEM_TO_DEV)
+ 		mtk_uart_apdma_write(c, VFF_INT_FLAG, VFF_TX_INT_CLR_B);
+ 
+-	synchronize_irq(c->irq);
+-
+-	spin_lock_irqsave(&c->vc.lock, flags);
  	vchan_get_all_descriptors(&c->vc, &head);
-+	c->desc = NULL;
  	spin_unlock_irqrestore(&c->vc.lock, flags);
  
- 	vchan_dma_desc_free_list(&c->vc, &head);
 
 ---
 base-commit: 93f51579e7df248780214094418f205253383cc5
-change-id: 20261022-submit-mtk-uart-dma-retire-v1-fe71753c51ff
+change-id: 20261022-submit-mtk-uart-dma-terminate-atomic-v1-19693366ae4c
 
 Best regards,
 --  
