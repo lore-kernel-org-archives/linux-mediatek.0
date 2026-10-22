@@ -2,107 +2,104 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 0C02B606A31D
-	for <linux-mediatek@archiver.kernel.org>; Thu, 22 Oct 2026 20:56:58 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 8B87A606A31F
+	for <linux-mediatek@archiver.kernel.org>; Thu, 22 Oct 2026 21:11:47 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=ZYqXEwyz;
-	dkim=pass (2048-bit key, unprotected) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20251104 header.b=oCxWLZkG
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=awpXf+LJ;
+	dkim=pass (2048-bit key, unprotected) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20251104 header.b=tH3A14tV
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
 	List-Unsubscribe-Post:List-Owner;
-	bh=f7qXl+oFgNrZyAAUVUqI0RrjFdQvCwDXCCumBq2lEJY=; b=ZYqXEwyz4MNgsEKJu0C9F8Ytl3
-	vqwW8CZE8NdlLjDNaAepZgR1RruXoSqGvkWbUAWsv8Fbf3/H8q1eG572sQuCajwFc19f49PuBYFPf
-	xm09nS+wCijEsClWfZtpI/xkT25mQ3Jk4MlN/NYTf3RlwBUBWAq/arv4k9XW1JBQc6nG4UW4coLag
-	OdwtOif3hNduvWUGp1VloU4kia0Uyl7ZS8BtOcg+Hxaw6XCr6AxOS0JdLgQhQeJDJJg7DCaT8NqeI
-	7M3woxI+h/gNxzZq5GZT/k2cary9VaMscvTwntF/uicIET4bdhVk2qr2Hz3wpThiRMUJMA0VfrYyu
-	BP7pkTpA==;
+	bh=Mi3XzU0RNWFyJ4e7CUa62rc+wGnBh7UsoeyqdHtTKAc=; b=awpXf+LJMBeAuDY2n5Y6WxRf6t
+	em7aZQa3dk62gtEDxByWddji+1GvnPjux1P6ebpvjXi29r5PQkU6VZlITQsI876EyDWBiQ0f399N7
+	RyZ5NiFbdGbKmtm4noZ2RgpbBlHyviaRik+OliyGVNJiQIsHyQSdK6adlNL0JL/Z7WGUAiUXDR5M1
+	2w0bE/upt2XCJAIKRxPRcQyzt8tp9ygKT/6epeplnTBuj9PrgMhdI/COJJiZ417KYH1gtWh/f4L4q
+	sSqpERe2g7dCAqkX4fdQ7Nuqa5b/TjOgLVWx6Hiha05geIl2ZlptcUAbu4FUiEzgWzfKFUycyzvKa
+	mSKRyHDw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xJzqK-0000000Ey6X-22uG;
-	Thu, 22 Oct 2026 20:56:56 +0000
-Received: from mail-pg1-x52e.google.com ([2607:f8b0:4864:20::52e])
+	id 1xK04h-0000000EzRy-14c5;
+	Thu, 22 Oct 2026 21:11:47 +0000
+Received: from mail-oi1-x230.google.com ([2607:f8b0:4864:20::230])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xJzqG-0000000Ey5O-38Iz
+	id 1xK04e-0000000EzQW-1J0D
 	for linux-mediatek@lists.infradead.org;
-	Thu, 22 Oct 2026 20:56:54 +0000
-Received: by mail-pg1-x52e.google.com with SMTP id 41be03b00d2f7-ccce6d9abfeso162563a12.1
-        for <linux-mediatek@lists.infradead.org>; Thu, 22 Oct 2026 13:56:52 -0700 (PDT)
+	Thu, 22 Oct 2026 21:11:45 +0000
+Received: by mail-oi1-x230.google.com with SMTP id 5614622812f47-504ae5941faso180248b6e.3
+        for <linux-mediatek@lists.infradead.org>; Thu, 22 Oct 2026 14:11:43 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1792702611; x=1793307411; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
-        bh=f7qXl+oFgNrZyAAUVUqI0RrjFdQvCwDXCCumBq2lEJY=;
-        b=oCxWLZkGANvJlh/QSBsAE6ee9cFddMOxR1wrymIr8dtU455MR6FT+HNOkijZLta662
-         LHemicB4AxWetekCP3+i+vMepu7VW1su0OsVp10gkNF1L5HOMuyFJEsNXA09IR6M2y7K
-         P457K9wrg54c+w+q/feb7yeJYLYceWJ+ioUUGC02QT4fqc+krOwDlygzei/92DheqS9f
-         lpfXid6BNLd+nvVtDNLZGI4nLd6+SpwOlTxOT087mjntY2yvIdaj/29jEpuFhkLkGEBT
-         IWWygOqLZLWLQg7y/RKwZwfBj2iurQE1tINuuO0xtVK5wYrt7x40tacDtUpV+m5ACJDp
-         czBw==
+        d=gmail.com; s=20251104; t=1792703503; x=1793308303; darn=lists.infradead.org;
+        h=cc:to:message-id:content-transfer-encoding:content-type
+         :mime-version:subject:date:from:from:to:cc:subject:date:message-id
+         :reply-to:content-type;
+        bh=Mi3XzU0RNWFyJ4e7CUa62rc+wGnBh7UsoeyqdHtTKAc=;
+        b=tH3A14tVUNUan2Vs+x8oyPbJRDbDmbsNkHca8hu6haYR2dwGj+WTrbgMHy8wWGLvSM
+         qBGRD+v4oJCd8GwTBfq87DsDtoQwPhw5Rad/auQECXQnoPq8+SsOvhc5JQSQ3oq5NeKP
+         ABg4PCstLHNC4k221ACUX3hKkeEt6Ie0CLhWArs/SdFMV/5V7dTaFSXD6EyOyGOu3yje
+         pzQHqG6uuyO/0Xg3z/QQZZ0CJYSyw1XxZqw5vnqZpgOW3RHrUsgT57Vp0BqfRRONp+Hy
+         CaZPWkKvXz8G7dVsmemSeTeOYlH5OCCGB3blCu+8ZOnV+v/msPywUZBnIctbiS/fe/pm
+         TV8A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1792702611; x=1793307411;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to:content-type;
-        bh=f7qXl+oFgNrZyAAUVUqI0RrjFdQvCwDXCCumBq2lEJY=;
-        b=uAdfmOETROP1EiXUVjyV8JkZMdURdfqZNJevcGSUtzjbJQUTB61b6LMe0zfJSfc2o2
-         IFrruKz/4d0LDS/dWVNvpktHM5G7QvNkJ9oVio1IFaaxA5e+J+sRucGtsV/W0f4NAn2G
-         2fQ3rq2YdFc2OGZE5nZkTV/q3lLZ3JhJnwLq7Bb8+nota31g1XPNO2MzS5EUF2GdzJy9
-         1h1Kd/r5ONJLwkL40jpOBjGXB1eSofOrH5CRB31JyEskCD6lxRL5wRYhfJKU5S8u3fGc
-         n+48QTpy0MMKxg/0u0YpROViLyXUc4Y1muOq1mdSuNrMwvteXvTbXBW5GEEi4Sv/l0PI
-         jiKA==
-X-Forwarded-Encrypted: i=1; AKwUvBxJvK65JpLmin/bDusja+XoFc9b8TZ9lnX+YRRC0/yUHw+mMuDDhRvI3mmwC2JB2n8McsjG3NUBsfagdT0rcQ==@lists.infradead.org
-X-Gm-Message-State: AFq9FYJU7q9lD/3+3LT6KTuQC/tU3kfPaYh/ecMJraCr8BRYB97MVaCZ
-	0vPptm1nfmAsBJTLualJp7Ys6leZt5JmDAEIypCj44BkEgvbGfPx3vk9
-X-Gm-Gg: AYBFou1jeuI05Bp5hHR6T2VpGxOgt5rmGDcewlmfY/KGXxcgCD3Qm94Xrt58caOQChY
-	GwbxD4MEyPbMrsgoqiRGbrWnMU0aoxMKR6gh2VRy47MPhV1oqKmxix4jIhFoFPNweXn8AnSEj+t
-	0CyZA+07wPISOoiP+It/YAwytNxJ6h0GwsSl8jMK4EqQXg737RxS5xMvdjRqzHxHKEb25NPiC1v
-	WQ90fB5X7GDcDyy0cVshbL7wywTEE5V25dxTKV0Qw5xNnX76pxvSAQgYlgqBNi4YrvqBohBh9zF
-	TWIAUyY3Gmy+/DfgtmE2v4Gky8QixawSp1ZTLaRIqgLPM9em7jEFucWBqMj8Jiv1M24ta6dMSEB
-	Z1ZFPTteTAyEEqko04WRoPfwrM1KVKbP+NxqKVVd5iW97L2JhSAOHruX6DxDOOjhkIFuF/mFIwl
-	YjcK0R/InoZkZRMF8fxYFqG8plqoeU+OwS66W0bVddP+md4VgMwhWNKQzMINxJ16ajcRw+3vo7E
-	aZdUOHQfKiG7g3h5u8FffVDFYNCOocy+V95blbNPr+mD3AdBnxdhyD/qJlaQOwqDa5lICeEWl0m
-	RtSbWfuXaQbCtfs=
-X-Received: by 2002:a17:90b:4a12:b0:3a4:b0f3:6597 with SMTP id 98e67ed59e1d1-3adcd7fe438mr149838a91.0.1792702611337;
-        Thu, 22 Oct 2026 13:56:51 -0700 (PDT)
-Received: from abs.sf.dndws.com ([50.35.86.68])
-        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-3ada495315dsm6263941a91.15.2026.10.22.13.56.50
+        d=1e100.net; s=20260707; t=1792703503; x=1793308303;
+        h=cc:to:message-id:content-transfer-encoding:content-type
+         :mime-version:subject:date:from:x-gm-gg:x-gm-message-state:from:to
+         :cc:subject:date:message-id:reply-to:content-type;
+        bh=Mi3XzU0RNWFyJ4e7CUa62rc+wGnBh7UsoeyqdHtTKAc=;
+        b=ACRYi6MCWU9JdbAEowT5IwcDdotf9HPqSQnAHuIbfS3iM0+vTNQslzbAChe34TS2QR
+         yXV9tEqCcHHHg2JK/WfR42v/GVMXCzehUkevmhJWIDP/spAOSCWNaCjpURWpaoKgwOvt
+         8KFZC4DGUEroBK/bevfNPfsn76pXGS8FxzC6IEK05GuVBj3dPJ1LkGNeyS16ELtiVLHc
+         KZn8uSqSwKEds+FMgzcyEWs+9Jh+b9A2DOFmywEA8Rj5flmHurSWJhI52JpzdaJ7+7z1
+         BxImvRuc7CK8GpfV4Keh+PldNHdOaVt+s06WFoy3jKrGlbuKuZqbTmzpa6BTo0qHtWW5
+         GgXw==
+X-Forwarded-Encrypted: i=1; AKwUvBxxw4GjNTg4+JNSbHc5mamCvnfcvpl8yqZGHXteBbPzJPm5kEhZM2Mxa3beLTF9rLCPz3GgWhFwqzSiLx6gMw==@lists.infradead.org
+X-Gm-Message-State: AFq9FYLFMMebe8KD+565mrSdqurFVQLNmlXvJNH/Xy2MH0n0PRrCBPGA
+	tqeaYEFrL2insuaCyJ7Q3gLjvUk6fKuiYHIV1aTTgGVeLZ0w1Ba/Cylz
+X-Gm-Gg: AYBFou12Mf6L6wDtSSAe+w/lLEwFbRJUIWgSVyEj97tNXTcIrPL9Ntjon/7MxbnMIiq
+	QD0P7xNx4sSTkEemW9TvKRr/KEy9xU6aI/yfizA/PisTzrys4sm64HnpFNbYSG56eAqwny16hHI
+	tv4Q376b5betYsCMB8Xj5urPRQAOyw1duYzOYo2POjw7/jbkO3cQ9kd4LUWR3L737meNokxu9pM
+	vFY4PmOJQEL9m1Vbq2rdjGvi4vG8YYYk44NpLgAcHO9H4+KTct1FlfXpZscxtXFaUmZpWsSjnXJ
+	/pGl6cRyr/Ug8UrH/SR0j7j/jjCSShHrouADC6PnP6gQIRhkFT3EAwgnQ+UK5P4FEcpKQzFflRN
+	RvXVDdfR5dwYS2ykiZMj7LpsI+QWdxoKRYNcovgXm33bm5xnPebga7FC9D1BV7ja4STHhw3tD4I
+	VOYPrH4o0tD74N39Mg1QjOu6/yyLoYDk4PubG0ZvtESskPqu+k6EZ/H99vroFi8Es4uQHn0jrxe
+	3LY26GoEoycOMvJe0BGrjnfTf1IOAyanQ0dK4UZ8JzLyrMkRWt/lafcEP3gttyBRNid3FyQhJVT
+	qwezv891rLRL3JhVWDNP6yjgllOQoYya2zHHrIBcR44yHu7LyCY112qUqydyVoQZV5qLnYnpyUG
+	sc4e7eLvoj5jvuXJGYmvknXAUc1fNLVafeDkANdHxOo/QQ2ALMrri8cKUuc6rE2lPr6SCms0C8Z
+	17RA==
+X-Received: by 2002:a05:6808:1715:b0:4d6:92d4:c806 with SMTP id 5614622812f47-55be87540e8mr194875b6e.62.1792703503249;
+        Thu, 22 Oct 2026 14:11:43 -0700 (PDT)
+Received: from [127.0.1.1] (174-29-1-49.hlrn.qwest.net. [174.29.1.49])
+        by smtp.gmail.com with ESMTPSA id 5614622812f47-55be934e467sm78324b6e.1.2026.10.22.14.11.42
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 22 Oct 2026 13:56:50 -0700 (PDT)
-From: Tao Gong <gongtao0607@gmail.com>
-To: netdev@vger.kernel.org
-Cc: Tao Gong <gongtao0607@gmail.com>,
-	Lorenzo Bianconi <lorenzo.bianconi@oss.qualcomm.com>,
-	"Chester A. Unal" <chester.a.unal@arinc9.com>,
-	Daniel Golle <daniel@makrotopia.org>,
-	Andrew Lunn <andrew@lunn.ch>,
-	Vladimir Oltean <olteanv@gmail.com>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@kernel.org>,
-	Jakub Kicinski <kuba@kernel.org>,
-	Paolo Abeni <pabeni@redhat.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Lorenzo Bianconi <lorenzo@kernel.org>,
-	=?UTF-8?q?Ar=C4=B1n=C3=A7=20=C3=9CNAL?= <arinc.unal@arinc9.com>,
-	Florian Fainelli <florian.fainelli@broadcom.com>,
-	Christian Marangi <ansuelsmth@gmail.com>,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: [PATCH net v3] net: dsa: mt7530: trap frames to conduit in MFC on EN7581 and AN7583
-Date: Thu, 22 Oct 2026 20:56:48 +0000
-Message-ID: <20261022205649.2351696-1-gongtao0607@gmail.com>
-X-Mailer: git-send-email 2.56.0
+        Thu, 22 Oct 2026 14:11:42 -0700 (PDT)
+From: James Hilliard <james.hilliard1@gmail.com>
+Date: Thu, 22 Oct 2026 15:11:41 -0600
+Subject: [PATCH] dmaengine: mediatek: uart: clear the active descriptor on
+ termination
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Message-Id: <20261022-submit-mtk-uart-dma-retire-v1-v1-1-3f9b99a9d89a@gmail.com>
+X-B4-Tracking: v=1; b=H4sIAAAAAAAC/yXMQQrCMBCF4auUrB1sIrXgVcRFmr60oyTKJC1C6
+ d1N7PIf5n2bShBGUrdmU4KVE79jCX1qlJttnEA8llamNVfdGkNpGQJnCvlFi5VMY7AkyCygVZN
+ Hr/vu4jrtvSrGR+D5+/fvj6ML8ITLFa0fg02gQWx0cz0VDnHiiPOx2/cfk+Fa1qMAAAA=
+X-Change-ID: 20261022-submit-mtk-uart-dma-retire-v1-fe71753c51ff
+To: Sean Wang <sean.wang@mediatek.com>, Vinod Koul <vkoul@kernel.org>, 
+ Frank Li <Frank.Li@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Guillaume Ranquet <granquet@baylibre.com>
+Cc: dmaengine@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, 
+ stable@vger.kernel.org, James Hilliard <james.hilliard1@gmail.com>
+X-Mailer: b4 0.15.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261022_135652_822337_B227174E 
-X-CRM114-Status: GOOD (  21.47  )
+X-CRM114-CacheID: sfid-20261022_141144_379523_2BE48EFF 
+X-CRM114-Status: UNSURE (   9.67  )
+X-CRM114-Notice: Please train this message.
 X-Spam-Score: -1.9 (-)
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -122,84 +119,44 @@ X-Spam-Status: No, score=-15.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On EN7581, STP BPDUs received on switch user ports never reach the CPU.
+mtk_uart_apdma_issue_pending() keeps the active descriptor in desc_issued
+and stores an alias in c->desc. Terminating the channel collects and frees
+that list, but leaves c->desc pointing at the retired descriptor unless
+the completion interrupt has already cleared it.
 
-Like MT7531 and MT7988, EN7581 and AN7583 only set the CPU port bitmap
-in MT7531_CFC and are skipped by mt753x_conduit_state_change(). On
-EN7581 this is not enough: trapped BPDUs reach the CPU only when
-MT7530_CPU_EN and MT7530_CPU_PORT are also set in MT753X_MFC. Add
-EN7581 and AN7583 to mt753x_conduit_state_change().
+The next issue_pending() requires c->desc to be NULL before starting a
+transfer. Canceling an active transfer can therefore leave the channel
+unable to start subsequent transfers, even after synchronization.
 
-Tested on an AN7581 board (Gemtek W1700K, airoha,en7581-switch), where
-only lan3 and lan4 are switch user ports. With RSTP BPDUs arriving on
-lan4:
-- without this patch, none reached the CPU;
-- setting CPU_EN and CPU_PORT by hand delivered them, and clearing them
-  stopped them;
-- with this patch, they are received from boot.
+Clear c->desc under the virtual-channel lock when collecting the terminated
+descriptors, after the existing interrupt shutdown and synchronization.
 
-Only BPDUs were tested. AN7583 is untested and is included because the
-driver sets it up like EN7581.
-
-Fixes: 2b0229f67932 ("net: dsa: mt7530: Add EN7581 support")
-Fixes: d76556db10bf ("net: dsa: mt7530: Add AN7583 support")
-Acked-by: Lorenzo Bianconi <lorenzo.bianconi@oss.qualcomm.com>
-Signed-off-by: Tao Gong <gongtao0607@gmail.com>
+Fixes: 2537b40b0a4f ("dmaengine: mediatek: do not issue a new desc if one is still current")
+Cc: stable@vger.kernel.org
+Signed-off-by: James Hilliard <james.hilliard1@gmail.com>
 ---
+ drivers/dma/mediatek/mtk-uart-apdma.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-v2 was withdrawn after 4cb3cd670b2a ("net: dsa: mt7530: untag
-VLAN-aware bridge PVID") fixed what patch 1/2 addressed. Patch 2/2 was
-dropped with it by mistake: the test that seemed to show it was not
-needed received BPDUs on ports that do not go through the switch. On a
-switch user port, BPDUs are still lost without it, as described above.
-
-To Paolo's question on v2: the issue is seen on real hardware (AN7581).
-The results above are from the OpenWrt 6.18.55 kernel with this patch
-applied; the code involved is the same in net.
-
-The board has a single CPU port, so the test does not show which of CFC
-and MFC selects the destination CPU port on EN7581. The comment on the
-CPU port bitmap in mt753x_cpu_port_enable() is left unchanged.
-
-The MT753X_MIRROR_EN() issue on AN7583 found in the v2 review is
-separate and not addressed here.
-
-Changes in v3:
-- Drop patch 1/2, fixed by 4cb3cd670b2a.
-- Add a Fixes tag for AN7583.
-- Update the comment in mt753x_conduit_state_change().
-- Add test results to the commit message.
-- Keep Lorenzo's Acked-by from v1: the code change is the same, only the
-  comment and the commit message changed.
-
-v2: https://lore.kernel.org/netdev/20260923055103.949540-1-gongtao0607@gmail.com/
-
- drivers/net/dsa/mt7530.c | 7 +++++--
- 1 file changed, 5 insertions(+), 2 deletions(-)
-
-diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
-index 96832852c65a..5dbcea38209f 100644
---- a/drivers/net/dsa/mt7530.c
-+++ b/drivers/net/dsa/mt7530.c
-@@ -3335,10 +3335,13 @@ mt753x_conduit_state_change(struct dsa_switch *ds,
+diff --git a/drivers/dma/mediatek/mtk-uart-apdma.c b/drivers/dma/mediatek/mtk-uart-apdma.c
+index f74e9a328588..d9427d56bc50 100644
+--- a/drivers/dma/mediatek/mtk-uart-apdma.c
++++ b/drivers/dma/mediatek/mtk-uart-apdma.c
+@@ -433,6 +433,7 @@ static int mtk_uart_apdma_terminate_all(struct dma_chan *chan)
  
- 	/* Set the CPU port to trap frames to for MT7530. Trapped frames will be
- 	 * forwarded to the numerically smallest CPU port whose conduit
--	 * interface is up.
-+	 * interface is up. On EN7581, trapped BPDUs do not reach the CPU port
-+	 * without this, even with the CPU port bitmap set. AN7583 is set up
-+	 * the same way as EN7581.
- 	 */
- 	if (priv->id != ID_MT7530 && priv->id != ID_MT7621 &&
--	    priv->id != ID_EN7528)
-+	    priv->id != ID_EN7528 &&
-+	    priv->id != ID_EN7581 && priv->id != ID_AN7583)
- 		return;
+ 	spin_lock_irqsave(&c->vc.lock, flags);
+ 	vchan_get_all_descriptors(&c->vc, &head);
++	c->desc = NULL;
+ 	spin_unlock_irqrestore(&c->vc.lock, flags);
  
- 	mask = BIT(cpu_dp->index);
+ 	vchan_dma_desc_free_list(&c->vc, &head);
 
-base-commit: f4377bf85887f57b59abb5479f7660a81ffe4449
--- 
-2.56.0
+---
+base-commit: 93f51579e7df248780214094418f205253383cc5
+change-id: 20261022-submit-mtk-uart-dma-retire-v1-fe71753c51ff
+
+Best regards,
+--  
+James Hilliard <james.hilliard1@gmail.com>
 
 
