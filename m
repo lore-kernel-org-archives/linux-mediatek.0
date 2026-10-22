@@ -2,91 +2,97 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 814A3606A319
-	for <linux-mediatek@archiver.kernel.org>; Thu, 22 Oct 2026 16:39:48 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 4CCC5606A31D
+	for <linux-mediatek@archiver.kernel.org>; Thu, 22 Oct 2026 19:39:19 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=0Sba+3FN;
-	dkim=pass (2048-bit key, unprotected) header.d=bootlin.com header.i=@bootlin.com header.a=rsa-sha256 header.s=dkim header.b=Ujno0Th7
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=PnpGsVO2;
+	dkim=pass (2048-bit key, unprotected) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20251104 header.b=mzRmPu4c
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Unsubscribe-Post:
-	List-Owner; bh=StysNLdbp3G1oFHxTS6FrcZ8MFyidPzjh/fRUss0P6c=; b=0Sba+3FNCK1dks
-	+xozyjh6YPyK/2rKJrtGAn5BOC++V3PZpEXdiVBzXqfeKGvran6/zcF4Sy741SinO0HC6tYKyxzm7
-	LqnexfaQkuP2rdbV482IDjW/4s5/0p9BmXKhfsE9dzzin5ihjsA/l7r1wV2ZFMPfRe0TwIvYd0E/F
-	hCKI5KGt8+O1ajVoSqDY/UzJFKMM54IRcxYtofFBhXa9btR7ro6g1M40XvVngU+0/qacUXM1dRQyq
-	auHLWmXl196m6VKe9xFVY1bNKDjvM6jdkPHd2TN2ktP1RhKDUofntq95BXMY6MBqOaargcYB0nMSQ
-	6Dc1uZot7Fjl8CrIESCg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Unsubscribe-Post:List-Owner;
+	bh=b6uibeAd1xqDy+X+4zICpkfe89xnFGYtmkkgNj7URCQ=; b=PnpGsVO2bb/tKBBjyrLdMrDlLe
+	+n+EARhTOxafHY0edw3K18jAPO4b9ZmlAPobhgtBb+jHM2H5g17WVPK0bgTPCs5zvIH/ZX1Bp7Tv5
+	oDet03peNSCcQfhwQToZcS78Fi7N6W5tcFpSoqDQWJWgEzBkKi4wboZrgX19TUvFxKtcSqxgMtPli
+	uO7ms4T3Uq8Bvwc1GeCT+aAijlSFBfXIA49/3lP+0W3+B/ZsrMr/U8L9xZyNrotQj+9b68cj+0hVp
+	CG18sJzEBswcZ4ECpAgOjlqJ5WGGF5/TCkse713sKA6kYbKV+wlJ8xXMlLSlL8AUY/oxDzaO2/MNh
+	SMDtNhQA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xJvpU-0000000EWOV-0w86;
-	Thu, 22 Oct 2026 16:39:48 +0000
-Received: from smtpout-04.galae.net ([185.171.202.116])
+	id 1xJyd9-0000000EqXU-13UG;
+	Thu, 22 Oct 2026 19:39:15 +0000
+Received: from mail-wr1-x436.google.com ([2a00:1450:4864:20::436])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xJvpP-0000000EWIf-2ind
+	id 1xJyd5-0000000EqW8-25AS
 	for linux-mediatek@lists.infradead.org;
-	Thu, 22 Oct 2026 16:39:46 +0000
-Received: from smtpout-01.galae.net (smtpout-01.galae.net [212.83.139.233])
-	by smtpout-04.galae.net (Postfix) with ESMTPS id 24DDAC51458;
-	Thu, 22 Oct 2026 16:40:41 +0000 (UTC)
-Received: from mail.galae.net (mail.galae.net [212.83.136.155])
-	by smtpout-01.galae.net (Postfix) with ESMTPS id AB4BD60763;
-	Thu, 22 Oct 2026 16:39:41 +0000 (UTC)
-Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id C322A10328E8D;
-	Thu, 22 Oct 2026 18:39:31 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=dkim;
-	t=1792687176; h=from:subject:date:message-id:to:cc:mime-version:content-type:
-	 content-transfer-encoding:in-reply-to:references;
-	bh=StysNLdbp3G1oFHxTS6FrcZ8MFyidPzjh/fRUss0P6c=;
-	b=Ujno0Th7EPhz/6QSKu7yGLMJZrd2QJ/XvLoNw35A0QIEae2DSTIDq++frzLK2PZoALfC8i
-	QvgE8ja7WJejS7HaNrnv7kNTsPpPXoWqOnelNtzyyT4MSEwUyCk4sq4Rhbg7kOk2CZz0fA
-	4SAx5bgTt5vlVcroIIqdkGQBcAmvHwYNKAV3Z/3HWXistz6m3ev7pA4kYY7YpacwlTMJ6F
-	8QL9pPP6w7xaoLcEGgslkpOYt86ZRiCFQPZXJtbuVfpxVsjrpzXCbYGisEtbY0Prvrs6fs
-	aUQXX2UoKIEvZV/2lpbz9w+wXwAQ4CrfauZdjESuIz6O0+CgQbZP56Mc2bs4GQ==
-From: Kory Maincent <kory.maincent@bootlin.com>
-Date: Thu, 22 Oct 2026 18:38:04 +0200
-Subject: [PATCH v4 8/8] drm/mediatek: Use dp_connector helpers to expose
- link training state
+	Thu, 22 Oct 2026 19:39:14 +0000
+Received: by mail-wr1-x436.google.com with SMTP id ffacd0b85a97d-48c4d99c32bso110141f8f.1
+        for <linux-mediatek@lists.infradead.org>; Thu, 22 Oct 2026 12:39:10 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20251104; t=1792697949; x=1793302749; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
+        bh=b6uibeAd1xqDy+X+4zICpkfe89xnFGYtmkkgNj7URCQ=;
+        b=mzRmPu4cn71zNS34MwYTXUBqwRhei5CP/xPD57sHLSvrPRmOfM4n/JBIBg2loh6izW
+         uHgEi8NEolZmxvUZJAr6xOdu6r+ReWyBz2Un50VbkteaFE3E8TZ0Yts4h+yanCR5X4OH
+         wsrZ7TeDDLnTDoWqFaByMsfckLRiBMjk1obHTyG/fY9r4+MChL9dtZVRVLSy3wLN3yFa
+         Je2jERbQpQ272QgIYEQwdIhTTdP+RgwHyQ+2Bhvjvkts8ioySeNpd/Vv/5EXEQMbfBgv
+         XKan8rwodkACzgXz9kh+CHElFnUhghdkBubVELXjMitU0q3oaXf3PRj39RUajV6PN1rM
+         lF1Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20260707; t=1792697949; x=1793302749;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to:content-type;
+        bh=b6uibeAd1xqDy+X+4zICpkfe89xnFGYtmkkgNj7URCQ=;
+        b=GuWXytNYhmHYwu7FISs9D00Z+B/fhcDq1hMKbrkFcYHmT4aTez/qQ7eMj9ZQ4HUXNg
+         d/uyc/J64p+R75NnxCV7+n9dOvU+Sk1Ej4/tuMhUa57MfnWaMZdOHapPiT9vdZF+3wUI
+         JlH1r8mLMbw0wr0BRWaigh/w1pAYPythdoN3Ggrq0+JYbhkGpIhIzJEfwMiv20Lk0HDO
+         5ryPfMn63Nk0Y2/hjdN3vjlQPs3qSUrVplEi6focm3J/+6jBSCB6CSeInWB2o2rV4IYw
+         LD8eImUkXOvZXtzwQUKs4YfvlyUylTJTgbl3Hf5xd2lVqr4UiFUTe544DyYR0Gmd9w4r
+         GucA==
+X-Forwarded-Encrypted: i=1; AKwUvBz+xbdR/LGVXBDmQBTwPZKzaeLvUT5U5icx58Hy4OOeZK690rwk9uEWGkCm6M/hCJxNmEH/bsxGBUh7Jf5PIQ==@lists.infradead.org
+X-Gm-Message-State: AFq9FYKQQsXeA5baRq+5JqKiYynekYh0F+/FiMn4AqJxV6TCm8npHQx0
+	QNoVxJ+SqNc6Brpw67VGDrMKpvzW0uUhYI2JrwxqwdGADoTM+UF1EMvP
+X-Gm-Gg: AYBFou0GWGZrl3JqnTrsCW/UFIz6xrUl541WBII7eTCBHjNE4InXxPz0p2yIu2a1ynE
+	Mkh0mE0PgQzDKh1QhOj6LzKVo5EpYX3fGIfkYmpHQ2T8Om1RH9an1vAlj2sVZVfeCOYmNgdPROi
+	JtVkSN2Pgz8lzUDP0RAhG4Pd+pSkt0sNBPclRhYELlkiWxosGIDb3AWGFgm02yD2TgwxRu0hbEI
+	WZyVyrA10lllnkvZt7zXqE5Gp5rPJVwX1agtwkaHFCknc826oFYH6QKh7SfmYsPCDDye5j17pAN
+	P5UmgCgs66uoDMqTgoEjWW+L7foql8br4R+76jHVgDvG02GG9Mf0VEhScAyScF1HP6VuUCF1wA9
+	2S4Lu20PqeMSken/A2suci6mHiRrd05SaFGOAo/5q1rHuE/Q6sTslOGeyJUO3sz4ud0F24/cy20
+	c0GJeiOMZ6/6CN3BeO7+wskV86u6dHXVH5hcsTVQxaSPhnC2k2+myzDknJP1bEc1vpKmT9NSBzO
+	A+L+YHlDEZoCfALFLoWPiUkZwaMqT//Let8ojYfqF2ANgeuDuWh4PWjupFpywIQMqs+i+KJAEcb
+	Padl2/oaA+v7B1PagePt/15vsFxkmY1yf4nFtcEeD1Kn+7JRq3kyIZE/hopH
+X-Received: by 2002:a05:6000:46c8:b0:48d:eec6:308b with SMTP id ffacd0b85a97d-48e264af00emr8712598f8f.21.1792697948972;
+        Thu, 22 Oct 2026 12:39:08 -0700 (PDT)
+Received: from Ansuel-XPS24.localdomain (93-34-92-187.ip49.fastwebnet.it. [93.34.92.187])
+        by smtp.googlemail.com with ESMTPSA id ffacd0b85a97d-48e38026a7fsm69730f8f.15.2026.10.22.12.39.06
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 22 Oct 2026 12:39:07 -0700 (PDT)
+From: Christian Marangi <ansuelsmth@gmail.com>
+To: Stefan Roese <sr@denx.de>,
+	Andi Shyti <andi.shyti@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Wolfram Sang <wsa@kernel.org>,
+	linux-i2c@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Cc: Christian Marangi <ansuelsmth@gmail.com>
+Subject: [PATCH RESEND] i2c: mt7621: fix copying uninitialized kernel stack with reduced page_len
+Date: Thu, 22 Oct 2026 21:38:51 +0200
+Message-ID: <20261022193853.670625-1-ansuelsmth@gmail.com>
+X-Mailer: git-send-email 2.55.0
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20261022-feat_link_cap-v4-8-a4f3f6e8cad9@bootlin.com>
-References: <20261022-feat_link_cap-v4-0-a4f3f6e8cad9@bootlin.com>
-In-Reply-To: <20261022-feat_link_cap-v4-0-a4f3f6e8cad9@bootlin.com>
-To: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
- David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
- Jani Nikula <jani.nikula@linux.intel.com>, 
- Rodrigo Vivi <rodrigo.vivi@intel.com>, 
- Joonas Lahtinen <joonas.lahtinen@linux.intel.com>, 
- Tvrtko Ursulin <tursulin@ursulin.net>, 
- Andrzej Hajda <andrzej.hajda@intel.com>, 
- Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>, 
- Laurent Pinchart <Laurent.pinchart@ideasonboard.com>, 
- Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
- Luca Ceresoli <luca.ceresoli@bootlin.com>, 
- Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
- Philipp Zabel <p.zabel@pengutronix.de>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Dmitry Baryshkov <lumag@kernel.org>, Daniel Stone <daniels@collabora.com>
-Cc: Thomas Petazzoni <thomas.petazzoni@bootlin.com>, 
- Mark Yacoub <markyacoub@google.com>, Sean Paul <seanpaul@google.com>, 
- Manasi Navare <navaremanasi@google.com>, 
- Drew Davenport <ddavenport@google.com>, 
- Louis Chauvet <louis.chauvet@bootlin.com>, dri-devel@lists.freedesktop.org, 
- linux-kernel@vger.kernel.org, intel-gfx@lists.freedesktop.org, 
- intel-xe@lists.freedesktop.org, linux-mediatek@lists.infradead.org, 
- linux-arm-kernel@lists.infradead.org, 
- Kory Maincent <kory.maincent@bootlin.com>
-X-Mailer: b4 0.16.1-dev-17221
-X-Last-TLS-Session-Version: TLSv1.3
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261022_093945_399065_6550C2EA 
-X-CRM114-Status: GOOD (  23.09  )
+X-CRM114-CacheID: sfid-20261022_123911_552733_7DF20EDE 
+X-CRM114-Status: GOOD (  11.58  )
 X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -98,189 +104,69 @@ List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-18.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,
-	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=ham
-	autolearn_force=no version=4.0.1
+X-Spam-Status: No, score=-15.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
+	DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,FREEMAIL_FORGED_FROMDOMAIN,
+	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
+	USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Adopt the DRM core DisplayPort helpers by setting DRM_BRIDGE_OP_DP and
-populating the bridge dp_link_caps at probe time. Report the sink
-capabilities on hotplug, reset them on disconnect, and report the link
-parameters once link training succeeds.
+When a page_len is less than 5 bytes in mtk_i2c_xfer, uninitialized kernel
+stack data is copied and written to REG_SM0D1_REG. Equally on the read
+part, an unnecessary read is done.
 
-Signed-off-by: Kory Maincent <kory.maincent@bootlin.com>
+Guard these extra copy/write and read for the page_len to fix leaking
+uninitialized stack memory.
+
+Fixes: d04913ec5f89 ("i2c: mt7621: Add MediaTek MT7621/7628/7688 I2C driver")
+Signed-off-by: Christian Marangi <ansuelsmth@gmail.com>
 ---
-Not tested. I believed I had a board with this device, but it actually uses
-an anx7625 bridge. I'm unable to test it; it would be appreciated if
-someone else could, so the change isn't dropped.
+ drivers/i2c/busses/i2c-mt7621.c | 9 ++++++---
+ 1 file changed, 6 insertions(+), 3 deletions(-)
 
-Changes in v3:
-- Sync and report sink capabilities from the HPD thread for DisplayPort,
-  or in atomic_enable for eDP. Reset them on unplug, or atomic disable
-  and only report link parameters after successful training.
-- Add connection_mutex lock for DisplayPort in the IRQ thread.
-
-Changes in v2:
-- Remove voltage swing and pre emphasis properties.
----
- drivers/gpu/drm/mediatek/mtk_dp.c | 61 ++++++++++++++++++++++++++++++++++++---
- 1 file changed, 57 insertions(+), 4 deletions(-)
-
-diff --git a/drivers/gpu/drm/mediatek/mtk_dp.c b/drivers/gpu/drm/mediatek/mtk_dp.c
-index f656b85b84212..b87e171d88d83 100644
---- a/drivers/gpu/drm/mediatek/mtk_dp.c
-+++ b/drivers/gpu/drm/mediatek/mtk_dp.c
-@@ -1812,6 +1812,17 @@ static void mtk_dp_train_change_mode(struct mtk_dp *mtk_dp)
- 	mtk_dp_reset_swing_pre_emphasis(mtk_dp);
- }
+diff --git a/drivers/i2c/busses/i2c-mt7621.c b/drivers/i2c/busses/i2c-mt7621.c
+index 0a288c998419..9ea5e3f9a763 100644
+--- a/drivers/i2c/busses/i2c-mt7621.c
++++ b/drivers/i2c/busses/i2c-mt7621.c
+@@ -144,7 +144,6 @@ static int mtk_i2c_xfer(struct i2c_adapter *adap, struct i2c_msg *msgs,
+ 	u16 addr;
+ 	int i, j, ret, len, page_len;
+ 	u32 cmd;
+-	u32 data[2];
  
-+static void mtk_dp_report_link_train(struct mtk_dp *mtk_dp)
-+{
-+	u32 rate, nlanes;
-+	bool dsc = false;
+ 	i2c = i2c_get_adapdata(adap);
+ 
+@@ -186,6 +185,8 @@ static int mtk_i2c_xfer(struct i2c_adapter *adap, struct i2c_msg *msgs,
+ 
+ 		/* transfer data */
+ 		for (len = pmsg->len, j = 0; len > 0; len -= 8, j += 8) {
++			u32 data[2] = { };
 +
-+	rate = drm_dp_bw_code_to_link_rate(mtk_dp->train_info.link_rate);
-+	nlanes = mtk_dp->train_info.lane_count;
-+
-+	drm_dp_set_cur_link_params(mtk_dp->conn, rate, nlanes, dsc);
-+}
-+
- static int mtk_dp_training(struct mtk_dp *mtk_dp)
- {
- 	int ret;
-@@ -2015,6 +2026,8 @@ static irqreturn_t mtk_dp_hpd_event_thread(int hpd, void *dev)
- 			ret = mtk_dp_training(mtk_dp);
- 			if (ret)
- 				drm_err(mtk_dp->drm_dev, "Training failed, %d\n", ret);
-+			else
-+				mtk_dp_report_link_train(mtk_dp);
+ 			page_len = (len >= 8) ? 8 : len;
  
- 			mtk_dp->enabled = true;
- 		}
-@@ -2145,9 +2158,12 @@ mtk_dp_bdg_detect(struct drm_bridge *bridge, struct drm_connector *connector)
- 	struct mtk_dp *mtk_dp = mtk_dp_from_bridge(bridge);
- 	enum drm_connector_status ret = connector_status_disconnected;
- 	bool enabled = mtk_dp->enabled;
-+	int err;
- 
--	if (!mtk_dp->train_info.cable_plugged_in)
-+	if (!mtk_dp->train_info.cable_plugged_in) {
-+		drm_dp_sink_reset_caps(connector);
- 		return ret;
-+	}
- 
- 	if (!enabled)
- 		mtk_dp_aux_panel_poweron(mtk_dp, true);
-@@ -2160,9 +2176,18 @@ mtk_dp_bdg_detect(struct drm_bridge *bridge, struct drm_connector *connector)
- 	 * whether we connect to a sink device.
- 	 */
- 
--	if (drm_dp_read_sink_count(&mtk_dp->aux) > 0)
-+	if (drm_dp_read_sink_count(&mtk_dp->aux) > 0) {
- 		ret = connector_status_connected;
- 
-+		err = drm_dp_sink_sync_caps(connector, &mtk_dp->aux, NULL);
-+		if (err)
-+			drm_dbg_kms(mtk_dp->aux.drm_dev,
-+				    "%s: error sink caps synchronisation (%d)\n",
-+				    mtk_dp->aux.name, err);
-+	} else {
-+		drm_dp_sink_reset_caps(connector);
-+	}
-+
- 	if (!enabled)
- 		mtk_dp_aux_panel_poweron(mtk_dp, false);
- 
-@@ -2390,6 +2415,12 @@ static void mtk_dp_bridge_atomic_enable(struct drm_bridge *bridge,
- 	if (mtk_dp->data->bridge_type == DRM_MODE_CONNECTOR_eDP) {
- 		mtk_dp_aux_panel_poweron(mtk_dp, true);
- 
-+		ret = drm_dp_sink_sync_caps(mtk_dp->conn, &mtk_dp->aux, NULL);
-+		if (ret)
-+			drm_dbg_kms(mtk_dp->aux.drm_dev,
-+				    "%s: error sink caps synchronisation (%d)\n",
-+				    mtk_dp->aux.name, ret);
-+
- 		/* Training */
- 		ret = mtk_dp_training(mtk_dp);
- 		if (ret) {
-@@ -2398,6 +2429,8 @@ static void mtk_dp_bridge_atomic_enable(struct drm_bridge *bridge,
- 		}
- 	}
- 
-+	mtk_dp_report_link_train(mtk_dp);
-+
- 	ret = mtk_dp_video_config(mtk_dp);
- 	if (ret)
- 		goto power_off_aux;
-@@ -2435,6 +2468,7 @@ static void mtk_dp_bridge_atomic_disable(struct drm_bridge *bridge,
- 	if (mtk_dp->data->bridge_type == DRM_MODE_CONNECTOR_eDP) {
- 		mtk_dp->enabled = false;
- 		mtk_dp_aux_panel_poweron(mtk_dp, false);
-+		drm_dp_sink_reset_caps(mtk_dp->conn);
- 	}
- 
- 	mtk_dp_update_plugged_status(mtk_dp);
-@@ -2740,11 +2774,14 @@ static int mtk_dp_edp_link_panel(struct drm_dp_aux *mtk_aux)
- 	return 0;
- }
- 
-+static int mtk_dp_rates[] = {162000, 270000, 540000, 810000};
-+
- static int mtk_dp_probe(struct platform_device *pdev)
- {
-+	struct drm_connector_dp_link_caps *source_caps;
- 	struct mtk_dp *mtk_dp;
- 	struct device *dev = &pdev->dev;
--	int ret;
-+	int ret, i, max_rate;
- 
- 	mtk_dp = devm_drm_bridge_alloc(dev, struct mtk_dp, bridge,
- 				       &mtk_dp_bridge_funcs);
-@@ -2758,6 +2795,20 @@ static int mtk_dp_probe(struct platform_device *pdev)
- 	if (ret)
- 		return dev_err_probe(dev, ret, "Failed to parse dt\n");
- 
-+	source_caps = devm_kzalloc(dev, sizeof(*source_caps), GFP_KERNEL);
-+	if (!source_caps)
-+		return -ENOMEM;
-+
-+	source_caps->nlanes = mtk_dp->max_lanes;
-+	source_caps->link_rates = mtk_dp_rates;
-+
-+	max_rate = drm_dp_bw_code_to_link_rate(mtk_dp->max_linkrate);
-+	for (i = 0; i < ARRAY_SIZE(mtk_dp_rates); i++)
-+		if (mtk_dp_rates[i] > max_rate)
-+			break;
-+
-+	source_caps->nlink_rates = i;
-+
- 	/*
- 	 * Request the interrupt and install service routine only if we are
- 	 * on full DisplayPort.
-@@ -2809,6 +2860,8 @@ static int mtk_dp_probe(struct platform_device *pdev)
- 
- 	mtk_dp->bridge.of_node = dev->of_node;
- 	mtk_dp->bridge.type = mtk_dp->data->bridge_type;
-+	mtk_dp->bridge.dp_link_caps = source_caps;
-+	mtk_dp->bridge.ops = DRM_BRIDGE_OP_DP;
- 
- 	if (mtk_dp->bridge.type == DRM_MODE_CONNECTOR_eDP) {
- 		/*
-@@ -2849,7 +2902,7 @@ static int mtk_dp_probe(struct platform_device *pdev)
+ 			if (pmsg->flags & I2C_M_RD) {
+@@ -194,7 +195,8 @@ static int mtk_i2c_xfer(struct i2c_adapter *adap, struct i2c_msg *msgs,
+ 			} else {
+ 				memcpy(data, &pmsg->buf[j], page_len);
+ 				iowrite32(data[0], i2c->base + REG_SM0D0_REG);
+-				iowrite32(data[1], i2c->base + REG_SM0D1_REG);
++				if (page_len > 4)
++					iowrite32(data[1], i2c->base + REG_SM0D1_REG);
+ 				cmd = SM0CTL1_WRITE;
  			}
- 		}
- 	} else {
--		mtk_dp->bridge.ops = DRM_BRIDGE_OP_DETECT |
-+		mtk_dp->bridge.ops |= DRM_BRIDGE_OP_DETECT |
- 				     DRM_BRIDGE_OP_EDID | DRM_BRIDGE_OP_HPD;
- 		ret = devm_drm_bridge_add(dev, &mtk_dp->bridge);
- 		if (ret)
-
+ 
+@@ -204,7 +206,8 @@ static int mtk_i2c_xfer(struct i2c_adapter *adap, struct i2c_msg *msgs,
+ 
+ 			if (pmsg->flags & I2C_M_RD) {
+ 				data[0] = ioread32(i2c->base + REG_SM0D0_REG);
+-				data[1] = ioread32(i2c->base + REG_SM0D1_REG);
++				if (page_len > 4)
++					data[1] = ioread32(i2c->base + REG_SM0D1_REG);
+ 				memcpy(&pmsg->buf[j], data, page_len);
+ 			} else {
+ 				if (!(pmsg->flags & I2C_M_IGNORE_NAK)) {
 -- 
-2.43.0
+2.55.0
 
 
