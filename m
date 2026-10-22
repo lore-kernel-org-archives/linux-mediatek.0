@@ -2,103 +2,100 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 98D99606A31E
-	for <linux-mediatek@archiver.kernel.org>; Thu, 22 Oct 2026 21:18:32 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 29825606A31F
+	for <linux-mediatek@archiver.kernel.org>; Thu, 22 Oct 2026 21:29:48 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=zsSkmSr3;
-	dkim=pass (2048-bit key, unprotected) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20251104 header.b=mxacBWXN
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=iEOnanSE;
+	dkim=pass (2048-bit key, unprotected) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20251104 header.b=tCxP9TMg
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
 	List-Unsubscribe-Post:List-Owner;
-	bh=WsTLwSG0j0rvcPTxUloruhaWzU98+XdsMcTu8lqR+tY=; b=zsSkmSr3TWhymhRqv2Kf/c9dXM
-	1bHz8mlLmv2tkiE6SOdVG/Xd7p21GrdA1mSsVYlfvxYKcQv8598Me5z8xt9jkyN9p2zGxlDdkBohm
-	VscOKS1+3ElD7l9feb7fgHFo3l3Brk4tZ0IoVlOxJ0quupccNvtPfnH+vUN+44ZEjaZS3IIrbqEHl
-	2gEceqrNkEAgO+NkZSfd/ZsxlQzPSgUeiZDPYWzOHk1+9tiXYr047c3K54BeK9uhDEvtkLXjMUK+h
-	KX0BGJsBtKfoai4UBnPRE5PDT5O5LUICQGM6dLvMIUe5oZ2P4TwSxS6ADZk34pdxAmvfYkPsdNvir
-	6eb4WYuQ==;
+	bh=7J25Ol6OoVWSYnoEuI8c8YQySc1v4KBrwsp24rZ47ZI=; b=iEOnanSE3ltNobDXU9U25iuSb9
+	fVbD04Enq1MOwRYwUCD3lqOIyyGiPovVgaxJOEQ7twkvGTRy6W0Fa9VVG+3yHd8x1vNaG9fk+sa1l
+	dNpDRz6xpGcaEc62xu5Oe3NpgIIqTUxLh3rmtrpPV/BJLvgzd50Uh5EMvcPYmsRu3uFNRGxv2OimL
+	kGr46knqxFab8cBefij9XGxR8+mjo+wNWdZH2xm2zgqriC6taqzgBeD8pP7XhqPsBFXkwzSLVepBP
+	qyk+GNNAcQvpZZiDZc0tQrlRgB73Y4EiTwO1mtKOjvPtqanz2QsVObfuaQBqxOAMwGM7o1pqAdskN
+	083CNcrw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xK0BE-0000000Ezrj-0Tmi;
-	Thu, 22 Oct 2026 21:18:32 +0000
-Received: from mail-oo1-xc36.google.com ([2607:f8b0:4864:20::c36])
+	id 1xK0M7-0000000F0Ph-3U6P;
+	Thu, 22 Oct 2026 21:29:47 +0000
+Received: from mail-pl1-x635.google.com ([2607:f8b0:4864:20::635])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xK0BB-0000000Ezqn-1Wc9
+	id 1xK0M5-0000000F0Oz-0xsF
 	for linux-mediatek@lists.infradead.org;
-	Thu, 22 Oct 2026 21:18:31 +0000
-Received: by mail-oo1-xc36.google.com with SMTP id 006d021491bc7-706113e92f9so155936eaf.2
-        for <linux-mediatek@lists.infradead.org>; Thu, 22 Oct 2026 14:18:29 -0700 (PDT)
+	Thu, 22 Oct 2026 21:29:46 +0000
+Received: by mail-pl1-x635.google.com with SMTP id d9443c01a7336-2e812e2b31bso1047225ad.3
+        for <linux-mediatek@lists.infradead.org>; Thu, 22 Oct 2026 14:29:44 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1792703908; x=1793308708; darn=lists.infradead.org;
-        h=cc:to:message-id:content-transfer-encoding:content-type
-         :mime-version:subject:date:from:from:to:cc:subject:date:message-id
-         :reply-to:content-type;
-        bh=WsTLwSG0j0rvcPTxUloruhaWzU98+XdsMcTu8lqR+tY=;
-        b=mxacBWXNG++6K28C+5tkDbOgVUtN+hqrfTMgoGVFOfIIAtgBIoRqQClXd8KfOCZSMe
-         Mq2+pEsYNGDFobFrp7MR1cb0G8bwM+nYwVKUdBsQgEHqYa625qnqL6HKX6xnt9stTphz
-         jVzXU6y/yHgFMUoNNVKlDjTwWC4JhTnZMJb/B9iJqWNiqikl8SK0l19jHll2P7oQo0Uc
-         iNjZfHqH49zmjPua1F8Q5Bow1NqBXD03/Ss5zLZvkx7gXyLHyOHa4Kih4aSJzBPuRomB
-         n8pF17cz8QPp+WhQnvkjp/H2bJDXsP5BDouP/1T5/ag8TSwLoG86aoVjO5dquqhDyjhu
-         phxg==
+        d=gmail.com; s=20251104; t=1792704584; x=1793309384; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
+        bh=7J25Ol6OoVWSYnoEuI8c8YQySc1v4KBrwsp24rZ47ZI=;
+        b=tCxP9TMg9s6WKJQbniiC9ScHZ9SyDluWgyypluESadzx7+9GEePEXlJptmFTqYtis0
+         i9UMwR1APvI34670ym0VgWjqP0TtYSECt/54H3/VcSDYqIIh0ABC30gFntbHNbpINhZV
+         h2ZAkn9ra7gYF4qYuy4+R8y/hzgoz07BPWc4xIDiJa0gtq3UvdD7SyYf4v1zGZnHDrvZ
+         6jLVCsKq6L5FirilV+ZK0U4/l39UXOOhMjul4hz+2QVbbD5+iTrbX+Beop69IQ7O7hKN
+         xwJts6+YRCRR+f6AzPxTTw/2U+dEn7TZm2xdDer0ImzAH9oB/59QAqIUVoEirwGdWQKu
+         PPwg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1792703908; x=1793308708;
-        h=cc:to:message-id:content-transfer-encoding:content-type
-         :mime-version:subject:date:from:x-gm-gg:x-gm-message-state:from:to
-         :cc:subject:date:message-id:reply-to:content-type;
-        bh=WsTLwSG0j0rvcPTxUloruhaWzU98+XdsMcTu8lqR+tY=;
-        b=GnTloGX+u2FNzgQOLfJO1qFPvnq5X/L4bi2+/KLq1ce+OMGXlD4ogNZzAKDmQI21Sy
-         KbAm8+PWOI/BZ/BgYuwlJ4XoDk0F73BQRbi2x/uhM4dwJLC3q6/MvXN+ZmVglAwL1H1E
-         s45ocBPSG4X+QNkuRL9UGh964ZnOgbD2hxv4mQWaOm/Bg2NmDkJBwfjiagtY7aMeZdMg
-         DYfoVCaSB1eMy2DJRCTs5cg2fJ/hfeb6nZkHfb0SNS4Uhm9wzxxYJA0JrPgtvoeBIhIz
-         49+OlvMDQChBEGk7lttgNPnWjGUrRTpNxICGFDmnHlAlhpS5Fu2WtQ68ZpKksdRlImq0
-         dxVQ==
-X-Forwarded-Encrypted: i=1; AKwUvBxndtDUrm+HrNrMHm6vs2TavXQZUmOW384/uXQV8Y1+K8egRXTODz9nFTiI15zwcvWvFD2F3WT0dXnU8thxKA==@lists.infradead.org
-X-Gm-Message-State: AFq9FYLEoANYSTnOcJ955iBK8qMC4w4IUDfoWg9tYtMEfIZrg21bVCc4
-	541Qy7cI7KQO2OWoKbAZq1ADl1TvLwUEGbvteWMI5y1S5qKgPpUFoboL3yVHqPJr
-X-Gm-Gg: AYBFou3SGbXP2jDt841jDf1zKqAibZK2A2T9UDoIfDz/WySE3XwPcOZ99e4hIRBxDpm
-	Tn+IP8rdEwvJz48cBX+kNj1xer5LNYF7p/Cb5jbmJt3HSQlDNO9gK1y3Nb6G0rTOuSyU+7lSStg
-	iQH8qfFsGxTpYauA1XQm7FJLbx9W52da0N6n+6dBRRC1ShnMHPjxZhKhU4/CjWnWatpkh1qIQup
-	FexKyAdcn6S8T4sLSO6wXSG/4QZGDDeNvqmpraOspQlmgHxLfkVAbSd0zAr0Y22dPOx6Ue6zInW
-	L/34n8k2vXyFUcmbVsS7qgcfd88797tmoRrxHYyuaIGZ4nB7/fkuzFtqxzr/nG+OeJ/luRiT87Z
-	i4WTwC7bx8Cicw52BwJtTzOHG7IenqOnrZib3a8Onf3Oi/BP0ikjGTGhmuPJRtj+SOY1L2onuxa
-	bm5heCprSDFDag/PUkxuNjTGdH4b0ekZrjEZkxeav8ZL4yXvkGYbZIeeZl+pjjUm24sATQYlpk7
-	AE7mWOqb3gxwGsnubpbS0tSIKIbiEwRU6SiXC08cktDbCAdFleMbUZWqEaOLUerOJiFB7ObWuQL
-	S0WmJgyg8qc4dJAOlDdX6q3Xmj64F4IvlRUjNxBCQMyuh2SmOT+n+jIkEpU2yb1YXxhzgF27vHR
-	LeO3fg1Bf453PqW9DhGn+G5Vf/0FztlX+W7h4hu1Wn3N6is43/XCCKuOMl60j0Ixshvo3NpSmT/
-	zuKNc=
-X-Received: by 2002:a05:6820:3287:b0:709:529a:477c with SMTP id 006d021491bc7-70b88ac1066mr386352eaf.87.1792703908193;
-        Thu, 22 Oct 2026 14:18:28 -0700 (PDT)
-Received: from [127.0.1.1] (174-29-1-49.hlrn.qwest.net. [174.29.1.49])
-        by smtp.gmail.com with ESMTPSA id 46e09a7af769-84fbd362c1fsm250873a34.4.2026.10.22.14.18.27
+        d=1e100.net; s=20260707; t=1792704584; x=1793309384;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to:content-type;
+        bh=7J25Ol6OoVWSYnoEuI8c8YQySc1v4KBrwsp24rZ47ZI=;
+        b=jOihFjxDpo7l4MzvwEirwW16adqGEIBD1Lb8uDq+zhxFynMomCfxcEPuSbNOd2oF+r
+         M0poBoizfDGx0IfzNIaAXIudzWFcAF6c4Sgho3vAw1QqlGW/qFbN5DhwFHkYh5AaVerG
+         XsegK+L9SDzqfmEz3PyUM7CTK4dpP5JGxjRAq+ouRR00vBNpOqUCtbumgbIMQjHMkTnn
+         g1hd6Xirt8sVUEidVRZ2cB+DW199tABmem4TwtCWoxUbfTM8oZZ61emIPkwdW8QU/mdB
+         QusZRAvyXwDzoT4FL7mOsll1IEhADF5EAhYrzKupR6Q1Arp2IotgzcwgEPIAFfTyT6bc
+         DLrw==
+X-Forwarded-Encrypted: i=1; AKwUvBxGWnAPj848klAR0ZPIsj5OmxIvHeKgpF1DD786Ub4kaCR8/3hlH6E8x+7jc6W98QqZgjziuW6pEBMdOnKERQ==@lists.infradead.org
+X-Gm-Message-State: AFq9FYK6BhkqDheGrHDJQE/u1TaQkpyapRvFR5qVAHMVQv1mwXcnHKgH
+	LQlnm+3h5D4u1i7+jO/SQQyeBGkyV4DB/Q8YvGKTcQhXNJbycCc4e/AC
+X-Gm-Gg: AYBFou2nOT3PXUaX7hSrAxPlycDOHhl0kxxDB7ULWILr1o2vDjvOxJ1QbU0QuDT7sT2
+	HXSzgK3mr9z2fVL7xeFZDfewL9cRuD386Ujnh8kxR8nGBvlhQzucInjPT9s+S0HikfW4bwcZb1+
+	Tse5aV5W1SKbXzfDS+VtL1ue/4lIsOw0DQBp+YAwCQrANGzyGrY/pBU8zan0ibAj/uMBAa+egfS
+	NfNuWuHVGBPGjbVPEWeIHrvf7VR/8UaVjSLPaIwBEjmlnUkynglzeMmMHbeEq4wVAw1yJBZyhaW
+	wH1qBO9vBjXGrW7RBSyMSE3nIW2ID6NsCm5joZogRYr5BzJ+zocs31IyE0tLtv1IBuFAgQLQtiW
+	oxGSgM70fgZQyj3lAffAi3cXDvDv6xT6aI2MGhGrFhcmdA2hwQZLMZLvPmUnVQ7hXVCyWvBeXLP
+	sxIpL+A37nTdjmQ6cfJNgGVjWWvUSQp9YfI1k47U6VeBqPBRfbc7XdUIxiHO02F43wddLfQlxi9
+	fAOvk9IriQRyXn/nFODvU4t2t3bYM47U9et44aiUJjjw5b7KxDmuDlVSEL++tTY9QsoK/8qA2G2
+	NimlVNrhNwAttqAIGkpT1FcVrmLE5QCWdjKbMw08s09XLK7zNcZCA1vBFzKR3c1X/YzAZbc82Mn
+	hpcRspDRj3w9D5SmXRoZac/c=
+X-Received: by 2002:a17:90b:3806:b0:3ac:7842:bd50 with SMTP id 98e67ed59e1d1-3adcdfdb688mr169990a91.15.1792704584283;
+        Thu, 22 Oct 2026 14:29:44 -0700 (PDT)
+Received: from ryzen ([2601:644:8000:37f::e34])
+        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-3adca08e785sm606547a91.0.2026.10.22.14.29.42
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 22 Oct 2026 14:18:27 -0700 (PDT)
-From: James Hilliard <james.hilliard1@gmail.com>
-Date: Thu, 22 Oct 2026 15:18:26 -0600
-Subject: [PATCH] dmaengine: mediatek: uart: make channel termination atomic
+        Thu, 22 Oct 2026 14:29:43 -0700 (PDT)
+From: Rosen Penev <rosenp@gmail.com>
+To: linux-wireless@vger.kernel.org
+Cc: Felix Fietkau <nbd@nbd.name>,
+	Lorenzo Bianconi <lorenzo@kernel.org>,
+	Ryder Lee <ryder.lee@mediatek.com>,
+	Shayne Chen <shayne.chen@mediatek.com>,
+	Sean Wang <sean.wang@mediatek.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	linux-kernel@vger.kernel.org (open list:ARM/Mediatek SoC support),
+	linux-arm-kernel@lists.infradead.org (moderated list:ARM/Mediatek SoC support),
+	linux-mediatek@lists.infradead.org (moderated list:ARM/Mediatek SoC support)
+Subject: [PATCH wireless] wifi: mt76: mt76x02: restart mac_work after a channel change
+Date: Thu, 22 Oct 2026 14:29:41 -0700
+Message-ID: <20261022212941.3666724-1-rosenp@gmail.com>
+X-Mailer: git-send-email 2.56.0
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20261022-submit-mtk-uart-dma-terminate-atomic-v1-v1-1-aa498ba5da25@gmail.com>
-X-B4-Tracking: v=1; b=H4sIAAAAAAAC/yWNwQqDMBBEf0Vy7lITS8D+SulhE7e6LYklWUUQ/
- 71JPb5h5s2uMiWmrO7NrhKtnHmOBfSlUX7COBLwUFiZ1ljdGgN5cYEFgnxgwSQwBAShFDiiEKD
- MgT2sGnRv+66zFunmVbF9E714+z89nicX1Zu8VH1tOMwELmH0U42KmOLIka7n7jh+D1/b660AA
- AA=
-X-Change-ID: 20261022-submit-mtk-uart-dma-terminate-atomic-v1-19693366ae4c
-To: Sean Wang <sean.wang@mediatek.com>, Vinod Koul <vkoul@kernel.org>, 
- Frank Li <Frank.Li@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: dmaengine@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, 
- stable@vger.kernel.org, James Hilliard <james.hilliard1@gmail.com>
-X-Mailer: b4 0.15.2
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261022_141829_441478_0302CDDD 
-X-CRM114-Status: GOOD (  13.73  )
-X-Spam-Score: -1.9 (-)
+X-CRM114-CacheID: sfid-20261022_142945_335089_5F55CDF7 
+X-CRM114-Status: GOOD (  10.53  )
+X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -117,96 +114,73 @@ X-Spam-Status: No, score=-15.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-The 8250 transmit flush path calls dmaengine_terminate_async() with the
-UART port spinlock held and interrupts disabled. UART APDMA termination
-uses sleeping register polls and synchronize_irq(), which can also wait for
-a threaded handler or for an interrupt pending on the calling CPU.
+Since the channel change code moved to the core, mt76_set_channel()
+cancels phy->mac_work before calling the driver's set_channel op. The
+mt7603, mt7615 and mt7915 set_channel ops queue mac_work again, but the
+mt76x0 and mt76x2 ones do not, and they only queue it in their start
+op. After the first channel change, which happens on every interface
+up, association and scan, mt76x02_mac_work never runs again.
 
-Serialize the stop sequence with the interrupt handler using the virtual
-channel lock and use atomic register polling. A handler that was waiting
-for that lock must check interrupt status before accessing a descriptor:
-termination may already have masked and acknowledged its interrupt. This
-allows termination to retire descriptors without waiting for the handler.
+mt76x02_mac_work calls mt76_tx_status_check() to time out frames that
+wait for a TX status report. Without it, frames whose report is lost
+stay in the wcid pktid idr until another report happens to sweep them.
+On an MT7612U station sending 25 Mbit/s of UDP, 48 such frames piled
+up within seconds. They kept their AQL airtime and their socket memory,
+and the sender blocked on a full socket send buffer for up to 30 s
+until a connection monitor probe swept them. The work also collects the
+survey, A-MPDU and EDCCA statistics and checks for MAC errors.
 
-If the channel does not stop, return the timeout and retain its descriptors
-instead of freeing state still owned by the transfer. Continue attempting
-STOP after a flush timeout, since stopping the channel is sufficient for
-termination even when the flush could not finish.
+Queue mac_work again at the end of the set_channel ops.
 
-Fixes: 9135408c3ace ("dmaengine: mediatek: Add MediaTek UART APDMA support")
-Cc: stable@vger.kernel.org
-Signed-off-by: James Hilliard <james.hilliard1@gmail.com>
+Fixes: f4fdd7716290 ("wifi: mt76: partially move channel change code to core")
+Assisted-by: LLM
+Signed-off-by: Rosen Penev <rosenp@gmail.com>
 ---
- drivers/dma/mediatek/mtk-uart-apdma.c | 24 ++++++++++++++++--------
- 1 file changed, 16 insertions(+), 8 deletions(-)
+ drivers/net/wireless/mediatek/mt76/mt76x0/main.c     | 2 ++
+ drivers/net/wireless/mediatek/mt76/mt76x2/pci_main.c | 2 ++
+ drivers/net/wireless/mediatek/mt76/mt76x2/usb_main.c | 2 ++
+ 3 files changed, 6 insertions(+)
 
-diff --git a/drivers/dma/mediatek/mtk-uart-apdma.c b/drivers/dma/mediatek/mtk-uart-apdma.c
-index f74e9a328588..73d4b701ac85 100644
---- a/drivers/dma/mediatek/mtk-uart-apdma.c
-+++ b/drivers/dma/mediatek/mtk-uart-apdma.c
-@@ -256,6 +256,12 @@ static irqreturn_t mtk_uart_apdma_irq_handler(int irq, void *dev_id)
- 	unsigned long flags;
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76x0/main.c b/drivers/net/wireless/mediatek/mt76/mt76x0/main.c
+index a5c40d350612..a2763cf648b5 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76x0/main.c
++++ b/drivers/net/wireless/mediatek/mt76/mt76x0/main.c
+@@ -26,6 +26,8 @@ int mt76x0_set_channel(struct mt76_phy *mphy)
+ 		tasklet_enable(&dev->dfs_pd.dfs_tasklet);
+ 	}
+ 	mt76x02_pre_tbtt_enable(dev, true);
++	ieee80211_queue_delayed_work(mt76_hw(dev), &dev->mphy.mac_work,
++				     MT_MAC_WORK_INTERVAL);
  
- 	spin_lock_irqsave(&c->vc.lock, flags);
-+	/* Termination may have acknowledged an interrupt before we got the lock. */
-+	if (!mtk_uart_apdma_read(c, VFF_INT_FLAG)) {
-+		spin_unlock_irqrestore(&c->vc.lock, flags);
-+		return IRQ_NONE;
-+	}
-+
- 	if (c->dir == DMA_DEV_TO_MEM)
- 		mtk_uart_apdma_rx_handler(c);
- 	else if (c->dir == DMA_MEM_TO_DEV)
-@@ -400,10 +406,12 @@ static int mtk_uart_apdma_terminate_all(struct dma_chan *chan)
- 	LIST_HEAD(head);
- 	int ret;
+ 	return 0;
+ }
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76x2/pci_main.c b/drivers/net/wireless/mediatek/mt76/mt76x2/pci_main.c
+index 550644676201..ab4d0e3f79bc 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76x2/pci_main.c
++++ b/drivers/net/wireless/mediatek/mt76/mt76x2/pci_main.c
+@@ -49,6 +49,8 @@ int mt76x2e_set_channel(struct mt76_phy *phy)
  
-+	spin_lock_irqsave(&c->vc.lock, flags);
-+
- 	mtk_uart_apdma_write(c, VFF_FLUSH, VFF_FLUSH_B);
+ 	tasklet_enable(&dev->dfs_pd.dfs_tasklet);
+ 	tasklet_enable(&dev->mt76.pre_tbtt_tasklet);
++	ieee80211_queue_delayed_work(mt76_hw(dev), &dev->mphy.mac_work,
++				     MT_MAC_WORK_INTERVAL);
  
--	ret = readx_poll_timeout(readl, c->base + VFF_FLUSH,
--			  status, status != VFF_FLUSH_B, 10, 100);
-+	ret = readx_poll_timeout_atomic(readl, c->base + VFF_FLUSH,
-+					status, status != VFF_FLUSH_B, 10, 100);
- 	if (ret)
- 		dev_err(c->vc.chan.device->dev, "flush: fail, status=0x%x\n",
- 			mtk_uart_apdma_read(c, VFF_DEBUG_STATUS));
-@@ -415,11 +423,14 @@ static int mtk_uart_apdma_terminate_all(struct dma_chan *chan)
- 	 * 3. set stop as 0
- 	 */
- 	mtk_uart_apdma_write(c, VFF_STOP, VFF_STOP_B);
--	ret = readx_poll_timeout(readl, c->base + VFF_EN,
--			  status, !status, 10, 100);
--	if (ret)
-+	ret = readx_poll_timeout_atomic(readl, c->base + VFF_EN,
-+					status, !status, 10, 100);
-+	if (ret) {
- 		dev_err(c->vc.chan.device->dev, "stop: fail, status=0x%x\n",
- 			mtk_uart_apdma_read(c, VFF_DEBUG_STATUS));
-+		spin_unlock_irqrestore(&c->vc.lock, flags);
-+		return ret;
-+	}
+ 	return 0;
+ }
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76x2/usb_main.c b/drivers/net/wireless/mediatek/mt76/mt76x2/usb_main.c
+index 66b06a493d95..57550ab3b7da 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76x2/usb_main.c
++++ b/drivers/net/wireless/mediatek/mt76/mt76x2/usb_main.c
+@@ -45,6 +45,8 @@ int mt76x2u_set_channel(struct mt76_phy *mphy)
+ 	mt76x2_mac_resume(dev);
  
- 	mtk_uart_apdma_write(c, VFF_STOP, VFF_STOP_CLR_B);
- 	mtk_uart_apdma_write(c, VFF_INT_EN, VFF_INT_EN_CLR_B);
-@@ -429,9 +440,6 @@ static int mtk_uart_apdma_terminate_all(struct dma_chan *chan)
- 	else if (c->dir == DMA_MEM_TO_DEV)
- 		mtk_uart_apdma_write(c, VFF_INT_FLAG, VFF_TX_INT_CLR_B);
+ 	mt76x02_pre_tbtt_enable(dev, true);
++	ieee80211_queue_delayed_work(mt76_hw(dev), &dev->mphy.mac_work,
++				     MT_MAC_WORK_INTERVAL);
  
--	synchronize_irq(c->irq);
--
--	spin_lock_irqsave(&c->vc.lock, flags);
- 	vchan_get_all_descriptors(&c->vc, &head);
- 	spin_unlock_irqrestore(&c->vc.lock, flags);
- 
-
----
-base-commit: 93f51579e7df248780214094418f205253383cc5
-change-id: 20261022-submit-mtk-uart-dma-terminate-atomic-v1-19693366ae4c
-
-Best regards,
---  
-James Hilliard <james.hilliard1@gmail.com>
+ 	return err;
+ }
+-- 
+2.56.0
 
 
