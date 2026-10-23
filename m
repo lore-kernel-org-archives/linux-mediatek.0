@@ -2,105 +2,112 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 4F85F606A320
-	for <linux-mediatek@archiver.kernel.org>; Fri, 23 Oct 2026 08:02:05 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 7BDB7606A320
+	for <linux-mediatek@archiver.kernel.org>; Fri, 23 Oct 2026 08:30:04 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=DQ6jaOCL;
-	dkim=pass (1024-bit key, unprotected) header.d=chromium.org header.i=@chromium.org header.a=rsa-sha256 header.s=google header.b=Ku8vmCuI
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=LusdQgPI;
+	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=infradead.org header.i=@infradead.org header.a=rsa-sha256 header.s=desiato.20200630 header.b=pwT+MWNS;
+	dkim=pass (2048-bit key, unprotected) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20251104 header.b=OZdaM4FJ
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Unsubscribe-Post:
-	List-Owner; bh=i4dWKs4ci8K3OMa5e1MlzMTJiiLuTKUPNju8rpwDqTM=; b=DQ6jaOCL05hCR+
-	ogoffrUFVtf6lPudbdR2WD/mnCe1Fd0nL/i3nURYbrjhpswjQWS4lSN9QAchYP9qDOHmrgtqTZzrx
-	NbtVfodt51j5V+RH8Z0v/Yz/eVv/zJwnTqfJyYvSPhl+KGK7ycCMDYerjJDa2hu0E3P//sL+nW6xI
-	RzNUwQzNRftGVp23SAXx9WM+O5r6NSZB6N8A0e8d4sNmA/V2YCTOHPkZhOdA1I/PbLpLEkgBdXd09
-	alXmyE5xbJ0TrHJFqpqDcPL5BfDckam55mHMyuIpe4metp7kiyh1hbe559NCSDenC/hYZ7Pz/pwWu
-	N+SfG8e9W1F6zjZ7qPWA==;
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Unsubscribe-Post:List-Owner;
+	bh=VjvPviRplzIhgWM/q2jdDcLxkxdDLClBt75UUKoUPKE=; b=LusdQgPILLUnjJ1A6nM1tmyk5Q
+	5y4bhVN0+6o1IhmvnVyvMBGYENbQ0+Bs/tqEJCpAGU2J9oQr+WcsQWNBI52wGdtoxeeh26D9Bikcs
+	vjdgsoHmB/OTrI/IucjxkYXLLpHr0xEIZks00zvUcewXuz0GihUqBwRDYe3mycdkZO6o7sVFAyVum
+	MBb8qFUQ4rcHRBnpnQjGb2Wzo957oPPWc2bdNbzPRr4z+BajyCzG7TEUUDGO7pGV2W7dNnMgtEP5e
+	Qjb51RvLekZe2WjLVluLqRj10RIWjGPvU/mTNG5+l4SSOrXOLMa9zcgUWbYATZrUVgwoeDIhV5NXG
+	cBEFqysQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xKAE0-0000000FqUS-48ky;
-	Fri, 23 Oct 2026 08:02:05 +0000
-Received: from mail-pf1-x436.google.com ([2607:f8b0:4864:20::436])
+	id 1xKAf6-0000000Fvp1-0mk2;
+	Fri, 23 Oct 2026 08:30:04 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xKADy-0000000FqTV-2LIi
+	id 1xKAf5-0000000Fvol-0Ylj
+	for linux-mediatek@bombadil.infradead.org;
+	Fri, 23 Oct 2026 08:30:03 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
+	:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:Content-Type:Content-ID:
+	Content-Description:In-Reply-To:References;
+	bh=VjvPviRplzIhgWM/q2jdDcLxkxdDLClBt75UUKoUPKE=; b=pwT+MWNS55B2EXELe58kFwhWBo
+	EmWmv38sfSMERIWmHZ0wKb9ROK973smRPzd3lM2/or57f/1nckLOU+lB4RiiEl9v8oKmVTXxo4Okj
+	ABLdpKD9qeyFztUTOedmakySGOeR/X2izfBxKQL95wPKVdlOscveXg5Fk+pT4PoygkaiXf0/SVe56
+	ceaIyMco8QfEynDypMIjWP0AWPw0GXrg1yoY3sXFNRZKI4Pz3tdYjc9mDySqntvbijAOwEMjwFIg2
+	DIeDNThF6Ou2RQZ/BsA71ogfxkl6+CPVoIDCqhzfBzhEL41KBbm7YsAlLBAI6Roc822ISt3YoGDmC
+	AQACsCNQ==;
+Received: from mail-dy2-x0a.google.com ([2607:f8b0:4864:36::a])
+	by desiato.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
+	id 1xKAf1-000000098z6-3zdp
 	for linux-mediatek@lists.infradead.org;
-	Fri, 23 Oct 2026 08:02:03 +0000
-Received: by mail-pf1-x436.google.com with SMTP id d2e1a72fcca58-8a05f2d5cd3so274069b3a.0
-        for <linux-mediatek@lists.infradead.org>; Fri, 23 Oct 2026 01:02:02 -0700 (PDT)
+	Fri, 23 Oct 2026 08:30:01 +0000
+Received: by mail-dy2-x0a.google.com with SMTP id 5a478bee46e88-35eaf84cc66so554001eec.0
+        for <linux-mediatek@lists.infradead.org>; Fri, 23 Oct 2026 01:29:59 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1792742522; x=1793347322; darn=lists.infradead.org;
-        h=content-transfer-encoding:content-type:cc:to:subject:message-id
-         :date:from:in-reply-to:references:mime-version:from:to:cc:subject
-         :date:message-id:reply-to:content-type;
-        bh=i4dWKs4ci8K3OMa5e1MlzMTJiiLuTKUPNju8rpwDqTM=;
-        b=Ku8vmCuIyP+KKcF4wuwqYrNJh2FixEd9/qqSFAz2ymki8sAhdYmDZ3YXafzj1j7NR8
-         G7p+4uEp1IaAZKuAySjP8KEZo6C6tv1HAGnjlWZ1DMyJtifuxPR2cvX2NGwYzbxh3byE
-         Cg/7/6DoXIVJkOmfGpnK7/hLhFu6O7cvbw1Ws=
+        d=gmail.com; s=20251104; t=1792744198; x=1793348998; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
+        bh=VjvPviRplzIhgWM/q2jdDcLxkxdDLClBt75UUKoUPKE=;
+        b=OZdaM4FJamt6nY86pxqOelMBIDaz24eXyuAbuI2TEwPBtVp1Bia1p/fSHEVB5HxdpY
+         7a/RKTCzVuWcziIKADesfvjOWhLUsgm3l/tyt5oSU8UJn459ilYs9tYBAl0VDOeuc/cv
+         UzeJE10b2B5ApUGz7u51UXmda/H58HSNEv5GWXTj4L848vVhMQZxzvtGqygRo5MpS0Z+
+         xbCIYaHrqnVQB0HF25VeL9gUK9PXIZHKHJEOuQ6XquQnhezTu2bAd/HufVhFcAS/X6yg
+         EfUYpbdOyhl88vdbGKoDvjrEzf6cNd/vSC3WDcV3BSyu7XAChH8u93F4DC9yLD8u/Htc
+         xf9g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1792742522; x=1793347322;
-        h=content-transfer-encoding:content-type:cc:to:subject:message-id
-         :date:from:in-reply-to:references:mime-version:x-gm-gg
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
-         :content-type;
-        bh=i4dWKs4ci8K3OMa5e1MlzMTJiiLuTKUPNju8rpwDqTM=;
-        b=WHCZOo6Kc8Ixf8H+/koYhnoJ0KRsFEjFMXFnsqH7V6YXS3zZu7WGCMuVQq5WP22zYi
-         5mMHzS1I2HtFzI20X2zGss7Vr9jGIDS6GCWKxTw0piSzeqqIQzPAksqnfNrnPatFHABO
-         5RkpCsznONL79/gDshQX8c0gKv07jpk3zLVrhfQZp7AXoUZiX4u3xto9zJOaTIPdRBoG
-         yvK1mHk8bBOI3RrxnDxDI2wRk8EXfwOHuGltlUyZuo9ZhnMTYrfxdVlCnfHp8J5bvbu/
-         FSn0txsnxs9KvfuSv4oJtqszKsrQhs13uuE3ccv9etjCDB4pvtmqu2L62/BTTOb2MKVh
-         1f9w==
-X-Forwarded-Encrypted: i=1; AKwUvBwKJV97LR/eSd9Qvv6ckePhxsZii8NdGUZEeb4leiyxKy8H8Nr6uj1QfThDuUZEE1+HK5fIFVxK+udPC5J7fw==@lists.infradead.org
-X-Gm-Message-State: AFq9FYJPyDZArJWouWQhHy3JirbA8GlquNxd9mhVJJdgOUK3BWWqAVkv
-	vX71U3Cdn/0Flq+ah+Kh0UCEm8oc29804kjGBP9rXXxNIclfu1bs7QUR+XO/31RAH4RP5oV/Vfg
-	NmhbaA1mR
-X-Gm-Gg: AYBFou1FULB1WjxN5Ec5dSFoRjJyzprtHvL5XHumIpx/ZuReuEph4RH4CwKkeDsI2S+
-	VEq4H/OvNtvoyk+xGLLVyi1WeAFSVsBNwQJ5x/2PZaE33woFDHL0DrUe5MW9qxaG6+2mfWIlhGW
-	abFzgVGd/TtQUiMpRhtpIy+ouCAj+ESSqtLqgQAJ7nTlL+7X37v1Cou77UdCKRJ7Q1TWt8s0Coc
-	tAfMOrSk8EzHRoXzteFAVkmusKDXzAOYiHqzelzFWc/f6wwW4z7YpVmaNUfWz7y6Z07wTspD/dJ
-	s1ljMHs+0GcWY3jq86Swz1u+y7u98jtdFSubCWwkGfFSK3w61ViC4tPa/NTWzGL/bxshdLja/Nh
-	tYCSbh0BAIM1kCWUE2rsRtAmxjl8sA9681HLEp5m7sRwstfXH2MYYgusjudxHA4msyeBh15hpKI
-	cdxIgFN0L6aHnPy3IqH6VeayJ7Ev2GSIZjBA5epcPEvTeMrl8Mcus6N4yvV4p3CzRJ69HXWZOSX
-	EhHWV16Qew3YzZtHUfIUwM+1IqlYZsDeKTyfrbX5J5t6KslNNlYNNaQa3YD8W6y+nASQbRyukjm
-	DVmf55IWN2G7gRz9h7O1CExZzwBOqp4oIRpMIR8=
-X-Received: by 2002:a05:6a00:180b:b0:89e:5133:d98b with SMTP id d2e1a72fcca58-8a2c66c33c6mr1128757b3a.24.1792742521570;
-        Fri, 23 Oct 2026 01:02:01 -0700 (PDT)
-Received: from mail-dy1-f170.google.com (mail-dy1-f170.google.com. [74.125.82.170])
-        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-8a2c9311a02sm431539b3a.53.2026.10.23.01.02.00
-        for <linux-mediatek@lists.infradead.org>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Fri, 23 Oct 2026 01:02:01 -0700 (PDT)
-Received: by mail-dy1-f170.google.com with SMTP id 5a478bee46e88-36681e85e87so1548533eec.1
-        for <linux-mediatek@lists.infradead.org>; Fri, 23 Oct 2026 01:02:00 -0700 (PDT)
-X-Forwarded-Encrypted: i=1; AKwUvBw+IwQMGVEJPZEgYDTWSF36gVzFsTdFZsiTud4y2uuC2G3m7MRTIG/QMEgy4KHxUmjmv5EiYG+KdJQIstSuIg==@lists.infradead.org
-X-Received: by 2002:a05:693c:41d1:20b0:368:6841:c4fa with SMTP id
- 5a478bee46e88-369d97cba44mr2146857eec.25.1792742519525; Fri, 23 Oct 2026
- 01:01:59 -0700 (PDT)
+        d=1e100.net; s=20260707; t=1792744198; x=1793348998;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to:content-type;
+        bh=VjvPviRplzIhgWM/q2jdDcLxkxdDLClBt75UUKoUPKE=;
+        b=nH2cbf+WRobS0eZGjSkNirC4O1EQWc9VylcwO1Z0lUFhVjNh6QzzgZBIwQ4dT6I6tQ
+         uJVrtPz4TUPLdeTTPIl63Tk68fmQw9pATSIIQd258XJ2YIh25FQd6LIS5yiJGjJ2nR+K
+         3dMlwdLZS5/AJ+hMcRPL/aaa3/vA45UTGFVMmeoctHChGBwg3xD+zdUo70jXhMJ0OMgG
+         adZaQQ+BaA9J+AFB0irIigvyum8udxos/6gttpuYKydJw3PWXNOgK6/1oykpXWkXfS+d
+         QtYQ4uATkgDqNNex+I2Hfq4x6uh/32jYEDJFv2mJ0JD9bPP+Arz52xxl7yYxzXduVNtf
+         bS4g==
+X-Forwarded-Encrypted: i=1; AKwUvBzXu0tP7ifbbjEoCva7g97fHfnexye7O+TQWU7levs1tyTujXd3saWwytVdJtlZuPkK9yhvgjq247rThoDYeg==@lists.infradead.org
+X-Gm-Message-State: AFq9FYLVT4XCdu2uRCmgAD/7qs7JbvMcxrUtzPESPbvTy4ojI257Y7nO
+	WD/8yJ4I/uaIeaQg4RNwAfHXuFej9gRPVnr2OIVx2950XwCaB2kDMbQp
+X-Gm-Gg: AYBFou2ttI20Za0h5slsMNsC7n0dFQbg0DarXoNxDd6BGK1ZaFBgHmnBOOJ+Rlbo38L
+	AYypCY083Kxq0TJrBQwsQcgB4vHsNbwRxJr0xTvU5hgsN79Fm9qLhptu59NW/WiaTwZts/I3Piy
+	BHaZkBdJIHltGnOnL+QV+z4vIqAnqVpJFiX5U14Z06OS9s+HC/273F2bBjzhNKku2O8aBCM74x+
+	ckW95klNZ4At3dYKR/7AzCJ2hGt9hTYNKc1fPC4fQLzjvPM0n7YMD7O+BC7Ypv2cBGbDgW4QqkH
+	viIBdSREyitAOnLhr/+GsmFrwma4sH2u9YUBOYI2pDq+t3hyiaPKcPaWeQSdhA5gTg1igM3gXv8
+	k1kWyew7afo7PxF6srtktAT8jq8G8AzHsUgRJcJpsuZyTpFTFFn3FegGNYq3ZHfFYFDFLdVYfpX
+	WWwyTIrS+L/7xMqcUTYs0GboQhxKRQ23ZaLpzknWQRuuUmcUykrAhZEmqcxUEfBxiVPNz25zmSS
+	0a6SVHovwznPoQWxUgHAQcByRbQpUbKxfHsxaDqGwEx0H4KysWzYAI=
+X-Received: by 2002:a05:7300:a225:b0:351:6b27:d67d with SMTP id 5a478bee46e88-369d9802e3amr1997730eec.30.1792744197389;
+        Fri, 23 Oct 2026 01:29:57 -0700 (PDT)
+Received: from server.lan ([168.138.199.194])
+        by smtp.gmail.com with ESMTPSA id 5a478bee46e88-369d9a72ff2sm4847349eec.0.2026.10.23.01.29.53
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 23 Oct 2026 01:29:56 -0700 (PDT)
+From: Coia Prant <coiaprant@gmail.com>
+To: Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: Kevin Hilman <khilman@baylibre.com>,
+	Roger Lu <roger.lu@mediatek.com>,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	Coia Prant <coiaprant@gmail.com>,
+	stable@vger.kernel.org
+Subject: [PATCH] soc: mediatek: SVS: fix device reference leak in svs_add_device_link()
+Date: Fri, 23 Oct 2026 16:29:48 +0800
+Message-ID: <20261023082948.1854252-1-coiaprant@gmail.com>
+X-Mailer: git-send-email 2.47.3
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-References: <20261019060825.4163770-1-fshao@chromium.org>
-In-Reply-To: <20261019060825.4163770-1-fshao@chromium.org>
-From: Fei Shao <fshao@chromium.org>
-Date: Fri, 23 Oct 2026 16:01:21 +0800
-X-Gmail-Original-Message-ID: <CAC=S1niGn0omF1WCr3NbNvY6jZvqZu=3EOgrPEXR9ER7L+onfQ@mail.gmail.com>
-X-Gm-Features: AclHuK-R_JeODaJVMp0e_2XshjhzldOiDGJ3AA99g544rt-KmJQNU86dD3TgdPI
-Message-ID: <CAC=S1niGn0omF1WCr3NbNvY6jZvqZu=3EOgrPEXR9ER7L+onfQ@mail.gmail.com>
-Subject: Re: [PATCH 0/2] media: mediatek: vcodec: Fix NULL source address
- handling in decoders
-To: Yunfei Dong <yunfei.dong@mediatek.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	Mauro Carvalho Chehab <mchehab@kernel.org>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>, linux-arm-kernel@lists.infradead.org, 
-	linux-kernel@vger.kernel.org, linux-media@vger.kernel.org, 
-	linux-mediatek@lists.infradead.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261023_010202_593003_51DC3565 
-X-CRM114-Status: GOOD (  14.01  )
-X-Spam-Score: -2.4 (--)
+X-CRM114-CacheID: sfid-20261023_093000_226351_ED3E1F02 
+X-CRM114-Status: GOOD (  15.41  )
+X-Spam-Score: -0.2 (/)
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -111,46 +118,72 @@ List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-11.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,
-	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS autolearn=ham autolearn_force=no version=4.0.1
+X-Spam-Status: No, score=-15.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
+	DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,FREEMAIL_FORGED_FROMDOMAIN,
+	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
+	USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On Mon, Oct 19, 2026 at 2:08=E2=80=AFPM Fei Shao <fshao@chromium.org> wrote=
-:
->
-> Both the stateful and the stateless decoder workers peek the source
-> buffer and, if vb2_plane_vaddr() returns NULL, finish the m2m job without
-> returning the buffer. The buffer stays at the head of the ready list, so
-> the same job is scheduled again and fails the same way. In the stateless
-> decoder the media request is also never completed.
->
-> The two fixes are split because they fix different commits, and the
-> stateless fix also has to complete the media request.
->
+svs_add_device_link() calls svs_get_subsys_device(), which returns a
+device with a reference taken by of_find_device_by_node(). If either of
+the subsequent checks fails, the function returns an error pointer
+without dropping that reference, and the caller only checks IS_ERR() and
+bails out, so the reference is leaked on every -EPROBE_DEFER.
 
-I sent v2 to fix an issue where I misused mtk_vdec_stateless_cap_to_disp():
-https://lore.kernel.org/all/20261023075642.3671805-1-fshao@chromium.org/
+Both error paths can be hit in practice: device_link_add() returns NULL
+when the link would create a reverse dependency or on allocation
+failure, and the supplier status check fails whenever the supplier has
+not bound yet.
 
-Please disregard this series.
+Drop the reference before returning on both paths.
 
-Regards,
-Fei
+While at it, note that the return value of device_link_add() is only
+used to detect failure. Managed links are owned by the driver core, so
+the driver must not keep or dereference the struct device_link pointer
+to inspect the supplier state; read dev->links.status directly instead.
 
->
-> Fei Shao (2):
->   media: mediatek: vcodec: Return source buffer on NULL va in stateful
->     decoder
->   media: mediatek: vcodec: Complete request on NULL va in stateless
->     decoder
->
->  .../vcodec/decoder/mtk_vcodec_dec_stateful.c  |  4 +++-
->  .../vcodec/decoder/mtk_vcodec_dec_stateless.c | 22 ++++++++++++-------
->  2 files changed, 17 insertions(+), 9 deletions(-)
->
-> --
-> 2.56.0.176.g3575e65682-goog
->
+Fixes: 681a02e95000 ("soc: mediatek: SVS: introduce MTK SVS engine")
+Cc: stable@vger.kernel.org
+Signed-off-by: Coia Prant <coiaprant@gmail.com>
+---
+ drivers/soc/mediatek/mtk-svs.c | 12 ++++++------
+ 1 file changed, 6 insertions(+), 6 deletions(-)
+
+diff --git a/drivers/soc/mediatek/mtk-svs.c b/drivers/soc/mediatek/mtk-svs.c
+index 99edecb204f25..fecb09b9185c2 100644
+--- a/drivers/soc/mediatek/mtk-svs.c
++++ b/drivers/soc/mediatek/mtk-svs.c
+@@ -2145,21 +2145,21 @@ static struct device *svs_add_device_link(struct svs_platform *svsp,
+ 					  const char *node_name)
+ {
+ 	struct device *dev;
+-	struct device_link *sup_link;
+ 
+ 	dev = svs_get_subsys_device(svsp, node_name);
+ 	if (IS_ERR(dev))
+ 		return dev;
+ 
+-	sup_link = device_link_add(svsp->dev, dev,
+-				   DL_FLAG_AUTOREMOVE_CONSUMER);
+-	if (!sup_link) {
+-		dev_err(svsp->dev, "sup_link is NULL\n");
++	if (!device_link_add(svsp->dev, dev, DL_FLAG_AUTOREMOVE_CONSUMER)) {
++		dev_err(svsp->dev, "device_link_add returns NULL\n");
++		put_device(dev);
+ 		return ERR_PTR(-EINVAL);
+ 	}
+ 
+-	if (sup_link->supplier->links.status != DL_DEV_DRIVER_BOUND)
++	if (READ_ONCE(dev->links.status) != DL_DEV_DRIVER_BOUND) {
++		put_device(dev);
+ 		return ERR_PTR(-EPROBE_DEFER);
++	}
+ 
+ 	return dev;
+ }
+-- 
+2.47.3
+
 
