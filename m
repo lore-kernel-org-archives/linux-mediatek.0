@@ -2,66 +2,66 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 59C0F606A31B
-	for <linux-mediatek@archiver.kernel.org>; Fri, 23 Oct 2026 21:00:44 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 09C0B606A323
+	for <linux-mediatek@archiver.kernel.org>; Fri, 23 Oct 2026 22:10:11 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=OkAoVomm;
-	dkim=pass (2048-bit key, unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=F5oY4WV/
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=3UCpz1P6;
+	dkim=pass (2048-bit key, unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=FlVzCnuS
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
 	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Unsubscribe-Post:
-	List-Owner; bh=nLEWUgkRbsF7oNEnaZx263StjYEEJjVyC65+Hp2uOs8=; b=OkAoVomm3XqUEK
-	sMsFdH90aKt4GFWZvPqwJfUzcwpR/8FU9aTO66ERfQ5/trbFdqwWlDJy9vIlsoonC4RUEwATDOYvF
-	EI9c+DZktWDu+T9GYSJ7TN2JqjcHCobXUd9G9o5f6nX+AVG0HYF+f4BLsEr5MggWsIJ69ddVwjOb2
-	IMLjZJ4y4Xf4d6F5dvQw5SQiQ+sOLBgIwPOvP6XdRnioTcE3pFaQ4VffUOulelz9PrjmnBWzMlbnC
-	nDd5yA7A2ca38arYYXWFZufY9ExIyWdFF5x75FkR98fxiBR4alFmpm8H7LiwL1F8VLySGnltMnsA5
-	QUeczoe7vgWrJeHeMaEA==;
+	List-Owner; bh=IMKxAJTioTnFgV2kKOcnfYJ3tZQRRjdSbCM++F5BVaE=; b=3UCpz1P6FnUOV6
+	pS1UUZ0oi88bMUifcFo8iQ3l8G8L1bqBqcA5S50QqWThyAazcHUnikqExz+dwnBTrn1C9Jw4qNTkX
+	JAlSmULyPXsG9ewzfiQn/OznHbZHJ7uPLKUs0AcKgfrVMRE/oB5qfDBXmhzh8i4z5I6YJshEbV5uT
+	jOmdzH1Zc1Ptv8szBOgxiqIW81HCgjrIbqg92f8JCH/i6HhwC03y280V0PfC5TS7DlDahHRo6A9AZ
+	N7H0LGLJYn9Ox1NhqHZw62vvY6X0+zMWn8Wm9lQlufGb558yq41YGVY+yWuotV1eyw+L6KdZviXz1
+	N3vZbGCBx9bG6+DEzV1w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xKMNU-0000000GxsG-3uXr;
-	Fri, 23 Oct 2026 21:00:40 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1xKNSj-0000000H2PU-2iPx;
+	Fri, 23 Oct 2026 22:10:09 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xKMNT-0000000Gxs3-3vl0
+	id 1xKNSi-0000000H2PD-2Dti
 	for linux-mediatek@lists.infradead.org;
-	Fri, 23 Oct 2026 21:00:39 +0000
+	Fri, 23 Oct 2026 22:10:08 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id A709043E8E;
-	Fri, 23 Oct 2026 21:00:39 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8ADE51F031E0;
-	Fri, 23 Oct 2026 21:00:39 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id E449C4172B;
+	Fri, 23 Oct 2026 22:10:07 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id C7E661F01825;
+	Fri, 23 Oct 2026 22:10:07 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1792789239;
-	bh=nLEWUgkRbsF7oNEnaZx263StjYEEJjVyC65+Hp2uOs8=;
+	s=k20260515; t=1792793407;
+	bh=IMKxAJTioTnFgV2kKOcnfYJ3tZQRRjdSbCM++F5BVaE=;
 	h=Subject:From:Date:References:In-Reply-To:To:Cc;
-	b=F5oY4WV/MYIoB8DtbutuGey1E5RkNlzPIm5bcj+iBd1b+Z1zmbFYMNxTgS4fd2m0H
-	 vMyQyMvFGrofPZNglfZ7rz7GmCAHtKN6CADc4VwQnJLo00bpr3ItC6leJn+vRt2AM/
-	 6DYBp/TndlvxgyrY7+CHOgDpPg491aEN1g00xAghyVqRcll8AKE1opEs8o8rnkYZ84
-	 4mivA9G/amFDb5+2QmXFQ/0P6FwCOj4I3FAQ1QH2kw9MIiz5RIsEIz1Hf3GusBDLKl
-	 lFmvAGoC1fk86gTBCoaIoiQrKK8zBNkJYU6Cxu7z/r+8fhEjD1auS633xfpCKItRlA
-	 sG41VWLKO8EXw==
+	b=FlVzCnuSbMh0amDfEVVUsCnuMcnW2pIkQdyeD3xYmsVO/j3oLQNDsS7C0ScjMY+7K
+	 uuhKbctsX7VAbbLir9L8PRt1Dfj3Aona0l53vEz5QvJl2oUr5/Sxczz46GKw2GCTbf
+	 yAkP1iehxYCs66jJmkfVxNt/rMxGx4/zHjIEcXmVG14WyR4PrW6syV4hlBnyGrKxs/
+	 SGGm1pAFiH9x6W4hdroIbnw5omfRwoakIdzwNv3E0fct9KCFgw1R/4n3NoNoe7XCEP
+	 Le7MJZIJ74VZUH93B6Vi7rnVSYHAIzS7gfegpwCVHIp2vfvkI6XtTo14fjhIwzY6VN
+	 r0AADJEKpf7Zw==
 Received: from [10.30.226.235] (localhost [IPv6:::1])
-	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id 815C7391B157;
-	Fri, 23 Oct 2026 21:00:39 +0000 (UTC)
+	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id BE5B7391B158;
+	Fri, 23 Oct 2026 22:10:07 +0000 (UTC)
 Content-Type: text/plain; charset="utf-8"
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Subject: Re: [PATCH v2] Bluetooth: btmtk: remove redundant memory barrier with
- helper
+Subject: Re: [PATCH v4 0/3] Bluetooth: btmtk: fix ISO data reception
 From: patchwork-bot+bluetooth@kernel.org
-Message-Id: <179278923809.1268720.9672691636919611279.git-patchwork-notify@kernel.org>
-Date: Fri, 23 Oct 2026 21:00:38 +0000
-References: <20261023093645.4669-1-abo@medichon.fr>
-In-Reply-To: <20261023093645.4669-1-abo@medichon.fr>
-To: Arnaud Bonnet <abo@medichon.fr>
-Cc: marcel@holtmann.org, luiz.dentz@gmail.com, matthias.bgg@gmail.com,
- angelogioacchino.delregno@collabora.com, linux-bluetooth@vger.kernel.org,
- linux-mediatek@lists.infradead.org, skhan@linuxfoundation.org,
- jkoolstra@xs4all.nl
+Message-Id: <179279340621.1294506.18194273796007140982.git-patchwork-notify@kernel.org>
+Date: Fri, 23 Oct 2026 22:10:06 +0000
+References: <20261022032150.2213479-1-chris.lu@mediatek.com>
+In-Reply-To: <20261022032150.2213479-1-chris.lu@mediatek.com>
+To: Chris Lu <chris.lu@mediatek.com>
+Cc: marcel@holtmann.org, johan.hedberg@gmail.com, luiz.dentz@gmail.com,
+ hao.qin@mediatek.com, ot_wenlong.tian@mediatek.com, sean.wang@mediatek.com,
+ will-cy.Lee@mediatek.com, ss.wu@mediatek.com,
+ linux-bluetooth@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-mediatek@lists.infradead.org
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,24 +81,27 @@ X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 
 Hello:
 
-This patch was applied to bluetooth/bluetooth-next.git (master)
+This series was applied to bluetooth/bluetooth-next.git (master)
 by Luiz Augusto von Dentz <luiz.von.dentz@intel.com>:
 
-On Fri, 23 Oct 2026 11:36:45 +0200 you wrote:
-> The test_and_clear_bit() call works as a full memory barrier, thus it is
-> not required to emit a barrier using smp_mb__after_atomic() before
-> wake_up_bit().
+On Thu, 22 Oct 2026 11:21:47 +0800 you wrote:
+> Two fixes for btmtk_recv_isopkt(), found while debugging LE Audio on
+> MT7925, plus an update to the ISO data transmission setting. The function
+> is shared by every MediaTek USB controller that supports ISO data, so none
+> of this is specific to that part.
 > 
-> Replace the whole sequences with test_and_clear_wake_up_bit(), which was
-> introduced later in commit 52d633def56c ("sched: Add
-> test_and_clear_wake_up_bit() and atomic_dec_and_wake_up()") as a wrapper
-> for the correct sequence.
+> Patch 1 drops the zero padding that the ISO interrupt IN endpoint appends
+> to each transfer instead of parsing it as ISO packets.
 > 
 > [...]
 
 Here is the summary with links:
-  - [v2] Bluetooth: btmtk: remove redundant memory barrier with helper
-    https://git.kernel.org/bluetooth/bluetooth-next/c/ebb8ee296578
+  - [v4,1/3] Bluetooth: btmtk: drop zero-length ISO packets from endpoint padding
+    https://git.kernel.org/bluetooth/bluetooth-next/c/fa9d4ec85257
+  - [v4,2/3] Bluetooth: btmtk: bound the ISO payload length by the controller's MTU
+    https://git.kernel.org/bluetooth/bluetooth-next/c/61eb283d06c7
+  - [v4,3/3] Bluetooth: btmtk: derive the firmware ISO setting from MTK_ISO_THRESHOLD
+    https://git.kernel.org/bluetooth/bluetooth-next/c/c9d0dedffc1e
 
 You are awesome, thank you!
 -- 
