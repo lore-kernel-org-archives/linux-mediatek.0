@@ -2,80 +2,63 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 24298606A31E
-	for <linux-mediatek@archiver.kernel.org>; Fri, 23 Oct 2026 09:37:45 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 5ACD5606A324
+	for <linux-mediatek@archiver.kernel.org>; Fri, 23 Oct 2026 16:19:58 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=k2rMKxf4;
-	dkim=pass (2048-bit key, unprotected) header.d=medichon.fr header.i=@medichon.fr header.a=rsa-sha256 header.s=ovhmo3801317-selector1 header.b=P4tTyd3a
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=je2z9p54;
+	dkim=pass (2048-bit key, unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=IdbHZPAQ
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=ZRRTB6tWjdlBw8MET61qHeq4ie6fC3tCqKffLXdLHGw=; b=k2rMKxf4lEwVE6NdcYrB/3cF/6
-	u0qXjVhKqXmkid5J017amxN86FnmicD5z+i8goWHiJxhMHNtrQVJz7X0cAgGitTiH+Wdpszg+Fz0C
-	PdXAfYqO59v+OkuoVnp+qYKCIJn1ghqWdiQWRVlJ1uCngkEKYl2MHhDQIlqWEuU8/ST5tgxBTB8xP
-	ogVlMPe+68wSD0XjBjRYa+eExeSY1Glo99v8B/0AoJAEj2jA9ZIKC4A1c1gagqohvNL+JGGnpq5FA
-	geMMfZ2fGDK3kLkewoHekcEbKP3bMXvMHb19k/EdtbGItF2XKdzGQm6uN0uX9VAcGZs9TT/pi8NrB
-	Lq4l/zLA==;
+	bh=gaEKPTZSxoXAnYK1y13tSuJiEjwopeJd6eksrQwtbXU=; b=je2z9p540aaiFtxrNo2yQmPOkx
+	jwhv7ww0dENsUbF3pb8OiZ5YbHZokTLi9fWx9YREu6OmTCrZojxJhDnV6VwNU2I45nlr+tE9PCGi2
+	MhTLmF0k2kAO7Qneo47qlp2x0TT3VIr6fJa8z7mMr74ZUZTg8IVP6AmE9w2Vg8CJSiNNKlJWgk6k0
+	Hbwm1osvu3qDFO1CUAeb3dr/S6ns+bkMSKAG1kpbQdnCFtX0GGs30mn6LrDANmU04zrzD7hn6YEVA
+	CR2tIjp2z8HviIcPcUkfgMLCtYhWw1Cm5T8Je83tVc3oGF0rkUE1xY58Zv6JQj1387NYajd5gbbkA
+	No/QVoNQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xKBia-0000000G3vS-3Qv4;
-	Fri, 23 Oct 2026 09:37:44 +0000
-Received: from 18.mo550.mail-out.ovh.net ([46.105.35.72])
+	id 1xKHzn-0000000GeLi-35cn;
+	Fri, 23 Oct 2026 16:19:55 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xKBiW-0000000G3uA-3OGj
-	for linux-mediatek@lists.infradead.org;
-	Fri, 23 Oct 2026 09:37:43 +0000
-Received: from director2.ghost.mail-out.ovh.net (unknown [10.110.37.160])
-	by mo550.mail-out.ovh.net (Postfix) with ESMTP id 4j9yc00Pmgz60yW
-	for <linux-mediatek@lists.infradead.org>; Fri, 23 Oct 2026 09:37:35 +0000 (UTC)
-Received: from ghost-submission-7ccd8bbbb6-zbd2p (unknown [10.110.118.184])
-	by director2.ghost.mail-out.ovh.net (Postfix) with ESMTPS id C9321C0CB1;
-	Fri, 23 Oct 2026 09:37:34 +0000 (UTC)
-Received: from medichon.fr ([37.59.142.113])
-	by ghost-submission-7ccd8bbbb6-zbd2p with ESMTPSA
-	id ZeeuKd4q22pW2Q8AKSMJ1Q
-	(envelope-from <abo@medichon.fr>); Fri, 23 Oct 2026 09:37:34 +0000
-Authentication-Results: garm.ovh; auth=pass (GARM-113S007ae3fb8dd-bd0d-495b-af3a-0693ed38505b,
-                    4E1EE381F50BCC5D3752DB0F3D6F19972A1B9F27) smtp.auth=abo@medichon.fr
-X-OVh-ClientIp: 88.190.90.129
-From: Arnaud Bonnet <abo@medichon.fr>
-To: marcel@holtmann.org,
-	luiz.dentz@gmail.com,
-	matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com
-Cc: linux-bluetooth@vger.kernel.org,
-	linux-mediatek@lists.infradead.org,
-	skhan@linuxfoundation.org,
-	jkoolstra@xs4all.nl,
-	Arnaud Bonnet <abo@medichon.fr>
-Subject: [PATCH v2] Bluetooth: btmtk: remove redundant memory barrier with helper
-Date: Fri, 23 Oct 2026 11:36:45 +0200
-Message-ID: <20261023093645.4669-1-abo@medichon.fr>
-X-Mailer: git-send-email 2.53.0
+	id 1xKHzl-0000000GeLT-2NYa;
+	Fri, 23 Oct 2026 16:19:53 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by tor.source.kernel.org (Postfix) with ESMTP id B1F89601DE;
+	Fri, 23 Oct 2026 16:19:52 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 74CD01F01825;
+	Fri, 23 Oct 2026 16:19:49 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1792772392;
+	bh=gaEKPTZSxoXAnYK1y13tSuJiEjwopeJd6eksrQwtbXU=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To;
+	b=IdbHZPAQBZWH71S9hbs6ylhLMUtGY4vTZ93/sWmj+tMvqAGPq21YaAKvHD475TaCu
+	 JZ1OAuVlRNxVrVVOT7gFuMiypSnpYlc16R2rD4x5xtY5/2wF5r0AhVxzqvvRRcPtYa
+	 d0YQYouzVvqhyhvHP8gt5T0m/3S6pI1pIuF4K7fprd1PTeOHLDBWaRaIlUDiJWU4W/
+	 eECNjRbCPXHGb7IqS9UeNwnNCqz81ruJjdFAfim6D3J94Lvpw2X8rXKVoXsOPIBLEB
+	 5JmioOeabyTaXC7gFB5VaT412rAV1wFENFzPIJUOis8z1QrjqqNmU1OLL06Gq3CytC
+	 wfMQNhw+p4cOg==
+Date: Fri, 23 Oct 2026 18:19:41 +0200
+From: Andi Shyti <andi.shyti@kernel.org>
+To: Christian Marangi <ansuelsmth@gmail.com>
+Cc: Stefan Roese <sr@denx.de>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Wolfram Sang <wsa@kernel.org>, linux-i2c@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH RESEND] i2c: mt7621: fix copying uninitialized kernel
+ stack with reduced page_len
+Message-ID: <atuI-J9c7PXTqdCN@zenone.zhora.eu>
+References: <20261022193853.670625-1-ansuelsmth@gmail.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-x-ovh-tracer-id: 3089187869984448094
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: 0
-X-VR-SPAMCAUSE: dmFkZTGEJ30CtTo2ePHI7KoCCi5RSv3yvCC7JaTTxD9OvkUBLQMYXrddqfQslQhAOERqmKYhJoth4DOC2cfb4A8bzrO4I2dXm1n11Px3jO2qsTxIGoRPKOIjR+yM1+qNGOpNMFmiFLbyl7c3iePsV6vXm3CklZ2iS4SQF0/vurLd+st14AWFxUEgJN9c6TuOk4qygon4uF/Zfa3PYXunO0mCxa6E3mEZEstzB9Z8rkoNqXKaSq7SGjvivrtvX3BToiLLRcLoim0yji0lNTqRDDC23J672P6hgeGE5NyVlRNNUitQXWcmsh3lnM5tfCoH3AaTPk2Y1fQpOatci219euD9Cv6Am3N5kvvYnvQ96JJS/LQ8S0xBBuug7WtpDk+fCsztHsbKrmQvYSmG+wxa6afIuZp9ey17c5y6cfe+3wa2Eyb/brJ1LnFhZVRzCWCGCcLqazVcLwAkC9SgcOR/nHlQNIBdsfxWomG74uxv74Bd3paYiLel0JTx0TdIZMb/zmG0IepFagQ8zWZBgm5i9+pNfVkSAxwdDb2+MBbbdEVyWEg9bdeDLwc0sBt7vu0fIC2jmKsvmkIBrS3+7knCD185xGcDryxRSRNe4NaxkExB5lu4Jne2oYOFcKoE0mWOK2SdJGuKu4DTbgr8IaUvvJA7NY2ED6u4jolapd1yL9ipR/HoFQ
-DKIM-Signature: a=rsa-sha256; bh=ZRRTB6tWjdlBw8MET61qHeq4ie6fC3tCqKffLXdLHGw=;
- c=relaxed/relaxed; d=medichon.fr; h=From; s=ovhmo3801317-selector1;
- t=1792748256; v=1;
- b=P4tTyd3asudec34GpxvJux8V+IWF0PdqbsbK/GR5HeTLf5hQCrQxnkOfjV6JKSABr/hgzpJr
- hcL4ix0BmCiLtdhvfjp17KzWk/lZeGlqPpufTg3kN6XA/+4Y4Xi+cWrkVcM0TEUehealpAAH6Ak
- kFymHcNe9A062Mx4UB/40XSQ+IOPOxGAKNrf8FzgH4JfU3AXunqXkNx/8A9rrIQ7I4IJNIDrjHr
- fS0nv10FzSDyBjTXM3uOv3wVR/7Cco5ghPb8CUsTt0Xi7AEy0u0YRG8QUhh/EgyurJjy1sm6ZjJ
- GVfaEN8f5qZcB/vmh2+dxMSbSLDhsWJYh6GPKQ4VpGOHw==
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261023_023742_009604_E2652F83 
-X-CRM114-Status: UNSURE (   9.72  )
-X-CRM114-Notice: Please train this message.
-X-Spam-Score: -2.1 (--)
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20261022193853.670625-1-ansuelsmth@gmail.com>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,94 +69,28 @@ List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-19.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-11.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,
-	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=ham
-	autolearn_force=no version=4.0.1
+	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-The test_and_clear_bit() call works as a full memory barrier, thus it is
-not required to emit a barrier using smp_mb__after_atomic() before
-wake_up_bit().
+Hi Christian,
 
-Replace the whole sequences with test_and_clear_wake_up_bit(), which was
-introduced later in commit 52d633def56c ("sched: Add
-test_and_clear_wake_up_bit() and atomic_dec_and_wake_up()") as a wrapper
-for the correct sequence.
+On Thu, Oct 22, 2026 at 09:38:51PM +0200, Christian Marangi wrote:
+> When a page_len is less than 5 bytes in mtk_i2c_xfer, uninitialized kernel
+> stack data is copied and written to REG_SM0D1_REG. Equally on the read
+> part, an unnecessary read is done.
+> 
+> Guard these extra copy/write and read for the page_len to fix leaking
+> uninitialized stack memory.
+> 
+> Fixes: d04913ec5f89 ("i2c: mt7621: Add MediaTek MT7621/7628/7688 I2C driver")
+> Signed-off-by: Christian Marangi <ansuelsmth@gmail.com>
 
-Signed-off-by: Arnaud Bonnet <abo@medichon.fr>
----
-Tested by building and manually checking generated assembly on x86, arm64
-and riscv64.
+pushed to i2c/i2c.
 
-Changes since v1:
-	* perform the cleanup in btmtksdio.c and btmtkuart.c as well
-
- drivers/bluetooth/btmtk.c     | 8 +-------
- drivers/bluetooth/btmtksdio.c | 8 ++------
- drivers/bluetooth/btmtkuart.c | 8 ++------
- 3 files changed, 5 insertions(+), 19 deletions(-)
-
-diff --git a/drivers/bluetooth/btmtk.c b/drivers/bluetooth/btmtk.c
-index 75483d8230e1..a620e24b6c17 100644
---- a/drivers/bluetooth/btmtk.c
-+++ b/drivers/bluetooth/btmtk.c
-@@ -607,13 +607,7 @@ static void btmtk_usb_wmt_recv(struct urb *urb)
- 			return;
- 		}
- 
--		if (test_and_clear_bit(BTMTK_TX_WAIT_VND_EVT,
--				       &data->flags)) {
--			/* Barrier to sync with other CPUs */
--			smp_mb__after_atomic();
--			wake_up_bit(&data->flags,
--				    BTMTK_TX_WAIT_VND_EVT);
--		}
-+		test_and_clear_wake_up_bit(BTMTK_TX_WAIT_VND_EVT, &data->flags);
- 		kfree(urb->setup_packet);
- 		return;
- 	} else if (urb->status == -ENOENT) {
-diff --git a/drivers/bluetooth/btmtksdio.c b/drivers/bluetooth/btmtksdio.c
-index b9563df72983..b6e16716b169 100644
---- a/drivers/bluetooth/btmtksdio.c
-+++ b/drivers/bluetooth/btmtksdio.c
-@@ -442,12 +442,8 @@ static int btmtksdio_recv_event(struct hci_dev *hdev, struct sk_buff *skb)
- 		goto err_free_skb;
- 
- 	if (evt == HCI_EV_WMT) {
--		if (test_and_clear_bit(BTMTKSDIO_TX_WAIT_VND_EVT,
--				       &bdev->tx_state)) {
--			/* Barrier to sync with other CPUs */
--			smp_mb__after_atomic();
--			wake_up_bit(&bdev->tx_state, BTMTKSDIO_TX_WAIT_VND_EVT);
--		}
-+		test_and_clear_wake_up_bit(BTMTKSDIO_TX_WAIT_VND_EVT,
-+				       &bdev->tx_state);
- 	}
- 
- 	return 0;
-diff --git a/drivers/bluetooth/btmtkuart.c b/drivers/bluetooth/btmtkuart.c
-index 4af6fbbbd302..744a87acaadc 100644
---- a/drivers/bluetooth/btmtkuart.c
-+++ b/drivers/bluetooth/btmtkuart.c
-@@ -229,12 +229,8 @@ static int btmtkuart_recv_event(struct hci_dev *hdev, struct sk_buff *skb)
- 		goto err_free_skb;
- 
- 	if (hdr->evt == HCI_EV_WMT) {
--		if (test_and_clear_bit(BTMTKUART_TX_WAIT_VND_EVT,
--				       &bdev->tx_state)) {
--			/* Barrier to sync with other CPUs */
--			smp_mb__after_atomic();
--			wake_up_bit(&bdev->tx_state, BTMTKUART_TX_WAIT_VND_EVT);
--		}
-+		test_and_clear_wake_up_bit(BTMTKUART_TX_WAIT_VND_EVT,
-+				       &bdev->tx_state);
- 	}
- 
- 	return 0;
--- 
-2.53.0
-
+Thanks,
+Andi
 
