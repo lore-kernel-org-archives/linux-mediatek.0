@@ -2,97 +2,107 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 57D26606A31B
-	for <linux-mediatek@archiver.kernel.org>; Sat, 24 Oct 2026 13:18:52 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 356F7606A31A
+	for <linux-mediatek@archiver.kernel.org>; Sat, 24 Oct 2026 15:14:19 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=rvHWSiwO;
-	dkim=pass (2048-bit key, unprotected) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20251104 header.b=OQfioJOB
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=MvKPpa7Y;
+	dkim=pass (2048-bit key, unprotected) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20251104 header.b=MqJ6ODRM
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Unsubscribe-Post:
-	List-Owner; bh=b680pKzQa13v0eIR/DWLULm8zwErDKH5uvrOsGuOoiQ=; b=rvHWSiwOpuZfnR
-	GsvdqyxiatFiuK6bL0Aw2ef/Z8wWu8lGO10g2c/SFvFJI7nZYlX/EFZzDtQDVtD1zPJsF/KbOamQl
-	ggl1s8JhIJbpfioNlTC1/nTbv0/sgtxbTDmQIJJEVSMnwHOvU7z6dOW3+HJcgCIykuln5O+V/MNsP
-	Ss1KVQjwrbmmHBdYyqSVwRhJCr2ts6KOZtCfE4/8fwLkfKc/yZ+cnKhJcDraX7CkAQIOkj+ULjNk2
-	40AGJup/hu27jU+isqZhShBeySGDUowEmsJdgdx05mjegvB2U7FEYNhEfaCb8H/U/xVZbDsU52ClX
-	Z+tQ+0Ot3XhmAeuu+New==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
+	Message-ID:Date:From:MIME-Version:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Unsubscribe-Post:List-Owner;
+	bh=5aZKiMNsNuKoIYNElmMYyQbFoWSz4nPaUddhoQAfS7E=; b=MvKPpa7Yw/GE5UxFeA0CRNqj/b
+	zVzkx29WMGP1CpCBKh8DjNOdRRCAB8zvfJOjI7VfuN/+KqJ9QxU00hf4pMWVTJwGjv67LfU88zdIk
+	ivCigsdH8k8h5iKOuY1eEzyN8wBn3EwI1f92G1QuVrOiu2p31+sHzy5Hf1nYOlft0/PvttIeuIHhp
+	bxzGd5ug2ksyBquNWYeAbX5bqSmsGreANmkpcDwcBTztw72yrM4sOLOZTyL6scqsWQ9QzSFtDBQvM
+	yw7E7zAI+UR86OGcEibROjJBNxMLYc31q0ojWHZ/5OPEsaJ0zoo/40uQ6B3NWeCpGh+5coH2lBRLY
+	yKeCPZFw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xKbe8-00000000DGa-0E7Y;
-	Sat, 24 Oct 2026 13:18:52 +0000
-Received: from mail-ej1-x632.google.com ([2a00:1450:4864:20::632])
+	id 1xKdRp-00000000JFL-1pSk;
+	Sat, 24 Oct 2026 15:14:17 +0000
+Received: from mail-yx1-xb136.google.com ([2607:f8b0:4864:20::b136])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xKbe6-00000000DFz-2dR5
+	id 1xKdRn-00000000JF1-25YI
 	for linux-mediatek@lists.infradead.org;
-	Sat, 24 Oct 2026 13:18:51 +0000
-Received: by mail-ej1-x632.google.com with SMTP id a640c23a62f3a-c4697404c2bso215602766b.2
-        for <linux-mediatek@lists.infradead.org>; Sat, 24 Oct 2026 06:18:50 -0700 (PDT)
+	Sat, 24 Oct 2026 15:14:16 +0000
+Received: by mail-yx1-xb136.google.com with SMTP id 956f58d0204a3-67921b515a7so1700429d50.2
+        for <linux-mediatek@lists.infradead.org>; Sat, 24 Oct 2026 08:14:15 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1792854854; cv=none;
+        d=google.com; s=arc-20260327;
+        b=NCR7VUnNWCBKm+AA7HTxkqkAL8Rn0OFGfA4YYrphpwBMuwx8ulM7gru5+SDhc+qr+T
+         8V2BnNuQ3rz5sxY0FxYsgo61GB26wZN3ToucdIq3pqQ724msoiDmI9mJHUdDmghZXE80
+         FDEaFBu5g/cL0EBVFRtEkYn3x5M8H3K3xycFFrcTgG/O0BW3oJJzUNxR3df+MTCzjblG
+         qQ6+BXkpfOJTRn8ZdhOx22yvZQNQr71wiA1mCkfOix2tZssVhDHSDhgBAqzYmxnB/Bc8
+         SA5354cxWhWjWpQZDqU0U3H0B5Xye79aSA3OK4b+HmpaZ3YLXB9puXZxWyVQKUcsmnoo
+         cfpg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20260327;
+        h=cc:to:subject:message-id:date:from:mime-version:dkim-signature;
+        bh=5aZKiMNsNuKoIYNElmMYyQbFoWSz4nPaUddhoQAfS7E=;
+        fh=xpHjsBysSrINoG3tb5B1vMmZAJxpeWsk98k6xjnX9wo=;
+        b=h6epO/R45Te3XfIefs9cS+quseQJ9Ys27LSPtsaxxQEGkEs7jvlZFL4r/cvgKf666r
+         iDbq28vL6jbFhyTlje0F2E+ETJda1I4lMcG/kvSP9R2KsOTfGjLGH7wkiy/SsrIhrXqg
+         W8uQeCMoAtu+uJIq+xc4Njr6QAyi0Rn1uAgBSwxQLFhSXVM2V0WpElGdTphlvBQULQnQ
+         cg/yDQtXJJ0siOyhKEyp9fysonHEEqtfqF+5o75Ls/So2sDrC/SyOV16FCYLQb/PF6ki
+         znfMbwkTifORf3ou2t5Pruh3NWuxu0oTaHlxC70vRSMKx39Rbbo8c3uWVaILA6z510zo
+         VWMw==;
+        darn=lists.infradead.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1792847929; x=1793452729; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to:content-type;
-        bh=b680pKzQa13v0eIR/DWLULm8zwErDKH5uvrOsGuOoiQ=;
-        b=OQfioJOBCyEIjMs0Uis/xd0+PwbqWsiN8A3FGK4p49QpyNyf09zF7thBp+7jTy5OQo
-         y6ka7i2f7YtMsvG8YimkOJn0J+viyc2p2JmB2DC/GVP+7OGDzBTDCOUHGuOW+u2bIRUS
-         VTRy5pMk1ez+Qv3iXyvdP+YYExys36SOuBL3YpBLy2RzVMIzdLzIf7WoCBfkZkx59FEU
-         0TRiA8/Iqczr/4qUoVQP9MvAg3acxeTOA69EJWsnQr+ou8FNOY89eYxyZUWp0ebEO9jD
-         ov5Bdy9IpxwrQfPrdiUcHUapERuDofopWLdLOGcUQuJI4XhH+C7bKlEB3dhh0yaqJmAK
-         AoWQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1792847929; x=1793452729;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
+        d=gmail.com; s=20251104; t=1792854854; x=1793459654; darn=lists.infradead.org;
+        h=content-type:cc:to:subject:message-id:date:from:mime-version:from
          :to:cc:subject:date:message-id:reply-to:content-type;
-        bh=b680pKzQa13v0eIR/DWLULm8zwErDKH5uvrOsGuOoiQ=;
-        b=lW+f87ue8+zf7hY5gNO/pQ8pD6qRoUw10N3bw5QbO9vpCmLjrouXUKdLDa6LQ8W87S
-         ooYiHhRYmTB/jRDm/F3/uUYVZq9BsZhame5iJuKpWA2P2/mO60XoX3UJ3EWXMaG7EcbF
-         4S5zSiVKNSxJJjrLg7M2EIuSvWgj02Lj+Zv50niB6w6VED+PVHQI48Y0swRrrAV3YdUD
-         utnScMzfujGuZvIQ96miCaLArQYdYcTBVfO5EnAeL3fDoxf+Js8f/HDfvvKK9sWEFEKG
-         q06U1L1b9iQAxYadBaEzCo9ScZWzPxzNSxwq+jDevsSfkYWCA0IVa7r+vgw5c6xQFSPT
-         4qgQ==
-X-Forwarded-Encrypted: i=1; AKwUvBz5trp0dAlSThXI49pIkk+QGAo4Nr8o3kQlHGr6ikCHo2AwPB0IuDEkbA2d63U8xL0CtUvik3W7QT72YtAKbQ==@lists.infradead.org
-X-Gm-Message-State: AFq9FYLfW9aBy3qMkvDnVzrIF3pmxSVD6+XJrhfrNLDkkQUFUauGmZHv
-	WKXVOGDO71VJFS4P+C4EswUq/gg/usyutTjnmNFkYLMVEjx3+ekNDWQv
-X-Gm-Gg: AYBFou2lVcj3MelmJCnuZKETchkpp/FLCdco7bWnx3eGLIJpSiavwkINjYCCSFSyOsB
-	nlVnFA4jYFK7e28RainzbeqeScEikGhNi6kHK7MvaX70dWBpIJqfcsNYLBMe9uA62k8so7F2b1z
-	yLCgdNO3O2+6Pv1YBU3PadIolc+a6uCUWJemVcEpxwq53OERC7/b79MTQm9Pp6N5+JTPCmv0DVb
-	P7Kbb0sKnX7jnVVCzqLsyUZ+Cjvq+RMeI9N5gofAjeDM18Yam3RG07F8hNnPFy16Em7PrCTpmj5
-	9xo6FVDzMt3Yg/z3XEc7GQRqebxcfA/leNjQtYHyDsygLVh//8k9b5McRTC07ClnZBRLpKzTDQM
-	souziZbLOG0Hp1t9ht80Rtd8HCzTjvbu+Jnqw5e10XkFiNXBQ2DLjYfsCDuQEDN0M3FR8asWMVP
-	7BzQKWk+Ul1JD85uMZBzpjAQgDKjxFpwvSOCnIox1AmfOAj1Em4dsoBpKQ6VM42zN4wZ2ATXz0l
-	NosPRT0nIC2r0V6itQ8KK69cqHfpg4g5ars9Y6VH9BB/qeddoQ0YVRPQB8aQU48DdyfFVW0
-X-Received: by 2002:a17:907:2d91:b0:c41:c106:9772 with SMTP id a640c23a62f3a-c46bdac60eamr203215066b.1.1792847928479;
-        Sat, 24 Oct 2026 06:18:48 -0700 (PDT)
-Received: from localhost.localdomain ([185.65.135.248])
-        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-c46bd6276d8sm87306666b.41.2026.10.24.06.18.45
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 24 Oct 2026 06:18:47 -0700 (PDT)
-From: Hedi Ben Hamida <hedihamida096@gmail.com>
-To: Felix Fietkau <nbd@nbd.name>,
-	Lorenzo Bianconi <lorenzo@kernel.org>
-Cc: Ryder Lee <ryder.lee@mediatek.com>,
-	Shayne Chen <shayne.chen@mediatek.com>,
-	Sean Wang <sean.wang@mediatek.com>,
-	linux-wireless@vger.kernel.org,
-	linux-mediatek@lists.infradead.org,
-	stable@vger.kernel.org,
-	Hedi Ben Hamida <hedihamida096@gmail.com>
-Subject: [PATCH v2 2/2] wifi: mt76: mt7921: reset on HIF resume timeout
-Date: Sat, 24 Oct 2026 09:16:53 -0400
-Message-ID: <20261024131715.64435-3-hedihamida096@gmail.com>
-X-Mailer: git-send-email 2.47.3
-In-Reply-To: <20261024131715.64435-1-hedihamida096@gmail.com>
-References: <20261024131715.64435-1-hedihamida096@gmail.com>
+        bh=5aZKiMNsNuKoIYNElmMYyQbFoWSz4nPaUddhoQAfS7E=;
+        b=MqJ6ODRM6dkaBhdgltMkwP8lEX8ckS3+aTCTC7g3ZSmmsu0Gj+itT1EoEss3h54mCG
+         nB8z5VBpP7jPZhDHVR/4mOMzddPuWlOG/uIxEtEKIWgbPiXNh/e2p4lu5JrW77hXWOCM
+         62S+NYZOPR76V0hboC4BhoAMUeGZ9myHFwCrj7WM9FaYR9jK4iOD6TZnrhwb9dMgIb27
+         W/I6CUmkwGz2nMkgwJVojsKkrVywLF5rcizc+DzaaOFJGe4gT85DBSD7XmB/hIf+glaI
+         Xz3l0xnyFBGibcJW58PMK65EtjSMWhohVb/t1/5ryqPPXB6z1U2ibLkD0iZifhteeGMO
+         29tw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20260707; t=1792854854; x=1793459654;
+        h=content-type:cc:to:subject:message-id:date:from:mime-version
+         :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to:content-type;
+        bh=5aZKiMNsNuKoIYNElmMYyQbFoWSz4nPaUddhoQAfS7E=;
+        b=Bm4lbnaNsOLFowKmu+vQ+IvmtS/k0ccWbVF36pIgl4fxbM8LICdximJqbKhhuNALLS
+         5QvO90Nfc+ljz8s+hIfCwJzhUFC0d4VUpIFdRCkSK2SJGpltwlV6nLIaXxa2TSe9ops8
+         uSYPmTtnN4CBBXtSng4TuizlwTbAGwgbDS82/9k8jIu7OESUhr1eTc2joZ5qHEbKELdS
+         gmofJAJuhjgad2N/zDRQFSOwQbAnO+eqkDcti+dmMkD477Kdcg/8lZm7sBZv4p+Af/r+
+         AKZ/scMMCwgps91tUji5rzKSrKW62V5xLfiX9jgjc66mDVvXnC9IlHOvBR1HOdpumfX9
+         U0mw==
+X-Forwarded-Encrypted: i=1; AKwUvBwwxTcLc91SwGGIERZ4hWsw9+jJ7FWta6FfrVrGH6zNtg7/kno6PTxREXUTio+EJitJYBAMIDPyP9yAaPp2kA==@lists.infradead.org
+X-Gm-Message-State: AFq9FYKFr1OFnuFAGcWfRKU44MuNPE7I4EvQhmSB8dVauS2KDOMVyvcL
+	EAsabJJrmAfwuTB5J4Wn8mMivjZCrag06pu0UzvcrDIJibFA4/ik7fBy7FhzKrI34yGGRY+xNp2
+	nMgP69pC4mW19useqtHYURPwu+96N9OgPywJAuO/htg==
+X-Gm-Gg: AYBFou2pIf58956EL3AFbrJQ3j1dF7z+Zyu5YGJnfYaqAc3qfhkNtCpjB15I8GPPGhO
+	+HCg4tynp1xXTo1WgAEFMdFMtRa/2K9UxQ7q9alv+6ztPSyk9CUXH8J2PUfNJtFQfAU5GcgFxfQ
+	llZMhXyithlmVatanx0luUk0TSnsRXuvcOMqqPoI9iLhtSFeq7uo2Cf03NnncLqzrLLbGrjlTjq
+	WDJyRHrNVlwyb/SMdOfqsZ0KAScfHX8QX/6PRcEW+DruB39XnMyjlvdOGN/c4iemHkd/lORD5Mt
+	PNApJRVhj5jesAG8Mp0lBwlrVrwxu0crJ8Lw7A0eQPdsWLKgIY1ZfGorIlv4OGqqaEc8CFdn61M
+	9RbwR9+qxcTD3okO5xGIQorn+rS+OrDVQ1OIl
+X-Received: by 2002:a05:690e:d8c:b0:679:c4a2:8bd3 with SMTP id
+ 956f58d0204a3-67a453db9d1mr1506244d50.41.1792854854115; Sat, 24 Oct 2026
+ 08:14:14 -0700 (PDT)
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+From: Hedi Hamida <hedihamida096@gmail.com>
+Date: Sat, 24 Oct 2026 11:14:02 -0400
+X-Gm-Features: AclHuK8gSz0-ZRGHS3FgSF93zaOok558gy07hn_qlQbIKVtCMTWUA6GyuJJCEQM
+Message-ID: <CAOjjH0397TDVqnOgwXdFg5LjvSQ3t_19Q-GjY4d9+-dXx-1JdA@mail.gmail.com>
+Subject: [BUG] mt7921e: HIF_CTRL timeout after S3 resume on MT7922
+To: linux-wireless@vger.kernel.org, linux-mediatek@lists.infradead.org
+Cc: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo@kernel.org>, JB Tsai <jb.tsai@mediatek.com>, 
+	Quan Zhou <quan.zhou@mediatek.com>, Ming Yen Hsieh <mingyen.hsieh@mediatek.com>, 
+	Deren Wu <deren.wu@mediatek.com>, Sean Wang <sean.wang@mediatek.com>
+Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261024_061850_682594_84C90819 
-X-CRM114-Status: GOOD (  12.50  )
+X-CRM114-CacheID: sfid-20261024_081415_548709_4DC06673 
+X-CRM114-Status: UNSURE (   6.93  )
+X-CRM114-Notice: Please train this message.
 X-Spam-Score: -1.9 (-)
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -104,54 +114,76 @@ List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-15.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
+X-Spam-Status: No, score=-2.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
 	DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,FREEMAIL_FORGED_FROMDOMAIN,
-	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
+	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS autolearn=no autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On some MT7922 firmware the HIF_CTRL resume command does not return a
-response after D3, so mt7921_pci_resume() returns -ETIMEDOUT and the
-PM core reports the resume as failed:
+Hardware:
+  03:00.0 Network controller [0280]: MEDIATEK Corp. MT7922 802.11ax PCI
+  Express Wireless Network Adapter [14c3:7922]
+  Subsystem: AzureWave Device [1a3b:5916]
+  Driver: mt7921e (mt76)
 
-  mt7921e 0000:03:00.0: Message 00020007 (seq 6) timeout
-  mt7921e 0000:03:00.0: PM: dpm_run_callback(): pci_pm_resume returns -110
+Kernel: 6.12.113+deb13-amd64 (Debian 13)
 
-The driver already resets the device on this error, and the reset
-restores it. Treat the timeout as recovered after queueing the reset
-and return success, so the PM core does not mark the resume as failed.
+Firmware tested:
+  20241106163310  (Debian firmware-misc-nonfree 20250410-2)
+  20260724143402  (current linux-firmware, 2026-07-24)
 
-Tested on MEDIATEK MT7922 (14c3:7922) on kernel 6.12.113: suspend/resume
-no longer returns -110 and Wi-Fi recovers; hibernate/resume still works.
+Problem:
+After suspend-to-RAM (S3), resume fails:
 
-Cc: stable@vger.kernel.org
-Signed-off-by: Hedi Ben Hamida <hedihamida096@gmail.com>
----
- drivers/net/wireless/mediatek/mt76/mt7921/pci.c | 8 ++++++++
- 1 file changed, 8 insertions(+)
+  Oct 24 09:43:17 kernel: PM: suspend entry (deep)
+  Oct 24 09:46:11 kernel: mt7921e 0000:03:00.0: Message 00020007 (seq
+13) timeout
+  Oct 24 09:46:11 kernel: mt7921e 0000:03:00.0: PM:
+dpm_run_callback(): pci_pm_resume returns -110
+  Oct 24 09:46:11 kernel: mt7921e 0000:03:00.0: PM: failed to resume
+async: error -110
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/pci.c b/drivers/net/wireless/mediatek/mt76/mt7921/pci.c
-index 00532b29f..dce88fcc7 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7921/pci.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7921/pci.c
-@@ -597,6 +597,14 @@ static int _mt7921_pci_resume(struct device *device, bool restore)
- 		mt76_connac_mcu_set_deep_sleep(&dev->mt76, false);
- 
- 	err = mt76_connac_mcu_set_hif_suspend(mdev, false, true);
-+	if (err == -ETIMEDOUT) {
-+		/* Firmware may not reply after D3; the reset recovers it. */
-+		dev_warn(dev->mt76.dev,
-+			 "HIF resume timed out, resetting\n");
-+		pm->suspended = false;
-+		mt792x_reset(&dev->mt76);
-+		return 0;
-+	}
- 	if (err < 0)
- 		goto failed;
- 
--- 
-2.47.3
+00020007 is MCU_UNI_CMD(HIF_CTRL), sent by
+mt76_connac_mcu_set_hif_suspend(mdev, false, true).
 
+What I tested:
+1. wait_resp=true: the command times out as above. The driver then
+   calls mt792x_reset() and Wi-Fi recovers, but the PM core reports
+   the resume as failed.
+2. MT7925-style event handling: I added a handler for
+   MCU_UNI_EVENT_HIF_CTRL and sent the resume command with
+   wait_resp=false. No event is received at all.
+3. wait_resp=false and no event wait: the card is left unusable.
+   It reinitializes/reset but never reassociates:
+
+     Oct 24 11:01:17 kernel: PM: suspend entry (deep)
+     Oct 24 11:02:11 kernel: mt7921e 0000:03:00.0: HIF resume sent
+without waiting
+     Oct 24 11:02:11 kernel: mt7921e 0000:03:00.0: HW/SW Version: 0x8a108a10 ...
+     Oct 24 11:02:11 kernel: PM: suspend exit
+     Oct 24 11:02:28 kernel: wlp3s0: authentication with ... timed out
+     ...
+
+   Only a reset recovers it.
+
+4. S4/hibernate: the same HIF handshake is not used. A .restore
+   callback that skips it and resets the device works reliably.
+
+The latest linux-firmware 20260724143402 behaves exactly like the
+2024 firmware: no response, no event.
+
+Question:
+Is MT7922 firmware supposed to answer HIF_CTRL after D3, or send
+MCU_UNI_EVENT_HIF_CTRL? If a different resume sequence is required,
+what should the driver do instead of resetting? Is this fixable in
+firmware?
+
+Workaround under review (reset on timeout):
+  https://patchwork.kernel.org/series/1192671/
+
+I can provide full dmesg logs or test patches if useful.
+
+Thanks,
+Hedi Ben Hamida
 
