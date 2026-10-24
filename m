@@ -2,76 +2,75 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 46D07606A31B
-	for <linux-mediatek@archiver.kernel.org>; Sat, 24 Oct 2026 13:18:46 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 57D26606A31B
+	for <linux-mediatek@archiver.kernel.org>; Sat, 24 Oct 2026 13:18:52 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=zuwJkskf;
-	dkim=pass (2048-bit key, unprotected) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20251104 header.b=SM8RNjts
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=rvHWSiwO;
+	dkim=pass (2048-bit key, unprotected) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20251104 header.b=OQfioJOB
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Unsubscribe-Post:
-	List-Owner; bh=FM8GNQ21z2tofnQ9HAGS228+B6GKkzHToThuxWl3/VM=; b=zuwJkskfXoMhnO
-	TYBsuliPkbJ+LYKeC2L65+M2KwLL3mlEVGsbSwwGbWmVpmht2PIrEjyBfkwWZIGszK96zHfED13bL
-	shsIMtXNtXRZLGUNhoPG6O7caKlFD+IUpoTq26W8Iavhq1SVZAecQmxhHnDzctN7Xx62KvHB41Ao2
-	v6of7/mIRhh67CPb71dS4cseW3+vaLk403aJl3NPiD8S+2C6hHeQtpij+PfHjqVloyYAolqouiL3J
-	fy7VqhMoNdTm3J0F/SSZ+RcP7LWd5gw5+WiTYTJHZA4NiE73J3Z0eZs1VRESw4KrgK2hensuWzTH7
-	fADWrIsTY7ivz+GLuQ/g==;
+	List-Owner; bh=b680pKzQa13v0eIR/DWLULm8zwErDKH5uvrOsGuOoiQ=; b=rvHWSiwOpuZfnR
+	GsvdqyxiatFiuK6bL0Aw2ef/Z8wWu8lGO10g2c/SFvFJI7nZYlX/EFZzDtQDVtD1zPJsF/KbOamQl
+	ggl1s8JhIJbpfioNlTC1/nTbv0/sgtxbTDmQIJJEVSMnwHOvU7z6dOW3+HJcgCIykuln5O+V/MNsP
+	Ss1KVQjwrbmmHBdYyqSVwRhJCr2ts6KOZtCfE4/8fwLkfKc/yZ+cnKhJcDraX7CkAQIOkj+ULjNk2
+	40AGJup/hu27jU+isqZhShBeySGDUowEmsJdgdx05mjegvB2U7FEYNhEfaCb8H/U/xVZbDsU52ClX
+	Z+tQ+0Ot3XhmAeuu+New==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xKbe2-00000000DF4-02E4;
-	Sat, 24 Oct 2026 13:18:46 +0000
-Received: from mail-ej1-x629.google.com ([2a00:1450:4864:20::629])
+	id 1xKbe8-00000000DGa-0E7Y;
+	Sat, 24 Oct 2026 13:18:52 +0000
+Received: from mail-ej1-x632.google.com ([2a00:1450:4864:20::632])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xKbe0-00000000DEI-02aK
+	id 1xKbe6-00000000DFz-2dR5
 	for linux-mediatek@lists.infradead.org;
-	Sat, 24 Oct 2026 13:18:45 +0000
-Received: by mail-ej1-x629.google.com with SMTP id a640c23a62f3a-c468bd799ecso219051466b.1
-        for <linux-mediatek@lists.infradead.org>; Sat, 24 Oct 2026 06:18:43 -0700 (PDT)
+	Sat, 24 Oct 2026 13:18:51 +0000
+Received: by mail-ej1-x632.google.com with SMTP id a640c23a62f3a-c4697404c2bso215602766b.2
+        for <linux-mediatek@lists.infradead.org>; Sat, 24 Oct 2026 06:18:50 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1792847922; x=1793452722; darn=lists.infradead.org;
+        d=gmail.com; s=20251104; t=1792847929; x=1793452729; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to:content-type;
-        bh=FM8GNQ21z2tofnQ9HAGS228+B6GKkzHToThuxWl3/VM=;
-        b=SM8RNjtsCmR9cSIeRCtzH18AZpEO5Nl3KfOsx6AAaFIzWGbey7yNfzjo/DbzJgoVfd
-         vGkS/DRJnDEkn+09mkUcXQ0nXaL7s21VDCeSpsE6q1yDtpFwW7f/SaeWK6f/DVJveXQo
-         edYTSfpSKdfoAtSMC/EYFx34VBD6iTrC7uQPk/Z10rILUS8ZUg9/2IpVGCdDlq62l+Lv
-         2XPO/ukQQvIvABTlQ0uSdGMyuJ4If4ssNj50ffDNqAoKEO47or5MwHt+RL5d9R3UX/Z2
-         LXv3RkZVuR9sXDXkHEsEA0YaGI0fl9DS2cO6S7L3ZWp56ZhtHdwjG6Sj0Rmsy4YP6M2+
-         VMFw==
+        bh=b680pKzQa13v0eIR/DWLULm8zwErDKH5uvrOsGuOoiQ=;
+        b=OQfioJOBCyEIjMs0Uis/xd0+PwbqWsiN8A3FGK4p49QpyNyf09zF7thBp+7jTy5OQo
+         y6ka7i2f7YtMsvG8YimkOJn0J+viyc2p2JmB2DC/GVP+7OGDzBTDCOUHGuOW+u2bIRUS
+         VTRy5pMk1ez+Qv3iXyvdP+YYExys36SOuBL3YpBLy2RzVMIzdLzIf7WoCBfkZkx59FEU
+         0TRiA8/Iqczr/4qUoVQP9MvAg3acxeTOA69EJWsnQr+ou8FNOY89eYxyZUWp0ebEO9jD
+         ov5Bdy9IpxwrQfPrdiUcHUapERuDofopWLdLOGcUQuJI4XhH+C7bKlEB3dhh0yaqJmAK
+         AoWQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1792847922; x=1793452722;
+        d=1e100.net; s=20260707; t=1792847929; x=1793452729;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
          :to:cc:subject:date:message-id:reply-to:content-type;
-        bh=FM8GNQ21z2tofnQ9HAGS228+B6GKkzHToThuxWl3/VM=;
-        b=Uq3jk7K23Jd+IjH8CifjzAKGy67gX8PGn0UFDxpGRHXN0G56EcXIo6gsWKEkA6Bwx+
-         phms1PEIyyX7Z3QSKPtDbckRiKNHLz4HwqWygxVAtMZurKlOTJB4Pn3y9jzc+s67YSzP
-         x9SHy9t1H6BGlIBCHdXrmE0Y7zlTorUuP5Kons2Ek+2RlF573H9BSZZf/VnRCs6rV5ml
-         RP4AtA7uLccewzKYPNlpNemyfKgySgr4sxOM6Ki3XikzoRppDFZfaST+XmExwjQWxIBu
-         4rBiqeuVaxGH6d3tRA8t8Gs2ug/VomOJwJS9MtEdgploPC045moZjvQpOdln7GYkJ1IK
-         55ew==
-X-Forwarded-Encrypted: i=1; AKwUvBxKjZgqv+gtj+t38aLd+Cd62bUpqfRohHAy/QK27YkWZSUOLAkJ2ctyPMbBn+Q46B4Pik5hF0M+l6jRZC8sEQ==@lists.infradead.org
-X-Gm-Message-State: AFq9FYKqCrcYfKGnMXWhvvrXXgKhikaMbF39GUnQcCQa9V9yZs36Fe++
-	GKq/xWzAUXB0vfudwi4tGYWiGtWPJLAmWgILn339npYPThYUF+2p4ZTm
-X-Gm-Gg: AYBFou105aFHXJYnR9c4bLCLXo3obo3I+c/l2nXxOljC7oiox8S8xKGGwt40mCUSTNg
-	L9OlGdw3Mrce6AjZWhwgoGOTUNObF7abydoSg4LLpA7k1bagLsdo+Ux2Fch7ybIsvzG8NZNKuQI
-	eSDMiyIaV3uoVvmC6+fyYXGgJm0l9vPcjrp5L/+OwQRwAdyv3svJtgTps0Hc6xY2Dc4PCgARt9h
-	isG8bSY0eXhbGC0hhMrTnL+7920Nr3TpsxyJ6rMyQh6XnypVDfjxh97OszbeikG97U7/DuoDHLC
-	S3RctZ19q8zPv3+GAFubZXODJnS9dr+Bl4qwGc9DOBb4hHD334LX7g5lHigpzLkV8AKjMu7cw/b
-	SuwBfSbVvZafp0nCxo8elws2OBOUO2yUZYMwmYzPdpLeQNgBR6SP6K8IjQ9see631pEDWxf/2bD
-	35BzxvzeHhJScxzR2THQGDXSWHPIBbd7Evog2A/n9aQeuDZxsqmzN1LMcOO03g5P54LkXaCSrI9
-	3XDRnAIuNW9kGyMLhKF2CSbMw9io6wclDGcKBbvReNzwxCTNerTzO0p279lwqxlJ/ycMTij4Lk8
-	LzTlRJIfxuFFY7AEig==
-X-Received: by 2002:a17:907:d649:b0:c33:392f:7ca1 with SMTP id a640c23a62f3a-c46bddce42cmr186626466b.17.1792847921987;
-        Sat, 24 Oct 2026 06:18:41 -0700 (PDT)
+        bh=b680pKzQa13v0eIR/DWLULm8zwErDKH5uvrOsGuOoiQ=;
+        b=lW+f87ue8+zf7hY5gNO/pQ8pD6qRoUw10N3bw5QbO9vpCmLjrouXUKdLDa6LQ8W87S
+         ooYiHhRYmTB/jRDm/F3/uUYVZq9BsZhame5iJuKpWA2P2/mO60XoX3UJ3EWXMaG7EcbF
+         4S5zSiVKNSxJJjrLg7M2EIuSvWgj02Lj+Zv50niB6w6VED+PVHQI48Y0swRrrAV3YdUD
+         utnScMzfujGuZvIQ96miCaLArQYdYcTBVfO5EnAeL3fDoxf+Js8f/HDfvvKK9sWEFEKG
+         q06U1L1b9iQAxYadBaEzCo9ScZWzPxzNSxwq+jDevsSfkYWCA0IVa7r+vgw5c6xQFSPT
+         4qgQ==
+X-Forwarded-Encrypted: i=1; AKwUvBz5trp0dAlSThXI49pIkk+QGAo4Nr8o3kQlHGr6ikCHo2AwPB0IuDEkbA2d63U8xL0CtUvik3W7QT72YtAKbQ==@lists.infradead.org
+X-Gm-Message-State: AFq9FYLfW9aBy3qMkvDnVzrIF3pmxSVD6+XJrhfrNLDkkQUFUauGmZHv
+	WKXVOGDO71VJFS4P+C4EswUq/gg/usyutTjnmNFkYLMVEjx3+ekNDWQv
+X-Gm-Gg: AYBFou2lVcj3MelmJCnuZKETchkpp/FLCdco7bWnx3eGLIJpSiavwkINjYCCSFSyOsB
+	nlVnFA4jYFK7e28RainzbeqeScEikGhNi6kHK7MvaX70dWBpIJqfcsNYLBMe9uA62k8so7F2b1z
+	yLCgdNO3O2+6Pv1YBU3PadIolc+a6uCUWJemVcEpxwq53OERC7/b79MTQm9Pp6N5+JTPCmv0DVb
+	P7Kbb0sKnX7jnVVCzqLsyUZ+Cjvq+RMeI9N5gofAjeDM18Yam3RG07F8hNnPFy16Em7PrCTpmj5
+	9xo6FVDzMt3Yg/z3XEc7GQRqebxcfA/leNjQtYHyDsygLVh//8k9b5McRTC07ClnZBRLpKzTDQM
+	souziZbLOG0Hp1t9ht80Rtd8HCzTjvbu+Jnqw5e10XkFiNXBQ2DLjYfsCDuQEDN0M3FR8asWMVP
+	7BzQKWk+Ul1JD85uMZBzpjAQgDKjxFpwvSOCnIox1AmfOAj1Em4dsoBpKQ6VM42zN4wZ2ATXz0l
+	NosPRT0nIC2r0V6itQ8KK69cqHfpg4g5ars9Y6VH9BB/qeddoQ0YVRPQB8aQU48DdyfFVW0
+X-Received: by 2002:a17:907:2d91:b0:c41:c106:9772 with SMTP id a640c23a62f3a-c46bdac60eamr203215066b.1.1792847928479;
+        Sat, 24 Oct 2026 06:18:48 -0700 (PDT)
 Received: from localhost.localdomain ([185.65.135.248])
-        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-c46bd6276d8sm87306666b.41.2026.10.24.06.18.38
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-c46bd6276d8sm87306666b.41.2026.10.24.06.18.45
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 24 Oct 2026 06:18:41 -0700 (PDT)
+        Sat, 24 Oct 2026 06:18:47 -0700 (PDT)
 From: Hedi Ben Hamida <hedihamida096@gmail.com>
 To: Felix Fietkau <nbd@nbd.name>,
 	Lorenzo Bianconi <lorenzo@kernel.org>
@@ -82,9 +81,9 @@ Cc: Ryder Lee <ryder.lee@mediatek.com>,
 	linux-mediatek@lists.infradead.org,
 	stable@vger.kernel.org,
 	Hedi Ben Hamida <hedihamida096@gmail.com>
-Subject: [PATCH v2 1/2] wifi: mt76: mt7921: add pci restore for hibernate
-Date: Sat, 24 Oct 2026 09:16:52 -0400
-Message-ID: <20261024131715.64435-2-hedihamida096@gmail.com>
+Subject: [PATCH v2 2/2] wifi: mt76: mt7921: reset on HIF resume timeout
+Date: Sat, 24 Oct 2026 09:16:53 -0400
+Message-ID: <20261024131715.64435-3-hedihamida096@gmail.com>
 X-Mailer: git-send-email 2.47.3
 In-Reply-To: <20261024131715.64435-1-hedihamida096@gmail.com>
 References: <20261024131715.64435-1-hedihamida096@gmail.com>
@@ -92,8 +91,8 @@ X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261024_061844_062000_0F82569A 
-X-CRM114-Status: GOOD (  11.94  )
+X-CRM114-CacheID: sfid-20261024_061850_682594_84C90819 
+X-CRM114-Status: GOOD (  12.50  )
 X-Spam-Score: -1.9 (-)
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -113,82 +112,45 @@ X-Spam-Status: No, score=-15.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Hibernation powers the device off and on. On resume the generic restore
-path runs the normal resume sequence and can time out waiting for the
-hif-suspend MCU handshake:
+On some MT7922 firmware the HIF_CTRL resume command does not return a
+response after D3, so mt7921_pci_resume() returns -ETIMEDOUT and the
+PM core reports the resume as failed:
 
-  mt7921e 0000:03:00.0: Message 00020007 (seq 12) timeout
-  mt7921e 0000:03:00.0: PM: dpm_run_callback(): pci_pm_restore returns -110
+  mt7921e 0000:03:00.0: Message 00020007 (seq 6) timeout
+  mt7921e 0000:03:00.0: PM: dpm_run_callback(): pci_pm_resume returns -110
 
-Add a dedicated .restore callback, mirroring mt7925, which skips the
-handshake, resets the device and returns it to its pre-hibernate state.
+The driver already resets the device on this error, and the reset
+restores it. Treat the timeout as recovered after queueing the reset
+and return success, so the PM core does not mark the resume as failed.
 
-Tested on MEDIATEK MT7922 (14c3:7922) on kernel 6.12.113.
+Tested on MEDIATEK MT7922 (14c3:7922) on kernel 6.12.113: suspend/resume
+no longer returns -110 and Wi-Fi recovers; hibernate/resume still works.
 
 Cc: stable@vger.kernel.org
 Signed-off-by: Hedi Ben Hamida <hedihamida096@gmail.com>
 ---
- .../net/wireless/mediatek/mt76/mt7921/pci.c   | 26 ++++++++++++++++---
- 1 file changed, 23 insertions(+), 3 deletions(-)
+ drivers/net/wireless/mediatek/mt76/mt7921/pci.c | 8 ++++++++
+ 1 file changed, 8 insertions(+)
 
 diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/pci.c b/drivers/net/wireless/mediatek/mt76/mt7921/pci.c
-index f87c44f2a..00532b29f 100644
+index 00532b29f..dce88fcc7 100644
 --- a/drivers/net/wireless/mediatek/mt76/mt7921/pci.c
 +++ b/drivers/net/wireless/mediatek/mt76/mt7921/pci.c
-@@ -549,7 +549,7 @@ static int mt7921_pci_suspend(struct device *device)
- 	return err;
- }
- 
--static int mt7921_pci_resume(struct device *device)
-+static int _mt7921_pci_resume(struct device *device, bool restore)
- {
- 	struct pci_dev *pdev = to_pci_dev(device);
- 	struct mt76_dev *mdev = pci_get_drvdata(pdev);
-@@ -589,6 +589,9 @@ static int mt7921_pci_resume(struct device *device)
- 	napi_schedule(&mdev->tx_napi);
- 	local_bh_enable();
- 
-+	if (restore)
-+		goto failed;
-+
- 	/* restore previous ds setting */
- 	if (!pm->ds_enable)
+@@ -597,6 +597,14 @@ static int _mt7921_pci_resume(struct device *device, bool restore)
  		mt76_connac_mcu_set_deep_sleep(&dev->mt76, false);
-@@ -602,7 +605,7 @@ static int mt7921_pci_resume(struct device *device)
- failed:
- 	pm->suspended = false;
  
--	if (err < 0)
-+	if (err < 0 || restore)
- 		mt792x_reset(&dev->mt76);
+ 	err = mt76_connac_mcu_set_hif_suspend(mdev, false, true);
++	if (err == -ETIMEDOUT) {
++		/* Firmware may not reply after D3; the reset recovers it. */
++		dev_warn(dev->mt76.dev,
++			 "HIF resume timed out, resetting\n");
++		pm->suspended = false;
++		mt792x_reset(&dev->mt76);
++		return 0;
++	}
+ 	if (err < 0)
+ 		goto failed;
  
- 	return err;
-@@ -715,7 +718,24 @@ static void mt7921_pci_shutdown(struct pci_dev *pdev)
- 	mt7921_pci_remove(pdev);
- }
- 
--static DEFINE_SIMPLE_DEV_PM_OPS(mt7921_pm_ops, mt7921_pci_suspend, mt7921_pci_resume);
-+static int mt7921_pci_resume(struct device *device)
-+{
-+	return _mt7921_pci_resume(device, false);
-+}
-+
-+static int mt7921_pci_restore(struct device *device)
-+{
-+	return _mt7921_pci_resume(device, true);
-+}
-+
-+static const struct dev_pm_ops mt7921_pm_ops = {
-+	.suspend = pm_sleep_ptr(mt7921_pci_suspend),
-+	.resume = pm_sleep_ptr(mt7921_pci_resume),
-+	.freeze = pm_sleep_ptr(mt7921_pci_suspend),
-+	.thaw = pm_sleep_ptr(mt7921_pci_resume),
-+	.poweroff = pm_sleep_ptr(mt7921_pci_suspend),
-+	.restore = pm_sleep_ptr(mt7921_pci_restore),
-+};
- 
- static struct pci_driver mt7921_pci_driver = {
- 	.name		= KBUILD_MODNAME,
 -- 
 2.47.3
 
