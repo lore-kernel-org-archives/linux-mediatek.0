@@ -2,101 +2,116 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 0604E606A31B
-	for <linux-mediatek@archiver.kernel.org>; Sat, 24 Oct 2026 20:46:46 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id BB600606A31E
+	for <linux-mediatek@archiver.kernel.org>; Sat, 24 Oct 2026 22:30:13 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=x/yS8Vy5;
-	dkim=pass (2048-bit key, unprotected) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20251104 header.b=qGI8/TiH
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=DiXnlvk5;
+	dkim=pass (2048-bit key, unprotected) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20251104 header.b=TNFkLsTx
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Unsubscribe-Post:List-Owner;
-	bh=UnXi3eekXKl70zsvSefuWRY6oQJRxJ2VpezoTiQGsog=; b=x/yS8Vy5976WPodPSpUXKdKHLk
-	zLOZ8uCqeph9wdYcWBZLBZc/i+bwHGha2vaI1FTpbnxZi96ptXwzjnVc9l5TxcU8E3O5Ia+uwW+qz
-	RVlmWkuTENwarJdOAVSCqUlY0hR4UbAvHF7rurDwgaTT2BjkIGE2j6Qe1kYNvuTDpuIDqvbKf4ewq
-	qWMEQM/MvtkkwHKYU4nEuQs4UOthodVf3XwD6X7ZVQrgXjNF/CjZ2WGMhQa0hfGV/yurX6f8GdeIb
-	7EgOpRicWYFKhV7I3U9U6XrQVu838zZMjtmziZfi2SBU3sGIsDYPtouRKe6yoKQP/ip8oOHyMSAjj
-	LRs2QgLA==;
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Unsubscribe-Post:
+	List-Owner; bh=PZME0oUNNAqEZpUwzUI5t6YgowzhWBCKgVCF/Etflr0=; b=DiXnlvk5vbHyNX
+	4Oc5VNfBmUbuigsflOpqx8tVMPzSJoKN+1Y0/MG7qXhxvpXt3IOzsAS107cQt7QwFlHuz99VvHwRR
+	znW+KxNCN6zPgQ626tY6zmQvSgRgPXtuv0Zds+itp3kGteCuSOYJiVlAut2bon+0sovQzjf0zQR4Y
+	xlSGk5daqLkTfUPhGoucs1ysYZMuEbU2NJcXgpUVHupFmoYnVk2AOBoH5ZXIYx7qLFC/2EAJSl72B
+	HmGTC2LnwcHkNvdZ2I1dA17d+Ls+cwRXEvcxoSHWwVfDMF7QIUCyfMrMa+XYYUImsu+2y7Pk/JRYT
+	uXYaFIqi35/lLtOZ/4zg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xKidX-00000000WPC-183J;
-	Sat, 24 Oct 2026 20:46:43 +0000
-Received: from mail-pj1-x102d.google.com ([2607:f8b0:4864:20::102d])
+	id 1xKkFg-00000000adk-46rr;
+	Sat, 24 Oct 2026 22:30:13 +0000
+Received: from mail-pl1-x636.google.com ([2607:f8b0:4864:20::636])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xKidU-00000000WOI-2QZi
+	id 1xKkFe-00000000adK-3UU4
 	for linux-mediatek@lists.infradead.org;
-	Sat, 24 Oct 2026 20:46:42 +0000
-Received: by mail-pj1-x102d.google.com with SMTP id 98e67ed59e1d1-3ac677668a9so2270366a91.2
-        for <linux-mediatek@lists.infradead.org>; Sat, 24 Oct 2026 13:46:39 -0700 (PDT)
+	Sat, 24 Oct 2026 22:30:12 +0000
+Received: by mail-pl1-x636.google.com with SMTP id d9443c01a7336-2ea759cc9b6so6333115ad.3
+        for <linux-mediatek@lists.infradead.org>; Sat, 24 Oct 2026 15:30:10 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1792881009; cv=none;
+        d=google.com; s=arc-20260327;
+        b=Su40ZtE3BtgiGCLzy4gHNHbG2+NH7mwGcbqBV36qkwACSjx/cOqWv07M++HU57KFkw
+         05EJBm0lNbSlwlDZ/Gy3rf6wKveLGvBDUiyCjz3lfhGf0e7BUb6wnqtRhPr0GqABcjsi
+         9qE5gE5+Jvvg0ZMhM9tnnigoaj2hZTiKpJmfqo2uChN+WvHPaI+KNCmz9FDfUl4q3g+6
+         sfuX07eqrVo6HhPfAPEdWpcbAXEvrXfjLP2zdLHkIEarXFztqltnQKepPo1mmcVjUqZe
+         8/wwGXUZ/JotNH5oICLS2tgWL0mEmdGB8N97Y1McTZnbDH7FUDdKzgfyev4eRieV/MpU
+         d2XQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20260327;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=PZME0oUNNAqEZpUwzUI5t6YgowzhWBCKgVCF/Etflr0=;
+        fh=JwoDpP7PbVD37aeWTPbtBhUy4JELSQrn+K/rdQopBrg=;
+        b=fNw0sHp5RUf/S+AILbizjecF6LchzqP/brPUyGA/1IdG/8r+wv4zxT+IFXezdxRRZb
+         ZxFPASP7WvjL86ymvvXHh6sHJNr3fU9wILfYWaucuoq9jOva/zO07SlPZWpwj6y+pAcr
+         S7e3nWXNs+zp93em91Nd69FXy3AWcjeiqi55nLYe/Yvnap4J5KADXvTLxfq39k91Y2kO
+         eB0Tgsl8Uif+vIBZkT8ckZaorcPb6GzohAySY7kp64RHA9l78mi0nlKlcgWpLTQpECuZ
+         lrj9lClOnrHnUkGmGqOyTjjtWqKiqWk4UwhnGlrcIGS3aGBt1ZCWZcOW9y/m8bB9PScX
+         I0pA==;
+        darn=lists.infradead.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1792874799; x=1793479599; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
-        bh=UnXi3eekXKl70zsvSefuWRY6oQJRxJ2VpezoTiQGsog=;
-        b=qGI8/TiHMD5bz7f7PX7Tt4+qa1PrjVCLJswzeLm6raJ8otiPvOmipmT6TpDAP05zid
-         OioHNJgZfz/Ukry7fZ2cKLMCTOdjLH5p6x9Rd/auw8DE/U5h1P+XL5FP42s0b903CSbs
-         4S1Hn1q+CuU3JeDF+62r/SXCuJEy68I5+W9/Yphu6xxqtJWouPj8IjhvZGqLd4N/EvL2
-         QImfvddb2ujT0bvFwkn5CFkFu/0GZVWSKaXRRBvaRX8dRC9lc1++Io9bd82dOOoTIqcI
-         UjfjyR+TFe4YaK7p7A8mY1Yw2GDdEgqNIe3p4/te9I+s/JI49y4qlw67SWq4IVQLmM8A
-         R+NA==
+        d=gmail.com; s=20251104; t=1792881009; x=1793485809; darn=lists.infradead.org;
+        h=content-transfer-encoding:content-type:cc:to:subject:message-id
+         :date:from:in-reply-to:references:mime-version:from:to:cc:subject
+         :date:message-id:reply-to:content-type;
+        bh=PZME0oUNNAqEZpUwzUI5t6YgowzhWBCKgVCF/Etflr0=;
+        b=TNFkLsTx+/LXGEFP32O7hnWEqBQUmkZ41gW5L0GPAnmWI98jhb/BhSzM8UyJ+2sG3Y
+         LMDRUxEze6gpOACmtki8lsJy+uUB0bP3+Xv7rXNZC3yNvdVbHWe7kKlus3+reu+TBECJ
+         LuhNSdsvNO7ECBZImRJn4WJ2ZDzLH7m4bIjOLKNcfe4m6V0SExs5IgyzckaIBAFnSZ0g
+         FwvSsjB3/w3yhand+xRxJau+7g/my2OPDrZomqRfRWu6E7B/NHRDvqpByqrWe4sqaLBy
+         oV6C5oUbNkPOGVzYebseM0iYCEKFl3dLTQeVgxcsm7MFyXy2HfB7tgzXtHq+UZDq58vM
+         eGSw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1792874799; x=1793479599;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to:content-type;
-        bh=UnXi3eekXKl70zsvSefuWRY6oQJRxJ2VpezoTiQGsog=;
-        b=y0iZsUypJVFSDU6pE+2KrIcD0VTnUvfCnmqM+vAP/BUfw06nPSjEEO3PWmGZe6cAhK
-         30CYnQC/LAays9QTPEiU+2lywIc8lIilXDBSJlmmi3C7EcXuVslQJZ+tzaqTEZDZgO4o
-         YysbdGW01Dp931MZFjCP9mfOjxwX5W1/p60BAdE0ojkgrSW0ZBIctg7yt9FG/nxc+lpI
-         pzsYnOdJuZfhB08ZHMiy++Ua6iOAbPPPVBUPuOU1LXnknFjkXVWF7Dne2mKWpkaMVtlv
-         P2HiWae9tSCJJJ1dn4VYcKsgFxvzgf7oW0JlGf1+JwlF0xFmVS39ucj2I89D5WsDLlxC
-         B+ng==
-X-Forwarded-Encrypted: i=1; AKwUvBx0miwJskCAp7adgxghrJPlU2r18V5R35z+4IZuM/U0ZL3f0r7Wz6p6lj135GSkk6WdafGQAZTUlW165Bm1jQ==@lists.infradead.org
-X-Gm-Message-State: AFq9FYLk2FkYkeY8K6uTestRiiMFAmXy37ShF5iwi98d6M6FNKfvhksW
-	rdZe2us/VoW2x4W1KCE6LrnHn737ItASNGMTcOJFcC3id+4khigwbL4C
-X-Gm-Gg: AYBFou1LnmlxiUN4NAdbfZ3JL2nxi+tw5ZgfQ6S651UXcdZ5WLdzYzoyUKqfRyAv5zI
-	jtcFVw+fYJwEGDCGwT4nv5LCvCFy2hpIwnEwjsXhVMft3p5s3tKqHlMxIi6tMEMPX/zKvCqRkNV
-	iprwP1KtRP3dvSSJe52c7T8XCJ0vk39P0VvmgmsTfJBBit+yzSm8HvYXr0fu65xFgp0TJNVk9sS
-	6JHV32yHRW0mCpBaW7qj5vaKG+F4hzPcYd8XF4nkZn66ASnas20EvKDYggKhSDXwx1a4nRu89e2
-	qThn8qQzpwa4ReKjNkOWEjnx2sh4cLDkwXp60gHPagB5XRy1dlmlvd85gZz/i7Mi7tA0Nz+cO9y
-	5XdQpVq/sTpzF6FPfI25tO2zLaOznSa2dC5AxVB5b9bpRJlsOUdarbU4FCVraKKLm6hTFHtouC5
-	ex2HPgoDT9IwILlPYDBXlKUiLujSceeFTTgAKMa2sMVHy1RDeJJVzoKC+SkrtPTWLabu/E7edVl
-	ZGKeJVFv6RG8apaYt60PWIZERRT2KD48rPGYnSgjif66g8K6Cjh/fuFUoD5sOWoUdh9ZoSoFdQ/
-	BzQGTrXKVlvdRqTerELkh/N2e8mN/0l4ufwh2UKqVN76o6dhVcwMdqH0a48QZZYjg0wSnKePYta
-	5yzC8kdiRWnQqchTAZ1r1eN6+lwO1
-X-Received: by 2002:a17:90b:3143:b0:3ac:9e76:aa76 with SMTP id 98e67ed59e1d1-3adea9dca65mr2434190a91.13.1792874798834;
-        Sat, 24 Oct 2026 13:46:38 -0700 (PDT)
-Received: from ryzen.lan ([2601:644:8000:37f::e34])
-        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-3adebe8f0a7sm3793963a91.9.2026.10.24.13.46.37
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 24 Oct 2026 13:46:38 -0700 (PDT)
-From: Rosen Penev <rosenp@gmail.com>
-To: linux-wireless@vger.kernel.org
-Cc: Felix Fietkau <nbd@nbd.name>,
-	Lorenzo Bianconi <lorenzo@kernel.org>,
-	Ryder Lee <ryder.lee@mediatek.com>,
-	Shayne Chen <shayne.chen@mediatek.com>,
-	Sean Wang <sean.wang@mediatek.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Kalle Valo <kvalo@kernel.org>,
-	linux-kernel@vger.kernel.org (open list:ARM/Mediatek SoC support),
-	linux-arm-kernel@lists.infradead.org (moderated list:ARM/Mediatek SoC support),
-	linux-mediatek@lists.infradead.org (moderated list:ARM/Mediatek SoC support)
-Subject: [PATCH wireless] wifi: mt76: mt76x2u: limit TX A-MSDUs to 3 kB at SuperSpeed
-Date: Sat, 24 Oct 2026 13:46:36 -0700
-Message-ID: <20261024204636.23484-1-rosenp@gmail.com>
-X-Mailer: git-send-email 2.56.0
+        d=1e100.net; s=20260707; t=1792881009; x=1793485809;
+        h=content-transfer-encoding:content-type:cc:to:subject:message-id
+         :date:from:in-reply-to:references:mime-version:x-gm-gg
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+         :content-type;
+        bh=PZME0oUNNAqEZpUwzUI5t6YgowzhWBCKgVCF/Etflr0=;
+        b=LI/IAYED/Re2y0C5aI7ZAccMdQ1LqSSNdJrnGEpeJ6qeY5EWaEm4XDgyVbHXI/8QW2
+         4rFap1L4WYbM63wua4X0ECTSKgoaQHxX9XQdeQKGgaauoGCiQZl52/b78bu+D81DYqz9
+         4PQ6IbgdGGbTdiG5HM9T6Xwamn3iUxypXyRvTimAiyA4TRAJfrPtGvBJrhFMb108DXPJ
+         wP+0JTcQ+buKdWJ6gXzzCBOybW1GYqEqJXWc1D9wWiWAN8YAssDrhfB7soWb/Hme0b4W
+         kJSvFnvkQ6D+pfDMaZ2r2OPjfzFKuAhJkOXa2YAS3Hf4GRFLEaAR1yHueVJshXCxlI+n
+         FSdw==
+X-Forwarded-Encrypted: i=1; AKwUvBxkoLF77PxLXyd7bxs1BD/tveJU+FEO4I5OLfkO9A9LpOLHoO9bhzVDhzQQ84NNiYBA1mB1LO49TmuzQA1+RA==@lists.infradead.org
+X-Gm-Message-State: AFq9FYJlG1d0u82IIgMKBAo9skSg7hwjZJdFau1lI4XHUsGSEo2X6KdJ
+	+MSiutIFfxWbM/bZ0Z6yZySREDAg6pWNvPqDOdA2qAuQSgZiB8DMGCmGdFzOngoZO5MPmoUbe7d
+	604ejdoQ2tqUAC+ncQ/UqQjGcNgyTdvM=
+X-Gm-Gg: AYBFou2G1JmgxZYLAZZFz3QvdqWS/pygeFq0MAkUrEP/BprIb2UOiwZdzcKxrzfNxSV
+	9/mDO4kpP99OZRoJ8WKWBOa/JuDFydnyoN3XUPy0jHlRYu7qa9I7JN/82PZHs/6umtIJG/WaB9Z
+	tBW9f6JmZ64XO5kuMa/qytxvvppvhaScPc/k/wa/BDuw78eeKCyh4dp2kILPRtSYTbAY8RjwX52
+	6orDG9qwE8oJbHi2fzhxvnbgc5GMlXFHTQp4yPHLs+mY7flLxIbMGCeTkIyHcP6o73cfvwXnGat
+	w1sB2Ho9dAsxIwC1kKFExI5JR61nx7xk9g1+NgKiYDmRv5uow87uFq2u7uJ2jAD42zlzzvzvaKf
+	PuTCOi4Zc7nLL8U1/u7pberaXuy4vTw8G6BrNOQ==
+X-Received: by 2002:a05:6a20:548c:b0:3e2:9dee:42cd with SMTP id
+ adf61e73a8af0-3e7bfa95bc8mr2307021637.36.1792881009249; Sat, 24 Oct 2026
+ 15:30:09 -0700 (PDT)
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+References: <CAHaeJsQLvC-KBEpy5qu8iYxSB51mbHohrPvN4PJushF_Tk3foA@mail.gmail.com>
+ <20261023180554.7266-1-lucid_duck@justthetip.ca> <CAHaeJsSfoTxJhWVCrELCiLZr1zD42LGJUvrmf7oSzRQpwh6-jw@mail.gmail.com>
+ <20261024173414.10559-1-lucid_duck@justthetip.ca>
+In-Reply-To: <20261024173414.10559-1-lucid_duck@justthetip.ca>
+From: Chris <hoopyfrood42@gmail.com>
+Date: Sat, 24 Oct 2026 18:29:57 -0400
+X-Gm-Features: AclHuK9o9StbGbjqRGEyKvKK_k8FgZq3xzv3Qw33wdsis2WlZchhyzyHV6yo0Hw
+Message-ID: <CAHaeJsTHykkk8Cm+FUZW2RmzzmT47aJNxRR1kpymhDvknnhKuQ@mail.gmail.com>
+Subject: Re: [RFC PATCH wireless] wifi: mt76: mt7925: get the survey airtime
+ from the firmware
+To: Devin Wittmayer <lucid_duck@justthetip.ca>
+Cc: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo@kernel.org>, Ryder Lee <ryder.lee@mediatek.com>, 
+	Deren Wu <deren.wu@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, 
+	Shayne Chen <shayne.chen@mediatek.com>, Javier Tia <floss@jetm.me>, linux-wireless@vger.kernel.org, 
+	linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261024_134640_626967_3F282F34 
-X-CRM114-Status: GOOD (  15.01  )
-X-Spam-Score: -2.1 (--)
+X-CRM114-CacheID: sfid-20261024_153010_883703_40A18617 
+X-CRM114-Status: GOOD (  16.29  )
+X-Spam-Score: -1.9 (-)
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -107,81 +122,51 @@ List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-15.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
+X-Spam-Status: No, score=-2.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
 	DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,FREEMAIL_FORGED_FROMDOMAIN,
-	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
+	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS autolearn=no autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-At SuperSpeed the MT7612U stops accepting bulk OUT data after it was
-sent a TX frame longer than 3072 bytes (TXWI and 802.11 frame, the
-TXINFO length). The TX URBs never complete, MCU commands time out
-("mt76x02u_mcu_wait_resp failed with -110") and only a power cycle
-brings the device back; neither a USB reset nor a host reboot with the
-port powered recovers it. Single frames never get that long, but
-A-MSDUs of two full-size subframes are 3096 bytes.
+On Sat, Oct 24, 2026 at 1:34=E2=80=AFPM Devin Wittmayer
+<lucid_duck@justthetip.ca> wrote:
+>
+> Chris wrote:
+> > One thing on offset 20: in monitor mode it doesn't look like all of
+> > rx.
+>
+> You're right, it isn't all of rx. Your numbers made me curious, so I
+> tried it here with an A9000 as a 20 MHz monitor next to an Alfa. It
+> seems to come down to how strong the signal is. Share of the time:
+>
+>                                          offset 20   decoded frames
+>   one strong neighbour (-22 dBm)            2.3%          2.0%
+>   only weak neighbours (-73 dBm or less)    0.0%          3.6%
+>   my upload, monitor on a side channel     54.6%          7.5%
+>
+> Strong signals land in 20 even when the monitor can't decode them,
+> including spill from the next channel, and weak ones are left out.
+> That would fit what you saw on 5 GHz and on channels 2 to 4.
+>
+> As a station the A9000's own downlink does show up in 20, so I'd keep
+> it as the receive time.
+>
+> Thanks for the long run against the Wi-Spy, and for the Tested-by.
+>
+> Devin
 
-Behind a USB 3 hub this happens within seconds of continuous traffic,
-plugged in directly within minutes. Frames of up to 3072 bytes, at
-MTU 1488, ran for minutes behind the hub, frames of 3080 bytes, at
-MTU 1492, wedged the device. At high speed the same A-MSDUs work.
 
-Cap the A-MSDU length for all TIDs when the device runs at SuperSpeed.
-This keeps A-MSDUs of smaller frames.
+Devin Wittmayer wrote:
+> As a station the A9000's own downlink does show up in 20, so I'd keep
+> it as the receive time.
 
-Fixes: ee676cd5017c ("mt76: add driver code for MT76x2u based devices")
-Signed-off-by: Rosen Penev <rosenp@gmail.com>
----
- .../net/wireless/mediatek/mt76/mt76x2/usb.c   | 26 ++++++++++++++++++-
- 1 file changed, 25 insertions(+), 1 deletion(-)
+Makes sense, thanks for running that down. Strong signals counting and
+weak ones not explains both of the oddities I saw. For my use, a monitor
+hopping channels, busy time is the figure that matters, and that one
+held up on every channel.
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76x2/usb.c b/drivers/net/wireless/mediatek/mt76/mt76x2/usb.c
-index ade15bddefc5..3e53b357858c 100644
---- a/drivers/net/wireless/mediatek/mt76/mt76x2/usb.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt76x2/usb.c
-@@ -29,6 +29,30 @@ static const struct usb_device_id mt76x2u_device_table[] = {
- 	{ },
- };
- 
-+/* At SuperSpeed the MT7612U wedges its bulk OUT path on TX frames longer
-+ * than 3072 bytes (TXWI and 802.11 frame), which only A-MSDUs reach. mt76
-+ * adds 22 bytes (TXWI, header padding) to the MPDU, and mac80211 counts
-+ * each new subframe up to 11 bytes (LLC header, padding) short, plus the
-+ * 14-byte subframe header it adds to the first subframe after the check.
-+ */
-+#define MT76X2U_SS_MAX_AMSDU_LEN	(3072 - 22 - 11 - 14)
-+
-+static int mt76x2u_sta_add(struct mt76_dev *mdev, struct ieee80211_vif *vif,
-+			   struct ieee80211_sta *sta)
-+{
-+	struct usb_device *udev = interface_to_usbdev(to_usb_interface(mdev->dev));
-+	int i;
-+
-+	if (udev->speed >= USB_SPEED_SUPER) {
-+		for (i = 0; i < ARRAY_SIZE(sta->deflink.agg.max_tid_amsdu_len); i++)
-+			sta->deflink.agg.max_tid_amsdu_len[i] =
-+				MT76X2U_SS_MAX_AMSDU_LEN;
-+		ieee80211_sta_recalc_aggregates(sta);
-+	}
-+
-+	return mt76x02_sta_add(mdev, vif, sta);
-+}
-+
- static int mt76x2u_probe(struct usb_interface *intf,
- 			 const struct usb_device_id *id)
- {
-@@ -43,7 +67,7 @@ static int mt76x2u_probe(struct usb_interface *intf,
- 		.tx_status_data = mt76x02_tx_status_data,
- 		.rx_skb = mt76x02_queue_rx_skb,
- 		.sta_ps = mt76x02_sta_ps,
--		.sta_add = mt76x02_sta_add,
-+		.sta_add = mt76x2u_sta_add,
- 		.sta_remove = mt76x02_sta_remove,
- 	};
- 	struct usb_device *udev = interface_to_usbdev(intf);
--- 
-2.56.0
+Happy to test a v2 on the A9000 if one comes.
 
+Chris
 
