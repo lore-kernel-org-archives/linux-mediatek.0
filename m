@@ -2,113 +2,79 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 90C08606A339
-	for <linux-mediatek@archiver.kernel.org>; Sun, 25 Oct 2026 05:18:23 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id DFD50606A31A
+	for <linux-mediatek@archiver.kernel.org>; Sun, 25 Oct 2026 07:58:34 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=btYFhaG2;
-	dkim=pass (2048-bit key, unprotected) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20251104 header.b=KP5RlEy8
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=Lgbcdd1o;
+	dkim=pass (2048-bit key, unprotected) header.d=web.de header.i=markus.elfring@web.de header.a=rsa-sha256 header.s=s29768273 header.b=bL0ULL9m
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:Subject:References:Cc:To:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Unsubscribe-Post:
-	List-Owner; bh=EwHVDnWszJQ91WriRUxs2YdOfWEpY4IVRbcfMVvMvn8=; b=btYFhaG2KSCaPi
-	scPLsLWtvzLYQfZLaVT47DIL3x79Bb3BkoeCxLm6uq7AErhMtG8yigupMk2pjh+cuEYDWd4K7Bicq
-	3p+gwoJPDX/g8KIPUNLgC5I1nsEWIV4ECDmgzRyxfYlB7MiKSqcYRIZ4d+5h5v968jrhGJ+ZKM36Q
-	i8JqPdIeuWUPxLCgCHs7q+pBsfWYzloR9JqMYgTVtTLKAiBFGjdtCwxm29+jt4xcGIWH3hn9JI+hF
-	UV4H9DZ28EZIops5Z+zj3yg4Km708RGnQEhdR12Q5oR3lDt25FxhTxU96t6wvVuk5yF/DrPd9H54m
-	XW+8WBKDtnVT67AwDZJw==;
+	List-Owner; bh=BlV2T+q9mM9P/Dyp0XnJMitUT9+yk7oQfi+fya1bIXg=; b=Lgbcdd1oqo2awb
+	w8CjvNoskGJ+/TL9bN1fZwp4zaLcJBh7hrs2Ij+7lx8a3v5Lz8Yh1AJKarGOZrzjH50v/ZU5afC13
+	puOTKdAgP25PWMs2Pob2wFqcDFHcQmc7kahE0/IP+IFNeKumdgeB/r5iNIF7v2homG6ZfstSCkT78
+	yzLlrov8DqHeJLNvBNBC6ZQ059SYqhSqj/NCSD5mFDTTMSBvhwq7J+6IwaAZRYlsHYkCT89oTA50M
+	3kdd1Q5BwVW85G0FCwl+T6lktMDteC8ap+WcEuv2KJopUxhz8pkBymLyF49jFs1Oc3a5/V7rYRTnd
+	vrdrw7RgvsM1eBrUHFZg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xKqch-00000000keu-1CKa;
-	Sun, 25 Oct 2026 05:18:23 +0000
-Received: from mail-yx2-x09.google.com ([2607:f8b0:4864:41::9])
+	id 1xKt7f-00000000rqP-21Ul;
+	Sun, 25 Oct 2026 07:58:31 +0000
+Received: from mout.web.de ([212.227.17.12])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xKqcc-00000000kbe-3b82
+	id 1xKt7b-00000000rpB-1sTf
 	for linux-mediatek@lists.infradead.org;
-	Sun, 25 Oct 2026 05:18:20 +0000
-Received: by mail-yx2-x09.google.com with SMTP id 956f58d0204a3-679b4ca950fso1216143d50.1
-        for <linux-mediatek@lists.infradead.org>; Sat, 24 Oct 2026 22:18:18 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1792905498; x=1793510298; darn=lists.infradead.org;
-        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
-         :content-type:mime-version:subject:date:from:from:to:cc:subject:date
-         :message-id:reply-to:content-type;
-        bh=EwHVDnWszJQ91WriRUxs2YdOfWEpY4IVRbcfMVvMvn8=;
-        b=KP5RlEy8r8wIB5bHWsDydNsTcy/fAzhRviH7HuQP22lXFNap02tSPXHcSnRJXungJE
-         ooYxv58jGPJiXn3edJRL5x+KVomm/2GmuKiG4Ofgo5WugdAyWEB5la3NZLJ+0mU47MfG
-         efOaWJty45eXj6R5Z275bzPqTgSyUNGYfxFsSCDo6RBu0+EgpdwHB3vc98Kj1aD9YUPo
-         E29waLBYVCdehA2zkdh+gHrsIfW3EjE0Mcl66hIqI1MmzdGGtKVv3pHY4gsW9j0U+8Tr
-         NumkYnhu7owuWDbhZHPlY3RmnHnTu3NaVRCSwM8lbPO88LOAAI1McfufXrxySYwpUVBQ
-         ySNg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1792905498; x=1793510298;
-        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
-         :content-type:mime-version:subject:date:from:x-gm-gg
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
-         :content-type;
-        bh=EwHVDnWszJQ91WriRUxs2YdOfWEpY4IVRbcfMVvMvn8=;
-        b=vFSmUmSRDae/FQ25z92d5dH9uKObhmb0W9s3XqAPA7wyUGDI2bhLXplQsVkvPHrcmN
-         nc3d0pbsa+fid8Mw9Z8N184V6Cf0zR7tlcQrFCPJNjuCRNAS4gyFJMH5jhtvnoAenUe8
-         NSd7cuChT08iGALa5qlccjeXdsJ4I7CajjQ4iCqwnGNc/+8KB59B+49PArL9J4JCoc0+
-         TcJEi0JepdLaeMSLzG2DpRa+dAGoOkuiqgsZm3bVZ6jKnZsLTswsrlrqRuUcogmwLekK
-         enohLcaRc9Xr/tlNIsEZ1ln4Vuf2RX26LKnLtoZCA0qpqGF3s1pC0QCt+UNXi1ggX6tA
-         IefA==
-X-Forwarded-Encrypted: i=1; AKwUvBwCeF+gR0yfvJERmNkwXfJAz71RoibI6cG6rNgeDAykt48ksX8de5mGFFEFnUMYyFiTEy91HWnOx9AwxEm6Ew==@lists.infradead.org
-X-Gm-Message-State: AFq9FYKG571x3PkxPc8Nwb2tGOSvu6p3caDBTpFb5X7ZszAAgpsxiaPS
-	k8T+N2N8NAC/mDonHF/nrNlgiTq6LouH6TMF8CLGIw7KjrMnSWAbjTE2
-X-Gm-Gg: AYBFou0HqR9f9Ph+bnCQwsyUESxqJP+TX0tDBCdmQqLFQLK2hIec4Sh/GhPyX7K6Scn
-	yGopVCV3obnNw3QDcshG4D9suzfPKhtX8q8IvcMaKqC7FPYtXoPMni4mSQLkA+cN+wfFz+8WZGK
-	VVHzTURHYJveXr+X1k2ZNSHCtiCDSHc9yii5ZtX8RX+x2ERhBvgCRyzRqnbTmU4dUdeWN3zBIVI
-	XYMp+Eu4ObvXun8Gk3s1i8SYdNZ8OHhmdzSpXYAL8SSubtEfV9LuKdaLce+EKqTWY4G6DHF/uNd
-	SaBqImkGOVeI2fdZG7eHCUmoVCYvoswU5Ktw1ggFSr1AKa95D7A6xjI9R6H/pCzY0kaZEXk7omI
-	ce74Nbr1D7rfnUorbwL1lRYUPOGPsVHkuSz7u4l9ZJHnoQMNcrGuoxI6dWiTi7WDIgMZOAkWg1+
-	Wyd9Q+iiNdthuN/zf8u0I2Jm+EJ6mPcmdf7j7H3jaiEXT9bbGniDttiVPdq53Pv+h0b/flCN3Bh
-	SpCtsp62KuIY0A/vE8WO+ESOwrW3hVkUc1yDVYEBQkIhg==
-X-Received: by 2002:a05:690c:5c19:b0:8ab:4989:bcc3 with SMTP id 00721157ae682-8b166be0e0amr18546617b3.42.1792905497844;
-        Sat, 24 Oct 2026 22:18:17 -0700 (PDT)
-Received: from [192.168.1.91] ([2600:1702:894b:4a00::12])
-        by smtp.gmail.com with ESMTPSA id 00721157ae682-8b166c5d605sm16477797b3.5.2026.10.24.22.18.15
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 24 Oct 2026 22:18:16 -0700 (PDT)
-From: Ryan Brue <ryanbrue.dev@gmail.com>
-Date: Sun, 25 Oct 2026 00:18:09 -0500
-Subject: [PATCH v5 2/2] iio: adc: mt6397-auxadc: add mt6397 PMIC AUXADC
- driver
+	Sun, 25 Oct 2026 07:58:30 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=web.de;
+	s=s29768273; t=1792915092; x=1793519892; i=markus.elfring@web.de;
+	bh=BlV2T+q9mM9P/Dyp0XnJMitUT9+yk7oQfi+fya1bIXg=;
+	h=X-UI-Sender-Class:Message-ID:Date:MIME-Version:To:Cc:References:
+	 Subject:From:In-Reply-To:Content-Type:Content-Transfer-Encoding:
+	 cc:content-transfer-encoding:content-type:date:from:message-id:
+	 mime-version:reply-to:subject:to;
+	b=bL0ULL9m2b58izHCzXjh9cKvT1lmF60+KHANgNeuk4D4CBNzNZZJSJ+zGpyl5Ya3
+	 a0yyrMNJKk+lVn5yB39mlSsf4+3GOpOEszoKjJeVaWg/UpS7TxMoT7Yl3sXdXbtC5
+	 mtjTTcMl5w2X2tf+EYbqL8Q1poQJhl3UL5YroBHSDHxEPOvmWo9tP+IWJxxshlMk/
+	 LxGMwy+HuMA3CkS7ht2MxXLJBE6rB7nMkzUhiL9G3J7+2iLrpI9ctXhTr5wrgxnT2
+	 8ZJkp7gE6SQcR/qdlm1L3juS9BO3QV6/4yfLMUch0KIiIHD2X2jYQfhjErvubT9Zo
+	 86hfLdKrYmtDlVRJyA==
+X-UI-Sender-Class: 814a7b36-bfc1-4dae-8640-3722d8ec6cd6
+Received: from client.hidden.invalid by smtp.web.de (mrweb105
+ [213.165.67.124]) with ESMTPSA (Nemesis) id 1MlLE7-1wqkRN0zBF-00lkFe; Sun, 25
+ Oct 2026 08:58:12 +0100
+Message-ID: <fa60e7c4-d8ca-4ff4-a56f-6a6e2bfbf3cf@web.de>
+Date: Sun, 25 Oct 2026 08:58:06 +0100
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20261025-rbrue-suez-upstreaming-mt6397-auxadc-v5-2-5c3c7a5a1851@gmail.com>
-References: <20261025-rbrue-suez-upstreaming-mt6397-auxadc-v5-0-5c3c7a5a1851@gmail.com>
-In-Reply-To: <20261025-rbrue-suez-upstreaming-mt6397-auxadc-v5-0-5c3c7a5a1851@gmail.com>
-To: Jonathan Cameron <jic23@kernel.org>, 
- David Lechner <dlechner@baylibre.com>, 
- =?utf-8?q?Nuno_S=C3=A1?= <nuno.sa@analog.com>, 
- Andy Shevchenko <andy@kernel.org>, Rob Herring <robh@kernel.org>, 
- Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: Roman Vivchar <rva333@protonmail.com>, 
- Luca Leonardo Scorcia <l.scorcia@gmail.com>, linux-iio@vger.kernel.org, 
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
- Ryan Brue <ryanbrue.dev@gmail.com>, 
- Andy Shevchenko <andriy.shevchenko@intel.com>
-X-Mailer: b4 0.14.3
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1792905489; l=16790;
- i=ryanbrue.dev@gmail.com; s=20260906; h=from:subject:message-id;
- bh=gOmx21VTlI75af2dFfmMResTJsUgn6W0Lsryo8w3kEc=;
- b=XqRd9Q9DkobmeDN28QEqOtBXFXN3aTtR+mhFVDlu6i7QVIiIdjCFoa+aBiR0QbC80GUDBVRd4
- XuyP8zay/L6D9Y/SnpM4PTzrX8tRWj7h78QP9OmY2ckAih4RwqaTUTF
-X-Developer-Key: i=ryanbrue.dev@gmail.com; a=ed25519;
- pk=KsUvVaP//v/2q+ZBuacc7cLbsyEYn+AD71Sn28oZWKo=
+User-Agent: Mozilla Thunderbird
+To: Coia Prant <coiaprant@gmail.com>, linux-mediatek@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org,
+ Angelo Gioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>
+Cc: stable@vger.kernel.org, LKML <linux-kernel@vger.kernel.org>,
+ Kevin Hilman <khilman@baylibre.com>, Roger Lu <roger.lu@mediatek.com>
+References: <20261023082948.1854252-1-coiaprant@gmail.com>
+Subject: Re: [PATCH] soc: mediatek: SVS: fix device reference leak in
+ svs_add_device_link()
+Content-Language: en-GB, de-DE
+From: Markus Elfring <Markus.Elfring@web.de>
+In-Reply-To: <20261023082948.1854252-1-coiaprant@gmail.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+X-Provags-ID: V03:K1:7PAQDvSkIoVoG9l6Xc514PDbWSozfg5ApFfUXDMA0pSlWVxkqjD
+ 6B5BF75VF0zb6cCEbfYO73VhcPoeuFVVx4QyBTJ+g4m5nedFa49HSKIYMascfRgaaa1MQJV
+ drdy2A8nuy2srQtSe8+AkxksjK5YnOOVIBcGe4qi0pRPaqOxCreg1LnLU6aX9J6r34IWEye
+ 670Fw3xCasd1m6B2YIR3Q==
+UI-OutboundReport: notjunk:1;M01:P0:OEpGzE8F+u8=;1TVhvPh/36/7HFm/hVhe6gNy8ZO 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
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261024_221818_983390_F3012F5A 
-X-CRM114-Status: GOOD (  34.61  )
-X-Spam-Score: -2.1 (--)
+X-CRM114-CacheID: sfid-20261025_005827_793718_B2BE7CBE 
+X-CRM114-Status: UNSURE (   2.98  )
+X-CRM114-Notice: Please train this message.
+X-Spam-Score: -2.8 (--)
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -119,518 +85,22 @@ List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-15.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
+X-Spam-Status: No, score=-4.3 required=3.0 tests=BAYES_00,DKIM_SIGNED,
 	DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,FREEMAIL_FORGED_FROMDOMAIN,
-	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
+	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1 autolearn=no
+	autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-The mt6397 AUXADC is a 10-bit ADC behind the SoC's PMIC wrapper. On boards
-built around this PMIC it is the only way to read the battery: the SoC's
-AUXADC is wired to board thermistors and the charger ICs these boards use
-have no ADC of their own.
+=E2=80=A6
+> Drop the reference before returning on both paths.
+=E2=80=A6
 
-Add a driver exposing the battery voltage and battery temperature
-channels. Only those two are described, so a channel ID in the device tree
-indexes the driver's channel array rather than the PMIC's channel number,
-as mt6323-auxadc does. The ready bit lives in a channel's raw result
-register, but the value comes from the chip's factory-calibrated copy.
+How do you think about to increase the application of scope-based resource=
+ management?
+https://elixir.bootlin.com/linux/v7.3/source/include/linux/device.h#L1363
 
-The battery voltage is measured through ISENSE, because a board with a
-switching charger in the power path leaves BATSNS on the charger's system
-rail instead of on the pack. The thermistor only reads correctly with the
-PMIC's battery-detect bias and input buffer enabled, which take 20 ms to
-settle. Both are switched back off afterwards.
-
-Reads average sixteen conversions in software; the chip's sample
-accumulator makes no measurable difference at any setting, so it is left
-at one sample per conversion.
-
-Reviewed-by: Andy Shevchenko <andriy.shevchenko@intel.com>
-Signed-off-by: Ryan Brue <ryanbrue.dev@gmail.com>
----
-
-A new driver was created here, instead of modifying an existing driver such
-as mt6323-auxadc or mt6359-auxadc, for the following reasons:
-
- - Both mt6323-auxadc and mt6359-auxadc select channels through a request
-   register (1 bit per channel), while mt6397 uses a 4-bit numeric field
-   CHSEL in CON1 (10:7), and then pulses a START bit (CON1 bit 0).
-
- - For mt6323-auxadc, which is the closest I could find to the mt6397
-   (CON0..CON27), it has 13 more registers than the mt6397 (CON0..CON14).
-   It uses CON22 for its request register, and reads the result value
-   from the same register as the ready bit. We don't do that - the mt6397
-   has a factory-calibrated value for each channel at 0x16 higher than the
-   raw value. mt6323 also has a 1800 mV / 15 bit scale / resolution while
-   we have 1200 mV / 10 bits. We also have some per-channel preparation
-   that we have to do before the burst, that the mt6323 doesn't have to
-   do.
-
- - For mt6359-auxadc, it has a more generic framework for describing the
-   AUXADC, but it assumes requests are channel-per-bit, and so we would
-   have to basically ignore req_idx, req_mask, rdy_idx, and rdy_mask.
-
- - We also have our own software sampling, which the vendor does too
-   (Amazon Fire OS based on Linux 3.18). We'd have to have our own
-   sampling callback to do it.
----
- MAINTAINERS                     |   1 +
- drivers/iio/adc/Kconfig         |  11 ++
- drivers/iio/adc/Makefile        |   1 +
- drivers/iio/adc/mt6397-auxadc.c | 394 ++++++++++++++++++++++++++++++++++++++++
- 4 files changed, 407 insertions(+)
-
-diff --git a/MAINTAINERS b/MAINTAINERS
-index b5417c02eb01..761db34f84a1 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -16784,6 +16784,7 @@ MEDIATEK MT6397 PMIC AUXADC DRIVER
- M:	Ryan Brue <ryanbrue.dev@gmail.com>
- L:	linux-iio@vger.kernel.org
- S:	Maintained
-+F:	drivers/iio/adc/mt6397-auxadc.c
- F:	include/dt-bindings/iio/adc/mediatek,mt6397-auxadc.h
- 
- MEDIATEK MT6735 CLOCK & RESET DRIVERS
-diff --git a/drivers/iio/adc/Kconfig b/drivers/iio/adc/Kconfig
-index f32f678f73fb..7686314bc91b 100644
---- a/drivers/iio/adc/Kconfig
-+++ b/drivers/iio/adc/Kconfig
-@@ -1273,6 +1273,17 @@ config MEDIATEK_MT6370_ADC
- 	  This driver can also be built as a module. If so, the module
- 	  will be called "mt6370-adc".
- 
-+config MEDIATEK_MT6397_AUXADC
-+	tristate "MediaTek MT6397 PMIC AUXADC driver"
-+	depends on MFD_MT6397
-+	help
-+	  Say yes here to enable support for MediaTek MT6397 PMIC Auxiliary ADC.
-+	  This driver provides the battery voltage and battery temperature
-+	  channels used by the fuel gauge on boards built around this PMIC.
-+
-+	  This driver can also be built as a module. If so, the module will be
-+	  called mt6397-auxadc.
-+
- config MEDIATEK_MT6577_AUXADC
- 	tristate "MediaTek AUXADC driver"
- 	depends on ARCH_MEDIATEK || COMPILE_TEST
-diff --git a/drivers/iio/adc/Makefile b/drivers/iio/adc/Makefile
-index fee580bdd3b2..d7bb4815df61 100644
---- a/drivers/iio/adc/Makefile
-+++ b/drivers/iio/adc/Makefile
-@@ -108,6 +108,7 @@ obj-$(CONFIG_MEDIATEK_MT6323_AUXADC) += mt6323-auxadc.o
- obj-$(CONFIG_MEDIATEK_MT6359_AUXADC) += mt6359-auxadc.o
- obj-$(CONFIG_MEDIATEK_MT6360_ADC) += mt6360-adc.o
- obj-$(CONFIG_MEDIATEK_MT6370_ADC) += mt6370-adc.o
-+obj-$(CONFIG_MEDIATEK_MT6397_AUXADC) += mt6397-auxadc.o
- obj-$(CONFIG_MEDIATEK_MT6577_AUXADC) += mt6577_auxadc.o
- obj-$(CONFIG_MEN_Z188_ADC) += men_z188_adc.o
- obj-$(CONFIG_MESON_SARADC) += meson_saradc.o
-diff --git a/drivers/iio/adc/mt6397-auxadc.c b/drivers/iio/adc/mt6397-auxadc.c
-new file mode 100644
-index 000000000000..234022f15eba
---- /dev/null
-+++ b/drivers/iio/adc/mt6397-auxadc.c
-@@ -0,0 +1,394 @@
-+// SPDX-License-Identifier: GPL-2.0-only
-+/*
-+ * MediaTek MT6397 PMIC AUXADC IIO driver
-+ *
-+ * Copyright (c) 2026 Ryan Brue <ryanbrue.dev@gmail.com>
-+ *
-+ * Based on drivers/iio/adc/mt6323-auxadc.c
-+ */
-+
-+#include <linux/array_size.h>
-+#include <linux/bitfield.h>
-+#include <linux/bits.h>
-+#include <linux/cleanup.h>
-+#include <linux/delay.h>
-+#include <linux/iio/iio.h>
-+#include <linux/math.h>
-+#include <linux/module.h>
-+#include <linux/mutex.h>
-+#include <linux/platform_device.h>
-+#include <linux/regmap.h>
-+#include <linux/time.h>
-+#include <linux/types.h>
-+
-+#include <linux/mfd/mt6397/core.h>
-+
-+#include <dt-bindings/iio/adc/mediatek,mt6397-auxadc.h>
-+
-+/* The ready bit is in the raw result register, the value in the trimmed one. */
-+#define MT6397_AUXADC_ADC(n)			(0x0514 + 2 * (n))
-+#define   MT6397_AUXADC_ADC_RDY			BIT(15)
-+#define   MT6397_AUXADC_ADC_VAL			GENMASK(9, 0)
-+/* The trimmed copy of ADC(n), which is ADC11 + n. */
-+#define MT6397_AUXADC_ADC_TRIM(n)		(0x052a + 2 * (n))
-+
-+/* The thermistor needs the battery-detect bias and the input buffer on. */
-+#define MT6397_AUXADC_CON0			0x0542
-+#define   MT6397_AUXADC_CON0_BUF_PWD_B		BIT(1)
-+#define   MT6397_AUXADC_CON0_BUF_PWD_ON		BIT(3)
-+/* Samples accumulated per conversion; the chip's accumulator is left at one. */
-+#define   MT6397_AUXADC_CON0_SPL_NUM		GENMASK(11, 7)
-+#define MT6397_CHR_CON7				0x000e
-+#define   MT6397_CHR_CON7_BATON_TDET_EN		BIT(2)
-+
-+#define MT6397_AUXADC_BATTEMP_SETTLE_US		(20 * USEC_PER_MSEC)
-+
-+#define MT6397_AUXADC_CON1			0x0544
-+#define   MT6397_AUXADC_CON1_CHSEL		GENMASK(10, 7)
-+#define   MT6397_AUXADC_CON1_START		BIT(0)
-+
-+/*
-+ * CHR_CON16 and the two SOURCE_CH0 selects route either BATSNS or ISENSE onto
-+ * the battery channel. Only ISENSE is used: with a switching charger in the
-+ * power path BATSNS sits on the system rail rather than on the pack. All five
-+ * ADCIN bits are written out because they are one enable per analog input
-+ * and not a select field; the driver touches only the two it needs.
-+ */
-+#define MT6397_CHR_CON16			0x0020
-+#define   MT6397_CHR_CON16_ADCIN_VCHR_EN	BIT(12)
-+#define   MT6397_CHR_CON16_ADCIN_VSEN_EN	BIT(11)
-+#define   MT6397_CHR_CON16_ADCIN_VBAT_EN	BIT(10)
-+#define   MT6397_CHR_CON16_ADCIN_VSEN_EXT_BATON_EN	BIT(9)
-+#define   MT6397_CHR_CON16_ADCIN_VSEN_MUX_EN	BIT(8)
-+#define MT6397_AUXADC_CON14			0x055e
-+#define   MT6397_AUXADC_CON14_CH0_NORM_SEL	BIT(2)
-+#define   MT6397_AUXADC_CON14_CH0_LBAT_SEL	BIT(0)
-+
-+#define MT6397_AUXADC_ISENSE_SETTLE_US		(1 * USEC_PER_MSEC)
-+
-+/* Conversions averaged in software per read. */
-+#define MT6397_AUXADC_SAMPLES			16
-+
-+/* Hardware limitation: the result is not ready for this long after START. */
-+#define MT6397_AUXADC_START_US			30
-+
-+/* The battery channel is divided down by 4; the thermistor is not divided. */
-+#define MT6397_AUXADC_ISENSE_DIVIDER		4
-+
-+/* The PMIC's channel numbers, as the CON1 select field takes them. */
-+#define MT6397_AUXADC_HWCHAN_BATSNS		0
-+#define MT6397_AUXADC_HWCHAN_BAT_TEMP		3
-+
-+struct mt6397_auxadc {
-+	struct regmap *regmap;
-+	/*
-+	 * A read is a multi-register sequence: analog setup, then a channel
-+	 * select and an edge-triggered start per conversion. Interleaving two
-+	 * of them steals the select and tears down the setup, so a read holds
-+	 * this for its whole burst.
-+	 */
-+	struct mutex lock;
-+};
-+
-+/*
-+ * A device tree channel ID indexes this array; .address holds the PMIC channel
-+ * number. The thermistor reports as a voltage because that is all the PMIC
-+ * measures: the divider across an NTC whose curve belongs to the board.
-+ */
-+static const struct iio_chan_spec mt6397_auxadc_channels[] = {
-+	{
-+		.type = IIO_VOLTAGE,
-+		.indexed = 1,
-+		.channel = MT6397_AUXADC_ISENSE,
-+		.address = MT6397_AUXADC_HWCHAN_BATSNS,
-+		.datasheet_name = "isense",
-+		.info_mask_separate = BIT(IIO_CHAN_INFO_RAW) |
-+				      BIT(IIO_CHAN_INFO_SCALE),
-+	}, {
-+		.type = IIO_VOLTAGE,
-+		.indexed = 1,
-+		.channel = MT6397_AUXADC_BAT_TEMP,
-+		.address = MT6397_AUXADC_HWCHAN_BAT_TEMP,
-+		.datasheet_name = "bat_temp",
-+		.info_mask_separate = BIT(IIO_CHAN_INFO_RAW) |
-+				      BIT(IIO_CHAN_INFO_SCALE),
-+	},
-+};
-+
-+static int mt6397_auxadc_read_once(struct mt6397_auxadc *adc,
-+				   const struct iio_chan_spec *chan, int *val)
-+{
-+	struct regmap *map = adc->regmap;
-+	unsigned int reg;
-+	int ret;
-+
-+	ret = regmap_update_bits(map, MT6397_AUXADC_CON1, MT6397_AUXADC_CON1_CHSEL,
-+				 FIELD_PREP(MT6397_AUXADC_CON1_CHSEL, chan->address));
-+	if (ret)
-+		return ret;
-+
-+	/*
-+	 * START is edge triggered: lower it before raising it again. No delay
-+	 * is needed in between -- the ready bit survives the fall and is
-+	 * cleared by the rise, before the next transaction on this bus can
-+	 * observe it, so a ready bit seen by the poll can only be this
-+	 * conversion's.
-+	 */
-+	ret = regmap_clear_bits(map, MT6397_AUXADC_CON1, MT6397_AUXADC_CON1_START);
-+	if (ret)
-+		return ret;
-+
-+	ret = regmap_set_bits(map, MT6397_AUXADC_CON1, MT6397_AUXADC_CON1_START);
-+	if (ret)
-+		return ret;
-+
-+	fsleep(MT6397_AUXADC_START_US);
-+
-+	ret = regmap_read_poll_timeout(map, MT6397_AUXADC_ADC(chan->address),
-+				       reg, reg & MT6397_AUXADC_ADC_RDY,
-+				       100, 100 * USEC_PER_MSEC);
-+	if (ret)
-+		return ret;
-+
-+	ret = regmap_read(map, MT6397_AUXADC_ADC_TRIM(chan->address), &reg);
-+	if (ret)
-+		return ret;
-+
-+	*val = FIELD_GET(MT6397_AUXADC_ADC_VAL, reg);
-+
-+	return 0;
-+}
-+
-+static int mt6397_auxadc_battemp_bias_on(struct mt6397_auxadc *adc)
-+{
-+	struct regmap *map = adc->regmap;
-+	int ret;
-+
-+	ret = regmap_set_bits(map, MT6397_AUXADC_CON0,
-+			      MT6397_AUXADC_CON0_BUF_PWD_ON);
-+	if (ret)
-+		return ret;
-+
-+	ret = regmap_set_bits(map, MT6397_AUXADC_CON0,
-+			      MT6397_AUXADC_CON0_BUF_PWD_B);
-+	if (ret)
-+		return ret;
-+
-+	return regmap_set_bits(map, MT6397_CHR_CON7,
-+			       MT6397_CHR_CON7_BATON_TDET_EN);
-+}
-+
-+static void mt6397_auxadc_battemp_bias_off(struct mt6397_auxadc *adc)
-+{
-+	struct regmap *map = adc->regmap;
-+
-+	regmap_clear_bits(map, MT6397_CHR_CON7, MT6397_CHR_CON7_BATON_TDET_EN);
-+	regmap_clear_bits(map, MT6397_AUXADC_CON0, MT6397_AUXADC_CON0_BUF_PWD_B);
-+	regmap_clear_bits(map, MT6397_AUXADC_CON0, MT6397_AUXADC_CON0_BUF_PWD_ON);
-+}
-+
-+static int mt6397_auxadc_isense_enable(struct mt6397_auxadc *adc)
-+{
-+	struct regmap *map = adc->regmap;
-+	int ret;
-+
-+	/*
-+	 * Each ADCIN bit connects one input to the battery channel. BATSNS is
-+	 * disconnected before ISENSE is connected, so that the two are never
-+	 * connected at the same time.
-+	 */
-+	ret = regmap_clear_bits(map, MT6397_CHR_CON16, MT6397_CHR_CON16_ADCIN_VBAT_EN);
-+	if (ret)
-+		return ret;
-+
-+	ret = regmap_set_bits(map, MT6397_CHR_CON16, MT6397_CHR_CON16_ADCIN_VSEN_EN);
-+	if (ret)
-+		return ret;
-+
-+	return regmap_set_bits(map, MT6397_AUXADC_CON14,
-+			       MT6397_AUXADC_CON14_CH0_NORM_SEL |
-+			       MT6397_AUXADC_CON14_CH0_LBAT_SEL);
-+}
-+
-+static void mt6397_auxadc_isense_disable(struct mt6397_auxadc *adc)
-+{
-+	struct regmap *map = adc->regmap;
-+
-+	regmap_clear_bits(map, MT6397_AUXADC_CON14,
-+			  MT6397_AUXADC_CON14_CH0_NORM_SEL |
-+			  MT6397_AUXADC_CON14_CH0_LBAT_SEL);
-+	regmap_clear_bits(map, MT6397_CHR_CON16,
-+			  MT6397_CHR_CON16_ADCIN_VSEN_EN |
-+			  MT6397_CHR_CON16_ADCIN_VBAT_EN);
-+}
-+
-+/*
-+ * One burst on a channel that is already prepared: the caller owns the lock,
-+ * the analog setup and the teardown.
-+ */
-+static int mt6397_auxadc_read_burst(struct mt6397_auxadc *adc,
-+				    const struct iio_chan_spec *chan, int *val)
-+{
-+	unsigned int sum = 0;
-+	int sample;
-+	int ret;
-+
-+	for (unsigned int i = 0; i < MT6397_AUXADC_SAMPLES; i++) {
-+		ret = mt6397_auxadc_read_once(adc, chan, &sample);
-+		if (ret)
-+			return ret;
-+
-+		sum += sample;
-+	}
-+
-+	*val = DIV_ROUND_CLOSEST(sum, MT6397_AUXADC_SAMPLES);
-+
-+	return 0;
-+}
-+
-+static void mt6397_auxadc_stop(struct mt6397_auxadc *adc)
-+{
-+	/* Lowering START leaves the converter unarmed between reads. */
-+	regmap_clear_bits(adc->regmap, MT6397_AUXADC_CON1, MT6397_AUXADC_CON1_START);
-+}
-+
-+static int mt6397_auxadc_isense_read(struct mt6397_auxadc *adc,
-+				     const struct iio_chan_spec *chan, int *val)
-+{
-+	int ret;
-+
-+	ret = mt6397_auxadc_isense_enable(adc);
-+	if (ret)
-+		goto out_disable;
-+
-+	fsleep(MT6397_AUXADC_ISENSE_SETTLE_US);
-+
-+	ret = mt6397_auxadc_read_burst(adc, chan, val);
-+
-+out_disable:
-+	mt6397_auxadc_stop(adc);
-+	mt6397_auxadc_isense_disable(adc);
-+
-+	return ret;
-+}
-+
-+static int mt6397_auxadc_battemp_read(struct mt6397_auxadc *adc,
-+				      const struct iio_chan_spec *chan, int *val)
-+{
-+	int ret;
-+
-+	ret = mt6397_auxadc_battemp_bias_on(adc);
-+	if (ret)
-+		goto out_bias_off;
-+
-+	fsleep(MT6397_AUXADC_BATTEMP_SETTLE_US);
-+
-+	ret = mt6397_auxadc_read_burst(adc, chan, val);
-+
-+out_bias_off:
-+	mt6397_auxadc_stop(adc);
-+	mt6397_auxadc_battemp_bias_off(adc);
-+
-+	return ret;
-+}
-+
-+static int mt6397_auxadc_read_channel(struct iio_dev *indio_dev,
-+				      const struct iio_chan_spec *chan,
-+				      int *val)
-+{
-+	struct mt6397_auxadc *adc = iio_priv(indio_dev);
-+
-+	guard(mutex)(&adc->lock);
-+
-+	if (chan->channel == MT6397_AUXADC_ISENSE)
-+		return mt6397_auxadc_isense_read(adc, chan, val);
-+
-+	return mt6397_auxadc_battemp_read(adc, chan, val);
-+}
-+
-+static int mt6397_auxadc_read_raw(struct iio_dev *indio_dev,
-+				  const struct iio_chan_spec *chan,
-+				  int *val, int *val2, long mask)
-+{
-+	int ret;
-+
-+	switch (mask) {
-+	case IIO_CHAN_INFO_RAW:
-+		ret = mt6397_auxadc_read_channel(indio_dev, chan, val);
-+		if (ret)
-+			return ret;
-+
-+		return IIO_VAL_INT;
-+
-+	case IIO_CHAN_INFO_SCALE:
-+		/* 1200 mV full range with 10-bit resolution. */
-+		if (chan->channel == MT6397_AUXADC_ISENSE)
-+			*val = 1200 * MT6397_AUXADC_ISENSE_DIVIDER;
-+		else
-+			*val = 1200;
-+
-+		*val2 = 10;
-+
-+		return IIO_VAL_FRACTIONAL_LOG2;
-+
-+	default:
-+		return -EINVAL;
-+	}
-+}
-+
-+static const struct iio_info mt6397_auxadc_info = {
-+	.read_raw = mt6397_auxadc_read_raw,
-+};
-+
-+static int mt6397_auxadc_probe(struct platform_device *pdev)
-+{
-+	struct device *dev = &pdev->dev;
-+	struct mt6397_chip *chip = dev_get_drvdata(dev->parent);
-+	struct mt6397_auxadc *adc;
-+	struct iio_dev *indio_dev;
-+	int ret;
-+
-+	indio_dev = devm_iio_device_alloc(dev, sizeof(*adc));
-+	if (!indio_dev)
-+		return -ENOMEM;
-+
-+	adc = iio_priv(indio_dev);
-+	adc->regmap = chip->regmap;
-+
-+	ret = devm_mutex_init(dev, &adc->lock);
-+	if (ret)
-+		return ret;
-+
-+	ret = regmap_update_bits(adc->regmap, MT6397_AUXADC_CON0,
-+				 MT6397_AUXADC_CON0_SPL_NUM,
-+				 FIELD_PREP(MT6397_AUXADC_CON0_SPL_NUM, 1));
-+	if (ret)
-+		return dev_err_probe(dev, ret, "failed to initialize auxadc\n");
-+
-+	indio_dev->name = "mt6397-auxadc";
-+	indio_dev->info = &mt6397_auxadc_info;
-+	indio_dev->modes = INDIO_DIRECT_MODE;
-+	indio_dev->channels = mt6397_auxadc_channels;
-+	indio_dev->num_channels = ARRAY_SIZE(mt6397_auxadc_channels);
-+
-+	return devm_iio_device_register(dev, indio_dev);
-+}
-+
-+static const struct of_device_id mt6397_auxadc_of_match[] = {
-+	{ .compatible = "mediatek,mt6397-auxadc" },
-+	{ }
-+};
-+MODULE_DEVICE_TABLE(of, mt6397_auxadc_of_match);
-+
-+static struct platform_driver mt6397_auxadc_driver = {
-+	.driver = {
-+		.name = "mt6397-auxadc",
-+		.of_match_table = mt6397_auxadc_of_match,
-+	},
-+	.probe = mt6397_auxadc_probe,
-+};
-+module_platform_driver(mt6397_auxadc_driver);
-+
-+MODULE_LICENSE("GPL");
-+MODULE_AUTHOR("Ryan Brue <ryanbrue.dev@gmail.com>");
-+MODULE_DESCRIPTION("MediaTek MT6397 PMIC AUXADC Driver");
-
--- 
-2.55.0
-
+Regards,
+Markus
 
