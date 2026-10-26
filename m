@@ -2,116 +2,150 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id CC9AF606A31A
-	for <linux-mediatek@archiver.kernel.org>; Mon, 26 Oct 2026 13:22:08 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id D47DA606A31E
+	for <linux-mediatek@archiver.kernel.org>; Mon, 26 Oct 2026 16:29:31 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=fiXDRwfF;
-	dkim=pass (2048-bit key, unprotected) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20251104 header.b=I++PtcrH
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=Y9R0nriQ;
+	dkim=pass (2048-bit key, unprotected) header.d=baylibre.com header.i=@baylibre.com header.a=rsa-sha256 header.s=google header.b=EwZW4MEr
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Unsubscribe-Post:
-	List-Owner; bh=ygKVfMFF6pfWjNei1maHXSS98SoQihg9ncD5VKqI0fA=; b=fiXDRwfFd7nlUd
-	TYXcdH1ej/02wGjlCNcTo4hAg7WcOMkq7SK+SMgKMDxY5sBF29dnDOyfLeTQe/rkGz6u3FsyWeDCt
-	YvzEcA7aTWWj8rTdFSmlr8VJubBRNI5+NYG0aAxSqnd3dfo0oJd8ubtrVhGfJ3RsXOeEpIts4dmX8
-	ubLW3TNjgAsfSJVNqa+I8RoK7bXpXi+Q/EQSzPb6cTBQDLAL2b3qJf1HyD+uavMljA0fRv6u0U96J
-	Pz7rmi//bAM/8pBsAg3Fo4gNtfkdbzIqzskNl4vpYKUmgifOqcLhJ8uCph3dsMwkmIEhkj01+tPma
-	ynx/RgiFqTW2cLGWR1CQ==;
+	Content-Type:MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Unsubscribe-Post:List-Owner;
+	bh=ITqbDSTjwjfbrrpkyujx4v8CTbfspgT4IGjU+cO6egY=; b=Y9R0nriQN5AGzi0eZsatMDUU0P
+	AB7b0pFZkp9zkv328KeqTrA9UphGArKn2/VQ3xC+ZVJxFtdgk7p3LFECjQY4lE1OwRoFrHbQXwX9y
+	tKtCJkhcR4kt2ZwVcvs2MCGaCn4RbX8C3soxVEUDa98lbXjrRU6SZG6+a/qzHOKr4ZxHWMij+80Wu
+	gnaTKcrLCkLJZR4Dlbbj7+vKIXQ1NxhKv7xNQhx1JOj9cz37HnoEYygMlYTSbOOodvmkybpCasuZX
+	KbtE0W1wYN4RlApIhxBYNrfc7hyPklk/vj0IoH6XWE342MHXTwM7vBmOeGTsNF6fTy0+4jwyAx6eu
+	uDwue4fQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xLKeO-00000002akH-1puU;
-	Mon, 26 Oct 2026 13:22:08 +0000
-Received: from mail-pl1-x62c.google.com ([2607:f8b0:4864:20::62c])
+	id 1xLNZi-00000002skF-2UQG;
+	Mon, 26 Oct 2026 16:29:30 +0000
+Received: from mail-wm1-x32d.google.com ([2a00:1450:4864:20::32d])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xLKeM-00000002ajc-2437
+	id 1xLNZc-00000002sh2-2wfK
 	for linux-mediatek@lists.infradead.org;
-	Mon, 26 Oct 2026 13:22:07 +0000
-Received: by mail-pl1-x62c.google.com with SMTP id d9443c01a7336-2ea138a3497so19428065ad.2
-        for <linux-mediatek@lists.infradead.org>; Mon, 26 Oct 2026 06:22:05 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1793020925; cv=none;
-        d=google.com; s=arc-20260327;
-        b=cVhcakgVDNBltijEzar9dE5e6bpP2QgnkwYQiwzhKiCjRgOPaho9aigK1a/ifSLAvV
-         hlXY66HwThFyVaVSGa1eLmxzU1Bfn+JKnZXGd8oe0NjoXFFywm7/3zUYWFp4y1aCcyx6
-         wlX7ncLPcxpT0GtW4fcYuO0WqfkRSBWUMbXek4jxaKq2JmwaipNnZUmgZita/2nSKpmW
-         pUSW/Doz1wFqgV/2iSnP/x9JKOB6T6ZDJqlsElGgrHsyCvpN6piPEM69jGUrv//R94zj
-         /V+hojlztqfzvHanXsfeI+S2wBUD/Ns7ehewJDBX6geMrNMsud6yM2WhO/usSGW+Ern3
-         gg7g==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20260327;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=ygKVfMFF6pfWjNei1maHXSS98SoQihg9ncD5VKqI0fA=;
-        fh=Iy6Gc73UzjSLX1F8Tx+4hHM3QcMjDugaVdNi//g0qvQ=;
-        b=CqSsYpiZDv6uZc9cQppKUv0IX/gWoS9Bmz4B3pbh171JTWf3YB3XRqsFMAoEHHjqx4
-         ZAb3aDdYM0ScgEVmbFRoOryTn8nVzrcrnpJMSH0X9uHbDKdv02sM1N95+XIXNoITvWrs
-         n2Xb9HpM6fSY8yRkKk/mV87Bf90pbGPaH8epun5m440b1fwfrkw4D7d/AHWU6TiiqhP/
-         yQzaJGI+bGnVWfgbDA+n6W4U4Ecu6MPCKHg4SAhIp7GYmY92hzhhFYmKvXI3ytnLWZP9
-         ScAtfIfCfmxa64s/eRdtaG9xwBfuVGgvnzJCOnPD5VGeVkHfqAmoxoVzTfWYH6iZODYB
-         OooA==;
-        darn=lists.infradead.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
+	Mon, 26 Oct 2026 16:29:28 +0000
+Received: by mail-wm1-x32d.google.com with SMTP id 5b1f17b1804b1-4a5036bbac7so10569385e9.3
+        for <linux-mediatek@lists.infradead.org>; Mon, 26 Oct 2026 09:29:24 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1793020925; x=1793625725; darn=lists.infradead.org;
-        h=content-transfer-encoding:content-type:cc:to:subject:message-id
-         :date:from:in-reply-to:references:mime-version:from:to:cc:subject
-         :date:message-id:reply-to:content-type;
-        bh=ygKVfMFF6pfWjNei1maHXSS98SoQihg9ncD5VKqI0fA=;
-        b=I++PtcrHF7QrGK6XleGqtGW22vefKt2OwbV2VoyQ7GQHj0UdN2wBMcwYHBu9RkPKXa
-         f6HwhnJcwWo7IEtlThWqxY86D460Qj1d2feaBnNuypz6bhKrWMwOWE1zKea053Ex16Fs
-         ufNXapgu3e95G5t/9KY67XHv9MGexsyDZID+AIEBQeey5rFRzkU0dvu89ZtAX1Gr+bR3
-         QkYihfKmKMVGrTAPdB6w9n1YmZOyGyIvA/ph0eb8Zv/ZI6ycPB99ch3LZel/dsvTFmGb
-         0nmMvgBbM6CytIiU0pFGKYnFXhdFxiQjzipwDW7VhdKhzoYGy8wOqWBAhcFfQAbVzGQU
-         7NHQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1793020925; x=1793625725;
-        h=content-transfer-encoding:content-type:cc:to:subject:message-id
-         :date:from:in-reply-to:references:mime-version:x-gm-gg
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+        d=baylibre.com; s=google; t=1793032163; x=1793636963; darn=lists.infradead.org;
+        h=content-transfer-encoding:content-type:mime-version:message-id:date
+         :subject:cc:to:from:from:to:cc:subject:date:message-id:reply-to
          :content-type;
-        bh=ygKVfMFF6pfWjNei1maHXSS98SoQihg9ncD5VKqI0fA=;
-        b=mDs8cU8QoBN0yc69GWFAq3lbHBvoQE+kICW3RZN+OdCopM8Cp2Rv9Iq5IjBdIc7AcV
-         TVlzVcWCPZ0pwQIl8kY6nJTBWCWv7wIbiPSTL+Qi9KJ7UmKKaJI66gYuNmBIccwhnOmT
-         2FZgrgK5wcJT/H6+lwxCPBTej1srzc9GLHFRSH2gOjpaYw1NUya4N6zyNSCRzqdrGIBr
-         9d3jNQeEAcpGLAucl5++v8JyqKtk52DotLDn1Cj0a7d+x54H1elNZ90TSqYug2gnKyZT
-         HuaNDvNdiqep1wfDeg50HdxuLOp88OLaGAoVQtcO6+mvUzJRVLs6hjJupFdnAXj4dcr3
-         OlOA==
-X-Forwarded-Encrypted: i=1; AKwUvBz9qG5DB65EK4SEXAVt89dE8TQmZEfew0BNpJou1RRpqNqXsvaoG9ilMaZQLqra+fc3/RKKOS4bfOr3db883A==@lists.infradead.org
-X-Gm-Message-State: AFq9FYLaeWwt9dKioUP32WDr3PobGpPfcKL2PG58vlyrIZ39eVLkmHuC
-	ywb7xwRui4DJHFbyuJsNleMxdMGPhRWCmAcfjJs9DTPV0Jkm/niykHmJoGVACJ8Ecg9ViiS+hoP
-	deb7A3B6yq/o4trCodJhLlzN/KmzJpg0=
-X-Gm-Gg: AYBFou1vedxEXSVv7JJr5WrBY2muDpf5/lSpTLYIjxCMk1jYNRRCdyXGi5Igw8y+rJk
-	pETwg+4bA0Yy3VSaKOGJNkmL0HWfkQOYUhtO98cL/1WtUbGRmL6kETf31ANfz3j7cNeWOzJD0QQ
-	NiNs8g42L1QUPGzPHIfMbpFD00rKGIetK+0n8CofPqm5KNVB5xCNqCowsO23OfehmuDesHDT4Bz
-	MFmEA/KVfxCAhmQ5HhVluBTFfTtii89HbH6cVzmSHwqtd0WK3aGoxiPsjrBkRFFkijJcrntLxM/
-	XkLq3/7mHIuBgpsnpo+9Lz/8tmQZGM340hyarO+MSyKGHgt8i0I57FD6o+BhTyN4md41qoQ10lk
-	fnEo2WkC5a/bMBHnBad7ztmuCxg1KW/+SkaF46A==
-X-Received: by 2002:a17:902:d58a:b0:2e8:18ca:5f46 with SMTP id
- d9443c01a7336-2ea9c6c8307mr61563325ad.14.1793020925006; Mon, 26 Oct 2026
- 06:22:05 -0700 (PDT)
+        bh=ITqbDSTjwjfbrrpkyujx4v8CTbfspgT4IGjU+cO6egY=;
+        b=EwZW4MErErYT5/4OJdrXIyvia60IuDCSymigsrRbrYfMqD7u0uIsRDOEh5ZhyuA0jY
+         HQZ19u8TimbXSA4oMYOpEjFxlwSB+GerdXGElKVadQWpCy9UvE38hq1enx7UCd5yt8o4
+         umc7BaXgL4vcOBAYRSHBGBwP2Kuv6y2pCMeqYsr3qzotDNUBlBrOUCi3RNO3obOVYOnX
+         z5NOqcyo0IU7KyEGb8U6Ekogm+crFhL/efLVI0X0Ry+ifWPetvo/GoM/a+eM0Fq3bKbK
+         9OJnHLLR1V0gt/bzxaXgGmp4LDuhr9K9CFQkfszruuNin+jInzeEmsM7i5fQTEq3+xhn
+         Jx8A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20260707; t=1793032163; x=1793636963;
+        h=content-transfer-encoding:content-type:mime-version:message-id:date
+         :subject:cc:to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject
+         :date:message-id:reply-to:content-type;
+        bh=ITqbDSTjwjfbrrpkyujx4v8CTbfspgT4IGjU+cO6egY=;
+        b=KA5aOOjL5SWsXr1Dvqp+k31r2U409qphjyWcbet9tz1renpc5yYdKclx4YjbF9vddy
+         D5tL18w2bHsP8AGs2I9AHE1HEMv4+nhWj6plbfxGxeqXOkTd8I2286JUibrPTg63oOde
+         kgTLkjxeyZ7xPxtOiTm+ZR6u28kZchpum60tj4mnWc2iZVyEwkONGCc2n2cFImWyqwXd
+         phrKJgSr7Va3lYS8a63dPEpv45mvgHsLyS+jGCe5d/HF4c+00l2S3xV5OzJ+dZwOeiIO
+         HXfbNsvLGuHwX+HQs6rkwmMb8Bdh6q2SIZ57QLCp7618CCLmUGyq+Jk7M0OR+b/2qmC0
+         0CyQ==
+X-Forwarded-Encrypted: i=1; AKwUvByvMaFHSD1L0/3WwDnLQ/Maq8ctQSATHFtDM5gw/CBjcwznL7qH15zXH8C8DvWGsMe1RZ1fwoBslVaIQ65vtQ==@lists.infradead.org
+X-Gm-Message-State: AFq9FYJHiCL7z4d+gK5vbUSLKwd+ya8iWs9+1W1LxIao0LlF3kvWkJIK
+	f2ZJVezLkGnPuz3NOwncRJoF/HnliCjZbiasqnrsP4OaeSTgaTzYom4sbzzmzBLbNBY=
+X-Gm-Gg: AYBFou0JVPaqn+L8PlynjD/+z8kEL/q/cgnNvG9NSE5sQWpiKkTJqZAtLL1KXWSHMp/
+	tK+aEa8yi/n37H2qK8TK0HQEc7k/PdmnOY1jk5nUHCMDL/mOe9/vFPAQBAtZnwpukz77Gs7Z1qL
+	ocSQD9Q7eqxjDsioiBAfRtsltjPOubHO6EAKDK6uwe3Fs0ZylcDAONTQbkeN1JZgOPNIa7gRpah
+	BJMP7aG+PosgvVxh25cE3pGj7eBRm5zP0VdR75dktE6ArxWuMCqlzttHCll/o76NapUx1fIASla
+	OmLRnGGEy75/9yMvUrRPBFGb6bAgxnJUUPdQQ8beV6aQJPhhBgjwjqae/Fb2Q0+lCrRl7WHyD11
+	mWH9i26tMbMZmbkktpjGXe2HFgQM6w0U8rWnesPzzLd+EmbNf50S0dgjlVQdzCoLiOjFzZ6I2Rg
+	Zru2OaQByOAaXhj2i1l5sK1tXc6mDWzitgTi1rbY4iFv+U784af6/jbhuExXM78XbGhQKJyE8Xm
+	7+Qnfu9I3QPQR/pEGzHAFanDgq2JIb+8qRh2otpGNw0w2JCYLmfaD14d2ShXGsqBZgJ/s3uRI5h
+	J6i85laqr/n9sd1EDIfUqJYvfjtDnW2EdJ7gEjMK3Zg=
+X-Received: by 2002:a05:600c:474a:b0:4a1:78c5:79f5 with SMTP id 5b1f17b1804b1-4a35acb9afamr139448685e9.33.1793032162560;
+        Mon, 26 Oct 2026 09:29:22 -0700 (PDT)
+Received: from localhost (p200300f65f19a904cbccaa7a4d73ac15.dip0.t-ipconnect.de. [2003:f6:5f19:a904:cbcc:aa7a:4d73:ac15])
+        by smtp.gmail.com with UTF8SMTPSA id ffacd0b85a97d-48e3ecd8dcfsm17304483f8f.50.2026.10.26.09.29.21
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 26 Oct 2026 09:29:21 -0700 (PDT)
+From: =?UTF-8?q?Uwe=20Kleine-K=C3=B6nig=20=28The=20Capable=20Hub=29?= <u.kleine-koenig@baylibre.com>
+To: Linus Walleij <linusw@kernel.org>,
+	Bartosz Golaszewski <brgl@kernel.org>
+Cc: Andy Shevchenko <andy@kernel.org>,
+	linux-gpio@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	Yang Shen <shenyang39@huawei.com>,
+	Lixu Zhang <lixu.zhang@intel.com>,
+	Sakari Ailus <sakari.ailus@linux.intel.com>,
+	Ray Jui <rjui@broadcom.com>,
+	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>,
+	Florian Fainelli <florian.fainelli@broadcom.com>,
+	Scott Branden <sbranden@broadcom.com>,
+	Eugeniy Paltsev <Eugeniy.Paltsev@synopsys.com>,
+	Frank Li <Frank.Li@nxp.com>,
+	Sascha Hauer <s.hauer@pengutronix.de>,
+	Pengutronix Kernel Team <kernel@pengutronix.de>,
+	Fabio Estevam <festevam@gmail.com>,
+	Imre Kaloz <kaloz@kernel.org>,
+	Conor Dooley <conor.dooley@microchip.com>,
+	Valentina Fernandez <valentina.fernandezalanis@microchip.com>,
+	Daire McNamara <daire.mcnamara@microchip.com>,
+	Daniel Palmer <daniel@thingy.jp>,
+	Romain Perier <romain.perier@gmail.com>,
+	Robert Jarzmik <robert.jarzmik@free.fr>,
+	imx@lists.linux.dev,
+	linux-arm-kernel@lists.infradead.org,
+	linux-riscv@lists.infradead.org,
+	Hoan Tran <hoan@os.amperecomputing.com>,
+	Alan Borzeszkowski <alan.borzeszkowski@linux.intel.com>,
+	Mika Westerberg <westeri@kernel.org>,
+	Israel Cepeda <israel.a.cepeda.lopez@intel.com>,
+	Hans de Goede <hansg@kernel.org>,
+	Matti Vaittinen <mazziesaccount@gmail.com>,
+	"Enrico Weigelt, metux IT consult" <info@metux.net>,
+	Viresh Kumar <vireshk@kernel.org>,
+	virtualization@lists.linux.dev,
+	Yinbo Zhu <zhuyinbo@loongson.cn>,
+	Thierry Reding <thierry.reding@kernel.org>,
+	Jonathan Hunter <jonathanh@nvidia.com>,
+	linux-tegra@vger.kernel.org,
+	Geert Uytterhoeven <geert+renesas@glider.be>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Srinivas Neeli <srinivas.neeli@amd.com>,
+	Michal Simek <michal.simek@amd.com>,
+	linux-aspeed@lists.ozlabs.org,
+	asahi@lists.linux.dev,
+	linux-mediatek@lists.infradead.org,
+	openbmc@lists.ozlabs.org,
+	linux-omap@vger.kernel.org,
+	linux-renesas-soc@vger.kernel.org,
+	linux-unisoc@lists.infradead.org,
+	linux-rockchip@lists.infradead.org,
+	linux-stm32@st-md-mailman.stormreply.com,
+	Michael Buesch <m@bues.ch>,
+	William Breathitt Gray <wbg@kernel.org>,
+	Robert Richter <rric@kernel.org>,
+	Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
+	linux-acpi@vger.kernel.org
+Subject: [PATCH v3 00/22] gpio: Improvements around device-id arrays
+Date: Mon, 26 Oct 2026 17:28:11 +0100
+Message-ID: <cover.1793030820.git.u.kleine-koenig@baylibre.com>
+X-Mailer: git-send-email 2.56.0.rc1
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-References: <CAHaeJsQLvC-KBEpy5qu8iYxSB51mbHohrPvN4PJushF_Tk3foA@mail.gmail.com>
- <20261023180554.7266-1-lucid_duck@justthetip.ca> <CAHaeJsSfoTxJhWVCrELCiLZr1zD42LGJUvrmf7oSzRQpwh6-jw@mail.gmail.com>
- <20261024173414.10559-1-lucid_duck@justthetip.ca> <CAHaeJsTHykkk8Cm+FUZW2RmzzmT47aJNxRR1kpymhDvknnhKuQ@mail.gmail.com>
-In-Reply-To: <CAHaeJsTHykkk8Cm+FUZW2RmzzmT47aJNxRR1kpymhDvknnhKuQ@mail.gmail.com>
-From: Chris <hoopyfrood42@gmail.com>
-Date: Mon, 26 Oct 2026 09:21:52 -0400
-X-Gm-Features: AclHuK9WB8vBfhKMX3Q1TrHTS-1eG0jMt6qxG97MzBlpwE7ruuhiuAsEwZx9bHs
-Message-ID: <CAHaeJsRROtH4CLVR8mhWznWq6c5mLqLsn9j=6EXPgFUOW8t26w@mail.gmail.com>
-Subject: Re: [RFC PATCH wireless] wifi: mt76: mt7925: get the survey airtime
- from the firmware
-To: Devin Wittmayer <lucid_duck@justthetip.ca>
-Cc: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo@kernel.org>, Ryder Lee <ryder.lee@mediatek.com>, 
-	Deren Wu <deren.wu@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, 
-	Shayne Chen <shayne.chen@mediatek.com>, Javier Tia <floss@jetm.me>, linux-wireless@vger.kernel.org, 
-	linux-mediatek@lists.infradead.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=UTF-8
+X-Developer-Signature: v=1; a=openpgp-sha256; l=8375; i=u.kleine-koenig@baylibre.com; h=from:subject:message-id; bh=/oBogVX4W/l/tSbRcbLeyK5GzZPZsHFXHxISWg2r7FU=; b=owEBbQGS/pANAwAKAY+A+1h9Ev5OAcsmYgBq33+c3CfzXRBmptFu1GW2GtVslcFR47MrFB6ag QI8Xzy686OJATMEAAEKAB0WIQQ/gaxpOnoeWYmt/tOPgPtYfRL+TgUCat9/nAAKCRCPgPtYfRL+ TixACACdtBFK6kNYWLMcAtstDryOYl7PdfPG1N2WQbOF3hzVRHuidZJEElOlxQOHOxjmH5QxfjG oK6tEHPvQpPYGNE6X2ddRlR3vKhFUQXZie3uQhpRkFU+T2B/9DaN4bQiSXUkhXTzFYvqdfGt+bx UbRl8w0O3UDWE1J1O3+WraRa9pLQ1EiCUZzbGW6h1FRI28X6Atl+O3zYxu2WImvV46mPVm5T7XZ b0jHMwW4knA+B/zWMTvL7A92KmAeoLFPWwfaif9ujRL8DnOG5TkQO7aEpnmwLg6WGA9ruZ09COA LKAAW+CtN1A3UjlRp4pFGny5ogYUqSyfQs1hycndKa4RLwtW
+X-Developer-Key: i=u.kleine-koenig@baylibre.com; a=openpgp; fpr=0D2511F322BFAB1C1580266BE2DCDD9132669BD6
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261026_062206_542545_9514787C 
-X-CRM114-Status: GOOD (  24.05  )
-X-Spam-Score: -1.9 (-)
+X-CRM114-CacheID: sfid-20261026_092924_813438_C17F293D 
+X-CRM114-Status: GOOD (  16.59  )
+X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -122,83 +156,188 @@ List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-2.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
-	DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,FREEMAIL_FORGED_FROMDOMAIN,
-	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS autolearn=no autolearn_force=no version=4.0.1
+X-Spam-Status: No, score=-14.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,
+	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no
+	version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On Sat, Oct 24, 2026 at 6:29=E2=80=AFPM Chris <hoopyfrood42@gmail.com> wrot=
-e:
->
-> On Sat, Oct 24, 2026 at 1:34=E2=80=AFPM Devin Wittmayer
-> <lucid_duck@justthetip.ca> wrote:
-> >
-> > Chris wrote:
-> > > One thing on offset 20: in monitor mode it doesn't look like all of
-> > > rx.
-> >
-> > You're right, it isn't all of rx. Your numbers made me curious, so I
-> > tried it here with an A9000 as a 20 MHz monitor next to an Alfa. It
-> > seems to come down to how strong the signal is. Share of the time:
-> >
-> >                                          offset 20   decoded frames
-> >   one strong neighbour (-22 dBm)            2.3%          2.0%
-> >   only weak neighbours (-73 dBm or less)    0.0%          3.6%
-> >   my upload, monitor on a side channel     54.6%          7.5%
-> >
-> > Strong signals land in 20 even when the monitor can't decode them,
-> > including spill from the next channel, and weak ones are left out.
-> > That would fit what you saw on 5 GHz and on channels 2 to 4.
-> >
-> > As a station the A9000's own downlink does show up in 20, so I'd keep
-> > it as the receive time.
-> >
-> > Thanks for the long run against the Wi-Spy, and for the Tested-by.
-> >
-> > Devin
->
->
-> Devin Wittmayer wrote:
-> > As a station the A9000's own downlink does show up in 20, so I'd keep
-> > it as the receive time.
->
-> Makes sense, thanks for running that down. Strong signals counting and
-> weak ones not explains both of the oddities I saw. For my use, a monitor
-> hopping channels, busy time is the figure that matters, and that one
-> held up on every channel.
->
-> Happy to test a v2 on the A9000 if one comes.
->
-> Chris
+Hello,
+
+as with v1 and v2 the original motivation for this series are the
+patches that convert the arrays to use named initializers, see
+https://lore.kernel.org/all/cover.1780048925.git.u.kleine-koenig@baylibre.com/
+for the idea behind it. Then by not closing the eyes for small issues
+spotted while working on that, this series grew a bit.
+
+Changes since v2 (available at
+https://lore.kernel.org/all/cover.1784133987.git.u.kleine-koenig@baylibre.com/)
+
+ - Rebase to current next/master (new changes to
+   drivers/gpio/gpio-mlxbf.c, drivers/gpio/gpio-mlxbf2.c,
+   drivers/gpio/gpio-74x164.c)
+ - Fix a few commit logs to reference the right *_device_id names
+ - Drop all tags for Andy
+ - Drop a questionable MODULE_DEVICE_TABLE(acpi, ...) for drivers/gpio/gpio-usbio.c
+
+Checkpatch only reports two undocumented device-tree compatibles:
+
+	WARNING: DT compatible string "apm,xgene-gpio-v2" appears un-documented -- check ./Documentation/devicetree/bindings/
+	WARNING: DT compatible string "marvell,pxa1928-gpio" appears un-documented -- check ./Documentation/devicetree/bindings/
+
+I felt free to ignore these as this is a pre-existing issue and
+out-of-context for this series.
+
+Andy didn't like how this series is split into patches before, I do. I
+think it's not possible to please everyone's opinion regarding minimal
+changes per patch vs grouping similar changes in patches and about what
+is considered churn. I'm happy about every patch in this series that
+goes in, so feel free to apply patches that you like and that don't get
+resistance even if other's do. If patches don't apply, just drop them,
+I'll catch up on them eventually.
+
+Best regards
+Uwe
+
+Uwe Kleine-König (The Capable Hub) (22):
+  gpio: Remove __maybe_unused annotations from acpi_device_id arrays
+  gpio: fxl6408: Remove __maybe_unused annotations from of_device_id
+    array
+  gpio: Drop unused assignment of acpi_device_id driver data
+  gpio: max7301: Drop unused assignment of spi_device_id driver data
+  gpio: mmio: Drop unused assignment of platform_device_id driver data
+  gpio: ljca: Drop unused assignment of auxiliary_device_id driver data
+  gpio: xgene: Add missing ACPI module annotation
+  gpio: sodaville: Add missing PCI module annotations
+  gpio: Add missing OF module annotations
+  gpio: pxa: Add missing platform module annotations
+  gpio: pl061: Use empty initializer for amba_id terminator
+  gpio: Use named initializers for acpi_device_id array
+  gpio: pcf857x: Use named initializers for of_device_id array
+  gpio: bd73800: Use named initializers for platform_device_id array
+  gpio: Use named initializers for spi_device_id array
+  gpio: virtio: Use a named initializer for virtio_device_id array
+  gpio: Unify style of acpi_device_id arrays
+  gpio: Unify style of of_device_id arrays
+  gpio: max77620: Unify style of platform_device_id array
+  gpio: Unify style of spi_device_id arrays
+  gpio: Unify style of pci_device_id arrays
+  gpio: Unify style of various *_device_id arrays
+
+ drivers/gpio/gpio-74x164.c          |  4 ++--
+ drivers/gpio/gpio-adnp.c            |  4 ++--
+ drivers/gpio/gpio-aggregator.c      |  2 +-
+ drivers/gpio/gpio-altera-a10sr.c    |  2 +-
+ drivers/gpio/gpio-altera.c          |  4 ++--
+ drivers/gpio/gpio-amd8111.c         |  2 +-
+ drivers/gpio/gpio-amdpt.c           |  8 ++++----
+ drivers/gpio/gpio-aspeed-sgpio.c    | 10 ++++-----
+ drivers/gpio/gpio-aspeed.c          | 10 ++++-----
+ drivers/gpio/gpio-ath79.c           |  2 +-
+ drivers/gpio/gpio-bcm-kona.c        |  1 +
+ drivers/gpio/gpio-bd73800.c         |  4 ++--
+ drivers/gpio/gpio-blzp1600.c        |  4 ++--
+ drivers/gpio/gpio-brcmstb.c         |  2 +-
+ drivers/gpio/gpio-bt8xx.c           |  2 +-
+ drivers/gpio/gpio-cadence.c         |  6 +++---
+ drivers/gpio/gpio-creg-snps.c       |  5 +++--
+ drivers/gpio/gpio-davinci.c         |  8 ++++----
+ drivers/gpio/gpio-dwapb.c           | 14 ++++++-------
+ drivers/gpio/gpio-em.c              |  4 ++--
+ drivers/gpio/gpio-ep93xx.c          |  1 +
+ drivers/gpio/gpio-ftgpio010.c       |  3 ++-
+ drivers/gpio/gpio-fxl6408.c         |  2 +-
+ drivers/gpio/gpio-graniterapids.c   |  4 ++--
+ drivers/gpio/gpio-grgpio.c          |  2 +-
+ drivers/gpio/gpio-gw-pld.c          |  4 ++--
+ drivers/gpio/gpio-hisi.c            |  6 +++---
+ drivers/gpio/gpio-hlwd.c            |  4 ++--
+ drivers/gpio/gpio-imx-scu.c         |  1 +
+ drivers/gpio/gpio-ixp4xx.c          |  4 ++--
+ drivers/gpio/gpio-ljca.c            |  4 ++--
+ drivers/gpio/gpio-loongson-64bit.c  |  4 ++--
+ drivers/gpio/gpio-lp3943.c          |  2 +-
+ drivers/gpio/gpio-lpc32xx.c         |  4 ++--
+ drivers/gpio/gpio-macsmc.c          |  4 ++--
+ drivers/gpio/gpio-max3191x.c        | 12 +++++------
+ drivers/gpio/gpio-max7301.c         |  2 +-
+ drivers/gpio/gpio-max7360.c         |  8 ++++----
+ drivers/gpio/gpio-max77620.c        |  4 ++--
+ drivers/gpio/gpio-max77759.c        |  2 +-
+ drivers/gpio/gpio-mb86s7x.c         |  2 +-
+ drivers/gpio/gpio-ml-ioh.c          |  2 +-
+ drivers/gpio/gpio-mlxbf.c           |  6 +++---
+ drivers/gpio/gpio-mlxbf2.c          |  6 +++---
+ drivers/gpio/gpio-mlxbf3.c          |  4 ++--
+ drivers/gpio/gpio-mm-lantiq.c       |  2 +-
+ drivers/gpio/gpio-mmio.c            |  3 +--
+ drivers/gpio/gpio-mockup.c          |  4 ++--
+ drivers/gpio/gpio-moxtet.c          |  4 ++--
+ drivers/gpio/gpio-mpc5200.c         |  9 ++++----
+ drivers/gpio/gpio-mpc8xxx.c         | 25 +++++++++++-----------
+ drivers/gpio/gpio-mpfs.c            |  1 +
+ drivers/gpio/gpio-mpsse.c           |  3 +--
+ drivers/gpio/gpio-msc313.c          |  1 +
+ drivers/gpio/gpio-mt7621.c          |  2 +-
+ drivers/gpio/gpio-mvebu.c           | 13 ++++++------
+ drivers/gpio/gpio-mxc.c             |  2 +-
+ drivers/gpio/gpio-mxs.c             |  4 ++--
+ drivers/gpio/gpio-nomadik.c         |  7 ++++---
+ drivers/gpio/gpio-novalake-events.c |  4 ++--
+ drivers/gpio/gpio-npcm-sgpio.c      |  6 +++---
+ drivers/gpio/gpio-octeon.c          |  2 +-
+ drivers/gpio/gpio-omap.c            |  2 +-
+ drivers/gpio/gpio-palmas.c          | 10 ++++-----
+ drivers/gpio/gpio-pca953x.c         |  4 ++--
+ drivers/gpio/gpio-pca9570.c         |  2 +-
+ drivers/gpio/gpio-pcf857x.c         | 26 +++++++++++------------
+ drivers/gpio/gpio-pci-idio-16.c     |  3 ++-
+ drivers/gpio/gpio-pcie-idio-24.c    |  8 +++++---
+ drivers/gpio/gpio-pisosr.c          |  4 ++--
+ drivers/gpio/gpio-pl061.c           |  2 +-
+ drivers/gpio/gpio-pmic-eic-sprd.c   |  2 +-
+ drivers/gpio/gpio-pxa.c             | 20 ++++++++++--------
+ drivers/gpio/gpio-qixis-fpga.c      |  3 +--
+ drivers/gpio/gpio-rcar.c            |  2 +-
+ drivers/gpio/gpio-rda.c             |  2 +-
+ drivers/gpio/gpio-realtek-otto.c    |  2 +-
+ drivers/gpio/gpio-rockchip.c        |  4 ++--
+ drivers/gpio/gpio-sama5d2-piobu.c   |  2 +-
+ drivers/gpio/gpio-sifive.c          |  2 +-
+ drivers/gpio/gpio-sl28cpld.c        |  2 +-
+ drivers/gpio/gpio-sodaville.c       |  3 ++-
+ drivers/gpio/gpio-spear-spics.c     |  3 ++-
+ drivers/gpio/gpio-sprd.c            |  2 +-
+ drivers/gpio/gpio-stmpe.c           |  2 +-
+ drivers/gpio/gpio-stp-xway.c        |  2 +-
+ drivers/gpio/gpio-tegra.c           |  6 +++---
+ drivers/gpio/gpio-tegra186.c        | 32 ++++++++++++++---------------
+ drivers/gpio/gpio-thunderx.c        |  3 +--
+ drivers/gpio/gpio-tps65218.c        |  2 +-
+ drivers/gpio/gpio-ts4800.c          |  4 ++--
+ drivers/gpio/gpio-ts4900.c          |  2 +-
+ drivers/gpio/gpio-twl4030.c         |  4 ++--
+ drivers/gpio/gpio-usbio.c           | 12 +++++------
+ drivers/gpio/gpio-vf610.c           |  4 ++--
+ drivers/gpio/gpio-virtio.c          |  4 ++--
+ drivers/gpio/gpio-visconti.c        |  2 +-
+ drivers/gpio/gpio-waveshare-dsi.c   |  2 +-
+ drivers/gpio/gpio-xgene-sb.c        |  6 +++---
+ drivers/gpio/gpio-xgene.c           | 10 +++++----
+ drivers/gpio/gpio-xgs-iproc.c       |  2 +-
+ drivers/gpio/gpio-xilinx.c          |  4 ++--
+ drivers/gpio/gpio-xlp.c             |  6 +++---
+ drivers/gpio/gpio-xra1403.c         |  6 +++---
+ drivers/gpio/gpio-zevio.c           |  5 +++--
+ drivers/gpio/gpio-zynqmp-modepin.c  |  2 +-
+ drivers/gpio/gpiolib-acpi-quirks.c  |  2 +-
+ 107 files changed, 269 insertions(+), 252 deletions(-)
 
 
-Hi Devin,
-One more from the long run, which you'll want before a v2: the busy
-counter (offset 19) looks to be 32 bits wide, and it wraps.
+base-commit: 20a33c6b6cbe7e4805dfb6cd68816937443aa148
+-- 
+2.56.0.rc1
 
-Since fix 5 went in, about 2.5 days of channel hopping, my scanner's
-sanity check threw out four survey readings where a channel's busy time
-jumped by close to 2^64 us. Each one is a normal reading less exactly
-2^32 us, e.g. 264 ms busy in 645 ms active, minus 2^32. So the firmware
-counter wrapped (every ~71.6 minutes of busy time), and in
-
-    state->cc_busy +=3D __res_u64(IDX_BUSY_TIME) - state_ts->cc_busy;
-
-the new value is smaller than the old, the difference goes negative,
-and cc_busy wraps. It happens once per wrap; the readings after it are
-fine.
-
-Taking the difference in 32 bits would cover it, e.g.
-
-    state->cc_busy +=3D (u32)(__res_u64(IDX_BUSY_TIME) - state_ts->cc_busy)=
-;
-
-and the same for tx and rx, if those are 32-bit too. I only see busy
-directly, so I can't confirm the other two.
-
-Happy to run a v2 against the same setup.
-
-Chris
 
