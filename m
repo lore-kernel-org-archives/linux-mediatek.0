@@ -2,110 +2,102 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 7F35260A383A
-	for <linux-mediatek@archiver.kernel.org>; Mon, 26 Oct 2026 09:58:17 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 68E5A60A2633
+	for <linux-mediatek@archiver.kernel.org>; Mon, 26 Oct 2026 10:22:05 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=DPPKc7Cy;
-	dkim=pass (2048-bit key, unprotected) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20251104 header.b=HTHsP4Xd
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=2vlAjX12;
+	dkim=pass (2048-bit key, unprotected) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20251104 header.b=a/2nMQaJ
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Unsubscribe-Post:
-	List-Owner; bh=pSQKJDB3+LLtVeMkuba7ZQK3kE05mQFoDfOcOqN3lO8=; b=DPPKc7CyeIEs5q
-	NLBGGZsSeML2uBX2RKeVLUVH9P/b2k7vnVltmk6Awo6leXEVMaLN07DTZ3wFiv0r4y7LbJaIQbQNa
-	7NGzFavrCJ3IwLEe+7BALO7JbIocR3KkB3u8x9j7jfXV/7VCj69n5+vyUH+EIrLoQdRirzEwonJcT
-	q6Am0S4ThBGxxQpA093zPhUUBKCqxA01Bx2zTZXfMSmtuRW6oRHRjAB+Wo4v2Pb2U5JJUGk7aJtIn
-	Ge4P2kWUzmMQSliCjNm+8FYzB8gdPtWmJPwcB3ZSplv+eIaFbbMJfT+p9ieIEd9njpegsNjyZh4b+
-	YkkQWNedHI2SsycuhExg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Unsubscribe-Post:List-Owner;
+	bh=kr1Aa3+HTl57ifUnZ6jARduOXVoJ4F2DQRpWjtSxKvg=; b=2vlAjX12BVWQj43z9xHg1HG/5l
+	CasrACALyiYBk8YjzMVA0kR228KjMguZzaoWslCVFg8UOERKxtEruSPEOrIH2rkDxDKDNcHmffO9x
+	Z0aAHEKcQYOhYawA4j69+tcia8LzXjEsNp01BLSh/Bz+fNffqHzSJNRLn7H6fKHzWC5qpLOyMK+gC
+	Bj8LYuU+QEsc3M0HCg4GGnjwtsseSfjdMji1Yx+guDEMrx2ncqJfjQnhPDM5kMlMSSmy3/P70jN5e
+	yLlQVQAMNj+2xRRYFIjLysIiJ+b1DWfnxBBiAQua5PqO/bVyYYODez8YH1X8VI7tUsvquywMHvGW2
+	e5jf8SYQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xLHT7-00000002AFK-0TdS;
-	Mon, 26 Oct 2026 09:58:17 +0000
-Received: from mail-pf1-x433.google.com ([2607:f8b0:4864:20::433])
+	id 1xLHq9-00000002Fup-0ZgA;
+	Mon, 26 Oct 2026 10:22:05 +0000
+Received: from mail-wr1-x42f.google.com ([2a00:1450:4864:20::42f])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xLHT1-00000002AAW-3yTu
+	id 1xLHq5-00000002Fst-3mrT
 	for linux-mediatek@lists.infradead.org;
-	Mon, 26 Oct 2026 09:58:14 +0000
-Received: by mail-pf1-x433.google.com with SMTP id d2e1a72fcca58-8a05effaf8dso1822082b3a.2
-        for <linux-mediatek@lists.infradead.org>; Mon, 26 Oct 2026 02:58:11 -0700 (PDT)
+	Mon, 26 Oct 2026 10:22:03 +0000
+Received: by mail-wr1-x42f.google.com with SMTP id ffacd0b85a97d-48b060ec084so1695147f8f.0
+        for <linux-mediatek@lists.infradead.org>; Mon, 26 Oct 2026 03:22:01 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1793008691; x=1793613491; darn=lists.infradead.org;
-        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
-         :content-type:mime-version:subject:date:from:from:to:cc:subject:date
-         :message-id:reply-to:content-type;
-        bh=pSQKJDB3+LLtVeMkuba7ZQK3kE05mQFoDfOcOqN3lO8=;
-        b=HTHsP4Xdm057bpmSHfnaa09BrZYETt5dAU4SBbdaSgN3/x+glK/0xzsTrB5DOOHUjp
-         GJKU2cS+AJnF4k8pDApQBlfUKWPVOLEM88SDNtOwwghZxEn4ci/ntS61zVv0/JMJoior
-         sXH1socDZT5s8RRBza2kmo/FwuivSx6zvAoy335+yK4tKhl15+wb/tTjToGa4huGqOPC
-         BD0lYZIaT82F8lFBt9+hSmwy2l9PtDKK2DKUgCS/dvxfv4azjIAUD8sv6/fG0Ealy2kL
-         cBWeaF47CSp0G0cIvqKBhm1LFmwiU684KSYT1sc9jNAhm2g6FTWZISkhuIV7nA7Ogbgj
-         gwIQ==
+        d=gmail.com; s=20251104; t=1793010120; x=1793614920; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
+        bh=kr1Aa3+HTl57ifUnZ6jARduOXVoJ4F2DQRpWjtSxKvg=;
+        b=a/2nMQaJwqaXD8K8OgA10o+9jItI1duelKMqOAL6lCCwmMV23Lea1QWL9xUEWlECux
+         EtE9jxcoTlC4wLxwBGdhe1ShZyYhiDyPkdqlW9e3/2gwaTrcRgZwzNipA+MWRACC8V4C
+         AnR0kAX37WAQoDNrXpJFGC2K8xATcmOn4XN0vGLuZ6ynEDDQecaNkCoO35EfssESnGo5
+         m8nYeFWnxhrE95zXfOim8EHGH61Mv2raRO5bZfcX52xoez/FhkQRgPeMb35jQhmn0c7R
+         rtnoyrxjw61oyX/Y9cLFqsl26/dv5iSw919ehLzdQkxRl9hh2KGAGqfalsTAIdcj3wno
+         G7kg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1793008691; x=1793613491;
-        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
-         :content-type:mime-version:subject:date:from:x-gm-gg
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
-         :content-type;
-        bh=pSQKJDB3+LLtVeMkuba7ZQK3kE05mQFoDfOcOqN3lO8=;
-        b=agfHyv9TGDti4lxzrvvWyokv4JE6Wtrd6GNpbNmQkQh0aAev1iLh1wiM450k1LX38o
-         VpcWXLCwhP6jbj60DyCJtnb61HzPtdCt/yS2GI5N67tMXGpfPBmTtHeVA2FofiRqIahm
-         c+0afq3sZT3PyZaFJjn/zr4crtUtZDRI//4pk5mMR43MW84m2g977+nv7HqX0pROnO4N
-         CG92yjBjmMOQupFHCC65l5i2cPpIFBv3ScudPEFfz/2YzM/JAGVNRQf+Ki9y68Ve7fev
-         Y4Lj6b7MTkkc22FDoDIT3CSI4zObxfCnESOXlMEF7kSS4JnS6r5YEPnwiPHE9LdbZw3c
-         6kug==
-X-Forwarded-Encrypted: i=1; AKwUvBwZWakCATeVqDaXIL8R4w+UMDQqfJsb8NiZy5RSWXN9jej2P3T9sOdyTS9VPtSnHWStmziMrWlw9XCkKqotSw==@lists.infradead.org
-X-Gm-Message-State: AFq9FYLMRmYivgIoq4GQ1cFvVrrJaZMF3hq9lBBtq7RIr6nnG8DLhxQx
-	TSd2qx/HTgXtGQR5L12Sjpw0r1Swc6bCHsY6PnyhtIE3/Ydpf+YOcYjhGdPFJpPO
-X-Gm-Gg: AYBFou0mnDdKgdyjfr2VzKtY1AaUAwv7IsEwv4SUD6yXy2ZcSwXaWWtfPdpR8GHsyHJ
-	wRgLvx8TG2Wx3eocaP9Q4CRnSBYKbyheDoBm0ExlLe7ng5ezbfvty9iteTfIUvbHYjuoGkG55Bi
-	J++/d/2zGlt0VFbSHel5ku3OyQ3zO/nDQ+QuSGkf5XJiEOqWIRnlifdIuQ4Of2hn8gvg7bkCP06
-	E5wl2RC6gvuMoqM1R5n7Eei1uYgv2SI/Twu7ad+YDmStwklHj+DtbsYrav3CW6ifhx04xkFFaKB
-	jToDCcwi54jhAPJaP2NC2LpvD8ZMc7dTeBTWjkVnVppye0zkPsa/Y+5GtST+AuB892ZBr6mGn/j
-	libymNpBPhibehuj7dEPXnav2rg0jjU/wkMryOQWPr/c1atHw8NZnSTioED6+IWdU4alY3/lPA2
-	L6dqh9GCHhC+6kqLqebUhL82F4x34LW37r07s3aeSwiq8W+rhWE0UPoEj1M2lMI2qDXluvmTtRE
-	pFIsum8bek9j09lEnQ08ZuXHtK6Hkze/kIzJaTVgSYU1MbRyLLfv4rkrFDHgC+pZwMXecDldII2
-	SCFEK8LT9g==
-X-Received: by 2002:a05:6a00:2316:b0:882:359f:ef17 with SMTP id d2e1a72fcca58-8a36715c0ecmr4862670b3a.12.1793008691320;
-        Mon, 26 Oct 2026 02:58:11 -0700 (PDT)
-Received: from [127.0.1.1] (59-127-145-64.hinet-ip.hinet.net. [59.127.145.64])
-        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-8a36bf0f4dcsm1095577b3a.44.2026.10.26.02.58.07
+        d=1e100.net; s=20260707; t=1793010120; x=1793614920;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to:content-type;
+        bh=kr1Aa3+HTl57ifUnZ6jARduOXVoJ4F2DQRpWjtSxKvg=;
+        b=UzukyiNuN5XZ+UxycVVu+e/JtKFmIxZ75l+MJ6fDEklWtsNavEESN4H8FipwYNHg69
+         nzNVB3usUjD2SbX/A57D1pX0iiHfpE+tS7atkqbcL+1nZKuyQhYc1YANJItPPUP4ZdVE
+         A9NDOjVh2vBQo3dQ0ROdVN/H6d/nYw0OM9PzVxHVCpIvWG2wF0EJnjfR36vK8+KmuiJR
+         21jnLvhW6ybk3BxFL1T4VXWG07yKMa2F9//DVfBW6f1AYg5PIHKdnFH56Z1w/F9uHJuY
+         N7cEcvXYQphZfxnkAEw8Ybc8j1UBfOs0wa+HTu/EWfJHsMB1uoHMz5o9GiP5QaEBq2Bs
+         Q4Kg==
+X-Forwarded-Encrypted: i=1; AKwUvBwrgG/IAAF+JgG+oSl2JZRUVmD+aRxCJpcl+YyxN1uqbarZE+5Ouev9LJWefBs4P9kOWrmOMRcqb+oL+fegQw==@lists.infradead.org
+X-Gm-Message-State: AFq9FYJZT7f2BFOfZyRta/D57vfoF9XXe/tfnFJDvqisHGMVGl4Ewbpj
+	Nhl/2dMgsbG31m0QUQ3cfldZaM7pZxcaDRa2r6iyZmjrINhqos9LnFag
+X-Gm-Gg: AYBFou2DtiL2/7uxkLunjWTKmIhW5eKuBErpZgxz3MSmsBhHbbtZAKAJrOTB6iguu2M
+	cmwEgin+0DMn1klfuBQygCKaeERX2CBlVBlY6Q8eCWnysYGxRZ8T533xW6611VfoWb4B6NyGqMx
+	cyxknBMgK6+35380TzOo6HXO4S+rJplMjNUMLcdii2kkIyaqtzaROPdTdLI9bo/eZirSQqH8pAG
+	XPabCy2qaunDqBa9r3ZGDdOlc8ssGwbI6FtM+a9yu/W5wPE3rXQbFQ0VzdOYRLzCndpsA+p0Cae
+	LoJn1kaCDIfwW1Co2GdN+qrq2qNV88zaQxo/HHnk3xe0un/BMFZ04o8OZ/036mJrbL5woYP9VZX
+	QTiDWOUoxX1QgPLnNxyVjhPaBcLjnwe+zLAbDqqzcJCyHtoQ5Z7Q0fGBm/0tnoBaFEPow+0zmNJ
+	fHeGetuAtTIky3P1xK061PW4WA3+FgluYFtva4mzkGndyQuBjDKKPjgg/Nobzq1zhQBHZxF73V1
+	5hAG9oFGqieBTI+U8RnzslRlA9QRbtFjN4rz/0nAPGxpYVfB1XiwRNqHy7n9pIuwlGPUxWVumsw
+	sQDkuZy98BjGDILv6ydmahMOa3RhRj+r0FOa3WaOHcWIVNDCJFMLvow0AQjR
+X-Received: by 2002:a05:6000:612:b0:48d:b650:69aa with SMTP id ffacd0b85a97d-48e3eba5700mr11608540f8f.50.1793010119803;
+        Mon, 26 Oct 2026 03:21:59 -0700 (PDT)
+Received: from Ansuel-XPS24.localdomain (93-34-92-187.ip49.fastwebnet.it. [93.34.92.187])
+        by smtp.googlemail.com with ESMTPSA id ffacd0b85a97d-48e3ebc3932sm16762876f8f.18.2026.10.26.03.21.58
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 26 Oct 2026 02:58:10 -0700 (PDT)
-From: Zhi-Jun You <hujy652@gmail.com>
-Date: Mon, 26 Oct 2026 17:57:31 +0800
-Subject: [PATCH net v6 4/4] net: ethernet: mtk_wed: setup WDMA_RING_TX(0)
- for non-DBDC MT7986
+        Mon, 26 Oct 2026 03:21:58 -0700 (PDT)
+From: Christian Marangi <ansuelsmth@gmail.com>
+To: Chaotian Jing <chaotian.jing@mediatek.com>,
+	Ulf Hansson <ulfh@kernel.org>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Wenbin Mei <wenbin.mei@mediatek.com>,
+	linux-mmc@vger.kernel.org,
+	devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Cc: Christian Marangi <ansuelsmth@gmail.com>
+Subject: [PATCH 1/2] dt-bindings: mmc: mtk-sd: Document support for Airoha AN7581 SoC
+Date: Mon, 26 Oct 2026 11:21:36 +0100
+Message-ID: <20261026102138.36786-1-ansuelsmth@gmail.com>
+X-Mailer: git-send-email 2.55.0
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20261026-wedfix-v6-4-a52f6b15d2fc@gmail.com>
-References: <20261026-wedfix-v6-0-a52f6b15d2fc@gmail.com>
-In-Reply-To: <20261026-wedfix-v6-0-a52f6b15d2fc@gmail.com>
-To: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo@kernel.org>, 
- Andrew Lunn <andrew+netdev@lunn.ch>, 
- "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@kernel.org>, 
- Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Sujuan Chen <sujuan.chen@mediatek.com>, Rex Lu <rex.lu@mediatek.com>
-Cc: netdev@vger.kernel.org, linux-kernel@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
- Zhi-Jun You <hujy652@gmail.com>
-X-Mailer: b4 0.16.0
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1793008668; l=1813;
- i=hujy652@gmail.com; s=20261026; h=from:subject:message-id;
- bh=l74B/Eke0qZ7NU7MKRfL71FgLu3ayn5XZo3xhiO5oMc=;
- b=o/Ca8KCeJJFPtmTThW5dHp5n7J18WnvI/QN1JZAsQxVBK/CreER8FmV3XQT3u+j99fYVg7Bfg
- Ok3/N85CHVsCAkBLu8ly/0e1F8SMpeO4aAGCIOSH7miuuN2dpmBRLok
-X-Developer-Key: i=hujy652@gmail.com; a=ed25519;
- pk=uXjqvnRsKEfHEyUr63sOg4fEJIDs4AmiW/rB1cWarXg=
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261026_025812_287101_59A98EB3 
-X-CRM114-Status: GOOD (  13.69  )
-X-Spam-Score: -1.9 (-)
+X-CRM114-CacheID: sfid-20261026_032201_959270_E0606B76 
+X-CRM114-Status: GOOD (  10.30  )
+X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -124,50 +116,38 @@ X-Spam-Status: No, score=-15.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-WDMA_RING_TX(0) is required to set MTK_WED_WDMA_RING_TX for WED RX
-but on a non-DBDC MT7986 it is never setup because idx is 1.
+Add dedicated compatible for Airoha AN7581 SoC integrated MMC controller.
+The MMC controller is based on the MT7988 with the difference that it does
+have a single clock controlling it.
 
-Setting MTK_WED_WDMA_RING_TX with WDMA_RING_TX(1) is not feasible because
-WED still tries to send through WDMA_RING_TX(0). This is verified with
-register dump.
+Add the dedicated compatible to describe the 2 register requirement and
+permit to define only 2 clock (the main one and a fixed clock for HS)
 
-Fix this by calling mtk_wed_wdma_tx_ring_setup if wed is v2 and
-rx_ring[0] is not allocated and reset tx_wdma[0] if it's already
-allocated also add error messages and bail when mtk_wed_start fails.
-
-Fixes: 4c5de09eb0d0 ("net: ethernet: mtk_wed: add configure wed wo support")
-Signed-off-by: Zhi-Jun You <hujy652@gmail.com>
+Signed-off-by: Christian Marangi <ansuelsmth@gmail.com>
 ---
- drivers/net/ethernet/mediatek/mtk_wed.c | 15 ++++++++++++++-
- 1 file changed, 14 insertions(+), 1 deletion(-)
+ Documentation/devicetree/bindings/mmc/mtk-sd.yaml | 2 ++
+ 1 file changed, 2 insertions(+)
 
-diff --git a/drivers/net/ethernet/mediatek/mtk_wed.c b/drivers/net/ethernet/mediatek/mtk_wed.c
-index 3044a7a8ea03..f40ac5794341 100644
---- a/drivers/net/ethernet/mediatek/mtk_wed.c
-+++ b/drivers/net/ethernet/mediatek/mtk_wed.c
-@@ -2345,7 +2345,20 @@ mtk_wed_start(struct mtk_wed_device *dev, u32 irq_mask)
- 
- 	for (i = 0; i < ARRAY_SIZE(dev->rx_wdma); i++)
- 		if (!dev->rx_wdma[i].desc)
--			mtk_wed_wdma_rx_ring_setup(dev, i, 16, false);
-+			if (mtk_wed_wdma_rx_ring_setup(dev, i, 16, false)) {
-+				dev_err(dev->hw->dev, "wdma rx ring %d setup failed\n", i);
-+				return;
-+			}
-+
-+	/*
-+	 * non-DBDC MT7986 allocates only rx_ring[1] and tx_wdma[1] during setup
-+	 * but tx_wdma[0] is also needed for WED to function.
-+	 */
-+	if (mtk_wed_is_v2(dev->hw) && !dev->rx_ring[0].desc)
-+		if (mtk_wed_wdma_tx_ring_setup(dev, 0, MTK_WED_WDMA_RING_SIZE, !!dev->tx_wdma[0].desc)) {
-+			dev_err(dev->hw->dev, "wdma tx ring 0 setup failed\n");
-+			return;
-+		}
- 
- 	if (dev->wlan.hw_rro) {
- 		for (i = 0; i < MTK_WED_RX_PAGE_QUEUES; i++) {
-
+diff --git a/Documentation/devicetree/bindings/mmc/mtk-sd.yaml b/Documentation/devicetree/bindings/mmc/mtk-sd.yaml
+index a4d032224dce..49ad2a8a390d 100644
+--- a/Documentation/devicetree/bindings/mmc/mtk-sd.yaml
++++ b/Documentation/devicetree/bindings/mmc/mtk-sd.yaml
+@@ -14,6 +14,7 @@ properties:
+   compatible:
+     oneOf:
+       - enum:
++          - airoha,an7581-mmc
+           - mediatek,mt2701-mmc
+           - mediatek,mt2712-mmc
+           - mediatek,mt6779-mmc
+@@ -238,6 +239,7 @@ allOf:
+         compatible:
+           contains:
+             enum:
++              - airoha,an7581-mmc
+               - mediatek,mt7986-mmc
+               - mediatek,mt7988-mmc
+               - mediatek,mt8183-mmc
 -- 
 2.55.0
 
