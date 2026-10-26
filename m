@@ -2,11 +2,11 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 77DEA606A323
-	for <linux-mediatek@archiver.kernel.org>; Mon, 26 Oct 2026 07:48:32 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 9617A606A31A
+	for <linux-mediatek@archiver.kernel.org>; Mon, 26 Oct 2026 07:51:02 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=RtY4Pbbl;
-	dkim=pass (2048-bit key, unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=I2m+DVXm
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=3U/n18bE;
+	dkim=temperror header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=Kw2YFF7S
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
@@ -14,36 +14,36 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=GzuOsw4Snvbh+eEMcnVr9iJjEbAdsRsKBYi5VdtwjLQ=; b=RtY4Pbbl5infzPGnQEX5vtS4HU
-	VC6IyYWiwkIdRFfpWL06RdFFSlGNS/fg+gC79W/ogIU6ASmcaCyWO/ozYFs8TMpt2974X+Y1vcr9Y
-	Rl/6D7JRVVYN87K8rzVpeVecwEaPtF2CnCNMKkxJ6qmjLw+b56NaDq7dY35JwvQ/Z/kSDASfOW9tz
-	tMYaF3u0oPCDlEQF2v2EZoj+0iSdURv6GBcxMulxTz7RloxG9LCYEsWNVhjgXXxYp0jlw0MsrLBIC
-	hNcK/S2EQo0UnQcWg+qA/GPFFXajZ5bq7rE+fks9vlyouaAoyABmNHAtuIOoJqcR+lia4oMFid6Fn
-	Y7sQCp9Q==;
+	bh=GSs4SC8xEvXxzc6tb3y0SEMQgJxrl8ZSN7tzilEn+Eo=; b=3U/n18bEhVaGLbxexh0CjHsmx8
+	xxf0P5l+aVtMgi09qayXB76Op1fpkeMUNT7T51Tw7ChDVK1xGYWvkD6SWc4g6dgOvAcPLCxWGlM5E
+	NHd7y+wYD8G9bELGHpYrhrtOlxanHpsFUHkUzs/ABtWlucbxkAZ8YXa43EH+XN5dh22m1HGNubudj
+	0suIO0ilMgC3GG01gNwSjiG/ViymvssdypDGMQ4T4VMyO7VeIoZUbM6geOcLvreGPmb8IQONOZSRY
+	thDbQtVHVyMRpkjEAcYu4hTlQ0IDw+1q4J8VPGKO1vV/CH/NRScBIduLd1vEQTzLj+Sc72yUjOao3
+	3KIFkkMQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xLFRV-00000001rYq-3Ibp;
-	Mon, 26 Oct 2026 07:48:29 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1xLFTy-00000001ruu-1Irl;
+	Mon, 26 Oct 2026 07:51:02 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xLFRU-00000001rYN-2eV1;
-	Mon, 26 Oct 2026 07:48:28 +0000
+	id 1xLFTw-00000001ruE-0Ia1;
+	Mon, 26 Oct 2026 07:51:00 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 7D67C600CB;
-	Mon, 26 Oct 2026 07:48:27 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8DC631F01825;
-	Mon, 26 Oct 2026 07:48:26 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 35F11600CB;
+	Mon, 26 Oct 2026 07:50:59 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5F5D21F01825;
+	Mon, 26 Oct 2026 07:50:58 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1793000907;
-	bh=GzuOsw4Snvbh+eEMcnVr9iJjEbAdsRsKBYi5VdtwjLQ=;
+	s=k20260515; t=1793001058;
+	bh=GSs4SC8xEvXxzc6tb3y0SEMQgJxrl8ZSN7tzilEn+Eo=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=I2m+DVXmL5Gv3nfNU/fb7mgDtrgNT54cGy11FezEf4gpsgiBmxi9/lrqb8MMm34Ma
-	 T79ZROkG2cwpyLQQGA8JJfew/i+8LeLAl3+eGWlBZi8RKmeHO/3+9XmVCik2CMd6oJ
-	 BZ5DY6VZyhKcSj5cRr3gp6zdU9Q4jawc0SN/jX/pGmJaOXRcRlhpp1ZyAUsfyyUQT4
-	 n2gm7tcgMi887AUtZLmQKgpIdN9vr4nobt2yV+jYtG9i8rG3v1xMGLMDJWD9F+mTUq
-	 R314cJFSSc8+yz9/nSgrMM4zmgDkgUTJGZkV/7du83bsTPtJED6LvPHOuZLuBkXR1F
-	 2GnOdr36WwXZQ==
-Date: Mon, 26 Oct 2026 08:48:24 +0100
+	b=Kw2YFF7SxFhk61E+XcdH8MBJU5Uc/8h26oi7o7fo0V/QjOLivTNhOjXd4oxSKtWmo
+	 TDOwAnHtn+tupqC3ENK/PzNjzAuLs/6boivj2cb44g4CWLeFmjFfe4qZZ5QyEZEE0U
+	 Y7hFDO2UcS8rNGorC8gC8mujud2i42mt59/cPei12CLO0arqT/SyfnYC9ll8w1qdg4
+	 hvXmMy/3rpwMEFAWg7D5yGkgdBIDIjew2h8Xr4b0wil4qqxrWe7q70RwTVZwBjrdlI
+	 w/vqiZODz5TkQSdyrUG9sScI45GRiKP0qiV9SMNXUBS444al4GYVHiIPikMnoyIfhC
+	 osaOufWgrm2zA==
+Date: Mon, 26 Oct 2026 08:50:56 +0100
 From: Lorenzo Bianconi <lorenzo@kernel.org>
 To: Chris Scott <gilroyscott1970@gmail.com>
 Cc: netdev@vger.kernel.org, andrew+netdev@lunn.ch, davem@davemloft.net,
@@ -54,17 +54,17 @@ Cc: netdev@vger.kernel.org, andrew+netdev@lunn.ch, davem@davemloft.net,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org, pawlik.dan@gmail.com,
 	zhengping.zhang@airoha.com
-Subject: Re: [RFC net-next 2/3] net: airoha: npu: attach a coherent pool in
- the NPU window
-Message-ID: <at8FyOLeaMlpS7mR@lore-desk>
+Subject: Re: [RFC net-next 3/3] net: airoha: npu: use coherent memory for
+ mailbox messages
+Message-ID: <at8GYPdqto4xoHBl@lore-desk>
 References: <20261024154150.45733-1-gilroyscott1970@gmail.com>
- <20261024154150.45733-3-gilroyscott1970@gmail.com>
+ <20261024154150.45733-4-gilroyscott1970@gmail.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="iVyAIniY1vyBr/dM"
+	protocol="application/pgp-signature"; boundary="ks8RgjNESd8HpSsU"
 Content-Disposition: inline
-In-Reply-To: <20261024154150.45733-3-gilroyscott1970@gmail.com>
+In-Reply-To: <20261024154150.45733-4-gilroyscott1970@gmail.com>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,143 +83,207 @@ X-Spam-Status: No, score=-16.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
---iVyAIniY1vyBr/dM
+--ks8RgjNESd8HpSsU
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 Content-Transfer-Encoding: quoted-printable
 
-> The EN7581 NPU can only address host DRAM at 0x80000000-0xbfffffff;
-> higher addresses alias the lower 1 GiB. The coherent buffers allocated
-> on the NPU device are all shared with the NPU: since mt76 uses the NPU
-> device as dma_dev, these are the NPU TX/RX descriptor rings, the HW-RRO
-> ba_bitmap/addr_elem/msdu_pg/session buffers and the NPU TXD buffers.
-> On a 2 GiB board nothing keeps them below 0xc0000000; they normally
-> land there only because of early-boot allocation order. With low DRAM
-> reserved away on W1700K the SoC hangs right after mt7996 firmware load.
+> From: Daniel Pawlik <pawlik.dan@gmail.com>
 >=20
-> If the NPU node has an optional "dma" reserved-memory region, attach it
-> as the device coherent pool so all of these come from the window. The
-> next patch moves the mailbox buffers to coherent memory as well.
+> airoha_npu_send_msg() maps the caller's kzalloc() buffer with
+> DMA_BIDIRECTIONAL. These buffers are small and not cacheline aligned,
+> so on arm64 the mapping bounces through swiotlb. On a 2 GiB EN7581
+> board the default swiotlb pool sits above 0xc0000000 (0xff6cf000 on
+> W1700K), outside the 0x80000000-0xbfffffff window the NPU can address;
+> higher addresses alias the lower 1 GiB. On W1700K + MT7996 this makes
+> WLAN_FUNC_GET_WAIT_NPU_VERSION read back 0.0 and mt76 does not bind
+> NPU offload.
 >=20
-> Unlike a restricted-dma-pool this leaves streaming mappings alone.
-> Packet buffers are passed through to the WiFi DMA engine: on W1700K
-> with 96% of TX skbs and ~20% of RX page_pool buffers above 0xc0000000,
-> host-path traffic and sha256 file round-trips stay intact, at the same
-> throughput as without a pool, whereas a restricted-dma-pool (swiotlb
-> bouncing) costs ~22% of host-path TX.
+> Allocate one coherent buffer per NPU core at probe and reuse it under
+> the per-core mailbox lock. With the previous patch it comes from the
+> NPU DMA pool, inside the window. airoha_npu_send_msg() is also called
+> from PPE foe_commit under spin_lock_bh(), which rules out a per-message
+> GFP_ATOMIC coherent allocation.
 >=20
-> A device coherent pool has no fallback once full; mt76 and the mailbox
-> use ~10.7 MiB with MT7996, so the DT region should be 16 MiB.
+> Add __airoha_npu_send_msg() with an optional reply buffer so GET
+> callers copy only the trailing response payload; airoha_npu_send_msg()
+> keeps copying the whole buffer back, like the bidirectional mapping.
 >=20
-> This patch was written with the help of Claude (Anthropic, claude-
-> opus-5-5).
+> The original version of this patch was written with Cursor (composer-2);
+> it was rebased onto net-next and its commit message rewritten with
+> Claude (Anthropic).
 >=20
+> Link: https://lore.kernel.org/r/20260809152813.585797-1-pawlik.dan@gmail.=
+com
 > Link: https://lore.kernel.org/r/atCRsquzA1UxSpCc@mediatek.com
-> Tested-by: Daniel Pawlik <pawlik.dan@gmail.com>
+> Signed-off-by: Daniel Pawlik <pawlik.dan@gmail.com>
 > Signed-off-by: Chris Scott <gilroyscott1970@gmail.com>
 > ---
->  drivers/net/ethernet/airoha/airoha_npu.c | 18 ++++++++++++++++++
->  1 file changed, 18 insertions(+)
+>  drivers/net/ethernet/airoha/airoha_npu.c  | 65 +++++++++++++++++------
+>  include/linux/soc/airoha/airoha_offload.h |  3 ++
+>  2 files changed, 51 insertions(+), 17 deletions(-)
 >=20
 > diff --git a/drivers/net/ethernet/airoha/airoha_npu.c b/drivers/net/ether=
 net/airoha/airoha_npu.c
-> index 4d3195eb00..069fd60680 100644
+> index 069fd60680..3d1aa63dd5 100644
 > --- a/drivers/net/ethernet/airoha/airoha_npu.c
 > +++ b/drivers/net/ethernet/airoha/airoha_npu.c
-> @@ -693,6 +693,11 @@ static const struct regmap_config regmap_config =3D {
->  	.disable_locking	=3D true,
+> @@ -24,6 +24,12 @@
+>  #define NPU_EN7581_FIRMWARE_RV32_MAX_SIZE	0x200000
+>  #define NPU_EN7581_FIRMWARE_DATA_MAX_SIZE	0x10000
+>  #define NPU_DUMP_SIZE				512
+> +/*
+> + * Mailbox DMA payload size. Covers sizeof(struct ppe_mbox_data) (28) and
+> + * WLAN TLV messages (header + payload); largest in-tree WLAN payload to=
+day
+> + * is 16 bytes (INODE_TXRX_REG_ADDR). Keep headroom for future commands.
+> + */
+> +#define AIROHA_NPU_MBOX_SIZE			256
+> =20
+>  #define REG_NPU_LOCAL_SRAM		0x0
+> =20
+> @@ -161,23 +167,32 @@ struct wlan_mbox_data {
+>  	DECLARE_FLEX_ARRAY(u8, d);
 >  };
 > =20
-> +static void airoha_npu_rmem_release(void *data)
-> +{
-> +	of_reserved_mem_device_release(data);
-> +}
-> +
->  static int airoha_npu_probe(struct platform_device *pdev)
+> -static int airoha_npu_send_msg(struct airoha_npu *npu, int func_id,
+> -			       void *p, int size)
+> +static int __airoha_npu_send_msg(struct airoha_npu *npu, int func_id,
+> +				 const void *data, int len, void *reply,
+> +				 u16 reply_len)
 >  {
->  	struct device *dev =3D &pdev->dev;
-> @@ -776,6 +781,19 @@ static int airoha_npu_probe(struct platform_device *=
-pdev)
->  	if (err)
->  		return err;
+> -	u16 core =3D 0; /* FIXME */
+> -	u32 val, offset =3D core << 4;
+> -	dma_addr_t dma_addr;
+> +	struct airoha_npu_core *core =3D &npu->cores[0]; /* FIXME: core */
+> +	u32 val, offset =3D 0;
+>  	int ret;
 > =20
-> +	if (of_property_match_string(dev->of_node, "memory-region-names",
-> +				     "dma") >=3D 0) {
-> +		err =3D of_reserved_mem_device_init_by_name(dev, dev->of_node,
-> +							  "dma");
-> +		if (err)
-> +			return err;
+> -	dma_addr =3D dma_map_single(npu->dev, p, size, DMA_BIDIRECTIONAL);
+> -	ret =3D dma_mapping_error(npu->dev, dma_addr);
+> -	if (ret)
+> -		return ret;
+> +	if (len > AIROHA_NPU_MBOX_SIZE)
+> +		return -EINVAL;
 > +
-> +		err =3D devm_add_action_or_reset(dev, airoha_npu_rmem_release,
-> +					       dev);
-> +		if (err)
-> +			return err;
-> +	}
+> +	if (reply && reply_len > len)
+> +		return -EINVAL;
+> +
+> +	/*
+> +	 * The NPU only reaches DRAM at 0x80000000-0xbfffffff; a streaming
+> +	 * mapping of the caller buffer may bounce through swiotlb outside
+> +	 * that window. Use the probe-time coherent buffer, which comes from
+> +	 * the NPU DMA pool when one is declared.
+> +	 */
+> +	spin_lock_bh(&core->lock);
+> =20
+> -	spin_lock_bh(&npu->cores[core].lock);
+> +	memcpy(core->buf, data, len);
+> =20
+> -	regmap_write(npu->regmap, REG_CR_MBQ0_CTRL(0) + offset, dma_addr);
+> -	regmap_write(npu->regmap, REG_CR_MBQ0_CTRL(1) + offset, size);
+> +	regmap_write(npu->regmap, REG_CR_MBQ0_CTRL(0) + offset, core->addr);
+> +	regmap_write(npu->regmap, REG_CR_MBQ0_CTRL(1) + offset, len);
+>  	regmap_read(npu->regmap, REG_CR_MBQ0_CTRL(2) + offset, &val);
+>  	regmap_write(npu->regmap, REG_CR_MBQ0_CTRL(2) + offset, val + 1);
+>  	val =3D FIELD_PREP(MBOX_MSG_FUNC_ID, func_id) | MBOX_MSG_WAIT_RSP;
+> @@ -190,13 +205,21 @@ static int airoha_npu_send_msg(struct airoha_npu *n=
+pu, int func_id,
+>  	if (!ret && FIELD_GET(MBOX_MSG_STATUS, val) !=3D NPU_MBOX_SUCCESS)
+>  		ret =3D -EINVAL;
+> =20
+> -	spin_unlock_bh(&npu->cores[core].lock);
+> +	/* Copy the trailing reply_len bytes of the response. */
+> +	if (!ret && reply)
+> +		memcpy(reply, core->buf + len - reply_len, reply_len);
+> =20
+> -	dma_unmap_single(npu->dev, dma_addr, size, DMA_BIDIRECTIONAL);
+> +	spin_unlock_bh(&core->lock);
+> =20
+>  	return ret;
+>  }
+> =20
+> +static int airoha_npu_send_msg(struct airoha_npu *npu, int func_id,
+> +			       void *data, int len)
+> +{
+> +	return __airoha_npu_send_msg(npu, func_id, data, len, data, len);
 
-nit: what about creating a dedicated routine for both firmware and dma
-memory regions. Something like:
+IIUC airoha_npu_send_msg() is used when we do not expect any reply, correct=
+? In
+this case we should have:
 
-diff --git a/drivers/net/ethernet/airoha/airoha_npu.c b/drivers/net/etherne=
-t/airoha/airoha_npu.c
-index 4d3195eb00f7..9c9c754f82c7 100644
---- a/drivers/net/ethernet/airoha/airoha_npu.c
-+++ b/drivers/net/ethernet/airoha/airoha_npu.c
-@@ -693,6 +693,23 @@ static const struct regmap_config regmap_config =3D {
- 	.disable_locking	=3D true,
- };
-=20
-+static int airoha_npu_reserve_mem_region(struct device *dev,
-+					 struct resource *res)
-+{
-+	int err;
-+
-+	err =3D of_reserved_mem_region_to_resource(dev->of_node, 0, res);
-+	if (err)
-+		return err;
-+
-+	if (of_property_match_string(dev->of_node, "memory-region-names",
-+				     "dma" >=3D 0)) {
-+		...
-+	}
-+
-+	return 0;
-+}
-+
- static int airoha_npu_probe(struct platform_device *pdev)
- {
- 	struct device *dev =3D &pdev->dev;
-@@ -729,7 +746,7 @@ static int airoha_npu_probe(struct platform_device *pde=
-v)
- 	if (IS_ERR(npu->regmap))
- 		return PTR_ERR(npu->regmap);
-=20
--	err =3D of_reserved_mem_region_to_resource(dev->of_node, 0, &res);
-+	err =3D airoha_npu_reserve_mem_region(dev, &res);
- 	if (err)
- 		return err;
-=20
+	return __airoha_npu_send_msg(npu, func_id, data, len, NULL, len);
+
+Am I missing something?
 
 Regards,
 Lorenzo
 
+> +}
+> +
+>  static int airoha_npu_load_firmware(struct device *dev, void __iomem *ad=
+dr,
+>  				    const char *fw_name, int fw_max_size)
+>  {
+> @@ -500,9 +523,8 @@ static int airoha_npu_wlan_msg_get(struct airoha_npu =
+*npu, int ifindex,
+>  	wlan_data->func_type =3D NPU_OP_GET;
+>  	wlan_data->func_id =3D func_id;
+> =20
+> -	err =3D airoha_npu_send_msg(npu, NPU_FUNC_WIFI, wlan_data, len);
+> -	if (!err)
+> -		memcpy(data, wlan_data->d, data_len);
+> +	err =3D __airoha_npu_send_msg(npu, NPU_FUNC_WIFI, wlan_data, len,
+> +				    data, data_len);
+>  	kfree(wlan_data);
+> =20
+>  	return err;
+> @@ -794,6 +816,15 @@ static int airoha_npu_probe(struct platform_device *=
+pdev)
+>  			return err;
+>  	}
+> =20
+> +	for (i =3D 0; i < ARRAY_SIZE(npu->cores); i++) {
+> +		struct airoha_npu_core *core =3D &npu->cores[i];
+> +
+> +		core->buf =3D dmam_alloc_coherent(dev, AIROHA_NPU_MBOX_SIZE,
+> +						&core->addr, GFP_KERNEL);
+> +		if (!core->buf)
+> +			return -ENOMEM;
+> +	}
 > +
 >  	err =3D airoha_npu_run_firmware(dev, base, &res);
 >  	if (err)
 >  		return err;
+> diff --git a/include/linux/soc/airoha/airoha_offload.h b/include/linux/so=
+c/airoha/airoha_offload.h
+> index 7589fccfee..16a988ad74 100644
+> --- a/include/linux/soc/airoha/airoha_offload.h
+> +++ b/include/linux/soc/airoha/airoha_offload.h
+> @@ -173,6 +173,9 @@ struct airoha_npu {
+>  		/* protect concurrent npu memory accesses */
+>  		spinlock_t lock;
+>  		struct work_struct wdt_work;
+> +		/* Coherent bounce buffer for mailbox cmd/rsp */
+> +		void *buf;
+> +		dma_addr_t addr;
+>  	} cores[NPU_NUM_CORES];
+> =20
+>  	int irqs[NPU_NUM_IRQ];
 > --=20
 > 2.53.0
 >=20
 
---iVyAIniY1vyBr/dM
+--ks8RgjNESd8HpSsU
 Content-Type: application/pgp-signature; name=signature.asc
 
 -----BEGIN PGP SIGNATURE-----
 
-iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCat8FyAAKCRA6cBh0uS2t
-rFMLAQCYE9JZWHIX1d7DcMsUxNN7xuWi7j5iJa2g9JbmY1RtxgEAyosq5OPcK+vt
-26iGn/wqVNypeFZFieGr4LBUSJkSDwE=
-=L6P8
+iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCat8GYAAKCRA6cBh0uS2t
+rAyyAP4vQ0d/lxhDq7vgz5zZvFYc9PWyteGbdUndIq9yHNykLwD9HXcgZ822FdNP
+cxub3lKtITSN9fGw+qxMyaBJbgcfXgQ=
+=fVMR
 -----END PGP SIGNATURE-----
 
---iVyAIniY1vyBr/dM--
+--ks8RgjNESd8HpSsU--
 
