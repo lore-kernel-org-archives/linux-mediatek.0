@@ -2,76 +2,77 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id EB457606A9CB
-	for <linux-mediatek@archiver.kernel.org>; Mon, 26 Oct 2026 09:57:46 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 0FA23606A9E5
+	for <linux-mediatek@archiver.kernel.org>; Mon, 26 Oct 2026 09:57:54 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=Wud0cCRT;
-	dkim=pass (2048-bit key, unprotected) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20251104 header.b=RKA04JJv
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=pPk11LzC;
+	dkim=pass (2048-bit key, unprotected) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20251104 header.b=ZlvsI3O7
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:To:From:Reply-To:
 	Cc:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Unsubscribe-Post:
-	List-Owner; bh=F5/whTPXJ4TwJiIzCOtu0fJEtFPssDni5EasuMfucqk=; b=Wud0cCRTV1DQye
-	tf5NvKrWjR8a9OV3PioMrmd7nA1IXWmP3LoxcPQ+jMuD8JiIKGRGeSbEiwBzEyoNd+mYSKHaxFRVM
-	U6ZYoY+f96+JZHdx653/moQ7Ytb/FDiE+3lmsb+suhNLsosu3e4KgT/I9frr+6b/yQnanLNx02tKJ
-	Uaz/Hp7Qn06G98lmUDYhCJiUfjogUSarq6viV1D99Gg49Z/fIga4z0nO3AT5iDBKliMdIHZFuYI/7
-	A23SuuWTLe3brUCpMGLSn5dZ8XN8GqtRSZFWzW0MvAJUc+DYVWN7fs/GROhJpIhZTne4INy9xrv/0
-	AlL2FXJ1dmqlxh7T2kRQ==;
+	List-Owner; bh=MeBKTA0b9gdc1oZ9om4ZOcHEMZQgFvlj1R0DbKnQy1M=; b=pPk11LzCn1C4G9
+	He8Yc1X9r61wfO7GHth6SD68GyvZ3glYkVnLUr+HN6xXyo8mBQXLXF1eyWPd/u5vbsWhz+L4eZ7O/
+	E3rRfmUCI6UB5kFGEfiIcUdwcMUd90eCmoGu3H6HVt8uikv7mzHhC0eTC61Rp98GXPHpi6MAuouWn
+	snRAntJx9g55OTkVrvpZleraJ7WOn1YI3YLj0uTK6RH5Thrn4kLRSVkp7GQWZuGQ0lRxNGE0mI04s
+	ZZ5yzanSGWF8MpIAI1QJxQzFALS3CyEkVWPLkJIYUHGa70xY7AoJp5HuxzbD+6JTGuWl8R7ftVEsl
+	hJF5xKZ4VwJQh24m7oYQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xLHSc-000000029Rx-2q1m;
-	Mon, 26 Oct 2026 09:57:46 +0000
-Received: from mail-wm1-x32d.google.com ([2a00:1450:4864:20::32d])
+	id 1xLHSh-000000029XB-45PO;
+	Mon, 26 Oct 2026 09:57:51 +0000
+Received: from mail-wm1-x334.google.com ([2a00:1450:4864:20::334])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xLHSV-000000029Gx-2K3Y
+	id 1xLHSW-000000029Hg-2pqU
 	for linux-mediatek@lists.infradead.org;
-	Mon, 26 Oct 2026 09:57:40 +0000
-Received: by mail-wm1-x32d.google.com with SMTP id 5b1f17b1804b1-49d0da752ffso24549445e9.3
-        for <linux-mediatek@lists.infradead.org>; Mon, 26 Oct 2026 02:57:38 -0700 (PDT)
+	Mon, 26 Oct 2026 09:57:41 +0000
+Received: by mail-wm1-x334.google.com with SMTP id 5b1f17b1804b1-4a2069b9710so26338775e9.2
+        for <linux-mediatek@lists.infradead.org>; Mon, 26 Oct 2026 02:57:40 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20251104; t=1793008657; x=1793613457; darn=lists.infradead.org;
+        d=gmail.com; s=20251104; t=1793008659; x=1793613459; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:to:from:from:to:cc:subject:date:message-id
          :reply-to:content-type;
-        bh=F5/whTPXJ4TwJiIzCOtu0fJEtFPssDni5EasuMfucqk=;
-        b=RKA04JJvox2ES+3gzG5UfvIRoRWf3B7hg/7hzWewtzn2ngRSZCvMnGnwlUDeuiTd2Z
-         N4CHn/rAqOSjVazIVhi+IVf4/oxNVOmiJ+l78MAErhx4Eo64cDF6cQ8vneEBNDSugI2P
-         JLBfkTlqrgaWbNGagfH1gkvwwW91r2qpK+g6Zg3bjx2FY1FI5KLAgrHTUCR7N71Wzkao
-         oWt7YEAqy9WanHb/zcn2AKh23tIVR7k/w7Iv3Yj8SaihdgceH4xt4HRu97v0+A87+125
-         dmFgXp2w3CwnA6E/FRLOV21EPkKD4Vn19NAN5+xQzdxitriyLgsrsZKBT7cHMNowdTdQ
-         xwWg==
+        bh=MeBKTA0b9gdc1oZ9om4ZOcHEMZQgFvlj1R0DbKnQy1M=;
+        b=ZlvsI3O7fJafrgzjIsTFD7OAGNhoQ1wJgG8MY5IAS706QiuVnSiDhWEgKHTMXayKDi
+         xfVbxWhQPgRfv7czaaQVhwxVDWStYRapnOjLW0iffaeeczk5gouHv0sIkR9GJ7aU9gem
+         KBWEIHTkPxRckI83ofzMy+k8s/s/jzGz9VvpVuoNDhLwaDhKvyaa4W+xFoJlav4d4L4d
+         iTxCIPV3qjfo3F/sw7ZMGNR7hlQ6euCTuy9xzsy+i7La4MZ9jx+G0kyxi2m++N0ZF7sr
+         f6BIJWjXljp1XTP+feETFCQABKxwFlNlEFfL8g1vbPFZitLGh7a+zMFqbpSrUjd6c8E3
+         LQEQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1793008657; x=1793613457;
+        d=1e100.net; s=20260707; t=1793008659; x=1793613459;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:to:from:x-gm-gg:x-gm-message-state:from:to
          :cc:subject:date:message-id:reply-to:content-type;
-        bh=F5/whTPXJ4TwJiIzCOtu0fJEtFPssDni5EasuMfucqk=;
-        b=pzYcmWKjMb05sTKpLyco++IK72Vh1ExoP1c4LfAugNykNWxv23tZaQwqw5nW9yK00+
-         xVUa85hdMmDOYpD7asFBJ+DXWkoe/VXYveeVfnHs3J4yTmQrf1raQl2B/q+2O+mctWek
-         zWaQD23AMyQ0q5mh4igeOB1MhlYCr18LZVX3U79nY7B+NxKsFNzld22L3QdVMvdkrmDx
-         y5mA5Cj3scjD/z1Z4ecOnXuss1ovmpvM/dm2LnSv+RqxXz0xtvmBPoow9fQEzWf1aKij
-         2EW4GTvIIbnpjT/3hzwwAp4pm7pUnGrIra3IsH+AZyWGkxDuJEHxfhOSMG4vOgyOadLM
-         orOw==
-X-Forwarded-Encrypted: i=1; AKwUvBzD0+DwjL6vshJUnYX/0WwlBV8z7DORkOChAhHzevntkynt0OLgmxKdGGFYLokADEtGvJZ9nLMG3qAZ0BkL8Q==@lists.infradead.org
-X-Gm-Message-State: AFq9FYLwbNh2q9M3PbcmSvqEhefJ/CVyPeY/oi7qAU0J5ZPvYhOFNyw2
-	l7Q6Jo9xgUOXiXFaRyQ1ICrIgHYjpqvLuicfp3ryIGL5TKHpWaTuI+ZY
-X-Gm-Gg: AYBFou2q6K6nI5auMvhxmcht8rW3iBbZKWXEpHAoOXStZlwwmEvHfEA2nL7eiXpnT1B
-	fFixuv9BW09IL4RfTKBg/NdPaedWRtbYeFwmS14j5NlMdfK+MeG1rjSQj6YL9kQYqHrFx29vLUN
-	6UtfCQzY14y3nnkeQSAX2BX6zekKSxNlmreENK1gBGW0MrabC0Lm09JJutiK6r4DNPvCEDFNRTt
-	5Vc5t+9N9Kcm41AlQ9cHuRBsp1rcHGtuMKyW67IZLr34K3HklzMcBJshmJkmVJ0vBUJQhPks5d6
-	zv4ZyC7C6gS8OsiXQbuCwXtD52jTZRIY4oGyq3r3TmOf8evFqsEE1UUwA1Ui2ODKOOzOJ+3E4T9
-	dLXr/lUTjywROfgoAtBtNirIj/mc63aBzo3nETWkNRirVG8hFyeEAU/IE3/qg9cE9eUOBgv3CYy
-	mff+kRu5wJo/t9nt3a+y5fnRLJhK9qL3zO1yj6L1OyCwyAnheID+gdzZVufIq3VZl4pRNYclb94
-	wE4YmnlKYey/KVlU8F5U3Cm0H/T9gL9DbxIUIFAdcQtMh0U7cOkfafd4YYLR63MR7rWE9ZuJh02
-	h74GLE3YGbJhAXSEsmIX895QWaIH6zcP0oHBbDzu5NMHQNVKxX4GYJJPSeF4
-X-Received: by 2002:a05:600c:6095:b0:4a1:f7f4:7cf1 with SMTP id 5b1f17b1804b1-4a35ac8bf3amr98760375e9.11.1793008657479;
-        Mon, 26 Oct 2026 02:57:37 -0700 (PDT)
+        bh=MeBKTA0b9gdc1oZ9om4ZOcHEMZQgFvlj1R0DbKnQy1M=;
+        b=iyL8/M6ooucVftFFzOhPvPljNLACg5aJzxu1BL9HK60ieWQifTkU4k+hVxSEfRrvbc
+         HVZCyFFd4/X7w6pO3R2jViS7jw3kDshq1Cl8E6E7EnlSoNIcuVZttB36NKUJKItekHRL
+         a9bVHVFVVlEHxJBDaInXCCfhWx440pgOHhN8qEsb5fmjfrukV5H6gFuDAaoZdN491Jya
+         B4Cy/qxU6UpFPzUVwxtxyoe/+SvJStywuYi60eID0isYe7j6wtT6or454h8FCl+KwJCn
+         WR7noVw+63eHRv+dxi2KAm9khEbraSJ5w96fICNb3DSIRhHfyXR9fcTRAq5P1tDvWAsq
+         /bqQ==
+X-Forwarded-Encrypted: i=1; AKwUvBwZ5VJRmIFEcuoBn78wkoqZtMQB1DAof53U4d8r69XdKpdoMr4204IeH893eS+VrCFO1qH/G5Uk3+/Qq5hZ3Q==@lists.infradead.org
+X-Gm-Message-State: AFq9FYIG51J6tjhNpLJjDAiWqubwuILUFEfIq/qK5StVHkAr3BaVLV9t
+	74mVAYIiRgDPDLQldIfSkp0hvmKItqEl2gDCA2GxOT+zof//jqxB9rqa+ZVVmg==
+X-Gm-Gg: AYBFou0iqTcXxFmp9m0UjUAt+0GMT5UfXCufPCriqdZSM/MhCTzmrcXExth9y3uAwuX
+	dhTZ3x7LQ5mZC/TrnY4RtapLK1sRoKaS0RxC55C9Iw9MCZ+gHX8YHY1crTk/w+kVVmU4LLJjuMB
+	4lHSzE2zyKpnomUO3TZ5n0qbnqbs0UQ9Wp7NVrEvrnJy+yGSbjj9O2sUD8hfX9Ux93OgFzbTeHh
+	2gFtgjxfrG2ZxJk9Yz9wzVwyWVLDFHDBHXFn09Q3mzI8pTETvPPIag3F8sL9iVaICkA7MUwgdZv
+	6D1Jfikvb2GNMutIf8VmX+4oMJsQAb/qHUmJrNWeSf8oNxL3cLTTXGrsYOpr5NuOzdNN7O6chUO
+	GyYjixvORxM3yq/9oQfFkVaCtAEMaprwdSmwIFDLY4fx/65WCia5nk+ie0h9DaX2KNQHqZMIH6v
+	SmlROB7HwlD1+SRaA+7kdLuXGV6GMdnYb58pqG1Q9lAzxKmMZeHIbhRyJcazmAnF3Bp+zir13nM
+	mU8byU0qcAALsfRPijQGWqcmAWF6zvPXEwuTsAbsQkx84iUG+KbpGW5AQQlAobMNrjJejBnx2CC
+	g8cPQ6QkzjslhU0k7LjTc6BJ0FLjJYS8rIqZJUdmTMqZc3UZAJZ/cs5MPsyiWZulyA4mGwjH77e
+	bfDqCFw==
+X-Received: by 2002:a05:600c:8184:b0:4a2:9cda:57b6 with SMTP id 5b1f17b1804b1-4a35aca71c3mr100497405e9.22.1793008658493;
+        Mon, 26 Oct 2026 02:57:38 -0700 (PDT)
 Received: from Ansuel-XPS24.localdomain (93-34-92-187.ip49.fastwebnet.it. [93.34.92.187])
-        by smtp.googlemail.com with ESMTPSA id 5b1f17b1804b1-4a35a0cc374sm190382825e9.9.2026.10.26.02.57.36
+        by smtp.googlemail.com with ESMTPSA id 5b1f17b1804b1-4a35a0cc374sm190382825e9.9.2026.10.26.02.57.37
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 26 Oct 2026 02:57:36 -0700 (PDT)
+        Mon, 26 Oct 2026 02:57:38 -0700 (PDT)
 From: Christian Marangi <ansuelsmth@gmail.com>
 To: Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
@@ -83,9 +84,9 @@ To: Matthias Brugger <matthias.bgg@gmail.com>,
 	linux-mediatek@lists.infradead.org,
 	devicetree@vger.kernel.org,
 	linux-kernel@vger.kernel.org
-Subject: [PATCH 2/9] arm64: dts: airoha: en7581: add CPU OPP and scaling nodes
-Date: Mon, 26 Oct 2026 10:57:08 +0100
-Message-ID: <20261026095727.31708-3-ansuelsmth@gmail.com>
+Subject: [PATCH 3/9] arm64: dts: airoha: en7581: add Chip-SCU accessor node
+Date: Mon, 26 Oct 2026 10:57:09 +0100
+Message-ID: <20261026095727.31708-4-ansuelsmth@gmail.com>
 X-Mailer: git-send-email 2.55.0
 In-Reply-To: <20261026095727.31708-1-ansuelsmth@gmail.com>
 References: <20261026095727.31708-1-ansuelsmth@gmail.com>
@@ -93,8 +94,9 @@ X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261026_025739_623010_6FF51089 
-X-CRM114-Status: GOOD (  10.51  )
+X-CRM114-CacheID: sfid-20261026_025740_729715_58F93505 
+X-CRM114-Status: UNSURE (   9.25  )
+X-CRM114-Notice: Please train this message.
 X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -114,233 +116,30 @@ X-Spam-Status: No, score=-15.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Add required CPU OPP and PD nodes to support CPU frequency scaling.
+Add Chip-SCU accessor node as a companion of the SCU node to permit
+additional configuration for clock, MUX and thermal related registers.
 
 Signed-off-by: Christian Marangi <ansuelsmth@gmail.com>
 ---
- arch/arm64/boot/dts/airoha/en7581.dtsi | 177 ++++++++++++++++++++++++-
- 1 file changed, 173 insertions(+), 4 deletions(-)
+ arch/arm64/boot/dts/airoha/en7581.dtsi | 5 +++++
+ 1 file changed, 5 insertions(+)
 
 diff --git a/arch/arm64/boot/dts/airoha/en7581.dtsi b/arch/arm64/boot/dts/airoha/en7581.dtsi
-index 83b30a340950..c5a335086741 100644
+index c5a335086741..fbc5ee47523c 100644
 --- a/arch/arm64/boot/dts/airoha/en7581.dtsi
 +++ b/arch/arm64/boot/dts/airoha/en7581.dtsi
-@@ -74,8 +74,12 @@ cpu0: cpu@0 {
- 			device_type = "cpu";
- 			compatible = "arm,cortex-a53";
- 			reg = <0x0>;
-+			operating-points-v2 = <&cpu_opp_table>;
- 			enable-method = "psci";
--			clock-frequency = <80000000>;
-+			clocks = <&cpufreq>;
-+			clock-names = "cpu";
-+			power-domains = <&cpufreq>;
-+			power-domain-names = "perf";
- 			next-level-cache = <&l2>;
+@@ -342,6 +342,11 @@ spi_nand: nand@0 {
+ 			};
  		};
  
-@@ -83,8 +87,12 @@ cpu1: cpu@1 {
- 			device_type = "cpu";
- 			compatible = "arm,cortex-a53";
- 			reg = <0x1>;
-+			operating-points-v2 = <&cpu_opp_table>;
- 			enable-method = "psci";
--			clock-frequency = <80000000>;
-+			clocks = <&cpufreq>;
-+			clock-names = "cpu";
-+			power-domains = <&cpufreq>;
-+			power-domain-names = "perf";
- 			next-level-cache = <&l2>;
- 		};
- 
-@@ -92,8 +100,12 @@ cpu2: cpu@2 {
- 			device_type = "cpu";
- 			compatible = "arm,cortex-a53";
- 			reg = <0x2>;
-+			operating-points-v2 = <&cpu_opp_table>;
- 			enable-method = "psci";
--			clock-frequency = <80000000>;
-+			clocks = <&cpufreq>;
-+			clock-names = "cpu";
-+			power-domains = <&cpufreq>;
-+			power-domain-names = "perf";
- 			next-level-cache = <&l2>;
- 		};
- 
-@@ -101,8 +113,12 @@ cpu3: cpu@3 {
- 			device_type = "cpu";
- 			compatible = "arm,cortex-a53";
- 			reg = <0x3>;
-+			operating-points-v2 = <&cpu_opp_table>;
- 			enable-method = "psci";
--			clock-frequency = <80000000>;
-+			clocks = <&cpufreq>;
-+			clock-names = "cpu";
-+			power-domains = <&cpufreq>;
-+			power-domain-names = "perf";
- 			next-level-cache = <&l2>;
- 		};
- 
-@@ -115,6 +131,159 @@ l2: l2-cache {
- 		};
- 	};
- 
-+	cpufreq: cpufreq {
-+		compatible = "airoha,en7581-cpufreq";
-+
-+		operating-points-v2 = <&cpu_smcc_opp_table>;
-+
-+		#power-domain-cells = <0>;
-+		#clock-cells = <0>;
-+	};
-+
-+	cpu_opp_table: opp-table {
-+		compatible = "operating-points-v2";
-+		opp-shared;
-+
-+		opp-500000000 {
-+			opp-hz = /bits/ 64 <500000000>;
-+			required-opps = <&smcc_opp0>;
++		chip_scu: syscon@1fa20000 {
++			compatible = "airoha,en7581-chip-scu", "syscon";
++			reg = <0x0 0x1fa20000 0x0 0x388>;
 +		};
 +
-+		opp-550000000 {
-+			opp-hz = /bits/ 64 <550000000>;
-+			required-opps = <&smcc_opp1>;
-+		};
-+
-+		opp-600000000 {
-+			opp-hz = /bits/ 64 <600000000>;
-+			required-opps = <&smcc_opp2>;
-+		};
-+
-+		opp-650000000 {
-+			opp-hz = /bits/ 64 <650000000>;
-+			required-opps = <&smcc_opp3>;
-+		};
-+
-+		opp-700000000 {
-+			opp-hz = /bits/ 64 <700000000>;
-+			required-opps = <&smcc_opp4>;
-+		};
-+
-+		opp-750000000 {
-+			opp-hz = /bits/ 64 <750000000>;
-+			required-opps = <&smcc_opp5>;
-+		};
-+
-+		opp-800000000 {
-+			opp-hz = /bits/ 64 <800000000>;
-+			required-opps = <&smcc_opp6>;
-+		};
-+
-+		opp-850000000 {
-+			opp-hz = /bits/ 64 <850000000>;
-+			required-opps = <&smcc_opp7>;
-+		};
-+
-+		opp-900000000 {
-+			opp-hz = /bits/ 64 <900000000>;
-+			required-opps = <&smcc_opp8>;
-+		};
-+
-+		opp-950000000 {
-+			opp-hz = /bits/ 64 <950000000>;
-+			required-opps = <&smcc_opp9>;
-+		};
-+
-+		opp-1000000000 {
-+			opp-hz = /bits/ 64 <1000000000>;
-+			required-opps = <&smcc_opp10>;
-+		};
-+
-+		opp-1050000000 {
-+			opp-hz = /bits/ 64 <1050000000>;
-+			required-opps = <&smcc_opp11>;
-+		};
-+
-+		opp-1100000000 {
-+			opp-hz = /bits/ 64 <1100000000>;
-+			required-opps = <&smcc_opp12>;
-+		};
-+
-+		opp-1150000000 {
-+			opp-hz = /bits/ 64 <1150000000>;
-+			required-opps = <&smcc_opp13>;
-+		};
-+
-+		opp-1200000000 {
-+			opp-hz = /bits/ 64 <1200000000>;
-+			required-opps = <&smcc_opp14>;
-+		};
-+	};
-+
-+	cpu_smcc_opp_table: opp-table-smcc {
-+		compatible = "operating-points-v2";
-+
-+		smcc_opp0: opp-0 {
-+			opp-level = <0>;
-+		};
-+
-+		smcc_opp1: opp-1 {
-+			opp-level = <1>;
-+		};
-+
-+		smcc_opp2: opp-2 {
-+			opp-level = <2>;
-+		};
-+
-+		smcc_opp3: opp-3 {
-+			opp-level = <3>;
-+		};
-+
-+		smcc_opp4: opp-4 {
-+			opp-level = <4>;
-+		};
-+
-+		smcc_opp5: opp-5 {
-+			opp-level = <5>;
-+		};
-+
-+		smcc_opp6: opp-6 {
-+			opp-level = <6>;
-+		};
-+
-+		smcc_opp7: opp-7 {
-+			opp-level = <7>;
-+		};
-+
-+		smcc_opp8: opp-8 {
-+			opp-level = <8>;
-+		};
-+
-+		smcc_opp9: opp-9 {
-+			opp-level = <9>;
-+		};
-+
-+		smcc_opp10: opp-10 {
-+			opp-level = <10>;
-+		};
-+
-+		smcc_opp11: opp-11 {
-+			opp-level = <11>;
-+		};
-+
-+		smcc_opp12: opp-12 {
-+			opp-level = <12>;
-+		};
-+
-+		smcc_opp13: opp-13 {
-+			opp-level = <13>;
-+		};
-+
-+		smcc_opp14: opp-14 {
-+			opp-level = <14>;
-+		};
-+	};
-+
- 	timer {
- 		compatible = "arm,armv8-timer";
- 		interrupt-parent = <&gic>;
+ 		pciephy: phy@1fa5a000 {
+ 			compatible = "airoha,en7581-pcie-phy";
+ 			reg = <0x0 0x1fa5a000 0x0 0xfff>,
 -- 
 2.55.0
 
