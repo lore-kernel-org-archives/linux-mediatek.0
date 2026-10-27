@@ -2,76 +2,69 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 45D35606A31A
-	for <linux-mediatek@archiver.kernel.org>; Tue, 27 Oct 2026 09:50:02 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id C71B1606A322
+	for <linux-mediatek@archiver.kernel.org>; Tue, 27 Oct 2026 10:10:09 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=g9MKzuSm;
-	dkim=pass (1024-bit key, unprotected) header.d=cmss.chinamobile.com header.i=@cmss.chinamobile.com header.a=rsa-sha256 header.s=default header.b=Ed37GiXq
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=zIwaOtOv;
+	dkim=temperror header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=aGirNWWG
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Unsubscribe-Post:List-Owner;
-	bh=bbhL5NLVy9Oz3kDCEpkXfrPMU8gaHJkfwTMkrmkXY+8=; b=g9MKzuSm5LgD+F1xKDOc+fniCG
-	jVwC8AuI/MJWYxdMzzAAc9MwpHpxA0D9Uya+W7RYy7DHVYZdBQJlq9wWOYNKfe8lc5yLlm4TEvxy+
-	dYml9+NU4ZxFl+7REdNA1FceowcyfEbw7wY+rjV+tbfPXkNXrJ81MChat9Ni0dnaQy9bGeGlNWbEg
-	nNEw2oc4Sy/msPZP4baWP1bbHlizzwkLkkS6Dbd9eeYvSdDmfi9cFkZ04YjT1SVWOuVoCNpBDX065
-	aIrHI/mrZhhMQgrW4kxhJwzi3Gf7q7i0ME672UdlHYY+mTCPe0ayl6L5ph+sBbNZIDHcvor3ONEz3
-	Zlsn0R0A==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
+	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Unsubscribe-Post:
+	List-Owner; bh=wFjjwyONnPzQ4w3z8NzIQoH7nGV4JXACu28LTxdUNb0=; b=zIwaOtOvShfspK
+	Hd8aVQO3hVZ5FNNyYxMahu+ZsCF92BFmnVkLa7ReJ7zZib52L1eRDdOd2G2RpV9g/S8V1xZJCxehm
+	6TVaMKgddGQjr0BLIA/+jJG7vLhwTTFBY9BfMPMPnfv0w1eFlJVSUsVRvrDevNPjKCsITCtSALsQV
+	vou5TKh4rbhAzzeWN1ZNq6YwPHvRyzqh3AJAtDq6S/MMDxn9d94lfxzMFmCxgLgQavzxqRjfN400b
+	Ex6rUB8Qd1UJbkeaThNh77rFYoTTN7DhLEQb8rD3KmW5z7b5UuVPAKJhNpAX57Q3YCJ9mvz+Bk/Zj
+	EK5wSe4mUZRjKGKjd5iQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xLdof-00000004DRC-3hbV;
-	Tue, 27 Oct 2026 09:50:01 +0000
-Received: from cmccmta4.chinamobile.com ([111.22.67.137])
-	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xLdob-00000004DPQ-3Vnn;
-	Tue, 27 Oct 2026 09:50:00 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=cmss.chinamobile.com; s=default; l=0;
-	h=from:subject:message-id:to:cc:mime-version;
-	bh=47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=;
-	b=Ed37GiXqwNsqzNpJ5CXcuYDUd57ahg06bDk5s54HCenDaLHn3s4ms1Eiiz9yJcRGOx+mqh5BbQCct
-	 z0mBce5/wqHPSx3rru5d17/YNOU0Pjk5sf8U+Ul7UqxRmA58yrk2a0Zum6OTC5MOC9jjj9moVnuQTJ
-	 dPTGVutrj95ReGU4=
-X-RM-TagInfo: emlType=0                                       
-X-RM-SPAM-FLAG: 00000000
-Received: from spf.mail.chinamobile.com (unknown[10.188.0.87])
-	by rmmx-syy-dmz-app08-12008 (RichMail) with SMTP id 2ee86ae073b6e77-f750e;
-	Tue, 27 Oct 2026 17:49:44 +0800 (CST)
-X-RM-TRANSID: 2ee86ae073b6e77-f750e
-X-RM-TagInfo: emlType=0                                       
-X-RM-SPAM-FLAG: 00000000
-Received: from FHA-W6400298 (unknown[10.55.1.71])
-	by rmsmtp-syy-appsvr09-12009 (RichMail) with SMTP id 2ee96ae073b5bb3-d716d;
-	Tue, 27 Oct 2026 17:49:44 +0800 (CST)
-X-RM-TRANSID: 2ee96ae073b5bb3-d716d
-From: Tang Bin <tangbin@cmss.chinamobile.com>
-To: chunkuang.hu@kernel.org,
-	p.zabel@pengutronix.de,
-	airlied@gmail.com,
-	simona@ffwll.ch,
-	matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com
-Cc: dri-devel@lists.freedesktop.org,
-	linux-mediatek@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	tangbin@cmss.chinamobile.com,
-	stable@vger.kernel.org
-Subject: [PATCH] drm/mediatek: mtk_hdmi_v2: NULL check curr_conn in pre_enable
-Date: Tue, 27 Oct 2026 17:49:41 +0800
-Message-ID: <20261027094941.1862-1-tangbin@cmss.chinamobile.com>
-X-Mailer: git-send-email 2.52.0.windows.1
+	id 1xLe89-00000004GfO-1YCm;
+	Tue, 27 Oct 2026 10:10:09 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
+	id 1xLe88-00000004Gel-0Qma;
+	Tue, 27 Oct 2026 10:10:08 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by sea.source.kernel.org (Postfix) with ESMTP id 71BAC437B8;
+	Tue, 27 Oct 2026 10:10:07 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5103D1F01825;
+	Tue, 27 Oct 2026 10:10:07 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1793095807;
+	bh=wFjjwyONnPzQ4w3z8NzIQoH7nGV4JXACu28LTxdUNb0=;
+	h=Subject:From:Date:References:In-Reply-To:To:Cc;
+	b=aGirNWWGEpxMK4wS0z1nuJBln4c+Cu1HEf9MES8VEHCRe+rktGQLU1DHpVNdeseKc
+	 AcIVmxpuXngANbTcmbm+1z7hKHMY0erV0zyG71PSUwHKRx9kkMX7Teh4wbph/pQXLu
+	 23Njsw64iqdrWYmMwqC5/cLLXgrHaqGrdRYYk5WCgfjFwiyzgcJ4SSNQlwGm8onzcv
+	 3fIfgk8kKq2ZRA0XUVbdrKFizfCFwXB5Rq1Ra5vTWak83EVCdFsM+Q36y5RO2M2RDZ
+	 jSD8obv0rrUCFatzM83/bbGGUzyfRhCUX0Q+ESFzj0gQjxn5izc3O3MhK3r+JmAZbW
+	 CjY8tMjnkUAGw==
+Received: from [10.30.226.235] (localhost [IPv6:::1])
+	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id 444A73AA8FFB;
+	Tue, 27 Oct 2026 10:10:07 +0000 (UTC)
+Content-Type: text/plain; charset="utf-8"
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261027_024958_432801_6BC9B606 
-X-CRM114-Status: UNSURE (   7.00  )
-X-CRM114-Notice: Please train this message.
-X-Spam-Score: -2.4 (--)
+Subject: Re: [PATCH net v3] net: dsa: mt7530: trap frames to conduit in MFC on
+ EN7581 and AN7583
+From: patchwork-bot+netdevbpf@kernel.org
+Message-Id: <179309580589.3705173.241549361006084981.git-patchwork-notify@kernel.org>
+Date: Tue, 27 Oct 2026 10:10:05 +0000
+References: <20261022205649.2351696-1-gongtao0607@gmail.com>
+In-Reply-To: <20261022205649.2351696-1-gongtao0607@gmail.com>
+To: Tao Gong <gongtao0607@gmail.com>
+Cc: netdev@vger.kernel.org, lorenzo.bianconi@oss.qualcomm.com,
+ chester.a.unal@arinc9.com, daniel@makrotopia.org, andrew@lunn.ch,
+ olteanv@gmail.com, davem@davemloft.net, edumazet@kernel.org, kuba@kernel.org,
+ pabeni@redhat.com, matthias.bgg@gmail.com,
+ angelogioacchino.delregno@collabora.com, lorenzo@kernel.org,
+ arinc.unal@arinc9.com, florian.fainelli@broadcom.com, ansuelsmth@gmail.com,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,41 +75,37 @@ List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-17.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
+X-Spam-Status: No, score=-11.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,
+	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,
+	SPF_HELO_NONE,SPF_PASS autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-mtk_hdmi_v2_bridge_pre_enable() calls
-drm_atomic_get_new_connector_state(state, hdmi->curr_conn) which
-dereferences hdmi->curr_conn (via drm_connector_index) before the existing
-WARN_ON(!conn_state) check. Add WARN_ON(!hdmi->curr_conn) first.
+Hello:
 
-Fixes: 8d0f79886273 ("drm/mediatek: Introduce HDMI/DDC v2 for MT8195/MT8188")
-Cc: stable@vger.kernel.org
-Signed-off-by: Tang Bin <tangbin@cmss.chinamobile.com>
----
- drivers/gpu/drm/mediatek/mtk_hdmi_v2.c | 2 ++
- 1 file changed, 2 insertions(+)
+This patch was applied to netdev/net.git (main)
+by Paolo Abeni <pabeni@redhat.com>:
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_hdmi_v2.c b/drivers/gpu/drm/mediatek/mtk_hdmi_v2.c
-index f0277fcf3..c94d22042 100644
---- a/drivers/gpu/drm/mediatek/mtk_hdmi_v2.c
-+++ b/drivers/gpu/drm/mediatek/mtk_hdmi_v2.c
-@@ -1026,6 +1026,8 @@ static void mtk_hdmi_v2_bridge_pre_enable(struct drm_bridge *bridge,
- 
- 	/* Retrieve the connector through the atomic state */
- 	hdmi->curr_conn = drm_atomic_get_new_connector_for_encoder(state, bridge->encoder);
-+	if (WARN_ON(!hdmi->curr_conn))
-+		return;
- 
- 	conn_state = drm_atomic_get_new_connector_state(state, hdmi->curr_conn);
- 	if (WARN_ON(!conn_state))
+On Thu, 22 Oct 2026 20:56:48 +0000 you wrote:
+> On EN7581, STP BPDUs received on switch user ports never reach the CPU.
+> 
+> Like MT7531 and MT7988, EN7581 and AN7583 only set the CPU port bitmap
+> in MT7531_CFC and are skipped by mt753x_conduit_state_change(). On
+> EN7581 this is not enough: trapped BPDUs reach the CPU only when
+> MT7530_CPU_EN and MT7530_CPU_PORT are also set in MT753X_MFC. Add
+> EN7581 and AN7583 to mt753x_conduit_state_change().
+> 
+> [...]
+
+Here is the summary with links:
+  - [net,v3] net: dsa: mt7530: trap frames to conduit in MFC on EN7581 and AN7583
+    https://git.kernel.org/netdev/net/c/a58b221496dd
+
+You are awesome, thank you!
 -- 
-2.52.0.windows.1
-
+Deet-doot-dot, I am a bot.
+https://korg.docs.kernel.org/patchwork/pwbot.html
 
 
 
