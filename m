@@ -2,135 +2,128 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id EC5CB606A31B
-	for <linux-mediatek@archiver.kernel.org>; Tue, 27 Oct 2026 16:35:29 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 8D82B606A335
+	for <linux-mediatek@archiver.kernel.org>; Tue, 27 Oct 2026 18:43:41 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=bx7HYwb4;
-	dkim=pass (2048-bit key, unprotected) header.d=NXP1.onmicrosoft.com header.i=@NXP1.onmicrosoft.com header.a=rsa-sha256 header.s=selector1-NXP1-onmicrosoft-com header.b=Jsv7GN4e
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=G8/ckCdP;
+	dkim=pass (2048-bit key, unprotected) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=Tvi9IZLa
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:
-	Content-Type:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
+	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
 	List-Unsubscribe-Post:List-Owner;
-	bh=fsZYIfFgk4WYetdMXm1NDJEKlFtStMd756fw9XYMzCg=; b=bx7HYwb4DRWcp/LSzmi02k4DZz
-	8YI+qsF551XVyv+ip6xV+PeJZ7TwuLfZosUUV0xieJiuBz60WwLFBuLHmSZ9v5R8QdDCsZqmSMw5S
-	2/tmFm9hDxE5eN2xcalmHlE3iEVhk3TE6LjMMEwCVvVUdigc2+bRESCZfyINXGzLWdaAowzORSKgl
-	aRGM4rW47ayqGk0VA/A9smQPPo8iGvx04mvG66mu0QFj6HSYyY48Vyd7H5WvSh7X/3/fVlJyqdJlW
-	vCkr6lUtoXK0qALop2ejdloeXYC/Nb/RnmcanjXOfLCzBz0u7eWKg+QMb2kpE5QPSorqtoYk0Q0JR
-	uXOcyMmA==;
+	bh=9axz0yVX2giw2uFg+BgambTLl5XOFya7eXMeUfHcrMc=; b=G8/ckCdPVAcOd3dh0hf+erGILW
+	vAfawUMUh7JSjPH/tZJnfpCzU2IdB4zVUhYDc3zJw2srl8LgEZWWe0fek1k6ck/xCjNiY0F5u4rBM
+	ddtOZx4Pl326Zjn4zv1lFEbx0BBzbDeo1MXMyRftFSFdnkUx5tIyeAHl++97w8S5fiFEdbR58ruAa
+	3aV9DdJ2fiZOQHmDtU3SieXtZyBiPP9apL6dpxLvzSSawlCX8iP/BhtKaPDykivLrhFKqwNiX+0CC
+	H20hnMIuhIIMNze5INfA5k4eBqlTTVMunlrLOqymjFmdQE081lNPiQQXNzWbVfZiiaLPKAtTqextB
+	cDXCjwQQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xLk93-00000005NbC-2nrG;
-	Tue, 27 Oct 2026 16:35:29 +0000
-Received: from mail-swedencentralazlp170130007.outbound.protection.outlook.com ([2a01:111:f403:c202::7] helo=GVXPR05CU001.outbound.protection.outlook.com)
+	id 1xLm96-00000005a7t-0HzD;
+	Tue, 27 Oct 2026 18:43:40 +0000
+Received: from mail-ot1-x335.google.com ([2607:f8b0:4864:20::335])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xLk91-00000005NZc-1yz0;
-	Tue, 27 Oct 2026 16:35:28 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=kzgRd9EFPebsujo9szvEWVZKAGhcgZZP6iK0GMmGbF4kchGIbJk/iZ06uDOkk7eDoZzjAbqicIcjRIDYvtasxIATce6860y6+1rYgJemc/kB7FVLEwNsWnBkOZz7hr5qY7KXXCCh4pS1Thit3U8/STLr/FXTXW+Lvgu0rBCWX3/SyMfbRLpcYOgAAfnNN+yx9cE0Xys6+I6Rdso3yJYzau2JeGz8uZb6uoDhzOueELtvHy3tu2jYggPKf/W8S1pDeDLEM9r9LSuzImoKH5nqgWehSlilMG1R3P74Jz/U4qwkHGoDcTQb7z7saJJVFZ52gi5U7FLrmdxCYhOK72UFgw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=fsZYIfFgk4WYetdMXm1NDJEKlFtStMd756fw9XYMzCg=;
- b=zOXb+zDMGlpUmCKn5/pEPUp3NDyTqOuLnYFGjKi1BZ8ycTYdylr30PCvjhrVez631nzyl0AWz1Ku6CZh2Z8IGepSMFAEHHZOp3F7imNi8zIJqgomdIip+zO0n+20Bp/IX98B5f+RtIEIt2NsEMhJTIlXsVLdum/ue1GQI6M+hKj3W3KDllP/eChRQP0+WFeDTdsJRgNyvzFlg0F+GVQHIvf+f5eJGelD0qlHiH+5ZOuZeF4cQW+wHK3/IeWxnubGs7+qgzxfW6yktna64YGavkMj6F36gyee8BYio56GCehJH/x5WT/7+KSQ7F/O9mwPzmzK8sPQ3yMEjMJuWO/3aQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=oss.nxp.com; dmarc=pass action=none header.from=oss.nxp.com;
- dkim=pass header.d=oss.nxp.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=NXP1.onmicrosoft.com;
- s=selector1-NXP1-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=fsZYIfFgk4WYetdMXm1NDJEKlFtStMd756fw9XYMzCg=;
- b=Jsv7GN4eZwcXWIro9WsmnlfXLbEx9bL5V6pNjOGfb8saUkj3meWvYZe3pdBbIwcSyEOcuPNsXf/8xwjG2pMmaO0R4laoZfJx9lqWlEeZtkjnWcOEWikgqKffzEFtN/8aQKeRZ3pU7FrkqMbNpqmagUR3jmAKndmFJuzKnvxnL0jrPpI5pZhZNst+SQ3R4IPzPmCIZFvmXAq5aIw8fZXht32cat6f2pw33Eyr6P2zGiAJBi8gLBvt4V1PSwb5Hd+Rt3b20AEwHdmsAunV+gjU0gAxSox8q6yRZfXfq7xPN/Ud0p7SYCHMArbWEf/jTNHvmh9dPRX476e/4WVgR3N3fg==
-Authentication-Results: mx.microsoft.com 1; dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=oss.nxp.com;
-Received: from MI3PR04MB12438.eurprd04.prod.outlook.com (2603:10a6:290:76::14)
- by ZR6PR04MB786831.eurprd04.prod.outlook.com (2603:10a6:910:dc::23) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.546.19; Tue, 27 Oct
- 2026 16:35:21 +0000
-Received: from MI3PR04MB12438.eurprd04.prod.outlook.com
- ([fe80::c715:c32:8bb1:b70b]) by MI3PR04MB12438.eurprd04.prod.outlook.com
- ([fe80::c715:c32:8bb1:b70b%6]) with mapi id 15.21.0546.021; Tue, 27 Oct 2026
- 16:35:21 +0000
-Date: Tue, 27 Oct 2026 12:35:12 -0400
-From: Frank Li <Frank.li@oss.nxp.com>
-To: James Hilliard <james.hilliard1@gmail.com>
-Cc: Sean Wang <sean.wang@mediatek.com>, Vinod Koul <vkoul@kernel.org>,
-	Frank Li <Frank.Li@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Guillaume Ranquet <granquet@baylibre.com>,
-	dmaengine@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
-	stable@vger.kernel.org
-Subject: Re: [PATCH] dmaengine: mediatek: uart: clear the active descriptor
- on termination
-Message-ID: <auDSwHFea_ctju7J@lizhi-Precision-Tower-5810>
-References: <20261022-submit-mtk-uart-dma-retire-v1-v1-1-3f9b99a9d89a@gmail.com>
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20261022-submit-mtk-uart-dma-retire-v1-v1-1-3f9b99a9d89a@gmail.com>
-X-ClientProxiedBy: PH0PR07CA0053.namprd07.prod.outlook.com
- (2603:10b6:510:e::28) To MI3PR04MB12438.eurprd04.prod.outlook.com
- (2603:10a6:290:76::14)
+	id 1xLm93-00000005a5m-0Jog
+	for linux-mediatek@lists.infradead.org;
+	Tue, 27 Oct 2026 18:43:38 +0000
+Received: by mail-ot1-x335.google.com with SMTP id 46e09a7af769-843b6f8e2c7so222610a34.1
+        for <linux-mediatek@lists.infradead.org>; Tue, 27 Oct 2026 11:43:36 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20260707; t=1793126616; x=1793731416; darn=lists.infradead.org;
+        h=cc:to:content-transfer-encoding:content-type:mime-version
+         :message-id:date:subject:from:from:to:cc:subject:date:message-id
+         :reply-to:content-type;
+        bh=9axz0yVX2giw2uFg+BgambTLl5XOFya7eXMeUfHcrMc=;
+        b=Tvi9IZLaqVuLsyN4KQEWNxPZN9kbkOeZdZUzpVTrF1wZj7+f93/ntSQr8arLcDgE2t
+         wROsKyLvejKuzZkPehgY1uScRPNjXWasY5/Few/FXdH+ROBXVlI5W0Kc0T/CGcADcOc5
+         V/CBQ5GSUXJN0pFWeaEtr3u5S+cWZ5ZNnoS63QOchymjaITTkLzluMeI95S1DNLW0obn
+         KLhmitx8i83w4qge+oe9Kd1+tkHJOpA5ur+fx831j/au5Fm8qttpy/jS/elI6wQki6e/
+         MRAjKiYMyBXVrqj6QoKSnmU17ep7PtQm9kcrjlciSIPa6J3dSFFIFIW1kUYl9eFdsLkf
+         lkrA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20260707; t=1793126616; x=1793731416;
+        h=cc:to:content-transfer-encoding:content-type:mime-version
+         :message-id:date:subject:from:x-gm-gg:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to:content-type;
+        bh=9axz0yVX2giw2uFg+BgambTLl5XOFya7eXMeUfHcrMc=;
+        b=Mfhs0UoPzrsWrkpXw7Fm9dCujFgeuIbE+KvAC3bsS+RJdNmH18svlQG59pRHre7xAs
+         ASGKQn0A+iOaa9ehR7oW0pdpcp5r82DgQC6ytQtS3nLt5NB/MWcU3HVNVtYWZdoX9BpQ
+         Q3A5cM6ikxAYDoK0QztNd3i23ycVV0k0rgN1x8/XgyBsgnLQxG8FzAyasT9RalNJgVzZ
+         TmJy6Nze277xs7mpLCIRhgQDgS9OjfHsJOdHxaGkNBci0jwMOvsTmfptc+r6zNNqAfd4
+         iHHDng62Yw6hyTy3V3kxJVvHwCmRyUujYbBJNsMWkWX8g42F8qp4UguWZLOkt/fQIcFl
+         qSvA==
+X-Forwarded-Encrypted: i=1; AKwUvBwtmcFatcVyQnMYsETBiZ3eyJg/L+kjzHvwUzDn/P4TncCPCHa9Z0nzluC+82qHqx2AQhHgKxJw+KeI2h8CnA==@lists.infradead.org
+X-Gm-Message-State: AFq9FYLEeLbCMBP64Lo4EECTkK4mJrhvlYkKww1bbvMH9r9IKRn/8+eZ
+	SW1TK9JYMZW4DhVQ+NcuHaiQ0gNXby6Tb1RYNDOiNrFN9jDmEKNyg+8r
+X-Gm-Gg: AYBFou39IyXMosANEFkuXndRiFiawxhyt+xB1CzRXdfWhwaA5EQjksS8ilUIlbKRPxj
+	hJSRhZsC9srZSwayswIiNfCzgdEDvGrJnmu5ylm8Kc9m0M8samsDCQT6OFlg9ERkAK04NOGclq7
+	hYFHugiXXsBgtbuS7j9wNlS6BkDK1XUHyiDD+Jd/F21YgIeat6fJ05GpvRRm1A0BeIBTRKgn4jc
+	xHg1IQ5t6avXq8taMUMFfo9pNlP0WdwCXsH80Gt4elnKsri8Ua+uDyQ8irav5prIaKwdBQZkC28
+	2207OA4DiLikbXoym2gQLsML1jZ8NlLSV8e6aY8FU4Eac6uI0rpwleKUuHReAj/00cd3RMAcufp
+	18vVGzVHs9ENiXuqKLNDJ2M6FyYFCtAzEpABRpF1I69RMEJCYlQ6WjESMLKISZ9PPNhfURjzdvO
+	bKQqI0b2kLW0SbuzNOEvLOMas2LSyDiS5bPncKxqJPhLDIF0M9qM1rTqacCKILSIBqosNE2cuLw
+	3jZ1S8H1vRqxowIM/Z/CDgk4ccmpbZF5DeI3bdxEIS8zJJCkP+GbwOsOvRmT39UrnSICmJHFTIe
+	JBGrkSYdWcfmATAIPxzrLq/k9hgNFK3fH1wvfU2IM3NKNewb2wsbiirNA59oMTz2JgBMO0U53vP
+	a5iEUg8c8sJX4nQJvJ0wY1ncNYaybk6pPibxSQQm1JaPEfEseDWDiURvhyXz5OVEabveqVaFvzk
+	WFpvnC
+X-Received: by 2002:a05:6830:2b2a:b0:829:9992:20e7 with SMTP id 46e09a7af769-85ab88cd029mr404051a34.30.1793126615647;
+        Tue, 27 Oct 2026 11:43:35 -0700 (PDT)
+Received: from [127.0.1.1] (174-29-1-49.hlrn.qwest.net. [174.29.1.49])
+        by smtp.gmail.com with ESMTPSA id 46e09a7af769-850fb074fb6sm12488338a34.12.2026.10.27.11.43.34
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 27 Oct 2026 11:43:35 -0700 (PDT)
+From: James Hilliard <james.hilliard1@gmail.com>
+Subject: [PATCH v3 0/2] dmaengine: share virt-dma synchronization and use
+ it for UART APDMA
+Date: Tue, 27 Oct 2026 12:22:25 -0600
+Message-Id: <20261027-submit-mtk-uart-dma-synchronize-v1-v3-0-aad7a6b3c62e@gmail.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: MI3PR04MB12438:EE_|ZR6PR04MB786831:EE_
-X-MS-Office365-Filtering-Correlation-Id: 7e9421f7-8fa3-472a-4273-08df34484b10
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|23010399003|19092799006|7416014|376014|366016|1800799024|22082099003|18002099003|261026121527099003|56012099006|11063799006|261022105027099003|10067099003|261009223027099003|261021121427099003|261026140227099003;
-X-Microsoft-Antispam-Message-Info: bBQXM1h47NfflRBcLlicZ9aNCB9ym5FzVPvWegJ3++vmM6EoRaoFF3Z2ZlFegOYMmuFGV+l8n6GMCpCKNHF87jvh8iUqSIVar3sWXQPQCk8Ga28ZUOzyPw8pIvUzu74VYlNKzXXydyCFascAW+CRxz4ZtTIaL/4TdxiBAAE5YMOzeel3tM0o6yzrkk6wkrNmaU1TsLdvHmjFAu+3l+SOKz7zJwxTlDlzif8elYXs85n/xggCAPLVbv5Zh1nqO+T8YuUQsBR1pdg9f5NoQMa1cVdwZKrSloTtR3Fl+zvSf5HspQNVAjZVUFBD6x344iTRxE/F+yzw148KIvoP3vz+skVM9leFygvU7Y68c+clJYUKAN6aC6qtjc7GEE9ID6i79GIxGp0jo6snKMQ/6yeFzT7eLra/wU9KgqBbFtcyjXwASoAsC7az6hFaELFS4jxSkE7uEOtkafYZnDqbbyZ72s7qCCQS8StITzB3pStyE/P4JuLCeRnu3prTCRLeTLCep1d6gXkc8X/p8OznaDRsluDyy8PcrJTBbXvKwtoG0H2FiGPBZ1JnrQuxAbsE395cgDX69s/MU+wO2nyha7irH3qFJaEpPDJzZQYnWf7i1zFfuceUxIB6jT8ZnVLbSZz1ii4TdNHTi/FIQpN90J2VWZRfp+EDKlgrRIyO2GGVcC4=
-X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:MI3PR04MB12438.eurprd04.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(23010399003)(19092799006)(7416014)(376014)(366016)(1800799024)(22082099003)(18002099003)(261026121527099003)(56012099006)(11063799006)(261022105027099003)(10067099003)(261009223027099003)(261021121427099003)(261026140227099003);DIR:OUT;SFP:1101;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?TIlzxGgHtqBNHSTRlMbbpO8yixKlB8sRt+LZ0nFOs4y668qLiy20y7Zz6sAR?=
- =?us-ascii?Q?4oETvOfgRkVu297oRI2frtF9ivDnGgO1yBsYjXPKB4mA1akihtvRm+KxTbFM?=
- =?us-ascii?Q?BFz7gUKaAf/GcFaWIj3UUW1Z5ADOjfQtn5l6fz8SDMSsK8gU37QrcGtYpxen?=
- =?us-ascii?Q?BzfWYcM0ywRSvWo5W2MBKYHvFC3RhvKw0iTWSaHU2JK8yV0H3ry7Lext6fbg?=
- =?us-ascii?Q?X4J5d/VtNBBSOK97/2guHze+wmwulJST/WTrYThVWRcoqiulrY3v9Tou7hlj?=
- =?us-ascii?Q?3zp13Y5zrF9rjkWsMw91bpgboNbFNx9OTxju5TUBndDZrfAPLK4LAbzez8Jg?=
- =?us-ascii?Q?NOTrXME8jZLxuWNBFUPgGczIDsJ+S4mR5UBDh41nSqWB6+jPbsldOWV3h3P+?=
- =?us-ascii?Q?acxHNzIt2ACKFMzDy82ebpxb4HDhhTot6zNNpZoKHavdoKHIB5DSXBRsg7Yr?=
- =?us-ascii?Q?QnpnKYa5WrIoaiWEPyIt+egLPHk4YlcqlNr0FWYXGtTJY0PqeS1TAfi/EJRg?=
- =?us-ascii?Q?xwdH/H//X7dIkiTKwHkro83hT4kuxduiKfPI2vZqsUnjRSdpVu369bPLH+u0?=
- =?us-ascii?Q?1p11QU6sIpj23ZR/5Z59sa8lUJJ4GUbSx1OwcBCMFi4EyaT3cu5M1kbtU1L1?=
- =?us-ascii?Q?VUSxV68tRJu6FxALwMZt5DVpQi97jqBGzLbND/0zc0hjqHSxxPqUp4N/0dVZ?=
- =?us-ascii?Q?+xGHIgQThc08R+H5n84n4Fc9xTuAZYQLiOXitiIwMzw6THyeJL/B2Nb/PLb8?=
- =?us-ascii?Q?uEKyJ75+lQouRtJONyDjBxqTsfMiW4CpP/GSNshm0CXe3tEz1G668tLo5K4R?=
- =?us-ascii?Q?wCCJIMrxk2WiTqBKSOgB4D2D5BO4wlEG+fzRpt3SUizSTI2ZWJwXF7mBbgwO?=
- =?us-ascii?Q?/bHMHxhQvwKMgVOsGKlDTORaJmMGGfO6YxRvFP/3lxIAsKZ4rDz15TMLVNnK?=
- =?us-ascii?Q?eOr/TGlp0sEUvIIVhDrD1XRKtwTtdebakGDMgRV+U46GN8t3D82uDahn1KHk?=
- =?us-ascii?Q?Eefd1EtR+tvLJCWfK3l3jMYvfvxrdYgzzhMM9rTkobEaUKFzWTkLlWprSuxB?=
- =?us-ascii?Q?e/FZguVFlkLYnCS8BSkCyG65ql3ObZDhlIYooowUEdrXt3cuSROBLUOCVu5l?=
- =?us-ascii?Q?1ZNPPUD+cYkIrKbSqvCa+OEReGk6ZKdeDMXSH38e4W4ULGdDhIwQKpm3sJu7?=
- =?us-ascii?Q?UWrrXKPjymaM/P5uDGe+Tt5Z/WN/LNAX8kFcg20kCy+XIecowxa30hq7RbsM?=
- =?us-ascii?Q?ZR4gzO36c9I0EIHYUPYD9eUNoCiEr+ryre9BskcWfzIU+5/SqsWnAoOIuPip?=
- =?us-ascii?Q?wcrwcXhFMN5ljg9AjYZgbu9R+xzLwMZx1QlkfrwsnTOESfDgAZVDNgeFCZaB?=
- =?us-ascii?Q?wKLhEF8Gjs8ILLoZDZNWWksQqwzw1+dnh2XQ/ljK/DDDFYNqDwxbjmERLYCC?=
- =?us-ascii?Q?axWqZKk0Iqvcd0VJAmupQa6TVp7MnbIwcO2Hd9JTryREnLyu0X6gQh8D8PEw?=
- =?us-ascii?Q?rKg8hqZ4lFyKNKd61CXub0jg2FVcVG2NQeJfxQZBrWH9mQ5C/NSibAKeQVML?=
- =?us-ascii?Q?yqE9W9HKFvBm+h7ESH2cC7Oxw5NsDXAR+obBWOYXwXmEkSOdFrdy0Oy/0VGY?=
- =?us-ascii?Q?5PwMX4B4Vj2wMt4d4lXnFAPk8tMFSFdgPJfbyF757qm7mVXy4V8w0Np9GUGM?=
- =?us-ascii?Q?vNC2V6DWEgnX4O+X34UzRP08hNKJiN++MNDukndzceMuekwxm2xNVRZYAIa3?=
- =?us-ascii?Q?PocDC+KogAvA/o8hLiYzM6GU/fR/HXdYCegeymIANg/eceFj7zKv?=
-X-OriginatorOrg: oss.nxp.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 7e9421f7-8fa3-472a-4273-08df34484b10
-X-MS-Exchange-CrossTenant-AuthSource: MI3PR04MB12438.eurprd04.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 27 Oct 2026 16:35:21.2394
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 686ea1d3-bc2b-4c6f-a92c-d99c5c301635
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: qMC6Q5L1YLDHmpa7dOZeKZoK6iIcjSLFaRG6E4U5yCB4DvAQf/hgBy0sknrJecs7hev3VnnwM9sly5LitLuiwhiT+JKR9sCOpcYdacIoccrqHG89mlFbaQy1FyUHF1c+
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: ZR6PR04MB786831
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+X-B4-Tracking: v=1; b=H4sIAAAAAAAC/5XOTRLCIAwF4Ks4rI0WWm3HlfdwXFAIbVSoA7Tjz
+ /Tugm5c6vJlki/vyQJ6wsB2iyfzOFGgwaVQLhdM9dJ1CKRTZqIQW14IDmFsLUWw8Qyj9BG0lRD
+ uTvV+cPRAmDjwTaOasijbTV2xBF09Grq9nxyOn5yUE6qY5bzRyoDQepmYPEomuo4crj93aaOnE
+ Ad/f/eceJb+qpRbQWXqmjfKoKn4vrOSLis1WJYrTeKbFD+RIpFGSzQFCtR6+03O8/wC5PmkD1s
+ BAAA=
+X-Change-ID: 20261021-submit-mtk-uart-dma-synchronize-v1-158c8303b574
+To: Sean Wang <sean.wang@mediatek.com>, Vinod Koul <vkoul@kernel.org>, 
+ Frank Li <Frank.Li@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Basavaraj Natikar <Basavaraj.Natikar@amd.com>, 
+ Jacky Huang <ychuang3@nuvoton.com>, Shan-Chun Hung <schung@nuvoton.com>, 
+ Florian Fainelli <florian.fainelli@broadcom.com>, 
+ Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>, 
+ Ray Jui <rjui@broadcom.com>, Scott Branden <sbranden@broadcom.com>, 
+ Lars-Peter Clausen <lars@metafoo.de>, 
+ Eugeniy Paltsev <Eugeniy.Paltsev@synopsys.com>, 
+ Zhou Wang <wangzhou1@hisilicon.com>, Longfang Liu <liulongfang@huawei.com>, 
+ Andy Shevchenko <andy@kernel.org>, Keguang Zhang <keguang.zhang@gmail.com>, 
+ Binbin Zhou <zhoubinbin@loongson.cn>, 
+ Taichi Sugaya <sugaya.taichi@socionext.com>, 
+ Takao Orito <orito.takao@socionext.com>, 
+ =?utf-8?q?Am=C3=A9lie_Delaunay?= <amelie.delaunay@foss.st.com>, 
+ Maxime Coquelin <mcoquelin.stm32@gmail.com>, 
+ Alexandre Torgue <alexandre.torgue@foss.st.com>, 
+ Laxman Dewangan <ldewangan@nvidia.com>, Jon Hunter <jonathanh@nvidia.com>, 
+ Thierry Reding <thierry.reding@kernel.org>, 
+ Vignesh Raghavendra <vigneshr@ti.com>, 
+ Kunihiko Hayashi <hayashi.kunihiko@socionext.com>, 
+ Masami Hiramatsu <mhiramat@kernel.org>
+Cc: dmaengine@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, 
+ linux-rpi-kernel@lists.infradead.org, imx@lists.linux.dev, 
+ linux-mips@vger.kernel.org, linux-tegra@vger.kernel.org, 
+ James Hilliard <james.hilliard1@gmail.com>, Frank Li <Frank.li@oss.nxp.com>
+X-Mailer: b4 0.15.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261027_093527_517552_7A6907E4 
-X-CRM114-Status: GOOD (  17.68  )
-X-Spam-Score: -1.0 (-)
+X-CRM114-CacheID: sfid-20261027_114337_133167_D115CEF2 
+X-CRM114-Status: UNSURE (   9.53  )
+X-CRM114-Notice: Please train this message.
+X-Spam-Score: -1.9 (-)
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -141,55 +134,83 @@ List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-13.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
-	DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS autolearn=ham autolearn_force=no version=4.0.1
+X-Spam-Status: No, score=-15.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
+	DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,FREEMAIL_FORGED_FROMDOMAIN,
+	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
+	USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On Thu, Oct 22, 2026 at 03:11:41PM -0600, James Hilliard wrote:
-> mtk_uart_apdma_issue_pending() keeps the active descriptor in desc_issued
-> and stores an alias in c->desc. Terminating the channel collects and frees
-> that list, but leaves c->desc pointing at the retired descriptor unless
-> the completion interrupt has already cleared it.
->
-> The next issue_pending() requires c->desc to be NULL before starting a
-> transfer. Canceling an active transfer can therefore leave the channel
-> unable to start subsequent transfers, even after synchronization.
->
-> Clear c->desc under the virtual-channel lock when collecting the terminated
-> descriptors, after the existing interrupt shutdown and synchronization.
->
-> Fixes: 2537b40b0a4f ("dmaengine: mediatek: do not issue a new desc if one is still current")
-> Cc: stable@vger.kernel.org
-> Signed-off-by: James Hilliard <james.hilliard1@gmail.com>
-> ---
+Provide a virt-dma synchronization helper with the DMAengine callback
+signature and use it in drivers whose synchronization callbacks only
+convert the channel and call vchan_synchronize().
 
-Reviewed-by: Frank Li <Frank.Li@nxp.com>
+Use the shared callback for MediaTek UART APDMA so clients can wait for
+completion callbacks before reusing callback state or freeing DMA
+buffers. The shared helper and existing-driver conversions form the
+preparatory patch, followed by the UART APDMA fix.
 
->  drivers/dma/mediatek/mtk-uart-apdma.c | 1 +
->  1 file changed, 1 insertion(+)
->
-> diff --git a/drivers/dma/mediatek/mtk-uart-apdma.c b/drivers/dma/mediatek/mtk-uart-apdma.c
-> index f74e9a328588..d9427d56bc50 100644
-> --- a/drivers/dma/mediatek/mtk-uart-apdma.c
-> +++ b/drivers/dma/mediatek/mtk-uart-apdma.c
-> @@ -433,6 +433,7 @@ static int mtk_uart_apdma_terminate_all(struct dma_chan *chan)
->
->  	spin_lock_irqsave(&c->vc.lock, flags);
->  	vchan_get_all_descriptors(&c->vc, &head);
-> +	c->desc = NULL;
->  	spin_unlock_irqrestore(&c->vc.lock, flags);
->
->  	vchan_dma_desc_free_list(&c->vc, &head);
->
-> ---
-> base-commit: 93f51579e7df248780214094418f205253383cc5
-> change-id: 20261022-submit-mtk-uart-dma-retire-v1-fe71753c51ff
->
-> Best regards,
-> --
-> James Hilliard <james.hilliard1@gmail.com>
->
+Assisted-by: Codex:gpt-6-astra
+Signed-off-by: James Hilliard <james.hilliard1@gmail.com>
+
+Changes in v3:
+- Split the shared helper and existing-driver conversions into a separate
+  preparatory patch, leaving the UART APDMA callback assignment in the
+  second patch, as requested by Frank Li [1].
+- Replace 26 equivalent driver-local synchronization wrappers with the
+  shared helper in the preparatory patch.
+- Link to v2: https://patch.msgid.link/20261022-submit-mtk-uart-dma-synchronize-v1-v2-1-fdaef0e2edd6@gmail.com
+
+Changes in v2:
+- Add a documented vchan_dma_synchronize(struct dma_chan *) helper in
+  virt-dma.h and use it directly as the UART APDMA device_synchronize
+  callback, following Frank Li's review [0].
+- Link to v1: https://patch.msgid.link/20261021-submit-mtk-uart-dma-synchronize-v1-v1-1-4f7718cfef41@gmail.com
+
+[0] https://lore.kernel.org/r/atoz6M7RHU14_a3J@SMW015318/
+[1] https://lore.kernel.org/r/auDOqLln9_ra__hY@lizhi-Precision-Tower-5810/
+
+---
+James Hilliard (2):
+      dmaengine: virt-dma: share the DMAengine synchronization callback
+      dmaengine: mediatek: uart: synchronize completion callbacks
+
+ drivers/dma/amba-pl08x.c                       | 11 ++---------
+ drivers/dma/amd/ptdma/ptdma-dmaengine.c        |  9 +--------
+ drivers/dma/arm-dma350.c                       |  9 +--------
+ drivers/dma/bcm2835-dma.c                      |  9 +--------
+ drivers/dma/dma-axi-dmac.c                     |  9 +--------
+ drivers/dma/dw-axi-dmac/dw-axi-dmac-platform.c |  9 +--------
+ drivers/dma/fsl-edma-main.c                    |  9 +--------
+ drivers/dma/fsl-qdma.c                         |  9 +--------
+ drivers/dma/hisi_dma.c                         |  9 +--------
+ drivers/dma/hsu/hsu.c                          |  9 +--------
+ drivers/dma/idma64.c                           |  9 +--------
+ drivers/dma/img-mdc-dma.c                      |  9 +--------
+ drivers/dma/k3dma.c                            |  9 +--------
+ drivers/dma/loongson/loongson1-apb-dma.c       |  7 +------
+ drivers/dma/loongson/loongson2-apb-cmc-dma.c   |  9 +--------
+ drivers/dma/loongson/loongson2-apb-dma.c       | 14 +-------------
+ drivers/dma/mediatek/mtk-uart-apdma.c          |  1 +
+ drivers/dma/milbeaut-hdmac.c                   |  7 +------
+ drivers/dma/milbeaut-xdmac.c                   |  7 +------
+ drivers/dma/stm32/stm32-dma.c                  |  9 +--------
+ drivers/dma/stm32/stm32-dma3.c                 |  9 +--------
+ drivers/dma/stm32/stm32-mdma.c                 |  9 +--------
+ drivers/dma/tegra210-adma.c                    |  9 +--------
+ drivers/dma/ti/edma.c                          | 11 ++---------
+ drivers/dma/ti/omap-dma.c                      |  9 +--------
+ drivers/dma/uniphier-mdmac.c                   |  7 +------
+ drivers/dma/uniphier-xdmac.c                   |  7 +------
+ drivers/dma/virt-dma.h                         | 15 +++++++++++++++
+ 28 files changed, 44 insertions(+), 205 deletions(-)
+---
+base-commit: 93f51579e7df248780214094418f205253383cc5
+change-id: 20261021-submit-mtk-uart-dma-synchronize-v1-158c8303b574
+
+Best regards,
+--  
+James Hilliard <james.hilliard1@gmail.com>
+
 
