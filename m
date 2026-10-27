@@ -2,160 +2,66 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 46F40606A325
-	for <linux-mediatek@archiver.kernel.org>; Tue, 27 Oct 2026 20:02:22 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id C1610606A320
+	for <linux-mediatek@archiver.kernel.org>; Tue, 27 Oct 2026 20:49:59 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=Ey3Zwx7p;
-	dkim=pass (2048-bit key, unprotected) header.d=NXP1.onmicrosoft.com header.i=@NXP1.onmicrosoft.com header.a=rsa-sha256 header.s=selector1-NXP1-onmicrosoft-com header.b=QCu0xzki
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=PwlmIR+T;
+	dkim=pass (2048-bit key, unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=n+g8D9oO
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:
-	Content-Type:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=o+rqJL14S27vLzq7K2ISYjv7xcKdh37Obdxzvx8Mjfw=; b=Ey3Zwx7pCff3TlrMh/XiIfQfdB
-	sTyIvdxUjs9jS3ZHje+FbikKbSTmPcJAnHxlJri4RnvKXvXgVkLyb6K/3ymDrC9ckOMQZCMvGHE2+
-	mOew4Cr9o8RQ9m40ZLORJsXu/wHOB/f+PyD6459A6XsbDcs5FY1DAb2g4sQpRib3DRe70KjUfoMSd
-	v+kNTkf1qPBMv26WB6Xgl4bhFY5BxsSf9yFFUuoSZFu/7Xf1erj9oBGN/j7TP9fNR2q1mn/laSmeI
-	odioVJR2am7Ly3L71vrIjAjoPSalte89NXS9DieieW85IOkldnSWWPc7Zy+7rciEzZrEaPfcn8p95
-	ijryk5uA==;
+	bh=womGwJTHKJOD+1XH3NXRfs1nx4BuGXpRtnEuUmoaI/A=; b=PwlmIR+TJO2xEHSvHGm+02dR0x
+	CsayLAgKiLsyytVdIwUTFu1EgZff2sPhuDblwGwMtD7QLu0hzbMKej7+Pa0CR/OBuPzIrcv2m8BmE
+	j22qh4W2hAsMtYmHcWqaQ/tn/zHXb3beOJqUR3OkO2YDd/7uUAzpe0kETz14AD3L7HD2PYjWdJr/D
+	7MzOerMWUH++8keBVJmcsRKfsOrNfh86FDxF6uNZ7S9cUQ3ujxB+xIV2AKDR827sEGjGrDcNTg3Zo
+	UmY2pN0wf8tY86VtrLW9V5IsD5qf8wJpvGi5cGHS+me/sB8dsl2uhxVEe0o22DIJtyK5AUDL7IUo4
+	nVmqvSbA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xLnNG-00000005hY7-00Fx;
-	Tue, 27 Oct 2026 20:02:22 +0000
-Received: from mail-northeuropeazlp170120005.outbound.protection.outlook.com ([2a01:111:f403:c200::5] helo=DUZPR83CU001.outbound.protection.outlook.com)
+	id 1xLo7L-00000005l6T-1tQz;
+	Tue, 27 Oct 2026 20:49:59 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xLnND-00000005hXH-0D0X;
-	Tue, 27 Oct 2026 20:02:20 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=b1kVrotWNWzYiQ07yx6gqddLz4NgBAPLBjcanJ0qWmbFe2YlZHW5ihYrtuxeCXiiVlCOo8u8PPJJ5BirhImofjAtakOBxpqNChqNYqwUsEmm9FCDDHYv0AbtE4BLmd8EkkmnTS04Pa7qKaW9lkRFGM69psbIrUe3v9VAuvf7q9txEXJiYkWveiyTxrd67usn4dPccxik+zhVKBa4AgjMfCphooKeP4TNUahoF+xDsln8UhPRI3Qj5/ctUcfLn52T79zin1mEQuzE+5oDKzW5iM/GA/DXAFzk88ExN/lRybxk4kgVIitqxARVckGizxCYsDrdP2duoA4Y/G8mR9VMXw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=o+rqJL14S27vLzq7K2ISYjv7xcKdh37Obdxzvx8Mjfw=;
- b=KGGrxXe24UULGgd6vvydAolv1Daoo01ajqWrRS1UyTHXsnb65vBd5W1Z0+Aih4anAysoHizs4GVaJpKMrz0w/BmrSmdR1xEMCDtbyA2VVTCvEJ7LwYy0CwzIHzGy2uzNHAshWNMZlC0qKzrAx+ZZdZRB6ICOmOxcXzdE/4YC9Vg7Y8xdK+Xgyn2eeFpgxscGiitqLdA1UXp21uPZ8yB4AJdKP1jcZ4qNqK8PIaPp79ECsEFkwuHEYSApIGS/DuNJzVlBm5OZZQQEVdnDcyp9F4GDfbIFa6WBejucG/x4D13AjYsP7cSWGFs9fJAMkjzT4sR0Ie4+wTsra+vTcLjiJw==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=oss.nxp.com; dmarc=pass action=none header.from=oss.nxp.com;
- dkim=pass header.d=oss.nxp.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=NXP1.onmicrosoft.com;
- s=selector1-NXP1-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=o+rqJL14S27vLzq7K2ISYjv7xcKdh37Obdxzvx8Mjfw=;
- b=QCu0xzki9DYF9mjbNYlPCrPeBXoWsLgMLBfq53Gq5J7ZKt5nG2YxcCFz5TUMjVJt9xXWrAovGZk7dB11dS7ajbvQ6m8jv3bJ9f6/C2UEoJmTIfZb7RHje3B2hrt+9mk8Gx2Iwz7WXeptsKqj1ub5Xdu0J8xnt4AnZPMIDWC3556xzBU6ZKa9T6WUfBpNEVa7P/2kfi/lHAtc7LowoIvyb1paJMt18gFI8Y9atyCyCPDs2OdW33lawq796s3JRH7+vgLBwjF7XMbcI08mGRre/LRbBdW6u73NCikFPFYBcBfmh2LcKgEqvvAM69EZH3yvag6R6ZmGWjOisjBt/Hk9Pw==
-Authentication-Results: mx.microsoft.com 1; dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=oss.nxp.com;
-Received: from MI3PR04MB12438.eurprd04.prod.outlook.com (2603:10a6:290:76::14)
- by MA6PR04MB445650.eurprd04.prod.outlook.com (2603:10a6:250:58::20) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.546.22; Tue, 27 Oct
- 2026 20:02:13 +0000
-Received: from MI3PR04MB12438.eurprd04.prod.outlook.com
- ([fe80::c715:c32:8bb1:b70b]) by MI3PR04MB12438.eurprd04.prod.outlook.com
- ([fe80::c715:c32:8bb1:b70b%6]) with mapi id 15.21.0546.021; Tue, 27 Oct 2026
- 20:02:13 +0000
-Date: Tue, 27 Oct 2026 15:01:59 -0500
-From: Frank Li <Frank.li@oss.nxp.com>
-To: James Hilliard <james.hilliard1@gmail.com>
-Cc: Sean Wang <sean.wang@mediatek.com>, Vinod Koul <vkoul@kernel.org>,
-	Frank Li <Frank.Li@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Basavaraj Natikar <Basavaraj.Natikar@amd.com>,
-	Jacky Huang <ychuang3@nuvoton.com>,
-	Shan-Chun Hung <schung@nuvoton.com>,
-	Florian Fainelli <florian.fainelli@broadcom.com>,
-	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>,
-	Ray Jui <rjui@broadcom.com>, Scott Branden <sbranden@broadcom.com>,
-	Lars-Peter Clausen <lars@metafoo.de>,
-	Eugeniy Paltsev <Eugeniy.Paltsev@synopsys.com>,
-	Zhou Wang <wangzhou1@hisilicon.com>,
-	Longfang Liu <liulongfang@huawei.com>,
-	Andy Shevchenko <andy@kernel.org>,
-	Keguang Zhang <keguang.zhang@gmail.com>,
-	Binbin Zhou <zhoubinbin@loongson.cn>,
-	Taichi Sugaya <sugaya.taichi@socionext.com>,
-	Takao Orito <orito.takao@socionext.com>,
-	=?iso-8859-1?Q?Am=E9lie?= Delaunay <amelie.delaunay@foss.st.com>,
-	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
-	Alexandre Torgue <alexandre.torgue@foss.st.com>,
-	Laxman Dewangan <ldewangan@nvidia.com>,
-	Jon Hunter <jonathanh@nvidia.com>,
-	Thierry Reding <thierry.reding@kernel.org>,
-	Vignesh Raghavendra <vigneshr@ti.com>,
-	Kunihiko Hayashi <hayashi.kunihiko@socionext.com>,
-	Masami Hiramatsu <mhiramat@kernel.org>, dmaengine@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
-	linux-rpi-kernel@lists.infradead.org, imx@lists.linux.dev,
-	linux-mips@vger.kernel.org, linux-tegra@vger.kernel.org
-Subject: Re: [PATCH v3 2/2] dmaengine: mediatek: uart: synchronize completion
- callbacks
-Message-ID: <auEDN0av-JcnIXrB@SMW015318>
-References: <20261027-submit-mtk-uart-dma-synchronize-v1-v3-0-aad7a6b3c62e@gmail.com>
- <20261027-submit-mtk-uart-dma-synchronize-v1-v3-2-aad7a6b3c62e@gmail.com>
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20261027-submit-mtk-uart-dma-synchronize-v1-v3-2-aad7a6b3c62e@gmail.com>
-X-ClientProxiedBy: PH8P223CA0018.NAMP223.PROD.OUTLOOK.COM
- (2603:10b6:510:2db::28) To MI3PR04MB12438.eurprd04.prod.outlook.com
- (2603:10a6:290:76::14)
+	id 1xLo7J-00000005l68-2aQh;
+	Tue, 27 Oct 2026 20:49:57 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by sea.source.kernel.org (Postfix) with ESMTP id 1A31443C93;
+	Tue, 27 Oct 2026 20:49:57 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id BDD611F01825;
+	Tue, 27 Oct 2026 20:49:56 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1793134197;
+	bh=womGwJTHKJOD+1XH3NXRfs1nx4BuGXpRtnEuUmoaI/A=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To;
+	b=n+g8D9oOWgSr6eO7E3AJwHkYv7P+3NtQQWr3w96N/lGGIecQSI3UOQDRkzC+9W1kq
+	 hc8K9ipWWWfgXBi1kDHX6NSt5La2dD0J6ijk35St7Hau/FGpWcma2ONjsBtaluYbUh
+	 eSUa9shwBBOx2kgsfZY0TLc1QX+D0Qvl53807eoj7u02+F4Ly2t5Nqo3V675BPu/KH
+	 oyzsS5B031jep4KsRCFL+8fdrj2N6MUSv6J2ZbXxYwU2m9gM3r/soqO7Djt39LlMBp
+	 KI3OBjmfYNcH2jd1STfUIxNn/bzIdfxlyjCckHnP1CRoC5ojbrHRngDpoPBcPCWusU
+	 kIIIjyCljcw3w==
+Date: Tue, 27 Oct 2026 15:49:52 -0500
+From: Rob Herring <robh@kernel.org>
+To: =?utf-8?B?TWljaGHFgiBLb3BlxIc=?= <michal@nozomi.space>
+Cc: ulfh@kernel.org, angelogioacchino.delregno@collabora.com,
+	krzk+dt@kernel.org, conor+dt@kernel.org, matthias.bgg@gmail.com,
+	linux-pm@vger.kernel.org, devicetree@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v2 4/4] arm64: dts: mediatek: mt8188: Use
+ access-controllers in the power controller
+Message-ID: <20261027204952.GA896421-robh@kernel.org>
+References: <20261011184755.2058017-1-michal@nozomi.space>
+ <20261011184755.2058017-5-michal@nozomi.space>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: MI3PR04MB12438:EE_|MA6PR04MB445650:EE_
-X-MS-Office365-Filtering-Correlation-Id: 72290501-abc8-4654-21a6-08df346530fb
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|19092799006|366016|7416014|1800799024|23010399003|376014|261026121527099003|11063799006|4143699003|56012099006|261022105027099003|261009223027099003|261021121427099003|10067099003|22082099003|18002099003|261026140227099003;
-X-Microsoft-Antispam-Message-Info: +j5E/rbCeUySD3KN9N0beiPIRi1DkYEcXks6ppFjpixxFJPd474Dlcw0zP1/tBZ3Eb77j4ZmbDAvCYLj3h7n3mqynvNMmDHbxLGPMii1Qrp/pkFrHv2IqnSeA3dL5AfmPKQbpSBKxaRHENL3f5QqtiKAUHjwNMfgcUGMz9bN8McEYHWdjf0RvXwcMZzQNANcNm44bU0GGHk9l66N2+j76V9MVybxwoL2uFemmGTSuIPKBdB/EBoRtuRjwVKgxYNrWAlqSQBOELGTKuWDlh+8MK/qxMpbV/q+s7meUy3+n9ANJiTURWuuiBkmjItLE+nVMlRBCTBr+7TA9N2fEWqSRHYtFFH8kjHKBov8F6AR5B90tStkAFuMJoJPRAvapVsjZ0nRtB5tC43cGFtI34/W6hfbLfg9p+1aSsF4npei3f3G+Mso4X6dD9pZnigE1Z5Ao0LX3NfCai6IdwMAS9zcocKeHvNGaMm+ZNgb7Qbl3DrAiO7IMvBPcZjGLTydiVKKMKB+HXx2+SjwxFRSDBqt8y3sLHTGv+RjCCbVFjGp5oG+JCu4xIlc88WcgMnuksQ2MGChpuexOMLYGS/W04TyFgH5IyKwbfGwiS2nG6M+Q6olODEFM9fanFpOmkqrqFipkf4wIW3I3gfxXy3fprmLLb3pETAHVRRW28JzJWdbDAc=
-X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:MI3PR04MB12438.eurprd04.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(19092799006)(366016)(7416014)(1800799024)(23010399003)(376014)(261026121527099003)(11063799006)(4143699003)(56012099006)(261022105027099003)(261009223027099003)(261021121427099003)(10067099003)(22082099003)(18002099003)(261026140227099003);DIR:OUT;SFP:1101;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?UyaIYMxR//281T/EPxPDqaMe45KprXv5mkiCrbVEzQJJY0K/s2n4BaTqiPQ/?=
- =?us-ascii?Q?PQ4aPOJ4CvbKWfFRzbf3hP5ETRUEin24HG5hKmycsaQIuj5X0/c93QZ1dGLM?=
- =?us-ascii?Q?if8seGZxD5X/cCiZgReioENdcjH2zELOhXR9uMV0SS9xvSoioEKN6sKKzM2g?=
- =?us-ascii?Q?rrEwuVMJmOrR6qW2fGvUXo9cH+vHHBHB8TvIHlGgqffmsZsoAg+4YJ/AvBAY?=
- =?us-ascii?Q?R6WQz/5YyoX9RCtxBQyhyHxfAGG1p3uVQ52OM4P4b6TM8a4QAYH1cYf3+/fg?=
- =?us-ascii?Q?SsoxYgxktmEfKhA5rZ1LKALTsbjrt+bZArOJI1/vsheE8fTrYbWEITVQCI9C?=
- =?us-ascii?Q?+9kJRuj3YmpPUV6T9w7jbFqyfdeY5xLzeTBiq8RCAdImOH/a2buY+56uYWfW?=
- =?us-ascii?Q?0hGd9hNwkeKKbK5NFoqfwn9GEY3dNuLo3XkqIGk8oX3FytdwD7I7XvHw8w/Q?=
- =?us-ascii?Q?MUwa2qRo076xztl3ZlepL6T3KQfeR6QR6bit0g7z+z4Ph15D19HIRbc4eiLw?=
- =?us-ascii?Q?dwcK+3hT8ceLL+HoSSUAKziDkKWvlEQH0EidAPiPEm3huAiRaY9STF9jLeAs?=
- =?us-ascii?Q?x1te/zMp+bK+9yF8Qj9hFtD4Gonpk+1hZVXLcxeExSKTLCDArgIKIjAn/on0?=
- =?us-ascii?Q?MBCknxXkV3m3AmSbiYsgnk4GTVM7DfoH26Maxg3DeoJwBbo14MGuUGaFppB0?=
- =?us-ascii?Q?qLlJ0Rqyny+1qB21eoOjU/uEPFv2KCt+jkRYPGLW929YDCyhH+qnxFUmXJlq?=
- =?us-ascii?Q?N40cuH0ZWZ73Rfl4qqJ0h/Js8epDbkJbjssLZu2mZ4bWZJSZVEoQ/5K9PTtw?=
- =?us-ascii?Q?o+F13147t+XlDpspgTJbukMF216dMJ7TZOVSMC8aayBpUlzpQ21ZUPBllyfn?=
- =?us-ascii?Q?QhZWl29hoDbcmxnTPWiWYmJGQb4IO/qIhr1aDbJRNQVEeJn/XPHZDvTRLRpU?=
- =?us-ascii?Q?dEk4cUG8ti/Yapeqpve73y8sGWHUSm3RTvOK8JBt7FWH6efm0Sjxrt8yDA6g?=
- =?us-ascii?Q?CacT527cJTpJTSs05StVW84imkFMeqT2boE8QGSPRapGw2VtHCQ75F67lINn?=
- =?us-ascii?Q?E3DcPQFrZx9jcCq7YKGGyYhWVMPOFa2j+RGyETsne9/ZokqRb1wQVE2Veh+u?=
- =?us-ascii?Q?qNQDuFSfKS+NZ/bYoG1R3yylBTBGsR8IJ/FCc4isrbmn2j4vCw09TGH0gtnS?=
- =?us-ascii?Q?BYSE7hzjoQUEbqivU7DILFXiw6xsX2GyeiATO68oDN2YKc/sUf5o+mwjYF3/?=
- =?us-ascii?Q?Nih+LMaGqFnKVHkookb533eM3pdXgF3u+m4juNRsgrsRwSv8K/0lDlbbN3/H?=
- =?us-ascii?Q?gsePN8sP9oOOD26WN7CWrhnQOiF3RBpVlojXw5CFxIwzuFfc6A+O7nDYLq38?=
- =?us-ascii?Q?ysjuuqVZqQ8em/jCGlXAoiudu0p7hX7VLGdGSqLp3waiWjv5EhgeOD+KvrU+?=
- =?us-ascii?Q?+pz5XHxPirso8McvE+w1xv2LZmKaIOzGc8RX81kHlyIHm3x+jfseM/b4ZCqd?=
- =?us-ascii?Q?dfJJNW1XjfFOmEhyKm/BToaLxSn6gSN0p1p/7BKqa2RiuXoUNbPseKMo80Mp?=
- =?us-ascii?Q?LXMJT0RFTwar2bTtT9bXshwi6NqtcStnJfD/aigFqu9cRqLuIQQBu2qBJHlo?=
- =?us-ascii?Q?lDCleEiGPSbifaw7M7aeWxyzef9yZmLCOOn1Syac3d3F9KKOFr539zFHOTRl?=
- =?us-ascii?Q?8W5DFQmAD0WQI2u5y2e1JkR+koZsxjEl6DSHDM4XPZPgUo82ZfpcV+ORgt8X?=
- =?us-ascii?Q?CRzdtJ4kVFuVExlq+21RmyrqkL+em5SOa9Gv5c1QgEUD83g6LImC?=
-X-OriginatorOrg: oss.nxp.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 72290501-abc8-4654-21a6-08df346530fb
-X-MS-Exchange-CrossTenant-AuthSource: MI3PR04MB12438.eurprd04.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 27 Oct 2026 20:02:13.0049
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 686ea1d3-bc2b-4c6f-a92c-d99c5c301635
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: wRe0/2C1MgaUjVpqJ2Ypkq6omAUSNwsrGnrC1AizLdlQFN8isGNIAzS4rbGtwIB+e9LPMJlJmpJKh3aoAq2UJLI8MjYFSFe/tJFK/V8RoeQw9JAv8nWKk1LITQlsO4hQ
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: MA6PR04MB445650
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261027_130219_110497_F99BE6B9 
-X-CRM114-Status: GOOD (  17.17  )
-X-Spam-Score: 0.0 (/)
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <20261011184755.2058017-5-michal@nozomi.space>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -166,49 +72,40 @@ List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-13.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
-	DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS autolearn=ham autolearn_force=no version=4.0.1
+X-Spam-Status: No, score=-16.2 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,
+	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=ham
+	autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On Tue, Oct 27, 2026 at 12:22:27PM -0600, James Hilliard wrote:
-> Terminating a UART APDMA channel waits for its interrupt handler, but
-> completion callbacks run in the virt-dma tasklet. A callback already
-> removed from desc_completed can still be running after termination
-> returns. With no device_synchronize hook, dmaengine_synchronize() does
-> not wait for that callback either.
->
-> Use vchan_dma_synchronize() as the UART APDMA device_synchronize callback
-> so clients can wait for completion callbacks before reusing callback
-> state or freeing DMA buffers. Keep the callback wait separate from
-> device_terminate_all so it can run without locks acquired by the callback.
->
-> Fixes: 9135408c3ace ("dmaengine: mediatek: Add MediaTek UART APDMA support")
-> Suggested-by: Frank Li <Frank.li@oss.nxp.com>
-> Signed-off-by: James Hilliard <james.hilliard1@gmail.com>
+On Sun, Oct 11, 2026 at 08:47:55PM +0200, Michał Kopeć wrote:
+> List the blocks that the power controller accesses in access-controllers
+> instead of the deprecated per-domain mediatek,infracfg phandles, and add
+> MFGCFG, which the power controller needs to enable the GPU timestamp
+> counter whenever it powers MFG1 on.
+> 
+> Signed-off-by: Michał Kopeć <michal@nozomi.space>
 > ---
+>  arch/arm64/boot/dts/mediatek/mt8188.dtsi | 22 +---------------------
+>  1 file changed, 1 insertion(+), 21 deletions(-)
+> 
+> diff --git a/arch/arm64/boot/dts/mediatek/mt8188.dtsi b/arch/arm64/boot/dts/mediatek/mt8188.dtsi
+> index 14a320f0c70cb..cf0da77c5fd29 100644
+> --- a/arch/arm64/boot/dts/mediatek/mt8188.dtsi
+> +++ b/arch/arm64/boot/dts/mediatek/mt8188.dtsi
+> @@ -1000,6 +1000,7 @@ scpsys: syscon@10006000 {
+>  			/* System Power Manager */
+>  			spm: power-controller {
+>  				compatible = "mediatek,mt8188-power-controller";
+> +				access-controllers = <&infracfg_ao>, <&mfgcfg>;
 
-Reviewed-by: Frank Li <Frank.Li@nxp.com>
+Do these providers have #access-controller-cells? Doesn't look like it 
+to me. You should have some cells here that define which access 
+control in infracfg_ao (and mfgcfg) the power-controller uses. Looks 
+like you are abusing the binding to me.
 
->  drivers/dma/mediatek/mtk-uart-apdma.c | 1 +
->  1 file changed, 1 insertion(+)
->
-> diff --git a/drivers/dma/mediatek/mtk-uart-apdma.c b/drivers/dma/mediatek/mtk-uart-apdma.c
-> index f74e9a328588..6bc4f20d8b06 100644
-> --- a/drivers/dma/mediatek/mtk-uart-apdma.c
-> +++ b/drivers/dma/mediatek/mtk-uart-apdma.c
-> @@ -514,6 +514,7 @@ static int mtk_uart_apdma_probe(struct platform_device *pdev)
->  	mtkd->ddev.device_config = mtk_uart_apdma_slave_config;
->  	mtkd->ddev.device_pause = mtk_uart_apdma_device_pause;
->  	mtkd->ddev.device_terminate_all = mtk_uart_apdma_terminate_all;
-> +	mtkd->ddev.device_synchronize = vchan_dma_synchronize;
->  	mtkd->ddev.src_addr_widths = BIT(DMA_SLAVE_BUSWIDTH_1_BYTE);
->  	mtkd->ddev.dst_addr_widths = BIT(DMA_SLAVE_BUSWIDTH_1_BYTE);
->  	mtkd->ddev.directions = BIT(DMA_DEV_TO_MEM) | BIT(DMA_MEM_TO_DEV);
->
-> --
-> 2.53.0
->
+Rob
+
 
