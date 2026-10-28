@@ -2,156 +2,74 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 992AD606A31E
-	for <linux-mediatek@archiver.kernel.org>; Wed, 28 Oct 2026 15:01:50 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id F343360A260E
+	for <linux-mediatek@archiver.kernel.org>; Wed, 28 Oct 2026 15:04:26 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=rUsZjgnd;
-	dkim=pass (2048-bit key, unprotected) header.d=qualcomm.com header.i=@qualcomm.com header.a=rsa-sha256 header.s=qcppdkim1 header.b=QzAcC31k;
-	dkim=pass (2048-bit key, unprotected) header.d=oss.qualcomm.com header.i=@oss.qualcomm.com header.a=rsa-sha256 header.s=google header.b=cYYWtZc3
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=iEKl82mo;
+	dkim=pass (2048-bit key, unprotected) header.d=cjdns.fr header.i=@cjdns.fr header.a=rsa-sha256 header.s=dkim header.b=sYN7Wb4W
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From
-	:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Unsubscribe-Post:
-	List-Owner; bh=mVhCdDkhAXJ5S102mixnITdimIHOTHoGKH57O2P0pYk=; b=rUsZjgnd5E1/Ls
-	PXMh4tg+66mtbi0ewOCv58osunZ5400W4pUpn2h3QshgWzWMhRIf0ekwnBtwcM1oUYKd5VSWrLSEd
-	+8UmKcdaqmU8yJjHwBnppHXRVYBznOEvCeBXPY6oc25sz4aN7Ub/g4y6f8kMiHDPQwtvFkJF72f/a
-	V5g8bcAFDlYLhm8mUtw8B4Wqll5A90LG8UgTzYq23b6JaW82A2GULRQL22yRj8gYvO4nBhztRD103
-	AycdlXRPve/tFQQymfHHB5zNMaJrUr/JvOQai9f8sd5vAYvZmqZM5HaP+jP98Em9XkAOhmaYlAMer
-	WKQ9HZaBOB7XJxrs883A==;
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Unsubscribe-Post:
+	List-Owner; bh=2Pak5tnRuTRRR5lgI3SQ+wNVW+vIb8vrbTpuoRT98Po=; b=iEKl82moYiqgFc
+	HEfxT9g2iQv6VfGTbN90uLOnipgI3fyJTLY/SFXkWjrTIaQqs0xG1WWMXthiPR1P8Fm91N6L+jMGA
+	tOu3nAI+w64eVxN8iCiiZlcswVTDSsvjQSAFLYY0B5CBTLkHl7uQ6vcF6WCFTvfCdtXl0vRf+K0DA
+	Ft3D+ieEAwwOKDdAvt/MysT+AGyc29J5ztvfH/MyADzyp+zAqGjT8ECjWL67jT+xglHui1s/+/DPV
+	oF9gHBpQgCN7jaBABo1Sg+/ubuHLk7VC7ZrUFtAW/9sE9m7sO9aCN0XbMfkv+cjL4Snw8eKEi7vA/
+	RQAmff2TFZtzohGnm5sA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xM59y-00000007Hta-1PqF;
-	Wed, 28 Oct 2026 15:01:50 +0000
-Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
+	id 1xM5CU-00000007IQj-32Z7;
+	Wed, 28 Oct 2026 15:04:26 +0000
+Received: from mail.cjdns.fr ([5.135.140.105])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xM59w-00000007Hru-0yL3
-	for linux-mediatek@lists.infradead.org;
-	Wed, 28 Oct 2026 15:01:49 +0000
-Received: from pps.filterd (m0279867.ppops.net [127.0.0.1])
-	by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id 69SBdv8Y2082348
-	for <linux-mediatek@lists.infradead.org>; Wed, 28 Oct 2026 15:01:47 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
-	content-transfer-encoding:content-type:date:from:in-reply-to
-	:message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
-	mVhCdDkhAXJ5S102mixnITdimIHOTHoGKH57O2P0pYk=; b=QzAcC31ktlmC2cCS
-	LDO9UhLMk1H9E+JsuvEJv90SGUuvR0kWdzBFd1N55Vb24qADIf7fO2YSfkhikI/n
-	nxYoIzBAJ8kk/mBrOS7zHyz3FZQdaReG04rLsVn1rjqhuZtgP+5gnOgEmD+yqkHg
-	oxq/5E6o7WSEf2GgW/vqS/Aiw2Hl6I9UKBOEgS7BawkO+4qzhtuu6ZauV8oXHuQJ
-	2ImL7ZP/cVrLBQwYGAwanwzJOnRbK8qOFEFKpsABU5J+EbsrkUf27tNh+uY2XNPt
-	h/seLmU0kxBFcJ/VbJmDkJVJkTsnDPrCW5Fynxag64BjuXE12UaCuQ97zXxXfJyj
-	qbvvAA==
-Received: from mail-ot1-f71.google.com (mail-ot1-f71.google.com [209.85.210.71])
-	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4hjyjpvks3-1
-	(version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
-	for <linux-mediatek@lists.infradead.org>; Wed, 28 Oct 2026 15:01:46 +0000 (GMT)
-Received: by mail-ot1-f71.google.com with SMTP id 46e09a7af769-83c2311eb1dso1776757a34.1
-        for <linux-mediatek@lists.infradead.org>; Wed, 28 Oct 2026 08:01:46 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=oss.qualcomm.com; s=google; t=1793199706; x=1793804506; darn=lists.infradead.org;
-        h=content-transfer-encoding:content-type:in-reply-to:content-language
-         :from:references:to:subject:user-agent:mime-version:date:message-id
-         :from:to:cc:subject:date:message-id:reply-to:content-type;
-        bh=mVhCdDkhAXJ5S102mixnITdimIHOTHoGKH57O2P0pYk=;
-        b=cYYWtZc383Y6iQ/QK5yfraACezFb4jvGXJptYMfCpZNipnm+CQbegedG8Dxw66HLKF
-         2y9j916rGdSQfrqhPDX7KOjHivbGI+KPFwT+lKJorWDmOFlM47BoUDf2xAnuVNmKUiLr
-         tRocDdZ1byDL2qWUV7JNow2AAA+bx4Anye1OrDsrU8MIdu7lki0qQN/2YT7rVHDMlNYO
-         3E5cAVBgj4wTEqr9jfagwTXIJxlkhwt4DEzdFEC6KPt/cDl6Oaeqq7dThbiSaUaP5XXR
-         ly/8llw9NYu96OhH1utgnRLsDEJeU9zxUk5uVULQS4nf3ZWdM2WwTCUua5ycvRqgaOKd
-         PSnA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1793199706; x=1793804506;
-        h=content-transfer-encoding:content-type:in-reply-to:content-language
-         :from:references:to:subject:user-agent:mime-version:date:message-id
-         :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to:content-type;
-        bh=mVhCdDkhAXJ5S102mixnITdimIHOTHoGKH57O2P0pYk=;
-        b=PRb5hsVctgSrkcNFkTsHRVgLdnbG0OUVNWo0hZPsGvd8dXG2A+ib+wNlLS/NGLIGop
-         15OC+FsGGrT3BGnlkroM8NQumCQcBm0Niia73VtnV3zhfJ1Y0rpjGA4umdmHyyKaQABu
-         /sGmAcbdjguaw8PLZlTFspugiLt8S7q6tZYNkiG5rX3f1EjDRAt8O09UTOGpq+04QbIR
-         bdfECyiWzjEpHEdHSFXCNOH8uopJfNgjhUzOewxDjwaFqBiZxjtJX7esBa8jhmiDdMMq
-         3QsSzJVfW+kFG2cNeyt/7YocVKuAL3i/ezGcVJNa43tsTxhzdw6hODl6xP+Lth/msd/x
-         BhOg==
-X-Forwarded-Encrypted: i=1; AKwUvBwq6sV0ENkZk30FPBLmbEWLfCAE0U+fk6LuHAOtm98pEzZbpL4PmKjfNO0RYllO4MoJxUXp0eC+STvxTDsX1g==@lists.infradead.org
-X-Gm-Message-State: AFq9FYKgJFiLd7ONDJipWF0bH/XzyHm4gIPcqjzbQ3owNVg0C2wksK0S
-	cBxXtccfq9Sirhovc035lUObUTinW+gXu8/aG6a/bbR+fbsKOcx2mRs5PmLrPqospGBKlELrTNm
-	EEhrXPlP9IPdtizS0O2dOtUCDImvI2bDNgQB7sZEnVWMlZhSHperMiLNlSWgU4LKFnpyp6Vontg
-	E=
-X-Gm-Gg: AYBFou1YfohFjC+VlW102RnMXJWWP50ghu5ENlufMkPHPv7Loce9H7J4qteTBquI5+t
-	9L3drKkGy/OphRa2x+43DdPMqWeHI9u3kjbh+zVkemqkbKp07gWDURxJNwfY6tjfjftysUKhV0e
-	aQOKPLohXUymwpBaDR8jljVORqbdojSaAK9BmJyF/jP/KdxdbdM1VHTvLi3g4a649yhYC01CSA+
-	PcvA3GRDsqWmRT1u8+adXI3tESLSUwygRnyuIPwauupTtGOaUMmAj207ie1c9p/cb01pENDcpV1
-	hKFIgDv1q65ALWtl8Ih4dIA9WjhM0vC2X/+QkWJ77xNrENeS33Sr3v1qd935Fwt3K+wjySqJ3b2
-	ss/6WKhTfZmjc7iX4yEb99dtkZ3DJF2jB5b8jp8kpuSb6UjesQX6vmAOrQjcqdxrSrDFr4HW9d6
-	RpY8Sd8Gi75Tbbr8nVhVCGAdWfQUv7VgSgUA==
-X-Received: by 2002:a05:6820:a65e:20b0:6fd:4277:16e8 with SMTP id 006d021491bc7-713f01edbd4mr1002296eaf.80.1793199705275;
-        Wed, 28 Oct 2026 08:01:45 -0700 (PDT)
-X-Received: by 2002:a05:6820:a65e:20b0:6fd:4277:16e8 with SMTP id 006d021491bc7-713f01edbd4mr1002259eaf.80.1793199704670;
-        Wed, 28 Oct 2026 08:01:44 -0700 (PDT)
-Received: from [10.227.105.111] (i-global254.qualcomm.com. [199.106.103.254])
-        by smtp.gmail.com with ESMTPSA id 006d021491bc7-7142d317adasm1606578eaf.14.2026.10.28.08.01.42
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 28 Oct 2026 08:01:44 -0700 (PDT)
-Message-ID: <d094dc46-760d-4ee5-9404-9fa73a16a6bf@oss.qualcomm.com>
-Date: Wed, 28 Oct 2026 08:01:40 -0700
+	id 1xM5CR-00000007IN8-2e4T;
+	Wed, 28 Oct 2026 15:04:25 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id 923E7161DCC;
+	Wed, 28 Oct 2026 16:04:07 +0100 (CET)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cjdns.fr; s=dkim;
+	t=1793199857; h=from:subject:date:message-id:to:cc:mime-version:content-type:
+	 content-transfer-encoding:content-language:in-reply-to:references;
+	bh=2Pak5tnRuTRRR5lgI3SQ+wNVW+vIb8vrbTpuoRT98Po=;
+	b=sYN7Wb4W+yUTIRGpnInR+C9sIBvUi21SE2TULkltVcRLjMFYLQChN1xOKUe5DSzQ9aQP8p
+	sqwWe+gBK2LjIM+o4yq4j44QgOpPnHtC6f49TkFrnJEdPTSF1ON/dUUrdgKy+nMSgmSB6L
+	lLC48jrjJFDPSDjIUyU9it2XAwOMFVX2PXRDUIcC2TTJNqfljXiAzlicnGLPj0T5OdO8eS
+	VOtmeUnKaajXekF9RTwjMyY9d7BOpOv4N73nSAY/1L/xfgwVQk8HkWBwzD9tPS/g181uRr
+	QYBOMqLrqZ+0EWyMkCXKyMjtAI+AQ0cTRl/dZ8K3w5INT2SeLIwi5XbBQ5dT4A==
+Message-ID: <8ebdebe0-a8a2-4e35-9ef6-41999547e2aa@cjdns.fr>
+Date: Wed, 28 Oct 2026 16:04:06 +0100
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 0/4] wifi: unwind failed interface setup and recovery
-To: Jiale Yao <yaojiale02@163.com>, Jeff Johnson <jjohnson@kernel.org>,
-        Miri Korenblit <miriam.rachel.korenblit@intel.com>,
-        Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo@kernel.org>,
-        Ryder Lee <ryder.lee@mediatek.com>,
-        Shayne Chen <shayne.chen@mediatek.com>,
-        Sean Wang <sean.wang@mediatek.com>,
-        Matthias Brugger
- <matthias.bgg@gmail.com>,
-        AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-        Ilan Peer <ilan.peer@intel.com>,
-        Gregory Greenman <gregory.greenman@intel.com>,
-        Deren Wu <deren.wu@mediatek.com>,
-        Ming Yen Hsieh
- <mingyen.hsieh@mediatek.com>,
-        linux-wireless@vger.kernel.org, ath10k@lists.infradead.org,
-        linux-arm-kernel@lists.infradead.org,
-        linux-mediatek@lists.infradead.org
-References: <20261028050337.127464-1-yaojiale02@163.com>
-From: Jeff Johnson <jeff.johnson@oss.qualcomm.com>
+User-Agent: Mozilla Thunderbird Beta
+Subject: Re: [PATCH v3 5/7] net: dsa: mediatek: support MDIO switch downstream
+ of MMIO switch
+To: Andrew Lunn <andrew@lunn.ch>
+Cc: netdev@vger.kernel.org, olteanv@gmail.com, davem@davemloft.net,
+ edumazet@google.com, kuba@kernel.org, pabeni@redhat.com, robh@kernel.org,
+ krzk+dt@kernel.org, conor+dt@kernel.org, matthias.bgg@gmail.com,
+ angelogioacchino.delregno@collabora.com, chester.a.unal@arinc9.com,
+ daniel@makrotopia.org, linux@armlinux.org.uk, arinc.unal@arinc9.com,
+ Landen.Chao@mediatek.com, dqfext@gmail.com, sean.wang@mediatek.com,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ naseefkm@gmail.com, b.larsson@gmx.com
+References: <20261028011317.1557238-1-cjd@cjdns.fr>
+ <20261028011317.1557238-6-cjd@cjdns.fr>
+ <f6fe9c7a-5617-475b-babe-da24cda815cc@lunn.ch>
+ <acf55987-e96d-407f-a4a7-1c78178a0c7a@cjdns.fr>
+ <bdde8389-008a-430a-8d0d-14edcb4050b4@lunn.ch>
 Content-Language: en-US
-In-Reply-To: <20261028050337.127464-1-yaojiale02@163.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYxMDI4MDA1OSBTYWx0ZWRfX6X0FRos02u0S
- A2f3TlJ+kTxDBGY/WEI2A/SwMUkZmpHlZuKQR3vrSf48rz6xFBZ2nYgAsX/vAIkQ2KDY/pub8qC
- ClEGWE3cuBVQ4S/kT4xALsE5nN/J17B4y0ZOVnW/TzJUBGQaRcLRTIl03P3diBIMvNr/YcngnYn
- Rm6O73eVnOUr8hOd/Z6TRUQSuBx6o5tQ9tJ3zsdNNseOHKD9eyh8xkIeFcNhPUMKuse9rV9JJ4G
- R9+deFKQCdwmA9IXVowW0jxJVlWoBrhdcwOb2R97yKTKIuepc0g9iaOQEBG8qtkckWUoF/kTJS/
- K8fq7vThjpwzWIGqEhN7W2qvRQ9XJtDFmtp+OFPvPVeA+N+7GF/W5sDwqCsvgOEv/kR6wkGBxjy
- OeFMiHAotjxodGbiVEEVTwUY6v3D627jGKubVVQ2w5VAwxOBgzSBUOW4s8eXXp0OWLifrtZRT5V
- yECsgPmn+MlYfbFyeKA==
-X-Proofpoint-ORIG-GUID: M3ZrLhbftGiPY1wTGMtM9rFnL4aq4Cng
-X-Proofpoint-GUID: M3ZrLhbftGiPY1wTGMtM9rFnL4aq4Cng
-X-Proofpoint-Spam-Info: AW1haW4tMjYxMDI4MDA1OSBTYWx0ZWRfX6IXg4GtHLirc
- XpbryuWs+nrYydK1ZWGf5CtA2NPHGHIwxLhhXOEOyoxgnvK2458IQUq0s3kRNaIIi4dfkuUHgMy
- 9h4in1+dZ5wBYq05mCtQbvC3J3UvkTM=
-X-Authority-Analysis: v=2.4 cv=JodkP84C c=1 sm=1 tr=0 ts=6ae20e5a cx=c_pps
- a=OI0sxtj7PyCX9F1bxD/puw==:117 a=JYp8KDb2vCoCEuGobkYCKw==:17
- a=IkcTkHD0fZMA:10 a=660iZSQnnn4A:10 a=s4-Qcg_JpJYA:10
- a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=eoimf2acIAo5FJnRuUoq:22
- a=JmONO2TMLgSK87zk2EoA:9 a=QEXdDO2ut3YA:10 a=Z1Yy7GAxqfX1iEi80vsk:22
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1176,Hydra:6.1.138,FMLib:17.12.100.49
- definitions=2026-10-28_04,2026-10-21_02,2025-10-01_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- impostorscore=0 clxscore=1011 malwarescore=0 bulkscore=0 suspectscore=0
- priorityscore=1501 spamscore=0 adultscore=0 lowpriorityscore=0 phishscore=0
- classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
- reason=mlx scancount=1 engine=8.22.0-2610190000 definitions=main-2610280059
+From: Caleb James DeLisle <cjd@cjdns.fr>
+In-Reply-To: <bdde8389-008a-430a-8d0d-14edcb4050b4@lunn.ch>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-Last-TLS-Session-Version: TLSv1.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261028_080148_316106_B0689474 
-X-CRM114-Status: GOOD (  11.87  )
-X-Spam-Score: -2.8 (--)
+X-CRM114-CacheID: sfid-20261028_080424_081749_5BB61D6E 
+X-CRM114-Status: GOOD (  31.65  )
+X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -162,41 +80,99 @@ List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-12.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-7.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,
-	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1 autolearn=ham
-	autolearn_force=no version=4.0.1
+	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS,USER_AGENT_SANE_1 autolearn=no autolearn_force=no
+	version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On 10/27/2026 10:03 PM, Jiale Yao wrote:
-> Several wireless interface setup and reset recovery paths publish host
-> pointers or create firmware state before later operations which can fail.
-> Their error paths either retain pointers to vifs that mac80211 will free
-> or continue after firmware interface restoration has failed.
-> 
-> Clear the published ath10k and iwlwifi pointers on add failure. Check the
-> mt7921 and mt7925 firmware restore results, remove partial state and stop
-> configuring the affected interface. Each patch fixes an independent
-> driver path and can be applied separately.
-> 
-> Jiale Yao (4):
->   wifi: ath10k: clear monitor interface after add failure
->   wifi: iwlwifi: mvm: clear P2P device pointer on add failure
->   wifi: mt76: mt7921: unwind interface restore failures
->   wifi: mt76: mt7925: unwind link restore failures
-> 
->  drivers/net/wireless/ath/ath10k/mac.c         |  1 +
->  .../wireless/intel/iwlwifi/mvm/mld-mac80211.c |  5 +++-
->  .../net/wireless/mediatek/mt76/mt7921/mac.c   | 16 +++++++++---
->  .../net/wireless/mediatek/mt76/mt7925/mac.c   | 26 ++++++++++++++++---
->  4 files changed, 41 insertions(+), 7 deletions(-)
-> 
 
-You are sending patches that fall into 3 different maintainer trees in one series.
+On 28/10/2026 13:50, Andrew Lunn wrote:
+> On Wed, Oct 28, 2026 at 12:59:23PM +0100, Caleb James DeLisle wrote:
+>> On 28/10/2026 03:20, Andrew Lunn wrote:
+>>> On Wed, Oct 28, 2026 at 01:13:15AM +0000, Caleb James DeLisle wrote:
+>>>> The MT7530 / MT7531 can connect via either MDIO or MMIO. In MMIO mode
+>>>> the switch provides its own MDIO bus which connects to its integrated
+>>>> PHYs, but also can be connected to other things, such as another
+>>>> switch.
+>>>>
+>>>> If the MDIO bus contains another switch, then the upstream switch
+>>>> will register but it will not setup the DSA tree because the
+>>>> downstream switch is missing. Without the complete DSA tree,
+>>>> mt753x_setup() will not be called on the switch and therefore
+>>>> mt7530_setup_mdio() is never called so the downstream switch never
+>>>> registers.
+>>>>
+>>>> Update mt7530_setup_mdio() so that it can be called multiple times,
+>>>> export the symbol, and call it again after dsa_register_switch()
+>>>> from mt7988_probe().
+>>> I would suggest just moving it to probe. Don't also have it in setup.
+>>> KISS.
+>>
+>> I don't think there's a way to do that which will work. And I guess I need
+>> to add a few comments to explain why. Basically when dsa_register_switch()
+>> is called, one of three things can happen:
+>>
+>> 1. return error (often without calling mt753x_setup), typically this is
+>> EPROBE_DEFER because the ethernet driver is not there yet.
+>>
+>> 2. return 0 without calling mt753x_setup (because not all switches in the
+>> tree are yet probed)
+>>
+>> 3. call mt753x_setup, complete setup, and return 0
+>>
+>>
+>> In case 1, mt7530_setup_mdio must not be called, because it would be setting
+>> up an MDIO on a driver that's about to get deleted.
+> Which is fine, because when the probe fails, you unregister the MDIO
+> bus. That should work. The second time around, you do have the netdev,
+> and it should work.
 
-It is much easier for us maintainers if you split your patches by maintainer.
 
-/jeff
+When I tried doing this it did not work. The first issue is that 
+mt7530_setup_mdio() uses a static int and increments it to make its ID. 
+And normally this would create higher numbered busses but still work, 
+however from what I remember there's something (not mt7530) that 
+searches for mt7530-0 anyway and is unable to find it. I don't remember 
+now what was doing it but I remember thinking I would need a global ID 
+generator with reuse of released IDs.
+
+
+Furthermore, I think I'd have to test all of the PHYs that are 
+downstream of this switch because this is the first time we would 
+actually be asking them actually register and unregister multiple times 
+each startup, so if there are bugs, then they're kinda my bugs.
+
+
+So if this is a requirement, then I think this patchset will need to go 
+on the back burner and that support would probably be its own 
+patch/patchset. So please let me know how you're feeling on this because 
+I don't want to put too much time into the rest of this patchset if it 
+is going to have to get shelved for a while anyway.
+
+
+Thanks,
+
+Caleb
+
+
+>
+> It is not great, you are doing extra work, but many DSA drivers are
+> structured like this, the MDIO bus is registered in probe. The bus is
+> scanned, PHY are found, and then the probe fails, and the PHYs are all
+> thrown away etc.
+>
+> Hanging one switch off another switch like this using MDIO, kind of
+> pushes you in this direction. Typical DSA setups don't do this, there
+> is one MDIO bus which all switches hang off, sometimes with a
+> multiplexor to make one MDIO bus act like many.
+>
+> Something to look at which might be interesting, Vladimir had some
+> patches which allowed for partial switch topologies, where you could
+> take a switch in a DSA setup off line. Maybe there is something in
+> those patches which help, you can bring the switches up independently?
+>
+> 	    Andrew
 
