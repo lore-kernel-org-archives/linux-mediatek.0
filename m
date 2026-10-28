@@ -2,41 +2,40 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 2C478606A31A
-	for <linux-mediatek@archiver.kernel.org>; Wed, 28 Oct 2026 04:57:00 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 040D4606A323
+	for <linux-mediatek@archiver.kernel.org>; Wed, 28 Oct 2026 05:03:59 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=vdBid7Db;
-	dkim=pass (1024-bit key, unprotected) header.d=163.com header.i=@163.com header.a=rsa-sha256 header.s=s110527 header.b=Z419Tq8o
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=ppBR8rq6;
+	dkim=pass (1024-bit key, unprotected) header.d=163.com header.i=@163.com header.a=rsa-sha256 header.s=s110527 header.b=Oad0yl4O
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Unsubscribe-Post:List-Owner;
-	bh=oqFzpPIOsYawPJQ8wrBui5JE3wbzUk29Kop9UX3xfbE=; b=vdBid7Db7TfrB2EOoEwNU+0Lk2
-	TfqAdK4GRdVdexP3uW4otw/OaNlIoMKJ+uOhLXtjLKKtnHi49CqzxAetf4ZQJ2oldRI+YX0sAAWN5
-	N4Cf0UfdMVgQ54WaP5kmmV+nIaA+gWaOeLIN0Yr3JG6rpqgLZ88+7EzDvCZ9hWgqpEyJdPb3lyX2N
-	ehrIXIumPiDoRBCf3Mc0pA9KG2lCTREMKrslWkIngklURdfQ37sGGvViKif/bP7wjEEqDXAIAwnGX
-	07m+ATCS51+TohctOHGJEX/eVkVOWmd4YTNQpmo6VfdIrxCEP8V1nosP3FhLL5FuhM0Nr0LMu00QR
-	TacZXL5w==;
+	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Unsubscribe-Post:
+	List-Owner; bh=dhv+8FlBddRkoW7HUJioYxqmcNV+Dawhev5ggsbsEWE=; b=ppBR8rq6WEFwgS
+	DXeNcFkraV5xVgkigjtgXkAoq9wVkAtFMqon7TDGnRuJ13vFAf/dK6c2BQiDj3mmWIlohg0g5lTA1
+	3ONQ9Bk2yPdRsDOWiegB7WEChd74AZDe+u9WgjF66/PVCzddQQ+u/S06YW6EK7d5C9zLlUySjkDZI
+	6n6QlZbVFlUaogeMFL669XgC4azwaToVFeLxb4SzKcKg8suBftTHVdKjMyX/T+QaJa+iE00kNW6EU
+	nRDEIUw82T6cmkpbWTlYhkYeEKE5KTOHJ3Z+vo+bkllyMC0n5otgXsuKr+IUxtVmDd7x1SOIuvebU
+	bCEw98OVVQZw8IIEMJVg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xLvic-00000006IzF-2TMz;
-	Wed, 28 Oct 2026 04:56:58 +0000
-Received: from m16.mail.163.com ([220.197.31.5])
+	id 1xLvpO-00000006KWG-2wKV;
+	Wed, 28 Oct 2026 05:03:58 +0000
+Received: from m16.mail.163.com ([117.135.210.2])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xLviZ-00000006Iyd-0xpH;
-	Wed, 28 Oct 2026 04:56:56 +0000
+	id 1xLvpJ-00000006KUY-3veq;
+	Wed, 28 Oct 2026 05:03:56 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
-	s=s110527; h=From:To:Subject:Date:Message-Id:MIME-Version; bh=oq
-	FzpPIOsYawPJQ8wrBui5JE3wbzUk29Kop9UX3xfbE=; b=Z419Tq8oLy6kVM5E47
-	xrwRESrXv0q0Ey+kkXjEakKq+jCBZEEq7E/YGXNyX2+ix+1i6wx2a7c9H0YciRQ6
-	BFYx1i8eqdfFtO4iIOghzt8NvPcbdzkZY6aOdXJwn53AcfuRaYDhyynVdfX7OGyV
-	m/8n5ToS/xaHkFwI4ktkiJumw=
+	s=s110527; h=From:To:Subject:Date:Message-Id:MIME-Version; bh=dh
+	v+8FlBddRkoW7HUJioYxqmcNV+Dawhev5ggsbsEWE=; b=Oad0yl4OirsQ5GShYM
+	hygXEMibdlSmJwexZovzN75xOJNVE5doZxC38Z8aTjxrNz6sTeGdiv7uTsFFSmAU
+	/RXoZBCRWbhE5V+UQn750371DT0scAjGJXQ0GaicYMaOyEn6z3wOtkW/+t+8EaDY
+	fAXE2XKBEN8MxS7uWHUen29BY=
 Received: from pc.localdomain (unknown [])
-	by gzga-smtp-mtada-g0-4 (Coremail) with SMTP id _____wD3XzKAgOFqq95iDg--.12927S2;
-	Wed, 28 Oct 2026 12:56:33 +0800 (CST)
+	by gzga-smtp-mtada-g1-0 (Coremail) with SMTP id _____wD3X28rguFqvXzDCw--.30877S5;
+	Wed, 28 Oct 2026 13:03:43 +0800 (CST)
 From: Jiale Yao <yaojiale02@163.com>
 To: Felix Fietkau <nbd@nbd.name>,
 	Lorenzo Bianconi <lorenzo@kernel.org>,
@@ -45,28 +44,30 @@ To: Felix Fietkau <nbd@nbd.name>,
 	Sean Wang <sean.wang@mediatek.com>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Kalle Valo <kvalo@kernel.org>,
 	linux-wireless@vger.kernel.org,
 	linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
 Cc: stable@vger.kernel.org
-Subject: [PATCH] wifi: mt76: drain mt76x02 DFS tasklet during teardown
-Date: Wed, 28 Oct 2026 12:56:30 +0800
-Message-Id: <20261028045630.112769-1-yaojiale02@163.com>
+Subject: [PATCH 3/4] wifi: mt76: mt7921: unwind interface restore failures
+Date: Wed, 28 Oct 2026 13:03:36 +0800
+Message-Id: <20261028050337.127464-4-yaojiale02@163.com>
 X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20261028050337.127464-1-yaojiale02@163.com>
+References: <20261028050337.127464-1-yaojiale02@163.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-CM-TRANSID: _____wD3XzKAgOFqq95iDg--.12927S2
-X-Coremail-Antispam: 1Uf129KBjvJXoW7Ar4DJw4DGFWfZry8tr4ruFg_yoW8uw4xpF
-	W7Kayjk345JF4UKw48Aa18AFy5Wan7Kry5GrWYv34rW34rAr1FyFWYgFy2yr40y3yq9a4f
-	JF4jvr43GrZ5ZFDanT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
-	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x07UgL0OUUUUU=
-X-CM-SenderInfo: x1dryxhdohiji6rwjhhfrp/xtbCzQFTjWrhgIGC4wAA35
+X-CM-TRANSID: _____wD3X28rguFqvXzDCw--.30877S5
+X-Coremail-Antispam: 1Uf129KBjvJXoW7Kr13tryDtFW7CrykWr1rJFb_yoW8CFW3pF
+	47KayYkry8Jw45Ja1xGFW8uF95t3Z5GF1Uury3Aw18Zrn5AryrJF4j9Fy3tFyjyFs7t34f
+	trWvqFn8uwsY9a7anT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
+	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x07jva0PUUUUU=
+X-CM-SenderInfo: x1dryxhdohiji6rwjhhfrp/xtbCzQ+++Grhgi+qLAAA3k
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261027_215655_575845_86E115AE 
-X-CRM114-Status: GOOD (  11.27  )
+X-CRM114-CacheID: sfid-20261027_220354_774736_B1A6901F 
+X-CRM114-Status: UNSURE (   9.97  )
+X-CRM114-Notice: Please train this message.
 X-Spam-Score: -1.8 (-)
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -87,52 +88,52 @@ X-Spam-Status: No, score=-15.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-The MMIO interrupt path can leave dfs_tasklet pending when an mt76x0e or
-mt76x2e device is removed.  Disabling the tasklet does not remove
-pending work from the tasklet queue, and the cleanup paths eventually
-free the device containing both the tasklet and the DFS state it uses.
+The reset recovery callback ignores failures while restoring an interface
+in firmware and continues issuing per-vif configuration commands. A failed
+two-command device addition can leave partial firmware state, while the
+following commands operate on an interface that was not restored.
 
-Kill the DFS tasklet before tearing down the DMA engine and device
-state.
+Check the restore result, remove any partially created firmware state and
+stop configuring that interface on failure.
 
-Fixes: 7bc04215a66b ("mt76: add driver code for MT76x2e")
+Fixes: 0c1ce9884607 ("mt76: mt7921: add wifi reset support")
 Cc: stable@vger.kernel.org
 Signed-off-by: Jiale Yao <yaojiale02@163.com>
 ---
- drivers/net/wireless/mediatek/mt76/mt76x0/pci.c      | 1 +
- drivers/net/wireless/mediatek/mt76/mt76x2/pci_init.c | 3 +--
- 2 files changed, 2 insertions(+), 2 deletions(-)
+ drivers/net/wireless/mediatek/mt76/mt7921/mac.c | 16 +++++++++++++---
+ 1 file changed, 13 insertions(+), 3 deletions(-)
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76x0/pci.c b/drivers/net/wireless/mediatek/mt76/mt76x0/pci.c
-index f8d206a07f99..0c6befdbb98e 100644
---- a/drivers/net/wireless/mediatek/mt76/mt76x0/pci.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt76x0/pci.c
-@@ -224,6 +224,7 @@ mt76x0e_probe(struct pci_dev *pdev, const struct pci_device_id *id)
- static void mt76x0e_cleanup(struct mt76x02_dev *dev)
- {
- 	clear_bit(MT76_STATE_INITIALIZED, &dev->mphy.state);
-+	tasklet_kill(&dev->dfs_pd.dfs_tasklet);
- 	tasklet_disable(&dev->mt76.pre_tbtt_tasklet);
- 	mt76x0_chip_onoff(dev, false, false);
- 	mt76x0e_stop_hw(dev);
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76x2/pci_init.c b/drivers/net/wireless/mediatek/mt76/mt76x2/pci_init.c
-index bec84f932311..e454efab9739 100644
---- a/drivers/net/wireless/mediatek/mt76/mt76x2/pci_init.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt76x2/pci_init.c
-@@ -280,7 +280,7 @@ void mt76x2_stop_hardware(struct mt76x02_dev *dev)
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/mac.c b/drivers/net/wireless/mediatek/mt76/mt7921/mac.c
+index 6f5e31489e2d..0d19f2d7dd5e 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7921/mac.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7921/mac.c
+@@ -628,13 +628,23 @@ mt7921_vif_connect_iter(void *priv, u8 *mac,
+ 	struct mt792x_vif *mvif = (struct mt792x_vif *)vif->drv_priv;
+ 	struct mt792x_dev *dev = mvif->phy->dev;
+ 	struct ieee80211_hw *hw = mt76_hw(dev);
++	int ret;
  
- void mt76x2_cleanup(struct mt76x02_dev *dev)
- {
--	tasklet_disable(&dev->dfs_pd.dfs_tasklet);
-+	tasklet_kill(&dev->dfs_pd.dfs_tasklet);
- 	tasklet_disable(&dev->mt76.pre_tbtt_tasklet);
- 	mt76x2_stop_hardware(dev);
- 	mt76_dma_cleanup(&dev->mt76);
-@@ -317,4 +317,3 @@ int mt76x2_register_device(struct mt76x02_dev *dev)
- 	mt76x2_stop_hardware(dev);
- 	return ret;
- }
--
+ 	if (vif->type == NL80211_IFTYPE_STATION)
+ 		ieee80211_disconnect(vif, true);
+ 
+-	mt76_connac_mcu_uni_add_dev(&dev->mphy, &vif->bss_conf,
+-				    &mvif->bss_conf.mt76,
+-				    &mvif->sta.deflink.wcid, true);
++	ret = mt76_connac_mcu_uni_add_dev(&dev->mphy, &vif->bss_conf,
++					  &mvif->bss_conf.mt76,
++					   &mvif->sta.deflink.wcid, true);
++	if (ret) {
++		mt76_connac_mcu_uni_add_dev(&dev->mphy, &vif->bss_conf,
++					    &mvif->bss_conf.mt76,
++					    &mvif->sta.deflink.wcid, false);
++		dev_err(dev->mt76.dev,
++			"failed to restore interface after reset: %d\n", ret);
++		return;
++	}
++
+ 	mt7921_mcu_set_tx(dev, vif);
+ 
+ 	if (vif->type == NL80211_IFTYPE_AP) {
 -- 
 2.34.1
 
