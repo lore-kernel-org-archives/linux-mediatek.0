@@ -2,11 +2,11 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 46103606A329
-	for <linux-mediatek@archiver.kernel.org>; Wed, 28 Oct 2026 12:35:32 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 2F6C9606A31E
+	for <linux-mediatek@archiver.kernel.org>; Wed, 28 Oct 2026 12:50:59 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=0Kwre89T;
-	dkim=fail reason="signature verification failed" (1024-bit key, unprotected) header.d=lunn.ch header.i=@lunn.ch header.a=rsa-sha256 header.s=20171124 header.b=Udr6XEpf
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=3MHSW3+l;
+	dkim=fail reason="signature verification failed" (1024-bit key, unprotected) header.d=lunn.ch header.i=@lunn.ch header.a=rsa-sha256 header.s=20171124 header.b=L2CZxSC3
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
@@ -14,33 +14,33 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=mIpHk6iOWjpGN9O5FHmkorJ2iYcIvsqGrTEb77wuOHQ=; b=0Kwre89T117fDPm76N896uzrKw
-	bwNixb8I317WJiMq9tX06T0+NkzPBcOhjwpdRxHjj5Peq8X2niEIj737kSAsoou1evBNuIy/8bLsd
-	vIHvGg0Z0m7qsY+E4echTVu0XyG2MQ3UFIE5lVNycFdG2lZth8Bi43R1lr75AEZxDjFnpqtuqecyJ
-	pww5+IpR+xQIvQ0oKVKfoFFPelE+ymroMzlHdt8KVqe+iFziEOXA1dlgp1UKxj0LlrQgPkdXcLuDN
-	ZvgNx+NxH152KaKsXw43rjn65CNtg7siPxwBOkH4/WPX7wNu3XDUZHCQwJo0vhVIjIM0Pb9eBXFpS
-	LpLhuzDQ==;
+	bh=I4SUzivYpnSYJ/lCx6y810yaNKGFV1PRYqvuX0xqFq8=; b=3MHSW3+lsA5itYosg3o0hKFs76
+	kO2Jqy1rAlYlO8vicBlwykVFmIbpa64jQM4JnbP+Tfhl8eEtdHqIOMbDmc7fwd9Bz1ncakvcdimlR
+	6Y80BZpiKgxbEsFNUjetVrtJyTxZyZjOpKKzmvzAREUnGGNMAR1Cnn63d/DiJ3lp179y01ki/Mf7J
+	d3tkYRhmDkWndav0G9Si0crfWJ++2hCBnT6FWRfFHRXJooiozhM+Pg2GUttgEgYVmOV+cpI5wozcM
+	Ms1j60RqPNEbmA7SLPhAvIn2Nff4QuEwl4de8OsHzj0DzY/dW4WoL2ebjth6QzjrEAgW3F/2xZfdH
+	zH5hXeeg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xM2sN-00000006xw5-3xXB;
-	Wed, 28 Oct 2026 12:35:31 +0000
+	id 1xM37J-00000006ytA-0yH0;
+	Wed, 28 Oct 2026 12:50:57 +0000
 Received: from vps0.lunn.ch ([156.67.10.101])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xM2sG-00000006xtm-2mlS;
-	Wed, 28 Oct 2026 12:35:25 +0000
+	id 1xM37G-00000006ysM-35xg;
+	Wed, 28 Oct 2026 12:50:55 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
 	s=20171124; h=In-Reply-To:Content-Transfer-Encoding:Content-Disposition:
 	Content-Type:MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:From:
 	Sender:Reply-To:Subject:Date:Message-ID:To:Cc:MIME-Version:Content-Type:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Content-Disposition:
-	In-Reply-To:References; bh=mIpHk6iOWjpGN9O5FHmkorJ2iYcIvsqGrTEb77wuOHQ=; b=Ud
-	r6XEpfROX2s6rx/8r4fyxYUiLEnQP3mvrte9VsMJOGTUrS5vNKvMBluJWZ7nI3dTkepfI9xi4JyPE
-	SjplqAo1pGuJgEeUiU806lu0j4JBl6o+7YAQ3LJL8HO32XgW0L4weh+kItNH4nPxUukinfStE1LRP
-	yo7W+eseJeaWFYY=;
+	In-Reply-To:References; bh=I4SUzivYpnSYJ/lCx6y810yaNKGFV1PRYqvuX0xqFq8=; b=L2
+	CZxSC3XYnCB0mWsCoxLLDP7tsZQ3O+vCkrBcl1ZvrnZe/rISNVHUXadwbWPnvd7KZmcLEJOKBESDL
+	Rhs2CCQdnkd1e6sj5lBOvh5UvmTVsYdu3ZHwfWpLbUR+lQEfmkKYCtbVNI6W5alqLNjyqY7pDqj3m
+	Ox59MrqCo/upT3s=;
 Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
 	(envelope-from <andrew@lunn.ch>)
-	id 1xM2ru-00D6jH-Dl; Wed, 28 Oct 2026 13:35:02 +0100
-Date: Wed, 28 Oct 2026 13:35:02 +0100
+	id 1xM36y-00D6p1-71; Wed, 28 Oct 2026 13:50:36 +0100
+Date: Wed, 28 Oct 2026 13:50:36 +0100
 From: Andrew Lunn <andrew@lunn.ch>
 To: Caleb James DeLisle <cjd@cjdns.fr>
 Cc: netdev@vger.kernel.org, olteanv@gmail.com, davem@davemloft.net,
@@ -54,22 +54,22 @@ Cc: netdev@vger.kernel.org, olteanv@gmail.com, davem@davemloft.net,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org, naseefkm@gmail.com,
 	b.larsson@gmx.com
-Subject: Re: [PATCH v3 3/7] net: dsa: mediatek: add support for passthrough
- mode
-Message-ID: <2b406479-8c3d-40e6-93e2-e7ad01d5f432@lunn.ch>
+Subject: Re: [PATCH v3 5/7] net: dsa: mediatek: support MDIO switch
+ downstream of MMIO switch
+Message-ID: <bdde8389-008a-430a-8d0d-14edcb4050b4@lunn.ch>
 References: <20261028011317.1557238-1-cjd@cjdns.fr>
- <20261028011317.1557238-4-cjd@cjdns.fr>
- <734d4f06-26af-4bea-9c83-eb92c1b3b894@lunn.ch>
- <18472c61-efe2-4529-971b-82d877df6b15@cjdns.fr>
+ <20261028011317.1557238-6-cjd@cjdns.fr>
+ <f6fe9c7a-5617-475b-babe-da24cda815cc@lunn.ch>
+ <acf55987-e96d-407f-a4a7-1c78178a0c7a@cjdns.fr>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=iso-8859-1
 Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <18472c61-efe2-4529-971b-82d877df6b15@cjdns.fr>
+In-Reply-To: <acf55987-e96d-407f-a4a7-1c78178a0c7a@cjdns.fr>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261028_053524_819218_DA0A40E9 
-X-CRM114-Status: GOOD (  10.93  )
+X-CRM114-CacheID: sfid-20261028_055054_774397_4CE76595 
+X-CRM114-Status: GOOD (  28.06  )
 X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -88,42 +88,64 @@ X-Spam-Status: No, score=-3.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-> > What is actually left?
+On Wed, Oct 28, 2026 at 12:59:23PM +0100, Caleb James DeLisle wrote:
+> 
+> On 28/10/2026 03:20, Andrew Lunn wrote:
+> > On Wed, Oct 28, 2026 at 01:13:15AM +0000, Caleb James DeLisle wrote:
+> > > The MT7530 / MT7531 can connect via either MDIO or MMIO. In MMIO mode
+> > > the switch provides its own MDIO bus which connects to its integrated
+> > > PHYs, but also can be connected to other things, such as another
+> > > switch.
+> > > 
+> > > If the MDIO bus contains another switch, then the upstream switch
+> > > will register but it will not setup the DSA tree because the
+> > > downstream switch is missing. Without the complete DSA tree,
+> > > mt753x_setup() will not be called on the switch and therefore
+> > > mt7530_setup_mdio() is never called so the downstream switch never
+> > > registers.
+> > > 
+> > > Update mt7530_setup_mdio() so that it can be called multiple times,
+> > > export the symbol, and call it again after dsa_register_switch()
+> > > from mt7988_probe().
+> > I would suggest just moving it to probe. Don't also have it in setup.
+> > KISS.
 > 
 > 
-> In v2 I was using special switch ops, and it looked like this:
+> I don't think there's a way to do that which will work. And I guess I need
+> to add a few comments to explain why. Basically when dsa_register_switch()
+> is called, one of three things can happen:
+> 
+> 1. return error (often without calling mt753x_setup), typically this is
+> EPROBE_DEFER because the ethernet driver is not there yet.
+> 
+> 2. return 0 without calling mt753x_setup (because not all switches in the
+> tree are yet probed)
+> 
+> 3. call mt753x_setup, complete setup, and return 0
+> 
+> 
+> In case 1, mt7530_setup_mdio must not be called, because it would be setting
+> up an MDIO on a driver that's about to get deleted.
 
-Sorry, i did not look at v2.
+Which is fine, because when the probe fails, you unregister the MDIO
+bus. That should work. The second time around, you do have the netdev,
+and it should work.
 
-> /* No manipulation of forwarding rules allowed in passthrough mode */
-> static const struct dsa_switch_ops mt7530_passthrough_switch_ops = {
->        .get_tag_protocol       = mtk_get_tag_protocol,
->        .setup                  = mt753x_setup,
->        .teardown               = mt753x_teardown,
->        .preferred_default_local_cpu_port =
-> mt753x_preferred_default_local_cpu_port,
->        .get_strings            = mt7530_get_strings,
->        .get_ethtool_stats      = mt7530_get_ethtool_stats,
->        .get_sset_count         = mt7530_get_sset_count,
->        .get_eth_mac_stats      = mt7530_get_eth_mac_stats,
->        .get_rmon_stats         = mt7530_get_rmon_stats,
->        .get_eth_ctrl_stats     = mt7530_get_eth_ctrl_stats,
->        .get_stats64            = mt7530_get_stats64,
->        .port_enable            = mt7530_port_enable,
->        .port_disable           = mt7530_port_disable,
->        .phylink_get_caps       = mt753x_phylink_get_caps,
->        .support_eee            = dsa_supports_eee,
->        .set_mac_eee            = mt753x_set_mac_eee,
->        .conduit_state_change   = mt753x_conduit_state_change,
-> };
+It is not great, you are doing extra work, but many DSA drivers are
+structured like this, the MDIO bus is registered in probe. The bus is
+scanned, PHY are found, and then the probe fails, and the PHYs are all
+thrown away etc.
 
-I think you should be doing something like this. Either two
-dsa_switch_ops, or you add generic implementations for all the ops,
-which then call device specific implementations dependent on the
-compatible. This is how many DSA drivers handle different families of
-devices in one driver.
+Hanging one switch off another switch like this using MDIO, kind of
+pushes you in this direction. Typical DSA setups don't do this, there
+is one MDIO bus which all switches hang off, sometimes with a
+multiplexor to make one MDIO bus act like many.
 
-I would avoid putting "if (priv->passthrough)" everywhere.
+Something to look at which might be interesting, Vladimir had some
+patches which allowed for partial switch topologies, where you could
+take a switch in a DSA setup off line. Maybe there is something in
+those patches which help, you can bring the switches up independently?
 
-	Andrew
+	    Andrew
+
 
