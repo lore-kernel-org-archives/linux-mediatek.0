@@ -2,144 +2,118 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 661EC606A326
-	for <linux-mediatek@archiver.kernel.org>; Wed, 28 Oct 2026 15:41:44 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 30079606A31D
+	for <linux-mediatek@archiver.kernel.org>; Wed, 28 Oct 2026 16:04:15 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=stgzDhlY;
-	dkim=pass (2048-bit key, unprotected) header.d=qualcomm.com header.i=@qualcomm.com header.a=rsa-sha256 header.s=qcppdkim1 header.b=OgvPAAv2;
-	dkim=pass (2048-bit key, unprotected) header.d=oss.qualcomm.com header.i=@oss.qualcomm.com header.a=rsa-sha256 header.s=google header.b=C8el8aPf
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=SoS5WRZq;
+	dkim=pass (2048-bit key, unprotected) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=ul7n4MfS
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Unsubscribe-Post:List-Owner;
-	bh=xAGpz9TD6oCxgoJfz5D+tXdaBBTRPGgALN6kzjVk6w0=; b=stgzDhlYhEzehkULrsPqRgLBTi
-	2CvP4bjS/AKOZBi7fnzxOtazqp8u5CLALjaD/Q00lEtxxbwymIfP16bLna/242hTg4xJMaBHolZ6W
-	tI0sNVuhQOKz5ULfhCeSjC51PdeDUXu+k9tUkcYrd7ui/+b1d18V5Dj9E/VVgpRuYlDh97lolPxdz
-	zs36AuQaoBwfCbBoHU9Xg45SB51bGvngsqM0sTJ9rnjVOO6iEnreYQOizbLrskWgF0zQnTfqI/7hl
-	0FPst5tsGZN8B0C9UkdYSc8oveOQ2Msfw8Hdz99f+G1Wa3jEbLbBOQ59CWW+ePEHo51tPg+0Nhm4R
-	VIy/Z1vA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Unsubscribe-Post:
+	List-Owner; bh=wW+/Xd8Krv/fKYtWcQLYyD+KltWSe3OXoRZLQJCTD0I=; b=SoS5WRZqq8KEbf
+	UqOUFlR4+As56uxl4OeHJGkB43HsWOUf5G83d4gLJXt41J7X3hqlbVkYOJGm3w6RF+LGF/43U9uIN
+	8l4e2Ec5zkfT2dUFtHgXRnrxXhfnN5PKe843uz1tlcR5kn7LIOUhOIL67xRWwwKlJ8j+g9nqNlxAN
+	s8TkwkqYaXJ2KcDsQtD8LM0AQK3Ope4GG7pdfdh3aB9s2NJf7vJ+Qofcu4wOINzItE7x8KFCcHQhd
+	Pms1+GNEuaxJHs9dtVzIhsOqxCedGHz5pj0EP5FJi/Pm0S31klZBoQeLSB2UizCvzGS7V/muDbWVZ
+	xbgWpjLxF1TmhOkzjtew==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xM5mZ-00000007Qd8-3YhG;
-	Wed, 28 Oct 2026 15:41:43 +0000
-Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
+	id 1xM68M-00000007U9A-3HzE;
+	Wed, 28 Oct 2026 16:04:14 +0000
+Received: from mail-ua1-x934.google.com ([2607:f8b0:4864:20::934])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xM5mW-00000007QcG-1StF
+	id 1xM68J-00000007U8M-3g2b
 	for linux-mediatek@lists.infradead.org;
-	Wed, 28 Oct 2026 15:41:41 +0000
-Received: from pps.filterd (m0279872.ppops.net [127.0.0.1])
-	by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id 69SFAbsY423467
-	for <linux-mediatek@lists.infradead.org>; Wed, 28 Oct 2026 15:41:38 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
-	cc:content-type:date:from:in-reply-to:message-id:mime-version
-	:references:subject:to; s=qcppdkim1; bh=xAGpz9TD6oCxgoJfz5D+tXda
-	BBTRPGgALN6kzjVk6w0=; b=OgvPAAv26Z+jY/F3lMnjG4J8bK2QeZ+lW6MBAcFa
-	9ldLQr72iZ3IOG8JMXXK68mRP8AW3N2Ndvco1y8nUQeHp0Euxm9Buo5Qa6YXkUS9
-	2Eu/O85eHzBqAzgzFL/na3MgIz2nFnim45LBQRvbu5Nvd2s6hN3O8YMsf9EftPke
-	9AkgK9OwzOnzJX+qCuvxGgvRD5GvSCSWD4TqEx5nV/JZiKYrW8KBBTVUimZOljsg
-	GVdeOAT6CchVYA2Uq7HtfUnhRgFmNdmZMoyodDJ8ji09AcISYE//UdD54a5Fqf1X
-	DeFeURvl86BxECwPBb5mfs0bfHMSycRCYZuXDCbmPyZQ/g==
-Received: from mail-qv1-f72.google.com (mail-qv1-f72.google.com [209.85.219.72])
-	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4hkdsp1mxd-1
-	(version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
-	for <linux-mediatek@lists.infradead.org>; Wed, 28 Oct 2026 15:41:38 +0000 (GMT)
-Received: by mail-qv1-f72.google.com with SMTP id 6a1803df08f44-91b92acedd9so903506d6.2
-        for <linux-mediatek@lists.infradead.org>; Wed, 28 Oct 2026 08:41:38 -0700 (PDT)
+	Wed, 28 Oct 2026 16:04:13 +0000
+Received: by mail-ua1-x934.google.com with SMTP id a1e0cc1a2514c-9909e82513fso852080241.0
+        for <linux-mediatek@lists.infradead.org>; Wed, 28 Oct 2026 09:04:08 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=oss.qualcomm.com; s=google; t=1793202098; x=1793806898; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:content-type:mime-version
-         :references:message-id:subject:cc:to:from:date:from:to:cc:subject
-         :date:message-id:reply-to:content-type;
-        bh=xAGpz9TD6oCxgoJfz5D+tXdaBBTRPGgALN6kzjVk6w0=;
-        b=C8el8aPfJ1ZRxDIpgaNn/3fkRZ0to1WUih0/sJ4KVdzX9R5EAaWaMVJzXvA7QT8cxM
-         V12tt/QvasQuPfHtQBEYo7Y2tHNVAJiUBRyglJoBcGgNm1wRGq9XQDwsY3gyYQotnvX2
-         orA7u5KhP77KB5CS5NWowh1u6BtpF7Iid0CJHoSLdK/2xQv49rbEMcjeTBDAGS+/hWbu
-         wCJvCUzh6I4Sy+kasGnpNcrFzFblr4eLWgYMYT1bLTCBMgSbUkbHtMVptgo3W1Kb1sFj
-         5EwA2suSO7Pq2XBxJ7gk7q8cLqAbQQAnQlbfmMejRUUw2m3e6aY/2paqbxpZoDgTz4Zh
-         DjPg==
+        d=gmail.com; s=20260707; t=1793203448; x=1793808248; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to:content-type;
+        bh=wW+/Xd8Krv/fKYtWcQLYyD+KltWSe3OXoRZLQJCTD0I=;
+        b=ul7n4MfSkZiUAJ04RjJbxDk9hrO1k2HLO2UnhD5pcSnIPG/9D+jXYjufZPqXxMxz/+
+         Tgj3M1KJ0q1no8L/b87V+o8cSEAyRtahwb49ffdtinjDJoUGkdDQKyBvc1DklVWbF14e
+         9111JQFeI/pCUGrU2x8N0INO/QhLRUuB1BeM1XC/9TiLIcS5NomZ7URTYIu3RskMf5bS
+         DNno00BxEcWC4RYJa/A05M+rzqDc2nSnNY97muecfhRAoacSBOdUzI8fgo2NSwubo547
+         L72TUE4oEryFtJOLhH5cfGdqKxbgM4Ge51YTTKtrYwPPbosYgtBLuW0mlQKyWlY8+hWA
+         h4oA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1793202098; x=1793806898;
-        h=in-reply-to:content-disposition:content-type:mime-version
-         :references:message-id:subject:cc:to:from:date:x-gm-gg
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
-         :content-type;
-        bh=xAGpz9TD6oCxgoJfz5D+tXdaBBTRPGgALN6kzjVk6w0=;
-        b=HV1lSJ3L/q7pDLKOAFAvRuBzD1DXYT/HfO0Xi90GZ1/gdquNtab/iiXfGCbUsn7qKi
-         xhbobo3kW0ESKfN+wF7xI48QRIWVtPX8ecCsXsGOkG+F4rWJWXM/TUF+0y9Xk7yn4tyd
-         UU3gvX9e8ufrY8a+AEZRcfon1KCCmw2iCRD3CbVyrF+pT5p0XtmaxnF2WecCGQ6SPmFo
-         C1O05BC8hUbSkzugna8T+K7En84h7ePA4KKWGaht+YGnvX7Dt2s5Zs+mglpoM56kJdpi
-         zzOIqUT1UgGu67Y6pPAIICOvTC0gVxWhGRK2xWI4rxL3KiwCYHiOEvjJoob+oEwQj7by
-         dd2w==
-X-Forwarded-Encrypted: i=1; AKwUvByk679BKMFul0ctPcginD4jRqlSjNz5o3IyuEGbzbJ3luXRVBTIT2hphFS+UMw4isWPRuivXacYjN6TmcnmHg==@lists.infradead.org
-X-Gm-Message-State: AFq9FYIc2sQoZGF746I0xS3uXnipph649T2Knbn7Xlu4K5ELEMdscDZb
-	qeFu6lphgY+Np5iwrwDr3S5ZwuOfcHP2Tnu/Wv5BZceqHDtRP28fHAEkuvzM9XjzUejDBW6fY9P
-	vcFw11Oby/PPORS8aJzACnQygaf24uRDyWetZ0YiDyu1cAfU9SQydC3m6LSDMmpTVIHO9C3PePN
-	s=
-X-Gm-Gg: AYBFou1yagDD7vBvzsDjQ6RD+lkvmh5NvzNLZR0jTMd43LBb97fIwgruoNUYAz/YGbE
-	f3tpK9UQjJfY2DB3BGhsEk3nRDY/hDfHFOpRJescWTCYOL0OcNHyGJPibnjmbbcVtGdc950aU2A
-	4jqY6XxPEALTiDlkFlEdWHEXXJQLND1ZEiwPJX9ekuccZyeSou+tD8vqUa68EjlmwVIbW3q/fvy
-	uB9gaB3wdkdJ3auNDW8KdhMExu0oijOXTkC5hua1odgVwXzLVNC7rxE4pLZwXzqa6kwVl0YLPlI
-	/Ae8Qk38e/wYoTFpSS73W9jD7VcDHtZBCv+SUgErdEiUwCYuzRJGE4ocqmta/J4aYFTI/7KzARd
-	bs5Wx4L49ONUMJKKQNNY8i5Of3kAzf+4kxalQYUO+lcs70GhUh99eP3yG1Q4YpqK+ow==
-X-Received: by 2002:a05:620a:2b4e:b0:93e:53fd:413b with SMTP id af79cd13be357-94408dc203emr391843085a.59.1793202097814;
-        Wed, 28 Oct 2026 08:41:37 -0700 (PDT)
-X-Received: by 2002:a05:620a:2b4e:b0:93e:53fd:413b with SMTP id af79cd13be357-94408dc203emr391838285a.59.1793202097156;
-        Wed, 28 Oct 2026 08:41:37 -0700 (PDT)
-Received: from oss.qualcomm.com ([188.27.161.187])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-48e3ecd37f4sm34722381f8f.44.2026.10.28.08.41.36
+        d=1e100.net; s=20260707; t=1793203448; x=1793808248;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
+         :to:cc:subject:date:message-id:reply-to:content-type;
+        bh=wW+/Xd8Krv/fKYtWcQLYyD+KltWSe3OXoRZLQJCTD0I=;
+        b=oAsJFNUbIB0Mhg7bAtN/ZJJYzCIbIdxM1mf7S/5Xbj8tK2Zgg+CAuSggyxFZebyiGI
+         5+BTNGkKeDw/+GikQ3v9adPaulJBwTuNR2m5RXJxp/RhE54lynBJnSeDFS/qvxzkwXrh
+         k5hTw8KyO1QnRmjxXzBLIbiT0OQXV21hFvWAtExEiwrkXVUxinbFbd6RUod5coSHFjtk
+         Fc8QA++1IYCMnI3BHsji5qXOOhdsEutW3I04alnI5ZfCArbUgIZRfpjtBrl11ngwuYHx
+         m60CyJ0CVU6vb2FzBbPUjYpmHzCgUIBZoPMbDy98H5RqzgjkqWRuaBRuzaHlHchI/pqJ
+         nTXA==
+X-Forwarded-Encrypted: i=1; AKwUvByy21VeummLLNB5jtkplVx367r+fpNMqfH8V4NA3Jj8UDqjB0Dfz84nXPW4HjOveHrxHz0gRDl9yIv+Z3tq7A==@lists.infradead.org
+X-Gm-Message-State: AFq9FYIfF1zj2gAYlI9et1YAh6Rs4lMd1Dj0pyRp9pl3i3drSYUezMLU
+	Re5usQaBg6PwkCm7wGU8YFQr2afO+YvK+eo3ODDNMvsEJpf77Zu8AeCGbJKiPJu3
+X-Gm-Gg: AYBFou39w6A+95kjPxJQCHJfha5NFWoWD1dMPYKvAKSTM7Jje5BC04PaOQQQcypIQyy
+	1koNUWssh8ecCAaL5FLbTy5XCA7WGlyYPaYy+g94Dm/JRq7InJ0uEssrEjcJlZCejXJPD7RP8P9
+	9Bupsimm31GeMeTThV7RAEpkqSP36NyzHDRp0WNBxzJCKrxCaxF4DXIpQn3k9JPRW4ta3h//idW
+	JJcNttZQ34IniJByLlDPWx4Xs6M7gS938YX68OXuk8vxJCdbIMXY1Ssz6cWCUzxDloM0npsJ3q3
+	5kHwNPF0n58jsUxGiI1SJUUkcQSmLnITimq3XS2gQXUHE+hm8qcII4MzcXGG9k6lu+8/XEKnFMd
+	MFp850pPG64F3MnOr1wz37R6hZ9bHUDpR6wqfNQ+m3DirN0h2eQXBHyGokUnh2w/9ilY7rpuqGz
+	uGvIqQCuI8y6+QRaE5F640TXHEKPDCwA4QktSsDt1lpqlSYc4TnXHUkueUm/7HlQN4YLTSTw8CK
+	0oZXCFMIqVsTqIAd+7d1A+Tnevzw7OMwvLLdgozM2bTe8feTRzv3a3042hObgnaKNOF7pxH2QQP
+	2x2nT50UCeZU19yU0xSL9qPuBPPDo1j6w4YjTrDMDVdDq2uzgie0qwkvqshR1S6/3lCgjO6734+
+	YXQ==
+X-Received: by 2002:ac5:cd4f:0:b0:5cd:4fdc:4c30 with SMTP id 71dfb90a1353d-5ec3ea67966mr1617819e0c.8.1793203447486;
+        Wed, 28 Oct 2026 09:04:07 -0700 (PDT)
+Received: from localhost.localdomain ([190.177.146.128])
+        by smtp.gmail.com with ESMTPSA id a1e0cc1a2514c-991259db2d3sm6354565241.6.2026.10.28.09.04.00
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 28 Oct 2026 08:41:36 -0700 (PDT)
-Date: Wed, 28 Oct 2026 17:41:35 +0200
-From: Abel Vesa <abel.vesa@oss.qualcomm.com>
-To: Avi Weiss <thnkslprpt@gmail.com>
-Cc: Stephen Boyd <sboyd@kernel.org>, Abel Vesa <abelvesa@kernel.org>,
-        Matthias Brugger <matthias.bgg@gmail.com>,
-        AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-        linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-        linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH] spmi: mtk-pmif: retain controllers for removal
-Message-ID: <e433xawx2fa3x33rslqiijtbk4vf4ius4h4w3k6jgrwhsqtpww@zyyd6mxxvvni>
-References: <20261028094847.764747-2-thnkslprpt@gmail.com>
+        Wed, 28 Oct 2026 09:04:06 -0700 (PDT)
+From: Cristian Papa <pcristian292@gmail.com>
+To: cjd@cjdns.fr
+Cc: netdev@vger.kernel.org,
+	andrew@lunn.ch,
+	olteanv@gmail.com,
+	davem@davemloft.net,
+	edumazet@google.com,
+	kuba@kernel.org,
+	pabeni@redhat.com,
+	robh@kernel.org,
+	krzk+dt@kernel.org,
+	conor+dt@kernel.org,
+	matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com,
+	chester.a.unal@arinc9.com,
+	daniel@makrotopia.org,
+	linux@armlinux.org.uk,
+	arinc.unal@arinc9.com,
+	Landen.Chao@mediatek.com,
+	dqfext@gmail.com,
+	sean.wang@mediatek.com,
+	devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	naseefkm@gmail.com,
+	b.larsson@gmx.com
+Subject: Re: [PATCH v3 0/7] net: dsa: mt7530: support EcoNet EN751221
+Date: Wed, 28 Oct 2026 13:03:53 -0300
+Message-ID: <20261028160353.4239-1-pcristian292@gmail.com>
+X-Mailer: git-send-email 2.47.3
+In-Reply-To: <20261028011317.1557238-1-cjd@cjdns.fr>
+References: <20261028011317.1557238-1-cjd@cjdns.fr>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20261028094847.764747-2-thnkslprpt@gmail.com>
-X-Proofpoint-GUID: feccfjoja__b5RysGfBhrfRvgAVFtt3X
-X-Proofpoint-ORIG-GUID: feccfjoja__b5RysGfBhrfRvgAVFtt3X
-X-Authority-Analysis: v=2.4 cv=Cssq4X4D c=1 sm=1 tr=0 ts=6ae217b2 cx=c_pps
- a=7E5Bxpl4vBhpaufnMqZlrw==:117 a=Qvngrl3H0rQgGg+94q4QgA==:17
- a=kj9zAlcOel0A:10 a=660iZSQnnn4A:10 a=s4-Qcg_JpJYA:10
- a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=yx91gb_oNiZeI1HMLzn7:22
- a=pGLkceISAAAA:8 a=EUspDBNiAAAA:8 a=vSNd-Fa7lg0QEwYS95cA:9 a=CjuIK1q_8ugA:10
- a=pJ04lnu7RYOZP9TFuWaZ:22
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYxMDI4MDA2MiBTYWx0ZWRfX6OWxkkMQzCT3
- VG1L7G7eSVKucm+b59mZwFYFxamzqnweEl+AN3TsRCizfq/R/YWlP4Psw7asnuerJc8W6Mdjlzx
- HhnPOL6sZRuzyfLAS2VT6JwopW+yo/U+fBvIiOOludfxOfBWgo47ggQJKNvCglg9y5cBOqnupId
- XqIlQH1MkrbvPDchffiV1f5JIkpFqIAKCELvQzyVNJQGsZ5U4gfBmMaOi9+zCTXGI9axAi5yMRb
- 2VNM6k1YE3bN3hsJxX4pBgy0wms3dLsAOkKfBfnnX5hqos/zF9IB/8qNjDc4pbBhNUfboGPdWIp
- x05/gBaBs6ZzFCpRGTrTRuKS2AAjQWcpM01YJjz/hFXrrtmkiWZHuslYpUXV4NTNxM1akoUlqTg
- fYhYZfvi9Y4CMydx/SgcZQveqIT/RcYuoCcgd6nCG1U3fr+Svy6AJNDqaOvHPDsQjL3OSSs0UmB
- u//Ji+TdvGEDKsCr/mA==
-X-Proofpoint-Spam-Info: AW1haW4tMjYxMDI4MDA2MiBTYWx0ZWRfX5RiyKFn1HYHt
- tHiHVZGgImNyom9YGWq1Pgng65diKz0dY2dvdOH/VUa81VsZJqV6ik5lPt/6F/ssCZwLvqSIsyb
- YjQ9O5ZBrQAs2IxWnJNFHmG5byUdI0A=
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1176,Hydra:6.1.138,FMLib:17.12.100.49
- definitions=2026-10-28_05,2026-10-21_02,2025-10-01_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- suspectscore=0 lowpriorityscore=0 priorityscore=1501 adultscore=0
- impostorscore=0 malwarescore=0 bulkscore=0 phishscore=0 clxscore=1011
- spamscore=0 classifier=typeunknown authscore=0 authtc= authcc= route=outbound
- adjust=0 reason=mlx scancount=1 engine=8.22.0-2610190000
- definitions=main-2610280062
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261028_084140_525864_A2975D05 
-X-CRM114-Status: GOOD (  11.18  )
-X-Spam-Score: -2.8 (--)
+X-CRM114-CacheID: sfid-20261028_090411_924082_ABEF3A11 
+X-CRM114-Status: UNSURE (   9.34  )
+X-CRM114-Notice: Please train this message.
+X-Spam-Score: -0.8 (/)
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -150,24 +124,55 @@ List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-10.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,
-	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS autolearn=ham autolearn_force=no version=4.0.1
+X-Spam-Status: No, score=-4.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
+	DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,FORGED_GMAIL_RCVD,
+	FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=no
+	autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On 26-10-28 11:48:48, Avi Weiss wrote:
-> mtk_spmi_bus_probe() stores each controller in its private pmif_bus
-> rather than the parent arb->bus[] entry passed by the caller.
-> mtk_spmi_remove() checks the parent entries, so it skips registered
-> controllers and their IRQ and clock cleanup.
-> 
-> Record successfully initialized controllers in the parent array and
-> recover their private bus data when removing them.
-> 
-> Fixes: 078117963b2c ("spmi: mtk-pmif: Add multi-bus support for SPMI 2.0")
-> Signed-off-by: Avi Weiss <thnkslprpt@gmail.com>
+Hi Caleb,
 
-Reviewed-by: Abel Vesa <abel.vesa@oss.qualcomm.com>
+I tested v3 on a TP-Link Archer XR500v v1 (EN7526G: on-die switch plus the
+MCM gigabit switch).
+
+Setup: OpenWrt with kernel 6.18.44. I took the four mt7530 files from
+econet_eth at 3a8bcd2e6398 (they contain every line added by 1/7, 3/7,
+4/7, 5/7 and 7/7 of v3) and booted from RAM over TFTP, nothing written to
+flash.
+
+With the DT from en751221g.dtsi in openwrt#25330 (MCM "econet,en751221",
+no "mediatek,mcm", dsa,member <0 1> on the on-die switch and <0 0> on the
+MCM):
+
+- 18/18 boots: all 10 TRGMII lanes found a window, no "calibration
+  failed", "TRGMII inter-switch link initialized", DSA tree set up, ping
+  over lan4.
+- The chosen taps were stable across boots (+/-1): SoC->MCM 15-22,
+  MCM->SoC 27-29. In the SoC->MCM direction the window always starts at
+  tap 0.
+- 6 of those boots ran iperf3 for 6 s each way through lan4: 0 RX CRC
+  errors on on-die port 5 (~1.05M frames) and on MCM port 6 (~1.29M
+  frames). In 4 of 10 boots MCM port 6 already had 1 CRC error before any
+  traffic, probably from the calibration; it did not grow.
+
+Following the binding in 6/7, the MCM does not come up on this board:
+
+- "econet,en751221-gswitch": mt7530-mdio.c in 7/7 still matches
+  "econet,en751221", so nothing probes the MCM and there are no LAN
+  ports.
+- "mediatek,mcm", which the binding requires for -gswitch: the probe
+  fails with "Couldn't get our reset line", since nothing provides an
+  "mcm" reset yet (the TODO in en751221g.dtsi).
+
+So I think 7/7 should match the new compatible, and the binding should not
+require "mediatek,mcm" while there is no "mcm" reset for the EN751221.
+
+Not covered yet: cold boots, and the other LAN ports beyond link-up on
+lan3/lan4. I'm happy to give a Tested-by once the compatible strings line
+up, and to rerun anything you'd like; the full boot logs are available.
+
+Thanks,
+Cristian
 
