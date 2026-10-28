@@ -2,71 +2,79 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 4971C606A31D
-	for <linux-mediatek@archiver.kernel.org>; Wed, 28 Oct 2026 01:16:30 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 94295606A31E
+	for <linux-mediatek@archiver.kernel.org>; Wed, 28 Oct 2026 01:57:21 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=BWM0nYOM;
-	dkim=pass (2048-bit key, unprotected) header.d=cjdns.fr header.i=@cjdns.fr header.a=rsa-sha256 header.s=dkim header.b=OHNvGusE
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=XqZ6iuLY;
+	dkim=pass (1024-bit key, unprotected) header.d=mediatek.com header.i=@mediatek.com header.a=rsa-sha256 header.s=dk header.b=B0BsWC8P
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Unsubscribe-Post:
-	List-Owner; bh=b+REZnCfFDdefm9jnJVSHPmWlkqHTOnFekI0S/9L5S4=; b=BWM0nYOMNDw1Wk
-	tJAoDIImd0z40bAq0Ee3hyxIPTC2SWX0j5ngo0tXMkoF65U76SfluWJ3j/ed+7Bddq4YrwnbT9kOz
-	fC4f4wPDRwUWDAgNN68X9F/Ygi1o8CCfL3HH86UYk0YMlkucmPWnGwan92Bzq3wrHg0A0SYT5Ltvv
-	pkxZQoEUo7j1vbYn4f2+7snnTF+G2g/ALCX/T1sYpp3LJ9gy9OY8Y3SVgFXNRMfUPlfUXUlRXc9gA
-	uDTe0saNMa2DEWFOJzE7ibn5lxJ43b0hs6NLprWt4mzXmParyBL6DfaB3Cwn+iZBKDtdZHp+A1eFt
-	u9IJjYzUym9WvzpygcVA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Unsubscribe-Post:List-Owner;
+	bh=iQ/pzyfu6F1FUV/I3BMrou23p3S0m7NUJAnaI6wqWf8=; b=XqZ6iuLYPeJJcWe3FNRPM+bWTl
+	ll95y7mngYs26ChUeKFe9LIUUn4u5osRvIXOdidk0h0Tm1+RLvIKDpkl5FcNtaxCGL52rTkUGtGck
+	jbCxcgZt9jxkMYiXHPw6XykGpg6Jxmx8+Ld2AP0UihF9PuN60Ye0bUO89cCjfVcND2N45hwhTyHL6
+	9/0Gm3S7dehReL0kMhjbkRPytazDJGUFXpYxSZsde9k3sa60QZvf+Wg4tLa96yWvW2oiHBcnW3ENj
+	GEeL7J60ijGl0zirQRvq1NVmC+E9ojKrqyBECvqMmW1jXcxsHyOIPAgjhj/uj5daSq+6yOqLVPGld
+	+/+xx7uw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xLsHF-000000061xr-3aQN;
-	Wed, 28 Oct 2026 01:16:29 +0000
-Received: from mail.cjdns.fr ([5.135.140.105])
+	id 1xLsun-000000063u0-0Nia;
+	Wed, 28 Oct 2026 01:57:21 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xLsHD-000000061xI-3ThT;
-	Wed, 28 Oct 2026 01:16:29 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id 0C44F148E28;
-	Wed, 28 Oct 2026 02:16:19 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cjdns.fr; s=dkim;
-	t=1793150183; h=from:subject:date:message-id:to:cc:mime-version:content-type:
-	 content-transfer-encoding:content-language:in-reply-to:references;
-	bh=b+REZnCfFDdefm9jnJVSHPmWlkqHTOnFekI0S/9L5S4=;
-	b=OHNvGusEtM6K3h6Z0yNFqbB49cR1kbiI70swtRDWeuc3Ke0YpIwKvELrBgFEuXM5BfHGtT
-	uKsfHi/SBUegnadBVM7sl2zc72DgL8sS65JjKMbLmEREhJmqXARDzM18QjnYVb8jAmm5N8
-	25qMwO49OF2TPyytIdVAlinNc/DFSjWVxCd+eoZC2X1b07emIk0wEtqQ8av5t0A44OshPK
-	YEILFNCM5flsHNCfsEIeet9Br9fIwfoAGjrftxz+F5T57ivLOdX+PKw0wtoP+wuS2E9RDO
-	iGE+po2Z+lobkZEi8KBa9Cs7XtoQl5tdu4TTG1i/rkY2c86VQs87T8CBKQOBOQ==
-Message-ID: <86c89435-581b-44dd-9308-f77332944b7f@cjdns.fr>
-Date: Wed, 28 Oct 2026 02:16:18 +0100
+	id 1xLsuk-000000063ti-2Pvq
+	for linux-mediatek@lists.infradead.org;
+	Wed, 28 Oct 2026 01:57:19 +0000
+X-UUID: e3eb523cd27211f1afed4741b24580c9-20261027
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=iQ/pzyfu6F1FUV/I3BMrou23p3S0m7NUJAnaI6wqWf8=;
+	b=B0BsWC8PfaRmbfe2aXJYcz/glg6szGNyRyyEdTZa8LamIeiPxWnqP2YHosOVdKaGMny8F/DPA+CYZGsaoq66GnkgJylEkcCmAJub9dlOkcRzAOYk0y3D3nMYh0esi/tq8IDGlTL0ARDkvQyHmV3lk+jBL6GSabG5izr3yKJa5DE=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.3.20,REQID:0d70c318-2998-4047-8860-14f903a2899c,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:291e20b,CLOUDID:6601d0ed-6961-456c-adce-6d277e14e6ad,B
+	ulkID:nil,BulkQuantity:0,SF:102|836|865|888|898,TC:-5,Content:0|15|50|99,E
+	DM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:-1,COL:0,OSI:0,OSA:0,
+	AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 2,SSN|SDN
+X-CID-BAS: 2,SSN|SDN,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
+X-UUID: e3eb523cd27211f1afed4741b24580c9-20261027
+Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw01.mediatek.com
+	(envelope-from <eason.lai@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1520898670; Tue, 27 Oct 2026 18:57:11 -0700
+Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.2562.29; Wed, 28 Oct 2026 09:57:09 +0800
+Received: from mtksitap99.mediatek.inc (10.233.130.16) by
+ mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.2562.29 via Frontend Transport; Wed, 28 Oct 2026 09:57:09 +0800
+From: Eason Lai <eason.lai@mediatek.com>
+To: <nbd@nbd.name>, <lorenzo@kernel.org>
+CC: <linux-wireless@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
+	<kun.wu@mediatek.com>, <deren.wu@mediatek.com>, <sean.wang@mediatek.com>,
+	<quan.zhou@mediatek.com>, <ryder.lee@mediatek.com>, <leon.yen@mediatek.com>,
+	<litien.chang@mediatek.com>, <jb.tsai@mediatek.com>, <jeff.hsu@mediatek.com>,
+	<eason.lai@mediatek.com>, Jeff Hsu <Jeff.Hsu@mediatek.com>
+Subject: [PATCH] wifi: mt76: Fix coverity issue for dma init
+Date: Wed, 28 Oct 2026 09:57:07 +0800
+Message-ID: <20261028015707.2214888-1-eason.lai@mediatek.com>
+X-Mailer: git-send-email 2.45.2
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird Beta
-Subject: Re: [PATCH v2 net-next 6/7] dt-bindings: net: dsa: mediatek,mt7530:
- add econet,en751221
-To: Rob Herring <robh@kernel.org>, netdev-bot+sashiko@kernel.org
-Cc: netdev@vger.kernel.org, andrew@lunn.ch, olteanv@gmail.com,
- davem@davemloft.net, edumazet@google.com, kuba@kernel.org,
- pabeni@redhat.com, krzk+dt@kernel.org, conor+dt@kernel.org,
- matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
- chester.a.unal@arinc9.com, daniel@makrotopia.org, linux@armlinux.org.uk,
- arinc.unal@arinc9.com, Landen.Chao@mediatek.com, dqfext@gmail.com,
- sean.wang@mediatek.com, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, naseefkm@gmail.com, b.larsson@gmx.com
-References: <20260915174643.253660-7-cjd@cjdns.fr>
- <178967820050.22033.18093714968849770785@kernel.org>
- <20260924154955.GA337010-robh@kernel.org>
-Content-Language: en-US
-From: Caleb James DeLisle <cjd@cjdns.fr>
-In-Reply-To: <20260924154955.GA337010-robh@kernel.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-Last-TLS-Session-Version: TLSv1.3
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261027_181628_058398_B8379D1E 
-X-CRM114-Status: UNSURE (   9.15  )
+X-CRM114-CacheID: sfid-20261027_185718_622833_D6336281 
+X-CRM114-Status: UNSURE (   8.70  )
 X-CRM114-Notice: Please train this message.
 X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-mediatek@lists.infradead.org
@@ -79,38 +87,44 @@ List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-7.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-18.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,
-	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,USER_AGENT_SANE_1 autolearn=no autolearn_force=no
-	version=4.0.1
+	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
+From: Jeff Hsu <Jeff.Hsu@mediatek.com>
 
-On 24/09/2026 17:49, Rob Herring wrote:
-> On Thu, Sep 17, 2026 at 08:50:00PM +0000, netdev-bot+sashiko@kernel.org wrote:
->> Thank you for your contribution! Sashiko AI review found 7 potential
->> issue(s) to consider:
-[...]
->> The analogous MT7621 case does not collide because the SoC root uses
->> mediatek,mt7621-soc.  Since the SoC compatible is already released, would a
->> distinct string for the switch, e.g. econet,en751221-mcm-switch, work here?
-> This needs to be addressed.
+Check the snprintf return value writing napi_dev->name
+free both netdevs and return -EINVAL when < 0
 
+Signed-off-by: Jeff Hsu <Jeff.Hsu@mediatek.com>
+---
+ drivers/net/wireless/mediatek/mt76/dma.c | 8 ++++++--
+ 1 file changed, 6 insertions(+), 2 deletions(-)
 
-Thanks for the note and sorry for the delay. I've just sent v3 with it 
-changed to econet,en751221-gswitch. I did not see any standard for this 
-and the name gswitch is intuitive for owners of the EN751221 chip 
-because switch appears where the chip name has "G" in it, and it 
-provides gigabit ports.
+diff --git a/drivers/net/wireless/mediatek/mt76/dma.c b/drivers/net/wireless/mediatek/mt76/dma.c
+index a67880a9281c..2c5d67a5bb81 100644
+--- a/drivers/net/wireless/mediatek/mt76/dma.c
++++ b/drivers/net/wireless/mediatek/mt76/dma.c
+@@ -1157,8 +1157,12 @@ mt76_dma_init(struct mt76_dev *dev,
+ 	priv = netdev_priv(dev->tx_napi_dev);
+ 	*priv = dev;
+ 
+-	snprintf(dev->napi_dev->name, sizeof(dev->napi_dev->name), "%s",
+-		 wiphy_name(dev->hw->wiphy));
++	if (snprintf(dev->napi_dev->name, sizeof(dev->napi_dev->name), "%s",
++		     wiphy_name(dev->hw->wiphy)) < 0) {
++		free_netdev(dev->tx_napi_dev);
++		free_netdev(dev->napi_dev);
++		return -EINVAL;
++	}
+ 	dev->napi_dev->threaded = 1;
+ 	init_completion(&dev->mmio.wed_reset);
+ 	init_completion(&dev->mmio.wed_reset_complete);
+-- 
+2.45.2
 
-
-Thanks,
-
-Caleb
-
-
->
-> Rob
 
