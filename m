@@ -2,108 +2,156 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id A0E3760A2601
-	for <linux-mediatek@archiver.kernel.org>; Wed, 28 Oct 2026 14:57:38 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 992AD606A31E
+	for <linux-mediatek@archiver.kernel.org>; Wed, 28 Oct 2026 15:01:50 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=uWYxR9Wx;
-	dkim=pass (2048-bit key, unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=jMdI/a00
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=rUsZjgnd;
+	dkim=pass (2048-bit key, unprotected) header.d=qualcomm.com header.i=@qualcomm.com header.a=rsa-sha256 header.s=qcppdkim1 header.b=QzAcC31k;
+	dkim=pass (2048-bit key, unprotected) header.d=oss.qualcomm.com header.i=@oss.qualcomm.com header.a=rsa-sha256 header.s=google header.b=cYYWtZc3
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
-	Message-ID:Date:References:MIME-Version:In-Reply-To:From:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Unsubscribe-Post:List-Owner;
-	bh=mIGs1095/pi5A3phf200bT5vD03Lp1U81y8sX9m5/iA=; b=uWYxR9Wxyz3HZsTgc4kX13jqMD
-	E2MXFpvtK6kOMo1MPh+mlEFv0vPHdfPmqEDk1+Py7DOdcV26Bz9qavfC4A4gHOjkVK8AZMWIpgHev
-	VrmwdxaecLwcGj9TSKlj4L0gasNmrF9mGnF3bRm0Aqe1AmtvLk7sHZt+PXHRpE8TBR9SqewtgcnDn
-	blkzUYWopZf9xeSStgY660EUsBtcW+MHtKaTiCNhEhAvjvZPwwaMWeFLi8b9z/W75ykutSJqWnXIC
-	Ys9+CmT6YI0gGNx58Wj0CgNZVFaq+F1zkK8XnaHOf71s0Ojdp/V0F3UXcUnEwe7m5F8dkwWL34QPT
-	SfywLa3Q==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From
+	:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Unsubscribe-Post:
+	List-Owner; bh=mVhCdDkhAXJ5S102mixnITdimIHOTHoGKH57O2P0pYk=; b=rUsZjgnd5E1/Ls
+	PXMh4tg+66mtbi0ewOCv58osunZ5400W4pUpn2h3QshgWzWMhRIf0ekwnBtwcM1oUYKd5VSWrLSEd
+	+8UmKcdaqmU8yJjHwBnppHXRVYBznOEvCeBXPY6oc25sz4aN7Ub/g4y6f8kMiHDPQwtvFkJF72f/a
+	V5g8bcAFDlYLhm8mUtw8B4Wqll5A90LG8UgTzYq23b6JaW82A2GULRQL22yRj8gYvO4nBhztRD103
+	AycdlXRPve/tFQQymfHHB5zNMaJrUr/JvOQai9f8sd5vAYvZmqZM5HaP+jP98Em9XkAOhmaYlAMer
+	WKQ9HZaBOB7XJxrs883A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xM55u-00000007H4d-12uc;
-	Wed, 28 Oct 2026 14:57:38 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1xM59y-00000007Hta-1PqF;
+	Wed, 28 Oct 2026 15:01:50 +0000
+Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xM55t-00000007H4D-2FcM
+	id 1xM59w-00000007Hru-0yL3
 	for linux-mediatek@lists.infradead.org;
-	Wed, 28 Oct 2026 14:57:37 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id EC91744205
-	for <linux-mediatek@lists.infradead.org>; Wed, 28 Oct 2026 14:57:36 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id D3CBE1F031EF
-	for <linux-mediatek@lists.infradead.org>; Wed, 28 Oct 2026 14:57:36 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1793199456;
-	bh=mIGs1095/pi5A3phf200bT5vD03Lp1U81y8sX9m5/iA=;
-	h=From:In-Reply-To:References:Date:Subject:To:Cc;
-	b=jMdI/a00XCHeoltZkWKqXpcnERaff94e8hUKV8fOm4MaNY8O7y8prtqZlsS9V/TkO
-	 RKGsHZDgxOXPjYTyHI9CJivdGW0s6UtXpw76OxzGTPoDgIC7iHh9yHraCorypu9A24
-	 f13SbMaf8ehpJ1Vrn5gwEG45lQsOTRogifSRjAcKVDsVICaojZ3L6MiUauU5qEyNMj
-	 qdSbdcvGdfG5xCBzqJn0bcDbuYF1FWV3HjEfaA9067wejwOomt/ISv4QmQZPp64M9I
-	 2GQTCVbh2sJlrSjd6LsK2ctiDl2gbWRxESTSbGZXlkBjr7n38p7Qedfk5K1irUEH8I
-	 YCwFtpin54F8g==
-Received: by mail-lj1-f173.google.com with SMTP id 38308e7fff4ca-3ab27e45e7cso8554591fa.3
-        for <linux-mediatek@lists.infradead.org>; Wed, 28 Oct 2026 07:57:36 -0700 (PDT)
-X-Forwarded-Encrypted: i=1; AKwUvBwOvmeZGlLWu7LYMLw38D5a9k+T7n7dTqNQh8My3UeeAJc7LvqnGAIclJPMQFi1DCXs2ZZE0aEJKp9igm7JIQ==@lists.infradead.org
-X-Gm-Message-State: AFq9FYIuVFZKBo8AEOTmwdclUomTOFOZUkA1ZcJzEIZQktF4MdJFgUrF
-	dZ/Mo3hg7RvTMOR4Gfcg+QXeujrMhlM0iToPktwW12pEEWddnL6sntKQGraPoxQ5vCL4tuaexp1
-	xEj96/u+vCwLvorGbg8XS8AHTPPsVIqOQCyW+CB0oUQ==
-X-Received: by 2002:a05:651c:1543:b0:3a9:d756:bfdd with SMTP id
- 38308e7fff4ca-3ac9cf1d2cdmr6179361fa.7.1793199454407; Wed, 28 Oct 2026
- 07:57:34 -0700 (PDT)
-Received: from 969154062570 named unknown by gmailapi.google.com with
- HTTPREST; Wed, 28 Oct 2026 07:57:32 -0700
-Received: from 969154062570 named unknown by gmailapi.google.com with
- HTTPREST; Wed, 28 Oct 2026 07:57:32 -0700
-From: Bartosz Golaszewski <brgl@kernel.org>
-In-Reply-To: <20261028120216.2657397-1-robh@kernel.org>
+	Wed, 28 Oct 2026 15:01:49 +0000
+Received: from pps.filterd (m0279867.ppops.net [127.0.0.1])
+	by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id 69SBdv8Y2082348
+	for <linux-mediatek@lists.infradead.org>; Wed, 28 Oct 2026 15:01:47 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
+	content-transfer-encoding:content-type:date:from:in-reply-to
+	:message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
+	mVhCdDkhAXJ5S102mixnITdimIHOTHoGKH57O2P0pYk=; b=QzAcC31ktlmC2cCS
+	LDO9UhLMk1H9E+JsuvEJv90SGUuvR0kWdzBFd1N55Vb24qADIf7fO2YSfkhikI/n
+	nxYoIzBAJ8kk/mBrOS7zHyz3FZQdaReG04rLsVn1rjqhuZtgP+5gnOgEmD+yqkHg
+	oxq/5E6o7WSEf2GgW/vqS/Aiw2Hl6I9UKBOEgS7BawkO+4qzhtuu6ZauV8oXHuQJ
+	2ImL7ZP/cVrLBQwYGAwanwzJOnRbK8qOFEFKpsABU5J+EbsrkUf27tNh+uY2XNPt
+	h/seLmU0kxBFcJ/VbJmDkJVJkTsnDPrCW5Fynxag64BjuXE12UaCuQ97zXxXfJyj
+	qbvvAA==
+Received: from mail-ot1-f71.google.com (mail-ot1-f71.google.com [209.85.210.71])
+	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4hjyjpvks3-1
+	(version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
+	for <linux-mediatek@lists.infradead.org>; Wed, 28 Oct 2026 15:01:46 +0000 (GMT)
+Received: by mail-ot1-f71.google.com with SMTP id 46e09a7af769-83c2311eb1dso1776757a34.1
+        for <linux-mediatek@lists.infradead.org>; Wed, 28 Oct 2026 08:01:46 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=oss.qualcomm.com; s=google; t=1793199706; x=1793804506; darn=lists.infradead.org;
+        h=content-transfer-encoding:content-type:in-reply-to:content-language
+         :from:references:to:subject:user-agent:mime-version:date:message-id
+         :from:to:cc:subject:date:message-id:reply-to:content-type;
+        bh=mVhCdDkhAXJ5S102mixnITdimIHOTHoGKH57O2P0pYk=;
+        b=cYYWtZc383Y6iQ/QK5yfraACezFb4jvGXJptYMfCpZNipnm+CQbegedG8Dxw66HLKF
+         2y9j916rGdSQfrqhPDX7KOjHivbGI+KPFwT+lKJorWDmOFlM47BoUDf2xAnuVNmKUiLr
+         tRocDdZ1byDL2qWUV7JNow2AAA+bx4Anye1OrDsrU8MIdu7lki0qQN/2YT7rVHDMlNYO
+         3E5cAVBgj4wTEqr9jfagwTXIJxlkhwt4DEzdFEC6KPt/cDl6Oaeqq7dThbiSaUaP5XXR
+         ly/8llw9NYu96OhH1utgnRLsDEJeU9zxUk5uVULQS4nf3ZWdM2WwTCUua5ycvRqgaOKd
+         PSnA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20260707; t=1793199706; x=1793804506;
+        h=content-transfer-encoding:content-type:in-reply-to:content-language
+         :from:references:to:subject:user-agent:mime-version:date:message-id
+         :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to:content-type;
+        bh=mVhCdDkhAXJ5S102mixnITdimIHOTHoGKH57O2P0pYk=;
+        b=PRb5hsVctgSrkcNFkTsHRVgLdnbG0OUVNWo0hZPsGvd8dXG2A+ib+wNlLS/NGLIGop
+         15OC+FsGGrT3BGnlkroM8NQumCQcBm0Niia73VtnV3zhfJ1Y0rpjGA4umdmHyyKaQABu
+         /sGmAcbdjguaw8PLZlTFspugiLt8S7q6tZYNkiG5rX3f1EjDRAt8O09UTOGpq+04QbIR
+         bdfECyiWzjEpHEdHSFXCNOH8uopJfNgjhUzOewxDjwaFqBiZxjtJX7esBa8jhmiDdMMq
+         3QsSzJVfW+kFG2cNeyt/7YocVKuAL3i/ezGcVJNa43tsTxhzdw6hODl6xP+Lth/msd/x
+         BhOg==
+X-Forwarded-Encrypted: i=1; AKwUvBwq6sV0ENkZk30FPBLmbEWLfCAE0U+fk6LuHAOtm98pEzZbpL4PmKjfNO0RYllO4MoJxUXp0eC+STvxTDsX1g==@lists.infradead.org
+X-Gm-Message-State: AFq9FYKgJFiLd7ONDJipWF0bH/XzyHm4gIPcqjzbQ3owNVg0C2wksK0S
+	cBxXtccfq9Sirhovc035lUObUTinW+gXu8/aG6a/bbR+fbsKOcx2mRs5PmLrPqospGBKlELrTNm
+	EEhrXPlP9IPdtizS0O2dOtUCDImvI2bDNgQB7sZEnVWMlZhSHperMiLNlSWgU4LKFnpyp6Vontg
+	E=
+X-Gm-Gg: AYBFou1YfohFjC+VlW102RnMXJWWP50ghu5ENlufMkPHPv7Loce9H7J4qteTBquI5+t
+	9L3drKkGy/OphRa2x+43DdPMqWeHI9u3kjbh+zVkemqkbKp07gWDURxJNwfY6tjfjftysUKhV0e
+	aQOKPLohXUymwpBaDR8jljVORqbdojSaAK9BmJyF/jP/KdxdbdM1VHTvLi3g4a649yhYC01CSA+
+	PcvA3GRDsqWmRT1u8+adXI3tESLSUwygRnyuIPwauupTtGOaUMmAj207ie1c9p/cb01pENDcpV1
+	hKFIgDv1q65ALWtl8Ih4dIA9WjhM0vC2X/+QkWJ77xNrENeS33Sr3v1qd935Fwt3K+wjySqJ3b2
+	ss/6WKhTfZmjc7iX4yEb99dtkZ3DJF2jB5b8jp8kpuSb6UjesQX6vmAOrQjcqdxrSrDFr4HW9d6
+	RpY8Sd8Gi75Tbbr8nVhVCGAdWfQUv7VgSgUA==
+X-Received: by 2002:a05:6820:a65e:20b0:6fd:4277:16e8 with SMTP id 006d021491bc7-713f01edbd4mr1002296eaf.80.1793199705275;
+        Wed, 28 Oct 2026 08:01:45 -0700 (PDT)
+X-Received: by 2002:a05:6820:a65e:20b0:6fd:4277:16e8 with SMTP id 006d021491bc7-713f01edbd4mr1002259eaf.80.1793199704670;
+        Wed, 28 Oct 2026 08:01:44 -0700 (PDT)
+Received: from [10.227.105.111] (i-global254.qualcomm.com. [199.106.103.254])
+        by smtp.gmail.com with ESMTPSA id 006d021491bc7-7142d317adasm1606578eaf.14.2026.10.28.08.01.42
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 28 Oct 2026 08:01:44 -0700 (PDT)
+Message-ID: <d094dc46-760d-4ee5-9404-9fa73a16a6bf@oss.qualcomm.com>
+Date: Wed, 28 Oct 2026 08:01:40 -0700
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-References: <20261028120216.2657397-1-robh@kernel.org>
-Date: Wed, 28 Oct 2026 07:57:32 -0700
-X-Gmail-Original-Message-ID: <CAMRc=Md2xhYPdUEQ2SeqiGq9uG1qcc9Hi77T4k3ta_wmd56BhQ@mail.gmail.com>
-X-Gm-Features: AclHuK-L3iqt92WsRHLJE8OI5aNBBhyNCiN5RHrPr_WcVOO_RomVfpU-3_RxU7E
-Message-ID: <CAMRc=Md2xhYPdUEQ2SeqiGq9uG1qcc9Hi77T4k3ta_wmd56BhQ@mail.gmail.com>
-Subject: Re: [PATCH] dt-bindings: Fix property name typos in if/then schemas
-To: "Rob Herring (Arm)" <robh@kernel.org>
-Cc: Abhinav Kumar <quic_abhinavk@quicinc.com>, linux-arm-msm@vger.kernel.org, 
-	linux-clk@vger.kernel.org, devicetree@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, 
-	linux-rpi-kernel@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
-	freedreno@lists.freedesktop.org, imx@lists.linux.dev, 
-	dmaengine@vger.kernel.org, linux-gpio@vger.kernel.org, 
-	linux-iio@vger.kernel.org, linux-amlogic@lists.infradead.org, 
-	linux-media@vger.kernel.org, linux-pci@vger.kernel.org, 
-	linux-mediatek@lists.infradead.org, Bjorn Andersson <andersson@kernel.org>, 
-	Stephen Boyd <sboyd@kernel.org>, Brian Masney <bmasney+clk@redhat.com>, 
-	Jerome Brunet <jbrunet+clk@baylibre.com>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
-	Conor Dooley <conor+dt@kernel.org>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
-	Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
-	David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
-	Florian Fainelli <florian.fainelli@broadcom.com>, 
-	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>, 
-	Rob Clark <robin.clark@oss.qualcomm.com>, Dmitry Baryshkov <lumag@kernel.org>, 
-	Abhinav Kumar <abhinav.kumar@linux.dev>, Jessica Zhang <jesszhan0024@gmail.com>, 
-	Sean Paul <sean@poorly.run>, Marijn Suijten <marijn.suijten@somainline.org>, 
-	Frank Li <Frank.Li@nxp.com>, Vinod Koul <vkoul@kernel.org>, Yinbo Zhu <zhuyinbo@loongson.cn>, 
-	Linus Walleij <linusw@kernel.org>, Bartosz Golaszewski <brgl@kernel.org>, Jonathan Cameron <jic23@kernel.org>, 
-	David Lechner <dlechner@baylibre.com>, =?UTF-8?B?TnVubyBTw6E=?= <nuno.sa@analog.com>, 
-	Andy Shevchenko <andy@kernel.org>, Neil Armstrong <neil.armstrong@linaro.org>, 
-	Kevin Hilman <khilman@baylibre.com>, 
-	Martin Blumenstingl <martin.blumenstingl@googlemail.com>, Tiffany Lin <tiffany.lin@mediatek.com>, 
-	Andrew-CT Chen <andrew-ct.chen@mediatek.com>, Yunfei Dong <yunfei.dong@mediatek.com>, 
-	Mauro Carvalho Chehab <mchehab@kernel.org>, Marek Szyprowski <m.szyprowski@samsung.com>, 
-	Andrzej Hajda <andrzej.hajda@intel.com>, Ryder Lee <ryder.lee@mediatek.com>, 
-	Lorenzo Pieralisi <lpieralisi@kernel.org>, =?UTF-8?Q?Krzysztof_Wilczy=C5=84ski?= <kwilczynski@kernel.org>, 
-	Manivannan Sadhasivam <mani@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	Christian Marangi <ansuelsmth@gmail.com>, Eric Anholt <eric@anholt.net>, 
-	Kuogee Hsieh <quic_khsieh@quicinc.com>, Peng Fan <peng.fan@nxp.com>, 
-	Aakarsh Jain <aakarsh.jain@samsung.com>
-Content-Type: text/plain; charset="UTF-8"
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 0/4] wifi: unwind failed interface setup and recovery
+To: Jiale Yao <yaojiale02@163.com>, Jeff Johnson <jjohnson@kernel.org>,
+        Miri Korenblit <miriam.rachel.korenblit@intel.com>,
+        Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo@kernel.org>,
+        Ryder Lee <ryder.lee@mediatek.com>,
+        Shayne Chen <shayne.chen@mediatek.com>,
+        Sean Wang <sean.wang@mediatek.com>,
+        Matthias Brugger
+ <matthias.bgg@gmail.com>,
+        AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+        Ilan Peer <ilan.peer@intel.com>,
+        Gregory Greenman <gregory.greenman@intel.com>,
+        Deren Wu <deren.wu@mediatek.com>,
+        Ming Yen Hsieh
+ <mingyen.hsieh@mediatek.com>,
+        linux-wireless@vger.kernel.org, ath10k@lists.infradead.org,
+        linux-arm-kernel@lists.infradead.org,
+        linux-mediatek@lists.infradead.org
+References: <20261028050337.127464-1-yaojiale02@163.com>
+From: Jeff Johnson <jeff.johnson@oss.qualcomm.com>
+Content-Language: en-US
+In-Reply-To: <20261028050337.127464-1-yaojiale02@163.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYxMDI4MDA1OSBTYWx0ZWRfX6X0FRos02u0S
+ A2f3TlJ+kTxDBGY/WEI2A/SwMUkZmpHlZuKQR3vrSf48rz6xFBZ2nYgAsX/vAIkQ2KDY/pub8qC
+ ClEGWE3cuBVQ4S/kT4xALsE5nN/J17B4y0ZOVnW/TzJUBGQaRcLRTIl03P3diBIMvNr/YcngnYn
+ Rm6O73eVnOUr8hOd/Z6TRUQSuBx6o5tQ9tJ3zsdNNseOHKD9eyh8xkIeFcNhPUMKuse9rV9JJ4G
+ R9+deFKQCdwmA9IXVowW0jxJVlWoBrhdcwOb2R97yKTKIuepc0g9iaOQEBG8qtkckWUoF/kTJS/
+ K8fq7vThjpwzWIGqEhN7W2qvRQ9XJtDFmtp+OFPvPVeA+N+7GF/W5sDwqCsvgOEv/kR6wkGBxjy
+ OeFMiHAotjxodGbiVEEVTwUY6v3D627jGKubVVQ2w5VAwxOBgzSBUOW4s8eXXp0OWLifrtZRT5V
+ yECsgPmn+MlYfbFyeKA==
+X-Proofpoint-ORIG-GUID: M3ZrLhbftGiPY1wTGMtM9rFnL4aq4Cng
+X-Proofpoint-GUID: M3ZrLhbftGiPY1wTGMtM9rFnL4aq4Cng
+X-Proofpoint-Spam-Info: AW1haW4tMjYxMDI4MDA1OSBTYWx0ZWRfX6IXg4GtHLirc
+ XpbryuWs+nrYydK1ZWGf5CtA2NPHGHIwxLhhXOEOyoxgnvK2458IQUq0s3kRNaIIi4dfkuUHgMy
+ 9h4in1+dZ5wBYq05mCtQbvC3J3UvkTM=
+X-Authority-Analysis: v=2.4 cv=JodkP84C c=1 sm=1 tr=0 ts=6ae20e5a cx=c_pps
+ a=OI0sxtj7PyCX9F1bxD/puw==:117 a=JYp8KDb2vCoCEuGobkYCKw==:17
+ a=IkcTkHD0fZMA:10 a=660iZSQnnn4A:10 a=s4-Qcg_JpJYA:10
+ a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=eoimf2acIAo5FJnRuUoq:22
+ a=JmONO2TMLgSK87zk2EoA:9 a=QEXdDO2ut3YA:10 a=Z1Yy7GAxqfX1iEi80vsk:22
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1176,Hydra:6.1.138,FMLib:17.12.100.49
+ definitions=2026-10-28_04,2026-10-21_02,2025-10-01_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ impostorscore=0 clxscore=1011 malwarescore=0 bulkscore=0 suspectscore=0
+ priorityscore=1501 spamscore=0 adultscore=0 lowpriorityscore=0 phishscore=0
+ classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
+ reason=mlx scancount=1 engine=8.22.0-2610190000 definitions=main-2610280059
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20261028_080148_316106_B0689474 
+X-CRM114-Status: GOOD (  11.87  )
+X-Spam-Score: -2.8 (--)
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -114,33 +162,41 @@ List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-15.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-12.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,
-	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=ham
+	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1 autolearn=ham
 	autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On Wed, 28 Oct 2026 13:02:12 +0100, "Rob Herring (Arm)" <robh@kernel.org> said:
-> Property names within if/then schemas currently go unchecked whether
-> they have a type defined or match what's in the top-level schema. Adding
-> a check finds a number of instances of typos. The typos result in the
-> schema having no effect on constraints.
->
-> With this, fix the mediatek,vcodec-encoder 'clocks' count constraint
-> exposed by the name correction.
->
-> Signed-off-by: Rob Herring (Arm) <robh@kernel.org>
-> ---
->  .../devicetree/bindings/clock/qcom,kpss-gcc.yaml     |  2 +-
->  .../bindings/display/brcm,bcm2711-hdmi.yaml          |  2 +-
->  .../bindings/display/msm/dp-controller.yaml          |  2 +-
->  .../devicetree/bindings/display/msm/hdmi.yaml        |  4 ++--
->  Documentation/devicetree/bindings/dma/fsl,edma.yaml  |  2 +-
->  .../devicetree/bindings/gpio/loongson,ls-gpio.yaml   |  2 +-
+On 10/27/2026 10:03 PM, Jiale Yao wrote:
+> Several wireless interface setup and reset recovery paths publish host
+> pointers or create firmware state before later operations which can fail.
+> Their error paths either retain pointers to vifs that mac80211 will free
+> or continue after firmware interface restoration has failed.
+> 
+> Clear the published ath10k and iwlwifi pointers on add failure. Check the
+> mt7921 and mt7925 firmware restore results, remove partial state and stop
+> configuring the affected interface. Each patch fixes an independent
+> driver path and can be applied separately.
+> 
+> Jiale Yao (4):
+>   wifi: ath10k: clear monitor interface after add failure
+>   wifi: iwlwifi: mvm: clear P2P device pointer on add failure
+>   wifi: mt76: mt7921: unwind interface restore failures
+>   wifi: mt76: mt7925: unwind link restore failures
+> 
+>  drivers/net/wireless/ath/ath10k/mac.c         |  1 +
+>  .../wireless/intel/iwlwifi/mvm/mld-mac80211.c |  5 +++-
+>  .../net/wireless/mediatek/mt76/mt7921/mac.c   | 16 +++++++++---
+>  .../net/wireless/mediatek/mt76/mt7925/mac.c   | 26 ++++++++++++++++---
+>  4 files changed, 41 insertions(+), 7 deletions(-)
+> 
 
-For GPIO:
+You are sending patches that fall into 3 different maintainer trees in one series.
 
-Acked-by: Bartosz Golaszewski <bartosz.golaszewski@oss.qualcomm.com>
+It is much easier for us maintainers if you split your patches by maintainer.
+
+/jeff
 
