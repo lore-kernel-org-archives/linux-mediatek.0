@@ -2,118 +2,70 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 30079606A31D
-	for <linux-mediatek@archiver.kernel.org>; Wed, 28 Oct 2026 16:04:15 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 761DE606A324
+	for <linux-mediatek@archiver.kernel.org>; Wed, 28 Oct 2026 16:33:33 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=SoS5WRZq;
-	dkim=pass (2048-bit key, unprotected) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=ul7n4MfS
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=H2IXCzqh;
+	dkim=pass (2048-bit key, unprotected) header.d=cjdns.fr header.i=@cjdns.fr header.a=rsa-sha256 header.s=dkim header.b=S4vN2VHf
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Unsubscribe-Post:
-	List-Owner; bh=wW+/Xd8Krv/fKYtWcQLYyD+KltWSe3OXoRZLQJCTD0I=; b=SoS5WRZqq8KEbf
-	UqOUFlR4+As56uxl4OeHJGkB43HsWOUf5G83d4gLJXt41J7X3hqlbVkYOJGm3w6RF+LGF/43U9uIN
-	8l4e2Ec5zkfT2dUFtHgXRnrxXhfnN5PKe843uz1tlcR5kn7LIOUhOIL67xRWwwKlJ8j+g9nqNlxAN
-	s8TkwkqYaXJ2KcDsQtD8LM0AQK3Ope4GG7pdfdh3aB9s2NJf7vJ+Qofcu4wOINzItE7x8KFCcHQhd
-	Pms1+GNEuaxJHs9dtVzIhsOqxCedGHz5pj0EP5FJi/Pm0S31klZBoQeLSB2UizCvzGS7V/muDbWVZ
-	xbgWpjLxF1TmhOkzjtew==;
+	List-Owner; bh=F0ZbMX9EeyLfy26pKyFOUMN1PmtyM/y56Mw7EBfzcA0=; b=H2IXCzqhsxImDp
+	skbq9pSFg3M5w+TC0H+Y97UqjRjvunKrOdsD/PVeuCksR88pgPf8+wmvDPQqULLifanxeBehm3RqY
+	OXjCN129J3wcCfBn7PZzMTddPJ7IvEBLYvORkmalIaqCHLoRC3oijrls6bQAAnF/gwC8HPp/zYhrh
+	9W2aBWJjHvaa15r7AxAV2FcroC7vFZ+JcVITYA3LDl7qfmw34CCcQC0OhqZGtn3g1FeYqIjB/bY18
+	sJ9IFLWXNLZtcGSwj0R27Jyx7e2BfkHnBhXHBTfJ1NlFFNuJHZufNLkRKbA1eLbBJQeo2aJZqM8Ha
+	gNzixosnvtInwocvngMQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xM68M-00000007U9A-3HzE;
-	Wed, 28 Oct 2026 16:04:14 +0000
-Received: from mail-ua1-x934.google.com ([2607:f8b0:4864:20::934])
+	id 1xM6aj-00000007XxR-0l2v;
+	Wed, 28 Oct 2026 16:33:33 +0000
+Received: from mail.cjdns.fr ([5.135.140.105])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xM68J-00000007U8M-3g2b
-	for linux-mediatek@lists.infradead.org;
-	Wed, 28 Oct 2026 16:04:13 +0000
-Received: by mail-ua1-x934.google.com with SMTP id a1e0cc1a2514c-9909e82513fso852080241.0
-        for <linux-mediatek@lists.infradead.org>; Wed, 28 Oct 2026 09:04:08 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20260707; t=1793203448; x=1793808248; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to:content-type;
-        bh=wW+/Xd8Krv/fKYtWcQLYyD+KltWSe3OXoRZLQJCTD0I=;
-        b=ul7n4MfSkZiUAJ04RjJbxDk9hrO1k2HLO2UnhD5pcSnIPG/9D+jXYjufZPqXxMxz/+
-         Tgj3M1KJ0q1no8L/b87V+o8cSEAyRtahwb49ffdtinjDJoUGkdDQKyBvc1DklVWbF14e
-         9111JQFeI/pCUGrU2x8N0INO/QhLRUuB1BeM1XC/9TiLIcS5NomZ7URTYIu3RskMf5bS
-         DNno00BxEcWC4RYJa/A05M+rzqDc2nSnNY97muecfhRAoacSBOdUzI8fgo2NSwubo547
-         L72TUE4oEryFtJOLhH5cfGdqKxbgM4Ge51YTTKtrYwPPbosYgtBLuW0mlQKyWlY8+hWA
-         h4oA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1793203448; x=1793808248;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
-         :to:cc:subject:date:message-id:reply-to:content-type;
-        bh=wW+/Xd8Krv/fKYtWcQLYyD+KltWSe3OXoRZLQJCTD0I=;
-        b=oAsJFNUbIB0Mhg7bAtN/ZJJYzCIbIdxM1mf7S/5Xbj8tK2Zgg+CAuSggyxFZebyiGI
-         5+BTNGkKeDw/+GikQ3v9adPaulJBwTuNR2m5RXJxp/RhE54lynBJnSeDFS/qvxzkwXrh
-         k5hTw8KyO1QnRmjxXzBLIbiT0OQXV21hFvWAtExEiwrkXVUxinbFbd6RUod5coSHFjtk
-         Fc8QA++1IYCMnI3BHsji5qXOOhdsEutW3I04alnI5ZfCArbUgIZRfpjtBrl11ngwuYHx
-         m60CyJ0CVU6vb2FzBbPUjYpmHzCgUIBZoPMbDy98H5RqzgjkqWRuaBRuzaHlHchI/pqJ
-         nTXA==
-X-Forwarded-Encrypted: i=1; AKwUvByy21VeummLLNB5jtkplVx367r+fpNMqfH8V4NA3Jj8UDqjB0Dfz84nXPW4HjOveHrxHz0gRDl9yIv+Z3tq7A==@lists.infradead.org
-X-Gm-Message-State: AFq9FYIfF1zj2gAYlI9et1YAh6Rs4lMd1Dj0pyRp9pl3i3drSYUezMLU
-	Re5usQaBg6PwkCm7wGU8YFQr2afO+YvK+eo3ODDNMvsEJpf77Zu8AeCGbJKiPJu3
-X-Gm-Gg: AYBFou39w6A+95kjPxJQCHJfha5NFWoWD1dMPYKvAKSTM7Jje5BC04PaOQQQcypIQyy
-	1koNUWssh8ecCAaL5FLbTy5XCA7WGlyYPaYy+g94Dm/JRq7InJ0uEssrEjcJlZCejXJPD7RP8P9
-	9Bupsimm31GeMeTThV7RAEpkqSP36NyzHDRp0WNBxzJCKrxCaxF4DXIpQn3k9JPRW4ta3h//idW
-	JJcNttZQ34IniJByLlDPWx4Xs6M7gS938YX68OXuk8vxJCdbIMXY1Ssz6cWCUzxDloM0npsJ3q3
-	5kHwNPF0n58jsUxGiI1SJUUkcQSmLnITimq3XS2gQXUHE+hm8qcII4MzcXGG9k6lu+8/XEKnFMd
-	MFp850pPG64F3MnOr1wz37R6hZ9bHUDpR6wqfNQ+m3DirN0h2eQXBHyGokUnh2w/9ilY7rpuqGz
-	uGvIqQCuI8y6+QRaE5F640TXHEKPDCwA4QktSsDt1lpqlSYc4TnXHUkueUm/7HlQN4YLTSTw8CK
-	0oZXCFMIqVsTqIAd+7d1A+Tnevzw7OMwvLLdgozM2bTe8feTRzv3a3042hObgnaKNOF7pxH2QQP
-	2x2nT50UCeZU19yU0xSL9qPuBPPDo1j6w4YjTrDMDVdDq2uzgie0qwkvqshR1S6/3lCgjO6734+
-	YXQ==
-X-Received: by 2002:ac5:cd4f:0:b0:5cd:4fdc:4c30 with SMTP id 71dfb90a1353d-5ec3ea67966mr1617819e0c.8.1793203447486;
-        Wed, 28 Oct 2026 09:04:07 -0700 (PDT)
-Received: from localhost.localdomain ([190.177.146.128])
-        by smtp.gmail.com with ESMTPSA id a1e0cc1a2514c-991259db2d3sm6354565241.6.2026.10.28.09.04.00
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 28 Oct 2026 09:04:06 -0700 (PDT)
-From: Cristian Papa <pcristian292@gmail.com>
-To: cjd@cjdns.fr
-Cc: netdev@vger.kernel.org,
-	andrew@lunn.ch,
-	olteanv@gmail.com,
-	davem@davemloft.net,
-	edumazet@google.com,
-	kuba@kernel.org,
-	pabeni@redhat.com,
-	robh@kernel.org,
-	krzk+dt@kernel.org,
-	conor+dt@kernel.org,
-	matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com,
-	chester.a.unal@arinc9.com,
-	daniel@makrotopia.org,
-	linux@armlinux.org.uk,
-	arinc.unal@arinc9.com,
-	Landen.Chao@mediatek.com,
-	dqfext@gmail.com,
-	sean.wang@mediatek.com,
-	devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	naseefkm@gmail.com,
-	b.larsson@gmx.com
-Subject: Re: [PATCH v3 0/7] net: dsa: mt7530: support EcoNet EN751221
-Date: Wed, 28 Oct 2026 13:03:53 -0300
-Message-ID: <20261028160353.4239-1-pcristian292@gmail.com>
-X-Mailer: git-send-email 2.47.3
-In-Reply-To: <20261028011317.1557238-1-cjd@cjdns.fr>
-References: <20261028011317.1557238-1-cjd@cjdns.fr>
+	id 1xM6ag-00000007XwA-39wV;
+	Wed, 28 Oct 2026 16:33:32 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id B7A2A167136;
+	Wed, 28 Oct 2026 17:33:16 +0100 (CET)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cjdns.fr; s=dkim;
+	t=1793205206; h=from:subject:date:message-id:to:cc:mime-version:content-type:
+	 content-transfer-encoding:content-language:in-reply-to:references;
+	bh=F0ZbMX9EeyLfy26pKyFOUMN1PmtyM/y56Mw7EBfzcA0=;
+	b=S4vN2VHfYH/567vYQXf/ucDXOnWMiJ814HImMPur7WVAj5dxDevqFvw2rsuChHsm9izAVd
+	DUbVFVZj7+uNVf+2gb/gRrTrMsbNDzVulLQz8KpmCsGB6xDV6Wx4uKhvgLE6xiZw0z1QI5
+	S5t2G08BYUDoSLTfZHkE74XBJkp0G0/2FEmJEGSSMYAPVXi+uN8UbvKFMcwLXX49Zqq4MJ
+	x9HxNYW/Zs3D0HILWMbXAb3BLQaWDx35BT3Un2+SRVji2hrZw56h/YACqwfBTln3un7jRj
+	OF2piLTzT/wYcYIFAL8IYDht5/iF3+0JKyZK1PiupBn9mjI5vvEiL4ExQB7Q8w==
+Message-ID: <c157df9e-b70e-4ba6-b808-5d13379b762e@cjdns.fr>
+Date: Wed, 28 Oct 2026 17:33:14 +0100
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+User-Agent: Mozilla Thunderbird Beta
+Subject: Re: [PATCH v3 0/7] net: dsa: mt7530: support EcoNet EN751221
+To: Cristian Papa <pcristian292@gmail.com>
+Cc: netdev@vger.kernel.org, andrew@lunn.ch, olteanv@gmail.com,
+ davem@davemloft.net, edumazet@google.com, kuba@kernel.org,
+ pabeni@redhat.com, robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
+ matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
+ chester.a.unal@arinc9.com, daniel@makrotopia.org, linux@armlinux.org.uk,
+ arinc.unal@arinc9.com, Landen.Chao@mediatek.com, dqfext@gmail.com,
+ sean.wang@mediatek.com, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, naseefkm@gmail.com, b.larsson@gmx.com
+References: <20261028011317.1557238-1-cjd@cjdns.fr>
+ <20261028160353.4239-1-pcristian292@gmail.com>
+Content-Language: en-US
+From: Caleb James DeLisle <cjd@cjdns.fr>
+In-Reply-To: <20261028160353.4239-1-pcristian292@gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+X-Last-TLS-Session-Version: TLSv1.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261028_090411_924082_ABEF3A11 
-X-CRM114-Status: UNSURE (   9.34  )
-X-CRM114-Notice: Please train this message.
-X-Spam-Score: -0.8 (/)
+X-CRM114-CacheID: sfid-20261028_093331_010227_022A95D1 
+X-CRM114-Status: GOOD (  20.81  )
+X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -124,55 +76,89 @@ List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-4.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
-	DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,FORGED_GMAIL_RCVD,
-	FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=no
-	autolearn_force=no version=4.0.1
+X-Spam-Status: No, score=-7.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,
+	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS,USER_AGENT_SANE_1 autolearn=no autolearn_force=no
+	version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Hi Caleb,
+Hello Christian,
 
-I tested v3 on a TP-Link Archer XR500v v1 (EN7526G: on-die switch plus the
-MCM gigabit switch).
 
-Setup: OpenWrt with kernel 6.18.44. I took the four mt7530 files from
-econet_eth at 3a8bcd2e6398 (they contain every line added by 1/7, 3/7,
-4/7, 5/7 and 7/7 of v3) and booted from RAM over TFTP, nothing written to
-flash.
+Thank you for testing!
 
-With the DT from en751221g.dtsi in openwrt#25330 (MCM "econet,en751221",
-no "mediatek,mcm", dsa,member <0 1> on the on-die switch and <0 0> on the
-MCM):
 
-- 18/18 boots: all 10 TRGMII lanes found a window, no "calibration
-  failed", "TRGMII inter-switch link initialized", DSA tree set up, ping
-  over lan4.
-- The chosen taps were stable across boots (+/-1): SoC->MCM 15-22,
-  MCM->SoC 27-29. In the SoC->MCM direction the window always starts at
-  tap 0.
-- 6 of those boots ran iperf3 for 6 s each way through lan4: 0 RX CRC
-  errors on on-die port 5 (~1.05M frames) and on MCM port 6 (~1.29M
-  frames). In 4 of 10 boots MCM port 6 already had 1 CRC error before any
-  traffic, probably from the calibration; it did not grow.
+On 28/10/2026 17:03, Cristian Papa wrote:
+> Hi Caleb,
+>
+> I tested v3 on a TP-Link Archer XR500v v1 (EN7526G: on-die switch plus the
+> MCM gigabit switch).
+>
+> Setup: OpenWrt with kernel 6.18.44. I took the four mt7530 files from
+> econet_eth at 3a8bcd2e6398 (they contain every line added by 1/7, 3/7,
+> 4/7, 5/7 and 7/7 of v3) and booted from RAM over TFTP, nothing written to
+> flash.
+>
+> With the DT from en751221g.dtsi in openwrt#25330 (MCM "econet,en751221",
+> no "mediatek,mcm", dsa,member <0 1> on the on-die switch and <0 0> on the
+> MCM):
+>
+> - 18/18 boots: all 10 TRGMII lanes found a window, no "calibration
+>    failed", "TRGMII inter-switch link initialized", DSA tree set up, ping
+>    over lan4.
+> - The chosen taps were stable across boots (+/-1): SoC->MCM 15-22,
+>    MCM->SoC 27-29. In the SoC->MCM direction the window always starts at
+>    tap 0.
+> - 6 of those boots ran iperf3 for 6 s each way through lan4: 0 RX CRC
+>    errors on on-die port 5 (~1.05M frames) and on MCM port 6 (~1.29M
+>    frames). In 4 of 10 boots MCM port 6 already had 1 CRC error before any
+>    traffic, probably from the calibration; it did not grow.
+>
+> Following the binding in 6/7, the MCM does not come up on this board:
+>
+> - "econet,en751221-gswitch": mt7530-mdio.c in 7/7 still matches
+>    "econet,en751221", so nothing probes the MCM and there are no LAN
+>    ports.
 
-Following the binding in 6/7, the MCM does not come up on this board:
 
-- "econet,en751221-gswitch": mt7530-mdio.c in 7/7 still matches
-  "econet,en751221", so nothing probes the MCM and there are no LAN
-  ports.
-- "mediatek,mcm", which the binding requires for -gswitch: the probe
-  fails with "Couldn't get our reset line", since nothing provides an
-  "mcm" reset yet (the TODO in en751221g.dtsi).
+Whoops, I see I made an error on patch 7 and did not update the name to 
+"gswitch", I will send a v4 soon.
 
-So I think 7/7 should match the new compatible, and the binding should not
-require "mediatek,mcm" while there is no "mcm" reset for the EN751221.
 
-Not covered yet: cold boots, and the other LAN ports beyond link-up on
-lan3/lan4. I'm happy to give a Tested-by once the compatible strings line
-up, and to rerun anything you'd like; the full boot logs are available.
+> - "mediatek,mcm", which the binding requires for -gswitch: the probe
+>    fails with "Couldn't get our reset line", since nothing provides an
+>    "mcm" reset yet (the TODO in en751221g.dtsi).
+
+
+Also expected as setting "mediatek,mcm" requires specifying the reset 
+line, and reset for the MCM is on its own unique register and is not yet 
+supported by en7523-clk.c reset controller. The OpenWrt implementation 
+is a bit cheating by not bumping the reset line at all right now but in 
+my testing it was not different when I manually bumped it so it seems 
+okay for now
+
+
+>
+> So I think 7/7 should match the new compatible, and the binding should not
+> require "mediatek,mcm" while there is no "mcm" reset for the EN751221.
+>
+> Not covered yet: cold boots, and the other LAN ports beyond link-up on
+> lan3/lan4. I'm happy to give a Tested-by once the compatible strings line
+> up, and to rerun anything you'd like; the full boot logs are available.
+
+
+I'll send a v4 and I will synchronize the PR on OpenWrt to it so you can 
+test easily.
+
 
 Thanks,
-Cristian
+
+Caleb
+
+
+>
+> Thanks,
+> Cristian
 
