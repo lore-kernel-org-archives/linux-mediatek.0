@@ -2,49 +2,49 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id F2DCB6073232
-	for <linux-mediatek@archiver.kernel.org>; Wed, 28 Oct 2026 11:19:30 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 7FDD1606A323
+	for <linux-mediatek@archiver.kernel.org>; Wed, 28 Oct 2026 11:27:38 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=n50ysp98;
-	dkim=pass (2048-bit key, unprotected) header.d=cjdns.fr header.i=@cjdns.fr header.a=rsa-sha256 header.s=dkim header.b=m59PuZSH
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=h1lyRbSZ;
+	dkim=pass (2048-bit key, unprotected) header.d=cjdns.fr header.i=@cjdns.fr header.a=rsa-sha256 header.s=dkim header.b=Pl1km/oF
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Unsubscribe-Post:
-	List-Owner; bh=yKdfPzMRS/kwPXscycDGzlcjovJBQwAGTa4z13VzbQI=; b=n50ysp98tTV+zx
-	lhqydv7gjKS7x4s3cSzNWYuqnrFSfNLrM3M6B3HpOgnLQmjrjjqCjXXQB22QwILJseSSqO0mRLI63
-	STvl8khvphgokNc1PzvnfSs32aOXxFZfN3n3/US/QCLEGgBJIkM6q3naCImNCs8nIQtcyO0Yv11IS
-	dKsoK428Li38WNlQVZKrsj8KBNpG3j7KdGb1Gf10Rh+h1aQpbYlUMh0NBC/RndoeMFsJ62chBzvZz
-	yjrgQtKgPVmtAzYyk4H/Pib57w7Ym6n+Oj9DguhGxZ2VEETSdVJdyVL3OEytJf481NDSL7ONptKQx
-	gVSkXCaKTeqfQIAj7KKQ==;
+	List-Owner; bh=CevGQp+s1w1J24KtaW8+NnlonqWYYMxxCOLZ2QIESgY=; b=h1lyRbSZjlGzoS
+	ruy3OJh7mJqeuSvlZzsKyJQytJP5j3pk9SmKDLauWMjINzf5MU6RwNinzdPEojk7o3XzZ6jBqjwhl
+	jbI2kPiYTDcEk+IasRQAq5ihIddWjI4q0huedsBtEsaWZvxYC0TfEUmeGjVoTtP1KkI9pNcD/sN9u
+	8MS8WpooGN+vWYA2GkSUdn2QnvgwhUr5zQBBrPTVmowMOgxjaTZ5h95/JN+dVU9xyyKVmDZ8bUL8Z
+	ZyXAJq8hc/7Cr3UqG574m38w56D5LSPNGs9YBN/BlvBrwz1sR9fR36Gnq0LQvbYWhFo8DjcpvUhAx
+	dv9ilkkhrzp2VN/q668Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xM1go-00000006qSR-2v4O;
-	Wed, 28 Oct 2026 11:19:30 +0000
+	id 1xM1og-00000006rQf-10Hs;
+	Wed, 28 Oct 2026 11:27:38 +0000
 Received: from mail.cjdns.fr ([5.135.140.105])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xM1gl-00000006qRJ-33Zc;
-	Wed, 28 Oct 2026 11:19:29 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id 17AC6159721;
-	Wed, 28 Oct 2026 12:19:16 +0100 (CET)
+	id 1xM1oc-00000006rOX-2l6y;
+	Wed, 28 Oct 2026 11:27:36 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id E16F415A508;
+	Wed, 28 Oct 2026 12:27:19 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cjdns.fr; s=dkim;
-	t=1793186363; h=from:subject:date:message-id:to:cc:mime-version:content-type:
+	t=1793186847; h=from:subject:date:message-id:to:cc:mime-version:content-type:
 	 content-transfer-encoding:content-language:in-reply-to:references;
-	bh=yKdfPzMRS/kwPXscycDGzlcjovJBQwAGTa4z13VzbQI=;
-	b=m59PuZSH0wQWRO9g5AKyqgoruvEOgJ05UH1RBowvozLh4c0D7H8AJ26PyakRtlinOM4ufv
-	BTYUDPZuRQL2RTJvtudK5LoGl/TCl+D+p7e1SElHrXce5jiI/Ap3RBqGKeLpcyfGv6yM+Z
-	4NOK5BYdKEedmrwXMu0mAqNrwh816Z1vAQcsx0AiClAsXSR2HZvwo19wH2W55PMhrMoHm3
-	t7esB+H7DBXHwd1LbsRPKBQgsumglcmvEXC+N/j2xIC/XOZuLqCSvTfLP8xsds7ksQwIB+
-	GfgzQ4/LhBGLAc6F2Y0MOb9RTuW3q2rQn9dmNu6phmmMY/4L5i3yCc1ml8MQGw==
-Message-ID: <9f955484-1ca4-44a4-84a9-cc1d062efcf0@cjdns.fr>
-Date: Wed, 28 Oct 2026 12:19:16 +0100
+	bh=CevGQp+s1w1J24KtaW8+NnlonqWYYMxxCOLZ2QIESgY=;
+	b=Pl1km/oFujov7U9vn/7PmrQGLNFYnU/cP8SNsfDLDBHYvir/Jn3mahgOhSPuJ59sYmoqvX
+	CfOXb/EfnQu1Fn8NE1WUxyynR5JsDereRbofEGGwlD/NFgF7DKvyr0ox4QXGIZ+gjncfiY
+	47cetQ+qi5KEc/xrFTURm/7nbjl7vLJ28+DQPyJV9dM3nEMk+rY/tVEPklt+RYqb8xcdQ+
+	Lcvi+/GQIN751WRGVRpruLaIEuzSfKbnhhlWI9YAODcHgFIQEChTpqO39jzPze0WX0BEdF
+	m2RotoTUCr+dBL60t14SfOfG+ZNBN3sN6kzA8w57hxRpzSwmlSgSesO540Hcnw==
+Message-ID: <521b930f-0bf9-4373-bfbf-3e2570661ec9@cjdns.fr>
+Date: Wed, 28 Oct 2026 12:27:18 +0100
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird Beta
-Subject: Re: [PATCH v3 6/7] dt-bindings: net: dsa: mediatek,mt7530: add
- econet,en751221
+Subject: Re: [PATCH v3 2/7] dt-bindings: net: dsa: mediatek,mt7530: add
+ passthrough mode
 To: Andrew Lunn <andrew@lunn.ch>
 Cc: netdev@vger.kernel.org, olteanv@gmail.com, davem@davemloft.net,
  edumazet@google.com, kuba@kernel.org, pabeni@redhat.com, robh@kernel.org,
@@ -56,17 +56,17 @@ Cc: netdev@vger.kernel.org, olteanv@gmail.com, davem@davemloft.net,
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
  naseefkm@gmail.com, b.larsson@gmx.com
 References: <20261028011317.1557238-1-cjd@cjdns.fr>
- <20261028011317.1557238-7-cjd@cjdns.fr>
- <f9249c6d-ef72-4723-a3b5-8d5375e53744@lunn.ch>
+ <20261028011317.1557238-3-cjd@cjdns.fr>
+ <a031f089-0b96-4fc0-b878-6af13414524f@lunn.ch>
 Content-Language: en-US
 From: Caleb James DeLisle <cjd@cjdns.fr>
-In-Reply-To: <f9249c6d-ef72-4723-a3b5-8d5375e53744@lunn.ch>
+In-Reply-To: <a031f089-0b96-4fc0-b878-6af13414524f@lunn.ch>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-Last-TLS-Session-Version: TLSv1.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261028_041927_967633_E60771ED 
-X-CRM114-Status: GOOD (  15.89  )
+X-CRM114-CacheID: sfid-20261028_042735_067985_57D74721 
+X-CRM114-Status: GOOD (  16.55  )
 X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -78,46 +78,57 @@ List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-7.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-17.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,
-	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,USER_AGENT_SANE_1 autolearn=no autolearn_force=no
-	version=4.0.1
+	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1
+	autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
 
-On 28/10/2026 03:26, Andrew Lunn wrote:
-> On Wed, Oct 28, 2026 at 01:13:16AM +0000, Caleb James DeLisle wrote:
->> The EcoNet EN751221 MIPS SoC integrates an MT7530 switch memory-mapped
->> in the SoC register space. It is similar to the econet,en7528-switch
->> except that ports 0..3 are 10/100 only, port 4 has a gigabit PHY, and
->> port 5 has no PHY, but is in some implementations connected to a
->> downstream MT7530 multi-chip module via a TRGMII link.
+On 28/10/2026 03:04, Andrew Lunn wrote:
+> On Wed, Oct 28, 2026 at 01:13:12AM +0000, Caleb James DeLisle wrote:
+>> MT7530 switches can be configured to blindly pass packets between their
+>> CPU/upstream port and a downstream DSA port, in particular, without
+>> altering the MediaTek DSA Tag on the packets. This mode is used in some
+>> integrations where an SoC integrated switch exists, but a more capable
+>> MCM switch is added to effectively replace it.
 >>
->> The downstream MT7530 is similar to the MT7621 multi-chip module and
->> has all gigabit ports.
+>> Signed-off-by: Caleb James DeLisle <cjd@cjdns.fr>
+>> Acked-by: Rob Herring (Arm) <robh@kernel.org>
+>> ---
+>>   .../devicetree/bindings/net/dsa/mediatek,mt7530.yaml       | 7 +++++++
+>>   1 file changed, 7 insertions(+)
 >>
->> Add the econet,en751221-switch compatible with the same constraints as
->> the other built-in switches and also add the econet,en751221-gswitch
->> multi-chip-module switch whose port 6 is configured as a DSA link port.
-> Is there a use case of the econet,en751221-switch not in pass through
-> mode? This is where you could have a different dsa_switch_ops
-> structure, which probably makes the changes less invasive.
->
-> Even if there is a use case for not pass through, you can still look
-> for the property in probe, and decide which of two different
-> dsa_switch_ops to pass to dsa_register_switch.
+>> diff --git a/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml b/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml
+>> index 90b3582b7619..e29fb8693498 100644
+>> --- a/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml
+>> +++ b/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml
+>> @@ -73,6 +73,13 @@ description: |
+>>   
+>>         Check out example 7.
+>>   
+>> +  The MT7530 and MT7531 switches are capable of being operated in "passthrough"
+>> +  mode. In this mode, traffic is unconditionally passed between the CPU port
+>> +  and the DSA port which links to a second switch. To use passthrough mode, the
+>> +  upstream switch is configured with a DSA link to the downstream switch. In
+>> +  passthrough mode the upstream switch is restricted, with no other ports or
+>> +  switch configuration allowed.
+>> +
+>>   properties:
+>>     compatible:
+>>       oneOf:
+> Looking at just what is here, all i see is a comment. There is no new
+> property? Yet the subject is "add passthrough mode"?
 
 
-I think this was pretty much answered in my reply to your patch 3 
-review. Without insider knowledge, my understanding is EN751221 is a 
-common die, and it's packaged in a variety of different EN751x (DSL) and 
-EN752x (Fiber) chip modules. The die has a switch with 3x 10/100 ports 
-and 1x gigabit port. Chips with a 'G' in the name (EN7513G, EN7526G that 
-I know) have the MCM switch and use the on-die switch as a passthrough. 
-So yes, in short there are real (and quite popular) devices with both 
-MCM and non-MCM implementations.
+Indeed, I used "add" to mean "add documentation of". Per my reply on 
+patch 3, I think we really prefer to avoid special properties and let 
+this constitute (very) limited support for a switch hierarchy.
+
+If there's another verb you think makes a better commit line, I'd be 
+happy to adjust.
 
 
 Thanks,
@@ -126,5 +137,5 @@ Caleb
 
 
 >
-> 	   Andrew
+> 	Andrew
 
