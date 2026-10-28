@@ -2,11 +2,11 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 59D7F606A31E
-	for <linux-mediatek@archiver.kernel.org>; Wed, 28 Oct 2026 02:20:58 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 95514606A31F
+	for <linux-mediatek@archiver.kernel.org>; Wed, 28 Oct 2026 02:26:52 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=X0pBp85W;
-	dkim=fail reason="signature verification failed" (1024-bit key, unprotected) header.d=lunn.ch header.i=@lunn.ch header.a=rsa-sha256 header.s=20171124 header.b=Q4dEGGKV
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=Tn8IKguI;
+	dkim=fail reason="signature verification failed" (1024-bit key, unprotected) header.d=lunn.ch header.i=@lunn.ch header.a=rsa-sha256 header.s=20171124 header.b=VEDWLivC
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
@@ -14,32 +14,32 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=fR07HzCYiHUWXoygEK4KE/KCkYYrHs4rlMJZsk/rRdk=; b=X0pBp85Wpbx4634L846tS1OvMx
-	046kQTFRdMfgTN8xJuph1TLtQWo1AMhIrwIjeuLrsSjM8BRHVLafMINyGOpBFB+U5WlhTMLF2fs/a
-	+EHdNJ2eTB7zoJQchgBot5tHsq27/tYjaayPADaEyYsvP3RGXBCD3x/mc43i3BUamAWn0TvBJEJ/J
-	Vpga8tLdj4yLOFcMHqx3odO/LOyID5Uz/RpKktyUY4iYseOWIOWzyfNpUzKhZAJ1a4Rt8Irb+B9Gc
-	IEue/0+Y3TuwlQRqCrk5pmr5EZZQjfQFv7ytiUw3g3TOR1Qtf2jmXLZuxBfvlUFXsWzqMarMX2e8N
-	Tan7+0WA==;
+	bh=nPtXLhmYKu2MN1HqVNGXKzPAg4qEhpU7r/v/4I5Gcsw=; b=Tn8IKguI0akNo8lK5oySxgVwJ5
+	wyAE3cyo7PJjs4sNTfVipVf1ZC6LCLKgw2jYR3B/j0BoAtaJoNvvOgCYamtbi+BHvJVqKTPXgKIeb
+	7wHquxsWj1P02IJjrwh/6ZjO+sf0kpbmN1ZOAfF2XgA/ITGwSPyQXg2SpBEjcJOUiCVxNWFbcLelO
+	QE7BMlCn5xkSACfU0YGUCa9AruX7nesAeL64zfL22BTusPuYvS3NokKDbZCnxSlE9PUSzRKkooEey
+	vCC7AnmG3cgHkV2YHyhOB+fAOVluiQUK98QETbIEVJrbxF6nBXABHr05KxQHvw4WU1U4UqRFR13ER
+	LYhefNrw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xLtHe-000000065eq-0NxZ;
-	Wed, 28 Oct 2026 02:20:58 +0000
+	id 1xLtNM-000000066AU-0USK;
+	Wed, 28 Oct 2026 02:26:52 +0000
 Received: from vps0.lunn.ch ([156.67.10.101])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xLtHb-000000065e1-1zTD;
-	Wed, 28 Oct 2026 02:20:56 +0000
+	id 1xLtNJ-0000000669p-3QMK;
+	Wed, 28 Oct 2026 02:26:51 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
 	s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
 	References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
 	Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
 	Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
-	bh=fR07HzCYiHUWXoygEK4KE/KCkYYrHs4rlMJZsk/rRdk=; b=Q4dEGGKVey53CbOf9pJ4D+Qgeu
-	+LuZKwfaRnJ/Mnxr3h9OLDa1i9BLVJvt1ZYkxMn4nXsO66nFT0/3fxs9bITdm4hIg2Dj2haphPyBx
-	0PvrEXVIKaXT1C0Up8iWyweRQ9dbZ5v9QVACNXM05HfQreaS5mLiWv4esqheyvYDgqqQ=;
+	bh=nPtXLhmYKu2MN1HqVNGXKzPAg4qEhpU7r/v/4I5Gcsw=; b=VEDWLivCoqhxBjJLnnm14TEPWp
+	COR2QNe350SBN7ngS9ca47m5qquhREyv6mzRKL+WbB4zC67Pm96/qcSlpdnIfWZ4se8X7lrJLdAIp
+	JLyOynqzySu/jv5BmF15h8rEn14Yxs2ASxRzT1T0t8F7demXZgLsXVhnrMbQbLpVCinM=;
 Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
 	(envelope-from <andrew@lunn.ch>)
-	id 1xLtHG-00D2pX-Ip; Wed, 28 Oct 2026 03:20:34 +0100
-Date: Wed, 28 Oct 2026 03:20:34 +0100
+	id 1xLtMz-00D2sQ-Fk; Wed, 28 Oct 2026 03:26:29 +0100
+Date: Wed, 28 Oct 2026 03:26:29 +0100
 From: Andrew Lunn <andrew@lunn.ch>
 To: Caleb James DeLisle <cjd@cjdns.fr>
 Cc: netdev@vger.kernel.org, olteanv@gmail.com, davem@davemloft.net,
@@ -53,19 +53,19 @@ Cc: netdev@vger.kernel.org, olteanv@gmail.com, davem@davemloft.net,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org, naseefkm@gmail.com,
 	b.larsson@gmx.com
-Subject: Re: [PATCH v3 5/7] net: dsa: mediatek: support MDIO switch
- downstream of MMIO switch
-Message-ID: <f6fe9c7a-5617-475b-babe-da24cda815cc@lunn.ch>
+Subject: Re: [PATCH v3 6/7] dt-bindings: net: dsa: mediatek,mt7530: add
+ econet,en751221
+Message-ID: <f9249c6d-ef72-4723-a3b5-8d5375e53744@lunn.ch>
 References: <20261028011317.1557238-1-cjd@cjdns.fr>
- <20261028011317.1557238-6-cjd@cjdns.fr>
+ <20261028011317.1557238-7-cjd@cjdns.fr>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20261028011317.1557238-6-cjd@cjdns.fr>
+In-Reply-To: <20261028011317.1557238-7-cjd@cjdns.fr>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261027_192055_516358_D56BC448 
-X-CRM114-Status: GOOD (  12.66  )
+X-CRM114-CacheID: sfid-20261027_192649_860818_72C3F9CB 
+X-CRM114-Status: GOOD (  13.61  )
 X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -84,25 +84,27 @@ X-Spam-Status: No, score=-3.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On Wed, Oct 28, 2026 at 01:13:15AM +0000, Caleb James DeLisle wrote:
-> The MT7530 / MT7531 can connect via either MDIO or MMIO. In MMIO mode
-> the switch provides its own MDIO bus which connects to its integrated
-> PHYs, but also can be connected to other things, such as another
-> switch.
+On Wed, Oct 28, 2026 at 01:13:16AM +0000, Caleb James DeLisle wrote:
+> The EcoNet EN751221 MIPS SoC integrates an MT7530 switch memory-mapped
+> in the SoC register space. It is similar to the econet,en7528-switch
+> except that ports 0..3 are 10/100 only, port 4 has a gigabit PHY, and
+> port 5 has no PHY, but is in some implementations connected to a
+> downstream MT7530 multi-chip module via a TRGMII link.
 > 
-> If the MDIO bus contains another switch, then the upstream switch
-> will register but it will not setup the DSA tree because the
-> downstream switch is missing. Without the complete DSA tree,
-> mt753x_setup() will not be called on the switch and therefore
-> mt7530_setup_mdio() is never called so the downstream switch never
-> registers.
+> The downstream MT7530 is similar to the MT7621 multi-chip module and
+> has all gigabit ports.
 > 
-> Update mt7530_setup_mdio() so that it can be called multiple times,
-> export the symbol, and call it again after dsa_register_switch()
-> from mt7988_probe().
+> Add the econet,en751221-switch compatible with the same constraints as
+> the other built-in switches and also add the econet,en751221-gswitch
+> multi-chip-module switch whose port 6 is configured as a DSA link port.
 
-I would suggest just moving it to probe. Don't also have it in setup.
-KISS.
+Is there a use case of the econet,en751221-switch not in pass through
+mode? This is where you could have a different dsa_switch_ops
+structure, which probably makes the changes less invasive.
 
-	Andrew
+Even if there is a use case for not pass through, you can still look
+for the property in probe, and decide which of two different
+dsa_switch_ops to pass to dsa_register_switch.
+
+	   Andrew
 
