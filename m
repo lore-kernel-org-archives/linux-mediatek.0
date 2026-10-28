@@ -2,108 +2,113 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id DD4BA606A31D
-	for <linux-mediatek@archiver.kernel.org>; Wed, 28 Oct 2026 19:38:56 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 7E74E606A31A
+	for <linux-mediatek@archiver.kernel.org>; Wed, 28 Oct 2026 20:30:48 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=ZkXoTPYh;
-	dkim=pass (2048-bit key, unprotected) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=wgMiMrfa
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=zTgOQXK1;
+	dkim=pass (2048-bit key, unprotected) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=xQQg2kDx
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Unsubscribe-Post:List-Owner;
-	bh=lTf6iYLY7vvpBq4kT2Dpb3iFQH2vO84EvM2eYDMRkJ4=; b=ZkXoTPYhSl1LKjFSuoa9HLXKYn
-	/qIKQP7/x60zr/dwtQOn9E2mzZcq+FLymYLidwbx3cCk1VHmSeHNC1y/eDLhEous836Dm7vIJRWtU
-	AIEQw+sI7TH8wf7TSitlLnj+mmlAP5IBt/A9iam0CL0h6Ajzf9RNE90gL/aLJam/LI+NMXNzGM2OI
-	Vso5FvJJMzoHLYKsdZpmPaplmtyFpv/PG+itqSxLpbo9hTdQRSmNC2PPwvI6UmlqEsquXNVk6IiqB
-	802YxQN2s1xlf+y1K449uSWLiBaoxibeYapQhf9ozMceitj1naVPIivbs2gPRvUjUatX+CdJ/fwUd
-	4j2qpOwg==;
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Unsubscribe-Post:
+	List-Owner; bh=SagG7hnlNkBMWrHHVXZ8fa/+eusWUEksklF+xlNh03I=; b=zTgOQXK1FgmC9x
+	fyJwtxrRFaUahUeicHuWocCeLjZR148x6rv/TQtKYjS7r9Ms9wMVwZlxRVZb+klIPBozXgaMLmxAX
+	aeef2cAeBTFnP0ZKxGFg3CE199Y9QIyR870if4CxHy0DozdxQXBhhL5NPrhH+Bbs76e4gw65R+X3X
+	fKMl99Ou/nn9LXiz3XAkAHDy91I+xvqOasDpqpdsAfMNntw1qkeoU8FgyW4i0rPYmPMF8wmxT4OuH
+	pEENo/vjTkL3paSCliMXbPb7J01hfNqhe+ZNYaJB7bV3AIeIf2Co4KR+tkbiN94aLqSDMREbOJaPC
+	xUUqjrISQeuMSsjw76AA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xM9U7-00000007s7W-11d3;
-	Wed, 28 Oct 2026 19:38:55 +0000
-Received: from mail-dy1-x132b.google.com ([2607:f8b0:4864:20::132b])
+	id 1xMAII-00000007vlQ-1hRJ;
+	Wed, 28 Oct 2026 20:30:46 +0000
+Received: from mail-oo2-x00.google.com ([2607:f8b0:4864:31::])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xM9U4-00000007s6j-3rwV
+	id 1xMAIE-00000007vkc-3kHa
 	for linux-mediatek@lists.infradead.org;
-	Wed, 28 Oct 2026 19:38:54 +0000
-Received: by mail-dy1-x132b.google.com with SMTP id 5a478bee46e88-353804b591eso2195463eec.0
-        for <linux-mediatek@lists.infradead.org>; Wed, 28 Oct 2026 12:38:52 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1793216331; cv=none;
-        d=google.com; s=arc-20260327;
-        b=H08M4tzjOYC8AG9gWQxQaIKktTiDy1Z1MzqOuZxeJBIqgKWKPD8onwaGJA1xfC8bpm
-         NyBRLfdf8sOtvP/UjpIZszR+kOrQZoLomsq2cYswrax6QGuTG9xTbQSVE1IpUBbKOBFk
-         HBCHQdO4bvJs0PoB/9wvGk6CYPWbh3FbkWhNgf4vdkKTjXPfXXgBFfw8a0dN3w80jteV
-         kix0YOv8OG2tT1sICo5ueG6tYfEOMYeKw0KYmI6IGLKxSuoFqCtE6c2w4kt/0cpMC8Ap
-         YunaiHzJqOk3tk5KCCJnWPj0PegnZnK8UWsiQ8zn91EEeg04my2bL9T+pDBiMHKL+u2w
-         P03Q==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20260327;
-        h=content-transfer-encoding:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=lTf6iYLY7vvpBq4kT2Dpb3iFQH2vO84EvM2eYDMRkJ4=;
-        fh=7q9slQwJZ94/e6e481MFJgYPeNForZhGYqL2OGSLeAY=;
-        b=HmWPJ87HyNerw+RS6dxRLpW+NF/2UnyPlUdEAOdAEZcGB0Qu1W8+D8bPqN5ISshdsk
-         de1xu/67bLpv4isE8sNMUMbHe2wXyRna+91VXBm+RD0z3mXZezU3vUOGPBwUO1S0kcb+
-         OckPtjueafQf+dQkUY/XEzTgPug1mulfu/ULe+dWtUkT7FhTAfaRj5fd+eTchCyRbYNE
-         WXcEcnFoh6k3RqiXW1fyPmq1cslEY1Y7ocfaJoGg9eYsGiGePOdIjQwDhNYn+cJZmWwU
-         xR5rxiBIWF665/Uo8vw+rX9tCUQpqhzHDPBHd+gymraZy6c+pjXZdA125o2veKPr3/Te
-         I22w==;
-        darn=lists.infradead.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
+	Wed, 28 Oct 2026 20:30:44 +0000
+Received: by mail-oo2-x00.google.com with SMTP id 46e09a7af769-84e8a9fae57so563685a34.0
+        for <linux-mediatek@lists.infradead.org>; Wed, 28 Oct 2026 13:30:41 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20260707; t=1793216331; x=1793821131; darn=lists.infradead.org;
-        h=content-transfer-encoding:content-type:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:from:to:cc:subject:date
-         :message-id:reply-to:content-type;
-        bh=lTf6iYLY7vvpBq4kT2Dpb3iFQH2vO84EvM2eYDMRkJ4=;
-        b=wgMiMrfapeupL2YUtnxbLalP0vA3D3w7/IFHLWl8gZuXl3bBgngEOQwTKDR9wrJnyo
-         kkv7NXENVnxwFtgvozDe/AhtQSbFGQAY5WD/FozdNeb5XdQ4fwTNXtoI6hUNc/6M4QP3
-         CsrHBJOHQo5fgQh54ZLu41h1jL6H2LbhjPWGopAC+CCeZa3C/G6lDdkQH4wL05jMPbDC
-         5XXk9TE5POj2h1n7Jbd4izg72IEGoWyX7y9HeqC5N9h6zMukHj3EhGaneyEWgntZqcMP
-         pHNUDI8cZfJdhACsRZjblJvQhI753oznb+bPoF9qP7pR73L3hfmv6e2UrSD3ZHnQrX66
-         peSg==
+        d=gmail.com; s=20260707; t=1793219440; x=1793824240; darn=lists.infradead.org;
+        h=content-transfer-encoding:content-type:in-reply-to:from
+         :content-language:references:cc:to:subject:user-agent:mime-version
+         :date:message-id:from:to:cc:subject:date:message-id:reply-to
+         :content-type;
+        bh=SagG7hnlNkBMWrHHVXZ8fa/+eusWUEksklF+xlNh03I=;
+        b=xQQg2kDxZFONcZ8QPdq8gEbebuGvt/w3gVa6P+a+A914/wNMMd+aCmQvw5120NgSFZ
+         EYV9TEPI+S01iMxeVBNuXkOoCMUE6epnEGpzWG6rwrPqrfu3hXiUOmnd7OEHVR3srOPU
+         axWVKo3XEMbwpOhXcDOXhZdG5NmgquyeyXTHOjCugkkTxvuTs3Phm5rPBAlb14c2GhTf
+         8T6I5L5mBxCcb64lBk46fwNE57of1X5vsg3VRAduqi0bUJ+tuBVcGEIZ935MoIvren/B
+         26u3CV9Soim/Ad8TQP17BuDc7u3RaZWxvcO/fEnWUOWfC0a0krKdii1oFUnJRZEi4aln
+         5SWA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1793216331; x=1793821131;
-        h=content-transfer-encoding:content-type:to:subject:message-id:date
-         :from:in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state
-         :from:to:cc:subject:date:message-id:reply-to:content-type;
-        bh=lTf6iYLY7vvpBq4kT2Dpb3iFQH2vO84EvM2eYDMRkJ4=;
-        b=QHsDfYagdw1yQi9NYV8OQnk3Qt+JUuH/MmIYDQI9fTtSoXoD/tBkZHan5GzopsFATs
-         LXlSqwZORCmH9J4umVI1ru0p93rAD477ezKuK0PcNQxhvjcdvHOAj2xovtcxHijIP1PR
-         m/e6DPU1zXw7+WNs1xCd1XOPnn0s4SsMhE5GOBeaZfHxsSRaIshG2gVm4c9MnPnrEHUu
-         mCa8vaO2av+Frehh8dXoFz8jso/fZEyjB/SzwDi3j7ejJkMgct3AtRax8RojEcHG0ub+
-         taHtaf3fXsr11tN2mexETqsdSD1vtV1SnfHu9DciPPJw6ceVMM7ccNU7FaRRxmnm8WKY
-         gMCQ==
-X-Gm-Message-State: AFq9FYLt6uBS1mrvjy7LK5bFSIDz7UZrzkkx1+iG9g1BUOifl1AcuVTf
-	9gOaaJDk4tU6KxGeY8D0+JSt8nxbcuJoW2PG1Etxam+zrPLYBdNGhSYsSyWxz/uMLC0UmJMSCy1
-	Y72WB8hMhunSy349mfkyMokhgwiXiAaHAj03s
-X-Gm-Gg: AYBFou0HThNTFNfJORx9FcgrHnBvqRzOYFVHKkpj+q7ZItAj+1UCjhWI9Rig6NmLBUS
-	xSb8tskKXeh1UhhvgzJg4qKRQMrVKulywGC9mpa94C0mcBO5qk99oe+p8C0fs8cchouvHG2uSKq
-	p59XIb0TvKMJMpBga+Og0qS8q+8+s+CTXVSW0w9n/33p7fmQqsKRynUnQpLLplLpwk+UOx6++8T
-	OudCEIMVX1ZsDRek2d1k7F7D2vUEwiWrh1s/l6fbEbqmawy9csyzM88I2bSWyruGpecPmIsv4Pr
-	4ETh4pjYNLNi59lE/cCEpzjZ77DsVh+YRGKkw46Ys8mHQXZ6hOn3V5npXeTnS9xLF/oCVjcUwiZ
-	RTQh9SZ0LZLiTtpGqhf+3l3cCY2pP+3A+LMkp/SzEBatDLqz/9Y6LLIoJKzDFOyNRrRX86w==
-X-Received: by 2002:a05:7301:dd92:b0:36a:fc6:b4f8 with SMTP id
- 5a478bee46e88-36a2027e9fbmr4331055eec.2.1793216331264; Wed, 28 Oct 2026
- 12:38:51 -0700 (PDT)
+        d=1e100.net; s=20260707; t=1793219440; x=1793824240;
+        h=content-transfer-encoding:content-type:in-reply-to:from
+         :content-language:references:cc:to:subject:user-agent:mime-version
+         :date:message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to:content-type;
+        bh=SagG7hnlNkBMWrHHVXZ8fa/+eusWUEksklF+xlNh03I=;
+        b=GjND+eqpDvpDakbsEQGZGZg0eUYN2G5TmJ/T3kd6T8Z+x0DLXJxKrVzOLRseLvHL+U
+         VUC9QHqmxM0+HRJ88RfSnTJBSYVmR5G2YM8AiZkEVRq64bAHkNT+wJGijYVzY3RYap9p
+         R5sFBEywj8DalAs9RT1GCIPiOZb8IFWW6flW1Yy73LW4xxgo4a47Up/DdXYWEyW34RiI
+         y/iLDbR8yXcdv5pxZoHuzMwrs3WNhkRO/wydOK68ZB1OnZyou6ydaq8eF6oMYJZxEZ7e
+         c83Zu9an5mLCeDdkSgMwQrMiJ9/J9QQ4v1lBe6Qx6qAdSoFuNinYOElbf0bJAqapip6U
+         E1xA==
+X-Forwarded-Encrypted: i=1; AKwUvBwGw8bJDbGFo3j8wRXjxrIFvXtqbspiVzsDyPfuB3rxbfPFHPxGRV6L4F+V6QGPiK5APJTXADdI/KYP/3xc5g==@lists.infradead.org
+X-Gm-Message-State: AFq9FYLxNazk78cUjveuvrnwAukTu7jUIy03JsA5yMRcWQcOgOXFBTVz
+	WLu3L3uA/7bFLn1GxXxsRsBuqyIjTSkenW/PtGtr5WIinYDbdVlP2a1f
+X-Gm-Gg: AYBFou0Jcv8I52fxktgcVI16REkzsUylm4MHdz/YOOlSBRF0Aeb5cSeparzho8SpGKV
+	3GcODJeueAnqiWCdhSR7frcifjt6QV3NvcculDv1GIdNvoSQUJa2DI/jtcJMqDvSpFMM5p1og6T
+	neAjDJDzb5+K1Fv8v0M4SWz/XCN1t+CyjnXGkM9DzXjH7pKfMkyx9Ml3a0f2AWJxj2wbHH7zaE6
+	XSfuuMcuTRxYcPhYwmB0AZeCA6BBs8EnpGf6AgKqujtVvSfIqKEFYoFa6mIHYMDuLiYtTJ47MWO
+	US7yuCBacrIdbFx8bUlv6F9Ga5FEBcSM2dH82Aw9Ci8w53YT4NTWU6PB8UGv/6wKa66DMK1VK3e
+	+aN5tLnySgI5firqi3wI9tSaGp+vDG2fT0CIHMhV8BP7OfLyy5J0hEwbjRbFr2WGXGxBdATqdVs
+	69BbpfXtGCgW6xLPM7yXwXKZH5BefCTdX2Shqr5FxM87ZhAD0aCHpfLML0FgVygPXziiahwts6u
+	jhI9FWl15yYmvyow9FLUAczcCaCI08ljodEK0Lk7v6G4YWG1maljZVkiP1bMZHOZ0/eHxfOkf2Y
+	nKhCnXtT5GaCXnFNrjZOGpdcbaqikl1b4yJJUIKY4Iz3dPw4P2Zb4YyyZJCz3VXxMiABL3qJIm7
+	LpwLin39CWE3Fwhn4aaZg5Ps2+yIOJSIegn1Fls+jCA==
+X-Received: by 2002:a05:6830:680f:b0:81c:a8c5:633c with SMTP id 46e09a7af769-85ab7b0d6b0mr3330153a34.17.1793219440535;
+        Wed, 28 Oct 2026 13:30:40 -0700 (PDT)
+Received: from [10.10.121.179] (wsip-64-207-253-118.tu.ok.cox.net. [64.207.253.118])
+        by smtp.gmail.com with ESMTPSA id 46e09a7af769-85b1d363390sm2618813a34.1.2026.10.28.13.30.39
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Wed, 28 Oct 2026 13:30:39 -0700 (PDT)
+Message-ID: <7981f7c6-c949-42e6-ad53-15e6530588cb@gmail.com>
+Date: Wed, 28 Oct 2026 15:30:38 -0500
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-References: <20260523140242.586031-12-maz@kernel.org> <20261028081716.75598-1-timpambor@gmail.com>
- <86pkwuxm4p.wl-maz@kernel.org>
-In-Reply-To: <86pkwuxm4p.wl-maz@kernel.org>
-From: Tim Pambor <timpambor@gmail.com>
-Date: Wed, 28 Oct 2026 20:38:39 +0100
-X-Gm-Features: AclHuK-CTu5OJM5ETICigZlSd4-EC0-hTDGn3i0OSl2ezQ_bIQ3xKMLD70-Js7Q
-Message-ID: <CAOX+r59k35CMroDZEtNVbiBMfgBKVQ+Q8F_+J4vpSwN_J+Ui3A@mail.gmail.com>
-Subject: Re: [PATCH v3 11/17] arm64: dts: mediatek: Add EL2 virtual timer interrupt
-To: linux-mediatek@lists.infradead.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] pinctrl: mediatek: common-v1: Use a raw spinlock for the
+ pinctrl regmap
+To: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
+Cc: Chen-Yu Tsai <wenst@chromium.org>, Mark Brown <broonie@kernel.org>,
+ Lee Jones <lee@kernel.org>, Arnd Bergmann <arnd@arndb.de>,
+ Sean Wang <sean.wang@kernel.org>, Linus Walleij <linusw@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Bartosz Golaszewski <brgl@kernel.org>, Clark Williams
+ <clrkwllms@kernel.org>, Steven Rostedt <rostedt@goodmis.org>,
+ Yingjoe Chen <yingjoe.chen@mediatek.com>,
+ Chaotian Jing <chaotian.jing@mediatek.com>,
+ Hongzhou Yang <hongzhou.yang@mediatek.com>,
+ linux-mediatek@lists.infradead.org, linux-gpio@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-rt-devel@lists.linux.dev, mfd@lists.linux.dev
+References: <20260929-rbrue-suez-upstreaming-mtk-pinctrl-raw-regmap-v1-1-db92943f42cb@gmail.com>
+ <20260930080609.dnK1-Uta@linutronix.de>
+ <CAGXv+5FssQL3Go3VDFbLAT6HP12RS3U3OgxhYOeapzs64QTdUw@mail.gmail.com>
+ <d3d3e7b3-eb8b-456d-9a2c-116334e86c14@gmail.com>
+ <20261020073236.dDVmd3BW@linutronix.de>
+Content-Language: en-US
+From: Ryan Brue <ryanbrue.dev@gmail.com>
+In-Reply-To: <20261020073236.dDVmd3BW@linutronix.de>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261028_123852_959430_4EE799DD 
-X-CRM114-Status: GOOD (  17.23  )
+X-CRM114-CacheID: sfid-20261028_133042_939957_5C4B8D4D 
+X-CRM114-Status: GOOD (  16.02  )
 X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -115,51 +120,43 @@ List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-7.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
+X-Spam-Status: No, score=-4.3 required=3.0 tests=BAYES_00,DKIM_SIGNED,
 	DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,FREEMAIL_FORGED_FROMDOMAIN,
-	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=no
+	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1 autolearn=no
 	autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-+cc linux-mediatek
+On 10/20/26 2:32 AM, Sebastian Andrzej Siewior wrote:
+> bulk writes could be a concern. The 40us delay is within the lock
+> acquired? If so, could this be done without the lock? I assume this is
+> part of the init sequence so nothing should use the HW so the writes
+> should not be interrupted by other writes to the device.
 
-On Wed, Oct 28, 2026 at 9:30=E2=80=AFAM Marc Zyngier <maz@kernel.org> wrote=
-:
->
-> On Wed, 28 Oct 2026 08:17:16 +0000,
-> Tim Pambor <timpambor@gmail.com> wrote:
-> >
-> > On Sat, 23 May 2026 15:02:36 +0100, Marc Zyngier wrote:
-> > > The ARMv8.1+ based CPUs used in a number of Mediatek SoCs are missing
-> > > the EL2 virtual timer interrupt. Add it.
-> >
-> > This patch doesn't seem to have been applied along with the rest of
-> > the series.
->
-> That's the SoC maintainers' responsibility. I only look after the
-> driver code, and rely on people spotting the warning! ;-) The fact
-> that this has been there for two kernel releases show you how deeply
-> these maintainers care.
->
-> > After updating to v7.2.11 on an MT8195 board I see:
-> >
-> >   arch_timer: [Firmware Bug]: VHE-capable CPU without EL2 virtual timer=
- interrupt
-> >
-> > With this patch applied, the warning is gone and the EL2 virtual timer
-> > is used as expected:
-> >
-> >   arch_timer: cp15 timer running at 13.00MHz (hyp-virt).
-> >
-> > Reviewed-by: Tim Pambor <timpambor@gmail.com>
-> > Tested-by: Tim Pambor <timpambor@gmail.com>
->
-> Thanks!
->
->         M.
->
-> --
-> Without deviation from the norm, progress is not possible.
+Yes, it's under the lock. regmap_multi_reg_write() holds the regmap lock 
+for the whole sequence, and since an MMIO syscon's regmap can't sleep, 
+the delays are udelay()s. The PLL's enable runs that sequence (13 
+writes, 40 us of delays) whenever the PLL goes from off to on, retrying 
+up to 10 times until it locks.
+
+In practice it's init-time, though. The G12A USB3/PCIe PHY takes the PLL 
+with devm_clk_get_enabled() at probe and keeps it on, so it runs only 
+once. Nothing else writes the PLL then, but the lock is the HHI 
+syscon's, so on RT the other clocks in that block would wait it out. 
+Running it without the lock would mean changing how the meson PLL code 
+writes its init sequence, which I wouldn't want to take on in a pinctrl 
+fix (unless that were preferred).
+
+> So it would be safe for now…
+Yes, that's the trade-off with the second option, which relies on the 
+DIN never being written in a multi-step sequence. Nothing enforces that 
+though.
+
+I'd like to send a v2 after -rc1, but I don't know the best option for 
+the fix. Still waiting on Lee, Arnd, and Mark to pitch in if they have a 
+preference, or any option I've missed.
+
+Best regards,
+Ryan Brue
 
