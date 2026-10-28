@@ -2,42 +2,42 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 34F39606A330
-	for <linux-mediatek@archiver.kernel.org>; Wed, 28 Oct 2026 01:14:00 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 94AAB606A33A
+	for <linux-mediatek@archiver.kernel.org>; Wed, 28 Oct 2026 01:14:05 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=qP5fFkkA;
-	dkim=pass (2048-bit key, unprotected) header.d=cjdns.fr header.i=@cjdns.fr header.a=rsa-sha256 header.s=dkim header.b=tKAUV4BE
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=NjlW95m8;
+	dkim=pass (2048-bit key, unprotected) header.d=cjdns.fr header.i=@cjdns.fr header.a=rsa-sha256 header.s=dkim header.b=VDUTHKoW
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Unsubscribe-Post:
-	List-Owner; bh=J6aXW99GWTcAFmCDZ2wgLoJAYDS3rHe4uZHX6AbQbjs=; b=qP5fFkkAoBQdH4
-	sWSeXHj69EGSL6E0FUzYrYrnY/JX4eZkmIpp8R+EsxybkAkctDMuHZCX8Z5ZoReKPkDhI95T6EhtP
-	Q4o8cAPZEoHdeqCiaQbI8BixE5fE510P8iz69JDbHlKLlp/MhWCU3SQTBkAyFCeX3ZoFjiBe56N+U
-	A9cts7RVyTrNIIhRap0w1JDca+oE3234yg+I4fpzuAbapBQvgZP73bRl8Pskyas2T5S5UufmseUoQ
-	Hs2n7HQS899AevK6BAwMxE0iSQSWCJbswGyH3xFq/+lI+3susYTHWw3cFMnWvHcdehztTULo/CwH9
-	braJ20lsOhc9VL8AuuFQ==;
+	List-Owner; bh=ADqrrJvW23LFM0pGXYZQATdOejQwocht4yhLCBcfUYY=; b=NjlW95m8IoNwgj
+	6/cLg2ZLVpj5PObNjmYb78/VTdnngn5aytvvl2x886zOD47tHS53XiB1YRGEjNDRkR6Yx824T+LEw
+	nK1oRmHb34wlAnDOIvwPaAQ4VsU5UyfeMx9SALepX8FAsig/E8hxbi2BoyXbEfWr8N+b94LZ+YPn4
+	+BVBIBwf9SpaU0r3TuBkd/zK6KUIzLrr5LZ7gtzsElHfH3MYGdbVKxrFVOMDG4ABIbyQKmRPrwjXI
+	sTfwF4Ac8ohlYxXTnjL/JdkL3hlozd+B3XcAGZgdeKNneXZQUUqrhZfmPfc4E24DsQ4DXGxZaP1/w
+	9upoTlCz+gTAQTphULHw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xLsEp-0000000611w-3quD;
-	Wed, 28 Oct 2026 01:13:59 +0000
+	id 1xLsEv-0000000616f-11a7;
+	Wed, 28 Oct 2026 01:14:05 +0000
 Received: from mail.cjdns.fr ([5.135.140.105])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xLsEf-000000060u9-2Ik7;
-	Wed, 28 Oct 2026 01:13:51 +0000
-Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id 8ECD61479F0;
-	Wed, 28 Oct 2026 02:13:42 +0100 (CET)
+	id 1xLsEn-000000060z9-17M9;
+	Wed, 28 Oct 2026 01:13:58 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id D88FB1497AB;
+	Wed, 28 Oct 2026 02:13:50 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cjdns.fr; s=dkim;
-	t=1793150026; h=from:subject:date:message-id:to:cc:mime-version:
+	t=1793150034; h=from:subject:date:message-id:to:cc:mime-version:
 	 content-transfer-encoding:in-reply-to:references;
-	bh=J6aXW99GWTcAFmCDZ2wgLoJAYDS3rHe4uZHX6AbQbjs=;
-	b=tKAUV4BE1GyUCse+EdtqNrBOc8Ja1XIyk5fQl+YYsW+/8zVbrkVWeR8IFsVEQAxEXdKwcy
-	J5jhXqGk3rPkA5c9G7i3cevpxd4FMMb4eLSIXIcoqs004os5omMGVdMu5cC2hsFVVnAfkd
-	NIZ6TPvg1YA9mUzjLVLzO8PPx3eIICSOviGW5n5gOo8sn2ka7Xo+UiCb9N8SKUbsoY40mw
-	zt4q+Ghn/C6Cf9sy4Rl9WQDbUiWg2ow+++RzTTOGhBnIKsJTxdClTcE0oSreFGESPtO5XE
-	ieNlTL0/wYnC4JjjJWUSbyPTOEBCTXvOfmFxIfq1fzo8+SvhdC57CncHO1+fWg==
+	bh=ADqrrJvW23LFM0pGXYZQATdOejQwocht4yhLCBcfUYY=;
+	b=VDUTHKoWLkmSLXIbTOCCmtykkplv8++xjvmWBHVbWRu7BG/coDf6i3CR33yr/VhxkNkJZr
+	jCtfrO7SGQ2DCRhVpN4oY7++rz8tQyBvNf2FruzXFEAqrkepxlCwg7Bupumk2AqQK61NLJ
+	xTajaQrdN9bmD9zABy8/nqMqoN9YeZ8ctMRSbIxXZzD2vuk8xQGCtC1HgzP1TVb8SldAw3
+	aZ0+hWruelRT+zbWff5c2OG4f94zP5pgwokdcYZqdTbgyQWFwHycS6u3MOduBcn+S4ZRSu
+	asaSbo9A0Q2Zq8oNiorR9f1FpTYXs1eWck0vFOWPvnq8y6SvfVYeez83EnJphg==
 From: Caleb James DeLisle <cjd@cjdns.fr>
 To: netdev@vger.kernel.org
 Cc: andrew@lunn.ch,
@@ -65,9 +65,9 @@ Cc: andrew@lunn.ch,
 	naseefkm@gmail.com,
 	b.larsson@gmx.com,
 	Caleb James DeLisle <cjd@cjdns.fr>
-Subject: [PATCH v3 2/7] dt-bindings: net: dsa: mediatek,mt7530: add passthrough mode
-Date: Wed, 28 Oct 2026 01:13:12 +0000
-Message-Id: <20261028011317.1557238-3-cjd@cjdns.fr>
+Subject: [PATCH v3 4/7] net: dsa: mediatek: support PLL setup on MMIO MT7530
+Date: Wed, 28 Oct 2026 01:13:14 +0000
+Message-Id: <20261028011317.1557238-5-cjd@cjdns.fr>
 In-Reply-To: <20261028011317.1557238-1-cjd@cjdns.fr>
 References: <20261028011317.1557238-1-cjd@cjdns.fr>
 X-Archived-By: <archiver.kernel.org>
@@ -75,9 +75,8 @@ MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-Last-TLS-Session-Version: TLSv1.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261027_181349_772756_4AF641D9 
-X-CRM114-Status: UNSURE (   8.77  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20261027_181357_522251_4669885C 
+X-CRM114-Status: GOOD (  13.05  )
 X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -97,36 +96,84 @@ X-Spam-Status: No, score=-15.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-MT7530 switches can be configured to blindly pass packets between their
-CPU/upstream port and a downstream DSA port, in particular, without
-altering the MediaTek DSA Tag on the packets. This mode is used in some
-integrations where an SoC integrated switch exists, but a more capable
-MCM switch is added to effectively replace it.
+On MT7530 and MT7531, PHYs are an integral part of the switch. However,
+on MT7530, certain configuration such as PLL setup is done via special
+registers on one of the PHYs.
+
+In an MMIO implementation, the MDIO bus is part of the switch itself.
+This bus is already setup for PHY calibration so begin using it for
+core switch PLL setup.
 
 Signed-off-by: Caleb James DeLisle <cjd@cjdns.fr>
-Acked-by: Rob Herring (Arm) <robh@kernel.org>
 ---
- .../devicetree/bindings/net/dsa/mediatek,mt7530.yaml       | 7 +++++++
- 1 file changed, 7 insertions(+)
+ drivers/net/dsa/mt7530.c | 15 +++++++++++++++
+ drivers/net/dsa/mt7530.h |  4 ++++
+ 2 files changed, 19 insertions(+)
 
-diff --git a/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml b/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml
-index 90b3582b7619..e29fb8693498 100644
---- a/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml
-+++ b/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml
-@@ -73,6 +73,13 @@ description: |
+diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
+index 3eb2e11d6985..d09ff207e2df 100644
+--- a/drivers/net/dsa/mt7530.c
++++ b/drivers/net/dsa/mt7530.c
+@@ -77,6 +77,12 @@ core_write(struct mt7530_priv *priv, u32 reg, u32 val)
+ 	struct mii_bus *bus = priv->bus;
+ 	int ret;
  
-       Check out example 7.
- 
-+  The MT7530 and MT7531 switches are capable of being operated in "passthrough"
-+  mode. In this mode, traffic is unconditionally passed between the CPU port
-+  and the DSA port which links to a second switch. To use passthrough mode, the
-+  upstream switch is configured with a DSA link to the downstream switch. In
-+  passthrough mode the upstream switch is restricted, with no other ports or
-+  switch configuration allowed.
++	if (!bus)
++		bus = priv->child_bus;
 +
- properties:
-   compatible:
-     oneOf:
++	if (WARN_ON_ONCE(!bus))
++		return;
++
+ 	mt7530_mutex_lock(priv);
+ 
+ 	/* Write the desired MMD Devad */
+@@ -112,6 +118,12 @@ core_rmw(struct mt7530_priv *priv, u32 reg, u32 mask, u32 set)
+ 	u32 val;
+ 	int ret;
+ 
++	if (!bus)
++		bus = priv->child_bus;
++
++	if (WARN_ON_ONCE(!bus))
++		return;
++
+ 	mt7530_mutex_lock(priv);
+ 
+ 	/* Write the desired MMD Devad */
+@@ -2472,8 +2484,11 @@ mt7530_setup_mdio(struct mt7530_priv *priv)
+ 	if (priv->irq_domain && !mnp)
+ 		mt7530_setup_mdio_irq(priv);
+ 
++	priv->child_bus = bus;
++
+ 	ret = devm_of_mdiobus_register(dev, bus, mnp);
+ 	if (ret) {
++		priv->child_bus = NULL;
+ 		dev_err(dev, "failed to register MDIO bus: %d\n", ret);
+ 		if (priv->irq_domain && !mnp)
+ 			mt7530_free_mdio_irq(priv);
+diff --git a/drivers/net/dsa/mt7530.h b/drivers/net/dsa/mt7530.h
+index 108c831dd012..5b7394f6383c 100644
+--- a/drivers/net/dsa/mt7530.h
++++ b/drivers/net/dsa/mt7530.h
+@@ -886,6 +886,9 @@ struct mt753x_info {
+  * @dev:		The device pointer
+  * @ds:			The pointer to the dsa core structure
+  * @bus:		The bus used for the device and built-in PHY
++ * @child_bus:		The bus created by the device, on MDIO implementations
++ *			this is bus indirectly accesses `bus`, on MMIO
++ *			implementations this bus is part of the switch.
+  * @regmap:		The regmap instance representing all switch registers
+  * @rstc:		The pointer to reset control used by MCM
+  * @core_pwr:		The power supplied into the core
+@@ -914,6 +917,7 @@ struct mt7530_priv {
+ 	struct device		*dev;
+ 	struct dsa_switch	*ds;
+ 	struct mii_bus		*bus;
++	struct mii_bus		*child_bus;
+ 	struct regmap		*regmap;
+ 	struct reset_control	*rstc;
+ 	struct regulator	*core_pwr;
 -- 
 2.39.5
 
