@@ -2,97 +2,65 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 0A857606A31C
-	for <linux-mediatek@archiver.kernel.org>; Wed, 28 Oct 2026 23:47:17 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 59ADF606A32C
+	for <linux-mediatek@archiver.kernel.org>; Thu, 29 Oct 2026 01:00:00 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=glQ4/Zc8;
-	dkim=pass (2048-bit key, unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=f/4cLrJ4
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=x5ThQ6BB;
+	dkim=pass (2048-bit key, unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=WVuy9JUJ
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
-	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Unsubscribe-Post:
-	List-Owner; bh=neOivWsfnHbQR3N6AKh/3PoW3tIDMGi3k5qezfAAwY4=; b=glQ4/Zc8lKRQPS
-	MeIuo2dLJO/tsWVD1uIRYtvGuYcsDRbAaCa03U1l/cJ1CX67sy3zoZ4uCLtzbdNSWE8LoFqO0GdSv
-	rTAdQJya7j20xPCNsFpmDdayNxXyJYWc2HIeqS1aIlp0zCmsdtD3gfrfaee7CiyrXyb1L6QLuiZ0e
-	fc+A1z14nEjdj/uKkn876Z/Td+nr9YS9b6SOswc13yMtfG+fpwgOLPjP5eBfjbzJPg7ieaW8gnEv4
-	S8S65JX5606CvauDHsAd4nLaAIVJkPPksC5g7Xv2y0Vdz501qXg+/0tfP8bLBledUfLpDLGJprSBM
-	Ccz+9eYTIG9N+Whpl83A==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Message-ID:Date
+	:Cc:To:From:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Unsubscribe-Post:List-Owner;
+	bh=oS0FmMc7AlJVVVUeRFYj25Bo+BdWrMabkFQ8UmhHdq4=; b=x5ThQ6BBYKf6MOHcUgcb6go94o
+	pJjw4atEOig1t8BVGGIeoYDcUo67LYhQfBkiDwWyZBLqWGnbzKxGqt73PdhX0ylPkZ4QbEIr1XZEV
+	esUyNxe0HlygE9hogSTBkHERuvTP5tT5CtArlCuL/R5hYrtXDEBmT3G9VC7cNAjd4TTU8/6bQXuDk
+	bjrrszETWODMrfNvyGR+fx7XzWNQlAkzWcJh0Kb6UdXXBQJhCzn42DDz4DuedMEc4x5zaHTcakjgv
+	nhJx08thmrRVsWMfU9zZohDAIEBEytkNCk8MlxKai141TiVQ1pW25rqJpb29J52JzyD4kEAwJlosC
+	/eWkP5tw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xMDMS-000000084YN-2yOk;
-	Wed, 28 Oct 2026 23:47:16 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1xMEUp-000000087iU-3l5F;
+	Thu, 29 Oct 2026 00:59:59 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xMDMP-000000084Y3-0tbR;
-	Wed, 28 Oct 2026 23:47:13 +0000
+	id 1xMEUo-000000087i5-1Xwl;
+	Thu, 29 Oct 2026 00:59:58 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id 2D1A443E76;
-	Wed, 28 Oct 2026 23:47:12 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9AF611F01825;
-	Wed, 28 Oct 2026 23:46:57 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 71E7A600D1;
+	Thu, 29 Oct 2026 00:59:57 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3D8D31F01825;
+	Thu, 29 Oct 2026 00:59:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1793231232;
-	bh=neOivWsfnHbQR3N6AKh/3PoW3tIDMGi3k5qezfAAwY4=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:References;
-	b=f/4cLrJ4TGztgvmr14VBy6t7mBV8AM+uDlLfYVyShzm7APQvQBIiI0EDLgRGe0v7z
-	 LrPP1CYrALPm5Q04g1ErXIwYEqxpncy7n/vcasP5VS7fxapXxWQMRvQ3eLtXYsxC4u
-	 pO80RH6CgwyVic6xTA3E8YyB/WqO22L05DI08uL25eIqchvragaWR3rowAwilUDAAt
-	 Xh6oVb4uczfsq1lW3toZ9+v63X4qnWgC+a2EdGz7QxrKclbDs6hRlAucgG9mlmv1zz
-	 0pRXR0bqvqejkSM04r2n2wZ9K5nHoWUM+gUptsMAuOcN5EfgGaQV+XNpzRAcoIe2zH
-	 rDwATDPNl5e/Q==
-Date: Wed, 28 Oct 2026 23:46:52 +0000
-From: Jonathan Cameron <jic23@kernel.org>
-To: "Rob Herring (Arm)" <robh@kernel.org>
-Cc: Bjorn Andersson <andersson@kernel.org>, Stephen Boyd <sboyd@kernel.org>,
- Brian Masney <bmasney+clk@redhat.com>, Jerome Brunet
- <jbrunet+clk@baylibre.com>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor
- Dooley <conor+dt@kernel.org>, Maarten Lankhorst
- <maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>,
- Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>,
- Simona Vetter <simona@ffwll.ch>, Florian Fainelli
- <florian.fainelli@broadcom.com>, Broadcom internal kernel review list
- <bcm-kernel-feedback-list@broadcom.com>, Rob Clark
- <robin.clark@oss.qualcomm.com>, Dmitry Baryshkov <lumag@kernel.org>,
- Abhinav Kumar <abhinav.kumar@linux.dev>, Jessica Zhang
- <jesszhan0024@gmail.com>, Sean Paul <sean@poorly.run>, Marijn Suijten
- <marijn.suijten@somainline.org>, Frank Li <Frank.Li@nxp.com>, Vinod Koul
- <vkoul@kernel.org>, Yinbo Zhu <zhuyinbo@loongson.cn>, Linus Walleij
- <linusw@kernel.org>, Bartosz Golaszewski <brgl@kernel.org>, David Lechner
- <dlechner@baylibre.com>, Nuno =?UTF-8?B?U8Oh?= <nuno.sa@analog.com>, Andy
- Shevchenko <andy@kernel.org>, Neil Armstrong <neil.armstrong@linaro.org>,
- Kevin Hilman <khilman@baylibre.com>, Martin Blumenstingl
- <martin.blumenstingl@googlemail.com>, Tiffany Lin
- <tiffany.lin@mediatek.com>, Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
- Yunfei Dong <yunfei.dong@mediatek.com>, Mauro Carvalho Chehab
- <mchehab@kernel.org>, Marek Szyprowski <m.szyprowski@samsung.com>, Andrzej
- Hajda <andrzej.hajda@intel.com>, Ryder Lee <ryder.lee@mediatek.com>,
- Lorenzo Pieralisi <lpieralisi@kernel.org>, Krzysztof =?UTF-8?B?V2lsY3p5?=
- =?UTF-8?B?xYRza2k=?= <kwilczynski@kernel.org>, Manivannan Sadhasivam
- <mani@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>, Matthias Brugger
- <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
- <angelogioacchino.delregno@collabora.com>, Christian Marangi
- <ansuelsmth@gmail.com>, Eric Anholt <eric@anholt.net>, Kuogee Hsieh
- <quic_khsieh@quicinc.com>, Peng Fan <peng.fan@nxp.com>, Aakarsh Jain
- <aakarsh.jain@samsung.com>, Abhinav Kumar <quic_abhinavk@quicinc.com>,
- linux-arm-msm@vger.kernel.org, linux-clk@vger.kernel.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- dri-devel@lists.freedesktop.org, linux-rpi-kernel@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org, freedreno@lists.freedesktop.org,
- imx@lists.linux.dev, dmaengine@vger.kernel.org, linux-gpio@vger.kernel.org,
- linux-iio@vger.kernel.org, linux-amlogic@lists.infradead.org,
- linux-media@vger.kernel.org, linux-pci@vger.kernel.org,
- linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH] dt-bindings: Fix property name typos in if/then schemas
-Message-ID: <20261028234652.0d075035@jic23-hlaptop>
-In-Reply-To: <20261028120216.2657397-1-robh@kernel.org>
-References: <20261028120216.2657397-1-robh@kernel.org>
-X-Mailer: Claws Mail 4.4.0 (GTK 3.24.52; x86_64-pc-linux-gnu)
+	s=k20260515; t=1793235597;
+	bh=oS0FmMc7AlJVVVUeRFYj25Bo+BdWrMabkFQ8UmhHdq4=;
+	h=Subject:From:To:Cc:Date:In-Reply-To:References;
+	b=WVuy9JUJvVpnxgRolTlrO1MIZj20fkCl0H3mXHHgjQXpD2liErU9VCyFiPf8gewhV
+	 llC0VAnh+/2o13ZitUeepntk7dWSQmy6SHXnGnZ+Mx2N3a+MAhP+TidwG9FZS2CVsi
+	 8zNOIViOZL1WKKL7Mytanwerah70JXEq1PmuVYwgj5czZGj3EBYTFCGQOppEv1QN8p
+	 hAnUtMkfbOvQ5auIukcnf7AfJpGa6dCcUN8jWWfGYIFPgwpo/hx0UPCScJxnsgM24P
+	 E/8y72dp8s85s7iphCPWgVhP1Yw7HK/HiIpU96nhcQynvyTGBShEIzljYkA+HZKIMe
+	 /yky4ATwXN6Ow==
+Subject: Re: [PATCH net v6 3/4] net: ethernet: mtk_wed: free up rings during detach
+From: netdev-bot+sashiko@kernel.org
+To: hujy652@gmail.com
+Cc: nbd@nbd.name, lorenzo@kernel.org, andrew+netdev@lunn.ch,
+ davem@davemloft.net, edumazet@kernel.org, kuba@kernel.org, pabeni@redhat.com,
+ matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
+ sujuan.chen@mediatek.com, rex.lu@mediatek.com, netdev@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, sashiko-bot@kernel.org
+Date: Thu, 29 Oct 2026 00:59:55 +0000
+Message-ID: <179323559576.3134.3581964797425462358@kernel.org>
+In-Reply-To: <20261026-wedfix-v6-3-a52f6b15d2fc@gmail.com>
+References: <20261026-wedfix-v6-3-a52f6b15d2fc@gmail.com>
+X-sashiko-severity: Low
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,242 +71,107 @@ List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-17.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-15.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,
-	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_2
-	autolearn=ham autolearn_force=no version=4.0.1
+	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	MENTIONS_GIT_HOSTING,SPF_HELO_NONE,SPF_PASS autolearn=ham
+	autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On Wed, 28 Oct 2026 07:02:12 -0500
-"Rob Herring (Arm)" <robh@kernel.org> wrote:
+Thank you for your contribution! Sashiko AI review found more severe
+issue(s) in other patches of this series. This mail is only an FYI, in case
+you want to address the nit picks below when you respin.
 
-> Property names within if/then schemas currently go unchecked whether
-> they have a type defined or match what's in the top-level schema. Adding
-> a check finds a number of instances of typos. The typos result in the
-> schema having no effect on constraints.
-> 
-> With this, fix the mediatek,vcodec-encoder 'clocks' count constraint
-> exposed by the name correction.
-> 
-> Signed-off-by: Rob Herring (Arm) <robh@kernel.org>
-> ---
->  .../devicetree/bindings/clock/qcom,kpss-gcc.yaml     |  2 +-
->  .../bindings/display/brcm,bcm2711-hdmi.yaml          |  2 +-
->  .../bindings/display/msm/dp-controller.yaml          |  2 +-
->  .../devicetree/bindings/display/msm/hdmi.yaml        |  4 ++--
->  Documentation/devicetree/bindings/dma/fsl,edma.yaml  |  2 +-
->  .../devicetree/bindings/gpio/loongson,ls-gpio.yaml   |  2 +-
->  .../bindings/iio/adc/amlogic,meson-saradc.yaml       |  2 +-
+Low priority / nit picks for your consideration:
 
-For IIO
+- [Low] After this patch, mtk_wed_free_rx_rings()
+  (drivers/net/ethernet/mediatek/mtk_wed.c:954-958) calls…
 
-Acked-by: Jonathan Cameron <jonathan.cameron@oss.qualcomm.com>
+--
 
->  .../bindings/media/mediatek,vcodec-encoder.yaml      | 12 ++++--------
->  .../devicetree/bindings/media/samsung,s5p-mfc.yaml   |  2 +-
->  .../devicetree/bindings/pci/mediatek-pcie.yaml       | 12 ++++++------
->  10 files changed, 19 insertions(+), 23 deletions(-)
-> 
-> diff --git a/Documentation/devicetree/bindings/clock/qcom,kpss-gcc.yaml b/Documentation/devicetree/bindings/clock/qcom,kpss-gcc.yaml
-> index 88b7672123a0..ed347096df46 100644
-> --- a/Documentation/devicetree/bindings/clock/qcom,kpss-gcc.yaml
-> +++ b/Documentation/devicetree/bindings/clock/qcom,kpss-gcc.yaml
-> @@ -62,7 +62,7 @@ then:
->      - '#clock-cells'
->  else:
->    properties:
-> -    clock: false
-> +    clocks: false
->      clock-names: false
->      '#clock-cells': false
->  
-> diff --git a/Documentation/devicetree/bindings/display/brcm,bcm2711-hdmi.yaml b/Documentation/devicetree/bindings/display/brcm,bcm2711-hdmi.yaml
-> index c1cefd547391..fd4d598f6ff8 100644
-> --- a/Documentation/devicetree/bindings/display/brcm,bcm2711-hdmi.yaml
-> +++ b/Documentation/devicetree/bindings/display/brcm,bcm2711-hdmi.yaml
-> @@ -145,7 +145,7 @@ allOf:
->              - description: CEC stuck at low interrupt
->              - description: Hotplug connected interrupt
->              - description: Hotplug removed interrupt
-> -        interrupts-names:
-> +        interrupt-names:
->            items:
->              - const: cec-tx
->              - const: cec-rx
-> diff --git a/Documentation/devicetree/bindings/display/msm/dp-controller.yaml b/Documentation/devicetree/bindings/display/msm/dp-controller.yaml
-> index 094a6383bb77..f72d1b354007 100644
-> --- a/Documentation/devicetree/bindings/display/msm/dp-controller.yaml
-> +++ b/Documentation/devicetree/bindings/display/msm/dp-controller.yaml
-> @@ -304,7 +304,7 @@ allOf:
->          clocks:
->            minItems: 6
->            maxItems: 6
-> -        clocks-names:
-> +        clock-names:
->            minItems: 6
->            maxItems: 6
->  
-> diff --git a/Documentation/devicetree/bindings/display/msm/hdmi.yaml b/Documentation/devicetree/bindings/display/msm/hdmi.yaml
-> index dfec6c3480f3..02d27ccad024 100644
-> --- a/Documentation/devicetree/bindings/display/msm/hdmi.yaml
-> +++ b/Documentation/devicetree/bindings/display/msm/hdmi.yaml
-> @@ -113,7 +113,7 @@ allOf:
->              - const: core
->              - const: master_iface
->              - const: slave_iface
-> -        core-vcc-supplies: false
-> +        core-vcc-supply: false
->  
->    - if:
->        properties:
-> @@ -136,7 +136,7 @@ allOf:
->              - const: core
->              - const: alt_iface
->              - const: extp
-> -        hdmi-mux-supplies: false
-> +        hdmi-mux-supply: false
->  
->    - if:
->        properties:
-> diff --git a/Documentation/devicetree/bindings/dma/fsl,edma.yaml b/Documentation/devicetree/bindings/dma/fsl,edma.yaml
-> index f609038e35ae..0260d177c7d0 100644
-> --- a/Documentation/devicetree/bindings/dma/fsl,edma.yaml
-> +++ b/Documentation/devicetree/bindings/dma/fsl,edma.yaml
-> @@ -172,7 +172,7 @@ allOf:
->              const: fsl,imx7ulp-edma
->      then:
->        properties:
-> -        clock:
-> +        clocks:
->            minItems: 2
->            maxItems: 2
->          clock-names:
-> diff --git a/Documentation/devicetree/bindings/gpio/loongson,ls-gpio.yaml b/Documentation/devicetree/bindings/gpio/loongson,ls-gpio.yaml
-> index 69852444df23..07c8b233c6bd 100644
-> --- a/Documentation/devicetree/bindings/gpio/loongson,ls-gpio.yaml
-> +++ b/Documentation/devicetree/bindings/gpio/loongson,ls-gpio.yaml
-> @@ -80,7 +80,7 @@ allOf:
->          - resets
->      else:
->        properties:
-> -        "#interrupts-cells": false
-> +        "#interrupt-cells": false
->          interrupt-controller: false
->          resets: false
->  
-> diff --git a/Documentation/devicetree/bindings/iio/adc/amlogic,meson-saradc.yaml b/Documentation/devicetree/bindings/iio/adc/amlogic,meson-saradc.yaml
-> index 70ab4e140e71..535213ba0c5e 100644
-> --- a/Documentation/devicetree/bindings/iio/adc/amlogic,meson-saradc.yaml
-> +++ b/Documentation/devicetree/bindings/iio/adc/amlogic,meson-saradc.yaml
-> @@ -92,7 +92,7 @@ allOf:
->      else:
->        properties:
->          nvmem-cells: false
-> -        mvmem-cel-names: false
-> +        nvmem-cell-names: false
->          clocks:
->            minItems: 4
->          clock-names:
-> diff --git a/Documentation/devicetree/bindings/media/mediatek,vcodec-encoder.yaml b/Documentation/devicetree/bindings/media/mediatek,vcodec-encoder.yaml
-> index 4505e66876a2..52f471a070d5 100644
-> --- a/Documentation/devicetree/bindings/media/mediatek,vcodec-encoder.yaml
-> +++ b/Documentation/devicetree/bindings/media/mediatek,vcodec-encoder.yaml
-> @@ -110,19 +110,15 @@ allOf:
->  
->      then:
->        properties:
-> -        clock:
-> -          items:
-> -            minItems: 1
-> -            maxItems: 1
-> +        clocks:
-> +          maxItems: 1
->          clock-names:
->            items:
->              - const: venc_lt_sel
->      else:
->        properties:
-> -        clock:
-> -          items:
-> -            minItems: 1
-> -            maxItems: 1
-> +        clocks:
-> +          maxItems: 1
->          clock-names:
->            items:
->              - const: venc_sel
-> diff --git a/Documentation/devicetree/bindings/media/samsung,s5p-mfc.yaml b/Documentation/devicetree/bindings/media/samsung,s5p-mfc.yaml
-> index b46cc780703c..4488d5ca9b9c 100644
-> --- a/Documentation/devicetree/bindings/media/samsung,s5p-mfc.yaml
-> +++ b/Documentation/devicetree/bindings/media/samsung,s5p-mfc.yaml
-> @@ -174,7 +174,7 @@ allOf:
->              - const: mfc
->          iommus:
->            maxItems: 2
-> -        iommus-names: false
-> +        iommu-names: false
->  
->  examples:
->    - |
-> diff --git a/Documentation/devicetree/bindings/pci/mediatek-pcie.yaml b/Documentation/devicetree/bindings/pci/mediatek-pcie.yaml
-> index c009a7a52bc6..7c40361f95ec 100644
-> --- a/Documentation/devicetree/bindings/pci/mediatek-pcie.yaml
-> +++ b/Documentation/devicetree/bindings/pci/mediatek-pcie.yaml
-> @@ -127,7 +127,7 @@ allOf:
->          phy-names:
->            const: pcie-phy1
->  
-> -        power-domain: false
-> +        power-domains: false
->  
->        required:
->          - resets
-> @@ -150,7 +150,7 @@ allOf:
->            minItems: 2
->            maxItems: 2
->  
-> -        reset: false
-> +        resets: false
->  
->          reset-names: false
->  
-> @@ -171,7 +171,7 @@ allOf:
->          clocks:
->            minItems: 6
->  
-> -        reset: false
-> +        resets: false
->  
->          reset-names: false
->  
-> @@ -193,7 +193,7 @@ allOf:
->          clocks:
->            minItems: 6
->  
-> -        reset: false
-> +        resets: false
->  
->          reset-names: false
->  
-> @@ -215,7 +215,7 @@ allOf:
->          clock-names:
->            maxItems: 1
->  
-> -        reset: false
-> +        resets: false
->  
->          reset-names: false
->  
-> @@ -223,7 +223,7 @@ allOf:
->  
->          phy-names: false
->  
-> -        power-domain: false
-> +        power-domains: false
->  
->          mediatek,pbus-csr: false
->  
+net: ethernet: mtk_wed: free up rings during detach
 
+This commit makes mtk_wed_free_rx_rings() also free the rx_ring[] and
+tx_wdma[] descriptor rings. Before this, __mtk_wed_detach() leaked them.
+The change comes from mtk-openwrt-feeds and was modified to check
+ring->desc instead of an extra flag.
+
+Link: https://github.com/mediatek/mtk-openwrt-feeds/blob/main/25.12/files/target/linux/mediatek/patches-6.12/999-wed-04-Fix-reinsert-wifi-module-cause-memory-leak-issue.patch
+Link: https://sashiko.dev/#/message/179000700034.2160803.10594281691384015089%40kernel.org
+
+> diff --git a/drivers/net/ethernet/mediatek/mtk_wed.c b/drivers/net/ethernet/mediatek/mtk_wed.c
+> index 3f0be70c3f145..3044a7a8ea03e 100644
+> --- a/drivers/net/ethernet/mediatek/mtk_wed.c
+> +++ b/drivers/net/ethernet/mediatek/mtk_wed.c
+> @@ -949,6 +949,14 @@ mtk_wed_free_ring(struct mtk_wed_device *dev, struct mtk_wed_ring *ring)
+>  static void
+>  mtk_wed_free_rx_rings(struct mtk_wed_device *dev)
+>  {
+> +	int i;
+> +
+> +	for (i = 0; i < ARRAY_SIZE(dev->rx_ring); i++)
+> +		mtk_wed_free_ring(dev, &dev->rx_ring[i]);
+> +
+> +	for (i = 0; i < ARRAY_SIZE(dev->tx_wdma); i++)
+> +		mtk_wed_free_ring(dev, &dev->tx_wdma[i]);
+
+[Severity: Low]
+Could the WDMA engine still be writing to the tx_wdma[] descriptors when
+they are freed here?
+
+In __mtk_wed_detach(), these rings are freed right after
+mtk_wed_wo_reset(), which returns void:
+
+__mtk_wed_detach()
+    mtk_wed_wo_reset(dev);
+        mtk_wdma_tx_reset(dev);
+    mtk_wed_free_rx_rings(dev);
+        dma_free_coherent(..., tx_wdma[i].desc, ...)
+
+If the TX_DMA_BUSY poll in mtk_wdma_tx_reset() times out, the timeout is
+only logged:
+
+mtk_wdma_tx_reset() {
+    ...
+	wdma_clr(dev, MTK_WDMA_GLO_CFG, MTK_WDMA_GLO_CFG_TX_DMA_EN);
+	if (readx_poll_timeout(mtk_wdma_read_reset, dev, status,
+			       !(status & mask), 0, 10000))
+		dev_err(dev->hw->dev, "tx reset failed\n");
+    ...
+	for (i = 0; i < ARRAY_SIZE(dev->tx_wdma); i++)
+		wdma_w32(dev,
+			 MTK_WDMA_RING_TX(i) + MTK_WED_RING_OFS_CPU_IDX, 0);
+}
+
+mtk_wdma_v3_tx_reset() handles timeouts in its prefetch and writeback
+BUSY polls the same way.
+
+Only the CPU_IDX registers are cleared. The MTK_WDMA_RING_TX(i) BASE
+registers and the WED WDMA_RING_TX BASE registers still point at
+desc_phys.
+
+If the engine has not gone idle, can a late descriptor fetch or
+writeback land in coherent memory that has already gone back to the
+allocator? Before this patch the rings were leaked, so such a write
+could only reach memory that nothing else was using.
+
+This depends on a hardware timeout, and I could not confirm from the
+code that a late writeback really happens. TX_DMA_EN has already been
+cleared in mtk_wed_dma_disable(), and MTK_WED_RESET_WED has been
+asserted.
+
+The same function already frees rx_wdma[] in mtk_wed_free_tx_rings()
+right after mtk_wdma_rx_reset(), whose -ETIMEDOUT return is ignored, so
+this follows an existing pattern in the driver. Would it be worth either
+skipping the free on a reset timeout or clearing the ring BASE registers
+before freeing?
+
+> +
+>  	mtk_wed_free_rx_buffer(dev);
+>  	mtk_wed_free_ring(dev, &dev->rro.ring);
+>  }
+
+-- 
+Sashiko AI review · https://netdev-ai.bots.linux.dev/sashiko/#/patchset/20261026-wedfix-v6-0-a52f6b15d2fc%40gmail.com
 
