@@ -2,71 +2,98 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 8994D606A322
-	for <linux-mediatek@archiver.kernel.org>; Thu, 29 Oct 2026 05:30:49 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 40691606A322
+	for <linux-mediatek@archiver.kernel.org>; Thu, 29 Oct 2026 06:13:15 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=X+vAIwos;
-	dkim=pass (1024-bit key, unprotected) header.d=163.com header.i=@163.com header.a=rsa-sha256 header.s=s110527 header.b=Y3vU77yn
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=wvOaYdCu;
+	dkim=pass (2048-bit key, unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=AY9fCZM8
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Unsubscribe-Post:List-Owner;
-	bh=2WMOO2p95M9ThYIGbReouUB1EEEiCid5uIcZXbX1JvU=; b=X+vAIwosFEDX3EjP1RzV+U8+mK
-	VH3jyKjGdgiMhXOnVmnLvSYjyfMhvlMJZC0Uj61L9H8XMP+C1iT7qkTO1741+2CXMIqG1jLsCzjIH
-	rx2fAo9+4WPQeNj/AhuvNT7RLi3ADt08WVAOQbV6DpIjb3NvbN+USuSlnV6RiCWL5kfHpX5zRcufg
-	3nIeU6cObJFQR0cGg3xYymCGkTepW89TBDOxldXO56wJHNqnyA0li58k6MqMRrTZmKSySA42tReqA
-	n0YMV8+vGPyb1+6xJaRmWt9A68dqDpJFiodX/CJfFJXpZ3bOTU9OubvV/PeTyiyf9chAaZxuKcIWw
-	/tNeBT2A==;
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Unsubscribe-Post:
+	List-Owner; bh=8HfICeltQZtZCQ5hD60I+Ms/gO7apKM3P6RJyOQSEUI=; b=wvOaYdCuuHFgwp
+	DgUXlJ1pdNukDDPYu/IxlyQVeoYJ/N7mGM8+oggmUeQWzdBMsTvfcDKuq2T2Z4a+c/NpwvKgnIWTW
+	8JS/JkBX384zDp9pymgEoqcRLk31gXjbRjwFPNJPzEJydgjmXiQOr4JOXtwIrQHoJi2awvPrLk97P
+	EDtJQXSE2sB6PdwNOo9koqfU+rEYZWuq4zMTr5CSwU4bPxhS+ldeyIP1iUmjHBC7TfFskcX7hJRPr
+	7bL1kvnXL60Xq968eJuQTxXjog62vyKKl6AHad4WE5Unq2ranmN1KY3C43a342IdrO9FjJk5XbfCp
+	KW7eR4wtagXtzvo3c2VQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xMIiv-00000008Ooh-0uQz;
-	Thu, 29 Oct 2026 05:30:49 +0000
-Received: from m16.mail.163.com ([117.135.210.3])
+	id 1xMJNw-00000008SLX-2lgS;
+	Thu, 29 Oct 2026 06:13:12 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xMIis-00000008OlF-1h1c;
-	Thu, 29 Oct 2026 05:30:48 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
-	s=s110527; h=From:To:Subject:Date:Message-Id:MIME-Version; bh=2W
-	MOO2p95M9ThYIGbReouUB1EEEiCid5uIcZXbX1JvU=; b=Y3vU77ynFsjqZ9ZqEY
-	5/ycXmO/8NQqHDoOXjWKuVGuVo3kTQkXpy7hiDfNUd3a+BDGOGKv3UD20YEcZFnW
-	2tcmJ2fboq/TJ0GtMbCwQnMET2w/Vo0P82InuILekOACobvnJbglKE2qJ/SAYweF
-	x5ZY1ti4sqMQ0dXBqcnZIGrWY=
-Received: from pc.localdomain (unknown [])
-	by gzga-smtp-mtada-g1-1 (Coremail) with SMTP id _____wD3X7zw2eJqnygTDQ--.62701S2;
-	Thu, 29 Oct 2026 13:30:25 +0800 (CST)
-From: Jiale Yao <yaojiale02@163.com>
-To: Tiffany Lin <tiffany.lin@mediatek.com>,
-	Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
-	Yunfei Dong <yunfei.dong@mediatek.com>,
-	Mauro Carvalho Chehab <mchehab@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Hans Verkuil <hverkuil@kernel.org>,
-	linux-media@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Cc: stable@vger.kernel.org
-Subject: [PATCH] media: mediatek: vcodec: NUL-terminate debugfs input
-Date: Thu, 29 Oct 2026 13:30:23 +0800
-Message-Id: <20261029053024.2526059-1-yaojiale02@163.com>
-X-Mailer: git-send-email 2.34.1
+	id 1xMJNt-00000008SIg-0JZ0;
+	Thu, 29 Oct 2026 06:13:09 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by sea.source.kernel.org (Postfix) with ESMTP id F203F40829;
+	Thu, 29 Oct 2026 06:13:07 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 4DFD61F01825;
+	Thu, 29 Oct 2026 06:12:55 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1793254387;
+	bh=8HfICeltQZtZCQ5hD60I+Ms/gO7apKM3P6RJyOQSEUI=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:References;
+	b=AY9fCZM838jxvzO1LZjlGpXv0W8K3teqSZL7RijTgFK+vMuR9I/rLM2tTDsuEdu49
+	 D2/wj4MDZjo91NakOEaX5qSF5O95U3YG8/G5UHWIxf80ZCUvpFSL90WwQh/5OnZhB+
+	 IxV3Ir9hpPOUOgGFeO+ZNTpumWj+emmZLNf8wkK2peC6tx3JvxcCwhRjIp/8vl4fIF
+	 5Te7rIsn3LXYjnylmmiG2eWT/I2O7NNXE/I6Z/jqqYBvXQ+flDBPRbsCb9u28Gwj8Z
+	 Wm++8Vi3KmsJ2uSOrdepJb1M4tZjsQyVIQao8cR8k7StT66yaZCypWnGb4AtixMYe1
+	 607LwJx2luOOA==
+Date: Thu, 29 Oct 2026 07:12:52 +0100
+From: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
+To: "Rob Herring (Arm)" <robh@kernel.org>
+Cc: Bjorn Andersson <andersson@kernel.org>, Stephen Boyd <sboyd@kernel.org>,
+ Brian Masney <bmasney+clk@redhat.com>, Jerome Brunet
+ <jbrunet+clk@baylibre.com>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor
+ Dooley <conor+dt@kernel.org>, Maarten Lankhorst
+ <maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>,
+ Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>,
+ Simona Vetter <simona@ffwll.ch>, Florian Fainelli
+ <florian.fainelli@broadcom.com>, Broadcom internal kernel review list
+ <bcm-kernel-feedback-list@broadcom.com>, Rob Clark
+ <robin.clark@oss.qualcomm.com>, Dmitry Baryshkov <lumag@kernel.org>,
+ Abhinav Kumar <abhinav.kumar@linux.dev>, Jessica Zhang
+ <jesszhan0024@gmail.com>, Sean Paul <sean@poorly.run>, Marijn Suijten
+ <marijn.suijten@somainline.org>, Frank Li <Frank.Li@nxp.com>, Vinod Koul
+ <vkoul@kernel.org>, Yinbo Zhu <zhuyinbo@loongson.cn>, Linus Walleij
+ <linusw@kernel.org>, Bartosz Golaszewski <brgl@kernel.org>, Jonathan
+ Cameron <jic23@kernel.org>, David Lechner <dlechner@baylibre.com>, Nuno
+ =?UTF-8?B?U8Oh?= <nuno.sa@analog.com>, Andy Shevchenko <andy@kernel.org>,
+ Neil Armstrong <neil.armstrong@linaro.org>, Kevin Hilman
+ <khilman@baylibre.com>, Martin Blumenstingl
+ <martin.blumenstingl@googlemail.com>, Tiffany Lin
+ <tiffany.lin@mediatek.com>, Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
+ Yunfei Dong <yunfei.dong@mediatek.com>, Mauro Carvalho Chehab
+ <mchehab@kernel.org>, Marek Szyprowski <m.szyprowski@samsung.com>, Andrzej
+ Hajda <andrzej.hajda@intel.com>, Ryder Lee <ryder.lee@mediatek.com>,
+ Lorenzo Pieralisi <lpieralisi@kernel.org>, Krzysztof =?UTF-8?B?V2lsY3p5?=
+ =?UTF-8?B?xYRza2k=?= <kwilczynski@kernel.org>, Manivannan Sadhasivam
+ <mani@kernel.org>, Bjorn Helgaas <bhelgaas@google.com>, Matthias Brugger
+ <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+ <angelogioacchino.delregno@collabora.com>, Christian Marangi
+ <ansuelsmth@gmail.com>, Eric Anholt <eric@anholt.net>, Kuogee Hsieh
+ <quic_khsieh@quicinc.com>, Peng Fan <peng.fan@nxp.com>, Aakarsh Jain
+ <aakarsh.jain@samsung.com>, Abhinav Kumar <quic_abhinavk@quicinc.com>,
+ linux-arm-msm@vger.kernel.org, linux-clk@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ dri-devel@lists.freedesktop.org, linux-rpi-kernel@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org, freedreno@lists.freedesktop.org,
+ imx@lists.linux.dev, dmaengine@vger.kernel.org, linux-gpio@vger.kernel.org,
+ linux-iio@vger.kernel.org, linux-amlogic@lists.infradead.org,
+ linux-media@vger.kernel.org, linux-pci@vger.kernel.org,
+ linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH] dt-bindings: Fix property name typos in if/then schemas
+Message-ID: <20261029071252.586c8cbc@foz.lan>
+In-Reply-To: <20261028120216.2657397-1-robh@kernel.org>
+References: <20261028120216.2657397-1-robh@kernel.org>
+X-Mailer: Claws Mail 4.4.0 (GTK 3.24.52; x86_64-redhat-linux-gnu)
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-CM-TRANSID: _____wD3X7zw2eJqnygTDQ--.62701S2
-X-Coremail-Antispam: 1Uf129KBjvJXoW7KFyfWFWUCw15XF1fuF47XFb_yoW8WryfpF
-	Z8Kw17Ar1kJr9Fvr18Cw47ua45C393XFW8CrW3Ww13Zwn0qFW2g340yay3JFZ2yr9FkFnr
-	Jrs8uryxWw4jyF7anT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
-	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x07USkskUUUUU=
-X-CM-SenderInfo: x1dryxhdohiji6rwjhhfrp/xtbCzREGQGri2fHwZQAA3v
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261028_223046_897969_35F444D3 
-X-CRM114-Status: GOOD (  11.49  )
-X-Spam-Score: -1.8 (-)
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -77,47 +104,246 @@ List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-15.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
-	DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,FREEMAIL_FORGED_FROMDOMAIN,
-	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
-	UNPARSEABLE_RELAY,USER_AGENT_GIT autolearn=ham autolearn_force=no
-	version=4.0.1
+X-Spam-Status: No, score=-17.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,
+	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_2
+	autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-mtk_vdec_dbgfs_write() allows userspace to overwrite every byte in the
-persistent debugfs buffer. The read handler later searches that buffer with
-strstr(), which can read past its end when no NUL remains.
+On Wed, 28 Oct 2026 07:02:12 -0500
+"Rob Herring (Arm)" <robh@kernel.org> wrote:
 
-Reserve one byte and terminate the copied input at the updated file
-position before releasing the debugfs lock.
+> Property names within if/then schemas currently go unchecked whether
+> they have a type defined or match what's in the top-level schema. Adding
+> a check finds a number of instances of typos. The typos result in the
+> schema having no effect on constraints.
+> 
+> With this, fix the mediatek,vcodec-encoder 'clocks' count constraint
+> exposed by the name correction.
 
-Fixes: 5e488a4fd859 ("media: mediatek: vcodec: Add a debugfs file to get different useful information")
-Cc: stable@vger.kernel.org
-Signed-off-by: Jiale Yao <yaojiale02@163.com>
----
- .../media/platform/mediatek/vcodec/common/mtk_vcodec_dbgfs.c | 5 ++++-
- 1 file changed, 4 insertions(+), 1 deletion(-)
+For media:
 
-diff --git a/drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_dbgfs.c b/drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_dbgfs.c
-index 2da11521fc7b..8528534e41ef 100644
---- a/drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_dbgfs.c
-+++ b/drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_dbgfs.c
-@@ -77,8 +77,11 @@ static ssize_t mtk_vdec_dbgfs_write(struct file *filp, const char __user *ubuf,
- 	struct mtk_vcodec_dbgfs *dbgfs = &vcodec_dev->dbgfs;
- 
- 	mutex_lock(&dbgfs->dbgfs_lock);
--	dbgfs->buf_size = simple_write_to_buffer(dbgfs->dbgfs_buf, sizeof(dbgfs->dbgfs_buf),
-+	dbgfs->buf_size = simple_write_to_buffer(dbgfs->dbgfs_buf,
-+						 sizeof(dbgfs->dbgfs_buf) - 1,
- 						 ppos, ubuf, count);
-+	if (dbgfs->buf_size > 0)
-+		dbgfs->dbgfs_buf[*ppos] = '\0';
- 	mutex_unlock(&dbgfs->dbgfs_lock);
- 	if (dbgfs->buf_size > 0)
- 		return count;
--- 
-2.34.1
+Acked-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
 
+> 
+> Signed-off-by: Rob Herring (Arm) <robh@kernel.org>
+> ---
+>  .../devicetree/bindings/clock/qcom,kpss-gcc.yaml     |  2 +-
+>  .../bindings/display/brcm,bcm2711-hdmi.yaml          |  2 +-
+>  .../bindings/display/msm/dp-controller.yaml          |  2 +-
+>  .../devicetree/bindings/display/msm/hdmi.yaml        |  4 ++--
+>  Documentation/devicetree/bindings/dma/fsl,edma.yaml  |  2 +-
+>  .../devicetree/bindings/gpio/loongson,ls-gpio.yaml   |  2 +-
+>  .../bindings/iio/adc/amlogic,meson-saradc.yaml       |  2 +-
+>  .../bindings/media/mediatek,vcodec-encoder.yaml      | 12 ++++--------
+>  .../devicetree/bindings/media/samsung,s5p-mfc.yaml   |  2 +-
+>  .../devicetree/bindings/pci/mediatek-pcie.yaml       | 12 ++++++------
+>  10 files changed, 19 insertions(+), 23 deletions(-)
+> 
+> diff --git a/Documentation/devicetree/bindings/clock/qcom,kpss-gcc.yaml b/Documentation/devicetree/bindings/clock/qcom,kpss-gcc.yaml
+> index 88b7672123a0..ed347096df46 100644
+> --- a/Documentation/devicetree/bindings/clock/qcom,kpss-gcc.yaml
+> +++ b/Documentation/devicetree/bindings/clock/qcom,kpss-gcc.yaml
+> @@ -62,7 +62,7 @@ then:
+>      - '#clock-cells'
+>  else:
+>    properties:
+> -    clock: false
+> +    clocks: false
+>      clock-names: false
+>      '#clock-cells': false
+>  
+> diff --git a/Documentation/devicetree/bindings/display/brcm,bcm2711-hdmi.yaml b/Documentation/devicetree/bindings/display/brcm,bcm2711-hdmi.yaml
+> index c1cefd547391..fd4d598f6ff8 100644
+> --- a/Documentation/devicetree/bindings/display/brcm,bcm2711-hdmi.yaml
+> +++ b/Documentation/devicetree/bindings/display/brcm,bcm2711-hdmi.yaml
+> @@ -145,7 +145,7 @@ allOf:
+>              - description: CEC stuck at low interrupt
+>              - description: Hotplug connected interrupt
+>              - description: Hotplug removed interrupt
+> -        interrupts-names:
+> +        interrupt-names:
+>            items:
+>              - const: cec-tx
+>              - const: cec-rx
+> diff --git a/Documentation/devicetree/bindings/display/msm/dp-controller.yaml b/Documentation/devicetree/bindings/display/msm/dp-controller.yaml
+> index 094a6383bb77..f72d1b354007 100644
+> --- a/Documentation/devicetree/bindings/display/msm/dp-controller.yaml
+> +++ b/Documentation/devicetree/bindings/display/msm/dp-controller.yaml
+> @@ -304,7 +304,7 @@ allOf:
+>          clocks:
+>            minItems: 6
+>            maxItems: 6
+> -        clocks-names:
+> +        clock-names:
+>            minItems: 6
+>            maxItems: 6
+>  
+> diff --git a/Documentation/devicetree/bindings/display/msm/hdmi.yaml b/Documentation/devicetree/bindings/display/msm/hdmi.yaml
+> index dfec6c3480f3..02d27ccad024 100644
+> --- a/Documentation/devicetree/bindings/display/msm/hdmi.yaml
+> +++ b/Documentation/devicetree/bindings/display/msm/hdmi.yaml
+> @@ -113,7 +113,7 @@ allOf:
+>              - const: core
+>              - const: master_iface
+>              - const: slave_iface
+> -        core-vcc-supplies: false
+> +        core-vcc-supply: false
+>  
+>    - if:
+>        properties:
+> @@ -136,7 +136,7 @@ allOf:
+>              - const: core
+>              - const: alt_iface
+>              - const: extp
+> -        hdmi-mux-supplies: false
+> +        hdmi-mux-supply: false
+>  
+>    - if:
+>        properties:
+> diff --git a/Documentation/devicetree/bindings/dma/fsl,edma.yaml b/Documentation/devicetree/bindings/dma/fsl,edma.yaml
+> index f609038e35ae..0260d177c7d0 100644
+> --- a/Documentation/devicetree/bindings/dma/fsl,edma.yaml
+> +++ b/Documentation/devicetree/bindings/dma/fsl,edma.yaml
+> @@ -172,7 +172,7 @@ allOf:
+>              const: fsl,imx7ulp-edma
+>      then:
+>        properties:
+> -        clock:
+> +        clocks:
+>            minItems: 2
+>            maxItems: 2
+>          clock-names:
+> diff --git a/Documentation/devicetree/bindings/gpio/loongson,ls-gpio.yaml b/Documentation/devicetree/bindings/gpio/loongson,ls-gpio.yaml
+> index 69852444df23..07c8b233c6bd 100644
+> --- a/Documentation/devicetree/bindings/gpio/loongson,ls-gpio.yaml
+> +++ b/Documentation/devicetree/bindings/gpio/loongson,ls-gpio.yaml
+> @@ -80,7 +80,7 @@ allOf:
+>          - resets
+>      else:
+>        properties:
+> -        "#interrupts-cells": false
+> +        "#interrupt-cells": false
+>          interrupt-controller: false
+>          resets: false
+>  
+> diff --git a/Documentation/devicetree/bindings/iio/adc/amlogic,meson-saradc.yaml b/Documentation/devicetree/bindings/iio/adc/amlogic,meson-saradc.yaml
+> index 70ab4e140e71..535213ba0c5e 100644
+> --- a/Documentation/devicetree/bindings/iio/adc/amlogic,meson-saradc.yaml
+> +++ b/Documentation/devicetree/bindings/iio/adc/amlogic,meson-saradc.yaml
+> @@ -92,7 +92,7 @@ allOf:
+>      else:
+>        properties:
+>          nvmem-cells: false
+> -        mvmem-cel-names: false
+> +        nvmem-cell-names: false
+>          clocks:
+>            minItems: 4
+>          clock-names:
+> diff --git a/Documentation/devicetree/bindings/media/mediatek,vcodec-encoder.yaml b/Documentation/devicetree/bindings/media/mediatek,vcodec-encoder.yaml
+> index 4505e66876a2..52f471a070d5 100644
+> --- a/Documentation/devicetree/bindings/media/mediatek,vcodec-encoder.yaml
+> +++ b/Documentation/devicetree/bindings/media/mediatek,vcodec-encoder.yaml
+> @@ -110,19 +110,15 @@ allOf:
+>  
+>      then:
+>        properties:
+> -        clock:
+> -          items:
+> -            minItems: 1
+> -            maxItems: 1
+> +        clocks:
+> +          maxItems: 1
+>          clock-names:
+>            items:
+>              - const: venc_lt_sel
+>      else:
+>        properties:
+> -        clock:
+> -          items:
+> -            minItems: 1
+> -            maxItems: 1
+> +        clocks:
+> +          maxItems: 1
+>          clock-names:
+>            items:
+>              - const: venc_sel
+> diff --git a/Documentation/devicetree/bindings/media/samsung,s5p-mfc.yaml b/Documentation/devicetree/bindings/media/samsung,s5p-mfc.yaml
+> index b46cc780703c..4488d5ca9b9c 100644
+> --- a/Documentation/devicetree/bindings/media/samsung,s5p-mfc.yaml
+> +++ b/Documentation/devicetree/bindings/media/samsung,s5p-mfc.yaml
+> @@ -174,7 +174,7 @@ allOf:
+>              - const: mfc
+>          iommus:
+>            maxItems: 2
+> -        iommus-names: false
+> +        iommu-names: false
+>  
+>  examples:
+>    - |
+> diff --git a/Documentation/devicetree/bindings/pci/mediatek-pcie.yaml b/Documentation/devicetree/bindings/pci/mediatek-pcie.yaml
+> index c009a7a52bc6..7c40361f95ec 100644
+> --- a/Documentation/devicetree/bindings/pci/mediatek-pcie.yaml
+> +++ b/Documentation/devicetree/bindings/pci/mediatek-pcie.yaml
+> @@ -127,7 +127,7 @@ allOf:
+>          phy-names:
+>            const: pcie-phy1
+>  
+> -        power-domain: false
+> +        power-domains: false
+>  
+>        required:
+>          - resets
+> @@ -150,7 +150,7 @@ allOf:
+>            minItems: 2
+>            maxItems: 2
+>  
+> -        reset: false
+> +        resets: false
+>  
+>          reset-names: false
+>  
+> @@ -171,7 +171,7 @@ allOf:
+>          clocks:
+>            minItems: 6
+>  
+> -        reset: false
+> +        resets: false
+>  
+>          reset-names: false
+>  
+> @@ -193,7 +193,7 @@ allOf:
+>          clocks:
+>            minItems: 6
+>  
+> -        reset: false
+> +        resets: false
+>  
+>          reset-names: false
+>  
+> @@ -215,7 +215,7 @@ allOf:
+>          clock-names:
+>            maxItems: 1
+>  
+> -        reset: false
+> +        resets: false
+>  
+>          reset-names: false
+>  
+> @@ -223,7 +223,7 @@ allOf:
+>  
+>          phy-names: false
+>  
+> -        power-domain: false
+> +        power-domains: false
+>  
+>          mediatek,pbus-csr: false
+>  
+
+
+
+Thanks,
+Mauro
 
