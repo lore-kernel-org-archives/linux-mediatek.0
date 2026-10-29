@@ -2,67 +2,71 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 51EA7606A32F
-	for <linux-mediatek@archiver.kernel.org>; Thu, 29 Oct 2026 04:11:35 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 8994D606A322
+	for <linux-mediatek@archiver.kernel.org>; Thu, 29 Oct 2026 05:30:49 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=4Uiyjnqa;
-	dkim=pass header.d=bren.win header.i=@bren.win header.a=ed25519-sha256 header.s=v1-ed25519-20260901 header.b=Kjo8Smie;
-	dkim=pass (2048-bit key, unprotected) header.d=bren.win header.i=@bren.win header.a=rsa-sha256 header.s=v1-rsa-20260901 header.b=iLm4m1DP
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=X+vAIwos;
+	dkim=pass (1024-bit key, unprotected) header.d=163.com header.i=@163.com header.a=rsa-sha256 header.s=s110527 header.b=Y3vU77yn
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
 	List-Unsubscribe-Post:List-Owner;
-	bh=DOqKVI6/U3QL5LYFpBxo025cnPh8REghaHnxKILgPgU=; b=4UiyjnqaWg0E8JYADA0JQZHajQ
-	XYt98KKvHCpYtyRRvdScPFqIK76d3hAxGe5JgrFQ/Neah5DiffLKk/Gi+gLhCYxMiZpgP4e8/j6Sh
-	A4XtQ8G8fduJW/wR7PKELrbq4cFPYjr4AqXerhvlW1GyHsDRJJdkdY8PdMiuKTXOjTT22qrC7OdnF
-	+b7h7lbo+MSpG2NRLq/Tg7x56z0a3DfkVqT/z6t+cSCEPQDDaf7HOa8Y1Sl0UOWyxqTwey4uLwicm
-	jpcNlPmZbcqkdLLbBDpLrTHhyvs2Akwkp1/dmimecQrsB8juiT7rE3oBGP86L9n7Kx4C/zObMV9Wa
-	c991sh/w==;
+	bh=2WMOO2p95M9ThYIGbReouUB1EEEiCid5uIcZXbX1JvU=; b=X+vAIwosFEDX3EjP1RzV+U8+mK
+	VH3jyKjGdgiMhXOnVmnLvSYjyfMhvlMJZC0Uj61L9H8XMP+C1iT7qkTO1741+2CXMIqG1jLsCzjIH
+	rx2fAo9+4WPQeNj/AhuvNT7RLi3ADt08WVAOQbV6DpIjb3NvbN+USuSlnV6RiCWL5kfHpX5zRcufg
+	3nIeU6cObJFQR0cGg3xYymCGkTepW89TBDOxldXO56wJHNqnyA0li58k6MqMRrTZmKSySA42tReqA
+	n0YMV8+vGPyb1+6xJaRmWt9A68dqDpJFiodX/CJfFJXpZ3bOTU9OubvV/PeTyiyf9chAaZxuKcIWw
+	/tNeBT2A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xMHUE-00000008ILs-3V2r;
-	Thu, 29 Oct 2026 04:11:34 +0000
-Received: from mx1.bren.win ([51.81.56.14])
+	id 1xMIiv-00000008Ooh-0uQz;
+	Thu, 29 Oct 2026 05:30:49 +0000
+Received: from m16.mail.163.com ([117.135.210.3])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xMHUB-00000008ILN-0gNG;
-	Thu, 29 Oct 2026 04:11:33 +0000
-DKIM-Signature: v=1; a=ed25519-sha256; s=v1-ed25519-20260901; d=bren.win; c=relaxed/relaxed; r=y;
-	h=Message-ID:Date:Subject:To:From; t=1793247075; bh=DOqKVI6/U3QL5LYFpBxo025
-	cnPh8REghaHnxKILgPgU=; b=Kjo8Smiet/vmG/GU93JVZHHKS1Nghkqacjw6RU4aSLTOyvBbyE
-	0HBb41hbIk5zDsnPb9zqw3+wmZpm3iRm6eAg==;
-DKIM-Signature: v=1; a=rsa-sha256; s=v1-rsa-20260901; d=bren.win; c=relaxed/relaxed; r=y;
-	h=Message-ID:Date:Subject:To:From; t=1793247075; bh=DOqKVI6/U3QL5LYFpBxo025
-	cnPh8REghaHnxKILgPgU=; b=iLm4m1DPX21ijS0LWg9yNs3/tfHMUJMqjF8IQFJqbGYWnGeUuK
-	xBF4tBoZb3EfWfFOx4591BKM+H9oqkyXiTrhx2mOu9COhyx4eB9fYKthfQn+MQwSS8xfb5vYrQL
-	QXHoHiyMCqEoSTWSsdvPhIpdobuRyJPSMBscVNrTd/tTsXeqkMxD0qjUAIsgkz/knwK2eDfVcZk
-	Dfju5GWQO1dfodlBX6YLo8vhGhT1PAdLnptIaClsYrVwEw5JYV8g9W3OKRUFyCzC4OErQHPOKp4
-	MnWMYzUI6s6rnG/tadThRZwG6y3rRVAE3zY0jgO1cTpDCvF8ws9B/zpvFy/+PzmTnWw==;
-From: "Brendon C." <bren@bren.win>
-To: linux-clk@vger.kernel.org,
-	linux-mediatek@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org
-Cc: linux-kernel@vger.kernel.org,
-	Michael Turquette <mturquette@baylibre.com>,
-	Stephen Boyd <sboyd@kernel.org>,
+	id 1xMIis-00000008OlF-1h1c;
+	Thu, 29 Oct 2026 05:30:48 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
+	s=s110527; h=From:To:Subject:Date:Message-Id:MIME-Version; bh=2W
+	MOO2p95M9ThYIGbReouUB1EEEiCid5uIcZXbX1JvU=; b=Y3vU77ynFsjqZ9ZqEY
+	5/ycXmO/8NQqHDoOXjWKuVGuVo3kTQkXpy7hiDfNUd3a+BDGOGKv3UD20YEcZFnW
+	2tcmJ2fboq/TJ0GtMbCwQnMET2w/Vo0P82InuILekOACobvnJbglKE2qJ/SAYweF
+	x5ZY1ti4sqMQ0dXBqcnZIGrWY=
+Received: from pc.localdomain (unknown [])
+	by gzga-smtp-mtada-g1-1 (Coremail) with SMTP id _____wD3X7zw2eJqnygTDQ--.62701S2;
+	Thu, 29 Oct 2026 13:30:25 +0800 (CST)
+From: Jiale Yao <yaojiale02@163.com>
+To: Tiffany Lin <tiffany.lin@mediatek.com>,
+	Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
+	Yunfei Dong <yunfei.dong@mediatek.com>,
+	Mauro Carvalho Chehab <mchehab@kernel.org>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Daniel Golle <daniel@makrotopia.org>,
-	Shiji Yang <yangshiji66@outlook.com>,
-	stable@vger.kernel.org
-Subject: [PATCH v3] clk: mediatek: mt7981: swap MSDC and MSDC_HCK gate parents
-Date: Wed, 28 Oct 2026 23:10:41 -0500
-Message-ID: <20261029041041.3367084-1-bren@bren.win>
-X-Mailer: git-send-email 2.47.3
+	Hans Verkuil <hverkuil@kernel.org>,
+	linux-media@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Cc: stable@vger.kernel.org
+Subject: [PATCH] media: mediatek: vcodec: NUL-terminate debugfs input
+Date: Thu, 29 Oct 2026 13:30:23 +0800
+Message-Id: <20261029053024.2526059-1-yaojiale02@163.com>
+X-Mailer: git-send-email 2.34.1
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
+X-CM-TRANSID: _____wD3X7zw2eJqnygTDQ--.62701S2
+X-Coremail-Antispam: 1Uf129KBjvJXoW7KFyfWFWUCw15XF1fuF47XFb_yoW8WryfpF
+	Z8Kw17Ar1kJr9Fvr18Cw47ua45C393XFW8CrW3Ww13Zwn0qFW2g340yay3JFZ2yr9FkFnr
+	Jrs8uryxWw4jyF7anT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
+	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x07USkskUUUUU=
+X-CM-SenderInfo: x1dryxhdohiji6rwjhhfrp/xtbCzREGQGri2fHwZQAA3v
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261028_211131_735331_65900097 
-X-CRM114-Status: GOOD (  14.61  )
-X-Spam-Score: -2.1 (--)
+X-CRM114-CacheID: sfid-20261028_223046_897969_35F444D3 
+X-CRM114-Status: GOOD (  11.49  )
+X-Spam-Score: -1.8 (-)
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,79 +77,47 @@ List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-18.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,
-	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=ham
-	autolearn_force=no version=4.0.1
+X-Spam-Status: No, score=-15.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
+	DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,FREEMAIL_FORGED_FROMDOMAIN,
+	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
+	UNPARSEABLE_RELAY,USER_AGENT_GIT autolearn=ham autolearn_force=no
+	version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-The MT7981B datasheet specifies the storage interface as "eMMC v4.5 @52
-MHz 3.3V". MediaTek's SDK and U-Boot device trees give the MSDC
-controller CK_TOP_EMMC_208M as its "source" clock (max-frequency 52 MHz
-= 208/4) and CK_TOP_EMMC_400M as its "hclk", taken from topckgen
-directly, with the infracfg gate only as "source_cg". The mainline
-device tree takes both from the infracfg gates instead, and their
-parents are the other way round: CLK_INFRA_MSDC_CK from emmc_400m,
-CLK_INFRA_MSDC_HCK_CK from emmc_208m.
+mtk_vdec_dbgfs_write() allows userspace to overwrite every byte in the
+persistent debugfs buffer. The read handler later searches that buffer with
+strstr(), which can read past its end when no NUL remains.
 
-mtk-sd derives its divider, the reported actual_clock and its data
-timeouts from the source rate, so with a device tree asking for 26 MHz
-it programs CKDIV=4 and believes the bus runs at 25 MHz while the real
-bus clock is 13 MHz, and every clock-derived timeout is sized for a bus
-twice as fast as the real one.
+Reserve one byte and terminate the copied input at the updated file
+position before releasing the debugfs lock.
 
-On a GL.iNet GL-X3000 (Samsung 8GTF4R eMMC, 8-bit, 3.3 V, HS) this shows
-up as msdc_track_cmd_data write data errors (host->error=0x4) on
-roughly every 40 MB written, escalating under sustained multi-segment
-writes to exhausted retries, "I/O error, dev mmcblk0", lost page writes
-and a stopped f2fs overlay. Raw direct reads top out at 11 MB/s where
-the vendor kernel reaches 23 MB/s on the same card.
-
-Swap the two parents to match the vendor device trees. With the same
-device tree the bus then runs at a real 26 MHz, reads reach 23 MB/s,
-and four rounds of a 1.4 GB mixed direct/buffered write stress complete
-with zero retries and zero I/O errors, matching the vendor firmware.
-hclk's rate is only read for the CQE idle timer, which no MT7981 device
-tree enables.
-
-Fixes: 813c3b53b55b ("clk: mediatek: add MT7981 clock support")
+Fixes: 5e488a4fd859 ("media: mediatek: vcodec: Add a debugfs file to get different useful information")
 Cc: stable@vger.kernel.org
-Suggested-by: Shiji Yang <yangshiji66@outlook.com>
-Signed-off-by: Brendon C. <bren@bren.win>
+Signed-off-by: Jiale Yao <yaojiale02@163.com>
 ---
-v3:
-- also move CLK_INFRA_MSDC_HCK_CK to emmc_400m, matching the vendor
-  device trees' hclk (suggested by Shiji Yang)
-- correct the claim that the SDK kernel parents the gate from emmc_208m:
-  its gate has mainline's parents, and its device tree takes the rates
-  from topckgen directly
-- v2: https://lore.kernel.org/all/20261017194308.1541507-1-bren@bren.win/
+ .../media/platform/mediatek/vcodec/common/mtk_vcodec_dbgfs.c | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
 
-v2:
-- add Fixes: and Cc: stable so the fix reaches 6.12
-- v1: https://lore.kernel.org/all/20261017190729.1369302-1-bren@bren.win/
-
- drivers/clk/mediatek/clk-mt7981-infracfg.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
-
-diff --git a/drivers/clk/mediatek/clk-mt7981-infracfg.c b/drivers/clk/mediatek/clk-mt7981-infracfg.c
---- a/drivers/clk/mediatek/clk-mt7981-infracfg.c
-+++ b/drivers/clk/mediatek/clk-mt7981-infracfg.c
-@@ -157,8 +157,8 @@ static const struct mtk_gate infra_clks[] = {
- 	GATE_INFRA1(CLK_INFRA_SPI1_HCK_CK, "infra_spi1_hck", "infra_66m_mck",
- 		    14),
- 	GATE_INFRA1(CLK_INFRA_FRTC_CK, "infra_frtc", "cb_rtc_32k", 15),
--	GATE_INFRA1(CLK_INFRA_MSDC_CK, "infra_msdc", "emmc_400m", 16),
--	GATE_INFRA1(CLK_INFRA_MSDC_HCK_CK, "infra_msdc_hck", "emmc_208m", 17),
-+	GATE_INFRA1(CLK_INFRA_MSDC_CK, "infra_msdc", "emmc_208m", 16),
-+	GATE_INFRA1(CLK_INFRA_MSDC_HCK_CK, "infra_msdc_hck", "emmc_400m", 17),
- 	GATE_INFRA1(CLK_INFRA_MSDC_133M_CK, "infra_msdc_133m", "sysaxi", 18),
- 	GATE_INFRA1(CLK_INFRA_MSDC_66M_CK, "infra_msdc_66m", "sysaxi", 19),
- 	GATE_INFRA1(CLK_INFRA_ADC_26M_CK, "infra_adc_26m", "infra_adc_frc", 20),
-
-base-commit: c339f4010dea8b0d754f84ace70cd1b089878ef8
+diff --git a/drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_dbgfs.c b/drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_dbgfs.c
+index 2da11521fc7b..8528534e41ef 100644
+--- a/drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_dbgfs.c
++++ b/drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_dbgfs.c
+@@ -77,8 +77,11 @@ static ssize_t mtk_vdec_dbgfs_write(struct file *filp, const char __user *ubuf,
+ 	struct mtk_vcodec_dbgfs *dbgfs = &vcodec_dev->dbgfs;
+ 
+ 	mutex_lock(&dbgfs->dbgfs_lock);
+-	dbgfs->buf_size = simple_write_to_buffer(dbgfs->dbgfs_buf, sizeof(dbgfs->dbgfs_buf),
++	dbgfs->buf_size = simple_write_to_buffer(dbgfs->dbgfs_buf,
++						 sizeof(dbgfs->dbgfs_buf) - 1,
+ 						 ppos, ubuf, count);
++	if (dbgfs->buf_size > 0)
++		dbgfs->dbgfs_buf[*ppos] = '\0';
+ 	mutex_unlock(&dbgfs->dbgfs_lock);
+ 	if (dbgfs->buf_size > 0)
+ 		return count;
 -- 
-2.55.0
+2.34.1
+
 
