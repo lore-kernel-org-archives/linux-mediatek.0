@@ -2,11 +2,11 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 84591606A320
-	for <linux-mediatek@archiver.kernel.org>; Fri, 30 Oct 2026 08:48:00 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 194F6606A326
+	for <linux-mediatek@archiver.kernel.org>; Fri, 30 Oct 2026 08:49:07 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=Vb/W7Ij8;
-	dkim=pass (2048-bit key, unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256 header.s=Intel header.b=OWv9Kqyv
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=1vn8/kui;
+	dkim=pass (2048-bit key, unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256 header.s=Intel header.b=DAKStuDk
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
@@ -14,50 +14,50 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=focRYHe+lLJ7WgjazgIVN+EOiAAyKkLKpH1zWpglXSg=; b=Vb/W7Ij8Oicgy/khVNoVP2+v3W
-	VM9Oi6/LOiDlCeKYtF/1fOP7L+TB7NOc0oE9GWtPGOx390DkadtdOIvhv5C2pVzpIItbnYoMCRlFy
-	e8JIQyD4jbNsNIoguniS68whm1ae3+bLbilB55vYRdXKJ0pfygKzcy1/mqnvct9dd6SHvxpIKLTLd
-	VCScB1MFqXFHsrflS4MLkr+DRoKKCMcfU64bP97FZbxQb6MZJBTdO9nNAJYHf9lorvyVRAeCxF4IQ
-	cW1KpbldOYKRdPCE51L/1l1dxqxJ6wvSmgDr7U63GX0QA95YzHqCHmXgom9KDqPSOolZdKvrpfnvV
-	WXp6Vikw==;
+	bh=beajLhwN9CSsow59nJHWmE9Zgynru7ufzr34F18gXYA=; b=1vn8/kuiYvT7dSx/bzEe3oAcYp
+	XqcbxBRZwIOECiPv0vBwnG29U6SwbPH82ZFf9hXtCE32OmREaEXX3bFcVpjongcP4Q0AaT53wrpJV
+	Gg3xdQ7XJqJwItIOG9aomR9KOmJh5SmUEZQN21/bpXQ27XBfDyiXjFmGbNQylrVAn0uh0KeRfEZ62
+	A94R7ShqexrICDXyY5Tr07X+tNUtb41cqdrQLpoZKfpKX+Mb9nm/DbWujTalEY/i8KzQWLGInH/zf
+	sPhAPP5skUcgMVRZ+dHDQaXhYL6SdrnsZ8su0U0GzBUN2g2o+/jAgK6gCWWheYADhvAKeJjCc6lFm
+	Fnwr812A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xMiHI-0000000B9gc-0crn;
-	Fri, 30 Oct 2026 08:48:00 +0000
-Received: from mgamail.intel.com ([192.198.163.13])
+	id 1xMiIM-0000000B9wa-3JM9;
+	Fri, 30 Oct 2026 08:49:06 +0000
+Received: from mgamail.intel.com ([192.198.163.16])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xMiHD-0000000B9et-3wvZ;
-	Fri, 30 Oct 2026 08:47:57 +0000
+	id 1xMiIE-0000000B9sl-2ygZ;
+	Fri, 30 Oct 2026 08:49:00 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
   d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1793350076; x=1824886076;
+  t=1793350139; x=1824886139;
   h=date:from:to:cc:subject:message-id:references:
    mime-version:in-reply-to;
-  bh=JfiM+BJFzo6/ofk3Y9BcFh3FD/ABNUljlg2cidkKFDI=;
-  b=OWv9KqyvkIXfgmnFLiXTkMXwggfAferubjJwMq8H2uQstNd5REFVhHV1
-   DuPpmIpoTYaS488XnUL5E7ZYmxPkWIu3vE+XbTWDa2ohlC8BFzwbnOHuH
-   dQu28H3/RcIhb6RIpw7wh3HUxwhhwvxCXJ06DFqFgPTNOJBQG+d2dMv3s
-   xdSAF2odvgLYBGJxNYmgWsZmRRONTD4iHaumJxlM+aUgh5A8VDto0A+u2
-   z9/eMv5U4PnVm+XiMNCooH7JtBF2vBE2lSRUiHimhx6yhsSiv9Oc/JFTI
-   kwgy3aotBbtBXrU9fI3rUEfB0T7RHORBl5fH3h2gP41R/JjpbemdHKZgh
-   Q==;
-X-CSE-ConnectionGUID: TPIPHD1QSuOH47M8J2O1RA==
-X-CSE-MsgGUID: ES7iNt+XQ3K0s0FmiIa3MQ==
-X-IronPort-AV: E=McAfee;i="6800,10657,11950"; a="2102489"
+  bh=Pp2u62TqO8sxtCU4vUBVQ9y/ebXI4VwDVRUtwi24cCE=;
+  b=DAKStuDkPuqqF28jM4KER8YPB7rn7eyohDuBNKgjpjILN/00FouyOs+k
+   ++p1qeaoZucjJW99CnXoEV1Ur6Z9trrYm6qexBDVYUWhXtTjOmd93YUpn
+   VZJAYqBJE3k7WnTvbn2D1EHJ+4Q8KWQRzR6sadxHTxAXZh8nJ9ATSBdBk
+   99nthJMFKmdtr9Ck8tqOJ4psn54JxmHwCI9Z9Jx14QWbDgfd0wRoF1AFS
+   nWK+HVFfwT1REQGCBX6aIwY+jg4yW/oxqcFqAgyA5LPPeeUt6j/hn/zsJ
+   VB1cbOwwqT4Q5l4McLEjNFsVwSvhpzLxVv9JTrnHlKdQir1rBNK071J+W
+   w==;
+X-CSE-ConnectionGUID: td4UPC0uSk6GXG2p7eqiRQ==
+X-CSE-MsgGUID: lYbssPXoQPiOLrP1tirqcA==
+X-IronPort-AV: E=McAfee;i="6800,10657,11950"; a="2123151"
 X-IronPort-AV: E=Sophos;i="6.27,186,1787036400"; 
-   d="scan'208";a="2102489"
-Received: from orviesa005.jf.intel.com ([10.64.159.145])
-  by fmvoesa107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 30 Oct 2026 01:47:54 -0700
-X-CSE-ConnectionGUID: xp/+FRjtRBK1m+vPmx/iGg==
-X-CSE-MsgGUID: TfjHYg9uSj2UnXdMgjiUGQ==
+   d="scan'208";a="2123151"
+Received: from orviesa008.jf.intel.com ([10.64.159.148])
+  by fmvoesa110.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 30 Oct 2026 01:48:58 -0700
+X-CSE-ConnectionGUID: /NkdBB7hTVKoteKXAmZV+g==
+X-CSE-MsgGUID: viDSKn0rS4+qJWHrqsN2bA==
 X-ExtLoop1: 1
 X-IronPort-AV: E=Sophos;i="6.27,186,1787036400"; 
-   d="scan'208";a="5277303"
+   d="scan'208";a="5265516"
 Received: from black.igk.intel.com ([10.91.253.5])
-  by orviesa005.jf.intel.com with ESMTP; 30 Oct 2026 01:47:51 -0700
+  by orviesa008.jf.intel.com with ESMTP; 30 Oct 2026 01:48:55 -0700
 Received: by black.igk.intel.com (Postfix, from userid 1001)
-	id 170A899; Fri, 30 Oct 2026 09:47:50 +0100 (CET)
-Date: Fri, 30 Oct 2026 09:47:50 +0100
+	id 2DA6199; Fri, 30 Oct 2026 09:48:54 +0100 (CET)
+Date: Fri, 30 Oct 2026 09:48:54 +0100
 From: Mika Westerberg <mika.westerberg@linux.intel.com>
 To: Chunfeng Yun <chunfeng.yun@mediatek.com>
 Cc: Mika Westerberg <westeri@kernel.org>,
@@ -68,21 +68,20 @@ Cc: Mika Westerberg <westeri@kernel.org>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
 	linux-kernel@vger.kernel.org, linux-usb@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	Konrad Dybcio <konrad.dybcio@oss.qualcomm.com>,
-	Sven Peter <sven@kernel.org>
-Subject: Re: [PATCH 1/4] thunderbolt: add platform nhi driver
-Message-ID: <20261030084750.GP158991@black.igk.intel.com>
+	linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH 2/4] thunderbolt: add support optional dedicated wakeup
+ irq
+Message-ID: <20261030084854.GQ158991@black.igk.intel.com>
 References: <20261030082539.1208733-1-chunfeng.yun@mediatek.com>
- <20261030082539.1208733-2-chunfeng.yun@mediatek.com>
+ <20261030082539.1208733-3-chunfeng.yun@mediatek.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
-In-Reply-To: <20261030082539.1208733-2-chunfeng.yun@mediatek.com>
+In-Reply-To: <20261030082539.1208733-3-chunfeng.yun@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261030_014756_027522_01F11F91 
-X-CRM114-Status: GOOD (  34.51  )
+X-CRM114-CacheID: sfid-20261030_014858_762045_588A36D4 
+X-CRM114-Status: GOOD (  21.26  )
 X-Spam-Score: -4.2 (----)
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -101,354 +100,78 @@ X-Spam-Status: No, score=-13.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Hi,
+On Fri, Oct 30, 2026 at 04:25:37PM +0800, Chunfeng Yun wrote:
+> There is a dedicated wakeup irq on nvidia n1/n2 SoCs.
 
-Adding Konrad and Sven because they are also working towards the same goal
-to get non-PCIe "platform" hosts supported.
+Okay but why it is needed? Can you add this to the commit message?
 
-On Fri, Oct 30, 2026 at 04:25:36PM +0800, Chunfeng Yun wrote:
-> Add a new file plat.c to register platform NHI driver for MediaTek
-> mt8901/mt8992 SoCs.
+And why you did not add it already in the first commit that added the
+platform driver there anyway?
+
 > 
 > Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
 > ---
->  drivers/thunderbolt/Makefile |   2 +-
->  drivers/thunderbolt/domain.c |  10 ++-
->  drivers/thunderbolt/nhi.c    |   2 +
->  drivers/thunderbolt/nhi.h    |   1 -
->  drivers/thunderbolt/pci.c    |  26 +-----
->  drivers/thunderbolt/plat.c   | 155 +++++++++++++++++++++++++++++++++++
-
-Call it platform.c
-
->  drivers/thunderbolt/tb.h     |   2 -
->  include/linux/thunderbolt.h  |   1 +
->  8 files changed, 169 insertions(+), 30 deletions(-)
->  create mode 100644 drivers/thunderbolt/plat.c
+>  drivers/thunderbolt/plat.c  | 16 ++++++++++++++++
+>  include/linux/thunderbolt.h |  1 +
+>  2 files changed, 17 insertions(+)
 > 
-> diff --git a/drivers/thunderbolt/Makefile b/drivers/thunderbolt/Makefile
-> index beb054c3126b..9c941682f3d6 100644
-> --- a/drivers/thunderbolt/Makefile
-> +++ b/drivers/thunderbolt/Makefile
-> @@ -3,7 +3,7 @@ ccflags-y := -I$(src)
->  obj-${CONFIG_USB4} := thunderbolt.o
->  thunderbolt-objs := nhi.o ctl.o tb.o switch.o cap.o pci.o path.o tunnel.o eeprom.o
->  thunderbolt-objs += domain.o dma_port.o icm.o property.o xdomain.o lc.o tmu.o usb4.o
-> -thunderbolt-objs += usb4_port.o nvm.o retimer.o quirks.o clx.o
-> +thunderbolt-objs += usb4_port.o nvm.o retimer.o quirks.o clx.o plat.o
->  
->  thunderbolt-${CONFIG_ACPI} += acpi.o
->  thunderbolt-$(CONFIG_DEBUG_FS) += debugfs.o
-> diff --git a/drivers/thunderbolt/domain.c b/drivers/thunderbolt/domain.c
-> index 24611f05b3cd..bec7e6ebc4a8 100644
-> --- a/drivers/thunderbolt/domain.c
-> +++ b/drivers/thunderbolt/domain.c
-> @@ -881,7 +881,7 @@ int tb_domain_unregister_unplugged_xdomains(struct tb *tb)
->  	return ctx.n;
->  }
->  
-> -int tb_domain_init(void)
-> +static int __init tb_domain_init(void)
->  {
->  	int ret;
->  
-> @@ -907,7 +907,7 @@ int tb_domain_init(void)
->  	return ret;
->  }
->  
-> -void tb_domain_exit(void)
-> +static void __exit tb_domain_exit(void)
->  {
->  	bus_unregister(&tb_bus_type);
->  	ida_destroy(&tb_domain_ida);
-> @@ -917,3 +917,9 @@ void tb_domain_exit(void)
->  	tb_debugfs_exit();
->  	tb_configfs_exit();
->  }
-> +
-> +subsys_initcall(tb_domain_init);
-> +module_exit(tb_domain_exit);
-> +
-> +MODULE_DESCRIPTION("Thunderbolt/USB4 domain driver");
-> +MODULE_LICENSE("GPL");
-> diff --git a/drivers/thunderbolt/nhi.c b/drivers/thunderbolt/nhi.c
-> index e99a3fcc4a29..c0f9f1855e8f 100644
-> --- a/drivers/thunderbolt/nhi.c
-> +++ b/drivers/thunderbolt/nhi.c
-> @@ -1379,8 +1379,10 @@ int nhi_probe(struct tb_nhi *nhi)
->  	device_wakeup_enable(dev);
->  
->  	pm_runtime_allow(dev);
-> +	device_enable_async_suspend(dev);
-
-Why you add this?
-
->  	pm_runtime_set_autosuspend_delay(dev, TB_AUTOSUSPEND_DELAY);
->  	pm_runtime_use_autosuspend(dev);
-> +	pm_runtime_mark_last_busy(dev);
-
-and this
-
->  	pm_runtime_put_autosuspend(dev);
->  
->  	return 0;
-> diff --git a/drivers/thunderbolt/nhi.h b/drivers/thunderbolt/nhi.h
-> index 88af9ab9fde7..37c11de167ad 100644
-> --- a/drivers/thunderbolt/nhi.h
-> +++ b/drivers/thunderbolt/nhi.h
-> @@ -29,7 +29,6 @@ enum nhi_mailbox_cmd {
->  
->  int nhi_mailbox_cmd(struct tb_nhi *nhi, enum nhi_mailbox_cmd cmd, u32 data);
->  enum nhi_fw_mode nhi_mailbox_mode(struct tb_nhi *nhi);
-> -void nhi_enable_int_throttling(struct tb_nhi *nhi);
->  void nhi_disable_interrupts(struct tb_nhi *nhi);
->  void nhi_interrupt_work(struct work_struct *work);
->  irqreturn_t nhi_msi(int irq, void *data);
-> diff --git a/drivers/thunderbolt/pci.c b/drivers/thunderbolt/pci.c
-> index 4408229d8ac7..91d236300703 100644
-> --- a/drivers/thunderbolt/pci.c
-> +++ b/drivers/thunderbolt/pci.c
-> @@ -715,7 +715,7 @@ static struct pci_device_id nhi_ids[] = {
->  };
->  
->  MODULE_DEVICE_TABLE(pci, nhi_ids);
-> -MODULE_DESCRIPTION("Thunderbolt/USB4 core driver");
-> +MODULE_DESCRIPTION("Thunderbolt/USB4 PCI host interface driver");
->  MODULE_LICENSE("GPL");
->  
->  static struct pci_driver nhi_driver = {
-> @@ -727,26 +727,4 @@ static struct pci_driver nhi_driver = {
->  	.driver.pm = &nhi_pm_ops,
->  };
->  
-> -static int __init nhi_init(void)
-> -{
-> -	int ret;
-> -
-> -	ret = tb_domain_init();
-> -	if (ret)
-> -		return ret;
-> -
-> -	ret = pci_register_driver(&nhi_driver);
-> -	if (ret)
-> -		tb_domain_exit();
-> -
-> -	return ret;
-> -}
-> -
-> -static void __exit nhi_unload(void)
-> -{
-> -	pci_unregister_driver(&nhi_driver);
-> -	tb_domain_exit();
-> -}
-> -
-> -rootfs_initcall(nhi_init);
-> -module_exit(nhi_unload);
-> +module_pci_driver(nhi_driver);
 > diff --git a/drivers/thunderbolt/plat.c b/drivers/thunderbolt/plat.c
-> new file mode 100644
-> index 000000000000..85a00cd391d4
-> --- /dev/null
+> index 85a00cd391d4..8d83b484d942 100644
+> --- a/drivers/thunderbolt/plat.c
 > +++ b/drivers/thunderbolt/plat.c
-> @@ -0,0 +1,155 @@
-> +// SPDX-License-Identifier: GPL-2.0-only
-> +/*
-> + * Thunderbolt driver - NHI driver (Platform bus specific implementation)
-> + *
-> + * Author: Chunfeng Yun <chunfeng.yun@mediatek.com>
-> + */
-> +
-> +#include <linux/acpi.h>
-> +#include <linux/interrupt.h>
-> +#include <linux/errno.h>
-> +#include <linux/of.h>
-> +#include <linux/platform_device.h>
-> +#include <linux/pm_runtime.h>
-> +#include <linux/slab.h>
-> +
-> +#include "nhi.h"
-> +#include "tb.h"
-> +
-> +static int nhi_plat_init(struct tb_nhi *nhi)
-
-nhi_platform_
-
-> +{
-> +	/*
-> +	 * avoid device link fail for pcie tunnel
-> +	 */
-
-What's this? And the comment style is not the expected.
-
-> +	pm_runtime_set_active(nhi->dev);
-> +	pm_runtime_get_noresume(nhi->dev);
-> +	devm_pm_runtime_enable(nhi->dev);
-
-This means we never runtime suspend? Then this is not good.
-
-> +
-> +	return 0;
-> +}
-> +
-> +static irqreturn_t nhi_plat_isr(int irq, void *data)
-> +{
-> +	struct tb_nhi *nhi = data;
-
-Did you run checkpatch.pl against this? If not please do.
-
-> +	schedule_work(&nhi->interrupt_work);
-> +	return IRQ_HANDLED;
-> +}
-> +
-> +static int nhi_plat_init_irq(struct tb_nhi *nhi)
-> +{
-> +	int ret;
-> +
-> +	INIT_WORK(&nhi->interrupt_work, nhi_interrupt_work);
-> +
-> +	ret = devm_request_irq(nhi->dev, nhi->irq, nhi_plat_isr, IRQF_NO_SUSPEND,
-> +			       dev_name(nhi->dev), nhi);
-> +	if (ret)
-> +		return dev_err_probe(nhi->dev, ret, "request irq failed\n");
-> +
-> +	return 0;
-> +}
-> +
-> +static void nhi_plat_exit(struct tb_nhi *nhi)
-> +{
-> +	devm_free_irq(nhi->dev, nhi->irq, nhi);
-> +	flush_work(&nhi->interrupt_work);
-> +
-> +	pm_runtime_put_noidle(nhi->dev);
-> +	pm_runtime_disable(nhi->dev);
-> +	pm_runtime_set_suspended(nhi->dev);
-> +}
-> +
-> +static const struct tb_nhi_ops nhi_plat_default_ops = {
-> +	.init = nhi_plat_init,
-> +	.shutdown = nhi_plat_exit,
-> +	.init_interrupts = nhi_plat_init_irq,
-> +};
-> +
-> +static int nhi_plat_probe(struct platform_device *pdev)
-> +{
-> +	struct device *dev = &pdev->dev;
-> +	struct tb_nhi *nhi;
-> +
-> +	nhi = devm_kzalloc(dev, sizeof(*nhi), GFP_KERNEL);
-> +	if (!nhi)
-> +		return -ENOMEM;
-> +
-> +	nhi->dev = dev;
-> +	nhi->ops = &nhi_plat_default_ops;
-> +
-> +	nhi->iobase = devm_platform_ioremap_resource(pdev, 0);
-> +	if (IS_ERR(nhi->iobase))
-> +		return PTR_ERR(nhi->iobase);
-> +
-> +	nhi->irq = platform_get_irq(pdev, 0);
-> +	if (nhi->irq < 0)
-> +		return dev_err_probe(dev, nhi->irq, "get irq failed\n");
-> +
-> +	return nhi_probe(nhi);
-> +}
-> +
-> +static void nhi_plat_do_remove(struct platform_device *pdev, bool reset)
-> +{
-> +	struct device *dev = &pdev->dev;
-> +	struct tb *tb = platform_get_drvdata(pdev);
-> +	struct tb_nhi *nhi = tb->nhi;
-> +
-> +	/*
-> +	 * On system shutdown/reboot force a host router reset so the
-> +	 * CM asserts DPR on connected tbt3 devices before the router tree
-> +	 * is removed (see tb_stop()).
-> +	 */
-> +	if (reset)
-> +		nhi->host_reset = true;
-> +
-> +	pm_runtime_get_sync(dev);
-> +	pm_runtime_dont_use_autosuspend(dev);
-> +
-> +	tb_domain_remove(tb);
-> +	wait_for_completion(&nhi->domain_released);
-> +	nhi_shutdown(nhi);
-> +}
-> +
-> +static void nhi_plat_remove(struct platform_device *pdev)
-> +{
-> +	nhi_plat_do_remove(pdev, false);
-> +}
-> +
-> +static void nhi_plat_shutdown(struct platform_device *pdev)
-> +{
-> +	nhi_plat_do_remove(pdev, true);
-> +}
-> +
-> +
-> +#ifdef CONFIG_OF
-> +static const struct of_device_id nhi_plat_of_match[] = {
-> +	{ .compatible = "thunderbolt-platform" },
-
-Not sure if this is correct? Should this have mediatek,... ?
-
-> +	{ }
-> +};
-> +MODULE_DEVICE_TABLE(of, nhi_plat_of_match);
-> +#endif
-> +
-> +#ifdef CONFIG_ACPI
-> +static const struct acpi_device_id nhi_plat_acpi_match[] = {
-> +	{ "ACPI0015", 0 },
-
-Same here, where is this ID defined in the ACPI spec?
-
-> +	{ }
-> +};
-> +MODULE_DEVICE_TABLE(acpi, nhi_plat_acpi_match);
-> +#endif
-> +
-> +static struct platform_driver nhi_plat_driver = {
-> +	.probe = nhi_plat_probe,
-> +	.remove = nhi_plat_remove,
-> +	.shutdown = nhi_plat_shutdown,
-> +	.driver = {
-> +		.name = "thunderbolt",
-> +		.of_match_table = of_match_ptr(nhi_plat_of_match),
-> +		.acpi_match_table = ACPI_PTR(nhi_plat_acpi_match),
-> +		.pm = &nhi_pm_ops,
-> +	},
-> +};
-> +
-> +module_platform_driver(nhi_plat_driver);
-> +MODULE_ALIAS("platform:thunderbolt");
-> +MODULE_DESCRIPTION("Thunderbolt/USB4 platform host interface driver");
-> +MODULE_LICENSE("GPL v2");
-> diff --git a/drivers/thunderbolt/tb.h b/drivers/thunderbolt/tb.h
-> index e86845762e22..6dfdc47e05d2 100644
-> --- a/drivers/thunderbolt/tb.h
-> +++ b/drivers/thunderbolt/tb.h
-> @@ -768,8 +768,6 @@ extern const struct device_type tb_retimer_type;
->  extern const struct device_type tb_switch_type;
->  extern const struct device_type usb4_port_device_type;
+> @@ -11,6 +11,7 @@
+>  #include <linux/of.h>
+>  #include <linux/platform_device.h>
+>  #include <linux/pm_runtime.h>
+> +#include <linux/pm_wakeirq.h>
+>  #include <linux/slab.h>
 >  
-> -int tb_domain_init(void);
-> -void tb_domain_exit(void);
->  int tb_xdomain_init(void);
->  void tb_xdomain_exit(void);
+>  #include "nhi.h"
+> @@ -46,6 +47,15 @@ static int nhi_plat_init_irq(struct tb_nhi *nhi)
+>  	if (ret)
+>  		return dev_err_probe(nhi->dev, ret, "request irq failed\n");
+>  
+> +	if (nhi->wake_irq) {
+> +		ret = dev_pm_set_dedicated_wake_irq(nhi->dev, nhi->wake_irq);
+> +		if (ret) {
+> +			dev_err_probe(nhi->dev, ret, "set wake irq %d failed\n", nhi->wake_irq);
+> +			return ret;
+> +		}
+> +		dev_info(nhi->dev, "wake irq %d\n", nhi->wake_irq);
+> +	}
+> +
+>  	return 0;
+>  }
+>  
+> @@ -53,6 +63,7 @@ static void nhi_plat_exit(struct tb_nhi *nhi)
+>  {
+>  	devm_free_irq(nhi->dev, nhi->irq, nhi);
+>  	flush_work(&nhi->interrupt_work);
+> +	dev_pm_clear_wake_irq(nhi->dev);
+>  
+>  	pm_runtime_put_noidle(nhi->dev);
+>  	pm_runtime_disable(nhi->dev);
+> @@ -85,6 +96,11 @@ static int nhi_plat_probe(struct platform_device *pdev)
+>  	if (nhi->irq < 0)
+>  		return dev_err_probe(dev, nhi->irq, "get irq failed\n");
+>  
+> +	/* ignore error */
+> +	nhi->wake_irq = platform_get_irq_optional(pdev, 1);
+> +	if (nhi->wake_irq < 0)
+> +		nhi->wake_irq = 0;
+> +
+>  	return nhi_probe(nhi);
+>  }
 >  
 > diff --git a/include/linux/thunderbolt.h b/include/linux/thunderbolt.h
-> index 57502da29080..212c8fea6571 100644
+> index 212c8fea6571..06b90d452ee2 100644
 > --- a/include/linux/thunderbolt.h
 > +++ b/include/linux/thunderbolt.h
-> @@ -532,6 +532,7 @@ struct tb_nhi {
->  	u32 *interrupt_mask;
+> @@ -533,6 +533,7 @@ struct tb_nhi {
 >  	bool going_away;
 >  	bool iommu_dma_protection;
-> +	int irq;
-
-You are missing kernel-doc.
-
+>  	int irq;
+> +	int wake_irq;
 >  	struct work_struct interrupt_work;
 >  	u32 hop_count;
 >  	unsigned long quirks;
