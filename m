@@ -2,11 +2,11 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 0FFAE606A32A
-	for <linux-mediatek@archiver.kernel.org>; Fri, 30 Oct 2026 11:44:38 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 2E5A5606A31E
+	for <linux-mediatek@archiver.kernel.org>; Fri, 30 Oct 2026 13:38:31 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=fD5y453q;
-	dkim=pass (2048-bit key, unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=POEHrrX+
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=SMnEf7bS;
+	dkim=pass (2048-bit key, unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=F6pwSGRN
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
@@ -14,75 +14,97 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=u22L97/jeI13IB20ysbQZcY423yThcHnEYQlKHEzxLc=; b=fD5y453q/wXY73nNdZtA51bDnq
-	fmMRw3H5M1OqUuOS6XB/YmlA0xpVFkAw256/Q8f3ybWsOfd1RW9Ago+txz4BEbN2Csyzc8X+OSlJK
-	/XZ7SCxipTm+iFZoImifqfhDNXBXpIQWALUkayQp13Ehr4aik9LiBRvMJpZp4UIhawH/6IGK48+g8
-	qgXp28EdKZpSMqCvOreJeUWdcFZj3/9kWxh5/1BEMTTqtwf3LRBi9rCG9G9Hab9w2NlriZKL8Bxoe
-	1ZUZuRRTpDdO7bQ21/iPKDNphIzY4YKOTcHtZp7uIhf3XFL+7/Z5jbNs5/qHHfF5i0AGaVKOJokvb
-	CvjGSfFg==;
+	bh=C2S7rduE7F27e/ACslqZKocTp/JTh21Fn7y8iprLI+s=; b=SMnEf7bSuwjQfOfnyO4Lf1rN0V
+	y6ienNKmEK6zH/+QFSAteP9XryqKSEbyJvdytEodIrmvM5T8N7CNW2VHQQ+utaImxuRSLTnWVferK
+	ihrlwgRc4kwe4VT9s4+rB0ROkz/qtrlGgPu6izU6NKHLu/J3L7gGoamrylG4gLH7SxEAbYVpRyPhn
+	DURN6U9KYHzUMS3h4uNwXUPw5LszyTUBO1e45GU0rmPuLxr5L45Ayn7xJ6gPyOfWkRTOzyldPkU95
+	fq0gGoAp2aK/SeDZbMd9sYlncAq5JQDfbQoQSl9+Cz+EMD/yLapUQ0OzYMIOr7+RjQ5br4O2ZcZjE
+	7C0jwJpA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xMl2B-0000000BaGD-2wdn;
-	Fri, 30 Oct 2026 11:44:35 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1xMmoQ-0000000BlqH-3qNj;
+	Fri, 30 Oct 2026 13:38:30 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xMl28-0000000BaFA-3auN;
-	Fri, 30 Oct 2026 11:44:32 +0000
+	id 1xMmoP-0000000Blpk-0YGY;
+	Fri, 30 Oct 2026 13:38:29 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id BC548608FB;
-	Fri, 30 Oct 2026 11:44:31 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7C4AD1F0093A;
-	Fri, 30 Oct 2026 11:44:30 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 22E3E41713;
+	Fri, 30 Oct 2026 13:38:28 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id B895D1F000C1;
+	Fri, 30 Oct 2026 13:38:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1793360671;
-	bh=u22L97/jeI13IB20ysbQZcY423yThcHnEYQlKHEzxLc=;
+	s=k20260515; t=1793367508;
+	bh=C2S7rduE7F27e/ACslqZKocTp/JTh21Fn7y8iprLI+s=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=POEHrrX+sPBo41n1mG2oZ7jZsPptJNOYuklpaJCho15lUx/hky0vAto0IGN9wUGU6
-	 ND1CBDe5rZnFil1HZM1tjiLOFUAleLd3OoRXz2gYSIc3S0vbxzEcjwCfDh4zVMpSsf
-	 EQlNPouP+PVpC+k2CwhIb/KtciGpEkUOTO8XdOVMGJFbCRhD4vWJqa17k4GdbY1Vlc
-	 +22QWJSEiJS+ic6dfb3qVSAJmBMrYs3nndjOrrxn5UsvH0+zvXfwafKrObb+dlFg75
-	 QjOl3vEY9Q5kPpMymCryWXA4Z8a6csZvMkbqWCkAqIOAa8OUIZNXAetDK6xKKo0Mfo
-	 yZ+wl5iCt+jdg==
-Date: Fri, 30 Oct 2026 12:44:28 +0100
-From: Krzysztof Kozlowski <krzk@kernel.org>
+	b=F6pwSGRNK0eicHwv4sWaVzrGABaI7Kcr8UwklPuzziX/9g4PceqQiyip94FKU92Sn
+	 yK+wgRrs54sOD0/Afs8KSLgbc1XHhfMD1sTCAMKOEVOXBuRidENzicTpRkFwC5Drsh
+	 TFqswhNmzAyPeXj4y0zDecf++b1piEtnkJVqvpF+hLWG5sAGP2AiJZL9e47EBH78bW
+	 et8iaI4wnqFB7A7TsU9/PFkQ+NhS0+9ztnNFeU1IgNWoayj62P723V2TXOXccc+euZ
+	 SmtChrl8Mr0i2fvr4iGY6GeHD6WAKK/fYcDPPFkt/TeYkC0lT16nSZhem5wJfjJcE9
+	 /A4du6Xt6WWNw==
+Date: Fri, 30 Oct 2026 08:38:24 -0500
+From: "Rob Herring (Arm)" <robh@kernel.org>
 To: "Rob Herring (Arm)" <robh@kernel.org>
-Cc: Bjorn Andersson <andersson@kernel.org>, 
-	Stephen Boyd <sboyd@kernel.org>, Brian Masney <bmasney+clk@redhat.com>, 
-	Jerome Brunet <jbrunet+clk@baylibre.com>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
-	Conor Dooley <conor+dt@kernel.org>, Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
-	Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
-	David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
-	Florian Fainelli <florian.fainelli@broadcom.com>, 
-	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>, Rob Clark <robin.clark@oss.qualcomm.com>, 
-	Dmitry Baryshkov <lumag@kernel.org>, Abhinav Kumar <abhinav.kumar@linux.dev>, 
-	Jessica Zhang <jesszhan0024@gmail.com>, Sean Paul <sean@poorly.run>, 
-	Marijn Suijten <marijn.suijten@somainline.org>, Frank Li <Frank.Li@nxp.com>, Vinod Koul <vkoul@kernel.org>, 
-	Yinbo Zhu <zhuyinbo@loongson.cn>, Linus Walleij <linusw@kernel.org>, 
-	Bartosz Golaszewski <brgl@kernel.org>, Jonathan Cameron <jic23@kernel.org>, 
-	David Lechner <dlechner@baylibre.com>, Nuno =?utf-8?B?U8Oh?= <nuno.sa@analog.com>, 
-	Andy Shevchenko <andy@kernel.org>, Neil Armstrong <neil.armstrong@linaro.org>, 
-	Kevin Hilman <khilman@baylibre.com>, Martin Blumenstingl <martin.blumenstingl@googlemail.com>, 
-	Tiffany Lin <tiffany.lin@mediatek.com>, Andrew-CT Chen <andrew-ct.chen@mediatek.com>, 
-	Yunfei Dong <yunfei.dong@mediatek.com>, Mauro Carvalho Chehab <mchehab@kernel.org>, 
-	Marek Szyprowski <m.szyprowski@samsung.com>, Andrzej Hajda <andrzej.hajda@intel.com>, 
-	Ryder Lee <ryder.lee@mediatek.com>, Lorenzo Pieralisi <lpieralisi@kernel.org>, 
-	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kwilczynski@kernel.org>, Manivannan Sadhasivam <mani@kernel.org>, 
-	Bjorn Helgaas <bhelgaas@google.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Christian Marangi <ansuelsmth@gmail.com>, 
-	Eric Anholt <eric@anholt.net>, Kuogee Hsieh <quic_khsieh@quicinc.com>, 
-	Peng Fan <peng.fan@nxp.com>, Aakarsh Jain <aakarsh.jain@samsung.com>, 
-	Abhinav Kumar <quic_abhinavk@quicinc.com>, linux-arm-msm@vger.kernel.org, linux-clk@vger.kernel.org, 
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, 
-	linux-rpi-kernel@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
-	freedreno@lists.freedesktop.org, imx@lists.linux.dev, dmaengine@vger.kernel.org, 
-	linux-gpio@vger.kernel.org, linux-iio@vger.kernel.org, linux-amlogic@lists.infradead.org, 
-	linux-media@vger.kernel.org, linux-pci@vger.kernel.org, linux-mediatek@lists.infradead.org
+Cc: linux-arm-msm@vger.kernel.org, Ryder Lee <ryder.lee@mediatek.com>,
+	David Airlie <airlied@gmail.com>,
+	Mauro Carvalho Chehab <mchehab@kernel.org>,
+	linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org, Sean Paul <sean@poorly.run>,
+	Nuno =?iso-8859-1?Q?S=E1?= <nuno.sa@analog.com>,
+	Lorenzo Pieralisi <lpieralisi@kernel.org>,
+	Manivannan Sadhasivam <mani@kernel.org>,
+	Dmitry Baryshkov <lumag@kernel.org>,
+	Krzysztof =?utf-8?Q?Wilczy=C5=84ski?= <kwilczynski@kernel.org>,
+	linux-iio@vger.kernel.org, linux-pci@vger.kernel.org,
+	Tiffany Lin <tiffany.lin@mediatek.com>,
+	Bjorn Andersson <andersson@kernel.org>,
+	Yinbo Zhu <zhuyinbo@loongson.cn>,
+	Bjorn Helgaas <bhelgaas@google.com>,
+	Jerome Brunet <jbrunet+clk@baylibre.com>,
+	Abhinav Kumar <quic_abhinavk@quicinc.com>, imx@lists.linux.dev,
+	dmaengine@vger.kernel.org, Stephen Boyd <sboyd@kernel.org>,
+	Neil Armstrong <neil.armstrong@linaro.org>,
+	Andrzej Hajda <andrzej.hajda@intel.com>,
+	Aakarsh Jain <aakarsh.jain@samsung.com>,
+	Yunfei Dong <yunfei.dong@mediatek.com>,
+	freedreno@lists.freedesktop.org,
+	David Lechner <dlechner@baylibre.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Peng Fan <peng.fan@nxp.com>, linux-amlogic@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org,
+	Marek Szyprowski <m.szyprowski@samsung.com>,
+	Brian Masney <bmasney+clk@redhat.com>,
+	Linus Walleij <linusw@kernel.org>,
+	Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
+	Abhinav Kumar <abhinav.kumar@linux.dev>, linux-gpio@vger.kernel.org,
+	Kevin Hilman <khilman@baylibre.com>, linux-media@vger.kernel.org,
+	Marijn Suijten <marijn.suijten@somainline.org>,
+	Bartosz Golaszewski <brgl@kernel.org>,
+	Jonathan Cameron <jic23@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Andy Shevchenko <andy@kernel.org>, Vinod Koul <vkoul@kernel.org>,
+	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+	Kuogee Hsieh <quic_khsieh@quicinc.com>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Christian Marangi <ansuelsmth@gmail.com>,
+	Simona Vetter <simona@ffwll.ch>, Conor Dooley <conor+dt@kernel.org>,
+	Rob Clark <robin.clark@oss.qualcomm.com>,
+	Eric Anholt <eric@anholt.net>, linux-clk@vger.kernel.org,
+	Florian Fainelli <florian.fainelli@broadcom.com>,
+	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>,
+	Frank Li <Frank.Li@nxp.com>,
+	Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
+	linux-rpi-kernel@lists.infradead.org,
+	Thomas Zimmermann <tzimmermann@suse.de>,
+	Maxime Ripard <mripard@kernel.org>, dri-devel@lists.freedesktop.org,
+	Jessica Zhang <jesszhan0024@gmail.com>
 Subject: Re: [PATCH] dt-bindings: Fix property name typos in if/then schemas
-Message-ID: <20261030-musical-modest-butterfly-e7734f@quoll>
+Message-ID: <179336750291.3442134.12651355159128189290.robh@kernel.org>
 References: <20261028120216.2657397-1-robh@kernel.org>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 In-Reply-To: <20261028120216.2657397-1-robh@kernel.org>
 X-BeenThere: linux-mediatek@lists.infradead.org
@@ -95,14 +117,16 @@ List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-10.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-15.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,
-	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS autolearn=ham autolearn_force=no version=4.0.1
+	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=ham
+	autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On Wed, Oct 28, 2026 at 07:02:12AM -0500, Rob Herring (Arm) wrote:
+
+On Wed, 28 Oct 2026 07:02:12 -0500, Rob Herring (Arm) wrote:
 > Property names within if/then schemas currently go unchecked whether
 > they have a type defined or match what's in the top-level schema. Adding
 > a check finds a number of instances of typos. The typos result in the
@@ -113,13 +137,19 @@ On Wed, Oct 28, 2026 at 07:02:12AM -0500, Rob Herring (Arm) wrote:
 > 
 > Signed-off-by: Rob Herring (Arm) <robh@kernel.org>
 > ---
+>  .../devicetree/bindings/clock/qcom,kpss-gcc.yaml     |  2 +-
+>  .../bindings/display/brcm,bcm2711-hdmi.yaml          |  2 +-
+>  .../bindings/display/msm/dp-controller.yaml          |  2 +-
+>  .../devicetree/bindings/display/msm/hdmi.yaml        |  4 ++--
+>  Documentation/devicetree/bindings/dma/fsl,edma.yaml  |  2 +-
+>  .../devicetree/bindings/gpio/loongson,ls-gpio.yaml   |  2 +-
+>  .../bindings/iio/adc/amlogic,meson-saradc.yaml       |  2 +-
+>  .../bindings/media/mediatek,vcodec-encoder.yaml      | 12 ++++--------
+>  .../devicetree/bindings/media/samsung,s5p-mfc.yaml   |  2 +-
+>  .../devicetree/bindings/pci/mediatek-pcie.yaml       | 12 ++++++------
+>  10 files changed, 19 insertions(+), 23 deletions(-)
+> 
 
-I just git grepped kernel sources and weirdly no one made a typo in
-"clocks" of forgetting the second letter. We became way too polite :).
-
-Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
-
-Best regards,
-Krzysztof
+Applied, thanks!
 
 
