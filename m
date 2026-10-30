@@ -2,74 +2,74 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id A2F2160A263D
-	for <linux-mediatek@archiver.kernel.org>; Fri, 30 Oct 2026 10:34:29 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id AD32B60A3825
+	for <linux-mediatek@archiver.kernel.org>; Fri, 30 Oct 2026 10:34:31 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=n3CqbQRw;
-	dkim=pass (1024-bit key, unprotected) header.d=chromium.org header.i=@chromium.org header.a=rsa-sha256 header.s=google header.b=dL9+QwmV
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=sL39G0U6;
+	dkim=pass (1024-bit key, unprotected) header.d=chromium.org header.i=@chromium.org header.a=rsa-sha256 header.s=google header.b=fn/ij/Ne
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Unsubscribe-Post:List-Owner;
-	bh=M7JJASl+nuTr5h0hwNfOIsigjQbehWTAWvZV7+ghWJc=; b=n3CqbQRwsn6Qk7PrmilFsuFNuI
-	1y/3yz2UIATnVRHWzE5OcErWqsb9iDNLhlmvu6ZMUdl9xJhvFT47qxUTzJRi6aCr5tRGINNmufHe9
-	CHLn+hW3QEHllINwxNGjI/HMwkER9UnZ2rJw6QGOQEYHnkn34e1ZvGC056GEkZqm6nPHTiMZATP+g
-	7g9qzT4xkv0iWFUz177QdCaoAw61rjy1XwcjSHlL0NexTt4I0n+w9ylvwr7FKbsoREuF84/TenmRK
-	SSqxNe09nZKDEY0ExfNWcQDwCgLcnb7wtiR3S/eMGjQc6Tszu34ajH5IcmdSD3deerzyZ8ZSOWbtY
-	cpVhtKHQ==;
+	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Unsubscribe-Post:
+	List-Owner; bh=1aNoVlnvFcsOYz3yDk1hH8WlV460c2AuvXHcDZPvdOA=; b=sL39G0U6mUGcEo
+	FaPyZcmlRt4UXdSbh5EQU6roKHOpOhhiYNBvr5R5eQPnsxZ74Uca8uYh1UNrqSMahwclgfxY0vGuf
+	J4NayxWocvWgr9DSJovGS0zjRhDzWG0leoFD2G5zJUCA/R8GRGEV//0UEk6QjhwG8+w4Tj/ITkBfR
+	QXFYwm+f7jxBaujvJL5Au+eVOF5gU9p+aiOtUGB7haPJva05+sYX1b4w3Mq1d73P100+EQoM7Bohl
+	tinyaZ9/xSYx9u42msmEHQe6RNAmk6hRxkkzL0UbpPxv6EWqqNN4ju+bKDdrIwss/c7e1WqHQK1Ln
+	h/Pxaz2dtRFsi4WUANCA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xMjwL-0000000BPSo-1XfT;
-	Fri, 30 Oct 2026 10:34:29 +0000
-Received: from mail-dy1-x132c.google.com ([2607:f8b0:4864:20::132c])
+	id 1xMjwN-0000000BPU0-1lWJ;
+	Fri, 30 Oct 2026 10:34:31 +0000
+Received: from mail-dy1-x1331.google.com ([2607:f8b0:4864:20::1331])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xMjwI-0000000BPRU-2m6f
+	id 1xMjwK-0000000BPRx-2nHh
 	for linux-mediatek@lists.infradead.org;
-	Fri, 30 Oct 2026 10:34:28 +0000
-Received: by mail-dy1-x132c.google.com with SMTP id 5a478bee46e88-3535a54bed9so903395eec.1
-        for <linux-mediatek@lists.infradead.org>; Fri, 30 Oct 2026 03:34:25 -0700 (PDT)
+	Fri, 30 Oct 2026 10:34:29 +0000
+Received: by mail-dy1-x1331.google.com with SMTP id 5a478bee46e88-36661f953e4so889802eec.1
+        for <linux-mediatek@lists.infradead.org>; Fri, 30 Oct 2026 03:34:27 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1793356465; x=1793961265; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
-        bh=M7JJASl+nuTr5h0hwNfOIsigjQbehWTAWvZV7+ghWJc=;
-        b=dL9+QwmVqLpIAqzmSHwe7Z12xWuZCquqlqNYDAj4Me5LHYEuHLy4KY67oafAfY0yxO
-         ylqMgxtimmMthwSzBX0l+62lK5QNIYXptLDvyr9zu1dLXyzMFwSzMDMLv0ygYkre7d+q
-         5sjqxPg9Q14jrvZKs9uJYigpaaeiQnt7I8f+Q=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1793356465; x=1793961265;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+        d=chromium.org; s=google; t=1793356467; x=1793961267; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to:content-type;
-        bh=M7JJASl+nuTr5h0hwNfOIsigjQbehWTAWvZV7+ghWJc=;
-        b=E3MNGQpqGC2ZLXIxyJ0ar+DHMzCf6HpE37LyHgXJNA2y9LtnsOJPVcpnPIxYlIsZnr
-         sWXo8bRPjz22/FIskNDuzxD6S5hoGVJXXobAGSBdcYjnKWoSLcfW6f9ZRPYzs0SjNmUy
-         XeCLe0HLwofeflguT9eqRXbLPlHusX5tXEOKrSckzmPLAS58UqC+CiOvvVczAY5HuMkG
-         YtKom52aBnYr+jm8bYGkDJCR6Iv/jiXGIBNL2uNNMlCYwfyb9P7ohjopM13zbhiu1h7R
-         W21aQbGpNTIEffnjGxO7rB/JAzIFSQNiUi634m9OfcHew/e1tx1PDtdLRrgDY6pioub2
-         T7cg==
-X-Forwarded-Encrypted: i=1; AKwUvBy/+7fiZTzM93z8M69ABct+3b5/sxDfL8JvKBe0MERd2LpXRguvSv+IBesS6IurAOa2JSV0v58GNTtAA+OcKg==@lists.infradead.org
-X-Gm-Message-State: AFq9FYKBO0wuEPdrz9qC5o07JlbE9TqW8BiO33lhYfRjTBZB1TgnZaXa
-	oa/zoCoweozMbRi63fdL6q+mMOKxHcS7NsHDagmJLfaY69iARXP6yUhEJedNj8NJEA==
-X-Gm-Gg: AYBFou08nKqbpg0/8NkNvsgqnGXoyz3x7H9CtyAcJS/sOe5hMW0TFW3dSqaQMmuO5O0
-	81Y9nJv+QpnTxJXZzdlXjdmve23NOmGFVs+EZMAdBIgvKRStLcWYRGSBk+d0I54gk/D/xW4e55d
-	FrY3J3MuO2Li8qvWiL2ENNDxYYbZ6HG7QzyowoHjams2CYElOQBUOFVxGgZKmPdBlLyVKRwXmuB
-	mD0TS8NWoEoORjBBl5VdcBIgi9PNr9xPG67NXohZoUGvxOO454ieaM/6TK6ARhs+gAtiHHqJm6M
-	OUyhhpM1UPla0a+S8hD/fmSoraanBotBVI79B+WzLSy4JUDX6gel7ltwHTwYIJnvq557MJV2O5A
-	Yg2n3NnUhKI7kQASWQkwvWSqQmMeSIscbrr34updGtJ4eHngLMfUIiTCLmLF9ODNR5mQOY70vP+
-	DSFXuk0tH1QeaTwxdwXV8HbL8fV6RZfEDHo/M5ksOsPQF9YyQRQ/rvmMcLNhCU2b1ySwkUPh5E3
-	GgY6qx0PauYd1FjRxxFMSAOv9Gssx8ncDAXq8KplGH7PFr9i43SAAGZxPvnfUSbXgFnRLMZvgGP
-	82z28cI7J3I6AwCnya5Xlek5cvzFMW9v2rpNPvPrgLhYYwT9iEi2dL/qihyn8omCGkdOTPxHGTD
-	Hh7xFqpnUhzai
-X-Received: by 2002:a05:7300:cd90:b0:34b:4b99:24ab with SMTP id 5a478bee46e88-36a42454b8emr4378368eec.22.1793356465021;
-        Fri, 30 Oct 2026 03:34:25 -0700 (PDT)
+        bh=1aNoVlnvFcsOYz3yDk1hH8WlV460c2AuvXHcDZPvdOA=;
+        b=fn/ij/Ne0MrdGqfOgmLTFDhUh3m/Z87UMhanvM7TVfiVn/ER6Pv/Dv0Qp1pZzKxceb
+         ATO8VlZwAli1SQMMovnRHhpwae/JyprcT7OdIB84RKZkfO6rgEvQScPHRDdgNBNrtUTW
+         GCWse9VA7aEizV7H//BU3AvP2Cb5Y+ZmyjBFc=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20260707; t=1793356467; x=1793961267;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
+         :to:cc:subject:date:message-id:reply-to:content-type;
+        bh=1aNoVlnvFcsOYz3yDk1hH8WlV460c2AuvXHcDZPvdOA=;
+        b=XkviBmVcU/ljnw6I+GPXOBxEPJWS2tuhd3zxteMKvhdcoc/i9IMvDivAzh8sLJtosU
+         l/VhSXMHTLz3QRE8i89f2LuleIvDKPaRVGTISPifycA8fCVnRr7LeXDBp5KGPJjJ+C1n
+         onXj0CxK1ldkgoY0c6w4lQtqqsvnC8UplkiXag+AnuLBqHmfChNoK4OxL8kLRg/6RE89
+         kjJehO82unNqh7IKuegAZWvhJyekX6+QuElgKlpDvRx8VUPe3xNwsZywn0Dca60oJSMi
+         90vxwAR/X4CrXLoP7ydfXsOXlsTq+aFIAWhgDjkA6U38PLnQ28u2lT2n8ZVjdHvFGDDT
+         LhyQ==
+X-Forwarded-Encrypted: i=1; AKwUvBw5rQjNayL/24XF5KOYkwFiZALOtnrbEeRU/Oa569A3C5J0NXm686Rcne3WZqSN5jlad0DRQhc/DdBj8iXA3A==@lists.infradead.org
+X-Gm-Message-State: AFq9FYJQ10GH+H0Ty7XQ12+Te3Cjn9kgg/M8likbrchtwr6VTd9ta4A7
+	xmbiCQz1qiguh8Yqa+sEIZLXd44UZj4JWX4pyqhAr8wJOVNpCqP4094zdLFkcYBmug==
+X-Gm-Gg: AYBFou2nhQuIz6ViVSGXK46Mqu3pQrUbjFrQfzVTVQRsH3HsHWlO+enmtCR1ML8wARG
+	8Ul7WS9ee0AiBcqUBgM6EU5vuQfsWikXXrkkSfz/eFrmrTmdPJ/DZ1nJ8dPVJS63HiMCKt97+2l
+	BoV3R83ULrMT4IQ10i+mHPN/34FZ/GD5vtafZ8twz4qqU0ZXtj6BwHSOu4NRNqccACpIne33nfR
+	LiL54z0hQTCBq9fI2CeocKc18DlhRMDj6ZMJ4USe43KwXvHXFvIjuldGAztV0bqpwVgJwkqzqVT
+	oYwvkh+xJKZXW/qjbhCcucg36FIFkyiBM/D4WCkGuFT6SxElXQ7Te7UcrfOnyC5cVofe4h3ivxJ
+	c1q/Wimw8nWRJjspv2cnnYXH7O6ypBdM7IX9nR58kJP8gW6PQ5hRFHzQUevWs/bZInS/2VYIrCg
+	xlWk8TIGNCG1PF/IzhsrimAUWDVyfII9pWeEgc6v6ZW0+xrTvhqhRrMtuPfQlTAnmo5UMuVrDGr
+	XD8UVjOQ+obIGbOGzzX7RR1n6GsYlUj/XkVMpbKwIZXSyIXvnzQP2J6v8NhtUpZCymO5SNoRX3y
+	blYaNCU3grB/NxO/0Q66++h5E7S7ddLBJcL6O5Vyaicg1ayEyoj/k0LFZm5vHTA0Rt2CcT/IQUu
+	L/fTWCKKwhIdVI2fnX+jk/goo3DdK82I6sg==
+X-Received: by 2002:a05:7300:559e:b0:36a:1846:5c77 with SMTP id 5a478bee46e88-36a42204585mr3068442eec.3.1793356467068;
+        Fri, 30 Oct 2026 03:34:27 -0700 (PDT)
 Received: from wenst-7875.tpe.corp.google.com ([2a00:79e0:203d:7:6ef0:e162:ed32:a99f])
-        by smtp.gmail.com with ESMTPSA id 5a478bee46e88-36a42a61a0csm7471774eec.22.2026.10.30.03.34.22
+        by smtp.gmail.com with ESMTPSA id 5a478bee46e88-36a42a61a0csm7471774eec.22.2026.10.30.03.34.25
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 30 Oct 2026 03:34:24 -0700 (PDT)
+        Fri, 30 Oct 2026 03:34:26 -0700 (PDT)
 From: Chen-Yu Tsai <wenst@chromium.org>
 To: Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
@@ -78,17 +78,18 @@ Cc: Chen-Yu Tsai <wenst@chromium.org>,
 	devicetree@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	stable@vger.kernel.org
-Subject: [PATCH 1/3] arm64: dts: mediatek: mt8192-asurada: Add ramp-delay for MT6315 regulators
-Date: Fri, 30 Oct 2026 18:34:15 +0800
-Message-ID: <20261030103418.2355854-1-wenst@chromium.org>
+Subject: [PATCH 2/3] arm64: dts: mediatek: mt8195-cherry: Fix ramp-delay for Vgpu
+Date: Fri, 30 Oct 2026 18:34:16 +0800
+Message-ID: <20261030103418.2355854-2-wenst@chromium.org>
 X-Mailer: git-send-email 2.56.0.317.g454f8302e1-goog
+In-Reply-To: <20261030103418.2355854-1-wenst@chromium.org>
+References: <20261030103418.2355854-1-wenst@chromium.org>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261030_033426_752356_A1B7EE8A 
-X-CRM114-Status: UNSURE (   9.28  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20261030_033428_705969_11C9B757 
+X-CRM114-Status: GOOD (  13.55  )
 X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -108,53 +109,42 @@ X-Spam-Status: No, score=-18.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On Asurada, the MT6315 buck regulators (Vbcpu, Vlcpu, and Vgpu) are
-missing the regulator-ramp-delay property. Without the slew rate
-specified, voltage increases may not have settled before switching CPU
-or GPU to higher operating points, risking undervoltage crashes.
+On Cherry, the MT6315 PMIC at USID 0x7 powering Vgpu has its slew rate
+configured by firmware to 4500 uV/us, rather than the 6250 uV/us
+currently specified in the device tree.
 
-Add regulator-ramp-delay properties matching the slew rates configured
-by firmware, with values provided by MediaTek: 8000 uV/us for Vbcpu, and
-4500 uV/us for Vlcpu and Vgpu.
+Since regulator-ramp-delay is specified in uV/us, specifying a higher
+slew rate than what the PMIC actually uses results in an underestimated
+voltage ramp time, risking GPU undervoltage when switching to higher
+operating points.
 
-Fixes: 3183cb62b033 ("arm64: dts: mediatek: asurada: Add SPMI regulators")
+Update regulator-ramp-delay on mt6315_7_vbuck1 to 4500 to match the
+configured slew rate provided by MediaTek. (Vbcpu on USID 0x6 is
+configured to 6250 uV/us and needs no change.)
+
+Fixes: 260c04d425eb ("arm64: dts: mediatek: cherry: Enable MT6315 regulators on SPMI bus")
 Cc: <stable@vger.kernel.org>
 Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
 ---
 Patch created with LLM. Values were translated from raw register values
 by MediaTek.
 ---
- arch/arm64/boot/dts/mediatek/mt8192-asurada.dtsi | 3 +++
- 1 file changed, 3 insertions(+)
+ arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/arch/arm64/boot/dts/mediatek/mt8192-asurada.dtsi b/arch/arm64/boot/dts/mediatek/mt8192-asurada.dtsi
-index d1993b80f9ce..43286241cd22 100644
---- a/arch/arm64/boot/dts/mediatek/mt8192-asurada.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8192-asurada.dtsi
-@@ -1812,6 +1812,7 @@ mt6315_6_vbuck1: vbuck1 {
+diff --git a/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi b/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi
+index f23a0c7aa87e..81628d8a4b0e 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8195-cherry.dtsi
+@@ -1596,7 +1596,7 @@ mt6315_7_vbuck1: vbuck1 {
  				regulator-min-microvolt = <400000>;
  				regulator-max-microvolt = <1193750>;
  				regulator-enable-ramp-delay = <256>;
-+				regulator-ramp-delay = <8000>;
- 				regulator-allowed-modes = <0 1 2>;
- 				regulator-always-on;
- 			};
-@@ -1821,6 +1822,7 @@ mt6315_6_vbuck3: vbuck3 {
- 				regulator-min-microvolt = <400000>;
- 				regulator-max-microvolt = <1193750>;
- 				regulator-enable-ramp-delay = <256>;
+-				regulator-ramp-delay = <6250>;
 +				regulator-ramp-delay = <4500>;
  				regulator-allowed-modes = <0 1 2>;
- 				regulator-always-on;
  			};
-@@ -1841,6 +1843,7 @@ mt6315_7_vbuck1: vbuck1 {
- 				regulator-min-microvolt = <400000>;
- 				regulator-max-microvolt = <800000>;
- 				regulator-enable-ramp-delay = <256>;
-+				regulator-ramp-delay = <4500>;
- 				regulator-allowed-modes = <0 1 2>;
- 				regulator-coupled-with = <&mt6359_vsram_others_ldo_reg>;
- 				regulator-coupled-max-spread = <10000>;
+ 		};
 -- 
 2.56.0.317.g454f8302e1-goog
 
