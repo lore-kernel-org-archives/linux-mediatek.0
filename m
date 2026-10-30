@@ -2,60 +2,60 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 6A0C360A2629
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 6695360A2628
 	for <linux-mediatek@archiver.kernel.org>; Fri, 30 Oct 2026 08:26:11 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=k94yuAS3;
-	dkim=pass (1024-bit key, unprotected) header.d=mediatek.com header.i=@mediatek.com header.a=rsa-sha256 header.s=dk header.b=Cc4G9LaZ
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=aGYHLs/E;
+	dkim=pass (1024-bit key, unprotected) header.d=mediatek.com header.i=@mediatek.com header.a=rsa-sha256 header.s=dk header.b=ncM5MH9O
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
 	List-Unsubscribe-Post:List-Owner;
-	bh=nFSrdi8B+V4M8lR/Laz8DolSkuuYIVlmri4bckiEtjg=; b=k94yuAS3zDZXbci0HFn2gNRr7P
-	P7sL2SspvFMrtFMvGs5aS+d3M8UiMeIrVt2jd1dTZ6i9rf6VW2t/2Y+l6+1Ze8WhcIDiiQZZ2R3Bs
-	Oslt7yeOorn78EEn3lnz1CTedSegiyAY5QgqYY4n/TLANX6Bxzy30PHKDIx0Ml3jt3vS2gi19F2Ah
-	6DlftxeWwhwGfYvxfLSnnQ0dRf8CfeBF2QUTINhvvuRtD7aEwNWQZ/W7G9zypJpOy0sBhwtpw4Q5S
-	XDjoiiqxW0r51FSjMrW1EkQMLWv75aHy+zhTjV2UQJMglTaflU9Chcy7ZRb2rFLHAUM6bUsEa6EZ4
-	oM7yO7BQ==;
+	bh=htf0XnCq8b3mGZpyFUeRWCE6zqOV8+iGrdXbpt9HnI4=; b=aGYHLs/EwbJq3u9yCZEBj6qCSX
+	oDwWzGQkcArxDXTz9SixdsaZA1+CEhHvaSD1FFMM658Udajz7I8izhuJPv3r4+rtJmSuO9t07Y3mL
+	Vk0j/Oyzb8Q0bWEIX9vD0FYsmRNvPl3saNxuDoHOoRpM1cfuTSFJ9fn2j1iL19tmCm/juRaiC7gAW
+	P839VSKXYWFd2p+ZXDjc2lH4uinlHMPjygoqpnI+m+Ma7E6ge9LN0IEnDevOBNHgdDUCLcbjlBIig
+	WlfOykvqJ0/zHD3Hgn6GYE6/OlOr2YwVK+nllaQaiZy9LsVgojjjlca4CRwyVvbraMEtLcPV5A3aj
+	Yu0+fPNg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xMhwA-0000000B6tp-0d0Y;
-	Fri, 30 Oct 2026 08:26:10 +0000
+	id 1xMhw7-0000000B6s9-3zni;
+	Fri, 30 Oct 2026 08:26:07 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xMhw5-0000000B6qh-1qk4;
-	Fri, 30 Oct 2026 08:26:07 +0000
-X-UUID: 871fbc6cd43b11f1acbe4559397dec65-20261030
+	id 1xMhw5-0000000B6qC-0jd7;
+	Fri, 30 Oct 2026 08:26:06 +0000
+X-UUID: 8598ffa2d43b11f1acbe4559397dec65-20261030
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=nFSrdi8B+V4M8lR/Laz8DolSkuuYIVlmri4bckiEtjg=;
-	b=Cc4G9LaZlSxkLaREgge9ctCkV8Lm39gB77Q87m9WLSG4s67dGo2Kkz6uQzdfnFcXI0G0yydxBDiQIQm9d3F8C+0+WUdVwSpLdFVjW+r11nOvSM4LkwTMyvivsAz+eKG6HAsn60P68vTsF2GOGFHhF6rn+JaVeHuTFsgtSxBqRf4=;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=htf0XnCq8b3mGZpyFUeRWCE6zqOV8+iGrdXbpt9HnI4=;
+	b=ncM5MH9OiDXnAMTTfYf0ACPVHJ23Z8v6Lomf7KRzk/qFLgelf9qT6jetllI7MafB1AU7OAL47L59aY1x85doyqoVZyASr4fVXk6ZOdVEuOZ5MFJ64ZLTnCUx5whZKBbqzxmzzOme///MIIitcuMR/BHGNrrv3MCvk30JnzJ5V+w=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.21,REQID:f57225d2-2b0c-40e9-8442-42583e9bcd4e,IP:0,U
+X-CID-O-INFO: VERSION:1.3.21,REQID:4f0d36ce-7fb7-44b9-b56b-d58a1d5fa6a0,IP:0,U
 	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
 	N:release,TS:-25
-X-CID-META: VersionHash:b0318ac,CLOUDID:7cfee7ed-6961-456c-adce-6d277e14e6ad,B
-	ulkID:nil,BulkQuantity:0,SF:81|82|102|836|865|888|898,TC:-5,Content:0|15|5
-	0|99,EDM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:-1,COL:0,OSI:0,
-	OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-META: VersionHash:b0318ac,CLOUDID:3462e7ec-b50c-48b5-b20a-bfe3130e16d3,B
+	ulkID:nil,BulkQuantity:0,SF:102|136|836|865|888|898,TC:-5,Content:0|15|50|
+	99,EDM:-3|-100,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:-1,COL:0,OSI
+	:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
 X-CID-BVR: 2,SSN|SDN
 X-CID-BAS: 2,SSN|SDN,0,_
 X-CID-FACTOR: TF_CID_SPAM_SNR
 X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: 871fbc6cd43b11f1acbe4559397dec65-20261030
-Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw02.mediatek.com
+X-UUID: 8598ffa2d43b11f1acbe4559397dec65-20261030
+Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw02.mediatek.com
 	(envelope-from <chunfeng.yun@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1318583421; Fri, 30 Oct 2026 01:25:56 -0700
+	with ESMTP id 286893183; Fri, 30 Oct 2026 01:25:53 -0700
 Received: from mtkmbs11n1.mediatek.inc (172.21.101.185) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.29; Fri, 30 Oct 2026 16:25:53 +0800
+ 15.2.2562.29; Fri, 30 Oct 2026 16:25:50 +0800
 Received: from gcnsap21.gcn.mediatek.inc (10.17.81.22) by
  mtkmbs11n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.2562.29 via Frontend Transport; Fri, 30 Oct 2026 16:25:52 +0800
+ 15.2.2562.29 via Frontend Transport; Fri, 30 Oct 2026 16:25:50 +0800
 From: Chunfeng Yun <chunfeng.yun@mediatek.com>
 To: Mika Westerberg <westeri@kernel.org>
 CC: Andreas Noever <andreas.noever@gmail.com>, Yehezkel Bernat
@@ -65,20 +65,18 @@ CC: Andreas Noever <andreas.noever@gmail.com>, Yehezkel Bernat
 	<linux-usb@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
 	<linux-mediatek@lists.infradead.org>, Chunfeng Yun
 	<chunfeng.yun@mediatek.com>
-Subject: [PATCH 3/4] thunderbolt: improve usb3 adapter link up timeout value
-Date: Fri, 30 Oct 2026 16:25:38 +0800
-Message-ID: <20261030082539.1208733-4-chunfeng.yun@mediatek.com>
+Subject: [PATCH 0/4] add support platform nhi driver
+Date: Fri, 30 Oct 2026 16:25:35 +0800
+Message-ID: <20261030082539.1208733-1-chunfeng.yun@mediatek.com>
 X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20261030082539.1208733-1-chunfeng.yun@mediatek.com>
-References: <20261030082539.1208733-1-chunfeng.yun@mediatek.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261030_012605_482337_6CCFE0F2 
-X-CRM114-Status: GOOD (  12.03  )
+X-CRM114-CacheID: sfid-20261030_012605_226402_4F793469 
+X-CRM114-Status: GOOD (  14.20  )
 X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -90,58 +88,85 @@ List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-18.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-13.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,
-	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
+	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_GIT autolearn=ham
+	autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-when plug into a usb3 device into usb4 hub's DFP to trigger usb4
-driver wakeup, encounter usb3 link up timeout issue, then cause
-usb3 hub disconnect:
+This patch series introduces support for platform bus-based USB4/Thunderbolt
+Host Interface (NHI) controllers on embedded SoCs, along with two fixes/
+improvements in the Thunderbolt core connection manager.
 
-usb4_hi NVDA8100:00: 0:1: failed to reach state TB_PORT_UP. Ignoring port...
-usb4_hi NVDA8100:00: 0:1: lost during suspend, disconnecting
-usb4_hi NVDA8100:00: 0:4 <-> 1:20 (USB3): deactivating
-usb4_hi NVDA8100:00: deactivating USB3 Down path from 0:4 to 1:20
-usb4_hi NVDA8100:00: deactivating USB3 Up path from 1:20 to 0:4
-...
-thunderbolt 0-1: device disconnected
-usb 2-1: USB disconnect, device number 10
+Historically, the Thunderbolt NHI driver has assumed a PCI bus binding
+(pci.c), with tb_domain_init()/exit() tightly coupled to the PCI module
+lifecycle. Modern ARM64 SoCs integrate the USB4 NHI controller directly
+onto the platform bus, described via Device Tree or ACPI.
 
-Completes link training at ~1.48s and transitions to TB_PORT_UP after
-change the timeout to 2.5s:
+This series decouples the core domain initialization from the PCI driver
+and adds a dedicated platform driver (plat.c) supporting standard platform
+probing, OF/ACPI device tables, runtime PM, and an optional dedicated
+out-of-band wakeup IRQ.
 
-In the USB4 spec, Phase 5 (Link Equalization) alone is allowed up to
-1000 ms. When add tPhase3 (100 ms), tPhase4 (100 ms), and retimer
-transaction delays (tCmdResponse = 50 ms), the physical link is
-allowed by spec to take 1200 ms to 1500 ms+ to complete initialization.
+Additionally, this series resolves two issues observed during runtime PM
+and link training:
+1. Premature link-up timeout when bringing up USB3 adapters on links with
+   multiple retimers.
+2. Kernel warnings when authorizing/de-authorizing PCIe tunnels on switches
+   that have been marked unplugged or lost during suspend.
 
-here are two retimers in the link, if more retimers add it, need more
-time
+Patches in this series:
+======================
+Patch 1: thunderbolt: add platform nhi driver
+  Decouples tb_domain_init()/exit() using subsys_initcall() and adds plat.c
+  to support memory-mapped NHI host controllers on the platform bus with
+  Device Tree (CONFIG_OF) and ACPI (CONFIG_ACPI) match tables.
 
-Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
----
- drivers/thunderbolt/switch.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+Patch 2: thunderbolt: add support optional dedicated wakeup irq
+  Adds support for an optional dedicated wakeup interrupt for platform NHI
+  controllers using dev_pm_set_dedicated_wake_irq(), allowing out-of-band
+  wake-up lines from SoC power management units during low-power states.
 
-diff --git a/drivers/thunderbolt/switch.c b/drivers/thunderbolt/switch.c
-index d22d8db8f890..e7ee9639c54c 100644
---- a/drivers/thunderbolt/switch.c
-+++ b/drivers/thunderbolt/switch.c
-@@ -500,8 +500,9 @@ int tb_port_state(struct tb_port *port)
-  */
- int tb_wait_for_port(struct tb_port *port, bool wait_if_unplugged)
- {
--	int retries = 10;
-+	int retries = 25;
- 	int state;
-+
- 	if (!port->cap_phy) {
- 		tb_port_WARN(port, "does not have PHY\n");
- 		return -EINVAL;
+Patch 3: thunderbolt: improve usb3 adapter link up timeout value
+  Increases tb_wait_for_port() timeout from 1.0s to 2.5s. In the USB4 spec,
+  Phase 5 (Link Equalization) alone is permitted up to 1000 ms. When factoring
+  in Phase 3/4 and retimer transaction delays across multiple retimers, link
+  training can legitimately take 1.2s to 1.5s+. The previous 1.0s timeout
+  caused premature aborts and disconnects upon wakeup.
+
+Patch 4: thunderbolt: fix pcie tunnel create/destroy core dump
+  Checks sw->is_unplugged in tb_switch_set_authorized(), tb_disconnect_pci(),
+  and tb_tunnel_pci(). When de-authorizing an unplugged/lost switch via sysfs,
+  this prevents redundant lookups and eliminates false-positive
+  WARN_ON(!tunnel) stack traces when tunnels have already been destroyed.
+
+Testing:
+========
+Tested on ARM64 platform hardware with USB4 hubs and downstream PCIe/USB3
+devices across plug/unplug, system suspend/resume, and runtime PM transitions,
+the kernel boots from UEFI/ACPI.
+
+Chunfeng Yun (4):
+  thunderbolt: add platform nhi driver
+  thunderbolt: add support optional dedicated wakeup irq
+  thunderbolt: improve usb3 adapter link up timeout value
+  thunderbolt: prevent pcie tunnel activation/teardown warnings
+
+ drivers/thunderbolt/Makefile |   2 +-
+ drivers/thunderbolt/domain.c |  10 +-
+ drivers/thunderbolt/nhi.c    |   2 +
+ drivers/thunderbolt/nhi.h    |   1 -
+ drivers/thunderbolt/pci.c    |  26 +-----
+ drivers/thunderbolt/plat.c   | 171 +++++++++++++++++++++++++++++++++++
+ drivers/thunderbolt/switch.c |   8 +-
+ drivers/thunderbolt/tb.c     |   7 ++
+ drivers/thunderbolt/tb.h     |   2 -
+ include/linux/thunderbolt.h  |   2 +
+ 10 files changed, 200 insertions(+), 31 deletions(-)
+ create mode 100644 drivers/thunderbolt/plat.c
+
 -- 
 2.43.0
 
