@@ -2,89 +2,104 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id C6288606A31A
-	for <linux-mediatek@archiver.kernel.org>; Sat, 31 Oct 2026 03:42:33 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 59BE2606A31A
+	for <linux-mediatek@archiver.kernel.org>; Sat, 31 Oct 2026 10:26:56 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=V25iVRmA;
-	dkim=pass (2048-bit key, unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256 header.s=Intel header.b=N7LmbD8A
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=DPuz4k6S;
+	dkim=pass (2048-bit key, unprotected) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=TJnjp1H5
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Unsubscribe-Post:List-Owner;
-	bh=8Uj9OZsbv88tlXQeC3giO92nHVmp5niI8PEJKn2vPKI=; b=V25iVRmAebdSdjABGpIlHpvMKL
-	BsbLnccgU7DKNUrj95XvwpBx2H8pguMa70hct2fBKJFQXWXlEzznMFhVRiXiZXOMpEsdreNMy+Lbz
-	QZ7UMOBIlW3fHwkcrr3p9XZznvu7SZ0zEeifxbA1E4+lRMPYKt6DaJF0ZYbSaQCQ2Avqa3fzDzmJB
-	G9zMnN1Mb9FGkagxtv27BD3vvt0HnLde1iXaPo74BlMPBZ16t9cFLlrsAdm49i7XvAxco8T01pY8F
-	iJ14/3u02t2/2r5M9OZf5v+bShJXiXYE4rJexroXxq3TprfGq5tBNjs2rRlhSnI0WQ1yTBmMPjjI2
-	4o2kkiSA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Unsubscribe-Post:
+	List-Owner; bh=QI5qU1trTwZm0S8t5gCAWIJ9CPL9O0gAUfA8IjPCltU=; b=DPuz4k6SGnbU4q
+	YhVTopCTj6HNyo+PgsMFFthihoYcL4u9aS4c1l1p4gd/ii4gnQvoUimGWmYRvCFF+02If65Az+UCN
+	HxGj4ee3m34+P+LF4HuLaK05584X4EywAxFXrIsgAKIQHRIBTVNf+MPjnigHnCQevxPtNPdB+2aXb
+	dH9JDa6MLEfKaLFXfld9VNwWcvwwLpQwTQanPhfprCcXgJ588vJKN4dr8HxrfPbSiiGW69k0j7jSx
+	eW3ymOwmX/Cxe4Y/CQdCI1qubcGiEMjIVh9xMCiLY41OICQLVtyl5eCe2lR2ZBpTD4+lk4uD/h4cn
+	3Wh/odE9D+kKCucD06oQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xMzzD-0000000CujR-3vYr;
-	Sat, 31 Oct 2026 03:42:31 +0000
-Received: from mgamail.intel.com ([198.175.65.15])
+	id 1xN6IZ-0000000DDBB-2vHH;
+	Sat, 31 Oct 2026 10:26:55 +0000
+Received: from mail-wm1-x332.google.com ([2a00:1450:4864:20::332])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xMzzA-0000000Cuia-3Dxp;
-	Sat, 31 Oct 2026 03:42:30 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1793418148; x=1824954148;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=pLDMaA9u2DIya46UgXd1Q3O/zpB0FhmIJRX1KN0DRWI=;
-  b=N7LmbD8AibCHRRnB09O6jV2dnm8XoQ3EQhrWgu9N73Fxp/SRgPaDhHAd
-   B7nmBwHaYHTcmwwGpwXG7l94umLIdPueJe8TSwcQrH2tJucez0qdxZh7w
-   ScWH5yFCZtaOCf+NP4JNcPvBJVyVR2/e8PjZeqyY89up9O8WJxe/mCakM
-   YVqJuWwckl5O/rKH4x7lf0sm6qLRIH+rtVhgopiE3GgTPpHufEWJbv57B
-   hQ+tdXDOeLU/MCjg6pckx3P1RSXWFBybUPkq+XO8exU5Rr5m/O4ZbI/F3
-   ucG/9bFFAltjU7YfknyH+ivsBCNmboIurmYgxzAgYiRLdpQd5AgcWWfnn
-   g==;
-X-CSE-ConnectionGUID: j3ccPf4aQPmxjQfB7pxY4w==
-X-CSE-MsgGUID: Tn39DXx3RpSa3oD9c70prg==
-X-IronPort-AV: E=McAfee;i="6800,10657,11951"; a="2188807"
-X-IronPort-AV: E=Sophos;i="6.27,186,1787036400"; 
-   d="scan'208";a="2188807"
-Received: from orviesa001.jf.intel.com ([10.64.159.141])
-  by orvoesa107.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 30 Oct 2026 20:42:27 -0700
-X-CSE-ConnectionGUID: DlbAhomOT9OdKtm3J6iyBQ==
-X-CSE-MsgGUID: tV3OVMKbQOieESNB2zVCiw==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.27,186,1787036400"; 
-   d="scan'208";a="5568179"
-Received: from lkp-server01.sh.intel.com (HELO 0caa9d2d175c) ([10.239.97.150])
-  by orviesa001.jf.intel.com with ESMTP; 30 Oct 2026 20:42:24 -0700
-Received: from kbuild by 0caa9d2d175c with local (Exim 4.98.2)
-	(envelope-from <lkp@intel.com>)
-	id 1xMzz3-00000000cVM-2DbZ;
-	Sat, 31 Oct 2026 03:42:21 +0000
-Date: Sat, 31 Oct 2026 11:41:44 +0800
-From: kernel test robot <lkp@intel.com>
-To: Chunfeng Yun <chunfeng.yun@mediatek.com>,
-	Mika Westerberg <westeri@kernel.org>
-Cc: oe-kbuild-all@lists.linux.dev,
-	Andreas Noever <andreas.noever@gmail.com>,
-	Yehezkel Bernat <YehezkelShB@gmail.com>,
+	id 1xN6IV-0000000DD9L-2XpI
+	for linux-mediatek@lists.infradead.org;
+	Sat, 31 Oct 2026 10:26:53 +0000
+Received: by mail-wm1-x332.google.com with SMTP id 5b1f17b1804b1-4a210470b49so11835975e9.2
+        for <linux-mediatek@lists.infradead.org>; Sat, 31 Oct 2026 03:26:51 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20260707; t=1793442410; x=1794047210; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to:content-type;
+        bh=QI5qU1trTwZm0S8t5gCAWIJ9CPL9O0gAUfA8IjPCltU=;
+        b=TJnjp1H57YwHpMUYX9Pnbm75jZ6q+MkanVIJMWw3/20IIFsiCv1r/DXqgV2pX8UX75
+         N2IVIrRjOuxjjwV+rFI2c6tS/CYyRVwCbDCRoTVYyAJ3GfaRAc9KGTGZEsOdi5oqs9LA
+         ARir6AJlhm5vBxcrpJPruKhqKr5aMdGiQDN2o29WHV3pODf7G6yBPNrYxFhoz+FpG3+y
+         kO+QcCJc25Yt26bzGnepGKQms24yXJz3z1Lws7gDMPs6Pq87cMqFsTk/mbsrO/upPOBP
+         he/x50r3pHW+WmShJ1z284TSDpl48AHIjwVDSVg++xljhtk8u/NPt0S705F7a2SZyljf
+         iKOg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20260707; t=1793442410; x=1794047210;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
+         :to:cc:subject:date:message-id:reply-to:content-type;
+        bh=QI5qU1trTwZm0S8t5gCAWIJ9CPL9O0gAUfA8IjPCltU=;
+        b=V03k7EaWg1re0wz+Z69HruZJ0Z1OcOvqFZBHiL004aqaEt+jhqOzYHbCLbd/3Ppsyt
+         oZObqVvZEoQNHVcpvSS+qClpYeGKYZGGgtjiX39rpkTXSDtzArOYOeAkNdygSIkqqdid
+         iOMmNaCFjyVv39+vzX5BrwicV96t/G0NxiM9Gk79CJarabvJE56owW6pYR0KTNgQgkC9
+         tBVZ/5nrAMCKtsTNxZK2y4cXRVfhukUAf0r/U+CcCQD4LPfNnlM1xUdGtcA56uwEPXaV
+         lJWVWtTi+3hlgaTNf8VxdnKUraxazToanlZyn1PnsNCYzs+NbvQnXEqOntNME+zjIfzb
+         e7fQ==
+X-Forwarded-Encrypted: i=1; AKwUvByjbgpBSzpmHYjt07K+adVxFq7o/YacIewMPpsr/9QAKA7JNDpSyzIHJmHs57yOF3Z0JjywldYg8uMba+Zuwg==@lists.infradead.org
+X-Gm-Message-State: AFq9FYJue2SffCMfGweQMd36iWgf47B4XMEw3y0HzTLMhkdkBA/HHIee
+	K13qQnemAml3G0Jeo96A0A54qL18cUpwzSnDcs8wCWiCFQaVv3ymJKQQ
+X-Gm-Gg: AYBFou1rrSu/TWgHGBmsZ2Tt+ODj37Kusxdtd5tz0Ewpw8ZwM9Gdib9SNrz0EgULjku
+	P5R25bWepM6ZcQgxjDPb9mgbb5BJ3EN03NfFY60Kmi6ZF6YhWYQeKoEOtIWSCB7c0NEEa9b8P2H
+	b3mX7pPzf3HT952BVOeSkhBKKlE4Z9S1Og+3pAiwkhNbxRxa5SJLzUnLSlmQsPc+gTEHm5iRBk2
+	GyN4yuiBK8D9Lxa7ywEuYsmQlLaHc/pvWnlPQ14srPEVZSEAVnHGSbrlKqpDeMZ/fYV2nFSUKI+
+	SJWHTDK3rMt/LxPyiBzT+SRbETBJjaGytTqbSGSL4bcLZ0CsKtbIyRYym+dDk1A1he0B+XagTyX
+	LONTMpdM/3q81l89zGCRrM2jaIckc43DlhO8WOvWA+a6/mSH/umUV2SnH82ceNZCyYTPj3uJ0G+
+	zYPPlNj+tvzjRy9MQ7iMciW7k4fTif8JR1YC+VX7WHkkAolpYkcY1RiATgO+CDT0/qpFiTp4ME8
+	JRA+nr2MPUtBlVGNjbaBIt2WYvcmxht4aO1sYtLl0sZqVRi2XJrD1UzvhA0XuzBuSHh8JY3lZ24
+	fDQ56WWjy1ZgkGpMC3AttbgnMui+V5XXuJ2Y4bxCJcIlctXlNl8CtdYWeojUQFDcK2uX9NGC21w
+	P247UsfZdoWl0jw==
+X-Received: by 2002:a05:600c:5246:b0:4a1:d459:db4b with SMTP id 5b1f17b1804b1-4ac1889c7bdmr110005305e9.24.1793442409529;
+        Sat, 31 Oct 2026 03:26:49 -0700 (PDT)
+Received: from Ansuel-XPS24 ([2a0d:3344:54ec:1210:f1b7:9ece:c6e2:5df8])
+        by smtp.googlemail.com with ESMTPSA id 5b1f17b1804b1-4abebe33e79sm90903535e9.2.2026.10.31.03.26.47
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sat, 31 Oct 2026 03:26:48 -0700 (PDT)
+From: Christian Marangi <ansuelsmth@gmail.com>
+To: Stefan Roese <sr@denx.de>,
+	Andi Shyti <andi.shyti@kernel.org>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-kernel@vger.kernel.org, linux-usb@vger.kernel.org,
+	linux-i2c@vger.kernel.org,
+	devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	Chunfeng Yun <chunfeng.yun@mediatek.com>
-Subject: Re: [PATCH 1/4] thunderbolt: add platform nhi driver
-Message-ID: <202610311159.EWCMURna-lkp@intel.com>
-References: <20261030082539.1208733-2-chunfeng.yun@mediatek.com>
+	linux-mediatek@lists.infradead.org
+Cc: Christian Marangi <ansuelsmth@gmail.com>
+Subject: [PATCH v2 2/2] i2c: mt7621: limit SCL_STRETCH only to Mediatek SoC
+Date: Sat, 31 Oct 2026 11:26:40 +0100
+Message-ID: <20261031102641.12649-2-ansuelsmth@gmail.com>
+X-Mailer: git-send-email 2.55.0
+In-Reply-To: <20261031102641.12649-1-ansuelsmth@gmail.com>
+References: <20261031102641.12649-1-ansuelsmth@gmail.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20261030082539.1208733-2-chunfeng.yun@mediatek.com>
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261030_204228_882213_81007FBB 
-X-CRM114-Status: GOOD (  11.02  )
-X-Spam-Score: -4.4 (----)
+X-CRM114-CacheID: sfid-20261031_032651_662184_53A051D8 
+X-CRM114-Status: GOOD (  16.26  )
+X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,90 +110,97 @@ List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-10.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,
-	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,
-	SPF_HELO_NONE,SPF_PASS autolearn=ham autolearn_force=no version=4.0.1
+X-Spam-Status: No, score=-15.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
+	DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,FREEMAIL_FORGED_FROMDOMAIN,
+	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
+	USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Hi Chunfeng,
+The same I2C driver is also used for Airoha SoC with the only difference
+that the i2c_reset should not enable SCL_STRETCH for Airoha SoC.
 
-kernel test robot noticed the following build errors:
+Introduce a new compatible for Airoha and limit the SCL_STRETCH only to
+Mediatek SoC.
 
-[auto build test ERROR on westeri-thunderbolt/next]
-[also build test ERROR on linus/master v7.3 next-20261030]
-[If your patch is applied to the wrong git tree, kindly drop us a note.
-And when submitting patch, we suggest to use '--base' as documented in
-https://git-scm.com/docs/git-format-patch#_base_tree_information]
+Signed-off-by: Christian Marangi <ansuelsmth@gmail.com>
+---
+Changes v2:
+- Use match data for storage
 
-url:    https://github.com/intel-lab-lkp/linux/commits/Chunfeng-Yun/thunderbolt-add-platform-nhi-driver/20261030-162536
-base:   https://git.kernel.org/pub/scm/linux/kernel/git/westeri/thunderbolt.git next
-patch link:    https://lore.kernel.org/r/20261030082539.1208733-2-chunfeng.yun%40mediatek.com
-patch subject: [PATCH 1/4] thunderbolt: add platform nhi driver
-config: arm64-randconfig-1003-20261031 (https://download.01.org/0day-ci/archive/20261031/202610311159.EWCMURna-lkp@intel.com/config)
-compiler: aarch64-linux-gcc (GCC) 12.5.0
-reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20261031/202610311159.EWCMURna-lkp@intel.com/reproduce)
+ drivers/i2c/busses/i2c-mt7621.c | 25 ++++++++++++++++++++++---
+ 1 file changed, 22 insertions(+), 3 deletions(-)
 
-If you fix the issue in a separate patch/commit (i.e. not just a new version of
-the same patch/commit), kindly add following tags
-| Reported-by: kernel test robot <lkp@intel.com>
-| Closes: https://lore.kernel.org/oe-kbuild-all/202610311159.EWCMURna-lkp@intel.com/
+diff --git a/drivers/i2c/busses/i2c-mt7621.c b/drivers/i2c/busses/i2c-mt7621.c
+index 0a288c998419..fa1f32d4f046 100644
+--- a/drivers/i2c/busses/i2c-mt7621.c
++++ b/drivers/i2c/busses/i2c-mt7621.c
+@@ -57,9 +57,14 @@
+ /* timeout waiting for I2C devices to respond */
+ #define TIMEOUT_MS		1000
+ 
++struct mtk_i2c_data {
++	bool have_scl_stretch;
++};
++
+ struct mtk_i2c {
+ 	void __iomem *base;
+ 	struct device *dev;
++	const struct mtk_i2c_data *data;
+ 	struct i2c_adapter adap;
+ 	u32 bus_freq;
+ 	u32 clk_div;
+@@ -83,6 +88,7 @@ static int mtk_i2c_wait_idle(struct mtk_i2c *i2c)
+ 
+ static void mtk_i2c_reset(struct mtk_i2c *i2c)
+ {
++	u32 reg;
+ 	int ret;
+ 
+ 	ret = device_reset(i2c->adap.dev.parent);
+@@ -93,8 +99,11 @@ static void mtk_i2c_reset(struct mtk_i2c *i2c)
+ 	 * Don't set SM0CTL0_ODRAIN as its bit meaning is inverted. To
+ 	 * configure open-drain mode, this bit needs to be cleared.
+ 	 */
+-	iowrite32(((i2c->clk_div << 16) & SM0CTL0_CLK_DIV_MASK) | SM0CTL0_EN |
+-		  SM0CTL0_SCL_STRETCH, i2c->base + REG_SM0CTL0_REG);
++	reg = ((i2c->clk_div << 16) & SM0CTL0_CLK_DIV_MASK) | SM0CTL0_EN;
++	if (i2c->data->have_scl_stretch)
++		reg |= SM0CTL0_SCL_STRETCH;
++
++	iowrite32(reg, i2c->base + REG_SM0CTL0_REG);
+ 	iowrite32(0, i2c->base + REG_SM0CFG2_REG);
+ }
+ 
+@@ -247,8 +256,17 @@ static const struct i2c_algorithm mtk_i2c_algo = {
+ 	.functionality = mtk_i2c_func,
+ };
+ 
++static const struct mtk_i2c_data i2c_mt7621_data = {
++	.have_scl_stretch = true,
++};
++
++static const struct mtk_i2c_data i2c_an7581_data = {
++	.have_scl_stretch = false,
++};
++
+ static const struct of_device_id i2c_mtk_dt_ids[] = {
+-	{ .compatible = "mediatek,mt7621-i2c" },
++	{ .compatible = "mediatek,mt7621-i2c", .data = &i2c_mt7621_data },
++	{ .compatible = "airoha,an7581-i2c", .data = &i2c_an7581_data },
+ 	{ /* sentinel */ }
+ };
+ 
+@@ -286,6 +304,7 @@ static int mtk_i2c_probe(struct platform_device *pdev)
+ 	}
+ 
+ 	i2c->dev = &pdev->dev;
++	i2c->data = device_get_match_data(&pdev->dev);
+ 
+ 	if (of_property_read_u32(pdev->dev.of_node, "clock-frequency",
+ 				 &i2c->bus_freq))
+-- 
+2.55.0
 
-All errors (new ones prefixed by >>):
-
-   aarch64-linux-ld: drivers/thunderbolt/domain.o: in function `tb_domain_init':
->> drivers/thunderbolt/domain.c:909: multiple definition of `init_module'; drivers/thunderbolt/pci.o:drivers/thunderbolt/pci.c:753: first defined here
-   aarch64-linux-ld: drivers/thunderbolt/domain.o: in function `tb_domain_exit':
->> drivers/thunderbolt/domain.c:935: multiple definition of `cleanup_module'; drivers/thunderbolt/pci.o:drivers/thunderbolt/pci.c:753: first defined here
-   aarch64-linux-ld: drivers/thunderbolt/plat.o: in function `nhi_plat_driver_init':
-   drivers/thunderbolt/plat.c:152: multiple definition of `init_module'; drivers/thunderbolt/pci.o:drivers/thunderbolt/pci.c:753: first defined here
-   aarch64-linux-ld: drivers/thunderbolt/plat.o: in function `nhi_plat_driver_exit':
-   drivers/thunderbolt/plat.c:152: multiple definition of `cleanup_module'; drivers/thunderbolt/pci.o:drivers/thunderbolt/pci.c:753: first defined here
-
-
-vim +909 drivers/thunderbolt/domain.c
-
-a8937f35cf39c3 Mika Westerberg 2025-11-06  907  
-4bef343876ebc1 Chunfeng Yun    2026-10-30  908  static int __init tb_domain_init(void)
-9d3cce0b613689 Mika Westerberg 2017-06-06 @909  {
-d1ff70241a2751 Mika Westerberg 2017-10-02  910  	int ret;
-d1ff70241a2751 Mika Westerberg 2017-10-02  911  
-cba57ed6f1e752 Mika Westerberg 2025-08-12  912  	tb_configfs_init();
-54e418106c765c Gil Fine        2020-06-29  913  	tb_debugfs_init();
-ccc5cb8ad5d18e Rajmohan Mani   2021-04-01  914  	tb_acpi_init();
-ccc5cb8ad5d18e Rajmohan Mani   2021-04-01  915  
-d1ff70241a2751 Mika Westerberg 2017-10-02  916  	ret = tb_xdomain_init();
-d1ff70241a2751 Mika Westerberg 2017-10-02  917  	if (ret)
-ccc5cb8ad5d18e Rajmohan Mani   2021-04-01  918  		goto err_acpi;
-d1ff70241a2751 Mika Westerberg 2017-10-02  919  	ret = bus_register(&tb_bus_type);
-d1ff70241a2751 Mika Westerberg 2017-10-02  920  	if (ret)
-54e418106c765c Gil Fine        2020-06-29  921  		goto err_xdomain;
-54e418106c765c Gil Fine        2020-06-29  922  
-54e418106c765c Gil Fine        2020-06-29  923  	return 0;
-54e418106c765c Gil Fine        2020-06-29  924  
-54e418106c765c Gil Fine        2020-06-29  925  err_xdomain:
-d1ff70241a2751 Mika Westerberg 2017-10-02  926  	tb_xdomain_exit();
-ccc5cb8ad5d18e Rajmohan Mani   2021-04-01  927  err_acpi:
-ccc5cb8ad5d18e Rajmohan Mani   2021-04-01  928  	tb_acpi_exit();
-54e418106c765c Gil Fine        2020-06-29  929  	tb_debugfs_exit();
-d1ff70241a2751 Mika Westerberg 2017-10-02  930  
-d1ff70241a2751 Mika Westerberg 2017-10-02  931  	return ret;
-9d3cce0b613689 Mika Westerberg 2017-06-06  932  }
-9d3cce0b613689 Mika Westerberg 2017-06-06  933  
-4bef343876ebc1 Chunfeng Yun    2026-10-30  934  static void __exit tb_domain_exit(void)
-9d3cce0b613689 Mika Westerberg 2017-06-06 @935  {
-9d3cce0b613689 Mika Westerberg 2017-06-06  936  	bus_unregister(&tb_bus_type);
-9d3cce0b613689 Mika Westerberg 2017-06-06  937  	ida_destroy(&tb_domain_ida);
-719a5fe87ecd71 Mika Westerberg 2020-03-05  938  	tb_nvm_exit();
-d1ff70241a2751 Mika Westerberg 2017-10-02  939  	tb_xdomain_exit();
-ccc5cb8ad5d18e Rajmohan Mani   2021-04-01  940  	tb_acpi_exit();
-54e418106c765c Gil Fine        2020-06-29  941  	tb_debugfs_exit();
-cba57ed6f1e752 Mika Westerberg 2025-08-12  942  	tb_configfs_exit();
-9d3cce0b613689 Mika Westerberg 2017-06-06  943  }
-4bef343876ebc1 Chunfeng Yun    2026-10-30  944  
-
---
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
 
