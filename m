@@ -2,100 +2,96 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id C2CF3606A325
-	for <linux-mediatek@archiver.kernel.org>; Sun,  1 Nov 2026 16:45:11 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 9657B606A324
+	for <linux-mediatek@archiver.kernel.org>; Sun,  1 Nov 2026 20:27:54 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=DhJ8zGCk;
-	dkim=pass (2048-bit key, unprotected) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=re5GAdU8
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=con9LFiV;
+	dkim=pass (2048-bit key, unprotected) header.d=mtu.edu header.i=@mtu.edu header.a=rsa-sha256 header.s=google header.b=QDcImI6q
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Unsubscribe-Post:
-	List-Owner; bh=bj0ltQtv/choXAJqYl6bK+gN567VD4DEe8Wk1o0RXYw=; b=DhJ8zGCkZc4Yjh
-	q6hmn2aQs0+gHdjv9/XikDmeuIKLN4L+CosamxGcaem92Ar0brGgHpxJsaory3rgsS5Wccwmb9TjV
-	f3jqQ7lqSwroHkLX9z31SNYdL5Tx9mWRieTMT2YzER1+z4NkSzy5Aqn8KimzmhP/c5otyVJ0/kuei
-	OF8PK836pVj3BMCrtBOAcqkPRAztt4N93E9+F/obTYHSlyI4QW3cu4h12Sxi9Ph8+e1g8idJhnEkY
-	pMpAPaWhmhTFky5rHEBoLFmmMwD11nXcWWi90gqT8k+6R9Lq9neopREXbmXhVYvGLJzKqczZ5A0Wy
-	bgdxnXVlbzCPUbi02zlQ==;
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Unsubscribe-Post:List-Owner;
+	bh=VzoqmSGTK2p7iNyBmDYghxEoApvenhg3wCg4KbKbjoQ=; b=con9LFiVe0/wMc+wy/fcm6iJAX
+	wyx/4nLzJsWTl8BRmqRVCU7BtAjN/0GsmNKsocf5eYrKoVH+5vdIZR6TCXMu0FTO0H7ODmcusV0vb
+	TROGLdbJpVFb1vTRF1/34aGjLrcO0k5XxIEWiftjOs2IIkApmCO6mfdsdAsOTRA1GFECGfcNFSXcr
+	rpKQtJpfLnAtyjkkRGHfgCGaXe2120GeGNI12SztqsUoCFWIA7S2rsGRcRvbEr8fyenzsBZSFLb5v
+	99K2WV/Go+E2iZ/JUiW1C07BeC9pQ4qaXfSfyHKtBqEdzs5tj+tbzV+pTIr1j/CiXdzZLbeK5Ju1k
+	fsgo6M8w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xNYgB-0000000EgMB-2Aa3;
-	Sun, 01 Nov 2026 16:45:11 +0000
-Received: from mail-dy1-x1330.google.com ([2607:f8b0:4864:20::1330])
+	id 1xNc9f-0000000EsWA-3VHE;
+	Sun, 01 Nov 2026 20:27:51 +0000
+Received: from mail-yx1-xb132.google.com ([2607:f8b0:4864:20::b132])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xNYg7-0000000EgK0-3cRo
+	id 1xNc9c-0000000EsVk-2DFy
 	for linux-mediatek@lists.infradead.org;
-	Sun, 01 Nov 2026 16:45:09 +0000
-Received: by mail-dy1-x1330.google.com with SMTP id 5a478bee46e88-363cd582f45so199183eec.0
-        for <linux-mediatek@lists.infradead.org>; Sun, 01 Nov 2026 08:45:07 -0800 (PST)
+	Sun, 01 Nov 2026 20:27:50 +0000
+Received: by mail-yx1-xb132.google.com with SMTP id 956f58d0204a3-67990a45e02so1935713d50.3
+        for <linux-mediatek@lists.infradead.org>; Sun, 01 Nov 2026 12:27:47 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20260707; t=1793551507; x=1794156307; darn=lists.infradead.org;
-        h=content-transfer-encoding:content-type:mime-version:references
-         :in-reply-to:message-id:date:subject:cc:to:from:from:to:cc:subject
-         :date:message-id:reply-to:content-type;
-        bh=bj0ltQtv/choXAJqYl6bK+gN567VD4DEe8Wk1o0RXYw=;
-        b=re5GAdU8YewAPQFtbntRZregFR/c9nocQad4RcYQijiCTYij4GKbLt8pSfrGOoynLu
-         pYMsuPcmaZYKKUlXmApdt/XBdj74Y8yKcGqaFjG/TTiAl4IlYGtFxwAdLXm3VOaF60PD
-         ARwUjvw3JTLgx+azQCd+8KyY5BxVY0+zTdOr+Kcfyw5U3oQvzGxKapD36dyODpxwA1UG
-         bysMVAYmO7jvKa7HuyMKJ5FJWLZcrTrFI7n9j4WhUKgurmnd0Fwb5wVukicJjLX2/orW
-         fQzD3c488pzGxcWeLB63qaRiiBEzuHFZdYFIyZZz/g4Ia0GMkvNHwwNxnFsrkKB3Rouq
-         X6Ug==
+        d=mtu.edu; s=google; t=1793564867; x=1794169667; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
+        bh=VzoqmSGTK2p7iNyBmDYghxEoApvenhg3wCg4KbKbjoQ=;
+        b=QDcImI6q6thT43ZEDTDCoouT8dXFpHgZRYLCKSRsGrrQYKp+Cl+hK+KkMSnNLosBED
+         f1bvE++pSTIUw6GkgidaMoT0BhrCRBlxlLWXijhl8563osCKCKLv+PMDcOz67B9VMtfc
+         xTCEBOBZ/QbA+nEiccqHoDKXrvZolsnyerSWCDhEI5XUezZKaSmw7Nl2mYdKrlhfAdJt
+         jgKT2/2O97eOmNioaP2eN3STb+Ej4B6Q6pORtpSsCHkTRB2leJ4y0dQb3YWsjPvvumfY
+         Ejn0/maM1rnRwsE1u195ayfg/vOEpm4nSN8jeQb0ELV0YkbQXW3+0z54fzteIU+Nx5rF
+         Q5Ig==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1793551507; x=1794156307;
-        h=content-transfer-encoding:content-type:mime-version:references
-         :in-reply-to:message-id:date:subject:cc:to:from:x-gm-gg
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
-         :content-type;
-        bh=bj0ltQtv/choXAJqYl6bK+gN567VD4DEe8Wk1o0RXYw=;
-        b=gyN8GY0huH3v8dQEDM7QXgu7A31bT8yIjcpytI321n1JDdouGaoEyMeZcOQ1puE3Ns
-         QZHhY1QR+m2gquUlBCEhta3kdzs6HnASaq0XUMoZaRt8PxsAKJo4KkYJBflbWmZ7tqIh
-         hlA97OIQEzst28o8ZvRkn3H/uNmcZotyV8/5Ah1okHFXJHPCroKE2uoH9yyV4GVHcufG
-         7XrSOwcoHnAkXFMFuQCBokJ0PfoE1rB7F5qixgRiAbL7sJ/xicvjRDPxIFPNaKNaEHpQ
-         uQqpmVM6TrBO8rAt6EiAH8X9rf5XHpLx5ekYeRHThdYdw0lfS0vzuck315vK3qTtiUJk
-         73YA==
-X-Forwarded-Encrypted: i=1; AKwUvBwcVZY30FUX++uy2Ol0fPeFBTbSX2fPtfUAWInk4XO9fTx7IwSUf8rDJW7gTYtXhRjjQWXhyjIHZyUw8NI/2Q==@lists.infradead.org
-X-Gm-Message-State: APuU4Z81RBJ4tfN/LSIFpK2hHRiVAXGKGE1crC8K9IelJhzhnFqRzTri
-	mbyPuro71MV2kaJvHkdMTt+PA9wVlf6FEfOuYxJMRmkuc/KoPjUZqFjj
-X-Gm-Gg: AYBFou3SSV14boQ/w8uqrqYFvl06cpAzPcMMJX6z1y90jZuTg5RyGkE5V3g3HdKFvuW
-	fwXitbFth40EGc5zs9PctwvMMAv7c5rIpTSpEQbysUEu8UP7pWz9bMIwS/ec2bu+NQb//ZoT9pA
-	Ktdm7CSE/6LpyRr9ROzi7Er9LAVbCNG4zT1tRz4r1qiZInml+4mIt/Epk22sScPli7NtOQX48sX
-	O0ZNqKvHOpa/u8XtvtzRCj7Iitcth2ggj7bk3aPGks3iothmXN6knTg7PQWw3N4Gp42lex+POgh
-	loKfErMsfkA5tNhKOa+c4H1/OldbVY12UCEmkVm0cXZ0jP9Pov/Jf7o6v7+aklYLtVcUVm3wusP
-	Qa7WZlkeIQOxiqa8TYogNBV79L/O3sX5aawFzFVDYQa/VjsRsFCewow7cX/ATcPrKASEl/jSSaN
-	L6MoPDV/2MEcJRlyebn+LCU9oEnBdanU1ESYdWbOtqmB7ipLGIvtc6nJFBK+M6Qz9efMnyw9N6X
-	AJQT4SuuH9+AmPLP3us1ovHVoZijU9aYEPmIKPWcXRhvSY1Ft/R7LD6quC98vfuIgzuHPjydZ/h
-	37rPO4FN6Jf0av0ATpI63BF4YzZFojo6iZbIPN6xhEkYbjZv3w==
-X-Received: by 2002:a05:693c:8099:b0:35f:ea17:d171 with SMTP id 5a478bee46e88-36a42236aa1mr18150568eec.2.1793551506628;
-        Sun, 01 Nov 2026 08:45:06 -0800 (PST)
-Received: from lima-buntos-dev.. ([218.239.109.48])
-        by smtp.gmail.com with ESMTPSA id 5a478bee46e88-36a426681aesm35700172eec.1.2026.11.01.08.45.04
+        d=1e100.net; s=20260707; t=1793564867; x=1794169667;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to:content-type;
+        bh=VzoqmSGTK2p7iNyBmDYghxEoApvenhg3wCg4KbKbjoQ=;
+        b=DSPE00FAe0blImWH4SZo73Z6ax/STpq13IBwoPE13J9OMV50k4osxLRSafe/JrWw2W
+         T3Q0xeGeRI3+8xOUXeTH/BZXtPNQLgDWpiDWDY638DeSeEaa+8ZV7/kz+EohwN1ugyMI
+         WVtie0Qd65SmVLfoXh2fiK4Lqx9EdcT88TfIK0Y3EHbnUZRmpRkwsjTsbke11SyF/SUQ
+         q/M8Q8jbPrNNzJtPYxoWMVOALzTlh4nNt8wK0/oIlf0CaFsYUxZiTmaMGEUvxpuKwz3E
+         o48Eu7/x1ltjPi2MHvw799iK7xqRteDZJduE59BgvquX+fxNpJVjwjz+IP2JiCWlyHSp
+         4HcA==
+X-Forwarded-Encrypted: i=1; AKwUvByY8z9AzdQmX11DIejxVp/Rqa3repu6SAPiOom0P76kZ8sQlV5AbXrJJzAJSksxxQLcIh+Wdj4aJJRKywSANg==@lists.infradead.org
+X-Gm-Message-State: APuU4Z9Cp0LLYDYCEph6gkAiPNmJoj3cpPqYU++tD42RwTVgBGSQLpKU
+	TZXx47FoK5w9zA/5qldQLI7y1dB98MIVEK+4DF9e4UYdqmWYCoGrp2+mInRZyJRDMw==
+X-Gm-Gg: AYBFou2h5/bNJ8/iqmqbQhCdGAsPEsqk4bTQXRYnKchlbdV38qd1jsxCxF8nCiPvOw3
+	c3gCQKgZ7u1An+nwjj7pUxPvC0757frFJ8N2G7ZvDrt+1ax3IprNDjipCoEzbelsvTPrzZKAOMb
+	inhmygJYz3W43J3V6jJJDyDZqtl97nhM29GZsySKnlNrMPtOHFieksMx+sa1+gWyRakjEN9Nvlx
+	Y/+hMpWfe6EHRxcX+pyYY5QKZ34v38OuZriNPmPBFhSzmicpmw3VY5MefW9bIEmedcS4NhsKWZF
+	a++lxH5L+jhLWB7sW5lYzisx4CGU9+FEKKhnuzti54oRVcYBZbCyiQsHetgRc8EUtkuQ7TVVOgL
+	74iqrmZkBy0WEBc362ibjzraFeFOtU7r7ofDWsLtXVHbnbMOJtBKdQaLKFl8cuGKigNU6ldgz9s
+	iwyvFAj+6km/kHrNHwBPEdVRsT+skqabJ91C4XqLXUwiFZhjBpPDyqBWy6XgsMDcWi+0MayOM5P
+	Ao2iIJJHVmW//FUQKM2oSzelvQZCx9F3z5IwQZtF021VtmH7DPA0VWGb4o7WZ/dB3wJxbc/20Yv
+	dXKiaxMxDIpcidMxvauLH8OslF+hhdFD89Yg
+X-Received: by 2002:a05:690e:4887:10b0:679:a190:cf25 with SMTP id 956f58d0204a3-67ba4f913c1mr3978327d50.53.1793564866791;
+        Sun, 01 Nov 2026 12:27:46 -0800 (PST)
+Received: from agent-virtualbox.mtu.edu ([47.6.6.53])
+        by smtp.gmail.com with ESMTPSA id 00721157ae682-8b2b714cb1csm41251707b3.18.2026.11.01.12.27.45
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 01 Nov 2026 08:45:06 -0800 (PST)
-From: =?UTF-8?q?GIBEOM=20LEE=20=28=EC=9D=B4=EA=B8=B0=EB=B2=94=29?= <rtx4060@gmail.com>
-To: Mark Brown <broonie@kernel.org>,
-	Liam Girdwood <lgirdwood@gmail.com>
-Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
+        Sun, 01 Nov 2026 12:27:46 -0800 (PST)
+From: Aaron Beckendorf <albecken@mtu.edu>
+To: Felix Fietkau <nbd@nbd.name>,
+	Lorenzo Bianconi <lorenzo@kernel.org>,
+	Ryder Lee <ryder.lee@mediatek.com>
+Cc: Shayne Chen <shayne.chen@mediatek.com>,
+	Sean Wang <sean.wang@mediatek.com>,
+	linux-wireless@vger.kernel.org,
 	linux-mediatek@lists.infradead.org,
-	=?UTF-8?q?GIBEOM=20LEE=20=28=EC=9D=B4=EA=B8=B0=EB=B2=94=29?= <rtx4060@gmail.com>
-Subject: [PATCH 2/2] regulator: mt6363: Fix the registers of the VSRAM CPU and APU LDOs
-Date: Mon,  2 Nov 2026 01:44:04 +0900
-Message-ID: <20261101164405.1743177-3-rtx4060@gmail.com>
-X-Mailer: git-send-email 2.47.3
-In-Reply-To: <20261101164405.1743177-1-rtx4060@gmail.com>
-References: <20261101164405.1743177-1-rtx4060@gmail.com>
+	Aaron Beckendorf <albecken@mtu.edu>
+Subject: [PATCH] wifi: mt76: connac: honour injected HT/VHT rate and bandwidth
+Date: Sun,  1 Nov 2026 15:27:27 -0500
+Message-ID: <20261101202727.392683-1-albecken@mtu.edu>
+X-Mailer: git-send-email 2.53.0
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261101_084507_905343_8AE30669 
-X-CRM114-Status: GOOD (  13.85  )
-X-Spam-Score: -1.9 (-)
+X-CRM114-CacheID: sfid-20261101_122748_681466_CA060BB6 
+X-CRM114-Status: GOOD (  11.97  )
+X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,96 +102,78 @@ List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-15.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
-	DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,FREEMAIL_FORGED_FROMDOMAIN,
-	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
+X-Spam-Status: No, score=-18.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,
+	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=ham
+	autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-VSRAM_CPUB, VSRAM_CPUM, VSRAM_CPUL and VSRAM_APU have a register of their
-own for the enable (bit 0) and low power (bit 1) bits, which the header
-defines as MT6363_RG_LDO_VSRAM_*_ADDR. The driver does not use it:
-MT6363_LDO_L() takes the registers of the BUCK1 group, which is right only
-for the VSRAM_{DIGRF,MDFE,MODEM} LDOs of MT6363_LDO_L_SC().
+On connac2 parts (mt7921u/mt7925u) the fixed-rate TXD path uses the
+basic rate from mt76_connac2_mac_tx_rate_val() and ignores the rate
+carried in an injected frame's radiotap header, so monitor-mode
+injection always goes out at a legacy 20 MHz rate and cannot choose the
+modulation or channel width.
 
-Bit 0 of the BUCK1 enable register is VS1 and bit 1 of the BUCK1 low power
-register is VS3. So disabling one of these LDOs disables VS1, their state
-is the state of VS1, and asking for their low power mode puts VS3 in it.
-The LDOs themselves are never switched.
+When info->control.rates[0] contains an HT or VHT MCS, set the TXD6 rate
+from it instead: mode (HT/VHT), MCS, NSS, and the 40/80 MHz bandwidth.
+Legacy injection and the normal (non-fixed-rate) data path are unchanged.
 
-Use the register of the LDO, as MediaTek's driver does.
+This makes 20/40/80 MHz HT/VHT injection work on mt7921u/mt7925u.
 
-Fixes: 3c36965df808 ("regulator: Add support for MediaTek MT6363 SPMI PMIC Regulators")
-Assisted-by: Claude:claude-opus-5-5
-Signed-off-by: GIBEOM LEE (이기범) <rtx4060@gmail.com>
+Signed-off-by: Aaron Beckendorf <albecken@mtu.edu>
 ---
- drivers/regulator/mt6363-regulator.c | 25 ++++++++++++++-----------
- 1 file changed, 14 insertions(+), 11 deletions(-)
+Tested on MT7921AU (MT7961, USB): HT and VHT80 monitor injection select the
+modulation and 20/40/80 MHz channel width, spectrum-verified.
 
-diff --git a/drivers/regulator/mt6363-regulator.c b/drivers/regulator/mt6363-regulator.c
-index cc2e841..c5de049 100644
---- a/drivers/regulator/mt6363-regulator.c
-+++ b/drivers/regulator/mt6363-regulator.c
-@@ -147,7 +147,7 @@ struct mt6363_regulator_info {
- }
+ .../wireless/mediatek/mt76/mt76_connac_mac.c  | 32 +++++++++++++++++++
+ 1 file changed, 32 insertions(+)
+
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76_connac_mac.c b/drivers/net/wireless/mediatek/mt76/mt76_connac_mac.c
+index 8481eac8d783..e593d1bb5623 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76_connac_mac.c
++++ b/drivers/net/wireless/mediatek/mt76/mt76_connac_mac.c
+@@ -602,6 +602,38 @@ void mt76_connac2_mac_write_txwi(struct mt76_dev *dev, __le32 *txwi,
+ 		u32 val = MT_TXD6_FIXED_BW;
+ 		u8 spe_idx = mt76_connac_spe_idx(mphy->antenna_mask);
  
- #define MT6363_LDO_LINEAR_OPS(match, vreg, in_sup, vops, min, max,	\
--			      step, buck_reg, ocp_intn)			\
-+			      step, en_reg, lp_reg, ocp_intn)		\
- [MT6363_ID_##vreg] = {							\
- 	.desc = {							\
- 		.name = match,						\
-@@ -160,13 +160,13 @@ struct mt6363_regulator_info {
- 		.n_voltages = (max - min) / step + 1,			\
- 		.min_uV = min,						\
- 		.uV_step = step,					\
--		.enable_reg = MT6363_RG_##buck_reg##_EN_ADDR,		\
-+		.enable_reg = en_reg,					\
- 		.enable_mask = BIT(MT6363_RG_LDO_##vreg##_EN_BIT),	\
- 		.vsel_reg = MT6363_RG_LDO_##vreg##_VOSEL_ADDR,		\
- 		.vsel_mask = MT6363_RG_LDO_##vreg##_VOSEL_MASK,		\
- 		.of_map_mode = mt6363_map_mode,				\
- 	},								\
--	.lp_mode_reg = MT6363_RG_##buck_reg##_LP_ADDR,			\
-+	.lp_mode_reg = lp_reg,						\
- 	.lp_mode_mask = BIT(MT6363_RG_LDO_##vreg##_LP_BIT),		\
- 	.hw_lp_mode_reg = MT6363_LDO_##vreg##_HW_LP_MODE,		\
- 	.hw_lp_mode_mask = 0x4,						\
-@@ -176,12 +176,15 @@ struct mt6363_regulator_info {
- #define MT6363_LDO_L_SC(match, vreg, inp, min, max, step, buck_reg,	\
- 			ocp_intn)					\
- 	MT6363_LDO_LINEAR_OPS(match, vreg, inp, mt6363_vreg_setclr_ops,	\
--			      min, max, step, buck_reg, ocp_intn)
-+			      min, max, step,				\
-+			      MT6363_RG_##buck_reg##_EN_ADDR,		\
-+			      MT6363_RG_##buck_reg##_LP_ADDR, ocp_intn)
++		/* Honour an injected HT/VHT rate and bandwidth from radiotap:
++		 * connac otherwise transmits at the basic rate picked by
++		 * mt76_connac2_mac_tx_rate_val(), so monitor injection cannot
++		 * select the modulation or channel width.
++		 */
++		if (info->control.rates[0].idx >= 0 &&
++		    (info->control.rates[0].flags &
++		     (IEEE80211_TX_RC_MCS | IEEE80211_TX_RC_VHT_MCS))) {
++			struct ieee80211_tx_rate *tr = &info->control.rates[0];
++			u8 mode, mcs, nss = 0, bw = 0;
++
++			if (tr->flags & IEEE80211_TX_RC_VHT_MCS) {
++				mode = MT_PHY_TYPE_VHT;
++				mcs = ieee80211_rate_get_vht_mcs(tr);
++				nss = ieee80211_rate_get_vht_nss(tr) - 1;
++			} else {
++				mode = MT_PHY_TYPE_HT;
++				mcs = tr->idx & 0x7;
++				nss = tr->idx >> 3;
++			}
++
++			if (tr->flags & IEEE80211_TX_RC_80_MHZ_WIDTH)
++				bw = 2;
++			else if (tr->flags & IEEE80211_TX_RC_40_MHZ_WIDTH)
++				bw = 1;
++
++			rate = FIELD_PREP(MT_TX_RATE_MODE, mode) |
++			       FIELD_PREP(MT_TX_RATE_IDX, mcs) |
++			       FIELD_PREP(MT_TX_RATE_NSS, nss);
++			val = MT_TXD6_FIXED_BW | FIELD_PREP(MT_TXD6_BW, bw);
++		}
++
+ 		/* hardware won't add HTC for mgmt/ctrl frame */
+ 		txwi[2] |= cpu_to_le32(MT_TXD2_HTC_VLD);
  
--#define MT6363_LDO_L(match, vreg, inp, min, max, step, buck_reg,	\
--		     ocp_intn)						\
-+#define MT6363_LDO_L(match, vreg, inp, min, max, step, ocp_intn)	\
- 	MT6363_LDO_LINEAR_OPS(match, vreg, inp, mt6363_ldo_linear_ops,	\
--			      min, max, step, buck_reg, ocp_intn)
-+			      min, max, step,				\
-+			      MT6363_RG_LDO_##vreg##_ADDR,		\
-+			      MT6363_RG_LDO_##vreg##_ADDR, ocp_intn)
- 
- #define MT6363_LDO_LINEAR_CAL_OPS(match, vreg, in_sup, vops, vrnum,	\
- 				  ocp_intn)				\
-@@ -754,10 +757,10 @@ static struct mt6363_regulator_info mt6363_regulators[] = {
- 	MT6363_LDO_VT("vio0p75", VIO075, "vs1-ldo1", 5, 36),
- 	MT6363_LDO_VT("vio18", VIO18, "vs1-ldo2", 3, 35),
- 	MT6363_LDO_VT("vm18", VM18, "vs1-ldo1", 4, 40),
--	MT6363_LDO_L("vsram-apu", VSRAM_APU, "vs3-ldo1", 400000, 1193750, 6250, BUCK1, 30),
--	MT6363_LDO_L("vsram-cpub", VSRAM_CPUB, "vs2-ldo1", 400000, 1193750, 6250, BUCK1, 27),
--	MT6363_LDO_L("vsram-cpum", VSRAM_CPUM, "vs2-ldo1", 400000, 1193750, 6250, BUCK1, 28),
--	MT6363_LDO_L("vsram-cpul", VSRAM_CPUL, "vs2-ldo2", 400000, 1193750, 6250, BUCK1, 29),
-+	MT6363_LDO_L("vsram-apu", VSRAM_APU, "vs3-ldo1", 400000, 1193750, 6250, 30),
-+	MT6363_LDO_L("vsram-cpub", VSRAM_CPUB, "vs2-ldo1", 400000, 1193750, 6250, 27),
-+	MT6363_LDO_L("vsram-cpum", VSRAM_CPUM, "vs2-ldo1", 400000, 1193750, 6250, 28),
-+	MT6363_LDO_L("vsram-cpul", VSRAM_CPUL, "vs2-ldo2", 400000, 1193750, 6250, 29),
- 	MT6363_LDO_L_SC("vsram-digrf", VSRAM_DIGRF, "vs3-ldo1", 400000, 1193750, 6250, BUCK1, 23),
- 	MT6363_LDO_L_SC("vsram-mdfe", VSRAM_MDFE, "vs3-ldo1", 400000, 1193750, 6250, BUCK1, 24),
- 	MT6363_LDO_L_SC("vsram-modem", VSRAM_MODEM, "vs3-ldo2", 400000, 1193750, 6250, BUCK1, 25),
+-- 
+2.53.0
+
 
