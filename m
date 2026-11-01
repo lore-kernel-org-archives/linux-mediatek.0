@@ -2,89 +2,102 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id BC804606A31D
-	for <linux-mediatek@archiver.kernel.org>; Sat, 31 Oct 2026 20:04:17 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id D5307606A324
+	for <linux-mediatek@archiver.kernel.org>; Sun,  1 Nov 2026 07:02:09 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=KloI7zO7;
-	dkim=pass (2048-bit key, unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256 header.s=Intel header.b=TRbMZZft
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=OV0HTrqj;
+	dkim=pass (2048-bit key, unprotected) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=W1ZSkH1o
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
 	List-Unsubscribe-Post:List-Owner;
-	bh=XubOAWkhExxo+qfeaROgeq3zjEYzyFqzOx50lSyRWZ8=; b=KloI7zO7VlqQjIMhE6esxMsn02
-	mLIGIQIle90Mw76dR4f6ZquQsSGJ3yrXQiubSsmv811qhSAme5KOypIw1Kiu7Ydqowbi4aMG5FB5Y
-	qIPg7ETUjZPEL9d3Hod562p70sHqtjttQ2QEpBXB2QV/mydniChpmyeD9mO9O9MalP1zU4nKrN69c
-	Kb6Y6NfiYjCnB0dd6p6qSCEQxQpwUkX/cOJPUtfpCg42j2XDECGIaJuR3CzpW56jl7sllYxB8lAWo
-	kVrPnQAvowz7HvGxjfDRmEmGeRQblD6VIRoumzoACg/KnXAnT/wLrz/1El3pbhV3E86BrHeE2OL/n
-	uygsJCHQ==;
+	bh=VoA8ZatI3XBB1U2/SoghhJIwCX1MF+HDGH5+WILuFZE=; b=OV0HTrqjG8n23IPYq2LFmThFgM
+	Mfj+8Z0c+n2KGhaYv5MjN8ySNKwhtZskRTRu4HOLIkLAtC53wxPZ1BgRRkxT89UT/ifCnL453hvuF
+	zw5C7u17wC2+2tZxNfDc1InNIOG21EyfWnpQhPTYOqUAzhSiAMwT4kGfHNgDI6Sb95j8kqbwLQCY3
+	ukC8chfCYIzdNK39keHtIp/VDGBxLM8HdQnFxZouNYPAFkEE5/tuxPiFWRHQkafOgXM0FD258lP46
+	VvaRyKoel2QmOI2JRUufPqeFmqvEYKNwehqDNeb+SSAyvJaJ5nQQkIZnYodhOTh1gVwA7iFkfjqrx
+	/yNaihiA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xNFJJ-0000000DeM4-09iP;
-	Sat, 31 Oct 2026 20:04:17 +0000
-Received: from mgamail.intel.com ([198.175.65.10])
+	id 1xNPZu-0000000DwFC-3UMZ;
+	Sun, 01 Nov 2026 07:02:06 +0000
+Received: from mail-dl1-x122d.google.com ([2607:f8b0:4864:20::122d])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xNFJG-0000000DeLX-1Iik;
-	Sat, 31 Oct 2026 20:04:16 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1793477055; x=1825013055;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=mzUMYd+APfGaeHuT1aeH6UCv83u73Qae+OUu837zd2Y=;
-  b=TRbMZZftxgdvtfjDwpnDWedSTyAQ6aSY5W1ycb5n0CIOVkyZljaLDxYT
-   1HIw92iHbp01KVL9MNUkp1nwGxTtkpN6KhoKPd5OvT6Q8d1d+lDmAruhV
-   Gx6eceI403NfH+4R8YZnyjQnxk7FcZuSQV/El2wZb7c+/X1GlLV4tmmM7
-   nMB61vPj6LtNzZ8NGUyRkIWzviXtyo8MoRiRDPHo5y1J2EiZ9gMZNLgBr
-   mhRAbKIoQPW8yVZOY4eAg0jdO8KoCa2b0fWpSLIu0cwZsdqcUbiAr5tw8
-   hBlHfra0My1BrXs4pYWOKkphEsgUACG4pNUhGk7z8ROlJF97rBOH80UPL
-   g==;
-X-CSE-ConnectionGUID: J0EcgRu0TYO58B7XxoeykA==
-X-CSE-MsgGUID: xsbCyWq6QkKV640XIwyh/w==
-X-IronPort-AV: E=McAfee;i="6800,10657,11952"; a="2111281"
-X-IronPort-AV: E=Sophos;i="6.27,188,1787036400"; 
-   d="scan'208";a="2111281"
-Received: from orviesa003.jf.intel.com ([10.64.159.143])
-  by orvoesa102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 31 Oct 2026 13:04:13 -0700
-X-CSE-ConnectionGUID: wqV4wtYUTm+3PBSF9WNvNw==
-X-CSE-MsgGUID: tmPcoAeNRvmA/qsY12kUGA==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.27,188,1787036400"; 
-   d="scan'208";a="5610746"
-Received: from lkp-server01.sh.intel.com (HELO 0caa9d2d175c) ([10.239.97.150])
-  by orviesa003.jf.intel.com with ESMTP; 31 Oct 2026 13:04:10 -0700
-Received: from kbuild by 0caa9d2d175c with local (Exim 4.98.2)
-	(envelope-from <lkp@intel.com>)
-	id 1xNFJ9-00000000d8S-1vTm;
-	Sat, 31 Oct 2026 20:04:07 +0000
-Date: Sun, 1 Nov 2026 04:03:38 +0800
-From: kernel test robot <lkp@intel.com>
-To: Chunfeng Yun <chunfeng.yun@mediatek.com>,
-	Mika Westerberg <westeri@kernel.org>
-Cc: oe-kbuild-all@lists.linux.dev,
-	Andreas Noever <andreas.noever@gmail.com>,
-	Yehezkel Bernat <YehezkelShB@gmail.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-kernel@vger.kernel.org, linux-usb@vger.kernel.org,
+	id 1xNPZs-0000000DwEU-0Eih
+	for linux-mediatek@lists.infradead.org;
+	Sun, 01 Nov 2026 07:02:05 +0000
+Received: by mail-dl1-x122d.google.com with SMTP id a92af1059eb24-1438d9363fbso1499665c88.0
+        for <linux-mediatek@lists.infradead.org>; Sun, 01 Nov 2026 00:02:03 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20260707; t=1793516523; x=1794121323; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
+        bh=VoA8ZatI3XBB1U2/SoghhJIwCX1MF+HDGH5+WILuFZE=;
+        b=W1ZSkH1o1jglCLbJ5EGnmfC1FoeAV+jiXaFA7O63kH4BAxCDT69G8Q8RBpb81cjLEv
+         MiishLt362aeAeVxQ1L9ABXwkWa/1gDXIKNxIwOMUCVM+PXo7L5K/CIa4ZWPZ2AOCdPG
+         nnOzd0TftZCJyn10Fhc6Hst2he01TCJJ8iGzOGjKq+2lJzLX0sy2O+P3I6QzsD0JzFgv
+         7G28Lzvk8DeQPkjziaBCLUjot4sYM6VcaIBnEr+EO2QLrBHs+XMj3nxh6C8udmNBGvlD
+         EM7XxcKK+bYxXNzv48Mnje2dJVtDk6dOGKPVRXWq+6eP3+IJIf+3dP1GI06d+/W4CeQC
+         4o8w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20260707; t=1793516523; x=1794121323;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to:content-type;
+        bh=VoA8ZatI3XBB1U2/SoghhJIwCX1MF+HDGH5+WILuFZE=;
+        b=Ay1yHetFtsf29uiDRGBzo64yDdThfw4oxggQ9TybCD8ovhuV/gmJhoTt8uYkniwMDU
+         lK6glqLISPRuBH4DRuDE0D2yOJduAaogQj6WH1LPRIphOHZrxKnVfS85A9+iG7DylUps
+         iV4eTv50ho8P/4/Gzy0gq+rqdi2jcofpCFXziZZk13Y7kikbicHgPf9jG1VXN0b6VEyk
+         LVgAe+m0dwD1ICIkMeWOKmOfRD1+UlXosLUhjpL1F1LVSj01TIbD5/ztqjMpW7+FBnHi
+         BKRATjBPoI61dwZ7geXwGY4JLrrW091r1soHiCfVvwOVkIx6QaAeCBY/wy1oIWH9LN+q
+         wWMg==
+X-Forwarded-Encrypted: i=1; AKwUvBzBo2hs+1nD8DvqLdbQhoWCujAB7ecbzkv3fJS5BXVkpqI4zGHZHKaEbVysUl6FsO6EVGwmtV7sI9cwMwJO0g==@lists.infradead.org
+X-Gm-Message-State: AFq9FYJzZUuCdXct6NE0J/mNiFZixEYOak6WKKuNNbs3fqKn2AAEAzpE
+	Qnv13n/e7yVVztvgzrQN9lO4OnE1rU9I5KZStUBx8dJcb6wu2Oz7IBQN
+X-Gm-Gg: AYBFou0S0oZjiaBKyqXHcABP3HZHaRKNoww9I7/VFY3G0GQvc8VSMmi3K0fUfL0Lrdz
+	KTaK4MSmkpbp0Pqx57Zc6TS44RrCpX9Tm716hkyz+be6u941dp4xZFM5qsdrUR1Bh1YGE7BVe+F
+	kXeYvLgB/LgVhGq7xgSXf/dB/8lnosZOAJQ0DLjMjWfphTFbqvj+fZIh8GRMO1Nk5sBWuPzKVkW
+	UnoBU0CPoMU9ZSR2W/FDUvt58xwUZr7KnLidoik3Nn4qqSuaGPvJzdzlWHX27AJP/buLiBnvzho
+	pFFqQQQApu7Rwo1bKRnsN1UEgeADtOLqj4lOhcs4J8ZJqAVuhv890BXJXPJNSR76gnz/MLm0y3s
+	kUmAH1Rf9sNLqKI8g+wu2MelJhV/PqpRSPVbH8ouqdA6KtGw/MFpGeDVzPLW8/ZRPNSA5KyC+Jp
+	Y93ur36URcLnhCTMGyxECUe+JEzZAmrMk4BNbi+bPCg5r3VH1cWns243njrSPa9404e9bYmefax
+	/e9QY+Z4ibH5p9ftM2FYpKqsddgsV7c6uqHrwWWkHWgFg5cC7aUE5GkkEBmcqre8LUxQvx3r1oE
+	6BOLIwlFl7HsBlAT1x37TImdY2vEQkJie/RiPVuvy7exbx0q3+Z33g==
+X-Received: by 2002:a05:7022:7f02:b0:156:d588:c881 with SMTP id a92af1059eb24-1a9420e36c4mr14043652c88.2.1793516522423;
+        Sun, 01 Nov 2026 00:02:02 -0700 (PDT)
+Received: from localhost.localdomain ([103.178.205.181])
+        by smtp.gmail.com with ESMTPSA id a92af1059eb24-1ac1854d925sm38735421c88.7.2026.11.01.00.01.57
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sun, 01 Nov 2026 00:02:01 -0700 (PDT)
+From: Sreeraj S Kurup <sreekuttan2156239@gmail.com>
+To: sergio.paracuellos@gmail.com,
+	lpieralisi@kernel.org,
+	kwilczynski@kernel.org,
+	mani@kernel.org,
+	robh@kernel.org,
+	bhelgaas@google.com,
+	matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com,
+	p.zabel@pengutronix.de
+Cc: linux-pci@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org,
-	Chunfeng Yun <chunfeng.yun@mediatek.com>
-Subject: Re: [PATCH 1/4] thunderbolt: add platform nhi driver
-Message-ID: <202611010318.CB1ceS4i-lkp@intel.com>
-References: <20261030082539.1208733-2-chunfeng.yun@mediatek.com>
+	Sreeraj S Kurup <sreekuttan2156239@gmail.com>
+Subject: [PATCH] PCI: mt7621: Fix reset control leak on PHY initialization failure
+Date: Sun,  1 Nov 2026 07:01:21 +0000
+Message-ID: <20261101070121.2714-1-sreekuttan2156239@gmail.com>
+X-Mailer: git-send-email 2.55.0
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20261030082539.1208733-2-chunfeng.yun@mediatek.com>
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261031_130414_415602_4D5B3C2C 
-X-CRM114-Status: GOOD (  10.48  )
-X-Spam-Score: -4.4 (----)
+X-CRM114-CacheID: sfid-20261101_000204_088697_3C6545FB 
+X-CRM114-Status: GOOD (  11.28  )
+X-Spam-Score: -1.9 (-)
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,48 +108,45 @@ List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-10.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,
-	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,
-	SPF_HELO_NONE,SPF_PASS autolearn=ham autolearn_force=no version=4.0.1
+X-Spam-Status: No, score=-15.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
+	DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,FREEMAIL_FORGED_FROMDOMAIN,
+	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
+	USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Hi Chunfeng,
+The PCIe port initialization code acquires a reset control handle using
+of_reset_control_get_exclusive(). However, when PHY initialization or
+power-on fails, the port is removed from the PCIe port list without
+releasing the acquired reset control handle.
 
-kernel test robot noticed the following build errors:
+Since the reset control cleanup iterates over the remaining ports in
+the list, the removed port's reset control handle is never released.
 
-[auto build test ERROR on westeri-thunderbolt/next]
-[also build test ERROR on linus/master v7.3 next-20261030]
-[If your patch is applied to the wrong git tree, kindly drop us a note.
-And when submitting patch, we suggest to use '--base' as documented in
-https://git-scm.com/docs/git-format-patch#_base_tree_information]
+Call reset_control_put() before removing the failed port from the list
+to ensure that the reset control resource is properly released.
 
-url:    https://github.com/intel-lab-lkp/linux/commits/Chunfeng-Yun/thunderbolt-add-platform-nhi-driver/20261030-162536
-base:   https://git.kernel.org/pub/scm/linux/kernel/git/westeri/thunderbolt.git next
-patch link:    https://lore.kernel.org/r/20261030082539.1208733-2-chunfeng.yun%40mediatek.com
-patch subject: [PATCH 1/4] thunderbolt: add platform nhi driver
-config: parisc-allmodconfig (https://download.01.org/0day-ci/archive/20261101/202611010318.CB1ceS4i-lkp@intel.com/config)
-compiler: hppa-linux-gcc (GCC) 16.2.0
-reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20261101/202611010318.CB1ceS4i-lkp@intel.com/reproduce)
+Fixes a resource leak on PCIe PHY initialization failure.
 
-If you fix the issue in a separate patch/commit (i.e. not just a new version of
-the same patch/commit), kindly add following tags
-| Reported-by: kernel test robot <lkp@intel.com>
-| Closes: https://lore.kernel.org/oe-kbuild-all/202611010318.CB1ceS4i-lkp@intel.com/
+Signed-off-by: Sreeraj S Kurup <sreekuttan2156239@gmail.com>
+---
+ drivers/pci/controller/pcie-mt7621.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-All errors (new ones prefixed by >>):
+diff --git a/drivers/pci/controller/pcie-mt7621.c b/drivers/pci/controller/pcie-mt7621.c
+index 01ead2f92e87..1dcaa2829609 100644
+--- a/drivers/pci/controller/pcie-mt7621.c
++++ b/drivers/pci/controller/pcie-mt7621.c
+@@ -361,6 +361,7 @@ static int mt7621_pcie_init_ports(struct mt7621_pcie *pcie)
+ 		err = mt7621_pcie_init_port(port);
+ 		if (err) {
+ 			dev_err(dev, "initializing port %d failed\n", slot);
++			reset_control_put(port->pcie_rst);
+ 			list_del(&port->list);
+ 		}
+ 	}
+-- 
+2.55.0
 
-   hppa-linux-ld: drivers/thunderbolt/domain.o: in function `tb_domain_init':
->> (.init.text+0x10): multiple definition of `init_module'; drivers/thunderbolt/pci.o:(.init.text+0x10): first defined here
-   hppa-linux-ld: drivers/thunderbolt/domain.o: in function `tb_domain_exit':
->> (.exit.text+0x0): multiple definition of `cleanup_module'; drivers/thunderbolt/pci.o:(.exit.text+0x0): first defined here
-   hppa-linux-ld: drivers/thunderbolt/plat.o: in function `nhi_plat_driver_init':
->> (.init.text+0x10): multiple definition of `init_module'; drivers/thunderbolt/pci.o:(.init.text+0x10): first defined here
-   hppa-linux-ld: drivers/thunderbolt/plat.o: in function `nhi_plat_driver_exit':
->> (.exit.text+0x0): multiple definition of `cleanup_module'; drivers/thunderbolt/pci.o:(.exit.text+0x0): first defined here
-
---
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
 
