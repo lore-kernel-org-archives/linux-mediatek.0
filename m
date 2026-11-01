@@ -2,65 +2,68 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 3125A607214E
-	for <linux-mediatek@archiver.kernel.org>; Sun,  1 Nov 2026 22:16:52 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 35677606A333
+	for <linux-mediatek@archiver.kernel.org>; Sun,  1 Nov 2026 22:40:16 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=lkfdoGuB;
-	dkim=pass (2048-bit key, unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=KSzB7rsy
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=D6n4uYOl;
+	dkim=pass (2048-bit key, unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=GEB8z/uT
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
-	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Unsubscribe-Post:
-	List-Owner; bh=ah3ajt4QC1IW7eRN0niJ/5zSqKv/5nKHPQ3R7wAM5UA=; b=lkfdoGuBO0z/XC
-	FxNPb/4AxYJ6k26dfanTpW9KHTcRxc463BoG2yxaetzhL616g7pWmCSGj7M20GsQYoPHwbVHfghgs
-	Pn5d2W1LdFg1rFjsWgEgcCoy3tWDzps8LqEY1+zjnUfbxqFlTJbZFeGb6qHZWdVdWqpfgYR9UgtwY
-	3Do31DejLMLyFoElfWnBufR2nbVR3up0CAx+AP/BIi4jYLTiNHv8qjmsyn8qZeQNbFKDjDqt+vTES
-	7eBp8G098TjtFVj5E1r60bsSfJgB88pZnxC4PhD4UJFzff0NVZdjl3NwDydFFw9wVL09ahCJ//z5e
-	w1WmFrhrgFzJWqfaKT8A==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Unsubscribe-Post:List-Owner;
+	bh=zz0SgYmzMlFmYbvywWRdsNJhbZCdEWF94qrr5u2SZBg=; b=D6n4uYOlq8gPdumqcgbMPIBUHD
+	wJdhclL29oyJtWKGpP3IwXuk8cCtsy3mnDWTPwQ+KjySyM3NRHHc0DSJENrY5z/FpHbfHg4c28a+p
+	u4xUnJBkLOVbCVglJqw7vnbYhFiBzBa3uWbHRXOGs6msK+rpsOOeUHbeek6LeJidX9GN9GOFXbKdY
+	0yBapr5tqVlhV3xdw446EbbS35mouuYjikYIdLD88Bm5/5Ga4M8JZgJLtdBgXg4XUTTwqZtbqapNO
+	0rtjmAikUYKDs9PUuwfE9AkYN05lHMehoMwazDVDRYneE0OQnZmizVB/T2028V4nwONoJp3Nz9TEf
+	cg9NIeFg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xNdr9-0000000F1NA-1BtF;
-	Sun, 01 Nov 2026 22:16:51 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1xNeDn-0000000FA51-3lcZ;
+	Sun, 01 Nov 2026 22:40:15 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xNdqp-0000000F0V2-2fXU;
-	Sun, 01 Nov 2026 22:16:31 +0000
+	id 1xNeDm-0000000FA3i-2HOb;
+	Sun, 01 Nov 2026 22:40:14 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id 2A52143E8B;
-	Sun,  1 Nov 2026 22:16:31 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0E0EE1F000C1;
-	Sun,  1 Nov 2026 22:16:31 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 470454176C;
+	Sun,  1 Nov 2026 22:40:14 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8CB1F1F000C1;
+	Sun,  1 Nov 2026 22:40:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1793571391;
-	bh=ah3ajt4QC1IW7eRN0niJ/5zSqKv/5nKHPQ3R7wAM5UA=;
-	h=Subject:From:Date:References:In-Reply-To:To:Cc;
-	b=KSzB7rsysmHj0NokeU4XZg63gm2lZZdwMuvJUYGPqc86oRcCXcdwCcdn/X44tOsd9
-	 nwm5Oc5ZpOdo/oqSt+P5wM/TeNcChfgfTEEmFprm1o+LPKvCL8SdOtWAyaggCELfQh
-	 2PRfWu5ZmJosolN7pss10luoDpaHAYqwNOcxfP0bGYxrAyE495LbgHmtMAA/yM6exP
-	 GezoOqDSJKx+24L9G/GVFvGAOopbblKkz+hSBtiqSsSiqvA53B+2Ma1R4JNTcnhcl9
-	 n+3XgL1z82DyaRo4usFexg9sXSFt5jSkISdkxZk3dWICHJkO3acHI1xpTP+LnHcgaI
-	 4OWDC53y1uVRA==
-Received: from [10.30.226.235] (localhost [IPv6:::1])
-	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id 0306E38003B8;
-	Sun,  1 Nov 2026 22:16:31 +0000 (UTC)
-Content-Type: text/plain; charset="utf-8"
+	s=k20260515; t=1793572814;
+	bh=zz0SgYmzMlFmYbvywWRdsNJhbZCdEWF94qrr5u2SZBg=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To;
+	b=GEB8z/uTQp1CRy8jvIiM4D3Tva+bUAi1CqUQ0LJdgHgywDg9ZzPO89IQ2YwunLrrF
+	 nBWDsAqeAwEYkB46xe1aKwLJX3/z+lQNcuikoGXr/s7iAD/tMEsGz8yow3dfHuxrSA
+	 jnGt1Trhrslmy3Pc6x/bog8KFbtwtcoqyubFtmRqiGv80+Gwjww9G6Gh7JWHk/XVul
+	 U510JibNyuI59Yw4IYoDvfGa1iqvUs4M4UtTRoV9PXYmpYrevq+Me1QZEwWFijEypH
+	 yHCbYQo8ScidZSHAePpYaXp8w68yVMG8ulLtKqFEFBBP626Y0Gup3lDRAV8OO0hQt/
+	 86TTR7aRak/TA==
+Date: Sun, 1 Nov 2026 15:40:08 -0700
+From: Nathan Chancellor <nathan@kernel.org>
+To: Luca Leonardo Scorcia <l.scorcia@gmail.com>
+Cc: linux-mediatek@lists.infradead.org, kernel test robot <lkp@intel.com>,
+	Daniel Lezcano <daniel.lezcano@kernel.org>,
+	Thomas Gleixner <tglx@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Nick Desaulniers <ndesaulniers@google.com>,
+	Bill Wendling <morbo@google.com>,
+	Justin Stitt <justinstitt@google.com>, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org, llvm@lists.linux.dev
+Subject: Re: [PATCH] clocksource/drivers/timer-mediatek: Fix "no-cfi indirect
+ call" warning
+Message-ID: <20261101224008.GA910831@ax162>
+References: <20261101095538.1046918-1-l.scorcia@gmail.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Subject: Re: [PATCH 02/14] irqchip: fix typos in comments
-From: patchwork-bot+linux-riscv@kernel.org
-Message-Id: <179357138979.2624073.9912661156420781171.git-patchwork-notify@kernel.org>
-Date: Sun, 01 Nov 2026 22:16:29 +0000
-References: <20260907065328.32009-1-hemanth.selam@gmail.com>
-In-Reply-To: <20260907065328.32009-1-hemanth.selam@gmail.com>
-To: Hemanth Selam <hemanth.selam@gmail.com>
-Cc: linux-riscv@lists.infradead.org, tglx@kernel.org, radu@rendec.net,
- matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
- pjw@kernel.org, samuel.holland@sifive.com, linusw@kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20261101095538.1046918-1-l.scorcia@gmail.com>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,35 +76,56 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 X-Spam-Status: No, score=-15.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,
-	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,MAILING_LIST_MULTI,
-	MENTIONS_GIT_HOSTING,SPF_HELO_NONE,SPF_PASS autolearn=ham
+	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=ham
 	autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Hello:
-
-This patch was applied to riscv/linux.git (fixes)
-by Thomas Gleixner <tglx@kernel.org>:
-
-On Mon,  7 Sep 2026 12:23:28 +0530 you wrote:
-> Fix typos in comments, reported by scripts/checkpatch.pl using the
-> misspelling list in scripts/spelling.txt.  Only touches comments, no code
-> changes.
+On Sun, Nov 01, 2026 at 10:55:31AM +0100, Luca Leonardo Scorcia wrote:
+> After converting the driver to OF probing, kernel-test-robot reported the
+> following new warning:
 > 
-> Assisted-by: Cursor:claude-opus-5
-> Signed-off-by: Hemanth Selam <hemanth.selam@gmail.com>
+> vmlinux.o: warning: objtool: mtk_timer_probe+0x23: no-cfi indirect call!
 > 
-> [...]
+> This occurs because of_device_get_match_data() returns NULL when
+> CONFIG_OF is disabled, which results in LLVM dropping the kCFI setup
+> since it knows that there is no valid target for this call. Adding a
+> check for a NULL timer_init avoids the warning and it makes the probe
+> more robust since of_device_get_match_data() could return NULL even
+> when CONFIG_OF=y.
+> 
+> Fixes: 7a097aba7255 ("clocksource/drivers/timer-mediatek: Convert to OF probing")
+> Reported-by: kernel test robot <lkp@intel.com>
+> Closes: https://lore.kernel.org/oe-kbuild-all/202610290223.iOEGeDs2-lkp@intel.com/
+> Suggested-by: Nathan Chancellor <nathan@kernel.org>
+> Signed-off-by: Luca Leonardo Scorcia <l.scorcia@gmail.com>
 
-Here is the summary with links:
-  - [02/14] irqchip: fix typos in comments
-    https://git.kernel.org/riscv/c/726285316f8f
+Reviewed-by: Nathan Chancellor <nathan@kernel.org>
 
-You are awesome, thank you!
+> ---
+>  drivers/clocksource/timer-mediatek.c | 3 +++
+>  1 file changed, 3 insertions(+)
+> 
+> diff --git a/drivers/clocksource/timer-mediatek.c b/drivers/clocksource/timer-mediatek.c
+> index 842d6ee4259e..e772f5fe8742 100644
+> --- a/drivers/clocksource/timer-mediatek.c
+> +++ b/drivers/clocksource/timer-mediatek.c
+> @@ -353,6 +353,9 @@ static int mtk_timer_probe(struct platform_device *pdev)
+>  	int (*timer_init)(struct platform_device *pdev);
+>  
+>  	timer_init = of_device_get_match_data(&pdev->dev);
+> +	if (!timer_init)
+> +		return -ENODEV;
+> +
+>  	return timer_init(pdev);
+>  }
+>  
+> -- 
+> 2.43.0
+> 
+
 -- 
-Deet-doot-dot, I am a bot.
-https://korg.docs.kernel.org/patchwork/pwbot.html
-
-
+Cheers,
+Nathan
 
