@@ -2,98 +2,101 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id C7243607B79C
-	for <linux-mediatek@archiver.kernel.org>; Mon,  2 Nov 2026 15:54:31 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id DF43160703B1
+	for <linux-mediatek@archiver.kernel.org>; Mon,  2 Nov 2026 16:07:57 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=A2CJPyJ/;
-	dkim=pass (2048-bit key, unprotected) header.d=baylibre.com header.i=@baylibre.com header.a=rsa-sha256 header.s=google header.b=oz7EGdYi
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=ISDfIIJW;
+	dkim=pass (2048-bit key, unprotected) header.d=baylibre.com header.i=@baylibre.com header.a=rsa-sha256 header.s=google header.b=eLEULkaY
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Unsubscribe-Post:
-	List-Owner; bh=OQxrJVTSX9yU+997aECUavgu21v7JWvUGozeyzoCeIM=; b=A2CJPyJ/v+I1ti
-	L7zc22a5njz9273LLSpR73bvOY81TGCuifERBgl3c7HKUgW/RNDzp+AMb8DgNwfwNr61keQTmbDW2
-	+AwZS98NN0ThbruJjOQtApQhmBZwM6BOa8S8Rh0DMbofZa0C3K3QTXDAn8PVfh+dI/dvzTPky2s4m
-	vYkr9LQfy2ubYEYUCJxPQfgu52nS6hhwdcxkewU9IjmxGgYmbxXhyPEQnU/hdtmhjn91k4tx3fiRO
-	8sqZDVavnhIdDhn0elx3DQkLSiBOLqfp+eXgT8dlJDiVnOUZH3ewr3wIvrfxbtyG6VZfEWQP1izBw
-	0YA9MUHHYAJFNbkr92bQ==;
+	List-Owner; bh=iKqppwJgaOXP6N2jFbbLAd1EvvxPKuXzSzDJiISCkR8=; b=ISDfIIJWaM4Ysx
+	GUW4k5y1zNfdgrA31q3jKeEnZOia7jtvhKH0vFja0VzCTV2MxguJWHva4cu87bKsOAKH7ER82bUFQ
+	JAfDjnNSsjVhQm9jqLzYp2SMPaoWzFVrEJQyhCKfiDJAjKHz5CvjIQ3LmRNvLiWWlvhgWHvxgjPB4
+	N1EJZFoSwOkqgDf1hvJWK2eq7l24iqNvnVjLKVYTkuxW3uRqzkswEyk9TO5j3KZCZXOqHV6k0/9yn
+	dmAbfQk/QFdWbiEgZ49s5WyYF9YkwotFghtdr7+63TzfaNHn8ykixE3ls7VFK1gRiiBYfZuiVizhS
+	1DBqAIn6YdT960JOpTaA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xNuMh-0000000HDVk-1vke;
-	Mon, 02 Nov 2026 15:54:31 +0000
-Received: from mail-wm1-x334.google.com ([2a00:1450:4864:20::334])
+	id 1xNuZh-0000000HFFO-27jd;
+	Mon, 02 Nov 2026 16:07:57 +0000
+Received: from mail-wm1-x329.google.com ([2a00:1450:4864:20::329])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xNuMb-0000000HDQs-38lj
+	id 1xNuZd-0000000HFEa-3UMT
 	for linux-mediatek@lists.infradead.org;
-	Mon, 02 Nov 2026 15:54:30 +0000
-Received: by mail-wm1-x334.google.com with SMTP id 5b1f17b1804b1-4a5036bbac7so19484385e9.3
-        for <linux-mediatek@lists.infradead.org>; Mon, 02 Nov 2026 07:54:25 -0800 (PST)
+	Mon, 02 Nov 2026 16:07:55 +0000
+Received: by mail-wm1-x329.google.com with SMTP id 5b1f17b1804b1-4a4d7ae1ae9so30803835e9.1
+        for <linux-mediatek@lists.infradead.org>; Mon, 02 Nov 2026 08:07:53 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre.com; s=google; t=1793634864; x=1794239664; darn=lists.infradead.org;
-        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
-         :content-type:mime-version:subject:date:from:from:to:cc:subject:date
-         :message-id:reply-to:content-type;
-        bh=OQxrJVTSX9yU+997aECUavgu21v7JWvUGozeyzoCeIM=;
-        b=oz7EGdYiYTIWUirCvNkWrwQ78Y1kRBzyHxCCCg4+oUzGVfgLMwqt6xVLp9sb19yfu5
-         aN5cz2UCgwWMl0u8Ja71P936yvvwd/m9QsObkoPhC87JMTycgqcgL9oNGWNJeEqjG1AX
-         C++7gygyloD2eWp8K9UYyf1Tth5DiAo536l7r6kaUxvbUFydsTRIN4m6Fc1XsRrZeySH
-         vGBzsF5bsBA6PqadAy+t7ngj8CLVeZoROCypUFizDYRjQLG4WWnc27JSX8MH+BPvFHIH
-         i8i9wDRhdOseq1rRltlycQJ2mFgoATeOXwuCXGRJSoDsj3kDmXavIO+PqzuAZZv5YaQC
-         kMRw==
+        d=baylibre.com; s=google; t=1793635672; x=1794240472; darn=lists.infradead.org;
+        h=content-transfer-encoding:content-type:mime-version:references
+         :in-reply-to:message-id:date:subject:cc:to:from:from:to:cc:subject
+         :date:message-id:reply-to:content-type;
+        bh=iKqppwJgaOXP6N2jFbbLAd1EvvxPKuXzSzDJiISCkR8=;
+        b=eLEULkaY1xh1UmL/ZqbTNHmtNkO7LlhkAUJL4Nxrtyqe9jV2fBiRh1uwupV28bJv1S
+         b9Bea0qD0qfiV1Dl0YQP3W/TpgYVyfCc6ZhVmTUM63X7MwbmEnjCHmbFAcvgEPJfjoy2
+         p0DcExwwgdmC6k1zMaK51yDYkTZ9gdAWT0mhw8PPd/8+B1QQFM+Rfmy/G8IERYmKZhB3
+         VMFmNreW+cyaDBl39Iu+aiLZ4MK1dN+5K02GxLySc7lWLUg5bcM7Mo1ndg+Px8Mz+bQG
+         WIQbzx04m3wHsAx/7FV7Z8guBoJl/FM0SgE9gulTW3HunTIML/IypiMffq4HP/1YdQrQ
+         4dJA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1793634864; x=1794239664;
-        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
-         :content-type:mime-version:subject:date:from:x-gm-gg
+        d=1e100.net; s=20260707; t=1793635672; x=1794240472;
+        h=content-transfer-encoding:content-type:mime-version:references
+         :in-reply-to:message-id:date:subject:cc:to:from:x-gm-gg
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
          :content-type;
-        bh=OQxrJVTSX9yU+997aECUavgu21v7JWvUGozeyzoCeIM=;
-        b=PZKPiKjg2NQENoVI5GPaE24nlxvEo+RytwS6tGbB+R9eXxl0es0jt3QFAhWemDAJ+/
-         KvcMz4unKSHZEz3kCgd4c89hQxam1hKsHQrmCDnfh2V4oC32Qji1rcYJyfLDYxhqjuoc
-         qp0yHEBjbHlgLZLKQKnjZeZyMk2NUjjrSILlEiSftB7AxZTAIolNhORtzg6qnoccCKTG
-         +XptJKylusaJQIImBY9ZnJ8E0F0OiK4T2pyyyGnmZCj9MRDv93wa+WZFyrWlvm9c4DAn
-         3IUgf2aQkdopoe2cyaOeLtRrAuMSKPGd3pgOnTPVc9EBDuyC7E1VIHuyNeL7o+fyqOvW
-         HUfQ==
-X-Forwarded-Encrypted: i=1; AKwUvBwGYO2ZtxBTSeQeY84CluwFowiwobfxO46Tc48TMidcyEmqwNbDvNITzjcnMvZVjDa61fKLRu+hI32GPZrddQ==@lists.infradead.org
-X-Gm-Message-State: AFq9FYLaqigRkWp2W1RJ6CwNhpisXjAmbqWogebQH+/f4RS5mkElEZmI
-	zK4i6wWQyTHXgSOU7+Wdh8OSAsWTg915jPVVRXTP8zyffIy9l4ndZ05lizfPUaJBJY8=
-X-Gm-Gg: AYBFou1fItl4RyzaRNLFWSVjd+BeRbEF/8ckVyNb59j13KF3N139A3/i8/bGDpPQdXy
-	cFWmfJLQdSyhhno/7nV0a1KqLy7oAF+Wfat3ZGhiaOeG89BdvgktYTW5YtHg8NZy1Q1t2uj9OQC
-	PpZZVBbANFtLvd2RGEX5DrWb10CR2F1BmyjFvccOj3DV4HwLemKR4iZicm7qxHzXLGUbLbPuKPc
-	PDJvyZrjjyvldMQwnu8qpvyM62kyFViBtii/PSUpfTIOYMUwuOxYD5fjO7OS40sfoUHfCUDIxuE
-	tvXZhQVq2Y2919gSzEXROh96d1Z6h1XOLg3btDmSUYom4T19z4ivS7U7r4YnIXby3BhkuARiRMd
-	vbgRpz7QJFFToq3cULCe/nkRpV1EAMhUuzyxsLPKfSpdu1bS9bHDJ+kCIvHd1gnqFYDIJOCOjPd
-	JuCZoObM5iuMKHHQwQtcWQgPFxkVE3e9IczVRSM7CYs9KIVVqQgu+PwV37NwmrXfg4sVBhTVP31
-	c1gfaT33o3wWt4nR4/S6j0Mh4MB1yrTsK2F3W67P/RRr0gd3eG1EfKn/YRD3fbkDQKjWoZhUaY1
-	9RRrx9WududGyebC1jUn1r4XdS1JHD0+B4opOSn94SbaKqiotn+MEoby
-X-Received: by 2002:a05:600c:a00b:b0:4a2:180b:3153 with SMTP id 5b1f17b1804b1-4ac185bcc7dmr252990315e9.14.1793634863799;
-        Mon, 02 Nov 2026 07:54:23 -0800 (PST)
-Received: from [127.0.1.1] (82-230-44-19.subs.proxad.net. [82.230.44.19])
-        by smtp.googlemail.com with ESMTPSA id ffacd0b85a97d-48e71ba24f6sm21229288f8f.51.2026.11.02.07.54.22
+        bh=iKqppwJgaOXP6N2jFbbLAd1EvvxPKuXzSzDJiISCkR8=;
+        b=aCEf9g01FQyKswWE8NToTSUvSIkYm13bXvlenL9KvvCGw2c70YJeObf0zAujjYcvBB
+         azROTw2WnoJwiOfQwprPFKDUHPbzuvgffA9UiJq5mjeLW60ZR2ydDOOznCMPKxvgJHYx
+         valu3IkaPzaC7hdVfrfUOAyVMTncxeWYmercl6l/vK5u+3lA5KwQD+WVxB8z73CBghW0
+         36n/qKaAPwhqBlHeEYMbSR6eYcvS7rZbh70COhGOWGHT53ipeWtMGpm93Yo360KlRlD9
+         iVnyywixQzhMy5Gjj0x2w3j0VKjTfcDbq47w/LklFZqfe09NXJCh+vgS78HnSGUS725D
+         36bw==
+X-Forwarded-Encrypted: i=1; AKwUvBy/K05DRvnXKNk6RrKKpdcnKZyfnjKLrLFsL/h2XuDvqNZS0V07qptcVAx4NvLSKPNtmT3mgnMFkbkDnugecA==@lists.infradead.org
+X-Gm-Message-State: AFq9FYLXDRcXnmJOakvvJmxuZBVcrO9KH+07bPmHaNJ+HafRoPcVXXo5
+	v0XAzDFRNQmXVa2RZnWoRCsaDXmf1WDj+hd+hPy3lt8xky+Lj7f75Wyt0eiUvH1WAv0=
+X-Gm-Gg: AYBFou3/R5XScxPa+SciTezKbfOEAlcuYV3aocSGAyki1DXlWIoaqaBe9uln9ljvnW6
+	RCJrZ0ePp1JJ4yA3K7hvbpKiTF89TNhSgfMWgpaKj6tSYHttWwMzWzJ5jgCHz6TIUk1lInr0AxP
+	gI31InvOLHllgHN2Yz4y9stsyGoP2JBqf1/hBSgFGsqyPrVwNllW9xRsfatfPuDiyHG1FGIcFOh
+	/3gvjNmYNgrnk1DLgEACFPfMWbvNg0z8HTExmjlc6KSJPn43JXGoTfU7oNbmBj3U3Uf2Gd2VddH
+	flPx/FUsJoHppwF4rZU9jFf4jM8+VnGs3BKf2taV9vgZRGaGAPL8+hkpYh6BBoNCS8ZndwePMxx
+	rbpky2yu9Q6QbZWHyrMlQQO0YjDQEo/75+mI3/vVRO+TOJCINJpNedFMCR75rwlP+s2O/6SlCDw
+	qwqQXo9D4mYO+GM34Be7WlK4+gJpVnIEinUkVfm6OJpYEpyrwfPzRsPLnWFzEo0NLH19Sll/DOZ
+	yMr1KPNpW5TEZLpbE6cOTYLihyVWtT4R+Xv27/m4qHdR+R9SAvaDVW5ZV7/zXUp6YU2+uyNHqQ1
+	F/480jgpx/Rkh9gFNKoEfz4/1ZvkyqybpTAL4gZUY1/1TU1AMziB7bwoQ6cdVFZEio9X/OSQGg=
+	=
+X-Received: by 2002:a05:600c:350b:b0:4a3:2f35:38aa with SMTP id 5b1f17b1804b1-4ac1932bac0mr210839835e9.29.1793635671784;
+        Mon, 02 Nov 2026 08:07:51 -0800 (PST)
+Received: from jarvis.. (82-230-44-19.subs.proxad.net. [82.230.44.19])
+        by smtp.googlemail.com with ESMTPSA id 5b1f17b1804b1-4abf6e63e0esm360429605e9.12.2026.11.02.08.07.50
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 02 Nov 2026 07:54:23 -0800 (PST)
-From: Alexandre Mergnat <amergnat@baylibre.com>
-Date: Mon, 02 Nov 2026 15:54:17 +0000
-Subject: [PATCH 1/2] regulator: mt6363: Use 8-bit register values
+        Mon, 02 Nov 2026 08:07:51 -0800 (PST)
+From: amergnat@baylibre.com
+To: rtx4060@gmail.com
+Cc: broonie@kernel.org,
+	lgirdwood@gmail.com,
+	angelogioacchino.delregno@collabora.com,
+	matthias.bgg@gmail.com,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH 1/2] regulator: mt6363: Use 8-bit regmap values
+Date: Mon,  2 Nov 2026 16:07:50 +0000
+Message-ID: <20261102160750.230679-1-amergnat@baylibre.com>
+X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20261101164405.1743177-2-rtx4060@gmail.com>
+References: <20261101164405.1743177-2-rtx4060@gmail.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20261102-rgp-67-mt6363-regulator-fixes-v1-1-420789a3113e@baylibre.com>
-References: <20261102-rgp-67-mt6363-regulator-fixes-v1-0-420789a3113e@baylibre.com>
-In-Reply-To: <20261102-rgp-67-mt6363-regulator-fixes-v1-0-420789a3113e@baylibre.com>
-To: Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, 
- =?utf-8?q?GIBEOM_LEE_=28=EC=9D=B4=EA=B8=B0=EB=B2=94=29?= <rtx4060@gmail.com>, 
- Alexandre Mergnat <amergnat@baylibre.com>
-X-Mailer: b4 0.16.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261102_075425_815706_6C4018C7 
-X-CRM114-Status: GOOD (  15.44  )
+X-CRM114-CacheID: sfid-20261102_080753_868259_E43F6FA8 
+X-CRM114-Status: UNSURE (   8.88  )
+X-CRM114-Notice: Please train this message.
 X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -105,81 +108,23 @@ List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-18.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-8.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,
-	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=ham
-	autolearn_force=no version=4.0.1
+	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-The registers are 8 bits wide, but the regulator regmap uses 16-bit
-values, so every access also covers the next register. On little-endian
-CPUs, each regmap_write() also writes zero to the next register:
-disabling VS2 or a VBUCK rail through its clear register 0x212 also
-clears the enable bits of VS1, VS3 and three VSRAM rails in 0x213.
+On Mon, Nov 02, 2026 at 01:44:03AM +0900, GIBEOM LEE (이기범) wrote:
+> The registers of the MT6363 are 8 bits wide, but the regmap has 16-bit
+> values.
 
-Change the regmap values to 8 bits. Store the BUCK and TMA keys as
-__le16 so that the low byte goes to the first key register on any CPU,
-as it did on little-endian CPUs.
+I had the same fix ready before this series and have now posted it,
+together with a VEMC voltage fix:
+https://lore.kernel.org/all/20261102-rgp-67-mt6363-regulator-fixes-v1-1-420789a3113e@baylibre.com/
 
-Fixes: 3c36965df808 ("regulator: Add support for MediaTek MT6363 SPMI PMIC Regulators")
-Signed-off-by: Alexandre Mergnat <amergnat@baylibre.com>
----
-I had this patch ready when GIBEOM LEE posted the same regmap change:
-https://lore.kernel.org/all/20261101164405.1743177-2-rtx4060@gmail.com/
-The only difference in behavior is the BUCK_TOP key: that patch keeps
-it as a u16, which a big-endian kernel writes high byte first; this one
-stores it as __le16.
----
- drivers/regulator/mt6363-regulator.c | 11 ++++++-----
- 1 file changed, 6 insertions(+), 5 deletions(-)
-
-diff --git a/drivers/regulator/mt6363-regulator.c b/drivers/regulator/mt6363-regulator.c
-index aa6a8eb7ac4b..ac79ad6698bf 100644
---- a/drivers/regulator/mt6363-regulator.c
-+++ b/drivers/regulator/mt6363-regulator.c
-@@ -381,7 +381,7 @@ static unsigned int mt6363_regulator_get_mode(struct regulator_dev *rdev)
- 
- static int mt6363_buck_unlock(struct regmap *map, bool unlock)
- {
--	u16 buf = unlock ? MT6363_BUCK_TOP_UNLOCK_VALUE : 0;
-+	__le16 buf = cpu_to_le16(unlock ? MT6363_BUCK_TOP_UNLOCK_VALUE : 0);
- 
- 	return regmap_bulk_write(map, MT6363_BUCK_TOP_KEY_PROT_LO, &buf, sizeof(buf));
- }
-@@ -482,7 +482,8 @@ static int mt6363_regulator_set_load(struct regulator_dev *rdev, int load_uA)
- 
- static int mt6363_vemc_set_voltage_sel(struct regulator_dev *rdev, unsigned int sel)
- {
--	const u16 tma_unlock_key = MT6363_TMA_UNLOCK_VALUE;
-+	const __le16 tma_unlock_key = cpu_to_le16(MT6363_TMA_UNLOCK_VALUE);
-+	const __le16 tma_lock_key = cpu_to_le16(0);
- 	const struct regulator_desc *rdesc = rdev->desc;
- 	struct regmap *regmap = rdev->regmap;
- 	unsigned int range, val;
-@@ -539,8 +540,8 @@ static int mt6363_vemc_set_voltage_sel(struct regulator_dev *rdev, unsigned int
- 
- lock_tma:
- 	/* Unconditionally re-lock TMA */
--	val = 0;
--	regmap_bulk_write(rdev->regmap, MT6363_TOP_TMA_KEY_L, &val, 2);
-+	regmap_bulk_write(rdev->regmap, MT6363_TOP_TMA_KEY_L,
-+			  &tma_lock_key, sizeof(tma_lock_key));
- 
- 	return ret;
- }
-@@ -811,7 +812,7 @@ static struct regmap *mt6363_spmi_register_regmap(struct device *dev)
- {
- 	struct regmap_config mt6363_regmap_config = {
- 		.reg_bits = 16,
--		.val_bits = 16,
-+		.val_bits = 8,
- 		.max_register = 0x1f90,
- 		.fast_io = true,
- 	};
-
--- 
-2.43.0
-
+The only difference in behavior is the BUCK_TOP key, which mine stores
+as __le16: with 8-bit values, regmap_bulk_write() sends the u16 key byte
+by byte in memory order, so a big-endian kernel writes its high byte to
+the first key register.
 
