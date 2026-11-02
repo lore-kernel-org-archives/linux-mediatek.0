@@ -2,67 +2,90 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id BBBD56080A4F
-	for <linux-mediatek@archiver.kernel.org>; Mon,  2 Nov 2026 14:28:20 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 9CFCF609A703
+	for <linux-mediatek@archiver.kernel.org>; Mon,  2 Nov 2026 15:03:43 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=zWO6/7Wz;
-	dkim=pass (2048-bit key, unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=C6U8zPnz
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=QM2CGkSQ;
+	dkim=pass (2048-bit key, unprotected) header.d=linutronix.de header.i=@linutronix.de header.a=rsa-sha256 header.s=2020 header.b=UO6wl9m7;
+	dkim=pass header.d=linutronix.de header.i=@linutronix.de header.a=ed25519-sha256 header.s=2020e header.b=cjq+t5yW
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=4Cie1gSyrYbMTqRrUQtHSjOhd7eFIgioVLrH28tB3EY=; b=zWO6/7WzNCvEG+9vv0vUD0XrD3
-	CYKoWvQEwmo1RyDu0xmgiUGqBARNcMLuLWTN0GLOcaw9D4Jd7dZVXV9RwYtn9ofIPT1RJqp3Pja2A
-	sWoepWHT++s8UuqzeUv7NE2B6aYDS5yBYFbC14EfhFA8OEC973JYcnsSchaKPGTenSK5vnCGEeop0
-	biuB/d7eSuPwsbHgkQOTbXeUZpwCLwzHtGW0ccLrcJ90hG+qZBLsLCQAhKQK7SUtYwZDjby2QJorn
-	+qhSWOo2E4GYd/WvWhgBiOLIhcfnkwgTTSsKCpBmOlKOGO7lQ1EOT+sms4FQ+dXt2q3WbtQjpFqRc
-	86rQpZbA==;
+	bh=vmeP5yEnqnkyVoHBFqgCtuQIbq8hDW1r9WecfwOSwuQ=; b=QM2CGkSQsyzdQFyDjq+SaDT+Cc
+	6H4FGa/66H4FGDH0USJr/KwisPUdMf/lUJbQnddftrkpTEeWbOij5aGHi56yzHZHWEGmhOjdHG/4i
+	pbuPlDyw6ysjV/8T9ieneWArYOEFnuKTrqiSHaK+ux8UGfTBe3Pet4O03tXD8+MBCgiDx4GMzrAeP
+	qg1EKclMboZHkhGJYS2WRuAArzsGnvSL5jLcJdDKjqUHFVp0qSdqmEV+PK3sdrDHsL9hd30aupM4i
+	DWFsaTYgXPwpBE+q0CPYEs8ShDBM8pxZ8+eLXue8AsE+8bmCd9nAVU0B5mHuuMezaoY3ZFS62Tbjk
+	on88TDNg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xNt1G-0000000GpMH-3ZRU;
-	Mon, 02 Nov 2026 14:28:19 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1xNtZX-0000000Gxza-0utE;
+	Mon, 02 Nov 2026 15:03:43 +0000
+Received: from galois.linutronix.de ([193.142.43.55])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xNt1F-0000000GpLI-3gqa;
-	Mon, 02 Nov 2026 14:28:17 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id 8DE154172D;
-	Mon,  2 Nov 2026 14:28:17 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 4374A1F00A18;
-	Mon,  2 Nov 2026 14:28:17 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1793629697;
-	bh=4Cie1gSyrYbMTqRrUQtHSjOhd7eFIgioVLrH28tB3EY=;
-	h=From:To:Cc:Subject:Date;
-	b=C6U8zPnzG6Kk9C0WRXWL/Lt86oVNlsaKN09RWtD8XeNRWioGGKqy3qwU2Bdzg2H5d
-	 kw+BmHVxewm+dTtZA1nJ7zizeUtamf5oxcGrOBineN25XtKAEObYg+fHTayncrRYic
-	 zRnLoSyqZfQ06x74xzj2+NOwtHcI09h5Rn2YjDrk5QgH6k6IOnOD6E73ePK7WD/Wu2
-	 eBip2dQCqpYBJw5a6PIrHrLCe6en30EOKg0NcG/R61DkYaOtCEmVg0APnYpnYXLUSf
-	 urRggLadORKILDtiwYo1mh/LFjTqbf9hY+HW5v6nKk/j1dFsH8B7+1hMA4iC2XRk/O
-	 FWWpWaY7MzFeg==
-From: "Rob Herring (Arm)" <robh@kernel.org>
-To: Liam Girdwood <lgirdwood@gmail.com>,
-	Mark Brown <broonie@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
+	id 1xNtZU-0000000Gxvf-0d9y;
+	Mon, 02 Nov 2026 15:03:41 +0000
+Date: Mon, 2 Nov 2026 16:03:34 +0100
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linutronix.de;
+	s=2020; t=1793631816;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=vmeP5yEnqnkyVoHBFqgCtuQIbq8hDW1r9WecfwOSwuQ=;
+	b=UO6wl9m7RBHrJieOiZZvN4brHRib9ZtQyiwmHyHaWuAYRG64DM5WGvmVptZLI4u3WKDJnF
+	M71KpRdCjGEYRQ0ZNyuUrg2MBf6G/0h8AtNOtxhd609crQRWsn9ULFz1c0bdVFLsOo+Ghl
+	MxtJ5voXI2MjoMbwE0/348BYH4kSOiCqUbcKQKAueZveDDZ/i81+/UswGenDgvc4Hrk7ho
+	0OGIHcI9bOYmI2VW1SPwAumWkw28Y5/C1tLPFAGAX+/wylYCKe8tauPeEQB4FvI/4TGv85
+	vD/54DUZTKSuMkHRKk5V75A01BIW35D4ajgKmrXW7lzY0S8uv9iWtC9sayWk8Q==
+DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=linutronix.de;
+	s=2020e; t=1793631816;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=vmeP5yEnqnkyVoHBFqgCtuQIbq8hDW1r9WecfwOSwuQ=;
+	b=cjq+t5yW0qbGlmcj6omOC7sdr5+cqnKu1szT+dy1lmE74Kt1pDmVGyuE1tjvvm6Sp7AedD
+	0pwVWf/K/m4EnjCQ==
+From: Sebastian Andrzej Siewior <bigeasy@linutronix.de>
+To: Ryan Brue <ryanbrue.dev@gmail.com>
+Cc: Chen-Yu Tsai <wenst@chromium.org>, Mark Brown <broonie@kernel.org>,
+	Lee Jones <lee@kernel.org>, Arnd Bergmann <arnd@arndb.de>,
+	Sean Wang <sean.wang@kernel.org>, Linus Walleij <linusw@kernel.org>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Jiaxin Yu <jiaxin.yu@mediatek.com>
-Cc: linux-sound@vger.kernel.org,
-	devicetree@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: [PATCH] ASoC: dt-bindings: mediatek: Fix MT8186 child node names
-Date: Mon,  2 Nov 2026 08:28:11 -0600
-Message-ID: <20261102142812.2743578-1-robh@kernel.org>
-X-Mailer: git-send-email 2.53.0
+	Bartosz Golaszewski <brgl@kernel.org>,
+	Clark Williams <clrkwllms@kernel.org>,
+	Steven Rostedt <rostedt@goodmis.org>,
+	Yingjoe Chen <yingjoe.chen@mediatek.com>,
+	Chaotian Jing <chaotian.jing@mediatek.com>,
+	Hongzhou Yang <hongzhou.yang@mediatek.com>,
+	linux-mediatek@lists.infradead.org, linux-gpio@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-rt-devel@lists.linux.dev, mfd@lists.linux.dev
+Subject: Re: [PATCH] pinctrl: mediatek: common-v1: Use a raw spinlock for the
+ pinctrl regmap
+Message-ID: <20261102150334.9q83qkpM@linutronix.de>
+References: <20260929-rbrue-suez-upstreaming-mtk-pinctrl-raw-regmap-v1-1-db92943f42cb@gmail.com>
+ <20260930080609.dnK1-Uta@linutronix.de>
+ <CAGXv+5FssQL3Go3VDFbLAT6HP12RS3U3OgxhYOeapzs64QTdUw@mail.gmail.com>
+ <d3d3e7b3-eb8b-456d-9a2c-116334e86c14@gmail.com>
+ <20261020073236.dDVmd3BW@linutronix.de>
+ <7981f7c6-c949-42e6-ad53-15e6530588cb@gmail.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+In-Reply-To: <7981f7c6-c949-42e6-ad53-15e6530588cb@gmail.com>
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20261102_070340_342008_6EB3D830 
+X-CRM114-Status: GOOD (  23.87  )
+X-Spam-Score: -4.4 (----)
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,52 +96,61 @@ List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-18.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-5.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,
-	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=ham
-	autolearn_force=no version=4.0.1
+	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS autolearn=no autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Use 'playback-codecs' instead of 'speaker-codecs' in the legacy-property
-exclusion for both MT8186 sound card bindings. This appears to be a
-copy-n-paste error as 'playback-codecs' is the name defined by these
-bindings and consumed by the driver.
+On 2026-10-28 15:30:38 [-0500], Ryan Brue wrote:
+> On 10/20/26 2:32 AM, Sebastian Andrzej Siewior wrote:
+> > bulk writes could be a concern. The 40us delay is within the lock
+> > acquired? If so, could this be done without the lock? I assume this is
+> > part of the init sequence so nothing should use the HW so the writes
+> > should not be interrupted by other writes to the device.
+>=20
+> Yes, it's under the lock. regmap_multi_reg_write() holds the regmap lock =
+for
+> the whole sequence, and since an MMIO syscon's regmap can't sleep, the
+> delays are udelay()s. The PLL's enable runs that sequence (13 writes, 40 =
+us
+> of delays) whenever the PLL goes from off to on, retrying up to 10 times
+> until it locks.
 
-Signed-off-by: Rob Herring (Arm) <robh@kernel.org>
----
- .../bindings/sound/mt8186-mt6366-da7219-max98357.yaml           | 2 +-
- .../devicetree/bindings/sound/mt8186-mt6366-rt1019-rt5682s.yaml | 2 +-
- 2 files changed, 2 insertions(+), 2 deletions(-)
+If this is only at boot-up then it is less of a problem. It would be
+more of a problem if a driver, such as SPI, would use this to fill its
+entire FIFO during a regular transfer. This would then spike up during
+the transfer.
 
-diff --git a/Documentation/devicetree/bindings/sound/mt8186-mt6366-da7219-max98357.yaml b/Documentation/devicetree/bindings/sound/mt8186-mt6366-da7219-max98357.yaml
-index 037f21443ad1..922dfdf55a66 100644
---- a/Documentation/devicetree/bindings/sound/mt8186-mt6366-da7219-max98357.yaml
-+++ b/Documentation/devicetree/bindings/sound/mt8186-mt6366-da7219-max98357.yaml
-@@ -145,7 +145,7 @@ if:
- then:
-   properties:
-     headset-codec: false
--    speaker-codecs: false
-+    playback-codecs: false
- 
- examples:
-   - |
-diff --git a/Documentation/devicetree/bindings/sound/mt8186-mt6366-rt1019-rt5682s.yaml b/Documentation/devicetree/bindings/sound/mt8186-mt6366-rt1019-rt5682s.yaml
-index ed93f18ef985..ddc7a0ce69be 100644
---- a/Documentation/devicetree/bindings/sound/mt8186-mt6366-rt1019-rt5682s.yaml
-+++ b/Documentation/devicetree/bindings/sound/mt8186-mt6366-rt1019-rt5682s.yaml
-@@ -144,7 +144,7 @@ if:
- then:
-   properties:
-     headset-codec: false
--    speaker-codecs: false
-+    playback-codecs: false
- 
- examples:
-   - |
--- 
-2.53.0
+> In practice it's init-time, though. The G12A USB3/PCIe PHY takes the PLL
+> with devm_clk_get_enabled() at probe and keeps it on, so it runs only onc=
+e.
+> Nothing else writes the PLL then, but the lock is the HHI syscon's, so on=
+ RT
+> the other clocks in that block would wait it out. Running it without the
+> lock would mean changing how the meson PLL code writes its init sequence,
+> which I wouldn't want to take on in a pinctrl fix (unless that were
+> preferred).
 
+Okay.
+
+> > So it would be safe for now=E2=80=A6
+> Yes, that's the trade-off with the second option, which relies on the DIN
+> never being written in a multi-step sequence. Nothing enforces that thoug=
+h.
+>=20
+> I'd like to send a v2 after -rc1, but I don't know the best option for the
+> fix. Still waiting on Lee, Arnd, and Mark to pitch in if they have a
+> preference, or any option I've missed.
+
+This is (I think) the second time the syscon mapping becomes a problem.
+I would be a bit worried if the same mapping/ regs could be accessed by
+different drivers under different locks.
+But yeah=E2=80=A6
+
+> Best regards,
+> Ryan Brue
+
+Sebastian
 
