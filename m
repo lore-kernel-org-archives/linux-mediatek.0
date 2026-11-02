@@ -2,106 +2,109 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 0C36960A2626
-	for <linux-mediatek@archiver.kernel.org>; Mon,  2 Nov 2026 13:40:41 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 892E2606A91F
+	for <linux-mediatek@archiver.kernel.org>; Mon,  2 Nov 2026 13:41:30 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=l7aCThaw;
-	dkim=pass (2048-bit key, unprotected) header.d=linaro.org header.i=@linaro.org header.a=rsa-sha256 header.s=google header.b=Kwa3VSx1
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=IxUTzMDg;
+	dkim=pass (2048-bit key, unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=b/xvAP08
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Unsubscribe-Post:
-	List-Owner; bh=3Md2bnpbIvy2X912Bc1LhqLaDZUJHkR+XqT7pG6E7/w=; b=l7aCThawBmf6fG
-	+IlOQLr6LfPG1F275kjngHQxhr2Ddqm0dMI7PD/oiFBzrb9Tvhy9HGKcjsw3HDU3slzl4Dyl6Yy4j
-	56gLIzKHaPLprInQXqRJztbcG64C/EEey2odYud9D0oUERakflgOhL5DyH+CYzl5bOpcUkqFFNBBV
-	XjvmR/WqT9MdcMjmEp/2YDkYaZssC5LJ3iSlAFdBAjI3k5M64FyH3lP9PVtki6kSeTSAXwuSzeuza
-	ApZC9TPE523z4c/pbi9ORp2W3C46gsO6TOw9iMHmamoUvMny4OwSkOyzs8aNJuvz1c2oaPoWVE3pT
-	+G8BLzvQqO9SV2JSajug==;
+	List-Owner; bh=vtv8xpZBrQmEjFIrQCBqz+2OdEy+M0+o1H6jKGcfgF8=; b=IxUTzMDgQf0QoS
+	Ai+CjR1bZKrHI8XpyPE9u/zC7QyW7ZHi49K1B//nK5vFCMItl5B0b0RgvKqdBU9WPACoGOWGsKhJc
+	otY+ArTMeefwco4oqC8DshILbq4k/V62xEEc2MW6x13HtAHyQ3WJulnP64Q0QYctfz4TWWpv79HXm
+	H576GE3V3XCh18x9goyjK9tMYHhxT33PNAhPpWsx0Pt+97JcYAO5Sum+c9o+mTz5zskdMoveYaiXS
+	jMFZpTYw0VVvjvxoT/6syamQlDVBC2TXv3TZUJ2eTp8jc1RiOz5JWVcN4Ef8yRFflgbJrV+zEc9wy
+	cQChESz1HkHmKbAYULCw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xNsHA-0000000Ge5f-325B;
-	Mon, 02 Nov 2026 13:40:40 +0000
-Received: from mail-wm1-x331.google.com ([2a00:1450:4864:20::331])
+	id 1xNsHy-0000000GeK0-0oOb;
+	Mon, 02 Nov 2026 13:41:30 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xNsH7-0000000Ge46-2Sys
-	for linux-mediatek@lists.infradead.org;
-	Mon, 02 Nov 2026 13:40:38 +0000
-Received: by mail-wm1-x331.google.com with SMTP id 5b1f17b1804b1-4a35ac4475dso21050345e9.2
-        for <linux-mediatek@lists.infradead.org>; Mon, 02 Nov 2026 05:40:36 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=linaro.org; s=google; t=1793626835; x=1794231635; darn=lists.infradead.org;
-        h=content-transfer-encoding:content-type:mime-version:date:message-id
-         :subject:references:in-reply-to:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to:content-type;
-        bh=3Md2bnpbIvy2X912Bc1LhqLaDZUJHkR+XqT7pG6E7/w=;
-        b=Kwa3VSx11z2wWbYUGG8A74AmO9zjzsruEnyuji8s00pYFbhhlIWeK6a74X4djDkunZ
-         a1us+XlGF+f+jupqdN0oM9Rzmne2Hr2+qcj8f/QQ3ZaGPDYNzrn+4N49j4DRoezidmi6
-         t6c2sKWqYgpPLBdV4KxJn/fMRlGxJUk6fF6nYlGXEB3Otnr4y0i/kfEKKMLX4zkAL93+
-         KLM2p/jtELfDdoCx0YhSMpURhTRexh4fhZejCsV9MhOeeWkoiK98nr35FvlzIBoPXVw1
-         QZgLYog/zFmi3LHz+X3IX4Dh/udl2cxAs4VifcrthJfPQ1I7ZxM46ZIVD0AEc3Zy5pKg
-         6trw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1793626835; x=1794231635;
-        h=content-transfer-encoding:content-type:mime-version:date:message-id
-         :subject:references:in-reply-to:cc:to:from:x-gm-gg
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
-         :content-type;
-        bh=3Md2bnpbIvy2X912Bc1LhqLaDZUJHkR+XqT7pG6E7/w=;
-        b=PUvkIzwSA3tadIsiNXebYqcaaH/uuhY1yBi85C1TZ5dFkc7cWRKmqYDg8gXcE0vc99
-         2QD5EcE3ig+j/EJ/Gvo/5ScnYS8ZQHm/zH/+ZKzWbCubmvXau8LyMgxwnRO7U8vvyz+I
-         tAm1z+lXYSQKHUILDxYFyR6jvunByhp5oqQOK+wA6QoiJc69w9SvxkJz5IFF6PNHbeR7
-         LJtV+Q3wqFu7wGriVXCZtixADEblCCetLHf/gQ5YNAQt/yOJdgRX2NTCjKVmcW0Ib8Zi
-         1zCpVjq7d+Hjts2ihlSdGXxJ53NrtjCIXydSaj5GmB0B3v/9Xx2xXW0r38pSYtsJVcQL
-         pUEA==
-X-Forwarded-Encrypted: i=1; AKwUvBxDjR7pP6l00aqywozoEsi4o8H91cNWQT004MThHaepHwdudfYjfqyEzsD2eZL14MdLbLxFLsVPXXxf/JXgLA==@lists.infradead.org
-X-Gm-Message-State: AFq9FYKR1jaJORsr0AZJ5sDokFmahoMNzJQZsI6eD0jSct2heGhHvEQg
-	O2DI+FHjH3GsZQy3RZAC5a2Al9CcVRCi+3xqTKN8/EIBC9QoVFsURXISEal/EPNqFY8=
-X-Gm-Gg: AYBFou0llMd6MXw/MMxGvjyysNjcZKVXJmlpT5F352oGKStW5RKJ4rbO3dBBCVjzszy
-	jy0yeZfbsGPlZibijgGuQa4+hOJYJSVwhyAcThn/gEOB6yTE+fWOQpxu4+98o+cyiS0ljIdRzTv
-	fPimE8kznI9zviQWYm9aefqxnvHzVkscsz8P372YCdD7Vsnat7rOJYxHXITOnORZIbLaujbrbdK
-	uzMwhEs1nCtik0hCK7/2cv6x77R0nRnM695TEx+z5BXjDXYE68AzpKu3Nh/R1Jfnmv+lWJ5Bmng
-	1ryM0I9aPB2RKdLvvwlC/32C5S/AwL6kofDyZkRlw9P2sb4v5xImdtJxGlZEGgqKzlIgBIzbWKI
-	RqujJl1Hz4sBoowoeMl/uU2SzmLUPT8+rzGLbm65VWOoKgSTIdmIBTnRbzHUmkXL54xguC6iFQB
-	Lmea+pyNDcxmI1BsHl9zPbSfXbOrbzPCVxk6RiBWZk44y3pzk3a+gQ57tjG54haIegH6tuQuXKa
-	iOamg15s0SBY/CZVFQtqPN/YhlcPx8p8wx/izd+iElopcbEfzVbL9aWndE7hG1WtPnG+qccToz/
-	9sNehSmCJsxjpPo0I72TyOj76YKGpkRmN6AiE+lcXEa64y0Kiw==
-X-Received: by 2002:a05:600c:a4c:b0:4a2:967:dfb8 with SMTP id 5b1f17b1804b1-4ac1765d7d7mr233451845e9.20.1793626835401;
-        Mon, 02 Nov 2026 05:40:35 -0800 (PST)
-Received: from arrakeen.starnux.net ([2a01:e0a:106d:1080:8261:5fff:fe11:bdda])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-4abea533a1esm189194605e9.1.2026.11.02.05.40.34
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 02 Nov 2026 05:40:34 -0800 (PST)
-From: Neil Armstrong <neil.armstrong@linaro.org>
-To: Jessica Zhang <jesszhan0024@gmail.com>, 
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
- David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- David Lechner <dlechner@baylibre.com>
-Cc: dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org, 
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org
-In-Reply-To: <20261006-panel-himax-hx8279-vddp-v1-0-50d884b42aae@baylibre.com>
-References: <20261006-panel-himax-hx8279-vddp-v1-0-50d884b42aae@baylibre.com>
-Subject: Re: (subset) [PATCH 0/4] drm/panel: himax-hx8279: add VDDP supply
- for Startek KD070FHFID078
-Message-Id: <179362683429.3310106.6925209959908507351.b4-ty@b4>
-Date: Mon, 02 Nov 2026 14:40:34 +0100
+	id 1xNsHv-0000000GeJ9-3wmJ;
+	Mon, 02 Nov 2026 13:41:27 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by sea.source.kernel.org (Postfix) with ESMTP id 666964054B;
+	Mon,  2 Nov 2026 13:41:27 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id E41001F00A16;
+	Mon,  2 Nov 2026 13:41:23 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1793626887;
+	bh=vtv8xpZBrQmEjFIrQCBqz+2OdEy+M0+o1H6jKGcfgF8=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To;
+	b=b/xvAP08Bjx1FeNnlpwwolEeQo0hJONCM7VpEqmBHaG4h7s3SJNzElndSbaWMvZB6
+	 Dq0/W2YC9bV8CY5WAP0ydIBiEj3KyEpo9+xi5BHMzAokVP8KGx/rV4rs6iSyH4CVay
+	 0pmi45x8rCpJ0FiRclcFpYh9TDPBKqwcjf6AYAtBl25tgHtzR5eC65odz9TGIi0QCt
+	 XgbSOGyLVvJrKLIzSlNvjQ153VtlzhWlgq5xXtqSLyLe+zrsXdBX1adQ3lZTQLCLJQ
+	 CMIf3wP0QtWwAeGQm2Qlz/dWg+OLyHyzssyfkU5psC1yJhMpZrsaKAAILFBviSWhix
+	 z0TrzGzHiNmzA==
+Message-ID: <9742cc0b-e371-4ca1-9ca0-ca3451c39310@kernel.org>
+Date: Mon, 2 Nov 2026 14:41:21 +0100
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
+User-Agent: Mozilla Thunderbird
+Subject: Re: [RFC PATCH 01/11] soc: mediatek: dram-ecc: add the DRAM ECC
+ driver skeleton
+To: "santino.wang" <santino.wang@mediatek.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org, light.chen@mediatek.com,
+ Fred-WY.Chen@mediatek.com, arnab.layek@mediatek.com
+References: <20261102092334.138759-1-santino.wang@mediatek.com>
+ <20261102092334.138759-2-santino.wang@mediatek.com>
+From: Krzysztof Kozlowski <krzk@kernel.org>
+Content-Language: en-US
+Autocrypt: addr=krzk@kernel.org; keydata=
+ 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
+In-Reply-To: <20261102092334.138759-2-santino.wang@mediatek.com>
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
-X-Mailer: b4 0.15.2
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261102_054037_656402_4AF8FB4C 
-X-CRM114-Status: UNSURE (   8.82  )
-X-CRM114-Notice: Please train this message.
-X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -112,33 +115,143 @@ List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-8.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-17.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,
-	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
+	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1
+	autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Hi,
-
-On Tue, 06 Oct 2026 15:25:00 -0500, David Lechner wrote:
-> The Startek KD070FHFID078 panel has a VDDP power input, which feeds its
-> DC-DC converter in addition to VDD and IOVCC. On the MediaTek Genio 520
-> and 720 EVKs, VDDP is switched by its own regulator, and on the Genio
-> 1200 EVK it comes from its own PMIC LDO, so it needs to be described and
-> enabled. The existing Genio 1200 EVK device tree also turned out to
-> describe the panel supplies incorrectly, so this series fixes that too.
+On 02/11/2026 10:23, santino.wang wrote:
+> From: Santino Wang <santino.wang@mediatek.com>
 > 
-> [...]
+> On the MediaTek mt8992 SoC the secure firmware (ATF) owns the DRAM
+> controller ECC interrupts and reports each corrected (CE) or
+> uncorrectable (UCE) error to the OS as an ACPI GHES record. The
+> following patches add the driver that consumes those records.
+> 
+> Add only the module skeleton here: the Kconfig entry, the Makefiles, a
+> class device that the later patches attach their sysfs attributes to,
+> and the MAINTAINERS entry.
+> 
+> Signed-off-by: Santino Wang <santino.wang@mediatek.com>
+> ---
+>  MAINTAINERS                                   |  9 ++++
+>  drivers/soc/mediatek/Kconfig                  |  2 +
+>  drivers/soc/mediatek/Makefile                 |  1 +
+>  drivers/soc/mediatek/dram-ecc/Kconfig         | 16 ++++++
+>  drivers/soc/mediatek/dram-ecc/Makefile        |  3 ++
+>  drivers/soc/mediatek/dram-ecc/core/Makefile   |  6 +++
+>  drivers/soc/mediatek/dram-ecc/core/main.c     | 53 +++++++++++++++++++
+>  .../soc/mediatek/dram-ecc/core/mtk_dram_ecc.h | 24 +++++++++
+>  8 files changed, 114 insertions(+)
+>  create mode 100644 drivers/soc/mediatek/dram-ecc/Kconfig
+>  create mode 100644 drivers/soc/mediatek/dram-ecc/Makefile
+>  create mode 100644 drivers/soc/mediatek/dram-ecc/core/Makefile
+>  create mode 100644 drivers/soc/mediatek/dram-ecc/core/main.c
+>  create mode 100644 drivers/soc/mediatek/dram-ecc/core/mtk_dram_ecc.h
+> 
+> diff --git a/MAINTAINERS b/MAINTAINERS
+> index aaf2825ac945..e7d25be97f24 100644
+> --- a/MAINTAINERS
+> +++ b/MAINTAINERS
+> @@ -17026,6 +17026,15 @@ S:	Maintained
+>  F:	Documentation/devicetree/bindings/dma/mediatek,*
+>  F:	drivers/dma/mediatek/
+>  
+> +MEDIATEK DRAM ECC DRIVER
+> +M:	Santino Wang <santino.wang@mediatek.com>
+> +L:	linux-kernel@vger.kernel.org
+> +L:	linux-arm-kernel@lists.infradead.org (moderated for non-subscribers)
+> +L:	linux-mediatek@lists.infradead.org (moderated for non-subscribers)
+> +S:	Maintained
+> +F:	drivers/soc/mediatek/dram-ecc/
+> +F:	include/uapi/linux/mtk_dram_ecc_netlink.h
+> +
+>  MEDIATEK ETHERNET DRIVER
+>  M:	Felix Fietkau <nbd@nbd.name>
+>  M:	Lorenzo Bianconi <lorenzo@kernel.org>
+> diff --git a/drivers/soc/mediatek/Kconfig b/drivers/soc/mediatek/Kconfig
+> index d7293977f06e..91aed7d29be0 100644
+> --- a/drivers/soc/mediatek/Kconfig
+> +++ b/drivers/soc/mediatek/Kconfig
+> @@ -89,4 +89,6 @@ config MTK_SOCINFO
+>  	  information about the SoC to the userspace including the
+>  	  manufacturer name, marketing name and soc name.
+>  
+> +source "drivers/soc/mediatek/dram-ecc/Kconfig"
+> +
+>  endmenu
+> diff --git a/drivers/soc/mediatek/Makefile b/drivers/soc/mediatek/Makefile
+> index 0665573e3c4b..880342bed606 100644
+> --- a/drivers/soc/mediatek/Makefile
+> +++ b/drivers/soc/mediatek/Makefile
+> @@ -9,3 +9,4 @@ obj-$(CONFIG_MTK_MMSYS) += mtk-mmsys.o
+>  obj-$(CONFIG_MTK_MMSYS) += mtk-mutex.o
+>  obj-$(CONFIG_MTK_SVS) += mtk-svs.o
+>  obj-$(CONFIG_MTK_SOCINFO) += mtk-socinfo.o
+> +obj-y += dram-ecc/
+> diff --git a/drivers/soc/mediatek/dram-ecc/Kconfig b/drivers/soc/mediatek/dram-ecc/Kconfig
+> new file mode 100644
+> index 000000000000..c015c66635b2
+> --- /dev/null
+> +++ b/drivers/soc/mediatek/dram-ecc/Kconfig
+> @@ -0,0 +1,16 @@
+> +# SPDX-License-Identifier: GPL-2.0-only
+> +#
+> +# MediaTek DRAM ECC error handling driver
+> +# See plat/mediatek/drivers/dram_ecc/ in ATF for the SMC handler side.
+> +#
+> +
+> +# core/ -> mtk_dram_ecc.ko
+> +config MTK_DRAM_ECC
+> +	tristate "MediaTek DRAM ECC Error Handling Driver"
+> +	depends on HAVE_ARM_SMCCC && ACPI_APEI_GHES
+> +	default m
+> +	help
+> +	  Driver for MediaTek DRAM ECC runtime error handling. It works
+> +	  with the secure firmware (ATF), which owns the DRAM controller
+> +	  ECC interrupts and reports each corrected or uncorrectable
+> +	  error to the OS as an ACPI GHES record.
 
-Thanks, Applied to https://gitlab.freedesktop.org/drm/misc/kernel.git (drm-misc-next)
+Why is EDAC-like driver outside of edac subsystem? drivers/soc/ is not a
+dumping ground.
 
-[1/4] dt-bindings: display: panel: himax,hx8279: add vddp-supply
-      https://gitlab.freedesktop.org/drm/misc/kernel/-/commit/6ebc6210efd3502c8ce2b1b2740ad61f69188df7
-[2/4] drm/panel: himax-hx8279: add the VDDP supply
-      https://gitlab.freedesktop.org/drm/misc/kernel/-/commit/dabbf2758be8f05c3757bb4727f2e48fba4ca66f
+> +
+> +static int __init mtk_dram_ecc_init(void)
+> +{
+> +	int ret;
+> +
+> +	mtk_dram_ecc_class = class_create("mtk-dram-ecc");
+> +	if (IS_ERR(mtk_dram_ecc_class))
+> +		return PTR_ERR(mtk_dram_ecc_class);
+> +
+> +	mtk_dram_ecc_dev = device_create(mtk_dram_ecc_class, NULL,
+> +					 MKDEV(0, 0), &mtk_ecc_data,
+> +					 "mtk-dram-ecc0");
+> +	if (IS_ERR(mtk_dram_ecc_dev)) {
+> +		ret = PTR_ERR(mtk_dram_ecc_dev);
+> +		goto err_class;
+> +	}
+> +
+> +	dev_info(mtk_dram_ecc_dev, "initialized\n");
 
--- 
-Neil
+No, that's not a code style which exists in upstream.
 
+> +	return 0;
+> +
+> +err_class:
+> +	class_destroy(mtk_dram_ecc_class);
+> +	return ret;
+> +}
+> +
+> +static void __exit mtk_dram_ecc_exit(void)
+> +{
+> +	device_destroy(mtk_dram_ecc_class, MKDEV(0, 0));
+> +	class_destroy(mtk_dram_ecc_class);
+> +}
+> +
+Best regards,
+Krzysztof
 
