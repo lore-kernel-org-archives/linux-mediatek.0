@@ -2,53 +2,53 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id F0787606A908
-	for <linux-mediatek@archiver.kernel.org>; Mon,  2 Nov 2026 13:42:40 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 0A97A606A327
+	for <linux-mediatek@archiver.kernel.org>; Mon,  2 Nov 2026 13:44:33 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=PIm7/YXz;
-	dkim=pass (2048-bit key, unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=nXbZutSQ
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=HzFS34WM;
+	dkim=pass (2048-bit key, unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=jJ1Aa3Lf
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Unsubscribe-Post:
-	List-Owner; bh=n8krnApcdxXIbrhooq5aa+FZznz/OJP/sKAy+beq8Y4=; b=PIm7/YXz5ED95E
-	Gl90dndvZiPeSjz/lsAqPlIGSQQCDeZ1lUI8MJAirf47PzdmDLtyEiZ+kQGKHk5pz4LUl++q00NjW
-	i5KQLWoBOWz1VWRbUgz6mTLZ6hZjKXxX2mlI0CmQDsTieVEmYXc5XLNOOrMMWfokOezmseZj9vR1+
-	2Ro58zx09TIX3nqe6YLQ99Y91WNZTvwJkOu5yec4HQG4MWIRa1atrdyD2mnTcPrrqDIuqDOejbVNP
-	an8Ixt/cCMXj6D/gYIn/xZk+ik3lD5E8g7Ec1LLnIG+AUW/EMUMh2PEUrPc249iCe1b92Sf00Chh8
-	EwUhySqT/hB27AoC8jjg==;
+	List-Owner; bh=+2WJrKfe9sQgjM82o5V/Sp96Rgj3CLGWsSuqPxubE3U=; b=HzFS34WMwAE6vr
+	9hEkb1IYHbwg1icgishO4pYJREw0I9c0Vga9Sb7+2S/XmnDxiVfsKGPFdwX+v7lrWhN/bkcwewEd5
+	OL2dGN5f032sDXF6IpilWZ+KdofoyOMh4C7z6mzeIdcv7r16b6A2b57BWx0bYXKLUggV7AV4EzFMe
+	UEDgqiByzehvyxttRN9g8crl8yZ1j6xozOmCq/eeSPm6Ex6yUNl4GR1e+RFLNJl+7J5D9vXdSAXKB
+	SYHAS/NQvlxU48HSz/848XqE8JV5eKoeLYKKpwX7FVc1BoT4sUfS2+Kzw5LeUn6ZUyeOekx9+MH+f
+	fI1WPTDl0zZwOIj2nZNw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xNsJ6-0000000GegK-2wnX;
-	Mon, 02 Nov 2026 13:42:40 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1xNsKu-0000000Gevp-37aP;
+	Mon, 02 Nov 2026 13:44:32 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xNsJ5-0000000Gefy-1ZSq;
-	Mon, 02 Nov 2026 13:42:39 +0000
+	id 1xNsKq-0000000Geue-3ZfY;
+	Mon, 02 Nov 2026 13:44:28 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id C0A3043B45;
-	Mon,  2 Nov 2026 13:42:38 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0AE861F00A16;
-	Mon,  2 Nov 2026 13:42:35 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 86B8141986;
+	Mon,  2 Nov 2026 13:44:28 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id F08EB1F00A18;
+	Mon,  2 Nov 2026 13:44:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1793626958;
-	bh=n8krnApcdxXIbrhooq5aa+FZznz/OJP/sKAy+beq8Y4=;
+	s=k20260515; t=1793627068;
+	bh=+2WJrKfe9sQgjM82o5V/Sp96Rgj3CLGWsSuqPxubE3U=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To;
-	b=nXbZutSQBhI9djuwabEGr2dBj61HIzmQw6r2u9j2T6oIK5fxQO7FkBt1KcFQ9auRS
-	 Iv+HpKbVbOoN3l0zcRt+rtQo/xd3o0bU9eYY+zS0EejM6hGnNqLjfJ6WdRCncq/lGq
-	 4Of73MdSAm06le2GfQMsaRdi3rHTpYT5bx8uES8VwqFuNAAxU+Qdc87Q6dt8jh5Pgm
-	 /S0rJnRLILezvtuK4WKfZ/sLlIIuGDQNsROudVBWfzwkcM7KDGTSOCan2go6H6AYYH
-	 A/jRIaGoafhfLLDusZJ9d4yUf0GUwL305IYPc6ihcK8/XcFMq9Jgmfu2wybDixTmPm
-	 GFV/5IpLsIxlQ==
-Message-ID: <4c473b0f-6b7a-4436-8aae-a14118de555d@kernel.org>
-Date: Mon, 2 Nov 2026 14:42:34 +0100
+	b=jJ1Aa3LfLVLGs8MaE04hiKkYBmqVCv120Z3U82f9I47keSDlp68LsgPGncuBIq7xw
+	 W140rxTifpR4FfN3Ml/AExOHm1fRtyJh6jPxcVnzuH60behM+clFgIC50Qahk3r4oD
+	 NMEHpnXixUzuWmmHnZLPTcJHjKbap7a9NVfJ5zg7+nXq7DojrN5zpMrirVT47Rqysj
+	 CP9Td8g7k/pNcEU9iEFHXoEfaV8aJOQ6o2ODqekwZEsPilNTxb9iRQiz2OfyVV9Hqa
+	 dLpDhg5Sva+HhYwBlzQg+ON/dQqktshhUxwiLaUp/ly10L1eicMlmIFD/R+mWzjrXx
+	 ldbEdEj9d+sjA==
+Message-ID: <7a9e1729-96e3-46ab-86c0-f76349fc4a8c@kernel.org>
+Date: Mon, 2 Nov 2026 14:44:22 +0100
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [RFC PATCH 05/11] soc: mediatek: dram-ecc: add error counters and
- the address lists
+Subject: Re: [RFC PATCH 10/11] soc: mediatek: dram-ecc: report an
+ uncorrectable error of the previous boot
 To: "santino.wang" <santino.wang@mediatek.com>,
  Matthias Brugger <matthias.bgg@gmail.com>,
  AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
@@ -56,7 +56,7 @@ Cc: linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
  linux-kernel@vger.kernel.org, light.chen@mediatek.com,
  Fred-WY.Chen@mediatek.com, arnab.layek@mediatek.com
 References: <20261102092334.138759-1-santino.wang@mediatek.com>
- <20261102092334.138759-6-santino.wang@mediatek.com>
+ <20261102092334.138759-11-santino.wang@mediatek.com>
 From: Krzysztof Kozlowski <krzk@kernel.org>
 Content-Language: en-US
 Autocrypt: addr=krzk@kernel.org; keydata=
@@ -102,7 +102,7 @@ Autocrypt: addr=krzk@kernel.org; keydata=
  K9bCVaboTA2T77QYkRcRJYSsO1alGX0ome/hMLD1daXlkrNUp1HWa3K4iytLRXjCSIorWiGs
  n+q3krnpXu3TFkA8qtOFZMdnIiFuiq1yLT8hptsV5xh1TA2nsVvSYiaCr3q4s4BKjS/KrLDb
  qoxzw8ISjdUp4pA85vb6YLCmb39NgidD+7PmAr65lBNveIFynTgsja1rRQ4=
-In-Reply-To: <20261102092334.138759-6-santino.wang@mediatek.com>
+In-Reply-To: <20261102092334.138759-11-santino.wang@mediatek.com>
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
 X-BeenThere: linux-mediatek@lists.infradead.org
@@ -115,61 +115,416 @@ List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-7.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-17.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,
-	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,USER_AGENT_SANE_1 autolearn=no autolearn_force=no
-	version=4.0.1
+	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1
+	autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
 On 02/11/2026 10:23, santino.wang wrote:
+> From: Santino Wang <santino.wang@mediatek.com>
+> 
+> A fatal uncorrectable error makes the system panic and reset. The
+> firmware preserves the error across the reset and UEFI publishes it in
+> the ACPI BERT.
+> 
+> When the module loads, scan the BERT for such a record, log it, emit the
+> standard mc_event tracepoint so tools like rasdaemon see it, count it
+> in the aggregate counters, and delete the UEFI variable that holds the
+> record so it is not reported again.
+> 
+> Signed-off-by: Santino Wang <santino.wang@mediatek.com>
+> ---
+>  drivers/soc/mediatek/dram-ecc/Kconfig         |  11 +-
+>  drivers/soc/mediatek/dram-ecc/core/Makefile   |   1 +
+>  .../soc/mediatek/dram-ecc/core/bert_check.c   | 240 ++++++++++++++++++
+>  .../soc/mediatek/dram-ecc/core/bert_check.h   |  12 +
+>  drivers/soc/mediatek/dram-ecc/core/counters.c |  20 ++
+>  drivers/soc/mediatek/dram-ecc/core/counters.h |   1 +
+>  drivers/soc/mediatek/dram-ecc/core/main.c     |  10 +-
+>  7 files changed, 290 insertions(+), 5 deletions(-)
+>  create mode 100644 drivers/soc/mediatek/dram-ecc/core/bert_check.c
+>  create mode 100644 drivers/soc/mediatek/dram-ecc/core/bert_check.h
+> 
+> diff --git a/drivers/soc/mediatek/dram-ecc/Kconfig b/drivers/soc/mediatek/dram-ecc/Kconfig
+> index c015c66635b2..bb46e00f8988 100644
+> --- a/drivers/soc/mediatek/dram-ecc/Kconfig
+> +++ b/drivers/soc/mediatek/dram-ecc/Kconfig
+> @@ -10,7 +10,10 @@ config MTK_DRAM_ECC
+>  	depends on HAVE_ARM_SMCCC && ACPI_APEI_GHES
+>  	default m
+>  	help
+> -	  Driver for MediaTek DRAM ECC runtime error handling. It works
+> -	  with the secure firmware (ATF), which owns the DRAM controller
+> -	  ECC interrupts and reports each corrected or uncorrectable
+> -	  error to the OS as an ACPI GHES record.
+> +	  Driver for MediaTek DRAM ECC runtime error handling: BERT check
+> +	  on boot for the previous boot's UCE record, GHES real-time
+> +	  CE/UCE notification from ATF's dramc_ecc_fiq.c (independently
+> +	  decoded from the raw ECCERR_INFO0~31/DB0~DB4 dump, mirroring
+> +	  ATF's own decode), aggregate EFI-NV counters shared with UEFI
+> +	  RasDxe.c, and a sysfs interface for containment policy, storm
+> +	  protection, and leaky-bucket tuning (pushed to ATF via SMC).
+> diff --git a/drivers/soc/mediatek/dram-ecc/core/Makefile b/drivers/soc/mediatek/dram-ecc/core/Makefile
+> index 1e2764914e9c..8845eab3a67b 100644
+> --- a/drivers/soc/mediatek/dram-ecc/core/Makefile
+> +++ b/drivers/soc/mediatek/dram-ecc/core/Makefile
+> @@ -5,6 +5,7 @@ obj-$(CONFIG_MTK_DRAM_ECC) += mtk_dram_ecc.o
+>  mtk_dram_ecc-y := \
+>  	main.o \
+>  	smc.o \
+> +	bert_check.o \
+>  	ghes_notifier.o \
+>  	netlink.o \
+>  	trace.o \
+> diff --git a/drivers/soc/mediatek/dram-ecc/core/bert_check.c b/drivers/soc/mediatek/dram-ecc/core/bert_check.c
+> new file mode 100644
+> index 000000000000..bac866ae7198
+> --- /dev/null
+> +++ b/drivers/soc/mediatek/dram-ecc/core/bert_check.c
+> @@ -0,0 +1,240 @@
+> +// SPDX-License-Identifier: GPL-2.0
+> +/*
+> + * Copyright (c) 2026 MediaTek Inc.
+> + */
+> +/*
+> + * MTK DRAM ECC BERT check
+> + *
+> + * On module init, scan the ACPI BERT table for fatal memory error records
+> + * left by the previous boot (UCE containment reset). For each fatal CPER
+> + * memory error section found, emit a trace_mc_event() directly so rasdaemon
+> + * receives the event via the normal ras/mc_event tracefs path - with no
+> + * side effects (no EDAC counter bump, no memory_failure(), no notifier chain).
+> + * Once a record is reported, the LastUceError EFI variable UEFI built the
+> + * BERT from is deleted.
+> + *
+> + * EFI variable writes can take tens of milliseconds.
+> + * The entire check runs in a workqueue so module_init returns immediately.
+> + */
 > +
-> +static ssize_t by_ce_show(struct kobject *kobj,
-> +			  struct kobj_attribute *attr, char *buf)
-> +{
-> +	return sysfs_emit(buf, "%llu\n", mtk_dram_ecc_get_retired_by_ce());
-> +}
+> +#include <linux/acpi.h>
+> +#include <linux/cper.h>
+> +#include <linux/workqueue.h>
+> +#include <ras/ras_event.h>
+> +#include <acpi/apei.h>
+> +#include <acpi/ghes.h>
 > +
-> +static ssize_t by_uce_show(struct kobject *kobj,
-> +			   struct kobj_attribute *attr, char *buf)
-> +{
-> +	return sysfs_emit(buf, "%llu\n", mtk_dram_ecc_get_retired_by_uce());
-> +}
+> +#include "bert_check.h"
+> +#include "counters.h"
 > +
-> +static struct kobj_attribute retired_by_ce_attr = __ATTR_RO(by_ce);
-> +static struct kobj_attribute retired_by_uce_attr = __ATTR_RO(by_uce);
+> +static void bert_check_work_fn(struct work_struct *work);
+> +static DECLARE_WORK(bert_check_work, bert_check_work_fn);
 > +
-> +static struct attribute *retired_attrs[] = {
-> +	&retired_by_ce_attr.attr,
-> +	&retired_by_uce_attr.attr,
-> +	NULL,
+> +/* CPER memory error section GUID: a5bc1114-6f64-4ede-b863-3e83ed7c83b1 */
+> +static const guid_t cper_mem_guid =
+> +	GUID_INIT(0xa5bc1114, 0x6f64, 0x4ede,
+> +		  0xb8, 0x63, 0x3e, 0x83, 0xed, 0x7c, 0x83, 0xb1);
+> +
+> +/* MTK DRAM ECC BERT vendor section: b2c3d4e5-f6a7-48b9-c0d1-e2f3a4b5c6d7 */
+> +static const guid_t mtk_dram_ecc_bert_guid =
+> +	GUID_INIT(0xb2c3d4e5, 0xf6a7, 0x48b9,
+> +		  0xc0, 0xd1, 0xe2, 0xf3, 0xa4, 0xb5, 0xc6, 0xd7);
+> +
+> +struct mtk_dram_ecc_bert_section {
+> +	u32 uce_detected;
+> +	u32 channel;
+> +	u32 subchannel;
+> +	u32 info_low;
+> +	u32 info_high;
+> +	u32 db0;
+> +	u32 db1;
+> +	u32 db2;
+> +	u32 db3;
+> +	u32 db4;
+> +	u32 uce_recorded;
+> +	u32 from_inline_ecc;
+> +	u32 from_ondie_ecc;
 > +};
 > +
-> +static const struct attribute_group retired_group = {
-> +	.attrs = retired_attrs,
-> +};
-> +
-> +int mtk_dram_ecc_counters_init(struct kobject *parent)
+> +/* Returns 1 if this section was a matching DRAM ECC record (emitted an
+> + * mc_event), 0 otherwise - so the caller can summarize the scan.
+> + */
+> +static int mtk_bert_handle_section(struct acpi_hest_generic_data *gdata,
+> +				   const struct mtk_dram_ecc_bert_section *vendor)
 > +{
-> +	int ret;
+> +	struct cper_sec_mem_err *mem;
+> +	guid_t *sec_type;
+> +	u32 sec_sev;
+> +	unsigned long pfn = 0;
 > +
-> +	counters_kobj = kobject_create_and_add("counters", parent);
-> +	if (!counters_kobj)
-> +		return -ENOMEM;
+> +	sec_type = (guid_t *)gdata->section_type;
+> +	if (!guid_equal(sec_type, &cper_mem_guid))
+> +		return 0;
 > +
-> +	ret = sysfs_create_group(counters_kobj, &group);
-> +	if (ret) {
-> +		kobject_put(counters_kobj);
-> +		return ret;
+> +	sec_sev = gdata->error_severity;
+> +	if (sec_sev != CPER_SEV_FATAL && sec_sev != CPER_SEV_RECOVERABLE)
+> +		return 0;
+> +
+> +	/* The MTK vendor section is length-checked; the standard one must be
+> +	 * too, or a truncated section with a valid GUID reads past its end.
+> +	 */
+> +	if (acpi_hest_get_error_length(gdata) < sizeof(struct cper_sec_mem_err)) {
+> +		pr_warn("mtk-dram-ecc: BERT memory-error section too short: %d < %zu\n",
+> +			acpi_hest_get_error_length(gdata),
+> +			sizeof(struct cper_sec_mem_err));
+> +		return 0;
 > +	}
 > +
+> +	mem = acpi_hest_get_payload(gdata);
+> +	if (mem->validation_bits & CPER_MEM_VALID_PA)
+> +		pfn = mem->physical_addr >> PAGE_SHIFT;
+> +
+> +	pr_info("mtk-dram-ecc: BERT UCE from previous boot (pa=0x%lx)\n",
+> +		pfn << PAGE_SHIFT);
+> +
+> +	trace_mc_event(HW_EVENT_ERR_UNCORRECTED,
+> +		       "multi-bit ECC",
+> +		       "BERT UCE from previous boot",
+> +		       1,       /* error_count */
+> +		       0,       /* mc_index */
+> +		       -1, -1, -1,
+> +		       pfn,
+> +		       0,       /* grain_bits */
+> +		       0,       /* syndrome */
+> +		       "mtk-dram-ecc");
+> +
+> +	/* Inline ECC detects every UCE, including an on-die one. */
+> +	mtk_dram_ecc_agg_uce_inline_inc();
+> +	if (vendor->from_ondie_ecc)
+> +		mtk_dram_ecc_agg_uce_ondie_inc();
+> +	return 1;
+> +}
+> +
+> +static struct mtk_dram_ecc_bert_section *
+> +mtk_bert_find_vendor_section(struct acpi_hest_generic_status *estatus)
+> +{
+> +	struct acpi_hest_generic_data *gdata;
+> +	guid_t *sec_type;
+> +
+> +	apei_estatus_for_each_section(estatus, gdata) {
+> +		sec_type = (guid_t *)gdata->section_type;
+> +		if (!guid_equal(sec_type, &mtk_dram_ecc_bert_guid))
+> +			continue;
+> +
+> +		if (acpi_hest_get_error_length(gdata) <
+> +		    sizeof(struct mtk_dram_ecc_bert_section)) {
+> +			pr_warn("mtk-dram-ecc: BERT vendor section does not contain UceRecorded\n");
+> +			return NULL;
+> +		}
+> +
+> +		return acpi_hest_get_payload(gdata);
+> +	}
+> +
+> +	return NULL;
+> +}
+> +
+> +static int mtk_bert_handle_estatus(struct acpi_hest_generic_status *estatus)
+> +{
+> +	struct mtk_dram_ecc_bert_section *vendor;
+> +	struct acpi_hest_generic_data *gdata;
+> +
+> +	vendor = mtk_bert_find_vendor_section(estatus);
+> +	if (!vendor || !READ_ONCE(vendor->uce_detected) ||
+> +	    READ_ONCE(vendor->uce_recorded))
+> +		return 0;
+> +
+> +	apei_estatus_for_each_section(estatus, gdata) {
+> +		if (!mtk_bert_handle_section(gdata, vendor))
+> +			continue;
+> +
+> +		WRITE_ONCE(vendor->uce_recorded, 1);
+> +		return 1;
+> +	}
+> +
+> +	return 0;
+> +}
+> +
+> +static void bert_check_work_fn(struct work_struct *work)
+> +{
+> +	mtk_dram_ecc_bert_check();
+> +}
+> +
+> +void mtk_dram_ecc_bert_check_schedule(void)
+> +{
+> +	schedule_work(&bert_check_work);
+> +}
+> +
+> +void mtk_dram_ecc_bert_check_cancel(void)
+> +{
+> +	cancel_work_sync(&bert_check_work);
+> +}
+> +
+> +void mtk_dram_ecc_bert_check(void)
+> +{
+> +	struct acpi_hest_generic_status *estatus;
+> +	struct acpi_table_bert *bert_tab;
+> +	unsigned int region_len, remain;
+> +	unsigned int fatal = 0;
+> +	acpi_status status;
+> +	void __iomem *region;
+> +	u32 estatus_len;
+> +
+> +	status = acpi_get_table(ACPI_SIG_BERT, 0,
+> +				(struct acpi_table_header **)&bert_tab);
+> +	if (status == AE_NOT_FOUND) {
+> +		pr_info("mtk-dram-ecc: BERT table not present (no previous-boot record)\n");
+> +		return;
+> +	}
+> +	if (ACPI_FAILURE(status)) {
+> +		pr_warn("mtk-dram-ecc: failed to get BERT table\n");
+> +		return;
+> +	}
+> +
+> +	region_len = bert_tab->region_length;
+> +	if (region_len < sizeof(*estatus))
+> +		goto put_table;
+> +
+> +	region = ioremap_cache(bert_tab->address, region_len);
+> +	if (!region) {
+> +		pr_warn("mtk-dram-ecc: failed to ioremap BERT region\n");
+> +		goto put_table;
+> +	}
+> +
+> +	estatus = (struct acpi_hest_generic_status *)region;
+> +	remain = region_len;
+> +
+> +	while (remain >= sizeof(*estatus)) {
+> +		if (estatus->raw_data_length)
+> +			estatus_len = estatus->raw_data_offset +
+> +				      estatus->raw_data_length;
+> +		else
+> +			estatus_len = sizeof(*estatus) + estatus->data_length;
+> +		if (remain < estatus_len || estatus_len == 0)
+> +			break;
+> +
+> +		if (cper_estatus_check(estatus)) {
+> +			pr_warn("mtk-dram-ecc: invalid BERT estatus, stopping\n");
+> +			break;
+> +		}
+> +
+> +		fatal += mtk_bert_handle_estatus(estatus);
+> +
+> +		estatus = (void *)estatus + estatus_len;
+> +		remain -= estatus_len;
+> +	}
+> +
+> +	iounmap(region);
+> +put_table:
+> +	acpi_put_table((struct acpi_table_header *)bert_tab);
+> +
+> +	/*
+> +	 * The BERT UCE is reported now, so drop the LastUceError variable that
+> +	 * UEFI RasDxe built it from. Kept when nothing was reported, so the
+> +	 * record is not lost if the BERT scan could not process it.
+> +	 */
+> +	if (fatal)
+> +		mtk_dram_ecc_last_uce_clear();
+> +
+> +	pr_info("mtk-dram-ecc: BERT scan complete: %u fatal DRAM ECC record(s)\n",
+> +		fatal);
+> +}
+> diff --git a/drivers/soc/mediatek/dram-ecc/core/bert_check.h b/drivers/soc/mediatek/dram-ecc/core/bert_check.h
+> new file mode 100644
+> index 000000000000..a12dd520f6b9
+> --- /dev/null
+> +++ b/drivers/soc/mediatek/dram-ecc/core/bert_check.h
+> @@ -0,0 +1,12 @@
+> +/* SPDX-License-Identifier: GPL-2.0 */
+> +/*
+> + * Copyright (c) 2026 MediaTek Inc.
+> + */
+> +#ifndef _MTK_DRAM_ECC_BERT_CHECK_H_
+> +#define _MTK_DRAM_ECC_BERT_CHECK_H_
+> +
+> +void mtk_dram_ecc_bert_check_schedule(void);
+> +void mtk_dram_ecc_bert_check_cancel(void);
+> +void mtk_dram_ecc_bert_check(void);
+> +
+> +#endif /* _MTK_DRAM_ECC_BERT_CHECK_H_ */
+> diff --git a/drivers/soc/mediatek/dram-ecc/core/counters.c b/drivers/soc/mediatek/dram-ecc/core/counters.c
+> index 8e3fd83cf60a..b3c207190855 100644
+> --- a/drivers/soc/mediatek/dram-ecc/core/counters.c
+> +++ b/drivers/soc/mediatek/dram-ecc/core/counters.c
+> @@ -36,6 +36,8 @@ static efi_guid_t mtk_ecc_efi_guid =
+>  static efi_char16_t mtk_ce_var_name[]  = L"MtkDramEccCeCount";
+>  static efi_char16_t mtk_uce_inline_var_name[] = L"MtkDramEccUceCount_inline";
+>  static efi_char16_t mtk_uce_ondie_var_name[]  = L"MtkDramEccUceCount_ondie";
+> +/* Written by UEFI RasDxe for the UCE that the BERT carries; same GUID. */
+> +static efi_char16_t mtk_last_uce_var_name[] = L"LastUceError";
+>  
+>  static struct kobject *counters_kobj;
+>  static struct kobject *retired_kobj;
+> @@ -110,6 +112,24 @@ static void counters_flush_work_fn(struct work_struct *work)
+>  		efi_counter_inc(mtk_uce_ondie_var_name, uce_ondie_delta);
+>  }
+>  
+> +/*
+> + * UEFI keeps LastUceError until the kernel has processed it, so the UCE is
+> + * rebuilt into the BERT on every boot until then. Delete it once the BERT
+> + * record has been reported. A zero DataSize deletes the variable.
+> + */
+> +void mtk_dram_ecc_last_uce_clear(void)
+> +{
+> +	efi_status_t status;
+> +
+> +	if (!efi_rt_services_supported(EFI_RT_SUPPORTED_SET_VARIABLE))
+> +		return;
+> +
+> +	status = efi.set_variable(mtk_last_uce_var_name, &mtk_ecc_efi_guid,
+> +				  MTK_ECC_EFI_ATTR, 0, NULL);
+> +	if (status != EFI_SUCCESS && status != EFI_NOT_FOUND)
+> +		pr_warn("mtk-dram-ecc: delete LastUceError failed: 0x%lx\n", status);
+> +}
+> +
+>  void mtk_dram_ecc_agg_ce_inc(void)
+>  {
+>  	atomic_inc(&pending_ce_inc);
+> diff --git a/drivers/soc/mediatek/dram-ecc/core/counters.h b/drivers/soc/mediatek/dram-ecc/core/counters.h
+> index af2e5ea16b90..a818ff398769 100644
+> --- a/drivers/soc/mediatek/dram-ecc/core/counters.h
+> +++ b/drivers/soc/mediatek/dram-ecc/core/counters.h
+> @@ -19,6 +19,7 @@ void mtk_dram_ecc_counters_exit(void);
+>  void mtk_dram_ecc_agg_ce_inc(void);
+>  void mtk_dram_ecc_agg_uce_inline_inc(void);
+>  void mtk_dram_ecc_agg_uce_ondie_inc(void);
+> +void mtk_dram_ecc_last_uce_clear(void);
+>  void mtk_dram_ecc_record_retired_page(unsigned long pfn,
+>  				      enum mtk_dram_ecc_retire_reason reason,
+>  				      int memory_failure_ret);
+> diff --git a/drivers/soc/mediatek/dram-ecc/core/main.c b/drivers/soc/mediatek/dram-ecc/core/main.c
+> index 320631b3a044..0c3bc4d6ef06 100644
+> --- a/drivers/soc/mediatek/dram-ecc/core/main.c
+> +++ b/drivers/soc/mediatek/dram-ecc/core/main.c
+> @@ -12,6 +12,7 @@
+>  #include "addresses.h"
+>  #include "netlink.h"
+>  #include "trace.h"
+> +#include "bert_check.h"
+>  
+>  static struct class *mtk_dram_ecc_class;
+>  static struct device *mtk_dram_ecc_dev;
+> @@ -63,8 +64,14 @@ static int __init mtk_dram_ecc_init(void)
+>  	if (ret)
+>  		goto err_addresses;
+>  
+> +	mtk_dram_ecc_bert_check_schedule();
+> +
+>  	trace_mtk_dram_ecc_lifecycle(0);
+> -	dev_info(mtk_dram_ecc_dev, "initialized (GHES vendor notifier registered)\n");
+> +	/* Log the initialization independently of the tracepoints, so the log
+> +	 * shows that the module is up, the GHES vendor notifier is registered
 
-Sorry, but no. You do not get your own interface, especially
-undocumented one. Use existing subsystems. Also, drivers/soc/ cannot
-expose interface to user space.
+What is GHES vendor?
+
+> +	 * and the BERT scan is scheduled.
+> +	 */
+> +	dev_info(mtk_dram_ecc_dev, "initialized (GHES vendor notifier registered, BERT scan scheduled)\n");
+
+Drop. Why would you driver print always message on every other
+non-mediatek machine?
 
 
-Best regards,
 Krzysztof
 
