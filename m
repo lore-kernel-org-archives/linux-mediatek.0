@@ -2,74 +2,76 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 8C20D606A324
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id B8147606D804
 	for <linux-mediatek@archiver.kernel.org>; Mon,  2 Nov 2026 22:17:59 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=fMUv1zz0;
-	dkim=pass (2048-bit key, unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=fP4sPoiz
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=jHcvVXg1;
+	dkim=pass (2048-bit key, unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=k48znoj7
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
 	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Unsubscribe-Post:
-	List-Owner; bh=Brz96hdrz7JmspNQJhcUGehhAL3Axu9lJW4DP1KRAJU=; b=fMUv1zz0J6KKIC
-	P1spVLrHnl6F3Sxb9DOxwjh2A2I6av+yJ230DZ5LXZoJV3R5U4eJtrpWeXhJ3j7u/Ibieeg/B8FaA
-	rwRhWoJSVaB3mRCfC3DRxQX/K/6uUwYo0szK0RW5EqYCtLZMA0V2qSEW/WTgLzg7dewF6Zt8lDa/R
-	8yqgS9nEkRSpEtNw9JH7PSTq6Ug3ODfAzGSnn+gcbwiqkjKQJ68mSiRet5oYWhuNSFTujj7mc6GtY
-	gHfmz7Lm8iF0zI/cP64Yv0jCEwJt5IEsqpJQF7ixlqqMKtk0Cvq48oSyGa/8bgEB0rNnZHqYJrt4W
-	fHIxYwKsUwbCBwKjmcvw==;
+	List-Owner; bh=fN2eeG+zPzKpDfLyb8v4rr3ueZKYuXgrlC7Wm/EpsAI=; b=jHcvVXg1VteRz6
+	+fqbSZNNihB5SBO0KIAKiDMx1dlL12W/9avDRgjpPLCyFJBCxmee+rewqBAdM1zFiboRY95FtHmlQ
+	Bdoe3MHfJe49hwjhy2riKH183SCxSOBi3KeBed/bi+ehgyDjri3bt0NdGMotYVTZoiPfbkwg6kSdK
+	1OI15u5dJTKn/6Y7beLj5tX2TgH6AhW12qwud1pT0uGsiLZwDcu+x2RwgMwT42QMkzFmjPGQxckCW
+	3x3kD0vklkLJ4cSx3tksmqyIiRj1Gw8a77rhLbjKAFi+KacbYI+kf9PWsBoIe7FhqNSMJz+sKU2i7
+	0f+UU0127Ic/BTPBZZAw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xO0Ln-00000000Xgp-0ssl;
+	id 1xO0Ln-00000000XhA-1UY5;
 	Mon, 02 Nov 2026 22:17:59 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xO0Le-00000000Xf0-3peP;
-	Mon, 02 Nov 2026 22:17:50 +0000
+	id 1xO0Lf-00000000Xf6-1XkM;
+	Mon, 02 Nov 2026 22:17:51 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id D1A86601F0;
-	Mon,  2 Nov 2026 22:17:49 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6E1341F00A16;
-	Mon,  2 Nov 2026 22:17:49 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id C0D6040A20;
+	Mon,  2 Nov 2026 22:17:50 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 88FC91F00A16;
+	Mon,  2 Nov 2026 22:17:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1793657869;
-	bh=Brz96hdrz7JmspNQJhcUGehhAL3Axu9lJW4DP1KRAJU=;
+	s=k20260515; t=1793657870;
+	bh=fN2eeG+zPzKpDfLyb8v4rr3ueZKYuXgrlC7Wm/EpsAI=;
 	h=From:To:Cc:In-Reply-To:References:Subject:Date;
-	b=fP4sPoizrBM/sWiBFzkBJYNAQTHXV/XetlGDejSnEpjVVomy3GD6vhS/mWLIC8a4e
-	 C2E3Kex7mvSHZrkiLLHFJbjDkKik4t7rFvjOH5hAhE1JL5kCxfX9B1Tg0FsjmjV25j
-	 6jCoOoiD7NmbJjP4kkp1XEbmFeg45bl+M6YW7B0JbjYcN4keJNL1u7L7tcmvo0EclX
-	 WBvOpazth8Im7O8BYEBGJ34zACJPCspJ0gaoQRmwbra4e5BuHd4pzIphYjmixcvsQX
-	 PiPkkB+5G8AXOqj/H+edwPLtMEdejt/WE1YJwUjvDc0ipWKIOCpD/8GFDAQ5GT70US
-	 EbR8cKlaqK1IQ==
+	b=k48znoj7UTrSU05Zu4sJqDNcyMcW3R/uAuxE2lZRaV9mU5uMMrBqMHbsr7Kb8HAIX
+	 keTsKaxY+6SnakiXCUe5RVgo2mbQReXlBungVjzf9f0DJiRKM654FWyAX4hy6XPTiN
+	 5HVmLcYIeV39LJ4Wa16iEPPm+9NaGfgxCKA4Jd5KQGNIJ8HTXdM2UlliwMEaJiWJBp
+	 qx4rVylSQoiVZgApICnYztb0TaORncJbV1Agw9W323OaEq8OlQPDKlLsqHM+S+cTkn
+	 zA7zANmS4r+NLj6IR8xWOuhdK0/J8oPO6TYXmmL/MHnMXZMiXjbINVeTror+6fk9GX
+	 z3d6u9tNXktSA==
 Received: from traversing.sirena.org.uk (localhost [IPv6:::1])
-	by traversing.sirena.org.uk (Postfix) with ESMTP id 0F59F24130FA;
-	Mon, 02 Nov 2026 22:17:47 +0000 (GMT)
+	by traversing.sirena.org.uk (Postfix) with ESMTP id 3C9322413105;
+	Mon, 02 Nov 2026 22:17:48 +0000 (GMT)
 From: Mark Brown <broonie@kernel.org>
 To: Liam Girdwood <lgirdwood@gmail.com>, 
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, 
  Matthias Brugger <matthias.bgg@gmail.com>, 
  AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Alexandre Mergnat <amergnat@baylibre.com>
-Cc: linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, 
- =?utf-8?q?GIBEOM_LEE_=28=EC=9D=B4=EA=B8=B0=EB=B2=94=29?= <rtx4060@gmail.com>
-In-Reply-To: <20261102-rgp-67-mt6363-regulator-fixes-v1-0-420789a3113e@baylibre.com>
-References: <20261102-rgp-67-mt6363-regulator-fixes-v1-0-420789a3113e@baylibre.com>
-Subject: Re: [PATCH 0/2] regulator: mt6363: Fix register access and VEMC
- voltage handling
-Message-Id: <179364259247.2092401.12751625536535103016.b4-ty@b4>
-Date: Mon, 02 Nov 2026 18:03:12 +0000
+ Jiaxin Yu <jiaxin.yu@mediatek.com>, "Rob Herring (Arm)" <robh@kernel.org>
+Cc: linux-sound@vger.kernel.org, devicetree@vger.kernel.org, 
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org
+In-Reply-To: <20261102142812.2743578-1-robh@kernel.org>
+References: <20261102142812.2743578-1-robh@kernel.org>
+Subject: Re: [PATCH] ASoC: dt-bindings: mediatek: Fix MT8186 child node
+ names
+Message-Id: <179363993107.2092401.8362129164558129787.b4-ty@b4>
+Date: Mon, 02 Nov 2026 17:18:51 +0000
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
 X-Mailer: b4 0.17-dev
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1484; i=broonie@kernel.org;
- h=from:subject:message-id; bh=5Lsk5k8uWhWpSMVkEic8ZEeUQMXxLY0HlzaMYJ4qUm4=;
- b=owGbwMvMwCWm/754w+YLFp2Mp9WSGLJe8rDcubZ4o4eUXPhf5/9GAZYSTNNmXzkqNvFO7QI9P
- /Y/K2TcOkpZGMS4GGTFFFnisrhf1pe8XsN3cGEbzBxWJpAhDFycAjARuV0M/6Puaa9YEx8bvjwl
- gTPpytPzv+LSBFY1Bgpv7krxTHbiYWFkeCJ5s8P5ZeMFqXcrTZ489+FMelk6IWhhy4/Qk4ZaH6T
- 5OAE=
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1135; i=broonie@kernel.org;
+ h=from:subject:message-id; bh=fwgjm/VuQu6K+pEP1jSyFPLSORFoYuS0oYdG/YL+fb8=;
+ b=owGbwMvMwCWm/754w+YLFp2Mp9WSGLJe8vC8rfj5uONiPPPX+1FqZmbbBQTKpTnjeBTurQtbM
+ amR9X99RykLgxgXg6yYIktcFvfL+pLXa/gOLmyDmcPKBDKEgYtTACZSxMrI8E+sYafNl0Ov527Z
+ 03Cf3y4vvD99ko2rIpN04smACXaHvRn++/fOtXMNf2NwsXTXDv6/as9WdzfPXmxsNGff+wtL5Co
+ 3cgMA
 X-Developer-Key: i=broonie@kernel.org; a=openpgp;
  fpr=3F2568AAC26998F9E813A1C5C3F436CA30F5D8EB
 X-BeenThere: linux-mediatek@lists.infradead.org
@@ -90,26 +92,17 @@ X-Spam-Status: No, score=-12.3 required=3.0 tests=BAYES_00,DATE_IN_PAST_03_06,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On Mon, 02 Nov 2026 15:54:16 +0000, Alexandre Mergnat wrote:
-> regulator: mt6363: Fix register access and VEMC voltage handling
-> 
-> Testing the MT6363 regulator driver showed:
->  - the VEMC (UFS VCC) voltage reported as 1.25 V while the PMIC is
->    programmed to 2.55 V
->  - regmap debugfs showing each register merged with the next one
-> 
-> [...]
+On Mon, 02 Nov 2026 08:28:11 -0600, Rob Herring (Arm) wrote:
+> ASoC: dt-bindings: mediatek: Fix MT8186 child node names
 
 Applied to
 
-   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/regulator.git for-7.4
+   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-7.5
 
 Thanks!
 
-[1/2] regulator: mt6363: Use 8-bit register values
-      https://git.kernel.org/broonie/regulator/c/7318d3833067
-[2/2] regulator: mt6363: Fix VEMC voltage selection
-      https://git.kernel.org/broonie/regulator/c/a8d72f246edb
+[1/1] ASoC: dt-bindings: mediatek: Fix MT8186 child node names
+      https://git.kernel.org/broonie/sound/c/25a38dd4ff95
 
 All being well this means that it will be integrated into the linux-next
 tree (usually sometime in the next 24 hours) and sent to Linus during
