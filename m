@@ -2,86 +2,85 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 22B51606A338
-	for <linux-mediatek@archiver.kernel.org>; Mon,  2 Nov 2026 05:34:00 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 80C1D606A334
+	for <linux-mediatek@archiver.kernel.org>; Mon,  2 Nov 2026 05:34:03 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=0yiOlLpU;
-	dkim=pass (2048-bit key, unprotected) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=OTGkooVW
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=Aq3e5wBi;
+	dkim=pass (2048-bit key, unprotected) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=S+cFHIRF
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Unsubscribe-Post:
-	List-Owner; bh=fzpgC5Iq6UmNwAV/YxFMKMcnuTBJ158cMfcPvMXN/0k=; b=0yiOlLpUrbiRvi
-	h30ebKFMfxVPTWE6dUexWtiW41PyNfd8U+oFs4+abeMF2pzFf8NoK/eehuRTHudVRQJ4bjozYXzZS
-	86kP0wTBxc7HlFYwbKPD+mMl8C/shlEs4snz3c+iQOsfEKAjPrBAA+fxvMwNGWhwvWLiFqN8srLAr
-	EQrcluePR6dShO2jQXTS8CsX6MPLgxlHxs1DpOviC6PW9vvXG7pc4YhYPv5uVp7yXdI/sPPo9JKeL
-	bs7KJKzP3zO39OQV4S9vf0SvlmjkectS6nKvvZhK78RBArtvdxRdh6vdMG/vb8mlAo4DJlMxE8dRF
-	OTGS8rdCbLZweOvaF+qQ==;
+	List-Owner; bh=j/iKDdwYCnsubloLpqDmZlwHL6ERoLEJpqDNEy1hOkk=; b=Aq3e5wBiKV3I7X
+	gC5gHPGdzE2+y7svNcGrhJIUlIH4J+1gLci4budacZC+wLp0dBykhQdAq/O4LRUREoaNa4JuvQh0M
+	f7dkM3Cg0LNbhfA0D5Ybf/a+HrWygyeSSn3+UU62JzbVkLs+Gh0MCeeJkrjQWhpkCrZX3S1+JQJi2
+	QZKRYXcmFWP2O6yrwPS97Ufq50B2J6iFskWImKIHNz2y756uf+WNoQMwFvUT9lrb/8BFuoC2AZdpb
+	fV63DUPTj18L7Xv3OVXBDnLJEkdu73m3JPQHdoVEmXG9RTTfuKPmUcyuzpZXS6BO8RvjyCNUN3+s2
+	90iPCHbSu4Ll3EvCP3Dw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xNkgB-0000000FaPf-0CHZ;
-	Mon, 02 Nov 2026 05:33:59 +0000
-Received: from mail-oo2-x09.google.com ([2607:f8b0:4864:31::9])
+	id 1xNkgF-0000000FaUS-0yPR;
+	Mon, 02 Nov 2026 05:34:03 +0000
+Received: from mail-oo2-x0b.google.com ([2607:f8b0:4864:31::b])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xNkg9-0000000FaNu-03ry
+	id 1xNkgC-0000000FaPj-0cK8
 	for linux-mediatek@lists.infradead.org;
-	Mon, 02 Nov 2026 05:33:58 +0000
-Received: by mail-oo2-x09.google.com with SMTP id 006d021491bc7-6de48228f20so298903eaf.0
-        for <linux-mediatek@lists.infradead.org>; Sun, 01 Nov 2026 21:33:56 -0800 (PST)
+	Mon, 02 Nov 2026 05:34:02 +0000
+Received: by mail-oo2-x0b.google.com with SMTP id 46e09a7af769-82757b1535eso1364150a34.0
+        for <linux-mediatek@lists.infradead.org>; Sun, 01 Nov 2026 21:33:59 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20260707; t=1793597636; x=1794202436; darn=lists.infradead.org;
+        d=gmail.com; s=20260707; t=1793597639; x=1794202439; darn=lists.infradead.org;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :content-type:mime-version:subject:date:from:from:to:cc:subject:date
          :message-id:reply-to:content-type;
-        bh=fzpgC5Iq6UmNwAV/YxFMKMcnuTBJ158cMfcPvMXN/0k=;
-        b=OTGkooVWC+kviMbk59cJfj8FJl8CPLmIIc5KyjU9ZZgVaCny6lyJh5x2uiKPLPy0MJ
-         nN/XcDS/BUYCyNnKu2clnnOL4WfUr2ukVHGOLf6TbixjoDc96vQabLVzIYKTwbKnUVJE
-         U7vwVFIdAIK/8H60GXySshO3PoVdR8Wf+rsyBgjlt5leKjSw9hzeRaf9IJ4rihE8CEuh
-         7YjYj6mM+kcstIu1GM1bhsoQpzAsyVX7cCBKCQCoTCA2jz0U0MMkRv7kUPfelNbvsSwc
-         c+NwB5TSTlWzc3eRGoqbSiCk1ANKC9vKN76AAG0to3Vmimzq68kdBMcA2sX8fursQk2r
-         RuQg==
+        bh=j/iKDdwYCnsubloLpqDmZlwHL6ERoLEJpqDNEy1hOkk=;
+        b=S+cFHIRFnEAB7YOT+5PWgMPoRMOmmpyYiNS9E1J/xp33vcw5osSBsrhHJAm07ufGKs
+         CAd/PCpBDSUw389nkLnLB+w2yen/nOzlPyJ+hzcMGiZJ8uNxsefbiA80hAq+aY9h6gpZ
+         1ICd6RYyM97xvuiaLWLxlL8TCUGAkN/uM7E4bjTDJEOSLNTNDHfdi7O6riF5ZzdF+QKZ
+         qCUhbtCgGsWIwh6YehKP015G/lITijb/7MuofAVAWvp/3Y+EwZE/ycyXWZ8p2vwCC+2K
+         p9RN85xrDxubZDC504LpcWtdqIn6pqdHkQqRf6prB0XN7uGlZHXjdrwWb53BLC9ti6RT
+         yBkQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1793597636; x=1794202436;
+        d=1e100.net; s=20260707; t=1793597639; x=1794202439;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :content-type:mime-version:subject:date:from:x-gm-gg
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
          :content-type;
-        bh=fzpgC5Iq6UmNwAV/YxFMKMcnuTBJ158cMfcPvMXN/0k=;
-        b=BZweoe/QIAfkasIW+zqZQaDnlJvh+pcDUwmD8omyB6Qk22yXJtxiLtbgVEIeKtsBe5
-         /mbjk44lNi09hHGgdXZQEQ1ekFj9DyCkkyqOdSI7f8VzMypHY5hr9Ll+GjfNmCKXiyNh
-         2/bOPUrKqeqg3npQy8Gry4oDfqOSZ+VeRyUgKv4D0Q5VIyHh1xQGX23B1jYJqr0u8wUZ
-         KKL5/4gj4MgnX0nVlIvAc4bP9HPbhOiBR8l1if4ZPthhto6ga10/20yKS0jbwtDi7GdL
-         5Z8vfzsn3dD63WRBIKNb7WwEEQ8+PD/f5QgTMzDbKMWnN4S8QPz+bXUgS5DP3stapzPn
-         1sEw==
-X-Forwarded-Encrypted: i=1; AKwUvBwrwB6bCCOJX6U57i60SE+14tXTKjfEYDTaB882O9lNUSQfZ6R62fKIJNIydCuEAOv3hY0SAVV8MQrT9oPvdg==@lists.infradead.org
-X-Gm-Message-State: AFq9FYIOJOH3bdyYdrtuzAPCxBegvwYs1ufUogrYJIwxn/lKpcEHtPxB
-	7+xDsxwpxgA7zD5/FsTgOUGxibPjR1uQ28DL3HCglsu7zL0RrI/E6FR0
-X-Gm-Gg: AYBFou37NRHvkPFQpKHgVnPGQrKEH6dYXc7DcBxPN+1jmid++tMZymBUiXlUQOp1+B8
-	trtkHQSO7HJaZA+N5ZCsGewF0kDA0PXScWjqvzricSyG28oI1mqp/ai1vsmjf7mWqCo4XBUocP9
-	9Q5ZRT+xMuViE4NEA/9C0H0SpogA+Gd7BWZEtJG8m2VK4dQmeVlaVoJHRAJCk3krLEb/x12v+O6
-	hb5p5Bw9ktcJb/FPjF43lFkaBQQ045jgzFYiNZgu0bvYRy0HPfj3SHj4fn3xHvg2m8TjG5hsG50
-	Rzap3CVDnmh7Qg5HMQ38mRELCHBklKkL4fnfxhJSvxGVEe4DV4ppOLCYujOhj9mxP5Z9wWxqa4Y
-	9ISfyFc4rXu40OfMD0W9kxQKTaO/Ci2o0j5VXe4dw1BCHUo/hbpaGw4LKthbtJ+kimTrBdGFPDb
-	Nae4rj1NlgB7u0NLIZrY7E3NXa9JTBX98fjukHR7WNttOSjaG+XbRxqRmR5VVK4BRI5kQXIixVH
-	7HtmBv7p5hljVi70vDrK7muyRSb++JO/rrngn776ken7QuS2ZNi9z6shaBGKnys8sfDxL/CXUX8
-	Nq4u22PG/FYtmUqcPNADracw
-X-Received: by 2002:a05:6820:1343:b0:70e:3e8e:efdf with SMTP id 006d021491bc7-714f2ae369bmr4807837eaf.89.1793597635764;
-        Sun, 01 Nov 2026 21:33:55 -0800 (PST)
+        bh=j/iKDdwYCnsubloLpqDmZlwHL6ERoLEJpqDNEy1hOkk=;
+        b=SnI5MIxff3rdiTPs+GdB05UulWJccc5t7haomaui9iMAsaeDyg0lAmPHwOeRqYChhg
+         cf7FfkoqWErZMaScxkk97UTx+A4xndaACwj0kN7o/le3TEMNTAPEqR+defnHGWY9pUn4
+         X9YxX81gI2VPHp+xC+7R9zHQZx/3E6xvKymnuu6WqFjoIx9qQa7QJJofUssde4jc6sG3
+         UnaYedU1h5F6MevPmp8ZGE5Tgn0gCjrFK3NE5OMeDRZy12bBLBuJJauTZIxOAEESUdke
+         vfbaqQbQj1jZznQL4tgJBTJYBDWLPmFDKWF/9R8GsDVCKVIobq18g9xWh9tu2UQpSUQS
+         amJw==
+X-Forwarded-Encrypted: i=1; AKwUvByzOC34qTS/CrwtO8JoHKToV0JsVoxfSutfbuDQKgBdAMPDgRwhuID/uIldv0QIJA5EwCYr0lcrLYWPmZdESA==@lists.infradead.org
+X-Gm-Message-State: AFq9FYJ0Wz7xF3G/1nxlpwQWpkuFJbsa8p0kFv5rd6fFHmgAgUnw4rdX
+	pk6iw0q+7TLHMlTj1ly+GgoAKX2zrsi2vgAyFgPVD89I5F8Vz4GGUsFC
+X-Gm-Gg: AYBFou1RGdDB2sOlZ48Ld7Vt/adT/2afbaV63YpvZfZbnSogR1cf4m7vsyif6rJwfEi
+	WTZ0+FI3vQ3v/VqlP0+DXY8Aw2xspyMK6d7A0xGtIvFF+yKmxo8NaFgjeg2nixfD9/5VK9rzPDX
+	9GnVXpJnktWfAc9rT4LAJUIehIkGU4X4/+vw83m+jQGK+gSRE0EaI5K8KbsHqdi9rszAO8U1wGE
+	myFj7nGHHDWM+g5ufzLTCWSnLnzb+OdGNMZikKZZZlJ0IQMdATu1/T5DtOnQ8f/HaBUoIBFxrLj
+	AQ9qfq1Fx32CpQ2UoxE1xlJuN+aPK+vLt7BT1D7+L6L7TauBKNiaeHzcelcDIMix4e2rqCSXOJy
+	Dp99l6Kr/l/qAk4zNwCakE2tUIc9KSaQyF5As4vXAdoTWNfzCGjszYHFErrCbT2MOh7L5DmU80b
+	k8EM08Ol2UVtoHO1SJXLCAQ/b3Ts0Qoc4y2rRWSvpgDviWKMglBw6+C9WzbPzJ6mmRGHAMQSJij
+	XVVeKpC3uVF3n7KUwYJPry0AMGCW+gWKp43gi2u8PUjGBJLgZHEU+xcV25+Bp3IbmBGqJtotRye
+	mVBxuLd8gWiNrvNNWiwsCuYO
+X-Received: by 2002:a05:6820:81e:b0:70a:4053:52dd with SMTP id 006d021491bc7-714f24f9791mr5803420eaf.12.1793597638909;
+        Sun, 01 Nov 2026 21:33:58 -0800 (PST)
 Received: from [192.168.18.164] ([2600:8804:5716:d800::f01a])
-        by smtp.gmail.com with ESMTPSA id 006d021491bc7-714f2a818b9sm8321164eaf.1.2026.11.01.21.33.52
+        by smtp.gmail.com with ESMTPSA id 006d021491bc7-714f2a818b9sm8321164eaf.1.2026.11.01.21.33.55
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 01 Nov 2026 21:33:54 -0800 (PST)
+        Sun, 01 Nov 2026 21:33:57 -0800 (PST)
 From: Ryan Brue <ryanbrue.dev@gmail.com>
-Date: Sun, 01 Nov 2026 23:33:46 -0600
-Subject: [PATCH 1/2] dt-bindings: mfd: mediatek: mt6397: describe the RTC's
- 32 kHz output
+Date: Sun, 01 Nov 2026 23:33:47 -0600
+Subject: [PATCH 2/2] rtc: mt6397: provide the 32 kHz output as a clock
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20261101-rbrue-suez-upstreaming-mt6397-rtc-32k-v1-1-9758f38d7053@gmail.com>
+Message-Id: <20261101-rbrue-suez-upstreaming-mt6397-rtc-32k-v1-2-9758f38d7053@gmail.com>
 References: <20261101-rbrue-suez-upstreaming-mt6397-rtc-32k-v1-0-9758f38d7053@gmail.com>
 In-Reply-To: <20261101-rbrue-suez-upstreaming-mt6397-rtc-32k-v1-0-9758f38d7053@gmail.com>
 To: Sen Chu <sen.chu@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, 
@@ -97,17 +96,16 @@ Cc: linux-pm@vger.kernel.org, mfd@lists.linux.dev,
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
  linux-rtc@vger.kernel.org, Ryan Brue <ryanbrue.dev@gmail.com>
 X-Mailer: b4 0.14.3
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1793597629; l=1164;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1793597629; l=4890;
  i=ryanbrue.dev@gmail.com; s=20260906; h=from:subject:message-id;
- bh=GgCulyiRe8JqnSbuYJBNp+S895kQy071XDUKSDOt2BQ=;
- b=UE2preFnWrcfBUGQB9fs2ZLD6a5Iic6l7jXV2HPJqVzl40mf4eCBFIpiaxRBYwOVNNpkVcGzQ
- NP955JBBzvAD5zz3cEjRiUa5q86u2PzDOoj38Yx6ZzP9oKolUFV8h/8
+ bh=eS8wwphnLf29L4d5m076ho5/o3jTqtIytR9mtme4zMw=;
+ b=V5rSbVxU0IF5N7h6PPPyOJQV/wX0G6LmMZa8wVDZQxfdGcr4TIErn1bIGZZU6u4TjA94W77+a
+ 3p2deiTL6UBBKiXt28snx/azYaVv8C5+hP8+TMfIhI6rsZeP2q+Xt+p
 X-Developer-Key: i=ryanbrue.dev@gmail.com; a=ed25519;
  pk=KsUvVaP//v/2q+ZBuacc7cLbsyEYn+AD71Sn28oZWKo=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261101_213357_069581_D3763861 
-X-CRM114-Status: UNSURE (   9.52  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20261101_213400_243054_E105CB55 
+X-CRM114-Status: GOOD (  19.77  )
 X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -127,40 +125,175 @@ X-Spam-Status: No, score=-15.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-The MT6397 RTC drives its 32 kHz clock out of the PMIC, where boards
-use it as the sleep clock of a Wi-Fi/Bluetooth combo chip. The output
-is off unless something turns it on.
+The RTC's 32 kHz output is gated by RTC_CON.F32KOB, which the vendor
+kernel clears before it powers the Wi-Fi/Bluetooth combo chip. Mainline
+never touches it, so on a board whose bootloader leaves it set, such a
+chip has no sleep clock and does not come up.
 
-Let the RTC node provide it as a clock.
+Register the output as a clock when the RTC node has #clock-cells, so
+the chip's power sequence can enable it.
 
 Signed-off-by: Ryan Brue <ryanbrue.dev@gmail.com>
 ---
- Documentation/devicetree/bindings/mfd/mediatek,mt6397.yaml | 6 ++++++
- 1 file changed, 6 insertions(+)
+ drivers/rtc/rtc-mt6397.c       | 85 ++++++++++++++++++++++++++++++++++++++++++
+ include/linux/mfd/mt6397/rtc.h |  6 +++
+ 2 files changed, 91 insertions(+)
 
-diff --git a/Documentation/devicetree/bindings/mfd/mediatek,mt6397.yaml b/Documentation/devicetree/bindings/mfd/mediatek,mt6397.yaml
-index 055625362951..3bfe1ad60d2d 100644
---- a/Documentation/devicetree/bindings/mfd/mediatek,mt6397.yaml
-+++ b/Documentation/devicetree/bindings/mfd/mediatek,mt6397.yaml
-@@ -84,6 +84,11 @@ properties:
+diff --git a/drivers/rtc/rtc-mt6397.c b/drivers/rtc/rtc-mt6397.c
+index d6e156516aa6..5130fecffa7b 100644
+--- a/drivers/rtc/rtc-mt6397.c
++++ b/drivers/rtc/rtc-mt6397.c
+@@ -6,6 +6,7 @@
  
-       start-year: true
+ #include <linux/array_size.h>
+ #include <linux/bitfield.h>
++#include <linux/clk-provider.h>
+ #include <linux/err.h>
+ #include <linux/interrupt.h>
+ #include <linux/mfd/mt6397/core.h>
+@@ -317,6 +318,84 @@ static int mtk_rtc_nvram_write(void *priv, unsigned int offset, void *val,
+ 	return ret;
+ }
  
-+      "#clock-cells":
-+        description:
-+          The 32 kHz clock the RTC drives out to other chips.
-+        const: 0
++#ifdef CONFIG_COMMON_CLK
++static int mtk_rtc_clkout_set(struct clk_hw *hw, bool on)
++{
++	struct mt6397_rtc *rtc = container_of(hw, struct mt6397_rtc, clkout);
++	int ret;
 +
-       nvmem-layout:
-         $ref: /schemas/nvmem/layouts/nvmem-layout.yaml
-         description:
-@@ -694,5 +699,6 @@ examples:
++	mutex_lock(&rtc->lock);
++	ret = regmap_update_bits(rtc->regmap, rtc->addr_base + rtc->data->con,
++				 RTC_CON_F32KOB, on ? 0 : RTC_CON_F32KOB);
++	if (!ret)
++		ret = mtk_rtc_write_trigger(rtc);
++	mutex_unlock(&rtc->lock);
++
++	return ret;
++}
++
++static int mtk_rtc_clkout_prepare(struct clk_hw *hw)
++{
++	return mtk_rtc_clkout_set(hw, true);
++}
++
++static void mtk_rtc_clkout_unprepare(struct clk_hw *hw)
++{
++	mtk_rtc_clkout_set(hw, false);
++}
++
++static int mtk_rtc_clkout_is_prepared(struct clk_hw *hw)
++{
++	struct mt6397_rtc *rtc = container_of(hw, struct mt6397_rtc, clkout);
++	u32 con;
++
++	if (regmap_read(rtc->regmap, rtc->addr_base + rtc->data->con, &con))
++		return 0;
++
++	return !(con & RTC_CON_F32KOB);
++}
++
++static unsigned long mtk_rtc_clkout_recalc_rate(struct clk_hw *hw,
++						unsigned long parent_rate)
++{
++	return 32768;
++}
++
++static const struct clk_ops mtk_rtc_clkout_ops = {
++	.prepare = mtk_rtc_clkout_prepare,
++	.unprepare = mtk_rtc_clkout_unprepare,
++	.is_prepared = mtk_rtc_clkout_is_prepared,
++	.recalc_rate = mtk_rtc_clkout_recalc_rate,
++};
++
++/* The 32 kHz output the PMIC drives to other chips, such as a combo chip */
++static int mtk_rtc_register_clkout(struct device *dev, struct mt6397_rtc *rtc)
++{
++	struct clk_init_data init = {
++		.name = "mt6397-rtc-32k",
++		.ops = &mtk_rtc_clkout_ops,
++	};
++	int ret;
++
++	if (!rtc->data->con || !of_property_present(dev->of_node, "#clock-cells"))
++		return 0;
++
++	rtc->clkout.init = &init;
++
++	ret = devm_clk_hw_register(dev, &rtc->clkout);
++	if (ret)
++		return ret;
++
++	return devm_of_clk_add_hw_provider(dev, of_clk_hw_simple_get,
++					   &rtc->clkout);
++}
++#else
++static int mtk_rtc_register_clkout(struct device *dev, struct mt6397_rtc *rtc)
++{
++	return 0;
++}
++#endif
++
+ static int mtk_rtc_probe(struct platform_device *pdev)
+ {
+ 	struct resource *res;
+@@ -380,6 +459,11 @@ static int mtk_rtc_probe(struct platform_device *pdev)
+ 	if (ret)
+ 		return ret;
  
-         rtc {
-             compatible = "mediatek,mt6397-rtc";
-+            #clock-cells = <0>;
-         };
-     };
++	ret = mtk_rtc_register_clkout(&pdev->dev, rtc);
++	if (ret)
++		return dev_err_probe(&pdev->dev, ret,
++				     "failed to register the 32k clock\n");
++
+ 	nvmem_cfg.priv = rtc;
+ 
+ 	return devm_rtc_nvmem_register(rtc->rtc_dev, &nvmem_cfg);
+@@ -416,6 +500,7 @@ static const struct mtk_rtc_data mt6358_rtc_data = {
+ 
+ static const struct mtk_rtc_data mt6397_rtc_data = {
+ 	.wrtgr = RTC_WRTGR_MT6397,
++	.con = RTC_CON_MT6397,
+ };
+ 
+ static const struct of_device_id mt6397_rtc_of_match[] = {
+diff --git a/include/linux/mfd/mt6397/rtc.h b/include/linux/mfd/mt6397/rtc.h
+index f4da579ec638..a8130d726c59 100644
+--- a/include/linux/mfd/mt6397/rtc.h
++++ b/include/linux/mfd/mt6397/rtc.h
+@@ -9,6 +9,7 @@
+ #ifndef _LINUX_MFD_MT6397_RTC_H_
+ #define _LINUX_MFD_MT6397_RTC_H_
+ 
++#include <linux/clk-provider.h>
+ #include <linux/jiffies.h>
+ #include <linux/mutex.h>
+ #include <linux/regmap.h>
+@@ -22,6 +23,9 @@
+ #define RTC_WRTGR_MT6397       0x003c
+ #define RTC_WRTGR_MT6323       RTC_WRTGR_MT6397
+ 
++#define RTC_CON_MT6397         0x003e
++#define RTC_CON_F32KOB         BIT(5)
++
+ #define RTC_IRQ_STA            0x0002
+ #define RTC_IRQ_STA_AL         BIT(0)
+ #define RTC_IRQ_STA_LP         BIT(3)
+@@ -72,6 +76,7 @@
+ 
+ struct mtk_rtc_data {
+ 	u32                     wrtgr;
++	u32                     con;
+ };
+ 
+ struct mt6397_rtc {
+@@ -83,6 +88,7 @@ struct mt6397_rtc {
+ 	int                     irq;
+ 	u32                     addr_base;
+ 	const struct mtk_rtc_data *data;
++	struct clk_hw           clkout;
+ };
+ 
+ #endif /* _LINUX_MFD_MT6397_RTC_H_ */
 
 -- 
 2.55.0
