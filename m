@@ -2,65 +2,71 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 9BA90606A324
-	for <linux-mediatek@archiver.kernel.org>; Mon,  2 Nov 2026 19:23:23 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id D5919606A329
+	for <linux-mediatek@archiver.kernel.org>; Mon,  2 Nov 2026 19:46:59 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=MHjgn1il;
-	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=infradead.org header.i=@infradead.org header.a=rsa-sha256 header.s=casper.20170209 header.b=Bphjrv4f
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=UM0iAYMe;
+	dkim=pass (2048-bit key, unprotected) header.d=justthetip.ca header.i=@justthetip.ca header.a=rsa-sha256 header.s=key1 header.b=CmLpgdxd
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Subject:To:From:Date:Reply-To:Cc:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Unsubscribe-Post:List-Owner;
-	bh=lCfRb7dvzYLRNpL4mVmuKuvbGYc/kVOpnEXSzysG3Dw=; b=MHjgn1ilNe6sShbRsbhk3wUeKp
-	lfFMGMnTxes6u1kQtlU0YsfFaHD6wJMf8KWKmHDXs82wswT8ptWOOYgv7IXHW/s9sI8+JGPUvfWN0
-	BLEUvvQFZyNEvYvTXJ+SA19BgOSjaygLLPOx4076x4KNe84pOjQ39m3AdjzEdlnfCw52qf79KpDOO
-	KBiSg7CHBNhsiOWNLhLiZSfetWPkjE3USALGCNwFFgHJdqfLWFpZQHWTAwbAd3r/GlSYsuvYtd7WF
-	5/WWiES7AiVx6imEBKa71pTXtXT7C1iMqT9AVO1SyPHr11BWWaU2OZx4UC6NR8VuLQCTzK+TO4RoL
-	XDFNTxBg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Unsubscribe-Post:
+	List-Owner; bh=hy0oPK5x/QkI8yqeUndJIQC9ebEkYHogcz870Uc7RMg=; b=UM0iAYMeilUmVI
+	b5OB9y6lM3iDt+b7OkQAEJds7vZKDwtOpwhIsBEUGVgtvelrPU/yW6s6amvDS67reRD2dmIuNYlch
+	PEDNi+PYmg2zJwDjJNnFhYNm6FxaeP6VX2zs8hkdjF49C+hyWAK40uZ2cUu+8MUkigXih9yseUevN
+	3viLjL80+HYEwzyUXM35EEiWvQgg7PI9/GvEV3d38y+jZQmj6botjgNqOtNFGQYd+qiLcuO0n2Klz
+	vE3vaTkSIOim75lGy8lhuy9TYpVo1D8xq4pYUsAQevJJkGAdwU5g9iatSirHt3lGb6rVzu4QJc8e0
+	K/oTE66dptqNycliSRbQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xNxcp-000000005aV-1HZj;
-	Mon, 02 Nov 2026 19:23:23 +0000
-Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
+	id 1xNxOJ-000000003p8-2pUn;
+	Mon, 02 Nov 2026 19:08:23 +0000
+Received: from out-173.mta0.migadu.com ([2001:41d0:1004:224b::ad] helo=mta0.migadu.com)
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xNxco-000000005Zi-0F9m;
-	Mon, 02 Nov 2026 19:23:22 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=casper.20170209; h=Content-Type:MIME-Version:Message-ID:
-	Subject:To:From:Date:Sender:Reply-To:Cc:Content-Transfer-Encoding:Content-ID:
-	Content-Description:In-Reply-To:References;
-	bh=lCfRb7dvzYLRNpL4mVmuKuvbGYc/kVOpnEXSzysG3Dw=; b=Bphjrv4fnqb1OAomlKaoz8NZ0u
-	4F1tv5MGwjZ4/0riuR0Q4x34MoEZ8rmmLBSi6DyZyorUfv/kc2O8La75sWuUs1qyn5qKLQzUHjeIs
-	VYGMJBnGsJMlUqzfXOODP+CefjQaVYYK3F4gLYTiHtRBlxnbLQzBvVRfx4fs3bYBgmwSTS7DjyWRz
-	BxqkJxPpohyYuxqJjgA13xhKrk+NGC/mSSdi7RpouSd9jEq0D8l5DfhudutgLEC5+mHoQRz7Gz1fR
-	Y8shKusMQbw0Ycj/YAsrOeKfOCm7/1F2JRHQhc+T8LejEHnK4TWDVL9zBuE0tgBwOVGkZphnU42s6
-	rBeBr12w==;
-Received: from willy by casper.infradead.org with local (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xNxcj-000000056Px-1CVj;
-	Mon, 02 Nov 2026 19:23:17 +0000
-Date: Mon, 2 Nov 2026 19:23:16 +0000
-From: Matthew Wilcox <willy@infradead.org>
-To: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo@kernel.org>,
-	Ryder Lee <ryder.lee@mediatek.com>,
-	Shayne Chen <shayne.chen@mediatek.com>,
+	id 1xNxOG-000000003nE-3l2d
+	for linux-mediatek@lists.infradead.org;
+	Mon, 02 Nov 2026 19:08:22 +0000
+X-Envelope-To: linux-mediatek@lists.infradead.org
+DKIM-Signature: a=rsa-sha256; bh=QX/N0pi5EXSkCjh+fydbWA1avkaaXFymjQBf/Df4PlI=;
+ c=simple/simple; d=justthetip.ca;
+ h=from:to:subject:date:message-id:mime-version:content-type; s=key1;
+ t=1793646496; v=1; x=1794251296;
+ b=CmLpgdxdVfvDfgxKM+mCR0S61bi0YtF2di81In1Q4JViL42ak59/J1YS4FVMJaNNPQjbTCXS
+ 1GcN5oWgtL4BXQpgNhfq+EgwBnmzuhxJZaOGuEoTwqJRT2EjFsczy21uEw9SWmXsf7Y6v6WFL/G
+ 9AKQnqk3RY//9RAFMmRz/z9u7thqSCbuDZVf0SyJ0b159nflizlhBYo8RLB5xjEBfTdeu8VMIAx
+ WTumwQNi/z9PzTJKuZq3InDrmhUYfXkXyl9wUo/ndaxkHDLzIzlMwWFuuD2mt7KmfsCAVkLE380
+ uuZiLMBI1O/X0oAlQLfsI473Ttz6GulORMzwaTTDH/3qQ==
+X-Envelope-To: linux-mediatek@lists.infradead.org
+Received: by smtp.migadu.com with ESMTPS id 37af8cb3d0c59ae7;
+	Mon, 02 Nov 2026 19:08:16 +0000
+X-Mizu-Trace-ID: 37af8cb3d0c59ae7
+X-Migadu-Flow: FLOW_OUT
+From: Devin Wittmayer <lucid_duck@justthetip.ca>
+To: Felix Fietkau <nbd@nbd.name>,
+	Lorenzo Bianconi <lorenzo@kernel.org>,
+	Ryder Lee <ryder.lee@mediatek.com>
+Cc: Deren Wu <deren.wu@mediatek.com>,
 	Sean Wang <sean.wang@mediatek.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Devin Wittmayer <lucid_duck@justthetip.ca>,
-	JB Tsai <jb.tsai@mediatek.com>, Xiong <xiong.huang@mediatek.com>,
-	Charlie-cy Wu <charlie-cy.wu@mediatek.corp-partner.google.com>,
-	linux-wireless@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
+	Shayne Chen <shayne.chen@mediatek.com>,
+	Ming Yen Hsieh <mingyen.hsieh@mediatek.com>,
+	Sven Besser <sven.besser@sql-ag.de>,
+	linux-wireless@vger.kernel.org,
 	linux-mediatek@lists.infradead.org
-Subject: mt7921e hangs when hardware fails
-Message-ID: <aujjJPq-Qth7UyMp@casper.infradead.org>
+Subject: [PATCH wireless] wifi: mt76: mt7925: add the common scan IEs back to probe requests
+Date: Mon,  2 Nov 2026 12:08:11 -0700
+Message-ID: <20261102190811.7498-1-lucid_duck@justthetip.ca>
+X-Mailer: git-send-email 2.56.0
+In-Reply-To: <FRVP281MB5672AE5BBD61EF0802D42370A0942@FRVP281MB5672.DEUP281.PROD.OUTLOOK.COM>
+References: <FRVP281MB5672AE5BBD61EF0802D42370A0942@FRVP281MB5672.DEUP281.PROD.OUTLOOK.COM>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20261102_110821_281595_4EE5031C 
+X-CRM114-Status: GOOD (  12.93  )
+X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -71,76 +77,118 @@ List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-4.1 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS autolearn=no autolearn_force=no version=4.0.1
+X-Spam-Status: No, score=-18.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,
+	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=ham
+	autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Something appears to have gone wrong with the mt7921e in my Framework
-laptop, but my attempts to recover are hindered by the driver hanging.
+Wi-Fi Direct search can no longer find devices in Listen state, such as
+Miracast sinks. The probe requests lack the P2P IE, which mac80211 puts
+in the common IEs, and only the per-band IEs are sent to the firmware.
 
-lspci:
+Add the common IEs to each band of a normal scan, as long as the band
+still fits in one byte of length: the firmware ignores the high byte.
+Leave scheduled scans alone, since the firmware can time out on them
+when their IEs grow.
 
-aa:00.0 Network controller: MEDIATEK Corp. MT7922 802.11ax PCI Express Wireless Network Adapter
-	Subsystem: MEDIATEK Corp. Device e616
-	Control: I/O- Mem+ BusMaster+ SpecCycle- MemWINV- VGASnoop- ParErr- Stepping- SERR- FastB2B- DisINTx+
-	Status: Cap+ 66MHz- UDF- FastB2B- ParErr- DEVSEL=fast >TAbort- <TAbort- <MAbort- >SERR- <PERR- INTx-
-	Latency: 0, Cache Line Size: 64 bytes
-	Interrupts: pin B disabled, MSI(X) routed to IRQ 207
-	IOMMU group: 19
-	Region 0: Memory at 6019200000 (64-bit, prefetchable) [size=1M]
-	Region 2: Memory at 98000000 (64-bit, non-prefetchable) [size=32K]
+Fixes: 9f8f4a51f3c1 ("wifi: mt76: mt7925: fix incorrect scan probe IE handling for hw_scan")
+Reported-by: Sven Besser <sven.besser@sql-ag.de>
+Closes: https://lore.kernel.org/linux-wireless/FRVP281MB5672AE5BBD61EF0802D42370A0942@FRVP281MB5672.DEUP281.PROD.OUTLOOK.COM/
+Suggested-by: Sven Besser <sven.besser@sql-ag.de>
+Signed-off-by: Devin Wittmayer <lucid_duck@justthetip.ca>
+---
+Tested with wpa_supplicant: one radio searching, a peer listening on
+channel 6, and a third radio capturing the search probes.
 
+                                probes with    peer
+                                the P2P IE     found
+  MT7925U, wireless-next        0 of 162       no
+    with this patch             98 of 98       yes
+    9f8f4a51f3c1 reverted       19 of 19       yes
+  MT7927, 7.3.1, out-of-tree    0 of 231       no
+    with this patch             228 of 228     yes
 
-Here's the relevant parts of my dmesg:
+A Miracast-style search, with a Wi-Fi Display subelement and the longest
+allowed device name, stays under the limit and finds the peer on both.
+Without the two limits, longer probes went out cut short and scheduled
+scans sometimes reset the chip. Plain scans and joins are unchanged. Not
+tested on mt7928.
 
-[   54.429097] mt7921e 0000:aa:00.0: enabling device (0000 -> 0002)
-[   54.434064] mt7921e 0000:aa:00.0: ASIC revision: 79220010
-[   54.532459] mt7921e 0000:aa:00.0: HW/SW Version: 0x8a108a10, Build Time: 2026
-0724143257a
-[   54.906027] mt7921e 0000:aa:00.0: WM Firmware Version: ____000000, Build Time
-: 20260724143402
-[   56.086928] mt7921e 0000:aa:00.0 wlp170s0: renamed from wlan0
-[164937.892036] mt7921e 0000:aa:00.0: driver own failed
-[164938.942093] mt7921e 0000:aa:00.0: driver own failed
-[164939.995093] mt7921e 0000:aa:00.0: driver own failed
-[164941.272075] mt7921e 0000:aa:00.0: Timeout for driver own
-[164942.316076] mt7921e 0000:aa:00.0: driver own failed
-(...)
-[164962.212360] mt7921e 0000:aa:00.0: chip reset failed
-[164962.212383] wlp170s0: Driver requested disconnection from AP 84:a0:6e:ee:3f:b7
-[164965.388396] mt7921e 0000:aa:00.0: Message 00020001 (seq 4) timeout
-[164968.464445] mt7921e 0000:aa:00.0: Message 00020001 (seq 6) timeout
+Sven, thanks for tracking this down.
 
-(hundreds of similar lines)
+ .../net/wireless/mediatek/mt76/mt7925/mcu.c   | 25 ++++++++++++++-----
+ 1 file changed, 19 insertions(+), 6 deletions(-)
 
-So I tried to rmmod to see if reloading the module would fix anything.
-Unfortunately, it hung like this:
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
+index 50f5f57b740e..b614653debd1 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
+@@ -3259,10 +3259,10 @@ EXPORT_SYMBOL_GPL(mt7925_mcu_set_dbdc);
+ static void
+ mt7925_mcu_build_scan_ie_tlv(struct mt76_dev *mdev,
+ 			     struct sk_buff *skb,
+-			     struct ieee80211_scan_ies *scan_ies)
++			     struct ieee80211_scan_ies *scan_ies, bool common)
+ {
+ 	u32 max_len = sizeof(struct scan_ie_tlv) + MT76_CONNAC_SCAN_IE_LEN;
+-	u32 ies_len, alloc_len;
++	u32 ies_len, common_len, alloc_len;
+ 	struct scan_ie_tlv *ie;
+ 	enum nl80211_band i;
+ 	struct tlv *tlv;
+@@ -3278,6 +3278,15 @@ mt7925_mcu_build_scan_ie_tlv(struct mt76_dev *mdev,
+ 		if (!ies || !ies_len)
+ 			continue;
+ 
++		/* The vendor IEs (P2P, WPS, WFD, ...) are in common_ies. The
++		 * firmware keeps only the low byte of a band's IE length, so
++		 * add them only where the band stays within 255 bytes.
++		 */
++		common_len = 0;
++		if (common && ies_len + scan_ies->common_ie_len <= U8_MAX)
++			common_len = scan_ies->common_ie_len;
++		ies_len += common_len;
++
+ 		if (is_mt7928(mdev))
+ 			alloc_len = ALIGN(sizeof(*ie) + ies_len, 4);
+ 		else
+@@ -3290,7 +3299,9 @@ mt7925_mcu_build_scan_ie_tlv(struct mt76_dev *mdev,
+ 					      alloc_len);
+ 		ie = (struct scan_ie_tlv *)tlv;
+ 
+-		memcpy(ie->ies, ies, ies_len);
++		memcpy(ie->ies, ies, ies_len - common_len);
++		memcpy(ie->ies + ies_len - common_len, scan_ies->common_ies,
++		       common_len);
+ 		ie->ies_len = cpu_to_le16(ies_len);
+ 
+ 		switch (i) {
+@@ -3428,7 +3439,7 @@ int mt7925_mcu_hw_scan(struct mt76_phy *phy, struct ieee80211_vif *vif,
+ 	}
+ 
+ 	/* Append scan probe IEs as the last tlv */
+-	mt7925_mcu_build_scan_ie_tlv(mdev, skb, &scan_req->ies);
++	mt7925_mcu_build_scan_ie_tlv(mdev, skb, &scan_req->ies, true);
+ 
+ 	err = mt76_mcu_skb_send_msg(mdev, skb, MCU_UNI_CMD(SCAN_REQ),
+ 				    true);
+@@ -3530,8 +3541,10 @@ int mt7925_mcu_sched_scan_req(struct mt76_phy *phy,
+ 	}
+ 	chan_info->channel_type = sreq->n_channels ? 4 : 0;
+ 
+-	/* Append scan probe IEs as the last tlv */
+-	mt7925_mcu_build_scan_ie_tlv(mdev, skb, ies);
++	/* Append scan probe IEs as the last tlv. A scheduled scan keeps the
++	 * band IEs alone: the firmware stops answering it with more.
++	 */
++	mt7925_mcu_build_scan_ie_tlv(mdev, skb, ies, false);
+ 
+ 	return mt76_mcu_skb_send_msg(mdev, skb, MCU_UNI_CMD(SCAN_REQ),
+ 				     true);
+-- 
+2.56.0
 
-$ sudo cat /proc/136298/stack
-[<0>] __flush_work+0x315/0x4c0
-[<0>] cancel_work_sync+0x5e/0x80
-[<0>] mt7921_pci_remove+0xb0/0x190 [mt7921e]
-[<0>] pci_device_remove+0x4a/0xb0
-[<0>] device_release_driver_internal+0x19e/0x200
-[<0>] driver_detach+0x48/0x90
-[<0>] bus_remove_driver+0x78/0x110
-[<0>] pci_unregister_driver+0x36/0xe0
-[<0>] __do_sys_delete_module+0x1de/0x350
-[<0>] do_syscall_64+0xe1/0x650
-[<0>] entry_SYSCALL_64_after_hwframe+0x76/0x7e
-
-I think something's wrong with the hardware at this point because lspci
--vvv reported something funny in config space which has disappeared
-after a power cycle.  Unfortunately I didn't record it, nor did I dump
-lspci -xxxx.  I'll do that next time this happens.
-
-My call to action here is that this driver should more gracefully cope
-with hardware that's not responding properly.  Whatever work is being
-waited for in __flush_work needs to timeout (I left it overnight and it
-didn't timeout) or be cancellable.
-
-After a reboot, it's working fine.  I'm going to try stressing the laptop
-to see if it fails again, but wanted to get this report out first.
 
