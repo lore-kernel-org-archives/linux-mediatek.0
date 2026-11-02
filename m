@@ -2,100 +2,115 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id DF42C606A324
-	for <linux-mediatek@archiver.kernel.org>; Mon,  2 Nov 2026 07:22:34 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id DF71660A263D
+	for <linux-mediatek@archiver.kernel.org>; Mon,  2 Nov 2026 07:47:58 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=jy4I4eF+;
-	dkim=pass (2048-bit key, unprotected) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=DMUcbWZM
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=CqMgUeMO;
+	dkim=pass (2048-bit key, unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=Yt/7r3JE
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Unsubscribe-Post:List-Owner;
-	bh=JB/vt8Yqalu6xBIjfgP9QfXpUFDcSpikq6HleBSGoog=; b=jy4I4eF+6sqanygvx5MmW7OYOd
-	+uvFJ2HvA3dBeQ/urhPiPrR6Z0zLZVw6vOmg8L/E714HXc2iYK8Ko4548RevHQzCJVgpmvYz6F5qJ
-	YCJM7cSNit853gjhryOUpJBmg/DjzMnDbue4c1n/RJBMZiVTw1dwiksiu2Pt2mT6tc6EWd7hMLjf+
-	bKggDYIUSyNWj6Ui6ugppls19pNzIfPm2/F/55qr6ZM4/wYKDilNntmCnRTvxe9Bw54AEbbckivgh
-	fHeNXJMgU57PvcGhMvRwTDsGUGP+RMbtna31TNVrpLpQDt7qrY2GtSFJcKg8Sy0mRaW4+J1DBnDh/
-	ANeufIFw==;
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Unsubscribe-Post:
+	List-Owner; bh=/5I86CZ+slqkRJTosNHUxkAL8uURBN5dDpgqbLr07wU=; b=CqMgUeMONWHlyY
+	XOseE8KWybfapp8Xp3UJxIos0G8HJjuKzSTkfksZDzSFwz/yVIEtbWILma0IGHo/XpOOTsSb3voqE
+	e0tAn9u6A0uLH0MxCUMvot/KjauT2GpedwO8xkMxUUyHqBWvoc9U7eynZ0Oa1g64cgcAZXb0HRpS2
+	bLAIap0aSSHyYpjYdcdcYjrGJ2o+9FyHLPqVcFso4qyVs1F7j8OmpyKzNAQ5SJpGaS0t+fHrdBkRL
+	PLgIe5ID2+r6H7d4yTKt4fKZh9JL4p+rRTBGJvsDnSyxjv+XJeK8eMMH8dKRzCymdKQLO4Ar5wSft
+	xSVQbI+cv1Ct8XZJH+5w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xNmNF-0000000FjmW-0CLu;
-	Mon, 02 Nov 2026 07:22:33 +0000
-Received: from mail-dy1-x1331.google.com ([2607:f8b0:4864:20::1331])
+	id 1xNmlq-0000000Fmn7-2PFj;
+	Mon, 02 Nov 2026 07:47:58 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xNmNA-0000000Fjkx-3mSu
-	for linux-mediatek@lists.infradead.org;
-	Mon, 02 Nov 2026 07:22:31 +0000
-Received: by mail-dy1-x1331.google.com with SMTP id 5a478bee46e88-36a18fc7a38so4476061eec.1
-        for <linux-mediatek@lists.infradead.org>; Sun, 01 Nov 2026 23:22:28 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20260707; t=1793604148; x=1794208948; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
-        bh=JB/vt8Yqalu6xBIjfgP9QfXpUFDcSpikq6HleBSGoog=;
-        b=DMUcbWZMlD3VgtMCo3/7f51t0epNSN9fPzYUiIjx4LvDLR6inF2wr3Z9WoNhZt8faE
-         Pa9/W75rtEGKHudL4agVCEU40RXCBW3EUSDsCHpTIueT8B8ln02lDLGvaR31rsvKn9pe
-         8G21MHFy71kVPdIU+g1KvP+6sbbNMKTLaQDh6TDFM7I6mVZTt1ngv0sXpc4spysLC2eB
-         qVNtNMn1K7SYnFbZs9b68BvLSYiwlLayfqoAjRKSvA/c2XPyeoLHB+JO5Oz8a1K8lyJc
-         9/ATUwq1yhbXsnylhNxTjPIK4Q1uRBaFXbjJsPN6az25hY3DKsqjnZuoYM2WZfKL17Ih
-         4rFA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1793604148; x=1794208948;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to:content-type;
-        bh=JB/vt8Yqalu6xBIjfgP9QfXpUFDcSpikq6HleBSGoog=;
-        b=dMBGg0nccSBxNJ264jy47oxQtdnBX8EoxdXnOuEgZMKos1S0Gj2Cz8uGddCShlr3A8
-         wyGy3hN4jVlUV0MYvLji1Oeqwg0F0VBon1XmVa5KUfFt0R9f7/lrcxrSDzhxLlVxVss4
-         5KxoWii8qNQntnYi7kl8JEimOUIyRZ1CD52XzJ3Jf/fSXacc6ZlBUQO7tF2OcxFLEjOk
-         2dNJMpSNJubVWSBaXq+bGOEe4/aetLCoGDTcPZJrlQQQlc+uddnxAaJ1voHT8ram74yJ
-         AigX3d00nzrCF6YBEDeBvQywiGwjAkbjKS+iSE7kniBUbuiFi9EQqpbCSI1Pu9agn8vi
-         3vPA==
-X-Forwarded-Encrypted: i=1; AKwUvBwswgnWO1RMUttCjNUeQZ8d7c135v/hYx0HmKAfE24UhX0nKSExbR+pw27Os+Fm3UwnWpfzcNsHXL5DvYlO7w==@lists.infradead.org
-X-Gm-Message-State: APuU4Z8HPOn/i+8YHD0VuH6DTvy7hpGUcKAw4qV2HhqyeoGMJINMWJYT
-	8tI6cte5cLyjdfqkaD0iUwG4jqIZCem5KBrAoOJLf41blopOxTxTYRwe
-X-Gm-Gg: AYBFou0Uh3d2EB8Bzz/rqXjmpWi+hDd7I0d7m1FYWlqkP5lZzzmorVS7Xqd9k6fd+2X
-	DCnCEqPekRDAyX0bBZYfnAVEo/Q9AtB/nlLXxcpd2vn7wVPtLzcbZyA8n1rKGI+9tIKAF8SyKvL
-	r3hIfatAckHs6O2qHQiRRMqQPAK1C+8586irgr/Oz/nwfarfU/iWDYoD+Fi+IvHJVA+ECK05BE9
-	1zxD+qmxBiWZsUUX0e7Kj3qi5y0gNDyvcFTbvKoynTA1xgOND+dIdCJmw2S7zdSc+zjNhfeFIG3
-	Eq0Pld2XnRcNC9w8on26oS7pE/7eweJYxNF0szk4BfgC4HpOWim4OaSJI0XjCtC7eh9VpR4Tqmy
-	F4156hqY6DgA+NtXhVrydjlkqe56nFyFkP1Hbg6qUsFh7Bwq0JN/QZqDeDZUxK9T78BAnj3yRCX
-	pPyeQpCN2OrFy8oKDmHPM35V3l+4EHvGzfmZN+t+RXOTxMcE28wh3lGjauzF3rZBLJ2y7eGGF6i
-	itudDhNI7SxlTh4BegYMKGiqDgIt3wVRzbVHuSuz26UyrDOGKEvGaJxBXNcYDwPWH00l9/3Aug/
-	nYhM2aASP8bChjzEUWoN24FIimduQgKCeUdJcQZ9X/9TFl92guw=
-X-Received: by 2002:a05:7301:4706:b0:369:eee6:ee2c with SMTP id 5a478bee46e88-36a4221bc98mr13867197eec.5.1793604147501;
-        Sun, 01 Nov 2026 23:22:27 -0800 (PST)
-Received: from localhost.localdomain ([103.178.205.93])
-        by smtp.gmail.com with ESMTPSA id 5a478bee46e88-36a428af1dfsm36376021eec.7.2026.11.01.23.22.23
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 01 Nov 2026 23:22:27 -0800 (PST)
-From: Sreeraj S Kurup <sreekuttan2156239@gmail.com>
-To: chunkuang.hu@kernel.org,
-	p.zabel@pengutronix.de,
-	vkoul@kernel.org,
-	neil.armstrong@linaro.org,
-	mani@kernel.org,
-	matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com
-Cc: dri-devel@lists.freedesktop.org,
-	linux-mediatek@lists.infradead.org,
-	linux-phy@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	Sreeraj S Kurup <sreekuttan2156239@gmail.com>
-Subject: [PATCH] phy: mediatek: mt8195: Check PLL driver setting return value
-Date: Mon,  2 Nov 2026 07:21:39 +0000
-Message-ID: <20261102072139.3588-1-sreekuttan2156239@gmail.com>
-X-Mailer: git-send-email 2.55.0
+	id 1xNmlo-0000000Fmm5-2uiR;
+	Mon, 02 Nov 2026 07:47:56 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by sea.source.kernel.org (Postfix) with ESMTP id 25E1640C19;
+	Mon,  2 Nov 2026 07:47:56 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 20DB91F00919;
+	Mon,  2 Nov 2026 07:47:49 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1793605676;
+	bh=/5I86CZ+slqkRJTosNHUxkAL8uURBN5dDpgqbLr07wU=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To;
+	b=Yt/7r3JEtzHG6GYJFiSgbdV4xZv1CP1WOEwveRYgMAoVmlr1ssFwCP3cji8JybOvP
+	 5pFdBlfjfYYpmPkLhRoaFM716IP8ckfK7/mpd6AbncfvqPt67Mlag7w25Tcel3PH+y
+	 fAzcYndBtlAVHCwlgyj4LYIpuny562C1vEhC4hqUFZ2UOKTd6kMjC7SnyVm+6765Hp
+	 snsim7fvwgSqAtSmB4ATTR51c9pbLaNiJA7T/pXaXBQ8ZaKOvHYUJ4GVSN2cZH3EwQ
+	 E4wu2/tajaDVYQruUjC5aZOWIHVkNWq0ituIE0wMlu4lpRoG7zL/7AAdMjHYmQmN93
+	 Rvd7Gyh1FFS4g==
+Message-ID: <f63bf987-aaf7-45d5-89da-24c16b1a848b@kernel.org>
+Date: Mon, 2 Nov 2026 08:47:47 +0100
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261101_232228_936225_24A02142 
-X-CRM114-Status: GOOD (  11.78  )
-X-Spam-Score: -1.9 (-)
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 1/2] dt-bindings: mfd: mediatek: mt6397: describe the
+ RTC's 32 kHz output
+To: Ryan Brue <ryanbrue.dev@gmail.com>, Sen Chu <sen.chu@mediatek.com>,
+ Sean Wang <sean.wang@mediatek.com>, Macpaul Lin <macpaul.lin@mediatek.com>,
+ Lee Jones <lee@kernel.org>, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
+ <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Eddie Huang <eddie.huang@mediatek.com>,
+ Alexandre Belloni <alexandre.belloni@bootlin.com>
+Cc: linux-pm@vger.kernel.org, mfd@lists.linux.dev,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-rtc@vger.kernel.org
+References: <20261101-rbrue-suez-upstreaming-mt6397-rtc-32k-v1-0-9758f38d7053@gmail.com>
+ <20261101-rbrue-suez-upstreaming-mt6397-rtc-32k-v1-1-9758f38d7053@gmail.com>
+From: Krzysztof Kozlowski <krzk@kernel.org>
+Content-Language: en-US
+Autocrypt: addr=krzk@kernel.org; keydata=
+ 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
+In-Reply-To: <20261101-rbrue-suez-upstreaming-mt6397-rtc-32k-v1-1-9758f38d7053@gmail.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,53 +121,28 @@ List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-15.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
-	DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,FREEMAIL_FORGED_FROMDOMAIN,
-	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
+X-Spam-Status: No, score=-17.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,
+	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1
+	autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-The mtk_hdmi_pll_drv_setting() function can return -EINVAL when
-the requested pixel clock is outside its supported range.
+On 02/11/2026 06:33, Ryan Brue wrote:
+> The MT6397 RTC drives its 32 kHz clock out of the PMIC, where boards
+> use it as the sleep clock of a Wi-Fi/Bluetooth combo chip. The output
+> is off unless something turns it on.
+> 
+> Let the RTC node provide it as a clock.
+> 
+> Signed-off-by: Ryan Brue <ryanbrue.dev@gmail.com>
+> ---
+>  Documentation/devicetree/bindings/mfd/mediatek,mt6397.yaml | 6 ++++++
+>  1 file changed, 6 insertions(+)
 
-Currently, mtk_hdmi_pll_prepare() ignores this return value and
-continues with PLL initialization even when the driver settings
-fail.
+Reviewed-by: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
 
-Check the return value and abort PLL preparation on failure to
-avoid powering up the PLL with invalid driver settings.
-
-Signed-off-by: Sreeraj S Kurup <sreekuttan2156239@gmail.com>
----
- drivers/phy/mediatek/phy-mtk-hdmi-mt8195.c | 5 ++++-
- 1 file changed, 4 insertions(+), 1 deletion(-)
-
-diff --git a/drivers/phy/mediatek/phy-mtk-hdmi-mt8195.c b/drivers/phy/mediatek/phy-mtk-hdmi-mt8195.c
-index a4bc1268946d..9658781484f1 100644
---- a/drivers/phy/mediatek/phy-mtk-hdmi-mt8195.c
-+++ b/drivers/phy/mediatek/phy-mtk-hdmi-mt8195.c
-@@ -360,6 +360,7 @@ static int mtk_hdmi_pll_prepare(struct clk_hw *hw)
- {
- 	struct mtk_hdmi_phy *hdmi_phy = to_mtk_hdmi_phy(hw);
- 	void __iomem *regs = hdmi_phy->regs;
-+	int ret;
- 
- 	mtk_phy_set_bits(regs + HDMI_1_CFG_6, RG_HDMITX21_TX_POSDIV_EN);
- 
-@@ -374,7 +375,9 @@ static int mtk_hdmi_pll_prepare(struct clk_hw *hw)
- 	mtk_phy_clear_bits(regs + HDMI_1_CFG_6, RG_HDMITX21_FRL_D2_EN);
- 	mtk_phy_clear_bits(regs + HDMI_1_CFG_6, RG_HDMITX21_FRL_CK_EN);
- 
--	mtk_hdmi_pll_drv_setting(hw);
-+	ret = mtk_hdmi_pll_drv_setting(hw);
-+	if (ret)
-+		return ret;
- 
- 	mtk_phy_clear_bits(regs + HDMI_1_CFG_10, RG_HDMITX21_BG_PWD);
- 	mtk_phy_set_bits(regs + HDMI_1_CFG_6, RG_HDMITX21_BIAS_EN);
--- 
-2.55.0
-
+Best regards,
+Krzysztof
 
