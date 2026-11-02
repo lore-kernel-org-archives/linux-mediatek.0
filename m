@@ -2,76 +2,72 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id B8147606D804
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id F29E0606A324
 	for <linux-mediatek@archiver.kernel.org>; Mon,  2 Nov 2026 22:17:59 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=jHcvVXg1;
-	dkim=pass (2048-bit key, unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=k48znoj7
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=vszyEmdX;
+	dkim=pass (2048-bit key, unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=BXwTaWeg
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
 	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Unsubscribe-Post:
-	List-Owner; bh=fN2eeG+zPzKpDfLyb8v4rr3ueZKYuXgrlC7Wm/EpsAI=; b=jHcvVXg1VteRz6
-	+fqbSZNNihB5SBO0KIAKiDMx1dlL12W/9avDRgjpPLCyFJBCxmee+rewqBAdM1zFiboRY95FtHmlQ
-	Bdoe3MHfJe49hwjhy2riKH183SCxSOBi3KeBed/bi+ehgyDjri3bt0NdGMotYVTZoiPfbkwg6kSdK
-	1OI15u5dJTKn/6Y7beLj5tX2TgH6AhW12qwud1pT0uGsiLZwDcu+x2RwgMwT42QMkzFmjPGQxckCW
-	3x3kD0vklkLJ4cSx3tksmqyIiRj1Gw8a77rhLbjKAFi+KacbYI+kf9PWsBoIe7FhqNSMJz+sKU2i7
-	0f+UU0127Ic/BTPBZZAw==;
+	List-Owner; bh=H7clgMueEvSON7kclP3SNzqVfpNypygmTsnUrvEaevY=; b=vszyEmdXJlXJnO
+	9vEb+xDykdiR4fozWk09Zdwss2lFk9x4hjyPa0idikrWvhJCWYZq/R8Q1U/epCkVfekZk8r864b54
+	cQuJvEGSgwCOAseBFZBDYGpEn0r7XbGY0hksUnRmjLH7u7Qp0afXIJW+J/XOPq6fBl+tFUVK4p2bV
+	001DC42HNzrgLitnjcgPGw7wqDj5JNPH1dhivzfrumO4XzEyxm0asJjkD5nCnMGuoqhhM9+TsCsz0
+	TBC+JSkRqIuUjVcyI6eNf+ks3Tw92qo0aKENWLUI5WXZkKh3eOMB2NeXOklCsylkf5UnLvixK82n4
+	kmHpGR6g26e1eKh3yOuw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xO0Ln-00000000XhA-1UY5;
+	id 1xO0Ln-00000000XiQ-2xnR;
 	Mon, 02 Nov 2026 22:17:59 +0000
 Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xO0Lf-00000000Xf6-1XkM;
+	id 1xO0Lf-00000000XfG-2oso;
 	Mon, 02 Nov 2026 22:17:51 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id C0D6040A20;
-	Mon,  2 Nov 2026 22:17:50 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 88FC91F00A16;
-	Mon,  2 Nov 2026 22:17:50 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 6ED5B406A3;
+	Mon,  2 Nov 2026 22:17:51 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 370FD1F00A16;
+	Mon,  2 Nov 2026 22:17:51 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1793657870;
-	bh=fN2eeG+zPzKpDfLyb8v4rr3ueZKYuXgrlC7Wm/EpsAI=;
+	s=k20260515; t=1793657871;
+	bh=H7clgMueEvSON7kclP3SNzqVfpNypygmTsnUrvEaevY=;
 	h=From:To:Cc:In-Reply-To:References:Subject:Date;
-	b=k48znoj7UTrSU05Zu4sJqDNcyMcW3R/uAuxE2lZRaV9mU5uMMrBqMHbsr7Kb8HAIX
-	 keTsKaxY+6SnakiXCUe5RVgo2mbQReXlBungVjzf9f0DJiRKM654FWyAX4hy6XPTiN
-	 5HVmLcYIeV39LJ4Wa16iEPPm+9NaGfgxCKA4Jd5KQGNIJ8HTXdM2UlliwMEaJiWJBp
-	 qx4rVylSQoiVZgApICnYztb0TaORncJbV1Agw9W323OaEq8OlQPDKlLsqHM+S+cTkn
-	 zA7zANmS4r+NLj6IR8xWOuhdK0/J8oPO6TYXmmL/MHnMXZMiXjbINVeTror+6fk9GX
-	 z3d6u9tNXktSA==
+	b=BXwTaWegeUmc6D9rkHYF0GPvgmnk1UrbsKGzLd9lNblbGkLtlbT0ouP3Gxj/49Xsm
+	 FMjsC+xe7FXIQS5QqJhIw/c37vOQm8RWxiR1F+MLwUdA2gB/Xex/QOVWoP9j+uO4UI
+	 CthQ0JTG/2j6D5XMa3uLyx40BrSdecnwsDYDJAjZZl4CRVT2XXZVpTzPdBb4XJ77JJ
+	 Av3kaKJXwvssJCirFrsD+l7Hm7IvIJhtZNry+xd0gkQC/yH2rWxyks38dOik50w6WZ
+	 dlueEA+0nkXBgMaqKUWRF1ThNVgL165/OIDSis5OR8nPMW8LH5qxQi4E/GCLquUaQI
+	 UnLi9QnPZiv/A==
 Received: from traversing.sirena.org.uk (localhost [IPv6:::1])
-	by traversing.sirena.org.uk (Postfix) with ESMTP id 3C9322413105;
+	by traversing.sirena.org.uk (Postfix) with ESMTP id DEF10241313D;
 	Mon, 02 Nov 2026 22:17:48 +0000 (GMT)
 From: Mark Brown <broonie@kernel.org>
 To: Liam Girdwood <lgirdwood@gmail.com>, 
- Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Jiaxin Yu <jiaxin.yu@mediatek.com>, "Rob Herring (Arm)" <robh@kernel.org>
-Cc: linux-sound@vger.kernel.org, devicetree@vger.kernel.org, 
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org
-In-Reply-To: <20261102142812.2743578-1-robh@kernel.org>
-References: <20261102142812.2743578-1-robh@kernel.org>
-Subject: Re: [PATCH] ASoC: dt-bindings: mediatek: Fix MT8186 child node
- names
-Message-Id: <179363993107.2092401.8362129164558129787.b4-ty@b4>
-Date: Mon, 02 Nov 2026 17:18:51 +0000
+ =?utf-8?q?GIBEOM_LEE_=28=EC=9D=B4=EA=B8=B0=EB=B2=94=29?= <rtx4060@gmail.com>
+Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, linux-kernel@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+In-Reply-To: <20261101164405.1743177-1-rtx4060@gmail.com>
+References: <20261101164405.1743177-1-rtx4060@gmail.com>
+Subject: Re: [PATCH 0/2] regulator: mt6363: Fix the regmap value width and
+ the VSRAM LDO registers
+Message-Id: <179364206047.2092401.8748434363467628177.b4-ty@b4>
+Date: Mon, 02 Nov 2026 17:54:20 +0000
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 X-Mailer: b4 0.17-dev
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1135; i=broonie@kernel.org;
- h=from:subject:message-id; bh=fwgjm/VuQu6K+pEP1jSyFPLSORFoYuS0oYdG/YL+fb8=;
- b=owGbwMvMwCWm/754w+YLFp2Mp9WSGLJe8vC8rfj5uONiPPPX+1FqZmbbBQTKpTnjeBTurQtbM
- amR9X99RykLgxgXg6yYIktcFvfL+pLXa/gOLmyDmcPKBDKEgYtTACZSxMrI8E+sYafNl0Ov527Z
- 03Cf3y4vvD99ko2rIpN04smACXaHvRn++/fOtXMNf2NwsXTXDv6/as9WdzfPXmxsNGff+wtL5Co
- 3cgMA
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1723; i=broonie@kernel.org;
+ h=from:subject:message-id; bh=/7y45hq/hNgDZqvVd6ZLv1SrHpttQmcu6uNDHAt1cFU=;
+ b=owGbwMvMwCWm/754w+YLFp2Mp9WSGLJe8vBIP7r9R25FtrOdfNfvKvEf4msOz77R57Rz+dEnG
+ 36/nxC9rKOUhUGMi0FWTJElLov7ZX3J6zV8Bxe2wcxhZQIZwsDFKQAT2dbI8Icr8gpPlOHdqAXT
+ pn64/3lPMqvQr1DHk1vSVOT2sizZy/iIkWH7wVmFam8cGidGsGY08H7K3r6oT1P9aMnu91+LNxu
+ dL+cGAA==
 X-Developer-Key: i=broonie@kernel.org; a=openpgp;
  fpr=3F2568AAC26998F9E813A1C5C3F436CA30F5D8EB
 X-BeenThere: linux-mediatek@lists.infradead.org
@@ -92,17 +88,29 @@ X-Spam-Status: No, score=-12.3 required=3.0 tests=BAYES_00,DATE_IN_PAST_03_06,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On Mon, 02 Nov 2026 08:28:11 -0600, Rob Herring (Arm) wrote:
-> ASoC: dt-bindings: mediatek: Fix MT8186 child node names
+On Mon, 02 Nov 2026 01:44:02 +0900, GIBEOM LEE (이기범) wrote:
+> regulator: mt6363: Fix the regmap value width and the VSRAM LDO registers
+> 
+> These patches fix two problems in the MT6363 regulator driver that can be
+> seen from the code. They are on top of regulator for-next, where the driver
+> is the same as in master and v7.2.12.
+> 
+> Patch 1: the registers have 8 bits but the regmap has 16-bit values, so
+> every write also writes the next register. For example, disabling one of
+> VS2 and VBUCK1-7 also disables VS1, VS3 and VSRAM_{DIGRF,MDFE,MODEM}. The
+> MT6373 driver on the list has 16-bit values too, so its next version will
+> want the same change.
+> 
+> [...]
 
 Applied to
 
-   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-7.5
+   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/regulator.git for-7.4
 
 Thanks!
 
-[1/1] ASoC: dt-bindings: mediatek: Fix MT8186 child node names
-      https://git.kernel.org/broonie/sound/c/25a38dd4ff95
+[2/2] regulator: mt6363: Fix the registers of the VSRAM CPU and APU LDOs
+      https://git.kernel.org/broonie/regulator/c/8aed8b66751e
 
 All being well this means that it will be integrated into the linux-next
 tree (usually sometime in the next 24 hours) and sent to Linus during
