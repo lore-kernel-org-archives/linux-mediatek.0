@@ -2,57 +2,74 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 60706606A33A
-	for <linux-mediatek@archiver.kernel.org>; Mon,  2 Nov 2026 11:15:51 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id EAD7160A382F
+	for <linux-mediatek@archiver.kernel.org>; Mon,  2 Nov 2026 12:43:11 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=d/lubZM8;
-	dkim=fail reason="signature verification failed" (1024-bit key, unprotected) header.d=linuxfoundation.org header.i=@linuxfoundation.org header.a=rsa-sha256 header.s=korg header.b=ROIf0Llv
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=S8F6UtkR;
+	dkim=pass (2048-bit key, unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=oh1sbX6U
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Type:MIME-Version:References:Message-ID:Subject:To:From:Date:Reply-To
-	:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Unsubscribe-Post:List-Owner;
-	bh=5Atfc5zlyNXW6OtAyRigvyHRys7Tsw1F2mguudvujDk=; b=d/lubZM8UDyFgWCgP3BaJj7PPG
-	HyospXTf5KlFzVcSuYYK7tMVw87IIBQhknoho09xYUrqs/AWG4Bkk/R+ZJNF5JDE/HH1G/M7AA5yX
-	41lgzT4FXYnJ+u6JhChZzXkLxPE8uAGX5EFGUolWyQNBe+eVXNsM2Bk3lSKiftAt8tMVnQB0iV+en
-	2L7hxZPCLGLEJJihPpEBgBxYiYN60OT5LSQmhF96UjuXhW/6NQydhLSszNCOGLXjr//WAZi1xgVaq
-	7YShZkj1B6r7HIR44FZtgWvECzm67x3wswR7HS3PU712SFxhgYIGiHtkNiUGCZ7wLGWdZ3+mKOhFQ
-	mqIYqakQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Unsubscribe-Post:
+	List-Owner; bh=Fvicyg8Fd06ea9xOp3734mK6H6xlGiXlw0uR3rAzBzs=; b=S8F6UtkReFJoMS
+	YO5m/e9BZNqVYEXj8WK0vrCiVRHy4Io8uczwoY6HWctJj/2RVadAE8uvZOhj7FCBzmAXSba5LLrE9
+	W6iKoqiA83Tj+l8iGUHf3Oh/nC4JJ9XDRkixj6ZPP1KyRhcZcuhxLwOqXKymFMr1dDY7tZMuo6chA
+	Bp3art3YKwNgVTu3prPGLQZ2ljMndVnZIiRfYlten4a5JvUihonYy+Ra6FPzsWYUgdxSgv21yvmuz
+	/p+f5Vrw/pw2MLKVLZfkpkP7PalQaKgzs5T4eascM0RKsWpM0sgyvPzuVxpfQpPqYSVHqej3difip
+	q0htHh7NAsGu1vv7a7Hw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xNq0z-0000000GHHZ-0PIS;
-	Mon, 02 Nov 2026 11:15:49 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1xNrNX-0000000GWEW-2sEj;
+	Mon, 02 Nov 2026 12:43:11 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xNq0x-0000000GHHK-0kKV;
-	Mon, 02 Nov 2026 11:15:47 +0000
+	id 1xNrNT-0000000GWDe-31Ji;
+	Mon, 02 Nov 2026 12:43:10 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id A05C7407DC;
-	Mon,  2 Nov 2026 11:15:46 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 475CA1F00A1C;
-	Mon,  2 Nov 2026 11:15:46 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linuxfoundation.org;
-	s=korg; t=1793618146;
-	bh=5Atfc5zlyNXW6OtAyRigvyHRys7Tsw1F2mguudvujDk=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=ROIf0LlvIq/LO6HwVZ+PdFeCXRtoyOdDuqnvXVwKml9UfFYCJqB1aZrDN+rEo67DE
-	 IV5df7y9wWDpKBf2UV/AZ2Q5Ew6T/8Pv/HjHjYKFbX/y9RSRrq39dA40XxyyAZu0Md
-	 nEFc1UreMAxoIsc56gwuojOo9wbrkberwRRmXauE=
-Date: Mon, 2 Nov 2026 12:15:44 +0100
-From: Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-To: Ryan Brue <ryanbrue.dev@gmail.com>
-Subject: Re: [PATCH RESEND] usb: mtu3: fix system suspend in gadget mode
- after soft disconnect
-Message-ID: <2026110236-game-mandatory-2890@gregkh>
-References: <20260929-rbrue-suez-upstreaming-mtu3-fix-suspend-usb-gadget-mode-v1-1-a0ac3b6b2b62@gmail.com>
- <416aaa7a-aebb-4129-8af9-e2895ac9f78a@gmail.com>
+	by tor.source.kernel.org (Postfix) with ESMTP id 3083560F1F;
+	Mon,  2 Nov 2026 12:43:07 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id C15C91F00A17;
+	Mon,  2 Nov 2026 12:43:06 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1793623386;
+	bh=Fvicyg8Fd06ea9xOp3734mK6H6xlGiXlw0uR3rAzBzs=;
+	h=From:To:Cc:In-Reply-To:References:Subject:Date;
+	b=oh1sbX6UxViCVjK652yjM3GQIfeNiU+flMgKM1OPDapbm0ytnUs0+VOt5++gcUkLy
+	 znS3tBmZN1fzIl5llI5sqP5X25MhjNnlpufpHqIE2POVXnc0IzOQvFezmenf/03XJy
+	 +hSZN5BY43sRw42IEZiW2NhIoKfVj3iKh3wA10OhH1iIuCugRvuLf4Dz7yzM+m4Gya
+	 Vt5ZLtz3RNOFOJRhsoV0NeZt+GYG3e+PIwX4A7Ps5k+vPXBW0UkI7D2Iz3zW1QgyCg
+	 3dodCtGVKSbm8GrtTs4X/9SdjAqNIaaKS5i70wKet/Sn5Z3MBxQUCpL5fQL8OBLTtR
+	 8hvRqSWwTDzXw==
+Received: from traversing.sirena.org.uk (localhost [IPv6:::1])
+	by traversing.sirena.org.uk (Postfix) with ESMTP id 1947D2310542;
+	Mon, 02 Nov 2026 12:43:05 +0000 (GMT)
+From: Mark Brown <broonie@kernel.org>
+To: Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Ninad Naik <ninadnaik07@gmail.com>
+Cc: linux-spi@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+In-Reply-To: <20261026112033.36310-1-ninadnaik07@gmail.com>
+References: <20261026112033.36310-1-ninadnaik07@gmail.com>
+Subject: Re: [PATCH v2] spi: mtk-snfi: use min() in
+ mtk_snand_read_page_cache()
+Message-Id: <179357935036.1716893.15135482750759884888.b4-ty@b4>
+Date: Mon, 02 Nov 2026 00:29:10 +0000
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <416aaa7a-aebb-4129-8af9-e2895ac9f78a@gmail.com>
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+X-Mailer: b4 0.17-dev
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1122; i=broonie@kernel.org;
+ h=from:subject:message-id; bh=czJJa5KVgAzY89jIsO/TrpW8iHAFY+XUjsaRbcZfipc=;
+ b=owGbwMvMwCWm/754w+YLFp2Mp9WSGLJetEbY7pjec3rKvBq/5lN2QdeE53fNk+bdvrLB4Htfg
+ 3H88RKHjlIWBjEuBlkxRZa4LO6X9SWv1/AdXNgGM4eVCWQIAxenAEykeS7D/3Jm7phmE69wWY9o
+ fe2vGe8D5a6fm57vXpQXsXZhxUXrJYwMD2NL3vjdvu3w9YS4oqNneusy1krv5jd1as/1VerKK24
+ yAwA=
+X-Developer-Key: i=broonie@kernel.org; a=openpgp;
+ fpr=3F2568AAC26998F9E813A1C5C3F436CA30F5D8EB
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -62,22 +79,44 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: linux-usb@vger.kernel.org, linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, Chunfeng Yun <chunfeng.yun@mediatek.com>, linux-arm-kernel@lists.infradead.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-3.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=no
-	autolearn_force=no version=4.0.1
+X-Spam-Status: No, score=-12.8 required=3.0 tests=BAYES_00,DATE_IN_PAST_12_24,
+	DKIMWL_WL_HIGH,DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,
+	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,
+	SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no
+	version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On Sun, Nov 01, 2026 at 09:43:20PM -0600, Ryan Brue wrote:
-> Hi Greg,
-> 
-> Gentle ping on this one, there hasn't been any replies since the resend on
-> Sept 29. It fixes system suspend on MT8173 in gadget mode after a soft
-> disconnect. I've been running it on an Amazon Fire HD 10 (2017) since
-> September.
+On Mon, 26 Oct 2026 16:50:33 +0530, Ninad Naik wrote:
+> spi: mtk-snfi: use min() in mtk_snand_read_page_cache()
 
-Sorry, I see no context here :(
+Applied to
+
+   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/spi.git for-7.5
+
+Thanks!
+
+[1/1] spi: mtk-snfi: use min() in mtk_snand_read_page_cache()
+      https://git.kernel.org/broonie/spi/c/44e7659f4618
+
+All being well this means that it will be integrated into the linux-next
+tree (usually sometime in the next 24 hours) and sent to Linus during
+the next merge window (or sooner if it is a bug fix), however if
+problems are discovered then the patch may be dropped or reverted.
+
+You may get further e-mails resulting from automated or manual testing
+and review of the tree, please engage with people reporting problems and
+send followup patches addressing any issues that are reported if needed.
+
+If any updates are required or you are submitting further changes they
+should be sent as incremental updates against current git, existing
+patches will not be replaced.
+
+Please add any relevant lists and maintainers to the CCs when replying
+to this mail.
+
+Thanks,
+Mark
+
 
