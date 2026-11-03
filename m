@@ -2,91 +2,72 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id E3263606A326
-	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Nov 2026 12:48:51 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 50570606A33A
+	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Nov 2026 13:15:57 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=sG9BREpf;
-	dkim=pass (2048-bit key, unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256 header.s=Intel header.b=nxGW8aHx
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=b2ZeIY7k;
+	dkim=pass (2048-bit key, unprotected) header.d=cjdns.fr header.i=@cjdns.fr header.a=rsa-sha256 header.s=dkim header.b=J/JdBhFu
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Unsubscribe-Post:List-Owner;
-	bh=DvLrEwFnnOMt3PTsnR8P7yQJiGzTT/5N3IGwtm50AhM=; b=sG9BREpf9BO+GkXQ1kEfBbDS3E
-	Fs+YpN7xqbah1w+/0YPXwgpH11CHTjAmuJdeeJM4jkeUnZw/UCJ8uItXX5MAXRTr7RfSac/5nOLmA
-	D5+OceJewDseDhtQJBIoGMRrCj0DIGzonDw1w5Oo2vPaHmXOas7qi+Ddt0KAqiLXa3RH+6UGUfqIh
-	QMxph314TBzBoQuMOZwvFRd4BESebGp/+ssHuD84TmTx4uH7Ecs8iNJxxX/tuf/f9EnB5LM38UH4h
-	0k+o2ZwEAQlQp67YgWbOF2bCJv59ABH+tghSdHCOuNJBdit9RxZt8GkjSfNgJwjFCVGVIeMgHuEwO
-	e24Bd3dw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Unsubscribe-Post:
+	List-Owner; bh=7ulnvN9VsCbKJ/5rQ+fv57lUtGef7Rza8nTzYqc8E6E=; b=b2ZeIY7kYGETD9
+	+ujYMEKVOsSGwpkj6bd4MZrawuFeaewYSYVuJGpdHu0TbE2upNeGeG+av7e6O5LOjg1Q98wQ9o/FS
+	BCZQ6xrrV5wPPNhhn9HUS075ipcW+kpjRF49ZI5wh1FICQf1E1mYt4E6txDEhndFsP5X70SPmMyWx
+	NxioV6vhseXXVQf4pqy90wM6WhD5bMv64c4Jpm6+YwPoNtfwjqp9luFhIHRzCPjKli524AN5taAna
+	W8Ci5mm5ZyuT2mdWx4OaRY1lBIbUXbe5xrWb9RhI9miPtKbxxyMqfdwkke/b1LB2XMw4+AxOHZgiv
+	I1Aqi/AqONgkXEMEkeBw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xODwZ-00000002PkJ-27vV;
-	Tue, 03 Nov 2026 12:48:51 +0000
-Received: from mgamail.intel.com ([198.175.65.21])
+	id 1xOEMm-00000002VvR-40qr;
+	Tue, 03 Nov 2026 13:15:56 +0000
+Received: from mail.cjdns.fr ([5.135.140.105])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xODwW-00000002PjF-1zCE;
-	Tue, 03 Nov 2026 12:48:49 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1793710128; x=1825246128;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:content-transfer-encoding:in-reply-to;
-  bh=szLErHR8O0Xef4JCXJ3dLezPIj9VfgU7oaY9Ib/XukA=;
-  b=nxGW8aHx6p4oMDKo3mXSMPH2jTnoai/AhnCsZ9Kj/a3EYxd/gufgD+qL
-   KireKyiulbCReB5Z831+MkFv+tnYO+Uu49un/eMWsMicv6bYVb2AcEIha
-   lnRccYZfzkvXSgNqU+9kkXJw7xaCVZ8mIwkO42JHRGvbKP8SVurJiDJXM
-   2yUCmmZrNXLzBPlZxzrZEq5Gv9a3dbxED+Gv6x7S/eSdmGZW1Wtvr6Tea
-   9GO9RqeK2MnmxD6DcmgfJTF5NLBqKp7vsW6U13OXbSy4aPt4uEWHtgg/u
-   1v54wl3C8VdJIakXmaSHpxeorsjwdiQkg2FnoWcJM33UuY6ekvRwcD3kf
-   w==;
-X-CSE-ConnectionGUID: eyhbV29ASXyZjKHP5PqbIg==
-X-CSE-MsgGUID: BrpytEcuRVqKY1icfrSkpw==
-X-IronPort-AV: E=McAfee;i="6800,10657,11954"; a="2523719"
-X-IronPort-AV: E=Sophos;i="6.27,193,1787036400"; 
-   d="scan'208";a="2523719"
-Received: from fmviesa010.fm.intel.com ([10.60.135.150])
-  by orvoesa113.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 03 Nov 2026 04:48:45 -0800
-X-CSE-ConnectionGUID: W54yryuwSc6+vAc5NpYeHw==
-X-CSE-MsgGUID: Oha4hgXqS9Kbdg4gTOflHQ==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.27,193,1787036400"; 
-   d="scan'208";a="6953453"
-Received: from black.igk.intel.com ([10.91.253.5])
-  by fmviesa010.fm.intel.com with ESMTP; 03 Nov 2026 04:48:43 -0800
-Received: by black.igk.intel.com (Postfix, from userid 1001)
-	id 21F9A99; Tue, 03 Nov 2026 13:48:42 +0100 (CET)
-Date: Tue, 3 Nov 2026 13:48:42 +0100
-From: "mika.westerberg@linux.intel.com" <mika.westerberg@linux.intel.com>
-To: Chunfeng Yun =?utf-8?B?KOS6keaYpeWzsCk=?= <Chunfeng.Yun@mediatek.com>
-Cc: "linux-usb@vger.kernel.org" <linux-usb@vger.kernel.org>,
-	"westeri@kernel.org" <westeri@kernel.org>,
-	"gregkh@linuxfoundation.org" <gregkh@linuxfoundation.org>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	"YehezkelShB@gmail.com" <YehezkelShB@gmail.com>,
-	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
-	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
-	"andreas.noever@gmail.com" <andreas.noever@gmail.com>,
-	"matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
-	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>
-Subject: Re: [PATCH 4/4] thunderbolt: prevent pcie tunnel activation/teardown
- warnings
-Message-ID: <20261103124842.GA158991@black.igk.intel.com>
-References: <20261030082539.1208733-1-chunfeng.yun@mediatek.com>
- <20261030082539.1208733-5-chunfeng.yun@mediatek.com>
- <20261030085628.GS158991@black.igk.intel.com>
- <82f1a3227685b241938ccb500b97d1e73212bf36.camel@mediatek.com>
+	id 1xOEMj-00000002VuU-3biK;
+	Tue, 03 Nov 2026 13:15:55 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id D4BB4273BB9;
+	Tue,  3 Nov 2026 14:15:34 +0100 (CET)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cjdns.fr; s=dkim;
+	t=1793711745; h=from:subject:date:message-id:to:cc:mime-version:content-type:
+	 content-transfer-encoding:content-language:in-reply-to:references;
+	bh=7ulnvN9VsCbKJ/5rQ+fv57lUtGef7Rza8nTzYqc8E6E=;
+	b=J/JdBhFuB1Lc17BCzKASBTrGoMuC5xDlVYh6Z005FWsIQ+l00oHjV8LmTml6Kl6fMP66+r
+	9Ix+RVrpBG5C66PfhmX3my5GYaaiwTymlM905oI51K2DG/IM1Giu+kqxzgGmAyvLRTZaTd
+	YhGNyGdgwdqVU+NquzGUQ5z1PddP5LFTCzJCtKlnda9DAvS2RXzaJI6z4dGzMC0HwNIKLB
+	6erpbH0qh32nlxnCirtPNjxVTk9h6wLybxcxZTWN18SszPGE0wzB/fgI+e80oqgeuV3lK9
+	D7szzMK5mhi79mzbP61lfXdWDkH5IuxSzDXR4mSZeGubb6ptkSueuvWsfj8C5Q==
+Message-ID: <39cb446e-b667-4766-bd79-2635eb36166c@cjdns.fr>
+Date: Tue, 3 Nov 2026 14:15:32 +0100
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <82f1a3227685b241938ccb500b97d1e73212bf36.camel@mediatek.com>
+User-Agent: Mozilla Thunderbird Beta
+Subject: Re: [PATCH v4 6/7] dt-bindings: net: dsa: mediatek,mt7530: add EcoNet
+ EN751221 switches
+To: Krzysztof Kozlowski <krzk@kernel.org>
+Cc: netdev@vger.kernel.org, andrew@lunn.ch, olteanv@gmail.com,
+ davem@davemloft.net, edumazet@google.com, kuba@kernel.org,
+ pabeni@redhat.com, robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
+ matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
+ chester.a.unal@arinc9.com, daniel@makrotopia.org, linux@armlinux.org.uk,
+ arinc.unal@arinc9.com, Landen.Chao@mediatek.com, dqfext@gmail.com,
+ sean.wang@mediatek.com, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, naseefkm@gmail.com, b.larsson@gmx.com
+References: <20261029184202.1859843-1-cjd@cjdns.fr>
+ <20261029184202.1859843-7-cjd@cjdns.fr>
+ <20261103-soft-lyrical-squid-c5a108@quoll>
+Content-Language: en-US
+From: Caleb James DeLisle <cjd@cjdns.fr>
+In-Reply-To: <20261103-soft-lyrical-squid-c5a108@quoll>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+X-Last-TLS-Session-Version: TLSv1.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261103_044848_589850_2AE55819 
-X-CRM114-Status: GOOD (  16.16  )
-X-Spam-Score: -4.2 (----)
+X-CRM114-CacheID: sfid-20261103_051554_254161_84EF9E53 
+X-CRM114-Status: GOOD (  22.83  )
+X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -97,90 +78,99 @@ List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-3.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=no
-	autolearn_force=no version=4.0.1
+X-Spam-Status: No, score=-17.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,
+	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1
+	autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Hi,
+Hello,
 
-On Tue, Nov 03, 2026 at 08:33:51AM +0000, Chunfeng Yun (云春峰) wrote:
-> On Fri, 2026-10-30 at 09:56 +0100, Mika Westerberg wrote:
-> > On Fri, Oct 30, 2026 at 04:25:39PM +0800, Chunfeng Yun wrote:
-> > > When usb4 enter sleep mode, echo 1 to authorized of sysfile,
-> > > will wakeup usb4 driver, but fail to create pcie tunnel, cause
-> > > the warning due to a race condition between switch disconnect
-> > 
-> > It's router
-> will modify it.
-> 
-> > 
-> > > during resume and user authorization
-> [  278.831186] usb4_hi NVDA8100:00: 0:1: is unplugged (state: 7),
-> retrying...
-> [  278.943031] usb4_hi NVDA8100:00: 0:1: failed to reach state
-> TB_PORT_UP. Ignoring port...
-> [  278.951125] usb4_hi NVDA8100:00: 0:1: lost during suspend,
-> disconnecting
-> [  278.957819] usb4_hi NVDA8100:00: 0:4 <-> 1:16 (USB3): deactivating
-> [  278.964794] usb4_hi NVDA8100:00: deactivating USB3 Down path from
-> 0:4 to 1:16
-> [  278.972737] usb4_hi NVDA8100:00: deactivating USB3 Up path from 1:16
-> to 0:4
-> [  278.980504] usb4_hi NVDA8100:00: 0: TMU: mode change off -> bi-
-> directional, HiFi requested
-> [  278.991265] usb4_hi NVDA8100:00: 0: TMU: mode set to: bi-
-> directional, HiFi
-> [  278.999511] usb4_hi NVDA8100:00: 0:1: total credits changed 66 -> 66
-> [  279.006408] usb4_hi NVDA8100:00: 1: link width set to symmetric,
-> dual lanes
-> [  279.013763] usb4_hi NVDA8100:00: 0:7 <-> 1:9 (PCI): activating
-> [  279.019587] usb4_hi NVDA8100:00: activating PCIe Down path from 0:7
-> to 1:9
-> [  279.026468] usb4_hi NVDA8100:00: 1:1: Writing hop 1
-> [  279.031335] usb4_hi NVDA8100:00: 1:1:  In HopID: 8 => Out port: 9
-> Out HopID: 8
-> [  279.038546] usb4_hi NVDA8100:00: 1:1:   Weight: 1 Priority: 3
-> Credits: 32 Drop: 0 PM: 0
-> [  279.046536] usb4_hi NVDA8100:00: 1:1:    Counter enabled: 0 Counter
-> index: 2047
-> [  279.053834] usb4_hi NVDA8100:00: 1:1:   Flow Control (In/Eg): 1/0
-> Shared Buffer (In/Eg): 0/0
-> [  279.062259] usb4_hi NVDA8100:00: 1:1:   Unknown1: 0x0 Unknown2: 0x0
-> Unknown3: 0x0
-> [  279.069730] ------------[ cut here ]------------
-> [  279.074335] usb4_hi NVDA8100:00: PCIe Down path activation failed
-> [  279.080426] WARNING: CPU: 5 PID: 2433 at
-> drivers/thunderbolt/path.c:587 tb_path_activate+0x1a4/0x5b0
-> ...
-> [  279.220285] Call trace:
-> [  279.222722]  tb_path_activate+0x1a4/0x5b0 (P)
-> [  279.227068]  tb_tunnel_activate+0x140/0x498
-> [  279.231241]  tb_tunnel_pci+0x180/0x490
-> [  279.234980]  tb_domain_approve_switch+0x74/0xb0
-> [  279.239500]  authorized_store+0x214/0x270
-> [  279.243498]  dev_attr_store+0x20/0x70
-> ...
-> [  279.288888] ---[ end trace 0000000000000000 ]---
-> [  279.293497] usb4_hi NVDA8100:00: 0:7 <-> 1:9 (PCI): activation
-> failed
-> 
-> 
-> root cause:
-> 
-> The warning were caused by a race condition between switch disconnect
-> during resume and user authorization:
-> 
->    1. While the system was in runtime suspend, userspace executed:
-> 
->        echo 1 > /sys/bus/thunderbolt/devices/0-1/authorized
->    2. Writing to this sysfs attribute woke up the USB4 controller
-> (nhi_runtime_resume).
->    3. During resume, the downstream port 0:1 failed to complete link
-> training within the timeout and was declared lost:
+Thanks for the review.
 
-Okay we get the warning but the bigger problem here is that why the link
-does not come up anymore? Unless you unplugged the router as well.
+On 03/11/2026 12:08, Krzysztof Kozlowski wrote:
+> On Thu, Oct 29, 2026 at 06:42:01PM +0000, Caleb James DeLisle wrote:
+>> The EcoNet EN751221 MIPS SoC integrates an MT7530 switch memory-mapped
+>> in the SoC register space. It is similar to the econet,en7528-switch
+>> except that ports 0..3 are 10/100 only, port 4 has a gigabit PHY, and
+>> port 5 has no PHY, but is in some implementations connected to a
+>> downstream MT7530 multi-chip module via a TRGMII link.
+>>
+>> The downstream MT7530 is similar to the MT7621 multi-chip module and
+>> has all gigabit ports.
+>>
+>> Add the econet,en751221-switch compatible with the same constraints as
+>> the other built-in switches and also add the econet,en751221-gswitch
+>> multi-chip-module switch whose port 6 is configured as a DSA link port.
+>>
+>> Signed-off-by: Caleb James DeLisle <cjd@cjdns.fr>
+>> ---
+>>   .../bindings/net/dsa/mediatek,mt7530.yaml     | 43 ++++++++++++++++++-
+>>   1 file changed, 41 insertions(+), 2 deletions(-)
+>>
+>> diff --git a/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml b/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml
+>> index f98b9113ad12..011c94ef9554 100644
+>> --- a/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml
+>> +++ b/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml
+>> @@ -29,6 +29,12 @@ description: |
+>>     and the switch registers are directly mapped into SoC's memory map rather than
+>>     using MDIO. The DSA driver currently doesn't support MT7620 variants.
+>>   
+>> +  EcoNet EN751221 SoCs have a memory mapped MT7530 with 3x 10/100 PHYs and 1x
+>> +  gigabit PHY. Some EN751221 chips such as EN7513G and EN7526G have a multi-chip
+>> +  module implementation of the MT7530 as well as the on-die switch. In these
+>> +  packages, the multi-chip module is connected to port 5 of the on-die switch
+>> +  via a TRGMII link and allows for 5 gigabit ports.
+>> +
+>>     There is only the standalone version of MT7531.
+>>   
+>>     Port 5 on MT7530 supports various configurations:
+>> @@ -109,6 +115,14 @@ properties:
+>>             Built-in switch of the EcoNet EN7528 SoC
+>>           const: econet,en7528-switch
+>>   
+>> +      - description:
+>> +          Built-in switch of EcoNet EN751221 SoC
+> You can drop, pointless description, repeats the compatible.
+
+
+Perhaps reword "On-die switch of EcoNet EN751221 SoC" to avoid confusion 
+with MCM switch?
+
+
+>
+>> +        const: econet,en751221-switch
+>> +
+>> +      - description:
+>> +          Multi-chip module gigabit MT7530 in EN751221 SoC
+> Keep it in one line with description. No need to inflate it even more.
+
+
+OK
+
+
+>
+>> +        const: econet,en751221-gswitch
+> That's almost the same compatible, which makes me wonder if you describe
+> the same device twice. Same device, same compatible.
+
+
+Well, these are both MT7530 based, but one of them is on-die with the 
+SoC and the other one is an MCM so for the driver they are very 
+different - they're even loaded by different kmods. I think since one is 
+MMIO and the other is MDIO, using the same compatible won't cause a 
+driver problem - but I don't know if it's best practice to smooth over 
+such a difference or not. Your advice here would be most appreciated.
+
+
+Thanks,
+
+Caleb
+
+
+>
+> Best regards,
+> Krzysztof
 
