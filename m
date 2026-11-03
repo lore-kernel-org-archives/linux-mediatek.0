@@ -2,80 +2,68 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 4735B60822AB
-	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Nov 2026 10:42:43 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 2152B6070AA3
+	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Nov 2026 10:59:59 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=sQc3TEDn
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=gtbZxM41;
+	dkim=pass (2048-bit key, unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=YRQ7geCx
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=dq/RY5R/Na6tlI++Iffy5vOaP29XVU/XmXlYaY8sWUE=; b=sQc3TEDnMXpxS8QGoNYIpMlc3B
-	bMWHYymPFfVCkv7CWN+3t34B8I620+VdHkZJmKF1W08v4zBMvPqPPLAuNpg14dfuV3K9NBj9rSWiK
-	OGSBHVPR2GhCR3GoYcGqpq5UqZX6NucQLy7OtquZiBU1iREPiaJpGr9hgXRFm0EVNhpoEMQxJikrt
-	/jZCkRXDLPIyZfssjp1aNukJF4WNokKXNWWzxca+eOQx2+fpIGRwLJ7pxA4g0JvHxy8SapW2GVv9l
-	rSlGHz9nEvj+ahDTP12wJKmkw0zn3ia03MLs9grla/H1GyuM92oeXcGMP0tfV1VdZw9gDjfDCp/1p
-	cWAoZ+gA==;
+	bh=5pKcFRXYhUfRt/NFgpZQiyJq40B9sdnA84VTi8AATL4=; b=gtbZxM41+FbqRyWKey0QXHXv72
+	sAcDLEZBIgRCqbHVbd9N3Q4UKL0WhQvl7h+22C+hcJS4aOmWgyFddPWNpp0z8HSvzTO7dInzOsXMI
+	mVNR4QzcuLkfTxRDOdhplVKPwNvvOplVFSMYvQcVRN1GXa03RuRpg+RzEaLhLPgN4BqAL5tJtoNUG
+	9GathxWsbx15P9PX1lgI6zn7XvksrtIS1wDPa0ewQl8BnzppJW8nhwyKT7u3Cbr05MtD+Upk3NfoV
+	3r7Dzzz5SLvip50vtmwU52ekcBMttdGpU5RLNnzO7kfxV77VVcHq853nBMIErF+ukVCcPeGxTzbQ3
+	GniOt/XA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xOByT-000000023GR-2ttX;
-	Tue, 03 Nov 2026 10:42:41 +0000
-Received: from smtp81.cstnet.cn ([159.226.251.81] helo=cstnet.cn)
+	id 1xOCFC-0000000278w-3Qs7;
+	Tue, 03 Nov 2026 10:59:58 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xOByQ-000000023Ci-18nt;
-	Tue, 03 Nov 2026 10:42:39 +0000
-Received: from dfae2b116770.home.arpa (unknown [36.110.52.2])
-	by APP-03 (Coremail) with SMTP id rQCowACneZqYuulqrMg7AA--.6046S2;
-	Tue, 03 Nov 2026 18:42:32 +0800 (CST)
-From: Wentao Liang <vulab@iscas.ac.cn>
-To: Chun-Kuang Hu <chunkuang.hu@kernel.org>,
-	Philipp Zabel <p.zabel@pengutronix.de>,
-	Chunfeng Yun <chunfeng.yun@mediatek.com>,
-	Vinod Koul <vkoul@kernel.org>,
-	Neil Armstrong <neil.armstrong@linaro.org>,
-	Manivannan Sadhasivam <mani@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: dri-devel@lists.freedesktop.org,
-	linux-mediatek@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-phy@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	Wentao Liang <vulab@iscas.ac.cn>,
-	stable@vger.kernel.org
-Subject: [PATCH] phy: mediatek: hdmi: use devm clock provider registration
-Date: Tue,  3 Nov 2026 10:42:41 +0000
-Message-Id: <20261103104241.1373838-1-vulab@iscas.ac.cn>
-X-Mailer: git-send-email 2.34.1
+	id 1xOCFA-0000000277h-2jQI;
+	Tue, 03 Nov 2026 10:59:57 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by sea.source.kernel.org (Postfix) with ESMTP id 5E3D143A82;
+	Tue,  3 Nov 2026 10:59:55 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 456CD1F000C1;
+	Tue,  3 Nov 2026 10:59:54 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1793703595;
+	bh=5pKcFRXYhUfRt/NFgpZQiyJq40B9sdnA84VTi8AATL4=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To;
+	b=YRQ7geCx/qjrzWWDNYRgg6axSKgU5uvHghVLI81Zpn+1oDAhtH6BXWRZ37uqV4pi0
+	 71M5+uhW+qULQlK6pZolWG9o7RpQFg1sPKE9fr8Og1B/p+UOrbEDiHnIvazdTiy62U
+	 0IG3igKkHO0AJHcjPccEOkDbQR9AaS3Sj4E+4C7HMutrmM8WwyZ1Nr3lzaMupa6Wfm
+	 +4riYs4vvmV7kdBlozp13+EuwLkb9x8ATTTbT0aiMCaYkzOBWE++TXkkV7tpqP6iFt
+	 V+2TNl32cMMO2SSbtgLv8D+ahHTaPJ/67imKLF6+srU+qQyncAt6z8YnQYQIjF9yG8
+	 6oZ2tGLfaCZwg==
+Date: Tue, 3 Nov 2026 11:59:52 +0100
+From: Krzysztof Kozlowski <krzk@kernel.org>
+To: Caleb James DeLisle <cjd@cjdns.fr>
+Cc: netdev@vger.kernel.org, andrew@lunn.ch, olteanv@gmail.com, 
+	davem@davemloft.net, edumazet@google.com, kuba@kernel.org, pabeni@redhat.com, 
+	robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org, matthias.bgg@gmail.com, 
+	angelogioacchino.delregno@collabora.com, chester.a.unal@arinc9.com, daniel@makrotopia.org, 
+	linux@armlinux.org.uk, arinc.unal@arinc9.com, Landen.Chao@mediatek.com, 
+	dqfext@gmail.com, sean.wang@mediatek.com, devicetree@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-mediatek@lists.infradead.org, naseefkm@gmail.com, b.larsson@gmx.com
+Subject: Re: [PATCH v4 2/7] dt-bindings: net: dsa: mediatek,mt7530: describe
+ 'passthrough' hierarchy
+Message-ID: <20261103-magic-ingenious-buzzard-8bfbc5@quoll>
+References: <20261029184202.1859843-1-cjd@cjdns.fr>
+ <20261029184202.1859843-3-cjd@cjdns.fr>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-CM-TRANSID: rQCowACneZqYuulqrMg7AA--.6046S2
-X-Coremail-Antispam: 1UD129KBjvJXoW7ur48ZFWxuw1DZFy8ZrWkZwb_yoW8XrW3pF
-	1UGa4jyF98AF4xGw1DJ3W7XFyYka43JFWSkrW7G3y5Za15CryfX3yayFyF9FsYyFykua12
-	vr1qvFWrWFW8ZFDanT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
-	9KBjDU0xBIdaVrnRJUUUBEb7Iv0xC_Kw4lb4IE77IF4wAFF20E14v26r4j6ryUM7CY07I2
-	0VC2zVCF04k26cxKx2IYs7xG6rWj6s0DM7CIcVAFz4kK6r1j6r18M28lY4IEw2IIxxk0rw
-	A2F7IY1VAKz4vEj48ve4kI8wA2z4x0Y4vE2Ix0cI8IcVAFwI0_Ar0_tr1l84ACjcxK6xII
-	jxv20xvEc7CjxVAFwI0_Gr1j6F4UJwA2z4x0Y4vEx4A2jsIE14v26rxl6s0DM28EF7xvwV
-	C2z280aVCY1x0267AKxVW0oVCq3wAS0I0E0xvYzxvE52x082IY62kv0487Mc02F40EFcxC
-	0VAKzVAqx4xG6I80ewAv7VC0I7IYx2IY67AKxVWrXVW3AwAv7VC2z280aVAFwI0_Cr1j6r
-	xdMcvjeVCFs4IE7xkEbVWUJVW8JwACjcxG0xvY0x0EwIxGrwACjI8F5VAI37AI020EjII2
-	zVCS5cI20VAGYxC7M4IIrI8v6xkF7I0E8cxan2IY04v7MxkF7I0En4kS14v26r1q6r43Mx
-	AIw28IcxkI7VAKI48JMxC20s026xCaFVCjc4AY6r1j6r4UMI8I3I0E5I8CrVAFwI0_Jr0_
-	Jr4lx2IqxVCjr7xvwVAFwI0_JrI_JrWlx4CE17CEb7AF67AKxVWUtVW8ZwCIc40Y0x0EwI
-	xGrwCI42IY6xIIjxv20xvE14v26ryj6F1UMIIF0xvE2Ix0cI8IcVCY1x0267AKxVW8Jr0_
-	Cr1UMIIF0xvE42xK8VAvwI8IcIk0rVWUJVWUCwCI42IY6I8E87Iv67AKxVW8Jr0_Cr1UMI
-	IF0xvEx4A2jsIEc7CjxVAFwI0_Cr1j6rxdYxBIdaVFxhVjvjDU0xZFpf9x07bOAw3UUUUU
-	=
-X-CM-SenderInfo: pyxotu46lvutnvoduhdfq/1tbiBgEAA2rpnIR99AAAsW
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261103_024238_697979_B2D44874 
-X-CRM114-Status: GOOD (  11.02  )
-X-Spam-Score: -0.9 (/)
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+In-Reply-To: <20261029184202.1859843-3-cjd@cjdns.fr>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,48 +74,28 @@ List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
+X-Spam-Status: No, score=-15.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,
+	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=ham
+	autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-mtk_hdmi_phy_probe() registers the PLL clock provider with the
-deprecated of_clk_add_provider(), which takes a reference on the device
-node.  The driver has no .remove callback, so neither the node
-reference nor the provider registration is ever released; after the
-device is unbound, the global provider list still points at the freed
-hdmi_phy and at the unregistered clock.
+On Thu, Oct 29, 2026 at 06:41:57PM +0000, Caleb James DeLisle wrote:
+> Due to hardware limitations, full switch hierarchies are not supported
+> with DSA based on the mt7530 DSA tag, however it does support a simplified
+> hierarchy in which one or more switches act as passthrough conduits with
+> only one CPU port and one DSA port active. Document this capability.
+> 
+> Signed-off-by: Caleb James DeLisle <cjd@cjdns.fr>
+> ---
+>  .../devicetree/bindings/net/dsa/mediatek,mt7530.yaml         | 5 +++++
+>  1 file changed, 5 insertions(+)
 
-Register the provider with devm_of_clk_add_hw_provider() and
-of_clk_hw_simple_get(), matching the sibling MIPI DSI PHY driver, so
-that it is removed when the device is unbound.
+Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
 
-Fixes: be28b6507c46 ("drm/mediatek: separate hdmi phy to different file")
-Cc: stable@vger.kernel.org
-Assisted-by: DeepSeek-V4.1-Flash and OpenAI Codex
-Signed-off-by: Wentao Liang <vulab@iscas.ac.cn>
----
- drivers/phy/mediatek/phy-mtk-hdmi.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
-
-diff --git a/drivers/phy/mediatek/phy-mtk-hdmi.c b/drivers/phy/mediatek/phy-mtk-hdmi.c
-index 52a7d525ff9b..e7ed1b789b34 100644
---- a/drivers/phy/mediatek/phy-mtk-hdmi.c
-+++ b/drivers/phy/mediatek/phy-mtk-hdmi.c
-@@ -178,8 +178,8 @@ static int mtk_hdmi_phy_probe(struct platform_device *pdev)
- 			return ret;
- 	}
- 
--	return of_clk_add_provider(dev->of_node, of_clk_src_simple_get,
--				   hdmi_phy->pll);
-+	return devm_of_clk_add_hw_provider(dev, of_clk_hw_simple_get,
-+					   &hdmi_phy->pll_hw);
- }
- 
- static const struct of_device_id mtk_hdmi_phy_match[] = {
--- 
-2.34.1
+Best regards,
+Krzysztof
 
 
