@@ -2,112 +2,78 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id E9F48606D2E4
-	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Nov 2026 15:00:05 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id ED5A6606FCDF
+	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Nov 2026 15:09:17 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=ieRpTG/2;
-	dkim=pass (1024-bit key, unprotected) header.d=redhat.com header.i=@redhat.com header.a=rsa-sha256 header.s=mimecast20190719 header.b=d/aEna/I
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=n2yEaqPG;
+	dkim=pass (2048-bit key, unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=Ka8mU0zm
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Unsubscribe-Post:
-	List-Owner; bh=7N01ts74+fbd6A0+ugAJGY01iwryjK/kLUoNysOMm1c=; b=ieRpTG/2BKkhO3
-	TN9mJj0kk64IJkYrztp+fk54v/o81AdQv38Af4b/4x+XwRydzFCmUUmuLXXTdo5qEQIRrPjajgvB3
-	7nujS2ee9wEGI8sTY+pSbJB2hYYzWRMOHPdY9hWWb9dNGSvPhXybe43FoM+3So1KT5O55e+hAFRBr
-	SIUF/cIPmikWhN5wM92xPnPX1lMLNXrBMCHwSvWdHy+cIOJkXM+jNjYFpIRvYo2mWOBM8Uk8SxHle
-	XpOs/1DFII1FJm/T+TmSCS6uUch3mvgGpN8gWJKEmAxdebq+P0TNJiYC416LtB8/jeDFRACFPHDSp
-	e8nnnb4jMJkGe16av2FA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Unsubscribe-Post:List-Owner;
+	bh=04sRIO3MjeYbz6CJp5GZCOCBS65b5l82fPhVgQ5j8Ig=; b=n2yEaqPGsJwFpmTp9C2+2OPnBq
+	xCSHWT2ab9N0KWzoNzSUvSc4RpV1E5C8ep/ZSPPiAlhR0P01NgsZzhKcgr3VVkMCZc2XFZLh5vPZ8
+	N6PgswfXel9s0wZ6OWOiyaEfBwJbx95c4kuynHH4qQuPyAO9zSGp12C/6lhVAe55GVjlBXfoWHedM
+	Otjrs2uZzn/ysoTM1D20IrezMzMwKj2yKiOh6+CUf36Ju2J07AKGwPF1BZWh2rEri5dGy7DMp6Bpt
+	wZVnO3K68mVSt1kzoS2oUEmTbylL0kdCV36HsFPd/IDpO5cXSbUlHpCUqCYhFXcmrgD7ioF+JEssl
+	M8OB1fGg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xOFzY-00000002pIx-1Eiz;
-	Tue, 03 Nov 2026 15:00:04 +0000
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+	id 1xOG8T-00000002r7H-2q0m;
+	Tue, 03 Nov 2026 15:09:17 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xOFzW-00000002pHY-1xcC
-	for linux-mediatek@lists.infradead.org;
-	Tue, 03 Nov 2026 15:00:03 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1793718000;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=7N01ts74+fbd6A0+ugAJGY01iwryjK/kLUoNysOMm1c=;
-	b=d/aEna/IqhxuAdRkL56DUGLT33MVPskmrVBKBPcZHPcKk43bZeB7SeuomSGeqEqmDGLief
-	OKAECoTFmR1qi6iz1XThuvxJftxsUcO7BBw+QRkwxnzKe1CQOInw43o9thPuLjhfoT7Yl9
-	ylBFNG+l+979ZIOzzgBnaFlWd+RRo2k=
-Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
- [209.85.128.69]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-618-J7LEOyOvPP65FifwgY5FKQ-1; Tue, 03 Nov 2026 09:59:58 -0500
-X-MC-Unique: J7LEOyOvPP65FifwgY5FKQ-1
-X-Mimecast-MFC-AGG-ID: J7LEOyOvPP65FifwgY5FKQ_1793717998
-Received: by mail-wm1-f69.google.com with SMTP id 5b1f17b1804b1-4a35db2d6b3so31167965e9.3
-        for <linux-mediatek@lists.infradead.org>; Tue, 03 Nov 2026 06:59:58 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1793717997; x=1794322797;
-        h=content-transfer-encoding:content-type:in-reply-to:from
-         :content-language:references:cc:to:subject:user-agent:mime-version
-         :date:message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to:content-type;
-        bh=7N01ts74+fbd6A0+ugAJGY01iwryjK/kLUoNysOMm1c=;
-        b=Viju58CGqnOOQmEVUy0wSW/KLYU9kMTZARg7xouypA5LvYjEhklLm2u2jhdnFlYwoc
-         kMHinujn/39txyXSz6NvvxNe9TNfRr4ah8Ww/K8h7d7syublOHdtC2BsJiuHRgEKfB4c
-         Ic80JYiibH1bD+i0FKk1KqObfJdQiOkJEcYXGPbObz5g6ut3P7nohcaJ163QtZ5by0Tr
-         vM/LBLkcNGkHboQFMqoqRbWZysfjw+nFi09acoZ/MiaVj26yGlFHCUW1Xme4IJW4UtqK
-         BiIsGBMdDzXmBXZ/ekinX/+LgYTCAtfGwOf1phYNzRnyhbyVKEmwUemhyySpuO8Q0B0U
-         EWlA==
-X-Forwarded-Encrypted: i=1; AKwUvBxiNS4XlqzIInR30lLsiBW07DGgi98ZMpWnhiL34u9jWv7s+uATSsJswCPBPKpd/aXGc1/PDE04o9LEc8tFIQ==@lists.infradead.org
-X-Gm-Message-State: APuU4Z+WOhHw0ghgnVAmCeaGX4YV2vdlMXVE8pHDkHroYeSEYFgn8J+v
-	xgdMXYaZjH8peSyEPgyt+AtIxmhm6rlaPN7VTqTJmlCN3nGvBe0s2j0hApO8CAzVAbr/FUZJLsM
-	QcSrZJEmlGwrih421JmKU+3hWbSx83navwWaZzZA89jFD2oRvAR4MTOlcMjTpG5EKBnQa1QznhA
-	==
-X-Gm-Gg: AYBFou1HYDnaRL4IJI0DY3mrRBG8KIY7QeNDZe7Ei7x+ZHWK719ytqU1S/p82XjEy//
-	BzykoMH2g7SJmHpxEPOITQ3IycxwVkv4XL8OmRQyu3J1qiK9cLn5mZlgBkIACJyPn/cnfEfsoqU
-	0Wc2qMi+R25BD4BXpHUW8Ba5JOmUnxrIFoeLaj21ZBwcGESQiZcuI1Wltg0G8erJza3XcMpXNhf
-	Q3OvmRsDWbRNpZ7PwGqc7oSq3MR46hqQ5BS61S1uOV8CKcQzhD0CIUy0Fj+LUmspp3kyPMk/j8S
-	VlkvJp6L2mh37TO5+DbMnl+Qblawx+/sAoWSE89CRNf8RnPLffs2DYrcYIwS9edT1oqIBAuvDFY
-	TEun+tN1Y8On2L0GFTjQ7sAzGG7QbrfaJfbOX2zwpeXyy4pncDtAkK5z39ymvmpPpKprcgfZE4D
-	FZpt6ClZ26imgqes9sL7pBbbpFbpDzmxkyHA4ZDihCtbM=
-X-Received: by 2002:a05:600c:a4c:b0:4a2:967:dfb8 with SMTP id 5b1f17b1804b1-4ac1765d7d7mr307788655e9.20.1793717997404;
-        Tue, 03 Nov 2026 06:59:57 -0800 (PST)
-X-Received: by 2002:a05:600c:a4c:b0:4a2:967:dfb8 with SMTP id 5b1f17b1804b1-4ac1765d7d7mr307787935e9.20.1793717996940;
-        Tue, 03 Nov 2026 06:59:56 -0800 (PST)
-Received: from [192.168.88.30] (ip231-128-192-82.pool-bba.aruba.it. [82.192.128.231])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-4abeb77af8csm464079285e9.1.2026.11.03.06.59.55
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Tue, 03 Nov 2026 06:59:56 -0800 (PST)
-Message-ID: <ff77c7ef-4c3b-4113-966d-3c46d5776cdf@redhat.com>
-Date: Tue, 3 Nov 2026 15:59:54 +0100
+	id 1xOG8S-00000002r6N-0ibx;
+	Tue, 03 Nov 2026 15:09:16 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by sea.source.kernel.org (Postfix) with ESMTP id B2BBD436A3;
+	Tue,  3 Nov 2026 15:09:15 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 351961F000C1;
+	Tue,  3 Nov 2026 15:09:10 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1793718555;
+	bh=04sRIO3MjeYbz6CJp5GZCOCBS65b5l82fPhVgQ5j8Ig=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To;
+	b=Ka8mU0zmAxKLwL2fFpD9CSalT3tGxn8R2vJaJEvx62sO5knzmnr8o+jvl3A4PXUYQ
+	 Dxf4yVxdNUJRaSMFUbZXUszVhxd0knfdDWS6zjzIFpMB5n4bUVioUR8MiiThYK+RXG
+	 oLntR6Y938oN1l2HEEGZwVORgG5aTsGwv/MxrYlWW+xz+HzsxFHbe8bsiksmJN+Eeg
+	 st24vgn2YKrHIvg0UlZHV1ThyeHHuIY6Xm64crEiMYg8cxKwttwDLZNXlk3pCT3Gzq
+	 wy9AdFSWAhMox5u4djhZqr3O3sxbk/vCdfLhvYIRh52/cce/Q/j73nK2lIrQ1r3h0O
+	 ape4Kv2DAzHkg==
+Date: Tue, 3 Nov 2026 15:09:07 +0000
+From: Lee Jones <lee@kernel.org>
+To: Luca Leonardo Scorcia <l.scorcia@gmail.com>
+Cc: linux-mediatek@lists.infradead.org,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Dmitry Torokhov <dmitry.torokhov@gmail.com>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>, Sen Chu <sen.chu@mediatek.com>,
+	Sean Wang <sean.wang@mediatek.com>,
+	Macpaul Lin <macpaul.lin@mediatek.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Liam Girdwood <lgirdwood@gmail.com>,
+	Mark Brown <broonie@kernel.org>, Linus Walleij <linusw@kernel.org>,
+	Val Packett <val@packett.cool>, Fabien Parent <parent.f@gmail.com>,
+	Akari Tsuyukusa <akkun11.open@gmail.com>,
+	Chen Zhong <chen.zhong@mediatek.com>, linux-input@vger.kernel.org,
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-pm@vger.kernel.org, mfd@lists.linux.dev,
+	linux-arm-kernel@lists.infradead.org, linux-gpio@vger.kernel.org
+Subject: Re: [PATCH v11 4/9] mfd: mt6397: Use MFD_CELL_* to describe
+ sub-devices
+Message-ID: <179310028255.2808517.13933580516140278450@kernel.org>
+References: <20261021105109.199886-1-l.scorcia@gmail.com>
+ <20261021105109.199886-5-l.scorcia@gmail.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 0/7] net: dsa: mt7530: support EcoNet EN751221
-To: Caleb James DeLisle <cjd@cjdns.fr>, netdev@vger.kernel.org
-Cc: andrew@lunn.ch, olteanv@gmail.com, davem@davemloft.net,
- edumazet@google.com, kuba@kernel.org, robh@kernel.org, krzk+dt@kernel.org,
- conor+dt@kernel.org, matthias.bgg@gmail.com,
- angelogioacchino.delregno@collabora.com, chester.a.unal@arinc9.com,
- daniel@makrotopia.org, linux@armlinux.org.uk, arinc.unal@arinc9.com,
- Landen.Chao@mediatek.com, dqfext@gmail.com, sean.wang@mediatek.com,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- naseefkm@gmail.com, b.larsson@gmx.com
-References: <20261029184202.1859843-1-cjd@cjdns.fr>
-From: Paolo Abeni <pabeni@redhat.com>
-In-Reply-To: <20261029184202.1859843-1-cjd@cjdns.fr>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: tBlaTv06FwcSf3wj0IQ6Ugvha9GBZU9GXixf8pIujOI_1793717998
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261103_070002_587891_B597F61C 
-X-CRM114-Status: GOOD (  16.64  )
-X-Spam-Score: -2.8 (--)
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20261021105109.199886-5-l.scorcia@gmail.com>
+X-AI-Review-Draft: <20261021105109.199886-5-l.scorcia@gmail.com>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -118,48 +84,270 @@ List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-7.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-15.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,
-	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,USER_AGENT_SANE_1 autolearn=no autolearn_force=no
-	version=4.0.1
+	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=ham
+	autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On 10/29/26 19:41, Caleb James DeLisle wrote:
-> The EcoNet EN751221 has a unique switch configuration. Every chip made
-> with an EN751221 die has at least one on-die MT7530 that is MMIO based.
-> This switch has 3x 10/100 ports and 1x gigabit port.
-> 
-> Some popular chip packages such as the EN7513G and EN7526G have another
-> MT7530 implemented as a multi-chip-module that connects to port 5 of
-> the on-die switch and is controlled via the MDIO controller integrated
-> in the on-die MT7530.
-> 
-> In this configurations, the upstream switch is put into a "passthrough"
-> mode in which all traffic is forwarded between port 5 and port 6
-> without altering its DSA tags.
-> 
-> Furthermore, since the DSA core does not call mt753x_setup until all
-> switches are present, and the downstream switch only becomes available
-> when the upstream switch has configured its MDIO controller, the MDIO
-> controller setup on MMIO implementations must be done before
-> mt753x_setup, or else it will never complete.
-> 
-> Finally, the on-die switch and the MCM switch connect via a TRGMII link
-> which requires calibration. In order to calibrate this, PLL adjustment
-> must be possible on the on-die switch, necessitating changes to the
-> core_(set|clear|write|rmw) functions to support MMIO implementations.
-> 
-> Solve all of these issues, add the TRGMII calibration, and add support
-> for both switches.
-> 
-> Since this patchset will probably be subject to some discussion, please
-> consider accepting any patches that are non-controversial since it will
-> make future re-submissions easier.
-Does not apply cleanly, please resubmit. While at it, please add the 'net-next'
-subj prefix.
+On Wed, 21 Oct 2026, Luca Leonardo Scorcia wrote:
 
-/P
+> Use the MFD_CELL_* macros to describe sub-devices. No functional changes.
+>
+> Signed-off-by: Luca Leonardo Scorcia <l.scorcia@gmail.com>
+> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> ---
+>  drivers/mfd/mt6397-core.c | 207 ++++++++++++--------------------------
+>  1 file changed, 67 insertions(+), 140 deletions(-)
+>
+> diff --git a/drivers/mfd/mt6397-core.c b/drivers/mfd/mt6397-core.c
+> index 9ec951996588..3e08179002fa 100644
+> --- a/drivers/mfd/mt6397-core.c
+> +++ b/drivers/mfd/mt6397-core.c
+> @@ -124,165 +124,92 @@ static const struct resource mt6323_pwrc_resources[] = {
+>  };
+>
+>  static const struct mfd_cell mt6323_devs[] = {
+> -	{
+> -		.name = "mt6323-auxadc",
+> -		.of_compatible = "mediatek,mt6323-auxadc",
+> -	}, {
+> -		.name = "mt6323-efuse",
+> -		.of_compatible = "mediatek,mt6323-efuse",
+> -	}, {
+> -		.name = "mt6323-rtc",
+> -		.num_resources = ARRAY_SIZE(mt6323_rtc_resources),
+> -		.resources = mt6323_rtc_resources,
+> -		.of_compatible = "mediatek,mt6323-rtc",
+> -	}, {
+> -		.name = "mt6323-regulator",
+> -		.of_compatible = "mediatek,mt6323-regulator"
+> -	}, {
+> -		.name = "mt6323-led",
+> -		.of_compatible = "mediatek,mt6323-led"
+> -	}, {
+> -		.name = "mt6323-keys",
+> -		.num_resources = ARRAY_SIZE(mt6323_keys_resources),
+> -		.resources = mt6323_keys_resources,
+> -		.of_compatible = "mediatek,mt6323-keys"
+> -	}, {
+> -		.name = "mt6323-pwrc",
+> -		.num_resources = ARRAY_SIZE(mt6323_pwrc_resources),
+> -		.resources = mt6323_pwrc_resources,
+> -		.of_compatible = "mediatek,mt6323-pwrc"
+> -	},
+> +	MFD_CELL_OF("mt6323-auxadc", NULL, NULL, 0, 0,
+> +		    "mediatek,mt6323-auxadc"),
+> +	MFD_CELL_OF("mt6323-efuse", NULL, NULL, 0, 0,
+> +		    "mediatek,mt6323-efuse"),
+> +	MFD_CELL_OF("mt6323-rtc", mt6323_rtc_resources, NULL, 0, 0,
+> +		    "mediatek,mt6323-rtc"),
+> +	MFD_CELL_OF("mt6323-regulator", NULL, NULL, 0, 0,
+> +		    "mediatek,mt6323-regulator"),
+> +	MFD_CELL_OF("mt6323-led", NULL, NULL, 0, 0,
+> +		    "mediatek,mt6323-led"),
+> +	MFD_CELL_OF("mt6323-keys", mt6323_keys_resources, NULL, 0, 0,
+> +		    "mediatek,mt6323-keys"),
+> +	MFD_CELL_OF("mt6323-pwrc", mt6323_pwrc_resources, NULL, 0, 0,
 
+Nit: This is non-blocking, but if you have to respin, please use the
+100-char limit to keep these on single lines where possible. Same for
+all the others below.
+
+> +		    "mediatek,mt6323-pwrc"),
+>  };
+>
+>  static const struct mfd_cell mt6328_devs[] = {
+> -	{
+> -		.name = "mt6328-regulator",
+> -		.of_compatible = "mediatek,mt6328-regulator"
+> -	}, {
+> -		.name = "mt6328-keys",
+> -		.num_resources = ARRAY_SIZE(mt6328_keys_resources),
+> -		.resources = mt6328_keys_resources,
+> -		.of_compatible = "mediatek,mt6328-keys"
+> -	},
+> +	MFD_CELL_OF("mt6328-regulator", NULL, NULL, 0, 0,
+> +		    "mediatek,mt6328-regulator"),
+> +	MFD_CELL_OF("mt6328-keys", mt6328_keys_resources, NULL, 0, 0,
+> +		    "mediatek,mt6328-keys"),
+>  };
+>
+>  static const struct mfd_cell mt6357_devs[] = {
+> -	{
+> -		.name = "mt6359-auxadc",
+> -		.of_compatible = "mediatek,mt6357-auxadc"
+> -	}, {
+> -		.name = "mt6357-regulator",
+> -	}, {
+> -		.name = "mt6357-rtc",
+> -		.num_resources = ARRAY_SIZE(mt6357_rtc_resources),
+> -		.resources = mt6357_rtc_resources,
+> -		.of_compatible = "mediatek,mt6357-rtc",
+> -	}, {
+> -		.name = "mt6357-sound",
+> -		.of_compatible = "mediatek,mt6357-sound"
+> -	}, {
+> -		.name = "mt6357-keys",
+> -		.num_resources = ARRAY_SIZE(mt6357_keys_resources),
+> -		.resources = mt6357_keys_resources,
+> -		.of_compatible = "mediatek,mt6357-keys"
+> -	},
+> +	MFD_CELL_OF("mt6359-auxadc", NULL, NULL, 0, 0,
+> +		    "mediatek,mt6357-auxadc"),
+> +	MFD_CELL_NAME("mt6357-regulator"),
+> +	MFD_CELL_OF("mt6357-rtc", mt6357_rtc_resources, NULL, 0, 0,
+> +		    "mediatek,mt6357-rtc"),
+> +	MFD_CELL_OF("mt6357-sound", NULL, NULL, 0, 0,
+> +		    "mediatek,mt6357-sound"),
+> +	MFD_CELL_OF("mt6357-keys", mt6357_keys_resources, NULL, 0, 0,
+> +		    "mediatek,mt6357-keys"),
+>  };
+>
+>  /* MT6331 is always used in combination with MT6332 */
+>  static const struct mfd_cell mt6331_mt6332_devs[] = {
+> -	{
+> -		.name = "mt6331-rtc",
+> -		.num_resources = ARRAY_SIZE(mt6331_rtc_resources),
+> -		.resources = mt6331_rtc_resources,
+> -		.of_compatible = "mediatek,mt6331-rtc",
+> -	}, {
+> -		.name = "mt6331-regulator",
+> -		.of_compatible = "mediatek,mt6331-regulator"
+> -	}, {
+> -		.name = "mt6332-regulator",
+> -		.of_compatible = "mediatek,mt6332-regulator"
+> -	}, {
+> -		.name = "mt6331-keys",
+> -		.num_resources = ARRAY_SIZE(mt6331_keys_resources),
+> -		.resources = mt6331_keys_resources,
+> -		.of_compatible = "mediatek,mt6331-keys"
+> -	},
+> +	MFD_CELL_OF("mt6331-rtc", mt6331_rtc_resources, NULL, 0, 0,
+> +		    "mediatek,mt6331-rtc"),
+> +	MFD_CELL_OF("mt6331-regulator", NULL, NULL, 0, 0,
+> +		    "mediatek,mt6331-regulator"),
+> +	MFD_CELL_OF("mt6332-regulator", NULL, NULL, 0, 0,
+> +		    "mediatek,mt6332-regulator"),
+> +	MFD_CELL_OF("mt6331-keys", mt6331_keys_resources, NULL, 0, 0,
+> +		    "mediatek,mt6331-keys"),
+>  };
+>
+>  static const struct mfd_cell mt6358_devs[] = {
+> -	{
+> -		.name = "mt6359-auxadc",
+> -		.of_compatible = "mediatek,mt6358-auxadc"
+> -	}, {
+> -		.name = "mt6358-regulator",
+> -		.of_compatible = "mediatek,mt6358-regulator"
+> -	}, {
+> -		.name = "mt6358-rtc",
+> -		.num_resources = ARRAY_SIZE(mt6358_rtc_resources),
+> -		.resources = mt6358_rtc_resources,
+> -		.of_compatible = "mediatek,mt6358-rtc",
+> -	}, {
+> -		.name = "mt6358-sound",
+> -		.of_compatible = "mediatek,mt6358-sound"
+> -	}, {
+> -		.name = "mt6358-keys",
+> -		.num_resources = ARRAY_SIZE(mt6358_keys_resources),
+> -		.resources = mt6358_keys_resources,
+> -		.of_compatible = "mediatek,mt6358-keys"
+> -	},
+> +	MFD_CELL_OF("mt6359-auxadc", NULL, NULL, 0, 0,
+> +		    "mediatek,mt6358-auxadc"),
+> +	MFD_CELL_OF("mt6358-regulator", NULL, NULL, 0, 0,
+> +		    "mediatek,mt6358-regulator"),
+> +	MFD_CELL_OF("mt6358-rtc", mt6358_rtc_resources, NULL, 0, 0,
+> +		    "mediatek,mt6358-rtc"),
+> +	MFD_CELL_OF("mt6358-sound", NULL, NULL, 0, 0,
+> +		    "mediatek,mt6358-sound"),
+> +	MFD_CELL_OF("mt6358-keys", mt6358_keys_resources, NULL, 0, 0,
+> +		    "mediatek,mt6358-keys"),
+>  };
+>
+>  static const struct mfd_cell mt6359_devs[] = {
+> -	{
+> -		.name = "mt6359-auxadc",
+> -		.of_compatible = "mediatek,mt6359-auxadc"
+> -	},
+> -	{ .name = "mt6359-regulator", },
+> -	{
+> -		.name = "mt6359-rtc",
+> -		.num_resources = ARRAY_SIZE(mt6358_rtc_resources),
+> -		.resources = mt6358_rtc_resources,
+> -		.of_compatible = "mediatek,mt6358-rtc",
+> -	},
+> -	{ .name = "mt6359-sound", },
+> -	{
+> -		.name = "mt6359-keys",
+> -		.num_resources = ARRAY_SIZE(mt6359_keys_resources),
+> -		.resources = mt6359_keys_resources,
+> -		.of_compatible = "mediatek,mt6359-keys"
+> -	},
+> -	{
+> -		.name = "mt6359-accdet",
+> -		.of_compatible = "mediatek,mt6359-accdet",
+> -		.num_resources = ARRAY_SIZE(mt6359_accdet_resources),
+> -		.resources = mt6359_accdet_resources,
+> -	},
+> +	MFD_CELL_OF("mt6359-auxadc", NULL, NULL, 0, 0,
+> +		    "mediatek,mt6359-auxadc"),
+> +	MFD_CELL_NAME("mt6359-regulator"),
+> +	MFD_CELL_OF("mt6359-rtc", mt6358_rtc_resources, NULL, 0, 0,
+> +		    "mediatek,mt6358-rtc"),
+> +	MFD_CELL_NAME("mt6359-sound"),
+> +	MFD_CELL_OF("mt6359-keys", mt6359_keys_resources, NULL, 0, 0,
+> +		    "mediatek,mt6359-keys"),
+> +	MFD_CELL_OF("mt6359-accdet", mt6359_accdet_resources, NULL, 0, 0,
+> +		    "mediatek,mt6359-accdet"),
+>  };
+>
+>  static const struct mfd_cell mt6397_devs[] = {
+> -	{
+> -		.name = "mt6397-rtc",
+> -		.num_resources = ARRAY_SIZE(mt6397_rtc_resources),
+> -		.resources = mt6397_rtc_resources,
+> -		.of_compatible = "mediatek,mt6397-rtc",
+> -	}, {
+> -		.name = "mt6397-regulator",
+> -		.of_compatible = "mediatek,mt6397-regulator",
+> -	}, {
+> -		.name = "mt6397-codec",
+> -		.of_compatible = "mediatek,mt6397-codec",
+> -	}, {
+> -		.name = "mt6397-clk",
+> -		.of_compatible = "mediatek,mt6397-clk",
+> -	}, {
+> -		.name = "mt6397-pinctrl",
+> -		.of_compatible = "mediatek,mt6397-pinctrl",
+> -	}, {
+> -		.name = "mt6397-keys",
+> -		.num_resources = ARRAY_SIZE(mt6397_keys_resources),
+> -		.resources = mt6397_keys_resources,
+> -		.of_compatible = "mediatek,mt6397-keys"
+> -	}
+> +	MFD_CELL_OF("mt6397-rtc", mt6397_rtc_resources, NULL, 0, 0,
+> +		    "mediatek,mt6397-rtc"),
+> +	MFD_CELL_OF("mt6397-regulator", NULL, NULL, 0, 0,
+> +		    "mediatek,mt6397-regulator"),
+> +	MFD_CELL_OF("mt6397-codec", NULL, NULL, 0, 0,
+> +		    "mediatek,mt6397-codec"),
+> +	MFD_CELL_OF("mt6397-clk", NULL, NULL, 0, 0,
+> +		    "mediatek,mt6397-clk"),
+> +	MFD_CELL_OF("mt6397-pinctrl", NULL, NULL, 0, 0,
+> +		    "mediatek,mt6397-pinctrl"),
+> +	MFD_CELL_OF("mt6397-keys", mt6397_keys_resources, NULL, 0, 0,
+> +		    "mediatek,mt6397-keys"),
+>  };
+>
+>  struct chip_data {
+> -- 
+> 2.43.0
+>
+
+-- 
+Lee Jones
 
