@@ -2,11 +2,11 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 0311B606B103
-	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Nov 2026 11:08:45 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 7DA37606C573
+	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Nov 2026 11:10:24 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=CopxAvcK;
-	dkim=pass (2048-bit key, unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=Ib3z5+Md
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=LaC53Csw;
+	dkim=pass (2048-bit key, unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=CGGniuzx
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
@@ -14,56 +14,54 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=aYL/i0YuscUEzD0VCErR+Tz3KdHDJR7ZwPlCYlD62po=; b=CopxAvcKjBRi4kicavZ8zpJwVT
-	joQxsg83f9ONIF92gGTrAy3IXlBQo6ot3J/QwPEbob8659oLNluy8t2a/UD9CygB7j7ZBUDzWorGI
-	9Td0l0xvJ6QNxvhVimDvv9ykNYAxShoCmms6FWRl1nlL7gWMLZAO2VYQtAV8OZceeIfclZuaGFoTQ
-	F9CfI9bT2F5kmYaMsfPjFXChGYnh50xTtAbYIkeDsjVLY1LWI0SHlCwMgFGeyKw9XqTb4PAVknEIA
-	OviRQkLrODpkykP2ZTAEjpuJslUErj838Fju6O318HQacA02qE9P80+2+VBhYM7PYBkHrMyMGIJBW
-	cQNkvkIQ==;
+	bh=DttFhI0LxeH79eT/YhOIy6UMobLtyg9GPfkbGAxdi3s=; b=LaC53CswPNVThApjkBi38b3M+/
+	D56Zv51E6W4p8CKv2lKRPPjI6OCWyOPWEUfvRaUj0NM4HGObT8sEfcwQ18oh5RwphZ4A/8J7lS4x3
+	dcoaHKo+41rMVkXg9xMvBbNCBOg4ULapBKUh5tAwtm4ltRk8I8T0lgjrej90q5IPhZ3u+b3WcPeBM
+	zBfgy2PcFjkBecpaGj0o1R95Af6nS9z2DFabXtaWN6UTrpgdc+Vw8BIKzKkb13ZLf1QsHTxVu7+O8
+	HUfg7v6gFkBAjvdvb82cz7OsuY4HkbvUz9/MuZKKqCYhyR7xYgoyrfUGBuTKv4GHqJGrVL9CnxaNW
+	WCuxEwlg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xOCNg-000000028sX-33Ya;
-	Tue, 03 Nov 2026 11:08:44 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1xOCPI-000000029A3-0ui9;
+	Tue, 03 Nov 2026 11:10:24 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xOCNd-000000028rP-362K;
-	Tue, 03 Nov 2026 11:08:41 +0000
+	id 1xOCPG-0000000298d-0N2K;
+	Tue, 03 Nov 2026 11:10:22 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id 7BEBE421F1;
-	Tue,  3 Nov 2026 11:08:41 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9AF051F000C1;
-	Tue,  3 Nov 2026 11:08:40 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 977BE43C77;
+	Tue,  3 Nov 2026 11:10:21 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id BF3D41F000C1;
+	Tue,  3 Nov 2026 11:10:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1793704121;
-	bh=aYL/i0YuscUEzD0VCErR+Tz3KdHDJR7ZwPlCYlD62po=;
+	s=k20260515; t=1793704221;
+	bh=DttFhI0LxeH79eT/YhOIy6UMobLtyg9GPfkbGAxdi3s=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=Ib3z5+MdhkonNdwMiArvyjWg6RnzTYHc2pP/M44kZZ+O5Vr8BoPLiJPCfQFqyxVHW
-	 N1YYjgkSE9RJ5mkBYWF/Wkv2WqEyM8LwFzDLHiZyZXRwW9+lo5WtALZ12TX+bsotmk
-	 VYq5I9K/9tJovZW+Gaef777aWtvI04kR29BgdVYEOhbbEhxZcAYKpr7klaqi+IlgbX
-	 oVMX/g0apanLPeSaSllUbJBAuluobnHJgzD8bgoakxClpdDEdjGc+8oUhyweJURGZj
-	 59hulPiSobqluqW2m8XOZyAG+/hl6V9VWBDKI/B95hDZyuLjpSuLjprzGFeSH5r4V5
-	 lT7XCpm47J4/A==
-Date: Tue, 3 Nov 2026 12:08:38 +0100
+	b=CGGniuzx9iamA1AwRWMQ1/ltNGuso7AezbHqZvG0a82iiXHiwroTbFy0Yv0D2P56V
+	 /i8XebYAe+VzhNJoc21a+OLWcTzWVY4BArMpFynRoK/OIafQa3PAxXjLB4Yk+zcHlG
+	 prmDed2NkkYSSKO+ndsUIqitcgo5/TEWdZTJqYCP5oUqCTS9XNMiPy6dfbV5UjSe92
+	 jJWEsLg05NYuiRk6y1ILq5wze+65C5pZ1TWCYp2JmkkJBrnPFPHNVkmZoZr54t37Hf
+	 7uSsVgkIXTA61kgSFV0HcgG3O9l9UZ79fY+oIXA4P8X06WrasZ5jU663w/uNuuzutz
+	 Bly/TlxMd8lqw==
+Date: Tue, 3 Nov 2026 12:10:18 +0100
 From: Krzysztof Kozlowski <krzk@kernel.org>
-To: Caleb James DeLisle <cjd@cjdns.fr>
-Cc: netdev@vger.kernel.org, andrew@lunn.ch, olteanv@gmail.com, 
-	davem@davemloft.net, edumazet@google.com, kuba@kernel.org, pabeni@redhat.com, 
-	robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org, matthias.bgg@gmail.com, 
-	angelogioacchino.delregno@collabora.com, chester.a.unal@arinc9.com, daniel@makrotopia.org, 
-	linux@armlinux.org.uk, arinc.unal@arinc9.com, Landen.Chao@mediatek.com, 
-	dqfext@gmail.com, sean.wang@mediatek.com, devicetree@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org, naseefkm@gmail.com, b.larsson@gmx.com
-Subject: Re: [PATCH v4 6/7] dt-bindings: net: dsa: mediatek,mt7530: add
- EcoNet EN751221 switches
-Message-ID: <20261103-soft-lyrical-squid-c5a108@quoll>
-References: <20261029184202.1859843-1-cjd@cjdns.fr>
- <20261029184202.1859843-7-cjd@cjdns.fr>
+To: Wentao Liang <vulab@iscas.ac.cn>
+Cc: Philipp Zabel <p.zabel@pengutronix.de>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, Neil Armstrong <neil.armstrong@linaro.org>, 
+	Chunfeng Yun <chunfeng.yun@mediatek.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, linux-mediatek@lists.infradead.org, 
+	linux-arm-kernel@lists.infradead.org, linux-phy@lists.infradead.org, stable@vger.kernel.org, 
+	dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, 
+	Chun-Kuang Hu <chunkuang.hu@kernel.org>, Vinod Koul <vkoul@kernel.org>, 
+	Manivannan Sadhasivam <mani@kernel.org>
+Subject: Re: [PATCH] phy: mediatek: hdmi: use devm clock provider registration
+Message-ID: <20261103-jumping-nostalgic-mussel-1fddcf@quoll>
+References: <20261103104241.1373838-1-vulab@iscas.ac.cn>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
-In-Reply-To: <20261029184202.1859843-7-cjd@cjdns.fr>
+In-Reply-To: <20261103104241.1373838-1-vulab@iscas.ac.cn>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,64 +80,67 @@ X-Spam-Status: No, score=-15.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On Thu, Oct 29, 2026 at 06:42:01PM +0000, Caleb James DeLisle wrote:
-> The EcoNet EN751221 MIPS SoC integrates an MT7530 switch memory-mapped
-> in the SoC register space. It is similar to the econet,en7528-switch
-> except that ports 0..3 are 10/100 only, port 4 has a gigabit PHY, and
-> port 5 has no PHY, but is in some implementations connected to a
-> downstream MT7530 multi-chip module via a TRGMII link.
+
+On Tue, 03 Nov 2026 10:42:41 +0000, Wentao Liang wrote:
+> mtk_hdmi_phy_probe() registers the PLL clock provider with the
+> deprecated of_clk_add_provider(), which takes a reference on the device
+> node.  The driver has no .remove callback, so neither the node
+> reference nor the provider registration is ever released; after the
+> device is unbound, the global provider list still points at the freed
+> hdmi_phy and at the unregistered clock.
 > 
-> The downstream MT7530 is similar to the MT7621 multi-chip module and
-> has all gigabit ports.
+> Register the provider with devm_of_clk_add_hw_provider() and
+> of_clk_hw_simple_get(), matching the sibling MIPI DSI PHY driver, so
+> that it is removed when the device is unbound.
 > 
-> Add the econet,en751221-switch compatible with the same constraints as
-> the other built-in switches and also add the econet,en751221-gswitch
-> multi-chip-module switch whose port 6 is configured as a DSA link port.
-> 
-> Signed-off-by: Caleb James DeLisle <cjd@cjdns.fr>
+> Fixes: be28b6507c46 ("drm/mediatek: separate hdmi phy to different file")
+> Cc: stable@vger.kernel.org
+> Assisted-by: DeepSeek-V4.1-Flash and OpenAI Codex
+> Signed-off-by: Wentao Liang <vulab@iscas.ac.cn>
 > ---
->  .../bindings/net/dsa/mediatek,mt7530.yaml     | 43 ++++++++++++++++++-
->  1 file changed, 41 insertions(+), 2 deletions(-)
+>  drivers/phy/mediatek/phy-mtk-hdmi.c | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
 > 
-> diff --git a/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml b/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml
-> index f98b9113ad12..011c94ef9554 100644
-> --- a/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml
-> +++ b/Documentation/devicetree/bindings/net/dsa/mediatek,mt7530.yaml
-> @@ -29,6 +29,12 @@ description: |
->    and the switch registers are directly mapped into SoC's memory map rather than
->    using MDIO. The DSA driver currently doesn't support MT7620 variants.
->  
-> +  EcoNet EN751221 SoCs have a memory mapped MT7530 with 3x 10/100 PHYs and 1x
-> +  gigabit PHY. Some EN751221 chips such as EN7513G and EN7526G have a multi-chip
-> +  module implementation of the MT7530 as well as the on-die switch. In these
-> +  packages, the multi-chip module is connected to port 5 of the on-die switch
-> +  via a TRGMII link and allows for 5 gigabit ports.
-> +
->    There is only the standalone version of MT7531.
->  
->    Port 5 on MT7530 supports various configurations:
-> @@ -109,6 +115,14 @@ properties:
->            Built-in switch of the EcoNet EN7528 SoC
->          const: econet,en7528-switch
->  
-> +      - description:
-> +          Built-in switch of EcoNet EN751221 SoC
 
-You can drop, pointless description, repeats the compatible.
+Multiple things here:
+1. Your team ignored completely previous feedback. Multiple times.
 
-> +        const: econet,en751221-switch
-> +
-> +      - description:
-> +          Multi-chip module gigabit MT7530 in EN751221 SoC
+2. You use multiple identities with this email address, thus I doubt that we
+   speak with an actual person.
 
-Keep it in one line with description. No need to inflate it even more.
+3. Your bot does not even bother running checkpatch, right?
 
-> +        const: econet,en751221-gswitch
+4. Nothing of this was reproduced nor tested.
 
-That's almost the same compatible, which makes me wonder if you describe
-the same device twice. Same device, same compatible.
+5. Finally, the same feedback:
+You sent multiple independent patches, to multiple independent
+subsystems. The amount of these patches clearly suggest this was
+AI generated and most likely not tested.
+
+More importantly, you sent all this work without properly organizing
+relevant patches into patchsets. This makes reviewing difficult
+and might cause multiple reviewers to address the same issue.
+Replying to the entire set is impossible and requires handling each
+patch independently, instead of applying or discarding the set.
+Maintainers also won't see the bigger picture of your work. Quite
+worrying.
+
+This is on the verge of hostile patch: bomb us with so many
+contributions, we won't be able to handle them in efficient manner,
+like responding ONCE to ask you to slow down.  Considering all this
+is untested and LLM generated, I have even more doubts whether this
+should be considered for review.
+
+Please read kernel documentation BEFORE posting more work. It will
+explain you how to identify subsystems, how to organize your work per
+subsystem (so a patchset grouping multiple patches with a short cover
+letter), how to document the issue discovery method and what was
+or was not tested.
 
 Best regards,
 Krzysztof
+
+
+
 
 
