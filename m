@@ -2,109 +2,67 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 9AA85606A31B
-	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Nov 2026 23:18:05 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 0054F606A339
+	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Nov 2026 23:42:49 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=1wPNyKSp;
-	dkim=pass (2048-bit key, unprotected) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=OK0wKLB5
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=Nl2U4Ux0;
+	dkim=pass (2048-bit key, unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=bYupiRwf
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Unsubscribe-Post:List-Owner;
-	bh=Tpy4PRbCAKzUQxsE7QsWxmFHgSXmFy5olOQ9La0VFrM=; b=1wPNyKSpMQE4dhWJ+o9zTgYw3B
-	Huu/7FVSy3B8n4vpcT5Ah3Y7iLovuvTvrx1dnA6iAjP13QEtw5NxZGdOg3E0wfn7rHhUgnlhxLtBY
-	ovXNIjFVfCiIylHEQVBp+RsVt+NpxEU4jaaQyBh0wV79zI3dTCHqCDRAKFm2RccRl/5maTVkRSVA1
-	5otxMezF5bMBRGIOqqIE65nif0fVZnPNW97hHV7uvd1PxVXxsmn9qFZaRWfcGwLzbo8USxgXMxurb
-	XWmybeTrQ6xQRSnI8ZU7tXEvgEeMupkZEElNu2hKWaaoGbNOu1SAOPG7/zNMGPWty8u1OoMMBA5Qr
-	/yIvVKlA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Unsubscribe-Post:
+	List-Owner; bh=RLfbVHWPETTb3o8HlMj+HxgwepLgdhKx1KwHT8pQtec=; b=Nl2U4Ux0axILkh
+	I2uHLUM0Q+xIso1pza5eG8Hy5P0QldvPdh4s4H+ecnHOAoMi+B1B5qsyyM1xqycWQaxzvmKfrgW6p
+	6b9rc3wXilbqTEMoviR0tQKqB5nkHCm+Y9aZfQeAXsglsZAEJPONqf4ZRWO9Ee3qSVT1NYnSEFHpK
+	2dF30xkeRuCmuz9deYz71jJS9zaN7CBk7kPdKCcLPaamYvtsDxVGKn7dERnAN8Lyjrma6O8WqbwTa
+	7NsLVTMAW5Z38H/FJ3kSELIb3xTUW8rybbgDnbOzi9vNgixwvHKPaNiKVz2gqCR0t1ll8di8ueGHZ
+	Mv7h43Fnb/KoOOo75i6A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xONlV-00000003wNJ-07T1;
-	Tue, 03 Nov 2026 23:18:05 +0000
-Received: from mail-oo2-x04.google.com ([2607:f8b0:4864:31::4])
+	id 1xOO9Q-00000003xiS-2CcS;
+	Tue, 03 Nov 2026 23:42:48 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xONlR-00000003wLc-0igU
-	for linux-mediatek@lists.infradead.org;
-	Tue, 03 Nov 2026 23:18:03 +0000
-Received: by mail-oo2-x04.google.com with SMTP id 006d021491bc7-702f1150a16so2802eaf.1
-        for <linux-mediatek@lists.infradead.org>; Tue, 03 Nov 2026 15:18:00 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20260707; t=1793747880; x=1794352680; darn=lists.infradead.org;
-        h=cc:to:message-id:content-transfer-encoding:content-type
-         :mime-version:subject:date:from:from:to:cc:subject:date:message-id
-         :reply-to:content-type;
-        bh=Tpy4PRbCAKzUQxsE7QsWxmFHgSXmFy5olOQ9La0VFrM=;
-        b=OK0wKLB5QZvsdQU1rRpIMDXcfvE1I9G33BrJnAnMLPfG0Lv7nPH51GEmmbxRv4ULzP
-         vJ8B1gZhKSfuMktsitB6QgPviNBclhDn79aDTinKdXutuEGgWDyvWzC3foJXLDi1L/cb
-         WKskNmORZaV+EiXCf0v9+riITZIl09wFOdhFM7E8Y2FF+Rw2LYkD7UWfbARh0tJPgyT2
-         T0wAJLWwlYZyj+EbclusRGHbHohV4fa7XcoXWx3XizI6Zk28uuwAgbV0YTxus3idguGH
-         YeIPIj4SJcuzFykmBaASKGUlCy4dLaw7itqc+9iwx8O0c3hs1niPucittOa6w8uCtm6B
-         1fEQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1793747880; x=1794352680;
-        h=cc:to:message-id:content-transfer-encoding:content-type
-         :mime-version:subject:date:from:x-gm-gg:x-gm-message-state:from:to
-         :cc:subject:date:message-id:reply-to:content-type;
-        bh=Tpy4PRbCAKzUQxsE7QsWxmFHgSXmFy5olOQ9La0VFrM=;
-        b=KcTghBuJPa03EteQ0/N0yRi/CWew+/vjaHk3rXOMkzQwO+dd3U0VfcI3QTxsFazhSQ
-         TcrXvNXo26d4izkig5NdMGVEuodvsqbUemvHNDu3LgAZEa4bIRTDn83BlP95pyYQQVXq
-         DmuEiZuSVjK3Wz+dsUdrHN6G0p8OeNJPl+xeJ66suPxRJ5GkGgjH1tztt6ztZ2C0dWGc
-         6pebFSmOPI/5oJ7HTnCCXNyLPkmLzFK0PDykBH17yWnUUVhFVWjOAfYRCsiI55C8y9k7
-         p6c0yq6BXBu1doQtxMYZmvC16OwJLdGYKGxbsc4Edl/Xvq9c+QOaqNj+92WZaM0ZmHJR
-         U9pg==
-X-Forwarded-Encrypted: i=1; AKwUvBxpMc03Jo5PPD7SlGtOpCStHtD8F4Gr6EZYTbCNeayI0h9AwKkSlxtd+pDJ5dtrCJud6fuUlSgxiAGPvcvTkQ==@lists.infradead.org
-X-Gm-Message-State: APuU4Z/2nxticE5TVCGq0IwkQqHFSAw5KUVHS9n2HL9b5httOxES5zbl
-	4m44Ivq1slCtyP6u8FdE0ybHkVsZwlXdjI/lITPBVVeRi9hDOvGdn8y7
-X-Gm-Gg: AYBFou1xWSYD8CiXki56e1ONEAp9yjZWNCZUWAWkK0Cb1wFdGExr/MpL9qMIps9teNP
-	keUGn4SJY+fixUkkVqmSzx9DVUCKYdE4+ITG0kEke6tp4D+q3GRo8xh467osIG5y7pMpjefcczo
-	PrtwcBhVk1nfO+/tLYTiGPBO3kP6zV94Yh8FitUaVlNWHwCFPusyTpWf5c8So/tEp8u+8KrI6w5
-	8rXSJ57j13FTn3tPsBIxih++exT4vSGl/IAVwFt0V2bZJpVYXk5Sbb7wqG3Mdlv1N/+y/n9MBd+
-	jPaxColJLifYnFD3ilRRYoYBDHS/cJujteh4gk2PrfiQdIU0n/jx5n12saRc/zFJ+tVjSiO31Jv
-	KoumzUvE7Q/B4GkNXjkCGSv3ujLRjrRiciqFWpk0kRjTD+AyV6RIgf3B9dUeb0hM+RktIM8pXFE
-	/MouRPMbeiRekGSYVDu+DqvUUIvwhSMam4tBLuLHmz5q84nYB0EDWVG7GTAhnJMuYQbzp/i9J6b
-	YWc7HTj0kYYYzRjVRsxYV7Vf5YnrmeaE9oEDdI8OOrIbxxjHtCFu2ackujAhs++KG9sv3J5tc2V
-	Om0xoosB92itiVySwKY/YCcHvA==
-X-Received: by 2002:a05:6820:55d3:10b0:6f8:92ab:bb40 with SMTP id 006d021491bc7-714f2aa040fmr5152695eaf.79.1793747879615;
-        Tue, 03 Nov 2026 15:17:59 -0800 (PST)
-Received: from [192.168.18.164] ([2600:8804:5716:d800::f01a])
-        by smtp.gmail.com with ESMTPSA id 586e51a60fabf-4acea61f0c0sm358638fac.14.2026.11.03.15.17.56
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 03 Nov 2026 15:17:58 -0800 (PST)
-From: Ryan Brue <ryanbrue.dev@gmail.com>
-Date: Tue, 03 Nov 2026 17:17:56 -0600
-Subject: [PATCH] clocksource/drivers/timer-mediatek: Enable the GPT irq
- before registering
+	id 1xOO9O-00000003xiF-0naD;
+	Tue, 03 Nov 2026 23:42:46 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by sea.source.kernel.org (Postfix) with ESMTP id 7A28142DD0;
+	Tue,  3 Nov 2026 23:42:45 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 137351F00919;
+	Tue,  3 Nov 2026 23:42:42 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1793749365;
+	bh=RLfbVHWPETTb3o8HlMj+HxgwepLgdhKx1KwHT8pQtec=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:References;
+	b=bYupiRwfmK2OTY4lnJPjOJ4JTaoY6XpvLrbIsLCs6hYMbIH3TcpTcEiFSVlDV0eFV
+	 WQf0cJnjSevfXPfjuKkCoj3Lqg4jZm2gRNSiQK27suv6r3Mslf15jwlC7fQXNbh72f
+	 cDHsc/PPj+ZLdMfnb5HhUFxxDUCPW1gou9GXj4r1xn7089R6u+zOe7NhgmKQXmlsOf
+	 Vgehv+BaVp59DQ+HqE5m3b+6i4zQZ88ddiKtOg+Jk8Veo2+vLnSiHkRjxNAcs3pm9x
+	 r5rf1ceA+4pSHc9tV1afPPP+M+8t9b2H11ft/qBFPa2/qhh0pxIrFd9zLBQQ6adUMA
+	 PDnRlb6dAKFTQ==
+Date: Tue, 3 Nov 2026 23:42:37 +0000
+From: Jonathan Cameron <jic23@kernel.org>
+To: Roman Vivchar via B4 Relay <devnull+rva333.protonmail.com@kernel.org>
+Cc: rva333@protonmail.com, David Lechner <dlechner@baylibre.com>, Nuno
+ =?UTF-8?B?U8Oh?= <nuno.sa@analog.com>, Andy Shevchenko <andy@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+ <angelogioacchino.delregno@collabora.com>, "=?UTF-8?B?TsOtY29sYXM=?= F. R.
+ A. Prado" <nfraprado@collabora.com>, Chen-Yu Tsai <wenst@chromium.org>,
+ linux-iio@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH 1/3] iio: adc: mt6359-auxadc: correct channel types to
+ IIO_VOLTAGE
+Message-ID: <20261103234237.0dbbe924@jic23-hlaptop>
+In-Reply-To: <20261103-6768-6358-fixes-v1-1-2a868a33152b@protonmail.com>
+References: <20261103-6768-6358-fixes-v1-0-2a868a33152b@protonmail.com>
+	<20261103-6768-6358-fixes-v1-1-2a868a33152b@protonmail.com>
+X-Mailer: Claws Mail 4.4.0 (GTK 3.24.52; x86_64-pc-linux-gnu)
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
+Content-Type: text/plain; charset=US-ASCII
 Content-Transfer-Encoding: 7bit
-Message-Id: <20261103-timer-mediatek-gpt-irq-order-v1-1-6d1ddf977224@gmail.com>
-X-B4-Tracking: v=1; b=H4sIAAAAAAAA/x3MWwqDMBAF0K0M8+2AsUVjtlL6EcxVB/HRSSgFc
- e9CzwLOyRmmyBzoZMNXs+4bB3IV8TDHbYJo4kDc1E3rXP2QoitMViSNBYtMRxG1j+yWYBJ955F
- 824/+yRXxYRj19+9f7+u6AYLwTM9uAAAA
-X-Change-ID: 20261103-timer-mediatek-gpt-irq-order-a878ed869f84
-To: Daniel Lezcano <daniel.lezcano@kernel.org>, 
- Thomas Gleixner <tglx@kernel.org>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Luca Leonardo Scorcia <l.scorcia@gmail.com>
-Cc: linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, Ryan Brue <ryanbrue.dev@gmail.com>
-X-Mailer: b4 0.14.3
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1793747876; l=2356;
- i=ryanbrue.dev@gmail.com; s=20260906; h=from:subject:message-id;
- bh=yGcoZIDBoDZaoXv5N00ORiCdvk8UCgSBEFmG1SGHBlk=;
- b=zQlgFfpPbSA2D44pTkzsI0sGU0Rsc6rLUTwqyQEGX2VR7QZAXOcKKsoUPCQGI7WoSIgMJKuka
- qJexhsO3wDwDGxFK9Wmeb+Q4COKXl6pS2/nTm7WQ0H4X8fmjzwU6/s8
-X-Developer-Key: i=ryanbrue.dev@gmail.com; a=ed25519;
- pk=KsUvVaP//v/2q+ZBuacc7cLbsyEYn+AD71Sn28oZWKo=
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261103_151801_225155_11DF742A 
-X-CRM114-Status: GOOD (  16.86  )
-X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -115,68 +73,182 @@ List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-15.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
-	DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,FREEMAIL_FORGED_FROMDOMAIN,
-	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
+X-Spam-Status: No, score=-17.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,
+	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_2
+	autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Since the driver probes as a platform device, the GPT clock event is
-registered late in boot, when PSCI CPU idle may already have put CPUs
-into a state that stops their local timer. Those CPUs wait in the
-oneshot broadcast mask on the hrtimer broadcast, and
-tick_install_broadcast_device() arms the new broadcast device to expire
-at once so that it wakes them.
+On Tue, 03 Nov 2026 18:32:07 +0200
+Roman Vivchar via B4 Relay <devnull+rva333.protonmail.com@kernel.org> wrote:
 
-mtk_gpt_init() sets the timer's bit in GPT_IRQ_EN only after
-clockevents_config_and_register(). The forced event fires while the bit
-is clear, nothing is latched in the status register, and the waiting
-CPUs are never woken. On an MT8173 tablet with the CPU_SLEEP_0 idle
-state in use, this hung the boot in 20 of 40 boots, and in none of 16
-with this change.
+> From: Roman Vivchar <rva333@protonmail.com>
+> 
+> All mt6357, mt6358, mt6359 and mt6363 declare their channel types as
+> voltage, resistance and temperature. This is wrong, since the PMIC
+> doesn't include any built-in conversion block. It simply measures
+> voltage, while consumers are supposed to convert these readings to
+> the actual temperature or resistance using efuse calibration.
+Hi Roman,
 
-Enable the interrupt before registering the clock event. The IRQ line
-stays disabled until enable_irq(), so the handler still can't run before
-the clock event is set up.
+Useful to have an example of the consumer that is doing this.
 
-Fixes: 7a097aba7255 ("clocksource/drivers/timer-mediatek: Convert to OF probing")
-Signed-off-by: Ryan Brue <ryanbrue.dev@gmail.com>
----
-Since v7.4-rc1 the MediaTek timer probes as a platform device, and on
-MT8173 with PSCI CPU idle the boot then hangs about half the time: the
-broadcast device is armed at once to wake CPUs that are already idle,
-and that event is lost because the GPT's interrupt is enabled only after
-registration. Traced on the board with prints in
-tick_install_broadcast_device() and mtk_gpt_init().
----
- drivers/clocksource/timer-mediatek.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> Correct all channel types to IIO_VOLTAGE.
+> 
+> Fixes: 3587914bf61d ("iio: adc: Add support for MediaTek MT6357/8/9 Auxiliary ADC")
+> Fixes: d6f49313272b ("iio: adc: mt6359: Add support for MediaTek MT6363 PMIC AUXADC")
+> Signed-off-by: Roman Vivchar <rva333@protonmail.com>
 
-diff --git a/drivers/clocksource/timer-mediatek.c b/drivers/clocksource/timer-mediatek.c
-index 842d6ee4259e..1b2cbcc2795a 100644
---- a/drivers/clocksource/timer-mediatek.c
-+++ b/drivers/clocksource/timer-mediatek.c
-@@ -339,10 +339,10 @@ static int mtk_gpt_init(struct platform_device *pdev)
- 
- 	/* Configure clock event */
- 	mtk_gpt_setup(&to, TIMER_CLK_EVT, GPT_CTRL_OP_REPEAT);
-+	mtk_gpt_enable_irq(&to, TIMER_CLK_EVT);
- 	clockevents_config_and_register(&to.clkevt, timer_of_rate(&to),
- 					TIMER_SYNC_TICKS, 0xffffffff);
- 
--	mtk_gpt_enable_irq(&to, TIMER_CLK_EVT);
- 	enable_irq(timer_of_irq(&to));
- 
- 	return 0;
+This one makes me very nervous, not because it is wrong but rather
+because there may be a bunch of userspace relying on these wrong
+channel types.   
 
----
-base-commit: 6628e7d4c6b25c8d18f1345e3a20d21829aae7e4
-change-id: 20261103-timer-mediatek-gpt-irq-order-a878ed869f84
+It is horrible but I think we can't touch that :(  What we can do is
+put the right interface in place as well. Thankfully it looks like
+the channel index is independent of the channel type so we can duplicate
+the wrong channels with voltage ones + some comments to make sure this
+doesn't propagate to any new supported devices.
 
-Best regards,
--- 
-Ryan Brue <ryanbrue.dev@gmail.com>
+AngeloGioacchino, why did you go with the different channel types?
+
+If we do decide to go ahead with this approach, are there other channels
+that are validly using the channel type for non voltage? If not change
+the macro to drop the parameter.
+
+Thanks,
+
+Jonathan
+
+
+
+> ---
+>  drivers/iio/adc/mt6359-auxadc.c | 78 ++++++++++++++++++++---------------------
+>  1 file changed, 39 insertions(+), 39 deletions(-)
+> 
+> diff --git a/drivers/iio/adc/mt6359-auxadc.c b/drivers/iio/adc/mt6359-auxadc.c
+> index 88b0e26309e5..951d236f972b 100644
+> --- a/drivers/iio/adc/mt6359-auxadc.c
+> +++ b/drivers/iio/adc/mt6359-auxadc.c
+> @@ -205,18 +205,18 @@ struct mtk_pmic_auxadc_info {
+>  }
+>  
+>  static const struct iio_chan_spec mt6357_auxadc_channels[] = {
+> -	MTK_PMIC_IIO_CHAN(MT6357, bat_adc, BATADC, 0, 15, IIO_RESISTANCE),
+> -	MTK_PMIC_IIO_CHAN(MT6357, isense, ISENSE, 1, 12, IIO_CURRENT),
+> -	MTK_PMIC_IIO_CHAN(MT6357, cdt_v, VCDT, 2, 12, IIO_TEMP),
+> -	MTK_PMIC_IIO_CHAN(MT6357, batt_temp, BAT_TEMP, 3, 12, IIO_TEMP),
+> -	MTK_PMIC_IIO_CHAN(MT6357, chip_temp, CHIP_TEMP, 4, 12, IIO_TEMP),
+> -	MTK_PMIC_IIO_CHAN(MT6357, acc_det, ACCDET, 5, 12, IIO_RESISTANCE),
+> +	MTK_PMIC_IIO_CHAN(MT6357, bat_adc, BATADC, 0, 15, IIO_VOLTAGE),
+> +	MTK_PMIC_IIO_CHAN(MT6357, isense, ISENSE, 1, 12, IIO_VOLTAGE),
+> +	MTK_PMIC_IIO_CHAN(MT6357, cdt_v, VCDT, 2, 12, IIO_VOLTAGE),
+> +	MTK_PMIC_IIO_CHAN(MT6357, batt_temp, BAT_TEMP, 3, 12, IIO_VOLTAGE),
+> +	MTK_PMIC_IIO_CHAN(MT6357, chip_temp, CHIP_TEMP, 4, 12, IIO_VOLTAGE),
+> +	MTK_PMIC_IIO_CHAN(MT6357, acc_det, ACCDET, 5, 12, IIO_VOLTAGE),
+>  	MTK_PMIC_IIO_CHAN(MT6357, dcxo_v, VDCXO, 6, 12, IIO_VOLTAGE),
+> -	MTK_PMIC_IIO_CHAN(MT6357, tsx_temp, TSX_TEMP, 7, 15, IIO_TEMP),
+> -	MTK_PMIC_IIO_CHAN(MT6357, hp_ofs_cal, HPOFS_CAL, 9, 15, IIO_RESISTANCE),
+> -	MTK_PMIC_IIO_CHAN(MT6357, dcxo_temp, DCXO_TEMP, 36, 15, IIO_TEMP),
+> -	MTK_PMIC_IIO_CHAN(MT6357, vcore_temp, VCORE_TEMP, 40, 12, IIO_TEMP),
+> -	MTK_PMIC_IIO_CHAN(MT6357, vproc_temp, VPROC_TEMP, 41, 12, IIO_TEMP),
+> +	MTK_PMIC_IIO_CHAN(MT6357, tsx_temp, TSX_TEMP, 7, 15, IIO_VOLTAGE),
+> +	MTK_PMIC_IIO_CHAN(MT6357, hp_ofs_cal, HPOFS_CAL, 9, 15, IIO_VOLTAGE),
+> +	MTK_PMIC_IIO_CHAN(MT6357, dcxo_temp, DCXO_TEMP, 36, 15, IIO_VOLTAGE),
+> +	MTK_PMIC_IIO_CHAN(MT6357, vcore_temp, VCORE_TEMP, 40, 12, IIO_VOLTAGE),
+> +	MTK_PMIC_IIO_CHAN(MT6357, vproc_temp, VPROC_TEMP, 41, 12, IIO_VOLTAGE),
+If this is all of the channels (I haven't checked) you should drop
+the ability to configure the channel type from the macro... 
+However, see discussion at the top.
+
+>  
+>  	/* Battery impedance channels */
+>  	MTK_PMIC_IIO_CHAN(MT6357, batt_v, VBAT, 0, 15, IIO_VOLTAGE),
+> @@ -251,19 +251,19 @@ static const u16 mt6357_auxadc_regs[] = {
+>  };
+>  
+>  static const struct iio_chan_spec mt6358_auxadc_channels[] = {
+> -	MTK_PMIC_IIO_CHAN(MT6358, bat_adc, BATADC, 0, 15, IIO_RESISTANCE),
+> -	MTK_PMIC_IIO_CHAN(MT6358, cdt_v, VCDT, 2, 12, IIO_TEMP),
+> -	MTK_PMIC_IIO_CHAN(MT6358, batt_temp, BAT_TEMP, 3, 12, IIO_TEMP),
+> -	MTK_PMIC_IIO_CHAN(MT6358, chip_temp, CHIP_TEMP, 4, 12, IIO_TEMP),
+> -	MTK_PMIC_IIO_CHAN(MT6358, acc_det, ACCDET, 5, 12, IIO_RESISTANCE),
+> +	MTK_PMIC_IIO_CHAN(MT6358, bat_adc, BATADC, 0, 15, IIO_VOLTAGE),
+> +	MTK_PMIC_IIO_CHAN(MT6358, cdt_v, VCDT, 2, 12, IIO_VOLTAGE),
+> +	MTK_PMIC_IIO_CHAN(MT6358, batt_temp, BAT_TEMP, 3, 12, IIO_VOLTAGE),
+> +	MTK_PMIC_IIO_CHAN(MT6358, chip_temp, CHIP_TEMP, 4, 12, IIO_VOLTAGE),
+> +	MTK_PMIC_IIO_CHAN(MT6358, acc_det, ACCDET, 5, 12, IIO_VOLTAGE),
+>  	MTK_PMIC_IIO_CHAN(MT6358, dcxo_v, VDCXO, 6, 12, IIO_VOLTAGE),
+> -	MTK_PMIC_IIO_CHAN(MT6358, tsx_temp, TSX_TEMP, 7, 15, IIO_TEMP),
+> -	MTK_PMIC_IIO_CHAN(MT6358, hp_ofs_cal, HPOFS_CAL, 9, 15, IIO_RESISTANCE),
+> -	MTK_PMIC_IIO_CHAN(MT6358, dcxo_temp, DCXO_TEMP, 10, 15, IIO_TEMP),
+> +	MTK_PMIC_IIO_CHAN(MT6358, tsx_temp, TSX_TEMP, 7, 15, IIO_VOLTAGE),
+> +	MTK_PMIC_IIO_CHAN(MT6358, hp_ofs_cal, HPOFS_CAL, 9, 15, IIO_VOLTAGE),
+> +	MTK_PMIC_IIO_CHAN(MT6358, dcxo_temp, DCXO_TEMP, 10, 15, IIO_VOLTAGE),
+>  	MTK_PMIC_IIO_CHAN(MT6358, bif_v, VBIF, 11, 12, IIO_VOLTAGE),
+> -	MTK_PMIC_IIO_CHAN(MT6358, vcore_temp, VCORE_TEMP, 38, 12, IIO_TEMP),
+> -	MTK_PMIC_IIO_CHAN(MT6358, vproc_temp, VPROC_TEMP, 39, 12, IIO_TEMP),
+> -	MTK_PMIC_IIO_CHAN(MT6358, vgpu_temp, VGPU_TEMP, 40, 12, IIO_TEMP),
+> +	MTK_PMIC_IIO_CHAN(MT6358, vcore_temp, VCORE_TEMP, 38, 12, IIO_VOLTAGE),
+> +	MTK_PMIC_IIO_CHAN(MT6358, vproc_temp, VPROC_TEMP, 39, 12, IIO_VOLTAGE),
+> +	MTK_PMIC_IIO_CHAN(MT6358, vgpu_temp, VGPU_TEMP, 40, 12, IIO_VOLTAGE),
+>  
+>  	/* Battery impedance channels */
+>  	MTK_PMIC_IIO_CHAN(MT6358, batt_v, VBAT, 0, 15, IIO_VOLTAGE),
+> @@ -299,18 +299,18 @@ static const u16 mt6358_auxadc_regs[] = {
+>  };
+>  
+>  static const struct iio_chan_spec mt6359_auxadc_channels[] = {
+> -	MTK_PMIC_IIO_CHAN(MT6359, bat_adc, BATADC, 0, 15, IIO_RESISTANCE),
+> -	MTK_PMIC_IIO_CHAN(MT6359, batt_temp, BAT_TEMP, 3, 12, IIO_TEMP),
+> -	MTK_PMIC_IIO_CHAN(MT6359, chip_temp, CHIP_TEMP, 4, 12, IIO_TEMP),
+> -	MTK_PMIC_IIO_CHAN(MT6359, acc_det, ACCDET, 5, 12, IIO_RESISTANCE),
+> +	MTK_PMIC_IIO_CHAN(MT6359, bat_adc, BATADC, 0, 15, IIO_VOLTAGE),
+> +	MTK_PMIC_IIO_CHAN(MT6359, batt_temp, BAT_TEMP, 3, 12, IIO_VOLTAGE),
+> +	MTK_PMIC_IIO_CHAN(MT6359, chip_temp, CHIP_TEMP, 4, 12, IIO_VOLTAGE),
+> +	MTK_PMIC_IIO_CHAN(MT6359, acc_det, ACCDET, 5, 12, IIO_VOLTAGE),
+>  	MTK_PMIC_IIO_CHAN(MT6359, dcxo_v, VDCXO, 6, 12, IIO_VOLTAGE),
+> -	MTK_PMIC_IIO_CHAN(MT6359, tsx_temp, TSX_TEMP, 7, 15, IIO_TEMP),
+> -	MTK_PMIC_IIO_CHAN(MT6359, hp_ofs_cal, HPOFS_CAL, 9, 15, IIO_RESISTANCE),
+> -	MTK_PMIC_IIO_CHAN(MT6359, dcxo_temp, DCXO_TEMP, 10, 15, IIO_TEMP),
+> +	MTK_PMIC_IIO_CHAN(MT6359, tsx_temp, TSX_TEMP, 7, 15, IIO_VOLTAGE),
+> +	MTK_PMIC_IIO_CHAN(MT6359, hp_ofs_cal, HPOFS_CAL, 9, 15, IIO_VOLTAGE),
+> +	MTK_PMIC_IIO_CHAN(MT6359, dcxo_temp, DCXO_TEMP, 10, 15, IIO_VOLTAGE),
+>  	MTK_PMIC_IIO_CHAN(MT6359, bif_v, VBIF, 11, 12, IIO_VOLTAGE),
+> -	MTK_PMIC_IIO_CHAN(MT6359, vcore_temp, VCORE_TEMP, 30, 12, IIO_TEMP),
+> -	MTK_PMIC_IIO_CHAN(MT6359, vproc_temp, VPROC_TEMP, 31, 12, IIO_TEMP),
+> -	MTK_PMIC_IIO_CHAN(MT6359, vgpu_temp, VGPU_TEMP, 32, 12, IIO_TEMP),
+> +	MTK_PMIC_IIO_CHAN(MT6359, vcore_temp, VCORE_TEMP, 30, 12, IIO_VOLTAGE),
+> +	MTK_PMIC_IIO_CHAN(MT6359, vproc_temp, VPROC_TEMP, 31, 12, IIO_VOLTAGE),
+> +	MTK_PMIC_IIO_CHAN(MT6359, vgpu_temp, VGPU_TEMP, 32, 12, IIO_VOLTAGE),
+>  
+>  	/* Battery impedance channels */
+>  	MTK_PMIC_IIO_CHAN(MT6359, batt_v, VBAT, 0, 15, IIO_VOLTAGE),
+> @@ -349,15 +349,15 @@ static const u16 mt6359_auxadc_regs[] = {
+>  };
+>  
+>  static const struct iio_chan_spec mt6363_auxadc_channels[] = {
+> -	MTK_PMIC_IIO_CHAN(MT6363, bat_adc, BATADC, 0, 15, IIO_RESISTANCE),
+> -	MTK_PMIC_IIO_CHAN(MT6363, cdt_v, VCDT, 2, 12, IIO_TEMP),
+> -	MTK_PMIC_IIO_CHAN(MT6363, batt_temp, BAT_TEMP, 3, 12, IIO_TEMP),
+> -	MTK_PMIC_IIO_CHAN(MT6363, chip_temp, CHIP_TEMP, 4, 12, IIO_TEMP),
+> +	MTK_PMIC_IIO_CHAN(MT6363, bat_adc, BATADC, 0, 15, IIO_VOLTAGE),
+> +	MTK_PMIC_IIO_CHAN(MT6363, cdt_v, VCDT, 2, 12, IIO_VOLTAGE),
+> +	MTK_PMIC_IIO_CHAN(MT6363, batt_temp, BAT_TEMP, 3, 12, IIO_VOLTAGE),
+> +	MTK_PMIC_IIO_CHAN(MT6363, chip_temp, CHIP_TEMP, 4, 12, IIO_VOLTAGE),
+>  	MTK_PMIC_IIO_CHAN(MT6363, sys_sns_v, VSYSSNS, 6, 15, IIO_VOLTAGE),
+>  	MTK_PMIC_IIO_CHAN(MT6363, tref_v, VTREF, 11, 12, IIO_VOLTAGE),
+> -	MTK_PMIC_IIO_CHAN(MT6363, vcore_temp, VCORE_TEMP, 38, 12, IIO_TEMP),
+> -	MTK_PMIC_IIO_CHAN(MT6363, vproc_temp, VPROC_TEMP, 39, 12, IIO_TEMP),
+> -	MTK_PMIC_IIO_CHAN(MT6363, vgpu_temp, VGPU_TEMP, 40, 12, IIO_TEMP),
+> +	MTK_PMIC_IIO_CHAN(MT6363, vcore_temp, VCORE_TEMP, 38, 12, IIO_VOLTAGE),
+> +	MTK_PMIC_IIO_CHAN(MT6363, vproc_temp, VPROC_TEMP, 39, 12, IIO_VOLTAGE),
+> +	MTK_PMIC_IIO_CHAN(MT6363, vgpu_temp, VGPU_TEMP, 40, 12, IIO_VOLTAGE),
+>  
+>  	/* For VIN, ADC12 holds the result depending on which GPIO was activated */
+>  	MTK_PMIC_IIO_CHAN(MT6363, in1_v, VIN1, 45, 15, IIO_VOLTAGE),
+> 
 
 
