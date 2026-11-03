@@ -2,78 +2,80 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 53474606A324
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 5C41E606A327
 	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Nov 2026 09:10:23 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=URQXRKbk;
-	dkim=pass (1024-bit key, unprotected) header.d=mediatek.com header.i=@mediatek.com header.a=rsa-sha256 header.s=dk header.b=tpQ5VsDY
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=hFymBp9t;
+	dkim=pass (1024-bit key, unprotected) header.d=mediatek.com header.i=@mediatek.com header.a=rsa-sha256 header.s=dk header.b=L4KyoAkD
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
+	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=2It4Fb8ZtDEQVDFdKm8vz5VdKvtTILOcV+7ZdHxSaH0=; b=URQXRKbkvtljpfbkgmopebazRU
-	z93rQiwM3IdP/2Aq2PRsQIbTdBUYI4YJDuJYMQBkxtvkbqq4++CDwIjlECW4OoaRfpdt7vBDfDlOL
-	wXmCEtO2bkr7YcUNXH1xi3DmeePukQcikydms4TvOVGHmZjJX3A/CR3qlLGd9P4+f0Pnqyo7Y9owE
-	2ZKb1xu7CpS0sszhYvfezi0vRluXZOAow6xMCJrFV5nEL/fxY5qYhRrD7RlC6wvNTp/+KjHG5LDd0
-	CmTL14T1LSl+JUvCiK2BLZWuTwosvgti5TPuxbvkG8KRMDpkwKbe/E4XUhhInXk3Jc/6ZQXMvKqAA
-	UPY5ia5w==;
+	bh=IAyt+7Jp+OiNOSTQqb1S4a5PlLbQsLrrTmnRawmEWOI=; b=hFymBp9toFO40ll62y9sQbT6Os
+	LApid/9OL3m/Sk3eH/AGHIWAqbF29bDm/OdFZUpQZKaVOlxZGe47Iha7FRGC0NVnILxusiGYPV6MJ
+	DmpuTb2nWWNjOxAxUhpL41JGDVC9qsbsjKmMOjcbRyk0fROIvW3zv7H5F0X6TL0jUWEc+cw1UvjdH
+	TSwkWhp+9+ch8vOJrNZ0VD0lTZVvljzHvERn76YLMb0C3i0ZkPddcjI39yptve2UKe+p3v3RKENWK
+	Q6YM2+5tH+2sdxyoE/HvSQMwRh0rWzSYF1x8rf30ZWwHIFrFi2IcXChnRpeVQMCWn3K7LsU3z9els
+	aa9JsO5A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xOAX9-00000001hgC-0DkY;
+	id 1xOAX9-00000001hgH-0R8L;
 	Tue, 03 Nov 2026 09:10:23 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xOAX4-00000001heX-25kC
+	id 1xOAX4-00000001heG-2rYM
 	for linux-mediatek@lists.infradead.org;
-	Tue, 03 Nov 2026 09:10:20 +0000
-X-UUID: 60f6415ed76611f1acbe4559397dec65-20261103
+	Tue, 03 Nov 2026 09:10:21 +0000
+X-UUID: 614609c8d76611f1acbe4559397dec65-20261103
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=2It4Fb8ZtDEQVDFdKm8vz5VdKvtTILOcV+7ZdHxSaH0=;
-	b=tpQ5VsDYM9Bzn+Lhx6ijoxBNxCcHmcbgSySfJjxjH1Lj4bKEK4Cl9U27266fLWjXkMxES/C/36AWPAyxECf4fmZoLSwcz702UT6SnTiPWvlK0Nhx87JV2IWgnvlYr4HXP1POPZaRpqH3Xggup1Tdu+ODX84aUWOs1fUPBaaENts=;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=IAyt+7Jp+OiNOSTQqb1S4a5PlLbQsLrrTmnRawmEWOI=;
+	b=L4KyoAkDtpD04n3ITGXgE20PeaP8SkXCBetFFj7GQLHLT2v4pne0GTVHlQfcHDQE0PfodVFEX6vSyd1J81CN1iuDLHQ6iJaKiDD/UrWmWK+4yj9tS1KrYfKhSKHVJingKDGH7klpKvk2sDafSuYKA7AIMHTrDtcZC1F7s5zHU5o=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.21,REQID:28072fef-b65e-4b6a-923c-10ee11eed6f0,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:b0318ac,CLOUDID:32557ccd-04bc-4c99-a904-b11b369fe16d,B
-	ulkID:nil,BulkQuantity:0,SF:102|836|865|888|898,TC:-5,Content:0|15|50|99,E
-	DM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0
-	,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-O-INFO: VERSION:1.3.21,REQID:0cbc6aeb-996e-48c8-b96a-b9fdae5d1ab0,IP:0,U
+	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
+	N:release,TS:-25
+X-CID-META: VersionHash:b0318ac,CLOUDID:55b2bcce-02bc-447e-ab88-2baec399874a,B
+	ulkID:nil,BulkQuantity:0,SF:81|82|102|836|865|888|898,TC:-5,Content:0|15|5
+	0|99,EDM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0
+	,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
 X-CID-BVR: 2,SSN|SDN
 X-CID-BAS: 2,SSN|SDN,0,_
 X-CID-FACTOR: TF_CID_SPAM_SNR
 X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: 60f6415ed76611f1acbe4559397dec65-20261103
+X-UUID: 614609c8d76611f1acbe4559397dec65-20261103
 Received: from mtkmbs14n1.mediatek.inc [(172.21.101.75)] by mailgw02.mediatek.com
 	(envelope-from <jb.tsai@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 2085944524; Tue, 03 Nov 2026 02:10:13 -0700
+	with ESMTP id 921188241; Tue, 03 Nov 2026 02:10:14 -0700
 Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
  mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.29; Tue, 3 Nov 2026 17:10:11 +0800
+ 15.2.2562.29; Tue, 3 Nov 2026 17:10:12 +0800
 Received: from mtksitap99.mediatek.inc (10.233.130.16) by
  mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.2562.29 via Frontend Transport; Tue, 3 Nov 2026 17:10:11 +0800
+ 15.2.2562.29 via Frontend Transport; Tue, 3 Nov 2026 17:10:12 +0800
 From: JB Tsai <jb.tsai@mediatek.com>
 To: <nbd@nbd.name>, <lorenzo@kernel.org>
 CC: <linux-wireless@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
 	<Sean.Wang@mediatek.com>, <Evan-ym.Li@mediatek.com>, <jb.tsai@mediatek.com>,
 	Yin-Ming Li <evan-ym.li@mediatek.com>, Sean Wang <sean.wang@mediatek.com>
-Subject: [PATCH 1/3] wifi: mt76: mt7921: quiesce work before unregistering
-Date: Tue, 3 Nov 2026 17:10:08 +0800
-Message-ID: <20261103091010.1148974-1-jb.tsai@mediatek.com>
+Subject: [PATCH 2/3] wifi: mt76: mt7921: drain PCIe activity before freeing queues
+Date: Tue, 3 Nov 2026 17:10:09 +0800
+Message-ID: <20261103091010.1148974-2-jb.tsai@mediatek.com>
 X-Mailer: git-send-email 2.45.2
+In-Reply-To: <20261103091010.1148974-1-jb.tsai@mediatek.com>
+References: <20261103091010.1148974-1-jb.tsai@mediatek.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261103_011018_574595_D9D3A98D 
-X-CRM114-Status: GOOD (  19.93  )
+X-CRM114-CacheID: sfid-20261103_011018_733959_AE672EA3 
+X-CRM114-Status: GOOD (  15.70  )
 X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -85,252 +87,144 @@ List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-18.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-18.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,
 	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,T_PDS_OTHER_BAD_TLD,
-	UNPARSEABLE_RELAY,USER_AGENT_GIT autolearn=ham autolearn_force=no
-	version=4.0.1
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
 From: Yin-Ming Li <evan-ym.li@mediatek.com>
 
-An MT76_REMOVED check alone cannot synchronize an accepted MCU event
-with removal. A handler can pass the check and then arm scan, coredump or
-ROC activity after the corresponding consumer has been cancelled.
+The PCIe remove path sets MT76_REMOVED before unregistering mac80211,
+making the IRQ handler return without servicing MCU responses. It also
+disables the IRQ tasklet only after DMA cleanup, so a previously scheduled
+tasklet can run while queues are being torn down.
 
-Serialize unsolicited event side effects with a teardown gate. Leave
-command responses outside this gate. Preserve event delivery during
-firmware initialization, which precedes hardware registration: the gate
-uses a dedicated stop flag and retains the existing REMOVED check rather
-than requiring MT76_STATE_REGISTERED. Use GFP_ATOMIC for RSSI notifications
-from the atomic event dispatch path.
+Use the common work-quiescing helper while IRQs, NAPI and the MCU command
+queues remain available. Delay publishing REMOVED until mac80211
+unregistration returns, so the IRQ handler remains available during
+teardown even when individual MCU commands fail.
 
-Add a common MT7921 unregister helper that drains initialization, closes
-the event gate and disables reset, MAC and PM work before unregistering
-mac80211. Shut down the ROC timer and drain its work after closing the
-event producer. Work disabling rejects late queue attempts from bus
-workers and NAPI, whereas cancellation alone does not.
+Mask both device interrupt sources and flush the write before publishing
+REMOVED. Synchronize the IRQ, disable its tasklet, and disable and delete
+RX NAPI before releasing TX tokens. Let common DMA cleanup skip an
+already-deleted RX NAPI context to avoid disabling it twice.
 
-Keep the bus and PM wake path operational while draining work that needs
-them. Then disable PM work and park the TX worker. Request driver ownership
-under the PM mutex and set pm->suspended to suppress power-save scheduling
-before entering mac80211 teardown. If ownership acquisition succeeds,
-teardown commands can run without the disabled PM wake work. The bus
-implementations log ownership failures and removal continues best-effort.
-
-Clear MT76_STATE_REGISTERED before entering mac80211 so the state reflects
-unregistration. Bus drivers still have to stop their asynchronous
-producers. The following patches wire the helper into PCIe and SDIO
-removal; the existing reset-work REMOVED guards remain in place.
+After DMA cleanup has also stopped TX NAPI, drain the tasklet that its
+last poll might have scheduled. Add a REMOVED guard so this final tasklet
+cannot access freed queues. Purge scan and coredump state after stopping
+their producers and before freeing the device.
 
 Co-developed-by: Sean Wang <sean.wang@mediatek.com>
 Signed-off-by: Sean Wang <sean.wang@mediatek.com>
 Signed-off-by: Yin-Ming Li <evan-ym.li@mediatek.com>
 ---
- drivers/net/wireless/mediatek/mt76/mac80211.c      |  8 +++--
- drivers/net/wireless/mediatek/mt76/mt7921/init.c   | 35 +++++++++++++++++++++
- drivers/net/wireless/mediatek/mt76/mt7921/mcu.c    | 36 ++++++++++------------
- drivers/net/wireless/mediatek/mt76/mt7921/mt7921.h |  1 +
- drivers/net/wireless/mediatek/mt76/mt792x.h        |  3 ++
- 5 files changed, 62 insertions(+), 21 deletions(-)
+ drivers/net/wireless/mediatek/mt76/dma.c        |  4 ++-
+ drivers/net/wireless/mediatek/mt76/mt7921/pci.c | 40 ++++++++++++++++++-------
+ drivers/net/wireless/mediatek/mt76/mt792x_dma.c |  3 ++
+ 3 files changed, 35 insertions(+), 12 deletions(-)
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mac80211.c b/drivers/net/wireless/mediatek/mt76/mac80211.c
-index f92277770488aaca2a186a88fcd279086b9ee0f3..be8cd122cc04b904ccc1e413df9717e03be94a15 100644
---- a/drivers/net/wireless/mediatek/mt76/mac80211.c
-+++ b/drivers/net/wireless/mediatek/mt76/mac80211.c
-@@ -602,7 +602,7 @@ void mt76_unregister_phy(struct mt76_phy *phy)
+diff --git a/drivers/net/wireless/mediatek/mt76/dma.c b/drivers/net/wireless/mediatek/mt76/dma.c
+index f695a14596062c4cd5445913f014907a421b2c22..25d4640f09eea7335c422b36b9c3ef52fe388830 100644
+--- a/drivers/net/wireless/mediatek/mt76/dma.c
++++ b/drivers/net/wireless/mediatek/mt76/dma.c
+@@ -1217,7 +1217,9 @@ void mt76_dma_cleanup(struct mt76_dev *dev)
+ 	mt76_for_each_q_rx(dev, i) {
+ 		struct mt76_queue *q = &dev->q_rx[i];
+ 
+-		if (!mt76_queue_is_wed_rro(q)) {
++		/* A driver may have removed RX NAPI before releasing TX tokens. */
++		if (!mt76_queue_is_wed_rro(q) &&
++		    test_bit(NAPI_STATE_LISTED, &dev->napi[i].state)) {
+ 			napi_disable(&dev->napi[i]);
+ 			netif_napi_del(&dev->napi[i]);
+ 		}
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/pci.c b/drivers/net/wireless/mediatek/mt76/mt7921/pci.c
+index 5180597aed757777dc3d5c287f2bbdee39ce243d..2e05dbaf8b2805522410609e90f422b348826e43 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7921/pci.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7921/pci.c
+@@ -43,28 +43,47 @@ static int mt7921e_init_reset(struct mt792x_dev *dev)
+ 
+ static void mt7921e_unregister_device(struct mt792x_dev *dev)
  {
- 	struct mt76_dev *dev = phy->dev;
- 
--	if (!test_bit(MT76_STATE_REGISTERED, &phy->state))
-+	if (!test_and_clear_bit(MT76_STATE_REGISTERED, &phy->state))
- 		return;
- 
- 	if (IS_ENABLED(CONFIG_MT76_LEDS))
-@@ -808,7 +808,11 @@ void mt76_unregister_device(struct mt76_dev *dev)
- {
- 	struct ieee80211_hw *hw = dev->hw;
- 
--	if (!test_bit(MT76_STATE_REGISTERED, &dev->phy.state))
-+	/*
-+	 * Publish the unregistering state before entering mac80211.
-+	 * Drivers must separately quiesce their asynchronous work producers.
-+	 */
-+	if (!test_and_clear_bit(MT76_STATE_REGISTERED, &dev->phy.state))
- 		return;
- 
- 	if (IS_ENABLED(CONFIG_MT76_LEDS))
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/init.c b/drivers/net/wireless/mediatek/mt76/mt7921/init.c
-index 49be2fa4e3fa178e03764fb03c627413b8967c86..7ceb6c5894d0d5539fd7580be17250b0cf4d3535 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7921/init.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7921/init.c
-@@ -167,6 +167,40 @@ static void mt7921_init_work(struct work_struct *work)
- 	mt76_connac_mcu_set_deep_sleep(&dev->mt76, dev->pm.ds_enable);
- }
- 
-+void mt7921_unregister_device(struct mt792x_dev *dev)
-+{
-+	struct mt76_connac_pm *pm = &dev->pm;
-+
-+	cancel_work_sync(&dev->init_work);
-+
-+	/* Wait for accepted events and reject new unsolicited events. */
-+	spin_lock_bh(&dev->mcu_event_lock);
-+	dev->mcu_events_stopped = true;
-+	spin_unlock_bh(&dev->mcu_event_lock);
-+
-+	/* Keep the bus and PM wake path available while running work drains. */
-+	disable_work_sync(&dev->reset_work);
-+	disable_delayed_work_sync(&dev->mphy.mac_work);
-+	cancel_delayed_work_sync(&dev->phy.scan_work);
-+	timer_shutdown_sync(&dev->phy.roc_timer);
-+	cancel_work_sync(&dev->phy.roc_work);
-+
-+	/* Stop PM producers before mac80211 tears down its queues. */
-+	disable_delayed_work_sync(&pm->ps_work);
-+	mt76_worker_disable(&dev->mt76.tx_worker);
-+	disable_work_sync(&pm->wake_work);
-+
-+	/* Keep the device awake for teardown commands without PM work. */
-+	mutex_lock(&pm->mutex);
-+	__mt792x_mcu_drv_pmctrl(dev);
-+	mutex_unlock(&pm->mutex);
-+	wake_up(&pm->wait);
-+	pm->suspended = true;
-+
-+	mt76_unregister_device(&dev->mt76);
-+}
-+EXPORT_SYMBOL_GPL(mt7921_unregister_device);
-+
- int mt7921_register_device(struct mt792x_dev *dev)
- {
+ 	int i;
+-	struct mt76_connac_pm *pm = &dev->pm;
++	struct pci_dev *pdev = to_pci_dev(dev->mt76.dev);
  	struct ieee80211_hw *hw = mt76_hw(dev);
-@@ -177,6 +211,7 @@ int mt7921_register_device(struct mt792x_dev *dev)
- 	dev->mt76.phy.priv = &dev->phy;
- 	dev->mt76.tx_worker.fn = mt792x_tx_worker;
  
-+	spin_lock_init(&dev->mcu_event_lock);
- 	INIT_DELAYED_WORK(&dev->pm.ps_work, mt792x_pm_power_save_work);
- 	INIT_WORK(&dev->pm.wake_work, mt792x_pm_wake_work);
- 	spin_lock_init(&dev->pm.wake.lock);
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7921/mcu.c
-index 4e85b7644a9945f966ecf2fa12d17d2333533a0c..78328838abe583fdaad12d3eec97a7bf8dfff73a 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7921/mcu.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7921/mcu.c
-@@ -276,7 +276,7 @@ mt7921_mcu_rssi_monitor_iter(void *priv, u8 *mac,
- 	else
- 		nl_event = NL80211_CQM_RSSI_THRESHOLD_EVENT_LOW;
+ 	if (dev->phy.chip_cap & MT792x_CHIP_CAP_WF_RF_PIN_CTRL_EVT_EN)
+ 		wiphy_rfkill_stop_polling(hw->wiphy);
  
--	ieee80211_cqm_rssi_notify(vif, nl_event, rssi, GFP_KERNEL);
-+	ieee80211_cqm_rssi_notify(vif, nl_event, rssi, GFP_ATOMIC);
+-	cancel_work_sync(&dev->init_work);
+-	mt76_unregister_device(&dev->mt76);
+-	mt76_for_each_q_rx(&dev->mt76, i)
++	mt7921_unregister_device(dev);
++
++	/*
++	 * Mask device interrupts before MT76_REMOVED makes the handler return
++	 * IRQ_NONE. Drain the IRQ and tasklet before tearing down the queues.
++	 */
++	mt76_wr(dev, dev->irq_map->host_irq_enable, 0);
++	mt76_wr(dev, dev->pcie_reg->imask, 0);
++	mt76_rr(dev, dev->pcie_reg->imask);
++	set_bit(MT76_REMOVED, &dev->mphy.state);
++	synchronize_irq(pdev->irq);
++	tasklet_disable(&dev->mt76.irq_tasklet);
++
++	mt76_for_each_q_rx(&dev->mt76, i) {
+ 		napi_disable(&dev->mt76.napi[i]);
+-	cancel_delayed_work_sync(&pm->ps_work);
+-	cancel_work_sync(&pm->wake_work);
+-	cancel_work_sync(&dev->reset_work);
++		netif_napi_del(&dev->mt76.napi[i]);
++	}
++	skb_queue_purge(&dev->phy.scan_event_list);
++	cancel_delayed_work_sync(&dev->coredump.work);
++	skb_queue_purge(&dev->coredump.msg_list);
+ 
+ 	mt76_connac2_tx_token_put(&dev->mt76);
+-	__mt792x_mcu_drv_pmctrl(dev);
+ 	mt792x_dma_cleanup(dev);
++
++	/*
++	 * TX NAPI is now disabled too; drain a tasklet queued by its last poll.
++	 * MT76_REMOVED makes that tasklet return without touching freed queues.
++	 */
++	tasklet_enable(&dev->mt76.irq_tasklet);
++	tasklet_kill(&dev->mt76.irq_tasklet);
++	mt76_wr(dev, dev->irq_map->host_irq_enable, 0);
++
+ 	mt792x_wfsys_reset(dev);
+ 	skb_queue_purge(&dev->mt76.mcu.res_q);
+-
+-	tasklet_disable(&dev->mt76.irq_tasklet);
  }
  
- static void
-@@ -297,14 +297,11 @@ mt7921_mcu_rx_unsolicited_event(struct mt792x_dev *dev, struct sk_buff *skb)
- {
- 	struct mt76_connac2_mcu_rxd *rxd;
+ static u32 __mt7921_reg_addr(struct mt792x_dev *dev, u32 addr)
+@@ -458,7 +477,6 @@ static void mt7921_pci_remove(struct pci_dev *pdev)
+ 	if (of_property_read_bool(dev->mt76.dev->of_node, "wakeup-source"))
+ 		device_init_wakeup(dev->mt76.dev, false);
  
--	/* See mt7921_mcu_uni_rx_unsolicited_event(). MCU_EVENT_SCAN_DONE and
--	 * MCU_EVENT_COREDUMP in particular arm scan_work and coredump.work
--	 * after mt7921s_unregister_device() has already cancelled them.
--	 */
--	if (test_bit(MT76_REMOVED, &dev->mphy.state)) {
--		dev_kfree_skb(skb);
--		return;
--	}
-+	/* Serialize event side effects with mt7921_unregister_device(). */
-+	spin_lock_bh(&dev->mcu_event_lock);
-+	if (dev->mcu_events_stopped ||
-+	    test_bit(MT76_REMOVED, &dev->mphy.state))
-+		goto free_skb;
+-	set_bit(MT76_REMOVED, &mdev->phy.state);
+ 	mt7921e_unregister_device(dev);
+ 	devm_free_irq(&pdev->dev, pdev->irq, dev);
+ 	mt76_free_device(&dev->mt76);
+diff --git a/drivers/net/wireless/mediatek/mt76/mt792x_dma.c b/drivers/net/wireless/mediatek/mt76/mt792x_dma.c
+index 8ad94fa583405d561429a1c5d212e9f83d616328..06877816640f51829b50205ab93126385d26f16a 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt792x_dma.c
++++ b/drivers/net/wireless/mediatek/mt76/mt792x_dma.c
+@@ -31,6 +31,9 @@ void mt792x_irq_tasklet(unsigned long data)
+ 	const struct mt792x_irq_map *irq_map = dev->irq_map;
+ 	u32 intr, mask = 0;
  
- 	rxd = (struct mt76_connac2_mcu_rxd *)skb->data;
- 	switch (rxd->eid) {
-@@ -314,7 +311,7 @@ mt7921_mcu_rx_unsolicited_event(struct mt792x_dev *dev, struct sk_buff *skb)
- 	case MCU_EVENT_SCHED_SCAN_DONE:
- 	case MCU_EVENT_SCAN_DONE:
- 		mt7921_mcu_scan_event(dev, skb);
--		return;
-+		goto out;
- 	case MCU_EVENT_DBG_MSG:
- 		mt7921_mcu_debug_msg_event(dev, skb);
- 		break;
-@@ -322,7 +319,7 @@ mt7921_mcu_rx_unsolicited_event(struct mt792x_dev *dev, struct sk_buff *skb)
- 		dev->fw_assert = true;
- 		mt76_connac_mcu_coredump_event(&dev->mt76, skb,
- 					       &dev->coredump);
--		return;
-+		goto out;
- 	case MCU_EVENT_LP_INFO:
- 		mt7921_mcu_low_power_event(dev, skb);
- 		break;
-@@ -335,7 +332,10 @@ mt7921_mcu_rx_unsolicited_event(struct mt792x_dev *dev, struct sk_buff *skb)
- 	default:
- 		break;
- 	}
-+free_skb:
- 	dev_kfree_skb(skb);
-+out:
-+	spin_unlock_bh(&dev->mcu_event_lock);
- }
++	if (test_bit(MT76_REMOVED, &dev->mphy.state))
++		return;
++
+ 	mt76_wr(dev, irq_map->host_irq_enable, 0);
  
- static void
-@@ -344,14 +344,10 @@ mt7921_mcu_uni_rx_unsolicited_event(struct mt792x_dev *dev,
- {
- 	struct mt76_connac2_mcu_rxd *rxd;
- 
--	/* Every handler below either calls into mac80211 or arms a work item or
--	 * timer that does. mac80211 is already unregistered once the device is
--	 * being removed, so drop the event instead.
--	 */
--	if (test_bit(MT76_REMOVED, &dev->mphy.state)) {
--		dev_kfree_skb(skb);
--		return;
--	}
-+	spin_lock_bh(&dev->mcu_event_lock);
-+	if (dev->mcu_events_stopped ||
-+	    test_bit(MT76_REMOVED, &dev->mphy.state))
-+		goto out;
- 
- 	rxd = (struct mt76_connac2_mcu_rxd *)skb->data;
- 
-@@ -362,6 +358,8 @@ mt7921_mcu_uni_rx_unsolicited_event(struct mt792x_dev *dev,
- 	default:
- 		break;
- 	}
-+out:
-+	spin_unlock_bh(&dev->mcu_event_lock);
- 	dev_kfree_skb(skb);
- }
- 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/mt7921.h b/drivers/net/wireless/mediatek/mt76/mt7921/mt7921.h
-index fb8654b7c5e7e713abbb989e3fee15dc93c20e2a..1a3c25cb30eeb6ae8321cc072adebed351722eca 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7921/mt7921.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt7921/mt7921.h
-@@ -260,6 +260,7 @@ mt7921_l1_rmw(struct mt792x_dev *dev, u32 addr, u32 mask, u32 val)
- #define mt7921_l1_set(dev, addr, val)	mt7921_l1_rmw(dev, addr, 0, val)
- #define mt7921_l1_clear(dev, addr, val)	mt7921_l1_rmw(dev, addr, val, 0)
- 
-+void mt7921_unregister_device(struct mt792x_dev *dev);
- int mt7921_mac_init(struct mt792x_dev *dev);
- bool mt7921_mac_wtbl_update(struct mt792x_dev *dev, int idx, u32 mask);
- int mt7921_mac_sta_add(struct mt76_dev *mdev, struct ieee80211_vif *vif,
-diff --git a/drivers/net/wireless/mediatek/mt76/mt792x.h b/drivers/net/wireless/mediatek/mt76/mt792x.h
-index 9567ff883b285145552e1367233cb76a077e11ad..f515e091dad64c7d21540cf9729107087a359b74 100644
---- a/drivers/net/wireless/mediatek/mt76/mt792x.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt792x.h
-@@ -323,6 +323,9 @@ struct mt792x_dev {
- 
- 	struct mt76_connac_pm pm;
- 	struct mt76_connac_coredump coredump;
-+	/* MT7921 unsolicited event dispatch versus unregister. */
-+	spinlock_t mcu_event_lock;
-+	bool mcu_events_stopped;
- 	const struct mt792x_hif_ops *hif_ops;
- 	const struct mt792x_irq_map *irq_map;
- 	const struct mt792x_pcie_reg *pcie_reg;
+ 	intr = mt76_rr(dev, MT_WFDMA0_HOST_INT_STA);
 -- 
 2.43.0
 
