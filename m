@@ -2,74 +2,74 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 70FAB606A324
-	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Nov 2026 04:38:05 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 263B7606A335
+	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Nov 2026 04:38:14 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=caZ2SWW/;
-	dkim=pass (1024-bit key, unprotected) header.d=chromium.org header.i=@chromium.org header.a=rsa-sha256 header.s=google header.b=SUFdcEIG
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=rTZxK1HK;
+	dkim=pass (1024-bit key, unprotected) header.d=chromium.org header.i=@chromium.org header.a=rsa-sha256 header.s=google header.b=DUCLHqSK
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Unsubscribe-Post:
-	List-Owner; bh=jwXE6HVPE3u8H2VoPGvf+65Nm9Ko3QG6ghTmXH3WIyI=; b=caZ2SWW/PsXd0W
-	gcD5EPK25ughlPLBUvHKniBOGlJUoCL1tIypWqPdQ+RuIeey/Fh+Kon/L8LkaN8s0bJ0S+bPjA6Ox
-	UMd9tQyVCzIGJ5TKov6o3UyMXiNPC4kaQ8IX9lwLF4GAbYIgxUM06ArQsjm1bMUWiFMhh3Q/zLjZk
-	KHJHZczQDB3RQTeuivbWNYRWvIh6G9De44de6WjDnSPfLS55HnpS1oYK0d99VRjimohRDaUpXb2IL
-	38Q9j3jLfGAVPlUXYnOZ3mIL2kEI047C8S9XTMtL3ardTVgBP8tWhOfD9I1K8F2JkdmjO525KNpTu
-	p1dZE7MxLvZUWcWCT88Q==;
+	List-Owner; bh=h2GPV8kPMdAQMoqvFZFNAZKoDNH2JuPpdXamalsnIvU=; b=rTZxK1HKperAqQ
+	Al2cb2Z2YYXzEF/W0+WOh4JiE3UKBzGLj53F/hQWNNYBdqwlfnHSMhOiZIlKcbXYYqF9HuO3e34G+
+	sT2unkglErDmTVQLnK12CJkxnGufsy19a/5W98furp0hYVoFvYNP6zboT0wASqIfuMx/A9kpnx2Cr
+	B5wciuD9ya1sOw2ZFHqhBWw6VDoBqRBedqIHi0KoUAoiADiY8F5b33wsbVB6adXW3Hr6Qwaaj5uxt
+	eDlSyUQBFwKy6P4vxdimdPQI/PxmVmwAKBCp0gpQa6kbLP0847Rfsh4Tzk+CeHQ9PwMZkps9/zUAQ
+	DONA0i644i6Z6osl2xjQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xO6Hd-000000013qB-0kV9;
-	Tue, 03 Nov 2026 04:38:05 +0000
-Received: from mail-pj1-x1034.google.com ([2607:f8b0:4864:20::1034])
+	id 1xO6Hl-000000013w2-3LuK;
+	Tue, 03 Nov 2026 04:38:13 +0000
+Received: from mail-pg1-x52d.google.com ([2607:f8b0:4864:20::52d])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xO6Ha-000000013mL-2oIF
+	id 1xO6He-000000013r2-2Rvi
 	for linux-mediatek@lists.infradead.org;
-	Tue, 03 Nov 2026 04:38:03 +0000
-Received: by mail-pj1-x1034.google.com with SMTP id 98e67ed59e1d1-3adac5c10e3so2307459a91.0
-        for <linux-mediatek@lists.infradead.org>; Mon, 02 Nov 2026 20:38:02 -0800 (PST)
+	Tue, 03 Nov 2026 04:38:11 +0000
+Received: by mail-pg1-x52d.google.com with SMTP id 41be03b00d2f7-cd6028ff33fso1529570a12.0
+        for <linux-mediatek@lists.infradead.org>; Mon, 02 Nov 2026 20:38:06 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1793680682; x=1794285482; darn=lists.infradead.org;
+        d=chromium.org; s=google; t=1793680686; x=1794285486; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:from:to:cc:subject:date
          :message-id:reply-to:content-type;
-        bh=jwXE6HVPE3u8H2VoPGvf+65Nm9Ko3QG6ghTmXH3WIyI=;
-        b=SUFdcEIG9mlsfmP723xCYWA6J/XJz0sJN4cHVZRreTpX6b8t/0F4r1c7l6YAgZdGt+
-         zFrQRA+52Kzn7U2lBCCuKzSsJVZFxR0bE8SVMdZsIhGltN2xJmyomzQ231cddyTLsZGq
-         0XdrYy3nro0TvHAOkOpaFohm4FuxKor2RzQ+0=
+        bh=h2GPV8kPMdAQMoqvFZFNAZKoDNH2JuPpdXamalsnIvU=;
+        b=DUCLHqSKA5I/2yyQ3LxmRID9P0l9H375j85MM42TXvnZVBk+7tHximrMTe0gJdzgrf
+         S9DEG0XJsISY0pvKKEuZONU0Nw22EX9pFQM72nqi8fo9f7BtuMPTCBBMrkcPTkVTZ7n0
+         PQNGV/OaQDcVAivTI7cWOkXgEDQ9SZaJMxL9M=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1793680682; x=1794285482;
+        d=1e100.net; s=20260707; t=1793680686; x=1794285486;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
          :to:cc:subject:date:message-id:reply-to:content-type;
-        bh=jwXE6HVPE3u8H2VoPGvf+65Nm9Ko3QG6ghTmXH3WIyI=;
-        b=YUQiIQ6+/qmIpN3bNCtwDptBUDaVy+0O/9m3VYCOqpnti0Ma0jOZ+6SAyxjxD5Ie3X
-         zwgv9r1hhbLiKcIdGRnelOS6NBnod4tfSYSF5TrA0wck6VSvVWnACcxf508Hl4QZcXbd
-         IiiHUZ7dbSOB9HxLsua7wsKnKXgrAbe0FndV+aVi9zO1GtyBr1zqD6TPr7lrpgCxrto3
-         Zx1CBRDSH8wFbypdVYrWj8YbXXL10pEYaCAQuQjUPxLajFz6yUGo/8u7MNPQ4ao3x5ZC
-         qIlrOAvl7owfFv3gP0aT97FW00fZk9HVJHTjBnfxZoBXlNNe4WDzj5WqUe378J0KWgwr
-         SEAw==
-X-Forwarded-Encrypted: i=1; AKwUvBwyYiL5Jpac+H/Ya1+cRiTSLcKU3/fauCXil1dMSn3Xpe+pDeeGcqg9lCvT0tUuD78IkWqus8tJYawbHsL67w==@lists.infradead.org
-X-Gm-Message-State: APuU4Z8m9MiDiBiDPgnTfF7W/XVILKt9okFjTQ9hlwNmYNjp9DUuK4bi
-	3TN+c/K/gMcADp4FqoeLMylghqHZocfYsRSYujoMAEApCHfS+YPxvjtlu/mJV9kGRg==
-X-Gm-Gg: AYBFou0qJLBCSEoOVRbnXU6ifxAHXiaF+SfH4CqrazE8pcyGaD4JIaPNxVtadr2Tm3q
-	2xYTPRuNUUMC5sodNB+/TSeI2bDHDAgf1jGmJf9G6YsxNpqKGZUHlLfGCixXJYy4sRMn8rNXwJb
-	9P3CvS2M3pq7DkKHbD6b6HCRvGr1EFOYIkZHOV+iMYhDMp5HkQtOsaSPyXy0eVZmjXvHOaBR6Rw
-	fU3jLE2q/sTazltFKFL7H7dUsBUvMy+lBJwaoo86fTvTxsPE+MMeTJgynOO0HCFLp6M0uFOW2TI
-	Fd3WFwyayh8Xq+0oZFT5oyoHlq2HzQZr/idXLY2KrYsnCm9nKvojkCmZQP0bnuN1rpQ+IWfcgy3
-	EJJsfUPyTloCAMhmWjS0IbirWPSq3wF2Y+UHQl6p7VaOOdOo8h27AGQC50YOd5vyPFfzCN9t9qA
-	vR8HLDONXtVbJZqActvbCffhPimQsvLoEgvlyCfbjT9QyqlpV3AO+hnxjIqY51hHgyIKjQYdICx
-	7fd4HqXcFm5g0zT/5YEMMjSqPwhFalmFEGEmZ+tLRA1Nm201G8iSJQanTTaE/1PjrLtAmEKuUBk
-	etcOm/Yzsj69TCJ2ZhXaER4hWmW9EHsb3vCDgawxqhcscg3sINsB956QNoxm7jJGLEgPW8FC+UM
-	Mr4VAteD/n+tj
-X-Received: by 2002:a17:90b:2fcd:b0:3ac:a7ee:6780 with SMTP id 98e67ed59e1d1-3ae8986606fmr10535707a91.66.1793680681667;
-        Mon, 02 Nov 2026 20:38:01 -0800 (PST)
+        bh=h2GPV8kPMdAQMoqvFZFNAZKoDNH2JuPpdXamalsnIvU=;
+        b=fcpqXZKjc6DL0YeVBsnAzKzslaPhxSSyaEIdZCX9z82WetKHO1R+ZBKhKvxZidTazw
+         8RpsEL+rhoPpqR5+Tj2MwIODOtbqEiKSSmjtfkDYRW12pRNIyu7xbYuulE8nzWEhbaGl
+         fb2VaykXFouKAppNIinPrZMoKjfray8E2PyaAwhN0JoG6hFbQvFWlZVjfIficvD3eXaE
+         bYAueh5Idq4YixVgrp7AI0vXMct9r5ttHShl7uLinkyLn8aoJjbReKNiNctzD0q5JZl9
+         kEpLzhmLZTYcpsJMeeQtzUCRhqXofORg08gRJnUa1RCQQWySGLSTr8+pXLDr4KDCl1wP
+         +bPw==
+X-Forwarded-Encrypted: i=1; AKwUvBz6zSb0RX9ynfCMHdIDnPa9strOCfn+QkwXFRgCxDv+Q34sST9Eev0EZQDXs/inpYB9PW00bF1wyPZZhAeo2w==@lists.infradead.org
+X-Gm-Message-State: APuU4Z9i93IQrFsun5z8Ztv0XDkoc3et/eYK/DvTqD+bIs4QF0w+0RxJ
+	iWfcEWmBxaKrY/GPGwL44BsMLOqasLvsNlhdVEVi5bwyV5CzFURnyQzswUkA44l68A==
+X-Gm-Gg: AYBFou2744aKmotE+2GC4rM+nALnYypviCSS5zb/3LYSjQsb0GUUBk0OCxO1Xm6RlR1
+	MOnOm7P+dxyUfU7tZsYkcs1J0ShT27+z4kb5vnhMw+f9QKJsJJ71mJPOhmJczvTM8V82gdoep2a
+	YRKBHc+mXUjgUuIYUYbGuPjZTpOFt7XuKEJOQI+HJGlq/IVXN7zCRyVGLIi5bN1pPNflsxQw4mJ
+	XdnZP+/zEIaiR95frLh9by6k9xn4P5fpaKr3GyqD1RsJB268TxwRn2P35L7AwvJJmIRtuXwwxFZ
+	kVCXtVlGgmgZClq/kI5V0yAJgcTo5gjnzd6bp633liCJ4bygJE30CkpcFcgnKSumBuwyZ+aet74
+	DYf4MWStCVu1nR0DikhToqkZ468jg6oJsZcdr5IovSTfuIGZxYaTtzb6SGBDTTzjh3FG7hucoRJ
+	7+LnVooqZsbsUyyX1doFcx89Vz4iXfxO9NASSXuYFPEv5sILjTQ4hXaRH+rdkmq1R6r1YWgcutS
+	LwrdtZ3OU3bHFjCuPYfDzqgTsz2xnTlXyqVrVxBAiRWYJnR34VZBHSR5yf5qBOIlAs+0WjwlXXc
+	cWhD51ean7R8SiLKinMEQu9MV7rjPHgFuK/p0yogtZiYLdXYm0Vb6yd890GsOXPs4TtJZos/663
+	7Vr0BrWWrpzz8
+X-Received: by 2002:a17:90b:1b0f:b0:3ac:a5ff:2cc3 with SMTP id 98e67ed59e1d1-3ae8957d4f8mr10310774a91.8.1793680685963;
+        Mon, 02 Nov 2026 20:38:05 -0800 (PST)
 Received: from wenst-7875.tpe.corp.google.com ([2a00:79e0:203d:7:dea6:6326:4502:bb8b])
-        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-3b07c71c253sm2072761a91.16.2026.11.02.20.37.57
+        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-3b07c71c253sm2072761a91.16.2026.11.02.20.38.02
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 02 Nov 2026 20:38:01 -0800 (PST)
+        Mon, 02 Nov 2026 20:38:05 -0800 (PST)
 From: Chen-Yu Tsai <wenst@chromium.org>
 To: Mark Brown <broonie@kernel.org>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
@@ -87,9 +87,9 @@ Cc: Chen-Yu Tsai <wenst@chromium.org>,
 	linux-input@vger.kernel.org,
 	linux-i2c@vger.kernel.org,
 	linux-kernel@vger.kernel.org
-Subject: [PATCH v7 4/8] i2c: of-prober: skip post-power-on delay if powered on sufficiently long
-Date: Tue,  3 Nov 2026 12:37:28 +0800
-Message-ID: <20261103043734.2179858-5-wenst@chromium.org>
+Subject: [PATCH v7 5/8] i2c: of-prober: Let cleanup op know if a device was found
+Date: Tue,  3 Nov 2026 12:37:29 +0800
+Message-ID: <20261103043734.2179858-6-wenst@chromium.org>
 X-Mailer: git-send-email 2.56.0.385.gac671c819a-goog
 In-Reply-To: <20261103043734.2179858-1-wenst@chromium.org>
 References: <20261103043734.2179858-1-wenst@chromium.org>
@@ -97,8 +97,8 @@ X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261102_203802_710784_74910666 
-X-CRM114-Status: GOOD (  17.07  )
+X-CRM114-CacheID: sfid-20261102_203810_250113_1B46B1CF 
+X-CRM114-Status: GOOD (  17.97  )
 X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -118,56 +118,109 @@ X-Spam-Status: No, score=-18.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On some devices the I2C component is powered from an always-on power
-rail, or the power rail has been left on by either POR defaults or
-the bootloader. By the time the prober probes the device, the device
-most certainly has finished initializing and can respond. There is no
-need for the delay.
+The prober's cleanup op may want to do things differently if a device
+was found, such as wait for the actual device driver to pick up
+resources.
 
-In such designs, the system integrators tend to work around the delay
-to avoid the boot time penalty by simply omitting it from the device
-tree and the component prober. This is undesired, as the device tree
-is not fully describing the hardware.
+Add a parameter to the cleanup op to pass this information in.
 
-Switch to the new regulator_enable_and_wait() function that makes sure
-a certain amount of time has passed since the regulator supply was
-actually enabled.
+Also fix up an incorrect reference in i2c_of_probe_ops's kernel-doc.
 
 Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
 ---
-Changes since v2:
-- Switched to new regulator_enable_and_wait() API
+Changes since v6:
+- fixed typo in commit message and comments
+- fixed missing parameter in cleanup op type declaration
+
+Changes since v5:
+- New patch
 ---
- drivers/i2c/i2c-core-of-prober.c | 7 +++----
- 1 file changed, 3 insertions(+), 4 deletions(-)
+ drivers/i2c/i2c-core-of-prober.c | 8 ++++++--
+ include/linux/i2c-of-prober.h    | 7 ++++---
+ 2 files changed, 10 insertions(+), 5 deletions(-)
 
 diff --git a/drivers/i2c/i2c-core-of-prober.c b/drivers/i2c/i2c-core-of-prober.c
-index 6a82b03809d4..f9f3c0ef93ff 100644
+index f9f3c0ef93ff..97ef58bb4c04 100644
 --- a/drivers/i2c/i2c-core-of-prober.c
 +++ b/drivers/i2c/i2c-core-of-prober.c
-@@ -18,6 +18,7 @@
- #include <linux/regulator/consumer.h>
- #include <linux/slab.h>
- #include <linux/stddef.h>
-+#include <linux/time.h>
+@@ -130,6 +130,7 @@ int i2c_of_probe_component(struct device *dev, const struct i2c_of_probe_cfg *cf
+ 	const struct i2c_of_probe_ops *ops;
+ 	const char *type;
+ 	struct i2c_adapter *i2c;
++	bool device_found;
+ 	int ret;
  
- /*
-  * Some devices, such as Google Hana Chromebooks, are produced by multiple
-@@ -226,13 +227,11 @@ static int i2c_of_probe_simple_enable_regulator(struct device *dev, struct i2c_o
- 
- 	dev_dbg(dev, "Enabling regulator supply \"%s\"\n", ctx->opts->supply_name);
- 
--	ret = regulator_enable(ctx->supply);
-+	ret = regulator_enable_and_wait(ctx->supply,
-+					ctx->opts->post_power_on_delay_ms * USEC_PER_MSEC);
+ 	ops = cfg->ops ?: &i2c_of_probe_dummy_ops;
+@@ -159,6 +160,7 @@ int i2c_of_probe_component(struct device *dev, const struct i2c_of_probe_cfg *cf
  	if (ret)
- 		return ret;
+ 		goto out_put_i2c_adapter;
  
--	if (ctx->opts->post_power_on_delay_ms)
--		msleep(ctx->opts->post_power_on_delay_ms);
--
- 	return 0;
- }
++	device_found = false;
+ 	for_each_child_of_node_with_prefix(i2c_node, node, type) {
+ 		union i2c_smbus_data data;
+ 		u32 addr;
+@@ -171,12 +173,13 @@ int i2c_of_probe_component(struct device *dev, const struct i2c_of_probe_cfg *cf
+ 		/* Found a device that is responding */
+ 		if (ops->cleanup_early)
+ 			ops->cleanup_early(dev, ctx);
++		device_found = true;
+ 		ret = i2c_of_probe_enable_node(dev, node);
+ 		break;
+ 	}
+ 
+ 	if (ops->cleanup)
+-		ops->cleanup(dev, ctx);
++		ops->cleanup(dev, ctx, device_found && !ret);
+ out_put_i2c_adapter:
+ 	i2c_put_adapter(i2c);
+ 
+@@ -388,12 +391,13 @@ EXPORT_SYMBOL_NS_GPL(i2c_of_probe_simple_cleanup_early, "I2C_OF_PROBER");
+  * i2c_of_probe_simple_cleanup - Clean up and release resources for I2C OF prober simple helpers
+  * @dev: Pointer to the &struct device of the caller, only used for dev_printk() messages
+  * @data: Pointer to &struct i2c_of_probe_simple_ctx helper context.
++ * @device_enabled: True if a device was found and enabled.
+  *
+  * * If a GPIO line was found and not yet released, set its value to the opposite of that
+  *   set in i2c_of_probe_simple_enable() and release it.
+  * * If a regulator supply was found, disable that regulator and release it.
+  */
+-void i2c_of_probe_simple_cleanup(struct device *dev, void *data)
++void i2c_of_probe_simple_cleanup(struct device *dev, void *data, bool device_enabled)
+ {
+ 	struct i2c_of_probe_simple_ctx *ctx = data;
+ 
+diff --git a/include/linux/i2c-of-prober.h b/include/linux/i2c-of-prober.h
+index bb6d47f50ee5..11f3a05ce881 100644
+--- a/include/linux/i2c-of-prober.h
++++ b/include/linux/i2c-of-prober.h
+@@ -45,7 +45,7 @@ struct i2c_of_probe_ops {
+ 	 *
+ 	 * Only called if a matching component is actually found. If none are found,
+ 	 * resources that would have been released in this callback should be released in
+-	 * @free_resourcs_late instead.
++	 * @cleanup instead.
+ 	 */
+ 	void (*cleanup_early)(struct device *dev, void *data);
+ 
+@@ -53,8 +53,9 @@ struct i2c_of_probe_ops {
+ 	 * @cleanup: Opposite of @enable to balance refcounts and free resources after probing.
+ 	 *
+ 	 * Should check if resources were already freed by @cleanup_early.
++	 * @device_enabled is true if a component was found and was enabled.
+ 	 */
+-	void (*cleanup)(struct device *dev, void *data);
++	void (*cleanup)(struct device *dev, void *data, bool device_enabled);
+ };
+ 
+ /**
+@@ -131,7 +132,7 @@ struct i2c_of_probe_simple_ctx {
+ 
+ int i2c_of_probe_simple_enable(struct device *dev, struct device_node *bus_node, void *data);
+ void i2c_of_probe_simple_cleanup_early(struct device *dev, void *data);
+-void i2c_of_probe_simple_cleanup(struct device *dev, void *data);
++void i2c_of_probe_simple_cleanup(struct device *dev, void *data, bool device_enabled);
+ 
+ extern struct i2c_of_probe_ops i2c_of_probe_simple_ops;
  
 -- 
 2.56.0.385.gac671c819a-goog
