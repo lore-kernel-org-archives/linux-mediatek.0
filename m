@@ -2,11 +2,11 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id CA66C606A327
-	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Nov 2026 16:35:48 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 28203606A326
+	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Nov 2026 16:35:49 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=F/J+IgMn;
-	dkim=pass (2048-bit key, unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=deegLFnn
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=2B1ebJML;
+	dkim=pass (2048-bit key, unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=U3HxGv+W
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
@@ -14,72 +14,71 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	Content-Type:MIME-Version:Subject:Date:From:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=RJUGZOoWFzjXGj7HBosfKmIH9trO+YlXBEC99HJVpAw=; b=F/J+IgMnFCBYVzEhLqVFvXrhdm
-	D1s6zDJQ1zlFT5FoT3GQVQ5sReJ4KC0tCWRg+Q9f9ULZzjhpajf4EWaNw+o1UlnWHNWj6sBLUx+Qf
-	x4PLSkT5PXUFzRPtw7Ti76jw828mJsJmR+A36qrCvwbjswzh1g+YI4yX8lNK1szmEeTUwXDY//P/t
-	CzfuNo8NH0aVMNJINz0CRRvNU6BwkaX0P5Ah5sNYWiKFmFIt9TJxEAv7fFQMpWHLNORVMQHuoxZGl
-	FMuKQMftOqeN8Ki53el36AworBYWrrdrzHGi2HmuczvEQ9iwTB2h7Irvljorxt5sngNe6GJ7CUlEa
-	zhbNAKbg==;
+	bh=1gdqOYKlykeDMjNrInWMx9d6T1s+WWML0Tnqk1SqxjY=; b=2B1ebJML43UinDAjFkQvKbG7sJ
+	RuNWYkN7OPlCjyOJ2WJpE+d5OYDmHhbGrMyxneztQtiivjmzJfCkBEjY4TCVxZuy5DiyZS/VXtmLl
+	cbpX7GPobxkBeZR45cjkq4TPKDgBxGFpFhDdmmhXt1gwDAF5NR2jKCznD62Vm2S8C+8UmDBtj8+D8
+	V3wxU1PVU5veTdRMa54iNVk90sUr9msJIFcdCkuLvDc8BNvJIrXsD3zSxEY8hYAY0Ea97txt4TYc8
+	NiIfqAtx9lYvC8lHcfZ7nmQmPoBkCudDSAOmglk8sNvnlicQCopE7aUyBnCTShzpmUoSClYxfhK5S
+	b56bF5Ow==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xOHUC-000000038pE-260N;
+	id 1xOHUC-000000038pj-31q1;
 	Tue, 03 Nov 2026 16:35:48 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xOHUB-000000038oR-0hkr;
+	id 1xOHUB-000000038oS-13IQ;
 	Tue, 03 Nov 2026 16:35:47 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 532EF60136;
+	by sea.source.kernel.org (Postfix) with ESMTP id A8D08409D7;
 	Tue,  3 Nov 2026 16:35:46 +0000 (UTC)
 Authentication-Results: smtp.kernel.org; arc=none smtp.remote-ip=100.80.115.77
 ARC-Seal: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256; cv=none;
 	t=1793723746;
-	b=pONuBpSCKNWWQ7nMk5SXNcL1jVRaxc5im5rR027z9LquqhOLvI8qGEd+RsXgf+bTWgUY
-	 lni9cr03R87KIH35oZ2ySGGS9MZTHbbXcpMsk2YxpWZvcgAQqQ+KwMvuW5pzM6zqtij+s
-	 pyyFDPLt57iZNo2/x4BuVHm8NMXW5iIyJPLGVO6C3K95wKkimgxBnAFbb+fZMWMVq85c6
-	 bZ08d2CtcRGwXtjPk+2cvrJSqqtuP0jlAGCo9omZ9ssR3guhGXkyzZKI5x5/XeqoPIZxZ
-	 zjnsoTERIPJAttOetvIQ4qsPUa7TYQsAC1jLmIm34O7Tw0viB/Wn/5en9bTgCckjBJQ==
+	b=DPZCazyoMffFxf+ZCKFuG21lh1Tx9p1M3qjK5iL+lsgrhIvoTKNqnN9/fP/uSL6feV30
+	 kOy8fQ/KiWWnpvjFwGRd3DwpqG+01ZoeFkeEamcXUSL8hi+SBgoWwQ1SgjgBgszepsWVf
+	 AGhWRrNXWvaWbIlfg+fH3daSE2J9eHI1ME/WjLlzocv8j0o3eoLjmBvSRjusTGf+BEHhH
+	 5a/ZhAoGi4UTl/w68lamEbLcMcxAl00iDnnykQOZSINIO2kSf3K1ROjFx63gLkbeD/ksz
+	 3NyUiyKZpgBNrnYIG446nNb2Wo/ILKxJkMtS4TOxpdPnDp8rq2u+x172ljDls8Hojrw==
 ARC-Message-Signature: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256;
 	c=relaxed/relaxed; t=1793723746;
 	h=DKIM-Signature:Received:From:Date:Subject:MIME-Version:Content-Type:
 	 Message-Id:References:In-Reply-To:To:Cc:X-Mailer:
 	 X-Developer-Signature:X-Developer-Key:X-Endpoint-Received:
 	 X-Original-From:Reply-To:Content-Transfer-Encoding;
-	bh=RJUGZOoWFzjXGj7HBosfKmIH9trO+YlXBEC99HJVpAw=;
-	b=pbXm+J89Uk6C4VMX7wV4kqQef4xeBPHIjfEyLoiIRXIUkROHIYJoozIAXAqcaVhb9a7+
-	 ZHsjyu8vYr+G7ilXBZojMxABd3egki5ESqiWP9OImIBL8ILtwmo3yohq+t1ALmu9qAKBY
-	 MCWIAGCv5bOduY8jrC1NmThPlDnSBnAr5XZBulNzZadT+9FrRhF5ZumebMvm+Z6IWV8k4
-	 gkx5juEZyrLAnsDJf4j7/Tcc2vpeklL6hN0AR8pjepAyCSzAYKr0OPzdjPXmhdRcTpRfF
-	 Xw6fw1Su93dg3Cqper9g+DanR1/ZPSyt7HnyrZJMg7dZucRm2YaIqpsgRZXR+8+NOpA==
+	bh=1gdqOYKlykeDMjNrInWMx9d6T1s+WWML0Tnqk1SqxjY=;
+	b=OjaZG+ixq/4s+LtSam5KimtLqc5Of+LQUPXHTTfuS9Au4BlGHofzz22qFP7jjj2+2QJ6
+	 PAzTkOldOqofAhQKQWCL7KsSwfWC9QJfbRYhT0nUrRh8TRP3wWN/jcAwlgDPlwOhPVfXR
+	 tQGoMC41yWhyZl+A7AUeiVaPYCg63nresumznvIWWo7PBFg9EWtMCTMJpW1qlegrf5DAu
+	 Kp2NPsvMcM5cNSW99eq4OpUUEM6xPPCxcRknPI+4zsyKxKpu6+oCRSNkTAFK2jzVpBTPG
+	 emMDiZNlbZTp28bHRooT9seonkRAX6d6xQ4Yr4IpLWLVf/ldQN/BRTj2l2Rr+ie72uA==
 ARC-Authentication-Results: i=1; smtp.kernel.org; 
 	arc=none smtp.remote-ip=100.80.115.77
 Received: from lkml.kernel.org (nexus.subspace.kernel.org [100.80.115.77])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.kernel.org (Postfix) with ESMTPS id 53A5B1F000C1;
+	by smtp.kernel.org (Postfix) with ESMTPS id 5B3B41F00A02;
 	Tue,  3 Nov 2026 16:35:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
 	s=k20260515; t=1793723746;
-	bh=RJUGZOoWFzjXGj7HBosfKmIH9trO+YlXBEC99HJVpAw=;
+	bh=1gdqOYKlykeDMjNrInWMx9d6T1s+WWML0Tnqk1SqxjY=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To;
-	b=deegLFnnBRiCFClbYSMoewN7ye07SiAELhyHEQlfjmbHH1nfWeD+jUt9CNR69iwrn
-	 fY3qoybAUkRaOdlyKrEdagu/Stmchh3FJLDOnBld11wSM+PhGEw6zNkeeHKiUFUlQR
-	 5r13a9N9UxGQrCFuzKfOaKAtcm54JXxOBJNLY10y7EjsJdUZVHWHltvwMoYDri5bBi
-	 9n1oRyjuVjYUdAT9UO6SjbXQtV6AcIOSPVZxOz1i/lzD4nvhnxeHbowWt95VYBsxZg
-	 b24MMX4/IzODXFfzBuG79dEGZtRLoSAqYz8B+6KGOm+YpA+lIWi2m1hNPTgcOokwy5
-	 hS5gWfbkiDT3g==
+	b=U3HxGv+WKizr4CCZFyTgYDsvuIq4XBqs3UU7kj4wbtZTZVPo9zl0VepxssKOySCXl
+	 hfaW5bTmcENyBSpQYIDBdPb4nBsNDFAJ3q5Z/XMR28901T2IgKKoVKpcaKZ4aBoII+
+	 VXxh7hHkQJFOoEQtwSLZMR/kh/O3Ua7u8E92yvjRV7Z+DM+EcQqcJgxK15/zXXw5RB
+	 zOd58YR88L1OQIM05LAAx9f2pkgoJJZP4qlPORxQUw/s5NXh701CPjXhyPVFIVHbmK
+	 weo/2KGr3naFgqxdLf+gaFCQWdZQNAirWoO2ocNRxIWpYZtku6AMdxoLkaccsYDXli
+	 yTZj7mQIr5Ygg==
 Received: from nexus.subspace.kernel.org (localhost [IPv6:::1])
-	by lkml.kernel.org (Postfix) with ESMTP id C871B46A3A;
+	by lkml.kernel.org (Postfix) with ESMTP id D719746A3E;
 	Tue,  3 Nov 2026 16:35:44 +0000 (UTC)
 From: Roman Vivchar via B4 Relay <devnull+rva333.protonmail.com@kernel.org>
-Date: Tue, 03 Nov 2026 18:32:08 +0200
-Subject: [PATCH 2/3] iio: adc: mt6359-auxadc: mask conversion ready bit in
- mt6358_read_imp
+Date: Tue, 03 Nov 2026 18:32:09 +0200
+Subject: [PATCH 3/3] iio: adc: mt6359-auxadc: fix scale calculation
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
-Message-Id: <20261103-6768-6358-fixes-v1-2-2a868a33152b@protonmail.com>
+Message-Id: <20261103-6768-6358-fixes-v1-3-2a868a33152b@protonmail.com>
 References: <20261103-6768-6358-fixes-v1-0-2a868a33152b@protonmail.com>
 In-Reply-To: <20261103-6768-6358-fixes-v1-0-2a868a33152b@protonmail.com>
 To: Jonathan Cameron <jic23@kernel.org>, 
@@ -94,11 +93,11 @@ Cc: Chen-Yu Tsai <wenst@chromium.org>, linux-iio@vger.kernel.org,
  linux-mediatek@lists.infradead.org, Roman Vivchar <rva333@protonmail.com>, 
  Jonathan Cameron <jic23@kernel.org>
 X-Mailer: b4 0.15.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1793723743; l=938;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1793723743; l=1136;
  i=rva333@protonmail.com; s=20260510; h=from:subject:message-id;
- bh=jjtR8g7xmupL+XnlrkZOXO9Y/4V6fAf1ol/Gk6qBx/4=;
- b=PcG0apM9yu+7SfOsGLh2XjIaQra7NYavUchHZ85lr2Omw/dKnkzYLD6wOGrGXJVvSfg6U4pEr
- 7RlGITrGEsUCXPqC94DM43/U8X4Nv02n4iELKlNhQtcHUltkgrPGxJc
+ bh=R/Vgi/Hmv+iUny8kYvdB+lQ+e0rpx+YnD5NeeGn0NQU=;
+ b=Ezy6TSOcsGzfCu0rU7JGw9B0yFsyUBQrW5l7OFzfA2ilmV3BjvHHzojotw8pFI/KqAKTiz55m
+ i9/lIENPNMJDO6inOzG1kNoU/VraL7W4N9bCNfNqMKxXsgfsqzYDIDU
 X-Developer-Key: i=rva333@protonmail.com; a=ed25519;
  pk=zww/nWjBGoQ4POXCG0BV6fx2iuXK6jx77rsKPA5YK5Y=
 X-Endpoint-Received: by B4 Relay for rva333@protonmail.com/20260510 with
@@ -126,31 +125,38 @@ X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 
 From: Roman Vivchar <rva333@protonmail.com>
 
-In mt6358_read_imp() the raw ADC value is returned directly without
-masking out ready bit, resulting in incorrect battery voltage reporting.
+IIO_CHAN_INFO_SCALE currently returns value without dividing by
+2^realbits, overflowing the integer to an invalid value.
 
-Apply the mask to strip the ready bit, matching the behavior in
-mt6359_auxadc_read_adc() function.
+Fix this by using IIO_VAL_FRACTIONAL and setting val2 to the ADC
+resolution.
 
 Fixes: 3587914bf61d ("iio: adc: Add support for MediaTek MT6357/8/9 Auxiliary ADC")
 Signed-off-by: Roman Vivchar <rva333@protonmail.com>
 ---
- drivers/iio/adc/mt6359-auxadc.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ drivers/iio/adc/mt6359-auxadc.c | 8 ++------
+ 1 file changed, 2 insertions(+), 6 deletions(-)
 
 diff --git a/drivers/iio/adc/mt6359-auxadc.c b/drivers/iio/adc/mt6359-auxadc.c
-index 951d236f972b..09432d0974cf 100644
+index 09432d0974cf..3a969c30f633 100644
 --- a/drivers/iio/adc/mt6359-auxadc.c
 +++ b/drivers/iio/adc/mt6359-auxadc.c
-@@ -502,7 +502,7 @@ static int mt6358_read_imp(struct mt6359_auxadc *adc_dev,
- 	mt6358_stop_imp_conv(adc_dev);
+@@ -770,13 +770,9 @@ static int mt6359_auxadc_read_raw(struct iio_dev *indio_dev,
  
- 	if (vbat)
--		*vbat = val_v;
-+		*vbat = val_v & GENMASK(chan->scan_type.realbits - 1, 0);
- 	if (ibat)
- 		*ibat = 0;
+ 	if (mask == IIO_CHAN_INFO_SCALE) {
+ 		*val = desc->r_ratio.numerator * cinfo->vref_mV;
++		*val2 = desc->r_ratio.denominator << chan->scan_type.realbits;
  
+-		if (desc->r_ratio.denominator > 1) {
+-			*val2 = desc->r_ratio.denominator;
+-			return IIO_VAL_FRACTIONAL;
+-		}
+-
+-		return IIO_VAL_INT;
++		return IIO_VAL_FRACTIONAL;
+ 	}
+ 
+ 	scoped_guard(mutex, &adc_dev->lock) {
 
 -- 
 2.56.0
