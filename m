@@ -2,11 +2,11 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 7DA37606C573
-	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Nov 2026 11:10:24 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 6C576606EE88
+	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Nov 2026 11:36:10 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=LaC53Csw;
-	dkim=pass (2048-bit key, unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=CGGniuzx
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=Z3ALzVky;
+	dkim=pass (2048-bit key, unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=nA3OMBqW
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
@@ -14,54 +14,54 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=DttFhI0LxeH79eT/YhOIy6UMobLtyg9GPfkbGAxdi3s=; b=LaC53CswPNVThApjkBi38b3M+/
-	D56Zv51E6W4p8CKv2lKRPPjI6OCWyOPWEUfvRaUj0NM4HGObT8sEfcwQ18oh5RwphZ4A/8J7lS4x3
-	dcoaHKo+41rMVkXg9xMvBbNCBOg4ULapBKUh5tAwtm4ltRk8I8T0lgjrej90q5IPhZ3u+b3WcPeBM
-	zBfgy2PcFjkBecpaGj0o1R95Af6nS9z2DFabXtaWN6UTrpgdc+Vw8BIKzKkb13ZLf1QsHTxVu7+O8
-	HUfg7v6gFkBAjvdvb82cz7OsuY4HkbvUz9/MuZKKqCYhyR7xYgoyrfUGBuTKv4GHqJGrVL9CnxaNW
-	WCuxEwlg==;
+	bh=GAY7T9NQ/2byBz25PRaY9dnQ/M+bRZtNm/ceVen4yX8=; b=Z3ALzVkyNiTH38fJ1WnjyRnuSO
+	PD2YyS4U3hQqumWL8lynBhExx9xcChgl2Zt3uQt9dRwn/EYNBzA9BtSdcHKth0pC5XRvUheT9gb08
+	Iezaumt6GukU0hhVQBuIjYu/L0rG3DNnIflGA4/xjkhAxopLNW4bpClLvHDmbutbR0Gu3XTgqUeMA
+	7iLBRQyOtUBM4uLa3qpPUZJLajCCPdJ3WsPCEcLRi2pdIGESquexUfLyC/9JwVTnBJjBRq2hPADbS
+	IqzAdmaKbA5xdJ9legtNskigZeKIhngE82bbkVg46O2KW2JapdjfZ4Qf5AxhZjRs6f3AuXiTKQfuU
+	zM5V1lwA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xOCPI-000000029A3-0ui9;
-	Tue, 03 Nov 2026 11:10:24 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1xOCoE-00000002CWi-06Bz;
+	Tue, 03 Nov 2026 11:36:10 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xOCPG-0000000298d-0N2K;
-	Tue, 03 Nov 2026 11:10:22 +0000
+	id 1xOCo9-00000002CO7-0VDs;
+	Tue, 03 Nov 2026 11:36:05 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id 977BE43C77;
-	Tue,  3 Nov 2026 11:10:21 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id BF3D41F000C1;
-	Tue,  3 Nov 2026 11:10:20 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 8BC6B43BEF;
+	Tue,  3 Nov 2026 11:36:04 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id BAC561F000C1;
+	Tue,  3 Nov 2026 11:36:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1793704221;
-	bh=DttFhI0LxeH79eT/YhOIy6UMobLtyg9GPfkbGAxdi3s=;
+	s=k20260515; t=1793705764;
+	bh=GAY7T9NQ/2byBz25PRaY9dnQ/M+bRZtNm/ceVen4yX8=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=CGGniuzx9iamA1AwRWMQ1/ltNGuso7AezbHqZvG0a82iiXHiwroTbFy0Yv0D2P56V
-	 /i8XebYAe+VzhNJoc21a+OLWcTzWVY4BArMpFynRoK/OIafQa3PAxXjLB4Yk+zcHlG
-	 prmDed2NkkYSSKO+ndsUIqitcgo5/TEWdZTJqYCP5oUqCTS9XNMiPy6dfbV5UjSe92
-	 jJWEsLg05NYuiRk6y1ILq5wze+65C5pZ1TWCYp2JmkkJBrnPFPHNVkmZoZr54t37Hf
-	 7uSsVgkIXTA61kgSFV0HcgG3O9l9UZ79fY+oIXA4P8X06WrasZ5jU663w/uNuuzutz
-	 Bly/TlxMd8lqw==
-Date: Tue, 3 Nov 2026 12:10:18 +0100
-From: Krzysztof Kozlowski <krzk@kernel.org>
-To: Wentao Liang <vulab@iscas.ac.cn>
-Cc: Philipp Zabel <p.zabel@pengutronix.de>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, Neil Armstrong <neil.armstrong@linaro.org>, 
-	Chunfeng Yun <chunfeng.yun@mediatek.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, linux-mediatek@lists.infradead.org, 
-	linux-arm-kernel@lists.infradead.org, linux-phy@lists.infradead.org, stable@vger.kernel.org, 
-	dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org, 
-	Chun-Kuang Hu <chunkuang.hu@kernel.org>, Vinod Koul <vkoul@kernel.org>, 
-	Manivannan Sadhasivam <mani@kernel.org>
-Subject: Re: [PATCH] phy: mediatek: hdmi: use devm clock provider registration
-Message-ID: <20261103-jumping-nostalgic-mussel-1fddcf@quoll>
-References: <20261103104241.1373838-1-vulab@iscas.ac.cn>
+	b=nA3OMBqWR3BQKf86wg06Nkoydxsho4x5uDILtm0Wr4EW2r2fdhXIP5OCdlAW4ZDaq
+	 0BJft8wJVNe5odsp9CN31xIr5c8PkYsezfZitLD659jFaV6L6smQxMcklu+aX5lZEO
+	 Vb3cUdHRZdLiVVpoqlbqTXZ8h+APFIqpnQdOJ+TfmL8+wpGtKrgBR1osymsimxZCkI
+	 QkBLZg9Y+v/+Hvut5kBk0l0a9WTRfC/j5DSnPW5ywu0eCHNv0JnPpAf/Ma6d/otvBo
+	 d9LlnSqLIAEx1PLOfF5lKfUFFyv/ejU7ssVijiIBTWOTCrm3VYJxZNPJRnt1SHOJaI
+	 GFS1LbeJoZoVw==
+Date: Tue, 3 Nov 2026 11:35:59 +0000
+From: Simon Horman <horms@kernel.org>
+To: Alexander Goodkind <alex@goodkind.io>
+Cc: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo@kernel.org>,
+	andrew+netdev@lunn.ch, davem@davemloft.net, edumazet@kernel.org,
+	kuba@kernel.org, pabeni@redhat.com, matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com, netdev@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	Tarick Bedeir <tarick@bedeir.com>
+Subject: Re: [PATCH net v2] net: ethernet: mediatek: preserve sibling PPE
+ bindings
+Message-ID: <20261103113559.GH865646@horms.kernel.org>
+References: <20261030010517.45639-1-alex@goodkind.io>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20261103104241.1373838-1-vulab@iscas.ac.cn>
+In-Reply-To: <20261030010517.45639-1-alex@goodkind.io>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,73 +74,51 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 X-Spam-Status: No, score=-15.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,
-	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=ham
+	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,MAILING_LIST_MULTI,
+	MENTIONS_GIT_HOSTING,SPF_HELO_NONE,SPF_PASS autolearn=ham
 	autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-
-On Tue, 03 Nov 2026 10:42:41 +0000, Wentao Liang wrote:
-> mtk_hdmi_phy_probe() registers the PLL clock provider with the
-> deprecated of_clk_add_provider(), which takes a reference on the device
-> node.  The driver has no .remove callback, so neither the node
-> reference nor the provider registration is ever released; after the
-> device is unbound, the global provider list still points at the freed
-> hdmi_phy and at the unregistered clock.
+On Thu, Oct 29, 2026 at 06:05:17PM -0700, Alexander Goodkind wrote:
+> __mtk_ppe_check_skb() clears entry->hash for flows bound to other
+> hardware slots in the same software hash bucket. mtk_flow_offload_stats()
+> then skips their hardware counter updates. L2 cleanup also frees sibling
+> subflows without invalidating their hardware rules.
 > 
-> Register the provider with devm_of_clk_add_hw_provider() and
-> of_clk_hw_simple_get(), matching the sibling MIPI DSI PHY driver, so
-> that it is removed when the device is unbound.
+> Restrict both cleanup paths to entries assigned to the inspected slot.
 > 
-> Fixes: be28b6507c46 ("drm/mediatek: separate hdmi phy to different file")
-> Cc: stable@vger.kernel.org
-> Assisted-by: DeepSeek-V4.1-Flash and OpenAI Codex
-> Signed-off-by: Wentao Liang <vulab@iscas.ac.cn>
+> Two UDP trials reproduced the counter failure on a GL-MT3000/MT7981
+> running unmodified OpenWrt 25.12.5 with Linux 6.12.94:
+> 
+> 1. Start a UDP connection.
+> 2. Add a control connection in a different hash bucket.
+> 3. Add a connection in the first connection's hash bucket.
+> 
+> AI code review of the original patch identified the cleanup problem
+> in L2 subflows.
+> 
+> Full ARM64 builds with allmodconfig and allyesconfig passed before
+> and after the patch using GCC 14.2.0 and W=1, without new warnings.
+> The builds used CONFIG_WERROR=n because the unmodified ARM64 kernel
+> already emits warnings. Hardware testing has not run for this revision.
+> 
+> Fixes: c4f033d9e03e ("net: ethernet: mtk_eth_soc: rework hardware flow table management")
+> Fixes: 33fc42de3327 ("net: ethernet: mtk_eth_soc: support creating mac address based offload entries")
+> Link: https://github.com/openwrt/openwrt/pull/26107
+> Assisted-by: LLM
+> Signed-off-by: Alexander Goodkind <alex@goodkind.io>
 > ---
->  drivers/phy/mediatek/phy-mtk-hdmi.c | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
+> Changes in v2:
+> - Apply the slot check to L2 subflow cleanup as well.
+> - Add the Fixes tag for L2 offload support.
 > 
+> V1: https://lore.kernel.org/netdev/20261023012529.5994-1-alex@goodkind.io/
+> 
+> Codex assisted with investigating the counters and preparing the patch.
 
-Multiple things here:
-1. Your team ignored completely previous feedback. Multiple times.
+Thanks for the updates.
 
-2. You use multiple identities with this email address, thus I doubt that we
-   speak with an actual person.
-
-3. Your bot does not even bother running checkpatch, right?
-
-4. Nothing of this was reproduced nor tested.
-
-5. Finally, the same feedback:
-You sent multiple independent patches, to multiple independent
-subsystems. The amount of these patches clearly suggest this was
-AI generated and most likely not tested.
-
-More importantly, you sent all this work without properly organizing
-relevant patches into patchsets. This makes reviewing difficult
-and might cause multiple reviewers to address the same issue.
-Replying to the entire set is impossible and requires handling each
-patch independently, instead of applying or discarding the set.
-Maintainers also won't see the bigger picture of your work. Quite
-worrying.
-
-This is on the verge of hostile patch: bomb us with so many
-contributions, we won't be able to handle them in efficient manner,
-like responding ONCE to ask you to slow down.  Considering all this
-is untested and LLM generated, I have even more doubts whether this
-should be considered for review.
-
-Please read kernel documentation BEFORE posting more work. It will
-explain you how to identify subsystems, how to organize your work per
-subsystem (so a patchset grouping multiple patches with a short cover
-letter), how to document the issue discovery method and what was
-or was not tested.
-
-Best regards,
-Krzysztof
-
-
-
+Reviewed-by: Simon Horman <horms@kernel.org>
 
 
