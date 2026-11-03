@@ -2,63 +2,80 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id C407A60736E3
-	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Nov 2026 10:27:12 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 4735B60822AB
+	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Nov 2026 10:42:43 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=EryxPi5I;
-	dkim=pass (2048-bit key, unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=kW/9Nqnl
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=sQc3TEDn
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
 	List-Unsubscribe-Post:List-Owner;
-	bh=5JCgmnnBV7ODGkM1qXDPR9WPLQTgtUl6RjPyn6nE4gg=; b=EryxPi5IbXMVTTbS+5GJrZdjHR
-	uOetNmh67bUQYxarifzQ5QQJYbRJpmsQSxp1MkWVgApYG8B8I+UF1EBTX76ByRN8kDpPcLnBicfjz
-	d6g+pPdlrViLwMGUZeKxcf8rQXbCUXsdbyUPC3D1HAhFWfceyFM5+j0xYyXyAbBaPaCWXc0u6iUUe
-	gddJgJsCu9sFoFskb8tAz5jY/uXdecf7GeM+nQXf1xWy8atC20Q530OWnYfu/jfk5whFGZv2taHAO
-	vTY5g1TyKa2kNBAOe8BQDlaSEg8cnmKuZlibB8bNo4UQrPcMNiJDKpf74fs+E19ahvHfw8VX7+21D
-	CyhtNvQQ==;
+	bh=dq/RY5R/Na6tlI++Iffy5vOaP29XVU/XmXlYaY8sWUE=; b=sQc3TEDnMXpxS8QGoNYIpMlc3B
+	bMWHYymPFfVCkv7CWN+3t34B8I620+VdHkZJmKF1W08v4zBMvPqPPLAuNpg14dfuV3K9NBj9rSWiK
+	OGSBHVPR2GhCR3GoYcGqpq5UqZX6NucQLy7OtquZiBU1iREPiaJpGr9hgXRFm0EVNhpoEMQxJikrt
+	/jZCkRXDLPIyZfssjp1aNukJF4WNokKXNWWzxca+eOQx2+fpIGRwLJ7pxA4g0JvHxy8SapW2GVv9l
+	rSlGHz9nEvj+ahDTP12wJKmkw0zn3ia03MLs9grla/H1GyuM92oeXcGMP0tfV1VdZw9gDjfDCp/1p
+	cWAoZ+gA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xOBjU-00000001z1S-1R7U;
-	Tue, 03 Nov 2026 10:27:12 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1xOByT-000000023GR-2ttX;
+	Tue, 03 Nov 2026 10:42:41 +0000
+Received: from smtp81.cstnet.cn ([159.226.251.81] helo=cstnet.cn)
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xOBjR-00000001ywq-2hLM;
-	Tue, 03 Nov 2026 10:27:09 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 0F0B960611;
-	Tue,  3 Nov 2026 10:27:09 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 125B91F00919;
-	Tue,  3 Nov 2026 10:27:07 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1793701628;
-	bh=5JCgmnnBV7ODGkM1qXDPR9WPLQTgtUl6RjPyn6nE4gg=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=kW/9NqnlCo3bKlu6H7GShjdIrl2ZuQjd0jl/USYagMnaMCukaur5fPw1Zt0dTzIFF
-	 8N9o/UYYQcuDD5fFf/4Za154D4g/vCE88R7+sUYXSD3oLBcB+1wp2fAfrntRnfwBvK
-	 L3JCWGVm7Ala9fj73wbM46izIadxvYRukOEejFBDlZHQn/831Bl0ZO/yzkzR9rDghh
-	 PY0i6acxuXXa18jod7zvUIyzzq4uqfyG8OKIrn53ucoVhJhFvCMjnWMI+FSiVQVpzn
-	 FCZPq6UgnZdnJPXNCprsweuFmzSZdwghMPJ+HA+eJjaGs+gbwebCsrFKDNIEOAn276
-	 rFyHyzjp20XLA==
-Date: Tue, 3 Nov 2026 11:27:06 +0100
-From: Krzysztof Kozlowski <krzk@kernel.org>
-To: Wentao Liang <vulab@iscas.ac.cn>
-Cc: linux-mediatek@lists.infradead.org, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, linux-arm-kernel@lists.infradead.org, 
-	Mauro Carvalho Chehab <mchehab@kernel.org>, linux-media@vger.kernel.org, stable@vger.kernel.org, 
-	Matthias Brugger <matthias.bgg@gmail.com>, Bin Liu <bin.liu@mediatek.com>, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH] media: mtk-jpeg: Release the encoder device on job
- completion
-Message-ID: <20261103-accurate-aboriginal-jackrabbit-dc2ddb@quoll>
-References: <20261103094613.1289270-1-vulab@iscas.ac.cn>
+	id 1xOByQ-000000023Ci-18nt;
+	Tue, 03 Nov 2026 10:42:39 +0000
+Received: from dfae2b116770.home.arpa (unknown [36.110.52.2])
+	by APP-03 (Coremail) with SMTP id rQCowACneZqYuulqrMg7AA--.6046S2;
+	Tue, 03 Nov 2026 18:42:32 +0800 (CST)
+From: Wentao Liang <vulab@iscas.ac.cn>
+To: Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+	Philipp Zabel <p.zabel@pengutronix.de>,
+	Chunfeng Yun <chunfeng.yun@mediatek.com>,
+	Vinod Koul <vkoul@kernel.org>,
+	Neil Armstrong <neil.armstrong@linaro.org>,
+	Manivannan Sadhasivam <mani@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: dri-devel@lists.freedesktop.org,
+	linux-mediatek@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-phy@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	Wentao Liang <vulab@iscas.ac.cn>,
+	stable@vger.kernel.org
+Subject: [PATCH] phy: mediatek: hdmi: use devm clock provider registration
+Date: Tue,  3 Nov 2026 10:42:41 +0000
+Message-Id: <20261103104241.1373838-1-vulab@iscas.ac.cn>
+X-Mailer: git-send-email 2.34.1
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-In-Reply-To: <20261103094613.1289270-1-vulab@iscas.ac.cn>
+Content-Transfer-Encoding: 8bit
+X-CM-TRANSID: rQCowACneZqYuulqrMg7AA--.6046S2
+X-Coremail-Antispam: 1UD129KBjvJXoW7ur48ZFWxuw1DZFy8ZrWkZwb_yoW8XrW3pF
+	1UGa4jyF98AF4xGw1DJ3W7XFyYka43JFWSkrW7G3y5Za15CryfX3yayFyF9FsYyFykua12
+	vr1qvFWrWFW8ZFDanT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
+	9KBjDU0xBIdaVrnRJUUUBEb7Iv0xC_Kw4lb4IE77IF4wAFF20E14v26r4j6ryUM7CY07I2
+	0VC2zVCF04k26cxKx2IYs7xG6rWj6s0DM7CIcVAFz4kK6r1j6r18M28lY4IEw2IIxxk0rw
+	A2F7IY1VAKz4vEj48ve4kI8wA2z4x0Y4vE2Ix0cI8IcVAFwI0_Ar0_tr1l84ACjcxK6xII
+	jxv20xvEc7CjxVAFwI0_Gr1j6F4UJwA2z4x0Y4vEx4A2jsIE14v26rxl6s0DM28EF7xvwV
+	C2z280aVCY1x0267AKxVW0oVCq3wAS0I0E0xvYzxvE52x082IY62kv0487Mc02F40EFcxC
+	0VAKzVAqx4xG6I80ewAv7VC0I7IYx2IY67AKxVWrXVW3AwAv7VC2z280aVAFwI0_Cr1j6r
+	xdMcvjeVCFs4IE7xkEbVWUJVW8JwACjcxG0xvY0x0EwIxGrwACjI8F5VAI37AI020EjII2
+	zVCS5cI20VAGYxC7M4IIrI8v6xkF7I0E8cxan2IY04v7MxkF7I0En4kS14v26r1q6r43Mx
+	AIw28IcxkI7VAKI48JMxC20s026xCaFVCjc4AY6r1j6r4UMI8I3I0E5I8CrVAFwI0_Jr0_
+	Jr4lx2IqxVCjr7xvwVAFwI0_JrI_JrWlx4CE17CEb7AF67AKxVWUtVW8ZwCIc40Y0x0EwI
+	xGrwCI42IY6xIIjxv20xvE14v26ryj6F1UMIIF0xvE2Ix0cI8IcVCY1x0267AKxVW8Jr0_
+	Cr1UMIIF0xvE42xK8VAvwI8IcIk0rVWUJVWUCwCI42IY6I8E87Iv67AKxVW8Jr0_Cr1UMI
+	IF0xvEx4A2jsIEc7CjxVAFwI0_Cr1j6rxdYxBIdaVFxhVjvjDU0xZFpf9x07bOAw3UUUUU
+	=
+X-CM-SenderInfo: pyxotu46lvutnvoduhdfq/1tbiBgEAA2rpnIR99AAAsW
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20261103_024238_697979_B2D44874 
+X-CRM114-Status: GOOD (  11.02  )
+X-Spam-Score: -0.9 (/)
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -69,78 +86,48 @@ List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-15.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,
-	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=ham
-	autolearn_force=no version=4.0.1
+X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
+	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
+mtk_hdmi_phy_probe() registers the PLL clock provider with the
+deprecated of_clk_add_provider(), which takes a reference on the device
+node.  The driver has no .remove callback, so neither the node
+reference nor the provider registration is ever released; after the
+device is unbound, the global provider list still points at the freed
+hdmi_phy and at the unregistered clock.
 
-On Tue, 03 Nov 2026 09:46:13 +0000, Wentao Liang wrote:
-> mtk_jpegenc_worker() resumes the component device represented by
-> comp_jpeg[hw_id]->dev.  When the job completes,
-> mtk_jpegenc_hw_irq_handler() drops a reference to the master device
-> ctx->jpeg->dev instead of the component device.  The component's usage
-> counter is never decremented, so the component and its power domain stay
-> powered, while the master's usage counter is decremented without a
-> matching reference.
-> 
-> Release jpeg->dev, the component device that was resumed, and disable
-> the clock before dropping the reference as the timeout work already
-> does.
-> 
-> Fixes: 934e8bccac95 ("mtk-jpegenc: support jpegenc multi-hardware")
-> Cc: stable@vger.kernel.org
-> Assisted-by: DeepSeek-V4.1-Flash and OpenAI Codex
-> Signed-off-by: Wentao Liang <vulab@iscas.ac.cn>
-> ---
->  drivers/media/platform/mediatek/jpeg/mtk_jpeg_enc_hw.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
+Register the provider with devm_of_clk_add_hw_provider() and
+of_clk_hw_simple_get(), matching the sibling MIPI DSI PHY driver, so
+that it is removed when the device is unbound.
 
+Fixes: be28b6507c46 ("drm/mediatek: separate hdmi phy to different file")
+Cc: stable@vger.kernel.org
+Assisted-by: DeepSeek-V4.1-Flash and OpenAI Codex
+Signed-off-by: Wentao Liang <vulab@iscas.ac.cn>
+---
+ drivers/phy/mediatek/phy-mtk-hdmi.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-
-Multiple things here:
-1. Your team ignored completely previous feedback. Multiple times.
-
-2. You use multiple identities with this email address, thus I doubt that we
-   speak with an actual person.
-
-3. Your bot does not even bother running checkpatch, right?
-
-4. Nothing of this was reproduced nor tested.
-
-5. Finally, the same feedback:
-You sent multiple independent patches, to multiple independent
-subsystems. The amount of these patches clearly suggest this was
-AI generated and most likely not tested.
-
-More importantly, you sent all this work without properly organizing
-relevant patches into patchsets. This makes reviewing difficult
-and might cause multiple reviewers to address the same issue.
-Replying to the entire set is impossible and requires handling each
-patch independently, instead of applying or discarding the set.
-Maintainers also won't see the bigger picture of your work. Quite
-worrying.
-
-This is on the verge of hostile patch: bomb us with so many
-contributions, we won't be able to handle them in efficient manner,
-like responding ONCE to ask you to slow down.  Considering all this
-is untested and LLM generated, I have even more doubts whether this
-should be considered for review.
-
-Please read kernel documentation BEFORE posting more work. It will
-explain you how to identify subsystems, how to organize your work per
-subsystem (so a patchset grouping multiple patches with a short cover
-letter), how to document the issue discovery method and what was
-or was not tested.
-
-Best regards,
-Krzysztof
-
-
-
+diff --git a/drivers/phy/mediatek/phy-mtk-hdmi.c b/drivers/phy/mediatek/phy-mtk-hdmi.c
+index 52a7d525ff9b..e7ed1b789b34 100644
+--- a/drivers/phy/mediatek/phy-mtk-hdmi.c
++++ b/drivers/phy/mediatek/phy-mtk-hdmi.c
+@@ -178,8 +178,8 @@ static int mtk_hdmi_phy_probe(struct platform_device *pdev)
+ 			return ret;
+ 	}
+ 
+-	return of_clk_add_provider(dev->of_node, of_clk_src_simple_get,
+-				   hdmi_phy->pll);
++	return devm_of_clk_add_hw_provider(dev, of_clk_hw_simple_get,
++					   &hdmi_phy->pll_hw);
+ }
+ 
+ static const struct of_device_id mtk_hdmi_phy_match[] = {
+-- 
+2.34.1
 
 
