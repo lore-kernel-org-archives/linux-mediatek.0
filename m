@@ -2,57 +2,57 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 2461D6083610
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 5F3106083608
 	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Nov 2026 10:13:04 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=d1HacQhU;
-	dkim=pass (2048-bit key, unprotected) header.d=collabora.com header.i=@collabora.com header.a=rsa-sha256 header.s=mail header.b=cPxHSwTP
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=LkUT9XVu;
+	dkim=pass (2048-bit key, unprotected) header.d=collabora.com header.i=@collabora.com header.a=rsa-sha256 header.s=mail header.b=bT4qjTDD
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Unsubscribe-Post:
-	List-Owner; bh=nrAEy6smt0Z5TrLK8FgcSUT3fhNNePtrdQvnsA7pdqU=; b=d1HacQhU53eJod
-	Qe/2w/8Isr6uxdt9uNoAMEJqz97nByv7n6nQRggDLT5sCfUMHf1yOUqe8UR6w9/p/DZx/hp1FWoj9
-	itjjM973NuaktbPduiJnmfKxusXXlLe2yKYyDqWIKdh/jlFSIwKLjn2jmsewLrO9QYOlz0U+389R2
-	LxRfa5gwlcSVkpAfAREpyL1QyOIa8g8CHB9m0RI5y+P3KV6EdHvseUM/+oAREPOLmHD/IIsErNtk9
-	Q3zrYHTrakLdESOqWJqem2vf9GeJ8g7en+xgadwCEHOPY+ZQyZxMlG66HBEQHN7knE62GILvq4SXS
-	iVWKmlbM5sHTVo0Py5Sg==;
+	List-Owner; bh=YzQBxDywg53L/d7II1zv+CoUHO7/4sl0WQuSbexemXU=; b=LkUT9XVuooEaIU
+	nY7ZlaSb3Z36OPer2DPkMYcK5CsRYSSyUzrwlrEyuCo1acadoxnm/No9E0vMZCHtFtmw+rXj3aXR6
+	6cAlsCCSLYkxKb1p1m+IVbShDp7abbkjHyt8sR35fcMHCmKUnxSyR+BQEWMWG1wONC2GHsomGJOB5
+	keqK8xmTbQ3seibquzLBBTfu6GRvywVkNpGOyrzep1bltFe67MtNsGVt53Bopx8UtB0cRgITH9beL
+	YBygYrNfvstYIYNzv1pj4UxyagHUFhnYLV+8aRHha7Qffe1UT08SoDbRb0fRR5GX76CbGKhBF9dHb
+	Ccm+Qi2++1exCaxCM3sQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xOBVn-00000001u3E-2NIZ;
+	id 1xOBVn-00000001u3K-2wQH;
 	Tue, 03 Nov 2026 10:13:03 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xOBVX-00000001tcl-43Ep;
+	id 1xOBVW-00000001tcc-368k;
 	Tue, 03 Nov 2026 10:12:52 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1793700765;
-	bh=8wtpOkK6yYbR8j5kqB7IPtqb6ARPGLkh+YqZsa4f1Q0=;
+	s=mail; t=1793700764;
+	bh=fgRG/Qp5WV1QVNiuGm1kV55/qVJ1752aXcE75rXacDY=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=cPxHSwTPnC60z7cbwOt8Kn1YxuCp2Wt245KdwoprQdtB+1rY34FSgDVHVM5zz5rmj
-	 hVZQupqCZTt4uLaCT68RiN548cRqJoHH/ajB6y2UFtkLKsLHio86ni2utixkXTOEfH
-	 axCf+U4e7OytAtLrzJWMhOJZMonKRpLxnYJ50/tOMgalYv0PwcREqG+s+cChfy5AW3
-	 A1gu6+9qRGmVM8R/J/TGaEl+SrRS3Bbj9JinImUWKYTQKQC0f/yz/YY2PljP6rtUDd
-	 OnNopJP7xRLGGagRcDHX6aX9RhIzJdGYrKTcNojJxAq9vKnA6NDcnBfs10ljWw+qsd
-	 MDkGCa6M3hEGQ==
+	b=bT4qjTDD8nhVuE2QOXMBQeQQzT9j7dnABNRCT9UJTxfgA11T5bhdPr+OrFwgS3k3H
+	 1TFoQ6IlZ66BJ1yGFj6SsLoMONaohJZEMci8HJp5uFvcHLBqYy3ncsUYOhiolCp1T0
+	 QF+6MjpZdtHCDcNMeXVQ9nvxcQHqpsJ97GSOI+u2kx4LibG4hmI/SPE7EYX1PCpqEJ
+	 qqCqyJTt1wcTJ1+UiG4bVrcdCwgAjjohREhcQyQudxILPc8tY7MGQRP/Vs6EFSbWi7
+	 miNowF+/QwjxQApfKuI6c8f5WPsKBZlQoPOVhyoxYZIdgLh6U8i/aFZbSDDxae1fNJ
+	 7u/tHcq6nNxBQ==
 Received: from yukiji.home (unknown [100.64.0.131])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: laeyraud)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 04F1917E0D49;
-	Tue, 03 Nov 2026 11:12:44 +0100 (CET)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id EAEC317E0D48;
+	Tue, 03 Nov 2026 11:12:43 +0100 (CET)
 From: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
-Date: Tue, 03 Nov 2026 11:12:14 +0100
-Subject: [PATCH net-next v4 09/10] net: stmmac: mediatek: add support for
- TX clock output enable feature
+Date: Tue, 03 Nov 2026 11:12:13 +0100
+Subject: [PATCH net-next v4 08/10] net: stmmac: mediatek: add
+ PERI_ETH_CTRLx register offset in platform data
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20261103-dwmac-mediatek-mt8189-v4-9-c86c14fc50f4@collabora.com>
+Message-Id: <20261103-dwmac-mediatek-mt8189-v4-8-c86c14fc50f4@collabora.com>
 References: <20261103-dwmac-mediatek-mt8189-v4-0-c86c14fc50f4@collabora.com>
 In-Reply-To: <20261103-dwmac-mediatek-mt8189-v4-0-c86c14fc50f4@collabora.com>
 To: Andrew Lunn <andrew+netdev@lunn.ch>, 
@@ -74,16 +74,16 @@ Cc: kernel@collabora.com, netdev@vger.kernel.org,
  linux-stm32@st-md-mailman.stormreply.com, 
  Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
 X-Mailer: b4 0.14.3
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1793700755; l=1678;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1793700755; l=4252;
  i=louisalexis.eyraud@collabora.com; s=20250113; h=from:subject:message-id;
- bh=8wtpOkK6yYbR8j5kqB7IPtqb6ARPGLkh+YqZsa4f1Q0=;
- b=iIu/1xFgNyNCxuocXtHLWFvZ4Qweo0V3ap3h+j0y/+lfC1k9A0iWc4inLct1xpDbM5UIVI5kd
- znlPPHj6uszCXEl3PhlGQzh6XfxrbgnUp7FmZQnRlDVZpEiFfA+HGim
+ bh=fgRG/Qp5WV1QVNiuGm1kV55/qVJ1752aXcE75rXacDY=;
+ b=3v6Sd2ufLqjqoYS8sbLNQO/XBHltzdUWz8j+vLUnIhNiWcExXGEmDeterfwVsw0ebv1vF9Ba1
+ nzA+ia0C0NZDE/XXT777Lp+tCfntNgoBtcmkpyrHV7eDl9vtD64ymXx
 X-Developer-Key: i=louisalexis.eyraud@collabora.com; a=ed25519;
  pk=CHFBDB2Kqh4EHc6JIqFn69GhxJJAzc0Zr4e8QxtumuM=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261103_021248_378531_7914F5AB 
-X-CRM114-Status: GOOD (  12.65  )
+X-CRM114-CacheID: sfid-20261103_021247_113771_E01B3A43 
+X-CRM114-Status: GOOD (  14.71  )
 X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -95,59 +95,124 @@ List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-18.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-14.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,
 	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=ham
-	autolearn_force=no version=4.0.1
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNWANTED_LANGUAGE_BODY,
+	USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-The MT8189 SoC has in the Ethernet control 0 register from the
-peripheral configuration (pericfg) an additional bit to enable the TX
-clock signal output.
+In preparation of newer SoC support, that use like MT8195 the Ethernet
+control registers from the peripheral configuration syscon but at a
+different base offset, add a new base offset in the variant platform
+data to access the PERI_ETH_CTRLx registers and use it in implemented
+methods.
 
-In preparation of MT8189 SoC support, add its definition, use in the
-mt8195_set_interface callback, and a support flag in the platform
-data.
-
+Reviewed-by: Maxime Chevallier <maxime.chevallier@bootlin.com>
 Signed-off-by: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
 ---
- drivers/net/ethernet/stmicro/stmmac/dwmac-mediatek.c | 7 +++++++
- 1 file changed, 7 insertions(+)
+ .../net/ethernet/stmicro/stmmac/dwmac-mediatek.c   | 26 ++++++++++++++++------
+ 1 file changed, 19 insertions(+), 7 deletions(-)
 
 diff --git a/drivers/net/ethernet/stmicro/stmmac/dwmac-mediatek.c b/drivers/net/ethernet/stmicro/stmmac/dwmac-mediatek.c
-index 0426a0876956..8ee850791270 100644
+index 61bc1ff08cc4..0426a0876956 100644
 --- a/drivers/net/ethernet/stmicro/stmmac/dwmac-mediatek.c
 +++ b/drivers/net/ethernet/stmicro/stmmac/dwmac-mediatek.c
-@@ -41,6 +41,9 @@
- #define MT2712_RGMII_DLY_STAGE_DIV	170 /* 170ps per stage */
+@@ -42,7 +42,9 @@
  #define MT2712_RGMII_DELAY_MAX		5440 /* 32 x 170ps */
  
-+/* Peri Configuration register for mt8189 */
-+#define MT8189_CTRL0_TXC_OUT_OP_EN	BIT(20)
-+
  /* Peri Configuration register for mt8195 */
- #define MT8195_PERI_ETH_CTRL_OFFSET	0xFD0
+-#define MT8195_PERI_ETH_CTRL0		0xFD0
++#define MT8195_PERI_ETH_CTRL_OFFSET	0xFD0
++
++#define MT8195_PERI_ETH_CTRL0		0x0
+ #define MT8195_RMII_CLK_SRC_INTERNAL	BIT(28)
+ #define MT8195_RMII_CLK_SRC_RXC		BIT(27)
+ #define MT8195_ETH_INTF_SEL		GENMASK(26, 24)
+@@ -52,7 +54,7 @@
+ #define MT8195_DLY_GTXC_ENABLE		BIT(5)
+ #define MT8195_DLY_GTXC_STAGES		GENMASK(4, 0)
  
-@@ -113,6 +116,7 @@ struct mediatek_dwmac_variant {
+-#define MT8195_PERI_ETH_CTRL1		0xFD4
++#define MT8195_PERI_ETH_CTRL1		0x4
+ #define MT8195_DLY_RXC_INV		BIT(25)
+ #define MT8195_DLY_RXC_ENABLE		BIT(18)
+ #define MT8195_DLY_RXC_STAGES		GENMASK(17, 13)
+@@ -60,7 +62,7 @@
+ #define MT8195_DLY_TXC_ENABLE		BIT(5)
+ #define MT8195_DLY_TXC_STAGES		GENMASK(4, 0)
+ 
+-#define MT8195_PERI_ETH_CTRL2		0xFD8
++#define MT8195_PERI_ETH_CTRL2		0x8
+ #define MT8195_DLY_RMII_RXC_INV		BIT(25)
+ #define MT8195_DLY_RMII_RXC_ENABLE	BIT(18)
+ #define MT8195_DLY_RMII_RXC_STAGES	GENMASK(17, 13)
+@@ -109,6 +111,7 @@ struct mediatek_dwmac_variant {
+ 	u32 rgmii_delay_max;
+ 	u16 mii_delay_stage_div;
  	u16 rgmii_delay_stage_div;
- 	u32 peri_eth_ctrl_offset;
++	u32 peri_eth_ctrl_offset;
  	u8 dma_bit_mask;
-+	bool mac_txclk_out_en;
  };
  
- /* list of clocks required for mac */
-@@ -307,6 +311,9 @@ static int mt8195_set_interface(struct mediatek_dwmac_plat_data *plat,
+@@ -292,6 +295,7 @@ static int mt8195_set_interface(struct mediatek_dwmac_plat_data *plat,
+ 				u8 phy_intf_sel)
+ {
+ 	u32 intf_val = FIELD_PREP(MT8195_ETH_INTF_SEL, phy_intf_sel);
++	u32 reg_offset = plat->variant->peri_eth_ctrl_offset;
+ 
+ 	if (phy_intf_sel == PHY_INTF_SEL_RMII) {
+ 		if (plat->rmii_clk_from_mac)
+@@ -303,7 +307,9 @@ static int mt8195_set_interface(struct mediatek_dwmac_plat_data *plat,
  	/* MT8195 only support external PHY */
  	intf_val |= MT8195_EXT_PHY_MODE;
  
-+	if (plat->variant->mac_txclk_out_en)
-+		intf_val |= MT8189_CTRL0_TXC_OUT_OP_EN;
-+
- 	regmap_write(plat->peri_regmap,
- 		     reg_offset + MT8195_PERI_ETH_CTRL0,
- 		     intf_val);
+-	regmap_write(plat->peri_regmap, MT8195_PERI_ETH_CTRL0, intf_val);
++	regmap_write(plat->peri_regmap,
++		     reg_offset + MT8195_PERI_ETH_CTRL0,
++		     intf_val);
+ 
+ 	return 0;
+ }
+@@ -311,6 +317,7 @@ static int mt8195_set_interface(struct mediatek_dwmac_plat_data *plat,
+ static int mt8195_set_delay(struct mediatek_dwmac_plat_data *plat)
+ {
+ 	struct mac_delay_struct *mac_delay = &plat->mac_delay;
++	u32 reg_offset = plat->variant->peri_eth_ctrl_offset;
+ 	u32 rx_delay_stage_val, tx_delay_stage_val;
+ 	u32 gtxc_delay_val = 0;
+ 	u32 rmii_delay_val = 0;
+@@ -410,14 +417,18 @@ static int mt8195_set_delay(struct mediatek_dwmac_plat_data *plat)
+ 	}
+ 
+ 	regmap_update_bits(plat->peri_regmap,
+-			   MT8195_PERI_ETH_CTRL0,
++			   reg_offset + MT8195_PERI_ETH_CTRL0,
+ 			   MT8195_RGMII_TXC_PHASE_CTRL |
+ 			   MT8195_DLY_GTXC_INV |
+ 			   MT8195_DLY_GTXC_ENABLE |
+ 			   MT8195_DLY_GTXC_STAGES,
+ 			   gtxc_delay_val);
+-	regmap_write(plat->peri_regmap, MT8195_PERI_ETH_CTRL1, delay_val);
+-	regmap_write(plat->peri_regmap, MT8195_PERI_ETH_CTRL2, rmii_delay_val);
++	regmap_write(plat->peri_regmap,
++		     reg_offset + MT8195_PERI_ETH_CTRL1,
++		     delay_val);
++	regmap_write(plat->peri_regmap,
++		     reg_offset + MT8195_PERI_ETH_CTRL2,
++		     rmii_delay_val);
+ 
+ 	return 0;
+ }
+@@ -432,6 +443,7 @@ static const struct mediatek_dwmac_variant mt8195_gmac_variant = {
+ 	.mii_delay_stage_div = MT8195_MII_DLY_STAGE_DIV,
+ 	.rgmii_delay_stage_div = MT8195_RGMII_DLY_STAGE_DIV,
+ 	.dma_bit_mask = 35,
++	.peri_eth_ctrl_offset = MT8195_PERI_ETH_CTRL_OFFSET,
+ };
+ 
+ static int mediatek_dwmac_config_dt(struct mediatek_dwmac_plat_data *plat)
 
 -- 
 2.56.0
