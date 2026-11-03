@@ -2,107 +2,112 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 7A970606A329
-	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Nov 2026 13:35:41 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id E9F48606D2E4
+	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Nov 2026 15:00:05 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=aFiqIXgW;
-	dkim=pass (2048-bit key, unprotected) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=glRyaozk
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=ieRpTG/2;
+	dkim=pass (1024-bit key, unprotected) header.d=redhat.com header.i=@redhat.com header.a=rsa-sha256 header.s=mimecast20190719 header.b=d/aEna/I
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Unsubscribe-Post:
-	List-Owner; bh=55AdvbYjUSHpq0D3zdaJdVs8t2CEWwIW7MYZkBrdVp0=; b=aFiqIXgWngldkc
-	NUCnWQZB6uO/7sB4186aSHyg+r3+QQvkmSmSfGOTBv5uwwXy297Lcd/JqhnncBCODmpeEEOWdUpr1
-	VEsdAGWUvgxoiWUSl6i6kRk+0mxWqw2hLm3q3z06AVR0nr+zHLsm+pGN9QtT1kdmpoCHKlaSDb+vz
-	Cqisy1CoKaNbc/6quf259d/Y48FvVGCT5jcgmY+dQV6OK6+zSPfNawzmBazrHjohULLcvdpe77nYM
-	VYM6GPz9TZIR+mzyy8MUpL/OBj8TjlbWCXNdK4s34BXz5vgVNgKhjOSeAtCqolpgyFPIIDhu25AB0
-	/DPaO9kaaIBmfwrXYHAg==;
+	List-Owner; bh=7N01ts74+fbd6A0+ugAJGY01iwryjK/kLUoNysOMm1c=; b=ieRpTG/2BKkhO3
+	TN9mJj0kk64IJkYrztp+fk54v/o81AdQv38Af4b/4x+XwRydzFCmUUmuLXXTdo5qEQIRrPjajgvB3
+	7nujS2ee9wEGI8sTY+pSbJB2hYYzWRMOHPdY9hWWb9dNGSvPhXybe43FoM+3So1KT5O55e+hAFRBr
+	SIUF/cIPmikWhN5wM92xPnPX1lMLNXrBMCHwSvWdHy+cIOJkXM+jNjYFpIRvYo2mWOBM8Uk8SxHle
+	XpOs/1DFII1FJm/T+TmSCS6uUch3mvgGpN8gWJKEmAxdebq+P0TNJiYC416LtB8/jeDFRACFPHDSp
+	e8nnnb4jMJkGe16av2FA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xOEft-00000002a3q-061Q;
-	Tue, 03 Nov 2026 13:35:41 +0000
-Received: from mail-wm1-x332.google.com ([2a00:1450:4864:20::332])
+	id 1xOFzY-00000002pIx-1Eiz;
+	Tue, 03 Nov 2026 15:00:04 +0000
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xOEfo-00000002ZzF-0JGX
+	id 1xOFzW-00000002pHY-1xcC
 	for linux-mediatek@lists.infradead.org;
-	Tue, 03 Nov 2026 13:35:38 +0000
-Received: by mail-wm1-x332.google.com with SMTP id 5b1f17b1804b1-4a59100fa83so37636125e9.0
-        for <linux-mediatek@lists.infradead.org>; Tue, 03 Nov 2026 05:35:35 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20260707; t=1793712934; x=1794317734; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to:content-type;
-        bh=55AdvbYjUSHpq0D3zdaJdVs8t2CEWwIW7MYZkBrdVp0=;
-        b=glRyaozkhoK5eLUZeCEJicjMN6HbJFYN8sTp90FAJGO10LdvxnFdIB6QGisXNvLEew
-         lxYmMJAEisf8wPJRo+VGN9Bn6GyyzAvbuYXkCJqs+VD9LtW72nQeqqGjQMyFak6vedK2
-         lLxf5ciDI3RCfR+kg/ozERxyEZFOEnI16Zyqt9/HVSSHZ53FkAFGHuHWHstKflyryNkG
-         9WofyxUwfxT/ZEs+FjXQqiVtRc7K9awttJJLRBXFqvqeuBHGpooee25sRilwWITyMLBQ
-         iCvIjPmQgYPNsHV2QnvE1akGN1AP5JuvLyws9O+TaScs5p2OtfLTKSX09VD3P7ZrcbJU
-         nHug==
+	Tue, 03 Nov 2026 15:00:03 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1793718000;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding:
+	 in-reply-to:in-reply-to:references:references;
+	bh=7N01ts74+fbd6A0+ugAJGY01iwryjK/kLUoNysOMm1c=;
+	b=d/aEna/IqhxuAdRkL56DUGLT33MVPskmrVBKBPcZHPcKk43bZeB7SeuomSGeqEqmDGLief
+	OKAECoTFmR1qi6iz1XThuvxJftxsUcO7BBw+QRkwxnzKe1CQOInw43o9thPuLjhfoT7Yl9
+	ylBFNG+l+979ZIOzzgBnaFlWd+RRo2k=
+Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
+ [209.85.128.69]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-618-J7LEOyOvPP65FifwgY5FKQ-1; Tue, 03 Nov 2026 09:59:58 -0500
+X-MC-Unique: J7LEOyOvPP65FifwgY5FKQ-1
+X-Mimecast-MFC-AGG-ID: J7LEOyOvPP65FifwgY5FKQ_1793717998
+Received: by mail-wm1-f69.google.com with SMTP id 5b1f17b1804b1-4a35db2d6b3so31167965e9.3
+        for <linux-mediatek@lists.infradead.org>; Tue, 03 Nov 2026 06:59:58 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1793712934; x=1794317734;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
-         :to:cc:subject:date:message-id:reply-to:content-type;
-        bh=55AdvbYjUSHpq0D3zdaJdVs8t2CEWwIW7MYZkBrdVp0=;
-        b=STpKpglSsvFmitg6r9FeSP+A4nMC7XHOwxQ7Gz74+VQaZX3fvS55qOXGzSytJBBIR/
-         8x+SQEUWhb+NPccanrLuWjMsyXsBJDI5ERrwhCPgPw9DlFSn5QGk79WNKyfGq5FLFSgn
-         kYQA74X7cnNPBqNxCZ/9di8Wlt+CJCHuoCuDv9iLc//GIBsSZtapbeYHOf8G6Epne347
-         2U3ycJMEZqpzraCzjHuWoc2HGIiuvHWgYuZWIpGWY1sl1PLP7Q89WuDxpOkU/bF9Tqwa
-         3+EglWTPONaufREYJY87brsoY3CQCxvg/nYPq+ts6q+mPiCH4YPh/J5N0dD977Gg7m0n
-         PcAQ==
-X-Forwarded-Encrypted: i=1; AKwUvBzeFkQTT+0wnRXJc8Gp27qq8SS4loYYbrB52TM6r8fbacNHiefOaOAohjd0Rbz+Xjl1TQ6YOqGMmMfYQ4HNnA==@lists.infradead.org
-X-Gm-Message-State: APuU4Z8fZc4XIgZF/CezKVu25IFOTwtnS2ZHEZrjJEDN+QYtJgYQqv5A
-	q7ZmIagL8ABDSA+ktoBaEL/BemUnc/SFAroUlO+jwDH34AX/R+o65y3w
-X-Gm-Gg: AYBFou16PzFEAu+gonj8HN2zRfMPokS+dv2eOChw6Wq+w6Y2i1q804i8GG3ErgxU1J+
-	oyPiivfvdcEVEgIB2GQJRV7/uPzyk1kljLGEMMl2WjEdO/EITr0bO4KcEDaALqLhuOI93XnDVFJ
-	bMjBe91V7a7gcw3pGoMvCLIJSpOaEuM2+jdreEBtvhJQ2v3pJPVSCXHu2wv19pzKK3eVxLrjsxw
-	O+lGX+0Zys2fM7p4UKBd8TlYbPLywVsRembNJ5xPee/SSMMQSos/bTIjMR4/93Wn+scCfQWskor
-	SD7piXPq6CaFq9fhEEwbSwgd9+t5oYNyf9aF5cpxaVBv4r1FeHywbtQafcvpKP0PS8WLgKGRP3b
-	rBvM8gRWsXrhAUOF/JV0rYsVKF+hDgQSWZzpYe5CFE/1otqPzuVKgjwhGRV3akHONXNDUMdIzhX
-	iRhraQyWAwx1ySSquEutY52Zvd/MV8p8TGJnexq4rp6CrXJJ/sH92x+1uYNzdnJTE9tXASu2HZB
-	cy7J5OAQG9L3t2a92JDbmfVPETxcv8RlWr7I1ciy4ebBAW6RaESucIxSIje2Jz/mcF0CZbF5orr
-	blBPhr8z/OZGgA5qXyDbKyUSS6bHD9biv9EqrNF1RMm0kmC1cgACV4M234RTfE6mKz3ViHBWxad
-	wTMF99lOkdV/eRqBCaUs/talyKP73pX9W4n3s24lS8NB5t42J8OosWmyqijoDMD+8uoKy5C+lj9
-	ufbNnpivJL7fkL5tu87WFGAz9Hmg0S2U3bNn8NHWgbVKUoTOrnfLrsug==
-X-Received: by 2002:a05:600c:a00b:b0:4a7:b304:253e with SMTP id 5b1f17b1804b1-4ac1765d8abmr304126875e9.22.1793712933899;
-        Tue, 03 Nov 2026 05:35:33 -0800 (PST)
-Received: from localhost.localdomain (dynamic-2a00-1028-8388-a84e-d09e-6586-7547-87ae.ipv6.o2.cz. [2a00:1028:8388:a84e:d09e:6586:7547:87ae])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-48e71b80eb1sm26661746f8f.34.2026.11.03.05.35.32
-        (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
-        Tue, 03 Nov 2026 05:35:33 -0800 (PST)
-From: Josef Schlehofer <pepe.schlehofer@gmail.com>
-To: Felix Fietkau <nbd@nbd.name>,
-	Lorenzo Bianconi <lorenzo@kernel.org>,
-	Ryder Lee <ryder.lee@mediatek.com>,
-	Shayne Chen <shayne.chen@mediatek.com>,
-	Sean Wang <sean.wang@mediatek.com>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Ming Yen Hsieh <mingyen.hsieh@mediatek.com>,
-	JB Tsai <jb.tsai@mediatek.com>,
-	Allan Wang <allan.wang@mediatek.com>,
-	Quan Zhou <quan.zhou@mediatek.com>,
-	linux-wireless@vger.kernel.org,
-	linux-mediatek@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org
-Subject: [PATCH wireless-next 2/2] wifi: mt76: mt7925: add LED support for USB adapters
-Date: Tue,  3 Nov 2026 14:35:28 +0100
-Message-ID: <20261103133528.53197-3-pepe.schlehofer@gmail.com>
-X-Mailer: git-send-email 2.54.0
-In-Reply-To: <20261103133528.53197-1-pepe.schlehofer@gmail.com>
-References: <20261103133528.53197-1-pepe.schlehofer@gmail.com>
+        d=1e100.net; s=20260707; t=1793717997; x=1794322797;
+        h=content-transfer-encoding:content-type:in-reply-to:from
+         :content-language:references:cc:to:subject:user-agent:mime-version
+         :date:message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to:content-type;
+        bh=7N01ts74+fbd6A0+ugAJGY01iwryjK/kLUoNysOMm1c=;
+        b=Viju58CGqnOOQmEVUy0wSW/KLYU9kMTZARg7xouypA5LvYjEhklLm2u2jhdnFlYwoc
+         kMHinujn/39txyXSz6NvvxNe9TNfRr4ah8Ww/K8h7d7syublOHdtC2BsJiuHRgEKfB4c
+         Ic80JYiibH1bD+i0FKk1KqObfJdQiOkJEcYXGPbObz5g6ut3P7nohcaJ163QtZ5by0Tr
+         vM/LBLkcNGkHboQFMqoqRbWZysfjw+nFi09acoZ/MiaVj26yGlFHCUW1Xme4IJW4UtqK
+         BiIsGBMdDzXmBXZ/ekinX/+LgYTCAtfGwOf1phYNzRnyhbyVKEmwUemhyySpuO8Q0B0U
+         EWlA==
+X-Forwarded-Encrypted: i=1; AKwUvBxiNS4XlqzIInR30lLsiBW07DGgi98ZMpWnhiL34u9jWv7s+uATSsJswCPBPKpd/aXGc1/PDE04o9LEc8tFIQ==@lists.infradead.org
+X-Gm-Message-State: APuU4Z+WOhHw0ghgnVAmCeaGX4YV2vdlMXVE8pHDkHroYeSEYFgn8J+v
+	xgdMXYaZjH8peSyEPgyt+AtIxmhm6rlaPN7VTqTJmlCN3nGvBe0s2j0hApO8CAzVAbr/FUZJLsM
+	QcSrZJEmlGwrih421JmKU+3hWbSx83navwWaZzZA89jFD2oRvAR4MTOlcMjTpG5EKBnQa1QznhA
+	==
+X-Gm-Gg: AYBFou1HYDnaRL4IJI0DY3mrRBG8KIY7QeNDZe7Ei7x+ZHWK719ytqU1S/p82XjEy//
+	BzykoMH2g7SJmHpxEPOITQ3IycxwVkv4XL8OmRQyu3J1qiK9cLn5mZlgBkIACJyPn/cnfEfsoqU
+	0Wc2qMi+R25BD4BXpHUW8Ba5JOmUnxrIFoeLaj21ZBwcGESQiZcuI1Wltg0G8erJza3XcMpXNhf
+	Q3OvmRsDWbRNpZ7PwGqc7oSq3MR46hqQ5BS61S1uOV8CKcQzhD0CIUy0Fj+LUmspp3kyPMk/j8S
+	VlkvJp6L2mh37TO5+DbMnl+Qblawx+/sAoWSE89CRNf8RnPLffs2DYrcYIwS9edT1oqIBAuvDFY
+	TEun+tN1Y8On2L0GFTjQ7sAzGG7QbrfaJfbOX2zwpeXyy4pncDtAkK5z39ymvmpPpKprcgfZE4D
+	FZpt6ClZ26imgqes9sL7pBbbpFbpDzmxkyHA4ZDihCtbM=
+X-Received: by 2002:a05:600c:a4c:b0:4a2:967:dfb8 with SMTP id 5b1f17b1804b1-4ac1765d7d7mr307788655e9.20.1793717997404;
+        Tue, 03 Nov 2026 06:59:57 -0800 (PST)
+X-Received: by 2002:a05:600c:a4c:b0:4a2:967:dfb8 with SMTP id 5b1f17b1804b1-4ac1765d7d7mr307787935e9.20.1793717996940;
+        Tue, 03 Nov 2026 06:59:56 -0800 (PST)
+Received: from [192.168.88.30] (ip231-128-192-82.pool-bba.aruba.it. [82.192.128.231])
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-4abeb77af8csm464079285e9.1.2026.11.03.06.59.55
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 03 Nov 2026 06:59:56 -0800 (PST)
+Message-ID: <ff77c7ef-4c3b-4113-966d-3c46d5776cdf@redhat.com>
+Date: Tue, 3 Nov 2026 15:59:54 +0100
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v4 0/7] net: dsa: mt7530: support EcoNet EN751221
+To: Caleb James DeLisle <cjd@cjdns.fr>, netdev@vger.kernel.org
+Cc: andrew@lunn.ch, olteanv@gmail.com, davem@davemloft.net,
+ edumazet@google.com, kuba@kernel.org, robh@kernel.org, krzk+dt@kernel.org,
+ conor+dt@kernel.org, matthias.bgg@gmail.com,
+ angelogioacchino.delregno@collabora.com, chester.a.unal@arinc9.com,
+ daniel@makrotopia.org, linux@armlinux.org.uk, arinc.unal@arinc9.com,
+ Landen.Chao@mediatek.com, dqfext@gmail.com, sean.wang@mediatek.com,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ naseefkm@gmail.com, b.larsson@gmx.com
+References: <20261029184202.1859843-1-cjd@cjdns.fr>
+From: Paolo Abeni <pabeni@redhat.com>
+In-Reply-To: <20261029184202.1859843-1-cjd@cjdns.fr>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: tBlaTv06FwcSf3wj0IQ6Ugvha9GBZU9GXixf8pIujOI_1793717998
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261103_053536_447717_9DB3CB0C 
-X-CRM114-Status: GOOD (  18.38  )
-X-Spam-Score: -2.1 (--)
+X-CRM114-CacheID: sfid-20261103_070002_587891_B597F61C 
+X-CRM114-Status: GOOD (  16.64  )
+X-Spam-Score: -2.8 (--)
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -113,152 +118,48 @@ List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-20.9 required=3.0 tests=BAYES_00,DKIM_SIGNED,
-	DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,FREEMAIL_FORGED_FROMDOMAIN,
-	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,SPF_HELO_NONE,
-	SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
+X-Spam-Status: No, score=-7.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,
+	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS,USER_AGENT_SANE_1 autolearn=no autolearn_force=no
+	version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-MT7925 USB adapters such as the NETGEAR A9000 have their status LED on
-GPIO 8 of the chip. MediaTek's Windows driver asks the firmware to
-switch it, but the firmware in linux-firmware does not act on that
-request.
+On 10/29/26 19:41, Caleb James DeLisle wrote:
+> The EcoNet EN751221 has a unique switch configuration. Every chip made
+> with an EN751221 die has at least one on-die MT7530 that is MMIO based.
+> This switch has 3x 10/100 ports and 1x gigabit port.
+> 
+> Some popular chip packages such as the EN7513G and EN7526G have another
+> MT7530 implemented as a multi-chip-module that connects to port 5 of
+> the on-die switch and is controlled via the MDIO controller integrated
+> in the on-die MT7530.
+> 
+> In this configurations, the upstream switch is put into a "passthrough"
+> mode in which all traffic is forwarded between port 5 and port 6
+> without altering its DSA tags.
+> 
+> Furthermore, since the DSA core does not call mt753x_setup until all
+> switches are present, and the downstream switch only becomes available
+> when the upstream switch has configured its MDIO controller, the MDIO
+> controller setup on MMIO implementations must be done before
+> mt753x_setup, or else it will never complete.
+> 
+> Finally, the on-die switch and the MCM switch connect via a TRGMII link
+> which requires calibration. In order to calibrate this, PLL adjustment
+> must be possible on the on-die switch, necessitating changes to the
+> core_(set|clear|write|rmw) functions to support MMIO implementations.
+> 
+> Solve all of these issues, add the TRGMII calibration, and add support
+> for both switches.
+> 
+> Since this patchset will probably be subject to some discussion, please
+> consider accepting any patches that are non-controversial since it will
+> make future re-submissions easier.
+Does not apply cleanly, please resubmit. While at it, please add the 'net-next'
+subj prefix.
 
-Drive the pin from the host instead. Set its level, then switch it from
-its default function to a GPIO output through the CBTOP GPIO registers.
-The register layout follows the coda headers in MediaTek's gen4m
-driver. The LED of the A9000 is active low.
-
-While the adapter is idle, the throughput trigger keeps requesting the
-same state every second. Only write the registers when the state
-changes, and forget the cached state whenever the firmware is loaded.
-
-Link: https://github.com/morrownr/USB-WiFi/issues/731
-Signed-off-by: Josef Schlehofer <pepe.schlehofer@gmail.com>
----
- .../net/wireless/mediatek/mt76/mt7925/init.c  | 51 +++++++++++++++++++
- .../net/wireless/mediatek/mt76/mt7925/mcu.c   |  2 +
- .../net/wireless/mediatek/mt76/mt7925/regs.h  |  8 +++
- drivers/net/wireless/mediatek/mt76/mt792x.h   |  2 +
- 4 files changed, 63 insertions(+)
-
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/init.c b/drivers/net/wireless/mediatek/mt76/mt7925/init.c
-index 8c3049b66a85..3dfb4b2d997c 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7925/init.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7925/init.c
-@@ -187,6 +187,56 @@ static int mt7925_init_nan_cap(struct mt76_dev *mdev)
- 	return 0;
- }
- 
-+static int mt7925_led_set_brightness(struct led_classdev *led_cdev,
-+				     enum led_brightness brightness)
-+{
-+	struct mt76_phy *mphy = container_of(led_cdev, struct mt76_phy,
-+					     leds.cdev);
-+	struct mt792x_dev *dev = container_of(mphy->dev, struct mt792x_dev,
-+					      mt76);
-+	bool on = brightness != LED_OFF;
-+	u8 pin = mphy->leds.pin;
-+	u32 mask = BIT(pin % 32);
-+
-+	mt792x_mutex_acquire(dev);
-+	if (dev->pm.suspended || dev->led_state == on)
-+		goto out;
-+
-+	if (on ^ mphy->leds.al)
-+		mt76_wr(dev, MT_CBTOP_GPIO_DOUT_SET(pin), mask);
-+	else
-+		mt76_wr(dev, MT_CBTOP_GPIO_DOUT_CLR(pin), mask);
-+
-+	/* the pin starts in another function, make it a GPIO output */
-+	if (dev->led_state < 0) {
-+		mt76_wr(dev, MT_CBTOP_GPIO_DIR_SET(pin), mask);
-+		mt76_wr(dev, MT_CBTOP_GPIO_MODE_MOD(pin),
-+			MT_CBTOP_GPIO_MODE_MOD_EN << ((pin % 8) * 4));
-+	}
-+
-+	dev->led_state = on;
-+out:
-+	mt792x_mutex_release(dev);
-+
-+	return 0;
-+}
-+
-+static void mt7925_init_led(struct mt792x_dev *dev)
-+{
-+	struct mt76_phy *mphy = &dev->mphy;
-+
-+	if (!IS_ENABLED(CONFIG_MT76_LEDS) || !mt76_is_usb(&dev->mt76) ||
-+	    !is_mt7925(&dev->mt76))
-+		return;
-+
-+	/* MediaTek's Windows driver uses GPIO 8 on MT7925 USB adapters */
-+	mphy->leds.pin = 8;
-+	/* the LED of the NETGEAR A9000 is active low */
-+	mphy->leds.al = true;
-+	mphy->leds.cdev.flags |= LED_HW_PLUGGABLE;
-+	mphy->leds.cdev.brightness_set_blocking = mt7925_led_set_brightness;
-+}
-+
- static void mt7925_init_work(struct work_struct *work)
- {
- 	struct mt792x_dev *dev = container_of(work, struct mt792x_dev,
-@@ -208,6 +258,7 @@ static void mt7925_init_work(struct work_struct *work)
- 	}
- 
- 	dev->mt76.init_wiphy = mt7925_init_nan_cap;
-+	mt7925_init_led(dev);
- 
- 	ret = mt76_register_device(&dev->mt76, true, mt76_rates,
- 				   ARRAY_SIZE(mt76_rates));
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
-index 26cdb3f0a98a..91564a2c1d65 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
-@@ -1191,6 +1191,8 @@ int mt7925_run_firmware(struct mt792x_dev *dev)
- {
- 	int err;
- 
-+	dev->led_state = -1;
-+
- 	err = mt792x_load_firmware(dev);
- 	if (err)
- 		return err;
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/regs.h b/drivers/net/wireless/mediatek/mt76/mt7925/regs.h
-index e040dff321dd..73bd8c58dd84 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7925/regs.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt7925/regs.h
-@@ -91,6 +91,14 @@
- 
- #define MT_WFSYS_SW_RST_B		0x7c000140
- 
-+#define MT_CBTOP_GPIO_BASE		0x70005000
-+#define MT_CBTOP_GPIO(ofs)		(MT_CBTOP_GPIO_BASE + (ofs))
-+#define MT_CBTOP_GPIO_DIR_SET(_n)	MT_CBTOP_GPIO(0x004 + ((_n) / 32) * 0x10)
-+#define MT_CBTOP_GPIO_DOUT_SET(_n)	MT_CBTOP_GPIO(0x104 + ((_n) / 32) * 0x10)
-+#define MT_CBTOP_GPIO_DOUT_CLR(_n)	MT_CBTOP_GPIO(0x108 + ((_n) / 32) * 0x10)
-+#define MT_CBTOP_GPIO_MODE_MOD(_n)	MT_CBTOP_GPIO(0x30c + ((_n) / 8) * 0x10)
-+#define MT_CBTOP_GPIO_MODE_MOD_EN	BIT(3)
-+
- #define MT7925_WTBLON_TOP_WDUCR		MT_WTBLON_TOP(0x370)
- #define MT7928_WTBLON_TOP_WDUCR		MT_WTBLON_TOP(0x400)
- #define MT_WTBLON_TOP_WDUCR_GROUP	GENMASK(4, 0)
-diff --git a/drivers/net/wireless/mediatek/mt76/mt792x.h b/drivers/net/wireless/mediatek/mt76/mt792x.h
-index a7d71e007da0..73c23f509b99 100644
---- a/drivers/net/wireless/mediatek/mt76/mt792x.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt792x.h
-@@ -324,6 +324,8 @@ struct mt792x_dev {
- 
- 	u8 fw_debug;
- 	u8 fw_features;
-+	/* LED state last written to the GPIO, -1 if unknown */
-+	s8 led_state;
- 
- 	struct mt76_connac_pm pm;
- 	struct mt76_connac_coredump coredump;
--- 
-2.54.0 (Apple Git-157)
+/P
 
 
