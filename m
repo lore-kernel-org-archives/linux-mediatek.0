@@ -2,75 +2,81 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 36888606A332
-	for <linux-mediatek@archiver.kernel.org>; Mon,  2 Nov 2026 22:52:23 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 0F404606EE8A
+	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Nov 2026 00:22:46 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=e+X2ZzRa;
-	dkim=pass (2048-bit key, unprotected) header.d=justthetip.ca header.i=@justthetip.ca header.a=rsa-sha256 header.s=key1 header.b=AiL0PcZc
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=1lmOI4kZ;
+	dkim=pass (4096-bit key, unprotected) header.d=david-bauer.net header.i=@david-bauer.net header.a=rsa-sha256 header.s=uberspace header.b=Q4+ohvyn
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Unsubscribe-Post:
-	List-Owner; bh=4lfvLxZU2+QNlhQ5TIQ/WB48GBF4osf/Z52ednXK17E=; b=e+X2ZzRajyRaWM
-	3qPGWUwdYRDCnvxp9m4CGgnienrLXKBP7+Vhy4SO71M3NFH4uzIBzaEnMTRKCra1+TRJ54AxXdQcW
-	rZJ+KvifMIgdeEEa1tC2qns8iJi/KJwzcCNAM/LRx+duWUS+c0OcG6BG85TFY2ejJQ1UkRWOWucfI
-	+4krrQjvzHpAiLvwqBy3fDp1qE4nNscOZLYVunf3RiZmGaMzic987b0UQPVpfK+LdzBOK8/0gxMT3
-	51fcBf/o93G3nTK739FF6z/vLwO7FmgAwiRR7CtT8FHwjv7tliGak6Dkeh2gRglvJV2Ka5SVfU6D7
-	oE13DRq7SxViwWMDnIWw==;
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Unsubscribe-Post:List-Owner;
+	bh=bbgOkBv14A9d4wO2ZfS0KJRZcE91RuXy5G4jiTp1jO0=; b=1lmOI4kZvio2e61p04vEST+Q2F
+	6yxMtEz8yxedRfvQNf0Z8c3g1NQ2ZnHyTLPlJKW2iLg1BJZ7LK0yMxJUK80agdEyipuXCWop+9cBo
+	T429UGBfHhte9If+TrG5FKRNui4tIUFmR0wX87wiLEBNGxgGpPzl5CZQmZVV8yCeg5E75hABI3wlV
+	BGjOltG8NzAyLzRBXCYYcgqUvnPLiqONydSw1NKsIA1uCAV683pf7sDTB04prnG4X+y3tcjZQv6Em
+	BCnATFQ3QF77Ti3O9Cl04r7XSKmSmMFRegKSTsNTtJHP2h4Ps+AB2VmRsYnZD6GZzMqYuPECtrqhO
+	BTCF831A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xO0t3-00000000aUR-26mg;
-	Mon, 02 Nov 2026 22:52:21 +0000
-Received: from out-179.mta0.migadu.com ([2001:41d0:1004:224b::b3] helo=mta0.migadu.com)
+	id 1xO2IV-00000000jZL-1iaP;
+	Tue, 03 Nov 2026 00:22:43 +0000
+Received: from mailgate01.uberspace.is ([95.143.172.20])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xO0sw-00000000aTJ-0kYU
+	id 1xO2IS-00000000jXu-437r
 	for linux-mediatek@lists.infradead.org;
-	Mon, 02 Nov 2026 22:52:20 +0000
-X-Envelope-To: linux-mediatek@lists.infradead.org
-DKIM-Signature: a=rsa-sha256; bh=pUTCvzdg+v4gmfitrml4BUgXdrrwNA7eRDpocfMXH+k=;
- c=simple/simple; d=justthetip.ca;
- h=from:to:subject:date:message-id:mime-version:content-type; s=key1;
- t=1793659927; v=1; x=1794264727;
- b=AiL0PcZcCt5LpvrEo90hbXS/TKY20LkKyIlTeeck6SyRpgx1hrwE1hLS4Gkl76Fw6aFOctyc
- qH3h/4VjvQ9hQSrc6MdDBKkHrGn2DdL8ETM8EL93d+NFj0PMgcFYHZ4iqG9Cb5bDGW2dIJPId4b
- RsXTjniZpXDCdh4aFvSGgtkeySfXN4KVG5TvDr9LWPDrwqGcf6zD+KMvEaTjLC21fjR1XX280i9
- +m8VW7hBEnqwgziQuaaNfAc8KgeE02GobIo4vDEaDh2H7w6SH19aFaztr8eTJ2wzcZPX87vyJsU
- GgkQUaZCdoa5/W9LvLwuqYqijAbliFc3b50oPbWIEhklQ==
-X-Envelope-To: linux-mediatek@lists.infradead.org
-Received: by smtp.migadu.com with ESMTPS id d92317b42c0e722c;
-	Mon, 02 Nov 2026 22:52:07 +0000
-X-Mizu-Trace-ID: d92317b42c0e722c
-X-Migadu-Flow: FLOW_OUT
-From: Devin Wittmayer <lucid_duck@justthetip.ca>
+	Tue, 03 Nov 2026 00:22:42 +0000
+Received: from perseus.uberspace.de (perseus.uberspace.de [95.143.172.134])
+	by mailgate01.uberspace.is (Postfix) with ESMTPS id E4C02610F6
+	for <linux-mediatek@lists.infradead.org>; Tue, 03 Nov 2026 01:22:28 +0100 (CET)
+Received: (qmail 10944 invoked by uid 988); 3 Nov 2026 00:22:28 -0000
+Authentication-Results: perseus.uberspace.de;
+	auth=pass (plain)
+Received: from unknown (HELO unknown) (::1)
+	by perseus.uberspace.de (Haraka/3.1.1) with ESMTPSA; Tue, 03 Nov 2026 01:22:28 +0100
+From: David Bauer <mail@david-bauer.net>
 To: Felix Fietkau <nbd@nbd.name>,
 	Lorenzo Bianconi <lorenzo@kernel.org>,
-	Ryder Lee <ryder.lee@mediatek.com>
-Cc: Deren Wu <deren.wu@mediatek.com>,
-	Sean Wang <sean.wang@mediatek.com>,
+	Ryder Lee <ryder.lee@mediatek.com>,
 	Shayne Chen <shayne.chen@mediatek.com>,
-	JB Tsai <jb.tsai@mediatek.com>,
-	Xiong <xiong.huang@mediatek.com>,
-	Charlie-cy Wu <charlie-cy.wu@mediatek.corp-partner.google.com>,
-	Quan Zhou <quan.zhou@mediatek.com>,
-	Eason Lai <eason.lai@mediatek.com>,
-	Matthew Wilcox <willy@infradead.org>,
-	linux-wireless@vger.kernel.org,
-	linux-mediatek@lists.infradead.org,
-	linux-kernel@vger.kernel.org
-Subject: [PATCH wireless] wifi: mt76: mt7921e: fix unregister deadlock
-Date: Mon,  2 Nov 2026 15:52:00 -0700
-Message-ID: <20261102225200.16172-1-lucid_duck@justthetip.ca>
-X-Mailer: git-send-email 2.56.0
-In-Reply-To: <aujjJPq-Qth7UyMp@casper.infradead.org>
-References: <aujjJPq-Qth7UyMp@casper.infradead.org>
+	Sean Wang <sean.wang@mediatek.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: linux-wireless@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: [PATCH mt76] wifi: mt76: mt7603: avoid deadlock on failed channel config
+Date: Tue,  3 Nov 2026 01:22:09 +0100
+Message-ID: <20261103002210.166517-1-mail@david-bauer.net>
+X-Mailer: git-send-email 2.53.0
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
+X-Rspamd-Bar: /
+X-Rspamd-Report: SUSPICIOUS_RECIPS(1.5) BAYES_HAM(-3) MID_CONTAINS_FROM(1) MIME_GOOD(-0.1) R_MISSING_CHARSET(0.5)
+X-Rspamd-Score: -0.1
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+	d=david-bauer.net; s=uberspace;
+	h=from:to:cc:subject:date;
+	bh=0IaUd68iA8zNEbntjgxpaciU9eYyrP6IEDHh8U3mBas=;
+	b=Q4+ohvynJpU7XX6TsaKD4WHzqc2RVzr9ST4DSpvCWlmNBJ1ayJxeL4sGcg9wtynNR2uJe7NzvF
+	PMSHno5Zqj0ZfVUlteK/coz8o3lzll7bo5JTRP30gDrMxi1aCZsHUmil78Z7A6jkfh9iCQRrWw8t
+	vXmThNDw6uuc0n7MYsVIQDTASk2gh/9wCagelDvFuGTLw7YZ3B2BQvm1xBuaCy55eloMc3foW3rd
+	YMdqtpwiIzD97wOz8x9DXKSuF+vhR46WuKFqIBLW6w8hvqSYDtKqJHPEiWV2Tx7YhLMD7ylvtLCN
+	RGrwBNFk/4zls1I4wkHDIjXmXjFQmeSQ4nH9+C9cju4ZcqR7saPx6OvoCrTAY00LmkRBr02mIsdr
+	qyht/1QKxNqzW4p9YRrjz1CS/omL0MIV163U3Vct4OcZxmxDhS0IXE27AEs5bGbTuF9hKZTgoQIM
+	BHKA9smUcZbmWQVgQvQnO6dVCAp0tYEBg6yVvjYXSCDs/X3ZlvopeVOwden8sj6DTf4FALt2NppH
+	MWQ69RxwVIGXQtykaORV4dDYvDLbbLqwVMa4jUCSVvGfoOpGd+qrBXGdPJEtw4PyFu5UETwrjWst
+	1aS5aqr3DXb7OfwXLzw/uNB9fIdTeNv9fpOHb20YkpO6dxqXMCfUbcZ4ZgGp9mUF2bQdNJRrA1on
+	E=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261102_145218_815024_B82B0CD1 
-X-CRM114-Status: GOOD (  11.79  )
+X-CRM114-CacheID: sfid-20261102_162241_457082_CFD3CB9A 
+X-CRM114-Status: UNSURE (   7.85  )
+X-CRM114-Notice: Please train this message.
 X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -90,71 +96,45 @@ X-Spam-Status: No, score=-18.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Removing the driver can hang forever when the chip stops answering.
+The synchronous call to mt7603_mac_work locks the global
+mt76 device mutex. This can create a deadlock situation,
+as the lock was already taken in mt76_set_channel.
 
-Removal disables NAPI and only then waits for the reset work, which a
-failing chip keeps queuing. That reset disables NAPI again and never
-returns.
+Instead schedule the next mac_work iteration to happen immediately in
+case a reset is necessary and perform the reset asynchronously.
 
-Do what mt7925e does: mark the device removed once it is unregistered,
-so no new reset is queued, and cancel the reset work before disabling
-NAPI.
-
-Fixes: 3d78c46423c6 ("wifi: mt76: mt7921e: stop chip reset worker in unregister hook")
-Reported-by: Matthew Wilcox <willy@infradead.org>
-Closes: https://lore.kernel.org/all/aujjJPq-Qth7UyMp@casper.infradead.org/
-Signed-off-by: Devin Wittmayer <lucid_duck@justthetip.ca>
+Signed-off-by: David Bauer <mail@david-bauer.net>
 ---
-Reproduced on an MT7922 by putting the chip in D3hot under the driver:
-the same driver own and chip reset failures, then rmmod waiting in the
-same stack while the reset work is stuck disabling NAPI.
+ drivers/net/wireless/mediatek/mt76/mt7603/main.c | 8 ++------
+ 1 file changed, 2 insertions(+), 6 deletions(-)
 
-  dead chip, rmmod                  result
-  6.18.52, in-tree                  hangs
-  mt76 03dd150dbd36                 returns
-    with this patch                 returns
-    75673ab3c0e4 reverted           hangs
-    reverted, with this patch       returns, 3 of 3
-
-Since 75673ab3c0e4 the reset stops early when driver own fails, so
-current mt76 gets through a fully dead chip. That commit is not in
-v7.3, and any reset that gets as far as NAPI still hangs.
-
-This needs the removed check in the reset helper from 79941e85f4b3. A
-normal rmmod and a debugfs chip reset work as before.
-
-Matthew, thanks for the stack trace.
-
- drivers/net/wireless/mediatek/mt76/mt7921/pci.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
-
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/pci.c b/drivers/net/wireless/mediatek/mt76/mt7921/pci.c
-index f87c44f2a8b6..1ff219005d14 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7921/pci.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7921/pci.c
-@@ -52,11 +52,12 @@ static void mt7921e_unregister_device(struct mt792x_dev *dev)
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7603/main.c b/drivers/net/wireless/mediatek/mt76/mt7603/main.c
+index 757664e9e1f20..61f2461939872 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7603/main.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7603/main.c
+@@ -172,9 +172,6 @@ int mt7603_set_channel(struct mt76_phy *mphy)
+ 	mt7603_mac_set_timing(dev);
+ 	mt7603_mac_start(dev);
  
- 	cancel_work_sync(&dev->init_work);
- 	mt76_unregister_device(&dev->mt76);
-+	set_bit(MT76_REMOVED, &dev->mphy.state);
-+	cancel_work_sync(&dev->reset_work);
- 	mt76_for_each_q_rx(&dev->mt76, i)
- 		napi_disable(&dev->mt76.napi[i]);
- 	cancel_delayed_work_sync(&pm->ps_work);
- 	cancel_work_sync(&pm->wake_work);
--	cancel_work_sync(&dev->reset_work);
+-	ieee80211_queue_delayed_work(mt76_hw(dev), &dev->mphy.mac_work,
+-				     msecs_to_jiffies(MT7603_WATCHDOG_TIME));
+-
+ 	/* reset channel stats */
+ 	mt76_clear(dev, MT_MIB_CTL, MT_MIB_CTL_READ_CLR_DIS);
+ 	mt76_set(dev, MT_MIB_CTL,
+@@ -191,9 +188,8 @@ int mt7603_set_channel(struct mt76_phy *mphy)
+ 		mt7603_beacon_set_timer(dev, -1, dev->mt76.beacon_int);
  
- 	mt76_connac2_tx_token_put(&dev->mt76);
- 	__mt792x_mcu_drv_pmctrl(dev);
-@@ -460,7 +461,6 @@ static void mt7921_pci_remove(struct pci_dev *pdev)
- 		device_init_wakeup(dev->mt76.dev, false);
+ 	tasklet_enable(&dev->mt76.pre_tbtt_tasklet);
+-
+-	if (failed)
+-		mt7603_mac_work(&dev->mphy.mac_work.work);
++	ieee80211_queue_delayed_work(mt76_hw(dev), &dev->mphy.mac_work,
++				     failed ? 0 : msecs_to_jiffies(MT7603_WATCHDOG_TIME));
  
- 	mt7921e_unregister_device(dev);
--	set_bit(MT76_REMOVED, &mdev->phy.state);
- 	devm_free_irq(&pdev->dev, pdev->irq, dev);
- 	mt76_free_device(&dev->mt76);
- 	pci_free_irq_vectors(pdev);
+ 	return ret;
+ }
 -- 
-2.56.0
+2.53.0
 
 
