@@ -2,11 +2,11 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 2D79B606A324
-	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Nov 2026 00:35:54 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id CE350606A32C
+	for <linux-mediatek@archiver.kernel.org>; Tue,  3 Nov 2026 00:46:15 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=c5Od3VVd;
-	dkim=pass (4096-bit key, unprotected) header.d=david-bauer.net header.i=@david-bauer.net header.a=rsa-sha256 header.s=uberspace header.b=vM7c0oWQ
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=We5tskhU;
+	dkim=pass (4096-bit key, unprotected) header.d=david-bauer.net header.i=@david-bauer.net header.a=rsa-sha256 header.s=uberspace header.b=SRuvU2eV
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
@@ -14,29 +14,29 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
 	List-Unsubscribe-Post:List-Owner;
-	bh=PWx7yD2PbJfwHT7mGuRmzTwLanSHlLuCjcyfxjQ8Zq8=; b=c5Od3VVdUyecUc+Nd9R3g+ltLk
-	wKi+H2rJHDWl6xuW1dpP0vk/N8uOyMeRIQchhWHXAtyDJEAENsJf6QKnpi59GLSCBzpxRzLqq9SBe
-	/QW91Gze+8t81iFM59ZHXYbJKGANRephQvt50Ajvme9M0oSXRRIVpFlAW3OuFT9HeBA7Kx29dxj8K
-	a2J/49xMVHX0zzUr0ukRSjpQ3NNLo09x5GrBHyyDX0A+f655VDjzKGgZliCQfnaiSqpHObrqxtGNl
-	fcHYHeFdhGD5IDjtJUcc6txq1YFWClgZyvuIHkbgjKuEWEIA6tYDTpF/wp7fP6vhq/JgolCF2MQ1T
-	65eA5XGQ==;
+	bh=McHAtaoAopLY8VKLOPI+I31Q7QJw2mGgzISVHigw2PA=; b=We5tskhU8mJmepv7uBdY1AjUXR
+	4j9iFBhz1De/4rNEz5WblnJe+hC3OC8Sxf058swAfhaQisug49C5/gGSHkOSiw6JkcYWMUDcy2enc
+	ot7QgpUQtjvIUYyRVDxxvoX7MQu++SkB8zTozAksOt3YRpWHQK3Jeopr9cp0AGw8IRbug0pB3w53N
+	YaSNzehts/8HZTunAPBlwnr0Rhwc7uAPiOCpB9i1OzrFa8eFIgXdrXcvzHLuNCeEPrSXVF2N7qk9b
+	eQOW9lFWSgHF9x2+1cVc9HbyiwYv3WJYalsur1gfWOc7NkAV4sC0Q//dwHPXCK9UsOMAXNhfQfD4E
+	OH3UfNng==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xO2VF-00000000kGb-3UUM;
-	Tue, 03 Nov 2026 00:35:53 +0000
-Received: from mailgate01.uberspace.is ([2001:1a50:11:0:c83f:a8ff:fea6:c8da])
+	id 1xO2fH-00000000kw2-1ysz;
+	Tue, 03 Nov 2026 00:46:15 +0000
+Received: from mailgate01.uberspace.is ([95.143.172.20])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xO2VA-00000000kBd-3AyV
+	id 1xO2fE-00000000kuh-3Drg
 	for linux-mediatek@lists.infradead.org;
-	Tue, 03 Nov 2026 00:35:52 +0000
+	Tue, 03 Nov 2026 00:46:14 +0000
 Received: from perseus.uberspace.de (perseus.uberspace.de [95.143.172.134])
-	by mailgate01.uberspace.is (Postfix) with ESMTPS id A96C0610EC
-	for <linux-mediatek@lists.infradead.org>; Tue, 03 Nov 2026 01:35:45 +0100 (CET)
-Received: (qmail 3470 invoked by uid 988); 3 Nov 2026 00:35:45 -0000
+	by mailgate01.uberspace.is (Postfix) with ESMTPS id D2C9260CE0
+	for <linux-mediatek@lists.infradead.org>; Tue, 03 Nov 2026 01:46:10 +0100 (CET)
+Received: (qmail 11057 invoked by uid 988); 3 Nov 2026 00:46:10 -0000
 Authentication-Results: perseus.uberspace.de;
 	auth=pass (plain)
 Received: from unknown (HELO unknown) (::1)
-	by perseus.uberspace.de (Haraka/3.1.1) with ESMTPSA; Tue, 03 Nov 2026 01:35:45 +0100
+	by perseus.uberspace.de (Haraka/3.1.1) with ESMTPSA; Tue, 03 Nov 2026 01:46:10 +0100
 From: David Bauer <mail@david-bauer.net>
 To: Felix Fietkau <nbd@nbd.name>,
 	Lorenzo Bianconi <lorenzo@kernel.org>,
@@ -49,33 +49,34 @@ Cc: linux-wireless@vger.kernel.org,
 	linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
-Subject: [PATCH mt76] wifi: mt76: mt7603: track consecutive failed PSE resets
-Date: Tue,  3 Nov 2026 01:35:33 +0100
-Message-ID: <20261103003534.176866-1-mail@david-bauer.net>
+Subject: [PATCH mt76] wifi: mt76: mt76x02: only read QoS control for QoS data frames
+Date: Tue,  3 Nov 2026 01:45:52 +0100
+Message-ID: <20261103004553.185692-1-mail@david-bauer.net>
 X-Mailer: git-send-email 2.53.0
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-Rspamd-Bar: /
-X-Rspamd-Report: SUSPICIOUS_RECIPS(1.5) BAYES_HAM(-3) MID_CONTAINS_FROM(1) MIME_GOOD(-0.1) R_MISSING_CHARSET(0.5)
-X-Rspamd-Score: -0.1
+X-Rspamd-Report: SUSPICIOUS_RECIPS(1.5) BAYES_HAM(-2.999999) MID_CONTAINS_FROM(1) MIME_GOOD(-0.1) R_MISSING_CHARSET(0.5)
+X-Rspamd-Score: -0.099999
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
 	d=david-bauer.net; s=uberspace;
 	h=from:to:cc:subject:date;
-	bh=35HUvqpd53EuKLwxCx6c9zVK+zSfoB8JoaLgSV2muLQ=;
-	b=vM7c0oWQsSVeeVPhrVjietOxfWaQDUpeCk8BMLGixTIlpccX1fSPUGGVSU7y68ByWHrDeQGWhm
-	K374Uc8rMn0a425vxRBN5WygGiiC7WDIdtf7X3y0czMsKc83HFlnCbqENzWniHs/Xd03Aq2dhsvm
-	dvcWmFUChQplWd2P0pNiKH3d2iRjNKJDmXEnZCtZ9r2kTaNQfHIz6Lc+qGueQnLbKBXnQP4KVVix
-	f9mqpieIHm3nUFgY/0CQDWrc4CwXvf5I7AnygKBACik7JVF9nhMwgHKxwbHuBvLVXGgi/B9swv7d
-	PtyMLVy5fvx7iEMb9O1IPfgYmaErymvKu5VR+Rejx0kWxUZMhkyEdtaMfTKsLMALLA4sRoM4gvwB
-	X3U5E9MmzcsgZHz27Sgc+KZ4VfjsOe02MzQmMi03uI/yciqB1aVUHWObj9jxlcNq1te0UNCgZYv9
-	kj8Ab/G2gw+cdpi8zwPnpsEYAzBYjw5Sf5PCR1gNZKcakxJ5ZHn62xm8hnl+GdnGCCLcw+F580Ue
-	MM39KcP1BElYyzARu88BQvq6CPdQG14P8VZsnjJYBo/KgTDIzMd23XeTpglIaWRZ5BBYTn4HqKGP
-	RLV1tRZPLADsnnTtxsgjqem0L1+eRz7bfTbOmqj++D90JUD8vrMOn1aCibepeHTAfVeEN3kYFN7D
-	Q=
+	bh=mMof3IyROvhgq1PIWw+P3zt9Tbi9VUqagMwtUWT9DJw=;
+	b=SRuvU2eVpwSAjPCeghAAjLgO6SicQeZqeD2yQHU/m3yVoq1V5m9AOZvQbrwgF2GL8nJ01UdqMd
+	DpnSSkxImy288R2zGRoktpkxJKfwzYvgEZvjfLsK3wIVN7/LhqtMGXJN/Q0EVPBK4jmtxNvNh8cQ
+	ryffdJcQxnfMBelL6tctXgZ68juCfZPUBS2cVkcnz/kQvM5KDg76KoND5kHcgPNNrMhfhq/XV9np
+	v1a9VH7DvvXBdX8LzduWtu02+mCF+BfNc4Fygej6iWpIG7ZHP42adWs1F4d72OlYLd624HfbyOX9
+	PrVvGgqRzCQm2gVZZFxstFlb5suwWLU8euP4tMovRSI9DBudq6XVcf84NQk5PuKCAdcjUoAGHnz3
+	NP9qoTariJ5rf+IAvAGwqy/HwTIRxghT7ymFLe/Sy00ZRnVU8Cw4CjcgklqzcZHFPfmbnkp7ktDf
+	UjZLH8Uuh06WygW0T3LT03zZ9/zmn0L5WcQnaMXFUpV53xHLcYnrZuNUXjcA+cAAm1hBhq2glxB4
+	CkuXtRNfDAJ6Ir1sWMe5lme+7sUXKjn0MXDIL31K/GoJrg1sUpoxpl1ucZdtxltlydGVNc9jWpbH
+	t/0XcJ3a6uDMFkMXErg8xYO9fwUPinMcfJwq/m6/TNAxIoTbpb4IlV1px9IIiSA/3t57Z73kgXb/
+	4=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261102_163548_969759_6D2D2C89 
-X-CRM114-Status: GOOD (  16.07  )
+X-CRM114-CacheID: sfid-20261102_164612_956510_A73E658F 
+X-CRM114-Status: UNSURE (   8.89  )
+X-CRM114-Notice: Please train this message.
 X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -95,98 +96,34 @@ X-Spam-Status: No, score=-18.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-The current PSE recovery process uses the global reset cause counter to
-clear the MT_MCU_DEBUG_RESET_PSE_S only every 3rd attempt. The counter
-then wraps around.
-
-This does not allow to track the total number of failed PSE reset
-attempts. Introduce a new separate counter for consecutive failed resets
-and clear the bit based on the value of that counter.
-
-Keep RESET_FAILED reset cause as a cumulative statistic.
-
-Also add a short comment about how the reset procedure handles the
-failed case in terms of the retry limit.
+Only read the QoS control field for received QoS data frames.
+For any other frame the pointer might refer to bytes beyond
+the 802.11 header, so the read picks up payload bytes or runs
+past the end of the frame.
 
 Signed-off-by: David Bauer <mail@david-bauer.net>
 ---
- .../net/wireless/mediatek/mt76/mt7603/mac.c   | 21 ++++++++++++-------
- .../wireless/mediatek/mt76/mt7603/mt7603.h    |  1 +
- 2 files changed, 15 insertions(+), 7 deletions(-)
+ drivers/net/wireless/mediatek/mt76/mt76x02_mac.c | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7603/mac.c b/drivers/net/wireless/mediatek/mt76/mt7603/mac.c
-index fa0bf9a201ce2..549b0d3358f68 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7603/mac.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7603/mac.c
-@@ -1342,7 +1342,7 @@ wait_for_wpdma(struct mt7603_dev *dev)
- static void mt7603_pse_reset(struct mt7603_dev *dev)
- {
- 	/* Clear previous reset result */
--	if (!dev->reset_cause[RESET_CAUSE_RESET_FAILED])
-+	if (!dev->failed_pse_reset_attempts)
- 		mt76_clear(dev, MT_MCU_DEBUG_RESET, MT_MCU_DEBUG_RESET_PSE_S);
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76x02_mac.c b/drivers/net/wireless/mediatek/mt76/mt76x02_mac.c
+index 457767bbd8b60..3a08b57bd8de3 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76x02_mac.c
++++ b/drivers/net/wireless/mediatek/mt76/mt76x02_mac.c
+@@ -897,10 +897,12 @@ int mt76x02_mac_process_rx(struct mt76x02_dev *dev, struct sk_buff *skb,
+ 	status->freq = dev->mphy.chandef.chan->center_freq;
+ 	status->band = dev->mphy.chandef.chan->band;
  
- 	/* Reset PSE */
-@@ -1351,15 +1351,22 @@ static void mt7603_pse_reset(struct mt7603_dev *dev)
- 	if (!mt76_poll_msec(dev, MT_MCU_DEBUG_RESET,
- 			    MT_MCU_DEBUG_RESET_PSE_S,
- 			    MT_MCU_DEBUG_RESET_PSE_S, 500)) {
-+		dev->failed_pse_reset_attempts++;
- 		dev->reset_cause[RESET_CAUSE_RESET_FAILED]++;
- 		mt76_clear(dev, MT_MCU_DEBUG_RESET, MT_MCU_DEBUG_RESET_PSE);
- 	} else {
--		dev->reset_cause[RESET_CAUSE_RESET_FAILED] = 0;
-+		dev->failed_pse_reset_attempts = 0;
- 		mt76_clear(dev, MT_MCU_DEBUG_RESET, MT_MCU_DEBUG_RESET_QUEUES);
- 	}
+-	hdr = (struct ieee80211_hdr *)skb->data;
+-	status->qos_ctl = *ieee80211_get_qos_ctl(hdr);
+ 	status->seqno = FIELD_GET(MT_RXWI_SN, tid_sn);
  
--	if (dev->reset_cause[RESET_CAUSE_RESET_FAILED] >= 3)
--		dev->reset_cause[RESET_CAUSE_RESET_FAILED] = 0;
-+	/* Limit the number of consecutive failed PSE reset attempts.
-+	 *
-+	 * After 3 consecutive failed attempts, the reset limit is
-+	 * reached, the counter is reset and the device will
-+	 * return to normal operation.
-+	 */
-+	if (dev->failed_pse_reset_attempts >= 3)
-+		dev->failed_pse_reset_attempts = 0;
++	hdr = (struct ieee80211_hdr *)skb->data;
++	if (ieee80211_is_data_qos(hdr->frame_control))
++		status->qos_ctl = *ieee80211_get_qos_ctl(hdr);
++
+ 	return mt76x02_mac_process_rate(dev, status, rate);
  }
- 
- void mt7603_mac_dma_start(struct mt7603_dev *dev)
-@@ -1481,11 +1488,11 @@ static void mt7603_mac_watchdog_reset(struct mt7603_dev *dev)
- 		mt76_queue_rx_reset(dev, i);
- 	}
- 
--	if (dev->reset_cause[RESET_CAUSE_RESET_FAILED] ||
-+	if (dev->failed_pse_reset_attempts ||
- 	    dev->cur_reset_cause == RESET_CAUSE_RX_PSE_BUSY)
- 		mt7603_pse_reset(dev);
- 
--	if (!dev->reset_cause[RESET_CAUSE_RESET_FAILED]) {
-+	if (!dev->failed_pse_reset_attempts) {
- 		mt7603_mac_dma_start(dev);
- 
- 		mt7603_irq_enable(dev, mask);
-@@ -1920,7 +1927,7 @@ void mt7603_mac_work(struct work_struct *work)
- 	    mt7603_watchdog_check(dev, &dev->mcu_hang,
- 				  RESET_CAUSE_MCU_HANG,
- 				  NULL) ||
--	    dev->reset_cause[RESET_CAUSE_RESET_FAILED]) {
-+	    dev->failed_pse_reset_attempts) {
- 		dev->beacon_check = 0;
- 		dev->tx_dma_check = 0;
- 		dev->tx_hang_check = 0;
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7603/mt7603.h b/drivers/net/wireless/mediatek/mt76/mt7603/mt7603.h
-index 5b0ecd01aad95..47f5be44292d6 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7603/mt7603.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt7603/mt7603.h
-@@ -155,6 +155,7 @@ struct mt7603_dev {
- 
- 	u32 reset_test;
- 
-+	u8 failed_pse_reset_attempts;
- 	unsigned int reset_cause[__RESET_CAUSE_MAX];
- };
  
 -- 
 2.53.0
