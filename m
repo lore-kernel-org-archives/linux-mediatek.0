@@ -2,112 +2,62 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id B3B2F606A8D0
-	for <linux-mediatek@archiver.kernel.org>; Wed,  4 Nov 2026 18:24:40 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 1A7DD606A332
+	for <linux-mediatek@archiver.kernel.org>; Wed,  4 Nov 2026 18:56:23 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=N2vZoR5m;
-	dkim=pass (2048-bit key, unprotected) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=0ppSe8A2
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=4LcJgqle;
+	dkim=pass (2048-bit key, unprotected) header.d=protonmail.com header.i=@protonmail.com header.a=rsa-sha256 header.s=protonmail3 header.b=qGr2NKGN
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Subject:Cc:To:From:Date:Message-ID:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Unsubscribe-Post:List-Owner;
-	bh=ycnUco1cGdhF6ejE960/8oZSSlOXbGBirBTEJmck5lo=; b=N2vZoR5mrqmL7lWn7KhAwELnx1
-	RYQq6sDmRZPF7M81jNBpBBIaxcg20DuWYBWIGmrkhA/7jkrCvBlXIkQv0epNuy/COcmmdyIcE0Kk5
-	0nSyaWZGD2JazIouxmhsxggaD3WJR2KCpaWpRhnGo/UVIqfQurH+GuD0CvMuuZAOcNId4Ou/Of3Xp
-	V2/94kBGZmFjEOf2bOP5+fkazJ9ZdFl0rgo1aoIMUkyfKcNUfJloGeDIfF984mqYuQJ9G8V2e0xC6
-	Sp7Icnhxtt8/8VT+x+tBcD16WhUR7CyFb4vIV7DypHJ759aePM2ADP2AreZZ237AGOw8CosPrTwv7
-	o1+utyHQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:From:
+	To:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Unsubscribe-Post:
+	List-Owner; bh=PoEnk5w0FeXgmUszIA38mVTO0/9NRJVsUtjtCXZXtvk=; b=4LcJgqlenkIh4b
+	yCTrfrrzNi3hFeH1UJ45MUaPTrCvaDyKbr5IJAv5nsM90rEvBuLemBQlj/fBlZTG149gmUjJNoOIh
+	5FGCp72oMc00mpwP0+Ij70NodTmb0tppXSJI31Qkp/4/Vk/cAf0IIYmufzjXsKaGaIIsQVfIFBAM4
+	ClKTutvL0nuYvsnso91HcJdOZ4gONhY75dt+esPs74XYwujMLdKtLU34FPcBJeyL2wzFO5jf1CA3w
+	6KUd3WKjOfVSvtnBF/BUrQhKR79AU1kiYN0dmm9pjHheKlV7N3Df7uJKlt3xmqeKTijwkCaFy32nT
+	wrX/drMOoPfHbfoQV6vw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xOff6-00000006OFr-1Swe;
-	Wed, 04 Nov 2026 18:24:40 +0000
-Received: from mail-wm1-x333.google.com ([2a00:1450:4864:20::333])
+	id 1xOg9l-00000006T3Y-3hYG;
+	Wed, 04 Nov 2026 18:56:21 +0000
+Received: from mail-4316.protonmail.ch ([185.70.43.16])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xOff2-00000006OE4-1Xcu
+	id 1xOg9j-00000006T2O-2xCy
 	for linux-mediatek@lists.infradead.org;
-	Wed, 04 Nov 2026 18:24:38 +0000
-Received: by mail-wm1-x333.google.com with SMTP id 5b1f17b1804b1-4a2167bd087so8774265e9.3
-        for <linux-mediatek@lists.infradead.org>; Wed, 04 Nov 2026 10:24:35 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20260707; t=1793816674; x=1794421474; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:content-type:mime-version
-         :references:subject:cc:to:from:date:message-id:from:to:cc:subject
-         :date:message-id:reply-to:content-type;
-        bh=ycnUco1cGdhF6ejE960/8oZSSlOXbGBirBTEJmck5lo=;
-        b=0ppSe8A2RRK2xHaQipJJZ/Yxgqy5f77tKNaGvA4tZ85dpvvvNgFCdK+x3LHNNskR+J
-         kj70Ve5HDT6DVq6XTzFvZEduBgiCS7ntR5oLWViZ2VqVoZIdCt0wc8bjMlDJKjjq2wLQ
-         sVtE7G19sjywiDh+ceDhCIaCbtmg2qCAWc3XnaE/7trxAqi7uVK50tDgomc4uTEtvfl0
-         fUYxE6o/gEkiwXgHZVvor+WdCRxQ4/t/dU4jaGNmBf5TFmTfyB6f3GXDIp6c0Py75eMK
-         DkP3iCOAz57gS+DVWh7mxOisxTBvfjDrLMrTUhwnnbXVrmoxVwAKX4V/14NoMMe+/fuc
-         TnUw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1793816674; x=1794421474;
-        h=in-reply-to:content-disposition:content-type:mime-version
-         :references:subject:cc:to:from:date:message-id:x-gm-gg
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
-         :content-type;
-        bh=ycnUco1cGdhF6ejE960/8oZSSlOXbGBirBTEJmck5lo=;
-        b=kHLUOdneQdYtR7zVTzOc4UMXh2uVwz4ZcMqwL/1JPD38kxJOSL2iA0n+/HqUuV3402
-         750fx8d/yGX0mvu9sMTM7Xc0B8bteZPut5W97y6hcYtjUiygSbjzw39U2vvrd0SNcJ0h
-         /s1dTuuF9rqxUCy1PpnZmPyKn0SUx1Ga3YP+uQmo2iv8OzxXuPKbHLu+9eT244o5hY+h
-         JW5N5wImfll7ypRUsDj9UwdhlC1Nyw4AU1SbpME7cklXG2StBLWlJTiAImyJckRuTvwd
-         FHfFl3RLlgxhWK8qykVD9wgL/Hb39IC486R8KiFzUJ1ZKQq94nJPYmJbY2zpIbyplweP
-         4LHA==
-X-Forwarded-Encrypted: i=1; AKwUvBzqHDSnmE2rTlqZviBfDNimE61q0Ih+cnQmLse9V5ZJTHgyaZBuFj8gHI5v8CttCelTh67OoNX1rVs2/HY4vw==@lists.infradead.org
-X-Gm-Message-State: APuU4Z+2fMvIti2qsFzW7M6fOtMs0YsqTIl1FW6yIbp3lR6Wi0B8zu/3
-	OpgRivrsIPu8NxKO0tjU+QHnk3rcIo3kU/ViYFbdpwfITVUXxHls+e09
-X-Gm-Gg: AYBFou2mAO1Ceq+hhBwVu0iwBvDQsTjNeNkcAUYEJRKoAIflFUC4DD8KqcdBEQSn69T
-	FsdAlMlG9LW8f7ND+RYZKlMIriBwnkLR9er04SRfmSDaEe/w0z5diZdti7BoH7EOrwxqRzuRu1b
-	1sOtHRIzvamTazlElcqHW4O+8uhm26bpnbec/WTv6Dk6Ne7m2qlkKMCESHnn1kEgHtH7zCqq+v7
-	dVezVKE0xexLrOAFWDcJ57+rAgA+eND1r/XxRoO1S0WK/xMWfb2Wk/8+qNetThvCpTxwZH1CEML
-	y3F7sqtMLXe86usW019nMPs858fiFJMaK/BWMNh+mIc0UWM20V+G4PYkLoCYT6O2q/HQ8+3FHjg
-	WnoQ1V1pFIJRSiFx3FDjHhMKXYa5GPijmpXdGh5fuXmzx08umQ972zhL7dzx7OeVl1fkdG56QCd
-	bnaA8dlT6OHeGhT6or1c/zkHzBqHmc3LVaToHbuO1UZ+BSfvRb+YoYVfLoAvpnsdPRWFcYvOiaR
-	JYRGS8DzLuMD1vHQxUjjxr1ri20i7iE1M7jI5+N6oF5HHmQ55bbE/HvjpM/uyeEySext0LVQ75C
-	raNea+R6y0tOedFua+qcRfUQjxbHERyojo/P+nwQtfMen/38yZaLxYlXYD94WyWB+ZdTvOAUQgI
-	BxYP8acg3N7Wvv1en
-X-Received: by 2002:a05:600c:8b64:b0:4a2:84c:52f3 with SMTP id 5b1f17b1804b1-4ac16fa21dcmr409378675e9.6.1793816674252;
-        Wed, 04 Nov 2026 10:24:34 -0800 (PST)
-Received: from Ansuel-XPS. (93-34-90-148.ip49.fastwebnet.it. [93.34.90.148])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-4b56f0237aesm3010995e9.9.2026.11.04.10.24.32
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 04 Nov 2026 10:24:33 -0800 (PST)
-Message-ID: <6aeb7861.6171b307.11ae12.6b94@mx.google.com>
-X-Google-Original-Message-ID: <aut4XNrQlPIZ9q4y@Ansuel-XPS.>
-Date: Wed, 4 Nov 2026 19:24:28 +0100
-From: Christian Marangi <ansuelsmth@gmail.com>
-To: Andrew Lunn <andrew@lunn.ch>
-Cc: Heiner Kallweit <hkallweit1@gmail.com>,
-	Russell King <linux@armlinux.org.uk>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@kernel.org>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Daniel Golle <daniel@makrotopia.org>,
-	Qingfang Deng <dqfext@gmail.com>,
-	SkyLake Huang <SkyLake.Huang@mediatek.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Joris Vaisvila <joey@tinyisr.com>,
-	Ahmed Naseef <naseefkm@gmail.com>, linux-kernel@vger.kernel.org,
-	netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH net-next v4 5/6] net: phy: mediatek: add calibration
- logic for AN7581
-References: <20261103221439.30502-1-ansuelsmth@gmail.com>
- <20261103221439.30502-6-ansuelsmth@gmail.com>
- <2b744929-609b-4529-8b6b-30feb3ebbbde@lunn.ch>
+	Wed, 04 Nov 2026 18:56:21 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=protonmail.com;
+	s=protonmail3; t=1793818576; x=1794077776;
+	bh=PoEnk5w0FeXgmUszIA38mVTO0/9NRJVsUtjtCXZXtvk=;
+	h=Date:To:From:Cc:Subject:Message-ID:In-Reply-To:References:
+	 Feedback-ID:From:To:Cc:Date:Subject:Reply-To:Feedback-ID:
+	 Message-ID:BIMI-Selector;
+	b=qGr2NKGNyA8oQsQN5aT4QbA2ipKJFBAk8gaR7VbT56KzBAQptM3M/5H80lBsj1Z6y
+	 st0Heiowa4h9BebEodOu+qHAiYNvhldpzxLdsK25Znd6fzCkoYv2HflgHYT2ALeb5S
+	 KfMc19qLA2Ryo1oPN4cI9zmoOSpiLCC0edOufl2dfT4JD+lalPs66QLXzlg//+EZ4w
+	 sPUK0j1IYsw17fZ3ghLls+jifpHIM9woX2ZgFi7X84+DHRuGfiBQ22AZN26xuQjaIP
+	 j6RtAb6MW/4H6BMwrV1oisuevt3F2ZPdGKJOHESBKDo9wSWnRkQKp6bC9bhM2p99R/
+	 +zZ5hAWz9jNsg==
+Date: Wed, 04 Nov 2026 18:56:12 +0000
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+From: Roman Vivchar <rva333@protonmail.com>
+Cc: chunkuang.hu@kernel.org, p.zabel@pengutronix.de, maarten.lankhorst@linux.intel.com, mripard@kernel.org, tzimmermann@suse.de, airlied@gmail.com, simona@ffwll.ch, robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org, matthias.bgg@gmail.com, jitao.shi@mediatek.com, dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, kernel@collabora.com, justin.yeh@mediatek.com, jason-jh.lin@mediatek.com, CK Hu <ck.hu@mediatek.com>
+Subject: Re: [PATCH v9 05/13] drm/mediatek: mtk_dsi: Enable interrupt at component bind time
+Message-ID: <hXDHNenOxP_1Fjv3k-eSNDIFG2yGsdvlxFOCpn0SMdRImzGWQfDVFE-0px1K0-Z472dL3IuLWE5BWIQeOo_U12SjzZOeJ3FNLIxus-KoGNE=@protonmail.com>
+In-Reply-To: <20260916110825.102631-6-angelogioacchino.delregno@collabora.com>
+References: <20260916110825.102631-1-angelogioacchino.delregno@collabora.com> <20260916110825.102631-6-angelogioacchino.delregno@collabora.com>
+Feedback-ID: 173184497:user:proton
+X-Pm-Message-ID: 1252c7109e566e88ba7843d515915c4f14738510
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <2b744929-609b-4529-8b6b-30feb3ebbbde@lunn.ch>
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261104_102436_424969_8A6B56C0 
-X-CRM114-Status: GOOD (  18.42  )
-X-Spam-Score: -2.1 (--)
+X-CRM114-CacheID: sfid-20261104_105619_912812_8B88940E 
+X-CRM114-Status: GOOD (  18.86  )
+X-Spam-Score: -2.5 (--)
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -118,56 +68,133 @@ List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-2.9 required=3.0 tests=BAYES_00,DKIM_SIGNED,
+X-Spam-Status: No, score=-12.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
 	DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,FREEMAIL_FORGED_FROMDOMAIN,
-	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS autolearn=no autolearn_force=no version=4.0.1
+	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=ham
+	autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On Wed, Nov 04, 2026 at 04:47:09AM +0100, Andrew Lunn wrote:
-> > +static int airoha_cal_cycle(struct phy_device *phydev, int devad,
-> > +			    u32 regnum, u16 mask, u16 cal_val)
-> > +{
-> > +	struct airoha_socphy_shared *shared = phy_package_get_priv(phydev);
-> > +	struct phy_device *phydev_p0;
-> > +	int ret;
-> > +
-> > +	phydev_p0 = shared->phydev_p0;
-> > +
-> > +	phy_modify_mmd(phydev, devad, regnum, mask, cal_val);
-> > +
-> > +	ret = mtk_cal_cycle_wait(phydev_p0);
-> > +	phydev_dbg(phydev, "cal_val: 0x%x, ret: %d\n", cal_val, ret);
-> 
-> What is the locking scheme here?
-> 
-> When using PHY packages, the typical usage is:
-> 
-> 	phy_lock_mdio_bus(phydev);
-> 
-> and then use
-> 
-> 	val = __phy_package_read(phydev, X, Y);
-> 
-> All the read/write helpers are __ indicating they assume the bus is
-> locked.
-> 
-> Here you are doing something similar, accessing another PHY in the
-> same package, but without locking. Is that safe?
-> 
+On Wednesday, September 16th, 2026 at 2:08 PM, AngeloGioacchino Del Regno <=
+angelogioacchino.delregno@collabora.com> wrote:
 
-Hi Andrew, thanks a lot for the review tag.
+> Having the DSI interrupt enabled before actually binding the DSI
+> component to the display controller driver is both useless and
+> dangerous: the main purpose of this interrupt is to signal CMD
+> done, LP RX data ready, or VideoMode done, or to reset the HW
+> engine if this doesn't come.
+>=20
+> Should this interrupt come too late (during probe), the HW will
+> be reset only at the next occurrence of a timeout, which slows
+> down boot and may render artifacts to the DSI display.
+>=20
+> Moreover, clearing the DSI interrupt while the display controller
+> is not ready yet, may result in an interrupt storm.
+>=20
+> In order to prevent this from happening, request the interrupt
+> with IRQF_NO_AUTOEN, and enable it only when binding DSI to its
+> display controller component master.
+>=20
+> Reviewed-by: CK Hu <ck.hu@mediatek.com>
+> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@coll=
+abora.com>
 
-It's safe in the measure that the worst is that link goes down during the
-calibration... I will rework the function to assign the base address to the
-default address for port 0 (it's hardcoded by the SoC) and use the lock and
-read/write helper instead.
+This was necessary on mt6595, otherwise it would get stuck.
 
-The main problem of using __phy_package_read is that I have to duplicate
-the mtk_cal_cycle_wait function in the airoha-ge-soc.c as it would use
-different helper... is it ok?
+Acked-by: Roman Vivchar <rva333@protonmail.com>
+Tested-by: Roman Vivchar <rva333@protonmail.com> # mt6595, mt6768
 
--- 
-	Ansuel
+> ---
+>  drivers/gpu/drm/mediatek/mtk_dsi.c | 24 +++++++++++++-----------
+>  1 file changed, 13 insertions(+), 11 deletions(-)
+>=20
+> diff --git a/drivers/gpu/drm/mediatek/mtk_dsi.c b/drivers/gpu/drm/mediate=
+k/mtk_dsi.c
+> index 28ba532210ff..6ac6daa61e68 100644
+> --- a/drivers/gpu/drm/mediatek/mtk_dsi.c
+> +++ b/drivers/gpu/drm/mediatek/mtk_dsi.c
+> @@ -225,6 +225,7 @@ struct mtk_dsi {
+>  =09int refcount;
+>  =09bool enabled;
+>  =09bool lanes_ready;
+> +=09int irq;
+>  =09u32 irq_data;
+>  =09wait_queue_head_t irq_wait_queue;
+>  =09const struct mtk_dsi_driver_data *driver_data;
+> @@ -1101,6 +1102,8 @@ static int mtk_dsi_bind(struct device *dev, struct =
+device *master, void *data)
+>  =09=09return ret;
+>  =09}
+>=20
+> +=09enable_irq(dsi->irq);
+> +
+>  =09return 0;
+>  }
+>=20
+> @@ -1109,6 +1112,8 @@ static void mtk_dsi_unbind(struct device *dev, stru=
+ct device *master,
+>  {
+>  =09struct mtk_dsi *dsi =3D dev_get_drvdata(dev);
+>=20
+> +=09disable_irq(dsi->irq);
+> +
+>  =09drm_encoder_cleanup(&dsi->encoder);
+>  }
+>=20
+> @@ -1342,7 +1347,6 @@ static int mtk_dsi_probe(struct platform_device *pd=
+ev)
+>  {
+>  =09struct mtk_dsi *dsi;
+>  =09struct device *dev =3D &pdev->dev;
+> -=09int irq_num;
+>  =09int ret;
+>=20
+>  =09dsi =3D devm_drm_bridge_alloc(dev, struct mtk_dsi, bridge,
+> @@ -1375,9 +1379,9 @@ static int mtk_dsi_probe(struct platform_device *pd=
+ev)
+>  =09if (IS_ERR(dsi->phy))
+>  =09=09return dev_err_probe(dev, PTR_ERR(dsi->phy), "Failed to get MIPI-D=
+PHY\n");
+>=20
+> -=09irq_num =3D platform_get_irq(pdev, 0);
+> -=09if (irq_num < 0)
+> -=09=09return irq_num;
+> +=09dsi->irq =3D platform_get_irq(pdev, 0);
+> +=09if (dsi->irq < 0)
+> +=09=09return dsi->irq;
+>=20
+>  =09dsi->host.ops =3D &mtk_dsi_ops;
+>  =09dsi->host.dev =3D dev;
+> @@ -1386,17 +1390,15 @@ static int mtk_dsi_probe(struct platform_device *=
+pdev)
+>=20
+>  =09platform_set_drvdata(pdev, dsi);
+>=20
+> +=09ret =3D devm_request_irq(&pdev->dev, dsi->irq, mtk_dsi_irq,
+> +=09=09=09       IRQF_NO_AUTOEN, dev_name(&pdev->dev), dsi);
+> +=09if (ret)
+> +=09=09return dev_err_probe(&pdev->dev, ret, "Failed to request DSI irq\n=
+");
+> +
+>  =09ret =3D mipi_dsi_host_register(&dsi->host);
+>  =09if (ret < 0)
+>  =09=09return dev_err_probe(dev, ret, "Failed to register DSI host\n");
+>=20
+> -=09ret =3D devm_request_irq(&pdev->dev, irq_num, mtk_dsi_irq,
+> -=09=09=09       IRQF_TRIGGER_NONE, dev_name(&pdev->dev), dsi);
+> -=09if (ret) {
+> -=09=09mipi_dsi_host_unregister(&dsi->host);
+> -=09=09return dev_err_probe(&pdev->dev, ret, "Failed to request DSI irq\n=
+");
+> -=09}
+> -
+>  =09dsi->bridge.of_node =3D dev->of_node;
+>  =09dsi->bridge.type =3D DRM_MODE_CONNECTOR_DSI;
+>=20
+> --
+> 2.55.0
+>=20
+>=20
+> 
 
