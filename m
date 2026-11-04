@@ -2,62 +2,67 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id EB4C8606A31B
-	for <linux-mediatek@archiver.kernel.org>; Wed,  4 Nov 2026 00:19:47 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 9EC11606A330
+	for <linux-mediatek@archiver.kernel.org>; Wed,  4 Nov 2026 02:14:42 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=dH6s/BXm;
-	dkim=pass (2048-bit key, unprotected) header.d=protonmail.com header.i=@protonmail.com header.a=rsa-sha256 header.s=protonmail3 header.b=Bw3v76YO
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=2izm9iJ5
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:From:
-	To:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Unsubscribe-Post:
-	List-Owner; bh=0ItBfrW6T5nMzkdXKiGCSfuf/xa8iYQADg+BPBvetAo=; b=dH6s/BXmOmcP0s
-	ph73sx/AGy9Mn/NLt8oVf+HVzgPfouTpsipQvAHQJWJOCyjZ2osQG7etOTJEmGDdN/BUJ67NMSyy4
-	y+Vtx4MYfjlZ6+oH2x7ARfqjKMxnwYkD+H9fKwgZqw6zWTV2vcrztwJzTHUEKSo+wolRWR1TU0lkx
-	srfbES8cqVqRSiNzlZlbHn0GzFTYGh1EBsKLEKcLlQ77LHPR1wsxGl9FBNNBVvBdIdOuas8UFSm7V
-	KCo/70CQwjDysK8bJeCUiCLdJzVwWrf4fzQMTZzSC6at7StDirNFrH8HzDbxV5RsTpv3ObQqUG6pU
-	GY24/rRc3IVt7d28rM2Q==;
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Unsubscribe-Post:List-Owner;
+	bh=CxotMRg8Jl9jS5fqsbNoyoQDH1t41chIx29r6F3HV4o=; b=2izm9iJ56WlX1r9AGPuD6Yt3XY
+	aSErbS5LYevqfk9k87Z06tzshV4gvdenwY94lXbf826VZY8wSvlwduZONbuMX2uwJohbHmXsa/Yl/
+	rAcet7nE4N3UCcx5nn5mjbeiyEnxp8UR51r0G0DS0znyhJYhf1JJepCYMS5hHomfz1/YAE3siHrim
+	0Ke8c4XcxaWRNpbOSjzz8D5Wb9T9EAG9gbHN3ioX8cl85WQOrahQ/w3Zn0CF9rYeEDpcRhEmmpWm/
+	PYkSER6CtTdxHuV1ogoSSRefSScjQHfoG3v0lgXL9q043aJ8wez7Rym+JZ/1y+Zo10GrT+22JYxMu
+	TgOUdArA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xOOjC-00000003zd8-1Pk5;
-	Wed, 04 Nov 2026 00:19:46 +0000
-Received: from mail-24427.protonmail.ch ([109.224.244.27])
+	id 1xOQWP-0000000489C-1qaU;
+	Wed, 04 Nov 2026 02:14:41 +0000
+Received: from smtp21.cstnet.cn ([159.226.251.21] helo=cstnet.cn)
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xOOj9-00000003zcK-2RgI
-	for linux-mediatek@lists.infradead.org;
-	Wed, 04 Nov 2026 00:19:45 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=protonmail.com;
-	s=protonmail3; t=1793751580; x=1794010780;
-	bh=0ItBfrW6T5nMzkdXKiGCSfuf/xa8iYQADg+BPBvetAo=;
-	h=Date:To:From:Cc:Subject:Message-ID:In-Reply-To:References:
-	 Feedback-ID:From:To:Cc:Date:Subject:Reply-To:Feedback-ID:
-	 Message-ID:BIMI-Selector;
-	b=Bw3v76YOeHVBXomTxUM6r4KQxj9sxxCabXk4DTZ4GJjJlxwMALjZVyRYJr5lXMaBy
-	 qn9g+Drfh5D0NaRsPUGsYOX6A5rHIrUCZDljNucwpYmjXW17imU+EUesg3S0PcJ3yK
-	 Lt5+JK7i1eLSQcXEXqEK+CLC72oNUS0xNpeqfB0C6xKPWXOX/0Jf5wNbWlu7E+QIUU
-	 8YORn1GSGU8N/irpk5orYXH50aOSTPH5VXmG2Zj3lFPpfSxUbRm/1tmdnLt+ytxHzr
-	 SO24zDIcvwyUBXbJuKc8uSU9Yn0jGvRotoH+ad5W6OaTxjAVrTwas69uYw9WnNrOzR
-	 GwHwE268CkwdA==
-Date: Wed, 04 Nov 2026 00:19:33 +0000
-To: Jonathan Cameron <jic23@kernel.org>
-From: Roman Vivchar <rva333@protonmail.com>
-Cc: Roman Vivchar via B4 Relay <devnull+rva333.protonmail.com@kernel.org>, David Lechner <dlechner@baylibre.com>, =?utf-8?Q?Nuno_S=C3=A1?= <nuno.sa@analog.com>, Andy Shevchenko <andy@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, =?utf-8?Q?N=C3=ADcolas_F=2E_R=2E_A=2E_Prado?= <nfraprado@collabora.com>, Chen-Yu Tsai <wenst@chromium.org>, linux-iio@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH 2/3] iio: adc: mt6359-auxadc: mask conversion ready bit in mt6358_read_imp
-Message-ID: <hAkgxe6jt5EJW-8bHBs53r3CWCxKxjjzGm6u-l-RzYaGedsBunJrv8nOB48zDSLaMD_jJqtC1Xt1wlz0zDdGF28li-clCdIjUzE9xSbh7Hk=@protonmail.com>
-In-Reply-To: <20261103234540.46cc8c1b@jic23-hlaptop>
-References: <20261103-6768-6358-fixes-v1-0-2a868a33152b@protonmail.com> <20261103-6768-6358-fixes-v1-2-2a868a33152b@protonmail.com> <20261103234540.46cc8c1b@jic23-hlaptop>
-Feedback-ID: 173184497:user:proton
-X-Pm-Message-ID: c9cf3f3a78a2e0e449b8377418b2a0c862befc67
+	id 1xOQWM-0000000485F-43ZD;
+	Wed, 04 Nov 2026 02:14:40 +0000
+Received: from dfae2b116770.home.arpa (unknown [36.110.52.2])
+	by APP-01 (Coremail) with SMTP id qwCowADH7vgMlepqpHU+AA--.9517S2;
+	Wed, 04 Nov 2026 10:14:36 +0800 (CST)
+From: Wentao Liang <vulab@iscas.ac.cn>
+To: Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: [PATCH] soc: mediatek: svs: drop the subsystem device reference on failure
+Date: Wed,  4 Nov 2026 02:14:45 +0000
+Message-Id: <20261104021445.1468378-1-vulab@iscas.ac.cn>
+X-Mailer: git-send-email 2.34.1
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 8bit
+X-CM-TRANSID: qwCowADH7vgMlepqpHU+AA--.9517S2
+X-Coremail-Antispam: 1UD129KBjvJXoWxJry3ZF15tFWDAF1DZF4fKrg_yoW8Wr4kpr
+	W5ta4UAr90qF1j9w4UAw1UZF13uayIk3s3GrsxXwnruw1rXrW3XrWaqa4Yg34UAFykGa13
+	Jry3trZ7C3yxAr7anT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
+	9KBjDU0xBIdaVrnRJUUUkqb7Iv0xC_Kw4lb4IE77IF4wAFc2x0x2IEx4CE42xK8VAvwI8I
+	cIk0rVWrJVCq3wAFIxvE14AKwVWUJVWUGwA2ocxC64kIII0Yj41l84x0c7CEw4AK67xGY2
+	AK021l84ACjcxK6xIIjxv20xvE14v26F1j6w1UM28EF7xvwVC0I7IYx2IY6xkF7I0E14v2
+	6r4UJVWxJr1l84ACjcxK6I8E87Iv67AKxVWxJr0_GcWl84ACjcxK6I8E87Iv6xkF7I0E14
+	v26rxl6s0DM2AIxVAIcxkEcVAq07x20xvEncxIr21l5I8CrVACY4xI64kE6c02F40Ex7xf
+	McIj6xIIjxv20xvE14v26rWY6Fy7McIj6I8E87Iv67AKxVW8Jr0_Cr1UMcvjeVCFs4IE7x
+	kEbVWUJVW8JwACjcxG0xvY0x0EwIxGrwCF04k20xvY0x0EwIxGrwCF04k20xvE74AGY7Cv
+	6cx26r48ZrWUJr1UMxC20s026xCaFVCjc4AY6r1j6r4UMI8I3I0E5I8CrVAFwI0_Jr0_Jr
+	4lx2IqxVCjr7xvwVAFwI0_JrI_JrWlx4CE17CEb7AF67AKxVWUAVWUtwCIc40Y0x0EwIxG
+	rwCI42IY6xIIjxv20xvE14v26ryj6F1UMIIF0xvE2Ix0cI8IcVCY1x0267AKxVW8Jr0_Cr
+	1UMIIF0xvE42xK8VAvwI8IcIk0rVWUJVWUCwCI42IY6I8E87Iv67AKxVW8JVWxJwCI42IY
+	6I8E87Iv6xkF7I0E14v26r4UJVWxJrUvcSsGvfC2KfnxnUUI43ZEXa7IU5EQ6tUUUUU==
+X-CM-SenderInfo: pyxotu46lvutnvoduhdfq/1tbiBwABA2rqZFi4RwAAsG
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261103_161943_806182_3E56C9B2 
-X-CRM114-Status: GOOD (  18.27  )
-X-Spam-Score: -2.5 (--)
+X-CRM114-CacheID: sfid-20261103_181439_395775_970BC415 
+X-CRM114-Status: GOOD (  13.21  )
+X-Spam-Score: -0.9 (/)
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -68,74 +73,53 @@ List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-12.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
-	DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,FREEMAIL_FORGED_FROMDOMAIN,
-	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=ham
-	autolearn_force=no version=4.0.1
+X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
+	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On Wednesday, November 4th, 2026 at 1:45 AM, Jonathan Cameron <jic23@kernel=
-.org> wrote:
+svs_get_subsys_device() returns a device from of_find_device_by_node(),
+which takes a reference the caller owns. svs_add_device_link() hands that
+reference to its caller on success, but both error paths - a failed
+device_link_add() and a supplier that is not bound yet - return an error
+pointer without giving it back, so the supplier device can never be
+released when probing fails or defers.
 
-> On Tue, 03 Nov 2026 18:32:08 +0200
-> Roman Vivchar via B4 Relay <devnull+rva333.protonmail.com@kernel.org> wro=
-te:
->=20
-> > From: Roman Vivchar <rva333@protonmail.com>
-> >
-> > In mt6358_read_imp() the raw ADC value is returned directly without
-> > masking out ready bit, resulting in incorrect battery voltage reporting=
-.
->=20
-> Can you add where the ready bit is.  That might help someone
-> looking at wrong values and wondering if this is what is causing them.
+Put the reference before returning on both paths. The device link created
+on the deferred path is kept on purpose: it is what makes the driver core
+retry the consumer once the supplier has probed.
 
-It's at the end of mt6359_auxadc_read_adc() function, which is included in
-the commit message. Do you mean include the code part too?
-"*out =3D val & GENMASK(chan->scan_type.realbits - 1, 0);"
+Fixes: 681a02e95000 ("soc: mediatek: SVS: introduce MTK SVS engine")
+Cc: stable@vger.kernel.org
+Assisted-by: DeepSeek-V4.1-Flash and OpenAI Codex
+Signed-off-by: Wentao Liang <vulab@iscas.ac.cn>
+---
+ drivers/soc/mediatek/mtk-svs.c | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
 
-> This one is pretty glaring as bugs go (given I think this means the
-> top bit is set?) so any reason it wasn't obvious to anyone testing
-> this device?
+diff --git a/drivers/soc/mediatek/mtk-svs.c b/drivers/soc/mediatek/mtk-svs.c
+index 99edecb204f2..dd9643026c66 100644
+--- a/drivers/soc/mediatek/mtk-svs.c
++++ b/drivers/soc/mediatek/mtk-svs.c
+@@ -2155,11 +2155,14 @@ static struct device *svs_add_device_link(struct svs_platform *svsp,
+ 				   DL_FLAG_AUTOREMOVE_CONSUMER);
+ 	if (!sup_link) {
+ 		dev_err(svsp->dev, "sup_link is NULL\n");
++		put_device(dev);
+ 		return ERR_PTR(-EINVAL);
+ 	}
+ 
+-	if (sup_link->supplier->links.status != DL_DEV_DRIVER_BOUND)
++	if (sup_link->supplier->links.status != DL_DEV_DRIVER_BOUND) {
++		put_device(dev);
+ 		return ERR_PTR(-EPROBE_DEFER);
++	}
+ 
+ 	return dev;
+ }
+-- 
+2.34.1
 
-I can't really tell if the driver was properly tested. As far as I understa=
-nd,
-Chromebook devices use some embedded controller, which likely manages this
-kind of stuff without PMIC ADC. There's no in-tree mobile SoCs with mt6357,
-6358 or 6359, nor fuel gauge or thermal drivers (yet), so maybe that's why.
-
-> Jonathan
->=20
->=20
-> >
-> > Apply the mask to strip the ready bit, matching the behavior in
-> > mt6359_auxadc_read_adc() function.
-> >
-> > Fixes: 3587914bf61d ("iio: adc: Add support for MediaTek MT6357/8/9 Aux=
-iliary ADC")
-> > Signed-off-by: Roman Vivchar <rva333@protonmail.com>
-> > ---
-> >  drivers/iio/adc/mt6359-auxadc.c | 2 +-
-> >  1 file changed, 1 insertion(+), 1 deletion(-)
-> >
-> > diff --git a/drivers/iio/adc/mt6359-auxadc.c b/drivers/iio/adc/mt6359-a=
-uxadc.c
-> > index 951d236f972b..09432d0974cf 100644
-> > --- a/drivers/iio/adc/mt6359-auxadc.c
-> > +++ b/drivers/iio/adc/mt6359-auxadc.c
-> > @@ -502,7 +502,7 @@ static int mt6358_read_imp(struct mt6359_auxadc *ad=
-c_dev,
-> >  =09mt6358_stop_imp_conv(adc_dev);
-> >
-> >  =09if (vbat)
-> > -=09=09*vbat =3D val_v;
-> > +=09=09*vbat =3D val_v & GENMASK(chan->scan_type.realbits - 1, 0);
-> >  =09if (ibat)
-> >  =09=09*ibat =3D 0;
-> >
-> >
->=20
->
 
