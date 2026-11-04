@@ -2,93 +2,67 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id C5A18606A32D
-	for <linux-mediatek@archiver.kernel.org>; Wed,  4 Nov 2026 08:09:02 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 38189606A326
+	for <linux-mediatek@archiver.kernel.org>; Wed,  4 Nov 2026 08:22:21 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=Cu8cZdbG;
-	dkim=pass (2048-bit key, unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256 header.s=Intel header.b=AcA76mZi
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=CNju4SO9;
+	dkim=pass (2048-bit key, unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=EkMv8SpD
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=GdBo/TxNnOVemrXh2EGPlKcpC1+btQOcLPV2gMWTVCM=; b=Cu8cZdbGGDXxi2r6RTZEtaOgJr
-	3rlLWaVmwyRZM+7kNdP/6WYuMEwM5hx8Z+gl8vMDdTL4ZFqlwHBo9XeRPPFJPDGfJBR0+nxVGnfJB
-	NVu3j3YDEKirEaaLYdovefbeq2psfVAsdU2Sd/+ygsfue4qBQ6C7mmgWBG2VkCDcDed1GfDdmm6Qj
-	mzQGBfjGpvFyMQ1/+ZXjBKfliftpT92pyPQvx3Honx3V4a986FPKSrasyP7L5xp0B3l9CaPYGi9oH
-	7J50QX4Sf2EiIP4IfN+X9OPVgfkdKgRM1OG4ZI2fuPqzOePdmH4DYiUwM6t2FgsRHVNrXfeuDAriL
-	jS9b3urA==;
+	bh=pADrcnEYh45IHa88Qe/iiabroBcjL7BN29WsN4XYUyU=; b=CNju4SO9LdS13RVtMo+l9/y+Vz
+	IUGZzYZr8LMBtRdoz4oXzd6mZ487kyRSPzfD/LSHmmE80W1NLgUH9lPBPQtLUJHlIQaanP1RC193V
+	WUfq4nYMa2PnykW75VegU/Rcf4hO2VyFBu3AFNEiE+nGaj2E0bDoDbsNwyvIuNLtgaota0cbgQZBM
+	a7X96jZsYD9HoeE5pXlqsvcAd/r+/j+UcDBI3XOzCx0hKCyaN0/71oH2mc1ToTYWZJcbsfYaXogt0
+	/eo7W201cxzOmVSiFysWOjzlEayvs8HChHKtayqhjHY3GJs9EyVsmxuqD3fk/MoitE1i+Vfpig30F
+	NM6AClJg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xOW3I-00000004eCC-060X;
-	Wed, 04 Nov 2026 08:09:00 +0000
-Received: from mgamail.intel.com ([192.198.163.15])
+	id 1xOWGC-00000004gwG-3rKc;
+	Wed, 04 Nov 2026 08:22:20 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xOW3F-00000004eBY-2BSk;
-	Wed, 04 Nov 2026 08:08:58 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1793779738; x=1825315738;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:content-transfer-encoding:in-reply-to;
-  bh=AomuazU2zzGRzimCBaFv5taOozoMnYWT55en1Ds0W0o=;
-  b=AcA76mZiv2W9NUYxGkdCiLOcWFP7Zz2nalYIklKk3AdB4oXLYMnvJdHY
-   lT2sBjZiCzaVndDgAMo+ICpMo9MfP9sMi9jENRNv4SYcN1yUjnTOexVDH
-   KhxNgFThj3/RxY83WGjwxzQ6FkShfSCFCTQvAH77+9DYmtC2nlb5Iml44
-   AWwrM1wylZPgduQPJx+XfLULj2zsvcjOfO7/c/SgpsQ2uNjI/vVJuw/Zd
-   r1AmVjGRpJDl02CCf3iAdWXrYNPY3/t5JbothwDFqzgkFbEytAZN8Ltx0
-   S8XqmtcLBwUSI9WCXNnSEdKZbwVIN8OfyG/eWEcz7WLV3afW/KeTGaMo6
-   A==;
-X-CSE-ConnectionGUID: kdtoWhPrRV6UNn8Wzhy2Eg==
-X-CSE-MsgGUID: 11CoY175Rma5eloM47Sb6A==
-X-IronPort-AV: E=McAfee;i="6800,10657,11955"; a="2522924"
-X-IronPort-AV: E=Sophos;i="6.27,194,1787036400"; 
-   d="scan'208";a="2522924"
-Received: from fmviesa005.fm.intel.com ([10.60.135.145])
-  by fmvoesa109.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 04 Nov 2026 00:08:57 -0800
-X-CSE-ConnectionGUID: a58E8IiMRzm/5YsOkdjGXw==
-X-CSE-MsgGUID: h1BM+L5RRQe53f1dB18fYA==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.27,194,1787036400"; 
-   d="scan'208";a="6779258"
-Received: from black.igk.intel.com ([10.91.253.5])
-  by fmviesa005.fm.intel.com with ESMTP; 04 Nov 2026 00:08:54 -0800
-Received: by black.igk.intel.com (Postfix, from userid 1001)
-	id A280F99; Wed, 04 Nov 2026 09:08:53 +0100 (CET)
-Date: Wed, 4 Nov 2026 09:08:53 +0100
-From: "mika.westerberg@linux.intel.com" <mika.westerberg@linux.intel.com>
-To: Chunfeng Yun =?utf-8?B?KOS6keaYpeWzsCk=?= <Chunfeng.Yun@mediatek.com>
-Cc: "linux-usb@vger.kernel.org" <linux-usb@vger.kernel.org>,
-	"westeri@kernel.org" <westeri@kernel.org>,
-	"gregkh@linuxfoundation.org" <gregkh@linuxfoundation.org>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	"YehezkelShB@gmail.com" <YehezkelShB@gmail.com>,
-	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
-	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
-	"andreas.noever@gmail.com" <andreas.noever@gmail.com>,
-	"matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
-	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>
-Subject: Re: [PATCH 4/4] thunderbolt: prevent pcie tunnel activation/teardown
- warnings
-Message-ID: <20261104080853.GB176724@black.igk.intel.com>
-References: <20261030082539.1208733-1-chunfeng.yun@mediatek.com>
- <20261030082539.1208733-5-chunfeng.yun@mediatek.com>
- <20261030085628.GS158991@black.igk.intel.com>
- <82f1a3227685b241938ccb500b97d1e73212bf36.camel@mediatek.com>
- <20261103124842.GA158991@black.igk.intel.com>
- <1dc9e15cdc03e4084eacc45d1c2c90f17e6c47e5.camel@mediatek.com>
+	id 1xOWGA-00000004gvZ-2pMR;
+	Wed, 04 Nov 2026 08:22:18 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by tor.source.kernel.org (Postfix) with ESMTP id 0E8AF6022E;
+	Wed,  4 Nov 2026 08:22:18 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3C32D1F000C1;
+	Wed,  4 Nov 2026 08:22:17 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1793780537;
+	bh=pADrcnEYh45IHa88Qe/iiabroBcjL7BN29WsN4XYUyU=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To;
+	b=EkMv8SpDXRieR47meuB4Pmvi+QdeQNBFZee5HjFZ3ArWQntn9N0erRQunqJdSqJvi
+	 sWEvzP0bt2zYGdgLulDtJnGTDFmO+bq2cs44K+vBbPcQPtB+L3P5716FURpwk3uWog
+	 iY1qkIKamcct2cAmHBueyqILVdAwSkbh4sZiVKQ3FdWyUa6EA4457jh+gnyephq5zL
+	 FV2F+JbxaRPq05y2ie/ZaUpQ4ppa7iO6cwu6roHi4+e/uNh80NdytCmjEBZS7NObpE
+	 AhphzsAuRTjykkvYNNIvkd08xfwKMJaebMNrPd2VfuSxJEDgIhGpVvhOy1UHTFHGsu
+	 BLBtITrf8+y6g==
+Date: Wed, 4 Nov 2026 09:22:15 +0100
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+To: Christian Marangi <ansuelsmth@gmail.com>
+Cc: Andrew Lunn <andrew+netdev@lunn.ch>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@kernel.org>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	Felix Fietkau <nbd@nbd.name>, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, netdev@vger.kernel.org,
+	linux-kernel@vger.kernel.org
+Subject: Re: [PATCH RFC net-next] net: airoha: npu: attach passive devfreq
+ scaling
+Message-ID: <aurrN349nP-b6FK2@lore-desk>
+References: <20261104072940.52933-1-ansuelsmth@gmail.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="GXeSiHAEIfQDVlvR"
 Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <1dc9e15cdc03e4084eacc45d1c2c90f17e6c47e5.camel@mediatek.com>
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261104_000857_625818_BD4B6F09 
-X-CRM114-Status: GOOD (  28.34  )
-X-Spam-Score: -4.2 (----)
+In-Reply-To: <20261104072940.52933-1-ansuelsmth@gmail.com>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -99,121 +73,177 @@ List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-3.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=no
+X-Spam-Status: No, score=-15.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,
+	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=ham
 	autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Hi,
+--GXeSiHAEIfQDVlvR
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-On Wed, Nov 04, 2026 at 07:09:50AM +0000, Chunfeng Yun (云春峰) wrote:
-> On Tue, 2026-11-03 at 13:48 +0100, mika.westerberg@linux.intel.com
-> wrote:
-> > Hi,
-> > 
-> > On Tue, Nov 03, 2026 at 08:33:51AM +0000, Chunfeng Yun (云春峰) wrote:
-> > > On Fri, 2026-10-30 at 09:56 +0100, Mika Westerberg wrote:
-> > > > On Fri, Oct 30, 2026 at 04:25:39PM +0800, Chunfeng Yun wrote:
-> > > > > When usb4 enter sleep mode, echo 1 to authorized of sysfile,
-> > > > > will wakeup usb4 driver, but fail to create pcie tunnel, cause
-> > > > > the warning due to a race condition between switch disconnect
-> > > > 
-> > > > It's router
-> > > will modify it.
-> > > 
-> > > > 
-> > > > > during resume and user authorization
-> > > [  278.831186] usb4_hi NVDA8100:00: 0:1: is unplugged (state: 7),
-> > > retrying...
-> > > [  278.943031] usb4_hi NVDA8100:00: 0:1: failed to reach state
-> > > TB_PORT_UP. Ignoring port...
-> > > [  278.951125] usb4_hi NVDA8100:00: 0:1: lost during suspend,
-> > > disconnecting
-> > > [  278.957819] usb4_hi NVDA8100:00: 0:4 <-> 1:16 (USB3):
-> > > deactivating
-> > > [  278.964794] usb4_hi NVDA8100:00: deactivating USB3 Down path
-> > > from
-> > > 0:4 to 1:16
-> > > [  278.972737] usb4_hi NVDA8100:00: deactivating USB3 Up path from
-> > > 1:16
-> > > to 0:4
-> > > [  278.980504] usb4_hi NVDA8100:00: 0: TMU: mode change off -> bi-
-> > > directional, HiFi requested
-> > > [  278.991265] usb4_hi NVDA8100:00: 0: TMU: mode set to: bi-
-> > > directional, HiFi
-> > > [  278.999511] usb4_hi NVDA8100:00: 0:1: total credits changed 66 -
-> > > > 66
-> > > [  279.006408] usb4_hi NVDA8100:00: 1: link width set to symmetric,
-> > > dual lanes
-> > > [  279.013763] usb4_hi NVDA8100:00: 0:7 <-> 1:9 (PCI): activating
-> > > [  279.019587] usb4_hi NVDA8100:00: activating PCIe Down path from
-> > > 0:7
-> > > to 1:9
-> > > [  279.026468] usb4_hi NVDA8100:00: 1:1: Writing hop 1
-> > > [  279.031335] usb4_hi NVDA8100:00: 1:1:  In HopID: 8 => Out port:
-> > > 9
-> > > Out HopID: 8
-> > > [  279.038546] usb4_hi NVDA8100:00: 1:1:   Weight: 1 Priority: 3
-> > > Credits: 32 Drop: 0 PM: 0
-> > > [  279.046536] usb4_hi NVDA8100:00: 1:1:    Counter enabled: 0
-> > > Counter
-> > > index: 2047
-> > > [  279.053834] usb4_hi NVDA8100:00: 1:1:   Flow Control (In/Eg):
-> > > 1/0
-> > > Shared Buffer (In/Eg): 0/0
-> > > [  279.062259] usb4_hi NVDA8100:00: 1:1:   Unknown1: 0x0 Unknown2:
-> > > 0x0
-> > > Unknown3: 0x0
-> > > [  279.069730] ------------[ cut here ]------------
-> > > [  279.074335] usb4_hi NVDA8100:00: PCIe Down path activation
-> > > failed
-> > > [  279.080426] WARNING: CPU: 5 PID: 2433 at
-> > > drivers/thunderbolt/path.c:587 tb_path_activate+0x1a4/0x5b0
-> > > ...
-> > > [  279.220285] Call trace:
-> > > [  279.222722]  tb_path_activate+0x1a4/0x5b0 (P)
-> > > [  279.227068]  tb_tunnel_activate+0x140/0x498
-> > > [  279.231241]  tb_tunnel_pci+0x180/0x490
-> > > [  279.234980]  tb_domain_approve_switch+0x74/0xb0
-> > > [  279.239500]  authorized_store+0x214/0x270
-> > > [  279.243498]  dev_attr_store+0x20/0x70
-> > > ...
-> > > [  279.288888] ---[ end trace 0000000000000000 ]---
-> > > [  279.293497] usb4_hi NVDA8100:00: 0:7 <-> 1:9 (PCI): activation
-> > > failed
-> > > 
-> > > 
-> > > root cause:
-> > > 
-> > > The warning were caused by a race condition between switch
-> > > disconnect
-> > > during resume and user authorization:
-> > > 
-> > >    1. While the system was in runtime suspend, userspace executed:
-> > > 
-> > >        echo 1 > /sys/bus/thunderbolt/devices/0-1/authorized
-> > >    2. Writing to this sysfs attribute woke up the USB4 controller
-> > > (nhi_runtime_resume).
-> > >    3. During resume, the downstream port 0:1 failed to complete
-> > > link
-> > > training within the timeout and was declared lost:
-> > 
-> > Okay we get the warning but the bigger problem here is that why the
-> > link
-> > does not come up anymore? 
-> Yes, it is one case
-> > Unless you unplugged the router as well.
-> it is another one.
-> 
-> if the driver already know the router is disconnected, whether still
-> need to look up the pcie tunnel? it want to do it, I will abandon this
-> patch.
+On Nov 04, Christian Marangi wrote:
+> The NPU can scale to different operating state from idle to normal to
+> turbo. Attach a passive devfreq that will scale the NPU frequency with the
+> CPU with the use of OPP table and opp-required properties.
+>=20
+> Signed-off-by: Christian Marangi <ansuelsmth@gmail.com>
+> ---
+>=20
+> Posted as RFC to understand if it's the correct way to handle this...
+>=20
+> DT patch will come later.
+>=20
+>  drivers/net/ethernet/airoha/airoha_npu.c  | 61 ++++++++++++++++++++++-
+>  include/linux/soc/airoha/airoha_offload.h |  3 ++
+>  2 files changed, 63 insertions(+), 1 deletion(-)
+>=20
+> diff --git a/drivers/net/ethernet/airoha/airoha_npu.c b/drivers/net/ether=
+net/airoha/airoha_npu.c
+> index 4d3195eb00f7..f8055ca65ec4 100644
+> --- a/drivers/net/ethernet/airoha/airoha_npu.c
+> +++ b/drivers/net/ethernet/airoha/airoha_npu.c
+> @@ -12,6 +12,8 @@
+>  #include <linux/of_platform.h>
+>  #include <linux/of_reserved_mem.h>
+>  #include <linux/regmap.h>
+> +#include <linux/pm_opp.h>
+> +#include <linux/clk.h>
+> =20
+>  #include "airoha_eth.h"
+> =20
+> @@ -656,6 +658,62 @@ void airoha_npu_put(struct airoha_npu *npu)
+>  }
+>  EXPORT_SYMBOL_GPL(airoha_npu_put);
+> =20
+> +static int airoha_npu_devfreq_get_cur_freq(struct device *dev, unsigned =
+long *freq)
+> +{
+> +	struct airoha_npu *npu =3D dev_get_drvdata(dev);
+> +
+> +	*freq =3D clk_get_rate(npu->clk);
+> +
+> +	return 0;
+> +}
+> +
+> +static int airoha_npu_devfreq_target(struct device *dev, unsigned long *=
+freq,
+> +				     u32 flags)
+> +{
+> +	struct airoha_npu *npu =3D dev_get_drvdata(dev);
+> +
+> +	return clk_set_rate(npu->clk, *freq);
+> +}
+> +
+> +static int airoha_npu_devfreq_get_dev_status(struct device *dev,
+> +					     struct devfreq_dev_status *stat)
+> +{
+> +	struct airoha_npu *npu =3D dev_get_drvdata(dev);
+> +
+> +	stat->busy_time =3D 0;
+> +	stat->total_time =3D 0;
+> +	stat->current_frequency =3D clk_get_rate(npu->clk);
+> +
+> +	return 0;
+> +}
+> +
+> +static struct devfreq_dev_profile airoha_npu_devfreq_profile =3D {
+> +	.target =3D airoha_npu_devfreq_target,
+> +	.get_dev_status =3D airoha_npu_devfreq_get_dev_status,
+> +	.get_cur_freq =3D airoha_npu_devfreq_get_cur_freq
+> +};
+> +
+> +static int airoha_npu_devfreq_probe(struct device *dev)
+> +{
+> +	struct airoha_npu *npu =3D dev_get_drvdata(dev);
+> +	struct devfreq *devfreq;
+> +	int ret;
+> +
+> +	npu->clk =3D devm_clk_get_enabled(dev, NULL);
 
-I think it makes sense to fix it but I was more concerned about the link
-issue you seem to have there. The link should be re-trained once we runtime
-resume if the router is still connected. There could be many reasons for
-this but I would check that the PD/retimer firmwares are up-to-date at
-least as they may contribute to this.
+I guess this should be devm_clk_get_optional_enabled() otherwise this patch
+will break backward compatibility. Moreover, we should bail out early if
+npu->clk is NULL.
+
+> +	if (IS_ERR(npu->clk))
+> +		return dev_err_probe(dev, PTR_ERR(npu->clk), "failed to get clk\n");
+> +
+> +	ret =3D devm_pm_opp_of_add_table(dev);
+> +	if (ret)
+> +		return dev_err_probe(dev, ret, "failed to parse NPU freq thresholds\n"=
+);
+> +
+> +	npu->gov_data.parent_type =3D CPUFREQ_PARENT_DEV;
+> +	devfreq =3D devm_devfreq_add_device(dev, &airoha_npu_devfreq_profile,
+> +					  DEVFREQ_GOV_PASSIVE, &npu->gov_data);
+> +
+> +	return PTR_ERR_OR_ZERO(devfreq);
+> +}
+> +
+>  static const struct airoha_npu_soc_data en7581_npu_soc_data =3D {
+>  	.fw_rv32 =3D {
+>  		.name =3D NPU_EN7581_FIRMWARE_RV32,
+> @@ -803,8 +861,9 @@ static int airoha_npu_probe(struct platform_device *p=
+dev)
+>  			 (val >> 16) & 0xffff, val & 0xffff);
+> =20
+>  	platform_set_drvdata(pdev, npu);
+> +	dev_set_drvdata(dev, npu);
+
+why do we need that one? I guess this is exactly what platform_set_drvdata(=
+) is
+doing, right?
+
+Regards,
+Lorenzo
+
+> =20
+> -	return 0;
+> +	return airoha_npu_devfreq_probe(dev);
+>  }
+> =20
+>  static struct platform_driver airoha_npu_driver =3D {
+> diff --git a/include/linux/soc/airoha/airoha_offload.h b/include/linux/so=
+c/airoha/airoha_offload.h
+> index 7589fccfeef6..ac776dc31487 100644
+> --- a/include/linux/soc/airoha/airoha_offload.h
+> +++ b/include/linux/soc/airoha/airoha_offload.h
+> @@ -6,6 +6,7 @@
+>  #ifndef AIROHA_OFFLOAD_H
+>  #define AIROHA_OFFLOAD_H
+> =20
+> +#include <linux/devfreq.h>
+>  #include <linux/skbuff.h>
+>  #include <linux/spinlock.h>
+>  #include <linux/workqueue.h>
+> @@ -167,6 +168,8 @@ struct airoha_npu {
+>  #if (IS_BUILTIN(CONFIG_NET_AIROHA_NPU) || IS_MODULE(CONFIG_NET_AIROHA_NP=
+U))
+>  	struct device *dev;
+>  	struct regmap *regmap;
+> +	struct clk *clk;
+> +	struct devfreq_passive_data gov_data;
+> =20
+>  	struct airoha_npu_core {
+>  		struct airoha_npu *npu;
+> --=20
+> 2.55.0
+>=20
+
+--GXeSiHAEIfQDVlvR
+Content-Type: application/pgp-signature; name=signature.asc
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCaurrNwAKCRA6cBh0uS2t
+rELpAPwI9Nyf59rcUT+dErD/iejg4G1NiCfVcWRFwPmERqWr2QD/dKM7AqI7pn1A
+Ju7qDHM8TiXXoQDNkpgJgPGDMOaVXgw=
+=UYLH
+-----END PGP SIGNATURE-----
+
+--GXeSiHAEIfQDVlvR--
 
