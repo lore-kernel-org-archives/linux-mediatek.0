@@ -2,75 +2,71 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id CE325606D805
-	for <linux-mediatek@archiver.kernel.org>; Wed,  4 Nov 2026 12:27:07 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 7DD96606A339
+	for <linux-mediatek@archiver.kernel.org>; Wed,  4 Nov 2026 12:59:30 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=XEdtZ/5Q;
-	dkim=pass (2048-bit key, unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=P8vNTmzJ
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=CXxVoQ6h;
+	dkim=pass (2048-bit key, unprotected) header.d=collabora.com header.i=@collabora.com header.a=rsa-sha256 header.s=mail header.b=XG+KLW43
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Unsubscribe-Post:
-	List-Owner; bh=+ICv6jUGNVX118Xnl5o38aHDRTyW16gGzo7Q2AcNNu8=; b=XEdtZ/5Q3Lxld1
-	fwdopy3VXRphYKCvSxuDsDPJxa/gPETbw6rzG7id40iT7b8Plw8WpUHmxRh728NnqjuvrhrrGHG7g
-	kFTz2aBm27BI1AXupsK2t+yNDawxxTP4HfAUoauOaFu3CSdIMd+dNyjwH0aOmCSzKkdLaL1F9rPVM
-	kiJFZ+5CvC9GrdzZSNFkkh3fdZF1/XzM6d1RBv9AKtBRBcCednYdRWvQ4ULw4DiBOR99WvPkWieIS
-	+zoC7zmDg3k+khTC5jOCkbO2rLN1qh7zDgDMJLlzrgmcpGX1ZYfbI6A31LztXY7opKASydtp54Ndc
-	oIHd1KQ69nSVz3hLEUfA==;
+	List-Owner; bh=pNxgrMHWVSbBxJj3lxfx9KSjiconvC2KNEq5RdZwjAw=; b=CXxVoQ6hKEIvHH
+	xe+aUauBtlYm8mEuIxKbezwedv1tvcvCnjbhbTxuJvPbg5z1hT2mF8LR1obSktNiF3x2i0YBydoE4
+	fhM+1kMbu9odJDzasZlEyOfmkzRHyDs0SMEB0aBa9Yk4MUfzqeRKjIb08otJvl7S2MWTNWfUftRyS
+	Jtyeg3lZVyvhgDTjNT3txYl6N8VQHCERxcYY/GCjYwrknaWtEcPcvJGSGPXrMdAyugyZufIyt4hAn
+	zpNR3OkFWG3z/UmC+zsIbbN6c8+sbKdLWHfUS7jJDPYJYkaMOhu+d4mOzx026mQfG4OA01B72UYzL
+	q6CCtlg+lDZ2MGF6jjxA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xOa54-00000005JCf-1xMg;
-	Wed, 04 Nov 2026 12:27:06 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1xOaaQ-00000005QAU-0wyV;
+	Wed, 04 Nov 2026 12:59:30 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xOa53-00000005JCL-3AJr
-	for linux-mediatek@lists.infradead.org;
-	Wed, 04 Nov 2026 12:27:05 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id E43BD60F29
-	for <linux-mediatek@lists.infradead.org>; Wed,  4 Nov 2026 12:27:04 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9ED531F0093A
-	for <linux-mediatek@lists.infradead.org>; Wed,  4 Nov 2026 12:27:04 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1793795224;
-	bh=+ICv6jUGNVX118Xnl5o38aHDRTyW16gGzo7Q2AcNNu8=;
-	h=References:In-Reply-To:From:Date:Subject:To:Cc;
-	b=P8vNTmzJRIMd2E7IL1WvPwQv9VKNfJxnrQ89FTHrmdbP1iMwJqZV6PqxBmKHiNDWM
-	 RDBGMW/hy2wFHcWPlP7gxBAqKM1vACEz9eUcTy/QowTS2wAlX9VSE7BJBI2udCehO7
-	 jqY57xbhHPoa+QRMUrFv50y05VvvXbFgvbewlk6GiUerrS74FWpf4hSc/91UTpKOHB
-	 4DyikYHz5S/NGKyrGhVLwjOu4ihOBslcfbBYNvs1FjVVLREjYQGoS6G8zCCP2j6XVh
-	 Asl7qTvp2x4f3PTJ+cBngjBp9bx17QeArvc3oNsRdy7jmGPTpPxQ+YWHScmGZ82CPK
-	 PwwsJwdsgQkXg==
-Received: by mail-lf1-f43.google.com with SMTP id 2adb3069b0e04-5bfc32574e7so594566e87.0
-        for <linux-mediatek@lists.infradead.org>; Wed, 04 Nov 2026 04:27:04 -0800 (PST)
-X-Forwarded-Encrypted: i=1; AKwUvBwXObdvrgYTy1fa5f2U2sS9t8NXPvNWGw+9/X6nrJVG+IBut+Lr6+LtBPfP8qbVjdZbAE6VJRF6XXlmr5uq9A==@lists.infradead.org
-X-Gm-Message-State: APuU4Z9+46aZ6uRv5b1RfuCz6D2416ibiUiD3EjKuou3JyRb8J3HIWBx
-	FoJ3iqHa3ALnZDg/PtDIqovqOa3eImAWUzdSmTpHsbTAJFAFRm6lmJDfXH6dkuJwgTyvRzx6UzJ
-	+JamcAJEXY3dQhq9kjo2Ni3xwJ11OUSY=
-X-Received: by 2002:a05:6512:b07:b0:5bf:d4d7:a3cc with SMTP id
- 2adb3069b0e04-5bfd4d7a563mr5048747e87.9.1793795223437; Wed, 04 Nov 2026
- 04:27:03 -0800 (PST)
+	id 1xOaaO-00000005Q90-1xVz;
+	Wed, 04 Nov 2026 12:59:29 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1793797166;
+	bh=K8BLkcf/SQbFI3BsLcfZZ5IkoqAFtMgOjn1kywYClq8=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=XG+KLW43Aafh7ugqxgWUYrZVN12y9qQORQ4SP3Jcl93vPJijrwfNKhSSAQMNI2qVG
+	 xhwH/OlCGhdhTxSJCzRgSY24/J8p8nYrnwyfJTyDVqW3ZFud8WSqBE41IBWdiC51bn
+	 oWohAisBzh+C9Lnw7AEJqt68wZ9WBJLgf0ddjm62oRMIo9ZuzlnIZEK7bSCYKM42S2
+	 NC2W9nk94kLMc+E80xofYiN11yBNbvQE+XxZwqgG6IxxP/qrFkCl+JJbjH751W1apd
+	 NTZGnHHUJ33JcItd/hYFAPnscV4hxSRwnu7gU7Ay3YppYv1YCk0S30nLlqr3vJiepM
+	 U2wHt2ULrdatw==
+Received: from [100.64.1.21] (unknown [100.64.1.21])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id B345A17E0418;
+	Wed, 04 Nov 2026 13:59:25 +0100 (CET)
+Message-ID: <b01dd5c9-258a-429c-b223-ecb329aa8409@collabora.com>
+Date: Wed, 4 Nov 2026 13:59:25 +0100
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-References: <20261005060641.32674-1-saadanjum239@gmail.com>
-In-Reply-To: <20261005060641.32674-1-saadanjum239@gmail.com>
-From: Linus Walleij <linusw@kernel.org>
-Date: Wed, 4 Nov 2026 13:26:50 +0100
-X-Gmail-Original-Message-ID: <CAD++jLkufRNvPrL+Fxd1mp41h1mcJ4sr8kBiMzpkF9PO5FM+Zw@mail.gmail.com>
-X-Gm-Features: AclHuK8Ek2fH6rtSpITcfvraWZLhUk2KRiyUzvkvumhGGx1AWYNctAZyF_WLCpA
-Message-ID: <CAD++jLkufRNvPrL+Fxd1mp41h1mcJ4sr8kBiMzpkF9PO5FM+Zw@mail.gmail.com>
-Subject: Re: [PATCH] pinctrl: mediatek: common-v2: Fix of_iomap() error check
-To: Saad Anjum <saadanjum239@gmail.com>
-Cc: Sean Wang <sean.wang@kernel.org>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, Hao Chang <ot_chhao.chang@mediatek.com>, 
-	Qingliang Li <qingliang.li@mediatek.com>, linux-gpio@vger.kernel.org, 
-	linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
-	linux-kernel@vger.kernel.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] mailbox: Convert to subsys_platform_driver()
+To: "Peng Fan (OSS)" <peng.fan@oss.nxp.com>,
+ Jassi Brar <jassisinghbrar@gmail.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Michal Simek <michal.simek@amd.com>
+Cc: linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org
+References: <20261104113324.1634161-1-peng.fan@oss.nxp.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
+In-Reply-To: <20261104113324.1634161-1-peng.fan@oss.nxp.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20261104_045928_685575_6AB59300 
+X-CRM114-Status: UNSURE (   6.54  )
+X-CRM114-Notice: Please train this message.
+X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,40 +77,26 @@ List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-10.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-12.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,
 	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS autolearn=ham autolearn_force=no version=4.0.1
+	SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1 autolearn=ham
+	autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On Mon, Oct 5, 2026 at 8:06=E2=80=AFAM Saad Anjum <saadanjum239@gmail.com> =
-wrote:
+On 11/4/26 12:33, Peng Fan (OSS) wrote:
+> From: Peng Fan <peng.fan@nxp.com>
+> 
+> Replace the open-coded subsys_initcall()/module_exit() platform driver
+> registration with subsys_platform_driver().
+> 
+> No functional change.
+> 
+> Signed-off-by: Peng Fan <peng.fan@nxp.com>
 
-> of_iomap() returns NULL on failure, never an error pointer, so the
-> IS_ERR() check in mtk_build_eint() can never be true. The check was
-> carried over from the previous devm_platform_ioremap_resource_byname()
-> call, which does return an error pointer, when the EINT registers were
-> switched to being mapped with of_iomap() to support multiple bases.
->
-> If mapping one of the EINT register ranges fails, for example because
-> the device tree node lists more "reg-names" than "reg" entries so that
-> of_address_to_resource() fails, or because ioremap() itself fails, the
-> NULL pointer is stored in hw->eint->base[] and probing continues.
-> mtk_eint_do_init() then calls mtk_eint_hw_init(), which writes to
-> eint->base[i] + regs->dom_en, causing a NULL pointer dereference
-> instead of a clean probe failure.
->
-> Check for NULL and return -ENOMEM instead. The existing error path
-> already skips NULL entries when unmapping, so any ranges mapped before
-> the failure are still released.
->
-> Fixes: 3ef9f710efcb ("pinctrl: mediatek: Add EINT support for multiple ad=
-dresses")
-> Signed-off-by: Saad Anjum <saadanjum239@gmail.com>
+For MediaTek:
 
-Patch applied.
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
-Yours,
-Linus Walleij
 
