@@ -2,87 +2,73 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id E5023606A33E
-	for <linux-mediatek@archiver.kernel.org>; Wed,  4 Nov 2026 10:19:54 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id D181B606A32F
+	for <linux-mediatek@archiver.kernel.org>; Wed,  4 Nov 2026 10:48:32 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=SRr0NCeq;
-	dkim=pass (2048-bit key, unprotected) header.d=collabora.com header.i=@collabora.com header.a=rsa-sha256 header.s=mail header.b=Mi5zsXMM
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=bdwcbMzq;
+	dkim=pass (2048-bit key, unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=Ii+Uo71R
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Unsubscribe-Post:
-	List-Owner; bh=PxWzH8Eovn3EIZKzbra66MXGEF3/eqT6YOglR5bwhE4=; b=SRr0NCeqtPPdtj
-	tpx0yaA5E7/INsKfLVHhYHr2/GWSldU8LQTQDs6sBp1Gi7tic2q0nqyNhMZLarAjnKz7itsazR6kD
-	CztfCt8aYhTXVB1nN7zwlNPqdYkv6Ian1w+Ngv1h6PPf/rNQXVpfyHtGkRRuxC8XCCADrss7bqrNZ
-	Kr1gVKTT4JAncX4d/M2iol/EDNhUQvftGAyfUTx1UMPbRUPnDQblEFbNXetTAUC8BpcQn9pbz9ZB9
-	Vdrsk6SqoRjBgXxbkAOABZTcubRnjdzSuLPnJr0O31P86n0GsLib+oFw3ar8rY46LZbNSALBt0N4s
-	j7jAOt72is9tLCCMDocg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Unsubscribe-Post:List-Owner;
+	bh=r0yndPxUhhPiOlKsOGZcPIxshPKvfSmviX9txktuT6o=; b=bdwcbMzqvKX5oHXsA+HT2b74Pd
+	rNTw7QGntEvmCGYQXb0xPzHNqgh5IdGcBQK6vCZPqQeDP72oqPPB++27UlzLrBtj50sGc0bddPKhG
+	rJToY1+uZQoaCBT0hJi6qB1g0Cgk2u031ln1kjCNie9sZkLCof94EwlX6BdfKpkKmPYcIPHBfkj/T
+	IAX1EdP1sS8ogtSkG/JseFySOpIczXjKp78pRROPzfPpu4lj2g+8lAVHysgTUnk1/4+uZSpYDRDxC
+	fRmnBZIeHOqX2amuErQF2t9xqZRPT5H0vCvcjypcNMCjh8nUVxa05S1L9H0wUIEtsMGGlbkIYfwm+
+	AFV6J/OQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xOY5v-00000004yjR-3Fsz;
-	Wed, 04 Nov 2026 10:19:51 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1xOYXg-0000000533F-1jEm;
+	Wed, 04 Nov 2026 10:48:32 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xOY5s-00000004yi1-3EEM;
-	Wed, 04 Nov 2026 10:19:50 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1793787585;
-	bh=NzNI8VtsA0ljYvXPDaErQQ7OtTTbiLza/hp8LMLP3oI=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=Mi5zsXMMqj+yrpowR48mCHZcQOmmhenRhsTfiIv+peZ/eCUf2IQBI9ZE80IMT4uBs
-	 HJJ4HN/7yZvOhvJlNmGXIpxH6q5jKEBJ3pSXpXpvj5+JifFSSOfjkr4SoWvZOmolvM
-	 iUiLnGkvT2oPX6qB/aYLLmNwxb2v1jQMs1mVM+uEb0ApTXYk2Jj+V4WAFAML/ipEG4
-	 lYRCA2683iwMUx6llAe/uQTfumomirs7D0eWlRPsOiRDIB9ZTUg6HR6LWo1kjRUM+v
-	 ZUrEbfRAX4UyYZXAkxbtzn99XdZeFYk8l3kiEuZ6Gr4HT/XIeXJMJZwjVPpVEqzp7A
-	 0TJxsRdDCL8NA==
-Received: from [100.64.1.21] (unknown [100.64.1.21])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 0E55517E003A;
-	Wed, 04 Nov 2026 11:19:45 +0100 (CET)
-Message-ID: <f29128c6-f4a1-4f06-b82d-8d49713849b0@collabora.com>
-Date: Wed, 4 Nov 2026 11:19:44 +0100
+	id 1xOYXf-00000005327-0aE5;
+	Wed, 04 Nov 2026 10:48:31 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by sea.source.kernel.org (Postfix) with ESMTP id 7477140EFA;
+	Wed,  4 Nov 2026 10:48:30 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id EE90C1F00A17;
+	Wed,  4 Nov 2026 10:48:28 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1793789310;
+	bh=r0yndPxUhhPiOlKsOGZcPIxshPKvfSmviX9txktuT6o=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To;
+	b=Ii+Uo71R6czgiB17H6WDqTqqQ0xTPO1fBU8EtxEAPFVA4ntlhk8S/834W7Pv6V8hT
+	 4I3EDGs2Vw8QG+GxUZnGI6VK5tQWb9XMVplL4OtWSzZcBFry5H59dnlb11Lvs8lEYL
+	 8T10fWSGuC1ATHYC8zw4tU9LQufBL1cex5+YM3EqwjCkde/aqypXt+VaxUemgcwMlX
+	 SCEw9cYwrP9UCaPJ8VmjkUz+r6pPTExufacLcsbeopvqtO7IdX592eEc3Gihl42hXK
+	 Xhf5Cvo9LJL7Cdni19/YDPKq/zmmiShUn7gysgrntxpBFyB/7lAyFDJ+YgzSFfg4It
+	 bxYOpHci/bRRA==
+Date: Wed, 4 Nov 2026 11:48:25 +0100
+From: Krzysztof Kozlowski <krzk@kernel.org>
+To: James Calligeros <jcalligeros99@gmail.com>
+Cc: David Rhodes <david.rhodes@cirrus.com>, 
+	Richard Fitzgerald <rf@opensource.cirrus.com>, Martin =?utf-8?Q?Povi=C5=A1er?= <povik+lin@cutebit.org>, 
+	Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, Rob Herring <robh@kernel.org>, 
+	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
+	Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Shenghao Ding <shenghao-ding@ti.com>, Kevin Lu <kevin-lu@ti.com>, 
+	Baojun Xu <baojun.xu@ti.com>, Sen Wang <sen@ti.com>, Sven Peter <sven@kernel.org>, 
+	Janne Grunau <j@jannau.net>, Neal Gompa <neal@gompa.dev>, asahi@lists.linux.dev, 
+	linux-sound@vger.kernel.org, patches@opensource.cirrus.com, devicetree@vger.kernel.org, 
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH v4 01/22] ASoC: dt-bindings: cs42l84: Allow referenced
+ dai-common properties
+Message-ID: <20261104-eccentric-auk-of-zoology-55bcc4@quoll>
+References: <20261103-macaudio-v4-0-637484efe46d@gmail.com>
+ <20261103-macaudio-v4-1-637484efe46d@gmail.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 17/46] drm/mediatek: Add support for hardware
- multi-stage layers
-To: =?UTF-8?B?Q0sgSHUgKOiDoeS/iuWFiSk=?= <ck.hu@mediatek.com>,
- "chunkuang.hu@kernel.org" <chunkuang.hu@kernel.org>
-Cc: "robh@kernel.org" <robh@kernel.org>,
- "tzimmermann@suse.de" <tzimmermann@suse.de>,
- "simona@ffwll.ch" <simona@ffwll.ch>, "mripard@kernel.org"
- <mripard@kernel.org>, "kernel@collabora.com" <kernel@collabora.com>,
- "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
- "maarten.lankhorst@linux.intel.com" <maarten.lankhorst@linux.intel.com>,
- "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "conor+dt@kernel.org" <conor+dt@kernel.org>,
- "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
- "krzk+dt@kernel.org" <krzk+dt@kernel.org>,
- "p.zabel@pengutronix.de" <p.zabel@pengutronix.de>,
- "airlied@gmail.com" <airlied@gmail.com>,
- =?UTF-8?B?SnVzdGluIFllaCAo6JGJ6Iux6IyCKQ==?= <Justin.Yeh@mediatek.com>,
- "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
- "linux-arm-kernel@lists.infradead.org"
- <linux-arm-kernel@lists.infradead.org>,
- =?UTF-8?B?SmFzb24tSkggTGluICjmnpfnnb/npaUp?= <Jason-JH.Lin@mediatek.com>
-References: <20260714114414.184512-1-angelogioacchino.delregno@collabora.com>
- <20260714114414.184512-18-angelogioacchino.delregno@collabora.com>
- <10e114d1f682a24e5eeb29ef03980762fb9712ba.camel@mediatek.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-In-Reply-To: <10e114d1f682a24e5eeb29ef03980762fb9712ba.camel@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261104_021948_995251_9BF2D0FB 
-X-CRM114-Status: GOOD (  39.03  )
-X-Spam-Score: -2.1 (--)
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+In-Reply-To: <20261103-macaudio-v4-1-637484efe46d@gmail.com>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,157 +79,50 @@ List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-12.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-15.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,
-	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1 autolearn=ham
+	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=ham
 	autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On 11/4/26 10:46, CK Hu (胡俊光) wrote:
-> On Tue, 2026-07-14 at 13:43 +0200, AngeloGioacchino Del Regno wrote:
->> In preparation for adding support for newer, more complex, display
->> controllers like the ones found in the MediaTek Kompanio Ultra and
->> Genio Pro 5100 (MT8196/MT8894), add support for multi-stage layers
->> as in newer hardware, there is a special strategy using multiple
->> hardware components of one (or multiple) display controller(s) to
->> form one single layer.
->>
->> Multi-stage layers are one more step towards extra flexibility of
->> the Display Subsystem, making it possible to change capabilities
->> of Display Controller Pipelines depending on the final application
->> of a board: for example, one board may choose to use fewer layers
->> per pipeline to achieve more pipelines (more concurrent outputs),
->> or more layers to achieve less, but more capable (as in offloading
->> and in achievable bandwidth) concurrent outputs.
->>
->> This currently adds boilerplate to support this hardware, but does
->> not yet implement the IP-specific support for MT8196/8894, which
->> will be done after all preparation is done.
-> 
-> Could you add mt8196 support based on original layer architecture first then introduce this multi-stage architecture?
+On Tue, Nov 03, 2026 at 05:39:49PM +1000, James Calligeros wrote:
+> Some consumers may wish to prepend the codec's name with a known value
+> to identify a specific codec among many and set #sound-dai-cells. Allow
+> this by allowing referenced properties from dai-common.yaml.
+>=20
+> Signed-off-by: James Calligeros <jcalligeros99@gmail.com>
+> ---
+>  Documentation/devicetree/bindings/sound/cirrus,cs42l84.yaml | 8 ++++----
+>  1 file changed, 4 insertions(+), 4 deletions(-)
+>=20
+> diff --git a/Documentation/devicetree/bindings/sound/cirrus,cs42l84.yaml =
+b/Documentation/devicetree/bindings/sound/cirrus,cs42l84.yaml
+> index 94062c1d9d45..66cae8b7db5d 100644
+> --- a/Documentation/devicetree/bindings/sound/cirrus,cs42l84.yaml
+> +++ b/Documentation/devicetree/bindings/sound/cirrus,cs42l84.yaml
+> @@ -9,6 +9,9 @@ title: Cirrus Logic CS42L84 audio CODEC
+>  maintainers:
+>    - Martin Povi=C5=A1er <povik+lin@cutebit.org>
+> =20
+> +allOf:
+> +  - $ref: dai-common.yaml#
+> +
+>  description: |
+>    The CS42L84 is a headphone jack codec made by Cirrus Logic and embedded
+>    in personal computers sold by Apple. It was first seen in 2021 Macbook
+> @@ -29,14 +32,11 @@ properties:
+>    interrupts:
+>      maxItems: 1
+> =20
+> -  '#sound-dai-cells':
+> -    const: 0
 
-Unfortunately, no.
+This should not be removed. Why cells of 1 would be correct? If so,
+explain in commit msg.
 
-MT8196 cannot work with the previous code made for the previous display controller
-as it is fundamentally different from the previous ones.
+Best regards,
+Krzysztof
 
-This is effectively enabling support for the new MediaTek display controllers.
-Without this, MT8196 would not have layers.
-
-> This series is so large and I would like to break it into multiple series.
-
-I can break it in multiple series, but merging one series and not the other
-would leave you with just dead code (as everything in here is needed to actually
-get the rest to work) in mediatek-drm that would:
-  1. Make no sense; and
-  2. Maybe break before you merge the other series.
-
-This really needs to be one big series and really needs to be merged all together:
-it is restructuring lots of stuff in mediatek-drm, and you can't really merge in a
-partial restructuring, leaving the rest floating, as that would simply create a
-huge mess in the whole driver for literally no reason.
-
-> For other upstreamed SoC, the hardware also has some flexibility to route display pipeline,
-
-This series is already huge, if I start implementing other components for the older
-SoCs, this gets to 100+ commits, and becomes unmanageable.
-
-Honestly, we're carrying this series in our integration kernel, and it's become a
-huge burden for us to rebase it everytime, because it's ... well, again, huge.
-
-> but we still implement the fixed pipeline first.
-
-The spirit of this restructuring is continuing the previous restructuring work that
-I already upstreamed (where I added the OF Graph support): I remind you that the
-target of that one was to remove the fixed pipeline arrays because having board
-specific pipelines as arrays in code is plain wrong.
-
-Unless "we still implement the fixed pipeline first" means "we still have it here
-for the old socs": in this case, well, ABI can't be broken, and if we remove that
-the old SoCs running on old devicetrees will get regressions (as in, display will
-not work anymore).
-
-I'd really like to remove those big senseless arrays but there's no way: past ABI
-related mistakes will always have their ghosts haunting us here, unfortunately...
-...and this is why I added a compat layer, trying to separate those from the main
-mediatek-drm code as much as possible, because then otherwise the alternative would
-have been to clone mediatek-drm to another driver, and freeze this one, which means
-that with the technical debt that this driver has, it'd break in 5 upstream kernel
-versions and old SoCs wouldn't work anymore.
-
-> This suggestion just want to simplify the review process.
-
-I know, and I appreciate your suggestions to allow me to make this as smooth as
-possible - being a maintainer myself I can completely understand you on that, but
-this series is really that big, and really that complicated.
-
-I can try and retry and re-retry again to make things easier for you to review and
-apply, but I don't think there's much more I can do for that.
-
-The only thing that I can tell you here is that we've been carrying this series
-since kernel 7.0.0 (included), rebased on 7.1, 7.2, 7.3, and always checked for
-any regression on Genio boards and Chromebooks (8173, 8183, 8188, 8192, 8195).
-
-All of those are working as expected and good, and have been working great for
-all this time.
-
-Well, including MT8196, of course, and Genio Pro 5100.
-
-Ah, one last thing - this series is part 2: the first one was in soc/mediatek which
-I was able to merge, and then there are another two series that I did *not* send
-yet, adding *full* support for MT8196... so this was already split!! :-)
-
-> 
->>
->> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
->> ---
-> 
-> [snip]
-> 
->> +static void mtk_crtc_config_layer(struct mtk_crtc *mtk_crtc,
->> +				  struct mtk_plane_state *plane_state,
->> +				  int layer_num, struct cmdq_pkt *cmdq_pkt)
->> +{
->> +	u8 *layer_stages = mtk_crtc->hwlayers[layer_num].layer_stages;
->> +	u8 i = 0;
-> 
-> In mtk_ddp_comp_for_plane(), it consider mt8183 main path which two component has OVL layers: OVL0 and OVL_2L0.
-> That crtc has 6 planes.
-> When calling mtk_ddp_comp_layer_config() with OVL_2L0, the layer_num would be 0 or 1 not 4 or 5.
-> So add this adjustment like mtk_ddp_comp_for_plane().
-
-You didn't understand this code: mt8183 is effectively untouched.
-The OVL_2L0 is not evaluated as a layerstage, but as a layer, exactly like the old
-code was doing.
-
-Seriously, the code that is specific to multi-stage layers is practically doing
-*nothing* for the old display controllers (other than shuffling things around in
-code) and not changing their behavior *at all*.
-
-It's just adding stages for the new controllers, found in MT6991/6993 (where
-8196==6991).
-
-> 
-> I would not review rest part because you may base on a wrong assumption to implement.
-> 
-
-As I explained, I didn't use any wrong assumptions here.
-
-Cheers,
-Angelo
-
-> Regards,
-> CK
-> 
->> +
->> +	do {
->> +		mtk_ddp_comp_layer_config(mtk_crtc->ddp_comp[layer_stages[i]],
->> +					  layer_num, plane_state, cmdq_pkt);
->> +	} while (++i < mtk_crtc->hwlayers[layer_num].layer_stages_nr);
->> +
->> +	return;
->> +}
->> +
 
