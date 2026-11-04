@@ -2,132 +2,108 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 8B979606A32F
-	for <linux-mediatek@archiver.kernel.org>; Wed,  4 Nov 2026 11:37:08 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 1673F606A326
+	for <linux-mediatek@archiver.kernel.org>; Wed,  4 Nov 2026 11:42:55 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=sMyDJGbl;
-	dkim=pass (2048-bit key, unprotected) header.d=NXP1.onmicrosoft.com header.i=@NXP1.onmicrosoft.com header.a=rsa-sha256 header.s=selector1-NXP1-onmicrosoft-com header.b=UAcsssjW
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=myTrR69f;
+	dkim=pass (2048-bit key, unprotected) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=GHRn4TLT
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:Content-Type:
-	Content-Transfer-Encoding:Message-ID:Date:Subject:Cc:To:From:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
 	List-Unsubscribe-Post:List-Owner;
-	bh=EwpRiMoqHUXYVfiQc9b+bRzERdvNt5hE0RxnPCcBvDE=; b=sMyDJGblRe3aYSjHboairjj1hs
-	UexaNcjQ7/SfMbPo3ge/WW/FUyZZAMhlgEub5NHBAD+Gr/gVFXjV2tyWrltrbp9Ktl1qCer0sBtCc
-	8WnScddf/TCR4Wwy52XZY1tNQRuBNxtNEju7DtjFgDCoOVBbvBd2CzDAsYq7guSvJkgHllFpUkrV+
-	Q9cVFyaVgNVJvK4mf6Z+wOSvf5/Bgxv/f9sItB+iwc5nVvQ4V5M3o6C2uYocAC+lCnWRTuPY2ybWs
-	nk979lsgpN9Ha0+0yKD3Eakg6oFI6lq0+0X7Xo3dPbbqByWOpmdjYXCZc3WIrOACQkb5SDRWVRCxE
-	0sn0Wz0g==;
+	bh=ntkvK9vArmmau6WntPJJCQysHHMrqtIZmeCGFS6XyDs=; b=myTrR69fe3VaxXU7efUqFhKqw+
+	65M+RcYg9bmVPEZ7FtFjgJJDmfeSux4qLBf/UZmS4JAoaMMk00YHpO+zmurZpyj87qI6KYV2vIkUT
+	4UNzLj4F4/WPMn+vuA24q9LsxgFqnsJpTAl4Ar8v+glXs6o8htdlR2hBFWBSYZ4hDJAh5scAm6O2B
+	y8kjpGxWXoZc/MEKOv+co8LcHxxEZ0moBf6ilz9l4IIflz+dIO479aE2uO9P3EYlKwy6LwpkzVLeQ
+	Mg1omgWYpAUl2k20uSUATtkMbNg3JZ7yavha9OTKffzDerBxQSNeyxNh1cdI5zqG229I4zWAFvDDs
+	jIsju8UA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xOZIi-00000005Bay-18wU;
-	Wed, 04 Nov 2026 11:37:08 +0000
-Received: from mail-westeuropeazlp170110003.outbound.protection.outlook.com ([2a01:111:f403:c201::3] helo=AS8PR04CU009.outbound.protection.outlook.com)
+	id 1xOZOI-00000005DBA-35sf;
+	Wed, 04 Nov 2026 11:42:54 +0000
+Received: from mail-oo2-x09.google.com ([2607:f8b0:4864:31::9])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xOZIg-00000005BX0-0wgT;
-	Wed, 04 Nov 2026 11:37:07 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=js1S9JiR1oCmob6oyivZRZvFvDPpE50YASmmKwpNkOTPlXr/6JQejlNlrwPKMVHENOBTJ41+Gtf2EvHtC2lQrQPQ3h2lQbqyQQcRdHUpFejFxFjWFzi9L0e0kNmjB9Sy35d/fobDvJbz9G9dK0yShdUfFJhWSs/L2yZOhH3XwmbnMhsCAYsKZQajPWH48LghG2ghay5Fib15TQBMD4VjzsDjmhdTMD/tcjkwEVHD1gMDTo8DDmx8RNALZ1Adai9qYnZsZRcokyWMojN5X12jqlBDJHY+NexnJWojTrvkrOHseuhV324y0gGb61t0d/86yCI/6lynDmSogmWcM27NjQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=EwpRiMoqHUXYVfiQc9b+bRzERdvNt5hE0RxnPCcBvDE=;
- b=pUwRH8epCNjB4mKOE1JsAz447qiWXe4R/g0yWjKyU+AM2Tqjigl/JqcUf7DSgUXH0XUrzyVVMducUiRb94bgRaA0qnjareD+lr+F5LyRxenHe3ne+ZuskAN6xfdfLsx2Fqdp7KnivXOLuFUxhLvHmvpHgrrEFq7xTRZQhL8y4E4/al9864N6xd6rMxBE1QC+MkaIjQAr1rMtVxbLzW4k0wUiXUcqZi8CSQV8G/C6EZWdFD+eFzoOhZ61O7okFuQGhMM7xcefbdTimeObpbxafBovHZtWiPXlfK9Q+PxryyyZ3qd/6Kv4WPQ0n7yEZggIG4busc09y6Kg+IMOO4K2jA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=oss.nxp.com; dmarc=pass action=none header.from=oss.nxp.com;
- dkim=pass header.d=oss.nxp.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=NXP1.onmicrosoft.com;
- s=selector1-NXP1-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=EwpRiMoqHUXYVfiQc9b+bRzERdvNt5hE0RxnPCcBvDE=;
- b=UAcsssjW9R6nvKAGoHoA4pPnfy+by7Dzstt1xCsKY0Pcxm788d8jDRpNVqFotcFmPxV3+wVgNPxWkib6PjaiEXB6oFFmitgk5GdjtpBNd/cN6Eo72uBUYZd1ijETRMA1dHafNrqdZLRum0QS6cdVTsDECPb15qxJQFdERaATHdSsW6QnqdP5x/DU0W+Uoe4aDHS3xCpAs0EwH/f5TILbl3gML/yT/bo+KglIbm0NKPU3vyeov6x/QffKgGvFakD3B98r9M3xseB7dh0ozJahKrRyF8zyy5oZ/HhDb4GfyLXxLQkZAhRSJnGQqzWp80d3LNh59ntgzic9q+fo6tnQoA==
-Authentication-Results: mx.microsoft.com 1; dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=oss.nxp.com;
-Received: from AM8PR04MB7874.eurprd04.prod.outlook.com (2603:10a6:20b:24d::9)
- by AS1PR04MB9264.eurprd04.prod.outlook.com (2603:10a6:20b:4c4::14) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.592.8; Wed, 4 Nov 2026
- 11:36:54 +0000
-Received: from AM8PR04MB7874.eurprd04.prod.outlook.com
- ([fe80::ac38:1699:6f18:c5d9]) by AM8PR04MB7874.eurprd04.prod.outlook.com
- ([fe80::ac38:1699:6f18:c5d9%6]) with mapi id 15.21.0592.007; Wed, 4 Nov 2026
- 11:36:54 +0000
-From: "Peng Fan (OSS)" <peng.fan@oss.nxp.com>
-To: Jassi Brar <jassisinghbrar@gmail.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Michal Simek <michal.simek@amd.com>
-Cc: linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: [PATCH] mailbox: Convert to subsys_platform_driver()
-Date: Wed,  4 Nov 2026 19:33:24 +0800
-Message-ID: <20261104113324.1634161-1-peng.fan@oss.nxp.com>
-X-Mailer: git-send-email 2.51.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-ClientProxiedBy: SI2PR02CA0051.apcprd02.prod.outlook.com
- (2603:1096:4:196::10) To AM8PR04MB7874.eurprd04.prod.outlook.com
- (2603:10a6:20b:24d::9)
+	id 1xOZOE-00000005D9r-09yF
+	for linux-mediatek@lists.infradead.org;
+	Wed, 04 Nov 2026 11:42:53 +0000
+Received: by mail-oo2-x09.google.com with SMTP id 006d021491bc7-6de19ccd89bso131974eaf.0
+        for <linux-mediatek@lists.infradead.org>; Wed, 04 Nov 2026 03:42:49 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20260707; t=1793792569; x=1794397369; darn=lists.infradead.org;
+        h=cc:to:message-id:content-transfer-encoding:content-type
+         :mime-version:subject:date:from:from:to:cc:subject:date:message-id
+         :reply-to:content-type;
+        bh=ntkvK9vArmmau6WntPJJCQysHHMrqtIZmeCGFS6XyDs=;
+        b=GHRn4TLTtMJO7Z4vcGKavpgtmpwgnqMZq/pngVDwmYrxEU7OdT/QPWBNqQJWLuAuGv
+         U9Gmi/HcFPJV/GY+9sn5AOpV6wB+YlSqAETGZeVduSBdMKLptdZ9ACg4r4rbpQWPTVbO
+         +YYQOU9VvKHfKikpZaqgVmEIcHWyK/k3IwhFGNH0h7iLTY9oi3Dz40o0UwYPpZ8beVhB
+         MXMv7VtRgTEPBuQajlwZKV/VwMSfhVgrT8PoxJ8kzlAxPoWzPdBdVkW1Ienapu+OC1cN
+         cnuivuwey9zRNQFCSCikqjM8itG6rr6Ua3WGjjurZ3y7gjWbamfIa8HnTzvWwPr0rh/9
+         22CQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20260707; t=1793792569; x=1794397369;
+        h=cc:to:message-id:content-transfer-encoding:content-type
+         :mime-version:subject:date:from:x-gm-gg:x-gm-message-state:from:to
+         :cc:subject:date:message-id:reply-to:content-type;
+        bh=ntkvK9vArmmau6WntPJJCQysHHMrqtIZmeCGFS6XyDs=;
+        b=xohofGYD4JO32sD3rTJtIV341cpBDmmVMFuURjM1G1X3KifM1cGyDhrqRE9FjvvRWv
+         e6NRIAgkoCL3jwFF20ZNgJsM5YFSxdPObg2DaiovHvKGN7im5t5kpcV00iTV2kOC8KkB
+         7k0cgoW65ktZidi5TWaGKMQIrGCdlNRPAcoZb8IIRh5iSysk3uK9srhay4nzCJ+YAuqo
+         b5WoS4qyFreyv3TumlUhsmMY12Ud+L/JptkIXD800o8S4oBU5viwpIbMElAvv5X5ADuE
+         BCtXb32gRN5WeS1F3KeM0bLHNlj4LgLi4pulmuXB0Ur1bzZNHD7UlW3MKl+iWy0b3fHg
+         RK9Q==
+X-Forwarded-Encrypted: i=1; AKwUvBxIOm44RFIl0uIYO7Bkqqxm6EFYNjSmWlS4OJvyLSmoDDU/x8jYekyYtHKidOHCCofyaf0n7+/tExy8pT74xQ==@lists.infradead.org
+X-Gm-Message-State: APuU4Z9u4m6rs80VdOiR8R/ULrrgpgp3FMFxlMdTNN9WsUgBKcIt3696
+	Ay9e+t7sJgZmF17+qW4DvFCRYYbDQOsaJqafltG5+J4w6JL/X5FvaBgWeob8lyXJN6w=
+X-Gm-Gg: AYBFou3tDZ3xuu6jQ0pXd7BXShbsmh/Zo7p3/D+J9lBEn551EsD6Kza8cF1ZqEsC/UT
+	3Oxss2yJZPPAz8JRWzGYC0HsZWqgqfZOJCJj2Y0jVxG1BmC43Tf1d32yecf1155ZABcoxKLy9Dz
+	eSXkGiENQc/NuEzq3j9b295CbyZb/2AYzz+JSXYIprMk6NTRKtilwWL7SuxlOllevU4uPtf09Vf
+	gqpRYJhO9Lxs644uSc+5huPjhimXlC+MGM73d9JZYcgqeQy3P6vHmc1j8314E9/OpfbcErmH1tf
+	4usgDtWZ16UHF2uBwduw3uAhge1ptTy2ugqbWI8e0BOgzBsp5kXpY5NodfFs+/pHvHEfv8+N1ZC
+	di4WkOZayF2wyTKbSm7nssQSzPOucno1AXk57vkpGmmcdaImsLBgR8y9Q2d9NmoFm9dClL9Sr4R
+	9z6ymZh7SHy+VXJqUdjAMi9BE0jBrMpnrkBgtTwjO1hGbRFHSvrnbFbOc+74nefQCPPsqu/yqaO
+	dnWHcTu7NWvvm8Snt7O2cK+9drC/7OUloooc+1kkDpDelFgVENbxamElWx4iT1PdacGB97zBU13
+	hTDjjl0fQMx14uSvoBadDTPBDQ==
+X-Received: by 2002:a05:6808:1806:b0:4b9:a88b:888e with SMTP id 5614622812f47-5640dd023c6mr10688054b6e.36.1793792568941;
+        Wed, 04 Nov 2026 03:42:48 -0800 (PST)
+Received: from [192.168.18.164] ([2600:8804:5716:d800::f01a])
+        by smtp.gmail.com with ESMTPSA id 5614622812f47-567a9fdc42dsm1443858b6e.14.2026.11.04.03.42.45
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 04 Nov 2026 03:42:47 -0800 (PST)
+From: Ryan Brue <ryanbrue.dev@gmail.com>
+Date: Wed, 04 Nov 2026 05:42:37 -0600
+Subject: [PATCH v2] usb: mtu3: disable bottom halves in the threaded
+ interrupt handler
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: AM8PR04MB7874:EE_|AS1PR04MB9264:EE_
-X-MS-Office365-Filtering-Correlation-Id: 9bf924cb-fcca-4102-c8ee-08df3a67e588
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|366016|19092799006|1800799024|23010399003|376014|10067099003|18002099003|56012099006|11063799006|261022105027099003|261009223027099003|261022075727099003|261028144727099003|261021123027099003|261026140227099003|261021121427099003|261102123227099003;
-X-Microsoft-Antispam-Message-Info: o1RfgM5DTdgIeKM0pS+Io/QVlb7HokucnxDIewROAoWiNLKcbTX6H/0T+V4wWBWB3oh2GJa2teNHxsgToq4RNuGVi9JbEdUxTxMn8S4ueWyIcqbLffKIDt88Vjjmw0Go3Mm9dVNDP0OPwnX8jEvEo9lIecjTzts0Nok0cj/OGwwghUNFnIQLOvuQinRYtiRIM4L8ZfTqXuGQzS+272TtJKSEyvgIQ4g05tTA3LHvqNvwXpUiWjEWBpaJNvpkBeFvX1SGUOI3bXPkZQQD2VYo8gbYwrL1WwJrsCCRiLkIbEfZkcGRpCkILj7WYrKqnxKHWHS6N8EvR9HX/ahr8Z52oa70gdLFA5PnIKEeykDU0AWtt4eZYB3xTtcB6Nm9qa42srZ2ampXxbI8IEswIt9H4xF/nIC/0+Gs33RtcpU53jreBGFiD66flRiroxHIMhLQo2B2/xxlDa0HSpw8FRtOWSaRDc69L3yCJfiabzWxlqBdn5vJrGehHCUDp00sOkN7xDaY/PbMuWDhP5WIEq/nLa95crJYAqK2aYAMhEX3sLPCWV3NDNY77n6nksJM12JKOyKx/a4Vqc1MjzVt/rdpdqT7ScP28v1j2cdVBbdnVpgOSByEyQAsx0ETgQbzYi8ibwwPo2q8OTy2PuAz07LoTCnQyoqNBpFs1s2EqtfIHNU=
-X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:AM8PR04MB7874.eurprd04.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(366016)(19092799006)(1800799024)(23010399003)(376014)(10067099003)(18002099003)(56012099006)(11063799006)(261022105027099003)(261009223027099003)(261022075727099003)(261028144727099003)(261021123027099003)(261026140227099003)(261021121427099003)(261102123227099003);DIR:OUT;SFP:1101;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?hUHdTMfhcHNGjK7523F5VxKgS96ytABF84PsG/KNEDvxpAVzTX9lSJ2Xob5F?=
- =?us-ascii?Q?qmY+yvw2I9aeor5Z2a4fPGgzp7ayL/IhN3D4YLwFv/tB9IEdyMcKyKSdylx/?=
- =?us-ascii?Q?Yy8hVOV6DJxtObbtYyyrkdfOn3Ug+T4B+BU+2HHwbuRINJcAIour+2oBsvTM?=
- =?us-ascii?Q?TIwTWgypI7IHotHF3i1k88sDYnr0eTN8JnYUlIIpLRDEMSB7sNi4B5HDqcYi?=
- =?us-ascii?Q?gUdG+hGlCcVxoWkyQpgBQauJUoKVJHNvs7fthbBqNaOQVeF3uVq/ofKGBtAN?=
- =?us-ascii?Q?TCSkdL3pBcl1uRLiCqt9H58tclCW6TCjaMr4GLSkdt7AH/RsEf7kcp8AKtzS?=
- =?us-ascii?Q?pHNncYqMySbTeERLh8PuXOGDd17mgQ/gUUTGDN/bGtExUYFG/h7cWDAAdVCW?=
- =?us-ascii?Q?JmfMNmDX5v8TjSA1lCxUknvH0ivzapnvWXx9nYLx0hSjkAXqSb/V8Mwef5ub?=
- =?us-ascii?Q?SZM3xeTOBFsTwUnCGvl+KffDJM7UivmJy1XhTtdvlQVR1R/NPzDsDI/FXxiD?=
- =?us-ascii?Q?urtJf0piCpxdiSQuoZ8gOkpslcu0LsdE1US8k88feRQJfqXe/FSFhIWgHLT/?=
- =?us-ascii?Q?in40SbnUn4WUjIOxrowHLkUv8A9qbvIhqVuHPP82shV2G489PYNsIikl9A5K?=
- =?us-ascii?Q?jIRjKnMzzyIZhzQjtehtSPLejDyVOKLwPpLxcrpJ5eX/o8XdOG9SV2LCM9eA?=
- =?us-ascii?Q?8huqm66dxkB7XBEbPUWV9HUgyG/7ww/KLCkavLViUJCroKiaFdA/V12NE7TE?=
- =?us-ascii?Q?Zg7uzdG8Jk5K4aARkfU+L4WlvY+HRTuTXqztBC+23XKiF0b1TmaZ/DaTyDJS?=
- =?us-ascii?Q?tSAIi8XnmcnRosfwja6ZEVz3FK4GO2hKpsB6GSUpduvBi2Nhgr6+ueoTm0df?=
- =?us-ascii?Q?jhi98X5mXlmYtOuI9Ng5ehdWqHcQoaNKEVLg3JQtY853r2/NiXlA99DRhpir?=
- =?us-ascii?Q?Tpg18t5NOA1qpB2HWkMZqpdxgr39TWRX01rWXEfDgLa+FH6FK/DccGnIMWim?=
- =?us-ascii?Q?F8FeBfSE6J0PGBuUxEYowsG5DWEWsCzXcTZ1qadzxgXGPKcmSOWnX8r7i9/b?=
- =?us-ascii?Q?B/cWLFmlN2GNawmmb1bm6AurXxWwq8SDPbzHFVn6PUNvBcWyfZGb/1dWzfDd?=
- =?us-ascii?Q?icZAaXSLlrzhZxFUveC3XMySUs6b0hjHWsdqW2/jHMdVfa7TtNustkKPg6KP?=
- =?us-ascii?Q?+roK6ymWaSrFd/kaVEKyJiDgjpImpMak4CJ2EmzlsXw5r3kidU1XchgTf5R4?=
- =?us-ascii?Q?++iqah1QgjCIqV62uBo5QQw2urwJfHxNDjdmQ7LT5MWDlyobNqUYRMZmyHJ2?=
- =?us-ascii?Q?Ug3DSRmI3o4ysa4ig08CffbtzATfjXT4ta65ld9iGZENUukwCGXPZ3qaHl5l?=
- =?us-ascii?Q?52N+5Ix6G8SuYGZdKtJWX8q4Vi0g15QpCR9OFBwM5ME6bfkoVHc07q+DbuWe?=
- =?us-ascii?Q?KxNN1FOAZJqoOTKV88ZbTa8XRuiSDE8mGkcGnpzrnXbl5zJ2fHb/OcVhNhRh?=
- =?us-ascii?Q?82DyIZG0kNZ29pgpJO+5fFug0VCS9DYJ/MFh5TNw2YzRvmwPdadNqhZHyBB5?=
- =?us-ascii?Q?qSbXHtN8ZDa7ErUIWEBJ4YT/osuXUeE9racbXnHSyOP5HJNRrWG49+L2lgRV?=
- =?us-ascii?Q?ZHVy3lvwHTEJdu4xePU20poqu3ctMGQywzHz0LIeWohmv8QBM/VTBZWxRzP7?=
- =?us-ascii?Q?iMqqlaLSPo/QlhkBXYkQ9TbMrI4a3aOS/wc/8pcVUQ3y83YFNIJwKa1Fp9Op?=
- =?us-ascii?Q?vF/yrpHUY9eDsrZcHI4Ek0LQ+wLacQIiXPyskD1RijI+oFVBGuk/?=
-X-OriginatorOrg: oss.nxp.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 9bf924cb-fcca-4102-c8ee-08df3a67e588
-X-MS-Exchange-CrossTenant-AuthSource: AM8PR04MB7874.eurprd04.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 04 Nov 2026 11:36:41.8428
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 686ea1d3-bc2b-4c6f-a92c-d99c5c301635
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: 8IHkN/O04vwJebKV76pPgy7T+4WZvG+xbKaJtZhw/2C0LKSUrcVE3RXAmt6kF4rLC55vhdl6vu6Pv/Oy1UNG3zMkDy7qyvNewE8fH/y7/43hX1qLNBI1dR3/J8boJOco
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: AS1PR04MB9264
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Message-Id: <20261104-usb-mtu3-gadget-completion-callback-fix-v2-1-2769533a39cb@gmail.com>
+X-B4-Tracking: v=1; b=H4sIAAAAAAAA/5WOQQ6CMBBFr9LM2jEtJSKsvIdhUcoAo0BJWwiGc
+ HcDnsDlT17+exsE8kwBCrGBp4UDuxEKkVwE2M6MLSHXUAhIZHKTudI4hwqHOGtsTd1SROuGqaf
+ IbkRr+r4y9o0Nr1hrnTYZ5blRGVwETJ4aXk/Ts/ztMFcvsvG4P4iOQ3T+c6Ys6uD+ty4KFZJO7
+ 1LKtKFEP9rBcH+1boBy3/cvTtkLYfAAAAA=
+X-Change-ID: 20260913-usb-mtu3-gadget-completion-callback-fix-d334f7e99a17
+To: Chunfeng Yun <chunfeng.yun@mediatek.com>, 
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>
+Cc: linux-usb@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, 
+ stable@vger.kernel.org, Ryan Brue <ryanbrue.dev@gmail.com>
+X-Mailer: b4 0.14.3
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1793792565; l=4420;
+ i=ryanbrue.dev@gmail.com; s=20260906; h=from:subject:message-id;
+ bh=YKrWQc6X594nxsi6j6O7RkIqP4KUVuw16YHFth6q4aA=;
+ b=kplKluc55m0ByUTEidjz+o5BPLPKs32RJFwusMLDnxrxB+Jj6Dr9y/he45mi/xR8jzpbfVMHO
+ U0XTYhmgwiZAXt6/F6OextvdklivIZ3FMwQGkfV8KeBC0kS0DFH/xVd
+X-Developer-Key: i=ryanbrue.dev@gmail.com; a=ed25519;
+ pk=KsUvVaP//v/2q+ZBuacc7cLbsyEYn+AD71Sn28oZWKo=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261104_033706_284276_A5FD4DE0 
-X-CRM114-Status: UNSURE (   9.96  )
-X-CRM114-Notice: Please train this message.
-X-Spam-Score: 0.0 (/)
+X-CRM114-CacheID: sfid-20261104_034252_009255_A0AF3E3D 
+X-CRM114-Status: GOOD (  16.75  )
+X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -138,100 +114,117 @@ List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIM_SIGNED,
-	DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
+X-Spam-Status: No, score=-15.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
+	DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,FREEMAIL_FORGED_FROMDOMAIN,
+	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
+	USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-From: Peng Fan <peng.fan@nxp.com>
+mtu3_irq() is a threaded handler, so it runs in process context, and it
+takes mtu->lock with spin_lock_irqsave(). mtu3_req_complete() drops the
+lock with a plain spin_unlock() around usb_gadget_giveback_request(), so
+the gadget function's completion callback runs with interrupts disabled,
+as the gadget API promises, but in neither hardirq nor softirq context.
 
-Replace the open-coded subsys_initcall()/module_exit() platform driver
-registration with subsys_platform_driver().
+That breaks any callback that reaches netif_rx(). netif_rx() disables
+bottom halves itself when it is called outside hardirq and softirq
+context, and enabling them again with interrupts disabled is not
+allowed:
 
-No functional change.
+  WARNING: kernel/softirq.c:453 at __local_bh_enable_ip+0x128/0x134
+    __local_bh_enable_ip
+    netif_rx
+    rx_complete [u_ether]
+    usb_gadget_giveback_request
+    mtu3_req_complete
+    mtu3_qmu_isr
+    mtu3_irq
+    irq_thread_fn
 
-Signed-off-by: Peng Fan <peng.fan@nxp.com>
+With CONFIG_TRACE_IRQFLAGS, __local_bh_enable_ip() ends with an
+unconditional local_irq_enable(), so the plain spin_lock() re-taking
+mtu->lock afterwards runs with interrupts on and is recorded
+SOFTIRQ-ON-W, while mtu3_gadget_queue() takes the same lock from a
+softirq (ncm's tx hrtimer), and lockdep follows up with an inconsistent
+lock state report naming mtu->lock.
+
+The locking was right when mtu3_irq() was a hardirq handler. It stopped
+being right when the handler became threaded without a primary handler;
+dwc3 hit the same thing the same way and fixed it in the controller
+driver, in commit 84918a89d6ef ("usb: dwc3: gadget: Let the interrupt
+handler disable bottom halves.").
+
+Do the same: disable bottom halves around the lock in mtu3_irq().
+netif_rx() then finds softirqs disabled and leaves them alone, the
+completion callbacks keep running with interrupts disabled, and the
+softirq it raises runs at local_bh_enable(), once the lock is dropped
+and interrupts are on again.
+
+Both reports need lockdep to be seen, but the context violation is real.
+The fallout on a PROVE_LOCKING kernel is not cosmetic either - copying a
+21 MB file over USB ethernet hung and reset this board repeatedly. Once
+interrupts have been left enabled while the thread holds mtu->lock, the
+tx hrtimer softirq on the same CPU spins on it forever, which is the
+"CPU0: lock(&mtu->lock); <Interrupt> lock(&mtu->lock);" scenario lockdep
+names. The same copy is reliable with this change applied.
+
+Fixes: 13118959cb1a ("usb: mtu3: register mtu3_irq by threaded irq")
+Cc: stable@vger.kernel.org
+Signed-off-by: Ryan Brue <ryanbrue.dev@gmail.com>
 ---
- drivers/mailbox/mailbox-xgene-slimpro.c | 13 +------------
- drivers/mailbox/mtk-cmdq-mailbox.c      | 13 +------------
- drivers/mailbox/zynqmp-ipi-mailbox.c    | 13 +------------
- 3 files changed, 3 insertions(+), 36 deletions(-)
+v1 took mtu->lock with spin_lock_bh() in mtu3_irq(), which left
+interrupts enabled across the gadget completion callbacks. Sashiko
+pointed out that struct usb_request's @complete must run with them
+disabled, and that u_serial's console relies on it [1]. v2 keeps
+spin_lock_irqsave() and disables bottom halves around it, as dwc3 does.
 
-diff --git a/drivers/mailbox/mailbox-xgene-slimpro.c b/drivers/mailbox/mailbox-xgene-slimpro.c
-index 1f87a84e5995..f489bcabceff 100644
---- a/drivers/mailbox/mailbox-xgene-slimpro.c
-+++ b/drivers/mailbox/mailbox-xgene-slimpro.c
-@@ -243,18 +243,7 @@ static struct platform_driver slimpro_mbox_driver = {
- 	},
- };
+This patch was developed with the help of an LLM.
+
+[1] https://lore.kernel.org/all/sashiko-outbox-193807@kernel.org/
+---
+Changes in v2:
+- Keep interrupts disabled across the completion callbacks: disable
+  bottom halves around the existing spin_lock_irqsave() instead of
+  taking the lock with spin_lock_bh() (Sashiko)
+- New subject; v1 was "usb: mtu3: don't run gadget completion callbacks
+  with interrupts disabled"
+- Rebased onto v7.4-rc1
+- v1 was resent on 2026-09-29 and 2026-11-02:
+  https://lore.kernel.org/all/20261102-usb-mtu3-gadget-completion-callback-fix-v1-1-93c3a6dda31f@gmail.com/
+- Link to v1: https://patch.msgid.link/20260913-usb-mtu3-gadget-completion-callback-fix-v1-1-e3480004fe23@gmail.com
+---
+ drivers/usb/mtu3/mtu3_core.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/drivers/usb/mtu3/mtu3_core.c b/drivers/usb/mtu3/mtu3_core.c
+index 990e2e8e6bc2..3127709acc22 100644
+--- a/drivers/usb/mtu3/mtu3_core.c
++++ b/drivers/usb/mtu3/mtu3_core.c
+@@ -793,6 +793,7 @@ static irqreturn_t mtu3_irq(int irq, void *data)
+ 	unsigned long flags;
+ 	u32 level1;
  
--static int __init slimpro_mbox_init(void)
--{
--	return platform_driver_register(&slimpro_mbox_driver);
--}
--
--static void __exit slimpro_mbox_exit(void)
--{
--	platform_driver_unregister(&slimpro_mbox_driver);
--}
--
--subsys_initcall(slimpro_mbox_init);
--module_exit(slimpro_mbox_exit);
-+subsys_platform_driver(slimpro_mbox_driver);
++	local_bh_disable();
+ 	spin_lock_irqsave(&mtu->lock, flags);
  
- MODULE_DESCRIPTION("APM X-Gene SLIMpro Mailbox Driver");
- MODULE_LICENSE("GPL");
-diff --git a/drivers/mailbox/mtk-cmdq-mailbox.c b/drivers/mailbox/mtk-cmdq-mailbox.c
-index 96462ca84471..262832753fa5 100644
---- a/drivers/mailbox/mtk-cmdq-mailbox.c
-+++ b/drivers/mailbox/mtk-cmdq-mailbox.c
-@@ -875,18 +875,7 @@ static struct platform_driver cmdq_drv = {
- 	}
- };
+ 	/* U3D_LV1ISR is RU */
+@@ -815,6 +816,7 @@ static irqreturn_t mtu3_irq(int irq, void *data)
+ 		mtu3_qmu_isr(mtu);
  
--static int __init cmdq_drv_init(void)
--{
--	return platform_driver_register(&cmdq_drv);
--}
--
--static void __exit cmdq_drv_exit(void)
--{
--	platform_driver_unregister(&cmdq_drv);
--}
--
--subsys_initcall(cmdq_drv_init);
--module_exit(cmdq_drv_exit);
-+subsys_platform_driver(cmdq_drv);
+ 	spin_unlock_irqrestore(&mtu->lock, flags);
++	local_bh_enable();
  
- MODULE_DESCRIPTION("Mediatek Command Queue(CMDQ) Mailbox driver");
- MODULE_LICENSE("GPL v2");
-diff --git a/drivers/mailbox/zynqmp-ipi-mailbox.c b/drivers/mailbox/zynqmp-ipi-mailbox.c
-index 42d2583e44ca..da7d33435cdb 100644
---- a/drivers/mailbox/zynqmp-ipi-mailbox.c
-+++ b/drivers/mailbox/zynqmp-ipi-mailbox.c
-@@ -1022,18 +1022,7 @@ static struct platform_driver zynqmp_ipi_driver = {
- 		   .of_match_table = of_match_ptr(zynqmp_ipi_of_match),
- 	},
- };
--
--static int __init zynqmp_ipi_init(void)
--{
--	return platform_driver_register(&zynqmp_ipi_driver);
--}
--subsys_initcall(zynqmp_ipi_init);
--
--static void __exit zynqmp_ipi_exit(void)
--{
--	platform_driver_unregister(&zynqmp_ipi_driver);
--}
--module_exit(zynqmp_ipi_exit);
-+subsys_platform_driver(zynqmp_ipi_driver);
- 
- MODULE_LICENSE("GPL v2");
- MODULE_DESCRIPTION("Xilinx ZynqMP IPI Mailbox driver");
+ 	return IRQ_HANDLED;
+ }
+
+---
+base-commit: 6628e7d4c6b25c8d18f1345e3a20d21829aae7e4
+change-id: 20260913-usb-mtu3-gadget-completion-callback-fix-d334f7e99a17
+
+Best regards,
 -- 
-2.51.0
+Ryan Brue <ryanbrue.dev@gmail.com>
 
 
