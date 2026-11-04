@@ -2,72 +2,97 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 94192606A328
-	for <linux-mediatek@archiver.kernel.org>; Wed,  4 Nov 2026 13:28:43 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id D770D606A331
+	for <linux-mediatek@archiver.kernel.org>; Wed,  4 Nov 2026 14:27:58 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=NgCYKT1p;
-	dkim=pass (2048-bit key, unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=T2lXRFfX
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=lFbKQKlM;
+	dkim=pass (2048-bit key, unprotected) header.d=mtu.edu header.i=@mtu.edu header.a=rsa-sha256 header.s=google header.b=gEwsqXVL
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Unsubscribe-Post:
-	List-Owner; bh=ipkAqbggt55e8owGiWNHCkmgjpvjuLsbOQoZe1ToEhU=; b=NgCYKT1pv/sLaO
-	TUjPtwXZGj00WE843ioNS6jztDwrLH0LA1yyap+6ILxY6iA092KZbSpcHJTu++qhGgvbS0+wgP4Yd
-	Pjpydqckcb5jYgu/Dcae60FizWd4abq8+CcByjaL3RT5w7cQa21w0sddBcb+B8ZukvN3EyEc0ecpt
-	qh2Iut9pqbDlDe7tqg83vFc23USvapEu7qyt/Nz5oVvWlmYw/434vFYJC4iCACIbXB+FvdUz8EwoM
-	Vkdi7dkZnyAb5IZ/NZE4AZZAyYz3vuJ+9Na1kL7m7Pl2N+dFj1y01d4hzr1FPYuz9gmLYLJNwG5Zj
-	JdXf5Wy6KtC9h/DAjpKA==;
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Unsubscribe-Post:List-Owner;
+	bh=RCbnvskndM4HyM/U/wv9olKZU1ADpK80ces2ych6agU=; b=lFbKQKlMpCwfLxQdSB8NDpCH4Y
+	hAhJBJlTmFf8v94LLAUdkEjcRCYjd7afACU8QECMiyNR5g+ZZ6yXtx7eYHDuQjPO7xEWWKF83kRlV
+	pOFC8LOWkO/LupBE9ggafSlIwHRsuR933MtuLxWA0kV2EUB9eTdy3IhCAJT1fT5KCPs4XuNeeVjLM
+	whLB89PqSrThIf3ysBtdal5G+CAFveDbA61/vV7LjY3ZOVJwe03S9PQ3TQmzr8WUEiEe2bSSudzn7
+	+5LGIfWK9saae9WNglvNhmXRJeRQtWBLC147VqipDWJdIl/HeZ4i9Lj/5UoTTIO9oVM2ZyLfQbjcC
+	VzbkKlFQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xOb2f-00000005U5P-3AHG;
-	Wed, 04 Nov 2026 13:28:41 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1xOby2-00000005dm0-2XRU;
+	Wed, 04 Nov 2026 14:27:58 +0000
+Received: from mail-yw1-x1132.google.com ([2607:f8b0:4864:20::1132])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xOb2e-00000005U57-0XyS
+	id 1xOby0-00000005dkf-1nv4
 	for linux-mediatek@lists.infradead.org;
-	Wed, 04 Nov 2026 13:28:40 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 8CF1960F24
-	for <linux-mediatek@lists.infradead.org>; Wed,  4 Nov 2026 13:28:39 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 47B4E1F00A16
-	for <linux-mediatek@lists.infradead.org>; Wed,  4 Nov 2026 13:28:39 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1793798919;
-	bh=ipkAqbggt55e8owGiWNHCkmgjpvjuLsbOQoZe1ToEhU=;
-	h=References:In-Reply-To:From:Date:Subject:To:Cc;
-	b=T2lXRFfXZaLRNZ/0XiTfwEfhqfbR/AxqmiJ/PC48id2dU+KepIz8CsgB/a4Xk67h2
-	 7JAh6FXQ9U0YT/jtJK7cG4KAAhceexawpksqe7tvilSADeR9nKQ3V9J/Iq5li0qQcA
-	 ii9LuccCIOogG5K7/sYje7YG/OIwCrqbXpUhtOauxI0PX5wJVkn02lUhN1Fse1pFKu
-	 2bnCsKzc/NRVJfJzrrpTojvgbZClmYAPEgp7KXnmQS27x6F0FeIBY5fj42fvHJeIad
-	 s3nZOmI5k4euB7uEzu6BX7BtwLHl6jNetFdv7vFeRkJYpFupdnXsUI9EVJ6XOgFWGx
-	 xhCD2R/KEoZxg==
-Received: by mail-lf1-f44.google.com with SMTP id 2adb3069b0e04-5bb7c6980f1so699146e87.2
-        for <linux-mediatek@lists.infradead.org>; Wed, 04 Nov 2026 05:28:39 -0800 (PST)
-X-Forwarded-Encrypted: i=1; AKwUvByJ4p4PZ527sF3UKfZPfgEq7XTSWPlXUsZUbcUltQj2Q/rGjGF+fVHM6tj6uX5pFw2RCKbM/0l3JAQsQW3kXw==@lists.infradead.org
-X-Gm-Message-State: APuU4Z9rjpbRv5ewA1QukFm2+RQBRd1WyrIhCy5fm2tMqzcUWbrGhrcI
-	ak+V/s27y+QuLxqkx1bWjrkmt+DlEuTD0PSLO6ZGwk0+w0Ws6LsGWn0cIkKIYQOxNLmfT8WHLXu
-	z8V4oYZz5Jgu5dWMDLxgX9o9Ce+9jjlY=
-X-Received: by 2002:a05:6512:124a:b0:5bf:d60c:9f98 with SMTP id
- 2adb3069b0e04-5bfd9583912mr6161437e87.59.1793798917566; Wed, 04 Nov 2026
- 05:28:37 -0800 (PST)
+	Wed, 04 Nov 2026 14:27:58 +0000
+Received: by mail-yw1-x1132.google.com with SMTP id 00721157ae682-8b12b1ee403so5245167b3.2
+        for <linux-mediatek@lists.infradead.org>; Wed, 04 Nov 2026 06:27:55 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=mtu.edu; s=google; t=1793802475; x=1794407275; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
+        bh=RCbnvskndM4HyM/U/wv9olKZU1ADpK80ces2ych6agU=;
+        b=gEwsqXVLO1LtHMWwWoygtJLL89ch74hQgMzZhq9+Dr7ldu8Jbz2Cm62yAcKFVzpum0
+         cxnvRrAfnN69dmjGILnb3VQgExpiJBIaoKkYCVOpqEGlMktTucdnNDESSi1Ubc6691sT
+         JKctd6JD4wHiDD45EDLLuZyyW8OVEfGc2PvrGUbl2atUrn3ixfv0vLCtaJ6Ev+85xuUK
+         HR94ixkDgXCtqNP8C+VrnGy7XDaucQ8tSEMrtPbcnWK/dz/ZVT+fzwoJe+Qgwb2kxQln
+         eZjTz6CslEB9uvsMcIatlzQEfPcZU28iODDbjWhko6DsyC8d0ZJNFuUDsrpnX6LcKdcG
+         lsrg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20260707; t=1793802475; x=1794407275;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to:content-type;
+        bh=RCbnvskndM4HyM/U/wv9olKZU1ADpK80ces2ych6agU=;
+        b=SeiB0QlUQQTed/5iQc8KFItzwjU4WflRd3xjlTWW6QKzR8zLtF1l0JXaRgQv1TPQzx
+         uhq2Zimbsu5v05kPjMfJZf5bX8SZjE4bgetoho7oLjrVE5pR4PMrKvsAc4xxFzEfbKN9
+         x0irdeW2fqUHRmm8ljTu6upbzmiGuS06mIsYMll16N65s2ijJBDaDuHpcopW5AeOwQwj
+         7OeITlIrsM37YlKHNynV2lLMROYZ1Jed6oKCIphY3ehfPq6N34sFPtu/TQpn/lPskdtF
+         +2x30b9E6F16TTTTRpC+Bwo2tqL+ARZ1qq9GKcRaTEXR3rPr6HeTmuL/ClIReFtM4Dcq
+         h2aA==
+X-Forwarded-Encrypted: i=1; AKwUvByAik+UReKRLrqDShrk2Fr5DMK8ikgAr4l5y7y/4csINzyPRtWw0eIYczKoVEvQct3FuGhbR821NMlwCOTdgg==@lists.infradead.org
+X-Gm-Message-State: APuU4Z8hXSsaSSyezVy+pMHaCpiWAI0xIMPnixwRn91Vgq2OLDU2dejl
+	9N8mSAvBV/IeInezhmevh7tFo3JgkTAmUDluOBIVgMscQel20rFfwBncIALuc4t0mQ==
+X-Gm-Gg: AYBFou0cnf+qSXdWWhe4/Xeq7U2gueJ7mrGNGVn7bUBZCD4uWjwQlF9KdiqWqHAdHb7
+	2NM4z0WzbOvq5Ej2PDtCvgEN13Yd6UYKI9hAXMlL1bvFq/ARmPiMzzc8lZzeU+qaGaNcf15vqis
+	t1tcKCVKXKqx7VKGE1fpjhN759v4+cKl7QEscacOQgemBYgpSmQc/PWjaP/flWeDF6bJYDcUZCY
+	zHZ2bu4bmy+Ox8BkASkXClqUc2rLp7BF93kdndsWzDi7MWr2ajWwFEabmWaojDQkeGCcX6yfWHs
+	t50O0NxZ0L9SrOUxEftnvOjSpdkmYIbTv9KxXUOSMoto7H6hGjC3LU+AJ9cCxRg2WHVjYsP/c2k
+	QiRGNbXHtYbgCUFI/9cUT0xxW1ssrKemFxVDFA1rfPEMjZMqVPO2MFCl5eRW1yAO48pdLggix06
+	q20YPhQprDJnYSpChK7t2pBuSPwIQKSk4yHbhf7JRZo+zMY826Uh5zEuHkvnnyUIAsBwKuD/ExE
+	IzWJgtW+whnWREaCCYm5ud8coEI/jgbYm2dcGf1mzvEr1nD2S0qjJ2fmeNGNQ382m57MSY1Cyn9
+	GHQUN4PKU9KL8IL6GJX/fAsJr617Ice8+Nhk52XJL/0H4dLKsXXCW91T/A==
+X-Received: by 2002:a05:690c:e013:10b0:8b3:2352:cc72 with SMTP id 00721157ae682-8b32352d42cmr3066537b3.39.1793802474565;
+        Wed, 04 Nov 2026 06:27:54 -0800 (PST)
+Received: from agent-virtualbox.mtu.edu ([47.6.6.53])
+        by smtp.gmail.com with ESMTPSA id 00721157ae682-8b30993945bsm19389467b3.21.2026.11.04.06.27.53
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 04 Nov 2026 06:27:54 -0800 (PST)
+From: Aaron Beckendorf <albecken@mtu.edu>
+To: Felix Fietkau <nbd@nbd.name>,
+	Lorenzo Bianconi <lorenzo@kernel.org>,
+	Ryder Lee <ryder.lee@mediatek.com>
+Cc: Shayne Chen <shayne.chen@mediatek.com>,
+	Sean Wang <sean.wang@mediatek.com>,
+	Devin <lucid_duck@justthetip.ca>,
+	linux-wireless@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	Aaron Beckendorf <albecken@mtu.edu>
+Subject: [PATCH v2] wifi: mt76: connac: honour injected HT/VHT rate and bandwidth
+Date: Wed,  4 Nov 2026 09:26:22 -0500
+Message-ID: <20261104142737.186484-1-albecken@mtu.edu>
+X-Mailer: git-send-email 2.53.0
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-References: <20261023175710.19181-1-vikrantyadav4802@gmail.com>
-In-Reply-To: <20261023175710.19181-1-vikrantyadav4802@gmail.com>
-From: Linus Walleij <linusw@kernel.org>
-Date: Wed, 4 Nov 2026 14:28:25 +0100
-X-Gmail-Original-Message-ID: <CAD++jL=0E8+H9A6M4r=+_P5Q6BDyL9J0A6DDZborrMt0ioAZkA@mail.gmail.com>
-X-Gm-Features: AclHuK_cAGzrhoW8feJiHqlVa1pPLSLWgUyyK-IC6FwMXxU_M-CdGLm6sZ7z9jw
-Message-ID: <CAD++jL=0E8+H9A6M4r=+_P5Q6BDyL9J0A6DDZborrMt0ioAZkA@mail.gmail.com>
-Subject: Re: [PATCH] pinctrl: airoha: fix bias readback in airoha_pinconf_get()
-To: Vikrant Yadav <vikrantyadav4802@gmail.com>, 
-	"Christian Marangi (Ansuel)" <ansuelsmth@gmail.com>
-Cc: lorenzo@kernel.org, linux-mediatek@lists.infradead.org, 
-	linux-gpio@vger.kernel.org, linux-kernel@vger.kernel.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 8bit
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20261104_062756_582746_6D6BFCF4 
+X-CRM114-Status: GOOD (  13.45  )
+X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,29 +103,93 @@ List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-10.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-18.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,
-	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS autolearn=ham autolearn_force=no version=4.0.1
+	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=ham
+	autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On Fri, Oct 23, 2026 at 7:57=E2=80=AFPM Vikrant Yadav
-<vikrantyadav4802@gmail.com> wrote:
+On connac2 parts the fixed-rate TXD path uses the basic rate from
+mt76_connac2_mac_tx_rate_val() and ignores the rate carried in an
+injected frame's radiotap header, so monitor-mode injection always goes
+out at a legacy 20 MHz rate and cannot choose the modulation or channel
+width.
 
-> In airoha_pinconf_get(), the last branch of bias check
-> "else if (pull_up || pull_down)", has no check on the requested
-> parameter. It was meant to reject PIN_CONFIG_BIAS_DISABLE when a pull
-> is enabled, but it also runs for PIN_CONFIG_BIAS_PULL_UP and
-> PIN_CONFIG_BIAS_PULL_DOWN. When the pin really has that pull set, the
-> earlier PULL_UP/PULL_DOWN checks do not reject it, so the execution
-> reaches this branch, which returns -EINVAL. Reading back a pull-up or
-> pull-down therefore always fails.
->
-> Signed-off-by: Vikrant Yadav <vikrantyadav4802@gmail.com>
+When info->control.rates[0] contains an HT or VHT MCS, set the TXD6 rate
+from it instead: mode (HT/VHT), MCS, NSS, and the channel width from the
+rate flags; for HT the whole MCS index is used, as mt7615 does. Legacy
+injection and the normal (non-fixed-rate) data path are unchanged.
 
-Maybe Christian can ACK this patch if it looks right?
+This makes 20/40/80 MHz HT/VHT injection work on mt7921u. mt7925 and
+mt7996 build their own TX descriptor and are not affected.
 
-Yours,
-Linus Walleij
+Signed-off-by: Aaron Beckendorf <albecken@mtu.edu>
+---
+v2:
+ - HT: use the whole MCS index in the rate index field; the v1 mask
+   (tr->idx & 0x7) dropped the second spatial stream, so HT MCS 8-15
+   went out as 0-7.  Caught in review by Devin <lucid_duck@justthetip.ca>.
+ - Also set the 160 MHz width; the shared mt76_connac2_mac_write_txwi()
+   is used by the 160-capable mt7915 family and mt7922, matching mt7615.
+ - Drop the mt7925u claim; mt7925 has its own mt7925_mac_write_txwi()
+   and never reaches this path.
+
+ .../wireless/mediatek/mt76/mt76_connac_mac.c  | 37 +++++++++++++++++++
+ 1 file changed, 37 insertions(+)
+
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76_connac_mac.c b/drivers/net/wireless/mediatek/mt76/mt76_connac_mac.c
+index 8481eac8d783..e62d39cb1ba5 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76_connac_mac.c
++++ b/drivers/net/wireless/mediatek/mt76/mt76_connac_mac.c
+@@ -602,6 +602,43 @@ void mt76_connac2_mac_write_txwi(struct mt76_dev *dev, __le32 *txwi,
+ 		u32 val = MT_TXD6_FIXED_BW;
+ 		u8 spe_idx = mt76_connac_spe_idx(mphy->antenna_mask);
+ 
++		/* Honour an injected HT/VHT rate and bandwidth from radiotap:
++		 * connac otherwise transmits at the basic rate picked by
++		 * mt76_connac2_mac_tx_rate_val(), so monitor injection cannot
++		 * select the modulation or channel width.
++		 */
++		if (info->control.rates[0].idx >= 0 &&
++		    (info->control.rates[0].flags &
++		     (IEEE80211_TX_RC_MCS | IEEE80211_TX_RC_VHT_MCS))) {
++			struct ieee80211_tx_rate *tr = &info->control.rates[0];
++			u8 mode, mcs, nss = 0, bw = 0;
++
++			if (tr->flags & IEEE80211_TX_RC_VHT_MCS) {
++				mode = MT_PHY_TYPE_VHT;
++				mcs = ieee80211_rate_get_vht_mcs(tr);
++				nss = ieee80211_rate_get_vht_nss(tr) - 1;
++			} else {
++				mode = MT_PHY_TYPE_HT;
++				/* the HT rate index encodes NSS in its upper
++				 * bits, so pass it whole, as mt7615 does
++				 */
++				mcs = tr->idx;
++				nss = tr->idx >> 3;
++			}
++
++			if (tr->flags & IEEE80211_TX_RC_80_MHZ_WIDTH)
++				bw = 2;
++			else if (tr->flags & IEEE80211_TX_RC_40_MHZ_WIDTH)
++				bw = 1;
++			else if (tr->flags & IEEE80211_TX_RC_160_MHZ_WIDTH)
++				bw = 3;
++
++			rate = FIELD_PREP(MT_TX_RATE_MODE, mode) |
++			       FIELD_PREP(MT_TX_RATE_IDX, mcs) |
++			       FIELD_PREP(MT_TX_RATE_NSS, nss);
++			val = MT_TXD6_FIXED_BW | FIELD_PREP(MT_TXD6_BW, bw);
++		}
++
+ 		/* hardware won't add HTC for mgmt/ctrl frame */
+ 		txwi[2] |= cpu_to_le32(MT_TXD2_HTC_VLD);
+ 
+
+base-commit: 991a73f4909f1348ffb4b38765cdb522a775e4c2
+-- 
+2.53.0
+
 
