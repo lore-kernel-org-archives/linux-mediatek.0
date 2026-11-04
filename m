@@ -2,11 +2,11 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id D2179606A31B
-	for <linux-mediatek@archiver.kernel.org>; Wed,  4 Nov 2026 09:21:03 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 5280B606A33B
+	for <linux-mediatek@archiver.kernel.org>; Wed,  4 Nov 2026 09:23:54 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=RB2rA906;
-	dkim=pass (1024-bit key, unprotected) header.d=mediatek.com header.i=@mediatek.com header.a=rsa-sha256 header.s=dk header.b=YlCByzyE
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=sFyt/gDC;
+	dkim=pass (1024-bit key, unprotected) header.d=mediatek.com header.i=@mediatek.com header.a=rsa-sha256 header.s=dk header.b=oQ44gZmT
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
@@ -14,58 +14,57 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
 	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
 	List-Unsubscribe-Post:List-Owner;
-	bh=6AB0aUftO+vEy/g2psH5+jOjb1/rV0ha7zr/Qi/8gcE=; b=RB2rA90609e19iu/pCLMAlQKeK
-	NPu24jwrEWAlejMmNtQJttYOGrCRD8sQwXwWUgMP0Q0IAytorHP9jpmB5hn5ddyeZza++rCo4bsi/
-	JTNeC+yW82BTMzMUNS+o949DPUl48xvp/fTEyrQUXL0gNEN+lE9lfxMChJcxF3IXurFFS75+c1lQB
-	GQHDRdlRsb49sW+zxlto/UE3QfJSPTWWU3mD+giz3dE07bEhZIc36uRU5jWUe6aN2nYYjPjYno0V6
-	HVbM0vQRNRsfDI8SPkigkNFaVKyXN1aCOgo59Q4c3jS54TwxlKEB9PWaeQmXG4gUkixwpGC/n3HfF
-	S43NXpSA==;
+	bh=2INDX/rvMJOfEhvd5jk6takNkT8Gwzb4EvXnhOeoGKY=; b=sFyt/gDC35PLFS6rAhaO1ZyPuu
+	Jz+A3fpHN9gqTu6aq0k1DD26iTR/VDNwUljEJJISSSET//yYxHT030M4ZWM+gjNbAHoRZcqL78XOo
+	wJYQw0Pg/FpAck1BB1M8nlJw1Wvy8j0gkjQH0zfp//WHQ6lR6fVVt694Gp5XykZd8JUm0ZQdk6Kl8
+	Dxhf8dV3hQ1BCAqJYaZ2gsaFQxSyOtD/ybMPtzNSqpoOQ3dyc1V27QsCXHzFzLMqdx+c+smU/CbEo
+	+XGXn0H5O5yOJU2b53ZWj8nz/66MWqOXZfl/XY7Q0k/IZQw0F/6KBTjgB8eawOg+6CTCT4DP63A0l
+	P/7d9SAw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xOXB1-00000004rFv-1rve;
-	Wed, 04 Nov 2026 09:21:03 +0000
+	id 1xOXDl-00000004rk9-45oH;
+	Wed, 04 Nov 2026 09:23:54 +0000
 Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xOXAy-00000004rEs-2UlH
+	id 1xOXDj-00000004rjR-2XyM
 	for linux-mediatek@lists.infradead.org;
-	Wed, 04 Nov 2026 09:21:01 +0000
-X-UUID: 0914e37ad83111f1acbe4559397dec65-20261104
+	Wed, 04 Nov 2026 09:23:52 +0000
+X-UUID: 707583b2d83111f1acbe4559397dec65-20261104
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=6AB0aUftO+vEy/g2psH5+jOjb1/rV0ha7zr/Qi/8gcE=;
-	b=YlCByzyEwHv+dBZM5cHnNcrKbEpVq95FyE+uye20jD7q7uk5dTVp1A4OEa78lxJvc2ua3molRuPc4RMca/TGFk1at5n9WExu2aCZHFN9fCo3x5kM7TRKu2CHJX8QnupIMomLTEHLe24dhbpioTXKqU9VjMilVg9xwSpBtwAfX1I=;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=2INDX/rvMJOfEhvd5jk6takNkT8Gwzb4EvXnhOeoGKY=;
+	b=oQ44gZmTcRSk0Fk4LLhXSHssO0BhV5V7p1py/Seqs2POncnq+fto8O/qs+PyPTyls83kPIlSUCwhGD4/xDhQ1R9QRTMFnp3t0MZol3UQ35dm3r8LEOZuSKNN5eHpKPUxok70lRgaqvA/KXyTgxjSWfkCtWtkIE+KXJf5HkUdg6s=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.21,REQID:63f33e22-ea4d-446d-a703-8607899ae277,IP:0,U
-	RL:0,TC:0,Content:25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
-	:release,TS:25
-X-CID-META: VersionHash:b0318ac,CLOUDID:0e5261bb-4006-44bb-949c-6e25a7b8dad4,B
-	ulkID:nil,BulkQuantity:0,SF:102|136|836|865|888|898,TC:-5,Content:4|15|50|
-	99,EDM:-3|-100,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:nil,COL:0,OS
-	I:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-O-INFO: VERSION:1.3.21,REQID:a5a1172b-158e-40cb-bc21-3d37fb2bb997,IP:0,U
+	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
+	N:release,TS:-25
+X-CID-META: VersionHash:b0318ac,CLOUDID:3d0925da-e88e-4ef1-b702-a0dba11ad564,B
+	ulkID:nil,BulkQuantity:0,SF:102|836|865|888|898,TC:-5,Content:0|15|50|99,E
+	DM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0
+	,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
 X-CID-BVR: 2,SSN|SDN
 X-CID-BAS: 2,SSN|SDN,0,_
 X-CID-FACTOR: TF_CID_SPAM_SNR
 X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: 0914e37ad83111f1acbe4559397dec65-20261104
+X-UUID: 707583b2d83111f1acbe4559397dec65-20261104
 Received: from mtkmbs11n1.mediatek.inc [(172.21.101.185)] by mailgw02.mediatek.com
 	(envelope-from <jb.tsai@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1253380444; Wed, 04 Nov 2026 02:20:54 -0700
+	with ESMTP id 757369622; Wed, 04 Nov 2026 02:23:47 -0700
 Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
- mtkmbs13n2.mediatek.inc (172.21.101.108) with Microsoft SMTP Server
+ mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.29; Wed, 4 Nov 2026 17:20:51 +0800
+ 15.2.2562.29; Wed, 4 Nov 2026 17:23:45 +0800
 Received: from mtksitap99.mediatek.inc (10.233.130.16) by
  mtkmbs13n1.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.2562.29 via Frontend Transport; Wed, 4 Nov 2026 17:20:51 +0800
+ 15.2.2562.29 via Frontend Transport; Wed, 4 Nov 2026 17:23:45 +0800
 From: JB Tsai <jb.tsai@mediatek.com>
-To: <johannes@sipsolutions.net>
-CC: <nbd@nbd.name>, <lorenzo@kernel.org>, <linux-wireless@vger.kernel.org>,
-	<linux-mediatek@lists.infradead.org>, <Sean.Wang@mediatek.com>,
-	<jb.tsai@mediatek.com>, <James-LY.Huang@mediatek.com>, james-ly huang
-	<james-ly.huang@mediatek.com>
-Subject: [PATCH 1/1] wifi: mac80211: don't coalesce a new ROC onto an expired one
-Date: Wed, 4 Nov 2026 17:20:50 +0800
-Message-ID: <20261104092050.1930716-1-jb.tsai@mediatek.com>
+To: <nbd@nbd.name>, <lorenzo@kernel.org>
+CC: <linux-wireless@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
+	<Sean.Wang@mediatek.com>, <James-LY.Huang@mediatek.com>,
+	<jb.tsai@mediatek.com>, james-ly huang <james-ly.huang@mediatek.com>
+Subject: [PATCH 1/9] wifi: mt76: mt7925: drop P2P mgmt frames received on foreign channel
+Date: Wed, 4 Nov 2026 17:23:36 +0800
+Message-ID: <20261104092344.1932406-1-jb.tsai@mediatek.com>
 X-Mailer: git-send-email 2.45.2
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
@@ -73,8 +72,8 @@ Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261104_012100_671499_A0C0EF98 
-X-CRM114-Status: GOOD (  16.54  )
+X-CRM114-CacheID: sfid-20261104_012351_658906_1005258C 
+X-CRM114-Status: GOOD (  22.63  )
 X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -96,71 +95,266 @@ X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 
 From: james-ly huang <james-ly.huang@mediatek.com>
 
-ieee80211_coalesce_hw_started_roc() computed the remaining time of the
-running ROC as
+Start a dedicated p2p.c/p2p.h module for the P2P-only logic the
+generic mt7925 data paths hook into, and put the RX-side filter
+there first:
 
-	remaining = cur_roc->start_time +
-		    msecs_to_jiffies(cur_roc->duration) - now;
+  - a Probe Response received while P2P discovery walks the social
+    channels may carry IEs advertising a band/channel other than the
+    one it was received on (WFA P2P IE only) - drop it;
+  - an active P2P GO only cares about broadcast Probe Requests that
+    arrive on its own operating channel - drop foreign-channel ones.
 
-and merged the new request into it when the new duration fits. When the
-running ROC is already over, that subtraction wraps around (unsigned),
-the "fits" check passes, and the new request gets added behind a ROC
-that will never produce another on_channel or expired event.
-
-The expired-but-still-listed state is not rare at all: the driver's
-ieee80211_remain_on_channel_expired() only queues the hw_roc_done work,
-so until that work runs - the driver's UNI_ROC_ABORT round trip can
-take tens of ms - every ROC on the list whose time is up stays listed
-with started=true. A remain-on-channel / mgmt-TX request arriving in
-that window hits exactly this path.
-
-Check the ROC's end time explicitly with time_after_eq() and refuse to
-coalesce once it has passed; compute the (now guaranteed positive)
-remaining window from the same end time.
+mac.c hooks the filter in mt7925_queue_rx_skb() via the new
+mt7925_p2p_rx_drop_chan_mismatch().
 
 Signed-off-by: james-ly huang <james-ly.huang@mediatek.com>
 ---
- net/mac80211/offchannel.c | 18 +++++++++++++-----
- 1 file changed, 13 insertions(+), 5 deletions(-)
+ .../wireless/mediatek/mt76/mt7925/Makefile    |   2 +-
+ .../net/wireless/mediatek/mt76/mt7925/mac.c   |  10 ++
+ .../net/wireless/mediatek/mt76/mt7925/p2p.c   | 166 ++++++++++++++++++
+ .../net/wireless/mediatek/mt76/mt7925/p2p.h   |  18 ++
+ 4 files changed, 195 insertions(+), 1 deletion(-)
+ create mode 100644 drivers/net/wireless/mediatek/mt76/mt7925/p2p.c
+ create mode 100644 drivers/net/wireless/mediatek/mt76/mt7925/p2p.h
 
-diff --git a/net/mac80211/offchannel.c b/net/mac80211/offchannel.c
-index 44808120ff51..a9cc802f68dc 100644
---- a/net/mac80211/offchannel.c
-+++ b/net/mac80211/offchannel.c
-@@ -529,7 +529,7 @@ ieee80211_coalesce_hw_started_roc(struct ieee80211_local *local,
- 				  struct ieee80211_roc_work *cur_roc)
- {
- 	unsigned long now = jiffies;
--	unsigned long remaining;
-+	unsigned long end;
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/Makefile b/drivers/net/wireless/mediatek/mt76/mt7925/Makefile
+index 33539121a15c..697a2bbce46c 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7925/Makefile
++++ b/drivers/net/wireless/mediatek/mt76/mt7925/Makefile
+@@ -4,7 +4,7 @@ obj-$(CONFIG_MT7925_COMMON) += mt7925-common.o
+ obj-$(CONFIG_MT7925E) += mt7925e.o
+ obj-$(CONFIG_MT7925U) += mt7925u.o
  
- 	if (WARN_ON(!cur_roc->started))
- 		return false;
-@@ -540,12 +540,20 @@ ieee80211_coalesce_hw_started_roc(struct ieee80211_local *local,
- 	if (!cur_roc->hw_begun && new_roc->duration > cur_roc->duration)
- 		return false;
- 
--	remaining = cur_roc->start_time +
--		    msecs_to_jiffies(cur_roc->duration) -
--		    now;
-+	end = cur_roc->start_time + msecs_to_jiffies(cur_roc->duration);
+-mt7925-common-y := mac.o mcu.o regd.o main.o init.o debugfs.o nan.o
++mt7925-common-y := mac.o mcu.o regd.o main.o init.o debugfs.o nan.o p2p.o
+ mt7925-common-$(CONFIG_NL80211_TESTMODE) += testmode.o
+ mt7925e-y := pci.o pci_mac.o pci_mcu.o cached_cal.o
+ mt7925u-y := usb.o
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/mac.c b/drivers/net/wireless/mediatek/mt76/mt7925/mac.c
+index 7af996abe294..6e67ef3c52fa 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7925/mac.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7925/mac.c
+@@ -5,6 +5,7 @@
+ #include <linux/etherdevice.h>
+ #include <linux/timekeeping.h>
+ #include "mt7925.h"
++#include "p2p.h"
+ #include "../dma.h"
+ #include "regd.h"
+ #include "mac.h"
+@@ -1459,6 +1460,15 @@ void mt7925_queue_rx_skb(struct mt76_dev *mdev, enum mt76_rxq_id q,
+ 	case PKT_TYPE_NORMAL_MCU:
+ 	case PKT_TYPE_NORMAL:
+ 		if (!mt7925_mac_fill_rx(dev, skb)) {
++			struct mt76_rx_status *status =
++				(struct mt76_rx_status *)skb->cb;
 +
-+	/* The current ROC may already be over: the driver's
-+	 * ieee80211_remain_on_channel_expired() only queues hw_roc_done,
-+	 * so until that work runs the ROC stays on roc_list with
-+	 * started=true and no remaining time. Coalescing onto it would
-+	 * leave the new request queued behind a ROC that will not produce
-+	 * another on_channel or expired event
-+	 */
-+	if (time_after_eq(now, end))
++			if (!(status->flag & RX_FLAG_8023) &&
++			    mt7925_p2p_rx_drop_chan_mismatch(dev, skb)) {
++				dev_kfree_skb(skb);
++				return;
++			}
++
+ 			mt76_rx(&dev->mt76, q, skb);
+ 			return;
+ 		}
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/p2p.c b/drivers/net/wireless/mediatek/mt76/mt7925/p2p.c
+new file mode 100644
+index 000000000000..12d6eee8ce10
+--- /dev/null
++++ b/drivers/net/wireless/mediatek/mt76/mt7925/p2p.c
+@@ -0,0 +1,166 @@
++// SPDX-License-Identifier: BSD-3-Clause-Clear
++/* Copyright (C) 2026 MediaTek Inc. */
++
++/* Everything in this file is P2P-only logic that the generic mt7925 data
++ * paths hook into: RX-side filtering of foreign-channel discovery frames,
++ * TX-side TXD (lifetime / retry / timestamp) overrides for off-channel and
++ * GO Probe Response frames, the per-P2P-interface BMC wcid bookkeeping,
++ * the pre-grant .change_chanctx gate and the P2P-only MCU event handlers
++ * (SAP aging timeout, BSS absence).
++ */
++
++#include <linux/etherdevice.h>
++#include <linux/units.h>
++#include <net/mac80211.h>
++
++#include "../mt76.h"
++#include "../mt76_connac.h"
++#include "../mt792x.h"
++#include "mt7925.h"
++#include "mac.h"
++#include "mcu.h"
++#include "p2p.h"
++
++/* ------------------------------------------------------------------ */
++/* RX: foreign-channel discovery frames                                 */
++/* ------------------------------------------------------------------ */
++
++/* Channel number a management frame advertises in its own IEs: DSSS Parameter
++ * Set, or the HT Operation primary channel when there is no DS Params element.
++ */
++static u8 mt7925_rx_ie_chan(const u8 *ies, int ies_len)
++{
++	const struct ieee80211_ht_operation *ht_oper;
++	const struct element *elem;
++
++	elem = cfg80211_find_elem(WLAN_EID_DS_PARAMS, ies, ies_len);
++	if (elem && elem->datalen == 1)
++		return elem->data[0];
++
++	elem = cfg80211_find_elem(WLAN_EID_HT_OPERATION, ies, ies_len);
++	if (elem && elem->datalen >= sizeof(*ht_oper)) {
++		ht_oper = (const void *)elem->data;
++		return ht_oper->primary_chan;
++	}
++
++	return 0;
++}
++
++/* A Probe Response received while P2P discovery walks the social channels may
++ * carry IEs advertising a band/channel other than the one it was received on.
++ * Scope: only Probe Responses that carry the WFA P2P IE.
++ */
++static bool
++mt7925_rx_drop_p2p_probe_resp(struct sk_buff *skb,
++			      struct mt76_rx_status *status)
++{
++	struct ieee80211_mgmt *mgmt = (struct ieee80211_mgmt *)skb->data;
++	int hdr_len = offsetof(struct ieee80211_mgmt, u.probe_resp.variable);
++	const u8 *ies;
++	int ies_len;
++	u8 ie_chan;
++
++	if (skb->len <= hdr_len)
 +		return false;
- 
- 	/* if it doesn't fit entirely, schedule a new one */
--	if (new_roc->duration > jiffies_to_msecs(remaining))
-+	if (new_roc->duration > jiffies_to_msecs(end - now))
- 		return false;
- 
- 	/* add just after the current one so we combine their finish later */
++
++	ies = mgmt->u.probe_resp.variable;
++	ies_len = skb->len - hdr_len;
++
++	if (!cfg80211_find_vendor_ie(WLAN_OUI_WFA, WLAN_OUI_TYPE_WFA_P2P,
++				     ies, ies_len))
++		return false;
++
++	ie_chan = mt7925_rx_ie_chan(ies, ies_len);
++	if (!ie_chan)
++		return false;
++
++	if (ieee80211_channel_to_frequency(ie_chan, status->band) ==
++	    status->freq)
++		return false;
++
++	return true;
++}
++
++struct mt7925_rx_chan_iter_data {
++	u16 freq;
++	u8 band;
++	bool p2p_go_active;
++	bool chan_match;
++};
++
++static void mt7925_rx_chan_iter(void *priv, u8 *mac, struct ieee80211_vif *vif)
++{
++	struct mt7925_rx_chan_iter_data *data = priv;
++	unsigned int link_id;
++
++	for (link_id = 0; link_id < ARRAY_SIZE(vif->link_conf); link_id++) {
++		struct ieee80211_chanctx_conf *ctx;
++		struct ieee80211_bss_conf *conf;
++
++		conf = rcu_dereference(vif->link_conf[link_id]);
++		if (!conf)
++			continue;
++
++		ctx = rcu_dereference(conf->chanctx_conf);
++		if (!ctx || !ctx->def.chan)
++			continue;
++
++		if (vif->type == NL80211_IFTYPE_AP && vif->p2p)
++			data->p2p_go_active = true;
++
++		if (ctx->def.chan->band == data->band &&
++		    ctx->def.chan->center_freq == data->freq)
++			data->chan_match = true;
++	}
++}
++
++/* An active P2P GO only cares about broadcast Probe Requests that arrive on its
++ * own operating channel. Drop foreign-channel broadcast Probe Requests.
++ */
++static bool
++mt7925_rx_drop_go_probe_req(struct mt792x_dev *dev, struct sk_buff *skb,
++			    struct mt76_rx_status *status)
++{
++	struct ieee80211_mgmt *mgmt = (struct ieee80211_mgmt *)skb->data;
++	struct mt7925_rx_chan_iter_data data = {
++		.freq = status->freq,
++		.band = status->band,
++	};
++
++	if (!is_broadcast_ether_addr(mgmt->da))
++		return false;
++
++	if (test_bit(MT76_STATE_ROC, &dev->mphy.state))
++		return false;
++
++	ieee80211_iterate_active_interfaces_atomic(dev->mt76.hw,
++						   IEEE80211_IFACE_ITER_RESUME_ALL,
++						   mt7925_rx_chan_iter, &data);
++
++	if (!data.p2p_go_active || data.chan_match)
++		return false;
++
++	return true;
++}
++
++/* Drop management frames whose own notion of the channel contradicts the
++ * channel the hardware reported them on.
++ */
++bool
++mt7925_p2p_rx_drop_chan_mismatch(struct mt792x_dev *dev, struct sk_buff *skb)
++{
++	struct mt76_rx_status *status = (struct mt76_rx_status *)skb->cb;
++	struct ieee80211_hdr *hdr = (struct ieee80211_hdr *)skb->data;
++
++	if (skb->len < sizeof(struct ieee80211_hdr_3addr) || !status->freq)
++		return false;
++
++	if (ieee80211_is_probe_resp(hdr->frame_control))
++		return mt7925_rx_drop_p2p_probe_resp(skb, status);
++
++	if (ieee80211_is_probe_req(hdr->frame_control))
++		return mt7925_rx_drop_go_probe_req(dev, skb, status);
++
++	return false;
++}
++
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/p2p.h b/drivers/net/wireless/mediatek/mt76/mt7925/p2p.h
+new file mode 100644
+index 000000000000..ed51670d9633
+--- /dev/null
++++ b/drivers/net/wireless/mediatek/mt76/mt7925/p2p.h
+@@ -0,0 +1,18 @@
++/* SPDX-License-Identifier: BSD-3-Clause-Clear */
++/* Copyright (C) 2026 MediaTek Inc. */
++
++#ifndef __MT7925_P2P_H
++#define __MT7925_P2P_H
++
++#include <net/mac80211.h>
++
++#include "../mt76.h"
++#include "../mt792x.h"
++
++/* TX/RX path overrides, BMC wcid bookkeeping and the P2P-only MCU event
++ * handlers.
++ */
++bool mt7925_p2p_rx_drop_chan_mismatch(struct mt792x_dev *dev,
++				      struct sk_buff *skb);
++
++#endif /* __MT7925_P2P_H */
 -- 
 2.45.2
 
