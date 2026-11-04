@@ -2,61 +2,133 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id E8A2E606EEBC
-	for <linux-mediatek@archiver.kernel.org>; Wed,  4 Nov 2026 18:59:36 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 48732606AB10
+	for <linux-mediatek@archiver.kernel.org>; Wed,  4 Nov 2026 20:30:11 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=p0zdMOmu;
-	dkim=pass (2048-bit key, unprotected) header.d=protonmail.com header.i=@protonmail.com header.a=rsa-sha256 header.s=protonmail3 header.b=ZSXPcTro
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=hvG+iGbI;
+	dkim=pass (2048-bit key, unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256 header.s=Intel header.b=F4CrLZx1
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:From:
-	To:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Unsubscribe-Post:
-	List-Owner; bh=m7rHPBwaK2QnFjTfM9iOAm57zKhbpBduzc8crhMuhp8=; b=p0zdMOmu7ROqmp
-	DUm5nJU/WDlk9P+rXTUqroQkrYRX9nZQkty0D4KBRVuITStgkJ+PGdWpK2hFUliCTr9MtgZdSmy8f
-	b5wO572pj3cNatxaCDP/mrkfSco6Qr9URlOAIycUQ3l4hfIbmUHIpO7LELI9TG5sAstWTbflzev7d
-	mOa9E48RQ3NHVix4GQebbtz648AkXXMTaFtwa0cyS43JMxRkgErFZucgnNnbqCgjVX025Xv4LNosA
-	YSDid4/fdZe81SNHFhVlNsoLbAPamHHBV3V+SPSG0kyBzf/3x+vK+MMF9aW2FhbPjtWZEOy0bKaYd
-	j7bmZel7phNZLw/KZvew==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Unsubscribe-Post:List-Owner;
+	bh=Eecn0Ygaf7mft5z9aYz9Ro3xQK3/iLvYEIUNIgo48NA=; b=hvG+iGbIQlbZg1sD48rznkmWwI
+	TTEXaFGmdXQwKrVtWaI+vwHSxVPsrMckkacMea2nF/Q5SfBTU+cc+1MnnZNMuycA2JTkEgUxbWZCe
+	u88no8aFD7ZsFFYQ1T3ABys9D4qmWKdh+KmI29xaTxFxuYLvA0OYbjAjwbI0aWBYwIEbGQpVzk7h4
+	X6d2j8I3sGMkTrjOes7p7mwb01+lvp5zyuY3Ks7bV2UTiGmMCDsVW61ymZ2O/2Wx2OWGCi9IVFp13
+	0/dS+fMUBrG+ohDAuhLp7YQRyNFRV8ZDnM+SVMfBQGW1XY16/ywNHSVoXVlDJfm6PfDjyNvWbtmK1
+	8GpwVtrg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xOgCu-00000006V7F-2aZd;
-	Wed, 04 Nov 2026 18:59:36 +0000
-Received: from mail-4322.protonmail.ch ([185.70.43.22])
+	id 1xOhcY-00000006tfT-49LF;
+	Wed, 04 Nov 2026 20:30:10 +0000
+Received: from mgamail.intel.com ([192.198.163.17])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xOgCs-00000006V58-05p1;
-	Wed, 04 Nov 2026 18:59:35 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=protonmail.com;
-	s=protonmail3; t=1793818771; x=1794077971;
-	bh=m7rHPBwaK2QnFjTfM9iOAm57zKhbpBduzc8crhMuhp8=;
-	h=Date:To:From:Cc:Subject:Message-ID:In-Reply-To:References:
-	 Feedback-ID:From:To:Cc:Date:Subject:Reply-To:Feedback-ID:
-	 Message-ID:BIMI-Selector;
-	b=ZSXPcTrojU0nKPQ7wcqHAeV2ZoLT12SqXlgU//5hc5rMpnCKKFRMAFllbrCF3LYKP
-	 domxctA98X0SMSPXMMr+ueDPRlpjGteXvhusWkTNx0BQdCrF6z0OIYSHy19BKbo2/n
-	 4WY32gq8Bt6OFUNVd0afx9nmUf9ghE7koNV5hU0DZFZUuWkzDKTxb276tKL/9kpUXl
-	 p1Uj1O6l6Phlho0PoqcNnU5Fw/tlyKRcIU7IgmLrpWA92LNgFS66GvgLwMZ8E1Wxk+
-	 nhise5dBgYi7BLOHE5EeVKAq9r/0xzkf84V/k+3nRBX8Nm/TfF9eGcuzipcZkIJ3Se
-	 mgZ8pcy0DVPyw==
-Date: Wed, 04 Nov 2026 18:59:25 +0000
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-From: Roman Vivchar <rva333@protonmail.com>
-Cc: chunkuang.hu@kernel.org, p.zabel@pengutronix.de, maarten.lankhorst@linux.intel.com, mripard@kernel.org, tzimmermann@suse.de, airlied@gmail.com, simona@ffwll.ch, robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org, matthias.bgg@gmail.com, jitao.shi@mediatek.com, dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, kernel@collabora.com, justin.yeh@mediatek.com, jason-jh.lin@mediatek.com, CK Hu <ck.hu@mediatek.com>
-Subject: Re: [PATCH v9 11/13] drm/mediatek: mtk_dsi: Enable PM Runtime on probe
-Message-ID: <F0G_dANYlJ1-UIb2SYBfD3M-Lf0LDESQ3_gls5cGALE1EXYHhZXJHfAibDIjbFR9Rc_rfmce8tk8vBoevtJ94X3inG6HVIVzzBBtWCyPTW0=@protonmail.com>
-In-Reply-To: <20260916110825.102631-12-angelogioacchino.delregno@collabora.com>
-References: <20260916110825.102631-1-angelogioacchino.delregno@collabora.com> <20260916110825.102631-12-angelogioacchino.delregno@collabora.com>
-Feedback-ID: 173184497:user:proton
-X-Pm-Message-ID: 72767cc76342ad316c8bf2f0e9abda7edd262961
+	id 1xOhcT-00000006tdO-03GY;
+	Wed, 04 Nov 2026 20:30:06 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1793824205; x=1825360205;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=h9DF1vrSe2ymxSVWOc4qaehYKUBrcFML5wxNEDR44VM=;
+  b=F4CrLZx1ddz2fGNGh+iE674/qmA3xF+OWMh93OqtbjX0MSkkEUvDQOQF
+   TegKad+2EuKU+IR4iex0PrwbtRFiCG2vDoUcbLtOlfl8bygjTm1iZOrJj
+   kZoE+k2Y53lwZri75cNnFTKQIcqtMN6slQAExyXEtktYU3P65Qw9xOWuD
+   Ia7P/oX11lAg78xLVoS7qzrMXdPn0quQpAsIVwatA3PoqYKl3onR9Vn4E
+   c7u/FI9jdZXJqsZLXlJYjFIP+EIxBOAjpkqgie2GZdwZskhVSbRvwbMfY
+   XTCG8FGhuAHnCLddGKX1/QNR0RRKVMvnZzcqLNOpssAFCTJUlsTcMsGmq
+   Q==;
+X-CSE-ConnectionGUID: jwIhwxx4QY2nKUzXp9PHoA==
+X-CSE-MsgGUID: E0HgbnZbROW0wIq/N92GSA==
+X-IronPort-AV: E=McAfee;i="6800,10657,11956"; a="2602472"
+X-IronPort-AV: E=Sophos;i="6.27,195,1787036400"; 
+   d="scan'208";a="2602472"
+Received: from orviesa001.jf.intel.com ([10.64.159.141])
+  by fmvoesa111.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 04 Nov 2026 12:30:02 -0800
+X-CSE-ConnectionGUID: 4s+PIBaTRcCfJB/9Fu/CBQ==
+X-CSE-MsgGUID: W8xphM45RZOPK4ny68SHrw==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.27,195,1787036400"; 
+   d="scan'208";a="6825384"
+Received: from ijarvine-mobl1.ger.corp.intel.com (HELO localhost) ([10.245.244.24])
+  by smtpauth.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 04 Nov 2026 12:29:49 -0800
+Date: Wed, 4 Nov 2026 22:29:46 +0200
+From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+To: Krzysztof Kozlowski <krzk@kernel.org>
+Cc: Frank.Li@oss.nxp.com, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	Jiri Slaby <jirislaby@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Russell King <linux@armlinux.org.uk>,
+	Richard Genoud <richard.genoud@bootlin.com>,
+	Nicolas Ferre <nicolas.ferre@microchip.com>,
+	Alexandre Belloni <alexandre.belloni@bootlin.com>,
+	Claudiu Beznea <claudiu.beznea@tuxon.dev>,
+	Frank Li <Frank.Li@nxp.com>, Sascha Hauer <s.hauer@pengutronix.de>,
+	Pengutronix Kernel Team <kernel@pengutronix.de>,
+	Fabio Estevam <festevam@gmail.com>,
+	Peter Griffin <peter.griffin@linaro.org>,
+	Alim Akhtar <alim.akhtar@samsung.com>,
+	Laxman Dewangan <ldewangan@nvidia.com>,
+	Thierry Reding <thierry.reding@kernel.org>,
+	Jonathan Hunter <jonathanh@nvidia.com>,
+	Orson Zhai <orsonzhai@gmail.com>,
+	Baolin Wang <baolin.wang@linux.alibaba.com>,
+	Chunyan Zhang <zhang.lyra@gmail.com>,
+	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+	Alexandre Torgue <alexandre.torgue@foss.st.com>,
+	Cunhao Lu <1579567540@qq.com>, Raul E Rangel <rrangel@chromium.org>,
+	Yenchia Chen <yenchia.chen@mediatek.com>,
+	Zhiyong Tao <zhiyong.tao@mediatek.com>,
+	Carlo Caione <ccaione@baylibre.com>, Moteen Shah <m-shah@ti.com>,
+	Kendall Willis <k-willis@ti.com>,
+	Kartik Rajput <kkartik@nvidia.com>, Fan Wu <fanwu01@zju.edu.cn>,
+	Nicolai Buchwitz <nb@tipi-net.de>,
+	Karl Mehltretter <kmehltretter@gmail.com>,
+	Stefan =?iso-8859-1?Q?D=F6singer?= <stefandoesinger@gmail.com>,
+	Shitalkumar Gandhi <shital.gandhi45@gmail.com>,
+	Peng Fan <peng.fan@nxp.com>, Sherry Sun <sherry.sun@nxp.com>,
+	John Ogness <john.ogness@linutronix.de>,
+	Pan Chuang <panchuang@vivo.com>, Petr Mladek <pmladek@suse.com>,
+	Robin Gong <yibin.gong@nxp.com>,
+	Konrad Dybcio <konrad.dybcio@oss.qualcomm.com>,
+	Stephan Gerhold <stephan.gerhold@linaro.org>,
+	Zhaoyang Yu <2426767509@qq.com>,
+	"Nikola Z. Ivanov" <zlatistiv@gmail.com>,
+	Haoxiang Li <haoxiang_li2024@163.com>,
+	"Mike Rapoport (Microsoft)" <rppt@kernel.org>,
+	Biju Das <biju.das.jz@bp.renesas.com>,
+	Geert Uytterhoeven <geert+renesas@glider.be>,
+	Myeonghun Pak <mhun512@gmail.com>,
+	Wenhua Lin <Wenhua.Lin@unisoc.com>, Cixi Geng <cixi.geng@linux.dev>,
+	"open list:TTY LAYER AND SERIAL DRIVERS" <linux-kernel@vger.kernel.org>,
+	"open list:TTY LAYER AND SERIAL DRIVERS" <linux-serial@vger.kernel.org>,
+	"moderated list:ARM/Mediatek SoC support" <linux-arm-kernel@lists.infradead.org>,
+	"moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+	"open list:ARM/FREESCALE IMX / MXC / LAYERSCAPE ARM ARCHIT..." <imx@lists.linux.dev>,
+	"open list:ARM/QUALCOMM MAILING LIST" <linux-arm-msm@vger.kernel.org>,
+	"open list:ARM/SAMSUNG S3C, S5P AND EXYNOS ARM ARCHITECTURES" <linux-samsung-soc@vger.kernel.org>,
+	"open list:TEGRA ARCHITECTURE SUPPORT" <linux-tegra@vger.kernel.org>,
+	"moderated list:ARM/STM32 ARCHITECTURE" <linux-stm32@st-md-mailman.stormreply.com>,
+	vkoul@kernel.org
+Subject: Re: [PATCH 1/1] tty: serial: use dmaengine_desc_set_callback()
+Message-ID: <auuVum_cd7MgGDUq@ashevche-desk.local>
+References: <20261102175527.3957740-1-Frank.Li@oss.nxp.com>
+ <a2d5ea00-bfa1-4883-923d-0a6a7eaa556d@kernel.org>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <a2d5ea00-bfa1-4883-923d-0a6a7eaa556d@kernel.org>
+Organization: Intel Finland Oy - BIC 0357606-4 - c/o Alberga Business Park, 6
+ krs, Bertel Jungin Aukio 5, 02600 Espoo
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261104_105934_219691_4BBDAC80 
-X-CRM114-Status: GOOD (  14.39  )
-X-Spam-Score: -2.5 (--)
+X-CRM114-CacheID: sfid-20261104_123005_343746_736DDCD9 
+X-CRM114-Status: GOOD (  18.61  )
+X-Spam-Score: -4.2 (----)
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -67,62 +139,65 @@ List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-12.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
-	DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,FREEMAIL_FORGED_FROMDOMAIN,
-	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=ham
-	autolearn_force=no version=4.0.1
+X-Spam-Status: No, score=-13.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
+	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On Wednesday, September 16th, 2026 at 2:09 PM, AngeloGioacchino Del Regno <=
-angelogioacchino.delregno@collabora.com> wrote:
+On Wed, Nov 04, 2026 at 06:41:08PM +0100, Krzysztof Kozlowski wrote:
+> On 02/11/2026 18:54, Frank.Li@oss.nxp.com wrote:
+> > 
+> > Replace open-coded assignments to callback and callback_param fields
+> > of struct dma_async_tx_descriptor with calls to the
+> > dmaengine_desc_set_callback() helper across serial drivers.
+> > 
+> > No functional change intended. Prepare to make struct
+> > dma_async_tx_descriptor private to the DMA engine.
 
-> Enable PM Runtime at the end of mtk_dsi_probe() so that the
-> mediatek-drm mtk_ddp_comp_power_on() function is able to do
-> pm_runtime_resume_and_get() and, analogously, the function
-> mtk_ddp_comp_power_off() to pm_runtime_put() for the DSI
-> device.
->=20
-> This makes sure that the power domains for the DSI IP are
-> turned on and off when necessary.
->=20
-> Reviewed-by: CK Hu <ck.hu@mediatek.com>
-> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@coll=
-abora.com>
+...
 
-No regressions on mt6595 or mt6768 platform.
-
-Tested-by: Roman Vivchar <rva333@protonmail.com> # mt6595, mt6768
-
-Best regards,
-Roman
-
-> ---
->  drivers/gpu/drm/mediatek/mtk_dsi.c | 4 ++++
->  1 file changed, 4 insertions(+)
->=20
-> diff --git a/drivers/gpu/drm/mediatek/mtk_dsi.c b/drivers/gpu/drm/mediate=
-k/mtk_dsi.c
-> index 3b33419aee2d..4863d910511e 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_dsi.c
-> +++ b/drivers/gpu/drm/mediatek/mtk_dsi.c
-> @@ -1735,6 +1735,10 @@ static int mtk_dsi_probe(struct platform_device *p=
-dev)
->  =09if (ret)
->  =09=09return dev_err_probe(&pdev->dev, ret, "Failed to request DSI irq\n=
-");
->=20
-> +=09ret =3D devm_pm_runtime_enable(dev);
-> +=09if (ret)
-> +=09=09return ret;
-> +
->  =09ret =3D mipi_dsi_host_register(&dsi->host);
->  =09if (ret < 0)
->  =09=09return dev_err_probe(dev, ret, "Failed to register DSI host\n");
-> --
-> 2.55.0
->=20
->=20
+> I did not look at this code at all...
 > 
+> > index 640f85e2d636b..3f82a83998e1c 100644
+> > --- a/drivers/tty/serial/samsung_tty.c
+> > +++ b/drivers/tty/serial/samsung_tty.c
+> > @@ -447,8 +447,7 @@ static int s3c24xx_serial_start_tx_dma(struct s3c24xx_uart_port *ourport,
+> >  		return -EIO;
+> >  	}
+> >  
+> > -	dma->tx_desc->callback = s3c24xx_serial_tx_dma_complete;
+> > -	dma->tx_desc->callback_param = ourport;
+> > +	dmaengine_desc_set_callback(dma->tx_desc, s3c24xx_serial_tx_dma_complete, NULL, ourport);
+> >  	dma->tx_bytes_requested = dma->tx_size;
+> >  
+> >  	ourport->tx_in_progress = S3C24XX_TX_DMA;
+> > @@ -642,8 +641,7 @@ static void s3c64xx_start_rx_dma(struct s3c24xx_uart_port *ourport)
+> >  		return;
+> >  	}
+> >  
+> > -	dma->rx_desc->callback = s3c24xx_serial_rx_dma_complete;
+> > -	dma->rx_desc->callback_param = ourport;
+> > +	dmaengine_desc_set_callback(dma->rx_desc, s3c24xx_serial_rx_dma_complete, NULL, ourport);
+> >  	dma->rx_bytes_requested = dma->rx_size;
+
+> ... but apparently reviewing only a few lines out of 400 is still reviewing:
+> 
+> https://lore.kernel.org/all/9e39502a-dd17-4fa2-98a3-9019523cb5e8@kernel.org/
+> 
+> Therefore:
+> 
+> Reviewed-by: Krzysztof Kozlowski <krzk@kernel.org>
+
+That's why I have added a trail to it to show what exactly I has reviewed,
+this is a common practice, no?
+
+Does this ring a bell 34d1e754155b ("dt-bindings: iio: drop unneeded quotes")?
+
+-- 
+With Best Regards,
+Andy Shevchenko
+
+
 
