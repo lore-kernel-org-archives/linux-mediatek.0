@@ -2,115 +2,101 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id A968F606D818
-	for <linux-mediatek@archiver.kernel.org>; Wed,  4 Nov 2026 07:20:24 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 0CC4E606A33F
+	for <linux-mediatek@archiver.kernel.org>; Wed,  4 Nov 2026 07:29:51 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=omfkGEgJ;
-	dkim=pass (2048-bit key, unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=LA8K4a0v
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=Lagt6QY/;
+	dkim=pass (2048-bit key, unprotected) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=REJDKuOj
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Unsubscribe-Post:
-	List-Owner; bh=1Ekpcp5TWZq0p4aqoWrcejQKlqmgI+qIHdFwhI1gIDo=; b=omfkGEgJZLaE4B
-	YTJkMTKq8928eHIu3eSJbWQCsMHL7yOZJJ9nw1GIBzNyy4H7hAc721uEPb+5pE/MkAtnbqmGDPkKZ
-	i1FXpXwR46DhFgw5pbaHpIL3C+2qrHMB2aJYP5vfEDTBh3ULNEkvvCJTFT9VOhZwMrG8v7Xu8OyFQ
-	xZQG41NEzrFGQJxfYskQvNnOhakdgYc3OvDtTaY84eY9lQj3122GK71mw+vUS+pew1jh2bzJQbubr
-	neVx/6+s86jq1zbyIoKiZ3p8mFWDsrQVlmMA7xFrr6hGNBlMwm4Tyi+3o6OAB3oyiaivKCTGCrEN/
-	4Oje97KfbtgW3Rp147VA==;
+	MIME-Version:Message-ID:Date:Subject:To:From:Reply-To:Cc:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Unsubscribe-Post:List-Owner;
+	bh=121s4JOLOhrrTtqNw+nRPzr1JTP5S9GXqoANnz/M4b8=; b=Lagt6QY/P91++8w5UBHIsIOhB1
+	sB22Kj7fBvcNUhGFYQks02IOQDdexteGVI+mdcaLRtrqgGu9/nbWoov72xjluR6gBryyztfnbSmyG
+	goxeZ6ihqtP9JVay5WCP7BBcmt/6FZMqvxwKxnIvgmTFu+WZutp5hR3KXUpQJNxLX3ltThLFBSdk8
+	BZjd5xGPgPwfLvaeSISlnEwCKdmf5ORlJ//fAyn2JcG0x8frFucEyutuupm3tZ1Hdr6t0OaCFPyd/
+	CWKe9+cfXqtJ7s2zAtLwkSb30MWrU/CdI40zh2L9/MnOSoQ8a3jprZbEUdlDKAOlOB1bmRXpmhp5z
+	ZBmkJRBQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xOVIG-00000004VFi-1h65;
-	Wed, 04 Nov 2026 07:20:24 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1xOVRO-00000004XBh-3H5I;
+	Wed, 04 Nov 2026 07:29:50 +0000
+Received: from mail-wr1-x42c.google.com ([2a00:1450:4864:20::42c])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xOVIE-00000004VFH-1qcd;
-	Wed, 04 Nov 2026 07:20:22 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id 0C62841348;
-	Wed,  4 Nov 2026 07:20:22 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8DC851F00919;
-	Wed,  4 Nov 2026 07:20:14 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1793776821;
-	bh=1Ekpcp5TWZq0p4aqoWrcejQKlqmgI+qIHdFwhI1gIDo=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To;
-	b=LA8K4a0vJgQc39wUUG6i4hpczNDWdG+toSwrlumPAhyZytI5rGsyVjLUN56z84i4I
-	 eI7XB0uiMOIddzetTqmIiFzKr3PQDR6TmcEN2fFmw2dwYbZoaZsmLxzCEAGb0LVgwv
-	 Ww3grG7RbPpKmn9hpAHHMEf90NZvOJAeo/NdQKK9yah1Zw70/VSDsCj5SbTuRoBl2L
-	 XW8ZKc12B73OSjaOA+8CQuAw7GgcBN8Rfjoq7Egg1Z/XcjxFp1AH5aExHRbhlnFMq/
-	 SEYYVOMmDOdziKm4BnBrXO0xgsU4Ue03iDAmgYVQxl7nAwyeh/Prhi14AfBRb+K+6t
-	 n6iEpRfyPXyXw==
-Message-ID: <7c15c254-d157-4f5b-bfae-06a5301af222@kernel.org>
-Date: Wed, 4 Nov 2026 08:20:11 +0100
+	id 1xOVRM-00000004XAC-1a6J
+	for linux-mediatek@lists.infradead.org;
+	Wed, 04 Nov 2026 07:29:49 +0000
+Received: by mail-wr1-x42c.google.com with SMTP id ffacd0b85a97d-48afcfc4bf5so312502f8f.1
+        for <linux-mediatek@lists.infradead.org>; Tue, 03 Nov 2026 23:29:47 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20260707; t=1793777386; x=1794382186; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:to
+         :from:from:to:cc:subject:date:message-id:reply-to:content-type;
+        bh=121s4JOLOhrrTtqNw+nRPzr1JTP5S9GXqoANnz/M4b8=;
+        b=REJDKuOjPSD16IdE2c579x5OeF7b1YdZxxsmrH0lHFEZE+kudhS5B/DeSObNvNh1Og
+         AAH6Pew1SHF6jrW1QOXoozRd/IbnwbH51wgmqu0hwVyPE36hgU/hMwK0AFGxMAXojISu
+         Sdqy+btSoTU0Wt1wnhfuoqNhpWvA3xHO6Xt6EA/JN+VXO69bV+V9lVECoomBqBKbgOry
+         RO6r0vRCZm3n+ESDA2Rk9EKowJ+1g0NEK7ZAZXUJuGfM6+8RAHf7N3WP2SLDNgatDSPS
+         2KC27FcOnMD1MumQtOmH0nu4Gi7SECSx0JhXfGHgdyHa1fOic0LEz3FhlUEHQYAzk2Yt
+         sqAg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20260707; t=1793777386; x=1794382186;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:to
+         :from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to:content-type;
+        bh=121s4JOLOhrrTtqNw+nRPzr1JTP5S9GXqoANnz/M4b8=;
+        b=BWlvcxBXH+wTKzHo9znQayBUgl1M7EtAFsFII/0O20+vaSaxoZOIKjMHcULIKKyVl5
+         +nL9JfSGrVXBrI1mJVwzJPAbpwcIUxBHVQr2C24gVsZ7TZPee83Qy7FQV5+RHEJM+Lvu
+         Jg6Ypgq/aHekMFh47nhxy01S5rIM+KqIwhFvSRTEoytJ0I46oHT9ie1RQFe1S7bCIdzx
+         Z2BLf0cHtycEJHW9nDHsyNeeEaGEzUsLfPX6tAz6Da+ITLzRg59iPfmGUWFaDeKELLQu
+         UYSeXRgAw3oBA3P2MJfiSirSqA9QeOJnxMRHAYu3oNwkz4P7xphVvxmK48A03lPI20EL
+         trPw==
+X-Forwarded-Encrypted: i=1; AKwUvBwBAiGkVcD5dGhMlWelB3zitug7lu2BmSAu3OqmVpCxzt4SD8uLvEFcJk5KmhJvAIonwR9+6Z7UbUPwxKf8+Q==@lists.infradead.org
+X-Gm-Message-State: APuU4Z8gvptQd+JVj23hNLohbJBAFNxQindYYLST/TvhgMkb3E5UTx+X
+	dAZw9eM0gxvPJo0r7kHUTgu8hzfrbAblvOZ6KD2t4Grp0tIEvkSl4+jW
+X-Gm-Gg: AYBFou3ooglWfTnwSJ6L9TI77lugS2gtYrJMt0HULE4MDi2095EeQx0TCaan5rwwSSB
+	vAikOfj6dHlEmx3Xpx14/jCTK7K06UIDjyP6CSxT5voUkOXuyjAKXHI47eX+SQ+Qis0Hx6MQxRo
+	OlWZKdUk/o3FF34Q2mDyfL0DwCPkgdH/isvQQCWGg3t0/TU9fyHx1Pyn7M1fmBBK0XF+IHEP4vV
+	qAzwlQHsnQycgGxaz7n9iX9tcfs/JxN+o8upyOC3RD1xn9Z4waWRIArFq29eSxxfo+Eu6zYpfsD
+	vRTRsD9DjX6kpp/D+kssBrDkE2xxJobtuoZCOeAbQPrUXxERLtXfyoWfnjBzhGaUdqLjQlfXmnx
+	J6PhzWIwl9p69XRFuaM9sMEAGX18eHVlJBC1sX1pch8pFgq2QlkGRYNmj5BRicFMK2c2ojKQqai
+	MYPulQqYk+d+9M8oL0n/ijzbDxsSnaS5pjOhHN98NT+Vzu+CuasOjaxkBNRfxeOOYwRR/m+Djdd
+	PSTDtU2mlqj4xIPxr8V6ftPvWa1gZl6tLzJjS6IJVmCJ32kGHuu3xC+yMrUxUZp87YefFa86ZUM
+	JcxtXTP69YJyuMB5O5/BH0i19JAbSLRV+qOAyJzle2zQ0HJU3w37NZwWAVi1cvyCDIYM/fXwlOv
+	WAjjyruLhIiWy+A83L4fZSWi6pN4pGLX0HQ==
+X-Received: by 2002:a05:600c:46ce:b0:4a6:7d6:821f with SMTP id 5b1f17b1804b1-4ac189928e9mr345693905e9.29.1793777386280;
+        Tue, 03 Nov 2026 23:29:46 -0800 (PST)
+Received: from Ansuel-XPS24.localdomain (93-34-90-148.ip49.fastwebnet.it. [93.34.90.148])
+        by smtp.googlemail.com with ESMTPSA id 5b1f17b1804b1-4b2a555e59dsm130754225e9.0.2026.11.03.23.29.45
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 03 Nov 2026 23:29:45 -0800 (PST)
+From: Christian Marangi <ansuelsmth@gmail.com>
+To: Lorenzo Bianconi <lorenzo@kernel.org>,
+	Andrew Lunn <andrew+netdev@lunn.ch>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@kernel.org>,
+	Jakub Kicinski <kuba@kernel.org>,
+	Paolo Abeni <pabeni@redhat.com>,
+	Christian Marangi <ansuelsmth@gmail.com>,
+	Felix Fietkau <nbd@nbd.name>,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	netdev@vger.kernel.org,
+	linux-kernel@vger.kernel.org
+Subject: [PATCH RFC net-next] net: airoha: npu: attach passive devfreq scaling
+Date: Wed,  4 Nov 2026 08:29:39 +0100
+Message-ID: <20261104072940.52933-1-ansuelsmth@gmail.com>
+X-Mailer: git-send-email 2.55.0
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 6/7] dt-bindings: net: dsa: mediatek,mt7530: add EcoNet
- EN751221 switches
-To: Caleb James DeLisle <cjd@cjdns.fr>
-Cc: netdev@vger.kernel.org, andrew@lunn.ch, olteanv@gmail.com,
- davem@davemloft.net, edumazet@google.com, kuba@kernel.org,
- pabeni@redhat.com, robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
- matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
- chester.a.unal@arinc9.com, daniel@makrotopia.org, linux@armlinux.org.uk,
- arinc.unal@arinc9.com, Landen.Chao@mediatek.com, dqfext@gmail.com,
- sean.wang@mediatek.com, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, naseefkm@gmail.com, b.larsson@gmx.com
-References: <20261029184202.1859843-1-cjd@cjdns.fr>
- <20261029184202.1859843-7-cjd@cjdns.fr>
- <20261103-soft-lyrical-squid-c5a108@quoll>
- <39cb446e-b667-4766-bd79-2635eb36166c@cjdns.fr>
-From: Krzysztof Kozlowski <krzk@kernel.org>
-Content-Language: en-US
-Autocrypt: addr=krzk@kernel.org; keydata=
- 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
-In-Reply-To: <39cb446e-b667-4766-bd79-2635eb36166c@cjdns.fr>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20261103_232948_446001_902820E1 
+X-CRM114-Status: GOOD (  16.95  )
+X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -121,33 +107,138 @@ List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-7.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,
-	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,USER_AGENT_SANE_1 autolearn=no autolearn_force=no
-	version=4.0.1
+X-Spam-Status: No, score=-15.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
+	DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,FREEMAIL_FORGED_FROMDOMAIN,
+	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
+	USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On 03/11/2026 14:15, Caleb James DeLisle wrote:
->>> +        const: econet,en751221-gswitch
->> That's almost the same compatible, which makes me wonder if you describe
->> the same device twice. Same device, same compatible.
-> 
-> 
-> Well, these are both MT7530 based, but one of them is on-die with the 
-> SoC and the other one is an MCM so for the driver they are very 
-> different - they're even loaded by different kmods. I think since one is 
-> MMIO and the other is MDIO, using the same compatible won't cause a 
-> driver problem - but I don't know if it's best practice to smooth over 
-> such a difference or not. Your advice here would be most appreciated.
-> 
+The NPU can scale to different operating state from idle to normal to
+turbo. Attach a passive devfreq that will scale the NPU frequency with the
+CPU with the use of OPP table and opp-required properties.
 
-The drivers do not matter - we have one compatible for I2C/SPI/Serial
-devices as well. The only question is about the hardware, what are these
-devices and what are you here exactly describing. Compatible is en751221
-but you call it MT7530, so even more confusion.
+Signed-off-by: Christian Marangi <ansuelsmth@gmail.com>
+---
 
-Best regards,
-Krzysztof
+Posted as RFC to understand if it's the correct way to handle this...
+
+DT patch will come later.
+
+ drivers/net/ethernet/airoha/airoha_npu.c  | 61 ++++++++++++++++++++++-
+ include/linux/soc/airoha/airoha_offload.h |  3 ++
+ 2 files changed, 63 insertions(+), 1 deletion(-)
+
+diff --git a/drivers/net/ethernet/airoha/airoha_npu.c b/drivers/net/ethernet/airoha/airoha_npu.c
+index 4d3195eb00f7..f8055ca65ec4 100644
+--- a/drivers/net/ethernet/airoha/airoha_npu.c
++++ b/drivers/net/ethernet/airoha/airoha_npu.c
+@@ -12,6 +12,8 @@
+ #include <linux/of_platform.h>
+ #include <linux/of_reserved_mem.h>
+ #include <linux/regmap.h>
++#include <linux/pm_opp.h>
++#include <linux/clk.h>
+ 
+ #include "airoha_eth.h"
+ 
+@@ -656,6 +658,62 @@ void airoha_npu_put(struct airoha_npu *npu)
+ }
+ EXPORT_SYMBOL_GPL(airoha_npu_put);
+ 
++static int airoha_npu_devfreq_get_cur_freq(struct device *dev, unsigned long *freq)
++{
++	struct airoha_npu *npu = dev_get_drvdata(dev);
++
++	*freq = clk_get_rate(npu->clk);
++
++	return 0;
++}
++
++static int airoha_npu_devfreq_target(struct device *dev, unsigned long *freq,
++				     u32 flags)
++{
++	struct airoha_npu *npu = dev_get_drvdata(dev);
++
++	return clk_set_rate(npu->clk, *freq);
++}
++
++static int airoha_npu_devfreq_get_dev_status(struct device *dev,
++					     struct devfreq_dev_status *stat)
++{
++	struct airoha_npu *npu = dev_get_drvdata(dev);
++
++	stat->busy_time = 0;
++	stat->total_time = 0;
++	stat->current_frequency = clk_get_rate(npu->clk);
++
++	return 0;
++}
++
++static struct devfreq_dev_profile airoha_npu_devfreq_profile = {
++	.target = airoha_npu_devfreq_target,
++	.get_dev_status = airoha_npu_devfreq_get_dev_status,
++	.get_cur_freq = airoha_npu_devfreq_get_cur_freq
++};
++
++static int airoha_npu_devfreq_probe(struct device *dev)
++{
++	struct airoha_npu *npu = dev_get_drvdata(dev);
++	struct devfreq *devfreq;
++	int ret;
++
++	npu->clk = devm_clk_get_enabled(dev, NULL);
++	if (IS_ERR(npu->clk))
++		return dev_err_probe(dev, PTR_ERR(npu->clk), "failed to get clk\n");
++
++	ret = devm_pm_opp_of_add_table(dev);
++	if (ret)
++		return dev_err_probe(dev, ret, "failed to parse NPU freq thresholds\n");
++
++	npu->gov_data.parent_type = CPUFREQ_PARENT_DEV;
++	devfreq = devm_devfreq_add_device(dev, &airoha_npu_devfreq_profile,
++					  DEVFREQ_GOV_PASSIVE, &npu->gov_data);
++
++	return PTR_ERR_OR_ZERO(devfreq);
++}
++
+ static const struct airoha_npu_soc_data en7581_npu_soc_data = {
+ 	.fw_rv32 = {
+ 		.name = NPU_EN7581_FIRMWARE_RV32,
+@@ -803,8 +861,9 @@ static int airoha_npu_probe(struct platform_device *pdev)
+ 			 (val >> 16) & 0xffff, val & 0xffff);
+ 
+ 	platform_set_drvdata(pdev, npu);
++	dev_set_drvdata(dev, npu);
+ 
+-	return 0;
++	return airoha_npu_devfreq_probe(dev);
+ }
+ 
+ static struct platform_driver airoha_npu_driver = {
+diff --git a/include/linux/soc/airoha/airoha_offload.h b/include/linux/soc/airoha/airoha_offload.h
+index 7589fccfeef6..ac776dc31487 100644
+--- a/include/linux/soc/airoha/airoha_offload.h
++++ b/include/linux/soc/airoha/airoha_offload.h
+@@ -6,6 +6,7 @@
+ #ifndef AIROHA_OFFLOAD_H
+ #define AIROHA_OFFLOAD_H
+ 
++#include <linux/devfreq.h>
+ #include <linux/skbuff.h>
+ #include <linux/spinlock.h>
+ #include <linux/workqueue.h>
+@@ -167,6 +168,8 @@ struct airoha_npu {
+ #if (IS_BUILTIN(CONFIG_NET_AIROHA_NPU) || IS_MODULE(CONFIG_NET_AIROHA_NPU))
+ 	struct device *dev;
+ 	struct regmap *regmap;
++	struct clk *clk;
++	struct devfreq_passive_data gov_data;
+ 
+ 	struct airoha_npu_core {
+ 		struct airoha_npu *npu;
+-- 
+2.55.0
+
 
