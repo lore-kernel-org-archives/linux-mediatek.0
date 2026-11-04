@@ -2,71 +2,72 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id AE3D7606D813
-	for <linux-mediatek@archiver.kernel.org>; Wed,  4 Nov 2026 16:08:34 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id C2139606D806
+	for <linux-mediatek@archiver.kernel.org>; Wed,  4 Nov 2026 16:12:45 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=gj+JZKpi;
-	dkim=pass (1024-bit key, unprotected) header.d=linux.microsoft.com header.i=@linux.microsoft.com header.a=rsa-sha256 header.s=default header.b=SffZOo3u
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=mg1n9IiB;
+	dkim=fail reason="signature verification failed" (1024-bit key, unprotected) header.d=collabora.com header.i=@collabora.com header.a=rsa-sha256 header.s=zohomail header.b=g00dkbCd
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Unsubscribe-Post:
-	List-Owner; bh=prKL/IiDtwtZc6yvvtNMWVlCcs+HKIOTNMT0UbmZxag=; b=gj+JZKpiBB37Yi
-	5qJgJzkct35r2SiXW+EypMIhTJTXInFMuq1c0DzDwTPBdY8f+ao7zSekE+eOd1tjsUmntzrB5ggOM
-	HGpCF7C3LmOaFMBrRs5jxcLQqVQHqgLl7r4YHL53pPepVkcd7YkAfQC5hGictTBr5vM/UFz4COtti
-	fooahKkMDZ/w3un/p8kRUnuznes/+7D+1wgSd667VRM0W6FKNjBQ0FFWdiToGJ7Hy3VpN6v6a5VNz
-	xDCmVBYDKhy7TiPlEyk1mNUhLveBJMHNB5K5iHvEGIrclJcQaxkDpeis+BVllPStILzKQouPUzJcE
-	aTcc8WdoU3pXIPTwhsDQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Unsubscribe-Post:List-Owner;
+	bh=bveTO0+StKxpuK35+DwPLa38Tc+AfBhkX4WsslUA1n0=; b=mg1n9IiB+K1zNRWmADRN5ojxRs
+	S1OC2TRg6+ADBNI4Srw+NfObB/2KX8vmH/j6K/Aqml/CAM7/jgiID6QSx2OzOM5eJkErtocA5YtSX
+	RHRVmaP+tULAqlp2/KYqB/kvOm3DrqnQ7PAj39oD3YWAd2sxCTM4tuLouQTBac/lasj1acSZNfsOP
+	0dmL/Rh+7gxtBPeYB06Sw6jY5iEhBFsiS9mwL8NcNY7gpUSuVatJ37/FiUaSSCW5SjHWXFF873p9g
+	cGinCqsDG9sMn/pF5TiWCY8TGFLZzyUfiCOpn64z/07hhp0RZ8ZJ0GK7fnopENc8TNgIYO0zbmstC
+	Zc7xADZg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xOdXO-00000005tCq-1GaC;
-	Wed, 04 Nov 2026 16:08:34 +0000
-Received: from linux.microsoft.com ([13.77.154.182])
-	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xOdXK-00000005t8Q-16JM;
-	Wed, 04 Nov 2026 16:08:32 +0000
-Received: from [192.168.1.10] (unknown [4.194.122.170])
-	by linux.microsoft.com (Postfix) with ESMTPSA id 63DEA20B7167;
-	Wed,  4 Nov 2026 08:08:11 -0800 (PST)
-DKIM-Filter: OpenDKIM Filter v2.11.0 linux.microsoft.com 63DEA20B7167
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linux.microsoft.com;
-	s=default; t=1793808493;
-	bh=prKL/IiDtwtZc6yvvtNMWVlCcs+HKIOTNMT0UbmZxag=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=SffZOo3unSj20HxNN/HBXkrg74iNW686erVL6zKzCyh7fgseY8VWtJOkLzn3BTWG6
-	 kAMblKKR0pEPU6mkN11IyTSYYC/skyUn8eMWFElgxZXoZ92gr4Ozsa3sqpTvmF3C37
-	 hpCvaDZSlr5dvJrJ1dRRV+56es5iUzZhZb6fsvgU=
-Message-ID: <1ac51332-054a-47d1-abce-60bc74646e44@linux.microsoft.com>
-Date: Wed, 4 Nov 2026 21:38:24 +0530
+	id 1xOdbR-00000005uK0-1TfK;
+	Wed, 04 Nov 2026 16:12:45 +0000
+Received: from sender6-op-o11.zoho.com ([165.173.180.11])
+	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
+	id 1xOdbO-00000005uJL-2YB6;
+	Wed, 04 Nov 2026 16:12:43 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1793808744; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=E/62NSDe0vaSbCCbvaPH/G+x6dAmPjbRWxgYGA2c3+W5vcAq31UDEHDbxGjRfh0O8Au9haU82JJ3mfz/qZttVTrr2rwBFstZpO+tDTA+z25kFRAlZH41eCjJgIG+39cA4+823PrrVYI4dYGEXeGLDMGaUEW6btE/NvfCRNr8ep8=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1793808744; h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=bveTO0+StKxpuK35+DwPLa38Tc+AfBhkX4WsslUA1n0=; 
+	b=fUDSEeQHqgnxpJZwm7KTwJIjtduDprKg++gxdGUw9BOm+hj3ndu9NceClATpQIjD3HRFN1varrfMAqCs3ohUuaUaJexbpTozVNosucqJZYwbpRm3E/ScC2W9/uCmwEOiROnUGYWQi0FWUzn8pcRHzLbMoA7Fzkoq2MomaO6Qp94=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=adrian.larumbe@collabora.com;
+	dmarc=pass header.from=<adrian.larumbe@collabora.com>
+DKIM-Signature: a=rsa-sha256; b=g00dkbCdKCVijxi0aOSUvqxlSJwtp4GMt050SfbyRBrL8pkzzsz6v2HpHNLLMa+DU1BQI6h2VCnKf8HmgNHU7o6FqQ+W2OcncjzDFCBIEbyQxrdJ/edqvQgGROOLF5S2mXPHayDADShRJvtUM45TymOtm0FZt6a+jEyjyMKSb8g=; c=relaxed/relaxed; s=zohomail; d=collabora.com; v=1; bh=bveTO0+StKxpuK35+DwPLa38Tc+AfBhkX4WsslUA1n0=; h=Content-Description:Content-ID:Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:List-Subscribe:List-Post:List-Owner:List-Id:List-Archive:List-Help:List-Unsubscribe:MIME-Version:Message-ID:Resent-Sender:Resent-Cc:Resent-Date:Resent-To:Reply-To:Resent-Message-ID:Resent-From:Sender:Subject:To:Date:From:Message-Id:Reply-To:Subject:To:Cc;
+Received: by smtp.zohomail.com with SMTPS id 1793808743618272.38594916343584;
+	Wed, 4 Nov 2026 08:12:23 -0800 (PST)
+Date: Wed, 4 Nov 2026 16:12:19 +0000
+From: =?utf-8?Q?Adri=C3=A1n?= Larumbe <adrian.larumbe@collabora.com>
+To: =?utf-8?B?TWljaGHFgiBLb3BlxIc=?= <michal@nozomi.space>
+Cc: Boris Brezillon <boris.brezillon@collabora.com>, 
+	Steven Price <steven.price@arm.com>, Rob Herring <robh@kernel.org>, 
+	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org, 
+	linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
+	linux-kernel@vger.kernel.org
+Subject: Re: [PATCH 2/3] drm/panfrost: Enable the GPU timestamp counter on
+ MT8188
+Message-ID: <autXXJFdiSTpir7K@sobremesa>
+References: <20261003200132.866240-1-michal@nozomi.space>
+ <20261003200132.866240-3-michal@nozomi.space>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] mailbox: Convert to subsys_platform_driver()
-To: "Peng Fan (OSS)" <peng.fan@oss.nxp.com>,
- Jassi Brar <jassisinghbrar@gmail.com>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Michal Simek <michal.simek@amd.com>
-Cc: linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org
-References: <20261104113324.1634161-1-peng.fan@oss.nxp.com>
-Content-Language: en-US
-From: Prasanna Kumar T S M <ptsm@linux.microsoft.com>
-In-Reply-To: <20261104113324.1634161-1-peng.fan@oss.nxp.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-Spam-Status: No, score=-17.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,
-	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1
-	autolearn=ham autolearn_force=no version=4.0.1
-X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
-	aws-us-west-2-korg-listserv-alma10-1
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <20261003200132.866240-3-michal@nozomi.space>
+X-Zoho-Virus-Status: 1
+X-Zoho-AV-Stamp: zmail-av-0.2.13.1.5.4/293.791.62
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261104_080830_336385_CB41416F 
-X-CRM114-Status: GOOD (  14.14  )
+X-CRM114-CacheID: sfid-20261104_081242_734657_4DD8D346 
+X-CRM114-Status: GOOD (  30.12  )
 X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -78,100 +79,151 @@ List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
+X-Spam-Status: No, score=-13.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
+	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS autolearn=ham autolearn_force=no version=4.0.1
+X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
+	aws-us-west-2-korg-listserv-alma10-1
 
-Hi Peng,
+Hi Michał,
 
-On 04-11-2026 17:03, Peng Fan (OSS) wrote:
-> From: Peng Fan <peng.fan@nxp.com>
+On 03.10.2026 22:01, Michał Kopeć wrote:
+> On MediaTek SoCs the GPU timestamp counter is fed by the SoC system timer
+> only once the TOP_TSVALUEB enable bits are set in the MFGCFG block. The
+> setting is lost whenever the GPU power domain is turned off.
 > 
-> Replace the open-coded subsys_initcall()/module_exit() platform driver
-> registration with subsys_platform_driver().
+> Without it, GPU_TIMESTAMP reads zero, so the SYSTEM_TIMESTAMP query and
+> timestamps written by jobs are always zero, which breaks timestamp
+> queries in userspace drivers.
 > 
-> No functional change.
-> 
-> Signed-off-by: Peng Fan <peng.fan@nxp.com>
+> Look up the MFGCFG block from the mediatek,mfgcfg phandle and set the
+> bits from the vendor quirk hook, which runs on every power-up, as the
+> downstream kbase driver does. Without the phandle nothing changes.
+
+To me this looks like the right location for the fix inside the quirk function
+further below is somewhere in MT8188's device RPM handlers themselves, rather
+the Panfrost driver. RPM core keeps a tree of runtime dependencies, so SoC
+resume handlers would always be run before those of the child nodes (Panfrost
+being among them). 
+
+> Signed-off-by: Michał Kopeć <michal@nozomi.space>
 > ---
->   drivers/mailbox/mailbox-xgene-slimpro.c | 13 +------------
->   drivers/mailbox/mtk-cmdq-mailbox.c      | 13 +------------
->   drivers/mailbox/zynqmp-ipi-mailbox.c    | 13 +------------
->   3 files changed, 3 insertions(+), 36 deletions(-)
+>  drivers/gpu/drm/panfrost/panfrost_device.h |  1 +
+>  drivers/gpu/drm/panfrost/panfrost_drv.c    |  1 +
+>  drivers/gpu/drm/panfrost/panfrost_gpu.c    | 39 ++++++++++++++++++++++
+>  drivers/gpu/drm/panfrost/panfrost_gpu.h    |  1 +
+>  4 files changed, 42 insertions(+)
 > 
-> diff --git a/drivers/mailbox/mailbox-xgene-slimpro.c b/drivers/mailbox/mailbox-xgene-slimpro.c
-> index 1f87a84e5995..f489bcabceff 100644
-> --- a/drivers/mailbox/mailbox-xgene-slimpro.c
-> +++ b/drivers/mailbox/mailbox-xgene-slimpro.c
-> @@ -243,18 +243,7 @@ static struct platform_driver slimpro_mbox_driver = {
->   	},
->   };
->   
-> -static int __init slimpro_mbox_init(void)
-> -{
-> -	return platform_driver_register(&slimpro_mbox_driver);
-> -}
-> -
-> -static void __exit slimpro_mbox_exit(void)
-> -{
-> -	platform_driver_unregister(&slimpro_mbox_driver);
-> -}
-> -
-> -subsys_initcall(slimpro_mbox_init);
-> -module_exit(slimpro_mbox_exit);
-> +subsys_platform_driver(slimpro_mbox_driver);
->   
->   MODULE_DESCRIPTION("APM X-Gene SLIMpro Mailbox Driver");
->   MODULE_LICENSE("GPL");
-> diff --git a/drivers/mailbox/mtk-cmdq-mailbox.c b/drivers/mailbox/mtk-cmdq-mailbox.c
-> index 96462ca84471..262832753fa5 100644
-> --- a/drivers/mailbox/mtk-cmdq-mailbox.c
-> +++ b/drivers/mailbox/mtk-cmdq-mailbox.c
-> @@ -875,18 +875,7 @@ static struct platform_driver cmdq_drv = {
->   	}
->   };
->   
-> -static int __init cmdq_drv_init(void)
-> -{
-> -	return platform_driver_register(&cmdq_drv);
-> -}
-> -
-> -static void __exit cmdq_drv_exit(void)
-> -{
-> -	platform_driver_unregister(&cmdq_drv);
-> -}
-> -
-> -subsys_initcall(cmdq_drv_init);
-> -module_exit(cmdq_drv_exit);
-> +subsys_platform_driver(cmdq_drv);
->   
->   MODULE_DESCRIPTION("Mediatek Command Queue(CMDQ) Mailbox driver");
->   MODULE_LICENSE("GPL v2");
-> diff --git a/drivers/mailbox/zynqmp-ipi-mailbox.c b/drivers/mailbox/zynqmp-ipi-mailbox.c
-> index 42d2583e44ca..da7d33435cdb 100644
-> --- a/drivers/mailbox/zynqmp-ipi-mailbox.c
-> +++ b/drivers/mailbox/zynqmp-ipi-mailbox.c
-> @@ -1022,18 +1022,7 @@ static struct platform_driver zynqmp_ipi_driver = {
->   		   .of_match_table = of_match_ptr(zynqmp_ipi_of_match),
->   	},
->   };
-> -
-> -static int __init zynqmp_ipi_init(void)
-> -{
-> -	return platform_driver_register(&zynqmp_ipi_driver);
-> -}
-> -subsys_initcall(zynqmp_ipi_init);
-> -
-> -static void __exit zynqmp_ipi_exit(void)
-> -{
-> -	platform_driver_unregister(&zynqmp_ipi_driver);
-> -}
-> -module_exit(zynqmp_ipi_exit);
-> +subsys_platform_driver(zynqmp_ipi_driver);
->   
->   MODULE_LICENSE("GPL v2");
->   MODULE_DESCRIPTION("Xilinx ZynqMP IPI Mailbox driver");
+> diff --git a/drivers/gpu/drm/panfrost/panfrost_device.h b/drivers/gpu/drm/panfrost/panfrost_device.h
+> index 1fe1554f2652b..0a73939a023c3 100644
+> --- a/drivers/gpu/drm/panfrost/panfrost_device.h
+> +++ b/drivers/gpu/drm/panfrost/panfrost_device.h
+> @@ -134,6 +134,7 @@ struct panfrost_device {
+>  	int mmu_irq;
+>  
+>  	void __iomem *iomem;
+> +	struct regmap *mtk_mfgcfg;
+>  	struct clk *clock;
+>  	struct clk *bus_clock;
+>  	struct clk *bus_ace_clock;
+> diff --git a/drivers/gpu/drm/panfrost/panfrost_drv.c b/drivers/gpu/drm/panfrost/panfrost_drv.c
+> index 70c05210ea846..e811652e2384d 100644
+> --- a/drivers/gpu/drm/panfrost/panfrost_drv.c
+> +++ b/drivers/gpu/drm/panfrost/panfrost_drv.c
+> @@ -1133,6 +1133,7 @@ static const struct panfrost_compatible mediatek_mt8188_data = {
+>  	.pm_domain_names = mediatek_pm_domains,
+>  	.pm_features = BIT(GPU_PM_CLK_DIS) | BIT(GPU_PM_VREG_OFF),
+>  	.gpu_quirks = BIT(GPU_QUIRK_FORCE_AARCH64_PGTABLE),
+> +	.vendor_quirk = panfrost_gpu_mt8188_quirk,
+>  };
+>  
+>  static const struct panfrost_compatible mediatek_mt8192_data = {
+> diff --git a/drivers/gpu/drm/panfrost/panfrost_gpu.c b/drivers/gpu/drm/panfrost/panfrost_gpu.c
+> index 29ac0dce5ff89..971abc9cc222c 100644
+> --- a/drivers/gpu/drm/panfrost/panfrost_gpu.c
+> +++ b/drivers/gpu/drm/panfrost/panfrost_gpu.c
+> @@ -9,8 +9,11 @@
+>  #include <linux/interrupt.h>
+>  #include <linux/io.h>
+>  #include <linux/iopoll.h>
+> +#include <linux/mfd/syscon.h>
+> +#include <linux/of.h>
+>  #include <linux/platform_device.h>
+>  #include <linux/pm_runtime.h>
+> +#include <linux/regmap.h>
+>  
+>  #include <drm/drm_print.h>
+>  
+> @@ -114,6 +117,40 @@ void panfrost_gpu_amlogic_quirk(struct panfrost_device *pfdev)
+>  	gpu_write(pfdev, GPU_PWR_OVERRIDE1, 0xfff | (0x20 << 16));
+>  }
+>  
+> +#define MTK_MFG_TIMESTAMP			0x130
+> +#define   MTK_MFG_TIMESTAMP_TOP_TSVALUEB_EN	0x3
+> +
+> +void panfrost_gpu_mt8188_quirk(struct panfrost_device *pfdev)
+> +{
+> +	/*
+> +	 * The GPU timestamp counter only counts once MFGCFG routes the SoC
+> +	 * system timer to it. The setting is lost whenever the GPU power
+> +	 * domain is turned off, so it has to be restored on every power-up.
+> +	 */
+> +	if (pfdev->mtk_mfgcfg)
+> +		regmap_write(pfdev->mtk_mfgcfg, MTK_MFG_TIMESTAMP,
+> +			     MTK_MFG_TIMESTAMP_TOP_TSVALUEB_EN);
+> +}
 
+Here you cast an SoC issue as a GPU quirk, which is a misrepresentation of the problem.
+GPU quirks are about working around GPU-model specific issues by poking GPU registers
+themselves. 
 
-Reviewed-by: Prasanna Kumar T S M <ptsm@linux.microsoft.com>
+> +static void panfrost_gpu_get_mtk_mfgcfg(struct panfrost_device *pfdev)
+> +{
+> +	struct device_node *np;
+> +	struct regmap *regmap;
+> +
+> +	np = of_parse_phandle(pfdev->base.dev->of_node, "mediatek,mfgcfg", 0);
+> +	if (!np)
+> +		return;
+> +
+> +	regmap = device_node_to_regmap(np);
+> +	of_node_put(np);
+> +	if (IS_ERR(regmap)) {
+> +		dev_warn(pfdev->base.dev, "failed to get MFGCFG: %pe\n", regmap);
+> +		return;
+> +	}
+> +
+> +	pfdev->mtk_mfgcfg = regmap;
+> +}
+> +
+>  static void panfrost_gpu_init_quirks(struct panfrost_device *pfdev)
+>  {
+>  	u32 quirks = 0;
+> @@ -519,6 +556,8 @@ int panfrost_gpu_init(struct panfrost_device *pfdev)
+>  {
+>  	int err;
+>  
+> +	panfrost_gpu_get_mtk_mfgcfg(pfdev);
 
-Regards,
-Prasanna Kumar
+We cannot add SoC-specific workarounds in generic driver code. There has to be another way.
+
+>  	err = panfrost_gpu_soft_reset(pfdev);
+>  	if (err)
+>  		return err;
+> diff --git a/drivers/gpu/drm/panfrost/panfrost_gpu.h b/drivers/gpu/drm/panfrost/panfrost_gpu.h
+> index b4fef11211d5f..2b974576b96e9 100644
+> --- a/drivers/gpu/drm/panfrost/panfrost_gpu.h
+> +++ b/drivers/gpu/drm/panfrost/panfrost_gpu.h
+> @@ -23,5 +23,6 @@ unsigned long long panfrost_cycle_counter_read(struct panfrost_device *pfdev);
+>  unsigned long long panfrost_timestamp_read(struct panfrost_device *pfdev);
+>  
+>  void panfrost_gpu_amlogic_quirk(struct panfrost_device *pfdev);
+> +void panfrost_gpu_mt8188_quirk(struct panfrost_device *pfdev);
+>  
+>  #endif
+> -- 
+> 2.55.0
+
+Adrian Larumbe
 
