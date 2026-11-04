@@ -2,67 +2,74 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 9EC11606A330
-	for <linux-mediatek@archiver.kernel.org>; Wed,  4 Nov 2026 02:14:42 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 16525606A31B
+	for <linux-mediatek@archiver.kernel.org>; Wed,  4 Nov 2026 02:33:25 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=2izm9iJ5
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=nBBTuV7G;
+	dkim=fail reason="signature verification failed" (1024-bit key, unprotected) header.d=lunn.ch header.i=@lunn.ch header.a=rsa-sha256 header.s=20171124 header.b=uTbK0dvH
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=CxotMRg8Jl9jS5fqsbNoyoQDH1t41chIx29r6F3HV4o=; b=2izm9iJ56WlX1r9AGPuD6Yt3XY
-	aSErbS5LYevqfk9k87Z06tzshV4gvdenwY94lXbf826VZY8wSvlwduZONbuMX2uwJohbHmXsa/Yl/
-	rAcet7nE4N3UCcx5nn5mjbeiyEnxp8UR51r0G0DS0znyhJYhf1JJepCYMS5hHomfz1/YAE3siHrim
-	0Ke8c4XcxaWRNpbOSjzz8D5Wb9T9EAG9gbHN3ioX8cl85WQOrahQ/w3Zn0CF9rYeEDpcRhEmmpWm/
-	PYkSER6CtTdxHuV1ogoSSRefSScjQHfoG3v0lgXL9q043aJ8wez7Rym+JZ/1y+Zo10GrT+22JYxMu
-	TgOUdArA==;
+	bh=44sRRDwl9anK1R2znFsd4YZuaIspdZA1Io6aW5ME0gY=; b=nBBTuV7GZ0N9Gg1j67OEnQBMgs
+	Dl/xUkFxtacZYG74kgLhmVajge27pyc6H7mg5klya57PsuyrLufvPlnePGagskLA91uWNfppM0FCy
+	wWdt1beeg6KrPjt+/7i2B4X0EeuPhMn6eV2uEFoolEp+hIQQaDrewAp8OGhyEoRZN3TEXCCN9aT0v
+	cjZkQIgcSxTgbRZ3eTnw5loOy1ZFQRvmiXfCTJ568T0ur20ikOSrHbgxaCgPsoRxNynrMct3HGa0T
+	/gNjo9jXuyGzGmtTLWCiABtyUhy1afZJhua8cusXKkLpn9DlFvQuU9Hk1v+l2wKfyGAoS52DXbEmN
+	+P4CVu9g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xOQWP-0000000489C-1qaU;
-	Wed, 04 Nov 2026 02:14:41 +0000
-Received: from smtp21.cstnet.cn ([159.226.251.21] helo=cstnet.cn)
+	id 1xOQoW-00000004A0l-2tT1;
+	Wed, 04 Nov 2026 02:33:24 +0000
+Received: from vps0.lunn.ch ([156.67.10.101])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xOQWM-0000000485F-43ZD;
-	Wed, 04 Nov 2026 02:14:40 +0000
-Received: from dfae2b116770.home.arpa (unknown [36.110.52.2])
-	by APP-01 (Coremail) with SMTP id qwCowADH7vgMlepqpHU+AA--.9517S2;
-	Wed, 04 Nov 2026 10:14:36 +0800 (CST)
-From: Wentao Liang <vulab@iscas.ac.cn>
-To: Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: linux-arm-kernel@lists.infradead.org,
+	id 1xOQoT-000000049zo-3wc5;
+	Wed, 04 Nov 2026 02:33:23 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
+	s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
+	References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
+	Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
+	bh=44sRRDwl9anK1R2znFsd4YZuaIspdZA1Io6aW5ME0gY=; b=uTbK0dvHx1D0gtV0VNBn+6tklF
+	ucpF4DcfXrfJDac/aQj6Q7BNa56YLZ/ch5eoGtbFH6MnvMGztsQtkDhqrNyMx26aqu1SqdDs1T/GY
+	kVwjaFCvJvFiZcnbqmnkmiDtEDWaDPW1bzhWRvoOTpTU+quRF7MJynsYBjF4iRCg/xlo=;
+Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
+	(envelope-from <andrew@lunn.ch>)
+	id 1xOQny-00EDkm-4R; Wed, 04 Nov 2026 03:32:50 +0100
+Date: Wed, 4 Nov 2026 03:32:50 +0100
+From: Andrew Lunn <andrew@lunn.ch>
+To: Christian Marangi <ansuelsmth@gmail.com>
+Cc: Heiner Kallweit <hkallweit1@gmail.com>,
+	Russell King <linux@armlinux.org.uk>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@kernel.org>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	Daniel Golle <daniel@makrotopia.org>,
+	Qingfang Deng <dqfext@gmail.com>,
+	SkyLake Huang <SkyLake.Huang@mediatek.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Joris Vaisvila <joey@tinyisr.com>,
+	Ahmed Naseef <naseefkm@gmail.com>, linux-kernel@vger.kernel.org,
+	netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
-Subject: [PATCH] soc: mediatek: svs: drop the subsystem device reference on failure
-Date: Wed,  4 Nov 2026 02:14:45 +0000
-Message-Id: <20261104021445.1468378-1-vulab@iscas.ac.cn>
-X-Mailer: git-send-email 2.34.1
+Subject: Re: [PATCH net-next v4 1/6] net: phy: mediatek: export __mtk_tr_write
+Message-ID: <556b6194-4d03-4ef3-b9b1-8c256d42130a@lunn.ch>
+References: <20261103221439.30502-1-ansuelsmth@gmail.com>
+ <20261103221439.30502-2-ansuelsmth@gmail.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-CM-TRANSID: qwCowADH7vgMlepqpHU+AA--.9517S2
-X-Coremail-Antispam: 1UD129KBjvJXoWxJry3ZF15tFWDAF1DZF4fKrg_yoW8Wr4kpr
-	W5ta4UAr90qF1j9w4UAw1UZF13uayIk3s3GrsxXwnruw1rXrW3XrWaqa4Yg34UAFykGa13
-	Jry3trZ7C3yxAr7anT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
-	9KBjDU0xBIdaVrnRJUUUkqb7Iv0xC_Kw4lb4IE77IF4wAFc2x0x2IEx4CE42xK8VAvwI8I
-	cIk0rVWrJVCq3wAFIxvE14AKwVWUJVWUGwA2ocxC64kIII0Yj41l84x0c7CEw4AK67xGY2
-	AK021l84ACjcxK6xIIjxv20xvE14v26F1j6w1UM28EF7xvwVC0I7IYx2IY6xkF7I0E14v2
-	6r4UJVWxJr1l84ACjcxK6I8E87Iv67AKxVWxJr0_GcWl84ACjcxK6I8E87Iv6xkF7I0E14
-	v26rxl6s0DM2AIxVAIcxkEcVAq07x20xvEncxIr21l5I8CrVACY4xI64kE6c02F40Ex7xf
-	McIj6xIIjxv20xvE14v26rWY6Fy7McIj6I8E87Iv67AKxVW8Jr0_Cr1UMcvjeVCFs4IE7x
-	kEbVWUJVW8JwACjcxG0xvY0x0EwIxGrwCF04k20xvY0x0EwIxGrwCF04k20xvE74AGY7Cv
-	6cx26r48ZrWUJr1UMxC20s026xCaFVCjc4AY6r1j6r4UMI8I3I0E5I8CrVAFwI0_Jr0_Jr
-	4lx2IqxVCjr7xvwVAFwI0_JrI_JrWlx4CE17CEb7AF67AKxVWUAVWUtwCIc40Y0x0EwIxG
-	rwCI42IY6xIIjxv20xvE14v26ryj6F1UMIIF0xvE2Ix0cI8IcVCY1x0267AKxVW8Jr0_Cr
-	1UMIIF0xvE42xK8VAvwI8IcIk0rVWUJVWUCwCI42IY6I8E87Iv67AKxVW8JVWxJwCI42IY
-	6I8E87Iv6xkF7I0E14v26r4UJVWxJrUvcSsGvfC2KfnxnUUI43ZEXa7IU5EQ6tUUUUU==
-X-CM-SenderInfo: pyxotu46lvutnvoduhdfq/1tbiBwABA2rqZFi4RwAAsG
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20261103221439.30502-2-ansuelsmth@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261103_181439_395775_970BC415 
-X-CRM114-Status: GOOD (  13.21  )
-X-Spam-Score: -0.9 (/)
+X-CRM114-CacheID: sfid-20261103_183321_975328_077EC714 
+X-CRM114-Status: UNSURE (   7.53  )
+X-CRM114-Notice: Please train this message.
+X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,53 +80,19 @@ List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-8.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
+	INCLUDES_CR_TRAILER,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS
+	autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-svs_get_subsys_device() returns a device from of_find_device_by_node(),
-which takes a reference the caller owns. svs_add_device_link() hands that
-reference to its caller on success, but both error paths - a failed
-device_link_add() and a supplier that is not bound yet - return an error
-pointer without giving it back, so the supplier device can never be
-released when probing fails or defers.
+On Tue, Nov 03, 2026 at 11:14:32PM +0100, Christian Marangi wrote:
+> Export __mtk_tr_write to directly write to debug register.
+> 
+> Signed-off-by: Christian Marangi <ansuelsmth@gmail.com>
 
-Put the reference before returning on both paths. The device link created
-on the deferred path is kept on purpose: it is what makes the driver core
-retry the consumer once the supplier has probed.
+Reviewed-by: Andrew Lunn <andrew@lunn.ch>
 
-Fixes: 681a02e95000 ("soc: mediatek: SVS: introduce MTK SVS engine")
-Cc: stable@vger.kernel.org
-Assisted-by: DeepSeek-V4.1-Flash and OpenAI Codex
-Signed-off-by: Wentao Liang <vulab@iscas.ac.cn>
----
- drivers/soc/mediatek/mtk-svs.c | 5 ++++-
- 1 file changed, 4 insertions(+), 1 deletion(-)
-
-diff --git a/drivers/soc/mediatek/mtk-svs.c b/drivers/soc/mediatek/mtk-svs.c
-index 99edecb204f2..dd9643026c66 100644
---- a/drivers/soc/mediatek/mtk-svs.c
-+++ b/drivers/soc/mediatek/mtk-svs.c
-@@ -2155,11 +2155,14 @@ static struct device *svs_add_device_link(struct svs_platform *svsp,
- 				   DL_FLAG_AUTOREMOVE_CONSUMER);
- 	if (!sup_link) {
- 		dev_err(svsp->dev, "sup_link is NULL\n");
-+		put_device(dev);
- 		return ERR_PTR(-EINVAL);
- 	}
- 
--	if (sup_link->supplier->links.status != DL_DEV_DRIVER_BOUND)
-+	if (sup_link->supplier->links.status != DL_DEV_DRIVER_BOUND) {
-+		put_device(dev);
- 		return ERR_PTR(-EPROBE_DEFER);
-+	}
- 
- 	return dev;
- }
--- 
-2.34.1
-
+    Andrew
 
