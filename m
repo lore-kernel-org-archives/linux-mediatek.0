@@ -2,48 +2,48 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id D181B606A32F
-	for <linux-mediatek@archiver.kernel.org>; Wed,  4 Nov 2026 10:48:32 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id A4274606A331
+	for <linux-mediatek@archiver.kernel.org>; Wed,  4 Nov 2026 10:49:11 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=bdwcbMzq;
-	dkim=pass (2048-bit key, unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=Ii+Uo71R
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=X12x3PYh;
+	dkim=pass (2048-bit key, unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=le3NFuUc
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=r0yndPxUhhPiOlKsOGZcPIxshPKvfSmviX9txktuT6o=; b=bdwcbMzqvKX5oHXsA+HT2b74Pd
-	rNTw7QGntEvmCGYQXb0xPzHNqgh5IdGcBQK6vCZPqQeDP72oqPPB++27UlzLrBtj50sGc0bddPKhG
-	rJToY1+uZQoaCBT0hJi6qB1g0Cgk2u031ln1kjCNie9sZkLCof94EwlX6BdfKpkKmPYcIPHBfkj/T
-	IAX1EdP1sS8ogtSkG/JseFySOpIczXjKp78pRROPzfPpu4lj2g+8lAVHysgTUnk1/4+uZSpYDRDxC
-	fRmnBZIeHOqX2amuErQF2t9xqZRPT5H0vCvcjypcNMCjh8nUVxa05S1L9H0wUIEtsMGGlbkIYfwm+
-	AFV6J/OQ==;
+	bh=vZTO7e+scOHMZfZ0rgBwT14GC+n8HQAdcfXeVAuK/yM=; b=X12x3PYhhAeuLaIqOGSvb+hSVC
+	d4KtgGvXagjhodMAyM60/TqPcyjWOY6y6DzWfFMz6b/UzHIWiuM8xEkR5794Zds1/cEg43pIzZrlN
+	8n0fKYHPbNH4fNau2fFc2dspblaQK4mXGcKlRu8rsNGA8Z+3aWLPOsCI7+VICw5XJi1CpfGNkTPrg
+	RODxbfXLWLUfMYuJLIGNrtkNi+d45Uw1cBWpRWrZuEccJCKvXHByTCU39ZBVFyFffq/g49AftIZbe
+	nFFJRPqSJbH0qVcT8RrUprQinPAJtIRvePwiini0bYdxwFSqyQYajT9RSwFIADJsyd9h5Nu7ngbBH
+	Zpzngn1w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xOYXg-0000000533F-1jEm;
-	Wed, 04 Nov 2026 10:48:32 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1xOYYJ-000000053Ju-1Zht;
+	Wed, 04 Nov 2026 10:49:11 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xOYXf-00000005327-0aE5;
-	Wed, 04 Nov 2026 10:48:31 +0000
+	id 1xOYYI-000000053Iw-0KxF;
+	Wed, 04 Nov 2026 10:49:10 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id 7477140EFA;
-	Wed,  4 Nov 2026 10:48:30 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id EE90C1F00A17;
-	Wed,  4 Nov 2026 10:48:28 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id C2F9941AAF;
+	Wed,  4 Nov 2026 10:49:09 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7B9A61F000C1;
+	Wed,  4 Nov 2026 10:49:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1793789310;
-	bh=r0yndPxUhhPiOlKsOGZcPIxshPKvfSmviX9txktuT6o=;
+	s=k20260515; t=1793789349;
+	bh=vZTO7e+scOHMZfZ0rgBwT14GC+n8HQAdcfXeVAuK/yM=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=Ii+Uo71R6czgiB17H6WDqTqqQ0xTPO1fBU8EtxEAPFVA4ntlhk8S/834W7Pv6V8hT
-	 4I3EDGs2Vw8QG+GxUZnGI6VK5tQWb9XMVplL4OtWSzZcBFry5H59dnlb11Lvs8lEYL
-	 8T10fWSGuC1ATHYC8zw4tU9LQufBL1cex5+YM3EqwjCkde/aqypXt+VaxUemgcwMlX
-	 SCEw9cYwrP9UCaPJ8VmjkUz+r6pPTExufacLcsbeopvqtO7IdX592eEc3Gihl42hXK
-	 Xhf5Cvo9LJL7Cdni19/YDPKq/zmmiShUn7gysgrntxpBFyB/7lAyFDJ+YgzSFfg4It
-	 bxYOpHci/bRRA==
-Date: Wed, 4 Nov 2026 11:48:25 +0100
+	b=le3NFuUcHXFH8dt8dhX/enpkJvbAqvt5iYEuKTjz/MCdSCaMfBEGrXZiEz6bnNscf
+	 0VNK4hsQ8MC8BRbBEpdSkBgB0XUPK+UPUof5+jfwAW6p2fFs2fpcGPXn1jAaaXzROt
+	 9+Ai0sn8EtYyfzlLGeTjaqZCQBIwaOgxl1j7gAevqnG5PGVs/5JT/rkroEgoh18okE
+	 h+56o3Z3abo3yst7h8q0sbnSLX6dZ8EOPIG2fvBpPHGYn+O2H2plaWyhGBS2lkXW4f
+	 yjXtGqyurw91eBLXwq6miaQEbrVxPRREeIMzphddaoa+mtotdoS5pER5ypfeYLSTur
+	 V9D1C4ZvOBamw==
+Date: Wed, 4 Nov 2026 11:49:06 +0100
 From: Krzysztof Kozlowski <krzk@kernel.org>
 To: James Calligeros <jcalligeros99@gmail.com>
 Cc: David Rhodes <david.rhodes@cirrus.com>, 
@@ -58,17 +58,16 @@ Cc: David Rhodes <david.rhodes@cirrus.com>,
 	linux-sound@vger.kernel.org, patches@opensource.cirrus.com, devicetree@vger.kernel.org, 
 	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
 	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH v4 01/22] ASoC: dt-bindings: cs42l84: Allow referenced
+Subject: Re: [PATCH v4 02/22] ASoC: dt-bindings: cs42l42: Allow referenced
  dai-common properties
-Message-ID: <20261104-eccentric-auk-of-zoology-55bcc4@quoll>
+Message-ID: <20261104-strict-precise-mouflon-85cbad@quoll>
 References: <20261103-macaudio-v4-0-637484efe46d@gmail.com>
- <20261103-macaudio-v4-1-637484efe46d@gmail.com>
+ <20261103-macaudio-v4-2-637484efe46d@gmail.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-In-Reply-To: <20261103-macaudio-v4-1-637484efe46d@gmail.com>
+In-Reply-To: <20261103-macaudio-v4-2-637484efe46d@gmail.com>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,40 +86,35 @@ X-Spam-Status: No, score=-15.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On Tue, Nov 03, 2026 at 05:39:49PM +1000, James Calligeros wrote:
-> Some consumers may wish to prepend the codec's name with a known value
-> to identify a specific codec among many and set #sound-dai-cells. Allow
-> this by allowing referenced properties from dai-common.yaml.
->=20
+On Tue, Nov 03, 2026 at 05:39:50PM +1000, James Calligeros wrote:
+> We may need to define both #sound-dai-cells and sound-name-prefix on some
+> machines where this codec is part of a simple DAI. Allow this by refrencing
+> dai-common.yaml and allowing its properties to be used.
+> 
 > Signed-off-by: James Calligeros <jcalligeros99@gmail.com>
 > ---
->  Documentation/devicetree/bindings/sound/cirrus,cs42l84.yaml | 8 ++++----
->  1 file changed, 4 insertions(+), 4 deletions(-)
->=20
-> diff --git a/Documentation/devicetree/bindings/sound/cirrus,cs42l84.yaml =
-b/Documentation/devicetree/bindings/sound/cirrus,cs42l84.yaml
-> index 94062c1d9d45..66cae8b7db5d 100644
-> --- a/Documentation/devicetree/bindings/sound/cirrus,cs42l84.yaml
-> +++ b/Documentation/devicetree/bindings/sound/cirrus,cs42l84.yaml
-> @@ -9,6 +9,9 @@ title: Cirrus Logic CS42L84 audio CODEC
+>  Documentation/devicetree/bindings/sound/cirrus,cs42l42.yaml | 5 ++++-
+>  1 file changed, 4 insertions(+), 1 deletion(-)
+> 
+> diff --git a/Documentation/devicetree/bindings/sound/cirrus,cs42l42.yaml b/Documentation/devicetree/bindings/sound/cirrus,cs42l42.yaml
+> index ab4c7d22dc0e..4ac0af34c464 100644
+> --- a/Documentation/devicetree/bindings/sound/cirrus,cs42l42.yaml
+> +++ b/Documentation/devicetree/bindings/sound/cirrus,cs42l42.yaml
+> @@ -9,6 +9,9 @@ title: Cirrus Logic CS42L42 audio CODEC
 >  maintainers:
->    - Martin Povi=C5=A1er <povik+lin@cutebit.org>
-> =20
+>    - patches@opensource.cirrus.com
+>  
 > +allOf:
 > +  - $ref: dai-common.yaml#
 > +
->  description: |
->    The CS42L84 is a headphone jack codec made by Cirrus Logic and embedded
->    in personal computers sold by Apple. It was first seen in 2021 Macbook
-> @@ -29,14 +32,11 @@ properties:
->    interrupts:
->      maxItems: 1
-> =20
-> -  '#sound-dai-cells':
-> -    const: 0
+>  description:
+>    The CS42L42 is a low-power audio codec designed for portable applications.
+>    It provides a high-dynamic range, stereo DAC for audio playback and a mono
+> @@ -193,7 +196,7 @@ required:
+>    - VL-supply
+>    - VA-supply
 
-This should not be removed. Why cells of 1 would be correct? If so,
-explain in commit msg.
+Missing dai-cells constraint
 
 Best regards,
 Krzysztof
