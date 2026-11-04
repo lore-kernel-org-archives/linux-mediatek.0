@@ -2,11 +2,11 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 923AC606A32C
-	for <linux-mediatek@archiver.kernel.org>; Wed,  4 Nov 2026 02:34:06 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id D4DC0606A31B
+	for <linux-mediatek@archiver.kernel.org>; Wed,  4 Nov 2026 02:35:05 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=BQysfOUx;
-	dkim=fail reason="signature verification failed" (1024-bit key, unprotected) header.d=lunn.ch header.i=@lunn.ch header.a=rsa-sha256 header.s=20171124 header.b=MFhupODo
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=M3aadtUH;
+	dkim=fail reason="signature verification failed" (1024-bit key, unprotected) header.d=lunn.ch header.i=@lunn.ch header.a=rsa-sha256 header.s=20171124 header.b=xk2RSuZD
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
@@ -14,32 +14,32 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=UngWXeSeiFLVAfajmqVKU8517kJO/u7bQBZMSqnjHsI=; b=BQysfOUxOU1RZ5y4eCtvdVSPse
-	DOvXdPlVQ+DvyV5lI+d/5JZFR0VBnx4FUeBHM/oPacfEAGH31Ec77+n7uVKIqkRXPAEyN24gfavC2
-	MB67YR10dcqc695QCU1CVh4otja1AYr0niDJfaY90XTp6/vHxkwIEQ+eZ5a4kyR2rm5TTCPjnlYrL
-	Wa7IbqJ274yAkusre9wRSyj4/T2HmwPwJl79t5me+2m1O1/9pek4n+Z/2KQpw9yi/++W9uYGiMrPA
-	m/uQ8Csh2Sca6ye2PkuHPwMOHTn7rRBqEGlhOdOaB816StB2di0urm9/US8OYr9q/Ar/jjkkWJR/8
-	x3SBrpug==;
+	bh=ZpM2gRFCcHI3bei5VEKrgg4awIGy/+ZVNWzYY+kxMro=; b=M3aadtUH+3Pd1N3i4ARGBYqw37
+	xCbemX1i8Bqez1Ec6bL9OjkMLLhCh7U0X/94WZ3XOe3MEuzAST+bHPU0JxG7+k+QYQOGJc8GO65Rr
+	HA4J7Bvmf6s2qwqb4QLt9u+9mNaGtdqusEWQua57D4kpHU6d7HHgM4TztUHUaqKeMw2LGDvEMrQl9
+	s5Nfu26IVCAAkH8vwOqtWq9SeaaJW6v7qw0cmrAkAmsnqfETzmtjffP5zNBPY4WtKcrubzfkVy/5s
+	BR7LUVngNsYppLzjZudNBW/exYOaWqDCFP/eMmzFJZNkFfkPCc53d/FEa5ckjv5SRH0HPK9EcW4cW
+	ZCx5LLhA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xOQpC-00000004AF9-0oUN;
-	Wed, 04 Nov 2026 02:34:06 +0000
+	id 1xOQq9-00000004Abv-2WSb;
+	Wed, 04 Nov 2026 02:35:05 +0000
 Received: from vps0.lunn.ch ([156.67.10.101])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xOQp6-00000004ACZ-3TeK;
-	Wed, 04 Nov 2026 02:34:04 +0000
+	id 1xOQq7-00000004AaM-2PIT;
+	Wed, 04 Nov 2026 02:35:04 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=lunn.ch;
 	s=20171124; h=In-Reply-To:Content-Disposition:Content-Type:MIME-Version:
 	References:Message-ID:Subject:Cc:To:From:Date:From:Sender:Reply-To:Subject:
 	Date:Message-ID:To:Cc:MIME-Version:Content-Type:Content-Transfer-Encoding:
 	Content-ID:Content-Description:Content-Disposition:In-Reply-To:References;
-	bh=UngWXeSeiFLVAfajmqVKU8517kJO/u7bQBZMSqnjHsI=; b=MFhupODoadThu58oBxVFxQ34Wv
-	kJ99xDxkXM9iKu6wl2wOoczIPJV+t0RjQQ6YZT/+j1Lsb/SyRsm95imnsq2kpDbrrhjRGC/bJB/3W
-	UJzWDMZJIk5QXLk9HGwV4h5bcc/J7x7Bi1vukK8ak0XON5eesfvApAlyyHyLroTeeafE=;
+	bh=ZpM2gRFCcHI3bei5VEKrgg4awIGy/+ZVNWzYY+kxMro=; b=xk2RSuZDD1bsSm2PYNKuhnOj7w
+	+xZ0o/4Sa6q8Zj3gpiPvAvllwEcheUISSlCRbBkL+p9eJEXG8KRTikVB/X8a8HnWQso1dlz2vdTT9
+	ORYi2uPx/5e9qz0CLpGwUqjL0BCb5ydG3y4Hozd57IVoUf3TIHew0rrhG6h3JkmJAguY=;
 Received: from andrew by vps0.lunn.ch with local (Exim 4.94.2)
 	(envelope-from <andrew@lunn.ch>)
-	id 1xOQor-00EDm8-F6; Wed, 04 Nov 2026 03:33:45 +0100
-Date: Wed, 4 Nov 2026 03:33:45 +0100
+	id 1xOQpu-00EDna-3g; Wed, 04 Nov 2026 03:34:50 +0100
+Date: Wed, 4 Nov 2026 03:34:50 +0100
 From: Andrew Lunn <andrew@lunn.ch>
 To: Christian Marangi <ansuelsmth@gmail.com>
 Cc: Heiner Kallweit <hkallweit1@gmail.com>,
@@ -56,19 +56,19 @@ Cc: Heiner Kallweit <hkallweit1@gmail.com>,
 	Ahmed Naseef <naseefkm@gmail.com>, linux-kernel@vger.kernel.org,
 	netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH net-next v4 2/6] net: phy: mediatek: move MTK GE SoC
- registers define to dedicated header
-Message-ID: <fd99847d-e7ee-4327-8eb3-8336eb7d967b@lunn.ch>
+Subject: Re: [PATCH net-next v4 3/6] net: phy: mediatek: generalize cal_cycle
+ function for GE SoC
+Message-ID: <d2c421e2-9e16-4f26-84be-06e5fc2c719d@lunn.ch>
 References: <20261103221439.30502-1-ansuelsmth@gmail.com>
- <20261103221439.30502-3-ansuelsmth@gmail.com>
+ <20261103221439.30502-4-ansuelsmth@gmail.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20261103221439.30502-3-ansuelsmth@gmail.com>
+In-Reply-To: <20261103221439.30502-4-ansuelsmth@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261103_183401_269347_5BEC97CE 
-X-CRM114-Status: UNSURE (   9.83  )
+X-CRM114-CacheID: sfid-20261103_183503_620171_E4955988 
+X-CRM114-Status: UNSURE (   8.87  )
 X-CRM114-Notice: Please train this message.
 X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-mediatek@lists.infradead.org
@@ -88,12 +88,10 @@ X-Spam-Status: No, score=-8.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On Tue, Nov 03, 2026 at 11:14:33PM +0100, Christian Marangi wrote:
-> In preparation for support of special Software Calibration for Airoha
-> PHY, move the MTK GE SoC registers define to a dedicated header.
-> 
-> This is to keep cleaner code and permit sharing these define in multiple
-> source code.
+On Tue, Nov 03, 2026 at 11:14:34PM +0100, Christian Marangi wrote:
+> In preparation for support of special Software Calibration for Airoha PHY,
+> it's needed to generalize the cal_cycle function as Airoha needs only
+> part of its logic (the wait logic) to complete a calibration cycle.
 > 
 > Signed-off-by: Christian Marangi <ansuelsmth@gmail.com>
 
