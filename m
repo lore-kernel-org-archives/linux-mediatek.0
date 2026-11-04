@@ -2,105 +2,154 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 71F9B606A33A
-	for <linux-mediatek@archiver.kernel.org>; Wed,  4 Nov 2026 22:08:08 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 8AEA3606A336
+	for <linux-mediatek@archiver.kernel.org>; Wed,  4 Nov 2026 22:39:13 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=uZ1P7UeP;
-	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=roeck-us.net header.i=@roeck-us.net header.a=rsa-sha256 header.s=default header.b=SyA6t0X5
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=zfJcKg++;
+	dkim=pass (2048-bit key, unprotected) header.d=genexis.eu header.i=@genexis.eu header.a=rsa-sha256 header.s=selector1 header.b=zfxbdvqa
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:Cc:To:
+	Subject:Date:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=uPpZHIHN2f+krnoJTSXhizzaZXUBHGCxVWnErBLk0sw=; b=uZ1P7UePCeFiIy33iq5lWeSj98
-	Nwc1YbzmAQhGCgdpB+7TN5OZNnxKsIL6iCUtQDdujGOiQ6HlVkDftOvykZU09uzjrvYP4eFaCk4G2
-	D0oG1If2uOuPHzvKUQBt13l2EmfGaSpVQXjsy28tPFLNgMfd/bc8x6InO8YlMZDyHCLcIfCCurdS0
-	zXpDlgBbpZ2IUpVoee86IBBukxHXGBjlUcVoHNQstbCFrD3CX/v/ilwFQ+nftnlzIKeg3g2NzLJsX
-	MKhHHt7ssILYpHRCkrG969j6qW8rkf02bAabHp2m32HET3vMkEZGnbgyg/Yi7Ur3L1Fz68jqPeYmV
-	PIMvXX5w==;
+	bh=Rj9s+TBgsab25DvEPFmQjdXovjmxGdDadWzddpYIewc=; b=zfJcKg++OV4uV/8GHp469E6She
+	cjdtvOKDHObf7wmqsYpwiDJefTM9SPDlpnVRrg1s0UbTKQLf41OuCIev9+qF4Zf1hfjNadX7iGFDk
+	7aCwte5vRjgE/fVWKZcSUVxNaiz0pv1Ms86uUkFzTQZmkV9b/f+pC0NFmzcpxc1ZB/KyS1Q8wIqYt
+	xEVHnFB2ciaFdGDjRE+k51Xb89KqTFgD+DTHN6LGNA9bQNzWqBGLgIk5lGuwf1qIMtfN+z6uX76Bt
+	AIn25DN6NRskRV15GyhE569aXffQ38LN3H/20HR817J3m2UQFLAndiNhXB4dEw9mibVZucyIN2/V3
+	9CKDaNow==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xOj9L-000000077um-0ZPY;
-	Wed, 04 Nov 2026 22:08:07 +0000
-Received: from omta36.uswest2.a.cloudfilter.net ([35.89.44.35])
+	id 1xOjdR-00000007AQ0-0JKo;
+	Wed, 04 Nov 2026 22:39:13 +0000
+Received: from mail-westeuropeazlp170130006.outbound.protection.outlook.com ([2a01:111:f403:c201::6] helo=AM0PR02CU008.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xOj9I-000000077sV-3Ssm
-	for linux-mediatek@lists.infradead.org;
-	Wed, 04 Nov 2026 22:08:06 +0000
-Received: from eig-obgw-5003b.ext.cloudfilter.net ([10.0.29.155])
-	by cmsmtp with ESMTPS
-	id OZeuxThgdRiNxOj9HxlOre; Wed, 04 Nov 2026 22:08:03 +0000
-Received: from 162-215-252-36.unifiedlayer.com ([208.91.199.152])
-	by cmsmtp with ESMTPS
-	id Oj9GxFGzGbtpUOj9GxeOaO; Wed, 04 Nov 2026 22:08:02 +0000
-X-Authority-Analysis: v=2.4 cv=dIqmmPZb c=1 sm=1 tr=0 ts=6aebacc3
- a=QNED+QcLUkoL9qulTODnwA==:117 a=2cfIYNtKkjgZNaOwnGXpGw==:17
- a=kj9zAlcOel0A:10 a=zJRp6_cAMcgA:10 a=M0FbrtG7MMAA:10 a=mpaa-ttXAAAA:8
- a=AhJusznchYkEs9MMiQMA:9 a=CjuIK1q_8ugA:10 a=KPbNTLLc3YvdawN95zVk:22
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=roeck-us.net; s=default; h=In-Reply-To:Content-Type:MIME-Version:References
-	:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:Content-Transfer-Encoding
-	:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
-	List-Unsubscribe-Post:List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=uPpZHIHN2f+krnoJTSXhizzaZXUBHGCxVWnErBLk0sw=; b=SyA6t0X5HCcBfATZNI8Kbb4ksm
-	hTB7osa3MOtNNirjIdy8uJ8HAWGaphLEybiIZNPeTBj+JeVI80v8EElmkTd4hWBuPa/Z3+pl5092+
-	g1k8ogbs00esl5aa6vfujqZm05BPnNOXAYmYbS6FjwVyliDV9z2cyOaHG4eoufGv3F7acBqjphECZ
-	a83clvz33UqYtmcmVN1kGQ5M1xWyCr2hbVp50kXGgewihE3mWC+1JybQabLER4T44tNtuEGUblraT
-	lHRp8qKk/AeTvLQK/pMznIjGWDG3GjfQaHKI0mbyQQ+eTJPQwxlS6gFmQctKCwhoIFmA/PrMwIFA4
-	RISQ6J5g==;
-Received: from 108-223-40-66.lightspeed.sntcca.sbcglobal.net ([108.223.40.66]:36806 helo=server.roeck-us.net)
-	by bh-25.webhostbox.net with esmtpsa  (TLS1.2) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.100.1)
-	(envelope-from <linux@roeck-us.net>)
-	id 1xOj9E-00000000ul0-2R7W;
-	Thu, 05 Nov 2026 03:38:00 +0530
-Date: Wed, 4 Nov 2026 14:07:59 -0800
-From: Guenter Roeck <linux@roeck-us.net>
-To: Zexin Wang <ot_zexin.wang@mediatek.com>
-Cc: Wim Van Sebroeck <wim@linux-watchdog.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	light.chen@mediatek.com, Fred-WY.Chen@mediatek.com,
-	Yt.Hsieh@mediatek.com, linux-watchdog@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH] watchdog: sbsa_gwdt: Limit the MediaTek WS0 race
- workaround to revision 0
-Message-ID: <055e6366-83db-435d-af3f-4168a822a870@roeck-us.net>
-References: <20261104083714.3026535-1-ot_zexin.wang@mediatek.com>
+	id 1xOjdN-00000007AP3-29im;
+	Wed, 04 Nov 2026 22:39:10 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=w2KHrxejEsMykwbMazTjXa9AkNbxKShubXFASouPq2pVkLmyP/x37rCalbOxT6cQbTEX0SVkO2mAxzJHMK39P0OlVKzjFlJxzfjHfh2l6xE+gKY7L6E9rL6zSlHXTQfJDT8qx85hwHgVCOCg1u2nl5ByWPOg803X91niSVs1f2/PUiFe3V9GxzkQpejjNtRcwpJWW/jT0GBavDcBVrRbZb1uu8PAaIqLRCdnvRVkSw0uTC7vTYcVkOcYc0Qk0UOg2YILVDM+YOpQpSP57XwU8DFk2QhQAbryE21GFFC46zjqULIq0mdV4IB6lt3Ux4UAEIEso9PljKSXZm6P+cwpkQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=Rj9s+TBgsab25DvEPFmQjdXovjmxGdDadWzddpYIewc=;
+ b=dboKrZ5zZ/d17G9ZSwG9rjslcL0zpOhQ9u886CciP5YccZ4aM6tiKXazmwlr6MPl/M1wusPLtYPTbr7az1M0ov6g/NJVo6NV/iePj4y2h3quu27AwhDsoebn7SPanICb+BSQy2gKHA0DFilTcRvc0ZBi6GkqR4zsFC4A1CrI7ZYQ/lbxzzW3JbQhJK/0hfocfIY+jckkMpgAoOpaaacCGrE7kNLIbv0rNGMmToYzj0qtsy+KKhPdFbrTGEK95kRUOxu+GUT7zRkfUNMhbUbTfhqwbCI/yZfG1jAM34gms0EPRiUR3EdEUE8mSgCRLvFnMSamvPPjfMReKc0VWjXDHA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=genexis.eu; dmarc=pass action=none header.from=genexis.eu;
+ dkim=pass header.d=genexis.eu; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=genexis.eu;
+ s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=Rj9s+TBgsab25DvEPFmQjdXovjmxGdDadWzddpYIewc=;
+ b=zfxbdvqaZ8hn5R7xOYl1h5YuOzz3y5T8Js6aMN3RfZu5NdfnG6QODKH86P/Pef7heRZdIJ3Jvf3j93CiPoSmABe0vVToMHZiqi3etAXvLc4Hr5yOdh0H8f25POtYy79w0JUDkgpB0EfG89SeonCP9EGt3zWvgymhJgGPxUErXwdRSOWj7WIv1kFBhb58ov/IkLcUm/YGQMFxe5etGPRSum0JbfV39oslwXXnXCMiGCqltVJALHcmNEB61T4JEfoXvThZiK/ZYUN1ScTLIDP/pbHYwWiDRO2tPiLlnCar1RG4jlgZRnVD7J2CfA2VYpp1PmFk5NzHoN4dvYRr/NGxGw==
+Authentication-Results: mx.microsoft.com 1; dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=genexis.eu;
+Received: from DB9PR08MB6697.eurprd08.prod.outlook.com (2603:10a6:10:2ad::14)
+ by DB9PR08MB6443.eurprd08.prod.outlook.com (2603:10a6:10:261::23) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.592.9; Wed, 4 Nov 2026
+ 22:39:01 +0000
+Received: from DB9PR08MB6697.eurprd08.prod.outlook.com
+ ([fe80::bdec:3e95:6614:441f]) by DB9PR08MB6697.eurprd08.prod.outlook.com
+ ([fe80::bdec:3e95:6614:441f%6]) with mapi id 15.21.0592.007; Wed, 4 Nov 2026
+ 22:39:01 +0000
+Message-ID: <bde6c991-e0a6-4c25-a5c7-9dbe79aca604@genexis.eu>
+Date: Wed, 4 Nov 2026 23:38:58 +0100
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH net-next v4 5/6] net: phy: mediatek: add calibration logic
+ for AN7581
+To: Andrew Lunn <andrew@lunn.ch>, Christian Marangi <ansuelsmth@gmail.com>
+Cc: Heiner Kallweit <hkallweit1@gmail.com>,
+ Russell King <linux@armlinux.org.uk>, "David S. Miller"
+ <davem@davemloft.net>, Eric Dumazet <edumazet@kernel.org>,
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+ Daniel Golle <daniel@makrotopia.org>, Qingfang Deng <dqfext@gmail.com>,
+ SkyLake Huang <SkyLake.Huang@mediatek.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Joris Vaisvila <joey@tinyisr.com>, Ahmed Naseef <naseefkm@gmail.com>,
+ linux-kernel@vger.kernel.org, netdev@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+References: <20261103221439.30502-1-ansuelsmth@gmail.com>
+ <20261103221439.30502-6-ansuelsmth@gmail.com>
+ <2b744929-609b-4529-8b6b-30feb3ebbbde@lunn.ch>
+ <6aeb7861.6171b307.11ae12.6b94@mx.google.com>
+ <68eecc53-ed61-463d-bb5f-c68b507be82a@lunn.ch>
+Content-Language: en-US
+From: Benjamin Larsson <benjamin.larsson@genexis.eu>
+In-Reply-To: <68eecc53-ed61-463d-bb5f-c68b507be82a@lunn.ch>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+X-ClientProxiedBy: GV3PEPF0001DBAA.SWEP280.PROD.OUTLOOK.COM
+ (2603:10a6:158:401::6ea) To DB9PR08MB6697.eurprd08.prod.outlook.com
+ (2603:10a6:10:2ad::14)
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20261104083714.3026535-1-ot_zexin.wang@mediatek.com>
-X-AntiAbuse: This header was added to track abuse, please include it with any abuse report
-X-AntiAbuse: Primary Hostname - bh-25.webhostbox.net
-X-AntiAbuse: Original Domain - lists.infradead.org
-X-AntiAbuse: Originator/Caller UID/GID - [47 12] / [47 12]
-X-AntiAbuse: Sender Address Domain - roeck-us.net
-X-BWhitelist: no
-X-Source-IP: 108.223.40.66
-X-Source-L: No
-X-Exim-ID: 1xOj9E-00000000ul0-2R7W
-X-Source: 
-X-Source-Args: 
-X-Source-Dir: 
-X-Source-Sender: 108-223-40-66.lightspeed.sntcca.sbcglobal.net (server.roeck-us.net) [108.223.40.66]:36806
-X-Source-Auth: guenter@roeck-us.net
-X-Email-Count: 1
-X-Org: HG=direseller_whb_net_legacy;ORG=directi;
-X-Source-Cap: cm9lY2s7YWN0aXZzdG07YmgtMjUud2ViaG9zdGJveC5uZXQ=
-X-Local-Domain: yes
-X-CMAE-Envelope: MS4xfGbr3DrFYjmR+JoRloT22ql0C3Q0C1iZxewMHlayqsGop6XUNZU1k8uPUC+VQQ6v00l82CR0ZvaQ5LAij94aDfhnJg5vHWHc0BezExwgX1IQ9NuUN9oo
- ukzJrsb9PxBcuGC6rY7C+igD5ulaLRFa29O+TeRsggyFhhIsduEMeMOfnElOab9ujnaF5SPqw50rAbMUVzkM12sMrxcActG3iXE3Eo92qpQkZDfJeROk81oH
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: DB9PR08MB6697:EE_|DB9PR08MB6443:EE_
+X-MS-Office365-Filtering-Correlation-Id: 0aff04a8-f01b-41e9-f010-08df3ac46be1
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230040|376014|7416014|23010399003|366016|1800799024|10067099003|22082099003|18002099003|56012099006|4143699003|11063799006|261026140227099003|261026121527099003|261022075727099003|261028144727099003|261022105027099003;
+X-Microsoft-Antispam-Message-Info: lq8IXFKkxP2h/2U1vsbNc43wD9CQFw792isDMEF5jRT/v7PU4Y5gJvjgHR86zeu/63Z84c7Jk7+BJb3bt4wxuQgV9vp1n3iOYMydnf+Qt+ZcmMGxcnlB5NflumA2iFBSD1U9TBbTyp6yHqD/0WRyOhjh/LFoJ/VC98vwsA7tm6YTu6CxbVnL6nERpwHeuEW21Y6z/AsWBj44DEQXTBSglsJoHL+qhiTTsXA4LZrQig69H+pg8+DBqYLjW7MXWBHPrqzxCFlBbX5UPQGV5RpJOnLsVHmSs8aYusD8wJlzAm7oGJtNwBKyZPgiNsI1nUUAcJ4aQCMx/bfvIYMROUAFaF9fI4ry8wCwQyMmSvOeV8QrRBOO2iOLXOqacScpf99VQdPN6TA2NfObn5ztWlFUo61B72rLqg4kFdhm27Eqd1THiS07whHnVzcsCfkHySwvWGusPXBrKPrXTjPcnh/A1i5p2HnB/wN5YbNypFA1nZbxnbloniR0U/jtMiLrHZq/IXnDfkIqQgF/w1bUz0+p6qJSsyd3hxq6jLXRVYY0WsT6BrsyhLd5tpOitmxj4M5m4Go4AO6OU3rAg+o9sW4EGAFAkjmzwJ8jbV6Z5LKUICuipnwm+h/aK3zgsBRdKcQ1Ttp/y11Z0XGxdHklSEk5m+B+LztGDT2CQNKnxOIOTKE=
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:DB9PR08MB6697.eurprd08.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(376014)(7416014)(23010399003)(366016)(1800799024)(10067099003)(22082099003)(18002099003)(56012099006)(4143699003)(11063799006)(261026140227099003)(261026121527099003)(261022075727099003)(261028144727099003)(261022105027099003);DIR:OUT;SFP:1102;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?NjQrWlJmUnpBVDcxa0pab1RaNjZrSUVPd28rQkVHdE1ONDQ0TjVPY052V1Ez?=
+ =?utf-8?B?cW5EdGxNRDNmYVhOQkRydGNrTEpZdU5HKzdWcUNqQUdEMzlaNEswUmVIUzNC?=
+ =?utf-8?B?eWpHMVZwaDBtOTRhWEM2WXdEQVJZc3pyVWZRcUhtcURKYmJmZ3U5TnlIZDJ3?=
+ =?utf-8?B?MHVOdG85WnA2MTNDd1J2b1kraUcrNHRySEI0Qzl6b0xLNWJUdHM4aG9uV0NK?=
+ =?utf-8?B?MTA2WGhPYkJIejYvMEUwbW81Z1pXdzNFdTMwd2dZak9uV0pIcWVpd1FqZzVi?=
+ =?utf-8?B?d2JpRytQUCswQTJJemdqL09zWTBzN1ZpQ05OMHp3dkR2bHNrZkJ0VEZla2Ur?=
+ =?utf-8?B?Zy9mR1dVWE5vdmhkZXFIN1dCYkZFZnBNaWlnTjQxUVg0WVhxaEhqbXJHWTNH?=
+ =?utf-8?B?YnJaWVlzcmMySFJZbUcwdEJIeCtzTjBYa1BKczVHUFJaM0d2NnU5VUdpUnZo?=
+ =?utf-8?B?c2o4TnVFSWx1ZHN6NWZncHRQZlNNWDZwc2MxSDRHZDhNb1ZJOWtoNHNUVU9p?=
+ =?utf-8?B?aXFyZGYrdldFRTJYRDNVaG5ubm1GaDBMYTBpRFNBcE5zQnhQOC9FMGtsT0lW?=
+ =?utf-8?B?T0tJWkkrTnJUcmVEZ1Bpbm5Ea2F2SjVMb2lHT1VGRXFzeSthWHhLT00yQjJO?=
+ =?utf-8?B?OGthdUZMOGpqSGcvVDA4UUpEa3E3bi9lUUJTbTVDZTcrUXE2SWNWRXZPblA4?=
+ =?utf-8?B?U1dYUTZSemJuYzlWWlE4K1ppbDB6QTk1TlppNFRqMUhHanE1N3hLcWpDSnE4?=
+ =?utf-8?B?OE9mdDlNNUNjVURhRE5Zd29PZEdQeHRwUGovS3oyazJPRXMxb1RWZ3JYZXNO?=
+ =?utf-8?B?UklwdXB3WG53aVRyZzlLMGpyNWNMemZFZDZ5bjY2T28zT2NnRTJZUFJxcVpV?=
+ =?utf-8?B?U3BEUmpkS2hxN3h6SXBOYTdBWFA0K3FrTFVSK3ErSXc1WksxMzBCcnJHd3BL?=
+ =?utf-8?B?MHpIMUZ1TlJyUFNUaCt0KytFQXJWSFBDb2hjbThwN0JjOEd0OExNVmxhUytj?=
+ =?utf-8?B?MWl2OW9HMmFFWm9nVFp5T2RvOFlCSWMxSjROTmV3TnJ3TFdHNC83aWNzQ01K?=
+ =?utf-8?B?UFZiM2trSlpQTTkwUStWQXhXTVd5cUtXTnp2akgyVXZETmRRVnp3TUFJeTds?=
+ =?utf-8?B?NzRCUGpvNDNQejlPMUJ1NUFDejl0M1RLWWlkc0JEdHZDZDVhRmhreTl4RXZ3?=
+ =?utf-8?B?d0pjZ01VRFppcm1hdHZNL2g4WklzN1J3Y1VkYmF0cVVUekV2ajNkeGpMdmp2?=
+ =?utf-8?B?ZDZIdjg3anhWbmdUN2JLbFZMV3Q2U1EvQWIxTmVpZFNTa1RwUndHNXdwZWpn?=
+ =?utf-8?B?STM1SkdMTDBBNDVIMFEwRU44QlloRWNFMDRtWWFvcXJtZTNkUGV6cjhKcjkx?=
+ =?utf-8?B?dS96WExCS3JKczQ1ZVVHTk1nWkt3TVhuVFA4dyt5anEvSk5XSXlTOWJWckc3?=
+ =?utf-8?B?d01rY1E2TFMyREFJWGYvTTYwWkFwKzNrWVhHNlg3SUJ5SGd1TTdEQUYyWC91?=
+ =?utf-8?B?blRqUnY2OC9sRWJYZ0xHUVBKL0ZJZWpEODk4RHY1REVTMXZWa3h1NndmR0Ji?=
+ =?utf-8?B?Q2ZQMGtNSlJlYUhFa2FKZjBGSE82ZkxmNEUvSnNIdnRZV0p6d3FCTFFOMmNt?=
+ =?utf-8?B?ZWg2N21TOEdjdThQUElEOGtrM0c1TGlOT2VKZEJnYWJaVlVUTlhCeXRseTNK?=
+ =?utf-8?B?SEEyYzdBdUozdDVEVmo5WUQzT1VoNVFTZDRlQmU4Q0RCaEQ4NDF1Rm9tS29F?=
+ =?utf-8?B?VHdrVkdWT0dvM2kxYy94WGFmTVNxVVI4d2ZxbGhFV2RVOUJwS3RrVmxzOW9I?=
+ =?utf-8?B?TVl2RnA3U1J3ZEZGQytzY0lRWWZZRlEvQVpOZXBwSDZyRm1VNmFWbnQyWnJm?=
+ =?utf-8?B?aXByQmlYNXUwZHJHOTBLTE5kSkRYZk9oemV6M1p6Z09JeUdoVTVQUThDVWR3?=
+ =?utf-8?B?c0p0NmZBNnVkTFRZYzhGcGNWajJPRmJiamsxUURpbVAxcXpzVU9TdGlOQzVI?=
+ =?utf-8?B?ZTB1OFl6MC9xbFYwb2tQV0FqWkxpaDFrb3JUbjgxUHJCblFJRXBLUnh3Uk9w?=
+ =?utf-8?B?b2tLaHJhNmFYT1pLeVNjSzU3UGFjS1RpT0Fmd1M0MituVWk3amxZTnJtUFlQ?=
+ =?utf-8?B?RVRwSytVczdDTnlkMWxHTHZBd09ZU1htaks3ZXJobms3NUdCVWlWWHd4Wjhy?=
+ =?utf-8?B?UlcrRHBxT2N6OStSeGNQQ3UzdEVJV1Y1YTRUV0RBQ1BYQWJ0emd3aXhjMUsw?=
+ =?utf-8?B?Umo1aUtQa0VqVFlpWm5VbFdsRjdmM0Q1eDZQMDVnM0ZmR0I1V1pJUzBkVE9G?=
+ =?utf-8?B?Y0N1ckRYSW81T3U4Qi9GRVRxNWdEdGJtUTg3QkZya1UvQnJkU0p1WUR2VCtD?=
+ =?utf-8?Q?DUHvgNst4H15IGPI=3D?=
+X-OriginatorOrg: genexis.eu
+X-MS-Exchange-CrossTenant-Network-Message-Id: 0aff04a8-f01b-41e9-f010-08df3ac46be1
+X-MS-Exchange-CrossTenant-AuthSource: DB9PR08MB6697.eurprd08.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 04 Nov 2026 22:39:00.9279
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 8d891be1-7bce-4216-9a99-bee9de02ba58
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: pgaiwCsmCkqjD8G84gq+4hMyJXt+IpHelGq/HnabuCOcXdUuCP70br6ofuhdVKpCVL5NJbpvN/EUp1Q0pTX2WzsW0j2whh+S69efiJL/1eE=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DB9PR08MB6443
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261104_140805_304285_0E00584D 
-X-CRM114-Status: UNSURE (   5.65  )
-X-CRM114-Notice: Please train this message.
-X-Spam-Score: -1.4 (-)
+X-CRM114-CacheID: sfid-20261104_143909_602613_C297DDBE 
+X-CRM114-Status: GOOD (  11.44  )
+X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -111,27 +160,41 @@ List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-8.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS
-	autolearn=ham autolearn_force=no version=4.0.1
+X-Spam-Status: No, score=-7.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,
+	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS,USER_AGENT_SANE_1 autolearn=no autolearn_force=no
+	version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On Wed, Nov 04, 2026 at 04:37:02PM +0800, Zexin Wang wrote:
-> The WS0 race workaround is currently enabled for all MediaTek SBSA
-> Generic Watchdog revisions in single-stage mode. However, only
-> revision 0 is affected by the race condition.
-> 
-> Read the revision field from W_IIDR and enable the workaround only for
-> MediaTek watchdogs with revision 0 in single-stage mode. This avoids
-> unnecessarily restricting the minimum timeout and adjusting the
-> keepalive interval on unaffected revisions.
-> 
-> Signed-off-by: Zexin Wang <ot_zexin.wang@mediatek.com>
+Hi.
 
-Applied.
+On 04/11/2026 21:51, Andrew Lunn wrote:
+>> It's safe in the measure that the worst is that link goes down during the
+>> calibration... I will rework the function to assign the base address to the
+>> default address for port 0 (it's hardcoded by the SoC) and use the lock and
+>> read/write helper instead.
+> 
+> Are there multiple PHYs in the package? What happens if both are doing
+> calibration at the same time?
+> 
+> PHY #0                            PHY #1
+> 
+> 
+> phy_modify_mmd(phydev, devad, regnum, mask, cal_val);
+> 
+> 		       	      	  phy_modify_mmd(phydev, devad, regnum, mask, cal_val);
+> 				  ret = mtk_cal_cycle_wait(phydev_p0);
+> 
+> ret = mtk_cal_cycle_wait(phydev_p0);
+> 
+>      Andrew
 
-Thanks,
-Guenter
+There are 4 phys in total, only the phy with mdio address 9 has the 
+calibration capability. Thus only one phy at the time can perform the 
+calibration sequence.
+
+MvH
+Benjamin Larsson
 
