@@ -2,108 +2,75 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 1673F606A326
-	for <linux-mediatek@archiver.kernel.org>; Wed,  4 Nov 2026 11:42:55 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id CE325606D805
+	for <linux-mediatek@archiver.kernel.org>; Wed,  4 Nov 2026 12:27:07 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=myTrR69f;
-	dkim=pass (2048-bit key, unprotected) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=GHRn4TLT
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=XEdtZ/5Q;
+	dkim=pass (2048-bit key, unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=P8vNTmzJ
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Unsubscribe-Post:List-Owner;
-	bh=ntkvK9vArmmau6WntPJJCQysHHMrqtIZmeCGFS6XyDs=; b=myTrR69fe3VaxXU7efUqFhKqw+
-	65M+RcYg9bmVPEZ7FtFjgJJDmfeSux4qLBf/UZmS4JAoaMMk00YHpO+zmurZpyj87qI6KYV2vIkUT
-	4UNzLj4F4/WPMn+vuA24q9LsxgFqnsJpTAl4Ar8v+glXs6o8htdlR2hBFWBSYZ4hDJAh5scAm6O2B
-	y8kjpGxWXoZc/MEKOv+co8LcHxxEZ0moBf6ilz9l4IIflz+dIO479aE2uO9P3EYlKwy6LwpkzVLeQ
-	Mg1omgWYpAUl2k20uSUATtkMbNg3JZ7yavha9OTKffzDerBxQSNeyxNh1cdI5zqG229I4zWAFvDDs
-	jIsju8UA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Unsubscribe-Post:
+	List-Owner; bh=+ICv6jUGNVX118Xnl5o38aHDRTyW16gGzo7Q2AcNNu8=; b=XEdtZ/5Q3Lxld1
+	fwdopy3VXRphYKCvSxuDsDPJxa/gPETbw6rzG7id40iT7b8Plw8WpUHmxRh728NnqjuvrhrrGHG7g
+	kFTz2aBm27BI1AXupsK2t+yNDawxxTP4HfAUoauOaFu3CSdIMd+dNyjwH0aOmCSzKkdLaL1F9rPVM
+	kiJFZ+5CvC9GrdzZSNFkkh3fdZF1/XzM6d1RBv9AKtBRBcCednYdRWvQ4ULw4DiBOR99WvPkWieIS
+	+zoC7zmDg3k+khTC5jOCkbO2rLN1qh7zDgDMJLlzrgmcpGX1ZYfbI6A31LztXY7opKASydtp54Ndc
+	oIHd1KQ69nSVz3hLEUfA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xOZOI-00000005DBA-35sf;
-	Wed, 04 Nov 2026 11:42:54 +0000
-Received: from mail-oo2-x09.google.com ([2607:f8b0:4864:31::9])
+	id 1xOa54-00000005JCf-1xMg;
+	Wed, 04 Nov 2026 12:27:06 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xOZOE-00000005D9r-09yF
+	id 1xOa53-00000005JCL-3AJr
 	for linux-mediatek@lists.infradead.org;
-	Wed, 04 Nov 2026 11:42:53 +0000
-Received: by mail-oo2-x09.google.com with SMTP id 006d021491bc7-6de19ccd89bso131974eaf.0
-        for <linux-mediatek@lists.infradead.org>; Wed, 04 Nov 2026 03:42:49 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20260707; t=1793792569; x=1794397369; darn=lists.infradead.org;
-        h=cc:to:message-id:content-transfer-encoding:content-type
-         :mime-version:subject:date:from:from:to:cc:subject:date:message-id
-         :reply-to:content-type;
-        bh=ntkvK9vArmmau6WntPJJCQysHHMrqtIZmeCGFS6XyDs=;
-        b=GHRn4TLTtMJO7Z4vcGKavpgtmpwgnqMZq/pngVDwmYrxEU7OdT/QPWBNqQJWLuAuGv
-         U9Gmi/HcFPJV/GY+9sn5AOpV6wB+YlSqAETGZeVduSBdMKLptdZ9ACg4r4rbpQWPTVbO
-         +YYQOU9VvKHfKikpZaqgVmEIcHWyK/k3IwhFGNH0h7iLTY9oi3Dz40o0UwYPpZ8beVhB
-         MXMv7VtRgTEPBuQajlwZKV/VwMSfhVgrT8PoxJ8kzlAxPoWzPdBdVkW1Ienapu+OC1cN
-         cnuivuwey9zRNQFCSCikqjM8itG6rr6Ua3WGjjurZ3y7gjWbamfIa8HnTzvWwPr0rh/9
-         22CQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1793792569; x=1794397369;
-        h=cc:to:message-id:content-transfer-encoding:content-type
-         :mime-version:subject:date:from:x-gm-gg:x-gm-message-state:from:to
-         :cc:subject:date:message-id:reply-to:content-type;
-        bh=ntkvK9vArmmau6WntPJJCQysHHMrqtIZmeCGFS6XyDs=;
-        b=xohofGYD4JO32sD3rTJtIV341cpBDmmVMFuURjM1G1X3KifM1cGyDhrqRE9FjvvRWv
-         e6NRIAgkoCL3jwFF20ZNgJsM5YFSxdPObg2DaiovHvKGN7im5t5kpcV00iTV2kOC8KkB
-         7k0cgoW65ktZidi5TWaGKMQIrGCdlNRPAcoZb8IIRh5iSysk3uK9srhay4nzCJ+YAuqo
-         b5WoS4qyFreyv3TumlUhsmMY12Ud+L/JptkIXD800o8S4oBU5viwpIbMElAvv5X5ADuE
-         BCtXb32gRN5WeS1F3KeM0bLHNlj4LgLi4pulmuXB0Ur1bzZNHD7UlW3MKl+iWy0b3fHg
-         RK9Q==
-X-Forwarded-Encrypted: i=1; AKwUvBxIOm44RFIl0uIYO7Bkqqxm6EFYNjSmWlS4OJvyLSmoDDU/x8jYekyYtHKidOHCCofyaf0n7+/tExy8pT74xQ==@lists.infradead.org
-X-Gm-Message-State: APuU4Z9u4m6rs80VdOiR8R/ULrrgpgp3FMFxlMdTNN9WsUgBKcIt3696
-	Ay9e+t7sJgZmF17+qW4DvFCRYYbDQOsaJqafltG5+J4w6JL/X5FvaBgWeob8lyXJN6w=
-X-Gm-Gg: AYBFou3tDZ3xuu6jQ0pXd7BXShbsmh/Zo7p3/D+J9lBEn551EsD6Kza8cF1ZqEsC/UT
-	3Oxss2yJZPPAz8JRWzGYC0HsZWqgqfZOJCJj2Y0jVxG1BmC43Tf1d32yecf1155ZABcoxKLy9Dz
-	eSXkGiENQc/NuEzq3j9b295CbyZb/2AYzz+JSXYIprMk6NTRKtilwWL7SuxlOllevU4uPtf09Vf
-	gqpRYJhO9Lxs644uSc+5huPjhimXlC+MGM73d9JZYcgqeQy3P6vHmc1j8314E9/OpfbcErmH1tf
-	4usgDtWZ16UHF2uBwduw3uAhge1ptTy2ugqbWI8e0BOgzBsp5kXpY5NodfFs+/pHvHEfv8+N1ZC
-	di4WkOZayF2wyTKbSm7nssQSzPOucno1AXk57vkpGmmcdaImsLBgR8y9Q2d9NmoFm9dClL9Sr4R
-	9z6ymZh7SHy+VXJqUdjAMi9BE0jBrMpnrkBgtTwjO1hGbRFHSvrnbFbOc+74nefQCPPsqu/yqaO
-	dnWHcTu7NWvvm8Snt7O2cK+9drC/7OUloooc+1kkDpDelFgVENbxamElWx4iT1PdacGB97zBU13
-	hTDjjl0fQMx14uSvoBadDTPBDQ==
-X-Received: by 2002:a05:6808:1806:b0:4b9:a88b:888e with SMTP id 5614622812f47-5640dd023c6mr10688054b6e.36.1793792568941;
-        Wed, 04 Nov 2026 03:42:48 -0800 (PST)
-Received: from [192.168.18.164] ([2600:8804:5716:d800::f01a])
-        by smtp.gmail.com with ESMTPSA id 5614622812f47-567a9fdc42dsm1443858b6e.14.2026.11.04.03.42.45
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 04 Nov 2026 03:42:47 -0800 (PST)
-From: Ryan Brue <ryanbrue.dev@gmail.com>
-Date: Wed, 04 Nov 2026 05:42:37 -0600
-Subject: [PATCH v2] usb: mtu3: disable bottom halves in the threaded
- interrupt handler
+	Wed, 04 Nov 2026 12:27:05 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by tor.source.kernel.org (Postfix) with ESMTP id E43BD60F29
+	for <linux-mediatek@lists.infradead.org>; Wed,  4 Nov 2026 12:27:04 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9ED531F0093A
+	for <linux-mediatek@lists.infradead.org>; Wed,  4 Nov 2026 12:27:04 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1793795224;
+	bh=+ICv6jUGNVX118Xnl5o38aHDRTyW16gGzo7Q2AcNNu8=;
+	h=References:In-Reply-To:From:Date:Subject:To:Cc;
+	b=P8vNTmzJRIMd2E7IL1WvPwQv9VKNfJxnrQ89FTHrmdbP1iMwJqZV6PqxBmKHiNDWM
+	 RDBGMW/hy2wFHcWPlP7gxBAqKM1vACEz9eUcTy/QowTS2wAlX9VSE7BJBI2udCehO7
+	 jqY57xbhHPoa+QRMUrFv50y05VvvXbFgvbewlk6GiUerrS74FWpf4hSc/91UTpKOHB
+	 4DyikYHz5S/NGKyrGhVLwjOu4ihOBslcfbBYNvs1FjVVLREjYQGoS6G8zCCP2j6XVh
+	 Asl7qTvp2x4f3PTJ+cBngjBp9bx17QeArvc3oNsRdy7jmGPTpPxQ+YWHScmGZ82CPK
+	 PwwsJwdsgQkXg==
+Received: by mail-lf1-f43.google.com with SMTP id 2adb3069b0e04-5bfc32574e7so594566e87.0
+        for <linux-mediatek@lists.infradead.org>; Wed, 04 Nov 2026 04:27:04 -0800 (PST)
+X-Forwarded-Encrypted: i=1; AKwUvBwXObdvrgYTy1fa5f2U2sS9t8NXPvNWGw+9/X6nrJVG+IBut+Lr6+LtBPfP8qbVjdZbAE6VJRF6XXlmr5uq9A==@lists.infradead.org
+X-Gm-Message-State: APuU4Z9+46aZ6uRv5b1RfuCz6D2416ibiUiD3EjKuou3JyRb8J3HIWBx
+	FoJ3iqHa3ALnZDg/PtDIqovqOa3eImAWUzdSmTpHsbTAJFAFRm6lmJDfXH6dkuJwgTyvRzx6UzJ
+	+JamcAJEXY3dQhq9kjo2Ni3xwJ11OUSY=
+X-Received: by 2002:a05:6512:b07:b0:5bf:d4d7:a3cc with SMTP id
+ 2adb3069b0e04-5bfd4d7a563mr5048747e87.9.1793795223437; Wed, 04 Nov 2026
+ 04:27:03 -0800 (PST)
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20261104-usb-mtu3-gadget-completion-callback-fix-v2-1-2769533a39cb@gmail.com>
-X-B4-Tracking: v=1; b=H4sIAAAAAAAA/5WOQQ6CMBBFr9LM2jEtJSKsvIdhUcoAo0BJWwiGc
- HcDnsDlT17+exsE8kwBCrGBp4UDuxEKkVwE2M6MLSHXUAhIZHKTudI4hwqHOGtsTd1SROuGqaf
- IbkRr+r4y9o0Nr1hrnTYZ5blRGVwETJ4aXk/Ts/ztMFcvsvG4P4iOQ3T+c6Ys6uD+ty4KFZJO7
- 1LKtKFEP9rBcH+1boBy3/cvTtkLYfAAAAA=
-X-Change-ID: 20260913-usb-mtu3-gadget-completion-callback-fix-d334f7e99a17
-To: Chunfeng Yun <chunfeng.yun@mediatek.com>, 
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Cc: linux-usb@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, 
- stable@vger.kernel.org, Ryan Brue <ryanbrue.dev@gmail.com>
-X-Mailer: b4 0.14.3
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1793792565; l=4420;
- i=ryanbrue.dev@gmail.com; s=20260906; h=from:subject:message-id;
- bh=YKrWQc6X594nxsi6j6O7RkIqP4KUVuw16YHFth6q4aA=;
- b=kplKluc55m0ByUTEidjz+o5BPLPKs32RJFwusMLDnxrxB+Jj6Dr9y/he45mi/xR8jzpbfVMHO
- U0XTYhmgwiZAXt6/F6OextvdklivIZ3FMwQGkfV8KeBC0kS0DFH/xVd
-X-Developer-Key: i=ryanbrue.dev@gmail.com; a=ed25519;
- pk=KsUvVaP//v/2q+ZBuacc7cLbsyEYn+AD71Sn28oZWKo=
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261104_034252_009255_A0AF3E3D 
-X-CRM114-Status: GOOD (  16.75  )
-X-Spam-Score: -2.1 (--)
+References: <20261005060641.32674-1-saadanjum239@gmail.com>
+In-Reply-To: <20261005060641.32674-1-saadanjum239@gmail.com>
+From: Linus Walleij <linusw@kernel.org>
+Date: Wed, 4 Nov 2026 13:26:50 +0100
+X-Gmail-Original-Message-ID: <CAD++jLkufRNvPrL+Fxd1mp41h1mcJ4sr8kBiMzpkF9PO5FM+Zw@mail.gmail.com>
+X-Gm-Features: AclHuK8Ek2fH6rtSpITcfvraWZLhUk2KRiyUzvkvumhGGx1AWYNctAZyF_WLCpA
+Message-ID: <CAD++jLkufRNvPrL+Fxd1mp41h1mcJ4sr8kBiMzpkF9PO5FM+Zw@mail.gmail.com>
+Subject: Re: [PATCH] pinctrl: mediatek: common-v2: Fix of_iomap() error check
+To: Saad Anjum <saadanjum239@gmail.com>
+Cc: Sean Wang <sean.wang@kernel.org>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, Hao Chang <ot_chhao.chang@mediatek.com>, 
+	Qingliang Li <qingliang.li@mediatek.com>, linux-gpio@vger.kernel.org, 
+	linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
+	linux-kernel@vger.kernel.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -114,117 +81,40 @@ List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-15.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
-	DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,FREEMAIL_FORGED_FROMDOMAIN,
-	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
+X-Spam-Status: No, score=-10.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,
+	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-mtu3_irq() is a threaded handler, so it runs in process context, and it
-takes mtu->lock with spin_lock_irqsave(). mtu3_req_complete() drops the
-lock with a plain spin_unlock() around usb_gadget_giveback_request(), so
-the gadget function's completion callback runs with interrupts disabled,
-as the gadget API promises, but in neither hardirq nor softirq context.
+On Mon, Oct 5, 2026 at 8:06=E2=80=AFAM Saad Anjum <saadanjum239@gmail.com> =
+wrote:
 
-That breaks any callback that reaches netif_rx(). netif_rx() disables
-bottom halves itself when it is called outside hardirq and softirq
-context, and enabling them again with interrupts disabled is not
-allowed:
+> of_iomap() returns NULL on failure, never an error pointer, so the
+> IS_ERR() check in mtk_build_eint() can never be true. The check was
+> carried over from the previous devm_platform_ioremap_resource_byname()
+> call, which does return an error pointer, when the EINT registers were
+> switched to being mapped with of_iomap() to support multiple bases.
+>
+> If mapping one of the EINT register ranges fails, for example because
+> the device tree node lists more "reg-names" than "reg" entries so that
+> of_address_to_resource() fails, or because ioremap() itself fails, the
+> NULL pointer is stored in hw->eint->base[] and probing continues.
+> mtk_eint_do_init() then calls mtk_eint_hw_init(), which writes to
+> eint->base[i] + regs->dom_en, causing a NULL pointer dereference
+> instead of a clean probe failure.
+>
+> Check for NULL and return -ENOMEM instead. The existing error path
+> already skips NULL entries when unmapping, so any ranges mapped before
+> the failure are still released.
+>
+> Fixes: 3ef9f710efcb ("pinctrl: mediatek: Add EINT support for multiple ad=
+dresses")
+> Signed-off-by: Saad Anjum <saadanjum239@gmail.com>
 
-  WARNING: kernel/softirq.c:453 at __local_bh_enable_ip+0x128/0x134
-    __local_bh_enable_ip
-    netif_rx
-    rx_complete [u_ether]
-    usb_gadget_giveback_request
-    mtu3_req_complete
-    mtu3_qmu_isr
-    mtu3_irq
-    irq_thread_fn
+Patch applied.
 
-With CONFIG_TRACE_IRQFLAGS, __local_bh_enable_ip() ends with an
-unconditional local_irq_enable(), so the plain spin_lock() re-taking
-mtu->lock afterwards runs with interrupts on and is recorded
-SOFTIRQ-ON-W, while mtu3_gadget_queue() takes the same lock from a
-softirq (ncm's tx hrtimer), and lockdep follows up with an inconsistent
-lock state report naming mtu->lock.
-
-The locking was right when mtu3_irq() was a hardirq handler. It stopped
-being right when the handler became threaded without a primary handler;
-dwc3 hit the same thing the same way and fixed it in the controller
-driver, in commit 84918a89d6ef ("usb: dwc3: gadget: Let the interrupt
-handler disable bottom halves.").
-
-Do the same: disable bottom halves around the lock in mtu3_irq().
-netif_rx() then finds softirqs disabled and leaves them alone, the
-completion callbacks keep running with interrupts disabled, and the
-softirq it raises runs at local_bh_enable(), once the lock is dropped
-and interrupts are on again.
-
-Both reports need lockdep to be seen, but the context violation is real.
-The fallout on a PROVE_LOCKING kernel is not cosmetic either - copying a
-21 MB file over USB ethernet hung and reset this board repeatedly. Once
-interrupts have been left enabled while the thread holds mtu->lock, the
-tx hrtimer softirq on the same CPU spins on it forever, which is the
-"CPU0: lock(&mtu->lock); <Interrupt> lock(&mtu->lock);" scenario lockdep
-names. The same copy is reliable with this change applied.
-
-Fixes: 13118959cb1a ("usb: mtu3: register mtu3_irq by threaded irq")
-Cc: stable@vger.kernel.org
-Signed-off-by: Ryan Brue <ryanbrue.dev@gmail.com>
----
-v1 took mtu->lock with spin_lock_bh() in mtu3_irq(), which left
-interrupts enabled across the gadget completion callbacks. Sashiko
-pointed out that struct usb_request's @complete must run with them
-disabled, and that u_serial's console relies on it [1]. v2 keeps
-spin_lock_irqsave() and disables bottom halves around it, as dwc3 does.
-
-This patch was developed with the help of an LLM.
-
-[1] https://lore.kernel.org/all/sashiko-outbox-193807@kernel.org/
----
-Changes in v2:
-- Keep interrupts disabled across the completion callbacks: disable
-  bottom halves around the existing spin_lock_irqsave() instead of
-  taking the lock with spin_lock_bh() (Sashiko)
-- New subject; v1 was "usb: mtu3: don't run gadget completion callbacks
-  with interrupts disabled"
-- Rebased onto v7.4-rc1
-- v1 was resent on 2026-09-29 and 2026-11-02:
-  https://lore.kernel.org/all/20261102-usb-mtu3-gadget-completion-callback-fix-v1-1-93c3a6dda31f@gmail.com/
-- Link to v1: https://patch.msgid.link/20260913-usb-mtu3-gadget-completion-callback-fix-v1-1-e3480004fe23@gmail.com
----
- drivers/usb/mtu3/mtu3_core.c | 2 ++
- 1 file changed, 2 insertions(+)
-
-diff --git a/drivers/usb/mtu3/mtu3_core.c b/drivers/usb/mtu3/mtu3_core.c
-index 990e2e8e6bc2..3127709acc22 100644
---- a/drivers/usb/mtu3/mtu3_core.c
-+++ b/drivers/usb/mtu3/mtu3_core.c
-@@ -793,6 +793,7 @@ static irqreturn_t mtu3_irq(int irq, void *data)
- 	unsigned long flags;
- 	u32 level1;
- 
-+	local_bh_disable();
- 	spin_lock_irqsave(&mtu->lock, flags);
- 
- 	/* U3D_LV1ISR is RU */
-@@ -815,6 +816,7 @@ static irqreturn_t mtu3_irq(int irq, void *data)
- 		mtu3_qmu_isr(mtu);
- 
- 	spin_unlock_irqrestore(&mtu->lock, flags);
-+	local_bh_enable();
- 
- 	return IRQ_HANDLED;
- }
-
----
-base-commit: 6628e7d4c6b25c8d18f1345e3a20d21829aae7e4
-change-id: 20260913-usb-mtu3-gadget-completion-callback-fix-d334f7e99a17
-
-Best regards,
--- 
-Ryan Brue <ryanbrue.dev@gmail.com>
-
+Yours,
+Linus Walleij
 
