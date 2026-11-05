@@ -2,76 +2,87 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 0E28B606A32D
-	for <linux-mediatek@archiver.kernel.org>; Thu,  5 Nov 2026 09:00:38 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id BA13F606A328
+	for <linux-mediatek@archiver.kernel.org>; Thu,  5 Nov 2026 09:11:27 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=0mxNdk9M;
-	dkim=pass (2048-bit key, unprotected) header.d=collabora.com header.i=@collabora.com header.a=rsa-sha256 header.s=mail header.b=EHEVG93S
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=OBebFhvj;
+	dkim=fail reason="signature verification failed" (1024-bit key, unprotected) header.d=chromium.org header.i=@chromium.org header.a=rsa-sha256 header.s=google header.b=d6BnUz4G
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Unsubscribe-Post:
-	List-Owner; bh=C7KvMZPRU76PPXEPvoU8lYiUrmsq36mfhVdKnn0oTEA=; b=0mxNdk9MK6QHL/
-	WxIDCAQ9xdIWI4BCEBvOzazuettHpOxdqO191x5wbcBXfWJURDUW+TWrcAMXzHtf4ABrGuvctJSR2
-	W0oWgE8KJfFOjbJ7nvFrp2uvThNyjVOHxWmA4nzU15nA0s1877XYdR3AaxdHaOGLVxGceofykRWaa
-	+HuRYH0DM4OZKum/tww8qmc79ryPhaeE9Qmb6MBq9yD62zF/3KL8acEYLH8jzHGfPF4xwnsuB+5Fr
-	j40lDxiTm+klzTmaNdb2og06ZuvJjdn7X7RZUynG7a5YN4YBunPZmxQ9qQYgGuIMsujMPlhvk9Unp
-	K+be7v/AM7y7sfCNqk5A==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Unsubscribe-Post:List-Owner;
+	bh=ZRGJdN+0ZU0Q+8Po4r5uRyGAvRT/GQRrEp1MKzJo7zw=; b=OBebFhvjayN58PUPslL1IMaXXR
+	hTR/PVK3NoiSDn6+EKtPZGSV6gMA/7rdujcgT1tdaKQe2BVBKas5/oEQkN7UxWkgniWUWYyZ5C7/S
+	PKJ7CMlc+ZiM5UnOxXqkP0W7yeU8+g3uk0Khy2Dny04/eYH43zJvNlp+1v/x3rnlfGf8eJVeAY8M/
+	9ZwrkOjDZRWVhM2ZOtq3xZgRG20Qaqu/M+bOMM8DRWTWKHZtVa/0xafefwP3rUevyPCIL/MfwSqij
+	iN6vNKaPUcYbjVuigj900DWAZ3Ci32NnIlg02AR3/kbWuXsIt+pBrRQwxDAYwEdOuyWOaNdqjCEZS
+	3sEUtGbw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xOtKn-00000008EFF-3EB7;
-	Thu, 05 Nov 2026 09:00:37 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1xOtVH-00000008G1n-0Ntl;
+	Thu, 05 Nov 2026 09:11:27 +0000
+Received: from mail-dl1-x1236.google.com ([2607:f8b0:4864:20::1236])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xOtKh-00000008ECE-3D9B;
-	Thu, 05 Nov 2026 09:00:35 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1793869229;
-	bh=xUW3p4976DC2PBpXz3aw+f2y1/CP/AUXZ42/p8PrJHQ=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=EHEVG93SvO2MRQ9DqlNGT69xnJHgOChAl4GvABrnxnu6DRTM20aBAKXu0iZVBoxNv
-	 KgRR9dSB3fYPc+YlhHcfxLX53M6BHsy/9oQDScMSfFjYaYHhL2nSglo49d9x5GErIe
-	 bQPFlOCxfeacr6lrbh0FDCh/6J0IY9bN95uq0FkOij2bqZgIRQcnEDeERmlMx4Yf7p
-	 wloqNvk9ClFSjuJgZ0+3R8wa2SXSqfgUdwfST9EG9SNAQBV5kEmWnnQeutK/smBy07
-	 Q8MYyN30HYpN1yHXJh2+b01UP275QGYgKs441XpqVuQTXTXbqW1wgvWODZ8itTSBls
-	 Ti1iVBcoKMi1Q==
-Received: from [100.64.1.21] (unknown [100.64.1.21])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange x25519)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id C676117E05D6;
-	Thu, 05 Nov 2026 10:00:28 +0100 (CET)
-Message-ID: <1c0e5b1a-b1a8-42a3-8dd1-75fceee078a2@collabora.com>
-Date: Thu, 5 Nov 2026 10:00:28 +0100
+	id 1xOtVD-00000008G08-3GIj
+	for linux-mediatek@lists.infradead.org;
+	Thu, 05 Nov 2026 09:11:25 +0000
+Received: by mail-dl1-x1236.google.com with SMTP id a92af1059eb24-1a2761c69fbso873459c88.0
+        for <linux-mediatek@lists.infradead.org>; Thu, 05 Nov 2026 01:11:22 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google; t=1793869882; x=1794474682; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
+        bh=ZRGJdN+0ZU0Q+8Po4r5uRyGAvRT/GQRrEp1MKzJo7zw=;
+        b=d6BnUz4GSoDzvKXFi3nJABLaY5E0bzbh0oi80FT3ykuNyXDw7N2aCwLJ0ywZG2NLvC
+         E66l/GtMaFHqdMHwnR3AY0ku7nAxxn8DBw7RbJs5uR1JYvDawM52G+ML11cw019p35N/
+         9rPZ+TUD69ZRVWHkm23d8XqXAzGvydzjx3wvk=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20260707; t=1793869882; x=1794474682;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to:content-type;
+        bh=ZRGJdN+0ZU0Q+8Po4r5uRyGAvRT/GQRrEp1MKzJo7zw=;
+        b=uGEHzhp40iQZZ+AsB6DcIUPpXouO2S88js1wv/60fjL9KlQFWRy3SwDdvowMZmMhQ0
+         VPg9X/UciGORkPJYEZyjWhy3P5S9WQDmCsaDm/moO0+TJh8CggAgnd5pSfSEGWjXTjpO
+         qJtwbdyxHNKmeFMaIBEoGTG1YpUckEckPfbql2DoKX/Zcow7jKdIRJeAbmLOkLfX6rQ6
+         xe9G+A+OWLTsZxMy8sQQ8SnwQD/YlgoeMzMTRaSXPsYzMMLjs1CeykjsGsxaxYypBQEQ
+         Eh6HjBzDorMmg86Cyk8f8brS0XxbQ/LpRJtcDa6xX8P8dWJpAuip3mfgfubCd7E0qMCZ
+         ucuQ==
+X-Forwarded-Encrypted: i=1; AKwUvBymmwfHLG5cFXkCJdhaYwjZyD7krft+53BaTwRT2j/vach7fjgnPH79ZvGw76CdwZdH5sJfNy8Y+tWiebKkrA==@lists.infradead.org
+X-Gm-Message-State: APuU4Z89UOXbZiy/4azZXtJWZ0XMhHR7z1bjqFSMgVqaHS+caQ732XI1
+	6q2cMAaxMKMpOM5Pi7BXAVfTm2j9j/kkyoqFcLjYhecBk6S9Fc0DigrttsGl0o1joQ==
+X-Gm-Gg: AYBFou1eesIm1L1wXeNQdsAldDCDiuoC+csG7q+ds3M0vAzmVIgRUDLSDEgVsVKt4//
+	fvGn1r17ZiGFEuu1gHxo0FdE5gShnMnMgGNN+pUf1wmJr8mPgYDODsvrYdC4Vanf3STPqTXdkPD
+	pVVBX1z5tKwmGD+aY1kIQxuiSoapvuw2XKwiEgoleivt7vfY+U/Ai0oL0FHcACF1ixmDP0/E4b+
+	SWfsZ0yHSxew7496VeNgraHVeN3rzVi3subN6OQZZ374eIYmgGRMVHyAfhTYqE9QrCCQBwMPz9R
+	gTbScTNe2OqU0VxGVtlcA3H/UGkYrXS+18q7O0qGSk2far3r1P/Qixil1QtzLoQVRjnDFGV8K/B
+	xdZzPcI+SguCrRsJXt92+dT8518gciLfpCjdKSr7dbFC+g2ABtBUq4mjmJbF96KsYtX8IqmCYxa
+	8qzCibAlcJ08WQ2+h076JksdYSRblZrVADAaGOjNVIQrMYgu1uUmLWHY90afzV3wDamIXVez+PP
+	KR756J2rffqEojzYky4S2eu+Qe6Ww87vHtV4T6eWaxXy1yDMEI3CANeUhDTe83kVZXd8xU5F8Pw
+	+40wwLWhJy+1tCo08bZ1o9sOX5am3ax7ZK1fLGZ9BSyudAfbf337bJNOrkkJohgeFRibYaJSMK9
+	IXpqbR1m9Fye4AdWV29GVizX5QhU+1857CIZNeQ==
+X-Received: by 2002:a05:7022:eb42:20b0:186:4a57:94e5 with SMTP id a92af1059eb24-1ac5c272744mr29105381c88.34.1793869881711;
+        Thu, 05 Nov 2026 01:11:21 -0800 (PST)
+Received: from fshao-cloudtop.c.googlers.com.com (61.14.81.34.bc.googleusercontent.com. [34.81.14.61])
+        by smtp.gmail.com with ESMTPSA id 5a478bee46e88-36ca39b8eb3sm20117002eec.27.2026.11.05.01.11.18
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 05 Nov 2026 01:11:21 -0800 (PST)
+From: Fei Shao <fshao@chromium.org>
+To: Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Subject: [PATCH] drm/mediatek: Validate gamma_lut size
+Date: Thu,  5 Nov 2026 17:10:43 +0800
+Message-ID: <20261105091054.3993611-1-fshao@chromium.org>
+X-Mailer: git-send-email 2.56.0.455.g6c5a503b38-goog
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v9 05/13] drm/mediatek: mtk_dsi: Enable interrupt at
- component bind time
-To: Roman Vivchar <rva333@protonmail.com>
-Cc: chunkuang.hu@kernel.org, p.zabel@pengutronix.de,
- maarten.lankhorst@linux.intel.com, mripard@kernel.org, tzimmermann@suse.de,
- airlied@gmail.com, simona@ffwll.ch, robh@kernel.org, krzk+dt@kernel.org,
- conor+dt@kernel.org, matthias.bgg@gmail.com, jitao.shi@mediatek.com,
- dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, kernel@collabora.com,
- justin.yeh@mediatek.com, jason-jh.lin@mediatek.com,
- CK Hu <ck.hu@mediatek.com>
-References: <20260916110825.102631-1-angelogioacchino.delregno@collabora.com>
- <20260916110825.102631-6-angelogioacchino.delregno@collabora.com>
- <hXDHNenOxP_1Fjv3k-eSNDIFG2yGsdvlxFOCpn0SMdRImzGWQfDVFE-0px1K0-Z472dL3IuLWE5BWIQeOo_U12SjzZOeJ3FNLIxus-KoGNE=@protonmail.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-In-Reply-To: <hXDHNenOxP_1Fjv3k-eSNDIFG2yGsdvlxFOCpn0SMdRImzGWQfDVFE-0px1K0-Z472dL3IuLWE5BWIQeOo_U12SjzZOeJ3FNLIxus-KoGNE=@protonmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261105_010032_001309_6AA56690 
-X-CRM114-Status: GOOD (  22.75  )
+X-CRM114-CacheID: sfid-20261105_011123_847085_BE61BC0E 
+X-CRM114-Status: GOOD (  12.46  )
 X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -82,133 +93,70 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: Simona Vetter <simona@ffwll.ch>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, Philipp Zabel <p.zabel@pengutronix.de>, Matthias Brugger <matthias.bgg@gmail.com>, David Airlie <airlied@gmail.com>, linux-arm-kernel@lists.infradead.org
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-17.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,
-	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1
-	autolearn=ham autolearn_force=no version=4.0.1
+X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
+	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On 11/4/26 19:56, Roman Vivchar wrote:
-> On Wednesday, September 16th, 2026 at 2:08 PM, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com> wrote:
-> 
->> Having the DSI interrupt enabled before actually binding the DSI
->> component to the display controller driver is both useless and
->> dangerous: the main purpose of this interrupt is to signal CMD
->> done, LP RX data ready, or VideoMode done, or to reset the HW
->> engine if this doesn't come.
->>
->> Should this interrupt come too late (during probe), the HW will
->> be reset only at the next occurrence of a timeout, which slows
->> down boot and may render artifacts to the DSI display.
->>
->> Moreover, clearing the DSI interrupt while the display controller
->> is not ready yet, may result in an interrupt storm.
->>
->> In order to prevent this from happening, request the interrupt
->> with IRQF_NO_AUTOEN, and enable it only when binding DSI to its
->> display controller component master.
->>
->> Reviewed-by: CK Hu <ck.hu@mediatek.com>
->> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-> 
-> This was necessary on mt6595, otherwise it would get stuck.
-> 
+The DRM core only checks that a GAMMA_LUT blob size is a multiple of
+sizeof(struct drm_color_lut), not that its entry count matches the
+hardware LUT size. mtk_gamma_set() and mtk_aal_gamma_set() then read
+the blob up to the hardware LUT size, which is an OOB read when the blob
+is shorter.
 
-Yep, I guess it was getting stuck before this because your platform's bootloader
-has continuous splash functionality and leaves it on while booting Linux, right?
+Add mtk_crtc_atomic_check() and reject gamma_lut with invalid length.
 
-Just a curiosity... ;-)
+Fixes: 2f3f4dda747c ("drm/mediatek: Add gamma correction.")
+Signed-off-by: Fei Shao <fshao@chromium.org>
+---
 
-Cheers,
-Angelo
+ drivers/gpu/drm/mediatek/mtk_crtc.c | 21 +++++++++++++++++++++
+ 1 file changed, 21 insertions(+)
 
-> Acked-by: Roman Vivchar <rva333@protonmail.com>
-> Tested-by: Roman Vivchar <rva333@protonmail.com> # mt6595, mt6768
-> 
->> ---
->>   drivers/gpu/drm/mediatek/mtk_dsi.c | 24 +++++++++++++-----------
->>   1 file changed, 13 insertions(+), 11 deletions(-)
->>
->> diff --git a/drivers/gpu/drm/mediatek/mtk_dsi.c b/drivers/gpu/drm/mediatek/mtk_dsi.c
->> index 28ba532210ff..6ac6daa61e68 100644
->> --- a/drivers/gpu/drm/mediatek/mtk_dsi.c
->> +++ b/drivers/gpu/drm/mediatek/mtk_dsi.c
->> @@ -225,6 +225,7 @@ struct mtk_dsi {
->>   	int refcount;
->>   	bool enabled;
->>   	bool lanes_ready;
->> +	int irq;
->>   	u32 irq_data;
->>   	wait_queue_head_t irq_wait_queue;
->>   	const struct mtk_dsi_driver_data *driver_data;
->> @@ -1101,6 +1102,8 @@ static int mtk_dsi_bind(struct device *dev, struct device *master, void *data)
->>   		return ret;
->>   	}
->>
->> +	enable_irq(dsi->irq);
->> +
->>   	return 0;
->>   }
->>
->> @@ -1109,6 +1112,8 @@ static void mtk_dsi_unbind(struct device *dev, struct device *master,
->>   {
->>   	struct mtk_dsi *dsi = dev_get_drvdata(dev);
->>
->> +	disable_irq(dsi->irq);
->> +
->>   	drm_encoder_cleanup(&dsi->encoder);
->>   }
->>
->> @@ -1342,7 +1347,6 @@ static int mtk_dsi_probe(struct platform_device *pdev)
->>   {
->>   	struct mtk_dsi *dsi;
->>   	struct device *dev = &pdev->dev;
->> -	int irq_num;
->>   	int ret;
->>
->>   	dsi = devm_drm_bridge_alloc(dev, struct mtk_dsi, bridge,
->> @@ -1375,9 +1379,9 @@ static int mtk_dsi_probe(struct platform_device *pdev)
->>   	if (IS_ERR(dsi->phy))
->>   		return dev_err_probe(dev, PTR_ERR(dsi->phy), "Failed to get MIPI-DPHY\n");
->>
->> -	irq_num = platform_get_irq(pdev, 0);
->> -	if (irq_num < 0)
->> -		return irq_num;
->> +	dsi->irq = platform_get_irq(pdev, 0);
->> +	if (dsi->irq < 0)
->> +		return dsi->irq;
->>
->>   	dsi->host.ops = &mtk_dsi_ops;
->>   	dsi->host.dev = dev;
->> @@ -1386,17 +1390,15 @@ static int mtk_dsi_probe(struct platform_device *pdev)
->>
->>   	platform_set_drvdata(pdev, dsi);
->>
->> +	ret = devm_request_irq(&pdev->dev, dsi->irq, mtk_dsi_irq,
->> +			       IRQF_NO_AUTOEN, dev_name(&pdev->dev), dsi);
->> +	if (ret)
->> +		return dev_err_probe(&pdev->dev, ret, "Failed to request DSI irq\n");
->> +
->>   	ret = mipi_dsi_host_register(&dsi->host);
->>   	if (ret < 0)
->>   		return dev_err_probe(dev, ret, "Failed to register DSI host\n");
->>
->> -	ret = devm_request_irq(&pdev->dev, irq_num, mtk_dsi_irq,
->> -			       IRQF_TRIGGER_NONE, dev_name(&pdev->dev), dsi);
->> -	if (ret) {
->> -		mipi_dsi_host_unregister(&dsi->host);
->> -		return dev_err_probe(&pdev->dev, ret, "Failed to request DSI irq\n");
->> -	}
->> -
->>   	dsi->bridge.of_node = dev->of_node;
->>   	dsi->bridge.type = DRM_MODE_CONNECTOR_DSI;
->>
->> --
->> 2.55.0
->>
->>
->>
+diff --git a/drivers/gpu/drm/mediatek/mtk_crtc.c b/drivers/gpu/drm/mediatek/mtk_crtc.c
+index 2920f3198ef6..fd9b51fd00ea 100644
+--- a/drivers/gpu/drm/mediatek/mtk_crtc.c
++++ b/drivers/gpu/drm/mediatek/mtk_crtc.c
+@@ -880,6 +880,26 @@ static void mtk_crtc_atomic_flush(struct drm_crtc *crtc,
+ 	mtk_crtc_update_config(mtk_crtc, !!mtk_crtc->event);
+ }
+ 
++static int mtk_crtc_atomic_check(struct drm_crtc *crtc, struct drm_atomic_commit *state)
++{
++	struct mtk_crtc *mtk_crtc = to_mtk_crtc(crtc);
++	struct drm_crtc_state *crtc_state = drm_atomic_get_new_crtc_state(state, crtc);
++	struct drm_property_blob *gamma_lut = crtc_state->gamma_lut;
++	unsigned int lut_size;
++	int i;
++
++	if (!gamma_lut)
++		return 0;
++
++	for (i = 0; i < mtk_crtc->ddp_comp_nr; i++) {
++		lut_size = mtk_ddp_gamma_get_lut_size(mtk_crtc->ddp_comp[i]);
++		if (lut_size && gamma_lut->length != lut_size * sizeof(struct drm_color_lut))
++			return -EINVAL;
++	}
++
++	return 0;
++}
++
+ static const struct drm_crtc_funcs mtk_crtc_funcs = {
+ 	.set_config		= drm_atomic_helper_set_config,
+ 	.page_flip		= drm_atomic_helper_page_flip,
+@@ -899,6 +919,7 @@ static const struct drm_crtc_helper_funcs mtk_crtc_helper_funcs = {
+ 	.atomic_flush	= mtk_crtc_atomic_flush,
+ 	.atomic_enable	= mtk_crtc_atomic_enable,
+ 	.atomic_disable	= mtk_crtc_atomic_disable,
++	.atomic_check	= mtk_crtc_atomic_check,
+ };
+ 
+ static int mtk_crtc_init(struct drm_device *drm, struct mtk_crtc *mtk_crtc,
+-- 
+2.56.0.455.g6c5a503b38-goog
+
 
