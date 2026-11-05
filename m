@@ -2,121 +2,83 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 296CC606A336
-	for <linux-mediatek@archiver.kernel.org>; Thu,  5 Nov 2026 09:42:51 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 3B526606EE95
+	for <linux-mediatek@archiver.kernel.org>; Thu,  5 Nov 2026 10:43:25 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=v8uzq3KO;
-	dkim=pass (2048-bit key, unprotected) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=wfF9xjfE
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=FhFlsJCx;
+	dkim=pass (2048-bit key, unprotected) header.d=google.com header.i=@google.com header.a=rsa-sha256 header.s=20260707 header.b=Qt6h6JHU
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
-	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:From:
+	Subject:Message-ID:Mime-Version:Date:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
 	List-Unsubscribe-Post:List-Owner;
-	bh=9KVyqZjLxhSDOn37BJsTtiq5i2CumiInDbFkl3r3JTg=; b=v8uzq3KO4f0yYP0S5bomB2lZah
-	ry2hVvspoXT8tsI20UbO4wTBK8TwmrE2Zppb0aMqmLKINq3wF+VjmMV/fWgHXiO2q8rD/YyEVYrOR
-	s0VKCGLkBajCuPdbqo50ooOLz2mCJOPCv0Y9q/j6x5WrwGF1QDGt0GdJ0+P0CMTUSVLl6WqwpUzSS
-	e/iYZ217XtqGkbv7qyHJzkpxaGNDGST2jhVMdi/BSokWdvm6FglvmHxIsTrbBHcr0j/56543lJ5eI
-	VOS66xL8H9D3BIzGrcF2+amDbqfiJuG6IUzYGPWSvX2208vMrN0+wvWGOo4keujcFdEtYc5m1Oy0/
-	UwFxzfaQ==;
+	bh=rMqzSCS0erpbygzu/gLDyREb4eAHjrFX8W3+ToVWtNg=; b=FhFlsJCxpu6JjEI5hjgakRWW0k
+	8f5f82yT+WFHsVA+b+g7LUSwq8bhaFVLNE5OhpaHwII18HgE/KKYenyfQwbukeAj5+P3VVEP4Lczp
+	hdxwEtQWWZ2vYqqHkmUbL9id3PJQpalfdjRJkQAnZYz7tccjPxrQnPS89uQdzHhz43mBdHrPlDHHa
+	mlrC0t4+mqErv9896BbnHAyQHjiCURQkUvqzLzWnJicm9MaWt+DTAiocW/3KcCQ9J7mArWQgA788y
+	brUSjP3YpxlrM9+L5dEaE8ZeXGUNtGDMr86p+RuAGqFXTt/dr2MOe/28aSVVlMMg1LgmgDeLIwO2+
+	2c5oH4Ug==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xOtze-00000008LcS-3Qj6;
-	Thu, 05 Nov 2026 09:42:50 +0000
-Received: from mail-ed1-x535.google.com ([2a00:1450:4864:20::535])
+	id 1xOuwG-00000008URd-3o2x;
+	Thu, 05 Nov 2026 10:43:24 +0000
+Received: from mail-ed1-x545.google.com ([2a00:1450:4864:20::545])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xOtzc-00000008Lbt-3YDq
+	id 1xOuwE-00000008UQ5-3ujJ
 	for linux-mediatek@lists.infradead.org;
-	Thu, 05 Nov 2026 09:42:50 +0000
-Received: by mail-ed1-x535.google.com with SMTP id 4fb4d7f45d1cf-6ae305e3bd9so2757981a12.0
-        for <linux-mediatek@lists.infradead.org>; Thu, 05 Nov 2026 01:42:47 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1793871766; cv=none;
-        d=google.com; s=arc-20260327;
-        b=rxJiOtOSeRxb+hbRBmi8MSRJw/xsTffHCzFjtU5hs1v2QbdN1NmcQyMVyWZK197DE6
-         JP0MQG4eR6StBVkWEFKR6z0FRcJF28ZFujzXSsH4TPFLuHG4jJjbwcmYbE7eN10hWB0G
-         OLkKFgf4BvvrsjEMRN0FgNiwISKP0WuPArIXhivxfOJGiglyHlOYAizCxedQRk0En0s+
-         b0QERbHKbkVXiP5toQMuGuMfGX9Z6y3Yij7naz7r7vmaytFqizUeY8JjJesdyX/AXa0o
-         SrEV8E8khDcr/ghCIdd+ZOal7p0u2mocbkSx+UKeZ4rJIrjRX50QIdGefhjFZTItQBJo
-         FudQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20260327;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:dkim-signature;
-        bh=9KVyqZjLxhSDOn37BJsTtiq5i2CumiInDbFkl3r3JTg=;
-        fh=HCEqxO0RgbOAubEHss8yDItSNiqKQe+L/Qw9rG35gtg=;
-        b=KLs74YEDs1eI/p3Mxx5vMkU1Xvxj+80SPuO/20Q7GGcmjWhzAzEzwvbuS0U+79roR5
-         qB7ZD0spQNMPxJhm51DrvmRneprSrsnHTlnntq3ZkeqmYHCgQ9SFmFqGLC7l+FfyJARt
-         LAR8Ajcx/w14sZZxw/a/cF3auY8ShNV6HVE1/BWc1JG79ZmSnBHjWToZKHP9S0NvVCGZ
-         sb+4IF5nsKeJ9X8F0KTP0KTZveD87SdEZ4030PxYRQCv9jhGH4nDytQ/k9OkGBNuJyOt
-         BrhnG5T0/MDH2tIV5lrVD3RyWb7e1LfDHmFG++pY1wEo5vAknLf0DpNOO0TdgF1+454U
-         14eQ==;
-        darn=lists.infradead.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
+	Thu, 05 Nov 2026 10:43:24 +0000
+Received: by mail-ed1-x545.google.com with SMTP id 4fb4d7f45d1cf-6b49684d3c3so1943195a12.2
+        for <linux-mediatek@lists.infradead.org>; Thu, 05 Nov 2026 02:43:21 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20260707; t=1793871766; x=1794476566; darn=lists.infradead.org;
-        h=content-type:cc:to:subject:message-id:date:from:in-reply-to
-         :references:mime-version:from:to:cc:subject:date:message-id:reply-to
-         :content-type;
-        bh=9KVyqZjLxhSDOn37BJsTtiq5i2CumiInDbFkl3r3JTg=;
-        b=wfF9xjfEjVR/PBstarnxcLN7CZWuhgCKaMyzRwTSNnjduNGaAh+8S/dk1H3EkTaDpO
-         cbfKGRJ+Pt6YFbf0EGwGwWy4v/Beb0ySuGW4j7Ntlol5NMI5+g3h/FT6ia9xJnR7iWFP
-         ttaYCtGuElmIOwF880pBXvyuvjK9eR+8BR0p+Sz/d4QaMSdyhg3Bbm73rjmJP8hOky+i
-         2yAp52NnZL5GQeu35WeO7MYQg+pi840B7ILjaBb5JGtJoBrl6velQdH5oOGPT4QY1CFl
-         N34o4/aQUtPeby4Mn4vtxILKyKv+Hbj4qZSuHmZMcBhzk76zLTVdLJkgGR9cii6AOSZ2
-         9etw==
+        d=google.com; s=20260707; t=1793875400; x=1794480200; darn=lists.infradead.org;
+        h=content-type:cc:to:from:subject:message-id:mime-version:date:from
+         :to:cc:subject:date:message-id:reply-to:content-type;
+        bh=rMqzSCS0erpbygzu/gLDyREb4eAHjrFX8W3+ToVWtNg=;
+        b=Qt6h6JHUrED/Q+PBXGyz43zUh03xlUuvr8cAhYb3lKBby+6pivi44in4MmAb9mpmeA
+         mjBggnqjVzwqiA3AnWoQgF8WPd7v+02XZQ1V9/mabb7Jb9oFtZ4piG8sb9ncdPQjJnqn
+         iKn3NAihNDrNGhd+qr8OG8MeU3nu33QLM9Nuyz7otfEAH2ETmsNhmsfNS0ZhcObQ8oDA
+         /HpuANThO9H3raaScHg0EisNxDmgoNyKukZ8QfTqWYWkMfQqyU1vW+zBpy/07Kvyi9xv
+         KGpc/efZPMe3SCvf60lwF9HA+2gG1XdssN6VMHt+IMoMtRKy9MAcw2Wb8lpKBa28RfwP
+         4e7A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1793871766; x=1794476566;
-        h=content-type:cc:to:subject:message-id:date:from:in-reply-to
-         :references:mime-version:x-gm-gg:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to:content-type;
-        bh=9KVyqZjLxhSDOn37BJsTtiq5i2CumiInDbFkl3r3JTg=;
-        b=KHXWnz4Pxfm06dF/4TSNJvJO/4p/qx2BCR/kHHWSPJkYUtZFNpN+6mF3zM6Odl3qkx
-         CKSwDeCL5ErWJX7KzTX9YgmwmPEeRTS2qQBDj4OszE5grWLgp3pMB9C4Egtf65Rtm0+5
-         r7G0k7q5PSk3ae3nTYAQy2aCNpqqVOVklWAtFR2qvP73AC05gm5q0zGeA2R6nUKPlsCD
-         4Lzl+KudXNGrHjKLlWu7lPIltfbvZRYUiI1FVvJ2P93KiQhWVQxqFrI6F8Uj9YS/lDiW
-         9IQ1e3L08jZmDWxvkUPlQD3SHSIX7eBEmZXZ7tIaMgR4y2McyT4rs6u/xumz66zGPS8p
-         uG+A==
-X-Gm-Message-State: APuU4Z/XUkyM5Ob0bnpx2a7T7GzrkbALrrjT23o08KzaVRLxrnIfhkZF
-	f6fzgWfebgnhdL/TAQ58W51Xda4L08vjx3mQc2rLSBLADASki4HcS0W/YW6H+NRuKhBytqqOaRP
-	Plr+oDdQc7fc+gm/tQNx4wJzfdwuBqRk=
-X-Gm-Gg: AYBFou0pXkuWiIp1TKPnjHR1HnUhPS0+xbRjiKbW84qUocV4yHnf4VRjWURvpyHK6NJ
-	PhEfqFPYrhjAVXQVIV1K2pXX9Jxz5s9QBRhZATKjsSysmhoEPSKpl6eaKnFZuO+FN9KLFGc76Yu
-	GnTy/qalAHGs+uPqvcOayWFHX3S/h9a3+SoTUxAiUPpvrI+p47mtUDZ7SoYnmIAhJJc97U4TN+2
-	b+K479WWDMpSHibUL8lXH8ZU5p4APauqzI9tPrBkaJuwPzEYP+68LGeU5Hyj2Z9vg2qFjOwkesq
-	fHaSCV28EIWjue+O/Eh7alDzT40opdS6FoqOEZJPjDqtUw0GRiD5+TcaBbhZOQBWhheg6LnMj6A
-	rLPLb6AXEytbuantxmK/TTNFhitMGkQ1FuVw=
-X-Received: by 2002:aa7:c2c9:0:b0:6aa:a33a:2762 with SMTP id
- 4fb4d7f45d1cf-6b4d3377817mr10254827a12.2.1793871766289; Thu, 05 Nov 2026
- 01:42:46 -0800 (PST)
+        d=1e100.net; s=20260707; t=1793875400; x=1794480200;
+        h=content-type:cc:to:from:subject:message-id:mime-version:date
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+         :content-type;
+        bh=rMqzSCS0erpbygzu/gLDyREb4eAHjrFX8W3+ToVWtNg=;
+        b=EzNVSJBsiQw0WdMBI1NKbxyL3mc85KPK7UOHDXZEyDgsk7bfq7AOSF66adFymSM8qV
+         5dBfCgZjExK8IzmYGcXw3s2nj9S0QfA5Y55pDuG2n8qUJ5fNXiHfJSuxDKqTQ40c3r+V
+         hIFJRyOtlebd+peMlUyM9/kxprw6Ef26P5xtanf0RgXK43qQtmIOv4zfbfKFkl8GnxOw
+         htawfa6Qq6k84L/mBA20wRzhiVe2ChJ0tfNmMuSuJMoO3eBjE+WFF5WJIw3eTcEFWBHD
+         5oUZfq7qjQjzTuq6M7PGEYyCp48FJNS/X8+zKa69mCWblHEBKsAhy0zPtpwW3md00ajJ
+         lxQA==
+X-Forwarded-Encrypted: i=1; AKwUvBwQryy0X19nRi1TmB5d8GTcvS8Pxx+FJnRMJ1o9wql4dr614r/tfE7/YfqEQBh8no4m+E6tEJ0qYKJHbdbPTA==@lists.infradead.org
+X-Gm-Message-State: APuU4Z/F4Gdx4eByA1hSwY7PfvK8Zt7PFSIvUyYg6xuqu0JOZhMgu7No
+	HcdbVf3xPKygxarS1lFFOQAM5E2gUNyTJJwZ3SeoIaEYSPRxzv1CcTj7z1Q/kmZAsm1tAPIz7g=
+	=
+X-Received: from edtr26.prod.google.com ([2002:aa7:cb9a:0:b0:6b4:1882:2675])
+ (user=zyta job=prod-delivery.src-stubby-dispatcher) by 2002:a05:6402:c4d2:20b0:6b4:16be:4fa
+ with SMTP id 4fb4d7f45d1cf-6b4d467583fmr11096477a12.15.1793875399815; Thu, 05
+ Nov 2026 02:43:19 -0800 (PST)
+Date: Thu,  5 Nov 2026 10:42:34 +0000
 X-Archived-By: <archiver.kernel.org>
-MIME-Version: 1.0
-References: <20261021105109.199886-1-l.scorcia@gmail.com> <20261021105109.199886-5-l.scorcia@gmail.com>
- <179310028255.2808517.13933580516140278450@kernel.org>
-In-Reply-To: <179310028255.2808517.13933580516140278450@kernel.org>
-From: Luca Leonardo Scorcia <l.scorcia@gmail.com>
-Date: Thu, 5 Nov 2026 10:42:35 +0100
-X-Gm-Features: AclHuK8keS0URREeVHi2bDcMrIMTrg9GDE11ruNkJWdKZdjkdmjRgehGKxzojT4
-Message-ID: <CAORyz2Lv9fBrKZOQ7kFBE+u-nJ-dFpRm_3G0JTS=bHtEL6n_GQ@mail.gmail.com>
-Subject: Re: [PATCH v11 4/9] mfd: mt6397: Use MFD_CELL_* to describe sub-devices
-To: Lee Jones <lee@kernel.org>
-Cc: linux-mediatek@lists.infradead.org, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	Dmitry Torokhov <dmitry.torokhov@gmail.com>, Rob Herring <robh@kernel.org>, 
-	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, Sen Chu <sen.chu@mediatek.com>, 
-	Sean Wang <sean.wang@mediatek.com>, Macpaul Lin <macpaul.lin@mediatek.com>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, Liam Girdwood <lgirdwood@gmail.com>, 
-	Mark Brown <broonie@kernel.org>, Linus Walleij <linusw@kernel.org>, Val Packett <val@packett.cool>, 
-	Fabien Parent <parent.f@gmail.com>, Akari Tsuyukusa <akkun11.open@gmail.com>, 
-	Chen Zhong <chen.zhong@mediatek.com>, linux-input@vger.kernel.org, 
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	linux-pm@vger.kernel.org, mfd@lists.linux.dev, 
-	linux-arm-kernel@lists.infradead.org, linux-gpio@vger.kernel.org
+Mime-Version: 1.0
+X-Mailer: git-send-email 2.56.0.398.g882cbad275-goog
+Message-ID: <20261105104234.2734199-1-zyta@google.com>
+Subject: [PATCH] irqchip/mediatek: Add Kconfig option for MediaTek SYSIRQ and CIRQ
+From: Zyta Szpak <zyta@google.com>
+To: Thomas Gleixner <tglx@linutronix.de>, Marc Zyngier <maz@kernel.org>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, linux-kernel@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+	Zyta Szpak <zyta@google.com>
 Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261105_014248_940156_76E715A0 
-X-CRM114-Status: UNSURE (   8.52  )
-X-CRM114-Notice: Please train this message.
-X-Spam-Score: -1.1 (-)
+X-CRM114-CacheID: sfid-20261105_024322_981151_CFAD2631 
+X-CRM114-Status: GOOD (  12.71  )
+X-Spam-Score: -9.5 (---------)
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -127,24 +89,78 @@ List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-1.9 required=3.0 tests=BAYES_00,DKIM_SIGNED,
-	DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,FORGED_GMAIL_RCVD,
-	FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=no
-	autolearn_force=no version=4.0.1
+X-Spam-Status: No, score=-26.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIMWL_WL_MED,DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,
+	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT,
+	USER_IN_DEF_DKIM_WL autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-> > +     MFD_CELL_OF("mt6323-pwrc", mt6323_pwrc_resources, NULL, 0, 0,
->
-> Nit: This is non-blocking, but if you have to respin, please use the
-> 100-char limit to keep these on single lines where possible. Same for
-> all the others below.
+Currently, the MediaTek SYSIRQ (irq-mtk-sysirq) and CIRQ (irq-mtk-cirq)
+interrupt controller drivers are unconditionally built whenever
+CONFIG_ARCH_MEDIATEK is enabled, without a dedicated Kconfig symbol.
 
-Ack. I will rebase this patch over current 7.4-rc1, adjust the line
-width and send it independently of the addition of mt6392.
-Thank you
+Not all MediaTek SoCs require SYSIRQ or CIRQ (for example, newer ARMv8
+SoCs and platforms using the MStar interrupt controller), so building
+these drivers unconditionally prevents disabling them in tailored kernel
+configurations. Tying the build rule directly to CONFIG_ARCH_MEDIATEK in
+the Makefile also prevents compile-testing these drivers on non-MediaTek
+architectures via CONFIG_COMPILE_TEST.
+
+Introduce the CONFIG_MTK_IRQ Kconfig option to control building
+irq-mtk-sysirq.o and irq-mtk-cirq.o. Make it depend on ARCH_MEDIATEK ||
+COMPILE_TEST, default to ARCH_MEDIATEK to preserve existing behavior for
+all MediaTek configurations, and select IRQ_DOMAIN and
+IRQ_DOMAIN_HIERARCHY as required by both drivers.
+
+Signed-off-by: Zyta Szpak <zyta@google.com>
+---
+ drivers/irqchip/Kconfig  | 14 ++++++++++++++
+ drivers/irqchip/Makefile |  2 +-
+ 2 files changed, 15 insertions(+), 1 deletion(-)
+
+diff --git a/drivers/irqchip/Kconfig b/drivers/irqchip/Kconfig
+index 136bab41f801..2edf121c7841 100644
+--- a/drivers/irqchip/Kconfig
++++ b/drivers/irqchip/Kconfig
+@@ -793,6 +793,20 @@ config MST_IRQ
+ 	help
+ 	  Support MStar Interrupt Controller.
+ 
++config MTK_IRQ
++	bool "MediaTek Interrupt Controller"
++	depends on ARCH_MEDIATEK || COMPILE_TEST
++	default ARCH_MEDIATEK
++	select IRQ_DOMAIN
++	select IRQ_DOMAIN_HIERARCHY
++	help
++	  Support for the MediaTek System Interrupt Controller (SYSIRQ) and
++	  Core Interrupt Controller (CIRQ) found on various MediaTek SoCs.
++	  SYSIRQ provides interrupt polarity configuration in front of the
++	  GIC, while CIRQ records and flushes external interrupts during
++	  system suspend and resume when the primary interrupt controller
++	  is powered down.
++
+ config WPCM450_AIC
+ 	bool "Nuvoton WPCM450 Advanced Interrupt Controller"
+ 	depends on ARCH_WPCM450
+diff --git a/drivers/irqchip/Makefile b/drivers/irqchip/Makefile
+index 16a5fd126c9a..eb539d41251e 100644
+--- a/drivers/irqchip/Makefile
++++ b/drivers/irqchip/Makefile
+@@ -72,7 +72,7 @@ obj-$(CONFIG_BCM7120_L2_IRQ)		+= irq-bcm7120-l2.o
+ obj-$(CONFIG_BRCMSTB_L2_IRQ)		+= irq-brcmstb-l2.o
+ obj-$(CONFIG_KEYSTONE_IRQ)		+= irq-keystone.o
+ obj-$(CONFIG_MIPS_GIC)			+= irq-mips-gic.o
+-obj-$(CONFIG_ARCH_MEDIATEK)		+= irq-mtk-sysirq.o irq-mtk-cirq.o
++obj-$(CONFIG_MTK_IRQ)			+= irq-mtk-sysirq.o irq-mtk-cirq.o
+ obj-$(CONFIG_ARCH_DIGICOLOR)		+= irq-digicolor.o
+ obj-$(CONFIG_ARCH_SA1100)		+= irq-sa11x0.o
+ obj-$(CONFIG_INGENIC_IRQ)		+= irq-ingenic.o
+
+base-commit: 05441d697f7f9a927264f4058cbbc6a03dfcac9d
 -- 
-Luca Leonardo Scorcia
-l.scorcia@gmail.com
+2.56.0.398.g882cbad275-goog
+
 
