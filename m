@@ -2,62 +2,104 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id BF119606A32D
-	for <linux-mediatek@archiver.kernel.org>; Thu,  5 Nov 2026 22:22:25 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id ABB0F606A31B
+	for <linux-mediatek@archiver.kernel.org>; Thu,  5 Nov 2026 22:24:54 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=YdjtlH/t;
-	dkim=pass (2048-bit key, unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=CFJnWLTN
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=e3YPV3Vm;
+	dkim=pass (2048-bit key, unprotected) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=FQI62HWk
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
-	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Unsubscribe-Post:
-	List-Owner; bh=I2UCmZDII7TZlJUdlHoHQguMZYmeF/P0Y0rUuVe9MTQ=; b=YdjtlH/tnfpQ45
-	zP3o1TcmynoKldvlFyg7+xEn4kVEdfs6ykk0CbX6yBeXA1kAZGdbGxhKxYEK1BmvsewvWUf/pZYXI
-	jXna6Ho0zEjDoctdB4BLF+RHHWxVbcJtoGe13LGV5EiXvVBA3PbVKxyY2pcTw70v7VRGrgH2pwIb8
-	dlnO0Da/KxwFahv5WbCQG+X+2alrPi7EZgeCDtnaoDTxD/OGkG5YZ8wPAgzg8++OQ+c/zfkCk1Di1
-	P33cEKajcoI87XFshFFejLh4Ii8dq7ju24PeC67fP8eeQL0Lzw6EANZSUcuhXiJ64niJ121uM8LQP
-	AFyAP3Vp9oHri0DGdWZg==;
+	List-Owner; bh=Z9XTrE2yrR3HPAGKN8cfazsOZArS5Wy1dlBvlHzw8y0=; b=e3YPV3VmsAZGFJ
+	Dmdl+xeYxSBi5VsA1SpGJ30xGQ9Z5xXgQOSBYYQPULv0hkhaxnQOZF20hvC/3WW9zS8XILpiiEuLp
+	KB2V5DLBvIS4pwhdEUnTO6679FTzCW7aJwl2XS+8J4y6EsVLabkqR+/9sz2TxrLdRw8+IgzPDj0a1
+	lk1uWKWiqelMfeGWE5Rjw5qDN7rmgS8CECLHHxNebfN2ux3cJtpAcSg/05od185xHn+1zIa/iFQc6
+	J4q/3ytBfjKK/aAAgSFdA1Ov+WG1T9fMgqZwmsA/23yuqz+/c7TR4IICCU8wu0sopMvlb6P0WM3uW
+	DhkZ4U4M8vSNHdq3oGUQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xP5qh-0000000AmzR-0CRB;
-	Thu, 05 Nov 2026 22:22:23 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1xP5t8-0000000AnGa-03Tr;
+	Thu, 05 Nov 2026 22:24:54 +0000
+Received: from mail-ed1-x533.google.com ([2a00:1450:4864:20::533])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xP5qf-0000000AmzE-1YkP;
-	Thu, 05 Nov 2026 22:22:21 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 683F9601BF;
-	Thu,  5 Nov 2026 22:22:20 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id DBC321F0089F;
-	Thu,  5 Nov 2026 22:22:19 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1793917340;
-	bh=I2UCmZDII7TZlJUdlHoHQguMZYmeF/P0Y0rUuVe9MTQ=;
-	h=Date:From:To:Cc:Subject:In-Reply-To:References;
-	b=CFJnWLTN8Hdn81KBHt5b4aPAyQJVP6ghpvhL11RGgs3whi/pcGSEbFet1RPf+MX2l
-	 9Flkk9NhvfG1ANLCfKLUEhOTvadYLb02HyEENq4ctLzpXHH2gRpobNwln8qERA6Mbu
-	 /0CTAx/YFazA3PRiFkzenEKw1ngCxA+Gv1PplWZ89aJZhMJZmBXo0DZRNhVMIbOCTR
-	 +cSvVmJhMiOeu48/gIasQDWh9XOSzJYvwOpyweQjclKwkWIiTvD6O0+gnlXnjVk975
-	 Cxf8ebCn8Pphkhz5tVbGinl2tlD2tQayRUsttKM9/V3BXf63WwcvdnvAb7Z2K6Dybx
-	 DmL1hBF8QnXTw==
-Date: Thu, 5 Nov 2026 14:22:09 -0800
-From: Jakub Kicinski <kuba@kernel.org>
-To: Sandeep Haemoon <sandeeph@loljews.com>
-Cc: netdev@vger.kernel.org, Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi
- <lorenzo@kernel.org>, linux-mediatek@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH net-next 1/2] net: ethernet: mtk_eth_soc: add 9K jumbo
- frame
-Message-ID: <20261105142209.06d93e77@kernel.org>
-In-Reply-To: <patch-f1b04513b0fe3fb0a35ac744799fb0f3@loljews.com>
-References: <patch-4f863a941889f0bceca1c082f2d79624@loljews.com>
-	<patch-f1b04513b0fe3fb0a35ac744799fb0f3@loljews.com>
+	id 1xP5sy-0000000AnFS-2qCj
+	for linux-mediatek@lists.infradead.org;
+	Thu, 05 Nov 2026 22:24:48 +0000
+Received: by mail-ed1-x533.google.com with SMTP id 4fb4d7f45d1cf-6b566cf56c1so2141884a12.2
+        for <linux-mediatek@lists.infradead.org>; Thu, 05 Nov 2026 14:24:44 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20260707; t=1793917483; x=1794522283; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to:content-type;
+        bh=Z9XTrE2yrR3HPAGKN8cfazsOZArS5Wy1dlBvlHzw8y0=;
+        b=FQI62HWkW/s4QuH8OmT8SwJ6uey6R+g7Yxr5qpchUR7sp4uxCZEi05Pkbv6pXVpFCe
+         pHp6C1XOBbCm04zcEgiKD/IclsX94wPWIk8S/OmLpVwYh2xSmtV09FJ3H23EyyhqJZcD
+         glxY4ZFvhPionzqFfuTvrejqOsfZ36wKzEpNkP8gNHQtIqCJNVUihuDuDbfIx8N/yAfb
+         Rwogwu1egFFGLRudMU/p9p433TexrF3km41bVJwyGTN4enAmK/0vgCrXOXVztOnD9EO1
+         zCCP/WZe7hs7S97qZGlHIuAN1L2ChlsGPwky/bWv64Evq3ZekPpnVzI0/2K3+9r/cvGd
+         Xtcg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20260707; t=1793917483; x=1794522283;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
+         :to:cc:subject:date:message-id:reply-to:content-type;
+        bh=Z9XTrE2yrR3HPAGKN8cfazsOZArS5Wy1dlBvlHzw8y0=;
+        b=QAoC5adP4LfLWS5Ns9230XF7jhQ4h4HdJk7rTIqkH2i0igR0h3U4GKw86Brlgm67Qk
+         dvk6nPmQ5Ikx+eMRapeTRR86olz2wLN0qPbi5vjYTSeQQ3g+t19ydFMmdsgpVy/pgUXT
+         +O29T34udI5MIT00S/g9ZFt/nQrrZ5axyRzwOQiI15Yhr67j62D9ptwzH2a67TVwozqM
+         IrKyBfa6kJQwloj0kTA2EhweLPu1IBwnjZPvRjJno9ChJydZ01AS4DL+gq9308btss3P
+         9G04LZw5iQT5Zw1EMt1dMh74xtzN8e9IivPNpQNp7w8XORx1R4hXQw9BtDE0QwkDMSMh
+         xFCA==
+X-Forwarded-Encrypted: i=1; AKwUvBxnmsfd7+kF9+kr2Q/JTzda097VSYxiO/aZ5+1uMKlEynDUXbWB9x8NHke+Gz/KLf7Z+QA/6jF9INE63W0SGw==@lists.infradead.org
+X-Gm-Message-State: APuU4Z/h+yJm5R/2fdFtSgm5fEOesoUGNlBFepqZYqZU6AbCuZ8erh3O
+	ZJTXMjuznZ1RL2a2L5jT3PGzwWqzDgSdLbAcoSkPIoErbEykFNU1zgQE
+X-Gm-Gg: AYBFou3YtQpVtbkVeypIllUg+ge7qJ/gVhAxaSXx7vvYhUKynhW+EAbJ5ZaC0pWvUqF
+	Ls1VG/lAylciCCs+0j0f1IAwsTVFiuIThkvk/vf2uBZc8Gvo/AmePBcaSk+d2/SxtTlLWvCFr4C
+	iLp4eJsj8cZoP8omipTsCJRDAbbPMMmKSgmqqcnidjvRX0prNf8xnk7yvBjcgYWm3Q8hrTvanvo
+	JM+CtlzyeWRhef7o4621Y7dYQF7Ud5A2v6MEJV6KMiF61HmVe7QAgLLztqp+Wx2WUfOKd1wEJSz
+	IQa8J/UAWzQg6LmxF19eYKf96k8zqHn2jSMYJvWbeXSBhDXMk0Uz4vbpT1I0eeWi3q5pIH0ZTgd
+	JRVfKZOEYnYivLITeuLG+mq47N8inS+4TCYLsDBFVOQUw/pl+RMzMy5kL9bsXKib/IzESLza23w
+	G83N1y1svb+CnPvbkMUD58lSpjw864DUUunt7X/LrPYN6xhdvUoFgbNGKp3WFpMGGRBqhfaYZ9Q
+	8/4tXp3AdGXXSsF/9UABL0NYeHMxx1PJIzECioLH8BrBZYmA2XOrQNlyXP7qRFZCqpTvNu+rS9o
+	xKTjufbAhd0IfMJSN8Mu8g8kMkRfwKnsW0qINqnKSBKFwK0Hpw==
+X-Received: by 2002:a05:6402:5384:b0:6b4:d7fb:affd with SMTP id 4fb4d7f45d1cf-6b5977de20emr411756a12.12.1793917482391;
+        Thu, 05 Nov 2026 14:24:42 -0800 (PST)
+Received: from letov ([62.41.24.155])
+        by smtp.gmail.com with ESMTPSA id 4fb4d7f45d1cf-6b55ac57b9csm2103697a12.15.2026.11.05.14.24.39
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 05 Nov 2026 14:24:41 -0800 (PST)
+From: Alexander Letuchiy <asalde.le1@gmail.com>
+To: Roman Vivchar <rva333@protonmail.com>
+Cc: Alexander Letuchiy <asalde.le1@gmail.com>,
+	devicetree@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org,
+	Wim Van Sebroeck <wim@linux-watchdog.org>,
+	Guenter Roeck <linux@roeck-us.net>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	linux-watchdog@vger.kernel.org,
+	linux-kernel@vger.kernel.org
+Subject: Re: [PATCH 3/5] dt-bindings: watchdog: mediatek,mtk-wdt: Add compatible for MT6895
+Date: Fri,  6 Nov 2026 01:24:34 +0300
+Message-ID: <20261105222435.571449-1-asalde.le1@gmail.com>
+X-Mailer: git-send-email 2.56.0
+In-Reply-To: <xUMh3NwVp4cBhFsWWFE2Xng4h8YH95iJM37_I158WAyVmsRCPbirWT1iU8eMFeiSFw8xco0X45o-2NOeB6Jc4_nWAg25pFPgDMwK3mKzm34=@protonmail.com>
+References: <xUMh3NwVp4cBhFsWWFE2Xng4h8YH95iJM37_I158WAyVmsRCPbirWT1iU8eMFeiSFw8xco0X45o-2NOeB6Jc4_nWAg25pFPgDMwK3mKzm34=@protonmail.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20261105_142445_392581_F585ACC5 
+X-CRM114-Status: GOOD (  10.90  )
+X-Spam-Score: -1.9 (-)
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -68,20 +110,36 @@ List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-5.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,
-	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS autolearn=no autolearn_force=no version=4.0.1
+X-Spam-Status: No, score=-5.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
+	DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,FREEMAIL_FORGED_FROMDOMAIN,
+	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=no autolearn_force=no
+	version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On Mon, 2 Nov 2026 00:48:45 +0200 Sandeep Haemoon wrote:
-> +static void mtk_set_mcr_max_rx(struct mtk_mac *mac, u32 val);
+Hi Roman,
 
-Avoid the forward declarations, please.
+Thanks for looking.
 
-When you repost make sure that patch 2 is in reply to the cover letter,
-not chained off patch 1.
--- 
-pw-bot: cr
+On Thu, Nov 5, 2026 at 11:50 PM, Roman Vivchar wrote:
+> Does mt6895 actually share the same reset layout as mt6589? Given the
+> generation leap between these, the former is very unlikely to use
+> the same resets.
+
+The vendor kernel for this SoC binds the watchdog with the same
+compatible list ("mediatek,mt6895-wdt", "mediatek,mt6589-wdt") at the
+same address, and its register definitions are identical to mtk_wdt.c.
+
+The TOPRGU reset layout is the one thing I can't confirm, as I found no
+reset table for MT6895 there. This series does not use it: the DT has
+no #reset-cells and no consumers. If reset lines are needed later, I
+will add a dedicated mt6895_data to the driver.
+
+I also tested the watchdog on the device: while userspace keeps
+kicking it, the system stays up, and once the kicks stop the watchdog
+resets the board after the timeout.
+
+Best regards,
+Alexander
 
