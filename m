@@ -2,157 +2,63 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 5C110606A32E
-	for <linux-mediatek@archiver.kernel.org>; Thu,  5 Nov 2026 14:35:47 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id DD6D9606A334
+	for <linux-mediatek@archiver.kernel.org>; Thu,  5 Nov 2026 14:36:58 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=C4pHy9NA;
-	dkim=pass (2048-bit key, unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=cgj1r83m
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=pl6EkB+K;
+	dkim=pass (2048-bit key, unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=XyzmRdyF
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Unsubscribe-Post:
-	List-Owner; bh=0r7l62CHaFTMRLxBz/to210M4G41eBZLZnjLmm0cmp0=; b=C4pHy9NA+fYNbq
-	d3dOOqp2jWtL2iDnYQ+UgBviiWSAEdULMV6gqKXiTsuXZ18UFM/rplTpXKrGw9/giMyca8y9lbFe3
-	LSPbT5Pnkz5MVtytg0m2jIfjMPqMkOw+w3q7leuBWoVT7VO8GWSIF34E0lkrhaB/EtU6bveYw20zM
-	ZreECqAU7ZlBzDMlS8ttOiaSRHJeWjy5ML3jW788nAwLa6wsG3IUpKx4rzTJourCb61TMWZtjSc/o
-	BjmR01waaw1MYphaGC1OzRiO59lDW7dhiEamzJewq202M8RwfJCZz84Jh8/oOLRuw534C8a7su38E
-	yNg+MoIxOByr0rNhBiVA==;
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Unsubscribe-Post:List-Owner;
+	bh=y2THsAXtPgE/cPVAy9wB9JvP77O7f1H/H0wt8LIVsRw=; b=pl6EkB+KAIqWKC7QnlxuEACWgL
+	Zn7SKRbwz+JHSuqa+BbOML1YOpdOS+u5Rym1FCJh6zZ49GCLoz+kWyq2KAF/BI2ZSbhv+/+FADDLe
+	dFkP1ULFKL7ZqUzYKYGUehmqFmyj6RIuCVnlYn7jdnL9BDDY7ObBr634jrvGU+i3Satn5yH3a0iYE
+	2YLowDz7AWGoistMAU0wQ5LJMknzH90fovOUFyuuItNLpQtPaLcMyeBGUIrtU5y28ZGvBPzEWJHEU
+	1DzQH5xaTo2l7wldh3VsgkpaWiyNSNRo7IbvOLRTAuZg6ywRGGQdGjXyIyAvmoEKBGs83+c2DAfBv
+	Buqwg+Yg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xOyZ9-00000009IeS-08vH;
-	Thu, 05 Nov 2026 14:35:47 +0000
+	id 1xOyaI-00000009J5c-2QOd;
+	Thu, 05 Nov 2026 14:36:58 +0000
 Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xOyZ3-00000009IaB-1ruE;
-	Thu, 05 Nov 2026 14:35:41 +0000
+	id 1xOyaH-00000009J50-12jh;
+	Thu, 05 Nov 2026 14:36:57 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id 0AFFC43F12;
-	Thu,  5 Nov 2026 14:35:41 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9476C1F0093A;
-	Thu,  5 Nov 2026 14:35:23 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 0794F4375E;
+	Thu,  5 Nov 2026 14:36:57 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id A92791F000C1;
+	Thu,  5 Nov 2026 14:36:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1793889340;
-	bh=0r7l62CHaFTMRLxBz/to210M4G41eBZLZnjLmm0cmp0=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To;
-	b=cgj1r83mYGIdLcLByG0bpU44Vt3oSEDD55lpg/y3f5ddqnfWdhb/Kech0vlPgNMl1
-	 74xxSgd+OK5Qf8rNYALVwNg02gq+O6fzubkCu7jgITeg2/fjs/cXpkY8MLQhIv/Gzs
-	 naVGcOEBXTd4dryVP1yx6Lw0II+7qIowvCb8E2kdap25q4OFII+kOE5YZ5XrSwRVBg
-	 3In6q+c2Ih+51VGvUv2nOkeWklXHlk8WGpUQzJWErb/iTpMqKZ7kkjFAJWwancT87g
-	 SPYrGmzQUmvq+ANrMgGUpTBFdB5XAQZLR9+3vLN5WpeoaPUN1YUaqG8zZMg5TR5o/B
-	 YLuIY1sCMzgkA==
-Message-ID: <2e12316d-d079-471f-9c29-ef5fb765216a@kernel.org>
-Date: Thu, 5 Nov 2026 15:35:20 +0100
+	s=k20260515; t=1793889416;
+	bh=y2THsAXtPgE/cPVAy9wB9JvP77O7f1H/H0wt8LIVsRw=;
+	h=From:To:Cc:Subject:Date;
+	b=XyzmRdyFMi2XTIsVGrVSDuaNTzQbK2kiHE/q+TzhQp86/BEd8ZSpPqG4e7ctCADA/
+	 rfxiKAZhD+9Wyi88UxzK7Mbac9oJZsDIf7CkuBi9ehqudCauJRs7B9Hg38nR2o34jw
+	 FLTfaUpFyxt7x2aJGvUinvF82zVjZDQ79838Hv4DDNlgitwjO/6I62EmjKJyeBp6EG
+	 hfuvyXIODZccqXJ6g/ecKihKnEEztaf+cEF70AJSZnB0TqSFrvpouMKSYdLbBSo2S5
+	 z/0DUkWf7/P6dCGGw4cBTWWs85qH/kGgnFk4BezjkavUqV2PnBNJYIwjTjVvPS5eW4
+	 qXtQT+ZV9Y45A==
+From: "Rob Herring (Arm)" <robh@kernel.org>
+To: Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: linux-kernel@vger.kernel.org,
+	devicetree@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: [PATCH] dt-bindings: power: Remove orphan mt6765-power.h include
+Date: Thu,  5 Nov 2026 08:36:47 -0600
+Message-ID: <20261105143647.2727937-1-robh@kernel.org>
+X-Mailer: git-send-email 2.53.0
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 1/1] tty: serial: use dmaengine_desc_set_callback()
-To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
- Thierry Reding <thierry.reding@kernel.org>
-Cc: Frank.Li@oss.nxp.com, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Jiri Slaby <jirislaby@kernel.org>, Matthias Brugger
- <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Russell King <linux@armlinux.org.uk>,
- Richard Genoud <richard.genoud@bootlin.com>,
- Nicolas Ferre <nicolas.ferre@microchip.com>,
- Alexandre Belloni <alexandre.belloni@bootlin.com>,
- Claudiu Beznea <claudiu.beznea@tuxon.dev>, Frank Li <Frank.Li@nxp.com>,
- Sascha Hauer <s.hauer@pengutronix.de>,
- Pengutronix Kernel Team <kernel@pengutronix.de>,
- Fabio Estevam <festevam@gmail.com>, Peter Griffin
- <peter.griffin@linaro.org>, Alim Akhtar <alim.akhtar@samsung.com>,
- Laxman Dewangan <ldewangan@nvidia.com>,
- Jonathan Hunter <jonathanh@nvidia.com>, Orson Zhai <orsonzhai@gmail.com>,
- Baolin Wang <baolin.wang@linux.alibaba.com>,
- Chunyan Zhang <zhang.lyra@gmail.com>,
- Maxime Coquelin <mcoquelin.stm32@gmail.com>,
- Alexandre Torgue <alexandre.torgue@foss.st.com>,
- Cunhao Lu <1579567540@qq.com>, Raul E Rangel <rrangel@chromium.org>,
- Yenchia Chen <yenchia.chen@mediatek.com>,
- Zhiyong Tao <zhiyong.tao@mediatek.com>, Carlo Caione <ccaione@baylibre.com>,
- Moteen Shah <m-shah@ti.com>, Kendall Willis <k-willis@ti.com>,
- Kartik Rajput <kkartik@nvidia.com>, Fan Wu <fanwu01@zju.edu.cn>,
- Nicolai Buchwitz <nb@tipi-net.de>, Karl Mehltretter
- <kmehltretter@gmail.com>, =?UTF-8?Q?Stefan_D=C3=B6singer?=
- <stefandoesinger@gmail.com>, Shitalkumar Gandhi <shital.gandhi45@gmail.com>,
- Peng Fan <peng.fan@nxp.com>, Sherry Sun <sherry.sun@nxp.com>,
- John Ogness <john.ogness@linutronix.de>, Pan Chuang <panchuang@vivo.com>,
- Petr Mladek <pmladek@suse.com>, Robin Gong <yibin.gong@nxp.com>,
- Konrad Dybcio <konrad.dybcio@oss.qualcomm.com>,
- Stephan Gerhold <stephan.gerhold@linaro.org>, Zhaoyang Yu
- <2426767509@qq.com>, "Nikola Z. Ivanov" <zlatistiv@gmail.com>,
- Haoxiang Li <haoxiang_li2024@163.com>,
- "Mike Rapoport (Microsoft)" <rppt@kernel.org>,
- Biju Das <biju.das.jz@bp.renesas.com>,
- Geert Uytterhoeven <geert+renesas@glider.be>,
- Myeonghun Pak <mhun512@gmail.com>, Wenhua Lin <Wenhua.Lin@unisoc.com>,
- Cixi Geng <cixi.geng@linux.dev>,
- "open list:TTY LAYER AND SERIAL DRIVERS" <linux-kernel@vger.kernel.org>,
- "open list:TTY LAYER AND SERIAL DRIVERS" <linux-serial@vger.kernel.org>,
- "moderated list:ARM/Mediatek SoC support"
- <linux-arm-kernel@lists.infradead.org>,
- "moderated list:ARM/Mediatek SoC support"
- <linux-mediatek@lists.infradead.org>,
- "open list:ARM/FREESCALE IMX / MXC / LAYERSCAPE ARM ARCHIT..."
- <imx@lists.linux.dev>,
- "open list:ARM/QUALCOMM MAILING LIST" <linux-arm-msm@vger.kernel.org>,
- "open list:ARM/SAMSUNG S3C, S5P AND EXYNOS ARM ARCHITECTURES"
- <linux-samsung-soc@vger.kernel.org>,
- "open list:TEGRA ARCHITECTURE SUPPORT" <linux-tegra@vger.kernel.org>,
- "moderated list:ARM/STM32 ARCHITECTURE"
- <linux-stm32@st-md-mailman.stormreply.com>, vkoul@kernel.org
-References: <20261102175527.3957740-1-Frank.Li@oss.nxp.com>
- <aux2VKHnVLwq_wzi@orome> <auyQEVmA2KeGu9DL@ashevche-desk.local>
-From: Krzysztof Kozlowski <krzk@kernel.org>
-Content-Language: en-US
-Autocrypt: addr=krzk@kernel.org; keydata=
- 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
-In-Reply-To: <auyQEVmA2KeGu9DL@ashevche-desk.local>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -163,45 +69,45 @@ List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-17.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-17.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,
 	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1
-	autolearn=ham autolearn_force=no version=4.0.1
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,TVD_SUBJ_WIPE_DEBT,
+	USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On 05/11/2026 15:17, Andy Shevchenko wrote:
->>> ---
->>>  drivers/tty/serial/8250/8250_dma.c  | 6 ++----
->>>  drivers/tty/serial/8250/8250_mtk.c  | 3 +--
->>>  drivers/tty/serial/8250/8250_omap.c | 6 ++----
->>>  drivers/tty/serial/amba-pl011.c     | 6 ++----
->>>  drivers/tty/serial/atmel_serial.c   | 6 ++----
->>>  drivers/tty/serial/fsl_lpuart.c     | 6 ++----
->>>  drivers/tty/serial/imx.c            | 6 ++----
->>>  drivers/tty/serial/msm_serial.c     | 6 ++----
->>>  drivers/tty/serial/mxs-auart.c      | 6 ++----
->>>  drivers/tty/serial/pch_uart.c       | 6 ++----
->>>  drivers/tty/serial/samsung_tty.c    | 6 ++----
->>>  drivers/tty/serial/serial-tegra.c   | 6 ++----
->>>  drivers/tty/serial/sh-sci.c         | 9 +++------
->>>  drivers/tty/serial/sprd_serial.c    | 3 +--
->>>  drivers/tty/serial/stm32-usart.c    | 6 ++----
->>>  15 files changed, 29 insertions(+), 58 deletions(-)
->>
->> Reviewed-by: Thierry Reding <treding@nvidia.com>
-> 
-> Krzysztof, now look at this case. I would argue that this is even less fit than
-> # subpart(s) case, because it might imply anything. Again the problem is the
-> bundle, and for such a case (when tons of independent changes are bundled in
-> the same stuff, *every* Rb tag has to be explained on what has been reviewed!
+Commit 22a77ae9bae2 ("dt-bindings: power: Convert mediatek,mt2701-scpsys
+to DT schema") dropped support for MT6765, but missed removing the
+include.
 
-I think this case is obvious - Thierry reviewed this patch and gives Rb
-tag, according to reviewer's statement of oversight. I don't see a
-problem here or what is questionable.
+Signed-off-by: Rob Herring (Arm) <robh@kernel.org>
+---
+ include/dt-bindings/power/mt6765-power.h | 14 --------------
+ 1 file changed, 14 deletions(-)
+ delete mode 100644 include/dt-bindings/power/mt6765-power.h
 
+diff --git a/include/dt-bindings/power/mt6765-power.h b/include/dt-bindings/power/mt6765-power.h
+deleted file mode 100644
+index d347b4ee9eed..000000000000
+--- a/include/dt-bindings/power/mt6765-power.h
++++ /dev/null
+@@ -1,14 +0,0 @@
+-/* SPDX-License-Identifier: GPL-2.0 */
+-#ifndef _DT_BINDINGS_POWER_MT6765_POWER_H
+-#define _DT_BINDINGS_POWER_MT6765_POWER_H
+-
+-#define MT6765_POWER_DOMAIN_CONN		0
+-#define MT6765_POWER_DOMAIN_MM			1
+-#define MT6765_POWER_DOMAIN_MFG_ASYNC		2
+-#define MT6765_POWER_DOMAIN_ISP			3
+-#define MT6765_POWER_DOMAIN_MFG			4
+-#define MT6765_POWER_DOMAIN_MFG_CORE0		5
+-#define MT6765_POWER_DOMAIN_CAM			6
+-#define MT6765_POWER_DOMAIN_VCODEC		7
+-
+-#endif /* _DT_BINDINGS_POWER_MT6765_POWER_H */
+-- 
+2.53.0
 
-Best regards,
-Krzysztof
 
