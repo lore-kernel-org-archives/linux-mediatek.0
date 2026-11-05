@@ -2,76 +2,136 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 0BFE06082BDE
-	for <linux-mediatek@archiver.kernel.org>; Thu,  5 Nov 2026 15:47:18 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 8E887606A328
+	for <linux-mediatek@archiver.kernel.org>; Thu,  5 Nov 2026 16:16:46 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=n3Alz/g0;
-	dkim=pass (2048-bit key, unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=h4FefPg/
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=LuyY9/yZ;
+	dkim=pass (2048-bit key, unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256 header.s=Intel header.b=XPgBRsel
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Unsubscribe-Post:
-	List-Owner; bh=ofpeVWI3consGDzBWqgjB78mylADRIbQBjF1c/ZhASw=; b=n3Alz/g0Ua9EFe
-	JOIyGp4abUK11Yra8GfplOMh6igCirH4uyNevG3zxb4y2TxYh3Oivp85k87OH1eQ0Bih2K3HzM3c0
-	7TOzagmWenIlHRe/l+k+JJTJeZnHyM7roL/4wWz3A0XKP6XXGNpcwCAYJ2ocgyl8f7LC1DgnDsHzR
-	PJ2vplkWcVSQL0LKGhzOCcL4PbEpFIIiBJ6LHLQewirb3R3NF/0YUpcHzzI3Ki2bYdjuAIL/seOMJ
-	71ScV9LrzoBW3pWOTMEXiqWnjSZNcf1ZNqgN8MzeM0v1axvmG/9q5LfVvCM/NLBN7f/eX/BffK4ac
-	UrJayZiyF5JhyhtkbQQQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Unsubscribe-Post:List-Owner;
+	bh=glWYFJWJY1bRMuBsdlN40Etai5OWB/ptNyzICpjIyVw=; b=LuyY9/yZ4ko0+YhkmP5kbmvIOf
+	17goY8YgKG2G5Yvt2lHRXKZxX4eO0mL9WXfR7hVwo6PJe+dKNIf5+zb+ejKZShRmHOy005sWPhfkr
+	b0Rfc5hY9xHTiaS1aarALODevkmNktvqBfuTfD5KbmInpBrAOvQg2FUbj8NwDH1lBxB4ss7caO7o6
+	eJNYxE5CZ8Xc4oVAPSlVvJVua+L8F4B4oievPx+NgvUQDQHpNpRa6NDOJorGfTcY+uOPf4QFvAdDB
+	Sl4Ad6c9JqeK7MgqAJO68cMJYlmZyGlYWp+SInjWebbkueX348Ugit72LWGATUM6RbzwOixmxmBJP
+	JAzru7Gg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xOzgL-00000009RQP-2BS3;
-	Thu, 05 Nov 2026 15:47:17 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1xP08s-00000009Z0b-0M3u;
+	Thu, 05 Nov 2026 16:16:46 +0000
+Received: from mgamail.intel.com ([192.198.163.9])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xOzgJ-00000009RPu-3C62;
-	Thu, 05 Nov 2026 15:47:16 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 369D56062A;
-	Thu,  5 Nov 2026 15:47:15 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3B5771F0093A;
-	Thu,  5 Nov 2026 15:47:14 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1793893634;
-	bh=ofpeVWI3consGDzBWqgjB78mylADRIbQBjF1c/ZhASw=;
-	h=From:To:Cc:In-Reply-To:References:Subject:Date;
-	b=h4FefPg/tCKfPxSNxbyzPRZaXt1/xvRCcjqzNiVIlnWnpX2M6KY8sfo+UcynUXX0f
-	 3UVQI7oIKdgTP9qeDN1bCi759hX4PmzikSt/fGtYGAxEQ8wYmneKz7WGwhgTa7gUQa
-	 BL3YjPD/sxdR1PLFV8U/ZzJLYQiong/qcZNQlxoSNUTB1E9qBUAt5585VTHKuYCsub
-	 MWBY+MKhM7NRdvusgjVsuB0A+5tAqcLYvvdzDwQlb0F7z9+eHmmKlX1stdNFqA4+L5
-	 GkFM1vM0bESYfsSH0wWbrRMLW6a41afoWRHCOeDnjepj2aAUzZq3GKvNtm0OZPXkNG
-	 dUElBpUJoIBsA==
-From: Manivannan Sadhasivam <mani@kernel.org>
-To: Sreeraj S Kurup <sreekuttan2156239@gmail.com>
-Cc: angelogioacchino.delregno@collabora.com, bhelgaas@google.com, 
- kwilczynski@kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, 
- linux-pci@vger.kernel.org, lpieralisi@kernel.org, matthias.bgg@gmail.com, 
- robh@kernel.org, ryder.lee@mediatek.com
-In-Reply-To: <20261028113453.2599-1-sreekuttan2156239@gmail.com>
-References: <20261028113453.2599-1-sreekuttan2156239@gmail.com>
-Subject: Re: [PATCH v6] PCI: mediatek: Fix integer truncation and handle
- oversized resources
-Message-Id: <179389361906.20463.1092137538074974205.b4-ty@b4>
-Date: Thu, 05 Nov 2026 21:16:59 +0530
+	id 1xP08p-00000009Yzw-08Ij;
+	Thu, 05 Nov 2026 16:16:44 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1793895403; x=1825431403;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=BkaWXWS96NrFgGNkwhoCJWLY7qJ4X8CCDmsOslperL0=;
+  b=XPgBRseljxXSs2BBm9hhud4jXCu4lyCDyBczvEg5bm+iqJaZg3IlnvBt
+   KsfVSjLQtETzQbWTYSxbZoUBFSNePco+pLruUUnsvza05zrf23vkGGDOn
+   7UUr1wKKpB8UTqwc/lrB1rpj+FCyFofs03RIT/jmHwPHFBOzOelNeJH+z
+   TYMI4CajnAlg/v6c7zphnc242JRW8t2bM9+1pfzFNXIx3Y2TK0M1DdIQq
+   pblLYAYytrAEi27T7MxMnxvKGwy97gtUCp84rfcGpvQQakQ/5kD2jbKcr
+   KF+n122Ya5T4nsm7nO9ppwi63ibTEUrO7Y91X7jbB5DAcYzkhK8PIkpQh
+   A==;
+X-CSE-ConnectionGUID: 8PRN/9zLRiyrLjNyVKlr0w==
+X-CSE-MsgGUID: B3wxlW/gRDyXPs2FQ0XWwg==
+X-IronPort-AV: E=McAfee;i="6800,10657,11957"; a="2568144"
+X-IronPort-AV: E=Sophos;i="6.27,197,1787036400"; 
+   d="scan'208";a="2568144"
+Received: from fmviesa008.fm.intel.com ([10.60.135.148])
+  by fmvoesa103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 05 Nov 2026 08:16:41 -0800
+X-CSE-ConnectionGUID: leBebQCuSFeL56NOhLkwvg==
+X-CSE-MsgGUID: YHmuBu+/RLGamxnWF5zYow==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.27,197,1787036400"; 
+   d="scan'208";a="7358773"
+Received: from amilburn-desk.amilburn-desk (HELO localhost) ([10.245.244.144])
+  by smtpauth.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 05 Nov 2026 08:16:28 -0800
+Date: Thu, 5 Nov 2026 18:16:26 +0200
+From: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+To: Thierry Reding <thierry.reding@kernel.org>
+Cc: Krzysztof Kozlowski <krzk@kernel.org>, Frank.Li@oss.nxp.com,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	Jiri Slaby <jirislaby@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Russell King <linux@armlinux.org.uk>,
+	Richard Genoud <richard.genoud@bootlin.com>,
+	Nicolas Ferre <nicolas.ferre@microchip.com>,
+	Alexandre Belloni <alexandre.belloni@bootlin.com>,
+	Claudiu Beznea <claudiu.beznea@tuxon.dev>,
+	Frank Li <Frank.Li@nxp.com>, Sascha Hauer <s.hauer@pengutronix.de>,
+	Pengutronix Kernel Team <kernel@pengutronix.de>,
+	Fabio Estevam <festevam@gmail.com>,
+	Peter Griffin <peter.griffin@linaro.org>,
+	Alim Akhtar <alim.akhtar@samsung.com>,
+	Laxman Dewangan <ldewangan@nvidia.com>,
+	Jonathan Hunter <jonathanh@nvidia.com>,
+	Orson Zhai <orsonzhai@gmail.com>,
+	Baolin Wang <baolin.wang@linux.alibaba.com>,
+	Chunyan Zhang <zhang.lyra@gmail.com>,
+	Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+	Alexandre Torgue <alexandre.torgue@foss.st.com>,
+	Cunhao Lu <1579567540@qq.com>, Raul E Rangel <rrangel@chromium.org>,
+	Yenchia Chen <yenchia.chen@mediatek.com>,
+	Zhiyong Tao <zhiyong.tao@mediatek.com>,
+	Carlo Caione <ccaione@baylibre.com>, Moteen Shah <m-shah@ti.com>,
+	Kendall Willis <k-willis@ti.com>,
+	Kartik Rajput <kkartik@nvidia.com>, Fan Wu <fanwu01@zju.edu.cn>,
+	Nicolai Buchwitz <nb@tipi-net.de>,
+	Karl Mehltretter <kmehltretter@gmail.com>,
+	Stefan =?iso-8859-1?Q?D=F6singer?= <stefandoesinger@gmail.com>,
+	Shitalkumar Gandhi <shital.gandhi45@gmail.com>,
+	Peng Fan <peng.fan@nxp.com>, Sherry Sun <sherry.sun@nxp.com>,
+	John Ogness <john.ogness@linutronix.de>,
+	Pan Chuang <panchuang@vivo.com>, Petr Mladek <pmladek@suse.com>,
+	Robin Gong <yibin.gong@nxp.com>,
+	Konrad Dybcio <konrad.dybcio@oss.qualcomm.com>,
+	Stephan Gerhold <stephan.gerhold@linaro.org>,
+	Zhaoyang Yu <2426767509@qq.com>,
+	"Nikola Z. Ivanov" <zlatistiv@gmail.com>,
+	Haoxiang Li <haoxiang_li2024@163.com>,
+	"Mike Rapoport (Microsoft)" <rppt@kernel.org>,
+	Biju Das <biju.das.jz@bp.renesas.com>,
+	Geert Uytterhoeven <geert+renesas@glider.be>,
+	Myeonghun Pak <mhun512@gmail.com>,
+	Wenhua Lin <Wenhua.Lin@unisoc.com>, Cixi Geng <cixi.geng@linux.dev>,
+	"open list:TTY LAYER AND SERIAL DRIVERS" <linux-kernel@vger.kernel.org>,
+	"open list:TTY LAYER AND SERIAL DRIVERS" <linux-serial@vger.kernel.org>,
+	"moderated list:ARM/Mediatek SoC support" <linux-arm-kernel@lists.infradead.org>,
+	"moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>,
+	"open list:ARM/FREESCALE IMX / MXC / LAYERSCAPE ARM ARCHIT..." <imx@lists.linux.dev>,
+	"open list:ARM/QUALCOMM MAILING LIST" <linux-arm-msm@vger.kernel.org>,
+	"open list:ARM/SAMSUNG S3C, S5P AND EXYNOS ARM ARCHITECTURES" <linux-samsung-soc@vger.kernel.org>,
+	"open list:TEGRA ARCHITECTURE SUPPORT" <linux-tegra@vger.kernel.org>,
+	"moderated list:ARM/STM32 ARCHITECTURE" <linux-stm32@st-md-mailman.stormreply.com>,
+	vkoul@kernel.org
+Subject: Re: [PATCH 1/1] tty: serial: use dmaengine_desc_set_callback()
+Message-ID: <auyr2lqlSegIXFnc@ashevche-desk.local>
+References: <20261102175527.3957740-1-Frank.Li@oss.nxp.com>
+ <aux2VKHnVLwq_wzi@orome>
+ <auyQEVmA2KeGu9DL@ashevche-desk.local>
+ <2e12316d-d079-471f-9c29-ef5fb765216a@kernel.org>
+ <auygwakavp_Uk52V@orome>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
-X-Mailer: b4 0.16.0
-X-Developer-Signature: v=1; a=openpgp-sha256; l=362;
- i=manivannan.sadhasivam@oss.qualcomm.com; h=from:subject:message-id;
- bh=/1VoRA0E/iREIYQ2KlRfA9WVvI28uaBTMEbmFin8Rz4=;
- b=owEBbQGS/pANAwAKAVWfEeb+kc71AcsmYgBq7KUBL9pngpeeZERhCqQgGAZZWRNID/qto5z6U
- BAN9sYMiQeJATMEAAEKAB0WIQRnpUMqgUjL2KRYJ5dVnxHm/pHO9QUCauylAQAKCRBVnxHm/pHO
- 9UIRB/0cfs+uBOQN+I4FfZQqp9Y9Zm1HUrlhmtZ4uf7IUrC53DnL/ef1ErkkHDfA9y1Tufx/8w0
- xXZpjOvnOKFIE2WNMa7Ugwsa7oMuB+4p7PbqLEj91JdPfngrBdrOvOSGG9G31tGnJMpL2vO+ejt
- dmQZANpReW00TBYvu8EAE1MHptSsgQdzXFYj0yvWi6hW9it5NedZkzvDgphvEYSi1z4PgJcVk7D
- 1C85TZQ3fYLZYFvCo8zj94mjWtNX4cVXwzS4q9nABWav0YWQRiuwPWhmPWAdR7BR023XV3Fpvk/
- 01AglaQHIMq1hCblhGcj6hHgY2ZBb+uALmbE4YV9WybYywF0
-X-Developer-Key: i=manivannan.sadhasivam@oss.qualcomm.com; a=openpgp;
- fpr=C668AEC3C3188E4C611465E7488550E901166008
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <auygwakavp_Uk52V@orome>
+Organization: Intel Finland Oy - BIC 0357606-4 - c/o Alberga Business Park, 6
+ krs, Bertel Jungin Aukio 5, 02600 Espoo
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20261105_081643_083743_10399B36 
+X-CRM114-Status: GOOD (  28.30  )
+X-Spam-Score: -4.2 (----)
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,25 +142,76 @@ List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-8.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,
-	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
+X-Spam-Status: No, score=-13.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
+	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
+On Thu, Nov 05, 2026 at 04:34:15PM +0100, Thierry Reding wrote:
+> On Thu, Nov 05, 2026 at 03:35:20PM +0100, Krzysztof Kozlowski wrote:
+> > On 05/11/2026 15:17, Andy Shevchenko wrote:
+> > >>> ---
+> > >>>  drivers/tty/serial/8250/8250_dma.c  | 6 ++----
+> > >>>  drivers/tty/serial/8250/8250_mtk.c  | 3 +--
+> > >>>  drivers/tty/serial/8250/8250_omap.c | 6 ++----
+> > >>>  drivers/tty/serial/amba-pl011.c     | 6 ++----
+> > >>>  drivers/tty/serial/atmel_serial.c   | 6 ++----
+> > >>>  drivers/tty/serial/fsl_lpuart.c     | 6 ++----
+> > >>>  drivers/tty/serial/imx.c            | 6 ++----
+> > >>>  drivers/tty/serial/msm_serial.c     | 6 ++----
+> > >>>  drivers/tty/serial/mxs-auart.c      | 6 ++----
+> > >>>  drivers/tty/serial/pch_uart.c       | 6 ++----
+> > >>>  drivers/tty/serial/samsung_tty.c    | 6 ++----
+> > >>>  drivers/tty/serial/serial-tegra.c   | 6 ++----
+> > >>>  drivers/tty/serial/sh-sci.c         | 9 +++------
+> > >>>  drivers/tty/serial/sprd_serial.c    | 3 +--
+> > >>>  drivers/tty/serial/stm32-usart.c    | 6 ++----
+> > >>>  15 files changed, 29 insertions(+), 58 deletions(-)
+> > >>
+> > >> Reviewed-by: Thierry Reding <treding@nvidia.com>
+> > > 
+> > > Krzysztof, now look at this case. I would argue that this is even less fit than
+> > > # subpart(s) case, because it might imply anything. Again the problem is the
+> > > bundle, and for such a case (when tons of independent changes are bundled in
+> > > the same stuff, *every* Rb tag has to be explained on what has been reviewed!
+> > 
+> > I think this case is obvious - Thierry reviewed this patch and gives Rb
+> > tag, according to reviewer's statement of oversight. I don't see a
+> > problem here or what is questionable.
+> 
+> Correct. I looked at this whole thing and approve of it.
 
-On Wed, 28 Oct 2026 11:34:53 +0000, Sreeraj S Kurup wrote:
-> PCI: mediatek: Fix integer truncation and handle oversized resources
+for this type of bundles it's not obvious.
 
-Applied, thanks!
+> If I review only parts of something at most I'll give an Acked-by.
 
-[1/1] PCI: mediatek: Fix integer truncation and handle oversized resources
-      commit: 0abd664998828adc30df21c1ca052d3a5de910d9
+Which is strange, don't you find it? The review is not an acknowledgement.
+These are two different operations.
 
-Best regards,
+> I don't think I've ever done partial reviews. I don't think you can reasonably do
+> that
+> because if you don't know what other parts of a patch are doing, how can
+> you say that a specific hunk does what it's supposed to.
+> 
+> Patches are an atomic set of changes,
+
+Of course, not always the case. This patch is a bundle of atomic changes
+in a single drop.
+
+> so I don't think it makes sense to review only parts of it. If you can't be
+> bothered to look at the entirety, that's absolutely fine of course, but in
+> that case don't provide a Reviewed-by.
+> 
+> Or, I suppose, you do and then you bear the consequences of lending
+> credibility to something that you haven't looked at or understood.
+
+No, I review *my* part, that I understand and I confirm.
+
 -- 
-மணிவண்ணன் சதாசிவம்
+With Best Regards,
+Andy Shevchenko
 
 
 
