@@ -2,103 +2,98 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 2ECE5606D805
-	for <linux-mediatek@archiver.kernel.org>; Thu,  5 Nov 2026 14:29:18 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 286AC606A331
+	for <linux-mediatek@archiver.kernel.org>; Thu,  5 Nov 2026 14:35:27 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=Mq/7lcIy;
-	dkim=pass (2048-bit key, unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=k43Qo7Lr
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=VePB5gk2;
+	dkim=pass (2048-bit key, unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=Z77aPEYc
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Cc:To:In-Reply-To:References:Message-Id:
-	Content-Type:MIME-Version:Subject:Date:From:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	Content-Transfer-Encoding:Cc:To:Message-Id:Content-Type:MIME-Version:Subject:
+	Date:From:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
 	List-Unsubscribe-Post:List-Owner;
-	bh=e/ChMMTeQfEb3CPDQNx/z+/EfxozOTsC5cPmwjyqKac=; b=Mq/7lcIykjRrgSaIeAxnLlqlzb
-	xO5jqaIB/uNSsIMKvWAby5suGFn6krtKUzAffDUjgc6JDxXLlYg74u0XI5269n8d89bSkw5Fa4mMb
-	JGV0sG/895M2UvpPdfguOLtInDYoF8mvLHr4D51dRTtMd0UdYzJsvNaQ2tWs66dGEpkrIfKMBsV4G
-	5OV/0Twjuqbd1nmH2Pu8pL2P4fsR/DgKk3KAJUPF+B0eFkqbdlT8xn5vfE2rj5x86ER62le7tMrst
-	P/aRzdVsytbBO5Bn6frI6DUetw2McDF9NJkf3QwQNYALiQ/uY4HprJqZBoXtYB8JQ5II3MXTdps3o
-	QyrVAkaw==;
+	bh=3K+RhTssrQEI4YZo9lHsW+NPw4QK2kM7MG++s72az/g=; b=VePB5gk2vBhqxiRWZBVaoKC4sC
+	rqd7MYVCcQTS8RIYjxBd+j9cMnlG7tcoDp4UNWpcJHe1EaoODK74zWbFtejt6hFQomJRa5CtRmNav
+	T4aUq5ATe0uvWzKycQQ4aTLXqxhil5rPy+H/w3GWvVRC/bijOlmhg6aR0vlGOt3LoKz6LCyfL9ARx
+	x4xuD13BlpaFUpQDmTiVvkjS/o2mR/L6dclQwQfUQsiQu8mKXKiibgMEMs5j/aaNwxjAFayOyzBau
+	YxV3zfmJ068b2P4jki2VILQ7QPyvHsa4gN7MVU9IbW9y5beuiuosmPgMp7j/lLJsCPMCkuf1WXIUx
+	/OQRefqQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xOySr-00000009GxG-3XH2;
-	Thu, 05 Nov 2026 14:29:17 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1xOyYo-00000009IRJ-3ZcF;
+	Thu, 05 Nov 2026 14:35:26 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xOySf-00000009GjJ-22LW;
-	Thu, 05 Nov 2026 14:29:05 +0000
+	id 1xOyYm-00000009IQY-1yAN;
+	Thu, 05 Nov 2026 14:35:24 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id 255CE43E6F;
-	Thu,  5 Nov 2026 14:29:05 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id BCF0E601DE;
+	Thu,  5 Nov 2026 14:35:23 +0000 (UTC)
 Authentication-Results: smtp.kernel.org; arc=none smtp.remote-ip=100.80.115.77
 ARC-Seal: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256; cv=none;
-	t=1793888945;
-	b=VOXyyYF8mG/g9gFLPlnG1kGEBr4FVLK/bHWf19NY2OLnFWM2WHSgFmzHDThaymPjHAii
-	 HrSL1JX6Hwkqtvz/PpL9NOSI1mhTY/2zZqJ6HTbl7BB1PL3KLo2B9F2SB20CAa+Sl5f+J
-	 sAUDa32pS9UJZWGp2iNo2KhX48+5LbDA06KrRk1Yvk5XiXoI3JYEKxHYUuxdiOsU0b2z6
-	 b5PjObMKFhkyAFjKWsDd8gOz/nmwUnnK+9N/wdGhQHnjhzZkjZ+LXP5w8+sEr6GCURz2T
-	 DRDy649L5pImJ1aH5g+rlg+/e7DLKKIGKU2fBSFm8beu2i146QjPUFygCmLPoH3anFA==
+	t=1793889323;
+	b=YwJKNiLSvKRJtzEUAFkF91Wl0+3WB8C4kGJ1W9uBXz1vs5Z19UWRzWxRfGeciFRj9tmD
+	 L1TAl14ZDFAKIVTkVV+0/3OGmgCAqP/N5oD9eItMsPmJmD4KHL/FOeB+ewPyejxJKG39p
+	 BV2TWPXv5gdxep4SsRG5pvoopinzHnS9GT/5WGkB3iI3u7T6OEsqUUmvhlAWdg764MkAM
+	 EAxkn5HqA+D9Hdf4gQpWCae1AGXYgygRY5rZrgbttioIfHo8hHQ7TKjWPjIqM4K48nhIL
+	 DmUn4EpGcCt7/u83Clxt7k1vEC5tF9VDEacYJ6aoraXjU7Rq8WDnnAqh0bnzT7V0vag==
 ARC-Message-Signature: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256;
-	c=relaxed/relaxed; t=1793888945;
+	c=relaxed/relaxed; t=1793889323;
 	h=DKIM-Signature:Received:From:Date:Subject:MIME-Version:Content-Type:
-	 Message-Id:References:In-Reply-To:To:Cc:X-Mailer:
-	 X-Developer-Signature:X-Developer-Key:X-Endpoint-Received:
-	 X-Original-From:Reply-To:Content-Transfer-Encoding;
-	bh=e/ChMMTeQfEb3CPDQNx/z+/EfxozOTsC5cPmwjyqKac=;
-	b=Inc0iasj0IZbbPgyIMJfiejGGMqocqDF7JR55PQXqJK/uL/2b2yYT0DLsVnAucKZo7Nv
-	 7dqovLlETjDF7vbguX1mMymgyGiPBqWMyWNpwfPhAfsD3nPbxygClDzmHLG1VUBiLiiYA
-	 /RM4xGfYsauSA35bx+JUOqhoUo871DgUT0xOn+iW2qobHwWZk4I0qVEto4coL//UK8/g/
-	 kV1+XiUcFUTpEj5O/FHdwx11ObFA3wM6IdW81XjJl4V9B3jRkQzrwaFUjAp/Ni75PGGNO
-	 jP9irGw0n9LvY55IJvyh65jXHyVARvgDKtF8bnctR6A+Ah7DHiDClgTblFnopRfRj+Q==
+	 Message-Id:To:Cc:X-Mailer:X-Developer-Signature:X-Developer-Key:
+	 X-Endpoint-Received:X-Original-From:Reply-To:
+	 Content-Transfer-Encoding;
+	bh=3K+RhTssrQEI4YZo9lHsW+NPw4QK2kM7MG++s72az/g=;
+	b=OIk112hfWgWQfcWUiG4vmrpbPwzPEpRC96Wr+cssCKIpHeOoGLWRXzMGvY9h640JBG8n
+	 gv7uHkQ1q3JELrhoXQBghrcJ88bKju4m60aXf+iRA4jFkOrGTrL8UKEd/s7KiT5G+b+4P
+	 9NUL4Mj2abEBQBfBFyV0jBQOxeixl1FUsYH+B1bEa/BqiatiKS/gYc/+DYcMARG8RqMPX
+	 I6In4PzII+dSvTCMVZMhLlRoElhvsiYxFR3n9ZaVupX141Lhm1K9z7Ql3vr1iJtdTQ0Pv
+	 +6yAhDbLXtV1UAlgu1X+rnVAEfXcvgTGxZZcwN/JFhhasBGXVOg/EBZVayevnzUVWYQ==
 ARC-Authentication-Results: i=1; smtp.kernel.org; 
 	arc=none smtp.remote-ip=100.80.115.77
 Received: from lkml.kernel.org (nexus.subspace.kernel.org [100.80.115.77])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.kernel.org (Postfix) with ESMTPS id B520F1F00A17;
-	Thu,  5 Nov 2026 14:29:02 +0000 (UTC)
+	by smtp.kernel.org (Postfix) with ESMTPS id E687F1F000C1;
+	Thu,  5 Nov 2026 14:35:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1793888945;
-	bh=e/ChMMTeQfEb3CPDQNx/z+/EfxozOTsC5cPmwjyqKac=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To;
-	b=k43Qo7LrWLFlQfZ76OkxWrcoa4gUc8RGLGqcUkFWi+zg0nw4Q3wUfKrYByWT2/Bi5
-	 Si/3hIIWLljVdofkUP+VYbhj9zvm3SrdCcXKgCwVzrxeMPOIwsf4NqEmfAkc8pJhYE
-	 7lzvOJHOLKBBrjwWoWNwn7l+sWos0H6Xnc2iQ7d1b7r8vryv8e+Nb+gj/R7bY9Z8/j
-	 gWbE9TAu9aq3OGXAAFGIJYw6O0+NIHP4dV3LJcsPbYO7Z3coO10I7vHvdCPQAh4F1r
-	 xpDsu/7FkogNlYMKOt+D2kLZHXR9xXtlvPQa8iyvcz6CSSQh/xaBImuxYJCsgDAT5+
-	 jGLAWFMIq2fwQ==
+	s=k20260515; t=1793889323;
+	bh=3K+RhTssrQEI4YZo9lHsW+NPw4QK2kM7MG++s72az/g=;
+	h=From:Date:Subject:To:Cc:Reply-To;
+	b=Z77aPEYcMWkAWsUqSnH9UzxatTvmBtjsljekMnAByVogK67hjKbDbOy/0sVLqNMYE
+	 ddTRlmkRBGhQEL8mnqzNIqxEHrjoHTVxu6rT1jeV/4woYFcerXLX+8DsONEPHvSnNf
+	 Srw9yJcR6c+Ft8fkpvFKUDlTVjpWxzM3h8Jixi49cmOMd/2aVZy3zNqn68JQIZcxtd
+	 rXDQWeb8HXgu2G7yZqwkHuYF93IZZj1GPed4D/hglMd4sHX0RDKLgJDuPUFimTinzD
+	 UZ1mw8RAoFcQgm8Z3NnctnrGI490bqKplvwysSQiHR12LpIGf72fcMIYx9NqzcuyoC
+	 ZrfWpmT6lyC8g==
 Received: from nexus.subspace.kernel.org (localhost [IPv6:::1])
-	by lkml.kernel.org (Postfix) with ESMTP id 4372B472BF;
-	Thu,  5 Nov 2026 14:29:02 +0000 (UTC)
+	by lkml.kernel.org (Postfix) with ESMTP id 464C2472B5;
+	Thu,  5 Nov 2026 14:35:22 +0000 (UTC)
 From: Ben Grisdale via B4 Relay <devnull+bengris32.protonmail.ch@kernel.org>
-Date: Thu, 05 Nov 2026 14:28:48 +0000
-Subject: [PATCH v2 3/6] dt-bindings: timer: mediatek,timer: Add MT8163
+Date: Thu, 05 Nov 2026 14:35:22 +0000
+Subject: [PATCH RESEND] drm/mediatek: dsi: Fix handling of long packet
+ reads
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
-Message-Id: <20261105-arm64-initial-support-for-mediatek-mt8163-soc-v2-3-e68d7d428f99@protonmail.ch>
-References: <20261105-arm64-initial-support-for-mediatek-mt8163-soc-v2-0-e68d7d428f99@protonmail.ch>
-In-Reply-To: <20261105-arm64-initial-support-for-mediatek-mt8163-soc-v2-0-e68d7d428f99@protonmail.ch>
-To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
+Message-Id: <20261105-mtk-dsi-long-read-v1-1-0b6d9b67c011@protonmail.ch>
+To: Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
+ Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@gmail.com>, 
+ Simona Vetter <simona@ffwll.ch>, Matthias Brugger <matthias.bgg@gmail.com>, 
  AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Sean Wang <sean.wang@mediatek.com>, Thomas Gleixner <tglx@kernel.org>, 
- Radu Rendec <radu@rendec.net>, Daniel Lezcano <daniel.lezcano@kernel.org>, 
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
- Jiri Slaby <jirislaby@kernel.org>
-Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
- linux-serial@vger.kernel.org, Ben Grisdale <bengris32@protonmail.ch>, 
- Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
+ CK Hu <ck.hu@mediatek.com>, shaoming chen <shaoming.chen@mediatek.com>
+Cc: dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, 
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ stable@vger.kernel.org, Ben Grisdale <bengris32@protonmail.ch>
 X-Mailer: b4 0.15.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1793888941; l=1008;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1793889321; l=1763;
  i=bengris32@protonmail.ch; s=20261018; h=from:subject:message-id;
- bh=dyVoGhC2K4A9ebVKVo2WduqTmMX5amrsOD71wWVM2cs=;
- b=OTStIQccVtbXfsOKoJMQUEM6nzxD0nG6K5+Y5Ody2l1HoHMDW8gTHIuZ23PFPnh8pwfRID2rZ
- qXSU98wrc79AoYUMRQONjXK7f+gient4R1vufxCb/2Fq/ryEZmhG9VI
+ bh=VXV9DuiW9rx/vH2b4BfioyjlslOvRRPzghK8kVYZ1/0=;
+ b=XjMPJTyBrxC8GcQXU4Xc888DUrmAcQ8CQFMmTuLs1KLt6phlxiKfEhGbE+pGWUgA6C+EVwIob
+ yH8TFU7VXmwAcVXJ0pyd2yVg0U+p3LsAvEeE3lNBv338z8Tpq74YB/P
 X-Developer-Key: i=bengris32@protonmail.ch; a=ed25519;
  pk=4ewFRC2yNph/tXokHVzIDlgOA9Hxecf1AlBuD4eOnaU=
 X-Endpoint-Received: by B4 Relay for bengris32@protonmail.ch/20261018 with
@@ -126,30 +121,58 @@ X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 
 From: Ben Grisdale <bengris32@protonmail.ch>
 
-Add a compatible string for the general purpose timer (GPT) on the
-MediaTek MT8163 SoC, which is compatible with the MT6577 timer.
+mtk_dsi_host_transfer() decides where the payload starts in the
+received data based on the byte count returned by mtk_dsi_recv_cnt(),
+treating anything longer than 2 bytes as a long packet.
 
-Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
+This breaks long read responses with a 1 or 2 byte payload: they are
+treated as short packets, so the word count from the packet header is
+copied into rx_buf instead of the payload.
+
+Fix this by checking the packet's data type instead of inferring it
+from the length.
+
+Fixes: 21898816831f ("drm/mediatek: add dsi transfer function")
+Cc: stable@vger.kernel.org
 Signed-off-by: Ben Grisdale <bengris32@protonmail.ch>
 ---
- Documentation/devicetree/bindings/timer/mediatek,timer.yaml | 1 +
- 1 file changed, 1 insertion(+)
+ drivers/gpu/drm/mediatek/mtk_dsi.c | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
 
-diff --git a/Documentation/devicetree/bindings/timer/mediatek,timer.yaml b/Documentation/devicetree/bindings/timer/mediatek,timer.yaml
-index 337580dc77d8..fcf4303e1426 100644
---- a/Documentation/devicetree/bindings/timer/mediatek,timer.yaml
-+++ b/Documentation/devicetree/bindings/timer/mediatek,timer.yaml
-@@ -34,6 +34,7 @@ properties:
-               - mediatek,mt7623-timer
-               - mediatek,mt8127-timer
-               - mediatek,mt8135-timer
-+              - mediatek,mt8163-timer
-               - mediatek,mt8173-timer
-               - mediatek,mt8516-timer
-           - const: mediatek,mt6577-timer
+diff --git a/drivers/gpu/drm/mediatek/mtk_dsi.c b/drivers/gpu/drm/mediatek/mtk_dsi.c
+index f82506e10fd5..de4414b51abb 100644
+--- a/drivers/gpu/drm/mediatek/mtk_dsi.c
++++ b/drivers/gpu/drm/mediatek/mtk_dsi.c
+@@ -165,6 +165,10 @@
+ 	(type == MIPI_DSI_GENERIC_READ_REQUEST_2_PARAM) || \
+ 	(type == MIPI_DSI_DCS_READ))
+ 
++#define MTK_DSI_IS_LONG_RESP(type) \
++	(((type) == MIPI_DSI_RX_GENERIC_LONG_READ_RESPONSE) || \
++	((type) == MIPI_DSI_RX_DCS_LONG_READ_RESPONSE))
++
+ struct mtk_phy_timing {
+ 	u32 lpx;
+ 	u32 da_hs_prepare;
+@@ -1171,7 +1175,7 @@ static ssize_t mtk_dsi_host_transfer(struct mipi_dsi_host *host,
+ 
+ 	recv_cnt = mtk_dsi_recv_cnt(read_data[0], read_data);
+ 
+-	if (recv_cnt > 2)
++	if (MTK_DSI_IS_LONG_RESP(read_data[0]))
+ 		src_addr = &read_data[4];
+ 	else
+ 		src_addr = &read_data[1];
 
+---
+base-commit: 2efb7a11f1aa4d2dc285fe2680cca22cb9f72f64
+change-id: 20261019-mtk-dsi-long-read-45bc8e49d08b
+
+Best regards,
+--
+Ben Grisdale <bengris32@protonmail.ch>
 -- 
-2.56.0
+Ben Grisdale <bengris32@protonmail.ch>
 
 
 
