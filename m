@@ -2,74 +2,73 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 07499606A328
-	for <linux-mediatek@archiver.kernel.org>; Thu,  5 Nov 2026 08:52:28 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 41816606A326
+	for <linux-mediatek@archiver.kernel.org>; Thu,  5 Nov 2026 08:59:27 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=o+NKsLUw;
-	dkim=pass (2048-bit key, unprotected) header.d=collabora.com header.i=@collabora.com header.a=rsa-sha256 header.s=mail header.b=Tjb6TUCQ
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=15h7x0XF;
+	dkim=pass (2048-bit key, unprotected) header.d=collabora.com header.i=@collabora.com header.a=rsa-sha256 header.s=mail header.b=D8hkm7cL
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Unsubscribe-Post:
-	List-Owner; bh=Msd07b8Kgx8v1VWINbHbc0sUGrkBbqikBSOBM45eS30=; b=o+NKsLUw6aglsD
-	+F2oKR8ha+2JowyVBleyjdW7kpyNMvx5447ErwwItOEkX1X/xAbm3qE7K5lVvDA3vADzdQF78ub5Q
-	C+x84jgdo/f13VhMud3hC9zDLd7j+R0aV4ILdYNnVXPK92+SlaZ7Sry3RM63Au03lQmlmzc7T2VLg
-	0i/TkFMNIlIhdaT7kCxfDV3BkFM5dVE4jBAUng2XCTBagJaDd7p3t6to8rSZolgFwXSqw0/0Txyyi
-	q/QZNZZyJYEJm+5uU7/Ye21zRiDIdxhB93Ndtw4YEYHjl701O40PTYko64AUGxrmqkFYZY54e+edo
-	3S5L6TnFFdpzIYIMKwgQ==;
+	List-Owner; bh=bBn1ykyRQWqMly5VMYEBKX4QjwJ5XVSM4rfTKbZt6Os=; b=15h7x0XFcLn/fC
+	Jk+Wa54YVppmZxA1P9+kDLcy5r1YVblronTRBsAH2D9Jk8RrJi8THFcR5DHJR95HCCMiqiAzaXreg
+	cqDXQfpDFc5kN4avxa/FUk63OWBYFhggTgObsXSUjyXI9MhR78P4NBIpQ4rmPZT4De6/lHOQxXV7w
+	bTqq0LzsuJcpAumbsi0tpV2K4PThhMQOwG3PYl67K9NYI/VtTcD9NvNCgDsm5TWaunc6mTmZRIocJ
+	X4uFKjQuH1LbO8sgW3fYekejjLmSF3vpCzLBNJvydH81+MQq5sk1ikM9pjZ1WLaCFKP/DY3ONnE/d
+	eOYHsochuALzsc+rxdzw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xOtCt-00000008CfQ-361T;
-	Thu, 05 Nov 2026 08:52:27 +0000
+	id 1xOtJd-00000008DvH-3yqN;
+	Thu, 05 Nov 2026 08:59:25 +0000
 Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xOtCp-00000008CdJ-0mXX;
-	Thu, 05 Nov 2026 08:52:25 +0000
+	id 1xOtJb-00000008Dtz-1PVt;
+	Thu, 05 Nov 2026 08:59:25 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1793868740;
-	bh=zF4UneQYBw/Lw+DtqeKovavXzEG4vgp4Z2EEg+Ep6uw=;
+	s=mail; t=1793869160;
+	bh=ZKaZFFHipOBBEL4aN3JZCurDbr471IQ5mAHx+yt6YDI=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=Tjb6TUCQv7G3DF8S0DUoHTXD4RBLtwXZXUNLb8OZDjnopzJw1gVPlztewE6DXF3UA
-	 dyYleUyOOVLdxnw3YgsEVOFFUzqqlU8pz0IVngl7hqrT6UCw9vq3bo7l+yOZ+mfoMw
-	 fxYbeEZrIoh+PAIOuOz0Fdyn+RrUnUNGwIaG/D64yZF/wy+7o2joauYl/br2M2dei5
-	 pLEaRu/7XZG+xgenRXc2Fy9VZWkEyNTqTrrT4+K7MSNJyKymyHP6R3L07BXa736XpT
-	 EayyMhup1elnmA0avhgBmDdRSYj+qe2eEMJqDyEJxRaEfZaBSPtx8BqrlG9/1Lv+rK
-	 pU5dKp5/Xy5VA==
+	b=D8hkm7cLJ7S+YmF4PZLUoJwECskt1Lx2wBGPwMxKGB7U+y+B1ib+bRRjrhTYsxFfw
+	 uIHzv5kGUcdqzY7GQvciwIRUnjE6E1bjhIAm02/rvqjKZ4cMuSbwVViK78+8ioi4mp
+	 eds24T+OXz4w10VRzgrjCm/MNXaYzxHaTm/CjNuYotXypSNeel73uJThZZWhRkrGHb
+	 zYQghiYqQPaW8FT/Oc+6gAA7+/0J7UQTy9aPUips21sAW2f9qfwXovX73eEfDlXyK2
+	 qEJkPV5RCAnKVk4ouAglPbYCYECNTQKSLvYyyHXgWUEYrEZ4891C0BvrPwQ6SfXsc0
+	 LF7orzWiVgBsQ==
 Received: from [100.64.1.21] (unknown [100.64.1.21])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange x25519)
+	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id D64B117E05D6;
-	Thu, 05 Nov 2026 09:52:19 +0100 (CET)
-Message-ID: <f21d912a-48ea-4f0d-bab4-526e617f1769@collabora.com>
-Date: Thu, 5 Nov 2026 09:52:19 +0100
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 50DF617E05D6;
+	Thu, 05 Nov 2026 09:59:19 +0100 (CET)
+Message-ID: <bff71c8f-9ea0-45a9-96ed-e66fc0896f3f@collabora.com>
+Date: Thu, 5 Nov 2026 09:59:18 +0100
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 0/4] pmdomain: mediatek: Enable the GPU timestamp
- counter on MT8188
-To: =?UTF-8?B?TWljaGHFgiBLb3BlxIc=?= <michal@nozomi.space>,
- =?UTF-8?Q?Adri=C3=A1n_Larumbe?= <adrian.larumbe@collabora.com>,
- Boris Brezillon <boris.brezillon@collabora.com>,
- Daniel Stone <daniel.stone@collabora.com>
-Cc: robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
- matthias.bgg@gmail.com, linux-pm@vger.kernel.org,
- devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
- Steven Price <steven.price@arm.com>, ulfh@kernel.org,
- Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
-References: <20261011184755.2058017-1-michal@nozomi.space>
+Subject: Re: [PATCH v9 02/13] drm/mediatek: Implement Display Stream
+ Compression support
+To: Roman Vivchar <rva333@protonmail.com>, chunkuang.hu@kernel.org
+Cc: p.zabel@pengutronix.de, maarten.lankhorst@linux.intel.com,
+ mripard@kernel.org, tzimmermann@suse.de, airlied@gmail.com, simona@ffwll.ch,
+ robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
+ matthias.bgg@gmail.com, jitao.shi@mediatek.com,
+ dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, kernel@collabora.com,
+ justin.yeh@mediatek.com, jason-jh.lin@mediatek.com
+References: <8fcdd2fa-7c9c-4af5-a7b4-45fb881d88a8@protonmail.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Content-Language: en-US
-In-Reply-To: <20261011184755.2058017-1-michal@nozomi.space>
+In-Reply-To: <8fcdd2fa-7c9c-4af5-a7b4-45fb881d88a8@protonmail.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261105_005223_967114_C1006CC1 
-X-CRM114-Status: GOOD (  33.34  )
+X-CRM114-CacheID: sfid-20261105_005923_987688_EE4F0550 
+X-CRM114-Status: GOOD (  27.12  )
 X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -81,133 +80,119 @@ List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-12.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-17.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,
-	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1 autolearn=ham
-	autolearn_force=no version=4.0.1
+	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1
+	autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On 10/11/26 20:47, Michał Kopeć wrote:
-> On MT8188 the GPU timestamp counter reads zero until a register in the
-> MFGCFG block feeds it the SoC system timer, and MFGCFG loses that
-> setting whenever the MFG1 power domain is turned off. As a result, the
-> SYSTEM_TIMESTAMP query and the timestamps written by GPU jobs are always
-> zero, which breaks timestamp queries in userspace drivers.
+On 11/4/26 19:51, Roman Vivchar wrote:
+> Hi Angelo,
 > 
-> v1 restored the register from panfrost through a new mediatek,mfgcfg
-> phandle on the GPU node. As Krzysztof pointed out, the register is lost
-> by the power domain, so v2 restores it there instead: the power
+> I have tested this series with my out-of-tree mt6595 (command mode
+> panel) and mt6768 (video mode) DRM. There's no regressions, but I
+> spotted an issue with kconfig.
+> 
+> On 9/16/26 14:08, AngeloGioacchino Del Regno wrote:
+>> Add a real driver for the Display Stream Compression (DSC) Display
+>> Controller IP, implementing support for DSC v1.1 to v1.2.
+>>
+>> In order to do this, it was necessary to remove the basic DSC IP
+>> bypass setup from mtk_ddp_comp: this functionality is retained in
+>> the new mtk_disp_dsc driver, which checks if DSC was actually
+>> requested by other components (with the only one that currently
+>> supports this being DSI) and, if not, it will set BYPASS mode in
+>> the DSC IP.
+>>
+>> Like before, the BYPASS mode is set before starting the DSC IP,
+>> but unlike before, this is being done in the component start
+>> callback instead of the config one.
+>> Notably, the config callback is called by mtk_crtc always
+>> immediately before the calling start callback, so the order of
+>> register writes is retained.
+>> The only real difference is that now this is being done through
+>> CPU writes instead of CMDQ, but since that's called only once
+>> and since it's just three registers, the performance impact will
+>> not be minimal and not even measurable.
+>>
+>> As anticipated, DSC handling was also introduced in the mtk_dsi
+>> driver: when performing dsi_host_attach, the driver now checks
+>> if the DSI panel adds the DSC configuration structure to the
+>> mipi_dsi_device structure and, if it does, it will store a
+>> pointer in the driver-local mtk_dsi structure's `dsc` member.
+>>
+>> The DSI driver will then check whether the DSC configuration
+>> that comes from the panel is valid (in regard to MediaTek DSI)
+>> and will call the DRM API's DSC helpers to calculate and set
+>> all of the const and RC parameters for the actual DSC setup.
+>>
+>> For the time being, even though the latest MediaTek SoCs do
+>> support DSC v1.2, only DSC v1.1 pre-scr support is implemented
+>> as an initial contribution (which is rather big, and 1.2 would
+>> make it even bigger - but that can anyway be implemented later).
+>>
+>> As a last step for validation of DSC parameters in DSI, a check
+>> for the hdisplay against DSC slice sidth and one for vdisplay
+>> against DSC slice height was added to the mode_valid callback,
+>> making sure that H/V are, as expected, multiples of slice W/H.
+>>
+>> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> 
+> ...
+> 
+>> --- a/drivers/gpu/drm/mediatek/mtk_dsi.c
+>> +++ b/drivers/gpu/drm/mediatek/mtk_dsi.c
+>> @@ -18,6 +18,8 @@
+>>    #include <video/mipi_display.h>
+>>    #include <video/videomode.h>
+>>    
+>> +#include <drm/display/drm_dsc.h>
+>> +#include <drm/display/drm_dsc_helper.h>
+> 
+> ...
+> 
+>>    static void mtk_dsi_config_vdo_timing_per_frame_lp(struct mtk_dsi *dsi)
+>> @@ -565,26 +610,68 @@ static void mtk_dsi_config_vdo_timing_per_line_lp(struct mtk_dsi *dsi)
+>>    	writel(horizontal_frontporch_byte, dsi->regs + DSI_HFP_WC);
+>>    }
+>>    
+>> -static void mtk_dsi_config_vdo_timing(struct mtk_dsi *dsi)
+>> +static int mtk_dsi_set_dsc_params(struct mtk_dsi *dsi)
+>> +{
+>> +	struct drm_dsc_config *dsc = dsi->dsc;
+>> +	struct device *dev = dsi->host.dev;
+>> +	int ret;
+>> +
+>> +	if (dsc->bits_per_pixel & GENMASK(3, 0)) {
+>> +		dev_err(dev, "Fractional bits_per_pixel not supported\n");
+>> +		return -EINVAL;
+>> +	}
+>> +
+>> +	if (dsc->bits_per_component != 8) {
+>> +		dev_err(dev, "%u bits per component is not supported\n",
+>> +			dsc->bits_per_component);
+>> +		return -EINVAL;
+>> +	}
+>> +
+>> +	dsc->simple_422 = false;
+>> +	dsc->convert_rgb = true;
+>> +	dsc->vbr_enable = false;
+>> +
+>> +	drm_dsc_set_const_params(dsc);
+>> +	drm_dsc_set_rc_buf_thresh(dsc);
+>> +
+>> +	ret = drm_dsc_setup_rc_params(dsc, DRM_DSC_1_2_444);
+> 
+> If config doesn't have DRM_DISPLAY_DSC_HELPER (selected by few panels),
+> linking will fail with "error: undefined symbol: drm_dsc_set_const_params".
+> Should MediaTek DRM select it?
+> 
 
-The register is not lost by the power domain, it's lost by the MFGCFG block
-getting unpowered and (all) its registers being reset to the defaults, where
-the defaults happen to be zero... and then the MFGCFG has a bus protection
-block yes (unused for us), but that's at offset 0x20, so if you define that
-as 0x130 it becomes plain wrong :-(
+Yes it should. I already spotted this a bit of time ago and fixed it locally, but
+hey, thanks a lot for that.
 
-Besides, get this:
-
-"MFG_TIMESTAMP_EN" is a register field that doesn't exist... so here are the
-correct definitions ;')
-
-#define MFG_TIMESTAMP		0x130
-#  define TOP_TSVALUEB_EN	BIT(0)
-#  define TIMER_SEL_SOC_TIMER	BIT(1) /* unset: MFG timer, set: SOC timer */
-
-The issue that you're talking about here is not specific to MT8188, but to all
-of the MediaTek SoCs with either Mali or PowerVR that are *not* using the GPUEB
-firmware (so all Chromebooks and Genio boards before MT8196/MT6991/MT8894).
-
-This doesn't belong to the power domain driver, as this is definitely not in any
-way related to powering on the MediaTek Flexible Graphics (:'D) block, so this
-has to be done somewhere else.
-
-That said, let's see what a good solution could be here...
-
-...so, the MFG Block has got a Hardware Timestamp Engine that needs to be kicked
-from the MFG Configuration register area, specifically from the the MFG IP
-Timestamp register.
-
-Once the timestamp engine's timer source is selected (TIMER_SEL) and you made sure
-that the actual timer source is running (eh, first make sure it's running, then
-select), you enable the MFG-Top (Top==Global) TimeStampValueB (TOP_TSVALUEB_EN).
-
-When those registers are set, your Hardware Timestamp Engine is fully ready and
-will start running when frames/commands/etc come, adding a timer time to each of
-the frames/commands/etc (which is why this is a timestamp engine) in a hardware
-assisted manner (and this is why it's a *hardware* timestamp engine).
-
-Now that we know what we're dealing with... we're pretty sure that this is a
-
-H T E  .... (drivers/hte hello)
-
-Documentation/devicetree/bindings/timestamp/hardware-timestamps-common.yaml
-
-Panfrost needs a hardware timestamp engine to do timestamp counting, right?
-Panthor would need the same.
-
-That's not MediaTek specific, because there's a generic hardware timestamp engine
-binding, so I'm sorry but you can go back implementing HTE support in Panfrost and
-Panthor - in a very-very-very generic way - using the HTE APIs.
-
-You'd have to write a (very small, really) HTE driver for the hte-mediatek-mfg.c
-but that's not a big deal, a first version of that driver, which can be upstreamed
-could do just:
-  1. Make sure that the MFG-TOP power domain is on (not the cores domain, just the
-     top one!), which is easy, it's just one line; and
-  2. Set the register fields in MFG_TIMESTAMP to the correct value when Panfrost
-     asks to start or initialize the HTE; and
-  3. UNset TOP_TSVALUEB_EN when going to sleep, or when Panfrost asks to stop/deinit
-     the HTE.
-
-It's a 50 lines driver, nothing more (well, I didn't write anything so I don't know
-but trust me it's going to be around that linecount).
-
-That's how this matter can be resolved.
-
-Btw, thanks for bringing this up, I didn't even realize this was an issue.
-
-Cheers!
+Cheers,
 Angelo
-
-> controller lists MFGCFG in access-controllers and writes the register
-> every time MFG1 has been powered on.
-> 
-> Patch 4 converts mt8188.dtsi from the deprecated per-domain
-> mediatek,infracfg phandles to access-controllers. A devicetree with it
-> needs the driver changes of patches 2 and 3, because older kernels
-> expect exactly one access controller on MT8188 and fail to probe the
-> power controller otherwise. Older devicetrees keep working with the new
-> driver, without the timestamp.
-> 
-> MT8370 uses the MT8188 power controller and mt8188.dtsi, so it is
-> covered as well.
-> 
-> Tested on the Lenovo Chromebook Duet (MT8188): the timestamp counts at
-> 13 MHz, also after suspend and resume.
-> 
-> Changes in v2:
-> - Restore the register from the MFG1 power domain instead of panfrost,
->    and drop the GPU phandle (Krzysztof).
-> - Drop the panfrost patch, which makes the review comments about error
->    propagation and MT8370 moot.
-> 
-> v1: https://lore.kernel.org/all/20261003200132.866240-1-michal@nozomi.space/
-> 
-> Michał Kopeć (4):
->    dt-bindings: power: mediatek: Add the MT8188 access controllers
->    pmdomain: mediatek: Restore a register after powering a domain on
->    pmdomain: mediatek: mt8188: Enable the GPU timestamp counter
->    arm64: dts: mediatek: mt8188: Use access-controllers in the power
->      controller
-> 
->   .../power/mediatek,power-controller.yaml      | 16 +++++++++++++-
->   arch/arm64/boot/dts/mediatek/mt8188.dtsi      | 22 +------------------
->   drivers/pmdomain/mediatek/mt8188-pm-domains.h | 16 +++++++++++++-
->   drivers/pmdomain/mediatek/mtk-pm-domains.c    | 19 ++++++++++++++++
->   drivers/pmdomain/mediatek/mtk-pm-domains.h    | 15 +++++++++++++
->   5 files changed, 65 insertions(+), 23 deletions(-)
-> 
-
 
