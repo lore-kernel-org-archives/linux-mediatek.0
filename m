@@ -2,72 +2,70 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id E33D0606A32F
-	for <linux-mediatek@archiver.kernel.org>; Thu,  5 Nov 2026 08:24:12 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 6B586606A33E
+	for <linux-mediatek@archiver.kernel.org>; Thu,  5 Nov 2026 08:33:54 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=uQBbk4dm;
-	dkim=pass (2048-bit key, unprotected) header.d=collabora.com header.i=@collabora.com header.a=rsa-sha256 header.s=mail header.b=nDz7CJiN
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=I1fLHiLh;
+	dkim=pass (2048-bit key, unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=eznWUqSh
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Unsubscribe-Post:
-	List-Owner; bh=6+ADUqVtFDrfgQJ3OhV70TKxA4b9WrHMTSHdV9mWIWc=; b=uQBbk4dmzqRMqk
-	LdSWqaWHNCq27D6J7w2NPwJ6/hjxKRKS42/JPInnpyQNXIkzZD6TQoZ/KmFnv4CdXNKHtIuqMD7VT
-	IDdew7krGiQNdEvQJerrivi5lEqmVEZqcSz5EYMCK8v739je2KQOTsBzMFveXM/6LwqelkxK5DAbZ
-	jEhBp43troYgfPwHLGFYlJopaSaybF2q5LJj2DJimxoB3R3cuXN4zSGfYiMCXxs00YthJPvxi7lJC
-	H7TU79tPK+OuJ7kWnUgbtcuwmUuJa9cKIzG/3kVVJ6SGEH/mcZt0kfq2kGFh5zdARSQGZcEKwQE/p
-	OwEprcTERuEPRsaSzaew==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Unsubscribe-Post:List-Owner;
+	bh=iW7H3WHMn25bkmXFoYE2d48O2EiUJdBfmMFknEr+2HA=; b=I1fLHiLhy4+Yp10bMmrakBqErb
+	jHX1kWEsqpgoMxkvuIC15t/PDESyTBeTF4BRrVN8tnzbCLQm+7S8f/2DV3ynHyRWAFGDq/ghmLcaq
+	IzEIb+U+ut4B4Ml+HXBIdcOkJmUtDoSu0MiOMJnAEvaDZ7VRjFy6tVx1600jACmQqcVQTUkT0XDwR
+	WwxQRBM36ik75J90bEb4zMdcXicdtDMfs0psdXFVegpAHh5eqJ1e6a+CXdpevL52UiTx4XHfnTM91
+	y9MuPISfAcnYBbLCCeFSqsw58Rxs7/MPVWoPTSn6dLO0XvcfePzcxENmlIW0366dys/6tdDq9DjMN
+	tRue0QVA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xOslY-0000000890s-2FJ2;
-	Thu, 05 Nov 2026 08:24:12 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1xOsuw-00000008Aee-0VeO;
+	Thu, 05 Nov 2026 08:33:54 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xOslU-00000008909-3Uk4;
-	Thu, 05 Nov 2026 08:24:10 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1793867046;
-	bh=RctHusTE/ZE8d6je51Pq4bj7K1e6qmeDSw38M5NLaVQ=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=nDz7CJiNR0D0Np06ekAx7PhNA/r85Mx7xWEW0Vj82tl82q4NpdUkm+E1cC1TzEiTY
-	 93noRkqJ1HAppXU0XlTsMeRtHa/iia3BMl3YFhHf8GEVPbDbDyRdEWn3MISziq76qf
-	 k8Vs7TtY1samutFJh8KJSaYUpHrI+cD+9fkijoBaU12GP9AVdKC80YCrwrKoXKJad+
-	 gQVO+PbK+agADkozFxSuUB0Wxu4kcnKrYfhxNZfufoFFsLff5INcMGTgcq7qRzr2Nm
-	 etW85kcIC25PvpXZcXI/kFraVgNtnYg+zQXi/tVU6koxKeav7gHgsbxXAQAvr5YEU/
-	 Lxjrw/9LW6tfw==
-Received: from [100.64.1.21] (unknown [100.64.1.21])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id B90AE17E0048;
-	Thu, 05 Nov 2026 09:24:05 +0100 (CET)
-Message-ID: <b627d513-d587-43dd-b555-584b05e7d043@collabora.com>
-Date: Thu, 5 Nov 2026 09:24:05 +0100
+	id 1xOsuu-00000008Ada-1FIZ;
+	Thu, 05 Nov 2026 08:33:52 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by sea.source.kernel.org (Postfix) with ESMTP id F3FEE43825;
+	Thu,  5 Nov 2026 08:33:51 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5B7B61F00919;
+	Thu,  5 Nov 2026 08:33:51 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1793867631;
+	bh=iW7H3WHMn25bkmXFoYE2d48O2EiUJdBfmMFknEr+2HA=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To;
+	b=eznWUqShYl/NC16Y8GIGt3uUMyGUZavnSVc+I4kvjO1zwQF63uuZnfhbQ9aZ3brt9
+	 nprDMllmfL+c+6x8bI4fLaPqO9MPMHFKUXJxjW59zuaMFysEo4FT8x4/a5+RIkE5wX
+	 1GC2f9JV3iBvOyExlE6nnMiwZNBNOLU5qTXvLB8d007ktDTtExxRPehzL7CsYRdUsd
+	 dtiqouD7ZHZPctVjjg7xhGiac1eIfvHYEKHCmQ+IuLira1Vzr1ocFgIQ2nVEgVq6OI
+	 d9a+ZYnrF3OHa9THimvg9EuWlrM456K+sfrFWA9Ro+LT5C9N3544vB+F/VoZn58b4L
+	 tX7WwfqYoCIoA==
+Date: Thu, 5 Nov 2026 09:33:49 +0100
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+To: Zhi-Jun You <hujy652@gmail.com>
+Cc: Felix Fietkau <nbd@nbd.name>, Andrew Lunn <andrew+netdev@lunn.ch>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@kernel.org>,
+	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Sujuan Chen <sujuan.chen@mediatek.com>, netdev@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	Sashiko <sashiko-bot@kernel.org>, stable@vger.kernel.org
+Subject: Re: [PATCH] net: ethernet: mtk_wed: fix double free in
+ mtk_wed_rx_reset
+Message-ID: <auw_bbGdPSe14ScB@lore-desk>
+References: <20261104-double-free-v1-1-efa52326702f@gmail.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 4/4] arm64: dts: mediatek: mt8188: Use
- access-controllers in the power controller
-To: =?UTF-8?B?TWljaGHFgiBLb3BlxIc=?= <michal@nozomi.space>, ulfh@kernel.org
-Cc: robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
- matthias.bgg@gmail.com, linux-pm@vger.kernel.org,
- devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
-References: <20261011184755.2058017-1-michal@nozomi.space>
- <20261011184755.2058017-5-michal@nozomi.space>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-In-Reply-To: <20261011184755.2058017-5-michal@nozomi.space>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261105_002409_091577_3BB63193 
-X-CRM114-Status: UNSURE (   7.50  )
-X-CRM114-Notice: Please train this message.
-X-Spam-Score: -2.1 (--)
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="fvGPRbACKxrQqlPK"
+Content-Disposition: inline
+In-Reply-To: <20261104-double-free-v1-1-efa52326702f@gmail.com>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,29 +76,72 @@ List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-12.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-15.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,
-	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1 autolearn=ham
+	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=ham
 	autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On 10/11/26 20:47, Michał Kopeć wrote:
-> List the blocks that the power controller accesses in access-controllers
-> instead of the deprecated per-domain mediatek,infracfg phandles, and add
-> MFGCFG, which the power controller needs to enable the GPU timestamp
-> counter whenever it powers MFG1 on.
-> 
-> Signed-off-by: Michał Kopeć <michal@nozomi.space>
+--fvGPRbACKxrQqlPK
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
+> mtk_wed_free_rx_buffer already calls mtk_wed_hwrro_free_buffer but
+> mtk_wed_rx_reset calls both subsequently. This would cause double free
+> because dma_free_coherent doesn't set freed desc to NULL.
+>=20
+> Fix this by removing the mtk_wed_hwrro_free_buffer in mtk_wed_rx_reset.
+>=20
+> Compile tested only because I don't own v3 hardware.
+>=20
+> Fixes: 1543b8ff02f0 ("net: ethernet: mtk_wed: add wed 3.0 reset support")
+> Reported-by: Sashiko <sashiko-bot@kernel.org>
+> Link: https://sashiko.dev/#/map/216156
+> Cc: stable@vger.kernel.org
+> Signed-off-by: Zhi-Jun You <hujy652@gmail.com>
 
-....did you instead mean to send
+Reviewed-by: Lorenzo Bianconi <lorenzo@kernel.org>
 
-https://gitlab.collabora.com/mediatek/aiot/linux/-/commit/01c35e0524c8adffb4c19f1005c5d71a347acb3b
+> ---
+>  drivers/net/ethernet/mediatek/mtk_wed.c | 1 -
+>  1 file changed, 1 deletion(-)
+>=20
+> diff --git a/drivers/net/ethernet/mediatek/mtk_wed.c b/drivers/net/ethern=
+et/mediatek/mtk_wed.c
+> index f40ac5794341..5e9674c9e63a 100644
+> --- a/drivers/net/ethernet/mediatek/mtk_wed.c
+> +++ b/drivers/net/ethernet/mediatek/mtk_wed.c
+> @@ -1723,7 +1723,6 @@ mtk_wed_rx_reset(struct mtk_wed_device *dev)
+>  				   false);
+>  	}
+>  	mtk_wed_free_rx_buffer(dev);
+> -	mtk_wed_hwrro_free_buffer(dev);
+> =20
+>  	return 0;
+>  }
+>=20
+> ---
+> base-commit: 11140c51df12e594d6bf2c8d2af5dec63b0219ac
+> change-id: 20261104-double-free-b6b95c2539c6
+>=20
+> Best regards,
+> -- =20
+> Zhi-Jun You <hujy652@gmail.com>
+>=20
 
-this commit that I forgot to send for a year?
+--fvGPRbACKxrQqlPK
+Content-Type: application/pgp-signature; name=signature.asc
 
-Regards,
-Angelo
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCauw/bQAKCRA6cBh0uS2t
+rCrlAQC7U08r6yWH2MyECLvdMu6gbWP7XteyGKL+5WSDBvEOqgEAsqz7Oi41Rjcu
+KLPvD2yd6ku7X4ocmaGpG91W/jrixAI=
+=1yhj
+-----END PGP SIGNATURE-----
+
+--fvGPRbACKxrQqlPK--
 
