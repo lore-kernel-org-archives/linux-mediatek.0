@@ -2,49 +2,65 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 7F923606D83E
-	for <linux-mediatek@archiver.kernel.org>; Thu,  5 Nov 2026 17:13:13 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 087D0606A331
+	for <linux-mediatek@archiver.kernel.org>; Thu,  5 Nov 2026 17:14:22 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=0IV1btcI;
-	dkim=pass (2048-bit key, unprotected) header.d=bootlin.com header.i=@bootlin.com header.a=rsa-sha256 header.s=dkim header.b=qKk3HxH0
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=IQVBIVII;
+	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=infradead.org header.i=@infradead.org header.a=rsa-sha256 header.s=desiato.20200630 header.b=C4uLx1tn;
+	dkim=pass (2048-bit key, unprotected) header.d=bootlin.com header.i=@bootlin.com header.a=rsa-sha256 header.s=dkim header.b=E1FcOr8Q
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Unsubscribe-Post:List-Owner;
-	bh=3+Md6IS5qsGquLQY5PzCkVhG7iMrdpAy4cpRkavqmhk=; b=0IV1btcIpoUH8/Vx3Zm+BSJwbK
-	q9Wb5YTrCpAkm7qhGmBi6VUeFyBSWZOhEswSAg0zfaBuMhPHE4eiKNo1BV6sW+4g3qBXnoreXavi1
-	u6nM3oUS8pdWDJmMuUpZooCCa4kNLk9DT406I2SvZKwZGgJqeSYcaRrftjfpz4kPcaXHKiblBq6ic
-	IAIbVwGhjSXcVJ63m68tv31GviG8mHQIhdVZ8i54JUa+AzEbhmgs8/n33KTC1lgdfsjX0AC5frizf
-	HrWnllM0hiYYUbZ6A+28ErOmwlyLmlr+Uze76or0Q9rJ69sSDp232oUr2MONrveY2h62Pvaft1efW
-	D+FlLNLQ==;
+	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Unsubscribe-Post:
+	List-Owner; bh=eavNaDX6RIZNrQjZVF94tYLxdb7VwfBrEfcmK23egqg=; b=IQVBIVII9zOlzT
+	xTEZD2KJJjcwuKVA9/DLE6v9JUKg0uLIq+De4sVvFUjjjHudpvkKROhlGL8VXILrDUEPFGD4ZlT0q
+	Jcf9TjX9dZjvP1xZN1vREJOG1Io4IXaosKsWZDa29l4u96sAhQUoR99P3s/aByoSCRiAk1KMPXrys
+	tWw/cK83cynckP6+rgVycCrsvu6ZlRNZMROjQFsTtumNht867kf2ExV+DG0FNUQDLmlDEeMBkw1JQ
+	4671Nuw7Q5Eg+Dp0aPKcsjo6QKCO9xx5QkgBvTI6xgtOgNW88Ifk94pH96gYpH/yKcDgqB2AgO+wW
+	W2IszPxZpgQTCZ7xu9fA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xP11V-00000009ojU-08Gz;
-	Thu, 05 Nov 2026 17:13:13 +0000
-Received: from smtpout-03.galae.net ([185.246.85.4])
+	id 1xP12b-00000009pFG-069b;
+	Thu, 05 Nov 2026 17:14:21 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xP11E-00000009oXg-0ecv
+	id 1xP11R-00000009ohy-0gZ0
+	for linux-mediatek@bombadil.infradead.org;
+	Thu, 05 Nov 2026 17:13:11 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:MIME-Version
+	:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:Sender:Reply-To:
+	Content-Type:Content-ID:Content-Description;
+	bh=eavNaDX6RIZNrQjZVF94tYLxdb7VwfBrEfcmK23egqg=; b=C4uLx1tn+T+sMM3FbkLe/9Yhh6
+	95/a/R535nmmdOqVoZW/lvr4TKbSEhhg28W0TRiJ3V2DDlF3VJGREJx9DaLdYevdNg2czEfUL3LKB
+	4PMj2xPoZDpPHQ1Ha8gIpQnzzXZqb/6I/wle6+tNTW43Ja5XJjVc6S/uLPFFOjri2xzuTugGRFbOd
+	T2p4b834R0llvMt5oUvEw9HhBQTJGbir7MzfsAewkhWQrASLY0fyVtRAAS3wCaQoQ9cERkItZtIsg
+	xz742e1ibdhhZLooYTI6PGKZ8OfFCbZaHGzcEBgeD8s3jPwOI1Utgw25L6QnC87PyTfI8iPOtk72r
+	hu5xPt1Q==;
+Received: from smtpout-03.galae.net ([185.246.85.4])
+	by desiato.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
+	id 1xP11O-00000003JnN-2IPq
 	for linux-mediatek@lists.infradead.org;
-	Thu, 05 Nov 2026 17:13:05 +0000
+	Thu, 05 Nov 2026 17:13:08 +0000
 Received: from smtpout-01.galae.net (smtpout-01.galae.net [212.83.139.233])
-	by smtpout-03.galae.net (Postfix) with ESMTPS id D272F4E4083A;
-	Thu,  5 Nov 2026 17:12:50 +0000 (UTC)
+	by smtpout-03.galae.net (Postfix) with ESMTPS id D77FE4E409D1;
+	Thu,  5 Nov 2026 17:12:57 +0000 (UTC)
 Received: from mail.galae.net (mail.galae.net [212.83.136.155])
-	by smtpout-01.galae.net (Postfix) with ESMTPS id 813085FF43;
-	Thu,  5 Nov 2026 17:12:50 +0000 (UTC)
-Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id B639D10329258;
-	Thu,  5 Nov 2026 18:12:44 +0100 (CET)
+	by smtpout-01.galae.net (Postfix) with ESMTPS id A64505FF43;
+	Thu,  5 Nov 2026 17:12:57 +0000 (UTC)
+Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id 7DEDD10329289;
+	Thu,  5 Nov 2026 18:12:55 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=dkim;
-	t=1793898769; h=from:subject:date:message-id:to:cc:mime-version:
-	 content-transfer-encoding; bh=3+Md6IS5qsGquLQY5PzCkVhG7iMrdpAy4cpRkavqmhk=;
-	b=qKk3HxH09x1pQmKLG+wolNzp5jIkLcU1OiTumONkT/QdWFKInuy9NY/5/zWzCr3y1Fn4i7
-	cN5gtGgw5t6H3yPk08PmHKPF5hLz047oc2Lq9KKGDUzjP/nkNhaZAJ4D8k4go3AjYzNG0H
-	B7v9kGvelImPEikBMrw1DmViLDs4I8mnUWzAkvUPBdEaQJxWdx2C3uixe6bZ8dy8SWFzt8
-	tzG04ciK51dAx0N7q30KFyviB5m5QOEX2kXY9uLMgiegIBMN/PhSjPrWUOrFaLjhGqvbQR
-	YeV0pDw5u+gLyFAdPfq/lU9UY9CRDgqaXUDWthl687/XzX1RO3nZvoat+dlu0Q==
+	t=1793898776; h=from:subject:date:message-id:to:cc:mime-version:
+	 content-transfer-encoding:in-reply-to:references;
+	bh=eavNaDX6RIZNrQjZVF94tYLxdb7VwfBrEfcmK23egqg=;
+	b=E1FcOr8Q7cyVmUeRX5Hkju6/kQttDjE4GnpiEwm3/3VzWvc6Z5FwJE3EhMbshf50fohqON
+	44XGD3I3dwXL3YrSAZqQzFRaJsct9BtxnCgzIPcmt9qzEWoEwRnhwllRbKD0MqTtzSwU9/
+	np9EFGi7XJHbto19Flk1SCpr1ISedQ+H+eQQ1aUmtKbhqA3GD/iWt6HPLnYHSNXtKB8Tir
+	feEqsIIC1WUNIaKs/B7j6je9cXiyMIUvM7IKVPpsK5P2xzV3XsqjmJwRLS0zH44C/VmWyO
+	AIwtas7rthTuzlZFoEqarTHxvdjuTu0FkueYvAlcVfNmccS/cZDld5sgbfFJEg==
 From: Paul Cercueil <paul.cercueil@bootlin.com>
 To: Miquel Raynal <miquel.raynal@bootlin.com>,
 	Richard Weinberger <richard@nod.at>,
@@ -53,25 +69,24 @@ Cc: linux-mtd@lists.infradead.org,
 	linux-kernel@vger.kernel.org,
 	Thomas Petazzoni <thomas.petazzoni@bootlin.com>,
 	Paul Cercueil <paul.cercueil@bootlin.com>,
-	Stefan Agner <stefan@agner.ch>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
 	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	Maxim Levitsky <maximlevitsky@gmail.com>
-Subject: [PATCH 00/12] mtd: Remove #ifdef guards for PM related
-Date: Thu,  5 Nov 2026 18:11:46 +0100
-Message-ID: <20261105171158.399247-1-paul.cercueil@bootlin.com>
+	linux-mediatek@lists.infradead.org
+Subject: [PATCH 06/12] mtd: nand: mtk: Remove #ifdef guards for PM related functions
+Date: Thu,  5 Nov 2026 18:11:52 +0100
+Message-ID: <20261105171158.399247-7-paul.cercueil@bootlin.com>
 X-Mailer: git-send-email 2.47.3
+In-Reply-To: <20261105171158.399247-1-paul.cercueil@bootlin.com>
+References: <20261105171158.399247-1-paul.cercueil@bootlin.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-Last-TLS-Session-Version: TLSv1.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261105_091256_452375_EA144D90 
-X-CRM114-Status: UNSURE (   9.27  )
-X-CRM114-Notice: Please train this message.
-X-Spam-Score: -2.1 (--)
+X-CRM114-CacheID: sfid-20261105_171306_474579_5A22392C 
+X-CRM114-Status: GOOD (  14.96  )
+X-Spam-Score: -0.2 (/)
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,65 +97,65 @@ List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-13.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-18.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,
-	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no
-	version=4.0.1
+	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=ham
+	autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Hi,
+Use the new PM macros for the suspend and resume functions to be
+automatically dropped by the compiler when CONFIG_PM or
+CONFIG_PM_SLEEP are disabled, without having to use #ifdef guards.
 
-This patchset updates the MTD core / NAND core as well as several driver
-to get rid of the #ifdef CONFIG_PM guards.
+This has the advantage of always compiling these functions in,
+independently of any Kconfig option. Thanks to that, bugs and other
+regressions are subsequently easier to catch.
 
-Instead, the code that depends on PM or runtime PM will be
-garbage-collected by the compiler automatically if this config option is
-not set.
-
-The rationale behind this change is that in general conditionally
-compiled code is a bad choice, as code behind a rarely-used config can
-get broken without anybody noticing.
-
-Cheers,
--Paul
-
-Paul Cercueil (12):
-  mtd: Remove #ifdef guards for PM related functions
-  mtd: rawnand: vf610: Remove #ifdef guards for PM related functions
-  mtd: spear_smi: Remove #ifdef guards for PM related functions
-  mtd: physmap: Remove #ifdef guards for PM related functions
-  mtd: maps: pxa2xx: Remove #ifdef guards for PM related functions
-  mtd: nand: mtk: Remove #ifdef guards for PM related functions
-  mtd: rawnand: fsmc: Remove #ifdef guards for PM related functions
-  mtd: rawnand: hisi504: Remove #ifdef guards for PM related functions
-  mtd: rawnand: mtk: Remove #ifdef guards for PM related functions
-  mtd: rawnand: omap_elm: Remove #ifdef guards for PM related functions
-  mtd: rawnand: r852: Remove #ifdef guards for PM related functions
-  mtd: rawnand: txx9ndfmc: Remove #ifdef guards for PM related functions
-
- drivers/mtd/devices/spear_smi.c     |  6 ++----
- drivers/mtd/maps/physmap-core.c     |  6 +-----
- drivers/mtd/maps/pxa2xx-flash.c     |  6 +-----
- drivers/mtd/mtdcore.c               | 10 ++--------
- drivers/mtd/nand/ecc-mtk.c          |  8 ++------
- drivers/mtd/nand/raw/fsmc_nand.c    |  6 ++----
- drivers/mtd/nand/raw/hisi504_nand.c |  7 +++----
- drivers/mtd/nand/raw/mtk_nand.c     |  8 ++------
- drivers/mtd/nand/raw/omap_elm.c     |  6 ++----
- drivers/mtd/nand/raw/r852.c         |  6 ++----
- drivers/mtd/nand/raw/txx9ndfmc.c    |  6 +-----
- drivers/mtd/nand/raw/vf610_nfc.c    |  6 ++----
- 12 files changed, 22 insertions(+), 59 deletions(-)
-
-Cc: Stefan Agner <stefan@agner.ch>
+Signed-off-by: Paul Cercueil <paul.cercueil@bootlin.com>
+---
 Cc: Matthias Brugger <matthias.bgg@gmail.com>
 Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Cc: linux-arm-kernel@lists.infradead.org
 Cc: linux-mediatek@lists.infradead.org
-Cc: Maxim Levitsky <maximlevitsky@gmail.com>
 
+ drivers/mtd/nand/ecc-mtk.c | 8 ++------
+ 1 file changed, 2 insertions(+), 6 deletions(-)
+
+diff --git a/drivers/mtd/nand/ecc-mtk.c b/drivers/mtd/nand/ecc-mtk.c
+index 66f0985ef7cd..6f210ba935ad 100644
+--- a/drivers/mtd/nand/ecc-mtk.c
++++ b/drivers/mtd/nand/ecc-mtk.c
+@@ -588,7 +588,6 @@ static int mtk_ecc_probe(struct platform_device *pdev)
+ 	return 0;
+ }
+ 
+-#ifdef CONFIG_PM_SLEEP
+ static int mtk_ecc_suspend(struct device *dev)
+ {
+ 	struct mtk_ecc *ecc = dev_get_drvdata(dev);
+@@ -612,8 +611,7 @@ static int mtk_ecc_resume(struct device *dev)
+ 	return 0;
+ }
+ 
+-static SIMPLE_DEV_PM_OPS(mtk_ecc_pm_ops, mtk_ecc_suspend, mtk_ecc_resume);
+-#endif
++static DEFINE_SIMPLE_DEV_PM_OPS(mtk_ecc_pm_ops, mtk_ecc_suspend, mtk_ecc_resume);
+ 
+ MODULE_DEVICE_TABLE(of, mtk_ecc_dt_match);
+ 
+@@ -622,9 +620,7 @@ static struct platform_driver mtk_ecc_driver = {
+ 	.driver = {
+ 		.name  = "mtk-ecc",
+ 		.of_match_table = mtk_ecc_dt_match,
+-#ifdef CONFIG_PM_SLEEP
+-		.pm = &mtk_ecc_pm_ops,
+-#endif
++		.pm = pm_sleep_ptr(&mtk_ecc_pm_ops),
+ 	},
+ };
+ 
 -- 
 2.47.3
 
