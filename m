@@ -2,103 +2,156 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 286AC606A331
-	for <linux-mediatek@archiver.kernel.org>; Thu,  5 Nov 2026 14:35:27 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 5C110606A32E
+	for <linux-mediatek@archiver.kernel.org>; Thu,  5 Nov 2026 14:35:47 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=VePB5gk2;
-	dkim=pass (2048-bit key, unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=Z77aPEYc
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=C4pHy9NA;
+	dkim=pass (2048-bit key, unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=cgj1r83m
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Cc:To:Message-Id:Content-Type:MIME-Version:Subject:
-	Date:From:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Unsubscribe-Post:List-Owner;
-	bh=3K+RhTssrQEI4YZo9lHsW+NPw4QK2kM7MG++s72az/g=; b=VePB5gk2vBhqxiRWZBVaoKC4sC
-	rqd7MYVCcQTS8RIYjxBd+j9cMnlG7tcoDp4UNWpcJHe1EaoODK74zWbFtejt6hFQomJRa5CtRmNav
-	T4aUq5ATe0uvWzKycQQ4aTLXqxhil5rPy+H/w3GWvVRC/bijOlmhg6aR0vlGOt3LoKz6LCyfL9ARx
-	x4xuD13BlpaFUpQDmTiVvkjS/o2mR/L6dclQwQfUQsiQu8mKXKiibgMEMs5j/aaNwxjAFayOyzBau
-	YxV3zfmJ068b2P4jki2VILQ7QPyvHsa4gN7MVU9IbW9y5beuiuosmPgMp7j/lLJsCPMCkuf1WXIUx
-	/OQRefqQ==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Unsubscribe-Post:
+	List-Owner; bh=0r7l62CHaFTMRLxBz/to210M4G41eBZLZnjLmm0cmp0=; b=C4pHy9NA+fYNbq
+	d3dOOqp2jWtL2iDnYQ+UgBviiWSAEdULMV6gqKXiTsuXZ18UFM/rplTpXKrGw9/giMyca8y9lbFe3
+	LSPbT5Pnkz5MVtytg0m2jIfjMPqMkOw+w3q7leuBWoVT7VO8GWSIF34E0lkrhaB/EtU6bveYw20zM
+	ZreECqAU7ZlBzDMlS8ttOiaSRHJeWjy5ML3jW788nAwLa6wsG3IUpKx4rzTJourCb61TMWZtjSc/o
+	BjmR01waaw1MYphaGC1OzRiO59lDW7dhiEamzJewq202M8RwfJCZz84Jh8/oOLRuw534C8a7su38E
+	yNg+MoIxOByr0rNhBiVA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xOyYo-00000009IRJ-3ZcF;
-	Thu, 05 Nov 2026 14:35:26 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1xOyZ9-00000009IeS-08vH;
+	Thu, 05 Nov 2026 14:35:47 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xOyYm-00000009IQY-1yAN;
-	Thu, 05 Nov 2026 14:35:24 +0000
+	id 1xOyZ3-00000009IaB-1ruE;
+	Thu, 05 Nov 2026 14:35:41 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id BCF0E601DE;
+	by sea.source.kernel.org (Postfix) with ESMTP id 0AFFC43F12;
+	Thu,  5 Nov 2026 14:35:41 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9476C1F0093A;
 	Thu,  5 Nov 2026 14:35:23 +0000 (UTC)
-Authentication-Results: smtp.kernel.org; arc=none smtp.remote-ip=100.80.115.77
-ARC-Seal: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256; cv=none;
-	t=1793889323;
-	b=YwJKNiLSvKRJtzEUAFkF91Wl0+3WB8C4kGJ1W9uBXz1vs5Z19UWRzWxRfGeciFRj9tmD
-	 L1TAl14ZDFAKIVTkVV+0/3OGmgCAqP/N5oD9eItMsPmJmD4KHL/FOeB+ewPyejxJKG39p
-	 BV2TWPXv5gdxep4SsRG5pvoopinzHnS9GT/5WGkB3iI3u7T6OEsqUUmvhlAWdg764MkAM
-	 EAxkn5HqA+D9Hdf4gQpWCae1AGXYgygRY5rZrgbttioIfHo8hHQ7TKjWPjIqM4K48nhIL
-	 DmUn4EpGcCt7/u83Clxt7k1vEC5tF9VDEacYJ6aoraXjU7Rq8WDnnAqh0bnzT7V0vag==
-ARC-Message-Signature: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256;
-	c=relaxed/relaxed; t=1793889323;
-	h=DKIM-Signature:Received:From:Date:Subject:MIME-Version:Content-Type:
-	 Message-Id:To:Cc:X-Mailer:X-Developer-Signature:X-Developer-Key:
-	 X-Endpoint-Received:X-Original-From:Reply-To:
-	 Content-Transfer-Encoding;
-	bh=3K+RhTssrQEI4YZo9lHsW+NPw4QK2kM7MG++s72az/g=;
-	b=OIk112hfWgWQfcWUiG4vmrpbPwzPEpRC96Wr+cssCKIpHeOoGLWRXzMGvY9h640JBG8n
-	 gv7uHkQ1q3JELrhoXQBghrcJ88bKju4m60aXf+iRA4jFkOrGTrL8UKEd/s7KiT5G+b+4P
-	 9NUL4Mj2abEBQBfBFyV0jBQOxeixl1FUsYH+B1bEa/BqiatiKS/gYc/+DYcMARG8RqMPX
-	 I6In4PzII+dSvTCMVZMhLlRoElhvsiYxFR3n9ZaVupX141Lhm1K9z7Ql3vr1iJtdTQ0Pv
-	 +6yAhDbLXtV1UAlgu1X+rnVAEfXcvgTGxZZcwN/JFhhasBGXVOg/EBZVayevnzUVWYQ==
-ARC-Authentication-Results: i=1; smtp.kernel.org; 
-	arc=none smtp.remote-ip=100.80.115.77
-Received: from lkml.kernel.org (nexus.subspace.kernel.org [100.80.115.77])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
-	(No client certificate requested)
-	by smtp.kernel.org (Postfix) with ESMTPS id E687F1F000C1;
-	Thu,  5 Nov 2026 14:35:22 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1793889323;
-	bh=3K+RhTssrQEI4YZo9lHsW+NPw4QK2kM7MG++s72az/g=;
-	h=From:Date:Subject:To:Cc:Reply-To;
-	b=Z77aPEYcMWkAWsUqSnH9UzxatTvmBtjsljekMnAByVogK67hjKbDbOy/0sVLqNMYE
-	 ddTRlmkRBGhQEL8mnqzNIqxEHrjoHTVxu6rT1jeV/4woYFcerXLX+8DsONEPHvSnNf
-	 Srw9yJcR6c+Ft8fkpvFKUDlTVjpWxzM3h8Jixi49cmOMd/2aVZy3zNqn68JQIZcxtd
-	 rXDQWeb8HXgu2G7yZqwkHuYF93IZZj1GPed4D/hglMd4sHX0RDKLgJDuPUFimTinzD
-	 UZ1mw8RAoFcQgm8Z3NnctnrGI490bqKplvwysSQiHR12LpIGf72fcMIYx9NqzcuyoC
-	 ZrfWpmT6lyC8g==
-Received: from nexus.subspace.kernel.org (localhost [IPv6:::1])
-	by lkml.kernel.org (Postfix) with ESMTP id 464C2472B5;
-	Thu,  5 Nov 2026 14:35:22 +0000 (UTC)
-From: Ben Grisdale via B4 Relay <devnull+bengris32.protonmail.ch@kernel.org>
-Date: Thu, 05 Nov 2026 14:35:22 +0000
-Subject: [PATCH RESEND] drm/mediatek: dsi: Fix handling of long packet
- reads
+	s=k20260515; t=1793889340;
+	bh=0r7l62CHaFTMRLxBz/to210M4G41eBZLZnjLmm0cmp0=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To;
+	b=cgj1r83mYGIdLcLByG0bpU44Vt3oSEDD55lpg/y3f5ddqnfWdhb/Kech0vlPgNMl1
+	 74xxSgd+OK5Qf8rNYALVwNg02gq+O6fzubkCu7jgITeg2/fjs/cXpkY8MLQhIv/Gzs
+	 naVGcOEBXTd4dryVP1yx6Lw0II+7qIowvCb8E2kdap25q4OFII+kOE5YZ5XrSwRVBg
+	 3In6q+c2Ih+51VGvUv2nOkeWklXHlk8WGpUQzJWErb/iTpMqKZ7kkjFAJWwancT87g
+	 SPYrGmzQUmvq+ANrMgGUpTBFdB5XAQZLR9+3vLN5WpeoaPUN1YUaqG8zZMg5TR5o/B
+	 YLuIY1sCMzgkA==
+Message-ID: <2e12316d-d079-471f-9c29-ef5fb765216a@kernel.org>
+Date: Thu, 5 Nov 2026 15:35:20 +0100
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Message-Id: <20261105-mtk-dsi-long-read-v1-1-0b6d9b67c011@protonmail.ch>
-To: Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
- Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@gmail.com>, 
- Simona Vetter <simona@ffwll.ch>, Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- CK Hu <ck.hu@mediatek.com>, shaoming chen <shaoming.chen@mediatek.com>
-Cc: dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, 
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- stable@vger.kernel.org, Ben Grisdale <bengris32@protonmail.ch>
-X-Mailer: b4 0.15.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1793889321; l=1763;
- i=bengris32@protonmail.ch; s=20261018; h=from:subject:message-id;
- bh=VXV9DuiW9rx/vH2b4BfioyjlslOvRRPzghK8kVYZ1/0=;
- b=XjMPJTyBrxC8GcQXU4Xc888DUrmAcQ8CQFMmTuLs1KLt6phlxiKfEhGbE+pGWUgA6C+EVwIob
- yH8TFU7VXmwAcVXJ0pyd2yVg0U+p3LsAvEeE3lNBv338z8Tpq74YB/P
-X-Developer-Key: i=bengris32@protonmail.ch; a=ed25519;
- pk=4ewFRC2yNph/tXokHVzIDlgOA9Hxecf1AlBuD4eOnaU=
-X-Endpoint-Received: by B4 Relay for bengris32@protonmail.ch/20261018 with
- auth_id=1233
-X-Original-From: Ben Grisdale <bengris32@protonmail.ch>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 1/1] tty: serial: use dmaengine_desc_set_callback()
+To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
+ Thierry Reding <thierry.reding@kernel.org>
+Cc: Frank.Li@oss.nxp.com, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Jiri Slaby <jirislaby@kernel.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Russell King <linux@armlinux.org.uk>,
+ Richard Genoud <richard.genoud@bootlin.com>,
+ Nicolas Ferre <nicolas.ferre@microchip.com>,
+ Alexandre Belloni <alexandre.belloni@bootlin.com>,
+ Claudiu Beznea <claudiu.beznea@tuxon.dev>, Frank Li <Frank.Li@nxp.com>,
+ Sascha Hauer <s.hauer@pengutronix.de>,
+ Pengutronix Kernel Team <kernel@pengutronix.de>,
+ Fabio Estevam <festevam@gmail.com>, Peter Griffin
+ <peter.griffin@linaro.org>, Alim Akhtar <alim.akhtar@samsung.com>,
+ Laxman Dewangan <ldewangan@nvidia.com>,
+ Jonathan Hunter <jonathanh@nvidia.com>, Orson Zhai <orsonzhai@gmail.com>,
+ Baolin Wang <baolin.wang@linux.alibaba.com>,
+ Chunyan Zhang <zhang.lyra@gmail.com>,
+ Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+ Alexandre Torgue <alexandre.torgue@foss.st.com>,
+ Cunhao Lu <1579567540@qq.com>, Raul E Rangel <rrangel@chromium.org>,
+ Yenchia Chen <yenchia.chen@mediatek.com>,
+ Zhiyong Tao <zhiyong.tao@mediatek.com>, Carlo Caione <ccaione@baylibre.com>,
+ Moteen Shah <m-shah@ti.com>, Kendall Willis <k-willis@ti.com>,
+ Kartik Rajput <kkartik@nvidia.com>, Fan Wu <fanwu01@zju.edu.cn>,
+ Nicolai Buchwitz <nb@tipi-net.de>, Karl Mehltretter
+ <kmehltretter@gmail.com>, =?UTF-8?Q?Stefan_D=C3=B6singer?=
+ <stefandoesinger@gmail.com>, Shitalkumar Gandhi <shital.gandhi45@gmail.com>,
+ Peng Fan <peng.fan@nxp.com>, Sherry Sun <sherry.sun@nxp.com>,
+ John Ogness <john.ogness@linutronix.de>, Pan Chuang <panchuang@vivo.com>,
+ Petr Mladek <pmladek@suse.com>, Robin Gong <yibin.gong@nxp.com>,
+ Konrad Dybcio <konrad.dybcio@oss.qualcomm.com>,
+ Stephan Gerhold <stephan.gerhold@linaro.org>, Zhaoyang Yu
+ <2426767509@qq.com>, "Nikola Z. Ivanov" <zlatistiv@gmail.com>,
+ Haoxiang Li <haoxiang_li2024@163.com>,
+ "Mike Rapoport (Microsoft)" <rppt@kernel.org>,
+ Biju Das <biju.das.jz@bp.renesas.com>,
+ Geert Uytterhoeven <geert+renesas@glider.be>,
+ Myeonghun Pak <mhun512@gmail.com>, Wenhua Lin <Wenhua.Lin@unisoc.com>,
+ Cixi Geng <cixi.geng@linux.dev>,
+ "open list:TTY LAYER AND SERIAL DRIVERS" <linux-kernel@vger.kernel.org>,
+ "open list:TTY LAYER AND SERIAL DRIVERS" <linux-serial@vger.kernel.org>,
+ "moderated list:ARM/Mediatek SoC support"
+ <linux-arm-kernel@lists.infradead.org>,
+ "moderated list:ARM/Mediatek SoC support"
+ <linux-mediatek@lists.infradead.org>,
+ "open list:ARM/FREESCALE IMX / MXC / LAYERSCAPE ARM ARCHIT..."
+ <imx@lists.linux.dev>,
+ "open list:ARM/QUALCOMM MAILING LIST" <linux-arm-msm@vger.kernel.org>,
+ "open list:ARM/SAMSUNG S3C, S5P AND EXYNOS ARM ARCHITECTURES"
+ <linux-samsung-soc@vger.kernel.org>,
+ "open list:TEGRA ARCHITECTURE SUPPORT" <linux-tegra@vger.kernel.org>,
+ "moderated list:ARM/STM32 ARCHITECTURE"
+ <linux-stm32@st-md-mailman.stormreply.com>, vkoul@kernel.org
+References: <20261102175527.3957740-1-Frank.Li@oss.nxp.com>
+ <aux2VKHnVLwq_wzi@orome> <auyQEVmA2KeGu9DL@ashevche-desk.local>
+From: Krzysztof Kozlowski <krzk@kernel.org>
+Content-Language: en-US
+Autocrypt: addr=krzk@kernel.org; keydata=
+ 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
+In-Reply-To: <auyQEVmA2KeGu9DL@ashevche-desk.local>
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -109,70 +162,46 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Reply-To: bengris32@protonmail.ch
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-17.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,
-	FREEMAIL_REPLYTO_END_DIGIT,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
+	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1
+	autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-From: Ben Grisdale <bengris32@protonmail.ch>
+On 05/11/2026 15:17, Andy Shevchenko wrote:
+>>> ---
+>>>  drivers/tty/serial/8250/8250_dma.c  | 6 ++----
+>>>  drivers/tty/serial/8250/8250_mtk.c  | 3 +--
+>>>  drivers/tty/serial/8250/8250_omap.c | 6 ++----
+>>>  drivers/tty/serial/amba-pl011.c     | 6 ++----
+>>>  drivers/tty/serial/atmel_serial.c   | 6 ++----
+>>>  drivers/tty/serial/fsl_lpuart.c     | 6 ++----
+>>>  drivers/tty/serial/imx.c            | 6 ++----
+>>>  drivers/tty/serial/msm_serial.c     | 6 ++----
+>>>  drivers/tty/serial/mxs-auart.c      | 6 ++----
+>>>  drivers/tty/serial/pch_uart.c       | 6 ++----
+>>>  drivers/tty/serial/samsung_tty.c    | 6 ++----
+>>>  drivers/tty/serial/serial-tegra.c   | 6 ++----
+>>>  drivers/tty/serial/sh-sci.c         | 9 +++------
+>>>  drivers/tty/serial/sprd_serial.c    | 3 +--
+>>>  drivers/tty/serial/stm32-usart.c    | 6 ++----
+>>>  15 files changed, 29 insertions(+), 58 deletions(-)
+>>
+>> Reviewed-by: Thierry Reding <treding@nvidia.com>
+> 
+> Krzysztof, now look at this case. I would argue that this is even less fit than
+> # subpart(s) case, because it might imply anything. Again the problem is the
+> bundle, and for such a case (when tons of independent changes are bundled in
+> the same stuff, *every* Rb tag has to be explained on what has been reviewed!
 
-mtk_dsi_host_transfer() decides where the payload starts in the
-received data based on the byte count returned by mtk_dsi_recv_cnt(),
-treating anything longer than 2 bytes as a long packet.
+I think this case is obvious - Thierry reviewed this patch and gives Rb
+tag, according to reviewer's statement of oversight. I don't see a
+problem here or what is questionable.
 
-This breaks long read responses with a 1 or 2 byte payload: they are
-treated as short packets, so the word count from the packet header is
-copied into rx_buf instead of the payload.
-
-Fix this by checking the packet's data type instead of inferring it
-from the length.
-
-Fixes: 21898816831f ("drm/mediatek: add dsi transfer function")
-Cc: stable@vger.kernel.org
-Signed-off-by: Ben Grisdale <bengris32@protonmail.ch>
----
- drivers/gpu/drm/mediatek/mtk_dsi.c | 6 +++++-
- 1 file changed, 5 insertions(+), 1 deletion(-)
-
-diff --git a/drivers/gpu/drm/mediatek/mtk_dsi.c b/drivers/gpu/drm/mediatek/mtk_dsi.c
-index f82506e10fd5..de4414b51abb 100644
---- a/drivers/gpu/drm/mediatek/mtk_dsi.c
-+++ b/drivers/gpu/drm/mediatek/mtk_dsi.c
-@@ -165,6 +165,10 @@
- 	(type == MIPI_DSI_GENERIC_READ_REQUEST_2_PARAM) || \
- 	(type == MIPI_DSI_DCS_READ))
- 
-+#define MTK_DSI_IS_LONG_RESP(type) \
-+	(((type) == MIPI_DSI_RX_GENERIC_LONG_READ_RESPONSE) || \
-+	((type) == MIPI_DSI_RX_DCS_LONG_READ_RESPONSE))
-+
- struct mtk_phy_timing {
- 	u32 lpx;
- 	u32 da_hs_prepare;
-@@ -1171,7 +1175,7 @@ static ssize_t mtk_dsi_host_transfer(struct mipi_dsi_host *host,
- 
- 	recv_cnt = mtk_dsi_recv_cnt(read_data[0], read_data);
- 
--	if (recv_cnt > 2)
-+	if (MTK_DSI_IS_LONG_RESP(read_data[0]))
- 		src_addr = &read_data[4];
- 	else
- 		src_addr = &read_data[1];
-
----
-base-commit: 2efb7a11f1aa4d2dc285fe2680cca22cb9f72f64
-change-id: 20261019-mtk-dsi-long-read-45bc8e49d08b
 
 Best regards,
---
-Ben Grisdale <bengris32@protonmail.ch>
--- 
-Ben Grisdale <bengris32@protonmail.ch>
-
-
+Krzysztof
 
