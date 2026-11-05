@@ -2,159 +2,70 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 0F0C2606A326
-	for <linux-mediatek@archiver.kernel.org>; Thu,  5 Nov 2026 09:18:17 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 4CDF3606A31B
+	for <linux-mediatek@archiver.kernel.org>; Thu,  5 Nov 2026 09:24:15 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=h3kCJnLH;
-	dkim=pass (2048-bit key, unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=T1u2fvvt
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=dFgAJ9Jh;
+	dkim=pass (2048-bit key, unprotected) header.d=collabora.com header.i=@collabora.com header.a=rsa-sha256 header.s=mail header.b=QnnzrWAl
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Unsubscribe-Post:
-	List-Owner; bh=TuaCt6SukQ6bODGDz7Zd+Gy0uc45qjswlIfVoLFqS60=; b=h3kCJnLHiq5nJn
-	oqS93xZJdut5dnQOiRFP2l623ge+eqI6nlzd7PKyGhGwBlYrdnjUjzD+mFt+dw6MUYhy4FTvMcpEs
-	QS4VERNNzloGbkKV0YHquHWAe4BCKfb+78C9yiS/LgwoBxLyZzHk6n6dbR+nIkF7IzwjojHyEteWi
-	V2m0+qYMoWRInkQWexVJXAtinOwxM03F5U2uXPdmp/cEmCwXVVd1gUjKAojE6BlHGBH+HTgtLGMD2
-	LmLFAtoMqwxsArK3t8yK4NlRTLaiU0ZId4fJiTmom6cTKuri3LEzBfXH4cx9u/QcZHpJtqoi6XdW4
-	DTpFZcfJd2wj1NitWO5Q==;
+	List-Owner; bh=jHdgjJk6xIGbyst8scCaL6YlxLPI/vAvF2nihFmwgTg=; b=dFgAJ9JhG+BevZ
+	5UXR/mpUZe4ZHzMxwm4unCoYmYkwmre/XWLRiRJKITkmRYw4GNk/g/itHT8roIeEEbcBkd0jStVok
+	nTv1ihqLMddFnnUdSnkvZHT6Lzqd1ldNZ6++2Q86ztiTMoE2/JwPfcJI1kSF+fdLPzm6YZzkS/2pW
+	KMRcN+5s1m+IaGD4z7K7oqoi6PLvGr/CCRf33Fz5MijEDKcAqBt0Por7Hw6ai+EwD3PqIoCLVVAeu
+	kjwoIiILg/EYZgAPlQcVYkZLxOXNDRZRitshr7lKSzk9mYWwHLsZCX94cuH9QZuB2Z8JnDiSOeeq8
+	KIZ86JEy/NCXNx83Kktg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xOtbs-00000008H2A-2o4G;
-	Thu, 05 Nov 2026 09:18:16 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1xOthc-00000008I5L-2tNa;
+	Thu, 05 Nov 2026 09:24:13 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xOtbp-00000008H1v-3XKi;
-	Thu, 05 Nov 2026 09:18:13 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id 8ADBF415B7;
-	Thu,  5 Nov 2026 09:18:13 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7E6681F000C1;
-	Thu,  5 Nov 2026 09:17:52 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1793870293;
-	bh=TuaCt6SukQ6bODGDz7Zd+Gy0uc45qjswlIfVoLFqS60=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To;
-	b=T1u2fvvtHNcKcAZMIkq1+3m30PdsZKbfDUHu0Wr8FJt1DNh0x5/ho9ApMw/ImFgHq
-	 q28APYVDpyRJyFoGTzWveZ6W418/LiQqSURiOhbp4wOz7SuWmABSE2fS7RYuyuzCm5
-	 17PUx2IYsSCDNBW8r011+QQYFtRTVjlDO8RErjCZf9ulWnLMSRtKJG46bz5zX6Xn03
-	 d6PTQchMgAYf1r7mTSNBabUSLxjg62i0W3T0fjMeEwQtI+nM1Q1oIRC6C0zv5EP1N9
-	 8dBlqyNe3vYDKwh77uYhTU50hiysLJIG1ajrp1zcNSYqUtN9gFJE+V6QZ9OwDEJmZj
-	 NQoJVqA16WJoA==
-Message-ID: <c0809cde-fb9d-4f4e-82b6-27e2421af8ed@kernel.org>
-Date: Thu, 5 Nov 2026 10:17:49 +0100
+	id 1xOthV-00000008I2S-163r;
+	Thu, 05 Nov 2026 09:24:10 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1793870643;
+	bh=oFWx0G4SNUn6EJg5WoDciGHt6BRaaIO/akfCKMdbA+E=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=QnnzrWAlzT1lm1vy146BWZIZpxIQXMief68D0NDiyCNQBm6055VQ23pHa/0bHlbjz
+	 VZtZ/k9ikQaSdMUS4DM/XuaWYoDamzsb6U+6kyiGNvv/CwhkS9ivWJ1mjLWK5/dLU5
+	 Vi7s+uYVPG2FFA34K59wxY8jql0DNjjj/Q1DoqueG8apAqu9iPslPTrAdUUWGlGO6K
+	 +UjVxOoZeVDdtLfLhBkudVJT4O5CTjZcqdvTQuBjRnfH79oOukhxLVgOD8s7VYwCM5
+	 rXq4/fpmLFEUfxTmJu+B0p7gSHSF1XfgS+tXG8EiB9knBcTvc0fyLUXDvW5+hioGoO
+	 NXYSCeasyKzNQ==
+Received: from [100.64.1.21] (unknown [100.64.1.21])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id DBDE617E05D6;
+	Thu, 05 Nov 2026 10:24:02 +0100 (CET)
+Message-ID: <21e22f14-38ef-4645-82c5-b8b520d93c48@collabora.com>
+Date: Thu, 5 Nov 2026 10:24:02 +0100
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 1/1] tty: serial: use dmaengine_desc_set_callback()
-To: Geert Uytterhoeven <geert@linux-m68k.org>
-Cc: Frank.Li@oss.nxp.com, Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Jiri Slaby <jirislaby@kernel.org>, Matthias Brugger
- <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Russell King <linux@armlinux.org.uk>,
- Richard Genoud <richard.genoud@bootlin.com>,
- Nicolas Ferre <nicolas.ferre@microchip.com>,
- Alexandre Belloni <alexandre.belloni@bootlin.com>,
- Claudiu Beznea <claudiu.beznea@tuxon.dev>, Frank Li <Frank.Li@nxp.com>,
- Sascha Hauer <s.hauer@pengutronix.de>,
- Pengutronix Kernel Team <kernel@pengutronix.de>,
- Fabio Estevam <festevam@gmail.com>, Peter Griffin
- <peter.griffin@linaro.org>, Alim Akhtar <alim.akhtar@samsung.com>,
- Laxman Dewangan <ldewangan@nvidia.com>,
- Thierry Reding <thierry.reding@kernel.org>,
- Jonathan Hunter <jonathanh@nvidia.com>, Orson Zhai <orsonzhai@gmail.com>,
- Baolin Wang <baolin.wang@linux.alibaba.com>,
- Chunyan Zhang <zhang.lyra@gmail.com>,
- Maxime Coquelin <mcoquelin.stm32@gmail.com>,
- Alexandre Torgue <alexandre.torgue@foss.st.com>,
- Cunhao Lu <1579567540@qq.com>, Raul E Rangel <rrangel@chromium.org>,
- Yenchia Chen <yenchia.chen@mediatek.com>,
- Zhiyong Tao <zhiyong.tao@mediatek.com>, Carlo Caione <ccaione@baylibre.com>,
- Moteen Shah <m-shah@ti.com>, Kendall Willis <k-willis@ti.com>,
- Andy Shevchenko <andriy.shevchenko@linux.intel.com>,
- Kartik Rajput <kkartik@nvidia.com>, Fan Wu <fanwu01@zju.edu.cn>,
- Nicolai Buchwitz <nb@tipi-net.de>, Karl Mehltretter
- <kmehltretter@gmail.com>, =?UTF-8?Q?Stefan_D=C3=B6singer?=
- <stefandoesinger@gmail.com>, Shitalkumar Gandhi <shital.gandhi45@gmail.com>,
- Peng Fan <peng.fan@nxp.com>, Sherry Sun <sherry.sun@nxp.com>,
- John Ogness <john.ogness@linutronix.de>, Pan Chuang <panchuang@vivo.com>,
- Petr Mladek <pmladek@suse.com>, Robin Gong <yibin.gong@nxp.com>,
- Konrad Dybcio <konrad.dybcio@oss.qualcomm.com>,
- Stephan Gerhold <stephan.gerhold@linaro.org>, Zhaoyang Yu
- <2426767509@qq.com>, "Nikola Z. Ivanov" <zlatistiv@gmail.com>,
- Haoxiang Li <haoxiang_li2024@163.com>,
- "Mike Rapoport (Microsoft)" <rppt@kernel.org>,
- Biju Das <biju.das.jz@bp.renesas.com>,
- Geert Uytterhoeven <geert+renesas@glider.be>,
- Myeonghun Pak <mhun512@gmail.com>, Wenhua Lin <Wenhua.Lin@unisoc.com>,
- Cixi Geng <cixi.geng@linux.dev>,
- "open list:TTY LAYER AND SERIAL DRIVERS" <linux-kernel@vger.kernel.org>,
- "open list:TTY LAYER AND SERIAL DRIVERS" <linux-serial@vger.kernel.org>,
- "moderated list:ARM/Mediatek SoC support"
- <linux-arm-kernel@lists.infradead.org>,
- "moderated list:ARM/Mediatek SoC support"
- <linux-mediatek@lists.infradead.org>,
- "open list:ARM/FREESCALE IMX / MXC / LAYERSCAPE ARM ARCHIT..."
- <imx@lists.linux.dev>,
- "open list:ARM/QUALCOMM MAILING LIST" <linux-arm-msm@vger.kernel.org>,
- "open list:ARM/SAMSUNG S3C, S5P AND EXYNOS ARM ARCHITECTURES"
- <linux-samsung-soc@vger.kernel.org>,
- "open list:TEGRA ARCHITECTURE SUPPORT" <linux-tegra@vger.kernel.org>,
- "moderated list:ARM/STM32 ARCHITECTURE"
- <linux-stm32@st-md-mailman.stormreply.com>, vkoul@kernel.org
-References: <20261102175527.3957740-1-Frank.Li@oss.nxp.com>
- <a2d5ea00-bfa1-4883-923d-0a6a7eaa556d@kernel.org>
- <CAMuHMdUHf14DpLfk16qZ6YWtJKm8VDWEFA0Wqk22ysqnUFHoHQ@mail.gmail.com>
-From: Krzysztof Kozlowski <krzk@kernel.org>
+Subject: Re: [PATCH v3] pinctrl: mediatek: Add MT8901/MT8971 ACPI driver
+To: Shubham Paralikar <shubham.paralikar@mediatek.com>,
+ Sean Wang <sean.wang@kernel.org>, Linus Walleij <linusw@kernel.org>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Bartosz Golaszewski <brgl@kernel.org>
+Cc: linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ linux-gpio@vger.kernel.org, linux-arm-kernel@lists.infradead.org
+References: <20261105050535.2551413-1-shubham.paralikar@mediatek.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Content-Language: en-US
-Autocrypt: addr=krzk@kernel.org; keydata=
- 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
-In-Reply-To: <CAMuHMdUHf14DpLfk16qZ6YWtJKm8VDWEFA0Wqk22ysqnUFHoHQ@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8
+In-Reply-To: <20261105050535.2551413-1-shubham.paralikar@mediatek.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20261105_012408_289590_598D214B 
+X-CRM114-Status: GOOD (  28.62  )
+X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -165,29 +76,120 @@ List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-12.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-17.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,
-	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1 autolearn=ham
-	autolearn_force=no version=4.0.1
+	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1
+	autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On 05/11/2026 10:06, Geert Uytterhoeven wrote:
->> Therefore:
->>
->> Reviewed-by: Krzysztof Kozlowski <krzk@kernel.org>
+On 11/5/26 06:05, Shubham Paralikar wrote:
+> MT8901 and MT8971 are booted with ACPI firmware and both describe their
+> GPIO controller with the same _HID, NVDA9221. The existing MediaTek
+> Paris pinctrl drivers only probe from devicetree and pick their SoC
+> data from the match table, so neither SoC gets pin control, GPIOs or
+> EINT interrupts, and two per-SoC drivers could not both bind the one
+> shared HID.
 > 
-> Then please add "# samsung", to make it clear and obvious.
+> Add a single driver, pinctrl-mt89xx, that matches NVDA9221 and selects
+> the MT8901 or MT8971 pin and EINT tables at probe time from the
+> "ChipId" property in the controller's vendor _DSD. That _DSD uses a
+> MediaTek UUID rather than the Device Properties UUID, so
+> device_property_read_u32() cannot read it; pinctrl-mtk-dsd evaluates
+> _DSD and walks the package directly. All four objects are linked into
+> one module, pinctrl-mtk-mt89xx.
+> 
+> Make the shared Paris, common-v2 and EINT code work on ACPI and with
+> these SoCs:
 
-That was irony, the linked thread has fuller discussion, including '#
-marker' part topic. Although should be moved to workflows (to my v2
-patch for submitting-patches discussion), because I still contest the '#
-marker' logic.
+Okay, that's big, and ACPI is definitely welcome, but the implementation can
+be better.
 
-Reviewer statement of oversight does not allow that, as I explained in
-linked thread.
+> 
+> - paris: add mtk_paris_pinctrl_probe_soc() for drivers that pick the
+>    SoC data themselves. ACPI resources have no names, so map the pin
+>    register bases by resource index on ACPI. Register a GPIO range and
+>    request the ACPI _AEI event interrupts, and support
+>    PIN_CONFIG_BIAS_BUS_HOLD.
+> - common-v2: on ACPI, count the EINT banks from the MEM resources and
+>    take the IRQ from the platform device instead of from DT. Add
+>    reg_order[] field tables for SoCs whose per-pin registers sit at a
+>    fixed stride (MT8971), wake-event EINT lists and bus-hold bias
+>    (PU=1, PD=1).
+> - mtk-eint: add a skip list so the init-time mask sweep leaves
+>    firmware-owned EINTs alone (MT8971 EINT215, PROCHOT), and add the
+>    MT8901 debounce table. On SoCs with a wake-event mask (MT8901),
+>    unmask the event for the static event list at init and for EINTs
+>    armed through irq_set_wake(), mask it again when wake is disabled,
+>    and re-apply both on resume.
+> - MT8901: add EINT-only virtual GPIOs 182-208, such as the xHCI wake
+>    events, which firmware describes as GpioInt resources on this
+>    controller. Skip pinmux, direction and pinconf for them, and report
+>    debounce as unsupported on EINTs without debounce hardware.
+> - Add mtk_pinctrl_program_bias_by_gpio() in
+>    include/linux/soc/mediatek/mtk-pinctrl.h so client drivers can
+>    program pad bias by absolute GPIO number.
+> - gpio: declare acpi_gpiochip_request_interrupts() and
+>    acpi_gpiochip_free_interrupts() in linux/gpio/driver.h. MediaTek
+>    EINT provides .to_irq instead of a gpio_irq_chip, so gpiolib does
+>    not request the _AEI interrupts for this controller by itself.
+> 
+> Signed-off-by: Shubham Paralikar <shubham.paralikar@mediatek.com>
+> ---
+>   drivers/pinctrl/mediatek/Kconfig              |   14 +-
+>   drivers/pinctrl/mediatek/Makefile             |    3 +
+>   drivers/pinctrl/mediatek/mtk-eint.c           |  251 +-
+>   drivers/pinctrl/mediatek/mtk-eint.h           |   16 +-
+>   drivers/pinctrl/mediatek/pinctrl-mt8901.c     | 1437 +++++++++++
+>   drivers/pinctrl/mediatek/pinctrl-mt8971.c     |   58 +
+>   drivers/pinctrl/mediatek/pinctrl-mt89xx.c     |  102 +
 
-Best regards,
-Krzysztof
+89xx? No wildcards please.
+
+This can be pinctrl-mtk-acpi maybe?
+
+>   .../pinctrl/mediatek/pinctrl-mtk-common-v2.c  |  252 +-
+>   .../pinctrl/mediatek/pinctrl-mtk-common-v2.h  |   43 +
+>   drivers/pinctrl/mediatek/pinctrl-mtk-dsd.c    |  140 +
+
+DSD is an ACPI table... and this is a parser... I guess this can go in the
+pinctrl-mtk-acpi driver as well?
+
+I think that the best way to go here is:
+
+1. Have a pinctrl-mtk-acpi.c for all the ACPI specific handling, then
+2. MediaTek SoC specific driver should register themselves with NVDA9221 ID
+    and pass their own mtk_pin_soc pointer to pinctrl-mtk-acpi.c, so that the
+    pinctrl-mtk-acpi.c doesn't have an array of mtk_gpio_soc_table.
+
+Imagine what happens if we get 45 SoCs in there.
+
+This is the first and very important feedback that I can give you - everything
+else is about some code style and unnecessary dev_info that has to be turned in
+debug prints instead, but it's useless for me to go and actually do a careful
+review because I think the code will be changing a bit.
+
+>   drivers/pinctrl/mediatek/pinctrl-mtk-dsd.h    |   36 +
+>   drivers/pinctrl/mediatek/pinctrl-mtk-mt8901.h | 2296 +++++++++++++++++
+>   drivers/pinctrl/mediatek/pinctrl-mtk-mt8971.h | 1646 ++++++++++++
+>   drivers/pinctrl/mediatek/pinctrl-paris.c      |  144 +-
+>   drivers/pinctrl/mediatek/pinctrl-paris.h      |    6 +
+>   include/linux/gpio/driver.h                   |    5 +
+>   include/linux/soc/mediatek/mtk-pinctrl.h      |   43 +
+>   17 files changed, 6450 insertions(+), 42 deletions(-)
+>   create mode 100644 drivers/pinctrl/mediatek/pinctrl-mt8901.c
+>   create mode 100644 drivers/pinctrl/mediatek/pinctrl-mt8971.c
+>   create mode 100644 drivers/pinctrl/mediatek/pinctrl-mt89xx.c
+>   create mode 100644 drivers/pinctrl/mediatek/pinctrl-mtk-dsd.c
+>   create mode 100644 drivers/pinctrl/mediatek/pinctrl-mtk-dsd.h
+>   create mode 100644 drivers/pinctrl/mediatek/pinctrl-mtk-mt8901.h
+>   create mode 100644 drivers/pinctrl/mediatek/pinctrl-mtk-mt8971.h
+>   create mode 100644 include/linux/soc/mediatek/mtk-pinctrl.h
+
+soc/mediatek/mtk-pinctrl.h? No, no, no. Unless you strongly justify that, for me
+it's wrong in principle.
+
+Cheers,
+Angelo
 
