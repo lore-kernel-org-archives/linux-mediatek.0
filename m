@@ -2,87 +2,94 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id BB6DF606A31B
-	for <linux-mediatek@archiver.kernel.org>; Thu,  5 Nov 2026 12:25:52 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id E9535606A32D
+	for <linux-mediatek@archiver.kernel.org>; Thu,  5 Nov 2026 12:28:52 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=d9szL/B/;
-	dkim=pass (2048-bit key, unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=RSW+bpRC
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=u4Yd6dLy;
+	dkim=pass (2048-bit key, unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=Yz82hJKk
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=5triMnaj+pld1/ZkHnww/ZTGYlR4kdR37WbQmvo0E+I=; b=d9szL/B/VecN+H9bEi0FhFppcn
-	yeS09JLjVGjlyYzV/x6ttPySWB7QL6/qzphwyaNkIn3SJVjon4NxIc98HJYwkYa9jlzgQCqt+wuhc
-	fMuktbM95u1GDv/z4uY0zGZTLBjSwvaVAMWL8k0xYgMvcePm8lSKsJdmuhIfBRCDVkOgvLufXMkFk
-	ifDLPGS6UKsL2rFL+Zq3Ja+gznID+KUbBwGFEBqwrmEK61NgGOngmxSsmiZB+qglcTbo/7GsC14ar
-	no9Vbx9X2nJbE98g2febZgd5GuCPj5vwG/wH5shBxsb2XC39lWIAi3U2cCHJrpP4Ua6H6wZhygi5Y
-	kWPScgvw==;
+	bh=FsZqO5FR4mq2gQTlk44IBTsOMir2UzDLRvKhXJMYJ80=; b=u4Yd6dLyAUJASpRTsGRLbCLToW
+	gwDPGMyGvB85OXVBXGBmYjjb2VIBjIxmueoopFIG12WymNFGvu+w8fIJsWEHf03HlFuyKOwYIWLdo
+	FAWp/E6/Z5DhKBJAuFBd5U5z7Hwtu4tArPkxkaoOmg+vyi6Ynm+J+29Gkv5tUHLARNR4nFCd40Iq1
+	n8ufvxJ/5HOX99tJXTRLDXX4dSk9CmUps7XRd6a+bABRm2DVZOqwH/sTWu4jyan6iKa3mI7itXde3
+	c5G2fF6OC2Ml8tyDX4fMl7oGGdyKhdjWDtsFZFI0LsOQ51X1ywOL4qm42tRRp/cjbz9V8jQoCnHPo
+	v85Oq4uQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xOwXO-00000008wZY-3UqL;
-	Thu, 05 Nov 2026 12:25:52 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1xOwaK-00000008xTw-2p2R;
+	Thu, 05 Nov 2026 12:28:52 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xOwXD-00000008wUk-02ik;
-	Thu, 05 Nov 2026 12:25:44 +0000
+	id 1xOwaI-00000008xTI-0rUb;
+	Thu, 05 Nov 2026 12:28:50 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with UTF8SMTP id 1EA6160F20;
-	Thu,  5 Nov 2026 12:25:38 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with UTF8SMTPSA id E9BD81F00A1C;
-	Thu,  5 Nov 2026 12:25:36 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 813C043AD5;
+	Thu,  5 Nov 2026 12:28:49 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id AE90C1F00919;
+	Thu,  5 Nov 2026 12:28:48 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1793881537;
-	bh=5triMnaj+pld1/ZkHnww/ZTGYlR4kdR37WbQmvo0E+I=;
+	s=k20260515; t=1793881729;
+	bh=FsZqO5FR4mq2gQTlk44IBTsOMir2UzDLRvKhXJMYJ80=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=RSW+bpRC5/OtERfddmxxD47rtdgY7drS4x1h9FWwypwvgjQQLJG4iTAm6/TUtQUbq
-	 IiZuATXLd3LAxCpuw8R+bMUOvh3lciPaGvevBovd3QKWsW5Y4FEE65Abpe70tcefDW
-	 LNpOF1hD396m8K4hS/U5rd0wiR8PAmrXyC2g6JAfgX8u1ym3pLHliSZ1gqRgSLW+Bc
-	 HX49I5XIf2eGuAaWlxtXXmvjW7Xb6hnAMLMzc+IGOOZWZbsMS43S+7Bz5Kl63ztaNT
-	 pksjjqJMzfTRz7MCNKhc/3WIhoncfEvk6Lo0/zVDsCqyHXoooOlGiXvSfl7gdoDOj4
-	 ig/01HIsQNlIg==
-Date: Thu, 5 Nov 2026 13:25:34 +0100
-From: Bartosz Golaszewski <brgl@kernel.org>
-To: Uwe =?utf-8?Q?Kleine-K=C3=B6nig_=28The_Capable_Hub=29?= <u.kleine-koenig@baylibre.com>
-Cc: Linus Walleij <linusw@kernel.org>, Andy Shevchenko <andy@kernel.org>, 
-	linux-gpio@vger.kernel.org, linux-kernel@vger.kernel.org, Lixu Zhang <lixu.zhang@intel.com>, 
-	Sakari Ailus <sakari.ailus@linux.intel.com>, 
-	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>, Florian Fainelli <florian.fainelli@broadcom.com>, 
-	Eugeniy Paltsev <Eugeniy.Paltsev@synopsys.com>, Frank Li <Frank.Li@nxp.com>, 
-	Sascha Hauer <s.hauer@pengutronix.de>, Pengutronix Kernel Team <kernel@pengutronix.de>, 
-	Fabio Estevam <festevam@gmail.com>, Imre Kaloz <kaloz@kernel.org>, 
-	Conor Dooley <conor.dooley@microchip.com>, Valentina Fernandez <valentina.fernandezalanis@microchip.com>, 
-	Daire McNamara <daire.mcnamara@microchip.com>, Daniel Palmer <daniel@thingy.jp>, 
-	Romain Perier <romain.perier@gmail.com>, Robert Jarzmik <robert.jarzmik@free.fr>, imx@lists.linux.dev, 
-	linux-arm-kernel@lists.infradead.org, linux-riscv@lists.infradead.org, 
-	Hoan Tran <hoan@os.amperecomputing.com>, Alan Borzeszkowski <alan.borzeszkowski@linux.intel.com>, 
-	Mika Westerberg <westeri@kernel.org>, Hans de Goede <hansg@kernel.org>, 
-	Nuno =?utf-8?B?U8Oh?= <nuno.sa@analog.com>, linux-hwmon@vger.kernel.org, 
-	Matti Vaittinen <mazziesaccount@gmail.com>, "Enrico Weigelt, metux IT consult" <info@metux.net>, 
-	Viresh Kumar <vireshk@kernel.org>, virtualization@lists.linux.dev, Yinbo Zhu <zhuyinbo@loongson.cn>, 
-	Thierry Reding <thierry.reding@kernel.org>, Jonathan Hunter <jonathanh@nvidia.com>, 
-	linux-tegra@vger.kernel.org, Geert Uytterhoeven <geert+renesas@glider.be>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Srinivas Neeli <srinivas.neeli@amd.com>, 
-	Michal Simek <michal.simek@amd.com>, linux-aspeed@lists.ozlabs.org, asahi@lists.linux.dev, 
-	linux-mediatek@lists.infradead.org, openbmc@lists.ozlabs.org, linux-omap@vger.kernel.org, 
-	linux-renesas-soc@vger.kernel.org, linux-unisoc@lists.infradead.org, 
-	linux-rockchip@lists.infradead.org, linux-stm32@st-md-mailman.stormreply.com, 
-	Michael Buesch <m@bues.ch>, William Breathitt Gray <wbg@kernel.org>, 
-	Robert Richter <rric@kernel.org>, Andy Shevchenko <andriy.shevchenko@linux.intel.com>, 
-	linux-acpi@vger.kernel.org
-Subject: Re: [PATCH v4 00/23] gpio: Improvements around device-id arrays
-Message-ID: <le5gbua6s2mhhv32di4j77qr2we5z5ngzyzmiemhodmblvjiji@q4wf5tdgrbtv>
-References: <cover.1793097104.git.u.kleine-koenig@baylibre.com>
- <2hfpcbk6r56vvhkqyiex2apl3pinieybad5sd3vkvvabqs3uto@lydt3gin5kxe>
- <auxh9PxpJScFO3i2@monoceros>
+	b=Yz82hJKkMymEJOScjv8sYjss2OQ1kINPiDdkaHg5ad9RyZEWOiGaO7o1lbpp8pQ4e
+	 9epzUzeGty9sRCXEfCTqC0fJFd/C1ie8YzBRyCUTfi3SMPvSHQFrQ9bQAMK8nD9/Kl
+	 myWGH8iuE8WJEibwJzc39kqDQnnaTND68Xynk1OcHrcs7ZIA4JjiJ8NbRuvXOf4gub
+	 c+dgetCSx67SZN1w9wXrmlf5ohPmNlEByvteNCZFdHa2+C65WPzFbhCkmz0/GXWZHr
+	 5XPvRBgsUc9cyKC805nfy5Nxa7Lc6dyz6auCKc3CEq1uAfCdSwc7NkApLxKvWmzHAh
+	 Ni5TNSAsINLPg==
+Date: Thu, 5 Nov 2026 13:28:46 +0100
+From: Thierry Reding <thierry.reding@kernel.org>
+To: Frank.Li@oss.nxp.com
+Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
+	Jiri Slaby <jirislaby@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Russell King <linux@armlinux.org.uk>, 
+	Richard Genoud <richard.genoud@bootlin.com>, Nicolas Ferre <nicolas.ferre@microchip.com>, 
+	Alexandre Belloni <alexandre.belloni@bootlin.com>, Claudiu Beznea <claudiu.beznea@tuxon.dev>, 
+	Frank Li <Frank.Li@nxp.com>, Sascha Hauer <s.hauer@pengutronix.de>, 
+	Pengutronix Kernel Team <kernel@pengutronix.de>, Fabio Estevam <festevam@gmail.com>, 
+	Krzysztof Kozlowski <krzk@kernel.org>, Peter Griffin <peter.griffin@linaro.org>, 
+	Alim Akhtar <alim.akhtar@samsung.com>, Laxman Dewangan <ldewangan@nvidia.com>, 
+	Jonathan Hunter <jonathanh@nvidia.com>, Orson Zhai <orsonzhai@gmail.com>, 
+	Baolin Wang <baolin.wang@linux.alibaba.com>, Chunyan Zhang <zhang.lyra@gmail.com>, 
+	Maxime Coquelin <mcoquelin.stm32@gmail.com>, Alexandre Torgue <alexandre.torgue@foss.st.com>, 
+	Cunhao Lu <1579567540@qq.com>, Raul E Rangel <rrangel@chromium.org>, 
+	Yenchia Chen <yenchia.chen@mediatek.com>, Zhiyong Tao <zhiyong.tao@mediatek.com>, 
+	Carlo Caione <ccaione@baylibre.com>, Moteen Shah <m-shah@ti.com>, Kendall Willis <k-willis@ti.com>, 
+	Andy Shevchenko <andriy.shevchenko@linux.intel.com>, Kartik Rajput <kkartik@nvidia.com>, Fan Wu <fanwu01@zju.edu.cn>, 
+	Nicolai Buchwitz <nb@tipi-net.de>, Karl Mehltretter <kmehltretter@gmail.com>, 
+	Stefan =?utf-8?B?RMO2c2luZ2Vy?= <stefandoesinger@gmail.com>, Shitalkumar Gandhi <shital.gandhi45@gmail.com>, 
+	Peng Fan <peng.fan@nxp.com>, Sherry Sun <sherry.sun@nxp.com>, 
+	John Ogness <john.ogness@linutronix.de>, Pan Chuang <panchuang@vivo.com>, Petr Mladek <pmladek@suse.com>, 
+	Robin Gong <yibin.gong@nxp.com>, Konrad Dybcio <konrad.dybcio@oss.qualcomm.com>, 
+	Stephan Gerhold <stephan.gerhold@linaro.org>, Zhaoyang Yu <2426767509@qq.com>, 
+	"Nikola Z. Ivanov" <zlatistiv@gmail.com>, Haoxiang Li <haoxiang_li2024@163.com>, 
+	"Mike Rapoport (Microsoft)" <rppt@kernel.org>, Biju Das <biju.das.jz@bp.renesas.com>, 
+	Geert Uytterhoeven <geert+renesas@glider.be>, Myeonghun Pak <mhun512@gmail.com>, 
+	Wenhua Lin <Wenhua.Lin@unisoc.com>, Cixi Geng <cixi.geng@linux.dev>, 
+	"open list:TTY LAYER AND SERIAL DRIVERS" <linux-kernel@vger.kernel.org>, 
+	"open list:TTY LAYER AND SERIAL DRIVERS" <linux-serial@vger.kernel.org>, 
+	"moderated list:ARM/Mediatek SoC support" <linux-arm-kernel@lists.infradead.org>, 
+	"moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, 
+	"open list:ARM/FREESCALE IMX / MXC / LAYERSCAPE ARM ARCHIT..." <imx@lists.linux.dev>, 
+	"open list:ARM/QUALCOMM MAILING LIST" <linux-arm-msm@vger.kernel.org>, 
+	"open list:ARM/SAMSUNG S3C, S5P AND EXYNOS ARM ARCHITECTURES" <linux-samsung-soc@vger.kernel.org>, 
+	"open list:TEGRA ARCHITECTURE SUPPORT" <linux-tegra@vger.kernel.org>, 
+	"moderated list:ARM/STM32 ARCHITECTURE" <linux-stm32@st-md-mailman.stormreply.com>, vkoul@kernel.org
+Subject: Re: [PATCH 1/1] tty: serial: use dmaengine_desc_set_callback()
+Message-ID: <aux2VKHnVLwq_wzi@orome>
+References: <20261102175527.3957740-1-Frank.Li@oss.nxp.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="i6ogfjkah26q6ktw"
 Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <auxh9PxpJScFO3i2@monoceros>
+In-Reply-To: <20261102175527.3957740-1-Frank.Li@oss.nxp.com>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -93,24 +100,72 @@ List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-5.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-15.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,
-	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS autolearn=no autolearn_force=no version=4.0.1
+	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=ham
+	autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On Thu, Nov 05, 2026 at 12:06:33PM +0100, Uwe Kleine-König (The Capable Hub) wrote:
-> 
-> Maybe you just need to add `-3` to your workflow? ISTR this should be
-> the default for b4, but it seems if failed to mention the -3 in the git
-> am cmdline.
-> 
-> Should I still resend?
->
 
-No, it's alright. I would have preferred a clean b4 shazam but that
-works too, thanks.
+--i6ogfjkah26q6ktw
+Content-Type: text/plain; protected-headers=v1; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+Subject: Re: [PATCH 1/1] tty: serial: use dmaengine_desc_set_callback()
+MIME-Version: 1.0
 
-Bart
+On Mon, Nov 02, 2026 at 12:54:48PM -0500, Frank.Li@oss.nxp.com wrote:
+> From: Frank Li <Frank.Li@nxp.com>
+>=20
+> Replace open-coded assignments to callback and callback_param fields
+> of struct dma_async_tx_descriptor with calls to the
+> dmaengine_desc_set_callback() helper across serial drivers.
+>=20
+> No functional change intended. Prepare to make struct
+> dma_async_tx_descriptor private to the DMA engine.
+>=20
+> Signed-off-by: Frank Li <Frank.Li@nxp.com>
+> ---
+>  drivers/tty/serial/8250/8250_dma.c  | 6 ++----
+>  drivers/tty/serial/8250/8250_mtk.c  | 3 +--
+>  drivers/tty/serial/8250/8250_omap.c | 6 ++----
+>  drivers/tty/serial/amba-pl011.c     | 6 ++----
+>  drivers/tty/serial/atmel_serial.c   | 6 ++----
+>  drivers/tty/serial/fsl_lpuart.c     | 6 ++----
+>  drivers/tty/serial/imx.c            | 6 ++----
+>  drivers/tty/serial/msm_serial.c     | 6 ++----
+>  drivers/tty/serial/mxs-auart.c      | 6 ++----
+>  drivers/tty/serial/pch_uart.c       | 6 ++----
+>  drivers/tty/serial/samsung_tty.c    | 6 ++----
+>  drivers/tty/serial/serial-tegra.c   | 6 ++----
+>  drivers/tty/serial/sh-sci.c         | 9 +++------
+>  drivers/tty/serial/sprd_serial.c    | 3 +--
+>  drivers/tty/serial/stm32-usart.c    | 6 ++----
+>  15 files changed, 29 insertions(+), 58 deletions(-)
+
+Reviewed-by: Thierry Reding <treding@nvidia.com>
+
+--i6ogfjkah26q6ktw
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAABCgAdFiEEiOrDCAFJzPfAjcif3SOs138+s6EFAmrsdnwACgkQ3SOs138+
+s6FFLRAAsArTl7ZnP2uWe8E8No/HaZXTw2qwzanL18HSrQ99Y5LTIiGMUG2lNlh4
+g4SVAB5ZpAe1Ji8Irltia/BRsUboLVvofPgbGh8AvBrhByWtDx75pNBJGwlxzDsn
+/oYyAQ6U+6BZob6VZ/1hVv5xt6UtjqRjcOQGM/Eebu+IsJ1bXUzcfwOt+p6oJuDe
+bipFPggDf4w54a/AdsicEctD3BZABAPpOkemtHUrKCZ0pq/Qcws/7tPdpV2NU6SD
+p3j35THe6Jr8VUMni10amNN28l476GcajsPWb53gIjQaxKdbNaiJunTLw3lbjuIw
+jH3LKXaKXy0mxXm70YGNdZfOKwsVxEClwBuxV3s+TD6hhCkf6Xi9GizuqgdtqLEZ
+AMAjAOH+7VKVIqAFeKXPlABN6RR7TVhJf1knWwm8FzFmFdfstBFjFIeeSptCQ+To
+r9+rxI4r4O6hD2u6IKFLHYBU4iZVd0x7osDD59Cjkwi1CQgp07bK+WcFtf4rjV+6
+oaROTq/FTtv1JlpaJ/LPiV97e0OxAs4aVGYO/PFsfVDFHPaeJAYdM2ZbwbOyNNZp
+mn8EhmbQatX8t4zSy4bCo46/VdBeOAIJYs+nCZBq/yZrxziIWbjxg6dKPrwre0Co
+iBi6BCt/mumt4uPdViNg3N5fwgBmPT/t1IxjJuOjXCR9B17XeKg=
+=NGc/
+-----END PGP SIGNATURE-----
+
+--i6ogfjkah26q6ktw--
 
