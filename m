@@ -2,109 +2,105 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 142866082BDB
-	for <linux-mediatek@archiver.kernel.org>; Thu,  5 Nov 2026 20:38:47 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id C5EE3606D810
+	for <linux-mediatek@archiver.kernel.org>; Thu,  5 Nov 2026 21:07:43 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=X57niArc;
-	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=infradead.org header.i=@infradead.org header.a=rsa-sha256 header.s=desiato.20200630 header.b=EVhbu+39;
-	dkim=pass (2048-bit key, unprotected) header.d=intel.com header.i=@intel.com header.a=rsa-sha256 header.s=Intel header.b=ABs8s/qj
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=aqmp3cQ4;
+	dkim=pass (2048-bit key, unprotected) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=aa3bXK+z
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Unsubscribe-Post:List-Owner;
-	bh=KxYRMKoqQ5TnAo9ahTf6HCh0udvu+2ZmgUNQu1zf6ms=; b=X57niArcsjkH8RwThtF8Pr88bA
-	rf2AS36hWviYTEn6fu3StJ2lTzl2Pv32CgRqVMjV6GGJA4HBYPvgt1lq/HCJk3OfHQasBr5atUatc
-	HbG1DKlhcJ1cWvCmbzuCVOEC2tUDT+YignqP7qTXT62uaJ2zNdP0YxXe1H0Ihtv8id6cOuOo2fEs3
-	nJY4u5SxSh/CFCJyNc671O0HqLtkq9JZQCl3kuFDyB4imO+PhY3xOdiiHJM8cRQxpmCodM07tMwSg
-	aSp7sr6onnZxgQzb77+VUetedhaD7fd/10EKWDx9kkMWI3+qJ9MCtg8q6NNjSmLLkbBtJeRRyB11/
-	fsqxCCAw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Unsubscribe-Post:
+	List-Owner; bh=GLyW+wsd3C3ATj3CVMuJf8KfUTB7e6UqhqMzErsAQ1g=; b=aqmp3cQ47D/uhe
+	E+Km9wGW2b17aOXV3TCkjGcuilnG5thtAZMEWZkK+RixAu4aX2TU9gSyA6ol1qpAJkMY/w4Pt8pEg
+	bIVNKwA0kkshopg6kA/TJODEAfeSEpTzrbAyYFBkWMMQb/zEY0kiNmSL78fc0MDXIBcPubyJuTFrM
+	KOA7brFu/lLV7FP5HKiRIwxlz1y8P6CwWzh2KaLV9eNVK/u/pADImNxHzF6lyz85OFx7WQlgdTUug
+	I6zxQ4IbKmLf7NQEbga4gFJ3Crrgs8B9X50jhK2o34n2AK9/ZDMo6598nx7GkGfMaF6QdTOaOoKPc
+	TEKe9ZQkFLnz3EdFQlUw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xP3DP-0000000AMJr-2CXO;
-	Thu, 05 Nov 2026 19:33:39 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1xP4gR-0000000AgEu-1MTv;
+	Thu, 05 Nov 2026 21:07:43 +0000
+Received: from mail-ed1-x52b.google.com ([2a00:1450:4864:20::52b])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xP3Cz-0000000AM9W-1jJQ;
-	Thu, 05 Nov 2026 19:33:13 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=In-Reply-To:Content-Type:MIME-Version:
-	References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description;
-	bh=KxYRMKoqQ5TnAo9ahTf6HCh0udvu+2ZmgUNQu1zf6ms=; b=EVhbu+39JxgtY/5calbEIy+avu
-	ZGG53uJ88Z+rsa+MJL9Zq/UYmHYm+k/iPBpZBz7VJXRGA7RzBQJfRY5OkZAB9ujdbJybYYnjQe3Ig
-	i9nCi0EXW4UlG4eG8H1DkWQSA7E5jvXmBcwcPbphJ6opqk982pDEvN8TVFi1o9N1LSKg04H4W+pBF
-	0XRG4Ct8gDuGn4+kNCLRWmrfOjNKkCi4sfZiSdHjcN4X6ZSWJ7OEU61QzuUSIkIcAF+vUq/GF9xnr
-	8gsYmECHqj2cA9T8VlblQvT2m5H0Ts8aCp1rgvYURkjGRbnUmsI/4aBigOE4DysFZQFC0EJ5vx+k7
-	UTqXORUQ==;
-Received: from mgamail.intel.com ([198.175.65.9])
-	by desiato.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xP3Cu-00000003TPX-1EVJ;
-	Thu, 05 Nov 2026 19:33:10 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1793907189; x=1825443189;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=U2hJrtx423sVNdvYtSAVrbMHTJILFCRiIFLpGmwhIKM=;
-  b=ABs8s/qjMOxNLDWFaBVANXENCxn1KFaQO+Fmai4AXeVqqAW1tGmyIMjo
-   WC/6+Obpty2pPDU1h+eiSwtDQAFQxGMTB9jP4yGMsYrxgxKNzZSL0GehV
-   023w4nuK7166yUOkvtqeEYT/CYghRNYxb7PFiRf8oZbkSwHxQVm9PZJHc
-   B07lboQeWD2CAb14jKb246lxf+91ElQHc5yacOe9kWS5Aq9OZOgUZKxtl
-   5mePoY6Zani1fdTHcdsjEXW8jzj/xziTyfycSrAHK9AFfyDYGTzvxPC9H
-   XcZ1mnfIPWn/slDzf0sGExjNqJphc+hvXx08qV29ae4fBAL1p+OSd9ENc
-   A==;
-X-CSE-ConnectionGUID: 5eebm68VTtCKMef5kqMf0A==
-X-CSE-MsgGUID: FYOLL7t4SniSFRVUs7r6sA==
-X-IronPort-AV: E=McAfee;i="6800,10657,11957"; a="2612786"
-X-IronPort-AV: E=Sophos;i="6.27,197,1787036400"; 
-   d="scan'208";a="2612786"
-Received: from fmviesa011.fm.intel.com ([10.60.135.151])
-  by orvoesa101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 05 Nov 2026 11:33:01 -0800
-X-CSE-ConnectionGUID: GZhcWmofSJua3QNT4LoHNg==
-X-CSE-MsgGUID: ndfzCq+qR/y14KywqvrBUw==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.27,197,1787036400"; 
-   d="scan'208";a="8854806"
-Received: from lkp-server01.sh.intel.com (HELO 0caa9d2d175c) ([10.239.97.150])
-  by fmviesa011.fm.intel.com with ESMTP; 05 Nov 2026 11:32:56 -0800
-Received: from kbuild by 0caa9d2d175c with local (Exim 4.98.2)
-	(envelope-from <lkp@intel.com>)
-	id 1xP3Ce-00000000ml8-3B51;
-	Thu, 05 Nov 2026 19:32:52 +0000
-Date: Fri, 6 Nov 2026 03:32:11 +0800
-From: kernel test robot <lkp@intel.com>
-To: Christian Marangi <ansuelsmth@gmail.com>, Andrew Lunn <andrew@lunn.ch>,
-	Heiner Kallweit <hkallweit1@gmail.com>,
-	Russell King <linux@armlinux.org.uk>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@kernel.org>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Daniel Golle <daniel@makrotopia.org>,
-	Qingfang Deng <dqfext@gmail.com>,
-	SkyLake Huang <SkyLake.Huang@mediatek.com>,
+	id 1xP4gL-0000000AgAf-0lE4
+	for linux-mediatek@lists.infradead.org;
+	Thu, 05 Nov 2026 21:07:39 +0000
+Received: by mail-ed1-x52b.google.com with SMTP id 4fb4d7f45d1cf-6b1d8944cb0so182736a12.3
+        for <linux-mediatek@lists.infradead.org>; Thu, 05 Nov 2026 13:07:36 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20260707; t=1793912855; x=1794517655; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+         :message-id:reply-to:content-type;
+        bh=GLyW+wsd3C3ATj3CVMuJf8KfUTB7e6UqhqMzErsAQ1g=;
+        b=aa3bXK+zUDu/55pEUdJvEOw1zC2383WfyNnjtRycQlGp1UsVSkGvWZQWLDYxiNRGOg
+         KKe6sI2Z6LZVFj9PWASMLM7JFSot6UhMUShPqPuPwsu+BiIVFbGWx1bpd6Obxy5tagUK
+         gh3nCV6OxYDkV0lSFj5tJ+DAElkptqw9y1741WS/sxYb80QQ6RL6bSCJMc1er2vVq70p
+         vIGyYSsoyqQ7lIRdbWiqVR5LRSYcx+33qeFLRw5iuRFX6GjLPiSKcLObx/1ChH3yHp4z
+         FcoJkCDoGPYM6Le6sw3bBUZVbqR3PaPrJHnIYgAOQkQAs5DIkxhbz5e1+cUpRcksY0BI
+         BYTQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20260707; t=1793912855; x=1794517655;
+        h=content-transfer-encoding:mime-version:references:in-reply-to
+         :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
+         :to:cc:subject:date:message-id:reply-to:content-type;
+        bh=GLyW+wsd3C3ATj3CVMuJf8KfUTB7e6UqhqMzErsAQ1g=;
+        b=RGFtuNKmLe4QfCq58gKGuSg0b4qwdqOYMKEIhgJGNR28xF6ttsWmRxjqg1+/z+4Rqk
+         vXX2031qaUATGxaQIPB9k55eq80N4fkdCQI4ta8bBZa9JSR4P+2xpHB8i0wDZcu/2JFk
+         UUVJv6eqrG/cEYVyDbqLDYaiGDmJmYBrSb2DQTGK5Atv3QzLPaOa3wngfKxo71ghYeHP
+         su7mMG9cfs0NqJ+c1aTrYNE+t7PQIf30+RBJdHHbhRqyRA2hmwoAhq4t3ucnXloSgYWs
+         bEVTeeolf5kfQE09N4+8CuJlpgI1i84/VcuWeojFbL/yr4gWTALcmWLEUZqyOJ+EvhZR
+         gUYw==
+X-Forwarded-Encrypted: i=1; AKwUvBwQsmlsmpWhVFKqTIowgSocXaq/mwAjTucg+H2/2diTfHxa95guIRWjb0/xP4LolMoSwKDKJzEHXeoA/fbmGg==@lists.infradead.org
+X-Gm-Message-State: APuU4Z+vflUH3wIWWTDvqpWAWu7MMdVs8n0Xzxk9S1jR51OCaLoDnQJY
+	MsFQFlDtY7lTlcXcaZpxIITKthiOokhDkLRWHV1RCVoXMlyVyxz6hkUne2am8Pg417HAHC/S
+X-Gm-Gg: AYBFou1iDiJlsYbEbZH6ZmGnP0/VL1C5yoORnX+MsTopW+eOcWozYAbrYBiaYBtBRjF
+	yNVoUGbiZsQwJ653IOmz6Tb1C1PPODHJ3JZBjkeRFz/f2ZAqC6xQJBqHtOEMr+kl6kuqhoFcKWt
+	2HnhW5bblPL3OQYKvQHWZEQtXG9PXqx+Rftt0aXeeafreSFIYdiMN42+ffgRye4lfo30b6YVrYR
+	N6cSYvYhPuSWe0ICJ9MtMpj7rQ9nbE/rX9w4B82Yg/GaxXQdvdQDicNh9et4Q2zpFJU+ZLiVRm8
+	wjYD7Tk3Np7ryQQvWtTwq6sEeUMzUgQd+bl5c3PPKBrjZatVxpiNY45dD0CfUdGl2SdCPJW79F4
+	A+0NCnnXLveFESQcqOg6B+LEj0TgWrIGC5u5sMW0DPenaGZT6SYJirYJnVXf+kXveZqC/GIep/Y
+	UxIk6D3KjI6nwcOTpSGJSm6TZD3Z0YcOjGgc1aQ0xWpoyvExdT0rlxHICwaYPx+97g0nSEp6R7D
+	kFg9lpCLYbHasS0GDr5l3II3bflSVde++q1u6GwojIu/fwxXhKdbztz0NDUqbsSZoJnmr/lYHAB
+	7kTqYVzT3iw9ed2Ivvrsk93GuCUA1Ox1Be9lVFtM5CfD34c4V88U9idLIxXdr7sJpM5UQ/M=
+X-Received: by 2002:a05:6402:234b:b0:6b4:bd6d:2eef with SMTP id 4fb4d7f45d1cf-6b597475582mr314181a12.0.1793912855525;
+        Thu, 05 Nov 2026 13:07:35 -0800 (PST)
+Received: from letov ([62.41.24.155])
+        by smtp.gmail.com with ESMTPSA id 4fb4d7f45d1cf-6b55ac6d032sm1966949a12.25.2026.11.05.13.07.34
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 05 Nov 2026 13:07:35 -0800 (PST)
+From: Alexander Letuchiy <asalde.le1@gmail.com>
+To: devicetree@vger.kernel.org,
+	linux-mediatek@lists.infradead.org
+Cc: linux-arm-kernel@lists.infradead.org,
+	Alexander Letuchiy <asalde.le1@gmail.com>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Joris Vaisvila <joey@tinyisr.com>,
-	Ahmed Naseef <naseefkm@gmail.com>, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Cc: oe-kbuild-all@lists.linux.dev, netdev@vger.kernel.org
-Subject: Re: [PATCH net-next v5 3/6] net: phy: add additional helper for PHY
- package
-Message-ID: <202611060219.OYeac0uG-lkp@intel.com>
-References: <20261105105504.1024-4-ansuelsmth@gmail.com>
+	Zakariya Hadrami <zkh@mailbox.org>,
+	Manuel Ebner <manuelebnerli@mailbox.org>,
+	Gary Bisson <bisson.gary@gmail.com>,
+	Sean Wang <sean.wang@mediatek.com>,
+	linux-kernel@vger.kernel.org
+Subject: [PATCH 1/5] dt-bindings: arm: mediatek: Add MT6895 and Xiaomi Poco X4 GT
+Date: Fri,  6 Nov 2026 00:05:59 +0300
+Message-ID: <20261105210622.523747-2-asalde.le1@gmail.com>
+X-Mailer: git-send-email 2.56.0
+In-Reply-To: <20261105210622.523747-1-asalde.le1@gmail.com>
+References: <20261105210622.523747-1-asalde.le1@gmail.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20261105105504.1024-4-ansuelsmth@gmail.com>
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261105_193308_501355_047336FB 
-X-CRM114-Status: GOOD (  11.61  )
-X-Spam-Score: -2.5 (--)
+X-CRM114-CacheID: sfid-20261105_130737_265645_75DC4C59 
+X-CRM114-Status: UNSURE (   8.90  )
+X-CRM114-Notice: Please train this message.
+X-Spam-Score: -1.9 (-)
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -115,38 +111,39 @@ List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-10.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,
-	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,
-	SPF_HELO_NONE,SPF_PASS autolearn=unavailable autolearn_force=no
-	version=4.0.1
+X-Spam-Status: No, score=-15.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
+	DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,FREEMAIL_FORGED_FROMDOMAIN,
+	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
+	USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Hi Christian,
+Add the compatible for the MediaTek MT6895 (Dimensity 8100) SoC, along
+with the Xiaomi xaga board based on it, which is sold as Xiaomi Poco
+X4 GT, Redmi Note 11T Pro/Pro+ and Redmi K50i.
 
-kernel test robot noticed the following build warnings:
+Signed-off-by: Alexander Letuchiy <asalde.le1@gmail.com>
+---
+ Documentation/devicetree/bindings/arm/mediatek.yaml | 4 ++++
+ 1 file changed, 4 insertions(+)
 
-[auto build test WARNING on net-next/main]
+diff --git a/Documentation/devicetree/bindings/arm/mediatek.yaml b/Documentation/devicetree/bindings/arm/mediatek.yaml
+index 180e6e4948e7..28180ed0e815 100644
+--- a/Documentation/devicetree/bindings/arm/mediatek.yaml
++++ b/Documentation/devicetree/bindings/arm/mediatek.yaml
+@@ -72,6 +72,10 @@ properties:
+               - archermind,mt6797-x20-dev
+               - mediatek,mt6797-evb
+           - const: mediatek,mt6797
++      - items:
++          - enum:
++              - xiaomi,xaga
++          - const: mediatek,mt6895
+       - items:
+           - enum:
+               - bananapi,bpi-r64
+-- 
+2.56.0
 
-url:    https://github.com/intel-lab-lkp/linux/commits/Christian-Marangi/net-phy-mediatek-export-__mtk_tr_write/20261105-115457
-base:   net-next/main
-patch link:    https://lore.kernel.org/r/20261105105504.1024-4-ansuelsmth%40gmail.com
-patch subject: [PATCH net-next v5 3/6] net: phy: add additional helper for PHY package
-config: sh-randconfig-1000-20261105 (https://download.01.org/0day-ci/archive/20261106/202611060219.OYeac0uG-lkp@intel.com/config)
-compiler: sh4-linux-gcc (GCC) 12.5.0
-reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20261106/202611060219.OYeac0uG-lkp@intel.com/reproduce)
-
-If you fix the issue in a separate patch/commit (i.e. not just a new version of
-the same patch/commit), kindly add following tags
-| Reported-by: kernel test robot <lkp@intel.com>
-| Closes: https://lore.kernel.org/oe-kbuild-all/202611060219.OYeac0uG-lkp@intel.com/
-
-All warnings (new ones prefixed by >>):
-
->> Warning: drivers/net/phy/phy_package.c:82 expecting prototype for phy_package_unlock(). Prototype was for phy_package_offset() instead
-
---
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
 
