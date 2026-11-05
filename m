@@ -2,62 +2,62 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 5771F606A334
-	for <linux-mediatek@archiver.kernel.org>; Thu,  5 Nov 2026 21:50:17 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id BF119606A32D
+	for <linux-mediatek@archiver.kernel.org>; Thu,  5 Nov 2026 22:22:25 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=QDazAR+6;
-	dkim=pass (2048-bit key, unprotected) header.d=protonmail.com header.i=@protonmail.com header.a=rsa-sha256 header.s=protonmail3 header.b=Xu5t+edz
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=YdjtlH/t;
+	dkim=pass (2048-bit key, unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=CFJnWLTN
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:From:
-	To:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:To:
+	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Unsubscribe-Post:
-	List-Owner; bh=DFh6Lj85QvvS03e5lkAUZeehfvdaN+YlDcZdEO2rzoY=; b=QDazAR+6M7ecCd
-	XPRCvSS3kIVo2X9/JvLH3e46TmXAJ4hLMMCva1yZpB0WmkO+pe4XB/kvpg0CRTay7UrlXMQY3QsYk
-	mrYZVYC+tnYkhShLQXCYNLm45q2dDBgLl8WOnsPB6YXgeTp9RFyCHjgqrj6uqW8rKuE+GEwe9w5cG
-	3BMwBS6IQoAe5yJw/bwFIN3Dtbxe9A2Sl2+BWR/BOAz8IUk9tX+eIzNVydaIk5+wCX3aJkSQWxPG0
-	M3Ngd6Iai76IAggi8fyX1wf2n3QQejK1nkx6JUWgBH2wSlyY4PWZb2g5nyfmWR1E5d6aYKRlmFiKm
-	AnLpfIArHb+H1JIlma7g==;
+	List-Owner; bh=I2UCmZDII7TZlJUdlHoHQguMZYmeF/P0Y0rUuVe9MTQ=; b=YdjtlH/tnfpQ45
+	zP3o1TcmynoKldvlFyg7+xEn4kVEdfs6ykk0CbX6yBeXA1kAZGdbGxhKxYEK1BmvsewvWUf/pZYXI
+	jXna6Ho0zEjDoctdB4BLF+RHHWxVbcJtoGe13LGV5EiXvVBA3PbVKxyY2pcTw70v7VRGrgH2pwIb8
+	dlnO0Da/KxwFahv5WbCQG+X+2alrPi7EZgeCDtnaoDTxD/OGkG5YZ8wPAgzg8++OQ+c/zfkCk1Di1
+	P33cEKajcoI87XFshFFejLh4Ii8dq7ju24PeC67fP8eeQL0Lzw6EANZSUcuhXiJ64niJ121uM8LQP
+	AFyAP3Vp9oHri0DGdWZg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xP5Lc-0000000AlhD-2mYi;
-	Thu, 05 Nov 2026 21:50:16 +0000
-Received: from mail-106118.protonmail.ch ([79.135.106.118])
+	id 1xP5qh-0000000AmzR-0CRB;
+	Thu, 05 Nov 2026 22:22:23 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xP5LX-0000000Alg5-3WKs
-	for linux-mediatek@lists.infradead.org;
-	Thu, 05 Nov 2026 21:50:15 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=protonmail.com;
-	s=protonmail3; t=1793915406; x=1794174606;
-	bh=DFh6Lj85QvvS03e5lkAUZeehfvdaN+YlDcZdEO2rzoY=;
-	h=Date:To:From:Cc:Subject:Message-ID:In-Reply-To:References:
-	 Feedback-ID:From:To:Cc:Date:Subject:Reply-To:Feedback-ID:
-	 Message-ID:BIMI-Selector;
-	b=Xu5t+edzpHH1ii6iY+YOkP3s12v9wYG+6RUUo4xUghG3HwMV1RVvVuaosx0ivZkxw
-	 gsoeG/UX3mYspquSOZwvXmpuhLssM41TlkEvoTgxugsrkdpIYfndH3JJkHssGwqgL0
-	 4T/Kp1YhKwgyahj0HLhyylZgjtYMBbj4iDvVnxwAaHIv0RxGO5RNeoP6gex+ZokGxO
-	 f9Wpm0CNvOGPSxfQmHeq8LI6l8Hd4gc2umBGGNFKmdQCbZZNe/aAJT+Irh/1gTqvKa
-	 /2JEARvnYyQwzXJ358HeriC353sjuNq7Mo2BjQWW/diFAXaMsKIXOR99j4Toy6ilvc
-	 jWe1A0xH5ZaFw==
-Date: Thu, 05 Nov 2026 21:50:00 +0000
-To: Alexander Letuchiy <asalde.le1@gmail.com>
-From: Roman Vivchar <rva333@protonmail.com>
-Cc: devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, Wim Van Sebroeck <wim@linux-watchdog.org>, Guenter Roeck <linux@roeck-us.net>, Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, linux-watchdog@vger.kernel.org, linux-kernel@vger.kernel.org
-Subject: Re: [PATCH 3/5] dt-bindings: watchdog: mediatek,mtk-wdt: Add compatible for MT6895
-Message-ID: <xUMh3NwVp4cBhFsWWFE2Xng4h8YH95iJM37_I158WAyVmsRCPbirWT1iU8eMFeiSFw8xco0X45o-2NOeB6Jc4_nWAg25pFPgDMwK3mKzm34=@protonmail.com>
-In-Reply-To: <20261105210622.523747-4-asalde.le1@gmail.com>
-References: <20261105210622.523747-1-asalde.le1@gmail.com> <20261105210622.523747-4-asalde.le1@gmail.com>
-Feedback-ID: 173184497:user:proton
-X-Pm-Message-ID: e26518f322eb5f6161fc7a72d02b2c560e8b1a2c
+	id 1xP5qf-0000000AmzE-1YkP;
+	Thu, 05 Nov 2026 22:22:21 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by tor.source.kernel.org (Postfix) with ESMTP id 683F9601BF;
+	Thu,  5 Nov 2026 22:22:20 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id DBC321F0089F;
+	Thu,  5 Nov 2026 22:22:19 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1793917340;
+	bh=I2UCmZDII7TZlJUdlHoHQguMZYmeF/P0Y0rUuVe9MTQ=;
+	h=Date:From:To:Cc:Subject:In-Reply-To:References;
+	b=CFJnWLTN8Hdn81KBHt5b4aPAyQJVP6ghpvhL11RGgs3whi/pcGSEbFet1RPf+MX2l
+	 9Flkk9NhvfG1ANLCfKLUEhOTvadYLb02HyEENq4ctLzpXHH2gRpobNwln8qERA6Mbu
+	 /0CTAx/YFazA3PRiFkzenEKw1ngCxA+Gv1PplWZ89aJZhMJZmBXo0DZRNhVMIbOCTR
+	 +cSvVmJhMiOeu48/gIasQDWh9XOSzJYvwOpyweQjclKwkWIiTvD6O0+gnlXnjVk975
+	 Cxf8ebCn8Pphkhz5tVbGinl2tlD2tQayRUsttKM9/V3BXf63WwcvdnvAb7Z2K6Dybx
+	 DmL1hBF8QnXTw==
+Date: Thu, 5 Nov 2026 14:22:09 -0800
+From: Jakub Kicinski <kuba@kernel.org>
+To: Sandeep Haemoon <sandeeph@loljews.com>
+Cc: netdev@vger.kernel.org, Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi
+ <lorenzo@kernel.org>, linux-mediatek@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH net-next 1/2] net: ethernet: mtk_eth_soc: add 9K jumbo
+ frame
+Message-ID: <20261105142209.06d93e77@kernel.org>
+In-Reply-To: <patch-f1b04513b0fe3fb0a35ac744799fb0f3@loljews.com>
+References: <patch-4f863a941889f0bceca1c082f2d79624@loljews.com>
+	<patch-f1b04513b0fe3fb0a35ac744799fb0f3@loljews.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261105_135014_037499_CDA1557F 
-X-CRM114-Status: GOOD (  10.82  )
-X-Spam-Score: -2.5 (--)
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -68,51 +68,20 @@ List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-12.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
-	DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,FREEMAIL_FORGED_FROMDOMAIN,
-	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=ham
-	autolearn_force=no version=4.0.1
+X-Spam-Status: No, score=-5.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,
+	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS autolearn=no autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Hi,
+On Mon, 2 Nov 2026 00:48:45 +0200 Sandeep Haemoon wrote:
+> +static void mtk_set_mcr_max_rx(struct mtk_mac *mac, u32 val);
 
-On Thursday, November 5th, 2026 at 11:07 PM, Alexander Letuchiy <asalde.le1=
-@gmail.com> wrote:
+Avoid the forward declarations, please.
 
-> Add a compatible string for the watchdog of the MediaTek MT6895
-> (Dimensity 8100) SoC, which uses mediatek,mt6589-wdt as its fallback.
->=20
-> Signed-off-by: Alexander Letuchiy <asalde.le1@gmail.com>
-
-Does mt6895 actually share the same reset layout as mt6589? Given the
-generation leap between these, the former is very unlikely to use
-the same resets.
-
-Best regards,
-Roman
-
-> ---
->  Documentation/devicetree/bindings/watchdog/mediatek,mtk-wdt.yaml | 1 +
->  1 file changed, 1 insertion(+)
->=20
-> diff --git a/Documentation/devicetree/bindings/watchdog/mediatek,mtk-wdt.=
-yaml b/Documentation/devicetree/bindings/watchdog/mediatek,mtk-wdt.yaml
-> index f9b725592c27..cac7d9ae98dd 100644
-> --- a/Documentation/devicetree/bindings/watchdog/mediatek,mtk-wdt.yaml
-> +++ b/Documentation/devicetree/bindings/watchdog/mediatek,mtk-wdt.yaml
-> @@ -38,6 +38,7 @@ properties:
->                - mediatek,mt6572-wdt
->                - mediatek,mt6582-wdt
->                - mediatek,mt6797-wdt
-> +              - mediatek,mt6895-wdt
->                - mediatek,mt7622-wdt
->                - mediatek,mt7623-wdt
->                - mediatek,mt7629-wdt
-> --
-> 2.56.0
->=20
->=20
-> 
+When you repost make sure that patch 2 is in reply to the cover letter,
+not chained off patch 1.
+-- 
+pw-bot: cr
 
