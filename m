@@ -2,85 +2,75 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 4E8CF606A32D
-	for <linux-mediatek@archiver.kernel.org>; Thu,  5 Nov 2026 08:47:47 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 07499606A328
+	for <linux-mediatek@archiver.kernel.org>; Thu,  5 Nov 2026 08:52:28 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=WBwZpWGK;
-	dkim=pass (2048-bit key, unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=Brt8unw4
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=o+NKsLUw;
+	dkim=pass (2048-bit key, unprotected) header.d=collabora.com header.i=@collabora.com header.a=rsa-sha256 header.s=mail header.b=Tjb6TUCQ
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Unsubscribe-Post:List-Owner;
-	bh=7Cao3FJR5MdJH+ZnumyAVfl5Aw5BXwagSddECWxWGQ8=; b=WBwZpWGKhPfnWEvXywRB5kqjNY
-	2/SfViucBUGxclaV4qWrbuFKpEFOCqKjj8F7fFAd+fva+CMQOAaSGWNdBCHJx1YTxhidrcVK+d3pX
-	9QyvDgwUosr0+An9aqkdQwVL3yx9IkQNoaI3jaEQjw64i8QfUxnW/NfjMfRRIlszdLphFtUEDM2XE
-	OS5hjFKd+S2k1k3KzdFVXo/s7L5hhAgTPVHLFtJKMIJXTHFU+kt/BHxX65OrHA2rxdkq5bB7Zjuti
-	opZS6QBOkUqhWauBhvLYijPQzd1vCFbh8U8Rf6IgQifDyG3XMnU6G2thnArefALebFC7FaQEW5V9P
-	SYk79iAw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Unsubscribe-Post:
+	List-Owner; bh=Msd07b8Kgx8v1VWINbHbc0sUGrkBbqikBSOBM45eS30=; b=o+NKsLUw6aglsD
+	+F2oKR8ha+2JowyVBleyjdW7kpyNMvx5447ErwwItOEkX1X/xAbm3qE7K5lVvDA3vADzdQF78ub5Q
+	C+x84jgdo/f13VhMud3hC9zDLd7j+R0aV4ILdYNnVXPK92+SlaZ7Sry3RM63Au03lQmlmzc7T2VLg
+	0i/TkFMNIlIhdaT7kCxfDV3BkFM5dVE4jBAUng2XCTBagJaDd7p3t6to8rSZolgFwXSqw0/0Txyyi
+	q/QZNZZyJYEJm+5uU7/Ye21zRiDIdxhB93Ndtw4YEYHjl701O40PTYko64AUGxrmqkFYZY54e+edo
+	3S5L6TnFFdpzIYIMKwgQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xOt8M-00000008BzG-3ail;
-	Thu, 05 Nov 2026 08:47:46 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1xOtCt-00000008CfQ-361T;
+	Thu, 05 Nov 2026 08:52:27 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xOt8K-00000008Byv-1XyY;
-	Thu, 05 Nov 2026 08:47:44 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with UTF8SMTP id C8BB3601DE;
-	Thu,  5 Nov 2026 08:47:43 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with UTF8SMTPSA id 55AA61F000C1;
-	Thu,  5 Nov 2026 08:47:42 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1793868463;
-	bh=7Cao3FJR5MdJH+ZnumyAVfl5Aw5BXwagSddECWxWGQ8=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=Brt8unw4v4IBCfyHYflx+ovCkQpkF9kkBD7yN+mFMxqgVSqmmhdZimNjzgT7NPi+C
-	 6NNsZPKGCHXdcQBhPCvJx353LOvvo6XmlR8HWZXl25vlftL8nkaXSy4KfV5eFM1jU7
-	 4i7HkeRO5gXorGVfhbzQf8zGQNQeRkemG2dnSKynmoJhgkxwdW7EiopLWKaptRntXT
-	 db40KHNFd2TH12noKLi71Q2L/eJUaUmHUohTYTgf0hg2ZiZLF3t9tOVTsopBowQKDv
-	 gnWZPINPDIGqs9hd1bi1EzxYGRl1mp/tX5fL2mYXbQT+XTW0yGu6+Dcz43I5W1uquX
-	 a/c9gAKcLS92A==
-Date: Thu, 5 Nov 2026 09:47:39 +0100
-From: Bartosz Golaszewski <brgl@kernel.org>
-To: Uwe =?utf-8?Q?Kleine-K=C3=B6nig_=28The_Capable_Hub=29?= <u.kleine-koenig@baylibre.com>
-Cc: Linus Walleij <linusw@kernel.org>, Andy Shevchenko <andy@kernel.org>, 
-	linux-gpio@vger.kernel.org, linux-kernel@vger.kernel.org, Lixu Zhang <lixu.zhang@intel.com>, 
-	Sakari Ailus <sakari.ailus@linux.intel.com>, 
-	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>, Florian Fainelli <florian.fainelli@broadcom.com>, 
-	Eugeniy Paltsev <Eugeniy.Paltsev@synopsys.com>, Frank Li <Frank.Li@nxp.com>, 
-	Sascha Hauer <s.hauer@pengutronix.de>, Pengutronix Kernel Team <kernel@pengutronix.de>, 
-	Fabio Estevam <festevam@gmail.com>, Imre Kaloz <kaloz@kernel.org>, 
-	Conor Dooley <conor.dooley@microchip.com>, Valentina Fernandez <valentina.fernandezalanis@microchip.com>, 
-	Daire McNamara <daire.mcnamara@microchip.com>, Daniel Palmer <daniel@thingy.jp>, 
-	Romain Perier <romain.perier@gmail.com>, Robert Jarzmik <robert.jarzmik@free.fr>, imx@lists.linux.dev, 
-	linux-arm-kernel@lists.infradead.org, linux-riscv@lists.infradead.org, 
-	Hoan Tran <hoan@os.amperecomputing.com>, Alan Borzeszkowski <alan.borzeszkowski@linux.intel.com>, 
-	Mika Westerberg <westeri@kernel.org>, Hans de Goede <hansg@kernel.org>, 
-	Nuno =?utf-8?B?U8Oh?= <nuno.sa@analog.com>, linux-hwmon@vger.kernel.org, 
-	Matti Vaittinen <mazziesaccount@gmail.com>, "Enrico Weigelt, metux IT consult" <info@metux.net>, 
-	Viresh Kumar <vireshk@kernel.org>, virtualization@lists.linux.dev, Yinbo Zhu <zhuyinbo@loongson.cn>, 
-	Thierry Reding <thierry.reding@kernel.org>, Jonathan Hunter <jonathanh@nvidia.com>, 
-	linux-tegra@vger.kernel.org, Geert Uytterhoeven <geert+renesas@glider.be>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Srinivas Neeli <srinivas.neeli@amd.com>, 
-	Michal Simek <michal.simek@amd.com>, linux-aspeed@lists.ozlabs.org, asahi@lists.linux.dev, 
-	linux-mediatek@lists.infradead.org, openbmc@lists.ozlabs.org, linux-omap@vger.kernel.org, 
-	linux-renesas-soc@vger.kernel.org, linux-unisoc@lists.infradead.org, 
-	linux-rockchip@lists.infradead.org, linux-stm32@st-md-mailman.stormreply.com, 
-	Michael Buesch <m@bues.ch>, William Breathitt Gray <wbg@kernel.org>, 
-	Robert Richter <rric@kernel.org>, Andy Shevchenko <andriy.shevchenko@linux.intel.com>, 
-	linux-acpi@vger.kernel.org
-Subject: Re: [PATCH v4 00/23] gpio: Improvements around device-id arrays
-Message-ID: <2hfpcbk6r56vvhkqyiex2apl3pinieybad5sd3vkvvabqs3uto@lydt3gin5kxe>
-References: <cover.1793097104.git.u.kleine-koenig@baylibre.com>
+	id 1xOtCp-00000008CdJ-0mXX;
+	Thu, 05 Nov 2026 08:52:25 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1793868740;
+	bh=zF4UneQYBw/Lw+DtqeKovavXzEG4vgp4Z2EEg+Ep6uw=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=Tjb6TUCQv7G3DF8S0DUoHTXD4RBLtwXZXUNLb8OZDjnopzJw1gVPlztewE6DXF3UA
+	 dyYleUyOOVLdxnw3YgsEVOFFUzqqlU8pz0IVngl7hqrT6UCw9vq3bo7l+yOZ+mfoMw
+	 fxYbeEZrIoh+PAIOuOz0Fdyn+RrUnUNGwIaG/D64yZF/wy+7o2joauYl/br2M2dei5
+	 pLEaRu/7XZG+xgenRXc2Fy9VZWkEyNTqTrrT4+K7MSNJyKymyHP6R3L07BXa736XpT
+	 EayyMhup1elnmA0avhgBmDdRSYj+qe2eEMJqDyEJxRaEfZaBSPtx8BqrlG9/1Lv+rK
+	 pU5dKp5/Xy5VA==
+Received: from [100.64.1.21] (unknown [100.64.1.21])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange x25519)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id D64B117E05D6;
+	Thu, 05 Nov 2026 09:52:19 +0100 (CET)
+Message-ID: <f21d912a-48ea-4f0d-bab4-526e617f1769@collabora.com>
+Date: Thu, 5 Nov 2026 09:52:19 +0100
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 0/4] pmdomain: mediatek: Enable the GPU timestamp
+ counter on MT8188
+To: =?UTF-8?B?TWljaGHFgiBLb3BlxIc=?= <michal@nozomi.space>,
+ =?UTF-8?Q?Adri=C3=A1n_Larumbe?= <adrian.larumbe@collabora.com>,
+ Boris Brezillon <boris.brezillon@collabora.com>,
+ Daniel Stone <daniel.stone@collabora.com>
+Cc: robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
+ matthias.bgg@gmail.com, linux-pm@vger.kernel.org,
+ devicetree@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org,
+ Steven Price <steven.price@arm.com>, ulfh@kernel.org,
+ Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
+References: <20261011184755.2058017-1-michal@nozomi.space>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
+In-Reply-To: <20261011184755.2058017-1-michal@nozomi.space>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <cover.1793097104.git.u.kleine-koenig@baylibre.com>
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20261105_005223_967114_C1006CC1 
+X-CRM114-Status: GOOD (  33.34  )
+X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,27 +81,133 @@ List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-5.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-12.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,
-	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS autolearn=no autolearn_force=no version=4.0.1
+	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1 autolearn=ham
+	autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On Tue, Oct 27, 2026 at 11:48:37AM +0100, Uwe Kleine-K�nig (The Capable Hub) wrote:
-> Hello,
+On 10/11/26 20:47, Michał Kopeć wrote:
+> On MT8188 the GPU timestamp counter reads zero until a register in the
+> MFGCFG block feeds it the SoC system timer, and MFGCFG loses that
+> setting whenever the MFG1 power domain is turned off. As a result, the
+> SYSTEM_TIMESTAMP query and the timestamps written by GPU jobs are always
+> zero, which breaks timestamp queries in userspace drivers.
 > 
-> the original motivation for this series are the patches that convert the
-> arrays to use named initializers, see
-> https://lore.kernel.org/all/cover.1780048925.git.u.kleine-koenig@baylibre.com/
-> for the idea behind it. Looking left and right a bit while implementing
-> that, the series grew a bit.
+> v1 restored the register from panfrost through a new mediatek,mfgcfg
+> phandle on the GPU node. As Krzysztof pointed out, the register is lost
+> by the power domain, so v2 restores it there instead: the power
+
+The register is not lost by the power domain, it's lost by the MFGCFG block
+getting unpowered and (all) its registers being reset to the defaults, where
+the defaults happen to be zero... and then the MFGCFG has a bus protection
+block yes (unused for us), but that's at offset 0x20, so if you define that
+as 0x130 it becomes plain wrong :-(
+
+Besides, get this:
+
+"MFG_TIMESTAMP_EN" is a register field that doesn't exist... so here are the
+correct definitions ;')
+
+#define MFG_TIMESTAMP		0x130
+#  define TOP_TSVALUEB_EN	BIT(0)
+#  define TIMER_SEL_SOC_TIMER	BIT(1) /* unset: MFG timer, set: SOC timer */
+
+The issue that you're talking about here is not specific to MT8188, but to all
+of the MediaTek SoCs with either Mali or PowerVR that are *not* using the GPUEB
+firmware (so all Chromebooks and Genio boards before MT8196/MT6991/MT8894).
+
+This doesn't belong to the power domain driver, as this is definitely not in any
+way related to powering on the MediaTek Flexible Graphics (:'D) block, so this
+has to be done somewhere else.
+
+That said, let's see what a good solution could be here...
+
+...so, the MFG Block has got a Hardware Timestamp Engine that needs to be kicked
+from the MFG Configuration register area, specifically from the the MFG IP
+Timestamp register.
+
+Once the timestamp engine's timer source is selected (TIMER_SEL) and you made sure
+that the actual timer source is running (eh, first make sure it's running, then
+select), you enable the MFG-Top (Top==Global) TimeStampValueB (TOP_TSVALUEB_EN).
+
+When those registers are set, your Hardware Timestamp Engine is fully ready and
+will start running when frames/commands/etc come, adding a timer time to each of
+the frames/commands/etc (which is why this is a timestamp engine) in a hardware
+assisted manner (and this is why it's a *hardware* timestamp engine).
+
+Now that we know what we're dealing with... we're pretty sure that this is a
+
+H T E  .... (drivers/hte hello)
+
+Documentation/devicetree/bindings/timestamp/hardware-timestamps-common.yaml
+
+Panfrost needs a hardware timestamp engine to do timestamp counting, right?
+Panthor would need the same.
+
+That's not MediaTek specific, because there's a generic hardware timestamp engine
+binding, so I'm sorry but you can go back implementing HTE support in Panfrost and
+Panthor - in a very-very-very generic way - using the HTE APIs.
+
+You'd have to write a (very small, really) HTE driver for the hte-mediatek-mfg.c
+but that's not a big deal, a first version of that driver, which can be upstreamed
+could do just:
+  1. Make sure that the MFG-TOP power domain is on (not the cores domain, just the
+     top one!), which is easy, it's just one line; and
+  2. Set the register fields in MFG_TIMESTAMP to the correct value when Panfrost
+     asks to start or initialize the HTE; and
+  3. UNset TOP_TSVALUEB_EN when going to sleep, or when Panfrost asks to stop/deinit
+     the HTE.
+
+It's a 50 lines driver, nothing more (well, I didn't write anything so I don't know
+but trust me it's going to be around that linecount).
+
+That's how this matter can be resolved.
+
+Btw, thanks for bringing this up, I didn't even realize this was an issue.
+
+Cheers!
+Angelo
+
+> controller lists MFGCFG in access-controllers and writes the register
+> every time MFG1 has been powered on.
+> 
+> Patch 4 converts mt8188.dtsi from the deprecated per-domain
+> mediatek,infracfg phandles to access-controllers. A devicetree with it
+> needs the driver changes of patches 2 and 3, because older kernels
+> expect exactly one access controller on MT8188 and fail to probe the
+> power controller otherwise. Older devicetrees keep working with the new
+> driver, without the timestamp.
+> 
+> MT8370 uses the MT8188 power controller and mt8188.dtsi, so it is
+> covered as well.
+> 
+> Tested on the Lenovo Chromebook Duet (MT8188): the timestamp counts at
+> 13 MHz, also after suspend and resume.
+> 
+> Changes in v2:
+> - Restore the register from the MFG1 power domain instead of panfrost,
+>    and drop the GPU phandle (Krzysztof).
+> - Drop the panfrost patch, which makes the review comments about error
+>    propagation and MT8370 moot.
+> 
+> v1: https://lore.kernel.org/all/20261003200132.866240-1-michal@nozomi.space/
+> 
+> Michał Kopeć (4):
+>    dt-bindings: power: mediatek: Add the MT8188 access controllers
+>    pmdomain: mediatek: Restore a register after powering a domain on
+>    pmdomain: mediatek: mt8188: Enable the GPU timestamp counter
+>    arm64: dts: mediatek: mt8188: Use access-controllers in the power
+>      controller
+> 
+>   .../power/mediatek,power-controller.yaml      | 16 +++++++++++++-
+>   arch/arm64/boot/dts/mediatek/mt8188.dtsi      | 22 +------------------
+>   drivers/pmdomain/mediatek/mt8188-pm-domains.h | 16 +++++++++++++-
+>   drivers/pmdomain/mediatek/mtk-pm-domains.c    | 19 ++++++++++++++++
+>   drivers/pmdomain/mediatek/mtk-pm-domains.h    | 15 +++++++++++++
+>   5 files changed, 65 insertions(+), 23 deletions(-)
 > 
 
-Hi Uwe!
-
-This no longer applies, can you rebase it on top of gpio/for-next and
-resend? I'll apply it right away before any additional conflicts.
-
-Bart
 
