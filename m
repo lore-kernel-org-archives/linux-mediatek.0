@@ -2,85 +2,89 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id E211A606D801
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id C4FC9606A33F
 	for <linux-mediatek@archiver.kernel.org>; Thu,  5 Nov 2026 14:29:06 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=eT9GCvhk;
-	dkim=pass (2048-bit key, unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=fJ8uEU5D
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=d4BKJbiQ;
+	dkim=pass (2048-bit key, unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=QXjKTJio
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Cc:To:In-Reply-To:References:Message-Id:
-	Content-Type:MIME-Version:Subject:Date:From:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
+	From:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
 	List-Unsubscribe-Post:List-Owner;
-	bh=BTajmg9RWCNBoWlsLMKQTyqcM4v7/TvF39OQuP/nqgw=; b=eT9GCvhk1hoco7vckYnrBLNiUM
-	yr+EM5FE7Uv6C/oiTg99a5oYFfTqzZVwOaaAwFNEWfcUZ/r9xxj/Byj1yKn8tLMCUN7RmqlORVvpy
-	KDgLTIcsBb7KH/hPFP3OgCpiT4QD9HuMF90Mu6vnXHoY81HdJGdW7C09idMOf0sjVmO1Mnq8vMqeR
-	mu4DKp4azPr92WgjwmyFAL/FCHbCFaJvG+Y8lsE8O2xal0GSDKMKdeFl2v24qjzeoEfLGgXzfpkQs
-	sAUHT1+apJJqns5kmLUKPQizAzrcsMeLTCbylxeCO/5/Chqx9A9BcMW8FVfsKSEYIJH+55DewIau8
-	kFxXM5vw==;
+	bh=SB060tm94ok1G3ZrAKChHc1CAPBDl1EJH81JADMrd2I=; b=d4BKJbiQIKM6IQcutrzfbTxcze
+	VgeXcrNxsUMN/LifnzE3RtyaHoGg+mKr727CUZueHo3XZlXWkrGbxAgGxi5SVk41bjIdADhIDmAEM
+	IOxi57w+j6w9u3MVbtgkm5M480XXdfsqmo0N07yCFYesep+CR2OMFf0f6RvyiNbj0ENT9RzXkqqcd
+	SwxbJdtHPFfHQeyTj3UNaJgItMHXoKf+/+LtDjHeut49ZPA8xBG5+Y5PmnGIvdPhbbdg1Umk81ro3
+	y7d2iFJsjdF9La2wnn9s50GNsUxGYGp/7uyNQBbgs6Vo921SAescmru6GFOZfu6llDGGyUa6YuKyb
+	LMl+FEvg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xOySg-00000009Gkx-2Uh7;
+	id 1xOySg-00000009Gkg-1tNS;
 	Thu, 05 Nov 2026 14:29:06 +0000
 Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xOySe-00000009Gil-1wPr;
+	id 1xOySe-00000009Gim-1wAR;
 	Thu, 05 Nov 2026 14:29:04 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id 0BB21409AA;
+	by sea.source.kernel.org (Postfix) with ESMTP id 268FC43E63;
 	Thu,  5 Nov 2026 14:29:04 +0000 (UTC)
 Authentication-Results: smtp.kernel.org; arc=none smtp.remote-ip=100.80.115.77
 ARC-Seal: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256; cv=none;
-	t=1793888943;
-	b=bpu8HpTHgNAx2NNYssYswhLeCmQ38Kiv+F4rzB2hXOPzUMXqVpgdYgPdLhsSRdhRwwW2
-	 zVC1yV3fwKcVeWoHHb0labmw6k8sNwf/PfN3s/htHR5+6iWr1KMsHwneYsWXVjUEM2kLn
-	 KK2INisT5vjNkZ3Dl6RI8aj1KozvWptjBdrofgaLxMaNI5mgHvnFM3LiCr+n4mW8QckNe
-	 I4mp0A/bDt6Wf39kdEvM5CnDQJGz4af5oFeW7IVb771MC1nmtfCMYww5PuDf05eBucV/s
-	 TwIBoQfyVufC6bY49MRjkSxp9Fng4VZLOsWx/8aXaG/ovUUH9vBPIQo8IPXxTZnNxCg==
+	t=1793888944;
+	b=xkBMd7s8yjCUyUiRj/tQmEl5Rn3yc/umB2DQZu+TGKBgp0FCBhr8Sb1wkI2qkvFu4Yys
+	 rumZvaPDBPvjze0o2HfUB6wqSHlGHk9xVFw2r1q3ZOeJSN/minFTZkgNsHWudp03Eg4Ow
+	 rAqkA9MGv9XWuihBv3pYbRvSxcHyn89BIkCU33o+rDGvVBCBveiKdME2W6pmiG9HsylLc
+	 Cy4TeJcffSd+W1dVsxn6+GjrMuCmYsgYKHAxBsRaaTUYnUIqFr4Bwjzn5zGc48BbWG2TX
+	 0lOIADd7TDUOZC3KWRHZumLChvW9w7dd7Ki0JXNlu4csiB6KO1m4pJtJWdpjX7HwdZg==
 ARC-Message-Signature: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256;
-	c=relaxed/relaxed; t=1793888943;
-	h=DKIM-Signature:Received:From:Date:Subject:MIME-Version:Content-Type:
-	 Message-Id:References:In-Reply-To:To:Cc:X-Mailer:
-	 X-Developer-Signature:X-Developer-Key:X-Endpoint-Received:
-	 X-Original-From:Reply-To:Content-Transfer-Encoding;
-	bh=BTajmg9RWCNBoWlsLMKQTyqcM4v7/TvF39OQuP/nqgw=;
-	b=1OhUFJOs9ldr9jITYXCWvDXunTPao+pNiWSFlKRqDqP+UyqePEWWAC8gq+4X20q1xQl4
-	 mS2Ax33AQXyAxO1xc2fvAgL7tRnZX+jT/pVq1feD/1SONxlYRv4QhMvLNf/g4s7YAluxk
-	 Kqu+Q1U0BsjmYbIQZPd5Ux9Oh9yus9QC12GQcLbXrSJO4wl4Ad3L2dm52D0xWuB+K8uyj
-	 zRrprwwtcHLFmIXriCVhKNiMSEMWNl7oDuegpJt/z5nVHadjR0HGnSaxZgRetjpk028z2
-	 9FLQlSPWW0Vb9IuqPTzJ58+JtvVkgUFU0KKBb8CcnMCEcOCc6foYb+H3zs7vbh/ppOw==
+	c=relaxed/relaxed; t=1793888944;
+	h=DKIM-Signature:Received:From:Subject:Date:Message-Id:MIME-Version:
+	 Content-Type:Content-Transfer-Encoding:X-B4-Tracking:X-Change-ID:To:
+	 Cc:X-Mailer:X-Developer-Signature:X-Developer-Key:X-Endpoint-Received:
+	 X-Original-From:Reply-To;
+	bh=SB060tm94ok1G3ZrAKChHc1CAPBDl1EJH81JADMrd2I=;
+	b=Xl93jVLs+F3yt1b/oM3DoufmRvrFIxS4V5rUXcbwZhr7tWRiU0O9KAWWpEqyG2IEWXt3
+	 zzCvtCf25y4FjW8XIalSNWotmQagdV0pXM6VTwsxJZvjX5krBArWVvJRb8teAKsAlXaKo
+	 D833bCUoJfaF/sDFlsaOL+CHBJGkN4aAcob4lgIcxLmc2zcI8hPrK+cDAMVaFpdPUCZ9j
+	 uDDJ/OQn7KOjcETWscBeIbCiobgZs1dt8ew1YmHFafLptKj8A88h1wJSZCFbiGo5DcLug
+	 eECXIbog00/XdoIGO7rKiapOPlcEjJ5618KkfmrS2uGFbv3iFdVJAHX6wU1MNXUmyGA==
 ARC-Authentication-Results: i=1; smtp.kernel.org; 
 	arc=none smtp.remote-ip=100.80.115.77
 Received: from lkml.kernel.org (nexus.subspace.kernel.org [100.80.115.77])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.kernel.org (Postfix) with ESMTPS id C3D981F00A1B;
+	by smtp.kernel.org (Postfix) with ESMTPS id B01621F00919;
 	Thu,  5 Nov 2026 14:29:02 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1793888943;
-	bh=BTajmg9RWCNBoWlsLMKQTyqcM4v7/TvF39OQuP/nqgw=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To;
-	b=fJ8uEU5DzHO1OqZpPUWKGNL+MFW7wm+pBDi4xwzDxgD4Fx/rLsKTktz+k91UYOF4Z
-	 b7mWLDumvlCkTzi2iyg3QHLBsoQv8GINBgHWulMn6Cmkr9NcBPQllUkp0dvhPWtc9h
-	 6OOx21slD5/iDucnvXYXPZKbfV2DvUxljyHq++TUoAs22bs8MGURW2IPgKpLM6SB9r
-	 k0/+860bdgXWTgbB8kC+826/kAEjCyBcLL1dN6Ox2drQjlilgtGz59siu0pPebZncQ
-	 7dpE6IB53etAgV/yC22tZe9AxrdG2+D202cJ1v1bXK+Qe/cnbWhla5cRz4xsReT0bu
-	 8wIsvuNYXpo9Q==
+	s=k20260515; t=1793888944;
+	bh=SB060tm94ok1G3ZrAKChHc1CAPBDl1EJH81JADMrd2I=;
+	h=From:Subject:Date:To:Cc:Reply-To;
+	b=QXjKTJiowPoq09eaNbrqnkXtMkwV6FoFRtLqimoJKlru0kwtSJknSwMGTn4juhh9w
+	 poEBu9KanHg9Lv0DzDwAIc0r7rAtChWC6WEpsLmuK3mFNaYbrjLAbKSjX/BYkx/TNO
+	 vgFZMs6y1tf7IKjRLq+7BalJfGSf9E46WbU/u1XQwwqC0zPs4aw7528eYkf/85FUKo
+	 G70C3bvwyGmYy/fz/QaCoWlpE8I0O5FNaluWbRWAvPTAXnfBJ8jPrv65EjQPuCalLF
+	 oE+D74iySop2o3WNnDNVWAkYiV2ttuUukA1CN7rSyVJkmhxOcpdwYTExZTyiSwdLDD
+	 wOV6VTQhDL7Mg==
 Received: from nexus.subspace.kernel.org (localhost [IPv6:::1])
-	by lkml.kernel.org (Postfix) with ESMTP id 526DC472C3;
+	by lkml.kernel.org (Postfix) with ESMTP id 12F16472B5;
 	Thu,  5 Nov 2026 14:29:02 +0000 (UTC)
 From: Ben Grisdale via B4 Relay <devnull+bengris32.protonmail.ch@kernel.org>
-Date: Thu, 05 Nov 2026 14:28:49 +0000
-Subject: [PATCH v2 4/6] dt-bindings: serial: mediatek,uart: Add MT8163
+Subject: [PATCH v2 0/6] arm64: Initial support for MediaTek MT8163 SoC
+Date: Thu, 05 Nov 2026 14:28:45 +0000
+Message-Id: <20261105-arm64-initial-support-for-mediatek-mt8163-soc-v2-0-e68d7d428f99@protonmail.ch>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
-Message-Id: <20261105-arm64-initial-support-for-mediatek-mt8163-soc-v2-4-e68d7d428f99@protonmail.ch>
-References: <20261105-arm64-initial-support-for-mediatek-mt8163-soc-v2-0-e68d7d428f99@protonmail.ch>
-In-Reply-To: <20261105-arm64-initial-support-for-mediatek-mt8163-soc-v2-0-e68d7d428f99@protonmail.ch>
+Content-Transfer-Encoding: 7bit
+X-B4-Tracking: v=1; b=H4sIAAAAAAAC/5WOQQ6CMBBFr0K6dgwttaAr72FYlDLIKLSkLURDu
+ LuA8QAuX/Ly359ZQE8Y2CWZmceJAjm7gjgkzLTa3hGoXpmJVCie8gK075UEshRJdxDGYXA+QuM
+ 89FiTjviEPhZcZRCcAdSnopa5qXKt2bo5eGzotfdu5ZfDWD3QxC2yGS2F6Px7PzTxzfu1z3+2J
+ w4pNEIqUYlayCy/Dt5FZ3tN3dG0rFyW5QMb3audAAEAAA==
+X-Change-ID: 20261018-arm64-initial-support-for-mediatek-mt8163-soc-ea58d47cb7aa
 To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
  Conor Dooley <conor+dt@kernel.org>, 
  Matthias Brugger <matthias.bgg@gmail.com>, 
@@ -94,17 +98,16 @@ Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
  linux-serial@vger.kernel.org, Ben Grisdale <bengris32@protonmail.ch>, 
  Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
 X-Mailer: b4 0.15.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1793888941; l=987;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1793888941; l=2514;
  i=bengris32@protonmail.ch; s=20261018; h=from:subject:message-id;
- bh=NhECQjtErCffD7Hrf6rEzEREzak9GzWgJW4fU0Mkz9c=;
- b=Sagi85f7uqdQx0Lk0jaevhCGFN6sjUpjC6RXRjngoy5jOckdLEJRPF7vSMWs8fxmdinu/7upi
- rcmByZmoZx3CLsBhfgZQbnienY9E6Gz1Al2eDJmZcD54tkytNttO8LU
+ bh=xYWhJdUiyf1YSsJbWggMRSuD7a4P0ZPx+YpqCfYj/AY=;
+ b=Dy4ilgGz6/7wDjsLtjtacc2scZ/XdEP0ABXqQCC9jkR0mpFWmP8b6bmM9RLffsp3svumiHFGf
+ Ghhl5a20pe6AQ89y1ZmLn6kM/xtS8cAla+R/oWBuHNoLd9NrRLE9Scj
 X-Developer-Key: i=bengris32@protonmail.ch; a=ed25519;
  pk=4ewFRC2yNph/tXokHVzIDlgOA9Hxecf1AlBuD4eOnaU=
 X-Endpoint-Received: by B4 Relay for bengris32@protonmail.ch/20261018 with
  auth_id=1233
 X-Original-From: Ben Grisdale <bengris32@protonmail.ch>
-Content-Transfer-Encoding: 7bit
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -116,40 +119,71 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Reply-To: bengris32@protonmail.ch
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-21.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,
 	FREEMAIL_REPLYTO_END_DIGIT,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
+	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	MENTIONS_GIT_HOSTING,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT
+	autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-From: Ben Grisdale <bengris32@protonmail.ch>
+This series adds basic support for the MediaTek MT8163 SoC.
 
-Add a compatible string for the UART controllers on the MediaTek MT8163
-SoC, which are compatible with the MT6577 UART.
+The MT8163 is a 64-bit SoC featuring four ARM Cortex-A53 cores,
+typically found in entry-level tablets and smart displays, such as
+the Amazon Echo and Fire HD devices.
 
-Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
+The bindings and SoC dtsi added here, together with the already applied
+watchdog support, are enough to boot the 2016 Amazon Echo Dot (biscuit)
+to a shell over UART0.
+
+This series requires custom TF-A, U-Boot and OP-TEE ports for MT8163.
+The stock vendor firmware does not provide a usable PSCI implementation
+(the vendor kernel brings up secondary CPUs with a custom "mt-boot"
+enable-method instead), and these ports also define the reserved memory
+layout used by the board dts:
+ - TF-A: https://github.com/iara-linux/arm-trusted-firmware
+ - U-Boot: https://github.com/iara-linux/u-boot
+ - OP-TEE: https://github.com/iara-linux/optee_os
+
+This is the first of several series. Support for the remaining
+peripherals will follow, starting with the clock controllers, pinctrl
+and power domains.
+
 Signed-off-by: Ben Grisdale <bengris32@protonmail.ch>
 ---
- Documentation/devicetree/bindings/serial/mediatek,uart.yaml | 1 +
- 1 file changed, 1 insertion(+)
+Changes in v2:
+- Dropped WDT patches as they have been applied [1].
+- Picked up latest tags from v1.
+- Link to v1: https://patch.msgid.link/20261019-arm64-initial-support-for-mediatek-mt8163-soc-v1-0-f2462b2d2437@protonmail.ch
 
-diff --git a/Documentation/devicetree/bindings/serial/mediatek,uart.yaml b/Documentation/devicetree/bindings/serial/mediatek,uart.yaml
-index 5bd8a8853ae0..11801b58f637 100644
---- a/Documentation/devicetree/bindings/serial/mediatek,uart.yaml
-+++ b/Documentation/devicetree/bindings/serial/mediatek,uart.yaml
-@@ -43,6 +43,7 @@ properties:
-               - mediatek,mt7988-uart
-               - mediatek,mt8127-uart
-               - mediatek,mt8135-uart
-+              - mediatek,mt8163-uart
-               - mediatek,mt8173-uart
-               - mediatek,mt8183-uart
-               - mediatek,mt8186-uart
+[1] https://lore.kernel.org/all/589d0ab4-46cf-4b8d-b4b3-5519dbf030ea@roeck-us.net/
 
--- 
-2.56.0
+---
+Ben Grisdale (6):
+      dt-bindings: arm: mediatek: Add MT8163 Amazon Echo Dot (2016)
+      dt-bindings: interrupt-controller: mediatek,mt6577-sysirq: Add MT8163
+      dt-bindings: timer: mediatek,timer: Add MT8163
+      dt-bindings: serial: mediatek,uart: Add MT8163
+      arm64: dts: mediatek: Add basic support for MT8163 SoC
+      arm64: dts: mediatek: Add Amazon Echo Dot (2016)
+
+ .../devicetree/bindings/arm/mediatek.yaml          |   4 +
+ .../mediatek,mt6577-sysirq.yaml                    |   1 +
+ .../devicetree/bindings/serial/mediatek,uart.yaml  |   1 +
+ .../devicetree/bindings/timer/mediatek,timer.yaml  |   1 +
+ arch/arm64/boot/dts/mediatek/Makefile              |   1 +
+ .../boot/dts/mediatek/mt8163-amazon-biscuit.dts    |  68 ++++++
+ arch/arm64/boot/dts/mediatek/mt8163.dtsi           | 243 +++++++++++++++++++++
+ 7 files changed, 319 insertions(+)
+---
+base-commit: 8b7179210b22f8e48a82c5ceacb9d56a9c4cfec4
+change-id: 20261018-arm64-initial-support-for-mediatek-mt8163-soc-ea58d47cb7aa
+
+Best regards,
+--  
+Ben Grisdale <bengris32@protonmail.ch>
 
 
 
