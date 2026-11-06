@@ -2,112 +2,100 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 03A64606EEA4
-	for <linux-mediatek@archiver.kernel.org>; Fri,  6 Nov 2026 12:09:33 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id EB5E3606A32C
+	for <linux-mediatek@archiver.kernel.org>; Fri,  6 Nov 2026 12:40:23 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=wAxokAyd;
-	dkim=pass (2048-bit key, unprotected) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=NlKD8YVJ
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=eb9Sur+p;
+	dkim=pass (2048-bit key, unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=cv0gq7//
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Subject:Cc:To:From:Date:Message-ID:Reply-To:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=+KjFRIlwc0fQgpSaiqKXkBqkuri5Ko/sHn1nPO0owQo=; b=wAxokAydh97Y4Co1+Fikr/jfwk
-	zoZFCqCZUwIpcLrj4EQI9KcNnXQyAa6TA1IHjndGmDFQvRktS8lN0Var0hnZgsKsl8CsWjZWcPSPT
-	9pcpiFdmL8NVCDRzQjlSzbhkOls/fjEXz6dvGdStm15HNLniwzQavC45ZvmqiJmcehEsHCzdyG6h0
-	aUmMg1uobnqpbkLesxu3wRmQ52azwf6TYNJBN8VFbOJGwQyVwBdr7dRa1JGRpiy4rJpaUCAB/9FTk
-	wlekIJmeqx7gG9+sxywjoeOwaUjZRMHUIlS0S2Qbxkqgc6nHe8LWgZnF32KOWaHLB6t+DFW81IpVU
-	yPsrXeqg==;
+	bh=I7rpnBx9YoXkP8aLjecj2KvEgsGyzrkFXLzcIf+WpQs=; b=eb9Sur+puw9dItVYQ/45Vwu48w
+	tI9iJ6AOJJw9iS5JwSDl7Nrdswd4WaCOLk7NHbuNqdtgrRO7ESgyF4nTe62iI/Yud7ONA9KYDiKZU
+	WiZw/Tgt++TiipJqKbSkHxlcekWD4cBi0U8BCQelbTRr70r7rqUDKGjX4XM/hLdNpdxZXE187UqKI
+	lYusQxvl48fRWfs4tCAnk+H+saUa7AvtgmKVIKukF2WNZg0EmQ84EKzG/Eb6Uv5LTQU8JY9zMM7Td
+	haIPmU1GyQ/3ds+oA12eqqgNQSEaWLF8bSzTr8O3+FWM2602VURreMZnU3LLpRZoxv4dtHj2QLXS2
+	frxJeLWA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xPIlA-0000000CGtZ-2pOz;
-	Fri, 06 Nov 2026 12:09:32 +0000
-Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f])
+	id 1xPJF0-0000000CKkF-18QP;
+	Fri, 06 Nov 2026 12:40:22 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xPIl7-0000000CGsH-2xGx
-	for linux-mediatek@lists.infradead.org;
-	Fri, 06 Nov 2026 12:09:31 +0000
-Received: by mail-wm1-x32f.google.com with SMTP id 5b1f17b1804b1-4a3517554f7so5687225e9.2
-        for <linux-mediatek@lists.infradead.org>; Fri, 06 Nov 2026 04:09:28 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20260707; t=1793966967; x=1794571767; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:content-type:mime-version
-         :references:subject:cc:to:from:date:message-id:from:to:cc:subject
-         :date:message-id:reply-to:content-type;
-        bh=+KjFRIlwc0fQgpSaiqKXkBqkuri5Ko/sHn1nPO0owQo=;
-        b=NlKD8YVJj7tHIS4FvfaI0q/W5jZLUOy1T5T/8jsbTBDc+wpzusFQ5KQkkvq29ADW/G
-         N9YOA2sdxsViJBGP58Kobfa7GPZG2tG+o/Yw7s5DJJratjV2wcWehnOXU+4rd6PPoUl7
-         kmnmZ+tglgaAtP4n/t++UhftsF3PWUehNCfL4btI01kJED+uHlGqVKXQ1jvmSXmFFdt/
-         Z6jTQ+/Be78JeAoVwPjfKD4X6HvDq8NFyDzNCmNXDQrNlAhw7TjWfKabGptAifEVxVem
-         s3q/Y3UU9WaJF/ZObIHeC89bKHV/v6GErYM/U0dxpExQhHjR4MGH9KLZZOMto8K8wrbx
-         2IiA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1793966967; x=1794571767;
-        h=in-reply-to:content-disposition:content-type:mime-version
-         :references:subject:cc:to:from:date:message-id:x-gm-gg
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
-         :content-type;
-        bh=+KjFRIlwc0fQgpSaiqKXkBqkuri5Ko/sHn1nPO0owQo=;
-        b=OHcCned1ltFv1EkIep9MQabNqQ1UL8JtMKTcCLfJDH/Rns4wghKmAIPPrF0qwGPY2Q
-         147vw39i/8TgilkKoy3LRmO9z2x4ylx8Up/xwqse7Eb0GAJ+2yuqzekfUWZSp/JueQs+
-         I3d6HcogsaGgQ8Fm48Lgwy7cbESceHK/ldqHe+xnS+JMdVQmE+QR/mP3WIp8NCm/vYqh
-         NTft9yXcOQJLbqHo4KvZ3KAfbmCsiAJjUhNk5Fvmbge06xlKKhZRVW8g7YkvNORo7hwL
-         6rusGEuoRr6DHMyJzDmBcsPzHlxoZpGCJy2/wzQ2aHdmPNNHx3YkqBxWY1KP/G8136Cu
-         M+Ew==
-X-Forwarded-Encrypted: i=1; AKwUvByNCFdjMFsjJEj/ZcWYGs5V/wUay4VqpUwuqUuBsz/6XEiAX/HO93ayhsug7M3oEz7bDkpOlmoKMQKMQkMLeA==@lists.infradead.org
-X-Gm-Message-State: APuU4Z/9TFpvMV1CVw7pPqO9jt/ieFSGEtM8OW3PeHONMp/ZYXuRymEU
-	/mJb/JoYxuB/4ZKvQYzZ/9Ib2D+PiFJeGcj9+39mj4Zg4V14YrTP5iiW
-X-Gm-Gg: AYBFou1Vq3jdgpeqyGCV0zBFyVQIUB3CzpO/cVZ9yiNlK7zMAlAOOmjc/KOR4G0Bizo
-	hMLGuU36shSnwp6sCwGcEi0DIL3X0HeFdaMvWibiH670R3yuFT7GLi/vKABorxd+GbV5/1Uv9KM
-	1ytjDm2IIR8H20knWU/qz9MDUXS/U5J9bkESgVbJP2ouUT8D759ve0+JjMooli84ZlTlc4aoDD0
-	34WVm3XHZeZS8x+nrcaR2c3fj2sbI575DSF/X3jLCMXSP8PkjCcmqfI64H0A47qH+d90yWkAqIc
-	LR/4fvIqkM1RAKVOOI36GJBURcqH9nTzIg5ds4v6QqhC9xXkyovHUZnSCAGe75BxedkZSwgrR+b
-	2QcssHv0ahbIgLjn0k+OsKJhAw99zpCZELzvlhetyP4hbxKxBF96tAjxR3HkpnsZvNYRL2psIuX
-	+1Vk7mVpszpuBZHQeGAGdgJmm4qTcWMoFcq70eNa1HbNpAGMqdIyAET6aA8pACz51tGqkQ7vPv3
-	OiuRs9TurHeNaISPLHF09XZeWAJqZifoRmNZGi8OxHKxr3J2ocU+V+5vnGkGQwPNh9U8mr3ymqL
-	nIHKjqvipO04l1iH3dQO9HzMIy9AQ08OMediy1f9Fd9eIQAwi4g0DmI5k98qXXqL/gp2NUJ35FY
-	UzIIsQX6J7KSn0sI=
-X-Received: by 2002:a05:600c:64c5:b0:4a7:4697:dae3 with SMTP id 5b1f17b1804b1-4b6dfca2330mr40505405e9.24.1793966967349;
-        Fri, 06 Nov 2026 04:09:27 -0800 (PST)
-Received: from Ansuel-XPS. (93-34-90-148.ip49.fastwebnet.it. [93.34.90.148])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-492d7233297sm3526249f8f.27.2026.11.06.04.09.25
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 06 Nov 2026 04:09:26 -0800 (PST)
-Message-ID: <6aedc376.79189afa.3a0b25.2405@mx.google.com>
-X-Google-Original-Message-ID: <au3DcuM4XQPC-Aus@Ansuel-XPS.>
-Date: Fri, 6 Nov 2026 13:09:22 +0100
-From: Christian Marangi <ansuelsmth@gmail.com>
-To: Andrew Lunn <andrew@lunn.ch>
-Cc: Heiner Kallweit <hkallweit1@gmail.com>,
-	Russell King <linux@armlinux.org.uk>,
-	"David S. Miller" <davem@davemloft.net>,
-	Eric Dumazet <edumazet@kernel.org>,
-	Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
-	Daniel Golle <daniel@makrotopia.org>,
-	Qingfang Deng <dqfext@gmail.com>,
-	SkyLake Huang <SkyLake.Huang@mediatek.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Joris Vaisvila <joey@tinyisr.com>,
-	Ahmed Naseef <naseefkm@gmail.com>, linux-kernel@vger.kernel.org,
-	netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH net-next v4 5/6] net: phy: mediatek: add calibration
- logic for AN7581
-References: <20261103221439.30502-1-ansuelsmth@gmail.com>
- <20261103221439.30502-6-ansuelsmth@gmail.com>
- <028a75a3-b69c-4ae8-8f15-3ef855346a0f@lunn.ch>
+	id 1xPJEx-0000000CKjm-2BIL;
+	Fri, 06 Nov 2026 12:40:19 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by tor.source.kernel.org (Postfix) with ESMTP id 6F8E7601E3;
+	Fri,  6 Nov 2026 12:40:18 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 744301F0089F;
+	Fri,  6 Nov 2026 12:40:17 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1793968818;
+	bh=I7rpnBx9YoXkP8aLjecj2KvEgsGyzrkFXLzcIf+WpQs=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To;
+	b=cv0gq7//oTp0dAwoAY2P60tkzG7qOXixypboCv6somxbv4RJe5y516ibiIt9yil0y
+	 6Xus26S5S7CjxFEgzJ6hZni98dpD8Y/omMUtCqA4qji8MxkiTaYplwOOW48zZztgn9
+	 biJBA8ky84yjfhdUFX9fRCe+oS8D893fUM9AYufhLCP12MMbLUTZ8mXNG/OPBCvc1G
+	 DIevwtEp6pl4GRQg1cF62xWNKe0C2Oa7ePx8fTta9k3W+1zeQkAVQDl44kBiPO2/LG
+	 dx8EhOOPaR6wOfy/YLyX01VcjVuebpZVFEllgtNJqAQKSVIn+yFsCLndqNWCvS3rdQ
+	 Fk78GnOIw8FXg==
+Date: Fri, 6 Nov 2026 13:40:15 +0100
+From: Thierry Reding <thierry.reding@kernel.org>
+To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+Cc: Krzysztof Kozlowski <krzk@kernel.org>, Frank.Li@oss.nxp.com, 
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Jiri Slaby <jirislaby@kernel.org>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Russell King <linux@armlinux.org.uk>, 
+	Richard Genoud <richard.genoud@bootlin.com>, Nicolas Ferre <nicolas.ferre@microchip.com>, 
+	Alexandre Belloni <alexandre.belloni@bootlin.com>, Claudiu Beznea <claudiu.beznea@tuxon.dev>, 
+	Frank Li <Frank.Li@nxp.com>, Sascha Hauer <s.hauer@pengutronix.de>, 
+	Pengutronix Kernel Team <kernel@pengutronix.de>, Fabio Estevam <festevam@gmail.com>, 
+	Peter Griffin <peter.griffin@linaro.org>, Alim Akhtar <alim.akhtar@samsung.com>, 
+	Laxman Dewangan <ldewangan@nvidia.com>, Jonathan Hunter <jonathanh@nvidia.com>, 
+	Orson Zhai <orsonzhai@gmail.com>, Baolin Wang <baolin.wang@linux.alibaba.com>, 
+	Chunyan Zhang <zhang.lyra@gmail.com>, Maxime Coquelin <mcoquelin.stm32@gmail.com>, 
+	Alexandre Torgue <alexandre.torgue@foss.st.com>, Cunhao Lu <1579567540@qq.com>, 
+	Raul E Rangel <rrangel@chromium.org>, Yenchia Chen <yenchia.chen@mediatek.com>, 
+	Zhiyong Tao <zhiyong.tao@mediatek.com>, Carlo Caione <ccaione@baylibre.com>, Moteen Shah <m-shah@ti.com>, 
+	Kendall Willis <k-willis@ti.com>, Kartik Rajput <kkartik@nvidia.com>, Fan Wu <fanwu01@zju.edu.cn>, 
+	Nicolai Buchwitz <nb@tipi-net.de>, Karl Mehltretter <kmehltretter@gmail.com>, 
+	Stefan =?utf-8?B?RMO2c2luZ2Vy?= <stefandoesinger@gmail.com>, Shitalkumar Gandhi <shital.gandhi45@gmail.com>, 
+	Peng Fan <peng.fan@nxp.com>, Sherry Sun <sherry.sun@nxp.com>, 
+	John Ogness <john.ogness@linutronix.de>, Pan Chuang <panchuang@vivo.com>, Petr Mladek <pmladek@suse.com>, 
+	Robin Gong <yibin.gong@nxp.com>, Konrad Dybcio <konrad.dybcio@oss.qualcomm.com>, 
+	Stephan Gerhold <stephan.gerhold@linaro.org>, Zhaoyang Yu <2426767509@qq.com>, 
+	"Nikola Z. Ivanov" <zlatistiv@gmail.com>, Haoxiang Li <haoxiang_li2024@163.com>, 
+	"Mike Rapoport (Microsoft)" <rppt@kernel.org>, Biju Das <biju.das.jz@bp.renesas.com>, 
+	Geert Uytterhoeven <geert+renesas@glider.be>, Myeonghun Pak <mhun512@gmail.com>, 
+	Wenhua Lin <Wenhua.Lin@unisoc.com>, Cixi Geng <cixi.geng@linux.dev>, 
+	"open list:TTY LAYER AND SERIAL DRIVERS" <linux-kernel@vger.kernel.org>, 
+	"open list:TTY LAYER AND SERIAL DRIVERS" <linux-serial@vger.kernel.org>, 
+	"moderated list:ARM/Mediatek SoC support" <linux-arm-kernel@lists.infradead.org>, 
+	"moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, 
+	"open list:ARM/FREESCALE IMX / MXC / LAYERSCAPE ARM ARCHIT..." <imx@lists.linux.dev>, 
+	"open list:ARM/QUALCOMM MAILING LIST" <linux-arm-msm@vger.kernel.org>, 
+	"open list:ARM/SAMSUNG S3C, S5P AND EXYNOS ARM ARCHITECTURES" <linux-samsung-soc@vger.kernel.org>, 
+	"open list:TEGRA ARCHITECTURE SUPPORT" <linux-tegra@vger.kernel.org>, 
+	"moderated list:ARM/STM32 ARCHITECTURE" <linux-stm32@st-md-mailman.stormreply.com>, vkoul@kernel.org
+Subject: Re: [PATCH 1/1] tty: serial: use dmaengine_desc_set_callback()
+Message-ID: <au3GYOP5P7B90-bX@orome>
+References: <20261102175527.3957740-1-Frank.Li@oss.nxp.com>
+ <aux2VKHnVLwq_wzi@orome>
+ <auyQEVmA2KeGu9DL@ashevche-desk.local>
+ <auyiAE3lhnFahBK2@orome>
+ <auysTnqWgz2kE7e9@ashevche-desk.local>
+ <2209947d-0b9b-417f-9ffb-1c81790af9db@kernel.org>
+ <auzEupFd_Ek2HpLG@ashevche-desk.local>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="bfkiplbygfje4qbi"
 Content-Disposition: inline
-In-Reply-To: <028a75a3-b69c-4ae8-8f15-3ef855346a0f@lunn.ch>
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261106_040929_772361_12DEB86C 
-X-CRM114-Status: GOOD (  19.17  )
-X-Spam-Score: -2.1 (--)
+In-Reply-To: <auzEupFd_Ek2HpLG@ashevche-desk.local>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -118,123 +106,159 @@ List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-7.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
-	DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,FREEMAIL_FORGED_FROMDOMAIN,
-	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=no
+X-Spam-Status: No, score=-15.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,
+	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=ham
 	autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On Thu, Nov 05, 2026 at 11:47:26PM +0100, Andrew Lunn wrote:
-> > +static int airoha_cal_cycle(struct phy_device *phydev, int devad,
-> > +			    u32 regnum, u16 mask, u16 cal_val)
-> > +{
-> > +	struct airoha_socphy_shared *shared = phy_package_get_priv(phydev);
-> > +	struct phy_device *phydev_p0;
-> > +	int ret;
-> > +
-> > +	phydev_p0 = shared->phydev_p0;
-> > +
-> > +	phy_modify_mmd(phydev, devad, regnum, mask, cal_val);
-> > +
-> > +	ret = mtk_cal_cycle_wait(phydev_p0);
-> 
-> 
-> > +static int airoha_rext_cal_sw(struct phy_device *phydev)
-> > +{
-> 
-> ...
-> 
-> > +	phydev_dbg(phydev, "Start REXT SW cal.\n");
-> > +	first_calib = airoha_cal_cycle(phydev, MDIO_MMD_VEND1, MTK_PHY_RG_ANA_CAL_RG5,
-> > +				       MTK_PHY_RG_REXT_ZCAL_CTRL_MASK, zcal_ctrl);
-> > +
-> 
-> > +static int airoha_cal_sw(struct phy_device *phydev, enum CAL_ITEM cal_item,
-> > +			 u8 start_pair, u8 end_pair)
-> > +{
-> > +	u8 pair_n;
-> > +	int ret;
-> > +
-> > +	for (pair_n = start_pair; pair_n <= end_pair; pair_n++) {
-> > +		switch (cal_item) {
-> > +		case REXT:
-> > +			ret = airoha_rext_cal_sw(phydev);
-> > +			break;
-> 
-> > +static int airoha_start_cal(struct phy_device *phydev, enum CAL_ITEM cal_item,
-> > +			    enum CAL_MODE cal_mode, u8 start_pair,
-> > +			    u8 end_pair, u32 *buf)
-> > +{
-> > +	int ret;
-> > +
-> > +	switch (cal_mode) {
-> > +	case SW_M:
-> > +		ret = airoha_cal_sw(phydev, cal_item, start_pair, end_pair);
-> 
-> 
-> > +static int airoha_phy_calib(struct phy_device *phydev)
-> > +{
-> > +	phy_package_lock(phydev);
-> > +	if (!shared->rext_sw_calib_done) {
-> > +		ret = airoha_start_cal(phydev, REXT, SW_M, NO_PAIR, NO_PAIR, NULL);
-> > +		if (ret) {
-> > +			phy_package_unlock(phydev);
-> > +			return ret;
-> > +		}
-> > +
-> > +		shared->rext_sw_calib_done = true;
-> > +	}
-> > +	phy_package_unlock(phydev);
-> > +
-> > +	ret = airoha_start_cal(phydev, TX_R50, SW_M, PAIR_A, PAIR_D, NULL);
-> 
-> 
-> > +static int an7581_phy_config_init(struct phy_device *phydev)
-> > +{
-> > +	struct airoha_socphy_shared *shared = phy_package_get_priv(phydev);
-> > +	struct phy_device *phydev_p0;
-> > +	u8 phy_offset;
-> > +	int oldpage;
-> > +	int ret;
-> > +
-> > +	phydev_p0 = shared->phydev_p0;
-> > +	phy_offset = phydev->mdio.addr - phydev_p0->mdio.addr;
-> > +
-> > +	if (phy_package_init_once(phydev)) {
-> > +		ret = an7581_phy_package_config_init_once(phydev);
-> > +		if (ret)
-> > +			return ret;
-> > +	}
-> > +
-> > +	ret = airoha_phy_calib(phydev);
-> 
-> > @@ -88,6 +1610,7 @@ static struct phy_driver mtk_socphy_driver[] = {
-> >  	{
-> >  		PHY_ID_MATCH_EXACT(AIROHA_GPHY_ID_AN7581),
-> >  		.name		= "Airoha AN7581 PHY",
-> > +		.config_init	= an7581_phy_config_init,
-> 
-> > > There are 4 phys in total, only the phy with mdio address 9 has the
-> > > calibration capability. Thus only one phy at the time can perform
-> > > the calibration sequence.
-> 
-> config_init -> airoha_phy_calib -> airoha_start_cal -> airoha_cal_sw
-> -> airoha_cal_cycle
-> 
-> I cannot say i looked at all the details closely, maybe i missed an ==
-> 9 somewhere, but to me, it looks like two config_init can run in
-> parallel.
-> 
 
-Hi Andrew, in v5 I converted the driver to full phy_package_lock/unlock and
-I set the base address correctly to the hardcoded value of the SoC.
+--bfkiplbygfje4qbi
+Content-Type: text/plain; protected-headers=v1; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+Subject: Re: [PATCH 1/1] tty: serial: use dmaengine_desc_set_callback()
+MIME-Version: 1.0
 
-This permitted me to simplify the validation code instead of saving the
-phydev for port0 in the phy_package struct (a much solid implementation in
-short)
+On Thu, Nov 05, 2026 at 08:02:34PM +0200, Andy Shevchenko wrote:
+> On Thu, Nov 05, 2026 at 05:21:06PM +0100, Krzysztof Kozlowski wrote:
+> > On 05/11/2026 17:18, Andy Shevchenko wrote:
+> > > On Thu, Nov 05, 2026 at 04:36:38PM +0100, Thierry Reding wrote:
+> > >> On Thu, Nov 05, 2026 at 04:17:53PM +0200, Andy Shevchenko wrote:
+> > >>> On Thu, Nov 05, 2026 at 01:28:46PM +0100, Thierry Reding wrote:
+> > >>>> On Mon, Nov 02, 2026 at 12:54:48PM -0500, Frank.Li@oss.nxp.com wro=
+te:
+> > >>>>>
+> > >>>>> Replace open-coded assignments to callback and callback_param fie=
+lds
+> > >>>>> of struct dma_async_tx_descriptor with calls to the
+> > >>>>> dmaengine_desc_set_callback() helper across serial drivers.
+> > >>>>>
+> > >>>>> No functional change intended. Prepare to make struct
+> > >>>>> dma_async_tx_descriptor private to the DMA engine.
+> > >>>>>
+> > >>>>> Signed-off-by: Frank Li <Frank.Li@nxp.com>
+> > >>>>> ---
+> > >>>>>  drivers/tty/serial/8250/8250_dma.c  | 6 ++----
+> > >>>>>  drivers/tty/serial/8250/8250_mtk.c  | 3 +--
+> > >>>>>  drivers/tty/serial/8250/8250_omap.c | 6 ++----
+> > >>>>>  drivers/tty/serial/amba-pl011.c     | 6 ++----
+> > >>>>>  drivers/tty/serial/atmel_serial.c   | 6 ++----
+> > >>>>>  drivers/tty/serial/fsl_lpuart.c     | 6 ++----
+> > >>>>>  drivers/tty/serial/imx.c            | 6 ++----
+> > >>>>>  drivers/tty/serial/msm_serial.c     | 6 ++----
+> > >>>>>  drivers/tty/serial/mxs-auart.c      | 6 ++----
+> > >>>>>  drivers/tty/serial/pch_uart.c       | 6 ++----
+> > >>>>>  drivers/tty/serial/samsung_tty.c    | 6 ++----
+> > >>>>>  drivers/tty/serial/serial-tegra.c   | 6 ++----
+> > >>>>>  drivers/tty/serial/sh-sci.c         | 9 +++------
+> > >>>>>  drivers/tty/serial/sprd_serial.c    | 3 +--
+> > >>>>>  drivers/tty/serial/stm32-usart.c    | 6 ++----
+> > >>>>>  15 files changed, 29 insertions(+), 58 deletions(-)
+> > >>>>
+> > >>>> Reviewed-by: Thierry Reding <treding@nvidia.com>
+> > >>>
+> > >>> Krzysztof, now look at this case. I would argue that this is even l=
+ess fit than
+> > >>> # subpart(s) case, because it might imply anything. Again the probl=
+em is the
+> > >>> bundle, and for such a case (when tons of independent changes are b=
+undled in
+> > >>> the same stuff, *every* Rb tag has to be explained on what has been=
+ reviewed!
+> > >>
+> > >> It may be a bit subtle, but the placement of the tag indicates that =
+it
+> > >> applies to the entirety of the changes. I didn't crop the list of
+> > >> changed files, nor did I omit the summary.
+> > >=20
+> > > This doesn't clarify the question. Wordless Rb tag on a bundles is an=
+ oddity.
+> >=20
+> > No, it's perfectly normal and typical. I would not expect anything else,
+> > because writing "LGTM" is pointless. We are experienced reviewers and we
+> > do understand what Reviewer's statement of oversight means, thus giving
+> > the tag is obvious, explicit and not odd.
+> >=20
+> > >=20
+> > >> That bit of meta-data obviously isn't picked up into the tag line, b=
+ut
+> > >> I think the default meaning of Reviewed-by is that it applies to the
+> > >> entire thing.
+> > >=20
+> > > And I interpret it otherwise, because this is a set of independent ch=
+anges
+> > > bundled into a single patch!
+> >=20
+> > It's not set of independent changes, but even if it was then it would
+> > not matter. We review the code regardless how we actually judge the
+> > atomicity of a patch.
+>=20
+> And I confront exactly that! When the patch may be split it has to. This =
+is
+> seems the outcome of this discussion to me. From now on I think I will NAK
+> any bundle patch until piece that I in charge to is split from the bundle.
 
--- 
-	Ansuel
+I'd like to caution against this. There's effectively one change in this
+patch and it converts all the drivers in the same way. This was probably
+generated using a script or semantic patch. Requiring this to be split
+up is going to make the author spend a lot of time creating 15 patches
+instead of just one. They will have to write the same commit message
+with tiny variations, which they'll most likely just use a script for
+because it's tedious. Or they don't use a script and likely get at least
+one commit message wrong. And then we're not reviewing a patch for
+technical correctness anymore but waste a lot of time on nit-picking on
+a subject or commit message. Each of these commit messages is not going
+to add any new information either, so the only thing you really achieve
+is to increase the signal-to-noise ratio.
+
+That's completely absurd.
+
+Also, reviewing 15 miniature patches is going to take much more time
+that reviewing this monolithic one, so I suspect potential reviewers are
+more likely to just stay away from it to begin with.
+
+In the end you make life miserable for everyone. Well, except for
+individual driver maintainers that want a quick and easy way to slap
+their approval onto only the one driver change that they really care
+about.
+
+But there's already a way that they can do that. Acked-by can just mean
+"I maintain this driver and I agree with the direction, but I haven't
+bothered to do a full technical review". That's what most of these
+"partial" Reviewed-bys are, so why not just use that existing tool?
+
+And I'm saying all of this without judgement, because sometimes you do
+not have the time to do a full review but you still want to lend your
+support to ongoing work. I do that quite often myself.
+
+But at other times I do want to look at something in more detail, or
+just ended up looking thoroughly enough for it to count as a full review
+and when I do I'll let people know with a Reviewed-by.
+
+Thierry
+
+--bfkiplbygfje4qbi
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAABCgAdFiEEiOrDCAFJzPfAjcif3SOs138+s6EFAmrtyq0ACgkQ3SOs138+
+s6Fr4A/9FKItEmEcI7D1clbCnePcAJeqtYQ0rYq/qZQPbKo0mPQbeN5qKa1XDgHO
+o3ylZ3Piqsnzv+NNOe6cmtCjzv4Bb82/Z9g8metI4jz4gOraKos+oVhk2EIMFv7f
+yrPVGwcvgtlSnx6MO/kFoS+1JYbWlZ9JA7jJCTcXBUF28R780a2elyHAnxamdAQZ
+TrzhhmaRmsdt2TLYxJRPlrKWjfzhl/2HKGfFTTROXgaiaj8oQeCNcBGC1TKKtGls
+g4MQJ6AZ1Ke58gd3O1sYh3QUlOUewNawK+LOsDoGjooF6zg2loLypU6twHl7cBdH
+GoFRsLUImQvYXNUYhDxGCxNZ3OvMyIM+8X3G2xIJuHY8MEbJY5ukp/rPKi/4CQyK
+VxwvkHMoAX705PtVMKdY2ddQt9ceif+v7ohWDmce8B3NOopq0itUXxcU8Z2MWw99
+qEl1IoIYVXBYiJeaIcLzjSPmJeFPAJ49cJhNeqpH190C5hIqxPK75Jyh7+Pokx+y
+yWFEIla8n0+o14XOP9M2wnrvJ34EQI4aW8Ia/nFn3b1oONvBu+q8h8wMH5hH2fvJ
+O3QCmMyze7y03zKMQL2w8jE7qniSfi+wUNb318xOlXRqBKHTSGv7IEu5try/XdKo
+L8B242zIrUhLZ8MWwNSUfjq9qIT7PSG50W3uNxTv0hduJXFO13c=
+=a1fc
+-----END PGP SIGNATURE-----
+
+--bfkiplbygfje4qbi--
 
