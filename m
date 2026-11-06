@@ -2,81 +2,161 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 61C72606A326
-	for <linux-mediatek@archiver.kernel.org>; Fri,  6 Nov 2026 06:23:07 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 72445606A328
+	for <linux-mediatek@archiver.kernel.org>; Fri,  6 Nov 2026 07:23:31 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=4pDLy/p/;
-	dkim=pass (1024-bit key, unprotected) header.d=mediatek.com header.i=@mediatek.com header.a=rsa-sha256 header.s=dk header.b=cBjS1ii8
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=yDHDVA+Q;
+	dkim=pass (2048-bit key, unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=kgJBzU0N
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Unsubscribe-Post:List-Owner;
-	bh=4NYaYldbirPssRZVT+OAgxyM3srfPHD9+pwWgKczAn8=; b=4pDLy/p/0Ri/fRIKbC7G79cwr8
-	/ddWKYZ2SLI1Z35/YCZ0d2U0AFHS2xJeAuMce+OYDinv/Uc4C16UFBvhDcX7ijfdktSgGrD9k4CRO
-	P+YpX34JBJakSWS3f55cmxeE37fbt+fseI+jwMlxTRlE2D88utLuxBjDMomq3RZdwx9hOycx678Ak
-	BQRCtO8Cs/vVNSquyuosOU+C+zWEGgTbr0EwZ6COVFoPVsACCKDndCpXn9GMoQMC9wPQJQIsEAGYW
-	KQb9V5gUDh9FzJiBFVzrlS4Or9/y7v4uhhCPRAvRGglwh9nRpgiA75zYxb9ULjfm8czKeMC3bK24e
-	ZEOQT1CQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Unsubscribe-Post:
+	List-Owner; bh=AsDZKqqDajMBUIC7cMkctVE7Ylj5bg3zvbe3cPAhv1Y=; b=yDHDVA+QPneYsu
+	z7L9fyPvDapDyw0p7xCZ38tzZVVXE5RJcbqRjDltO3aRw2X4bNSZIMtPtDvAxPC/sVAqMsZFdODsr
+	u4/e6XOuzyYdJHlIZfKSaVOwH+1jWuNUFUsL1CmtxFxvXgOg3l6i2V4Zthm07I9R7zt9KaB89pU4Q
+	zxM72e+8hi8XAWvy3k3LFH+V5zxvkjw4DiecWRg/AdXDCx/uhpqV1bwkYoomKRkgEXhHCrZJCB7oM
+	Yakaa2v8DFd7l6jFAGnpAYyFROPFp8gYe72j3SLIkg0f0Bvz3nJlacFv30znH0jAhLcZKy6YzUuF/
+	qBLBbtuQLDZxvPV8cReQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xPDLv-0000000BLP3-0SMm;
-	Fri, 06 Nov 2026 06:23:07 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1xPEIN-0000000BRBF-0UO9;
+	Fri, 06 Nov 2026 07:23:31 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xPDLt-0000000BLOa-0Spt;
-	Fri, 06 Nov 2026 06:23:06 +0000
-X-UUID: 85061402d9aa11f1acbe4559397dec65-20261105
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=4NYaYldbirPssRZVT+OAgxyM3srfPHD9+pwWgKczAn8=;
-	b=cBjS1ii8wHzMfy5vpoRaW2+oYp77iwwOFV2s7TcFjeVZXov8ba1hW2Q5npatIQVcLxOKzqMyAJfT5MUcPwkBdxIdX0PBzPA2Olm+K1U6pB3FpXvhnPaSyTI/70nr+VEcCVEYWZjJARpKjHCTHUvre6/f+kUcE8eA/8EGXZsXxIU=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.21,REQID:f4fa7f2e-b14d-4baa-b484-c44f30640243,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:b0318ac,CLOUDID:a7accfdf-a34d-4b3e-8fda-dd691f9c4aa6,B
-	ulkID:nil,BulkQuantity:0,SF:102|836|865|888|898,TC:-5,Content:0|15|50|99,E
-	DM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0
-	,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 2,SSN|SDN
-X-CID-BAS: 2,SSN|SDN,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: 85061402d9aa11f1acbe4559397dec65-20261105
-Received: from mtkmbs10n1.mediatek.inc [(172.21.101.34)] by mailgw02.mediatek.com
-	(envelope-from <defa.li@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1732208811; Thu, 05 Nov 2026 23:23:02 -0700
-Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
- MTKMBS09N2.mediatek.inc (172.21.101.94) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.29; Fri, 6 Nov 2026 14:22:59 +0800
-Received: from mbjsdccf07.gcn.mediatek.inc (10.15.20.246) by
- mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.2562.29 via Frontend Transport; Fri, 6 Nov 2026 14:22:58 +0800
-From: Defa Li <defa.li@mediatek.com>
-To: Alexandre Belloni <alexandre.belloni@bootlin.com>, Frank Li
-	<Frank.Li@nxp.com>, Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-CC: <linux-i3c@lists.infradead.org>, <linux-kernel@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>,
-	<wsd_upstream@mediatek.com>, <mingchang.jia@mediatek.com>,
-	<yuhan.wei@mediatek.com>, <hao.lin@mediatek.com>, Defa Li
-	<defa.li@mediatek.com>
-Subject: [PATCH] i3c: master: Disable slave events before RSTDAA
-Date: Fri, 6 Nov 2026 14:22:10 +0800
-Message-ID: <20261106062236.564607-1-defa.li@mediatek.com>
-X-Mailer: git-send-email 2.43.0
+	id 1xPEIK-0000000BRAy-1mu1;
+	Fri, 06 Nov 2026 07:23:28 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by sea.source.kernel.org (Postfix) with ESMTP id 2F76B43856;
+	Fri,  6 Nov 2026 07:23:28 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 41CB01F0089F;
+	Fri,  6 Nov 2026 07:23:07 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1793949808;
+	bh=AsDZKqqDajMBUIC7cMkctVE7Ylj5bg3zvbe3cPAhv1Y=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To;
+	b=kgJBzU0N1n5nt2hHMVInzjEkXlwGE6VDOyj1Kv2Wbr8H7oSFuLDXVEVt+UnrReaRP
+	 K+dR5cN2F2vuH+ZGr0wq29U05XpPWMIKBkujPMbrU3GboHvPTdLsN4Xh7GGh8bch1G
+	 1QlngknOWDBzQxm1/nB+l6SNB8ndDegWthwes9LVigF+Vg8eU9xjI+FYqlRHN7t/VI
+	 LYS8uWMP7UzAs4VANdjyMy6/SJ65AdiRt6H1/hbMSO9mAoh/Z/L63BxDEyV6C40Iih
+	 m9q8W2sK7lZi4s7mmdEy+rg4NrcxbKPa+1ocf/betMbpiQMCdfnFLhaifzKFo/HWAY
+	 0aPZMgVdHBL3A==
+Message-ID: <b413ede5-3b18-4743-8e4b-6f44de6bf871@kernel.org>
+Date: Fri, 6 Nov 2026 08:23:04 +0100
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261105_222305_184498_485E0A5E 
-X-CRM114-Status: GOOD (  10.95  )
-X-Spam-Score: -2.1 (--)
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 1/1] tty: serial: use dmaengine_desc_set_callback()
+To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
+Cc: Thierry Reding <thierry.reding@kernel.org>, Frank.Li@oss.nxp.com,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Jiri Slaby <jirislaby@kernel.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Russell King <linux@armlinux.org.uk>,
+ Richard Genoud <richard.genoud@bootlin.com>,
+ Nicolas Ferre <nicolas.ferre@microchip.com>,
+ Alexandre Belloni <alexandre.belloni@bootlin.com>,
+ Claudiu Beznea <claudiu.beznea@tuxon.dev>, Frank Li <Frank.Li@nxp.com>,
+ Sascha Hauer <s.hauer@pengutronix.de>,
+ Pengutronix Kernel Team <kernel@pengutronix.de>,
+ Fabio Estevam <festevam@gmail.com>, Peter Griffin
+ <peter.griffin@linaro.org>, Alim Akhtar <alim.akhtar@samsung.com>,
+ Laxman Dewangan <ldewangan@nvidia.com>,
+ Jonathan Hunter <jonathanh@nvidia.com>, Orson Zhai <orsonzhai@gmail.com>,
+ Baolin Wang <baolin.wang@linux.alibaba.com>,
+ Chunyan Zhang <zhang.lyra@gmail.com>,
+ Maxime Coquelin <mcoquelin.stm32@gmail.com>,
+ Alexandre Torgue <alexandre.torgue@foss.st.com>,
+ Cunhao Lu <1579567540@qq.com>, Raul E Rangel <rrangel@chromium.org>,
+ Yenchia Chen <yenchia.chen@mediatek.com>,
+ Zhiyong Tao <zhiyong.tao@mediatek.com>, Carlo Caione <ccaione@baylibre.com>,
+ Moteen Shah <m-shah@ti.com>, Kendall Willis <k-willis@ti.com>,
+ Kartik Rajput <kkartik@nvidia.com>, Fan Wu <fanwu01@zju.edu.cn>,
+ Nicolai Buchwitz <nb@tipi-net.de>, Karl Mehltretter
+ <kmehltretter@gmail.com>, =?UTF-8?Q?Stefan_D=C3=B6singer?=
+ <stefandoesinger@gmail.com>, Shitalkumar Gandhi <shital.gandhi45@gmail.com>,
+ Peng Fan <peng.fan@nxp.com>, Sherry Sun <sherry.sun@nxp.com>,
+ John Ogness <john.ogness@linutronix.de>, Pan Chuang <panchuang@vivo.com>,
+ Petr Mladek <pmladek@suse.com>, Robin Gong <yibin.gong@nxp.com>,
+ Konrad Dybcio <konrad.dybcio@oss.qualcomm.com>,
+ Stephan Gerhold <stephan.gerhold@linaro.org>, Zhaoyang Yu
+ <2426767509@qq.com>, "Nikola Z. Ivanov" <zlatistiv@gmail.com>,
+ Haoxiang Li <haoxiang_li2024@163.com>,
+ "Mike Rapoport (Microsoft)" <rppt@kernel.org>,
+ Biju Das <biju.das.jz@bp.renesas.com>,
+ Geert Uytterhoeven <geert+renesas@glider.be>,
+ Myeonghun Pak <mhun512@gmail.com>, Wenhua Lin <Wenhua.Lin@unisoc.com>,
+ Cixi Geng <cixi.geng@linux.dev>,
+ "open list:TTY LAYER AND SERIAL DRIVERS" <linux-kernel@vger.kernel.org>,
+ "open list:TTY LAYER AND SERIAL DRIVERS" <linux-serial@vger.kernel.org>,
+ "moderated list:ARM/Mediatek SoC support"
+ <linux-arm-kernel@lists.infradead.org>,
+ "moderated list:ARM/Mediatek SoC support"
+ <linux-mediatek@lists.infradead.org>,
+ "open list:ARM/FREESCALE IMX / MXC / LAYERSCAPE ARM ARCHIT..."
+ <imx@lists.linux.dev>,
+ "open list:ARM/QUALCOMM MAILING LIST" <linux-arm-msm@vger.kernel.org>,
+ "open list:ARM/SAMSUNG S3C, S5P AND EXYNOS ARM ARCHITECTURES"
+ <linux-samsung-soc@vger.kernel.org>,
+ "open list:TEGRA ARCHITECTURE SUPPORT" <linux-tegra@vger.kernel.org>,
+ "moderated list:ARM/STM32 ARCHITECTURE"
+ <linux-stm32@st-md-mailman.stormreply.com>, vkoul@kernel.org
+References: <20261102175527.3957740-1-Frank.Li@oss.nxp.com>
+ <aux2VKHnVLwq_wzi@orome> <auyQEVmA2KeGu9DL@ashevche-desk.local>
+ <2e12316d-d079-471f-9c29-ef5fb765216a@kernel.org>
+ <auys4Yg-qAr4Rt5w@ashevche-desk.local>
+ <e515960d-18fb-4d61-8842-beb6a73fbc27@kernel.org>
+ <auzEEOL4vLgt4z5I@ashevche-desk.local>
+From: Krzysztof Kozlowski <krzk@kernel.org>
+Content-Language: en-US
+Autocrypt: addr=krzk@kernel.org; keydata=
+ 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
+In-Reply-To: <auzEEOL4vLgt4z5I@ashevche-desk.local>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -87,64 +167,90 @@ List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-18.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-17.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,
 	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1
+	autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Bus initialization sends RSTDAA before disabling slave events. A hot-join
-or other slave event may occur after RSTDAA and interfere with the
-following DISEC command or the remaining initialization.
+On 05/11/2026 18:59, Andy Shevchenko wrote:
+> On Thu, Nov 05, 2026 at 05:26:18PM +0100, Krzysztof Kozlowski wrote:
+>> On 05/11/2026 17:20, Andy Shevchenko wrote:
+>>> On Thu, Nov 05, 2026 at 03:35:20PM +0100, Krzysztof Kozlowski wrote:
+>>>> On 05/11/2026 15:17, Andy Shevchenko wrote:
+>>>>>>> ---
+>>>>>>>  drivers/tty/serial/8250/8250_dma.c  | 6 ++----
+>>>>>>>  drivers/tty/serial/8250/8250_mtk.c  | 3 +--
+>>>>>>>  drivers/tty/serial/8250/8250_omap.c | 6 ++----
+>>>>>>>  drivers/tty/serial/amba-pl011.c     | 6 ++----
+>>>>>>>  drivers/tty/serial/atmel_serial.c   | 6 ++----
+>>>>>>>  drivers/tty/serial/fsl_lpuart.c     | 6 ++----
+>>>>>>>  drivers/tty/serial/imx.c            | 6 ++----
+>>>>>>>  drivers/tty/serial/msm_serial.c     | 6 ++----
+>>>>>>>  drivers/tty/serial/mxs-auart.c      | 6 ++----
+>>>>>>>  drivers/tty/serial/pch_uart.c       | 6 ++----
+>>>>>>>  drivers/tty/serial/samsung_tty.c    | 6 ++----
+>>>>>>>  drivers/tty/serial/serial-tegra.c   | 6 ++----
+>>>>>>>  drivers/tty/serial/sh-sci.c         | 9 +++------
+>>>>>>>  drivers/tty/serial/sprd_serial.c    | 3 +--
+>>>>>>>  drivers/tty/serial/stm32-usart.c    | 6 ++----
+>>>>>>>  15 files changed, 29 insertions(+), 58 deletions(-)
+>>>>>>
+>>>>>> Reviewed-by: Thierry Reding <treding@nvidia.com>
+>>>>>
+>>>>> Krzysztof, now look at this case. I would argue that this is even less fit than
+>>>>> # subpart(s) case, because it might imply anything. Again the problem is the
+>>>>> bundle, and for such a case (when tons of independent changes are bundled in
+>>>>> the same stuff, *every* Rb tag has to be explained on what has been reviewed!
+>>>>
+>>>> I think this case is obvious - Thierry reviewed this patch and gives Rb
+>>>> tag, according to reviewer's statement of oversight.
+>>>
+>>> It's unclear from a bare tag, It misses that kind of information. Documentation
+>>> is also unclear to me as it does *not* describe the case what should I do when
+>>
+>> Documentation is clear and I quote to you multiple times, to which you
+>> did not respond.
+>>
+>> "Reviewed-by:, instead, indicates that *the patch* has been reviewed and
+>> found acceptable according to the Reviewer's Statement:"
+>>
+>> Important: "THE PATCH"
+>>
+>> Further:
+>>
+>> "I state that:
+>> (a) I have carried out a technical review of *this patch* to evaluate
+>> its appropriateness and readiness for inclusion into  the mainline kernel."
+>>
+>> And further:
+>>
+>> "A Reviewed-by tag is a statement of opinion that *the patch* is an"
+>>
+>> All of these are exhaustive (as in complete) statements leaving no
+>> interpretation whether this is part of patch or entire patch. It is THE
+>> patch, meaning entire patch.
+>>
+>> You do not drive your car, as only a wheel. You driver *the car*.
+>>
+>> You live in some apartment. *The apartment* is your home, not "piece of
+>> your apartment is your home".
+> 
+> And I'm trying to explain my point: "the car" in this case is actually "the cars"!
+> I drive mine, you driver yours. "The PATCH" is wrong term when it's bundled.
 
-Send broadcast DISEC before RSTDAA to disable SIR, master request, and
-hot-join events before resetting dynamic addresses. This prevents slave
-events from disrupting bus initialization.
+It is still the patch being reviewed on the list, regardless how much
+you dislike bundling or how much you would like to call it. And in my
+example from the commit to workflows (not here), the patch COULD NOT be
+split. The patch was consisting of main part and drivers update, so
+skipping the main part invalidates entire review from statement of
+oversight point of view.
 
-Signed-off-by: Defa Li <defa.li@mediatek.com>
----
- drivers/i3c/master.c | 16 ++++++++--------
- 1 file changed, 8 insertions(+), 8 deletions(-)
+Reviewer's statement of oversight does not allow you to add Rb tag for
+partial reviews.
 
-diff --git a/drivers/i3c/master.c b/drivers/i3c/master.c
-index 01e05bad8661..4fdc8f721364 100644
---- a/drivers/i3c/master.c
-+++ b/drivers/i3c/master.c
-@@ -2571,10 +2571,12 @@ static int i3c_master_bus_init(struct i3c_master_controller *master)
- 	}
- 
- 	/*
--	 * Reset all dynamic address that may have been assigned before
--	 * (assigned by the bootloader for example).
-+	 * Disable all slave events before starting DAA. When no active device
-+	 * is on the bus, returns Mx error code M2, this error is ignored.
- 	 */
--	ret = i3c_master_rstdaa_locked(master, I3C_BROADCAST_ADDR);
-+	ret = i3c_master_enec_disec_locked(master, I3C_BROADCAST_ADDR, false,
-+					   I3C_CCC_EVENT_SIR | I3C_CCC_EVENT_MR |
-+					   I3C_CCC_EVENT_HJ, true);
- 	if (ret)
- 		goto err_bus_cleanup;
- 
-@@ -2585,12 +2587,10 @@ static int i3c_master_bus_init(struct i3c_master_controller *master)
- 	}
- 
- 	/*
--	 * Disable all slave events before starting DAA. When no active device
--	 * is on the bus, returns Mx error code M2, this error is ignored.
-+	 * Reset all dynamic address that may have been assigned before
-+	 * (assigned by the bootloader for example).
- 	 */
--	ret = i3c_master_enec_disec_locked(master, I3C_BROADCAST_ADDR, false,
--					   I3C_CCC_EVENT_SIR | I3C_CCC_EVENT_MR |
--					   I3C_CCC_EVENT_HJ, true);
-+	ret = i3c_master_rstdaa_locked(master, I3C_BROADCAST_ADDR);
- 	if (ret)
- 		goto err_bus_cleanup;
- 
--- 
-2.43.0
-
+Best regards,
+Krzysztof
 
