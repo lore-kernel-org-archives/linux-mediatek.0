@@ -2,75 +2,93 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 88095606A33E
-	for <linux-mediatek@archiver.kernel.org>; Fri,  6 Nov 2026 05:57:25 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id EB682606A328
+	for <linux-mediatek@archiver.kernel.org>; Fri,  6 Nov 2026 06:06:37 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=wK26FDqI
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=c/tHTFIC;
+	dkim=pass (1024-bit key, unprotected) header.d=chromium.org header.i=@chromium.org header.a=rsa-sha256 header.s=google header.b=F9AEB5Le
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Unsubscribe-Post:
-	List-Owner; bh=V5Lnobb+4I39QfB84s55NYKIPzzSfTvTzIQ5ko8LurA=; b=wK26FDqIF9ExRX
-	Czy21BKEZlJUCu0F4gq+YO2VoB63n9UjBe0XUxmwIpZV20aQrUG1o90bUS9Chj25VdhWCRKy+hScH
-	w/8qaioir/c8bQ27T1ONy8UlrZUZi096Jgoi+eNhVgqh469ELHH+OdBxrxSUgSHXyd7C9q6u7Drk1
-	DWV+pv5kPbE9r9Gs0PVqqE61ebEsDm99+ojG0cOHvNqIFNhJUKXVNgSZH69BCMdhFIthE/L0bn+dG
-	icEoXF/swXCLK6KQbTG2r0Ihc1xXrYKO0zHe9nUVCrlp/uEGwfNS5xzs0Ndf62MMZDV7bKv24m58d
-	H/MIRRFbPM/FiJNP+8eg==;
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Unsubscribe-Post:List-Owner;
+	bh=oA9OvOIfFIXhU1CLKiK77BzQLTal7gVWqxQ2qyRWaBc=; b=c/tHTFIC5tZWSNrN7J+GCeFid9
+	I/GRPgKrlgXRRcPmF0J30tKeYWBCP2JXswAM5qakUoKjR92saftYHXWDXqbeTgyCVqhEqHKRBEvR6
+	pnQoa1e3Wbrd2jvrR9dtChymIT9gtf9lJ+N8vmlwgRRmIhwv9x3K9ZMUnOb58s6APiJxRn0dSqYSe
+	s54RA9f6IiE8G3P388QvrOJILzHj25i+QjM4j0Zl4v81h220LKJqnOP5SCHycCLbCzHeqfrx6uOPr
+	QyF6GRU+gxVuHCbqaxCLxKh0vq+75OIEAo91ikU+/5Gq+No9y8VBiAovnv9mp0aA3ivp1rZbehrwi
+	DvzJhzRg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xPCx3-0000000BIqX-1B6v;
-	Fri, 06 Nov 2026 05:57:25 +0000
-Received: from hera.efm.de ([2001:67c:2dc4:3::227])
+	id 1xPD5x-0000000BJYh-2h5h;
+	Fri, 06 Nov 2026 06:06:37 +0000
+Received: from mail-dy1-x1330.google.com ([2607:f8b0:4864:20::1330])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xPCx0-0000000BImk-0B6S;
-	Fri, 06 Nov 2026 05:57:23 +0000
-Received: from hera.efm.de (localhost [IPv6:::1])
-	by hera.efm.de (Postfix) with ESMTPS id 4BCA140C3D59A;
-	Fri,  6 Nov 2026 06:57:15 +0100 (CET)
-Received: from localhost (localhost [IPv6:::1])
-	by hera.efm.de (Postfix) with ESMTP id 30EC6413304F4;
-	Fri,  6 Nov 2026 06:57:15 +0100 (CET)
-Received: from hera.efm.de ([IPv6:::1])
- by localhost (hera.efm.de [IPv6:::1]) (amavis, port 10026) with ESMTP
- id sFwEJI33bHUb; Fri,  6 Nov 2026 06:57:15 +0100 (CET)
-Received: from tpx13-pf5nr32.fritz.box (ip-037-209-109-094.um11.pools.vodafone-ip.de [37.209.109.94])
-	(Authenticated sender: ah@foundata.com)
-	by hera.efm.de (Postfix) with ESMTPSA id 899CE40C3D59A;
-	Fri,  6 Nov 2026 06:57:14 +0100 (CET)
-From: Andreas Haerter <ah@foundata.com>
-To: cnfourt@gmail.com
-Cc: angelogioacchino.delregno@collabora.com,
-	leon.yen@mediatek.com,
-	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
+	id 1xPD5u-0000000BJX3-1K02
+	for linux-mediatek@lists.infradead.org;
+	Fri, 06 Nov 2026 06:06:35 +0000
+Received: by mail-dy1-x1330.google.com with SMTP id 5a478bee46e88-36fc0a3fe93so370986eec.0
+        for <linux-mediatek@lists.infradead.org>; Thu, 05 Nov 2026 22:06:33 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google; t=1793945193; x=1794549993; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
+        bh=oA9OvOIfFIXhU1CLKiK77BzQLTal7gVWqxQ2qyRWaBc=;
+        b=F9AEB5LeW+pAeK0HfpVtKB5Tjux2HAoaIzzHkkqtS3hoVoL5cQZwnj2tBTygKoAm9s
+         52mkREbOxu9DQtZ+6NOcRo1er3sG/ZmjwNTnkcygHJN00IhWLmNG602kPf94ilXPIsea
+         qRvluycgWGUY/0gKhyM0h7Hsxq91P73qCFe0s=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20260707; t=1793945193; x=1794549993;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to:content-type;
+        bh=oA9OvOIfFIXhU1CLKiK77BzQLTal7gVWqxQ2qyRWaBc=;
+        b=NU84HnIK2jOWwMQPtovLpASCJYJ2XPe97HlP0gQw/1UctgRAifcB/D5bFbfStkHmhy
+         8azyz6KlNNTwDuwfjCxcC0YiMpI0yWnfHVvukhNe60mf8hH3shjUse5SMJ5LkVOcoXeA
+         vKype9W84dQS46q5mTCea+EIdSV8O1cJgF+Ak3vxEqYkepGZE2d26hVfDeyyO/l7boU8
+         +pTDbXSKcbNKw8D5wJ54WdYshXAJHNmCVqYQM6fmyylx45oFiw9VArcKFmlcIVD4QEI+
+         cpJIBM6ZlNtfKez7Q3XuwQEw6x9CB20uIo1r9QtVZVvaYLgKQYZB7GB6V8dzpJeVE50y
+         6anQ==
+X-Forwarded-Encrypted: i=1; AL+hErH9r3R6AX6Y1C61ztdJIjO87oy9zw+9QpgSm6Igs9j84lx2zE47h4W/Mkn1Y99Un4GN9e2I6kti56GjjhWUcA==@lists.infradead.org
+X-Gm-Message-State: APuU4Z/+8sdqdFBmBmke8m97iyO1t6azzDc85qbsb42h5ylZX+aint9a
+	IhcDapEe+UKFBqk8TTXpfucACTmAAUK9xG6pfdyBhzo0RKcnDj7bCZV9H/sHswBTxRVrBSluhsO
+	AZOg=
+X-Gm-Gg: AYBFou3mtyqHZf7JCZoZljTS597RMe6nnrr5XgXcNfM4o66KKo+N4avmGPKJV0STK3l
+	Gl3JotRlj61GjahXU0QTMzIU2JM0oGWY6DVewAl468iHBD+6pn3v9T70ovHLGjwiRHifwHkXmlu
+	eyJeoYct13ogPIqoDWMGwuDbTLnvpNbT1d5mpT0sn/k5kpV+IMHrnFwF++FV9ZvCczkaXPlHnY9
+	/d4yJn5pD83rpVVD3YX8hVrcvC3c1nWn96RwwbXcC8lMtb8GMl+lL5V8u+g0QDBc9+DbV+WAsJM
+	29by1EYgnNHGS8ZkwL6lARe5AlisnIVFEEooSTvHhsP+U+FrDl6Krrv25qrE5jPnqXldv7cmnka
+	7Kpi4PTNlWt4VDfWEjyxZ/FjUNmQbuWPxAwqgvFWpO65F+4Z+aUz5EiJbsm00OnAsH+XXV1XVLQ
+	uzzL/rZlRP6M5qB0VU6nu67eJcyrPt6Ufzf71OT+rp2azg5Ut+PIlwBHUUI+utH0B7LGGkhyMrl
+	/ORJ9kSv0w8SAzvexYkgQ82NvfQUoBjBQ+29QreuZ3KiXtxxw7RCvMBg87ZzfdPMQNjZ+SHPtCo
+	CwcDYY/bWwYJc3VO2BfhiSatrrW3jum69QtFs+PTa6jrWrzOZf6E6YDeLk0dTgylKelR8HdneUS
+	ajqr34ghHn9vJ4Q==
+X-Received: by 2002:a05:7300:f586:b0:36e:2b8b:a09e with SMTP id 5a478bee46e88-36f76c1875amr1931679eec.34.1793945192713;
+        Thu, 05 Nov 2026 22:06:32 -0800 (PST)
+Received: from wenst-7875.tpe.corp.google.com ([2a00:79e0:203d:7:f73e:d73b:c0da:5b05])
+        by smtp.gmail.com with ESMTPSA id 5a478bee46e88-36fa8e3a47esm3821809eec.6.2026.11.05.22.06.31
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 05 Nov 2026 22:06:32 -0800 (PST)
+From: Chen-Yu Tsai <wenst@chromium.org>
+To: Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: Chen-Yu Tsai <wenst@chromium.org>,
 	linux-mediatek@lists.infradead.org,
-	linux-wireless@vger.kernel.org,
-	lorenzo@kernel.org,
-	lucid_duck@justthetip.ca,
-	matthias.bgg@gmail.com,
-	mingyen.hsieh@mediatek.com,
-	nbd@nbd.name,
-	ryder.lee@mediatek.com,
-	sean.wang@mediatek.com,
-	shayne.chen@mediatek.com,
-	stable@vger.kernel.org,
-	yu-ching.liu@mediatek.com
-Subject: Re: [PATCH] wifi: mt76: mt7925: fix NULL dereference in CSA worker
-Date: Fri,  6 Nov 2026 06:57:09 +0100
-Message-ID: <20261106055710.222567-1-ah@foundata.com>
-X-Mailer: git-send-email 2.56.0
-In-Reply-To: <20261025140123.12056-1-cnfourt@gmail.com>
-References: <20261025140123.12056-1-cnfourt@gmail.com>
+	linux-arm-kernel@lists.infradead.org,
+	devicetree@vger.kernel.org
+Subject: [PATCH v2 0/3] arm64: dts: mediatek: mt8390-genio-common: USB fixes
+Date: Fri,  6 Nov 2026 14:06:17 +0800
+Message-ID: <20261106060621.2706658-1-wenst@chromium.org>
+X-Mailer: git-send-email 2.56.0.455.g6c5a503b38-goog
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261105_215722_234222_26EA7464 
-X-CRM114-Status: GOOD (  11.28  )
-X-Spam-Score: -1.9 (-)
+X-CRM114-CacheID: sfid-20261105_220634_348071_645EAD81 
+X-CRM114-Status: GOOD (  12.18  )
+X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,64 +99,71 @@ List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-6.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=no
-	autolearn_force=no version=4.0.1
+X-Spam-Status: No, score=-13.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,
+	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no
+	version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On Sun, Oct 25, 2026 at 10:01:18PM +0800, Gris Ge wrote:
-> Reproduced the panic by injecting CSA-less "abort" beacon, works well
-> after patched.
+Hi,
 
-I hit the same oops in normal use, with no injected frames, on a
-ThinkPad X13 Gen 6 (MT7925, 14c3:7925) running Fedora's
-7.2.14-200.fc44.x86_64, not tainted:
+This is v2 of the Genio 510 / 700 EVK USB fixes that came out of the
+MTK XHCI binding fix [1].
 
-  BUG: kernel NULL pointer dereference, address: 0000000000000000
-  Workqueue: phy0 mt7925_csa_work [mt7925_common]
-  RIP: 0010:mt7925_csa_work+0x83/0x160 [mt7925_common]
-  RAX: 0000000000000000 RBX: ffff8eeb5bbb3910 RCX: 0000000000000fa0
+Changes since v1:
+- Patch 1 now also switches the type C port to a source-only port, and
+  limits the source PDO to 5V 1A, matching the hardware (Sashiko)
+- Patch 1 now connects the SuperSpeed and HighSpeed lines to the
+  correct USB hubs
+- New patch 3 fixing swapped USB hub labels
+- Link to v1: https://lore.kernel.org/all/20261103083335.2944847-1-wenst@chromium.org/
 
-The code bytes decode to the dev->new_ctx load followed by the read of
-def.chan for mt7925_set_roc(), and RCX holds the duration of 4000.
+Patch 1 corrects the USB type C port: the controller operates in host
+mode only, the data lines go through the onboard USB hub, and the port
+can only source power (5V 1A). The block diagrams for both the Genio
+700 EVK and Genio 510 EVK were used as reference.
 
-The access point announced a channel switch just after a roam:
+Patch 1 depends on "dt-bindings: usb: ti,usb8041: Fold in TI USB8020B" [2]
+to allow graph ports under the TI USB8020B hub nodes. Without it,
+dtbs_check will complain about the new "ports" nodes.
 
-  10:58:02.90  associated with the new BSS on 5180 MHz
-  10:58:04.05  CTRL-EVENT-STARTED-CHANNEL-SWITCH freq=3D5180 (80 MHz)
-  10:58:04.47  oops
+Patch 2 moves the pin mux for the USB hub supply enable pin to the
+regulator.
 
-It has happened once. Two earlier channel switches on this machine
-completed normally, and the log does not show what tore the context
-down.
+Patch 3 fixes the swapped labels for the USB 2.0 and USB 3.0 hub nodes.
 
-The impact MAY be worth a line in the changelog. The oops lands between
-mt792x_mutex_acquire() and the release, so dev->mt76.mutex stays held
-for good. WiFi did not come back, and at shutdown wpa_supplicant,
-NetworkManager, avahi-daemon and systemd-resolved all survived SIGKILL.
-The machine needed a forced power-off, so the stable tag looks right to
-me.
+I don't have the actual board to test this on. The changes were only
+compile tested.
 
-I read the patch against master and v7.2.14. The chanctx hunks apply to
-v7.2.14 with an offset and mt7925_csa_work() is identical there. I see
-no new lock ordering problem.
+This v2 patch series was partially put together using LLM. v1 was done
+by hand. Sashiko review comments were fed to the LLM, as well as the
+datasheet for TI USB8020B. I manually checked the PIDs in the datasheet
+before giving the datasheet to the LLM. Same goes for the board block
+diagrams. The changelogs in each patch and in the cover letter were
+also put together using LLM.
 
-I have no reproducer, so I cannot offer a Tested-by.
-
-Thanks,
-Andreas
-
---=20
-foundata GmbH
-Steinh=C3=A4userstr. 20
-76135 Karlsruhe
+Also, the LLM seems to do a decent job at mimicking my writing style,
+even though it's a bit more verbose than what I'd go for.
 
 
-Web: https://foundata.com
-Sitz der Gesellschaft: Karlsruhe
-Registergericht: Amtsgericht Mannheim, HRB 714807
-Gesch=C3=A4ftsf=C3=BChrung: Andreas Haerter
-USt-IdNr.: DE284122682
+ChenYu
+
+[1] https://lore.kernel.org/all/20260916075745.3549953-11-wenst@chromium.org/
+[2] https://lore.kernel.org/all/20261103095425.3097720-1-wenst@chromium.org/
+
+Chen-Yu Tsai (3):
+  arm64: dts: mediatek: mt8390-genio-common: Fix type C port mode and
+    connection
+  arm64: dts: mediatek: mt8390-genio-common: Split out USB hub enable
+    pin mux
+  arm64: dts: mediatek: mt8390-genio-common: Fix swapped USB hub labels
+
+ .../dts/mediatek/mt8390-genio-common.dtsi     | 76 +++++++++++--------
+ 1 file changed, 43 insertions(+), 33 deletions(-)
+
+-- 
+2.56.0.455.g6c5a503b38-goog
+
 
