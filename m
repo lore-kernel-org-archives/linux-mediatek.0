@@ -2,100 +2,71 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id EB5E3606A32C
-	for <linux-mediatek@archiver.kernel.org>; Fri,  6 Nov 2026 12:40:23 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 07583606A32C
+	for <linux-mediatek@archiver.kernel.org>; Fri,  6 Nov 2026 13:29:02 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=eb9Sur+p;
-	dkim=pass (2048-bit key, unprotected) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=cv0gq7//
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=eZs1WHfl;
+	dkim=pass (2048-bit key, unprotected) header.d=collabora.com header.i=@collabora.com header.a=rsa-sha256 header.s=mail header.b=KXGSaWym
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Unsubscribe-Post:List-Owner;
-	bh=I7rpnBx9YoXkP8aLjecj2KvEgsGyzrkFXLzcIf+WpQs=; b=eb9Sur+puw9dItVYQ/45Vwu48w
-	tI9iJ6AOJJw9iS5JwSDl7Nrdswd4WaCOLk7NHbuNqdtgrRO7ESgyF4nTe62iI/Yud7ONA9KYDiKZU
-	WiZw/Tgt++TiipJqKbSkHxlcekWD4cBi0U8BCQelbTRr70r7rqUDKGjX4XM/hLdNpdxZXE187UqKI
-	lYusQxvl48fRWfs4tCAnk+H+saUa7AvtgmKVIKukF2WNZg0EmQ84EKzG/Eb6Uv5LTQU8JY9zMM7Td
-	haIPmU1GyQ/3ds+oA12eqqgNQSEaWLF8bSzTr8O3+FWM2602VURreMZnU3LLpRZoxv4dtHj2QLXS2
-	frxJeLWA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Unsubscribe-Post:
+	List-Owner; bh=FGh/a8NZBJfp8mFK/MC4MYiJPVVpSd8mLxLJrAV0sTg=; b=eZs1WHflNh8lsb
+	6TMeuZ1Nv1CGPFC/34LD0dCkEuj4OTvJVTgUNm1w7vh2D+/kulR26t4Ezy3zWBzR7aXSDeTOX2KQ3
+	Sofq+L2D6QsCkuNK1XvxUeUkaQqz4z844cPN0fWA64k2UPKQ7C7j+lG6Smzahg/i0vORCRpAYprMX
+	or6CgoM75VzEpLHzqP2zhUJNaxC8VY4O304qpBSTk4CD39BOgpVrJq6Xn+vn8S7WuEVV1UWItjI50
+	3LaZZ9tPTYxj8mFVD2udEWJZZE8TtRLWTTVJZKPnnRG4QGGq9qJfngspmG5khtDRUdEjcjQ+0FFIx
+	+fv9uwnLSJzDlfHJxS0g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xPJF0-0000000CKkF-18QP;
-	Fri, 06 Nov 2026 12:40:22 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1xPK05-0000000CQvT-2ieL;
+	Fri, 06 Nov 2026 13:29:01 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xPJEx-0000000CKjm-2BIL;
-	Fri, 06 Nov 2026 12:40:19 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 6F8E7601E3;
-	Fri,  6 Nov 2026 12:40:18 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 744301F0089F;
-	Fri,  6 Nov 2026 12:40:17 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1793968818;
-	bh=I7rpnBx9YoXkP8aLjecj2KvEgsGyzrkFXLzcIf+WpQs=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=cv0gq7//oTp0dAwoAY2P60tkzG7qOXixypboCv6somxbv4RJe5y516ibiIt9yil0y
-	 6Xus26S5S7CjxFEgzJ6hZni98dpD8Y/omMUtCqA4qji8MxkiTaYplwOOW48zZztgn9
-	 biJBA8ky84yjfhdUFX9fRCe+oS8D893fUM9AYufhLCP12MMbLUTZ8mXNG/OPBCvc1G
-	 DIevwtEp6pl4GRQg1cF62xWNKe0C2Oa7ePx8fTta9k3W+1zeQkAVQDl44kBiPO2/LG
-	 dx8EhOOPaR6wOfy/YLyX01VcjVuebpZVFEllgtNJqAQKSVIn+yFsCLndqNWCvS3rdQ
-	 Fk78GnOIw8FXg==
-Date: Fri, 6 Nov 2026 13:40:15 +0100
-From: Thierry Reding <thierry.reding@kernel.org>
-To: Andy Shevchenko <andriy.shevchenko@linux.intel.com>
-Cc: Krzysztof Kozlowski <krzk@kernel.org>, Frank.Li@oss.nxp.com, 
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Jiri Slaby <jirislaby@kernel.org>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Russell King <linux@armlinux.org.uk>, 
-	Richard Genoud <richard.genoud@bootlin.com>, Nicolas Ferre <nicolas.ferre@microchip.com>, 
-	Alexandre Belloni <alexandre.belloni@bootlin.com>, Claudiu Beznea <claudiu.beznea@tuxon.dev>, 
-	Frank Li <Frank.Li@nxp.com>, Sascha Hauer <s.hauer@pengutronix.de>, 
-	Pengutronix Kernel Team <kernel@pengutronix.de>, Fabio Estevam <festevam@gmail.com>, 
-	Peter Griffin <peter.griffin@linaro.org>, Alim Akhtar <alim.akhtar@samsung.com>, 
-	Laxman Dewangan <ldewangan@nvidia.com>, Jonathan Hunter <jonathanh@nvidia.com>, 
-	Orson Zhai <orsonzhai@gmail.com>, Baolin Wang <baolin.wang@linux.alibaba.com>, 
-	Chunyan Zhang <zhang.lyra@gmail.com>, Maxime Coquelin <mcoquelin.stm32@gmail.com>, 
-	Alexandre Torgue <alexandre.torgue@foss.st.com>, Cunhao Lu <1579567540@qq.com>, 
-	Raul E Rangel <rrangel@chromium.org>, Yenchia Chen <yenchia.chen@mediatek.com>, 
-	Zhiyong Tao <zhiyong.tao@mediatek.com>, Carlo Caione <ccaione@baylibre.com>, Moteen Shah <m-shah@ti.com>, 
-	Kendall Willis <k-willis@ti.com>, Kartik Rajput <kkartik@nvidia.com>, Fan Wu <fanwu01@zju.edu.cn>, 
-	Nicolai Buchwitz <nb@tipi-net.de>, Karl Mehltretter <kmehltretter@gmail.com>, 
-	Stefan =?utf-8?B?RMO2c2luZ2Vy?= <stefandoesinger@gmail.com>, Shitalkumar Gandhi <shital.gandhi45@gmail.com>, 
-	Peng Fan <peng.fan@nxp.com>, Sherry Sun <sherry.sun@nxp.com>, 
-	John Ogness <john.ogness@linutronix.de>, Pan Chuang <panchuang@vivo.com>, Petr Mladek <pmladek@suse.com>, 
-	Robin Gong <yibin.gong@nxp.com>, Konrad Dybcio <konrad.dybcio@oss.qualcomm.com>, 
-	Stephan Gerhold <stephan.gerhold@linaro.org>, Zhaoyang Yu <2426767509@qq.com>, 
-	"Nikola Z. Ivanov" <zlatistiv@gmail.com>, Haoxiang Li <haoxiang_li2024@163.com>, 
-	"Mike Rapoport (Microsoft)" <rppt@kernel.org>, Biju Das <biju.das.jz@bp.renesas.com>, 
-	Geert Uytterhoeven <geert+renesas@glider.be>, Myeonghun Pak <mhun512@gmail.com>, 
-	Wenhua Lin <Wenhua.Lin@unisoc.com>, Cixi Geng <cixi.geng@linux.dev>, 
-	"open list:TTY LAYER AND SERIAL DRIVERS" <linux-kernel@vger.kernel.org>, 
-	"open list:TTY LAYER AND SERIAL DRIVERS" <linux-serial@vger.kernel.org>, 
-	"moderated list:ARM/Mediatek SoC support" <linux-arm-kernel@lists.infradead.org>, 
-	"moderated list:ARM/Mediatek SoC support" <linux-mediatek@lists.infradead.org>, 
-	"open list:ARM/FREESCALE IMX / MXC / LAYERSCAPE ARM ARCHIT..." <imx@lists.linux.dev>, 
-	"open list:ARM/QUALCOMM MAILING LIST" <linux-arm-msm@vger.kernel.org>, 
-	"open list:ARM/SAMSUNG S3C, S5P AND EXYNOS ARM ARCHITECTURES" <linux-samsung-soc@vger.kernel.org>, 
-	"open list:TEGRA ARCHITECTURE SUPPORT" <linux-tegra@vger.kernel.org>, 
-	"moderated list:ARM/STM32 ARCHITECTURE" <linux-stm32@st-md-mailman.stormreply.com>, vkoul@kernel.org
-Subject: Re: [PATCH 1/1] tty: serial: use dmaengine_desc_set_callback()
-Message-ID: <au3GYOP5P7B90-bX@orome>
-References: <20261102175527.3957740-1-Frank.Li@oss.nxp.com>
- <aux2VKHnVLwq_wzi@orome>
- <auyQEVmA2KeGu9DL@ashevche-desk.local>
- <auyiAE3lhnFahBK2@orome>
- <auysTnqWgz2kE7e9@ashevche-desk.local>
- <2209947d-0b9b-417f-9ffb-1c81790af9db@kernel.org>
- <auzEupFd_Ek2HpLG@ashevche-desk.local>
+	id 1xPK00-0000000CQt7-2O1x;
+	Fri, 06 Nov 2026 13:28:59 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1793971733;
+	bh=Zbw4Pdi7/7yO5hBdNSUYXrfRS7EY1BsSPUefMzufvO0=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=KXGSaWymhy7vDq1ttAqgN//6MlUzMkvBRQ9TGNFIUu8N8bF+aJhjxYkcOykxTASZe
+	 dXjkFbsSyC3pB9bg00QGoDlehTyzk3MX/feiNb1UzSi6jB1kqnL2pTh4a/tj+vagM/
+	 aq+wt5I3zRIPZ19jauH2NmtFHgxwxCE9Emf1r6LB6VFX5bwBQ85fngNYVHBuWdHoY2
+	 QgOCY+AuyzqjASUSPVIU5ieCo+n0iZNrXJ+S0XPNnBs/J5YrlV04UshV1yIojc9sae
+	 +zUBMzi2QNTupSQXfzy8eYXJ8skF+ZKYIkK4O/F+Sxsqd9aAzuCN4uGzLfKzJtawXh
+	 u6eNZJHg/RJOw==
+Received: from [100.64.1.21] (unknown [100.64.1.21])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id AA49317E031D;
+	Fri, 06 Nov 2026 14:28:52 +0100 (CET)
+Message-ID: <a22410c8-7ee3-473c-aa8e-9c71c8555bda@collabora.com>
+Date: Fri, 6 Nov 2026 14:28:52 +0100
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="bfkiplbygfje4qbi"
-Content-Disposition: inline
-In-Reply-To: <auzEupFd_Ek2HpLG@ashevche-desk.local>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2] drm/mediatek: Validate gamma_lut size
+To: Fei Shao <fshao@chromium.org>, Chun-Kuang Hu <chunkuang.hu@kernel.org>
+Cc: David Airlie <airlied@gmail.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ Philipp Zabel <p.zabel@pengutronix.de>, Simona Vetter <simona@ffwll.ch>,
+ dri-devel@lists.freedesktop.org, linux-arm-kernel@lists.infradead.org,
+ linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org
+References: <20261106103932.1219696-1-fshao@chromium.org>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
+In-Reply-To: <20261106103932.1219696-1-fshao@chromium.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20261106_052856_777293_46AE740D 
+X-CRM114-Status: UNSURE (   8.65  )
+X-CRM114-Notice: Please train this message.
+X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,159 +77,27 @@ List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-15.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-12.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,
-	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=ham
+	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1 autolearn=ham
 	autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
+On 11/6/26 11:39, Fei Shao wrote:
+> The DRM core checks that a gamma_lut blob is aligned to
+> sizeof(struct drm_color_lut) and at most GAMMA_LUT_SIZE entries, so
+> shorter blobs still reach the driver. mtk_aal_gamma_set() and
+> mtk_gamma_set() read up to the fixed hardware LUT size, which is an OOB
+> read when the blob is shorter.
+> 
+> Add mtk_crtc_atomic_check() and reject gamma_lut if its entry count does
+> not match crtc->gamma_size.
+> 
+> Fixes: 2f3f4dda747c ("drm/mediatek: Add gamma correction.")
+> Signed-off-by: Fei Shao <fshao@chromium.org>
 
---bfkiplbygfje4qbi
-Content-Type: text/plain; protected-headers=v1; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-Subject: Re: [PATCH 1/1] tty: serial: use dmaengine_desc_set_callback()
-MIME-Version: 1.0
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
-On Thu, Nov 05, 2026 at 08:02:34PM +0200, Andy Shevchenko wrote:
-> On Thu, Nov 05, 2026 at 05:21:06PM +0100, Krzysztof Kozlowski wrote:
-> > On 05/11/2026 17:18, Andy Shevchenko wrote:
-> > > On Thu, Nov 05, 2026 at 04:36:38PM +0100, Thierry Reding wrote:
-> > >> On Thu, Nov 05, 2026 at 04:17:53PM +0200, Andy Shevchenko wrote:
-> > >>> On Thu, Nov 05, 2026 at 01:28:46PM +0100, Thierry Reding wrote:
-> > >>>> On Mon, Nov 02, 2026 at 12:54:48PM -0500, Frank.Li@oss.nxp.com wro=
-te:
-> > >>>>>
-> > >>>>> Replace open-coded assignments to callback and callback_param fie=
-lds
-> > >>>>> of struct dma_async_tx_descriptor with calls to the
-> > >>>>> dmaengine_desc_set_callback() helper across serial drivers.
-> > >>>>>
-> > >>>>> No functional change intended. Prepare to make struct
-> > >>>>> dma_async_tx_descriptor private to the DMA engine.
-> > >>>>>
-> > >>>>> Signed-off-by: Frank Li <Frank.Li@nxp.com>
-> > >>>>> ---
-> > >>>>>  drivers/tty/serial/8250/8250_dma.c  | 6 ++----
-> > >>>>>  drivers/tty/serial/8250/8250_mtk.c  | 3 +--
-> > >>>>>  drivers/tty/serial/8250/8250_omap.c | 6 ++----
-> > >>>>>  drivers/tty/serial/amba-pl011.c     | 6 ++----
-> > >>>>>  drivers/tty/serial/atmel_serial.c   | 6 ++----
-> > >>>>>  drivers/tty/serial/fsl_lpuart.c     | 6 ++----
-> > >>>>>  drivers/tty/serial/imx.c            | 6 ++----
-> > >>>>>  drivers/tty/serial/msm_serial.c     | 6 ++----
-> > >>>>>  drivers/tty/serial/mxs-auart.c      | 6 ++----
-> > >>>>>  drivers/tty/serial/pch_uart.c       | 6 ++----
-> > >>>>>  drivers/tty/serial/samsung_tty.c    | 6 ++----
-> > >>>>>  drivers/tty/serial/serial-tegra.c   | 6 ++----
-> > >>>>>  drivers/tty/serial/sh-sci.c         | 9 +++------
-> > >>>>>  drivers/tty/serial/sprd_serial.c    | 3 +--
-> > >>>>>  drivers/tty/serial/stm32-usart.c    | 6 ++----
-> > >>>>>  15 files changed, 29 insertions(+), 58 deletions(-)
-> > >>>>
-> > >>>> Reviewed-by: Thierry Reding <treding@nvidia.com>
-> > >>>
-> > >>> Krzysztof, now look at this case. I would argue that this is even l=
-ess fit than
-> > >>> # subpart(s) case, because it might imply anything. Again the probl=
-em is the
-> > >>> bundle, and for such a case (when tons of independent changes are b=
-undled in
-> > >>> the same stuff, *every* Rb tag has to be explained on what has been=
- reviewed!
-> > >>
-> > >> It may be a bit subtle, but the placement of the tag indicates that =
-it
-> > >> applies to the entirety of the changes. I didn't crop the list of
-> > >> changed files, nor did I omit the summary.
-> > >=20
-> > > This doesn't clarify the question. Wordless Rb tag on a bundles is an=
- oddity.
-> >=20
-> > No, it's perfectly normal and typical. I would not expect anything else,
-> > because writing "LGTM" is pointless. We are experienced reviewers and we
-> > do understand what Reviewer's statement of oversight means, thus giving
-> > the tag is obvious, explicit and not odd.
-> >=20
-> > >=20
-> > >> That bit of meta-data obviously isn't picked up into the tag line, b=
-ut
-> > >> I think the default meaning of Reviewed-by is that it applies to the
-> > >> entire thing.
-> > >=20
-> > > And I interpret it otherwise, because this is a set of independent ch=
-anges
-> > > bundled into a single patch!
-> >=20
-> > It's not set of independent changes, but even if it was then it would
-> > not matter. We review the code regardless how we actually judge the
-> > atomicity of a patch.
->=20
-> And I confront exactly that! When the patch may be split it has to. This =
-is
-> seems the outcome of this discussion to me. From now on I think I will NAK
-> any bundle patch until piece that I in charge to is split from the bundle.
-
-I'd like to caution against this. There's effectively one change in this
-patch and it converts all the drivers in the same way. This was probably
-generated using a script or semantic patch. Requiring this to be split
-up is going to make the author spend a lot of time creating 15 patches
-instead of just one. They will have to write the same commit message
-with tiny variations, which they'll most likely just use a script for
-because it's tedious. Or they don't use a script and likely get at least
-one commit message wrong. And then we're not reviewing a patch for
-technical correctness anymore but waste a lot of time on nit-picking on
-a subject or commit message. Each of these commit messages is not going
-to add any new information either, so the only thing you really achieve
-is to increase the signal-to-noise ratio.
-
-That's completely absurd.
-
-Also, reviewing 15 miniature patches is going to take much more time
-that reviewing this monolithic one, so I suspect potential reviewers are
-more likely to just stay away from it to begin with.
-
-In the end you make life miserable for everyone. Well, except for
-individual driver maintainers that want a quick and easy way to slap
-their approval onto only the one driver change that they really care
-about.
-
-But there's already a way that they can do that. Acked-by can just mean
-"I maintain this driver and I agree with the direction, but I haven't
-bothered to do a full technical review". That's what most of these
-"partial" Reviewed-bys are, so why not just use that existing tool?
-
-And I'm saying all of this without judgement, because sometimes you do
-not have the time to do a full review but you still want to lend your
-support to ongoing work. I do that quite often myself.
-
-But at other times I do want to look at something in more detail, or
-just ended up looking thoroughly enough for it to count as a full review
-and when I do I'll let people know with a Reviewed-by.
-
-Thierry
-
---bfkiplbygfje4qbi
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQIzBAABCgAdFiEEiOrDCAFJzPfAjcif3SOs138+s6EFAmrtyq0ACgkQ3SOs138+
-s6Fr4A/9FKItEmEcI7D1clbCnePcAJeqtYQ0rYq/qZQPbKo0mPQbeN5qKa1XDgHO
-o3ylZ3Piqsnzv+NNOe6cmtCjzv4Bb82/Z9g8metI4jz4gOraKos+oVhk2EIMFv7f
-yrPVGwcvgtlSnx6MO/kFoS+1JYbWlZ9JA7jJCTcXBUF28R780a2elyHAnxamdAQZ
-TrzhhmaRmsdt2TLYxJRPlrKWjfzhl/2HKGfFTTROXgaiaj8oQeCNcBGC1TKKtGls
-g4MQJ6AZ1Ke58gd3O1sYh3QUlOUewNawK+LOsDoGjooF6zg2loLypU6twHl7cBdH
-GoFRsLUImQvYXNUYhDxGCxNZ3OvMyIM+8X3G2xIJuHY8MEbJY5ukp/rPKi/4CQyK
-VxwvkHMoAX705PtVMKdY2ddQt9ceif+v7ohWDmce8B3NOopq0itUXxcU8Z2MWw99
-qEl1IoIYVXBYiJeaIcLzjSPmJeFPAJ49cJhNeqpH190C5hIqxPK75Jyh7+Pokx+y
-yWFEIla8n0+o14XOP9M2wnrvJ34EQI4aW8Ia/nFn3b1oONvBu+q8h8wMH5hH2fvJ
-O3QCmMyze7y03zKMQL2w8jE7qniSfi+wUNb318xOlXRqBKHTSGv7IEu5try/XdKo
-L8B242zIrUhLZ8MWwNSUfjq9qIT7PSG50W3uNxTv0hduJXFO13c=
-=a1fc
------END PGP SIGNATURE-----
-
---bfkiplbygfje4qbi--
 
