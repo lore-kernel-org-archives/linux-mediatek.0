@@ -2,100 +2,90 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 5310F606D80B
-	for <linux-mediatek@archiver.kernel.org>; Fri,  6 Nov 2026 18:08:34 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id F231B606A326
+	for <linux-mediatek@archiver.kernel.org>; Fri,  6 Nov 2026 18:30:29 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=h1Tyl/bI;
-	dkim=pass (2048-bit key, unprotected) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=TEBAhAmn
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=aoX6AzMQ;
+	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=infradead.org header.i=@infradead.org header.a=rsa-sha256 header.s=desiato.20200630 header.b=gqpaewYi;
+	dkim=pass (2048-bit key, unprotected) header.d=justthetip.ca header.i=@justthetip.ca header.a=rsa-sha256 header.s=key1 header.b=hYEFDAVr
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Unsubscribe-Post:List-Owner;
-	bh=TlsbZRohfYY9Acfo1HZrz4sd0DFYcL5H6Bh8ImzlihE=; b=h1Tyl/bIbexGcqiDC2B/hFz0te
-	3k/JMDqzEujzNW11YDc48fC7FfbDkRdy8PrNFm2edCpUH4wfQikSbjrnge8TSrXKRc+s1ZFo9rSk2
-	G/yn0K6fjoXqSRdzrr2QcglhxNL0LFnNuSqJRSiIB2D83gcxnTT7W+pQRIL7Kz8Nv0xEuJpcCZhVq
-	FAfPw6aQh4wxSnhFu7OUtNwzK/YaMcjdSMeiARm+xwLYt01zwArjqg0BI6V2/JBACFyiScwH+1lzf
-	Tjd/6vk9SwSMyQFJp1sYWPvQGOb+dfxT5zoTfFOf4Vpv0F4E+8eqJhE4eCMMGUCkFgtxTz7V4g3d2
-	M0bspx0A==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Unsubscribe-Post:
+	List-Owner; bh=4zS1QWUHwSOBAkfOexvAjjcm+lZUFWgZmqWL0fBlrBg=; b=aoX6AzMQdCGMhZ
+	3CTKBd2TORER2oLOXwwHpJKFgp23lGZf8FOdwNbXGuVH6nHvG89JM1xve9CHMiQbCMYEHR6pGewSS
+	SK8gPqImiqTSr+wO/iPu9dq6PT0cTSlIzUgfYWDVUt6iBsMZtL30DSveQGchubdBAq+q8qwQDcWyE
+	nkRKcFRSng8t00mniOA8KREztHamDNHc4zUtQm2OJ1hsEGAn8unrRZU+Nbzj5dxmeWhu65B8ZBhp+
+	e8aFOhcwyZsfufd6I0jjM3n7+/6MKXbF+5rMA7rfC9phnm+6kDfEUHYF3KxpbAThfCG0tcmZXKRbH
+	jkf2s4I5Ob1wCmIywtRg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xPOMb-0000000DLhK-3FYJ;
-	Fri, 06 Nov 2026 18:08:33 +0000
-Received: from mail-dy1-x1330.google.com ([2607:f8b0:4864:20::1330])
+	id 1xPOhp-0000000DOyw-2Mbc;
+	Fri, 06 Nov 2026 18:30:29 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xPOMY-0000000DLfT-2GQ7
+	id 1xPOhn-0000000DOyo-3BW8
+	for linux-mediatek@bombadil.infradead.org;
+	Fri, 06 Nov 2026 18:30:28 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
+	:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
+	Sender:Reply-To:Content-ID:Content-Description;
+	bh=4zS1QWUHwSOBAkfOexvAjjcm+lZUFWgZmqWL0fBlrBg=; b=gqpaewYiF1A7drszCNSI+wkGbz
+	0vUBYuW3RLqOmd+TLSjMKkubC4xkFJBc+71pwrBNBoZwJ7GSycSHEo//nJCPLE39LWPKp0GALIM6i
+	Tjljzlf+y1SdLaQEsbbhLnCuO4kosQjASmqzcpsOflKAfLSWF4lo75b6SGn9ZItVg+P2WHr/6ol9w
+	hzFT2aVWrSDDAtTnin/7XLuFUDla8CSEgK1Q30zs3b0C70DcGgP66xf6VK9GxVPJ1sJ0Tr3WMD6T1
+	x1BcXSeRQHeUt0TPYWQc3F8DFU9w6qszYITQ5nz3IeY4C+5r53K3Zw+1XSpFDakTLx5R84KmZYxGw
+	GuAZFBjw==;
+Received: from out-177.mta1.migadu.com ([2001:41d0:203:375::b1] helo=mta1.migadu.com)
+	by desiato.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
+	id 1xPOhk-00000004ZwW-1Wxp
 	for linux-mediatek@lists.infradead.org;
-	Fri, 06 Nov 2026 18:08:32 +0000
-Received: by mail-dy1-x1330.google.com with SMTP id 5a478bee46e88-37071c0f42aso906215eec.0
-        for <linux-mediatek@lists.infradead.org>; Fri, 06 Nov 2026 10:08:30 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20260707; t=1793988510; x=1794593310; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:content-type:mime-version
-         :references:message-id:subject:cc:to:from:date:from:to:cc:subject
-         :date:message-id:reply-to:content-type;
-        bh=TlsbZRohfYY9Acfo1HZrz4sd0DFYcL5H6Bh8ImzlihE=;
-        b=TEBAhAmnSoGyxIkeT12Rdn6L7uidFXASr/rRbtkA8PwGceoheeP4m//EVWG4wFFTHX
-         kI4230V2y6M0o7FQeL8MN9pA3NCw89kDw92LUzjNKYtyeXHUKTQtxZ8d15BRp+VU/mu2
-         hc3bKLeGhPQ00BBCBL9s/HM5xkQrXxGyUtaWMxYyuh0g6I0wNUVw3t7WUucwHUxvSlAb
-         Z44Zq3vV45WRszzkN6dhvxHXkQ/ftsp9Qu+QyolipregUOv0M7ckhA4Mu4+yFw+KDY3F
-         DDlZHQSZFdWzDr3Acj+wCafXsFdSvO4ZyPdtx9e6dYknvE96Z+Ve3vaL4RsAqrg9ZYwg
-         ogkg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1793988510; x=1794593310;
-        h=in-reply-to:content-disposition:content-type:mime-version
-         :references:message-id:subject:cc:to:from:date:x-gm-gg
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
-         :content-type;
-        bh=TlsbZRohfYY9Acfo1HZrz4sd0DFYcL5H6Bh8ImzlihE=;
-        b=PPdyR4IezEiqo9oSb0p08Uzl9AGZvPQTfnsQm9L5SxxTAra/OycI9PNAiRSbwK3+T9
-         snoG/AlblqCArM2txpPCI7VxCz4XsohNt77GIUclAzq+bg1U2WbvHPz8e5KGVjA/NOYk
-         BWs8TdqKzGT384/VHMLX88MI5gxvfs4LR7JBmDeIv3eD3oLzh6ZUuvMssrztNEdAVZoy
-         6i7AKVeL34ltEvAz9/JmJZt70MgpH8fzDXooetcsk8gRB5KjxZs+bzJ5vMdEneeYRaH1
-         dxFlc+XWEtMxF98lIc3YOWYhCW2WnWG3mwTOWcU3ezsI4CPlSeIx947VfeIOdOlhyqyh
-         nplw==
-X-Forwarded-Encrypted: i=1; AKwUvBz/kij2BgM6Xc7K7O3iobe/JIAh9jB3HEQ6vUTYMzYAaDIJ5r6zy9uTSdjVTC7Qzdk3vLitrbfzhqd2pau6sg==@lists.infradead.org
-X-Gm-Message-State: APuU4Z/U2XmCi+DNPQuOgYtJzozZyTx7/DMKfUHapMGg1sjdIN5Hy39E
-	vXPS142ZIMK1XFySXT/4hlZJWakabXi73ZcUvLYNva1+toZlogzdpxF+
-X-Gm-Gg: AYBFou3Tw92zpnoieQGLVWQNoxKKcKV85lyqYv7Hwv52WDlags6e81Uq1ycTmzMIsK2
-	7vrv3Emo/9M2/uCg8NudbzfyXn1czBa2UvowlfGJfNHMi/xtE2jB/IOGV/L+QHAcmhLUAQ3l+63
-	/BSPM/mOKSL9chD6i8pexQtXdrBlga+YiTusfrtOoy863BT8UoJAPzMHD+D4XyvujjEMbQaQ/z0
-	iH+he1wMRogxIlzEMhtimszafo35dVCGCuou3O0cW3s6+WJyu+C61HGk8bIlmBUOYOCqNhEBMHE
-	+l+D6A3orxFHZfnlP/nq7VKR7xH2eyrhdQOudjIxme0Hy6VcLxjj/Go6bhcdHj9Bvp+QgSD+rD9
-	gDVqQnEZlrQPGy/SWkmP7DRW9Jc25EL1KPR44rFXdREL0jBOr+5PcMdeWHdfBpqIXG8sRkjZI8L
-	DNvq3l0BVIF9yDqJGdQni3uHaLugBqJlyA+R0V6xbMMNou5lZnGEWv+RttMoqkCBqKGcCIbSpxO
-	QspXfD4x8cCA4pG5cH8GurcyFAWF6zkx1xUp1JDdRVhqsKhUCgxnUztx32xUHvTBypNRJGr5+tB
-	Ji0gMhSlEm9qc/1cGNJro9M15rDnGWWhjrQCHQQyoNfIRsaVvS0hlj4ZG/11GCPNzOnE
-X-Received: by 2002:a05:7022:5f07:b0:1af:16c4:d06b with SMTP id a92af1059eb24-1b25d31e658mr3453567c88.10.1793988509569;
-        Fri, 06 Nov 2026 10:08:29 -0800 (PST)
-Received: from google.com ([2a00:79e0:2ebe:8:64e:8358:c9cb:c17b])
-        by smtp.gmail.com with ESMTPSA id a92af1059eb24-1b25e4fd2d6sm7443467c88.23.2026.11.06.10.08.28
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 06 Nov 2026 10:08:29 -0800 (PST)
-Date: Fri, 6 Nov 2026 10:08:25 -0800
-From: Dmitry Torokhov <dmitry.torokhov@gmail.com>
-To: rva333@protonmail.com
-Cc: Mattijs Korpershoek <mkorpershoek@kernel.org>, 
-	Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
-	Conor Dooley <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, linux-input@vger.kernel.org, devicetree@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+	Fri, 06 Nov 2026 18:30:26 +0000
+X-Envelope-To: linux-mediatek@lists.infradead.org
+DKIM-Signature: a=rsa-sha256; bh=62/U3bQuxJc81dT7FTL+9I7s8M81bhkBluzi6hVHCNc=;
+ c=simple/simple; d=justthetip.ca;
+ h=from:to:subject:date:message-id:mime-version:content-type; s=key1;
+ t=1793989818; v=1; x=1794594618;
+ b=hYEFDAVr3hJkAlzUWrBqpJfDJQLTDtWCPm7A0w6+EzQiDKWX1SgSlPc/IbP26/uLHAkhqo4D
+ jnVZNqUQdZF+/3nAv+rbw8xAz7FTN02XZezTamVnoALKZKAtpXuVPkVkapKDufss1UirTDBwXf+
+ ZlvnesR/rBUPI+Koctzh2uUdP5HL3Vclj47iZ2e32/cYZYvfiviW6NAIUnkafo/5i6SUNfouved
+ XriIYJlR108d8u0oP6iLpqd9yaNByg/ycT4e75GzFWJ9CcM2Q7VAIAYWjKjd+oLfq2raxZ4YUFO
+ ZB1M+IIZCnJEFgxEWHQP93M2zyuVd9aM/uIJnnw80kBdg==
+X-Envelope-To: linux-mediatek@lists.infradead.org
+Received: by smtp.migadu.com with ESMTPS id 7e8b92ecf7e6c38e;
+	Fri, 06 Nov 2026 18:30:14 +0000
+X-Mizu-Trace-ID: 7e8b92ecf7e6c38e
+X-Migadu-Flow: FLOW_OUT
+From: Devin Wittmayer <lucid_duck@justthetip.ca>
+To: Sven Besser <sven.besser@sql-ag.de>
+Cc: Felix Fietkau <nbd@nbd.name>,
+	Lorenzo Bianconi <lorenzo@kernel.org>,
+	Ryder Lee <ryder.lee@mediatek.com>,
+	Deren Wu <deren.wu@mediatek.com>,
+	Sean Wang <sean.wang@mediatek.com>,
+	Shayne Chen <shayne.chen@mediatek.com>,
+	Ming Yen Hsieh <mingyen.hsieh@mediatek.com>,
+	James-LY Huang <james-ly.huang@mediatek.com>,
+	Jacobs Wu <jacobs.wu@mediatek.com>,
+	linux-wireless@vger.kernel.org,
 	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH] dt-bindings: input: mediatek,mt6779-keypad: add mt6595
-Message-ID: <au4Xis7Ei2th7xFZ@google.com>
-References: <20261105-6595-dt-keypad-v1-1-f0911f40d3ad@protonmail.com>
+Subject: Re: [PATCH wireless] wifi: mt76: mt7925: add the common scan IEs back to probe requests
+Date: Fri,  6 Nov 2026 11:30:06 -0700
+Message-ID: <20261106183006.12356-1-lucid_duck@justthetip.ca>
+X-Mailer: git-send-email 2.56.0
+In-Reply-To: <FRVP281MB5672F901E7D26533F6DBCBCBA0762@FRVP281MB5672.DEUP281.PROD.OUTLOOK.COM>
+References: <20261102190811.7498-1-lucid_duck@justthetip.ca> <FRVP281MB5672F901E7D26533F6DBCBCBA0762@FRVP281MB5672.DEUP281.PROD.OUTLOOK.COM>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20261105-6595-dt-keypad-v1-1-f0911f40d3ad@protonmail.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261106_100830_601870_1436EE43 
-X-CRM114-Status: UNSURE (   8.95  )
-X-CRM114-Notice: Please train this message.
-X-Spam-Score: -2.1 (--)
+X-CRM114-CacheID: sfid-20261106_183024_419326_C72C819C 
+X-CRM114-Status: GOOD (  10.19  )
+X-Spam-Score: -0.2 (/)
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,24 +96,42 @@ List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-7.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
-	DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,FREEMAIL_FORGED_FROMDOMAIN,
-	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=no
-	autolearn_force=no version=4.0.1
+X-Spam-Status: No, score=-13.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,
+	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no
+	version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On Thu, Nov 05, 2026 at 01:29:12PM +0200, Roman Vivchar via B4 Relay wrote:
-> From: Roman Vivchar <rva333@protonmail.com>
-> 
-> Add a compatible string for the mt6595 keypad, that is compatible with
-> mt6779.
-> 
-> Signed-off-by: Roman Vivchar <rva333@protonmail.com>
+On Fri, Nov 06, 2026 at 08:19:33AM +0000, Sven Besser wrote:
+> Without the patch the adapter is never found. With it, it shows up within
+> seconds, GO negotiation, WPS and DHCP succeed, and screen mirroring works.
+>
+> Tested-by: Sven Besser <sven.besser@sql-ag.de>
 
-Applied, thank you.
+Great news on the real sink, Sven, thanks for trying it.
 
--- 
-Dmitry
+Funny timing: a couple of hours later Felix picked up MediaTek's fix for the same bug, so mine's superseded. Theirs uses the separate IE set you'd wondered about:
+
+  https://lore.kernel.org/r/20261106083004.3156085-10-james-ly.huang@mediatek.com
+
+I tried theirs on my MT7925U. It still finds my test peer, but WPS and P2P now land ahead of HT instead of at the end. No idea if any sink cares. Yours would tell us.
+
+> while the station interface is associated to an AP on a channel the GO
+> can't use (5 GHz channel 100, DFS, or 2.4 GHz channel 13), we become GO
+> on another channel (5 GHz 36/40/44) and group formation fails.
+
+Their series also changes how the GO asks for its channel:
+
+  https://lore.kernel.org/r/20261106083004.3156085-7-james-ly.huang@mediatek.com
+
+If you get a chance to try Felix's mt76 branch with your sink, it'd answer both. No rush.
+
+Felix, Sven tracked this one down on 7 October, if you can still add him:
+
+  Reported-by: Sven Besser <sven.besser@sql-ag.de>
+  Closes: https://lore.kernel.org/linux-wireless/FRVP281MB5672AE5BBD61EF0802D42370A0942@FRVP281MB5672.DEUP281.PROD.OUTLOOK.COM/
+
+Devin
 
