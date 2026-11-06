@@ -2,11 +2,11 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id C8925606D809
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id EF3B5606D806
 	for <linux-mediatek@archiver.kernel.org>; Fri,  6 Nov 2026 08:30:19 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=lgqie2SM;
-	dkim=pass (1024-bit key, unprotected) header.d=mediatek.com header.i=@mediatek.com header.a=rsa-sha256 header.s=dk header.b=ALDIxUv8
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=mlbJkFR0;
+	dkim=pass (1024-bit key, unprotected) header.d=mediatek.com header.i=@mediatek.com header.a=rsa-sha256 header.s=dk header.b=d49uQ2lX
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
@@ -14,57 +14,58 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=LGSvrTv4Wf91vkSRllE7f4GzHyMY5oUERas0d4QiPbY=; b=lgqie2SMLAm2jK/V422ItX4X+F
-	cWqsJE0qJye6VPTDbc6Gq23jH9xBe61V3H99NWHQV3zupBeMpnmWbhzpsk3SzGRO5vhqA8TYxmWMo
-	O6wJ98lSUbgQtUEx6y5llzonOBf9b/JSrkNQvqDWPPV6wGxmVEwwJ7w6Szo6svhdgDPVtZ0TWZBZr
-	D88FCsWIRyVb0bAMqPblGX54Am+6zJppTatgfBxtF1SktGqFOz37c7lRYIhblvGIGD/N8wdN9b8G1
-	NavWnlo9ejtcjmR6er+yYdBXgAKbiMzL8dq9OZA8GP09ksrKZNkaEosf8aKYH5liUgRVsjrHg9k88
-	7Kjm6gWQ==;
+	bh=J5WkbCyWET3mP0lGp2C+rKGBoikF2s1awaOWTUy2kgQ=; b=mlbJkFR0eyOoVcMo8BjlRjY8pl
+	2TwN/BjQbshrVz6Z+ZJhdgrB4Q6k9L/vAAC606cI2L+iCxGihLpQvjjseO3MPTU+GD4cYhTh0k6uF
+	0qn1i2QFoLXU1+AHG2/pH2IZT/VJG/MTrEoPPw2aR0dIICMet1V7jDPVRksE+tKaqv9jq2MSUvSjS
+	7I/zUYvafysAfaGbWD5AsZn/vjtZHoIH9Zer9ReH0wiThUNC9VJChNNAl9ytA4aWidbkbaJHilR4e
+	Ub83DPu4Au/p792rXjQbddbkmuwBCwelfmY3adXn2PecxIl8F0I8ecVywR292Dn/Txex69V4b/BZ5
+	Xg+1eZ9g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xPFL1-0000000BZLn-21rN;
+	id 1xPFL1-0000000BZLy-2agC;
 	Fri, 06 Nov 2026 08:30:19 +0000
 Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xPFKy-0000000BZGm-2Whs
+	id 1xPFKy-0000000BZHs-3ejE
 	for linux-mediatek@lists.infradead.org;
 	Fri, 06 Nov 2026 08:30:18 +0000
-X-UUID: 48adf148d9bc11f1afed4741b24580c9-20261106
+X-UUID: 488d259ed9bc11f1afed4741b24580c9-20261106
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=LGSvrTv4Wf91vkSRllE7f4GzHyMY5oUERas0d4QiPbY=;
-	b=ALDIxUv8D2b1uZtJG03ypcqLiJ9m3rq8DKxnWMcDn9C/VntDUW/rMJsVnKWwbbwxCBeLj7c8KKo3n04HPgUDnGvXVBBMpIKF31dhPDJc8Cr+asRrrQfudbK0+08AE+Dw3JQ7XpD5wPe+1faFP/a7ERuFqRk+6yi+P9+xRu8IZdg=;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=J5WkbCyWET3mP0lGp2C+rKGBoikF2s1awaOWTUy2kgQ=;
+	b=d49uQ2lXdL95KFoL6Qfejfs0PkKswiSs9wpStau/7unWkFPygcUlEq8CU+wSw8IWBMv/wvISmKmlJzRGKI7hupnq+bfFyPOs8XbzfLMxxguhBeukftpfgO6QOk48zLLFsmD3InWabfSFEh5rlal7/oDh5RPWnImCkVsoE4QWxhA=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.21,REQID:a8e72f0b-a3ca-4441-84d0-d65883593f8f,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:b0318ac,CLOUDID:b7932aee-6961-456c-adce-6d277e14e6ad,B
-	ulkID:nil,BulkQuantity:0,SF:81|82|102|836|865|888|898,TC:-5,Content:0|15|5
-	0|99,EDM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0
-	,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-O-INFO: VERSION:1.3.21,REQID:9b3d7dac-ed45-4850-a6c9-2c243101e0da,IP:0,U
+	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
+	:release,TS:-5
+X-CID-META: VersionHash:b0318ac,CLOUDID:10737fae-cba0-45b9-b809-bd1d844f6e65,B
+	ulkID:nil,BulkQuantity:0,SF:81|82|102|136|836|865|888|898,TC:-5,Content:0|
+	15|50|99,EDM:-3|-100,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:nil,CO
+	L:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
 X-CID-BVR: 2,SSN|SDN
 X-CID-BAS: 2,SSN|SDN,0,_
 X-CID-FACTOR: TF_CID_SPAM_SNR
 X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: 48adf148d9bc11f1afed4741b24580c9-20261106
-Received: from mtkmbs14n1.mediatek.inc [(172.21.101.75)] by mailgw01.mediatek.com
+X-UUID: 488d259ed9bc11f1afed4741b24580c9-20261106
+Received: from mtkmbs09n1.mediatek.inc [(172.21.101.35)] by mailgw01.mediatek.com
 	(envelope-from <james-ly.huang@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 679270351; Fri, 06 Nov 2026 01:30:12 -0700
+	with ESMTP id 39239931; Fri, 06 Nov 2026 01:30:11 -0700
 Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
- mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.29; Fri, 6 Nov 2026 16:30:09 +0800
+ 15.2.2562.29; Fri, 6 Nov 2026 16:30:10 +0800
 Received: from mtksitap99.mediatek.inc (10.233.130.16) by
  mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.2562.29 via Frontend Transport; Fri, 6 Nov 2026 16:30:09 +0800
+ 15.2.2562.29 via Frontend Transport; Fri, 6 Nov 2026 16:30:10 +0800
 From: James-LY Huang <james-ly.huang@mediatek.com>
 To: <nbd@nbd.name>, <lorenzo@kernel.org>
 CC: <linux-wireless@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
 	<sean.wang@mediatek.com>, <jb.tsai@mediatek.com>, <kun.wu@mediatek.com>,
-	<James-LY.Huang@mediatek.com>, james-ly huang <james-ly.huang@mediatek.com>
-Subject: [PATCH v2 7/9] wifi: mt76: mt7925: inject the deauth for an aging-timeout SAP event
-Date: Fri, 6 Nov 2026 16:30:02 +0800
-Message-ID: <20261106083004.3156085-8-james-ly.huang@mediatek.com>
+	<James-LY.Huang@mediatek.com>, Jacobs Wu <jacobs.wu@mediatek.com>,
+	<stable@vger.kernel.org>
+Subject: [PATCH v2 9/9] wifi: mt76: mt7925: send the common scan IEs and size the request
+Date: Fri, 6 Nov 2026 16:30:04 +0800
+Message-ID: <20261106083004.3156085-10-james-ly.huang@mediatek.com>
 X-Mailer: git-send-email 2.45.2
 In-Reply-To: <20261106083004.3156085-1-james-ly.huang@mediatek.com>
 References: <20261106083004.3156085-1-james-ly.huang@mediatek.com>
@@ -74,8 +75,8 @@ Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261106_003016_672931_82D0E984 
-X-CRM114-Status: GOOD (  18.99  )
+X-CRM114-CacheID: sfid-20261106_003016_934607_BC95E538 
+X-CRM114-Status: GOOD (  19.52  )
 X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -95,244 +96,229 @@ X-Spam-Status: No, score=-18.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-From: james-ly huang <james-ly.huang@mediatek.com>
+From: Jacobs Wu <jacobs.wu@mediatek.com>
 
-The FW ages out inactive clients of an AP/GO and reports it with a
-SAP aging-timeout event; the expected reaction is a deauth with
-REASON_CODE_DISASSOC_INACTIVITY. The AP MLME here lives in
-wpa_supplicant (softmac, device_ap_sme=0), so synthesize the deauth
-frame the GO would have received from the GC and hand it to
-userspace via cfg80211_rx_mgmt_khz().
+mt7925_mcu_build_scan_ie_tlv() sends the per-band sets of
+struct ieee80211_scan_ies but not scan_ies->common_ies. mac80211 puts
+only the band capabilities, and the custom IEs that must precede them,
+into the per-band sets; every other custom IE of the request, the
+vendor specific elements (P2P, WPS, MBO, ...) included, goes to
+common_ies. Since commit 9f8f4a51f3c1 ("wifi: mt76: mt7925: fix
+incorrect scan probe IE handling for hw_scan") these IEs are missing
+from the probe requests.
 
-Handle the new MCU_UNI_EVENT_SAP in p2p.c
-(mt7925_p2p_mcu_sap_event) and dispatch it from the unsolicited
-event handler.
+Send common_ies in a UNI_SCAN_IE TLV without a band: the firmware
+appends such a TLV to the probe requests of every band. It keeps up to
+MT76_CONNAC_SCAN_IE_LEN bytes of it, which max_scan_ie_len already
+guarantees for hw_scan; sched_scan shares the TLV, so give it the same
+limit instead of the IEEE80211_MAX_DATA_LEN of the connac devices that
+have a sched_scan command of their own. The per-band TLVs keep carrying
+the per-band sets; the firmware stores their length in a byte, so a
+longer set is left out instead of being truncated.
 
-Signed-off-by: james-ly huang <james-ly.huang@mediatek.com>
+Size the request for the IEs it carries. hw_scan reserved a fixed
+sizeof(struct scan_ie_tlv) + MT76_CONNAC_SCAN_IE_LEN, which the
+per-band TLVs of a request can exceed, and sched_scan reserved nothing
+beyond the TLV header since struct scan_ie_tlv lost its ies[] array, so
+mt76_connac_mcu_add_tlv() put the TLVs past the end of the buffer,
+which skb_put() turns into a panic, whenever the kmalloc slack did not
+happen to cover them. The builder now checks the tailroom of the skb
+instead of a budget of its own.
+
+Fixes: 9f8f4a51f3c1 ("wifi: mt76: mt7925: fix incorrect scan probe IE handling for hw_scan")
+Cc: stable@vger.kernel.org
+Signed-off-by: Jacobs Wu <jacobs.wu@mediatek.com>
 ---
-v2: fix build warning
+v2: no change
 ---
- .../wireless/mediatek/mt76/mt76_connac_mcu.h  |   1 +
- .../net/wireless/mediatek/mt76/mt7925/mcu.c   |   4 +
- .../net/wireless/mediatek/mt76/mt7925/p2p.c   | 141 ++++++++++++++++++
- .../net/wireless/mediatek/mt76/mt7925/p2p.h   |  16 ++
- 4 files changed, 162 insertions(+)
+ .../net/wireless/mediatek/mt76/mt7925/init.c  |   5 +
+ .../net/wireless/mediatek/mt76/mt7925/mcu.c   | 107 ++++++++++++------
+ 2 files changed, 79 insertions(+), 33 deletions(-)
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h
-index bb98a6eacac4..817554ffb9d8 100644
---- a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h
-@@ -1099,6 +1099,7 @@ enum {
- 	MCU_UNI_EVENT_PS_SYNC = 0x0d,
- 	MCU_UNI_EVENT_SCAN_DONE = 0x0e,
- 	MCU_UNI_EVENT_RDD_REPORT = 0x11,
-+	MCU_UNI_EVENT_SAP = 0x1c,
- 	MCU_UNI_EVENT_ROC = 0x27,
- 	MCU_UNI_EVENT_MBMC = 0x28,
- 	MCU_UNI_EVENT_TX_DONE = 0x2d,
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/init.c b/drivers/net/wireless/mediatek/mt76/mt7925/init.c
+index 8c3049b66a85..05305f4e1db8 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7925/init.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7925/init.c
+@@ -301,6 +301,11 @@ int mt7925_register_device(struct mt792x_dev *dev)
+ 	if (ret)
+ 		return ret;
+ 
++	/* hw_scan and sched_scan share the UNI_SCAN_IE TLV, and the firmware
++	 * keeps at most MT76_CONNAC_SCAN_IE_LEN bytes of IEs for either.
++	 */
++	hw->wiphy->max_sched_scan_ie_len = MT76_CONNAC_SCAN_IE_LEN;
++
+ 	hw->wiphy->reg_notifier = mt7925_regd_notifier;
+ 	dev->mphy.sband_2g.sband.ht_cap.cap |=
+ 			IEEE80211_HT_CAP_LDPC_CODING |
 diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
-index 6ec74d7bfd82..d9a5b5f57fba 100644
+index 24de2ff3a15d..22a6338acaf1 100644
 --- a/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
 +++ b/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
-@@ -8,6 +8,7 @@
- #include "mcu.h"
- #include "mac.h"
- #include "nan.h"
-+#include "p2p.h"
+@@ -3347,56 +3347,99 @@ int mt7925_mcu_set_dbdc(struct mt76_phy *phy, bool enable)
+ }
+ EXPORT_SYMBOL_GPL(mt7925_mcu_set_dbdc);
  
- #define MT_STA_BFER			BIT(0)
- #define MT_STA_BFEE			BIT(1)
-@@ -734,6 +735,9 @@ mt7925_mcu_uni_rx_unsolicited_event(struct mt792x_dev *dev,
- 	case MCU_UNI_EVENT_BSS_BEACON_LOSS:
- 		mt7925_mcu_connection_loss_event(dev, skb);
- 		break;
-+	case MCU_UNI_EVENT_SAP:
-+		mt7925_p2p_mcu_sap_event(dev, skb);
-+		break;
- 	case MCU_UNI_EVENT_RSSI_MONITOR:
- 		mt7925_mcu_rssi_monitor_event(dev, skb);
- 		break;
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/p2p.c b/drivers/net/wireless/mediatek/mt76/mt7925/p2p.c
-index f41098b324ba..1fa6787600b2 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7925/p2p.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7925/p2p.c
-@@ -462,3 +462,144 @@ bool mt7925_p2p_chanctx_bss_programmed(struct ieee80211_vif *vif,
++/* Room for a UNI_SCAN_IE TLV carrying ies_len bytes of IEs */
++static u32
++mt7925_mcu_scan_ie_tlv_len(struct mt76_dev *mdev, u32 ies_len)
++{
++	u32 len = sizeof(struct scan_ie_tlv) + ies_len;
++
++	if (is_mt7928(mdev))
++		len = ALIGN(len, 4);
++
++	return len;
++}
++
++/* Room for the UNI_SCAN_IE TLVs of a scan request */
++static u32
++mt7925_mcu_scan_ies_len(struct mt76_dev *mdev,
++			struct ieee80211_scan_ies *scan_ies)
++{
++	enum nl80211_band i;
++	u32 len = 0;
++
++	if (scan_ies->common_ie_len)
++		len += mt7925_mcu_scan_ie_tlv_len(mdev, scan_ies->common_ie_len);
++
++	for (i = 0; i <= NL80211_BAND_6GHZ; i++) {
++		if (i == NL80211_BAND_60GHZ || !scan_ies->len[i])
++			continue;
++
++		len += mt7925_mcu_scan_ie_tlv_len(mdev, scan_ies->len[i]);
++	}
++
++	return len;
++}
++
++static void
++mt7925_mcu_add_scan_ie_tlv(struct mt76_dev *mdev, struct sk_buff *skb,
++			   u8 band, const u8 *ies, u32 ies_len)
++{
++	u32 alloc_len = mt7925_mcu_scan_ie_tlv_len(mdev, ies_len);
++	struct scan_ie_tlv *ie;
++	struct tlv *tlv;
++
++	if (alloc_len > skb_tailroom(skb))
++		return;
++
++	tlv = mt76_connac_mcu_add_tlv(skb, UNI_SCAN_IE, alloc_len);
++	ie = (struct scan_ie_tlv *)tlv;
++
++	memcpy(ie->ies, ies, ies_len);
++	ie->ies_len = cpu_to_le16(ies_len);
++	ie->band = band;
++}
++
+ static void
+ mt7925_mcu_build_scan_ie_tlv(struct mt76_dev *mdev,
+ 			     struct sk_buff *skb,
+ 			     struct ieee80211_scan_ies *scan_ies)
+ {
+-	u32 max_len = sizeof(struct scan_ie_tlv) + MT76_CONNAC_SCAN_IE_LEN;
+-	u32 ies_len, alloc_len;
+-	struct scan_ie_tlv *ie;
+ 	enum nl80211_band i;
+-	struct tlv *tlv;
+-	const u8 *ies;
++
++	/* The firmware appends a TLV without a band to the probe requests
++	 * of every band: that is where the common IEs of the request go.
++	 */
++	if (scan_ies->common_ie_len)
++		mt7925_mcu_add_scan_ie_tlv(mdev, skb, 0, scan_ies->common_ies,
++					   scan_ies->common_ie_len);
+ 
+ 	for (i = 0; i <= NL80211_BAND_6GHZ; i++) {
++		u8 band;
++
+ 		if (i == NL80211_BAND_60GHZ)
+ 			continue;
+ 
+-		ies = scan_ies->ies[i];
+-		ies_len = scan_ies->len[i];
+-
+-		if (!ies || !ies_len)
++		if (!scan_ies->ies[i] || !scan_ies->len[i])
+ 			continue;
+ 
+-		if (is_mt7928(mdev))
+-			alloc_len = ALIGN(sizeof(*ie) + ies_len, 4);
+-		else
+-			alloc_len = sizeof(*ie) + ies_len;
+-
+-		if (alloc_len > max_len)
+-			return;
+-
+-		tlv = mt76_connac_mcu_add_tlv(skb, UNI_SCAN_IE,
+-					      alloc_len);
+-		ie = (struct scan_ie_tlv *)tlv;
+-
+-		memcpy(ie->ies, ies, ies_len);
+-		ie->ies_len = cpu_to_le16(ies_len);
++		/* The firmware keeps the length of a per-band set in a byte */
++		if (scan_ies->len[i] > U8_MAX)
++			continue;
+ 
+ 		switch (i) {
+ 		case NL80211_BAND_2GHZ:
+-			ie->band = 1;
++			band = 1;
+ 			break;
+ 		case NL80211_BAND_6GHZ:
+-			ie->band = 3;
++			band = 3;
+ 			break;
+ 		default:
+-			ie->band = 2;
++			band = 2;
+ 			break;
+ 		}
+ 
+-		max_len -= alloc_len;
++		mt7925_mcu_add_scan_ie_tlv(mdev, skb, band, scan_ies->ies[i],
++					   scan_ies->len[i]);
  	}
  }
  
-+/* ------------------------------------------------------------------ */
-+/* P2P-only MCU events                                                  */
-+/* ------------------------------------------------------------------ */
-+
-+/* FW reported that a peer of our AP/GO aged out (no traffic/no ack for the FW
-+ * inactivity period); the expected reaction is a deauth with
-+ * REASON_CODE_DISASSOC_INACTIVITY. Here the AP MLME lives in
-+ * wpa_supplicant (softmac, device_ap_sme=0), so instead of tearing the
-+ * STA down in the driver we synthesize the deauth frame the GO would
-+ * have received from the GC and hand it to userspace via
-+ * NL80211_CMD_FRAME.
-+ */
-+static void
-+mt7925_mcu_sap_aging_timeout(struct mt792x_dev *dev, u16 wlan_idx)
-+{
-+	struct {
-+		struct ieee80211_hdr_3addr hdr;
-+		__le16 reason_code;
-+	} deauth = {};
-+	u8 peer[ETH_ALEN], own[ETH_ALEN], bssid[ETH_ALEN];
-+	struct ieee80211_chanctx_conf *ctx;
-+	struct mt792x_bss_conf *mconf;
-+	struct mt792x_link_sta *mlink;
-+	struct ieee80211_vif *vif;
-+	struct ieee80211_sta *sta;
-+	struct mt792x_vif *mvif;
-+	struct mt792x_sta *msta;
-+	struct mt76_wcid *wcid;
-+	struct wireless_dev *wdev;
-+	int freq = 0;
-+	u8 link_id;
-+
-+	rcu_read_lock();
-+
-+	wcid = mt76_wcid_ptr(dev, wlan_idx);
-+	if (!wcid || !wcid->sta)
-+		goto unlock;
-+
-+	mlink = container_of(wcid, struct mt792x_link_sta, wcid);
-+	msta = mlink->sta;
-+	if (!msta || !msta->vif)
-+		goto unlock;
-+
-+	vif = container_of((void *)msta->vif, struct ieee80211_vif, drv_priv);
-+	if (vif->type != NL80211_IFTYPE_AP &&
-+	    vif->type != NL80211_IFTYPE_P2P_GO)
-+		goto unlock;
-+
-+	mvif = (struct mt792x_vif *)vif->drv_priv;
-+	sta = container_of((void *)msta, struct ieee80211_sta, drv_priv);
-+	link_id = wcid->link_id;
-+
-+	ether_addr_copy(peer, sta->addr);
-+	ether_addr_copy(own, vif->addr);
-+	ether_addr_copy(bssid, vif->bss_conf.bssid);
-+	mconf = &mvif->bss_conf;
-+
-+	if (ieee80211_vif_is_mld(vif) && link_id < IEEE80211_LINK_UNSPECIFIED) {
-+		struct ieee80211_link_sta *link_sta;
-+		struct ieee80211_bss_conf *link_conf;
-+		struct mt792x_bss_conf *link_mconf;
-+
-+		link_sta = rcu_dereference(sta->link[link_id]);
-+		if (link_sta)
-+			ether_addr_copy(peer, link_sta->addr);
-+
-+		link_conf = rcu_dereference(vif->link_conf[link_id]);
-+		if (link_conf) {
-+			ether_addr_copy(own, link_conf->addr);
-+			ether_addr_copy(bssid, link_conf->bssid);
-+		}
-+
-+		link_mconf = rcu_dereference(mvif->link_conf[link_id]);
-+		if (link_mconf)
-+			mconf = link_mconf;
-+	}
-+
-+	ctx = mconf->mt76.ctx;
-+	if (ctx && ctx->def.chan)
-+		freq = ctx->def.chan->center_freq;
-+	else if (dev->mphy.chandef.chan)
-+		freq = dev->mphy.chandef.chan->center_freq;
-+
-+	rcu_read_unlock();
-+
-+	deauth.hdr.frame_control = cpu_to_le16(IEEE80211_FTYPE_MGMT |
-+					       IEEE80211_STYPE_DEAUTH);
-+	ether_addr_copy(deauth.hdr.addr1, own);	/* DA: the GO itself */
-+	ether_addr_copy(deauth.hdr.addr2, peer);	/* SA: the aged-out GC */
-+	ether_addr_copy(deauth.hdr.addr3, bssid);
-+	deauth.reason_code = cpu_to_le16(WLAN_REASON_DISASSOC_DUE_TO_INACTIVITY);
-+
-+	wdev = ieee80211_vif_to_wdev(vif);
-+	if (!wdev)
-+		return;
-+
-+	cfg80211_rx_mgmt_khz(wdev, MHZ_TO_KHZ(freq), 0, (const u8 *)&deauth,
-+			     sizeof(deauth), 0);
-+
-+	return;
-+
-+unlock:
-+	rcu_read_unlock();
-+}
-+
-+void mt7925_p2p_mcu_sap_event(struct mt792x_dev *dev, struct sk_buff *skb)
-+{
-+	struct mt7925_uni_sap_event *event;
-+	u32 tlv_len;
-+	u8 *tlv;
-+
-+	skb_pull(skb, sizeof(struct mt7925_mcu_rxd));
-+	if (skb->len < sizeof(*event))
-+		return;
-+
-+	event = (struct mt7925_uni_sap_event *)skb->data;
-+	tlv = event->tlv;
-+	tlv_len = skb->len - sizeof(*event);
-+
-+	while (tlv_len >= sizeof(struct tlv)) {
-+		struct tlv *hdr = (struct tlv *)tlv;
-+		u16 tag = le16_to_cpu(hdr->tag);
-+		u16 len = le16_to_cpu(hdr->len);
-+
-+		if (len < sizeof(*hdr) || len > tlv_len)
-+			break;
-+
-+		if (tag == MT7925_SAP_TAG_AGING_TIMEOUT &&
-+		    len >= sizeof(struct mt7925_sap_aging_timeout_tlv)) {
-+			struct mt7925_sap_aging_timeout_tlv *aging =
-+				(struct mt7925_sap_aging_timeout_tlv *)tlv;
-+
-+			mt7925_mcu_sap_aging_timeout(dev,
-+						     le16_to_cpu(aging->wlan_idx));
-+		}
-+
-+		tlv += len;
-+		tlv_len -= len;
-+	}
-+}
-+
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/p2p.h b/drivers/net/wireless/mediatek/mt76/mt7925/p2p.h
-index f7af45ee4c1f..9afae222845f 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7925/p2p.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt7925/p2p.h
-@@ -39,6 +39,20 @@ static inline bool mt7925_is_p2p_go_probe_resp(struct sk_buff *skb)
- 	return ieee80211_is_probe_resp(mgmt->frame_control);
- }
+@@ -3415,7 +3458,6 @@ int mt7925_mcu_hw_scan(struct mt76_phy *phy, struct ieee80211_vif *vif,
+ 	struct scan_ssid_tlv *ssid;
+ 	struct scan_bssid_tlv *bssid;
+ 	struct scan_chan_info_tlv *chan_info;
+-	struct scan_ie_tlv *ie;
+ 	struct scan_misc_tlv *misc;
+ 	struct tlv *tlv;
+ 	int max_len;
+@@ -3425,8 +3467,8 @@ int mt7925_mcu_hw_scan(struct mt76_phy *phy, struct ieee80211_vif *vif,
  
-+/* SAP event (FW event UNI_EVENT_ID_SAP / enum ENUM_UNI_EVENT_SAP_TAG) */
-+#define MT7925_SAP_TAG_AGING_TIMEOUT		0
-+
-+struct mt7925_sap_aging_timeout_tlv {
-+	__le16 tag;
-+	__le16 len;
-+	__le16 wlan_idx;
-+	u8 pad[2];
-+} __packed;
-+
-+struct mt7925_uni_sap_event {
-+	u8 pad[4];	/* fixed field */
-+	u8 tlv[];
-+} __packed;
- /* TX/RX path overrides, BMC wcid bookkeeping and the P2P-only MCU event
-  * handlers.
-  */
-@@ -54,4 +68,6 @@ void mt7925_p2p_bmc_remove(struct mt792x_dev *dev,
- bool mt7925_p2p_chanctx_bss_programmed(struct ieee80211_vif *vif,
- 				       struct ieee80211_bss_conf *link_conf);
+ 	max_len = sizeof(*hdr) + sizeof(*req) + sizeof(*ssid) +
+ 		  sizeof(*bssid) * MT7925_RNR_SCAN_MAX_BSSIDS +
+-		  sizeof(*chan_info) + sizeof(*misc) + sizeof(*ie) +
+-		  MT76_CONNAC_SCAN_IE_LEN;
++		  sizeof(*chan_info) + sizeof(*misc) +
++		  mt7925_mcu_scan_ies_len(mdev, &scan_req->ies);
  
-+void mt7925_p2p_mcu_sap_event(struct mt792x_dev *dev, struct sk_buff *skb);
-+
- #endif /* __MT7925_P2P_H */
+ 	skb = mt76_mcu_msg_alloc(mdev, NULL, max_len);
+ 	if (!skb)
+@@ -3546,15 +3588,14 @@ int mt7925_mcu_sched_scan_req(struct mt76_phy *phy,
+ 	struct scan_sched_req *req;
+ 	struct scan_ssid_tlv *ssid;
+ 	struct scan_chan_info_tlv *chan_info;
+-	struct scan_ie_tlv *ie;
+ 	struct scan_sched_ssid_match_sets *match;
+ 	struct sk_buff *skb;
+ 	struct tlv *tlv;
+ 	int i, max_len;
+ 
+ 	max_len = sizeof(*hdr) + sizeof(*req) + sizeof(*ssid) +
+-		  sizeof(*chan_info) + sizeof(*ie) +
+-		  sizeof(*match);
++		  sizeof(*chan_info) + sizeof(*match) +
++		  mt7925_mcu_scan_ies_len(mdev, ies);
+ 
+ 	skb = mt76_mcu_msg_alloc(mdev, NULL, max_len);
+ 	if (!skb)
 -- 
 2.45.2
 
