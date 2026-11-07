@@ -2,136 +2,118 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 65C3B606A326
-	for <linux-mediatek@archiver.kernel.org>; Fri,  6 Nov 2026 22:12:04 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id E77BE606A32E
+	for <linux-mediatek@archiver.kernel.org>; Sat,  7 Nov 2026 00:15:05 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=aOMd3ZnE;
-	dkim=pass (2048-bit key, unprotected) header.d=NXP1.onmicrosoft.com header.i=@NXP1.onmicrosoft.com header.a=rsa-sha256 header.s=selector1-NXP1-onmicrosoft-com header.b=lLkofCIK
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=jDibntGP;
+	dkim=pass (1024-bit key, unprotected) header.d=redhat.com header.i=@redhat.com header.a=rsa-sha256 header.s=mimecast20190719 header.b=TT6lDaci
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:
-	Content-Type:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Message-Id:MIME-Version:Subject:Date:From:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
 	List-Unsubscribe-Post:List-Owner;
-	bh=fYROGaWWEuzGAu5dtTnw4QlTAW+v+opptPz7qagaCgE=; b=aOMd3ZnEjAkSgi8MN+kUhmn8SE
-	lBWh8m5JznmMYAqnw6oltiCLji1a+RO19wWGAjf5kfIX41w6hH1A2gcuG7jBYbqLVufUm7fvDUrJe
-	rWjJ6K9kZtFl0ma0xR8n3VcdcYfxyJ1/gMTd3FWWt0BIEixIz/4Fd0Rpd4dKezE5rZfd3fiGPvgNh
-	q06ah9dy3XCJkzhPiscXx3EXWGRDSq4G1GngfYCGuD7HyIKqLrrm0iw/fxeF5eWsRGsZWVj0Q3AYQ
-	SUWGEoEoaFqZpFANEJxOrj7MpPZVnppEuFv3qV4Y+IhR2GUej8qpWWqk3CDi1frVGz0RG6U0gXQI9
-	IjM4tahQ==;
+	bh=cx9Rp6YTIeNtyaa0iGfIZ36b9vGqaRX5Tus/vFI1EQk=; b=jDibntGPLtZTpMyx7rGOsYpHLA
+	hL6Jaqsaj2skRX304UunFpLyCHqSJHW0VL4FS1OWx0zxlB5AUWed//fT7gatKo5IIEgrtbq+wx1tw
+	fgU5DIbzjYrWpZupWqSpm5ZrPNR9K81fa3C7E8x+6zCiw3/nnq/2u9v8lnJIs/36ZCBMSk/qL4zxr
+	PpypWGSvYfpjUiz3Ll+pbaFkrj5TZrsrknZt2ZjO2or23YVcAewdEmLDE8GY5v6Qj2DedJ59iD61Z
+	5XkFryd0xFUBipKmUeeDFUvHBgELZQCs6rxbB0rZUu8s+RMp1/Pvjy9mh5NdDhA+2bEETtVCkyXoQ
+	Byy1pGyg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xPSAD-0000000DlWo-3okJ;
-	Fri, 06 Nov 2026 22:12:01 +0000
-Received: from mail-westeuropeazlp170130006.outbound.protection.outlook.com ([2a01:111:f403:c201::6] helo=AM0PR02CU008.outbound.protection.outlook.com)
+	id 1xPU5I-0000000DuNQ-1oaQ;
+	Sat, 07 Nov 2026 00:15:04 +0000
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xPSAA-0000000DlVs-2L6I;
-	Fri, 06 Nov 2026 22:12:00 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=SJ7QlGEVsZIgCKxDJ/k+t5aTcD4TTeOYoazyYzt+aY06AN/UGF0lGMbCKx2kLCld16gbewAtIRCHJ3Lhca5Gogm43RbymAaH074cIeALFDATekfIU5mt1RIbptVpYvT1XMx5tkuu0GSVD210WR6Xkw/xAtBrG6X3O+DyVU7CQRPBojlekvdnpL9jGtBgRYLOv8q89npiM3l3oy7VVDugRA3KncTGNn4EmAjafAv8Xul4PbrbfZtpCaIdK0W7JpWAMDHjb1IHjyM03gsERu64OvurI5zm1UwkXPG+DTmE6JogIDW3POaJQQYkMaoFNcDSvgHiOgXWhgXVKIjBKLVfwQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=fYROGaWWEuzGAu5dtTnw4QlTAW+v+opptPz7qagaCgE=;
- b=Q4Nx9d6a7RwMm8L7bR/CrERUUL1W1UDhSuj5sa9PwBIWNlfBDqxmv33p3e6Sf001FRKhyNsg35G1lWBGtJ42vnHVndEw2bTsA6Q1pJG93ec84rnIsZXyHxyf8hGE7OAosZ5YmEGi8wPmprayn7hxG1ns8fg4PuGv42/cU/3nz8C3LjV1NiilqpHTJUcLvbWbNPf2wqswxDhlZgPan8wf2aqxKLp5QKQZ3V6PEEmpJk+kHtYE81QacAedNBDXCBIr8E0zvFdKrj+L5uiaBu5q6cValQOeS9x3xEX5UeU/0w5g7RWotvqHdwsAATAbBX6R5RpGBELkcbCP+zF1/hOGLA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=oss.nxp.com; dmarc=pass action=none header.from=oss.nxp.com;
- dkim=pass header.d=oss.nxp.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=NXP1.onmicrosoft.com;
- s=selector1-NXP1-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=fYROGaWWEuzGAu5dtTnw4QlTAW+v+opptPz7qagaCgE=;
- b=lLkofCIKqZZl5ti68K7rToeUYnjLIq1FlaGA0BLNfsckwA702Bv8PZ6jOxGpXxWp6DcdrdmHh9nhDOKNCv2DGmar43qmZ9nsNzjIgrAl5gFNcO/OI67MkxQUXex9D0UCN71wv4QWS/Ll4QiGVSTKl9XSUcVS5tKrvdnVgHmlav+mFwrEqQuiPGKDC4zUjPTwBtGlrlKau92ZKFSluJxj2ZvSjqQIhnhoCHiC0rfwR613XDdYEQO0rVZCfLXyPEPC/4hU8fPpcz6730zhDtupv9Bh7wZVU5uAjl/iBKRLK8Nyms6PAvCXkjxMef89tcJ2leFVlzUO+PEtCZqs1K7Gjw==
-Authentication-Results: mx.microsoft.com 1; dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=oss.nxp.com;
-Received: from MI3PR04MB12438.eurprd04.prod.outlook.com (2603:10a6:290:76::14)
- by MA9PR04MB629231.eurprd04.prod.outlook.com (2603:10a6:250:10a::13) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.592.11; Fri, 6 Nov
- 2026 22:11:51 +0000
-Received: from MI3PR04MB12438.eurprd04.prod.outlook.com
- ([fe80::c715:c32:8bb1:b70b]) by MI3PR04MB12438.eurprd04.prod.outlook.com
- ([fe80::c715:c32:8bb1:b70b%6]) with mapi id 15.21.0592.010; Fri, 6 Nov 2026
- 22:11:51 +0000
-Date: Fri, 6 Nov 2026 17:11:42 -0500
-From: Frank Li <Frank.li@oss.nxp.com>
-To: Defa Li <defa.li@mediatek.com>
-Cc: Alexandre Belloni <alexandre.belloni@bootlin.com>,
-	Frank Li <Frank.Li@nxp.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-i3c@lists.infradead.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, wsd_upstream@mediatek.com,
-	mingchang.jia@mediatek.com, yuhan.wei@mediatek.com,
-	hao.lin@mediatek.com
-Subject: Re: [PATCH] i3c: master: Set I2C client for dynamically attached
- devices
-Message-ID: <au5QnvfvZmfjRxWd@lizhi-Precision-Tower-5810>
-References: <20261106055637.563626-1-defa.li@mediatek.com>
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20261106055637.563626-1-defa.li@mediatek.com>
-X-ClientProxiedBy: PH7PR02CA0023.namprd02.prod.outlook.com
- (2603:10b6:510:33d::30) To MI3PR04MB12438.eurprd04.prod.outlook.com
- (2603:10a6:290:76::14)
+	id 1xPU5C-0000000DuMC-2H51
+	for linux-mediatek@lists.infradead.org;
+	Sat, 07 Nov 2026 00:15:01 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+	s=mimecast20190719; t=1794010497;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+	 content-transfer-encoding:content-transfer-encoding;
+	bh=cx9Rp6YTIeNtyaa0iGfIZ36b9vGqaRX5Tus/vFI1EQk=;
+	b=TT6lDacixGosxWdcD2b50CLxI1afEyyBKYMASU0D8pTGnvD9DyrDE4BeK4DexzBRGnWH+l
+	srnIzef60tmrrWmY0j1PKL/WDjothdhJQ+RpJs1ku9sGI97iuNSqZhJ/6+ybvmTh9Jl4vk
+	cpA2r7AKJx+x1oIdhqy1jj79YWZ4xOk=
+Received: from mail-qt1-f200.google.com (mail-qt1-f200.google.com
+ [209.85.160.200]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-3-TK_R08NkNqeI-qqtuGue2w-1; Fri, 06 Nov 2026 19:14:56 -0500
+X-MC-Unique: TK_R08NkNqeI-qqtuGue2w-1
+X-Mimecast-MFC-AGG-ID: TK_R08NkNqeI-qqtuGue2w_1794010495
+Received: by mail-qt1-f200.google.com with SMTP id d75a77b69052e-5363b06bcb2so23362751cf.2
+        for <linux-mediatek@lists.infradead.org>; Fri, 06 Nov 2026 16:14:56 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20260707; t=1794010495; x=1794615295;
+        h=cc:to:message-id:content-transfer-encoding:content-type
+         :mime-version:subject:date:from:x-gm-gg:x-gm-message-state:from:to
+         :cc:subject:date:message-id:reply-to:content-type;
+        bh=cx9Rp6YTIeNtyaa0iGfIZ36b9vGqaRX5Tus/vFI1EQk=;
+        b=coCtI4vNXriUdoowOE+AyoSv3hsJApZkzOewFqSmsj3MV5pJzjZW9/xGCQluAtBsHx
+         wNDs9av/JGZSG20ufCuo2SdcYrI7sVAKeUesKXedtKjtBdOp44FPsy1338DyWEL/Y4KI
+         quVEf/sMXE5qQUEAO2ZH9DWxeqw3ESD4umOd7AKWhrwFwhD45HRUP+5dkZ0EZHJuTV2N
+         WRWVtkZPzmWgdmkPjfkWj6vkLVQGbbI0k6xJNzq0GTlEySVT6V2Jg5hPEg2/jhg6vPm6
+         6C7XLukt8X9tV4Rh7jgNA0OtXOnCDTb2pluD0xziw3ZNlqSY25RS0AGqE5KgrzTpSx0G
+         cu8w==
+X-Forwarded-Encrypted: i=1; AKwUvByD4p86bRXE4dlojTOTCUTI9z2Yaa+Rk2XmrxWzH0MNlBvvfGA6KuBSxunqOjaxIg/oON436u+gEQtNF33rbg==@lists.infradead.org
+X-Gm-Message-State: APuU4Z9iTfYPPNtH4m8Vmat59X4W9xGW4j2T0HjrMI4O+xpDTsoMRZtX
+	+eBKVJiiklpSpqron5MJKUpGVhZ3dn4Vc97CoUCtin6mYdueDYYh+fVadfVoF5CaFsCcbuBV33r
+	hV+s/QeUxjY0nk3m2PZxxV2ffB8psD3CRBQ19rpayEoLpuXu58ndFIuYlBSlaAtAQK9qOVaJWqQ
+	==
+X-Gm-Gg: AYBFou0nC3T8sVOQQP+8tV4IkGZwTCfMSA0cVs7XjwBl9c2oojRFqiaqha6ancWJq3W
+	NJLepMmG+sFknKGl9A+wScXY5IkETmBXcG/7+DZZ3AvqeXFqTfQdzxHzjS6sAd2XlrJmcMbNZaR
+	aHEbo5hAsqN3pvls6oi2SakVcp9Y9mK9oR4PZGPB3xrq3XukaBRl7AZnjOZgy9cNPzWJBZmoy0M
+	c2vJl3Los4udd9UUnqkkqq9sqDhmcZiomlMpUN9BK1o52wpHZ+9TUnTzLLAJ0UDKMtz9hBHgyRB
+	SnDco6AZlxK5GQAioaXPOhy9+GkeTmIN9xlmKe1zYyqlMR96eEC/jmtgKNxxRr0uMMhZQ9OLHMA
+	Vodsiq8BdrzceyQTEPUYwQ4bijRNcToeTcObEOroS9xTWfA/Co/yzpvRWGsoMXft0mIc32E+l9+
+	lAvlfWQzX3DrAoMJtq
+X-Received: by 2002:a05:622a:138c:b0:54d:812b:ac2 with SMTP id d75a77b69052e-54e138860femr73961141cf.28.1794010495447;
+        Fri, 06 Nov 2026 16:14:55 -0800 (PST)
+X-Received: by 2002:a05:622a:138c:b0:54d:812b:ac2 with SMTP id d75a77b69052e-54e138860femr73960931cf.28.1794010495047;
+        Fri, 06 Nov 2026 16:14:55 -0800 (PST)
+Received: from bmasney-x1.rmtuswv.csb ([69.43.42.202])
+        by smtp.gmail.com with ESMTPSA id 6a1803df08f44-91ea6a591a4sm31938846d6.20.2026.11.06.16.14.54
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Fri, 06 Nov 2026 16:14:54 -0800 (PST)
+From: Brian Masney <bmasney@redhat.com>
+Date: Fri, 06 Nov 2026 19:14:21 -0500
+Subject: [PATCH] mailbox: convert to subsys_platform_driver()
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: MI3PR04MB12438:EE_|MA9PR04MB629231:EE_
-X-MS-Office365-Filtering-Correlation-Id: 92b76f6f-a876-4411-8a6c-08df3c52f558
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|23010399003|7416014|376014|1800799024|366016|19092799006|11063799006|56012099006|261021121427099003|261102123227099003|10067099003|22082099003|18002099003;
-X-Microsoft-Antispam-Message-Info: MbW77KVWwv/5SgS846vll8Ma7qJQI3g53dE3EX9YM6Tohvl3qomovNYHXZu2JorsWsFnXzlro4XD8Xt6cDvf4TPvl+SQJevHF/QDpCiyX7eja9VuIMKFfqzLe8CU0bpTYRpJ+xTdJ64wAFwKbfEeTzsAMc+CqJCGvnpnWztNrKDmJx65GrTo/z3Owp5CDQjMspN6dx1dOzngbJ+1oCN+BbRslCm0Ufin+Hv+TqNU0YgteGW61SEnOXmaAs3/BvhWhm0YF4Sw+cxt+fntlq6gsTPCuw2FguwxEw1rMeFotWv5zkgtSuDieOSQOA+C5cJqzKT3XaZQiAPOgAFeQuPl3f4Q2hSzqZ1zRwRJHUVnNj9CJyHkCIOYOZnhYJGkorXYtktZLgDEX9MvHCT4w46TNg/AaQPLntpvnWpg52wrjsHnngfw3IQAnr9YElvqFE1IgtVOr5negtj+QEFMZu0Pf6BAQKI4gZBqzoD209ih0EOAGUE5ylLndbOJOgb9+YH1TAPPNgUt2hChAkrZdfV3w8UTifhjWpS+Jc4DhfqITXvcb63DVvgvQi54MTwH/DvcAcUwYX74AyAW5DWCwBL34xHnBg3J+5KHZ8xAAcZuip9s4vlOlLWC+gtEUhYGLgHPyoduVORkUkG47sfIYltAv9UB708CTNv4E5eKqX7aUus=
-X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:MI3PR04MB12438.eurprd04.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(23010399003)(7416014)(376014)(1800799024)(366016)(19092799006)(11063799006)(56012099006)(261021121427099003)(261102123227099003)(10067099003)(22082099003)(18002099003);DIR:OUT;SFP:1101;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?vKkOF5EXP5RLfwgvMTKftKPlFxxt1hjKsw2P5EQIE4RFYJHlxV4a/tQ2VCDu?=
- =?us-ascii?Q?wmMa8x/7RE4tj5Ob2H0ftn0zG7biYAlUpBH2fcz/gEXI1Bcgig4KdiglnkmS?=
- =?us-ascii?Q?Q5mmDhaA0WzL2vmGFUuIQKuRXsU5vTr/4qnR7OG8SYXLcx7yLBWy5sFHATq4?=
- =?us-ascii?Q?evVL73buTUMB1VxOA4zXgJA6iT3Kn3LNBG3fQq3LcMPEbMxG0cMnB1cqRHgh?=
- =?us-ascii?Q?+pYoxm3Sr7ia1dp2wpjx5QegPp9qGAb4rv1Iorhsch/fnqGCJ/J+ko54rnob?=
- =?us-ascii?Q?29kX3feooRd3fbfHx+NUmVGYKo2vj6p6gmDAlXJsKZSDWN1zBglrzgiYd8n3?=
- =?us-ascii?Q?Zk3PgWXX/s/uqOpyE+ZjbRoW0BTYXq2tQMJvnjjyot0HPFa2jnxI+p75iVYN?=
- =?us-ascii?Q?QPdIY71YZvs0qE0W1UnBSF8ZzailMGYcYnJK6fIg/j2h3Cw7g26sl8yXSGMx?=
- =?us-ascii?Q?/4LSTUZxCIPuo7fxfWnt8MMbWQ27D1BKYkEFhUVriSDNxno/9FJSXW1jVtdQ?=
- =?us-ascii?Q?Wd1qchV9oFgkGxQDyAOAFlVAdxO+wShXMaTV+bOeChgzkQR7apKMW56ay72D?=
- =?us-ascii?Q?yhY2rvx09V917IDnK4t0/E3n4QqUNbqiC+Ye20avDt8m+/z9Qv36u2TVIaQv?=
- =?us-ascii?Q?j4im5FudlzTyPsSDJyl24jIAk6Vc+imn/943oiH4q/t2H80PKOP+jTyyfmL+?=
- =?us-ascii?Q?0aDCiUqfhZpfHIgY+UjbuFNhRDgbtZMrFayWg/IzovzBQzhn63UME73avZwv?=
- =?us-ascii?Q?QYyf/ocqcqJ96NL2H4teSPaVwgmVg6zWcYE5ZAp9Otl6lJD1eDqrcoK+E8LW?=
- =?us-ascii?Q?HUw/Y+3K77ZAfxxRHilEox8BR6oKzAGDV9tu0r5v6fxe8r+wtDLXfrc5Nyov?=
- =?us-ascii?Q?w/j+jThxER18KmIUGMmJ2Env2mbBq97dPURfo4jgWMVpoVqE6ho+DrL5yusW?=
- =?us-ascii?Q?mHuvrgACcO19q536imRlDYiryPc6VryK0R+zwcdqBoa6VVjMCgSybUvwjyjB?=
- =?us-ascii?Q?dgy2tA3WgKscahHeD/CYnYKQB9QWF8QsCRYaz0Pt8LL+gKQDWDvqwpDLxR97?=
- =?us-ascii?Q?EaEQXO0ZqNvtf2hj/os+oLVAZFohHjzl2FNmnx/Hooxa6e2JIyaJb83CMbb0?=
- =?us-ascii?Q?qCHwhiaL+H2RqSwve7lPEorW6cSrklPwe4gkd9n0yUxU58jfoSLW2ONwGfPV?=
- =?us-ascii?Q?3D9JGKX2ulOBR6Mt2ZP7b9ROF17z0BGn6WYgmsUnaB2yCqaFaWhgjC6xgfyw?=
- =?us-ascii?Q?YiXIlmTzsqrp01uqeSMMwfIP0/kUGRi2O25ynDM+HejseQ7QMfXE4C72riuT?=
- =?us-ascii?Q?6yuLyTKe1GsraSAjjye7cEYYs3eGKk2exOzzKpln7rnuBZeo3LOzNAACNQku?=
- =?us-ascii?Q?Dz+3nHQvxlJtl5SO5X/kwne2PP7N6sGDWMrds4oMK6hjmZcLsNra4TgA5sPm?=
- =?us-ascii?Q?twf78q3kjo/jioHazte0qZ5d+YI7BXAo9m11UBHqohaK9qeonbnld0h9lbSO?=
- =?us-ascii?Q?NLQqcQMdlkAZ4bjN/81SW4fSc87IYkii1iBCmEkXE3jkFGBxfvjNTjM3HGWN?=
- =?us-ascii?Q?sFJ/sT4Oi+v0g58uAxlVg/m4r6eGyh2kKKVOrGDMv4mFmmd0ET9IF3GEk/F3?=
- =?us-ascii?Q?VmQHENYc8dtwb3MDeg78C7VA3pZlNYHv39DhygkpxPXEnG1MuHU7Fe4tvaQg?=
- =?us-ascii?Q?DEemQyL14Ka8vITk1TOW39/4C8A7n2Y3Dkn7+f++MNnuTcT5DUEVV0vKZKD/?=
- =?us-ascii?Q?3i9ZZ7Q+eSC/mUBkCZN1e8SXpGOnGM37X+f8ar07SUMmzMnGGxvJ?=
-X-OriginatorOrg: oss.nxp.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 92b76f6f-a876-4411-8a6c-08df3c52f558
-X-MS-Exchange-CrossTenant-AuthSource: MI3PR04MB12438.eurprd04.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 06 Nov 2026 22:11:51.2322
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 686ea1d3-bc2b-4c6f-a92c-d99c5c301635
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: 7ay1XZln0DCvZJxKotznxUosPqzyX5SntGnt70uTymLOozNWeZrdiznCp11WKxUxDmtFnysB8dqREarg83RO72+CAsI3f9JGN0BwF0IoyqWejmrgI7KAN5ZAjLC3wUSe
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: MA9PR04MB629231
+Message-Id: <20261106-mailbox-subsys-v1-1-a0696237223d@redhat.com>
+X-B4-Tracking: v=1; b=H4sIAAAAAAAC/yXM3QpAQBCG4VvRHNuyhLgVOWBnMPLXDiK5d4vDp
+ 77vvUDIMgnk3gWWdhaeJwfte2C6ampJMTpDGISJ1kGixoqHej6UbLWcojJEjKMUIyID7rRYavj
+ 4gkX52y17Mutbgft+ADFe+d9yAAAA
+X-Change-ID: 20261106-mailbox-subsys-9ddd537d3eec
+To: Jassi Brar <jassisinghbrar@gmail.com>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Michal Simek <michal.simek@amd.com>
+Cc: linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, Brian Masney <bmasney@redhat.com>
+X-Mailer: b4 0.17-dev-d96cb
+X-Developer-Signature: v=1; a=openpgp-sha256; l=2807; i=bmasney@redhat.com;
+ s=20250903; h=from:subject:message-id;
+ bh=3AfqlmxfhvtOFs2P8v1lkeNi768e0FuNou3yM1xZYxY=;
+ b=owGbwMvMwCW2/dJd9di6A+2Mp9WSGLLe5Va/njKX4/zvh8ZCU29Zn++fUlxuaP7/8lR/lw+nt
+ x5I/K/a11HKwiDGxSArpsiyJNeoICJ1le29O5osMHNYmUCGMHBxCsBELD8x/FN2Dr8RvTypYk7L
+ 5G0vZQtW7Jh4dPsWLhmFiWsSK35ysSkw/E/vjD12wDx/od6djL7jvetjL7icSr0fsDtr9cdTRTX
+ 7S5gA
+X-Developer-Key: i=bmasney@redhat.com; a=openpgp;
+ fpr=A46D32705865AA3DDEDC2904B7D2DD275D7EC087
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: OFdtMgyBtqpMup5R-vlIqV67WSHEctP5wIMWXqE1u4k_1794010495
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261106_141158_606675_6F24B203 
-X-CRM114-Status: GOOD (  14.25  )
-X-Spam-Score: 0.0 (/)
+X-CRM114-CacheID: sfid-20261106_161458_688346_BCA4BE94 
+X-CRM114-Status: UNSURE (   8.81  )
+X-CRM114-Notice: Please train this message.
+X-Spam-Score: -2.8 (--)
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -142,40 +124,103 @@ List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-13.9 required=3.0 tests=BAYES_00,DKIM_SIGNED,
-	DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS autolearn=ham autolearn_force=no version=4.0.1
+X-Spam-Status: No, score=-23.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,
+	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,SPF_HELO_NONE,SPF_PASS,
+	USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On Fri, Nov 06, 2026 at 01:56:10PM +0800, Defa Li wrote:
-> The I2C attach callback allocates a descriptor for clients added after
-> the adapter is registered. Store the client in the descriptor after
-> attaching it, matching the setup used for board-info devices.
->
-> Signed-off-by: Defa Li <defa.li@mediatek.com>
-> ---
+Reduce boilerplate code in these drivers and convert them over to use
+the macro subsys_platform_driver().
 
-Reviewed-by: Frank Li <Frank.Li@nxp.com>
+Signed-off-by: Brian Masney <bmasney@redhat.com>
+---
+ drivers/mailbox/mailbox-xgene-slimpro.c | 13 +------------
+ drivers/mailbox/mtk-cmdq-mailbox.c      | 13 +------------
+ drivers/mailbox/zynqmp-ipi-mailbox.c    | 12 +-----------
+ 3 files changed, 3 insertions(+), 35 deletions(-)
 
->  drivers/i3c/master.c | 2 ++
->  1 file changed, 2 insertions(+)
->
-> diff --git a/drivers/i3c/master.c b/drivers/i3c/master.c
-> index 01e05bad8661..690a045bffa0 100644
-> --- a/drivers/i3c/master.c
-> +++ b/drivers/i3c/master.c
-> @@ -3467,6 +3467,8 @@ static int i3c_master_i2c_attach(struct i2c_adapter *adap, struct i2c_client *cl
->  	if (ret)
->  		goto out_free_dev;
->
-> +	i2cdev->dev = client;
-> +
->  	return 0;
->
->  out_free_dev:
-> --
-> 2.43.0
->
+diff --git a/drivers/mailbox/mailbox-xgene-slimpro.c b/drivers/mailbox/mailbox-xgene-slimpro.c
+index 1f87a84e5995..f489bcabceff 100644
+--- a/drivers/mailbox/mailbox-xgene-slimpro.c
++++ b/drivers/mailbox/mailbox-xgene-slimpro.c
+@@ -243,18 +243,7 @@ static struct platform_driver slimpro_mbox_driver = {
+ 	},
+ };
+ 
+-static int __init slimpro_mbox_init(void)
+-{
+-	return platform_driver_register(&slimpro_mbox_driver);
+-}
+-
+-static void __exit slimpro_mbox_exit(void)
+-{
+-	platform_driver_unregister(&slimpro_mbox_driver);
+-}
+-
+-subsys_initcall(slimpro_mbox_init);
+-module_exit(slimpro_mbox_exit);
++subsys_platform_driver(slimpro_mbox_driver);
+ 
+ MODULE_DESCRIPTION("APM X-Gene SLIMpro Mailbox Driver");
+ MODULE_LICENSE("GPL");
+diff --git a/drivers/mailbox/mtk-cmdq-mailbox.c b/drivers/mailbox/mtk-cmdq-mailbox.c
+index 96462ca84471..262832753fa5 100644
+--- a/drivers/mailbox/mtk-cmdq-mailbox.c
++++ b/drivers/mailbox/mtk-cmdq-mailbox.c
+@@ -875,18 +875,7 @@ static struct platform_driver cmdq_drv = {
+ 	}
+ };
+ 
+-static int __init cmdq_drv_init(void)
+-{
+-	return platform_driver_register(&cmdq_drv);
+-}
+-
+-static void __exit cmdq_drv_exit(void)
+-{
+-	platform_driver_unregister(&cmdq_drv);
+-}
+-
+-subsys_initcall(cmdq_drv_init);
+-module_exit(cmdq_drv_exit);
++subsys_platform_driver(cmdq_drv);
+ 
+ MODULE_DESCRIPTION("Mediatek Command Queue(CMDQ) Mailbox driver");
+ MODULE_LICENSE("GPL v2");
+diff --git a/drivers/mailbox/zynqmp-ipi-mailbox.c b/drivers/mailbox/zynqmp-ipi-mailbox.c
+index 42d2583e44ca..f2a082f2dc7e 100644
+--- a/drivers/mailbox/zynqmp-ipi-mailbox.c
++++ b/drivers/mailbox/zynqmp-ipi-mailbox.c
+@@ -1023,17 +1023,7 @@ static struct platform_driver zynqmp_ipi_driver = {
+ 	},
+ };
+ 
+-static int __init zynqmp_ipi_init(void)
+-{
+-	return platform_driver_register(&zynqmp_ipi_driver);
+-}
+-subsys_initcall(zynqmp_ipi_init);
+-
+-static void __exit zynqmp_ipi_exit(void)
+-{
+-	platform_driver_unregister(&zynqmp_ipi_driver);
+-}
+-module_exit(zynqmp_ipi_exit);
++subsys_platform_driver(zynqmp_ipi_driver);
+ 
+ MODULE_LICENSE("GPL v2");
+ MODULE_DESCRIPTION("Xilinx ZynqMP IPI Mailbox driver");
+
+---
+base-commit: ddfe51b0a0f5dc9e415cc2c8ad8db17532dd426b
+base-tree: git://git.kernel.org/pub/scm/linux/kernel/git/next/linux-next.git master
+change-id: 20261106-mailbox-subsys-9ddd537d3eec
+
+Best regards,
+--  
+Brian Masney <bmasney@redhat.com>
+
 
