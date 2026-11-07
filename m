@@ -2,59 +2,68 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id C2835606D808
-	for <linux-mediatek@archiver.kernel.org>; Sat,  7 Nov 2026 22:00:36 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 73C98606A32C
+	for <linux-mediatek@archiver.kernel.org>; Sat,  7 Nov 2026 22:42:30 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=hAyJ4sm8;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=Hxw1n2J4
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=pleOHVMx;
+	dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=Lr6VX3aI
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Message-ID:Date
-	:To:From:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=QaioE7WJx6HqzbXk//5g/Hdq+H63H7gKI1NMPIdYlu4=; b=hAyJ4sm86WTQOJ29CptEYeiT8v
-	J3DdSDJvWf3JbkJL/DDlszG6UUWmoXO+z2pWoNP4vshoygPXCsAdl8oUvy4YI3fhbjFgNEKbOX73g
-	F2/P2ALwcwKpRL32DafACjxNCfdx8IonfQNBz/gt3fwziG4r9tN/tL5ouzl/F5Oad2zU1rgZtpbCZ
-	Gwjp5BjaFNnN/FC4lljSylz0wywGHFd0E3UQfAvI7sJXuw9aWCStAXTGnbo2o23tSFIQlVZcyLyY9
-	+T96kWXtWLaix8kviuOv78Jljp0CTE3+jVNQrwjqUDqfTZaaujD0HrH+eoLUO1MMoY5DSEZxlNbd5
-	lZIZ1VJA==;
+	bh=xFgpOeXIhWE4x1O0Mu4ZGy/Nw4WbClkm6HsJcdNwT+A=; b=pleOHVMx9J6IWNdBKz5vre6aNH
+	IysFcsc/pL/xUbwAUXIRQFta7M2ajCJ7KT+sFO9MeBJte324NeTBoxu97TXmwoI0GmtcNfRU+IB5h
+	Yqt9zy2gKozSsBi3glyTUYZNrIvsbdfKcPVLuoTN9KQcGnMzgxF8y/kB63/OCZ0q2bv3p9PFTbuwV
+	ivS1Q/QCpi6hn8/rDy6bQppP7Lb8wx2fjbguKBF3wmoaawpv1PF18+u98aRAKBklAaOW1p9iBzZSI
+	ylqnY3tOOdv/4o2jCEUxZ45i1iQLclVXFy6AlOIXKfWLUoMJ6SQQ6TUeu82P8is1BSxlNLq3VZIBi
+	At60SvFg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xPoSi-0000000FRun-1Mlj;
-	Sat, 07 Nov 2026 22:00:36 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1xPp7F-0000000FTkC-3qby;
+	Sat, 07 Nov 2026 22:42:29 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xPoSf-0000000FRsU-0PTH;
-	Sat, 07 Nov 2026 22:00:33 +0000
+	id 1xPp7E-0000000FTjw-29KT;
+	Sat, 07 Nov 2026 22:42:28 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id 4E6B943EA4;
-	Sat,  7 Nov 2026 22:00:32 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3B4801F008A1;
-	Sat,  7 Nov 2026 22:00:31 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 2131A61213;
+	Sat,  7 Nov 2026 22:42:26 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 0904A1F0089F;
+	Sat,  7 Nov 2026 22:42:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1794088832;
-	bh=QaioE7WJx6HqzbXk//5g/Hdq+H63H7gKI1NMPIdYlu4=;
-	h=Subject:From:To:Cc:Date:In-Reply-To:References;
-	b=Hxw1n2J4UUJ96b9ExhgHhMrhBM+SCTabqkUtusQHjcshqlpzSYixR9PShCYYbz8f4
-	 i5FnE55zOaHB2upZjI0iz2/ZlJMkYds65cGBNd6C+P8MPiH+2uvE5qZDX1SZXPh6nT
-	 4Wf2J310hyQYfIgYZbO0zu3seB1Ku0l5J4Xpq3RlFOAbVpCWQenTGBSpZjDVsum2+9
-	 pHBcrtSK7+uiU/4ykWU5sEY98XyNksHgVtcZxyyjmnHXaXGmtXm/3O3pXfrcsCsRvr
-	 VvRCoahCFlZCkFlWlHio2JkMYdE26wTVTlv1CEvTdO2ohp6YsPVfx0bqqef2RgYn2k
-	 iRavK+WTyD0bg==
-Subject: Re: [PATCH net-next v2 2/2] net: ethernet: mtk_eth_soc: add 9K jumbo
-From: netdev-bot+sashiko@kernel.org
-To: sandeeph@loljews.com
-Date: Sat, 07 Nov 2026 22:00:30 +0000
-Message-ID: <179408883078.994134.17583422873503660321@kernel.org>
-In-Reply-To: <patch-cb77640ba129138f860134f54fa345aa@loljews.com>
-References: <patch-cb77640ba129138f860134f54fa345aa@loljews.com>
-X-sashiko-severity: High
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
+	s=k20260515; t=1794091345;
+	bh=xFgpOeXIhWE4x1O0Mu4ZGy/Nw4WbClkm6HsJcdNwT+A=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To;
+	b=Lr6VX3aIKAkiZddAWqS8pV015LkPa8GXTxKUW7KAqMyOsjAauvuuoEijtfedO0dxi
+	 /G+QtmVoCH4tXfKy05k7PClFBhNKZgskEWrsrp5rlF9GMHEHsvVPKdCARiLcnzkloh
+	 ve7ys7z9J/3x9bHJluwP2bkqgFwSRsVIa5DBitC4IKl9fVb8B618op80Ka/POHwpqG
+	 6GCUsOdhl3sxt4sUzrylP1o5xzKVeMyFWCIQQhCwKsSHqO4GcOAZtuoXSA+XcsmYTt
+	 gY/vBVFy4Ri7SqLPXXDtZrEd/PaiqdO4gbhPIR1jSzLJdgjcqeegkdUiiqk5Lt7mnT
+	 Y2pTNJbks5bbA==
+Date: Sat, 7 Nov 2026 16:42:19 -0600
+From: Bjorn Andersson <andersson@kernel.org>
+To: Sebastian Reichel <sre@kernel.org>
+Cc: Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
+	Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+	Conor Dooley <conor+dt@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Konrad Dybcio <konradybcio@kernel.org>, 
+	linux-usb@vger.kernel.org, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-rockchip@lists.infradead.org, 
+	linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org, kernel@collabora.com, 
+	Sebastian Reichel <sebastian.reichel@collabora.com>, Konrad Dybcio <konrad.dybcio@oss.qualcomm.com>
+Subject: Re: [PATCH v2 4/4] arm64: dts: qcom: Use DP AltMode defines
+Message-ID: <au-pMBoYrUn89Zhy@zenbook>
+References: <20261017-dp-altmode-dt-defines-v2-0-7ab3d93553dd@collabora.com>
+ <20261017-dp-altmode-dt-defines-v2-4-7ab3d93553dd@collabora.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20261017-dp-altmode-dt-defines-v2-4-7ab3d93553dd@collabora.com>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -64,434 +73,75 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: mason-cw.chang@mediatek.com, angelogioacchino.delregno@collabora.com, andrew+netdev@lunn.ch, netdev@vger.kernel.org, linux@armlinux.org.uk, linux-kernel@vger.kernel.org, edumazet@kernel.org, linux-mediatek@lists.infradead.org, matthias.bgg@gmail.com, kuba@kernel.org, pabeni@redhat.com, lorenzo@kernel.org, davem@davemloft.net, linux-arm-kernel@lists.infradead.org, nbd@nbd.name
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-13.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,SPF_PASS,
-	T_SPF_HELO_TEMPERROR autolearn=ham autolearn_force=no version=4.0.1
+X-Spam-Status: No, score=-15.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,
+	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=ham
+	autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Thank you for your contribution! Sashiko AI review found 10 potential
-issue(s) to consider.
+On Sat, Oct 17, 2026 at 09:59:33PM +0200, Sebastian Reichel wrote:
+> From: Sebastian Reichel <sebastian.reichel@collabora.com>
+> 
+> Use the new USB-C DP AltMode defines for the SVID and the capabilities
+> VDO to make the DTs more readable.
+> 
+> Reviewed-by: Konrad Dybcio <konrad.dybcio@oss.qualcomm.com>
+> Signed-off-by: Sebastian Reichel <sebastian.reichel@collabora.com>
 
-Critical: 0 · High: 1 · Medium: 8 · Low: 1
+Acked-by: Bjorn Andersson <andersson@kernel.org>
 
-If you believe none of the issues are legitimate, please reply to each
-issue of Medium severity or higher and explain why the AI is wrong.
-If any of them are legitimate and you plan to respin, please let patchwork
-know by including "pw-bot: cr" as a separate line at the end of your reply
-(one such reply per series is enough).
+Regards,
+Bjorn
 
-- [High] An XDP program can attach successfully and then never run.
-- [Medium] This regression hits every SoC, not just MT7988, and the
-  commit message does not say so.
-- [Medium] The patch removes MT7628's max_mtu limit.
-- [Medium] Two statements in the commit message do not match the code.
-- [Medium] The PDMA RX SDL field in pdma.rx_cfg (0x6a10 on MT7988) is
-  written as `mtk_w32(eth, val | ((MTK_PDMA_LRO_SDL + eth->rx_buf_len)…
-- [Medium] The code breaks the invariant stated in the new mtk_dma_init()
-  comment, that eth->rx_buf_len is derived at ring allocation "so ...…
-- [Medium] While DMA is running, mtk_change_mtu() rejects any change
-  whose computed rx_buf_len differs from eth->rx_buf_len (`!=`), not…
-- [Medium] Once any MAC's MTU makes frag_size exceed PAGE_SIZE (MTU above
-  ~3054 on MT7988), every RX ring is filled with high-order compound…
-- [Medium] In the XGMII branch of mtk_set_mcr_max_rx(),
-  MTK_XMAC_RX_CFG2(mac->id) is read into mcr_cur, but the new value is…
-- [Low] The comment in mtk_rx_alloc() (lines 2861-2865) says large rings
-  "take the netdev_alloc_frag()/mtk_max_lro_buf_alloc() path below" and…
-
---
-
-net: ethernet: mtk_eth_soc: add 9K jumbo
-
-This commit adds a MTK_NETSYS_RX_9K capability for MT7988. With it, the
-XGMII MACs advertise a 9K max_mtu, and the driver programs XMAC_RX_CFG2
-and the PDMA RX SDL. The shared RX buffer length now comes from the
-largest MTU of any MAC, and runtime MTU changes that need a different
-buffer size are rejected while DMA is running.
-
-Link: https://github.com/frank-w/BPI-Router-Linux/commit/b4c6cb1d5532
-Link: https://github.com/mediatek/mtk-openwrt-feeds
-
-> diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-> index 29370376f0322..38d402c5ead73 100644
-> --- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-> +++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-
-[ ... ]
-
-> @@ -554,6 +555,43 @@ static int mtk_mac_prepare(struct phylink_config *config, unsigned int mode,
->  	return 0;
->  }
+> ---
+>  arch/arm64/boot/dts/qcom/qrb5165-rb5.dts | 8 ++++++--
+>  arch/arm64/boot/dts/qcom/sm8150-hdk.dts  | 9 +++++++--
+>  2 files changed, 13 insertions(+), 4 deletions(-)
+> 
+> diff --git a/arch/arm64/boot/dts/qcom/qrb5165-rb5.dts b/arch/arm64/boot/dts/qcom/qrb5165-rb5.dts
+> index d6af679abe1a..d21b94e872ce 100644
+> --- a/arch/arm64/boot/dts/qcom/qrb5165-rb5.dts
+> +++ b/arch/arm64/boot/dts/qcom/qrb5165-rb5.dts
+> @@ -1508,8 +1508,12 @@ PDO_FIXED_USB_COMM |
 >  
-> +static void mtk_set_mcr_max_rx(struct mtk_mac *mac, u32 val)
-> +{
-> +	struct mtk_eth *eth = mac->hw;
-> +	u32 mcr_cur, mcr_new;
-> +
-> +	if (MTK_HAS_CAPS(eth->soc->caps, MTK_SOC_MT7628))
-> +		return;
-> +
-> +	if (!mtk_interface_mode_is_xgmii(eth, mac->interface)) {
-> +		mcr_cur = mtk_r32(mac->hw, MTK_MAC_MCR(mac->id));
-> +		mcr_new = mcr_cur & ~MAC_MCR_MAX_RX_MASK;
-
-[ ... ]
-
-> +	} else if (mtk_is_netsys_v3_or_greater(mac->hw) &&
-> +		   mac->id != MTK_GMAC1_ID) {
-> +		mcr_cur = mtk_r32(mac->hw, MTK_XMAC_RX_CFG2(mac->id));
-> +
-> +		if (val < MTK_MAX_RX_LENGTH_9K)
-> +			mcr_new = FIELD_PREP(MTK_XMAC_MAX_RX_MASK, val);
-> +		else
-> +			mcr_new = MTK_MAX_RX_LENGTH_9K;
-
-[Severity: Medium]
-Does this clear the rest of XMAC_RX_CFG2? The code reads mcr_cur, but it
-builds mcr_new from the length field alone. Any bits outside
-MTK_XMAC_MAX_RX_MASK (GENMASK(13, 0)) are written back as zero.
-
-The GMAC branch above keeps the other bits with
-mcr_cur & ~MAC_MCR_MAX_RX_MASK. Should the XGMII branch do the same?
-
-This branch runs on the GMAC2/GMAC3 XGMII MACs from three places:
-mtk_mac_config() on an interface change, mtk_change_mtu(), and
-mtk_hw_init() after a reset. If the upper bits hold non-zero defaults,
-the mcr_new != mcr_cur check will also trigger a write every time.
-
-> +
-> +		if (mcr_new != mcr_cur)
-> +			mtk_w32(mac->hw, mcr_new, MTK_XMAC_RX_CFG2(mac->id));
-> +	}
-> +}
-> +
->  static void mtk_mac_config(struct phylink_config *config, unsigned int mode,
->  			   const struct phylink_link_state *state)
->  {
-> @@ -647,6 +685,7 @@ static void mtk_mac_config(struct phylink_config *config, unsigned int mode,
->  		regmap_write(eth->ethsys, ETHSYS_SYSCFG0, val);
+>  		altmodes {
+>  			displayport {
+> -				svid = /bits/ 16 <0xff01>;
+> -				vdo = <0x00001c46>;
+> +				svid = /bits/ 16 <USB_SVID_DP_ALTMODE>;
+> +				vdo = <VDO_DP(DP_CAP_DPAM_V2_0, DP_CAP_CABLE_TYPE_PASSIVE,
+> +					      DP_CAP_UHBR_13_5_UNSUPPORTED,
+> +					      DP_PIN_UFP_NONE, DP_PIN_DFP_C_D_E,
+> +					      DP_CAP_USB2_USED, DP_CAP_RECEPTACLE,
+> +					      DP_CAP_SIGNALLING_HBR3, DP_CAP_DFP_D)>;
+>  			};
+>  		};
 >  
->  		mac->interface = state->interface;
-> +		mtk_set_mcr_max_rx(mac, eth->rx_buf_len);
->  	}
-
-[Severity: Medium]
-Can a MAC end up accepting frames larger than the RX ring buffers here?
-
-This call is inside the if (mac->interface != state->interface) block.
-mac->interface is not reset on close, so the call only runs on the first
-mac_config for a given interface mode.
-
-Take two MACs, A and B:
-
-  A at MTU 9000 (or 2000 on MT7621), B at MTU 1500
-  open both: mtk_dma_init() sets rx_buf_len to 9216 (or 2048), and
-             mtk_mac_config(B) programs B's limit to 9216 (or MAX_RX_2048)
-  close both
-  set A's MTU to 1500: dma_refcnt is 0, so this is allowed, and only
-             A's MAC is reprogrammed
-  reopen: mtk_dma_init() recomputes rx_buf_len as 1536 and the rings
-          shrink, but mtk_mac_config(B) skips this call because the
-          interface did not change
-
-B's MAC would still accept 9216 or 2048 byte frames into 1536 byte
-buffers. That seems to contradict the new comment in mtk_dma_init():
-
-    /* Derived here, at ring allocation, so eth->rx_buf_len always describes
-     * the buffers the rings actually hold and mtk_mac_config() never lets
-     * a MAC accept a frame the rings cannot take.
-     */
-
-Before this patch the buffers were always at least 2048 bytes, which
-covered the largest MAC limit. The driver can't show what the PDMA does
-with a frame longer than PLEN0, and mtk_poll_rx() has no handling for
-frames that span multiple descriptors.
-
-[ ... ]
-
-> @@ -1280,9 +1319,8 @@ static bool mtk_rx_get_desc(struct mtk_eth *eth, struct mtk_rx_dma_v2 *rxd,
->  	return true;
->  }
+> diff --git a/arch/arm64/boot/dts/qcom/sm8150-hdk.dts b/arch/arm64/boot/dts/qcom/sm8150-hdk.dts
+> index cdced5c848d3..3d83dd305954 100644
+> --- a/arch/arm64/boot/dts/qcom/sm8150-hdk.dts
+> +++ b/arch/arm64/boot/dts/qcom/sm8150-hdk.dts
+> @@ -581,8 +581,13 @@ PDO_FIXED_USB_COMM |
 >  
-> -static void *mtk_max_lro_buf_alloc(gfp_t gfp_mask)
-> +static void *mtk_max_buf_alloc(unsigned int size, gfp_t gfp_mask)
->  {
-
-[Severity: Low]
-This isn't a bug, but the comment above the page_pool check in
-mtk_rx_alloc() still uses the old name and treats 9K jumbo as a future
-case:
-
-	/* page_pool hands out order-0 pages and the pool is created with
-	 * MTK_PP_MAX_BUF_SIZE, so only rings whose buffers fit in a page can
-	 * use it.  The larger rings (HW-LRO, and 9K jumbo once enabled) take
-	 * the netdev_alloc_frag()/mtk_max_lro_buf_alloc() path below.
-	 */
-
-Should it be updated now that this patch renames the helper to
-mtk_max_buf_alloc() and enables MTK_NETSYS_RX_9K for MT7988?
-
-[ ... ]
-
-> @@ -2812,8 +2851,8 @@ static int mtk_rx_alloc(struct mtk_eth *eth, int ring_no, int rx_flag)
->  		rx_dma_size = soc->rx.dma_size;
->  	}
->  
-> -	ring->frag_size = mtk_max_frag_size(rx_data_len);
-> -	ring->buf_size = mtk_max_buf_size(ring->frag_size);
-> +	ring->frag_size = mtk_max_frag_size(eth, rx_data_len);
-> +	ring->buf_size = mtk_max_buf_size(eth, ring->frag_size);
-
-[Severity: High]
-Can an attached XDP program silently stop running once frag_size grows
-past PAGE_SIZE?
-
-The normal ring's frag_size now follows eth->rx_buf_len. A page_pool is
-only created when the buffer fits in a page:
-
-	if (mtk_page_pool_enabled(eth) && ring->frag_size <= PAGE_SIZE) {
-
-mtk_poll_rx() only calls mtk_xdp_run() inside the if (ring->page_pool)
-branch. Without a page_pool, every packet goes to napi_gro_receive() and
-the program never sees it.
-
-The XDP admission checks only look at the MTU of a single device:
-
-mtk_xdp_setup():
-	if (dev->mtu > MTK_PP_MAX_BUF_SIZE) {
-		NL_SET_ERR_MSG_MOD(extack, "MTU too large for XDP");
-		return -EOPNOTSUPP;
-	}
-
-mtk_change_mtu():
-	if (rcu_access_pointer(eth->prog) &&
-	    length > MTK_PP_MAX_BUF_SIZE) {
-
-On MT7988 there seem to be two ways to reach this:
-
-1) GMAC1 (the DSA conduit, max_mtu 9198) is at MTU 9000, so rx_buf_len
-   is 9216 and frag_size is around 9.6K. Attaching XDP to another MAC
-   with MTU 1500 succeeds, but the program never runs on any MAC.
-
-2) With XDP attached and the interfaces down, an MTU of 3055..3502
-   passes the MTK_PP_MAX_BUF_SIZE check. The 1K rounding then gives
-   rx_buf_len 4096 and frag_size around 4.5K, so the next open builds
-   the rings without a page_pool.
-
-Before this patch the normal ring's frag_size was always around 2.4K, so
-page_pool, and therefore XDP, was always active on netsys v2 and later.
-Should the XDP checks use the shared rx_buf_len instead of the MTU of
-one device?
-
-[ ... ]
-
-> @@ -2857,7 +2896,8 @@ static int mtk_rx_alloc(struct mtk_eth *eth, int ring_no, int rx_flag)
->  			if (ring->frag_size <= PAGE_SIZE)
->  				data = netdev_alloc_frag(ring->frag_size);
->  			else
-> -				data = mtk_max_lro_buf_alloc(GFP_KERNEL);
-> +				data = mtk_max_buf_alloc(ring->frag_size,
-> +							 GFP_KERNEL);
-
-[Severity: Medium]
-Is this memory cost intended when only one MAC uses a jumbo MTU?
-
-Once frag_size exceeds PAGE_SIZE (MTU above roughly 3054 on MT7988),
-every RX ring is filled from mtk_max_buf_alloc(). That includes
-rx_ring_qdma, which mtk_get_rx_ring() never returns and NAPI never polls.
-
-At rx_buf_len 9216, frag_size is around 9.6K, so each slot is an order-2
-allocation (16 KiB). rx_ring_qdma and rx_ring[0] each have 2048 entries
-(rx.dma_size), so about 64 MiB stays pinned while DMA is up. Around half
-of that sits in the unused QDMA ring. Before this patch it was about
-16 MiB of order-0 page_pool pages.
-
-The refill in mtk_poll_rx() also becomes an order-2 GFP_ATOMIC
-allocation for every packet:
-
-	new_data = mtk_max_buf_alloc(ring->frag_size,
-				     GFP_ATOMIC);
-
-__GFP_NOWARN is set, so when memory is fragmented these allocations fail
-without a warning and the packets are counted in rx_dropped. The
-GFP_KERNEL fill at open can fail with -ENOMEM for the same reason.
-
-[ ... ]
-
-> @@ -3253,6 +3293,35 @@ static int mtk_dma_busy_wait(struct mtk_eth *eth)
-
-[ ... ]
-
-> +static u32 mtk_rx_buf_len_from_mtu(int max_mtu)
-> +{
-> +	int length = max_mtu + MTK_RX_ETH_HLEN;
+>  		altmodes {
+>  			displayport {
+> -				svid = /bits/ 16 <0xff01>;
+> -				vdo = <0x00001c46>;
+> +				svid = /bits/ 16 <USB_SVID_DP_ALTMODE>;
+> +				vdo = <VDO_DP(DP_CAP_DPAM_V2_0, DP_CAP_CABLE_TYPE_PASSIVE,
+> +					      DP_CAP_UHBR_13_5_UNSUPPORTED,
+> +					      DP_PIN_UFP_NONE, DP_PIN_DFP_C_D_E,
+> +					      DP_CAP_USB2_USED, DP_CAP_RECEPTACLE,
+> +					      DP_CAP_SIGNALLING_HBR3, DP_CAP_DFP_D)>;
 > +
-> +	if (length <= MTK_MAX_RX_LENGTH)
-> +		return MTK_MAX_RX_LENGTH;
-
-[Severity: Medium]
-Does this change behaviour on every SoC, not just MT7988?
-
-At the default MTU of 1500 the length is 1518, so this returns
-MTK_MAX_RX_LENGTH (1536). mtk_max_frag_size() now uses that as the
-buffer floor instead of the fixed MTK_MAX_RX_LENGTH_2K. All rings on
-MT7621/7622/7623/7629/7981/7986 shrink from 2048 to 1536.
-
-mtk_change_mtu() also gains this check:
-
-	if (refcount_read(&eth->dma_refcnt) && rx_buf_len != eth->rx_buf_len)
-		return -EBUSY;
-
-Together, these make any runtime MTU change that needs a frame above
-1536 bytes (MTU 1519..2030) fail with -EBUSY while any MAC is up. For
-example, MTU 1600 gives length 1618 and rx_buf_len 2048. Those changes
-were accepted before.
-
-With DSA, dsa_user_change_mtu() raises the conduit MTU with
-dev_set_mtu() and rolls back on failure. Raising a user port from 1500
-to 1520 (conduit 1524, length 1542) on MT7621 with MT7530 would now fail
-while the conduit is up.
-
-The commit message describes this as an MT7988 jumbo feature. Should it
-mention the smaller default buffer on the other SoCs, or should those
-SoCs keep the 2K floor?
-
-> +
-> +	return DIV_ROUND_UP(length, 1024) * 1024;
-> +}
-
-[ ... ]
-
-> @@ -3304,6 +3379,17 @@ static int mtk_dma_init(struct mtk_eth *eth)
->  		mtk_w32(eth, 0x0, eth->soc->reg_map->qdma.hred);
->  	}
+>  			};
+>  		};
 >  
-> +	/* Program the PDMA max RX frame (SDL) from rx_buf_len so jumbo
-> +	 * frames up to it are accepted by the DMA engine.
-> +	 */
-> +	if (mtk_is_netsys_v3_or_greater(eth)) {
-> +		u32 val = mtk_r32(eth, eth->soc->reg_map->pdma.rx_cfg);
-> +
-> +		mtk_w32(eth, val | ((MTK_PDMA_LRO_SDL + eth->rx_buf_len) <<
-> +			MTK_RX_CFG_SDL_OFFSET),
-> +			eth->soc->reg_map->pdma.rx_cfg);
-
-[Severity: Medium]
-Should the SDL field be cleared before the new value is ORed in?
-
-The frame engine is only reset at probe and in error recovery, not on
-close/open. mtk_dma_init() runs on every first open, and mtk_change_mtu()
-does the same write on every MTU change. So the field holds the OR of
-every value written and can only grow:
-
-  open at MTU 1500:            0x3000 + 1536 = 0x3600
-  close, set MTU 9000, reopen: 0x3600 | 0x5400 = 0x7600
-  set MTU 1500 again:          stays 0x7600
-
-A 1536 to 2048 change likewise gives 0x3600 | 0x3800 = 0x3e00.
-
-There is also no field mask to go with MTK_PDMA_LRO_SDL and
-MTK_RX_CFG_SDL_OFFSET. 0x3000 + 9216 = 0x5400 needs 15 bits. If the
-field is narrower than that, does the shift by 16 set bit 30, which
-belongs to another control field?
-
-mtk_poll_rx() assumes one frame per descriptor. Could a DMA frame limit
-that doesn't match buf_size cause the hardware to split frames?
-
-[ ... ]
-
-> @@ -4362,6 +4415,17 @@ static int mtk_change_mtu(struct net_device *dev, int new_mtu)
->  		return -EINVAL;
->  	}
->  
-> +	/* The RX rings are shared and cannot be resized in place while DMA is
-> +	 * running.  Until the reallocation worker lands, reject a runtime MTU
-> +	 * change that would need a different ring buffer size.
-> +	 */
-> +	max_mtu = mtk_max_gmac_mtu(eth);
-> +	if (new_mtu > max_mtu)
-> +		max_mtu = new_mtu;
-> +	rx_buf_len = mtk_rx_buf_len_from_mtu(max_mtu);
-> +	if (refcount_read(&eth->dma_refcnt) && rx_buf_len != eth->rx_buf_len)
-> +		return -EBUSY;
-
-[Severity: Medium]
-Should this only reject changes that need larger buffers, that is
-rx_buf_len > eth->rx_buf_len?
-
-max_mtu includes this device's old MTU, so lowering the largest MTU is
-allowed once and eth->rx_buf_len stays at the old ring size. After that,
-smaller changes that would fit in the existing buffers fail:
-
-  DMA running, A at 9000, rx_buf_len 9216
-  A 9000 -> 1500: max_mtu 9000, 9216 == 9216, allowed
-  A 1500 -> 1400: 1536 != 9216, -EBUSY
-  B 1500 -> 2000: 2048 != 9216, -EBUSY
-
->From then on, no MTU can be lowered until every MAC is closed. DSA user
-port MTU changes that propagate to the conduit fail the same way.
-
-> +
->  	mtk_set_mcr_max_rx(mac, length);
->  	WRITE_ONCE(dev->mtu, new_mtu);
-
-[Severity: Medium]
-The commit message says:
-
-  The RX rings and their buffers are sized for the largest MTU of any MAC,
-  so the MTU limits of the MACs are now written from mtk_mac_config() and
-  mtk_change_mtu() with eth->rx_buf_len rather than a fixed 2K.
-
-Is that accurate? This call still passes the per-device length.
-mtk_hw_init() also still uses the per-device MTU:
-
-	mtk_set_mcr_max_rx(netdev_priv(dev),
-			   dev->mtu + MTK_RX_ETH_HLEN);
-
-Only mtk_mac_config() uses eth->rx_buf_len, so the MAC limit depends on
-which of the three call sites ran last. The baseline never wrote a fixed
-2K either: both earlier call sites used dev->mtu + MTK_RX_ETH_HLEN.
-
-The commit message also lists "add dynamic rx buffer adjustment support"
-as part of this forward-port. However, the comment above refers to a
-reallocation worker that hasn't landed yet, and runtime changes return
--EBUSY. Could the commit message be updated to match the code?
-
-[ ... ]
-
-> @@ -5014,8 +5087,15 @@ static int mtk_add_mac(struct mtk_eth *eth, struct device_node *np)
->  	eth->netdev[id]->irq = eth->irq[MTK_FE_IRQ_SHARED];
->  	eth->netdev[id]->dev.of_node = np;
->  
-> -	if (MTK_HAS_CAPS(eth->soc->caps, MTK_SOC_MT7628))
-> -		eth->netdev[id]->max_mtu = MTK_MAX_RX_LENGTH - MTK_RX_ETH_HLEN;
-> +	/* DSA sets the conduit MTU (user MTU + tag) before the netdev is
-> +	 * opened, so max_mtu must already be final here.  Deriving it only
-> +	 * in mtk_open() leaves the conduit at its 1504 default and blocks
-> +	 * 9K frames on the DSA user ports.
-> +	 */
-> +	if (MTK_HAS_CAPS(eth->soc->caps, MTK_NETSYS_RX_9K) &&
-> +	    mtk_interface_mode_is_xgmii(eth, phy_mode))
-> +		eth->netdev[id]->max_mtu =
-> +			MTK_MAX_RX_LENGTH_9K - MTK_RX_ETH_HLEN;
->  	else
->  		eth->netdev[id]->max_mtu = MTK_MAX_RX_LENGTH_2K - MTK_RX_ETH_HLEN;
-
-[Severity: Medium]
-Was dropping the MT7628 case intended? MT7628 used to get max_mtu 1518
-(MTK_MAX_RX_LENGTH - MTK_RX_ETH_HLEN). Commit 4fd59792097a added that
-limit on purpose ("MT762x HW, except for MT7628, supports frame length
-up to 2048"). MT7628 now falls into the else branch and gets 2030.
-
-Nothing else limits the frame size on MT7628. mtk_set_mcr_max_rx()
-returns early for MTK_SOC_MT7628, and its RX descriptors are written as
-RX_DMA_LSO with no PLEN0. With the interfaces down, mtk_change_mtu()
-would now report success for MTUs 1519..2030 on hardware that cannot
-receive frames above 1536 bytes.
-
--- 
-Sashiko AI review · https://netdev-ai.bots.linux.dev/sashiko/#/patchset/patch-2793186c653124c4c0b3d463bde2ea3a%40loljews.com
+> 
+> -- 
+> 2.53.0
+> 
 
