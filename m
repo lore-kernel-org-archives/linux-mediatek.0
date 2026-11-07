@@ -2,112 +2,62 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 75478606A33D
-	for <linux-mediatek@archiver.kernel.org>; Sat,  7 Nov 2026 13:36:22 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id BBDE6606A337
+	for <linux-mediatek@archiver.kernel.org>; Sat,  7 Nov 2026 13:59:01 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=kk5dOQ51;
-	dkim=pass (2048-bit key, unprotected) header.d=udp0.com header.i=@udp0.com header.a=rsa-sha256 header.s=sig1 header.b=jpBoo1XD
+	dkim=pass (2048-bit key, unprotected) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=xKiinXBO;
+	dkim=pass (2048-bit key) header.d=protonmail.com header.i=@protonmail.com header.a=rsa-sha256 header.s=protonmail3 header.b=bFrtAkQ6
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:To:References:Message-Id:
-	Content-Transfer-Encoding:Cc:Date:In-Reply-To:From:Subject:Mime-Version:
-	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:From:
+	To:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Unsubscribe-Post:
-	List-Owner; bh=rFxyzpjR8N7WWh7CzPxB6p/viDtuv0fjnp7Ia/uade4=; b=kk5dOQ51hyiHOd
-	h8IUlnTnHb9+8FLNmxR2NAG8kxFn5N4D9wZ+gYXrCo5rz7Fz5F5pbtzHstnzZwTMQAoArshaf+gWl
-	hImeo3C98GQ61GpN3vO8bgAXEwRjDEEg8G+HYKwC/zk5gONuq+wBJL8+bZIj1zlN0YJCFldvczsM2
-	rRYUCQlgAs2DUlcEO3ScYf7XPMxPx8Sjk4q8wqNVwk7+KFvC37Pcakdn0umA7VlPiAslMREGhv6rW
-	0eJXKgbyd5+EtxUz65kIdwQdm8Ddt1Rc+4z0Th4sjaZmavoYgCm4C4o9+T//3o1chAATl0aYZlO/+
-	O8zzHR3LKvBL/yx2mlRg==;
+	List-Owner; bh=ggxRUmnt8EfrK5EcxblzoupqkjNgWhTE5turDSMEfKI=; b=xKiinXBOHDrsM7
+	cX0NRKOTSptzRKsMvfSj4c8KdpAWURyDiG09gY7LSBXtX4V6YUFOAu8BJ8xNE+hwcvdDedGOcUpU3
+	HQAV20UAzMQWDEv/SRCqOozUORS/v0pIeiI4is8ayLGJ/zuia+iRQjCFuPdcl2AB63HClp3siMXSY
+	+bSfrjVG9qH3AdWVGx8w7vK4q9Ut6BAKU3OVedhiF9szeF1kEPEw/OqQv1j5cpym2XDJFFA+TOWTe
+	kXxz6N+O2mYo33Z9FIRIWcycK86rODCdFFmm62ztyeRF73aOK+wmumQ8ZZTb2PGEGnCepPOFmSVer
+	e+ul9UH986loxw1V/zXQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xPgaj-0000000EkTI-3vF4;
-	Sat, 07 Nov 2026 13:36:21 +0000
-Received: from ms-2002h-snip6-11.eps.apple.com ([2a01:b747:3002:204::51] helo=outbound.ms.icloud.com)
+	id 1xPgwf-0000000EmHX-0nBn;
+	Sat, 07 Nov 2026 13:59:01 +0000
+Received: from mail-4316.protonmail.ch ([185.70.43.16])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xPgah-0000000EkSd-2CcL
+	id 1xPgwb-0000000EmGZ-0Htj
 	for linux-mediatek@lists.infradead.org;
-	Sat, 07 Nov 2026 13:36:21 +0000
-Received: from outbound.ms.icloud.com (unknown [127.0.0.2])
-	by p00-icloudmta-asmtp-us-west-3a-60-percent-2 (Postfix) with ESMTPS id 843571800123;
-	Sat, 07 Nov 2026 13:36:15 +0000 (UTC)
-X-ICL-RepId: 01a1b639-5e0e-742c-ae14-7d8c8fec6c3d
-X-ICL-Out-Info: HUtFAUMEWwJACUgBTUQeDx5WFlZNRAJCTQtKAEMGWwZeCEEHQwVaC1BcHA4Edx5WAAlWUAJaS1QUBA1XHQdFUR9UWEEOCloFUFEdXwIKBEcEWxdGA1NFXwMXEVABWB5WXloXXk1HH0BNYkkBWhlbHEAXSm5NUw8PBV0IA0NUBF9QVBFXUAtZcEYIOgspB0YEMgFKHlkEWQJdAT0FWRpYADZ8THJcci4LR3o4RglHWxwTVhUNTUMSQhUEG0YeQwRfL10XXgxeBQ==
-Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=udp0.com; s=sig1; t=1794058578; x=1825594578; bh=rFxyzpjR8N7WWh7CzPxB6p/viDtuv0fjnp7Ia/uade4=; h=Content-Type:Mime-Version:Subject:From:Date:Message-Id:To:x-icloud-hme; b=jpBoo1XD0//T3x3qRCR3Z3oH2nqYkExzXIldw4NIjVynVI5fZHEr3L2hzRX8Sny9Z02fnJWaDQNuwhMK8iRqjRm22js9KKpQAJ/IY4CraHlxYUg3aZuoh3/spQ6rKIMzjlmql9DT7SYSQ3HvTEl0iwKd1He3z4TPF9hj3XYsFc0s1bJsOcc5oeIKHLcJEjxW6RpHU/x/LODRE3JpJF5GL1fst6N7eNl67tt+9CN6yA7+kZs006b/pdrA8u/DQlU4BDPPplhaaB0E61XvAudTkEtu4GbQNMllRFcQX955cZe4aj+AL8VhJnX3Rf+z7wtNf/PESsxgqn4kBkxW0RoV8Q==
-mail-alias-created-date: 1755760572767
-Received: from smtpclient.apple (unknown [17.156.208.39])
-	by p00-icloudmta-asmtp-us-west-3a-60-percent-2 (Postfix) with ESMTPSA id 2672D1800125;
-	Sat, 07 Nov 2026 13:36:09 +0000 (UTC)
-Content-Type: text/plain;
-	charset=us-ascii
+	Sat, 07 Nov 2026 13:58:59 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=protonmail.com;
+	s=protonmail3; t=1794059933; x=1794319133;
+	bh=ggxRUmnt8EfrK5EcxblzoupqkjNgWhTE5turDSMEfKI=;
+	h=Date:To:From:Cc:Subject:Message-ID:In-Reply-To:References:
+	 Feedback-ID:From:To:Cc:Date:Subject:Reply-To:Feedback-ID:
+	 Message-ID:BIMI-Selector;
+	b=bFrtAkQ6tOUYKqXxdmzhmLZTs+vVerVwCQS2wqUgfoqUBHCTqSAGYyW2sk7sa+ytU
+	 5bqqUyliFofSzrM4Lx+tbRQmezdKwc9CBTNXMVvo/gjzu+H92XgQGHHpZHhlIgowrg
+	 W5oxsYadM07IKkJ3+4KHWsfvsh/BJxcweK7aPfFrAk/+cY9dr5EMufjySKmWRb1r4+
+	 Vq/JGbxI7/5IQ/6Q5P3fohRgNtj3YshpOPRWgsKz2/eNyZSuoERSSl9puPZa7BU/9D
+	 Z8Lva58ocSKiVfQjOmYnOw1tZFrK5f5d6czowWDv1c1kRricbK0n3AGcSeB+CsUX4X
+	 UcAL4QekVkb8g==
+Date: Sat, 07 Nov 2026 13:58:45 +0000
+To: i@udp0.com
+From: Roman Vivchar <rva333@protonmail.com>
+Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Sean Wang <sean.wang@mediatek.com>, Wim Van Sebroeck <wim@linux-watchdog.org>, Guenter Roeck <linux@roeck-us.net>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Jiri Slaby <jirislaby@kernel.org>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-watchdog@vger.kernel.org, linux-serial@vger.kernel.org
+Subject: Re: [PATCH 1/4] dt-bindings: arm: mediatek: Add MT6833 and the Xiaomi Redmi Note 13 5G
+Message-ID: <ZZQvVFkEtu09SueBM4cpOyT8Lvc5AE5kjAhCYj_i90Yy_HGK05NgwpMXjnrG-yoPdoUOdMZU78ixaR67bHKg6oto5txtZci-CevsM21bJqA=@protonmail.com>
+In-Reply-To: <20261107-mt6833-base-v1-1-bda21083e9f3@udp0.com>
+References: <20261107-mt6833-base-v1-0-bda21083e9f3@udp0.com> <20261107-mt6833-base-v1-1-bda21083e9f3@udp0.com>
+Feedback-ID: 173184497:user:proton
+X-Pm-Message-ID: 91a443bb6ab5850971b9019c18190fcdd348bbc6
 X-Archived-By: <archiver.kernel.org>
-Mime-Version: 1.0 (Mac OS X Mail 16.0 \(3901.100.1.1.12\))
-Subject: Re: [PATCH 4/4] arm64: dts: mediatek: Add MT6833 and the Xiaomi Redmi
- Note 13 5G
-From: i@udp0.com
-In-Reply-To: <FmgvoyT_AgANJAPnjEgEdlKRY0s2nXWF2Wm88KAM2KNKgiWpC0VzBcAukgMmYb_8H67s9wIRvgqcDgWO79Yc-PjdNoBiUS1KejZMWptvLhM=@protonmail.com>
-Date: Sat, 7 Nov 2026 21:35:56 +0800
-Cc: Rob Herring <robh@kernel.org>,
- Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Sean Wang <sean.wang@mediatek.com>,
- Wim Van Sebroeck <wim@linux-watchdog.org>,
- Guenter Roeck <linux@roeck-us.net>,
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
- Jiri Slaby <jirislaby@kernel.org>,
- devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org,
- linux-watchdog@vger.kernel.org,
- linux-serial@vger.kernel.org
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: quoted-printable
-Message-Id: <2B61B8D0-6B82-4320-8E64-32FE4A1EE97C@udp0.com>
-References: <20261107-mt6833-base-v1-0-bda21083e9f3@udp0.com>
- <20261107-mt6833-base-v1-4-bda21083e9f3@udp0.com>
- <FmgvoyT_AgANJAPnjEgEdlKRY0s2nXWF2Wm88KAM2KNKgiWpC0VzBcAukgMmYb_8H67s9wIRvgqcDgWO79Yc-PjdNoBiUS1KejZMWptvLhM=@protonmail.com>
-To: Roman Vivchar <rva333@protonmail.com>
-X-Mailer: Apple Mail (2.3901.100.1.1.12)
-X-Proofpoint-ORIG-GUID: xg0NYAvCjjnnHfMB8W3AAJqLJ_pQYUaR
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYxMTA3MDA1NCBTYWx0ZWRfX9RZQ/dWoFKZx
- /2cLfeuzZW6f/zXPfQiw3r8iS8TU9ObxI0mhgkemMaDyP/qm+x9tbhIsp8jv+1qtjdU6+aIU9Zw
- VD2/UxmhxQkJxQNxMQ0bitFhk3+OIkqQGXrpEtui55jX/4Bjqh6qN2WQSGDbRn0rWQudYyw3kcA
- kjg6Qd7kCVCo6IlTZytoTVRsnZ8+9UqleUc9Hsdcx44VTFE99MIH5NkUh4BsAXR5MwJR0E2isax
- q0wiVyDFRVx4gM8zPLZjZG2n9+x4A0KemXXbt80Z+PwzFcxuv3OcQbNaPh0WMDPDW1FGBmZQXd7
- zZr0E1uqJkbXOC1nvgI/Di6Y4Ary4c86GuDaYmbTKFvgv+qvoMtwNYBxzDloEE=
-X-Authority-Info-Out: v=2.4 cv=AqjjHe9P c=1 sm=1 tr=0 ts=6aef2951
- cx=c_apl:c_pps:t_out a=kRaGL2Q7qLiahLf3O6OaIA==:117
- a=kRaGL2Q7qLiahLf3O6OaIA==:17 a=kj9zAlcOel0A:10 a=zJRp6_cAMcgA:10
- a=VkNPw1HP01LnGYTKEx00:22 a=bJxQ3BvwTHO1ZzqQ4rYA:9 a=CjuIK1q_8ugA:10
-X-Proofpoint-GUID: xg0NYAvCjjnnHfMB8W3AAJqLJ_pQYUaR
-X-JNJ: AAAAAAABXO7N7jFApZXgqN86sy/Yyaev+vDbjjG0xhSRuPW5ySlxe5l1R1j4CMFko3eWZy
- 9uiccDWS1id2lmROUcivh7iBWIivtxpZ/Kud+KJQjUC7bkXI4LJzLh8Zs7Ud5rrrhQS1Uj
- RFkLqucaRqwPikr5cEG5cqxjkZucnJ4vaobuPGdKWkYfCVjv6QieusvzMVYv3ioK3depGx
- G9W0MiSsnnNHrCk/xOS1j7M0Y/76sO9Vh4kN4ic9sM4xrmmPfhL9P8h8sOwRGsBG3q00AZ
- 6ZQE4LnPipbKSVrvs8umLGl+/UFk06QnGZGcWyRkbjCLUAgy19Z815n9YfxYa1MkGnsQe/
- 7nLgrj9GYv2ctsy7n4WAqNK0idSLi0wkajpl8pfnxjTUiV7fFU35qAVZp1ZjTtUDxEWCtx
- diBeQ3wes7rKFLDkUPvKiwpejcA0ofr7+rEyeWwo7/aNL0FT0aath+U9E1+FhNGStHakmp
- DpYF8Uh3ZB1rAcsqaET0C+oWjK96mycfKMGnlCq3FnY6j0mb6+HhuRpPQzPN2z2BRqoE36
- esR9PUGMs6iR/HS+0onlnyCX26OWV19grkILNM+ZPve3Fgfr9RiRGaGcC6fMGcCQ1X2Pth
- TuNvTE7JZXfOtbv8r2clkwutkqWaCwWTm4tzk2R407PDLKILKG+sPtiK4/E26YDHMCfiCr
- xnodOd3j2qdmfnkw2mdQ9fLp1HIaUVKPj+eEnVdaIytBgBdNO8OwL2Wy8jeRvIccLC/W+d
- WWlvZMqCUN3S7bTz8SGQxDlYXrZCebAOS91tlzLSmG3zX4IyDZD0ZGXVa0/VGFJJkhboYk
- gSgyGv2Fsv4oalcwPgGSaKJuri5Z4eIKm1wJf7a0UhSaInsS9ADE6fbWAJvJZHNYR3q8De
- 0RtP4ve8OLCM8+tErYUpjAHq1RegJ3K+/m2vBXOTDjcU2FSslOkc4TiV5xLO1wHk1mcRgf
- U21buSbmy6IWR8BggjsUeCBYrVSgKVuNP5NSeoIx3q7SqpDVvOhuP6muDzvkbg5TKZt58p
- L3Ud24Qe3iQioL23RDgdDlA1Q/GxMPxYbg6LWBG3dSdCyKtR5qUmb/Gr4STYWV4HnmSx+O
- bQn30Aon0BQDj0A142jMgLPJ7i/gm7xuRjlosBEkaxsxpHdSB1QDcTGSz4JB1J8brrz5FI
- SitIkmbYJmODT7L9BGhydaHKcbtqs96iU59kJJEYF2X055uXf8W7/Tjb6OBx9yqcXY2BN2
- egQCx2yexGksEUoDPP5FhYCIS9JqWLNECij2swduqb0vnKI+voWtUwQA+ObZlULRg3cIfl
- ssN6NMHsHkexDBDKZf7AFw5GhXPZ3sb7CIn+Scr8Jp6brlhMQGueKZhQNN1UOihHvjid06
- jCrns1WbLuJTfXRohsi3kbmz6XGaLqII660RA82/beAaeo3SzjsAbMaAAM4Bso+bdgvRkK
- HqJd/7qsATUd6mi0nnKt/jCNOY0knc
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261107_053620_022905_FED44C7C 
-X-CRM114-Status: GOOD (  10.34  )
-X-Spam-Score: -2.1 (--)
+X-CRM114-CacheID: sfid-20261107_055857_472935_6C8F0E64 
+X-CRM114-Status: GOOD (  10.10  )
+X-Spam-Score: -2.5 (--)
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -118,37 +68,54 @@ List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-5.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,
-	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS autolearn=no autolearn_force=no version=4.0.1
+X-Spam-Status: No, score=-12.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
+	DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,FREEMAIL_FORGED_FROMDOMAIN,
+	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=ham
+	autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Hi Roman,
+On Saturday, November 7th, 2026 at 2:22 PM, Rui Cao via B4 Relay <devnull+i=
+.udp0.com@kernel.org> wrote:
 
-On Saturday, November 7th, 2026, Roman Vivchar wrote:
-> Shouldn't the boot shim populate /memory and the dynamic =
-/reserved-memory
-> nodes from the vendor FDT instead of hardcoding them here? There are
-> multiple phone variants, which may have different reserved memory =
-addresses.
+> From: Rui Cao <i@udp0.com>
+>=20
+> Add MediaTek's MT6833 (Dimensity 700) and the Xiaomi Redmi Note 13 5G,
+> codenamed gold, which is built on it.
+>=20
+> Signed-off-by: Rui Cao <i@udp0.com>
 
-It already does: it takes the memory node and the regions LK reserves
-from the tree LK passes, matched by address, so the ones here are only
-the values from a 6 GB unit. You're right that they don't belong here,
-then. In v2 the memory node will be left for the shim to size, and
-reserved-memory will keep only what the kernel uses itself: the ramoops
-region and the framebuffer.
-
-> No interrupts?
-
-I don't know of one routed to Linux. MediaTek's device tree for this
-phone gives the watchdog none, nor do the mainline ones for MT8186,
-MT8188, MT8192 and MT8195, and MediaTek's kernel registers a handler
-with the secure firmware (MTK_SIP_KERNEL_WDT) for watchdog timeouts
-rather than taking an interrupt.
+Reviewed-by: Roman Vivchar <rva333@protonmail.com>
 
 Best regards,
-Rui=
+Roman
+
+> ---
+>  Documentation/devicetree/bindings/arm/mediatek.yaml | 4 ++++
+>  1 file changed, 4 insertions(+)
+>=20
+> diff --git a/Documentation/devicetree/bindings/arm/mediatek.yaml b/Docume=
+ntation/devicetree/bindings/arm/mediatek.yaml
+> index 180e6e4948e..900f16b57dc 100644
+> --- a/Documentation/devicetree/bindings/arm/mediatek.yaml
+> +++ b/Documentation/devicetree/bindings/arm/mediatek.yaml
+> @@ -72,6 +72,10 @@ properties:
+>                - archermind,mt6797-x20-dev
+>                - mediatek,mt6797-evb
+>            - const: mediatek,mt6797
+> +      - items:
+> +          - enum:
+> +              - xiaomi,gold
+> +          - const: mediatek,mt6833
+>        - items:
+>            - enum:
+>                - bananapi,bpi-r64
+>=20
+> --
+> Git-157)
+>=20
+>=20
+>=20
+>
 
