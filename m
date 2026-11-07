@@ -2,89 +2,85 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id B1470606D828
-	for <linux-mediatek@archiver.kernel.org>; Sat,  7 Nov 2026 14:54:47 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 05FF9606D814
+	for <linux-mediatek@archiver.kernel.org>; Sat,  7 Nov 2026 14:54:54 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=RETU+kw4;
-	dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=bJDTrNTL
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=GiMhy9mn;
+	dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=nNAO/bva
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
-	From:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:Cc:To:In-Reply-To:References:Message-Id:
+	Content-Type:MIME-Version:Subject:Date:From:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=lKZkqYIjbjxgUWyU5OSTgWGODonNaqtq35Hba1H7riQ=; b=RETU+kw4sQrLhQyXCl2Scw4XMq
-	i4mF16riuX9bD7n2UO92/7GEuE7HXCV6rximi3bGUrEe1Eg/NQqBet9m9GIcqt4DYre7nNcEdV4sL
-	H/JB+/+YekdM+hARLINYO0ze2cnjWC1JYqZqIpKJ/N8ELXo7fntWp2mPDKD2v41H7mGtz/ASwDQl8
-	UPAaiz2YodpasWSAk89z29b5jcIzqVPr9QdwjxV/AVtzZiBfMIFL/2iWJ2xYdoPf+dhB0CXWAt4re
-	Ygv4x7cZIn7xwS8XDrvCht7fwGPLynC8qVt4cBE2OZVcH2T5E/x/XNyVb0+CVJXfTZW7qhrLcxBeO
-	tJnkIDyQ==;
+	bh=X4helYl8DT5g1jeUFTGg5H0ViPqhpi+VcgILtCDOiBY=; b=GiMhy9mnYvFo4cMtFjQOZynwnK
+	C17mtMr1KUbQDBB9dmm24yn0sOs/p9CkEQCyUF0UhgXpQ137nwjADC3xmcVMRFxX/lB130cU+0IdK
+	UrF2G60jF54L6utHFQNrie+FTZRZkJ2fktw0rqoeCQAvRQ/+IaLsx1Y+ipLXuL9MCOow2mND+lyGI
+	1TzlGYuTXe3NzphqS2qhlIrPVE6y9MYOwhcsOsiMSsHrDaYKlgYPSGjwaRK9mtmvJaRNxUxv6wEFN
+	F4aF+geqj+ERVU+OR1jpqeoaDJOUNvG+HQnxx1qYDOPsDGxC6BTm6sbtZJYHqQzpDcUrbT+3x/7+b
+	Dt4IGLuw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xPhod-0000000ErSC-1Lay;
-	Sat, 07 Nov 2026 14:54:47 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1xPhoj-0000000ErWI-2g9p;
+	Sat, 07 Nov 2026 14:54:53 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xPhob-0000000ErRQ-47i9;
+	id 1xPhoc-0000000ErRg-2kIq;
 	Sat, 07 Nov 2026 14:54:46 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 2123F60D0B;
+	by sea.source.kernel.org (Postfix) with ESMTP id 585F142434;
 	Sat,  7 Nov 2026 14:54:45 +0000 (UTC)
 Authentication-Results: smtp.kernel.org; arc=none smtp.remote-ip=100.80.115.77
 ARC-Seal: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256; cv=none;
-	t=1794063284;
-	b=VON0VH3fmkwdbKly+uvyZEXVPgFYIR16KgaNqIlkUsJ6T/nTcbu9P/FZfyv+0CXZ7iru
-	 nOiVmbPS1mKtHJGQ2XjxR8BhpBJsP8dVPQcJfIAWAIooy2iINN6xePISajdCkGWpfJNVJ
-	 cXTLiN1E3cC+fW3CrJwgxcKWXVU9h9UU3hAiILW+9mBc/zwPNLq+InLbixb0fibd6LO3M
-	 xI72/gnBsA0NCAy1jaX+uMkcl5lnczCLSoXFo3qZjoDXsv8hoo5nzQUFWBUx2jHQhJBGl
-	 46sREqcaSRiqQCkiQ876pcncQSDLnnlWiCoipSwiZRhUBxpyvHxta2lfLb5M395W9cA==
+	t=1794063285;
+	b=O80amJyzx4MbWdYdSk7/YXi3OmIn+bYQHUEIiTyHHs+4lvg31X5tzEkwkUbqWLNmTEUy
+	 9LKSSsKxo84Bsl7qq/vGQXiaXMliaWLuFPGY8+Lmxd/KPFtEEtIWyVteKy4Ravv8sQtdI
+	 +REVN6snV7bNFog4KP/zvYZ+ob659RDI3uTfc0sEOPsffPuTIPItuK7Drd4RNR8TCZueD
+	 F66bsZ5/ADPw2I8LTn8IrlUI8CH1csqq3XiZHzleUDaJR8CvaqQtlckwcxZPK5jIEO/EO
+	 tVHn+J+iLd+JXyc+QAEQSi6vxfg6ZouwVeRR70c+9Dim3S0hGOMQxV18mf45JgRI6QA==
 ARC-Message-Signature: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256;
-	c=relaxed/relaxed; t=1794063284;
-	h=DKIM-Signature:Received:From:Subject:Date:Message-Id:MIME-Version:
-	 Content-Type:Content-Transfer-Encoding:X-B4-Tracking:X-Change-ID:To:
-	 Cc:X-Mailer:X-Developer-Signature:X-Developer-Key:X-Endpoint-Received:
-	 X-Original-From:Reply-To;
-	bh=lKZkqYIjbjxgUWyU5OSTgWGODonNaqtq35Hba1H7riQ=;
-	b=uKjvxR/83T+X+oRSrOpipnPFqvayigUWF+pvSpgraOiGHg6UuzNE0TAF6CqeEowH91SM
-	 zZeUMP2n7yKLwnidtT1B29R6+PSjvF8deZQy+vyD07bPEHtsBujhQAsUFh8mwp/JwLblK
-	 x1nLX5nWa/JNhEIzkGMgcbJ0emUrSf6OjURYiPTEy9RqDJZjc9LNdpIkK0cbVfaB6vGQi
-	 FoqA516s2WaMHQ5FuPpVSnPTxsyRiSmJVaVGdTUWj0BuzXebhz1kfs3n1TeFTZK7z5cxz
-	 ZYt7RnVu6F3MZFbkBYyyhLX7PR6PCXUyFB9HbqTW4B2uC8cN41SUU7vnn/UjCHPl5ew==
+	c=relaxed/relaxed; t=1794063285;
+	h=DKIM-Signature:Received:From:Date:Subject:MIME-Version:Content-Type:
+	 Message-Id:References:In-Reply-To:To:Cc:X-Mailer:
+	 X-Developer-Signature:X-Developer-Key:X-Endpoint-Received:
+	 X-Original-From:Reply-To:Content-Transfer-Encoding;
+	bh=X4helYl8DT5g1jeUFTGg5H0ViPqhpi+VcgILtCDOiBY=;
+	b=DMJfv/hImSOL5L1m6Wl0brwoaV+hya03N8V6W6oMmhxdQx9cVAboiByZscHjEdBKwsw0
+	 bhDkQ2MAGh11Etm4f1Jcj9DombWrR4kkmRvbB+uA5HQ4wkrR21Wme47mD1xZJXsINeKdj
+	 SCgW4FOzJ1v7ys4oOiwY3zpLwwXCNCa+n1hDdX9Dp0PZMzP0XLpLWVvkd2MdzK77Nzg/u
+	 jws0EBa6QMCExfaydFsxCinD2V05fglx2dQF5+6VTcTmCt/0IQ7j7b1e8zHRdfWKwkhwT
+	 anfUN1jE1flXbKxvPdR4bKRge46W4XXE9ERoCu3VW7fSBu2mFoBG3J3+OdB/pIZdAmw==
 ARC-Authentication-Results: i=1; smtp.kernel.org; 
 	arc=none smtp.remote-ip=100.80.115.77
 Received: from lkml.kernel.org (nexus.subspace.kernel.org [100.80.115.77])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.kernel.org (Postfix) with ESMTPS id 59BC91F008A1;
+	by smtp.kernel.org (Postfix) with ESMTPS id 9839E1F008A5;
 	Sat,  7 Nov 2026 14:54:44 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1794063284;
-	bh=lKZkqYIjbjxgUWyU5OSTgWGODonNaqtq35Hba1H7riQ=;
-	h=From:Subject:Date:To:Cc:Reply-To;
-	b=bJDTrNTLISGG7Kj8QnK5MsFnhmFl2kqsF/3aTkAvB+txVqx/oPfnIJPXSbsdvznun
-	 UzwnnDq4JVK8Vb6TZ+jEvNCDNfIxUhy/25WrQHxR5MRSiLMBdJ926nAS9tMdw6T5n+
-	 ouTUb5e4Dob5gH7q5URbcEeeooeWspeNNrqScU2055hcgmSydA9II7N5EqmXYvZuux
-	 eP3XNTu5GDNrCGzRMkMATf0JSv1aWUapftzf7gpl/aNPnKMv8jbG6C8JgIDbNR9ajJ
-	 m8XWtIJwTDrFW1MljeIDsoHRhRcaIngF5ucInQDnGd33LDL0d+MY2zwrYtDr9dfPML
-	 in/YbrEhof1/A==
+	s=k20260515; t=1794063285;
+	bh=X4helYl8DT5g1jeUFTGg5H0ViPqhpi+VcgILtCDOiBY=;
+	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To;
+	b=nNAO/bvasFjPjCJJjz5/iN9ljErNYjH3SM4tAxzJ2vrQvUmQfnBsJKR619UgiaScz
+	 dH+A+DW0wpBBX+cNsxR8XSms87LmLGq9EUveQPwpv5dEhbOYYQpZsASI6bGEH7FzL1
+	 cp1kG59pTtGSKNXh1l0QBsI0rqPnaAsyLtGwdG2rrxJ4wAZSI6fsg+MuOGMjtzwez1
+	 bhIuNhTxUp+HU3MnbotCVJPp7pWYb9zZNkKK+wHGvnsEgxW5Wbr/VgOx8P0YySM40P
+	 ZL5nveMYw6r9ALnZxyw5waJ356DYtCpZP2PpfuetmyJ4QRgZmYEdmDMNDrmUScmf13
+	 MwWeU5vJfgC5g==
 Received: from nexus.subspace.kernel.org (localhost [IPv6:::1])
-	by lkml.kernel.org (Postfix) with ESMTP id DA13247C43;
-	Sat,  7 Nov 2026 14:54:43 +0000 (UTC)
+	by lkml.kernel.org (Postfix) with ESMTP id 2347B47C4B;
+	Sat,  7 Nov 2026 14:54:44 +0000 (UTC)
 From: Roman Vivchar via B4 Relay <devnull+rva333.protonmail.com@kernel.org>
-Subject: [PATCH v3 0/3] usb: mtu3: add mt6595 support
-Date: Sat, 07 Nov 2026 16:54:41 +0200
-Message-Id: <20261107-6595-mtu3-v3-0-f36bc569cb47@protonmail.com>
+Date: Sat, 07 Nov 2026 16:54:44 +0200
+Subject: [PATCH v3 3/3] usb: mtu3: add mt6595 support
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-X-B4-Tracking: v=1; b=H4sIAAAAAAAC/2WOQQ6CMBBFr0K6tqadQgFX3sO4KDBKjVDSlkZDu
- LstxoTE5U/eezMLcWg1OnLKFmIxaKfNGIc4ZKTt1XhHqru4CTCQrOY5lUVd0MHPglbQCJZXmHN
- UJPKTxZt+ba3L9bvd3Dyw9SmQiF47b+x7OxZ44n7dctcNnDKqoFFlC4J1sjpP1ngzDko/j60ZS
- IoH2OkAex2iXnJgQgkZX5R/+rquH5EGntv4AAAA
-X-Change-ID: 20260914-6595-mtu3-82b3048e41ea
+Message-Id: <20261107-6595-mtu3-v3-3-f36bc569cb47@protonmail.com>
+References: <20261107-6595-mtu3-v3-0-f36bc569cb47@protonmail.com>
+In-Reply-To: <20261107-6595-mtu3-v3-0-f36bc569cb47@protonmail.com>
 To: Chunfeng Yun <chunfeng.yun@mediatek.com>, 
  Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
  Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
@@ -93,19 +89,19 @@ To: Chunfeng Yun <chunfeng.yun@mediatek.com>,
  AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Cc: linux-usb@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
  linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, 
- linux-kernel@vger.kernel.org, Roman Vivchar <rva333@protonmail.com>, 
- Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
+ linux-kernel@vger.kernel.org, Roman Vivchar <rva333@protonmail.com>
 X-Mailer: b4 0.15.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1794063282; l=1956;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1794063282; l=1155;
  i=rva333@protonmail.com; s=20260510; h=from:subject:message-id;
- bh=2Sh8YO03rPQWohGdbHMukgtcPFDJ9M5hUrRVkx1RGnA=;
- b=Qk9pSav8KEL83b7n34Cn7Yb6sSrZhCOT0mD42L5dFoOLGDcDOn28R/KJBzqcf8MoOsQ2bkDNH
- VsGg++rTWMYAKcnwDCI4pdau81yyM3IO2evOYn3wEBvSu1ulsOfrfyr
+ bh=MH/mAQtsGq6RAwp6c/enfc7ur+acQQpTl7FnupfzQkI=;
+ b=mvwt455QhrE/7f4g4dyCBd2KF5jJ+28D7VdMketYUp6laKqvUH6dksPfr0Koand+BnCQYjGAp
+ DOYS/KFdwz0DBrRoHo4fsg2KG5hNXj9JTWDpk/i7FsaDst2oWKKjdtL
 X-Developer-Key: i=rva333@protonmail.com; a=ed25519;
  pk=zww/nWjBGoQ4POXCG0BV6fx2iuXK6jx77rsKPA5YK5Y=
 X-Endpoint-Received: by B4 Relay for rva333@protonmail.com/20260510 with
  auth_id=777
 X-Original-From: Roman Vivchar <rva333@protonmail.com>
+Content-Transfer-Encoding: 7bit
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -125,53 +121,41 @@ X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-This patch series adds mt6595 SoC support to the mtu3 driver.
+From: Roman Vivchar <rva333@protonmail.com>
 
-Unlike the mt8173 and newer controllers, the 6595 uses older IP revision
-that can handle only one FIFO slot. Without this series, the current
-driver implementation results in 2 to 4 lost bytes on USB transfers.
+Add a platform data for the MediaTek mt6595 SoC MTU3 IP block with a
+quirk for single FIFO slot.
 
-In mediatek sources, mt6595 is sometimes called 6795. Most of their
-clocks/pins are also compatible. It's not clear if 6795 has the same
-issue or simply lacks T-PHY patch. Other (rare) mobile SoCs with mtu3,
-like mt6757 or 6771, don't need this series.
-
-Another thing worth mentioning, this series is not enough for the USB on
-6595. The other T-PHY patch is required to get the link up. This issue
-has been observed on some 65xx and most 67xx SoCs. Though this is a
-subject for the separate discussion.
-
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Signed-off-by: Roman Vivchar <rva333@protonmail.com>
 ---
-Changes in v3:
-- Pick up tags, resend
-- Link to v2: https://patch.msgid.link/20260922-6595-mtu3-v2-0-71203a362b36@protonmail.com
+ drivers/usb/mtu3/mtu3_plat.c | 5 +++++
+ 1 file changed, 5 insertions(+)
 
-Changes in v2:
-- Reword patch 2 commit title
-- single_slot -> fifo_single_slot naming
-- Drop redundant platform data check
-- Link to v1: https://patch.msgid.link/20260917-6595-mtu3-v1-0-a2ba7c230d68@protonmail.com
+diff --git a/drivers/usb/mtu3/mtu3_plat.c b/drivers/usb/mtu3/mtu3_plat.c
+index bb67da4704b2..9d633695a9be 100644
+--- a/drivers/usb/mtu3/mtu3_plat.c
++++ b/drivers/usb/mtu3/mtu3_plat.c
+@@ -611,11 +611,16 @@ static const struct dev_pm_ops mtu3_pm_ops = {
+ 
+ #define DEV_PM_OPS (IS_ENABLED(CONFIG_PM) ? &mtu3_pm_ops : NULL)
+ 
++static const struct mtu3_platform_data mt6595_platform_data = {
++	.fifo_single_slot = true,
++};
++
+ static const struct mtu3_platform_data mt8173_platform_data = {
+ 	.fifo_single_slot = false,
+ };
+ 
+ static const struct of_device_id mtu3_of_match[] = {
++	{ .compatible = "mediatek,mt6595-mtu3", .data = &mt6595_platform_data },
+ 	{ .compatible = "mediatek,mt8173-mtu3", .data = &mt8173_platform_data },
+ 	{ .compatible = "mediatek,mtu3", .data = &mt8173_platform_data },
+ 	{},
 
----
-Roman Vivchar (3):
-      dt-bindings: usb: mtu3: add mt6595
-      usb: mtu3: add SoC platform data for FIFO quirk handling
-      usb: mtu3: add mt6595 support
-
- Documentation/devicetree/bindings/usb/mediatek,mtu3.yaml |  1 +
- drivers/usb/mtu3/mtu3.h                                  |  9 +++++++++
- drivers/usb/mtu3/mtu3_core.c                             |  3 +++
- drivers/usb/mtu3/mtu3_gadget.c                           |  8 ++++++--
- drivers/usb/mtu3/mtu3_plat.c                             | 13 +++++++++++--
- 5 files changed, 30 insertions(+), 4 deletions(-)
----
-base-commit: 8d3ae59288f1e7d58d76558a6ee96d533bc5019f
-change-id: 20260914-6595-mtu3-82b3048e41ea
-
-Best regards,
---  
-Roman Vivchar <rva333@protonmail.com>
+-- 
+2.56.0
 
 
 
