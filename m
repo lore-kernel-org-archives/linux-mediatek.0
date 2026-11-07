@@ -2,75 +2,78 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 5FFFF606A320
-	for <linux-mediatek@archiver.kernel.org>; Sun,  8 Nov 2026 09:53:40 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 30BF1606A321
+	for <linux-mediatek@archiver.kernel.org>; Sun,  8 Nov 2026 10:25:54 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=c9EtP1+1
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=LlgA7FtT;
+	dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=PNpKxx95
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:Message-ID:Date:References:In-Reply-To
-	:Cc:To:From:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Unsubscribe-Post:List-Owner;
-	bh=d9oSnze2vw3oc+VVxfYM2BcxQUZjEbs0B685TTsdPkk=; b=c9EtP1+1FpRDc8ORMpSbSBRpCJ
-	XsYaFOzEuoDB4aFhINLPDqQz6I/ovbA8q6MtkNRXSnarPwzatMGrqIcJDfe6kTenfU0yEvjHtAi22
-	OzjsSpzQEjrgpPPGiU9G4+Evou+NjIBgZb4+FpQrT4APeKVUP71L+InspEFRYrnBWdulpjluBEbTb
-	YEg3d0d61kyJwDB8k9wgBf8oJsICataLGWh7AdapXGiPaI5tsqzHFCErGRKysYgmTJuWmbFA/YKxB
-	0B0LQ6JP6eO0p00ea8HKgybnLulxtzev2NrmI7/kUZS0jgydFgZdNxNKaK6BLJoOYi4/ecTvRh8bn
-	1WIfpj2w==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Unsubscribe-Post:
+	List-Owner; bh=v1Af1P1P1zbev8CYQkts6hQ+hHJRvEA7sX0TkjFdZnw=; b=LlgA7FtTeZTOuw
+	dqg5bTHT83ZlbtbSZh07U7G6DNTB1uNWsNiZtgJgts0Af5VLIeHhhzqrrqpOfiO6fNWnSJ5tIZHqf
+	yFkFElVW8WK4I0/4yjHkTKgGKkxvTWW//Bbs6wE2jeJvfo0h+bCg+Y1tieFa0kAvKWee3wrtgLVB5
+	miDsrq3zkiSjrHKEKs9JzJ4LC0OFsuPGkKkhGgB49Bl28YXoGrZ5BhioJUFTrddFR+Xe4oOfONB40
+	MSJAKHnq1n36gSR+hY9zwcN2pUzrECyGhMp8YHB9QRR3L0teaktiVgvfCcBiHqHW1Hkok3VzJF1cL
+	ulJbRWmwnjlWF0gGDGew==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xPzak-0000000FvqP-0J88;
-	Sun, 08 Nov 2026 09:53:38 +0000
-Received: from smtp25.cstnet.cn ([159.226.251.25] helo=cstnet.cn)
+	id 1xQ05w-0000000FxwD-2EOm;
+	Sun, 08 Nov 2026 10:25:52 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xPzag-0000000Fvpv-3Nf1;
-	Sun, 08 Nov 2026 09:53:36 +0000
-Received: from [172.100.0.8] (unknown [36.110.52.2])
-	by APP-05 (Coremail) with SMTP id zQCowAB3ELabRvBq5PiYAA--.38431S2;
-	Sun, 08 Nov 2026 17:53:31 +0800 (CST)
-Subject: Re: [PATCH] mailbox: mtk-cmdq: Fix GCE clock reference leak in
- cmdq_get_clocks()
-From: Wentao Liang <vulab@iscas.ac.cn>
-To: Greg KH <gregkh@linuxfoundation.org>
-Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- Jason-JH Lin <jason-jh.lin@mediatek.com>,
- Jassi Brar <jassisinghbrar@gmail.com>, linux-arm-kernel@lists.infradead.org,
- linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
- Matthias Brugger <matthias.bgg@gmail.com>
-In-Reply-To: <2026091720-erased-urchin-8903@gregkh>
-References: <20260917093745.2144930-1-vulab@iscas.ac.cn>
- <2026091720-erased-urchin-8903@gregkh>
-Date: Sun, 08 Nov 2026 09:53:42 -0000
-Message-ID: <179413162201.2723269.10723981032501014855@iscas.ac.cn>
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: 7bit
+	id 1xQ05u-0000000FxvO-1zD5;
+	Sun, 08 Nov 2026 10:25:50 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by sea.source.kernel.org (Postfix) with ESMTP id 3F3A6402D5;
+	Sun,  8 Nov 2026 10:25:50 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 028201F0089F;
+	Sun,  8 Nov 2026 10:25:50 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1794133550;
+	bh=v1Af1P1P1zbev8CYQkts6hQ+hHJRvEA7sX0TkjFdZnw=;
+	h=From:To:Cc:In-Reply-To:References:Subject:Date;
+	b=PNpKxx95tQplb5JM4+uP1TWChj9AbUwLPfociXRfICTLjmxCZsejaOIwW3ME4ie8R
+	 HmFXofTZWu8JpP2MW43DM3+pDXHvi6hiHE17B7I/TUzxhh+fQSFDtDXxMreH/NWSsf
+	 8cyq8mBKLjCB7wDMu2KOl38Yo9G8k7b6ZgzLer+FnR/iTPIzqX1Z+Xk2WojQCfGufD
+	 OhfJx3Z+C4C0m1RWkFRA6otBVj/6VmSmnoH+K1jsr/xbUyatur17pMbrlWXNnaxLqf
+	 kt7iny3qW7m7ps+H9EYZMM7+TR57qqGMlkwl9ookoNI6pROi4I6zbnHf0wMz3GF8FK
+	 WyrbCqg68nmEA==
+Received: from traversing.sirena.org.uk (localhost [IPv6:::1])
+	by traversing.sirena.org.uk (Postfix) with ESMTP id 8509A2BDF03E;
+	Sun, 08 Nov 2026 10:25:48 +0000 (GMT)
+From: Mark Brown <broonie@kernel.org>
+To: Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Dmitry Torokhov <dmitry.torokhov@gmail.com>, Jiri Kosina <jikos@kernel.org>, 
+ Andi Shyti <andi.shyti@kernel.org>, Chen-Yu Tsai <wenst@chromium.org>
+Cc: Benson Leung <bleung@chromium.org>, Tzung-Bi Shih <tzungbi@kernel.org>, 
+ linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, chrome-platform@lists.linux.dev, 
+ linux-input@vger.kernel.org, linux-i2c@vger.kernel.org, 
+ linux-kernel@vger.kernel.org
+In-Reply-To: <20261103043734.2179858-1-wenst@chromium.org>
+References: <20261103043734.2179858-1-wenst@chromium.org>
+Subject: Re: (subset) [PATCH v7 0/8] arm64: mediatek: Chromebook trackpad
+ supply fixes
+Message-Id: <179406980914.3424803.6201831446824678583.b4-ty@b4>
+Date: Sat, 07 Nov 2026 16:43:29 +0000
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-X-CM-TRANSID: zQCowAB3ELabRvBq5PiYAA--.38431S2
-X-Coremail-Antispam: 1UD129KBjvdXoWrKFWxWF4DtrWxuF43WrW7Jwb_yoWDGrb_Wa
-	yvyr9rWw18XFW7ta1DCr4UZrWSg3yUu345G348Xa13t34UXFsrXFs8K3s3ZFy3KFWSqFnr
-	Grn8Aw13Aw47ZjkaLaAFLSUrUUUUjb8apTn2vfkv8UJUUUU8Yxn0WfASr-VFAUDa7-sFnT
-	9fnUUIcSsGvfJTRUUUbxkYjsxI4VWkKwAYFVCjjxCrM7CY07I20VC2zVCF04k26cxKx2IY
-	s7xG6rWj6s0DM7CIcVAFz4kK6r1j6r18M28lY4IEw2IIxxk0rwA2F7IY1VAKz4vEj48ve4
-	kI8wA2z4x0Y4vE2Ix0cI8IcVAFwI0_JFI_Gr1l84ACjcxK6xIIjxv20xvEc7CjxVAFwI0_
-	Gr0_Cr1l84ACjcxK6I8E87Iv67AKxVWxJr0_GcWl84ACjcxK6I8E87Iv6xkF7I0E14v26r
-	xl6s0DM2AIxVAIcxkEcVAq07x20xvEncxIr21l5I8CrVACY4xI64kE6c02F40Ex7xfMcIj
-	6xIIjxv20xvE14v26r126r1DMcIj6I8E87Iv67AKxVWxJr0_GcWlOx8S6xCaFVCjc4AY6r
-	1j6r4UM4x0Y48IcVAKI48JMxkF7I0En4kS14v26r126r1DMxAIw28IcxkI7VAKI48JMxAI
-	w28IcVCjz48v1sIEY20_Gr43Wr1UJr1l4I8I3I0E4IkC6x0Yz7v_Jr0_Gr1lx2IqxVAqx4
-	xG67AKxVWUJVWUGwC20s026x8GjcxK67AKxVWUGVWUWwC2zVAF1VAY17CE14v26r1q6r43
-	MIIYrxkI7VAKI48JMIIF0xvE2Ix0cI8IcVAFwI0_Jr0_JF4lIxAIcVC0I7IYx2IY6xkF7I
-	0E14v26r1j6r4UMIIF0xvE42xK8VAvwI8IcIk0rVWUJVWUCwCI42IY6I8E87Iv67AKxVW8
-	JVWxJwCI42IY6I8E87Iv6xkF7I0E14v26r4UJVWxJrUvcSsGvfC2KfnxnUUI43ZEXa7IU5
-	FksPUUUUU==
-X-CM-SenderInfo: pyxotu46lvutnvoduhdfq/1tbiCRIFA2rv4kic0wAAs9
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261108_015335_249130_7FAC9343 
-X-CRM114-Status: UNSURE (   8.96  )
-X-CRM114-Notice: Please train this message.
-X-Spam-Score: -1.9 (-)
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+X-Mailer: b4 0.17-dev
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1241; i=broonie@kernel.org;
+ h=from:subject:message-id; bh=YiAPZOAOOLU5YOLoZTNzrcCrnz944fe3k/TYLXO5sfw=;
+ b=owGbwMvMwCWm/754w+YLFp2Mp9WSGLI++OmIHPW+E3fsCTvnHlePnZLv27l4DoQUyWulREY6x
+ 286EMfYUcrCIMbFICumyBKXxf2yvuT1Gr6DC9tg5rAygQxh4OIUgImoXGb4X8KwJZIzezXroi7x
+ WYeFpnm4m6/L3b/AvFr18r6k/sLE8wz/M/1VJh02W1fszLh1RtSWKfKXivZ3yAftjY+w65/y++Y
+ 2ZgA=
+X-Developer-Key: i=broonie@kernel.org; a=openpgp;
+ fpr=3F2568AAC26998F9E813A1C5C3F436CA30F5D8EB
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,35 +84,50 @@ List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-3.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=no
-	autolearn_force=no version=4.0.1
+X-Spam-Status: No, score=-12.8 required=3.0 tests=BAYES_00,DATE_IN_PAST_12_24,
+	DKIMWL_WL_HIGH,DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,
+	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,
+	SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no
+	version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Hi Greg,
+On Tue, 03 Nov 2026 12:37:24 +0800, Chen-Yu Tsai wrote:
+> arm64: mediatek: Chromebook trackpad supply fixes
+> 
+> Hi everyone,
+> 
+> This is v7 of my Chromebook trackpad supply fixes and optimization
+> series.
+> 
+> [...]
 
-Sorry for the very late reply, and for the confusion and extra work this
-caused. You are right: I kept sending patches while not answering the
-review comments on the ones I had already sent, so it looked like the
-patches were coming from an unattended bot. They were not bot output, but
-I skipped the part that matters, and having to drop them is work I caused.
+Applied to
 
-For transparency about how they were produced: the candidate issues came
-from our static analysis tooling, and I used DeepSeek and GPT-6.1 Sol to
-help audit the candidates and prepare the fixes. I decide what to send and
-I am responsible for it; the problem was that I sent far more than I could
-follow up on.
+   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/regulator.git for-7.5
 
-I have stopped sending new patches. I am going through the outstanding
-feedback manually, one thread at a time, and will reply to each one. I will
-not send patches in batches again, and will only submit what I can review,
-test and answer questions about myself.
+Thanks!
 
-Sorry again for the noise.
+[1/8] regulator: core: Add "enable and wait" functions
+      https://git.kernel.org/broonie/regulator/c/9f9bcca6adc3
 
-Regards,
-Wentao Liang
+All being well this means that it will be integrated into the linux-next
+tree (usually sometime in the next 24 hours) and sent to Linus during
+the next merge window (or sooner if it is a bug fix), however if
+problems are discovered then the patch may be dropped or reverted.
+
+You may get further e-mails resulting from automated or manual testing
+and review of the tree, please engage with people reporting problems and
+send followup patches addressing any issues that are reported if needed.
+
+If any updates are required or you are submitting further changes they
+should be sent as incremental updates against current git, existing
+patches will not be replaced.
+
+Please add any relevant lists and maintainers to the CCs when replying
+to this mail.
+
+Thanks,
+Mark
 
 
