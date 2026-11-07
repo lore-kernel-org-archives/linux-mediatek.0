@@ -2,133 +2,59 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id A8091606A335
-	for <linux-mediatek@archiver.kernel.org>; Sat,  7 Nov 2026 20:14:59 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id A4743606A334
+	for <linux-mediatek@archiver.kernel.org>; Sat,  7 Nov 2026 22:00:33 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=R34y/+fp
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=lRk/js8v;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=BJGDUGFM
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Unsubscribe-Post:
-	List-Owner; bh=KxRoCKaLFTMBGcFqcbl1lD4jLUh8waiooh35vSxr5ng=; b=R34y/+fpR0lM/N
-	1pYNHsS+Y1/pgyOvJ4q6fXCgihWlbG0hdxxExY7S5CBkLdmHlf7o98kyIlJIkF4BKEo3HUuKzFeeh
-	3MuLTxEjs/BKYJRGISA8hxISfu8GpP7rV03ERxRUC0ZfPBahSriAyXDBRSVcUj4l4rwLjAWZkH2oN
-	uyCFMeILDq1r7pqbW8nnut19ZUA8A10LOelk7Hgwtr6xD2zgkiA3Vdrng9byCalypiCx4J+Y1GvkP
-	DKAhSMEPYF1mM6f/8u5q7xnj9oPFyweG34NN1xSAIq0+oAJgwrm9YPZ+9Ck7DaO+1t4z0ln20LFhV
-	oB/yWULIdDdMo3IGBkMA==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Message-ID:Date
+	:To:From:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Unsubscribe-Post:List-Owner;
+	bh=R9mxM4jj9umMgpGEnC3ywyFmHTkF33AVyWG7Zk844IE=; b=lRk/js8v0dsbsVIMKcN6qokpne
+	ZEAu5rooHna7gbrCOT4pYF5BBA9JUrl8g3A/fah+3xW8yniCmKLKZSvorqRLp2zv7Hv5gyE8p9OKr
+	e7qPvg+4WnI85sol08SRgalI6x6LWWJle4AwfFpfTTlnqHxYTa4nXSYQkuZ5n2mhVC/B92NlJpdFS
+	f4rM1T8PpxTwg+Uuf78ZbkKF3098OHyWMcz/0s7bseXgafBe51DPoyILsjr8a8Neh2T6/3YhoC6NH
+	PvG9mOcaZUc6v/2hsTZca7mRnAFIshILK/CFwr5gVg0YVviQ52PdBuNZvSU9Ug9PlTLJNTUYvLyxo
+	kHziNBhw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xPmoV-0000000FKcg-1dNW;
-	Sat, 07 Nov 2026 20:14:59 +0000
-Received: from mail-oo1-f44.google.com ([209.85.161.44])
+	id 1xPoSf-0000000FRsZ-0CAn;
+	Sat, 07 Nov 2026 22:00:33 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xPmnw-0000000FJZX-1AN2
-	for linux-mediatek@lists.infradead.org;
-	Sat, 07 Nov 2026 20:14:28 +0000
-Received: by mail-oo1-f44.google.com with SMTP id 006d021491bc7-6df0b02fe91so449950eaf.0
-        for <linux-mediatek@lists.infradead.org>; Sat, 07 Nov 2026 12:14:24 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1794082463; x=1794687263;
-        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
-         :content-type:mime-version:subject:date:from:x-gm-gg
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
-         :content-type;
-        bh=KxRoCKaLFTMBGcFqcbl1lD4jLUh8waiooh35vSxr5ng=;
-        b=mATE+bgVjS83R6UeCB/D/Pj/3zIfZruJcLVlZU6bVUq/nUdqx0H76FhUWDKOwN6j6A
-         CUTywDuttvd2pxttr+hjdl6E64t0y7coqI4haAmFdYs6b1lWTSVNjItgrIr4KgVhROzH
-         w6oPS+ZLhZt+3bbwXfwt4bQw+isZHC7roNZd6zABncqYmBj+Rd/wLEoAxTCmezDxJDXc
-         Ad38TjLB59gY4F5fNm6ev4yIOognFv7G/eM3HXugBWoq8Du3Giw1YSQbCNK7VO5COLwp
-         U4pAbsmI801mmmZw+DczJ9FMbiFsIQy07C05M7XKBVvJeL+x8NaYVzY1T+SSVLBNfvGg
-         tiNw==
-X-Forwarded-Encrypted: i=1; AKwUvBzOyn9+p9KFKa6QTZExtpY8y23OQ5Mb2VxuVlUwDgr5QFN/p7O3L8ycc7sjKp11vmLxRruoTV1GTmZEPRQ/Qw==@lists.infradead.org
-X-Gm-Message-State: APuU4Z9Mf3vl/auSzFMz9gz6MRzJkjKBNoV2O74IZGbFt9NGEn1K7PSR
-	hS/ImpL0aY2o4fnEkYWanyuYYbdXme4iGRHeo6qDj7SpNAuT9vVXEfwurMTzBvq2YvA=
-X-Gm-Gg: AYBFou1ICNTKA7AvxO1M2GDh8+KVeFdn0oG9okQRZXfcU/gQPHeHHIhiTBU5dLF2eAD
-	sUti0MxasfcBgV3JvqKiTgQTUXMFPwE7k8cuEU7XozbxH1v7Mnb+maMy3a8rb0JHFVzWBnrUops
-	t/fy/uaBrzzWq4TxK/Gykp2SuIAerHklGQGdGNKdJGKhVi1jeXEA9qv9RixR7xOkmTVDVn40kMJ
-	lQikHWvkZjpqzhZVY20rP0n1M9i4wppliFBzNEaUFKkP/EmRj3KGegDqvEJbvOj2++1KDtlgDxr
-	ohpqfhCxLbUuOSxI1u8PkU/WMLE6NzIxblC4xp1M3LhGoe/zF0fIGeaIphain0XvyvK0YbZ0c4O
-	8fEpaSf7ZD0nOTrbcyZkzvA3cy6HNXZI0CoV/R3M4KCRDDZW5xP/IibFeC2VvpxTNZPR7ilxZlC
-	YvkBUXX03NaCFC2N4w7BtJfg8MJvA/z8zZSXm3tN8pG2QeJd5+U9yrGimHz78NniXLVihKdSD7E
-	XByMIy69PBlES1abDbxCHVHnidZeUcbxvmxtEVGKpb8h0wrkFXY2O0xboMDbnRAiUPLXhJgCzSG
-	ivKf2VV+rHsPi/ZzBbXk6OStljMrTtDEhIXl09XEOaZzPdTNcnxFe1ePCFD+
-X-Received: by 2002:a05:6820:4cca:b0:6df:ac2e:85ae with SMTP id 006d021491bc7-71700c8606emr1101384eaf.14.1794082463049;
-        Sat, 07 Nov 2026 12:14:23 -0800 (PST)
-Received: from [127.0.1.1] (174-29-1-49.hlrn.qwest.net. [174.29.1.49])
-        by smtp.gmail.com with ESMTPSA id 586e51a60fabf-4ade68aa561sm226096fac.5.2026.11.07.12.14.20
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 07 Nov 2026 12:14:22 -0800 (PST)
-From: James Hilliard <james.hilliard1@gmail.com>
-Date: Sat, 07 Nov 2026 03:16:55 -0700
-Subject: [PATCH 58/58] mtd: rawnand: diskonchip: retain chip state across
- removal
+	id 1xPoSd-0000000FRsJ-1WvX;
+	Sat, 07 Nov 2026 22:00:31 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by sea.source.kernel.org (Postfix) with ESMTP id B432E43D43;
+	Sat,  7 Nov 2026 22:00:30 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id AD9BA1F0089F;
+	Sat,  7 Nov 2026 22:00:29 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1794088830;
+	bh=R9mxM4jj9umMgpGEnC3ywyFmHTkF33AVyWG7Zk844IE=;
+	h=Subject:From:To:Cc:Date:In-Reply-To:References;
+	b=BJGDUGFMJe2pGxq+tPXY5B/2pUVIbR0qIdoNuJBE36kppS7P4bakHEMXwc1lLnznC
+	 0LtswL9qQkT7s8mpn4zp/XC96TTPeIkBihLgAst9ZtUAPDnuGj7x4OGBRaCtBDf8Jh
+	 4VNO4bm9jGh9fMhJmGMb60bRQdapfG13MwECWc1vBGnbCaFRUJ8wi5U1lw8HC4UURq
+	 KoXqNhLU0sTuRW+zFiF6Jw5mD87pFynMF0N0DKxvKW2iRcJn6ofibSSCGOCv7WfFN+
+	 lmgh6PNw80pZYdWLereKkRSya8xC3+RT8p7rOy+4SSOSb0jXJYrw2/eUPOLcClaW5A
+	 ltoreifmz8HAQ==
+Subject: Re: [PATCH net-next v2 1/2] net: ethernet: mtk_eth_soc: skip page_pool
+From: netdev-bot+sashiko@kernel.org
+To: sandeeph@loljews.com
+Date: Sat, 07 Nov 2026 22:00:29 +0000
+Message-ID: <179408882923.994134.9885831030402062778@kernel.org>
+In-Reply-To: <patch-79206c12217411fcdbff905b65eecfb2@loljews.com>
+References: <patch-79206c12217411fcdbff905b65eecfb2@loljews.com>
+X-sashiko-severity: Medium
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20261107-submit-rawnand-retained-handle-lifetime-v1-v1-58-0181ef0cc4c8@gmail.com>
-References: <20261107-submit-rawnand-retained-handle-lifetime-v1-v1-0-0181ef0cc4c8@gmail.com>
-In-Reply-To: <20261107-submit-rawnand-retained-handle-lifetime-v1-v1-0-0181ef0cc4c8@gmail.com>
-To: Miquel Raynal <miquel.raynal@bootlin.com>,
-  Richard Weinberger <richard@nod.at>, Vignesh Raghavendra <vigneshr@ti.com>,
-  Brian Norris <computersforpeace@gmail.com>,
-  Boris Brezillon <bbrezillon@kernel.org>,
-  Arseniy Krasnov <AVKrasnov@sberdevices.ru>, Chen-Yu Tsai <wens@kernel.org>,
-  Jernej Skrabec <jernej.skrabec@gmail.com>,
-  Samuel Holland <samuel@sholland.org>, Thomas Gleixner <tglx@kernel.org>,
-  Vitaly Wool <vitalywool@gmail.com>, David Woodhouse <dwmw2@infradead.org>,
-  Russell King <rmk+kernel@arm.linux.org.uk>,
-  David Woodhouse <David.Woodhouse@intel.com>,
-  Mike Rapoport <rppt@kernel.org>,
-  Maxime Coquelin <mcoquelin.stm32@gmail.com>,
-  Alexandre Torgue <alexandre.torgue@foss.st.com>,
-  Christophe Kerello <christophe.kerello@st.com>,
-  Jason Roberts <jason.e.roberts@intel.com>,
-  Michal Simek <michal.simek@amd.com>,
-  Boris Brezillon <boris.brezillon@collabora.com>,
-  Mason Yang <masonccyang@mxic.com.tw>,
-  Ramuthevar Vadivel Murugan <vadivel.muruganx.ramuthevar@linux.intel.com>,
-  Stefan Agner <stefan@agner.ch>, Lucas Stach <dev@lynxeye.de>,
-  Thierry Reding <thierry.reding@kernel.org>,
-  Jonathan Hunter <jonathanh@nvidia.com>, Dmitry Osipenko <digetx@gmail.com>,
-  Matthias Brugger <matthias.bgg@gmail.com>,
-  AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-  Jorge Ramirez-Ortiz <jorge.ramirez@oss.qualcomm.com>,
-  Heiko Stuebner <heiko@sntech.de>, Yifeng Zhao <yifeng.zhao@rock-chips.com>,
-  Nicolas Ferre <nicolas.ferre@microchip.com>,
-  Alexandre Belloni <alexandre.belloni@bootlin.com>,
-  Claudiu Beznea <claudiu.beznea@tuxon.dev>,
-  Keguang Zhang <keguang.zhang@gmail.com>, Jacky Huang <ychuang3@nuvoton.com>,
-  Shan-Chun Hung <schung@nuvoton.com>, Frank Li <Frank.Li@nxp.com>,
-  Sascha Hauer <s.hauer@pengutronix.de>,
-  Pengutronix Kernel Team <kernel@pengutronix.de>,
-  Fabio Estevam <festevam@gmail.com>, Han Xu <han.xu@nxp.com>,
-  Liang Yang <liang.yang@amlogic.com>,
-  Neil Armstrong <neil.armstrong@linaro.org>,
-  Kevin Hilman <khilman@baylibre.com>, Jerome Brunet <jbrunet@baylibre.com>,
-  Martin Blumenstingl <martin.blumenstingl@googlemail.com>,
-  Manivannan Sadhasivam <mani@kernel.org>,
-  Kamal Dasu <kamal.dasu@broadcom.com>,  Broadcom internal kernel review list
- <bcm-kernel-feedback-list@broadcom.com>,  Vladimir Zapolskiy <vz@mleia.com>,
-  Piotr Wojtaszczyk <piotr.wojtaszczyk@timesys.com>,
-  Paul Cercueil <paul@crapouillou.net>,
-  Harvey Hunt <harveyhuntnexus@gmail.com>,
-  Maxim Levitsky <maximlevitsky@gmail.com>, Michael Walle <michael@walle.cc>,
-  Srinivas Kandagatla <srini@kernel.org>
-Cc: Tze Yee Ng <tze.yee.ng@altera.com>, linux-mtd@lists.infradead.org, 
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-sunxi@lists.linux.dev, linux-tegra@vger.kernel.org, 
- linux-mediatek@lists.infradead.org, linux-rockchip@lists.infradead.org, 
- linux-mips@vger.kernel.org, imx@lists.linux.dev, 
- linux-renesas-soc@vger.kernel.org, linux-amlogic@lists.infradead.org, 
- linux-arm-msm@vger.kernel.org, James Hilliard <james.hilliard1@gmail.com>
-X-Mailer: b4 0.15.2
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261107_121424_373200_65EC5E6C 
-X-CRM114-Status: GOOD (  15.61  )
-X-Spam-Score: 1.7 (+)
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -138,82 +64,154 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Cc: mason-cw.chang@mediatek.com, angelogioacchino.delregno@collabora.com, andrew+netdev@lunn.ch, netdev@vger.kernel.org, linux@armlinux.org.uk, linux-kernel@vger.kernel.org, edumazet@kernel.org, linux-mediatek@lists.infradead.org, matthias.bgg@gmail.com, kuba@kernel.org, pabeni@redhat.com, lorenzo@kernel.org, davem@davemloft.net, linux-arm-kernel@lists.infradead.org, nbd@nbd.name
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-12.3 required=3.0 tests=BAYES_00,DATE_IN_PAST_06_12,
-	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,
-	FREEMAIL_FORGED_FROMDOMAIN,FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
+X-Spam-Status: No, score=-13.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,SPF_HELO_NONE,
+	SPF_PASS autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-MTD device references may outlive unregistration during module removal.
-Disconnect before unmapping the device and freeing the hardware ECC
-codec, while retaining chip metadata until the final MTD reference is
-released. Install lifetime ownership before the late initializer
-publishes partitions.
+Thank you for your contribution! Sashiko AI review found 2 potential
+issue(s) to consider.
 
-Signed-off-by: James Hilliard <james.hilliard1@gmail.com>
----
- drivers/mtd/nand/raw/diskonchip.c | 21 +++++++++++++++++----
- 1 file changed, 17 insertions(+), 4 deletions(-)
+Critical: 0 · High: 0 · Medium: 1 · Low: 1
 
-diff --git a/drivers/mtd/nand/raw/diskonchip.c b/drivers/mtd/nand/raw/diskonchip.c
-index 540b6baf8bb1..a4338b51b49d 100644
---- a/drivers/mtd/nand/raw/diskonchip.c
-+++ b/drivers/mtd/nand/raw/diskonchip.c
-@@ -1296,6 +1296,11 @@ static const struct nand_controller_ops doc2001plus_ops = {
- 	.attach_chip = doc200x_attach_chip,
- };
- 
-+static void doc_chip_release(struct nand_chip *chip)
-+{
-+	kfree(chip);
-+}
-+
- static int __init doc_probe(unsigned long physadr)
- {
- 	struct nand_chip *nand = NULL;
-@@ -1494,13 +1499,21 @@ static int __init doc_probe(unsigned long physadr)
- 	ret = nand_scan(nand, numchips);
- 	if (ret)
- 		goto fail;
--
--	ret = doc->late_init(mtd);
-+	ret = nand_set_release(nand, doc_chip_release);
- 	if (ret) {
- 		nand_cleanup(nand);
- 		goto fail;
- 	}
- 
-+	ret = doc->late_init(mtd);
-+	if (ret) {
-+		nand_disconnect(nand);
-+		free_rs(doc->rs_decoder);
-+		iounmap(virtadr);
-+		mtd_put_master(mtd);
-+		goto error_ioremap;
-+	}
-+
- 	/* Success! */
- 	doclist = mtd;
- 	return 0;
-@@ -1535,11 +1548,11 @@ static void release_nanddoc(void)
- 		nextmtd = doc->nextdoc;
- 		ret = mtd_device_unregister(mtd);
- 		WARN_ON(ret);
--		nand_cleanup(nand);
-+		nand_disconnect(nand);
- 		iounmap(doc->virtadr);
- 		release_mem_region(doc->physadr, DOC_IOREMAP_LEN);
- 		free_rs(doc->rs_decoder);
--		kfree(nand);
-+		mtd_put_master(mtd);
- 	}
- }
- 
+If you believe none of the issues are legitimate, please reply to each
+issue of Medium severity or higher and explain why the AI is wrong.
+If any of them are legitimate and you plan to respin, please let patchwork
+know by including "pw-bot: cr" as a separate line at the end of your reply
+(one such reply per series is enough).
+
+- [Medium] The page_pool gate added in mtk_rx_alloc()
+  (drivers/net/ethernet/mediatek/mtk_eth_soc.c:2827) checks…
+- [Low] The commit message gives the reason for the gate as "On NETSYS v2
+  and later every RX ring gets a page_pool ... The HW-LRO ring already…
+
+--
+
+net: ethernet: mtk_eth_soc: skip page_pool
+
+With this change, mtk_rx_alloc() creates a page_pool for an RX ring only
+when ring->frag_size fits in PAGE_SIZE. Rings with larger buffers fall
+back to the existing netdev_alloc_frag()/mtk_max_lro_buf_alloc() path.
+
+Link: https://github.com/mediatek/mtk-openwrt-feeds
+
+> diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+> index ad0fdc4133fb6..29370376f0322 100644
+> --- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+> +++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+> @@ -2819,7 +2819,12 @@ static int mtk_rx_alloc(struct mtk_eth *eth, int ring_no, int rx_flag)
+>  	if (!ring->data)
+>  		return -ENOMEM;
+>  
+> -	if (mtk_page_pool_enabled(eth)) {
+> +	/* page_pool hands out order-0 pages and the pool is created with
+> +	 * MTK_PP_MAX_BUF_SIZE, so only rings whose buffers fit in a page can
+> +	 * use it.  The larger rings (HW-LRO, and 9K jumbo once enabled) take
+> +	 * the netdev_alloc_frag()/mtk_max_lro_buf_alloc() path below.
+> +	 */
+
+[Severity: Low]
+Is the HW-LRO part of this comment and of the commit message accurate?
+The commit message says:
+
+    On NETSYS v2 and later every RX ring gets a page_pool.
+    ...
+    The HW-LRO ring already needs 12K buffers, and 9K jumbo adds more such
+    rings; for those the descriptor length is larger than a page, so the
+    pool cannot back them.
+
+mtk_page_pool_enabled() returns mtk_is_netsys_v2_or_greater(eth). MTK_HWLRO
+is set only in mt2701_data, mt7622_data, mt7623_data and mt7629_data, and
+all of those are .version = 1. MT7981_CAPS, MT7986_CAPS and MT7988_CAPS
+don't include it. So a HW-LRO ring is never allocated on a SoC that has
+page_pool enabled.
+
+At this commit, every ring that reaches the new check uses ETH_DATA_LEN,
+and mtk_add_mac() limits max_mtu:
+
+	eth->netdev[id]->max_mtu = MTK_MAX_RX_LENGTH_2K - MTK_RX_ETH_HLEN;
+
+As a result, ring->frag_size <= PAGE_SIZE is always true here. The patch
+doesn't change behavior until the following "add 9K jumbo" patch.
+
+Could the commit message describe this as preparation for jumbo frames?
+As written, it could be read as a fix for an existing HW-LRO overrun on
+v2+, for example by stable backporters.
+
+The next patch in the series renames mtk_max_lro_buf_alloc() to
+mtk_max_buf_alloc() and enables 9K jumbo. After that, this comment still
+says mtk_max_lro_buf_alloc() and "9K jumbo once enabled". Should that
+patch also update the comment?
+
+> +	if (mtk_page_pool_enabled(eth) && ring->frag_size <= PAGE_SIZE) {
+
+[Severity: Medium]
+Does this check match what the pool can actually hold? The comment refers
+to MTK_PP_MAX_BUF_SIZE, but the condition compares frag_size with
+PAGE_SIZE.
+
+The pool uses the page_pool layout:
+
+mtk_create_page_pool() {
+    ...
+		.offset = MTK_PP_HEADROOM,
+		.max_len = MTK_PP_MAX_BUF_SIZE,
+    ...
+}
+
+#define MTK_PP_MAX_BUF_SIZE	(PAGE_SIZE - MTK_PP_PAD)
+
+MTK_PP_PAD is XDP_PACKET_HEADROOM (256) plus the aligned skb_shared_info.
+
+The descriptor length is calculated for the netdev_alloc_frag() layout
+instead:
+
+mtk_max_buf_size() {
+	int buf_size = frag_size - NET_SKB_PAD - NET_IP_ALIGN -
+		       SKB_DATA_ALIGN(sizeof(struct skb_shared_info));
+    ...
+}
+
+mtk_rx_alloc() then programs that value for page_pool buffers too:
+
+	rxd->rxd2 = RX_DMA_PREP_PLEN0(ring->buf_size);
+
+buf_size is larger than MTK_PP_MAX_BUF_SIZE once frag_size goes above
+about PAGE_SIZE - 256 + NET_SKB_PAD + NET_IP_ALIGN (around 3906 with 4K
+pages). Those rings still pass the frag_size <= PAGE_SIZE check.
+
+For example, with the "add 9K jumbo" patch applied, consider an MT7988
+with 4K pages, CONFIG_MAX_SKB_FRAGS between 42 and 45, and an MTU set
+before ifup so that rx_buf_len is 3072:
+
+    frag_size = 3200 + 768 = 3968   (passes this check)
+    buf_size = 3134
+    MTK_PP_MAX_BUF_SIZE = 4096 - 256 - 768 = 3072
+
+The hardware may then DMA up to page offset 256 + 3134 = 3390, which is
+past the start of skb_shared_info at 3328.
+
+In that case PP_FLAG_DMA_SYNC_DEV syncs only max_len bytes for the
+device. In mtk_poll_rx(), build_skb(data, PAGE_SIZE) sets up shinfo on top
+of the received bytes. For pktlen > 3072, skb_put() would move tail past
+skb->end and hit skb_over_panic().
+
+It isn't confirmed whether the MAC actually delivers frames between 3073
+and 3134 bytes, since that depends on hardware frame length limits. With
+the default CONFIG_MAX_SKB_FRAGS=17, this window isn't reached.
+
+Would ring->buf_size <= MTK_PP_MAX_BUF_SIZE be a better condition here?
+It would match the limits mtk_change_mtu() and mtk_xdp_setup() already
+check against MTK_PP_MAX_BUF_SIZE.
+
+>  		struct page_pool *pp;
+>  
+>  		pp = mtk_create_page_pool(eth, &ring->xdp_q, ring_no,
 
 -- 
-2.53.0
-
+Sashiko AI review · https://netdev-ai.bots.linux.dev/sashiko/#/patchset/patch-2793186c653124c4c0b3d463bde2ea3a%40loljews.com
 
