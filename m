@@ -2,73 +2,89 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 4ED016083616
-	for <linux-mediatek@archiver.kernel.org>; Sat,  7 Nov 2026 20:13:55 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 84C00606D82A
+	for <linux-mediatek@archiver.kernel.org>; Sat,  7 Nov 2026 20:13:58 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=CMoM9rYf
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=JowtKHaE;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=infradead.org header.i=@infradead.org header.a=rsa-sha256 header.s=desiato.20200630 header.b=m29a8utw
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Unsubscribe-Post:
-	List-Owner; bh=oX/04PSyv+m9ZWIAwPwysaJo9a7lukovrgxtc3xymbg=; b=CMoM9rYfM8aOFM
-	Pi9E4ITpS5mlN/CQqD5rhG0GNS2y1DmL1sxrWpg84Y1r0gqS79eNbNRsWwLUz9sEMxtUt2tWMIr0C
-	cwyNnpg/E2S91mI7fb9ipOCIr+WxhmPfqjv/3LZuv0DpdZfcgdMHRn/J+eEUbFU679n4hmZ2RlYUP
-	Wx9erzhkvRyJKtS0n2aGjcTNtxVhcSzzdbIYtWE+87Y8LTn0pMg4/D6v2RTUH9TdB2HwSjsij26+f
-	OuIdKxuQqOJR1GLGV+MTC2Ks6i6CkHD46f3IRBrgM+U013My+v1fOg+a1o+aeEVVmhxszhE6Fn4gz
-	BKgd7ZHksALM5ZyI0WxQ==;
+	List-Owner; bh=JrxepS2J9VPceqdGkgV52/qe1YoRSs0JHMfO/RKE6Vo=; b=JowtKHaEgIcB2u
+	fIuysadPju3uZKdYMKrZ9QoWOZfbi13oCHGJ1JdV2Elt2aarkjVPNI5ke/8B/hiiHUfWmhst15jGR
+	krlCKmD2pvaGzubxosfZ+J/CNbZ3SFaap10omCsv+DLuBmKftx9gXj9akmu9Wa1MzVmJs/kttJijM
+	ZtpARuKnPryKqsWKM/duNR8WZe9DchFWI+BVrzKA0ZVuVnBQ1FGMUSAm2Enve8SJwD/EtXqAoWghk
+	e7MRKPS9qMrSYMXlmPcLMbVsDMe1JLPcFkW27jSckPap3JrYB6WcDBN69EnhSOOPUuXdrc2Wc3mGq
+	GoXBbZoPJmeK07K4Xc2A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xPmnS-0000000FIlU-18Wd;
-	Sat, 07 Nov 2026 20:13:54 +0000
-Received: from mail-oa1-f45.google.com ([209.85.160.45])
+	id 1xPmnV-0000000FIsP-3v4p;
+	Sat, 07 Nov 2026 20:13:57 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xPmnE-0000000FIIv-2vUM
+	id 1xPmnK-0000000FIU7-1zUU
+	for linux-mediatek@bombadil.infradead.org;
+	Sat, 07 Nov 2026 20:13:47 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=Cc:To:In-Reply-To:References:
+	Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
+	From:Sender:Reply-To:Content-ID:Content-Description;
+	bh=JrxepS2J9VPceqdGkgV52/qe1YoRSs0JHMfO/RKE6Vo=; b=m29a8utwaelA6KCUxepqeBAP7k
+	fTzK2wAJyk5bKy5DtXdzP6fH1+Cwb+p3oKDvthSSjk6cSh1TtedOg2Wea/+rWtDOy3hVIgNlAvtW8
+	vDqOYPazjwvLv2zNRtWfy4jV2R8gFlj7YaW85fp29a3GhpVRPfzRGvbpe5MsU4TYpM5+2FXSOfbTU
+	MKbCo7KWiK9JyfcWWgMvmolVhMfQZ8Iq9QAMJ5HeTeWdVsVYUliMEXx2cE8dprC5LsYpkcD8y7mYS
+	bfg5f7Df82tgjJNDLXLgZ+V68XGsktypmD4agAn5kg7/fCdseA67D2v6JcNQLRzTUxfsatj8EfcuB
+	vMI5jePg==;
+Received: from mail-oo1-f45.google.com ([209.85.161.45])
+	by desiato.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
+	id 1xPmnC-00000005Qer-1d7U
 	for linux-mediatek@lists.infradead.org;
-	Sat, 07 Nov 2026 20:13:45 +0000
-Received: by mail-oa1-f45.google.com with SMTP id 586e51a60fabf-4877837890fso3462fac.2
-        for <linux-mediatek@lists.infradead.org>; Sat, 07 Nov 2026 12:13:40 -0800 (PST)
+	Sat, 07 Nov 2026 20:13:43 +0000
+Received: by mail-oo1-f45.google.com with SMTP id 006d021491bc7-70b875f6f1fso1601644eaf.2
+        for <linux-mediatek@lists.infradead.org>; Sat, 07 Nov 2026 12:13:37 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1794082420; x=1794687220;
+        d=1e100.net; s=20260707; t=1794082416; x=1794687216;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :content-type:mime-version:subject:date:from:x-gm-gg
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
          :content-type;
-        bh=oX/04PSyv+m9ZWIAwPwysaJo9a7lukovrgxtc3xymbg=;
-        b=RRJq8LLMvZWCYxzmArHSbnNk4l9OxiS1CEtokz5IGUFtzZkrY6PG6GcNPOVBqztEWy
-         z8Wfj7bsrRUoJWsGvZCjIZCX/1cxjURG/wjowFEgQ9jpi8owIoSL1yshFwAHeYky4uMf
-         14hYmtx529Dolum8HBiGfC8UCgMdGjXI3dCGHQ86m09Xr5K+P2OqdBZLLXLhlDeA5oJQ
-         qVlo6PjEGXEHndSkG84zuimMFq2SjzJ8EsBKvxIVUinj157XpU3j7EAJMzX72GmebqSu
-         /e6x2hEOYYbx8wX5AbKyMRUwWpnoLvqKbaEE2Eiqof2dcn3WDIuMzr5wLVExFbXdHhch
-         JsGA==
-X-Forwarded-Encrypted: i=1; AKwUvBzpD1HxT+e8VTOtIeG/lx+3o4auE4fyD1ZXH9Pvi08jY50Wwamqh4iWCPa8f4GVMi12nP51tR7Yp4bvXFu42g==@lists.infradead.org
-X-Gm-Message-State: APuU4Z/dKaYTGDUAY8yneF7ZEQUWV7WWcEmEuoiQVWtWuYgw+LVgEH8r
-	zzU93QSH/NWcoCmqt8TMkmunNRJbgk1zHfiUJbdLr4ZQiHjfLY1+IDFOYKSSULpaBuY=
-X-Gm-Gg: AYBFou3XK1ZeHsgfZy1Xm8ml5O2jDsETJXxj0yGhOzT5D3oOCA0Rb1C67QJQ11ABKQk
-	IrErdlbzpzYJT0yfmYDhXwlhy7lAQr8tOnmoLDeOBRYpdKDqbVSewA40fwRHHBsvSFdQ6Ywjcpa
-	zQ2baDBISoNnZa4s+HCwRTq9a06RohUPJCNMOybEiGVNun+PG9DJZVRiizTWcFK/0NfraMa9EAf
-	/lRl5uYMXB77wdj2wjh0sY4UVDvEovupporAESunzOFm/+WB1Ghq7ZvARb5M0Nokur7wZsfsQyz
-	3N5CQ+BFpMQ6Mmke6eK27ilIS3JgEjqkT6VbfUUf0ZqFVkEZz8V0viNrqkAwItaqqnbzX03h0/P
-	Z0CeIG8Bi/1XcmZXR7eIBX5Sn+lJpkJ2cDByEjcCttLpQicDSf8PmY4ES88ev2T9nm6YRjKTjX2
-	nqOrm+xq7lttjHeCX3hcTAoY0hMhlYv1gkMcVLQaGy4YUoHPhkwS/eQWo2e6+5se2sd9vhVD8SY
-	vkStBwQv/ewHNTLYbWpjfj/7y4uG42v2QO7xnE0Y5qjOvCif5DaOLyHO+xq6NTcazPu4dAJoXdL
-	nNUIpKBqG2jufzOY3T2P5+SpriSJMeoJUrY4RXim+ztfU6sPD89i/80Yabz0
-X-Received: by 2002:a05:6870:d394:b0:4ad:8124:9235 with SMTP id 586e51a60fabf-4ad9881005emr3579674fac.9.1794082419546;
-        Sat, 07 Nov 2026 12:13:39 -0800 (PST)
+        bh=JrxepS2J9VPceqdGkgV52/qe1YoRSs0JHMfO/RKE6Vo=;
+        b=2tmSgnPZCLGOp9hTtQ0grzChVt73tEsA0dl8YAepgVrTjY8hwa5kxwpcR279V1zjAX
+         BNUdUSCBwuJQB3Ep8AKAgypWSMM5NmsxxXeNisxjru+4s+c5tylvQ919w6OOPqUjX+gt
+         cHxegVvrbZ0Y72n/JkGJSdkeQuDbeYg7Jo9CjAvA1gh2Jr5zV/+rc9QOjxNnOux0Tsv2
+         KmkivPh4bQhvB+q0r9FqPcnMB2vH2A0nCBnhOYryj7insVeQbNBwe9dWKeM9HxdKGOQr
+         27ZSSM9wsb4E8RM+zihESl4V17ReATeu8I3TxHeqSACeebbjVu923l+lx/qNXhXIWoOB
+         Rjpg==
+X-Forwarded-Encrypted: i=1; AKwUvBydBREDL4WEtSGj/FwzFl9+9zm2lVrhaS6lJjv1tIDZAzcr7NAgu+tVeRzpApSkCckLHm/9rJVSf0gpSOEmMg==@lists.infradead.org
+X-Gm-Message-State: APuU4Z8WPT0yOyM6UGNpf+K/NdaG1rIjIAd6e0UB7IQybfX3TRk4VrW0
+	3vyTj0hJyOqJ3fXOgpbziTx9ar4gHbIamX8yC7lCy0u5s24eldbkQ0OBeGEIzRD1jyo=
+X-Gm-Gg: AYBFou1s5hVzF+nGu9X4k8i65nbZmIJBWPksWsAL8U2OlmDoJAu41UITnmyvAYmSfJZ
+	c120oNEcZM4g214UYB+9emWFgQuRhX14rb5I1S5f7nT8jhzMzlLDzQdceH5Eva0IVYbXS3TdW8f
+	v7X4rRdzAR8FzHsf3AccRKxFueKyq2vGtxLrD1kKnM10XT6rVnuKC7YL9c45vaWnB0Fqphmu4xY
+	IVnUXoaUX2X9YpyRmVHFQ9VNTzvVu6isEHeFDzmBU6fdbsS0wYSnNX3/Ozr7h1UrJo4Ldlx9337
+	ajaB7MsuTnQ+Uo1c7MO1LOiHsQzbHhwMy6chrdX+/k/s1udWMjALarYEKEKfmzphsgfONfoaXO5
+	FkV0UnTLWAyij3VGcOD91tqyvbonxrg+D6gcD+aFLxVU2cPqS+VOX1HtnZWg2c6iLsAYphi8xMk
+	zafgFxwWFiZp04NhrKRggmkSvb7dU88B2zrg78aSIQTV80KzpUfzvlUnzjfpkTe3HD6Dh7nO/Jg
+	KNwEWQ/V+PQSPhYulnzaofyGCjKO0rmxcAEe/iWWy4iMdjov2kepZP9fPysu7uhV9AHrDkq+j2A
+	mBJbAUhuT86BylwujDjfepYB1Bc5nHaVYXcdumVqjD7Iu4XN7xxAVK5jXcYc
+X-Received: by 2002:a05:6820:60b:b0:6b7:46fa:1693 with SMTP id 006d021491bc7-7170f2e8271mr15281eaf.40.1794082416544;
+        Sat, 07 Nov 2026 12:13:36 -0800 (PST)
 Received: from [127.0.1.1] (174-29-1-49.hlrn.qwest.net. [174.29.1.49])
-        by smtp.gmail.com with ESMTPSA id 586e51a60fabf-4ade68aa561sm226096fac.5.2026.11.07.12.13.36
+        by smtp.gmail.com with ESMTPSA id 586e51a60fabf-4ade68aa561sm226096fac.5.2026.11.07.12.13.33
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 07 Nov 2026 12:13:38 -0800 (PST)
+        Sat, 07 Nov 2026 12:13:36 -0800 (PST)
 From: James Hilliard <james.hilliard1@gmail.com>
-Date: Sat, 07 Nov 2026 03:16:40 -0700
-Subject: [PATCH 43/58] mtd: rawnand: sharpsl: retain chip state across
+Date: Sat, 07 Nov 2026 03:16:39 -0700
+Subject: [PATCH 42/58] mtd: rawnand: au1550nd: retain chip state across
  removal
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20261107-submit-rawnand-retained-handle-lifetime-v1-v1-43-0181ef0cc4c8@gmail.com>
+Message-Id: <20261107-submit-rawnand-retained-handle-lifetime-v1-v1-42-0181ef0cc4c8@gmail.com>
 References: <20261107-submit-rawnand-retained-handle-lifetime-v1-v1-0-0181ef0cc4c8@gmail.com>
 In-Reply-To: <20261107-submit-rawnand-retained-handle-lifetime-v1-v1-0-0181ef0cc4c8@gmail.com>
 To: Miquel Raynal <miquel.raynal@bootlin.com>,
@@ -126,9 +142,9 @@ Cc: Tze Yee Ng <tze.yee.ng@altera.com>, linux-mtd@lists.infradead.org,
  linux-arm-msm@vger.kernel.org, James Hilliard <james.hilliard1@gmail.com>
 X-Mailer: b4 0.15.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261107_121341_492843_9C4AA028 
-X-CRM114-Status: GOOD (  17.68  )
-X-Spam-Score: 1.7 (+)
+X-CRM114-CacheID: sfid-20261107_201341_823761_405A9BE4 
+X-CRM114-Status: GOOD (  16.90  )
+X-Spam-Score: 3.5 (+++)
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -147,92 +163,90 @@ X-Spam-Status: No, score=-12.3 required=3.0 tests=BAYES_00,DATE_IN_PAST_06_12,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Separate chip-select unmapping from chip storage reclamation.
-Outstanding MTD references retain the scanned chip and layout metadata
-after removal; new hardware operations fail once the chip is
-disconnected.
+Drain NAND access before unmapping the chip-select window, and retain
+the chip and controller until the final MTD reference is released. Check
+MTD registration errors so unsuccessful publication releases the same
+ownership.
 
 Signed-off-by: James Hilliard <james.hilliard1@gmail.com>
 ---
- drivers/mtd/nand/raw/sharpsl.c | 25 ++++++++++++++++++-------
- 1 file changed, 18 insertions(+), 7 deletions(-)
+ drivers/mtd/nand/raw/au1550nd.c | 26 +++++++++++++++++++++-----
+ 1 file changed, 21 insertions(+), 5 deletions(-)
 
-diff --git a/drivers/mtd/nand/raw/sharpsl.c b/drivers/mtd/nand/raw/sharpsl.c
-index 4154ab74f169..1ffd2b210d20 100644
---- a/drivers/mtd/nand/raw/sharpsl.c
-+++ b/drivers/mtd/nand/raw/sharpsl.c
-@@ -114,6 +114,11 @@ static const struct nand_controller_ops sharpsl_ops = {
- 	.attach_chip = sharpsl_attach_chip,
+diff --git a/drivers/mtd/nand/raw/au1550nd.c b/drivers/mtd/nand/raw/au1550nd.c
+index f1e99197ab84..bd78bcc84282 100644
+--- a/drivers/mtd/nand/raw/au1550nd.c
++++ b/drivers/mtd/nand/raw/au1550nd.c
+@@ -251,6 +251,11 @@ static const struct nand_controller_ops au1550nd_ops = {
+ 	.attach_chip = au1550nd_attach_chip,
  };
  
-+static void sharpsl_nand_release(struct nand_controller *controller)
++static void au1550nd_release(struct nand_controller *controller)
 +{
-+	kfree(container_of(controller, struct sharpsl_nand, controller));
++	kfree(container_of(controller, struct au1550nd_ctx, controller));
 +}
 +
- /*
-  * Main initialization routine
-  */
-@@ -135,6 +140,9 @@ static int sharpsl_nand_probe(struct platform_device *pdev)
- 	sharpsl = kzalloc_obj(struct sharpsl_nand);
- 	if (!sharpsl)
+ static int au1550nd_probe(struct platform_device *pdev)
+ {
+ 	struct au1550nd_platdata *pd;
+@@ -269,6 +274,9 @@ static int au1550nd_probe(struct platform_device *pdev)
+ 	ctx = kzalloc_obj(*ctx);
+ 	if (!ctx)
  		return -ENOMEM;
-+	err = devm_nand_controller_init(&pdev->dev, &sharpsl->controller, sharpsl_nand_release);
-+	if (err)
-+		return err;
++	ret = devm_nand_controller_init(&pdev->dev, &ctx->controller, au1550nd_release);
++	if (ret)
++		return ret;
  
  	r = platform_get_resource(pdev, IORESOURCE_MEM, 0);
  	if (!r) {
-@@ -154,7 +162,6 @@ static int sharpsl_nand_probe(struct platform_device *pdev)
- 	/* Get pointer to private data */
- 	this = (struct nand_chip *)(&sharpsl->chip);
+@@ -302,7 +310,6 @@ static int au1550nd_probe(struct platform_device *pdev)
+ 	}
+ 	ctx->cs = cs;
  
--	nand_controller_init(&sharpsl->controller);
- 	sharpsl->controller.ops = &sharpsl_ops;
- 	this->controller = &sharpsl->controller;
+-	nand_controller_init(&ctx->controller);
+ 	ctx->controller.ops = &au1550nd_ops;
+ 	this->controller = &ctx->controller;
  
-@@ -188,10 +195,16 @@ static int sharpsl_nand_probe(struct platform_device *pdev)
- 	/* Register the partitions */
- 	mtd->name = "sharpsl-nand";
+@@ -322,7 +329,17 @@ static int au1550nd_probe(struct platform_device *pdev)
+ 		goto out3;
+ 	}
  
--	err = mtd_device_parse_register(mtd, data->part_parsers, NULL,
--					data->partitions, data->nr_partitions);
-+	err = nand_set_release(this, NULL);
- 	if (err)
- 		goto err_add;
-+	err = mtd_device_parse_register(mtd, data->part_parsers, NULL,
-+					data->partitions, data->nr_partitions);
-+	if (err) {
+-	mtd_device_register(mtd, pd->parts, pd->num_parts);
++	ret = nand_set_release(this, NULL);
++	if (ret) {
++		nand_cleanup(this);
++		goto out3;
++	}
++	ret = mtd_device_register(mtd, pd->parts, pd->num_parts);
++	if (ret) {
 +		nand_disconnect(this);
 +		mtd_put_master(mtd);
-+		goto err_scan;
++		goto out3;
 +	}
  
- 	/* Return happy */
- 	return 0;
-@@ -203,7 +216,6 @@ static int sharpsl_nand_probe(struct platform_device *pdev)
- 	iounmap(sharpsl->io);
- err_ioremap:
- err_get_res:
--	kfree(sharpsl);
- 	return err;
+ 	platform_set_drvdata(pdev, ctx);
+ 
+@@ -333,7 +350,6 @@ static int au1550nd_probe(struct platform_device *pdev)
+ out2:
+ 	release_mem_region(r->start, resource_size(r));
+ out1:
+-	kfree(ctx);
+ 	return ret;
  }
  
-@@ -221,12 +233,11 @@ static void sharpsl_nand_remove(struct platform_device *pdev)
- 	WARN_ON(ret);
+@@ -346,10 +362,10 @@ static void au1550nd_remove(struct platform_device *pdev)
  
- 	/* Release resources */
+ 	ret = mtd_device_unregister(nand_to_mtd(chip));
+ 	WARN_ON(ret);
 -	nand_cleanup(chip);
 +	nand_disconnect(chip);
- 
- 	iounmap(sharpsl->io);
- 
--	/* Free the driver's structure */
--	kfree(sharpsl);
+ 	iounmap(ctx->base);
+ 	release_mem_region(r->start, 0x1000);
+-	kfree(ctx);
 +	mtd_put_master(nand_to_mtd(chip));
  }
  
- static struct platform_driver sharpsl_nand_driver = {
+ static struct platform_driver au1550nd_driver = {
 
 -- 
 2.53.0
