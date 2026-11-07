@@ -2,72 +2,74 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id DD429606D803
-	for <linux-mediatek@archiver.kernel.org>; Sat,  7 Nov 2026 14:16:30 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 5CD35606A326
+	for <linux-mediatek@archiver.kernel.org>; Sat,  7 Nov 2026 14:20:18 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=I3xBMZi+
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=B3e+pq/F;
+	dkim=pass (1024-bit key) header.d=cmss.chinamobile.com header.i=@cmss.chinamobile.com header.a=rsa-sha256 header.s=default header.b=OfoZT1md
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Message-ID:Date:From:References:In-Reply-To:Subject:Cc:To:
-	Reply-To:MIME-Version:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Unsubscribe-Post:
-	List-Owner; bh=aCryBT0BxE4GLsnVX4YQvOoV2Sj/hFLWMgcKubFl8Vw=; b=I3xBMZi+CcTvPb
-	ZzAXT1mxvxmFAl+BfpRzD05budokpcBusQihOFz7VGaOklruvglQfAc0L7Ff8ZeDlwpbr/oT/mLlw
-	YOGsagdTW5S22bIBd8CY3Bv42qh3n8WUa+XZjXg0YTql1iFhgZPhGS9yzozQje9IOPv7fBUn4xm57
-	1qVfdpNt5h6yRGvMZv9+u222uO9/Z8YXgMjKoUz43UnoAFcTp2gtTdex1xHSvGFLPrCyPs/DcTGWT
-	tLuMfTtbN/6I93a35E6Ab04a72rJwvjW8n1fowhxe4RFziECya38Ow/5GAuyHDliL3xpQYjJxm0tB
-	r/WOtQw1rIJ61lIrFLhg==;
+	Content-Type:MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Unsubscribe-Post:List-Owner;
+	bh=6Xy4g2k9SgZBU5SQWNQcYqwfJeIbihBIIqmeCYm2TIs=; b=B3e+pq/FXex8p/eYTPpd0MZuJS
+	3QVIpSdPicw2nkIeYqHGsCah+Mwc2y+qZn9nz8l+UgEOix2hleMxrTPt44lmtO8UP4iGel3EsX5Ht
+	GPMheKGpaKVVJMtEsNJ6YCWEg2zLDMIGS7Gi1kWcx1JgBZa9f0XpkqZjzScRzbn9freiSECs6MRWl
+	l8Oh1ll42Juc9LzXQIfcxQWsCpS+lf6tcrj+o7dT0VfgXB/FXB/Spn4uuOEy/+xeQIaCqG8eYgVUt
+	nY6FMQhd89URnGDd8Jj2EbqHXgFKi5uo5DCPXg/F4r6KppaDYfh+wxOHwRLkZWDkeUlmUKPfGVWyi
+	JKb6yZxQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xPhDa-0000000Eo5v-2dBU;
-	Sat, 07 Nov 2026 14:16:30 +0000
-Received: from smtp25.cstnet.cn ([159.226.251.25] helo=cstnet.cn)
-	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xPhDV-0000000Eo4r-2jWS
-	for linux-mediatek@lists.infradead.org;
-	Sat, 07 Nov 2026 14:16:28 +0000
-Received: from [172.100.0.8] (unknown [36.110.52.2])
-	by APP-05 (Coremail) with SMTP id zQCowAAnvrOuMu9qM6GFAA--.6298S3;
-	Sat, 07 Nov 2026 22:16:17 +0800 (CST)
-To: nbd@nbd.name
-To: lorenzo@kernel.org
-To: linux-wireless@vger.kernel.org
-Cc: linux-mediatek@lists.infradead.org
-Cc: lucid_duck@justthetip.ca
-Cc: eason.lai@mediatek.com
-Cc: angelogioacchino.delregno@collabora.com
-Subject: [PATCH v2] wifi: mt76: fix skb leak in SDIO tx queue full path
-In-Reply-To: <20260917154813.5823-1-lucid_duck@justthetip.ca>
-References: <20260917122058.2150817-1-vulab@iscas.ac.cn>
- <20260917154813.5823-1-lucid_duck@justthetip.ca>
-From: Wentao Liang <vulab@iscas.ac.cn>
-Date: Sat, 07 Nov 2026 14:16:24 +0000
-Message-ID: <179406098498.2377448.7089145955388574856@iscas.ac.cn>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-CM-TRANSID: zQCowAAnvrOuMu9qM6GFAA--.6298S3
-X-Coremail-Antispam: 1UD129KBjvJXoWxGr48CF4rZr4kJFWDXryDAwb_yoW5GFWDpF
-	W8K3yYvrn7Jrs7C3WkWF48Ja4Y9a1rGr98JryxW34rurs8Zr1Y9ay8Ca47ZrWrtrZ3Kaya
-	qF40vrn8G3yDW3DanT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
-	9KBjDU0xBIdaVrnRJUUU9Fb7Iv0xC_Kw4lb4IE77IF4wAFc2x0x2IEx4CE42xK8VAvwI8I
-	cIk0rVWrJVCq3wAFIxvE14AKwVWUJVWUGwA2ocxC64kIII0Yj41l84x0c7CEw4AK67xGY2
-	AK021l84ACjcxK6xIIjxv20xvE14v26r4j6ryUM28EF7xvwVC0I7IYx2IY6xkF7I0E14v2
-	6r4j6F4UM28EF7xvwVC2z280aVAFwI0_GcCE3s1l84ACjcxK6I8E87Iv6xkF7I0E14v26r
-	xl6s0DM2AIxVAIcxkEcVAq07x20xvEncxIr21l5I8CrVACY4xI64kE6c02F40Ex7xfMcIj
-	6xIIjxv20xvE14v26r1q6rW5McIj6I8E87Iv67AKxVWxJr0_GcWlOx8S6xCaFVCjc4AY6r
-	1j6r4UM4x0Y48IcVAKI48JMxkF7I0En4kS14v26r126r1DMxkF7I0Ew4C26cxK6c8Ij28I
-	cwCF04k20xvY0x0EwIxGrwCF04k20xvE74AGY7Cv6cx26r48ZrWUJr1UMxC20s026xCaFV
-	Cjc4AY6r1j6r4UMI8I3I0E5I8CrVAFwI0_Jr0_Jr4lx2IqxVCjr7xvwVAFwI0_JrI_JrWl
-	x4CE17CEb7AF67AKxVWUAVWUtwCIc40Y0x0EwIxGrwCI42IY6xIIjxv20xvE14v26r1j6r
-	1xMIIF0xvE2Ix0cI8IcVCY1x0267AKxVW8JVWxJwCI42IY6xAIw20EY4v20xvaj40_Jr0_
-	JF4lIxAIcVC2z280aVAFwI0_Gr0_Cr1lIxAIcVC2z280aVCY1x0267AKxVW8JVW8JrUvcS
-	sGvfC2KfnxnUUI43ZEXa7IU5HT5JUUUUU==
-X-CM-SenderInfo: pyxotu46lvutnvoduhdfq/1tbiBgcEA2rvBClMRAAAsm
+	id 1xPhHF-0000000EoD8-2mXi;
+	Sat, 07 Nov 2026 14:20:17 +0000
+Received: from cmccmta4.chinamobile.com ([111.22.67.137])
+	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
+	id 1xPhH4-0000000EoC7-0YdW;
+	Sat, 07 Nov 2026 14:20:16 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+	d=cmss.chinamobile.com; s=default; l=0;
+	h=from:subject:message-id:to:cc:mime-version;
+	bh=47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=;
+	b=OfoZT1mdEV1XwpGxGjrElEH0VxKM7xWy8hj6ScvZu/fK/lGZH2KUTc0M3cAQOwMeQs8XZyYTQSp1O
+	 auK57dKui2koR4W18X4TmUSbN3XZAfq9ChAgf1nWgIj6hEoMikmhRYM645W9Mcde/ViKs4RaWQgner
+	 87cSA96ODVUKBqUc=
+X-RM-TagInfo: emlType=0                                       
+X-RM-SPAM-FLAG: 00000000
+Received: from spf.mail.chinamobile.com (unknown[10.188.0.87])
+	by rmmx-syy-dmz-app08-12008 (RichMail) with SMTP id 2ee86aef337b2d3-57246;
+	Sat, 07 Nov 2026 22:19:44 +0800 (CST)
+X-RM-TRANSID: 2ee86aef337b2d3-57246
+X-RM-TagInfo: emlType=0                                       
+X-RM-SPAM-FLAG: 00000000
+Received: from [198.18.0.79] (unknown[112.23.104.16])
+	by rmsmtp-syy-appsvr10-12010 (RichMail) with SMTP id 2eea6aef337e00c-47617;
+	Sat, 07 Nov 2026 22:19:44 +0800 (CST)
+X-RM-TRANSID: 2eea6aef337e00c-47617
+From: Xia Yan <yanxia@cmss.chinamobile.com>
+To: netdev@vger.kernel.org
+Cc: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo@kernel.org>,
+ Andrew Lunn <andrew+netdev@lunn.ch>, David S. Miller <davem@davemloft.net>,
+ Eric Dumazet <edumazet@kernel.org>, Jakub Kicinski <kuba@kernel.org>,
+ Paolo Abeni <pabeni@redhat.com>, Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Yanqing Wang <ot_yanqing.wang@mediatek.com>, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ yana06070@163.com
+Subject: [PATCH net-next] net: ethernet: mtk-star-emac: fix device_node leak
+ in mtk_star_probe()
+Date: Sat, 07 Nov 2026 22:19:42 +0800
+Message-ID: <1794061182000.57993.3986467551914992480@cmss.chinamobile.com>
+X-Archived-By: <archiver.kernel.org>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261107_061626_074213_493FEBCE 
-X-CRM114-Status: GOOD (  11.96  )
-X-Spam-Score: -1.9 (-)
+X-CRM114-CacheID: sfid-20261107_062008_882161_400B6CE6 
+X-CRM114-Status: UNSURE (   9.95  )
+X-CRM114-Notice: Please train this message.
+X-Spam-Score: -2.4 (--)
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -84,83 +86,55 @@ X-Spam-Status: No, score=-13.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	SPF_PASS autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
-X-Archived-By: <archiver.kernel.org>
 
-The mt76 queue ops take ownership of the skb handed to tx_queue_skb():
-the DMA implementation releases it through ieee80211_tx_status_ext() on
-every error path, and the USB implementation was changed to do the same
-by commit 82856da2d3b6 ("wifi: mt76: fix memory leak in USB TX path").
+mtk_star_probe() gets the PHY node from the "phy-handle" property
+with of_parse_phandle(). The helper takes a reference on the node it
+returns. The node is used by of_phy_connect() each time the netdevice
+is opened.
 
-mt76s_tx_queue_skb() still returns -ENOSPC without releasing the skb.
-The queue full check runs before tx_prepare_skb(), so no pktid has been
-registered in wcid->pktid at that point; the skb only has to be completed
-through ieee80211_tx_status_ext(), which also frees it.
+That reference is never dropped. Every error return after the lookup
+leaks it. Unbind leaks it as well: the driver is devm-only and has no
+remove callback.
 
-Release the skb on the queue full path as well.
+Release it with a devm action, registered right after the lookup.
+The error paths and the unbind path then drop the node through the
+devm cleanup.
 
-Fixes: d39b52e31aa6 ("mt76: introduce mt76_sdio module")
-Cc: stable@vger.kernel.org
-Signed-off-by: Wentao Liang <vulab@iscas.ac.cn>
+Found during a code review of the OF node handling in ethernet drivers.
+
+Signed-off-by: Xia Yan <yanxia@cmss.chinamobile.com>
 ---
-Changes in v2:
-- Sorry for the long delay in following up.
-- Rebased on v7.4-rc1 and dropped the USB hunk, which is already fixed by
-  82856da2d3b6 ("wifi: mt76: fix memory leak in USB TX path").
-- Dropped the tx_prepare_skb() hunk, which is already fixed by
-  808f2767d421 ("wifi: mt76: mt792x: Fix memory leak in SDIO TX path").
-- Only the tx queue full path is handled now.
+ drivers/net/ethernet/mediatek/mtk_star_emac.c | 10 ++++++++++
+ 1 file changed, 10 insertions(+)
 
-Disclosure: the candidate was found with our static analysis tooling, and
-the audit and the fix were assisted by DeepSeek and GPT 6.1 sol.
-
- drivers/net/wireless/mediatek/mt76/sdio.c | 23 ++++++++++++++---------
- 1 file changed, 14 insertions(+), 9 deletions(-)
-
-diff --git a/drivers/net/wireless/mediatek/mt76/sdio.c b/drivers/net/wireless/mediatek/mt76/sdio.c
-index ba5f123f7e39..c59553b29df3 100644
---- a/drivers/net/wireless/mediatek/mt76/sdio.c
-+++ b/drivers/net/wireless/mediatek/mt76/sdio.c
-@@ -530,18 +530,15 @@ mt76s_tx_queue_skb(struct mt76_phy *phy, struct mt76_queue *q,
- 	int err, len = skb->len;
- 	u16 idx = q->head;
- 
--	if (q->queued == q->ndesc)
--		return -ENOSPC;
-+	if (q->queued == q->ndesc) {
-+		err = -ENOSPC;
-+		goto free_skb;
-+	}
- 
- 	skb->prev = skb->next = NULL;
- 	err = dev->drv->tx_prepare_skb(dev, NULL, qid, wcid, sta, &tx_info);
--	if (err < 0) {
--		status.skb = tx_info.skb;
--		spin_lock_bh(&dev->rx_lock);
--		ieee80211_tx_status_ext(dev->hw, &status);
--		spin_unlock_bh(&dev->rx_lock);
--		return err;
--	}
-+	if (err < 0)
-+		goto free_skb;
- 
- 	q->entry[q->head].skb = tx_info.skb;
- 	q->entry[q->head].buf_sz = len;
-@@ -553,6 +550,14 @@ mt76s_tx_queue_skb(struct mt76_phy *phy, struct mt76_queue *q,
- 	q->queued++;
- 
- 	return idx;
-+
-+free_skb:
-+	status.skb = tx_info.skb;
-+	spin_lock_bh(&dev->rx_lock);
-+	ieee80211_tx_status_ext(dev->hw, &status);
-+	spin_unlock_bh(&dev->rx_lock);
-+
-+	return err;
+diff --git a/drivers/net/ethernet/mediatek/mtk_star_emac.c b/drivers/net/ethernet/mediatek/mtk_star_emac.c
+index b83886a41121..bac4a24c5979 100644
+--- a/drivers/net/ethernet/mediatek/mtk_star_emac.c
++++ b/drivers/net/ethernet/mediatek/mtk_star_emac.c
+@@ -1501,6 +1501,11 @@
+ 	clk_bulk_disable_unprepare(MTK_STAR_NCLKS, priv->clks);
  }
  
- static int
--- 
-2.34.1
++static void mtk_star_of_node_put(void *data)
++{
++	of_node_put(data);
++}
++
+ static int mtk_star_set_timing(struct mtk_star_priv *priv)
+ {
+ 	struct device *dev = mtk_star_get_dev(priv);
+@@ -1603,6 +1608,11 @@
+ 		return -ENODEV;
+ 	}
+ 
++	ret = devm_add_action_or_reset(dev, mtk_star_of_node_put,
++				       priv->phy_node);
++	if (ret)
++		return ret;
++
+ 	priv->rmii_rxc = of_property_read_bool(of_node, "mediatek,rmii-rxc");
+ 	priv->rx_inv = of_property_read_bool(of_node, "mediatek,rxc-inverse");
+ 	priv->tx_inv = of_property_read_bool(of_node, "mediatek,txc-inverse");
+
 
 
