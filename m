@@ -2,55 +2,55 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id F2334606A330
-	for <linux-mediatek@archiver.kernel.org>; Sun,  8 Nov 2026 12:17:10 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 400F7606A331
+	for <linux-mediatek@archiver.kernel.org>; Sun,  8 Nov 2026 12:17:18 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=dZB1w4c/;
-	dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=iIcoRQSE
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=3qp3UP+t;
+	dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=Xt6D6o3w
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Unsubscribe-Post:
-	List-Owner; bh=qxsTqo+JQMtCd9rmTo6lEo3pQJzhEtQmwRC4ed7agqc=; b=dZB1w4c/YRUGxq
-	kqNY1edds67HMmlZjXsi42djOMjbhYZ38yQHX+fpdqhwsq/8U3VkjEmziVbLlylboMHRoayT0Ne+4
-	ZCdUPyT2JRxD86jkyAxJ2eOxbERNWx7Xb7My77agO5yrqKLjiWMtJZ5xU/up0VjEUfqx+/CetdasH
-	v2MW6WLvCWde/+UEmbvbUXDsJTJhSU9zBdYDbbatNwAibbPu2PmyF52yASioD28xamw1AKrEeYL9a
-	+RvTtiFKiHGT8OwEjaJOmE4/RXeXzxaa3t8wcl+1k4C4StH6cX0nmUfDNZVcjybuDZohBqq6MiIOV
-	whaR/sddBZczhHNdxJlA==;
+	List-Owner; bh=t0HhTPj4bzTBaikkJltYtx6Hu1FRWN4PirZ6ZWFxmvo=; b=3qp3UP+tt/GxDA
+	lKlws/vb3DrKASGtBnuzyvcyV+n4fjeLr22puY6aqzOfUHdgSJi6C2MjMqlMWCa6o1DaNb5JqzsYK
+	n+avxD73Q0kkSOs2qwjAzXeFFWrtGppNVCo1u4IWHu1hj2YVcaiNAnSsbRBLmqM3BSXd/EtD+hABP
+	sg2kSIh0liFq3qo1cuPZ7hqBtdiIYKm51GLxZJ5+OUgZsfSOYEvnolJWAvtsYpHrIxNmlTxWCdaX4
+	d2od4WSdDVNiwI7RPMuiyuiKyEGg5UhmhdaYwR4bMugYQqbn6ELQeXgrfTBBJWJRWVHZlNXQiuGrg
+	B2W8rZI/Uc6ID8F688yA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xQ1pe-0000000G7cv-2xfg;
-	Sun, 08 Nov 2026 12:17:10 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1xQ1pl-0000000G7jd-4892;
+	Sun, 08 Nov 2026 12:17:17 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xQ1pd-0000000G7bg-1DS1;
-	Sun, 08 Nov 2026 12:17:09 +0000
+	id 1xQ1pk-0000000G7iA-2wpj;
+	Sun, 08 Nov 2026 12:17:16 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id 1036F436B6;
+	by tor.source.kernel.org (Postfix) with ESMTP id CB87B608FA;
+	Sun,  8 Nov 2026 12:17:15 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6762E1F008A2;
 	Sun,  8 Nov 2026 12:17:09 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 3F09B1F008A1;
-	Sun,  8 Nov 2026 12:17:01 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1794140228;
-	bh=qxsTqo+JQMtCd9rmTo6lEo3pQJzhEtQmwRC4ed7agqc=;
+	s=k20260515; t=1794140235;
+	bh=t0HhTPj4bzTBaikkJltYtx6Hu1FRWN4PirZ6ZWFxmvo=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc;
-	b=iIcoRQSEW4XrwKV+nN9Nb4Qa5qsQEH19jT0amut0xQctRCFfAEqzNq+Bs5Z9F9IWk
-	 sQoYtXE7HJlRwkWJ8I1w2Ku2LPxakUauNIgRNx1YVQlh6cny3kvR1CI0VvkkAbF8Ql
-	 pCq+bY+iwgS/27EMr6tjjreoaBXpQePYSnIo8khNK7G2tbxRiYiactQbQp0UgQRtP1
-	 1k3E3ofNCdMdai1BrvqnHtKT3GbP1d8d+PEaaxqjOsYDKb6F2+VEbXQ5CpODx/kV33
-	 bEyPyBdPxdBjpcwM584RGrzjQ76Y2g5zOkkJ4zxCDYseE8qT4exVR9Y+iMByK0h1zE
-	 SM4pZo4C+0ydw==
+	b=Xt6D6o3wwRmLzN1HgqrLJFG+iw7lbY42O4ANyK6/MQUzGsGtAMnfARTq9wTW8gmWx
+	 rQ2EqDfMXU7i8S8Yddd3QBeEf3pN90lGN9W9PEUvfuWn0j3qB3qsSwwDatNjHLyPvz
+	 HzB5cBousC4t6KlOklo4xmThMQOSPJg3sD91RLl94qwVBAyc8cxpxEfxEUx1pwwwsO
+	 ysXUyuEe1XGfCTMGw2OoD1jMSDB6HlMp5NcCI5C198YzdAAik/gKYvIC3ADb2JYRiI
+	 UzpvIDDI/Jtf0krhU7ItMYAN5FXib7fWfidwt45NB6LdLEg1Pnf/BPdwRBoYKkAE7P
+	 vYudWIe4dDHVw==
 From: Joshua Crofts <crofts@kernel.org>
-Date: Sun, 08 Nov 2026 13:16:48 +0100
-Subject: [PATCH 01/11] spi: axiado: remove redundant
+Date: Sun, 08 Nov 2026 13:16:49 +0100
+Subject: [PATCH 02/11] spi: cadence-quadspi: remove redundant
  pm_runtime_dont_use_autosuspend() calls
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20261108-spi-dont-use-autosuspend-v1-1-3587b0183cbe@kernel.org>
+Message-Id: <20261108-spi-dont-use-autosuspend-v1-2-3587b0183cbe@kernel.org>
 References: <20261108-spi-dont-use-autosuspend-v1-0-3587b0183cbe@kernel.org>
 In-Reply-To: <20261108-spi-dont-use-autosuspend-v1-0-3587b0183cbe@kernel.org>
 To: Vladimir Moravcevic <vmoravcevic@axiado.com>, 
@@ -74,11 +74,11 @@ Cc: linux-spi@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-mediatek@lists.infradead.org, linux-rockchip@lists.infradead.org, 
  linux-tegra@vger.kernel.org, Joshua Crofts <crofts@kernel.org>
 X-Mailer: b4 0.14.3
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1794140215; l=1169;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1794140215; l=1162;
  i=crofts@kernel.org; s=20261015; h=from:subject:message-id;
- bh=NRoyppHKukC1q/jS9eBWJZZhaKnTa7BWmakPxRHlU6c=;
- b=D2kmfHd3JpxqRP8yObPxfrCGD9MxMVhHhVSsWUhJruHhGwmb1aC8ca9RPWngeIISejU2cS6Z0
- pz4IH4C/CilCuSJTP0Hynq4XrRD4ZO2GveTD1qC25VNd7UjfK+5rtoO
+ bh=uyKe4YBV0WQ4xjRxVeaEsXG0/WnAC3tiK57fwM2IAFg=;
+ b=93g0ybMATTAxNpyewzVSnIR92o5FRQQxSwuay4wOjBW1FQjHkbqT39CYxeIHluV2ZLyEZNY2D
+ SG1evYLXLYOD+B2LJyza+hd7pn1c0HFaiTfUHHvvDMNpDZ/Wc+rMECW
 X-Developer-Key: i=crofts@kernel.org; a=ed25519;
  pk=RTDOoVwgeL4oFdASj9U+cxJuIjXuXk73zkjnGOJKbEo=
 X-BeenThere: linux-mediatek@lists.infradead.org
@@ -107,29 +107,29 @@ Remove the redundant function calls.
 
 Signed-off-by: Joshua Crofts <crofts@kernel.org>
 ---
- drivers/spi/spi-axiado.c | 2 --
+ drivers/spi/spi-cadence-quadspi.c | 2 --
  1 file changed, 2 deletions(-)
 
-diff --git a/drivers/spi/spi-axiado.c b/drivers/spi/spi-axiado.c
-index 4a781b53f372..983fa657f00a 100644
---- a/drivers/spi/spi-axiado.c
-+++ b/drivers/spi/spi-axiado.c
-@@ -858,7 +858,6 @@ static int ax_spi_probe(struct platform_device *pdev)
- 	pm_runtime_disable(&pdev->dev);
- 	pm_runtime_put_noidle(&pdev->dev);
- 	pm_runtime_set_suspended(&pdev->dev);
--	pm_runtime_dont_use_autosuspend(&pdev->dev);
+diff --git a/drivers/spi/spi-cadence-quadspi.c b/drivers/spi/spi-cadence-quadspi.c
+index 73ea51c41f95..a276745095e4 100644
+--- a/drivers/spi/spi-cadence-quadspi.c
++++ b/drivers/spi/spi-cadence-quadspi.c
+@@ -2001,7 +2001,6 @@ static int cqspi_probe(struct platform_device *pdev)
+ 	pm_runtime_disable(dev);
+ 	pm_runtime_set_suspended(dev);
+ 	pm_runtime_put_noidle(dev);
+-	pm_runtime_dont_use_autosuspend(dev);
  
- 	clk_disable_unprepare(xspi->ref_clk);
- err_disable_apb:
-@@ -887,7 +886,6 @@ static void ax_spi_remove(struct platform_device *pdev)
+ 	cqspi_controller_enable(cqspi, 0);
+ disable_clks:
+@@ -2037,7 +2036,6 @@ static void cqspi_remove(struct platform_device *pdev)
  	pm_runtime_disable(&pdev->dev);
- 	pm_runtime_put_noidle(&pdev->dev);
  	pm_runtime_set_suspended(&pdev->dev);
+ 	pm_runtime_put_noidle(&pdev->dev);
 -	pm_runtime_dont_use_autosuspend(&pdev->dev);
+ }
  
- 	clk_disable_unprepare(xspi->ref_clk);
- 	clk_disable_unprepare(xspi->pclk);
+ static int cqspi_runtime_suspend(struct device *dev)
 
 -- 
 2.56.0
