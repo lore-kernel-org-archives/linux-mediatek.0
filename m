@@ -2,66 +2,103 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id C70D0606A321
-	for <linux-mediatek@archiver.kernel.org>; Sun,  8 Nov 2026 15:19:23 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 66833606A332
+	for <linux-mediatek@archiver.kernel.org>; Sun,  8 Nov 2026 18:28:24 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=F46B2k4i;
-	dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=TJYC7u/C
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=VSKuIB9J;
+	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=Cw1BPu/j
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Message-ID:Date
-	:Cc:To:From:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
+	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
 	List-Unsubscribe-Post:List-Owner;
-	bh=tS7Um5DMhxKUm027vq32NZL/bvrzTjSz3foWuqEhkjw=; b=F46B2k4iAICcNxPMa8OoKPYoUz
-	DREbw1R3tyHT6/H0CAnYWuzl61NBW8QbwhoT3VutIsRCFbSMUMX2pwQqBnf1rkVNFS/pXsvGu3SDM
-	y2k8tGBH0Eemm0HGPjRi1zlYNPMiZWWCgKdMSeKt/X8lEvj0UyWYgxwFx52gjBP6VQtz9HlNKs0GI
-	in6EDYT+bn9ttFO5Wm+7vf83di8g+jZxgd9Hn5oQvpqsI3l7fFzEINuLfU/AUJ65nHuFqOIjROgOZ
-	O6ErWpF9sT9pZz5Koro9/zOKu9ODxqUXA/Q9xHz5XC00vVOwutDrW1lf27stZ/hSw68U8Hwr5EriY
-	v4HAzLmA==;
+	bh=7LOc5o/iR4ccdtew0ZugkEGQ7ajVcmy8+3GKA8lPx8c=; b=VSKuIB9JXZd6kpCZpOGmfuuvSt
+	rSp3GCne/x0kPp4tKceDcJFtffmNrrNbaFHBEI6KD9HeJORhXj9tOBee9PKrWR/gR/To8dKcGnkYF
+	VBEjdnEnYMnqHvna9M4ZAlPtA5j6D04D5Cst7dikIxS6m8gx8Vxnhc03s8hFCrhKR1ineD63+l6E/
+	IkL68AbskonJdia6vK7Wh7OS6NTUN5U25jQ9cJFjPH8l85G89+kNwkGTsDHX6CmZnvSl2b//irXIE
+	ohBu+cMgKK83yQabSlLMb/uCHH4LwXJo2NtHi1KhSsbxWgw4OxkmTyFstCnYjwVE1E1b2LgFZDtH8
+	SgyzT7Tw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xQ4fw-0000000GIXQ-2p3N;
-	Sun, 08 Nov 2026 15:19:20 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1xQ7cr-0000000GUHe-3TWE;
+	Sun, 08 Nov 2026 18:28:21 +0000
+Received: from mail-ed1-x535.google.com ([2a00:1450:4864:20::535])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xQ4fu-0000000GIXD-43uF;
-	Sun, 08 Nov 2026 15:19:19 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id 54D58406A5;
-	Sun,  8 Nov 2026 15:19:18 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 60DE21F0089F;
-	Sun,  8 Nov 2026 15:19:17 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1794151158;
-	bh=tS7Um5DMhxKUm027vq32NZL/bvrzTjSz3foWuqEhkjw=;
-	h=Subject:From:To:Cc:Date:In-Reply-To:References;
-	b=TJYC7u/CLpWP+lzfJMc9ogVFoYpkWrgWg5JbRhCFshpLRaQG/otsIs0n1LJZoFASr
-	 rWWWHMgua2gKEFRX6DHGPWFV1lB1t3Mk+Kw4isKdJUy1OPpEC81AUWd1s9S1mmlNti
-	 UOa9dfULVU8gkzxXy1DgF82nvvOSg9+pfQ2Oi1TwFDPP4kmzvZDyxgTDKXNB/cC5W8
-	 a0OsfQed83okN9EjHVZh+uyWM+GTQZEgT3+9s65fScHNciJulbYod0ch2Atk0oySXB
-	 tK/Riqpr1jDaRIxQiApBF5AoBRiWzX5LPIrAhkGaVf6D7axKdK/yl5+0e6zMHVI9Fp
-	 lcgVPdV//Ju9g==
-Subject: Re: [PATCH] net: ethernet: mtk_wed: fix double free in mtk_wed_rx_reset
-From: netdev-bot+sashiko@kernel.org
-To: hujy652@gmail.com
-Cc: nbd@nbd.name, lorenzo@kernel.org, andrew+netdev@lunn.ch,
- davem@davemloft.net, edumazet@kernel.org, kuba@kernel.org, pabeni@redhat.com,
- matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
- sujuan.chen@mediatek.com, netdev@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, sashiko-bot@kernel.org,
- stable@vger.kernel.org
-Date: Sun, 08 Nov 2026 15:19:16 +0000
-Message-ID: <179415115690.994134.6626930296330601239@kernel.org>
-In-Reply-To: <20261104-double-free-v1-1-efa52326702f@gmail.com>
-References: <20261104-double-free-v1-1-efa52326702f@gmail.com>
-X-sashiko-severity: High
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
+	id 1xQ7co-0000000GUFp-3tJL
+	for linux-mediatek@lists.infradead.org;
+	Sun, 08 Nov 2026 18:28:20 +0000
+Received: by mail-ed1-x535.google.com with SMTP id 4fb4d7f45d1cf-6b5669a5100so281963a12.1
+        for <linux-mediatek@lists.infradead.org>; Sun, 08 Nov 2026 10:28:18 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20260707; t=1794162497; x=1794767297; darn=lists.infradead.org;
+        h=cc:to:content-transfer-encoding:content-type:mime-version
+         :message-id:date:subject:from:from:to:cc:subject:date:message-id
+         :reply-to:content-type;
+        bh=7LOc5o/iR4ccdtew0ZugkEGQ7ajVcmy8+3GKA8lPx8c=;
+        b=Cw1BPu/jufrdf+FHWz8bIFratCmBo/HWBRpho5epOoxrE1Oad3Y9EbIGr6quaRSANO
+         SdNvlFK8aSbljl4TXxHGCSRw7FarWgkdKPvb7YTHkA5r6/h1Mg9t3ividvwIgdnJxg+J
+         jZLhqYAAA5QoRip0OBdm5uHAXjP6GDKckZP9LdlEOJyV17gp8q/WlimDY/iYMA2OCUR3
+         IOUeAiqcofoggfGZGmgO4q2t6FPSRn35o9c/ve6Qj7+G27iZaWtGpaqKdmE20eSoCYRx
+         jkhOq4Tx0DcBcgy5/4anSF+iv0gJwFHrpDVYHk21vkNyW9N7aHQ8QYsd6Qyl5sBSvk8j
+         AZNQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20260707; t=1794162497; x=1794767297;
+        h=cc:to:content-transfer-encoding:content-type:mime-version
+         :message-id:date:subject:from:x-gm-gg:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to:content-type;
+        bh=7LOc5o/iR4ccdtew0ZugkEGQ7ajVcmy8+3GKA8lPx8c=;
+        b=pmz64j2n4j8myPpAC6jO9L5shwc5cnZeRfnG224A9E18tB6bGTuLwurof2g94RWbAD
+         my8sebM8LV1c7oCtsXp0ApTq/2XCgSG9o7oznqwtLWw9CZ7/Y1oMhbWoUrQBHN3uuNHy
+         GcUUZNc1L4o4ko61aiPeHs+w5uPHNsQAYPKjXa2Bb+siFIg5OF1EBGYV2YYt30KDsXqK
+         PctQoq5JDwjQJZCLviKR2sMIGJClYQIJK6kriC0q3bAcKGDcfD9S+z2+oHO/3ODPvU8Q
+         0lO4h0M7xJ0aK4Bv0UWG6MlGwQhnCfTbYlaBnUPapJ8p9ubpXRavUJXBh9CSC/tCwZ5t
+         u3kA==
+X-Forwarded-Encrypted: i=1; AL+hErFz0BqOxDHpDW4k7iT8cgaltzWC+zF7sO/WNnTD2+0FKIZ9txNII6zvqed6lIcgzX00BPOmSPFhOnIZP9Wn8g==@lists.infradead.org
+X-Gm-Message-State: APuU4Z+5LGj043hvmMfJGwJ3nnK+b7kRcnIcf9DMf27EYp5sN22v7ebx
+	lRCZE4bYi9jpTyQlSZDL34WanmQKlbjCqMcj56zbJKEPXJ7To5vySMbc
+X-Gm-Gg: AYBFou34jQnARHuFOaJrNDa4nlfoIjYNVrbfI8ZxZmhzH3nNCzpQDlpoDJvrlznZMYp
+	Q+a02i/pWwDVIO20lt1Sx47y7xfzJOoVhMYv+/rqpxkzZlXoT+DayZSh4zGHFzqxLA3P2k8U4O7
+	pQuxMdYhgtyD4fryYOcDNMW9x4gczpmMpKVk+bYiSil2AJ7XHCZ6EHRxMPj5Sho7w8PDKC8C2IW
+	A9jewgk7BAQT5Wtwt6Ob3XKguIg9rNHAFfQws+0ERIc82yWWh7GINuYUYcFag6g2gSDB9kUU9D9
+	n3lFtRnNAAxxketJhT3DtR3ULFIiCr7NPDiIgYYCouxiaPQFYoPPXW090NU3X4rOeOsnW7nzy28
+	nIyvg90TTV8O1U7wzZUVsYurisJKBn+VgXJBDuIXbOJMIM+VUgM1tmLDdndS83r09lxFQEaUoEm
+	oQYsPovBBGibmPRzN9Hk7gqE/1qIqndth6yjN/I12/Q5PJi/agyDRfmFe+6OjURAqlX8OUJQ631
+	NBBsJi471RqAe0fdCFbteJj3NlWgd3VoS17IDkFdGEFGHq0kji6OozENC3awSklzWcxUCA5iqSW
+	GcVRCCl13GHv/8n6HbKY1U5CFtHeufwHyv/LZ1C2aM7nSUPFCnFRSGa8IqeL+mhN
+X-Received: by 2002:a17:906:9f90:b0:c3e:e726:9548 with SMTP id a640c23a62f3a-c4d6d35bdb4mr141902266b.14.1794162496378;
+        Sun, 08 Nov 2026 10:28:16 -0800 (PST)
+Received: from [192.168.1.100] ([163.245.50.16])
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-c4d6a47515dsm75254366b.44.2026.11.08.10.28.14
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sun, 08 Nov 2026 10:28:15 -0800 (PST)
+From: Alexander Letuchiy <asalde.le1@gmail.com>
+Subject: [PATCH 0/2] pinctrl: mediatek: Add MT6895 support
+Date: Sun, 08 Nov 2026 21:27:09 +0300
+Message-Id: <20261108-pinctrl-mt6895-v1-0-f704c443b31a@gmail.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+X-B4-Tracking: v=1; b=H4sIAAAAAAAC/yXMQQ6DIBBA0auYWUsCE6XoVYwLpUM7RtEANk2Md
+ y/V5Vv8f0CkwBShLQ4I9OHIq89QZQH2PfgXCX5mA0rUSkkjNvY2hVksSZumFqYyiCgfrhos5Gg
+ L5Ph7Dbv+dtzHiWz6X+A8fw6MQLJyAAAA
+X-Change-ID: 20261108-pinctrl-mt6895-84822207f4ac
+To: Linus Walleij <linusw@kernel.org>, Rob Herring <robh@kernel.org>, 
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Alexander Letuchiy <asalde.le1@gmail.com>, Sean Wang <sean.wang@kernel.org>
+Cc: linux-gpio@vger.kernel.org, devicetree@vger.kernel.org, 
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org
+X-Mailer: b4 0.15.2
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20261108_102818_982918_6D90AE4D 
+X-CRM114-Status: GOOD (  11.08  )
+X-Spam-Score: -1.9 (-)
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,125 +109,48 @@ List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-10.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,
-	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS autolearn=ham autolearn_force=no version=4.0.1
+X-Spam-Status: No, score=-15.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
+	DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,FREEMAIL_FORGED_FROMDOMAIN,
+	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,SPF_HELO_NONE,SPF_PASS,
+	USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Thank you for your contribution! Sashiko AI review found 1 potential
-issue(s) to consider.
+This series adds the pin controller of the MediaTek Dimensity 8000/8100
+(MT6895) SoC: the binding and a driver on top of the common Paris code.
 
-Critical: 0 · High: 1 · Medium: 0 · Low: 0
+The pinmux macro header and the pio node will be sent with the next
+version of the MT6895 / Xiaomi Poco X4 GT initial support series.
 
-If you believe none of the issues are legitimate, please reply to each
-issue of Medium severity or higher and explain why the AI is wrong.
-If any of them are legitimate and you plan to respin, please let patchwork
-know by including "pw-bot: cr" as a separate line at the end of your reply
-(one such reply per series is enough).
+The tables come from the MediaTek driver in the Xiaomi kernel source
+release [1]. They were checked field by field against that driver and
+against register dumps from the device running the vendor kernel.
 
-- [High] The patch fixes the immediate double free by removing the second
-  mtk_wed_hwrro_free_buffer() call from mtk_wed_rx_reset().
+Tested on a Xiaomi Poco X4 GT (xaga) on top of next-20261102: pinmux,
+pin configuration, GPIO and EINT.
 
---
+[1] https://github.com/MiCode/Xiaomi_Kernel_OpenSource/tree/56ec519f6
+    (branch xaga-s-oss)
 
-net: ethernet: mtk_wed: fix double free in mtk_wed_rx_reset
+Assisted-by: Claude:claude-opus-5-5
+---
+Alexander Letuchiy (2):
+      dt-bindings: pinctrl: mediatek: Document MT6895 pin controller
+      pinctrl: mediatek: Add support for MT6895 pinctrl
 
-mtk_wed_free_rx_buffer() already calls mtk_wed_hwrro_free_buffer(). The
-patch therefore drops the second mtk_wed_hwrro_free_buffer() call from
-mtk_wed_rx_reset(), which caused a double free of the hw_rro buffers on
-WED v3.
+ .../bindings/pinctrl/mediatek,mt6895-pinctrl.yaml  |  228 ++
+ drivers/pinctrl/mediatek/Kconfig                   |   10 +
+ drivers/pinctrl/mediatek/Makefile                  |    1 +
+ drivers/pinctrl/mediatek/pinctrl-mt6895.c          | 1617 ++++++++++++
+ drivers/pinctrl/mediatek/pinctrl-mtk-mt6895.h      | 2717 ++++++++++++++++++++
+ 5 files changed, 4573 insertions(+)
+---
+base-commit: 2637bdec0535a2044cd830eba9a79363651d9043
+change-id: 20261108-pinctrl-mt6895-84822207f4ac
 
-Link: https://sashiko.dev/#/map/216156
+Best regards,
+--  
+Alexander Letuchiy <asalde.le1@gmail.com>
 
-> diff --git a/drivers/net/ethernet/mediatek/mtk_wed.c b/drivers/net/ethernet/mediatek/mtk_wed.c
-> index f40ac5794341c..5e9674c9e63ab 100644
-> --- a/drivers/net/ethernet/mediatek/mtk_wed.c
-> +++ b/drivers/net/ethernet/mediatek/mtk_wed.c
-> @@ -1723,7 +1723,6 @@ mtk_wed_rx_reset(struct mtk_wed_device *dev)
->  				   false);
->  	}
->  	mtk_wed_free_rx_buffer(dev);
-> -	mtk_wed_hwrro_free_buffer(dev);
-
-[Severity: High]
-This removes the duplicate call, but the free helpers still never clear the
-pointers they free. Can the stale rx_buf_ring.desc, hw_rro.desc and
-hw_rro.pages still get freed a second time later?
-
-mtk_wed_free_rx_buffer() frees the descriptor ring and leaves
-dev->rx_buf_ring.desc set:
-
-drivers/net/ethernet/mediatek/mtk_wed.c:mtk_wed_free_rx_buffer() {
-	...
-	dev->wlan.release_rx_buf(dev);
-	dma_free_coherent(dev->hw->dev, dev->rx_buf_ring.size * sizeof(*desc),
-			  desc, dev->rx_buf_ring.desc_phys);
-
-	mtk_wed_hwrro_free_buffer(dev);
-}
-
-mtk_wed_hwrro_free_buffer() works the same way. It unmaps and frees the
-pages, calls dma_free_coherent() on hw_rro.desc and kfree()s hw_rro.pages,
-but leaves both pointers set.
-
-After the reset path:
-
-mtk_wed_device_dma_reset()
-  mtk_wed_reset_dma()
-    mtk_wed_rx_reset()
-      mtk_wed_free_rx_buffer()
-
-these pointers stay dangling until mtk_wed_start()->mtk_wed_rx_buffer_alloc()
-overwrites them. Some paths seem to skip that step.
-
-In mt7915_dma_start(), mtk_wed_device_start() is never called if the WO
-rx stats message fails:
-
-	ret = mt7915_mcu_wed_enable_rx_stats(dev);
-	if (ret)
-		return ret;
-
-	mtk_wed_device_start(&dev->mt76.mmio.wed, wed_irq_mask);
-
-mtk_wed_rx_buffer_alloc() returns -ENOMEM before it assigns
-dev->rx_buf_ring.desc if dma_alloc_coherent() fails.
-
-mtk_wed_hwrro_buffer_alloc() returns -ENOMEM in two places. If the
-page_list allocation fails, it returns before assigning hw_rro.pages. If
-the desc dma_alloc_coherent() fails, it returns before assigning
-hw_rro.desc.
-
-In any of these cases, the next unbind or remove would do:
-
-__mtk_wed_detach()
-  mtk_wed_free_rx_rings()
-    mtk_wed_free_rx_buffer()
-      dma_free_coherent() on the old rx_buf_ring.desc
-      mtk_wed_hwrro_free_buffer()
-        reads page_list[] from the already kfree()d hw_rro.pages
-        dma_unmap_page() and __free_page() on already freed pages
-        dma_free_coherent() on the old hw_rro.desc
-        kfree() on the old hw_rro.pages
-
-The if (!desc) and if (!page_list) checks don't help here, because the
-pointers are still non-NULL.
-
-Would it be better to set rx_buf_ring.desc, hw_rro.desc and hw_rro.pages
-to NULL in mtk_wed_free_rx_buffer() and mtk_wed_hwrro_free_buffer()? The
-commit message names the same cause:
-
-  "This would cause double free because dma_free_coherent doesn't set
-  freed desc to NULL."
-
-Clearing the pointers would also have made the removed duplicate call
-harmless.
-
->  
->  	return 0;
->  }
-
--- 
-Sashiko AI review · https://netdev-ai.bots.linux.dev/sashiko/#/patchset/20261104-double-free-v1-1-efa52326702f%40gmail.com
 
