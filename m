@@ -2,105 +2,75 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 3A083606A334
-	for <linux-mediatek@archiver.kernel.org>; Sun,  8 Nov 2026 09:09:46 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 69494606A31C
+	for <linux-mediatek@archiver.kernel.org>; Sun,  8 Nov 2026 09:41:05 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=xPeNTyHg;
-	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=PON7QUIM
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=st+zFsK6;
+	dkim=pass (1024-bit key, unprotected) header.d=163.com header.i=@163.com header.a=rsa-sha256 header.s=s110527 header.b=cBh9bpcG
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Unsubscribe-Post:
-	List-Owner; bh=yKYud9p8+aP8cT7V12zkUbmCop1ErkdHEczU+hWaU/k=; b=xPeNTyHgFg1Dcc
-	28QABpGd4e71SrcnTwpl6cAK/y3fTUWtzOwHJCy9MlyZNC8eBrTTv+S5CppIZSn9l9HESmCO/wIn0
-	d9uldWwP2goDFCf3vcFCZq2DAISMtFuPzFZ/F2DHricleHrOYqTjBFlTdVA84DLIBB3taVxFKHAx8
-	8ncEdSF83/ksuwv8x7eqaZ/B8CqSnb6QsO1DVcT4DUl8asjdWXSNnXqVSZK/0Sqb8/pyDJxQ+Y8on
-	1PMEUO1Q+0PtLimHwLwxxVIq0FTPl6UEQrKSpuJKqufikfeFAWT9lILUmo43RpF0Cr3I6IQ/Vq8lY
-	8Y3D3XBP5wtkkgJFcXdA==;
+	List-Owner; bh=nqXfJixZkwzDhIMorPPJ0dQ7Iu297y2SeiumQpEkZaA=; b=st+zFsK6Y2lf/j
+	/nQ/4cVdYTucZU2nWe22ZDkJTpYl3rUADec1wVx5lUsnYrpiWdc0JjpbJmvyWtAgw0myENNM1dXlT
+	/OFKHoFOb3IgUmWdkFVILk/ZyTUyWH1I4kRTS+rqrwBpsTTpgrCNKDpMiXvlX7Pz7SPMppKxNhbGO
+	QRA88IUdSL/J3TtHumzTqctg7vRV4+b6d43kPySDi13AeU4pLFzRnSFxPWNPyrjJIFu2+M+EJCD7n
+	6ARK6u3tLtqB5AG6GRV1Pp9KePvSKoiaiNLkk/zcz5Sey/xNfTVPdy0rC+exVGJV+nOoo70Y76ZVC
+	rtIXJxn1+jl6vTMdntyQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xPyuH-0000000FssT-31Zr;
-	Sun, 08 Nov 2026 09:09:45 +0000
-Received: from mail-dy1-x132d.google.com ([2607:f8b0:4864:20::132d])
+	id 1xPzOa-0000000Fv8B-3slZ;
+	Sun, 08 Nov 2026 09:41:04 +0000
+Received: from m16.mail.163.com ([220.197.31.4])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xPyuF-0000000Fsrv-2yL7
+	id 1xPzOY-0000000Fv7G-2nvX
 	for linux-mediatek@lists.infradead.org;
-	Sun, 08 Nov 2026 09:09:44 +0000
-Received: by mail-dy1-x132d.google.com with SMTP id 5a478bee46e88-36e795af1d4so39881eec.1
-        for <linux-mediatek@lists.infradead.org>; Sun, 08 Nov 2026 01:09:43 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20260707; t=1794128982; x=1794733782; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to:content-type;
-        bh=yKYud9p8+aP8cT7V12zkUbmCop1ErkdHEczU+hWaU/k=;
-        b=PON7QUIM7+uy5JFsGRS8AZGju1OYm5QW49VEuertjYEreBFro0WrXrq7mVs6wHdtp3
-         +8syp5aDmpQ/Jxz5fFmbZO53thx/zZRLdrvLleaRVqp5WL0tPt+0HRkN/WinXm4ztdGf
-         z9GMm18NNgUXfjY29lK5QZlwyFEjhPzVd+MxbkPHxa7Aloe0KCxMesnlXUI01wpxIrg3
-         JPSZsTTLzSKiCkMPKnffg6CUbnnCpDJvXAc8YVfLJlKSa32W+QlKJeRpEoFdFKh5W83+
-         OJGs/LxFgOgpxvPPpuVIvHncdoufh617Qg8+H1BHgGnDsvQVHuhQcZBBYDVWMohqm5zs
-         UKGA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1794128982; x=1794733782;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
-         :to:cc:subject:date:message-id:reply-to:content-type;
-        bh=yKYud9p8+aP8cT7V12zkUbmCop1ErkdHEczU+hWaU/k=;
-        b=fvR9ZaimKL6PtoTVxbpFhwpxMLgFmpeF/GZM3bHCwsFJcbQsc9nbseeoBZlAYWI6ol
-         JJ4n8nj+/2wbTOk3umA/FEa2y5IAgCLDluzl/kGTL9Tw0SbyTQB0h3MUrDhiFcRkJuHP
-         bxZehGFY03mykpfDz9dkrqUo3wOV+gxyP/UaVAReqcgY+x+Lc1nCO/bdoqCKWuB9FisQ
-         MMHxxG2UvSlnbYAC+2ncADmWr9Bcsp6YLsifK6E+o64weZwDseHNxbKMJTodM6xv2nsV
-         UThotGkj+LmF40GY9VKzTsxP5lxwNBMqbdvGZEsh9wSyjWM8P0TdPchfy80I8uAlNExB
-         Xa/A==
-X-Forwarded-Encrypted: i=1; AL+hErGmeE+CMBsDEzUiJUjDJJgC5TXR0oDzC1nbS8sN/Y1cIcF6OzMWPJVhEifWmEHEm/NC2HMVzB5UME5oFWpxHg==@lists.infradead.org
-X-Gm-Message-State: APuU4Z81mU4R24TJf7wA4lkKA5Z0K9M7XC+cWXkOeMTWP9dZVRthAbMw
-	VfeeOa/acjmyq9qBynvQ3eT4U0obXXf2TDcmV4BYi0m7nFQyh6z1zfoH
-X-Gm-Gg: AYBFou3oPQwlhYX6l/Cj0W5ZXTgiVbGviyt9AIPm/h38YNy9BAH1VJ+qt7rGJxtK/th
-	osUnZ0WJJM3wMNukKJSYmgQMQh3sQlfdqp8D6v4+Rtb3e0CaCipsRM6C7KAQrpA2bj5zi0bj3lM
-	ZrbJp94My2tRk4tkGakmOK50BFCWu+6GwvRIRhQlFT+wSeCvdZlmJcfzVnMl0Cfvev0/7xWGv4I
-	u7YBNDfzJ24X+lhev9WSWZFPNIZFMh5DRgd3kAC8NfGWyjs48bYQ/XEByCunTJbldsgoVGkxCoL
-	MIhd4eU5Ptdi/cBK1CK1LvIuWLtj/iUcRHyHEooA7ICb4XPmm+FoR3Ww1i+3V1aGRzXW5gHbjJq
-	pTwE7N7vusCy7Rn20uT2a8eQmR3Y41eQ+DgpZcdpU1sZNZqkBR1keacCxt4LDy0H9PpFq5jJs9M
-	JH+ewKnlLN6dN/kC839KpESM3t/kwUyebEgFxqrxdBluv8Jw0bLCcuOeekRuheCkE7bPhL4+vWC
-	xCb+Z5Z0ATF7K01Q3biVH2UF9ipj7/8t4atoRHqkD1c3D/qlXlTCUoO7VOtAKtS5c/dOGI2P8Gh
-	CuOxV7Pd8yFyLE7uOVfDsCd8N1kIh0csDzCeDDqwO6n4re7LQTg=
-X-Received: by 2002:a05:693c:881c:20b0:36c:a2cb:6ad0 with SMTP id 5a478bee46e88-370f620bf5cmr5775018eec.8.1794128982350;
-        Sun, 08 Nov 2026 01:09:42 -0800 (PST)
-Received: from localhost.localdomain ([103.177.253.80])
-        by smtp.gmail.com with ESMTPSA id 5a478bee46e88-3726561852csm3725259eec.9.2026.11.08.01.09.37
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sun, 08 Nov 2026 01:09:41 -0800 (PST)
-From: Sreeraj S Kurup <sreekuttan2156239@gmail.com>
-To: mani@kernel.org
-Cc: angelogioacchino.delregno@collabora.com,
-	bhelgaas@google.com,
+	Sun, 08 Nov 2026 09:41:04 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
+	s=s110527; h=From:To:Subject:Date:Message-ID:MIME-Version; bh=nq
+	XfJixZkwzDhIMorPPJ0dQ7Iu297y2SeiumQpEkZaA=; b=cBh9bpcGv0ec6LeAZy
+	/wpRbvnAKKF9VHqBenBT4g0HgWXi2a8lSIXp2QWM7/PiwjfUd8mIYLNcsC/dj7hk
+	7P7Trmoyge8faLqopeAMyQ3N3vt0KjBos9tAbTooX7+/PwgRM5UPqQ+zzQBf637w
+	RFOV+mubefa7Q0yes8a5JhQ9o=
+Received: from Precision-7960.. (unknown [])
+	by gzga-smtp-mtada-g0-2 (Coremail) with SMTP id _____wCXz8OTQ_BquUg4GA--.62891S3;
+	Sun, 08 Nov 2026 17:40:39 +0800 (CST)
+From: Hans Zhang <18255117159@163.com>
+To: bhelgaas@google.com,
+	mani@kernel.org,
+	lpieralisi@kernel.org,
 	kwilczynski@kernel.org,
-	linux-arm-kernel@lists.infradead.org,
+	thierry.reding@kernel.org,
+	ryder.lee@mediatek.com,
+	jonathanh@nvidia.com
+Cc: robh@kernel.org,
+	linux-pci@vger.kernel.org,
 	linux-kernel@vger.kernel.org,
 	linux-mediatek@lists.infradead.org,
-	linux-pci@vger.kernel.org,
-	lpieralisi@kernel.org,
-	matthias.bgg@gmail.com,
-	p.zabel@pengutronix.de,
-	robh@kernel.org,
-	sergio.paracuellos@gmail.com,
-	sreekuttan2156239@gmail.com
-Subject: Re: [PATCH] PCI: mt7621: Fix reset control leak on PHY initialization failure
-Date: Sun,  8 Nov 2026 09:09:04 +0000
-Message-ID: <20261108090904.2409-1-sreekuttan2156239@gmail.com>
-X-Mailer: git-send-email 2.55.0
-In-Reply-To: <179407116392.87368.9250979022176600686.b4-ty@b4>
-References: <179407116392.87368.9250979022176600686.b4-ty@b4>
+	linux-tegra@vger.kernel.org,
+	Hans Zhang <18255117159@163.com>
+Subject: [PATCH v2 1/5] PCI: Use pcie_get_link_speed() in pci.c
+Date: Sun,  8 Nov 2026 17:40:30 +0800
+Message-ID: <20261108094034.679945-2-18255117159@163.com>
+X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20261108094034.679945-1-18255117159@163.com>
+References: <20261108094034.679945-1-18255117159@163.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
+X-CM-TRANSID: _____wCXz8OTQ_BquUg4GA--.62891S3
+X-Coremail-Antispam: 1Uf129KBjvJXoW7uFyDWF1rAryDXryftFWxtFb_yoW8Ar47pa
+	y7C3W8Ar18Jr1fWF4rJan8Wr15X3Z3ZayxtrySgay8Wr17CrZxJFyFq3y3tr1SkrWDAry5
+	G3ZIyrs8ua1xtF7anT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
+	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x0pRv385UUUUU=
+X-CM-SenderInfo: rpryjkyvrrlimvzbiqqrwthudrp/xtbC7BfMcGrwQ5f4cwAA3C
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261108_010943_746863_447F5305 
-X-CRM114-Status: UNSURE (   5.07  )
+X-CRM114-CacheID: sfid-20261108_014103_080169_8E6A6DB8 
+X-CRM114-Status: UNSURE (   8.01  )
 X-CRM114-Notice: Please train this message.
-X-Spam-Score: -1.9 (-)
+X-Spam-Score: -1.8 (-)
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -111,18 +81,60 @@ List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-5.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
+X-Spam-Status: No, score=-15.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
 	DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,FREEMAIL_FORGED_FROMDOMAIN,
-	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=no autolearn_force=no
-	version=4.0.1
+	FREEMAIL_FROM,FROM_LOCAL_DIGITS,FROM_LOCAL_HEX,
+	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Hi,
+Replace the to_pcie_link_speed() wrapper with pcie_get_link_speed() in
+pcie_link_bandwidth_mbps() and pcie_bandwidth_available(), and remove
+the now-unused wrapper.  pcie_get_link_speed() performs the same lookup
+with bounds checking and is already exported.
 
-Thanks for applying the patch!
+Signed-off-by: Hans Zhang <18255117159@163.com>
+---
+ drivers/pci/pci.c | 9 ++-------
+ 1 file changed, 2 insertions(+), 7 deletions(-)
 
-Best regards,
-Sreeraj
+diff --git a/drivers/pci/pci.c b/drivers/pci/pci.c
+index 7c6f2aba8144..92ede1768caf 100644
+--- a/drivers/pci/pci.c
++++ b/drivers/pci/pci.c
+@@ -6025,11 +6025,6 @@ int pcie_set_mps(struct pci_dev *dev, int mps)
+ }
+ EXPORT_SYMBOL(pcie_set_mps);
+ 
+-static enum pci_bus_speed to_pcie_link_speed(u16 lnksta)
+-{
+-	return pcie_link_speed[FIELD_GET(PCI_EXP_LNKSTA_CLS, lnksta)];
+-}
+-
+ /**
+  * pcie_link_bandwidth_mbps - get the current bandwidth of a single PCIe link
+  * @pdev: PCI device to query
+@@ -6048,7 +6043,7 @@ int pcie_link_bandwidth_mbps(struct pci_dev *pdev)
+ 	if (err)
+ 		return pcibios_err_to_errno(err);
+ 
+-	speed = pcie_dev_speed_mbps(to_pcie_link_speed(lnksta));
++	speed = pcie_dev_speed_mbps(pcie_get_link_speed(FIELD_GET(PCI_EXP_LNKSTA_CLS, lnksta)));
+ 	if (speed < 0)
+ 		return speed;
+ 
+@@ -6089,7 +6084,7 @@ u32 pcie_bandwidth_available(struct pci_dev *dev, struct pci_dev **limiting_dev,
+ 	while (dev) {
+ 		pcie_capability_read_word(dev, PCI_EXP_LNKSTA, &lnksta);
+ 
+-		next_speed = to_pcie_link_speed(lnksta);
++		next_speed = pcie_get_link_speed(FIELD_GET(PCI_EXP_LNKSTA_CLS, lnksta));
+ 		next_width = FIELD_GET(PCI_EXP_LNKSTA_NLW, lnksta);
+ 
+ 		next_bw = next_width * PCIE_SPEED2MBS_ENC(next_speed);
+-- 
+2.43.0
+
 
