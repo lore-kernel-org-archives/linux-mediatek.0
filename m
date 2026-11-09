@@ -2,68 +2,71 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id D1476606A31C
-	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Nov 2026 00:25:27 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 06B0F606A323
+	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Nov 2026 01:11:28 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=pyiTXHA2;
-	dkim=pass (2048-bit key) header.d=disroot.org header.i=@disroot.org header.a=rsa-sha256 header.s=mail header.b=GHSUxRgr
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=GV2BTrvF;
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=collabora.com header.i=@collabora.com header.a=rsa-sha256 header.s=zohomail header.b=b+Id5PbC
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=yDs6CzCxqfEwo8tlX39U+fuPJCLt1HilrukTVUCd2bM=; b=pyiTXHA2L2q4Z7uBWzAAs9/IuP
-	GXeGriAOlOHKGnBsUUb7aD6oJHwKVopehYIJdkcVMUTW6SucFTDYn14CZAYCgbxyCcMNkT57GK/eV
-	N/D6lcVC9yjho7Z+/g7IsUqvHAgMWu90qGDlj5N8G9ObFQy5whhBOUjAuU3G0CpzD5VN7wwr7WH8M
-	EQ9Am/DYO5n5dzuReNqH7P13IuhWr6sN5B9EMEznVa3uuVPQQyGoa6wuOQ7bN2rAFr1dKeQZIlx3g
-	HjAAo1jtvbyVDuFKwN55pU10OWzSy7Xk3bnSnJWGceC7Ul/X2y7ZKlDnf1e1y3o8PYDpvULqJhWjU
-	dsrVPQQQ==;
+	bh=Frm8Ld1QHHVrzUA5GQZVw3rqE7QJ68oePOVoIDDUukc=; b=GV2BTrvF6MVRiiVOPaJ158UvgW
+	bQw0jYq6I5REz8ZDPx09GC+fkaAklsNDcUcUR8yzOUYUTR+6O/aaI8jYDwyBfQjAKQU5DE3OIPFDN
+	qweK8QItsO8Xm4sP3K4QpRGhKjaRvNOcJjbUFAyPzgY/DpUb1V3rl6iiwUwSXAu4m/teiKDXTIwhm
+	uniUWOgJzl6Gsq3QWRD0K6M7zmVpznTUNZI8cc4z9oncZX1DOLHjDQuWd/CecCUIICbaJXE6pAnYd
+	M3PojkZNx25v7zQ0NDO3VwnP9f/T9gI1O+d4f+DKNxMs+skSJ1P2ur+P1PWUcMFYtSYS+MqnESNBf
+	7qk93Cyg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xQDCR-0000000GxHG-2L6t;
-	Mon, 09 Nov 2026 00:25:27 +0000
-Received: from layka.disroot.org ([178.21.23.139])
+	id 1xQDuw-0000000H0st-13kW;
+	Mon, 09 Nov 2026 01:11:26 +0000
+Received: from sender6-op-o11.zoho.com ([165.173.180.11])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xQDCO-0000000GxGu-1W4t
-	for linux-mediatek@lists.infradead.org;
-	Mon, 09 Nov 2026 00:25:26 +0000
-Received: from mail01.layka.lan (localhost [127.0.0.1])
-	by disroot.org (Postfix) with ESMTP id C5DAD801E8;
-	Mon, 09 Nov 2026 01:25:20 +0100 (CET)
-X-Virus-Scanned: SPAM Filter at disroot.org
-Received: from layka.disroot.org ([127.0.0.1])
- by localhost (disroot.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id pxHM6y1VbPO7; Mon,  9 Nov 2026 01:25:19 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=disroot.org; s=mail;
-	t=1794183919; bh=SU7bV/bDV5LUHX/6F5LFMZQ2BNoa7NQsk7TZTWIaVro=;
-	h=From:To:Cc:Subject:Date;
-	b=GHSUxRgrG8DoqISUEqgZOyEpcj2N+JejXRL34M+uIVC/QGz9UgoiaAdrtwe9tow87
-	 +s4wtVAxMQyicCpmH+M8HVqcjf9DrIYMgov6xnZIilKe/ZCKxmI8P6JZ0ttm8RiEyL
-	 gJRR7Qh7iPGAuylEAyPAF4iuvtRZAs/6cK67laOHTDw6px4A9XHe/+Bc+jEses2jct
-	 2G4w2cE3we7upBsqWTM5R+vDw49EJWy2PTJv/N9R+Q8zOftfhdGypG/HFuqXzGwwPv
-	 J/t8T81yld41W1u/04WSLjAW6G5pisTA/CiA815M7tfgXlzXltTCr8zaj8t7pbvm9j
-	 0EbxuHtXMuf6Q==
-From: Florian Maurer <fmaurer@disroot.org>
-To: Felix Fietkau <nbd@nbd.name>,
-	Lorenzo Bianconi <lorenzo@kernel.org>
-Cc: Florian Maurer <fmaurer@disroot.org>,
-	Ryder Lee <ryder.lee@mediatek.com>,
-	Shayne Chen <shayne.chen@mediatek.com>,
-	Sean Wang <sean.wang@mediatek.com>,
-	Matteo Croce <technoboy85@gmail.com>,
-	linux-wireless@vger.kernel.org,
-	linux-mediatek@lists.infradead.org
-Subject: [BUG] wifi: mt76: mt7996: full chip reset never recovers with NPU offload (AN7581)
-Date: Mon,  9 Nov 2026 00:24:49 +0000
-Message-ID: <20261109002500.3564358-1-fmaurer@disroot.org>
+	id 1xQDut-0000000H0sR-1gFJ;
+	Mon, 09 Nov 2026 01:11:24 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1794186680; cv=none; 
+	d=zohomail.com; s=zohoarc; 
+	b=KP965G8gNTMXnOxdmYqv3VegVDyYxZjTMCfqdCMlwasTJEwk082tTk6NmHHdc9KnNzik3brm/jt9gb9ttHgClIG3pK7Ccq2ZWPRfqtuQMtM0AmTpPB53xvLpZPzWtVb6Sdd+YHDr7wtYpb4qtrdkV4Z97rBsbg3ahTG/pxk33xo=
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.com; s=zohoarc; 
+	t=1794186680; h=Content-Type:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:Subject:Subject:To:To:Message-Id:Reply-To; 
+	bh=Frm8Ld1QHHVrzUA5GQZVw3rqE7QJ68oePOVoIDDUukc=; 
+	b=KBlG6TI5MZffl2bZP/tJRVMEsmjF2moYAiNOpxXdtvC7uZG4H37fKKljMEoKIK+THaskaVVZ5igeYViASIgvFbxNS9+RBTMhtxB6E5tXqLZPWv5o8+nEEPl3EXXFfJcY6ozSv9cEQSbpf8gvrA/aGrx8o1A90xaaTcrIqceLPEs=
+ARC-Authentication-Results: i=1; mx.zohomail.com;
+	dkim=pass  header.i=collabora.com;
+	spf=pass  smtp.mailfrom=sebastian.reichel@collabora.com;
+	dmarc=pass header.from=<sebastian.reichel@collabora.com>
+DKIM-Signature: a=rsa-sha256; b=b+Id5PbCX3AVSwyxjoQuhreG3Ca6WHoor5xr6ydh4NCvgX1mXdZzCKuEK52ttJARkqW2zhYXgo9Gd1CG1gXWigvMer+/oxX5eGSzvwi9egn1/B81yQ2J8cyb4k+lIgEsJEk8nW0vCeNjijWfClExtiFNtLlglVf9WVeXU+frkh0=; c=relaxed/relaxed; s=zohomail; d=collabora.com; v=1; bh=Frm8Ld1QHHVrzUA5GQZVw3rqE7QJ68oePOVoIDDUukc=; h=Content-Description:Content-ID:Content-Type:Content-Transfer-Encoding:Cc:Date:From:In-Reply-To:List-Subscribe:List-Post:List-Owner:List-Id:List-Archive:List-Help:List-Unsubscribe:MIME-Version:Message-ID:Resent-Sender:Resent-Cc:Resent-Date:Resent-To:Reply-To:Resent-Message-ID:Resent-From:Sender:Subject:To:Date:From:Message-Id:Reply-To:Subject:To:Cc;
+Received: by smtp.zohomail.com with SMTPS id 1794186679307914.4749060070615;
+	Sun, 8 Nov 2026 17:11:19 -0800 (PST)
+Received: by venus (Postfix, from userid 1000)
+	id D5A5F1808E6; Mon, 09 Nov 2026 02:11:18 +0100 (CET)
+Date: Mon, 9 Nov 2026 02:11:18 +0100
+From: Sebastian Reichel <sebastian.reichel@collabora.com>
+To: hyunjungg <hj351016@gmail.com>
+Cc: linux-pm@vger.kernel.org, Chen-Yu Tsai <wens@kernel.org>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, linux-arm-kernel@lists.infradead.org, 
+	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH 0/3] power: supply: fix work-vs-devres teardown
+ use-after-free
+Message-ID: <avEdYFDUHIj6mq0Z@venus>
+References: <20261106160057.2754689-1-hj351016@gmail.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="3sgy7kbr5gvb4f26"
+Content-Disposition: inline
+In-Reply-To: <20261106160057.2754689-1-hj351016@gmail.com>
+X-Zoho-Virus-Status: 1
+X-Zoho-AV-Stamp: zmail-av-0.2.13.1.5.4/294.182.33
+X-ZohoMailClient: External
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261108_162524_985185_D0EB8D32 
-X-CRM114-Status: GOOD (  14.88  )
+X-CRM114-CacheID: sfid-20261108_171123_521305_0EF7239A 
+X-CRM114-Status: GOOD (  14.82  )
 X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -75,126 +78,86 @@ List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-10.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,
-	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,
-	SPF_HELO_NONE,SPF_PASS autolearn=ham autolearn_force=no version=4.0.1
+X-Spam-Status: No, score=-3.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=no
+	autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Hi Felix, Lorenzo,
 
-on a Gemtek W1700K (Airoha AN7581, MT7996 with hif2), a full chip
-reset does not recover when the NPU offload is enabled. The firmware
-does not load again, and the driver keeps resetting until the board is
-power cycled. This also happens after a real firmware assert. With the
-NPU offload disabled, the same reset recovers. This is the recovery
-problem from the cover letter of the NPU rx fixes [1].
+--3sgy7kbr5gvb4f26
+Content-Type: text/plain; protected-headers=v1; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+Subject: Re: [PATCH 0/3] power: supply: fix work-vs-devres teardown
+ use-after-free
+MIME-Version: 1.0
 
-Triggers, both via /sys/kernel/debug/ieee80211/phyN/mt76/sys_recovery:
+Hi,
 
-  0,8  sets the WM/WA watchdog state and runs the full reset
-  0,9  makes the WM firmware assert; the next MCU command times out,
-       and the timeout starts the full reset
+On Sat, Nov 07, 2026 at 01:00:54AM +0900, hyunjungg wrote:
+> From: Hyunjung Ko <hj351016@gmail.com>
+>=20
+> Three power-supply drivers register a poll/detect/charger-detect work for
+> device-managed cancellation (devm_[delayed_]work_autocancel()) in their p=
+robe
+> *before* they register the power_supply via devm_power_supply_register().=
+ devres
+> unwinds in reverse order, so on unbind the power_supply device is release=
+d first
+> and the work is cancelled last. The work handlers call power_supply_chang=
+ed()
+> and dereference the power_supply, so a work instance still pending/runnin=
+g in
+> that window touches the already-freed power_supply device -> use-after-fr=
+ee.
+>=20
+> Each patch moves the devm work-cancel registration to *after*
+> devm_power_supply_register() (and before the IRQ/poll that arms the work)=
+, so
+> teardown drains the work before the power_supply is freed. No functional =
+change
+> otherwise. The relocated devm_[delayed_]work_autocancel() still runs its =
+INIT
+> before the work's first queue site, so no queue-before-INIT window is add=
+ed.
+>=20
+> This is the same class as the recently-applied cimax2/extcon work-vs-devr=
+es
+> fixes. Found by static analysis / code review; none is reproduced on hard=
+ware
+> (each needs its charger/PMIC/gauge chip and is not QEMU-reproducible) -- =
+treat
+> accordingly.
 
-Results:
+Please don not send direct AI output. You need to drop useless
+comments and trim down / rewrite commit messages to a sensible
+length. Instead of huge amount of spam.
 
-  trigger  mt76 build                       runs  result
-  0,8      NPU on, npu.c as in 467ae2e3     1     no recovery (idle)
-  0,8      NPU on, with the fixes from [1]  3     no recovery (idle and rx load)
-  0,8      NPU off                          3     recovered (2 idle, 1 rx load)
-  0,9      NPU on, with the fixes from [1]  1     no recovery (idle)
-  0,9      NPU off                          1     recovered (idle)
+Greetings,
 
-Setup: OpenWrt main, kernel 6.18.55, openwrt/mt76 467ae2e3, MT7996
-firmware from linux-firmware (WM build time 20260311120504). All
-builds also carry two local mt7996 mesh patches [2][3]. The runs with
-the fixes from [1] used the flashed image. For the other two rows I
-rebuilt mt76 from the same tree, once without the patches from [1] and
-once without CONFIG_MT76_NPU/CONFIG_MT7996_NPU, and swapped the three
-modules at runtime, so the phy number changes between runs. rx load
-was iperf3 over 5 GHz mesh at about 27 Mbit/s. The run without the
-fixes from [1] was idle only, because without them the NPU rx path
-crashes the board under load.
+-- Sebastian
 
-NPU on, npu.c as in 467ae2e3 (console from ramoops):
+--3sgy7kbr5gvb4f26
+Content-Type: application/pgp-signature; name="signature.asc"
 
-  [212226.959322] mt7996e 0000:01:00.0: phy2 indicated firmware crash, attempting recovery
-  [212227.465594] pcieport 0000:00:00.0: AER: Multiple Uncorrectable (Non-Fatal) error message received from 0000:00:00.0
-  [212227.476337] pcieport 0000:00:00.0: PCIe Bus Error: severity=Uncorrectable (Non-Fatal), type=Transaction Layer, (Requester ID)
-  [212227.487867] pcieport 0000:00:00.0:   device [14c3:6899] error status/mask=00004000/00400000
-  [212227.496358] pcieport 0000:00:00.0:    [14] CmpltTO                (First)
-  [212227.503353] mt7996e 0000:01:00.0: AER: can't recover (no error_detected callback)
-  [212227.511125] pcieport 0000:00:00.0: AER: device recovery failed
-  (the same AER block 5 more times within 0.3 s)
-  [212229.496692] mt7996e 0000:01:00.0: Timeout for initializing firmware
-  [212231.486662] mt7996e 0000:01:00.0: Timeout for initializing firmware
-  [212231.493143] mt7996e 0000:01:00.0: Firmware is not ready for download
-  (the same for each of the 10 attempts, with more CmpltTO in between)
-  [212268.609326] mt7996e 0000:01:00.0: chip full reset failed
-  [212268.614878] ieee80211 phy2: Hardware restart was requested
-  [212270.656294] mt7996e 0000:01:00.0: Message 00130022 (seq 1) timeout
+-----BEGIN PGP SIGNATURE-----
 
-The MCU timeout queues the next full reset. This cycle repeated every
-43 s until I cut the power after 7 minutes (9 times "chip full reset
-failed"). The kernel kept running, but wifi never came back. The 0,8
-runs with the fixes from [1] showed the same AER errors and firmware
-timeouts; I have no complete log of those.
+iQIzBAABCgAdFiEE72YNB0Y/i3JqeVQT2O7X88g7+poFAmrxHbIACgkQ2O7X88g7
++poe5g/+ND+IudgGMavaYHWAq7LCDjhvxcm1V3Vn7sBhoNzaT22/LDNlL7a5VbPa
+TX00osbNQCELsH3CwfnCx46PmOAqWvQiLMz1yoTTMBxM5XSi4wRCEnUmvS0QJRP/
+KhDAeGaR+0t7FpgtTjKlM2AJP9NgjVB2NK4F5rlcdlKBUAyfHXGfp5kxVh2hv0ns
+Yo3wFquqlYxzXbHKVGUH9OsE/f3vuiSLhZPZh/UbUFGzzKzn+SmRDx2edMCTXYSP
+zNCDXhwqfclvwErrnEtCXxCYtAY9atPJr6FtSVz9SqYfI72n9Ms1QSGUikvv2fZv
+Iy2qmGFXqEuzIz5GboSvaFZN1+QsDfXXMe1+IlcutSsFOPi92uymSLFfoItLnw0b
+vOfSQWg2WmaPa1RfjwJhIaqS4UuGj9GXL9+GoIUNPw6coaA45Pqv+EDwY/j6mYwl
+0wsb8WUXnsZmcbIAZ4Rau5nsQyHU0FVQKajapECVLELodWIbKpV8nbijUMrUKlHf
+hbFnaJPST8I42E+tD3HG1W0n72viZ5smTUsBwh6P322430iUnGtAFmnI0Y7FJz9f
+CwHxdD0KEmiFJWjcGwUv+rhQVdhisCdv0b6wRS4YGrHHA/cypYsjbNxW9RyQvEQp
+1kvT+ScdETMReV5gctHUFd010wS0NcoLUc3syx1+ZPTYEQvfKH0=
+=yLSK
+-----END PGP SIGNATURE-----
 
-The 0,9 run with NPU on starts with the MCU timeout and then follows
-the same cycle, 22 times in 16 minutes:
-
-  [  404.163489] mt7996e 0000:01:00.0: Message 00130022 (seq 2) timeout
-  [  404.731864] pcieport 0000:00:00.0:    [14] CmpltTO                (First)
-  [  404.738781] mt7996e 0000:01:00.0: AER: can't recover (no error_detected callback)
-  ...
-  [  445.955921] mt7996e 0000:01:00.0: chip full reset failed
-
-NPU off, one of the idle runs:
-
-  [206493.052470] mt7996e 0000:01:00.0: phy1 indicated firmware crash, attempting recovery
-  [206493.154220] pcieport 0000:00:00.0:    [14] CmpltTO                (First)
-  [206493.161225] mt7996e 0000:01:00.0: AER: can't recover (no error_detected callback)
-  [206493.168957] pcieport 0000:00:00.0: AER: device recovery failed
-  [206493.175076] mt7996e 0000:01:00.0: HW/SW Version: 0x8a108a10, Build Time: 20260311120419a
-  [206493.198727] mt7996e 0000:01:00.0: WM Firmware Version: ____000000, Build Time: 20260311120504
-  [206493.237451] mt7996e 0000:01:00.0: DSP Firmware Version: ____000000, Build Time: 20260311120415
-  [206493.256034] mt7996e 0000:01:00.0: WA Firmware Version: ____000000, Build Time: 20260311120325
-  [206512.810444] ieee80211 phy1: Hardware restart was requested
-
-The other two NPU-off 0,8 runs had no CmpltTO; the NPU-off 0,9 run had
-one and recovered the same way. In all four the mesh peers stayed up;
-under load, iperf3 stopped for about 15 s. So a completion
-timeout during the reset also happens without the NPU and is harmless
-there. With the NPU on, the firmware does not load after it.
-
-From the code (467ae2e3), not tested: the L1 path in
-mt7996_mac_reset_work() calls mt7996_npu_hw_stop() before the reset
-and __mt7996_npu_hw_init() after it. The full reset path does neither.
-mt7996_mac_restart() calls mt7996_dma_reset(dev, true), which runs
-mt7996_wfsys_reset() while the NPU is still active and calls
-mt76_npu_disable_irqs() only afterwards. WED gets
-mtk_wed_device_dma_reset() at that point. Does the full reset need to
-stop the NPU before the wfsys reset, like the L1 path?
-
-Matteo Croce reported the same CmpltTO and "can't recover" lines from
-mt7996_mac_reset_work on a BPI-R4, with WED instead of the NPU.
-wed_enable=0 made it go away for him [4].
-
-Side note: `echo 0,1` (L1) never printed "L1 SER recovery start" on
-this board, with or without the NPU, so the firmware does not seem to
-start an L1 recovery from that trigger alone.
-
-Not tested: MT7992, a kernel.org tree. I can run more tests or debug
-patches on this board.
-
-[1] https://lore.kernel.org/linux-wireless/cover.1793927986.git.fmaurer@disroot.org/
-[2] https://github.com/openwrt/mt76/pull/1132
-    ("wifi: mt76: mt7996: use own MAC as BSS BSSID for mesh interfaces")
-[3] https://github.com/openwrt/mt76/pull/1170
-    ("wifi: mt76: mt7996: let mac80211 de-aggregate mesh A-MSDUs")
-[4] https://lore.kernel.org/linux-wireless/afefde93-1f6a-4b3b-976b-87105615f931@gmail.com/
-
-Thanks,
-Florian
+--3sgy7kbr5gvb4f26--
 
