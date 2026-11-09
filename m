@@ -2,96 +2,100 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 181F2606A326
-	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Nov 2026 12:08:22 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 581E4606A331
+	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Nov 2026 12:14:52 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=Y2YSnG/X;
-	dkim=pass (1024-bit key) header.d=chromium.org header.i=@chromium.org header.a=rsa-sha256 header.s=google header.b=VQVB+vHH
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=vQML/gAw;
+	dkim=pass (2048-bit key) header.d=baylibre.com header.i=@baylibre.com header.a=rsa-sha256 header.s=google header.b=P2eEKtrg
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
 	List-Unsubscribe-Post:List-Owner;
-	bh=q8x7zVGGkfSdWA+EkndmqEqSgl70Bo/p7FSSNehigJg=; b=Y2YSnG/XN7W4sMduvnoCjOwJH2
-	xdSNk+P9SlTORXTQd9pzmBx1IoUP0aTpXlIq8F6ISvU0CSEn9C9OSLARfhERJTkJ/2gAOJtK4lnXz
-	+aU44V4R1C+WeM861RF0mP5WWBBTTsw9rcGpb1VQY1sAU382MlzOtOPJ4PtSP1nybLat37mEMtEzI
-	qELbsGIqx6HhEvvJNo0JcAQtnlWGhK2YBGFU1JiM4xBPrzB6TtXSkgrHcj/J12Ecf2KAqGnbNWTt5
-	RBLlEVFegx9AEeL16VZJvWZHqydV3PmASDxOFmDnC4by7a+rCzCjqjjocN5bKiy5o23hyJXtb4hgV
-	kV2LHYWg==;
+	bh=2+V7YIy+ugL63jgP2uxhOpyvZ08G/pDMPRbZ7zomEng=; b=vQML/gAwgIQTF/tnHRvF60eNPx
+	X9Z5ccoziDyvbAvuVTJqdWeHLox9Q3HM7ZCFkUjBLeXvT0ybIS63vI4dj76SBBGvDuE15CBM+hMtC
+	u6H6GbBe5KPdPXo8J+8FRcURItorAV2Z3zUPijVDWung+OZTIpmJTcTH5yOXDBOFTi+hHyRSUX8U8
+	R4N1FFCz91FRFzaROPl78Tvw/evkioAhZJfj5sXCUA/yb3so+T3I+Sc7IlTqDfB5J917MAp+aFfY6
+	oI0me8ZU7goEVMbMvxpwlu1wZBRIfBjmX5cgBh/P8BuENCQnNrKaxDJwNpjo67W2lhvld0gRUO7I2
+	uJZWqs0g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xQOAf-00000000cxd-3MI6;
-	Mon, 09 Nov 2026 12:08:21 +0000
-Received: from mail-dl1-x122a.google.com ([2607:f8b0:4864:20::122a])
+	id 1xQOGy-00000000dvA-0EBe;
+	Mon, 09 Nov 2026 12:14:52 +0000
+Received: from mail-wr1-x42b.google.com ([2a00:1450:4864:20::42b])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xQOAd-00000000cwm-2QaW
+	id 1xQOGv-00000000dtT-0zWm
 	for linux-mediatek@lists.infradead.org;
-	Mon, 09 Nov 2026 12:08:21 +0000
-Received: by mail-dl1-x122a.google.com with SMTP id a92af1059eb24-15ea896ddc8so1438100c88.0
-        for <linux-mediatek@lists.infradead.org>; Mon, 09 Nov 2026 04:08:19 -0800 (PST)
+	Mon, 09 Nov 2026 12:14:50 +0000
+Received: by mail-wr1-x42b.google.com with SMTP id ffacd0b85a97d-49318428d98so411515f8f.1
+        for <linux-mediatek@lists.infradead.org>; Mon, 09 Nov 2026 04:14:48 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1794226098; x=1794830898; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
-        bh=q8x7zVGGkfSdWA+EkndmqEqSgl70Bo/p7FSSNehigJg=;
-        b=VQVB+vHHRYO/c6ADphSOberJeb/AcxVIhkj7/l237BInDdsert5zos9Qtj0tW6wlEo
-         xRqlwST/rZmzJ5cZRk4a8PdtIh932Y7PGZGjP7UmLNqiyM07GziJUtFC4w/N/AyF2+No
-         eGvdxj3vbigvByXqCHaGqKSEFa22WP3Bk/IxI=
+        d=baylibre.com; s=google; t=1794226487; x=1794831287; darn=lists.infradead.org;
+        h=cc:to:message-id:content-transfer-encoding:content-type
+         :mime-version:subject:date:from:from:to:cc:subject:date:message-id
+         :reply-to:content-type;
+        bh=2+V7YIy+ugL63jgP2uxhOpyvZ08G/pDMPRbZ7zomEng=;
+        b=P2eEKtrgSMiwKgeZuqQjceG+4r82JQTdM9qAtoisgJIMgp7CswsdIuRPGm19DMTifd
+         CZNVGgGRzzw3lrpza6LQQLwfOkp7wqoNXPXjBWwjdfTS35mVJ/lCufstKirNOlSsTEq+
+         PhVEPHgJYv70B743u0uJ6E48oWVVeYYTjN96NCWJ3NPFGZJmYiif/MZ+Py+D3h8hDD4b
+         cip2I3kB8ieHvR56z0GHBABUpaurTJRYjCifpAoFVCAd0M0lRxpQT9aMCacVonmYdcL3
+         KCzvjeMcdiR+uJ/Rk4n5Yno7jKrh+olTN+eVjlN82DKcq0id6+4XrrBGLdQPbxpm1jwV
+         m/Fw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1794226098; x=1794830898;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to:content-type;
-        bh=q8x7zVGGkfSdWA+EkndmqEqSgl70Bo/p7FSSNehigJg=;
-        b=SFHt343sLxvR79DYGVU6QyRNsMaP/VpZXQFlnAD+UBkxpNU0Xt4xftgKcCj9X0Uciu
-         XVBeq6izk87ujjpclAXpfrthBEod5AJ2Y/1834DPsPaLnBikH6IYuvNu8TOy+joew4lV
-         /MMYjwS3nB2r1LowQNTJ3nbwtkx80+pYp6Xwtn3gjAXn93QdAi1VadbAjlCHmHS+pbkE
-         7+gYl7mhA4K9ryyNiMgFT25IDOHjY+yzqAkkPtDBx1zHsG6yPwVqvl/IWxmncTR4qt5h
-         xEFLPtsSWFPehxlLw8F9CMbY8JL7NxHcMsxCmQxDIpQndS6Lw1Wp6spyVAETEKi6M9ne
-         0C3w==
-X-Forwarded-Encrypted: i=1; AL+hErGgo9aqWC43xXLjuoZsrmqrFhKH26ZprOwnJ1UwcXzrCzrwWGjICf2ep5oURDe0w+4ojAcUuv+JE6ePi/iIjQ==@lists.infradead.org
-X-Gm-Message-State: APuU4Z8EM0ictFqmBbAUoN8ZO6LFfSMvdfCO3zFmUHpLZgn4aG+ZbpUv
-	K95OovOSe/gnG54BkRX+HWM6yn6zTnqF3L+SPKpdzKkTtyO6q6zF8OxN4Ba5wr4LuDpUcyDTfz6
-	K/L5xlIg4
-X-Gm-Gg: AYBFou0hg8vAmyJpS33WxygWbyZ688TNw5dgej56QAH8OJ9tmekTQtLKvqqFXvOjhDx
-	EYqM/z97eOi1CznPaNTyxi872Ezv6uX+dR8S0OjnK2N3wK4S3tEXS9PV7pJbGTlUX168ZBv0mt/
-	WJe2bpHmrEPjm7+7f2X9XKgXT52/v1gKDGIg1icyUPMqLQwfiYRFAFmj49h2ZqOWOY/tiFDv75h
-	fW/8Vblp1l8FfRlrLC6ygYZprUChESd9748FvFNLY43GmoYSZmWy19FYtHjvjSRfqIw6rQb2NFZ
-	R0NMlwfkshrIz51CzKfgPTy2l9G3upUakePJyjd+QGkkxTg/jDFozuYzVhDVHkS3UieeqUOL6tA
-	+7c1l7mZUV0I2U0EizLMoAOnLhMeHZHGY9ut9Ec3e48rmco0TtWRPW2y7+HEsEGKaOqCwaHMwIy
-	1zLXbtT4aCOSSjL1GPJ+ZIwiOvYxJCYD+5apVbC3mwwVXY7a3Pi3APT7NeVfvF0muCi5M/tL2Gw
-	EpJBDkfhgLvYHO8700N761f3bPaknCOy41yApKiKqswPZTLgZDtImRrNVWEucV8tmrO0W5PnDvh
-	iQyxWjTHrUuJt+slWwLBnrbV2bsY55ordt21ZGDF3FSVDJmm+7f8U+wM9OStWzBLNAamCmcqJGl
-	Ubami/w==
-X-Received: by 2002:a05:701b:270c:b0:14a:8cff:fbb8 with SMTP id a92af1059eb24-1b39fea8a78mr6100575c88.28.1794226098355;
-        Mon, 09 Nov 2026 04:08:18 -0800 (PST)
-Received: from localhost ([2a00:79e0:203d:7:24d0:a2cf:66c5:ef86])
-        by smtp.gmail.com with UTF8SMTPSA id a92af1059eb24-1b3755e936bsm16025308c88.6.2026.11.09.04.08.15
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 09 Nov 2026 04:08:17 -0800 (PST)
-From: Chen-Yu Tsai <wenst@chromium.org>
-To: Daniel Lezcano <daniel.lezcano@kernel.org>,
-	Thomas Gleixner <tglx@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: Chen-Yu Tsai <wenst@chromium.org>,
-	Luca Leonardo Scorcia <l.scorcia@gmail.com>,
-	Ryan Brue <ryanbrue.dev@gmail.com>,
-	linux-mediatek@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-kernel@vger.kernel.org
-Subject: [PATCH] clocksource/drivers/timer-mediatek: Don't override the arch timer sched_clock
-Date: Mon,  9 Nov 2026 20:07:56 +0800
-Message-ID: <20261109120757.847266-1-wenst@chromium.org>
-X-Mailer: git-send-email 2.56.0.455.g6c5a503b38-goog
+        d=1e100.net; s=20260707; t=1794226487; x=1794831287;
+        h=cc:to:message-id:content-transfer-encoding:content-type
+         :mime-version:subject:date:from:x-gm-gg:x-gm-message-state:from:to
+         :cc:subject:date:message-id:reply-to:content-type;
+        bh=2+V7YIy+ugL63jgP2uxhOpyvZ08G/pDMPRbZ7zomEng=;
+        b=rLtfdTyY1+EQRynfgrRBazUhqvxLt5Lhw0evjTbGBDVroZ04F3luGjw26URFhyqsUP
+         5Q1kBgoxwDM7q14e0h/hsIEk2lCZHhYP485U1L/pyhCpmZp8sJjiKgAoIP6/0yDbYjQJ
+         inqhOU+jQAR7umC2xIgudJcMvgvC27MKZrncPO43X6Qq1dpEOt/foNEWbQsSCx1ZJpdQ
+         4QOK/d5VlNyg8E40AapMmjxoInCXKqecxgbUn2xf5zq6Y0V8fqdXnUUYUyAd5oXdv6OE
+         vFHuJf9xhVu9tDMGU3xFLloUcWZcOFZ0NzYl7PrsIS9Z95Jc6eNcDbr+ygZwbfo1kbD9
+         Q0Ww==
+X-Forwarded-Encrypted: i=1; AL+hErH5okBH1Bct5MxuIK1p4aPCq4YwUZtsSGv+6M+qajhY6yfB35TixR9TeL1spExSyiEgjnhAFTfeZH8xcHrbeg==@lists.infradead.org
+X-Gm-Message-State: APuU4Z/wxiYhtY4E6aLSuMDE6hGm021ouPZ4DLhdnvB0S6ZmNQHUAkzU
+	oo4J/bbMLV0dlWmwR1ozNXxLxR7GleKdYbmuDWMbra++i1TF7kkKM1oq3DkEYoYtB7M=
+X-Gm-Gg: AYBFou1CqfoCpNyUWNJMEYU/UqEVaaLZezDMYlCinzFZ6zsAUUFVynjlfEa8RcV3tle
+	Y58dSog7AyutFEppOjdC1JvxxfjuIGN4L/80r/2ZUI69L+15IxmRmLaICYg17lyp2ZIwMFQTgsr
+	G+Yb/EvI//yVR7lId58gg9htI+jyaGHoqjZpV0mfU+43VDYxia7o8E9C1iOQDtSgXk67GtJc3fB
+	nGJd9KyF9bHNt5Q3iNSrT65wYDWqBsUG1ZZ1A0r8HsY+YZYzwXl79FNcnOFHUY3WcAjDBM5i+C9
+	lyQ/Q18DU00VxN64VJaROeZdiEUjCJF5Vcqi7pBWjEAtuEVrUQvl6zlytN6j8QXQN8zV2onBKuB
+	pT1P8DjkNJXqo3JhRUKZIoFd3W+Lo8oIcaTwIi0bv4i5LU1WcuffF2g3irJER0scMHwnkzAnsqK
+	F5tf9szE6Mp7dQwrAXs2bfov9jbNu3R9cZ2BynCbvSXiDT3uSQYrd6nfZHnSRsgeXz82GTWQqlQ
+	4JkJL/BINYF7ZurOT4R7dHmn3Wfdb2f5aQdd/LpRtlmldWU6rKPW844w7BejxzHUpPEOQqa/qiB
+	GNaXbNPvlvrdcZ/YuSxM+/YfuJoRheJGbNJoHh50+SxsN+Uh/XXqXMK2
+X-Received: by 2002:a05:6000:3c5:b0:493:2376:81b7 with SMTP id ffacd0b85a97d-49588ecc152mr7398751f8f.27.1794226486849;
+        Mon, 09 Nov 2026 04:14:46 -0800 (PST)
+Received: from [127.0.1.1] (82-230-44-19.subs.proxad.net. [82.230.44.19])
+        by smtp.googlemail.com with ESMTPSA id ffacd0b85a97d-49596f9ab09sm9313946f8f.28.2026.11.09.04.14.45
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 09 Nov 2026 04:14:46 -0800 (PST)
+From: Alexandre Mergnat <amergnat@baylibre.com>
+Date: Mon, 09 Nov 2026 12:14:32 +0000
+Subject: [PATCH] regulator: mt6363: Serialize BUCK_TOP key access
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Message-Id: <20261109-rgp-91-mt6363-key-lock-v1-1-ea3b03a76997@baylibre.com>
+X-B4-Tracking: v=1; b=H4sIACe58WoC/y2O2Q7CIBREf6XhWRKWAsVfMX1gua1YuwjUaJr+u
+ 2h9PMnMmdlQghggoXO1oQjPkMI8FaCnCrmrmXrAwRdGjDBJKRE49gvWFI9ZcsnxAG98n92ApbJ
+ Ca+ZBmAaV8hKhC6+f+NIenFZ7A5e/tn8iwmMti/mIIWsSYDePY8jnSmlSc9443tRMesWc6JTzu
+ ibMWW3KHc6MMp1A7b5/AOf7X2HGAAAA
+X-Change-ID: 20261105-rgp-91-mt6363-key-lock-67b5992de5a8
+To: Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, 
+ Alexandre Mergnat <amergnat@baylibre.com>
+X-Mailer: b4 0.16.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261109_040819_782375_9DEE6DC0 
-X-CRM114-Status: GOOD (  20.57  )
+X-CRM114-CacheID: sfid-20261109_041449_364494_A11244DE 
+X-CRM114-Status: GOOD (  16.08  )
 X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -111,99 +115,129 @@ X-Spam-Status: No, score=-18.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Since the driver was converted to a platform driver, the GPT probes
-late, after the architected timer has registered itself as sched_clock.
-sched_clock_register() only refuses counters with a lower rate, and
-sched_clock has no notion of priority, so the 32-bit GPT counter, which
-runs at the same 13 MHz as the arch timer on MT8173, replaces the 56-bit
-arch timer counter as sched_clock:
+The bits that select the FAST mode of the bucks only accept writes
+while the BUCK_TOP key is unlocked. mt6363_regulator_set_mode() unlocks
+the key, updates the bit and locks the key again, but the regulator
+core only locks the buck being changed. When two bucks change mode at
+the same time, one of them can lock the key between the unlock and
+the mode write of the other. The PMIC then ignores that write, and
+regulator_set_mode() returns 0 while the buck stays in its previous
+mode. mt6363_va15_set_voltage_sel() unlocks and locks the same key,
+so it can also lock it during a buck mode change.
 
-  sched_clock: 56 bits at 13MHz, resolution 76ns, wraps every 4398046511101ns
-  ...
-  sched_clock: 32 bits at 13MHz, resolution 76ns, wraps every 165191050201ns
+Hold a mutex from each unlock of the key to its relock, in the FAST bit
+writes and in the VA15 voltage setter.
 
-Before the conversion, both drivers used TIMER_OF_DECLARE and
-timer-mediatek.o is linked before arm_arch_timer.o, so the arch timer
-registered last and won.
-
-The narrower GPT counter wraps more often and is slower to read over
-MMIO than the arch timer system register. Doing the switch at runtime
-also runs enable_sched_clock_irqtime(), which may sleep, with interrupts
-disabled, causing a splat.
-
-Other drivers worked around the same problem in the same way, see
-
-  commit 37b8b003c483 ("clocksource/drivers/sun4i-timer: Only register a sched_clock on sun4i and sun5i")
-  commit 10720e120e2b ("clocksource/drivers/imx-tpm: Exclude sched clock for ARM64")
-
-Only register the GPT as sched_clock if the ARM architected timer is not
-present. This currently includes MT6572, MT6580, MT6582, and MT6592, as
-seen in their respective .dtsi files. This follows the example of
-sun4i-timer.
-
-The analysis of the boot log and git history, and drafting of this
-change, were done with an AI agent. The agent originally proposed using
-arch_timer_get_rate(), which was replaced by the author.
-
-Manually tested on a MT8173 Hana (Telesu).
-
-Fixes: 7a097aba7255 ("clocksource/drivers/timer-mediatek: Convert to OF probing")
-Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
+Fixes: 3c36965df808 ("regulator: Add support for MediaTek MT6363 SPMI PMIC Regulators")
+Signed-off-by: Alexandre Mergnat <amergnat@baylibre.com>
 ---
+The race was reproduced on hardware.
 
-For the ARMv7 SoCs such as the MT2701, MT8127, and MT8135, the firmware
-has to correctly set the arch timer frequency, as their device trees do
-not have the clock-frequency property.
+The new mutex is static because probe already stores per-device state
+in the static regulator table, so the driver only supports one PMIC.
+A follow-up series could make that table constant and move this state,
+with the mutex, into per-device data.
 
-OTOH we could let sched_clock_register() reject replacing the current
-counter if the new one runs at the same rate. But that would be a
-separate discussion: if more drivers are converted to standard platform
-drivers, then the probe order is no longer easily known like before
-by the link order.
-
-The splat is a separate issue that I already reported [1].
-
-[1] https://lore.kernel.org/all/20261109095036.GA722431@google.com/
+This patch applies to the for-7.4 branch of the regulator tree, which
+has the earlier fixes to this driver.
 ---
- drivers/clocksource/timer-mediatek.c | 17 +++++++++++++++--
- 1 file changed, 15 insertions(+), 2 deletions(-)
+ drivers/regulator/mt6363-regulator.c | 41 ++++++++++++++++++++++++------------
+ 1 file changed, 27 insertions(+), 14 deletions(-)
 
-diff --git a/drivers/clocksource/timer-mediatek.c b/drivers/clocksource/timer-mediatek.c
-index 1b2cbcc2795a..ef67cc783635 100644
---- a/drivers/clocksource/timer-mediatek.c
-+++ b/drivers/clocksource/timer-mediatek.c
-@@ -15,6 +15,7 @@
- #include <linux/interrupt.h>
- #include <linux/irqreturn.h>
+diff --git a/drivers/regulator/mt6363-regulator.c b/drivers/regulator/mt6363-regulator.c
+index e6c4bd851fef..8ade92c59864 100644
+--- a/drivers/regulator/mt6363-regulator.c
++++ b/drivers/regulator/mt6363-regulator.c
+@@ -12,6 +12,7 @@
+ #include <linux/irqdomain.h>
+ #include <linux/kernel.h>
  #include <linux/module.h>
-+#include <linux/of.h>
++#include <linux/mutex.h>
+ #include <linux/of.h>
  #include <linux/of_device.h>
- #include <linux/platform_device.h>
- #include <linux/sched_clock.h>
-@@ -334,8 +335,20 @@ static int mtk_gpt_init(struct platform_device *pdev)
- 	clocksource_mmio_init(timer_of_base(&to) + GPT_CNT_REG(TIMER_CLK_SRC),
- 			      node->name, timer_of_rate(&to), 300, 32,
- 			      clocksource_mmio_readl_up);
--	gpt_sched_reg = timer_of_base(&to) + GPT_CNT_REG(TIMER_CLK_SRC);
--	sched_clock_register(mtk_gpt_read_sched_clock, 32, timer_of_rate(&to));
-+
-+	/*
-+	 * sched_clock has no priorities; a counter with the same rate
-+	 * replaces the current one. Only these SoCs lack the ARM architected
-+	 * timer, which is otherwise the better sched_clock.
-+	 */
-+	if (of_machine_is_compatible("mediatek,mt6572") ||
-+	    of_machine_is_compatible("mediatek,mt6580") ||
-+	    of_machine_is_compatible("mediatek,mt6582") ||
-+	    of_machine_is_compatible("mediatek,mt6592")) {
-+		gpt_sched_reg = timer_of_base(&to) + GPT_CNT_REG(TIMER_CLK_SRC);
-+		sched_clock_register(mtk_gpt_read_sched_clock, 32,
-+				     timer_of_rate(&to));
-+	}
+ #include <linux/of_irq.h>
+@@ -114,6 +115,8 @@ struct mt6363_regulator_info {
+ 	int virq;
+ };
  
- 	/* Configure clock event */
- 	mtk_gpt_setup(&to, TIMER_CLK_EVT, GPT_CTRL_OP_REPEAT);
--- 
-2.56.0.455.g6c5a503b38-goog
++static DEFINE_MUTEX(mt6363_buck_top_lock);
++
+ #define MT6363_BUCK(match, vreg, min, max, step, en_reg, lp_reg,	\
+ 		    mset_reg, ocp_intn)					\
+ [MT6363_ID_##vreg] = {							\
+@@ -388,6 +391,23 @@ static int mt6363_buck_unlock(struct regmap *map, bool unlock)
+ 	return regmap_bulk_write(map, MT6363_BUCK_TOP_KEY_PROT_LO, &buf, sizeof(buf));
+ }
+ 
++static int mt6363_buck_top_update_bits(struct regmap *map, unsigned int reg,
++				       unsigned int mask, unsigned int val)
++{
++	int ret;
++
++	guard(mutex)(&mt6363_buck_top_lock);
++
++	ret = mt6363_buck_unlock(map, true);
++	if (ret)
++		return ret;
++
++	ret = regmap_update_bits(map, reg, mask, val);
++
++	mt6363_buck_unlock(map, false);
++	return ret;
++}
++
+ static int mt6363_regulator_set_mode(struct regulator_dev *rdev,
+ 				     unsigned int mode)
+ {
+@@ -400,13 +420,9 @@ static int mt6363_regulator_set_mode(struct regulator_dev *rdev,
+ 
+ 	switch (mode) {
+ 	case REGULATOR_MODE_FAST:
+-		ret = mt6363_buck_unlock(regmap, true);
+-		if (ret)
+-			break;
+-
+-		ret = regmap_set_bits(regmap, info->modeset_reg, info->modeset_mask);
+-
+-		mt6363_buck_unlock(regmap, false);
++		ret = mt6363_buck_top_update_bits(regmap, info->modeset_reg,
++						  info->modeset_mask,
++						  info->modeset_mask);
+ 		break;
+ 	case REGULATOR_MODE_NORMAL:
+ 		cur_mode = mt6363_regulator_get_mode(rdev);
+@@ -416,13 +432,8 @@ static int mt6363_regulator_set_mode(struct regulator_dev *rdev,
+ 		}
+ 
+ 		if (cur_mode == REGULATOR_MODE_FAST) {
+-			ret = mt6363_buck_unlock(regmap, true);
+-			if (ret)
+-				break;
+-
+-			ret = regmap_clear_bits(regmap, info->modeset_reg, info->modeset_mask);
+-
+-			mt6363_buck_unlock(regmap, false);
++			ret = mt6363_buck_top_update_bits(regmap, info->modeset_reg,
++							  info->modeset_mask, 0);
+ 			break;
+ 		} else if (cur_mode == REGULATOR_MODE_IDLE) {
+ 			ret = regmap_clear_bits(regmap, info->lp_mode_reg, info->lp_mode_mask);
+@@ -508,6 +519,8 @@ static int mt6363_va15_set_voltage_sel(struct regulator_dev *rdev, unsigned int
+ 	struct regmap *regmap = rdev->regmap;
+ 	int ret;
+ 
++	guard(mutex)(&mt6363_buck_top_lock);
++
+ 	ret = mt6363_buck_unlock(regmap, true);
+ 	if (ret)
+ 		return ret;
+
+---
+base-commit: 7904338c38426d72c5f7cd9402cb9a20232a7af5
+change-id: 20261105-rgp-91-mt6363-key-lock-67b5992de5a8
+
+Best regards,
+--  
+Alexandre Mergnat <amergnat@baylibre.com>
 
 
