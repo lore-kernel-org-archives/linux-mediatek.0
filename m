@@ -2,113 +2,98 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id A106D606A321
-	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Nov 2026 04:41:37 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 25EC8606A326
+	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Nov 2026 04:42:33 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=HiTFyY3C;
-	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=ga1UBwdp
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=SL+CdrbC;
+	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=tiIbbLf4
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Unsubscribe-Post:
-	List-Owner; bh=WPUgjz9yrlSKqR8e85QEERzjQTMyzYLvqAjjoRM1I1A=; b=HiTFyY3CRoG8TO
-	HBTJEeTGfWCbdD/WSBWVCBhrgV0atkPBjcnkE9KjxkiOJdw6I87j0CRSK6UeT0fAXE5vEd3hv3grz
-	FfmG3YVwKgy07B9HKFqKkkCQ5FqAxEbUeWyykH5HR05Rx0XwqpiUxP7Jg+9I2j8u2zr9BTT5pYFU8
-	pliS6u0MFNG+wAoYB8r+oFtjY2T4ThUgJoM1SvYW1TB72i5KrqlqiWwGK7PsJxyqfl2BEGXwraJiQ
-	COEEDnDlPcZxJ2V63GWZPNTo43zKO5MArP+uW/59omgDvtoUVxMQG7GtAZvcDpIE3j5uWx4yL3jZW
-	5I0DYMxPbTfvpFIY4kEQ==;
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Unsubscribe-Post:List-Owner;
+	bh=SGLgpUjp0TJQzDOLsYW8InDECLAZK5y2ohFSm3d5WTc=; b=SL+CdrbC+xILGXr4NL6g57y4AA
+	yFE9+d7xymMsFljeOKakARdBcST7zHmNiGgsR5oVWGv6DtWq7NQncSSxKT0Ag2QLXKFnbiz4S+2qk
+	lXFR58ctOPrf51Rq1w7plkgD5BdFA6MHq9h8sz867zupAprkVoKHWUW0w8j1r/aZxuPe9nCbQbfRr
+	mSu4Amg+U40PevVWYIAtqGCD5d4rHmChdaM3MUCN/AcLOyWFitYtXHDjrg4iqjkwv4r0b8QvwbfI1
+	bcrjrP1fdK4VD4O06KtvC9ouz4nTACeaF+HyWqMpymDSmgVbSWpU4B2BJxC9tfrz/OrT+OfwzIzty
+	OzAf50Pw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xQHCI-0000000HKZc-1XBj;
-	Mon, 09 Nov 2026 04:41:34 +0000
-Received: from mail-dy1-x1332.google.com ([2607:f8b0:4864:20::1332])
+	id 1xQHDE-0000000HKrg-34pw;
+	Mon, 09 Nov 2026 04:42:32 +0000
+Received: from mail-dy1-x1335.google.com ([2607:f8b0:4864:20::1335])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xQHCE-0000000HKY0-26Zn
+	id 1xQHDB-0000000HKqO-3aCF
 	for linux-mediatek@lists.infradead.org;
-	Mon, 09 Nov 2026 04:41:32 +0000
-Received: by mail-dy1-x1332.google.com with SMTP id 5a478bee46e88-36f8cdd30beso1128604eec.1
-        for <linux-mediatek@lists.infradead.org>; Sun, 08 Nov 2026 20:41:29 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1794199289; cv=none;
-        d=google.com; s=arc-20260327;
-        b=KiR1TTc1CsbdPpT6EBDsDhNdQEWn0qh1fLdsJWAyIiH8fowdq7n9tb1Lt6Cwsre1dO
-         rgqYiRp+nP6TgJkB9s8J4pKAJBY9DKn9d2e3faiZQDNGIHFr2d8HdDu03TJaxUhOEjIz
-         mZi7Lzvug8sZX7RyCWiPO76smfQI/bsxKwsi+kSUrG+nj9bNNzvOgwvRL6Sq6I9zQCgf
-         RTCraJzU4zIUecEWpj1DepqGXCNebupRi7RpT4e+QToByQfXxaE0zT5HnuUUin8ew5HM
-         JfbWZwV0sTOt7PDl7Xay5Ewe8/zwj5zFMvDM1lhSI6HqW7hjeMC5q6/2Vu5HvLI2Ly06
-         3Zaw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20260327;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=WPUgjz9yrlSKqR8e85QEERzjQTMyzYLvqAjjoRM1I1A=;
-        fh=d/KRESxVKonNF5j73K/4Yi0SgFJj6r6Dg2GeGLrIcEs=;
-        b=L1yk+amhBa0sal3F6brSnfZEUx9YzSMGH5xhpD9i92w5wyEMcZ2luLaNkdPHaXvOud
-         K8do+CCZNNGtAPCW9aEYCm/59UVnr0kN1OhjhN5pu9GYWlx4uSa2rcH7HX+pv0DAbYMv
-         +xmCCMdmjPsnZheFtRfIRFZHHitdrNbOnMcUcFqm+O/oUwVWFp2fZjB5n5kXz/ZIrQy1
-         Z8VwsH9F2eYUcZ6Yzrzysp7cdxzY5f6VQeiS5jYv5Qdj5zL0Wsw9AjIUw5ZZfc9BoEG7
-         dMg8aEXFdmFJ+kfAIE10/qVaH4CELfJalcBkwPzVC6iZsKvCslEMwxPwiSuaggegfqT8
-         dtcA==;
-        darn=lists.infradead.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
+	Mon, 09 Nov 2026 04:42:31 +0000
+Received: by mail-dy1-x1335.google.com with SMTP id 5a478bee46e88-36e99cf7bb3so860886eec.0
+        for <linux-mediatek@lists.infradead.org>; Sun, 08 Nov 2026 20:42:29 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20260707; t=1794199289; x=1794804089; darn=lists.infradead.org;
-        h=content-transfer-encoding:content-type:cc:to:subject:message-id
-         :date:from:in-reply-to:references:mime-version:from:to:cc:subject
-         :date:message-id:reply-to:content-type;
-        bh=WPUgjz9yrlSKqR8e85QEERzjQTMyzYLvqAjjoRM1I1A=;
-        b=ga1UBwdpJH/zB/uNi6rjDTS/A05iEgI2mfQXmnLjioCuZZs618rmYaKtReXV+R55r8
-         VONEPWxkp3sPPA9563RgK2uaaeR6GzriuRyMMqjCP9eRnpqhAY6kbOs5mtyiEvo4NvW+
-         bcPXq0pslSc2NpyxEuF53VaEUBGE+CnZqBrAQXIIQpggl0XIUf877wLII3uND6xFJnXp
-         gOGq2voPvnNfoY2CHw22Otgygg4voOVP8rT+tnl0J42pOyrDXS+ZSwN1EFpWiXkAa5Ex
-         UdAHrU/NctMf0ow/3sHisAJkn+KrBXVXD0ZOeZVsR0NRi4D9XeI5Qz5uVKzJh/3uCzYR
-         VUBg==
+        d=gmail.com; s=20260707; t=1794199349; x=1794804149; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
+        bh=SGLgpUjp0TJQzDOLsYW8InDECLAZK5y2ohFSm3d5WTc=;
+        b=tiIbbLf4lMu8A7kpIViP0ULaNLWu3NAqDel/UKN5XrYbXJ5oMkzyg71dfs4JrWEgRa
+         UmqP7/x8MMcDrEgRiHfaocy3KfnEq+t/Qu7InmlrFoUB+DPRaC6xal+689/yphgllJdF
+         CQcQF8LgairFZOuntIprKIJjzbu+EVOmZZcQAG4pQhY4HRgoPk4CwTizNBAoJ5zHIRs3
+         /ZIL45Gld3pnPsjKeQXntH594XUCoVUN86kqMfSyhJSYEf9ys+J3eybObAhqIm1XE30E
+         hWsKVic1+c1gZ16XMENpBDY38VmcCcwJp3s7SKltVRwQciApReNoXcv737OJFTvhiWAJ
+         k49Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1794199289; x=1794804089;
-        h=content-transfer-encoding:content-type:cc:to:subject:message-id
-         :date:from:in-reply-to:references:mime-version:x-gm-gg
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
-         :content-type;
-        bh=WPUgjz9yrlSKqR8e85QEERzjQTMyzYLvqAjjoRM1I1A=;
-        b=Do7dHU4krIz97JvgneITq57JMM+rNuIcxlhcQq1L7N5B4FxJujZIXGkKrKioeqxtU9
-         iwHQcIg+rnXlhav9oeelRIx8cKmnZxxsGxe34ttbho2XbsofzTo48Rly6gW95yfgH1Bf
-         LlaXbpmPHEvmb+97TqvhTyuw8uShKE8933A9LxDbZxMxdc2egKQqnYlqkCqUp9torYTo
-         8uPn42DlcFSlQd0CE5tr9GRe6i1txsaOefYdL4ZVWmpstFHxxxpZAU3ATpUGsaXLCcE/
-         HvRnTKbP18ZQCCUppDIE0LpvpBtkMmjTSEwKag1T0Dsff3g+YiKr/8PcY+0C4Y2WWDa6
-         9P4g==
-X-Forwarded-Encrypted: i=1; AL+hErGLgaY2nPU6krUmlBeYGe/XhzwG+7aexN371j+JlIh2i9bxCH5uADGfW3agc5RayPMbEiKikJrEGpATXV8IDA==@lists.infradead.org
-X-Gm-Message-State: APuU4Z8ZF9qaBhbIGmtzZ0sNrqARkED4jIdKJo7ZUORZOTbjfiITlS34
-	DpCMKsmblWO0r9LR0L97sTVUAOS9H8/zYolx3OzLtGjh9eHAVPn3jt+9zhHi1EfnH5NvgxD+ETX
-	YlDsGZtV0o5SRdqtwX28dRwSq6MajPws=
-X-Gm-Gg: AYBFou3/KFxLvZVXGnwXkfnvWttPV4+GsSJoRKXOKVTy2QmfTzbusCRBw2RNUk4Lrkj
-	wO7PdcCOi8jGWSNjdV+Q9A6tUDhUakVTT3u/9EbG/gaPULX62I/DygYWTALe/ADboRhV4WPeUYJ
-	JsyH6AEoZ6TAHa4e/wDM8IX/sadsRwCqXJHv2DNX1mV1ylu/9yxNeiSv1XkNWlDWOlOypF7AgBx
-	Qb3HP/jDpsvF7WeZjcDGCxOj670qbE77SUbDAeHp243eJp/+xtDObvKK5ldRqSfjarC9BlJQoES
-	FSRYUqqPs/jwql7olG/kIfml47xfQzR8qEXVH0ZPBgxfc61QJNadNDDbkP73Ohl43ESHcmcNvez
-	bHBll6FnWsilPve3jqTOeystGm355zEOp5dQzw45BNBSW137rdXYoua+lFWQVWDzm3gL2
-X-Received: by 2002:a05:7301:1285:b0:343:9eb1:9940 with SMTP id
- 5a478bee46e88-3725e33de65mr8199608eec.26.1794199288994; Sun, 08 Nov 2026
- 20:41:28 -0800 (PST)
+        d=1e100.net; s=20260707; t=1794199349; x=1794804149;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to:content-type;
+        bh=SGLgpUjp0TJQzDOLsYW8InDECLAZK5y2ohFSm3d5WTc=;
+        b=Gm2HZIJEmW2mcygZ942XgUBc+sEi8hI6MazNjQlRjcM/ZUzGybnD4mbwVy076Z5EwA
+         XEWCBwA3BMfli22cmo1ZbhXEz1z/CpAMx+n6ntwsR4eAkFO2LpSBZt5Zrw7B+9hVWfzN
+         hShQjeJCnwFBPrMcw/t63OoQ1/T9HuNPoKyfQ1jagnZGPLWCUw9BPJ7YpcDS50tJa8jD
+         MkyhD9GkMu6x+Fo0OQrPXXLAY5zlxAm5z3i9AK+mp+g4zZkToEU0jBcW/m8azw5BTDIk
+         YL10ri3UA/PeDmjQUaewvrBKVrxlH28y4ST7uV2vDdHIz3LtLWcsXQ3a7vzm3XOYYNuN
+         zcUA==
+X-Forwarded-Encrypted: i=1; AL+hErE8N+bFobwFfqUNEroXJoV1TXD4jLKWZJ+pDZZa3flqR4/YAV/63pzIaioi9PYOiB4LdQnDBZLTuYbj6x7VNw==@lists.infradead.org
+X-Gm-Message-State: APuU4Z+TqHfsq7Dj4GHlWVqkZK62aNWelvs9BO+XMI9b8mdKUv8Yd2y5
+	mr+fy/oZao0u2z3+E0YwSO+ZczfvNCVZSl18OIlxQw6GTF9VBpara13e
+X-Gm-Gg: AYBFou1klfOfmkc6f4ALbZezv5NOTyBZQY03ZPOVGA/GtxL3Q2pF08pzPHGTiq+VZIv
+	R5galJ19JtxGggB3vcKijqdIMq5Q5ATIHfx8yx/j1Vxar/FjDyiI0ciUmpGaHUAUBz3PH5RG4ky
+	tleUIJj+5X4A604PiyIgrfhDUhOI97K4Qua9+1EVHTEY657C8q6+n3A1Dzx3oJGWZRg4uBZ5ro9
+	dH0mv9abTC3d9tWWi1u6jyfRKZrIUCC5QdlMIXFt5hwsx8YG4UJRHEz1soPTE4kyn8njM9F3VT/
+	FrygUKYvsqjqhM4PzybPQiY8XW6ufbcUT3fAEEMseqbDgXutaVxiz/wRGoosdZAvSFxBRqk/SiE
+	1UF1+4ngYrtkN+XoW1j1UiO000nDPJ6HwXT1Y/KpdtR7yH/+8IB0vJ9H8Ka7qGHjfWq6TrdRWTG
+	dRHneLNQWU1c1pvxG1NFYmOOv7Gw2hDIGxYm202vyakRSr0Eddx3hu8dACMrFD3gaadcFskCouz
+	DCSHyFsdfoKGm2PRwtClD8GaTHDexb56Li7jf75LoxqMtYgnwINAqHnqnc6yWK0Gqu50hePxmGa
+	o41zckaNV+IrnJwkedPv9/UcpBC7VECz8AX4cB5O7BUybWIq2p3ZXfGvWplqkUVaMv4Myw==
+X-Received: by 2002:a05:7300:c8c6:b0:369:f420:8679 with SMTP id 5a478bee46e88-37257d9496emr5721564eec.38.1794199348727;
+        Sun, 08 Nov 2026 20:42:28 -0800 (PST)
+Received: from hj.. ([163.239.22.29])
+        by smtp.gmail.com with ESMTPSA id 5a478bee46e88-3726561851esm10154026eec.4.2026.11.08.20.42.23
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Sun, 08 Nov 2026 20:42:28 -0800 (PST)
+From: hyunjungg <hj351016@gmail.com>
+To: Sebastian Reichel <sre@kernel.org>,
+	linux-pm@vger.kernel.org
+Cc: Sebastian Reichel <sebastian.reichel@collabora.com>,
+	Chen-Yu Tsai <wens@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	linux-kernel@vger.kernel.org,
+	Hyunjung Ko <hj351016@gmail.com>
+Subject: [PATCH v2 0/3] power: supply: fix work-vs-devres teardown use-after-free
+Date: Mon,  9 Nov 2026 13:42:09 +0900
+Message-ID: <20261109044212.1157357-1-hj351016@gmail.com>
+X-Mailer: git-send-email 2.43.0
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-References: <20261106160057.2754689-1-hj351016@gmail.com> <avEdYFDUHIj6mq0Z@venus>
-In-Reply-To: <avEdYFDUHIj6mq0Z@venus>
-From: khj <hj351016@gmail.com>
-Date: Mon, 9 Nov 2026 13:41:17 +0900
-X-Gm-Features: AclHuK_VP_O81IVVw6nsjch_EUlJXziP3JNmGnD4QyN0YGW8m1KTdax5oeelWrE
-Message-ID: <CAGr5VtNJwmMej+90yoLa6su5fcBc1gwOPviMGtjj7pis+Y7jjQ@mail.gmail.com>
-Subject: Re: [PATCH 0/3] power: supply: fix work-vs-devres teardown use-after-free
-To: Sebastian Reichel <sebastian.reichel@collabora.com>
-Cc: linux-pm@vger.kernel.org, Chen-Yu Tsai <wens@kernel.org>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
-	linux-kernel@vger.kernel.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261108_204130_543647_2116CFF8 
-X-CRM114-Status: GOOD (  19.39  )
+X-CRM114-CacheID: sfid-20261108_204229_896811_A349FDC9 
+X-CRM114-Status: UNSURE (   9.04  )
+X-CRM114-Notice: Please train this message.
 X-Spam-Score: -1.9 (-)
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -120,75 +105,42 @@ List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-2.9 required=3.0 tests=BAYES_00,DKIM_SIGNED,
+X-Spam-Status: No, score=-10.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
 	DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,FREEMAIL_FORGED_FROMDOMAIN,
-	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS autolearn=no autolearn_force=no version=4.0.1
+	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=ham
+	autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Hi Sebastian,
+From: Hyunjung Ko <hj351016@gmail.com>
 
-Sorry about that.... and thanks for taking the time to look.
+Three power-supply drivers register a poll/detect work for devm
+cancellation before devm_power_supply_register(). devres unwinds in
+reverse, so on unbind the power supply is freed before the work is
+cancelled, and the work's power_supply_changed() then dereferences the
+freed supply. Each patch moves the devm work-cancel registration to after
+devm_power_supply_register() so teardown drains the work first. No
+functional change.
 
-You're right that the commit messages were far too long. I had added the
-"how found / tested" note out of habit -- another subsystem I send to asks
-for exactly that information, so I carried it over here without
-thinking -- but that is no excuse for the length.
-My mistake...
-I'll resend as v2: commit messages cut down to the bug and the fix, the
-inline comments dropped, no functional change.
+v2 (thanks Sebastian Reichel):
+ - trim the commit messages down to the bug and the fix
+ - drop the inline comments
+ - no code change vs v1 other than that comment removal
 
-Thanks,
-Hyunjung
+Hyunjung Ko (3):
+  power: supply: ltc2941: drain poll work before unregistering the supply
+  power: supply: axp20x_usb_power: drain vbus_detect work before
+    unregistering the supply
+  power: supply: mt6360_charger: drain chrdet_work before unregistering
+    the supply
 
-2026=EB=85=84 11=EC=9B=94 9=EC=9D=BC (=EC=9B=94) =EC=98=A4=EC=A0=84 10:11, =
-Sebastian Reichel
-<sebastian.reichel@collabora.com>=EB=8B=98=EC=9D=B4 =EC=9E=91=EC=84=B1:
->
-> Hi,
->
-> On Sat, Nov 07, 2026 at 01:00:54AM +0900, hyunjungg wrote:
-> > From: Hyunjung Ko <hj351016@gmail.com>
-> >
-> > Three power-supply drivers register a poll/detect/charger-detect work f=
-or
-> > device-managed cancellation (devm_[delayed_]work_autocancel()) in their=
- probe
-> > *before* they register the power_supply via devm_power_supply_register(=
-). devres
-> > unwinds in reverse order, so on unbind the power_supply device is relea=
-sed first
-> > and the work is cancelled last. The work handlers call power_supply_cha=
-nged()
-> > and dereference the power_supply, so a work instance still pending/runn=
-ing in
-> > that window touches the already-freed power_supply device -> use-after-=
-free.
-> >
-> > Each patch moves the devm work-cancel registration to *after*
-> > devm_power_supply_register() (and before the IRQ/poll that arms the wor=
-k), so
-> > teardown drains the work before the power_supply is freed. No functiona=
-l change
-> > otherwise. The relocated devm_[delayed_]work_autocancel() still runs it=
-s INIT
-> > before the work's first queue site, so no queue-before-INIT window is a=
-dded.
-> >
-> > This is the same class as the recently-applied cimax2/extcon work-vs-de=
-vres
-> > fixes. Found by static analysis / code review; none is reproduced on ha=
-rdware
-> > (each needs its charger/PMIC/gauge chip and is not QEMU-reproducible) -=
-- treat
-> > accordingly.
->
-> Please don not send direct AI output. You need to drop useless
-> comments and trim down / rewrite commit messages to a sensible
-> length. Instead of huge amount of spam.
->
-> Greetings,
->
-> -- Sebastian
+ drivers/power/supply/axp20x_usb_power.c      | 10 +++++-----
+ drivers/power/supply/ltc2941-battery-gauge.c | 10 +++++-----
+ drivers/power/supply/mt6360_charger.c        |  7 ++++---
+ 3 files changed, 14 insertions(+), 13 deletions(-)
+
+-- 
+2.43.0
+
 
