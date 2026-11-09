@@ -2,100 +2,71 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 581E4606A331
-	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Nov 2026 12:14:52 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id E9D21606A325
+	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Nov 2026 12:35:41 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=vQML/gAw;
-	dkim=pass (2048-bit key) header.d=baylibre.com header.i=@baylibre.com header.a=rsa-sha256 header.s=google header.b=P2eEKtrg
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=XlhLD7m0;
+	dkim=pass (2048-bit key) header.d=collabora.com header.i=@collabora.com header.a=rsa-sha256 header.s=mail header.b=GaB8fV1b
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Unsubscribe-Post:List-Owner;
-	bh=2+V7YIy+ugL63jgP2uxhOpyvZ08G/pDMPRbZ7zomEng=; b=vQML/gAwgIQTF/tnHRvF60eNPx
-	X9Z5ccoziDyvbAvuVTJqdWeHLox9Q3HM7ZCFkUjBLeXvT0ybIS63vI4dj76SBBGvDuE15CBM+hMtC
-	u6H6GbBe5KPdPXo8J+8FRcURItorAV2Z3zUPijVDWung+OZTIpmJTcTH5yOXDBOFTi+hHyRSUX8U8
-	R4N1FFCz91FRFzaROPl78Tvw/evkioAhZJfj5sXCUA/yb3so+T3I+Sc7IlTqDfB5J917MAp+aFfY6
-	oI0me8ZU7goEVMbMvxpwlu1wZBRIfBjmX5cgBh/P8BuENCQnNrKaxDJwNpjo67W2lhvld0gRUO7I2
-	uJZWqs0g==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Unsubscribe-Post:
+	List-Owner; bh=ezlQIpBeCLKp3BblnMdViA21cKifwksyw0/26Kc1RZI=; b=XlhLD7m0XMScKy
+	TX6NoYuUQU5pSBtM/cMVqYM92jciGZUYxVhNzYoN6x9p3O3k26euuWM7YSLyS11oXQO9PqeLFuG3D
+	HOXsaLwKjsdkOG/6+rOKhy5qdhK0NIXr3CrDJBDKjbUPsXL8j7XW1YUdZi7ZobVuSEBLiSD0ds6Uj
+	knz5h0BEGtBYKlJlUwAeNC9Wz8SUzLwJy3IPlOsQNTPmCQdwFfLLmkcfQSVvIyI255tDl9uFX38jO
+	y7Be2rNW3lYBnYw8V2oOlFmYq7r067QbSj0b+41g2mq0zNSoWqqrpwmev1NvhgpE5S/KjA+SebdiW
+	l1nmczjgTmV0Og2afjug==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xQOGy-00000000dvA-0EBe;
-	Mon, 09 Nov 2026 12:14:52 +0000
-Received: from mail-wr1-x42b.google.com ([2a00:1450:4864:20::42b])
+	id 1xQOb7-00000000i0Q-20Sd;
+	Mon, 09 Nov 2026 12:35:41 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xQOGv-00000000dtT-0zWm
-	for linux-mediatek@lists.infradead.org;
-	Mon, 09 Nov 2026 12:14:50 +0000
-Received: by mail-wr1-x42b.google.com with SMTP id ffacd0b85a97d-49318428d98so411515f8f.1
-        for <linux-mediatek@lists.infradead.org>; Mon, 09 Nov 2026 04:14:48 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre.com; s=google; t=1794226487; x=1794831287; darn=lists.infradead.org;
-        h=cc:to:message-id:content-transfer-encoding:content-type
-         :mime-version:subject:date:from:from:to:cc:subject:date:message-id
-         :reply-to:content-type;
-        bh=2+V7YIy+ugL63jgP2uxhOpyvZ08G/pDMPRbZ7zomEng=;
-        b=P2eEKtrgSMiwKgeZuqQjceG+4r82JQTdM9qAtoisgJIMgp7CswsdIuRPGm19DMTifd
-         CZNVGgGRzzw3lrpza6LQQLwfOkp7wqoNXPXjBWwjdfTS35mVJ/lCufstKirNOlSsTEq+
-         PhVEPHgJYv70B743u0uJ6E48oWVVeYYTjN96NCWJ3NPFGZJmYiif/MZ+Py+D3h8hDD4b
-         cip2I3kB8ieHvR56z0GHBABUpaurTJRYjCifpAoFVCAd0M0lRxpQT9aMCacVonmYdcL3
-         KCzvjeMcdiR+uJ/Rk4n5Yno7jKrh+olTN+eVjlN82DKcq0id6+4XrrBGLdQPbxpm1jwV
-         m/Fw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1794226487; x=1794831287;
-        h=cc:to:message-id:content-transfer-encoding:content-type
-         :mime-version:subject:date:from:x-gm-gg:x-gm-message-state:from:to
-         :cc:subject:date:message-id:reply-to:content-type;
-        bh=2+V7YIy+ugL63jgP2uxhOpyvZ08G/pDMPRbZ7zomEng=;
-        b=rLtfdTyY1+EQRynfgrRBazUhqvxLt5Lhw0evjTbGBDVroZ04F3luGjw26URFhyqsUP
-         5Q1kBgoxwDM7q14e0h/hsIEk2lCZHhYP485U1L/pyhCpmZp8sJjiKgAoIP6/0yDbYjQJ
-         inqhOU+jQAR7umC2xIgudJcMvgvC27MKZrncPO43X6Qq1dpEOt/foNEWbQsSCx1ZJpdQ
-         4QOK/d5VlNyg8E40AapMmjxoInCXKqecxgbUn2xf5zq6Y0V8fqdXnUUYUyAd5oXdv6OE
-         vFHuJf9xhVu9tDMGU3xFLloUcWZcOFZ0NzYl7PrsIS9Z95Jc6eNcDbr+ygZwbfo1kbD9
-         Q0Ww==
-X-Forwarded-Encrypted: i=1; AL+hErH5okBH1Bct5MxuIK1p4aPCq4YwUZtsSGv+6M+qajhY6yfB35TixR9TeL1spExSyiEgjnhAFTfeZH8xcHrbeg==@lists.infradead.org
-X-Gm-Message-State: APuU4Z/wxiYhtY4E6aLSuMDE6hGm021ouPZ4DLhdnvB0S6ZmNQHUAkzU
-	oo4J/bbMLV0dlWmwR1ozNXxLxR7GleKdYbmuDWMbra++i1TF7kkKM1oq3DkEYoYtB7M=
-X-Gm-Gg: AYBFou1CqfoCpNyUWNJMEYU/UqEVaaLZezDMYlCinzFZ6zsAUUFVynjlfEa8RcV3tle
-	Y58dSog7AyutFEppOjdC1JvxxfjuIGN4L/80r/2ZUI69L+15IxmRmLaICYg17lyp2ZIwMFQTgsr
-	G+Yb/EvI//yVR7lId58gg9htI+jyaGHoqjZpV0mfU+43VDYxia7o8E9C1iOQDtSgXk67GtJc3fB
-	nGJd9KyF9bHNt5Q3iNSrT65wYDWqBsUG1ZZ1A0r8HsY+YZYzwXl79FNcnOFHUY3WcAjDBM5i+C9
-	lyQ/Q18DU00VxN64VJaROeZdiEUjCJF5Vcqi7pBWjEAtuEVrUQvl6zlytN6j8QXQN8zV2onBKuB
-	pT1P8DjkNJXqo3JhRUKZIoFd3W+Lo8oIcaTwIi0bv4i5LU1WcuffF2g3irJER0scMHwnkzAnsqK
-	F5tf9szE6Mp7dQwrAXs2bfov9jbNu3R9cZ2BynCbvSXiDT3uSQYrd6nfZHnSRsgeXz82GTWQqlQ
-	4JkJL/BINYF7ZurOT4R7dHmn3Wfdb2f5aQdd/LpRtlmldWU6rKPW844w7BejxzHUpPEOQqa/qiB
-	GNaXbNPvlvrdcZ/YuSxM+/YfuJoRheJGbNJoHh50+SxsN+Uh/XXqXMK2
-X-Received: by 2002:a05:6000:3c5:b0:493:2376:81b7 with SMTP id ffacd0b85a97d-49588ecc152mr7398751f8f.27.1794226486849;
-        Mon, 09 Nov 2026 04:14:46 -0800 (PST)
-Received: from [127.0.1.1] (82-230-44-19.subs.proxad.net. [82.230.44.19])
-        by smtp.googlemail.com with ESMTPSA id ffacd0b85a97d-49596f9ab09sm9313946f8f.28.2026.11.09.04.14.45
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 09 Nov 2026 04:14:46 -0800 (PST)
-From: Alexandre Mergnat <amergnat@baylibre.com>
-Date: Mon, 09 Nov 2026 12:14:32 +0000
-Subject: [PATCH] regulator: mt6363: Serialize BUCK_TOP key access
+	id 1xQOb4-00000000hzI-1n8R;
+	Mon, 09 Nov 2026 12:35:39 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1794227734;
+	bh=uz6Pxf5P1OBQ1OuxMZ+mpEwGfimAtMPaXnOF09sKZoc=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=GaB8fV1byCSC9EYTiwgvgZwhDJLwctYNUTvoOHmIWggOil37/GIKZPA4bDmSiD+r0
+	 NakpRnw2P2aP0m/dW2BRc2bEUKMJCwYtXkGCc43pNfdZtp6k3H8oz1kDGJxpqaemiA
+	 Ukk6H7yKGtL1Jjw7AY/RLhL8ZyTo+tiW/O1vl4zok85PGzWdsNXLx4TmscyQKCSG00
+	 4z345XE6XdYIlhQe7FfGCXWsTR1dsLaonEdKK63OAOss6Orb7qjaYEEWbgt/lBmU3n
+	 otvWPS4nm3IGY2KU+H/2FlhtMZH3T0V1Y91pK01Ldt6FhvIRa7sSdQjVYikSLo3mkU
+	 D6o1Z+iFXOS8w==
+Received: from [100.64.1.21] (unknown [100.64.1.21])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 6E5C317E0390;
+	Mon, 09 Nov 2026 13:35:34 +0100 (CET)
+Message-ID: <379c2b3d-ab98-4b58-86fe-da2276ede617@collabora.com>
+Date: Mon, 9 Nov 2026 13:35:33 +0100
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20261109-rgp-91-mt6363-key-lock-v1-1-ea3b03a76997@baylibre.com>
-X-B4-Tracking: v=1; b=H4sIACe58WoC/y2O2Q7CIBREf6XhWRKWAsVfMX1gua1YuwjUaJr+u
- 2h9PMnMmdlQghggoXO1oQjPkMI8FaCnCrmrmXrAwRdGjDBJKRE49gvWFI9ZcsnxAG98n92ApbJ
- Ca+ZBmAaV8hKhC6+f+NIenFZ7A5e/tn8iwmMti/mIIWsSYDePY8jnSmlSc9443tRMesWc6JTzu
- ibMWW3KHc6MMp1A7b5/AOf7X2HGAAAA
-X-Change-ID: 20261105-rgp-91-mt6363-key-lock-67b5992de5a8
-To: Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, 
- Alexandre Mergnat <amergnat@baylibre.com>
-X-Mailer: b4 0.16.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] clocksource/drivers/timer-mediatek: Enable the GPT irq
+ before registering
+To: Chen-Yu Tsai <wenst@chromium.org>, Ryan Brue <ryanbrue.dev@gmail.com>
+Cc: Daniel Lezcano <daniel.lezcano@kernel.org>,
+ Thomas Gleixner <tglx@kernel.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>, Luca Leonardo Scorcia <l.scorcia@gmail.com>,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org
+References: <20261103-timer-mediatek-gpt-irq-order-v1-1-6d1ddf977224@gmail.com>
+ <CAGXv+5FSG5P3-4-eijurDA68NzcFOXJN5k12WV9SJ+_3wmTjPQ@mail.gmail.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
+In-Reply-To: <CAGXv+5FSG5P3-4-eijurDA68NzcFOXJN5k12WV9SJ+_3wmTjPQ@mail.gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261109_041449_364494_A11244DE 
-X-CRM114-Status: GOOD (  16.08  )
+X-CRM114-CacheID: sfid-20261109_043538_642393_BD2BFBAE 
+X-CRM114-Status: GOOD (  26.31  )
 X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -107,137 +78,88 @@ List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-18.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-17.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,
 	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=ham
-	autolearn_force=no version=4.0.1
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1
+	autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-The bits that select the FAST mode of the bucks only accept writes
-while the BUCK_TOP key is unlocked. mt6363_regulator_set_mode() unlocks
-the key, updates the bit and locks the key again, but the regulator
-core only locks the buck being changed. When two bucks change mode at
-the same time, one of them can lock the key between the unlock and
-the mode write of the other. The PMIC then ignores that write, and
-regulator_set_mode() returns 0 while the buck stays in its previous
-mode. mt6363_va15_set_voltage_sel() unlocks and locks the same key,
-so it can also lock it during a buck mode change.
+On 11/9/26 10:54, Chen-Yu Tsai wrote:
+> On Wed, Nov 4, 2026 at 8:18 AM Ryan Brue <ryanbrue.dev@gmail.com> wrote:
+>>
+>> Since the driver probes as a platform device, the GPT clock event is
+>> registered late in boot, when PSCI CPU idle may already have put CPUs
+>> into a state that stops their local timer. Those CPUs wait in the
+>> oneshot broadcast mask on the hrtimer broadcast, and
+>> tick_install_broadcast_device() arms the new broadcast device to expire
+>> at once so that it wakes them.
+>>
+>> mtk_gpt_init() sets the timer's bit in GPT_IRQ_EN only after
+>> clockevents_config_and_register(). The forced event fires while the bit
+>> is clear, nothing is latched in the status register, and the waiting
+>> CPUs are never woken. On an MT8173 tablet with the CPU_SLEEP_0 idle
+>> state in use, this hung the boot in 20 of 40 boots, and in none of 16
+>> with this change.
+>>
+>> Enable the interrupt before registering the clock event. The IRQ line
+>> stays disabled until enable_irq(), so the handler still can't run before
+>> the clock event is set up.
+>>
+>> Fixes: 7a097aba7255 ("clocksource/drivers/timer-mediatek: Convert to OF probing")
+>> Signed-off-by: Ryan Brue <ryanbrue.dev@gmail.com>
+> 
+> This seems to have fixed the cpuidle related stalls I was seeing. I
+> didn't do that many rounds of boot tests though.
+> 
+> Tested-by: Chen-Yu Tsai <wenst@chromium.org> # on Hana (Telesu)
+> Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
+> 
+> I do think we should expedite this into the kernel, as a 50% chance
+> of stalling is not great. It was even higher for me and somehow I
+> had to do a hard power cycle by rebooting the EC to get it unstuck.
+> 
 
-Hold a mutex from each unlock of the key to its relock, in the FAST bit
-writes and in the VA15 voltage setter.
+Agreed.
 
-Fixes: 3c36965df808 ("regulator: Add support for MediaTek MT6363 SPMI PMIC Regulators")
-Signed-off-by: Alexandre Mergnat <amergnat@baylibre.com>
----
-The race was reproduced on hardware.
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
-The new mutex is static because probe already stores per-device state
-in the static regulator table, so the driver only supports one PMIC.
-A follow-up series could make that table constant and move this state,
-with the mutex, into per-device data.
-
-This patch applies to the for-7.4 branch of the regulator tree, which
-has the earlier fixes to this driver.
----
- drivers/regulator/mt6363-regulator.c | 41 ++++++++++++++++++++++++------------
- 1 file changed, 27 insertions(+), 14 deletions(-)
-
-diff --git a/drivers/regulator/mt6363-regulator.c b/drivers/regulator/mt6363-regulator.c
-index e6c4bd851fef..8ade92c59864 100644
---- a/drivers/regulator/mt6363-regulator.c
-+++ b/drivers/regulator/mt6363-regulator.c
-@@ -12,6 +12,7 @@
- #include <linux/irqdomain.h>
- #include <linux/kernel.h>
- #include <linux/module.h>
-+#include <linux/mutex.h>
- #include <linux/of.h>
- #include <linux/of_device.h>
- #include <linux/of_irq.h>
-@@ -114,6 +115,8 @@ struct mt6363_regulator_info {
- 	int virq;
- };
- 
-+static DEFINE_MUTEX(mt6363_buck_top_lock);
-+
- #define MT6363_BUCK(match, vreg, min, max, step, en_reg, lp_reg,	\
- 		    mset_reg, ocp_intn)					\
- [MT6363_ID_##vreg] = {							\
-@@ -388,6 +391,23 @@ static int mt6363_buck_unlock(struct regmap *map, bool unlock)
- 	return regmap_bulk_write(map, MT6363_BUCK_TOP_KEY_PROT_LO, &buf, sizeof(buf));
- }
- 
-+static int mt6363_buck_top_update_bits(struct regmap *map, unsigned int reg,
-+				       unsigned int mask, unsigned int val)
-+{
-+	int ret;
-+
-+	guard(mutex)(&mt6363_buck_top_lock);
-+
-+	ret = mt6363_buck_unlock(map, true);
-+	if (ret)
-+		return ret;
-+
-+	ret = regmap_update_bits(map, reg, mask, val);
-+
-+	mt6363_buck_unlock(map, false);
-+	return ret;
-+}
-+
- static int mt6363_regulator_set_mode(struct regulator_dev *rdev,
- 				     unsigned int mode)
- {
-@@ -400,13 +420,9 @@ static int mt6363_regulator_set_mode(struct regulator_dev *rdev,
- 
- 	switch (mode) {
- 	case REGULATOR_MODE_FAST:
--		ret = mt6363_buck_unlock(regmap, true);
--		if (ret)
--			break;
--
--		ret = regmap_set_bits(regmap, info->modeset_reg, info->modeset_mask);
--
--		mt6363_buck_unlock(regmap, false);
-+		ret = mt6363_buck_top_update_bits(regmap, info->modeset_reg,
-+						  info->modeset_mask,
-+						  info->modeset_mask);
- 		break;
- 	case REGULATOR_MODE_NORMAL:
- 		cur_mode = mt6363_regulator_get_mode(rdev);
-@@ -416,13 +432,8 @@ static int mt6363_regulator_set_mode(struct regulator_dev *rdev,
- 		}
- 
- 		if (cur_mode == REGULATOR_MODE_FAST) {
--			ret = mt6363_buck_unlock(regmap, true);
--			if (ret)
--				break;
--
--			ret = regmap_clear_bits(regmap, info->modeset_reg, info->modeset_mask);
--
--			mt6363_buck_unlock(regmap, false);
-+			ret = mt6363_buck_top_update_bits(regmap, info->modeset_reg,
-+							  info->modeset_mask, 0);
- 			break;
- 		} else if (cur_mode == REGULATOR_MODE_IDLE) {
- 			ret = regmap_clear_bits(regmap, info->lp_mode_reg, info->lp_mode_mask);
-@@ -508,6 +519,8 @@ static int mt6363_va15_set_voltage_sel(struct regulator_dev *rdev, unsigned int
- 	struct regmap *regmap = rdev->regmap;
- 	int ret;
- 
-+	guard(mutex)(&mt6363_buck_top_lock);
-+
- 	ret = mt6363_buck_unlock(regmap, true);
- 	if (ret)
- 		return ret;
-
----
-base-commit: 7904338c38426d72c5f7cd9402cb9a20232a7af5
-change-id: 20261105-rgp-91-mt6363-key-lock-67b5992de5a8
-
-Best regards,
---  
-Alexandre Mergnat <amergnat@baylibre.com>
-
+>> ---
+>> Since v7.4-rc1 the MediaTek timer probes as a platform device, and on
+>> MT8173 with PSCI CPU idle the boot then hangs about half the time: the
+>> broadcast device is armed at once to wake CPUs that are already idle,
+>> and that event is lost because the GPT's interrupt is enabled only after
+>> registration. Traced on the board with prints in
+>> tick_install_broadcast_device() and mtk_gpt_init().
+>> ---
+>>   drivers/clocksource/timer-mediatek.c | 2 +-
+>>   1 file changed, 1 insertion(+), 1 deletion(-)
+>>
+>> diff --git a/drivers/clocksource/timer-mediatek.c b/drivers/clocksource/timer-mediatek.c
+>> index 842d6ee4259e..1b2cbcc2795a 100644
+>> --- a/drivers/clocksource/timer-mediatek.c
+>> +++ b/drivers/clocksource/timer-mediatek.c
+>> @@ -339,10 +339,10 @@ static int mtk_gpt_init(struct platform_device *pdev)
+>>
+>>          /* Configure clock event */
+>>          mtk_gpt_setup(&to, TIMER_CLK_EVT, GPT_CTRL_OP_REPEAT);
+>> +       mtk_gpt_enable_irq(&to, TIMER_CLK_EVT);
+>>          clockevents_config_and_register(&to.clkevt, timer_of_rate(&to),
+>>                                          TIMER_SYNC_TICKS, 0xffffffff);
+>>
+>> -       mtk_gpt_enable_irq(&to, TIMER_CLK_EVT);
+>>          enable_irq(timer_of_irq(&to));
+>>
+>>          return 0;
+>>
+>> ---
+>> base-commit: 6628e7d4c6b25c8d18f1345e3a20d21829aae7e4
+>> change-id: 20261103-timer-mediatek-gpt-irq-order-a878ed869f84
+>>
+>> Best regards,
+>> --
+>> Ryan Brue <ryanbrue.dev@gmail.com>
+>>
+>>
 
