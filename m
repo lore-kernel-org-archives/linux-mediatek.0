@@ -2,92 +2,69 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id B11F1606A33F
-	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Nov 2026 14:13:07 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 600DC606A323
+	for <linux-mediatek@archiver.kernel.org>; Mon,  9 Nov 2026 14:17:26 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=JLcZdh1S;
-	dkim=pass (1024-bit key) header.d=chromium.org header.i=@chromium.org header.a=rsa-sha256 header.s=google header.b=d0oR7YLy
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=IYMvVmAW;
+	dkim=pass (1024-bit key) header.d=0upti.me header.i=@0upti.me header.a=rsa-sha256 header.s=mail header.b=SkAM/Qs4
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Unsubscribe-Post:
-	List-Owner; bh=/5bJy5vqSzMU+DBJ+D/1wSxwu0KrZJz/nqBnx+LerxM=; b=JLcZdh1S4r67ER
-	3/9OUnQHclErIxswkDNgQwvltBWakZ9t0ECPd1neAMaBfzEXU8sgh6m0Vd3cdjT754Pq0sDvpwL23
-	Yi2gHGMrTmAooVfOAFBXQP4DhB5VPpl+RL55paT7IMdZA9c7A7n4b1UFnudJY9oZ2PnQVz0GZeG5C
-	jOMP65wnPX99Fojcp44VsrjH95roxFOYqWuyaVUwkBJmXOg5E5i75sgDfEIrmrCZ5+jEcxIcT2PsV
-	fDNKoQPwjgi7z+pZXEf2bI4r5RyU0B9tS2+63+aqsA4EZEWB1ZdXouRnu1X9UNShgux+VCiJqxP9J
-	Wy62dtAX+hmXA9CJPEpg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:Message-Id:Date:MIME-Version:Subject:References:
+	In-Reply-To:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Unsubscribe-Post:List-Owner;
+	bh=6Cc6btvaFSiQLVCWvXGv6R3b5//OwzX3r5axgusNC6Q=; b=IYMvVmAWqEcter6+d9NdDbOfj7
+	tloLS3+L1yhT4xnmHe/PkbT6e9bdF3Nymys9KwxemkSN+XK7uoJAkRYrMWaiCUvoWUdpDkenwWpJo
+	8WEacd4CyOtCopRfZsNGCwHoJNl1tepEKIzE6VoZdwusgI6guROiDOlql4iDtIVAkpkn1lW1AV/0f
+	ZfeWJQ0CdR8oUg5Qhbtx9YVDYhJuSf768WU9Sme4GjQIFTdREBI0EO6OkwNqSXzjGR6tf1yKsqZoo
+	SDN8tgbfr/mvxx6vy80eXuNluBOhPHcn0foOv2+0zd19oZtSXvy9NPHGGpK2C0sy3KWJmFIIuMnvX
+	cRVQrEpg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xQQ7P-00000000v7y-1h6W;
-	Mon, 09 Nov 2026 14:13:07 +0000
-Received: from mail-dy1-x132e.google.com ([2607:f8b0:4864:20::132e])
+	id 1xQQBZ-00000000viY-45ta;
+	Mon, 09 Nov 2026 14:17:25 +0000
+Received: from forward500d.mail.yandex.net ([31.44.14.16])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xQQ7K-00000000v3w-08be
+	id 1xQQBV-00000000vha-00F3
 	for linux-mediatek@lists.infradead.org;
-	Mon, 09 Nov 2026 14:13:06 +0000
-Received: by mail-dy1-x132e.google.com with SMTP id 5a478bee46e88-37000e7234bso831816eec.1
-        for <linux-mediatek@lists.infradead.org>; Mon, 09 Nov 2026 06:13:01 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1794233581; x=1794838381; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to:content-type;
-        bh=/5bJy5vqSzMU+DBJ+D/1wSxwu0KrZJz/nqBnx+LerxM=;
-        b=d0oR7YLyEEf9x8GbxwCV5Y/xSpilVE/DzyWxj9yKZFqfvOswYbTnDn+Pph0bZ7Hmcm
-         T+fVO8Rrg7iPvfwhY01YpYqc7H50cBOhMOcVkLO/ZZte3N8F7netqITBAjCgcGmvXzNN
-         S5GhKBuZRbJ3lDDUDZ1q9SskOwbKNMM42+Cjc=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1794233581; x=1794838381;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
-         :to:cc:subject:date:message-id:reply-to:content-type;
-        bh=/5bJy5vqSzMU+DBJ+D/1wSxwu0KrZJz/nqBnx+LerxM=;
-        b=ezx2qeEQoXzDWZG4Gk25U7if+387Iu0dtGU1/gqTNZR9ju48GrXcBCpgXhkNtYqnUG
-         rYmrLYundZ8ZEu27TqJTcAa+pq03CNi8M/B20/3M8ti2Xpbbhw0/z1SkseEvHXOW1TnB
-         IyieTQBWMOCWBqiW5KwTqGkKCcH2L2NKbZPu9zFpQ6NZTSMNs65EHU1dRbXjjeyNVsyr
-         WbEVydJ53owzhqaLbK8OPZjcIrRA3H6/ERdMljuQmZJgjfT0VpRIuQS7w27gAkfhNiz/
-         8DxlDPCwUacyYE4Fv9ebdoqLoCTapsOCvDIvAlcZJifHkxVdsTv+8D6eyJNUGoMJs5od
-         b71Q==
-X-Forwarded-Encrypted: i=1; AL+hErGyMCpiC/C42mRxrOFHkQWHGHKAY/YkhFxwjrub9oaSsW2pdfbbBA9taLPK+wloBR40oPMYbsO/JdRIfrDDpQ==@lists.infradead.org
-X-Gm-Message-State: APuU4Z+/6kr/kUtDk1LjcaUpMDWSf2UgOxGDskGPROFDbXPXLfhQhM6W
-	z3QQVy/hP385rN7EF8yMt4oHqo4BleBUxZnAtP/vzWrWnkKo5MqGNxofRBm881+ykg==
-X-Gm-Gg: AYBFou3oR8ywCiA2T6dX/PA9mbw5a1xgwr+PNfpg2tBYGcZBkL8iNgU6JVyJvUQLyIr
-	Nl1Rqg+XGk67y0mxi8TeDiVWntGAdndpLxwYlyXT3PtT7+STkSDVB6tkCFs4Gpkaux+4T2qw03N
-	hcwGFraARUbXm5TxhuVtm/BEoGDXYrHwT33+igZJ+Mai+J0jZenJpwJmlbU+79RtWdauUEFz2hr
-	gKitu+60wN6U2juwfQ9YTOCau50DvObUYuRzoTZJzNLpjnm7C7yQn6RExXNiIyQnIN14ZoANawE
-	FFZHShQyMcfK6GZ0JvxPiFSQwfSL6QmepzPuVX89aXB6X+1kZNNtcRj4e/tmZwOdPQOHhPnfI4+
-	60riJ8f+WhTOJmbJXzOspdiDLS44du4b9JGrE3ebBAGkHYU0XCI1LV13tQ9BcPLyXV8/7Ji6qYN
-	xLuJFLh2lB/xlcCzPfn99/IBeDGwNzFMK2ckWP1eewJgYiDGQ30xppE+I4HqxLFenhxYeuTAMvy
-	NDtILC41nxr2DHEyAVTDi54u2u95S4yFj7CCzzc3FMkdIwnOnWu7vTyqTX7g3FepCbi4ARi/jqR
-	FGR7NaBd/lUQ0Qig6lDqw6oyWmxFBkPi+3i/fJw10GB9oiv5JZE+vl/b/YuE
-X-Received: by 2002:a05:701b:2618:b0:189:ff2b:b194 with SMTP id a92af1059eb24-1b39fec8a89mr5374626c88.16.1794233580747;
-        Mon, 09 Nov 2026 06:13:00 -0800 (PST)
-Received: from localhost ([2a00:79e0:203d:7:24d0:a2cf:66c5:ef86])
-        by smtp.gmail.com with UTF8SMTPSA id a92af1059eb24-1b375603ee8sm12930496c88.9.2026.11.09.06.12.59
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 09 Nov 2026 06:13:00 -0800 (PST)
-From: Chen-Yu Tsai <wenst@chromium.org>
-To: Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: Chen-Yu Tsai <wenst@chromium.org>,
-	linux-mediatek@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org,
-	devicetree@vger.kernel.org
-Subject: [PATCH 5/5] arm64: dts: mediatek: mt8173-elm: Tighten DA9212 regulator voltage ranges
-Date: Mon,  9 Nov 2026 22:12:32 +0800
-Message-ID: <20261109141233.983830-6-wenst@chromium.org>
-X-Mailer: git-send-email 2.56.0.455.g6c5a503b38-goog
-In-Reply-To: <20261109141233.983830-1-wenst@chromium.org>
-References: <20261109141233.983830-1-wenst@chromium.org>
+	Mon, 09 Nov 2026 14:17:24 +0000
+Received: from mail-nwsmtp-mxback-production-main-33 (mail-nwsmtp-mxback-production-main-33.yp-c.yandex.net)
+	by forward500d.mail.yandex.net (postfix) with ESMTPS id 2C6FF81282;
+	Mon, 09 Nov 2026 17:17:13 +0300 (MSK)
+Received: from mail.yandex.ru
+	by mail-nwsmtp-mxback-production-main-33 with HTTPS id 5HSrZ90Zua60-LVUykiD7;
+	Mon, 09 Nov 2026 17:17:12 +0300
+X-Yandex-Fwd: 1
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=0upti.me; s=mail;
+	t=1794233832; bh=6Cc6btvaFSiQLVCWvXGv6R3b5//OwzX3r5axgusNC6Q=;
+	h=Message-Id:References:Date:Cc:Subject:In-Reply-To:To:From;
+	b=SkAM/Qs42vKQqU5Yn7s/VS2m6RPENicoJdSnhFjeA7bHVwRkZ8pCDEiyVvscqJQBr
+	 7Dyc2nZQg5M9wPyr+JJT4fnJo45NTFeCj/xil4BfBmRR98c94+gOucSVhquD+N7C3c
+	 2tAE5W6ot2wLS1+z+lx8NYJp9olXgEHQG15oc3pM=
+Authentication-Results: mail-nwsmtp-mxback-production-main-33; dkim=pass header.i=@0upti.me
+Received: by mail-sendbernar-production-main-38 with HTTPS id f31c56bbefb1cac15fb6585d3fc447df;
+	Mon, 09 Nov 2026 17:17:12 +0300
+From: Ilya K <me@0upti.me>
+To: Ben Greear <greearb@candelatech.com>
+Cc: linux-wireless@vger.kernel.org,
+	netdev@vger.kernel.org,
+	linux-mediatek@lists.infradead.org
+In-Reply-To: <93881792559683@cb540089-648e-4f63-be25-5737cfc54c1c>
+References: <1767631788532094@64c4e675-cd08-4a74-816f-886742f9bfcd> <529a79bc-dab7-aa41-00bd-c47ecbefaa00@candelatech.com> <471221788538289@323ca970-5bd2-4c6b-b52d-2b863a718615> <3acf531c-bcc7-412b-b3bb-665069260e46@candelatech.com> <2028561788553569@f088f4ec-f441-47a1-b7e4-75a1052aa4df> <2418461788691106@84aa39c5-f501-4e64-8418-6a8b6eb88e21> <eb405366-6574-4e4c-a89d-363751ed848b@candelatech.com> <4175721788798939@f00554c7-d809-471c-9bcf-78e5d8eceab4> <1556871789207706@7dc9deb3-4292-4932-8568-de9b411208d8> <1443771789748846@4a8ec5ae-80ed-44bc-b7d3-6bc660c90136> <211851789913261@df1900ea-d467-4ed7-a7f1-de68a4c3e6dd> <143991791036721@40be7595-980b-4665-ba66-1601e10a0899> <c4286904-2a9a-41fd-93ce-be57964909f6@candelatech.com> <221941791052355@558b3e58-c2b1-4e14-91fe-beb5649d18f6>
+	<5955851791966910@d362902e-9931-4ad0-8e86-72401cc67703> <04b8b928-b671-4236-a792-1141cd81a34b@candelatech.com> <93881792559683@cb540089-648e-4f63-be25-5737cfc54c1c>
+Subject: Re:[bug] Triple whammy of mt7996e bugs on 7.2+
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+X-Mailer: Yamail [ http://yandex.ru ] 5.0
+Date: Mon, 09 Nov 2026 17:17:12 +0300
+Message-Id: <463591794233832@bdca924a-ebf7-49c8-bd40-0c3aa4d8de31>
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261109_061304_967537_81052041 
-X-CRM114-Status: GOOD (  12.71  )
+X-CRM114-CacheID: sfid-20261109_061721_255165_9981DD31 
+X-CRM114-Status: UNSURE (   5.53  )
+X-CRM114-Notice: Please train this message.
 X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -99,64 +76,23 @@ List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-18.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-10.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,
-	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=ham
+	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,
+	SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY autolearn=ham
 	autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-The DA9212 regulator voltage ranges in mt8173-elm.dtsi are much wider
-than what their consumers allow. Tighten them according to the MT8173
-datasheet's recommended operating conditions, the CPU OPP table in
-mt8173.dtsi, and the ChromeOS downstream GPU OPP table. The DA9212
-output voltage is programmable in 10mV steps, so the new limits are
-rounded to those steps:
+OK, so this fell off my radar for a bit, but here's some more testing results:
+- somewhere between 7.2.12 and 7.2.15 something is causing the system to spend way more time in IRQ handlers, this looks like it's not actually wifi related, but it does make the whole thing very slow and annoying to deal with
+- 7.3.3 + board specific patches that don't touch mt76 at all still crashes
+- tip of Felix's mt76 tree + same patches also crashes
+- rebasing my previously-working 7.2 frankentree on 7.3.3 also crashes
 
-- BUCKA supplies DVDD_DVFS1 (the Cortex-A72 cluster), rated for 0.72V
-  to 1.131V. cluster1_opp goes up to 1.125V, which the DA9212 can only
-  provide as 1.13V. Limit it to 0.72V to 1.13V.
-- BUCKB supplies DVDD_GPU, rated for 0.93V to 1.125V. The downstream
-  OPP table goes up to 1.13V. Limit it to 0.93V to 1.13V to match, even
-  though it slightly exceeds the suggested upper bound.
+That last one got me some potentially useful logs though: https://gist.github.com/K900/0f4be7064903880f0c409adc168cb59e
 
-Comparing the voltage ranges against the datasheets and the CPU OPP
-table, and drafting the change, were done by an agent. Manually tested
-on a Hana (Telesu) device.
+The tree itself is here: https://github.com/K900/linux/tree/bpi-r4-73-ct
 
-Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
----
- arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
-
-diff --git a/arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi b/arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi
-index 579ce73de7ad..a1cb9230158f 100644
---- a/arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi
-@@ -315,8 +315,8 @@ regulator@68 {
- 		regulators {
- 			da9212_vcpu_reg: BUCKA {
- 				regulator-name = "vdvfs1";
--				regulator-min-microvolt = < 700000>;
--				regulator-max-microvolt = <1310000>;
-+				regulator-min-microvolt = < 720000>;
-+				regulator-max-microvolt = <1130000>;
- 				regulator-min-microamp = <2000000>;
- 				regulator-max-microamp = <4400000>;
- 				regulator-ramp-delay = <10000>;
-@@ -327,8 +327,8 @@ da9212_vcpu_reg: BUCKA {
- 
- 			da9212_vgpu_reg: BUCKB {
- 				regulator-name = "vgpu";
--				regulator-min-microvolt = < 700000>;
--				regulator-max-microvolt = <1310000>;
-+				regulator-min-microvolt = < 930000>;
-+				regulator-max-microvolt = <1130000>;
- 				regulator-min-microamp = <2000000>;
- 				regulator-max-microamp = <3000000>;
- 				regulator-ramp-delay = <10000>;
--- 
-2.56.0.455.g6c5a503b38-goog
-
+I really need to filter it down to whatever fixes it on 7.2...
 
