@@ -2,59 +2,106 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id D8412606A321
-	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Nov 2026 22:51:20 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 9B220606A320
+	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Nov 2026 23:05:37 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=jOomMXeq;
-	dkim=pass (2048-bit key) header.d=protonmail.ch header.i=@protonmail.ch header.a=rsa-sha256 header.s=protonmail3 header.b=j3ilvKbE
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=dur9cbJO;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=google.com header.i=@google.com header.a=rsa-sha256 header.s=20260707 header.b=PKhTy0aL
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Message-ID:Subject:Cc:From:Date:Reply-To:To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=eM62stGlO9Wse+nXJb2nhJ+ESqdO/DZ9KfICfYRljao=; b=jOomMXeq/QETcVyHWAtPHKGtiK
-	OuouFfYaJvmxPKOOyCDZiU2nB36I5Fj7M6rjiqhdjQ/0k5ghyiXq3Qhy3Q7ZDr/onPlxexHQswC4a
-	w0Cl4bLGDJ4ESUbgtLhiRyJoWNHb9z2M1L7f4bZ3GXHVuV8DlBInN4zpoc3AKDnKTULu1w1fELW6Y
-	8tPUd2EQKjelsoQeA3KM8zRjPdeL8T7mpBL1f3wXv2mkBq/NOAMjvrFuiK0oeQBn6geTFFv5dke1z
-	M2vp8jvRD0cKzbwb9XOt3Yx3oLGlLMrzhRixDKeS1YL/g8cOGzSCfFstuQV4/M1oHlunWQeXkmzUC
-	+w+DLsMg==;
+	bh=PdeUXT5hL0s7mCt96NfWjkzr/Wr8kB4BYllQsiOMp6k=; b=dur9cbJOedyL7CH41DcVZMUalL
+	hARBbyfT8er7nOioO/SN6XatFqFcwDvx1I2DbgqCSZztFgBBqAem0MpUmSHSkHzrq3oJgaZYu/ySt
+	u++zA/63VhAKj6pAF+uGyacSb3qdObfFAUfufqjiHiqk9Fbs7rPQ+SC+TI9vQI2BT49SFqbleWkTU
+	YwL3UJWn+fWpdfVtXlX+4lYiovzFN6Jn1Iw9I/bynCNvZP8QyyehsGLW80sGZxMhhnT2BFpCdz5AH
+	UEwDbapE8xeVISSS1WO+PUo2fYcjnn+XSw6Sa8LYuy2pCiCD050H2qa4cvnpnP/0EYWwGCFSsPkji
+	7z7ngzHg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xQugR-00000005CAu-2nsj;
-	Tue, 10 Nov 2026 22:51:19 +0000
-Received: from mail-10631.protonmail.ch ([79.135.106.31])
+	id 1xQuuH-00000005DH3-1RTS;
+	Tue, 10 Nov 2026 23:05:37 +0000
+Received: from mail-pj1-x102f.google.com ([2607:f8b0:4864:20::102f])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xQugN-00000005C8f-3X7b
+	id 1xQuuB-00000005DFp-1Pb8
 	for linux-mediatek@lists.infradead.org;
-	Tue, 10 Nov 2026 22:51:17 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=protonmail.ch;
-	s=protonmail3; t=1794351072; x=1794610272;
-	bh=eM62stGlO9Wse+nXJb2nhJ+ESqdO/DZ9KfICfYRljao=;
-	h=Date:From:Cc:Subject:Message-ID:Feedback-ID:From:To:Cc:Date:
-	 Subject:Reply-To:Feedback-ID:Message-ID:BIMI-Selector;
-	b=j3ilvKbE2p1jKmPfpCdK0zEPr3YJ3hayhKXluJHGBtP5M3UKofViNrz9AbcvmWSRz
-	 cZaL52hH2CCbe6bgtttj6bMcLoW4d9e1CCA0SWsm0U6laeaadKb1UzfR2TWLcoa9Z7
-	 qWdlOirI1vxzj9rwWd7WOqMSlaWHiyx0mReowbWG1KTwKn4HpP+cdRehBdmPT1oo+T
-	 cXTfK048v8RTJRae8tL4B1CJSCPaSuipXI6KmrOTuuoKrQ9s8fk0ImTd7lQsvWdNHG
-	 qh4oVCIeKind0iWdshxvQs08PlpjQizcZ8MmOSbF4BctmC6DzhDBlU+jnCvCuBdJy0
-	 O4VAORjL/Btww==
-Date: Tue, 10 Nov 2026 22:51:07 +0000
-From: Ben Grisdale <bengris32@protonmail.ch>
-Cc: mfd@lists.linux.dev, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, Ben Grisdale <bengris32@protonmail.ch>
-Subject: [PATCH v2] mfd: mt6397: Use PMIC specific interrupt count for domain creation
-Message-ID: <20261110-mt6397-irq-num-fix-v2-1-9d5853a00437@protonmail.ch>
-Feedback-ID: 27291966:user:proton
-X-Pm-Message-ID: b6e27d1989934072699f0422e290035781386c66
+	Tue, 10 Nov 2026 23:05:34 +0000
+Received: by mail-pj1-x102f.google.com with SMTP id 98e67ed59e1d1-3ae6b4c669fso1647340a91.0
+        for <linux-mediatek@lists.infradead.org>; Tue, 10 Nov 2026 15:05:29 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=google.com; s=20260707; t=1794351929; x=1794956729; darn=lists.infradead.org;
+        h=in-reply-to:content-disposition:content-type:mime-version
+         :references:message-id:subject:cc:to:from:date:sender:from:to:cc
+         :subject:date:message-id:reply-to:content-type;
+        bh=PdeUXT5hL0s7mCt96NfWjkzr/Wr8kB4BYllQsiOMp6k=;
+        b=PKhTy0aL/eLJOvpvZ9wQGQu++/e3La1E/1ge75mxmNLYcuWjGR/5HE4PbbrZHZp3xF
+         95AHq/UjNn1Mo/atKk6ria5owuDnvkb6+GRQDOrOX61uGug5dZ0h89UwxhiwZVb3pov0
+         Ebj2SrT7pisCNkO7zJsmQVHlBeazCRfJsf1CdS1+cwxvijpVjFRyB2HS9kkUjI4hV+MJ
+         mtMFQApr+WvlOIPBcCrj3EeQbAT60CwLexYKAWe7Rn6xL8WjcaRO8PHWzXjLfMY7twrl
+         ir/mNH2Km5Nsg67KSXWrTEoOKXenX0C/BEBh3F0ndGDcOsEIZk23IP/O0KHBHrOCxvJE
+         g/+Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20260707; t=1794351929; x=1794956729;
+        h=in-reply-to:content-disposition:content-type:mime-version
+         :references:message-id:subject:cc:to:from:date:sender:x-gm-gg
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+         :content-type;
+        bh=PdeUXT5hL0s7mCt96NfWjkzr/Wr8kB4BYllQsiOMp6k=;
+        b=qKBKlM6qkDHiQ7KfIjrKG8fipcpXrA8suhuuq5noO5yLIPFEkIneTq1RT3LkC4LoNc
+         2/HT+ol1icU/IA64Pw5k+lLYGPdxRiG2cWJ6vQJHgiB1rw2SuLYOBHSIXJpM80oJUNU8
+         lHJDNYlV1KU2gMN8UhHVwhxWYJO3fy8vmPDZxY+vdDnTHsv7rqrxP4HujGXV8Qp543kg
+         Kq8poBP0RR1XwlAe/x+4DlpfUyiBPJT8U8c9zFeyYNLqaSTztVRfy7iZi6dUH1wKYRKW
+         wjqzi5bKgmGTPYbGXsY9eL9GQyShz/Bgg+DYBb3eMP4ZNDVKOh4s+CsNQa0SwKMkgkMt
+         By6g==
+X-Forwarded-Encrypted: i=1; AL+hErE4TODr+/N5T4QhU0n6HndFHx20Yt10grIs7qC9I8MW6QwDWirsnP2rLUw030wrBsaxMFcpvP9Fsi3S1igGew==@lists.infradead.org
+X-Gm-Message-State: APuU4Z93s2xjffClWMwBvm5d0qwLRXPRxT64ycohonF1MetSjHnDuU5Z
+	+6TT7XIETTBrTLLJFnw+TSh9jfLoLFRFMHHjH07eL1b4GZkKNt1NHC58m28VNQvLMA==
+X-Gm-Gg: AYBFou3MzJQsMjaI4PrhupprqBBNUEKestsILtPHarw/LMy+tyehda5m/XZfDFWz18G
+	ZnlzkA96wX1sA73bkbS7+PMwNAmB69f2as+h3Eh9u4RiqhQtfwEGp0AfRD0ZfpskyIsRwv/WkP6
+	8yJIlQzdB/FNyK4gkHLEEpz8nPY0uuBFGzvazbHuvT07waaKoG14jCMs6HvE39fp/pYdNTtFDqb
+	ZGMAuwMth6jUCex8z8s2FzWDMjfi13fDBEQQbPAhLcvX5MnDY87YvSjvI89UknV9sV6VnROhRjw
+	x4LQmCLx2IHRz/VIXWyUNfRMRnvee/JNWu/1snpPfsYrKRq1JciLF9cQpFiils8D0Hq8iTyFdG3
+	EKnspsAvHcDL2LmLsdnsEeZvsZ2D2u9Blzdvm5vtK4BVTTIBFltxL8nKtpaz5qqLaCjA1GcGDjZ
+	cMwcD67gwgSVigNeXW+rS/KzzWirYoXUPXZMuhDrC2HpPczvqMtla3eZB2IDAQxDLayP7dfDxAc
+	f5vsz0CRd1ncZnfMTAukpBifpFA45dWAeVYdNqiBy0P2GPtMGMLzXEB7hVSH/oYEOfHEvYW38CM
+	KuIh0LTeDMfkNdjWV6NNm2dSPBI3Kl4X3LBsAcIiUqUI/YqrGZPS4j5WzW2bD/17CcduOVkUZ0w
+	/LeAD+J3bHmbDzCVk1QhJgfEumrn+Q/4/4HItGMzN2q0zlwxB3UTYYzTKPCP1xeEvsdOO7Tvxot
+	AJtxOXhrvZ6lsM
+X-Received: by 2002:a17:90a:d00b:b0:3b0:a7b5:c044 with SMTP id 98e67ed59e1d1-3b182e0c1a7mr350381a91.1.1794351928487;
+        Tue, 10 Nov 2026 15:05:28 -0800 (PST)
+Received: from google.com (196.126.197.35.bc.googleusercontent.com. [35.197.126.196])
+        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-3b17db7df7csm1476956a91.11.2026.11.10.15.05.24
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 10 Nov 2026 15:05:25 -0800 (PST)
+Date: Tue, 10 Nov 2026 23:05:22 +0000
+From: Benson Leung <bleung@chromium.org>
+To: Uwe =?iso-8859-1?Q?Kleine-K=F6nig_=28The_Capable_Hub=29?= <u.kleine-koenig@baylibre.com>
+Cc: Lee Jones <lee@kernel.org>, Benson Leung <bleung@chromium.org>,
+	Guenter Roeck <groeck@chromium.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	mfd@lists.linux.dev, chrome-platform@lists.linux.dev,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	Linus Walleij <linusw@kernel.org>
+Subject: Re: [PATCH v4 09/20] mfd: Drop unused assignment of
+ platform_device_id driver data
+Message-ID: <avOjMhYL-jo5qWnx@google.com>
+References: <cover.1794347059.git.u.kleine-koenig@baylibre.com>
+ <9bf8e674ac935547639dc6f89fc0aab5ac826db9.1794347059.git.u.kleine-koenig@baylibre.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="QGZX1VfFPgOu+2d7"
+Content-Disposition: inline
+In-Reply-To: <9bf8e674ac935547639dc6f89fc0aab5ac826db9.1794347059.git.u.kleine-koenig@baylibre.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261110_145116_046806_56315C03 
-X-CRM114-Status: GOOD (  10.47  )
-X-Spam-Score: -1.5 (-)
+X-CRM114-CacheID: sfid-20261110_150531_441659_10C54B6A 
+X-CRM114-Status: GOOD (  19.89  )
+X-Spam-Score: -8.4 (--------)
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -65,114 +112,82 @@ List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-11.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
-	DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,FREEMAIL_FORGED_FROMDOMAIN,
-	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,MISSING_HEADERS,SPF_HELO_NONE,
+X-Spam-Status: No, score=-13.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
+	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
 	SPF_PASS autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-mt6397_irq_init() currently creates its IRQ domain with a fixed number
-of interrupts (MT6397_IRQ_NR). However, not every PMIC supported by this
-driver has the same number of interrupts as the MT6397. The MT6328 has
-47 interrupts, so its interrupts above MT6397_IRQ_NR (32) are currently
-unusable.
 
-Correct this by passing the PMIC's actual interrupt count to
-irq_domain_create_linear() based on the chip ID. Define the missing
-interrupt count for MT6328, as the other supported PMICs already have
-it defined.
+--QGZX1VfFPgOu+2d7
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-Fixes: 6e31bb8d3a63 ("mfd: mt6397: Add initial support for MT6328")
-Signed-off-by: Ben Grisdale <bengris32@protonmail.ch>
----
-Changes in v2:
-- EDITME: describe what is new in this series revision.
-- EDITME: use bulletpoints and terse descriptions.
-- Link to v1: https://patch.msgid.link/20261110-mt6397-irq-num-fix-v1-1-81d=
-17454194e@protonmail.ch
----
- drivers/mfd/mt6397-irq.c        | 7 ++++++-
- include/linux/mfd/mt6328/core.h | 1 +
- 2 files changed, 7 insertions(+), 1 deletion(-)
+On Tue, Nov 10, 2026 at 10:54:34PM +0100, Uwe Kleine-K=F6nig (The Capable H=
+ub) wrote:
+> The drivers explicitly set the .driver_data member of struct
+> platform_device_id to zero without relying on that value. Drop these
+> unused assignments
+>=20
+> This patch doesn't modify the compiled arrays, only their representation
+> in source form benefits.
+>=20
+> Reviewed-by: Linus Walleij <linusw@kernel.org>
+> Signed-off-by: Uwe Kleine-K=F6nig (The Capable Hub) <u.kleine-koenig@bayl=
+ibre.com>
 
-diff --git a/drivers/mfd/mt6397-irq.c b/drivers/mfd/mt6397-irq.c
-index 5d2e5459f744..783be9f5c9c3 100644
---- a/drivers/mfd/mt6397-irq.c
-+++ b/drivers/mfd/mt6397-irq.c
-@@ -171,6 +171,7 @@ static int mt6397_irq_pm_notifier(struct notifier_block=
- *notifier,
-=20
- int mt6397_irq_init(struct mt6397_chip *chip)
- {
-+=09unsigned int irq_num;
- =09int ret;
-=20
- =09mutex_init(&chip->irqlock);
-@@ -181,6 +182,7 @@ int mt6397_irq_init(struct mt6397_chip *chip)
- =09=09chip->int_con[1] =3D MT6323_INT_CON1;
- =09=09chip->int_status[0] =3D MT6323_INT_STATUS0;
- =09=09chip->int_status[1] =3D MT6323_INT_STATUS1;
-+=09=09irq_num =3D MT6323_IRQ_STATUS_NR;
- =09=09break;
- =09case MT6328_CHIP_ID:
- =09=09chip->int_con[0] =3D MT6328_INT_CON0;
-@@ -189,12 +191,14 @@ int mt6397_irq_init(struct mt6397_chip *chip)
- =09=09chip->int_status[0] =3D MT6328_INT_STATUS0;
- =09=09chip->int_status[1] =3D MT6328_INT_STATUS1;
- =09=09chip->int_status[2] =3D MT6328_INT_STATUS2;
-+=09=09irq_num =3D MT6328_IRQ_STATUS_NR;
- =09=09break;
- =09case MT6331_CHIP_ID:
- =09=09chip->int_con[0] =3D MT6331_INT_CON0;
- =09=09chip->int_con[1] =3D MT6331_INT_CON1;
- =09=09chip->int_status[0] =3D MT6331_INT_STATUS_CON0;
- =09=09chip->int_status[1] =3D MT6331_INT_STATUS_CON1;
-+=09=09irq_num =3D MT6331_IRQ_STATUS_NR;
- =09=09break;
- =09case MT6391_CHIP_ID:
- =09case MT6397_CHIP_ID:
-@@ -202,6 +206,7 @@ int mt6397_irq_init(struct mt6397_chip *chip)
- =09=09chip->int_con[1] =3D MT6397_INT_CON1;
- =09=09chip->int_status[0] =3D MT6397_INT_STATUS0;
- =09=09chip->int_status[1] =3D MT6397_INT_STATUS1;
-+=09=09irq_num =3D MT6397_IRQ_NR;
- =09=09break;
-=20
- =09default:
-@@ -216,7 +221,7 @@ int mt6397_irq_init(struct mt6397_chip *chip)
- =09=09regmap_write(chip->regmap, chip->int_con[2], 0x0);
-=20
- =09chip->pm_nb.notifier_call =3D mt6397_irq_pm_notifier;
--=09chip->irq_domain =3D irq_domain_create_linear(dev_fwnode(chip->dev), MT=
-6397_IRQ_NR,
-+=09chip->irq_domain =3D irq_domain_create_linear(dev_fwnode(chip->dev), ir=
-q_num,
- =09=09=09=09=09=09    &mt6397_irq_domain_ops, chip);
- =09if (!chip->irq_domain) {
- =09=09dev_err(chip->dev, "could not create irq domain\n");
-diff --git a/include/linux/mfd/mt6328/core.h b/include/linux/mfd/mt6328/cor=
-e.h
-index 9a08aed72b9f..18e000cf5d29 100644
---- a/include/linux/mfd/mt6328/core.h
-+++ b/include/linux/mfd/mt6328/core.h
-@@ -48,6 +48,7 @@ enum mt6328_irq_status_numbers {
- =09MT6328_IRQ_STATUS_FG_ZCV,
- =09MT6328_IRQ_STATUS_SPKL_D,
- =09MT6328_IRQ_STATUS_SPKL_AB,
-+=09MT6328_IRQ_STATUS_NR,
- };
-=20
- #endif /* __MFD_MT6323_CORE_H__ */
-
----
-base-commit: 630059a5a632377b9b7b487baccde92b7ae1dd47
-change-id: 20261110-mt6397-irq-num-fix-2de78da5695e
-
-Best regards,
--- =20
-Ben Grisdale <bengris32@protonmail.ch>
+Reviewed-by: Benson Leung <bleung@chromium.org>
 
 
+> ---
+>  drivers/mfd/cros_ec_dev.c | 2 +-
+>  drivers/mfd/mt6397-core.c | 2 +-
+>  2 files changed, 2 insertions(+), 2 deletions(-)
+>=20
+> diff --git a/drivers/mfd/cros_ec_dev.c b/drivers/mfd/cros_ec_dev.c
+> index 529a23b804f7..96aac158fd8b 100644
+> --- a/drivers/mfd/cros_ec_dev.c
+> +++ b/drivers/mfd/cros_ec_dev.c
+> @@ -379,7 +379,7 @@ static void ec_device_remove(struct platform_device *=
+pdev)
+>  }
+> =20
+>  static const struct platform_device_id cros_ec_id[] =3D {
+> -	{ DRV_NAME, 0 },
+> +	{ DRV_NAME },
+>  	{ /* sentinel */ }
+>  };
+>  MODULE_DEVICE_TABLE(platform, cros_ec_id);
+> diff --git a/drivers/mfd/mt6397-core.c b/drivers/mfd/mt6397-core.c
+> index 5d5f816492aa..e74936ac206f 100644
+> --- a/drivers/mfd/mt6397-core.c
+> +++ b/drivers/mfd/mt6397-core.c
+> @@ -435,7 +435,7 @@ static const struct of_device_id mt6397_of_match[] =
+=3D {
+>  MODULE_DEVICE_TABLE(of, mt6397_of_match);
+> =20
+>  static const struct platform_device_id mt6397_id[] =3D {
+> -	{ "mt6397", 0 },
+> +	{ "mt6397" },
+>  	{ },
+>  };
+>  MODULE_DEVICE_TABLE(platform, mt6397_id);
+> --=20
+> 2.56.0.rc1
+>=20
+
+--QGZX1VfFPgOu+2d7
+Content-Type: application/pgp-signature; name=signature.asc
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQQCtZK6p/AktxXfkOlzbaomhzOwwgUCavOjMQAKCRBzbaomhzOw
+wggAAP4v7fnaGuBxjdQU0SnWBJUfK3YeW/iId1LRt/eBXC0OmQEAioUu55g6cEtn
+WOAUBxWTSFHNLgkeLCTw0+Pu3PdU8As=
+=e1Q6
+-----END PGP SIGNATURE-----
+
+--QGZX1VfFPgOu+2d7--
 
