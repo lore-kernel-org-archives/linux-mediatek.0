@@ -2,101 +2,104 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 25FFF60A380C
-	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Nov 2026 21:56:05 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 54E6560A5BCF
+	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Nov 2026 21:56:17 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=BgYcbHCO;
-	dkim=pass (2048-bit key) header.d=baylibre.com header.i=@baylibre.com header.a=rsa-sha256 header.s=google header.b=nQOipoh5
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=BBfHtEBU;
+	dkim=pass (2048-bit key) header.d=baylibre.com header.i=@baylibre.com header.a=rsa-sha256 header.s=google header.b=ZC/q1jJr
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:
 	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Unsubscribe-Post:
-	List-Owner; bh=ctVOchLtZ/i0vJd2/vqfjh8ZPAFvZBxtNydVJLZOi7Y=; b=BgYcbHCObluqIc
-	AxD4omr8vIHzhv4Cd3cyM5bwnlSF67QvsU5+4iTAJJQ92pUKNo6s7wb4W0aqgrhvfMUuIh3yX2iHz
-	ftNqKuhIX0ZoOW0kZG4axK8XPlING0k/WrhS1uuQD9hsYmqtM6WzJFYwXav4meMWxVdDzF11aYEiT
-	/qefz15wcVeqqJ8bINAJ4DvTmey2EB1YA9UX3OGsFlD26nXU6Ir+I31GJJyHsVxGFOvw1sfWsBXx2
-	qv4ow4St2jtQF5HjF4BBc9/QUgfbryQduyn1MSSv5Aejjh1SVyAytLWtFw4pv0pkK9zLSbCiuo9fH
-	IDSz9gVZCobdXj7hmt0g==;
+	List-Owner; bh=/bU06E1dTu7o82eVh0tv/62NUVUAMqK4tBifVC8vTig=; b=BBfHtEBUz9moUs
+	/b+laAPMAPbddqpoZnT4R7b6PKCxKH1FU75HOpf4bg/RfmmzRyQmZGLfcBIvTWU365w37uHDhjdky
+	GPF6C8GoLSL+EnuZnZXlBf/LJaUZIWfABtlEfJ3vyQTitn3fP/uAopTJHc+Ffsi4V2CXuNWjI8yrd
+	vlnBPwM7nVJBh94jcjUNT2jtgCrtQbOFwea3P5d+traJrs22PqYvgZPiIwp4sN85A189WFaJ8KzWm
+	puryloJjvUKb6XoVyqRnSzB0nzJvV10CmVDHAcSiLs0pU/AAZMdwMU+e11xGwGEiyhv1pFer123DM
+	QvVEXEPa5uFkHwhKm0wQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xQtoy-000000055yf-3bef;
-	Tue, 10 Nov 2026 21:56:04 +0000
-Received: from mail-wr1-x42a.google.com ([2a00:1450:4864:20::42a])
+	id 1xQtpB-0000000566x-09sI;
+	Tue, 10 Nov 2026 21:56:17 +0000
+Received: from mail-wr1-x433.google.com ([2a00:1450:4864:20::433])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xQtov-000000055vN-3Qfa
+	id 1xQtp7-0000000563d-2GYX
 	for linux-mediatek@lists.infradead.org;
-	Tue, 10 Nov 2026 21:56:03 +0000
-Received: by mail-wr1-x42a.google.com with SMTP id ffacd0b85a97d-49134c8509fso2094561f8f.1
-        for <linux-mediatek@lists.infradead.org>; Tue, 10 Nov 2026 13:56:01 -0800 (PST)
+	Tue, 10 Nov 2026 21:56:15 +0000
+Received: by mail-wr1-x433.google.com with SMTP id ffacd0b85a97d-48e3b22e971so1401287f8f.0
+        for <linux-mediatek@lists.infradead.org>; Tue, 10 Nov 2026 13:56:12 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre.com; s=google; t=1794347760; x=1794952560; darn=lists.infradead.org;
+        d=baylibre.com; s=google; t=1794347771; x=1794952571; darn=lists.infradead.org;
         h=content-transfer-encoding:content-type:mime-version:references
          :in-reply-to:message-id:date:subject:cc:to:from:from:to:cc:subject
          :date:message-id:reply-to:content-type;
-        bh=ctVOchLtZ/i0vJd2/vqfjh8ZPAFvZBxtNydVJLZOi7Y=;
-        b=nQOipoh5XGweOz88AhMKP4W2By5Gd80K8If3QB1lzQHam4MQN0WT9u7/lgeBcOcdT9
-         xKOlsBa9uvvWo4BxXk3eyiwcIXAmmqvec/mMH7r40NSquRFpRq6NBZkJDsQQLp42yKI6
-         3QVpfv8IWtmHj+D0YTvanr3YZ/Uyad7zIvPsG4flybSeg5Vn+O3ieKG3G/Bh1ZbBWsuM
-         ftg6lgi3/4uF3EuV2t8ahL13dESRhN7p/CmM3XJvSWNeo524sdODs8xUWjB1DSgkvwWe
-         IO6giMTOI0A8ZXKMRCcmIRkPOXOn9EDaFkaT/n5fOG9y6H7wG1knfP85oiAU5C0iD4qU
-         8Z5g==
+        bh=/bU06E1dTu7o82eVh0tv/62NUVUAMqK4tBifVC8vTig=;
+        b=ZC/q1jJrKc33oJhEt1py/ePrntPrn5twyF8JihxlrUilJk6R3H04cEIsU4vG0kEMrz
+         MEIudqO1R3Tv9c6J3Avd8cXLEul6bSSQhBFwOQgOgIw+kCtMcryrbSKHO19U8+niG0QW
+         8cbk0NuM4XvQeur0bXjHUAjOfIWk/cjzMeFIGGrzzGyJVM8nQCP/UliK3tGRngHAvW9Q
+         rSbyUqoZCJ/eaA/tEOtpE0nj3V86OHvuPV9r3aS0r9ntP8vl966NdKXeINb3Asg9rZxz
+         f9atUhuruzFo+FIDkLYjKXugWYPpyCPOC564YxGc4oLa00qQvK8rAHP9vLtzGRWodhip
+         pHCQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1794347760; x=1794952560;
+        d=1e100.net; s=20260707; t=1794347771; x=1794952571;
         h=content-transfer-encoding:content-type:mime-version:references
          :in-reply-to:message-id:date:subject:cc:to:from:x-gm-gg
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
          :content-type;
-        bh=ctVOchLtZ/i0vJd2/vqfjh8ZPAFvZBxtNydVJLZOi7Y=;
-        b=wqYMbGX+ChclJArelwBa9aYNWPpWS+FO2hMsxVg5Z3xRuzNi+4HKRZy0PSe6atZxMw
-         qCW0ZMgitokp3SD2gUnHoNaAAyd95rmQIa/SgM7ElSMD/10q/HoVbuVx8d7pabPcbUTS
-         JFcuVx+uKkNLEJtqgZayU7m02sQdTZVBhx2KzyVU2y8Pqc+vT7sRtURoZh7UaPcT1QQT
-         KBwh9gfAknYR3DNxSUUyc50Ksn5nX8zRq5vh2sdSB7f1DKUam/fbdwsuZbP2SjeMhWLu
-         qVHPGIJ3mbS6SeCYtrwMpzM0BPLURQ9obegSDoiQG0u8JxzeMe86YjE6mlyruwJjdxWn
-         NTmw==
-X-Forwarded-Encrypted: i=1; AL+hErFVakEKhLuBsWRj7qDB8CNzA6Amtvywg2j1vMqHqZuQE/NqNeHy4z3wi4YAS1OEka6PcSP/mWvMpPzBOmpiCQ==@lists.infradead.org
-X-Gm-Message-State: APuU4Z+dnspEOu2gaOCczUXqivbQBfdSh3/Fx1aMKNt3mWLmGVl2IaD5
-	bWD2PTCgBPqfiywC8G3PUD4XGda2F9dfH1g0lreQybI2bNIxTCgU2z75BiYnpRaD8/o=
-X-Gm-Gg: AYBFou3+SOSVX7h9Un7n5IqjarEyNZYtoUkD9mgD6fGMLMgs772W7tIlWL2JAG/+m64
-	eB015YaxtV+ySuYwvT3viHWS6x+ugwq3es0dinszLBMesLksfvgtlAfSRxSjFNfrwOQFtRCNybL
-	U7z0m1GFFJvc8/BNYzgUsjRkM0a09FMPoymyDi6JEVLsV7gPn7hoWtKE/ZSIKVqrz29Q1nNgDLJ
-	lGjt5t32dZ/RdxkjPC9yeFqg7WErmPWzNdjOLwSpFyI62SZeeG3gjrMbxdTpO4iulOyfyibcUzh
-	MIqwnhNo9BspnD6FEy68Fck0+/KV8YFnvOyn34nijpPr47WV3WXrsFlUhuvVJbf1hlTPS9rU3b8
-	zu8KL1vYPGGEVnIgrmf8y9TbssCRMifhjCiHDoKrqVVHb/UojrsA3YsqseTp+FjgwCrC26Lvxi5
-	pcKv0yvU3vqKZA28CwrPfAMVOFeJw1x6cmrbhW5hTMPBv/p493dMs6gTvgmjUIlaxLp5YUogRhX
-	7Josb2joq2AgCjfEeJpWpU/1ZvfmlXjm4JLNHIDT02daT3+DPO4k+UaVYAxPvwsBlQ6NOr6E3Z5
-	3kDPgCKEI4+iQ0DMYxzmBwNFj13KfAAjDw==
-X-Received: by 2002:a05:6000:402c:b0:492:820d:107e with SMTP id ffacd0b85a97d-499c792ef4emr428787f8f.47.1794347759890;
-        Tue, 10 Nov 2026 13:55:59 -0800 (PST)
+        bh=/bU06E1dTu7o82eVh0tv/62NUVUAMqK4tBifVC8vTig=;
+        b=YRCZVB+uQcCoGZ3W38gy42EXheSwOj0cD6VbIDRzOxtqqYm+inYCg2If5CzJ1MGagJ
+         GS6DEBmToFzvT62iCVjZXYay2hil7a8u7GT4xN+j0+E+wW2qYCy3Zkhl1aMD6kRiqW1z
+         DxchFdTVHMn8/DHg0Ks+EzxBC1sNADkMLiZ/qNJC1Nb3nX5PsKWVMzWb7zj/V9oLnWtk
+         PEV5XqRjAQubGVvTZBVgwQwn9qF0x1AsFnkBD8noMnsYWzaHwMxj8S02Jh08vr826fNf
+         DJpoR1HxBSG2ZoBP2umoAmwH30Se9zoDCf46lN3akUHvGAYptyHZByIrWJS0Mc35tGUE
+         Srgw==
+X-Forwarded-Encrypted: i=1; AL+hErHoB6YFQGz/1JAe08HjIpwMBEW5kwOCThLoEfU/dAOqwLOmlJSoL7dwYBVmYdJSG7iPZiVx7l11TVO3PRazGQ==@lists.infradead.org
+X-Gm-Message-State: APuU4Z+U4icynQOqTmLWk4nt9ZMeE+jOXjNhXli4A2YPHu1aLNp82VLb
+	liioSHmrU4mvtMZsXTLZDC8OCQMWDq0GYjjdgkVGSEU2w2bpBn+m6XGnBbSa5PleYrs=
+X-Gm-Gg: AYBFou2Feaxvcs85Sm8byWBwJqqPSaRfZE/Vhz5mxgB7Mmn1sw4vnH1VkHQmzf/Sxul
+	5WsYELNThoGRIdFSeAtc+uM1zOaE2m58aaNmReTErSjak0siwiXol8Wrt9oShMd4idNme/y+isy
+	RL9f5X9u6qxMvPagi+QU4J6QBfH5xyygeabaorjiD4O6ROJrKsC0GIQnJfVtJTI9RiA+Mo1iYNj
+	0D/0sXVrtdEZZVAR5+u/X5r4zfzSPVvHQp97TnleN2fwYCOsSrPrgjvgird7xk8ZHnxbzz8tGdt
+	DoOyWrXHH4H38jAVXDRm8CJwwRXviqdQnnDrcwATT3Jua07kkhOdBhh1hZhN5E7yHiRb+36V4pt
+	dhhd4v9yiyR+KpYgpqDMkPr4lnSp6y0Oaomz0fzAi7N6VrHpOrEZ2S+zuZEFCuyUq80bt2LUL+w
+	+y4uVexr6nyojmqb+fVpUk/D+t5T99IMM4hmB+11hqsTtujPnphX0Lbfobc7cTsiVeNPFtP588T
+	qv8yts+C44iANqGfAj6t9n0+HMLqXa4McKdmkY5aBPj86WLC+MF+4+skkHcpoTUabJgtZdmV91q
+	10CuvaKz72yNNztm2UHhESE7AD/EdqSpfg==
+X-Received: by 2002:a5d:64ed:0:b0:48e:6f76:dea2 with SMTP id ffacd0b85a97d-499c69cb701mr366245f8f.38.1794347771565;
+        Tue, 10 Nov 2026 13:56:11 -0800 (PST)
 Received: from localhost ([2a02:8071:56d1:2de0:1d24:d58d:2b65:c291])
-        by smtp.gmail.com with UTF8SMTPSA id ffacd0b85a97d-4988bdef64dsm5664845f8f.20.2026.11.10.13.55.57
+        by smtp.gmail.com with UTF8SMTPSA id ffacd0b85a97d-49835858f26sm7338595f8f.18.2026.11.10.13.56.09
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 10 Nov 2026 13:55:59 -0800 (PST)
+        Tue, 10 Nov 2026 13:56:10 -0800 (PST)
 From: =?UTF-8?q?Uwe=20Kleine-K=C3=B6nig=20=28The=20Capable=20Hub=29?= <u.kleine-koenig@baylibre.com>
 To: Lee Jones <lee@kernel.org>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>,
+Cc: Benson Leung <bleung@chromium.org>,
+	Guenter Roeck <groeck@chromium.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
 	mfd@lists.linux.dev,
+	chrome-platform@lists.linux.dev,
 	linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org,
 	Linus Walleij <linusw@kernel.org>
-Subject: [PATCH v4 05/20] mfd: mt6360: Drop irrelevant __maybe_unused
-Date: Tue, 10 Nov 2026 22:54:30 +0100
-Message-ID: <f24ff673333c0fe34408abf1a4f013eeeb5b63d2.1794347059.git.u.kleine-koenig@baylibre.com>
+Subject: [PATCH v4 09/20] mfd: Drop unused assignment of platform_device_id driver data
+Date: Tue, 10 Nov 2026 22:54:34 +0100
+Message-ID: <9bf8e674ac935547639dc6f89fc0aab5ac826db9.1794347059.git.u.kleine-koenig@baylibre.com>
 X-Mailer: git-send-email 2.56.0.rc1
 In-Reply-To: <cover.1794347059.git.u.kleine-koenig@baylibre.com>
 References: <cover.1794347059.git.u.kleine-koenig@baylibre.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1019; i=u.kleine-koenig@baylibre.com; h=from:subject:message-id; bh=WVXc1FvtvHtwehAQUPEvKaZfuWX+hZavONn/+2WOSYw=; b=owEBbQGS/pANAwAKAY+A+1h9Ev5OAcsmYgBq85KisuoYTGXVnjuOAoBv1WtV1Dwwmw2ojVv8v Er1hTByizaJATMEAAEKAB0WIQQ/gaxpOnoeWYmt/tOPgPtYfRL+TgUCavOSogAKCRCPgPtYfRL+ Tt58CACDo/1F4WSgBgjg4oDThZrM6JlYHXkQrOBvMkMkN/laIz2ikPQOpQcH6kb1HJ8KJICzPkL nfRlyhLgE/4bzVPNjE3WM5My9hgSQ4RpVWEWH60bylCAJ11pxX2cVVohWpRVn+y+R/9aa/4zl3L rvKkcDx2LZHxL/56lhEcX2R4suG/y5AkIlhXL1SAz63gSvvtJJYRPrnEt9TvbnByWDDTe3MYns7 odPfiaSK40lzbMugKCueM5ixaCZQBeGFzfqChaFn3vmtjN/AYYQ+vk2OVcJDXbDbkLJaLH5peEc R/SfnNv9Eoz8HYLAASLC1o3YqZMqweOx9lMdqz/6Z9nDEq7I
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1410; i=u.kleine-koenig@baylibre.com; h=from:subject:message-id; bh=2UUtn/8z9q5Vil/qWmXv1wRJuUXUGptLBomjMZQsNCo=; b=owEBbQGS/pANAwAKAY+A+1h9Ev5OAcsmYgBq85K0kB+I64ERD0hCsZyM86WO9lk/0iKPumZ0d RCE1dtnaRSJATMEAAEKAB0WIQQ/gaxpOnoeWYmt/tOPgPtYfRL+TgUCavOStAAKCRCPgPtYfRL+ TsofCAC0U2NJpKBqUl4okY4yooT3RlrkPcLeu3peOyFH4ZcFWAIRXbvvYK1Rm8+rb2RqhkOd8A1 sc0aSu4sqf/Uwz35Y7wKCOWUS7OFm3VoUfj77VKhXpSUf0LOXB9IZN0tf4CLIZunj4gS8e0YU/Y 736EXRz5MHk6g+CxnOLM/4N1iIVK31WRGBx2V2XY41wue/5cWWHY/TSL7lyU0Q9y1YPbKnd3kz4 yuJYdJAnaJtqydkGzFGZmtJeTHZauzOGUevEieD/vdxCKTlYsIBIfOqgOTr+AWvxgcAcQw+pNue UyErdr8iUXRmfPkuz0yG6yHCdwBgMmipkoax9/lKTDAr76TH
 X-Developer-Key: i=u.kleine-koenig@baylibre.com; a=openpgp; fpr=0D2511F322BFAB1C1580266BE2DCDD9132669BD6
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261110_135601_891312_619A6F2B 
-X-CRM114-Status: GOOD (  12.86  )
+X-CRM114-CacheID: sfid-20261110_135613_949565_1AD8EBAA 
+X-CRM114-Status: GOOD (  14.00  )
 X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -116,30 +119,46 @@ X-Spam-Status: No, score=-18.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Since commit 5ab23c7923a1 ("modpost: Create modalias for builtin
-modules") MODULE_DEVICE_TABLE() is enough to reference a device id array
-even if the driver is built-in. So mt6360_of_id[] is always used and the
-__maybe_unused marker serves no purpose and can be dropped.
+The drivers explicitly set the .driver_data member of struct
+platform_device_id to zero without relying on that value. Drop these
+unused assignments
+
+This patch doesn't modify the compiled arrays, only their representation
+in source form benefits.
 
 Reviewed-by: Linus Walleij <linusw@kernel.org>
 Signed-off-by: Uwe Kleine-König (The Capable Hub) <u.kleine-koenig@baylibre.com>
 ---
- drivers/mfd/mt6360-core.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ drivers/mfd/cros_ec_dev.c | 2 +-
+ drivers/mfd/mt6397-core.c | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/mfd/mt6360-core.c b/drivers/mfd/mt6360-core.c
-index 8a97c30cad3f..8263e3ff8315 100644
---- a/drivers/mfd/mt6360-core.c
-+++ b/drivers/mfd/mt6360-core.c
-@@ -606,7 +606,7 @@ static int mt6360_resume(struct device *dev)
+diff --git a/drivers/mfd/cros_ec_dev.c b/drivers/mfd/cros_ec_dev.c
+index 529a23b804f7..96aac158fd8b 100644
+--- a/drivers/mfd/cros_ec_dev.c
++++ b/drivers/mfd/cros_ec_dev.c
+@@ -379,7 +379,7 @@ static void ec_device_remove(struct platform_device *pdev)
+ }
  
- static DEFINE_SIMPLE_DEV_PM_OPS(mt6360_pm_ops, mt6360_suspend, mt6360_resume);
- 
--static const struct of_device_id __maybe_unused mt6360_of_id[] = {
-+static const struct of_device_id mt6360_of_id[] = {
- 	{ .compatible = "mediatek,mt6360", },
- 	{},
+ static const struct platform_device_id cros_ec_id[] = {
+-	{ DRV_NAME, 0 },
++	{ DRV_NAME },
+ 	{ /* sentinel */ }
  };
+ MODULE_DEVICE_TABLE(platform, cros_ec_id);
+diff --git a/drivers/mfd/mt6397-core.c b/drivers/mfd/mt6397-core.c
+index 5d5f816492aa..e74936ac206f 100644
+--- a/drivers/mfd/mt6397-core.c
++++ b/drivers/mfd/mt6397-core.c
+@@ -435,7 +435,7 @@ static const struct of_device_id mt6397_of_match[] = {
+ MODULE_DEVICE_TABLE(of, mt6397_of_match);
+ 
+ static const struct platform_device_id mt6397_id[] = {
+-	{ "mt6397", 0 },
++	{ "mt6397" },
+ 	{ },
+ };
+ MODULE_DEVICE_TABLE(platform, mt6397_id);
 -- 
 2.56.0.rc1
 
