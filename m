@@ -2,37 +2,36 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id BDDBA60A2606
-	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Nov 2026 17:22:05 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id CB485606A33C
+	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Nov 2026 17:22:06 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=b//aPmJD
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=GTEZCPBu
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Unsubscribe-Post:List-Owner;
-	bh=GEmhqoKBqwQlH70Y7aS0Pdx89Lkc5hycHMCshw3pUM8=; b=b//aPmJDO/2+SH4XGqB36sXWQ/
-	Nonlk0hqwiQ+4S0QTCmAmA6Hnk60KAFnFiVCUmqlZZ44mOMsN3t1ctvEjguB+QrBnKZtJ4xDqeEM/
-	op8BBgdqru19S8yIrK2WQFqE9epLMkuTHjGARctszIZQ+rb1/G6HWLchSpmR9oFaCf83pGXe4PlIM
-	Gta7HiMC8VaPWEszDYJEBJj6MlyJEnLGNYqIYZL7XvtYAV1DOWm3YW/0adWQXV+bbNQ2+UmTk7lOD
-	T4f1uukSidVBWF944zkPvevZkyP9huUSz05sCB319LXikjfUgTWr9y3COX/78Bd/FoJBPl41k2jaK
-	PSAQF2Gg==;
+	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Unsubscribe-Post:
+	List-Owner; bh=AEi1yAbNDHs7LRU8b5V/4XKfG/FYEAHp+93KsT9otlk=; b=GTEZCPBuFoPJhp
+	m3IeESriIz6XdsuHORqZ9JqJqrJ6/23amJjnGrW6poeFkkwT1bg0rQfmEMyGeyUPU0u9bItnnrqEB
+	4wIAPnszD6sl6KQbrCShuyeQ2utTLkTy3B2OInb/0IAGddfI3ELQzIRpIFbxGIXqisLkFiuFEyMF0
+	AoWurDXG/pwde8Hbp2XBO0PX57++qgTiVqr0z18aJIajzha1/uU4hhKgVBui19j3H+5Wa6h9dWADw
+	mTnsQE8RFlGHPAa56mXL5sBL+bQpJI0Wg35/FMDXufBxjmmyD06y/lSP1Bpg0mtpvb8tUZpfs0m4F
+	sx7+GplD42Yd6qYMGm9w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xQpXn-00000004fYJ-10Ax;
-	Tue, 10 Nov 2026 17:22:03 +0000
+	id 1xQpXq-00000004fbI-2FJ1;
+	Tue, 10 Nov 2026 17:22:06 +0000
 Received: from nbd.name ([46.4.11.11])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xQpXj-00000004fVu-4AmD;
-	Tue, 10 Nov 2026 17:22:01 +0000
+	id 1xQpXj-00000004fVv-44ZI;
+	Tue, 10 Nov 2026 17:22:02 +0000
 Received: from [2a04:4540:1403:9bfc:b113:5373:d0ec:2ad1] (helo=bertha10..)
 	by ds12 with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.96)
 	(envelope-from <john@phrozen.org>)
-	id 1xQpXU-001C99-0U;
-	Tue, 10 Nov 2026 18:21:44 +0100
+	id 1xQpXV-001C99-0e;
+	Tue, 10 Nov 2026 18:21:45 +0100
 From: John Crispin <john@phrozen.org>
 To: Rob Herring <robh@kernel.org>,
 	Krzysztof Kozlowski <krzk+dt@kernel.org>,
@@ -51,17 +50,18 @@ Cc: Christian Marangi <ansuelsmth@gmail.com>,
 	upstream@airoha.com,
 	Weifeng.xu@airoha.com,
 	zhengping.zhang@airoha.com
-Subject: [PATCH 0/3] arm64: dts: airoha: add AN7589 support
-Date: Tue, 10 Nov 2026 18:21:40 +0100
-Message-Id: <20261110172143.296304-1-john@phrozen.org>
+Subject: [PATCH 3/3] arm64: dts: airoha: add AN7589 evaluation board
+Date: Tue, 10 Nov 2026 18:21:43 +0100
+Message-Id: <20261110172143.296304-4-john@phrozen.org>
 X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20261110172143.296304-1-john@phrozen.org>
+References: <20261110172143.296304-1-john@phrozen.org>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261110_092200_033423_BD7E2866 
-X-CRM114-Status: UNSURE (   9.03  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20261110_092200_012966_8FBAC21F 
+X-CRM114-Status: GOOD (  13.30  )
 X-Spam-Score: -1.9 (-)
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -73,37 +73,59 @@ List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-11.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
+	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-The Airoha AN7589 is a quad Cortex-A73 SoC. This series adds its board
-compatibles, a base SoC dtsi with the CPUs, PSCI, the GICv3, the
-architected timer and the console UART, and the device tree of the
-evaluation board with 2 GiB of DRAM.
+Add the device tree for the Airoha AN7589 evaluation board, with 2 GiB
+of DRAM and the console on UART1.
 
-The remaining blocks follow with the series of their drivers.
-
-The series applies to next-20261105 and has no dependencies.
-
-John Crispin (3):
-  dt-bindings: arm: airoha: add AN7589
-  arm64: dts: airoha: add AN7589 SoC dtsi
-  arm64: dts: airoha: add AN7589 evaluation board
-
- .../devicetree/bindings/arm/airoha.yaml       |   4 +
- arch/arm64/boot/dts/airoha/Makefile           |   1 +
- arch/arm64/boot/dts/airoha/an7589-evb.dts     |  22 +++
- arch/arm64/boot/dts/airoha/an7589.dtsi        | 134 ++++++++++++++++++
- 4 files changed, 161 insertions(+)
+Signed-off-by: John Crispin <john@phrozen.org>
+---
+ arch/arm64/boot/dts/airoha/Makefile       |  1 +
+ arch/arm64/boot/dts/airoha/an7589-evb.dts | 22 ++++++++++++++++++++++
+ 2 files changed, 23 insertions(+)
  create mode 100644 arch/arm64/boot/dts/airoha/an7589-evb.dts
- create mode 100644 arch/arm64/boot/dts/airoha/an7589.dtsi
 
-
-base-commit: ddfe51b0a0f5dc9e415cc2c8ad8db17532dd426b
+diff --git a/arch/arm64/boot/dts/airoha/Makefile b/arch/arm64/boot/dts/airoha/Makefile
+index ebea112ce1d7..78146871db77 100644
+--- a/arch/arm64/boot/dts/airoha/Makefile
++++ b/arch/arm64/boot/dts/airoha/Makefile
+@@ -1,2 +1,3 @@
+ # SPDX-License-Identifier: GPL-2.0-only
++dtb-$(CONFIG_ARCH_AIROHA) += an7589-evb.dtb
+ dtb-$(CONFIG_ARCH_AIROHA) += en7581-evb.dtb
+diff --git a/arch/arm64/boot/dts/airoha/an7589-evb.dts b/arch/arm64/boot/dts/airoha/an7589-evb.dts
+new file mode 100644
+index 000000000000..eadba7154350
+--- /dev/null
++++ b/arch/arm64/boot/dts/airoha/an7589-evb.dts
+@@ -0,0 +1,22 @@
++// SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
++/dts-v1/;
++
++#include "an7589.dtsi"
++
++/ {
++	model = "Airoha AN7589 Evaluation Board";
++	compatible = "airoha,an7589-evb", "airoha,an7589";
++
++	aliases {
++		serial0 = &uart1;
++	};
++
++	chosen {
++		stdout-path = "serial0:115200n8";
++	};
++
++	memory@80000000 {
++		device_type = "memory";
++		reg = <0x0 0x80000000 0x0 0x80000000>;
++	};
++};
 -- 
 2.34.1
 
