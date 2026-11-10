@@ -2,74 +2,77 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id A51B0606A331
-	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Nov 2026 18:03:07 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 06255606A323
+	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Nov 2026 18:28:08 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=kpK+BOoy;
-	dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=jSAsQhPh
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=ng9uRtMP;
+	dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=EY9kJahW
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-Id:Date:References:
-	In-Reply-To:Cc:To:From:Subject:Content-Transfer-Encoding:Content-Type:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Unsubscribe-Post:
-	List-Owner; bh=FdrF6gRb5kv3fMUiNm0TDXE3caMdIIRZAt7cwY9vsd4=; b=kpK+BOoySX57bK
-	ENtB5XcxbA0c1QAeIIBGjpnNnLvtecqobNVLX7W85GZq6OjAUyhaLP7tha4RS6A4QxrVn5nsSfG7C
-	swQB5mGhkioYkEWMFnEfllG2saxZfKiEIILLo2vkQ4Ba5m3J0P09v+IvVeL53EjKRttwdebPGaeNZ
-	+1X1lVbS+Kq2Moh+LuFBZrLps4z2malbVJpLYR0Km8LAIGsMBCijPHGfR7PrVvHfygIsh2/taFUjD
-	H5gmWTJ7BuitNO/MST/5WSGIbgjqInR6zaSip7II+vyVI04XoRkpr+cahk4XEsKoztK2QxaOezZtl
-	BEvEju4kpm49L06ExowQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Unsubscribe-Post:List-Owner;
+	bh=M+aCGpxDDWKZIbUP3XUcpN5E3gNDE7DhU6lbG83ghVo=; b=ng9uRtMPyHKtWj0i2LN+SNrJr3
+	kXA8lAVr1wan1soRKU4ox1J4fQ33YbRMsvOX0VyBfTs3ONozw1JajzqShE4ZXI3EBFKG2eeMmFRfr
+	XmIKOz6WU5Q+dmHOhBwNTaucPcpvYG3r80iEb0tUFyhCcy3/Iyk1GJr1niMKBnPVhtT9k++7ZMr3u
+	aHtqWOgbGM7unSKh8SbOKdRWBcp+GWgc6ozmxAwDfYPww2sGaqLP8JDk0fGSQ9mDDw7/CTUPjqti3
+	112+G+f1J5mEhx+0muVotVOnmx4fHBHLA0Lu+7sRTxQdtPkrUm0CDCVJPTEg06VNnBOyj/gZd7dDw
+	XcBnYcGw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xQqBX-00000004koB-1SKy;
-	Tue, 10 Nov 2026 18:03:07 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1xQqZj-00000004nCd-2Exz;
+	Tue, 10 Nov 2026 18:28:07 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xQqBV-00000004knX-0T7V;
-	Tue, 10 Nov 2026 18:03:05 +0000
+	id 1xQqZi-00000004nC5-29H9
+	for linux-mediatek@lists.infradead.org;
+	Tue, 10 Nov 2026 18:28:06 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 7C04163AB6;
-	Tue, 10 Nov 2026 18:03:04 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 11A951F0089F;
-	Tue, 10 Nov 2026 18:03:04 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 8406263AE9;
+	Tue, 10 Nov 2026 18:28:05 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 06C161F008A3;
+	Tue, 10 Nov 2026 18:28:00 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1794333784;
-	bh=FdrF6gRb5kv3fMUiNm0TDXE3caMdIIRZAt7cwY9vsd4=;
-	h=Subject:From:To:Cc:In-Reply-To:References:Date;
-	b=jSAsQhPhEtYDWxk+k5+6vO77EtudHG8+iEH9B0buqfrNjXVMxVLfQsNPDwtUq2eUK
-	 qU3lPFBFSS+yE31p3iKnd0KnjL9BBZLGSKRq/94JeqZe+Y6g64037JUVfEVY+YpZ5M
-	 v0JzJDbfjQ6Q4l7qSztpmSJveIynKXFhU8q36PSlXz15xYc0ca7wVO04Ey9gJN6zmN
-	 yF9Y7P6zzWfXzraT6rgB4djo8CT+vQygMl9zNGSsKU6UHltVNeQQx/2CX3+7hXUMZG
-	 XV1zSdAO05mmG3GGyjO1/Jl9AiOjc10fGtx7HvRQZvocOsFetSW60XzEKupfIc760R
-	 Md1aMV5233kgw==
-Received: from traversing.sirena.org.uk (localhost [IPv6:::1])
-	by traversing.sirena.org.uk (Postfix) with ESMTP id 12A223167791;
-	Tue, 10 Nov 2026 18:03:02 +0000 (GMT)
+	s=k20260515; t=1794335285;
+	bh=M+aCGpxDDWKZIbUP3XUcpN5E3gNDE7DhU6lbG83ghVo=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To;
+	b=EY9kJahWhBIo3O2c6Q4lTUWY2m/RnZbkKJNkfNxFljL2jk5FKQRCeqik38Kv77NK5
+	 p67iQ0PAGL+ADzPe0jDDiYOHRUEAODloSbk8zE4dXswLYFFg939oc3PlCFEdjyxlqj
+	 ORSmkuT74lUcn80ghySpjuViW8AFoAfK33acVN6tVoVLVtL3BmOi/xuKuGSQBEj8A3
+	 AeseLMpCHf9N7x/Sa7ym7UdJdytkxEDIwcPqyZmVeyD2yL+IBUlPXJRuVmAn+FzaQ3
+	 K2mRYmteaH18alwG7y8tckf4GTEIMNqGJPdCA8XcP/gFg7lmheNqUpIyNe5MUy/PiQ
+	 gkacUho5DcANQ==
+Date: Tue, 10 Nov 2026 18:27:58 +0000
+From: Conor Dooley <conor@kernel.org>
+To: John Crispin <john@phrozen.org>
+Cc: Lorenzo Bianconi <lorenzo@kernel.org>, Lee Jones <lee@kernel.org>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Linus Walleij <linusw@kernel.org>,
+	Bartosz Golaszewski <brgl@kernel.org>,
+	Ahmed Naseef <naseefkm@gmail.com>,
+	Benjamin Larsson <benjamin.larsson@genexis.eu>,
+	Christian Marangi <ansuelsmth@gmail.com>,
+	devicetree@vger.kernel.org, lei.dong@airoha.com,
+	Linqi.zhang@airoha.com, linux-gpio@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
+	mfd@lists.linux.dev,
+	Mikhail Kshevetskiy <mikhail.kshevetskiy@iopsys.eu>,
+	Rajeev.kumar@airoha.com, upstream@airoha.com, Weifeng.xu@airoha.com,
+	zhengping.zhang@airoha.com
+Subject: Re: [PATCH 5/7] dt-bindings: pinctrl: airoha: add AN7589
+Message-ID: <20261110-attribute-animosity-720536bc561a@spud>
+References: <20261110173941.301478-1-john@phrozen.org>
+ <20261110173941.301478-6-john@phrozen.org>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Subject: Re: [PATCH] regulator: mt6363: Serialize BUCK_TOP key access
-From: Mark Brown <broonie@kernel.org>
-To: Alexandre Mergnat <amergnat@baylibre.com>
-Cc: Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org
-In-Reply-To: <20261109-rgp-91-mt6363-key-lock-v1-1-ea3b03a76997@baylibre.com>
-References: <20261109-rgp-91-mt6363-key-lock-v1-1-ea3b03a76997@baylibre.com>
-Date: Tue, 10 Nov 2026 18:03:01 +0000
-Message-Id: <179433378119.125181.9313475186309265540.b4-review@b4>
-X-Mailer: b4 0.17-dev
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1182; i=broonie@kernel.org;
- h=from:subject:message-id; bh=pptdLPFeSS4LxiB7AY1YPgt3NQJtNKvPqiI9Z4P4EtQ=;
- b=owGbwMvMwCWm/754w+YLFp2Mp9WSGLI+x4S+reWY2RJfd+Z3s1B+p4EVx4NtOVyb/mmwzxCJc
- AmUUnnRUcrCIMbFICumyBKXxf2yvuT1Gr6DC9tg5rAygQxh4OIUgIkY6zAybOqan7S/70AEv/Oz
- d80LLAqfmMvHKu8WeWH0W/0Ex6bE8wz/9LdN2V1oWzt36dsYph9vOzwm5qqZXUxW0PLOsni2beM
- MVgA=
-X-Developer-Key: i=broonie@kernel.org; a=openpgp;
- fpr=3F2568AAC26998F9E813A1C5C3F436CA30F5D8EB
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="FyZVtBqZ4S/8tzNc"
+Content-Disposition: inline
+In-Reply-To: <20261110173941.301478-6-john@phrozen.org>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,37 +83,613 @@ List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-13.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-10.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,
 	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no
-	version=4.0.1
+	SPF_HELO_NONE,SPF_PASS autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-> The bits that select the FAST mode of the bucks only accept writes
-> while the BUCK_TOP key is unlocked. mt6363_regulator_set_mode() unlocks
-> the key, updates the bit and locks the key again, but the regulator
-> core only locks the buck being changed. When two bucks change mode at
-> the same time, one of them can lock the key between the unlock and
-> the mode write of the other. The PMIC then ignores that write, and
-> regulator_set_mode() returns 0 while the buck stays in its previous
-> mode. mt6363_va15_set_voltage_sel() unlocks and locks the same key,
-> so it can also lock it during a buck mode change.
-> 
-> Hold a mutex from each unlock of the key to its relock, in the FAST bit
-> writes and in the VA15 voltage setter.
+--FyZVtBqZ4S/8tzNc
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-> @@ -508,6 +519,8 @@ static int mt6363_va15_set_voltage_sel(struct regulator_dev *rdev, unsigned int
->  	struct regmap *regmap = rdev->regmap;
->  	int ret;
->  
-> +	guard(mutex)(&mt6363_buck_top_lock);
+On Tue, Nov 10, 2026 at 06:39:39PM +0100, John Crispin wrote:
 
-This function uses goto for error handling, as documented in cleanup.h
-you shouldn't mix the two styles since it tends to break often in ways
-that the compiler notices and errors on.
+> diff --git a/Documentation/devicetree/bindings/pinctrl/airoha,an7589-pinc=
+trl.yaml b/Documentation/devicetree/bindings/pinctrl/airoha,an7589-pinctrl.=
+yaml
+> new file mode 100644
+> index 000000000000..546e333f3467
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/pinctrl/airoha,an7589-pinctrl.yaml
+> @@ -0,0 +1,533 @@
+> +# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
+> +%YAML 1.2
+> +---
+> +$id: http://devicetree.org/schemas/pinctrl/airoha,an7589-pinctrl.yaml#
+> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> +
+> +title: Airoha AN7589 Pin Controller
+> +
+> +maintainers:
+> +  - John Crispin <john@phrozen.org>
+> +
+> +description:
+> +  The Airoha AN7589 pin controller is used to control SoC pins. Pin
+> +  functions are selected through a separate IOMUX register block, one
+> +  mode field per pin. Every pin is a GPIO in mode 0.
+> +
+> +properties:
+> +  compatible:
+> +    const: airoha,an7589-pinctrl
+> +
+> +  airoha,iomux:
+> +    $ref: /schemas/types.yaml#/definitions/phandle
+> +    description:
+> +      Phandle to the IOMUX syscon holding the per pin mode fields.
+> +
+> +  interrupts:
+> +    maxItems: 1
+> +
+> +  gpio-controller: true
+> +
+> +  '#gpio-cells':
+> +    const: 2
+> +
+> +  gpio-ranges:
+> +    maxItems: 1
+> +
+> +  interrupt-controller: true
+> +
+> +  '#interrupt-cells':
+> +    const: 2
+> +
+> +allOf:
+> +  - $ref: pinctrl.yaml#
+> +
+> +required:
+> +  - compatible
+> +  - airoha,iomux
+> +  - interrupts
+> +  - gpio-controller
+> +  - "#gpio-cells"
+> +  - interrupt-controller
+> +  - "#interrupt-cells"
+> +
+> +patternProperties:
+> +  '-pins$':
+> +    type: object
+> +
+> +    patternProperties:
+> +      '^mux(-|$)':
+> +        type: object
+> +
+> +        description:
+> +          pinmux configuration nodes.
+> +
+> +        $ref: /schemas/pinctrl/pinmux-node.yaml
+> +
+> +        properties:
+> +          function:
+> +            description:
+> +              A string containing the name of the function to mux to the=
+ group.
+> +            enum: [uart1, uart2, uart3, uart4, uart5, uart6, i2c0, i2c1,
+> +                   i2c2, i2c3, i2c4, spi, ext_spi1, ext_spi2, ext_spi3,
+> +                   pcm1, pcm2, pcm_spi, i2s, mdio0, mdio1, mdio2, mdcs,
+> +                   mdios, emmc, pcie0, pcie1, pcie2, pon1, pon2, sgpio0,
+> +                   sgpio1, watchdog, shiftmux_spi, tod, sync_e, cpu_jtag,
+> +                   npu_jtag, ibex_jtag, pma50eth_jtag, ainpu_jtag,
+> +                   pma50pon_jtag, pwm]
+> +
+> +          groups:
+> +            description:
+> +              An array of strings. Each string contains the name of a gr=
+oup.
+> +
+> +        required:
+> +          - function
+> +          - groups
+> +
+> +        allOf:
+> +          - if:
+> +              properties:
+> +                function:
+> +                  const: uart1
+> +            then:
+> +              properties:
+> +                groups:
+> +                  enum: [uart1]
 
--- 
-Mark Brown <broonie@kernel.org>
+This stuff here is a signal to me that the functions are too detailed.
+Each group here can only be one uart, so all you need is a function
+called "uart"?
+
+That said, you need to define the groups as you've done for the
+functions.
+
+> +          - if:
+> +              properties:
+> +                function:
+> +                  const: uart2
+> +            then:
+> +              properties:
+> +                groups:
+> +                  enum: [uart2]
+> +          - if:
+> +              properties:
+> +                function:
+> +                  const: uart3
+> +            then:
+> +              properties:
+> +                groups:
+> +                  items:
+> +                    enum: [uart3, uart3_alt]
+> +                  maxItems: 2
+> +          - if:
+> +              properties:
+> +                function:
+> +                  const: uart4
+> +            then:
+> +              properties:
+> +                groups:
+> +                  enum: [uart4]
+> +          - if:
+> +              properties:
+> +                function:
+> +                  const: uart5
+> +            then:
+> +              properties:
+> +                groups:
+> +                  items:
+> +                    enum: [uart5, uart5_alt, uart5_full]
+> +                  maxItems: 3
+> +          - if:
+> +              properties:
+> +                function:
+> +                  const: uart6
+> +            then:
+> +              properties:
+> +                groups:
+> +                  items:
+> +                    enum: [uart6, uart6_full]
+> +                  maxItems: 2
+> +          - if:
+> +              properties:
+> +                function:
+> +                  const: i2c0
+> +            then:
+> +              properties:
+> +                groups:
+> +                  enum: [i2c0]
+
+It's the same ehre, seemingly i2c0 can only go to the group named i2c0,
+so there's no point having each i2c as a different function.
+
+
+This seems to apply to every function here, so the binding can be
+simplified significantly.
+
+pw-bot: changes-requested
+
+Thanks,
+Conor.
+
+> +          - if:
+> +              properties:
+> +                function:
+> +                  const: i2c1
+> +            then:
+> +              properties:
+> +                groups:
+> +                  enum: [i2c1]
+> +          - if:
+> +              properties:
+> +                function:
+> +                  const: i2c2
+> +            then:
+> +              properties:
+> +                groups:
+> +                  enum: [i2c2]
+> +          - if:
+> +              properties:
+> +                function:
+> +                  const: i2c3
+> +            then:
+> +              properties:
+> +                groups:
+> +                  enum: [i2c3]
+> +          - if:
+> +              properties:
+> +                function:
+> +                  const: i2c4
+> +            then:
+> +              properties:
+> +                groups:
+> +                  enum: [i2c4]
+> +          - if:
+> +              properties:
+> +                function:
+> +                  const: spi
+> +            then:
+> +              properties:
+> +                groups:
+> +                  items:
+> +                    enum: [spi0, ext_spi0_full]
+> +                  maxItems: 2
+> +          - if:
+> +              properties:
+> +                function:
+> +                  const: ext_spi1
+> +            then:
+> +              properties:
+> +                groups:
+> +                  items:
+> +                    enum: [ext_spi1, ext_spi1_full]
+> +                  maxItems: 2
+> +          - if:
+> +              properties:
+> +                function:
+> +                  const: ext_spi2
+> +            then:
+> +              properties:
+> +                groups:
+> +                  items:
+> +                    enum: [ext_spi2, ext_spi2_full]
+> +                  maxItems: 2
+> +          - if:
+> +              properties:
+> +                function:
+> +                  const: ext_spi3
+> +            then:
+> +              properties:
+> +                groups:
+> +                  items:
+> +                    enum: [ext_spi3, ext_spi3_full]
+> +                  maxItems: 2
+> +          - if:
+> +              properties:
+> +                function:
+> +                  const: pcm1
+> +            then:
+> +              properties:
+> +                groups:
+> +                  enum: [pcm1]
+> +          - if:
+> +              properties:
+> +                function:
+> +                  const: pcm2
+> +            then:
+> +              properties:
+> +                groups:
+> +                  enum: [pcm2]
+> +          - if:
+> +              properties:
+> +                function:
+> +                  const: pcm_spi
+> +            then:
+> +              properties:
+> +                groups:
+> +                  items:
+> +                    enum: [pcm_spi, pcm_spi_cs, pcm_ctrl]
+> +                  maxItems: 3
+> +          - if:
+> +              properties:
+> +                function:
+> +                  const: i2s
+> +            then:
+> +              properties:
+> +                groups:
+> +                  enum: [i2s]
+> +          - if:
+> +              properties:
+> +                function:
+> +                  const: mdio0
+> +            then:
+> +              properties:
+> +                groups:
+> +                  enum: [mdio0]
+> +          - if:
+> +              properties:
+> +                function:
+> +                  const: mdio1
+> +            then:
+> +              properties:
+> +                groups:
+> +                  enum: [mdio1]
+> +          - if:
+> +              properties:
+> +                function:
+> +                  const: mdio2
+> +            then:
+> +              properties:
+> +                groups:
+> +                  enum: [mdio2]
+> +          - if:
+> +              properties:
+> +                function:
+> +                  const: mdcs
+> +            then:
+> +              properties:
+> +                groups:
+> +                  enum: [mdcs]
+> +          - if:
+> +              properties:
+> +                function:
+> +                  const: mdios
+> +            then:
+> +              properties:
+> +                groups:
+> +                  enum: [mdios]
+> +          - if:
+> +              properties:
+> +                function:
+> +                  const: emmc
+> +            then:
+> +              properties:
+> +                groups:
+> +                  enum: [emmc]
+> +          - if:
+> +              properties:
+> +                function:
+> +                  const: pcie0
+> +            then:
+> +              properties:
+> +                groups:
+> +                  items:
+> +                    enum: [pcie0_rst, pcie0_clkreq, pcie0_wake]
+> +                  maxItems: 3
+> +          - if:
+> +              properties:
+> +                function:
+> +                  const: pcie1
+> +            then:
+> +              properties:
+> +                groups:
+> +                  items:
+> +                    enum: [pcie1_rst, pcie1_clkreq, pcie1_wake]
+> +                  maxItems: 3
+> +          - if:
+> +              properties:
+> +                function:
+> +                  const: pcie2
+> +            then:
+> +              properties:
+> +                groups:
+> +                  items:
+> +                    enum: [pcie2_rst, pcie2_clkreq, pcie2_wake]
+> +                  maxItems: 3
+> +          - if:
+> +              properties:
+> +                function:
+> +                  const: pon1
+> +            then:
+> +              properties:
+> +                groups:
+> +                  enum: [pon1]
+> +          - if:
+> +              properties:
+> +                function:
+> +                  const: pon2
+> +            then:
+> +              properties:
+> +                groups:
+> +                  enum: [pon2]
+> +          - if:
+> +              properties:
+> +                function:
+> +                  const: sgpio0
+> +            then:
+> +              properties:
+> +                groups:
+> +                  enum: [sgpio0]
+> +          - if:
+> +              properties:
+> +                function:
+> +                  const: sgpio1
+> +            then:
+> +              properties:
+> +                groups:
+> +                  enum: [sgpio1]
+> +          - if:
+> +              properties:
+> +                function:
+> +                  const: watchdog
+> +            then:
+> +              properties:
+> +                groups:
+> +                  enum: [watchdog]
+> +          - if:
+> +              properties:
+> +                function:
+> +                  const: shiftmux_spi
+> +            then:
+> +              properties:
+> +                groups:
+> +                  enum: [shiftmux_spi]
+> +          - if:
+> +              properties:
+> +                function:
+> +                  const: tod
+> +            then:
+> +              properties:
+> +                groups:
+> +                  enum: [tod]
+> +          - if:
+> +              properties:
+> +                function:
+> +                  const: sync_e
+> +            then:
+> +              properties:
+> +                groups:
+> +                  enum: [sync_e]
+> +          - if:
+> +              properties:
+> +                function:
+> +                  const: cpu_jtag
+> +            then:
+> +              properties:
+> +                groups:
+> +                  enum: [cpu_jtag, cpu_jtag_alt]
+> +          - if:
+> +              properties:
+> +                function:
+> +                  const: npu_jtag
+> +            then:
+> +              properties:
+> +                groups:
+> +                  enum: [npu_jtag]
+> +          - if:
+> +              properties:
+> +                function:
+> +                  const: ibex_jtag
+> +            then:
+> +              properties:
+> +                groups:
+> +                  enum: [ibex_jtag]
+> +          - if:
+> +              properties:
+> +                function:
+> +                  const: pma50eth_jtag
+> +            then:
+> +              properties:
+> +                groups:
+> +                  enum: [pma50eth_jtag]
+> +          - if:
+> +              properties:
+> +                function:
+> +                  const: ainpu_jtag
+> +            then:
+> +              properties:
+> +                groups:
+> +                  enum: [ainpu_jtag]
+> +          - if:
+> +              properties:
+> +                function:
+> +                  const: pma50pon_jtag
+> +            then:
+> +              properties:
+> +                groups:
+> +                  enum: [pma50pon_jtag]
+> +          - if:
+> +              properties:
+> +                function:
+> +                  const: pwm
+> +            then:
+> +              properties:
+> +                groups:
+> +                  items:
+> +                    enum: [gpio0, gpio1, gpio2, gpio3, gpio4, gpio5, gpi=
+o6,
+> +                           gpio7, gpio8, gpio9, gpio10, gpio11, gpio12,
+> +                           gpio13, gpio14, gpio15]
+> +
+> +        additionalProperties: false
+> +
+> +      '^conf(-|$)':
+> +        type: object
+> +
+> +        description:
+> +          pinconf configuration nodes.
+> +
+> +        $ref: /schemas/pinctrl/pincfg-node.yaml
+> +
+> +        properties:
+> +          pins:
+> +            description:
+> +              An array of strings. Each string contains the name of a pi=
+n.
+> +            items:
+> +              pattern: '^gpio([0-9]|[1-6][0-9]|7[0-3])$'
+> +            minItems: 1
+> +            maxItems: 74
+> +
+> +          input-enable: true
+> +
+> +          output-enable: true
+> +
+> +          output-low: true
+> +
+> +          output-high: true
+> +
+> +        required:
+> +          - pins
+> +
+> +        additionalProperties: false
+> +
+> +    additionalProperties: false
+> +
+> +additionalProperties: false
+> +
+> +examples:
+> +  - |
+> +    #include <dt-bindings/interrupt-controller/arm-gic.h>
+> +
+> +    pinctrl {
+> +      compatible =3D "airoha,an7589-pinctrl";
+> +      airoha,iomux =3D <&iomux>;
+> +
+> +      interrupt-parent =3D <&gic>;
+> +      interrupts =3D <GIC_SPI 82 IRQ_TYPE_LEVEL_HIGH>;
+> +
+> +      gpio-controller;
+> +      #gpio-cells =3D <2>;
+> +
+> +      interrupt-controller;
+> +      #interrupt-cells =3D <2>;
+> +
+> +      gpio-ranges =3D <&pinctrl 0 0 74>;
+> +
+> +      mmc-pins {
+> +        mux {
+> +          function =3D "emmc";
+> +          groups =3D "emmc";
+> +        };
+> +      };
+> +
+> +      pcie0-pins {
+> +        mux {
+> +          function =3D "pcie0";
+> +          groups =3D "pcie0_rst", "pcie0_clkreq", "pcie0_wake";
+> +        };
+> +      };
+> +
+> +      uart5-pins {
+> +        mux {
+> +          function =3D "uart5";
+> +          groups =3D "uart5", "uart5_full";
+> +        };
+> +      };
+> +    };
+> diff --git a/MAINTAINERS b/MAINTAINERS
+> index aa647f5d37dd..2041a8aed28f 100644
+> --- a/MAINTAINERS
+> +++ b/MAINTAINERS
+> @@ -22137,6 +22137,8 @@ PIN CONTROLLER - AIROHA
+>  M:	Lorenzo Bianconi <lorenzo@kernel.org>
+>  L:	linux-mediatek@lists.infradead.org (moderated for non-subscribers)
+>  S:	Maintained
+> +F:	Documentation/devicetree/bindings/mfd/airoha,an7589-gpio-sysctl.yaml
+> +F:	Documentation/devicetree/bindings/pinctrl/airoha,an7589-pinctrl.yaml
+>  F:	Documentation/devicetree/bindings/pinctrl/airoha,en7581-pinctrl.yaml
+>  F:	drivers/pinctrl/airoha/pinctrl-airoha.c
+> =20
+> --=20
+> 2.34.1
+>=20
+
+--FyZVtBqZ4S/8tzNc
+Content-Type: application/pgp-signature; name=signature.asc
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCavNiLgAKCRB4tDGHoIJi
+0iYAAQDOSVgdOB003hKGiPNMIS5sPE6yEAqTn2joBxcrwLQn7AEAqtd04bIgGsZu
+SXSSHtx+Ip54oDxfQTfyPM7lWuNkqQo=
+=kaEI
+-----END PGP SIGNATURE-----
+
+--FyZVtBqZ4S/8tzNc--
 
