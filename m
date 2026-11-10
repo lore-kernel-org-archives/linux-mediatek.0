@@ -2,64 +2,59 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 7380A60A5BEB
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id DD98760A6F44
 	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Nov 2026 12:09:06 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=hIryfT1h;
-	dkim=pass (2048-bit key) header.d=collabora.com header.i=@collabora.com header.a=rsa-sha256 header.s=mail header.b=ivIfBkg6
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=DhhqFn8G;
+	dkim=pass (2048-bit key) header.d=collabora.com header.i=@collabora.com header.a=rsa-sha256 header.s=mail header.b=k0SFM+Gv
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Unsubscribe-Post:List-Owner;
-	bh=MSLoVk874f54dyaO5Erk/rLRwG/Enessr1TXDHq51u0=; b=hIryfT1hTlViRy9KruXMG2wcbg
-	Mzu7wmPtrm8SR+alQmKM7GnB6SU8PrzfOWMrWNfrBz/Dt3cS54B/c46bE65qWFMeK0fVeN8fs0HPM
-	dQ10i1TS0AtoImFDau+awD+YMH2f+8VHcCa6v5nNkpX/cxXNnmI0ggVkEm+yzsk8XrpObN5/W71kW
-	ye1UpOLNdRDg1Lqz4nTqRn5H44NgdxtDH61FjPZtfiqmZoXeNVqxQ1pDJmT/Iz7dMi8TFMmHhc2if
-	kSewfjbn7maYbDFTPrw8Ue376d995T37iVM+kAfyfKzU8tJkujBt2pKOFEEhV7EaIPPfE8WFoNGN8
-	oZeLSqvg==;
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Unsubscribe-Post:
+	List-Owner; bh=IxhCvfJIBJyaA2ATxGs3fIk1vG0uQA62+MwfTqo1X0M=; b=DhhqFn8Gq5ZkZr
+	lkNUgPLM/MQslXMV4uqyUYm45HxAY5SUobjKtii2dezSoM2V4iHI6pisIqWSGR7uvj9vidN/hAPOg
+	AkrTcVJq1q43ZWOCQDcZbw3132v6FwPIr88+yMEdhO4AIPq/9UhdI+sWeQW6BbCB+BmKMIxTCJ1ag
+	LQqeqda8Fo0lQVvvpagISlg5ZmZOpB0iLcT4Eg5p/ucQczl3vFtznoUTDOD9gmXFBfWzg8imW5XUE
+	b8fzR5ap6sNtLJnApAkEKEPr151iku/n9BegR1mm9e+f4pIY8Kp+URTUVIyibE7I+BQwrbDE/e3z9
+	7Xf3Y/SzHNQv/n3HP3/w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xQkew-00000003km6-0JcF;
+	id 1xQkew-00000003kmn-1V6w;
 	Tue, 10 Nov 2026 12:09:06 +0000
 Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xQkes-00000003kig-1UlC;
+	id 1xQket-00000003kiz-0fJi;
 	Tue, 10 Nov 2026 12:09:04 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1794312538;
-	bh=0dtvKEKu/71R4CYmq7iaHMNTzXKLvIiGByglTAieoOk=;
-	h=From:Subject:Date:To:Cc:From;
-	b=ivIfBkg6Z2NA3g7m5HezVfna1FDDuUAAWibgGg1VrfRR7fRySt4TXfrE6gOzd+P0n
-	 g9AGhcqytp9ZFMKXw7xPTawu8oCLkg4AH3zeAebFXfHv8Mn1pLqAz8G0ypOyk2+AHU
-	 yoDaI6XV5zTvI8Vhq4x1JioFOnVJ4cl5TvybDWVRICWEWAxOerB7b+zzLF4/ZKUuKI
-	 w69wq/KmnsMxYnhHVrrlfg2LICuiApouSOzMSNKkXoWzBhFptU/v7HzdTPQkWfCyvm
-	 qN9CN/aYiMYOXhiZ3T9TbaMK2w8+8g0nj2kfa3LB2ySCI+X8/sT4v476SyRu6UZEIH
-	 MJpXDms5kz7Sg==
+	s=mail; t=1794312541;
+	bh=pc0gMmdXl/8SnyaG/cc7eHGzGbww5CJsVOxiPSb3ZG0=;
+	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
+	b=k0SFM+Gv6dQieIs/4KcXVYUw8f0rvjSKjIpzcYwEgQPIMIPRzmCC/PyaUajFj0zzL
+	 l08NMrI9z7Rec1YtfQ+G41byOpFHX4G7oUjpBudV6lrNKum5eA91B1UFMxVEimRzsB
+	 zFSzDMX/geVAk40K2qekwyqBqhFRrma0DPGu0Nour2SEfQenBMsd+sIY7M8vDyn26Y
+	 ndlwjV1lN1I1elUgpQH2P0EMOhV6MomMKbYOnEU6dw4/h16Uw+GdzqasUj2gFfLDQ0
+	 sLahN35HOQV4rr3TIMXMLNacFji4NmRIZ9PdnEVBT1vWZwy5K0eE7xtROGQQBfYR9/
+	 QPZzt+RuX3bgA==
 Received: from yukiji.home (unknown [100.64.0.131])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: laeyraud)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id C08B717E02F2;
-	Tue, 10 Nov 2026 13:08:57 +0100 (CET)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 136BD17E09AB;
+	Tue, 10 Nov 2026 13:09:00 +0100 (CET)
 From: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
-Subject: [PATCH net-next v5 00/10] net/stmmac: Add Mediatek MT8189 support
-Date: Tue, 10 Nov 2026 13:08:47 +0100
-Message-Id: <20261110-dwmac-mediatek-mt8189-v5-0-7d99d6292962@collabora.com>
+Date: Tue, 10 Nov 2026 13:08:49 +0100
+Subject: [PATCH net-next v5 02/10] dt-bindings: net: mediatek-dwmac:
+ deprecate rx/tx delay vendor properties
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-X-B4-Tracking: v=1; b=H4sIAAAAAAAC/3XRzU7EIBDA8VdpOIsBhillT76H8cDH4BK3rbZY1
- 2z67pK6cROzPU4m/PgHLmymKdPMDs2FTbTkOY9DHfChYeHohlfiOdaZKaFaYQTw+NW7wHuK2RV
- 6433pZGe5jS4R2E5blKyefZ8o5fPmPrOBCh/oXNjL72aij896UbmuvZuJh7Hvczk0UbUWkdBog
- xq0Rxs1eAdGeeVQRICIJChu1jHPZZy+t/hFbti10+x0LpILLk0CjeRccPAUxtPJ+XFyjzVhUxd
- 1k6zSe5Kqkgbho9E1Kdl7EvxJUsh2T4IqKawvqLwPCfCepG+S3P2FRVcpdG2QOgUUSf+X1nX9A
- ew26pvyAQAA
-X-Change-ID: 20260703-dwmac-mediatek-mt8189-9dafe3984951
+Message-Id: <20261110-dwmac-mediatek-mt8189-v5-2-7d99d6292962@collabora.com>
+References: <20261110-dwmac-mediatek-mt8189-v5-0-7d99d6292962@collabora.com>
+In-Reply-To: <20261110-dwmac-mediatek-mt8189-v5-0-7d99d6292962@collabora.com>
 To: Andrew Lunn <andrew+netdev@lunn.ch>, 
  "David S. Miller" <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>, 
  Paolo Abeni <pabeni@redhat.com>, Rob Herring <robh@kernel.org>, 
@@ -78,19 +73,19 @@ Cc: kernel@collabora.com, netdev@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
  linux-stm32@st-md-mailman.stormreply.com, 
  Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>, 
- Andrew Lunn <andrew@lunn.ch>, 
  Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
 X-Mailer: b4 0.14.3
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1794312537; l=5981;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1794312537; l=2106;
  i=louisalexis.eyraud@collabora.com; s=20250113; h=from:subject:message-id;
- bh=0dtvKEKu/71R4CYmq7iaHMNTzXKLvIiGByglTAieoOk=;
- b=D7y0IxoV4cVW0fhM1mXnMLnQaQuzMBl6/XHv9ErVSjuARG7bSgB9RIaCshXc4aFPO1xxNQEoK
- 9qyWAlr++JODgwOXOAwZbthHkAeHeSr7Sr3Tg/NJdR5DNSoxwSCL6u4
+ bh=pc0gMmdXl/8SnyaG/cc7eHGzGbww5CJsVOxiPSb3ZG0=;
+ b=4pVR8gdOK+gDzLPVy2w47hx8D9Hlwyz0LnuMLtD+uej6gZaiVAqYTOgBkdrU7ssMlVcvL+ds+
+ NH4HcA+2lulDnYd+xO9gaCeeZlfRLrUepAXE25crSv20whyZYjl2VHI
 X-Developer-Key: i=louisalexis.eyraud@collabora.com; a=ed25519;
  pk=CHFBDB2Kqh4EHc6JIqFn69GhxJJAzc0Zr4e8QxtumuM=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261110_040902_594118_F55F26E5 
-X-CRM114-Status: GOOD (  14.72  )
+X-CRM114-CacheID: sfid-20261110_040903_426235_C891749B 
+X-CRM114-Status: UNSURE (   8.83  )
+X-CRM114-Notice: Please train this message.
 X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -102,135 +97,59 @@ List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-13.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-18.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,
-	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no
-	version=4.0.1
+	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=ham
+	autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-This series adds the Ethernet support for Mediatek MT8189 SoC and its
-variants (MT8371, MT8391). These SoC integrate a Gigabit Ethernet MAC
-with RGMII/RMII/MII interface, with a similar design than previous SoCs
-such MT8188 or MT8195.
+Deprecate 'mediatek,rx-delay-ps' and 'mediatek,tx-delay-ps' vendor
+properties because they duplicate standard properties from generic
+Ethernet controller bindings and have the same unit (picoseconds).
 
-This series is based on net-next tree (sha1: d26955e57475).
-It has been tested on Mediatek Genio 520-EVK (MT8371) and 720-EVK
-(MT8391) boards, which both integrate an Airoha AN8801R Ethernet
-PHY, with hardware enablement series ([1]).
-It has been also tested on Mediatek Genio 510-EVK (MT8370, variant of
-MT8188) and 1200-EVK (MT8395, variant of MT8195).
-
-[1]: https://lore.kernel.org/linux-mediatek/20260924-add-mediatek-genio-520-720-evk-v3-0-2ec5c80677d4@collabora.com/
-
+Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
+Signed-off-by: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
 ---
-Changes in v5:
-- Rebased on net-next (sha1: d26955e57475)
-- Added received trailers in patch 2 and 3
-- Updated commit message in patch 2 (K. Kozlowski)
-- Fixed in patch 6 max delay values check and wrong value in error log
-  in mediatek_dwmac_config_dt function (Sashiko)
-- Link to v4: https://lore.kernel.org/r/20261103-dwmac-mediatek-mt8189-v4-0-c86c14fc50f4@collabora.com
+ Documentation/devicetree/bindings/net/mediatek-dwmac.yaml | 6 ++++++
+ 1 file changed, 6 insertions(+)
 
-Changes in v4:
-- Rebased on net-next (sha1: 7b6ab4dbc156)
-- Added Reviewed-By and Acked-by trailers in patch 1
-- Added patch 2 to add deprecated flag in the mediatek,tx/rx-delay-ps
-  vendor property and update their description (A. Lunn)
-- Dropped in patch 3 mediatek,tx/rx-delay-ps description changes
-  in bindings and patch description (A. Lunn)
-- Patch 4:
-  - Used single delay stage divider define for both RX and TX case
-    to simplify implementation
-  - Added MII delay definitions 
-  - Dropped Reviewed-By trailer due to changes
-- Patch 5:
-  - Fixed MII/RGMII delay stage divider inversion (Sashiko) 
-  - Used single delay stage divider define for both RX and TX case
-    to simplify implementation
-- Added patch 6 to add the standard internal delay properties use
-- Patch 7:
-  - Renamed delay stage divider fields in variant struct (M. Chevallier)
-  - Simplified patch implementation by using one delay stage divider
-    per mode in variant structure and commonizing delay computation
-    in new single private function
-- Dropped "net: stmac: mediatek: use TX clock phase shift in RGMII mode
-  with 1Gbps speed" previously present in v2 and v3, as suggested by A.
-  Lunn
-- Rebased patches 8 to 10 over previous patches modifications
-- Link to v3: https://lore.kernel.org/r/20261016-dwmac-mediatek-mt8189-v3-0-25daf2bbcf35@collabora.com
+diff --git a/Documentation/devicetree/bindings/net/mediatek-dwmac.yaml b/Documentation/devicetree/bindings/net/mediatek-dwmac.yaml
+index 14f9683f20fe..956240616638 100644
+--- a/Documentation/devicetree/bindings/net/mediatek-dwmac.yaml
++++ b/Documentation/devicetree/bindings/net/mediatek-dwmac.yaml
+@@ -80,6 +80,7 @@ properties:
+       interface and timing delay.
+ 
+   mediatek,tx-delay-ps:
++    deprecated: true
+     description:
+       The internal TX clock delay (provided by this driver) in picoseconds.
+       For MT2712 RGMII interface, Allowed value need to be a multiple of 170,
+@@ -88,8 +89,11 @@ properties:
+       or will round down. Range 0~31*550.
+       For MT8188/MT8195 RGMII/RMII/MII interface, Allowed value need to be a multiple of 290,
+       or will round down. Range 0~31*290.
++      Deprecated, this property should not used anymore for RGMII TX internal delays,
++      the standard tx-internal-delay-ps property should be used instead.
+ 
+   mediatek,rx-delay-ps:
++    deprecated: true
+     description:
+       The internal RX clock delay (provided by this driver) in picoseconds.
+       For MT2712 RGMII interface, Allowed value need to be a multiple of 170,
+@@ -98,6 +102,8 @@ properties:
+       or will round down. Range 0~31*550.
+       For MT8188/MT8195 RGMII/RMII/MII interface, Allowed value need to be a multiple
+       of 290, or will round down. Range 0~31*290.
++      Deprecated, this property should not used anymore for RGMII RX internal delays,
++      the standard rx-internal-delay-ps property should be used instead.
+ 
+   mediatek,rmii-rxc:
+     type: boolean
 
-Changes in v3:
-- Rebased on net-next (sha1: 6b3e73774815)
-- Added Reviewed-By trailers in patch 3 and 5
-- Added patch 1 to fix unit in rx/tx delay property description
-  (Sashiko)
-- Patch 2:
-  - Reworded patch description to add clock list details
-  - Removed the specific MT8189 clocks list so the axi and apb clocks
-    are also described for this compatible too and reworked the clock
-    list and number check
-  - Added mediatek,rmii-clk-from-mac as not allowed for MT8189 (Sashiko)
-- Added patch 4 to simplify TX/RX delay handling in mt2712_set_delay,
-  as suggested by M. Chevallier and modified following patches
-  accordingly
-- Fixed in patch 7 tx_rgmii_delay_stage_div null case and register value
-  in mt8195_fix_mac_speed (Sashiko)
-- Added in patch 9 the axi and apb clocks to MT8189 clock lists 
-- Link to v2: https://lore.kernel.org/r/20260924-dwmac-mediatek-mt8189-v2-0-430bd74d5ef9@collabora.com
-
-Changes in v2:
-- Rebased on net-next (sha1: 528de6832b21)
-- Dropped "net: stmmac: mediatek: rename MT2712 and MT8195 variant
-  methods" and "net: stmmac: mediatek: add support for TX deallocation
-   adjustment feature" patches, present in v1 (M. Chevallier)
-- Patch 1:
-  - Removed rmii_internal clock from required clock list (A. Lunn)
-  - Added MT8189 stage delay divider values in "mediatek,rx-delay-ps" and
-    "mediatek,rx-delay-ps" property description (Sashiko)
-  - Updated commit description
-- Added patch 2 to simplify TX/RX delay handling in mt8195_set_delay
-- Added patch 3 to add RX/TX delay stage divider in platform data
-- Patch 4:
-  - Replace MT8195_PERI_ETH_CTRL_BASE by MT8195_PERI_ETH_CTRL_OFFSET to
-    harmonize the variable and definition naming (A. Lunn)
-  - Added Reviewed-By tag
-- Added patch 5 to add the TX Clock phase shift use in
-  RGMII and in 1G speed
-- Patch 6:
-  - Reworded flag and define names to explicit a bit more what the
-    feature does
-  - Updated commit description
-- Patch 7:
-  - Added the new definitions and needed fields in platform data
-  - Updated commit description to add the info about MT8189 RX/TX delay
-    stage divider and maximum values, and remove reference about 
-    stage fine feature 
-- Link to v1: https://lore.kernel.org/r/20260707-dwmac-mediatek-mt8189-v1-0-17f345eaaca3@collabora.com
-
----
-Louis-Alexis Eyraud (10):
-      dt-bindings: net: mediatek-dwmac: fix unit in rx/tx delay property description
-      dt-bindings: net: mediatek-dwmac: deprecate rx/tx delay vendor properties
-      dt-bindings: net: mediatek-dwmac: add support for MT8189 SoC
-      net: stmmac: mediatek: simplify TX/RX delay handling in mt8195_set_delay
-      net: stmmac: mediatek: simplify TX/RX delay handling in mt2712_set_delay
-      net: stmmac: mediatek: use standard internal delay properties
-      net: stmmac: mediatek: add RX/TX delay stage divider in platform data
-      net: stmmac: mediatek: add PERI_ETH_CTRLx register offset in platform data
-      net: stmmac: mediatek: add support for TX clock output enable feature
-      net: stmmac: mediatek: add support for MT8189 SoC
-
- .../devicetree/bindings/net/mediatek-dwmac.yaml    |  52 ++-
- .../net/ethernet/stmicro/stmmac/dwmac-mediatek.c   | 368 +++++++++++++--------
- 2 files changed, 276 insertions(+), 144 deletions(-)
----
-base-commit: d26955e57475434b59d43ba372b2a50d33d5e0ed
-change-id: 20260703-dwmac-mediatek-mt8189-9dafe3984951
-
-Best regards,
 -- 
-Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
+2.56.0
 
 
