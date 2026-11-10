@@ -2,11 +2,11 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 8C4A5606A872
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id B093E606A875
 	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Nov 2026 07:18:41 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=lWrgZh+t;
-	dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=a4MYn0Au
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=ZNZJa9CY;
+	dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=L+etW16e
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
@@ -14,72 +14,72 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	Content-Type:MIME-Version:Subject:Date:From:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=5dTHvGBDugYE4eA3b+cwrzQ7C1CqTB30IHaEtp1Dp4Y=; b=lWrgZh+tLE+yoaP9f3AAKiyUCV
-	sz/+70L7OzIuNkgQ+zHd1PiH6nZVbaKnTfWatnkgK2Kia6nosflCsnLoX2uKa+DXqVlahj34+3/np
-	Cc9UeAaIc7v5OPCq+oF91Ra40OTntKkXbtB5DOWn59Sl5YQ/e0L/kOmToo10PNvjyntu/cykkddlC
-	YAPZQ9QByGk1yQCpouyfus8J4BiKU9RIqxTWGZ1KWk/LJdMUJly4Ps6tamKHaqwqmcr3ojJ7tGPk1
-	nIyjRpaElzYWG+OgM7xLJ6qcIktrGuZ0hYpMWeX711dLDLYY38HKg5Q9np9Eq3b+hKpYFrcHtOv2O
-	oMy70qnA==;
+	bh=Syq/VG6u0EUV0TyeNdEvx71To3HzGWr4DnR5Dla39eE=; b=ZNZJa9CYZOgaIeAk0BKsMtPhC8
+	yl3PLZeT2PUubH9Mc6hCRXODaDQpH31E+XBT2g7KiFgVgCNsET3b4R0CluvOPhJhtWJzsAc43Y99G
+	bdW6/YhhFc3UrzhZkuXlPObiwP1V/KjC9w2z/t7xTlVj9BZI9UGOunRHZo/YII5wH/eVTSsF0oz76
+	VdBoWYxC+iOI3mcYPFIZV/gKy32bqHedjIWK+1p0W1NJxsmPPaK0iZBi7WdlJgUU4s5Rc3lPCr2ca
+	ffVkfOo+4Hm2GWMm2NBy/Pv8jPkHR8Wk+n7V4w/NFleBKmgIoQAzAU/FfFztZfnmlr5LOJvCofFjH
+	1oxvMN9w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xQg7t-00000002pwa-0RcQ;
+	id 1xQg7t-00000002pwt-1Aui;
 	Tue, 10 Nov 2026 07:18:41 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xQg7C-00000002pMm-2Vws;
+	id 1xQg7C-00000002pMK-26UT;
 	Tue, 10 Nov 2026 07:17:58 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id 51C4746A33;
-	Tue, 10 Nov 2026 07:17:58 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id E7214637BA;
+	Tue, 10 Nov 2026 07:17:57 +0000 (UTC)
 Authentication-Results: smtp.kernel.org; arc=none smtp.remote-ip=100.80.115.77
 ARC-Seal: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256; cv=none;
-	t=1794295078;
-	b=oeFBBvyO0cMgF2ssDYfZQwMaoEscZUVDGwT3KELTbmt0B6yVZ2AvWVei5ArRxcYRAf9E
-	 WZc0WnSBp0meNdBv/Izu20fib2bOGAHZhM7ofj6H3iQOh2Tfa+ySPIf+nkyyq0EDsWd6u
-	 OdGZnACQuQeAjaGXjFxu4fJX8itHOA80bSuVewak0Kz2qFNN2B93u7drcYCXoTj7wcw2+
-	 VXdm8UHTDjaOPXNwH7hnMR5CVuFw3HmwMHbo3sAAgjO8o9g6gGUPdBJQflPp9/b5NrP4l
-	 2EjtACjqbJaMLxFHNW6bbg/h5yM96v64otZz21oWvnX1yEHR1zyCKQbYS5XKOhWZB8g==
+	t=1794295077;
+	b=IC1ji7fHoUXbVCY4IjbAL2wwW7ENHWWQ0L7IbKRfN4d8mr0Iid0PCij0lFqVSQdVSFZj
+	 LrqSSGhtmezOYIBMs+oXN+GwOqEcgk1fS7n0MKto+9WA75IkOjXVE7y06wCKalkQa/DYm
+	 oojBPyo5VkbM4ovnwz2LS70yWp2cOCEd3zUUl9rPfr6+o/fvyyMsNJ2kuu9Ar6i+DarQu
+	 ZTcIDvD0A2RkfB6Bxiv46KpntPr2ccp/KCjtUBVm46eRX/nYzVOQEHglgi2ckFTo9t5Li
+	 z9Yei5AdIy3K989o3Ev6tyPcUnCa/Cwkd8VpUSeu9MC4VcZ8ltJv064ghc0lZl3HAsA==
 ARC-Message-Signature: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256;
-	c=relaxed/relaxed; t=1794295078;
+	c=relaxed/relaxed; t=1794295077;
 	h=DKIM-Signature:Received:From:Date:Subject:MIME-Version:Content-Type:
 	 Message-Id:References:In-Reply-To:To:Cc:X-Mailer:
 	 X-Developer-Signature:X-Developer-Key:X-Endpoint-Received:
 	 X-Original-From:Reply-To:Content-Transfer-Encoding;
-	bh=5dTHvGBDugYE4eA3b+cwrzQ7C1CqTB30IHaEtp1Dp4Y=;
-	b=Zlr3srjPOxmRL9L9weQihX/Ro2a1Mv12J3jsSgczj/URdHCWVhEEyt2RzGXWq58UH0As
-	 CeSasMAzyw+CGiJnNiVwSjjyO9CdwxKgc5OjRaAAr688r579oKRJEbelKSblyS2o/hikl
-	 8CiSrLC/4Obevoh/8HLN13Uk83UUILex6t6f76yg2+rzjOicEpS90Ynyk444Pnv6AfjhA
-	 oRwh8aIztG4kj6e3sX5i6Ui3r/lqk8+6XHpzan43SXej/s3l6kwISf/0UJ6NfOcm58hdX
-	 LAmLJZb5S0NP9MOCag8d1YyvlFebq1WAXWyMBuOOiWCqOYI4iqpQfhkVbOxe6MLfaBw==
+	bh=Syq/VG6u0EUV0TyeNdEvx71To3HzGWr4DnR5Dla39eE=;
+	b=CKjcBWY4w8STpSFmJUwsbZ4uiymQG8ikP430WgqI7SFkcEFqIgF+TVqx+Qxs4Fnh5v/S
+	 rvvn1Xn+74pufZbf+Nr3EEDE9wlP0/W6FBoICs5wZP6aoqcf+7ZWEP1C69/mfHf6SMHsv
+	 wKGXbaoUw2n4jUPoEgQL2n/vdqf5LLNeoEolw+3HR3+VZ1GYBgC7UBKqNyw645H9w58OE
+	 ydNl7684nf7QTLWtTsFJCf7lS/xOpmkJs8J/bSp00Y5eDwOZpGCv1nkyxbW5SqzVKFmjb
+	 80r49xnh/5BqzQXsT+iIfHdO9s9TNa4wEABOLGbIguzXu59KvB6djn0mblRStlVqv1g==
 ARC-Authentication-Results: i=1; smtp.kernel.org; 
 	arc=none smtp.remote-ip=100.80.115.77
 Received: from lkml.kernel.org (nexus.subspace.kernel.org [100.80.115.77])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.kernel.org (Postfix) with ESMTPS id A9BFF1F008A1;
+	by smtp.kernel.org (Postfix) with ESMTPS id 849A41F00900;
 	Tue, 10 Nov 2026 07:17:56 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1794295078;
-	bh=5dTHvGBDugYE4eA3b+cwrzQ7C1CqTB30IHaEtp1Dp4Y=;
+	s=k20260515; t=1794295077;
+	bh=Syq/VG6u0EUV0TyeNdEvx71To3HzGWr4DnR5Dla39eE=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To;
-	b=a4MYn0AuUN1VMSmY1VcQ+F0Mb3OGZ4UNRZb/ZEnPuJQeYtBMTbfPqlIvkbjoXYmdb
-	 YsXr7lUaD8z7t57LfQc6ZZH1hOFRmI3s6jt6OWDeFZ3CquZ5TX3Md5qQIjLUkuLaME
-	 n9q9gfch68qjHtuaXfy4lACBGIMwnbVppLVP7EPi/ECaob5OMq8NX5/klHMtkoUf08
-	 pyu2WxiBmQeHYaBbI912oNL7YY/B4ZxIrVXnjfjzdcQ3NI3LykH+qf/bIv0iMrakZ9
-	 /iSnVxGHc1GkLYM7yEYrMwnulFivrPGPZnFrvivLBvC+E9nXkt4aEaitdJCPzr7BDp
-	 H1Rj0ytcGPw+g==
+	b=L+etW16eG4+4VkLtKAey3K9Il+00A7ulPzRiUHYK0zwbWY4qW6Sl7Gyeej4PupoPU
+	 Rrzkj9+4z1pCd8k2OvmqHWg9r7yVM0P7l+uK8ZuCznl14Zuuh6dcz55uZcqGnUSZr5
+	 UveUqqpmNjrYtj84skD1UYsPk+KXa4Rhp4lcJQ2dSSM+4ZokNM/djEubGYY5HS0OWf
+	 zX1dwhAbRBR97VhFTtRMaoa8B7ctvDyU6hxkKdV1kJGkUScc9xJHrZaht1/VYddITS
+	 qX4wqN2NQFQ5VdUW4Msu7+pkbwr4Olyw7g8+79PXoBD68Kj8Zb379QG/KdkQnnUiie
+	 mtRraqe5AV9fA==
 Received: from nexus.subspace.kernel.org (localhost [IPv6:::1])
-	by lkml.kernel.org (Postfix) with ESMTP id 3BB9748990;
+	by lkml.kernel.org (Postfix) with ESMTP id 17F4C48986;
 	Tue, 10 Nov 2026 07:17:56 +0000 (UTC)
 From: Arun Iyengar via B4 Relay <devnull+aiyengar1990.gmail.com@kernel.org>
-Date: Tue, 10 Nov 2026 07:17:58 +0000
-Subject: [PATCH 3/6] media: verisilicon: Refuse JPEG encode jobs with
- inconsistent geometry
+Date: Tue, 10 Nov 2026 07:17:56 +0000
+Subject: [PATCH 1/6] media: verisilicon: Enforce a minimum CAPTURE
+ sizeimage for the encoder
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
-Message-Id: <20261110-hantro-jpeg-enc-fixes-v1-3-fc4dc7e985d2@gmail.com>
+Message-Id: <20261110-hantro-jpeg-enc-fixes-v1-1-fc4dc7e985d2@gmail.com>
 References: <20261110-hantro-jpeg-enc-fixes-v1-0-fc4dc7e985d2@gmail.com>
 In-Reply-To: <20261110-hantro-jpeg-enc-fixes-v1-0-fc4dc7e985d2@gmail.com>
 To: Nicolas Dufresne <nicolas.dufresne@collabora.com>, 
@@ -95,11 +95,11 @@ Cc: linux-media@vger.kernel.org, linux-rockchip@lists.infradead.org,
  linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
  linux-mediatek@lists.infradead.org
 X-Mailer: b4 0.15.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1794295075; l=5281;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1794295075; l=2359;
  i=aiyengar1990@gmail.com; s=20261110; h=from:subject:message-id;
- bh=do5fff0E77HztRZ7LZ0DBdjmX88jN/xzYgE6TJmApXI=;
- b=5ecRMYzhG87W1R1GcnfpbIkRyjcO7mKyaawyBusIX6qDd9JpZe0FuK2lKeTcA0fKXZdhT4AY1
- B/TGr74YK83AZ0g5FLNTmwTElehkTvVGNPQILcsRyYFxP3WjX2Sz774
+ bh=JZp96kO/mnNire/RWZRp8mhzguO6gPrOB+RSbq8LmyE=;
+ b=GbglH2henZdZbatiRF3yY1AIw0wsgD91zd+CE6dFqdxAa6CQ9mIlW7YOuHV06xHuLDEKep/PX
+ H5R85Dp/SW4AAeNQy0bqYU91qBlwXMq8eUa2JVAEJ57N9wj7NLD/zsz
 X-Developer-Key: i=aiyengar1990@gmail.com; a=ed25519;
  pk=zXpRgUTrhaFe6jLyPqbBy3ccfkj04w0g2690Wv3mg+0=
 X-Endpoint-Received: by B4 Relay for aiyengar1990@gmail.com/20261110 with
@@ -128,141 +128,60 @@ X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 
 From: Arun Iyengar <aiyengar1990@gmail.com>
 
-The JPEG encoders program the hardware with the macroblock count of the
-OUTPUT format and treat the difference between the OUTPUT and CAPTURE
-sizes as the crop inside the last macroblock, which is written into
-narrow register fields. They also write the JPEG header into the
-CAPTURE buffer without checking its size.
+For coded formats hantro_try_fmt() only computes sizeimage when the
+application passes 0, and otherwise accepts any value. On the encoder
+that lets the CAPTURE buffers be far too small for the selected
+resolution.
 
-When the two formats disagree beyond that, as could happen before the
-coded size was kept in sync with the OUTPUT format, the encoder on
-RK3588 generated IOMMU page faults close to address 0, timed out, and
-left the IOMMU unable to stall, requiring a reboot.
+This is easy to hit: "v4l2-ctl --set-fmt-video=width=1920,height=1080,
+pixelformat=JPEG" does G_FMT, modifies the size and calls S_FMT, so it
+passes back the 6768 byte sizeimage of the 96x32 default format. The
+driver accepts it for 1920x1088, the hardware runs out of stream buffer
+on every frame and the encoder only produces empty buffers.
 
-The format ioctls are now expected to keep the formats consistent, but
-as getting this wrong takes down the whole encoder, check the geometry
-and the CAPTURE buffer size before programming the hardware and fail
-the job instead.
+The stateful encoder specification lets the encoder adjust sizeimage to
+match hardware requirements. For the encoder, clamp the requested
+sizeimage up to the worst-case frame size already used as the default,
+while still allowing applications to ask for larger buffers. The
+decoder behaviour is unchanged.
 
 Signed-off-by: Arun Iyengar <aiyengar1990@gmail.com>
 ---
- .../platform/verisilicon/hantro_h1_jpeg_enc.c      |  5 +++
- drivers/media/platform/verisilicon/hantro_jpeg.c   | 37 ++++++++++++++++++++++
- drivers/media/platform/verisilicon/hantro_jpeg.h   |  5 +++
- .../verisilicon/rockchip_vpu2_hw_jpeg_enc.c        |  5 +++
- 4 files changed, 52 insertions(+)
+ drivers/media/platform/verisilicon/hantro_v4l2.c | 16 +++++++++++++---
+ 1 file changed, 13 insertions(+), 3 deletions(-)
 
-diff --git a/drivers/media/platform/verisilicon/hantro_h1_jpeg_enc.c b/drivers/media/platform/verisilicon/hantro_h1_jpeg_enc.c
-index 86cc1a07026f..d8c71676a3f2 100644
---- a/drivers/media/platform/verisilicon/hantro_h1_jpeg_enc.c
-+++ b/drivers/media/platform/verisilicon/hantro_h1_jpeg_enc.c
-@@ -109,10 +109,15 @@ int hantro_h1_jpeg_enc_run(struct hantro_ctx *ctx)
- 	struct vb2_v4l2_buffer *src_buf, *dst_buf;
- 	struct hantro_jpeg_ctx jpeg_ctx;
- 	u32 reg;
-+	int ret;
- 
- 	src_buf = hantro_get_src_buf(ctx);
- 	dst_buf = hantro_get_dst_buf(ctx);
- 
-+	ret = hantro_jpeg_enc_check_job(ctx, &dst_buf->vb2_buf);
-+	if (ret)
-+		return ret;
+diff --git a/drivers/media/platform/verisilicon/hantro_v4l2.c b/drivers/media/platform/verisilicon/hantro_v4l2.c
+index 83af9fa1ce94..c022b978f72b 100644
+--- a/drivers/media/platform/verisilicon/hantro_v4l2.c
++++ b/drivers/media/platform/verisilicon/hantro_v4l2.c
+@@ -386,14 +386,24 @@ static int hantro_try_fmt(const struct hantro_ctx *ctx,
+ 			pix_mp->plane_fmt[0].sizeimage +=
+ 				hantro_av1_mv_size(pix_mp->width,
+ 						   pix_mp->height);
+-	} else if (!pix_mp->plane_fmt[0].sizeimage) {
++	} else {
++		u32 max_size = fmt->header_size +
++			pix_mp->width * pix_mp->height * fmt->max_depth;
++		u32 *sizeimage = &pix_mp->plane_fmt[0].sizeimage;
 +
- 	hantro_start_prepare_run(ctx);
+ 		/*
+ 		 * For coded formats the application can specify
+ 		 * sizeimage. If the application passes a zero sizeimage,
+ 		 * let's default to the maximum frame size.
++		 *
++		 * The encoder must also be able to fit the worst-case
++		 * frame for the current resolution, so never let the
++		 * application go below it. Larger values are kept.
+ 		 */
+-		pix_mp->plane_fmt[0].sizeimage = fmt->header_size +
+-			pix_mp->width * pix_mp->height * fmt->max_depth;
++		if (ctx->is_encoder)
++			*sizeimage = max(*sizeimage, max_size);
++		else if (!*sizeimage)
++			*sizeimage = max_size;
+ 	}
  
- 	memset(&jpeg_ctx, 0, sizeof(jpeg_ctx));
-diff --git a/drivers/media/platform/verisilicon/hantro_jpeg.c b/drivers/media/platform/verisilicon/hantro_jpeg.c
-index 13a60638e43f..2f2afd632c1b 100644
---- a/drivers/media/platform/verisilicon/hantro_jpeg.c
-+++ b/drivers/media/platform/verisilicon/hantro_jpeg.c
-@@ -14,6 +14,7 @@
- #include <media/v4l2-jpeg.h>
- #include "hantro_jpeg.h"
- #include "hantro.h"
-+#include "hantro_hw.h"
- 
- #define LUMA_QUANT_OFF		25
- #define CHROMA_QUANT_OFF	90
-@@ -243,3 +244,39 @@ void hantro_jpeg_header_assemble(struct hantro_jpeg_ctx *ctx)
- 
- 	jpeg_set_quality(ctx);
- }
-+
-+/*
-+ * Check that the formats describe a frame the JPEG encoders can be
-+ * programmed with: the coded size may only crop the OUTPUT frame inside
-+ * the right-most and bottom-most macroblocks, and the CAPTURE buffer
-+ * must have room for the header and some payload. The V4L2 ioctls are
-+ * expected to guarantee this, but programming the hardware with
-+ * anything else makes it access memory outside the buffers, so refuse
-+ * the job instead.
-+ */
-+int hantro_jpeg_enc_check_job(struct hantro_ctx *ctx,
-+			      struct vb2_buffer *dst_buf)
-+{
-+	const struct v4l2_pix_format_mplane *src = &ctx->src_fmt;
-+	const struct v4l2_pix_format_mplane *dst = &ctx->dst_fmt;
-+
-+	if (!dst->width || !dst->height ||
-+	    !IS_ALIGNED(src->width, MB_DIM) ||
-+	    !IS_ALIGNED(src->height, MB_DIM) ||
-+	    dst->width > src->width || dst->height > src->height ||
-+	    src->width - dst->width >= MB_DIM ||
-+	    src->height - dst->height >= MB_DIM ||
-+	    !IS_ALIGNED(src->width - dst->width, 4)) {
-+		vpu_err("inconsistent geometry: OUTPUT %ux%u, CAPTURE %ux%u\n",
-+			src->width, src->height, dst->width, dst->height);
-+		return -EINVAL;
-+	}
-+
-+	if (vb2_plane_size(dst_buf, 0) <= ctx->vpu_dst_fmt->header_size) {
-+		vpu_err("CAPTURE buffer too small: %lu bytes\n",
-+			vb2_plane_size(dst_buf, 0));
-+		return -EINVAL;
-+	}
-+
-+	return 0;
-+}
-diff --git a/drivers/media/platform/verisilicon/hantro_jpeg.h b/drivers/media/platform/verisilicon/hantro_jpeg.h
-index 0b49d0b82caa..296ad1e821c7 100644
---- a/drivers/media/platform/verisilicon/hantro_jpeg.h
-+++ b/drivers/media/platform/verisilicon/hantro_jpeg.h
-@@ -1,5 +1,8 @@
- /* SPDX-License-Identifier: GPL-2.0+ */
- 
-+struct hantro_ctx;
-+struct vb2_buffer;
-+
- #define JPEG_HEADER_SIZE	624
- #define JPEG_QUANT_SIZE		64
- 
-@@ -13,3 +16,5 @@ struct hantro_jpeg_ctx {
- };
- 
- void hantro_jpeg_header_assemble(struct hantro_jpeg_ctx *ctx);
-+int hantro_jpeg_enc_check_job(struct hantro_ctx *ctx,
-+			      struct vb2_buffer *dst_buf);
-diff --git a/drivers/media/platform/verisilicon/rockchip_vpu2_hw_jpeg_enc.c b/drivers/media/platform/verisilicon/rockchip_vpu2_hw_jpeg_enc.c
-index 61621b1be8a2..b6217e332fc0 100644
---- a/drivers/media/platform/verisilicon/rockchip_vpu2_hw_jpeg_enc.c
-+++ b/drivers/media/platform/verisilicon/rockchip_vpu2_hw_jpeg_enc.c
-@@ -135,10 +135,15 @@ int rockchip_vpu2_jpeg_enc_run(struct hantro_ctx *ctx)
- 	struct vb2_v4l2_buffer *src_buf, *dst_buf;
- 	struct hantro_jpeg_ctx jpeg_ctx;
- 	u32 reg;
-+	int ret;
- 
- 	src_buf = hantro_get_src_buf(ctx);
- 	dst_buf = hantro_get_dst_buf(ctx);
- 
-+	ret = hantro_jpeg_enc_check_job(ctx, &dst_buf->vb2_buf);
-+	if (ret)
-+		return ret;
-+
- 	hantro_start_prepare_run(ctx);
- 
- 	memset(&jpeg_ctx, 0, sizeof(jpeg_ctx));
+ 	return 0;
 
 -- 
 2.55.0
