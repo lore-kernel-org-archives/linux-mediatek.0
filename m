@@ -2,89 +2,82 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id EA5DD606A332
-	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Nov 2026 09:27:36 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 41255606B9FB
+	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Nov 2026 09:43:53 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=FpgQWPN3;
-	dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com header.a=rsa-sha256 header.s=Intel header.b=EjCj1Rfd
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=4YCW6AZ/;
+	dkim=pass (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.a=rsa-sha256 header.s=dk header.b=lkNkxeE5
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
 	List-Unsubscribe-Post:List-Owner;
-	bh=r03d0V0DO1R17kWu7oT0cLArgA7R8LkZOYGpTn1uF64=; b=FpgQWPN39G5jnlf73nUDuKQ6yK
-	6U943DMYZ/4BVymhWJZYsjironFI63cuZLAi7OhFFA/vJCi439ILNHFJiS61uhISTv8qgPxiwN1Xl
-	+09+v5RmERxXHdxz3qT9AboqpRJSvEhhAsIfmSBpfEcUCJhegz4tBXqaImhGP0x85+aufd4dfL+8J
-	K8kIL4stj66ZoeLeBIRlinRtrjW6wdwCQyd2X3QlbRTGvVZmfFuzTGwnhb/P6H43wVMByAAlohNdY
-	vAd6kLR/AFbN/uGOIQJBZbtdjBXQQYjdawMvqeZPjTt17JUUfnTs9FrLRTtIfXm8cBoQx+C8BThbP
-	I+b3ZoAg==;
+	bh=m2zyjpjCatk61E/s/TP65CRra9P/1L2a4z/kweMtxFE=; b=4YCW6AZ/TT0zo0raDxfAElDUaQ
+	JbDpmGHJNYl+nm09NqBDly3iMVJzN5+ey5c+df8mLWUO2Gt1IKZzC8CWeEBt8a2l0HBV4fBze9qnK
+	1FbRHDMCTiWmPp878RnB16395tHoW9A8wg/o401fbke70lEQetwlR01qhd+0TPgwK6k4o/9C99j21
+	INiidWt/DC8TK9nLNZyB6xodbajp+w9o/jJm6KRYbp+0+ecjlFQsPUJWMTaloR7c/Pg3FgLErfo1U
+	odx4/BLGT7lRSOYuHuh33TdUcC4Ghv+jgydqgHZWSUMc0hJOhB2g8X2O2SiCahexHLTX+4yZQD8R3
+	xYcu59rw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xQi8e-00000003GXs-2gSC;
-	Tue, 10 Nov 2026 09:27:36 +0000
-Received: from mgamail.intel.com ([192.198.163.11])
+	id 1xQiOO-00000003Jqu-4B4I;
+	Tue, 10 Nov 2026 09:43:53 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xQi8b-00000003GXG-2stB
+	id 1xQiOM-00000003JoE-3YX8
 	for linux-mediatek@lists.infradead.org;
-	Tue, 10 Nov 2026 09:27:35 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1794302854; x=1825838854;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=+pQBzYtlIqsK3OMZ/FLrdsiSf33OGp8rBpCJeMXTzSA=;
-  b=EjCj1RfdSKY/thA9foIvqy1KkeEANrPBqZpTV50hdLQmnwHSRRaBs8LO
-   3UbofMhRG4mxWUmvG5+I+PoiudOf7LE2ZGI4LhdeE2gWDxGekrfTDxAKw
-   t7Y6l9R5o4159B1fRmrSU7mM+YGKDYkwmDFVOkHNAIMi0lEYYSFAHjsF+
-   HywDJXrcPjiLlBAELSW6otJdlQjt+10wrhfMzTCHnUX4vGRsrOgfy4C8z
-   f9dVUOHExz6G1VcxnVlBsykWf/drVtzA7gD4tux7wTSq9PTQ5Hpe0p68c
-   om/QUf29mObKQQ2OAWpLF2jn4qqDUDu/e8jw/PBipTNA4yxc6kzWnPQau
-   Q==;
-X-CSE-ConnectionGUID: V1OGpvzfRoa2nGM3osZ4vw==
-X-CSE-MsgGUID: yX6u8MfHRiqdXETGo6dbyQ==
-X-IronPort-AV: E=McAfee;i="6800,10657,11961"; a="2960843"
-X-IronPort-AV: E=Sophos;i="6.27,205,1787036400"; 
-   d="scan'208";a="2960843"
-Received: from orviesa005.jf.intel.com ([10.64.159.145])
-  by fmvoesa105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 10 Nov 2026 01:27:34 -0800
-X-CSE-ConnectionGUID: GBkYys5QRW6XYH9zhk09Gw==
-X-CSE-MsgGUID: PI3ayCMNQwqsUe1JjUfdTA==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.27,205,1787036400"; 
-   d="scan'208";a="7977292"
-Received: from lkp-server01.sh.intel.com (HELO 0caa9d2d175c) ([10.239.97.150])
-  by orviesa005.jf.intel.com with ESMTP; 10 Nov 2026 01:27:30 -0800
-Received: from kbuild by 0caa9d2d175c with local (Exim 4.98.2)
-	(envelope-from <lkp@intel.com>)
-	id 1xQi8V-00000000wWV-2YhF;
-	Tue, 10 Nov 2026 09:27:27 +0000
-Date: Tue, 10 Nov 2026 17:27:20 +0800
-From: kernel test robot <lkp@intel.com>
-To: Devin Wittmayer <lucid_duck@justthetip.ca>,
-	Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo@kernel.org>,
-	Ryder Lee <ryder.lee@mediatek.com>
-Cc: oe-kbuild-all@lists.linux.dev, Deren Wu <deren.wu@mediatek.com>,
-	Sean Wang <sean.wang@mediatek.com>,
-	Shayne Chen <shayne.chen@mediatek.com>,
-	Quan Zhou <quan.zhou@mediatek.com>,
-	Michael Lo <michael.lo@mediatek.com>,
-	James-LY Huang <james-ly.huang@mediatek.com>,
-	linux-wireless@vger.kernel.org, linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH v2] wifi: mt76: mt792x: tell mac80211 when a disconnect
- cancels its ROC
-Message-ID: <202611101719.St87Ty1E-lkp@intel.com>
-References: <20261110005846.38432-1-lucid_duck@justthetip.ca>
+	Tue, 10 Nov 2026 09:43:52 +0000
+X-UUID: 384691dedceb11f1afed4741b24580c9-20261110
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=m2zyjpjCatk61E/s/TP65CRra9P/1L2a4z/kweMtxFE=;
+	b=lkNkxeE5e5wGoZQwsVIrDFl96hFdWZV6GkZMCzEtNk2DkU6X/yRSLr+wV/LJWq/8Aj2fl1bnp/oyELQBMGfU0a25AdbkPcSfzmy0m27CwxRsMulnWA8do38h0PIzufDoXFnAZX/FSHlIIAvec/u+ZbRvAsbW71QWDbSc+zQwCw4=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.3.21,REQID:e50021c9-5ac7-4d63-883a-017f20871b37,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:b0318ac,CLOUDID:3de61766-4b51-4c95-bb1b-80ac6aad9c96,B
+	ulkID:nil,BulkQuantity:0,SF:102|836|865|888|898,TC:-5,Content:0|15|50|99,E
+	DM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0
+	,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 2,SSN|SDN
+X-CID-BAS: 2,SSN|SDN,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
+X-UUID: 384691dedceb11f1afed4741b24580c9-20261110
+Received: from mtkmbs10n1.mediatek.inc [(172.21.101.34)] by mailgw01.mediatek.com
+	(envelope-from <zhengping.zhang@airoha.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 62348018; Tue, 10 Nov 2026 02:43:44 -0700
+Received: from mtkmbs13n1.mediatek.inc (172.21.101.193) by
+ MTKMBS09N1.mediatek.inc (172.21.101.35) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.2562.29; Tue, 10 Nov 2026 17:43:42 +0800
+Received: from mediatek.com (172.18.153.129) by mtkmbs13n1.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.2.2562.29 via Frontend
+ Transport; Tue, 10 Nov 2026 17:43:42 +0800
+From: Zhengping Zhang <zhengping.zhang@airoha.com>
+To: <linusw@kernel.org>, <lorenzo@kernel.org>
+CC: <robh@kernel.org>, <krzk+dt@kernel.org>, <conor+dt@kernel.org>,
+	<brgl@kernel.org>, <mikhail.kshevetskiy@iopsys.eu>, <naseefkm@gmail.com>,
+	<benjamin.larsson@genexis.eu>, <linux-gpio@vger.kernel.org>,
+	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
+	<linux-mediatek@lists.infradead.org>, <lei.dong@airoha.com>,
+	<ansuelsmth@gmail.com>, Zhengping Zhang <zhengping.zhang@airoha.com>
+Subject: [PATCH 00/12]  pinctrl: airoha: configure GPIO muxes explicitly and fix pad mappings
+Date: Tue, 10 Nov 2026 17:43:27 +0800
+Message-ID: <20261110094339.749110-1-zhengping.zhang@airoha.com>
+X-Mailer: git-send-email 2.43.0
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20261110005846.38432-1-lucid_duck@justthetip.ca>
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261110_012733_758549_B903494C 
-X-CRM114-Status: GOOD (  11.23  )
-X-Spam-Score: -4.4 (----)
+X-CRM114-CacheID: sfid-20261110_014350_899921_B3728A22 
+X-CRM114-Status: GOOD (  12.75  )
+X-Spam-Score: -1.9 (-)
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -95,94 +88,134 @@ List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-10.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,
-	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,
-	SPF_HELO_NONE,SPF_PASS autolearn=ham autolearn_force=no version=4.0.1
+X-Spam-Status: No, score=-11.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
+	UNPARSEABLE_RELAY,USER_AGENT_GIT autolearn=ham autolearn_force=no
+	version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Hi Devin,
+This series makes GPIO mode selection explicit on AN7581, AN7583 and
+EN7523, and fixes related GPIO direction, LED group and SPI/eMMC mux
+configuration issues.
 
-kernel test robot noticed the following build errors:
+Background
+----------
+GPIO direction and data register programming is separate from pad mux
+selection on these SoCs. The current GPIO request path does not select
+the GPIO function, relying on the pads already being in an appropriate
+state. If the bootloader leaves a pad configured for an alternate
+function, a GPIO request can succeed without connecting the GPIO
+controller to the pad. Output writes may then fail to drive the pin,
+and input reads may not reflect the external signal.
+The problem also affects the opposite transition. Once a pad has been
+forced to GPIO mode, selecting its peripheral mux without releasing
+the GPIO override can leave the peripheral disconnected from the pad.
+While addressing these transitions, the series also corrects GPIO
+direction programming, AN7581 PHY LED group assignments, AN7583 SPI/eMMC
+mux configuration and the EN7523 128-pin PCM SPI CS2 pad assignment.
 
-[auto build test ERROR on wireless-next/main]
-[also build test ERROR on wireless/main linus/master v7.4-rc2 next-20261109]
-[cannot apply to linux-review/Devin-Wittmayer/wifi-mt76-mt792x-tell-mac80211-when-a-disconnect-cancels-its-ROC/20261022-184827]
-[If your patch is applied to the wrong git tree, kindly drop us a note.
-And when submitting patch, we suggest to use '--base' as documented in
-https://git-scm.com/docs/git-format-patch#_base_tree_information]
+Implementation
+--------------
+On these SoCs, shared GPIO pads can be routed to peripheral functions
+through mux control bits in the SCU registers. In the absence of an
+enabled alternate function, these shared pads normally operate as
+GPIOs. Dedicated peripheral pads have separate selectors for GPIO
+operation, so clearing all mux bits is not a universal way to select
+GPIO mode.
 
-url:    https://github.com/intel-lab-lkp/linux/commits/Devin-Wittmayer/wifi-mt76-mt792x-tell-mac80211-when-a-disconnect-cancels-its-ROC/20261109-175846
-base:   https://git.kernel.org/pub/scm/linux/kernel/git/wireless/wireless-next.git main
-patch link:    https://lore.kernel.org/r/20261110005846.38432-1-lucid_duck%40justthetip.ca
-patch subject: [PATCH v2] wifi: mt76: mt792x: tell mac80211 when a disconnect cancels its ROC
-config: x86_64-rhel-9.4 (https://download.01.org/0day-ci/archive/20261110/202611101719.St87Ty1E-lkp@intel.com/config)
-compiler: gcc-14 (Debian 14.2.0-19) 14.2.0
-reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20261110/202611101719.St87Ty1E-lkp@intel.com/reproduce)
+Per-pad force GPIO controls allow individual shared pads to operate
+as GPIOs while leaving shared peripheral mode settings intact for
+other pads. GPIO-controller PWM output also requires the appropriate
+pad routing: selecting ordinary GPIO operation clears the pad's PWM
+selection, while PWM operation uses the PWM selection together with
+the applicable GPIO routing controls.
 
-If you fix the issue in a separate patch/commit (i.e. not just a new version of
-the same patch/commit), kindly add following tags
-| Reported-by: kernel test robot <lkp@intel.com>
-| Closes: https://lore.kernel.org/oe-kbuild-all/202611101719.St87Ty1E-lkp@intel.com/
+The series uses these per-pad controls to configure GPIO mode on
+demand. Resetting the IOMUX registers at probe could disrupt interfaces
+still using bootloader settings, while clearing shared peripheral
+mode bits could affect pads outside the requested group.
 
-All errors (new ones prefixed by >>):
+The common driver gains a gpio_request_enable callback and identifies
+GPIO-category functions through the pinmux core. It finds the matching
+single-pin GPIO group using pinctrl pin numbers, including controllers
+whose GPIO ranges have a nonzero pin base. GPIO requests and explicit
+GPIO pinctrl states apply the same SoC-specific group configuration.
 
-   drivers/net/wireless/mediatek/mt76/mt7921/main.c: In function 'mt7921_roc_abort_sync':
->> drivers/net/wireless/mediatek/mt76/mt7921/main.c:385:16: error: 'struct mt792x_phy' has no member named 'roc_notify'
-     385 |         if (phy->roc_notify)
-         |                ^~
-   drivers/net/wireless/mediatek/mt76/mt7921/main.c: In function 'mt7921_abort_roc':
-   drivers/net/wireless/mediatek/mt76/mt7921/main.c:423:27: error: 'struct mt792x_phy' has no member named 'roc_notify'
-     423 |         if (aborted && phy->roc_notify)
-         |                           ^~
-   drivers/net/wireless/mediatek/mt76/mt7921/main.c: In function 'mt7921_set_roc':
-   drivers/net/wireless/mediatek/mt76/mt7921/main.c:441:12: error: 'struct mt792x_phy' has no member named 'roc_notify'
-     441 |         phy->roc_notify = type == MT7921_ROC_REQ_ROC;
-         |            ^~
-   drivers/net/wireless/mediatek/mt76/mt7921/main.c: In function 'mt7921_cancel_remain_on_channel':
-   drivers/net/wireless/mediatek/mt76/mt7921/main.c:484:12: error: 'struct mt792x_phy' has no member named 'roc_notify'
-     484 |         phy->roc_notify = false;
-         |            ^~
---
-   drivers/net/wireless/mediatek/mt76/mt7925/main.c: In function 'mt7925_roc_abort_sync':
->> drivers/net/wireless/mediatek/mt76/mt7925/main.c:531:16: error: 'struct mt792x_phy' has no member named 'roc_notify'
-     531 |         if (phy->roc_notify)
-         |                ^~
-   drivers/net/wireless/mediatek/mt76/mt7925/main.c: In function 'mt7925_abort_roc':
-   drivers/net/wireless/mediatek/mt76/mt7925/main.c:569:27: error: 'struct mt792x_phy' has no member named 'roc_notify'
-     569 |         if (aborted && phy->roc_notify)
-         |                           ^~
-   drivers/net/wireless/mediatek/mt76/mt7925/main.c: In function 'mt7925_cancel_remain_on_channel':
-   drivers/net/wireless/mediatek/mt76/mt7925/main.c:657:12: error: 'struct mt792x_phy' has no member named 'roc_notify'
-     657 |         phy->roc_notify = false;
-         |            ^~
+The common code checks for incompatible values of shared mux bits
+against GPIO owners and claimed mux groups. Validation and register
+updates are serialized, and register update failures are returned to
+the caller. GPIO request handling and conflict checks are enabled
+through SoC match data.
+
+The SoC-specific changes select GPIO mode as follows:
+
+  - AN7581: GPIO1-31 use SCU 0x228, and GPIO32-46 use 0x22c.
+    GPIO47-49 retain their PCIe reset GPIO selectors at 0x21c.
+    GPIO1/2 additionally require the I2C/MDIO routing to be disabled.
+
+  - AN7583: GPIO1-31 use SCU 0x228, and GPIO32-38 use 0x22c.
+    GPIO39-52 use the dedicated-pad GPIO selectors at 0x21c.
+
+  - EN7523: GPIO0-29 use SCU 0x224. GPIO28/29 also retain their
+    existing PCIe reset GPIO selector settings at 0x218.
+
+AN7581 and AN7583 have no documented force GPIO bit for GPIO0; their
+GPIO0 configuration clears the existing PWM selection only.
+
+Peripheral group configurations release the corresponding GPIO
+overrides when selecting their functions. AN7581 retains its existing
+MDIO and PWM configurations; AN7583 and EN7523 also enable the required
+GPIO overrides when selecting GPIO-controller PWM output.
+
+The AN7583 and EN7523 PON groups exclude the software-controlled
+TX_DIS/RX_DIS pads so they can be requested independently as GPIOs by
+the PON PHY driver, avoiding ownership conflicts with PON mux selection.
+
+The bindings describe the expanded GPIO groups and corrected pad
+assignments. GPIO numbering and existing compatible strings are retained.
+The final patch adds an Airoha co-maintainer and extends the maintained
+file patterns to cover the SoC-specific drivers and bindings.
+
+Validation
+----------
+Tested the PINCTRL functionality on AN7581, AN7583 and EN7523 using OpenWrt
+master (backport to kernel 6.18), including build tests and explicit GPIO
+requests, with particular attention to GPIO-controlled LEDs.
+
+Daniel Schwierzeck (2):
+  pinctrl: airoha: fix setting of GPIO direction
+  pinctrl: airoha: an7583: fix SPI pin mux config
+
+Robert Marko (1):
+  pinctrl: airoha: an7583: fix eMMC pin mux config
+
+Zhengping Zhang (9):
+  pinctrl: airoha: configure pin muxes on GPIO requests
+  dt-bindings: pinctrl: airoha: describe all EN7581 GPIO mux groups
+  pinctrl: airoha: an7581: fix PHY LED GPIO group assignments
+  pinctrl: airoha: an7581: select force GPIO mode on GPIO requests
+  dt-bindings: pinctrl: airoha: describe all AN7583 GPIO mux groups
+  pinctrl: airoha: an7583: use force GPIO mode for GPIO requests
+  dt-bindings: pinctrl: airoha: describe all EN7523 GPIO mux groups
+  pinctrl: airoha: en7523: use force GPIO mode for GPIO requests
+  MAINTAINERS: add myself as Airoha pinctrl co-maintainer
+
+ .../pinctrl/airoha,an7583-pinctrl.yaml        |  18 +-
+ .../pinctrl/airoha,en7523-pinctrl.yaml        |   9 +-
+ .../pinctrl/airoha,en7581-pinctrl.yaml        |  28 +-
+ MAINTAINERS                                   |   5 +-
+ drivers/pinctrl/airoha/airoha-common.h        |  15 +-
+ drivers/pinctrl/airoha/pinctrl-airoha.c       | 263 ++++++-
+ drivers/pinctrl/airoha/pinctrl-an7581.c       | 629 ++++++++++++---
+ drivers/pinctrl/airoha/pinctrl-an7583.c       | 736 ++++++++++++++----
+ drivers/pinctrl/airoha/pinctrl-en7523.c       | 579 +++++++++++---
+ 9 files changed, 1855 insertions(+), 427 deletions(-)
 
 
-vim +385 drivers/net/wireless/mediatek/mt76/mt7921/main.c
+base-commit: 05441d697f7f9a927264f4058cbbc6a03dfcac9d
+-- 
+2.43.0
 
-   370	
-   371	void mt7921_roc_abort_sync(struct mt792x_dev *dev)
-   372	{
-   373		struct mt792x_phy *phy = &dev->phy;
-   374	
-   375		if (!test_and_clear_bit(MT76_STATE_ROC, &phy->mt76->state))
-   376			return;
-   377	
-   378		timer_delete_sync(&phy->roc_timer);
-   379		cancel_work(&phy->roc_work);
-   380	
-   381		ieee80211_iterate_interfaces(mt76_hw(dev),
-   382					     IEEE80211_IFACE_ITER_RESUME_ALL,
-   383					     mt7921_roc_iter, (void *)phy);
-   384	
- > 385		if (phy->roc_notify)
-   386			ieee80211_remain_on_channel_expired(mt76_hw(dev));
-   387	}
-   388	EXPORT_SYMBOL_GPL(mt7921_roc_abort_sync);
-   389	
-
---
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
 
