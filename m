@@ -2,70 +2,77 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 9EAF1606A335
-	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Nov 2026 00:59:03 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id AAB0260A2619
+	for <linux-mediatek@archiver.kernel.org>; Tue, 10 Nov 2026 01:24:21 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=MTrPddHs;
-	dkim=pass (2048-bit key, unprotected) header.d=justthetip.ca header.i=@justthetip.ca header.a=rsa-sha256 header.s=key1 header.b=G7U453sM
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=L+hbO95R;
+	dkim=pass (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.a=rsa-sha256 header.s=dk header.b=MoOPR5je
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
 	List-Unsubscribe-Post:List-Owner;
-	bh=CKjdyMDHNV6MdUd+DZ7ZTXLQmbEoceaaRG1MeMVaccE=; b=MTrPddHsWtxE3zqoETnkZvOMRr
-	aI9bsMjP5a09A9khYRWXYCbBbLA+FIGlTrJ2H0PrkpUbFgm9GEyPjCdGW0ELcWia/hszAbTsAE+wl
-	gE7LqtTAuMs4nDbh5oT152Tx/aFnLGz+K+8zciNgkGvyKgcZnnpwX2UqWwUTx0SufdhbofEfA0M5M
-	Lq0M4TUSEg6nkR+wzQD5iwWbonJnW/0RWMVldyKRA1SHJhl/up4o/aLABah00LPij0oH88bnODG10
-	1mA3cVtBnLZMXAXyKiGwhN0m2Y/T7pj6Ch80l8ZZ2GL9UeV4zKpbXUJAYDaLm48n/itp0Uchnjx9c
-	6NzbWvuA==;
+	bh=W9o2iCjAVK2c+dojBxo6HCm4QXiuhz+/nTtHq/H4yXw=; b=L+hbO95R2V8kaiyRqbMfAr1RaB
+	EpZf6aAy4ywatdhQUsrAZStWyhWhVmKnSQ8tXEKK+2Wsdn1qijbyf9mrqFL4K5FpcP1qgbZM8cUns
+	PwaxMtAxgRdFJpw38ixu34UvPSk8H7H3PYAXlsSI9UwrbBvmEWGfDZI6bbrYPEhQojHHHyMzfWbMr
+	deaI6vbtQiQ8EpWPuF/t3uIDwFxnk+u54BC1M369fI7uuqQ+FikBTz1VeCKOf4tVJ1qVHjVffYAHO
+	NKfKbhBl1+Q9baTkdChMRIYiZbiWRt2esQuXzKhYlQbpc+SIaSEdCMeVBDvzql7icZWZ5a+CcwauF
+	Ljw4M9Vg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xQaCT-0000000236w-1igy;
-	Tue, 10 Nov 2026 00:59:01 +0000
-Received: from out-32.mta0.migadu.com ([2001:41d0:1004:224b::20] helo=mta0.migadu.com)
+	id 1xQaaz-000000024gh-1VzD;
+	Tue, 10 Nov 2026 01:24:21 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xQaCQ-0000000236Y-0M0R
+	id 1xQaax-000000024fR-2QFa
 	for linux-mediatek@lists.infradead.org;
-	Tue, 10 Nov 2026 00:59:00 +0000
-X-Envelope-To: linux-mediatek@lists.infradead.org
-DKIM-Signature: a=rsa-sha256; bh=m45zSAjEHoA1c21nmbzp1R0tpgwGyte4VJOVVYxADbo=;
- c=simple/simple; d=justthetip.ca;
- h=from:to:subject:date:message-id:mime-version:content-type; s=key1;
- t=1794272334; v=1; x=1794877134;
- b=G7U453sMKJpKp41WCuKAQpNNK+OYVuy371qahkDLdGHRybdUNucvOYsoyDk1oAWHEF+WDPJl
- DMNcZjD2MRwY9SyiTrRIkXubqfv/tGqzHWk8ElvIR5sObjHHEB7Pc08DGJWcGB433sMjlgq626s
- Wr0W207B1Tz0TXwAXobhmiqE2eCBRhr7sZ4+IpORk5yUTSD5jABi0mJThcS4zdNtqvjJw+Xd7S6
- zHyTNSDP9UlFMT2b/N+bbZxKFdWCCUvpBwjJnPsBmEJjpbGrDKSfiGyEhFD3LsedHpAGpQxe60F
- J9BbdQYwpCN3B/eidDREPdNNWyb7jcMY7vMB8d6GKbTNw==
-X-Envelope-To: linux-mediatek@lists.infradead.org
-Received: by smtp.migadu.com with ESMTPS id afe33ea9b8f10079;
-	Tue, 10 Nov 2026 00:58:53 +0000
-X-Mizu-Trace-ID: afe33ea9b8f10079
-X-Migadu-Flow: FLOW_OUT
-From: Devin Wittmayer <lucid_duck@justthetip.ca>
-To: Felix Fietkau <nbd@nbd.name>,
-	Lorenzo Bianconi <lorenzo@kernel.org>,
-	Ryder Lee <ryder.lee@mediatek.com>
-Cc: Deren Wu <deren.wu@mediatek.com>,
-	Sean Wang <sean.wang@mediatek.com>,
-	Shayne Chen <shayne.chen@mediatek.com>,
-	Quan Zhou <quan.zhou@mediatek.com>,
-	Michael Lo <michael.lo@mediatek.com>,
-	James-LY Huang <james-ly.huang@mediatek.com>,
-	linux-wireless@vger.kernel.org,
-	linux-mediatek@lists.infradead.org
-Subject: [PATCH v2] wifi: mt76: mt792x: tell mac80211 when a disconnect cancels its ROC
-Date: Mon,  9 Nov 2026 17:58:46 -0700
-Message-ID: <20261110005846.38432-1-lucid_duck@justthetip.ca>
-X-Mailer: git-send-email 2.56.0
+	Tue, 10 Nov 2026 01:24:20 +0000
+X-UUID: 6ec1ce90dca511f1acbe4559397dec65-20261109
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=W9o2iCjAVK2c+dojBxo6HCm4QXiuhz+/nTtHq/H4yXw=;
+	b=MoOPR5jebWLF7fH/3Kt2pjc7rn4fEs+dLEcLdgsqgZRKzJtYaE5D39uyxxwyh2EN4GZiaY2T85A/QxsZiFggBizagJHmV4WQKTmDKJmiFwjQbmJPzpTBIymE6I+IPI/K+pvfEKpu6cImyObaFkp3BoJjDXfD9st+wuN4Zhiib+g=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.3.21,REQID:5e2dba72-8edc-4eaf-8977-6b44f76445cd,IP:0,U
+	RL:0,TC:0,Content:-25,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTIO
+	N:release,TS:-25
+X-CID-META: VersionHash:b0318ac,CLOUDID:e8337e71-18b8-474a-aee7-177e489c5e29,B
+	ulkID:nil,BulkQuantity:0,SF:102|136|836|865|888|898,TC:-5,Content:0|15|50|
+	99,EDM:-3|-100,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:nil,COL:0,OS
+	I:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 2,SSN|SDN
+X-CID-BAS: 2,SSN|SDN,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
+X-UUID: 6ec1ce90dca511f1acbe4559397dec65-20261109
+Received: from mtkmbs14n2.mediatek.inc [(172.21.101.76)] by mailgw02.mediatek.com
+	(envelope-from <jb.tsai@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 695899201; Mon, 09 Nov 2026 18:24:11 -0700
+Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.2562.29; Tue, 10 Nov 2026 09:24:08 +0800
+Received: from mtksitap99.mediatek.inc (10.233.130.16) by
+ mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.2562.29 via Frontend Transport; Tue, 10 Nov 2026 09:24:08 +0800
+From: JB Tsai <jb.tsai@mediatek.com>
+To: <nbd@nbd.name>, <lorenzo@kernel.org>
+CC: <linux-wireless@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
+	<Sean.Wang@mediatek.com>, <jared.huang@mediatek.com>, <jb.tsai@mediatek.com>
+Subject: [PATCH] wifi: mt76: mt7925: add 5.9G channel list and last batch size for sar update
+Date: Tue, 10 Nov 2026 09:24:07 +0800
+Message-ID: <20261110012407.342786-1-jb.tsai@mediatek.com>
+X-Mailer: git-send-email 2.45.2
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261109_165858_481669_CA4716CD 
-X-CRM114-Status: GOOD (  12.73  )
+X-CRM114-CacheID: sfid-20261109_172419_735695_17644A80 
+X-CRM114-Status: GOOD (  10.12  )
 X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -80,151 +87,46 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 X-Spam-Status: No, score=-18.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,
 	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=ham
-	autolearn_force=no version=4.0.1
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-A disconnect during a remain-on-channel (ROC) cancels the ROC in
-firmware without telling mac80211, which then waits for a ROC that is
-already gone. Scans stall, and after an AP deauth the station does not
-reconnect.
+From: Jared Huang <jared.huang@mediatek.com>
 
-Tell mac80211 when the driver cancels a ROC that mac80211 started.
+Use min(batch_len, n_chan - idx) so the last batch always holds the
+channels that are left. Also add the missing 5.9G channel list.
 
-Fixes: 41ac53c899bd ("wifi: mt76: mt7921: introduce chanctx support")
-Fixes: 5ed54896b6bd ("wifi: mt76: mt7921: fix a potential scan no APs")
 Fixes: c948b5da6bbe ("wifi: mt76: mt7925: add Mediatek Wi-Fi7 driver for mt7925 chips")
-Fixes: 45064d19fd3a ("wifi: mt76: mt7925: fix a potential association failure upon resuming")
-Signed-off-by: Devin Wittmayer <lucid_duck@justthetip.ca>
+Signed-off-by: Jared Huang <jared.huang@mediatek.com>
 ---
-v2: rebased on Felix's mt76 branch (8739e5b44b23), where v1 no longer
-applies. There, 2466ffac172d added a flag on mt7925 for a ROC that
-mac80211 is waiting to see end. This uses that flag, and sets it on
-mt7921 as well.
+ drivers/net/wireless/mediatek/mt76/mt7925/mcu.c | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
 
-Tested on that branch with an MT7922 and an MT7925U:
-
-  disconnect while a ROC is held   without this         with it
-  AP deauth                        no reconnect, scans  back in 4.2 s
-                                   stall
-  the station disconnects          scans stall          scan in 3.3 to
-                                                        3.5 s
-  the same, MT7925U on two links   no reconnect, scans  back in 9.1 to
-                                   stall                9.4 s, 3 of 3
-
-Each cancelled ROC is reported once, and a P2P find ends its ROCs as
-before on both chips.
-
-v1: https://lore.kernel.org/all/20261023014827.57411-1-lucid_duck@justthetip.ca/
-
- drivers/net/wireless/mediatek/mt76/mt7921/main.c | 14 +++++++++++++-
- drivers/net/wireless/mediatek/mt76/mt7925/main.c | 13 ++++++++++++-
- 2 files changed, 25 insertions(+), 2 deletions(-)
-
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/main.c b/drivers/net/wireless/mediatek/mt76/mt7921/main.c
-index 09574d4417cd..58df080a342e 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7921/main.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7921/main.c
-@@ -381,6 +381,9 @@ void mt7921_roc_abort_sync(struct mt792x_dev *dev)
- 	ieee80211_iterate_interfaces(mt76_hw(dev),
- 				     IEEE80211_IFACE_ITER_RESUME_ALL,
- 				     mt7921_roc_iter, (void *)phy);
-+
-+	if (phy->roc_notify)
-+		ieee80211_remain_on_channel_expired(mt76_hw(dev));
- }
- EXPORT_SYMBOL_GPL(mt7921_roc_abort_sync);
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
+index f45b0d81fd08..80a4f395c472 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
+@@ -4140,7 +4140,8 @@ mt7925_mcu_rate_txpower_band(struct mt76_phy *phy,
+ 		112, 114, 116, 118, 120, 122, 124,
+ 		126, 128, 132, 134, 136, 138, 140,
+ 		142, 144, 149, 151, 153, 155, 157,
+-		159, 161, 165, 167
++		159, 161, 163, 165, 167, 169, 173,
++		175, 177
+ 	};
+ 	static const u8 chan_list_6ghz[] = {
+ 		  1,   3,   5,   7,   9,  11,  13,
+@@ -4199,7 +4200,7 @@ mt7925_mcu_rate_txpower_band(struct mt76_phy *phy,
+ 		int j, msg_len, num_ch;
+ 		struct sk_buff *skb;
  
-@@ -405,16 +408,21 @@ void mt7921_roc_work(struct work_struct *work)
- 
- static int mt7921_abort_roc(struct mt792x_phy *phy, struct mt792x_vif *vif)
- {
-+	bool aborted;
- 	int err = 0;
- 
- 	timer_delete_sync(&phy->roc_timer);
- 	cancel_work_sync(&phy->roc_work);
- 
- 	mt792x_mutex_acquire(phy->dev);
--	if (test_and_clear_bit(MT76_STATE_ROC, &phy->mt76->state))
-+	aborted = test_and_clear_bit(MT76_STATE_ROC, &phy->mt76->state);
-+	if (aborted)
- 		err = mt7921_mcu_abort_roc(phy, vif, phy->roc_token_id);
- 	mt792x_mutex_release(phy->dev);
- 
-+	if (aborted && phy->roc_notify)
-+		ieee80211_remain_on_channel_expired(phy->mt76->hw);
-+
- 	return err;
- }
- 
-@@ -430,6 +438,7 @@ static int mt7921_set_roc(struct mt792x_phy *phy,
- 		return -EBUSY;
- 
- 	phy->roc_grant = false;
-+	phy->roc_notify = type == MT7921_ROC_REQ_ROC;
- 
- 	err = mt7921_mcu_set_roc(phy, vif, chan, duration, type,
- 				 ++phy->roc_token_id);
-@@ -471,6 +480,9 @@ static int mt7921_cancel_remain_on_channel(struct ieee80211_hw *hw,
- 	struct mt792x_vif *mvif = (struct mt792x_vif *)vif->drv_priv;
- 	struct mt792x_phy *phy = mt792x_hw_phy(hw);
- 
-+	/* mac80211 ends this ROC itself */
-+	phy->roc_notify = false;
-+
- 	return mt7921_abort_roc(phy, mvif);
- }
- 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/main.c b/drivers/net/wireless/mediatek/mt76/mt7925/main.c
-index 222836699d15..01c08b80ea14 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7925/main.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7925/main.c
-@@ -553,6 +553,9 @@ void mt7925_roc_abort_sync(struct mt792x_dev *dev)
- 	ieee80211_iterate_interfaces(mt76_hw(dev),
- 				     IEEE80211_IFACE_ITER_RESUME_ALL,
- 				     mt7925_roc_iter, (void *)phy);
-+
-+	if (phy->roc_notify)
-+		ieee80211_remain_on_channel_expired(mt76_hw(dev));
- }
- EXPORT_SYMBOL_GPL(mt7925_roc_abort_sync);
- 
-@@ -583,16 +586,21 @@ void mt7925_roc_work(struct work_struct *work)
- static int mt7925_abort_roc(struct mt792x_phy *phy,
- 			    struct mt792x_bss_conf *mconf)
- {
-+	bool aborted;
- 	int err = 0;
- 
- 	timer_delete_sync(&phy->roc_timer);
- 	cancel_work_sync(&phy->roc_work);
- 
- 	mt792x_mutex_acquire(phy->dev);
--	if (test_and_clear_bit(MT76_STATE_ROC, &phy->mt76->state))
-+	aborted = test_and_clear_bit(MT76_STATE_ROC, &phy->mt76->state);
-+	if (aborted)
- 		err = mt7925_mcu_abort_roc(phy, mconf, phy->roc_token_id);
- 	mt792x_mutex_release(phy->dev);
- 
-+	if (aborted && phy->roc_notify)
-+		ieee80211_remain_on_channel_expired(phy->mt76->hw);
-+
- 	return err;
- }
- 
-@@ -712,6 +720,9 @@ static int mt7925_cancel_remain_on_channel(struct ieee80211_hw *hw,
- 	struct mt792x_vif *mvif = (struct mt792x_vif *)vif->drv_priv;
- 	struct mt792x_phy *phy = mt792x_hw_phy(hw);
- 
-+	/* mac80211 ends this ROC itself */
-+	phy->roc_notify = false;
-+
- 	return mt7925_abort_roc(phy, &mvif->bss_conf);
- }
- 
+-		num_ch = i == batch_size - 1 ? n_chan % batch_len : batch_len;
++		num_ch = min(batch_len, n_chan - idx);
+ 		msg_len = sizeof(*tx_power_tlv) + num_ch * sku_len;
+ 		skb = mt76_mcu_msg_alloc(dev, NULL, msg_len);
+ 		if (!skb) {
 -- 
-2.56.0
+2.45.2
 
 
