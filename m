@@ -2,11 +2,11 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 77E1C606A320
-	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Nov 2026 07:14:02 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id DD9E7606A31C
+	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Nov 2026 07:14:11 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=TZgo4EI4;
-	dkim=pass (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.a=rsa-sha256 header.s=dk header.b=apIf+QDL
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=kwZ0/KiO;
+	dkim=pass (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.a=rsa-sha256 header.s=dk header.b=dikBCYvG
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
@@ -14,30 +14,30 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
 	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
 	List-Unsubscribe-Post:List-Owner;
-	bh=mwx0jmF9JokkiaHJT8NbtY7bR3paMEp+A7PPF7e2LHE=; b=TZgo4EI4Lc/WcIG32XD3Snfs7F
-	Fa8EHvTiVpG/I4PGN60TpAhmC18X/hUA0Six/cCKHcP/RKLRQlARAK0MkVMieYpE3H7NDYRrIllbc
-	jlT5f/VzAgJe7R6KTm7BE6uBJb7+/NVs2bdctowfR9p58uLk1hton+4WKEnrb7N2+XDHk3aDAH5wj
-	GLIcYlJTAloPclN9SGDv/hrXsqn8B9y3sjdEWHMT3pEuhcYYhD8X49CiCIkzj2WkwWhcGxRaJriC0
-	mvjNZO3r87LmxqLUnfylyGVwL6FoZel77F+qsEHWm37/9EFY+LCYUN2XwRiH82fatluru/8CJ+ldZ
-	pn8fYBZQ==;
+	bh=mwx0jmF9JokkiaHJT8NbtY7bR3paMEp+A7PPF7e2LHE=; b=kwZ0/KiOYFBwGyUq99/fskxReg
+	RsCki4lRKqwGSdk3yrGir+AWxIPg84xSqZ7IR/TySBMly3GPkXYavCaPYKmbQ9R/GXrnQLo4AUn6v
+	j58pZ3ulJdunSZEVTWNmHkx4StFMwqv2Kwg+DbhQB6DFkVMQV0AL7BfrVV99eSCG8fAF8sqotgpym
+	mHKmEbyfFqQ1msjI3EFzHhccUMr5kxGshVXcq7wB7KuTdL+fBqEh3PfbNh6erB+X2Fbxeua+yLZS4
+	ZbAa5H62xCW6m0IGtsdPGk4tsvLuSUzvY2KCbXRJoa2QaooSgwBSuXF6DC6f61s9+16QdwrPagLqH
+	aZvYnqNg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xR2Wv-00000005r5A-17XS;
-	Wed, 11 Nov 2026 07:14:01 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1xR2X5-00000005r97-2a0W;
+	Wed, 11 Nov 2026 07:14:11 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xR2Wt-00000005r4P-0HR5
+	id 1xR2X2-00000005r83-2nAg
 	for linux-mediatek@lists.infradead.org;
-	Wed, 11 Nov 2026 07:14:00 +0000
-X-UUID: 71e81b24dd9f11f1afed4741b24580c9-20261111
+	Wed, 11 Nov 2026 07:14:10 +0000
+X-UUID: 7a8eeed8dd9f11f1acbe4559397dec65-20261111
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
 	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=mwx0jmF9JokkiaHJT8NbtY7bR3paMEp+A7PPF7e2LHE=;
-	b=apIf+QDLafmmRtUSAIkvmiZi6Zb9vUR2KeEj/1cZp/0mxAxLrgf89muChnHDHyZbPts0XO8z5qn5ZbK0DwKr3D6kwKU11JliSyl7o1eyJfn7o3ULY9BAdccyBBxTVTlYpjURiYli0zdYwyhQRotezdjCcMRapVXnbn4/K9oi0VE=;
+	b=dikBCYvGxMdwSkhhiDmlL1wI0ez041pmorNZZ0YKbagiGyguL8G8WLSval3XAsr0IhUgDf2A3lXKskOFkG4czti82ITrKnT3x8BBCFw/YQRCiNQAMMeewdiZpyjetS2DIDKrILtY/WEsud5T76fPOervc3kqjGwlV3cPVmW4I/c=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.21,REQID:1289027b-b463-4e99-9c45-25682bf368bd,IP:0,U
+X-CID-O-INFO: VERSION:1.3.21,REQID:83252722-8054-45ff-9afa-1c64cd2039a5,IP:0,U
 	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
 	release,TS:0
-X-CID-META: VersionHash:b0318ac,CLOUDID:73de5cef-3be7-4570-a15c-db8fcaa207f6,B
+X-CID-META: VersionHash:b0318ac,CLOUDID:1f562366-4b51-4c95-bb1b-80ac6aad9c96,B
 	ulkID:nil,BulkQuantity:0,SF:102|836|865|888|898,TC:-5,Content:0|15|50|99,E
 	DM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0
 	,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
@@ -45,18 +45,18 @@ X-CID-BVR: 2,SSN|SDN
 X-CID-BAS: 2,SSN|SDN,0,_
 X-CID-FACTOR: TF_CID_SPAM_SNR
 X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: 71e81b24dd9f11f1afed4741b24580c9-20261111
-Received: from mtkmbs09n2.mediatek.inc [(172.21.101.94)] by mailgw01.mediatek.com
+X-UUID: 7a8eeed8dd9f11f1acbe4559397dec65-20261111
+Received: from mtkmbs10n2.mediatek.inc [(172.21.101.183)] by mailgw02.mediatek.com
 	(envelope-from <michael.shih@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1916475555; Wed, 11 Nov 2026 00:13:50 -0700
+	with ESMTP id 243862964; Wed, 11 Nov 2026 00:14:05 -0700
 Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
  mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.29; Wed, 11 Nov 2026 15:13:48 +0800
+ 15.2.2562.29; Wed, 11 Nov 2026 15:14:02 +0800
 Received: from mtksitap99.mediatek.inc (10.233.130.16) by
  mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.2562.29 via Frontend Transport; Wed, 11 Nov 2026 15:13:47 +0800
+ 15.2.2562.29 via Frontend Transport; Wed, 11 Nov 2026 15:14:02 +0800
 From: Michael Shih <michael.shih@mediatek.com>
 To: <nbd@nbd.name>, <lorenzo@kernel.org>
 CC: <linux-wireless@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
@@ -65,8 +65,8 @@ CC: <linux-wireless@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
 	<litien.chang@mediatek.com>, <jb.tsai@mediatek.com>, Michael Shih
 	<michael.shih@mediatek.com>
 Subject: [PATCH v1] wifi: mt76: mt7925: support per-channel survey dump during scan
-Date: Wed, 11 Nov 2026 15:13:47 +0800
-Message-ID: <20261111071347.875266-1-michael.shih@mediatek.com>
+Date: Wed, 11 Nov 2026 15:13:58 +0800
+Message-ID: <20261111071358.875331-1-michael.shih@mediatek.com>
 X-Mailer: git-send-email 2.45.2
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
@@ -74,8 +74,8 @@ Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261110_231359_126085_F9BA9FDA 
-X-CRM114-Status: GOOD (  24.27  )
+X-CRM114-CacheID: sfid-20261110_231408_720981_31047098 
+X-CRM114-Status: GOOD (  24.64  )
 X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
