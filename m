@@ -2,78 +2,115 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 89C61606A320
-	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Nov 2026 05:48:24 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 783E5606A31C
+	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Nov 2026 05:55:06 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=lQy1ioyk;
-	dkim=pass (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.a=rsa-sha256 header.s=dk header.b=LHP+nQZr
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=Pe3QObIP;
+	dkim=pass (2048-bit key) header.d=bootlin.com header.i=@bootlin.com header.a=rsa-sha256 header.s=dkim header.b=yNbP9gNq
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Unsubscribe-Post:List-Owner;
-	bh=6Of0FLLvErHmONV3gxc2SvsJn1KTVIFkSTvZnTLnZLQ=; b=lQy1ioykKJcqM1lueV3bRahmyD
-	KGyzCp6MwckxuD3dvfZLwwgudmN+yaKC31Bdkj8i7oPqh2Hc5MJLvHlVrWK0upaUk1fPYQW8qFu60
-	bp0bQA+QnhshZn7+T9vEPRuoKGiyevWhc+c3K4Lc0jAQ5Kd8xH7g9nZRUSOegzsuQuhuFhKskps0n
-	EjsAMY1fcbxnkMbXE7h+pIM8WOP+V3x4eP2vkG/Cvx5Q5+tznG7a31KSEATy6oy/CH+m9rpZcBau3
-	tVi8lVdjZx7v3deUKsmzVwNeQ++KGaqJphJ6tiF5IUJhXisUD+TUV+/TEKs74RizhxcXB5R81zxaS
-	Vi/2BhPA==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:
+	Subject:From:To:Cc:Message-Id:Date:Content-Type:Content-Transfer-Encoding:
+	Mime-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Unsubscribe-Post:
+	List-Owner; bh=pfbacooIO8f3wisdaRiyyaGqgo+54PzHGy2pQaUsY+c=; b=Pe3QObIPXN8PjL
+	7hN9np7Av9f5Xw8+O8k589h6yTplCg84418jhkjndSb9P0KJrMna8W4C6IDwbJjUNJlEJGAGavGWd
+	oPZJBanNMwCil4V5K01A04ZTIhGjqlOA0UoGlQFjUkgYyrGW2jGPY0m1NlV8ORg0r4XI7fjfrZd3T
+	RzBfZ1HCC839ttainVuMF3wxL9VHgyyTQTYvNsLszCkOftkhIaLLJiXaleF+sVVjk2Nn4LNkGMHcD
+	7ava+Ct6ACxkOflZu2b3faXY1TFVUbzs+PJRRSE5I3BZu12aSeumU2MtX6NzWjnXUnlvbsGZa3uPB
+	PgVpvywon3ZlQrcEx54A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xR1C4-00000005gQd-0ms9;
-	Wed, 11 Nov 2026 05:48:24 +0000
-Received: from mailgw02.mediatek.com ([216.200.240.185])
+	id 1xR1IX-00000005ga8-0exG;
+	Wed, 11 Nov 2026 05:55:05 +0000
+Received: from smtpout-04.galae.net ([185.171.202.116])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xR1C1-00000005gPz-22oZ
-	for linux-mediatek@lists.infradead.org;
-	Wed, 11 Nov 2026 05:48:22 +0000
-X-UUID: 7d1f14eadd9311f1acbe4559397dec65-20261110
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=6Of0FLLvErHmONV3gxc2SvsJn1KTVIFkSTvZnTLnZLQ=;
-	b=LHP+nQZr5BIGy4LrX3I7h/LA4GLimlyXdqxnSNWwIVOFk144yVu/EKaYfySxSuUBbu1m3FHyW7SX8kKjKtoj3bUDJCULmHfAwpydUorNPmgbKkxfD3g0LtFAD8ejtBt826OyOsTYRrjdYJB39n2ZyqhRlALTtTSzHah2KQXncy0=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.21,REQID:ae2a7ae0-8e3c-4f26-9981-5e9737a5c365,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:b0318ac,CLOUDID:ef75b130-f289-4656-bb36-27baf4489f11,B
-	ulkID:nil,BulkQuantity:0,SF:102|136|836|865|888|898,TC:-5,Content:0|15|50|
-	99,EDM:-3|-100,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:nil,COL:0,OS
-	I:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 2,SSN|SDN
-X-CID-BAS: 2,SSN|SDN,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: 7d1f14eadd9311f1acbe4559397dec65-20261110
-Received: from mtkmbs09n2.mediatek.inc [(172.21.101.94)] by mailgw02.mediatek.com
-	(envelope-from <jb.tsai@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 528356855; Tue, 10 Nov 2026 22:48:15 -0700
-Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
- MTKMBS09N2.mediatek.inc (172.21.101.94) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.29; Wed, 11 Nov 2026 13:48:13 +0800
-Received: from mtksitap99.mediatek.inc (10.233.130.16) by
- mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.2562.29 via Frontend Transport; Wed, 11 Nov 2026 13:48:13 +0800
-From: JB Tsai <jb.tsai@mediatek.com>
-To: <nbd@nbd.name>, <lorenzo@kernel.org>
-CC: <linux-wireless@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
-	<Sean.Wang@mediatek.com>, <Shengwei.Lu@mediatek.com>, <jb.tsai@mediatek.com>,
-	Shengwei Lu <shengwei.lu@mediatek.com>
-Subject: [PATCH 1/2] wifi: mt76: mt792x: add ICS logging framework to the shared library
-Date: Wed, 11 Nov 2026 13:48:10 +0800
-Message-ID: <20261111054811.845536-1-jb.tsai@mediatek.com>
-X-Mailer: git-send-email 2.45.2
+	id 1xR1IR-00000005gYy-3sDh;
+	Wed, 11 Nov 2026 05:55:02 +0000
+Received: from smtpout-01.galae.net (smtpout-01.galae.net [212.83.139.233])
+	by smtpout-04.galae.net (Postfix) with ESMTPS id 7703DC79A8E;
+	Wed, 11 Nov 2026 05:54:56 +0000 (UTC)
+Received: from mail.galae.net (mail.galae.net [212.83.136.155])
+	by smtpout-01.galae.net (Postfix) with ESMTPS id A09616017E;
+	Wed, 11 Nov 2026 05:54:54 +0000 (UTC)
+Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id CA75111BC0758;
+	Wed, 11 Nov 2026 06:54:26 +0100 (CET)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=dkim;
+	t=1794376491; h=from:subject:date:message-id:to:cc:mime-version:content-type:
+	 content-transfer-encoding:in-reply-to:references;
+	bh=pfbacooIO8f3wisdaRiyyaGqgo+54PzHGy2pQaUsY+c=;
+	b=yNbP9gNqUTcBluDPTUGVBT9Sv+/GUwXc/OVvJz1InwCOkT3SDXmol6kIyZj6kX3Yq1NzGH
+	m+7vDJygTh4Aeo6ekK8CD2u9W7d6Fobhkef2pBoshtjxbvwZhaFK264cj/tLT7fgNV6x78
+	ZUPWtjg+/hKGnEpqW3ry2LwfenlL1Vnpfsx+Duk2T3/ZhtgEL63TIp90jEpCcqg3mwkQte
+	XvhXHpQreSW8ZhjjAEgEfPu3744zKJ6yYUnEtxerbgkrN+nhLUAP2VnK8ZqLwE40Hqa9Gw
+	2IyI3JXe2VizQhauO617rdUjCPI8djrehwuV7EPN2sl1qfiuh+n75Opl2PpZow==
 X-Archived-By: <archiver.kernel.org>
-MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-MTK: N
+Mime-Version: 1.0
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=UTF-8
+Date: Wed, 11 Nov 2026 06:54:25 +0100
+Message-Id: <DMS5DC411M21.387583J8N08R0@bootlin.com>
+Cc: "Linus Walleij" <linusw@kernel.org>, "Nicolas Ferre"
+ <nicolas.ferre@microchip.com>, "Alexandre Belloni"
+ <alexandre.belloni@bootlin.com>, "Claudiu Beznea"
+ <claudiu.beznea@tuxon.dev>, "Chen-Yu Tsai" <wens@kernel.org>, "Florian
+ Fainelli" <florian.fainelli@broadcom.com>, "Broadcom internal kernel review
+ list" <bcm-kernel-feedback-list@broadcom.com>, "Ray Jui"
+ <rjui@broadcom.com>, "Scott Branden" <sbranden@broadcom.com>, "Marek Vasut"
+ <marek.vasut+renesas@gmail.com>, "James Ogletree"
+ <jogletre@opensource.cirrus.com>, "Fred Treven" <fred.treven@cirrus.com>,
+ "Ben Bright" <ben.bright@cirrus.com>, "David Rhodes"
+ <david.rhodes@cirrus.com>, "Richard Fitzgerald" <rf@opensource.cirrus.com>,
+ "Support Opensource" <support.opensource@diasemi.com>, "Krzysztof
+ Kozlowski" <krzk@kernel.org>, "Peter Griffin" <peter.griffin@linaro.org>,
+ "Alim Akhtar" <alim.akhtar@samsung.com>, "Tim Harvey"
+ <tharvey@gateworks.com>, "Neil Armstrong" <neil.armstrong@linaro.org>,
+ "Charles Keepax" <ckeepax@opensource.cirrus.com>, "Sven Peter"
+ <sven@kernel.org>, "Janne Grunau" <j@jannau.net>, "Neal Gompa"
+ <neal@gompa.dev>, "Chanwoo Choi" <cw00.choi@samsung.com>, "Mathieu
+ Dubois-Briand" <mathieu.dubois-briand@bootlin.com>, "Luca Ceresoli"
+ <luca.ceresoli@bootlin.com>, =?utf-8?q?Andr=C3=A9_Draszik?=
+ <andre.draszik@linaro.org>, "Saravanan Sekar" <sravanhome@gmail.com>,
+ "Matthias Brugger" <matthias.bgg@gmail.com>, "AngeloGioacchino Del Regno"
+ <angelogioacchino.delregno@collabora.com>, "Frank Li" <Frank.Li@nxp.com>,
+ "Sascha Hauer" <s.hauer@pengutronix.de>, "Pengutronix Kernel Team"
+ <kernel@pengutronix.de>, "Fabio Estevam" <festevam@gmail.com>,
+ =?utf-8?q?Jonathan_Neusch=C3=A4fer?= <j.neuschaefer@gmx.net>, "Aaro
+ Koskinen" <aaro.koskinen@iki.fi>, "Andreas Kemnade" <andreas@kemnade.info>,
+ "Kevin Hilman" <khilman@baylibre.com>, "Roger Quadros" <rogerq@kernel.org>,
+ "Tony Lindgren" <tony@atomide.com>, "Matti Vaittinen"
+ <mazziesaccount@gmail.com>, "Orson Zhai" <orsonzhai@gmail.com>, "Baolin
+ Wang" <baolin.wang@linux.alibaba.com>, "Chunyan Zhang"
+ <zhang.lyra@gmail.com>, "Fabrice Gasnier" <fabrice.gasnier@foss.st.com>,
+ "Maxime Coquelin" <mcoquelin.stm32@gmail.com>, "Alexandre Torgue"
+ <alexandre.torgue@foss.st.com>, "Jernej Skrabec"
+ <jernej.skrabec@gmail.com>, "Samuel Holland" <samuel@sholland.org>, "Liviu
+ Dudau" <liviu.dudau@arm.com>, "Sudeep Holla" <sudeep.holla@kernel.org>,
+ "Lorenzo Pieralisi" <lpieralisi@kernel.org>, "Geert Uytterhoeven"
+ <geert+renesas@glider.be>, "Magnus Damm" <magnus.damm@gmail.com>, "Heiko
+ Stuebner" <heiko@sntech.de>, <mfd@lists.linux.dev>,
+ <linux-kernel@vger.kernel.org>, <linux-arm-kernel@lists.infradead.org>,
+ <patches@opensource.cirrus.com>, <linux-rpi-kernel@lists.infradead.org>,
+ <linux-renesas-soc@vger.kernel.org>, <linux-sound@vger.kernel.org>,
+ <linux-samsung-soc@vger.kernel.org>, <linux-amlogic@lists.infradead.org>,
+ <asahi@lists.linux.dev>, <linux-mediatek@lists.infradead.org>,
+ <imx@lists.linux.dev>, <linux-omap@vger.kernel.org>,
+ <linux-arm-msm@vger.kernel.org>,
+ <linux-stm32@st-md-mailman.stormreply.com>, <linux-sunxi@lists.linux.dev>,
+ <linux-rockchip@lists.infradead.org>
+To: =?utf-8?b?VXdlIEtsZWluZS1Lw7ZuaWcgKFRoZSBDYXBhYmxlIEh1Yik=?=
+ <u.kleine-koenig@baylibre.com>, "Lee Jones" <lee@kernel.org>
+From: "Luca Ceresoli" <luca.ceresoli@bootlin.com>
+Subject: Re: [PATCH v4 19/20] mfd: Unify style of of_device_id arrays
+X-Mailer: aerc 0.22.0
+References: <cover.1794347059.git.u.kleine-koenig@baylibre.com>
+ <2cd7c4695edff6b711f8c77ae468d295bb910cdb.1794347059.git.u.kleine-koenig@baylibre.com>
+In-Reply-To: <2cd7c4695edff6b711f8c77ae468d295bb910cdb.1794347059.git.u.kleine-koenig@baylibre.com>
+X-Last-TLS-Session-Version: TLSv1.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261110_214821_575727_AE7CF91B 
-X-CRM114-Status: GOOD (  26.42  )
+X-CRM114-CacheID: sfid-20261110_215500_129793_98FF7B99 
+X-CRM114-Status: UNSURE (   7.94  )
+X-CRM114-Notice: Please train this message.
 X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -85,457 +122,41 @@ List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-18.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-10.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,
-	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
+	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-From: Shengwei Lu <shengwei.lu@mediatek.com>
+On Tue Nov 10, 2026 at 10:54 PM CET, Uwe Kleine-K=C3=B6nig (The Capable Hub=
+) wrote:
+> These arrays already mostly match the most used and generally
+> recommended coding style. That is:
+>
+>  - no comma after the list terminator;
+>  - a comma after an initializer if (and only if) the closing } is not
+>    directly following;
+>  - no explicit zeros in the list terminator;
+>  - a space after an opening { and before a closing }, a single space in
+>    the list terminator;
+>
+> Adapt the offenders accordingly.
+>
+> Reviewed-by: Andr=C3=A9 Draszik <andre.draszik@linaro.org> # for Maxim MA=
+X77759
+> Reviewed-by: Charles Keepax <ckeepax@opensource.cirrus.com>
+> Reviewed-by: Geert Uytterhoeven <geert+renesas@glider.be> # renesas
+> Reviewed-by: Mathieu Dubois-Briand <mathieu.dubois-briand@bootlin.com> # =
+max7360
+> Reviewed-by: Linus Walleij <linusw@kernel.org>
+> Signed-off-by: Uwe Kleine-K=C3=B6nig (The Capable Hub) <u.kleine-koenig@b=
+aylibre.com>
 
-Introduce the ICS logging framework in the shared mt792x library so
-the mt792x driver family can reuse a single
-implementation instead of carrying per-chip duplicates.
+Reviewed-by: Luca Ceresoli <luca.ceresoli@bootlin.com> # max*
 
-The shared pieces are:
-
-- mt792x_ics.c: the ICS MCU enable command, selecting UNI
-  (MT7925/MT7928) command path by chip; the RX
-  log header/aggregation; the ics_worker that drains the queue to a
-  file; and the enable/disable bookkeeping.
-- mt792x.h: per-device ics_worker, ics_q, fwlog_seq, ics and path_str
-  fields, the rx_ics ring on mt792x_dma_layout and the
-  rx.wm4_complete_mask on mt792x_irq_map, plus the exported ICS helpers.
-- mt792x_debugfs.c: mt792x_ics_get/set, exported so each driver only
-  needs to define its own fops_ics.
-- mt792x_dma.c: ICS RX ring allocation, the ICS napi schedule in the
-  irq tasklet and rx-poll-complete mask, and the worker kick from
-  mt792x_poll_rx.
-- mt76_connac.h, mt76_connac_mcu.h, mt76.h: PKT_TYPE_ICS,
-  MCU_UNI_CMD_ICS and MT_RXQ_ICS.
-
-The ICS log file is created under /tmp with a timestamped name and
-appended to by the worker; enabling purges stale skbs so a new session
-never inherits old data.
-
-Signed-off-by: Shengwei Lu <shengwei.lu@mediatek.com>
----
- drivers/net/wireless/mediatek/mt76/Makefile   |   2 +-
- drivers/net/wireless/mediatek/mt76/mt76.h     |   1 +
- .../net/wireless/mediatek/mt76/mt76_connac.h  |   1 +
- .../wireless/mediatek/mt76/mt76_connac_mcu.h  |   1 +
- drivers/net/wireless/mediatek/mt76/mt792x.h   |  17 ++
- .../wireless/mediatek/mt76/mt792x_debugfs.c   |  26 +++
- .../net/wireless/mediatek/mt76/mt792x_dma.c   |  26 +++
- .../net/wireless/mediatek/mt76/mt792x_ics.c   | 206 ++++++++++++++++++
- 8 files changed, 279 insertions(+), 1 deletion(-)
- create mode 100644 drivers/net/wireless/mediatek/mt76/mt792x_ics.c
-
-diff --git a/drivers/net/wireless/mediatek/mt76/Makefile b/drivers/net/wireless/mediatek/mt76/Makefile
-index cacdd2b13d05..a6ff1b8d70ac 100644
---- a/drivers/net/wireless/mediatek/mt76/Makefile
-+++ b/drivers/net/wireless/mediatek/mt76/Makefile
-@@ -38,7 +38,7 @@ mt76x02-usb-y := mt76x02_usb_mcu.o mt76x02_usb_core.o
- mt76-connac-lib-y := mt76_connac_mcu.o mt76_connac_mac.o mt76_connac3_mac.o
- 
- mt792x-lib-y := mt792x_core.o mt792x_mac.o mt792x_trace.o \
--		mt792x_debugfs.o mt792x_dma.o
-+		mt792x_debugfs.o mt792x_dma.o mt792x_ics.o
- mt792x-lib-$(CONFIG_ACPI) += mt792x_acpi_sar.o
- mt792x-usb-y := mt792x_usb.o
- 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76.h b/drivers/net/wireless/mediatek/mt76/mt76.h
-index 477d33a0022d..bbcf1f1a5922 100644
---- a/drivers/net/wireless/mediatek/mt76/mt76.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt76.h
-@@ -151,6 +151,7 @@ enum mt76_rxq_id {
- 	MT_RXQ_RRO_RXDMAD_C,
- 	MT_RXQ_NPU0,
- 	MT_RXQ_NPU1,
-+	MT_RXQ_ICS,
- 	__MT_RXQ_MAX
- };
- 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76_connac.h b/drivers/net/wireless/mediatek/mt76/mt76_connac.h
-index b1677ca24703..c699759fd37f 100644
---- a/drivers/net/wireless/mediatek/mt76/mt76_connac.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt76_connac.h
-@@ -16,6 +16,7 @@ enum rx_pkt_type {
- 	PKT_TYPE_TXRX_NOTIFY,
- 	PKT_TYPE_RX_EVENT,
- 	PKT_TYPE_NORMAL_MCU,
-+	PKT_TYPE_ICS	= 0x0c,
- 	PKT_TYPE_RX_FW_MONITOR	= 0x0c,
- 	PKT_TYPE_TXRX_NOTIFY_V0	= 0x18,
- };
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h
-index bb98a6eacac4..90788667278b 100644
---- a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.h
-@@ -1353,6 +1353,7 @@ enum {
- 	MCU_UNI_CMD_FIXED_RATE_TABLE = 0x40,
- 	MCU_UNI_CMD_RSSI_MONITOR = 0x41,
- 	MCU_UNI_CMD_TESTMODE_CTRL = 0x46,
-+	MCU_UNI_CMD_ICS = 0x49,
- 	MCU_UNI_CMD_NAN	= 0x56,
- 	MCU_UNI_CMD_RRO = 0x57,
- 	MCU_UNI_CMD_OFFCH_SCAN_CTRL = 0x58,
-diff --git a/drivers/net/wireless/mediatek/mt76/mt792x.h b/drivers/net/wireless/mediatek/mt76/mt792x.h
-index a7d71e007da0..e4fc3fc7c873 100644
---- a/drivers/net/wireless/mediatek/mt76/mt792x.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt792x.h
-@@ -253,6 +253,7 @@ struct mt792x_irq_map {
- 		u32 data_complete_mask;
- 		u32 wm_complete_mask;
- 		u32 wm2_complete_mask;
-+		u32 wm4_complete_mask;
- 	} rx;
- };
- 
-@@ -269,6 +270,7 @@ struct mt792x_dma_layout {
- 	struct mt792x_dma_ring tx_done;
- 	struct mt792x_dma_ring rx_data;
- 	struct mt792x_dma_ring rx_mcu;
-+	struct mt792x_dma_ring rx_ics;
- };
- 
- #define mt792x_dma_ring(_qid, _n_desc, _ring_base) \
-@@ -322,6 +324,13 @@ struct mt792x_dev {
- 	struct work_struct usb_reset_work;
- 	atomic_t usb_reset_pending;
- 
-+	struct mt76_worker ics_worker;
-+	struct sk_buff_head ics_q;
-+	u16 fwlog_seq;
-+	u64 ics;
-+	bool ics_en;
-+	char path_str[28];
-+
- 	u8 fw_debug;
- 	u8 fw_features;
- 
-@@ -643,6 +652,14 @@ mt792x_skb_add_usb_sdio_hdr(struct mt792x_dev *dev, struct sk_buff *skb,
- 	put_unaligned_le32(hdr, skb_push(skb, sizeof(hdr)));
- }
- 
-+/* ICS */
-+void mt792x_ics_worker(struct mt76_worker *w);
-+void mt792x_ics_log(struct mt792x_dev *dev, struct sk_buff *skb);
-+void mt792x_mcu_rx_ics(struct mt792x_dev *dev, struct sk_buff *skb);
-+int mt792x_mcu_enable_ics(struct mt792x_dev *dev, u64 val);
-+int mt792x_ics_set(void *data, u64 val);
-+int mt792x_ics_get(void *data, u64 *val);
-+
- int __mt792xe_mcu_drv_pmctrl(struct mt792x_dev *dev);
- int mt792xe_mcu_drv_pmctrl(struct mt792x_dev *dev);
- int mt792xe_mcu_fw_pmctrl(struct mt792x_dev *dev);
-diff --git a/drivers/net/wireless/mediatek/mt76/mt792x_debugfs.c b/drivers/net/wireless/mediatek/mt76/mt792x_debugfs.c
-index 65c37e0cef8f..7c140f1293c4 100644
---- a/drivers/net/wireless/mediatek/mt76/mt792x_debugfs.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt792x_debugfs.c
-@@ -166,3 +166,29 @@ int mt792x_pm_idle_timeout_get(void *data, u64 *val)
- 	return 0;
- }
- EXPORT_SYMBOL_GPL(mt792x_pm_idle_timeout_get);
-+
-+int
-+mt792x_ics_set(void *data, u64 val)
-+{
-+	struct mt792x_dev *dev = data;
-+
-+	dev->ics = val;
-+
-+	mt792x_mutex_acquire(dev);
-+	mt792x_mcu_enable_ics(dev, val);
-+	mt792x_mutex_release(dev);
-+
-+	return 0;
-+}
-+EXPORT_SYMBOL_GPL(mt792x_ics_set);
-+
-+int
-+mt792x_ics_get(void *data, u64 *val)
-+{
-+	struct mt792x_dev *dev = data;
-+
-+	*val = dev->ics;
-+
-+	return 0;
-+}
-+EXPORT_SYMBOL_GPL(mt792x_ics_get);
-diff --git a/drivers/net/wireless/mediatek/mt76/mt792x_dma.c b/drivers/net/wireless/mediatek/mt76/mt792x_dma.c
-index e74b95fdc767..c2ddb7d23e53 100644
---- a/drivers/net/wireless/mediatek/mt76/mt792x_dma.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt792x_dma.c
-@@ -66,6 +66,9 @@ void mt792x_irq_tasklet(unsigned long data)
- 	if (intr & irq_map->rx.wm2_complete_mask)
- 		napi_schedule(&dev->mt76.napi[MT_RXQ_MCU_WA]);
- 
-+	if (is_mt7928(&dev->mt76) && (intr & irq_map->rx.wm4_complete_mask))
-+		napi_schedule(&dev->mt76.napi[MT_RXQ_ICS]);
-+
- 	if (intr & irq_map->rx.data_complete_mask)
- 		napi_schedule(&dev->mt76.napi[MT_RXQ_MAIN]);
- }
-@@ -80,6 +83,8 @@ void mt792x_rx_poll_complete(struct mt76_dev *mdev, enum mt76_rxq_id q)
- 		mt76_connac_irq_enable(mdev, irq_map->rx.data_complete_mask);
- 	else if (q == MT_RXQ_MCU_WA)
- 		mt76_connac_irq_enable(mdev, irq_map->rx.wm2_complete_mask);
-+	else if (is_mt7928(&dev->mt76) && q == MT_RXQ_ICS)
-+		mt76_connac_irq_enable(mdev, irq_map->rx.wm4_complete_mask);
- 	else
- 		mt76_connac_irq_enable(mdev, irq_map->rx.wm_complete_mask);
- }
-@@ -148,6 +153,23 @@ int mt792x_dma_alloc_queues(struct mt792x_dev *dev,
- 			       layout->rx_data.n_desc,
- 			       MT_RX_BUF_SIZE,
- 			       layout->rx_data.ring_base);
-+	if (ret)
-+		return ret;
-+
-+	/* ICS */
-+	if (is_mt7925(&dev->mt76))
-+		ret = mt76_queue_alloc(dev, &dev->mt76.q_rx[MT_RXQ_MCU_WA],
-+				       layout->rx_ics.qid,
-+				       layout->rx_ics.n_desc,
-+				       MT_RX_BUF_SIZE,
-+				       layout->rx_ics.ring_base);
-+
-+	if (is_mt7928(&dev->mt76))
-+		ret = mt76_queue_alloc(dev, &dev->mt76.q_rx[MT_RXQ_ICS],
-+				       layout->rx_ics.qid,
-+				       layout->rx_ics.n_desc,
-+				       MT_RX_BUF_SIZE,
-+				       layout->rx_ics.ring_base);
- 	return ret;
- }
- EXPORT_SYMBOL_GPL(mt792x_dma_alloc_queues);
-@@ -549,6 +571,10 @@ int mt792x_poll_rx(struct napi_struct *napi, int budget)
- 	done = mt76_dma_rx_poll(napi, budget);
- 	mt76_connac_pm_unref(&dev->mphy, &dev->pm);
- 
-+	/* ICS */
-+	if ((dev->ics >> 32) & 0xf)
-+		mt76_worker_schedule(&dev->ics_worker);
-+
- 	return done;
- }
- EXPORT_SYMBOL_GPL(mt792x_poll_rx);
-diff --git a/drivers/net/wireless/mediatek/mt76/mt792x_ics.c b/drivers/net/wireless/mediatek/mt76/mt792x_ics.c
-new file mode 100644
-index 000000000000..18c9dec03d0e
---- /dev/null
-+++ b/drivers/net/wireless/mediatek/mt76/mt792x_ics.c
-@@ -0,0 +1,206 @@
-+// SPDX-License-Identifier: ISC
-+/* Copyright (C) 2026 MediaTek Inc. */
-+#include <linux/firmware.h>
-+#include <linux/fs.h>
-+#include <linux/inet.h>
-+#include <linux/timekeeping.h>
-+#include <linux/time.h>
-+#include "mt792x.h"
-+#include "mt76.h"
-+
-+#define MT792x_ICS_LOG_MAGIC_NUM   0x44D9C99A
-+
-+enum {
-+	UNI_ICS_SETTING = 0,
-+};
-+
-+struct mt792x_ics_log_hdr {
-+	u32 magic_num;
-+	u8  ver;
-+	u8  rsv;
-+	u16 seq_no;
-+	u32 timestamp;
-+	u16 msg_id;
-+	u16 len;
-+};
-+
-+struct mt792x_ics_agg_hdr {
-+	u16 rx_byte_cnt;
-+	u16 frame_cnt:5;
-+	u16 rsv1:6;
-+	u16 pkt_type:5;
-+	u16 rsv2;
-+	u16 pse_fid;
-+};
-+
-+struct mt792x_ics_conf {
-+	u8 cmd_ver;
-+	u8 action;
-+	u16 cmd_len;
-+	u8 module;
-+	u8 filter;
-+	u8 operation;
-+	u8 pading0;
-+	u16 condition[7];
-+	u8 pading1[62];
-+};
-+
-+struct mt792x_ics_req {
-+	u8 rsv[4];
-+	u8 tlv_buffer[];
-+} __packed;
-+
-+int mt792x_mcu_enable_ics(struct mt792x_dev *dev, u64 val)
-+{
-+	struct mt76_phy *phy = &dev->mphy;
-+	struct mt76_dev *mdev = phy->dev;
-+	struct mt792x_ics_conf conf;
-+	struct mt792x_ics_req *hdr;
-+	struct sk_buff *skb;
-+	struct tlv *tlv;
-+	int max_len, err;
-+	struct timespec64 ts;
-+	struct tm timestamp;
-+	char date_str[15];
-+
-+	memset(&conf, 0, sizeof(conf));
-+
-+	if (((val >> 36) & 0xf) != 2) {
-+		dev_err(mdev->dev, "ICS cmd format error\n");
-+		return 0;
-+	}
-+
-+	ktime_get_real_ts64(&ts);
-+	time64_to_tm(ts.tv_sec, (-sys_tz.tz_minuteswest * 60), &timestamp);
-+
-+	snprintf(date_str, sizeof(date_str), "%04ld%02d%02d%02d%02d%02d",
-+		 timestamp.tm_year + 1900, timestamp.tm_mon + 1,
-+		 timestamp.tm_mday, timestamp.tm_hour, timestamp.tm_min,
-+		 timestamp.tm_sec);
-+
-+	conf.module = (val >> 36) & 0xf;
-+	conf.action = (val >> 32) & 0xf;
-+	conf.filter = (val >> 28) & 0xf;
-+	conf.operation = (val >> 24) & 0xf;
-+	conf.condition[0] = (val >> 20) & 0xf;
-+	conf.condition[1] = (val >> 16) & 0xf;
-+	conf.condition[2] = (val >> 12) & 0xf;
-+	conf.condition[3] = (val >> 8) & 0xf;
-+	conf.condition[4] = (val >> 4) & 0xf;
-+	conf.condition[5] = (val >> 0) & 0xf;
-+	conf.condition[6] = 0;
-+	max_len = sizeof(*hdr) + sizeof(conf) + sizeof(*tlv);
-+	skb = mt76_mcu_msg_alloc(mdev, NULL, max_len);
-+
-+	if (!skb)
-+		return -ENOMEM;
-+
-+	if (is_mt7928(mdev) || is_mt7925(mdev)) {
-+		hdr = (struct mt792x_ics_req *)skb_put(skb, sizeof(*hdr));
-+		tlv = mt76_connac_mcu_add_tlv(skb, UNI_ICS_SETTING, (sizeof(conf) + sizeof(*tlv)));
-+		memcpy(&tlv->data, &conf, sizeof(conf));
-+		err = mt76_mcu_skb_send_msg(mdev, skb, MCU_UNI_CMD(ICS), false);
-+	} else {
-+		return 0;
-+	}
-+
-+	if (err < 0)
-+		return err;
-+
-+	if (conf.action && !dev->ics_en) {
-+		skb_queue_purge(&dev->ics_q);
-+		mt76_worker_enable(&dev->ics_worker);
-+		snprintf(dev->path_str, sizeof(dev->path_str), "/tmp/ICS_%s.bin", date_str);
-+		dev_info(mdev->dev, "ICS file path=%s enable=0x%llx\n", dev->path_str, val);
-+		dev->ics_en = true;
-+	} else if (!conf.action && dev->ics_en) {
-+		if (!skb_queue_empty(&dev->ics_q))
-+			mt76_worker_schedule(&dev->ics_worker);
-+		mt76_worker_disable(&dev->ics_worker);
-+		dev_info(mdev->dev, "ICS file saved path=%s\n", dev->path_str);
-+		memset(dev->path_str, 0, sizeof(dev->path_str));
-+		skb_queue_purge(&dev->ics_q);
-+		dev->ics_en = false;
-+	}
-+
-+	return 0;
-+}
-+EXPORT_SYMBOL_GPL(mt792x_mcu_enable_ics);
-+
-+static int fw_log_to_file(struct mt792x_dev *dev, u8 *data, u32 len)
-+{
-+	struct file *p = NULL;
-+	loff_t pos = 0;
-+
-+	p = filp_open(dev->path_str, O_WRONLY | O_CREAT | O_APPEND, 0600);
-+	if (IS_ERR(p))
-+		return -1;
-+
-+	kernel_write(p, data, (size_t)len, &pos);
-+	filp_close(p, NULL);
-+	return 0;
-+}
-+
-+void mt792x_ics_log(struct mt792x_dev *dev, struct sk_buff *skb)
-+{
-+	struct mt792x_ics_agg_hdr *ics_agg_hdr;
-+	struct mt792x_ics_log_hdr *ics_log_hdr;
-+	u32	len;
-+	u8 *recv_buff;
-+
-+	if (skb->len < sizeof(*ics_agg_hdr)) {
-+		dev_kfree_skb(skb);
-+		return;
-+	}
-+
-+	ics_agg_hdr = (struct mt792x_ics_agg_hdr *)skb->data;
-+	len = ics_agg_hdr->rx_byte_cnt + sizeof(struct mt792x_ics_log_hdr);
-+
-+	/* rx_byte_cnt comes from the firmware/aggregation header, do not
-+	 * trust it beyond the skb that was actually received
-+	 */
-+	if (len > skb->len + sizeof(struct mt792x_ics_log_hdr)) {
-+		dev_kfree_skb(skb);
-+		return;
-+	}
-+
-+	recv_buff = kmalloc(len, GFP_ATOMIC);
-+
-+	if (recv_buff) {
-+		memset(recv_buff, 0, len);
-+		/* prepare ICS header */
-+		ics_log_hdr = (struct mt792x_ics_log_hdr *)recv_buff;
-+		ics_log_hdr->magic_num = MT792x_ICS_LOG_MAGIC_NUM;
-+		ics_log_hdr->ver = 1;
-+		ics_log_hdr->rsv = 0;
-+		ics_log_hdr->seq_no = dev->fwlog_seq++;
-+		ics_log_hdr->timestamp = 0;
-+		ics_log_hdr->msg_id = PKT_TYPE_ICS;
-+		ics_log_hdr->len = ics_agg_hdr->rx_byte_cnt;
-+		/* prepare ICS frame */
-+		memcpy(recv_buff + sizeof(struct mt792x_ics_log_hdr),
-+		       ics_agg_hdr, ics_agg_hdr->rx_byte_cnt);
-+		fw_log_to_file(dev, recv_buff, len);
-+		kfree(recv_buff);
-+	}
-+
-+	dev_kfree_skb(skb);
-+}
-+EXPORT_SYMBOL_GPL(mt792x_ics_log);
-+
-+void mt792x_ics_worker(struct mt76_worker *w)
-+{
-+	struct sk_buff *skb;
-+	struct mt792x_dev *dev = container_of(w, struct mt792x_dev,
-+					      ics_worker);
-+
-+	while ((skb = skb_dequeue(&dev->ics_q)) != NULL)
-+		mt792x_ics_log(dev, skb);
-+}
-+EXPORT_SYMBOL_GPL(mt792x_ics_worker);
-+
-+void mt792x_mcu_rx_ics(struct mt792x_dev *dev, struct sk_buff *skb)
-+{
-+	skb_queue_tail(&dev->ics_q, skb);
-+}
-+EXPORT_SYMBOL_GPL(mt792x_mcu_rx_ics);
--- 
-2.45.2
-
+--
+Luca Ceresoli, Bootlin
+Embedded Linux and Kernel engineering
+https://bootlin.com
 
