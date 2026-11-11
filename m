@@ -2,109 +2,94 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id EEA0B60A2601
-	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Nov 2026 02:30:54 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 439D5606A31C
+	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Nov 2026 02:36:46 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=vq6ZDCR6;
-	dkim=pass (1024-bit key) header.d=chromium.org header.i=@chromium.org header.a=rsa-sha256 header.s=google header.b=Wm84xdic
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=fBQtwEJw;
+	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=PNGLONsy
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Unsubscribe-Post:
-	List-Owner; bh=t8BFlEAmJEj8HGxMKTsLsaY7aesl7fSNxoZ8biKmTbE=; b=vq6ZDCR62Ae7Hp
-	PZI91n9cGUucioBMmY2z2Wsdjw7NTdYxekIbNjfJf1f5wNvdCvnQYKjLMKQw2oQtfun7kisNOv3lg
-	DDeW+5gN4+nN48WFomRvugybcCGfq4LoL7wqBBkyhVl2mMm0SPlEQ9MvSSqXRs0NlB+c+msK1/aPq
-	TyQjPqsttY3V1t2DKlbqKN3CPDK578u8Lez0sUfbTxeHbRjn58NpEnQYHvTCUcWh1juI80lGJi4Gi
-	18nhLIT1ny8S+gq6i3AeWu00y3mXaCH9hA3rlfcHh9zz+693cd2ffd6zA9C9TC69CHpfj0VqRlH7o
-	HgQmjbz6XdPG9BNvKnAQ==;
+	Content-Type:Subject:From:Cc:To:MIME-Version:Date:Message-ID:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Unsubscribe-Post:List-Owner;
+	bh=zEHPYjirAKrG9qAnDREkrHonagYc18CPGjUC7fikb5M=; b=fBQtwEJwLwSbYEph1DNFvET/tw
+	z1iNdTIhQ8jbTM9RK5HWEiP/cxU3CXJ8jMkCgXyRhLijqsZ9SixBAAiQZPUmLOgg2qCnoqJfzZmI4
+	fwiVG8I50xkOkCh6UTTxI8xPHteRPBjfJ7SThjKOQyqo8JvFhWYQ6JeUKf+o8aWb7EtezAzus/eHe
+	pyAj8MycGFxjwiK4KhEmdCTonZ1Jk0t2Ua0qfRuhoLvDV6aPj53A3FMhw7qIlx4hzrlmD+5YYyNYQ
+	l9yCZveINNCorhAzJI2sCh4ia3BTjpF6GcV775YFJ8aDdD6XtBFVNywLoSWHXCeKUcuFJGFu9WFCt
+	svt7YuVw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xQy6w-00000005SEL-2wzg;
-	Wed, 11 Nov 2026 02:30:54 +0000
-Received: from mail-yw1-x1132.google.com ([2607:f8b0:4864:20::1132])
+	id 1xQyCb-00000005TC0-3rOC;
+	Wed, 11 Nov 2026 02:36:45 +0000
+Received: from mail-oa2-x08.google.com ([2607:f8b0:4864:30::8])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xQy6t-00000005SD6-23MV
+	id 1xQyCZ-00000005TBC-1E7h
 	for linux-mediatek@lists.infradead.org;
-	Wed, 11 Nov 2026 02:30:53 +0000
-Received: by mail-yw1-x1132.google.com with SMTP id 00721157ae682-8b335eeb340so22899317b3.0
-        for <linux-mediatek@lists.infradead.org>; Tue, 10 Nov 2026 18:30:51 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1794364250; cv=none;
-        d=google.com; s=arc-20260327;
-        b=nGmwYkO6tK1JLRGkKaRolM6AKndVepkeNwDPwout5WFeqSkXbQ4n4TEYGx1Cr8OyVk
-         SYGFJExoLtDxGB/DXNWRstJeJMUw7yHm8zOXpjscAmJ2xDq0d7blBYX8lks5dairQOBn
-         mR7koF2WzNF//YY5Pa0GGy2uwDkuhKBRK4JM+72ctapP0eelR/XUAvw8Qj8lQ4csdJW8
-         Hv3eAHkrXJKVw2g0SrBMEXYPPgllGijWiHvaA5bfJPKazOSXBoY0vScUiKEyC5uTiZBC
-         XAHZVOYXbfqfPNPFJiuz8Tmq+p39e/n0qGyItxioIKKZeeGp0BxgxOLWzQ30aZC+YxsH
-         GxOw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20260327;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=t8BFlEAmJEj8HGxMKTsLsaY7aesl7fSNxoZ8biKmTbE=;
-        fh=ZgZDJeNEpwUy8WCFGfV+tqz+1/LmsAHZxOhFnvlaZp4=;
-        b=DddGQ09mSmRhV6PdZVtUlQqCmA7x2+YOPifK6S2wH1v8t1XwyJLX6YGj+XhqeYqv03
-         zcIC/ltQwF/4YY2eHCOEFpZu0B2bsQfgqH8TTAjZqRDlW3APndCDzKQSEoEc6uIHQGfs
-         /UJNl1P9DnWnoSkhyi1XPVxPrZRCIfqy2NZTVesp2AhTFPVeJxthp/WNxmOm0FlIPQDM
-         Jb/3nxXUUjxqRsBba4eimbbn0sI4iMRgCMsLoZnoz1kumepVSm1G/Cn0WeaUW0S9djWy
-         xthgg1/w4ddxaOmKH1w5EWYhEmH5Y7WjZD6KWNqTPwXPSrAaetFl/SKZ/kqR080GaZys
-         NhwQ==;
-        darn=lists.infradead.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
+	Wed, 11 Nov 2026 02:36:44 +0000
+Received: by mail-oa2-x08.google.com with SMTP id 586e51a60fabf-4ad827109b4so530711fac.0
+        for <linux-mediatek@lists.infradead.org>; Tue, 10 Nov 2026 18:36:42 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1794364250; x=1794969050; darn=lists.infradead.org;
-        h=content-transfer-encoding:content-type:cc:to:subject:message-id
-         :date:from:in-reply-to:references:mime-version:from:to:cc:subject
-         :date:message-id:reply-to:content-type;
-        bh=t8BFlEAmJEj8HGxMKTsLsaY7aesl7fSNxoZ8biKmTbE=;
-        b=Wm84xdicY3pqkdrNu+YCBF8RVyUnYSRuCIEFt4eCCN09uxcLlr6uJnes6LDYfSNZjF
-         8WJZCDnLtaEW4KZvSj4O2rmphiBqU/N6/UI3o9qevr4GzD8q61Tgmw4Uv0UDdk5xdLeD
-         7JBwENO/nChmlZjZLFKc/UYmgBaQ00udABk28=
+        d=gmail.com; s=20260707; t=1794364602; x=1794969402; darn=lists.infradead.org;
+        h=content-transfer-encoding:content-type:subject:from:cc:to
+         :content-language:user-agent:mime-version:date:message-id:from:to:cc
+         :subject:date:message-id:reply-to:content-type;
+        bh=zEHPYjirAKrG9qAnDREkrHonagYc18CPGjUC7fikb5M=;
+        b=PNGLONsy0F8MGHXGhVTG5e3e1HBSHnTET5d7kom6PaSOfp0lyCV+0s3qsvjgHMArmp
+         +NXTjLtVZbWeVkeaSLlKxsJa0cM/v1fi72myoUZj/uRTd1Si+kIclmEL/nQgFwJTqkOJ
+         yvlwk5qGkYI4JTwYX7bAQIuX6cNZer6mKFfqa7UyUgFuJlc+M433ZrMVIxfWhaMAbDiM
+         KAcVs0kZdrzl5P47HFrIgfH4e8y5HTg0UlxD1URSswfwSB5yY6qiH58xYtWPX6JpJQDg
+         vLQYFGuytAkFFjoDDVcF3XakYwUfilSqQbO5cuxSD2ZDa61zjKDCUNBYfsZU59+cEZi/
+         A5Fw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1794364250; x=1794969050;
-        h=content-transfer-encoding:content-type:cc:to:subject:message-id
-         :date:from:in-reply-to:references:mime-version:x-gm-gg
+        d=1e100.net; s=20260707; t=1794364602; x=1794969402;
+        h=content-transfer-encoding:content-type:subject:from:cc:to
+         :content-language:user-agent:mime-version:date:message-id:x-gm-gg
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
          :content-type;
-        bh=t8BFlEAmJEj8HGxMKTsLsaY7aesl7fSNxoZ8biKmTbE=;
-        b=fOQDSdTT3NqjmTBwyGdma68uJmEaMTXlHJ6wX77BBvTlxdwI9hBtxebqnmvvc8EKvb
-         kE/o1yQy1stWGml0MpfYvoETg2j+UypiPvWy+74I90oHM5eKbej51PsgtSgJa769lDn1
-         F0DW5mX3t3KcOeIKvTgXokwlUvlQNhSeY4aVET7XRwnw8nqWfDplRSNkyqphZEX8OMvY
-         gLSCypyS85sCRR/i0PUAnirviXkn6oOLZTAb/0RB8eUV6gOO2p6NsU+Zba8GmU2wcqhp
-         JOZsz79tULHMg21O6hDJHQQIZsLJnOUpsb4QGTSAYlfrWI/slRA1X3tcJcw/qKOYcCPG
-         IUPA==
-X-Forwarded-Encrypted: i=1; AL+hErFe9Zk5z7AXZy3OxY+Q/RQydNEl/otEb8CK3xUHey0mhQsQ+Awl/r23t1J95k0UJuF7GJScwZXHgo98g0lIJw==@lists.infradead.org
-X-Gm-Message-State: APuU4Z+zGMn4NObkm2uV5eMU1CMGVsgAD9ayfODTL9RjcB9tPmFz0/W+
-	ywCEjcdHWjO3HGWWZwBp8sUZ5q5u1KfTjJLgIl7mOAMj7I+esuHUa3uOCqj9z/dOCRMp98OeJwc
-	7f7twNfSUfp6khK/ujqINbIqwcWQsrvK+kT7LOpVt
-X-Gm-Gg: AYBFou3vqTdcAafW2ZpD/Pm7nJo7Gu3RlajtZFg5Kj0JSOKAPVbztrN9q0fzkAB6Gj7
-	G3m9c1fD7sMgluQfsmk8H3tEhvrkOfSjujZlMiLKZUSjNpVn6yAYgAt+8R4+LNdnQwApl6/pjgJ
-	tZ3nFCzDbN1tamQ77huFPdTCbE5QamDhhuHiJ9gY5ZB8Bn09eMfqacE9TtSGowa0EJhzGES75B2
-	VG/3i+6soWC9Y33BdlrC9OiKwx0gCLewyr/pl4EXaokUeHJ/ZTi+QuKdSWFVqhixagcUTjEXdCm
-	XlBoU0aPKmaAt58GWXpvcYjzFKY1A+zltWH7F5IAnT6ctTDj75bwNqwCoAtMAKB4IG2YSNNApEF
-	p+2uE/bO8q5qNH8WfHtwfWeGruC9NKyBQPdKHmSozZ67rQutsjf1MXMpKusDVqYZNxc7OoZAvTZ
-	XfbGx615R13m6q
-X-Received: by 2002:a05:690c:fd0:b0:8b0:cdf4:94a2 with SMTP id
- 00721157ae682-8b3a81ab7e0mr7261967b3.84.1794364250231; Tue, 10 Nov 2026
- 18:30:50 -0800 (PST)
+        bh=zEHPYjirAKrG9qAnDREkrHonagYc18CPGjUC7fikb5M=;
+        b=c0VgUFnAu2c+FCMqNpPlGyHOFTDVW7y06HBsr9yk8xJP+9WTRbMI7zgW+xgI0Ludz7
+         ohA4ntuchixIRjm5gY13Xoqr2THWp4sBemeiNJp69cm3b/u/aRRlVv8y96hTDFEfIgIz
+         h1hqHFyoHGGFAjFTooXRVcWgWGCS1/iUInScVkJL5u36Wq8GDQCcb4dol6Z0czAty2xi
+         m3VU+Gud+6av8pk2TCVfuNL14S3Fv7rKfLLx4fOZWx9fcOsY5v4eacZbXwNKn0utEYIp
+         dUTz21z3GPVoiBiEvd7nrxNU6BR26Xn8mU99ymc13xUDVVWC+XwbxuSQjR8OfahZxx3Q
+         0gPg==
+X-Forwarded-Encrypted: i=1; AL+hErGU8DOO4lQaz4fqc9zzYaBDJWHnJHsRujNJw2n3KKVfuPN9gx2W0ovQQf0qpCRxT/kNr0Q4V+1oY1xdfkCjug==@lists.infradead.org
+X-Gm-Message-State: APuU4Z/cXfMjl+bkysvJm+PhCsq81jOno8viwJGS9xh3qSL6J3U6T7XT
+	venMjzrIT2sFvR0orgR85ykSPC83rNBFMATr6sM5h4b9PgdD9wE5yqYz
+X-Gm-Gg: AYBFou0y0iNs7ITPSqvLDS9D6iaMWH6dY2cVx7o7cpBlbzMa2IJ2C8E60EDASZdeesf
+	IrMj9bxDvMzqQmR3paRg37nLfqrZnOeDjOxRUTe01r7i/H9weOm6O/SV0rRDIBmjQf2wJQePLSs
+	SdO0wBlEp2cf1gvdh4rYRK69QIbddvRfNlbircyDNrMXpXYMF8kGGUySItADg8IZRTTiSpTSP04
+	1T23v1K+ojIMEwKTVyl+QEFL+gOZIJVnpAiogBVbbdF1L9WqKQYcuOwehv0xMbmD7JkYuLh8CJO
+	msRdjYPnmlDLMJGZcliyCqF1LB1xVuCYGSmVY3B7mL4YrMtTbzZzSfxLNFuUb30Xa+BCKM4o7lv
+	XctrYtNRhQDsgO+ipiPJVFC8yJDatE7COsH+IvLM4C49E6hgHtbpYrpShqylv7PEU55LNIsKXAK
+	q2Luu1XDgryYx1owXdExpoa3eRErKHI1kROgtlnMBG+t70jJ3B4gsA5a5Fx1Y3ujChn7fY8F+ko
+	hsKJuyN3r5M8EUFQQ150n1PRsMN7LQ1JaYrdyZ6chxlZ3a9HRuvpqe0odm9w55dVRRtTG8gV7ar
+	Wai1mt/rMT8KNZFd6vqjiySWNC8xZam5s/mY/sEzXTB8SA==
+X-Received: by 2002:a05:6808:448b:b0:4fb:ac9b:b076 with SMTP id 5614622812f47-56b9852398bmr834924b6e.67.1794364602109;
+        Tue, 10 Nov 2026 18:36:42 -0800 (PST)
+Received: from ?IPV6:2600:8804:5716:d800::f01a? ([2600:8804:5716:d800::f01a])
+        by smtp.gmail.com with ESMTPSA id 5614622812f47-56905f2faf5sm3756465b6e.13.2026.11.10.18.36.39
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Tue, 10 Nov 2026 18:36:40 -0800 (PST)
+Message-ID: <ec8e2f41-ffea-4153-a5a0-ea2199bebd74@gmail.com>
+Date: Tue, 10 Nov 2026 20:36:39 -0600
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-References: <20261110-mt6397-irq-num-fix-v2-1-9d5853a00437@protonmail.ch>
-In-Reply-To: <20261110-mt6397-irq-num-fix-v2-1-9d5853a00437@protonmail.ch>
-From: Chen-Yu Tsai <wenst@chromium.org>
-Date: Wed, 11 Nov 2026 11:30:39 +0900
-X-Gm-Features: AclHuK9ModA0hBuzgJ5zuMaqQJM9UHprenTTXYDmDO2P6KUA8OGeZIXeF99lf3k
-Message-ID: <CAGXv+5FgXESTgZ4hNyPP1Cdd4BfnV8dVTNpitKKpNAuWY-gYMQ@mail.gmail.com>
-Subject: Re: [PATCH v2] mfd: mt6397: Use PMIC specific interrupt count for
- domain creation
-To: Ben Grisdale <bengris32@protonmail.ch>
-Cc: mfd@lists.linux.dev, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+User-Agent: Mozilla Thunderbird
+Content-Language: en-US
+To: sean.wang@mediatek.com, chris.lu@mediatek.com
+Cc: mark-yw.chen@mediatek.com, ryder.lee@mediatek.com,
+ shayne.chen@mediatek.com, linux-mediatek@lists.infradead.org
+From: Ryan Brue <ryanbrue.dev@gmail.com>
+Subject: Request for MT6630 firmware for linux-firmware (btmtksdio, mt76)
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261110_183051_584849_F7507D8D 
-X-CRM114-Status: GOOD (  11.60  )
+X-CRM114-CacheID: sfid-20261110_183643_369695_EC8BA25E 
+X-CRM114-Status: GOOD (  10.66  )
 X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -116,31 +101,53 @@ List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-10.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,
-	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS autolearn=ham autolearn_force=no version=4.0.1
+X-Spam-Status: No, score=-4.3 required=3.0 tests=BAYES_00,DKIM_SIGNED,
+	DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,FREEMAIL_FORGED_FROMDOMAIN,
+	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1 autolearn=no
+	autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On Wed, Nov 11, 2026 at 7:51=E2=80=AFAM Ben Grisdale <bengris32@protonmail.=
-ch> wrote:
->
-> mt6397_irq_init() currently creates its IRQ domain with a fixed number
-> of interrupts (MT6397_IRQ_NR). However, not every PMIC supported by this
-> driver has the same number of interrupts as the MT6397. The MT6328 has
-> 47 interrupts, so its interrupts above MT6397_IRQ_NR (32) are currently
-> unusable.
->
-> Correct this by passing the PMIC's actual interrupt count to
-> irq_domain_create_linear() based on the chip ID. Define the missing
-> interrupt count for MT6328, as the other supported PMICs already have
-> it defined.
->
-> Fixes: 6e31bb8d3a63 ("mfd: mt6397: Add initial support for MT6328")
-> Signed-off-by: Ben Grisdale <bengris32@protonmail.ch>
+Hi Sean and Chris,
 
-Changes make sense to me, and it also seems to fix MT6332.
+I have mainline drivers for the MT6630 Wi-Fi/Bluetooth combo chip on 
+SDIO, written for a 2017 Amazon Fire HD 10 (MT7173). I have MT6630 
+support in btmtksdio, and a new mt76 driver, mt6630s. On the tablet, I 
+have Wi-Fi working on 5 GHz with VHT80, and Bluetooth plays A2DP audio 
+to headphones. I plan on posting them to linux-bluetooth and linux-wireless.
 
-Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
+The drivers need three files, none of which are in linux-firmware:
+
+   mediatek/mt6630/mt6630_patch_e3_0_hdr.bin, 47068 bytes
+   sha256 c9790255a4e0dacdd6ef9191647fe96c96c30e10f158e9bf15e9ec08a6bab022
+
+   mediatek/mt6630/mt6630_patch_e3_1_hdr.bin, 65524 bytes
+   sha256 8a4ed4d384bd14bf255cde87adefe5136742575752e571c39cf49ceef221e6ea
+
+   mediatek/mt6630/WIFI_RAM_CODE_MT6630, 237008 bytes
+   sha256 c9715c3f09fbd92afa74bf530c8dea34a0558b463799e4feb3795053402c5558
+
+
+They are from the Fire OS vendor files for the tablet. Both patches 
+carry the build time 20180626b001007, and the chip reports hw version 
+0x8a12, ROM version 0x8a11. Fire OS also has an older pair, built 
+20170622224023a.
+
+I have three questions:
+
+1. Would MediaTek submit these files to linux-firmware under 
+LICENCE.mediatek, or sign off on a submission I prepare? linux-firmware 
+only takes firmware from the vendor or with its acknowledgement, so I 
+wouldn't send them on my own.
+
+2. Are these the right builds for the MT6630 E3, or is there a newer one 
+you'd rather ship?
+
+3. Are the names above acceptable? I'd like the drivers and 
+linux-firmware to match before I post the drivers, and I can change them 
+to whatever you prefer.
+
+Thank you, and best regards,
+Ryan Brue
 
