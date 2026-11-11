@@ -2,95 +2,110 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 64F2C606A320
-	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Nov 2026 02:28:09 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id EEA0B60A2601
+	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Nov 2026 02:30:54 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=OFKl8JwH;
-	dkim=fail reason="signature verification failed" (2048-bit key, unprotected) header.d=infradead.org header.i=@infradead.org header.a=rsa-sha256 header.s=desiato.20200630 header.b=h4mcjZP1;
-	dkim=pass (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.a=rsa-sha256 header.s=dk header.b=e9ScvAs9
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=vq6ZDCR6;
+	dkim=pass (1024-bit key) header.d=chromium.org header.i=@chromium.org header.a=rsa-sha256 header.s=google header.b=Wm84xdic
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Unsubscribe-Post:List-Owner;
-	bh=L5I1B5dReJ4xQ/aiPXnXg5Jumcrt0D9+GNfIpCmigU4=; b=OFKl8JwHEs3wcXUymrNFd95QfB
-	fPUf8RBB+mgdrnToyAqjn3y6NTLmsYwIfHvg9my9Q+an5yt1r22+knRlqX3pFTGu9nEjSloYTzJnj
-	hOW2eS+2Sh6x23r9RAY8gj/LLktjepc9zXO/8dKrxmutH0/VISkphHmVRQHHI+pFs7KkiqYft/tky
-	2O2LPLXkSA1TYzWp3M+07osjc1TlOd/sqdVN97FkMBVsWDi/ZC0BtwDOjAOfZErTElwieceFJszXN
-	XvyKVKb//l+Pg+xabiFp3gaGKnZpGqcR0YaZKxeSudwNHqk/DqOHqTTiXyMiAEfe3Y/PN3Ihu95oj
-	ISrK5+uQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Unsubscribe-Post:
+	List-Owner; bh=t8BFlEAmJEj8HGxMKTsLsaY7aesl7fSNxoZ8biKmTbE=; b=vq6ZDCR62Ae7Hp
+	PZI91n9cGUucioBMmY2z2Wsdjw7NTdYxekIbNjfJf1f5wNvdCvnQYKjLMKQw2oQtfun7kisNOv3lg
+	DDeW+5gN4+nN48WFomRvugybcCGfq4LoL7wqBBkyhVl2mMm0SPlEQ9MvSSqXRs0NlB+c+msK1/aPq
+	TyQjPqsttY3V1t2DKlbqKN3CPDK578u8Lez0sUfbTxeHbRjn58NpEnQYHvTCUcWh1juI80lGJi4Gi
+	18nhLIT1ny8S+gq6i3AeWu00y3mXaCH9hA3rlfcHh9zz+693cd2ffd6zA9C9TC69CHpfj0VqRlH7o
+	HgQmjbz6XdPG9BNvKnAQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xQy4H-00000005RsC-0Z3q;
-	Wed, 11 Nov 2026 02:28:09 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1xQy6w-00000005SEL-2wzg;
+	Wed, 11 Nov 2026 02:30:54 +0000
+Received: from mail-yw1-x1132.google.com ([2607:f8b0:4864:20::1132])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xQy4F-00000005Rs4-3T5I
-	for linux-mediatek@bombadil.infradead.org;
-	Wed, 11 Nov 2026 02:28:07 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Type:Content-Transfer-Encoding
-	:MIME-Version:Message-ID:Date:Subject:CC:To:From:Sender:Reply-To:Content-ID:
-	Content-Description:In-Reply-To:References;
-	bh=L5I1B5dReJ4xQ/aiPXnXg5Jumcrt0D9+GNfIpCmigU4=; b=h4mcjZP1Pnxnqhlk6ZxkVWmmPB
-	C2F6k8A1q9a1wjJ85Dg/jPqif31FsmUgqbBM8IBISDonpjs0UTn+M0YgDfuSLXQyYXdRl4bAHJ4aF
-	GxOB0JykKPnsmFxJpze6l4+rrKvr806FaEmIXjQYpwZRUcX7TynZ2EgHaMChxNUzlUGGLKtW4dj/y
-	xmHBQLEnJgmOB1ebQ28gCwiVUyJFwW37wpfEyqzwobykKqaVCd9+wLFSh1XpW4TNG2TFQrpyLIJLK
-	ptb2zKPzdjAG9ZlCstK1OMuoQGrSVnDWDUilZpzEKn+L5AvBXjekVnQfjKD5btJ8kLG2jK8x+2Dwm
-	HuyGZ6tg==;
-Received: from mailgw02.mediatek.com ([216.200.240.185])
-	by desiato.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xQy4C-00000008hHW-00yS
+	id 1xQy6t-00000005SD6-23MV
 	for linux-mediatek@lists.infradead.org;
-	Wed, 11 Nov 2026 02:28:06 +0000
-X-UUID: 7f207322dd7711f1acbe4559397dec65-20261110
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=L5I1B5dReJ4xQ/aiPXnXg5Jumcrt0D9+GNfIpCmigU4=;
-	b=e9ScvAs9P+JQLsbEcs3azGmuXw6kn4O/OEq28pCTk2lspXcSu/pO3ULw8jj1yv0n/POP6NR6MvZJm2YbzvVuf67a0QIJwXKX3zNz+nXaYYdG8hDeIcx8UWLDWKqLefBHREuf/3TCLNN0vC3lG2uuo0z+CqUGDiL2kXnIhToHNoc=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.21,REQID:97808dda-7289-4065-863e-29866c8ee378,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:b0318ac,CLOUDID:3ffebb5f-1b4c-4860-998c-597777959174,B
-	ulkID:nil,BulkQuantity:0,SF:102|836|865|888|898,TC:-5,Content:0|15|50|99,E
-	DM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0
-	,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 2,SSN|SDN
-X-CID-BAS: 2,SSN|SDN,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: 7f207322dd7711f1acbe4559397dec65-20261110
-Received: from mtkmbs14n1.mediatek.inc [(172.21.101.75)] by mailgw02.mediatek.com
-	(envelope-from <jb.tsai@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1944573690; Tue, 10 Nov 2026 19:27:52 -0700
-Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
- mtkmbs13n2.mediatek.inc (172.21.101.108) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.29; Wed, 11 Nov 2026 10:27:50 +0800
-Received: from mtksitap99.mediatek.inc (10.233.130.16) by
- mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.2562.29 via Frontend Transport; Wed, 11 Nov 2026 10:27:50 +0800
-From: JB Tsai <jb.tsai@mediatek.com>
-To: <nbd@nbd.name>, <lorenzo@kernel.org>
-CC: <linux-wireless@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
-	<Sean.Wang@mediatek.com>, <Yung-lun.Chien@mediatek.com>,
-	<jb.tsai@mediatek.com>, allen.chien <yung-lun.chien@mediatek.com>
-Subject: [PATCH] wifi: mt76: clamp channel power to the s8 range
-Date: Wed, 11 Nov 2026 10:27:49 +0800
-Message-ID: <20261111022749.784001-1-jb.tsai@mediatek.com>
-X-Mailer: git-send-email 2.45.2
+	Wed, 11 Nov 2026 02:30:53 +0000
+Received: by mail-yw1-x1132.google.com with SMTP id 00721157ae682-8b335eeb340so22899317b3.0
+        for <linux-mediatek@lists.infradead.org>; Tue, 10 Nov 2026 18:30:51 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1794364250; cv=none;
+        d=google.com; s=arc-20260327;
+        b=nGmwYkO6tK1JLRGkKaRolM6AKndVepkeNwDPwout5WFeqSkXbQ4n4TEYGx1Cr8OyVk
+         SYGFJExoLtDxGB/DXNWRstJeJMUw7yHm8zOXpjscAmJ2xDq0d7blBYX8lks5dairQOBn
+         mR7koF2WzNF//YY5Pa0GGy2uwDkuhKBRK4JM+72ctapP0eelR/XUAvw8Qj8lQ4csdJW8
+         Hv3eAHkrXJKVw2g0SrBMEXYPPgllGijWiHvaA5bfJPKazOSXBoY0vScUiKEyC5uTiZBC
+         XAHZVOYXbfqfPNPFJiuz8Tmq+p39e/n0qGyItxioIKKZeeGp0BxgxOLWzQ30aZC+YxsH
+         GxOw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20260327;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=t8BFlEAmJEj8HGxMKTsLsaY7aesl7fSNxoZ8biKmTbE=;
+        fh=ZgZDJeNEpwUy8WCFGfV+tqz+1/LmsAHZxOhFnvlaZp4=;
+        b=DddGQ09mSmRhV6PdZVtUlQqCmA7x2+YOPifK6S2wH1v8t1XwyJLX6YGj+XhqeYqv03
+         zcIC/ltQwF/4YY2eHCOEFpZu0B2bsQfgqH8TTAjZqRDlW3APndCDzKQSEoEc6uIHQGfs
+         /UJNl1P9DnWnoSkhyi1XPVxPrZRCIfqy2NZTVesp2AhTFPVeJxthp/WNxmOm0FlIPQDM
+         Jb/3nxXUUjxqRsBba4eimbbn0sI4iMRgCMsLoZnoz1kumepVSm1G/Cn0WeaUW0S9djWy
+         xthgg1/w4ddxaOmKH1w5EWYhEmH5Y7WjZD6KWNqTPwXPSrAaetFl/SKZ/kqR080GaZys
+         NhwQ==;
+        darn=lists.infradead.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=chromium.org; s=google; t=1794364250; x=1794969050; darn=lists.infradead.org;
+        h=content-transfer-encoding:content-type:cc:to:subject:message-id
+         :date:from:in-reply-to:references:mime-version:from:to:cc:subject
+         :date:message-id:reply-to:content-type;
+        bh=t8BFlEAmJEj8HGxMKTsLsaY7aesl7fSNxoZ8biKmTbE=;
+        b=Wm84xdicY3pqkdrNu+YCBF8RVyUnYSRuCIEFt4eCCN09uxcLlr6uJnes6LDYfSNZjF
+         8WJZCDnLtaEW4KZvSj4O2rmphiBqU/N6/UI3o9qevr4GzD8q61Tgmw4Uv0UDdk5xdLeD
+         7JBwENO/nChmlZjZLFKc/UYmgBaQ00udABk28=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20260707; t=1794364250; x=1794969050;
+        h=content-transfer-encoding:content-type:cc:to:subject:message-id
+         :date:from:in-reply-to:references:mime-version:x-gm-gg
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+         :content-type;
+        bh=t8BFlEAmJEj8HGxMKTsLsaY7aesl7fSNxoZ8biKmTbE=;
+        b=fOQDSdTT3NqjmTBwyGdma68uJmEaMTXlHJ6wX77BBvTlxdwI9hBtxebqnmvvc8EKvb
+         kE/o1yQy1stWGml0MpfYvoETg2j+UypiPvWy+74I90oHM5eKbej51PsgtSgJa769lDn1
+         F0DW5mX3t3KcOeIKvTgXokwlUvlQNhSeY4aVET7XRwnw8nqWfDplRSNkyqphZEX8OMvY
+         gLSCypyS85sCRR/i0PUAnirviXkn6oOLZTAb/0RB8eUV6gOO2p6NsU+Zba8GmU2wcqhp
+         JOZsz79tULHMg21O6hDJHQQIZsLJnOUpsb4QGTSAYlfrWI/slRA1X3tcJcw/qKOYcCPG
+         IUPA==
+X-Forwarded-Encrypted: i=1; AL+hErFe9Zk5z7AXZy3OxY+Q/RQydNEl/otEb8CK3xUHey0mhQsQ+Awl/r23t1J95k0UJuF7GJScwZXHgo98g0lIJw==@lists.infradead.org
+X-Gm-Message-State: APuU4Z+zGMn4NObkm2uV5eMU1CMGVsgAD9ayfODTL9RjcB9tPmFz0/W+
+	ywCEjcdHWjO3HGWWZwBp8sUZ5q5u1KfTjJLgIl7mOAMj7I+esuHUa3uOCqj9z/dOCRMp98OeJwc
+	7f7twNfSUfp6khK/ujqINbIqwcWQsrvK+kT7LOpVt
+X-Gm-Gg: AYBFou3vqTdcAafW2ZpD/Pm7nJo7Gu3RlajtZFg5Kj0JSOKAPVbztrN9q0fzkAB6Gj7
+	G3m9c1fD7sMgluQfsmk8H3tEhvrkOfSjujZlMiLKZUSjNpVn6yAYgAt+8R4+LNdnQwApl6/pjgJ
+	tZ3nFCzDbN1tamQ77huFPdTCbE5QamDhhuHiJ9gY5ZB8Bn09eMfqacE9TtSGowa0EJhzGES75B2
+	VG/3i+6soWC9Y33BdlrC9OiKwx0gCLewyr/pl4EXaokUeHJ/ZTi+QuKdSWFVqhixagcUTjEXdCm
+	XlBoU0aPKmaAt58GWXpvcYjzFKY1A+zltWH7F5IAnT6ctTDj75bwNqwCoAtMAKB4IG2YSNNApEF
+	p+2uE/bO8q5qNH8WfHtwfWeGruC9NKyBQPdKHmSozZ67rQutsjf1MXMpKusDVqYZNxc7OoZAvTZ
+	XfbGx615R13m6q
+X-Received: by 2002:a05:690c:fd0:b0:8b0:cdf4:94a2 with SMTP id
+ 00721157ae682-8b3a81ab7e0mr7261967b3.84.1794364250231; Tue, 10 Nov 2026
+ 18:30:50 -0800 (PST)
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-MTK: N
+References: <20261110-mt6397-irq-num-fix-v2-1-9d5853a00437@protonmail.ch>
+In-Reply-To: <20261110-mt6397-irq-num-fix-v2-1-9d5853a00437@protonmail.ch>
+From: Chen-Yu Tsai <wenst@chromium.org>
+Date: Wed, 11 Nov 2026 11:30:39 +0900
+X-Gm-Features: AclHuK9ModA0hBuzgJ5zuMaqQJM9UHprenTTXYDmDO2P6KUA8OGeZIXeF99lf3k
+Message-ID: <CAGXv+5FgXESTgZ4hNyPP1Cdd4BfnV8dVTNpitKKpNAuWY-gYMQ@mail.gmail.com>
+Subject: Re: [PATCH v2] mfd: mt6397: Use PMIC specific interrupt count for
+ domain creation
+To: Ben Grisdale <bengris32@protonmail.ch>
+Cc: mfd@lists.linux.dev, linux-kernel@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261111_022804_572314_84C7655E 
-X-CRM114-Status: GOOD (  10.60  )
-X-Spam-Score: -0.2 (/)
+X-CRM114-CacheID: sfid-20261110_183051_584849_F7507D8D 
+X-CRM114-Status: GOOD (  11.60  )
+X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -101,45 +116,31 @@ List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-18.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-10.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,
-	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
+	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-From: "allen.chien" <yung-lun.chien@mediatek.com>
+On Wed, Nov 11, 2026 at 7:51=E2=80=AFAM Ben Grisdale <bengris32@protonmail.=
+ch> wrote:
+>
+> mt6397_irq_init() currently creates its IRQ domain with a fixed number
+> of interrupts (MT6397_IRQ_NR). However, not every PMIC supported by this
+> driver has the same number of interrupts as the MT6397. The MT6328 has
+> 47 interrupts, so its interrupts above MT6397_IRQ_NR (32) are currently
+> unusable.
+>
+> Correct this by passing the PMIC's actual interrupt count to
+> irq_domain_create_linear() based on the chip ID. Define the missing
+> interrupt count for MT6328, as the other supported PMICs already have
+> it defined.
+>
+> Fixes: 6e31bb8d3a63 ("mfd: mt6397: Add initial support for MT6328")
+> Signed-off-by: Ben Grisdale <bengris32@protonmail.ch>
 
-mt76_connac_get_ch_power() computes power as an int from
-2 * ch->max_reg_power and then compares it with target_power through
-min_t(s8, ...), which truncates the value to 8 bits. An out-of-range
-max_reg_power would wrap (e.g. 300 becomes 44) and could lower
-target_power wrongly.
+Changes make sense to me, and it also seems to fix MT6332.
 
-Clamp the value into the s8 range when it is calculated. Regulatory
-limits are far below that range, so valid input is not affected.
-
-Signed-off-by: allen.chien <yung-lun.chien@mediatek.com>
----
- drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
-
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
-index ad53bb60d5cd..f5215fa27faf 100644
---- a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c
-@@ -2168,7 +2168,8 @@ s8 mt76_connac_get_ch_power(struct mt76_phy *phy,
- 
- 		if (ch->hw_value == chan->hw_value) {
- 			if (!(ch->flags & IEEE80211_CHAN_DISABLED)) {
--				int power = 2 * ch->max_reg_power;
-+				int power = clamp_t(int, 2 * ch->max_reg_power,
-+						    S8_MIN, S8_MAX);
- 
- 				if (is_mt7663(dev) && (power > 63 || power < -64))
- 					power = 63;
--- 
-2.45.2
-
+Reviewed-by: Chen-Yu Tsai <wenst@chromium.org>
 
