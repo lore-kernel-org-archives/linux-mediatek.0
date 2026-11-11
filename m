@@ -2,111 +2,81 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 37DB1606A31C
-	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Nov 2026 06:41:48 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 77E1C606A320
+	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Nov 2026 07:14:02 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=MmVZvmqd;
-	dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=Q5vPTCuk
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=TZgo4EI4;
+	dkim=pass (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.a=rsa-sha256 header.s=dk header.b=apIf+QDL
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Cc:To:References:In-Reply-To:Message-Id:
-	Content-Type:MIME-Version:Subject:Date:From:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
+	Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
 	List-Unsubscribe-Post:List-Owner;
-	bh=GCzd4pkqf9qNrfLh6SvmrgzLO4l76wGqI6eEmCr+tWQ=; b=MmVZvmqdB94V0bQ6KA27DhH7L6
-	L7i/mA/X6eF727Zx5Z3c+SK0EIYXuuAceg5WLNdIbIv6yWjJURq2Al44OmVxzBdY1V76KR+70PBvx
-	zGQLrZMRajRhvn7oKGarxQuYU1ootoX7sPOddf5JKaM8IJ1VE+zdBGjNMYkPqLzTLSNnwYItjgaFE
-	WSWFwqRzIhvQL0OoHblE2fvetGVqz6zMLWJnhQ6gUE2BQKH11tnzJpk8R81sVvhxuLMNQ6OQYYetO
-	5FP3tUPgF6fjNWAFWf8AKWC2RD+4+vA2aASoXUHuIKuRqGzE3f3ydR14+lEvInftG9GK140R49s3Z
-	WBMgeCPw==;
+	bh=mwx0jmF9JokkiaHJT8NbtY7bR3paMEp+A7PPF7e2LHE=; b=TZgo4EI4Lc/WcIG32XD3Snfs7F
+	Fa8EHvTiVpG/I4PGN60TpAhmC18X/hUA0Six/cCKHcP/RKLRQlARAK0MkVMieYpE3H7NDYRrIllbc
+	jlT5f/VzAgJe7R6KTm7BE6uBJb7+/NVs2bdctowfR9p58uLk1hton+4WKEnrb7N2+XDHk3aDAH5wj
+	GLIcYlJTAloPclN9SGDv/hrXsqn8B9y3sjdEWHMT3pEuhcYYhD8X49CiCIkzj2WkwWhcGxRaJriC0
+	mvjNZO3r87LmxqLUnfylyGVwL6FoZel77F+qsEHWm37/9EFY+LCYUN2XwRiH82fatluru/8CJ+ldZ
+	pn8fYBZQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xR21j-00000005o3E-3jCy;
-	Wed, 11 Nov 2026 06:41:47 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1xR2Wv-00000005r5A-17XS;
+	Wed, 11 Nov 2026 07:14:01 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xR21i-00000005o32-31lK
+	id 1xR2Wt-00000005r4P-0HR5
 	for linux-mediatek@lists.infradead.org;
-	Wed, 11 Nov 2026 06:41:46 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id CA816601CB;
-	Wed, 11 Nov 2026 06:41:45 +0000 (UTC)
-Authentication-Results: smtp.kernel.org; arc=none smtp.remote-ip=100.80.115.77
-ARC-Seal: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256; cv=none;
-	t=1794379305;
-	b=Lc3Z+n/0EM/Xd/tOMeqM5RBMr6yLnmYped58/D4jQcgE6DtsNiqyKTzTrt7PIhFkPMIc
-	 dVJfSKFgvJs6eNEfOxqmKN9kzXQuIYtwkWwcIgqrDlY7CLC5rBMc4Pisn0so9eT6AfGA0
-	 6jKDZwSKQsSUwE/hoKGyrZHp8A/NUjB1crulT3wjXbC50/mc1RnkkR6L1WOAKPMqsEYst
-	 J9UUa7Y3hadt1ww1NyRe3vTboIik2rlsVFbvsRDW2VRiqB07DpxkI1hdWeWjumATRbEJZ
-	 2bka0vvkZSuAT71YLa0BY1hXMw9TskKei9FSEE+F0rXQOTuIiMQs2f/1x4SYbwEsmGQ==
-ARC-Message-Signature: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256;
-	c=relaxed/relaxed; t=1794379305;
-	h=DKIM-Signature:Received:From:Date:Subject:MIME-Version:Content-Type:
-	 Message-Id:X-B4-Tracking:X-Change-ID:In-Reply-To:References:To:Cc:
-	 X-Mailer:X-Developer-Signature:X-Developer-Key:X-Endpoint-Received:
-	 X-Original-From:Reply-To:Content-Transfer-Encoding;
-	bh=GCzd4pkqf9qNrfLh6SvmrgzLO4l76wGqI6eEmCr+tWQ=;
-	b=2QiqCcheAaoepLimhFzNMVwva8aWeo9rzZC8HoOoqbs4fubCpZdwv1mgH/z8j3amA0VD
-	 xP9xkYVsotgsAv96lrG4PZIF7nT03Hv2x61BJviwhe/jF/8szjI9OLo2wyDNiFdX5UEJj
-	 RPlOAz1uZ0/Fn5sCBQRcfRz2wG25jbMcGpu9M1GCUVnqDxVl/bsnYZoZJkNzBPvuTAidE
-	 j5csnEW7yBvLyW0p/C5eiutzB0Wvz2B/y6B3DfvLuwBtRuBmivHDc+Ub7TMdNTIYsg/KP
-	 0j3LYneP6V5lo33shuS48Sw+uckQ9wCUtWLbpkHlC57Hmss3wh2FD4UoIBspsrlqZIQ==
-ARC-Authentication-Results: i=1; smtp.kernel.org; 
-	arc=none smtp.remote-ip=100.80.115.77
-Received: from lkml.kernel.org (nexus.subspace.kernel.org [100.80.115.77])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
-	(No client certificate requested)
-	by smtp.kernel.org (Postfix) with ESMTPS id A844E1F00A05;
-	Wed, 11 Nov 2026 06:41:44 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1794379305;
-	bh=GCzd4pkqf9qNrfLh6SvmrgzLO4l76wGqI6eEmCr+tWQ=;
-	h=From:Date:Subject:In-Reply-To:References:To:Cc:Reply-To;
-	b=Q5vPTCukdUNgVqwd2FYmg/Cv3qv8I+BASQTIvz7DcYtQNGQMAGcT4aLxKKGoLzSq2
-	 yzM5T8ijq8xJ/mIDMU3NgtRSTfDXF1ztMNW1MupOlipHWuTMuII65V8jv8wmQ8c4JF
-	 7k+XFZ0Yk/ZFZZ3dek2ypsNvs1DMECvyyAFtDQ47er+7U6M2oZxotu+1tV0s3PCtbR
-	 EHbpiotYysTySprvSTfk+3++1AdfFaFHhfw2BPet1Ns0x2/iC1mNStbBU1Q3K/HfIp
-	 yN8nMlCLKFFayMIBnYluXbtA+8HqL3t4ZFxIDz8efyDdbp9I1GeP3bmgOXE+l7/pzT
-	 XST0EUdD37NHQ==
-Received: from nexus.subspace.kernel.org (localhost [IPv6:::1])
-	by lkml.kernel.org (Postfix) with ESMTP id 266CE48E16;
-	Wed, 11 Nov 2026 06:41:44 +0000 (UTC)
-From: Youngjoon Lee via B4 Relay <devnull+getfeus.gmail.com@kernel.org>
-Date: Wed, 11 Nov 2026 06:41:43 +0000
-Subject: [PATCH RFC v2] media: mediatek: mdp: Keep component suppliers
- powered while streaming
+	Wed, 11 Nov 2026 07:14:00 +0000
+X-UUID: 71e81b24dd9f11f1afed4741b24580c9-20261111
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=mwx0jmF9JokkiaHJT8NbtY7bR3paMEp+A7PPF7e2LHE=;
+	b=apIf+QDLafmmRtUSAIkvmiZi6Zb9vUR2KeEj/1cZp/0mxAxLrgf89muChnHDHyZbPts0XO8z5qn5ZbK0DwKr3D6kwKU11JliSyl7o1eyJfn7o3ULY9BAdccyBBxTVTlYpjURiYli0zdYwyhQRotezdjCcMRapVXnbn4/K9oi0VE=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.3.21,REQID:1289027b-b463-4e99-9c45-25682bf368bd,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:b0318ac,CLOUDID:73de5cef-3be7-4570-a15c-db8fcaa207f6,B
+	ulkID:nil,BulkQuantity:0,SF:102|836|865|888|898,TC:-5,Content:0|15|50|99,E
+	DM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0
+	,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 2,SSN|SDN
+X-CID-BAS: 2,SSN|SDN,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
+X-UUID: 71e81b24dd9f11f1afed4741b24580c9-20261111
+Received: from mtkmbs09n2.mediatek.inc [(172.21.101.94)] by mailgw01.mediatek.com
+	(envelope-from <michael.shih@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 1916475555; Wed, 11 Nov 2026 00:13:50 -0700
+Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
+ mtkmbs11n2.mediatek.inc (172.21.101.187) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.2562.29; Wed, 11 Nov 2026 15:13:48 +0800
+Received: from mtksitap99.mediatek.inc (10.233.130.16) by
+ mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
+ 15.2.2562.29 via Frontend Transport; Wed, 11 Nov 2026 15:13:47 +0800
+From: Michael Shih <michael.shih@mediatek.com>
+To: <nbd@nbd.name>, <lorenzo@kernel.org>
+CC: <linux-wireless@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
+	<kun.wu@mediatek.com>, <deren.wu@mediatek.com>, <sean.wang@mediatek.com>,
+	<quan.zhou@mediatek.com>, <ryder.lee@mediatek.com>, <leon.yen@mediatek.com>,
+	<litien.chang@mediatek.com>, <jb.tsai@mediatek.com>, Michael Shih
+	<michael.shih@mediatek.com>
+Subject: [PATCH v1] wifi: mt76: mt7925: support per-channel survey dump during scan
+Date: Wed, 11 Nov 2026 15:13:47 +0800
+Message-ID: <20261111071347.875266-1-michael.shih@mediatek.com>
+X-Mailer: git-send-email 2.45.2
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Message-Id: <20261111-rfc-v2-generated-v2-1-6241cb149b87@gmail.com>
-X-B4-Tracking: v=1; b=H4sIAAAAAAAC/yWO3UrDQBCFX6XMbV1t1/iDIFgDRhQRhVpEerE7O
- 9mMmI3OrjG15N1N4lwcOGfOfMweIglThIvZHoRajtyEweiDGWBlgifFbvCgF/p0OYySElWrlad
- AYhI55VxGJ1jSuT22MJx9CpXcTcg3eL7JYfsfxm/7TphG2FizJpKyYgJWY9QIew5Hgbo0biuOq
- ZHd9Fa7nFD5al5n95KvknQF7s4yputHtj4WP5vN5dw//a7Xdy/oXhe3usOv4qH1V7Xhj0M/KTY
- 1bPu+/wP/eXHr8gAAAA==
-X-Change-ID: 20261111-rfc-v2-generated-dd4e5cfe8b3b
-In-Reply-To: <CA+m4KrCAtrxGcy74ieBOibgsGwWW=+gQzUUJVcdY0H2xcqGMvg@mail.gmail.com>
-References: <CA+m4KrCAtrxGcy74ieBOibgsGwWW=+gQzUUJVcdY0H2xcqGMvg@mail.gmail.com>
-To: Minghsiu Tsai <minghsiu.tsai@mediatek.com>, 
- Houlong Wei <houlong.wei@mediatek.com>, 
- Andrew-CT Chen <andrew-ct.chen@mediatek.com>, 
- Mauro Carvalho Chehab <mchehab@kernel.org>
-Cc: linux-media@vger.kernel.org, linux-mediatek@lists.infradead.org, 
- Youngjoon Lee <getfeus@gmail.com>
-X-Mailer: b4 0.16.0
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1794379303; l=12733;
- i=getfeus@gmail.com; s=elm-mdp-20261111; h=from:subject:message-id;
- bh=HVVk9XrFq+ZMeMAHrhWKn2W/A3R+w3xsLcv/eXIBCG8=;
- b=6NoeZ9LTJSPKNt5dbu1FQ0LqTF+FWl9L/o5+l7I29Mhuz4SQ2B3l2lorY8mxJVui97eKtr1F6
- /IhEW49X9VQAbGiSrPyJj9wn+kmmrGr48ubmnfM1KefbsuqvOuSw/ib
-X-Developer-Key: i=getfeus@gmail.com; a=ed25519;
- pk=iwmFJiP4Cnab7RsbW72VEvnNztIotoa8+gIMROvIMfk=
-X-Endpoint-Received: by B4 Relay for getfeus@gmail.com/elm-mdp-20261111
- with auth_id=1487
-X-Original-From: Youngjoon Lee <getfeus@gmail.com>
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-MTK: N
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20261110_231359_126085_F9BA9FDA 
+X-CRM114-Status: GOOD (  24.27  )
+X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -116,371 +86,583 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Reply-To: getfeus@gmail.com
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 X-Spam-Status: No, score=-18.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,
 	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=ham
-	autolearn_force=no version=4.0.1
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
+	USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-From: Youngjoon Lee <getfeus@gmail.com>
+Report per-channel survey airtime (active/busy/rx/tx) so that
+"iw <dev> survey dump" shows non-zero airtime not only for the
+connected home channel, but also for every channel visited during
+a firmware-offloaded scan.
 
-Sibling clocks are enabled without keeping their PM suppliers active.
+Two accounting paths are wired up:
 
-On MT8173 Elm, LARB4 stays suspended and CAPTURE memory is unchanged.
-The firmware reports success despite the unchanged CAPTURE buffers.
+(1) Home/operating channel (periodic mac_work):
+    mt7925 is firmware/chanctx managed and never goes through
+    __mt76_set_channel(), so phy->chan_state used to stay pinned to
+    its init default and the periodic survey was charged to the wrong
+    channel. mt7925_survey_switch_channel() is added and called from
+    assign_vif_chanctx() to settle the old channel, re-point
+    chan_state/chandef to the operating channel, and re-base the
+    firmware MIB snapshot so active/busy/rx/tx keep accumulating on
+    the channel actually dwelt on.
 
-Bind sibling blocks and add runtime-PM links from the RDMA0 master.
-Retain master clock handling and the legacy child-node DT fallback.
+(2) Scanned channels (scan-done event):
+    The scan-done CHNLINFO event now carries per-channel airtime
+    (firmware Ch-Survey extension). mt7925_scan_update_survey() parses
+    the per-channel array and folds the airtime deltas into each
+    channel's mt76_channel_state. The firmware 6G channel id is
+    converted back to the real channel number before lookup.
 
-Signed-off-by: Youngjoon Lee <getfeus@gmail.com>
+mt76_channel_state() is exported so the mt7925 module can map a
+band/channel pair to its channel state.
+
+Usage:
+(1) Connect STA to AP and generate traffic:
+      dhclient ${WLAN_IF} -v
+      ping 192.168.0.XXX -i0.1
+
+(2) (Optional) Trigger a scan to collect other channels:
+      iw ${WLAN_IF} scan
+    or use wpa_supplicant / wpa_cli scan.
+
+(3) Dump the survey:
+      iw ${WLAN_IF} survey dump
+
+(4) You will see per-channel airtime, e.g.:
+      Survey data from wls1
+          frequency:            5240 MHz
+          channel active time:  163258 ms
+          channel busy time:    34076 ms
+          channel receive time: 32084 ms
+          channel transmit time: 253 ms
+    - The connected/dwelt channel keeps increasing over time.
+    - Channels visited during scan accumulate airtime each scan.
+
+CR-Id: BORA00080136
+Signed-off-by: Michael Shih <michael.shih@mediatek.com>
 ---
-Hi,
+ drivers/net/wireless/mediatek/mt76/mac80211.c |   3 +-
+ drivers/net/wireless/mediatek/mt76/mt76.h     |   2 +
+ .../net/wireless/mediatek/mt76/mt7925/main.c  |  12 +
+ .../net/wireless/mediatek/mt76/mt7925/mcu.h   |  30 ++
+ .../wireless/mediatek/mt76/mt7925/mt7925.h    |   7 +
+ .../net/wireless/mediatek/mt76/mt7925/pci.c   |   2 +-
+ .../net/wireless/mediatek/mt76/mt7925/stats.c | 301 +++++++++++++++++-
+ .../net/wireless/mediatek/mt76/mt7925/stats.h |   6 +
+ .../net/wireless/mediatek/mt76/mt7925/usb.c   |   2 +-
+ drivers/net/wireless/mediatek/mt76/mt792x.h   |   6 +
+ 10 files changed, 367 insertions(+), 4 deletions(-)
 
-This v2 is based on media-committers.git next (bf6c63ecc20a). The PM changes are unchanged from v1. The five resulting driver files are byte-for-byte identical to the clean candidate tested on Elm.
-
-The archived v1 copy had reflowed diff headers, and its linux-next context also included two allocator-helper changes that are not yet in the media tree. This revision uses the media baseline and the b4 web submission endpoint. Local b4 shazam checks pass against both the bot's next and fixes commits.
-
-The original failure returned successful firmware status and completed buffers while CAPTURE memory stayed unchanged. Binding the sibling components and linking their runtime PM to the master makes their IOMMU/LARB supplier dependencies follow streaming. Engine clock handling remains in the master.
-
-While investigating, I also reproduced an RDMA1 IOMMU read fault associated with the previous job's unmapped input Y page, without a second PROCESS command. The patched tests below completed without IOMMU faults; I am not claiming to have observed the firmware's internal DMA completion timing.
-
-Tested on Elm, next-20261105-based kernel, VPU firmware v1.2.0:
-- Seven NV12M 640x360 copy jobs: byte-exact Y/UV output.
-- Three saved MT21C 640x384 to YUV420M 640x360 jobs: every visible Y/U/V sample matched the software-decoded reference.
-- Both temporary module loading and candidate loading during boot.
-- LARB4 used the auto PM policy, woke during streaming, and suspended after streaming stopped.
-- Three STREAMON-without-buffers checks: expected EINVAL, no extra PROCESS commands or observed PM cleanup failures.
-- Clean module build without diagnostic hooks.
-
-System suspend/resume, other boards, legacy child-node DTs, and probe/allocation failure injection remain untested.
-
-Changes in v2:
-- Rebase onto the media next tree; retain its allocator call context.
-- Preserve diff formatting through the b4 submission path.
-- Verify email extraction and application with b4 on both media branches.
-- No PM logic changes.
-
-I'd appreciate feedback on the runtime-PM device-link lifetime and component bind/unbind ordering. I have the reproducer, deterministic input, and ftrace logs available if useful.
-
-Thanks,
-Youngjoon Lee
----
- drivers/media/platform/mediatek/mdp/Makefile       |  1 +
- drivers/media/platform/mediatek/mdp/mtk_mdp_comp.h |  1 +
- drivers/media/platform/mediatek/mdp/mtk_mdp_core.c | 91 +++++++++++++++++++---
- drivers/media/platform/mediatek/mdp/mtk_mdp_core.h |  2 +
- drivers/media/platform/mediatek/mdp/mtk_mdp_pm.c   | 81 +++++++++++++++++++
- 5 files changed, 165 insertions(+), 11 deletions(-)
-
-diff --git a/drivers/media/platform/mediatek/mdp/Makefile b/drivers/media/platform/mediatek/mdp/Makefile
-index b7c16eb..c3f3a74 100644
---- a/drivers/media/platform/mediatek/mdp/Makefile
-+++ b/drivers/media/platform/mediatek/mdp/Makefile
-@@ -1,5 +1,6 @@
- # SPDX-License-Identifier: GPL-2.0
- mtk-mdp-y += mtk_mdp_core.o
-+mtk-mdp-y += mtk_mdp_pm.o
- mtk-mdp-y += mtk_mdp_comp.o
- mtk-mdp-y += mtk_mdp_m2m.o
- mtk-mdp-y += mtk_mdp_regs.o
-diff --git a/drivers/media/platform/mediatek/mdp/mtk_mdp_comp.h b/drivers/media/platform/mediatek/mdp/mtk_mdp_comp.h
-index ae41dd3..c9098d8 100644
---- a/drivers/media/platform/mediatek/mdp/mtk_mdp_comp.h
-+++ b/drivers/media/platform/mediatek/mdp/mtk_mdp_comp.h
-@@ -42,5 +42,6 @@ void mtk_mdp_comp_deinit(struct device *dev, struct mtk_mdp_comp *comp);
- void mtk_mdp_comp_clock_on(struct device *dev, struct mtk_mdp_comp *comp);
- void mtk_mdp_comp_clock_off(struct device *dev, struct mtk_mdp_comp *comp);
- 
-+extern struct platform_driver mtk_mdp_pm_component_driver;
- 
- #endif /* __MTK_MDP_COMP_H__ */
-diff --git a/drivers/media/platform/mediatek/mdp/mtk_mdp_core.c b/drivers/media/platform/mediatek/mdp/mtk_mdp_core.c
-index 8432833..7d68ee5 100644
---- a/drivers/media/platform/mediatek/mdp/mtk_mdp_core.c
-+++ b/drivers/media/platform/mediatek/mdp/mtk_mdp_core.c
-@@ -6,6 +6,7 @@
-  */
- 
- #include <linux/clk.h>
-+#include <linux/component.h>
- #include <linux/device.h>
- #include <linux/errno.h>
- #include <linux/interrupt.h>
-@@ -102,12 +103,50 @@ void mtk_mdp_unregister_component(struct mtk_mdp_dev *mdp,
- 	list_del(&comp->node);
+diff --git a/drivers/net/wireless/mediatek/mt76/mac80211.c b/drivers/net/wireless/mediatek/mt76/mac80211.c
+index 08ed3fc6d386..11301428c5f9 100644
+--- a/drivers/net/wireless/mediatek/mt76/mac80211.c
++++ b/drivers/net/wireless/mediatek/mt76/mac80211.c
+@@ -991,7 +991,7 @@ bool mt76_has_tx_pending(struct mt76_phy *phy)
  }
+ EXPORT_SYMBOL_GPL(mt76_has_tx_pending);
  
-+static int mtk_mdp_compare_component(struct device *dev, void *data)
-+{
-+	return dev->of_node == data;
-+}
-+
-+static void mtk_mdp_release_component(struct device *dev, void *data)
-+{
-+	of_node_put(data);
-+}
-+
-+static int mtk_mdp_master_bind(struct device *dev)
-+{
-+	struct mtk_mdp_dev *mdp = dev_get_drvdata(dev);
-+	int ret;
-+
-+	ret = component_bind_all(dev, mdp);
-+	if (ret)
-+		return ret;
-+	ret = mtk_mdp_register_m2m_device(mdp);
-+	if (ret)
-+		component_unbind_all(dev, mdp);
-+	return ret;
-+}
-+
-+static void mtk_mdp_master_unbind(struct device *dev)
-+{
-+	struct mtk_mdp_dev *mdp = dev_get_drvdata(dev);
-+
-+	mtk_mdp_unregister_m2m_device(mdp);
-+	component_unbind_all(dev, mdp);
-+}
-+
-+static const struct component_master_ops mtk_mdp_master_ops = {
-+	.bind = mtk_mdp_master_bind,
-+	.unbind = mtk_mdp_master_unbind,
-+};
-+
- static int mtk_mdp_probe(struct platform_device *pdev)
+-static struct mt76_channel_state *
++struct mt76_channel_state *
+ mt76_channel_state(struct mt76_phy *phy, struct ieee80211_channel *c)
  {
- 	struct mtk_mdp_dev *mdp;
- 	struct device *dev = &pdev->dev;
- 	struct device_node *node, *parent;
- 	struct mtk_mdp_comp *comp, *comp_temp;
-+	struct component_match *match = NULL;
- 	int ret = 0;
+ 	struct mt76_sband *msband;
+@@ -1007,6 +1007,7 @@ mt76_channel_state(struct mt76_phy *phy, struct ieee80211_channel *c)
+ 	idx = c - &msband->sband.channels[0];
+ 	return &msband->chan[idx];
+ }
++EXPORT_SYMBOL_GPL(mt76_channel_state);
  
- 	mdp = devm_kzalloc(dev, sizeof(*mdp), GFP_KERNEL);
-@@ -132,6 +171,8 @@ static int mtk_mdp_probe(struct platform_device *pdev)
- 		parent = dev->of_node->parent;
- 	}
+ void mt76_update_survey_active_time(struct mt76_phy *phy, ktime_t time)
+ {
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76.h b/drivers/net/wireless/mediatek/mt76/mt76.h
+index 477d33a0022d..f74c6a4b0f9c 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76.h
++++ b/drivers/net/wireless/mediatek/mt76/mt76.h
+@@ -1565,6 +1565,8 @@ void mt76_update_survey(struct mt76_phy *phy);
+ void mt76_phy_chandef_set(struct mt76_phy *phy,
+ 			  struct cfg80211_chan_def *chandef);
+ void mt76_update_survey_active_time(struct mt76_phy *phy, ktime_t time);
++struct mt76_channel_state *
++mt76_channel_state(struct mt76_phy *phy, struct ieee80211_channel *c);
+ int mt76_get_survey(struct ieee80211_hw *hw, int idx,
+ 		    struct survey_info *survey);
+ int mt76_rx_signal(u8 chain_mask, s8 *chain_signal);
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/main.c b/drivers/net/wireless/mediatek/mt76/mt7925/main.c
+index ffbc6b954632..8e48ef0cb3e5 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7925/main.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7925/main.c
+@@ -1612,6 +1612,10 @@ void mt7925_scan_work(struct work_struct *work)
  
-+	mdp->use_components = parent != dev->of_node;
+ 				mt7925_regd_change(phy, evt->alpha2);
+ 
++				mt7925_scan_update_survey(phy, evt,
++							  le16_to_cpu(tlv->len) -
++							  sizeof(struct tlv));
 +
- 	/* Iterate over sibling MDP function blocks */
- 	for_each_child_of_node(parent, node) {
- 		const struct of_device_id *of_id;
-@@ -163,6 +204,11 @@ static int mtk_mdp_probe(struct platform_device *pdev)
- 		}
+ 				break;
+ 			case UNI_EVENT_SCAN_DONE_NLO:
+ 				ieee80211_sched_scan_results(phy->mt76->hw);
+@@ -2440,7 +2444,15 @@ static int mt7925_assign_vif_chanctx(struct ieee80211_hw *hw,
  
- 		mtk_mdp_register_component(mdp, comp);
-+		if (mdp->use_components && node != dev->of_node)
-+			component_match_add_release(dev, &match,
-+						    mtk_mdp_release_component,
-+						    mtk_mdp_compare_component,
-+						    of_node_get(node));
- 	}
- 
- 	mdp->job_wq = create_singlethread_workqueue(MTK_MDP_MODULE_NAME);
-@@ -187,12 +233,6 @@ static int mtk_mdp_probe(struct platform_device *pdev)
- 		goto err_dev_register;
- 	}
- 
--	ret = mtk_mdp_register_m2m_device(mdp);
--	if (ret) {
--		v4l2_err(&mdp->v4l2_dev, "Failed to init mem2mem device\n");
--		goto err_m2m_register;
--	}
--
- 	mdp->vpu_dev = vpu_get_plat_device(pdev);
- 	if (!mdp->vpu_dev) {
- 		dev_err(&pdev->dev, "Failed to get vpu device\n");
-@@ -216,17 +256,25 @@ static int mtk_mdp_probe(struct platform_device *pdev)
- 	}
- 
- 	pm_runtime_enable(dev);
-+	if (mdp->use_components)
-+		ret = component_master_add_with_match(dev, &mtk_mdp_master_ops,
-+						      match);
-+	else
-+		ret = mtk_mdp_register_m2m_device(mdp);
-+	if (ret)
-+		goto err_register_components;
- 	dev_dbg(dev, "mdp-%d registered successfully\n", mdp->id);
+ 	mconf->mt76.ctx = ctx;
+ 	mctx->bss_conf = mconf;
++
++	/* Re-target op-channel survey accounting to the operating channel just
++	 * assigned, so cc_active/airtime accrue on the channel we actually
++	 * dwell on (mt7925 never goes through __mt76_set_channel()).
++	 */
++	mt7925_survey_switch_channel(mvif->phy, ctx->def.chan);
++
+ 	mt76_phy_chandef_set(mvif->phy->mt76, &ctx->def);
++
+ 	mutex_unlock(&dev->mt76.mutex);
  
  	return 0;
- 
-+err_register_components:
-+	pm_runtime_disable(dev);
-+	vb2_dma_contig_clear_max_seg_size(dev);
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/mcu.h b/drivers/net/wireless/mediatek/mt76/mt7925/mcu.h
+index 11f9eac13ffc..2ed95b00e10f 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7925/mcu.h
++++ b/drivers/net/wireless/mediatek/mt76/mt7925/mcu.h
+@@ -199,6 +199,36 @@ enum DMASHDL_GROUP_IDX {
+ struct mt7925_mcu_scan_chinfo_event {
+ 	u8 nr_chan;
+ 	u8 alpha2[3];
++	/* Followed by nr_chan entries. The entry layout matches the firmware
++	 * UNI_EVENT_IE_CHNLINFO_T: a base part, optionally followed by the
++	 * Ch-Survey airtime extension (present when the firmware was built with
++	 * CONFIG_WIFI_RAM_CCN16_CHANNEL_SURVEY_STATS). Presence is detected at
++	 * runtime from the TLV length (see mt7925_scan_update_survey()).
++	 */
++	u8 chan_info[];
++} __packed;
 +
- err_reg_handler:
- 	platform_device_put(mdp->vpu_dev);
- 
- err_vpu_get_dev:
--	mtk_mdp_unregister_m2m_device(mdp);
--
--err_m2m_register:
- 	v4l2_device_unregister(&mdp->v4l2_dev);
- 
- err_dev_register:
-@@ -252,10 +300,13 @@ static void mtk_mdp_remove(struct platform_device *pdev)
- 	struct mtk_mdp_dev *mdp = platform_get_drvdata(pdev);
- 	struct mtk_mdp_comp *comp, *comp_temp;
- 
-+	if (mdp->use_components)
-+		component_master_del(&pdev->dev, &mtk_mdp_master_ops);
-+	else
-+		mtk_mdp_unregister_m2m_device(mdp);
- 	pm_runtime_disable(&pdev->dev);
- 	vb2_dma_contig_clear_max_seg_size(&pdev->dev);
- 	platform_device_put(mdp->vpu_dev);
--	mtk_mdp_unregister_m2m_device(mdp);
- 	v4l2_device_unregister(&mdp->v4l2_dev);
- 
- 	destroy_workqueue(mdp->wdt_wq);
-@@ -319,7 +370,25 @@ static struct platform_driver mtk_mdp_driver = {
- 	}
- };
- 
--module_platform_driver(mtk_mdp_driver);
-+static struct platform_driver * const mtk_mdp_drivers[] = {
-+	&mtk_mdp_pm_component_driver,
-+	&mtk_mdp_driver,
-+};
++/* Base per-channel info (firmware SCAN_DONE_VERSION_SUPPORT_CU layout). */
++struct mt7925_mcu_scan_chinfo {
++	u8 channel_num;
++	u8 bcn_probe_cnt;
++	u8 mdrdy_cnt;
++	u8 util_val;
++	__le16 idle_time;
++	__le16 scan_time;	/* dwell time (ms) */
++} __packed;
 +
-+static int __init mtk_mdp_init(void)
++/* Ch-Survey extension appended after the base part
++ * (firmware SCAN_DONE_VERSION_SUPPORT_CH_SURVEY layout).
++ */
++struct mt7925_mcu_scan_chinfo_survey {
++	struct mt7925_mcu_scan_chinfo base;
++	u8 band;		/* 1=2G, 2=5G, 3=6G (firmware CMD_BAND_*) */
++	u8 rsv[3];
++	__le32 tx_time_us;
++	__le32 rx_time_us;	/* rx + obss */
++	__le32 busy_time_us;	/* tx + rx + obss + nonwifi */
++	__le32 active_time_us;	/* busy + idle = total */
+ } __packed;
+ 
+ enum {
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/mt7925.h b/drivers/net/wireless/mediatek/mt76/mt7925/mt7925.h
+index 636efe038392..ac66c0a5daf6 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7925/mt7925.h
++++ b/drivers/net/wireless/mediatek/mt76/mt7925/mt7925.h
+@@ -282,6 +282,13 @@ extern const struct ieee80211_ops mt7925_ops;
+ int __mt7925_start(struct mt792x_phy *phy);
+ int mt7925_register_device(struct mt792x_dev *dev);
+ void mt7925_unregister_device(struct mt792x_dev *dev);
++void mt7925_update_channel(struct mt76_phy *mphy);
++void mt7925_survey_switch_channel(struct mt792x_phy *phy,
++				  struct ieee80211_channel *chan);
++struct mt7925_mcu_scan_chinfo_event;
++void mt7925_scan_update_survey(struct mt792x_phy *phy,
++			       struct mt7925_mcu_scan_chinfo_event *evt,
++			       int tlv_len);
+ int mt7925_run_firmware(struct mt792x_dev *dev);
+ int mt7925_mcu_set_bss_pm(struct mt792x_dev *dev,
+ 			  struct ieee80211_bss_conf *link_conf,
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/pci.c b/drivers/net/wireless/mediatek/mt76/mt7925/pci.c
+index 0d477dc1086c..939a46c0428b 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7925/pci.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7925/pci.c
+@@ -604,7 +604,7 @@ static int mt7925_pci_probe(struct pci_dev *pdev,
+ 		.sta_add = mt7925_mac_sta_add,
+ 		.sta_event = mt7925_mac_sta_event,
+ 		.sta_remove = mt7925_mac_sta_remove,
+-		.update_survey = mt792x_update_channel,
++		.update_survey = mt7925_update_channel,
+ 	};
+ 	static const struct mt792x_hif_ops mt7925_pcie_ops = {
+ 		.init_reset = mt7925e_init_reset,
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/stats.c b/drivers/net/wireless/mediatek/mt76/mt7925/stats.c
+index 9a47953062bc..5d2c9eb81fcd 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7925/stats.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7925/stats.c
+@@ -11,7 +11,7 @@
+ #define MT7925_STA_STATS_VERSION 1
+ #define MT7925_STA_STATS_VALID 1U
+ 
+-#define MT7925_MIB_MAX_CNT			32
++#define MT7925_MIB_MAX_CNT			40
+ #define MT7925_MIB_CNT_MAX_NUM		512  /* firmware UNI_CMD_MIB_CNT_MAX_NUM upper bound */
+ 
+ #define MT7925_LQ_BAND_NUM	4			/* Link quality band */
+@@ -519,6 +519,305 @@ int mt792x_mcu_get_wtbl_rate(struct mt792x_dev *dev, u16 wlan_idx,
+ 	return ret;
+ }
+ 
++/* mt7925_mcu_get_chan_mib_info - refresh per-channel survey airtime from FW.
++ *
++ * Unlike mt7921 (which reads the MT_MIB_SDR* registers directly), MT7925/MT7935
++ * obtain channel airtime through the firmware GET_MIB_INFO query. The firmware
++ * reports *accumulated* counters (unit: microseconds), so we keep the previous
++ * snapshot in phy->state_ts and accumulate only the delta into chan_state,
++ * mirroring mt7996_mcu_get_chan_mib_info().
++ */
++int mt7925_mcu_get_chan_mib_info(struct mt792x_phy *phy)
 +{
-+	return platform_register_drivers(mtk_mdp_drivers,
-+					 ARRAY_SIZE(mtk_mdp_drivers));
-+}
-+
-+static void __exit mtk_mdp_exit(void)
-+{
-+	platform_unregister_drivers(mtk_mdp_drivers,
-+				    ARRAY_SIZE(mtk_mdp_drivers));
-+}
-+
-+module_init(mtk_mdp_init);
-+module_exit(mtk_mdp_exit);
- 
- MODULE_AUTHOR("Houlong Wei <houlong.wei@mediatek.com>");
- MODULE_DESCRIPTION("Mediatek image processor driver");
-diff --git a/drivers/media/platform/mediatek/mdp/mtk_mdp_core.h b/drivers/media/platform/mediatek/mdp/mtk_mdp_core.h
-index a6e6dc3..c9004e4 100644
---- a/drivers/media/platform/mediatek/mdp/mtk_mdp_core.h
-+++ b/drivers/media/platform/mediatek/mdp/mtk_mdp_core.h
-@@ -133,6 +133,7 @@ struct mtk_mdp_variant {
-  * struct mtk_mdp_dev - abstraction for image processor entity
-  * @lock:	the mutex protecting this data structure
-  * @vpulock:	the mutex protecting the communication with VPU
-+ * @use_components: use sibling component PM supplier links
-  * @pdev:	pointer to the image processor platform device
-  * @variant:	the IP variant information
-  * @id:		image processor device index (0..MTK_MDP_MAX_DEVS)
-@@ -152,6 +153,7 @@ struct mtk_mdp_dev {
- 	struct mutex			lock;
- 	struct mutex			vpulock;
- 	struct platform_device		*pdev;
-+	bool				use_components;
- 	struct mtk_mdp_variant		*variant;
- 	u16				id;
- 	struct list_head		comp_list;
-diff --git a/drivers/media/platform/mediatek/mdp/mtk_mdp_pm.c b/drivers/media/platform/mediatek/mdp/mtk_mdp_pm.c
-new file mode 100644
-index 0000000..a984f23
---- /dev/null
-+++ b/drivers/media/platform/mediatek/mdp/mtk_mdp_pm.c
-@@ -0,0 +1,81 @@
-+// SPDX-License-Identifier: GPL-2.0-only
-+/* Keep the DMA component suppliers powered for the master runtime lifetime. */
-+#include <linux/component.h>
-+#include <linux/device.h>
-+#include <linux/module.h>
-+#include <linux/of.h>
-+#include <linux/platform_device.h>
-+#include <linux/pm_runtime.h>
-+#include <linux/slab.h>
-+
-+struct mtk_mdp_pm_component {
-+	struct device_link *link;
-+};
-+
-+static int mtk_mdp_pm_bind(struct device *dev, struct device *master, void *data)
-+{
-+	struct mtk_mdp_pm_component *comp = dev_get_drvdata(dev);
-+
-+	/* The component already has its IOMMU/LARB runtime-PM supplier link. */
-+	comp->link = device_link_add(master, dev,
-+				     DL_FLAG_PM_RUNTIME | DL_FLAG_STATELESS);
-+	return comp->link ? 0 : -ENOMEM;
-+}
-+
-+static void mtk_mdp_pm_unbind(struct device *dev, struct device *master,
-+			      void *data)
-+{
-+	struct mtk_mdp_pm_component *comp = dev_get_drvdata(dev);
-+
-+	device_link_del(comp->link);
-+	comp->link = NULL;
-+}
-+
-+static const struct component_ops mtk_mdp_pm_component_ops = {
-+	.bind = mtk_mdp_pm_bind,
-+	.unbind = mtk_mdp_pm_unbind,
-+};
-+
-+static int mtk_mdp_pm_probe(struct platform_device *pdev)
-+{
-+	struct device *dev = &pdev->dev;
-+	struct mtk_mdp_pm_component *comp;
++	enum {
++		IDX_TX_TIME,
++		IDX_RX_TIME,
++		IDX_OBSS_TIME,
++		IDX_NON_WIFI_TIME,
++		IDX_CHANNEL_IDLE,
++		IDX_NUM
++	};
++	static const u32 counters[IDX_NUM] = {
++		[IDX_TX_TIME]      = UNI_CMD_MIB_CNT_TX_DUR_CNT,
++		[IDX_RX_TIME]      = UNI_CMD_MIB_CNT_RX_DUR_CNT,
++		[IDX_OBSS_TIME]    = UNI_CMD_RMAC_CNT_OBSS_AIRTIME,
++		[IDX_NON_WIFI_TIME] = UNI_CMD_RMAC_CNT_NONWIFI_AIRTIME,
++		[IDX_CHANNEL_IDLE] = UNI_CMD_MIB_CNT_CHANNEL_IDLE,
++	};
++	struct mt76_channel_state *state = phy->mt76->chan_state;
++	struct mt76_channel_state *state_ts = &phy->state_ts;
++	u64 busy, active;
++	u64 val[IDX_NUM];
 +	int ret;
 +
-+	/* RDMA0 is the master; it must not become its own supplier. */
-+	if (of_property_present(dev->of_node, "mediatek,vpu"))
-+		return -ENODEV;
-+	comp = devm_kzalloc(dev, sizeof(*comp), GFP_KERNEL);
-+	if (!comp)
-+		return -ENOMEM;
-+	platform_set_drvdata(pdev, comp);
-+	pm_runtime_enable(dev);
-+	ret = component_add(dev, &mtk_mdp_pm_component_ops);
++	ret = mt7925_mcu_get_mib_info(phy->dev, phy->mt76->band_idx,
++				      counters, IDX_NUM, val);
 +	if (ret)
-+		pm_runtime_disable(dev);
-+	return ret;
++		return ret;
++
++	/* FW counters are accumulated (us); add only the delta since the last
++	 * snapshot. busy = tx + rx + obss + nonwifi; active = busy + idle.
++	 *
++	 * active is sourced from the FW here (not the host clock) because
++	 * mt7925 runtime-suspends between activity: the host-side survey_time
++	 * accounting in mt76_update_survey_active_time() only advances while
++	 * the host is awake, which badly under-counts active and can make
++	 * active < busy. Deriving active from the FW busy/idle counters keeps
++	 * both in the same (firmware) clock domain, so busy <= active always
++	 * holds and the channel-utilisation ratio stays correct across PM
++	 * sleep. The host-clock contribution is neutralised in
++	 * mt7925_update_channel() by re-basing phy->survey_time to now.
++	 */
++	busy   = val[IDX_TX_TIME] + val[IDX_RX_TIME] +
++		 val[IDX_OBSS_TIME] + val[IDX_NON_WIFI_TIME];
++	active = busy + val[IDX_CHANNEL_IDLE];
++
++	state->cc_tx     += val[IDX_TX_TIME] - state_ts->cc_tx;
++	state->cc_bss_rx += val[IDX_RX_TIME] - state_ts->cc_bss_rx;
++	state->cc_rx     += val[IDX_RX_TIME] + val[IDX_OBSS_TIME] -
++			    state_ts->cc_rx;
++	state->cc_busy   += busy   - state_ts->cc_busy;
++	state->cc_active += active - state_ts->cc_active;
++
++	state_ts->cc_tx     = val[IDX_TX_TIME];
++	state_ts->cc_bss_rx = val[IDX_RX_TIME];
++	state_ts->cc_rx     = val[IDX_RX_TIME] + val[IDX_OBSS_TIME];
++	state_ts->cc_busy   = busy;
++	state_ts->cc_active = active;
++
++	return 0;
 +}
 +
-+static void mtk_mdp_pm_remove(struct platform_device *pdev)
++/* mt7925_update_channel - survey update_survey callback for MT7925/MT7935.
++ *
++ * Replaces mt792x_update_channel() (register-based) for chips that source
++ * channel airtime from the firmware MIB query.
++ */
++void mt7925_update_channel(struct mt76_phy *mphy)
 +{
-+	component_del(&pdev->dev, &mtk_mdp_pm_component_ops);
-+	pm_runtime_disable(&pdev->dev);
++	struct mt792x_dev *dev = container_of(mphy->dev, struct mt792x_dev,
++					      mt76);
++	struct mt792x_phy *phy = mphy->priv;
++
++	if (mt76_connac_pm_wake(mphy, &dev->pm))
++		goto out;
++
++	mt7925_mcu_get_chan_mib_info(phy);
++
++	mt76_connac_power_save_sched(mphy, &dev->pm);
++
++out:
++	/* cc_active is sourced from the FW busy/idle counters above, so
++	 * neutralise the host-clock contribution the framework is about to
++	 * add in mt76_update_survey_active_time(): re-base survey_time to now
++	 * so its delta is ~0. This must happen on every call (including the
++	 * pm_wake failure path) or the host clock would otherwise charge the
++	 * whole suspend/off-channel gap to cc_active.
++	 */
++	mphy->survey_time = ktime_get_boottime();
++}
++EXPORT_SYMBOL_GPL(mt7925_update_channel);
++
++/* mt7925_survey_switch_channel - re-target op-channel survey accounting.
++ *
++ * mt7925 is firmware/chanctx managed and never goes through
++ * __mt76_set_channel(), so phy->chan_state stays pinned to its init default
++ * and the periodic mac_work survey (both cc_active time and the FW-MIB airtime
++ * delta) is charged to the wrong channel. Call this when the operating channel
++ * is (re)assigned so that:
++ *   1) the airtime accrued so far is settled into the old channel;
++ *   2) chan_state/chandef are re-pointed to the new operating channel;
++ *   3) the FW-MIB snapshot (state_ts) is re-based to the current counters so
++ *      the first delta on the new channel is measured from now, not
++ *      underflowed.
++ */
++void mt7925_survey_switch_channel(struct mt792x_phy *phy,
++				  struct ieee80211_channel *chan)
++{
++	enum {
++		IDX_TX_TIME,
++		IDX_RX_TIME,
++		IDX_OBSS_TIME,
++		IDX_NON_WIFI_TIME,
++		IDX_CHANNEL_IDLE,
++		IDX_NUM
++	};
++	static const u32 counters[IDX_NUM] = {
++		[IDX_TX_TIME]       = UNI_CMD_MIB_CNT_TX_DUR_CNT,
++		[IDX_RX_TIME]       = UNI_CMD_MIB_CNT_RX_DUR_CNT,
++		[IDX_OBSS_TIME]     = UNI_CMD_RMAC_CNT_OBSS_AIRTIME,
++		[IDX_NON_WIFI_TIME] = UNI_CMD_RMAC_CNT_NONWIFI_AIRTIME,
++		[IDX_CHANNEL_IDLE]  = UNI_CMD_MIB_CNT_CHANNEL_IDLE,
++	};
++	struct mt76_phy *mphy = phy->mt76;
++	struct mt76_channel_state *state_ts = &phy->state_ts;
++	struct mt76_channel_state *new_state;
++	u64 val[IDX_NUM];
++
++	if (!chan)
++		return;
++
++	new_state = mt76_channel_state(mphy, chan);
++	if (new_state == mphy->chan_state)
++		return;	/* same channel, nothing to switch */
++
++	/* 1) settle the old channel with airtime accrued up to now */
++	if (mphy->chan_state)
++		mt76_update_survey(mphy);
++
++	/* 2) re-target accounting to the new operating channel */
++	mphy->chan_state = new_state;
++	mphy->chandef.chan = chan;
++
++	/* drop any stale airtime left on this channel from a previous session
++	 * so cc_active/cc_busy start fresh for this association (mt7925 never
++	 * clears per-channel state via __mt76_set_channel()).
++	 */
++	memset(new_state, 0, sizeof(*new_state));
++
++	/* 3) re-base the FW-MIB snapshot so the next delta starts from now.
++	 * active = busy + idle (see mt7925_mcu_get_chan_mib_info()).
++	 */
++	if (!mt7925_mcu_get_mib_info(phy->dev, mphy->band_idx,
++				     counters, IDX_NUM, val)) {
++		u64 busy = val[IDX_TX_TIME] + val[IDX_RX_TIME] +
++			   val[IDX_OBSS_TIME] + val[IDX_NON_WIFI_TIME];
++
++		state_ts->cc_tx     = val[IDX_TX_TIME];
++		state_ts->cc_bss_rx = val[IDX_RX_TIME];
++		state_ts->cc_rx     = val[IDX_RX_TIME] + val[IDX_OBSS_TIME];
++		state_ts->cc_busy   = busy;
++		state_ts->cc_active = busy + val[IDX_CHANNEL_IDLE];
++	}
++
++	/* reset the host-clock reference so the framework's
++	 * mt76_update_survey_active_time() does not charge the switch gap
++	 * to cc_active (which is now FW-sourced).
++	 */
++	mphy->survey_time = ktime_get_boottime();
++}
++EXPORT_SYMBOL_GPL(mt7925_survey_switch_channel);
++
++/* Map a firmware scan-done channel entry (band + channel number) back to the
++ * corresponding ieee80211_channel. The firmware band uses CMD_BAND_* encoding
++ * (1=2G, 2=5G, 3=6G).
++ *
++ * For 2G/5G, the reported number is the real channel number (== hw_value).
++ * For 6G, the firmware reports an internal channel id produced by
++ * rlmUtilGetChnlId(): chnl_id = ((real_ch - 1) >> 2) + CHNL_NUM_BASE_6G, where
++ * CHNL_NUM_BASE_6G is 181. We invert it back to the real 6G channel number
++ * (1, 5, 9, ... == hw_value) before looking it up.
++ */
++/* firmware CMD_BAND_* encoding used in scan-done per-channel entries */
++enum mt7925_fw_cmd_band {
++	MT7925_FW_CMD_BAND_2G = 1,
++	MT7925_FW_CMD_BAND_5G = 2,
++	MT7925_FW_CMD_BAND_6G = 3,
++};
++
++/* firmware rlmUtilGetChnlId() 6G base (CHNL_NUM_BASE_6G) */
++#define MT7925_FW_CHNL_NUM_BASE_6G	181
++
++/* invert rlmUtilGetChnlId() 6G encoding: chnl_id -> real 6G channel number */
++#define MT7925_FW_6G_CHNL_ID_TO_NUM(_id) \
++	((((_id) - MT7925_FW_CHNL_NUM_BASE_6G) << 2) + 1)
++
++static struct ieee80211_channel *
++mt7925_scan_survey_get_chan(struct mt76_phy *mphy, u8 fw_band, u8 chan_num)
++{
++	struct mt76_sband *msband;
++	int i;
++
++	switch (fw_band) {
++	case MT7925_FW_CMD_BAND_2G:
++		msband = &mphy->sband_2g;
++		break;
++	case MT7925_FW_CMD_BAND_5G:
++		msband = &mphy->sband_5g;
++		break;
++	case MT7925_FW_CMD_BAND_6G:
++		msband = &mphy->sband_6g;
++		if (chan_num >= MT7925_FW_CHNL_NUM_BASE_6G)
++			chan_num = MT7925_FW_6G_CHNL_ID_TO_NUM(chan_num);
++		break;
++	default:
++		return NULL;
++	}
++
++	for (i = 0; i < msband->sband.n_channels; i++) {
++		if (msband->sband.channels[i].hw_value == chan_num)
++			return &msband->sband.channels[i];
++	}
++
++	return NULL;
 +}
 +
-+static const struct of_device_id mtk_mdp_pm_of_match[] = {
-+	{ .compatible = "mediatek,mt8173-mdp-rdma" },
-+	{ .compatible = "mediatek,mt8173-mdp-rsz" },
-+	{ .compatible = "mediatek,mt8173-mdp-wdma" },
-+	{ .compatible = "mediatek,mt8173-mdp-wrot" },
-+	{ }
-+};
-+MODULE_DEVICE_TABLE(of, mtk_mdp_pm_of_match);
++/* mt7925_scan_update_survey - fold per-channel scan airtime into survey state.
++ *
++ * The scan-done CHNLINFO event carries a per-channel array. When the firmware
++ * is built with the Ch-Survey extension, each entry also reports the airtime
++ * (tx/rx/busy/active, unit: us) accumulated while scanning that channel. We
++ * accumulate those deltas into each channel's mt76_channel_state so that
++ * "iw survey dump" shows non-zero airtime for scanned channels, not only the
++ * connected home channel.
++ *
++ * @tlv_len is the total CHNLINFO TLV payload length (after the tlv header),
++ * used to (a) detect whether the airtime extension is present from the entry
++ * stride and (b) bound the array walk safely.
++ */
++void mt7925_scan_update_survey(struct mt792x_phy *phy,
++			       struct mt7925_mcu_scan_chinfo_event *evt,
++			       int tlv_len)
++{
++	struct mt76_phy *mphy = phy->mt76;
++	struct mt76_dev *dev = mphy->dev;
++	size_t hdr_len = sizeof(*evt);
++	size_t stride, avail;
++	const u8 *p;
++	int i;
 +
-+struct platform_driver mtk_mdp_pm_component_driver = {
-+	.probe = mtk_mdp_pm_probe,
-+	.remove = mtk_mdp_pm_remove,
-+	.driver = {
-+		.name = "mtk-mdp-pm-component",
-+		.of_match_table = mtk_mdp_pm_of_match,
-+	},
-+};
-
----
-base-commit: bf6c63ecc20a54aaac7a2fcbd6adaf6498388825
-change-id: 20261111-rfc-v2-generated-dd4e5cfe8b3b
-
-Best regards,
---  
-Youngjoon Lee <getfeus@gmail.com>
-
++	if (tlv_len <= (int)hdr_len || !evt->nr_chan)
++		return;
++
++	avail = (size_t)tlv_len - hdr_len;
++
++	/* The airtime extension is only present when each entry is at least as
++	 * large as the extended layout. Older firmware sends only the base
++	 * entry and thus reports no airtime; nothing to accumulate then.
++	 */
++	stride = avail / evt->nr_chan;
++	if (stride < sizeof(struct mt7925_mcu_scan_chinfo_survey))
++		return;
++
++	p = evt->chan_info;
++
++	spin_lock_bh(&dev->cc_lock);
++	for (i = 0; i < evt->nr_chan; i++, p += stride) {
++		const struct mt7925_mcu_scan_chinfo_survey *ci;
++		struct ieee80211_channel *chan;
++		struct mt76_channel_state *state;
++
++		ci = (const void *)p;
++
++		/* ensure the full extended entry is within the payload */
++		if ((size_t)((i + 1) * stride) > avail)
++			break;
++
++		chan = mt7925_scan_survey_get_chan(mphy, ci->band,
++						   ci->base.channel_num);
++		if (!chan)
++			continue;
++
++		state = mt76_channel_state(mphy, chan);
++		state->cc_tx     += le32_to_cpu(ci->tx_time_us);
++		state->cc_rx     += le32_to_cpu(ci->rx_time_us);
++		state->cc_busy   += le32_to_cpu(ci->busy_time_us);
++		state->cc_active += le32_to_cpu(ci->active_time_us);
++	}
++	spin_unlock_bh(&dev->cc_lock);
++}
++EXPORT_SYMBOL_GPL(mt7925_scan_update_survey);
++
+ /**
+  * mt7925_mcu_get_link_quality - query RSSI and TX link speed for a band
+  * @dev:	device
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/stats.h b/drivers/net/wireless/mediatek/mt76/mt7925/stats.h
+index a70b9eb3aa80..a4cb8c4453ea 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7925/stats.h
++++ b/drivers/net/wireless/mediatek/mt76/mt7925/stats.h
+@@ -291,6 +291,12 @@ int mt7925_mcu_get_mib_info(struct mt792x_dev *dev, u8 band_idx,
+ 			    const u32 *counters, u8 counter_num,
+ 			    u64 *values);
+ 
++/* Refresh per-channel survey airtime (TX/RX/OBSS/non-wifi) from the firmware
++ * MIB query and accumulate the delta into chan_state. Used by the MT7925/MT7935
++ * update_survey callback.
++ */
++int mt7925_mcu_get_chan_mib_info(struct mt792x_phy *phy);
++
+ /* GET_STAT_INFO (UNI_CMD_ID_GET_STATISTICS = 0x23),
+  * sub-command UNI_CMD_GET_STATISTICS_TAG_LINK_QUALITY = 1.
+  *
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/usb.c b/drivers/net/wireless/mediatek/mt76/mt7925/usb.c
+index f97f787b2198..2d3bf035fdfc 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7925/usb.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7925/usb.c
+@@ -174,7 +174,7 @@ static int mt7925u_probe(struct usb_interface *usb_intf,
+ 		.sta_add = mt7925_mac_sta_add,
+ 		.sta_event = mt7925_mac_sta_event,
+ 		.sta_remove = mt7925_mac_sta_remove,
+-		.update_survey = mt792x_update_channel,
++		.update_survey = mt7925_update_channel,
+ 	};
+ 	static const struct mt792x_hif_ops hif_ops = {
+ 		.mcu_init = mt7925u_mcu_init,
+diff --git a/drivers/net/wireless/mediatek/mt76/mt792x.h b/drivers/net/wireless/mediatek/mt76/mt792x.h
+index a7d71e007da0..2c7170c6a99e 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt792x.h
++++ b/drivers/net/wireless/mediatek/mt76/mt792x.h
+@@ -222,6 +222,12 @@ struct mt792x_phy {
+ 
+ 	struct mt76_mib_stats mib;
+ 
++	/* survey: firmware reports accumulated airtime counters; keep the
++	 * previous snapshot so mt7925_mcu_get_chan_mib_info() can accumulate
++	 * deltas into chan_state (mirror mt7996 phy->state_ts).
++	 */
++	struct mt76_channel_state state_ts;
++
+ 	u8 sta_work_count;
+ 	u8 clc_chan_conf;
+ 	enum mt792x_reg_power_type power_type;
+-- 
+2.45.2
 
 
