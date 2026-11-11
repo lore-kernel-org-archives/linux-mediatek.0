@@ -2,82 +2,184 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 8307C606A324
-	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Nov 2026 08:05:11 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id C767B606A320
+	for <linux-mediatek@archiver.kernel.org>; Wed, 11 Nov 2026 08:06:18 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=pMeMkT+B;
-	dkim=pass (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.a=rsa-sha256 header.s=dk header.b=HTM0lJPp
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=EqTZkiy/;
+	dkim=pass (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.a=rsa-sha256 header.s=dk header.b=U+L0V6XD;
+	dkim=pass (1024-bit key) header.d=mediateko365.onmicrosoft.com header.i=@mediateko365.onmicrosoft.com header.a=rsa-sha256 header.s=selector2-mediateko365-onmicrosoft-com header.b=FUzfwfOV
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=P9KPRIwt5+Ez0XcRaQqd16D3s0PsJWBDZM6WqudQTUg=; b=pMeMkT+BLMAPaV/GdK7/9riqOx
-	GKsYOvgeUTkt1Rrrq/yMFKRcoNyJwpwJRfBB/lH2u8RnumscIIf7Op/pfIIK+wkyQCVMdvfvB9WI+
-	NEadvCKm4qn5eX/IkoiEslp0xU2XB1OVsRiSFfyAicGaeFAGCE66La6tAhNNO8fW/4XCptMOtm4QB
-	BomSctG77rh54U/WuWGkKBrPHdadMEC5UbG6W/EBfjMMSireU82jELNMnqN59BPM9/wlQrCfOKwJF
-	n8h32ig9Upbhn6wFdJud51yWVnwqE6L2h0xNSQVM36lXRbLT+LmFhKIId4lIdXQgDBy0Bnm3Szpcg
-	UIoXKufg==;
+	bh=8MgpQIzMwDCej0NjBmLQEVsbCyRJHsG0REnzJf/tmzo=; b=EqTZkiy/wDhrT2Qa4U+NP0vWGP
+	jcuktHaaurmJW400tS3Mpd2vOW8ET5cp0CXEznhnvkCOR2/5e33p4lNAoVN7zj9RRTMsouJHJzwqj
+	WY6TMDFsqR42Q9GaXcfrSvU/q+SvazR6ifhnhfANEJJCwW8e8D1mk7GhLnAg8pEWtGXDFF/MeArLV
+	32Vi1d53GzbWS8Z3wU16aErDQm+g4OgDKMFKrP+3pUFZxvEUwWWvJK23vv2C9agWw7iUCLDDLpukb
+	qfq0a9G0ZmYStR1B06RUhT2PauwJV8G6S8HgYyYxBiQUBJhW738zPnjWbXemKfJ8eb1goHPOPfELf
+	5t/Z3Nsg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xR3KR-00000005z3N-14fb;
-	Wed, 11 Nov 2026 08:05:11 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1xR3LW-00000005zBK-29AI;
+	Wed, 11 Nov 2026 08:06:18 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xR3KO-00000005z2y-1Dp1
+	id 1xR3LT-00000005zAc-1nxt
 	for linux-mediatek@lists.infradead.org;
-	Wed, 11 Nov 2026 08:05:09 +0000
-X-UUID: 98d7eec4dda611f1afed4741b24580c9-20261111
+	Wed, 11 Nov 2026 08:06:17 +0000
+X-UUID: b8893dccdda611f1acbe4559397dec65-20261111
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=P9KPRIwt5+Ez0XcRaQqd16D3s0PsJWBDZM6WqudQTUg=;
-	b=HTM0lJPp3rK4dn4v6M4dM4kpUDl2xj87tk5XqPYcvzntWK0FYdJWS80dqXHNqt2Ap5yDM3ZZDx8pecDqszTRxzJD8vqZAfnRNzsjGuBismgm3/8BlOeJDo+f1aZaUao00qHnNcZLrrpOktOyP0w3ExdZoBbK5Qbi+ntmoBlGxCI=;
+	h=MIME-Version:Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:Message-ID:Date:Subject:CC:To:From; bh=8MgpQIzMwDCej0NjBmLQEVsbCyRJHsG0REnzJf/tmzo=;
+	b=U+L0V6XDPj/h/J2DJZ01CIHW06/Ygbe0GTV38vd8+8Jdb5vC7JXRG1kY3tQqUTCqqKXjXG6dZhWelzlpQ1e6BPJGKjSul5riMn2LEgBw/mn7z8nnC8PnMLaqsMbU+V3J2iu+Y/3o8wwAZ0JUZ7sFuDhVdCj5TruQWB7PtO39gIk=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.21,REQID:500b16fe-c744-4da5-b1d1-c5bdff4f8c3d,IP:0,U
+X-CID-O-INFO: VERSION:1.3.21,REQID:24acbff6-0cc3-414b-b4d9-bb6889e2f5dd,IP:0,U
 	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
 	release,TS:0
-X-CID-META: VersionHash:b0318ac,CLOUDID:dcfe978d-b3e7-4795-ae33-b1b4d51e21d7,B
-	ulkID:nil,BulkQuantity:0,SF:81|82|102|836|865|888|898,TC:-5,Content:0|15|5
-	0|99,EDM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0
-	,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-META: VersionHash:b0318ac,CLOUDID:5cdf2366-4b51-4c95-bb1b-80ac6aad9c96,B
+	ulkID:nil,BulkQuantity:0,SF:81|82|83|102|110|111|836|865|888|898,TC:-5,Con
+	tent:0|15|50|99,EDM:-3,IP:nil,URL:99|1,File:130,RT:0,Bulk:nil,QS:nil,BEC:n
+	il,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
 X-CID-BVR: 2,SSN|SDN
 X-CID-BAS: 2,SSN|SDN,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
+X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULS
 X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: 98d7eec4dda611f1afed4741b24580c9-20261111
-Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw01.mediatek.com
+X-UUID: b8893dccdda611f1acbe4559397dec65-20261111
+Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw02.mediatek.com
 	(envelope-from <michael.shih@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 845313238; Wed, 11 Nov 2026 01:05:02 -0700
-Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
- mtkmbs13n2.mediatek.inc (172.21.101.108) with Microsoft SMTP Server
+	with ESMTP id 1278043910; Wed, 11 Nov 2026 01:05:55 -0700
+Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
+ mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.29; Wed, 11 Nov 2026 16:04:59 +0800
-Received: from mtksitap99.mediatek.inc (10.233.130.16) by
- mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.2562.29 via Frontend Transport; Wed, 11 Nov 2026 16:04:59 +0800
-From: Michael Shih <michael.shih@mediatek.com>
-To: <nbd@nbd.name>, <lorenzo@kernel.org>
-CC: <linux-wireless@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
-	<kun.wu@mediatek.com>, <deren.wu@mediatek.com>, <sean.wang@mediatek.com>,
-	<quan.zhou@mediatek.com>, <ryder.lee@mediatek.com>, <leon.yen@mediatek.com>,
-	<litien.chang@mediatek.com>, <jb.tsai@mediatek.com>, Michael Shih
-	<michael.shih@mediatek.com>
-Subject: [PATCH v2] wifi: mt76: mt7925: support per-channel survey dump during scan
-Date: Wed, 11 Nov 2026 16:04:56 +0800
-Message-ID: <20261111080457.906770-1-michael.shih@mediatek.com>
-X-Mailer: git-send-email 2.45.2
-In-Reply-To: <20261111071347.875266-1-michael.shih@mediatek.com>
-References: <20261111071347.875266-1-michael.shih@mediatek.com>
+ 15.2.2562.29; Wed, 11 Nov 2026 16:05:53 +0800
+Received: from SG2PR04CU009.outbound.protection.outlook.com (172.21.101.237)
+ by mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server id
+ 15.2.2562.29 via Frontend Transport; Wed, 11 Nov 2026 16:05:52 +0800
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=rCptyCgtz2e0TJK+Be96pE123HY7aReEQkR6ZAvH3hpceX+cSzzFy1dSbUuCKfNnSsf7ewCYLN0nJJqDgpOzi5CVhceEVlCgayj3n4wjwumCau0VnPoYaDOpsDzVZ85DSd0A92LK5aAfpyeWsNNeuIA5fxeZIO5bRvVr45xDAfw8wBq9pFKTBY3YvRtXrekX9kGHRdEtgCRrRIMv6MH4MryEp9K1N4u1TtaVvV0zWxxFOP7BC9TtrkBsB4+9Z2fKIPg/AeqnVs68btkY0QsahJ8Zr+MzwGRoBWYyg4SX7OoJmCnMHtlkKmwajnH9huc3FMEQbkoa24TL9neDorLfog==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=8MgpQIzMwDCej0NjBmLQEVsbCyRJHsG0REnzJf/tmzo=;
+ b=Zk+j6liiRLBiW4DrmWiXsOVfcI7LhLuikFe9ZaJ+rpkWG9im4AvSHlJrgTz3rJ2ms42BVws9GWzsHok8JpuLCIGY/9a3Ea9O6Xk0b0Pgyiy+avUIZCCzz71OaFC/fHcY8QRJdM952bANrsWgnatRStvltj0NXVBliXY+nz2Eumln4kVKyHOEGtatqBZDKq10KZR7Pg8CZPfmNJsYTYPJ89xneliUzej+pedWpKm+VVUH8vBJocnk5Xa6eWeEChqarg0dfIoZU5DXIjVk6Ebdo6ejgER3IKI1kLEM68pRzYWEm1D6Hk+Aoh2Iz7E3spS/D5mbBZkJJCoApS7rGqkuDQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=mediatek.com; dmarc=pass action=none header.from=mediatek.com;
+ dkim=pass header.d=mediatek.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=mediateko365.onmicrosoft.com; s=selector2-mediateko365-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=8MgpQIzMwDCej0NjBmLQEVsbCyRJHsG0REnzJf/tmzo=;
+ b=FUzfwfOVS4dABuGULiKvsj+CCrvEnkZALpn3Nby1KxcN3SUw8aYKNg1n1Qp28rqFmSKLZasSmTrNalOGMoUs8lUf6MW/mBYvoiBpTGSTvfjufNPz0g3Um6nlx6Tm454N5k8h3M4d9DbFyDBhga8dVQQzgf2mWc/cgGMw4x+Z04Y=
+Received: from TYZPR03MB5742.apcprd03.prod.outlook.com (2603:1096:400:8f::9)
+ by SETPR03MB10467.apcprd03.prod.outlook.com (2603:1096:101:31d::20) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.615.8; Wed, 11 Nov
+ 2026 08:05:34 +0000
+Received: from TYZPR03MB5742.apcprd03.prod.outlook.com
+ ([fe80::ffd:f333:4ece:dfbc]) by TYZPR03MB5742.apcprd03.prod.outlook.com
+ ([fe80::ffd:f333:4ece:dfbc%5]) with mapi id 15.21.0615.007; Wed, 11 Nov 2026
+ 08:05:34 +0000
+From: =?utf-8?B?TWljaGFlbCBTaGloICjlj7LlkJvku7Ip?= <Michael.Shih@mediatek.com>
+To: "nbd@nbd.name" <nbd@nbd.name>, "lorenzo@kernel.org" <lorenzo@kernel.org>
+CC: =?utf-8?B?S3VuIFd1ICjlkLPorLnoh7Mp?= <kun.wu@mediatek.com>, Ryder Lee
+	<Ryder.Lee@mediatek.com>, =?utf-8?B?UXVhbiBaaG91ICjlkajlhagp?=
+	<Quan.Zhou@mediatek.com>, =?utf-8?B?RGVyZW4gV3UgKOatpuW+t+S7gSk=?=
+	<Deren.Wu@mediatek.com>, =?utf-8?B?TGl0aWVuIENoYW5nICjlvLXnq4vlhbgp?=
+	<Litien.Chang@mediatek.com>, "linux-wireless@vger.kernel.org"
+	<linux-wireless@vger.kernel.org>, Sean Wang <Sean.Wang@mediatek.com>,
+	=?utf-8?B?TGVvbiBZZW4gKOmhj+iJr+WEkik=?= <Leon.Yen@mediatek.com>,
+	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+	=?utf-8?B?SkIgVHNhaSAo6JSh5b+X5b2sKQ==?= <Jb.Tsai@mediatek.com>
+Subject: Re: [PATCH v1] wifi: mt76: mt7925: support per-channel survey dump
+ during scan
+Thread-Topic: [PATCH v1] wifi: mt76: mt7925: support per-channel survey dump
+ during scan
+Thread-Index: AQHdcaxEhlK3JmZw7ESK+OkMpnrN97cog4GA
+Importance: high
+X-Priority: 1
+Date: Wed, 11 Nov 2026 08:05:34 +0000
+Message-ID: <daeb5807d7121c4be27a3074fa4c2f570c9b2b42.camel@mediatek.com>
+References: <20261111071358.875331-1-michael.shih@mediatek.com>
+In-Reply-To: <20261111071358.875331-1-michael.shih@mediatek.com>
+Accept-Language: zh-TW, en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: mx.microsoft.com 1; dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=mediatek.com;
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: TYZPR03MB5742:EE_|SETPR03MB10467:EE_
+x-ms-office365-filtering-correlation-id: 83ede701-f7f7-4cba-6ce8-08df3fca905f
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;ARA:13230040|366016|1800799024|23010399003|376014|261009223027099003|10067099003|261022075727099003|11063799006|38070700021|56012099006|22082099003|18002099003;
+x-microsoft-antispam-message-info: gEbsKd0UVJXCzzEf5Bbp/RiE6CTTwP7/mhSRpvKi4HFnrTs/oHtx4jPbQucNbOhN9g9tOTjmpJjLaLb2arfmhhSGMup9v9q4eUEYwnWQQjgkh+CjMLrkBT78gSBYZG2CVo8m+xBQpzsoH4C8tdcMxO5wnqBZ+LxV3HuftoTdj85v7NYCl6Pf7BxDYwJjhnDs8gPDW3GcJRHQ53lLKlyf8IyYPaeinKb/sl3nqIsLwmfP0z6TyqyK2CO/oXUTISuaD1AAHe3Ok0h4cnhJLLnBfpJcL+AFQLhT5Efi5BmfmOIeCsr1pPlLSo26LDgPT3t7Zb0SLYu3+YtK5cvZvW4ZMQKZ7R2cbrobJXym6WDcQOLYn13R1UCsv6tIklaN4S3RF0LlERw4ZYMVCsTWHwvrz24bqzu5xC37QbvpyyOlEUJKVMuy8lt7Qw3rKKH4X8UkIapDNVtXiGTh+DkDcvucbLPsRGaufqJ+Xo3MLLrtJCpp9KEXd0K4IJrouhbkuwRidar5v1voHoDFKRSy3lGJh06T0z+1gip05TRTSCDtM0z407eIrcJx1m0oIlCkpdfiK7rX8btD86jRvkiAVRV3YZ420fdJX77LqF8nekc3nNRkI5ahqdkhMVyklw4+ZCf91qMCtk5n07W3UDpiWnfHqamM8ZfisJKaDWins4yDa3U=
+x-forefront-antispam-report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:TYZPR03MB5742.apcprd03.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(366016)(1800799024)(23010399003)(376014)(261009223027099003)(10067099003)(261022075727099003)(11063799006)(38070700021)(56012099006)(22082099003)(18002099003);DIR:OUT;SFP:1101;
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?utf-8?B?RVY1TC9PWTYxcERac2grS1gybzhqangxYnVPS2pUT1cwakQwRytaVFZtSGJa?=
+ =?utf-8?B?VWN2dTZLMkFocjhmcWZqdUVkWVllVjNKREduamkrSXJCQ2ZReXhScnhPa1A5?=
+ =?utf-8?B?bFlVMGRqeFpGZVBoT1d5cXA5L0xGdkJFbHQ1S0FWU25Qejd2czFQeFRyVVNn?=
+ =?utf-8?B?cVQ3dGlBOThFeEhZejl0dUtqaG5KdmM3ZHh4azBuWW5hekcxT1p4eTVwMzZO?=
+ =?utf-8?B?T2pRRG5McGFUZHIzUXltRWoxSWljanpySHNXMnJiL0R1MmxmL2RYbFV1Tkxo?=
+ =?utf-8?B?QURtbkFsMXl5NXJxenE4Tmlld0I1THp2Unk3NXErNHRJYkExaWRQNkRxMVRz?=
+ =?utf-8?B?Z0dmckhjd1QwSjErbDIxdUZ6aG1jL0p0SGdzaERsdjRQWXg3TFU0VUw5bnpO?=
+ =?utf-8?B?Q0RmaFVpT0JpRTN4WUtvZjhQYkZpWGxDZW1yYkNLeWRXTkhXZjIzQjN6TU5i?=
+ =?utf-8?B?WVFvN01DSXo2UXpNWXRIYzlHQmc0aGxFaStGcVVlNVJKSUhRR2I2ZDNuSjh6?=
+ =?utf-8?B?TFdWZU5nb3hlM1NEVEt3THVpUEhPMSt2Q3ZBYUZYTTNjTTQ0NWRNVUdWQTFD?=
+ =?utf-8?B?WmxjbVBoVEYxaTdCQ0Q0NkdGbW1Za2FVRkdWYVVTZjUvakkrMU0vUm50U2hh?=
+ =?utf-8?B?MVYwc0N5MXlaV1NFaXMrc1Y0OTl2NXZMNWdlK1kwNFJmVlRRVFVyVVFkblRx?=
+ =?utf-8?B?L01keHhYa3g2M1V5U2x6Z3k4WXdCY29CTVUxejFzS1ZoMU90QlNhNFM5ZDNG?=
+ =?utf-8?B?QkN4UzZFTk15NGZOSFVQZEh5QXltbmU4dEtXcGlZOW91MURGa0p0MEpQdHdz?=
+ =?utf-8?B?VlY4bnBpRTYvRWx5N3Z3WXJ0Z083MEFQbnMzZUJ0L0JCTm5kVlZrQy8rd0dB?=
+ =?utf-8?B?b1czRWxFWE84SlhHZ3EwRFIwV1BxS3Y1L0o1Qm42UDlUam1tblQrem9WZ3Zy?=
+ =?utf-8?B?UDRXc1JiMHFOdjYvc0ozQzczWUpnNkI3SFRLbHMyMFEyV0NCVVcyZ1V4N2Nl?=
+ =?utf-8?B?MFh0VWRMeUwyR0VoVURqZ2RCTGpWM3d5RU43K29ORitESGlESVlyb0d5TmZP?=
+ =?utf-8?B?eG9hbkx5b2p1OTV4NlpkUkNxdWJMUlRSUnhBNXdXQjJ2SmVsUXgvc0c1ZW15?=
+ =?utf-8?B?ZXUxbWZXUWVKeDl2Vlg2NVlHSldEUzBENFUvQWdUNy9xUlcxUDEveGFrVmFY?=
+ =?utf-8?B?N3RWM1QxTWwrMktwb2ltMkNEcjFzSUVCTjhYL3lCVHBjeTNrakpicjVUcGxn?=
+ =?utf-8?B?eDUrRkdkdnI3YndSL096Sy9QT1Zxek9GdElKc1NLSnFrZVFTd0NYUmgveUpj?=
+ =?utf-8?B?Z3RGL2ZUUlNDSG5pbXdUNHZlSXZVdXBLSU8zWGJ5T2M1WDhUdjJFM1dKSmVG?=
+ =?utf-8?B?cUNaWFNhck5EV3dBSXVzUmhldjVUMUNLWDZTZis2cTJrdzBNVHpKc1JBQVE0?=
+ =?utf-8?B?bVo4UnhUcUFIL3g5MUZ3VTJmejkrTS9PYkZhZUgwdUtsK2VCQWRiSUt2V1gv?=
+ =?utf-8?B?bHJYeWxYN21MVC9xQnhKZStPUHhhaEM4QlFrZVRPV1hPQzdVSGdRakwrM1ZU?=
+ =?utf-8?B?RjMyYTNoRzF3WWI3Q2ZXWi9mdGtjcGJoYi9GN0xTdzlmMUNwSklOdGQySGlw?=
+ =?utf-8?B?S094OVpJWnN2TnlLMHZlR2N3d3pyZXpaTHF6Sml4S3RieTVnc0FBSnRhNTEx?=
+ =?utf-8?B?U01Ddkp1eHBaSVlGcnBiTi94RkJCODNNK0NLcTlpaEsvR1plNUhpSkNPMTl3?=
+ =?utf-8?B?VjYyMzVGQjh1SjVhU0pvS2pheDJ3bFJJSjlNZUNNMlprYjR1T2VBUHVmWWgv?=
+ =?utf-8?B?QzFxNlgvNmZuUGtLblIraytlamVCNXk1Y0tTeGJuMW4ycjAvMXEzYnJ4K0Z1?=
+ =?utf-8?B?NzdidHkwdVBBMlNaT3JMYXRlZkpocXhBc0NnZ2Exajh4dTNGaWFxekJCR3VU?=
+ =?utf-8?B?NTJIN0kvR3dkNUdLdGJPczlXMDM0WCtIWE5FYUZkZDVYTkNCNEs2OW90aW1k?=
+ =?utf-8?B?NnVsdDRCL3ZxRUM1T3NucGc3ZXg0cm1PKytqT0lRNENkdnB5dHFQRXVBSXVQ?=
+ =?utf-8?B?bzZRRjZheTdOQm0wSTd4MndXelpjRDRSdytVQU5SczNCSHpCYXhYQXI3V0F5?=
+ =?utf-8?B?Vi9pTnNvdUpsWHVOT1J5ZGppbW5oR0NkcmpOUGE2dnVZYXJkR0RTVG52bW1h?=
+ =?utf-8?B?bEFDVzA5YWtrUlhrTTN1Y2F2QThyd0QrQlBOa1QvNnkzVzkxQkN4R3UxNzZi?=
+ =?utf-8?B?OHIxY0JiU1U5dTdGV090UzhEeTRLZlpoWmx2N0ZFNmdmd0lPMXhSWkdmVkJp?=
+ =?utf-8?B?cFpoQ3ZhWnI2K1hFU2xtRDJibjNJSTlSQnU1c2NwNG5mWXQ0b3Vlbms1c0dq?=
+ =?utf-8?Q?0YPgu1Kgjd3NYpZ8=3D?=
+Content-Type: text/plain; charset="utf-8"
+Content-ID: <2509AFA6F7810F47938538E7AF6E849F@apcprd03.prod.outlook.com>
+Content-Transfer-Encoding: base64
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
+X-Exchange-RoutingPolicyChecked: ficGKFinExXNCyCNu3s9vOczflUnYdBW2Abf/sdnjZqro7nPHmUNq4DeEWW1nipEVO01jlchYf5QqOcpgy8mL7TLVglHlBMD6r4jryCLuje/ksiJhxmz9KYWZtbjWPVKmMVhDiW5YM2m7WG76eqe8kfNUhotVcywj6IobwzcSaBuVH/Xg1aGxXq/xQxhjLW1KQ+VP4LhgiPXR4Cpb1YTARWQgnNkPefXjvHLNA395/E8CxkWneh4pBKqC5yPTMasBdc/yWlBAX6D/EM9mTylgDKD2n9g+qX5lEeFUowqH0DksQ7o/ikf3b0nVEd+nMvW0fNwX2P5+eB9oPrctFI/bA==
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: TYZPR03MB5742.apcprd03.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 83ede701-f7f7-4cba-6ce8-08df3fca905f
+X-MS-Exchange-CrossTenant-originalarrivaltime: 11 Nov 2026 08:05:34.7861
+ (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: a7687ede-7a6b-4ef6-bace-642f677fbe31
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: ObVaKzHN6IXVZ6CkV2OSeYh3s30bx4wFKlYG2lMcCZD5gY3LtkVk1xTT9ZIEKgKiWHP1NTypFnjuVF4gFl7Zf1/dGLfgfw5zbB6RR5ZUUwg=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SETPR03MB10467
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261111_000508_380999_071E4144 
-X-CRM114-Status: GOOD (  24.62  )
+X-CRM114-CacheID: sfid-20261111_000615_746547_02A78D8A 
+X-CRM114-Status: UNSURE (   5.03  )
+X-CRM114-Notice: Please train this message.
 X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -89,585 +191,14 @@ List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-18.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,
-	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
+X-Spam-Status: No, score=-5.3 required=3.0 tests=BAYES_00,DKIM_SIGNED,
+	DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
+	MAILING_LIST_MULTI,PI_IMPORTANCE_HIGH,SPF_HELO_NONE,SPF_PASS,
+	UNPARSEABLE_RELAY autolearn=no autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Report per-channel survey airtime (active/busy/rx/tx) so that
-"iw <dev> survey dump" shows non-zero airtime not only for the
-connected home channel, but also for every channel visited during
-a firmware-offloaded scan.
-
-Two accounting paths are wired up:
-
-(1) Home/operating channel (periodic mac_work):
-    mt7925 is firmware/chanctx managed and never goes through
-    __mt76_set_channel(), so phy->chan_state used to stay pinned to
-    its init default and the periodic survey was charged to the wrong
-    channel. mt7925_survey_switch_channel() is added and called from
-    assign_vif_chanctx() to settle the old channel, re-point
-    chan_state/chandef to the operating channel, and re-base the
-    firmware MIB snapshot so active/busy/rx/tx keep accumulating on
-    the channel actually dwelt on.
-
-(2) Scanned channels (scan-done event):
-    The scan-done CHNLINFO event now carries per-channel airtime
-    (firmware Ch-Survey extension). mt7925_scan_update_survey() parses
-    the per-channel array and folds the airtime deltas into each
-    channel's mt76_channel_state. The firmware 6G channel id is
-    converted back to the real channel number before lookup.
-
-mt76_channel_state() is exported so the mt7925 module can map a
-band/channel pair to its channel state.
-
-Usage:
-(1) Connect STA to AP and generate traffic:
-      dhclient ${WLAN_IF} -v
-      ping 192.168.0.XXX -i0.1
-
-(2) (Optional) Trigger a scan to collect other channels:
-      iw ${WLAN_IF} scan
-    or use wpa_supplicant / wpa_cli scan.
-
-(3) Dump the survey:
-      iw ${WLAN_IF} survey dump
-
-(4) You will see per-channel airtime, e.g.:
-      Survey data from wls1
-          frequency:            5240 MHz
-          channel active time:  163258 ms
-          channel busy time:    34076 ms
-          channel receive time: 32084 ms
-          channel transmit time: 253 ms
-    - The connected/dwelt channel keeps increasing over time.
-    - Channels visited during scan accumulate airtime each scan.
-
-Signed-off-by: Michael Shih <michael.shih@mediatek.com>
-
----
-v2: Fix commit messages.
-
----
- drivers/net/wireless/mediatek/mt76/mac80211.c |   3 +-
- drivers/net/wireless/mediatek/mt76/mt76.h     |   2 +
- .../net/wireless/mediatek/mt76/mt7925/main.c  |  12 +
- .../net/wireless/mediatek/mt76/mt7925/mcu.h   |  30 ++
- .../wireless/mediatek/mt76/mt7925/mt7925.h    |   7 +
- .../net/wireless/mediatek/mt76/mt7925/pci.c   |   2 +-
- .../net/wireless/mediatek/mt76/mt7925/stats.c | 301 +++++++++++++++++-
- .../net/wireless/mediatek/mt76/mt7925/stats.h |   6 +
- .../net/wireless/mediatek/mt76/mt7925/usb.c   |   2 +-
- drivers/net/wireless/mediatek/mt76/mt792x.h   |   6 +
- 10 files changed, 367 insertions(+), 4 deletions(-)
-
-diff --git a/drivers/net/wireless/mediatek/mt76/mac80211.c b/drivers/net/wireless/mediatek/mt76/mac80211.c
-index 08ed3fc6d386..11301428c5f9 100644
---- a/drivers/net/wireless/mediatek/mt76/mac80211.c
-+++ b/drivers/net/wireless/mediatek/mt76/mac80211.c
-@@ -991,7 +991,7 @@ bool mt76_has_tx_pending(struct mt76_phy *phy)
- }
- EXPORT_SYMBOL_GPL(mt76_has_tx_pending);
- 
--static struct mt76_channel_state *
-+struct mt76_channel_state *
- mt76_channel_state(struct mt76_phy *phy, struct ieee80211_channel *c)
- {
- 	struct mt76_sband *msband;
-@@ -1007,6 +1007,7 @@ mt76_channel_state(struct mt76_phy *phy, struct ieee80211_channel *c)
- 	idx = c - &msband->sband.channels[0];
- 	return &msband->chan[idx];
- }
-+EXPORT_SYMBOL_GPL(mt76_channel_state);
- 
- void mt76_update_survey_active_time(struct mt76_phy *phy, ktime_t time)
- {
-diff --git a/drivers/net/wireless/mediatek/mt76/mt76.h b/drivers/net/wireless/mediatek/mt76/mt76.h
-index 477d33a0022d..f74c6a4b0f9c 100644
---- a/drivers/net/wireless/mediatek/mt76/mt76.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt76.h
-@@ -1565,6 +1565,8 @@ void mt76_update_survey(struct mt76_phy *phy);
- void mt76_phy_chandef_set(struct mt76_phy *phy,
- 			  struct cfg80211_chan_def *chandef);
- void mt76_update_survey_active_time(struct mt76_phy *phy, ktime_t time);
-+struct mt76_channel_state *
-+mt76_channel_state(struct mt76_phy *phy, struct ieee80211_channel *c);
- int mt76_get_survey(struct ieee80211_hw *hw, int idx,
- 		    struct survey_info *survey);
- int mt76_rx_signal(u8 chain_mask, s8 *chain_signal);
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/main.c b/drivers/net/wireless/mediatek/mt76/mt7925/main.c
-index ffbc6b954632..8e48ef0cb3e5 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7925/main.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7925/main.c
-@@ -1612,6 +1612,10 @@ void mt7925_scan_work(struct work_struct *work)
- 
- 				mt7925_regd_change(phy, evt->alpha2);
- 
-+				mt7925_scan_update_survey(phy, evt,
-+							  le16_to_cpu(tlv->len) -
-+							  sizeof(struct tlv));
-+
- 				break;
- 			case UNI_EVENT_SCAN_DONE_NLO:
- 				ieee80211_sched_scan_results(phy->mt76->hw);
-@@ -2440,7 +2444,15 @@ static int mt7925_assign_vif_chanctx(struct ieee80211_hw *hw,
- 
- 	mconf->mt76.ctx = ctx;
- 	mctx->bss_conf = mconf;
-+
-+	/* Re-target op-channel survey accounting to the operating channel just
-+	 * assigned, so cc_active/airtime accrue on the channel we actually
-+	 * dwell on (mt7925 never goes through __mt76_set_channel()).
-+	 */
-+	mt7925_survey_switch_channel(mvif->phy, ctx->def.chan);
-+
- 	mt76_phy_chandef_set(mvif->phy->mt76, &ctx->def);
-+
- 	mutex_unlock(&dev->mt76.mutex);
- 
- 	return 0;
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/mcu.h b/drivers/net/wireless/mediatek/mt76/mt7925/mcu.h
-index 11f9eac13ffc..2ed95b00e10f 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7925/mcu.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt7925/mcu.h
-@@ -199,6 +199,36 @@ enum DMASHDL_GROUP_IDX {
- struct mt7925_mcu_scan_chinfo_event {
- 	u8 nr_chan;
- 	u8 alpha2[3];
-+	/* Followed by nr_chan entries. The entry layout matches the firmware
-+	 * UNI_EVENT_IE_CHNLINFO_T: a base part, optionally followed by the
-+	 * Ch-Survey airtime extension (present when the firmware was built with
-+	 * CONFIG_WIFI_RAM_CCN16_CHANNEL_SURVEY_STATS). Presence is detected at
-+	 * runtime from the TLV length (see mt7925_scan_update_survey()).
-+	 */
-+	u8 chan_info[];
-+} __packed;
-+
-+/* Base per-channel info (firmware SCAN_DONE_VERSION_SUPPORT_CU layout). */
-+struct mt7925_mcu_scan_chinfo {
-+	u8 channel_num;
-+	u8 bcn_probe_cnt;
-+	u8 mdrdy_cnt;
-+	u8 util_val;
-+	__le16 idle_time;
-+	__le16 scan_time;	/* dwell time (ms) */
-+} __packed;
-+
-+/* Ch-Survey extension appended after the base part
-+ * (firmware SCAN_DONE_VERSION_SUPPORT_CH_SURVEY layout).
-+ */
-+struct mt7925_mcu_scan_chinfo_survey {
-+	struct mt7925_mcu_scan_chinfo base;
-+	u8 band;		/* 1=2G, 2=5G, 3=6G (firmware CMD_BAND_*) */
-+	u8 rsv[3];
-+	__le32 tx_time_us;
-+	__le32 rx_time_us;	/* rx + obss */
-+	__le32 busy_time_us;	/* tx + rx + obss + nonwifi */
-+	__le32 active_time_us;	/* busy + idle = total */
- } __packed;
- 
- enum {
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/mt7925.h b/drivers/net/wireless/mediatek/mt76/mt7925/mt7925.h
-index 636efe038392..ac66c0a5daf6 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7925/mt7925.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt7925/mt7925.h
-@@ -282,6 +282,13 @@ extern const struct ieee80211_ops mt7925_ops;
- int __mt7925_start(struct mt792x_phy *phy);
- int mt7925_register_device(struct mt792x_dev *dev);
- void mt7925_unregister_device(struct mt792x_dev *dev);
-+void mt7925_update_channel(struct mt76_phy *mphy);
-+void mt7925_survey_switch_channel(struct mt792x_phy *phy,
-+				  struct ieee80211_channel *chan);
-+struct mt7925_mcu_scan_chinfo_event;
-+void mt7925_scan_update_survey(struct mt792x_phy *phy,
-+			       struct mt7925_mcu_scan_chinfo_event *evt,
-+			       int tlv_len);
- int mt7925_run_firmware(struct mt792x_dev *dev);
- int mt7925_mcu_set_bss_pm(struct mt792x_dev *dev,
- 			  struct ieee80211_bss_conf *link_conf,
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/pci.c b/drivers/net/wireless/mediatek/mt76/mt7925/pci.c
-index 0d477dc1086c..939a46c0428b 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7925/pci.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7925/pci.c
-@@ -604,7 +604,7 @@ static int mt7925_pci_probe(struct pci_dev *pdev,
- 		.sta_add = mt7925_mac_sta_add,
- 		.sta_event = mt7925_mac_sta_event,
- 		.sta_remove = mt7925_mac_sta_remove,
--		.update_survey = mt792x_update_channel,
-+		.update_survey = mt7925_update_channel,
- 	};
- 	static const struct mt792x_hif_ops mt7925_pcie_ops = {
- 		.init_reset = mt7925e_init_reset,
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/stats.c b/drivers/net/wireless/mediatek/mt76/mt7925/stats.c
-index 9a47953062bc..5d2c9eb81fcd 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7925/stats.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7925/stats.c
-@@ -11,7 +11,7 @@
- #define MT7925_STA_STATS_VERSION 1
- #define MT7925_STA_STATS_VALID 1U
- 
--#define MT7925_MIB_MAX_CNT			32
-+#define MT7925_MIB_MAX_CNT			40
- #define MT7925_MIB_CNT_MAX_NUM		512  /* firmware UNI_CMD_MIB_CNT_MAX_NUM upper bound */
- 
- #define MT7925_LQ_BAND_NUM	4			/* Link quality band */
-@@ -519,6 +519,305 @@ int mt792x_mcu_get_wtbl_rate(struct mt792x_dev *dev, u16 wlan_idx,
- 	return ret;
- }
- 
-+/* mt7925_mcu_get_chan_mib_info - refresh per-channel survey airtime from FW.
-+ *
-+ * Unlike mt7921 (which reads the MT_MIB_SDR* registers directly), MT7925/MT7935
-+ * obtain channel airtime through the firmware GET_MIB_INFO query. The firmware
-+ * reports *accumulated* counters (unit: microseconds), so we keep the previous
-+ * snapshot in phy->state_ts and accumulate only the delta into chan_state,
-+ * mirroring mt7996_mcu_get_chan_mib_info().
-+ */
-+int mt7925_mcu_get_chan_mib_info(struct mt792x_phy *phy)
-+{
-+	enum {
-+		IDX_TX_TIME,
-+		IDX_RX_TIME,
-+		IDX_OBSS_TIME,
-+		IDX_NON_WIFI_TIME,
-+		IDX_CHANNEL_IDLE,
-+		IDX_NUM
-+	};
-+	static const u32 counters[IDX_NUM] = {
-+		[IDX_TX_TIME]      = UNI_CMD_MIB_CNT_TX_DUR_CNT,
-+		[IDX_RX_TIME]      = UNI_CMD_MIB_CNT_RX_DUR_CNT,
-+		[IDX_OBSS_TIME]    = UNI_CMD_RMAC_CNT_OBSS_AIRTIME,
-+		[IDX_NON_WIFI_TIME] = UNI_CMD_RMAC_CNT_NONWIFI_AIRTIME,
-+		[IDX_CHANNEL_IDLE] = UNI_CMD_MIB_CNT_CHANNEL_IDLE,
-+	};
-+	struct mt76_channel_state *state = phy->mt76->chan_state;
-+	struct mt76_channel_state *state_ts = &phy->state_ts;
-+	u64 busy, active;
-+	u64 val[IDX_NUM];
-+	int ret;
-+
-+	ret = mt7925_mcu_get_mib_info(phy->dev, phy->mt76->band_idx,
-+				      counters, IDX_NUM, val);
-+	if (ret)
-+		return ret;
-+
-+	/* FW counters are accumulated (us); add only the delta since the last
-+	 * snapshot. busy = tx + rx + obss + nonwifi; active = busy + idle.
-+	 *
-+	 * active is sourced from the FW here (not the host clock) because
-+	 * mt7925 runtime-suspends between activity: the host-side survey_time
-+	 * accounting in mt76_update_survey_active_time() only advances while
-+	 * the host is awake, which badly under-counts active and can make
-+	 * active < busy. Deriving active from the FW busy/idle counters keeps
-+	 * both in the same (firmware) clock domain, so busy <= active always
-+	 * holds and the channel-utilisation ratio stays correct across PM
-+	 * sleep. The host-clock contribution is neutralised in
-+	 * mt7925_update_channel() by re-basing phy->survey_time to now.
-+	 */
-+	busy   = val[IDX_TX_TIME] + val[IDX_RX_TIME] +
-+		 val[IDX_OBSS_TIME] + val[IDX_NON_WIFI_TIME];
-+	active = busy + val[IDX_CHANNEL_IDLE];
-+
-+	state->cc_tx     += val[IDX_TX_TIME] - state_ts->cc_tx;
-+	state->cc_bss_rx += val[IDX_RX_TIME] - state_ts->cc_bss_rx;
-+	state->cc_rx     += val[IDX_RX_TIME] + val[IDX_OBSS_TIME] -
-+			    state_ts->cc_rx;
-+	state->cc_busy   += busy   - state_ts->cc_busy;
-+	state->cc_active += active - state_ts->cc_active;
-+
-+	state_ts->cc_tx     = val[IDX_TX_TIME];
-+	state_ts->cc_bss_rx = val[IDX_RX_TIME];
-+	state_ts->cc_rx     = val[IDX_RX_TIME] + val[IDX_OBSS_TIME];
-+	state_ts->cc_busy   = busy;
-+	state_ts->cc_active = active;
-+
-+	return 0;
-+}
-+
-+/* mt7925_update_channel - survey update_survey callback for MT7925/MT7935.
-+ *
-+ * Replaces mt792x_update_channel() (register-based) for chips that source
-+ * channel airtime from the firmware MIB query.
-+ */
-+void mt7925_update_channel(struct mt76_phy *mphy)
-+{
-+	struct mt792x_dev *dev = container_of(mphy->dev, struct mt792x_dev,
-+					      mt76);
-+	struct mt792x_phy *phy = mphy->priv;
-+
-+	if (mt76_connac_pm_wake(mphy, &dev->pm))
-+		goto out;
-+
-+	mt7925_mcu_get_chan_mib_info(phy);
-+
-+	mt76_connac_power_save_sched(mphy, &dev->pm);
-+
-+out:
-+	/* cc_active is sourced from the FW busy/idle counters above, so
-+	 * neutralise the host-clock contribution the framework is about to
-+	 * add in mt76_update_survey_active_time(): re-base survey_time to now
-+	 * so its delta is ~0. This must happen on every call (including the
-+	 * pm_wake failure path) or the host clock would otherwise charge the
-+	 * whole suspend/off-channel gap to cc_active.
-+	 */
-+	mphy->survey_time = ktime_get_boottime();
-+}
-+EXPORT_SYMBOL_GPL(mt7925_update_channel);
-+
-+/* mt7925_survey_switch_channel - re-target op-channel survey accounting.
-+ *
-+ * mt7925 is firmware/chanctx managed and never goes through
-+ * __mt76_set_channel(), so phy->chan_state stays pinned to its init default
-+ * and the periodic mac_work survey (both cc_active time and the FW-MIB airtime
-+ * delta) is charged to the wrong channel. Call this when the operating channel
-+ * is (re)assigned so that:
-+ *   1) the airtime accrued so far is settled into the old channel;
-+ *   2) chan_state/chandef are re-pointed to the new operating channel;
-+ *   3) the FW-MIB snapshot (state_ts) is re-based to the current counters so
-+ *      the first delta on the new channel is measured from now, not
-+ *      underflowed.
-+ */
-+void mt7925_survey_switch_channel(struct mt792x_phy *phy,
-+				  struct ieee80211_channel *chan)
-+{
-+	enum {
-+		IDX_TX_TIME,
-+		IDX_RX_TIME,
-+		IDX_OBSS_TIME,
-+		IDX_NON_WIFI_TIME,
-+		IDX_CHANNEL_IDLE,
-+		IDX_NUM
-+	};
-+	static const u32 counters[IDX_NUM] = {
-+		[IDX_TX_TIME]       = UNI_CMD_MIB_CNT_TX_DUR_CNT,
-+		[IDX_RX_TIME]       = UNI_CMD_MIB_CNT_RX_DUR_CNT,
-+		[IDX_OBSS_TIME]     = UNI_CMD_RMAC_CNT_OBSS_AIRTIME,
-+		[IDX_NON_WIFI_TIME] = UNI_CMD_RMAC_CNT_NONWIFI_AIRTIME,
-+		[IDX_CHANNEL_IDLE]  = UNI_CMD_MIB_CNT_CHANNEL_IDLE,
-+	};
-+	struct mt76_phy *mphy = phy->mt76;
-+	struct mt76_channel_state *state_ts = &phy->state_ts;
-+	struct mt76_channel_state *new_state;
-+	u64 val[IDX_NUM];
-+
-+	if (!chan)
-+		return;
-+
-+	new_state = mt76_channel_state(mphy, chan);
-+	if (new_state == mphy->chan_state)
-+		return;	/* same channel, nothing to switch */
-+
-+	/* 1) settle the old channel with airtime accrued up to now */
-+	if (mphy->chan_state)
-+		mt76_update_survey(mphy);
-+
-+	/* 2) re-target accounting to the new operating channel */
-+	mphy->chan_state = new_state;
-+	mphy->chandef.chan = chan;
-+
-+	/* drop any stale airtime left on this channel from a previous session
-+	 * so cc_active/cc_busy start fresh for this association (mt7925 never
-+	 * clears per-channel state via __mt76_set_channel()).
-+	 */
-+	memset(new_state, 0, sizeof(*new_state));
-+
-+	/* 3) re-base the FW-MIB snapshot so the next delta starts from now.
-+	 * active = busy + idle (see mt7925_mcu_get_chan_mib_info()).
-+	 */
-+	if (!mt7925_mcu_get_mib_info(phy->dev, mphy->band_idx,
-+				     counters, IDX_NUM, val)) {
-+		u64 busy = val[IDX_TX_TIME] + val[IDX_RX_TIME] +
-+			   val[IDX_OBSS_TIME] + val[IDX_NON_WIFI_TIME];
-+
-+		state_ts->cc_tx     = val[IDX_TX_TIME];
-+		state_ts->cc_bss_rx = val[IDX_RX_TIME];
-+		state_ts->cc_rx     = val[IDX_RX_TIME] + val[IDX_OBSS_TIME];
-+		state_ts->cc_busy   = busy;
-+		state_ts->cc_active = busy + val[IDX_CHANNEL_IDLE];
-+	}
-+
-+	/* reset the host-clock reference so the framework's
-+	 * mt76_update_survey_active_time() does not charge the switch gap
-+	 * to cc_active (which is now FW-sourced).
-+	 */
-+	mphy->survey_time = ktime_get_boottime();
-+}
-+EXPORT_SYMBOL_GPL(mt7925_survey_switch_channel);
-+
-+/* Map a firmware scan-done channel entry (band + channel number) back to the
-+ * corresponding ieee80211_channel. The firmware band uses CMD_BAND_* encoding
-+ * (1=2G, 2=5G, 3=6G).
-+ *
-+ * For 2G/5G, the reported number is the real channel number (== hw_value).
-+ * For 6G, the firmware reports an internal channel id produced by
-+ * rlmUtilGetChnlId(): chnl_id = ((real_ch - 1) >> 2) + CHNL_NUM_BASE_6G, where
-+ * CHNL_NUM_BASE_6G is 181. We invert it back to the real 6G channel number
-+ * (1, 5, 9, ... == hw_value) before looking it up.
-+ */
-+/* firmware CMD_BAND_* encoding used in scan-done per-channel entries */
-+enum mt7925_fw_cmd_band {
-+	MT7925_FW_CMD_BAND_2G = 1,
-+	MT7925_FW_CMD_BAND_5G = 2,
-+	MT7925_FW_CMD_BAND_6G = 3,
-+};
-+
-+/* firmware rlmUtilGetChnlId() 6G base (CHNL_NUM_BASE_6G) */
-+#define MT7925_FW_CHNL_NUM_BASE_6G	181
-+
-+/* invert rlmUtilGetChnlId() 6G encoding: chnl_id -> real 6G channel number */
-+#define MT7925_FW_6G_CHNL_ID_TO_NUM(_id) \
-+	((((_id) - MT7925_FW_CHNL_NUM_BASE_6G) << 2) + 1)
-+
-+static struct ieee80211_channel *
-+mt7925_scan_survey_get_chan(struct mt76_phy *mphy, u8 fw_band, u8 chan_num)
-+{
-+	struct mt76_sband *msband;
-+	int i;
-+
-+	switch (fw_band) {
-+	case MT7925_FW_CMD_BAND_2G:
-+		msband = &mphy->sband_2g;
-+		break;
-+	case MT7925_FW_CMD_BAND_5G:
-+		msband = &mphy->sband_5g;
-+		break;
-+	case MT7925_FW_CMD_BAND_6G:
-+		msband = &mphy->sband_6g;
-+		if (chan_num >= MT7925_FW_CHNL_NUM_BASE_6G)
-+			chan_num = MT7925_FW_6G_CHNL_ID_TO_NUM(chan_num);
-+		break;
-+	default:
-+		return NULL;
-+	}
-+
-+	for (i = 0; i < msband->sband.n_channels; i++) {
-+		if (msband->sband.channels[i].hw_value == chan_num)
-+			return &msband->sband.channels[i];
-+	}
-+
-+	return NULL;
-+}
-+
-+/* mt7925_scan_update_survey - fold per-channel scan airtime into survey state.
-+ *
-+ * The scan-done CHNLINFO event carries a per-channel array. When the firmware
-+ * is built with the Ch-Survey extension, each entry also reports the airtime
-+ * (tx/rx/busy/active, unit: us) accumulated while scanning that channel. We
-+ * accumulate those deltas into each channel's mt76_channel_state so that
-+ * "iw survey dump" shows non-zero airtime for scanned channels, not only the
-+ * connected home channel.
-+ *
-+ * @tlv_len is the total CHNLINFO TLV payload length (after the tlv header),
-+ * used to (a) detect whether the airtime extension is present from the entry
-+ * stride and (b) bound the array walk safely.
-+ */
-+void mt7925_scan_update_survey(struct mt792x_phy *phy,
-+			       struct mt7925_mcu_scan_chinfo_event *evt,
-+			       int tlv_len)
-+{
-+	struct mt76_phy *mphy = phy->mt76;
-+	struct mt76_dev *dev = mphy->dev;
-+	size_t hdr_len = sizeof(*evt);
-+	size_t stride, avail;
-+	const u8 *p;
-+	int i;
-+
-+	if (tlv_len <= (int)hdr_len || !evt->nr_chan)
-+		return;
-+
-+	avail = (size_t)tlv_len - hdr_len;
-+
-+	/* The airtime extension is only present when each entry is at least as
-+	 * large as the extended layout. Older firmware sends only the base
-+	 * entry and thus reports no airtime; nothing to accumulate then.
-+	 */
-+	stride = avail / evt->nr_chan;
-+	if (stride < sizeof(struct mt7925_mcu_scan_chinfo_survey))
-+		return;
-+
-+	p = evt->chan_info;
-+
-+	spin_lock_bh(&dev->cc_lock);
-+	for (i = 0; i < evt->nr_chan; i++, p += stride) {
-+		const struct mt7925_mcu_scan_chinfo_survey *ci;
-+		struct ieee80211_channel *chan;
-+		struct mt76_channel_state *state;
-+
-+		ci = (const void *)p;
-+
-+		/* ensure the full extended entry is within the payload */
-+		if ((size_t)((i + 1) * stride) > avail)
-+			break;
-+
-+		chan = mt7925_scan_survey_get_chan(mphy, ci->band,
-+						   ci->base.channel_num);
-+		if (!chan)
-+			continue;
-+
-+		state = mt76_channel_state(mphy, chan);
-+		state->cc_tx     += le32_to_cpu(ci->tx_time_us);
-+		state->cc_rx     += le32_to_cpu(ci->rx_time_us);
-+		state->cc_busy   += le32_to_cpu(ci->busy_time_us);
-+		state->cc_active += le32_to_cpu(ci->active_time_us);
-+	}
-+	spin_unlock_bh(&dev->cc_lock);
-+}
-+EXPORT_SYMBOL_GPL(mt7925_scan_update_survey);
-+
- /**
-  * mt7925_mcu_get_link_quality - query RSSI and TX link speed for a band
-  * @dev:	device
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/stats.h b/drivers/net/wireless/mediatek/mt76/mt7925/stats.h
-index a70b9eb3aa80..a4cb8c4453ea 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7925/stats.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt7925/stats.h
-@@ -291,6 +291,12 @@ int mt7925_mcu_get_mib_info(struct mt792x_dev *dev, u8 band_idx,
- 			    const u32 *counters, u8 counter_num,
- 			    u64 *values);
- 
-+/* Refresh per-channel survey airtime (TX/RX/OBSS/non-wifi) from the firmware
-+ * MIB query and accumulate the delta into chan_state. Used by the MT7925/MT7935
-+ * update_survey callback.
-+ */
-+int mt7925_mcu_get_chan_mib_info(struct mt792x_phy *phy);
-+
- /* GET_STAT_INFO (UNI_CMD_ID_GET_STATISTICS = 0x23),
-  * sub-command UNI_CMD_GET_STATISTICS_TAG_LINK_QUALITY = 1.
-  *
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/usb.c b/drivers/net/wireless/mediatek/mt76/mt7925/usb.c
-index f97f787b2198..2d3bf035fdfc 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7925/usb.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7925/usb.c
-@@ -174,7 +174,7 @@ static int mt7925u_probe(struct usb_interface *usb_intf,
- 		.sta_add = mt7925_mac_sta_add,
- 		.sta_event = mt7925_mac_sta_event,
- 		.sta_remove = mt7925_mac_sta_remove,
--		.update_survey = mt792x_update_channel,
-+		.update_survey = mt7925_update_channel,
- 	};
- 	static const struct mt792x_hif_ops hif_ops = {
- 		.mcu_init = mt7925u_mcu_init,
-diff --git a/drivers/net/wireless/mediatek/mt76/mt792x.h b/drivers/net/wireless/mediatek/mt76/mt792x.h
-index a7d71e007da0..2c7170c6a99e 100644
---- a/drivers/net/wireless/mediatek/mt76/mt792x.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt792x.h
-@@ -222,6 +222,12 @@ struct mt792x_phy {
- 
- 	struct mt76_mib_stats mib;
- 
-+	/* survey: firmware reports accumulated airtime counters; keep the
-+	 * previous snapshot so mt7925_mcu_get_chan_mib_info() can accumulate
-+	 * deltas into chan_state (mirror mt7996 phy->state_ts).
-+	 */
-+	struct mt76_channel_state state_ts;
-+
- 	u8 sta_work_count;
- 	u8 clc_chan_conf;
- 	enum mt792x_reg_power_type power_type;
--- 
-2.45.2
-
+VGhpcyBpcyBhIGR1cGxpY2F0ZSBjaGFuZ2UgdG8NCmh0dHBzOi8vcGF0Y2h3b3JrLmtlcm5lbC5v
+cmcvcHJvamVjdC9saW51eC13aXJlbGVzcy9wYXRjaC8yMDI2MTExMTA3MTM0Ny44NzUyNjYtMS1t
+aWNoYWVsLnNoaWhAbWVkaWF0ZWsuY29tLw0K
 
