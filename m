@@ -2,35 +2,35 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id ECB53606A8B0
-	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Nov 2026 18:55:11 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 5DD20606A31C
+	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Nov 2026 18:55:12 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=W6SoGfbF
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=05Rc9pDt
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Unsubscribe-Post:
-	List-Owner; bh=AEi1yAbNDHs7LRU8b5V/4XKfG/FYEAHp+93KsT9otlk=; b=W6SoGfbFClDI/g
-	mrVMHlNNy2sB3ArCCwKJ119uR491XbR2xiAfzsmATyMmNE6Y2WA5uqhzi74Pt2S8SFmBmCfBKdF46
-	/FgZK57myNIjm+GQG7FWmoUPUrclbnVAk8ltHGYU9vyWUkSBQZ8pdReap2Ukx/j2l9dy/T6auXcMW
-	P513R1zX5ST0cUNHswk1KAZ/SvfMnJsmi1BTEla6GkMTTQVStAMxA1LhfQ5slumkc04lvvNCKMMQw
-	pFSlvQYxyjvdEaC+Nxp/swMl/UuMg1JapMpu8W767a6zSjygB8zkk4XAT6z6T4aR2jbkN+hFCMYE/
-	JfPtMaGY6Gyb9NcKkyIA==;
+	List-Owner; bh=AluUuisZ3syjW16EuDxwZmf9uFaKZO91pqfZXb9+SsY=; b=05Rc9pDtFTuRqy
+	0g3SuqGwgNQQJvMkNwgvE+56KHBsJAiq9nyUoCCdXMd0Xhf9AMoUwEx0wX/e8CT7TrbT03sX0palv
+	9AIFDe4vcW8Nj9peKN+zjXoRmPLy7BKi0hArguw5bQqDrCsiZFkZgtqSvMRoyCkpB6c8XmDTqH4f/
+	tb8M0kBVvBO4rGLHm9m4HyUL1BBtgyB7Ko2iUC9XFIBqlRAhEkkSa2Wo2MhB4LzT2CTtonGVbpSCX
+	FHx1AhTnbAcOTj/jI/EKZUlSZJkWe5Zyhy2arcM4CGrnzY+zB4yeF+RdU0eF2L/bTL4TQwi9rjBVP
+	SjrWDs+u15TnjucMUBsA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xRZx1-0000000Atce-2mXo;
-	Thu, 12 Nov 2026 18:55:11 +0000
+	id 1xRZx2-0000000Atdf-07oc;
+	Thu, 12 Nov 2026 18:55:12 +0000
 Received: from nbd.name ([46.4.11.11])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xRZwr-0000000AtWt-2hEb;
+	id 1xRZwr-0000000AtWu-2jKk;
 	Thu, 12 Nov 2026 18:55:05 +0000
 Received: from [2a04:4540:1403:f2fc:83ce:6656:246:c906] (helo=bertha10..)
 	by ds12 with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.96)
 	(envelope-from <john@phrozen.org>)
-	id 1xRZwk-002XXn-2j;
+	id 1xRZwk-002XXn-1d;
 	Thu, 12 Nov 2026 19:54:54 +0100
 From: John Crispin <john@phrozen.org>
 To: Rob Herring <robh@kernel.org>,
@@ -50,9 +50,9 @@ Cc: Christian Marangi <ansuelsmth@gmail.com>,
 	upstream@airoha.com,
 	Weifeng.xu@airoha.com,
 	zhengping.zhang@airoha.com
-Subject: [PATCH v2 3/3] arm64: dts: airoha: add AN7589 evaluation board
-Date: Thu, 12 Nov 2026 19:54:46 +0100
-Message-Id: <20261112185446.1314808-4-john@phrozen.org>
+Subject: [PATCH v2 2/3] arm64: dts: airoha: add AN7589 SoC dtsi
+Date: Thu, 12 Nov 2026 19:54:45 +0100
+Message-Id: <20261112185446.1314808-3-john@phrozen.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20261112185446.1314808-1-john@phrozen.org>
 References: <20261112185446.1314808-1-john@phrozen.org>
@@ -60,8 +60,8 @@ X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261112_105501_745232_24A4E841 
-X-CRM114-Status: GOOD (  13.18  )
+X-CRM114-CacheID: sfid-20261112_105501_748274_D97763AB 
+X-CRM114-Status: GOOD (  13.13  )
 X-Spam-Score: -1.9 (-)
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -80,50 +80,162 @@ X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Add the device tree for the Airoha AN7589 evaluation board, with 2 GiB
-of DRAM and the console on UART1.
+Add the device tree for the Airoha AN7589 SoC. It describes the four
+Cortex-A73 cores, which the firmware brings up over PSCI, the GICv3, the
+architected timer and the console UART.
+
+The UART runs from a fixed 1.8432 MHz clock, so the console works
+before the SCU clock controller probes. The remaining blocks follow later.
 
 Signed-off-by: John Crispin <john@phrozen.org>
 ---
- arch/arm64/boot/dts/airoha/Makefile       |  1 +
- arch/arm64/boot/dts/airoha/an7589-evb.dts | 22 ++++++++++++++++++++++
- 2 files changed, 23 insertions(+)
- create mode 100644 arch/arm64/boot/dts/airoha/an7589-evb.dts
+Changes in v2:
+- Set the size of the GICV region to 0x2000. The virtual CPU interface
+  has two 4 KiB pages, with GICV_DIR in the second page.
+- Order the nodes and properties as dts-coding-style.rst describes.
 
-diff --git a/arch/arm64/boot/dts/airoha/Makefile b/arch/arm64/boot/dts/airoha/Makefile
-index ebea112ce1d7..78146871db77 100644
---- a/arch/arm64/boot/dts/airoha/Makefile
-+++ b/arch/arm64/boot/dts/airoha/Makefile
-@@ -1,2 +1,3 @@
- # SPDX-License-Identifier: GPL-2.0-only
-+dtb-$(CONFIG_ARCH_AIROHA) += an7589-evb.dtb
- dtb-$(CONFIG_ARCH_AIROHA) += en7581-evb.dtb
-diff --git a/arch/arm64/boot/dts/airoha/an7589-evb.dts b/arch/arm64/boot/dts/airoha/an7589-evb.dts
+ arch/arm64/boot/dts/airoha/an7589.dtsi | 134 +++++++++++++++++++++++++
+ 1 file changed, 134 insertions(+)
+ create mode 100644 arch/arm64/boot/dts/airoha/an7589.dtsi
+
+diff --git a/arch/arm64/boot/dts/airoha/an7589.dtsi b/arch/arm64/boot/dts/airoha/an7589.dtsi
 new file mode 100644
-index 000000000000..eadba7154350
+index 000000000000..70ced7c5a4fd
 --- /dev/null
-+++ b/arch/arm64/boot/dts/airoha/an7589-evb.dts
-@@ -0,0 +1,22 @@
++++ b/arch/arm64/boot/dts/airoha/an7589.dtsi
+@@ -0,0 +1,134 @@
 +// SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-+/dts-v1/;
 +
-+#include "an7589.dtsi"
++#include <dt-bindings/interrupt-controller/irq.h>
++#include <dt-bindings/interrupt-controller/arm-gic.h>
 +
 +/ {
-+	model = "Airoha AN7589 Evaluation Board";
-+	compatible = "airoha,an7589-evb", "airoha,an7589";
++	interrupt-parent = <&gic>;
++	#address-cells = <2>;
++	#size-cells = <2>;
 +
-+	aliases {
-+		serial0 = &uart1;
++	clk1843200: clock-1843200 {
++		compatible = "fixed-clock";
++		#clock-cells = <0>;
++		clock-frequency = <1843200>;
 +	};
 +
-+	chosen {
-+		stdout-path = "serial0:115200n8";
++	cpus {
++		#address-cells = <1>;
++		#size-cells = <0>;
++
++		cpu-map {
++			cluster0 {
++				core0 {
++					cpu = <&cpu0>;
++				};
++
++				core1 {
++					cpu = <&cpu1>;
++				};
++
++				core2 {
++					cpu = <&cpu2>;
++				};
++
++				core3 {
++					cpu = <&cpu3>;
++				};
++			};
++		};
++
++		cpu0: cpu@0 {
++			device_type = "cpu";
++			compatible = "arm,cortex-a73";
++			reg = <0x0>;
++			enable-method = "psci";
++			next-level-cache = <&l2>;
++		};
++
++		cpu1: cpu@1 {
++			device_type = "cpu";
++			compatible = "arm,cortex-a73";
++			reg = <0x1>;
++			enable-method = "psci";
++			next-level-cache = <&l2>;
++		};
++
++		cpu2: cpu@2 {
++			device_type = "cpu";
++			compatible = "arm,cortex-a73";
++			reg = <0x2>;
++			enable-method = "psci";
++			next-level-cache = <&l2>;
++		};
++
++		cpu3: cpu@3 {
++			device_type = "cpu";
++			compatible = "arm,cortex-a73";
++			reg = <0x3>;
++			enable-method = "psci";
++			next-level-cache = <&l2>;
++		};
++
++		l2: l2-cache {
++			compatible = "cache";
++			cache-size = <0x80000>;
++			cache-line-size = <64>;
++			cache-level = <2>;
++			cache-unified;
++		};
 +	};
 +
-+	memory@80000000 {
-+		device_type = "memory";
-+		reg = <0x0 0x80000000 0x0 0x80000000>;
++	psci {
++		compatible = "arm,psci-1.0";
++		method = "smc";
++	};
++
++	reserved-memory {
++		ranges;
++		#address-cells = <2>;
++		#size-cells = <2>;
++
++		atf@80000000 {
++			reg = <0x0 0x80000000 0x0 0x200000>;
++			no-map;
++		};
++	};
++
++	soc {
++		compatible = "simple-bus";
++		ranges;
++		#address-cells = <2>;
++		#size-cells = <2>;
++
++		gic: interrupt-controller@c000000 {
++			compatible = "arm,gic-v3";
++			reg = <0x0 0x0c000000 0x0 0x40000>,
++			      <0x0 0x0c080000 0x0 0x200000>,
++			      <0x0 0x0c400000 0x0 0x2000>,
++			      <0x0 0x0c410000 0x0 0x1000>,
++			      <0x0 0x0c420000 0x0 0x2000>;
++			interrupts = <GIC_PPI 9 IRQ_TYPE_LEVEL_LOW>;
++			interrupt-controller;
++			#interrupt-cells = <3>;
++		};
++
++		uart1: serial@1fbf0000 {
++			compatible = "ns16550";
++			reg = <0x0 0x1fbf0000 0x0 0x30>;
++			reg-io-width = <4>;
++			reg-shift = <2>;
++			interrupts = <GIC_SPI 74 IRQ_TYPE_LEVEL_HIGH>;
++			clocks = <&clk1843200>;
++		};
++	};
++
++	timer {
++		compatible = "arm,armv8-timer";
++		interrupt-parent = <&gic>;
++		interrupts = <GIC_PPI 13 IRQ_TYPE_LEVEL_LOW>,
++			     <GIC_PPI 14 IRQ_TYPE_LEVEL_LOW>,
++			     <GIC_PPI 11 IRQ_TYPE_LEVEL_LOW>,
++			     <GIC_PPI 10 IRQ_TYPE_LEVEL_LOW>;
 +	};
 +};
 -- 
