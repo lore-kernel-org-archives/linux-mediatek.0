@@ -2,80 +2,108 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 8879D606A31C
-	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Nov 2026 06:17:51 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 403C5606A337
+	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Nov 2026 06:18:02 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=lwhzj6Ql;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=google.com header.i=@google.com header.a=rsa-sha256 header.s=20260707 header.b=MX186qlK
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=npTOHjSU;
+	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=i1jAQzFC
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:To:
-	From:Subject:Message-ID:Mime-Version:Date:Reply-To:Content-Transfer-Encoding:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
 	List-Unsubscribe-Post:List-Owner;
-	bh=njjyBXz9L58T+lg+LdB1WaYpD3pBpeVCDltq1wefIsE=; b=lwhzj6QlI2OkcB1qw7JZmcOleJ
-	kQNveySMliSt0vMmd3x04zwHJV1JMM1L8uN1DyP2e2OLoyXr/CjAEAsjZsTmtuwGl2wcGunFfLMdq
-	lHQ5qgVxnshouBNebjvohWssmkWd1c+xxZuW1yKiMe00RJQy4BvQbPNk+JohnHlCf8CWX3ovBgixF
-	fU5Bc3GLFKad+NblyoJVJRI5sXzzNynbYr+EJcHbiDPLs0wCPPkrNmCH6nSTcUpPG7xCGX9mwUmNw
-	pdv/1+e5GaaipRFn5lEl0bYkgNdW9L3lZ59L5VBCuO6Op0DrcJ3D3psD2s3mpE4W+8nTo7iaHDqt/
-	80ISbkaw==;
+	bh=hdMQOaidcysmkd0hNo7kkHB1KCKjR78WhA/YmNa8gos=; b=npTOHjSUBJW9UXdtaYuPLwEsUh
+	/i1yf4PddSRJisBlKOdEN0J7wNxcdoGShfbyKpdq2oXRbNA5WjiPznWtlSnI2T0GxRGU3ipZ4xYwi
+	Tsi3ISXL+FA/Ji99t3XDkeZfXFxzcIsOkoeCnQa2+ieZdsKYWenRLQLTKZ7kGl4nFyNrfqfuAbwxr
+	XN5UcmgPyBMEpGP7+QS9jgxBP4coXyqR8TOQY9YYuc95uvsr640Kb7tKO90yijjB4Y/fkAd7asIeU
+	qjtk5SqGvpLrlFH8/EVSpIla9gWspE9zFwwPXgn5oxFlvfjRqGfch3HlguvdCG+GBn8hA2yKYouR8
+	8OW8SZ2g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xRO85-00000008nJC-2xwH;
-	Thu, 12 Nov 2026 06:17:49 +0000
-Received: from mail-pj1-x1045.google.com ([2607:f8b0:4864:20::1045])
+	id 1xRO8H-00000008nOZ-3ZuO;
+	Thu, 12 Nov 2026 06:18:01 +0000
+Received: from mail-qv1-xf30.google.com ([2607:f8b0:4864:20::f30])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xRO80-00000008nI8-3IoW
+	id 1xRO8A-00000008nKA-3pLh
 	for linux-mediatek@lists.infradead.org;
-	Thu, 12 Nov 2026 06:17:48 +0000
-Received: by mail-pj1-x1045.google.com with SMTP id 98e67ed59e1d1-3b17b31c3beso1767450a91.2
-        for <linux-mediatek@lists.infradead.org>; Wed, 11 Nov 2026 22:17:43 -0800 (PST)
+	Thu, 12 Nov 2026 06:17:59 +0000
+Received: by mail-qv1-xf30.google.com with SMTP id 6a1803df08f44-91f0272ce61so16567116d6.2
+        for <linux-mediatek@lists.infradead.org>; Wed, 11 Nov 2026 22:17:54 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=google.com; s=20260707; t=1794464263; x=1795069063; darn=lists.infradead.org;
-        h=content-type:cc:to:from:subject:message-id:mime-version:date:from
-         :to:cc:subject:date:message-id:reply-to:content-type;
-        bh=njjyBXz9L58T+lg+LdB1WaYpD3pBpeVCDltq1wefIsE=;
-        b=MX186qlK3lboQOYY5xsxJHtVGMbIZLZ3zhkgPoOYT2rtoBJo5T9hq2L+dEqcP2eHye
-         RLtJREoIoe3FqqNM3tuXBJqDnzweS5stl5C/4mUDFei48KyXLBLsAHzlOEb7/lu/qe3r
-         qIuxvX1WmLZ7iGgbCtEzLVU6MRvWxKwG7N+Wuo65e+pYoTcXmkcmxy1vSdi5oECPCMW8
-         9JmIM3BkjRNuvLMUTVoWdeqVYQKwLOBgC6sJ/ml8GMGp/W7jbN3285r3jl88FosUXY1e
-         +Ep7bawKg86wjcty3RcyBJBaUxHUMpVZg8B1+pYqHBYEqRvOWtb9GaghB/0RTfvbFgnV
-         MX+Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1794464263; x=1795069063;
-        h=content-type:cc:to:from:subject:message-id:mime-version:date
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+        d=gmail.com; s=20260707; t=1794464273; x=1795069073; darn=lists.infradead.org;
+        h=content-transfer-encoding:content-type:mime-version:message-id:date
+         :subject:cc:to:from:from:to:cc:subject:date:message-id:reply-to
          :content-type;
-        bh=njjyBXz9L58T+lg+LdB1WaYpD3pBpeVCDltq1wefIsE=;
-        b=k70RnmyWM2CZQnGuF0BlxpFi+5kXObyqagsRI5pBOGyX6j23v/8hHLIpUENkIBiLiN
-         e6PoA66BcOG5a5KzGO8dZ0CW1rwPsvHwDM/9pBDvNLoLlI4hQgCNpFaf8Vmqk77yJat0
-         I/bXIVCdAgCCuDYzeyhw2piOTa0ljtu3GDzDBl1tNnERPGyFyUzHgy9YkGqmpmRKjds8
-         lEKJZIqgfe0H8JdQBV6WIQjyj1ZqJNutKJR1Pe9wrVTVzh0SybucQgWhW/J1xiWmWxnf
-         liodIFPc26Zm14QxCm7nelmR8x5sXYbDRPwUaw+XikJ7avVeTt7D0Y/23hzYZjEZuOHX
-         7VNw==
-X-Forwarded-Encrypted: i=1; AL+hErFyeeKe1GIlZbn4xJAX4Aj5PLW1BDOb/Frf6KXg4DI8d8Yfgzr0ZuanO7ZxjWMUAn/7kr6bXSpwNscM8gCKcA==@lists.infradead.org
-X-Gm-Message-State: APuU4Z8bOvvTX7FFsTZxBYVOB75W3/CpnVZCxloiCUHR0095jPeo5UpJ
-	UUwuiyuCYwwyLMrXn9mt+gqE3AMCDWtd+xhFhJS6GeMW3aapQ+aoKYr/inGKcDOxgfqOVvPlQd8
-	UVJrgn64dhQ==
-X-Received: from pjbga7.prod.google.com ([2002:a17:90b:387:b0:3ab:3979:1be4])
- (user=yidilin job=prod-delivery.src-stubby-dispatcher) by 2002:a17:90b:2584:b0:3ac:7556:8eed
- with SMTP id 98e67ed59e1d1-3b182f8532dmr4081954a91.44.1794464263018; Wed, 11
- Nov 2026 22:17:43 -0800 (PST)
-Date: Thu, 12 Nov 2026 14:17:36 +0800
+        bh=hdMQOaidcysmkd0hNo7kkHB1KCKjR78WhA/YmNa8gos=;
+        b=i1jAQzFCt79ZvspP4y7Gt4WbL54QoTxKVw9CRe1UhOBHT1vsrUgrz42c+RniPvXbZ0
+         GO6cWrxIViSSblfCvuhZxd5mYpyiTz+xSkbDQ+Qbf/VWGws3VKMfdKnm+7WgU0CIp4xJ
+         0UNBn5qJd6Uu1+6sOLTvrp0CNNbpQuNicvhwlbomn3rGVlXyIDRj1LN1vcbBbA9bdJ+n
+         /xIgBnD7Vxp+7IHm7OGdBepOa/kkzUNJyPN+ZZOaetZMFyJHzGocQlRlJygZVwMi1en8
+         AJn32Eeg8lWOl5OOHUnAR6WOK4pxHxqYO2qXKZD8fwb3xTCqLVeEQSj3Ot8flEtMhpiZ
+         6Ttg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20260707; t=1794464273; x=1795069073;
+        h=content-transfer-encoding:content-type:mime-version:message-id:date
+         :subject:cc:to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject
+         :date:message-id:reply-to:content-type;
+        bh=hdMQOaidcysmkd0hNo7kkHB1KCKjR78WhA/YmNa8gos=;
+        b=BelDBkw1mMfUa8Xq4eONT2MtuYV07AFxCZ1oKXg1v0QPJ92A61k9a9+0VFlJGFNo70
+         PA1zYA26BFejfUEJ8WzjqJ1MDMNKn/134t5E8015g8nJOXFZM1ucR7UdE5o+tLuLJ7pT
+         uzV1iYYFH1iS+v2Xtkdydr5wZ5QsuhmtVBkDm1iywCKENzodvqnjC46/HbSSsXGcFmHo
+         7829WqRp1S/JN33SdAuT5Ejcw2cbftt027/7yxnCbbZKg18K24aIf17MACfQyUj2HfeS
+         ibrLThkDxHpzZlskTkqDFUl0CznRZZyGvygyGWZJdgV+PPhSiX4dXFewoUObh+6M9MvJ
+         iVpQ==
+X-Forwarded-Encrypted: i=1; AL+hErFhUFcZd6gQ+PBKyrFEXGcEpwwh4nbeuM2VWrMoV5FlvkKR+DxpVXo1hCq9epux9sk1BzYFEEqGkYFUI/+s5g==@lists.infradead.org
+X-Gm-Message-State: APuU4Z+1Zy1gHLlbgJlxep1Hm65DaQb75DZa4uCQOdcvWnuW03bgda8v
+	BCErj19ONMLb0Qr9G4HiSn9emurMWT2HsVyBgbHw6gcXfaIm8GeUkiw=
+X-Gm-Gg: AYBFou2XBe8mXVZ87JP6Uao0lIJXLREbsejFwz61+7pt6fpXRA+qJui0rPuYEDEYpxY
+	AlwZahrh16IyhRDQCC768Dr1owb6tqHTy+euJlmmLNGTASX7PQ0+FpDIrRn2NiTjdnSXGimbzVU
+	dkr8OdeC9QEQSm+18Kkyos/foYuwn/diWPAK9bhQjbQHeu95jWEnQ2NNpmCzN4qwX82B8LqLOS/
+	ZfXwhhglQiM2vPZtlb6OATD5GEIc6K62U1FSkyD0hzoJ2UuJP2n+LVWWEcpt0fWI5u/Qe+sur7b
+	us4xyiqkMWvSNCCzGAncZDpKm/UoHSd6npZqNRGfB4FPMM+bz7U101SWn5Bggm0fyqtnv9E3GNh
+	8UctTEI4mZU84ZVX00ba3j3Jg2hWoyPi5g5DMLtzZLc6HLinrq8/R8Kmhhh+plxGzO7C2JtL5ct
+	CV6luIvKL9KuyrORMADIWW3aFNL7h+U7Zg7UMgTsrARAWBNL3K8AAhLdNTrk5mnoaza8IUNh8VP
+	MsOGiJxSJ5Hdr4pYfHbBt0KWxRYrzlA2lVQRkI75tQqBRBtk4Au/l2ZNPTuRP5yYseq2UFSBg4p
+	wrNsiTKrPQUY/7oTCihbxBv3VffFRUyLDGbGoHpwCx9kuqLXMAqCSmSGTNeTitjHuDl2CmubzsF
+	xW4EUPhrwgKHJvkuJNCf7hB+sbJT+x5s8GaZrBu5J7hU8fT+Ct3w98M3fv7gOfBP1gDnEeoMqil
+	cV50XqkHly34NvVpzWZcYBkFW3c7Pdbpq7
+X-Received: by 2002:a05:620a:688b:b0:947:a247:6afb with SMTP id af79cd13be357-947afd68101mr819573185a.13.1794464273217;
+        Wed, 11 Nov 2026 22:17:53 -0800 (PST)
+Received: from localhost.localdomain (h16.44.55.139.dynamic.ip.windstream.net. [139.55.44.16])
+        by smtp.gmail.com with ESMTPSA id af79cd13be357-947a5ac3f27sm513931985a.22.2026.11.11.22.17.51
+        (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
+        Wed, 11 Nov 2026 22:17:52 -0800 (PST)
+From: Myeonghun Pak <mhun512@gmail.com>
+To: Mark Brown <broonie@kernel.org>,
+	Liam Girdwood <lgirdwood@gmail.com>
+Cc: Jaroslav Kysela <perex@perex.cz>,
+	Takashi Iwai <tiwai@suse.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	linux-sound@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	Ijae Kim <ae878000@gmail.com>,
+	Cyril Chao <Cyril.Chao@mediatek.com>,
+	Darren Ye <darren.ye@mediatek.com>,
+	Jiaxin Yu <jiaxin.yu@mediatek.com>,
+	Trevor Wu <trevor.wu@mediatek.com>
+Subject: [PATCH v2 0/5] ASoC: mediatek: fix AFE IRQ registration and removal ordering
+Date: Thu, 12 Nov 2026 01:17:44 -0500
+Message-ID: <20261112011708-afe-v2-0-mhun512@gmail.com>
+X-Mailer: git-send-email 2.47.1
 X-Archived-By: <archiver.kernel.org>
-Mime-Version: 1.0
-X-Mailer: git-send-email 2.56.0.611.g1030f0b940-goog
-Message-ID: <20261112061736.4014993-1-yidilin@google.com>
-Subject: [PATCH] drm/mediatek: dp: Wait for the complete AUX reply before
- reading it
-From: Yidi Lin <yidilin@google.com>
-To: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>
-Content-Type: text/plain; charset="UTF-8"
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261111_221744_885661_CE7A9727 
-X-CRM114-Status: GOOD (  15.71  )
-X-Spam-Score: -9.5 (---------)
+X-CRM114-CacheID: sfid-20261111_221757_885667_67CD9F8F 
+X-CRM114-Status: UNSURE (   8.28  )
+X-CRM114-Notice: Please train this message.
+X-Spam-Score: -1.9 (-)
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,158 +113,53 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: Simona Vetter <simona@ffwll.ch>, Yidi Lin <yidilin@google.com>, linux-kernel@vger.kernel.org, dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, Matthias Brugger <matthias.bgg@gmail.com>, David Airlie <airlied@gmail.com>, linux-arm-kernel@lists.infradead.org, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_ADSP_CUSTOM_MED,DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,
-	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,INCLUDES_PATCH,
+X-Spam-Status: No, score=-10.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
+	DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,FREEMAIL_FORGED_FROMDOMAIN,
+	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
 	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=ham
 	autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-mtk_dp_aux_wait_for_completion() returns for a read as soon as the RX
-FIFO write pointer is non-zero, i.e. when the first byte of the reply
-has arrived. The rest of the reply is still on the AUX line, so
-mtk_dp_aux_read_rx_fifo() sleeps 500-1000 us before reading each byte
-of an I2C-over-AUX reply and 100-200 us before each byte of a native
-reply. The FIFO is drained this way even for DEFER replies, which carry
-no data.
+This series fixes IRQ lifetime ordering in the MT8186, MT8188, MT8189,
+MT8195 and MT8196 AFE drivers.
 
-A 16-byte EDID read therefore takes about 16 ms, although the reply is
-complete within about 300 us of the request.
+Request each IRQ after regmap initialization so it is freed before
+the regmap. Where remove() shuts down the AFE, free the IRQ first.
+Also balance MT8186's IRQ wake setting.
 
-Wait for the AUX receive-complete (or 400 us timeout) interrupt status
-instead, which the write path already relies on, and drain the RX FIFO
-without delays. Poll every 20 us instead of every 100-500 us.
+Found by a static analysis tool under development.
+Not tested on hardware.
 
-Reading the 256-byte EDID through the DP AUX DDC adapter drops from 266
-to 6.5 ms on an MT8189 Chromebook, and from 547 to 23 ms on an MT8196
-Chromebook whose panel defers every 16-byte read once. A 16-byte DPCD
-read drops from about 4.7 to 0.5 ms.
+Changes in v2:
+- Rebased onto broonie/sound for-next (cde5523c75f1).
+- 1-3: removed redundant IRQ request error logs and clarified changelogs.
+- 4-5: added MT8195 and MT8188.
 
-Signed-off-by: Yidi Lin <yidilin@google.com>
----
- drivers/gpu/drm/mediatek/mtk_dp.c | 64 ++++++++++++-------------------
- 1 file changed, 25 insertions(+), 39 deletions(-)
+Link to v1: https://lore.kernel.org/r/20261011222234.2098904-1-mhun512@gmail.com
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_dp.c b/drivers/gpu/drm/mediatek/mtk_dp.c
-index f656b85b84212..b2f7f42cbe715 100644
---- a/drivers/gpu/drm/mediatek/mtk_dp.c
-+++ b/drivers/gpu/drm/mediatek/mtk_dp.c
-@@ -45,7 +45,8 @@
- #define MTK_DP_4P1T 4
- #define MTK_DP_HDE 2
- #define MTK_DP_PIX_PER_ADDR 2
--#define MTK_DP_AUX_WAIT_REPLY_COUNT 20
-+#define MTK_DP_AUX_POLL_US 20
-+#define MTK_DP_AUX_TIMEOUT_US 10000
- #define MTK_DP_TBC_BUF_READ_START_ADDR 0x8
- #define MTK_DP_TRAIN_VOLTAGE_LEVEL_RETRY 5
- #define MTK_DP_TRAIN_DOWNSCALE_RETRY 10
-@@ -825,20 +826,18 @@ static void mtk_dp_aux_fill_write_fifo(struct mtk_dp *mtk_dp, u8 *buf,
- }
- 
- static void mtk_dp_aux_read_rx_fifo(struct mtk_dp *mtk_dp, u8 *buf,
--				    size_t length, int read_delay)
-+				    size_t length)
- {
- 	int read_pos;
- 
- 	mtk_dp_update_bits(mtk_dp, MTK_DP_AUX_P0_3620,
- 			   0, AUX_RD_MODE_AUX_TX_P0_MASK);
- 
-+	/* The complete reply is in the RX FIFO, so read it without delays. */
- 	for (read_pos = 0; read_pos < length; read_pos++) {
- 		mtk_dp_update_bits(mtk_dp, MTK_DP_AUX_P0_3620,
- 				   AUX_RX_FIFO_READ_PULSE_TX_P0,
- 				   AUX_RX_FIFO_READ_PULSE_TX_P0);
--
--		/* Hardware needs time to update the data */
--		usleep_range(read_delay, read_delay * 2);
- 		buf[read_pos] = (u8)(mtk_dp_read(mtk_dp, MTK_DP_AUX_P0_3620) &
- 				     AUX_RX_FIFO_READ_DATA_AUX_TX_P0_MASK);
- 	}
-@@ -864,33 +863,28 @@ static void mtk_dp_aux_set_length(struct mtk_dp *mtk_dp, size_t length)
- 	}
- }
- 
--static int mtk_dp_aux_wait_for_completion(struct mtk_dp *mtk_dp, bool is_read)
-+static int mtk_dp_aux_wait_for_completion(struct mtk_dp *mtk_dp)
- {
--	int wait_reply = MTK_DP_AUX_WAIT_REPLY_COUNT;
--
--	while (--wait_reply) {
--		u32 aux_irq_status;
--
--		if (is_read) {
--			u32 fifo_status = mtk_dp_read(mtk_dp, MTK_DP_AUX_P0_3618);
--
--			if (fifo_status &
--			    (AUX_RX_FIFO_WRITE_POINTER_AUX_TX_P0_MASK |
--			     AUX_RX_FIFO_FULL_AUX_TX_P0_MASK)) {
--				return 0;
--			}
--		}
--
--		aux_irq_status = mtk_dp_read(mtk_dp, MTK_DP_AUX_P0_3640);
--		if (aux_irq_status & AUX_RX_AUX_RECV_COMPLETE_IRQ_AUX_TX_P0)
--			return 0;
-+	u32 aux_irq_status;
-+	int ret;
- 
--		if (aux_irq_status & AUX_400US_TIMEOUT_IRQ_AUX_TX_P0)
--			return -ETIMEDOUT;
-+	/*
-+	 * Wait until the whole reply has been received. The RX FIFO write
-+	 * pointer becomes non-zero as soon as the first byte of the reply
-+	 * arrives, while the rest of the reply is still on the AUX line, so
-+	 * it cannot be used to tell that the reply is complete.
-+	 */
-+	ret = regmap_read_poll_timeout(mtk_dp->regs, MTK_DP_AUX_P0_3640,
-+				       aux_irq_status,
-+				       aux_irq_status &
-+				       (AUX_RX_AUX_RECV_COMPLETE_IRQ_AUX_TX_P0 |
-+					AUX_400US_TIMEOUT_IRQ_AUX_TX_P0),
-+				       MTK_DP_AUX_POLL_US, MTK_DP_AUX_TIMEOUT_US);
-+	if (ret)
-+		return ret;
- 
--		/* Give the hardware a chance to reach completion before retrying */
--		usleep_range(100, 500);
--	}
-+	if (aux_irq_status & AUX_RX_AUX_RECV_COMPLETE_IRQ_AUX_TX_P0)
-+		return 0;
- 
- 	return -ETIMEDOUT;
- }
-@@ -928,7 +922,7 @@ static int mtk_dp_aux_do_transfer(struct mtk_dp *mtk_dp, bool is_read, u8 cmd,
- 	mtk_dp_aux_request_ready(mtk_dp);
- 
- 	/* Wait for feedback from sink device. */
--	ret = mtk_dp_aux_wait_for_completion(mtk_dp, is_read);
-+	ret = mtk_dp_aux_wait_for_completion(mtk_dp);
- 
- 	*reply_cmd = mtk_dp_read(mtk_dp, MTK_DP_AUX_P0_3624) &
- 		     AUX_RX_REPLY_COMMAND_AUX_TX_P0_MASK;
-@@ -952,15 +946,7 @@ static int mtk_dp_aux_do_transfer(struct mtk_dp *mtk_dp, bool is_read, u8 cmd,
- 				   AUX_TX_AUXTX_OV_EN_AUX_TX_P0_MASK |
- 				   AUX_RESERVED_RW_0_AUX_TX_P0_MASK);
- 	} else if (is_read) {
--		int read_delay;
--
--		if (cmd == (DP_AUX_I2C_READ | DP_AUX_I2C_MOT) ||
--		    cmd == DP_AUX_I2C_READ)
--			read_delay = 500;
--		else
--			read_delay = 100;
--
--		mtk_dp_aux_read_rx_fifo(mtk_dp, buf, length, read_delay);
-+		mtk_dp_aux_read_rx_fifo(mtk_dp, buf, length);
- 	}
- 
- 	return 0;
+Myeonghun Pak (5):
+  ASoC: mediatek: mt8186: Keep the AFE IRQ within its resource lifetime
+  ASoC: mediatek: mt8189: Keep the AFE IRQ within its resource lifetime
+  ASoC: mediatek: mt8196: Keep the AFE IRQ within its resource lifetime
+  ASoC: mediatek: mt8195: Keep the AFE IRQ within its resource lifetime
+  ASoC: mediatek: mt8188: Keep the AFE IRQ within its resource lifetime
+
+ sound/soc/mediatek/mt8186/mt8186-afe-common.h |  1 +
+ sound/soc/mediatek/mt8186/mt8186-afe-pcm.c    | 42 +++++++++++++------
+ sound/soc/mediatek/mt8188/mt8188-afe-pcm.c    | 10 ++---
+ sound/soc/mediatek/mt8189/mt8189-afe-common.h |  1 +
+ sound/soc/mediatek/mt8189/mt8189-afe-pcm.c    | 16 ++++---
+ sound/soc/mediatek/mt8195/mt8195-afe-common.h |  1 +
+ sound/soc/mediatek/mt8195/mt8195-afe-pcm.c    | 16 ++++---
+ sound/soc/mediatek/mt8196/mt8196-afe-common.h |  1 +
+ sound/soc/mediatek/mt8196/mt8196-afe-pcm.c    | 16 ++++---
+ 9 files changed, 70 insertions(+), 34 deletions(-)
+
+
+base-commit: cde5523c75f1320a55ac1d55a717ccbb566557f0
 -- 
-2.56.0.611.g1030f0b940-goog
+2.43.0
 
 
