@@ -2,11 +2,11 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 5BEEF606A323
-	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Nov 2026 13:52:29 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 88C05606A327
+	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Nov 2026 13:52:33 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=qsGIjbIw;
-	dkim=pass (2048-bit key) header.d=thregr.org header.i=@thregr.org header.a=rsa-sha256 header.s=v1 header.b=D4kRu29O
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=ZKzxvIfN;
+	dkim=pass (2048-bit key) header.d=thregr.org header.i=@thregr.org header.a=rsa-sha256 header.s=v1 header.b=t6MT0ktN
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
@@ -14,34 +14,34 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
 	List-Unsubscribe-Post:List-Owner;
-	bh=FQEToc/tllkwE/usKVnhOlAx/N0Rs4tX+3kATA9NrBg=; b=qsGIjbIwlc8Jlnv5o60O4hddX/
-	PDfpC7u0+ZY2Hte9jxqnOucI+T/wgxed3RQ981Z5A/PYmOLqH7FTBAn1Dha1k/Hd1QDZUdPol4JAJ
-	OLkrlsxpaku2FZIClY9aGWhTVMfHRXcxVLbcdj+NcJE85YVyc7kZELCxt1WtyDH1E5PpvOLF82hDP
-	YOo6luEtz1EefjxeAZ3z00G/UAyKQO04bZS5JYPrpEwFFm0LR8UMoGh6sWrcej7XBHUpyf63yM+Z4
-	wq/28dsInJ7My5rx00QR0kM1fprIy/vagb97JRdUBpjaCRvjiEHrKMqpGY5oiwjldyvDzLhS+8z4L
-	Fks+YrQQ==;
+	bh=FQEToc/tllkwE/usKVnhOlAx/N0Rs4tX+3kATA9NrBg=; b=ZKzxvIfNJtdIKlekxoDxTfR1df
+	2p1BQYBWGlxpz51TTszdyj6OSfNnwqwrE/wntqsrdrsfpkcEOn/+UE7aQsT6addAZ6R+iKXondSla
+	fXIxu/RRanmS/8h5pQpGSEGFff0FJejDXvXVajpDFCnMSawdfyJbThFM65AaQu/sT5dHbJ3nfUFAM
+	FHCvVKoShqUbcjpTXXF7/6oXkeER8PPUxEz2JCYH2PsJWFFYMRAiSPQj1TAWMsBLxyK9X1GVIKo0k
+	Kdp5ZUaxG2PD7rvs/Gv6S5QqSM2/0qyrSQ2B23ok4i6eVBShZBy34232UvrrKfiLdotYwtPrSLZsP
+	MO4lj3zg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xRVE5-0000000A9H6-04io;
-	Thu, 12 Nov 2026 13:52:29 +0000
+	id 1xRVE9-0000000A9Ik-0J0I;
+	Thu, 12 Nov 2026 13:52:33 +0000
 Received: from erc.corrupted.graphics ([2a0d:f302:114:5502::1])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xRVE3-0000000A9FF-0m40
+	id 1xRVE4-0000000A9GU-3E6U
 	for linux-mediatek@lists.infradead.org;
-	Thu, 12 Nov 2026 13:52:28 +0000
+	Thu, 12 Nov 2026 13:52:29 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=thregr.org;
 	s=v1; h=Content-Type:MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To
 	:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	In-Reply-To:References; bh=FQEToc/tllkwE/usKVnhOlAx/N0Rs4tX+3kATA9NrBg=; b=D4
-	kRu29O30nTECC5LmTvTWsDx4JUKUycz8dJgYWoujzhtzkwE+ZjdA72hEsh5NOpT4WGKVXbEEvzIOA
-	rU89YQcFSWufak38uTi0NxTCb778gooTUJZxtLytRtXbCYvy+SQJXIaycxv8vQRvzV3HciEqkpPtf
-	euPuo5iH7Mb+u1jX7loAa1gYaO91qBeClx5o7uvJ+5npYZvOQuDtyOqM0JANVRNjA2+WlVG6aCFYt
-	WMhvTQNIrQHgvxVmsiIrPXCkPDKhn6CtV+G9swZLWwsKTwDt+cNRglqUizrGQmDjp7z4oh8xKr+Mb
-	6Dt/SObMyG8TYLVmdO0kFyzLWSv8EsJg==;
+	In-Reply-To:References; bh=FQEToc/tllkwE/usKVnhOlAx/N0Rs4tX+3kATA9NrBg=; b=t6
+	MT0ktNgsaefXAJFNNX6ger94HQZcOCpKz+2oDCmjK3qvopSRlTJJtJkfTVoI6q7oLWMso+jZJEMRm
+	EjfUUyKzgaErZSoqvXMHD1qScHYjKy8B+T+OqCMIS1MkOyi/K5dMmy57D+VHiOJE+YmWOFKQ4HLhA
+	/ED7BMUUgAXk7jSuGk/ZkGx2dT8Fd3KzXTByOD9nDNboaJw2exmU24sSU+jbEPa/a8XUsY49mb2uy
+	yXCLG8l7W/am9ikyQ6v93DlkeU+A8mcWfbMxIAY1J/OomNSML7ps6nPXND9z2TWIoPk/wGpFenq3N
+	chZMijAxPqsHaxQHZa5ywZiKGWRAe4TA==;
 Received: from 78-213-86-123.subs.proxad.net ([78.213.86.123] helo=localhost)
 	by erc.corrupted.graphics with esmtpsa (TLS1.3:ECDHE_SECP256R1__RSA_PSS_RSAE_SHA256__AES_256_GCM:256:SECP256R1)
-	id 1xRVDx-00000000ASf-4B8d (envelope-from <wavexx@thregr.org>);
-	Thu, 12 Nov 2026 14:52:22 +0100
+	id 1xRVE7-00000000ASv-2SOc (envelope-from <wavexx@thregr.org>);
+	Thu, 12 Nov 2026 14:52:31 +0100
 From: Yuri D'Elia <wavexx@thregr.org>
 To: linux-wireless@vger.kernel.org
 Cc: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo@kernel.org>,
@@ -52,14 +52,14 @@ Cc: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo@kernel.org>,
     linux-mediatek@lists.infradead.org
 Subject: mt7925e: TX throughput collapses without RX traffic
 User-Agent: mu4e 1.14.5-pre1; emacs 32.0.50
-Date: Thu, 12 Nov 2026 14:52:16 +0100
-Message-ID: <874idm2m3z.fsf@wavexx.thregr.org>
+Date: Thu, 12 Nov 2026 14:52:26 +0100
+Message-ID: <871p8q2m3p.fsf@wavexx.thregr.org>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261112_055227_256218_F5F0C4C0 
-X-CRM114-Status: UNSURE (   8.42  )
+X-CRM114-CacheID: sfid-20261112_055228_808877_F59DF48E 
+X-CRM114-Status: UNSURE (   8.51  )
 X-CRM114-Notice: Please train this message.
 X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-mediatek@lists.infradead.org
