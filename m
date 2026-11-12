@@ -2,122 +2,78 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id BC429607079C
-	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Nov 2026 08:42:08 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 77FAF606A8B6
+	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Nov 2026 08:43:16 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=KY/XdUMA;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=infradead.org header.i=@infradead.org header.a=rsa-sha256 header.s=desiato.20200630 header.b=WiGxayX8;
-	dkim=pass (1024-bit key, unprotected) header.d=chromium.org header.i=@chromium.org header.a=rsa-sha256 header.s=google header.b=NuEJJH1i
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=qjnuHUTX;
+	dkim=pass (1024-bit key) header.d=cmss.chinamobile.com header.i=@cmss.chinamobile.com header.a=rsa-sha256 header.s=default header.b=dvKOlbjk
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Unsubscribe-Post:
-	List-Owner; bh=e1LIqguyGHyugjp6T4wuUZqSXt5F4ivfryPqW2wGYPk=; b=KY/XdUMASgTZny
-	gNDWVE748ptIyTj+ePOQXdplXhlRLFd2xEJ3CSRpJX7NtRnMHvnF/esUKCEkfF0IFE8GdaGzLFdvv
-	kXDHZlmcDZexLjYMeGmxU2f4pLtsb1arMZ1sPs9blKtXPu7only79x5XNC9I6uw3liJ5BZ0E6S00z
-	9qn1A3WN9OJV1/6g4JYbd/UvJlgIMP2x3RknOCziz8BrRG21ZvtVrVQEFvB7P3mbaPpi3VtDKB0BB
-	YLcsPck9kDuvBWavgDyJevXCY/z6gg9llbF5h2hEotJQETnm4l+02egzKu0MI27TErPQEKgPE/MSb
-	TNMDFcgGrzE+Usl7CjzQ==;
+	List-Owner; bh=7mQ9PgE1JmToTrJOndvjvlG2pZvNaNVcvI5nSe1P3IU=; b=qjnuHUTX56Nbsq
+	1yeW4C7nYQJgc3nQVbGVWix4BgJxwffJHeKa8RvxNAFiSVxU8QIPE7n7zl8kftJaGVICCjkreuJ4K
+	tHVchRQ0yOsa73Jykbf27hADdw8uRbftB/uNm+iuZZy6GmH89duIk7zn9/bKefwcZEDOF14sCpY/D
+	eZ4e2R18oBThqlTnCRwb9H4pa2CvhXgbY7iLaG6IGg2d64O52Zc3jHcl6M0dK6ITD62nNBkNt8+fT
+	HQK/sqlCdGTuHod3GsBrGRzzL2meSTcom7fcsS51YI/JVgHOM8x9oyFuQ2Ga02NI/OBszdaL2Amyo
+	eAeND8OUC9J5dFrOHbcA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xRQNR-00000009CTH-3Wj4;
-	Thu, 12 Nov 2026 08:41:50 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
-	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xRQIO-00000009A2b-0Nrq
-	for linux-mediatek@bombadil.infradead.org;
-	Thu, 12 Nov 2026 08:36:43 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Content-Transfer-Encoding:Content-Type
-	:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:MIME-Version:
-	Sender:Reply-To:Content-ID:Content-Description;
-	bh=e1LIqguyGHyugjp6T4wuUZqSXt5F4ivfryPqW2wGYPk=; b=WiGxayX8OU2KROPX0LHcIZ8rf2
-	A49PAw+f/rTSpn6D8iqch2nt6v0sP7Sh7h0KWiUvqThNWg/QcKfduno36Y/hd5LA5nS1DB1mqgwD5
-	5qhbcOk31BipWBgpwCrryS8YjFw9WxOwpA4ShzoGIVEEZKWOm9vdHc2DrhmMDrSMVdu0LAQ2R7pOJ
-	uMCxPe4G0FBCy/cIpkSlV1Y+86xRa5mQ6IUF8V88nm3gZYVYG8u4ia6Q+oScLYZlDTRNoSQmrxVrg
-	90A8s8wjCi2Y2j4H8xi1rgD42xUXBqoTSDHlnkt3+sUcZmdcxZja+q35KoaSDGEHhqBK2ssTm8Oh2
-	sw2/7Njw==;
-Received: from mail-pl1-x62c.google.com ([2607:f8b0:4864:20::62c])
-	by desiato.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xRQIK-0000000A3wE-13tr
-	for linux-mediatek@lists.infradead.org;
-	Thu, 12 Nov 2026 08:36:35 +0000
-Received: by mail-pl1-x62c.google.com with SMTP id d9443c01a7336-2ed0e2015aaso17157185ad.3
-        for <linux-mediatek@lists.infradead.org>; Thu, 12 Nov 2026 00:36:30 -0800 (PST)
+	id 1xRQOp-00000009D05-2iI7;
+	Thu, 12 Nov 2026 08:43:16 +0000
+Received: from cmccmta2.chinamobile.com ([111.22.67.135])
+	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
+	id 1xRQLp-00000009Bd7-1K6R;
+	Thu, 12 Nov 2026 08:40:35 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1794472589; x=1795077389; darn=lists.infradead.org;
-        h=content-transfer-encoding:content-type:cc:to:subject:message-id
-         :date:from:in-reply-to:references:mime-version:from:to:cc:subject
-         :date:message-id:reply-to:content-type;
-        bh=e1LIqguyGHyugjp6T4wuUZqSXt5F4ivfryPqW2wGYPk=;
-        b=NuEJJH1iY6kJWckCUZl2YxUKoxcRWnojwlEoNH831dCPnN4Ulxi7l1h9Vjoqd93F6v
-         4rxo7JYHhUNXhdoQhUrhxkDo7blhvEM3o/ugSSBRdlcdPzeAFDj3Qc9jWE/uQrqXBut3
-         nv1ZOKE5qExyTSSYnBMONd0xOPPB4ia1y+EtY=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1794472589; x=1795077389;
-        h=content-transfer-encoding:content-type:cc:to:subject:message-id
-         :date:from:in-reply-to:references:mime-version:x-gm-gg
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
-         :content-type;
-        bh=e1LIqguyGHyugjp6T4wuUZqSXt5F4ivfryPqW2wGYPk=;
-        b=oEA22qPkYLWaz6z2U2s7/ecDG7S9qcbkFHY+FkPJygqbl4L2BQZTLZA7lxnjhyixfI
-         6JPpBMfB66JzBkMK3KpMgPVSX+s/6vCVOC4uQGjwBRYV5lzW1jFN5jdcIjV4qaYCkUVI
-         GCYOf6H1ZVUoCfTTBXZV/1AA9L+LfHXqEA2RZXv53BWwlDWw3Te3TqKhnYtI7wYgj+UN
-         j8f7FHdmO/a9qObR5+OMyYTlSpO7I06yXICNSFKSemkMsiTnAd8FvzR1eiKSAQncTIME
-         aMpp2n1gAMA56v6LgdzA/Xc9OMosOxrDImscjcE2M9POM4t47rTE5syDDv8xfxZamc9Y
-         BJdQ==
-X-Forwarded-Encrypted: i=1; AL+hErESWNjzxcr6WzDVuetX1XRHGxKrW1aPC/k0z+Ae5/7iKiMzkOKet4k8eR/Hg6xp8dFOzZ8kGwZD3ggCGbAykg==@lists.infradead.org
-X-Gm-Message-State: APuU4Z8PuPJT6iIcVYcafqbLJfgWJEpf4Qr9JXc1/hmpH6ydOMWGXJ7S
-	BBgnba0adwkJ5s2HDOWFmfxGoQELvR9wCkIxMPiqrDifttssn4fk+EztP4b8zHS//ciiMf+7qG8
-	cyR4zLA==
-X-Gm-Gg: AYBFou3zuZdHJHHlVFcVz/R8iEt0z+PMd2S3QH0jQpkJ4PN1d2kjJYC5VyaaldCvTgh
-	lALq7Gey7LTWpKzcwm+93USZR5AR/cC6hSt3tHYk0emA0Eo7VrVIPKEfMkFvbv7zAsFLHrpDVwo
-	gNvT1XbRnH31gPkgSIcMQH/7K76z019UsPkWVfHcUJ91mbvcJgQ8pTazT3YAMewNO43Wom2Gz2f
-	M5D8whwL7XgW9h5STsdAeeFWt/wD4UvYpWHbrXvutg46MkNS8nF2QUzWEUcI1PwQ259V0KsSrE+
-	cf2hlXXO5gqyUNfR+3TEwJbCTU2bmyEzSEEMda6IR3ezd06xyjVv6Hiq4L68VtTgwKzSt5e55/K
-	IHHEYKxjpI+blxqh9nYfhzyGBF+nhiCfhzRR34TJqYyG3AEziPZPZWP/wN2FunN2uz5yz50jp8x
-	e+7L0inqy5b9X7ortAV7KIdMY7Kn6BTmtfEkN9DqeepceOd1T5eH9U8YCvkAlDfGPDttPs+I0Tj
-	uoC60mjUyjbPWERFjO2ZWdwomtqyoHlfql+bNCbx6JNn2Fcljo88VCBkc3P3MKgtx9G+hSwU96I
-	1I1ww3AN75Xbb9hQ61CzGXZ8hgW/O7fav+TKdRfG74UAS2beUOiKRFw9cJ/16q+HjU4V
-X-Received: by 2002:a17:903:22ce:b0:2dd:ad73:5b68 with SMTP id d9443c01a7336-2edd7ab69e8mr46863895ad.24.1794472589411;
-        Thu, 12 Nov 2026 00:36:29 -0800 (PST)
-Received: from mail-dy1-f174.google.com (mail-dy1-f174.google.com. [74.125.82.174])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-2edb6a4013csm31176685ad.1.2026.11.12.00.36.28
-        for <linux-mediatek@lists.infradead.org>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 12 Nov 2026 00:36:28 -0800 (PST)
-Received: by mail-dy1-f174.google.com with SMTP id 5a478bee46e88-3700ed8dbe3so7341184eec.0
-        for <linux-mediatek@lists.infradead.org>; Thu, 12 Nov 2026 00:36:28 -0800 (PST)
-X-Forwarded-Encrypted: i=1; AL+hErFkn2HnMHuOOvO2JzvaYInS0NITEw27izF27a5nm9osnqF0LWyeOFK8VBYTVML155r+4ZpjB3CV62Cr9i/QAg==@lists.infradead.org
-X-Received: by 2002:a05:7300:fc15:b0:36e:a265:8ee with SMTP id
- 5a478bee46e88-37686171585mr5111950eec.18.1794472587019; Thu, 12 Nov 2026
- 00:36:27 -0800 (PST)
+	d=cmss.chinamobile.com; s=default; l=0;
+	h=from:subject:message-id:to:cc:mime-version;
+	bh=47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=;
+	b=dvKOlbjkxzAzGH2CcvRLA9QMKfkzEan6NRcKwcELTpvl7ebAhZ1Vaepsg8AZlTcprcICFIMKlKgw2
+	 nWoB1cvrQT3r3NQBAnVqh2MJOPYMs7vof158+T2bpNODcDwBwKDXGTKlsOkHhFtRgd67v2IhHddj92
+	 /9+2NK8qZ4v79Gy8=
+X-RM-TagInfo: emlType=0                                       
+X-RM-SPAM-FLAG: 00000000
+Received: from spf.mail.chinamobile.com (unknown[10.188.0.87])
+	by rmmx-syy-dmz-app07-12007 (RichMail) with SMTP id 2ee76af57b5db16-e158b;
+	Thu, 12 Nov 2026 16:39:58 +0800 (CST)
+X-RM-TRANSID: 2ee76af57b5db16-e158b
+X-RM-TagInfo: emlType=0                                       
+X-RM-SPAM-FLAG: 00000000
+Received: from [198.18.0.6] (unknown[223.108.79.101])
+	by rmsmtp-syy-appsvr05-12005 (RichMail) with SMTP id 2ee56af57b5c081-f984e;
+	Thu, 12 Nov 2026 16:39:58 +0800 (CST)
+X-RM-TRANSID: 2ee56af57b5c081-f984e
+From: Xia Yan <yanxia@cmss.chinamobile.com>
+To: netdev-bot+sinfo@kernel.org
+Cc: netdev@vger.kernel.org, Felix Fietkau <nbd@nbd.name>,
+ Lorenzo Bianconi <lorenzo@kernel.org>, Andrew Lunn <andrew+netdev@lunn.ch>,
+ David S. Miller <davem@davemloft.net>, Eric Dumazet <edumazet@kernel.org>,
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Yanqing Wang <ot_yanqing.wang@mediatek.com>,
+ Bartosz Golaszewski <brgl@kernel.org>, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ yana06070@163.com
+Subject: Re: [PATCH net-next v2] net: ethernet: mtk-star-emac: fix device_node
+ leak in mtk_star_probe()
+Date: Thu, 12 Nov 2026 16:39:57 +0800
+Message-ID: <1794472797000.690257.2793446627884027520@cmss.chinamobile.com>
+In-Reply-To: <179445682040.2168702.1032780874409478036@kernel.org>
+References: <1794455490000.585551.2561101329908158128@cmss.chinamobile.com>
+ <179445682040.2168702.1032780874409478036@kernel.org>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-References: <20261112061736.4014993-1-yidilin@google.com>
-In-Reply-To: <20261112061736.4014993-1-yidilin@google.com>
-From: Fei Shao <fshao@chromium.org>
-Date: Thu, 12 Nov 2026 16:35:45 +0800
-X-Gmail-Original-Message-ID: <CAC=S1ni1r2yWQOntVCJxjU+DkHAVb=gBEE71VN701BxeMCxN+w@mail.gmail.com>
-X-Gm-Features: AclHuK-lH1eh8S-718xAEgJiftUumas93CKfUyPQy8uMkB1D_yMS7HqTV46k4yw
-Message-ID: <CAC=S1ni1r2yWQOntVCJxjU+DkHAVb=gBEE71VN701BxeMCxN+w@mail.gmail.com>
-Subject: Re: [PATCH] drm/mediatek: dp: Wait for the complete AUX reply before
- reading it
-To: Yidi Lin <yidilin@google.com>
-Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>, 
-	David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, dri-devel@lists.freedesktop.org, 
-	linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=us-ascii
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261112_083632_200597_FAC4671A 
-X-CRM114-Status: GOOD (  13.54  )
-X-Spam-Score: -0.2 (/)
+X-CRM114-CacheID: sfid-20261112_004011_115125_5216C276 
+X-CRM114-Status: UNSURE (   7.28  )
+X-CRM114-Notice: Please train this message.
+X-Spam-Score: -2.4 (--)
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -128,43 +84,26 @@ List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-15.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,
-	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=ham
+X-Spam-Status: No, score=-3.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=no
 	autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On Thu, Nov 12, 2026 at 2:17=E2=80=AFPM Yidi Lin <yidilin@google.com> wrote=
-:
->
-> mtk_dp_aux_wait_for_completion() returns for a read as soon as the RX
-> FIFO write pointer is non-zero, i.e. when the first byte of the reply
-> has arrived. The rest of the reply is still on the AUX line, so
-> mtk_dp_aux_read_rx_fifo() sleeps 500-1000 us before reading each byte
-> of an I2C-over-AUX reply and 100-200 us before each byte of a native
-> reply. The FIFO is drained this way even for DEFER replies, which carry
-> no data.
->
-> A 16-byte EDID read therefore takes about 16 ms, although the reply is
-> complete within about 300 us of the request.
->
-> Wait for the AUX receive-complete (or 400 us timeout) interrupt status
-> instead, which the write path already relies on, and drain the RX FIFO
-> without delays. Poll every 20 us instead of every 100-500 us.
->
-> Reading the 256-byte EDID through the DP AUX DDC adapter drops from 266
-> to 6.5 ms on an MT8189 Chromebook, and from 547 to 23 ms on an MT8196
-> Chromebook whose panel defers every 16-byte read once. A 16-byte DPCD
-> read drops from about 4.7 to 0.5 ms.
->
-> Signed-off-by: Yidi Lin <yidilin@google.com>
+On 11/12/26 12:13, netdev-bot+sinfo wrote:
+>  - What hardware the change was tested on. For driver fixes please
+>    mention the device (and if relevant firmware version) used for
+>    testing, or say that the change was not tested on real hardware.
 
-Reviewed-by: Fei Shao <fshao@chromium.org>
+Hi,
 
-> ---
->  drivers/gpu/drm/mediatek/mtk_dp.c | 64 ++++++++++++-------------------
->  1 file changed, 25 insertions(+), 39 deletions(-)
->
+I don't have any MediaTek hardware with this Ethernet MAC, so the
+change is compile-tested only, with CONFIG_NET_MEDIATEK_STAR_EMAC
+enabled on x86_64.
+
+Thanks,
+Xia Yan
+
+
 
