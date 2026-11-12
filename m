@@ -2,64 +2,70 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 88C05606A327
-	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Nov 2026 13:52:33 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id D7103606C709
+	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Nov 2026 13:59:23 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=ZKzxvIfN;
-	dkim=pass (2048-bit key) header.d=thregr.org header.i=@thregr.org header.a=rsa-sha256 header.s=v1 header.b=t6MT0ktN
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=DkaMtty4;
+	dkim=pass (1024-bit key) header.d=mail.sdu.edu.cn header.i=@mail.sdu.edu.cn header.a=rsa-sha256 header.s=default header.b=HeJJztsL
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Transfer-Encoding:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
 	List-Unsubscribe-Post:List-Owner;
-	bh=FQEToc/tllkwE/usKVnhOlAx/N0Rs4tX+3kATA9NrBg=; b=ZKzxvIfNJtdIKlekxoDxTfR1df
-	2p1BQYBWGlxpz51TTszdyj6OSfNnwqwrE/wntqsrdrsfpkcEOn/+UE7aQsT6addAZ6R+iKXondSla
-	fXIxu/RRanmS/8h5pQpGSEGFff0FJejDXvXVajpDFCnMSawdfyJbThFM65AaQu/sT5dHbJ3nfUFAM
-	FHCvVKoShqUbcjpTXXF7/6oXkeER8PPUxEz2JCYH2PsJWFFYMRAiSPQj1TAWMsBLxyK9X1GVIKo0k
-	Kdp5ZUaxG2PD7rvs/Gv6S5QqSM2/0qyrSQ2B23ok4i6eVBShZBy34232UvrrKfiLdotYwtPrSLZsP
-	MO4lj3zg==;
+	bh=gh3jxO2iwSuBlABl9q4UwPhnIEJuTZmYdNuAfXiYLcQ=; b=DkaMtty41Gdjy7djIWJhHdZTT3
+	PxDWybA3J6LupVFSLouDU/h4bPmgUWG5uPbqeaRkxlKeY38asGSZKj/kd4tnTdM5TIDFs5YGZtUx5
+	TP+XbYzkp1/VIuxwmPEmHZTvrHX2wVnU0RWS8G2rBzZ3okGo4bXPG4mjtToCA3kY5GSbw07ka0ISf
+	4Q1isyFeZWLERqSn1Lo23nSH7whSfOXHt1JHsA5JWfnzDKe6+6EUMvGM3vw1TomR98Xj1PiQTbUJk
+	r8KErNOI/BrxVjVRQckW2rMCTlyalcXEBejThqN6daHQrvTjulw5hqLViWhCSlUcvemFIxOki5rLz
+	bisHV3mA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xRVE9-0000000A9Ik-0J0I;
-	Thu, 12 Nov 2026 13:52:33 +0000
-Received: from erc.corrupted.graphics ([2a0d:f302:114:5502::1])
+	id 1xRVKl-0000000AA4x-2SA5;
+	Thu, 12 Nov 2026 13:59:23 +0000
+Received: from mail-m49197.qiye.163.com ([45.254.49.197])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xRVE4-0000000A9GU-3E6U
-	for linux-mediatek@lists.infradead.org;
-	Thu, 12 Nov 2026 13:52:29 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=thregr.org;
-	s=v1; h=Content-Type:MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To
-	:Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	In-Reply-To:References; bh=FQEToc/tllkwE/usKVnhOlAx/N0Rs4tX+3kATA9NrBg=; b=t6
-	MT0ktNgsaefXAJFNNX6ger94HQZcOCpKz+2oDCmjK3qvopSRlTJJtJkfTVoI6q7oLWMso+jZJEMRm
-	EjfUUyKzgaErZSoqvXMHD1qScHYjKy8B+T+OqCMIS1MkOyi/K5dMmy57D+VHiOJE+YmWOFKQ4HLhA
-	/ED7BMUUgAXk7jSuGk/ZkGx2dT8Fd3KzXTByOD9nDNboaJw2exmU24sSU+jbEPa/a8XUsY49mb2uy
-	yXCLG8l7W/am9ikyQ6v93DlkeU+A8mcWfbMxIAY1J/OomNSML7ps6nPXND9z2TWIoPk/wGpFenq3N
-	chZMijAxPqsHaxQHZa5ywZiKGWRAe4TA==;
-Received: from 78-213-86-123.subs.proxad.net ([78.213.86.123] helo=localhost)
-	by erc.corrupted.graphics with esmtpsa (TLS1.3:ECDHE_SECP256R1__RSA_PSS_RSAE_SHA256__AES_256_GCM:256:SECP256R1)
-	id 1xRVE7-00000000ASv-2SOc (envelope-from <wavexx@thregr.org>);
-	Thu, 12 Nov 2026 14:52:31 +0100
-From: Yuri D'Elia <wavexx@thregr.org>
-To: linux-wireless@vger.kernel.org
-Cc: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo@kernel.org>,
-    Ryder Lee <ryder.lee@mediatek.com>,
-    Shayne Chen <shayne.chen@mediatek.com>,
-    Sean Wang <sean.wang@mediatek.com>, JB Tsai <jb.tsai@mediatek.com>,
-    Charlie-cy Wu <Charlie-cy.Wu@mediatek.com>,
-    linux-mediatek@lists.infradead.org
-Subject: mt7925e: TX throughput collapses without RX traffic
-User-Agent: mu4e 1.14.5-pre1; emacs 32.0.50
-Date: Thu, 12 Nov 2026 14:52:26 +0100
-Message-ID: <871p8q2m3p.fsf@wavexx.thregr.org>
+	id 1xRVKg-0000000AA3A-34jt;
+	Thu, 12 Nov 2026 13:59:21 +0000
+Received: from lgs.. (unknown [101.76.249.61])
+	by smtp.qiye.163.com (Hmail) with ESMTP id 54773892a;
+	Thu, 12 Nov 2026 21:59:08 +0800 (GMT+08:00)
+From: Guangshuo Li <liguangshuo@mail.sdu.edu.cn>
+To: Felix Fietkau <nbd@nbd.name>,
+	Lorenzo Bianconi <lorenzo@kernel.org>,
+	Andrew Lunn <andrew+netdev@lunn.ch>,
+	"David S. Miller" <davem@davemloft.net>,
+	Eric Dumazet <edumazet@kernel.org>,
+	Jakub Kicinski <kuba@kernel.org>,
+	Paolo Abeni <pabeni@redhat.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: netdev@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: [PATCH net] net: ethernet: mtk_eth_soc: Fix potential PPE hash table leak
+Date: Thu, 12 Nov 2026 21:59:07 +0800
+Message-ID: <20261112-88a3a7ff32-net-mtk@mail.sdu.edu.cn>
+X-Mailer: git-send-email 2.43.0
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-HM-Tid: 0aa1d00e1e2f03a1kunm1c09b32f29fb
+X-HM-MType: 10
+X-HM-Spam-Status: e1kfGhgUHx5ZQUpXWQgPGg8OCBgUHx5ZQUlOS1dZFg8aDwILHllBWSg2Ly
+	tZV1koWUFITzdXWRgWCB1ZQUpXWS1ZQUlXWQ8JGhUIEh9ZQVkZTx8fVkNCSk0aHUpLTx9LSlYeHw
+	5VEwETFhoSFyQUDg9ZV1kYEgtZQVlKS0pVTE1VSU9CVU1KWVdZFhoPEhUdFFlBWU9LSFVKS0lCQ0
+	NMVUpLS1VLWQY+
+DKIM-Signature: a=rsa-sha256;
+	b=HeJJztsLnkngVdpJcwMvtiN91TgW368eWU+GIA2e2J/q6MHBklFcjL13c5rs1h2iiAO9NQOOIWX73WvGm24bKOVlndqsNNBnH9ojijKqZInjvXxVvFkpGj/2/cUjGFH4nJqDP9YAVYjmgK9VoBj7fDoTbVa7uNuZEIO0TI6IAFw=; c=relaxed/relaxed; s=default; d=mail.sdu.edu.cn; v=1;
+	bh=gh3jxO2iwSuBlABl9q4UwPhnIEJuTZmYdNuAfXiYLcQ=;
+	h=date:mime-version:subject:message-id:from;
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261112_055228_808877_F59DF48E 
-X-CRM114-Status: UNSURE (   8.51  )
+X-CRM114-CacheID: sfid-20261112_055919_671393_D595D641 
+X-CRM114-Status: UNSURE (   8.75  )
 X-CRM114-Notice: Please train this message.
 X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-mediatek@lists.infradead.org
@@ -72,66 +78,44 @@ List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-5.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-18.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,
-	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS autolearn=no autolearn_force=no version=4.0.1
+	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=ham
+	autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Hi,
+The remove path does not destroy the PPE L2 flow hash tables. Their
+bucket tables are not device-managed and remain allocated when the PPE
+objects are released.
 
-I'm using an ASUS ProArt PX13 with an MT7925 that performs randomly.
-Sometimes it has decent throughput, sometimes drops to a crawl.
+Call mtk_ppe_deinit() after unregistering the netdevs and cancelling the
+driver work, as the probe error path already does.
 
-TX throughput collapses whenever the host is not also receiving traffic.
-RX is fine.
+This issue was found by our static analysis tool under development.
 
-I'm on 2.4 GHz 802.11n/HT 20 MHz, MCS7 both ways.
-The peer I'm testing against is another client on the same AP.
+Fixes: 33fc42de3327 ("net: ethernet: mtk_eth_soc: support creating mac address based offload entries")
+Signed-off-by: Guangshuo Li <liguangshuo@mail.sdu.edu.cn>
+---
+ drivers/net/ethernet/mediatek/mtk_eth_soc.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-I did a UDP test with 1200 byte packets, sending at 5 to 40 Mbit/s:
+diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+index ad0fdc4133fb..08973b6f0711 100644
+--- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
++++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+@@ -5426,6 +5426,7 @@ static void mtk_remove(struct platform_device *pdev)
+ 	netif_napi_del(&eth->rx_napi);
+ 	mtk_cleanup(eth);
+ 	free_netdev(eth->dummy_dev);
++	mtk_ppe_deinit(eth);
+ 	mtk_mdio_cleanup(eth);
+ }
+ 
 
-  MT7925 -> peer:
-     0.6-1.0 Mbit/s received at any sending rate, 1-2 s queueing
-  MT7925 -> peer, while peer sends ~200 pkt/s to MT7925:
-     5.0-5.8 Mbit/s received, ~0.13 s queueing
-  peer -> MT7925:
-     all received up to ~20 Mbit/s, no loss
+base-commit: 6628e7d4c6b25c8d18f1345e3a20d21829aae7e4
+-- 
+2.43.0
 
-Same result on:
-- kernels 6.18.62, 7.3.3, 7.4-rc1
-- MT firmware 20260605184805, 20260813113118, 20261016233029
-
-The following had no effect:
-- ASPM L1/L1.1/L1.2 off, runtime-pm and deep-sleep off, power_save off
-- AQL off
-- TX A-MPDU sessions kept stopped
-- IOMMU group switched to identity
-- Bluetooth rfkill-blocked
-
-What I see in the driver:
-- Without RX traffic, frames go out in bursts of ~48 (the UDP socket
-  buffer), then nothing until the next TX-free report, up to ~1 s.
-- I sampled WFDMA registers through regidx/regval during a stall
-  (~7 samples/s, ~20 s): RX ring 2 DMA index always matches the
-  driver tail within one sample, the RX data interrupt was always
-  enabled, and HOST_INT_STA has nothing pending. Ring 2 advances by
-  only ~13 entries while ~1180 frames were sent.
-- Wi-Fi IRQs: ~2.6/s idle, ~82/s during the stall.
-
-So the driver processes ring 2 quickly. The firmware seems to write
-TXRX_NOTIFY only about once per second when there is no RX traffic,
-and sooner when RX traffic arrives, which would explain the seemingly
-"random" performance.
-
-There are several reports of poor MT7925 throughput on linux-wireless,
-the kernel bugzilla and the openwrt/mt76 tracker, but I didn't find
-any that points to this.
-
-Is there a firmware setting for the TX-free report interval or
-threshold that mt7925 should send at init? I can test patches and
-provide more data.
-
-Thanks
 
