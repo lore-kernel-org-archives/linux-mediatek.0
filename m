@@ -2,74 +2,70 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 3B927606A33A
-	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Nov 2026 03:51:46 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 3DD32606A881
+	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Nov 2026 04:13:45 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=JAA11o2d;
-	dkim=pass (1024-bit key) header.d=cmss.chinamobile.com header.i=@cmss.chinamobile.com header.a=rsa-sha256 header.s=default header.b=vlk87VrX
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=fJwC1Lrb;
+	dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=LBSmcK8U
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Message-ID:Date
+	:Subject:Cc:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=SCVn4ixoUhM5kBe1PutJBybtN9lGQ3HUNA/BXvLhSJw=; b=JAA11o2d4p0aPMsXHOaWBbnPCt
-	x19+WGaIA2zyDnQRTYQYb4+oXUM99fhbRXF1H/MzM05JtcuDiX+u0HdzD6pkXQny290++CKkWQTum
-	JyhXeLkJ2vI4Gs5c7PNGO7j7fW3zfPDTNVdiXz81YbBsEqRbkKO7tpO+gYdmvDyh7j+H/Noh7zdCm
-	rYaE19+p0d/6DCPatCC3iIDdWBQiaeAw9tSqLDPkvlE2bmDoPnA2plTu58PIoY5oagM+IPFuSErZj
-	jQ0KJiV9yWoQXRduozklhN3DhzwRVQWB21NWHeDqAEFgwv8L7mBeptiseeh27bTtPOIzOONLk7uy6
-	wJjoJyrA==;
+	bh=80POjU5WP6ctS0DqN7hA/63JAQ8Agh1hTny2C1kJcvk=; b=fJwC1Lrbg9/Qe8E017LaTtsx+H
+	C0Eoj1f811r0eq3Zga9/dSeFXzSb6DHxu4SzHTMSKyxWDAdVO4YCaJf0+izKrU3ntDSp4sYbyfKhw
+	DDMIi/GSq+PNaE6Ujbt35y8uWgljRVspsWbxiOkxELrkYl8Wi0Oi/9WhwJNwXmHyfOL1ViGveLwmx
+	Pzs5NYQLFjr/Qc2KKr2qSZEcaA4VeSzSb2+xSevHp+FU+9APTeWOO1HeAltvY4ruCtVa9/tlnchoR
+	jZcyEaGYRUDcsBzkKKURRMSLKzeFyTjUIgx83n26GwcVMmKGoYjxkb4egwE4sWLychAKcVnWvDwpJ
+	OyT05FmQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xRLqi-00000008ebU-3tQ7;
-	Thu, 12 Nov 2026 03:51:44 +0000
-Received: from cmccmta2.chinamobile.com ([111.22.67.135])
-	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xRLqd-00000008ea2-1oby;
-	Thu, 12 Nov 2026 03:51:43 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-	d=cmss.chinamobile.com; s=default; l=0;
-	h=from:subject:message-id:to:cc:mime-version;
-	bh=47DEQpj8HBSa+/TImW+5JCeuQeRkm5NMpJWZG3hSuFU=;
-	b=vlk87VrXfClLyKz7/NC3Akq1maOI8c5Zh93vseazjnYYm/jZNUyraeRP0dcaEX3N+h/gMC69JmDqm
-	 7ZeWRGhv13kNZ1qRRvIjNxKFnoGC2wbLI7c7b+uI/F4bdCA5VceRPnhr1g6pqGu90jlSAqK/19EMJS
-	 WhtkFF5/Cl+GeyMk=
-X-RM-TagInfo: emlType=0                                       
-X-RM-SPAM-FLAG: 00000000
-Received: from spf.mail.chinamobile.com (unknown[10.188.0.87])
-	by rmmx-syy-dmz-app07-12007 (RichMail) with SMTP id 2ee76af537c3b47-de5a5;
-	Thu, 12 Nov 2026 11:51:31 +0800 (CST)
-X-RM-TRANSID: 2ee76af537c3b47-de5a5
-X-RM-TagInfo: emlType=0                                       
-X-RM-SPAM-FLAG: 00000000
-Received: from [198.18.0.64] (unknown[223.108.79.101])
-	by rmsmtp-syy-appsvr03-12003 (RichMail) with SMTP id 2ee36af537c24aa-f086d;
-	Thu, 12 Nov 2026 11:51:31 +0800 (CST)
-X-RM-TRANSID: 2ee36af537c24aa-f086d
-From: Xia Yan <yanxia@cmss.chinamobile.com>
-To: netdev@vger.kernel.org
-Cc: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo@kernel.org>,
- Andrew Lunn <andrew+netdev@lunn.ch>, David S. Miller <davem@davemloft.net>,
- Eric Dumazet <edumazet@kernel.org>, Jakub Kicinski <kuba@kernel.org>,
- Paolo Abeni <pabeni@redhat.com>, Matthias Brugger <matthias.bgg@gmail.com>,
+	id 1xRMC0-00000008fVh-2qha;
+	Thu, 12 Nov 2026 04:13:44 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
+	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
+	id 1xRMBz-00000008fVT-015i;
+	Thu, 12 Nov 2026 04:13:43 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by tor.source.kernel.org (Postfix) with ESMTP id 28C63614AC;
+	Thu, 12 Nov 2026 04:13:42 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id E09601F00A05;
+	Thu, 12 Nov 2026 04:13:40 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1794456821;
+	bh=80POjU5WP6ctS0DqN7hA/63JAQ8Agh1hTny2C1kJcvk=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References;
+	b=LBSmcK8Uq825T5Yh2FSpWHL1M7tuqT2t3wXpKRLlSLa3uXS1Nv3aaquyIJ0DLZ2Pt
+	 ch5YVpbRc/xMp0mCHRhrjwr27PJVHPzrOT6G0V+upyRrRFbhdMc9Zfs1Mu7rkBa7i1
+	 GosTsaTx/xyD2TcPFv+RNsXOZRIfnZwcZfo3brlsP7LwkxySQpVFffLeoSBTtkfyxg
+	 qVbJQ5V6K5o6VyQXuInRAOl5bKrDVl/yOk3bvEt0/A4BkPhEP9Wgw2yXOaTXP5Xg8p
+	 Hgpmq7JgCguP2qA/rkVi4XI4xGxm2lDBICYTRWsYYu6TxiKyu3/8AxczmffW5K+uAC
+	 mXDxc5vbw3JYQ==
+From: netdev-bot+sinfo@kernel.org
+To: Xia Yan <yanxia@cmss.chinamobile.com>
+Cc: netdev@vger.kernel.org, Felix Fietkau <nbd@nbd.name>,
+ Lorenzo Bianconi <lorenzo@kernel.org>, Andrew Lunn <andrew+netdev@lunn.ch>,
+ "David S. Miller" <davem@davemloft.net>, Eric Dumazet <edumazet@kernel.org>,
+ Jakub Kicinski <kuba@kernel.org>, Paolo Abeni <pabeni@redhat.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
  AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
  Yanqing Wang <ot_yanqing.wang@mediatek.com>,
  Bartosz Golaszewski <brgl@kernel.org>, linux-kernel@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
  yana06070@163.com
-Subject: [PATCH net-next v2] net: ethernet: mtk-star-emac: fix device_node
+Subject: Re: [PATCH net-next v2] net: ethernet: mtk-star-emac: fix device_node
  leak in mtk_star_probe()
-Date: Thu, 12 Nov 2026 11:51:30 +0800
-Message-ID: <1794455490000.585551.2561101329908158128@cmss.chinamobile.com>
+Date: Thu, 12 Nov 2026 04:13:40 +0000
+Message-ID: <179445682040.2168702.1032780874409478036@kernel.org>
+In-Reply-To: <1794455490000.585551.2561101329908158128@cmss.chinamobile.com>
+References: <1794455490000.585551.2561101329908158128@cmss.chinamobile.com>
+Auto-Submitted: auto-generated
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Transfer-Encoding: 7bit
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261111_195141_582688_04C0826F 
-X-CRM114-Status: GOOD (  11.16  )
-X-Spam-Score: -2.4 (--)
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,67 +76,28 @@ List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-13.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS autolearn=ham autolearn_force=no version=4.0.1
+X-Spam-Status: No, score=-5.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,
+	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS autolearn=no autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-mtk_star_probe() gets the PHY node from the "phy-handle" property
-with of_parse_phandle(). The helper takes a reference on the node it
-returns. The node is used by of_phy_connect() each time the netdevice
-is opened.
+Hi!
 
-That reference is never dropped. Every error return after the lookup
-leaks it. Unbind leaks it as well: the driver is devm-only and has no
-remove callback.
+This is an automated message. This series looks like a fix, but its
+commit messages seem to be missing some information:
 
-Release it with a devm action, registered right after the lookup.
-The error paths and the unbind path then drop the node through the
-devm cleanup.
+ - What hardware the change was tested on. For driver fixes please
+   mention the device (and if relevant firmware version) used for
+   testing, or say that the change was not tested on real hardware.
 
-Found during a code review of the OF node handling in ethernet drivers.
+Please do not repost the series just to address the above. Instead,
+reply to this email with the missing information, so that reviewers
+can take it into account. If the series needs another revision for
+other reasons, please include the information in the commit messages
+then.
 
-Fixes: 8c7bd5a454ff ("net: ethernet: mtk-star-emac: new driver")
-Signed-off-by: Xia Yan <yanxia@cmss.chinamobile.com>
----
-Changes in v2:
-- Add the missing Fixes: tag.
-
-v1: https://lore.kernel.org/netdev/1794061182000.57993.3986467551914992480@cmss.chinamobile.com/
-
- drivers/net/ethernet/mediatek/mtk_star_emac.c | 10 ++++++++++
- 1 file changed, 10 insertions(+)
-
-diff --git a/drivers/net/ethernet/mediatek/mtk_star_emac.c b/drivers/net/ethernet/mediatek/mtk_star_emac.c
-index b83886a41121..bac4a24c5979 100644
---- a/drivers/net/ethernet/mediatek/mtk_star_emac.c
-+++ b/drivers/net/ethernet/mediatek/mtk_star_emac.c
-@@ -1501,6 +1501,11 @@
- 	clk_bulk_disable_unprepare(MTK_STAR_NCLKS, priv->clks);
- }
- 
-+static void mtk_star_of_node_put(void *data)
-+{
-+	of_node_put(data);
-+}
-+
- static int mtk_star_set_timing(struct mtk_star_priv *priv)
- {
- 	struct device *dev = mtk_star_get_dev(priv);
-@@ -1603,6 +1608,11 @@
- 		return -ENODEV;
- 	}
- 
-+	ret = devm_add_action_or_reset(dev, mtk_star_of_node_put,
-+				       priv->phy_node);
-+	if (ret)
-+		return ret;
-+
- 	priv->rmii_rxc = of_property_read_bool(of_node, "mediatek,rmii-rxc");
- 	priv->rx_inv = of_property_read_bool(of_node, "mediatek,rxc-inverse");
- 	priv->tx_inv = of_property_read_bool(of_node, "mediatek,txc-inverse");
-
-
+The evaluation is done by an LLM so it may be wrong, if you think
+that is the case please reply and explain.
 
