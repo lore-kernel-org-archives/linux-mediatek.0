@@ -2,69 +2,72 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id BDE81606A32A
-	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Nov 2026 18:58:58 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id E4E2A60A2628
+	for <linux-mediatek@archiver.kernel.org>; Thu, 12 Nov 2026 18:59:56 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=qOmjJQnA
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=CyTY6wdG
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Unsubscribe-Post:List-Owner;
-	bh=0J35JZ6m+w9sBvce+BHkK7sHy2n6yiNgOnlVQ5/R2aM=; b=qOmjJQnAWo33DHoV74jcfi1qWF
-	/yQI0gp36kZrCMg1dPH5IXjH+ui6kAoFGmSBGOmyoeSpcxq65xNXbCNMEsYBaFcXVmFlA0Av7hUE/
-	MqGFlVQx/vctQVEGB2UCbya+nlHJSyXgaGbxoI061SOMY/tSkgpu3J3Z8ymvJ9DMlPJhHnLzKDa+w
-	d2CM2qc7tzAflK32cdOsP2lPn7meHrfmiGV8X4jp30uRuyjsV3EI/NMivBsGXSv4nPv/BtKNXEFEe
-	4Lr5t6vu+NWoo2c1RFys19Y3+f9lCJ3pk2ttjH0fId+2oGSCzgETO+u0L87cOfLz8dV93FWqdaE+E
-	S6Ky/LNA==;
+	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Unsubscribe-Post:
+	List-Owner; bh=yMAAykQB6oCefnRWkX8/jVQpDHtwcvOmdsuX+RRnkkg=; b=CyTY6wdGmZf8JC
+	UnIuSovt7dw90Ikb0dZQ6J7h/wR1X03z8qY1RlA1Id0BsAwmID9yMzigcRRcrJUpjMyl6VEfBECeX
+	6lre9GQwRrMnRFL2+YR5E1M8uWR98IOw/2ckcEvuRz0iCUYettBMvU0JjQ58IG+f/1Em3MW1P7Jjz
+	bC6v08YW8Qyp/m8uoUJF/ft1l6yGOYkSHACBVipupDyngOFNSWNgQacUfsyVxtbAR5OTrJcsB2Tvg
+	9gBUKOH7Mz0F12/tWI0DdPW08Jvd88w9iLbLT8JswtBgvhe0POdvvt7+6zfMBXJ7Tu+phCXKQl3b6
+	wiivmjhuXaV4Ntl5Tsfw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xRa0g-0000000AuCI-1wgR;
-	Thu, 12 Nov 2026 18:58:58 +0000
+	id 1xRa1c-0000000AuLV-2kUg;
+	Thu, 12 Nov 2026 18:59:56 +0000
 Received: from nbd.name ([46.4.11.11])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xRa0L-0000000Au3i-0sD4;
-	Thu, 12 Nov 2026 18:58:39 +0000
+	id 1xRa1Z-0000000AuJY-3NXH
+	for linux-mediatek@lists.infradead.org;
+	Thu, 12 Nov 2026 18:59:56 +0000
 Received: from [2a04:4540:1403:f2fc:83ce:6656:246:c906] (helo=bertha10..)
 	by ds12 with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.96)
 	(envelope-from <john@phrozen.org>)
-	id 1xRa0A-002Xe4-2W;
-	Thu, 12 Nov 2026 19:58:26 +0100
+	id 1xRa1V-002Xgt-0T;
+	Thu, 12 Nov 2026 19:59:49 +0100
 From: John Crispin <john@phrozen.org>
-To: Stefan Roese <sr@denx.de>,
-	Andi Shyti <andi.shyti@kernel.org>,
+To: Lorenzo Bianconi <lorenzo@kernel.org>,
+	Lee Jones <lee@kernel.org>,
 	Rob Herring <robh@kernel.org>,
 	Krzysztof Kozlowski <krzk+dt@kernel.org>,
 	Conor Dooley <conor+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Philipp Zabel <p.zabel@pengutronix.de>
-Cc: Christian Marangi <ansuelsmth@gmail.com>,
+	Linus Walleij <linusw@kernel.org>,
+	Bartosz Golaszewski <brgl@kernel.org>
+Cc: Ahmed Naseef <naseefkm@gmail.com>,
+	Benjamin Larsson <benjamin.larsson@genexis.eu>,
+	Christian Marangi <ansuelsmth@gmail.com>,
 	devicetree@vger.kernel.org,
 	lei.dong@airoha.com,
 	Linqi.zhang@airoha.com,
-	linux-arm-kernel@lists.infradead.org,
-	linux-i2c@vger.kernel.org,
+	linux-gpio@vger.kernel.org,
 	linux-kernel@vger.kernel.org,
 	linux-mediatek@lists.infradead.org,
+	mfd@lists.linux.dev,
+	Mikhail Kshevetskiy <mikhail.kshevetskiy@iopsys.eu>,
 	Rajeev.kumar@airoha.com,
 	upstream@airoha.com,
 	Weifeng.xu@airoha.com,
 	zhengping.zhang@airoha.com
-Subject: [PATCH v2 0/3] i2c: mt7621: add Airoha AN7589 support
-Date: Thu, 12 Nov 2026 19:58:17 +0100
-Message-Id: <20261112185820.1315718-1-john@phrozen.org>
+Subject: [PATCH v2 3/7] pinctrl: airoha: make the chip SCU optional
+Date: Thu, 12 Nov 2026 19:59:37 +0100
+Message-Id: <20261112185941.1316112-4-john@phrozen.org>
 X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20261112185941.1316112-1-john@phrozen.org>
+References: <20261112185941.1316112-1-john@phrozen.org>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261112_105837_383226_15693E36 
-X-CRM114-Status: UNSURE (   8.42  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20261112_105953_843051_C1138541 
+X-CRM114-Status: GOOD (  13.34  )
 X-Spam-Score: -1.9 (-)
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -76,45 +79,72 @@ List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-11.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
+	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-The Airoha AN7589 carries the MT7621 I2C controller with a second
-control register that holds a 16 bit clock divider. It runs without
-SCL stretching.
+A SoC that muxes every pin through the IOMUX block and describes no
+pin configuration has no use for the chip SCU. Skip the lookup when
+the match data names no chip SCU compatible, instead of handing a
+NULL compatible to syscon_regmap_lookup_by_compatible().
 
-Patch 1 resets the controller with reset_control_assert() and
-reset_control_deassert() instead of device_reset(), as the EN7581 and
-AN7589 reset controller has no .reset operation. Patch 2 adds the
-compatible, with mediatek,mt7621-i2c as the fallback. Patch 3
-describes the variants as match data and uses the wider divider for
-bus rates down to about 3 kHz.
+No functional change for the existing SoCs, which all name one.
 
-The series applies to next-20261105 and has no dependencies.
-
+Signed-off-by: John Crispin <john@phrozen.org>
+---
 Changes in v2:
-- Add patch 1. It replaces "clk: en7523: add a reset operation" from
-  the clk series, as Philipp suggested.
-- Patch 2: add mediatek,mt7621-i2c as the fallback compatible (Conor).
-- Patch 3: the extended divider supports bus rates down to about 3 kHz.
-  Set it up before the controller is enabled.
-- Link to v1: https://lore.kernel.org/r/20261111093941.691801-1-john@phrozen.org
+- Look up the airoha,chip-scu phandle before the check for a chip
+  SCU compatible (Lorenzo).
 
-John Crispin (3):
-  i2c: mt7621: assert and deassert the reset line
-  dt-bindings: i2c: mt7621: add Airoha AN7589
-  i2c: mt7621: add support for Airoha AN7589
+ drivers/pinctrl/airoha/pinctrl-airoha.c | 25 +++++++++++++++++++------
+ 1 file changed, 19 insertions(+), 6 deletions(-)
 
- .../bindings/i2c/mediatek,mt7621-i2c.yaml     | 10 ++-
- drivers/i2c/busses/i2c-mt7621.c               | 69 ++++++++++++++++---
- 2 files changed, 69 insertions(+), 10 deletions(-)
-
-
-base-commit: ddfe51b0a0f5dc9e415cc2c8ad8db17532dd426b
+diff --git a/drivers/pinctrl/airoha/pinctrl-airoha.c b/drivers/pinctrl/airoha/pinctrl-airoha.c
+index f9ae4020b764..5ae0c49e491a 100644
+--- a/drivers/pinctrl/airoha/pinctrl-airoha.c
++++ b/drivers/pinctrl/airoha/pinctrl-airoha.c
+@@ -833,6 +833,22 @@ static const struct pinctrl_ops airoha_pctlops = {
+ 	.dt_free_map = pinconf_generic_dt_free_map,
+ };
+ 
++static struct regmap *
++airoha_pinctrl_chip_scu(struct device *dev,
++			const struct airoha_pinctrl_match_data *data)
++{
++	struct regmap *map;
++
++	map = syscon_regmap_lookup_by_phandle(dev->of_node, "airoha,chip-scu");
++	if (!IS_ERR_OR_NULL(map))
++		return map;
++
++	if (!data->chip_scu_compatible)
++		return NULL;
++
++	return syscon_regmap_lookup_by_compatible(data->chip_scu_compatible);
++}
++
+ int airoha_pinctrl_probe(struct platform_device *pdev)
+ {
+ 	const struct airoha_pinctrl_match_data *data;
+@@ -853,12 +869,9 @@ int airoha_pinctrl_probe(struct platform_device *pdev)
+ 	if (IS_ERR(pinctrl->regmap))
+ 		return PTR_ERR(pinctrl->regmap);
+ 
+-	map = syscon_regmap_lookup_by_phandle(pdev->dev.of_node, "airoha,chip-scu");
+-	if (IS_ERR_OR_NULL(map)) {
+-		map = syscon_regmap_lookup_by_compatible(data->chip_scu_compatible);
+-		if (IS_ERR(map))
+-			return PTR_ERR(map);
+-	}
++	map = airoha_pinctrl_chip_scu(dev, data);
++	if (IS_ERR(map))
++		return PTR_ERR(map);
+ 
+ 	pinctrl->chip_scu = map;
+ 
 -- 
 2.34.1
 
