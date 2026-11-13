@@ -2,121 +2,72 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id EFED760A2621
-	for <linux-mediatek@archiver.kernel.org>; Fri, 13 Nov 2026 18:15:51 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 54F7A606A33A
+	for <linux-mediatek@archiver.kernel.org>; Fri, 13 Nov 2026 18:50:57 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=YxpzrBMv;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=infradead.org header.i=@infradead.org header.a=rsa-sha256 header.s=desiato.20200630 header.b=F2kFrfR1;
-	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=oMCawrgF
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=e+h/9KC8;
+	dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=UVgpn0Wz
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Unsubscribe-Post:
-	List-Owner; bh=LrtOIEPB5plIuB+N6495+WStqcrxnWFNx4kPBP0QSG4=; b=YxpzrBMved3dUp
-	BEoJRCWUYjxn9CkznMBBpa5U2zAUz0iCHLp3A79Vk0PD0tgdzrwO8uqZQAkj3WCvQrvrYVj6fNl4d
-	iDKP0GzukhiV75gw351sHNZI4TgmfYSqtgpy5Seugfo3KMdojQSp+z2qf/8fOQcLKKo2MnZvUA+HC
-	rgTp4yv8mGQeZdrl6094IAGFubfXsarT4svv5uogjq4q+NUSIftwOFV5WEZ4QUD72b1/9k3Y1gMFN
-	hMthQvTT5dj0M4p9rmYxEnLQObG4shHN+hha7q7QhNmOeK0AksftFm73nDvcqIVpg+QPRg4oFjWmi
-	JYPafPLsEAFyXTak7gZQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Unsubscribe-Post:List-Owner;
+	bh=cjhG7Bzi1tsnaOBL0/3qmbPStuw8rhrR+V7LVA+Ywdw=; b=e+h/9KC8mQXIa41Mu2pDs4FZdY
+	17mXK/kgvmTIT45aAKwLasuLuxhbn7go7sNTb+LSLoPS+Qk0U0XxNwdQi/I/XTnRrrAV6iC9bM4qz
+	GHni1ME+h0axQIquQ+SkG/T1RnieWNQf0PT2y/On9F+5vCanbWVaZA7qVwsFXhhRympg4GmNapUpt
+	MNjMaHh5tL2GICIbHghwRbmXDYwRKXaT4sqSbF2VgsxxkJBTnZ0F9Gn8F1Mh9pAYh6PTdG82L25V2
+	BeUc2TAtx4zKZ1XojFBPRn3A/rkaNNLNeVD2Vkc+/uIuwMoD1QqlRi/j1ccCPPLJkvesYsXm3Q6Ch
+	04/f7FRQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xRvoV-0000000DrIo-1K5n;
-	Fri, 13 Nov 2026 18:15:51 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1xRwMS-0000000E0Ei-3P1F;
+	Fri, 13 Nov 2026 18:50:56 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xRvoK-0000000DqwA-3wi0
-	for linux-mediatek@bombadil.infradead.org;
-	Fri, 13 Nov 2026 18:15:41 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Cc:To:In-Reply-To:References:
-	Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Sender:Reply-To:Content-ID:Content-Description;
-	bh=LrtOIEPB5plIuB+N6495+WStqcrxnWFNx4kPBP0QSG4=; b=F2kFrfR14i57X3+BCDIcO9wihn
-	XpViTjXPhO2bYgxU22fF/iD8vteli8/62M74MrcTZIWcQZLmd1lECqQo44OQ5v3qcdJAx/2WMr4Ui
-	vPO1MEFC3Fb4WxKJX6/sKm04OAdcgf9k764SeNlMKdAEQIujOJ85gD/S0z1uahKlPglzd+HLXphnS
-	l1B5ydERKbTY6GQwjfhj8VJ2KIk+lrKXV0cOK2h3hdimPeF+FJBC3O5cEh2jQTBmueveTCMrvZouR
-	SUiBe+pAfnnJ+ErhzE0FQa2tIJ0nIA5BxZt2Q0RR8vh8G6JNhx/p+6RMpXQ5Z744pa3vvLY4oY+aO
-	Pfh9AOyg==;
-Received: from mail-ot1-x32e.google.com ([2607:f8b0:4864:20::32e])
-	by desiato.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xRvoH-0000000Bdet-2Pc9
-	for linux-mediatek@lists.infradead.org;
-	Fri, 13 Nov 2026 18:15:39 +0000
-Received: by mail-ot1-x32e.google.com with SMTP id 46e09a7af769-82380b0f55dso424233a34.1
-        for <linux-mediatek@lists.infradead.org>; Fri, 13 Nov 2026 10:15:36 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20260707; t=1794593735; x=1795198535; darn=lists.infradead.org;
-        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
-         :content-type:mime-version:subject:date:from:from:to:cc:subject:date
-         :message-id:reply-to:content-type;
-        bh=LrtOIEPB5plIuB+N6495+WStqcrxnWFNx4kPBP0QSG4=;
-        b=oMCawrgFDRyEna7pQS5AI7kFTcO2TbPRm+ANE2eTlD6M4odEntZpVtAmo/GSD+qs+C
-         eknjZ6PhUn80LGnRev945DY4QHZN7099iUEex9mSJoeITad1IhoQTEc+peFkWcpXsHbo
-         e7SVySpZKe/aHX4/qXniDOV3D4pXqE8OUTKO+WBbFkDLkNDKQbAmrQwXOqYfybu8tR74
-         DSDmcmG/zg0ej4g99CtzLeywWTCbb766WkK0K5JPbkEM4ZPgc9515EolWp5V5S3T0yH0
-         vPelG8JoqXFdK4BxIZ19jkV5+pdP0wyDwpEPUG2DrsUYyzQvbmoE4d/aFbcaCXvaYN4K
-         gdUg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1794593735; x=1795198535;
-        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
-         :content-type:mime-version:subject:date:from:x-gm-gg
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
-         :content-type;
-        bh=LrtOIEPB5plIuB+N6495+WStqcrxnWFNx4kPBP0QSG4=;
-        b=2OB6hdaB5mzd5zfom2rNyeey7VrOf+HuKPigcJ1zorXvNu8zcXiDsbXbuPfVJr9UVp
-         Mf5snBauu3OSfuCrqBys1zHejDXhNJuv1+GjxM0W6zVeoUDRsOFA8EbzdVgzY0n+dSfc
-         U2FGtqlTQIcN3dnUdvMi8QBxoHJFrgo5HQNKIWxGgxtl53xiqa3heka0GjKSOGz/dqme
-         36hc2ddNlQSeT/+kjxO7PPRhBE2RZum2lUxMUhYhj792RKMjR02bLlkM9yQXHoAsOGlF
-         AKKEteu6HbFU3PTeEBSv/EW8ZjsWwuBfFwkD8iuJfCkclBykG3D32zdRb+2nTL5w/lGa
-         yurg==
-X-Forwarded-Encrypted: i=1; AL+hErHz4u4EUlP+KZuHBjy0sdEiPrgZVjqaFhd53rAzxIlc7BaxHlwAZ7d/EqtFhjeQWX9SbR3oy/nDYy6VqhkFaQ==@lists.infradead.org
-X-Gm-Message-State: APuU4Z9fi11htax3Tj5DaGR3l8JlbUVmUEGCLblwySHy699R8nQEyTmO
-	FCXfnODc6zlt3WwuuYRvV5nXDOuTgS+b06rgG+33XzSwR1MZGWVd3SHXItzz74fs
-X-Gm-Gg: AYBFou21v7kYojhwTiwHATw1n8pde8omCcVomWqxy59n+UMeRrH04sSENGKs7vKi2en
-	SWf2vTZq7PIasylE2+xGDWkYyY5StbxcjCD13vw/fIcG+jxeCuUxdtAh5SNG9TxT6LDwtvEB8bi
-	oCIQAepGIvlkveTkGLGnmu7NcPldyaG7VRfR5LBExUAn0sFz4op2qjAWSQbNJc+6lruvsJ97xF2
-	qKcRc1RM8bV/7K0BRiUj+E9p2Z4Fofqf7Mj/fd9GDx3RDG9rnkt13xCaDusGXPlDTHmuVt2txU2
-	vAiBG6grHUhnc1H81+4kpdCg3I6Ya8Ay1bu25/Z3Yim1s3tJw5ePPphmmrqN2U31jBAMy87pP5h
-	2Sqep+vjctSpvD3VVcEexcthtgS/sQTgNkX5m8wiucq5lZbW7noxXNrrsWWqp6TliP0Mv4+ymvV
-	BY4pPGMdIpH5QhipNMNM6BuicMyEl+wjw2LqLSlNZTHdUvHym4kGlNY/58serF1ese6WXg+vi1R
-	OZb7G45/2BEwv1eMCQoj9JEITvtj6yKmm2R2/zsIPek5yOmrrIF5YCj+Um3IsQNghIL94Qr69ua
-	2nSMiM6kXhVLZ0OD0jfvAYYodgUWt21BeFHm3qyonY/+v3lh62OUZpJ6jEGPtf1NCT9qSddx3Bx
-	T7d+8oVfq/86BX/9l1ewj5F1gLA9N3t9qkWOqFrxmOryMssuWT5BdWZbUC+9p8z7cs2IkJSS5WF
-	hNKELhJZX1MqPz6zAgHm+oFv77ImyYifJKyQ8F4mVyMWkWkTpaOws=
-X-Received: by 2002:a05:6830:7192:b0:814:8259:781e with SMTP id 46e09a7af769-8628979ea24mr2976379a34.1.1794593735257;
-        Fri, 13 Nov 2026 10:15:35 -0800 (PST)
-Received: from [127.0.1.1] (174-29-1-49.hlrn.qwest.net. [174.29.1.49])
-        by smtp.gmail.com with ESMTPSA id 46e09a7af769-8628817d979sm3253414a34.22.2026.11.13.10.15.34
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 13 Nov 2026 10:15:34 -0800 (PST)
-From: James Hilliard <james.hilliard1@gmail.com>
-Date: Fri, 13 Nov 2026 11:14:32 -0700
-Subject: [PATCH v4 16/58] mtd: rawnand: mtk: retain chips across controller
- removal
+	id 1xRwMR-0000000E0Dx-25dw;
+	Fri, 13 Nov 2026 18:50:55 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by tor.source.kernel.org (Postfix) with ESMTP id A08DE60D25;
+	Fri, 13 Nov 2026 18:50:54 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 342F01F000C4;
+	Fri, 13 Nov 2026 18:50:51 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1794595854;
+	bh=cjhG7Bzi1tsnaOBL0/3qmbPStuw8rhrR+V7LVA+Ywdw=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To;
+	b=UVgpn0WzoFhIdaDcho/bQqb7ril090RQfOnX/VijF+DvoHH0Y72fNWgWhmJ4EvAR8
+	 4zB5sg31cdpBewBdyn8bfzlTgTH/KOEF1QRjM1XOD9FCg6KNRBbJtdE6+Cqo1mWjbX
+	 38lAMLpT3Yt7J5idBo0tzpGbZ1p+khrdFloyuFRdEzDKcG/Zp0OOqgVzxtsX0tLy1/
+	 zG7WTraWKezTiSqkqkGEI2tiSXS3SH7bYP67wneO48jTvX5X9m8nmo5z4EmSXyuf/b
+	 ko6fK5PwhpOf2QGvdms7NSFTthaukAKDvXokMjw8kmpKkedd0qmWApWV0S+Xrm97UK
+	 afrnnnALFIbvQ==
+Date: Fri, 13 Nov 2026 18:50:47 +0000
+From: Lee Jones <lee@kernel.org>
+To: Ryan Brue <ryanbrue.dev@gmail.com>
+Cc: Sen Chu <sen.chu@mediatek.com>, Sean Wang <sean.wang@mediatek.com>,
+	Macpaul Lin <macpaul.lin@mediatek.com>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Eddie Huang <eddie.huang@mediatek.com>,
+	Alexandre Belloni <alexandre.belloni@bootlin.com>,
+	linux-pm@vger.kernel.org, mfd@lists.linux.dev,
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, linux-rtc@vger.kernel.org
+Subject: Re: [PATCH 2/2] rtc: mt6397: provide the 32 kHz output as a clock
+Message-ID: <20261113185047.GH6323@joneslee-macbookpro.roam.internal>
+References: <20261101-rbrue-suez-upstreaming-mt6397-rtc-32k-v1-0-9758f38d7053@gmail.com>
+ <20261101-rbrue-suez-upstreaming-mt6397-rtc-32k-v1-2-9758f38d7053@gmail.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20261113-submit-rawnand-retained-handle-lifetime-v1-v4-16-556b1d7c6221@gmail.com>
-References: <20261113-submit-rawnand-retained-handle-lifetime-v1-v4-0-556b1d7c6221@gmail.com>
-In-Reply-To: <20261113-submit-rawnand-retained-handle-lifetime-v1-v4-0-556b1d7c6221@gmail.com>
-To: Miquel Raynal <miquel.raynal@bootlin.com>, 
- Richard Weinberger <richard@nod.at>, Vignesh Raghavendra <vigneshr@ti.com>
-Cc: linux-mtd@lists.infradead.org, linux-kernel@vger.kernel.org, 
- Greg Kroah-Hartman <gregkh@linuxfoundation.org>, 
- James Hilliard <james.hilliard1@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Boris Brezillon <bbrezillon@kernel.org>, 
- Jorge Ramirez-Ortiz <jorge.ramirez@oss.qualcomm.com>, 
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
- Matthias Brugger <matthias.bgg@gmail.com>
-X-Mailer: b4 0.15.2
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261113_181537_473456_22CD8586 
-X-CRM114-Status: GOOD (  14.93  )
-X-Spam-Score: 0.1 (/)
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20261101-rbrue-suez-upstreaming-mt6397-rtc-32k-v1-2-9758f38d7053@gmail.com>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -127,141 +78,195 @@ List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-15.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
-	DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,FREEMAIL_FORGED_FROMDOMAIN,
-	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
+X-Spam-Status: No, score=-15.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,
+	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=ham
+	autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Give scanned chips their own storage lifetime and retain the shared
-controller until all chip references have been dropped. Unregister and
-disconnect each chip before releasing the ECC provider and clocks.
-Unlink chips before the final put and unwind unpublished allocations
-directly.
+On Sun, 01 Nov 2026, Ryan Brue wrote:
 
-Run NAND cleanup during disconnection; the final core-owned put only
-releases retained allocation and layout data.
+> The RTC's 32 kHz output is gated by RTC_CON.F32KOB, which the vendor
+> kernel clears before it powers the Wi-Fi/Bluetooth combo chip. Mainline
+> never touches it, so on a board whose bootloader leaves it set, such a
+> chip has no sleep clock and does not come up.
+> 
+> Register the output as a clock when the RTC node has #clock-cells, so
+> the chip's power sequence can enable it.
+> 
+> Signed-off-by: Ryan Brue <ryanbrue.dev@gmail.com>
+> ---
+>  drivers/rtc/rtc-mt6397.c       | 85 ++++++++++++++++++++++++++++++++++++++++++
+>  include/linux/mfd/mt6397/rtc.h |  6 +++
+>  2 files changed, 91 insertions(+)
+> 
+> diff --git a/drivers/rtc/rtc-mt6397.c b/drivers/rtc/rtc-mt6397.c
+> index d6e156516aa6..5130fecffa7b 100644
+> --- a/drivers/rtc/rtc-mt6397.c
+> +++ b/drivers/rtc/rtc-mt6397.c
+> @@ -6,6 +6,7 @@
+>  
+>  #include <linux/array_size.h>
+>  #include <linux/bitfield.h>
+> +#include <linux/clk-provider.h>
+>  #include <linux/err.h>
+>  #include <linux/interrupt.h>
+>  #include <linux/mfd/mt6397/core.h>
+> @@ -317,6 +318,84 @@ static int mtk_rtc_nvram_write(void *priv, unsigned int offset, void *val,
+>  	return ret;
+>  }
+>  
+> +#ifdef CONFIG_COMMON_CLK
+> +static int mtk_rtc_clkout_set(struct clk_hw *hw, bool on)
+> +{
+> +	struct mt6397_rtc *rtc = container_of(hw, struct mt6397_rtc, clkout);
+> +	int ret;
+> +
+> +	mutex_lock(&rtc->lock);
+> +	ret = regmap_update_bits(rtc->regmap, rtc->addr_base + rtc->data->con,
+> +				 RTC_CON_F32KOB, on ? 0 : RTC_CON_F32KOB);
+> +	if (!ret)
+> +		ret = mtk_rtc_write_trigger(rtc);
+> +	mutex_unlock(&rtc->lock);
+> +
+> +	return ret;
+> +}
+> +
+> +static int mtk_rtc_clkout_prepare(struct clk_hw *hw)
+> +{
+> +	return mtk_rtc_clkout_set(hw, true);
+> +}
+> +
+> +static void mtk_rtc_clkout_unprepare(struct clk_hw *hw)
+> +{
+> +	mtk_rtc_clkout_set(hw, false);
+> +}
+> +
+> +static int mtk_rtc_clkout_is_prepared(struct clk_hw *hw)
+> +{
+> +	struct mt6397_rtc *rtc = container_of(hw, struct mt6397_rtc, clkout);
+> +	u32 con;
+> +
+> +	if (regmap_read(rtc->regmap, rtc->addr_base + rtc->data->con, &con))
+> +		return 0;
+> +
+> +	return !(con & RTC_CON_F32KOB);
+> +}
+> +
+> +static unsigned long mtk_rtc_clkout_recalc_rate(struct clk_hw *hw,
+> +						unsigned long parent_rate)
+> +{
+> +	return 32768;
+> +}
+> +
+> +static const struct clk_ops mtk_rtc_clkout_ops = {
+> +	.prepare = mtk_rtc_clkout_prepare,
+> +	.unprepare = mtk_rtc_clkout_unprepare,
+> +	.is_prepared = mtk_rtc_clkout_is_prepared,
+> +	.recalc_rate = mtk_rtc_clkout_recalc_rate,
+> +};
+> +
+> +/* The 32 kHz output the PMIC drives to other chips, such as a combo chip */
+> +static int mtk_rtc_register_clkout(struct device *dev, struct mt6397_rtc *rtc)
+> +{
+> +	struct clk_init_data init = {
+> +		.name = "mt6397-rtc-32k",
+> +		.ops = &mtk_rtc_clkout_ops,
+> +	};
+> +	int ret;
+> +
+> +	if (!rtc->data->con || !of_property_present(dev->of_node, "#clock-cells"))
+> +		return 0;
+> +
+> +	rtc->clkout.init = &init;
+> +
+> +	ret = devm_clk_hw_register(dev, &rtc->clkout);
+> +	if (ret)
+> +		return ret;
+> +
+> +	return devm_of_clk_add_hw_provider(dev, of_clk_hw_simple_get,
+> +					   &rtc->clkout);
+> +}
+> +#else
+> +static int mtk_rtc_register_clkout(struct device *dev, struct mt6397_rtc *rtc)
+> +{
+> +	return 0;
+> +}
+> +#endif
+> +
+>  static int mtk_rtc_probe(struct platform_device *pdev)
+>  {
+>  	struct resource *res;
+> @@ -380,6 +459,11 @@ static int mtk_rtc_probe(struct platform_device *pdev)
+>  	if (ret)
+>  		return ret;
+>  
+> +	ret = mtk_rtc_register_clkout(&pdev->dev, rtc);
+> +	if (ret)
+> +		return dev_err_probe(&pdev->dev, ret,
+> +				     "failed to register the 32k clock\n");
+> +
+>  	nvmem_cfg.priv = rtc;
+>  
+>  	return devm_rtc_nvmem_register(rtc->rtc_dev, &nvmem_cfg);
+> @@ -416,6 +500,7 @@ static const struct mtk_rtc_data mt6358_rtc_data = {
+>  
+>  static const struct mtk_rtc_data mt6397_rtc_data = {
+>  	.wrtgr = RTC_WRTGR_MT6397,
+> +	.con = RTC_CON_MT6397,
+>  };
+>  
+>  static const struct of_device_id mt6397_rtc_of_match[] = {
+> diff --git a/include/linux/mfd/mt6397/rtc.h b/include/linux/mfd/mt6397/rtc.h
+> index f4da579ec638..a8130d726c59 100644
+> --- a/include/linux/mfd/mt6397/rtc.h
+> +++ b/include/linux/mfd/mt6397/rtc.h
+> @@ -9,6 +9,7 @@
+>  #ifndef _LINUX_MFD_MT6397_RTC_H_
+>  #define _LINUX_MFD_MT6397_RTC_H_
+>  
+> +#include <linux/clk-provider.h>
+>  #include <linux/jiffies.h>
+>  #include <linux/mutex.h>
+>  #include <linux/regmap.h>
+> @@ -22,6 +23,9 @@
+>  #define RTC_WRTGR_MT6397       0x003c
+>  #define RTC_WRTGR_MT6323       RTC_WRTGR_MT6397
+>  
+> +#define RTC_CON_MT6397         0x003e
+> +#define RTC_CON_F32KOB         BIT(5)
+> +
+>  #define RTC_IRQ_STA            0x0002
+>  #define RTC_IRQ_STA_AL         BIT(0)
+>  #define RTC_IRQ_STA_LP         BIT(3)
+> @@ -72,6 +76,7 @@
+>  
+>  struct mtk_rtc_data {
+>  	u32                     wrtgr;
+> +	u32                     con;
 
-Fixes: 1d6b1e464950 ("mtd: mediatek: driver for MTK Smart Device")
-Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: Boris Brezillon <bbrezillon@kernel.org>
-Cc: Jorge Ramirez-Ortiz <jorge.ramirez@oss.qualcomm.com>
-Cc: linux-arm-kernel@lists.infradead.org
-Cc: linux-mediatek@lists.infradead.org
-Cc: Matthias Brugger <matthias.bgg@gmail.com>
-Signed-off-by: James Hilliard <james.hilliard1@gmail.com>
----
- drivers/mtd/nand/raw/mtk_nand.c | 36 +++++++++++++++++++++++++-----------
- 1 file changed, 25 insertions(+), 11 deletions(-)
+These are terrible variable names.
 
-diff --git a/drivers/mtd/nand/raw/mtk_nand.c b/drivers/mtd/nand/raw/mtk_nand.c
-index a36a82d10aa7..010f614a2da3 100644
---- a/drivers/mtd/nand/raw/mtk_nand.c
-+++ b/drivers/mtd/nand/raw/mtk_nand.c
-@@ -1356,8 +1356,7 @@ static int mtk_nfc_nand_chip_init(struct device *dev, struct mtk_nfc *nfc,
- 		return -EINVAL;
- 	}
- 
--	chip = devm_kzalloc(dev, struct_size(chip, sels, nsels),
--			    GFP_KERNEL);
-+	chip = kzalloc(struct_size(chip, sels, nsels), GFP_KERNEL);
- 	if (!chip)
- 		return -ENOMEM;
- 
-@@ -1366,17 +1365,19 @@ static int mtk_nfc_nand_chip_init(struct device *dev, struct mtk_nfc *nfc,
- 		ret = of_property_read_u32_index(np, "reg", i, &tmp);
- 		if (ret) {
- 			dev_err(dev, "reg property failure : %d\n", ret);
--			return ret;
-+			goto free_chip;
- 		}
- 
- 		if (tmp >= MTK_NAND_MAX_NSELS) {
- 			dev_err(dev, "invalid CS: %u\n", tmp);
--			return -EINVAL;
-+			ret = -EINVAL;
-+			goto free_chip;
- 		}
- 
- 		if (test_and_set_bit(tmp, &nfc->assigned_cs)) {
- 			dev_err(dev, "CS %u already assigned\n", tmp);
--			return -EINVAL;
-+			ret = -EINVAL;
-+			goto free_chip;
- 		}
- 
- 		chip->sels[i] = tmp;
-@@ -1406,7 +1407,7 @@ static int mtk_nfc_nand_chip_init(struct device *dev, struct mtk_nfc *nfc,
- 	nand->ecc.read_oob = mtk_nfc_read_oob_std;
- 
- 	mtd = nand_to_mtd(nand);
--	mtd->owner = THIS_MODULE;
-+
- 	mtd->parent_dev = dev;
- 	mtd->name = MTK_NAME;
- 	mtd_set_ooblayout(mtd, &mtk_nfc_ooblayout_ops);
-@@ -1415,18 +1416,28 @@ static int mtk_nfc_nand_chip_init(struct device *dev, struct mtk_nfc *nfc,
- 
- 	ret = nand_scan(nand, nsels);
- 	if (ret)
--		return ret;
-+		goto free_chip;
-+	ret = nand_set_lifetime(nand, chip);
-+	if (ret) {
-+		nand_cleanup(nand);
-+		goto free_chip;
-+	}
- 
- 	ret = mtd_device_register(mtd, NULL, 0);
- 	if (ret) {
- 		dev_err(dev, "mtd parse partition error\n");
--		nand_cleanup(nand);
-+		nand_disconnect(nand);
-+		mtd_put_master(mtd);
- 		return ret;
- 	}
- 
- 	list_add_tail(&chip->node, &nfc->chips);
- 
- 	return 0;
-+
-+free_chip:
-+	kfree(chip);
-+	return ret;
- }
- 
- static void mtk_nfc_nand_chips_cleanup(struct mtk_nfc *nfc)
-@@ -1441,8 +1452,9 @@ static void mtk_nfc_nand_chips_cleanup(struct mtk_nfc *nfc)
- 		chip = &mtk_chip->nand;
- 		ret = mtd_device_unregister(nand_to_mtd(chip));
- 		WARN_ON(ret);
--		nand_cleanup(chip);
-+		nand_disconnect(chip);
- 		list_del(&mtk_chip->node);
-+		mtd_put_master(nand_to_mtd(chip));
- 	}
- }
- 
-@@ -1511,11 +1523,13 @@ static int mtk_nfc_probe(struct platform_device *pdev)
- 	struct mtk_nfc *nfc;
- 	int ret, irq;
- 
--	nfc = devm_kzalloc(dev, sizeof(*nfc), GFP_KERNEL);
-+	nfc = kzalloc_obj(*nfc);
- 	if (!nfc)
- 		return -ENOMEM;
- 
--	nand_controller_init(&nfc->controller);
-+	ret = devm_nand_controller_init(dev, &nfc->controller, nfc);
-+	if (ret)
-+		return ret;
- 	INIT_LIST_HEAD(&nfc->chips);
- 	nfc->controller.ops = &mtk_nfc_controller_ops;
- 
+The nomenclature should be self-describing.
+
+>  };
+>  
+>  struct mt6397_rtc {
+> @@ -83,6 +88,7 @@ struct mt6397_rtc {
+>  	int                     irq;
+>  	u32                     addr_base;
+>  	const struct mtk_rtc_data *data;
+> +	struct clk_hw           clkout;
+>  };
+>  
+>  #endif /* _LINUX_MFD_MT6397_RTC_H_ */
+> 
+> -- 
+> 2.55.0
+> 
 
 -- 
-2.53.0
-
+Lee Jones
 
