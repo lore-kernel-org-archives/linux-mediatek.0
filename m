@@ -2,102 +2,131 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 1984F606A321
-	for <linux-mediatek@archiver.kernel.org>; Fri, 13 Nov 2026 05:29:16 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 98EB3606A31C
+	for <linux-mediatek@archiver.kernel.org>; Fri, 13 Nov 2026 06:36:41 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=CfHAbFr/;
-	dkim=pass (2048-bit key) header.d=baylibre.com header.i=@baylibre.com header.a=rsa-sha256 header.s=google header.b=mdGUsess
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=OsWsEWYs
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
-	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
-	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-Type:In-Reply-To:References:Message-ID:Date
+	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=+cbGdzty0Be5iX/0odAUgwQdHjrUYqcWpVwGe9DdZsU=; b=CfHAbFr/ziUStJhlUjmwuLs/7c
-	TAOhvjy2iBkONp3EGaTMMVo6YNl6iVYA9IVIo+11igSAcWE0SLvz5zzcGoD91mopnqr4RTvb+/Ibn
-	ZGIhM6UO2S2bp3+mZGdgsoxltq8s7oiHfIiL7prHDC5FngW5RaH8/mBF/0bP4MCjbhScbxAqCjc7Y
-	Qe/OJGACPYJ4HfLbugQqMDdRI9J/urMyY1gFTiO1myzRCKgmbamTcnIUpm1hw+tbZ8Q78KsDWXINT
-	4Spti0VddPsZ0mzW1Ig+pyo+5pSGa9kA5NiKuCbyDAJ7aKrWs/ud95m9Ad/ySm224Xne1WdyGdrnl
-	Qzro9BlQ==;
+	bh=DqWyeaP8EYpeALQ2OAvwyob2YuXcbB7VY/ZLud4SzOo=; b=OsWsEWYsGC6cOntN1HvITuPRGi
+	R1jnmTPFviHsPAlwT6sSgkrVrUG9NK5mpCpnh8FTSSn7P74Nn2TRIs5MY/YCp9SP5RgolcGfrfLN8
+	Cdrj7q/RK6rI6zRC5Fcz12h0DkQZrrWOCmsCDUxMJPUU62AKNFYOdXuMy3HyOsYBFyjFIc+Z9hio1
+	JXj1V8fM8LUi/OWGnEA++OFmFS19sNrodW0zu64THmaJ4LU5seLpTyOeankFJZ1jbZW1zOytL3FXm
+	4gwK8z5jXwJpA3r/Y1ngRamGuT7tjVZt81YtbACItUpUZA5nAyD/IuYxvi8anjmNrGHeuSGpCJ9oF
+	11+Flbxg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xRjqb-0000000Bgjo-38Ub;
-	Fri, 13 Nov 2026 05:29:13 +0000
-Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c])
+	id 1xRktt-0000000BmzS-0Z0g;
+	Fri, 13 Nov 2026 06:36:41 +0000
+Received: from exmail3.compal.com ([59.120.207.196] helo=tpecef21.compal.com)
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xRjqY-0000000Bgim-0JxX
-	for linux-mediatek@lists.infradead.org;
-	Fri, 13 Nov 2026 05:29:12 +0000
-Received: by mail-wm1-x32c.google.com with SMTP id 5b1f17b1804b1-4a4d7ae1ae9so3505515e9.1
-        for <linux-mediatek@lists.infradead.org>; Thu, 12 Nov 2026 21:29:08 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre.com; s=google; t=1794547748; x=1795152548; darn=lists.infradead.org;
-        h=cc:to:message-id:content-transfer-encoding:content-type
-         :mime-version:subject:date:from:from:to:cc:subject:date:message-id
-         :reply-to:content-type;
-        bh=+cbGdzty0Be5iX/0odAUgwQdHjrUYqcWpVwGe9DdZsU=;
-        b=mdGUsessOO0qbUs8bYBUqGXV5FS5IrWn+Uq+uCdIMKD0AxNS7E4dKkni5EqHGhleDT
-         2f/5/MbEl2VIZi/MRz6SEibozxwOlf5OxHa3MlKfO3iS+2+qGnmYg2Uu9miHpTCRId+D
-         MnWLqiGuElPV0iP8uSyrpNhtgf98OSteKsrtdEDUj7LtuRTOJSQ4rtU8QaZCfAJ3XdB5
-         aiVzDLLASIiTpdIGGXzEHTfADVuw4iZzNDX9pI2Cdyz3vvmlBVS9R5RryfmsG0sR+icy
-         d6FKNl+EcdtZvpsBBxsML7856Ag2+4FUXEzgmz+kamGE8DzeBrfZQSjVP7q26iCzDrFI
-         gfsQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1794547748; x=1795152548;
-        h=cc:to:message-id:content-transfer-encoding:content-type
-         :mime-version:subject:date:from:x-gm-gg:x-gm-message-state:from:to
-         :cc:subject:date:message-id:reply-to:content-type;
-        bh=+cbGdzty0Be5iX/0odAUgwQdHjrUYqcWpVwGe9DdZsU=;
-        b=HIvW6WCkkX9g1bi8VA+9hggXnY6qfjZlNCxS7ebpH3yvweNBBk/lCT3q1ySxcR/Mrg
-         ysMI/wg0X1qB+LpvqGc7v0IF+Y6Ke3y+kbzcDX4zmz2LnJTXrnXkYkHGLHLh69QKy9LU
-         COp9YErH1Ra6CcU6gDblygU4V9XpoDSZRXcT6PyFuqfkBoWdmNh3/eIV1oMb+zmoPS8z
-         Sm7EOrSEOxlfSlWlcCWxStUF+ZKomr5rYrns45JQtkgL4rXSAQV5TKwjMIWzXcx/2XdL
-         6y6aljJW78Aq/x3T2YwC6S/qXBilzfrg/ax8ev8SSRi40jYPiFO7tZxQgWiwqa5+E4dz
-         azxA==
-X-Forwarded-Encrypted: i=1; AL+hErHM0d6rS8+EuFE2kx7DfLEGISyWBEEx2IutWG8faxfWWPsco5Xq4q4fPMZ2hTIIQx4+qlwT5WL4MtTJYwuX5Q==@lists.infradead.org
-X-Gm-Message-State: APuU4Z/LR2UWGJwSmjYd0v/SHixDm3pZjkblUXaXl1tu60kutEVNcIJN
-	qzdg9cUzzRv4/P2hvvADAL+nc48vv8meLDBg7cM5P8mwjVHOAPk6RGe49b1bZhW4daU=
-X-Gm-Gg: AYBFou2yuRuQ3KqyQbZnJ4sQ8QHfT8LJGq9F0FV4Mt0sUBx+mSe7+YNr1GH5l5mZZe4
-	DdtjNZ+4aYCFeZ48xypqXXs2lfJOl3oQKs/MSTYYHfoehNYAdBwCPuRPz/yR4jxaJjAF5X/GLWZ
-	i47xPGIN4SLivkaZL1Ef0xu9k5EFuJzQ5689efAh70O8jUf3Tz6TrN7xWQ9rasZUuoE1qUYOVVF
-	4NItd95d7kZk/ng/4Z69OBBNUmsLbS+JB/fxQHhudBW+QDbJRfhSn1MSWKBtyeQvCBYZpZ0/RnQ
-	OpTIZ7yqfi1HUYGfW87T1PYh+iomp9Uz3SQDNVv3AFFSW8Dmx7xZscdB3bj/eu24GDB5I7g1Bz5
-	Y5y9qXQ5IiFc8NsyMdl0cJFzHrdrwE38tcfQUyN7p4jhnCgm25q2Tksdl2EKqitc5VMonj27SpZ
-	xv504efHj5bHAp+lAow8cnqIKgpvQJf40NtGa3ozPDxCAEwFzHjW0IIVENk6UHaqifck2vLC4wZ
-	HrCkwHzQQXmH7AQiSbB2g+U86rkaz+5ayp4Iy/QPh4h0m8hFYzO5+CtySl0lW1fJeMnf5Wbgx6x
-	EZTF0GkUKxkaMTn0yorj4FPqXiIhfmBXGnfWim/ZqiZ1Xw7sK+HoAeEr
-X-Received: by 2002:a05:600d:2:b0:4ba:761:c0c5 with SMTP id 5b1f17b1804b1-4bb55a581e6mr21673295e9.5.1794547747666;
-        Thu, 12 Nov 2026 21:29:07 -0800 (PST)
-Received: from [127.0.1.1] (82-230-44-19.subs.proxad.net. [82.230.44.19])
-        by smtp.googlemail.com with ESMTPSA id 5b1f17b1804b1-4bb571f976esm11572365e9.3.2026.11.12.21.29.06
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 12 Nov 2026 21:29:06 -0800 (PST)
-From: Alexandre Mergnat <amergnat@baylibre.com>
-Date: Fri, 13 Nov 2026 05:29:02 +0000
-Subject: [PATCH v2] regulator: mt6363: Serialize BUCK_TOP key access
+	id 1xRktp-0000000Bmxo-0wyT;
+	Fri, 13 Nov 2026 06:36:39 +0000
+X-UUID: 89763c74df2c11f1b2470fb4f881575f-20261113
+X-CID-CACHE: Type:Local,Time:202611131436+08,HitQuantity:1
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.3.20,REQID:1dbbcff0-f6eb-46ed-a61c-276963044792,IP:0,U
+	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
+	:release,TS:-5
+X-CID-META: VersionHash:291e20b,CLOUDID:66be3c66-4b51-4c95-bb1b-80ac6aad9c96,B
+	ulkID:nil,BulkQuantity:0,SF:80|81|82|83|102|110|111|836|865|888|898,TC:-5,
+	Content:0|15|50|99,EDM:-3,IP:nil,URL:99|1,File:130,RT:0,Bulk:nil,QS:nil,BE
+	C:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 2,SSN|SDN
+X-CID-BAS: 2,SSN|SDN,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULS
+X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
+X-UUID: 89763c74df2c11f1b2470fb4f881575f-20261113
+Received: from sdmg11.sdbg.compal.com [(10.113.168.9)] by tpecef21.compal.com
+	(envelope-from <jackbb_wu@compal.com>)
+	(Generic MTA with TLSv1.3 TLS_AES_256_GCM_SHA384 256/256)
+	with ESMTP id 146397465; Fri, 13 Nov 2026 14:36:20 +0800
+X-UUID: 86973166df2c11f1b328fd8a884f4420-20261113
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.3.15,REQID:ffb07e99-06dc-4e81-acb0-22bc103174bd,IP:0,U
+	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
+	:release,TS:-5
+X-CID-META: VersionHash:e276073,CLOUDID:44be3c66-4b51-4c95-bb1b-80ac6aad9c96,B
+	ulkID:nil,BulkQuantity:0,Recheck:0,SF:80|81|82|83|102|110|111|836|865|888|
+	898,TC:-5,Content:0|15|50|99,EDM:-3,IP:nil,URL:99|1,File:130,RT:0,Bulk:nil
+	,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:
+	0,ARC:0
+X-CID-BVR: 2,SSN|SDN
+X-CID-BAS: 2,SSN|SDN,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULS
+X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
+X-UUID: 86973166df2c11f1b328fd8a884f4420-20261113
+Received: from sdbmbx12.tpe.compalcomm.com [(10.113.2.136)] by sdmg11.sdbg.compal.com
+	(envelope-from <jackbb_wu@compal.com>)
+	(Compal Mail Service with TLSv1.2 ECDHE-RSA-AES256-SHA 256/256)
+	with ESMTP id 1291043534; Fri, 13 Nov 2026 14:36:15 +0800
+Received: from SDBMBX13.tpe.compalcomm.com (10.113.2.137) by
+ SDBMBX12.tpe.compalcomm.com (10.113.2.136) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA) id 15.2.2562.43;
+ Fri, 13 Nov 2026 14:36:13 +0800
+Received: from SDBMBX13.tpe.compalcomm.com ([fe80::23a8:5ed2:f09e:3abf]) by
+ SDBMBX13.tpe.compalcomm.com ([fe80::23a8:5ed2:f09e:3abf%11]) with mapi id
+ 15.02.2562.056; Fri, 13 Nov 2026 14:36:13 +0800
+From: "Wu. JackBB (GSM)" <JackBB_Wu@compal.com>
+To: Brian Norris <briannorris@chromium.org>
+CC: Loic Poulain <loic.poulain@oss.qualcomm.com>, Sergey Ryazanov
+	<ryazanov.s.a@gmail.com>, Johannes Berg <johannes@sipsolutions.net>, "Andrew
+ Lunn" <andrew+netdev@lunn.ch>, "David S. Miller" <davem@davemloft.net>, "Eric
+ Dumazet" <edumazet@google.com>, Jakub Kicinski <kuba@kernel.org>, Paolo Abeni
+	<pabeni@redhat.com>, Wen-Zhi Huang <wen-zhi.huang@mediatek.com>, Shi-Wei Yeh
+	<shi-wei.yeh@mediatek.com>, Minano Tseng <Minano.tseng@mediatek.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
+	<angelogioacchino.delregno@collabora.com>, Simon Horman <horms@kernel.org>,
+	Jonathan Corbet <corbet@lwn.net>, Shuah Khan <skhan@linuxfoundation.org>,
+	"Yu. Robert (GSM)" <robert_yu@compal.com>, "Chang. Jeff (GSM)"
+	<Jeff_Chang@compal.com>, "linux-kernel@vger.kernel.org"
+	<linux-kernel@vger.kernel.org>, "netdev@vger.kernel.org"
+	<netdev@vger.kernel.org>, "linux-arm-kernel@lists.infradead.org"
+	<linux-arm-kernel@lists.infradead.org>, "linux-mediatek@lists.infradead.org"
+	<linux-mediatek@lists.infradead.org>, "linux-doc@vger.kernel.org"
+	<linux-doc@vger.kernel.org>
+Subject: Re: [PATCH v11 1/6] net: wwan: t9xx: Add PCIe core
+Thread-Topic: [PATCH v11 1/6] net: wwan: t9xx: Add PCIe core
+Thread-Index: AQHdczlHMtKa50SmVUyj30cyupHiGA==
+Date: Fri, 13 Nov 2026 06:36:13 +0000
+Message-ID: <3e19cff16c1145ee8801c18a24c1c0f3@compal.com>
+References: <20261105-t9xx_driver_v1-v11-0-2084aa512864@compal.com>
+ <20261105-t9xx_driver_v1-v11-1-2084aa512864@compal.com>,<avY4pfjYOoJGh4en@google.com>
+In-Reply-To: <avY4pfjYOoJGh4en@google.com>
+Accept-Language: zh-TW, en-US
+Content-Language: zh-TW
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-tm-as-product-ver: SMEX-14.0.0.3239-9.1.2019-30316.005
+x-tm-as-result: No-10--18.703400-8.000000
+x-tmase-matchedrid: FYPNOy2BwYguv++HU7VXryRFbfQbCufdN0X64jGy2dZJTOxleK2tZuZd
+	NI5cmL7EEwMD50omDCfiCKEWLpl9v7xENwJ2UvCElSaCdwgsOnCz3QJZlI1HSD7Qn1lMCQHYPHS
+	aeqPT/nCHGYQxcw15AVIlQmKjkvU3fJYE9GoWRJE70BtMXRaQwtmfMOhnRXSp0hs/U79L1DC06I
+	QNqLPXs/cLV+huLfyp6uBnihYl2pD2ny02seo5ybmRMjwGlGpyHNBTlD5KWT5dkzEmKKnHILXsc
+	uuSQStqNkbUrk5jLZjIAmxL3KWaW/cHAb32Y13Y+mtDRLyNCFqgn19QHAlOzLG53EQ9QCTJbi8j
+	cO5+cHXWaHdXYb1A75U4iC63III7Jvv8iTwFnicftZuMZfm2SRLkfOHvRgPi2ccOOwmG9xj0UU/
+	ZFaEzIFKWDaBz8nokE4gpp2pfn9fOjVhM3xW2rB1wPM2CYnhNapw0ecwa7dOIZUCmJEsCudOuk/
+	Oin8EWN/wwc82rdwTKvNGNmG0SU6+eCSMeOiOkA/lH/MvdoiYmkrgX3CciJtFJvI9LYcV3ImxnQ
+	vgkai0DmyMy7NxgFnkymWss+DP3yZFhb/oEKmxI3cVVldOMbVf4f5tREmf37BOBAMr0OK5z6WCJ
+	pEPfZg==
+x-tm-as-user-approved-sender: No
+x-tm-as-user-blocked-sender: No
+x-tmase-result: 10--18.703400-8.000000
+x-tmase-version: SMEX-14.0.0.3239-9.1.2019-30316.005
+x-tm-snts-smtp: 3E27ECEF98D6235BF32FFEEEF0C3A230F1101CD8938FCBE05BDFED4838E436452000:8
+Content-Type: text/plain; charset="big5"
+Content-Transfer-Encoding: base64
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20261113-rgp-91-mt6363-key-lock-v2-1-adbd48f0f830@baylibre.com>
-X-B4-Tracking: v=1; b=H4sIAB2g9moC/3WPy27CMBBFfyXyulP5EdsZVvxHxcJ2JuBCCLVN1
- Ajl32sC2y6vdOfcMw+WKUXKbNc8WKI55jhda5AfDQsndz0SxL5mJrk0QnAN6XgDFDAWo4yCMy1
- wmcIZjPUaUfakXcfq8S3REH838NfhlfPdf1MoT9q7kejnXhfLq8a8ywRhGsdYdo1F3irVBdW10
- vRWBj3Y0GPLZfDoqo6SzrpBsyf9FHOZ0rJ9MYsN9hbG/4RnAQLIKc+VswbR7r1bLtEn+qwK7LC
- u6x969KygHQEAAA==
-X-Change-ID: 20261105-rgp-91-mt6363-key-lock-67b5992de5a8
-To: Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, 
- Alexandre Mergnat <amergnat@baylibre.com>
-X-Mailer: b4 0.16.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261112_212910_134713_9715BF1D 
-X-CRM114-Status: GOOD (  16.44  )
-X-Spam-Score: -2.1 (--)
+X-CRM114-CacheID: sfid-20261112_223637_451935_7596CC64 
+X-CRM114-Status: GOOD (  24.36  )
+X-Spam-Score: -1.9 (-)
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -108,165 +137,62 @@ List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-18.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,
-	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=ham
-	autolearn_force=no version=4.0.1
+X-Spam-Status: No, score=-3.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY
+	autolearn=no autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-The bits that select the FAST mode of the bucks only accept writes
-while the BUCK_TOP key is unlocked. mt6363_regulator_set_mode() unlocks
-the key, updates the bit and locks the key again, but the regulator
-core only locks the buck being changed. When two bucks change mode at
-the same time, one of them can lock the key between the unlock and
-the mode write of the other. The PMIC then ignores that write, and
-regulator_set_mode() returns 0 while the buck stays in its previous
-mode. mt6363_va15_set_voltage_sel() unlocks and locks the same key,
-so it can also lock it during a buck mode change.
-
-Hold a mutex from each unlock of the key to its relock, in the FAST bit
-writes and in the VA15 voltage setter.
-
-Fixes: 3c36965df808 ("regulator: Add support for MediaTek MT6363 SPMI PMIC Regulators")
-Signed-off-by: Alexandre Mergnat <amergnat@baylibre.com>
----
-The race was reproduced on hardware.
-
-The new mutex is static because probe already stores per-device state
-in the static regulator table, so the driver only supports one PMIC.
-A follow-up series could make that table constant and move this state,
-with the mutex, into per-device data.
----
-Changes in v2:
-- Drop the gotos from mt6363_va15_set_voltage_sel() instead of mixing
-  them with guard() (Mark Brown)
-- Include linux/cleanup.h for guard()
-- Link to v1: https://patch.msgid.link/20261109-rgp-91-mt6363-key-lock-v1-1-ea3b03a76997@baylibre.com
----
- drivers/regulator/mt6363-regulator.c | 53 +++++++++++++++++++++---------------
- 1 file changed, 31 insertions(+), 22 deletions(-)
-
-diff --git a/drivers/regulator/mt6363-regulator.c b/drivers/regulator/mt6363-regulator.c
-index e6c4bd851fef..b4f5f33779b5 100644
---- a/drivers/regulator/mt6363-regulator.c
-+++ b/drivers/regulator/mt6363-regulator.c
-@@ -4,6 +4,7 @@
- // Copyright (c) 2025 Collabora Ltd
- //                    AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
- 
-+#include <linux/cleanup.h>
- #include <linux/delay.h>
- #include <linux/devm-helpers.h>
- #include <linux/err.h>
-@@ -12,6 +13,7 @@
- #include <linux/irqdomain.h>
- #include <linux/kernel.h>
- #include <linux/module.h>
-+#include <linux/mutex.h>
- #include <linux/of.h>
- #include <linux/of_device.h>
- #include <linux/of_irq.h>
-@@ -114,6 +116,8 @@ struct mt6363_regulator_info {
- 	int virq;
- };
- 
-+static DEFINE_MUTEX(mt6363_buck_top_lock);
-+
- #define MT6363_BUCK(match, vreg, min, max, step, en_reg, lp_reg,	\
- 		    mset_reg, ocp_intn)					\
- [MT6363_ID_##vreg] = {							\
-@@ -388,6 +392,23 @@ static int mt6363_buck_unlock(struct regmap *map, bool unlock)
- 	return regmap_bulk_write(map, MT6363_BUCK_TOP_KEY_PROT_LO, &buf, sizeof(buf));
- }
- 
-+static int mt6363_buck_top_update_bits(struct regmap *map, unsigned int reg,
-+				       unsigned int mask, unsigned int val)
-+{
-+	int ret;
-+
-+	guard(mutex)(&mt6363_buck_top_lock);
-+
-+	ret = mt6363_buck_unlock(map, true);
-+	if (ret)
-+		return ret;
-+
-+	ret = regmap_update_bits(map, reg, mask, val);
-+
-+	mt6363_buck_unlock(map, false);
-+	return ret;
-+}
-+
- static int mt6363_regulator_set_mode(struct regulator_dev *rdev,
- 				     unsigned int mode)
- {
-@@ -400,13 +421,9 @@ static int mt6363_regulator_set_mode(struct regulator_dev *rdev,
- 
- 	switch (mode) {
- 	case REGULATOR_MODE_FAST:
--		ret = mt6363_buck_unlock(regmap, true);
--		if (ret)
--			break;
--
--		ret = regmap_set_bits(regmap, info->modeset_reg, info->modeset_mask);
--
--		mt6363_buck_unlock(regmap, false);
-+		ret = mt6363_buck_top_update_bits(regmap, info->modeset_reg,
-+						  info->modeset_mask,
-+						  info->modeset_mask);
- 		break;
- 	case REGULATOR_MODE_NORMAL:
- 		cur_mode = mt6363_regulator_get_mode(rdev);
-@@ -416,13 +433,8 @@ static int mt6363_regulator_set_mode(struct regulator_dev *rdev,
- 		}
- 
- 		if (cur_mode == REGULATOR_MODE_FAST) {
--			ret = mt6363_buck_unlock(regmap, true);
--			if (ret)
--				break;
--
--			ret = regmap_clear_bits(regmap, info->modeset_reg, info->modeset_mask);
--
--			mt6363_buck_unlock(regmap, false);
-+			ret = mt6363_buck_top_update_bits(regmap, info->modeset_reg,
-+							  info->modeset_mask, 0);
- 			break;
- 		} else if (cur_mode == REGULATOR_MODE_IDLE) {
- 			ret = regmap_clear_bits(regmap, info->lp_mode_reg, info->lp_mode_mask);
-@@ -508,20 +520,17 @@ static int mt6363_va15_set_voltage_sel(struct regulator_dev *rdev, unsigned int
- 	struct regmap *regmap = rdev->regmap;
- 	int ret;
- 
-+	guard(mutex)(&mt6363_buck_top_lock);
-+
- 	ret = mt6363_buck_unlock(regmap, true);
- 	if (ret)
- 		return ret;
- 
- 	ret = regulator_set_voltage_sel_pickable_regmap(rdev, sel);
--	if (ret)
--		goto va15_unlock;
--
--	ret = regmap_update_bits(regmap, MT6363_RG_BUCK_EFUSE_RSV1,
--				 MT6363_RG_BUCK_EFUSE_RSV1_MASK, sel);
--	if (ret)
--		goto va15_unlock;
-+	if (!ret)
-+		ret = regmap_update_bits(regmap, MT6363_RG_BUCK_EFUSE_RSV1,
-+					 MT6363_RG_BUCK_EFUSE_RSV1_MASK, sel);
- 
--va15_unlock:
- 	mt6363_buck_unlock(rdev->regmap, false);
- 	return ret;
- }
-
----
-base-commit: 7904338c38426d72c5f7cd9402cb9a20232a7af5
-change-id: 20261105-rgp-91-mt6363-key-lock-67b5992de5a8
-
-Best regards,
---  
-Alexandre Mergnat <amergnat@baylibre.com>
-
+SGkgQnJpYW4sDQoNClRoYW5rcyBmb3IgdGhlIHJldmlldy4NCg0KT24gRnJpLCBOb3YgMTMsIDIw
+MjYgYXQgNjowNyBBTSBCcmlhbiBOb3JyaXMgPGJyaWFubm9ycmlzQGNocm9taXVtLm9yZz4gd3Jv
+dGU6DQo+IE9uIFRodSwgTm92IDA1LCAyMDI2IGF0IDAzOjU2OjI3UE0gKzA4MDAsIEphY2sgV3Ug
+d3JvdGU6DQpbLi4uXQ0KPiA+ICsgICAgIHJldCA9IHBjaV9zYXZlX3N0YXRlKHBkZXYpOw0KPiA+
+ICsgICAgIGlmIChyZXQpIHsNCj4gPiArICAgICAgICAgICAgIGRldl9lcnIobWRldi0+ZGV2LCAi
+RmFpbGVkIHRvIHNhdmUgUENJIHN0YXRlOiAlZFxuIiwgcmV0KTsNCj4gPiArICAgICAgICAgICAg
+IGdvdG8gZnJlZV9pcnE7DQo+ID4gKyAgICAgfQ0KPg0KPiBJJ20gYSBiaXQgc2tlcHRpY2FsIG9m
+IGRyaXZlcnMgdGhhdCBzdGFzaCBhbiBleHRyYSBjb3B5IG9mIFBDSSBzdGF0ZS4NCj4gVGhlcmUg
+YXJlIHRpbWVzIHdoZXJlIGl0J3MgbGVnaXRpbWF0ZSwgYnV0IG9mdGVuIGl0IG1lYW5zIHlvdSds
+bA0KPiBpbnRyb2R1Y2UgYnVncyBvZiB5b3VyIG93bi4NCg0KQWdyZWVkLCB2MTIgd2lsbCBkcm9w
+IHRoZSBjb3B5LiByZW1vdmUoKSB3aWxsIGNhbGwgcGNpX3NhdmVfc3RhdGUoKSByaWdodA0KYmVm
+b3JlIHRoZSBtb2RlbSByZXNldCBhbmQgcGNpX3Jlc3RvcmVfc3RhdGUoKSByaWdodCBhZnRlciBp
+dCwgdGhlIHdheQ0KdDd4eF9yZXNldF9kZXZpY2UoKSBkb2VzLCBhbmQgcHJvYmUoKSB3aWxsIG5v
+IGxvbmdlciBzYXZlIGFueXRoaW5nLg0KDQpUaGUgcmVzdG9yZSBpdHNlbGYgaXMgc3RpbGwgbmVl
+ZGVkOiB0aGUgcmVzZXQgcmV0dXJucyB0aGUgZW5kcG9pbnQgdG8NCml0cyBwb3dlci1vbiBkZWZh
+dWx0cywgd2l0aCB0aGUgQkFScyBhbmQgdGhlIGNvbW1hbmQgcmVnaXN0ZXIgY2xlYXJlZCwNCnNv
+IGNvbmZpZyBzcGFjZSBoYXMgdG8gYmUgd3JpdHRlbiBiYWNrIGZvciB0aGUgbmV4dCBkcml2ZXIg
+dGhhdCBiaW5kcw0KdG8gdGhlIGRldmljZS4NCg0KWy4uLl0NCj4gPiArICAgICAvKiBXaXRob3V0
+IHRoaXMgYSBydW50aW1lLVBNIHN1c3BlbmQgYWZ0ZXIgdW5iaW5kIHdvdWxkIHNuYXBzaG90IHRo
+ZQ0KPiA+ICsgICAgICAqIHJlc2V0IHN0YXRlIG92ZXIgb3VyIGNvcHksIGFuZCB3aG9ldmVyIGJp
+bmRzIG5leHQgZmluZHMgQkFScyB0aGUNCj4gPiArICAgICAgKiBkZXZpY2UgZG9lcyBub3QgZGVj
+b2RlLg0KPiA+ICsgICAgICAqLw0KPg0KPiBJJ20gY29uZnVzZWQgYWJvdXQgdGhpcyBleHBsYW5h
+dGlvbi4gWW91IGRvbid0IGV2ZXIgY2FsbA0KPiBwbV9ydW50aW1lX3B1dCgpIG9yIHNpbWlsYXIs
+IHNvIHRoaXMgZGV2aWNlIGNhbiBuZXZlciBhY3R1YWxseQ0KPiBydW50aW1lLXN1c3BlbmQuIEFy
+ZSB5b3UgdGFsa2luZyBhYm91dCBzb21lIGNvZGUgdGhhdCdzIG5vdCBpbmNsdWRlZCBpbg0KPiB0
+aGlzIHBhdGNoIHNlcmllcz8NCj4NCj4gaHR0cHM6Ly9kb2NzLmtlcm5lbC5vcmcvcG93ZXIvcGNp
+Lmh0bWwjZGV2aWNlLXJ1bnRpbWUtcG93ZXItbWFuYWdlbWVudA0KDQpZb3UncmUgcmlnaHQsIHRo
+ZSBjb21tZW50IGlzIHdyb25nLiBUaGUgZHJpdmVyIGRvZXMgbm90IHVzZSBydW50aW1lIFBNLA0K
+YW5kIHRoZSBzYXZlIGFuZCByZXN0b3JlIGFyZSBuZWVkZWQgb25seSBiZWNhdXNlIG9mIHRoZSBy
+ZXNldCBhYm92ZS4NClRoZSBjb21tZW50IHdpbGwgYmUgcmVtb3ZlZCBpbiB2MTIuDQoNCj4gQW55
+d2F5LCBpZiB5b3UgKmRpZCogaGF2ZSBhIHByb2JsZW0gaGVyZSAuLi4gSSBleHBlY3QgdGhlIGFu
+c3dlciBpcyB0bw0KPiBwcm9wZXJseSBnZXQoKSBhIHJlZmVyZW5jZSBvbiB0aGUgd2F5IG91dCwg
+c28gdGhhdCBydW50aW1lX3N1c3BlbmQgaXMgbm8NCj4gbG9uZ2VyIHBvc3NpYmxlIGFmdGVyIGEg
+cmVzZXQsIHVudGlsIHRoZSBuZXh0IHByb2JlKCkuDQoNCldpdGggYm90aCB0aGUgc2F2ZSBhbmQg
+dGhlIHJlc3RvcmUgaW5zaWRlIHJlbW92ZSgpLCB0aGUgcmVmZXJlbmNlIHRoZQ0KUENJIGNvcmUg
+YWxyZWFkeSBob2xkcyBhY3Jvc3MgLT5yZW1vdmUoKSBrZWVwcyB0aGUgZGV2aWNlIGFjdGl2ZSBi
+ZXR3ZWVuDQp0aGVtLCBhbmQgY29uZmlnIHNwYWNlIGlzIGJhY2sgaW4gcGxhY2UgYmVmb3JlIHJl
+bW92ZSgpIHJldHVybnMuIFNvIHYxMg0Kd2lsbCBub3QgbmVlZCBhIHJlZmVyZW5jZSBvZiBpdHMg
+b3duLg0KDQo+IFlvdSBhbHNvIGhhdmUgYSBzbGlnaHRseSBkaWZmZXJlbnQgZGVzY3JpcHRpb24g
+ZnJvbSB0aGUgY292ZXIgbGV0dGVyOg0KPg0KPiAiIiINCj4gICAtIG10a19wY2lfcmVtb3ZlKCkg
+Y2FsbHMgcGNpX3Jlc3RvcmVfc3RhdGUoKSBhbmQgcGNpX2NsZWFyX21hc3RlcigpDQo+ICAgICBh
+ZnRlciBwY2lfbG9hZF9hbmRfZnJlZV9zYXZlZF9zdGF0ZSgpOiB0aGUgcmVzZXQgbGVhdmVzIHRo
+ZSBkZXZpY2UNCj4gICAgIGF0IHBvd2VyLW9uIGRlZmF1bHRzIGFuZCB0aGUgc3RhdGUgd2FzIHNh
+dmVkIGFmdGVyIHBjaV9zZXRfbWFzdGVyKCkNCj4gIiIiDQoNCllvdSdyZSByaWdodCwgdGhlIGNv
+ZGUgbm8gbG9uZ2VyIG1hdGNoZXMgdGhhdCBkZXNjcmlwdGlvbi4gSW4gdjEyIHRoZQ0Kc2F2ZSB3
+aWxsIGhhcHBlbiBhZnRlciBwY2lfY2xlYXJfbWFzdGVyKCkgYW5kIHBjaV9kaXNhYmxlX2Rldmlj
+ZSgpLCByaWdodA0KYmVmb3JlIHRoZSByZXNldCwgc28gdGhlIHJlc3RvcmVkIGNvbW1hbmQgcmVn
+aXN0ZXIgaGFzIGJ1cyBtYXN0ZXJpbmcNCm9mZiwgYW5kIHRoZSB2MTIgY2hhbmdlbG9nIHdpbGwg
+ZGVzY3JpYmUgaXQgdGhhdCB3YXkuDQoNCj4gSW4gYW55IGNhc2UsIHNvbWV0aGluZyBzZWVtcyBm
+aXNoeSBoZXJlLg0KDQpBZ3JlZWQuIEluIHYxMiBpdCB3aWxsIGJlIGEgc2luZ2xlIHNhdmUgYW5k
+IHJlc3RvcmUgYXJvdW5kIHRoZSByZXNldC4NCg0KVGhhbmtzLA0KSmFjaw==
 
