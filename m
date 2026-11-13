@@ -2,159 +2,158 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 15375606CECD
-	for <linux-mediatek@archiver.kernel.org>; Fri, 13 Nov 2026 17:47:59 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id E8AF7607A5E4
+	for <linux-mediatek@archiver.kernel.org>; Fri, 13 Nov 2026 17:49:10 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=F5xx8aZR;
-	dkim=pass (2048-bit key) header.d=qualcomm.com header.i=@qualcomm.com header.a=rsa-sha256 header.s=qcppdkim1 header.b=O5Y2iAae;
-	dkim=pass (2048-bit key) header.d=oss.qualcomm.com header.i=@oss.qualcomm.com header.a=rsa-sha256 header.s=google header.b=YLzBqMNo
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=FvOeHgAc;
+	dkim=pass (2048-bit key) header.d=qualcomm.com header.i=@qualcomm.com header.a=rsa-sha256 header.s=qcppdkim1 header.b=Dd2YORBp;
+	dkim=pass (2048-bit key) header.d=oss.qualcomm.com header.i=@oss.qualcomm.com header.a=rsa-sha256 header.s=google header.b=FD5ikz7c
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
 	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Unsubscribe-Post:
-	List-Owner; bh=03h8Stqm2jiHP1ePJ8/GT4xjXmJ9AokgbaM3KsJdgkY=; b=F5xx8aZRHxKhDQ
-	68tj+WTHBl/YL3wAy6WveesX3ZJG6tqWW1ylVRXgbjEz94AShwJB90DSGH7oJqYZSxxcQ934RjxLC
-	R3ANqxgj4RIoCf73RF/lHOHsY9eQGQaFVVRf58HMJ1j+KMxFcLHNC4khE1qkhKVNtUpj/5G3utDYQ
-	M3wzJdlWeAq54d0pOf68GQ1rflFdYsXTmLMMqjDGQE4+iWYKRgV3Th8Kbu745QCTN4lm6mBT7WeJX
-	ayCZgJZ5vObyiDDdKO7SIFKcpc7eWvMYEX5nhcYykjBlPO9C9UE+VK6U0bnZ4PIU6IS9FjFLdq0YD
-	QlfrAPNpWTk4+lIyJj9g==;
+	List-Owner; bh=h7ZMjOHZnub7I02GGs2+ZNq38w9ZfRd8s4DzV2qSzx4=; b=FvOeHgAcRR7t6t
+	3/Ry7v8MBprflZAUshJwGyiGwP9fr0jGsiWK2CmllaPinkmDpoB6VofmOBzIE7L6c11rZwu5LfJpI
+	SfXCbUZeqMLBjMNu281t8Ro0xKNvQ6zK9ECsZOPJvEeXpzgJopt3CrdjjkvDdQ+drJFPmHOsCZhCs
+	A4GdfMvL9td1QRDtenVbO7WDNqDOG3MnEFU26AFav8xndeiPi/w7t+QIzocIRtPgwnLGa1otGbNgB
+	uh0XNH6NxsLHrBeqQU5cYj6Pf/Esp+BXdZheWvBWqGDcSGr1ikTqqGiU5wfE2wSgraWcOMJGOwzgV
+	c4M76CsiGzhETDZ8Yv9Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xRvNW-0000000Dmlc-3BmS;
-	Fri, 13 Nov 2026 17:47:58 +0000
+	id 1xRvOf-0000000DnIh-3Lp1;
+	Fri, 13 Nov 2026 17:49:10 +0000
 Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xRvNQ-0000000DmiF-0C3h
+	id 1xRvOd-0000000DnHR-1rG9
 	for linux-mediatek@lists.infradead.org;
-	Fri, 13 Nov 2026 17:47:55 +0000
-Received: from pps.filterd (m0279862.ppops.net [127.0.0.1])
-	by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id 6ADFRT2R533308
-	for <linux-mediatek@lists.infradead.org>; Fri, 13 Nov 2026 17:47:51 GMT
+	Fri, 13 Nov 2026 17:49:08 +0000
+Received: from pps.filterd (m0279864.ppops.net [127.0.0.1])
+	by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id 6ADH3oTt3868553
+	for <linux-mediatek@lists.infradead.org>; Fri, 13 Nov 2026 17:49:07 GMT
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
 	cc:content-transfer-encoding:content-type:date:from:in-reply-to
 	:message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
-	03h8Stqm2jiHP1ePJ8/GT4xjXmJ9AokgbaM3KsJdgkY=; b=O5Y2iAae3vxsFE5d
-	bb/rkn64PBwYsEBMSAwKJaK6QUBOzvaT/JN7Sw+WKNElb9GGov+5+qBGIPt9dyjI
-	UOCX/5yCyKcW57d4cg6vRl3v16ZA/YI1s+lltrHyx/sP7shs3NV680IKYwiZwKC8
-	wKhWXV6W2DUQI4X61efRhfgyLDseWAywprIqlnavRxUKN8d86RxDtCnyzHgDpEYi
-	J/0TzccypLE2Bd4fWDQ0AVjoaNovbbww1x1Gltu2UrkdksM/l+KLy9noKBA4e5Uv
-	XfGLWfvUT9lt2CtF51P+LQ7LTBgxktLEPpwWiOSETJNQfotta1ir+bN4jfUT8Nzt
-	FzxYSA==
-Received: from mail-pf1-f200.google.com (mail-pf1-f200.google.com [209.85.210.200])
-	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4hwvjaagth-1
+	h7ZMjOHZnub7I02GGs2+ZNq38w9ZfRd8s4DzV2qSzx4=; b=Dd2YORBp7MJYX8GR
+	WMxdTmllHObR7E31WjlBbKI/1aHD9DXvwhN4/JFeb9FOinbvyqhZzG9w2U2krmuf
+	U5L9GnSKOmR3KbR67NLZpwtNC1yl/9DQVus402t3tDOVbInxwsfvsujM/rKo6oR6
+	nzzDC3r/Jyy5vw5VS7ol+iz3dXp+mX5XRvgzMPL0ywUzDgf81zCbt5Qj8vr+DZLH
+	hggBhc9r+rTrBQITwdOnzIeqXfzkrqNZ43BtLiosV5iheoX0+JvsHSHkt6nxJNKY
+	nYm2koN3rnjwYAgXvcC0vk4p2S2W1/tsdkCDfTVZh8mTgj37DFuj7ZwY0T1tMXNM
+	vWWkiQ==
+Received: from mail-pj1-f70.google.com (mail-pj1-f70.google.com [209.85.216.70])
+	by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4hx6ma854a-1
 	(version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
-	for <linux-mediatek@lists.infradead.org>; Fri, 13 Nov 2026 17:47:51 +0000 (GMT)
-Received: by mail-pf1-f200.google.com with SMTP id d2e1a72fcca58-8b930598cf0so1775531b3a.1
-        for <linux-mediatek@lists.infradead.org>; Fri, 13 Nov 2026 09:47:51 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1794592071; cv=none;
+	for <linux-mediatek@lists.infradead.org>; Fri, 13 Nov 2026 17:49:06 +0000 (GMT)
+Received: by mail-pj1-f70.google.com with SMTP id 98e67ed59e1d1-3ac8f449d1bso948156a91.3
+        for <linux-mediatek@lists.infradead.org>; Fri, 13 Nov 2026 09:49:06 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1794592146; cv=none;
         d=google.com; s=arc-20260327;
-        b=nGBgssmi6AJ1Jl1NNuqJcr3+gILDsgu4O+RaboOi1ntUYn/kCwdX1PYTiqKc84X4LQ
-         HgWZKa6lSrwN7ckSRj25cOUmiPoWBXhnJADEmaQMABuMgm32RuNX2jMYdYrcvUN3jCy1
-         Eq+jJxTGpIOvA3i7lRPrVI9QcZ5pDs6+hCA+WIsBvFuKYn9CeO8PgllrRxn1b+iqwWdV
-         BfH9qdPW8DjJuKWjV9+9p+WBeMwzTzKDRB029zb3XIU0bAsRMQpiKsUA+g/01kpBkmGg
-         +LCOjWVSNahorT/WFmM2gJq2SM1f77gmsRv/64hxqe1wpCns41fq3/bG2cjBsWWE6aOM
-         5wbQ==
+        b=UVdlCwaUpFTD9HxcQvp0kj50At4b9N0FvAtdBBHQ7RN/cCPReCBQk7YR60vxJUZvF2
+         jfHo7F5jsnbfrxiifT2f/xp4mOUzEhNlzGjRFL7wChJI45VqtVStRf4uHdbjAS7GqxSt
+         H0kx7GUpNvUnokIcvCxc721yKzXtS1LR3UExBO87nQKn+cJRzoB5jdk1Ke9CyCwdd9Vi
+         H97qaWkCvFiN2390uLKVlAA8JpY4gQhOK+DgkWXCrbh3xUjV01HoKBCTcw8PwhRLd7pR
+         u+V3CBoo2qyoSEdiK0NZIPpn8pOjBanD3+Y4zZpEPFiiyDtelXZAsA9ttVoMHO0QvQGQ
+         fZgg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20260327;
         h=content-transfer-encoding:cc:to:subject:message-id:date:from
          :in-reply-to:references:mime-version:dkim-signature;
-        bh=03h8Stqm2jiHP1ePJ8/GT4xjXmJ9AokgbaM3KsJdgkY=;
-        fh=TXbAHNFX78Ln104fsNZHgVTeGGHUJNO5XoqkBJK/PiY=;
-        b=KQaXcKyLRvOeqaidTX4V1DIl0ND1sfdbqWswj857O21O7Tt0Vhi5DcXcfsgwJ6GPMI
-         L7wAIFqXFIy8Nb/WReKfMDQnptmvQhrWaU1Gj0TXQ5KH3BEtRMa3rgMpHjeg95Tbx/Ig
-         /TRItnocLtckDgXP7oZIonX+DupbzjYzeM62jX2KGZNIjoPobXXcKLsK7JB2ZRIiQUFG
-         EDzE2ysNTtP/8DNgVukOxwbN7LMnlBnOguSjCbHLdp5ml2gaOZ7RKkPRpncZQHNXT85A
-         RnPIyWiM7VCzD8ePOza/r5h3HM1y2dRsqSdpAWd6cqVZNCUcwVImnj1Y+bu43Z5zaliq
-         Rryw==;
+        bh=h7ZMjOHZnub7I02GGs2+ZNq38w9ZfRd8s4DzV2qSzx4=;
+        fh=51IppMBcq5Z9UdjiFLs42ws2nY4IwLu0sdrFgwzByRM=;
+        b=D3y18+R6GEM4AFRSMCzFbzDVuLOehAPJH+43MbKVfrQXBbolWDvfwX19Jt6jKc2e2e
+         Oyg615VoIIVBpnMQY2bJz3Is0XngCc4EKnTS23UHOAqi8Cc4EifyM7Y4hVvXq/+XNPPJ
+         Ptjo5HxaBD5tGYjo5WFVFKq8Ss48J7k+JxovNPtHQPYN2di2yy/acZlTFO3DcZZqsFeu
+         kHaytd1Br0k9/MU5MESAeeHJkKO9owl0eaUu8WKKv/BQOX3qqAmBeWl0iLjlbeKdUyOe
+         UIe4+rDKNzHQj3vNEgG8niMGwy6aCGgngrASoHGtCojfWEiIMxudsRVcBVgEwvduvmdL
+         ChtA==;
         darn=lists.infradead.org
 ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=oss.qualcomm.com; s=google; t=1794592071; x=1795196871; darn=lists.infradead.org;
+        d=oss.qualcomm.com; s=google; t=1794592146; x=1795196946; darn=lists.infradead.org;
         h=content-transfer-encoding:content-type:cc:to:subject:message-id
          :date:from:in-reply-to:references:mime-version:from:to:cc:subject
          :date:message-id:reply-to:content-type;
-        bh=03h8Stqm2jiHP1ePJ8/GT4xjXmJ9AokgbaM3KsJdgkY=;
-        b=YLzBqMNo7SWGl64WNtmNTiPOQ4sS+lAux4G/TfPs6xZoqE/rXTG59JQ130j4yeHcGN
-         zv4zk7relfU+uSWk0/iQf5n8R0QqhQWDJUvxdywQzBng6t5pZQab6G7eZh4Jwwy2esZr
-         expwLrN122Bpmo26enPimNmAjJoVcgReaMy8NRvhXp1d2/ZO3DitJ2uAtbpURYx2db0n
-         SwaEcynlsMtm+BfvkZdtgI4Dm8hHK7kVvBmg1j64FYdCEp74abkdijnVyISLajbwoITM
-         R3gTYivqIqjqcLuLT/2qPGHODJBB1uXCixmUeMhrapassRzU0mZpQkJGH0X/YqQGyEzA
-         0EBA==
+        bh=h7ZMjOHZnub7I02GGs2+ZNq38w9ZfRd8s4DzV2qSzx4=;
+        b=FD5ikz7cnJuZr66pKhvZEkKvkAcQNhNUEoHayMX8ZzEw5q+hZr+hUbURWKs9UQBlAA
+         oBgKU/MxQDaNZk5JjRYnGIL/B4wbSbKA7xAcArxSZDd9UYoKVDe/oUyeCrM9rjbIdkQz
+         hWxptYmuIYOh9A78TqnVVgQw6itD5JsMBNOTJZS/3e3JTHJxUVY6EozTHIsgxd+CbayL
+         oNqiXMt0bUoV1SgqQDLZMlU9USU6T1P3SuD1qcI+s7r9syrqLazBSCPCnyVsbXslslPd
+         ef338J0O/EUOzgg8XV850mULTkS29EJx8/sAveGBT8m2L8awSQk92zE1XmQzV/ypOlpU
+         3TnQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1794592071; x=1795196871;
+        d=1e100.net; s=20260707; t=1794592146; x=1795196946;
         h=content-transfer-encoding:content-type:cc:to:subject:message-id
          :date:from:in-reply-to:references:mime-version:x-gm-gg
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
          :content-type;
-        bh=03h8Stqm2jiHP1ePJ8/GT4xjXmJ9AokgbaM3KsJdgkY=;
-        b=HJsZPTc/XoP6qchbtBigEuktFZAABaDzDD+33c3g8G/z6h1VSeR7uQeYzSkpTQG55d
-         xleNw4uSNYG63lyWlaNFVycq16I/rYP/b3NSSW8ntKOuXaW/oXOc0AClkPUovQoqiPrW
-         oZGbhIpWtIR8EBKPdctynnKdevSOSvSrWbCXfJAppzEQIknE6o0lkZm5xw7rWFKwCp7w
-         iTqxIDJ9X/h6ytcEyirf96JPiiC4iBN2ARlqActuhWN+pWJPsyCQuIBuaoDPpMMAhv4E
-         vnzFVnYayJ8UL6G6pmCTHAtBARgRZgGGs0PdOHq3sdNe5phVTDbrZrY4nLK1lXQZpSEM
-         viIA==
-X-Forwarded-Encrypted: i=1; AL+hErE/1LEQZIz1CDOmuRcUH6E+pnyJnfh/l7/zy4jV3RNA7FudtYVDTZzkcvr+PghtquoQNhNgYGuJMPrcJKSV7w==@lists.infradead.org
-X-Gm-Message-State: APuU4Z9pzvns5vEqwmI/rb3BQhKy/QzZBURk7FA7/XOYuvChUmKDJhP1
-	1oOdQ2JxhRjx2eHsgecYVLwKNCMZzHMFJYUAthlP9QBB4Z+xAqEliOVc1PdBZBuQqus2urh/RjA
-	bG7LNegvkuIXHojRgILQeNidNfeXTRZBjJitWYzK1FZdkuy/P3o4bTexbTol9d3PIpmTR9TDGbZ
-	rctGOiMgklJ7u8xo8z0c5xlwbnZxAbiNIg3GpOIZEzedMXBLmgpNLX+W90pw==
-X-Gm-Gg: AYBFou0R8tbTRXT9fhTE/tdmurcHMyAv4K4xBeakwUFd/40BRUb2YjNFV8QJ1SI7TQW
-	Mo6T7rTYr6Pnh96l20q+vrs4f4IShaYpQqq/YyRcUdVQlvdhH7LYj9AlbhBGIwL7dGHmxIQB/yy
-	BZnk+HZL9Z16za9EQxDjljBwrtN/MLaxoIh6PEYKSNkO3j9e+l0jmAmBVBWg==
-X-Received: by 2002:a05:6300:67c7:b0:3ed:b2b6:9bdc with SMTP id adf61e73a8af0-3f7a81b6293mr3316949637.54.1794592070847;
-        Fri, 13 Nov 2026 09:47:50 -0800 (PST)
-X-Received: by 2002:a05:6300:67c7:b0:3ed:b2b6:9bdc with SMTP id
- adf61e73a8af0-3f7a81b6293mr3316931637.54.1794592070412; Fri, 13 Nov 2026
- 09:47:50 -0800 (PST)
+        bh=h7ZMjOHZnub7I02GGs2+ZNq38w9ZfRd8s4DzV2qSzx4=;
+        b=FtCQ3/utVs4RCxnm1edM8dW0c7Ox6C2Nj6bQAWcTKo2fBidvQ8INsKExk+1BMSO4G+
+         Q25RIx6fU2h7mdAB+8GPM9lozc2t8+DkXkcbe5qgpSBIdZO6SicCRTaSLnqoqiQVoxqF
+         BjJTyNcUVB8my9faDTuBwSA4P6q1GI99F+vgXlYspyD9Ofay/tKsPYKa0rUxQ6IjOthm
+         6GMJTbT1vMK24NQ75+PHFtjRf/dfN6koNpZ4XAtR7Zkx/VI5pf5gWivMLrPaBqHiJur6
+         HmpQGqgOrXrMWppv/gydaUlTvySffkCdSvw7VqdCunw4WgRwmt1dNWB3iDzi34pjVLU5
+         qaUQ==
+X-Forwarded-Encrypted: i=1; AL+hErEhJ6QoHlborNQVHtSvjKtbRDNsnHZHsWRutaTMb85a5GaRaBCs2Wsu1h+FXz4CSKP7bmVdHk3AyV90h8AF9A==@lists.infradead.org
+X-Gm-Message-State: APuU4Z8r7PB80He69SfNXZTwZanqS4ItXfFa8xZJwBkWS6huPmGlC5L7
+	4iGS9YuR4IccrqvjYXBYv0zByMDJ65ld4jrrZAkjlzwrtKAHwQvXjH19Cpmv7GjohrIL92E4Ynd
+	FkiIA0p8ZUzPWbfbBait14CyCW0+2jSiv6CVIj6kkqw9Rp4HlM3aqb6vFmBpBzael82kOqG4ynm
+	o4HSvvrpxTxwShHFxeaujs+I4EZOyRVzehqsBj/JrugQL95w8wOw==
+X-Gm-Gg: AYBFou1Y5wW1LAYPMab1Y3nZbo2Ss8FZpJbAQB9wdljxzD5HrWKpI1PTDyCsuIIqSYR
+	yJeRj0Kd/76DPUBiYOHFRZhbEdObybeslOFAbV6RDwKXrXcpPjomUa1cDH712Y2sLilFV3j7weh
+	ve/CA6lQPPpj+eg4+Ads58W+fsIkc+VB7PHdxQN/p+48qvYzCx/GdjM5CJCQ==
+X-Received: by 2002:a17:90b:3eca:b0:3b0:b64e:1e34 with SMTP id 98e67ed59e1d1-3b1b0ba6480mr3020202a91.51.1794592145890;
+        Fri, 13 Nov 2026 09:49:05 -0800 (PST)
+X-Received: by 2002:a17:90b:3eca:b0:3b0:b64e:1e34 with SMTP id
+ 98e67ed59e1d1-3b1b0ba6480mr3020179a91.51.1794592145385; Fri, 13 Nov 2026
+ 09:49:05 -0800 (PST)
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-References: <20261019-pmdomain-mtk-mt8365-fix-defines-v1-0-dfd445dc3763@baylibre.com>
-In-Reply-To: <20261019-pmdomain-mtk-mt8365-fix-defines-v1-0-dfd445dc3763@baylibre.com>
+References: <20261101-rbrue-suez-upstreaming-mtk-pmdomain-defer-v1-1-b4c41cf3935f@gmail.com>
+In-Reply-To: <20261101-rbrue-suez-upstreaming-mtk-pmdomain-defer-v1-1-b4c41cf3935f@gmail.com>
 From: Ulf Hansson <ulf.hansson@oss.qualcomm.com>
-Date: Fri, 13 Nov 2026 18:47:39 +0100
-X-Gm-Features: AclHuK8NzVs_OvZcfoqmQEpBpt7jEXwt_UF2F5ZEs-xe9awuz15iknhP_y45KKk
-Message-ID: <CAPx+jO9wAPreJr5Gt5CVFqb=E-hMjQnwRWwdnvpus0MObio4nQ@mail.gmail.com>
-Subject: Re: [PATCH 0/2] pmdomain: mediatek: mt8365: fix defines and add
- missing one
-To: Julien Stephan <jstephan@baylibre.com>
+Date: Fri, 13 Nov 2026 18:48:53 +0100
+X-Gm-Features: AclHuK_o-18EjhupOpQOHXsSHQhEk8A1OgSO8CQWrvzqq3tyYIcyEkcdDS0ZD6Q
+Message-ID: <CAPx+jO94U8b_PNJbbuzzFtF2HFeM7sYaT+oZoLJUfvThXkFYjA@mail.gmail.com>
+Subject: Re: [PATCH] pmdomain: mediatek: Don't power cycle domains on probe deferral
+To: Ryan Brue <ryanbrue.dev@gmail.com>
 Cc: Ulf Hansson <ulfh@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
         AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-        linux-pm@vger.kernel.org, linux-kernel@vger.kernel.org,
-        linux-arm-kernel@lists.infradead.org,
+        Enric Balletbo i Serra <eballetbo@kernel.org>,
+        Matthias Brugger <mbrugger@suse.com>, linux-pm@vger.kernel.org,
+        linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
         linux-mediatek@lists.infradead.org
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-X-Proofpoint-GUID: Ai-Op5iyqhJould_raFpoY0sD6Zpg5tw
-X-Proofpoint-Spam-Info: AW1haW4tMjYxMTEzMDA3MCBTYWx0ZWRfX2aOliEGZ9kNf
- vAlFLcyWnDphekPVRjj6dNaU91bJA0PG0Ce3PyKZ1CRpAMGHW4htvE/8r4wRZlGKuCtWASPw9BU
- r/Vltjm6+FcifeAsT8W2uuLsgK6OHbc=
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYxMTEzMDA3MCBTYWx0ZWRfXzWGTRUvut/zS
- cJw2yRq0EiopjQlCe1mqLbomoe8UrLirXeQNUlRcV0PfBrccXCmNTILD3mwo48BO67fA2KJjxS1
- hMASxTLpXB0mWjMWAF3u98qS/cTPmTU8lmTG1eOBbKBwWsXck98PcgVVHyMHD8WZjcOxhDWx5QZ
- Zqpc3BhzNsXTQWodHcXw6LdTKzGUZQixQv5JgiNbBjOpUCN5oFo6Rb8EQlm5ZxIpmGY6XabeWwT
- Ke5C0RM7GaNoV0Xzg693pTkQGvePsFzsdATZu8Cnu0DLZSN+n3Ii1wa4zsjnk6JDeEBRAJoal47
- W5jAA0t+YYDkQPld4o2Sb4HSBtYDfLFV8zi7iw/HB2flInI31Ebh1XWxObOoR3HQfXbbTfu1nb6
- ikitJbok5jhwydXl7nSsnAQGesAvjwfc+PR0rU2J8FAPm1JLnSt4YRHPEZXlfa01LeoUy5ZLisF
- 2wd1Sm/9adp5xbj3x2Q==
-X-Proofpoint-ORIG-GUID: Ai-Op5iyqhJould_raFpoY0sD6Zpg5tw
-X-Authority-Analysis: v=2.4 cv=AoN7T+9P c=1 sm=1 tr=0 ts=6af74d47 cx=c_pps
- a=mDZGXZTwRPZaeRUbqKGCBw==:117 a=IkcTkHD0fZMA:10 a=zJRp6_cAMcgA:10
+X-Proofpoint-GUID: Jz678KWRQSVp-J5xQ_dpuVpMnvW7pJoG
+X-Authority-Analysis: v=2.4 cv=RbcFmFtv c=1 sm=1 tr=0 ts=6af74d92 cx=c_pps
+ a=0uOsjrqzRL749jD1oC5vDA==:117 a=IkcTkHD0fZMA:10 a=zJRp6_cAMcgA:10
  a=s4-Qcg_JpJYA:10 a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22
- a=_K5XuSEh1TEqbUxoQ0s3:22 a=IpJZQVW2AAAA:8 a=uk3U7i1IYnWYCnW-BX4A:9
- a=QEXdDO2ut3YA:10 a=zc0IvFSfCIW2DFIPzwfm:22 a=IawgGOuG5U0WyFbmm1f5:22
+ a=DJpcGTmdVt4CTyJn9g5Z:22 a=pGLkceISAAAA:8 a=qXiDfWie0P3iMaLS2MUA:9
+ a=QEXdDO2ut3YA:10 a=mQ_c8vxmzFEMiUWkPHU9:22
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYxMTEzMDA3MCBTYWx0ZWRfX9S5m3cc6Od8R
+ A6Nh8x98TJOsPKjouTZT68pRSg6f1qvTg0mLmWty2RhV9wERy4LxtYjr8QNW2a2v/hxnwT7lvOE
+ m1XdyxW2R+3GR+cex0Deoze4SIOCRdUnWsKEdVmiBA3qb3cA6/6BXpUlHCnFVqxOhsb57Oklnga
+ Pic2KGA/U0Ogbe/bAMhR+KwNmN5LMd8jzChBpa8Yp+Aa0PkQ3m/IhVEZMydMCQFLmtj0ioqbwRP
+ q/um75AYtIOYZt98RImZLKh63bVVAyr+Hhkx1cX5UrjDN2RDPECm/fbOYGbDe6yo8v6oLXEXdKX
+ g7A4WEVKAeyeiuJohABPSN634IetU1vjc2huDbwVKBjPwlTIUNVJQVvaRPfnyqLHw9yfFFZLRdO
+ i9JoElNjzbAO7O7BBYj7zQSPF2CnuY+r6O1gxCCCwT+KSrKCbEd5gGBXJY2SH0ZLh+/SYzmM0DZ
+ uW4Wlg7UVFPwRIUSOiw==
+X-Proofpoint-ORIG-GUID: Jz678KWRQSVp-J5xQ_dpuVpMnvW7pJoG
+X-Proofpoint-Spam-Info: AW1haW4tMjYxMTEzMDA3MCBTYWx0ZWRfX/60eyC0c8wZ2
+ NHM/U5L1FSbPWV9lBDtYK9+yVr2+ty6CfAztofPggbmI2jvUkbCAXg6incVXdM5hpzrb/tyEeOU
+ cryXvZmn73O5qWrjLGKZ5e/y2uhCz+8=
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.293,Aquarius:18.0.1176,Hydra:6.1.138,FMLib:17.12.100.49
  definitions=2026-11-13_05,2026-11-11_03,2025-10-01_01
 X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- clxscore=1015 impostorscore=0 bulkscore=0 priorityscore=1501
- lowpriorityscore=0 adultscore=0 phishscore=0 suspectscore=0 spamscore=0
- malwarescore=0 classifier=typeunknown authscore=0 authtc= authcc=
- route=outbound adjust=0 reason=mlx scancount=1 engine=8.22.0-2611040001
- definitions=main-2611130070
+ priorityscore=1501 impostorscore=0 phishscore=0 adultscore=0 suspectscore=0
+ clxscore=1015 lowpriorityscore=0 bulkscore=0 malwarescore=0 spamscore=0
+ classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
+ reason=mlx scancount=1 engine=8.22.0-2611040001 definitions=main-2611130070
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261113_094753_855317_D16E63E4 
-X-CRM114-Status: GOOD (  17.31  )
+X-CRM114-CacheID: sfid-20261113_094907_564894_AE19E39C 
+X-CRM114-Status: GOOD (  41.31  )
 X-Spam-Score: -2.8 (--)
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -174,40 +173,230 @@ X-Spam-Status: No, score=-15.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On Mon, Oct 19, 2026 at 2:33=E2=80=AFPM Julien Stephan <jstephan@baylibre.c=
-om> wrote:
+On Mon, Nov 2, 2026 at 6:44=E2=80=AFAM Ryan Brue <ryanbrue.dev@gmail.com> w=
+rote:
 >
-> While trying to add a missing define for BIT(25) in
-> MT8365_POWER_DOMAIN_MFG, I realized that the name was already wrongly
-> assigned to BIT(22). Trying to fix it, I also checked all other defines
-> for MT8365 and noticed a few other mismatches between the defines and the
-> datasheet.
-> This series fixes the MT8365 defines and adds the missing one. While at
-> it, also fix some indentation issues.
+> scpsys_add_one_domain() powers each domain on as soon as it is added,
+> before the probe has looked up the supplies and clocks of the domains
+> after it. When one of those is not available yet the probe defers, and
+> the cleanup powers off every domain added so far, whatever state it was
+> found in. The retry then powers them all on again.
 >
-> Cheers
-> Julien
+> A bootloader that leaves the display scanning out does not survive
+> that. On the Amazon Fire HD 10 (MT8173), mfg_async's domain-supply comes
+> from the MT6397 PMIC, which registers after the power controller first
+> probes, and power cycling the MM domain under the running display hangs
+> the SoC on almost every boot.
 >
-> Signed-off-by: Julien Stephan <jstephan@baylibre.com>
-> ---
-> Julien Stephan (2):
->       pmdomain: mediatek: mt8365: fix defines
->       pmdomain: mediatek: mt8365: add missing define
+> Power the domains on only once all of them have been added, so that a
+> deferral leaves the hardware as it was found, and on cleanup power off
+> only the domains this probe has turned on.
 >
->  drivers/pmdomain/mediatek/mt8365-pm-domains.h | 11 ++++++-----
->  include/linux/soc/mediatek/infracfg.h         | 21 +++++++++++----------
->  2 files changed, 17 insertions(+), 15 deletions(-)
-> ---
-> base-commit: c03c1a14507dfaf8b856c2608f9ac216021fc222
-> change-id: 20261019-pmdomain-mtk-mt8365-fix-defines-c6be65ffca95
+> Fixes: 59b644b01cf4 ("soc: mediatek: Add MediaTek SCPSYS power domains")
 >
-> Best regards,
-> --
-> Julien Stephan <jstephan@baylibre.com>
->
+> Signed-off-by: Ryan Brue <ryanbrue.dev@gmail.com>
 
-Applied for next, thanks!
+This looks good to me. However, the patch no longer applies to my
+fixes branch, due to other related patches being queued.
+
+Please rebase and resubmit a new version.
 
 Kind regards
 Uffe
+
+
+
+> ---
+> Found on an Amazon Fire HD 10 (2017), an MT8173 tablet whose board DTS
+> is not upstream yet. Its bootloader (LK) leaves DISP_OVL0 scanning out
+> when it starts the kernel, and the MT6397 regulators register about 50 ms
+> after the power controller first probes, so the probe often defers.
+>
+> The deferral was forced for the A/B with a local test knob that returns
+> -EPROBE_DEFER at the first domain with a domain-supply. Each boot attempt
+> was counted from the host's USB log, since a hung board is reset by the
+> watchdog into the same kernel. The hang does not happen when the
+> display is stopped before the power controller probes, which is what
+> our downstream kernel does today.
+>
+> elm, hana and the MT8173 EVB also give mfg_async a domain-supply, from a
+> DA9211 on I2C, so they probably take the same deferral path. Whether
+> their firmware leaves anything running across it, I don't know.
+>
+> Only MT8173 (direct control) was tested. The HW-voter cleanup changes
+> the same way, powering off only what this probe powered on, but there is
+> no such hardware here.
+>
+> This patch was developed with the help of an LLM.
+> ---
+> With the deferral forced at mfg_async on every boot and the bootloader's
+> display left running, 61 of 63 boot attempts hung before userspace
+> without this patch, and none of 5 with it. With the patch, the cleanup
+> left MM on as the bootloader had left it on every boot; without it, it
+> powered off all seven domains the probe had turned on, MM included.
+> ---
+>  drivers/pmdomain/mediatek/mtk-pm-domains.c | 60 ++++++++++++++++++------=
+------
+>  1 file changed, 37 insertions(+), 23 deletions(-)
+>
+> diff --git a/drivers/pmdomain/mediatek/mtk-pm-domains.c b/drivers/pmdomai=
+n/mediatek/mtk-pm-domains.c
+> index f0fa79e01f9c..6a81aadc18f3 100644
+> --- a/drivers/pmdomain/mediatek/mtk-pm-domains.c
+> +++ b/drivers/pmdomain/mediatek/mtk-pm-domains.c
+> @@ -982,12 +982,6 @@ generic_pm_domain *scpsys_add_one_domain(struct scps=
+ys *scpsys, struct device_no
+>                 pd->genpd.flags |=3D GENPD_FLAG_IRQ_SAFE;
+>         }
+>
+> -       /*
+> -        * Initially turn on all domains to make the domains usable
+> -        * with !CONFIG_PM and to get the hardware in sync with the
+> -        * software.  The unused domains will be switched off during
+> -        * late_init time.
+> -        */
+>         if (MTK_SCPD_CAPS(pd, MTK_SCPD_KEEP_DEFAULT_OFF)) {
+>                 bool domain_is_on;
+>
+> @@ -999,15 +993,8 @@ generic_pm_domain *scpsys_add_one_domain(struct scps=
+ys *scpsys, struct device_no
+>                 if (domain_is_on)
+>                         dev_warn(scpsys->dev,
+>                                  "%pOF: A default off power domain has be=
+en ON\n", node);
+> -       } else {
+> -               ret =3D pd->genpd.power_on(&pd->genpd);
+> -               if (ret < 0) {
+> -                       dev_err(scpsys->dev, "%pOF: failed to power on do=
+main: %d\n", node, ret);
+> -                       goto err_put_subsys_clocks;
+> -               }
+> -
+> -               if (MTK_SCPD_CAPS(pd, MTK_SCPD_ALWAYS_ON))
+> -                       pd->genpd.flags |=3D GENPD_FLAG_ALWAYS_ON;
+> +       } else if (MTK_SCPD_CAPS(pd, MTK_SCPD_ALWAYS_ON)) {
+> +               pd->genpd.flags |=3D GENPD_FLAG_ALWAYS_ON;
+>         }
+>
+>         if (MTK_SCPD_CAPS(pd, MTK_SCPD_ACTIVE_WAKEUP))
+> @@ -1085,7 +1072,7 @@ static int scpsys_add_subdomain(struct scpsys *scps=
+ys, struct device_node *paren
+>         return ret;
+>  }
+>
+> -static void scpsys_remove_one_domain(struct scpsys_domain *pd)
+> +static void scpsys_remove_one_domain(struct scpsys_domain *pd, bool powe=
+red_on)
+>  {
+>         struct scpsys *scpsys =3D pd->scpsys;
+>         int ret;
+> @@ -1100,11 +1087,10 @@ static void scpsys_remove_one_domain(struct scpsy=
+s_domain *pd)
+>                         "failed to remove domain '%s' : %d - state may be=
+ inconsistent\n",
+>                         pd->genpd.name, ret);
+>
+> -       if (scpsys->soc_data->type =3D=3D SCPSYS_MTCMOS_TYPE_HW_VOTER) {
+> -               if (scpsys_hwv_domain_is_enable_done(pd))
+> +       if (powered_on) {
+> +               if (scpsys->soc_data->type =3D=3D SCPSYS_MTCMOS_TYPE_HW_V=
+OTER)
+>                         scpsys_hwv_power_off_internal(pd);
+> -       } else {
+> -               if (scpsys_domain_is_on(pd) || MTK_SCPD_CAPS(pd, MTK_SCPD=
+_SIMPLE_PWRSEQ))
+> +               else
+>                         scpsys_power_off_internal(pd);
+>         }
+>
+> @@ -1112,7 +1098,8 @@ static void scpsys_remove_one_domain(struct scpsys_=
+domain *pd)
+>         clk_bulk_put(pd->num_subsys_clks, pd->subsys_clks);
+>  }
+>
+> -static void scpsys_domain_cleanup(struct scpsys *scpsys, u8 *domains_idx=
+, u8 num_probed)
+> +static void scpsys_domain_cleanup(struct scpsys *scpsys, u8 *domains_idx=
+,
+> +                                 u8 num_probed, u8 num_powered)
+>  {
+>         struct generic_pm_domain *genpd;
+>         struct scpsys_domain *pd;
+> @@ -1124,7 +1111,8 @@ static void scpsys_domain_cleanup(struct scpsys *sc=
+psys, u8 *domains_idx, u8 num
+>                 genpd =3D scpsys->pd_data.domains[pd_idx];
+>                 if (genpd) {
+>                         pd =3D to_scpsys_domain(genpd);
+> -                       scpsys_remove_one_domain(pd);
+> +                       scpsys_remove_one_domain(pd, i < num_powered &&
+> +                                                !MTK_SCPD_CAPS(pd, MTK_S=
+CPD_KEEP_DEFAULT_OFF));
+>                 }
+>         }
+>  }
+> @@ -1361,6 +1349,7 @@ static int scpsys_probe(struct platform_device *pde=
+v)
+>         struct scpsys *scpsys;
+>         int num_domains, ret;
+>         u8 num_added_pds =3D 0;
+> +       u8 num_powered_pds =3D 0;
+>         u8 *added_pds_idx;
+>
+>         soc =3D of_device_get_match_data(&pdev->dev);
+> @@ -1436,6 +1425,31 @@ static int scpsys_probe(struct platform_device *pd=
+ev)
+>                 return ret;
+>         }
+>
+> +       /*
+> +        * Initially turn on all domains to make the domains usable
+> +        * with !CONFIG_PM and to get the hardware in sync with the
+> +        * software.  The unused domains will be switched off during
+> +        * late_init time.
+> +        *
+> +        * Do this only once every domain has got its supply and clocks,
+> +        * so that a probe deferral leaves the hardware as it was found:
+> +        * the bootloader may still be using a domain that is already on.
+> +        */
+> +       for (; num_powered_pds < num_added_pds; num_powered_pds++) {
+> +               struct scpsys_domain *pd;
+> +
+> +               pd =3D to_scpsys_domain(scpsys->domains[added_pds_idx[num=
+_powered_pds]]);
+> +               if (MTK_SCPD_CAPS(pd, MTK_SCPD_KEEP_DEFAULT_OFF))
+> +                       continue;
+> +
+> +               ret =3D pd->genpd.power_on(&pd->genpd);
+> +               if (ret < 0) {
+> +                       dev_err(dev, "%s: failed to power on domain: %d\n=
+",
+> +                               pd->genpd.name, ret);
+> +                       goto err_cleanup_domains;
+> +               }
+> +       }
+> +
+>         ret =3D of_genpd_add_provider_onecell(np, &scpsys->pd_data);
+>         if (ret) {
+>                 dev_err(dev, "failed to add provider: %d\n", ret);
+> @@ -1446,7 +1460,7 @@ static int scpsys_probe(struct platform_device *pde=
+v)
+>         return 0;
+>
+>  err_cleanup_domains:
+> -       scpsys_domain_cleanup(scpsys, added_pds_idx, num_added_pds);
+> +       scpsys_domain_cleanup(scpsys, added_pds_idx, num_added_pds, num_p=
+owered_pds);
+>         return ret;
+>  }
+>
+>
+> ---
+> base-commit: 6628e7d4c6b25c8d18f1345e3a20d21829aae7e4
+> change-id: 20261009-rbrue-suez-upstreaming-mtk-pmdomain-defer-0cc87eb8240=
+0
+>
+> Best regards,
+> --
+> Ryan Brue <ryanbrue.dev@gmail.com>
+>
 
