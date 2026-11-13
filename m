@@ -2,77 +2,118 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 5D9A8606F73E
-	for <linux-mediatek@archiver.kernel.org>; Fri, 13 Nov 2026 17:40:54 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id CE2B8606BD36
+	for <linux-mediatek@archiver.kernel.org>; Fri, 13 Nov 2026 17:45:13 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=1SnlW4WP;
-	dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=LQevYm0n
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=UpFxDtcJ;
+	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=C4wgQwV0
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Unsubscribe-Post:List-Owner;
-	bh=K8RSNjEk44VlJn/qNlU6eKh7NDcxfJy1p6WQbfCb+o4=; b=1SnlW4WPvgVKQavdQloXe69aSZ
-	WZuQcCIZPWDd4nFug26Q/tdpS8lu1Of7rBGK6eEJW/B1o4HLWzxNls+dsgM5DIHTed1pL7542gJfO
-	hzztYtUizUdBFVPVmPjJuP/u4yuXqhFQxUtX1BoDEIBEqcAO+Ip65dId1qq2wKLkfD7/wEtOCRhGM
-	caCP83XXmZbVT1ENBNxliOigeGZLh5afag1RhmJz7mIk0Gebjs2FbY9cXPPFaQFqWKIh8olyrbYeu
-	rdkfqifTbDp38HPPjKye+b1+PGtqRe3VW+WoxD93qJrlm8iGEEAg2QspDuYoEXby/XuWMMpREUidF
-	dQdAFBaw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Unsubscribe-Post:
+	List-Owner; bh=CpkPMrzn1QXCpAfabsJQRA1H7XnFSRlrjjFJbYsbFCo=; b=UpFxDtcJIBzxHG
+	MU90kLb4ys4pPXn0EeIsdBegfasIsQFLnmnmqaioZW1lD9dePplEL6QlWoulx+YLIl2PsU2SLKvIc
+	zW10qmN8DZ/gxSIWLGN6P3zddHuUZYabfDYSgwU5yMR7bXJqJJLHWrJxmclojui9irw8L6bDBFgrf
+	Rr+Lg591q1qRsCSxpKhT7Re134AUHsyoI5DJQxmITLtp+22GsjGILkz6zKoyZT2XerkXr3zocOXnp
+	ApJsUkCHkA+LrDVxa/pC9/raZRQL3SnKLu+BnpY1KNOitXo/v+mQuRWdYEOOrkLat/HjECiAt++R4
+	gdddF5SEOKv5vHWqA3IA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xRvGf-0000000DlkH-0jSe;
-	Fri, 13 Nov 2026 17:40:53 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1xRvKr-0000000DmEy-27Q8;
+	Fri, 13 Nov 2026 17:45:13 +0000
+Received: from mail-pg1-x530.google.com ([2607:f8b0:4864:20::530])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xRvGb-0000000Dljz-1rzj
+	id 1xRvKo-0000000DmEF-0Pyw
 	for linux-mediatek@lists.infradead.org;
-	Fri, 13 Nov 2026 17:40:51 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id C92E043072;
-	Fri, 13 Nov 2026 17:40:48 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 60EDB1F000C4;
-	Fri, 13 Nov 2026 17:40:44 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1794591648;
-	bh=K8RSNjEk44VlJn/qNlU6eKh7NDcxfJy1p6WQbfCb+o4=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=LQevYm0n/Ftm5UZw8hh9/ueejWIcTPwgA85WG0sDMCgP3yNco8z2f9bfjallIreQc
-	 MdfGJoavYW8wxIFvYJF1sjUFt5GurWqJQ85+HQSUfMouPHCIgXHyuIbfe+Fergga4x
-	 QcVBB7DPjeBP6kOcZU3EqTR4iwOlyFP03VZ4Hqm1UAnbwwBDr+oOx+lYm7qJGQY2vw
-	 dm4hEBWv2NyNAS10qdhjdE7H74KRVCV3J2NQIajUzDU3SJ9Ih/k+ZTbFqu3vi1geIt
-	 645jtwTtIZP07e38Ru1Gxp7m5vIMzGniaWPDrjjbklxq8dBtJnqf/1gpFDgr0Ybj+U
-	 zuyEPahkQDVVg==
-Date: Fri, 13 Nov 2026 17:40:42 +0000
-From: Conor Dooley <conor@kernel.org>
-To: John Crispin <john@phrozen.org>
-Cc: Lorenzo Bianconi <lorenzo@kernel.org>, Lee Jones <lee@kernel.org>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Linus Walleij <linusw@kernel.org>,
-	Bartosz Golaszewski <brgl@kernel.org>,
-	Ahmed Naseef <naseefkm@gmail.com>,
-	Benjamin Larsson <benjamin.larsson@genexis.eu>,
-	Christian Marangi <ansuelsmth@gmail.com>,
-	devicetree@vger.kernel.org, lei.dong@airoha.com,
-	Linqi.zhang@airoha.com, linux-gpio@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
-	mfd@lists.linux.dev,
-	Mikhail Kshevetskiy <mikhail.kshevetskiy@iopsys.eu>,
-	Rajeev.kumar@airoha.com, upstream@airoha.com, Weifeng.xu@airoha.com,
-	zhengping.zhang@airoha.com
-Subject: Re: [PATCH v2 5/7] dt-bindings: pinctrl: airoha: add AN7589
-Message-ID: <20261113-fame-smock-6ea3b8fadcd0@spud>
-References: <20261112185941.1316112-1-john@phrozen.org>
- <20261112185941.1316112-6-john@phrozen.org>
+	Fri, 13 Nov 2026 17:45:11 +0000
+Received: by mail-pg1-x530.google.com with SMTP id 41be03b00d2f7-cc4c02ddd62so620779a12.0
+        for <linux-mediatek@lists.infradead.org>; Fri, 13 Nov 2026 09:45:09 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1794591909; cv=none;
+        d=google.com; s=arc-20260327;
+        b=cgY7Hd5ACrXhswCx+alr2SGBiEuZc/7XpzRdISnHp2ml6fR8oknhQkJwLm1C45wQVK
+         uIgILHuquYi+9LyKJalnOM+1MvfwxoAUdoBh8MsLNlYuWStUf4YocPYzu+9jy1uLYDTS
+         shk7gvoe3iHFQp4qVxSQil4FBxGLSMzgZFjw9t1EUjymErt/NSZDOrLg7Ba7uf6H11uZ
+         d/oM9bbeO32Fb8R62Lh0O2sWxT9iRNded9SVGkvFijdtq0GnvTFvA69hJ+HA2zXzQ1gl
+         zpZKyNiVleTxnp0O4dkzgocLJkdY3lVg/WPJe7KNhhSEcYtuGmrby0Tw8Qp6RA/WGdB+
+         xgAQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20260327;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=CpkPMrzn1QXCpAfabsJQRA1H7XnFSRlrjjFJbYsbFCo=;
+        fh=bOLXz2U5cr1K2VD6hKSWyBbu9iNqe/AoNqPbfPSUvQE=;
+        b=XFnUEvC4BdgKaIHjGTZHKYSH/auj6J057vveVkNxH6PEmlrb4dAanr2FxAcamESa+i
+         E8Oyv6CBaNgfb1M6a9/Gyyx5ieeh08eIY+hFBmqjhLtnN9yFLkDs3yMO55RtQUEqjWWI
+         KvGm2brMOq8Ta6QQlUsrwtiHZFI6/eqC7/XkEMPef5+DvEITaFB7MmvRsipinz1IDbOd
+         bR6yIxJ1UC5HRsa2Rm/n/DOQ+Zty955jcExBvxQ8wrxZwCskf6/M04vXx5dJUH87wGz0
+         CG7i7r6rgWVmEN7ocEGw1Vzwz1w+cQdW01fWnLZ2DeMk03/0yhViCnscbKGVPNG9QsNx
+         mJ5w==;
+        darn=lists.infradead.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20260707; t=1794591909; x=1795196709; darn=lists.infradead.org;
+        h=content-transfer-encoding:content-type:cc:to:subject:message-id
+         :date:from:in-reply-to:references:mime-version:from:to:cc:subject
+         :date:message-id:reply-to:content-type;
+        bh=CpkPMrzn1QXCpAfabsJQRA1H7XnFSRlrjjFJbYsbFCo=;
+        b=C4wgQwV0RQdsoQW3XoUFqK9UMxAMSv/7eL/1HWWGf2X1Ak4TmvoUm6FkI0nFsEt5yr
+         p4i3kZ/I6NdtXCpRNwDxCsaP8DVlU0OEqNs+r/jgsxZknxnHDcY1JjIAoSmYNbYrh3sl
+         ehmxa5yRtBQDdSpRX7DZMZ3E2ReFxvusTRweFgXI+qY20B8Rie570Hkaa+kEm+kHYa5/
+         HtAU2NRUlsRHu8FLO3/FDaErfS8wWso3/waY7TGwbvdgNsidA2nGMS7NfEZTN8qTSdAD
+         ZL9EwrzVXQyoEf+ezyvk7Nc2eE0UXTxv+U9V/s8HSy1DhFJ0qHuWyZxIalHTNqkAngpG
+         TkaA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20260707; t=1794591909; x=1795196709;
+        h=content-transfer-encoding:content-type:cc:to:subject:message-id
+         :date:from:in-reply-to:references:mime-version:x-gm-gg
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+         :content-type;
+        bh=CpkPMrzn1QXCpAfabsJQRA1H7XnFSRlrjjFJbYsbFCo=;
+        b=wKAibpq2I4Wl6vjskXzSIJ7kg4cQq1T2DT0yooypq30DeKlMrEi7JkmFaXJHHYUJQU
+         r9xV6V8mCSmGOg5cXOwM5KbrSkJA5VsN4lpsE9xruIDWiCOTaoe9eYNaWe2cYtjG7Jqr
+         DblEhLngAEJIPDe6w9Z9BHODpqcjhPDG5tZtmRAHFkRsL0MzM8+fbfeZBm/qlDUCPh/R
+         heOI6tFCP9ahv9jkUSnjfH5FfkJ8/LMYVDRq+ssLbrvNQYR/sXW5xHAyzArhudDt6R0I
+         nVLXiCnKA3+gDwcQRkuD2fzHJ6zajOuK4Pd23ogfTuajb1Of0jUCBWuXrq9dZcES1nYI
+         cMfw==
+X-Forwarded-Encrypted: i=1; AL+hErEoR9imq2dwTWnsjph3oE8nqCtrj2mslxVX30cf6aFVxCwVHfN+b+24KG+SYwDYkb9yg+9pT8ILIGV5Xei36w==@lists.infradead.org
+X-Gm-Message-State: APuU4Z+vnke2Yz8zo19IZQ34NBTqzRLkm2e20LDydgkC8KT7N6Xm0Sr/
+	rlqWe0/5BRlUwQNomJtlkQwNgWEg77IgoTyr0FCqjghtIHX5P3o3RonxTey9+5mtIlFJEpH1Ki3
+	GgYOAqlQZjwuTfaDrNclY9IudXV2HqM8=
+X-Gm-Gg: AYBFou24RSkKL+edb6n0tjWG1404CZXkVf5qlPj9zmz8uGIG1At3vLlzJNUZSpYXFnk
+	JJmdXOPuz5H8nwpkaayyQOOLeV2m2uH7w9StV4aT0/1w1s90clucVl3wLuNCqh0Yr1kSa3Rnaer
+	dOWctvqmYXyLcIQoIkcx1LS7TPtfYg+gXm8IDE4bo7uZsj8xS9mjVaP0GfD6dGpglYf2XTyCi9f
+	5vfPUJbnB76YVDEXl2HmhUWIPlfwBXCXl4NIGaGk51o2zKuS3OTzD8PhF47RkNV0XwBxccaBiq7
+	QTWxy8VT+MMNcwVOUiik/oB8qKc1+V9LVSAYxW4rUa7bmi8WoF0ktxrr/7lDqLrfiEBmTwaQYLm
+	2gGp/7BoJcfaEJS/wOUjL9zFiLtLupxVOgsyaOg==
+X-Received: by 2002:a17:90b:2e83:b0:3ab:b764:826c with SMTP id
+ 98e67ed59e1d1-3b1b0a1f097mr3248202a91.12.1794591908865; Fri, 13 Nov 2026
+ 09:45:08 -0800 (PST)
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="Kif4Wlq6iXJvmXXm"
-Content-Disposition: inline
-In-Reply-To: <20261112185941.1316112-6-john@phrozen.org>
+References: <CAHaeJsQLvC-KBEpy5qu8iYxSB51mbHohrPvN4PJushF_Tk3foA@mail.gmail.com>
+ <20261023180554.7266-1-lucid_duck@justthetip.ca> <CAHaeJsSfoTxJhWVCrELCiLZr1zD42LGJUvrmf7oSzRQpwh6-jw@mail.gmail.com>
+ <20261024173414.10559-1-lucid_duck@justthetip.ca> <CAHaeJsTHykkk8Cm+FUZW2RmzzmT47aJNxRR1kpymhDvknnhKuQ@mail.gmail.com>
+ <CAHaeJsRROtH4CLVR8mhWznWq6c5mLqLsn9j=6EXPgFUOW8t26w@mail.gmail.com>
+ <CAHaeJsSSYkJTiXAh3PJtfxmXYdPf_-u3OPbunB=GsYXbVAUVrg@mail.gmail.com> <20261113163823.8252-1-lucid_duck@justthetip.ca>
+In-Reply-To: <20261113163823.8252-1-lucid_duck@justthetip.ca>
+From: Chris <hoopyfrood42@gmail.com>
+Date: Fri, 13 Nov 2026 12:44:54 -0500
+X-Gm-Features: AclHuK-kboXCmkkZ8ATzKP0-8pyPMq66IuBjqFLfP5gRrQyyh3-Tpydyt0hROfU
+Message-ID: <CAHaeJsQ1EHxMLzKjtTZZekJWS-8hXb4XaUW9C4bO0anJoVLh9A@mail.gmail.com>
+Subject: Re: [RFC PATCH wireless] wifi: mt76: mt7925: get the survey airtime
+ from the firmware
+To: Devin Wittmayer <lucid_duck@justthetip.ca>
+Cc: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo@kernel.org>, Ryder Lee <ryder.lee@mediatek.com>, 
+	Deren Wu <deren.wu@mediatek.com>, Sean Wang <sean.wang@mediatek.com>, 
+	Shayne Chen <shayne.chen@mediatek.com>, Javier Tia <floss@jetm.me>, linux-wireless@vger.kernel.org, 
+	linux-mediatek@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20261113_094510_154853_730FFEF6 
+X-CRM114-Status: GOOD (  25.81  )
+X-Spam-Score: -1.9 (-)
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,579 +124,74 @@ List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-15.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,
-	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=ham
-	autolearn_force=no version=4.0.1
+X-Spam-Status: No, score=-2.9 required=3.0 tests=BAYES_00,DKIM_SIGNED,
+	DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,FREEMAIL_FORGED_FROMDOMAIN,
+	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS autolearn=no autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
---Kif4Wlq6iXJvmXXm
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+On Fri, Nov 13, 2026 at 11:38=E2=80=AFAM Devin Wittmayer
+<lucid_duck@justthetip.ca> wrote:
+>
+> On Thu, Nov 12, 2026 at 11:30:19PM -0500, Chris wrote:
+> > Just checking in on this one. Is a v2 still planned? I=E2=80=99ve been =
+running
+> > the RFC on a Netgear A9000 (MT7925U) since late October. Busy time now
+> > follows the channel, and the readings look right.
+>
+> Yes, but it is on hold. With the A9000 at USB 2.0 the firmware is slow
+> to answer the query during a download, the query times out and the
+> chip gets reset. MediaTek's series for the same counters does it too.
+> I wrote that up here:
+>
+>   https://lore.kernel.org/linux-wireless/20261113150048.5271-1-lucid_duck=
+@justthetip.ca/
+>
+> v2 has to get past that first.
+>
+> > As I mentioned in my last reply, I take the busy, rx and tx deltas in
+> > 32 bits, since offset 19 wraps about every 72 minutes. Since then,
+> > about one reading a day still comes out near 2^64, so roughly 2^32 =C2=
+=B5s
+> > below the previous one, as if the counter stepped back. All but one
+> > were on 2412 MHz. I haven=E2=80=99t dug into it, but it may be worth a =
+look
+> > before v2.
+>
+> v2 takes all three differences in 32 bits, the way you suggested. With
+> a wrap forced early the RFC steps back by 2^32 us and v2 does not.
+> After that change the totals can only go up, so is your once-a-day
+> reading from the RFC as posted, or with the change in your driver?
+>
+> Thanks for keeping it running.
+>
+> Devin
 
-On Thu, Nov 12, 2026 at 07:59:39PM +0100, John Crispin wrote:
-> Document the AN7589 pin controller and the GPIO system controller it
-> lives under. The pin controller selects functions through a separate
-> IOMUX syscon, referenced by the airoha,iomux phandle, and every pin is
-> a GPIO in mode 0.
->=20
-> The AN7589 has no chip SCU dependency and the vendor SDK carries no
-> pull or drive registers for it. Groups follow the SDK naming without
-> its _grp suffix. As in the other Airoha pin controller bindings, a
-> function names a block type, such as uart or i2c, and the group selects
-> the instance. The PON groups keep the working mode only: the SDK
-> encodes the driver reset sequence as extra pinctrl states, which
-> belongs in the consumer driver.
->=20
-> The pwm function routes a PWM channel to one of GPIO0 to GPIO15, with
-> one group per pin. The pin also needs its GPIO output enabled, so conf
-> nodes allow the GPIO direction and output level. Pull and drive
-> properties are not allowed, as no registers for them are known.
->=20
-> Signed-off-by: John Crispin <john@phrozen.org>
-> ---
-> Changes in v2:
-> - One function per block type, with the group selecting the
->   instance, as in the other Airoha pin controller bindings (Conor).
-> - List the valid groups for the groups property (Conor).
 
-As Lee requested, please split this out. Two patches, maybe even three.
+On Fri, Nov 13, 2026, Devin Wittmayer wrote:
+> After that change the totals can only go up, so is your once-a-day
+> reading from the RFC as posted, or with the change in your driver?
 
->=20
->  .../mfd/airoha,an7589-gpio-sysctl.yaml        |  66 ++++
->  .../devicetree/bindings/mfd/syscon.yaml       |   1 +
->  .../pinctrl/airoha,an7589-pinctrl.yaml        | 354 ++++++++++++++++++
->  MAINTAINERS                                   |   2 +
->  4 files changed, 423 insertions(+)
->  create mode 100644 Documentation/devicetree/bindings/mfd/airoha,an7589-g=
-pio-sysctl.yaml
->  create mode 100644 Documentation/devicetree/bindings/pinctrl/airoha,an75=
-89-pinctrl.yaml
->=20
-> diff --git a/Documentation/devicetree/bindings/mfd/airoha,an7589-gpio-sys=
-ctl.yaml b/Documentation/devicetree/bindings/mfd/airoha,an7589-gpio-sysctl.=
-yaml
-> new file mode 100644
-> index 000000000000..0785b61bdda3
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/mfd/airoha,an7589-gpio-sysctl.yaml
-> @@ -0,0 +1,66 @@
-> +# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
-> +%YAML 1.2
-> +---
-> +$id: http://devicetree.org/schemas/mfd/airoha,an7589-gpio-sysctl.yaml#
-> +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> +
-> +title: Airoha AN7589 GPIO System Controller
-> +
-> +maintainers:
-> +  - John Crispin <john@phrozen.org>
-> +
-> +description:
-> +  Airoha AN7589 SoC GPIO system controller which provides a register map
-> +  for controlling the GPIO and pins of the SoC.
-> +
-> +properties:
-> +  compatible:
-> +    items:
-> +      - const: airoha,an7589-gpio-sysctl
-> +      - const: syscon
-> +      - const: simple-mfd
-> +
-> +  reg:
-> +    maxItems: 1
-> +
-> +  pinctrl:
-> +    type: object
-> +    $ref: /schemas/pinctrl/airoha,an7589-pinctrl.yaml
-> +    description:
-> +      Child node definition for AN7589 Pin controller
+With the change, as far as I can tell. The build with the 32-bit
+differences was installed on Nov 5 and loaded at a reboot a few minutes
+later, and that module is still the one running. From Nov 6 to Nov 8 it
+still gave 14 of these readings, 10 on 2412 MHz and 4 on 5745 MHz. Each
+was a busy total of about 2^64 - 2^32 us plus a few hundred ms, some of
+them on a channel with under a second of active time. My tool logs only
+the first one per channel per run, so 14 is a floor.
 
-Do we even need a child node here? If all this node does is
-gpio/pinctrl, why can the driver not bind directly to this node?
+There have been none since midday on Nov 8, about five days of scanning
+on the same module.
 
-What else does it do that warrants being a syscon?
+I agree a 32-bit difference shouldn't be able to do that, so something
+else may be going on in my build. I'll keep watching and report back if
+it shows up again.
 
-> +
-> +required:
-> +  - compatible
-> +  - reg
-> +
-> +additionalProperties: false
-> +
-> +examples:
-> +  - |
-> +    #include <dt-bindings/interrupt-controller/arm-gic.h>
-> +
-> +    system-controller@1fbf0200 {
-> +      compatible =3D "airoha,an7589-gpio-sysctl", "syscon", "simple-mfd";
-> +      reg =3D <0x1fbf0200 0x100>;
-> +
-> +      pinctrl {
-> +        compatible =3D "airoha,an7589-pinctrl";
-> +        airoha,iomux =3D <&iomux>;
-> +
-> +        interrupt-parent =3D <&gic>;
-> +        interrupts =3D <GIC_SPI 82 IRQ_TYPE_LEVEL_HIGH>;
-> +
-> +        gpio-controller;
-> +        #gpio-cells =3D <2>;
-> +
-> +        interrupt-controller;
-> +        #interrupt-cells =3D <2>;
-> +
-> +        mmc-pins {
-> +          mux {
-> +            function =3D "emmc";
-> +            groups =3D "emmc";
-> +          };
-> +        };
-> +      };
-> +    };
-> diff --git a/Documentation/devicetree/bindings/mfd/syscon.yaml b/Document=
-ation/devicetree/bindings/mfd/syscon.yaml
-> index dae706ca7642..e87158d42e87 100644
-> --- a/Documentation/devicetree/bindings/mfd/syscon.yaml
-> +++ b/Documentation/devicetree/bindings/mfd/syscon.yaml
-> @@ -24,6 +24,7 @@ properties:
->      oneOf:
->        - items:
->            - enum:
-> +              - airoha,an7589-iomux
->                - airoha,en7581-pbus-csr
->                - al,alpine-sysfabric-service
->                - allwinner,sun8i-a83t-system-controller
-> diff --git a/Documentation/devicetree/bindings/pinctrl/airoha,an7589-pinc=
-trl.yaml b/Documentation/devicetree/bindings/pinctrl/airoha,an7589-pinctrl.=
-yaml
-> new file mode 100644
-> index 000000000000..57e79e550caf
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/pinctrl/airoha,an7589-pinctrl.yaml
-> @@ -0,0 +1,354 @@
-> +# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
-> +%YAML 1.2
-> +---
-> +$id: http://devicetree.org/schemas/pinctrl/airoha,an7589-pinctrl.yaml#
-> +$schema: http://devicetree.org/meta-schemas/core.yaml#
-> +
-> +title: Airoha AN7589 Pin Controller
-> +
-> +maintainers:
-> +  - John Crispin <john@phrozen.org>
-> +
-> +description:
-> +  The Airoha AN7589 pin controller is used to control SoC pins. Pin
-> +  functions are selected through a separate IOMUX register block, one
-> +  mode field per pin. Every pin is a GPIO in mode 0.
-> +
-> +properties:
-> +  compatible:
-> +    const: airoha,an7589-pinctrl
-> +
-> +  airoha,iomux:
-> +    $ref: /schemas/types.yaml#/definitions/phandle
-> +    description:
-> +      Phandle to the IOMUX syscon holding the per pin mode fields.
-> +
-> +  interrupts:
-> +    maxItems: 1
-> +
-> +  gpio-controller: true
-> +
-> +  '#gpio-cells':
-> +    const: 2
-> +
-> +  gpio-ranges:
-> +    maxItems: 1
-> +
-> +  interrupt-controller: true
-> +
-> +  '#interrupt-cells':
-> +    const: 2
-> +
-> +allOf:
-> +  - $ref: pinctrl.yaml#
-> +
-> +required:
-> +  - compatible
-> +  - airoha,iomux
-> +  - interrupts
-> +  - gpio-controller
-> +  - "#gpio-cells"
-> +  - interrupt-controller
-> +  - "#interrupt-cells"
-> +
-> +patternProperties:
-> +  '-pins$':
-> +    type: object
-> +
-> +    patternProperties:
-> +      '^mux(-|$)':
-> +        type: object
-> +
-> +        description:
-> +          pinmux configuration nodes.
-> +
-> +        $ref: /schemas/pinctrl/pinmux-node.yaml
-> +
-> +        properties:
-> +          function:
-> +            description:
-> +              A string containing the name of the function to mux to the=
- group.
-> +            enum: [uart, i2c, spi, pcm, pcm_spi, i2s, mdio, mdcs, mdios,=
- emmc,
-> +                   pcie, pon, sgpio, watchdog, shiftmux_spi, tod, sync_e=
-, jtag,
-> +                   pwm]
-> +
-> +          groups:
-> +            description:
-> +              An array of strings. Each string contains the name of a gr=
-oup.
-> +            items:
-> +              enum: [uart1, uart2, uart3, uart3_alt, uart4, uart5, uart5=
-_alt,
-> +                     uart5_full, uart6, uart6_full, i2c0, i2c1, i2c2, i2=
-c3,
-> +                     i2c4, spi0, ext_spi0_full, ext_spi1, ext_spi1_full,
-> +                     ext_spi2, ext_spi2_full, ext_spi3, ext_spi3_full, p=
-cm1,
-> +                     pcm2, pcm_spi, pcm_spi_cs, pcm_ctrl, i2s, mdio0, md=
-io1,
-> +                     mdio2, mdcs, mdios, emmc, pcie0_rst, pcie0_clkreq,
-> +                     pcie0_wake, pcie1_rst, pcie1_clkreq, pcie1_wake, pc=
-ie2_rst,
-> +                     pcie2_clkreq, pcie2_wake, pon1, pon2, sgpio0, sgpio=
-1,
-> +                     watchdog, shiftmux_spi, tod, sync_e, cpu_jtag,
-> +                     cpu_jtag_alt, npu_jtag, ibex_jtag, pma50eth_jtag,
-> +                     ainpu_jtag, pma50pon_jtag, gpio0, gpio1, gpio2, gpi=
-o3,
-> +                     gpio4, gpio5, gpio6, gpio7, gpio8, gpio9, gpio10, g=
-pio11,
-> +                     gpio12, gpio13, gpio14, gpio15]
-> +
-> +        required:
-> +          - function
-> +          - groups
-> +
-> +        allOf:
-> +          - if:
-> +              properties:
-> +                function:
-> +                  const: uart
-> +            then:
-> +              properties:
-> +                groups:
-> +                  items:
-> +                    enum: [uart1, uart2, uart3, uart3_alt, uart4, uart5,
-> +                           uart5_alt, uart5_full, uart6, uart6_full]
-> +                  maxItems: 10
+On the USB 2.0 timeouts: the A9000 here is on USB 2.0 as well and has
+run your RFC since Oct 23 with no 00030022 timeout. Nearly all of that
+is monitor mode, though, with only short station sessions, never a long
+download.
 
-Why does this have maxItems of 10? Only way I see this being more than 1
-is if uart5_full is not a superset of uart5 and you need to do
-
- function =3D "uart";
- groups =3D "uart1", "uart1_full";
-
-Otherwise, there should only be one. uart1 and uart2 should have
-different nodes.
-
-> +          - if:
-> +              properties:
-> +                function:
-> +                  const: i2c
-> +            then:
-> +              properties:
-> +                groups:
-> +                  items:
-> +                    enum: [i2c0, i2c1, i2c2, i2c3, i2c4]
-> +                  maxItems: 5
-
-So here, maxItems should be 1 for similar reasons.
-pw-bot: changes-requested
-
-> +          - if:
-> +              properties:
-> +                function:
-> +                  const: spi
-> +            then:
-> +              properties:
-> +                groups:
-> +                  items:
-> +                    enum: [spi0, ext_spi0_full, ext_spi1, ext_spi1_full,
-> +                           ext_spi2, ext_spi2_full, ext_spi3, ext_spi3_f=
-ull]
-> +                  maxItems: 8
-> +          - if:
-> +              properties:
-> +                function:
-> +                  const: pcm
-> +            then:
-> +              properties:
-> +                groups:
-> +                  items:
-> +                    enum: [pcm1, pcm2]
-> +                  maxItems: 2
-> +          - if:
-> +              properties:
-> +                function:
-> +                  const: pcm_spi
-> +            then:
-> +              properties:
-> +                groups:
-> +                  items:
-> +                    enum: [pcm_spi, pcm_spi_cs, pcm_ctrl]
-> +                  maxItems: 3
-> +          - if:
-> +              properties:
-> +                function:
-> +                  const: i2s
-> +            then:
-> +              properties:
-> +                groups:
-> +                  enum: [i2s]
-> +          - if:
-> +              properties:
-> +                function:
-> +                  const: mdio
-> +            then:
-> +              properties:
-> +                groups:
-> +                  items:
-> +                    enum: [mdio0, mdio1, mdio2]
-> +                  maxItems: 3
-> +          - if:
-> +              properties:
-> +                function:
-> +                  const: mdcs
-> +            then:
-> +              properties:
-> +                groups:
-> +                  enum: [mdcs]
-> +          - if:
-> +              properties:
-> +                function:
-> +                  const: mdios
-> +            then:
-> +              properties:
-> +                groups:
-> +                  enum: [mdios]
-> +          - if:
-> +              properties:
-> +                function:
-> +                  const: emmc
-> +            then:
-> +              properties:
-> +                groups:
-> +                  enum: [emmc]
-> +          - if:
-> +              properties:
-> +                function:
-> +                  const: pcie
-> +            then:
-> +              properties:
-> +                groups:
-> +                  items:
-> +                    enum: [pcie0_rst, pcie0_clkreq, pcie0_wake, pcie1_rs=
-t,
-> +                           pcie1_clkreq, pcie1_wake, pcie2_rst, pcie2_cl=
-kreq,
-> +                           pcie2_wake]
-> +                  maxItems: 9
-> +          - if:
-> +              properties:
-> +                function:
-> +                  const: pon
-> +            then:
-> +              properties:
-> +                groups:
-> +                  items:
-> +                    enum: [pon1, pon2]
-> +                  maxItems: 2
-> +          - if:
-> +              properties:
-> +                function:
-> +                  const: sgpio
-> +            then:
-> +              properties:
-> +                groups:
-> +                  items:
-> +                    enum: [sgpio0, sgpio1]
-> +                  maxItems: 2
-> +          - if:
-> +              properties:
-> +                function:
-> +                  const: watchdog
-> +            then:
-> +              properties:
-> +                groups:
-> +                  enum: [watchdog]
-> +          - if:
-> +              properties:
-> +                function:
-> +                  const: shiftmux_spi
-> +            then:
-> +              properties:
-> +                groups:
-> +                  enum: [shiftmux_spi]
-> +          - if:
-> +              properties:
-> +                function:
-> +                  const: tod
-> +            then:
-> +              properties:
-> +                groups:
-> +                  enum: [tod]
-> +          - if:
-> +              properties:
-> +                function:
-> +                  const: sync_e
-> +            then:
-> +              properties:
-> +                groups:
-> +                  enum: [sync_e]
-> +          - if:
-> +              properties:
-> +                function:
-> +                  const: jtag
-> +            then:
-> +              properties:
-> +                groups:
-> +                  items:
-> +                    enum: [cpu_jtag, cpu_jtag_alt, npu_jtag, ibex_jtag,
-> +                           pma50eth_jtag, ainpu_jtag, pma50pon_jtag]
-> +                  maxItems: 7
-> +          - if:
-> +              properties:
-> +                function:
-> +                  const: pwm
-> +            then:
-> +              properties:
-> +                groups:
-> +                  items:
-> +                    enum: [gpio0, gpio1, gpio2, gpio3, gpio4, gpio5, gpi=
-o6,
-> +                           gpio7, gpio8, gpio9, gpio10, gpio11, gpio12, =
-gpio13,
-> +                           gpio14, gpio15]
-> +
-> +        additionalProperties: false
-> +
-> +      '^conf(-|$)':
-> +        type: object
-> +
-> +        description:
-> +          pinconf configuration nodes.
-> +
-> +        $ref: /schemas/pinctrl/pincfg-node.yaml
-> +
-> +        properties:
-> +          pins:
-> +            description:
-> +              An array of strings. Each string contains the name of a pi=
-n.
-> +            items:
-> +              pattern: '^gpio([0-9]|[1-6][0-9]|7[0-3])$'
-> +            minItems: 1
-> +            maxItems: 74
-
-I'm also curious about why this goes up to 74. None of the functions
-have 74 pins, surely?
-
-Cheers,
-Conor.
-
-> +
-> +          input-enable: true
-> +
-> +          output-enable: true
-> +
-> +          output-low: true
-> +
-> +          output-high: true
-> +
-> +        required:
-> +          - pins
-> +
-> +        additionalProperties: false
-> +
-> +    additionalProperties: false
-> +
-> +additionalProperties: false
-> +
-> +examples:
-> +  - |
-> +    #include <dt-bindings/interrupt-controller/arm-gic.h>
-> +
-> +    pinctrl {
-> +      compatible =3D "airoha,an7589-pinctrl";
-> +      airoha,iomux =3D <&iomux>;
-> +
-> +      interrupt-parent =3D <&gic>;
-> +      interrupts =3D <GIC_SPI 82 IRQ_TYPE_LEVEL_HIGH>;
-> +
-> +      gpio-controller;
-> +      #gpio-cells =3D <2>;
-> +
-> +      interrupt-controller;
-> +      #interrupt-cells =3D <2>;
-> +
-> +      gpio-ranges =3D <&pinctrl 0 0 74>;
-> +
-> +      mmc-pins {
-> +        mux {
-> +          function =3D "emmc";
-> +          groups =3D "emmc";
-> +        };
-> +      };
-> +
-> +      pcie0-pins {
-> +        mux {
-> +          function =3D "pcie";
-> +          groups =3D "pcie0_rst", "pcie0_clkreq", "pcie0_wake";
-> +        };
-> +      };
-> +
-> +      uart5-pins {
-> +        mux {
-> +          function =3D "uart";
-> +          groups =3D "uart5", "uart5_full";
-> +        };
-> +      };
-> +    };
-> diff --git a/MAINTAINERS b/MAINTAINERS
-> index aa647f5d37dd..2041a8aed28f 100644
-> --- a/MAINTAINERS
-> +++ b/MAINTAINERS
-> @@ -22137,6 +22137,8 @@ PIN CONTROLLER - AIROHA
->  M:	Lorenzo Bianconi <lorenzo@kernel.org>
->  L:	linux-mediatek@lists.infradead.org (moderated for non-subscribers)
->  S:	Maintained
-> +F:	Documentation/devicetree/bindings/mfd/airoha,an7589-gpio-sysctl.yaml
-> +F:	Documentation/devicetree/bindings/pinctrl/airoha,an7589-pinctrl.yaml
->  F:	Documentation/devicetree/bindings/pinctrl/airoha,en7581-pinctrl.yaml
->  F:	drivers/pinctrl/airoha/pinctrl-airoha.c
-> =20
-> --=20
-> 2.34.1
->=20
-
---Kif4Wlq6iXJvmXXm
-Content-Type: application/pgp-signature; name=signature.asc
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCavdLmgAKCRB4tDGHoIJi
-0q6RAPwKzE0h8kbLnHsRWX9/dRqF0vEgbTKkmM4bqjIqyhQ8GAD+JMXfnKLstr3Y
-vl6fDLgPFrgFhMZWKg6epQbVrCzIMAE=
-=HBcP
------END PGP SIGNATURE-----
-
---Kif4Wlq6iXJvmXXm--
+Chris
 
