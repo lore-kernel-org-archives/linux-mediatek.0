@@ -2,112 +2,91 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 1852E60A2626
-	for <linux-mediatek@archiver.kernel.org>; Fri, 13 Nov 2026 19:10:17 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 76597606A33B
+	for <linux-mediatek@archiver.kernel.org>; Fri, 13 Nov 2026 19:32:35 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=rI0H/M/r;
-	dkim=pass (2048-bit key) header.d=bootlin.com header.i=@bootlin.com header.a=rsa-sha256 header.s=dkim header.b=xmodXLO2
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=ydNslvYM;
+	dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com header.a=rsa-sha256 header.s=Intel header.b=nDHtOsaW
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Unsubscribe-Post:
-	List-Owner; bh=lDonEJwEkOKFs6QGhbZZt9eZVrZuIkbPCbngSkG5pl0=; b=rI0H/M/r29URTw
-	q7Kf4cuVesM0o3KIwQkfVSVm6SqkF/pvxcaoe5SpzY0phDcLpbr5yRw91xCnmCCC30oorHJv++lqw
-	sH00dAUZzc0hFXxHDZwhkSUGQGFDGepvW2MZ+YRDKumXdw1loJddiyLBkDCZuSfMFWsuqnmiuZqFZ
-	XH0l2tklCdb4plNPHdW4q4BVIwnp400EABPbjH6aQGIaQy4CLRcCk62eTV/6xXy9pTfhY4S+BTese
-	2fWOZuJBs7xIwkyXgb5TtuIe90ULuaHRdEfey4XrAZfffPoiOtYl1vTyKpg+fhqrXYrhGYzAW1dxV
-	NO//Hz4K2WiADLK6Pt0g==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Unsubscribe-Post:List-Owner;
+	bh=U6jYZ+Xb2RUTQwwnMpQL3qOxWFKiJS39xLrqJeDZ5fA=; b=ydNslvYMyRayFaMrQjNHUI+iFK
+	A1E1L1pdpRGINssKXWZe5QAr+1o4m6cAImklhNusEqzOXAgV3jW/SuGaNoNvbpyRwyrb6ln8MkdRS
+	I7xZac6Tttoke/xT1ILSTKS7NDzuChE3C8kBeE5WMeNE0C4gFo3Kx2/jvcSsR+EHj5Oz0PCGEog7Y
+	zxlyvCfwqNQWw4ewhYZ66ArG6a9PgoQf3gXWuYnLh6DWuLQROP1PKfqOuF7/sIBFuOsvI90sIiBS7
+	5Yhq5xHBNQYmWcOPMnQBj62AwfOg4wqriDW0s8qCEYKbBEkcLsqRbuyRcortEXHxynCeHGKvg3w59
+	FJylysrA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xRwfA-0000000E78x-3PVz;
-	Fri, 13 Nov 2026 19:10:16 +0000
-Received: from smtpout-03.galae.net ([185.246.85.4])
+	id 1xRx0l-0000000EBwy-0I7K;
+	Fri, 13 Nov 2026 19:32:35 +0000
+Received: from mgamail.intel.com ([198.175.65.15])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xRwf6-0000000E77J-2ziX
-	for linux-mediatek@lists.infradead.org;
-	Fri, 13 Nov 2026 19:10:15 +0000
-Received: from smtpout-01.galae.net (smtpout-01.galae.net [212.83.139.233])
-	by smtpout-03.galae.net (Postfix) with ESMTPS id 31F9D4E415B0;
-	Fri, 13 Nov 2026 19:10:10 +0000 (UTC)
-Received: from mail.galae.net (mail.galae.net [212.83.136.155])
-	by smtpout-01.galae.net (Postfix) with ESMTPS id D4B6A60015;
-	Fri, 13 Nov 2026 19:10:09 +0000 (UTC)
-Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id 9743F11BC1337;
-	Fri, 13 Nov 2026 20:09:40 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=dkim;
-	t=1794597006; h=from:subject:date:message-id:to:cc:mime-version:content-type:
-	 content-transfer-encoding:content-language:in-reply-to:references;
-	bh=lDonEJwEkOKFs6QGhbZZt9eZVrZuIkbPCbngSkG5pl0=;
-	b=xmodXLO2E58u1qr7RtCp7N55lifIjz083Q4ZqmD4bvN0+1FcYz30INKc9CBCQaf1S7VQ4s
-	2A5kMuGZyrkNgS6FsT6hkOawcP2myuJ87tdxo3tAgFoxHdbwH44B/SMWt/U/hQFmynn7be
-	aKv7Fi/VYerRGYAi58OJb26ZP8FrzywVBo0FvAHDd0vu3/5QKOihXY4NgWsYsJ7hsFWBy7
-	9lclfV0FVvnodTcnN/0Fr3FMMQvsrzrLQRhMmiYETpnrT07mxl8C8hUxF1a8B/r3YPIx3r
-	ttPPtYYc9JwZEjkaplukiacncIVtEd3DfYfroPVa1dCLT6ZTKlaoUJr/gHGg7Q==
-Message-ID: <1b038a37-1e97-4540-ba31-5b9288595788@bootlin.com>
-Date: Fri, 13 Nov 2026 20:09:39 +0100
+	id 1xRx0g-0000000EBuq-0Dmk;
+	Fri, 13 Nov 2026 19:32:33 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1794598350; x=1826134350;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=C16sG7RV76XLEk2qA+4C2ckJRlKBWDd3KFO09Alt5n4=;
+  b=nDHtOsaWlRVrLxBj9sJ09EwpdtSy299KoHVHp44hfqGLGUWjBIo5XcxA
+   fDBy6ZSoMIshYImIcOcdwZ4cXfaAYNgs4abNWPxBj9ModzuoOsyJcT4B7
+   fuyJCxewTzksJK/LnIIbykPJwXA9NH0WWz5t1MvgPmLsW5wXAZnAC2v03
+   sbthl3K6vFb7R9vrtZJXyk6DnIyEhTz2tXR/7+ltlqoKtFbtiG7JQC8/p
+   0i+Qx29aSCyaLVkY2nAwIN7y+v7vV329i+JsPmzBFSOccms+1eOW2v2WU
+   h0b7gfR7ZtY0G1lAGxIxxYVH+ZNDKOflvl0kQLcFPQfDtSM1FbAPBoGk1
+   g==;
+X-CSE-ConnectionGUID: gZHQ9QlqT7GEFEAx3Q2ETA==
+X-CSE-MsgGUID: L6qdw/WLQL2d66IHUmAJKA==
+X-IronPort-AV: E=McAfee;i="6800,10657,11965"; a="3412652"
+X-IronPort-AV: E=Sophos;i="6.27,212,1787036400"; 
+   d="scan'208";a="3412652"
+Received: from fmviesa011.fm.intel.com ([10.60.135.151])
+  by orvoesa107.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 13 Nov 2026 11:32:28 -0800
+X-CSE-ConnectionGUID: vuBoyPenQ9GazlmpB0O6zA==
+X-CSE-MsgGUID: WCFSVtONQaugQB+cZYtX7A==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.27,212,1787036400"; 
+   d="scan'208";a="10784803"
+Received: from lkp-server01.sh.intel.com (HELO 0caa9d2d175c) ([10.239.97.150])
+  by fmviesa011.fm.intel.com with ESMTP; 13 Nov 2026 11:32:23 -0800
+Received: from kbuild by 0caa9d2d175c with local (Exim 4.98.2)
+	(envelope-from <lkp@intel.com>)
+	id 1xRx0W-000000013o9-39fS;
+	Fri, 13 Nov 2026 19:32:20 +0000
+Date: Sat, 14 Nov 2026 03:31:43 +0800
+From: kernel test robot <lkp@intel.com>
+To: John Crispin <john@phrozen.org>, Stefan Roese <sr@denx.de>,
+	Andi Shyti <andi.shyti@kernel.org>, Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Philipp Zabel <p.zabel@pengutronix.de>
+Cc: oe-kbuild-all@lists.linux.dev, Christian Marangi <ansuelsmth@gmail.com>,
+	devicetree@vger.kernel.org, lei.dong@airoha.com,
+	Linqi.zhang@airoha.com, linux-arm-kernel@lists.infradead.org,
+	linux-i2c@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-mediatek@lists.infradead.org, Rajeev.kumar@airoha.com,
+	upstream@airoha.com, Weifeng.xu@airoha.com,
+	zhengping.zhang@airoha.com
+Subject: Re: [PATCH v2 3/3] i2c: mt7621: add support for Airoha AN7589
+Message-ID: <202611140348.p9TnfxBF-lkp@intel.com>
+References: <20261112185820.1315718-4-john@phrozen.org>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 00/27] mfd: Assorted resource lifetime, teardown, and
- error-handling fixes
-To: Lee Jones <lee@kernel.org>
-Cc: Matthias Brugger <matthias.bgg@gmail.com>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, Aaro Koskinen <aaro.koskinen@iki.fi>,
- Andi Shyti <andi.shyti@kernel.org>, Andreas Kemnade <andreas@kemnade.info>,
- Andy Shevchenko <andy@kernel.org>, AnilKumar Ch <anilkumar@ti.com>,
- Arnd Bergmann <arnd@arndb.de>, Binbin Zhou <zhoubinbin@loongson.cn>,
- Brent Casavant <bcasavan@sgi.com>, Chong Qiao <qiaochong@loongson.cn>,
- Corey Minyard <corey@minyard.net>, David Lechner <dlechner@baylibre.com>,
- Dmitry Torokhov <dmitry.torokhov@gmail.com>, Felipe Balbi <balbi@ti.com>,
- Gyungoh Yoo <jack.yoo@maxim-ic.com>,
- Heikki Krogerus <heikki.krogerus@linux.intel.com>,
- Hsin-Hsiung Wang <hsin-hsiung.wang@mediatek.com>,
- Huacai Chen <chenhuacai@kernel.org>,
- Jarkko Nikula <jarkko.nikula@linux.intel.com>,
- Jonathan Cameron <jic23@kernel.org>, Joshua Kinard <linux@kumba.dev>,
- Kai Svahn <kai.svahn@nokia.com>, Kevin Hilman <khilman@baylibre.com>,
- Kumar Sanghvi <kumar.sanghvi@stericsson.com>,
- Linus Walleij <linusw@kernel.org>, linux-crypto@vger.kernel.org,
- linux-i2c@vger.kernel.org, linux-iio@vger.kernel.org,
- linux-input@vger.kernel.org, linux-omap@vger.kernel.org,
- Mattias Nilsson <mattias.i.nilsson@stericsson.com>,
- Mattias Wallin <mattias.wallin@stericsson.com>,
- Matti Vaittinen <mazziesaccount@gmail.com>, mfd@lists.linux.dev,
- Mika Westerberg <mika.westerberg@linux.intel.com>,
- Milo Kim <woogyom.kim@gmail.com>, Ming Yu <tmyu0@nuvoton.com>,
- =?UTF-8?Q?Nuno_S=C3=A1?= <nuno.sa@analog.com>,
- Pantelis Antoniou <panto@antoniou-consulting.com>, Pat Gefre <pfg@sgi.com>,
- Paul Burton <paulburton@kernel.org>, Peter Ujfalusi <peter.ujfalusi@ti.com>,
- Qunqin Zhao <zhaoqunqin@loongson.cn>,
- Rabin Vincent <rabin.vincent@stericsson.com>, Rachna Patil <rachna@ti.com>,
- Roger Quadros <rogerq@kernel.org>, Samuel Ortiz <sameo@linux.intel.com>,
- Sascha Hauer <s.hauer@pengutronix.de>,
- Sebastian Andrzej Siewior <bigeasy@linutronix.de>,
- Shi Hao <i.shihao.999@gmail.com>,
- Srinidhi Kasagar <srinidhi.kasagar@stericsson.com>,
- Stanislaw Skowronek <skylark@unaligned.org>,
- Stephen Warren <swarren@nvidia.com>, Sundar Iyer
- <sundar.iyer@stericsson.com>, syed khasim <x0khasim@ti.com>,
- Thomas Bogendoerfer <tbogendoerfer@suse.de>, Tony Lindgren
- <tony@atomide.com>, Yinggang Gu <guyinggang@loongson.cn>
-References: <20261027093306.2812695-1-lee@kernel.org>
- <179458365250.76424.12505088783548230611.b4-ty@b4>
- <5a68f043-7c9a-44ef-b297-2821886bdcfe@bootlin.com>
- <20261113185908.GI6323@joneslee-macbookpro.roam.internal>
-Content-Language: en-US
-From: Thomas Richard <thomas.richard@bootlin.com>
-In-Reply-To: <20261113185908.GI6323@joneslee-macbookpro.roam.internal>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
-X-Last-TLS-Session-Version: TLSv1.3
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20261112185820.1315718-4-john@phrozen.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261113_111012_912825_412CA64F 
-X-CRM114-Status: GOOD (  12.36  )
-X-Spam-Score: -2.1 (--)
+X-CRM114-CacheID: sfid-20261113_113231_361642_F7BE8316 
+X-CRM114-Status: GOOD (  14.51  )
+X-Spam-Score: -4.4 (----)
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -118,39 +97,87 @@ List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-7.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-10.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,
-	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,USER_AGENT_SANE_1 autolearn=no autolearn_force=no
-	version=4.0.1
+	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,
+	SPF_HELO_NONE,SPF_PASS autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On 11/13/26 7:59 PM, Lee Jones wrote:
-> On Fri, 13 Nov 2026, Thomas Richard wrote:
-> 
->> Hi Lee,
->>
->> On 11/13/26 4:27 PM, Lee Jones wrote:
->>> [26/27] i2c: cgbc: Propagate hardware errors when polling read status
->>>         (no commit info)
->>
->> I noticed you did not applied this patch. It conflicts with my ongoing
->> series "Congatec Board Controller: Add storage devices support". For the
->> V5 I rebased it on top of Krzysztof's series that you applied and this
->> series.
->>
->> I don't know what is your plan for this patch. Will you apply it? Should
->> I pick it into my series, or should we have to deal with I2C tree?
->> Please let me know.
-> 
-> I didn't merge it because it's not mine to take.
-> 
-> I can either take it with an Ack or happy for anyone else to take it.
+Hi John,
 
-I will add it into my series, it already has a mix of MFD and I2C
-patches. So I'll handle the conflict.
+kernel test robot noticed the following build errors:
 
-Best Regards,
-Thomas
+[auto build test ERROR on robh/for-next]
+[also build test ERROR on andi-shyti/i2c/i2c-host linus/master v7.4-rc2 next-20261112]
+[If your patch is applied to the wrong git tree, kindly drop us a note.
+And when submitting patch, we suggest to use '--base' as documented in
+https://git-scm.com/docs/git-format-patch#_base_tree_information]
+
+url:    https://github.com/intel-lab-lkp/linux/commits/John-Crispin/dt-bindings-i2c-mt7621-add-Airoha-AN7589/20261112-195819
+base:   https://git.kernel.org/pub/scm/linux/kernel/git/robh/linux.git for-next
+patch link:    https://lore.kernel.org/r/20261112185820.1315718-4-john%40phrozen.org
+patch subject: [PATCH v2 3/3] i2c: mt7621: add support for Airoha AN7589
+config: sparc-randconfig-1000-20261113 (https://download.01.org/0day-ci/archive/20261114/202611140348.p9TnfxBF-lkp@intel.com/config)
+compiler: sparc-linux-gcc (GCC) 8.5.0
+reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20261114/202611140348.p9TnfxBF-lkp@intel.com/reproduce)
+
+If you fix the issue in a separate patch/commit (i.e. not just a new version of
+the same patch/commit), kindly add following tags
+| Reported-by: kernel test robot <lkp@intel.com>
+| Closes: https://lore.kernel.org/oe-kbuild-all/202611140348.p9TnfxBF-lkp@intel.com/
+
+All errors (new ones prefixed by >>):
+
+   In file included from <command-line>:
+   In function 'mtk_i2c_init',
+       inlined from 'mtk_i2c_probe' at drivers/i2c/busses/i2c-mt7621.c:364:2:
+>> include/linux/compiler_types.h:702:38: error: call to '__compiletime_assert_437' declared with attribute error: clamp() low limit div_min greater than high limit div_max
+     _compiletime_assert(condition, msg, __compiletime_assert_, __COUNTER__)
+                                         ^
+   include/linux/compiler_types.h:683:4: note: in definition of macro '__compiletime_assert'
+       prefix ## suffix();    \
+       ^~~~~~
+   include/linux/compiler_types.h:702:2: note: in expansion of macro '_compiletime_assert'
+     _compiletime_assert(condition, msg, __compiletime_assert_, __COUNTER__)
+     ^~~~~~~~~~~~~~~~~~~
+   include/linux/build_bug.h:40:37: note: in expansion of macro 'compiletime_assert'
+    #define BUILD_BUG_ON_MSG(cond, msg) compiletime_assert(!(cond), msg)
+                                        ^~~~~~~~~~~~~~~~~~
+   include/linux/minmax.h:188:2: note: in expansion of macro 'BUILD_BUG_ON_MSG'
+     BUILD_BUG_ON_MSG(statically_true(ulo > uhi),    \
+     ^~~~~~~~~~~~~~~~
+   include/linux/minmax.h:195:2: note: in expansion of macro '__clamp_once'
+     __clamp_once(type, val, lo, hi, __UNIQUE_ID(v_), __UNIQUE_ID(l_), __UNIQUE_ID(h_))
+     ^~~~~~~~~~~~
+   include/linux/minmax.h:206:28: note: in expansion of macro '__careful_clamp'
+    #define clamp(val, lo, hi) __careful_clamp(auto, val, lo, hi)
+                               ^~~~~~~~~~~~~~~
+   drivers/i2c/busses/i2c-mt7621.c:308:17: note: in expansion of macro 'clamp'
+     i2c->clk_div = clamp(rate / i2c->bus_freq - 1, div_min, div_max);
+                    ^~~~~
+
+
+vim +/__compiletime_assert_437 +702 include/linux/compiler_types.h
+
+eb5c2d4b45e3d2d Will Deacon 2020-07-21  688  
+eb5c2d4b45e3d2d Will Deacon 2020-07-21  689  #define _compiletime_assert(condition, msg, prefix, suffix) \
+eb5c2d4b45e3d2d Will Deacon 2020-07-21  690  	__compiletime_assert(condition, msg, prefix, suffix)
+eb5c2d4b45e3d2d Will Deacon 2020-07-21  691  
+eb5c2d4b45e3d2d Will Deacon 2020-07-21  692  /**
+eb5c2d4b45e3d2d Will Deacon 2020-07-21  693   * compiletime_assert - break build and emit msg if condition is false
+eb5c2d4b45e3d2d Will Deacon 2020-07-21  694   * @condition: a compile-time constant condition to check
+eb5c2d4b45e3d2d Will Deacon 2020-07-21  695   * @msg:       a message to emit if condition is false
+eb5c2d4b45e3d2d Will Deacon 2020-07-21  696   *
+eb5c2d4b45e3d2d Will Deacon 2020-07-21  697   * In tradition of POSIX assert, this macro will break the build if the
+eb5c2d4b45e3d2d Will Deacon 2020-07-21  698   * supplied condition is *false*, emitting the supplied error message if the
+eb5c2d4b45e3d2d Will Deacon 2020-07-21  699   * compiler has support to do so.
+eb5c2d4b45e3d2d Will Deacon 2020-07-21  700   */
+eb5c2d4b45e3d2d Will Deacon 2020-07-21  701  #define compiletime_assert(condition, msg) \
+eb5c2d4b45e3d2d Will Deacon 2020-07-21 @702  	_compiletime_assert(condition, msg, __compiletime_assert_, __COUNTER__)
+eb5c2d4b45e3d2d Will Deacon 2020-07-21  703  
+
+--
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests/wiki
 
