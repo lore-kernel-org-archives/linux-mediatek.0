@@ -2,11 +2,11 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 30360606A89A
-	for <linux-mediatek@archiver.kernel.org>; Sat, 14 Nov 2026 14:52:15 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 72674606A89C
+	for <linux-mediatek@archiver.kernel.org>; Sat, 14 Nov 2026 14:52:24 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=zz5I5GYS;
-	dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=EHPz73Gl
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=eOaocoxX;
+	dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=PpD4pmK5
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
@@ -14,37 +14,37 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	:Cc:To:From:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=W3xEgi7pAw7VSug/3hk2ygDQeJ/sXVksVW02IlMeiao=; b=zz5I5GYSlHf/MUl1VrTI82kzbD
-	2n+KkXQ4x7pqfHGC+WHYQ9kIoMfieiC1NTIHW6bRBVkYtq27Um95ZsCiZu8Xn4QpgB2U11hZ5NIrP
-	1i9W/9zQsRKM6qBN9VyM9vUqIK/knbGD4W2BBQFLYBzK8FSxL5JQmXaM56QEcjVgkEk9qgqfflzMi
-	ff3Byo8iDvMVBhw+h1oBo/jBfywJ37M6OeZIYs1/i6QQAU0JCqfsT6GSkLHScrUlDsReOsMux1+4A
-	KSD39YslsdyPIm5hQVzUEYpxjPf2Ms0NX1FfBrWFIHWW2ftctQtmdAuE7Q5EXZQ6zHT6mbp3bQGbS
-	PIuTw1vA==;
+	bh=xVGo4n8kANG+d9df7pyjbNiLNk7bdG6h6VAwEv6uVzM=; b=eOaocoxXGUx2+LyuImlqgYBHfI
+	iM5FrKACYweDXkrOcnziZ9E4h3AFIS53NonS83T7jw/elBukC8EA2jfPxg+j5XPFmZ9v5AciF/Cqg
+	5qcoo4aPyM05IS5w45SGVYgAZu3cRgX5Fxr27WqDdov1i1xMgZ7QXssT23afHIIXL//WY09HYqpdd
+	U0QOq25oh+94FzP4E1aMr/aGq89iCyQ/+Qt/nzqFUdQHgUE7xZQl/TbjSLLcP3NzrloYrcnS+Ey+U
+	WZU78nLg24JS2MMGnUvPKiabmQZxWd8+5/ThorFW0Pnm9ync1xvSEvZjwqeC7LJroV2ySLQaKvHwc
+	TojI8znA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xSF6z-0000000GIiN-3K8e;
-	Sat, 14 Nov 2026 14:52:13 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1xSF7A-0000000GImH-0fJX;
+	Sat, 14 Nov 2026 14:52:24 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xSF6y-0000000GIiA-3w9v;
-	Sat, 14 Nov 2026 14:52:13 +0000
+	id 1xSF70-0000000GIiR-32Mv;
+	Sat, 14 Nov 2026 14:52:14 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 244E06146B;
+	by tor.source.kernel.org (Postfix) with ESMTP id B34EB62763;
+	Sat, 14 Nov 2026 14:52:13 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 67A7D1F000C5;
 	Sat, 14 Nov 2026 14:52:12 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id B02C71F000C4;
-	Sat, 14 Nov 2026 14:52:10 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1794667931;
-	bh=W3xEgi7pAw7VSug/3hk2ygDQeJ/sXVksVW02IlMeiao=;
+	s=k20260515; t=1794667933;
+	bh=xVGo4n8kANG+d9df7pyjbNiLNk7bdG6h6VAwEv6uVzM=;
 	h=Subject:From:To:Cc:Date:In-Reply-To:References;
-	b=EHPz73GlxNbxMz9o783niMGZ3LrsdcOuBVVDlg3NwdetRdjYD15P7wUarr1oKaLnC
-	 4EaCqgleA7Q/TzLEJNH8xCPSfViZlzfCyNtJ5FHyAg0bKnY6exH4WczOOSVI2fQj48
-	 p6ulAjEqTLA6OFsuksr4DXnuqtoF/7cCS9LvuQrWvK6KMb8n1fufve7OlfpcIU9UEZ
-	 IcFXDhMu/AeKq4rX2LN4AqiHCjq4jr4+m29HsA/ZDh7v1h0b8/q1RP8ftM40+H5F34
-	 odTJFvB0B90aieXkldgV+HZVbCkZCV3wQiC02NnXlcCNSErvaUEuF5Voz+gX13prop
-	 NaNyFuaWL470Q==
-Subject: Re: [PATCH net-next v5 02/10] dt-bindings: net: mediatek-dwmac:
- deprecate rx/tx delay vendor properties
+	b=PpD4pmK57h1+iemKNBgqZYbMnTEPuJZ8EZThjqZ+TMf/YrSPbQ4d5wGd8XoZ6kGjR
+	 /69pmAhVH6MfKK1f4UqHVDgy0dfGgcDTYcpQ7DvyYntWkqBvlVdR+BjOQdTXgnquz1
+	 R30shb3G28o41pkxNOmU0VNZKbz0MN+vhDjghJwS/Yf0xyJ1RRowtdswLQSFpKpF9B
+	 5WoovcgdmTtioxkmFauu+yY9hmJqfpLcVQawslJv5hVqbJ0WL+hbxnxkB3CNKyGKW/
+	 tZmeP7MtJe0vA88WA0XYJz6o0HKeZs5j22dFwesuigwu3rntt+wNMeWBaoKkVtJr0F
+	 geFBG+P6HcMVg==
+Subject: Re: [PATCH net-next v5 03/10] dt-bindings: net: mediatek-dwmac: add
+ support for MT8189 SoC
 From: netdev-bot+sashiko@kernel.org
 To: louisalexis.eyraud@collabora.com
 Cc: andrew+netdev@lunn.ch, davem@davemloft.net, kuba@kernel.org,
@@ -56,11 +56,11 @@ Cc: andrew+netdev@lunn.ch, davem@davemloft.net, kuba@kernel.org,
  netdev@vger.kernel.org, devicetree@vger.kernel.org,
  linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-mediatek@lists.infradead.org, linux-stm32@st-md-mailman.stormreply.com
-Date: Sat, 14 Nov 2026 14:52:10 +0000
-Message-ID: <179466793025.2199510.11414301976434592965@kernel.org>
-In-Reply-To: <20261110-dwmac-mediatek-mt8189-v5-2-7d99d6292962@collabora.com>
-References: <20261110-dwmac-mediatek-mt8189-v5-2-7d99d6292962@collabora.com>
-X-sashiko-severity: Medium
+Date: Sat, 14 Nov 2026 14:52:12 +0000
+Message-ID: <179466793200.2199510.8648958877429402751@kernel.org>
+In-Reply-To: <20261110-dwmac-mediatek-mt8189-v5-3-7d99d6292962@collabora.com>
+References: <20261110-dwmac-mediatek-mt8189-v5-3-7d99d6292962@collabora.com>
+X-sashiko-severity: Low
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
 X-Archived-By: <archiver.kernel.org>
@@ -82,147 +82,94 @@ X-Spam-Status: No, score=-10.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Thank you for your contribution! Sashiko AI review found 2 potential
-issue(s) to consider.
+Thank you for your contribution! Sashiko AI review found more severe
+issue(s) in other patches of this series. This mail is only an FYI, in case
+you want to address the nit picks below when you respin.
 
-Critical: 0 · High: 0 · Medium: 1 · Low: 1
+Low priority / nit picks for your consideration:
 
-If you believe none of the issues are legitimate, please reply to each
-issue of Medium severity or higher and explain why the AI is wrong.
-If any of them are legitimate and you plan to respin, please let patchwork
-know by including "pw-bot: cr" as a separate line at the end of your reply
-(one such reply per series is enough).
-
-- [Medium] In Documentation/devicetree/bindings/net/mediatek-dwmac.yaml,
-  'deprecated: true' is set on both mediatek,tx-delay-ps (line 83) and…
-- [Low] Several leftovers in the migration this patch starts.
+- [Low] The new compatible `mediatek,mt8189-gmac` is added to the
+  binding, but the descriptions of `mediatek,tx-delay-ps` and…
 
 --
 
-dt-bindings: net: mediatek-dwmac: deprecate rx/tx delay vendor properties
+dt-bindings: net: mediatek-dwmac: add support for MT8189 SoC
 
-This commit marks mediatek,rx-delay-ps and mediatek,tx-delay-ps as
-deprecated in the MediaTek dwmac binding. It also adds description text
-pointing users to the standard rx-internal-delay-ps and
-tx-internal-delay-ps properties.
+This patch adds the mediatek,mt8189-gmac compatible to the MediaTek DWMAC
+binding and lowers the clocks/clock-names minItems to 4. It also adds
+allOf conditionals that keep 5 clocks for MT2712/MT8188/MT8195, allow at
+most 4 for MT8189, and disallow mediatek,rmii-clk-from-mac on MT8189.
 
 > diff --git a/Documentation/devicetree/bindings/net/mediatek-dwmac.yaml b/Documentation/devicetree/bindings/net/mediatek-dwmac.yaml
-> index 14f9683f20fea..9562406166387 100644
+> index 9562406166387..0fc2eed066464 100644
 > --- a/Documentation/devicetree/bindings/net/mediatek-dwmac.yaml
 > +++ b/Documentation/devicetree/bindings/net/mediatek-dwmac.yaml
-> @@ -80,6 +80,7 @@ properties:
->        interface and timing delay.
->  
->    mediatek,tx-delay-ps:
-> +    deprecated: true
-
-[Severity: Medium]
-This deprecated: true applies to every phy-mode, and the same is true for
-mediatek,rx-delay-ps below. The standard replacement only exists for
-RGMII, though.
-
-In ethernet-controller.yaml, rx-internal-delay-ps and tx-internal-delay-ps
-are only defined inside an if/then that matches the rgmii* modes:
-
-  - if:
-      properties:
-        phy-mode:
-          contains:
-            enum:
-              - rgmii
-              - rgmii-rxid
-              - rgmii-txid
-              - rgmii-id
-    then:
-      properties:
-        rx-internal-delay-ps:
-        ...
-
-This binding sets unevaluatedProperties: false. So a node with
-phy-mode = "rmii" or "mii" that uses tx-internal-delay-ps or
-rx-internal-delay-ps would fail schema validation.
-
-The descriptions here still document the MII/RMII ranges (MT2712 in
-steps of 550, MT8188/MT8195 in steps of 290). At the end of the series,
-get_delay_stage() in dwmac-mediatek.c still takes the MII/RMII delay
-only from the vendor values:
-
-	} else {
-		/* MII/RMII case */
-		delay_stage_div = plat->variant->mii_delay_stage_div;
-		rx_delay_conf_val = mac_delay->rx_delay;
-		tx_delay_conf_val = mac_delay->tx_delay;
-
-The later commit "net: stmmac: mediatek: use standard internal delay
-properties" in this series also says "There is no equivalent standard
-properties for RMII and MII case at the moment."
-
-Doesn't this leave MII/RMII boards that need a MAC delay with only a
-deprecated property and no compliant alternative?
-
-The new description text limits the deprecation to RGMII ("for RGMII TX
-internal delays"), but the unconditional deprecated: true says
-otherwise. Could the deprecation be limited to the rgmii* phy-modes with
-an if/then, or the MII/RMII use be kept non-deprecated?
-
-The commit message also says the vendor properties "duplicate standard
-properties from generic Ethernet controller bindings". That doesn't seem
-to be true for MII/RMII.
-
->      description:
->        The internal TX clock delay (provided by this driver) in picoseconds.
->        For MT2712 RGMII interface, Allowed value need to be a multiple of 170,
 
 [ ... ]
 
->        For MT8188/MT8195 RGMII/RMII/MII interface, Allowed value need to be a multiple of 290,
->        or will round down. Range 0~31*290.
-> +      Deprecated, this property should not used anymore for RGMII TX internal delays,
-> +      the standard tx-internal-delay-ps property should be used instead.
+> @@ -153,6 +152,39 @@ required:
+>    - phy-mode
+>    - mediatek,pericfg
+>  
+> +allOf:
+> +  - $ref: snps,dwmac.yaml#
+
+[ ... ]
+
+> +  - if:
+> +      properties:
+> +        compatible:
+> +          contains:
+> +            enum:
+> +              - mediatek,mt8189-gmac
+> +    then:
+> +      properties:
+> +        clocks:
+> +          maxItems: 4
+> +        clock-names:
+> +          maxItems: 4
+> +
+> +        mediatek,rmii-clk-from-mac: false
 
 [Severity: Low]
-This isn't a bug, but "should not used anymore" is missing "be". The
-same typo is in the new mediatek,rx-delay-ps text.
 
-The example at the end of this binding still uses the deprecated
-property, in exactly the RGMII case this text says to avoid:
+This block only disallows mediatek,rmii-clk-from-mac for MT8189, so
+mediatek,tx-delay-ps and mediatek,rx-delay-ps are still allowed there.
+Should their descriptions also cover the new compatible?
 
-        phy-mode = "rgmii-rxid";
-        ...
-        mediatek,tx-delay-ps = <1530>;
+At the moment they only describe MT2712 and MT8188/MT8195:
 
-Should the example be converted too? It isn't updated later in the
-series either.
+  mediatek,tx-delay-ps:
+    ...
+      For MT8188/MT8195 RGMII/RMII/MII interface, Allowed value need to be a multiple of 290,
+      or will round down. Range 0~31*290.
 
-Four in-tree DTS files also still use the deprecated property:
+The mediatek,rx-delay-ps description has the same text.
 
-  arch/arm64/boot/dts/mediatek/mt2712-evb.dts (1530)
-  arch/arm64/boot/dts/mediatek/mt8390-grinn-genio-sbc.dtsi (30)
-  arch/arm64/boot/dts/mediatek/mt8395-genio-common.dtsi (2030)
-  arch/arm64/boot/dts/mediatek/mt8395-radxa-nio-12l.dts (2030)
+The later patch in this series, "net: stmmac: mediatek: add support for
+MT8189 SoC", uses a different step size and maximum for MT8189:
 
-Two of these use 2030 ps as the full RGMII TX delay. However,
-ethernet-controller.yaml describes the MAC-node internal delay
-properties as fine tuning:
+  #define MT8189_MII_DLY_STAGE_DIV	180  /* 180ps per stage */
+  #define MT8189_MII_DELAY_MAX		5760 /* 32 x 180ps */
 
-  # Sometimes there is a need to fine tune the delays. Often the MAC or
-  # PHY can perform this fine tuning. In the MAC node, the Device Tree
-  # properties 'rx-internal-delay-ps' and 'tx-internal-delay-ps' should
-  # be used to indicate fine tuning performed by the MAC. The values
-  # expected here are small.
+For MII/RMII, these vendor properties are the only way to set the internal
+delays. mediatek_dwmac_config_dt() reads the standard *-internal-delay-ps
+properties only for RGMII.
 
-Given that, are the vendor properties really plain duplicates of the
-standard ones, as the commit message says? Converting the mt8395 boards
-looks like it would also mean revisiting phy-mode, not just renaming the
-property.
+Suppose a value is picked using the documented 290 ps step. The driver will
+then program value / 180 stages instead of value / 290. Any value of 5760 ps
+or more (for example 20 * 290 = 5800) is rejected with -EINVAL:
 
->  
->    mediatek,rx-delay-ps:
-> +    deprecated: true
->      description:
->        The internal RX clock delay (provided by this driver) in picoseconds.
+  of_property_read_u32(plat->np, "mediatek,tx-delay-ps", &tx_delay_ps);
+  if (tx_delay_ps >= plat->variant->mii_delay_max) {
 
-[ ... ]
+and probe fails.
+
+Setting mediatek,tx-delay-ps: false for MT8189 would not be the right fix,
+because it would remove the only way to configure MII/RMII delays on MT8189.
+
+Could both descriptions get an MT8189 line with the 180 ps step and the
+0~31*180 range instead?
 
 -- 
 Sashiko AI review · https://netdev-ai.bots.linux.dev/sashiko/#/patchset/20261110-dwmac-mediatek-mt8189-v5-0-7d99d6292962%40collabora.com
