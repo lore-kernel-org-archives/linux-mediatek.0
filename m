@@ -2,11 +2,11 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 46698606A333
-	for <linux-mediatek@archiver.kernel.org>; Sat, 14 Nov 2026 00:22:22 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 7604B606A323
+	for <linux-mediatek@archiver.kernel.org>; Sat, 14 Nov 2026 00:32:20 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=XmY3c9IT;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=N97ElCaZ
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=OBMC6e0U;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=iA+2NgHs
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
@@ -14,43 +14,43 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	:Subject:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=Ps3dmenyy5Kz+Ld8FFyPnRbKN1BblcpmGxOsdgzLlkg=; b=XmY3c9ITs+xHCIJXTTXYOxlNzi
-	gX8Gzx6LdKS8T0ZGC/l/kfRTGkRD68Q2+pJw2yvezg6kNf460WLP6DTqbkNiNftFoESoIIjtrnqot
-	vXPvmVy/Xn8bSpTIjQB2x71zPq8MMOM+KFw+9QNmOnkN2BlHT0ZeBWAWfA0veFE7sREb3JjvftQdB
-	YrbajObJE5ZzqwmCYCKWdi8rYDr/PJfxv2zMD+44GeuDLZjmOKZYaBjovts7pZf/EhpduqQmpdwkx
-	lKW61spkpm+j2sm348KqHEqB9mzl7Y15fV3sO1/nX4TAAzndA+HRhFHD81ePIlCZmmf4K2uAlbU8B
-	BT/c6YUg==;
+	bh=Ld9+YyGfs/W/wYUchYl+G0tuTdeNOsMW/DqiAiz5bT8=; b=OBMC6e0UcB06KLREx1KAdUYc7G
+	pAHIW7N0TjGW+FWhybwEcqarZEa0gck29jpwIe+FETPD0SdNYa9jH/7ELlCL/ZVLo481+7nVO5ku1
+	kIMIG5hr4W2BCp+6NDkcWOTv3NyleBJsSNc98sreeyVXos/GMcJPjXsw7kCvpVo2YRHUp49SSUfZf
+	AgQ4+Jq2aY11DHp4DwBVw7h113Q5sDYVoinqsVxhDPtdnvnvUH5im3I1qKyQiZFKSQo/Nlob+Mefs
+	T7pjYMeoogDKFE/sEL/nUHdN0C95JDiLcbYuUaYwgiz7i8yAhaiQbhqtkwPLjNzxZ8Jwp2NIbJpxf
+	B0pgOs0Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xS1XA-0000000Etdo-31dd;
-	Sat, 14 Nov 2026 00:22:20 +0000
+	id 1xS1gq-0000000EvJB-0mkq;
+	Sat, 14 Nov 2026 00:32:20 +0000
 Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xS1X8-0000000EtdG-23pM;
-	Sat, 14 Nov 2026 00:22:18 +0000
+	id 1xS1go-0000000EvIe-2uPL;
+	Sat, 14 Nov 2026 00:32:18 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id D1D7061ECE;
-	Sat, 14 Nov 2026 00:22:17 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7841E1F000C4;
-	Sat, 14 Nov 2026 00:22:16 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 0DFF2612C6;
+	Sat, 14 Nov 2026 00:32:18 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id C6E821F000C5;
+	Sat, 14 Nov 2026 00:32:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1794615737;
-	bh=Ps3dmenyy5Kz+Ld8FFyPnRbKN1BblcpmGxOsdgzLlkg=;
+	s=k20260515; t=1794616337;
+	bh=Ld9+YyGfs/W/wYUchYl+G0tuTdeNOsMW/DqiAiz5bT8=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References;
-	b=N97ElCaZ18uG92IjVfYrXBblFU9aIYDF8KKtN22kDx36OdOITRm5VfjGhB7FhYoPz
-	 YBF1A54C19ostQzREksQNdAf+lj8VQ+ACy7pKzdrKlRFWREG2vd0d4u+MzVK5YodJ8
-	 uXHj1yfjmmhEs1uRLUTCSMVeQZW5EOFEZ/9Ap5PRcPI3i5ba86J9NzfuxdliVp+ZYz
-	 VP0WYYFcQWB1QrTIbLyy6FGb/fxFX6EVGHI5GTMNfmuGUiFrrdEqF3n1Fo7P3IHttw
-	 UFj6Bj2dsyiQ3xxluOETQzEmyJUMupPwEir4iyjps9vPgq8eUgYxfHKWwfDzvA7xbz
-	 Iq+TEa216kMxg==
+	b=iA+2NgHsIM1XGhJsN3YhlgEAOkvSXDvn106dhXYWMkWhG8xdOu0HbJtl8lp+VQ/tL
+	 REacGdAPJXouCZUPgBiedOQ0xrnJUpEgyB36W6nzdYrLmAl74w16UYajZEnVGgqjJU
+	 xFITQ7vzF1w0LTGObI15Gyhwo/ejTYroExNxe6HdFjrXpHeuKpZjPuv4k2O/pOpesn
+	 VeeXCJ/SLasPfq+jaaGfxHk99SWjjYRdeP8foFGF4n1z+wc/jAsKcDnvnXg/rRgEcr
+	 HhJ7UEJVB2qqXE8GS+Dl5GYH8kRn0zCeqG+rsumm4rAIg2DNPCB4FEetoPn1OZ54dF
+	 U4yl6uqjYFa3g==
 From: netdev-bot+sinfo@kernel.org
 To: Sandeep Haemoon <sandeeph@loljews.com>
-Subject: Re: [PATCH net-next v5 0/3] net: ethernet: mtk_eth_soc: 9K jumbo
- frame support
-Date: Sat, 14 Nov 2026 00:22:15 +0000
-Message-ID: <179461573593.2168702.7673153146325668469@kernel.org>
-In-Reply-To: <patch-f1e62a87eb0f914e1ea52a395f465998@loljews.com>
-References: <patch-f1e62a87eb0f914e1ea52a395f465998@loljews.com>
+Subject: Re: [PATCH net-next v6 1/3] net: ethernet: mtk_eth_soc: fix the RX
+Date: Sat, 14 Nov 2026 00:32:16 +0000
+Message-ID: <179461633631.2168702.17586474086593763386@kernel.org>
+In-Reply-To: <patch-4b4c5003bcf028fafd094e719c5e910b@loljews.com>
+References: <patch-9e765e74d06edbba3fd85a0cd49c4bb5@loljews.com>
+ <patch-4b4c5003bcf028fafd094e719c5e910b@loljews.com>
 Auto-Submitted: auto-generated
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
@@ -79,9 +79,17 @@ Hi!
 This is an automated message. This series looks like a fix, but its
 commit messages seem to be missing some information:
 
+ - How the issue was discovered, e.g. hit in production, hit during
+   development, syzbot report, manual code inspection, LLM or static
+   analysis tool scan.
+
  - Whether the issue was actually triggered, or is only theoretical
    (e.g. found by LLM and not proven at runtime). If it was triggered
    please include the symptoms, like the stack trace or kernel messages.
+
+ - What hardware the change was tested on. For driver fixes please
+   mention the device (and if relevant firmware version) used for
+   testing, or say that the change was not tested on real hardware.
 
 Please do not repost the series just to address the above. Instead,
 reply to this email with the missing information, so that reviewers
