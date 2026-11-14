@@ -2,86 +2,88 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 739E8606A8BB
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 8474B606D258
 	for <linux-mediatek@archiver.kernel.org>; Sat, 14 Nov 2026 11:56:43 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=5Djxo5e/;
-	dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=OevaAhq0
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=Kau0eqkE;
+	dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=Nf+7kkM+
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Cc:To:In-Reply-To:References:Message-Id:
-	Content-Type:MIME-Version:Subject:Date:From:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
+	From:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
 	List-Unsubscribe-Post:List-Owner;
-	bh=gdJ+j079/tz92iQCRVcdVPV5S6mtELTh8SSjxTPVU+k=; b=5Djxo5e/l5M9Se6McOQPvOG4YW
-	o6hcT+F77aCYzRt+oJaLOnW42rmMJEkgnTfdEyllcHcSzotPwPP/SD+OXfwuC3kgDuokVln622iCi
-	tMSwJE0jX9v0dXcUs2UiNDISn8b4edu379RgzaytVy2HRGZFzPjG1G6PCOVdNswnHXwefrCc/KFUx
-	EneQR4pntufS/f5ZcL4v4TSaA4ftnq2dNksbmRy0N0ydLkkY6PM2GjVIfz48BYKa7g57pR0hbcjC+
-	RJnCswWXpRcvjP+z515DUG66j4Uao3VFLWM/7ESoqSIhdzEEq3O7YjtlCprf3/5w5TYqJ7DGo3nLn
-	FWciuUHg==;
+	bh=rDZ4Pxdt5ClCbIhoRS2OD+LCpKwjINtmk9PJJBvhNRM=; b=Kau0eqkEwzK1g84D38KkbgtaQR
+	HmnDzwJkQwceVLqyImxAvsu3XeuLRYf37bntomztvEoZ5rau5oTt51HDxk/lqTkD4nK2hOu8Mtd8+
+	NpCa0o+OQjZ5hpbvq5CVPyToUH0Z7FW0YukRGvc48EPjiOnvOFqfyA593p4Ik0Fmli3ERHsFRLFqz
+	sC77IrqnD0R7fWn5iRkfnZhEXuFCfM+tCa71z5OqoZxaCIjqWJik8pH0Hp0Ha+CvighyKOPoiAFvA
+	EvttrEo9ePsiDV9KJ2Xwxza7y9JgEvarZokhZDA781kmPN8hXMobutlfAYZ4MErzk+LDuxeIll/ZU
+	In/QNnLg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xSCN9-0000000FwS9-0ViY;
+	id 1xSCN9-0000000FwSW-0qBL;
 	Sat, 14 Nov 2026 11:56:43 +0000
 Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xSCMj-0000000FvzW-3srH;
-	Sat, 14 Nov 2026 11:56:17 +0000
+	id 1xSCMj-0000000FvzY-3vmM;
+	Sat, 14 Nov 2026 11:56:18 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id 777F545850;
-	Sat, 14 Nov 2026 11:56:17 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id AC5DE4367D;
+	Sat, 14 Nov 2026 11:56:16 +0000 (UTC)
 Authentication-Results: smtp.kernel.org; arc=none smtp.remote-ip=100.80.115.77
 ARC-Seal: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256; cv=none;
-	t=1794657377;
-	b=dcxpX3I8HDVcmCNwCPi8OM5kogKh+VqqdC0rX72ZJqgp4QPxNPVCVoSKkEBfrNdXmV35
-	 lMkRE5qMePguwTZOdl5zkN9qXt5O8MW9R0cOwptZP94r6dzfJCkZoRgOfd89Qv6+XZKMG
-	 hJMHQ8ZJgfU0Q1/OJE57nmAi8DYWllF6asI4bFhJ31ArMcfrJLPXUDTYivyC5TL6TGYvL
-	 5LfikVwKB1QyQB6XBh0/ByQXjP8Unh87gPFWSmrP3Ml+pNKK6KUcnTPQjmLoDM8dq9WCL
-	 vKQ4/hqyNdg8dGqwOeZxEftwKR2AkgauJ+aZCv3XciTUNX9PMBm9SAdaDS8YUAwnVfg==
+	t=1794657376;
+	b=ucUkC8L2nTAIL/T7EjNrv7K4PwwS3B15ZAvNYQIaZSVeVwrddPHal38f+bsOlRT6OIth
+	 v1RHpF1P2K9ptleD6sj5c7H3Ny5dzr5+JOJsrZBG8RREH7/L4ICRRhI3DnDxk5cvgGjHJ
+	 cFBnp0cwzbSGBCUYs3XLMuc1NApSFKhPfUjQMJ8TPfCqFS6nwpgbKY7E4+X7prjVJmgUK
+	 uEldtvKjd7SaYeaHoz4caUGOliCXjV9zBrZLUATC2xa+wKjDDPf+Ucs7jEeI7ntJehESi
+	 lEOH7bYM2m/ZHUlIB6unjh3zI7O9Ex9hCdBu/cJQ/bGs8nWKD+eCQFnXo046sIWuCOw==
 ARC-Message-Signature: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256;
-	c=relaxed/relaxed; t=1794657377;
-	h=DKIM-Signature:Received:From:Date:Subject:MIME-Version:Content-Type:
-	 Message-Id:References:In-Reply-To:To:Cc:X-Mailer:
-	 X-Developer-Signature:X-Developer-Key:X-Endpoint-Received:
-	 X-Original-From:Reply-To:Content-Transfer-Encoding;
-	bh=gdJ+j079/tz92iQCRVcdVPV5S6mtELTh8SSjxTPVU+k=;
-	b=lwMtL7dAcdOw/MigKHsXZZ6C9f8EG4VZoUw3mzHuPfkMsch4HvHpUUYdKvTtk6bOc88Z
-	 0HlHvjBTKts4/1lD8lzX3lbKUUKMID98vYBl8Q1iJSislquhD/qclARWNbHN34bE65z9E
-	 qSVN0udasirOI8J6nTcdAE0HQC3Vq3A2XVJ0uiHJvn3gN63+IJjnRo2fAu7is70DkGj6b
-	 ZchvrtJBvUvXZQrmDzpalIOi6t5mn5wjoAeGnrzdfmH8S5QU9giWX8RaDmIo2C94Jibgo
-	 is9+bIX9Y5MpmzD0UdBTaMvyU048vqgaHdVKtO1pFgdz5/Ur3bFyvIbsdZzV38AJkXA==
+	c=relaxed/relaxed; t=1794657376;
+	h=DKIM-Signature:Received:From:Subject:Date:Message-Id:MIME-Version:
+	 Content-Type:Content-Transfer-Encoding:X-B4-Tracking:X-Change-ID:To:
+	 Cc:X-Mailer:X-Developer-Signature:X-Developer-Key:X-Endpoint-Received:
+	 X-Original-From:Reply-To;
+	bh=rDZ4Pxdt5ClCbIhoRS2OD+LCpKwjINtmk9PJJBvhNRM=;
+	b=CmSodZ6F48/iyOq2RqV6++rKxR6bhLuBIhV8EeI3JKSI76Qi8zndJmuWDlylicK7fF1g
+	 zYqXQhcvbI6IvlyZXSFRkWQ7hnbk10UYa04QmQl0Lcil8aKDFhpdGdqyv3zGdWFS2G8yK
+	 Aw9qgqHa82tUW7VYqsmM546R7bRZ7//gPcPpJByoOzqrbo6if8TjumMzhjjq//XXh1w7J
+	 Egl4fGumj6ibvk0vbpizlHMtKZmxIIJcpUBbuidJW8DhZu7/T7eousvKMRTATmWL1g7BD
+	 EZQhN1tFO372gZqCmI2gBmBXa7dOvm8xWJ7HRLtUBrN2VtsEgV0DEEjogkCaHknAAkw==
 ARC-Authentication-Results: i=1; smtp.kernel.org; 
 	arc=none smtp.remote-ip=100.80.115.77
 Received: from lkml.kernel.org (nexus.subspace.kernel.org [100.80.115.77])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.kernel.org (Postfix) with ESMTPS id D60381F000CA;
-	Sat, 14 Nov 2026 11:56:14 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1794657377;
-	bh=gdJ+j079/tz92iQCRVcdVPV5S6mtELTh8SSjxTPVU+k=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To;
-	b=OevaAhq0SbP/urN4dH7OYYCCFc7OE2RxMzeKBRfJJElrxU9P/Dsb0Kt39Qgo+aTXt
-	 Te5NQtVFBFWJMcK/X3b+L/d/+nbKPRlOh8M4itk8/NWnOsAsxUHihrng8p8QbYqj3B
-	 7nNsn8OGsNnEi+l42K4OgbFiYclV8E3lGOvd+GceEdEpVtXmAQg0BQuXFku7LJv71f
-	 Tq3OjXv5ZhqukuTeiHVPNkNVnsFmiyyf6B3ehooNeSvhBFRdzXwDhndE6gTh0iEh2D
-	 BXylfCc8UuMLB6Wh9/GxKkg+/Ksa0DFEDSmHw3UFceF1SFSMOXYTtcd/xpoJeABlPU
-	 J7BGyEnNTJ/Kg==
-Received: from nexus.subspace.kernel.org (localhost [IPv6:::1])
-	by lkml.kernel.org (Postfix) with ESMTP id 654FA49D76;
+	by smtp.kernel.org (Postfix) with ESMTPS id 9745D1F000C5;
 	Sat, 14 Nov 2026 11:56:13 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1794657376;
+	bh=rDZ4Pxdt5ClCbIhoRS2OD+LCpKwjINtmk9PJJBvhNRM=;
+	h=From:Subject:Date:To:Cc:Reply-To;
+	b=Nf+7kkM+o36sHAIUv2GoNWCTKgHGEuTQVvHYX9is9RnxnS6JJZWX19p9ldsx/9OYa
+	 IIDkJNpsErykgfDv0VXRch1MF1k8ngstY9ms0/vxhCLDGUNH9L9JHvj7mj55emo3p5
+	 kCuydo9bLustqqdbtUcpq+fg++WKySLhvc1KIYVU6qGn4y82xULh5DMzSEhr0jm6ks
+	 EcU8DZ4+ZBnlbyugPEb74YNocgvrfAmvDVf2G5PNzGJ4eNV24R5wzP1anYqyM7PjrS
+	 hgicpvQB6rpHt+ZwQcIq5qy8aFkTXcry9TGP/bBpKzhci8EmtUalNPo0+fzGgo54rT
+	 0r2Oua12fAQ3g==
+Received: from nexus.subspace.kernel.org (localhost [IPv6:::1])
+	by lkml.kernel.org (Postfix) with ESMTP id E4C3F49D67;
+	Sat, 14 Nov 2026 11:56:12 +0000 (UTC)
 From: Larisa Grigore via B4 Relay <devnull+larisa.grigore.oss.nxp.com@kernel.org>
-Date: Sat, 14 Nov 2026 12:55:37 +0100
-Subject: [PATCH v11 05/14] ufs: core: Add common Hibern8 TX FSM polling
- helper
+Subject: [PATCH v11 00/14] Add S32N79RDB UFS support
+Date: Sat, 14 Nov 2026 12:55:32 +0100
+Message-Id: <20261114-b4-ufs-s32n7-v11-0-dc36e11919d5@oss.nxp.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
-Message-Id: <20261114-b4-ufs-s32n7-v11-5-dc36e11919d5@oss.nxp.com>
-References: <20261114-b4-ufs-s32n7-v11-0-dc36e11919d5@oss.nxp.com>
-In-Reply-To: <20261114-b4-ufs-s32n7-v11-0-dc36e11919d5@oss.nxp.com>
+Content-Transfer-Encoding: 7bit
+X-B4-Tracking: v=1; b=H4sIADdM+GoC/yWMQQqDMBAAvyJ77oIbNSl+pXhI7KrrIS1ZFUH8e
+ 1M9zsDMAcpJWKEtDki8iconZiB6FNBPPo6M8s4CTGksEdUYalwHRa1MdBiezlamsey9g5x8Ew+
+ yX79Xd7OuYeZ++T/gPH+mTF1pcQAAAA==
+X-Change-ID: 20261114-b4-ufs-s32n7-b8763256eaa7
 To: "Martin K. Petersen" <mkp@kernel.org>, 
  Alim Akhtar <alim.akhtar@samsung.com>, Bart Van Assche <bvanassche@acm.org>, 
  Krzysztof Kozlowski <krzk+dt@kernel.org>, 
@@ -109,17 +111,16 @@ Cc: devicetree@vger.kernel.org, Ajay Neeli <ajay.neeli@amd.com>,
  Orson Zhai <orsonzhai@gmail.com>, aruizrui@redhat.com, 
  linux-renesas-soc@vger.kernel.org
 X-Mailer: b4 0.15.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1794657369; l=9301;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1794657368; l=16666;
  i=larisa.grigore@oss.nxp.com; s=20261114; h=from:subject:message-id;
- bh=4qonTc/Um2UG9wkdhK2e+Hz460fp+LEpHAWSOS8XOD4=;
- b=6RA5Ig2W1R2Xt2fNnEQnGKMV4afJaVfCpLq/X42KY62ZN/pPdXAsdwSxoc/bJ3Ip0Anlumu1v
- I2gvjbGnA42BRoemA/Yi/F6o3JPRdjtB1Kzx0XvX1QxhzdOfN7a7i1W
+ bh=Z2ebGh0OO+u6N438XmaUV9uV7rHt73kB6jypnvtGAAk=;
+ b=FVby0cBFzH73DWJzbfFCHut2lJ/4tHOdL+sKwVHHSXgc/kP+umI1OYjqu9NrAD3211rRTNUKb
+ GSgobxMA08FA+hZnpQ5QtcGxdy21cmxqYATAUaJcoKgRgwxcoLjzmfI
 X-Developer-Key: i=larisa.grigore@oss.nxp.com; a=ed25519;
  pk=Jpt52sb6ETKTtvWjUzhz5Sv5FjB9AEg9QKCcbpWFx3w=
 X-Endpoint-Received: by B4 Relay for larisa.grigore@oss.nxp.com/20261114
  with auth_id=1522
 X-Original-From: Larisa Grigore <larisa.grigore@oss.nxp.com>
-Content-Transfer-Encoding: 7bit
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -139,286 +140,358 @@ X-Spam-Status: No, score=-18.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-From: Larisa Grigore <larisa.grigore@oss.nxp.com>
+This series adds support for the UFS host controller found on the NXP S32N79
+platform. The controller is based on the Synopsys DesignWare (DWC) UFS host
+architecture and requires S32N79-specific M-PHY initialization/calibration
+sequence. It is compliant with JESD-223D "Universal Flash Storage Host
+Controller Interface" v3.0, and supports up to HS-Gear 4 speed grade. It is
+compatible with UFS 2.1, 3.0 and 3.1 devices. The MIPI UniPro is compliant with
+"MIPI Alliance Specification for Unified Protocol", v1.8. The MIPI M-PHY is
+compliant to version 4.1.
 
-Factor out the common logic used to poll TX_FSM_STATE until the TX lanes
-enter Hibern8 into ufshcd_dme_check_tx_hibern8().
+In order to keep the S32N79 platform driver small and avoid duplicating common
+DWC code across platform glue drivers, the series also refactors and exports a
+few reusable DWC helpers. In particular, M-PHY CREG (CBCREG*) register access
+helpers and the shared M-PHY CR bitfield definitions are moved from the
+existing AMD Versal2 glue driver into the common ufshcd-dwc layer, and are then
+used by the platform drivers. The series also introduces a generic Hibern8
+TX-FSM polling helper so that multiple platforms can reuse the same pre-link
+checks.
 
-The HiSilicon and Qualcomm drivers currently implement similar checks
-using the M-PHY TX_FSM_STATE attribute after PHY bring-up. Move this logic
-to a common helper in ufshcd so it can be shared across host controller
-drivers.
+Device tree binding documentation for the S32N79 UFS controller is included.
+The SoC and board DTS updates that instantiate and enable the controller are
+no longer part of this series and will be posted separately.
 
-Switch the HiSilicon and Qualcomm drivers to use the new helper and drop
-their local implementations. While at it, normalize the "TX lane failed to
-reach Hibern8" error path to return -ETIMEDOUT instead of the raw
-TX_FSM_STATE value (qcom) or -1 (hisi), so all callers get a proper errno.
-A failed TX_FSM_STATE read that completes with a positive UIC result code
-is reported as -EIO. This is an intentional, harmless change of the
-returned error value; the pass/fail behaviour at the call sites is
-unchanged.
+Changes in v11:
 
-This also prepares for reusing the same M-PHY specific Hibern8 check in
-a subsequent commit.
+ufs: dwc: Move shared M-PHY CR bitfield macros to ufshcd-dwc.h:
+- New patch. Move the FAST_FLAGS, FW_CALIB_CCFG, RX_OVRD_IN_1 and RX_PCS_OUT
+  bitfield macros from the AMD Versal2 driver to ufshcd-dwc.h, so the S32N7
+  driver can use them instead of raw values.
+
+ufs: pltfrm: Add a flags argument to ufshcd_pltfrm_init():
+- New patch. Let glue drivers request optional behavior from the common
+  platform code. All existing callers pass 0, no functional change.
+
+ufs: pltfrm: Add a flag to manage fixed rate clocks:
+- New patch. Add UFSHCD_PLTFRM_FIXED_RATE_CLKS. When it is set and neither
+  freq-table-hz nor operating-points-v2 is present, register the clocks
+  listed in clock-names with a 0 Hz min/max rate, so the UFS core enables
+  and gates them without scaling. This replaces the dummy single 0 Hz
+  operating-points-v2 table used in v10.
+
+dt-bindings: ufs: Add NXP S32N79 UFS host controller:
+- Dropped operating-points-v2 from the required properties and the OPP
+  table from the example, the fixed rate core clock is now handled by
+  UFSHCD_PLTFRM_FIXED_RATE_CLKS.
+- Reworded the commit message accordingly.
+
+ufs: s32n7: Add NXP S32N79 UFS host controller driver:
+- Pass UFSHCD_PLTFRM_FIXED_RATE_CLKS to ufshcd_pltfrm_init() so the UFS
+  core manages the fixed rate "core" clock without an OPP table.
+- Also clear the DWC BUSTHRTL clock gating enable (CGE) after each HCE
+  enable, as clock gating is not supported on this platform. Added the
+  DWC_UFS_BUSTHRTL_CGE definition to ufshci-dwc.h.
+- Moved the local N_DeviceID programming from the link startup POST_CHANGE
+  to the PRE_CHANGE hook, before DME_LINKSTARTUP, as in the recommended
+  sequence. Kept the local-only CPort 0 setup instead of
+  ufshcd_dwc_connection_setup(), which programs different settings (it
+  clears the host N_DeviceID_valid and sets the device T_PeerDeviceID
+  to 1). This additional context is provided here rather than in the commit
+  message, as it explains why the suggested alternative was not used rather
+  than the change itself.
+- Defined the CBREFCLKCTRL2 ref_clk_en_unipro and ref_clk_en_app override
+  enable bits in ufshcd-dwc.h, next to the existing ref_clk_gating_support
+  one.
+- Embedded the variant ops in struct s32n7_soc_data and recovered the SoC data
+  in init() with container_of_const(), so device_get_match_data() is only
+  called once, in probe().
+- Documented why SCM_STATUS is first written back to its reset value: each
+  M-PHY start-up sequence must start with the PHY in reset, and the PHY may
+  still be running on the host reset / error recovery paths.
+- Replaced the raw M-PHY values with the shared bitfield macros, including
+  the CBREFCLKCTRL2 override enable bits.
+- Updated the commit message for the CGE and fixed rate clock changes.
+- Dropped the Reviewed-by tag of Frank Li.
+
+- Link to v10: https://lore.kernel.org/all/20261103133215.1385823-1-larisa.grigore@oss.nxp.com/
+
+Changes in v10:
+
+All patches:
+- Dropped the "scsi:" subject prefix.
+
+ufs: core: Return a negative errno from WLUN suspend/resume:
+- New patch. __ufshcd_wl_suspend() and __ufshcd_wl_resume() may return a
+  positive result code, e.g. from ufshcd_link_startup(). The runtime PM core
+  treats it as a failure, but rpm_get_suppliers() only checks for a negative
+  value, so the LUs consuming the WLUN are reported as resumed while the host
+  is in the error state. Convert positive values to -EIO at the WLUN PM
+  callback boundary, as ufshcd_init() already does. This replaces the
+  Fixes: rationale previously carried by the dwc link_is_up() patch and
+  covers every source of positive values, not only the DWC glue.
+
+ufs: dwc: Return a negative error if the link is down:
+- Dropped the Fixes: tag. The PM-boundary issue is now fixed in the core;
+  this patch is a cleanup so the helper returns an errno before it is
+  exported.
+
+ufs: unipro: Add TX/RX FSM state attributes:
+- Fixed the commit message: AMD Versal2 has no header with these
+  definitions, only users in the .c file.
+
+ufs: core: Add common Hibern8 TX FSM polling helper:
+- Changed the subject prefix from "ufs: host:" to "ufs: core:".
+- Fixed the helper name in the commit message.
+- Renamed the internal per-lane poller from ufshcd_poll_tx_hibern8_lanes()
+  to ufshcd_tx_lanes_in_hibern8().
+- Log the TX_FSM_STATE of each lane that did not reach Hibern8 on timeout.
+- Moved the prototype to the non-extern declarations and dropped "extern".
+- Report a positive UIC result from DME_GET as -EIO, so the helper really
+  returns a negative errno as documented.
+- Fixed checkpatch --strict alignment checks.
+- Dropped the Reviewed-by tags of Frank Li and Stanley Jhu, as the patch
+  changed significantly.
+
+ufs: dwc: Move Versal2 M-PHY CREG access helpers into ufshcd-dwc:
+- Reworded the commit message and explained the static array race.
+- Use the "name() - description" kernel-doc style like the rest of the
+  file.
+
+dt-bindings: ufs: Add NXP S32N79 UFS host controller:
+- Restricted lanes-per-direction to 2, matching the driver.
+- Explained in the commit message why clock-names and the single 0 Hz
+  operating-points-v2 entry are required.
+
+ufs: s32n7: Add NXP S32N79 UFS host controller driver:
+- Changed the subject prefix to "ufs: s32n7:".
+- Added <linux/bitfield.h> and <linux/bits.h>.
+- Reject lanes-per-direction other than 2.
+- Dropped redundant error messages and the remove() wrapper.
+- Used u32 for the ufshcd_dme_get() result, aligned register offset style,
+  clarified the SCM_STATUS comments.
+- Documented the PERFORM_LINK_STARTUP_ONCE quirk and spm_lvl in the commit
+  message, and updated the HS rate-select bullet.
+- Documented in the commit message that the DWC BUSTHRTL power gating is
+  disabled because it is not supported on this platform.
+
+Changes in v9:
+
+ufs: unipro: Move Tx/Rx FSM state definitions to unipro.h:
+- Prefixed the RX_STATE_* and TX_STATE_* enum constants with UFS_ to avoid
+  polluting the global namespace, and updated the existing users
+  (AMD Versal2, HiSilicon, Qualcomm).
+
+ufs: host: Add common Hibern8 TX FSM polling helper:
+- Use the renamed UFS_TX_STATE_HIBERN8 constant.
+
+dt-bindings: ufs: Add NXP S32N79 UFS host controller:
+- Added Reviewed-by: Frank Li.
+
+MAINTAINERS: Add NXP S32N7 UFS host controller entry:
+- Added the imx@lists.linux.dev mailing list.
+
+arm64: dts: freescale: s32n79: Add UFS host controller:
+arm64: dts: freescale: s32n79-rdb: Enable UFS:
+- Dropped from this series, as requested; they will be sent separately.
+
+Changes in v8:
+
+ufs: host: Add common Hibern8 TX FSM polling helper:
+- Added Reviewed-by: Stanley Jhu.
+
+scsi: ufs: Add NXP S32N79 UFS host controller driver:
+- Let the UFS core manage the core reference clock: declare it in DT via
+  clock-names/operating-points-v2 so the core adds it to hba->clk_list_head
+  and gates it across system suspend and runtime idle. Dropped the manual
+  devm_clk_get_enabled() and the struct s32n7_ufs core_clk member, and now
+  read the clock rate from the core clock list.
+- Dropped the ufs_s32n7_calculate_us_tick() wrapper and inlined the division.
+- Dropped the unused struct s32n7_ufs hba member.
+
+dt-bindings: ufs: Add NXP S32N79 UFS host controller:
+- Added the required clock-names and operating-points-v2 properties.
+- Dropped the Reviewed-by and Acked-by tags.
+
+arm64: dts: freescale: s32n79: Add UFS host controller:
+- Added clock-names = "core" and an operating-points-v2 table with
+  opp-hz = <0> (fixed-rate clock) so the UFS core manages (and gates) the
+  core reference clock.
+
+Changes in v7:
+
+scsi: ufs: Add NXP S32N79 UFS host controller driver:
+- Wrapped .prepare/.complete in pm_sleep_ptr() instead of pm_ptr().
+- Fixed code alignment issues.
+
+Changes in v6:
+
+scsi: ufs: dwc: Return a negative error if the link is down:
+- Translate a positive UIC command result from ufshcd_dme_get() into -EIO.
+- Declare dme_result as u32 to match the ufshcd_dme_get() parameter type.
+
+scsi: ufs: dwc: Sort CBCRCTRL and CBREFCLKCTRL2 by offset:
+- Added Reviewed-by: Frank Li.
+
+scsi: ufs: Add NXP S32N79 UFS host controller driver:
+- Added Reviewed-by: Frank Li.
+
+Changes in v5:
+
+scsi: ufs: dwc: Sort CBCRCTRL and CBREFCLKCTRL2 by offset:
+- New patch. Split the macro reorder into its own cleanup.
+
+ufs: host: Add common Hibern8 TX FSM polling helper:
+- Return the real poller error on timeout, not a forced -ETIMEDOUT.
+
+dt-bindings: ufs: Add NXP S32N79 UFS host controller:
+- Dropped the jedec,ufs-2.0 fallback.
+- Removed the select: block and the clocks description.
+
+scsi: ufs: Add NXP S32N79 UFS host controller driver:
+- Documented the timeout values as driver-defined bounds.
+- Wrapped .prepare/.complete in pm_ptr().
+
+arm64: dts: freescale: s32n79: Add UFS host controller:
+- Dropped the jedec,ufs-2.0 fallback.
+
+Changes in v4:
+
+scsi: ufs: dwc: Return a negative error if the link is down:
+- New patch. ufshcd_dwc_link_is_up() now returns a negative errno on failure
+  instead of a positive value.
+
+ufs: unipro: Move Tx/Rx FSM state definitions to unipro.h
+- Added Reviewed-by: Frank Li.
+
+ufs: host: Add common Hibern8 TX FSM polling helper:
+- Refactored ufshcd_dme_check_tx_hibern8() to use read_poll_timeout().
+
+scsi: ufs: Move Versal2 M-PHY CREG access helpers into ufshcd-dwc:
+- Added Reviewed-by: Frank Li.
+
+dt-bindings: ufs: Add NXP S32N79 UFS host controller:
+- Added Reviewed-by: Frank Li.
+
+Changes in v3:
+
+ufs: host: Add common Hibern8 TX FSM polling helper:
+- Use -EAGAIN while polling and only normalize to -ETIMEDOUT on timeout, so
+  real attribute-read errors are returned instead of masked.
+- Drop the stray delay.h include in ufshcd-pltfrm.c; the helper lives in
+  ufshcd.c.
+- Drop the now-redundant dev_err() after the check in the HiSilicon driver.
+
+scsi: ufs: Add NXP S32N79 UFS host controller driver:
+- Use devm_clk_get_enabled() to enable the core reference clock.
+- Rename the family-level identifiers from the s32n_ prefix to s32n7_
+  (structs and functions), keeping the s32n79_ prefix only for the
+  chip-specific data.
+
+Changes in v2:
+
+ufs: unipro: Move Tx/Rx FSM state definitions to unipro.h:
+- Improved the enum comments. They now cite the MIPI M-PHY v6.0 tables.
+
+ufs: unipro: Add TX/RX FSM state attributes:
+- Added Reviewed-by: Frank Li.
+
+ufs: host: Add common Hibern8 TX FSM polling helper:
+- Moved the helper into the UFS core (ufshcd.c).
+- Split out an inner per-lane poller, ufshcd_poll_tx_hibern8_lanes().
+- Expanded the commit message to document the -ETIMEDOUT normalization done
+  when converting the qcom/hisi checks to the helper. No code behaviour change.
+
+scsi: ufs: Move Versal2 M-PHY CREG access helpers into ufshcd-dwc:
+- Made the DME attribute arrays const. They are now initialized inline instead
+  of by later field assignments.
+
+scsi: ufs: dwc: Export common clock divider and link status helpers:
+- Added Reviewed-by: Frank Li.
+
+dt-bindings: ufs: Add NXP S32N79 UFS host controller:
+- Renamed the patch subject and simplified the commit message.
+- Renamed the binding file to nxp,s32n79-ufshc.yaml so it matches the
+  nxp,s32n79-ufshc compatible string.
+- Removed the nxp,mphy-boot-mode property.
+- Made reg-names and clocks required.
+- Removed the conditional if/then/else schema.
+- Removed clock-names.
+- Changed the compatible from jedec,ufs-3.0 to jedec,ufs-2.0.
+- Updated the example clocks to <&clks 0x92>.
+
+scsi: ufs: Add NXP S32N79 UFS host controller driver:
+- Removed the nxp,mphy-boot-mode handling and the mphy_boot_mode enum. The
+  M-PHY firmware always runs from ROM now.
+- Added a struct s32n_soc_data for SoC match data.
+- Moved the calibration writes out to static const tables.
+- Renamed struct phy_reg_cfg to s32n_phy_reg.
+- Moved the rate-select sequence out of link_startup_post_change() into a new
+  pwr_change_notify() pre-change path.
+- Used devm_clk_get(dev, NULL) and dropped the redundant core_clk NULL check.
+- Switched to *_PM_OPS() macros and pm_ptr() for the PM ops.
+- Clarified the Hibern8 poll timeout comment.
+- Enabled Auto-Hibern8 instead of setting UFSHCD_QUIRK_BROKEN_AUTO_HIBERN8.
+- Reworked and improved the M-PHY initialization sequence.
+
+arm64: dts: freescale: s32n79: Add UFS host controller:
+- Changed the compatible from jedec,ufs-3.0 to jedec,ufs-2.0.
+- Removed clock-names.
+
+arm64: dts: freescale: s32n79-rdb: Enable UFS:
+- Removed the nxp,mphy-boot-mode property.
 
 Signed-off-by: Larisa Grigore <larisa.grigore@oss.nxp.com>
 ---
- drivers/ufs/core/ufshcd.c   | 97 +++++++++++++++++++++++++++++++++++++++++++++
- drivers/ufs/host/ufs-hisi.c | 48 +---------------------
- drivers/ufs/host/ufs-qcom.c | 42 +-------------------
- include/ufs/ufshcd.h        |  2 +
- 4 files changed, 101 insertions(+), 88 deletions(-)
+Larisa Grigore (14):
+      ufs: core: Return a negative errno from WLUN suspend/resume
+      ufs: dwc: Return a negative error if the link is down
+      ufs: unipro: Move Tx/Rx FSM state definitions to unipro.h
+      ufs: unipro: Add TX/RX FSM state attributes
+      ufs: core: Add common Hibern8 TX FSM polling helper
+      ufs: dwc: Move Versal2 M-PHY CREG access helpers into ufshcd-dwc
+      ufs: dwc: Export common clock divider and link status helpers
+      ufs: dwc: Sort CBCRCTRL and CBREFCLKCTRL2 by offset
+      ufs: dwc: Move shared M-PHY CR bitfield macros to ufshcd-dwc.h
+      ufs: pltfrm: Add a flags argument to ufshcd_pltfrm_init()
+      ufs: pltfrm: Add a flag to manage fixed rate clocks
+      dt-bindings: ufs: Add NXP S32N79 UFS host controller
+      ufs: s32n7: Add NXP S32N79 UFS host controller driver
+      MAINTAINERS: Add NXP S32N7 UFS host controller entry
 
-diff --git a/drivers/ufs/core/ufshcd.c b/drivers/ufs/core/ufshcd.c
-index a6817e4bd1f8..9b893e4ada19 100644
---- a/drivers/ufs/core/ufshcd.c
-+++ b/drivers/ufs/core/ufshcd.c
-@@ -4494,6 +4494,103 @@ int ufshcd_dme_get_attr(struct ufs_hba *hba, u32 attr_sel,
- }
- EXPORT_SYMBOL_GPL(ufshcd_dme_get_attr);
- 
-+/**
-+ * ufshcd_tx_lanes_in_hibern8 - Check TX_FSM_STATE of all TX lanes once
-+ * @hba: host controller instance
-+ * @num_lanes: number of TX lanes to check
-+ *
-+ * Read TX_FSM_STATE for every lane and verify it reached Hibern8.
-+ *
-+ * Return: 0 if all lanes are in Hibern8, -EAGAIN if at least one lane is
-+ * not in Hibern8 yet, or a negative errno if reading TX_FSM_STATE failed.
-+ */
-+static int ufshcd_tx_lanes_in_hibern8(struct ufs_hba *hba,
-+				      unsigned int num_lanes)
-+{
-+	u32 tx_fsm_val = 0;
-+	unsigned int i;
-+	int err;
-+
-+	for (i = 0; i < num_lanes; i++) {
-+		err = ufshcd_dme_get(hba,
-+				     UIC_ARG_MIB_SEL(TX_FSM_STATE,
-+						     UIC_ARG_MPHY_TX_GEN_SEL_INDEX(i)),
-+				     &tx_fsm_val);
-+		if (err) {
-+			dev_err(hba->dev,
-+				"%s: unable to get TX_FSM_STATE for lane %u, err %d\n",
-+				__func__, i, err);
-+			/* A positive value is a UIC result code, not an errno. */
-+			return err > 0 ? -EIO : err;
-+		}
-+
-+		if (tx_fsm_val != UFS_TX_STATE_HIBERN8)
-+			return -EAGAIN;
-+	}
-+
-+	return 0;
-+}
-+
-+/**
-+ * ufshcd_dme_check_tx_hibern8 - Check if all TX lanes entered Hibern8 state
-+ * @hba: host controller instance
-+ * @num_lanes: number of TX lanes to check
-+ * @timeout_ms: overall timeout in milliseconds shared by all lanes
-+ *
-+ * Return: 0 on success, negative errno on failure.
-+ */
-+int ufshcd_dme_check_tx_hibern8(struct ufs_hba *hba, unsigned int num_lanes,
-+				unsigned int timeout_ms)
-+{
-+	unsigned int i;
-+	int err, ret;
-+	u32 state;
-+
-+	if (!num_lanes)
-+		return -EINVAL;
-+
-+	/*
-+	 * Poll every lane until ufshcd_tx_lanes_in_hibern8() stops returning
-+	 * -EAGAIN, i.e. all lanes reached HIBERN8 (err == 0) or a real error
-+	 * was hit. A read error has already been reported by the helper.
-+	 */
-+	ret = read_poll_timeout(ufshcd_tx_lanes_in_hibern8, err,
-+				err != -EAGAIN, 200,
-+				(u64)timeout_ms * USEC_PER_MSEC, false,
-+				hba, num_lanes);
-+	if (!ret)
-+		return err;
-+
-+	/*
-+	 * Timed out. The poll helper stops at the first lane that is not in
-+	 * HIBERN8, so read every lane again to report each one that is stuck,
-+	 * together with its TX_FSM_STATE.
-+	 */
-+	ret = 0;
-+	for (i = 0; i < num_lanes; i++) {
-+		err = ufshcd_dme_get(hba,
-+				     UIC_ARG_MIB_SEL(TX_FSM_STATE,
-+						     UIC_ARG_MPHY_TX_GEN_SEL_INDEX(i)),
-+				     &state);
-+		if (err) {
-+			dev_err(hba->dev,
-+				"%s: unable to get TX_FSM_STATE for lane %u, err %d\n",
-+				__func__, i, err);
-+			/* A positive value is a UIC result code, not an errno. */
-+			return err > 0 ? -EIO : err;
-+		}
-+		if (state != UFS_TX_STATE_HIBERN8) {
-+			dev_err(hba->dev,
-+				"%s: TX lane %u stuck in TX_FSM_STATE %u\n",
-+				__func__, i, state);
-+			ret = -ETIMEDOUT;
-+		}
-+	}
-+
-+	return ret;
-+}
-+EXPORT_SYMBOL_GPL(ufshcd_dme_check_tx_hibern8);
-+
- /**
-  * ufshcd_dme_rmw - get modify set a DME attribute
-  * @hba: per adapter instance
-diff --git a/drivers/ufs/host/ufs-hisi.c b/drivers/ufs/host/ufs-hisi.c
-index 3e3d44ee0c14..5217e2e294f8 100644
---- a/drivers/ufs/host/ufs-hisi.c
-+++ b/drivers/ufs/host/ufs-hisi.c
-@@ -22,50 +22,6 @@
- #include <ufs/ufshci.h>
- #include <ufs/ufs_quirks.h>
- 
--static int ufs_hisi_check_hibern8(struct ufs_hba *hba)
--{
--	int err = 0;
--	u32 tx_fsm_val_0 = 0;
--	u32 tx_fsm_val_1 = 0;
--	unsigned long timeout = jiffies + msecs_to_jiffies(HBRN8_POLL_TOUT_MS);
--
--	do {
--		err = ufshcd_dme_get(hba, UIC_ARG_MIB_SEL(TX_FSM_STATE, 0),
--				      &tx_fsm_val_0);
--		err |= ufshcd_dme_get(hba,
--		    UIC_ARG_MIB_SEL(TX_FSM_STATE, 1), &tx_fsm_val_1);
--		if (err || (tx_fsm_val_0 == UFS_TX_STATE_HIBERN8 &&
--			tx_fsm_val_1 == UFS_TX_STATE_HIBERN8))
--			break;
--
--		/* sleep for max. 200us */
--		usleep_range(100, 200);
--	} while (time_before(jiffies, timeout));
--
--	/*
--	 * we might have scheduled out for long during polling so
--	 * check the state again.
--	 */
--	if (time_after(jiffies, timeout)) {
--		err = ufshcd_dme_get(hba, UIC_ARG_MIB_SEL(TX_FSM_STATE, 0),
--				     &tx_fsm_val_0);
--		err |= ufshcd_dme_get(hba,
--		 UIC_ARG_MIB_SEL(TX_FSM_STATE, 1), &tx_fsm_val_1);
--	}
--
--	if (err) {
--		dev_err(hba->dev, "%s: unable to get TX_FSM_STATE, err %d\n",
--			__func__, err);
--	} else if (tx_fsm_val_0 != UFS_TX_STATE_HIBERN8 ||
--			 tx_fsm_val_1 != UFS_TX_STATE_HIBERN8) {
--		err = -1;
--		dev_err(hba->dev, "%s: invalid TX_FSM_STATE, lane0 = %d, lane1 = %d\n",
--			__func__, tx_fsm_val_0, tx_fsm_val_1);
--	}
--
--	return err;
--}
--
- static void ufs_hisi_clk_init(struct ufs_hba *hba)
- {
- 	struct ufs_hisi_host *host = ufshcd_get_variant(hba);
-@@ -224,9 +180,7 @@ static int ufs_hisi_link_startup_pre_change(struct ufs_hba *hba)
- 
- 	/* Unipro VS_mphy_disable */
- 	ufshcd_dme_set(hba, UIC_ARG_MIB_SEL(0xD0C1, 0x0), 0x0);
--	err = ufs_hisi_check_hibern8(hba);
--	if (err)
--		dev_err(hba->dev, "ufs_hisi_check_hibern8 error\n");
-+	err = ufshcd_dme_check_tx_hibern8(hba, 2, HBRN8_POLL_TOUT_MS);
- 
- 	if (!(host->caps & UFS_HISI_CAP_PHY10nm))
- 		ufshcd_writel(hba, UFS_HCLKDIV_NORMAL_VALUE, UFS_REG_HCLKDIV);
-diff --git a/drivers/ufs/host/ufs-qcom.c b/drivers/ufs/host/ufs-qcom.c
-index a96ac35994de..979d223230a6 100644
---- a/drivers/ufs/host/ufs-qcom.c
-+++ b/drivers/ufs/host/ufs-qcom.c
-@@ -413,46 +413,6 @@ static int ufs_qcom_init_lane_clks(struct ufs_qcom_host *host)
- 	return 0;
- }
- 
--static int ufs_qcom_check_hibern8(struct ufs_hba *hba)
--{
--	int err;
--	u32 tx_fsm_val;
--	unsigned long timeout = jiffies + msecs_to_jiffies(HBRN8_POLL_TOUT_MS);
--
--	do {
--		err = ufshcd_dme_get(hba,
--				UIC_ARG_MIB_SEL(TX_FSM_STATE,
--					UIC_ARG_MPHY_TX_GEN_SEL_INDEX(0)),
--				&tx_fsm_val);
--		if (err || tx_fsm_val == UFS_TX_STATE_HIBERN8)
--			break;
--
--		/* sleep for max. 200us */
--		usleep_range(100, 200);
--	} while (time_before(jiffies, timeout));
--
--	/*
--	 * we might have scheduled out for long during polling so
--	 * check the state again.
--	 */
--	if (time_after(jiffies, timeout))
--		err = ufshcd_dme_get(hba,
--				UIC_ARG_MIB_SEL(TX_FSM_STATE,
--					UIC_ARG_MPHY_TX_GEN_SEL_INDEX(0)),
--				&tx_fsm_val);
--
--	if (err) {
--		dev_err(hba->dev, "%s: unable to get TX_FSM_STATE, err %d\n",
--				__func__, err);
--	} else if (tx_fsm_val != UFS_TX_STATE_HIBERN8) {
--		err = tx_fsm_val;
--		dev_err(hba->dev, "%s: invalid TX_FSM_STATE = %d\n",
--				__func__, err);
--	}
--
--	return err;
--}
--
- static void ufs_qcom_select_unipro_mode(struct ufs_qcom_host *host)
- {
- 	ufshcd_rmwl(host->hba, QUNIPRO_SEL, QUNIPRO_SEL, REG_UFS_CFG1);
-@@ -638,7 +598,7 @@ static int ufs_qcom_hce_enable_notify(struct ufs_hba *hba,
- 		break;
- 	case POST_CHANGE:
- 		/* check if UFS PHY moved from DISABLED to HIBERN8 */
--		err = ufs_qcom_check_hibern8(hba);
-+		err = ufshcd_dme_check_tx_hibern8(hba, 1, HBRN8_POLL_TOUT_MS);
- 		ufs_qcom_enable_hw_clk_gating(hba);
- 		ufs_qcom_ice_enable(host);
- 		ufs_qcom_config_ice_allocator(host);
-diff --git a/include/ufs/ufshcd.h b/include/ufs/ufshcd.h
-index be62165b785e..09ad11f7165f 100644
---- a/include/ufs/ufshcd.h
-+++ b/include/ufs/ufshcd.h
-@@ -1505,6 +1505,8 @@ int ufshcd_make_hba_operational(struct ufs_hba *hba);
- void ufshcd_remove(struct ufs_hba *);
- int ufshcd_uic_hibern8_enter(struct ufs_hba *hba);
- int ufshcd_uic_hibern8_exit(struct ufs_hba *hba);
-+int ufshcd_dme_check_tx_hibern8(struct ufs_hba *hba, unsigned int num_lanes,
-+				unsigned int timeout_ms);
- void ufshcd_delay_us(unsigned long us, unsigned long tolerance);
- void ufshcd_parse_dev_ref_clk_freq(struct ufs_hba *hba, struct clk *refclk);
- void ufshcd_update_evt_hist(struct ufs_hba *hba, u32 id, u32 val);
+ .../devicetree/bindings/ufs/nxp,s32n79-ufshc.yaml  |  58 +++
+ MAINTAINERS                                        |   9 +
+ drivers/ufs/core/ufshcd.c                          | 101 +++-
+ drivers/ufs/host/Kconfig                           |  12 +
+ drivers/ufs/host/Makefile                          |   1 +
+ drivers/ufs/host/cdns-pltfrm.c                     |   2 +-
+ drivers/ufs/host/tc-dwc-g210-pltfrm.c              |   2 +-
+ drivers/ufs/host/ufs-amd-versal2.c                 | 106 +---
+ drivers/ufs/host/ufs-exynos.c                      |   2 +-
+ drivers/ufs/host/ufs-hisi.c                        |  50 +-
+ drivers/ufs/host/ufs-hisi.h                        |   6 -
+ drivers/ufs/host/ufs-mediatek.c                    |   2 +-
+ drivers/ufs/host/ufs-nxp-s32n7.c                   | 546 +++++++++++++++++++++
+ drivers/ufs/host/ufs-qcom.c                        |  44 +-
+ drivers/ufs/host/ufs-qcom.h                        |   2 -
+ drivers/ufs/host/ufs-renesas.c                     |   2 +-
+ drivers/ufs/host/ufs-rockchip.c                    |   2 +-
+ drivers/ufs/host/ufs-sprd.c                        |   2 +-
+ drivers/ufs/host/ufshcd-dwc.c                      |  86 +++-
+ drivers/ufs/host/ufshcd-dwc.h                      |  50 +-
+ drivers/ufs/host/ufshcd-pltfrm.c                   |  61 ++-
+ drivers/ufs/host/ufshcd-pltfrm.h                   |  12 +-
+ drivers/ufs/host/ufshci-dwc.h                      |   8 +
+ include/ufs/ufshcd.h                               |   2 +
+ include/ufs/unipro.h                               |  22 +
+ 25 files changed, 949 insertions(+), 241 deletions(-)
+---
+base-commit: 7e1392a42ea288d70a266f6553fe06f57f8647ea
+change-id: 20261114-b4-ufs-s32n7-b8763256eaa7
 
--- 
-2.43.0
+Best regards,
+--  
+Larisa Grigore <larisa.grigore@oss.nxp.com>
 
 
 
