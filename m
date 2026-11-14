@@ -2,11 +2,11 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 9CC6F606A32D
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id D0F8D606A88E
 	for <linux-mediatek@archiver.kernel.org>; Sat, 14 Nov 2026 14:52:32 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=hfYWQUqH;
-	dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=OPBhkz0a
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=kwyFmk6c;
+	dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=HfVU3oiL
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
@@ -14,37 +14,37 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	:Cc:To:From:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=SYDvBU/GQ48jNvHkRHhAIzLBWWJbMEQRccqd3pTnQ8M=; b=hfYWQUqH9vSEq4uSMGcCuwZ4vz
-	VlbCZKOd5zgdWhKI5FHTw4WQkyXaBvKvmryTjI9Q8495+6+zGDypWULyjpk71SaX1wqmrFsTk8VG9
-	5NqbkD6XLqP7wlW/btHSjJLt59Clw+Ia3kjUoztsm71xFGqQNwcNpyVFuOSkx/iV0ahQu+68QEiDF
-	clvhI26PNCg3BvQIN3wOFGpj7eisRFbhgG2ojQ2UrLCjMfsNYzdtsH2T8sS2O+3syDhOK52aCqFft
-	tsn0n1UwsRQL45CoGktt9FczxucLWIGujCayhMqYhtlhtoDiN1GJiYEBPkc+IrdNKnRlplsZYPFiy
-	k5xlpMRQ==;
+	bh=MKGSFzhqcqIRvndmIYREC4xj4lwtCE7g0b2WesSSlo0=; b=kwyFmk6c6sTYSq/0h8OcoOrm9d
+	3gAX02gJqT8+dk7kMUxFZfu+C/c9zq1E6csx+LcSzKB3m3pIG8smYCitcPRNqJj5yh/4GozY8gvqQ
+	dNeYwytLY619WkGF8h7IM5gm9oi/SMyYPeYEr0Q+2Kq0ELSW3heBjQMekfx1IR2oAHrqserKUATP/
+	ch8JJZ7vdk0R9TUqW9aMmYa+XAzAV3YX2B37J8B8rK9uxZrzNL1ulULboxiqJh9XqrE1iclUKchx1
+	ULT4+ZcskQihTr/th2QXcgJLbNwYK4a6jhgwB0TC34w96uSsN0Z8H6kRArTJb1JZqIUr86JuuQoQp
+	iII9E4/A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xSF7I-0000000GIpM-1O4w;
+	id 1xSF7I-0000000GIq7-27g2;
 	Sat, 14 Nov 2026 14:52:32 +0000
 Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xSF72-0000000GIj7-0Xrc;
-	Sat, 14 Nov 2026 14:52:16 +0000
+	id 1xSF73-0000000GIjo-3cs4;
+	Sat, 14 Nov 2026 14:52:18 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 87E4662819;
+	by tor.source.kernel.org (Postfix) with ESMTP id 3EFDE627FC;
+	Sat, 14 Nov 2026 14:52:17 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id D13431F000CA;
 	Sat, 14 Nov 2026 14:52:15 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2040F1F000CA;
-	Sat, 14 Nov 2026 14:52:14 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1794667935;
-	bh=SYDvBU/GQ48jNvHkRHhAIzLBWWJbMEQRccqd3pTnQ8M=;
+	s=k20260515; t=1794667937;
+	bh=MKGSFzhqcqIRvndmIYREC4xj4lwtCE7g0b2WesSSlo0=;
 	h=Subject:From:To:Cc:Date:In-Reply-To:References;
-	b=OPBhkz0aXuXfPSKPkXNDi4hg5YWVwkO8HSzqJUVUY6CABzzu/8SOdAT1uJ32VtnNb
-	 RCyvjWzkX79BAXIy56lApzBBuMUxwMHrGpjB+1ksgXVcwmu8rTAapRfP/EEHaAuza4
-	 aWaB4M8rgkzB3vwPcLZ8fm5vi98hgUtb4IVpifFdoDfrs5fh0leXGrco2GgQvG02fx
-	 mOSE0j7hJHoLphU35ofVOBFDYGcy6YSHramsdR6ggPCsjQj9jc2ddmz1OIk+YNv4V8
-	 vvlIavdiobfqDvuv/RnDgGbhQK8ZguBvAaX6XLlbsbQvr7uuB3epkTfa4VcyTk5dLm
-	 ylHpIOdmiNmNw==
-Subject: Re: [PATCH net-next v5 06/10] net: stmmac: mediatek: use standard
- internal delay properties
+	b=HfVU3oiLY1dTmstvNjuo6NuR0qVDoBtw5TGch9e21l/FiVnm5XWHHeVUCTylzNmSj
+	 dyXTjk0YYAV3C8/+WhmaCdCWYsY4XlXaZE1dGjG48FEzURlvZyP4P4i5BPXm5SgZr8
+	 c844AUQ+4i2UokgoTnXfq32n9Wj/p/UGLS9pjhiWJdW2lNwQnlzgxAUDIZKCF4CeWh
+	 jFU070hSZ+fcsL/d2qQsDpeE4dfJgIXW2niSMWyx7EErv8LC0zrkwWX5Vjh8d7n9nr
+	 c3IViGiLvZ+xWejpLZ6zpS+qa2b+vc+lxg/XD9k8W6v//x+B+7SZD4l8FmHVOm3j3e
+	 tV/Cgx39hdTPA==
+Subject: Re: [PATCH net-next v5 09/10] net: stmmac: mediatek: add support for
+ TX clock output enable feature
 From: netdev-bot+sashiko@kernel.org
 To: louisalexis.eyraud@collabora.com
 Cc: andrew+netdev@lunn.ch, davem@davemloft.net, kuba@kernel.org,
@@ -56,10 +56,10 @@ Cc: andrew+netdev@lunn.ch, davem@davemloft.net, kuba@kernel.org,
  netdev@vger.kernel.org, devicetree@vger.kernel.org,
  linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
  linux-mediatek@lists.infradead.org, linux-stm32@st-md-mailman.stormreply.com
-Date: Sat, 14 Nov 2026 14:52:13 +0000
-Message-ID: <179466793371.2199510.16550815274021036547@kernel.org>
-In-Reply-To: <20261110-dwmac-mediatek-mt8189-v5-6-7d99d6292962@collabora.com>
-References: <20261110-dwmac-mediatek-mt8189-v5-6-7d99d6292962@collabora.com>
+Date: Sat, 14 Nov 2026 14:52:15 +0000
+Message-ID: <179466793541.2199510.14225975364666918696@kernel.org>
+In-Reply-To: <20261110-dwmac-mediatek-mt8189-v5-9-7d99d6292962@collabora.com>
+References: <20261110-dwmac-mediatek-mt8189-v5-9-7d99d6292962@collabora.com>
 X-sashiko-severity: Medium
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
@@ -82,10 +82,10 @@ X-Spam-Status: No, score=-10.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Thank you for your contribution! Sashiko AI review found 3 potential
+Thank you for your contribution! Sashiko AI review found 1 potential
 issue(s) to consider.
 
-Critical: 0 · High: 0 · Medium: 1 · Low: 2
+Critical: 0 · High: 0 · Medium: 1 · Low: 0
 
 If you believe none of the issues are legitimate, please reply to each
 issue of Medium severity or higher and explain why the AI is wrong.
@@ -93,146 +93,68 @@ If any of them are legitimate and you plan to respin, please let patchwork
 know by including "pw-bot: cr" as a separate line at the end of your reply
 (one such reply per series is enough).
 
-- [Medium] In mediatek_dwmac_config_dt(), the new RGMII fallback caps the
-  vendor value with min(vendor, rgmii_delay_max).
-- [Low] The DT binding and the driver disagree.
-- [Low] In mediatek_dwmac_config_dt(), the new 'Invalid RGMII TX/RX clock
-  delay' messages, and the moved 'Invalid TX/RX clock delay' messages,…
+- [Medium] mt8195_set_interface()
+  (drivers/net/ethernet/stmicro/stmmac/dwmac-mediatek.c) now sets…
 
 --
 
-net: stmmac: mediatek: use standard internal delay properties
+net: stmmac: mediatek: add support for TX clock output enable feature
 
-This commit makes the mediatek-dwmac driver keep separate MII/RMII and
-RGMII delay values. The RGMII delays now come from the standard
-rx/tx-internal-delay-ps properties. If those are absent, the driver falls
-back to the mediatek,rx/tx-delay-ps vendor properties.
+This commit adds a definition for the MT8189 TX clock output enable bit in
+the pericfg Ethernet control 0 register. It also adds a mac_txclk_out_en
+flag to the variant data and sets the bit in mt8195_set_interface() when
+the flag is true.
 
 > diff --git a/drivers/net/ethernet/stmicro/stmmac/dwmac-mediatek.c b/drivers/net/ethernet/stmicro/stmmac/dwmac-mediatek.c
-> index cda3f3edde39f..ee43d694099bd 100644
+> index 3f024d455cbd5..1a0ab95dfbf0e 100644
 > --- a/drivers/net/ethernet/stmicro/stmmac/dwmac-mediatek.c
 > +++ b/drivers/net/ethernet/stmicro/stmmac/dwmac-mediatek.c
 
 [ ... ]
 
-> @@ -427,24 +432,58 @@ static int mediatek_dwmac_config_dt(struct mediatek_dwmac_plat_data *plat)
->  		return PTR_ERR(plat->peri_regmap);
->  	}
+> @@ -307,6 +311,9 @@ static int mt8195_set_interface(struct mediatek_dwmac_plat_data *plat,
+>  	/* MT8195 only support external PHY */
+>  	intf_val |= MT8195_EXT_PHY_MODE;
 >  
-> -	if (!of_property_read_u32(plat->np, "mediatek,tx-delay-ps", &tx_delay_ps)) {
-> -		if (tx_delay_ps < plat->variant->tx_delay_max) {
-> -			mac_delay->tx_delay = tx_delay_ps;
-> -		} else {
-> -			dev_err(plat->dev, "Invalid TX clock delay: %dps\n", tx_delay_ps);
-> +	of_property_read_u32(plat->np, "mediatek,tx-delay-ps", &tx_delay_ps);
-
-[Severity: Low]
-This one is about the binding change in the same series, not this hunk
-directly. The commit "dt-bindings: net: mediatek-dwmac: deprecate rx/tx
-delay vendor properties" adds "deprecated: true" to both
-mediatek,tx-delay-ps and mediatek,rx-delay-ps with no condition. Its
-commit message also says they "duplicate standard properties".
-
-In this patch, though, mediatek_dwmac_config_dt() still uses these vendor
-properties as the only source for the MII/RMII delays in
-mac_delay->tx_delay and mac_delay->rx_delay. This commit message also
-says:
-
-    There is no equivalent standard properties for RMII and MII case at the
-    moment.
-
-ethernet-controller.yaml only defines rx/tx-internal-delay-ps inside an
-if/then on rgmii phy-modes. That leaves an MII/RMII node with no
-non-deprecated way to describe these delays.
-
-Should the schema limit the deprecation to RGMII, the way the description
-text already does?
-
-The binding example also still uses the deprecated property on an RGMII
-node:
-
-    phy-mode = "rgmii-rxid";
-    ...
-    mediatek,tx-delay-ps = <1530>;
-
-Also, the stage granularity and ranges are documented only for the
-deprecated properties, not for the standard ones. The driver now checks
-those standard properties against rgmii_delay_max.
-
-> +	if (tx_delay_ps >= plat->variant->mii_delay_max) {
-> +		dev_err(plat->dev, "Invalid TX clock delay: %dps\n",
-> +			tx_delay_ps);
-> +		return -EINVAL;
-> +	}
+> +	if (plat->variant->mac_txclk_out_en)
+> +		intf_val |= MT8189_CTRL0_TXC_OUT_OP_EN;
 > +
-> +	/* Read RGMII TX internal delay standard property */
-> +	if (!of_property_read_u32(plat->np, "tx-internal-delay-ps",
-> +				  &rgmii_tx_delay_ps)) {
-> +		if (rgmii_tx_delay_ps >= plat->variant->rgmii_delay_max) {
-> +			dev_err(plat->dev, "Invalid RGMII TX clock delay: %dps\n",
-> +				rgmii_tx_delay_ps);
-
-[Severity: Low]
-This isn't a bug, but rgmii_tx_delay_ps is a u32 printed with %d. A
-malformed DT value above INT_MAX, such as 0xffffffff, would be logged as
-"-1ps". Should this be %u?
-
-The same applies to the "Invalid RGMII RX clock delay" message. It also
-applies to the moved "Invalid TX/RX clock delay" messages for tx_delay_ps
-and rx_delay_ps.
-
-> +			return -EINVAL;
->  		}
-> +	} else {
-> +		/*
-> +		 * standard property value not available, fallback on vendor
-> +		 * value instead and cap it to max RGMII delay value
-> +		 */
-> +		rgmii_tx_delay_ps = min(tx_delay_ps,
-> +					plat->variant->rgmii_delay_max);
->  	}
 
 [Severity: Medium]
-Can this cap produce a value that the stage field can't hold?
-rgmii_delay_max is used as an exclusive bound elsewhere, including in the
-standard-property branch just above:
+Should this bit depend on the interface mode? As written,
+MT8189_CTRL0_TXC_OUT_OP_EN is set no matter what phy_intf_sel,
+plat->rmii_clk_from_mac or plat->rmii_rxc are.
 
-    if (rgmii_tx_delay_ps >= plat->variant->rgmii_delay_max) {
+Later in the series, "net: stmmac: mediatek: add support for MT8189 SoC"
+sets .mac_txclk_out_en = true for mt8189_gmac_variant. That means the TX
+clock output gets enabled in every mode.
 
-It is also defined as one stage past the largest value that can be
-programmed:
+The MT8189 binding forbids the MAC from sourcing the RMII reference clock:
 
-    #define MT2712_RGMII_DELAY_MAX		5440 /* 32 x 170ps */
+  mediatek,rmii-clk-from-mac: false
 
-On MT2712, mii_delay_max is 17600. A mediatek,tx-delay-ps value in
-[5440, 17600) therefore passes the earlier check. If the node has no
-tx-internal-delay-ps, min() caps the value to exactly 5440.
+It still allows mediatek,rmii-rxc, and it does not limit phy-mode. So with
+phy-mode = "rmii" and no mediatek,rmii-rxc, the external reference clock
+comes in on the TXC pin, as mt8195_set_delay() describes:
 
-Then the RGMII case in mt2712_set_delay() does:
+    /* the rmii reference clock from outside is connected
+     * to TXC pin, the reference clock will be adjusted
+     * by TXC delay macro circuit.
+     */
 
-    tx_delay_stage_val = mac_delay->rgmii_tx_delay
-                         / MT2712_RGMII_DLY_STAGE_DIV;
+mt8195_set_delay() also accepts PHY_INTERFACE_MODE_MII. In MII mode the
+PHY drives TX_CLK.
 
-That gives 5440 / 170 = 32. For a non-constant value, FIELD_PREP() masks
-32 down to 0 in the 5-bit ETH_DLY_GTXC_STAGES and ETH_DLY_RXC_STAGES
-fields. ETH_DLY_GTXC_ENABLE and ETH_DLY_RXC_ENABLE are still set from
-!!32.
+In either of those setups, would the MAC's TXC output driver be turned on
+while the PHY or an oscillator is already driving that pin?
 
-So the RGMII delay is programmed to zero stages with the enable bit set,
-not to the maximum the comment describes, and nothing is logged. The
-binding documents the MT2712 RGMII range as 0~31*170, which matches an
-exclusive bound. The commit message only says "fallback to vendor
-values" and doesn't mention any capping.
+If the hardware ignores bit 20 when TXC is used as an input, could the
+commit message say so? If it doesn't, would it be safer to set the bit only
+for the modes where the MAC drives TXC, such as RGMII?
 
-Should the cap be rgmii_delay_max - 1? Or should the fallback return
--EINVAL, like the standard-property branch does?
-
-The rgmii_rx_delay_ps fallback below has the same problem. MT8195 and
-MT8189 aren't affected, because mii_delay_max equals rgmii_delay_max
-there. The behavior seems unchanged later in the series, where
-get_delay_stage() divides by rgmii_delay_stage_div (170 on MT2712).
-
-[ ... ]
+>  	regmap_write(plat->peri_regmap,
+>  		     reg_offset + MT8195_PERI_ETH_CTRL0,
+>  		     intf_val);
 
 -- 
 Sashiko AI review · https://netdev-ai.bots.linux.dev/sashiko/#/patchset/20261110-dwmac-mediatek-mt8189-v5-0-7d99d6292962%40collabora.com
