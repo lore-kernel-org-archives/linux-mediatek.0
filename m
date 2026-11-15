@@ -2,68 +2,146 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 57558606A327
-	for <linux-mediatek@archiver.kernel.org>; Sun, 15 Nov 2026 08:02:59 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 3E1C3606A31F
+	for <linux-mediatek@archiver.kernel.org>; Sun, 15 Nov 2026 14:01:16 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=cn2wInqm;
-	dkim=pass (1024-bit key) header.d=163.com header.i=@163.com header.a=rsa-sha256 header.s=s110527 header.b=AccT0Gtp
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=KZ7uBE0P;
+	dkim=pass (2048-bit key, unprotected) header.d=iopsys.eu header.i=@iopsys.eu header.a=rsa-sha256 header.s=selector1 header.b=tev2uXu9
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-Type:In-Reply-To:From:References:Cc:To:
+	Subject:Date:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=iqFD1Dy0PA5Hv/7kVoTZRvbdlmdkVu9y//K9Cw3fKM8=; b=cn2wInqm9sqfH+Rblg+kGLtcch
-	Rm4E4/0OhW+KIPXCywsa0oY/KVWNsDehIxsrnM2jci9yzhdaoN/XDMD+xwuckf4Jt35bnIQhiTvgD
-	RvpSdgDEwx/98lnLuQau9IQgeEKuv+0U9rvzOK+Tj4roRSeNvwUflROTQnJoz7hVrdGZaAoN3gusF
-	o0lfOj/2F2bAHJCi2FiRvsZvrthET2H0wHKoUElZlMdeWvEmBaQPyD3nRe7gsI4RJoF/qxUXMxFTL
-	M1S9wVXla3Gk0eK9r9IJSFeuZS25zMVy7CiQiZlvZapQaN7cwCf9ims2J/abBIQb0VqZsVRvfb376
-	kRtEmd3g==;
+	bh=STmFUyaqt4S30PfXA7RLzVhGz4pGWx6XGopVs73VU3o=; b=KZ7uBE0PDacHHhu34fq8K7tOWC
+	vW83uHrsLGh+Essc+O7DZSSgWG3GK+LTbdNipAaqKTc4MR/hgavYe01WEolJBTmV9knke4Aqck3v/
+	CihyfnjBut6FdZtrKqaB3hC9pDsVXqxG4UTLahfUIgwfy/t+Pfcoc5bk/fYap4cN1TzFg5HZNe4HF
+	0C02d+l3NmOz658oNByI9J20MBf0SQIiEKpiOQ5Ao32WlDNwZKSRqgHuD0eBHABblakPiuJ3CaQ8y
+	mF9sLD+qd1jsEHIROY9HKiay72y9Yq4MS7FP4dygUHD1eOIOKVdJuOO3uJ9Ktc7xBkBffUhWL8T0Q
+	X22/8MhA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xSVCV-0000000HD4v-0GKj;
-	Sun, 15 Nov 2026 08:02:59 +0000
-Received: from m16.mail.163.com ([220.197.31.5])
+	id 1xSanD-000000000aa-3BQ9;
+	Sun, 15 Nov 2026 14:01:15 +0000
+Received: from mail-westeuropeazlp170130006.outbound.protection.outlook.com ([2a01:111:f403:c201::6] helo=AM0PR02CU008.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xSVCS-0000000HD35-15WR
+	id 1xSanA-000000000aB-0Sed
 	for linux-mediatek@lists.infradead.org;
-	Sun, 15 Nov 2026 08:02:57 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=163.com;
-	s=s110527; h=From:To:Subject:Date:Message-ID:MIME-Version; bh=iq
-	FD1Dy0PA5Hv/7kVoTZRvbdlmdkVu9y//K9Cw3fKM8=; b=AccT0GtpYOmkgHaMbw
-	qgk5oDQiS2+F1HIJtb+ZKtzUXFiXh54CYN9I5QXybfghSl07ssNJFR5CUN9Sr2O9
-	aVHMcfKssWn8Cj0UVh6X01X72wBDJjRvjdSp/NCAU8/CWDTJauu5jt6RiNq4crHu
-	XhmT7y22CyAFlzxkKRUhDaVxs=
-Received: from user-VMware-Virtual-Platform.localdomain (unknown [])
-	by gzga-smtp-mtada-g1-0 (Coremail) with SMTP id _____wBnbpcfZ_lqTjp7HA--.27549S2;
-	Sun, 15 Nov 2026 16:02:39 +0800 (CST)
-From: Ziheng Wei <zihengw03@163.com>
-To: Felix Fietkau <nbd@nbd.name>,
-	Lorenzo Bianconi <lorenzo@kernel.org>
-Cc: Ryder Lee <ryder.lee@mediatek.com>,
-	Shayne Chen <shayne.chen@mediatek.com>,
-	Sean Wang <sean.wang@mediatek.com>,
-	linux-wireless@vger.kernel.org,
-	linux-mediatek@lists.infradead.org,
-	linux-kernel@vger.kernel.org,
-	stable@vger.kernel.org
-Subject: [PATCH] wifi: mt76: mt7925: fix mt7925_reverse_frag0_hdr_trans() for MLO
-Date: Sun, 15 Nov 2026 16:02:39 +0800
-Message-ID: <20261115080239.910402-1-zihengw03@163.com>
-X-Mailer: git-send-email 2.43.0
+	Sun, 15 Nov 2026 14:01:14 +0000
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=OCvU7inqqJTsO/qHq5CKDm/IaFUG7U6QDzsYZ3tbZCpEcR+N1WfQf0kbFhwAz+Sclxa++8YGErVTzKhM5NObfnXRf3abNMddlb27wGpZSvH6LnMbQuXckkAx6VkJiPJYwduWIsQdzaT2/s++LtY4XfI4WUaoSy5etJMg5N1EIpYRvhioplthjWC3lGbdodmZ8EpfwOdIynmtIu524Fr9EIDzrR77fnOmhUCsG7FeJglKMdeHVWVFCwjFMVEYTh8iMg6YunBIDfesFnbmXO0cwvrAwXWzTuIuZSa4DioD1O5FtYaAnnGWQ9dpHoAtSBbFJRq0wGE0Uaj1WhVIY6pp7w==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=STmFUyaqt4S30PfXA7RLzVhGz4pGWx6XGopVs73VU3o=;
+ b=R5tjMtPVxlKQ86jUSHOJ1xblKGmBNRubnBbJk0FESwgBEUaPqeXrbk/JTAzxjnwg/KjntlghiqY/w/RR45QYt+GObOvRy6tI0y20mBT7eAQwYcI72seCys2H7JR+bBzb93skGiW0BnO2BIBito11bWk+XgB1aQkUPeDamQcFib4VmKnUBtjpldI3qWH9ZtbPcUPyLwiuq8eEiLb/IXgM7td0NMInGF2Jimc0ogqhg55tvznsMWS/8QTUPsRSpqtUaZNlG6oXLr2LQE4RBPfHV16qA+Ie6w2Ee3h8fWzO5brc88ReBzzMv/ELcBJU7684ZO9YHstBPQ15obWIzs0rPg==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=genexis.eu; dmarc=pass action=none header.from=iopsys.eu;
+ dkim=pass header.d=iopsys.eu; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=iopsys.eu;
+ s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=STmFUyaqt4S30PfXA7RLzVhGz4pGWx6XGopVs73VU3o=;
+ b=tev2uXu9boxzwxhKInMwmMTFtAGZp05UkUW/7vBbBOSC3wbLs1Yib1iT3r+2UdyPBF9SneXkiYzJAd6dcwCoGpjqDXMsTZQwafob/vnNfYGyif8sBwFukX4/jR9o8B46fkItsx0Ii3DmIJwfZx3nfRr8R0dLwtqLkXcPRJoBsARqYhzqtVeHVEr1kxZYLkG3nWBPfU2vuWwA2jkN7/vEElUkAdmuxfpg1avZC6awFIkhpxWDNwi6whSmdTWspArFjZtEL/oCyC3kYF2YneCL0MYX4heLJsWDwDf5Q9KEuEttZMwP1dblLqpY/j3xNnu/y4jN4099ozOpp8Vss1obDg==
+Authentication-Results: mx.microsoft.com 1; dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=iopsys.eu;
+Received: from DU2PR08MB10037.eurprd08.prod.outlook.com (2603:10a6:10:49a::20)
+ by PAWPR08MB8791.eurprd08.prod.outlook.com (2603:10a6:102:334::13) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.615.13; Sun, 15 Nov
+ 2026 14:01:02 +0000
+Received: from DU2PR08MB10037.eurprd08.prod.outlook.com
+ ([fe80::3c7:6d2e:8afe:e4dc]) by DU2PR08MB10037.eurprd08.prod.outlook.com
+ ([fe80::3c7:6d2e:8afe:e4dc%3]) with mapi id 15.21.0615.012; Sun, 15 Nov 2026
+ 14:01:01 +0000
+Message-ID: <e1570582-15cd-4842-8dfc-3c230f527bff@iopsys.eu>
+Date: Sun, 15 Nov 2026 17:00:53 +0300
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 03/12] dt-bindings: pinctrl: airoha: describe all EN7581
+ GPIO mux groups
+To: Zhengping Zhang <zhengping.zhang@airoha.com>, linusw@kernel.org,
+ lorenzo@kernel.org
+Cc: robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
+ brgl@kernel.org, naseefkm@gmail.com, benjamin.larsson@genexis.eu,
+ linux-gpio@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ lei.dong@airoha.com, ansuelsmth@gmail.com
+References: <20261110094339.749110-1-zhengping.zhang@airoha.com>
+ <20261110094339.749110-4-zhengping.zhang@airoha.com>
+From: Mikhail Kshevetskiy <mikhail.kshevetskiy@iopsys.eu>
+Content-Language: en-US, ru-RU
+In-Reply-To: <20261110094339.749110-4-zhengping.zhang@airoha.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+X-ClientProxiedBy: GV3PEPF0001DC28.SWEP280.PROD.OUTLOOK.COM
+ (2603:10a6:158:400::111) To DU2PR08MB10037.eurprd08.prod.outlook.com
+ (2603:10a6:10:49a::20)
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-CM-TRANSID: _____wBnbpcfZ_lqTjp7HA--.27549S2
-X-Coremail-Antispam: 1Uf129KBjvJXoWxZF18Ww4fWFyktFWUGw15Arb_yoW5tw43pa
-	yjk3y5Gr1kXrs5Zw18Cw4j9FWava1fKFyIkryfG3Z5uFZ5tr18JFsrXry0vryYkr4kuFnI
-	yFW8tr98Gayq937anT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
-	9KBjDUYxBIdaVFxhVjvjDU0xZFpf9x07jkpnQUUUUU=
-X-CM-SenderInfo: p2lkv0ljzqjqqrwthudrp/xtbC7QD6S2r5ZyCuOAAA3e
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: DU2PR08MB10037:EE_|PAWPR08MB8791:EE_
+X-MS-Office365-Filtering-Correlation-Id: 98eab58e-3ba9-4786-eab6-08df4320e18a
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;ARA:13230040|7416014|376014|1800799024|366016|23010399003|10067099003|11063799006|4143699003|56012099006|261021123027099003|261021121427099003|261009223027099003|261102123227099003|261026140227099003|261022105027099003|261026121527099003|261028144727099003|18002099003|22082099003;
+X-Microsoft-Antispam-Message-Info: wD+0bUJDIE88lVtmqH76t5JVzu+bmQXZypS8OhbSW1mO6aGtJrI0KHpWXp1oTBqrhsK91YwfseERlfX4pAcyCERvr/VxvXruE7nFJ3hV+MCdy/wPiWq3+yLaiP/4Qygv/W7CRt6VxGXOyYlrrJqk5UyfTfneOwR1o3qIhzVOgbQP9awk4ryzs9f5mU9Pgz/OQdap5qNPt0culb6/L5Avtrx3ePU9fSZ15K6hcTUjckOnnzF3vcOb9Fu3rBiKWBRV387FV8yv8w27D2FfwbxdiQJXnHx67kOJEEatcDDBdKWsjTTlMMnZtx0lOFfG8nO349rjUz1RHzqvE2qDiSFCvc41C8aQzrdF/EvWa6KhlxT65sDnpQU9m6Vi9rV9kUA4aLyVXdiQBCPohXTC7e6VVF5QVx1tmnQUfi4fOrR2fzbmSD/OiZvs00xobX5XegUEoK1hV9lq8IGxQAiGt1W7mOXUyBwwQpfjxvt7arqR+tKINBOLxFZcCDGy4Qp+F+ZX05EEqI5N0k45slk1SKRteRhAlH6s8lVMZQEhzy9Q4tzzTixn26UVoQomjIyyqQDePYytP4+KOxKnrminCjhOBrqpTm+vnWhr3YITj69qfMzIU8k9MmWz8qpn3tu59TP6pp1wXADn8prLeo70+wj+pIBulUDovOnJpNsNMLqqAg0=
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:DU2PR08MB10037.eurprd08.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(7416014)(376014)(1800799024)(366016)(23010399003)(10067099003)(11063799006)(4143699003)(56012099006)(261021123027099003)(261021121427099003)(261009223027099003)(261102123227099003)(261026140227099003)(261022105027099003)(261026121527099003)(261028144727099003)(18002099003)(22082099003);DIR:OUT;SFP:1102;
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?RktVZFRpN0NFZE5CaEtuUm1tQVUvUExFWDNWcWJwWkZUM09NTkVSSjNGdmw3?=
+ =?utf-8?B?V2ZnUmQ2LzRHa1ZOb3d5NTZIcml1bXVGeWJQR0dMUS9BRVhuZEJ4VFFINHUv?=
+ =?utf-8?B?a3VOUC9MREo2UlcrSVdJVUFMQTRuS1dGWXB1QTN4SXRyZUdMWE1ZYmo5YkxW?=
+ =?utf-8?B?U29TNEQwOGlYb2kxV2JiV1p4SmxYNjg1RnZ3aWFMUkNIWjJTL1BWVEZDb2xr?=
+ =?utf-8?B?UHNFYTRoM3V0Kys1akd0OHFvbXRDbXU0M2s5YVlycGVuR054ck1NVVdNU29y?=
+ =?utf-8?B?YzJZeTRvT3NGSHRHdlI2L3RPM1hST0pXL3hiN1NNZXltRXdsc2toU0krTVVL?=
+ =?utf-8?B?VTg1NW4yLzlqRWZYME1ZL29HYjcwdmFhNUV3SitNZHhNeU45QW5hdWxkckFS?=
+ =?utf-8?B?S2w2Z1pxbjVya0xvNDFNa0RKTThmVFY0dTh2cEI4S0JBcWhlMVNNWGtZN2l0?=
+ =?utf-8?B?YitXNDYrSU0vc3hKTk5BS21TTnJlOS9GazE2c0dHa1c2OHdGOU5vUkhoSVdN?=
+ =?utf-8?B?Y3ZWNWFNRUFJNFBlK1RDU0IzTWVscnViMExwZ3pRaWxjT3JBeDdwUzY0NHU3?=
+ =?utf-8?B?aHRFOGNHS001alFQL0FQb290em5iU2xDL2FhYlVGS1c1Qy9JWG1FWUFBdmg4?=
+ =?utf-8?B?aEZxZ2R1Mnc0b1I4M0E4ZjIvS3BHK1AxOXI5LysvM2hkR3g4TG9aVG0vdnRv?=
+ =?utf-8?B?L1NFcDFzS0lGT3ZDQ0FheDltNDJUUFhvbklBTXR1TU1nblBHeE1tRVQvSlI2?=
+ =?utf-8?B?MythRGt5cXJGWVhXNjM4TkhMVUhLRHZIMGkxd3FDMDNQUmRxUW5LVE9idkts?=
+ =?utf-8?B?TUU3RTNSYmFjQ2d3SlhpZkp3djF5MUFNd1VUa09Dc2N3VHFNODBJV3RtSUp0?=
+ =?utf-8?B?UDNVSHBOTTJ4UUlwOWRVUzBDK1Njc3BnK01TUXFIcmwydVVPS1NBOW51azlP?=
+ =?utf-8?B?QlEyK3d0c2RrN1FVQ1JsaG9yeDBQK045RytraWtNMk01MUoweEEvczVGd2tV?=
+ =?utf-8?B?ZGJHZkkrdTF0QzROK0lUaHVlNTU0eXdkNmh6ait2NytHZG5ROXRNR201RGNr?=
+ =?utf-8?B?S0lhMm4rZUlqc0pPdXJaRS9RWnZrMnpCYW1UVUlrdUdKMXJ2ZDBoMkp3eEpP?=
+ =?utf-8?B?TkRZeXhqYzQ0VzVEK0tPMUl2bzBtMVpMMzhZNXY0VzR2RWdZOWIzWSt3RTJR?=
+ =?utf-8?B?dHJodmdWajZVRWY1WFFmcnE2d2lobmJRM1N5MDFuL01mWWxiZkoydnZBcmpG?=
+ =?utf-8?B?YmtUeUtDT2FHdXBNbVNJK1hKbTdDOVdRbHNLbXhTOTlhbE1kRHJTU0ViT1dJ?=
+ =?utf-8?B?dHBJRG5BNndRL0lqYVZ2V1g5cWlOV0d2dlczcE44Q2ZZSU03bTlESlJNaTBj?=
+ =?utf-8?B?eFpGR3hncEVzZ0dCVmR1T2xsamVOQms5VTZ5Rm5TMHNRV2dHb09mQlk2N25F?=
+ =?utf-8?B?aHRHdEhscVBtZ0dPMzRIZGpxNnBENjdEQnZmT2IrU1RTbCs5VitGdk1QWWNh?=
+ =?utf-8?B?b2k2SThmV2hETzZFdXptZkNqbVVBS0pTK2xvSFREUDBSeVk3VmhKczVyUkdZ?=
+ =?utf-8?B?d3VDME9yV01kODQrWGx3OFVyYjQzeHJPZ0U5U1E2ZithdG9GYUs1SnlUWWZL?=
+ =?utf-8?B?QXVnbFZYbloyRzJiNERnbHNCWnhISmtQSy9nVkw3OWJteUNhMzI4OU1VOGwx?=
+ =?utf-8?B?dTV1bStRL1RCTTBPT0JiUDhRbVFNbmdsMFdzR2RIVzZxMEhYVkphTUQvNG5Q?=
+ =?utf-8?B?S29XZlpqdkpWNHk4SG1wZVJRcmNVTGt0RWhWYzBESmV1MWtLWjVIaTF4dEV2?=
+ =?utf-8?B?dkdPM3NORDBMVWJKSUNkM3A0VVZZa2Z4RmEwcGdWallxS3ptYWQrZGFLMmxn?=
+ =?utf-8?B?dnR1Tm12NndLeU5OK1RndWhHeFFCSHdGRGszRmZZazRJeXZlZXBCSUhSbUdW?=
+ =?utf-8?B?MnIwWDNuK0hDaUFHVC9Oc1RwSGZTb1ltUUNEY3NNYlVhS3lIS1NIcnVrVVho?=
+ =?utf-8?B?SlVUdmhiM29RSDFlaWlNaVRXdzg2dzdUeWNGUVQ5UmJYeGlsYmI4amdtNDNk?=
+ =?utf-8?B?UExXNTlBMEp5MDg1blFyY3NVVmRxYjRwS0JtQTJnUFJ6cDdJamUraU55aFoy?=
+ =?utf-8?B?UzFnMWgvWTBiRUVlSlZ5SmIxSXFZTFRDeUE5WlBWd0FQNEJYRHRUSHZoQ2N0?=
+ =?utf-8?B?YWJrVzNvUkxOZVFBa28vM24xWjdmTXppUlZnK0xrbUhpNU1QNWtVMHN1Wk56?=
+ =?utf-8?B?VVNTUkxza0RFZ3JPRCtUbVVUOEF3UTRjaENRZ3RBS0pSTG9YcHh0c3V1M25Y?=
+ =?utf-8?B?dUdKVHh6ZjZVTmF6ejl5S1lrWkJ6QlVNUkZkbHhSdmpOK256UmNiRjhHUXlZ?=
+ =?utf-8?Q?7wqCOHRT23JbLuiQ=3D?=
+X-OriginatorOrg: iopsys.eu
+X-MS-Exchange-CrossTenant-Network-Message-Id: 98eab58e-3ba9-4786-eab6-08df4320e18a
+X-MS-Exchange-CrossTenant-AuthSource: DU2PR08MB10037.eurprd08.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 15 Nov 2026 14:01:01.5449
+ (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 8d891be1-7bce-4216-9a99-bee9de02ba58
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: DEmcjG0vksJyxAYg0k9fvd3/u0CnhAvyA5IyPp8w2+BIyJYLbF8kC51xUgWmgCJAKUPUvCBUk+Ko8HqaL8c/NhPR/rhPFSdt0cB1R3rk1Es=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: PAWPR08MB8791
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261115_000256_745710_42D4A48B 
-X-CRM114-Status: GOOD (  10.75  )
+X-CRM114-CacheID: sfid-20261115_060112_599816_45120C26 
+X-CRM114-Status: GOOD (  12.77  )
 X-Spam-Score: -1.8 (-)
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -75,89 +153,132 @@ List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-15.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
-	DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,FREEMAIL_FORGED_FROMDOMAIN,
-	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
-	UNPARSEABLE_RELAY,USER_AGENT_GIT autolearn=ham autolearn_force=no
-	version=4.0.1
+X-Spam-Status: No, score=-17.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,
+	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1
+	autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-For unicast frames mt792x_rx_get_wcid() returns the wcid of the
-receiving link. Since commit 43aa4033eb18 ("wifi: mt76: mt7925: add
-mt7925_change_sta_links") the wcid of a non-default station link is
-embedded in a separately allocated struct mt792x_link_sta, not in
-struct mt792x_sta. mt7925_reverse_frag0_hdr_trans() still casts
-status->wcid to struct mt792x_sta and derives the ieee80211_sta from
-it with container_of(), so for a frame received on such a link it
-reads msta->vif past the end of the link allocation, dereferences the
-result as a vif, and copies sta->addr from memory in front of it into
-the rebuilt 802.11 header.
+according to an7581 datasheet
+* LED0 uses GPIO33-35 and GPIO42 * LED1 uses GPIO43-46 so patch should
+be fixed
 
-This path is taken for the first fragment of a header-translated
-unicast frame, so it is reached when the AP sends fragmented data on
-a secondary link while RX header translation is active there.
 
-Do what commit a3ea1c309bf3 ("wifi: mt76: mt7996: Fix
-mt7996_reverse_frag0_hdr_trans for MLO") did for mt7996: get the
-station through the sta back pointer of the link and wcid_to_sta(),
-and take the BSSID from the bss_conf of the receiving link.
-
-Found by LLM-assisted source review. Not tested on hardware.
-
-Fixes: 43aa4033eb18 ("wifi: mt76: mt7925: add mt7925_change_sta_links")
-Cc: stable@vger.kernel.org
-Signed-off-by: Ziheng Wei <zihengw03@163.com>
----
-
-Notes:
-    The changelog was drafted with an AI assistant from my analysis;
-    I have reviewed the code, the fix and the text.
-
- drivers/net/wireless/mediatek/mt76/mt7925/mac.c | 11 ++++++++---
- 1 file changed, 8 insertions(+), 3 deletions(-)
-
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/mac.c b/drivers/net/wireless/mediatek/mt76/mt7925/mac.c
-index 7af996abe..e00c04cf5 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7925/mac.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7925/mac.c
-@@ -184,7 +184,9 @@ static int mt7925_reverse_frag0_hdr_trans(struct sk_buff *skb, u16 hdr_gap)
- {
- 	struct mt76_rx_status *status = (struct mt76_rx_status *)skb->cb;
- 	struct ethhdr *eth_hdr = (struct ethhdr *)(skb->data + hdr_gap);
--	struct mt792x_sta *msta = (struct mt792x_sta *)status->wcid;
-+	struct mt792x_link_sta *mlink = (struct mt792x_link_sta *)status->wcid;
-+	struct mt792x_sta *msta = mlink ? mlink->sta : NULL;
-+	struct ieee80211_bss_conf *link_conf;
- 	__le32 *rxd = (__le32 *)skb->data;
- 	struct ieee80211_sta *sta;
- 	struct ieee80211_vif *vif;
-@@ -201,8 +203,11 @@ static int mt7925_reverse_frag0_hdr_trans(struct sk_buff *skb, u16 hdr_gap)
- 	if (!msta || !msta->vif)
- 		return -EINVAL;
- 
--	sta = container_of((void *)msta, struct ieee80211_sta, drv_priv);
-+	sta = wcid_to_sta(status->wcid);
- 	vif = container_of((void *)msta->vif, struct ieee80211_vif, drv_priv);
-+	link_conf = rcu_dereference(vif->link_conf[mlink->wcid.link_id]);
-+	if (!sta || !link_conf)
-+		return -EINVAL;
- 
- 	/* store the info from RXD and ethhdr to avoid being overridden */
- 	frame_control = le32_get_bits(rxd[8], MT_RXD8_FRAME_CONTROL);
-@@ -215,7 +220,7 @@ static int mt7925_reverse_frag0_hdr_trans(struct sk_buff *skb, u16 hdr_gap)
- 	switch (frame_control & (IEEE80211_FCTL_TODS |
- 				 IEEE80211_FCTL_FROMDS)) {
- 	case 0:
--		ether_addr_copy(hdr.addr3, vif->bss_conf.bssid);
-+		ether_addr_copy(hdr.addr3, link_conf->bssid);
- 		break;
- 	case IEEE80211_FCTL_FROMDS:
- 		ether_addr_copy(hdr.addr3, eth_hdr->h_source);
-
-base-commit: 97d73c8251226cf27cc6656b4c542869bb8c69fa
--- 
-2.43.0
-
+On 11/10/26 12:43, Zhengping Zhang wrote:
+> [You don't often get email from zhengping.zhang@airoha.com. Learn why this is important at https://aka.ms/LearnAboutSenderIdentification ]
+>
+> Expand the GPIO mux groups from GPIO47-49 to GPIO0-49 to describe
+> explicit GPIO mode selection across the controller's GPIO range.
+> Allow multiple GPIO groups in a single mux state.
+>
+> Correct the PHY LED pin groups to match the EN7581 pad assignments:
+> LED0 uses GPIO43-46, while LED1 uses GPIO33-35 and GPIO42.
+>
+> The corresponding driver support is added in subsequent patches.
+>
+> Signed-off-by: Zhengping Zhang <zhengping.zhang@airoha.com>
+> ---
+>  .../pinctrl/airoha,en7581-pinctrl.yaml        | 28 +++++++++++++------
+>  1 file changed, 19 insertions(+), 9 deletions(-)
+>
+> diff --git a/Documentation/devicetree/bindings/pinctrl/airoha,en7581-pinctrl.yaml b/Documentation/devicetree/bindings/pinctrl/airoha,en7581-pinctrl.yaml
+> index 0cf1826c691fc..fa7b3dc58a3ea 100644
+> --- a/Documentation/devicetree/bindings/pinctrl/airoha,en7581-pinctrl.yaml
+> +++ b/Documentation/devicetree/bindings/pinctrl/airoha,en7581-pinctrl.yaml
+> @@ -194,7 +194,17 @@ patternProperties:
+>              then:
+>                properties:
+>                  groups:
+> -                  enum: [gpio47, gpio48, gpio49]
+> +                  items:
+> +                    enum: [gpio0, gpio1, gpio2, gpio3, gpio4, gpio5, gpio6,
+> +                           gpio7, gpio8, gpio9, gpio10, gpio11, gpio12, gpio13,
+> +                           gpio14, gpio15, gpio16, gpio17, gpio18, gpio19, gpio20,
+> +                           gpio21, gpio22, gpio23, gpio24, gpio25, gpio26, gpio27,
+> +                           gpio28, gpio29, gpio30, gpio31, gpio32, gpio33, gpio34,
+> +                           gpio35, gpio36, gpio37, gpio38, gpio39, gpio40, gpio41,
+> +                           gpio42, gpio43, gpio44, gpio45, gpio46, gpio47, gpio48,
+> +                           gpio49]
+> +                  minItems: 1
+> +                  maxItems: 50
+>            - if:
+>                properties:
+>                  function:
+> @@ -225,7 +235,7 @@ patternProperties:
+>              then:
+>                properties:
+>                  groups:
+> -                  enum: [gpio33, gpio34, gpio35, gpio42]
+> +                  enum: [gpio43, gpio44, gpio45, gpio46]
+>            - if:
+>                properties:
+>                  function:
+> @@ -233,7 +243,7 @@ patternProperties:
+>              then:
+>                properties:
+>                  groups:
+> -                  enum: [gpio33, gpio34, gpio35, gpio42]
+> +                  enum: [gpio43, gpio44, gpio45, gpio46]
+>            - if:
+>                properties:
+>                  function:
+> @@ -241,7 +251,7 @@ patternProperties:
+>              then:
+>                properties:
+>                  groups:
+> -                  enum: [gpio33, gpio34, gpio35, gpio42]
+> +                  enum: [gpio43, gpio44, gpio45, gpio46]
+>            - if:
+>                properties:
+>                  function:
+> @@ -249,7 +259,7 @@ patternProperties:
+>              then:
+>                properties:
+>                  groups:
+> -                  enum: [gpio33, gpio34, gpio35, gpio42]
+> +                  enum: [gpio43, gpio44, gpio45, gpio46]
+>            - if:
+>                properties:
+>                  function:
+> @@ -257,7 +267,7 @@ patternProperties:
+>              then:
+>                properties:
+>                  groups:
+> -                  enum: [gpio43, gpio44, gpio45, gpio46]
+> +                  enum: [gpio33, gpio34, gpio35, gpio42]
+>            - if:
+>                properties:
+>                  function:
+> @@ -265,7 +275,7 @@ patternProperties:
+>              then:
+>                properties:
+>                  groups:
+> -                  enum: [gpio43, gpio44, gpio45, gpio46]
+> +                  enum: [gpio33, gpio34, gpio35, gpio42]
+>            - if:
+>                properties:
+>                  function:
+> @@ -273,7 +283,7 @@ patternProperties:
+>              then:
+>                properties:
+>                  groups:
+> -                  enum: [gpio43, gpio44, gpio45, gpio46]
+> +                  enum: [gpio33, gpio34, gpio35, gpio42]
+>            - if:
+>                properties:
+>                  function:
+> @@ -281,7 +291,7 @@ patternProperties:
+>              then:
+>                properties:
+>                  groups:
+> -                  enum: [gpio43, gpio44, gpio45, gpio46]
+> +                  enum: [gpio33, gpio34, gpio35, gpio42]
+>
+>          additionalProperties: false
+>
+> --
+> 2.43.0
+>
 
