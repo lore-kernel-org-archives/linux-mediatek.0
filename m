@@ -2,59 +2,73 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 24F9E606A8B5
-	for <linux-mediatek@archiver.kernel.org>; Sun, 15 Nov 2026 00:45:15 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 037CF606A323
+	for <linux-mediatek@archiver.kernel.org>; Sun, 15 Nov 2026 02:56:48 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=eH3iruPD;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=IuycLK25
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=lInRlMwJ;
+	dkim=pass (2048-bit key, unprotected) header.d=justthetip.ca header.i=@justthetip.ca header.a=rsa-sha256 header.s=key1 header.b=nHTmt9R1
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Message-ID:Date
-	:To:From:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
 	List-Unsubscribe-Post:List-Owner;
-	bh=bKbzyTbnAC4UhePTKE+Ogl1JBdxCfS+uTQV6dzzS6Gk=; b=eH3iruPDKIXOn33xCEuNvDuZqM
-	tan2um1u5O1O5N1B+pM5t4UO5PFspVSCJIj2+JVWo4+ZtyiaZDwF4FC7eBcRo8VMJ53CV+S48QD4W
-	LWs9CAgEd8mssV5Z/cmYC1CsZ8Zwv4V1Xng/44rwRHqr0Q+2b2xhXuuZBfgiYtIuLvGH7ynpt5RqN
-	MzytJ18Ltd9q86yNJSE/UVcNUxTL0tV3lPxHcZ+3ic7mVjvCRpLsknOJNUJrPj9vrlZNpyTCPZUMZ
-	nrXTipm7GEi2CKxba4lQ0L3siIaRTXuY4vKoMf2zEfulKzdkwE8DZEp8RxGRyg3J25I6w71qXz/BX
-	aR9Vtv7Q==;
+	bh=QYEGvgSdxQ8U3djeHKTUQY2ce1MOijW0LyJ5MpM8sO0=; b=lInRlMwJmD3KLV1l6f2MJFH7tW
+	X6crmYIj2Lv0O/ktbncgvpcIDCz9zc/PUFb5BVK74v7KatkAarsmYwvhD6i4QTisPS86bdcbiJsKR
+	OyfBNPthRxprI5oD7Ko1kCZY6jQ1h0wrKRBZIFPlPN690kVvcUZxLSc172jf8GMTsDpWFswtabWCB
+	5sY41DRkUHpnvZLko8DPY095LDNdjUBlScGJmU2AbnkMC5lYZOAnkyPOoDJCw2XQgUSLFG12u2pBu
+	P9SzsfVeWwVZOtNB/D88Qjp28Z4Aw2O6fZqPnak4Ms7J+wmSW/qypGeP9F07EYRi0KSpCblhBde/t
+	LEadlPkA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xSOMs-0000000GvpV-3bVe;
-	Sun, 15 Nov 2026 00:45:14 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1xSQQA-0000000H1QY-3DBa;
+	Sun, 15 Nov 2026 02:56:46 +0000
+Received: from out-57.mta0.migadu.com ([2001:41d0:1004:224b::39] helo=mta0.migadu.com)
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xSOMn-0000000GvmU-0VJB;
-	Sun, 15 Nov 2026 00:45:09 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id 975564077F;
-	Sun, 15 Nov 2026 00:45:08 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7515F1F000C4;
-	Sun, 15 Nov 2026 00:45:07 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1794703508;
-	bh=bKbzyTbnAC4UhePTKE+Ogl1JBdxCfS+uTQV6dzzS6Gk=;
-	h=Subject:From:To:Cc:Date:In-Reply-To:References;
-	b=IuycLK25bGXognx0cgfEcpOssDGZvqJtrOas2HMHuJd6D9YW2exr1apxE7RFCNJH8
-	 W4X7J3lIOAudhx6YcB746ZXCCnXCUKAbA4E6iUCMc/TfE2Wd/YV/MESN27B+6IY9hf
-	 KZ/d0B5Iae1PwvKICnjhsZ9sPoqE9lh5vL/QW6BARJpLHBVuY8ZTkxOJpxYWSAyeUw
-	 5Zzv51d5hlR6rj0MkwHXTmgd77+puiJytLkME+mubjG9jkoN9jSfpANE2hAj5H4EaP
-	 zrETU1iGNMAZ1P5bhdYyKDEVSHaxqSXYR8JcERAOCcBq988Bc4KDht30F1xcoB71Pr
-	 Pr2/9zglCfjYA==
-Subject: Re: [PATCH net-next v6 3/3] net: ethernet: mtk_eth_soc: add 9K jumbo
-From: netdev-bot+sashiko@kernel.org
-To: sandeeph@loljews.com
-Date: Sun, 15 Nov 2026 00:45:06 +0000
-Message-ID: <179470350699.2199510.9469454275750994958@kernel.org>
-In-Reply-To: <patch-a5e17908a370040f1eb940d8577dd635@loljews.com>
-References: <patch-a5e17908a370040f1eb940d8577dd635@loljews.com>
-X-sashiko-severity: Medium
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
+	id 1xSQQ6-0000000H1Q9-2rAw
+	for linux-mediatek@lists.infradead.org;
+	Sun, 15 Nov 2026 02:56:45 +0000
+X-Envelope-To: linux-mediatek@lists.infradead.org
+DKIM-Signature: a=rsa-sha256; bh=vRqoqx8hkHUYBgFfeeFzBBNZiqYNKcMLvyuFnQrmDRs=;
+ c=simple/simple; d=justthetip.ca;
+ h=from:to:subject:date:message-id:mime-version:content-type; s=key1;
+ t=1794711399; v=1; x=1795316199;
+ b=nHTmt9R1FK9e9eFlPcxJqvam0uduZhuLasYyX/kHaMo+5IY/CqKaI2VB01cIx1QQRkK/SFHz
+ uJe8kFoFl7kJaQIvAlXXeJJ21BBN1ZevCUC9JeMySsnJPzK0fJu6z1hb0nYUZGJ20toQQhRh8vU
+ 4M8551xIvraNGiWSim84kwIJMGdr6rp04F8jB94GHbhBVx7eyrRFpRntzFT+XgB6xLJ1TlniFMg
+ gzEDm41VjyZtZCsFbhB8+8dVlvF/hyQWlh+r6ImDR2KevEnlIu/tmCOc9Dj1gBXhU4V5qzFrBlw
+ H+zk/xZSm2Q5wU3ZGUyQcOGX2xDG9KODfbkhFhCgM3PSg==
+X-Envelope-To: linux-mediatek@lists.infradead.org
+Received: by smtp.migadu.com with ESMTPS id 8170185ba6c032c3;
+	Sun, 15 Nov 2026 02:56:38 +0000
+X-Mizu-Trace-ID: 8170185ba6c032c3
+X-Migadu-Flow: FLOW_OUT
+From: Devin Wittmayer <lucid_duck@justthetip.ca>
+To: Felix Fietkau <nbd@nbd.name>,
+	Lorenzo Bianconi <lorenzo@kernel.org>,
+	Ryder Lee <ryder.lee@mediatek.com>
+Cc: Deren Wu <deren.wu@mediatek.com>,
+	Sean Wang <sean.wang@mediatek.com>,
+	Shayne Chen <shayne.chen@mediatek.com>,
+	Michael Shih <michael.shih@mediatek.com>,
+	Javier Tia <floss@jetm.me>,
+	Chris Kelly <hoopyfrood42@gmail.com>,
+	linux-wireless@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	stable+noautosel@kernel.org
+Subject: [PATCH wireless v2] wifi: mt76: mt7925: get the survey airtime from the firmware
+Date: Sat, 14 Nov 2026 19:56:35 -0700
+Message-ID: <20261115025635.40010-1-lucid_duck@justthetip.ca>
+X-Mailer: git-send-email 2.56.1
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20261114_185643_132815_3F1C6A93 
+X-CRM114-Status: GOOD (  24.56  )
+X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -64,300 +78,329 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Cc: mason-cw.chang@mediatek.com, linux-kernel@vger.kernel.org, angelogioacchino.delregno@collabora.com, andrew+netdev@lunn.ch, netdev@vger.kernel.org, linux@armlinux.org.uk, daniel@makrotopia.org, edumazet@kernel.org, linux-mediatek@lists.infradead.org, matthias.bgg@gmail.com, kuba@kernel.org, pabeni@redhat.com, lorenzo@kernel.org, davem@davemloft.net, linux-arm-kernel@lists.infradead.org, nbd@nbd.name
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-13.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,SPF_HELO_NONE,
-	SPF_PASS autolearn=ham autolearn_force=no version=4.0.1
+X-Spam-Status: No, score=-18.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,
+	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=ham
+	autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Thank you for your contribution! Sashiko AI review found 5 potential
-issue(s) to consider.
+Busy time in the mt7925 survey is bogus. Its register doesn't work on
+this chip, so busy outgrows the time on the channel, and transmit time
+comes out far too low.
 
-Critical: 0 · High: 0 · Medium: 4 · Low: 1
+Ask the firmware, as mt7996 does. Busy wraps at 32 bits, so subtract
+in 32 bits. The MT7927 counts 5 and 6 GHz on a second band, so read
+both and add the one in use.
 
-If you believe none of the issues are legitimate, please reply to each
-issue of Medium severity or higher and explain why the AI is wrong.
-If any of them are legitimate and you plan to respin, please let patchwork
-know by including "pw-bot: cr" as a separate line at the end of your reply
-(one such reply per series is enough).
+Over USB 2.0 a full-speed download can hold the answer past the
+timeout. The chip is fine then, so wait a few seconds instead of
+resetting it. The next read catches up.
 
-- [Medium] SoCs without MTK_NETSYS_RX_9K regress, and the code
-  contradicts the commit message ("The other SoCs keep their per-device…
-- [Medium] The patch adds a new drop path in mtk_poll_rx() for every SoC
-  and every ring: `if (unlikely(pktlen > ring->buf_size)) {…
-- [Medium] On every netsys v3+ DMA init, including the default MTU with
-  2K rings, mtk_pdma_set_sdl() writes FIELD_PREP(GENMASK(30,16),…
-- [Medium] net: mediatek: mismatched XDP buffer size check in
-  mtk_xdp_setup()
-- [Low] The commit message overstates the memory cost of 9K buffers.
+Fixes: c948b5da6bbe ("wifi: mt76: mt7925: add Mediatek Wi-Fi7 driver for mt7925 chips")
+Fixes: 05fd14885303 ("wifi: mt76: mt7925: sync MT7927 BSS band assignment")
+Reported-by: Chris Kelly <hoopyfrood42@gmail.com>
+Closes: https://lore.kernel.org/linux-wireless/CAHaeJsT8O8Nhq351hFp3NAL8e0iU85N-LBdYZ9nYHFHVy7t_hQ@mail.gmail.com/
+Cc: <stable+noautosel@kernel.org> # needs a backport, older trees have no MT7927 support
+Signed-off-by: Devin Wittmayer <lucid_duck@justthetip.ca>
+---
+v2:
+- subtract in 32 bits, Chris saw busy wrap
+- no chip reset when this answer is late [1]
 
---
+A9000 on USB 2.0, full-speed downloads:
 
-net: ethernet: mtk_eth_soc: add 9K jumbo
+  driver                 length   late answers   chip resets   busy reported
+  stock                  60 s     -              0             2346 s
+  RFC with 32-bit fix    60 s     3              3             33 s
+  v2                     60 s     0              0             56 s
+  v2                     10 min   22             0             558 s
 
-This adds a MTK_NETSYS_RX_9K capability for MT7988. It raises max_mtu on
-the XGMII MACs to 9194 and sizes the shared RX rings from the largest MTU
-of any MAC. It also programs the PDMA RX SDL field, XMAC_RX_CFG2 and the
-MCR jumbo field from the shared buffer length, and rejects MTU changes
-that need larger buffers while DMA is running.
+Other commands answered late still reset the chip, as today; it
+happened once, when the AP changed bandwidth mid-download.
 
-Link: https://github.com/frank-w/BPI-Router-Linux/commit/b4c6cb1d5532
-Link: https://github.com/mediatek/mtk-openwrt-feeds
+Clean on USB 3.0, as an AP, across suspend, and over PCIe.
 
-> With the 1 KiB rounding, the buffer length is order-1 (8 KiB) for
-> rx_buf_len 4096..7168 (MTU about 3051..7146) and order-2 (16 KiB)
-> from rx_buf_len 8192 (MTU 7147) up: once any MAC's MTU reaches 7147,
-> every RX buffer is a 16 KiB compound page, which pins around 64 MiB
-> at the 9K ring size while DMA is up and turns the refill into a
-> high-order GFP_ATOMIC allocation.
+With runtime PM, the default on MT7925 PCIe, the periodic work doesn't
+run (same on mt7921e): the survey updates when read, and busy tops out
+at 16.8 s between reads.
 
-[Severity: Low]
-Is the 64 MiB figure right for MT7988?
+Michael, this sets the same survey hook as patch 2 of your v5.
 
-mt7988_data has rx.dma_size = MTK_DMA_SIZE(2K), which is 2048
-descriptors. MT7988_CAPS does not include MTK_HWLRO, so eth->hwlro is
-false. That means mtk_dma_init() allocates only rx_ring[0] as a
-CPU-polled ring, and rx_ring_qdma keeps its 2K buffers.
+Chris, your readings near 2^64 match the RFC's math at a wrap. v2
+can't go backwards.
 
-At MTU 9194 this works out to 2048 x 16 KiB = 32 MiB, not 64 MiB.
+[1] https://lore.kernel.org/linux-wireless/20261113150048.5271-1-lucid_duck@justthetip.ca/
+RFC: https://lore.kernel.org/linux-wireless/20261023180554.7266-1-lucid_duck@justthetip.ca/
 
-> diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-> index 16c3e4157085b..618f9a5e8fcec 100644
-> --- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-> +++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+ .../net/wireless/mediatek/mt76/mt7925/mac.c   | 53 +++++++++++++
+ .../net/wireless/mediatek/mt76/mt7925/main.c  |  1 +
+ .../net/wireless/mediatek/mt76/mt7925/mcu.c   | 78 ++++++++++++++++++-
+ .../net/wireless/mediatek/mt76/mt7925/mcu.h   | 17 ++++
+ .../wireless/mediatek/mt76/mt7925/mt7925.h    |  3 +
+ .../net/wireless/mediatek/mt76/mt7925/pci.c   |  2 +-
+ .../net/wireless/mediatek/mt76/mt7925/usb.c   |  2 +-
+ drivers/net/wireless/mediatek/mt76/mt792x.h   |  2 +
+ 8 files changed, 155 insertions(+), 3 deletions(-)
 
-[ ... ]
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/mac.c b/drivers/net/wireless/mediatek/mt76/mt7925/mac.c
+index 7af996abe294..9749bcf668e5 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7925/mac.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7925/mac.c
+@@ -1470,6 +1470,59 @@ void mt7925_queue_rx_skb(struct mt76_dev *mdev, enum mt76_rxq_id q,
+ }
+ EXPORT_SYMBOL_GPL(mt7925_queue_rx_skb);
+ 
++int mt7925_mac_update_chan_time(struct mt792x_phy *phy, bool reset)
++{
++	struct ieee80211_channel *chan = phy->mt76->chandef.chan;
++	struct mt76_channel_state *state = phy->mt76->chan_state;
++	struct mt792x_dev *dev = phy->dev;
++	int i, ret = 0, n_bands = 1, band = 0;
++
++	/* The MT7927 counts 2.4 GHz on band 0 and 5/6 GHz on band 1, and
++	 * the band not in use keeps counting, so read both every time and
++	 * only add the band the channel is on.
++	 */
++	if (is_mt7927(&dev->mt76)) {
++		n_bands = ARRAY_SIZE(phy->state_ts);
++		if (chan)
++			band = mt7927_band_idx(chan->band);
++	}
++
++	for (i = 0; i < n_bands; i++) {
++		bool add = !reset && i == band;
++		u32 bss_rx;
++
++		bss_rx = mt76_get_field(dev, MT_MIB_SDR37(i),
++					MT_MIB_SDR37_RXTIME_MASK);
++		if (add)
++			state->cc_bss_rx += bss_rx;
++
++		ret = mt7925_mcu_get_chan_mib_info(phy, i, add);
++		if (ret == -ETIMEDOUT)
++			break;
++	}
++
++	return ret;
++}
++
++void mt7925_update_channel(struct mt76_phy *mphy)
++{
++	struct mt792x_dev *dev = container_of(mphy->dev, struct mt792x_dev, mt76);
++	struct mt792x_phy *phy = mphy->priv;
++
++	/* give a busy link a few seconds after a late reply */
++	if (phy->survey_hold && time_before(jiffies, phy->survey_hold))
++		return;
++	phy->survey_hold = 0;
++
++	if (mt76_connac_pm_wake(mphy, &dev->pm))
++		return;
++
++	if (mt7925_mac_update_chan_time(phy, false) == -ETIMEDOUT)
++		phy->survey_hold = jiffies + 5 * HZ;
++	mt76_connac_power_save_sched(mphy, &dev->pm);
++}
++EXPORT_SYMBOL_GPL(mt7925_update_channel);
++
+ static void
+ mt7925_vif_connect_iter(void *priv, u8 *mac,
+ 			struct ieee80211_vif *vif)
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/main.c b/drivers/net/wireless/mediatek/mt76/mt7925/main.c
+index 15d95ad32636..16dc974a1122 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7925/main.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7925/main.c
+@@ -351,6 +351,7 @@ int __mt7925_start(struct mt792x_phy *phy)
+ 		return err;
+ 
+ 	mt792x_mac_reset_counters(phy);
++	mt7925_mac_update_chan_time(phy, true);
+ 	set_bit(MT76_STATE_RUNNING, &mphy->state);
+ 
+ 	ieee80211_queue_delayed_work(mphy->hw, &mphy->mac_work,
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
+index 26cdb3f0a98a..1bfa4ec404b7 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
+@@ -28,7 +28,12 @@ int mt7925_mcu_parse_response(struct mt76_dev *mdev, int cmd,
+ 
+ 	if (!skb) {
+ 		dev_err(mdev->dev, "Message %08x (seq %d) timeout\n", cmd, seq);
+-		mt792x_reset(mdev);
++		/* The counters come back behind received data, so a full
++		 * USB 2.0 download can hold the answer past the timeout.
++		 * Nothing is wrong with the firmware then, don't reset it.
++		 */
++		if (cmd != MCU_WM_UNI_CMD_QUERY(GET_MIB_INFO))
++			mt792x_reset(mdev);
+ 
+ 		return -ETIMEDOUT;
+ 	}
+@@ -1019,6 +1024,77 @@ int mt7925_mcu_get_temperature(struct mt792x_phy *phy)
+ 	return temperature;
+ }
+ 
++int mt7925_mcu_get_chan_mib_info(struct mt792x_phy *phy, u8 band, bool add)
++{
++	enum {
++		IDX_BUSY_TIME,
++		IDX_TX_TIME,
++		IDX_RX_TIME,
++		IDX_NUM
++	};
++	struct {
++		struct {
++			u8 band;
++			u8 __rsv[3];
++		} hdr;
++		struct {
++			__le16 tag;
++			__le16 len;
++			__le32 offs;
++		} data[IDX_NUM];
++	} __packed req = {
++		.hdr.band = band,
++	};
++	static const u32 offs[] = {
++		[IDX_BUSY_TIME] = UNI_MIB_BUSY_TIME,
++		[IDX_TX_TIME] = UNI_MIB_TX_TIME,
++		[IDX_RX_TIME] = UNI_MIB_RX_TIME,
++	};
++	struct mt76_channel_state *state = phy->mt76->chan_state;
++	struct mt76_channel_state *state_ts = &phy->state_ts[band];
++	struct mt792x_dev *dev = phy->dev;
++	struct mt7925_mcu_mib *res;
++	struct sk_buff *skb;
++	int i, ret;
++
++	for (i = 0; i < IDX_NUM; i++) {
++		req.data[i].tag = cpu_to_le16(UNI_CMD_MIB_DATA);
++		req.data[i].len = cpu_to_le16(sizeof(req.data[i]));
++		req.data[i].offs = cpu_to_le32(offs[i]);
++	}
++
++	ret = mt76_mcu_send_and_get_msg(&dev->mt76,
++					MCU_WM_UNI_CMD_QUERY(GET_MIB_INFO),
++					&req, sizeof(req), true, &skb);
++	if (ret)
++		return ret;
++	if (skb->len < sizeof(req.hdr) + IDX_NUM * sizeof(*res)) {
++		dev_kfree_skb(skb);
++		return -EINVAL;
++	}
++
++	skb_pull(skb, sizeof(req.hdr));
++	res = (struct mt7925_mcu_mib *)skb->data;
++
++	if (!add)
++		goto out;
++
++#define __res_u64(s) le64_to_cpu(res[s].data)
++	/* busy wraps at 32 bits */
++	state->cc_busy += (u32)(__res_u64(IDX_BUSY_TIME) - state_ts->cc_busy);
++	state->cc_tx += (u32)(__res_u64(IDX_TX_TIME) - state_ts->cc_tx);
++	state->cc_rx += (u32)(__res_u64(IDX_RX_TIME) - state_ts->cc_rx);
++out:
++	state_ts->cc_busy = __res_u64(IDX_BUSY_TIME);
++	state_ts->cc_tx = __res_u64(IDX_TX_TIME);
++	state_ts->cc_rx = __res_u64(IDX_RX_TIME);
++#undef __res_u64
++
++	dev_kfree_skb(skb);
++
++	return 0;
++}
++
+ static void
+ mt7925_mcu_parse_phy_cap(struct mt792x_dev *dev, char *data)
+ {
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/mcu.h b/drivers/net/wireless/mediatek/mt76/mt7925/mcu.h
+index 11f9eac13ffc..f3e892dbb74c 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7925/mcu.h
++++ b/drivers/net/wireless/mediatek/mt76/mt7925/mcu.h
+@@ -57,6 +57,23 @@ struct mt7925_mcu_reg_event {
+ 	__le32 val;
+ } __packed;
+ 
++enum {
++	UNI_CMD_MIB_DATA,
++};
++
++enum {
++	UNI_MIB_BUSY_TIME = 19,
++	UNI_MIB_RX_TIME = 20,
++	UNI_MIB_TX_TIME = 28,
++};
++
++struct mt7925_mcu_mib {
++	__le16 tag;
++	__le16 len;
++	__le32 offs;
++	__le64 data;
++} __packed;
++
+ struct mt7925_mcu_ant_id_config {
+ 	u8 ant_id[4];
+ } __packed;
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/mt7925.h b/drivers/net/wireless/mediatek/mt76/mt7925/mt7925.h
+index 636efe038392..b9083e5892f6 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7925/mt7925.h
++++ b/drivers/net/wireless/mediatek/mt76/mt7925/mt7925.h
+@@ -375,6 +375,9 @@ int mt7925_mcu_set_sniffer(struct mt792x_dev *dev, struct ieee80211_vif *vif,
+ int mt7925_mcu_config_sniffer(struct mt792x_vif *vif,
+ 			      struct ieee80211_chanctx_conf *ctx);
+ int mt7925_mcu_get_temperature(struct mt792x_phy *phy);
++int mt7925_mcu_get_chan_mib_info(struct mt792x_phy *phy, u8 band, bool add);
++int mt7925_mac_update_chan_time(struct mt792x_phy *phy, bool reset);
++void mt7925_update_channel(struct mt76_phy *mphy);
+ 
+ int mt7925_usb_sdio_tx_prepare_skb(struct mt76_dev *mdev, void *txwi_ptr,
+ 				   enum mt76_txq_id qid, struct mt76_wcid *wcid,
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/pci.c b/drivers/net/wireless/mediatek/mt76/mt7925/pci.c
+index 0d477dc1086c..939a46c0428b 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7925/pci.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7925/pci.c
+@@ -604,7 +604,7 @@ static int mt7925_pci_probe(struct pci_dev *pdev,
+ 		.sta_add = mt7925_mac_sta_add,
+ 		.sta_event = mt7925_mac_sta_event,
+ 		.sta_remove = mt7925_mac_sta_remove,
+-		.update_survey = mt792x_update_channel,
++		.update_survey = mt7925_update_channel,
+ 	};
+ 	static const struct mt792x_hif_ops mt7925_pcie_ops = {
+ 		.init_reset = mt7925e_init_reset,
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/usb.c b/drivers/net/wireless/mediatek/mt76/mt7925/usb.c
+index f97f787b2198..2d3bf035fdfc 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7925/usb.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7925/usb.c
+@@ -174,7 +174,7 @@ static int mt7925u_probe(struct usb_interface *usb_intf,
+ 		.sta_add = mt7925_mac_sta_add,
+ 		.sta_event = mt7925_mac_sta_event,
+ 		.sta_remove = mt7925_mac_sta_remove,
+-		.update_survey = mt792x_update_channel,
++		.update_survey = mt7925_update_channel,
+ 	};
+ 	static const struct mt792x_hif_ops hif_ops = {
+ 		.mcu_init = mt7925u_mcu_init,
+diff --git a/drivers/net/wireless/mediatek/mt76/mt792x.h b/drivers/net/wireless/mediatek/mt76/mt792x.h
+index a7d71e007da0..b70b9f9e241a 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt792x.h
++++ b/drivers/net/wireless/mediatek/mt76/mt792x.h
+@@ -221,6 +221,8 @@ struct mt792x_phy {
+ 	u32 ampdu_ref;
+ 
+ 	struct mt76_mib_stats mib;
++	struct mt76_channel_state state_ts[2];
++	unsigned long survey_hold;
+ 
+ 	u8 sta_work_count;
+ 	u8 clc_chan_conf;
 
-> @@ -2268,6 +2345,15 @@ static int mtk_poll_rx(struct napi_struct *napi, int budget,
->  
->  		pktlen = RX_DMA_GET_PLEN0(trxd.rxd2);
->  
-> +		/* The engine can report a length larger than the posted
-> +		 * buffer; never pass the unwritten remainder of the buffer
-> +		 * up the stack.
-> +		 */
-> +		if (unlikely(pktlen > ring->buf_size)) {
-> +			netdev->stats.rx_length_errors++;
-> +			goto release_desc;
-> +		}
-
-[Severity: Medium]
-Will these drops show up in any exported counter? mtk_get_stats64()
-implements ndo_get_stats64 and fills rx_length_errors only from the
-hardware MIB counters:
-
-drivers/net/ethernet/mediatek/mtk_eth_soc.c:mtk_get_stats64() {
-    ...
-		storage->rx_length_errors = hw_stats->rx_short_errors +
-			hw_stats->rx_long_errors;
-    ...
-	storage->tx_errors = dev->stats.tx_errors;
-	storage->rx_dropped = dev->stats.rx_dropped;
-	storage->tx_dropped = dev->stats.tx_dropped;
-}
-
-dev->stats.rx_length_errors is never merged in. dev_get_stats() also
-does not fold dev->stats in when ndo_get_stats64 is provided. So every
-frame dropped here looks like it disappears from all exported
-statistics.
-
-Could this count into rx_dropped instead, or could mtk_get_stats64()
-merge dev->stats.rx_length_errors?
-
-This check also applies to every SoC and every ring, and the commit
-message doesn't mention it. Before this patch, an oversized pktlen would
-have gone to skb_put() past the build_skb() tailroom and hit
-skb_over_panic(). Now the frame is dropped silently.
-
-The comment says the engine can report such lengths. Would this be
-better as a separate fix with a Fixes: tag?
-
-[ ... ]
-
-> @@ -3259,6 +3363,58 @@ static int mtk_dma_busy_wait(struct mtk_eth *eth)
-
-[ ... ]
-
-> +static u32 mtk_rx_buf_len_from_mtu(int max_mtu)
-> +{
-> +	int length = max_mtu + MTK_RX_ETH_HLEN + VLAN_HLEN;
-> +
-> +	if (length <= MTK_MAX_RX_LENGTH_2K)
-> +		return MTK_MAX_RX_LENGTH_2K;
-> +
-> +	return DIV_ROUND_UP(length, 1024) * 1024;
-> +}
-
-[ ... ]
-
-> +static void mtk_pdma_set_sdl(struct mtk_eth *eth)
-> +{
-> +	const struct mtk_reg_map *reg_map = eth->soc->reg_map;
-> +	u32 val;
-> +
-> +	if (!mtk_is_netsys_v3_or_greater(eth))
-> +		return;
-> +
-> +	val = mtk_r32(eth, reg_map->pdma.rx_cfg);
-> +	val &= ~MTK_RX_CFG_SDL_MASK;
-> +	val |= FIELD_PREP(MTK_RX_CFG_SDL_MASK,
-> +			  MTK_PDMA_LRO_SDL + eth->rx_buf_len);
-> +	mtk_w32(eth, val, reg_map->pdma.rx_cfg);
-> +}
-
-[Severity: Medium]
-Does this set the PDMA limit well above the RX buffer length?
-MTK_PDMA_LRO_SDL is 0x3000. With the default 2K rings this writes
-12288 + 2048 = 14336, and with 9K rings it writes 12288 + 9216 = 21504.
-Both values are larger than ring->buf_size and larger than
-MTK_MAX_RX_LENGTH_9K.
-
-mtk_dma_init() calls this on every netsys v3+ open, including at the
-default MTU. It therefore replaces the ~1518-byte reset default that,
-per the commit message, used to drop larger frames at the DMA engine.
-
-After that, two bounds are left: the MAC limits and the descriptor
-PLEN0. The commit message says GMAC1's MCR field is probably not
-enforced for switch-side frames.
-
-If the engine doesn't strictly honour PLEN0, could a frame be DMA'd
-past the end of an order-0 napi_alloc_frag() or netdev_alloc_frag()
-buffer and into a neighbouring fragment?
-
-If the engine instead chains oversized frames across descriptors,
-mtk_poll_rx() doesn't check LS0 on non-MT7628 descriptors, so each
-piece would be delivered as a separate packet. The new
-pktlen > ring->buf_size check in mtk_poll_rx() only runs after the DMA
-has completed.
-
-The GENMASK(30, 16) width of MTK_RX_CFG_SDL_MASK in mtk_eth_soc.h is
-also undocumented. If the real field is narrower, values of 0x4000 and
-above would set bits outside it.
-
-Would it be safer to program the SDL from the actual descriptor buffer
-length (ring->buf_size), and to confirm the encoding against the
-datasheet?
-
-[ ... ]
-
-> @@ -4360,21 +4511,59 @@ static int mtk_change_mtu(struct net_device *dev, int new_mtu)
-
-[ ... ]
-
-> +	rx_buf_len = mtk_rx_buf_len_from_mtu(max_mtu);
-
-[ ... ]
-
-> +	running = refcount_read(&eth->dma_refcnt);
-> +	if (running && rx_buf_len > eth->rx_buf_len)
-> +		return -EBUSY;
-
-[Severity: Medium]
-Can this regress the SoCs without MTK_NETSYS_RX_9K? The commit message
-says "The other SoCs keep their per-device limits: they never grow
-their rings". However, only the MAC register writes are gated on the
-capability. Both the rx_buf_len derivation in mtk_rx_buf_len_from_mtu()
-and this -EBUSY check run on every SoC.
-
-mtk_add_mac() leaves those MACs at
-max_mtu = MTK_MAX_RX_LENGTH_2K - MTK_RX_ETH_HLEN = 2030.
-mtk_rx_buf_len_from_mtu() adds VLAN_HLEN before rounding up. Any MTU
-from 2027 to 2030 therefore gives 2027 + 18 + 4 = 2049 or more, which
-rounds up to 3072.
-
-With DMA up at the default MTU, eth->rx_buf_len is 2048. Running
-"ip link set ethX mtu 2030", the advertised maximum, now returns -EBUSY
-on MT7621, MT7622, MT7623, MT7629, MT7981, MT7986, MT2701 and on the
-non-XGMII MACs of MT7988. Before this patch it just reprogrammed the
-MCR bucket.
-
-With an MT7530/MT7531 DSA switch, a user port MTU of 2023 to 2026
-raises the conduit to 2027 to 2030, and that fails the same way.
-
-If the MTU is set while DMA is down instead, mtk_dma_init() builds
-3072-byte normal rings through mtk_rx_alloc(). On these SoCs the MCR
-bucket tops out at 2048, so the extra 1 KiB per buffer can never be
-used.
-
-Should the rx_buf_len growth and the -EBUSY check be gated on
-MTK_NETSYS_RX_9K? Alternatively, should VLAN_HLEN be kept from pushing
-the length past the 2K bucket on those SoCs?
-
-[ ... ]
-
-> @@ -3787,12 +3943,28 @@ static int mtk_xdp_setup(struct net_device *dev, struct bpf_prog *prog,
->  		return -EOPNOTSUPP;
->  	}
->  
-> -	if (dev->mtu > MTK_PP_MAX_BUF_SIZE) {
-> +	need_update = !!eth->prog != !!prog;
-> +
-> +	/* XDP only runs on rings that have a page_pool, and the pool is
-> +	 * only created when the shared RX buffer length fits
-> +	 * MTK_PP_MAX_BUF_SIZE.  eth->rx_buf_len describes the live rings;
-> +	 * when the rings are not live, or this attach tears them down,
-> +	 * the next open re-derives it from the current MTUs, so check
-> +	 * that value instead.  A detach never needs a pool, so it is not
-> +	 * checked at all.
-> +	 */
-> +	rx_buf_len = eth->rx_buf_len;
-> +	if (prog &&
-> +	    (!refcount_read(&eth->dma_refcnt) ||
-> +	     (netif_running(dev) && need_update &&
-> +	      refcount_read(&eth->dma_refcnt) == 1)))
-> +		rx_buf_len = mtk_rx_buf_len(eth);
-> +
-> +	if (prog && rx_buf_len > MTK_PP_MAX_BUF_SIZE) {
->  		NL_SET_ERR_MSG_MOD(extack, "MTU too large for XDP");
->  		return -EOPNOTSUPP;
->  	}
->  
-> -	need_update = !!eth->prog != !!prog;
->  	if (netif_running(dev) && need_update)
->  		mtk_stop(dev);
->  
-
-[Severity: Medium]
-Can the XDP checks here and in mtk_change_mtu() disagree with the
-page_pool gate in mtk_rx_alloc()?
-
-Both checks compare the derived rx_buf_len against
-MTK_PP_MAX_BUF_SIZE. mtk_rx_alloc(), however, only creates
-ring->page_pool when ring->buf_size <= MTK_PP_MAX_BUF_SIZE, and
-ring->buf_size is not the same value as rx_buf_len.
-
-mtk_max_frag_size() aligns NET_SKB_PAD + NET_IP_ALIGN + buf_len up to
-SMP_CACHE_BYTES. mtk_max_buf_size() then subtracts NET_SKB_PAD and
-NET_IP_ALIGN again. On arm64 with 64-byte cachelines this leaves
-ring->buf_size = buf_len + 62, so a buf_len of 3072 becomes a
-buf_size of 3134.
-
-MTK_PP_MAX_BUF_SIZE depends on sizeof(struct skb_shared_info), which
-grows with CONFIG_MAX_SKB_FRAGS. Take 4 KiB pages and a
-CONFIG_MAX_SKB_FRAGS between 41 and 44. SKB_DATA_ALIGN() of the shared
-info is then 768, so MTK_PP_MAX_BUF_SIZE is 4096 - 256 - 768 = 3072.
-
-For any MTU from 2027 to 3050, mtk_rx_buf_len_from_mtu() returns 3072.
-That passes the rx_buf_len > MTK_PP_MAX_BUF_SIZE check here and in
-mtk_change_mtu(). The ring is then built with buf_size 3134, so
-mtk_rx_alloc() skips the page_pool and mtk_poll_rx() takes the
-non-pool path. The program attaches successfully but never sees a
-packet.
-
-The default MAX_SKB_FRAGS of 17 doesn't hit this. But the commit
-message says "A program can therefore never attach and silently not
-run". That guarantee currently depends on the cacheline and
-skb_shared_info rounding happening to line up.
-
-Would it be more robust to check the buf_size the ring will actually
-be built with? For example, the mtk_max_frag_size() and
-mtk_max_buf_size() computation could be factored into one helper used
-by mtk_xdp_setup(), mtk_change_mtu() and mtk_rx_alloc(), so the three
-cannot drift apart.
-
+base-commit: 831e33ad02ff884ecc793c07a9c9bd9e06941fe5
 -- 
-Sashiko AI review · https://netdev-ai.bots.linux.dev/sashiko/#/patchset/patch-4b4c5003bcf028fafd094e719c5e910b%40loljews.com
+2.56.1
+
 
