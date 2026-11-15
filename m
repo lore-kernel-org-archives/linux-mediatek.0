@@ -2,11 +2,11 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 5297860A2619
-	for <linux-mediatek@archiver.kernel.org>; Sun, 15 Nov 2026 14:02:23 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 21A2C606A32C
+	for <linux-mediatek@archiver.kernel.org>; Sun, 15 Nov 2026 14:10:11 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=O8UU4mZB;
-	dkim=pass (2048-bit key, unprotected) header.d=iopsys.eu header.i=@iopsys.eu header.a=rsa-sha256 header.s=selector1 header.b=nN3FydFg
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=bT2n2cB5;
+	dkim=pass (2048-bit key, unprotected) header.d=iopsys.eu header.i=@iopsys.eu header.a=rsa-sha256 header.s=selector1 header.b=zBe7CmfH
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
@@ -14,52 +14,52 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	Subject:Date:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=PeuwGqfK6/Zp2pjIJ+3WFnudkM91oIUGx1KkPsRVrIM=; b=O8UU4mZB6yn7/HNwAa1sEyxbaS
-	Q7tZGXhMbPRzJf6I8SM7DAgPt4I3IHBpXZ977EH70Mn1E6ucFqjsazrVankAO1RdGuVRuZX6C4iu7
-	WWiRuzf+A90riFIItI5lxT0O+FNzbjmLQ9wQA9Edbh2Sc0wv3XfWIqym8lAIo7cTuZXbY41ZixAHm
-	38vtToqI7l94kqIN2ENH+VqWKSH2jfiGri21hr8BbfFV8iHX/YN0Z53c8119SjqcGktk/U69etlEI
-	8+Il38j/IKf34daPTPtSat4/4lercBo0NI2V2zrLEA0h3mUz7Z5jGoUGxQKXckcCSaRZr90upkcHO
-	D36FI9/g==;
+	bh=Z9RZhJAzIaxQ0h4AUcEDqCfFbFf6lYuypA5olKrlj5I=; b=bT2n2cB5y67CQ0/72YZuNkMzuU
+	38ae6872MabBi5o+vEWy9jU+pd1Ue/6oCRDL6u72Y1WQqLCoPvjWvdTbILKRL9MD275kqwEdsiD1f
+	hZZk29nVqA5DeCOFJS2stslhZOnnq1EjEDl6eRVPE/uw7Jtpn9QVuMqRs5s072HoXpssr0ycLppaF
+	gA2SdaWx3vcQ0qZGCYEYa9muftzTai0dyxpVeotDuw0T/aorJRLSUu4r3NolqyVggcAnjjFrQwMDx
+	F8swa93CPGZZuHO4MeC2VKEa5ktvB9Z4vw/5a9wW4x679ADbUzVyX352C9dLsJBVPs9tFaSqHMGA+
+	4JTB5RwQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xSaoJ-000000000ep-0CoD;
-	Sun, 15 Nov 2026 14:02:23 +0000
-Received: from mail-westeuropeazlp170110003.outbound.protection.outlook.com ([2a01:111:f403:c201::3] helo=AS8PR04CU009.outbound.protection.outlook.com)
+	id 1xSavp-000000001LS-0hpR;
+	Sun, 15 Nov 2026 14:10:09 +0000
+Received: from mail-westeuropeazlp170130006.outbound.protection.outlook.com ([2a01:111:f403:c201::6] helo=AM0PR02CU008.outbound.protection.outlook.com)
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xSaoF-000000000e3-3uon
+	id 1xSavm-000000001L3-0BDK
 	for linux-mediatek@lists.infradead.org;
-	Sun, 15 Nov 2026 14:02:21 +0000
+	Sun, 15 Nov 2026 14:10:07 +0000
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=ktxakIz0Zr6ADxeH9ki/Em/d2e05vmlG1B3iYtkJnquXJqdghluTJg3kZq2fxIZ+1tlcOHigmgj0vOE0bTyHJdLdZ8wm7J4vVfrFQBhelvTnHTBU/LAt/vWmbL4aJscWPaRujoCAbEuB6yxyUP6yah1HhxLHG/ctkcZb1Trw2h1LmOzHRqv08DsDEs6NQ50bRTtYwVOxFDwydtp2uGM4N6d09Kqt6qxoNYa0rwbUN14sIeIrMEY3PlbaG3ZIOvAGoqUYNrETFHWvh1QMjk9UOm4OxQNL28a9LPAWTvWCYtOSZVCzDxgkIy0dGPWDVgjE5Wqy9cKRXsfA2ObtkI5+Sg==
+ b=UiZqecO3Hi87TXqZ2mRsCahl/5UnPA4CDBbDW0CRrvYWgdPpUDmykh0Q11n8rYd9cckG6P1OIOamq/2mtNriN/brtXMjgnIVkW4576a4mt9n261ksh1+IlICtovESUPn20QiavTxPyZe1ZbVsETmoR2uoPluyhw1itrXLhRrzgN7jiHFpSkjQXXHDkABbY87nYiW08chFLqgE7qt4zq/UGjdJ+SorDWlgl3sU8TG6n1HfvBX1Z95K0FVwb/fbew+R9q8v2TJ3q2ab9LJU88UUny3lZWZODGeDMt2dtwIKWqu8TgK2Cjowypv696wuzJQjbQ4eI963WyBq0R7I1JJHA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
  s=arcselector10001;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=PeuwGqfK6/Zp2pjIJ+3WFnudkM91oIUGx1KkPsRVrIM=;
- b=WR0Yz22YuR8YH51WLq+L6N1SXR7Y4Dz42PZpCYp3lEiOQ6oqqmjJdtk7RaZ4aL2w94Ptz0rvCLPRpoNBHRxM1g9QVNTFkQ2hEpbJxUub0qUyDN5aDqqA4Ze+wVbgHkfK+DFn6dE85Y9Pxbny4sLs2ZU1CF99o/OXpFRkztNXliIv4LJUUKZkZolfM2zcrqGpgN5a05swYNchgXtzeEDPjhjep8PDcFmitMOmtloAEzaSWBnHnkrBHeIS47CSxlSSPhXjUcXLncQBkegjgBML1/JsCHKtBI7iT92INQo3pr9yqxWAVO9WwpDtTvSFeoxNZfVq85vj/ktYS/w2OLG3PQ==
+ bh=Z9RZhJAzIaxQ0h4AUcEDqCfFbFf6lYuypA5olKrlj5I=;
+ b=OMl2HQ0QNUX7NhJdMVRIEMCrPLJ7x+k8U38trTqN4q2UpqKGL699K8zNvs5jM6YLdGFaNSsv8gt5py+4OXOtskI71vD3NMnABW7zj8RXVasw1x9AapUa7iSyF1USszmOKgxEuseaLYBIOEvFYlukDlVRZk05kyXD1owjM98ghuQVYov6m6nzKh+XGcvhnCURh8Xmw4tYxrgbRvtxyG1fzcY/d8xvI7fZY2I2e0qja7UEHpfC5+KO3WEnxqbveJ4D0GRW7mUj981a3qtSSyIlXABgyrj2cdADYtJiRp8XdhVQkGKku8TkOWWK90CPkiYO5IzwB/BtKlcmSh35q9GuYA==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=genexis.eu; dmarc=pass action=none header.from=iopsys.eu;
  dkim=pass header.d=iopsys.eu; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=iopsys.eu;
  s=selector1;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=PeuwGqfK6/Zp2pjIJ+3WFnudkM91oIUGx1KkPsRVrIM=;
- b=nN3FydFgNCpMM7HhzAhDVkWxA6xt514TW2XuKV+/k1JS8Wwsb1UqjAT/B24a4U3XxgIcR45VTnZiBUDLxPicJG+Yz3kRZl4cM9suiERSJK2IRbB/Knm4Vst5f4JGHz4RcKvvNQJM/tD793z4GfGJFulo0o7JpkGiv+W9cszO0l5zWPZvn3j7RFUfNc7egBmx5P4RnrAAlCHtOOiDEXqT1TSxASEcDZtSaRFYHvDR/8XkNX32AdFcaYtddg9XN64rNvEEWXZhCRiT0AgYxetMwNLfT5lw7xGg+Iv+QvG5LRdd3hyeXvzOmQbELjMWsERvFvatdBx+7qLyvF/09PA2yA==
+ bh=Z9RZhJAzIaxQ0h4AUcEDqCfFbFf6lYuypA5olKrlj5I=;
+ b=zBe7CmfHp4zjLNMgCqoJaVmE4NAWhr2NMCvIWh43P/tvFWzqrF8eKlY42tQzKYMyhlyOZBOkRHDy9yxunMKP66HJ5ojq7zea742GgVYtXHijNE5wVpUz5QQzC4vTgR3aglNv0wo27p65gOhI7XyPf7zXXGTiANwJ01hfamqar43ewpnKySlogIEiD7ng2iQOwIbaK4uE3Z4QyyKkrmo1xrSu/OGf+P4Pvht5mkXes7jtAYBR27TxQdEX97Bf7zOvEaP+YCmL6THTpKGwhEpd/dx81SIc1vlCBRwZcRYJ7QSRzFqHgqanDJlfYn0cmgNrXJvfggL7dY+ysCSmnb7GRg==
 Authentication-Results: mx.microsoft.com 1; dkim=none (message not signed)
  header.d=none;dmarc=none action=none header.from=iopsys.eu;
 Received: from DU2PR08MB10037.eurprd08.prod.outlook.com (2603:10a6:10:49a::20)
  by PAWPR08MB8791.eurprd08.prod.outlook.com (2603:10a6:102:334::13) with
  Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.615.13; Sun, 15 Nov
- 2026 14:02:15 +0000
+ 2026 14:10:00 +0000
 Received: from DU2PR08MB10037.eurprd08.prod.outlook.com
  ([fe80::3c7:6d2e:8afe:e4dc]) by DU2PR08MB10037.eurprd08.prod.outlook.com
  ([fe80::3c7:6d2e:8afe:e4dc%3]) with mapi id 15.21.0615.012; Sun, 15 Nov 2026
- 14:02:15 +0000
-Message-ID: <5e681d92-9772-42e3-aae8-47faacf6d850@iopsys.eu>
-Date: Sun, 15 Nov 2026 17:02:12 +0300
+ 14:10:00 +0000
+Message-ID: <695991a0-ae67-4ce0-9b92-f191ae97a468@iopsys.eu>
+Date: Sun, 15 Nov 2026 17:09:57 +0300
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 04/12] pinctrl: airoha: an7581: fix PHY LED GPIO group
- assignments
+Subject: Re: [PATCH 00/12] pinctrl: airoha: configure GPIO muxes explicitly
+ and fix pad mappings
 To: Zhengping Zhang <zhengping.zhang@airoha.com>, linusw@kernel.org,
  lorenzo@kernel.org
 Cc: robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
@@ -68,81 +68,80 @@ Cc: robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
  linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
  lei.dong@airoha.com, ansuelsmth@gmail.com
 References: <20261110094339.749110-1-zhengping.zhang@airoha.com>
- <20261110094339.749110-5-zhengping.zhang@airoha.com>
 From: Mikhail Kshevetskiy <mikhail.kshevetskiy@iopsys.eu>
 Content-Language: en-US, ru-RU
-In-Reply-To: <20261110094339.749110-5-zhengping.zhang@airoha.com>
+In-Reply-To: <20261110094339.749110-1-zhengping.zhang@airoha.com>
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
-X-ClientProxiedBy: GV3PEPF0001DC2A.SWEP280.PROD.OUTLOOK.COM
- (2603:10a6:158:400::107) To DU2PR08MB10037.eurprd08.prod.outlook.com
+X-ClientProxiedBy: GV3PEPF0001DC3E.SWEP280.PROD.OUTLOOK.COM
+ (2603:10a6:158:400::2e5) To DU2PR08MB10037.eurprd08.prod.outlook.com
  (2603:10a6:10:49a::20)
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 X-MS-PublicTrafficType: Email
 X-MS-TrafficTypeDiagnostic: DU2PR08MB10037:EE_|PAWPR08MB8791:EE_
-X-MS-Office365-Filtering-Correlation-Id: 2cb0fea9-71c2-42d2-9991-08df43210da5
+X-MS-Office365-Filtering-Correlation-Id: 49c23a49-ae4b-40b5-3aaf-08df432222c9
 X-MS-Exchange-SenderADCheck: 1
 X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|7416014|376014|1800799024|366016|23010399003|10067099003|11063799006|4143699003|56012099006|261021123027099003|261021121427099003|261009221227099003|261009223027099003|261102123227099003|261026140227099003|261022105027099003|261026121527099003|261028144727099003|18002099003|22082099003;
-X-Microsoft-Antispam-Message-Info: 5nUeNOT4N/l9F2sbxnaKO5mYCOeJZ6p8UZGcPDPiZMODEfShktYXZFE9n6vzSb2yW1PVW7x6xt9XAoulJGojV35cHjP2k9OTu1C6k8I94oQWCbm4V2hxjhhSKo4yrXnJLEl1JppcFDqyDraA6ALdiXU4D5q/Q8NI6G4VBowwVy9jqBh+pWT/f3amRoHNY51IIAqzU0mSGMZ/OR0l0TV1c4My3FAt8jDGLuNJ+QaDDQNoSzvWwNC6DWrEa4ZT+EdOn3/Zo2WYQLor1OAIiHON73e4D3noI/gUqy8lhIToMF06vZ3QDyqvJys+lEquE37GMx4f6wmW+wg5feK2Xw6WD/ssuzouk3MX4L5ulowy02EOTpZg09YHgCW1Oa04sXMeARKir0Gf3+20zTkDZJavO39yBu0y/+qK4+pRBI+wbYwjS5oN3jsQwDTSPpN/5Zf9NA3KEHIK6mJNluzHNNMPUJtW2ajZWyZxJkC6YK2wBvnvxB6TXtkA3G3Y6lZL9c/eO1bmZnm2W5kHt6lCYEwV75VO4CJEjRp/BfIOMMjSJzRIW7MBKwUnZKDJhLF3FikjRN2l0BjZYNbLKjHPgTxnqp5dXpojwD8JLPP8aDuY57J/BiENv3jCi5Ru5MP5fALglfx1wcvIl581v1wdHjsoFc93B26LvtLa6jUGfWmj4iM=
-X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:DU2PR08MB10037.eurprd08.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(7416014)(376014)(1800799024)(366016)(23010399003)(10067099003)(11063799006)(4143699003)(56012099006)(261021123027099003)(261021121427099003)(261009221227099003)(261009223027099003)(261102123227099003)(261026140227099003)(261022105027099003)(261026121527099003)(261028144727099003)(18002099003)(22082099003);DIR:OUT;SFP:1102;
+X-Microsoft-Antispam: BCL:0;ARA:13230040|7416014|376014|1800799024|366016|23010399003|10067099003|11063799006|5023799004|56012099006|261021123027099003|261021121427099003|261009223027099003|261102123227099003|261026140227099003|261022105027099003|261022075727099003|261026121527099003|261028144727099003|18002099003|22082099003|6133799003|3023799007;
+X-Microsoft-Antispam-Message-Info: nqfDc/D4IJ+V6S5/iuWUPeJEJp6VVT3KBNByFeECEsV+RxtH7PdBf5OgK2PUocTPsuUYk4LrnDBCseTouuwVNF/qmvf6YfP8MVJMLabB8aGgiSN1EzbhPJYxZ/goKQ4BYUWykfdrTDK83eHpRs44voPDYNDRzgdBTQGARa2XtMZ3nDruFjnJJOEyVw055Hb1SR3Iz5NDWdXvcYq0RK5xtE2UMCa9vjGtbsFcqaHHrkhDijjOsiioXOA1RM7EYWm00mp2y+WBqEgaE2ZaTomhyPmDGLMMVziiUBVH4ow7VaP6+g2MSs6YNT2jV382BDMM9O1XfYdeuRTulGpNtIMnv58L1rJFmfiZM1CKGNT1wsSwLpUy5RKPgPljkNfMHhcFO+y9N/C5W0EM+gUHLDut63SpojgGKqtm2H60PJlycMuQw+Vbmopgtri3RLwXPJlJjz9H+bYouGpIbPsP9E/o3w3/JXJwtVDxEhuGRdi0AbjRAa7JVI3CfIMiWi/BRcwOFEmVywNMfIwYhBxF0xgkWtB9ZixHj3gNCoSVl1FUuf49pRHRE3VyliQxp41vbGIHTlPCyxLSKbgp4HTcIaTIqp44Ersn5NDniX6ed3fvvzKY6WZkvJN3ygsfyk7suFCThtsAODwDLtSkQCb84OJuyNUSwM/KSCc1HO2yVzWZA0Y=
+X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:DU2PR08MB10037.eurprd08.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(7416014)(376014)(1800799024)(366016)(23010399003)(10067099003)(11063799006)(5023799004)(56012099006)(261021123027099003)(261021121427099003)(261009223027099003)(261102123227099003)(261026140227099003)(261022105027099003)(261022075727099003)(261026121527099003)(261028144727099003)(18002099003)(22082099003)(6133799003)(3023799007);DIR:OUT;SFP:1102;
 X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?UGQ3UFFFcW53aEdzQXZEdC9ONjUyRk5ka2NZaFdMaHlKczFzeW43a05TdHRU?=
- =?utf-8?B?cVBNWnFGU2s0d1NtQWYrWVBsY0hZb2RObVhWeVJTbTFZMnBJSzBXdGRHbzhQ?=
- =?utf-8?B?SENxK1N3d0NlTDZIcHdaTERGNTdXZkRKbWtSVjZSbVNqOGZSTTRkSjZtOVov?=
- =?utf-8?B?TXNMMUdZdUZPa3F0eE9CdXg4RTgyTWV6RHhDMUxxMVQ0eW5KRDltc0E2Y1E0?=
- =?utf-8?B?WkZuR2NpZVppWHo1RTZ2VkZ1L2ZiR2p4MzNEU29aQU8yL3EvWXVPb0wxbzlX?=
- =?utf-8?B?dTZlSjdhcGZPZzFNZzRTdE4wYUFuU2RrRWVpbUxSTXcwenFCN0JKT29HYVFT?=
- =?utf-8?B?K0E0eTN1YUYyeVY5aEVubldjL0NTTkcvRFgvRVdlV0hXSzdaSlpXeFVJUDVh?=
- =?utf-8?B?amxtRzFYMlVRdEFXVFBCaVZHdHNZb2EzU3ZRZXhPcjVoUFFBMlhTc2ViMG5k?=
- =?utf-8?B?emc0WVNkS1pWOGdzZ2I4VE51VU0zdEgwdnRzNnIzb0xxNjB0QjBoM1dtN2Fz?=
- =?utf-8?B?VW1mWjNmYVBpNUlvbWFFMkF3SWpoTEc0ZmdZMlFyQzZEWTNZeDZ0eFlHRDdK?=
- =?utf-8?B?RnhsanJ5dnpqalNUQkxVRm9GOE5kRjZZTW45RmhyVXhhbVpNdEw5Z2lNaUU3?=
- =?utf-8?B?STZXM0NQWUJqQ3NiZkNneGp5MTU1VmF3SmlqWXdZMEpiUUVjdVlzVGxhODFO?=
- =?utf-8?B?dlhOWHJHM0V6MExKcmNNUTZNTWRnT21yV1hVUGtJeTR0bkkrcUJzaGIwMnlv?=
- =?utf-8?B?bUhKcHlyODVSUTBxVWYyV3ZpVmZnYXJaU0lVVGthaEpkU05qazh0OXFGNWwy?=
- =?utf-8?B?MXh6YXIvUHNESGZZejVBZCtRWExtT1ZteW94L0VaR0dWQ3h3TnJvd3JVTlFW?=
- =?utf-8?B?dStWMURsUFpHaFpQWWhkWEo2WUNaS2k2Mi9QWEF5eUlwVTREV3RJcThMbUVt?=
- =?utf-8?B?amxxU0pRUGtJcGJlaTd4Q1crMXN0b0luSkJDSDZqSStNZUIrZjRnc2dQOWpi?=
- =?utf-8?B?MU5TMEV5d3VCZ3pYeGRsTFZKam9HTWhsV2VkSkd1WkMxeWp3RStzcFkxWUJi?=
- =?utf-8?B?dWszOVdZRmEzME9nVjc1OG1ldXplSnJjaWRPRzdkaVNRNkxrYnF0cmYwSzlS?=
- =?utf-8?B?RFJrNXI5d3I3Vy9UVW1yNzcza2tPMFNTYlVTbnVKQzI2THRXNGlMekFCS1pK?=
- =?utf-8?B?dEpabndyNkVHRjNScllVbmlERk5qbWRtby96dWtWUWhPbFcvemlTMzN3RnBO?=
- =?utf-8?B?cmQ0bjhnei9IOEVPVVplUjhHTFQ3UHNVWHRudFZUbml0bVlJZ0dwMWxRQitk?=
- =?utf-8?B?RWRMUllFVk1Gcmp1VDBvcU1MVGdod2JMcWFydDhacktCZFNXb2ZueUhOeDRy?=
- =?utf-8?B?MTA0VDZVZFd1T1pGSkJMTHZ1eG1Hb1FvL3Y0WHpXeUdjODFPNyswVThONEpJ?=
- =?utf-8?B?Q0dWN2VIYzExUCs3Y0JUS0FRc0pCK0dzOVZKaHUxdW5zdS9EV1g5YW4rcHJj?=
- =?utf-8?B?RkN5bkM2OVE4ZjBhaGE5QlppV1BHbnFjU3BFZExyL01TSklwRVdObkVhNFJm?=
- =?utf-8?B?R045dWVsSUdsWUtYbE1EVUI4czRDcDNEUGFBOFYzVTljdWJmZlNFb1VzeDRa?=
- =?utf-8?B?OHF1bldaTk94QWVUQTFMMVlob1Y1V1NJV3RoYU52ZG93M1gvSCtvSThldXI0?=
- =?utf-8?B?amRpb2lQRSs3ZXZJZm5QcittWWpFeTJJcTBzeURyb3c1a0V6bFVBMUpYSnRa?=
- =?utf-8?B?ckEzSWk5T0hwOEVHVm1MWGdqVCtRNUFDMGpRaTB6Nyt0cmNUeWptY3lOMXRj?=
- =?utf-8?B?RTJMeU5HNFV2NzBLL3N3cWM5UWJVeHd1RG5vR29tTVdrUVcyMTBXNlc3MlVo?=
- =?utf-8?B?cm1ndkFQRjVZNm5GYjdwczNPdE91Y1B5NXVqRUh2Z1Z0SzVZZEVGaE5LczlC?=
- =?utf-8?B?bE13Qk5GTlZxWnVpYmtRS2hrVXVGd1R2ejMxOWpxZXVsSUtaaW9XNm5ScVdL?=
- =?utf-8?B?dlduRUE4d2tiRUI0VXk2a1k4VERrNHlmVUZqSjJiU2FYb0lVMklzS1JWMTRZ?=
- =?utf-8?B?WGl2dXp4NENTWmwwcnA3dFFBcldnYkdBRng5TURkU2ppaUM0RjJtWEVsdVkz?=
- =?utf-8?B?Y3ZrU3h3UGQycUVqdEVKdDhoMU9XVWpVZXh6ZkNIanZqZGtIM3NMdHNGa3NF?=
- =?utf-8?B?aUlvY3A3L2dZRWUxUTIxUVMrNjkzaThEeDRtZmdwMXE0bzNHclF0SGk1eGJ4?=
- =?utf-8?B?QnVZdnloa29XdXJFOEQ2Z3hiREptU2VvOTQ5T2t5dlhNQ1lNUmxYVUtzRmlX?=
- =?utf-8?B?L0VmbldZNHFnZ3lmL2JXdXhVd0NGY1VrK3I5bjVTWlZVYXU4d1kyUzU3aDBv?=
- =?utf-8?Q?xqtWOHds8eTm71+0=3D?=
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?Q2tMak5JV0JWZkk5aWE0bG0rdC9hZWZhN2x6YjFZNHFTVDZ1UkVieVBRZG9m?=
+ =?utf-8?B?MngvNWI1aDNNaHhSTisxYVc1V1lGQmlSbzZSWnR6amhYVktqQWVtekRrTUpV?=
+ =?utf-8?B?dUV2VXA5TGZGTlQvN0J6UmV0QXFtejFRZ2ZEdlVHclZOWitOZHl3S1JtejE0?=
+ =?utf-8?B?YkZZbW90cUVhdm9XOER5NElTMzRydzRocnY4SzRSM1dRSkVYeXordFM0SVpO?=
+ =?utf-8?B?N3RGK0NTZXhxN0pFSitYUXJRY256anVGS3RxNXBydHUvN1RNWURmRTVXRDlJ?=
+ =?utf-8?B?ZEtMRFY2aG9rY2pycUhtamhRUVlPK3IwTlhGcTRPVEFTUWMxMk9Ta1EvQ0Ux?=
+ =?utf-8?B?cGhUbUUweGNwY1Z1RVpzWkt1WlBrWmQwZlZRcU9UeUdsNmtBRld5cDdWZ1ph?=
+ =?utf-8?B?OTZYY0VFQkRFUTI5eWdoL29xRVQ0b0JGZGJkWmJMV003SzBZZk5pMGhiVnpY?=
+ =?utf-8?B?cUVkb0NOYWNCRmtmZkMvQWE3Y2xYeTJPcDF6WmRQNzhUTFhBeXlYZFdFYlhD?=
+ =?utf-8?B?RG9sT1pJUW5COUVZbTdFSjNhSlhiUk5Ka2VxZm9KMU9xdlB2d1NjUVNyRDc2?=
+ =?utf-8?B?NnlpRXZaQ2hhTHRPQUlkSnVGUFJKNDA4bWg5T04zbDBCbHgzRDJxWTRqdUpD?=
+ =?utf-8?B?Ym4wY3Y2aGtTaGM2WEFNQXNVdXFvUjFyTWFheGJBMjNtRFJYdVNCNFIzcjZX?=
+ =?utf-8?B?eXpGd2R6MitpSGh1cGN0bk5FUzQ2MG90QVRpMUh3bHZ0MVE2UUpDWlprQ2pi?=
+ =?utf-8?B?SGZBbDBDNWdlZzdrVlYrS2xxMlVsRTBTT096elBMMm55akNLdlk2Q0pvcXQ2?=
+ =?utf-8?B?Mkh3NWd6TWl4dnBleDdOamUreUVXd2t3clU2M2RsbUxPdTdwWFZpM1RuZkVB?=
+ =?utf-8?B?Tm5qN1BYWnpNeUJqRnJpb2hZWnVBVHRFTWhuckdkL2R5Qkx6U1QyaERyeUpE?=
+ =?utf-8?B?aU5uYXYzWWJybXJuTTNLSFJxTG43cjR0NVVPc0NqRFc2NjJ4NUVXN2c5TFo5?=
+ =?utf-8?B?MFQ2Q2xIa1U1Z0t1WDVrZHpzQ2dtZEZSUnNrT1ZYUlZEWTZYODRNdW12WFRQ?=
+ =?utf-8?B?ZFJBL2d0NG5ucmxUZ0h1Z3hVazhKays3Q3FHczlBWCs3TmEyWlBOWVFkNGk0?=
+ =?utf-8?B?ZmM2NnMvOStkaFExWjdvUUNLOEdzOFJCb0lNMm93NlY2Ynl5ZUZVekIyc2lO?=
+ =?utf-8?B?UjZRVm1qNFFmaGxwWEVjSEpJakdVMlpUQ2lDSEVoUSs4SDVqNW92WEQzOHY4?=
+ =?utf-8?B?YUdlcjZnakdPcUlrRUM3bytuZEhJVW5wMjFZZjhJOEliaXlaZllBRisrUFd5?=
+ =?utf-8?B?N3FqVTlub1ZMY1Z1d3ZSdnRRT2VGSVAvVmwyUytOdmVIWTd2VFZkemRMK3J1?=
+ =?utf-8?B?WXFqcHBibWRuaVRMblEzTXJnZSs0Q05BNldPMGtsWndRVTcyd1VWdWJtZ3dT?=
+ =?utf-8?B?MU84QzVvMVlpRHlMaWhabmxHWEcxaWN6bWhKWnovY2xHTkR2Smx2UVViOW9m?=
+ =?utf-8?B?V0g0Nkc5MU1iMkxVR2tUYTM0V0s5bEFDTkZpZjl1a1c4MlBGYktENzRUWHZ4?=
+ =?utf-8?B?ZDY3WmtyTXY2MHZqUi93M1NrVm43TUFLSDJqYnNTc2NnekdhSUplVGt6WERa?=
+ =?utf-8?B?b3V3UDdCcFZiVklOcDJneitsUklXSkQ3dzQ2MU9NNzI0cllSWTFoYjdMaW5x?=
+ =?utf-8?B?R2wwT1pqQm44Z2U3YkRORGhFSzNya1ZMbnpQMmxNbVpHbkFLeXBxWFN1VXZ1?=
+ =?utf-8?B?Y25jb0NZdDFzeHVJQ21raVBtdDNLeElGTEJqc2wzRnJVVjJxSmxhdjc0a295?=
+ =?utf-8?B?S2VXT0htOVd1YWpzdWltMXVvRG9mVExhYjJRQ3BOelFwb0JnVGN5c1VTMzdF?=
+ =?utf-8?B?YW1LU1ZpemRlV1lMZ1YyZ0N0ZTVJeU85MnFQOWVzUFJIbXoxbHJhbjdyamx5?=
+ =?utf-8?B?bnVFSmtldVl6b1ZFYTVTUjdSMEdSQTFJTk1wZ0J1RVNNeWhNVkpiOWdjamEy?=
+ =?utf-8?B?NEErSzBHM2tNaDkyTzVMM290aDRGTVNwM1J0MzA0TzQ4cTkxY3dGYUs4dnpi?=
+ =?utf-8?B?ZE4yWHdxOEtpRFNzSng4S2x6dXdBMGsybmpaWitZaVpPZ3dCU3BCQUNDVlJP?=
+ =?utf-8?B?c09tRGZQdzRJSmtCUEhibEFRUVV1bVJCNHl1VkVIUzlreXFSNXBxVmFQZDI3?=
+ =?utf-8?B?ZVFjNzZXNHRubkl3aGhHaXo2amFOVjNoV1R1aGlNSGI3U2hoWm80Q2o5SHhY?=
+ =?utf-8?B?bW5aNXN3aldrd0hLN3FBYSt3bkhtbzBvRGFmTXZPWFdGSDh4VWNGa0ttUzJn?=
+ =?utf-8?B?RlF1dCtTajR6K0JBeDZuZng3RnlvRDJFUWtUNVRmVUVwY3NlakQ3NjBIS0Y3?=
+ =?utf-8?Q?YEQGhID1QtA9DCJk=3D?=
 X-OriginatorOrg: iopsys.eu
-X-MS-Exchange-CrossTenant-Network-Message-Id: 2cb0fea9-71c2-42d2-9991-08df43210da5
+X-MS-Exchange-CrossTenant-Network-Message-Id: 49c23a49-ae4b-40b5-3aaf-08df432222c9
 X-MS-Exchange-CrossTenant-AuthSource: DU2PR08MB10037.eurprd08.prod.outlook.com
 X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 15 Nov 2026 14:02:15.3667
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 15 Nov 2026 14:10:00.3187
  (UTC)
 X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
 X-MS-Exchange-CrossTenant-Id: 8d891be1-7bce-4216-9a99-bee9de02ba58
 X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: UIgi1GEdFURh4sVUM2rj4G5kkPtX+A22X16LU7yVwT8C3w9YA8whg5ScK3J5JzqJ0xLCIiuHLrtx7gbVrJjbRd61WJLDGPhMBRJdvopES1w=
+X-MS-Exchange-CrossTenant-UserPrincipalName: r+qWk6HuGV1UXAVSPZUqohkVh6XdKzbkWAhTBlp10Sw2DLJPkyDkffBxzoZtaNj6X5+h9PQMm/zVIfcCvwg+oM69VCBRndOnYfK2o5B/pxU=
 X-MS-Exchange-Transport-CrossTenantHeadersStamped: PAWPR08MB8791
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261115_060220_127936_1E064D67 
-X-CRM114-Status: GOOD (  15.12  )
-X-Spam-Score: -1.7 (-)
+X-CRM114-CacheID: sfid-20261115_061006_422096_9CBE45B4 
+X-CRM114-Status: GOOD (  22.87  )
+X-Spam-Score: -1.8 (-)
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -153,209 +152,149 @@ List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-17.3 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-12.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,
-	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UPPERCASE_50_75,
-	USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=4.0.1
+	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1 autolearn=ham
+	autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-according to an7581 datasheet
-* LED0 uses GPIO33-35 and GPIO42 * LED1 uses GPIO43-46 so patch is not
-needed
+Hello Zhengping Zhang,
+
+Please fix your patches. Looks like you insert patches to the e-mail body,
+thus your patches were converted to "mail encoding"
+* tabs was replaced by spaces
+* unchanged empty lines "<space>\n" were converted to just "\n"
+* long lines were split with "=\n"
+* "=" were replaced with "=3D"
+
+and so on. So please use "git send-email" for patch sending.
+
+Mikhail Kshevetskiy
 
 On 11/10/26 12:43, Zhengping Zhang wrote:
 > [You don't often get email from zhengping.zhang@airoha.com. Learn why this is important at https://aka.ms/LearnAboutSenderIdentification ]
 >
-> The PHY LED function tables associate LED0 mux bits with the GPIO pads
-> used by LED1, and vice versa. Selecting an LED function therefore
-> programs the mux bit for a different pad from the requested group.
+> This series makes GPIO mode selection explicit on AN7581, AN7583 and
+> EN7523, and fixes related GPIO direction, LED group and SPI/eMMC mux
+> configuration issues.
 >
-> The LED mux bits in SCU register 0x214 correspond to these GPIO pads:
+> Background
+> ----------
+> GPIO direction and data register programming is separate from pad mux
+> selection on these SoCs. The current GPIO request path does not select
+> the GPIO function, relying on the pads already being in an appropriate
+> state. If the bootloader leaves a pad configured for an alternate
+> function, a GPIO request can succeed without connecting the GPIO
+> controller to the pad. Output writes may then fail to drive the pin,
+> and input reads may not reflect the external signal.
+> The problem also affects the opposite transition. Once a pad has been
+> forced to GPIO mode, selecting its peripheral mux without releasing
+> the GPIO override can leave the peripheral disconnected from the pad.
+> While addressing these transitions, the series also corrects GPIO
+> direction programming, AN7581 PHY LED group assignments, AN7583 SPI/eMMC
+> mux configuration and the EN7523 128-pin PCM SPI CS2 pad assignment.
 >
->                   LAN0    LAN1    LAN2    LAN3
->   LED0 mux bit       3       5       7       9
->   LED0 GPIO         43      44      45      46
->   LED1 mux bit       4       6       8      10
->   LED1 GPIO         33      34      35      42
+> Implementation
+> --------------
+> On these SoCs, shared GPIO pads can be routed to peripheral functions
+> through mux control bits in the SCU registers. In the absence of an
+> enabled alternate function, these shared pads normally operate as
+> GPIOs. Dedicated peripheral pads have separate selectors for GPIO
+> operation, so clearing all mux bits is not a universal way to select
+> GPIO mode.
 >
-> Correct both the advertised groups and the function-group entries to
-> match these assignments. This ensures that the pin claimed by pinctrl
-> matches the pad controlled by the selected LED mux bit.
+> Per-pad force GPIO controls allow individual shared pads to operate
+> as GPIOs while leaving shared peripheral mode settings intact for
+> other pads. GPIO-controller PWM output also requires the appropriate
+> pad routing: selecting ordinary GPIO operation clears the pad's PWM
+> selection, while PWM operation uses the PWM selection together with
+> the applicable GPIO routing controls.
 >
-> Keep the existing mux masks and PHY source selections in the LED0/1
-> mapping registers unchanged.
+> The series uses these per-pad controls to configure GPIO mode on
+> demand. Resetting the IOMUX registers at probe could disrupt interfaces
+> still using bootloader settings, while clearing shared peripheral
+> mode bits could affect pads outside the requested group.
 >
-> Signed-off-by: Zhengping Zhang <zhengping.zhang@airoha.com>
-> ---
->  drivers/pinctrl/airoha/pinctrl-an7581.c | 80 ++++++++++++-------------
->  1 file changed, 40 insertions(+), 40 deletions(-)
+> The common driver gains a gpio_request_enable callback and identifies
+> GPIO-category functions through the pinmux core. It finds the matching
+> single-pin GPIO group using pinctrl pin numbers, including controllers
+> whose GPIO ranges have a nonzero pin base. GPIO requests and explicit
+> GPIO pinctrl states apply the same SoC-specific group configuration.
 >
-> diff --git a/drivers/pinctrl/airoha/pinctrl-an7581.c b/drivers/pinctrl/airoha/pinctrl-an7581.c
-> index bfb777594811b..3cbdfc31e97e5 100644
-> --- a/drivers/pinctrl/airoha/pinctrl-an7581.c
-> +++ b/drivers/pinctrl/airoha/pinctrl-an7581.c
-> @@ -594,28 +594,28 @@ static const char *const pwm_groups[] = {
->         "gpio46", "gpio47", "gpio48", "gpio49"
->  };
->  static const char *const phy1_led0_groups[] = {
-> -       "gpio33", "gpio34", "gpio35", "gpio42"
-> +       "gpio43", "gpio44", "gpio45", "gpio46"
->  };
->  static const char *const phy2_led0_groups[] = {
-> -       "gpio33", "gpio34", "gpio35", "gpio42"
-> +       "gpio43", "gpio44", "gpio45", "gpio46"
->  };
->  static const char *const phy3_led0_groups[] = {
-> -       "gpio33", "gpio34", "gpio35", "gpio42"
-> +       "gpio43", "gpio44", "gpio45", "gpio46"
->  };
->  static const char *const phy4_led0_groups[] = {
-> -       "gpio33", "gpio34", "gpio35", "gpio42"
-> +       "gpio43", "gpio44", "gpio45", "gpio46"
->  };
->  static const char *const phy1_led1_groups[] = {
-> -       "gpio43", "gpio44", "gpio45", "gpio46"
-> +       "gpio33", "gpio34", "gpio35", "gpio42"
->  };
->  static const char *const phy2_led1_groups[] = {
-> -       "gpio43", "gpio44", "gpio45", "gpio46"
-> +       "gpio33", "gpio34", "gpio35", "gpio42"
->  };
->  static const char *const phy3_led1_groups[] = {
-> -       "gpio43", "gpio44", "gpio45", "gpio46"
-> +       "gpio33", "gpio34", "gpio35", "gpio42"
->  };
->  static const char *const phy4_led1_groups[] = {
-> -       "gpio43", "gpio44", "gpio45", "gpio46"
-> +       "gpio33", "gpio34", "gpio35", "gpio42"
->  };
+> The common code checks for incompatible values of shared mux bits
+> against GPIO owners and claimed mux groups. Validation and register
+> updates are serialized, and register update failures are returned to
+> the caller. GPIO request handling and conflict checks are enabled
+> through SoC match data.
 >
->  static const struct airoha_pinctrl_func_group pon_func_group[] = {
-> @@ -1067,90 +1067,90 @@ static const struct airoha_pinctrl_func_group pwm_func_group[] = {
->  };
+> The SoC-specific changes select GPIO mode as follows:
 >
->  static const struct airoha_pinctrl_func_group phy1_led0_func_group[] = {
-> -       AIROHA_PINCTRL_PHY_LED0("gpio33", GPIO_LAN0_LED0_MODE_MASK,
-> +       AIROHA_PINCTRL_PHY_LED0("gpio43", GPIO_LAN0_LED0_MODE_MASK,
->                                 LAN0_LED_MAPPING_MASK, LAN0_PHY_LED_MAP(0)),
-> -       AIROHA_PINCTRL_PHY_LED0("gpio34", GPIO_LAN1_LED0_MODE_MASK,
-> +       AIROHA_PINCTRL_PHY_LED0("gpio44", GPIO_LAN1_LED0_MODE_MASK,
->                                 LAN1_LED_MAPPING_MASK, LAN1_PHY_LED_MAP(0)),
-> -       AIROHA_PINCTRL_PHY_LED0("gpio35", GPIO_LAN2_LED0_MODE_MASK,
-> +       AIROHA_PINCTRL_PHY_LED0("gpio45", GPIO_LAN2_LED0_MODE_MASK,
->                                 LAN2_LED_MAPPING_MASK, LAN2_PHY_LED_MAP(0)),
-> -       AIROHA_PINCTRL_PHY_LED0("gpio42", GPIO_LAN3_LED0_MODE_MASK,
-> +       AIROHA_PINCTRL_PHY_LED0("gpio46", GPIO_LAN3_LED0_MODE_MASK,
->                                 LAN3_LED_MAPPING_MASK, LAN3_PHY_LED_MAP(0)),
->  };
+>   - AN7581: GPIO1-31 use SCU 0x228, and GPIO32-46 use 0x22c.
+>     GPIO47-49 retain their PCIe reset GPIO selectors at 0x21c.
+>     GPIO1/2 additionally require the I2C/MDIO routing to be disabled.
 >
->  static const struct airoha_pinctrl_func_group phy2_led0_func_group[] = {
-> -       AIROHA_PINCTRL_PHY_LED0("gpio33", GPIO_LAN0_LED0_MODE_MASK,
-> +       AIROHA_PINCTRL_PHY_LED0("gpio43", GPIO_LAN0_LED0_MODE_MASK,
->                                 LAN0_LED_MAPPING_MASK, LAN0_PHY_LED_MAP(1)),
-> -       AIROHA_PINCTRL_PHY_LED0("gpio34", GPIO_LAN1_LED0_MODE_MASK,
-> +       AIROHA_PINCTRL_PHY_LED0("gpio44", GPIO_LAN1_LED0_MODE_MASK,
->                                 LAN1_LED_MAPPING_MASK, LAN1_PHY_LED_MAP(1)),
-> -       AIROHA_PINCTRL_PHY_LED0("gpio35", GPIO_LAN2_LED0_MODE_MASK,
-> +       AIROHA_PINCTRL_PHY_LED0("gpio45", GPIO_LAN2_LED0_MODE_MASK,
->                                 LAN2_LED_MAPPING_MASK, LAN2_PHY_LED_MAP(1)),
-> -       AIROHA_PINCTRL_PHY_LED0("gpio42", GPIO_LAN3_LED0_MODE_MASK,
-> +       AIROHA_PINCTRL_PHY_LED0("gpio46", GPIO_LAN3_LED0_MODE_MASK,
->                                 LAN3_LED_MAPPING_MASK, LAN3_PHY_LED_MAP(1)),
->  };
+>   - AN7583: GPIO1-31 use SCU 0x228, and GPIO32-38 use 0x22c.
+>     GPIO39-52 use the dedicated-pad GPIO selectors at 0x21c.
 >
->  static const struct airoha_pinctrl_func_group phy3_led0_func_group[] = {
-> -       AIROHA_PINCTRL_PHY_LED0("gpio33", GPIO_LAN0_LED0_MODE_MASK,
-> +       AIROHA_PINCTRL_PHY_LED0("gpio43", GPIO_LAN0_LED0_MODE_MASK,
->                                 LAN0_LED_MAPPING_MASK, LAN0_PHY_LED_MAP(2)),
-> -       AIROHA_PINCTRL_PHY_LED0("gpio34", GPIO_LAN1_LED0_MODE_MASK,
-> +       AIROHA_PINCTRL_PHY_LED0("gpio44", GPIO_LAN1_LED0_MODE_MASK,
->                                 LAN1_LED_MAPPING_MASK, LAN1_PHY_LED_MAP(2)),
-> -       AIROHA_PINCTRL_PHY_LED0("gpio35", GPIO_LAN2_LED0_MODE_MASK,
-> +       AIROHA_PINCTRL_PHY_LED0("gpio45", GPIO_LAN2_LED0_MODE_MASK,
->                                 LAN2_LED_MAPPING_MASK, LAN2_PHY_LED_MAP(2)),
-> -       AIROHA_PINCTRL_PHY_LED0("gpio42", GPIO_LAN3_LED0_MODE_MASK,
-> +       AIROHA_PINCTRL_PHY_LED0("gpio46", GPIO_LAN3_LED0_MODE_MASK,
->                                 LAN3_LED_MAPPING_MASK, LAN3_PHY_LED_MAP(2)),
->  };
+>   - EN7523: GPIO0-29 use SCU 0x224. GPIO28/29 also retain their
+>     existing PCIe reset GPIO selector settings at 0x218.
 >
->  static const struct airoha_pinctrl_func_group phy4_led0_func_group[] = {
-> -       AIROHA_PINCTRL_PHY_LED0("gpio33", GPIO_LAN0_LED0_MODE_MASK,
-> +       AIROHA_PINCTRL_PHY_LED0("gpio43", GPIO_LAN0_LED0_MODE_MASK,
->                                 LAN0_LED_MAPPING_MASK, LAN0_PHY_LED_MAP(3)),
-> -       AIROHA_PINCTRL_PHY_LED0("gpio34", GPIO_LAN1_LED0_MODE_MASK,
-> +       AIROHA_PINCTRL_PHY_LED0("gpio44", GPIO_LAN1_LED0_MODE_MASK,
->                                 LAN1_LED_MAPPING_MASK, LAN1_PHY_LED_MAP(3)),
-> -       AIROHA_PINCTRL_PHY_LED0("gpio35", GPIO_LAN2_LED0_MODE_MASK,
-> +       AIROHA_PINCTRL_PHY_LED0("gpio45", GPIO_LAN2_LED0_MODE_MASK,
->                                 LAN2_LED_MAPPING_MASK, LAN2_PHY_LED_MAP(3)),
-> -       AIROHA_PINCTRL_PHY_LED0("gpio42", GPIO_LAN3_LED0_MODE_MASK,
-> +       AIROHA_PINCTRL_PHY_LED0("gpio46", GPIO_LAN3_LED0_MODE_MASK,
->                                 LAN3_LED_MAPPING_MASK, LAN3_PHY_LED_MAP(3)),
->  };
+> AN7581 and AN7583 have no documented force GPIO bit for GPIO0; their
+> GPIO0 configuration clears the existing PWM selection only.
 >
->  static const struct airoha_pinctrl_func_group phy1_led1_func_group[] = {
-> -       AIROHA_PINCTRL_PHY_LED1("gpio43", GPIO_LAN0_LED1_MODE_MASK,
-> +       AIROHA_PINCTRL_PHY_LED1("gpio33", GPIO_LAN0_LED1_MODE_MASK,
->                                 LAN0_LED_MAPPING_MASK, LAN0_PHY_LED_MAP(0)),
-> -       AIROHA_PINCTRL_PHY_LED1("gpio44", GPIO_LAN1_LED1_MODE_MASK,
-> +       AIROHA_PINCTRL_PHY_LED1("gpio34", GPIO_LAN1_LED1_MODE_MASK,
->                                 LAN1_LED_MAPPING_MASK, LAN1_PHY_LED_MAP(0)),
-> -       AIROHA_PINCTRL_PHY_LED1("gpio45", GPIO_LAN2_LED1_MODE_MASK,
-> +       AIROHA_PINCTRL_PHY_LED1("gpio35", GPIO_LAN2_LED1_MODE_MASK,
->                                 LAN2_LED_MAPPING_MASK, LAN2_PHY_LED_MAP(0)),
-> -       AIROHA_PINCTRL_PHY_LED1("gpio46", GPIO_LAN3_LED1_MODE_MASK,
-> +       AIROHA_PINCTRL_PHY_LED1("gpio42", GPIO_LAN3_LED1_MODE_MASK,
->                                 LAN3_LED_MAPPING_MASK, LAN3_PHY_LED_MAP(0)),
->  };
+> Peripheral group configurations release the corresponding GPIO
+> overrides when selecting their functions. AN7581 retains its existing
+> MDIO and PWM configurations; AN7583 and EN7523 also enable the required
+> GPIO overrides when selecting GPIO-controller PWM output.
 >
->  static const struct airoha_pinctrl_func_group phy2_led1_func_group[] = {
-> -       AIROHA_PINCTRL_PHY_LED1("gpio43", GPIO_LAN0_LED1_MODE_MASK,
-> +       AIROHA_PINCTRL_PHY_LED1("gpio33", GPIO_LAN0_LED1_MODE_MASK,
->                                 LAN0_LED_MAPPING_MASK, LAN0_PHY_LED_MAP(1)),
-> -       AIROHA_PINCTRL_PHY_LED1("gpio44", GPIO_LAN1_LED1_MODE_MASK,
-> +       AIROHA_PINCTRL_PHY_LED1("gpio34", GPIO_LAN1_LED1_MODE_MASK,
->                                 LAN1_LED_MAPPING_MASK, LAN1_PHY_LED_MAP(1)),
-> -       AIROHA_PINCTRL_PHY_LED1("gpio45", GPIO_LAN2_LED1_MODE_MASK,
-> +       AIROHA_PINCTRL_PHY_LED1("gpio35", GPIO_LAN2_LED1_MODE_MASK,
->                                 LAN2_LED_MAPPING_MASK, LAN2_PHY_LED_MAP(1)),
-> -       AIROHA_PINCTRL_PHY_LED1("gpio46", GPIO_LAN3_LED1_MODE_MASK,
-> +       AIROHA_PINCTRL_PHY_LED1("gpio42", GPIO_LAN3_LED1_MODE_MASK,
->                                 LAN3_LED_MAPPING_MASK, LAN3_PHY_LED_MAP(1)),
->  };
+> The AN7583 and EN7523 PON groups exclude the software-controlled
+> TX_DIS/RX_DIS pads so they can be requested independently as GPIOs by
+> the PON PHY driver, avoiding ownership conflicts with PON mux selection.
 >
->  static const struct airoha_pinctrl_func_group phy3_led1_func_group[] = {
-> -       AIROHA_PINCTRL_PHY_LED1("gpio43", GPIO_LAN0_LED1_MODE_MASK,
-> +       AIROHA_PINCTRL_PHY_LED1("gpio33", GPIO_LAN0_LED1_MODE_MASK,
->                                 LAN0_LED_MAPPING_MASK, LAN0_PHY_LED_MAP(2)),
-> -       AIROHA_PINCTRL_PHY_LED1("gpio44", GPIO_LAN1_LED1_MODE_MASK,
-> +       AIROHA_PINCTRL_PHY_LED1("gpio34", GPIO_LAN1_LED1_MODE_MASK,
->                                 LAN1_LED_MAPPING_MASK, LAN1_PHY_LED_MAP(2)),
-> -       AIROHA_PINCTRL_PHY_LED1("gpio45", GPIO_LAN2_LED1_MODE_MASK,
-> +       AIROHA_PINCTRL_PHY_LED1("gpio35", GPIO_LAN2_LED1_MODE_MASK,
->                                 LAN2_LED_MAPPING_MASK, LAN2_PHY_LED_MAP(2)),
-> -       AIROHA_PINCTRL_PHY_LED1("gpio46", GPIO_LAN3_LED1_MODE_MASK,
-> +       AIROHA_PINCTRL_PHY_LED1("gpio42", GPIO_LAN3_LED1_MODE_MASK,
->                                 LAN3_LED_MAPPING_MASK, LAN3_PHY_LED_MAP(2)),
->  };
+> The bindings describe the expanded GPIO groups and corrected pad
+> assignments. GPIO numbering and existing compatible strings are retained.
+> The final patch adds an Airoha co-maintainer and extends the maintained
+> file patterns to cover the SoC-specific drivers and bindings.
 >
->  static const struct airoha_pinctrl_func_group phy4_led1_func_group[] = {
-> -       AIROHA_PINCTRL_PHY_LED1("gpio43", GPIO_LAN0_LED1_MODE_MASK,
-> +       AIROHA_PINCTRL_PHY_LED1("gpio33", GPIO_LAN0_LED1_MODE_MASK,
->                                 LAN0_LED_MAPPING_MASK, LAN0_PHY_LED_MAP(3)),
-> -       AIROHA_PINCTRL_PHY_LED1("gpio44", GPIO_LAN1_LED1_MODE_MASK,
-> +       AIROHA_PINCTRL_PHY_LED1("gpio34", GPIO_LAN1_LED1_MODE_MASK,
->                                 LAN1_LED_MAPPING_MASK, LAN1_PHY_LED_MAP(3)),
-> -       AIROHA_PINCTRL_PHY_LED1("gpio45", GPIO_LAN2_LED1_MODE_MASK,
-> +       AIROHA_PINCTRL_PHY_LED1("gpio35", GPIO_LAN2_LED1_MODE_MASK,
->                                 LAN2_LED_MAPPING_MASK, LAN2_PHY_LED_MAP(3)),
-> -       AIROHA_PINCTRL_PHY_LED1("gpio46", GPIO_LAN3_LED1_MODE_MASK,
-> +       AIROHA_PINCTRL_PHY_LED1("gpio42", GPIO_LAN3_LED1_MODE_MASK,
->                                 LAN3_LED_MAPPING_MASK, LAN3_PHY_LED_MAP(3)),
->  };
+> Validation
+> ----------
+> Tested the PINCTRL functionality on AN7581, AN7583 and EN7523 using OpenWrt
+> master (backport to kernel 6.18), including build tests and explicit GPIO
+> requests, with particular attention to GPIO-controlled LEDs.
 >
+> Daniel Schwierzeck (2):
+>   pinctrl: airoha: fix setting of GPIO direction
+>   pinctrl: airoha: an7583: fix SPI pin mux config
+>
+> Robert Marko (1):
+>   pinctrl: airoha: an7583: fix eMMC pin mux config
+>
+> Zhengping Zhang (9):
+>   pinctrl: airoha: configure pin muxes on GPIO requests
+>   dt-bindings: pinctrl: airoha: describe all EN7581 GPIO mux groups
+>   pinctrl: airoha: an7581: fix PHY LED GPIO group assignments
+>   pinctrl: airoha: an7581: select force GPIO mode on GPIO requests
+>   dt-bindings: pinctrl: airoha: describe all AN7583 GPIO mux groups
+>   pinctrl: airoha: an7583: use force GPIO mode for GPIO requests
+>   dt-bindings: pinctrl: airoha: describe all EN7523 GPIO mux groups
+>   pinctrl: airoha: en7523: use force GPIO mode for GPIO requests
+>   MAINTAINERS: add myself as Airoha pinctrl co-maintainer
+>
+>  .../pinctrl/airoha,an7583-pinctrl.yaml        |  18 +-
+>  .../pinctrl/airoha,en7523-pinctrl.yaml        |   9 +-
+>  .../pinctrl/airoha,en7581-pinctrl.yaml        |  28 +-
+>  MAINTAINERS                                   |   5 +-
+>  drivers/pinctrl/airoha/airoha-common.h        |  15 +-
+>  drivers/pinctrl/airoha/pinctrl-airoha.c       | 263 ++++++-
+>  drivers/pinctrl/airoha/pinctrl-an7581.c       | 629 ++++++++++++---
+>  drivers/pinctrl/airoha/pinctrl-an7583.c       | 736 ++++++++++++++----
+>  drivers/pinctrl/airoha/pinctrl-en7523.c       | 579 +++++++++++---
+>  9 files changed, 1855 insertions(+), 427 deletions(-)
+>
+>
+> base-commit: 05441d697f7f9a927264f4058cbbc6a03dfcac9d
 > --
 > 2.43.0
 >
