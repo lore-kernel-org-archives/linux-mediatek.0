@@ -2,89 +2,97 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id DADAD606A88F
-	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Nov 2026 15:49:38 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id BA438606A31C
+	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Nov 2026 15:52:17 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=mSRczlRl;
-	dkim=pass (1024-bit key) header.d=ideasonboard.com header.i=@ideasonboard.com header.a=rsa-sha256 header.s=mail header.b=vfF6GTfI
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=DbHyxvNv;
+	dkim=pass (1024-bit key) header.d=ideasonboard.com header.i=@ideasonboard.com header.a=rsa-sha256 header.s=mail header.b=NusKEKiY
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=xCYRfhAkzWaZpwWauEuyflZ4FUKPVISwTSunpC1O8vU=; b=mSRczlRlT//WO0qFGwMRWFdrL/
-	JY7muDDcznVTBWA48RImvnvru8guPOugja5u+tY6zJIi1wD6rYKXeFbj5DlxFgcmQCbAR5M6JFqH+
-	uW/Rq2JoY+Bx6JshAgVd585v68r4+rvbQXqxZUs9+yjg3UdngEnnpMOVLhYJPqzdnnJJuB55V6txz
-	ZiIGQTAQEQFPwYNdVzPRHldIfVhFuls3APseNR2pf1cKMvi5tB2uNOOdKD/rfVavpT4ywva8V1DhA
-	0ZgW6R5rgrxEG75iED8uFi+aLn7gfyg+WPlD3M8J0mfVjW6t+PuUO2WKobVSVlKbr9UTuqA0IzL1I
-	UNe5E3bA==;
+	bh=tc6KfHj5fySnLDo/yssasn7KXGGvXcSn8JCgqMRWVxQ=; b=DbHyxvNvjG6l/YWT1yfsQPU9pG
+	204P81AyMy6JUQQSqXNrKGueFzWqFUemAEZEDcwTEiz3UHKfVGYFvEFWH+BlqkmUAYt2Hl95SYD3J
+	rKFk0/xtx5FTnKu4tbn2D4jVg/JYDijD0dPMt4QkIvo0GDI/3nmJsQwicjvNF9q4Eh6SYtQVK5jVk
+	atFuK/pk9bKFCaZMBXZOuWfggM2N8/ix6klRNWTHgxFFuhUG5vPfsOc3HVMYT46LWb46cLkMtAA9K
+	mQxyKcHSVVaGQ1TRYIr7yIoNWkDwGPN/4g6izzsoMUGjVC1mbSxd7lqHX7VnQ8eSy4BgSG2MWKu1R
+	EEiWDT1A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xSyxe-000000037aS-2Y3O;
-	Mon, 16 Nov 2026 15:49:38 +0000
+	id 1xSz0D-0000000380c-1sSe;
+	Mon, 16 Nov 2026 15:52:17 +0000
 Received: from perceval.ideasonboard.com ([213.167.242.64])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xSyxb-000000037Yr-2jJ8;
-	Mon, 16 Nov 2026 15:49:37 +0000
+	id 1xSz0B-000000037zR-02nq;
+	Mon, 16 Nov 2026 15:52:16 +0000
 Received: from killaraus.ideasonboard.com (2001-14ba-7086-3000--a06.rev.dnainternet.fi [IPv6:2001:14ba:7086:3000::a06])
-	by perceval.ideasonboard.com (Postfix) with ESMTPSA id 3E3814BB;
-	Mon, 16 Nov 2026 16:47:06 +0100 (CET)
+	by perceval.ideasonboard.com (Postfix) with ESMTPSA id ED0204BB;
+	Mon, 16 Nov 2026 16:49:45 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1794844026;
-	bh=CitaHNP+eD6uKjpobd8G4BGHZf0N9cqOrXyChUK85EY=;
+	s=mail; t=1794844186;
+	bh=dmodi+YIJbHNHccq3QM7tWgiNzPRHtMFkx//VJBaXh4=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=vfF6GTfIwSZTnh/YSEOytkbxHiImCvVCvyrpZRm76Nhg/ImdqxvbdMZIk3rSxVBpk
-	 VVudytRnEhV5bX2uLDhqj5J1EJV9/7pjJcTKjqd3OcJ9XxYkqDyNmaI52R+RFmzNNM
-	 kxWvwgbX2P2TqXxt/9wDGJMVK21NpG+WnagDaAIE=
-Date: Mon, 16 Nov 2026 17:49:31 +0200
+	b=NusKEKiY4bzAOfEoYrIhBXyGlIkZI3PnloPf2BxBVRwuEIJvmtu+vw7O/jc41VQuU
+	 J3Ty1U67T4ibE4hILXY3O/CpMrCBJQpictxpRHUyim+WJ3gBdqwhQf8GriCHlXRv3w
+	 cuUezGZlAQGClI/3BR6NS7TrNFoxwJ2vIQYfr6tw=
+Date: Mon, 16 Nov 2026 17:52:11 +0200
 From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-To: Kory Maincent <kory.maincent@bootlin.com>
-Cc: Jani Nikula <jani.nikula@linux.intel.com>,
+To: Frank Li <Frank.li@oss.nxp.com>
+Cc: Frank Li <Frank.Li@nxp.com>, "Rafael J. Wysocki" <rafael@kernel.org>,
+	linux-pm@vger.kernel.org, Jani Nikula <jani.nikula@linux.intel.com>,
+	Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
+	Rodrigo Vivi <rodrigo.vivi@intel.com>,
+	Tvrtko Ursulin <tursulin@ursulin.net>,
 	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
 	Maxime Ripard <mripard@kernel.org>,
+	Thomas Hellstrom <thomas.hellstrom@linux.intel.com>,
+	Simona Vetter <simona@ffwll.ch>, David Airlie <airlied@gmail.com>,
+	Matthew Brost <matthew.brost@intel.com>,
 	Thomas Zimmermann <tzimmermann@suse.de>,
-	David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
-	Rodrigo Vivi <rodrigo.vivi@intel.com>,
-	Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
-	Tvrtko Ursulin <tursulin@ursulin.net>,
-	Andrzej Hajda <andrzej.hajda@intel.com>,
-	Neil Armstrong <neil.armstrong@linaro.org>,
-	Robert Foss <rfoss@kernel.org>, Jonas Karlman <jonas@kwiboo.se>,
-	Jernej Skrabec <jernej.skrabec@gmail.com>,
-	Luca Ceresoli <luca.ceresoli@bootlin.com>,
-	Chun-Kuang Hu <chunkuang.hu@kernel.org>,
-	Philipp Zabel <p.zabel@pengutronix.de>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
+	Patrik Jakobsson <patrik.r.jakobsson@gmail.com>,
+	Alessio Belle <alessio.belle@imgtec.com>,
+	Luigi Santivetti <luigi.santivetti@imgtec.com>,
+	Liam Girdwood <lgirdwood@gmail.com>,
+	Mark Brown <broonie@kernel.org>, Jaroslav Kysela <perex@perex.cz>,
+	Takashi Iwai <tiwai@suse.com>,
+	Bard Liao <yung-chuan.liao@linux.intel.com>,
+	Pierre-Louis Bossart <pierre-louis.bossart@linux.dev>,
+	Peter Ujfalusi <peter.ujfalusi@linux.intel.com>,
+	Kai Vehmanen <kai.vehmanen@linux.intel.com>,
+	Robin Murphy <robin.murphy@arm.com>, Yong Wu <yong.wu@mediatek.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Dmitry Baryshkov <lumag@kernel.org>,
-	Daniel Stone <daniels@collabora.com>,
-	Manasi Navare <navaremanasi@google.com>,
-	Thomas Petazzoni <thomas.petazzoni@bootlin.com>,
-	Mark Yacoub <markyacoub@google.com>,
-	Sean Paul <seanpaul@google.com>,
-	Drew Davenport <ddavenport@google.com>,
-	Louis Chauvet <louis.chauvet@bootlin.com>,
-	dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Heiko Stuebner <heiko@sntech.de>,
+	Mauro Carvalho Chehab <mchehab@kernel.org>,
+	Dafna Hirschfeld <dafna@fastmail.com>,
+	Michael Tretter <m.tretter@pengutronix.de>,
+	Daniel Baluta <daniel.baluta@nxp.com>,
+	Will Deacon <will@kernel.org>,
+	Vijendar Mukunda <Vijendar.Mukunda@amd.com>,
+	dri-devel@lists.freedesktop.org, imagination@lists.freedesktop.org,
 	intel-gfx@lists.freedesktop.org, intel-xe@lists.freedesktop.org,
-	linux-mediatek@lists.infradead.org,
-	linux-arm-kernel@lists.infradead.org
-Subject: Re: [PATCH RFC v3 0/8] Add support for DisplayPort link training
- information report
-Message-ID: <20261116154931.GA1763340@killaraus.ideasonboard.com>
-References: <20261012-feat_link_cap-v3-0-7517f4aba0f3@bootlin.com>
- <51ec15feef9a88e460ab6fefc48b5b982f4857c0@intel.com>
- <dfe3ce17-8153-4cd1-b9df-fe0d61cec9c4@bootlin.com>
+	iommu@lists.linux.dev, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, linux-media@vger.kernel.org,
+	linux-rockchip@lists.infradead.org, linux-sound@vger.kernel.org,
+	sound-open-firmware@alsa-project.org, imx@lists.linux.dev
+Subject: Re: [PATCH v2 2/2] PM: runtime: fix stub pm_runtime_get_if_in_use()
+ for !CONFIG_PM
+Message-ID: <20261116155211.GB1763340@killaraus.ideasonboard.com>
+References: <20261116152513.2676573-1-Frank.Li@oss.nxp.com>
+ <20261116152513.2676573-2-Frank.Li@oss.nxp.com>
+ <20261116153139.GB1763944@killaraus.ideasonboard.com>
+ <avskkbztzVF_SRo6@SMW015318>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <dfe3ce17-8153-4cd1-b9df-fe0d61cec9c4@bootlin.com>
+In-Reply-To: <avskkbztzVF_SRo6@SMW015318>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261116_074935_916498_84D4E145 
-X-CRM114-Status: GOOD (  42.62  )
+X-CRM114-CacheID: sfid-20261116_075215_204000_A2651BE1 
+X-CRM114-Status: GOOD (  41.80  )
 X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -96,119 +104,168 @@ List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-5.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-15.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,
-	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS autolearn=no autolearn_force=no version=4.0.1
+	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=ham
+	autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On Mon, Nov 16, 2026 at 04:13:52PM +0100, Kory Maincent wrote:
-> On 11/16/26 14:10, Jani Nikula wrote:
-> > On Mon, 12 Oct 2026, Kory Maincent <kory.maincent@bootlin.com> wrote:
-> >> DisplayPort link training negotiates the physical-layer parameters needed
-> >> for a reliable connection: lane count, link rate, and optionally Display
-> >> Stream Compression (DSC). Currently, each driver exposes this state in
-> >> its own way, often through driver-specific debugfs entries, with no
-> >> standard interface for userspace diagnostic and monitoring tools.
-> >>
-> >> This series introduces generic helpers, for exposing DP link capabilities
-> >> and state as standard sysfs entries.
-> > 
-> > So how did we end up with sysfs here?
+On Mon, Nov 16, 2026 at 09:43:13AM -0600, Frank Li wrote:
+> On Mon, Nov 16, 2026 at 05:31:39PM +0200, Laurent Pinchart wrote:
+> > On Mon, Nov 16, 2026 at 10:25:11AM -0500, Frank.Li@oss.nxp.com wrote:
+> > > From: Frank Li <Frank.Li@nxp.com>
+> > >
+> > > The stub for pm_runtime_get_if_in_use() under !CONFIG_PM currently
+> > > returns -EINVAL.  The real implementation returns:
+> > >   1  - device is active and its usage counter is non-zero (bumped)
+> > >   0  - device is not in use or not active (counter not bumped)
+> > >  -EINVAL - runtime PM disabled for this device
+> > >
+> > > When CONFIG_PM is not set every device is permanently "active" and
+> > > always considered "in use", so the stub must return 1, mirroring
+> > > __pm_runtime_resume() which already returns 1 in the same build.
+> > >
+> > > Returning -EINVAL breaks callers that test the return value with
+> > > comparisons other than "!= 0 / == 0":
+> > >
+> > > drivers/gpu/drm/i915/intel_runtime_pm.c:
+> > >   if (intel_runtime_pm_get_if_in_use(rpm))
+> > >   which wraps to: ret = pm_runtime_get_if_in_use(); return ret > 0;
+> > >   With -EINVAL the wrapper returns false, causing an incorrect error
+> > >   path in the GT fence revocation code.
+> > >
+> > > drivers/gpu/drm/xe/xe_pm.c:
+> > >   if (pm_runtime_get_if_in_use(xe->drm.dev) > 0)
+> > >   With -EINVAL the condition is false; xe_pm_runtime_get_if_in_use()
+> > >   returns false, so callers believe the device is not usable.
+> > >
+> > > drivers/gpu/drm/gma500/power.c:
+> > >   return pm_runtime_get_if_in_use(dev) == 1;
+> > >   -EINVAL != 1, so the helper always returns false when !CONFIG_PM.
+> > >
+> > > drivers/gpu/drm/imagination/pvr_power.c:
+> > >   if (pm_runtime_get_if_in_use(...) <= 0)
+> > >   -EINVAL <= 0 is true, so the driver always takes the "requeue" error
+> > >   path instead of proceeding with the active device.
+> > >
+> > > sound/soc/sof/debug.c:
+> > >   if (pm_runtime_get_if_in_use(sdev->dev) == 1)
+> > >   -EINVAL != 1, so d3_prevented is never set, corrupting exception
+> > >   debug accounting.
+> > >
+> > > drivers/iommu/mtk_iommu.c:
+> > >   if (pm_runtime_get_if_in_use(dom->plat_dev->dev) <= 0)
+> > >   -EINVAL <= 0 skips the TLB flush, leaving stale IOMMU mappings.
+> > >
+> > > drivers/iommu/rockchip-iommu.c:
+> > >   Three call sites use WARN_ON_ONCE(err < 0) or similar patterns.
+> > >   -EINVAL < 0 triggers a spurious WARNING on every call.
+> > >
+> > > drivers/media/i2c/isl7998x.c:
+> > >   if (pm_runtime_get_if_in_use(dev) <= 0)  (two call sites)
+> > >   -EINVAL <= 0 causes the driver to always skip register programming
+> > >   when !CONFIG_PM.
+> > >
+> > > drivers/media/platform/rockchip/rkisp1/rkisp1-debug.c:
+> > >   if (pm_runtime_get_if_in_use(dev) <= 0)  (two call sites)
+> > >   -EINVAL <= 0 prevents any debug statistics from being collected.
+> > >
+> > > Fixes: 9d58aa46291d ("drm/i915: Fix the GT fence revocation runtime PM logic")
+> > > Fixes: cbb6a7413b17 ("drm/xe: Introduce xe_pm_runtime_get_noresume for inner callers")
+> > > Fixes: 672c473576ca ("drm/gma500: Rewrite power management code")
+> > > Fixes: 727538a4bbff ("drm/imagination: Implement power management")
+> > > Fixes: b30289e7fa92 ("ASoC: SOF: Fix runtime pm usage counter balance after fw exception")
+> > > Fixes: c0b57581b73b ("iommu/mediatek: Add power-domain operation")
+> > > Fixes: 0f181d3cf7d9 ("iommu/rockchip: Add runtime PM support")
+> > > Fixes: 51ef2be546e2 ("media: i2c: isl7998x: Add driver for Intersil ISL7998x")
+> > > Fixes: cbb819c363c5 ("media: rkisp1: debug: Collect input status by sampling ISP_FLAGS_SHD")
+> >
+> > I don't think this one is right. The rkisp1 driver only runs on ARCH_MXC
+> > and ARCH_ROCKCHIP, which select CONFIG_PM. The same may be true for some
+> > of the other fixes tags.
 > 
-> In the first RFC it was in DRM properties. I presented it in the display 
-> hackfest in Nice last years. People suggested to use sysfs instead but 
-> if the need appears later in the development move back to DRM 
-> properties. I first though DRM properties seems better as it is the user 
-> interface used by distros but I had no strong argument about the change 
-> to sysfs, so I moved on to it.
-> 
-> >> The aim of such development is to guide users to select the most suitable
-> >> DisplayPort connector for their needs. For example, if you have a USB-C
-> >> hub with lesser capabilities than your computer’s native DisplayPort
-> >> connector (such as HBR2 versus HBR3 support), the system could recommend
-> >> connecting high-resolution displays directly to the computer’s port
-> >> instead of through the hub to ensure optimal performance.
-> > 
-> > I do wonder how all this is supposed to work in more complex real world
-> > scenarios, though.
-> > 
-> > I believe the user primarily cares about *modes*. Which display modes
-> > can be used with each display/connector pair.
-> > 
-> > With the low level link information, are you proposing to compute the
-> > required bandwidth for modes in userspace? I think it's going to be a
-> > lot of work to compute the bandwidth requirements, taking into account
-> > DP SST vs. MST vs. UHBR and DSC and bit depth and everything, and you'll
-> > still miss any driver/GPU specific contraints. Or are you just proposing
-> > to match the physical characteristics only?
-> 
-> This is a requirement from Google, yes they want to compute the 
-> bandwidth for modes in the userspace side.
-> @Manasi could describe in detail how would you implement it?
-> 
-> > Given all the connectors and displays and their modes on a system, you
-> > could estimate a) for each display, what modes could be used on each
-> > connector, and b) for each connector, what modes could be used on a
-> > display, if connected. From the user POV, they could be shown why some
-> > display mode is not available on the current connector, and crucially,
-> > on which connector it could be available.
-> > 
-> > In general, I'm wondering if you're really after higher level
-> > information, something like "connector max available bandwidth
-> > with/without DSC", that would more directly map to the user needs as I
-> > see them than low level link details.
-> > 
-> > Do you have the userspace somewhere? That's needed for merging UABI
-> > anyway [1].
-> > 
-> > [1] https://docs.kernel.org/gpu/drm-uapi.html#open-source-userspace-requirements
-> 
-> I wanted to add it to IGT GPU tools, but I was hopping for community 
-> review on this RFC before the IGT development.
+> But code itself should be wrong even though these platform force enable
+> CONFIG_PM.
 
-Note the following requirement:
+How does it make the code wrong in the rkisp1 driver ? There's nothing
+to fix there, because there's no bug.
 
-  The open-source userspace must not be a toy/test application, but the
-  real thing. Specifically it needs to handle all the usual error and
-  corner cases. These are often the places where new uAPI falls apart
-  and hence essential to assess the fitness of a proposed interface.
+I'm not saying this patch is wrong (I'll let the runtime PM folks
+provide expert feedback), but I think some of the Fixes: tags are not
+correct.
 
-I think think IGT qualifies. An implementation in a desktop environment
-would likely be needed.
-
-> >> The new drm_dp_source_set_caps and drm_dp_sink_set_caps helper expose
-> >> source and sink training capabilities to userspace via sysfs attributes
-> >> under dp_link. Finally drm_dp_set_cur_link_params helper is provided to
-> >> report current link information at runtime.
-> >>
-> >> Three drivers are updated as reference implementations: i915 (direct
-> >> connector path), ANX7625 and MediaTek (via the bridge connector framework
-> >> using a new DRM_BRIDGE_OP_DP flag).
-> >>
-> >> Here is a sysfs example:
-> >>
-> >> cur_link_info_dsc            sink_link_caps_nlanes
-> >> cur_link_info_link_rate      source_link_caps_dsc
-> >> cur_link_info_nlanes         source_link_caps_link_rates
-> >> sink_link_caps_dsc           source_link_caps_nlanes
-> >> sink_link_caps_link_rates
-> >>
-> >> 1620000 2160000 2700000 3240000 4320000 5400000
-> >>
-> >> 1620000 2700000 5400000 10000000 20000000
-> >>
-> >> 5400000
-> >>
-> >> This series is rebased on top of drm-misc and may conflict with the
-> >> current state of the drm i915 tree. Which tree should pick this up,
-> >> given that it mixes core development with driver changes?
-> > 
-> > For development, please just base your work on top of drm-tip, and the
-> > tree(s) will be sorted out later.
-> 
-> Oh, ok, thanks you.
+> > > Signed-off-by: Frank Li <Frank.Li@nxp.com>
+> > > ---
+> > > Change in v2
+> > > - new patches.
+> > >
+> > > Cc: "Rafael J. Wysocki" <rafael@kernel.org>
+> > > Cc: linux-pm@vger.kernel.org
+> > > Cc: Jani Nikula <jani.nikula@linux.intel.com>
+> > > Cc: Joonas Lahtinen <joonas.lahtinen@linux.intel.com>
+> > > Cc: Rodrigo Vivi <rodrigo.vivi@intel.com>
+> > > Cc: Tvrtko Ursulin <tursulin@ursulin.net>
+> > > Cc: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>
+> > > Cc: Maxime Ripard <mripard@kernel.org>
+> > > Cc: "Thomas Hellstrom" <thomas.hellstrom@linux.intel.com>
+> > > Cc: Simona Vetter <simona@ffwll.ch>
+> > > Cc: David Airlie <airlied@gmail.com>
+> > > Cc: Matthew Brost <matthew.brost@intel.com>
+> > > Cc: Thomas Zimmermann <tzimmermann@suse.de>
+> > > Cc: Patrik Jakobsson <patrik.r.jakobsson@gmail.com>
+> > > Cc: Alessio Belle <alessio.belle@imgtec.com>
+> > > Cc: Luigi Santivetti <luigi.santivetti@imgtec.com>
+> > > Cc: Liam Girdwood <lgirdwood@gmail.com>
+> > > Cc: Mark Brown <broonie@kernel.org>
+> > > Cc: Jaroslav Kysela <perex@perex.cz>
+> > > Cc: Takashi Iwai <tiwai@suse.com>
+> > > Cc: Bard Liao <yung-chuan.liao@linux.intel.com>
+> > > Cc: Pierre-Louis Bossart <pierre-louis.bossart@linux.dev>
+> > > Cc: Peter Ujfalusi <peter.ujfalusi@linux.intel.com>
+> > > Cc: Kai Vehmanen <kai.vehmanen@linux.intel.com>
+> > > Cc: Robin Murphy <robin.murphy@arm.com>
+> > > Cc: Yong Wu <yong.wu@mediatek.com>
+> > > Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> > > Cc: Matthias Brugger <matthias.bgg@gmail.com>
+> > > Cc: Heiko Stuebner <heiko@sntech.de>
+> > > Cc: Mauro Carvalho Chehab <mchehab@kernel.org>
+> > > Cc: Dafna Hirschfeld <dafna@fastmail.com>
+> > > Cc: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
+> > > Cc: Michael Tretter <m.tretter@pengutronix.de>
+> > > Cc: Daniel Baluta <daniel.baluta@nxp.com>
+> > > Cc: Will Deacon <will@kernel.org>
+> > > Cc: Vijendar Mukunda <Vijendar.Mukunda@amd.com>
+> > > Cc: dri-devel@lists.freedesktop.org
+> > > Cc: imagination@lists.freedesktop.org
+> > > Cc: intel-gfx@lists.freedesktop.org
+> > > Cc: intel-xe@lists.freedesktop.org
+> > > Cc: iommu@lists.linux.dev
+> > > Cc: linux-arm-kernel@lists.infradead.org
+> > > Cc: linux-mediatek@lists.infradead.org
+> > > Cc: linux-media@vger.kernel.org
+> > > Cc: linux-rockchip@lists.infradead.org
+> > > Cc: linux-sound@vger.kernel.org
+> > > Cc: sound-open-firmware@alsa-project.org
+> > > Cc: imx@lists.linux.dev
+> > > ---
+> > >  include/linux/pm_runtime.h | 2 +-
+> > >  1 file changed, 1 insertion(+), 1 deletion(-)
+> > >
+> > > diff --git a/include/linux/pm_runtime.h b/include/linux/pm_runtime.h
+> > > index de9e7518ecef2..1d983fe55a16a 100644
+> > > --- a/include/linux/pm_runtime.h
+> > > +++ b/include/linux/pm_runtime.h
+> > > @@ -276,7 +276,7 @@ static inline int pm_schedule_suspend(struct device *dev, unsigned int delay)
+> > >  }
+> > >  static inline int pm_runtime_get_if_in_use(struct device *dev)
+> > >  {
+> > > -	return -EINVAL;
+> > > +	return 1;
+> > >  }
+> > >  static inline int pm_runtime_get_if_active(struct device *dev)
+> > >  {
 
 -- 
 Regards,
