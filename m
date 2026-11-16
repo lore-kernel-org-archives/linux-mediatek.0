@@ -2,37 +2,36 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 63A05606A882
-	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Nov 2026 17:54:11 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 9C99B606A334
+	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Nov 2026 17:54:17 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=fZVms0OC
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=BfvDEDut
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Unsubscribe-Post:List-Owner;
-	bh=d6JNnFfoaeyGY+wbe6iG5ANoRSPTTnQEghBDjZz1BM8=; b=fZVms0OCh8sNXpQ7c5BTUGZPVc
-	Nmm8vA8i57Dee9Ki+XdFgk6KXEO3jgU0sw/mPpLqRmEJCv0fwvVvk4bZeWKWE32ZKsRhgXaaoWzTI
-	QZkBEpOvhzya5OhliSQ2zR/+CSt8D9NTacKabU5xsU8cIA3dh3xoh7Vjg/8MpBYcjsrgGNY+WUdU1
-	KnaFASRkhUc3unc+4p1YVl2QuiPw69jgbGTGph8RubG9qOrQMwmzV/3eNPlyMLvPPdeVyCn29tLBf
-	Hj90GvovsU/+/0T3GBrKtKgQIEZs6fg1OGeZ1jEzfyH6lUK7y5ndEHU4sttg6kSK25jmhALTF1/gc
-	sbFte70Q==;
+	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Unsubscribe-Post:
+	List-Owner; bh=52QgrSKsfSH7NwDCbCOwCK+9x4DB/HxzeFNx2X6f/cc=; b=BfvDEDutlMTy0D
+	gQbwrx454a3F2dCf9MLepy6HO3NgWnLk+iVaC3kcvnqT0PhW83HEb7/9FehkZ+9Y32yAB53WJb0bO
+	LufXlPhwKx+G93gtfuJHoqwu+2ur9qpRAi4ajMJrXjKRsf143OTZQCw3FaG/p5iRSzZgtmsCCP4vz
+	SIny04+CzFEBj24PJ9w6WSTDaYkmFPJ6Tbn9bbQIcjbion8O28PK6NhAlrWzyZMmC+MntLftNiTy5
+	0D96hj9qPptPNoImV7fe6zqv2Qi1HkozJwhdk7ajku9h20Mpj3zfdJIMavMVD/tQp/vaIJKDindTl
+	LmdizJcnuy/EP5+OtJCw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xT0uB-00000003Sap-0SQF;
-	Mon, 16 Nov 2026 17:54:11 +0000
+	id 1xT0uH-00000003Sf6-1T9l;
+	Mon, 16 Nov 2026 17:54:17 +0000
 Received: from nbd.name ([46.4.11.11])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xT0u2-00000003SVO-1Szp;
+	id 1xT0u2-00000003SVM-0YYb;
 	Mon, 16 Nov 2026 17:54:04 +0000
 Received: from [2a04:4540:1403:e6fc:5f71:2c1e:7d62:945f] (helo=bertha10..)
 	by ds12 with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.96)
 	(envelope-from <john@phrozen.org>)
-	id 1xT0tp-004GoI-1y;
-	Mon, 16 Nov 2026 18:53:49 +0100
+	id 1xT0tq-004GoI-1I;
+	Mon, 16 Nov 2026 18:53:50 +0100
 From: John Crispin <john@phrozen.org>
 To: Stefan Roese <sr@denx.de>,
 	Andi Shyti <andi.shyti@kernel.org>,
@@ -53,17 +52,20 @@ Cc: Christian Marangi <ansuelsmth@gmail.com>,
 	Rajeev.kumar@airoha.com,
 	upstream@airoha.com,
 	Weifeng.xu@airoha.com,
-	zhengping.zhang@airoha.com
-Subject: [PATCH v3 0/3] i2c: mt7621: add Airoha AN7589 support
-Date: Mon, 16 Nov 2026 18:53:40 +0100
-Message-Id: <20261116175343.344425-1-john@phrozen.org>
+	zhengping.zhang@airoha.com,
+	Conor Dooley <conor.dooley@microchip.com>
+Subject: [PATCH v3 2/3] dt-bindings: i2c: mt7621: add Airoha AN7589
+Date: Mon, 16 Nov 2026 18:53:42 +0100
+Message-Id: <20261116175343.344425-3-john@phrozen.org>
 X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20261116175343.344425-1-john@phrozen.org>
+References: <20261116175343.344425-1-john@phrozen.org>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261116_095402_383562_0278D521 
-X-CRM114-Status: UNSURE (   8.74  )
+X-CRM114-CacheID: sfid-20261116_095402_168163_0D2D0E45 
+X-CRM114-Status: UNSURE (   9.55  )
 X-CRM114-Notice: Please train this message.
 X-Spam-Score: -1.9 (-)
 X-BeenThere: linux-mediatek@lists.infradead.org
@@ -76,52 +78,57 @@ List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-11.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
+	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
 The Airoha AN7589 carries the MT7621 I2C controller with a second
-control register that holds a 16 bit clock divider. It runs without
-SCL stretching.
+control register holding a wider clock divider. Out of reset the
+controller uses the MT7621 divider, so the MT7621 programming works
+and mediatek,mt7621-i2c serves as the fallback. Give the AN7589 a
+compatible of its own so the driver can use the wider divider.
 
-Patch 1 resets the controller with reset_control_assert() and
-reset_control_deassert() instead of device_reset(), as the EN7581 and
-AN7589 reset controller has no .reset operation. Patch 2 adds the
-compatible, with mediatek,mt7621-i2c as the fallback. Patch 3
-describes the variants as match data and uses the wider divider for
-bus rates down to about 3 kHz.
-
-The series applies to next-20261105 and has no dependencies.
-
+Acked-by: Conor Dooley <conor.dooley@microchip.com>
+Signed-off-by: John Crispin <john@phrozen.org>
+---
 Changes in v3:
-- Patch 1: add the Reviewed-by of Philipp.
-- Patch 2: add the Acked-by of Conor.
-- Patch 3: compute the AN7589 divider with constant limits, so a clock
-  rate below 1 MHz cannot wrap it (kernel test robot, sashiko).
-- Link to v2: https://lore.kernel.org/r/20261112185820.1315718-1-john@phrozen.org
+- Add the Acked-by of Conor.
 
 Changes in v2:
-- Add patch 1. It replaces "clk: en7523: add a reset operation" from
-  the clk series, as Philipp suggested.
-- Patch 2: add mediatek,mt7621-i2c as the fallback compatible (Conor).
-- Patch 3: the extended divider supports bus rates down to about 3 kHz.
-  Set it up before the controller is enabled.
-- Link to v1: https://lore.kernel.org/r/20261111093941.691801-1-john@phrozen.org
+- Add mediatek,mt7621-i2c as the fallback compatible (Conor).
 
-John Crispin (3):
-  i2c: mt7621: assert and deassert the reset line
-  dt-bindings: i2c: mt7621: add Airoha AN7589
-  i2c: mt7621: add support for Airoha AN7589
+ .../devicetree/bindings/i2c/mediatek,mt7621-i2c.yaml   | 10 +++++++++-
+ 1 file changed, 9 insertions(+), 1 deletion(-)
 
- .../bindings/i2c/mediatek,mt7621-i2c.yaml     | 10 ++-
- drivers/i2c/busses/i2c-mt7621.c               | 70 ++++++++++++++++---
- 2 files changed, 70 insertions(+), 10 deletions(-)
-
-
-base-commit: ddfe51b0a0f5dc9e415cc2c8ad8db17532dd426b
+diff --git a/Documentation/devicetree/bindings/i2c/mediatek,mt7621-i2c.yaml b/Documentation/devicetree/bindings/i2c/mediatek,mt7621-i2c.yaml
+index 118ec00fc190..ec42e72e267f 100644
+--- a/Documentation/devicetree/bindings/i2c/mediatek,mt7621-i2c.yaml
++++ b/Documentation/devicetree/bindings/i2c/mediatek,mt7621-i2c.yaml
+@@ -9,12 +9,20 @@ maintainers:
+ 
+ title: Mediatek MT7621/MT7628 I2C master controller
+ 
++description:
++  The same controller is used on Airoha SoCs. The AN7589 variant adds a
++  second control register with a wider clock divider.
++
+ allOf:
+   - $ref: /schemas/i2c/i2c-controller.yaml#
+ 
+ properties:
+   compatible:
+-    const: mediatek,mt7621-i2c
++    oneOf:
++      - const: mediatek,mt7621-i2c
++      - items:
++          - const: airoha,an7589-i2c
++          - const: mediatek,mt7621-i2c
+ 
+   reg:
+     maxItems: 1
 -- 
 2.34.1
 
