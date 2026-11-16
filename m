@@ -2,64 +2,64 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 56C05606A32C
-	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Nov 2026 23:18:21 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 47D86606A31C
+	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Nov 2026 23:18:43 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=egdy++In
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=ltL+eOIX
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Unsubscribe-Post:
-	List-Owner; bh=d565s4DphSSG/c4wOqcYcK8O2xYx/fApraOeU5LZFRQ=; b=egdy++InGzt5Ef
-	fqIcz2yac7XtRNTgZn7b7bvXRWgGGMhhlUAnF9XHKIZlONk6O1k3YmR5zVLT3LKPenfmXqC5cfbGZ
-	JxcN55whQX9tcYIsy+MoJNnXGqCT39GT+dM1rNwxkt+6sMLo+dqQCqsIqpsWK5a/Kh1o/59YzJldO
-	nnPup2hYkO8OFZrCNF3YSNmdLaRe/dmJRl8IkEiVuhMNjIfDFJj2hobxgxFQu0+JWjdxN19FEHi2T
-	HaPYOp+qO2qPeO/GP9Qtcz6Ep8eZ2jQWBch1CcmpN4ZhNkIuMeKTq/9nWBhqeh3841q418B3N/Vkd
-	uRUOPG0GexUy4eDlJ0Wg==;
+	List-Owner; bh=5c3ewEuNavq3VRbHhbrC4PgRlgjF35/gUfe074TPTz8=; b=ltL+eOIXJqoOIo
+	02E3rAJZ6Jhyiaq7/Qi0XLpbxHzr88uwxdLRFtPjIEyyNPbNDlME6naY+Izmbnu0lfOUzTE6r/9Xf
+	jdyV0k8zkE3/L2G6QJ5frhdm+kI2OhEMGNIn6HC+CF/WJQteuXHxElB+BkEVGjyQvYbfk4Qjc2rZr
+	v/t5uGvC806j42eFoiSMqAxOc6qPyWqSmd0WhA0pCP9z3Jd+Z5yKyNGMwTRAxm+KbEIwte3OwjZmq
+	IjWAr7GfDbcbDNLi+rR4QCC8STtdl9kB56i/MRX8PlU3bqBPtzGWNVwtWXckL00T71n1oBZTZWGVQ
+	gSy9u95YKKQkSIhWgaeA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xT5xs-000000049Fm-3PPE;
-	Mon, 16 Nov 2026 23:18:20 +0000
-Received: from mail-ot1-f53.google.com ([209.85.210.53])
+	id 1xT5yF-000000049L8-050Q;
+	Mon, 16 Nov 2026 23:18:43 +0000
+Received: from mail-oi1-f182.google.com ([209.85.167.182])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xT5xq-000000049F0-38ss
+	id 1xT5yC-000000049Kf-0uEr
 	for linux-mediatek@lists.infradead.org;
-	Mon, 16 Nov 2026 23:18:19 +0000
-Received: by mail-ot1-f53.google.com with SMTP id 46e09a7af769-86156cf8a7eso237826a34.1
-        for <linux-mediatek@lists.infradead.org>; Mon, 16 Nov 2026 15:18:18 -0800 (PST)
+	Mon, 16 Nov 2026 23:18:41 +0000
+Received: by mail-oi1-f182.google.com with SMTP id 5614622812f47-53c156ba662so3161628b6e.1
+        for <linux-mediatek@lists.infradead.org>; Mon, 16 Nov 2026 15:18:39 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1794871097; x=1795475897;
+        d=1e100.net; s=20260707; t=1794871119; x=1795475919;
         h=content-transfer-encoding:mime-version:references:in-reply-to
          :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
          :to:cc:subject:date:message-id:reply-to:content-type;
-        bh=d565s4DphSSG/c4wOqcYcK8O2xYx/fApraOeU5LZFRQ=;
-        b=s0joyjL3xzQfy+gZJ/9BJRDk/Y1ktPvrJxZbVsSFzRqx73QCM6R2mjajlb8QLxUMrO
-         ocDn4/IhVo/obSGhhetotjS6YM6i81qsQBZy+/RTi5wFV6RsqEOPa+JZEF9NDsg/Q7ZH
-         xqkzB5Q7d+daSjUMLlYcSpI8VhqRoNNHFltnHvkZRbcMcUngr03KfemNvITOu42HC3Ug
-         es59hzkg4+/tUmLaZHtKs3GzkSLBxY6e5NGZf+ay7HtssmquD5MpraYHLLnvkP0mRV6S
-         oJlWJdVjJcMBShZOYDCzr1ihsH+BHvxJleQfSMdAkUYaJK/XJj7VTIkNQyNpavxsQvlv
-         FKiA==
-X-Forwarded-Encrypted: i=1; AL+hErHp4BDs3bb6JeQTrExwKYZYFVQhEtAAKNn6pcEfVTcAaUW6iquzDTah1xny9yHq46tj1/6w3rMUM5f8r5yUoA==@lists.infradead.org
-X-Gm-Message-State: APuU4Z8g/zH4Vxu1T4gCarkfIr4S6vBkEGvYGhUANtNmydyPyAt9ch6q
-	6ArbVE6CPPP1nFNvccjosjXDHOXqj5GQYw0v22Tb/Dh/XiY1neWNCSdM
-X-Gm-Gg: AYBFou25HdwFmw2vTi3zBhhgX/n8jpSd+dTfbV6cgangfWmYGnaSuxaWp0XWTeR3Q3k
-	UCQkQNOt4EVZhxZEQsTnfESeM2JoYApC+Bnavw4a1LuyUZJMWx0wqj00T4YImXjX0w+Q0DBwtKw
-	p6ELWWPXhD0ut8aGFquV/KSuDRCh97BsRytFAbO0jV+CrZPObWb6ZrS5iAxGwu3HzztmMoAqna7
-	7l+T+LCmAgn5neq9wTRMuaVD6G9CN8rA00hCatFkXigToM+tQl7EuOHLuv6/J/2dXAWsMcVERDJ
-	dwjNv/Axyi2U11Z4Ox7xKPgUl27McjHH4rHxwhj/fvoJ1vkmAbUYSd9tloAjZcRHmb/Ajq6UjnE
-	eCStlNKJSVySQaBX8EMGN8jLjrT7wI1ljmw+lBefZNvycKTdvZUq/uAL1ZKwyIGRopp8PlA3k6u
-	BwBXis4TRd/7lgAw7SnsPrXLQQzm7tf5mzhBfLWNgimMmw2xKQaEo/lyXWpO2PAmzkhvZHi2YUE
-	rLul4TX5tZt21KBcPGpN5rdFPraYMl5/Y2uIK+s/R5Rcu0fpH+WQqWybRTX0h4KI3s8PkpPtGDi
-	GtWNlXFfIOOrL+0B1Bm73fp7AIGKfjMHVcaIWLpt2QjvNobUzcTW7YwBbq+zb7L9ex62clTvSFk
-	NYO0YllTH
-X-Received: by 2002:a05:6808:3013:b0:4f0:2d60:f0f4 with SMTP id 5614622812f47-575dd7262aemr835835b6e.17.1794871097429;
-        Mon, 16 Nov 2026 15:18:17 -0800 (PST)
+        bh=5c3ewEuNavq3VRbHhbrC4PgRlgjF35/gUfe074TPTz8=;
+        b=PEelSOy7SsBsJQ14VJXTEVS43f/Ic6JIzhj0Dnf1h3H3lwkie9n1ob6cJ7rlBI27HH
+         D2MjvPTnyLG8/5OjL3RRFbS0Ly9kQs+SwZDwC3Jq+3gyjAAJK5sfUzhpfo7I7oo0U844
+         D7lzL50svscY1dr3uN8j9QTUsyInWxRaxrSrnM3C2QyE/fJFOytbQLi05LOsmfaAgdgm
+         Av7uafSDSKwqsCBKLd5Mn3hi9K2SShaMtvHxbGxSpgwc0H1JfMt4FsJwVD6R7G4y+q92
+         4QnqEcutseBIgN8cypqbOzfcUB9UcbKDTJ6CFwE8vyVePxs2Yk64z1NMCa0mQrRfW0sc
+         kj4Q==
+X-Forwarded-Encrypted: i=1; AL+hErGGuxJ8ug9Ae1FbO5F2kpAu53NRp9BtrxHko/5vPmiIxsQ9CAPf3adO+Eb9opNN+4L+cT1WBPL8aFSoNPUf2w==@lists.infradead.org
+X-Gm-Message-State: APuU4Z8chXXe1DrWnqLdpFN7E4ZtRqCCVLh7jvcUg43Nswvt7kcupTDq
+	LYJVSObnx6PQsFZ8ZB+Lg8+r5bmCD3ko9/c4duExSShiM81XwWDW5IoE
+X-Gm-Gg: AYBFou2sP4bNrz4McdH51hAn1MPkxHdSaE2jdr43jrv9S0BWc4Vsllgks/xNYTndhhG
+	i8/WQP7kUEayta1MVWKQ8a4kQOezGgSDAKeEy/v6bWy+Fbu3tMOEgYlz91AuE3xADqh8YHL8Oia
+	GrzJNxkUKBI9Cjk1t8cKCl8ZKweIIH7ruDjreY52NcyajqU5PaHpVPtqWMBpsx/roQBuO1Dhamj
+	8eO0k7+72391MGzJkzy0IMsoHtiJoerdeLXh2CXXVvA3EosGLTEBNXnzodLQmtbiizh9d9bMx3S
+	/2oi9zZ8Qm64lyKQezY6VIJ3O9idAU7MRVlmWWrflhojnJ1+zKxgZqJ/b57Bq6S/WnawsET7XOi
+	U2inzxAU0noIvFB0HBSK/duMiE3HYqwh1o/bbBNsfOvy+VAc/Z0ICN1B7aPjE5Cy8EH172T2osm
+	TjNgu7Qd7mabBTQtbeafCXLZXJHO5/Xv2nFHdXzCmuedMFPb/uTD20Ze8cHknR1RwLVVZxlLgdf
+	IT1tzh7LKaB3Y+Fwt8LZwqJBQnBWTTVTZ1f2HWhbq1KFlZED6plfYti71scracionjnY+2M7xqW
+	lSw0goShCAp2k8cdzo3l+3h3ZuLvjBxXOi7e/wfjKRwqIQLa57V0hoMvs1AtxiSk+jC9H8DB66a
+	rIdus5KYZ
+X-Received: by 2002:a05:6808:5092:b0:573:7a6b:f32c with SMTP id 5614622812f47-5737a6c0a74mr6031072b6e.50.1794871119170;
+        Mon, 16 Nov 2026 15:18:39 -0800 (PST)
 Received: from sean-HP-EliteBook-830-G6.lan ([207.191.35.252])
-        by smtp.gmail.com with ESMTPSA id 5614622812f47-56e70c58f9bsm10239635b6e.13.2026.11.16.15.18.14
+        by smtp.gmail.com with ESMTPSA id 5614622812f47-56e70c58f9bsm10239635b6e.13.2026.11.16.15.18.36
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 16 Nov 2026 15:18:15 -0800 (PST)
+        Mon, 16 Nov 2026 15:18:37 -0800 (PST)
 From: Sean Wang <sean.wang@kernel.org>
 To: nbd@nbd.name,
 	lorenzo.bianconi@kernel.org
@@ -71,9 +71,9 @@ Cc: yu-ching.liu@mediatek.com,
 	linux-wireless@vger.kernel.org,
 	linux-mediatek@lists.infradead.org,
 	Sean Wang <sean.wang@mediatek.com>
-Subject: [PATCH v2 01/19] wifi: mt76: mt7925: add NAN low power event control on suspend/resume
-Date: Mon, 16 Nov 2026 17:16:12 -0600
-Message-ID: <20261116231630.1733906-2-sean.wang@kernel.org>
+Subject: [PATCH v2 02/19] wifi: mt76: mt7925: implement NAN key management MCU command
+Date: Mon, 16 Nov 2026 17:16:13 -0600
+Message-ID: <20261116231630.1733906-3-sean.wang@kernel.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20261116231630.1733906-1-sean.wang@kernel.org>
 References: <20261116231630.1733906-1-sean.wang@kernel.org>
@@ -81,9 +81,9 @@ X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261116_151818_806402_0A3C0463 
-X-CRM114-Status: GOOD (  18.29  )
-X-Spam-Score: -0.4 (/)
+X-CRM114-CacheID: sfid-20261116_151840_297317_857BF9CB 
+X-CRM114-Status: GOOD (  15.67  )
+X-Spam-Score: -0.5 (/)
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -103,163 +103,155 @@ X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 
 From: Chengwei Yu <chengwei.yu@mediatek.com>
 
-Disable NAN low power event reporting when the interface suspends so
-the firmware stops firing peer-schedule notifications into a quiesced
-system, and re-enable it on resume.
+Add mt7925_nan_manage_key_cmd() and mt7925_nan_key_mgmt_tlv() to
+install and remove NAN group and pairwise keys via
+NAN_UNI_CMD_KEY_MANAGEMENT. The TLV builder covers all firmware key
+types: NM-TK, ND-TK (unicast), TX/RX GTK (multicast data) and
+TX/RX IGTK/BIGTK (multicast management).
 
-Re-enabling is conditional: it only fires if firmware has previously
-reported an active peer schedule (non-zero peer_sch_record_tx_map in
-the LOWPOWER_CTRL event). This avoids sending the command on every
-resume when no peer connection is in progress.
+Follows the same skb + mt76_connac_mcu_add_tlv() pattern as other NAN
+commands (mt7925_nan_enable(), mt7925_nan_change_configure()) rather
+than hand-assembling a packed struct, so it composes naturally with
+the existing NAN command helpers.
+
+Key material is grouped into struct mt7925_nan_key_info so callers
+pass one pointer instead of five arguments; init/key_exist firmware
+flags are hardcoded 1/0 since every real caller uses the same values.
 
 Co-developed-by: Sean Wang <sean.wang@mediatek.com>
 Signed-off-by: Sean Wang <sean.wang@mediatek.com>
 Signed-off-by: Chengwei Yu <chengwei.yu@mediatek.com>
 ---
- .../net/wireless/mediatek/mt76/mt7925/mcu.c   |  9 ++
- .../net/wireless/mediatek/mt76/mt7925/nan.c   | 93 +++++++++++++++++++
- .../net/wireless/mediatek/mt76/mt7925/nan.h   | 18 ++++
- drivers/net/wireless/mediatek/mt76/mt792x.h   |  7 ++
- 4 files changed, 127 insertions(+)
+ .../net/wireless/mediatek/mt76/mt7925/nan.c   | 122 ++++++++++++++++++
+ .../net/wireless/mediatek/mt76/mt7925/nan.h   |  72 +++++++++++
+ 2 files changed, 194 insertions(+)
 
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c b/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
-index d3806d8dfbbf..c800ec2f25dc 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7925/mcu.c
-@@ -324,6 +324,7 @@ void mt7925_mcu_set_suspend_iter(void *priv, u8 *mac,
- 	bool suspend = !test_bit(MT76_STATE_RUNNING, &phy->state);
- 	struct ieee80211_hw *hw = phy->hw;
- 	struct cfg80211_wowlan *wowlan = hw->wiphy->wowlan_config;
-+	struct mt792x_dev *dev = mt792x_hw_dev(hw);
- 	int i;
- 
- 	mt76_connac_mcu_set_gtk_rekey(phy->dev, vif, suspend);
-@@ -343,6 +344,14 @@ void mt7925_mcu_set_suspend_iter(void *priv, u8 *mac,
- 	    !vif->cfg.assoc && !wowlan->nd_config)
- 		return;
- 	mt7925_connac_mcu_set_wow_ctrl(phy, vif, suspend, wowlan);
-+
-+	/*
-+	 * Disable NAN low power event reporting while suspended, and
-+	 * re-enable it on resume so firmware resumes reporting peer
-+	 * schedule activity.
-+	 */
-+	if (vif->type == NL80211_IFTYPE_NAN)
-+		mt7925_nan_send_lowpower_ctrl_cmd(dev, !suspend);
- }
- 
- #endif /* CONFIG_PM */
 diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/nan.c b/drivers/net/wireless/mediatek/mt76/mt7925/nan.c
-index ce2571832c08..39d56519bce4 100644
+index 39d56519bce4..2c01dee27649 100644
 --- a/drivers/net/wireless/mediatek/mt76/mt7925/nan.c
 +++ b/drivers/net/wireless/mediatek/mt76/mt7925/nan.c
-@@ -651,6 +651,44 @@ mt7925_nan_handle_sched_update_done(struct mt792x_dev *dev, struct tlv *tlv)
- 	ieee80211_queue_work(dev->mt76.hw, &dev->nan_deferred_work);
+@@ -787,6 +787,128 @@ int mt7925_nan_send_lowpower_ctrl_cmd(struct mt792x_dev *dev, bool enable)
+ 	return mt76_mcu_skb_send_msg(mdev, skb, MCU_UNI_CMD(NAN), true);
  }
  
-+static void
-+mt7925_nan_handle_lowpower_ctrl(struct mt792x_dev *dev, struct tlv *tlv)
++static int
++mt7925_nan_key_mgmt_tlv(struct sk_buff *skb,
++			enum mt7925_nan_key_operation key_op,
++			enum mt7925_nan_key_type key_type,
++			u16 wtbl_entry,
++			const u8 *local_addr,
++			const u8 *peer_addr,
++			const struct mt7925_nan_key_info *key)
 +{
-+	struct mt7925_nan_lowpower_ctrl_evt *evt;
-+	struct mt792x_vif *mvif;
-+	u16 len;
++	struct mt7925_nan_key_mgmt_tlv *key_mgmt_tlv = NULL;
++	struct tlv *tlv = NULL;
 +
-+	if (!dev || !tlv)
-+		return;
-+
-+	len = le16_to_cpu(tlv->len);
-+	if (len < sizeof(*tlv) + sizeof(*evt)) {
-+		dev_warn(dev->mt76.dev,
-+			 "nan: short lowpower_ctrl event tlv len=%u\n", len);
-+		return;
-+	}
-+
-+	if (!dev->nan_vif || !ieee80211_vif_nan_started(dev->nan_vif))
-+		return;
-+
-+	evt = (struct mt7925_nan_lowpower_ctrl_evt *)tlv->data;
-+
-+	dev_dbg(dev->mt76.dev,
-+		"nan: lowpower_ctrl event - peer_sch_record_tx_map=0x%x\n",
-+		evt->peer_sch_record_tx_map);
-+
-+	if (!evt->peer_sch_record_tx_map)
-+		return;
-+
-+	/*
-+	 * Firmware reports an active peer schedule; remember it so the
-+	 * next resume re-enables low power event reporting instead of
-+	 * sending the command unconditionally every suspend/resume cycle.
-+	 */
-+	mvif = (struct mt792x_vif *)dev->nan_vif->drv_priv;
-+	mvif->nan.lowpower_mode = true;
-+}
-+
- void mt7925_nan_mcu_event(struct mt792x_dev *dev, struct sk_buff *skb)
- {
- 	struct tlv *tlv;
-@@ -685,6 +723,9 @@ void mt7925_nan_mcu_event(struct mt792x_dev *dev, struct sk_buff *skb)
- 		case NAN_UNI_EVENT_ID_SCHED_UPDATE_DONE:
- 			mt7925_nan_handle_sched_update_done(dev, tlv);
- 			break;
-+		case NAN_UNI_EVENT_LOWPOWER_CTRL:
-+			mt7925_nan_handle_lowpower_ctrl(dev, tlv);
-+			break;
- 		default:
- 			break;
- 		}
-@@ -694,6 +735,58 @@ void mt7925_nan_mcu_event(struct mt792x_dev *dev, struct sk_buff *skb)
- 	}
- }
- 
-+int mt7925_nan_send_lowpower_ctrl_cmd(struct mt792x_dev *dev, bool enable)
-+{
-+	struct mt7925_nan_lowpower_ctrl_tlv *lp_tlv;
-+	struct mt7925_nan_common_hdr *hdr;
-+	struct mt792x_vif *mvif;
-+	struct mt76_dev *mdev;
-+	struct sk_buff *skb;
-+	struct tlv *tlv;
-+
-+	if (!dev)
++	if (!skb)
 +		return -EINVAL;
 +
-+	/*
-+	 * Only re-enabling (on resume) is gated on firmware having reported
-+	 * an active peer schedule while suspended; disabling (on suspend)
-+	 * always goes through so firmware stops reporting immediately.
-+	 */
-+	if (enable) {
-+		if (!dev->nan_vif)
-+			return 0;
++	tlv = mt76_connac_mcu_add_tlv(skb, NAN_UNI_CMD_KEY_MANAGEMENT,
++				      sizeof(struct mt7925_nan_key_mgmt_tlv));
++	if (!tlv)
++		return -ENOMEM;
 +
-+		mvif = (struct mt792x_vif *)dev->nan_vif->drv_priv;
-+		if (!mvif->nan.lowpower_mode)
-+			return 0;
++	key_mgmt_tlv = (struct mt7925_nan_key_mgmt_tlv *)tlv;
++	key_mgmt_tlv->op = (u8)key_op;
++	key_mgmt_tlv->key_type = (u8)key_type;
++	key_mgmt_tlv->wtbl_idx = cpu_to_le16(wtbl_entry);
++	key_mgmt_tlv->init = 1;
++	key_mgmt_tlv->key_exist = 0;
++	key_mgmt_tlv->is_nmi_tk = 0;
 +
-+		mvif->nan.lowpower_mode = false;
++	memcpy(key_mgmt_tlv->local_addr, local_addr, ETH_ALEN);
++	memcpy(key_mgmt_tlv->peer_addr, peer_addr, ETH_ALEN);
++
++	switch (key_type) {
++	case NAN_KEY_TYPE_NMI_CXT_MGMT_KEY:
++		key_mgmt_tlv->nmi_key_idx = 0;
++		key_mgmt_tlv->is_nmi_tk = true;
++		break;
++	case NAN_KEY_TYPE_MC_TX_KEY:
++	case NAN_KEY_TYPE_MC_MGMT_TX_KEY:
++		/* TX GTK/IGTK/BIGTK: NDI-indexed slot; NDC ID not yet tracked */
++		key_mgmt_tlv->ndi_idx = 0;
++		break;
++	case NAN_KEY_TYPE_MC_RX_KEY:
++	case NAN_KEY_TYPE_MC_MGMT_RX_KEY:
++		key_mgmt_tlv->mc_rx_idx = (u8)wtbl_entry;
++		break;
++	default:
++		return -EINVAL;
 +	}
 +
-+	mdev = &dev->mt76;
++	if (key_op == NAN_KEY_OP_SET_KEY) {
++		key_mgmt_tlv->algorithm_id = key->algo_id;
++		key_mgmt_tlv->key_id = key->key_id;
++		key_mgmt_tlv->key_len = key->key_len;
++
++		if (key_type == NAN_KEY_TYPE_MC_MGMT_RX_KEY && key->pn) {
++			memcpy(key_mgmt_tlv->key_rsc, key->pn,
++			       min_t(size_t, NAN_PACKET_NUMBER_LEN,
++				     sizeof(key_mgmt_tlv->key_rsc)));
++		}
++
++		if (key->key_data) {
++			memcpy(key_mgmt_tlv->key_material, key->key_data,
++			       min_t(size_t, key->key_len,
++				     sizeof(key_mgmt_tlv->key_material)));
++		}
++	}
++
++	return 0;
++}
++
++/**
++ * mt7925_nan_manage_key_cmd - Install/remove a NAN group or pairwise key
++ * @dev: mt792x device pointer
++ * @key_op: NAN_KEY_OP_SET_KEY or NAN_KEY_OP_CLS_KEY
++ * @key_type: which NAN key slot this targets (enum mt7925_nan_key_type)
++ * @wtbl_entry: WTBL index the key is bound to (WTBL_RESERVED_ENTRY invalid)
++ * @local_addr: local MAC address for this key context
++ * @peer_addr: peer MAC address for this key context
++ * @key: key material; key->key_data required for NAN_KEY_OP_SET_KEY
++ *
++ * There are no other callers yet; NAN group key installation added by a
++ * later change calls into this single command path.
++ */
++int
++mt7925_nan_manage_key_cmd(struct mt792x_dev *dev,
++			  enum mt7925_nan_key_operation key_op,
++			  enum mt7925_nan_key_type key_type,
++			  u16 wtbl_entry,
++			  const u8 *local_addr,
++			  const u8 *peer_addr,
++			  const struct mt7925_nan_key_info *key)
++{
++	struct mt76_dev *mdev = &dev->mt76;
++	struct mt7925_nan_common_hdr *hdr = NULL;
++	struct sk_buff *skb = NULL;
++	int ret;
++
++	if (!key || !local_addr || !peer_addr ||
++	    key_type >= NAN_KEY_TYPE_NUM ||
++	    wtbl_entry == WTBL_RESERVED_ENTRY ||
++	    (key_op == NAN_KEY_OP_SET_KEY && !key->key_data))
++		return -EINVAL;
 +
 +	skb = mt76_mcu_msg_alloc(mdev, NULL,
 +				 sizeof(struct mt7925_nan_common_hdr) +
-+				 sizeof(struct mt7925_nan_lowpower_ctrl_tlv));
++				 sizeof(struct mt7925_nan_key_mgmt_tlv));
 +	if (!skb)
 +		return -ENOMEM;
 +
 +	hdr = (struct mt7925_nan_common_hdr *)skb_put(skb, sizeof(*hdr));
 +	memset(hdr, 0, sizeof(*hdr));
 +
-+	tlv = mt76_connac_mcu_add_tlv(skb, NAN_UNI_CMD_LOWPOWER_CTRL,
-+				      sizeof(struct mt7925_nan_lowpower_ctrl_tlv));
-+	if (!tlv) {
++	ret = mt7925_nan_key_mgmt_tlv(skb, key_op, key_type, wtbl_entry,
++				      local_addr, peer_addr, key);
++	if (ret) {
 +		dev_kfree_skb(skb);
-+		return -ENOMEM;
++		return ret;
 +	}
-+
-+	lp_tlv = (struct mt7925_nan_lowpower_ctrl_tlv *)tlv;
-+	lp_tlv->enabled = enable ? 1 : 0;
 +
 +	return mt76_mcu_skb_send_msg(mdev, skb, MCU_UNI_CMD(NAN), true);
 +}
@@ -268,73 +260,102 @@ index ce2571832c08..39d56519bce4 100644
  				     struct ieee80211_vif *vif)
  {
 diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/nan.h b/drivers/net/wireless/mediatek/mt76/mt7925/nan.h
-index 9a0cd1d06d45..6979f0347d77 100644
+index 6979f0347d77..190de376ef54 100644
 --- a/drivers/net/wireless/mediatek/mt76/mt7925/nan.h
 +++ b/drivers/net/wireless/mediatek/mt76/mt7925/nan.h
-@@ -89,6 +89,7 @@ enum nan_uni_cmd_tag {
- 	NAN_UNI_CMD_UPDATE_PEER_CAPABILITY	= 21,
- 	NAN_UNI_CMD_CHANGE_NMI_ADDRESS		= 24,
- 	NAN_UNI_CMD_SET_DW_INTERVAL		= 26,
-+	NAN_UNI_CMD_LOWPOWER_CTRL		= 37,
- 	NAN_UNI_CMD_SET_SYNC_RSSI		= 39,
- 	NAN_UNI_CMD_SET_CLUSTER_ID		= 40,
- 	NAN_UNI_CMD_KEY_MANAGEMENT		= 53,
-@@ -96,6 +97,7 @@ enum nan_uni_cmd_tag {
+@@ -110,6 +110,24 @@ enum nan_disc_event_type {
+ 	NAN_EVENT_ID_JOINED_CLUSTER		= 2,
+ };
  
- enum nan_uni_event_tag {
- 	NAN_UNI_EVENT_ID_DE_EVENT_IND		= 19,
-+	NAN_UNI_EVENT_LOWPOWER_CTRL		= 37,
- 	NAN_UNI_EVENT_ID_ULW_UPDATE		= 39,
- 	NAN_UNI_EVENT_ID_SCHED_UPDATE_DONE	= 43,
- 	NAN_UNI_EVENT_REPORT_DW_START		= 59,
-@@ -477,6 +479,20 @@ struct mt7925_nan_update_phy_setting_tlv {
++enum mt7925_nan_key_operation {
++	NAN_KEY_OP_SET_KEY,
++	NAN_KEY_OP_CLS_KEY,
++};
++
++enum mt7925_nan_key_type {
++	NAN_KEY_TYPE_NMI_CXT_MGMT_KEY,	/* NM-TK: NAN Management pairwise key */
++	NAN_KEY_TYPE_ND_TK,		/* ND-TK: NAN Data pairwise key */
++	NAN_KEY_TYPE_MC_TX_KEY,		/* TX GTK (multicast data) */
++	NAN_KEY_TYPE_MC_RX_KEY,		/* RX GTK (multicast data) */
++	NAN_KEY_TYPE_MC_MGMT_TX_KEY,	/* TX IGTK/BIGTK (multicast mgmt) */
++	NAN_KEY_TYPE_MC_MGMT_RX_KEY,	/* RX IGTK/BIGTK (multicast mgmt) */
++	NAN_KEY_TYPE_NUM,
++};
++
++#define WTBL_RESERVED_ENTRY	0xFFFF
++#define NAN_PACKET_NUMBER_LEN	6
++
+ /* bit indices into mt792x_dev->nan_deferred_pending, set from the atomic
+  * MCU-event RX path and consumed by mt7925_nan_deferred_work()
+  */
+@@ -479,6 +497,35 @@ struct mt7925_nan_update_phy_setting_tlv {
  	struct mt7925_nan_phy_setting phy_5g;
  } __packed __aligned(4);
  
-+/* NAN Low Power Control Command */
-+struct mt7925_nan_lowpower_ctrl_tlv {
++struct mt7925_nan_key_mgmt_tlv {
 +	__le16 tag;
 +	__le16 len;
-+	u8 enabled;
-+	u8 reserved[3];
++
++	u8 op;			/* enum mt7925_nan_key_operation */
++	u8 key_type;		/* enum mt7925_nan_key_type */
++	__le16 wtbl_idx;
++	u8 init;
++	u8 key_exist;
++	u8 is_nmi_tk;
++	u8 reserved0;
++
++	u8 local_addr[ETH_ALEN];
++	u8 peer_addr[ETH_ALEN];
++
++	union {
++		u8 nmi_key_idx;
++		u8 ndi_idx;
++		u8 mc_rx_idx;
++	};
++	u8 algorithm_id;
++	u8 key_id;
++	u8 key_len;
++
++	u8 key_rsc[NAN_PACKET_NUMBER_LEN];
++	u8 reserved1[2];
++	u8 key_material[32];
 +} __packed __aligned(4);
 +
-+/* NAN Low Power Control Event */
-+struct mt7925_nan_lowpower_ctrl_evt {
-+	u8 peer_sch_record_tx_map;
-+	u8 reserved[7];
-+} __packed __aligned(4);
+ /* NAN Low Power Control Command */
+ struct mt7925_nan_lowpower_ctrl_tlv {
+ 	__le16 tag;
+@@ -514,6 +561,31 @@ void mt7925_nan_mcu_event(struct mt792x_dev *dev, struct sk_buff *skb);
+ 
+ int mt7925_nan_send_lowpower_ctrl_cmd(struct mt792x_dev *dev, bool enable);
+ 
++/**
++ * struct mt7925_nan_key_info - key material for mt7925_nan_manage_key_cmd
++ * @algo_id:  firmware cipher algorithm ID (from mt7925_mcu_get_cipher())
++ * @key_id:   key index (1-2 for GTK, 4-7 for IGTK/BIGTK)
++ * @key_len:  key material length in bytes (16 or 32)
++ * @key_data: key bytes; must be non-NULL for SET_KEY operations
++ * @pn:       6-byte packet number / RSC; only used for MC_MGMT_RX_KEY,
++ *            pass NULL for all other key types
++ */
++struct mt7925_nan_key_info {
++	u8 algo_id;
++	u8 key_id;
++	u8 key_len;
++	const u8 *key_data;
++	const u8 *pn;
++};
 +
- int mt7925_nan_update_phy_setting(struct mt792x_dev *dev);
- 
- struct ieee80211_chanctx_conf *
-@@ -496,6 +512,8 @@ int mt7925_nan_change_configure(struct ieee80211_vif *vif,
- 
- void mt7925_nan_mcu_event(struct mt792x_dev *dev, struct sk_buff *skb);
- 
-+int mt7925_nan_send_lowpower_ctrl_cmd(struct mt792x_dev *dev, bool enable);
++int mt7925_nan_manage_key_cmd(struct mt792x_dev *dev,
++			      enum mt7925_nan_key_operation key_op,
++			      enum mt7925_nan_key_type key_type,
++			      u16 wtbl_entry,
++			      const u8 *local_addr,
++			      const u8 *peer_addr,
++			      const struct mt7925_nan_key_info *key);
 +
  void mt7925_nan_local_sched_changed(struct mt792x_dev *dev,
  				    struct ieee80211_vif *vif);
  
-diff --git a/drivers/net/wireless/mediatek/mt76/mt792x.h b/drivers/net/wireless/mediatek/mt76/mt792x.h
-index 4753ec20fe0c..cc6eb1562b5f 100644
---- a/drivers/net/wireless/mediatek/mt76/mt792x.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt792x.h
-@@ -188,6 +188,13 @@ struct mt792x_nan {
- 
- 	/* Connection index bitmap, up to NAN_MAX_CONN_CFG peers */
- 	unsigned long conn_bitmap;
-+
-+	/*
-+	 * Set when firmware reports an active peer schedule via
-+	 * NAN_UNI_EVENT_LOWPOWER_CTRL; cleared once the re-enable command
-+	 * has been sent on resume.
-+	 */
-+	bool lowpower_mode;
- };
- 
- struct mt792x_vif {
 -- 
 2.43.0
 
