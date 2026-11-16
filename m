@@ -2,73 +2,73 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id A4723606A322
-	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Nov 2026 16:28:03 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id CECA8606A32C
+	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Nov 2026 16:33:19 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=lSo7T5JZ;
-	dkim=pass (2048-bit key) header.d=disroot.org header.i=@disroot.org header.a=rsa-sha256 header.s=mail header.b=DrWFQCUZ
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=fO7mDb6e;
+	dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=VrnrA0DP
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Unsubscribe-Post:
-	List-Owner; bh=2jBU5o2bkTGSmlvbTbsB7gQEFSTPAxXPYXkt03I97h4=; b=lSo7T5JZN1It4H
-	M8mpr6i291cGo0Mx/K1PqmWzugtUpiwFPRlrlztd4wp/+YQnGBxQPjLyfbGBt3eCUKHQrV2QycHAd
-	mAEBNhe7rv4JPGSvTkENg604yHm/cz6Rmmx+cTRmEzF4SxktfAsqk7aSahadK04tx0JIlwISWSs7d
-	VT+Ym87pbVDPy/q2K4KptS1cjfGlk2d97dUb5zQLg8fT9FHh+Mrcmt2zPF7z3gVC10AfsE2YECiWt
-	BlPL2YHmiC+ZtBljs7KUBI4KAUG/en5qpn/geqgfV2cJNEwXylwwMI/mG5da+u4hyE9fJWfo3jncq
-	21n73hjFrgG6lkO2cB7g==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Unsubscribe-Post:List-Owner;
+	bh=pD7prHhiJ8g/6FZtF/D8PiiXNhYA2KHBJ1gkM5psetQ=; b=fO7mDb6eQqWsE34AdDx6H/B6AW
+	Z9GOnqy1S/qeLVOHGVLOPvcxtyep/N27gzbQfARNzsukQ2aGb/DKsP1WBnveFaIoAlPqsZ9XVnfpg
+	4ZmUk+G904Z3BdSkJkPftyLyGOrAJxVwu3XZdghcoLuVH3/PkrF/a9RzcbLhIJqLhl4d7YJYKJmOt
+	+oiB7WP2i/2193WKFxA8g+LgeHL7KYjafsm5NEJ7tq0FekE0p+5Chw5j04zpwjxHQ8/UtdHKeHRQ/
+	BgXP/RK4iFeLL25scJvc3qAFrBE8Rqgr5na0/3AnDMVuxt1HO/M46/qPR/TXBaACCFIegKuGACP6M
+	RFkVeDEw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xSzYn-00000003Dj0-0gnX;
-	Mon, 16 Nov 2026 16:28:01 +0000
-Received: from layka.disroot.org ([178.21.23.139])
+	id 1xSzdv-00000003EfG-2MXZ;
+	Mon, 16 Nov 2026 16:33:19 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xSzYj-00000003Dh3-3KyA;
-	Mon, 16 Nov 2026 16:27:59 +0000
-Received: from mail01.layka.lan (localhost [127.0.0.1])
-	by disroot.org (Postfix) with ESMTP id 4F2AB808EB;
-	Mon, 16 Nov 2026 17:27:52 +0100 (CET)
-X-Virus-Scanned: SPAM Filter at disroot.org
-Received: from layka.disroot.org ([127.0.0.1])
- by localhost (disroot.org [127.0.0.1]) (amavis, port 10024) with ESMTP
- id uKkmEh0y6lrv; Mon, 16 Nov 2026 17:27:51 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=disroot.org; s=mail;
-	t=1794846471; bh=pILPvvNhNcniZXqO6U9udmiLgiJvcbsp+5tCyQ0iSDA=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References;
-	b=DrWFQCUZtaM/iwRuaQiyr0audWq+nwMBikIk9hjfhc8zvqlsmr5sOZUR+ALOuaS6f
-	 YCFfsHpYfBNb97a7NKH7ZKk9hkikOSwaZHMB8VtAtRItfaoq3+FAW1UjZhTycOymFU
-	 spBSaoGaTVD+hfjKzgyXVi1Iw0OCHcAEO7mHjsYhSkV+XYhvn+AYsKfStrKLP0mMNB
-	 6P3ue0rEov+GFGGOadzAJG6jds2PdK5RZzJgMPxnRCyK6r7SMpb8/f/Ty1a/8yOnij
-	 Y1wXXAbGmjcs0JRhzfqspv5NP+AXvven9xq0VvVv68qmCgs+6isCdbEVJ9C/4GmHAj
-	 PlcuEhlhWL5+w==
-From: Florian Maurer <fmaurer@disroot.org>
-To: Lorenzo Bianconi <lorenzo@kernel.org>
-Cc: Florian Maurer <fmaurer@disroot.org>,
-	Felix Fietkau <nbd@nbd.name>,
-	Ryder Lee <ryder.lee@mediatek.com>,
-	Shayne Chen <shayne.chen@mediatek.com>,
-	Sean Wang <sean.wang@mediatek.com>,
+	id 1xSzdu-00000003EeS-1fzQ;
+	Mon, 16 Nov 2026 16:33:18 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by tor.source.kernel.org (Postfix) with ESMTP id 6E50F61292;
+	Mon, 16 Nov 2026 16:33:17 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id E41001F000C4;
+	Mon, 16 Nov 2026 16:33:16 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1794846797;
+	bh=pD7prHhiJ8g/6FZtF/D8PiiXNhYA2KHBJ1gkM5psetQ=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To;
+	b=VrnrA0DP/p1+KjOsC8vMgMEU17+Cvb5TlrgTiKxQo4luy9v2Y3GnHDct3cGh5ilot
+	 mMVAirBCcjnN93hWGB16XyODO2SNhrZwa9bs3QHV0/FWLq6pETZqOF+fEXae7FL9Hg
+	 EkrW2NXYYkvwVrLQrDu+/st9wxetbJyq62f+ZPsqRx7fjeZiAx+JAF3wUXrWRVIY/c
+	 iJEOJ3ocH/EsTkrTh6yC//OHPp9GlD3yPVjNq4R0qU4YFSN+tYmVm1Kg5LI/ToATY+
+	 tlKQ2h/XU2wHFe2zGKBxy37W+Y0pYQOjJ+LeKXEZzl3cnXSt/KIdB0NK9uft90ZVVo
+	 yfHte0leQcGlA==
+Date: Mon, 16 Nov 2026 10:33:15 -0600
+From: Rob Herring <robh@kernel.org>
+To: Kyrie Wu <kyrie.wu@mediatek.com>
+Cc: Mauro Carvalho Chehab <mchehab@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-wireless@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org,
-	stable@vger.kernel.org
-Subject: Re: [PATCH wireless 1/2] wifi: mt76: npu: return rx slots to the NPU only after refilling them
-Date: Mon, 16 Nov 2026 16:27:38 +0000
-Message-ID: <20261116162741.2438098-1-fmaurer@disroot.org>
-In-Reply-To: <avrdu8qr9L2sEuTz@lore-desk>
-References: <cover.1793927986.git.fmaurer@disroot.org> <d6314f34e0965464207656d38a145490b6437aa5.1793927986.git.fmaurer@disroot.org> <au3igPTxdz3i64SO@lore-desk> <20261108205350.2956138-1-fmaurer@disroot.org> <avGnv8Jr7BAiQhG1@lore-desk> <avrdu8qr9L2sEuTz@lore-desk>
+	Bin Liu <bin.liu@mediatek.com>,
+	kyrie wu <kyrie.wu@mediatek.corp-partner.google.com>,
+	Hans Verkuil <hverkuil@kernel.org>,
+	irui wang <irui.wang@mediatek.com>,
+	Nicolas Dufresne <nicolas.dufresne@collabora.com>,
+	linux-media@vger.kernel.org, devicetree@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH v19 09/13] dt-bindings: soc: mediatek: Add MT8196 JPEG
+ SMMU
+Message-ID: <20261116163315.GA2488434-robh@kernel.org>
+References: <20261116013402.1273016-1-kyrie.wu@mediatek.com>
+ <20261116013402.1273016-10-kyrie.wu@mediatek.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261116_082758_252398_45572873 
-X-CRM114-Status: GOOD (  14.62  )
-X-Spam-Score: -2.1 (--)
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20261116013402.1273016-10-kyrie.wu@mediatek.com>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,54 +79,54 @@ List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-10.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-15.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,
-	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS autolearn=ham autolearn_force=no version=4.0.1
+	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=ham
+	autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On Mon, Nov 09, 2026 at 12:00:15PM +0100, Lorenzo Bianconi wrote:
-> q->head and q->tail are not the same when we have refilled the queue
-> with new buffers. Moreover, I think if mt76_npu_fill_rx_queue() fails
-> [...] it is not correct to use q->head for dma_idx
+On Mon, Nov 16, 2026 at 09:33:34AM +0800, Kyrie Wu wrote:
+> Document the dedicated MT8196 JPEG SMMU configuration syscon and its
+> GUSER_ID register block. JPEG decoder and encoder cores use this shared
+> register block to configure their SMMU stream IDs.
+> 
+> Signed-off-by: Kyrie Wu <kyrie.wu@mediatek.com>
+> ---
+>  .../mediatek/mediatek,mt8196-jpeg-smmu.yaml   | 41 +++++++++++++++++++
+>  MAINTAINERS                                   |  2 +
+>  2 files changed, 43 insertions(+)
+>  create mode 100644 Documentation/devicetree/bindings/soc/mediatek/mediatek,mt8196-jpeg-smmu.yaml
+> 
+> diff --git a/Documentation/devicetree/bindings/soc/mediatek/mediatek,mt8196-jpeg-smmu.yaml b/Documentation/devicetree/bindings/soc/mediatek/mediatek,mt8196-jpeg-smmu.yaml
+> new file mode 100644
+> index 000000000..2bc67a2af
+> --- /dev/null
+> +++ b/Documentation/devicetree/bindings/soc/mediatek/mediatek,mt8196-jpeg-smmu.yaml
+> @@ -0,0 +1,41 @@
+> +# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
+> +%YAML 1.2
+> +---
+> +$id: http://devicetree.org/schemas/soc/mediatek/mediatek,mt8196-jpeg-smmu.yaml#
+> +$schema: http://devicetree.org/meta-schemas/core.yaml#
+> +
+> +title: MediaTek MT8196 JPEG SMMU configuration registers
+> +
+> +maintainers:
+> +  - Kyrie Wu <kyrie.wu@mediatek.corp-partner.google.com>
+> +
+> +description:
+> +  The MT8196 JPEG SMMU configuration register block contains the GUSER_ID
+> +  fields used by the JPEG decoder and encoder hardware.
+> +
+> +properties:
+> +  compatible:
+> +    items:
+> +      - const: mediatek,mt8196-jpeg-smmu
+> +      - const: syscon
 
-You're right, q->tail it is. In my tests I could not tell your version
-and mine apart, so nothing speaks for head + 1.
+Trivial syscon's like this can go in syscon.yaml.
 
-> Can you please check the updated patch below?
-
-Sorry for the delay. I tested it on the W1700K (kernel 6.18.55, mt76
-467ae2e3) and it works: no oops, no rx stall.
-
-What I ran: your diff as posted, plus read-only counters that write
-nothing to the descriptors. Load was 62 minutes of iperf3 from an
-ath11k mesh peer at 113-259 Mbit/s, with four busy loops at nice -20
-on the W1700K for 3 s every 18 s. In that time:
-
-- 61.9 M frames on MT_RXQ_NPU1, 1.88 M on MT_RXQ_NPU0, of which 227781
-  span two slots
-- no oops, no page_pool warning
-- no descriptor that changed between consume and refill
-- no refill failure, no skb failure, no tx-free parse error
-
-Tested-by: Florian Maurer <fmaurer@disroot.org>
-
-I found another issue of the NPU while testing, so this took me some
-time as well:
-In one minute, 226 multi-slot frames in a row did not end on the slot
-with LAST. Slots of the rx ring go missing under this kind of load (I
-suspect the NPU drops them), and counting slots by PKT_COUNT then
-assembles the following frames one slot off, in your version and in
-mine. I think tx-free events are lost the same way.
-I will post it as a separate [BUG] report in the next days.
-
-Optional: in my tree I made the poll report the budget as used when
-the skb allocation fails, so napi polls again instead of waiting for
-an interrupt. It never triggered here.
-
-Please post your patch with the Tested-by. My 2/2 can be dropped.
-
-Thanks,
-Florian
+Rob
 
