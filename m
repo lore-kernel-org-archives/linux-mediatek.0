@@ -2,79 +2,93 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id D0CD0606A888
-	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Nov 2026 15:11:29 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id CF8B2606A323
+	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Nov 2026 15:14:18 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=THqpLc1E;
-	dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=JdFXYXi0
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=o9aCiQWt;
+	dkim=pass (2048-bit key) header.d=bootlin.com header.i=@bootlin.com header.a=rsa-sha256 header.s=dkim header.b=hrhqEx4T
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Unsubscribe-Post:
-	List-Owner; bh=NFaRubGQ2uSM82AzOw+nsHIeODCdYiKnFpnw0Wrcf/c=; b=THqpLc1EmDVuJm
-	muDEcJYa7gf45g1lio/TCk3Wr9CghWEXilPlVtIuP9GbQmyY8H+yp/Wr4ShzMvsSfD9rNIocdhCDU
-	mQsqGr8lyufck1TkFkgl2qyZViuxUIew2Rnc0BfdpNC3NebpVSzhTbHBMMY6dpT8CjJMxKlgTMfZI
-	mFGZJRLzeLtgJ+AsLwF4U0rT+AipjM0UVQ4fueRjsqpHur5WXE/aM+/5Kp3lEyBZBxeDafycxZb81
-	aZrYm1Cm7UduE2NBzn4Epu1L1GiNt6uNbrebrITpgjrtEGbOJxKhfbu3rNjvnA1ILJ4cIL53CqP0c
-	XCER2QmbwNlTO4fTY0Xg==;
+	List-Owner; bh=3/EqQi0niERAJNyYMq1hZvt8inmcWvBEwiXFS+iUL0s=; b=o9aCiQWtXvMU0Y
+	rKRSiq+IysfrP0ht9/LM1rxKFTqlpg89cFD0zjsOy/NangRteMs6gbOc8bkgDCGn2ArktuidmzvV4
+	JrjZjiBGEV81+ejq0CvHR9KsvYQJYTn+I2DSVha+uXTaNfc0PerFWI6q4gBakjmq/b/MlDRW9GUq1
+	d4RwePNqWYZCwhD+lWgYzW/WZd9LUk8POdYRhRc/2X6AE3iODRw1tGA6WwMsRE2YDd3JTnONFkvy6
+	iFOaeUugHwfGq1n8Cunj14sjY3fHADC8/cIP4B8vzXXYMWbqfzY/FrqxEb9+EdQ5afFif4lae6dfE
+	/vNYujSK88i8Feo4b64w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xSyMj-0000000308e-2Al1;
-	Mon, 16 Nov 2026 15:11:29 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1xSyPS-000000030nq-27Gf;
+	Mon, 16 Nov 2026 15:14:18 +0000
+Received: from smtpout-04.galae.net ([185.171.202.116])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xSyMf-0000000306i-0LSh
+	id 1xSyPO-000000030lY-3ox6
 	for linux-mediatek@lists.infradead.org;
-	Mon, 16 Nov 2026 15:11:25 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 3E83A62D8E
-	for <linux-mediatek@lists.infradead.org>; Mon, 16 Nov 2026 15:11:24 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id E46D61F000CC
-	for <linux-mediatek@lists.infradead.org>; Mon, 16 Nov 2026 15:11:23 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1794841883;
-	bh=NFaRubGQ2uSM82AzOw+nsHIeODCdYiKnFpnw0Wrcf/c=;
-	h=References:In-Reply-To:From:Date:Subject:To:Cc;
-	b=JdFXYXi0sztEjaW0m29nlrJdi9t2WrR8uv3y83FxfqQx/yVCZfOBLIdKv7hPG/903
-	 TTRzbw1hTVkIFQWTDBpUSkupm7eW6t/ahEultY759TMx444M05wpcJLkWObh6ryWQ8
-	 VkqX8noN1+2uYk0ET8OuVKjjNwD1bYTh9sEL26m/uBsfExN+kyBZXetFYJJZ/9Rvwn
-	 vIvaeRl2JvgbGBPCErKH5LN0fF1IT+xmWocjpNlLF999YxihcGGmw4prYDbtSmVPTD
-	 CnqQ+AIgUSEbxAyEBhRRY5qSUGxYbCyJ3YowiQGPUCVrQ3/2bDksSbYxBjIbGp/ebM
-	 j81/uLJoR5iIw==
-Received: by mail-dl1-f42.google.com with SMTP id a92af1059eb24-15ea896ddc8so5349269c88.0
-        for <linux-mediatek@lists.infradead.org>; Mon, 16 Nov 2026 07:11:23 -0800 (PST)
-X-Forwarded-Encrypted: i=1; AL+hErE0Imm9ihdLRuB5/35Ixt5pV+LiWjn/uMsfLA66ywJXwXAmPB6KPb1FTgxThKQKbwBXKMk9hv3qNaHCOp9EhA==@lists.infradead.org
-X-Gm-Message-State: APuU4Z/9fmk/HPAKBmtJLDgzn0eCS431ISCvaLJhoBXdhg3r7qA0UWkI
-	+VDSNpAlJKQhLb42bBqKlL/FJvG//mCyIwh+nbA/F94loh545P1CzTnH5rAGtoKCFQQydsB1anL
-	lfxccgpEv6HPBBUpglpMU/3pczsBFrA==
-X-Received: by 2002:a05:7022:ea24:b0:1a9:e382:cedc with SMTP id
- a92af1059eb24-1b5030fb905mr11645158c88.46.1794841883321; Mon, 16 Nov 2026
- 07:11:23 -0800 (PST)
+	Mon, 16 Nov 2026 15:14:16 +0000
+Received: from smtpout-01.galae.net (smtpout-01.galae.net [212.83.139.233])
+	by smtpout-04.galae.net (Postfix) with ESMTPS id 6F856C4EFD7;
+	Mon, 16 Nov 2026 15:14:14 +0000 (UTC)
+Received: from mail.galae.net (mail.galae.net [212.83.136.155])
+	by smtpout-01.galae.net (Postfix) with ESMTPS id 5EAA66023F;
+	Mon, 16 Nov 2026 15:14:10 +0000 (UTC)
+Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id 4C02C11BC183B;
+	Mon, 16 Nov 2026 16:13:53 +0100 (CET)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=dkim;
+	t=1794842044; h=from:subject:date:message-id:to:cc:mime-version:content-type:
+	 content-transfer-encoding:content-language:in-reply-to:references;
+	bh=3/EqQi0niERAJNyYMq1hZvt8inmcWvBEwiXFS+iUL0s=;
+	b=hrhqEx4T9QQ2tYqo/iy/LuHHWtedSZ9onNfveWjQEAHCqavnOAmS/ZBSwa0pXuUaWeGFoE
+	JGCYD0UbYierkaXyh0sZ3XHSFY7px3bitUZsQ7cefgjxtV9TKEdgN+UnSHWYcazeLuMLRa
+	y0D43nUuTbTvY1O4ahIhQ5AZdq9uNR1fET/1oCNLS/AAxHecGpl9Xo3GRN04KMCeM/FXbo
+	HdGlvhmVr4WZLcCCC0L84Q/igHfDx5fj09IetVv+8GoiA2nGgWVaET5ZXXgFEdDbgLj2nO
+	8YrbUgEfY4SbQ1e7+mgn6uxvPcnpTlwq48fuftp1BeekqTdBgBbdTLkzAUhHxA==
+Message-ID: <dfe3ce17-8153-4cd1-b9df-fe0d61cec9c4@bootlin.com>
+Date: Mon, 16 Nov 2026 16:13:52 +0100
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-References: <20260924083456.461815-1-peng.fan@oss.nxp.com> <57deb2ae1a6235e9e0b84458ee228b1ce8ed418a.camel@mediatek.com>
-In-Reply-To: <57deb2ae1a6235e9e0b84458ee228b1ce8ed418a.camel@mediatek.com>
-From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
-Date: Mon, 16 Nov 2026 15:11:10 +0000
-X-Gmail-Original-Message-ID: <CAAOTY_8Kuqod1ahnK4enW_qtUcTo6mhZdQiUnsO4tr3YW+7erw@mail.gmail.com>
-X-Gm-Features: AclHuK87v-swgB4tyftV1cjviFzSnuNyxXDhT4UWABAFzKQ_MREyYceQWgdsnHc
-Message-ID: <CAAOTY_8Kuqod1ahnK4enW_qtUcTo6mhZdQiUnsO4tr3YW+7erw@mail.gmail.com>
-Subject: Re: [PATCH] drm/mediatek: hdmi: use regmap_assign_bits() for
- conditional set/clear
-To: =?UTF-8?B?Q0sgSHUgKOiDoeS/iuWFiSk=?= <ck.hu@mediatek.com>
-Cc: "peng.fan@oss.nxp.com" <peng.fan@oss.nxp.com>, "p.zabel@pengutronix.de" <p.zabel@pengutronix.de>, 
-	"chunkuang.hu@kernel.org" <chunkuang.hu@kernel.org>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	"airlied@gmail.com" <airlied@gmail.com>, "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>, 
-	"simona@ffwll.ch" <simona@ffwll.ch>, "peng.fan@nxp.com" <peng.fan@nxp.com>, 
-	"dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>, 
-	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, 
-	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>, 
-	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+User-Agent: Betterbird (Linux)
+Subject: Re: [PATCH RFC v3 0/8] Add support for DisplayPort link training
+ information report
+To: Jani Nikula <jani.nikula@linux.intel.com>,
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
+ David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
+ Rodrigo Vivi <rodrigo.vivi@intel.com>,
+ Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
+ Tvrtko Ursulin <tursulin@ursulin.net>,
+ Andrzej Hajda <andrzej.hajda@intel.com>,
+ Neil Armstrong <neil.armstrong@linaro.org>, Robert Foss <rfoss@kernel.org>,
+ Laurent Pinchart <Laurent.pinchart@ideasonboard.com>,
+ Jonas Karlman <jonas@kwiboo.se>, Jernej Skrabec <jernej.skrabec@gmail.com>,
+ Luca Ceresoli <luca.ceresoli@bootlin.com>,
+ Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+ Philipp Zabel <p.zabel@pengutronix.de>,
+ Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Dmitry Baryshkov <lumag@kernel.org>, Daniel Stone <daniels@collabora.com>,
+ Manasi Navare <navaremanasi@google.com>
+Cc: Thomas Petazzoni <thomas.petazzoni@bootlin.com>,
+ Mark Yacoub <markyacoub@google.com>, Sean Paul <seanpaul@google.com>,
+ Drew Davenport <ddavenport@google.com>,
+ Louis Chauvet <louis.chauvet@bootlin.com>, dri-devel@lists.freedesktop.org,
+ linux-kernel@vger.kernel.org, intel-gfx@lists.freedesktop.org,
+ intel-xe@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
+ linux-arm-kernel@lists.infradead.org
+References: <20261012-feat_link_cap-v3-0-7517f4aba0f3@bootlin.com>
+ <51ec15feef9a88e460ab6fefc48b5b982f4857c0@intel.com>
+From: Kory Maincent <kory.maincent@bootlin.com>
+Content-Language: en-US
+In-Reply-To: <51ec15feef9a88e460ab6fefc48b5b982f4857c0@intel.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-Last-TLS-Session-Version: TLSv1.3
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20261116_071415_113262_4F977ACD 
+X-CRM114-Status: GOOD (  30.88  )
+X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -85,37 +99,114 @@ List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-15.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-5.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,
-	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,MAILING_LIST_MULTI,
-	MENTIONS_GIT_HOSTING,SPF_HELO_NONE,SPF_PASS autolearn=ham
-	autolearn_force=no version=4.0.1
+	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS autolearn=no autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Applied to mediatek-drm-next [1], thanks.
 
-[1] https://git.kernel.org/pub/scm/linux/kernel/git/chunkuang.hu/linux.git/=
-log/?h=3Dmediatek-drm-next
 
-Regards,
-Chun-Kuang.
+On 11/16/26 14:10, Jani Nikula wrote:
+> On Mon, 12 Oct 2026, Kory Maincent <kory.maincent@bootlin.com> wrote:
+>> DisplayPort link training negotiates the physical-layer parameters needed
+>> for a reliable connection: lane count, link rate, and optionally Display
+>> Stream Compression (DSC). Currently, each driver exposes this state in
+>> its own way, often through driver-specific debugfs entries, with no
+>> standard interface for userspace diagnostic and monitoring tools.
+>>
+>> This series introduces generic helpers, for exposing DP link capabilities
+>> and state as standard sysfs entries.
+> 
+> So how did we end up with sysfs here?
 
-CK Hu (=E8=83=A1=E4=BF=8A=E5=85=89) <ck.hu@mediatek.com> =E6=96=BC 2026=E5=
-=B9=B410=E6=9C=8812=E6=97=A5=E9=80=B1=E4=B8=80 =E4=B8=8A=E5=8D=887:34=E5=AF=
-=AB=E9=81=93=EF=BC=9A
->
-> On Thu, 2026-09-24 at 16:34 +0800, Peng Fan (OSS) wrote:
-> > From: Peng Fan <peng.fan@nxp.com>
-> >
-> > Replace multiple if/else blocks using regmap_set_bits()/regmap_clear_bi=
-ts()
-> > with the simpler regmap_assign_bits() calls throughout the HDMI v2 driv=
-er.
->
-> Reviewed-by: CK Hu <ck.hu@mediatek.com>
->
-> >
-> > Signed-off-by: Peng Fan <peng.fan@nxp.com>
-> > ---
+In the first RFC it was in DRM properties. I presented it in the display 
+hackfest in Nice last years. People suggested to use sysfs instead but 
+if the need appears later in the development move back to DRM 
+properties. I first though DRM properties seems better as it is the user 
+interface used by distros but I had no strong argument about the change 
+to sysfs, so I moved on to it.
+
+>> The aim of such development is to guide users to select the most suitable
+>> DisplayPort connector for their needs. For example, if you have a USB-C
+>> hub with lesser capabilities than your computer’s native DisplayPort
+>> connector (such as HBR2 versus HBR3 support), the system could recommend
+>> connecting high-resolution displays directly to the computer’s port
+>> instead of through the hub to ensure optimal performance.
+> 
+> I do wonder how all this is supposed to work in more complex real world
+> scenarios, though.
+> 
+> I believe the user primarily cares about *modes*. Which display modes
+> can be used with each display/connector pair.
+> 
+> With the low level link information, are you proposing to compute the
+> required bandwidth for modes in userspace? I think it's going to be a
+> lot of work to compute the bandwidth requirements, taking into account
+> DP SST vs. MST vs. UHBR and DSC and bit depth and everything, and you'll
+> still miss any driver/GPU specific contraints. Or are you just proposing
+> to match the physical characteristics only?
+
+This is a requirement from Google, yes they want to compute the 
+bandwidth for modes in the userspace side.
+@Manasi could describe in detail how would you implement it?
+
+> Given all the connectors and displays and their modes on a system, you
+> could estimate a) for each display, what modes could be used on each
+> connector, and b) for each connector, what modes could be used on a
+> display, if connected. From the user POV, they could be shown why some
+> display mode is not available on the current connector, and crucially,
+> on which connector it could be available.
+> 
+> In general, I'm wondering if you're really after higher level
+> information, something like "connector max available bandwidth
+> with/without DSC", that would more directly map to the user needs as I
+> see them than low level link details.
+> 
+> Do you have the userspace somewhere? That's needed for merging UABI
+> anyway [1].
+> 
+> [1] https://docs.kernel.org/gpu/drm-uapi.html#open-source-userspace-requirements
+
+I wanted to add it to IGT GPU tools, but I was hopping for community 
+review on this RFC before the IGT development.
+
+>> The new drm_dp_source_set_caps and drm_dp_sink_set_caps helper expose
+>> source and sink training capabilities to userspace via sysfs attributes
+>> under dp_link. Finally drm_dp_set_cur_link_params helper is provided to
+>> report current link information at runtime.
+>>
+>> Three drivers are updated as reference implementations: i915 (direct
+>> connector path), ANX7625 and MediaTek (via the bridge connector framework
+>> using a new DRM_BRIDGE_OP_DP flag).
+>>
+>> Here is a sysfs example:
+>>
+>> cur_link_info_dsc            sink_link_caps_nlanes
+>> cur_link_info_link_rate      source_link_caps_dsc
+>> cur_link_info_nlanes         source_link_caps_link_rates
+>> sink_link_caps_dsc           source_link_caps_nlanes
+>> sink_link_caps_link_rates
+>>
+>> 1620000 2160000 2700000 3240000 4320000 5400000
+>>
+>> 1620000 2700000 5400000 10000000 20000000
+>>
+>> 5400000
+>>
+>> This series is rebased on top of drm-misc and may conflict with the
+>> current state of the drm i915 tree. Which tree should pick this up,
+>> given that it mixes core development with driver changes?
+> 
+> For development, please just base your work on top of drm-tip, and the
+> tree(s) will be sorted out later.
+
+Oh, ok, thanks you.
+
+-- 
+Köry Maincent, Bootlin
+Embedded Linux and kernel engineering
+https://bootlin.com
+
 
