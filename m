@@ -2,90 +2,72 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 12A6C606A32A
-	for <linux-mediatek@archiver.kernel.org>; Tue, 17 Nov 2026 00:30:34 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 9229C606A32A
+	for <linux-mediatek@archiver.kernel.org>; Tue, 17 Nov 2026 01:00:28 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=H5YqtLoX;
-	dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com header.a=rsa-sha256 header.s=Intel header.b=bVa5B6Fk
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=2wuOmdXM;
+	dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=PSXHPF7s
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Unsubscribe-Post:List-Owner;
-	bh=U2B/uabe/QmuXvbvHoYk8ZWVeldXL8jP6hg7gbVv3cw=; b=H5YqtLoXeYwuDZjeGqR2ATrQkE
-	qjI3cet9U93f8eYToej149ZWZh7kbRyMhKDUayWQvfI/l+z80TYJRJ4QxyTjIovkraz258JbIx8uy
-	7GAvsFjpNqeHzXBIuzz1Z8TroPN06eNPZe845SRjEYQDEbLdHRJ//Smqi2rssAt/JEx8267WwEHSr
-	kdP/qQaoBHm0G6cVuRjSXX5BEIUOnZDp5ubz8oFGU1/DHR7pveO/uY53RSaFeQ/laa7tsnW7l9mWU
-	B2KJO5mtKXLIhDakNPyRuUPAP3rXZml5ZN/gzOWE57rw+eXGskMCGkFvs4WVlXZr1P2xetIvJQ1eu
-	h+a8oOXQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Unsubscribe-Post:
+	List-Owner; bh=bgSIbrhhX1M1S/mhIphweUgHFMz7lfbrdfHFK5Cb/eE=; b=2wuOmdXMl6UVsi
+	j73k8XlRRNjeEj/pjkzAIfsUkOvlLhuaYownlHCxh1pEUU9GECze4ZCCwVGvJObX8DflEJOHVO5sy
+	BZvC5ob/0F+gcPVJS0ErCbEsxnHsZK0AHhC7UzD9YEY36ecu47pS0r0ket9BQy+32IPTHLGwl2ys3
+	zl1WebIhekwMZSA87C1X4X4xQ5BXwKdbCFqDl27wTGHvpzEYJo0v0xLuOihVC3eL5PP3Cj7mjUwXs
+	Hlcq05w1maBx1eP+9IrVRYnN7sM7gMTIhCyCUAd1XRKEpQuFgLtObDPNrn9JpC50UYtqxc8M7sgCI
+	td3iXfmGmJx00t0k1oCg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xT75l-00000004FJm-2dJ0;
-	Tue, 17 Nov 2026 00:30:33 +0000
-Received: from mgamail.intel.com ([198.175.65.18])
+	id 1xT7Yh-00000004HEx-3wlN;
+	Tue, 17 Nov 2026 01:00:27 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xT75h-00000004FJJ-201N;
-	Tue, 17 Nov 2026 00:30:31 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1794875430; x=1826411430;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:in-reply-to;
-  bh=8gVBDSdO3QnCkbysAcQxx5Ix2FP39pCUquIV8ycUM/c=;
-  b=bVa5B6FkZc3FATLee3gi6j+7zpToy7+A0TfEO9buYzgkHE7tC68MsftA
-   B/Jnp/ELJmlc3Ol8mj23D+WiGSDHGirFbwPeI5SZec8xWRlFc3oSzBvbq
-   iOsJfasWqIKu/tCfArKBkCEnF/VmgGz9wOaN6qXWO3fQEcMiuvM3S3qZo
-   dq1fXZUgDEjmqz2FROuK7Rn6h6bz8zwOQfzDgHVGcZ7+pcG9zOCc2TAP5
-   yRWtzq6pE43mG2ibcdSRHaJn8VwRrM4jCjPEon9RG2d4frmWtnggPdJqO
-   vUE0hZ5uWnnI9sNfnmgPMfwz/00MGYAJCOJHWb183Lt++/n3FWHrNvdf3
-   Q==;
-X-CSE-ConnectionGUID: yT63m84BR2WPfu4ajj9n/g==
-X-CSE-MsgGUID: S1Q2F6/TT3KYgYJ9lNXG8w==
-X-IronPort-AV: E=McAfee;i="6800,10657,11968"; a="3648161"
-X-IronPort-AV: E=Sophos;i="6.27,217,1787036400"; 
-   d="scan'208";a="3648161"
-Received: from orviesa008.jf.intel.com ([10.64.159.148])
-  by orvoesa110.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 16 Nov 2026 16:30:28 -0800
-X-CSE-ConnectionGUID: VAgfbtYiRm+5yRsw4auy4A==
-X-CSE-MsgGUID: fNNJQyq1Ri65VGTx7OzBtg==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.27,217,1787036400"; 
-   d="scan'208";a="9479561"
-Received: from lkp-server01.sh.intel.com (HELO 0caa9d2d175c) ([10.239.97.150])
-  by orviesa008.jf.intel.com with ESMTP; 16 Nov 2026 16:30:23 -0800
-Received: from kbuild by 0caa9d2d175c with local (Exim 4.98.2)
-	(envelope-from <lkp@intel.com>)
-	id 1xT75X-000000019f5-0w2K;
-	Tue, 17 Nov 2026 00:30:19 +0000
-Date: Tue, 17 Nov 2026 08:30:15 +0800
-From: kernel test robot <lkp@intel.com>
-To: Caleb James DeLisle <cjd@cjdns.fr>, netdev@vger.kernel.org
-Cc: llvm@lists.linux.dev, oe-kbuild-all@lists.linux.dev, andrew@lunn.ch,
-	olteanv@gmail.com, davem@davemloft.net, edumazet@google.com,
-	kuba@kernel.org, pabeni@redhat.com, robh@kernel.org,
-	krzk+dt@kernel.org, conor+dt@kernel.org, matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com, chester.a.unal@arinc9.com,
-	daniel@makrotopia.org, linux@armlinux.org.uk, arinc.unal@arinc9.com,
-	Landen.Chao@mediatek.com, dqfext@gmail.com, sean.wang@mediatek.com,
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, naseefkm@gmail.com,
-	b.larsson@gmx.com, Caleb James DeLisle <cjd@cjdns.fr>
-Subject: Re: [net-next v5 3/7] net: dsa: mediatek: add support for
- passthrough mode
-Message-ID: <202611170845.l4X9RRsI-lkp@intel.com>
-References: <20261116183332.168858-4-cjd@cjdns.fr>
+	id 1xT7Yf-00000004HEU-1WUH;
+	Tue, 17 Nov 2026 01:00:26 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by sea.source.kernel.org (Postfix) with ESMTP id DF3A541A06;
+	Tue, 17 Nov 2026 01:00:24 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1D3221F000C4;
+	Tue, 17 Nov 2026 01:00:22 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1794877224;
+	bh=bgSIbrhhX1M1S/mhIphweUgHFMz7lfbrdfHFK5Cb/eE=;
+	h=From:To:Cc:In-Reply-To:References:Subject:Date;
+	b=PSXHPF7spIVqe2ztBNDDhOyYVVdgDBOHFwE50CSUKJP/2nwXXWyJklRJOhCdEj6HQ
+	 iPZooWFYCdvtK3lEDbYKgpvpWu++UIHhC0Kcxb04kS4rlzrgKlAEF7JY3kCW/+r+xX
+	 NLgumWSFFMKlBgBlqxlizlycsYAwGc1yKgUj6Lg8wFoHOpZFfoXVDqnZwKSfufBV30
+	 9E6AzsxjvDLpoh4+IcM116kHk5mja0+V8XEX1J5UvlxFt/BPJs52DpeZ6J74Z8BcIp
+	 SXjMgGE0dvaod3eD4zSUV59LAygTs8n0PcY9MPMxipOfIJ3lyx9O6ptBdUDy7MLMer
+	 30FpotCBC8xYA==
+From: Mark Brown <broonie@kernel.org>
+To: Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Leilk Liu <leilk.liu@mediatek.com>, Rui Cao <i@udp0.com>
+Cc: linux-spi@vger.kernel.org, linux-kernel@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+ stable@vger.kernel.org
+In-Reply-To: <20261107-mt65xx-qos-fix-v1-1-9d9c16a584e4@udp0.com>
+References: <20261107-mt65xx-qos-fix-v1-1-9d9c16a584e4@udp0.com>
+Subject: Re: [PATCH] spi: mt65xx: Remove the CPU latency QoS request when
+ probe fails
+Message-Id: <179486355915.2504946.5816262629767344458.b4-ty@b4>
+Date: Mon, 16 Nov 2026 21:12:39 +0000
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20261116183332.168858-4-cjd@cjdns.fr>
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261116_163029_931862_076D588C 
-X-CRM114-Status: GOOD (  10.60  )
-X-Spam-Score: -4.4 (----)
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+X-Mailer: b4 0.17-dev
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1137; i=broonie@kernel.org;
+ h=from:subject:message-id; bh=ueKoG72WP0KE1M/J03C8AU5NedkldPwySMm1P4vDO9M=;
+ b=owGbwMvMwCWm/754w+YLFp2Mp9WSGLJ+L1fdF3Ncc+Ole4JbK9bpNv+1eNVoOnsNn4TyBMfoF
+ 0cc70293lHKwiDGxSArpsgSl8X9sr7k9Rq+gwvbYOawMoEMYeDiFICJqO9l+Gcn8Ozcvwsfj8+4
+ 8+XP9W2bZM+XZL1mSpV8qsLfK13NfWsXI8NTO9MfSvs05/O2dExeELatWiat17E/5IbBku/V2cc
+ SlFkB
+X-Developer-Key: i=broonie@kernel.org; a=openpgp;
+ fpr=3F2568AAC26998F9E813A1C5C3F436CA30F5D8EB
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -96,38 +78,43 @@ List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-10.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,
+X-Spam-Status: No, score=-12.3 required=3.0 tests=BAYES_00,DATE_IN_PAST_03_06,
+	DKIMWL_WL_HIGH,DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,
 	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,
-	SPF_HELO_NONE,SPF_PASS autolearn=ham autolearn_force=no version=4.0.1
+	SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no
+	version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Hi Caleb,
+On Sat, 07 Nov 2026 18:13:43 +0800, Rui Cao wrote:
+> spi: mt65xx: Remove the CPU latency QoS request when probe fails
 
-kernel test robot noticed the following build warnings:
+Applied to
 
-[auto build test WARNING on 7ccc5e05043b1bb84326b19a2b05938d8f7a2ae6]
+   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/spi.git for-7.5
 
-url:    https://github.com/intel-lab-lkp/linux/commits/Caleb-James-DeLisle/net-dsa-mt7530-get-ctrl-phy-addr-using-a-function/20261116-183326
-base:   7ccc5e05043b1bb84326b19a2b05938d8f7a2ae6
-patch link:    https://lore.kernel.org/r/20261116183332.168858-4-cjd%40cjdns.fr
-patch subject: [net-next v5 3/7] net: dsa: mediatek: add support for passthrough mode
-config: arm-randconfig-1003-20261117 (https://download.01.org/0day-ci/archive/20261117/202611170845.l4X9RRsI-lkp@intel.com/config)
-compiler: clang version 17.0.6 (https://github.com/llvm/llvm-project 6009708b4367171ccdbf4b5905cb6a803753fe18)
-reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20261117/202611170845.l4X9RRsI-lkp@intel.com/reproduce)
+Thanks!
 
-If you fix the issue in a separate patch/commit (i.e. not just a new version of
-the same patch/commit), kindly add following tags
-| Reported-by: kernel test robot <lkp@intel.com>
-| Closes: https://lore.kernel.org/oe-kbuild-all/202611170845.l4X9RRsI-lkp@intel.com/
+[1/1] spi: mt65xx: Remove the CPU latency QoS request when probe fails
+      https://git.kernel.org/broonie/spi/c/d4cb2717eb13
 
-All warnings (new ones prefixed by >>):
+All being well this means that it will be integrated into the linux-next
+tree (usually sometime in the next 24 hours) and sent to Linus during
+the next merge window (or sooner if it is a bug fix), however if
+problems are discovered then the patch may be dropped or reverted.
 
->> Warning: drivers/net/dsa/mt7530.c:1410 function parameter 'dp' not described in 'mt753x_upstream_port_index'
->> Warning: drivers/net/dsa/mt7530.c:1410 function parameter 'dp' not described in 'mt753x_upstream_port_index'
+You may get further e-mails resulting from automated or manual testing
+and review of the tree, please engage with people reporting problems and
+send followup patches addressing any issues that are reported if needed.
 
--- 
-0-DAY CI Kernel Test Service
-https://github.com/intel/lkp-tests/wiki
+If any updates are required or you are submitting further changes they
+should be sent as incremental updates against current git, existing
+patches will not be replaced.
+
+Please add any relevant lists and maintainers to the CCs when replying
+to this mail.
+
+Thanks,
+Mark
+
 
