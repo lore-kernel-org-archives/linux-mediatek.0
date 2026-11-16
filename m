@@ -2,116 +2,64 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id F0232606A31C
-	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Nov 2026 13:26:37 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 08322606A8BE
+	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Nov 2026 14:01:36 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=tsSoDgBx;
-	dkim=pass (1024-bit key) header.d=redhat.com header.i=@redhat.com header.a=rsa-sha256 header.s=mimecast20190719 header.b=M6KYcoS1
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=28TzTN5+;
+	dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=SRowMdmR
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Unsubscribe-Post:
-	List-Owner; bh=P0or60iH8KD6aVVIkNBvUiUCGLvpK7LSLC/zGWPxXoI=; b=tsSoDgBxG0cKkN
-	HGDZ6seH6xLIJfjKnhWWA3of4qNuXsjdZXlAukAjSUCbKiRoR9nfO5tJ90evnihBxOUax7mFPFKb9
-	04NveDurWsG6wnDK0+2LW7CNnXhi6lGYBBNgIpJprZ8N8RaSEZl8S+wCufUbUYHoLCquVkwnU8w3C
-	mat1cnk22W4eRX1C4wsdwLe9CelRNZ7QDIgAQXw3GD2Y3CuiiafYlyi+57C2ny8TG1TnHTzoQpkMy
-	nZwId9dqrHsmk7QQPGqDW+07p/aBfqbnKN3t5HDXC9CexwSxTp/mTd3ZLATCvua2Y/O9rfpmXDhOQ
-	lZx8e2FHX2z004sNjs9g==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Message-ID:Date
+	:Cc:To:From:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Unsubscribe-Post:List-Owner;
+	bh=AcI5O5MVmz/sMdzZjpcXmsQSI2YiMfU3J4R/RHPWjLk=; b=28TzTN5+dD8Nl4PnEehiyfk5vV
+	rI6IRjMYHKG3xgbgI8TNTL7QV0DaHMXGHe9LZX+BvPhIYaNgJ8YDwq+0DhCKZUm9Lq66LPjd/Dh6p
+	m19SRmZb5UXrwKmEqO2vQr3kCyhmSDEsAMBQIEr4mPF6tEjo8gb553CTIFzOtP7a+b6woucT+soA1
+	SDnYFzwAngp1RGZ7YYxx2DTQtXW3cdinHg18eZ7T3/8mPN/Vmf1eUgrSSNr0ihGx4A7eaUJu1Neoe
+	tHTIiVUy5uCoML/RDHBhC5fScX1LO/AtL7LsNO4Yi55fynsMb4gZ6qLxzj5+i3A8gDUbPjZWVNHGw
+	SeRt4ddg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xSwjF-00000002cqy-2uSM;
-	Mon, 16 Nov 2026 13:26:37 +0000
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+	id 1xSxH5-00000002kBr-2IV0;
+	Mon, 16 Nov 2026 14:01:35 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xSwj9-00000002cnV-2dqZ
-	for linux-mediatek@lists.infradead.org;
-	Mon, 16 Nov 2026 13:26:34 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
-	s=mimecast20190719; t=1794835590;
-	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
-	 to:to:cc:cc:mime-version:mime-version:content-type:content-type:
-	 content-transfer-encoding:content-transfer-encoding:
-	 in-reply-to:in-reply-to:references:references;
-	bh=P0or60iH8KD6aVVIkNBvUiUCGLvpK7LSLC/zGWPxXoI=;
-	b=M6KYcoS1WMUhwdFJjynDryK3oOMniFuqHTCgER7fSnyUVx1wBhxV/9J8gV1tQ2geZ0hyIS
-	eHbaqiCyCPYiBaITV+wzB/9BxsUGkifn9BOjTXt05+RqSA6rUuDKS3EoNMS/A84N/qzyCt
-	y//iO/PtCD/BDp9cIQcLdq/iXEPc5y8=
-Received: from mail-lj1-f198.google.com (mail-lj1-f198.google.com
- [209.85.208.198]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-680-kjOStoREMdmhzhcn8dZ9FA-1; Mon, 16 Nov 2026 08:25:00 -0500
-X-MC-Unique: kjOStoREMdmhzhcn8dZ9FA-1
-X-Mimecast-MFC-AGG-ID: kjOStoREMdmhzhcn8dZ9FA_1794835499
-Received: by mail-lj1-f198.google.com with SMTP id 38308e7fff4ca-3ae10702993so3127531fa.3
-        for <linux-mediatek@lists.infradead.org>; Mon, 16 Nov 2026 05:25:00 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1794835499; x=1795440299;
-        h=content-transfer-encoding:content-type:cc:to:subject:message-id
-         :date:from:in-reply-to:references:mime-version:x-gm-gg
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
-         :content-type;
-        bh=P0or60iH8KD6aVVIkNBvUiUCGLvpK7LSLC/zGWPxXoI=;
-        b=yDZPRKQwZDcgNxoHf6NKDPR2pzUx8IrFLc3rhpw6K46++pB0uvHuJLRaxWdMQq6tZg
-         eeXigP6ZSDIFOwcm0cnpQUit/INzyu/rJPiZ67Pbs24234YSwTqOnRECIZKxiOq8AFBG
-         mm9h/hIY86JMg4UDjcBMroWPhfn51TFJK53q/HSfSb5P+bwaJ2gsAsgQSVQnITkf/bJi
-         GlSA/j3wldkGZfZ4E18oEBpZPW7jGOf9/RkE5zaktgml7tsabiPs7vcLmyldKGZYlSUz
-         SbFVae1+uyHGirBqrOfW4exLfp+BYdY7sEplNyUlWTr0aTF/IVEhegMhmZfrueGLrcL/
-         cNRg==
-X-Forwarded-Encrypted: i=1; AL+hErF2G/vbOpY3xgefDVPUZZYSBoh5EtEHebxq5qSejxO9KbuYW+2/gSPiaDeDBCBxE+Af4FsikQvXFm5PhYr4fg==@lists.infradead.org
-X-Gm-Message-State: APuU4Z9Yov1WH1dZeBw/pRsTfWfcC6Iv0i/P5iEuwxh8Yfk4o6s4cGHu
-	ZLVGbLstXgMlyZ5wNAKaD1ISNl3DRyTJkRF6sEklq6fB8Agj8D1Qj5KPwRn3sGCWsfry+NLl2Pr
-	l4sPLaB+Ja73chPO5YXoNTGicvPEOBUwbN/cilIugQLbTxk8diLQyjC7yyns964sm5mGkTk43a5
-	fi+MheH0MEVIMuZqT3eUTUWQeXogqqtOjIV/D1JTsTbP5Gmt9V
-X-Gm-Gg: AYBFou2Y/HY6CbGtV0vOh5/FKJTZYO8H1QIIXd3InycKk+iB1OJ+Ys5lFg6nP+lFYHR
-	HcbhNOT/3+ROZQMwp82raC3TivqO8HlQzSeyboQS3bgh9d1AmiVBCmSicQgQ4+529/lHHI88y/a
-	6SmwyjJ1BCqAAMQWUqrfVS2Ayg9cOEisaWQkKpiHoRmmXKLImZZBDfqphD
-X-Received: by 2002:a05:651c:e112:20b0:3ab:1d67:caf with SMTP id 38308e7fff4ca-3ae2b394355mr26666181fa.0.1794835498850;
-        Mon, 16 Nov 2026 05:24:58 -0800 (PST)
-X-Received: by 2002:a05:651c:e112:20b0:3ab:1d67:caf with SMTP id
- 38308e7fff4ca-3ae2b394355mr26665691fa.0.1794835498182; Mon, 16 Nov 2026
- 05:24:58 -0800 (PST)
+	id 1xSxGz-00000002kAv-3i2F;
+	Mon, 16 Nov 2026 14:01:29 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by sea.source.kernel.org (Postfix) with ESMTP id 4D01B44D53;
+	Mon, 16 Nov 2026 14:01:29 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6A30E1F000C7;
+	Mon, 16 Nov 2026 14:01:28 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1794837689;
+	bh=AcI5O5MVmz/sMdzZjpcXmsQSI2YiMfU3J4R/RHPWjLk=;
+	h=Subject:From:To:Cc:Date:In-Reply-To:References;
+	b=SRowMdmRKr8bt0UEpVVKpzPHsooZjMsXJe387NrjH4YfbU1S9NOyc3XS2d9qhPsVe
+	 LVSh2mlGuM+enJFFeW/z9tYYc1xnmEgDEvcISNSUWFz2cLhToPG+8igZE73r948J8/
+	 jMOzB1NVzW135Cy5yMoAXrboWiWuI80TtQZwA8sRjevSTb5U6jIHxa1/n5aXMm9wCm
+	 kCpAIfuAT6h3+CK83Xjjr/b9AeySe0PYeHivvn1IYe8E4ycSQxK+1Y/Dhh/bWKX65S
+	 8E+QHrK2n8XFgqCCvH7Vz0Q9s/62NITzlaH9GnB0yOYTVLjfIzFhrlugwH1lqbu8mN
+	 btC/04tSUV3MA==
+Subject: Re: [PATCH net] net: ethernet: mtk_eth_soc: Fix potential PPE hash table leak
+From: netdev-bot+sashiko@kernel.org
+To: liguangshuo@mail.sdu.edu.cn
+Cc: nbd@nbd.name, lorenzo@kernel.org, andrew+netdev@lunn.ch,
+ davem@davemloft.net, edumazet@kernel.org, kuba@kernel.org, pabeni@redhat.com,
+ matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
+ netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
+Date: Mon, 16 Nov 2026 14:01:27 +0000
+Message-ID: <179483768794.3136.13845952044990808928@kernel.org>
+In-Reply-To: <20261112-88a3a7ff32-net-mtk@mail.sdu.edu.cn>
+References: <20261112-88a3a7ff32-net-mtk@mail.sdu.edu.cn>
+X-sashiko-severity: High
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-References: <20261114-b4-ufs-s32n7-v11-0-dc36e11919d5@oss.nxp.com>
-In-Reply-To: <20261114-b4-ufs-s32n7-v11-0-dc36e11919d5@oss.nxp.com>
-From: Enric Balletbo i Serra <eballetb@redhat.com>
-Date: Mon, 16 Nov 2026 14:24:45 +0100
-X-Gm-Features: AclHuK8HnePhPDPUHuce7pVJV7FFzGqggvZufNxDNXFt_WHCsNiK_-bsjhSBvsE
-Message-ID: <CALE0LRseQXtrDG3=QgXBgB33O+BBfyeSeKcHdDzL++VT6ocFXg@mail.gmail.com>
-Subject: Re: [PATCH v11 00/14] Add S32N79RDB UFS support
-To: larisa.grigore@oss.nxp.com
-Cc: "Martin K. Petersen" <mkp@kernel.org>, Alim Akhtar <alim.akhtar@samsung.com>, 
-	Bart Van Assche <bvanassche@acm.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
-	Conor Dooley <conor+dt@kernel.org>, Rob Herring <robh@kernel.org>, 
-	"James E.J. Bottomley" <James.Bottomley@hansenpartnership.com>, devicetree@vger.kernel.org, 
-	Ajay Neeli <ajay.neeli@amd.com>, Adrian Hunter <adrian.hunter@intel.com>, 
-	linux-arm-msm@vger.kernel.org, Peter Wang <peter.wang@mediatek.com>, 
-	linux-kernel@vger.kernel.org, NXP S32 Linux Team <s32@nxp.com>, 
-	Asutosh Das <quic_asutoshd@quicinc.com>, linux-arm-kernel@lists.infradead.org, 
-	Stanley Jhu <stanleyjhu@google.com>, Frank Li <Frank.Li@nxp.com>, imx@lists.linux.dev, 
-	linux-scsi@vger.kernel.org, Bean Huo <beanhuo@micron.com>, 
-	linux-mediatek@lists.infradead.org, linux-samsung-soc@vger.kernel.org, 
-	Pedro Sousa <pedrom.sousa@synopsys.com>, Baolin Wang <baolin.wang@linux.alibaba.com>, 
-	Peter Griffin <peter.griffin@linaro.org>, echanude@redhat.com, 
-	Chaotian Jing <chaotian.jing@mediatek.com>, 
-	Yoshihiro Shimoda <yoshihiro.shimoda.uh@renesas.com>, 
-	Sai Krishna Potthuri <sai.krishna.potthuri@amd.com>, Manivannan Sadhasivam <mani@kernel.org>, 
-	linux-rockchip@lists.infradead.org, Krzysztof Kozlowski <krzk@kernel.org>, clizzi@redhat.com, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Heiko Stuebner <heiko@sntech.de>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, Chunyan Zhang <zhang.lyra@gmail.com>, 
-	Can Guo <can.guo@oss.qualcomm.com>, Orson Zhai <orsonzhai@gmail.com>, aruizrui@redhat.com, 
-	linux-renesas-soc@vger.kernel.org
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: YDTYnUcSxAEyKipuz_xmLMz3r9vEupGsWTYMeSJXtV0_1794835499
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261116_052631_813592_7C10C4B8 
-X-CRM114-Status: GOOD (  43.99  )
-X-Spam-Score: -2.8 (--)
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -122,465 +70,184 @@ List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-15.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-10.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,
-	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=unavailable
-	autolearn_force=no version=4.0.1
+	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Hi Larisa,
+Thank you for your contribution! Sashiko AI review found 1 potential
+issue(s) to consider.
 
-Thank you for taking care of this
+Critical: 0 · High: 1 (2) · Medium: 0 · Low: 0
 
+If you believe none of the issues are legitimate, please reply to each
+issue of Medium severity or higher and explain why the AI is wrong.
+If any of them are legitimate and you plan to respin, please let patchwork
+know by including "pw-bot: cr" as a separate line at the end of your reply
+(one such reply per series is enough).
 
+- [High] The fix is incomplete.
 
-On Sat, Nov 14, 2026 at 12:57=E2=80=AFPM Larisa Grigore via B4 Relay
-<devnull+larisa.grigore.oss.nxp.com@kernel.org> wrote:
->
-> This series adds support for the UFS host controller found on the NXP S32=
-N79
-> platform. The controller is based on the Synopsys DesignWare (DWC) UFS ho=
-st
-> architecture and requires S32N79-specific M-PHY initialization/calibratio=
-n
-> sequence. It is compliant with JESD-223D "Universal Flash Storage Host
-> Controller Interface" v3.0, and supports up to HS-Gear 4 speed grade. It =
-is
-> compatible with UFS 2.1, 3.0 and 3.1 devices. The MIPI UniPro is complian=
-t with
-> "MIPI Alliance Specification for Unified Protocol", v1.8. The MIPI M-PHY =
-is
-> compliant to version 4.1.
->
-> In order to keep the S32N79 platform driver small and avoid duplicating c=
-ommon
-> DWC code across platform glue drivers, the series also refactors and expo=
-rts a
-> few reusable DWC helpers. In particular, M-PHY CREG (CBCREG*) register ac=
-cess
-> helpers and the shared M-PHY CR bitfield definitions are moved from the
-> existing AMD Versal2 glue driver into the common ufshcd-dwc layer, and ar=
-e then
-> used by the platform drivers. The series also introduces a generic Hibern=
-8
-> TX-FSM polling helper so that multiple platforms can reuse the same pre-l=
-ink
-> checks.
->
-> Device tree binding documentation for the S32N79 UFS controller is includ=
-ed.
-> The SoC and board DTS updates that instantiate and enable the controller =
-are
-> no longer part of this series and will be posted separately.
->
-> Changes in v11:
->
-> ufs: dwc: Move shared M-PHY CR bitfield macros to ufshcd-dwc.h:
-> - New patch. Move the FAST_FLAGS, FW_CALIB_CCFG, RX_OVRD_IN_1 and RX_PCS_=
-OUT
->   bitfield macros from the AMD Versal2 driver to ufshcd-dwc.h, so the S32=
-N7
->   driver can use them instead of raw values.
->
-> ufs: pltfrm: Add a flags argument to ufshcd_pltfrm_init():
-> - New patch. Let glue drivers request optional behavior from the common
->   platform code. All existing callers pass 0, no functional change.
->
-> ufs: pltfrm: Add a flag to manage fixed rate clocks:
-> - New patch. Add UFSHCD_PLTFRM_FIXED_RATE_CLKS. When it is set and neithe=
-r
->   freq-table-hz nor operating-points-v2 is present, register the clocks
->   listed in clock-names with a 0 Hz min/max rate, so the UFS core enables
->   and gates them without scaling. This replaces the dummy single 0 Hz
->   operating-points-v2 table used in v10.
->
-> dt-bindings: ufs: Add NXP S32N79 UFS host controller:
-> - Dropped operating-points-v2 from the required properties and the OPP
->   table from the example, the fixed rate core clock is now handled by
->   UFSHCD_PLTFRM_FIXED_RATE_CLKS.
-> - Reworded the commit message accordingly.
->
-> ufs: s32n7: Add NXP S32N79 UFS host controller driver:
-> - Pass UFSHCD_PLTFRM_FIXED_RATE_CLKS to ufshcd_pltfrm_init() so the UFS
->   core manages the fixed rate "core" clock without an OPP table.
-> - Also clear the DWC BUSTHRTL clock gating enable (CGE) after each HCE
->   enable, as clock gating is not supported on this platform. Added the
->   DWC_UFS_BUSTHRTL_CGE definition to ufshci-dwc.h.
-> - Moved the local N_DeviceID programming from the link startup POST_CHANG=
-E
->   to the PRE_CHANGE hook, before DME_LINKSTARTUP, as in the recommended
->   sequence. Kept the local-only CPort 0 setup instead of
->   ufshcd_dwc_connection_setup(), which programs different settings (it
->   clears the host N_DeviceID_valid and sets the device T_PeerDeviceID
->   to 1). This additional context is provided here rather than in the comm=
-it
->   message, as it explains why the suggested alternative was not used rath=
-er
->   than the change itself.
-> - Defined the CBREFCLKCTRL2 ref_clk_en_unipro and ref_clk_en_app override
->   enable bits in ufshcd-dwc.h, next to the existing ref_clk_gating_suppor=
-t
->   one.
-> - Embedded the variant ops in struct s32n7_soc_data and recovered the SoC=
- data
->   in init() with container_of_const(), so device_get_match_data() is only
->   called once, in probe().
-> - Documented why SCM_STATUS is first written back to its reset value: eac=
-h
->   M-PHY start-up sequence must start with the PHY in reset, and the PHY m=
-ay
->   still be running on the host reset / error recovery paths.
-> - Replaced the raw M-PHY values with the shared bitfield macros, includin=
-g
->   the CBREFCLKCTRL2 override enable bits.
-> - Updated the commit message for the CGE and fixed rate clock changes.
-> - Dropped the Reviewed-by tag of Frank Li.
->
-> - Link to v10: https://lore.kernel.org/all/20261103133215.1385823-1-laris=
-a.grigore@oss.nxp.com/
->
-> Changes in v10:
->
-> All patches:
-> - Dropped the "scsi:" subject prefix.
->
-> ufs: core: Return a negative errno from WLUN suspend/resume:
-> - New patch. __ufshcd_wl_suspend() and __ufshcd_wl_resume() may return a
->   positive result code, e.g. from ufshcd_link_startup(). The runtime PM c=
-ore
->   treats it as a failure, but rpm_get_suppliers() only checks for a negat=
-ive
->   value, so the LUs consuming the WLUN are reported as resumed while the =
-host
->   is in the error state. Convert positive values to -EIO at the WLUN PM
->   callback boundary, as ufshcd_init() already does. This replaces the
->   Fixes: rationale previously carried by the dwc link_is_up() patch and
->   covers every source of positive values, not only the DWC glue.
->
-> ufs: dwc: Return a negative error if the link is down:
-> - Dropped the Fixes: tag. The PM-boundary issue is now fixed in the core;
->   this patch is a cleanup so the helper returns an errno before it is
->   exported.
->
-> ufs: unipro: Add TX/RX FSM state attributes:
-> - Fixed the commit message: AMD Versal2 has no header with these
->   definitions, only users in the .c file.
->
-> ufs: core: Add common Hibern8 TX FSM polling helper:
-> - Changed the subject prefix from "ufs: host:" to "ufs: core:".
-> - Fixed the helper name in the commit message.
-> - Renamed the internal per-lane poller from ufshcd_poll_tx_hibern8_lanes(=
-)
->   to ufshcd_tx_lanes_in_hibern8().
-> - Log the TX_FSM_STATE of each lane that did not reach Hibern8 on timeout=
-.
-> - Moved the prototype to the non-extern declarations and dropped "extern"=
-.
-> - Report a positive UIC result from DME_GET as -EIO, so the helper really
->   returns a negative errno as documented.
-> - Fixed checkpatch --strict alignment checks.
-> - Dropped the Reviewed-by tags of Frank Li and Stanley Jhu, as the patch
->   changed significantly.
->
-> ufs: dwc: Move Versal2 M-PHY CREG access helpers into ufshcd-dwc:
-> - Reworded the commit message and explained the static array race.
-> - Use the "name() - description" kernel-doc style like the rest of the
->   file.
->
-> dt-bindings: ufs: Add NXP S32N79 UFS host controller:
-> - Restricted lanes-per-direction to 2, matching the driver.
-> - Explained in the commit message why clock-names and the single 0 Hz
->   operating-points-v2 entry are required.
->
-> ufs: s32n7: Add NXP S32N79 UFS host controller driver:
-> - Changed the subject prefix to "ufs: s32n7:".
-> - Added <linux/bitfield.h> and <linux/bits.h>.
-> - Reject lanes-per-direction other than 2.
-> - Dropped redundant error messages and the remove() wrapper.
-> - Used u32 for the ufshcd_dme_get() result, aligned register offset style=
-,
->   clarified the SCM_STATUS comments.
-> - Documented the PERFORM_LINK_STARTUP_ONCE quirk and spm_lvl in the commi=
-t
->   message, and updated the HS rate-select bullet.
-> - Documented in the commit message that the DWC BUSTHRTL power gating is
->   disabled because it is not supported on this platform.
->
-> Changes in v9:
->
-> ufs: unipro: Move Tx/Rx FSM state definitions to unipro.h:
-> - Prefixed the RX_STATE_* and TX_STATE_* enum constants with UFS_ to avoi=
-d
->   polluting the global namespace, and updated the existing users
->   (AMD Versal2, HiSilicon, Qualcomm).
->
-> ufs: host: Add common Hibern8 TX FSM polling helper:
-> - Use the renamed UFS_TX_STATE_HIBERN8 constant.
->
-> dt-bindings: ufs: Add NXP S32N79 UFS host controller:
-> - Added Reviewed-by: Frank Li.
->
-> MAINTAINERS: Add NXP S32N7 UFS host controller entry:
-> - Added the imx@lists.linux.dev mailing list.
->
-> arm64: dts: freescale: s32n79: Add UFS host controller:
-> arm64: dts: freescale: s32n79-rdb: Enable UFS:
-> - Dropped from this series, as requested; they will be sent separately.
->
-> Changes in v8:
->
-> ufs: host: Add common Hibern8 TX FSM polling helper:
-> - Added Reviewed-by: Stanley Jhu.
->
-> scsi: ufs: Add NXP S32N79 UFS host controller driver:
-> - Let the UFS core manage the core reference clock: declare it in DT via
->   clock-names/operating-points-v2 so the core adds it to hba->clk_list_he=
-ad
->   and gates it across system suspend and runtime idle. Dropped the manual
->   devm_clk_get_enabled() and the struct s32n7_ufs core_clk member, and no=
-w
->   read the clock rate from the core clock list.
-> - Dropped the ufs_s32n7_calculate_us_tick() wrapper and inlined the divis=
-ion.
-> - Dropped the unused struct s32n7_ufs hba member.
->
-> dt-bindings: ufs: Add NXP S32N79 UFS host controller:
-> - Added the required clock-names and operating-points-v2 properties.
-> - Dropped the Reviewed-by and Acked-by tags.
->
-> arm64: dts: freescale: s32n79: Add UFS host controller:
-> - Added clock-names =3D "core" and an operating-points-v2 table with
->   opp-hz =3D <0> (fixed-rate clock) so the UFS core manages (and gates) t=
-he
->   core reference clock.
->
-> Changes in v7:
->
-> scsi: ufs: Add NXP S32N79 UFS host controller driver:
-> - Wrapped .prepare/.complete in pm_sleep_ptr() instead of pm_ptr().
-> - Fixed code alignment issues.
->
-> Changes in v6:
->
-> scsi: ufs: dwc: Return a negative error if the link is down:
-> - Translate a positive UIC command result from ufshcd_dme_get() into -EIO=
-.
-> - Declare dme_result as u32 to match the ufshcd_dme_get() parameter type.
->
-> scsi: ufs: dwc: Sort CBCRCTRL and CBREFCLKCTRL2 by offset:
-> - Added Reviewed-by: Frank Li.
->
-> scsi: ufs: Add NXP S32N79 UFS host controller driver:
-> - Added Reviewed-by: Frank Li.
->
-> Changes in v5:
->
-> scsi: ufs: dwc: Sort CBCRCTRL and CBREFCLKCTRL2 by offset:
-> - New patch. Split the macro reorder into its own cleanup.
->
-> ufs: host: Add common Hibern8 TX FSM polling helper:
-> - Return the real poller error on timeout, not a forced -ETIMEDOUT.
->
-> dt-bindings: ufs: Add NXP S32N79 UFS host controller:
-> - Dropped the jedec,ufs-2.0 fallback.
-> - Removed the select: block and the clocks description.
->
-> scsi: ufs: Add NXP S32N79 UFS host controller driver:
-> - Documented the timeout values as driver-defined bounds.
-> - Wrapped .prepare/.complete in pm_ptr().
->
-> arm64: dts: freescale: s32n79: Add UFS host controller:
-> - Dropped the jedec,ufs-2.0 fallback.
->
-> Changes in v4:
->
-> scsi: ufs: dwc: Return a negative error if the link is down:
-> - New patch. ufshcd_dwc_link_is_up() now returns a negative errno on fail=
-ure
->   instead of a positive value.
->
-> ufs: unipro: Move Tx/Rx FSM state definitions to unipro.h
-> - Added Reviewed-by: Frank Li.
->
-> ufs: host: Add common Hibern8 TX FSM polling helper:
-> - Refactored ufshcd_dme_check_tx_hibern8() to use read_poll_timeout().
->
-> scsi: ufs: Move Versal2 M-PHY CREG access helpers into ufshcd-dwc:
-> - Added Reviewed-by: Frank Li.
->
-> dt-bindings: ufs: Add NXP S32N79 UFS host controller:
-> - Added Reviewed-by: Frank Li.
->
-> Changes in v3:
->
-> ufs: host: Add common Hibern8 TX FSM polling helper:
-> - Use -EAGAIN while polling and only normalize to -ETIMEDOUT on timeout, =
-so
->   real attribute-read errors are returned instead of masked.
-> - Drop the stray delay.h include in ufshcd-pltfrm.c; the helper lives in
->   ufshcd.c.
-> - Drop the now-redundant dev_err() after the check in the HiSilicon drive=
-r.
->
-> scsi: ufs: Add NXP S32N79 UFS host controller driver:
-> - Use devm_clk_get_enabled() to enable the core reference clock.
-> - Rename the family-level identifiers from the s32n_ prefix to s32n7_
->   (structs and functions), keeping the s32n79_ prefix only for the
->   chip-specific data.
->
-> Changes in v2:
->
-> ufs: unipro: Move Tx/Rx FSM state definitions to unipro.h:
-> - Improved the enum comments. They now cite the MIPI M-PHY v6.0 tables.
->
-> ufs: unipro: Add TX/RX FSM state attributes:
-> - Added Reviewed-by: Frank Li.
->
-> ufs: host: Add common Hibern8 TX FSM polling helper:
-> - Moved the helper into the UFS core (ufshcd.c).
-> - Split out an inner per-lane poller, ufshcd_poll_tx_hibern8_lanes().
-> - Expanded the commit message to document the -ETIMEDOUT normalization do=
-ne
->   when converting the qcom/hisi checks to the helper. No code behaviour c=
-hange.
->
-> scsi: ufs: Move Versal2 M-PHY CREG access helpers into ufshcd-dwc:
-> - Made the DME attribute arrays const. They are now initialized inline in=
-stead
->   of by later field assignments.
->
-> scsi: ufs: dwc: Export common clock divider and link status helpers:
-> - Added Reviewed-by: Frank Li.
->
-> dt-bindings: ufs: Add NXP S32N79 UFS host controller:
-> - Renamed the patch subject and simplified the commit message.
-> - Renamed the binding file to nxp,s32n79-ufshc.yaml so it matches the
->   nxp,s32n79-ufshc compatible string.
-> - Removed the nxp,mphy-boot-mode property.
-> - Made reg-names and clocks required.
-> - Removed the conditional if/then/else schema.
-> - Removed clock-names.
-> - Changed the compatible from jedec,ufs-3.0 to jedec,ufs-2.0.
-> - Updated the example clocks to <&clks 0x92>.
->
-> scsi: ufs: Add NXP S32N79 UFS host controller driver:
-> - Removed the nxp,mphy-boot-mode handling and the mphy_boot_mode enum. Th=
-e
->   M-PHY firmware always runs from ROM now.
-> - Added a struct s32n_soc_data for SoC match data.
-> - Moved the calibration writes out to static const tables.
-> - Renamed struct phy_reg_cfg to s32n_phy_reg.
-> - Moved the rate-select sequence out of link_startup_post_change() into a=
- new
->   pwr_change_notify() pre-change path.
-> - Used devm_clk_get(dev, NULL) and dropped the redundant core_clk NULL ch=
-eck.
-> - Switched to *_PM_OPS() macros and pm_ptr() for the PM ops.
-> - Clarified the Hibern8 poll timeout comment.
-> - Enabled Auto-Hibern8 instead of setting UFSHCD_QUIRK_BROKEN_AUTO_HIBERN=
-8.
-> - Reworked and improved the M-PHY initialization sequence.
->
-> arm64: dts: freescale: s32n79: Add UFS host controller:
-> - Changed the compatible from jedec,ufs-3.0 to jedec,ufs-2.0.
-> - Removed clock-names.
->
-> arm64: dts: freescale: s32n79-rdb: Enable UFS:
-> - Removed the nxp,mphy-boot-mode property.
->
-> Signed-off-by: Larisa Grigore <larisa.grigore@oss.nxp.com>
+Pre-existing issues:
+- [High] This problem wasn't introduced by this patch, but it is a high-
+  severity use-after-free in the same PPE teardown.
+- [High] This problem wasn't introduced by this patch, but it is a high-
+  severity work-cancellation ordering race in the remove path the patch…
 
-During testing, I found the following error, which **seems totally
-unrelated** to this series.
+--
 
- [   10.730295] ufs-s32n7 4ac80000.ufs: ufshcd_query_attr: opcode 0x04
-for idn 15 failed, index 0, err =3D 15
- [   10.730304] ufs-s32n7 4ac80000.ufs: ufshcd_update_rtc: Failed to
-update rtc 15
+net: ethernet: mtk_eth_soc: Fix potential PPE hash table leak
 
-Using the query_retry variant, which every single caller in the
-codebase seems to use, get rid of the error. I'll send a follow up
-patch for this.
+This patch adds a call to mtk_ppe_deinit() in mtk_remove(). The goal is
+to destroy the PPE L2 flow rhashtables, whose bucket tables are not
+device-managed. This matches what the probe error path already does.
 
-diff --git a/drivers/ufs/core/ufshcd.c b/drivers/ufs/core/ufshcd.c
-index ca8329052cbc..4dfa50e67542 100644
---- a/drivers/ufs/core/ufshcd.c
-+++ b/drivers/ufs/core/ufshcd.c
-@@ -8739,8 +8739,8 @@ static void ufshcd_update_rtc(struct ufs_hba *hba)
-        if (ufshcd_rpm_get_if_active(hba) <=3D 0)
-                return;
+> diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+> index ad0fdc4133fb6..08973b6f0711d 100644
+> --- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+> +++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
+> @@ -5426,6 +5426,7 @@ static void mtk_remove(struct platform_device *pdev)
+>  	netif_napi_del(&eth->rx_napi);
+>  	mtk_cleanup(eth);
 
--       err =3D ufshcd_query_attr(hba, UPIU_QUERY_OPCODE_WRITE_ATTR,
-QUERY_ATTR_IDN_SECONDS_PASSED,
--                               0, 0, &val);
-+       err =3D ufshcd_query_attr_retry(hba, UPIU_QUERY_OPCODE_WRITE_ATTR,
-+                                    QUERY_ATTR_IDN_SECONDS_PASSED, 0, 0, &=
-val);
-        ufshcd_rpm_put(hba);
+[Severity: High]
+This is a pre-existing issue, but the commit message says
+mtk_ppe_deinit() runs "after unregistering the netdevs and cancelling
+the driver work". Is the driver work actually guaranteed to be stopped
+at this point?
 
-        if (err)
+mtk_cleanup() frees the netdevs before it cancels either work item. It
+also cancels pending_work before monitor_work:
 
+drivers/net/ethernet/mediatek/mtk_eth_soc.c:mtk_cleanup() {
+	mtk_sgmii_destroy(eth);
+	mtk_unreg_dev(eth);
+	mtk_free_dev(eth);
+	cancel_work_sync(&eth->pending_work);
+	cancel_delayed_work_sync(&eth->reset.monitor_work);
+	...
+}
 
-In any case, tested on an NXP S32N79-RDB board. UFS I/O works normally.
+monitor_work stays armed during all of mtk_remove(), and it can queue
+pending_work again:
 
-Tested-by: Enric Balletbo i Serra <eballetb@redhat.com>
+mtk_hw_reset_monitor_work() {
+	...
+	if (mtk_hw_check_dma_hang(eth))
+		schedule_work(&eth->pending_work);
+out:
+	schedule_delayed_work(&eth->reset.monitor_work,
+			      MTK_DMA_MONITOR_TIMEOUT);
+}
 
+Say a monitor_work instance is running when
+cancel_work_sync(&eth->pending_work) returns. It can queue pending_work
+again. cancel_delayed_work_sync() waits for monitor_work but does not
+cancel that newly queued pending_work.
 
-> ---
-> Larisa Grigore (14):
->       ufs: core: Return a negative errno from WLUN suspend/resume
->       ufs: dwc: Return a negative error if the link is down
->       ufs: unipro: Move Tx/Rx FSM state definitions to unipro.h
->       ufs: unipro: Add TX/RX FSM state attributes
->       ufs: core: Add common Hibern8 TX FSM polling helper
->       ufs: dwc: Move Versal2 M-PHY CREG access helpers into ufshcd-dwc
->       ufs: dwc: Export common clock divider and link status helpers
->       ufs: dwc: Sort CBCRCTRL and CBREFCLKCTRL2 by offset
->       ufs: dwc: Move shared M-PHY CR bitfield macros to ufshcd-dwc.h
->       ufs: pltfrm: Add a flags argument to ufshcd_pltfrm_init()
->       ufs: pltfrm: Add a flag to manage fixed rate clocks
->       dt-bindings: ufs: Add NXP S32N79 UFS host controller
->       ufs: s32n7: Add NXP S32N79 UFS host controller driver
->       MAINTAINERS: Add NXP S32N7 UFS host controller entry
->
->  .../devicetree/bindings/ufs/nxp,s32n79-ufshc.yaml  |  58 +++
->  MAINTAINERS                                        |   9 +
->  drivers/ufs/core/ufshcd.c                          | 101 +++-
->  drivers/ufs/host/Kconfig                           |  12 +
->  drivers/ufs/host/Makefile                          |   1 +
->  drivers/ufs/host/cdns-pltfrm.c                     |   2 +-
->  drivers/ufs/host/tc-dwc-g210-pltfrm.c              |   2 +-
->  drivers/ufs/host/ufs-amd-versal2.c                 | 106 +---
->  drivers/ufs/host/ufs-exynos.c                      |   2 +-
->  drivers/ufs/host/ufs-hisi.c                        |  50 +-
->  drivers/ufs/host/ufs-hisi.h                        |   6 -
->  drivers/ufs/host/ufs-mediatek.c                    |   2 +-
->  drivers/ufs/host/ufs-nxp-s32n7.c                   | 546 +++++++++++++++=
-++++++
->  drivers/ufs/host/ufs-qcom.c                        |  44 +-
->  drivers/ufs/host/ufs-qcom.h                        |   2 -
->  drivers/ufs/host/ufs-renesas.c                     |   2 +-
->  drivers/ufs/host/ufs-rockchip.c                    |   2 +-
->  drivers/ufs/host/ufs-sprd.c                        |   2 +-
->  drivers/ufs/host/ufshcd-dwc.c                      |  86 +++-
->  drivers/ufs/host/ufshcd-dwc.h                      |  50 +-
->  drivers/ufs/host/ufshcd-pltfrm.c                   |  61 ++-
->  drivers/ufs/host/ufshcd-pltfrm.h                   |  12 +-
->  drivers/ufs/host/ufshci-dwc.h                      |   8 +
->  include/ufs/ufshcd.h                               |   2 +
->  include/ufs/unipro.h                               |  22 +
->  25 files changed, 949 insertions(+), 241 deletions(-)
-> ---
-> base-commit: 7e1392a42ea288d70a266f6553fe06f57f8647ea
-> change-id: 20261114-b4-ufs-s32n7-b8763256eaa7
->
-> Best regards,
-> --
-> Larisa Grigore <larisa.grigore@oss.nxp.com>
->
->
->
+mtk_pending_work() would then run after mtk_remove() returns:
 
+	if (!eth->netdev[i] || !netif_running(eth->netdev[i]))
+		continue;
+	mtk_stop(eth->netdev[i]);
+
+Would that dereference the netdevs freed by mtk_free_dev()? The
+eth->netdev[] pointers are never cleared, and eth itself is
+devm-allocated, so it may already be freed too.
+
+pending_work queued during remove can hit the same problem. It waits
+for rtnl while unregister_netdev() holds it, and runs once rtnl is
+released.
+
+Would it be safer to disable monitor_work first and then pending_work,
+for example with disable_delayed_work_sync() and disable_work_sync(),
+before the netdevs are unregistered and freed?
+
+>  	free_netdev(eth->dummy_dev);
+> +	mtk_ppe_deinit(eth);
+
+[Severity: High]
+Does this cover all of the PPE offload hash tables? mtk_ppe_deinit()
+only destroys ppe->l2_flows. A second rhashtable that is not
+device-managed, eth->flow_table, is never destroyed anywhere in the
+driver:
+
+drivers/net/ethernet/mediatek/mtk_ppe_offload.c:mtk_eth_offload_init() {
+	if (!eth->ppe[id] || !eth->ppe[id]->foe_table)
+		return 0;
+	return rhashtable_init(&eth->flow_table, &mtk_flow_ht_params);
+}
+
+mtk_probe() calls this inside the per-PPE loop:
+
+	for (i = 0; i < ppe_num; i++) {
+		...
+		eth->ppe[i] = mtk_ppe_init(eth, eth->base + ppe_addr, i);
+		...
+		err = mtk_eth_offload_init(eth, i);
+
+Some SoCs set .ppe_num to 2 (MT7981/MT7986) or 3 (MT7988). On those,
+does each loop iteration re-initialize the shared eth->flow_table and
+lose the bucket table allocated in the previous iteration? That would
+also repeat on every EPROBE_DEFER retry.
+
+The bucket table that remains also stays allocated after mtk_remove(),
+even with this patch. The same is true for the err_deinit_ppe unwind
+in mtk_probe().
+
+There is also the deferred shrink work to consider. mtk_flow_ht_params
+sets .automatic_shrinking = true. That means rhashtable_remove_fast()
+called from mtk_flow_offload_destroy() can queue ht->run_irq_work, and
+then ht->run_work, when the table is lightly loaded.
+
+Without a rhashtable_destroy(&eth->flow_table), nothing syncs or
+cancels that work. Can rht_deferred_worker() then run on eth after
+devres has freed it?
+
+Would it make sense to initialize eth->flow_table only once, and pair
+it with rhashtable_destroy() in both mtk_remove() and the probe unwind?
+
+[Severity: High]
+This isn't a bug introduced by this patch, but mtk_ppe_deinit() also
+leaves the per-PPE debugfs entries in place. mtk_ppe_init() calls
+mtk_ppe_debugfs_init(), which does this:
+
+drivers/net/ethernet/mediatek/mtk_ppe_debugfs.c:mtk_ppe_debugfs_init() {
+	...
+	root = debugfs_create_dir(ppe->dirname, NULL);
+	debugfs_create_file("entries", S_IRUGO, root, ppe, &mtk_ppe_debugfs_foe_all_fops);
+	debugfs_create_file("bind", S_IRUGO, root, ppe, &mtk_ppe_debugfs_foe_bind_fops);
+	...
+}
+
+The root dentry is thrown away, and debugfs_remove() is never called.
+That is true for mtk_remove(), mtk_ppe_deinit() and the probe error
+path.
+
+Unbinding, or a probe failure after mtk_ppe_init(), releases ppe,
+ppe->foe_table, ppe->acct_table and the MMIO mapping through devres.
+But /sys/kernel/debug/ppeN/entries and /sys/kernel/debug/ppeN/bind
+stay in place.
+
+Can reading those files after unbind use freed memory?
+mtk_ppe_debugfs_foe_show() dereferences the freed ppe and foe_table.
+It then calls mtk_foe_entry_get_mib(), which reads registers through
+the stale ppe->base and writes into the freed acct_table:
+
+	acct->bytes += bytes;
+	acct->packets += packets;
+
+On re-probe, debugfs_create_dir() fails because the directory already
+exists. The stale files would then keep pointing at the old ppe.
+
+Could the dentry be stored in struct mtk_ppe and removed in
+mtk_ppe_deinit() and the probe error path?
+
+>  	mtk_mdio_cleanup(eth);
+>  }
+
+-- 
+Sashiko AI review · https://netdev-ai.bots.linux.dev/sashiko/#/patchset/20261112-88a3a7ff32-net-mtk%40mail.sdu.edu.cn
 
