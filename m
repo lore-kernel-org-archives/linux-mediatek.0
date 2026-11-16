@@ -2,70 +2,79 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id B1BF5606A880
-	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Nov 2026 17:54:17 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 29DA5606A329
+	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Nov 2026 18:16:09 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=uH+ycbU/
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=eV0s3U+S;
+	dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=V5ovi0ah
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Unsubscribe-Post:
-	List-Owner; bh=htPpsj1ZCqMRn1NtlL8aj52+oY3mSts/TrS2vw7Er68=; b=uH+ycbU/R1YL5I
-	cgT52DVzkUT9++hTsFIIUFdHKKg0rOCMS2z5oFPgywS9asZ/mC5kQGDqNzkAgs5dGuLS0hyF6shFM
-	LP0Fm9/Xv1hjoCc43Ap0xqg92emR4hoE9X1OAJz9riX6XHouJrKc2D8dns9wW6ZL65aeE4NWPCFoo
-	DZQWaB2F249Ulo9QWgI4R6QIPx1QoWWfJN1pxenUV6YZbcpZ3VP6GVN0qOfAvAOJGUtrShvD/hIky
-	WgpyZVp91lwAexvr/UUF0bdMokDL2MJKNhLLBaFHWDRTrdcQ7+XPahVLITH5hMGqjf1N4N4Z77Pbe
-	/x7qR/8Gy3OTMJbxVNig==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Unsubscribe-Post:List-Owner;
+	bh=Pv6Z2msONZOMn5X5XcAinXRtg1l0bwQ6c+ZoL0wLzd8=; b=eV0s3U+SNa68FUMfdcF6UWFik+
+	fej+t2vPkkIQXWIKAVCvTbzY06o2fs5+Yl+mUPdekW+AVKBj8XozS8AR6cUa1U3SBEyJBXiM3G/qL
+	llHZ59kri5BhvjadhjlhT4yAJD/O4QXotyvQe4q2liYUwuWv16ZC4w6tNQmtjRxukVy5TnZeWrq3M
+	baQ8TNV6fX3OsBQ8gmp7XZThnEk4/yWKGDHjG5mAjbiiIG+1BDcD77XBGGFu1NEtvVsHiprX74H3c
+	s5xAxWM7//H8xXPPmqkLstNzk7rsjDQfmsVvE14V9suBL3T8FEPGLjRVyfEHMAXvNtx2LBM4+dQOa
+	TaGBSbTw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xT0uH-00000003SfC-1iMd;
-	Mon, 16 Nov 2026 17:54:17 +0000
-Received: from nbd.name ([46.4.11.11])
+	id 1xT1FQ-00000003Vmo-2Wb7;
+	Mon, 16 Nov 2026 18:16:08 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xT0u2-00000003SVN-0z7d;
-	Mon, 16 Nov 2026 17:54:04 +0000
-Received: from [2a04:4540:1403:e6fc:5f71:2c1e:7d62:945f] (helo=bertha10..)
-	by ds12 with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-	(Exim 4.96)
-	(envelope-from <john@phrozen.org>)
-	id 1xT0tq-004GoI-03;
-	Mon, 16 Nov 2026 18:53:50 +0100
-From: John Crispin <john@phrozen.org>
-To: Stefan Roese <sr@denx.de>,
-	Andi Shyti <andi.shyti@kernel.org>,
+	id 1xT1FP-00000003Vlv-09dW
+	for linux-mediatek@lists.infradead.org;
+	Mon, 16 Nov 2026 18:16:07 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by tor.source.kernel.org (Postfix) with ESMTP id 2CBE46129F;
+	Mon, 16 Nov 2026 18:16:06 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id B6CA01F000C4;
+	Mon, 16 Nov 2026 18:16:01 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1794852965;
+	bh=Pv6Z2msONZOMn5X5XcAinXRtg1l0bwQ6c+ZoL0wLzd8=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To;
+	b=V5ovi0ahBoGhG3oLNCEMv0ZweRhbmg263fiz5Z3OEaOEe1EmkWwElr4NjaV0pBusZ
+	 U+67Z1pdlYuquNsjEp0NPddWduHHqKo+LKkPrpsT2q7gHKgpvpIvuEkDDf1/Qay2RB
+	 AI8/0Kj6NWQ08mCT8nfZX/qhbwcvRwIaVQWavWv4KxVlOo28ErPhEbHkzh/Z9b6jJi
+	 KD7qK09dM/wMxPYpOkFlNsSfsr6eq07XSEHf7AhNj3J6NX4eMhDoGASxEqAt2Q/PCH
+	 ECfBizh/XSlQuSbazX7YpvTKulAspE/JWhpc8rQiYbtQ1XCzQLvrhl6hTvTdLdKLjg
+	 tSR2LkGrA3UsQ==
+Date: Mon, 16 Nov 2026 18:15:59 +0000
+From: Conor Dooley <conor@kernel.org>
+To: John Crispin <john@phrozen.org>
+Cc: Lorenzo Bianconi <lorenzo@kernel.org>, Lee Jones <lee@kernel.org>,
 	Rob Herring <robh@kernel.org>,
 	Krzysztof Kozlowski <krzk+dt@kernel.org>,
 	Conor Dooley <conor+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Philipp Zabel <p.zabel@pengutronix.de>
-Cc: Christian Marangi <ansuelsmth@gmail.com>,
-	devicetree@vger.kernel.org,
-	lei.dong@airoha.com,
-	Linqi.zhang@airoha.com,
-	linux-arm-kernel@lists.infradead.org,
-	linux-i2c@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-mediatek@lists.infradead.org,
-	Rajeev.kumar@airoha.com,
-	upstream@airoha.com,
-	Weifeng.xu@airoha.com,
+	Linus Walleij <linusw@kernel.org>,
+	Bartosz Golaszewski <brgl@kernel.org>,
+	Ahmed Naseef <naseefkm@gmail.com>,
+	Benjamin Larsson <benjamin.larsson@genexis.eu>,
+	Christian Marangi <ansuelsmth@gmail.com>,
+	devicetree@vger.kernel.org, lei.dong@airoha.com,
+	Linqi.zhang@airoha.com, linux-gpio@vger.kernel.org,
+	linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
+	mfd@lists.linux.dev,
+	Mikhail Kshevetskiy <mikhail.kshevetskiy@iopsys.eu>,
+	Rajeev.kumar@airoha.com, upstream@airoha.com, Weifeng.xu@airoha.com,
 	zhengping.zhang@airoha.com
-Subject: [PATCH v3 1/3] i2c: mt7621: assert and deassert the reset line
-Date: Mon, 16 Nov 2026 18:53:41 +0100
-Message-Id: <20261116175343.344425-2-john@phrozen.org>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20261116175343.344425-1-john@phrozen.org>
-References: <20261116175343.344425-1-john@phrozen.org>
+Subject: Re: [PATCH v2 5/7] dt-bindings: pinctrl: airoha: add AN7589
+Message-ID: <20261116-resolved-riot-c6a310bb2d8c@spud>
+References: <20261112185941.1316112-1-john@phrozen.org>
+ <20261112185941.1316112-6-john@phrozen.org>
+ <20261113-fame-smock-6ea3b8fadcd0@spud>
+ <b94ed5e4-cb80-4e05-9964-bb08a61aa1fd@phrozen.org>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261116_095402_269637_DA63215C 
-X-CRM114-Status: GOOD (  14.37  )
-X-Spam-Score: -1.9 (-)
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="1NzTVWXoeJIha+mg"
+Content-Disposition: inline
+In-Reply-To: <b94ed5e4-cb80-4e05-9964-bb08a61aa1fd@phrozen.org>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,76 +85,128 @@ List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
+X-Spam-Status: No, score=-5.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,
+	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS autolearn=no autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-The driver resets the controller with device_reset(), which needs a
-.reset operation in the reset controller. The EN7581 reset controller
-implements assert and deassert only, so there every call fails, logs
-"I2C reset failed!" and leaves the controller as it is, also after a
-transfer timeout.
+--1NzTVWXoeJIha+mg
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-Get the optional reset line at probe and assert and deassert it. The
-MT7621 and MT7628 reset controller does the same in its .reset
-operation, with no delay in between, so nothing changes there. A board
-without a reset line no longer logs an error, and a reset controller
-that is not ready yet defers the probe.
+On Mon, Nov 16, 2026 at 06:47:27PM +0100, John Crispin wrote:
+> On Fri, Nov 13, 2026 at 05:40:42PM +0000, Conor Dooley wrote:
+> > As Lee requested, please split this out. Two patches, maybe even three.
+>=20
+> Agreed. v3 splits it into three patches.
+>=20
+> > Do we even need a child node here? If all this node does is
+> > gpio/pinctrl, why can the driver not bind directly to this node?
+> >
+> > What else does it do that warrants being a syscon?
+>=20
+> The block also holds the PWM controller. Its registers interleave with
+> the GPIO ones. The PWM series adds it as a second child, as on the
+> EN7581. That series has a depency on this one so I have not posted it yet.
+>=20
+> > Otherwise, there should only be one. uart1 and uart2 should have
+> > different nodes.
+>=20
+> Agreed. v3 sets maxItems to 1. Only pcm_spi and pcie keep more, as
+> their groups carry different signals of one device.
+>=20
+> > So here, maxItems should be 1 for similar reasons.
+>=20
+> Agreed, v3 does this for i2c too.
+>=20
+> > I'm also curious about why this goes up to 74. None of the functions
+> > have 74 pins, surely?
+>=20
+> A conf node can set the same config on any set of pins. 74 is all the
+> pins. The EN7581 binding does the same with 58.
 
-Suggested-by: Philipp Zabel <p.zabel@pengutronix.de>
-Reviewed-by: Philipp Zabel <p.zabel@pengutronix.de>
-Signed-off-by: John Crispin <john@phrozen.org>
----
-Changes in v3:
-- Add the Reviewed-by of Philipp.
+A difference in philosophy I guess - I would be grouping the pins in the
+config node by user. So that there would be something like
 
-Changes in v2:
-- New patch. It replaces "clk: en7523: add a reset operation" from
-  the clk series (Philipp).
-- Link to the discussion: https://lore.kernel.org/r/0c96f978571c569de6552fc11131e45b55cada1b.camel@pengutronix.de
+spi1-stuff {
+	spi1-function {
+		function =3D spi
+		group =3D spi1
+	}
 
- drivers/i2c/busses/i2c-mt7621.c | 10 +++++++++-
- 1 file changed, 9 insertions(+), 1 deletion(-)
+	spi1-config1 {
+		pins =3D 1, 2
+		config1
+		config2
+	}
 
-diff --git a/drivers/i2c/busses/i2c-mt7621.c b/drivers/i2c/busses/i2c-mt7621.c
-index 9ea5e3f9a763..7a31cc8b89ce 100644
---- a/drivers/i2c/busses/i2c-mt7621.c
-+++ b/drivers/i2c/busses/i2c-mt7621.c
-@@ -65,6 +65,7 @@ struct mtk_i2c {
- 	u32 clk_div;
- 	u32 flags;
- 	struct clk *clk;
-+	struct reset_control *rst;
- };
- 
- static int mtk_i2c_wait_idle(struct mtk_i2c *i2c)
-@@ -85,7 +86,9 @@ static void mtk_i2c_reset(struct mtk_i2c *i2c)
- {
- 	int ret;
- 
--	ret = device_reset(i2c->adap.dev.parent);
-+	ret = reset_control_assert(i2c->rst);
-+	if (!ret)
-+		ret = reset_control_deassert(i2c->rst);
- 	if (ret)
- 		dev_err(i2c->dev, "I2C reset failed!\n");
- 
-@@ -288,6 +291,11 @@ static int mtk_i2c_probe(struct platform_device *pdev)
- 		return PTR_ERR(i2c->clk);
- 	}
- 
-+	i2c->rst = devm_reset_control_get_optional_exclusive(&pdev->dev, NULL);
-+	if (IS_ERR(i2c->rst))
-+		return dev_err_probe(&pdev->dev, PTR_ERR(i2c->rst),
-+				     "Failed to get reset\n");
-+
- 	i2c->dev = &pdev->dev;
- 
- 	if (of_property_read_u32(pdev->dev.of_node, "clock-frequency",
--- 
-2.34.1
+	spi2-config2 {
+		pins =3D 3
+		config1
+	}
+}
 
+spi {
+	pinctrl-0 =3D spi1-function, spi-config1, spi-config2
+}
+
+or
+
+spi {
+	pinctrl-0 =3D spi1-stuff
+}
+
+IMO, having config nodes covering more than one "feature" doesn't really
+make sense, as you'd end up with something like:
+
+spi1-function {
+	function =3D spi
+	group =3D spi1
+}
+
+all-config1-config2 {
+	pins =3D 1, 2, 4, 5
+	config1
+	config2
+}
+
+all-config1 {
+	pins =3D 3
+	config1
+}
+
+which kinda falls apart I think when a node can request a setting for
+pins that are not part of it (in this case, that's pins 4 and 5)
+
+spi {
+	pinctrl-0 =3D spi1-function, all-config1, all-config1-config2
+}
+
+So my opinion is that the max number of items should be the size of the
+largest peripheral.
+
+What's the largest actual user on the 7581?
+	=09
+>=20
+> v3 will follow shortly.
+>=20
+>         John
+>=20
+>=20
+
+--1NzTVWXoeJIha+mg
+Content-Type: application/pgp-signature; name=signature.asc
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCavtIXwAKCRB4tDGHoIJi
+0oxXAP9igIK0RsOLK/pxL71ixgfrLAYNjRe+ecNILh7URWV9CwEAvJFQWB0vwtGw
+/lVvbbCWDcLaRjkTti8imdts7RQIMA8=
+=DA3U
+-----END PGP SIGNATURE-----
+
+--1NzTVWXoeJIha+mg--
 
