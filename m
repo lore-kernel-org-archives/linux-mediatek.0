@@ -2,37 +2,37 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 8F423606A338
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id B7701606A89A
 	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Nov 2026 17:49:12 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=kODrow3s
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=2djGKkzp
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Unsubscribe-Post:
-	List-Owner; bh=wM/M3Qr2q2MJMidiTw81CDwlECWMExQSmD67qBO/SYk=; b=kODrow3sWzufb4
-	EHlMPIvMjzqEKhycR7B+uXZsD6S57fW1JvXJD5M5BKwzpHZaV8GEECd+/kSS4CVhwP448DsJrO2W7
-	smyY6alZx6TulHBRLbKGKwbgY4Zy3fCYZ4pLz7Y/lUO3me43GjnnL3nF7EF6FJOyGT6BZVXJWGt3m
-	hSFPb58H4ebpreuCg5Hre3N7mly1Q0WChrZ6ZOZ2Z9BTIAaibJeVTY9Joh/oIucKnwuSoqWKB4QFt
-	kqWZIhJAiYUvAMOn3YUfU2/BuZCxss26wAtiy5JtF2tI8u5R+YP2hI0s2h8m0EligRasWlgKCcF9l
-	jU+k9Pph3zYorRcCdKgA==;
+	List-Owner; bh=77l2IVMUCUed+WO4RNie/mh0zaBbVd8wXt8Ok87wH94=; b=2djGKkzpIwh79f
+	CNdN29MsNEvjaKMuAcakRPutLk3LxpERPvmNb3MpK8wcqLitI6sHEPtZAe/yJfSYVZ38dKSzepN6/
+	X7uzFXwMS9w9GayFhDL/A+Fm/QaqrMw6+1ORUY2gDlKbJVyNqM6YxE9pu6WCk71qkUWZ5/wt78QCu
+	ZRRTiIlFLrnB++ryzwSrJQqNc7uDwQjlgpVmSjmet0Wcj0dImoxT1Q1T7KvEpFAIaqOFdM7Hrgcv0
+	s07HXwdjscTK1MjwgGhIhFjnu+kW3Bx9jmlDD3GLOJ+ZOyfM61ob7tbxuhIVRLb/rsw61zNZi7A2r
+	onOmPjNL+6H5Zang9MbA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xT0pM-00000003Rfc-0yHN;
+	id 1xT0pM-00000003Rg4-1O93;
 	Mon, 16 Nov 2026 17:49:12 +0000
 Received: from nbd.name ([46.4.11.11])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xT0pI-00000003RbP-1Q5r
+	id 1xT0pI-00000003RbS-2C1B
 	for linux-mediatek@lists.infradead.org;
 	Mon, 16 Nov 2026 17:49:10 +0000
 Received: from [2a04:4540:1403:e6fc:5f71:2c1e:7d62:945f] (helo=bertha10..)
 	by ds12 with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.96)
 	(envelope-from <john@phrozen.org>)
-	id 1xT0pC-004GcH-2W;
-	Mon, 16 Nov 2026 18:49:02 +0100
+	id 1xT0pD-004GcH-0d;
+	Mon, 16 Nov 2026 18:49:03 +0100
 From: John Crispin <john@phrozen.org>
 To: Lorenzo Bianconi <lorenzo@kernel.org>,
 	Lee Jones <lee@kernel.org>,
@@ -56,9 +56,9 @@ Cc: Ahmed Naseef <naseefkm@gmail.com>,
 	upstream@airoha.com,
 	Weifeng.xu@airoha.com,
 	zhengping.zhang@airoha.com
-Subject: [PATCH v3 4/9] pinctrl: airoha: mux a requested GPIO through the IOMUX
-Date: Mon, 16 Nov 2026 18:48:49 +0100
-Message-Id: <20261116174854.342912-5-john@phrozen.org>
+Subject: [PATCH v3 5/9] dt-bindings: mfd: syscon: add airoha,an7589-iomux
+Date: Mon, 16 Nov 2026 18:48:50 +0100
+Message-Id: <20261116174854.342912-6-john@phrozen.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20261116174854.342912-1-john@phrozen.org>
 References: <20261116174854.342912-1-john@phrozen.org>
@@ -66,8 +66,9 @@ X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261116_094908_376689_BA876226 
-X-CRM114-Status: GOOD (  12.19  )
+X-CRM114-CacheID: sfid-20261116_094908_556055_78F7A5E5 
+X-CRM114-Status: UNSURE (   7.49  )
+X-CRM114-Notice: Please train this message.
 X-Spam-Score: -1.9 (-)
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -86,64 +87,30 @@ X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On a SoC with an IOMUX block every pin turns into a GPIO with one mode
-value, mode 0 on the AN7589. Add that value to struct
-airoha_pinctrl_iomux and write it when gpiolib requests a pin, so no
-SoC needs a gpio function with one group per pin.
-
-Without an IOMUX the callback does nothing, so the existing SoCs keep
-their explicit gpio functions and their behavior.
+The Airoha AN7589 IOMUX block holds the 4 bit mode field of each pin.
+The pin controller reaches it through the airoha,iomux phandle. Add it
+to the syscon compatibles.
 
 Signed-off-by: John Crispin <john@phrozen.org>
 ---
- drivers/pinctrl/airoha/airoha-common.h  |  1 +
- drivers/pinctrl/airoha/pinctrl-airoha.c | 14 ++++++++++++++
- 2 files changed, 15 insertions(+)
+Changes in v3:
+- New patch, split out of the pinctrl binding (Lee, Conor).
 
-diff --git a/drivers/pinctrl/airoha/airoha-common.h b/drivers/pinctrl/airoha/airoha-common.h
-index 7a0cb8924e71..adfce89493f0 100644
---- a/drivers/pinctrl/airoha/airoha-common.h
-+++ b/drivers/pinctrl/airoha/airoha-common.h
-@@ -111,6 +111,7 @@ extern const struct airoha_gpiochip_regs airoha_gpiochip_regs_64;
- 
- struct airoha_pinctrl_iomux {
- 	u8 mode_bits;
-+	u8 gpio_mode;
- };
- 
- struct airoha_pinctrl_confs_info {
-diff --git a/drivers/pinctrl/airoha/pinctrl-airoha.c b/drivers/pinctrl/airoha/pinctrl-airoha.c
-index 5ae0c49e491a..e6b0180c9cb0 100644
---- a/drivers/pinctrl/airoha/pinctrl-airoha.c
-+++ b/drivers/pinctrl/airoha/pinctrl-airoha.c
-@@ -430,6 +430,19 @@ static int airoha_pinmux_set_pin_modes(struct airoha_pinctrl *pinctrl,
- 	return 0;
- }
- 
-+static int airoha_pinmux_gpio_request_enable(struct pinctrl_dev *pctrl_dev,
-+					     struct pinctrl_gpio_range *range,
-+					     unsigned int pin)
-+{
-+	struct airoha_pinctrl *pinctrl = pinctrl_dev_get_drvdata(pctrl_dev);
-+
-+	if (!pinctrl->iomux_info)
-+		return 0;
-+
-+	return airoha_pinmux_set_pin_mode(pinctrl, pin,
-+					  pinctrl->iomux_info->gpio_mode);
-+}
-+
- static int airoha_pinmux_set_mux(struct pinctrl_dev *pctrl_dev,
- 				 unsigned int selector,
- 				 unsigned int group)
-@@ -510,6 +523,7 @@ static const struct pinmux_ops airoha_pmxops = {
- 	.get_functions_count = pinmux_generic_get_function_count,
- 	.get_function_name = pinmux_generic_get_function_name,
- 	.get_function_groups = pinmux_generic_get_function_groups,
-+	.gpio_request_enable = airoha_pinmux_gpio_request_enable,
- 	.gpio_set_direction = airoha_pinmux_set_direction,
- 	.set_mux = airoha_pinmux_set_mux,
- 	.strict = true,
+ Documentation/devicetree/bindings/mfd/syscon.yaml | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/Documentation/devicetree/bindings/mfd/syscon.yaml b/Documentation/devicetree/bindings/mfd/syscon.yaml
+index dae706ca7642..e87158d42e87 100644
+--- a/Documentation/devicetree/bindings/mfd/syscon.yaml
++++ b/Documentation/devicetree/bindings/mfd/syscon.yaml
+@@ -24,6 +24,7 @@ properties:
+     oneOf:
+       - items:
+           - enum:
++              - airoha,an7589-iomux
+               - airoha,en7581-pbus-csr
+               - al,alpine-sysfabric-service
+               - allwinner,sun8i-a83t-system-controller
 -- 
 2.34.1
 
