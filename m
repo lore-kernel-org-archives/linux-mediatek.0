@@ -2,64 +2,119 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 08322606A8BE
-	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Nov 2026 14:01:36 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 8F26B606A33E
+	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Nov 2026 14:25:32 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=28TzTN5+;
-	dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=SRowMdmR
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=Z1e9PJOg;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=roeck-us.net header.i=@roeck-us.net header.a=rsa-sha256 header.s=default header.b=0sk6mFXH
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Message-ID:Date
-	:Cc:To:From:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=AcI5O5MVmz/sMdzZjpcXmsQSI2YiMfU3J4R/RHPWjLk=; b=28TzTN5+dD8Nl4PnEehiyfk5vV
-	rI6IRjMYHKG3xgbgI8TNTL7QV0DaHMXGHe9LZX+BvPhIYaNgJ8YDwq+0DhCKZUm9Lq66LPjd/Dh6p
-	m19SRmZb5UXrwKmEqO2vQr3kCyhmSDEsAMBQIEr4mPF6tEjo8gb553CTIFzOtP7a+b6woucT+soA1
-	SDnYFzwAngp1RGZ7YYxx2DTQtXW3cdinHg18eZ7T3/8mPN/Vmf1eUgrSSNr0ihGx4A7eaUJu1Neoe
-	tHTIiVUy5uCoML/RDHBhC5fScX1LO/AtL7LsNO4Yi55fynsMb4gZ6qLxzj5+i3A8gDUbPjZWVNHGw
-	SeRt4ddg==;
+	bh=bnKc3IJSrt3IePIy9TsoCqbRk4dzHod7cZj0q0eSHH8=; b=Z1e9PJOgPVB8vC804f3yDMGm2h
+	dI0dLk7X52e8qH3E8U2IkuJHhjUcSmVSBbzs9yEkYd3vUhrZfTMgIIXbn6xV0OwmcpZW6K9cyG1mf
+	8dpDhA77vV8Dc3wwCaEpeuhmH0T2fjfjcPnO8SrTT/jTIJNXROYlEiedANLWsg/hrC8DpcYNrdliG
+	1EXJFVGmWZZGmIxRoirhvrCkUzCqk6746OpFer1i7E/u/wnoQy8QapiH2fSUHgfVacL6qtoIbXFhz
+	h6whTSck3UmA8XG7J56IvJfY+mI+xPfaSd9geuoKyXXMnFRWm8sBlepd5M0xMxBdB/Zo484bmwMzN
+	F72tC3vg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xSxH5-00000002kBr-2IV0;
-	Mon, 16 Nov 2026 14:01:35 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1xSxeG-00000002ofI-1DwV;
+	Mon, 16 Nov 2026 14:25:32 +0000
+Received: from omta040.useast.a.cloudfilter.net ([44.202.169.39])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xSxGz-00000002kAv-3i2F;
-	Mon, 16 Nov 2026 14:01:29 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id 4D01B44D53;
-	Mon, 16 Nov 2026 14:01:29 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6A30E1F000C7;
-	Mon, 16 Nov 2026 14:01:28 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1794837689;
-	bh=AcI5O5MVmz/sMdzZjpcXmsQSI2YiMfU3J4R/RHPWjLk=;
-	h=Subject:From:To:Cc:Date:In-Reply-To:References;
-	b=SRowMdmRKr8bt0UEpVVKpzPHsooZjMsXJe387NrjH4YfbU1S9NOyc3XS2d9qhPsVe
-	 LVSh2mlGuM+enJFFeW/z9tYYc1xnmEgDEvcISNSUWFz2cLhToPG+8igZE73r948J8/
-	 jMOzB1NVzW135Cy5yMoAXrboWiWuI80TtQZwA8sRjevSTb5U6jIHxa1/n5aXMm9wCm
-	 kCpAIfuAT6h3+CK83Xjjr/b9AeySe0PYeHivvn1IYe8E4ycSQxK+1Y/Dhh/bWKX65S
-	 8E+QHrK2n8XFgqCCvH7Vz0Q9s/62NITzlaH9GnB0yOYTVLjfIzFhrlugwH1lqbu8mN
-	 btC/04tSUV3MA==
-Subject: Re: [PATCH net] net: ethernet: mtk_eth_soc: Fix potential PPE hash table leak
-From: netdev-bot+sashiko@kernel.org
-To: liguangshuo@mail.sdu.edu.cn
-Cc: nbd@nbd.name, lorenzo@kernel.org, andrew+netdev@lunn.ch,
- davem@davemloft.net, edumazet@kernel.org, kuba@kernel.org, pabeni@redhat.com,
- matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
- netdev@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-Date: Mon, 16 Nov 2026 14:01:27 +0000
-Message-ID: <179483768794.3136.13845952044990808928@kernel.org>
-In-Reply-To: <20261112-88a3a7ff32-net-mtk@mail.sdu.edu.cn>
-References: <20261112-88a3a7ff32-net-mtk@mail.sdu.edu.cn>
-X-sashiko-severity: High
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
+	id 1xSxeD-00000002od3-3IkH
+	for linux-mediatek@lists.infradead.org;
+	Mon, 16 Nov 2026 14:25:30 +0000
+Received: from eig-obgw-5007b.ext.cloudfilter.net ([10.0.29.167])
+	by cmsmtp with ESMTPS
+	id SvcpxiP53OOJnSxeCx6Rnh; Mon, 16 Nov 2026 14:25:28 +0000
+Received: from 162-215-252-36.unifiedlayer.com ([208.91.199.152])
+	by cmsmtp with ESMTPS
+	id SxeBxLzBjxqjjSxeBxAqOo; Mon, 16 Nov 2026 14:25:27 +0000
+X-Authority-Analysis: v=2.4 cv=bZxrUPPB c=1 sm=1 tr=0 ts=6afb1258
+ a=QNED+QcLUkoL9qulTODnwA==:117 a=2cfIYNtKkjgZNaOwnGXpGw==:17
+ a=kj9zAlcOel0A:10 a=zJRp6_cAMcgA:10 a=M0FbrtG7MMAA:10 a=pGLkceISAAAA:8
+ a=EUspDBNiAAAA:8 a=gUJwKisUJcuna-pPN7wA:9 a=CjuIK1q_8ugA:10
+ a=KPbNTLLc3YvdawN95zVk:22
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=roeck-us.net; s=default; h=In-Reply-To:Content-Type:MIME-Version:References
+	:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:Content-Transfer-Encoding
+	:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
+	List-Unsubscribe-Post:List-Subscribe:List-Post:List-Owner:List-Archive;
+	bh=bnKc3IJSrt3IePIy9TsoCqbRk4dzHod7cZj0q0eSHH8=; b=0sk6mFXHdazpnAR1pwYEQWKC6I
+	X1E8ekQhO0z3VayxRm1NfHDKZPYKtSjVyBbOQ6BXgsKnbsaQijZg9Njwvi72ApNtUv8cSMNdGc4Vd
+	QyBkQyIPDzLAZFyuqMD232Y8huOEnhHlwlN1r/1BLq79zhy1fepUalqTHRZt7AQpgRJ/hNNVCJ4/W
+	+wjozLlctGicx/oK/1NIvMu3BrlohLbRxPWhx6Kl99HdJQN9Ph/a5KSW52HJ5bvDy+eWL6YxSlBW3
+	Pv6/DkmHUpcXaGr7B2cKNOjA017mfcKr12cerSqK+iWNmuAk3le8gG/O8AgxGgOr0CZNuR51nIbhz
+	RUC4xEhA==;
+Received: from 108-223-40-66.lightspeed.sntcca.sbcglobal.net ([108.223.40.66]:54554 helo=server.roeck-us.net)
+	by bh-25.webhostbox.net with esmtpsa  (TLS1.2) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+	(Exim 4.100.1)
+	(envelope-from <linux@roeck-us.net>)
+	id 1xSxe8-00000003nQw-0sPf;
+	Mon, 16 Nov 2026 19:55:24 +0530
+Date: Mon, 16 Nov 2026 06:25:23 -0800
+From: Guenter Roeck <linux@roeck-us.net>
+To: Alexander Letuchiy <asalde.le1@gmail.com>
+Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Sean Wang <sean.wang@mediatek.com>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	Jiri Slaby <jirislaby@kernel.org>,
+	Wim Van Sebroeck <wim@linux-watchdog.org>,
+	Daniel Lezcano <daniel.lezcano@kernel.org>,
+	Thomas Gleixner <tglx@kernel.org>,
+	Mattijs Korpershoek <mkorpershoek@kernel.org>,
+	Dmitry Torokhov <dmitry.torokhov@gmail.com>,
+	Kees Cook <kees@kernel.org>, Tony Luck <tony.luck@intel.com>,
+	"Guilherme G. Piccoli" <gpiccoli@igalia.com>,
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, linux-serial@vger.kernel.org,
+	linux-watchdog@vger.kernel.org, linux-input@vger.kernel.org,
+	phone-devel@vger.kernel.org
+Subject: Re: [PATCH v2 3/9] dt-bindings: watchdog: mediatek,mtk-wdt: Add
+ compatible for MT6895
+Message-ID: <20ace44c-2385-4561-9e69-c6c7bd3a3fb6@roeck-us.net>
+References: <20261113-initial-mt6895-v2-0-4ab0aa9fa391@gmail.com>
+ <20261113-initial-mt6895-v2-3-4ab0aa9fa391@gmail.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20261113-initial-mt6895-v2-3-4ab0aa9fa391@gmail.com>
+X-AntiAbuse: This header was added to track abuse, please include it with any abuse report
+X-AntiAbuse: Primary Hostname - bh-25.webhostbox.net
+X-AntiAbuse: Original Domain - lists.infradead.org
+X-AntiAbuse: Originator/Caller UID/GID - [47 12] / [47 12]
+X-AntiAbuse: Sender Address Domain - roeck-us.net
+X-BWhitelist: no
+X-Source-IP: 108.223.40.66
+X-Source-L: No
+X-Exim-ID: 1xSxe8-00000003nQw-0sPf
+X-Source: 
+X-Source-Args: 
+X-Source-Dir: 
+X-Source-Sender: 108-223-40-66.lightspeed.sntcca.sbcglobal.net (server.roeck-us.net) [108.223.40.66]:54554
+X-Source-Auth: guenter@roeck-us.net
+X-Email-Count: 29
+X-Org: HG=direseller_whb_net_legacy;ORG=directi;
+X-Source-Cap: cm9lY2s7YWN0aXZzdG07YmgtMjUud2ViaG9zdGJveC5uZXQ=
+X-Local-Domain: yes
+X-CMAE-Envelope: MS4xfHhBfpiCBsDxmU+WUgRmSzpiGJ0tWU48XKqOKt38iqhB7Mr9ZnGbUBaUwnLDIGKBFbIckQGB38xqunjsfqsdgpmO8xqKtHzyIusjoJCUj8yFIuGZt8A3
+ SImiL1tADzkMiExzuv79mEFQ1sSMqRwmxcG9VS3BzF0KOHdthBgQVy4I940TcqDMsG9YJ3TludDYGQHiGz3uNRzvgNcfb2X+J2OVjXbtK7hjE4UtI4/+amLg
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20261116_062529_881380_EE4974C2 
+X-CRM114-Status: UNSURE (   6.29  )
+X-CRM114-Notice: Please train this message.
+X-Spam-Score: -0.1 (/)
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -70,184 +125,24 @@ List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-10.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,
-	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS autolearn=ham autolearn_force=no version=4.0.1
+X-Spam-Status: No, score=-8.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
+	INCLUDES_CR_TRAILER,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS
+	autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Thank you for your contribution! Sashiko AI review found 1 potential
-issue(s) to consider.
+On Fri, Nov 13, 2026 at 10:04:59PM +0300, Alexander Letuchiy wrote:
+> Add a compatible string for the watchdog of the MediaTek MT6895
+> (Dimensity 8000/8100) SoC. It does not fall back to mediatek,mt6589-wdt,
+> which implies the MT6589 TOPRGU reset layout, as the MT6895 one is not
+> known yet.
+> 
+> Signed-off-by: Alexander Letuchiy <asalde.le1@gmail.com>
+> Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
 
-Critical: 0 · High: 1 (2) · Medium: 0 · Low: 0
+Applied.
 
-If you believe none of the issues are legitimate, please reply to each
-issue of Medium severity or higher and explain why the AI is wrong.
-If any of them are legitimate and you plan to respin, please let patchwork
-know by including "pw-bot: cr" as a separate line at the end of your reply
-(one such reply per series is enough).
-
-- [High] The fix is incomplete.
-
-Pre-existing issues:
-- [High] This problem wasn't introduced by this patch, but it is a high-
-  severity use-after-free in the same PPE teardown.
-- [High] This problem wasn't introduced by this patch, but it is a high-
-  severity work-cancellation ordering race in the remove path the patch…
-
---
-
-net: ethernet: mtk_eth_soc: Fix potential PPE hash table leak
-
-This patch adds a call to mtk_ppe_deinit() in mtk_remove(). The goal is
-to destroy the PPE L2 flow rhashtables, whose bucket tables are not
-device-managed. This matches what the probe error path already does.
-
-> diff --git a/drivers/net/ethernet/mediatek/mtk_eth_soc.c b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-> index ad0fdc4133fb6..08973b6f0711d 100644
-> --- a/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-> +++ b/drivers/net/ethernet/mediatek/mtk_eth_soc.c
-> @@ -5426,6 +5426,7 @@ static void mtk_remove(struct platform_device *pdev)
->  	netif_napi_del(&eth->rx_napi);
->  	mtk_cleanup(eth);
-
-[Severity: High]
-This is a pre-existing issue, but the commit message says
-mtk_ppe_deinit() runs "after unregistering the netdevs and cancelling
-the driver work". Is the driver work actually guaranteed to be stopped
-at this point?
-
-mtk_cleanup() frees the netdevs before it cancels either work item. It
-also cancels pending_work before monitor_work:
-
-drivers/net/ethernet/mediatek/mtk_eth_soc.c:mtk_cleanup() {
-	mtk_sgmii_destroy(eth);
-	mtk_unreg_dev(eth);
-	mtk_free_dev(eth);
-	cancel_work_sync(&eth->pending_work);
-	cancel_delayed_work_sync(&eth->reset.monitor_work);
-	...
-}
-
-monitor_work stays armed during all of mtk_remove(), and it can queue
-pending_work again:
-
-mtk_hw_reset_monitor_work() {
-	...
-	if (mtk_hw_check_dma_hang(eth))
-		schedule_work(&eth->pending_work);
-out:
-	schedule_delayed_work(&eth->reset.monitor_work,
-			      MTK_DMA_MONITOR_TIMEOUT);
-}
-
-Say a monitor_work instance is running when
-cancel_work_sync(&eth->pending_work) returns. It can queue pending_work
-again. cancel_delayed_work_sync() waits for monitor_work but does not
-cancel that newly queued pending_work.
-
-mtk_pending_work() would then run after mtk_remove() returns:
-
-	if (!eth->netdev[i] || !netif_running(eth->netdev[i]))
-		continue;
-	mtk_stop(eth->netdev[i]);
-
-Would that dereference the netdevs freed by mtk_free_dev()? The
-eth->netdev[] pointers are never cleared, and eth itself is
-devm-allocated, so it may already be freed too.
-
-pending_work queued during remove can hit the same problem. It waits
-for rtnl while unregister_netdev() holds it, and runs once rtnl is
-released.
-
-Would it be safer to disable monitor_work first and then pending_work,
-for example with disable_delayed_work_sync() and disable_work_sync(),
-before the netdevs are unregistered and freed?
-
->  	free_netdev(eth->dummy_dev);
-> +	mtk_ppe_deinit(eth);
-
-[Severity: High]
-Does this cover all of the PPE offload hash tables? mtk_ppe_deinit()
-only destroys ppe->l2_flows. A second rhashtable that is not
-device-managed, eth->flow_table, is never destroyed anywhere in the
-driver:
-
-drivers/net/ethernet/mediatek/mtk_ppe_offload.c:mtk_eth_offload_init() {
-	if (!eth->ppe[id] || !eth->ppe[id]->foe_table)
-		return 0;
-	return rhashtable_init(&eth->flow_table, &mtk_flow_ht_params);
-}
-
-mtk_probe() calls this inside the per-PPE loop:
-
-	for (i = 0; i < ppe_num; i++) {
-		...
-		eth->ppe[i] = mtk_ppe_init(eth, eth->base + ppe_addr, i);
-		...
-		err = mtk_eth_offload_init(eth, i);
-
-Some SoCs set .ppe_num to 2 (MT7981/MT7986) or 3 (MT7988). On those,
-does each loop iteration re-initialize the shared eth->flow_table and
-lose the bucket table allocated in the previous iteration? That would
-also repeat on every EPROBE_DEFER retry.
-
-The bucket table that remains also stays allocated after mtk_remove(),
-even with this patch. The same is true for the err_deinit_ppe unwind
-in mtk_probe().
-
-There is also the deferred shrink work to consider. mtk_flow_ht_params
-sets .automatic_shrinking = true. That means rhashtable_remove_fast()
-called from mtk_flow_offload_destroy() can queue ht->run_irq_work, and
-then ht->run_work, when the table is lightly loaded.
-
-Without a rhashtable_destroy(&eth->flow_table), nothing syncs or
-cancels that work. Can rht_deferred_worker() then run on eth after
-devres has freed it?
-
-Would it make sense to initialize eth->flow_table only once, and pair
-it with rhashtable_destroy() in both mtk_remove() and the probe unwind?
-
-[Severity: High]
-This isn't a bug introduced by this patch, but mtk_ppe_deinit() also
-leaves the per-PPE debugfs entries in place. mtk_ppe_init() calls
-mtk_ppe_debugfs_init(), which does this:
-
-drivers/net/ethernet/mediatek/mtk_ppe_debugfs.c:mtk_ppe_debugfs_init() {
-	...
-	root = debugfs_create_dir(ppe->dirname, NULL);
-	debugfs_create_file("entries", S_IRUGO, root, ppe, &mtk_ppe_debugfs_foe_all_fops);
-	debugfs_create_file("bind", S_IRUGO, root, ppe, &mtk_ppe_debugfs_foe_bind_fops);
-	...
-}
-
-The root dentry is thrown away, and debugfs_remove() is never called.
-That is true for mtk_remove(), mtk_ppe_deinit() and the probe error
-path.
-
-Unbinding, or a probe failure after mtk_ppe_init(), releases ppe,
-ppe->foe_table, ppe->acct_table and the MMIO mapping through devres.
-But /sys/kernel/debug/ppeN/entries and /sys/kernel/debug/ppeN/bind
-stay in place.
-
-Can reading those files after unbind use freed memory?
-mtk_ppe_debugfs_foe_show() dereferences the freed ppe and foe_table.
-It then calls mtk_foe_entry_get_mib(), which reads registers through
-the stale ppe->base and writes into the freed acct_table:
-
-	acct->bytes += bytes;
-	acct->packets += packets;
-
-On re-probe, debugfs_create_dir() fails because the directory already
-exists. The stale files would then keep pointing at the old ppe.
-
-Could the dentry be stored in struct mtk_ppe and removed in
-mtk_ppe_deinit() and the probe error path?
-
->  	mtk_mdio_cleanup(eth);
->  }
-
--- 
-Sashiko AI review · https://netdev-ai.bots.linux.dev/sashiko/#/patchset/20261112-88a3a7ff32-net-mtk%40mail.sdu.edu.cn
+Thanks,
+Guenter
 
