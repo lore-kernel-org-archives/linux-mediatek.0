@@ -2,112 +2,69 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 3F590606A322
-	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Nov 2026 18:54:22 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 1D0D6606A323
+	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Nov 2026 19:39:34 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=mJ54a9k3;
-	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=a3VbYEqh
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=tlSWHuS2
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
-	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Unsubscribe-Post:List-Owner;
-	bh=choMbSoYoRkI4EZKogv+on35PXN8ET4WeIfVWxIT3BE=; b=mJ54a9k30g9knX2LntDsJPUTc5
-	y/RS65gZtrEwmTxk+UEJb4ULlk3mAkVfWm7/x/PwCDiFzYYjul3JEmbn47KYQwzo/rq+NNLvvWxE0
-	9DqYZwIuLeDaYf5mWqJZdCT67nEJCeRIwfS0T4wyJfDkVxJPMQifnZIzFz3q7+gphgJE1sfRNMCb6
-	jnupmB9FkgwqX9McO9buXRZtJiI8FK6KklTZUzkMR/IJ3+WXS12klXYqZmhUxYy+Xg3+w4y0dOYKu
-	+fyDzuZZxZgmk3EZLLX9wu+fhU6ro6JcFrNYOd04TH9ZxKBE9BSiaFymlIU+0u+Awi2IunQhgjhr/
-	XQWejWag==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Unsubscribe-Post:
+	List-Owner; bh=tb0Yt+co2HSyPMP/gmGUN3MHhQtM2v+tCYbEj1zzeMQ=; b=tlSWHuS20aYsvn
+	CKOjSWiqW33+fyAhNRczLU2PzdDeWV5826L4uAszPp35Y2SZGPE2ZBrHRmpW3NDuLiPbgyRvuzN2W
+	dKtRi9Qgr3NY8rbw9SdwOEq1+tBQ+rskv3hJFz+5ViIaRBXuGxocakWc1Z/88KsEqx6FlrYoxRlkr
+	qe4aWv61IzAniX5IRp6rayTqWLatR77zMw00FWwZZGfu2ZmS+Z7lmaJuudCu+H/UBsdB97cSai84w
+	P96oJHhx3tZUxBk0OFjd8TpOEBBB/0J31K4GffuGaHE9zwt18a6IjPvmtBdpK9sfyy153qw8ZrIIc
+	jeL1MBN8HfGqsqQkiSwQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xT1qO-00000003g9T-2L1S;
-	Mon, 16 Nov 2026 18:54:20 +0000
-Received: from mail-ed1-x52d.google.com ([2a00:1450:4864:20::52d])
+	id 1xT2Y8-00000003mgs-1n8E;
+	Mon, 16 Nov 2026 19:39:32 +0000
+Received: from nbd.name ([46.4.11.11])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xT1qG-00000003g3m-1VtD
+	id 1xT2Y5-00000003mgI-2Hrg
 	for linux-mediatek@lists.infradead.org;
-	Mon, 16 Nov 2026 18:54:17 +0000
-Received: by mail-ed1-x52d.google.com with SMTP id 4fb4d7f45d1cf-6b571979178so5925251a12.2
-        for <linux-mediatek@lists.infradead.org>; Mon, 16 Nov 2026 10:54:11 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1794855250; cv=none;
-        d=google.com; s=arc-20260327;
-        b=EaNxW2EeI973BcRDgc98TCbR+iBD/OvN5bvPIQXwy1T2BtXowifDU/TwNUU9w5AWYO
-         p+9QE8dVJHVWgwsWjLJ68y0OWheSLTM8ibmKZzdegVeCUZHJ7f8g635tTCRoFplwtFgH
-         TXEtoxfdS/CNTFwTify7eX0Pqb9vzbvCE87OnmNbZxpV35UQVJm35sK+P0CyXnUoOchZ
-         nsPKMtStwQlzkOTp+ercMkZ8nqDxcBKfG3brUNkXWR5wHqEp+ZNBAFySVf8PdxsPCSg3
-         Bat2eBfLkTgSfquX1Mjd4L27Q+iuchzxmcUphkasoKXvk5qnq095ygUdJ0u5c0pxQ2mI
-         v/QA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20260327;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:dkim-signature;
-        bh=choMbSoYoRkI4EZKogv+on35PXN8ET4WeIfVWxIT3BE=;
-        fh=hq9S8Oa8+3Eg80dr/rr6b5iVzFpCgJeP+SM0Lee8NCw=;
-        b=iH1/FbxAXao+eUmmd+kfnbPE4tTbyqMM3hqViQrLODjcBBa6Yl3EDW1f30h3xAIjhi
-         l0OkPx+8dP1sjagCC6p/a0RxJSTAAu/n51LSeqXArVPCQGytS8CqPK3kFxWVRzNCo8Oq
-         P+dEwTf24+uk/BugMbm7+ijf0mmr4v23usKzD1u1adg87UuClFG+JHkRiNSflaj6xlb1
-         LybYc8QtFT+JFgo0FzQQa2OOz4DAAfUR5p1gKEAYSamkBiNkE7/A/Yb8yEfRRzsC18a+
-         3V7HKIyLlPUClED+pfLUA8suVJTgnMFLwG3A7MMCGshwRTbw7SOC5DsX3kRjttgJnry0
-         cOaw==;
-        darn=lists.infradead.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20260707; t=1794855250; x=1795460050; darn=lists.infradead.org;
-        h=content-type:cc:to:subject:message-id:date:from:in-reply-to
-         :references:mime-version:from:to:cc:subject:date:message-id:reply-to
-         :content-type;
-        bh=choMbSoYoRkI4EZKogv+on35PXN8ET4WeIfVWxIT3BE=;
-        b=a3VbYEqhMXzxD9GMdg9093pSp2UDY3LMbKLM02q19wGVosgZ3CdokNZlQuKrkCRXxV
-         km3qnttovBRv0ML/dxIZHVgY7Nmgh+tSlstmY8oqNQNQs6Mjl+Nz6C3GuzfMop7YrUXu
-         x4LRZHhTcuzkOpa8Qj8E+LsYC7SMuIaGL2z1MYKPUgFsRpYfYvC42mJEdl9Pjjcm1E4V
-         i8lAZYMfPzg2wn82nSpY2paMRTsb9rrK2ZI+M6Gl41SNuKyamgREiK0O/3GWUJJfLUy9
-         fmMNpEnxt7KUDffVLlEk4Reqzs8eJH8h3rHRiD9p/qLzaiXLGsRCAUlbfp/IbqyGQ3xh
-         ijPA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1794855250; x=1795460050;
-        h=content-type:cc:to:subject:message-id:date:from:in-reply-to
-         :references:mime-version:x-gm-gg:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to:content-type;
-        bh=choMbSoYoRkI4EZKogv+on35PXN8ET4WeIfVWxIT3BE=;
-        b=u+CYnfALMNlcp0YM0VWvHfMNRFa5eS4jC9guxhlbMSldZop0sDAjt7oOQTJOmIVypK
-         B7dEUMOHSDoXHGoiXBz0nYTJEtaEfApALUUnPNOjap2Y9Yi0+6BiA5WRwxQPhtwOqAYx
-         JXU5Lc4/TQXsAw8D7BoIfXsUHuWzymmQ7XLjkqarAqyO7qTS7HWcRVKd3sL8OCqdhMci
-         oI7gxvYBY4wXjEV9kRZ/+UEPs2Z64tJ4KMyFBGHf4GUgpFElA3WD42+trlZOjJKgz9Eo
-         pV5luUsxyqsegSNA5vStEgekMOo1QrLJtaX4jAuX3FyBjb1NZdlxEVWKbVYnjdpTrc73
-         4DxQ==
-X-Forwarded-Encrypted: i=1; AL+hErHsObzJhhtiXkFF7TPQmp41VOnSlSM6Aq5ErNDYtzpoqoouPyrNvrh0OIguZoSeyuI/XIXNCIL++tPAubrF7w==@lists.infradead.org
-X-Gm-Message-State: APuU4Z/Xqn4+UnDTRJe/wOgYrXksZUF0Sl5fAvQvw1o+xSk4864ovxh+
-	z0Fivz8pT017uglqfeRYPYjheGByOkyM8zRpp87f0ER4sLRvRfxx4jLK1WhtwDs2y41qv70YnJS
-	h8YfIvVZUs7Qz3MhPEgZDeyIo2gmXsFY=
-X-Gm-Gg: AYBFou0G/3e29B5pZzajMpV7K0TZLnvJIilcuTtys0BWX+e+kbW6izHXDGh1+TP/39d
-	cNsQiGHvAe5uxgwQtgHpTYTGOAwWhjmHRvPyokqVeB+SGZaFjYWbbHdz13Sy9HYbMMXPSyOBfF3
-	IpvL65SNYYb2YQvjIX1MfMWzZz8tt5GhD5YD4Eh1xnXtsJDt2LTX8o5KVVQwdw2lW9CadMWtmBS
-	Q6MbWCnA9RKkIoT93yZR0816aZ2CEzOG4px4bOs9ESzGKCnriKFSeoTWDhgzthmu6p4R1RjH7OE
-	FsnyCWR2E4IKnjIYlPzU2npDdWAQNTyMgT5DNU+4HoMixyY7abK88HTEP6M9UTAGh/955vrDS/I
-	OxZcYi/leWg1SkVfC1Mq5xiCC+ny5R0Ux47c=
-X-Received: by 2002:a05:6402:3210:b0:6b5:9714:dea8 with SMTP id
- 4fb4d7f45d1cf-6b7c0d24511mr9592011a12.45.1794855249794; Mon, 16 Nov 2026
- 10:54:09 -0800 (PST)
+	Mon, 16 Nov 2026 19:39:30 +0000
+Received: from [2a04:4540:1403:e6fc:39d9:16d5:775d:5525]
+	by ds12 with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
+	(Exim 4.96)
+	(envelope-from <john@phrozen.org>)
+	id 1xT2Xy-004L5b-1e;
+	Mon, 16 Nov 2026 20:39:22 +0100
+Message-ID: <e20f708f-ebfe-4dc0-a64c-1590fdf608f3@phrozen.org>
+Date: Mon, 16 Nov 2026 20:39:21 +0100
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-References: <20261020122712.526797-1-l.scorcia@gmail.com> <avZiZoGO4jXjIP7D@google.com>
-In-Reply-To: <avZiZoGO4jXjIP7D@google.com>
-From: Luca Leonardo Scorcia <l.scorcia@gmail.com>
-Date: Mon, 16 Nov 2026 19:53:58 +0100
-X-Gm-Features: AclHuK-ct3_bPqNEIOSB1NJrGGSJAI5u9bKqHSATB78hAxnxBRSskimQcv_9q0Q
-Message-ID: <CAORyz2LNRfnvbCLe+49A5kAF4NSi0zuYdpd95+7=Hx=KQh0B1g@mail.gmail.com>
-Subject: Re: [PATCH] Input: goodix - sync the irq controller while starting firmware
-To: Dmitry Torokhov <dmitry.torokhov@gmail.com>
-Cc: linux-input@vger.kernel.org, Hans de Goede <hansg@kernel.org>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-Content-Type: text/plain; charset="UTF-8"
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 5/7] dt-bindings: pinctrl: airoha: add AN7589
+To: Conor Dooley <conor@kernel.org>
+Cc: Lorenzo Bianconi <lorenzo@kernel.org>, Lee Jones <lee@kernel.org>,
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, Linus Walleij <linusw@kernel.org>,
+ Bartosz Golaszewski <brgl@kernel.org>, Ahmed Naseef <naseefkm@gmail.com>,
+ Benjamin Larsson <benjamin.larsson@genexis.eu>,
+ Christian Marangi <ansuelsmth@gmail.com>, devicetree@vger.kernel.org,
+ lei.dong@airoha.com, Linqi.zhang@airoha.com, linux-gpio@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ mfd@lists.linux.dev, Mikhail Kshevetskiy <mikhail.kshevetskiy@iopsys.eu>,
+ Rajeev.kumar@airoha.com, upstream@airoha.com, Weifeng.xu@airoha.com,
+ zhengping.zhang@airoha.com
+References: <20261112185941.1316112-1-john@phrozen.org>
+ <20261112185941.1316112-6-john@phrozen.org>
+ <20261113-fame-smock-6ea3b8fadcd0@spud>
+ <b94ed5e4-cb80-4e05-9964-bb08a61aa1fd@phrozen.org>
+ <20261116-resolved-riot-c6a310bb2d8c@spud>
+Content-Language: en-GB
+From: John Crispin <john@phrozen.org>
+In-Reply-To: <20261116-resolved-riot-c6a310bb2d8c@spud>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261116_105412_443320_067D5CA0 
-X-CRM114-Status: GOOD (  12.14  )
-X-Spam-Score: -2.1 (--)
+X-CRM114-CacheID: sfid-20261116_113929_591931_95539E12 
+X-CRM114-Status: GOOD (  22.31  )
+X-Spam-Score: -1.9 (-)
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -118,37 +75,127 @@ List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-7.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
-	DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,FREEMAIL_FORGED_FROMDOMAIN,
-	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	MENTIONS_GIT_HOSTING,SPF_HELO_NONE,SPF_PASS autolearn=no
-	autolearn_force=no version=4.0.1
+X-Spam-Status: No, score=-5.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1
+	autolearn=no autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-> There is call to goodix_int_sync() right after call to
-> goodix_start_firmware(). Is it still needed if we call it here? I think
-> the vendor drivers does not do it.
+Hi Conor,
 
-Hi,
-unfortunately yes, it's needed right there on the Lenovo Tab E7.
-Without it, the REG_SW_WDT right after it fails with the error "Error
-reading 1 bytes from 0x8041: -6".
-The vendor sources for this device [1] show the call to
-goodix_int_sync exactly between the two interactions with the WDT
-register.
+The largest users are EN7523 pcm_spi 14, AN7563 pnand 17, AN7583
+pnand 17, EN7528 pnand 17, EN7581 pnand 17 and AN7589 emmc 12 (these
+numbers are based on a hackish "grep foo | bar", so they might be
+slightly off).
 
-Actually, in the same sources I see no trace of a second
-goodix_int_sync after firmware has loaded, so the existing call could
-be moved a little earlier instead of introducing a duplicated new one.
-I tested moving the existing call on my device and it works just as
-fine (basically, my patch + commenting out the existing call at the
-end of goodix_firmware_upload.
+I copied and modified what the other AN/EN bindings do. These set the
+limit to the pin count of the SoC: EN7523 38, AN7563 38, AN7583 53,
+EN7528 50, EN7581 58. Your call really, I do not mind either way. I can
+send a v4 and then a follow up series cleaning up the existing bindings
+as well.
 
-Which vendor sources are you using for your reference?
+        John
 
-Thank you,
-Luca
+On 16.11.26 19:15, Conor Dooley wrote:
+> On Mon, Nov 16, 2026 at 06:47:27PM +0100, John Crispin wrote:
+>> On Fri, Nov 13, 2026 at 05:40:42PM +0000, Conor Dooley wrote:
+>>> As Lee requested, please split this out. Two patches, maybe even three.
+>>
+>> Agreed. v3 splits it into three patches.
+>>
+>>> Do we even need a child node here? If all this node does is
+>>> gpio/pinctrl, why can the driver not bind directly to this node?
+>>>
+>>> What else does it do that warrants being a syscon?
+>>
+>> The block also holds the PWM controller. Its registers interleave with
+>> the GPIO ones. The PWM series adds it as a second child, as on the
+>> EN7581. That series has a depency on this one so I have not posted it yet.
+>>
+>>> Otherwise, there should only be one. uart1 and uart2 should have
+>>> different nodes.
+>>
+>> Agreed. v3 sets maxItems to 1. Only pcm_spi and pcie keep more, as
+>> their groups carry different signals of one device.
+>>
+>>> So here, maxItems should be 1 for similar reasons.
+>>
+>> Agreed, v3 does this for i2c too.
+>>
+>>> I'm also curious about why this goes up to 74. None of the functions
+>>> have 74 pins, surely?
+>>
+>> A conf node can set the same config on any set of pins. 74 is all the
+>> pins. The EN7581 binding does the same with 58.
+> 
+> A difference in philosophy I guess - I would be grouping the pins in the
+> config node by user. So that there would be something like
+> 
+> spi1-stuff {
+> 	spi1-function {
+> 		function = spi
+> 		group = spi1
+> 	}
+> 
+> 	spi1-config1 {
+> 		pins = 1, 2
+> 		config1
+> 		config2
+> 	}
+> 
+> 	spi2-config2 {
+> 		pins = 3
+> 		config1
+> 	}
+> }
+> 
+> spi {
+> 	pinctrl-0 = spi1-function, spi-config1, spi-config2
+> }
+> 
+> or
+> 
+> spi {
+> 	pinctrl-0 = spi1-stuff
+> }
+> 
+> IMO, having config nodes covering more than one "feature" doesn't really
+> make sense, as you'd end up with something like:
+> 
+> spi1-function {
+> 	function = spi
+> 	group = spi1
+> }
+> 
+> all-config1-config2 {
+> 	pins = 1, 2, 4, 5
+> 	config1
+> 	config2
+> }
+> 
+> all-config1 {
+> 	pins = 3
+> 	config1
+> }
+> 
+> which kinda falls apart I think when a node can request a setting for
+> pins that are not part of it (in this case, that's pins 4 and 5)
+> 
+> spi {
+> 	pinctrl-0 = spi1-function, all-config1, all-config1-config2
+> }
+> 
+> So my opinion is that the max number of items should be the size of the
+> largest peripheral.
+> 
+> What's the largest actual user on the 7581?
+> 		
+>>
+>> v3 will follow shortly.
+>>
+>>         John
+>>
+>>
 
-[1] https://github.com/lscorcia/linux-lenovo-tb7104f/blob/2dad69c9f28611ac6d3db2f1ee11b480a60d83ee/kernel-4.4/drivers/input/touchscreen/mediatek/gt912_p98996/gt9xx_driver.c#L1529
 
