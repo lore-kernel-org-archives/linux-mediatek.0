@@ -2,97 +2,72 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id BA438606A31C
-	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Nov 2026 15:52:17 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id A4723606A322
+	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Nov 2026 16:28:03 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=DbHyxvNv;
-	dkim=pass (1024-bit key) header.d=ideasonboard.com header.i=@ideasonboard.com header.a=rsa-sha256 header.s=mail header.b=NusKEKiY
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=lSo7T5JZ;
+	dkim=pass (2048-bit key) header.d=disroot.org header.i=@disroot.org header.a=rsa-sha256 header.s=mail header.b=DrWFQCUZ
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Unsubscribe-Post:List-Owner;
-	bh=tc6KfHj5fySnLDo/yssasn7KXGGvXcSn8JCgqMRWVxQ=; b=DbHyxvNvjG6l/YWT1yfsQPU9pG
-	204P81AyMy6JUQQSqXNrKGueFzWqFUemAEZEDcwTEiz3UHKfVGYFvEFWH+BlqkmUAYt2Hl95SYD3J
-	rKFk0/xtx5FTnKu4tbn2D4jVg/JYDijD0dPMt4QkIvo0GDI/3nmJsQwicjvNF9q4Eh6SYtQVK5jVk
-	atFuK/pk9bKFCaZMBXZOuWfggM2N8/ix6klRNWTHgxFFuhUG5vPfsOc3HVMYT46LWb46cLkMtAA9K
-	mQxyKcHSVVaGQ1TRYIr7yIoNWkDwGPN/4g6izzsoMUGjVC1mbSxd7lqHX7VnQ8eSy4BgSG2MWKu1R
-	EEiWDT1A==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Unsubscribe-Post:
+	List-Owner; bh=2jBU5o2bkTGSmlvbTbsB7gQEFSTPAxXPYXkt03I97h4=; b=lSo7T5JZN1It4H
+	M8mpr6i291cGo0Mx/K1PqmWzugtUpiwFPRlrlztd4wp/+YQnGBxQPjLyfbGBt3eCUKHQrV2QycHAd
+	mAEBNhe7rv4JPGSvTkENg604yHm/cz6Rmmx+cTRmEzF4SxktfAsqk7aSahadK04tx0JIlwISWSs7d
+	VT+Ym87pbVDPy/q2K4KptS1cjfGlk2d97dUb5zQLg8fT9FHh+Mrcmt2zPF7z3gVC10AfsE2YECiWt
+	BlPL2YHmiC+ZtBljs7KUBI4KAUG/en5qpn/geqgfV2cJNEwXylwwMI/mG5da+u4hyE9fJWfo3jncq
+	21n73hjFrgG6lkO2cB7g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xSz0D-0000000380c-1sSe;
-	Mon, 16 Nov 2026 15:52:17 +0000
-Received: from perceval.ideasonboard.com ([213.167.242.64])
+	id 1xSzYn-00000003Dj0-0gnX;
+	Mon, 16 Nov 2026 16:28:01 +0000
+Received: from layka.disroot.org ([178.21.23.139])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xSz0B-000000037zR-02nq;
-	Mon, 16 Nov 2026 15:52:16 +0000
-Received: from killaraus.ideasonboard.com (2001-14ba-7086-3000--a06.rev.dnainternet.fi [IPv6:2001:14ba:7086:3000::a06])
-	by perceval.ideasonboard.com (Postfix) with ESMTPSA id ED0204BB;
-	Mon, 16 Nov 2026 16:49:45 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=ideasonboard.com;
-	s=mail; t=1794844186;
-	bh=dmodi+YIJbHNHccq3QM7tWgiNzPRHtMFkx//VJBaXh4=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To:From;
-	b=NusKEKiY4bzAOfEoYrIhBXyGlIkZI3PnloPf2BxBVRwuEIJvmtu+vw7O/jc41VQuU
-	 J3Ty1U67T4ibE4hILXY3O/CpMrCBJQpictxpRHUyim+WJ3gBdqwhQf8GriCHlXRv3w
-	 cuUezGZlAQGClI/3BR6NS7TrNFoxwJ2vIQYfr6tw=
-Date: Mon, 16 Nov 2026 17:52:11 +0200
-From: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-To: Frank Li <Frank.li@oss.nxp.com>
-Cc: Frank Li <Frank.Li@nxp.com>, "Rafael J. Wysocki" <rafael@kernel.org>,
-	linux-pm@vger.kernel.org, Jani Nikula <jani.nikula@linux.intel.com>,
-	Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
-	Rodrigo Vivi <rodrigo.vivi@intel.com>,
-	Tvrtko Ursulin <tursulin@ursulin.net>,
-	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
-	Maxime Ripard <mripard@kernel.org>,
-	Thomas Hellstrom <thomas.hellstrom@linux.intel.com>,
-	Simona Vetter <simona@ffwll.ch>, David Airlie <airlied@gmail.com>,
-	Matthew Brost <matthew.brost@intel.com>,
-	Thomas Zimmermann <tzimmermann@suse.de>,
-	Patrik Jakobsson <patrik.r.jakobsson@gmail.com>,
-	Alessio Belle <alessio.belle@imgtec.com>,
-	Luigi Santivetti <luigi.santivetti@imgtec.com>,
-	Liam Girdwood <lgirdwood@gmail.com>,
-	Mark Brown <broonie@kernel.org>, Jaroslav Kysela <perex@perex.cz>,
-	Takashi Iwai <tiwai@suse.com>,
-	Bard Liao <yung-chuan.liao@linux.intel.com>,
-	Pierre-Louis Bossart <pierre-louis.bossart@linux.dev>,
-	Peter Ujfalusi <peter.ujfalusi@linux.intel.com>,
-	Kai Vehmanen <kai.vehmanen@linux.intel.com>,
-	Robin Murphy <robin.murphy@arm.com>, Yong Wu <yong.wu@mediatek.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	id 1xSzYj-00000003Dh3-3KyA;
+	Mon, 16 Nov 2026 16:27:59 +0000
+Received: from mail01.layka.lan (localhost [127.0.0.1])
+	by disroot.org (Postfix) with ESMTP id 4F2AB808EB;
+	Mon, 16 Nov 2026 17:27:52 +0100 (CET)
+X-Virus-Scanned: SPAM Filter at disroot.org
+Received: from layka.disroot.org ([127.0.0.1])
+ by localhost (disroot.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id uKkmEh0y6lrv; Mon, 16 Nov 2026 17:27:51 +0100 (CET)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=disroot.org; s=mail;
+	t=1794846471; bh=pILPvvNhNcniZXqO6U9udmiLgiJvcbsp+5tCyQ0iSDA=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References;
+	b=DrWFQCUZtaM/iwRuaQiyr0audWq+nwMBikIk9hjfhc8zvqlsmr5sOZUR+ALOuaS6f
+	 YCFfsHpYfBNb97a7NKH7ZKk9hkikOSwaZHMB8VtAtRItfaoq3+FAW1UjZhTycOymFU
+	 spBSaoGaTVD+hfjKzgyXVi1Iw0OCHcAEO7mHjsYhSkV+XYhvn+AYsKfStrKLP0mMNB
+	 6P3ue0rEov+GFGGOadzAJG6jds2PdK5RZzJgMPxnRCyK6r7SMpb8/f/Ty1a/8yOnij
+	 Y1wXXAbGmjcs0JRhzfqspv5NP+AXvven9xq0VvVv68qmCgs+6isCdbEVJ9C/4GmHAj
+	 PlcuEhlhWL5+w==
+From: Florian Maurer <fmaurer@disroot.org>
+To: Lorenzo Bianconi <lorenzo@kernel.org>
+Cc: Florian Maurer <fmaurer@disroot.org>,
+	Felix Fietkau <nbd@nbd.name>,
+	Ryder Lee <ryder.lee@mediatek.com>,
+	Shayne Chen <shayne.chen@mediatek.com>,
+	Sean Wang <sean.wang@mediatek.com>,
 	Matthias Brugger <matthias.bgg@gmail.com>,
-	Heiko Stuebner <heiko@sntech.de>,
-	Mauro Carvalho Chehab <mchehab@kernel.org>,
-	Dafna Hirschfeld <dafna@fastmail.com>,
-	Michael Tretter <m.tretter@pengutronix.de>,
-	Daniel Baluta <daniel.baluta@nxp.com>,
-	Will Deacon <will@kernel.org>,
-	Vijendar Mukunda <Vijendar.Mukunda@amd.com>,
-	dri-devel@lists.freedesktop.org, imagination@lists.freedesktop.org,
-	intel-gfx@lists.freedesktop.org, intel-xe@lists.freedesktop.org,
-	iommu@lists.linux.dev, linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org, linux-media@vger.kernel.org,
-	linux-rockchip@lists.infradead.org, linux-sound@vger.kernel.org,
-	sound-open-firmware@alsa-project.org, imx@lists.linux.dev
-Subject: Re: [PATCH v2 2/2] PM: runtime: fix stub pm_runtime_get_if_in_use()
- for !CONFIG_PM
-Message-ID: <20261116155211.GB1763340@killaraus.ideasonboard.com>
-References: <20261116152513.2676573-1-Frank.Li@oss.nxp.com>
- <20261116152513.2676573-2-Frank.Li@oss.nxp.com>
- <20261116153139.GB1763944@killaraus.ideasonboard.com>
- <avskkbztzVF_SRo6@SMW015318>
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	linux-wireless@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	stable@vger.kernel.org
+Subject: Re: [PATCH wireless 1/2] wifi: mt76: npu: return rx slots to the NPU only after refilling them
+Date: Mon, 16 Nov 2026 16:27:38 +0000
+Message-ID: <20261116162741.2438098-1-fmaurer@disroot.org>
+In-Reply-To: <avrdu8qr9L2sEuTz@lore-desk>
+References: <cover.1793927986.git.fmaurer@disroot.org> <d6314f34e0965464207656d38a145490b6437aa5.1793927986.git.fmaurer@disroot.org> <au3igPTxdz3i64SO@lore-desk> <20261108205350.2956138-1-fmaurer@disroot.org> <avGnv8Jr7BAiQhG1@lore-desk> <avrdu8qr9L2sEuTz@lore-desk>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-In-Reply-To: <avskkbztzVF_SRo6@SMW015318>
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261116_075215_204000_A2651BE1 
-X-CRM114-Status: GOOD (  41.80  )
+X-CRM114-CacheID: sfid-20261116_082758_252398_45572873 
+X-CRM114-Status: GOOD (  14.62  )
 X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -104,171 +79,54 @@ List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-15.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-10.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,
-	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=ham
-	autolearn_force=no version=4.0.1
+	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On Mon, Nov 16, 2026 at 09:43:13AM -0600, Frank Li wrote:
-> On Mon, Nov 16, 2026 at 05:31:39PM +0200, Laurent Pinchart wrote:
-> > On Mon, Nov 16, 2026 at 10:25:11AM -0500, Frank.Li@oss.nxp.com wrote:
-> > > From: Frank Li <Frank.Li@nxp.com>
-> > >
-> > > The stub for pm_runtime_get_if_in_use() under !CONFIG_PM currently
-> > > returns -EINVAL.  The real implementation returns:
-> > >   1  - device is active and its usage counter is non-zero (bumped)
-> > >   0  - device is not in use or not active (counter not bumped)
-> > >  -EINVAL - runtime PM disabled for this device
-> > >
-> > > When CONFIG_PM is not set every device is permanently "active" and
-> > > always considered "in use", so the stub must return 1, mirroring
-> > > __pm_runtime_resume() which already returns 1 in the same build.
-> > >
-> > > Returning -EINVAL breaks callers that test the return value with
-> > > comparisons other than "!= 0 / == 0":
-> > >
-> > > drivers/gpu/drm/i915/intel_runtime_pm.c:
-> > >   if (intel_runtime_pm_get_if_in_use(rpm))
-> > >   which wraps to: ret = pm_runtime_get_if_in_use(); return ret > 0;
-> > >   With -EINVAL the wrapper returns false, causing an incorrect error
-> > >   path in the GT fence revocation code.
-> > >
-> > > drivers/gpu/drm/xe/xe_pm.c:
-> > >   if (pm_runtime_get_if_in_use(xe->drm.dev) > 0)
-> > >   With -EINVAL the condition is false; xe_pm_runtime_get_if_in_use()
-> > >   returns false, so callers believe the device is not usable.
-> > >
-> > > drivers/gpu/drm/gma500/power.c:
-> > >   return pm_runtime_get_if_in_use(dev) == 1;
-> > >   -EINVAL != 1, so the helper always returns false when !CONFIG_PM.
-> > >
-> > > drivers/gpu/drm/imagination/pvr_power.c:
-> > >   if (pm_runtime_get_if_in_use(...) <= 0)
-> > >   -EINVAL <= 0 is true, so the driver always takes the "requeue" error
-> > >   path instead of proceeding with the active device.
-> > >
-> > > sound/soc/sof/debug.c:
-> > >   if (pm_runtime_get_if_in_use(sdev->dev) == 1)
-> > >   -EINVAL != 1, so d3_prevented is never set, corrupting exception
-> > >   debug accounting.
-> > >
-> > > drivers/iommu/mtk_iommu.c:
-> > >   if (pm_runtime_get_if_in_use(dom->plat_dev->dev) <= 0)
-> > >   -EINVAL <= 0 skips the TLB flush, leaving stale IOMMU mappings.
-> > >
-> > > drivers/iommu/rockchip-iommu.c:
-> > >   Three call sites use WARN_ON_ONCE(err < 0) or similar patterns.
-> > >   -EINVAL < 0 triggers a spurious WARNING on every call.
-> > >
-> > > drivers/media/i2c/isl7998x.c:
-> > >   if (pm_runtime_get_if_in_use(dev) <= 0)  (two call sites)
-> > >   -EINVAL <= 0 causes the driver to always skip register programming
-> > >   when !CONFIG_PM.
-> > >
-> > > drivers/media/platform/rockchip/rkisp1/rkisp1-debug.c:
-> > >   if (pm_runtime_get_if_in_use(dev) <= 0)  (two call sites)
-> > >   -EINVAL <= 0 prevents any debug statistics from being collected.
-> > >
-> > > Fixes: 9d58aa46291d ("drm/i915: Fix the GT fence revocation runtime PM logic")
-> > > Fixes: cbb6a7413b17 ("drm/xe: Introduce xe_pm_runtime_get_noresume for inner callers")
-> > > Fixes: 672c473576ca ("drm/gma500: Rewrite power management code")
-> > > Fixes: 727538a4bbff ("drm/imagination: Implement power management")
-> > > Fixes: b30289e7fa92 ("ASoC: SOF: Fix runtime pm usage counter balance after fw exception")
-> > > Fixes: c0b57581b73b ("iommu/mediatek: Add power-domain operation")
-> > > Fixes: 0f181d3cf7d9 ("iommu/rockchip: Add runtime PM support")
-> > > Fixes: 51ef2be546e2 ("media: i2c: isl7998x: Add driver for Intersil ISL7998x")
-> > > Fixes: cbb819c363c5 ("media: rkisp1: debug: Collect input status by sampling ISP_FLAGS_SHD")
-> >
-> > I don't think this one is right. The rkisp1 driver only runs on ARCH_MXC
-> > and ARCH_ROCKCHIP, which select CONFIG_PM. The same may be true for some
-> > of the other fixes tags.
-> 
-> But code itself should be wrong even though these platform force enable
-> CONFIG_PM.
+On Mon, Nov 09, 2026 at 12:00:15PM +0100, Lorenzo Bianconi wrote:
+> q->head and q->tail are not the same when we have refilled the queue
+> with new buffers. Moreover, I think if mt76_npu_fill_rx_queue() fails
+> [...] it is not correct to use q->head for dma_idx
 
-How does it make the code wrong in the rkisp1 driver ? There's nothing
-to fix there, because there's no bug.
+You're right, q->tail it is. In my tests I could not tell your version
+and mine apart, so nothing speaks for head + 1.
 
-I'm not saying this patch is wrong (I'll let the runtime PM folks
-provide expert feedback), but I think some of the Fixes: tags are not
-correct.
+> Can you please check the updated patch below?
 
-> > > Signed-off-by: Frank Li <Frank.Li@nxp.com>
-> > > ---
-> > > Change in v2
-> > > - new patches.
-> > >
-> > > Cc: "Rafael J. Wysocki" <rafael@kernel.org>
-> > > Cc: linux-pm@vger.kernel.org
-> > > Cc: Jani Nikula <jani.nikula@linux.intel.com>
-> > > Cc: Joonas Lahtinen <joonas.lahtinen@linux.intel.com>
-> > > Cc: Rodrigo Vivi <rodrigo.vivi@intel.com>
-> > > Cc: Tvrtko Ursulin <tursulin@ursulin.net>
-> > > Cc: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>
-> > > Cc: Maxime Ripard <mripard@kernel.org>
-> > > Cc: "Thomas Hellstrom" <thomas.hellstrom@linux.intel.com>
-> > > Cc: Simona Vetter <simona@ffwll.ch>
-> > > Cc: David Airlie <airlied@gmail.com>
-> > > Cc: Matthew Brost <matthew.brost@intel.com>
-> > > Cc: Thomas Zimmermann <tzimmermann@suse.de>
-> > > Cc: Patrik Jakobsson <patrik.r.jakobsson@gmail.com>
-> > > Cc: Alessio Belle <alessio.belle@imgtec.com>
-> > > Cc: Luigi Santivetti <luigi.santivetti@imgtec.com>
-> > > Cc: Liam Girdwood <lgirdwood@gmail.com>
-> > > Cc: Mark Brown <broonie@kernel.org>
-> > > Cc: Jaroslav Kysela <perex@perex.cz>
-> > > Cc: Takashi Iwai <tiwai@suse.com>
-> > > Cc: Bard Liao <yung-chuan.liao@linux.intel.com>
-> > > Cc: Pierre-Louis Bossart <pierre-louis.bossart@linux.dev>
-> > > Cc: Peter Ujfalusi <peter.ujfalusi@linux.intel.com>
-> > > Cc: Kai Vehmanen <kai.vehmanen@linux.intel.com>
-> > > Cc: Robin Murphy <robin.murphy@arm.com>
-> > > Cc: Yong Wu <yong.wu@mediatek.com>
-> > > Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-> > > Cc: Matthias Brugger <matthias.bgg@gmail.com>
-> > > Cc: Heiko Stuebner <heiko@sntech.de>
-> > > Cc: Mauro Carvalho Chehab <mchehab@kernel.org>
-> > > Cc: Dafna Hirschfeld <dafna@fastmail.com>
-> > > Cc: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-> > > Cc: Michael Tretter <m.tretter@pengutronix.de>
-> > > Cc: Daniel Baluta <daniel.baluta@nxp.com>
-> > > Cc: Will Deacon <will@kernel.org>
-> > > Cc: Vijendar Mukunda <Vijendar.Mukunda@amd.com>
-> > > Cc: dri-devel@lists.freedesktop.org
-> > > Cc: imagination@lists.freedesktop.org
-> > > Cc: intel-gfx@lists.freedesktop.org
-> > > Cc: intel-xe@lists.freedesktop.org
-> > > Cc: iommu@lists.linux.dev
-> > > Cc: linux-arm-kernel@lists.infradead.org
-> > > Cc: linux-mediatek@lists.infradead.org
-> > > Cc: linux-media@vger.kernel.org
-> > > Cc: linux-rockchip@lists.infradead.org
-> > > Cc: linux-sound@vger.kernel.org
-> > > Cc: sound-open-firmware@alsa-project.org
-> > > Cc: imx@lists.linux.dev
-> > > ---
-> > >  include/linux/pm_runtime.h | 2 +-
-> > >  1 file changed, 1 insertion(+), 1 deletion(-)
-> > >
-> > > diff --git a/include/linux/pm_runtime.h b/include/linux/pm_runtime.h
-> > > index de9e7518ecef2..1d983fe55a16a 100644
-> > > --- a/include/linux/pm_runtime.h
-> > > +++ b/include/linux/pm_runtime.h
-> > > @@ -276,7 +276,7 @@ static inline int pm_schedule_suspend(struct device *dev, unsigned int delay)
-> > >  }
-> > >  static inline int pm_runtime_get_if_in_use(struct device *dev)
-> > >  {
-> > > -	return -EINVAL;
-> > > +	return 1;
-> > >  }
-> > >  static inline int pm_runtime_get_if_active(struct device *dev)
-> > >  {
+Sorry for the delay. I tested it on the W1700K (kernel 6.18.55, mt76
+467ae2e3) and it works: no oops, no rx stall.
 
--- 
-Regards,
+What I ran: your diff as posted, plus read-only counters that write
+nothing to the descriptors. Load was 62 minutes of iperf3 from an
+ath11k mesh peer at 113-259 Mbit/s, with four busy loops at nice -20
+on the W1700K for 3 s every 18 s. In that time:
 
-Laurent Pinchart
+- 61.9 M frames on MT_RXQ_NPU1, 1.88 M on MT_RXQ_NPU0, of which 227781
+  span two slots
+- no oops, no page_pool warning
+- no descriptor that changed between consume and refill
+- no refill failure, no skb failure, no tx-free parse error
+
+Tested-by: Florian Maurer <fmaurer@disroot.org>
+
+I found another issue of the NPU while testing, so this took me some
+time as well:
+In one minute, 226 multi-slot frames in a row did not end on the slot
+with LAST. Slots of the rx ring go missing under this kind of load (I
+suspect the NPU drops them), and counting slots by PKT_COUNT then
+assembles the following frames one slot off, in your version and in
+mine. I think tx-free events are lost the same way.
+I will post it as a separate [BUG] report in the next days.
+
+Optional: in my tree I made the poll report the budget as used when
+the skb allocation fails, so napi polls again instead of waiting for
+an interrupt. It never triggered here.
+
+Please post your patch with the Tested-by. My 2/2 can be dropped.
+
+Thanks,
+Florian
 
