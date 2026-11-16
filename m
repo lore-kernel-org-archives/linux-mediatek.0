@@ -2,11 +2,11 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 15767606A31C
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 99671606A321
 	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Nov 2026 01:34:59 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=zxZ4HaEV;
-	dkim=pass (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.a=rsa-sha256 header.s=dk header.b=Y+9rof1c
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=Dvfw6zOc;
+	dkim=pass (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.a=rsa-sha256 header.s=dk header.b=D8BZ41mI
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
@@ -14,29 +14,29 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=p4Sgu9+wyhPOBxc0f56Q89MG92E3siMZXun1AnFFUZA=; b=zxZ4HaEVlQuQTJORB0rspVjC86
-	n/h4M8sVEKR9o5OfkqmaLYDhNq89/Zx9s7pQtxSo6ACQjusXwIYfbTWrH0YnzGg3LH4s8p5KcTNWi
-	ilA6QwjYSkQ7AKJw7WMm2WgnEd9Qmk48BkAP1SK1kQ25sz/vZgU/GNjywNmUuNgbm3V72M4SYjv7u
-	ws9qwN/9siG3gI62kul9jSs2TKkFTbMzta0eWwjrLw+wQRe7D6QEZ18TSzZdOTQ9ZXxkkXjPmTmmm
-	SuHEM64nnAe06MmmcDSuE51vHxWHG4fTBeD/pZBge9W+5ZiigfVeePLd+9NEj9DSjPj0HNJIPRLQA
-	gdefdpOw==;
+	bh=ub26QxRtyPR/mSpP9JA78utQTecvJsFWpEpFKuQjqHU=; b=Dvfw6zOcme04b+y6tnGv0mOlmL
+	XvFhw8rKYJuEECs8t/TgDCG0bkYFar8yuBBckK6JxQNP7Z0d7Yg0ycimBnNYX/j6YON2lpqPTY5x7
+	Mt8rPmtJAKuqPBDIZnYm5oi/CWb5LH6pGAHi7Cry8TTMi8v3Q0UJ1YIQbhRgGeFGKYpqiHLCEBWvh
+	KS+P0upxZkOsAVyitje1e7+HqGZQQrLwPhSalH1LQ+Qw8JZyxlgEOZK2swivKcu3c6E7l/XJPTOzL
+	zeqvbLszhq/gzN2GN5rwxpQfgQB4y5HOk2oYvuCVxICJKnr0QK4KWmpgjQzeGukFiiz/m4n+O0w5u
+	13KlMFlQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xSlcY-00000000scR-2RAo;
+	id 1xSlcY-00000000sdX-43lA;
 	Mon, 16 Nov 2026 01:34:58 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xSlc3-00000000sB1-2bqK;
-	Mon, 16 Nov 2026 01:34:29 +0000
-X-UUID: d8cea1b6e15d11f1afed4741b24580c9-20261115
+	id 1xSlc5-00000000sDG-2JRV;
+	Mon, 16 Nov 2026 01:34:30 +0000
+X-UUID: dbba4088e15d11f1acbe4559397dec65-20261115
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=p4Sgu9+wyhPOBxc0f56Q89MG92E3siMZXun1AnFFUZA=;
-	b=Y+9rof1cjLoqXhv5nbZ04//nqeHaz7nmwSqNaEOvDAZ1338KoysAhty8mqhl1knYfYfsFI2Jo3T7aQsTbXTykJ/rUNhDVYzYFN83bk8TUApllGckSx1eQWHan/08Zv386t+MA4rN0m0CpYhNTLu9ci+FsmUergJqIULytocBphI=;
+	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=ub26QxRtyPR/mSpP9JA78utQTecvJsFWpEpFKuQjqHU=;
+	b=D8BZ41mIjAliw+XCjncKU/lv6NwgxbkcX8csf+rax4iLg9gpSDl3fXgheZswkDvO7ecIN4zWV9pOUWN5/IMYLR4XEwkOD40L4HXjMO36efhaJKzFWhf3k9y/nXsXFa84548wGpjkliOTc/VcZlqMKUH5XIlEcRNbTBrbY3r7zns=;
 X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.21,REQID:c6d2719e-9442-4293-841c-b1be39e462f7,IP:0,U
+X-CID-O-INFO: VERSION:1.3.21,REQID:bf196528-e510-40ec-ae71-04a28f2b8e02,IP:0,U
 	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
 	release,TS:0
-X-CID-META: VersionHash:b0318ac,CLOUDID:a1dc5666-4b51-4c95-bb1b-80ac6aad9c96,B
+X-CID-META: VersionHash:b0318ac,CLOUDID:9f06cb8d-b3e7-4795-ae33-b1b4d51e21d7,B
 	ulkID:nil,BulkQuantity:0,SF:81|82|102|836|865|888|898,TC:-5,Content:0|15|5
 	0|99,EDM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0
 	,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
@@ -44,18 +44,18 @@ X-CID-BVR: 2,SSN|SDN
 X-CID-BAS: 2,SSN|SDN,0,_
 X-CID-FACTOR: TF_CID_SPAM_SNR
 X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: d8cea1b6e15d11f1afed4741b24580c9-20261115
-Received: from mtkmbs14n2.mediatek.inc [(172.21.101.76)] by mailgw01.mediatek.com
+X-UUID: dbba4088e15d11f1acbe4559397dec65-20261115
+Received: from mtkmbs11n2.mediatek.inc [(172.21.101.187)] by mailgw02.mediatek.com
 	(envelope-from <kyrie.wu@mediatek.com>)
 	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1309564869; Sun, 15 Nov 2026 18:34:21 -0700
+	with ESMTP id 103137279; Sun, 15 Nov 2026 18:34:25 -0700
 Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- MTKMBS09N1.mediatek.inc (172.21.101.35) with Microsoft SMTP Server
+ mtkmbs11n1.mediatek.inc (172.21.101.185) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.29; Mon, 16 Nov 2026 09:34:18 +0800
+ 15.2.2562.29; Mon, 16 Nov 2026 09:34:23 +0800
 Received: from gcnsap21.gcn.mediatek.inc (10.17.81.22) by
  mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.2562.29 via Frontend Transport; Mon, 16 Nov 2026 09:34:17 +0800
+ 15.2.2562.29 via Frontend Transport; Mon, 16 Nov 2026 09:34:22 +0800
 From: Kyrie Wu <kyrie.wu@mediatek.com>
 To: Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring <robh@kernel.org>,
 	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>,
@@ -67,9 +67,9 @@ To: Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring <robh@kernel.org>,
 	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
 	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>
 CC: Kyrie Wu <kyrie.wu@mediatek.com>
-Subject: [PATCH v19 08/13] media: mediatek: jpeg: fix remove buffer removal timing for multi-core
-Date: Mon, 16 Nov 2026 09:33:33 +0800
-Message-ID: <20261116013402.1273016-9-kyrie.wu@mediatek.com>
+Subject: [PATCH v19 12/13] media: mediatek: jpeg: add jpeg compatible
+Date: Mon, 16 Nov 2026 09:33:37 +0800
+Message-ID: <20261116013402.1273016-13-kyrie.wu@mediatek.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20261116013402.1273016-1-kyrie.wu@mediatek.com>
 References: <20261116013402.1273016-1-kyrie.wu@mediatek.com>
@@ -79,8 +79,8 @@ Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
 X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261115_173427_664077_6E600C50 
-X-CRM114-Status: GOOD (  10.33  )
+X-CRM114-CacheID: sfid-20261115_173429_617724_4DF5A663 
+X-CRM114-Status: GOOD (  11.10  )
 X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -100,42 +100,106 @@ X-Spam-Status: No, score=-18.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Remove prepared source and destination buffers from the M2M ready
-queues in the multi-core decoder after destination preparation succeeds
-and before arming the timeout or starting hardware, matching the encoder
-flow. Completion can then return buffers without leaving them linked
-in a ready queue. Preparation failures keep the existing cleanup path.
+Add jpeg dec and enc compatible for mt8196
 
-Fixes: 86379bd9d399 ("media: mtk-jpeg: Fixes jpeg enc&dec worker sw flow")
 Signed-off-by: Kyrie Wu <kyrie.wu@mediatek.com>
+Reviewed-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 ---
- drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+ .../platform/mediatek/jpeg/mtk_jpeg_core.c    | 36 +++++++++++++++++++
+ .../platform/mediatek/jpeg/mtk_jpeg_dec_hw.c  |  3 ++
+ .../platform/mediatek/jpeg/mtk_jpeg_enc_hw.c  |  3 ++
+ 3 files changed, 42 insertions(+)
 
 diff --git a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
-index a34f2d6a5..1a289e448 100644
+index 1a289e448..b38feef2d 100644
 --- a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
 +++ b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_core.c
-@@ -1760,9 +1760,6 @@ retry_select:
- 		goto dec_end;
- 	}
+@@ -1963,6 +1963,20 @@ static struct mtk_jpeg_variant mtk8195_jpegenc_drvdata = {
+ 	.jpeg_worker = mtk_jpegenc_worker,
+ };
  
--	v4l2_m2m_src_buf_remove(ctx->fh.m2m_ctx);
--	v4l2_m2m_dst_buf_remove(ctx->fh.m2m_ctx);
--
- 	mtk_jpeg_set_dec_src(ctx, &src_buf->vb2_buf, &bs);
- 	if (mtk_jpeg_set_dec_dst(ctx,
- 				 &jpeg_src_buf->dec_param,
-@@ -1777,6 +1774,9 @@ retry_select:
- 	jpeg_dst_buf->frame_num = ctx->total_frame_num;
- 	ctx->total_frame_num++;
- 
-+	v4l2_m2m_src_buf_remove(ctx->fh.m2m_ctx);
-+	v4l2_m2m_dst_buf_remove(ctx->fh.m2m_ctx);
++static struct mtk_jpeg_variant mtk8196_jpegenc_drvdata = {
++	.formats = mtk_jpeg_enc_formats,
++	.num_formats = MTK_JPEG_ENC_NUM_FORMATS,
++	.qops = &mtk_jpeg_enc_qops,
++	.m2m_ops = &mtk_jpeg_multicore_enc_m2m_ops,
++	.dev_name = "mtk-jpeg-enc",
++	.ioctl_ops = &mtk_jpeg_enc_ioctl_ops,
++	.out_q_default_fourcc = V4L2_PIX_FMT_YUYV,
++	.cap_q_default_fourcc = V4L2_PIX_FMT_JPEG,
++	.multi_core = true,
++	.jpeg_worker = mtk_jpegenc_worker,
++	.support_34bit = true,
++};
 +
- 	schedule_delayed_work(&comp_jpeg[hw_id]->job_timeout_work,
- 			      msecs_to_jiffies(MTK_JPEG_HW_TIMEOUT_MSEC));
+ static const struct mtk_jpeg_variant mtk8195_jpegdec_drvdata = {
+ 	.formats = mtk_jpeg_dec_formats,
+ 	.num_formats = MTK_JPEG_DEC_NUM_FORMATS,
+@@ -1976,6 +1990,20 @@ static const struct mtk_jpeg_variant mtk8195_jpegdec_drvdata = {
+ 	.jpeg_worker = mtk_jpegdec_worker,
+ };
  
++static const struct mtk_jpeg_variant mtk8196_jpegdec_drvdata = {
++	.formats = mtk_jpeg_dec_formats,
++	.num_formats = MTK_JPEG_DEC_NUM_FORMATS,
++	.qops = &mtk_jpeg_dec_qops,
++	.m2m_ops = &mtk_jpeg_multicore_dec_m2m_ops,
++	.dev_name = "mtk-jpeg-dec",
++	.ioctl_ops = &mtk_jpeg_dec_ioctl_ops,
++	.out_q_default_fourcc = V4L2_PIX_FMT_JPEG,
++	.cap_q_default_fourcc = V4L2_PIX_FMT_YUV420M,
++	.multi_core = true,
++	.jpeg_worker = mtk_jpegdec_worker,
++	.support_34bit = true,
++};
++
+ static const struct of_device_id mtk_jpeg_match[] = {
+ 	{
+ 		.compatible = "mediatek,mt8173-jpgdec",
+@@ -2005,6 +2033,14 @@ static const struct of_device_id mtk_jpeg_match[] = {
+ 		.compatible = "mediatek,mt8195-jpgdec",
+ 		.data = &mtk8195_jpegdec_drvdata,
+ 	},
++	{
++		.compatible = "mediatek,mt8196-jpgenc",
++		.data = &mtk8196_jpegenc_drvdata,
++	},
++	{
++		.compatible = "mediatek,mt8196-jpgdec",
++		.data = &mtk8196_jpegdec_drvdata,
++	},
+ 	{},
+ };
+ 
+diff --git a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_dec_hw.c b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_dec_hw.c
+index 0ce798d35..6b636ec63 100644
+--- a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_dec_hw.c
++++ b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_dec_hw.c
+@@ -45,6 +45,9 @@ static const struct of_device_id mtk_jpegdec_hw_ids[] = {
+ 	{
+ 		.compatible = "mediatek,mt8195-jpgdec-hw",
+ 	},
++	{
++		.compatible = "mediatek,mt8196-jpgdec-hw",
++	},
+ 	{},
+ };
+ MODULE_DEVICE_TABLE(of, mtk_jpegdec_hw_ids);
+diff --git a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_enc_hw.c b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_enc_hw.c
+index d6ecaeec2..c2de272d7 100644
+--- a/drivers/media/platform/mediatek/jpeg/mtk_jpeg_enc_hw.c
++++ b/drivers/media/platform/mediatek/jpeg/mtk_jpeg_enc_hw.c
+@@ -51,6 +51,9 @@ static const struct of_device_id mtk_jpegenc_drv_ids[] = {
+ 	{
+ 		.compatible = "mediatek,mt8195-jpgenc-hw",
+ 	},
++	{
++		.compatible = "mediatek,mt8196-jpgenc-hw",
++	},
+ 	{},
+ };
+ MODULE_DEVICE_TABLE(of, mtk_jpegenc_drv_ids);
 -- 
 2.51.0.windows.2
 
