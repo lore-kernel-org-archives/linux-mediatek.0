@@ -2,11 +2,11 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 5C5B0606A334
-	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Nov 2026 12:14:22 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id A48B0606A334
+	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Nov 2026 12:14:32 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=eYccfx/4;
-	dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=Z8G00Yrp
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=GZFMO10D;
+	dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=KIm50iQ/
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
@@ -14,36 +14,36 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=MbbNnl/jR3I2yk7n0pnhFk5B2IOyBxzkEUr5ZXc5j/I=; b=eYccfx/4Wj+dX5UtWIOSDKzliZ
-	9w0uQVIIvQJKo2ixSOcq1uoIKqUIA0j7zRUxhHf2ogsSchWlJgkuuu3PjXv4e79ka4w+lFpZOKPt5
-	HY7t0QEEksg4jtbfbA9L6IEIxajjarcaNUyfyk2kJyqvUVXnRnWWGElicmJz261m8k7FHVc4iEQKT
-	khjkKnaShBuHLqe2qzaTeJCUcTG+IZmvTnKOiXOxVidMXFXyb6NhD/83Ynk+2CHNU3U+t/C7HTs+H
-	Gdzlto0GHEJe4su2U/3XO3SPuftjQTk5whL5OS+g16t/OGF4XZaIcJI1l2sNsldGgXyoymUMoYwn9
-	1fRML7wA==;
+	bh=Xn1i3YnRkDlooHuSD1NNSSzodVAxCfUHp6XrUWpozOA=; b=GZFMO10DEH8TyrtlKtM3Qn6YWy
+	BAPPXFgBGrqGAM3S4LWpeUe6fvmo2MIsm0OZkVpuuDARX3WYSnwjYS2ye0UmPf/G7m+zZeIYQj2jS
+	Gm11iMnZQq1vDH1OupiyUJbjMjqtyoS6MQaNl8YGZsR4T1TELyLK0rEVHrHtql9e5NA561HVcwPPH
+	uDJt0SCzdr6H4FpFhzhGjcmEayh8LhsStVfjuyNIFmjhP90G1DRY/mHlCVHVobQ1ojXPxlLdViN2n
+	jrzFM67QOlGgKfxgAvtPrk32FZ3jEt+u6pXpFoj5YqfwMyldXgqxPoZXD9En7AhUmlgfj+2zQrsXB
+	wfaxhbSg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xSvbK-00000002Jq9-0SEw;
-	Mon, 16 Nov 2026 12:14:22 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1xSvbU-00000002Jum-1Wqf;
+	Mon, 16 Nov 2026 12:14:32 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xSvbI-00000002JpN-1kIu;
-	Mon, 16 Nov 2026 12:14:20 +0000
+	id 1xSvbS-00000002Ju9-281L;
+	Mon, 16 Nov 2026 12:14:30 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id C70D140E47;
-	Mon, 16 Nov 2026 12:14:19 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 4B25D1F000C5;
-	Mon, 16 Nov 2026 12:14:18 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 451D340AEC;
+	Mon, 16 Nov 2026 12:14:30 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id E73991F000C6;
+	Mon, 16 Nov 2026 12:14:28 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1794831259;
-	bh=MbbNnl/jR3I2yk7n0pnhFk5B2IOyBxzkEUr5ZXc5j/I=;
+	s=k20260515; t=1794831270;
+	bh=Xn1i3YnRkDlooHuSD1NNSSzodVAxCfUHp6XrUWpozOA=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=Z8G00YrpMZOFOLqZjGfm3ltH/GlUUkVKqMZNf93IProiIv/J7xu2U8EjH0ShqbYoc
-	 AZTrr8aN+PE0KX8sGiQ0y0J/Af511zBRVAkPbsNdA5vE5tATFeEZRJbHeMVOodUZrv
-	 OH1aN31qJVt1rpseTxC3rHTlTYnuyrNYpUlGw5A5PbRDYoSzFc3F6b2XBju34Zudl+
-	 RcugStbk3rSR74W9Rt2YP7q0bzjHJ+Ult/PEzZ1vAAU3fBqcYeBuLE94ldhW7znMf7
-	 xu60wi38paiT0gTQauw4tOmTwpYX+2FK+rymiMhTGpfJvg6me3WtKQr0zB/0LOfVks
-	 cdnhwm6iYT9PA==
-Date: Mon, 16 Nov 2026 13:14:10 +0100
+	b=KIm50iQ/adAvkjf6peIijG/2vh984qmxf9dwhTBLew3nTx0Om6CadhLy96Bx+X5IE
+	 wlrS90PvzDhaVba5SucbE2OYb36jax4bZ47GK/qvZz2cssjpevzK+XnVdBg2fPTsHI
+	 iumPd2qooRm0CIzMrmGz/GAFYV7sRe7zeIT13kvKz77iOkgz+H1l/cJOFpLZLJ4oS3
+	 jvMngguK3FD4r8fP0tIngANPJ60GSldBwSg5AOH1BlhBo1b5/E2Guafwmj0tVsxNEJ
+	 HGclFUizCNNxhHJGYzfj8v4yDk0NXvkATJGkl3expuv7buN9kbDnRcuSGEPPipZMkY
+	 1bMT8JxIrGJ1A==
+Date: Mon, 16 Nov 2026 13:14:20 +0100
 From: Krzysztof Kozlowski <krzk@kernel.org>
 To: Alexander Letuchiy <asalde.le1@gmail.com>
 Cc: Rob Herring <robh@kernel.org>, 
@@ -58,16 +58,16 @@ Cc: Rob Herring <robh@kernel.org>,
 	"Guilherme G. Piccoli" <gpiccoli@igalia.com>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
 	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-serial@vger.kernel.org, 
 	linux-watchdog@vger.kernel.org, linux-input@vger.kernel.org, phone-devel@vger.kernel.org
-Subject: Re: [PATCH v2 5/9] dt-bindings: timer: mediatek,timer: Add
+Subject: Re: [PATCH v2 6/9] dt-bindings: input: mediatek,mt6779-keypad: Add
  compatible for MT6895
-Message-ID: <20261116-shiny-encouraging-mushroom-dc03de@quoll>
+Message-ID: <20261116-real-ginger-raptor-0e6eea@quoll>
 References: <20261113-initial-mt6895-v2-0-4ab0aa9fa391@gmail.com>
- <20261113-initial-mt6895-v2-5-4ab0aa9fa391@gmail.com>
+ <20261113-initial-mt6895-v2-6-4ab0aa9fa391@gmail.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
-In-Reply-To: <20261113-initial-mt6895-v2-5-4ab0aa9fa391@gmail.com>
+In-Reply-To: <20261113-initial-mt6895-v2-6-4ab0aa9fa391@gmail.com>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -86,14 +86,15 @@ X-Spam-Status: No, score=-15.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On Fri, Nov 13, 2026 at 10:05:01PM +0300, Alexander Letuchiy wrote:
-> Add a compatible string for the system timer (SYST) of the MediaTek
-> MT6895 (Dimensity 8000/8100) SoC. It works with the existing driver
-> through the mediatek,mt6765-timer fallback.
+On Fri, Nov 13, 2026 at 10:05:02PM +0300, Alexander Letuchiy wrote:
+> Add a compatible string for the keypad of the MediaTek MT6895 (Dimensity
+> 8000/8100) SoC. Its registers are the same as on MT6779, so it works
+> with the existing driver through the mediatek,mt6779-keypad fallback.
 > 
 > Signed-off-by: Alexander Letuchiy <asalde.le1@gmail.com>
 > ---
->  Documentation/devicetree/bindings/timer/mediatek,timer.yaml | 1 +
+>  Documentation/devicetree/bindings/input/mediatek,mt6779-keypad.yaml | 1 +
+>  1 file changed, 1 insertion(+)
 
 Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
 
