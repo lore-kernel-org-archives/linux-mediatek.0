@@ -2,38 +2,37 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 7929A606A332
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id E482C606A338
 	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Nov 2026 17:49:12 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=VYLCzYfe
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=Iia/zWEa
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Unsubscribe-Post:List-Owner;
-	bh=xa5fiTEMg6d5Iuaeyil8PZxfmCqOi6k4o2XZafunfk4=; b=VYLCzYfet1gDLn49WPpBJapUpy
-	lzaRQ04//+alri3hpcqVb5wYzq9mfx7c+3z4GlS7VyObQKv2KGSZUUfeww7SfeLus8VJLCSN80M2X
-	6B+PKnJpbLEfdX/I6sdEm+qh+IDRi1H4og0aQlLFRAo6/trrJBeJvLq4rhmDp7SVlkdEB3tFNl04t
-	JhBgEZfoJTNT6qgGH97rrOwxxLElwLfqnjE8+DVKUV+78VwNcKBSge8O5nnixX1w7gSriTSTWVqqx
-	Txwe2qRbWVagXXFq6ZR46QJq6IqyC9OCKXdGa03pvMmYijjshilwB/0Ma+t4sIpMbvXI3VsVpff4L
-	HKNf66MQ==;
+	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Unsubscribe-Post:
+	List-Owner; bh=VnTvx0GHqprjV0jATOCw+lQO2w4dk7eCKRn9t+F+QuY=; b=Iia/zWEapEA2c4
+	EUsAVxCXU98fuyvOWjHAsfAc9nADdx5KKETquacmR7Ekz1u6kU9myKY1R+l/DNqV8ZYKL0yhkwmez
+	+7zhT4BQUVp/e2Bf1U+hVJ3XY5UI8MBEVV0Jq2QQFIV6NGPhtx61s1OrtZ4Bv0XgRB6w+rULKID5/
+	d/uzumhanYoUAxkJCiNTD7hjdPHmCfxQ3B8W2C3sndX1TwfLg8pNMuQ6vfMtwvmwlgcnwRlDDVRM/
+	tgnE4vPYddVyhWrVtaTJPZMI3Vp4xFc5D/iZgDkXT8asGCJOwWVjmNhderrZgg1J/Vz7j+GVqUjxi
+	VnpQFMFfJu7Mo42SNnow==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xT0pM-00000003RfV-0TOC;
+	id 1xT0pM-00000003RgI-1kul;
 	Mon, 16 Nov 2026 17:49:12 +0000
 Received: from nbd.name ([46.4.11.11])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xT0pH-00000003RbM-3g3f
+	id 1xT0pI-00000003RbX-3Mzh
 	for linux-mediatek@lists.infradead.org;
-	Mon, 16 Nov 2026 17:49:09 +0000
+	Mon, 16 Nov 2026 17:49:10 +0000
 Received: from [2a04:4540:1403:e6fc:5f71:2c1e:7d62:945f] (helo=bertha10..)
 	by ds12 with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.96)
 	(envelope-from <john@phrozen.org>)
-	id 1xT0pB-004GcH-0P;
-	Mon, 16 Nov 2026 18:49:01 +0100
+	id 1xT0pC-004GcH-1C;
+	Mon, 16 Nov 2026 18:49:02 +0100
 From: John Crispin <john@phrozen.org>
 To: Lorenzo Bianconi <lorenzo@kernel.org>,
 	Lee Jones <lee@kernel.org>,
@@ -57,16 +56,18 @@ Cc: Ahmed Naseef <naseefkm@gmail.com>,
 	upstream@airoha.com,
 	Weifeng.xu@airoha.com,
 	zhengping.zhang@airoha.com
-Subject: [PATCH v3 0/9] pinctrl: airoha: add AN7589 support
-Date: Mon, 16 Nov 2026 18:48:45 +0100
-Message-Id: <20261116174854.342912-1-john@phrozen.org>
+Subject: [PATCH v3 3/9] pinctrl: airoha: make the chip SCU optional
+Date: Mon, 16 Nov 2026 18:48:48 +0100
+Message-Id: <20261116174854.342912-4-john@phrozen.org>
 X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20261116174854.342912-1-john@phrozen.org>
+References: <20261116174854.342912-1-john@phrozen.org>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261116_094907_913695_FBC9F11A 
-X-CRM114-Status: GOOD (  13.77  )
+X-CRM114-CacheID: sfid-20261116_094908_837655_177606E5 
+X-CRM114-Status: GOOD (  13.97  )
 X-Spam-Score: -1.9 (-)
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -78,94 +79,76 @@ List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-11.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
+	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-The Airoha AN7589 has a GPIO controller like the EN7581 one, with a
-third bank for 74 GPIOs in total. Its pin functions are selected
-differently: a separate IOMUX block holds a 4 bit mode field per pin,
-eight pins per register, and mode 0 makes any pin a GPIO.
+A SoC that muxes every pin through the IOMUX block and describes no
+pin configuration has no use for the chip SCU. Skip the lookup when
+the match data names no chip SCU compatible, instead of handing a
+NULL compatible to syscon_regmap_lookup_by_compatible().
 
-The first four patches prepare the shared driver and change nothing
-for the SoCs it serves today:
+No functional change for the existing SoCs, which all name one.
 
- 1. The GPIO register layout moves into the match data, so a SoC can
-    describe more than 64 pins.
- 2. A function group can carry one IOMUX mode per pin. A SoC
-    describes its IOMUX in the match data: the width of the mode
-    field and, from patch 4, the mode that makes a pin a GPIO.
- 3. The chip SCU becomes optional, as the AN7589 needs none.
- 4. A pin requested by gpiolib is put into GPIO mode through the
-    IOMUX, so no per pin gpio function is needed.
-
-Patch 5 adds the IOMUX to the syscon compatibles. Patch 6 adds the
-binding for the pin controller. Patch 7 adds the binding for the GPIO
-system controller it sits under, which also holds the PWM controller.
-Patch 8 moves the GPIO register offsets to the common header, so the
-AN7589 data can describe its own register table, with no functional
-change. Patch 9 adds the AN7589 pin data.
-
-The series applies to next-20261105 and has no dependencies.
-
+Reviewed-by: Lorenzo Bianconi <lorenzo@kernel.org>
+Signed-off-by: John Crispin <john@phrozen.org>
+---
 Changes in v3:
-- Split the bindings in three: the syscon compatible (patch 5), the
-  pin controller (patch 6) and the GPIO system controller (patch 7)
-  (Lee, Conor).
-- Patch 6: allow one group per node, except for pcm_spi and pcie,
-  whose groups carry different signals of one device. Fix the uart5
-  example (Conor).
-- Patch 7: name the PWM controller in the commit message (Conor).
-- Add the Reviewed-by of Lorenzo to patches 3 and 9.
-- Link to v2: https://lore.kernel.org/r/20261112185941.1316112-1-john@phrozen.org
+- Add the Reviewed-by of Lorenzo.
 
 Changes in v2:
-- Patch 3: look up the airoha,chip-scu phandle before the check for
-  a chip SCU compatible (Lorenzo).
-- Patch 6: one function per block type (uart, i2c, spi, pcm, mdio,
-  pcie, pon, sgpio, jtag), with the group selecting the instance, as
-  in the other Airoha pin controller bindings. List the valid groups
-  for the groups property (Conor).
-- Patch 9: the function table follows the binding. Name the match
-  data, the OF match table and the platform driver after the AN7589
-  (Lorenzo).
-- Link to v1: https://lore.kernel.org/r/20261110173941.301478-1-john@phrozen.org
+- Look up the airoha,chip-scu phandle before the check for a chip
+  SCU compatible (Lorenzo).
 
-John Crispin (9):
-  pinctrl: airoha: make gpio register layout per SoC
-  pinctrl: airoha: add per pin mode field mux
-  pinctrl: airoha: make the chip SCU optional
-  pinctrl: airoha: mux a requested GPIO through the IOMUX
-  dt-bindings: mfd: syscon: add airoha,an7589-iomux
-  dt-bindings: pinctrl: airoha: add AN7589
-  dt-bindings: mfd: airoha: add AN7589 GPIO system controller
-  pinctrl: airoha: move the GPIO register offsets to the common header
-  pinctrl: airoha: add support of an7589 SoC
+ drivers/pinctrl/airoha/pinctrl-airoha.c | 25 +++++++++++++++++++------
+ 1 file changed, 19 insertions(+), 6 deletions(-)
 
- .../mfd/airoha,an7589-gpio-sysctl.yaml        |  66 ++
- .../devicetree/bindings/mfd/syscon.yaml       |   1 +
- .../pinctrl/airoha,an7589-pinctrl.yaml        | 355 ++++++++++
- MAINTAINERS                                   |   3 +
- drivers/pinctrl/airoha/Kconfig                |  11 +
- drivers/pinctrl/airoha/Makefile               |   1 +
- drivers/pinctrl/airoha/airoha-common.h        |  41 +-
- drivers/pinctrl/airoha/pinctrl-airoha.c       | 119 +++-
- drivers/pinctrl/airoha/pinctrl-an7563.c       |   1 +
- drivers/pinctrl/airoha/pinctrl-an7581.c       |   1 +
- drivers/pinctrl/airoha/pinctrl-an7583.c       |   1 +
- drivers/pinctrl/airoha/pinctrl-an7589.c       | 623 ++++++++++++++++++
- drivers/pinctrl/airoha/pinctrl-en7523.c       |   1 +
- drivers/pinctrl/airoha/pinctrl-en7528.c       |   1 +
- 14 files changed, 1193 insertions(+), 32 deletions(-)
- create mode 100644 Documentation/devicetree/bindings/mfd/airoha,an7589-gpio-sysctl.yaml
- create mode 100644 Documentation/devicetree/bindings/pinctrl/airoha,an7589-pinctrl.yaml
- create mode 100644 drivers/pinctrl/airoha/pinctrl-an7589.c
-
-
-base-commit: ddfe51b0a0f5dc9e415cc2c8ad8db17532dd426b
+diff --git a/drivers/pinctrl/airoha/pinctrl-airoha.c b/drivers/pinctrl/airoha/pinctrl-airoha.c
+index f9ae4020b764..5ae0c49e491a 100644
+--- a/drivers/pinctrl/airoha/pinctrl-airoha.c
++++ b/drivers/pinctrl/airoha/pinctrl-airoha.c
+@@ -833,6 +833,22 @@ static const struct pinctrl_ops airoha_pctlops = {
+ 	.dt_free_map = pinconf_generic_dt_free_map,
+ };
+ 
++static struct regmap *
++airoha_pinctrl_chip_scu(struct device *dev,
++			const struct airoha_pinctrl_match_data *data)
++{
++	struct regmap *map;
++
++	map = syscon_regmap_lookup_by_phandle(dev->of_node, "airoha,chip-scu");
++	if (!IS_ERR_OR_NULL(map))
++		return map;
++
++	if (!data->chip_scu_compatible)
++		return NULL;
++
++	return syscon_regmap_lookup_by_compatible(data->chip_scu_compatible);
++}
++
+ int airoha_pinctrl_probe(struct platform_device *pdev)
+ {
+ 	const struct airoha_pinctrl_match_data *data;
+@@ -853,12 +869,9 @@ int airoha_pinctrl_probe(struct platform_device *pdev)
+ 	if (IS_ERR(pinctrl->regmap))
+ 		return PTR_ERR(pinctrl->regmap);
+ 
+-	map = syscon_regmap_lookup_by_phandle(pdev->dev.of_node, "airoha,chip-scu");
+-	if (IS_ERR_OR_NULL(map)) {
+-		map = syscon_regmap_lookup_by_compatible(data->chip_scu_compatible);
+-		if (IS_ERR(map))
+-			return PTR_ERR(map);
+-	}
++	map = airoha_pinctrl_chip_scu(dev, data);
++	if (IS_ERR(map))
++		return PTR_ERR(map);
+ 
+ 	pinctrl->chip_scu = map;
+ 
 -- 
 2.34.1
 
