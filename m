@@ -2,98 +2,79 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 9567D606A331
-	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Nov 2026 14:44:11 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 3E819606A33A
+	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Nov 2026 15:01:30 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=oRwF6KOa;
-	dkim=pass (2048-bit key) header.d=baylibre.com header.i=@baylibre.com header.a=rsa-sha256 header.s=google header.b=F5oOv747
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=4FxqSFfD;
+	dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=HKh2I4UW
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:MIME-Version:
-	Message-ID:Date:References:In-Reply-To:Subject:Cc:To:From:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Unsubscribe-Post:List-Owner;
-	bh=EiBM1lw6jtHc4Msd9f0+IoWSCWSW1EA52TQ2PRTxuNc=; b=oRwF6KOaOAqErE3KY36sYF1b88
-	fhafhkB/+vT0jCItj4rlWtvRZE5vm6NTJ9obQ3x57E1wtK1fmVbj1wv6Ut8OmRkLX6cSBmjJW+p/s
-	4AA0rwQ7kCcHpBsN/eZYru79NImotZC+AeGmR/LtfTTqtjyhvg+R96A7+6IoP7JbZrw7/9Mq0/NU2
-	FiKw+D1NAZyFdwovXNO56Vee1B4PCius4hp2yK/UGqIyMgR0vU24Yb1WA6fie0lPYPFHt/smWV8Cp
-	nuOg7NKBVnk++NiRiiPnsul1F7H3MVycO7JT300v+Evl7p0YnGNB2d5nMWwAZxeBEdl757pYjqS6d
-	/V5oPWUQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Unsubscribe-Post:
+	List-Owner; bh=jsBT0FZpMNikULzHhEfNl07JkOQbHVwUC1+MdqdHryk=; b=4FxqSFfDsT88Ll
+	N6IIZTZkYvEnJZTrOo1RsJir5BLLkWy2k5xrX8eaM7l2lKP3aDUzC9tpx1Wod+wxH3/c/V8Xr8QVl
+	F22lvy9DD0ptDNOI6nz/nYTx7lq0blBVNsVnPPUdj+uEEl+0aKxePCVdbgMbhavccrAIoFZtYzSgJ
+	OBaStroV5sybL6jMASCaktU48thBTs6r9WBEve9NgvDVh8JNBEUG5ehmV1OUW1vjtbwBwfWKdvPNY
+	8qtZaeFYw2J44farTMTEIUEvVitaVNwu8SoTRD5uR85faXBT1W4zW1goVOte3oVyLWQdMbxjU2I0v
+	dEVu2/tsJOPtAhNvGSjg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xSxwJ-00000002vWz-15Uw;
-	Mon, 16 Nov 2026 14:44:11 +0000
-Received: from mail-wr1-x42a.google.com ([2a00:1450:4864:20::42a])
+	id 1xSyD3-00000002yMs-3xR1;
+	Mon, 16 Nov 2026 15:01:29 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xSxwG-00000002vVd-2ITL
+	id 1xSyD2-00000002yMe-3fLW
 	for linux-mediatek@lists.infradead.org;
-	Mon, 16 Nov 2026 14:44:10 +0000
-Received: by mail-wr1-x42a.google.com with SMTP id ffacd0b85a97d-49134c8509fso3482167f8f.1
-        for <linux-mediatek@lists.infradead.org>; Mon, 16 Nov 2026 06:44:07 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre.com; s=google; t=1794840246; x=1795445046; darn=lists.infradead.org;
-        h=content-type:mime-version:message-id:date:references:in-reply-to
-         :subject:cc:to:from:from:to:cc:subject:date:message-id:reply-to
-         :content-type;
-        bh=EiBM1lw6jtHc4Msd9f0+IoWSCWSW1EA52TQ2PRTxuNc=;
-        b=F5oOv747s6SsjAdnXXXx7QcKlnHMv/Jfcx4zwe05xP9gPXSDH05Z20Se2zP1TASWUH
-         tCeQcoDs2DM4oH3ThPU3JmJwVHM930eETAzczdM2vfDAIAC3nq/D84haJ+64WVcF+5fw
-         tc7doc+ziVD5LtbsO2oE8xz3KwxhPbCM41DK6IqfuLOqJNvNPL5Hx1p5aY6HM8uyd+RG
-         jPlb6rzHJowVUQoQv4yVjQgNLIAeZ1jQJE43SDlpNkXZNpV1CHJ1BXhcUhibMvAIrVwE
-         GzICyFRCSRRqGhv1pR/fadPKLD6ISq7Aet4/ipC2MKZRW27rHs584/kHpPYE+RdryjW+
-         fH8A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1794840246; x=1795445046;
-        h=content-type:mime-version:message-id:date:references:in-reply-to
-         :subject:cc:to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject
-         :date:message-id:reply-to:content-type;
-        bh=EiBM1lw6jtHc4Msd9f0+IoWSCWSW1EA52TQ2PRTxuNc=;
-        b=mcjCwDDR/j/X2J+WzKjcW4bQhnFDvU+MggT418JxYWZZ1UsBDwAvlTALa2vJ9haGC/
-         Odp5ZrJ3r2O9HUt5dANdXUb7+1D7XpYZX3hrCjfDcVJ+zpluGsHiVASvDxzGB+dVpS2d
-         UYWFWrg32W9k1QmDuc+8gzTJqIuF1A7oiAB8kvGw7smOGBLDoLF8hFGgwD+9AMoudZUK
-         xM0x/Ez3WoZ4I7Mqgu+KyqvQRRMV2mAthy5Ip6h5AxnKqZW9NcOuntwTxil285MzLK1e
-         vDQn4+m7o13I1reqyteflzr9nq+YPyVKiSKYBXUpFPw7Vq/P/bLKdjws4yvPVcOzqXsy
-         6ncw==
-X-Gm-Message-State: APuU4Z9QPQazCSyWH983GfCEmw4MYxH+HOhtwJm39LZo4mXh4ep6QHB5
-	+wfH4gXn3ycoLy7XvAys0eIyCNtiuSerL8/TrceXvQqL36zQH4fLgi3SX83PS/NBHAQ=
-X-Gm-Gg: AZFdTZeq9ginYCARmamNjKPnBX7nvKvS31aPgpWMBE/CRMMjAbzt9N1Eq4y62uCKG67
-	SfdbvagXXSglmn7JCdSNrKxmHjb0MX3i/UC5sFNgSYxxt5KjWv40o2lb+Ap6Z+x+1t5ekz7lrCt
-	rz1pjOBx8E74aSgQBRUNSuyao75pNo9zAM2js7kPuLlOhdZVZ5x1g+UjyPZSJ1vzLzyMcRDoaYA
-	q3ZLnh/BFy7eG0FCBGRC7zGId/d5E8GNldQ53dyNhtv2FvNf/EaUwz4hmfABFfvlzMZwB/PflhT
-	CCgFEaLlVEoj6BV+cHJ2QRgfVt/cooa4I5ydCClAgeMfSf6xjFB7AsMmg0ykLiOyuOzWoSS2Wpu
-	12NR5h14jAuolCzMwGdx3WHAUk/QLduAhu66kpheyhpwI3dvLh4NQhZ6l5LB6FYlOr3zkqvvAaF
-	e2bB+WVLITokLodYEZywgFLCE3nfqMO20/kCkXK9vWFhl2BXcj43nyjrtzb3KHrbO7/yrdxg30z
-	zfHfJsulsKSZAq221IRfpDumCFQ8qBRUMbnvGX93BPJi98ZqPI1QMK41n4eWGFpDuxbpmAoNajw
-	KRaYGTzvQoBNx7ov93nfETxUWrDi1rH8o3T4gpwdbhJWv5zZdRC8woIuxXqGBqta
-X-Received: by 2002:a05:6000:46db:b0:492:7d9c:fcf8 with SMTP id ffacd0b85a97d-49c73350e60mr16833660f8f.49.1794840245956;
-        Mon, 16 Nov 2026 06:44:05 -0800 (PST)
-Received: from localhost ([2001:861:80:deb0:b65e:146c:107f:26ed])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-49c60d9fff8sm24003588f8f.52.2026.11.16.06.44.01
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 16 Nov 2026 06:44:02 -0800 (PST)
-From: Julien Masson <jmasson@baylibre.com>
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: <linux-mediatek@lists.infradead.org>, <lee@kernel.org>,
- <robh@kernel.org>, <krzk+dt@kernel.org>, <conor+dt@kernel.org>,
- <matthias.bgg@gmail.com>, <lgirdwood@gmail.com>, <broonie@kernel.org>,
- <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
- <linux-arm-kernel@lists.infradead.org>, <kernel@collabora.com>,
- <wenst@chromium.org>, Alexandre Mergnat <amergnat@baylibre.com>
-Subject: Re: [PATCH PARTIAL-RESEND v12 0/5] Add support MT6316/6363/MT6373
- PMICs regulators and MFD
-In-Reply-To: <afc3ec2a-90b5-440d-9710-2b3892b01b6c@collabora.com>
-References: <20260511101355.122478-1-angelogioacchino.delregno@collabora.com>
- <179239867012.642420.15110854236483587234.b4-review@b4>
-Date: Mon, 16 Nov 2026 15:44:01 +0100
-Message-ID: <8733t0ygy6.fsf@baylibre.com>
+	Mon, 16 Nov 2026 15:01:28 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by tor.source.kernel.org (Postfix) with ESMTP id 3E36F62D0D
+	for <linux-mediatek@lists.infradead.org>; Mon, 16 Nov 2026 15:01:28 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id E69F21F000CD
+	for <linux-mediatek@lists.infradead.org>; Mon, 16 Nov 2026 15:01:27 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1794841287;
+	bh=jsBT0FZpMNikULzHhEfNl07JkOQbHVwUC1+MdqdHryk=;
+	h=References:In-Reply-To:From:Date:Subject:To:Cc;
+	b=HKh2I4UW8urBSFUrtUHbQuwz1uPcC4POn0U8BTVb7KejMbcKTgiiMvkB1Gmm25liB
+	 kJv7PCgqbShOR0u8F+r7n/QRCEEJAujbdR+CpHaW2UCq+S4bYSu8E6kodZ2CCmqdV8
+	 RUk4aBXxZGJnapTndxlNM/KubIf9b1TS3QCNuKzzeIsnGlDSZ5EhWbHUew0yjT1PbS
+	 LUm/DK0W9tLuC1jwPG8sDSwj0F60JVcBeCPGxQFMbYdJCQvTOeS7kPHcFwzOXE8zUq
+	 8Qa5Yed6nZ+W+AQpcGVxYJUgDX01x1woMkdkKv9nBVR/BMdXCWDW02zAUN+3wo2rQL
+	 O8W6dKmmqGGJg==
+Received: by mail-dl1-f41.google.com with SMTP id a92af1059eb24-1b24f4b15c4so1134225c88.1
+        for <linux-mediatek@lists.infradead.org>; Mon, 16 Nov 2026 07:01:27 -0800 (PST)
+X-Gm-Message-State: APuU4Z/pLgV07una9fK/RCGaOTZqoKQ7dN+cEVqEz4iPU0W9J0YUMXXk
+	ihX3FoUYa2BXFAoX2VgT+HsXscfIfANFkxwfpjY51NbwSfscNuy9eH8xZP6d489wl72/qXUOpZV
+	5X5IVB3e4NyAefvXvM2A1gUUNyerqOA==
+X-Received: by 2002:a05:701b:4648:b0:1ad:1574:aa9d with SMTP id
+ a92af1059eb24-1b502f8a3femr9454273c88.0.1794841287247; Mon, 16 Nov 2026
+ 07:01:27 -0800 (PST)
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261116_064408_603339_066CDEA3 
-X-CRM114-Status: GOOD (  13.78  )
-X-Spam-Score: -2.1 (--)
+References: <20260921113914.779393-1-l.scorcia@gmail.com> <20260921113914.779393-2-l.scorcia@gmail.com>
+In-Reply-To: <20260921113914.779393-2-l.scorcia@gmail.com>
+From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
+Date: Mon, 16 Nov 2026 15:01:14 +0000
+X-Gmail-Original-Message-ID: <CAAOTY_9W4MmG74gMgXx=6-QncXs2-DqdR6FqjckJG9bsevyWnw@mail.gmail.com>
+X-Gm-Features: AclHuK8ZIdYSrxKs1dMZwhPrKku_6kwGWxmzNQVSAncsA778TJy7Qtii6vDGXkQ
+Message-ID: <CAAOTY_9W4MmG74gMgXx=6-QncXs2-DqdR6FqjckJG9bsevyWnw@mail.gmail.com>
+Subject: Re: [PATCH v2 1/4] dt-bindings: display: mediatek: dpi: Add
+ compatible for mt8167
+To: Luca Leonardo Scorcia <l.scorcia@gmail.com>
+Cc: linux-mediatek@lists.infradead.org, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>, 
+	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>, 
+	Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
+	Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, CK Hu <ck.hu@mediatek.com>, 
+	Jitao shi <jitao.shi@mediatek.com>, dri-devel@lists.freedesktop.org, 
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,48 +85,34 @@ List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-10.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-15.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,
-	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,
-	SPF_HELO_NONE,SPF_PASS autolearn=ham autolearn_force=no version=4.0.1
+	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,MAILING_LIST_MULTI,
+	MENTIONS_GIT_HOSTING,SPF_HELO_NONE,SPF_PASS autolearn=ham
+	autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Hi Angelo,
+Luca Leonardo Scorcia <l.scorcia@gmail.com> =E6=96=BC 2026=E5=B9=B49=E6=9C=
+=8821=E6=97=A5=E9=80=B1=E4=B8=80 =E4=B8=8A=E5=8D=8811:39=E5=AF=AB=E9=81=93=
+=EF=BC=9A
+>
+> MediaTek mt8167 SoC has two Digital Parallel Interface (DPI) blocks,
+> one can be routed to a DPI display while the other is wired to the HDMI
+> block. They are not compatible with any other device, so add a new
+> compatible to describe them in the device tree.
 
-The SPMI sub-device series has been merged and is part of v7.4-rc1:
-https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=10c833da4dde3d9bb19e2092a33abafdaa16a341
+Applied to mediatek-drm-next [1], thanks.
 
-Would you be able to send it in the coming weeks ?
-We have customers waiting on MT6363 support for the Genio Pro 5100,
-and we'd be happy to test it on our boards or help with the remaining
-review comments if that's useful.
+[1] https://git.kernel.org/pub/scm/linux/kernel/git/chunkuang.hu/linux.git/=
+log/?h=3Dmediatek-drm-next
 
-On Tue 20 Oct 2026 at 11:07, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com> wrote:
+Regards,
+Chun-Kuang.
 
-> On 10/19/26 10:31, Alexandre Mergnat wrote:
->> Hi Angelo,
->> 
->> I'm working on mainline support for the MT6363 MFD PMIC.
->> 
->> Are you planning to send a new revision addressing the review feedback
->> on v12? If you don't have time to pick it up again, I'd be happy to
->> help address the remaining comments and prepare a new revision,
->> if that works for you.
->> 
->> Thanks for your work on this!
->> 
->> Cheers,
->> Alexandre
->> 
-> 
-> Yes, I do have a new version locally which didn't get sent because of the SPMI
-> series (introducing the new helpers) that didn't get picked yet.
-> 
-> Cheers,
-> Angelo
-> 
-
--- 
-Julien Masson
+>
+> Signed-off-by: Luca Leonardo Scorcia <l.scorcia@gmail.com>
+> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collab=
+ora.com>
+> ---
 
