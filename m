@@ -2,100 +2,67 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 438D2606A88C
-	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Nov 2026 17:18:09 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 3F507606A323
+	for <linux-mediatek@archiver.kernel.org>; Mon, 16 Nov 2026 17:47:48 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=lco8C3Fs;
-	dkim=pass (2048-bit key) header.d=baylibre.com header.i=@baylibre.com header.a=rsa-sha256 header.s=google header.b=S5Uwd3Md
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=Jv2FvKX4
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Unsubscribe-Post:List-Owner;
-	bh=TNUG7rH7/qSKafTA5lrT/55Jq8bN6QIZQW36YHjhTGQ=; b=lco8C3Fs1BPR1FFqJZBlzeU8/C
-	tOosZRWFueb77D785fmDppli96zD8/p+oRLMq2dIsueO9a7hl8scHk4Z5qguOYxGWYzq0gBOAEVHa
-	Gga/u8L1FiABpcacDjLGFrJG5OYI22Xr33I7c+cW37ybJWwzL2mGUN8zfRd+QutLIcWG0yxt8gAqd
-	nfUF2trN7+qPUI6Of5mTXcBrt7Kt8pU8Qw4/pNq1vYZjutVpAprEZsU63ZhvVEn/GP9kaKE7LuIkT
-	y5BBzJQ7eHKmYgBt154/AmoThebJkRJHQ6gnea+HcDtZNUBDBbTTFdcEhWNs6ao+boevueFQYMh1w
-	TM0yRxSg==;
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Unsubscribe-Post:
+	List-Owner; bh=I5eMNskrWfHY+Ao3oKQAyIDWEN4eHpIvs0Mcs5jAu0E=; b=Jv2FvKX4GgJfU5
+	xJVrdfTYz6uUX2fpHrrpbT2dZxnMUz98jaoXk4U0LEuiRy9DzPttPfmTRgcCCRd/2xsrKnt8tDS0i
+	6BsAE4PdDNnxjAQbymWe7CrVuUH6OHKeUr8qvM5xYH+fXVvqIwyGvaj0uqhtv4w7t9XPWmbInMgBP
+	0kAbKtPRV3m5S4I70MofLbrbgzutSGqg6cqKIxtfHPKR2KpT9z1JRsQhd5sOq8/gsi8NNQttbe3w1
+	aYOZdv2uG3avrkS4o6G7Lohjp3cegJBD3j+bbjYRXGtv5yndq5ywtz1WZS0FeNfLdhAJ6eK6nY/08
+	rL+Amvf6k4HayZBHf63A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xT0LI-00000003O1A-3v9b;
-	Mon, 16 Nov 2026 17:18:08 +0000
-Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336])
+	id 1xT0ny-00000003RTn-3rZf;
+	Mon, 16 Nov 2026 17:47:46 +0000
+Received: from nbd.name ([46.4.11.11])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xT0LG-00000003Nzs-0QIb
+	id 1xT0nw-00000003RSl-33Uc
 	for linux-mediatek@lists.infradead.org;
-	Mon, 16 Nov 2026 17:18:07 +0000
-Received: by mail-wm1-x336.google.com with SMTP id 5b1f17b1804b1-4a140e7405dso38799125e9.3
-        for <linux-mediatek@lists.infradead.org>; Mon, 16 Nov 2026 09:18:05 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre.com; s=google; t=1794849484; x=1795454284; darn=lists.infradead.org;
-        h=content-transfer-encoding:content-type:mime-version:message-id:date
-         :subject:cc:to:from:from:to:cc:subject:date:message-id:reply-to
-         :content-type;
-        bh=TNUG7rH7/qSKafTA5lrT/55Jq8bN6QIZQW36YHjhTGQ=;
-        b=S5Uwd3MdiZXmaP+Gq/3aH81x1D+00YSwK3Wsrgc5LvX3Qt7fPaeRpAdWyAe6qEdjT7
-         apoxH9tkzqebvVU/KCbaniCnEwgb/08Rfi+98IjETi+XDkvtkbpv45g1W0SqeAAbeMAQ
-         Zw1Ifs0ekMW/AC1PtVaaJWJi5oQVrY45kpVemWrAFhCbf90PpoetX9dDE2NEuFKS3kuI
-         b7aRfgCiAEbuGXhzsfX5jnsv5Riw0b7bvxKnQlcQZMuDNqEEw4TaCnG0c0AL34wtDgE6
-         tb3eOv3yTkNZSYWVeMw2zuTmcnQMglX7LWOTOdE6Ju5XEBEj9YWuDln4VNVrAv9s/6gS
-         STBg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1794849484; x=1795454284;
-        h=content-transfer-encoding:content-type:mime-version:message-id:date
-         :subject:cc:to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject
-         :date:message-id:reply-to:content-type;
-        bh=TNUG7rH7/qSKafTA5lrT/55Jq8bN6QIZQW36YHjhTGQ=;
-        b=wFDrJTz/uHrIfwLyolrov6ndBfedGGo3qgx3M7RySaLm+aSRfnZ/wgfQ5UdfpHKlOi
-         lXplLpCW9llXBhOzXFp3+fSBJGNAycv0ohNIVukf73AJedK4OQanP3rQ0Qnpwwn8WHdO
-         rsvAFo1R+J7Px+Vvg+SyLZfizsfqnKoYZ8PPYfy1opVHyl/0FRCdDzQqqyk+Ysnq/3u4
-         dxQgafJ0XafJ4hL96mcSp4Muwj5CfwHieofk0j/t+rc3b7TYKeMb31BpIn3VKZYLpCHW
-         tzjTUD1Du5kt1A+sZ06WW9shy+jtcB162w8oRUFwB6JEReUE43nDbByCEAkPoYaCfizj
-         Tn7g==
-X-Gm-Message-State: APuU4Z9GqbJlNvWpQ4QhXK1PUhoRB05VjxN8UNX4+Be+8o3VJsV+Hixx
-	lgUjCfdcTlHjjvkhqt1hohSiw3AiRSXBIRXP/YLFc47Yx/uuJRUUbDTuh0SghmksfNc=
-X-Gm-Gg: AYBFou02Xbz3pVVtSh3Jc9P4utIPPUllcZzjKtjnOaUyP+dcm+Kz5sKKml3XGmmChzO
-	FE2p+1+yZP/WYv5d9iQ88Cmg7p/MUg69zVN4Rp+8p/XB+gTy7ujT3OxFwDo1HLAuFlzd4YGe/Qy
-	LPFWd+oigmQdnRCfuPjuCrQ9wPRicHH/011Zm55ZqFkxstKJ2phZttYaJpvXMF9GCX1VWa9GMVf
-	NZm3TZQb0+57OxBozpk/M99vzrZ+4Zpk6ohO5bCw1Tply+CCR2EB6ReVhYApJvoHThWHYKD5Iu7
-	9EeHsMDzrtGsuj6CYvv+sSkOS2FHE19jqukzk8vEHp1Gh/vCGFdpvx3xIkZ5KAKXEIBkbaeTNJZ
-	hr2iaFgwTvbhLz6FZckPUARZt2Z4KBtAv0oY/C51VhV4Yuk9r4g83Wx9d9bqXW9FDrTJvZJjgMG
-	U4qjthVc6urS8l0fQcopsQDA6rI4sDb4wsoiZ5THy6NewMDiWFy/vvc19KvGqiA6HY+MEZWlKeb
-	TeMLE5MseA08qybpRUyVlM0XwXRFB/SVBMAHquq0nAdgIlZu9D0HLWUDevukTI0y6YYgMpP7hnr
-	h10FtSP2Z3ZpV5Qyplf1PggrlILfgzQCKcoYNvSZXjltESStJV0R+ShWA1m85DR2
-X-Received: by 2002:a05:600c:3507:b0:4bb:68c4:2044 with SMTP id 5b1f17b1804b1-4bb68c4240fmr134923375e9.11.1794849484047;
-        Mon, 16 Nov 2026 09:18:04 -0800 (PST)
-Received: from localhost ([2001:861:80:deb0:b65e:146c:107f:26ed])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-4bb783c255asm2418175e9.13.2026.11.16.09.18.03
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 16 Nov 2026 09:18:03 -0800 (PST)
-From: Julien Masson <jmasson@baylibre.com>
-To: Conor Dooley <conor+dt@kernel.org>, Krzysztof Kozlowski
- <krzk+dt@kernel.org>, Rob Herring <robh@kernel.org>, Jiri Slaby
- <jirislaby@kernel.org>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>
-Cc: linux-mediatek@lists.infradead.org,
- linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org,
- linux-serial@vger.kernel.org, Matthias Brugger <matthias.bgg@gmail.com>,
- linux-kernel@vger.kernel.org, AngeloGioacchino Del Regno
- <angelogioacchino.delregno@collabora.com>, =?utf-8?Q?N=C3=ADcolas?= F. R.
- A. Prado
- <nfraprado@collabora.com>
-Subject: [PATCH RESEND] dt-bindings: serial: mediatek,uart: Add compatible for
- MT8196
-Date: Mon, 16 Nov 2026 18:18:03 +0100
-Message-ID: <87zev8wv90.fsf@baylibre.com>
+	Mon, 16 Nov 2026 17:47:46 +0000
+Received: from [2a04:4540:1403:e6fc:39d9:16d5:775d:5525]
+	by ds12 with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
+	(Exim 4.96)
+	(envelope-from <john@phrozen.org>)
+	id 1xT0ng-004GYh-1s;
+	Mon, 16 Nov 2026 18:47:28 +0100
+Message-ID: <b94ed5e4-cb80-4e05-9964-bb08a61aa1fd@phrozen.org>
+Date: Mon, 16 Nov 2026 18:47:27 +0100
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 5/7] dt-bindings: pinctrl: airoha: add AN7589
+To: Conor Dooley <conor@kernel.org>
+Cc: Lorenzo Bianconi <lorenzo@kernel.org>, Lee Jones <lee@kernel.org>,
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, Linus Walleij <linusw@kernel.org>,
+ Bartosz Golaszewski <brgl@kernel.org>, Ahmed Naseef <naseefkm@gmail.com>,
+ Benjamin Larsson <benjamin.larsson@genexis.eu>,
+ Christian Marangi <ansuelsmth@gmail.com>, devicetree@vger.kernel.org,
+ lei.dong@airoha.com, Linqi.zhang@airoha.com, linux-gpio@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ mfd@lists.linux.dev, Mikhail Kshevetskiy <mikhail.kshevetskiy@iopsys.eu>,
+ Rajeev.kumar@airoha.com, upstream@airoha.com, Weifeng.xu@airoha.com,
+ zhengping.zhang@airoha.com
+References: <20261112185941.1316112-1-john@phrozen.org>
+ <20261112185941.1316112-6-john@phrozen.org>
+ <20261113-fame-smock-6ea3b8fadcd0@spud>
+Content-Language: en-GB
+From: John Crispin <john@phrozen.org>
+In-Reply-To: <20261113-fame-smock-6ea3b8fadcd0@spud>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261116_091806_154669_BB204D20 
-X-CRM114-Status: UNSURE (   7.87  )
-X-CRM114-Notice: Please train this message.
-X-Spam-Score: -2.1 (--)
+X-CRM114-CacheID: sfid-20261116_094744_767914_937C80DD 
+X-CRM114-Status: GOOD (  12.80  )
+X-Spam-Score: -1.9 (-)
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -106,50 +73,46 @@ List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-15.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,
-	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=ham
-	autolearn_force=no version=4.0.1
+X-Spam-Status: No, score=-5.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1
+	autolearn=no autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+On Fri, Nov 13, 2026 at 05:40:42PM +0000, Conor Dooley wrote:
+> As Lee requested, please split this out. Two patches, maybe even three.
 
-Add a compatible string for the MediaTek MT8196 Chromebook SoC,
-which UART IPs are fully compatible with MT6577.
+Agreed. v3 splits it into three patches.
 
-Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collab=
-ora.com>
-Reviewed-by: N=C3=ADcolas F. R. A. Prado <nfraprado@collabora.com>
-Acked-by: Rob Herring (Arm) <robh@kernel.org>
-Signed-off-by: Julien Masson <jmasson@baylibre.com>
----
-This patch was posted in June 2025 as part of the "Add MT8196
-compatibles to bindings" series [1]. The timer and i2c patches of that
-series have been applied, but this one got lost and was never picked
-up. Resending it unchanged, rebased on v7.4-rc1.
+> Do we even need a child node here? If all this node does is
+> gpio/pinctrl, why can the driver not bind directly to this node?
+>
+> What else does it do that warrants being a syscon?
 
-[1] https://lore.kernel.org/r/20250611110800.458164-1-angelogioacchino.delr=
-egno@collabora.com
+The block also holds the PWM controller. Its registers interleave with
+the GPIO ones. The PWM series adds it as a second child, as on the
+EN7581. That series has a depency on this one so I have not posted it yet.
 
- Documentation/devicetree/bindings/serial/mediatek,uart.yaml | 1 +
- 1 file changed, 1 insertion(+)
+> Otherwise, there should only be one. uart1 and uart2 should have
+> different nodes.
 
-diff --git a/Documentation/devicetree/bindings/serial/mediatek,uart.yaml b/=
-Documentation/devicetree/bindings/serial/mediatek,uart.yaml
-index 5bd8a8853ae0..bf0b1df449ee 100644
---- a/Documentation/devicetree/bindings/serial/mediatek,uart.yaml
-+++ b/Documentation/devicetree/bindings/serial/mediatek,uart.yaml
-@@ -49,6 +49,7 @@ properties:
-               - mediatek,mt8188-uart
-               - mediatek,mt8192-uart
-               - mediatek,mt8195-uart
-+              - mediatek,mt8196-uart
-               - mediatek,mt8365-uart
-               - mediatek,mt8516-uart
-           - const: mediatek,mt6577-uart
---=20
-2.56.0
+Agreed. v3 sets maxItems to 1. Only pcm_spi and pcie keep more, as
+their groups carry different signals of one device.
+
+> So here, maxItems should be 1 for similar reasons.
+
+Agreed, v3 does this for i2c too.
+
+> I'm also curious about why this goes up to 74. None of the functions
+> have 74 pins, surely?
+
+A conf node can set the same config on any set of pins. 74 is all the
+pins. The EN7581 binding does the same with 58.
+
+v3 will follow shortly.
+
+        John
+
 
 
