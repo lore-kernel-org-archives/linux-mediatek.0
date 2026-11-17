@@ -2,72 +2,70 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 9229C606A32A
-	for <linux-mediatek@archiver.kernel.org>; Tue, 17 Nov 2026 01:00:28 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 6D1EE606A329
+	for <linux-mediatek@archiver.kernel.org>; Tue, 17 Nov 2026 02:40:24 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=2wuOmdXM;
-	dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=PSXHPF7s
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=f0eEKGI4;
+	dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=SEi6DRYr
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
+	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
+	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Unsubscribe-Post:
-	List-Owner; bh=bgSIbrhhX1M1S/mhIphweUgHFMz7lfbrdfHFK5Cb/eE=; b=2wuOmdXMl6UVsi
-	j73k8XlRRNjeEj/pjkzAIfsUkOvlLhuaYownlHCxh1pEUU9GECze4ZCCwVGvJObX8DflEJOHVO5sy
-	BZvC5ob/0F+gcPVJS0ErCbEsxnHsZK0AHhC7UzD9YEY36ecu47pS0r0ket9BQy+32IPTHLGwl2ys3
-	zl1WebIhekwMZSA87C1X4X4xQ5BXwKdbCFqDl27wTGHvpzEYJo0v0xLuOihVC3eL5PP3Cj7mjUwXs
-	Hlcq05w1maBx1eP+9IrVRYnN7sM7gMTIhCyCUAd1XRKEpQuFgLtObDPNrn9JpC50UYtqxc8M7sgCI
-	td3iXfmGmJx00t0k1oCg==;
+	List-Owner; bh=p9Z/0BbQGaDyQcSu1mdVf3G0+dswEC4x+xTDwChbKX4=; b=f0eEKGI4v9dEYi
+	lOivqugugkzKIbBOOH0PD6468GCBlRwpH7nJB0rGKruCr4SliMKQpcWEQrmf/ALZSD6ZFjlbVTzqB
+	GryZ/huBMB8yZ/K6RQchVW+H37adDniDeWJKMbCPN3j6/hkyAZrudPB66+PYhMT0GadVfqzKIJo/H
+	RO4xYHRQDlhWLmBy5O6Vot8Phad84AH2mUNCGUKh3u058Ls//KN26V60JXMWyJgcwyojh2CZbklPW
+	mIf1THAhZfy69sTexL9PyaVSxBMRtLwD4oSGC8xQofqmKk0sjnxpXVkBLWqAv+f6uMgdnHXioLkys
+	zlLUSkwGBubIUhp644Ng==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xT7Yh-00000004HEx-3wlN;
-	Tue, 17 Nov 2026 01:00:27 +0000
+	id 1xT97N-00000004Qff-3DZW;
+	Tue, 17 Nov 2026 02:40:21 +0000
 Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xT7Yf-00000004HEU-1WUH;
-	Tue, 17 Nov 2026 01:00:26 +0000
+	id 1xT97D-00000004QdQ-48Na;
+	Tue, 17 Nov 2026 02:40:12 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id DF3A541A06;
-	Tue, 17 Nov 2026 01:00:24 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1D3221F000C4;
-	Tue, 17 Nov 2026 01:00:22 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 6828040E0A;
+	Tue, 17 Nov 2026 02:40:11 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 463431F000CB;
+	Tue, 17 Nov 2026 02:40:11 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1794877224;
-	bh=bgSIbrhhX1M1S/mhIphweUgHFMz7lfbrdfHFK5Cb/eE=;
-	h=From:To:Cc:In-Reply-To:References:Subject:Date;
-	b=PSXHPF7spIVqe2ztBNDDhOyYVVdgDBOHFwE50CSUKJP/2nwXXWyJklRJOhCdEj6HQ
-	 iPZooWFYCdvtK3lEDbYKgpvpWu++UIHhC0Kcxb04kS4rlzrgKlAEF7JY3kCW/+r+xX
-	 NLgumWSFFMKlBgBlqxlizlycsYAwGc1yKgUj6Lg8wFoHOpZFfoXVDqnZwKSfufBV30
-	 9E6AzsxjvDLpoh4+IcM116kHk5mja0+V8XEX1J5UvlxFt/BPJs52DpeZ6J74Z8BcIp
-	 SXjMgGE0dvaod3eD4zSUV59LAygTs8n0PcY9MPMxipOfIJ3lyx9O6ptBdUDy7MLMer
-	 30FpotCBC8xYA==
-From: Mark Brown <broonie@kernel.org>
-To: Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Leilk Liu <leilk.liu@mediatek.com>, Rui Cao <i@udp0.com>
-Cc: linux-spi@vger.kernel.org, linux-kernel@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
- stable@vger.kernel.org
-In-Reply-To: <20261107-mt65xx-qos-fix-v1-1-9d9c16a584e4@udp0.com>
-References: <20261107-mt65xx-qos-fix-v1-1-9d9c16a584e4@udp0.com>
-Subject: Re: [PATCH] spi: mt65xx: Remove the CPU latency QoS request when
- probe fails
-Message-Id: <179486355915.2504946.5816262629767344458.b4-ty@b4>
-Date: Mon, 16 Nov 2026 21:12:39 +0000
+	s=k20260515; t=1794883211;
+	bh=p9Z/0BbQGaDyQcSu1mdVf3G0+dswEC4x+xTDwChbKX4=;
+	h=Subject:From:Date:References:In-Reply-To:To:Cc;
+	b=SEi6DRYrhBNE6Tl0Oo5WFx+6/UZ+yhSjc7VRQCI9YcG/cWn/GErLeVTtIdfQlMOM2
+	 hKSC6rPIXDG/RXjHvz6cjSo3UTrLW5KA5b91YlaGIlpMTmGRW9PXs5XdCkyXzwFtLE
+	 +BB/iZGPTcVblqcIx41toyP6bmfQipdsAzLv4eJl4PsmRa3PLDmFumYFfxOSDs6gvm
+	 C5MkzF8O9n15ANciTKY5CTkL6UFMVr3PNOxhlLykuFaRCAHL1GoBoWIrkeqvJz8Oqy
+	 aivs7VQ5bn9dQP2Uo7RHqkw4qjOoCOLbApAhuiRRXx+KPtNQEZiFU/GAa1wq3oWAPf
+	 z6uVkPO7hTItQ==
+Received: from [10.30.226.235] (localhost [IPv6:::1])
+	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id 3A39F391B088;
+	Tue, 17 Nov 2026 02:40:11 +0000 (UTC)
+Content-Type: text/plain; charset="utf-8"
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-X-Mailer: b4 0.17-dev
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1137; i=broonie@kernel.org;
- h=from:subject:message-id; bh=ueKoG72WP0KE1M/J03C8AU5NedkldPwySMm1P4vDO9M=;
- b=owGbwMvMwCWm/754w+YLFp2Mp9WSGLJ+L1fdF3Ncc+Ole4JbK9bpNv+1eNVoOnsNn4TyBMfoF
- 0cc70293lHKwiDGxSArpsgSl8X9sr7k9Rq+gwvbYOawMoEMYeDiFICJqO9l+Gcn8Ozcvwsfj8+4
- 8+XP9W2bZM+XZL1mSpV8qsLfK13NfWsXI8NTO9MfSvs05/O2dExeELatWiat17E/5IbBku/V2cc
- SlFkB
-X-Developer-Key: i=broonie@kernel.org; a=openpgp;
- fpr=3F2568AAC26998F9E813A1C5C3F436CA30F5D8EB
+Content-Transfer-Encoding: 8bit
+Subject: Re: [PATCH net-next v5 00/10] net/stmmac: Add Mediatek MT8189 support
+From: patchwork-bot+netdevbpf@kernel.org
+Message-Id: <179488320977.300516.9034533489988553857.git-patchwork-notify@kernel.org>
+Date: Tue, 17 Nov 2026 02:40:09 +0000
+References: <20261110-dwmac-mediatek-mt8189-v5-0-7d99d6292962@collabora.com>
+In-Reply-To: <20261110-dwmac-mediatek-mt8189-v5-0-7d99d6292962@collabora.com>
+To: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
+Cc: andrew+netdev@lunn.ch, davem@davemloft.net, kuba@kernel.org,
+ pabeni@redhat.com, robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
+ richardcochran@gmail.com, matthias.bgg@gmail.com,
+ angelogioacchino.delregno@collabora.com, biao.huang@mediatek.com,
+ maxime.chevallier@bootlin.com, mcoquelin.stm32@gmail.com,
+ alexandre.torgue@foss.st.com, edumazet@kernel.org, kernel@collabora.com,
+ netdev@vger.kernel.org, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-mediatek@lists.infradead.org, linux-stm32@st-md-mailman.stormreply.com,
+ krzysztof.kozlowski@oss.qualcomm.com, andrew@lunn.ch
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,43 +76,59 @@ List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-12.3 required=3.0 tests=BAYES_00,DATE_IN_PAST_03_06,
-	DKIMWL_WL_HIGH,DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,
+X-Spam-Status: No, score=-10.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,
 	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,
-	SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no
-	version=4.0.1
+	SPF_HELO_NONE,SPF_PASS autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On Sat, 07 Nov 2026 18:13:43 +0800, Rui Cao wrote:
-> spi: mt65xx: Remove the CPU latency QoS request when probe fails
+Hello:
 
-Applied to
+This series was applied to netdev/net-next.git (main)
+by Jakub Kicinski <kuba@kernel.org>:
 
-   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/spi.git for-7.5
+On Tue, 10 Nov 2026 13:08:47 +0100 you wrote:
+> This series adds the Ethernet support for Mediatek MT8189 SoC and its
+> variants (MT8371, MT8391). These SoC integrate a Gigabit Ethernet MAC
+> with RGMII/RMII/MII interface, with a similar design than previous SoCs
+> such MT8188 or MT8195.
+> 
+> This series is based on net-next tree (sha1: d26955e57475).
+> It has been tested on Mediatek Genio 520-EVK (MT8371) and 720-EVK
+> (MT8391) boards, which both integrate an Airoha AN8801R Ethernet
+> PHY, with hardware enablement series ([1]).
+> It has been also tested on Mediatek Genio 510-EVK (MT8370, variant of
+> MT8188) and 1200-EVK (MT8395, variant of MT8195).
+> 
+> [...]
 
-Thanks!
+Here is the summary with links:
+  - [net-next,v5,01/10] dt-bindings: net: mediatek-dwmac: fix unit in rx/tx delay property description
+    https://git.kernel.org/netdev/net-next/c/5fc5d2095256
+  - [net-next,v5,02/10] dt-bindings: net: mediatek-dwmac: deprecate rx/tx delay vendor properties
+    https://git.kernel.org/netdev/net-next/c/51c06131816a
+  - [net-next,v5,03/10] dt-bindings: net: mediatek-dwmac: add support for MT8189 SoC
+    https://git.kernel.org/netdev/net-next/c/97c7a711dac1
+  - [net-next,v5,04/10] net: stmmac: mediatek: simplify TX/RX delay handling in mt8195_set_delay
+    https://git.kernel.org/netdev/net-next/c/8eac6d45af9c
+  - [net-next,v5,05/10] net: stmmac: mediatek: simplify TX/RX delay handling in mt2712_set_delay
+    https://git.kernel.org/netdev/net-next/c/c837fa3a7612
+  - [net-next,v5,06/10] net: stmmac: mediatek: use standard internal delay properties
+    https://git.kernel.org/netdev/net-next/c/ec09a48fdaf3
+  - [net-next,v5,07/10] net: stmmac: mediatek: add RX/TX delay stage divider in platform data
+    https://git.kernel.org/netdev/net-next/c/e6d6f4b67511
+  - [net-next,v5,08/10] net: stmmac: mediatek: add PERI_ETH_CTRLx register offset in platform data
+    https://git.kernel.org/netdev/net-next/c/2c0c0890f9f1
+  - [net-next,v5,09/10] net: stmmac: mediatek: add support for TX clock output enable feature
+    https://git.kernel.org/netdev/net-next/c/3b2120af0091
+  - [net-next,v5,10/10] net: stmmac: mediatek: add support for MT8189 SoC
+    https://git.kernel.org/netdev/net-next/c/46d8e770222f
 
-[1/1] spi: mt65xx: Remove the CPU latency QoS request when probe fails
-      https://git.kernel.org/broonie/spi/c/d4cb2717eb13
+You are awesome, thank you!
+-- 
+Deet-doot-dot, I am a bot.
+https://korg.docs.kernel.org/patchwork/pwbot.html
 
-All being well this means that it will be integrated into the linux-next
-tree (usually sometime in the next 24 hours) and sent to Linus during
-the next merge window (or sooner if it is a bug fix), however if
-problems are discovered then the patch may be dropped or reverted.
-
-You may get further e-mails resulting from automated or manual testing
-and review of the tree, please engage with people reporting problems and
-send followup patches addressing any issues that are reported if needed.
-
-If any updates are required or you are submitting further changes they
-should be sent as incremental updates against current git, existing
-patches will not be replaced.
-
-Please add any relevant lists and maintainers to the CCs when replying
-to this mail.
-
-Thanks,
-Mark
 
 
