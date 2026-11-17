@@ -2,70 +2,98 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 0EFF0606A880
-	for <linux-mediatek@archiver.kernel.org>; Tue, 17 Nov 2026 14:06:58 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id C3AF2606A8A2
+	for <linux-mediatek@archiver.kernel.org>; Tue, 17 Nov 2026 14:16:23 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=SVwdILLU;
-	dkim=pass (2048-bit key) header.d=collabora.com header.i=@collabora.com header.a=rsa-sha256 header.s=mail header.b=fBTBUT2U
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=q6Gp95XS;
+	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=cclKC4VW
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From
-	:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Unsubscribe-Post:
-	List-Owner; bh=6uSvfC5jYn0SZCUdkQQtcniyMzEPTSPEt/ng2+mDaK4=; b=SVwdILLUZ9JJbX
-	ZPzNazaxsyhGbeAFsjxSXw1yH/+ej+0Ag+0AamhdeB5QGMeGH3vh7iOk5d1zjfRIY2X9OslJhk/iw
-	Q3ITFqsCEm4ZrEdrEQDyPlarVLDXjv2oObR93cIBWlLwq32J7n+h0/3ajd3qTlyP3ngOS4ostGnjL
-	BtlX0GV5pbcaHLKJCGKDMbcvV2Nd2eqvKwxOXNaLQw4lhZKMFBLkAYc5BDtAhAfa5hQzxm3NMCc6b
-	gzD3YzksJQYqfRvi2X9OElUnWpokq35RhuUjRQJ7OzBR4nvUZrw28l5uzN21jlXjA2lwJncaaLXzJ
-	n3BbtGh8PLxhIwJtoSvQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Unsubscribe-Post:List-Owner;
+	bh=tG6neAVh4oCzGf1sct8/MQCA9dZCIT+3BlbcZwi3Bb4=; b=q6Gp95XSWRwqgAIncYwYx9T0P8
+	BjG9CAKDlG93D+39BlInlH6bGMZik3noUMRIE69svoYmbxAsrPhQuZJ/XQBiOVSML/cXBcVtg2842
+	8/Bas0RJkhc0nAtlQx11AttHQEfncnVbby2DU8+dOBEV366L40ht2xRudx1yS4O4YJDUim90FZHgd
+	Rz0hcJhLZSl1UkpKk9SzUlB01mCgkgcf+RLypRvisksg7y2pAA6cUmTk/XJeZDPyd7Ki8AMu1q7UQ
+	sEyB3+0Anjiszn1K5zG5qwkHLm0hm0Qzn730TxtqFxtENqGkze9d1Kh4PqATugtXDfTNKXk66upFG
+	bC+/s53w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xTJpp-000000063nR-27gq;
-	Tue, 17 Nov 2026 14:06:57 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1xTJyx-000000064zj-1hZE;
+	Tue, 17 Nov 2026 14:16:23 +0000
+Received: from mail-dy1-x1334.google.com ([2607:f8b0:4864:20::1334])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xTJpm-000000063kI-1UC8;
-	Tue, 17 Nov 2026 14:06:55 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1794924412;
-	bh=vVV4spwHYbAauEsxYC6THPXIxk5VSqw/wZZWsp1RODU=;
-	h=Date:Subject:To:References:From:In-Reply-To:From;
-	b=fBTBUT2UiRc1Wfv+bZejMAlCy2ZeBLbuvsf9BWFa/aPGiC2UtcZHQTGLTB0ZKuvc/
-	 SHygH84hz1USDOBqriEO2osZPaJ7bOPKXD3E4xXlGPm6oXUMNoMoQGDATgQ4aceyG3
-	 FAqanQsEuobRmY0QjGkOZMz8hBbmB7xL3g5O1mYmfGqNl8ns2VmcthD2GUvjeQvPzZ
-	 qwKDscxU1uCiy644O/rHCWUWae7WMghIzrA0PzgXa/oBCw6zwBn/ou8NDc4Pukf/o2
-	 CpZQY9600AKwjhbN8EZC5XN+qgVH7VcOQcodCaRjUlOYcdyOJFnQ6sN/1W3SVkLww6
-	 O5eKPa+ZNsmhQ==
-Received: from [100.64.1.21] (unknown [100.64.1.21])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id D5B5E17E0311;
-	Tue, 17 Nov 2026 15:06:51 +0100 (CET)
-Message-ID: <3882ec4d-9f99-4419-8914-19c3a2a3cc46@collabora.com>
-Date: Tue, 17 Nov 2026 15:06:51 +0100
-X-Archived-By: <archiver.kernel.org>
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
+	id 1xTJyu-000000064yt-3FL6
+	for linux-mediatek@lists.infradead.org;
+	Tue, 17 Nov 2026 14:16:21 +0000
+Received: by mail-dy1-x1334.google.com with SMTP id 5a478bee46e88-36dbde64409so6966013eec.0
+        for <linux-mediatek@lists.infradead.org>; Tue, 17 Nov 2026 06:16:20 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20260707; t=1794924979; x=1795529779; darn=lists.infradead.org;
+        h=in-reply-to:content-disposition:content-type:mime-version
+         :references:message-id:subject:cc:to:from:date:from:to:cc:subject
+         :date:message-id:reply-to:content-type;
+        bh=tG6neAVh4oCzGf1sct8/MQCA9dZCIT+3BlbcZwi3Bb4=;
+        b=cclKC4VWwqAsTIEuL2Bp3EnY7TQFr8pqiYfaO2WtfzaLTvBQLl3doaRYReBMcYPd4d
+         FOp3rUJHzgIY0Ri6lOiKMuvAMO/dHgqt0B8PgpceZqNAjFWf2+piS4/2dc5jmOXgpL9B
+         D22NFet7Z1PXeeYnGLBjwJ1P+Kjuj134xjNUtIUYn67bH7Yn8Kr0mxv9GOAs5ogSjC+K
+         P0txGsj0rZUIshsuspSBkJrHe1IsZD/g3eJ62XWUQDXf6k7RJG9l09lrQKpuoMDgDVyb
+         lnZMn1G0161n/CAZ4/VJy0g1jfCV06kTyywU9qKezua2IdRoFbl7obDb6OjXLTLIvsG8
+         gtBQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20260707; t=1794924979; x=1795529779;
+        h=in-reply-to:content-disposition:content-type:mime-version
+         :references:message-id:subject:cc:to:from:date:x-gm-gg
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+         :content-type;
+        bh=tG6neAVh4oCzGf1sct8/MQCA9dZCIT+3BlbcZwi3Bb4=;
+        b=ngAspomhmrFgE71I+6VYsiekciRKk83y85ngjlqtRr1UB9WGWw9MdhdG+mNZE8Dcxo
+         B35j8uTYsTsUsTO0CqqCmXnWS3Ve5gzEG/xsuzh3tgZVfs4NPl/E+cdDAqjslxmwfBGi
+         fw7/7gXtYRB0vtyHy5byEDwo9fBsUczNznGcN6J7bQdCTwOyx8Y9ABFWJ8NQwYrMMzvC
+         rrUaLl0uTV3Q90QYHWOQmzDW81qbTHrMaAxhQ6xdN0+Jrq7ON6lLJ6gp74gxpu8jUnNr
+         LwMBStkhXHjrEfE/G15gRIOBvKwnn95ll56TugI5O89WX74on8KRhf4YjNYtGcMbDAW4
+         6jkw==
+X-Forwarded-Encrypted: i=1; AL+hErGUiq2bhB4pNy3vsXI9Qv/bplPowAodXVP7OhOf/xcRcgtz0D2H8eNkF3oer7mwF8+QVLo0QHt5kC/jnzF9eQ==@lists.infradead.org
+X-Gm-Message-State: APuU4Z8IH3QwydZvWvmYy4dgfn1bbsf26fJgT4f7XuGKSrO/gOOQZ2Yt
+	vczzHgGmr5AvVobGWQRyJjtuvWBr22ZqYpIEpCB0c6bRPCNGgbfjMpNJ
+X-Gm-Gg: AZFdTZfXVn16gjKA6BamA498SkxtMY83ER0thhGpKcED4T9N4Zvo7VlUzBXP6o8rLy3
+	yjniJM1cgWSqnJ9M6/VfRB14U2KZTJmVRMpB/0k76OFmzGFVIcCnBeTurmWwvArNlUWm7qxFw7s
+	obEx7lv99dBTLKo/mcZzKD93uJQagO2lH97RgmkfUNSZscC9INFkSOdcF1ZfzuO63GlDZiyKIzy
+	7eRAwwu3qHCkGoW+CTrdrspFcd2Dfzky/7aTM/lgId3wpFW5UwNJ0ImKknyT6oaiif4cMNwZehZ
+	b2AHmBqQEgOjmnKgsKtDTXJwk6XfhcKiJ8irQa+CrB4jssC8Komz2wcfpZ8zpj0MBtWFC3GPVle
+	nAbcdi0EhzwztbfbYgSj6dtZzYsGbPcNSruLOYBa7LqyzTjEWno9cEigBmayy+Es7NHRVFAO4eI
+	Vt40qDmCQ/cpDehlF/XfcD6VMqTU2x3H1wCczR3cCD/BJ8+nf8mGT8+BQ0SuN6Ah3k8oPjBdK6h
+	Qohp6CuG+912ZHfxOVbC7TQNTKjsEijAzBKKkV8i+r/4Q2DvsUWAu4LbqWwVCqkk27WySMl2duk
+	5TLOUZlw6TFEcjWO6Q==
+X-Received: by 2002:a05:7300:c88:b0:36d:7f5f:7e97 with SMTP id 5a478bee46e88-37967dd734emr19474818eec.40.1794924979189;
+        Tue, 17 Nov 2026 06:16:19 -0800 (PST)
+Received: from buffalo-ssd ([2a09:bac1:3b00:a18::2ff:99])
+        by smtp.gmail.com with ESMTPSA id 5a478bee46e88-380d5135221sm9540594eec.24.2026.11.17.06.16.16
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 17 Nov 2026 06:16:18 -0800 (PST)
+Date: Tue, 17 Nov 2026 23:16:25 +0900
+From: Akari Tsuyukusa <akkun11.open@gmail.com>
+To: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
+Cc: Rob Herring <robh@kernel.org>, 
+	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
 Subject: Re: [PATCH] arm64: dts: mediatek: Remove undocumented, unapproved
  aliases
-To: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>,
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
- <matthias.bgg@gmail.com>, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org
+Message-ID: <avxXNp5xEbczbb1y@buffalo-ssd>
 References: <20261117130556.234785-2-krzysztof.kozlowski@oss.qualcomm.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
+X-Archived-By: <archiver.kernel.org>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 In-Reply-To: <20261117130556.234785-2-krzysztof.kozlowski@oss.qualcomm.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261117_060654_576361_0315BC5B 
-X-CRM114-Status: GOOD (  22.23  )
+X-CRM114-CacheID: sfid-20261117_061620_809284_3154C489 
+X-CRM114-Status: GOOD (  11.12  )
 X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -77,15 +105,17 @@ List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-17.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,
-	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1
-	autolearn=ham autolearn_force=no version=4.0.1
+X-Spam-Status: No, score=-7.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
+	DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,FREEMAIL_FORGED_FROMDOMAIN,
+	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=no
+	autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On 11/17/26 14:05, Krzysztof Kozlowski wrote:
+Hi Krzysztof,
+
+On Tue, Nov 17, 2026 at 02:05:57PM +0100, Krzysztof Kozlowski wrote:
 > The ovl, aal, color, dsi, gce, rdma, split and other aliases were never
 > approved by Devicetree maintainers, because they were never documented
 > as actual ABI.  Drop them, because no new custom aliases are allowed for
@@ -96,293 +126,13 @@ On 11/17/26 14:05, Krzysztof Kozlowski wrote:
 > 
 > Signed-off-by: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
 
-That'll just break everything.
+You mentioned 64-bit MediaTek SoCs, but the same class of issues also
+exists in 32-bit MediaTek SoCs under arch/arm/boot/dts/mediatek/.
+For example, mt7623n.dtsi has rdma0/rdma1 aliases, while mt6589.dtsi,
+mt8127.dtsi and mt8135.dtsi misuse "simple-bus" for the "clocks" node.
 
-I do have a mediatek-drm restructuring series that is partially resolving this
-situation, at least for some SoCs it's getting 0 and 1 hw instance id dynamically
-recognized, but with some caveats that could be unacceptable (as in, if 0 is
-disabled and 1 is enabled, 1 becomes 0, so it's not actually resolving anything
-for real, it's just making it tick right when stars in the sky align in the
-right way, which for some SoCs is reliably possible without side effects).
+I hope this push for correctness doesn't lead to any regressions.
 
-In any case, all of the ones that have only instance 0 (and all of the instance
-0s) can be removed even right now already (still needs some testing to make sure
-that there's no regression), but everything else can't, at least not until the
-whole restructuring thing is merged as that'd break things.
-
-Worst part is we have two new SoCs (MT8196, MT8189) ready to be upstreamed here,
-which took almost a year of development... and it also does rely on the aliases.
-I was in the process of slowly cleaning up those (as I said, there's already a
-restructuring that makes things a little better in this regard), but at this point
-that'll need to be done with the highest possible priority.
-
-Let me see what can I do to make the right thing to happen.
-
-Anyway - thanks for pointing this.
-
-Cheers,
-Angelo
-
-> ---
->   arch/arm64/boot/dts/mediatek/mt6795.dtsi      | 17 ----------
->   arch/arm64/boot/dts/mediatek/mt8173.dtsi      | 16 ---------
->   arch/arm64/boot/dts/mediatek/mt8183.dtsi      |  5 ---
->   arch/arm64/boot/dts/mediatek/mt8186.dtsi      |  7 ----
->   .../boot/dts/mediatek/mt8188-geralt.dtsi      |  1 -
->   arch/arm64/boot/dts/mediatek/mt8188.dtsi      | 33 -------------------
->   arch/arm64/boot/dts/mediatek/mt8192.dtsi      |  8 -----
->   arch/arm64/boot/dts/mediatek/mt8195.dtsi      | 24 --------------
->   arch/arm64/boot/dts/mediatek/mt8365.dtsi      | 13 --------
->   .../dts/mediatek/mt8390-genio-common.dtsi     |  1 -
->   .../dts/mediatek/mt8390-tungsten-smarc.dtsi   |  1 -
->   11 files changed, 126 deletions(-)
-> 
-> diff --git a/arch/arm64/boot/dts/mediatek/mt6795.dtsi b/arch/arm64/boot/dts/mediatek/mt6795.dtsi
-> index 6dd706b27830..971fb19e95df 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt6795.dtsi
-> +++ b/arch/arm64/boot/dts/mediatek/mt6795.dtsi
-> @@ -21,23 +21,6 @@ / {
->   	#address-cells = <2>;
->   	#size-cells = <2>;
->   
-> -	aliases {
-> -		ovl0 = &ovl0;
-> -		ovl1 = &ovl1;
-> -		rdma0 = &rdma0;
-> -		rdma1 = &rdma1;
-> -		rdma2 = &rdma2;
-> -		wdma0 = &wdma0;
-> -		wdma1 = &wdma1;
-> -		color0 = &color0;
-> -		color1 = &color1;
-> -		split0 = &split0;
-> -		split1 = &split1;
-> -		dpi0 = &dpi0;
-> -		dsi0 = &dsi0;
-> -		dsi1 = &dsi1;
-> -	};
-> -
->   	psci {
->   		compatible = "arm,psci-0.2";
->   		method = "smc";
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8173.dtsi b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-> index 6ec50125cea0..868b0fb84449 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-> +++ b/arch/arm64/boot/dts/mediatek/mt8173.dtsi
-> @@ -22,22 +22,6 @@ / {
->   	#size-cells = <2>;
->   
->   	aliases {
-> -		ovl0 = &ovl0;
-> -		ovl1 = &ovl1;
-> -		rdma0 = &rdma0;
-> -		rdma1 = &rdma1;
-> -		rdma2 = &rdma2;
-> -		wdma0 = &wdma0;
-> -		wdma1 = &wdma1;
-> -		color0 = &color0;
-> -		color1 = &color1;
-> -		split0 = &split0;
-> -		split1 = &split1;
-> -		dpi0 = &dpi0;
-> -		dsi0 = &dsi0;
-> -		dsi1 = &dsi1;
-> -		mdp-rdma0 = &mdp_rdma0;
-> -		mdp-rdma1 = &mdp_rdma1;
->   		mdp-rsz0 = &mdp_rsz0;
->   		mdp-rsz1 = &mdp_rsz1;
->   		mdp-rsz2 = &mdp_rsz2;
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8183.dtsi b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-> index 7414c10ee664..2c3836555e55 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-> +++ b/arch/arm64/boot/dts/mediatek/mt8183.dtsi
-> @@ -35,11 +35,6 @@ aliases {
->   		i2c9 = &i2c9;
->   		i2c10 = &i2c10;
->   		i2c11 = &i2c11;
-> -		ovl0 = &ovl0;
-> -		ovl-2l0 = &ovl_2l0;
-> -		ovl-2l1 = &ovl_2l1;
-> -		rdma0 = &rdma0;
-> -		rdma1 = &rdma1;
->   	};
->   
->   	cluster0_opp: opp-table-cluster0 {
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8186.dtsi b/arch/arm64/boot/dts/mediatek/mt8186.dtsi
-> index 621408439ffa..2f82eb532f30 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt8186.dtsi
-> +++ b/arch/arm64/boot/dts/mediatek/mt8186.dtsi
-> @@ -22,13 +22,6 @@ / {
->   	#address-cells = <2>;
->   	#size-cells = <2>;
->   
-> -	aliases {
-> -		ovl0 = &ovl0;
-> -		ovl-2l0 = &ovl_2l0;
-> -		rdma0 = &rdma0;
-> -		rdma1 = &rdma1;
-> -	};
-> -
->   	fhctl: fhctl@1000ce00 {
->   		compatible = "mediatek,mt8186-fhctl";
->   		clocks = <&apmixedsys CLK_APMIXED_TVDPLL>;
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8188-geralt.dtsi b/arch/arm64/boot/dts/mediatek/mt8188-geralt.dtsi
-> index 801eee735afe..883141d8a6d5 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt8188-geralt.dtsi
-> +++ b/arch/arm64/boot/dts/mediatek/mt8188-geralt.dtsi
-> @@ -9,7 +9,6 @@
->   
->   / {
->   	aliases {
-> -		dsi0 = &disp_dsi0;
->   		i2c0 = &i2c0;
->   		i2c1 = &i2c1;
->   		i2c2 = &i2c2;
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8188.dtsi b/arch/arm64/boot/dts/mediatek/mt8188.dtsi
-> index 14a320f0c70c..f14b23dd57aa 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt8188.dtsi
-> +++ b/arch/arm64/boot/dts/mediatek/mt8188.dtsi
-> @@ -23,39 +23,6 @@ / {
->   	#address-cells = <2>;
->   	#size-cells = <2>;
->   
-> -	aliases {
-> -		dp-intf0 = &dp_intf0;
-> -		dp-intf1 = &dp_intf1;
-> -		dpi1 = &dpi1;
-> -		dsc0 = &dsc0;
-> -		ethdr0 = &ethdr0;
-> -		gce0 = &gce0;
-> -		gce1 = &gce1;
-> -		merge0 = &merge0;
-> -		merge1 = &merge1;
-> -		merge2 = &merge2;
-> -		merge3 = &merge3;
-> -		merge4 = &merge4;
-> -		merge5 = &merge5;
-> -		mutex0 = &mutex0;
-> -		mutex1 = &mutex1;
-> -		padding0 = &padding0;
-> -		padding1 = &padding1;
-> -		padding2 = &padding2;
-> -		padding3 = &padding3;
-> -		padding4 = &padding4;
-> -		padding5 = &padding5;
-> -		padding6 = &padding6;
-> -		padding7 = &padding7;
-> -		vdo1-rdma0 = &vdo1_rdma0;
-> -		vdo1-rdma1 = &vdo1_rdma1;
-> -		vdo1-rdma2 = &vdo1_rdma2;
-> -		vdo1-rdma3 = &vdo1_rdma3;
-> -		vdo1-rdma4 = &vdo1_rdma4;
-> -		vdo1-rdma5 = &vdo1_rdma5;
-> -		vdo1-rdma6 = &vdo1_rdma6;
-> -		vdo1-rdma7 = &vdo1_rdma7;
-> -	};
->   
->   	cpus {
->   		#address-cells = <1>;
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8192.dtsi b/arch/arm64/boot/dts/mediatek/mt8192.dtsi
-> index 898953acdb61..bf5893e3002b 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt8192.dtsi
-> +++ b/arch/arm64/boot/dts/mediatek/mt8192.dtsi
-> @@ -23,14 +23,6 @@ / {
->   	#address-cells = <2>;
->   	#size-cells = <2>;
->   
-> -	aliases {
-> -		ovl0 = &ovl0;
-> -		ovl-2l0 = &ovl_2l0;
-> -		ovl-2l2 = &ovl_2l2;
-> -		rdma0 = &rdma0;
-> -		rdma4 = &rdma4;
-> -	};
-> -
->   	clk13m: fixed-factor-clock-13m {
->   		compatible = "fixed-factor-clock";
->   		#clock-cells = <0>;
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8195.dtsi b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
-> index 9aaf8b6edcb5..389fb9d7ea89 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt8195.dtsi
-> +++ b/arch/arm64/boot/dts/mediatek/mt8195.dtsi
-> @@ -23,30 +23,6 @@ / {
->   	#address-cells = <2>;
->   	#size-cells = <2>;
->   
-> -	aliases {
-> -		dp-intf0 = &dp_intf0;
-> -		dp-intf1 = &dp_intf1;
-> -		dpi1 = &dpi1;
-> -		gce0 = &gce0;
-> -		gce1 = &gce1;
-> -		hdmi0 = &hdmi;
-> -		ethdr0 = &ethdr0;
-> -		mutex0 = &mutex;
-> -		mutex1 = &mutex1;
-> -		merge1 = &merge1;
-> -		merge2 = &merge2;
-> -		merge3 = &merge3;
-> -		merge4 = &merge4;
-> -		merge5 = &merge5;
-> -		vdo1-rdma0 = &vdo1_rdma0;
-> -		vdo1-rdma1 = &vdo1_rdma1;
-> -		vdo1-rdma2 = &vdo1_rdma2;
-> -		vdo1-rdma3 = &vdo1_rdma3;
-> -		vdo1-rdma4 = &vdo1_rdma4;
-> -		vdo1-rdma5 = &vdo1_rdma5;
-> -		vdo1-rdma6 = &vdo1_rdma6;
-> -		vdo1-rdma7 = &vdo1_rdma7;
-> -	};
->   
->   	cpus {
->   		#address-cells = <1>;
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8365.dtsi b/arch/arm64/boot/dts/mediatek/mt8365.dtsi
-> index 2e782558fb77..4b05f6a864d4 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt8365.dtsi
-> +++ b/arch/arm64/boot/dts/mediatek/mt8365.dtsi
-> @@ -20,19 +20,6 @@ / {
->   	#address-cells = <2>;
->   	#size-cells = <2>;
->   
-> -	aliases {
-> -		aal0 = &aal0;
-> -		ccorr0 = &ccorr0;
-> -		color0 = &color0;
-> -		dither0 = &dither0;
-> -		dpi0 = &dpi0;
-> -		dsi0 = &dsi0;
-> -		gamma0 = &gamma0;
-> -		ovl0 = &ovl0;
-> -		rdma0 = &rdma0;
-> -		rdma1 = &rdma1;
-> -	};
-> -
->   	cpus {
->   		#address-cells = <1>;
->   		#size-cells = <0>;
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8390-genio-common.dtsi b/arch/arm64/boot/dts/mediatek/mt8390-genio-common.dtsi
-> index 669eaec662f3..a938539c92b8 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt8390-genio-common.dtsi
-> +++ b/arch/arm64/boot/dts/mediatek/mt8390-genio-common.dtsi
-> @@ -21,7 +21,6 @@
->   
->   / {
->   	aliases {
-> -		dsi0 = &disp_dsi0;
->   		ethernet0 = &eth;
->   		i2c0 = &i2c0;
->   		i2c1 = &i2c1;
-> diff --git a/arch/arm64/boot/dts/mediatek/mt8390-tungsten-smarc.dtsi b/arch/arm64/boot/dts/mediatek/mt8390-tungsten-smarc.dtsi
-> index f2ad9265be31..d70bed80274b 100644
-> --- a/arch/arm64/boot/dts/mediatek/mt8390-tungsten-smarc.dtsi
-> +++ b/arch/arm64/boot/dts/mediatek/mt8390-tungsten-smarc.dtsi
-> @@ -16,7 +16,6 @@
->   
->   / {
->   	aliases {
-> -		dsi0 = &disp_dsi0;
->   		ethernet0 = &eth;
->   		i2c0 = &i2c0;
->   		i2c1 = &i2c1;
-
+Best regards,
+Akari
 
