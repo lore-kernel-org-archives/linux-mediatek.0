@@ -2,55 +2,54 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id C442F606A31C
-	for <linux-mediatek@archiver.kernel.org>; Tue, 17 Nov 2026 11:15:43 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id CF18A606A323
+	for <linux-mediatek@archiver.kernel.org>; Tue, 17 Nov 2026 11:22:27 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=U9WTPTjg;
-	dkim=pass (2048-bit key) header.d=collabora.com header.i=@collabora.com header.a=rsa-sha256 header.s=mail header.b=GFLdkHCT
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=tvmcpC26;
+	dkim=pass (2048-bit key) header.d=collabora.com header.i=@collabora.com header.a=rsa-sha256 header.s=mail header.b=RCJ4jS0O
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Unsubscribe-Post:
-	List-Owner; bh=HuszLLEjXpkORq58yz0GcNo/iqkBHOAIX91Mb3TYLQE=; b=U9WTPTjgU64p7+
-	cwaNyOdSR6KoKQlDCJn+eOjm/tU8NbVTgJpLM0dfZh7Jsi8hjjrH+gvZie5nIZNVU7VAUTl4ncMDh
-	jQVlLXZszOivr9J5GEKhI66ht9yHgnT52ZwpDzoo/sr8T0qYZeFWK38vYaYabOTirHWKV0RJ+X12S
-	gHCvGS2t6Ug3ADL92eG/9sDoAOIJQvn5N0CGlryeARGlxNlBUKT/IJy4MxiQCbEPWujvul+tUfgoD
-	GngzMzSfoo4QJ5+qERDN2ErpdSws5mB0l7XMLTGLGV/JE1L4m0gKYH+R05NELyrO/y/FtYSLoN8Kh
-	i4tl54/7s8DSfKc7DlLg==;
+	List-Owner; bh=oIe3p67w4/MbeGv4zncqvt3AjFKp/+ub75gyoZv00yk=; b=tvmcpC26apEnN7
+	TWYKh84lGmhfLgXNykEjSo6FYA2FCUtvUlDVor92RiqR8SW0iE4MTu3+R5qK4e3ywh5k6lgXyCg0o
+	J6iKRwpEXGh5q9NoB8Q3GHT+7aKz5aSLwfD4UDYFmLgKCaAwlgVvjet/OOjpX0kUnDUFj+zHKywEQ
+	TO6p26EtnVlMwoAmhNvcnPkBIpk+G/gh1hhkYcmWgx5bl9zXOSOVtMQVY9Pf1YnWM91twPZ82eCMS
+	1aqjItcFMBnNDm4o2L1U9OZchaTb2L3rFVGqjzoHWGOVAVbPfPyNGqQ5rgjcHFGz3TBOK2NDcrer7
+	xSoUCwp4jTV43pSPuP+g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xTHA7-00000005PfN-1vHu;
-	Tue, 17 Nov 2026 11:15:43 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1xTHGd-00000005QaH-1gtE;
+	Tue, 17 Nov 2026 11:22:27 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xTHA2-00000005Ped-1ylN;
-	Tue, 17 Nov 2026 11:15:41 +0000
+	id 1xTHGZ-00000005QZL-29sa;
+	Tue, 17 Nov 2026 11:22:26 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1794914136;
-	bh=Yowmv05lbR40wQjKJ7RKOMQYkspttaK5HaDL4dRGMBw=;
+	s=mail; t=1794914541;
+	bh=fA7EhNWJGQMJleB4jeAMNpc2PM2vJfFLxpgDHBdrh/Q=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=GFLdkHCTqu2t1UmYxAlJ/UbqwGp0LcB8XoKMVuhFze4BN8fUNBw4bYVnpLaCThZ1P
-	 k8CjQEWp16KmKRxPuYRQIWp0XPuCwIm/AAL40vNZL3TbhkaPixjfq+nIUgEspqfLOR
-	 iRal+NIhfjZDoMANrXVsVzhAz5YBQUNB+AsS7Us5akG8St/Q0Yc9cTPrdud0BYYy7O
-	 v6yBalOCHkfnsW6a1ntehyf6z4Zo8nfvNkWR1501mtTsvqz55USmt9rPUXEYtjKfuw
-	 oQssNpmvbn6L/zpYZemKD0J32XAV1yvimGRj9ZWAr0+jbbdveLiOgjD5M6WxdaoWGd
-	 wHvDFVFjRrz3w==
+	b=RCJ4jS0O1HgXzb6a7gu4e2T24gqN8Sq6ElCpkeEzqhKHDWzHxucj6RSxoY0gKXb6+
+	 kSS1ilPDNoclzdLQzkEts/2EHXVHs3b+WsQm5VJlX4SGvlg0miHdiF+aYr5nqgTa23
+	 90XS0A7GxLhacqR4ITX5hw6Z18fvBHQWJFEDsDHnTJMSToGp0PD8RyKYwVN85X2UjV
+	 T47zlhaPyupNsFckWGP1f/moMioiwRkfcQQk512x+FzuKOZW8uEU+BMhzImMJd7EV1
+	 At0U7fDzKFivcP8mcXX3E9gtTjTosIyz3YBraDkr3UAY+65oqKspx4LaQgLv9xG6f5
+	 8hyclFiQY99kw==
 Received: from [100.64.1.21] (unknown [100.64.1.21])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	 key-exchange x25519)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id DE2A817E0060;
-	Tue, 17 Nov 2026 12:15:35 +0100 (CET)
-Message-ID: <843a1fba-f74c-41c0-90be-f97b8dbffc09@collabora.com>
-Date: Tue, 17 Nov 2026 12:15:35 +0100
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 7924F17E0A27;
+	Tue, 17 Nov 2026 12:22:20 +0100 (CET)
+Message-ID: <0956ff3c-1bf9-42bd-b498-721696ce2b9e@collabora.com>
+Date: Tue, 17 Nov 2026 12:22:20 +0100
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 2/5] dt-bindings: watchdog: mediatek,mtk-wdt: Add
- MT6833
+Subject: Re: [PATCH v2 3/5] watchdog: mediatek: Add MT6833
 To: i@udp0.com, Rob Herring <robh@kernel.org>,
  Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
  <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
@@ -63,15 +62,15 @@ Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
  linux-watchdog@vger.kernel.org, linux-serial@vger.kernel.org,
  phone-devel@vger.kernel.org, Roman Vivchar <rva333@protonmail.com>
 References: <20261117-mt6833-base-v2-0-058a0685c40c@udp0.com>
- <20261117-mt6833-base-v2-2-058a0685c40c@udp0.com>
+ <20261117-mt6833-base-v2-3-058a0685c40c@udp0.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Content-Language: en-US
-In-Reply-To: <20261117-mt6833-base-v2-2-058a0685c40c@udp0.com>
+In-Reply-To: <20261117-mt6833-base-v2-3-058a0685c40c@udp0.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261117_031538_667347_194CC113 
-X-CRM114-Status: UNSURE (   8.15  )
+X-CRM114-CacheID: sfid-20261117_032223_734623_8A8E1B7A 
+X-CRM114-Status: UNSURE (   9.64  )
 X-CRM114-Notice: Please train this message.
 X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-mediatek@lists.infradead.org
@@ -95,15 +94,18 @@ X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 On 11/17/26 10:11, Rui Cao via B4 Relay wrote:
 > From: Rui Cao <i@udp0.com>
 > 
-> Add MediaTek's MT6833 (Dimensity 700) as a compatible of its own.
-> 
-> It can't fall back to mediatek,mt6589-wdt, which also describes
-> MT6589's twelve TOPRGU reset lines: MediaTek's kernel for MT6833 resets
-> the connectivity CPU through bit 12 of WDT_SWSYSRST, past them, and has
-> no full reset table for the SoC to take one from.
+> Match MT6833's watchdog. It works as MT6589's, but its TOPRGU reset
+> layout isn't known well enough to describe, so it gets no match data
+> and the driver registers no reset controller for it.
 > 
 > Signed-off-by: Rui Cao <i@udp0.com>
 
-Reviewed-by: AngeloGioacchino Del Regtno <angelogioacchino.delregno@collabora.com>
+Hopefully we can get the TOPRGU reset controller layout somehow somewhere, because
+it's a pity not to have it... though, I think that the only reset that would be
+actually needed is the CONN one (for the modem) and nothing else.
+
+So
+
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
 
