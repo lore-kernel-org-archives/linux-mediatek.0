@@ -2,86 +2,89 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id D21DE606A33B
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id E33D3606A8A7
 	for <linux-mediatek@archiver.kernel.org>; Tue, 17 Nov 2026 17:56:49 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=IaTtssrX;
-	dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=E0R2D1cv
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=pOrios0H;
+	dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=LQG6pzzm
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Cc:To:In-Reply-To:References:Message-Id:
-	Content-Type:MIME-Version:Subject:Date:From:Content-ID:Content-Description:
-	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
+	From:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
 	List-Unsubscribe-Post:List-Owner;
-	bh=w7dFDkqDW/rIFGxkStx87/r7LXJ3QjdIRNRvmQ7tuZU=; b=IaTtssrXiWfViJRFT5INdaWKmd
-	KmAiN4zkbmA92awoDtK8rDZs3ZVMzVng/qUGHGKIx1CY0nMy5pPP3BtnIcUgU5J1ISTEKTdzJkg8Z
-	Hby2QuPMy+z7M06uyfLToHPge16G+K+eQHzU/xF3ikWw5WlSCswFbhi7vJIPK0cVWm9SyGicSJd4R
-	4ZXKH5+GT5FVIDc3yXtFC/ttS8BLY0xpmjp2xJSM/DebmfKeoIdsyXU5JmM4ZWs7M5Zs4x8oiV6Q0
-	SPYqA2+82+NECsXrNla7X11m31x9Mb6iyY1X0uiP8FtBkoX00xCoSJE+b5jOlrFh5E9HNQJ3tjH5n
-	uPxwf0LQ==;
+	bh=C40fiRCk9L71R/bApiGXNANtJYBkFW0sGqUATJahP2I=; b=pOrios0HUfOtXnXPNO/ekYAeHG
+	cSp17ebo4PFjuXgcBtpwOSZA2zMsJcKolGB+i4NdlcVbNaTF0o0ai/BYQyosLJCwaBvk3wlukNjuu
+	bTrBGzLoc161VTXeJYFJV143MrEIg7GLNabMfJfqRMe1qYJmgcrcfAyWS8RJLfXMN93rsx7yPm2do
+	47kv7WPH2IOzpBROICACjXyWV6nNsGA91oCUgujO2km2xtBDRVrGQaUnhyvnT7w4udf4A9MEzfANU
+	JYWPm+Sq7os6FmIC+4pmp/11qCO6m0XOuG0t9x2SaA1ptGv2b2sWWCC8SAS2erl77KbV1mTjkzcyF
+	6ixn2r7A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xTNQG-00000006hYZ-1Cu8;
+	id 1xTNQG-00000006hZ8-2Gp4;
 	Tue, 17 Nov 2026 17:56:48 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xTNQE-00000006hXU-3rpk;
-	Tue, 17 Nov 2026 17:56:46 +0000
+	id 1xTNQF-00000006hXT-0Jnh;
+	Tue, 17 Nov 2026 17:56:47 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id 40FD2404BA;
+	by tor.source.kernel.org (Postfix) with ESMTP id 1CA0D60230;
 	Tue, 17 Nov 2026 17:56:46 +0000 (UTC)
 Authentication-Results: smtp.kernel.org; arc=none smtp.remote-ip=100.80.115.77
 ARC-Seal: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256; cv=none;
-	t=1794938206;
-	b=dntNh03HL9LtJdN2t4erm/9qPmLQF09TrDZrq9G30qiMz3rQl/8WU+LN35B0wPx3zfea
-	 gKP5byWF4+gkdPQbqWJAA0d2uWVBe5wMWsv085h3m4MtB/E7+/FGzAvn4CP5a/b1TaGzq
-	 +qe3byrDjwTTUhHCtEtFeRLGo4Pm0VvpJie9oTabPsqPbVHxrUTkz5O2OzGmtaBEKiKQZ
-	 l2Xk2Cg6t3xB6rLiZUMtFB7+ZRCa8GLw6ZJNEISQRJNxFpH8uXPSrjTjY+3kuexxSMu8n
-	 cpEkFL+OmSSkiHy7ZJ5j+OvbQxTXY+VfUWqlq905aGjYxclGHVUGhf6GOPwIZXTMlzg==
+	t=1794938205;
+	b=aWYx0xNZqNAaqw7Dzw/UUivJQBVbDQfxXrDmPBoDEh0FLJtjLiAgsJfJRKU0WvZNy9PH
+	 0jLHGuTC63HqWc8eekyKrLD5lBTRJej41ak34A8OsosG0Liw09AoXv5GR8884j9XegVxE
+	 EYA43BXAqL5jHKuf0D2uMtFhH1EJRZlv7h+/tcgzfmbv4mQbsZ5SBK3ZEgUK1UBM5+YfP
+	 0QRIst6nKMPu6Y3VGBBNZdT4jf00asD8lJqoaG92HPhvvThcaNd9ms1Ju2Xs7Kxz0xlc6
+	 xQaasfcndN++6qcocJt8pK3FMhmlL3TRrFbf8IDuKh9bwhqH+ItsceOkeszKwGtn2xA==
 ARC-Message-Signature: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256;
-	c=relaxed/relaxed; t=1794938206;
-	h=DKIM-Signature:Received:From:Date:Subject:MIME-Version:Content-Type:
-	 Message-Id:References:In-Reply-To:To:Cc:X-Mailer:
-	 X-Developer-Signature:X-Developer-Key:X-Endpoint-Received:
-	 X-Original-From:Reply-To:Content-Transfer-Encoding;
-	bh=w7dFDkqDW/rIFGxkStx87/r7LXJ3QjdIRNRvmQ7tuZU=;
-	b=dRIXIhiz3xK9QKdRhcmenvOueLGFx6Nlgx4WRdBLY7py6VwiI0iQfpLTBJCsn4OSGrtY
-	 46Tz9Q/2JlMUzap8H9YkmdOdvz4Lgkyg+z6wjlFnwvaWBKXw/kxxCI3M6KdR+0CTbSbJZ
-	 walS4v/CnE5U6DTEFUG+HXnD90TLHrt29OPOD/H5Jo6zwZ91E2nXbsDHXZHnIORX1E2nJ
-	 Ez5H9jLjnbIYKyQ4+4Sx1u/QHzCiVJ2Y1+k5qguOfUuPuvyd+2r41pD4fH5L9+3z+BOYB
-	 vtISoQ+uK2ej7RTJUuH4pDphw30XI2djIuP0RmfEH8v0uM3AJ5SA7yE0p79pbsYU82w==
+	c=relaxed/relaxed; t=1794938205;
+	h=DKIM-Signature:Received:From:Subject:Date:Message-Id:MIME-Version:
+	 Content-Type:Content-Transfer-Encoding:X-B4-Tracking:X-Change-ID:To:
+	 Cc:X-Mailer:X-Developer-Signature:X-Developer-Key:X-Endpoint-Received:
+	 X-Original-From:Reply-To;
+	bh=C40fiRCk9L71R/bApiGXNANtJYBkFW0sGqUATJahP2I=;
+	b=tlRS/NFZTVsZYPjd3/94S/5qEqOa/1mYKFx9dnvEg6+BnPE5Z50LwvF8oF7Y1cv5R/GU
+	 HM2kpU6HXw58RglchD2mMlOMc+LqpXtCMXSxNhnc18Qj29h+wYKopOGulvmVTc9cqjqpC
+	 LGH8KN+XRzANni3bytiDAzXfsIb5nIOybVZ0Ca7gwDaOM0i/iHearSNOSEanQYCDivWnU
+	 VAwUoVsKVCheLAonMpfa/wN2iKxMrGi7b1Jya8523kF5K3teaKqXU7AR5pECfd7serLPY
+	 1ZLcVd3girC9kflfE+OrlQvScNnzyvdMqyTW9eXX8sQSlpS3US9TwB3ofLbejyee/MQ==
 ARC-Authentication-Results: i=1; smtp.kernel.org; 
 	arc=none smtp.remote-ip=100.80.115.77
 Received: from lkml.kernel.org (nexus.subspace.kernel.org [100.80.115.77])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.kernel.org (Postfix) with ESMTPS id 47B8F1F000C8;
+	by smtp.kernel.org (Postfix) with ESMTPS id 479811F000C7;
 	Tue, 17 Nov 2026 17:56:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1794938206;
-	bh=w7dFDkqDW/rIFGxkStx87/r7LXJ3QjdIRNRvmQ7tuZU=;
-	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To;
-	b=E0R2D1cvShTyhYIhtf9KYGtg0tJriuM9nJqUAcY/CjG0oxROHAP5hYV0Keag2naOg
-	 Cd5QsYmaW2NzuNkByx7MEsOg8uOlgINu4iqApMeHpCa15R6YXEtHHqkPfaAJW67yFO
-	 sE7ugFlnS3sT0nfvVJTgv2c8rkt0Ogvrf1I0kDRgVZ09V9qYwDOYrikUIdzS+I8hml
-	 IrH+Lksr8SbUW9+Flrp+s9sxLXeYAplvEcS6IMmZdDvxByhl/kyGG04NVAZSQxFiN8
-	 v6m2skqHF9mCYVkpYcX9RA64RPsQXViXD2JTU2hZIm7IzD0LsdLlDErCdrSEgQzJhY
-	 wmm6KbN3nt8Xw==
+	s=k20260515; t=1794938205;
+	bh=C40fiRCk9L71R/bApiGXNANtJYBkFW0sGqUATJahP2I=;
+	h=From:Subject:Date:To:Cc:Reply-To;
+	b=LQG6pzzmKLChzL8WIgMYahsCt06zWqgvfvcrOnFYRB777NSNYFHyLZNVWyuD68bw3
+	 oq4wGwSdj/Hl7MBNbAjNeZpjYLFmxK0f8QOjIESa2M9RuOlZ/R/Dj68wPk826GvAuI
+	 f/QP/UCVat2iqRoidhHcIkP3JykdDJF96fUgkaj7BLtfUcpQCh8PdNDb6tWrXv3dw+
+	 bNABVnzbOlua94/mXlzxZ6MaTaKzQvv9i1n+8zKB8ABZuInTIy5U6OTh2WukBJtqlg
+	 vsrQ2CzAujPFeslklgpZ6WUp76lBrOGj/vUFQ6ctsuSl5qToraZJfKfD8GprboB1RT
+	 ceUJ0uQLT+7tg==
 Received: from nexus.subspace.kernel.org (localhost [IPv6:::1])
-	by lkml.kernel.org (Postfix) with ESMTP id B98A74AA22;
+	by lkml.kernel.org (Postfix) with ESMTP id 8E13F4AA28;
 	Tue, 17 Nov 2026 17:56:44 +0000 (UTC)
 From: Roman Vivchar via B4 Relay <devnull+rva333.protonmail.com@kernel.org>
-Date: Tue, 17 Nov 2026 19:56:32 +0200
-Subject: [PATCH v2 1/3] iio: adc: mt6359-auxadc: correct channel types to
- IIO_VOLTAGE
+Subject: [PATCH v2 0/3] iio: adc: mt6359-auxadc: various fixes
+Date: Tue, 17 Nov 2026 19:56:31 +0200
+Message-Id: <20261117-6768-6358-fixes-v2-0-1ffc3c2f3c80@protonmail.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
-Message-Id: <20261117-6768-6358-fixes-v2-1-1ffc3c2f3c80@protonmail.com>
-References: <20261117-6768-6358-fixes-v2-0-1ffc3c2f3c80@protonmail.com>
-In-Reply-To: <20261117-6768-6358-fixes-v2-0-1ffc3c2f3c80@protonmail.com>
+Content-Transfer-Encoding: 7bit
+X-B4-Tracking: v=1; b=H4sIAAAAAAAC/3WNwQ6CMBBEf4X07Bq2DaV64j8Mh1IWWSOUtEg0h
+ H+34Nnjy8ybWUWkwBTFNVtFoIUj+zGBPGXC9Xa8E3CbWMhcasRcgS61Aa0KAx2/KULnWldebGc
+ JUSRrCnQESbrVP46v5kFu3mf2Rs9x9uFzXC649/6vLwg5SGu0sUphIZtqCn7242D5eXZ+EPW2b
+ V8x5aBZxQAAAA==
+X-Change-ID: 20261103-6768-6358-fixes-fcdc79afae11
 To: Jonathan Cameron <jic23@kernel.org>, 
  David Lechner <dlechner@baylibre.com>, 
  =?utf-8?q?Nuno_S=C3=A1?= <nuno.sa@analog.com>, 
@@ -94,17 +97,16 @@ Cc: Chen-Yu Tsai <wenst@chromium.org>, linux-iio@vger.kernel.org,
  linux-mediatek@lists.infradead.org, Roman Vivchar <rva333@protonmail.com>, 
  Jonathan Cameron <jic23@kernel.org>
 X-Mailer: b4 0.15.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1794938202; l=7888;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1794938202; l=1125;
  i=rva333@protonmail.com; s=20260510; h=from:subject:message-id;
- bh=KZggTfnE6JmUpUfl7f5ZEwmXhpX3uI69FyQirUUycUE=;
- b=IhpWQjYn+laG4mBWsmKF5XV4bpV+NQ29y985B9QFDw1+1TZpwL6a5frdjbHEcYjSc3mNwPb0D
- 0KRB40tlJWKCwsPybdQScU6fwUuFAkDjnCz8nmRXU1K0q/RuEcvyL2v
+ bh=bnuhqaQ0sDql99jd/NNF2dGROwPEVF0Qts64YTX5a1c=;
+ b=JPZx9Vw82WzozSKA++qp1LgaxtkvhMc/qkvoitXKXucEkCFXc38/VDZfO+PSBBS0T1oTuWQIL
+ anX3euNZ+/pA07fDikoSFIV9mNH2RTxNOdjQaDrnhj+/gVlOO5Mf+vo
 X-Developer-Key: i=rva333@protonmail.com; a=ed25519;
  pk=zww/nWjBGoQ4POXCG0BV6fx2iuXK6jx77rsKPA5YK5Y=
 X-Endpoint-Received: by B4 Relay for rva333@protonmail.com/20260510 with
  auth_id=777
 X-Original-From: Roman Vivchar <rva333@protonmail.com>
-Content-Transfer-Encoding: 7bit
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -116,152 +118,43 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Reply-To: rva333@protonmail.com
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-16.8 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,
 	FREEMAIL_REPLYTO_END_DIGIT,HEADER_FROM_DIFFERENT_DOMAINS,
 	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,UPPERCASE_50_75,USER_AGENT_GIT autolearn=ham
-	autolearn_force=no version=4.0.1
+	SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-From: Roman Vivchar <rva333@protonmail.com>
+This patch series fixes various bugs in the mt6359 auxadc driver. For
+some reason, the driver had channel types for temperature or resistance,
+while the ADC can report only voltage. There were also issues with
+battery channel ready bit masking and scale calculation.
 
-All mt6357, mt6358, mt6359 and mt6363 declare their channel types as
-voltage, resistance and temperature. This is wrong, since the PMIC
-doesn't include any built-in conversion block. It simply measures
-voltage, while consumers are supposed to convert these readings to
-the actual temperature or resistance using efuse calibration.
+Changes were verified on the mt6358 (mt6768 platform). Compile-tested
+only for others.
 
-Correct all channel types to IIO_VOLTAGE.
-
-Fixes: 3587914bf61d ("iio: adc: Add support for MediaTek MT6357/8/9 Auxiliary ADC")
-Fixes: d6f49313272b ("iio: adc: mt6359: Add support for MediaTek MT6363 PMIC AUXADC")
 Signed-off-by: Roman Vivchar <rva333@protonmail.com>
 ---
- drivers/iio/adc/mt6359-auxadc.c | 78 ++++++++++++++++++++---------------------
- 1 file changed, 39 insertions(+), 39 deletions(-)
+Changes in v2:
+- Clarify bit number in the patch 2 commit message (Jonathan)
+- Link to v1: https://patch.msgid.link/20261103-6768-6358-fixes-v1-0-2a868a33152b@protonmail.com
 
-diff --git a/drivers/iio/adc/mt6359-auxadc.c b/drivers/iio/adc/mt6359-auxadc.c
-index 88b0e26309e5..951d236f972b 100644
---- a/drivers/iio/adc/mt6359-auxadc.c
-+++ b/drivers/iio/adc/mt6359-auxadc.c
-@@ -205,18 +205,18 @@ struct mtk_pmic_auxadc_info {
- }
- 
- static const struct iio_chan_spec mt6357_auxadc_channels[] = {
--	MTK_PMIC_IIO_CHAN(MT6357, bat_adc, BATADC, 0, 15, IIO_RESISTANCE),
--	MTK_PMIC_IIO_CHAN(MT6357, isense, ISENSE, 1, 12, IIO_CURRENT),
--	MTK_PMIC_IIO_CHAN(MT6357, cdt_v, VCDT, 2, 12, IIO_TEMP),
--	MTK_PMIC_IIO_CHAN(MT6357, batt_temp, BAT_TEMP, 3, 12, IIO_TEMP),
--	MTK_PMIC_IIO_CHAN(MT6357, chip_temp, CHIP_TEMP, 4, 12, IIO_TEMP),
--	MTK_PMIC_IIO_CHAN(MT6357, acc_det, ACCDET, 5, 12, IIO_RESISTANCE),
-+	MTK_PMIC_IIO_CHAN(MT6357, bat_adc, BATADC, 0, 15, IIO_VOLTAGE),
-+	MTK_PMIC_IIO_CHAN(MT6357, isense, ISENSE, 1, 12, IIO_VOLTAGE),
-+	MTK_PMIC_IIO_CHAN(MT6357, cdt_v, VCDT, 2, 12, IIO_VOLTAGE),
-+	MTK_PMIC_IIO_CHAN(MT6357, batt_temp, BAT_TEMP, 3, 12, IIO_VOLTAGE),
-+	MTK_PMIC_IIO_CHAN(MT6357, chip_temp, CHIP_TEMP, 4, 12, IIO_VOLTAGE),
-+	MTK_PMIC_IIO_CHAN(MT6357, acc_det, ACCDET, 5, 12, IIO_VOLTAGE),
- 	MTK_PMIC_IIO_CHAN(MT6357, dcxo_v, VDCXO, 6, 12, IIO_VOLTAGE),
--	MTK_PMIC_IIO_CHAN(MT6357, tsx_temp, TSX_TEMP, 7, 15, IIO_TEMP),
--	MTK_PMIC_IIO_CHAN(MT6357, hp_ofs_cal, HPOFS_CAL, 9, 15, IIO_RESISTANCE),
--	MTK_PMIC_IIO_CHAN(MT6357, dcxo_temp, DCXO_TEMP, 36, 15, IIO_TEMP),
--	MTK_PMIC_IIO_CHAN(MT6357, vcore_temp, VCORE_TEMP, 40, 12, IIO_TEMP),
--	MTK_PMIC_IIO_CHAN(MT6357, vproc_temp, VPROC_TEMP, 41, 12, IIO_TEMP),
-+	MTK_PMIC_IIO_CHAN(MT6357, tsx_temp, TSX_TEMP, 7, 15, IIO_VOLTAGE),
-+	MTK_PMIC_IIO_CHAN(MT6357, hp_ofs_cal, HPOFS_CAL, 9, 15, IIO_VOLTAGE),
-+	MTK_PMIC_IIO_CHAN(MT6357, dcxo_temp, DCXO_TEMP, 36, 15, IIO_VOLTAGE),
-+	MTK_PMIC_IIO_CHAN(MT6357, vcore_temp, VCORE_TEMP, 40, 12, IIO_VOLTAGE),
-+	MTK_PMIC_IIO_CHAN(MT6357, vproc_temp, VPROC_TEMP, 41, 12, IIO_VOLTAGE),
- 
- 	/* Battery impedance channels */
- 	MTK_PMIC_IIO_CHAN(MT6357, batt_v, VBAT, 0, 15, IIO_VOLTAGE),
-@@ -251,19 +251,19 @@ static const u16 mt6357_auxadc_regs[] = {
- };
- 
- static const struct iio_chan_spec mt6358_auxadc_channels[] = {
--	MTK_PMIC_IIO_CHAN(MT6358, bat_adc, BATADC, 0, 15, IIO_RESISTANCE),
--	MTK_PMIC_IIO_CHAN(MT6358, cdt_v, VCDT, 2, 12, IIO_TEMP),
--	MTK_PMIC_IIO_CHAN(MT6358, batt_temp, BAT_TEMP, 3, 12, IIO_TEMP),
--	MTK_PMIC_IIO_CHAN(MT6358, chip_temp, CHIP_TEMP, 4, 12, IIO_TEMP),
--	MTK_PMIC_IIO_CHAN(MT6358, acc_det, ACCDET, 5, 12, IIO_RESISTANCE),
-+	MTK_PMIC_IIO_CHAN(MT6358, bat_adc, BATADC, 0, 15, IIO_VOLTAGE),
-+	MTK_PMIC_IIO_CHAN(MT6358, cdt_v, VCDT, 2, 12, IIO_VOLTAGE),
-+	MTK_PMIC_IIO_CHAN(MT6358, batt_temp, BAT_TEMP, 3, 12, IIO_VOLTAGE),
-+	MTK_PMIC_IIO_CHAN(MT6358, chip_temp, CHIP_TEMP, 4, 12, IIO_VOLTAGE),
-+	MTK_PMIC_IIO_CHAN(MT6358, acc_det, ACCDET, 5, 12, IIO_VOLTAGE),
- 	MTK_PMIC_IIO_CHAN(MT6358, dcxo_v, VDCXO, 6, 12, IIO_VOLTAGE),
--	MTK_PMIC_IIO_CHAN(MT6358, tsx_temp, TSX_TEMP, 7, 15, IIO_TEMP),
--	MTK_PMIC_IIO_CHAN(MT6358, hp_ofs_cal, HPOFS_CAL, 9, 15, IIO_RESISTANCE),
--	MTK_PMIC_IIO_CHAN(MT6358, dcxo_temp, DCXO_TEMP, 10, 15, IIO_TEMP),
-+	MTK_PMIC_IIO_CHAN(MT6358, tsx_temp, TSX_TEMP, 7, 15, IIO_VOLTAGE),
-+	MTK_PMIC_IIO_CHAN(MT6358, hp_ofs_cal, HPOFS_CAL, 9, 15, IIO_VOLTAGE),
-+	MTK_PMIC_IIO_CHAN(MT6358, dcxo_temp, DCXO_TEMP, 10, 15, IIO_VOLTAGE),
- 	MTK_PMIC_IIO_CHAN(MT6358, bif_v, VBIF, 11, 12, IIO_VOLTAGE),
--	MTK_PMIC_IIO_CHAN(MT6358, vcore_temp, VCORE_TEMP, 38, 12, IIO_TEMP),
--	MTK_PMIC_IIO_CHAN(MT6358, vproc_temp, VPROC_TEMP, 39, 12, IIO_TEMP),
--	MTK_PMIC_IIO_CHAN(MT6358, vgpu_temp, VGPU_TEMP, 40, 12, IIO_TEMP),
-+	MTK_PMIC_IIO_CHAN(MT6358, vcore_temp, VCORE_TEMP, 38, 12, IIO_VOLTAGE),
-+	MTK_PMIC_IIO_CHAN(MT6358, vproc_temp, VPROC_TEMP, 39, 12, IIO_VOLTAGE),
-+	MTK_PMIC_IIO_CHAN(MT6358, vgpu_temp, VGPU_TEMP, 40, 12, IIO_VOLTAGE),
- 
- 	/* Battery impedance channels */
- 	MTK_PMIC_IIO_CHAN(MT6358, batt_v, VBAT, 0, 15, IIO_VOLTAGE),
-@@ -299,18 +299,18 @@ static const u16 mt6358_auxadc_regs[] = {
- };
- 
- static const struct iio_chan_spec mt6359_auxadc_channels[] = {
--	MTK_PMIC_IIO_CHAN(MT6359, bat_adc, BATADC, 0, 15, IIO_RESISTANCE),
--	MTK_PMIC_IIO_CHAN(MT6359, batt_temp, BAT_TEMP, 3, 12, IIO_TEMP),
--	MTK_PMIC_IIO_CHAN(MT6359, chip_temp, CHIP_TEMP, 4, 12, IIO_TEMP),
--	MTK_PMIC_IIO_CHAN(MT6359, acc_det, ACCDET, 5, 12, IIO_RESISTANCE),
-+	MTK_PMIC_IIO_CHAN(MT6359, bat_adc, BATADC, 0, 15, IIO_VOLTAGE),
-+	MTK_PMIC_IIO_CHAN(MT6359, batt_temp, BAT_TEMP, 3, 12, IIO_VOLTAGE),
-+	MTK_PMIC_IIO_CHAN(MT6359, chip_temp, CHIP_TEMP, 4, 12, IIO_VOLTAGE),
-+	MTK_PMIC_IIO_CHAN(MT6359, acc_det, ACCDET, 5, 12, IIO_VOLTAGE),
- 	MTK_PMIC_IIO_CHAN(MT6359, dcxo_v, VDCXO, 6, 12, IIO_VOLTAGE),
--	MTK_PMIC_IIO_CHAN(MT6359, tsx_temp, TSX_TEMP, 7, 15, IIO_TEMP),
--	MTK_PMIC_IIO_CHAN(MT6359, hp_ofs_cal, HPOFS_CAL, 9, 15, IIO_RESISTANCE),
--	MTK_PMIC_IIO_CHAN(MT6359, dcxo_temp, DCXO_TEMP, 10, 15, IIO_TEMP),
-+	MTK_PMIC_IIO_CHAN(MT6359, tsx_temp, TSX_TEMP, 7, 15, IIO_VOLTAGE),
-+	MTK_PMIC_IIO_CHAN(MT6359, hp_ofs_cal, HPOFS_CAL, 9, 15, IIO_VOLTAGE),
-+	MTK_PMIC_IIO_CHAN(MT6359, dcxo_temp, DCXO_TEMP, 10, 15, IIO_VOLTAGE),
- 	MTK_PMIC_IIO_CHAN(MT6359, bif_v, VBIF, 11, 12, IIO_VOLTAGE),
--	MTK_PMIC_IIO_CHAN(MT6359, vcore_temp, VCORE_TEMP, 30, 12, IIO_TEMP),
--	MTK_PMIC_IIO_CHAN(MT6359, vproc_temp, VPROC_TEMP, 31, 12, IIO_TEMP),
--	MTK_PMIC_IIO_CHAN(MT6359, vgpu_temp, VGPU_TEMP, 32, 12, IIO_TEMP),
-+	MTK_PMIC_IIO_CHAN(MT6359, vcore_temp, VCORE_TEMP, 30, 12, IIO_VOLTAGE),
-+	MTK_PMIC_IIO_CHAN(MT6359, vproc_temp, VPROC_TEMP, 31, 12, IIO_VOLTAGE),
-+	MTK_PMIC_IIO_CHAN(MT6359, vgpu_temp, VGPU_TEMP, 32, 12, IIO_VOLTAGE),
- 
- 	/* Battery impedance channels */
- 	MTK_PMIC_IIO_CHAN(MT6359, batt_v, VBAT, 0, 15, IIO_VOLTAGE),
-@@ -349,15 +349,15 @@ static const u16 mt6359_auxadc_regs[] = {
- };
- 
- static const struct iio_chan_spec mt6363_auxadc_channels[] = {
--	MTK_PMIC_IIO_CHAN(MT6363, bat_adc, BATADC, 0, 15, IIO_RESISTANCE),
--	MTK_PMIC_IIO_CHAN(MT6363, cdt_v, VCDT, 2, 12, IIO_TEMP),
--	MTK_PMIC_IIO_CHAN(MT6363, batt_temp, BAT_TEMP, 3, 12, IIO_TEMP),
--	MTK_PMIC_IIO_CHAN(MT6363, chip_temp, CHIP_TEMP, 4, 12, IIO_TEMP),
-+	MTK_PMIC_IIO_CHAN(MT6363, bat_adc, BATADC, 0, 15, IIO_VOLTAGE),
-+	MTK_PMIC_IIO_CHAN(MT6363, cdt_v, VCDT, 2, 12, IIO_VOLTAGE),
-+	MTK_PMIC_IIO_CHAN(MT6363, batt_temp, BAT_TEMP, 3, 12, IIO_VOLTAGE),
-+	MTK_PMIC_IIO_CHAN(MT6363, chip_temp, CHIP_TEMP, 4, 12, IIO_VOLTAGE),
- 	MTK_PMIC_IIO_CHAN(MT6363, sys_sns_v, VSYSSNS, 6, 15, IIO_VOLTAGE),
- 	MTK_PMIC_IIO_CHAN(MT6363, tref_v, VTREF, 11, 12, IIO_VOLTAGE),
--	MTK_PMIC_IIO_CHAN(MT6363, vcore_temp, VCORE_TEMP, 38, 12, IIO_TEMP),
--	MTK_PMIC_IIO_CHAN(MT6363, vproc_temp, VPROC_TEMP, 39, 12, IIO_TEMP),
--	MTK_PMIC_IIO_CHAN(MT6363, vgpu_temp, VGPU_TEMP, 40, 12, IIO_TEMP),
-+	MTK_PMIC_IIO_CHAN(MT6363, vcore_temp, VCORE_TEMP, 38, 12, IIO_VOLTAGE),
-+	MTK_PMIC_IIO_CHAN(MT6363, vproc_temp, VPROC_TEMP, 39, 12, IIO_VOLTAGE),
-+	MTK_PMIC_IIO_CHAN(MT6363, vgpu_temp, VGPU_TEMP, 40, 12, IIO_VOLTAGE),
- 
- 	/* For VIN, ADC12 holds the result depending on which GPIO was activated */
- 	MTK_PMIC_IIO_CHAN(MT6363, in1_v, VIN1, 45, 15, IIO_VOLTAGE),
+---
+Roman Vivchar (3):
+      iio: adc: mt6359-auxadc: correct channel types to IIO_VOLTAGE
+      iio: adc: mt6359-auxadc: mask conversion ready bit in mt6358_read_imp
+      iio: adc: mt6359-auxadc: fix scale calculation
 
--- 
-2.56.1
+ drivers/iio/adc/mt6359-auxadc.c | 88 ++++++++++++++++++++---------------------
+ 1 file changed, 42 insertions(+), 46 deletions(-)
+---
+base-commit: 7649ba73f9e7e1e04d0b46213e39c79ae09dd55c
+change-id: 20261103-6768-6358-fixes-fcdc79afae11
+
+Best regards,
+--  
+rva3 <rva333@protonmail.com>
 
 
 
