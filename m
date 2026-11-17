@@ -2,48 +2,48 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 2150C606A897
-	for <linux-mediatek@archiver.kernel.org>; Tue, 17 Nov 2026 09:38:23 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 4A4CB606A32C
+	for <linux-mediatek@archiver.kernel.org>; Tue, 17 Nov 2026 09:38:39 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=XyMzpqH+;
-	dkim=pass (2048-bit key) header.d=bootlin.com header.i=@bootlin.com header.a=rsa-sha256 header.s=dkim header.b=I4Nk4L/h
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=NnMzYYUw;
+	dkim=pass (2048-bit key) header.d=bootlin.com header.i=@bootlin.com header.a=rsa-sha256 header.s=dkim header.b=gV4ssBiq
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Unsubscribe-Post:
-	List-Owner; bh=/RD6QcqfT8lVqNV9ZoXFSMLkdbPS8XDfq1YdC5eCrLI=; b=XyMzpqH+yzLEbZ
-	vXBNACYmX58HvORIwTvs5IxkudBkjH3QMCv04Hg3khiPCqGG7weeogArW0lO0FUPBWdP2z9ORH0ux
-	sX1sE5eYF9wZcppx7ngnpR+I6X3cBHUu+zbfdasGQ0Pk818epuD8whBWvG4Xncaotal4PtxQIjgD9
-	2YvqG2D9sb2lOQmZNWkO1TuzDW1EMFFBk4/i4EPHhjfH4n0ThFhN9kNGuZgqYDNnmEHpepGYAnExz
-	4PzMJE/hX79Q2wpcyottP3iG+NgsqRq+V6LzQ1xoen9WqErDlN1soFN0v0b9B5WBNZNK/d/E2wRUP
-	/jTw5MHJho+77DmYHNFg==;
+	List-Owner; bh=niJD0njQ1UDwvr3T+XYsWPwrBy0c6qlXpaKDdhLmAMk=; b=NnMzYYUwLpew6e
+	TV1OvEMmkuNKWnMUxx/lKRTEv86hGGRsItxW4b7idvcsT10G0f2GvzmeG47eZ7AZ3m6c1EDXISFf8
+	IfOZXLnsEvZSWLZ9vW9TSqwGxtMS16wptEpvC9pxddx2sjAW3lnfZwfIzt/J17vNVqLknq8ln5Rqh
+	VXT1qFb92h04piUU8AiSRr6UyfHJ5SPpwDV3RGLzaK20KwOfWQeRXoP/keUkSy5hl79Pqpv/gXQw0
+	dRs/ZS7yG1Ic8zGyCMCItr4B9/iNJrvj/HJGmSkXxwV7Q4Z8q/F67O3S0vYNAImgFBe2YFPeLkTUf
+	Sl5GeQI6zN6CXgXLLMDg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xTFdu-00000005751-3E3S;
-	Tue, 17 Nov 2026 09:38:22 +0000
+	id 1xTFeA-000000057Rj-3mYZ;
+	Tue, 17 Nov 2026 09:38:38 +0000
 Received: from smtpout-02.galae.net ([185.246.84.56])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xTFdo-000000056t1-00UW;
-	Tue, 17 Nov 2026 09:38:17 +0000
+	id 1xTFds-0000000571J-36Oy;
+	Tue, 17 Nov 2026 09:38:24 +0000
 Received: from smtpout-01.galae.net (smtpout-01.galae.net [212.83.139.233])
-	by smtpout-02.galae.net (Postfix) with ESMTPS id 185661A158C;
-	Tue, 17 Nov 2026 09:38:14 +0000 (UTC)
+	by smtpout-02.galae.net (Postfix) with ESMTPS id 21F001A158C;
+	Tue, 17 Nov 2026 09:38:19 +0000 (UTC)
 Received: from mail.galae.net (mail.galae.net [212.83.136.155])
-	by smtpout-01.galae.net (Postfix) with ESMTPS id D93D15FC81;
-	Tue, 17 Nov 2026 09:38:13 +0000 (UTC)
-Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id 5B5CC11BC0C04;
-	Tue, 17 Nov 2026 10:38:11 +0100 (CET)
+	by smtpout-01.galae.net (Postfix) with ESMTPS id E52805FC81;
+	Tue, 17 Nov 2026 09:38:18 +0000 (UTC)
+Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id 2BAA811BC1129;
+	Tue, 17 Nov 2026 10:38:16 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=dkim;
-	t=1794908292; h=from:subject:date:message-id:to:cc:mime-version:
+	t=1794908298; h=from:subject:date:message-id:to:cc:mime-version:
 	 content-transfer-encoding:in-reply-to:references;
-	bh=/RD6QcqfT8lVqNV9ZoXFSMLkdbPS8XDfq1YdC5eCrLI=;
-	b=I4Nk4L/h2QpDBJLYY5gLsTTTDYv8Ivf8x6rjV60TsXh7rfHxs3zA7ug4gmIjNLdvE+JEKA
-	aSRecseI3/KOo1rgfOKTno22PqQh0ez73DNgz4ClEnRjil5Ijj+fqnB4y8yIlFHcZctn2y
-	SF8SR6sgV5Nr4cKNJ7xEJGEIVv3LbVAv/iEYcc+WjOR/nL025qEotPChW2HzTl/P5YVFuz
-	bAdvDU9oGaMSyWU7uTa25E8YIY6z29HjgMGeH2/vZ0BJDY4Jy638rg6tWjcHPEArqLS8Gf
-	OKdChEujc8+zzrKtjVDcHt2xGJkWuOYVpADTs2tsyHln7gcNtmpHi1ZYfSClXQ==
+	bh=niJD0njQ1UDwvr3T+XYsWPwrBy0c6qlXpaKDdhLmAMk=;
+	b=gV4ssBiqLDmoCoXe4SIe/bAL9n9hYqos8FqYkltwMlaPBbOoBoKvKweKGq4kJIk2LPrHoS
+	QxTq4Tr7BQxbOt+1EWq72l/wdppm1KPu5tcgsipDdfYBTrTRt/cWPVs1JBYqon11EreHAa
+	s6CcWSvxAbB80MaBHKcXOEqQUJTZYrD40/070WgMNEPIpE+D/ktouXwY0HpeDpBe3VhedC
+	/eewolPwxLk6j840izkWrephiqyu6o/5Wx5yCm5B6fYW4WjGW8unTw3xY44q4GiAPbCEHO
+	5VfYMCgAtietMz0v1JSIdMLNdukBXq67F1BpOR2aN8OWIUzDVot+m+IERxcX6Q==
 From: Paul Cercueil <paul.cercueil@bootlin.com>
 To: Miquel Raynal <miquel.raynal@bootlin.com>,
 	Richard Weinberger <richard@nod.at>,
@@ -56,9 +56,9 @@ Cc: linux-mtd@lists.infradead.org,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
-Subject: [PATCH v2 06/12] mtd: nand: mtk: Remove #ifdef guards for PM related functions
-Date: Tue, 17 Nov 2026 10:37:44 +0100
-Message-ID: <20261117093751.14988-7-paul.cercueil@bootlin.com>
+Subject: [PATCH v2 09/12] mtd: rawnand: mtk: Remove #ifdef guards for PM related functions
+Date: Tue, 17 Nov 2026 10:37:47 +0100
+Message-ID: <20261117093751.14988-10-paul.cercueil@bootlin.com>
 X-Mailer: git-send-email 2.47.3
 In-Reply-To: <20261117093751.14988-1-paul.cercueil@bootlin.com>
 References: <20261117093751.14988-1-paul.cercueil@bootlin.com>
@@ -67,8 +67,8 @@ MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-Last-TLS-Session-Version: TLSv1.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261117_013816_227276_2224EE57 
-X-CRM114-Status: GOOD (  14.11  )
+X-CRM114-CacheID: sfid-20261117_013822_107034_4E327E6A 
+X-CRM114-Status: GOOD (  14.32  )
 X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -105,39 +105,39 @@ Cc: linux-mediatek@lists.infradead.org
 
 v2: No change
 ---
- drivers/mtd/nand/ecc-mtk.c | 8 ++------
+ drivers/mtd/nand/raw/mtk_nand.c | 8 ++------
  1 file changed, 2 insertions(+), 6 deletions(-)
 
-diff --git a/drivers/mtd/nand/ecc-mtk.c b/drivers/mtd/nand/ecc-mtk.c
-index 66f0985ef7cd..6f210ba935ad 100644
---- a/drivers/mtd/nand/ecc-mtk.c
-+++ b/drivers/mtd/nand/ecc-mtk.c
-@@ -588,7 +588,6 @@ static int mtk_ecc_probe(struct platform_device *pdev)
- 	return 0;
+diff --git a/drivers/mtd/nand/raw/mtk_nand.c b/drivers/mtd/nand/raw/mtk_nand.c
+index c439b7814ebb..4b8451772f9b 100644
+--- a/drivers/mtd/nand/raw/mtk_nand.c
++++ b/drivers/mtd/nand/raw/mtk_nand.c
+@@ -1591,7 +1591,6 @@ static void mtk_nfc_remove(struct platform_device *pdev)
+ 	mtk_ecc_release(nfc->ecc);
  }
  
 -#ifdef CONFIG_PM_SLEEP
- static int mtk_ecc_suspend(struct device *dev)
+ static int mtk_nfc_suspend(struct device *dev)
  {
- 	struct mtk_ecc *ecc = dev_get_drvdata(dev);
-@@ -612,8 +611,7 @@ static int mtk_ecc_resume(struct device *dev)
+ 	struct mtk_nfc *nfc = dev_get_drvdata(dev);
+@@ -1635,8 +1634,7 @@ static int mtk_nfc_resume(struct device *dev)
  	return 0;
  }
  
--static SIMPLE_DEV_PM_OPS(mtk_ecc_pm_ops, mtk_ecc_suspend, mtk_ecc_resume);
+-static SIMPLE_DEV_PM_OPS(mtk_nfc_pm_ops, mtk_nfc_suspend, mtk_nfc_resume);
 -#endif
-+static DEFINE_SIMPLE_DEV_PM_OPS(mtk_ecc_pm_ops, mtk_ecc_suspend, mtk_ecc_resume);
++static DEFINE_SIMPLE_DEV_PM_OPS(mtk_nfc_pm_ops, mtk_nfc_suspend, mtk_nfc_resume);
  
- MODULE_DEVICE_TABLE(of, mtk_ecc_dt_match);
- 
-@@ -622,9 +620,7 @@ static struct platform_driver mtk_ecc_driver = {
+ static struct platform_driver mtk_nfc_driver = {
+ 	.probe  = mtk_nfc_probe,
+@@ -1644,9 +1642,7 @@ static struct platform_driver mtk_nfc_driver = {
  	.driver = {
- 		.name  = "mtk-ecc",
- 		.of_match_table = mtk_ecc_dt_match,
+ 		.name  = MTK_NAME,
+ 		.of_match_table = mtk_nfc_id_table,
 -#ifdef CONFIG_PM_SLEEP
--		.pm = &mtk_ecc_pm_ops,
+-		.pm = &mtk_nfc_pm_ops,
 -#endif
-+		.pm = pm_sleep_ptr(&mtk_ecc_pm_ops),
++		.pm = pm_sleep_ptr(&mtk_nfc_pm_ops),
  	},
  };
  
