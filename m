@@ -2,11 +2,11 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 2EBCE606A8B1
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 1C04C606A88E
 	for <linux-mediatek@archiver.kernel.org>; Tue, 17 Nov 2026 09:11:42 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=BRHy/spV;
-	dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=jGi1XVgb
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=JIffwnfK;
+	dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=bwvWH87o
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
@@ -14,72 +14,71 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	Content-Type:MIME-Version:Subject:Date:From:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=pgH79hn0SCK9OIleCkqIqypKD/2WKW5SYdyENUBd9sY=; b=BRHy/spVkumQx/oUhwGyBs9CMx
-	T3qCGpIaet+LOCmpeTj16pD9WU4yfZRmaXvaxW5/kUuvbdt1Fy/0p5TaavjZTsNTLXxNj+HVZupOR
-	fXZkiEJWRPwkL7nypasWGuAQ/4V2oYs6123vNAyAOXw2BCUqUVV4d/vKJsUYoV0OM3S1Hm7yd1nQn
-	ohVBHKxzcx3tt94o7NhBwYfPRHDKOI34D5TGw5Gb3E+MXbqqDrZL5zynswDuknoTJUKY29d8HQD3b
-	bl11cYXr7UH69iLH3t0/Q2voVIX4R9AL0+x6W9H9SoUg/YfZQMpH2AzY9m9p0xUveVZBLw5efP9gN
-	Y54KaeyQ==;
+	bh=GH2RTnN5eMd0yHmk4Ze/DUPXoCGAt6U5CjnSXWZgI9s=; b=JIffwnfKs1zD0WJhdgrtun+dse
+	NxcVewLvZaDodwLR0Aj00BqkoJtJra9JZJ9789gLhh+FSQATgaE0uxlc5nQThJRQVZ4XOMjbvRuqs
+	iIl51DaK4LffKfbeb7GcNd8vvHxROYCntPOhbzXlCz/MYLMly2CfXsE/Ggap1My7+83tRp+8S8gWf
+	uQnsdIdpr0sMsdu2NxHg4obBazO+DK528O7pneULuJXJuXKs75WvFexXnWHkj69D28LGpvUCKL/nS
+	JUrYIxQjEUYpDEBGVIYt2ti+vKS+4lk1mh9sqspmLQS2U3dUYuXqc/qRmq9cE/CqFDpG2diVSZYAi
+	SU7enQTw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xTFE5-000000051vT-33UZ;
+	id 1xTFE5-000000051v3-2gg0;
 	Tue, 17 Nov 2026 09:11:41 +0000
 Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xTFE3-000000051sc-2dXE;
+	id 1xTFE3-000000051sb-2HRb;
 	Tue, 17 Nov 2026 09:11:39 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id 54F0545BFB;
+	by sea.source.kernel.org (Postfix) with ESMTP id 45325403F2;
 	Tue, 17 Nov 2026 09:11:39 +0000 (UTC)
 Authentication-Results: smtp.kernel.org; arc=none smtp.remote-ip=100.80.115.77
 ARC-Seal: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256; cv=none;
 	t=1794906699;
-	b=EmD4tqPOhkhuxelT2rIvGqL0r/JWpzxFZYGY/va84A4IBvUl0wdvHItl9pCkJyoWJX3b
-	 gV+DtqDvbV5SKuxpTxji/PbE4rsd881XTcZ+jyQl/8G8KHNxlf3xAZHKL1svI0jm+jnvP
-	 +eoba9jmjLPKoPSldyaJ18wq9HQ+j5b3kiuVc9vcfvCoZKIh7aRaGmEippSrMbcfgOmOY
-	 nQSpkf4FLGRY3yJwP+KgjWgWF2sH7dHOBGZozSiagkMcRA4Fk2F3WHZTpddEQpGbW7uvM
-	 ZquZ6KyTWltOJ88Hi0znikiGKWRDX6HMWgEoyMeGBYgVVVx+cdS1uxcUG+rXMy3DOGA==
+	b=u9WcSmOe74dqZ/RYiXJQwhcYSKLIyUM/k/j97jFx/LsERsWgpgiRABbJLHtiCIH3T7jy
+	 Ncr7HnSyXT5QV++SqjWIMCXYbPui1GLMJBxek1bIP9DUqMCnJ6VScJuqXbyhAx44IfOoU
+	 w2FMS/TMU5V1H08VWMjrYYokTESnNMlZtjTSTaXX9kZ7xuV4QHv1VjQLjpVPeByMvZDvd
+	 5eNHfGNDFwVGI6Y5KCDULYXn3gmE5xaBGj//h729ndd5epKiJWDTLO9sqqZPspUo8+rxT
+	 Hgxw4+NG5h3Vhed/1n1yGBZS5CRy8un6maPvtOquGYv1L92dCMo0DNvZJVI3qhaxj3A==
 ARC-Message-Signature: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256;
 	c=relaxed/relaxed; t=1794906699;
 	h=DKIM-Signature:Received:From:Date:Subject:MIME-Version:Content-Type:
 	 Message-Id:References:In-Reply-To:To:Cc:X-Mailer:
 	 X-Developer-Signature:X-Developer-Key:X-Endpoint-Received:
 	 X-Original-From:Reply-To:Content-Transfer-Encoding;
-	bh=pgH79hn0SCK9OIleCkqIqypKD/2WKW5SYdyENUBd9sY=;
-	b=Cy6IWZ3vZVbH4wTAxx23mEELlN1oMqHiUdvUqthECphFR6CSlEvoYipEBsa5SeT9hF16
-	 0CDkyoNmjHFdzbbxL5LI2XT0MpRqCwR776SpwX9ODVG024EmqzQFCQ/NTmvg10VCr4KXi
-	 fgrc6jRq4uouyDQBSS1l4e7zHwbPc5oCK5efh3We4MkFfc8PHcksnThrxQ2n4XydzBJ32
-	 l4hLOIvhTExwfpDDD/C7dlTqgK+WWY3Y0yB5EoQiYMsRxbRy6Cc/8AsDTreXz7LDuk6Tc
-	 SvTghNsLR+4tI3WWsbfl368SQpaHRAbHbNtYJ3TgY9WjqQykdEObeP2FM1t//LgkSmA==
+	bh=GH2RTnN5eMd0yHmk4Ze/DUPXoCGAt6U5CjnSXWZgI9s=;
+	b=xxNJLNc6obY6OGg67JncRMkyWNsQNTGklC1Wb1BxwD7VubejwfdDyVEWTEnaQ9jApEjO
+	 r5Kvv4NQ3YhL5QnnJryx7cPVoYHIWyFvQsbLcjPCS7yl5P6/iRJb72tvcYqoTRoFQ/WG5
+	 Fio7WKSF0Dl6qpENOjh21iUJj5gT4s/3zYA2ishtU/tT9Yr9NnShMUuwp3htzrUDLIojK
+	 gQLA7mtpbwVWTwvftCXEK00Itm1AuHDVsesCpqMChIl3IPZTm/SqdFwaiBZN/6mX6nuhy
+	 696TSNYK98cfOsLQuKOeabhcU/83udBciEzdy/pWuX/hAzGvzSrFaXU6agGyLo+tCWQ==
 ARC-Authentication-Results: i=1; smtp.kernel.org; 
 	arc=none smtp.remote-ip=100.80.115.77
 Received: from lkml.kernel.org (nexus.subspace.kernel.org [100.80.115.77])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.kernel.org (Postfix) with ESMTPS id BE7571F000C9;
+	by smtp.kernel.org (Postfix) with ESMTPS id DCF871F000CB;
 	Tue, 17 Nov 2026 09:11:37 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
 	s=k20260515; t=1794906699;
-	bh=pgH79hn0SCK9OIleCkqIqypKD/2WKW5SYdyENUBd9sY=;
+	bh=GH2RTnN5eMd0yHmk4Ze/DUPXoCGAt6U5CjnSXWZgI9s=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To;
-	b=jGi1XVgbSgYjV6isXuCw1zTSInR7yYnhL0YNnG5aYUk8iXklNDBmhEfk7i3RgOZnG
-	 mQGGPnYPjwcGnxJ9xrnYdqEUcnd9br8lOy5pd3tTbrTXTNZhFyl688VdYKAvrNtkWx
-	 EGeJsoKAdoUNtG3Lwf2GJm9ZDRB1LCPkAIG3jDuMoaE8ojZR7P4Z3/d0xiCCFpqmJs
-	 fIKU+QI4arADso6gFEMJ4WWsCy+zibcq68wRM1+pf0Ks/lMfKqBnz7OzlEpv7W+GqD
-	 v4x7e+6z2IC/H9/t7dWZD9XjfDn+87ueuGY+YRyX9rpRrlpJBkSDfOeYNGSvPv9Tt5
-	 6VCrGD3WmX2Xw==
+	b=bwvWH87oYw8WWo+CKwg+5JPKmPodI4SNCBPEU4J8AgA+AauIhY4jkhNt250fKcpzS
+	 PDne/4R7usaJkD6fGgQPTio/doep0eF7h30tgaNUTPsb0x5ODxeBOB2lOhHrVTkcro
+	 AWBCNPemPLHkipwYbK/n1EaDZMghEaywqp5Hh4yWL0Km21akaUUgNQ48BlXPJdbOZp
+	 9mpk+VnoE9HmcoIHkURBWLX4tBwUBk1ZHIBxXTGIoTm1n/9ozIwbDaV2U1wTgySiH8
+	 YFJ5wZANDuGb/t+hKCOds3p5/cymCY0NrsS7gJBr3TFIUkFCNkm3r9j3yzWj37pu2L
+	 dkB0KlKWnCt+w==
 Received: from nexus.subspace.kernel.org (localhost [IPv6:::1])
-	by lkml.kernel.org (Postfix) with ESMTP id 308E24A773;
+	by lkml.kernel.org (Postfix) with ESMTP id 5E5574A77B;
 	Tue, 17 Nov 2026 09:11:37 +0000 (UTC)
 From: Rui Cao via B4 Relay <devnull+i.udp0.com@kernel.org>
-Date: Tue, 17 Nov 2026 17:11:31 +0800
-Subject: [PATCH v2 1/5] dt-bindings: arm: mediatek: Add MT6833 and the
- Xiaomi Redmi Note 13 5G
+Date: Tue, 17 Nov 2026 17:11:33 +0800
+Subject: [PATCH v2 3/5] watchdog: mediatek: Add MT6833
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
-Message-Id: <20261117-mt6833-base-v2-1-058a0685c40c@udp0.com>
+Message-Id: <20261117-mt6833-base-v2-3-058a0685c40c@udp0.com>
 References: <20261117-mt6833-base-v2-0-058a0685c40c@udp0.com>
 In-Reply-To: <20261117-mt6833-base-v2-0-058a0685c40c@udp0.com>
 To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
@@ -95,14 +94,13 @@ Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
  linux-watchdog@vger.kernel.org, linux-serial@vger.kernel.org, 
  phone-devel@vger.kernel.org, Roman Vivchar <rva333@protonmail.com>, 
- Rui Cao <i@udp0.com>, 
- Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
+ Rui Cao <i@udp0.com>
 X-Mailer: b4 0.16.0
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1794906695; l=997;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1794906695; l=1016;
  i=i@udp0.com; s=20261107; h=from:subject:message-id;
- bh=GFyoNWGAxLOiNW5P7U3cZx8tiVYOhuPhOWyXLc+W+0Q=;
- b=+PL/AuT0FA8iW/Q8KV20KLaBcgLP5YqhtlQdcoSCjLAcMb01U+sp2+tjoAQ3PEsrSfVe5OaCi
- XoTUjWGfst1BEC/NiAGORsYr08KDucu8bzQsdhed6EbAQT67EVeqAkt
+ bh=b+SMsmXF4lIy9e6odjAYdc3PAu/hTjDn96dpS5CTy+E=;
+ b=dIK67eDYZoEmBPQ+hhU+D0gRmd9uuLWDbGnoXMjK4JmWt/tYUhv9JDXMU27TE8XI8gemcGHCy
+ InnqM3tQG7oBma8vqXpGLdDhPg59o8gZC1oGUb2ZgHn6kqMJQ4Of6Zo
 X-Developer-Key: i=i@udp0.com; a=ed25519;
  pk=XZJKcKgnUUjjyw8KuKy7u2QeIX0JLY/L1Fxzwwje41w=
 X-Endpoint-Received: by B4 Relay for i@udp0.com/20261107 with auth_id=1443
@@ -129,31 +127,27 @@ X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 
 From: Rui Cao <i@udp0.com>
 
-Add MediaTek's MT6833 (Dimensity 700) and the Xiaomi Redmi Note 13 5G,
-codenamed gold, which is built on it.
+Match MT6833's watchdog. It works as MT6589's, but its TOPRGU reset
+layout isn't known well enough to describe, so it gets no match data
+and the driver registers no reset controller for it.
 
-Reviewed-by: Roman Vivchar <rva333@protonmail.com>
-Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
 Signed-off-by: Rui Cao <i@udp0.com>
 ---
- Documentation/devicetree/bindings/arm/mediatek.yaml | 4 ++++
- 1 file changed, 4 insertions(+)
+ drivers/watchdog/mtk_wdt.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/Documentation/devicetree/bindings/arm/mediatek.yaml b/Documentation/devicetree/bindings/arm/mediatek.yaml
-index 180e6e4948e..900f16b57dc 100644
---- a/Documentation/devicetree/bindings/arm/mediatek.yaml
-+++ b/Documentation/devicetree/bindings/arm/mediatek.yaml
-@@ -72,6 +72,10 @@ properties:
-               - archermind,mt6797-x20-dev
-               - mediatek,mt6797-evb
-           - const: mediatek,mt6797
-+      - items:
-+          - enum:
-+              - xiaomi,gold
-+          - const: mediatek,mt6833
-       - items:
-           - enum:
-               - bananapi,bpi-r64
+diff --git a/drivers/watchdog/mtk_wdt.c b/drivers/watchdog/mtk_wdt.c
+index 1630ab65d59..575233c7911 100644
+--- a/drivers/watchdog/mtk_wdt.c
++++ b/drivers/watchdog/mtk_wdt.c
+@@ -595,6 +595,7 @@ static const struct of_device_id mtk_wdt_dt_ids[] = {
+ 	{ .compatible = "mediatek,mt6589-wdt", .data = &mt6589_data },
+ 	{ .compatible = "mediatek,mt6735-wdt", .data = &mt6735_data },
+ 	{ .compatible = "mediatek,mt6795-wdt", .data = &mt6795_data },
++	{ .compatible = "mediatek,mt6833-wdt" },
+ 	{ .compatible = "mediatek,mt7986-wdt", .data = &mt7986_data },
+ 	{ .compatible = "mediatek,mt7988-wdt", .data = &mt7988_data },
+ 	{ .compatible = "mediatek,mt8167-wdt", .data = &mt8167_data },
 
 -- 
 Git-157)
