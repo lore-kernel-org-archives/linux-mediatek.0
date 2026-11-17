@@ -2,93 +2,105 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 8D728606A329
-	for <linux-mediatek@archiver.kernel.org>; Tue, 17 Nov 2026 11:34:33 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 89118606A333
+	for <linux-mediatek@archiver.kernel.org>; Tue, 17 Nov 2026 11:36:53 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=tyldZ79t;
-	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=v6lXFPff
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=m27b3zTy;
+	dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=FR70vJwR
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
+	From:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
 	List-Unsubscribe-Post:List-Owner;
-	bh=cZ1Q9nQisyzYOcK4GhJrAjo2iUyQx36OfgdeOTkK62o=; b=tyldZ79tkyMGuYWCuIyXfABC1Y
-	Yd3BEGR4jUrahacESL0aizvUlhYP7H/TXGBFFaWM5kx63AWp/PHJbA3vM21NQ+0pmJFA0eCPR/P+t
-	rRA0FV4g3zFDiXPuBnGLFBo9mgDC4YOoxz7/s4G/wGwPIWjn3A+2daYK6jxV0UrQu4fSF2fcWydcB
-	TIlB5qX0ReuoYG9tN3J47UEsQ0wECqQS8T4h9h3Mjou+dicXR30Tmygic2CN6NIKdx4PYEpexBi6b
-	PAZ1UMTi0kxXvxarVUSSfv2WU+bU0VAr4Ce30HxHVzKHWXi66uDnpBngT/Nd1sfBJXAWccQhiKyUT
-	Jq8DYu4Q==;
+	bh=5LooAn416IJA7QR/rrjrqu318oFhA+cIoEmRVlFFDOo=; b=m27b3zTyKb41jr8Pu8R5ic1jOc
+	928jU5+cHy8fZJPz4g4SPazrPzgA6vpRKak4t67QrohNMmtj2xInPxuQTg6NPnj9rX6OtvsnI1VPy
+	9DMCbGb/mvGqCd/HS6yojZPOK5e0uYrKsiMnTaarakuS6weSCRx1MhN3IymDXptnioVpdv0tcq93Y
+	QvTswXtIJyciilf5bsZqyunM3HrtaV4/QCdtS+MGHMD+v4ANYVBEMyxtluhDJ3mpQxmcJOB0715y9
+	WOYGXpr9lJYOwycIiX4V3ljROKGKtVSRvKRFnkhajs8Xt6BwCc3X3p20e6pDCLnepy06eVhk4FeNM
+	4L84PnIA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xTHSL-00000005SVH-18Ds;
-	Tue, 17 Nov 2026 11:34:33 +0000
-Received: from mail-wm1-x329.google.com ([2a00:1450:4864:20::329])
+	id 1xTHUb-00000005T4s-0wwg;
+	Tue, 17 Nov 2026 11:36:53 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xTHSI-00000005SUO-3GTm
-	for linux-mediatek@lists.infradead.org;
-	Tue, 17 Nov 2026 11:34:31 +0000
-Received: by mail-wm1-x329.google.com with SMTP id 5b1f17b1804b1-4a140e7405dso46661115e9.3
-        for <linux-mediatek@lists.infradead.org>; Tue, 17 Nov 2026 03:34:30 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20260707; t=1794915269; x=1795520069; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
-        bh=cZ1Q9nQisyzYOcK4GhJrAjo2iUyQx36OfgdeOTkK62o=;
-        b=v6lXFPffaMniNToVnfNkYATl7vMhWKi1wy7eH6NWsVM+5xLPAqMrACrnywQcTcl5OG
-         YhYFF6MnHB3C2ULCk1bbjyMOHM1XgvsgKI7018I+A2Jj+aLYdmcYdq2Fyee5MeH9O0Qh
-         c6HkUA974HZWVwbd7CVIij5kSgpSaOl5tKYc+vsvUrbD39V6rjEOBuBSpWf2SjQUet/d
-         oITk1INnw2lEJlORTDWrI3MSiYv5M9Fuwgt8tgAYzMahsbk1LeuxA+MMeP7YfnQzdju1
-         KH4b5Pe0MvhG7YB7bcDWtupZyIx/mxWJTGbUOgztJqXavVxgpauVF/bXJQlP3Dn5LyHz
-         aomw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1794915269; x=1795520069;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to:content-type;
-        bh=cZ1Q9nQisyzYOcK4GhJrAjo2iUyQx36OfgdeOTkK62o=;
-        b=HuxWFJjD+ocjVq9y4F8TAxjUD/3MBSCr/+9Q7pBTTCuNCzXpIQu7JjwuPwx4Ieuv8B
-         DpT/E8B2PNzPLFHDETPDphFuPM3YC1CGbBY9ipf+ZzHGiuaYVk1AHIbG5LLLxD5mz82Y
-         C8BVnhrlwtSF9PouRQ6AL0kbgZy77V7WdyPyQ+a4EKK1mMxLolr5JxLrh0Mcq9++fud0
-         J3PyPEuz/Li473NMgBPIKXnueldhe04nQzD89vGYuyokxkoZR3WSbw1mLgcu5v1Zwtpu
-         ThlTZwxcNq3zutRjYUFSz9tMaS20aMXSGEDfhKftVRaG7kR8uq+jvNYwjD+WvdObbCM4
-         t0GQ==
-X-Gm-Message-State: APuU4Z98sBxLHTSVfas7+xQOVSH2ZAGy32DwrPZRKhcsqTefFQ4G4E2V
-	wD4Lt3h2AtGjjdfZKCwhfsjvGadJUbGXaRv72hNpq9P9w8/sNlVu0WsMdtNZcg==
-X-Gm-Gg: AYBFou3BOlOwtQKJpM4mDO1A5t6H/Z19p4R+JKuFcNjPbELBjm3l9G7umxB85S5r86e
-	NXBRtIj+VMO+uQS8pziJyRUcUFmbYtb7w1zLFxjqaUGh2zq8Tln4/Hu0nTWvOKGY2EV4lHNiiWO
-	r480hCRIFA0s0/mmVQJx+91ZXt7iv3ERZ3tnbTUQr1Zu7ygvEFatbfpfnyniUjSFqPsgB6UVKVt
-	oS4xzT2m/zKIpwBLeRv4iwuCT2VcvcyGVpDI81Vwe4YoTsVmq7pmKIDtnQQNvQdGq5M6sXizh+/
-	bQhwRo0nOTz/73alidXBGmz+gS+I2OoJ5Ede7ngcjzSLI6HkbEwECsuTPkW+d2IYRI/5ezM19iy
-	XbCOaEUmu1+B34S4ckkXVCvj1n/MJSi9qdhRPTbABIHekIpHoHovzcx66IEGgd58sFajfn2JX28
-	Qb9FZa+Y+atPORpr6SV3NktVr1AmsnBEie9/yw6iCKFsOMI3apJY4Dho9nRnNsI6+HhXsUBVbBP
-	ksQGjbR+qjSMgFkEpkUmcM2meIeyEqtoSkvYjhzotuqJZZLgvo1Z0I2pyNDhi4BrlkxtjjS4drx
-	Tvv0K1gmHC3C8nzTEq9fVRmKtdRbk74Idw1qopt491kJ8A==
-X-Received: by 2002:a05:600c:1d0e:b0:49f:e772:6ddf with SMTP id 5b1f17b1804b1-4bb55a7f5f3mr289084855e9.32.1794915268704;
-        Tue, 17 Nov 2026 03:34:28 -0800 (PST)
-Received: from luca-vm.lan ([154.61.61.58])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-4bb783f7eecsm109015895e9.3.2026.11.17.03.34.27
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 17 Nov 2026 03:34:28 -0800 (PST)
-From: Luca Leonardo Scorcia <l.scorcia@gmail.com>
-To: linux-mediatek@lists.infradead.org
-Cc: Luca Leonardo Scorcia <l.scorcia@gmail.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org
-Subject: [PATCH] soc: mediatek: mt8167-mmsys: fix errors in multiple-output display paths
-Date: Tue, 17 Nov 2026 12:33:47 +0100
-Message-ID: <20261117113402.728183-1-l.scorcia@gmail.com>
-X-Mailer: git-send-email 2.43.0
+	id 1xTHUZ-00000005T41-46jU;
+	Tue, 17 Nov 2026 11:36:52 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by sea.source.kernel.org (Postfix) with ESMTP id 5F58242386;
+	Tue, 17 Nov 2026 11:36:51 +0000 (UTC)
+Authentication-Results: smtp.kernel.org; arc=none smtp.remote-ip=100.80.115.77
+ARC-Seal: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256; cv=none;
+	t=1794915411;
+	b=BQnXXQJx3ulFjXwqiFqAHQqh1+VVudm7XgbIorpsFE1rL+7HEBSbcH/YCLp0wsrD+dOx
+	 1BZ6zWg3BxJBY1+kKJHarbqxbLHEJXLyCaBUVgnb2D90vbvNdKUEXrD6VXmO2kL35eb/p
+	 jaJR+AFP4/Y446pMroEP5C7uIXNO7qWEEQCkN7sUS2Fhfe/zliSCxdlX3+03q7ghXNXqn
+	 St+YsHKT/folqA0rdyB8XVrV4oXO0dOr2GJj/XhyY6l6YZpjyQl5I6y0hCeo84lI4jE1V
+	 hKJT9PeKoAB39wnRIfRe5h2E/d8itgfeuxI+W4QsE5tYR5iQNtLYjLEb86ysGPEBJ8g==
+ARC-Message-Signature: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256;
+	c=relaxed/relaxed; t=1794915411;
+	h=DKIM-Signature:Received:From:Subject:Date:Message-Id:MIME-Version:
+	 Content-Type:Content-Transfer-Encoding:To:Cc:X-Mailer:
+	 X-Developer-Signature:X-Developer-Key:X-Endpoint-Received:
+	 X-Original-From:Reply-To;
+	bh=5LooAn416IJA7QR/rrjrqu318oFhA+cIoEmRVlFFDOo=;
+	b=cU6kKYDUzdyzeOg4LCA+n+9WVMivKx1+umBGrU08haY8oJQIA+aShZqS+xws+fUj3zhW
+	 /10XMxkRHubxtTuPylRmQi0AYmgov0MnXAKlloIQjoAnNFbcBZ7Ff08yW614MW5PvKNfs
+	 iYABwgUzyWDLGsqd9C2YUxFqrLZqVeUajuJMjOdS8aWusZZ3LfUL+XB3LJ4uvEEvhm5D1
+	 6/xPTArYgpx0c7ixHjmM2wejpFWVL1wqNoHQlgmcudRjwOHDV1zEBYDb06y6vWg1VdJZL
+	 oeq8jmbTfzhdx37UBNIwk10BvT9rSBGaaT5EGMmVaqI8BYDkrgpKL+Ib7l2puKTvihw==
+ARC-Authentication-Results: i=1; smtp.kernel.org; 
+	arc=none smtp.remote-ip=100.80.115.77
+Received: from lkml.kernel.org (nexus.subspace.kernel.org [100.80.115.77])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
+	(No client certificate requested)
+	by smtp.kernel.org (Postfix) with ESMTPS id AFB821F000C4;
+	Tue, 17 Nov 2026 11:36:50 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1794915411;
+	bh=5LooAn416IJA7QR/rrjrqu318oFhA+cIoEmRVlFFDOo=;
+	h=From:Subject:Date:To:Cc:Reply-To;
+	b=FR70vJwR+lY68CXoGIMFF8HIGqHMcBJf2JWFehFKr1cu9qwKNhIY4cbWwNkmln5HR
+	 +n2DrWPLCqR8EFMrHA9cxWCVui65vzYFq4dIbruAtc5uuwiBz1ZPzIBoc1+5mFOn5a
+	 RnPnGN6XhkZ54RmnBJpJMtHc9W01Z2vMUVscKBdH6dF+A6AkgY3obBe6IZG4zHsEuA
+	 LtA2bycv5tOO36OVvX8OhhxxP7HkjkCn5VBepnzSzGHFN3Fi0XGV5PPCeKAENIrvLT
+	 64MKpGigOEy6bI/9azBxvzxZ6GPRCVGmWExUb5gWV3uGV9rNiacbMFncRjeBugX/NE
+	 EMEmn4Ghs2M/g==
+Received: from nexus.subspace.kernel.org (localhost [IPv6:::1])
+	by lkml.kernel.org (Postfix) with ESMTP id 125A84A815;
+	Tue, 17 Nov 2026 11:36:50 +0000 (UTC)
+From: Roman Vivchar via B4 Relay <devnull+rva333.protonmail.com@kernel.org>
+Subject: [PATCH RESEND v5 0/4] nvmem: mtk-efuse: mt6572 support
+Date: Tue, 17 Nov 2026 13:33:20 +0200
+Message-Id: <20261117-6572-nvmem-v5-0-9b561a8a83e1@protonmail.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261117_033430_841921_55DD6F14 
-X-CRM114-Status: GOOD (  12.40  )
-X-Spam-Score: -2.1 (--)
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+To: Srinivas Kandagatla <srini@kernel.org>, Rob Herring <robh@kernel.org>, 
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Andrew-CT Chen <andrew-ct.chen@mediatek.com>, 
+ Lala Lin <lala.lin@mediatek.com>
+Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+ Roman Vivchar <rva333@protonmail.com>
+X-Mailer: b4 0.15.2
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1794915409; l=2620;
+ i=rva333@protonmail.com; s=20260510; h=from:subject:message-id;
+ bh=gs2zmezi5rOisWin7H+Yosgepr3LoLbfT6+2fG/mv4o=;
+ b=UI59ugyc0iIVk9IgR0p6PJceQewcLPmqabfEydxPX50gFCSQb8KWT2N982UA0t+o4BO67RJGC
+ VfXR8y5BKD7BoM0kCQzkgwxtqKWLmzbnwLd+1/JY3F5S3jp1gOi7Vap
+X-Developer-Key: i=rva333@protonmail.com; a=ed25519;
+ pk=zww/nWjBGoQ4POXCG0BV6fx2iuXK6jx77rsKPA5YK5Y=
+X-Endpoint-Received: by B4 Relay for rva333@protonmail.com/20260510 with
+ auth_id=777
+X-Original-From: Roman Vivchar <rva333@protonmail.com>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,118 +110,92 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Reply-To: rva333@protonmail.com
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-15.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
-	DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,FREEMAIL_FORGED_FROMDOMAIN,
-	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
-	UPPERCASE_50_75,USER_AGENT_GIT autolearn=ham autolearn_force=no
-	version=4.0.1
+X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,
+	FREEMAIL_REPLYTO_END_DIGIT,HEADER_FROM_DIFFERENT_DOMAINS,
+	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Some display blocks can be used to define multiple-output pipelines.
-The current code uses mtk_mmsys_update_bits to clear the mask bits and
-set the desired output block bit when initializing or disconnecting a
-pipeline. This breaks multiple output pipelines (only the last one set
-produces output).
+This patch series adds MediaTek mt6572 efuse support. Unlike newer SoCs,
+its efuse controller doesn't work properly with 8-bit reads, leading to
+invalid data with current mtk-efuse driver implementation.
 
-Fix this by using the block bit alone as mask for multiple output route
-components.
+This behavior can be observed with devmem (0x10009174 and 0x10009178 are
+thermal calibration cells):
+~ # devmem 0x10009174 32
+0x00CDD4CD
+~ # devmem 0x10009178 32
+0x0F76865D
+~ # devmem 0x10009174 8
+0xCD
+~ # devmem 0x10009175 8
+0x00
+~ # devmem 0x10009176 8
+0x00
+~ # devmem 0x10009177 8
+0x00
+~ # devmem 0x10009178 8
+0x5D
+~ # devmem 0x10009179 8
+0x00
+~ # devmem 0x1000917a 8
+0x00
+~ # devmem 0x1000917b 8
+0x00
 
-Also address some unfortunate copy and paste errors in routes between
-OVL<->WDMA0, DITHER0<->UFOE and DITHER0<->WDMA0.
+Patch 1 adds dt-bindings compatible for the mt6572,
+Patch 2 adds platform data option to use aligned 32-bit reads instead
+of plain readb().
+Patch 3 adds cpu speedbin fixup.
+Patch 4 adds platform data for mt6572 SoC.
 
-Signed-off-by: Luca Leonardo Scorcia <l.scorcia@gmail.com>
+Signed-off-by: Roman Vivchar <rva333@protonmail.com>
 ---
- drivers/soc/mediatek/mt8167-mmsys.h | 32 +++++++++++++++++++----------
- 1 file changed, 21 insertions(+), 11 deletions(-)
+Changes in v5:
+- Add new patch for CPU speedbin post-processing
+- Set uses_post_processing to true in the mt6572 platform data
+- Drop r-b tag on the patch 4 due to uses_post_processing changes
+- Link to v4: https://patch.msgid.link/20260921-6572-nvmem-v4-0-e9c14156559a@protonmail.com
 
-diff --git a/drivers/soc/mediatek/mt8167-mmsys.h b/drivers/soc/mediatek/mt8167-mmsys.h
-index 858779ace895..45df210b5775 100644
---- a/drivers/soc/mediatek/mt8167-mmsys.h
-+++ b/drivers/soc/mediatek/mt8167-mmsys.h
-@@ -79,7 +79,7 @@
- static const struct mtk_mmsys_routes mt8167_mmsys_routing_table[] = {
- 	/* OVL0<->COLOR0 */
- 	MMSYS_ROUTE(OVL, 0, COLOR, 0,
--		    MT8167_DISP_REG_CONFIG_DISP_OVL0_MOUT_EN, MT8167_OVL0_MOUT_EN_MASK,
-+		    MT8167_DISP_REG_CONFIG_DISP_OVL0_MOUT_EN, MT8167_OVL0_MOUT_EN_COLOR0,
- 		    MT8167_OVL0_MOUT_EN_COLOR0),
- 	MMSYS_ROUTE(OVL, 0, COLOR, 0,
- 		    MT8167_DISP_REG_CONFIG_DISP_COLOR0_SEL_IN, MT8167_COLOR0_SEL_IN_MASK,
-@@ -87,26 +87,36 @@ static const struct mtk_mmsys_routes mt8167_mmsys_routing_table[] = {
- 
- 	/* OVL0<->WDMA0 */
- 	MMSYS_ROUTE(OVL, 0, WDMA, 0,
--		    MT8167_DISP_REG_CONFIG_DISP_OVL0_MOUT_EN, MT8167_OVL0_MOUT_EN_MASK,
-+		    MT8167_DISP_REG_CONFIG_DISP_OVL0_MOUT_EN, MT8167_OVL0_MOUT_EN_WDMA0,
- 		    MT8167_OVL0_MOUT_EN_WDMA0),
- 	MMSYS_ROUTE(OVL, 0, WDMA, 0,
--		    MT8167_DISP_REG_CONFIG_DISP_WDMA0_SEL_IN, MT8167_COLOR0_SEL_IN_MASK,
-+		    MT8167_DISP_REG_CONFIG_DISP_WDMA0_SEL_IN, MT8167_WDMA0_SEL_IN_MASK,
- 		    MT8167_WDMA0_SEL_IN_OVL0),
- 
--	/* DITHER0 outputs */
-+	/* DITHER0 output to RDMA */
- 	MMSYS_ROUTE(DITHER, 0, RDMA, 0,
--		    MT8167_DISP_REG_CONFIG_DISP_DITHER_MOUT_EN, MT8167_DITHER_MOUT_EN_MASK,
-+		    MT8167_DISP_REG_CONFIG_DISP_DITHER_MOUT_EN, MT8167_DITHER_MOUT_EN_RDMA0,
- 		    MT8167_DITHER_MOUT_EN_RDMA0),
-+
-+	/* DITHER<->UFOE */
- 	MMSYS_ROUTE(DITHER, 0, UFOE, 0,
--		    MT8167_DISP_REG_CONFIG_DISP_DITHER_MOUT_EN, MT8167_DITHER_MOUT_EN_MASK,
-+		    MT8167_DISP_REG_CONFIG_DISP_DITHER_MOUT_EN, MT8167_DITHER_MOUT_EN_UFOE,
- 		    MT8167_DITHER_MOUT_EN_UFOE),
-+	MMSYS_ROUTE(DITHER, 0, UFOE, 0,
-+		    MT8167_DISP_REG_CONFIG_DISP_UFOE_SEL_IN, MT8167_UFOE_SEL_IN_MASK,
-+		    MT8167_UFOE_SEL_IN_DITHER),
-+
-+	/* DITHER<->WDMA */
- 	MMSYS_ROUTE(DITHER, 0, WDMA, 0,
--		    MT8167_DISP_REG_CONFIG_DISP_DITHER_MOUT_EN, MT8167_DITHER_MOUT_EN_MASK,
-+		    MT8167_DISP_REG_CONFIG_DISP_DITHER_MOUT_EN, MT8167_DITHER_MOUT_EN_WDMA0,
- 		    MT8167_DITHER_MOUT_EN_WDMA0),
-+	MMSYS_ROUTE(DITHER, 0, WDMA, 0,
-+		    MT8167_DISP_REG_CONFIG_DISP_WDMA0_SEL_IN, MT8167_WDMA0_SEL_IN_MASK,
-+		    MT8167_WDMA0_SEL_IN_DITHER),
- 
- 	/* UFOE<->DSI0 */
- 	MMSYS_ROUTE(UFOE, 0, DSI, 0,
--		    MT8167_DISP_REG_CONFIG_DISP_UFOE_MOUT_EN, MT8167_UFOE_MOUT_EN_MASK,
-+		    MT8167_DISP_REG_CONFIG_DISP_UFOE_MOUT_EN, MT8167_UFOE_MOUT_EN_DSI0,
- 		    MT8167_UFOE_MOUT_EN_DSI0),
- 	MMSYS_ROUTE(UFOE, 0, DSI, 0,
- 		    MT8167_DISP_REG_CONFIG_DISP_DSI0_SEL_IN, MT8167_DSI0_SEL_IN_MASK,
-@@ -114,7 +124,7 @@ static const struct mtk_mmsys_routes mt8167_mmsys_routing_table[] = {
- 
- 	/* UFOE<->DPI0 */
- 	MMSYS_ROUTE(UFOE, 0, DPI, 0,
--		    MT8167_DISP_REG_CONFIG_DISP_UFOE_MOUT_EN, MT8167_UFOE_MOUT_EN_MASK,
-+		    MT8167_DISP_REG_CONFIG_DISP_UFOE_MOUT_EN, MT8167_UFOE_MOUT_EN_DPI0,
- 		    MT8167_UFOE_MOUT_EN_DPI0),
- 	MMSYS_ROUTE(UFOE, 0, DPI, 0,
- 		    MT8167_DISP_REG_CONFIG_DISP_DPI0_SEL_IN, MT8167_DPI0_SEL_IN_MASK,
-@@ -122,7 +132,7 @@ static const struct mtk_mmsys_routes mt8167_mmsys_routing_table[] = {
- 
- 	/* UFOE<->DPI1 */
- 	MMSYS_ROUTE(UFOE, 0, DPI, 1,
--		    MT8167_DISP_REG_CONFIG_DISP_UFOE_MOUT_EN, MT8167_UFOE_MOUT_EN_MASK,
-+		    MT8167_DISP_REG_CONFIG_DISP_UFOE_MOUT_EN, MT8167_UFOE_MOUT_EN_DPI1,
- 		    MT8167_UFOE_MOUT_EN_DPI1),
- 	MMSYS_ROUTE(UFOE, 0, DPI, 1,
- 		    MT8167_DISP_REG_CONFIG_DISP_DPI1_SEL_IN, MT8167_DPI1_SEL_IN_MASK,
-@@ -130,7 +140,7 @@ static const struct mtk_mmsys_routes mt8167_mmsys_routing_table[] = {
- 
- 	/* UFOE<->WDMA0 */
- 	MMSYS_ROUTE(UFOE, 0, WDMA, 0,
--		    MT8167_DISP_REG_CONFIG_DISP_UFOE_MOUT_EN, MT8167_UFOE_MOUT_EN_MASK,
-+		    MT8167_DISP_REG_CONFIG_DISP_UFOE_MOUT_EN, MT8167_UFOE_MOUT_EN_WDMA0,
- 		    MT8167_UFOE_MOUT_EN_WDMA0),
- 	MMSYS_ROUTE(UFOE, 0, WDMA, 0,
- 		    MT8167_DISP_REG_CONFIG_DISP_WDMA0_SEL_IN, MT8167_WDMA0_SEL_IN_MASK,
+Changes in v4:
+- Pick up Angelo's tags
+- Rebase onto nvmem/for-next (2eda8d2a45ca ("Merge branches 'nvmem-fixes' and 'nvmem-for-v7.4' into nvnem-for-next"))
+- Link to v3: https://patch.msgid.link/20260909-6572-nvmem-v3-0-c0c441656431@protonmail.com
+
+Changes in v3:
+- Pick up Rob's r-b tag for dt-bindings
+- Patch 2 and 3 unchanged, for some reason cover letter and patch 1 were
+missing on the web mirror...
+- Link to v2: https://patch.msgid.link/20260724-6572-nvmem-v2-0-e58d16a29621@protonmail.com
+
+Changes in v2:
+- dt-bindings: make mediatek,mt6572-efuse standalone compatible
+- Driver: add 'mtk_reg_read_aligned' helper instead of modifying 'mtk_reg_read'
+- Link to v1: https://patch.msgid.link/20260715-6572-nvmem-v1-0-9c13be99d077@protonmail.com
+
+---
+Roman Vivchar (4):
+      dt-bindings: nvmem: mediatek: efuse: add mt6572
+      nvmem: mtk-efuse: add support for 32-bit aligned reads
+      nvmem: mtk-efuse: add CPU speedbin post-processing
+      nvmem: mtk-efuse: add mt6572 support
+
+ .../devicetree/bindings/nvmem/mediatek,efuse.yaml  |  5 +-
+ drivers/nvmem/mtk-efuse.c                          | 60 +++++++++++++++++++++-
+ 2 files changed, 63 insertions(+), 2 deletions(-)
+---
+base-commit: 2eda8d2a45caa955a5cb1d897bf6024d22041995
+change-id: 20260710-6572-nvmem-eb98c7a73351
+
+Best regards,
+--
+Roman Vivchar <rva333@protonmail.com>
 -- 
-2.43.0
+rva3 <rva333@protonmail.com>
+
 
 
