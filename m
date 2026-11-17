@@ -2,69 +2,68 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id A457F606A32F
-	for <linux-mediatek@archiver.kernel.org>; Tue, 17 Nov 2026 10:59:01 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id D06F3606A32F
+	for <linux-mediatek@archiver.kernel.org>; Tue, 17 Nov 2026 10:59:29 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=oMYDSwhc;
-	dkim=pass (2048-bit key) header.d=collabora.com header.i=@collabora.com header.a=rsa-sha256 header.s=mail header.b=fA3iYOXk
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=PgC0MZwk;
+	dkim=pass (2048-bit key) header.d=collabora.com header.i=@collabora.com header.a=rsa-sha256 header.s=mail header.b=dy2z7c0V
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Unsubscribe-Post:
-	List-Owner; bh=OGkkwpJSIV9JuodiKgIqIixCIYC6eRR5jxC6vkeLTsI=; b=oMYDSwhcGQ/AU3
-	VTNGIxY1VsJ56RCJ+kvL2mrz7d9VcUgsC6BbivWyyAh1cyY83YmanFkhTquffiVLbnTJdlRjE2NTO
-	49diawsx7fLJI9tdqMkjdnpQydgx7naz6x13s3PFZQiF27XcHtf+PnDINafqEd2v8NcIUB/ea4ePu
-	oUIKOsmhKu5ifu5B5u2ZtPAQOwVgs/qCiJKYFAL2EmtENTaSCsL+enk6Jykk067p2qSBXVZTPZSVu
-	IgyJcnyx5i+v+iGw1ICL++woafuhBbrg4kFJYn1j3m9L9XGQFxkWYwvTOkJ3Mw+Q4zQ8maAcXRfEI
-	g5BMFxnMm4AYgnwOxYOA==;
+	List-Owner; bh=YhC7LMQsZJcFBItk5rzBnnu116ZCqPDPAdrEnbFmiXE=; b=PgC0MZwkYu5Xnw
+	ZjFetUu60QFmjHfe3vuav8MMPGevbcq9tVMgFu8Jd2BiBFx2OYa06rsUulvy+1PBjCZHEO2kVeLkA
+	0YmykTc66YNBHRc913kbuZ87JFgww8lFekGhriS8DDt+flmgmqZkbMcwG3HAchx8oRaZxhdWVEXb7
+	8MXL+p0Ptryd8rpq9NIbN/g7C8CSRmOfGWMlCg+7QhF6C90KQQdiJhWsm4MQDu/asMsVa43XHYymI
+	UZNU3lK+wjAD2GOFdvZdweP85FHtSV61Z0uxOD8tySBSLTYd3a8AHPC/jUA0A/H8QzYObFoOjVJZ+
+	WWliobuwgzUFzHUrnpwQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xTGtx-00000005MrL-1c38;
-	Tue, 17 Nov 2026 10:59:01 +0000
+	id 1xTGuP-00000005MyX-2LPz;
+	Tue, 17 Nov 2026 10:59:29 +0000
 Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xTGtt-00000005MpX-3KqI;
-	Tue, 17 Nov 2026 10:59:00 +0000
+	id 1xTGuF-00000005MwK-2U9W;
+	Tue, 17 Nov 2026 10:59:28 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1794913136;
-	bh=AWiCLlaXwkS9O/yDPdbP2rIQCE4NPNdDIe+oTb7DwIQ=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=fA3iYOXk/D4kjKxt/cE1G75LccaMVAyweIYIheFvJ/kngEoAOKj64VYs+lHoAxF6s
-	 fa2ngDRMnHkHo2/UEELtoigkHnDmV6YmKdhrTtqJlrfpTNZ99ZVZggH0UMdHhgwazv
-	 z9LB4CFofk43b37Ylv3MSSMmesQ39rYOO5BZAMqMkulShQumxa1QHoxzWzYUjVCetu
-	 wJo2G/MHpQQvXGgqkfSXlTlDmFmxmp6cyUvdPCHil8ogF0zNg+e1usSKM+VbeDlrro
-	 zZyvmseABgdUKdZERBDU//TMddGwPkoha2MhBHyIHRO2QFegCP7zaB3r6C11zEyEgK
-	 TmCJbA/gOUoDQ==
-Received: from [100.64.1.21] (unknown [100.64.1.21])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange x25519)
+	s=mail; t=1794913157;
+	bh=TNPoh1km3RiLkwQBgyHz7qvbpEpaEwiiICoDpf0eB/Q=;
+	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
+	b=dy2z7c0VuQ79pLm0D14yDXpjXmOH662JG6Nidn/5yWAT2HeHmYfuDWKBSgDdKheWb
+	 cm7Va7bCYdSZEpFd8RE1TJzSt1SdzXFRsbd5caCwn//ww82a4CaT7sj0gkU087ZKvN
+	 3FgiC5SpX3fK0scmLeQnuJt7WgvJV6gdU7iy/zpjgJA6cx2HDdeuIFX8vY9OiqwvDo
+	 67rU2473FAon/iZ2+JbANwzqhxAXMl9oBp1NzGcEcBnPVT4jFDsB/q0j5Gzwiqo4jV
+	 Zi5GyVEFI68u/TnN/aWk/4xbHf2nXb8mDzYRpBxy4sfHtRxFoegWB3YVIgWyRKz3gJ
+	 qmTJPeqLxACIQ==
+Received: from IcarusMOD.eternityproject.eu (unknown [100.64.1.21])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id C894C17E00E8;
-	Tue, 17 Nov 2026 11:58:55 +0100 (CET)
-Message-ID: <df9dd11b-02bb-4cf9-93f1-6e79868bf4d4@collabora.com>
-Date: Tue, 17 Nov 2026 11:58:55 +0100
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 8A13417E07EC;
+	Tue, 17 Nov 2026 11:59:17 +0100 (CET)
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+To: Matthias Brugger <matthias.bgg@gmail.com>, 
+ Chen-Yu Tsai <wenst@chromium.org>
+Cc: linux-mediatek@lists.infradead.org, 
+ linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org
+In-Reply-To: <20261109141233.983830-1-wenst@chromium.org>
+References: <20261109141233.983830-1-wenst@chromium.org>
+Subject: Re: (subset) [PATCH 0/5] arm64: dts: mediatek: mt8173-elm:
+ regulator cleanup
+Message-Id: <179491315750.156157.4493365052621090774.b4-ty@b4>
+Date: Tue, 17 Nov 2026 11:59:17 +0100
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 1/5] arm64: dts: mediatek: mt8173-elm: Clean up unused
- MT6397 regulators
-To: Chen-Yu Tsai <wenst@chromium.org>,
- Matthias Brugger <matthias.bgg@gmail.com>
-Cc: linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
- devicetree@vger.kernel.org
-References: <20261109141233.983830-1-wenst@chromium.org>
- <20261109141233.983830-2-wenst@chromium.org>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-In-Reply-To: <20261109141233.983830-2-wenst@chromium.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
+X-Mailer: b4 0.16.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261117_025857_989852_0B13E036 
-X-CRM114-Status: GOOD (  13.16  )
+X-CRM114-CacheID: sfid-20261117_025919_841417_2142AF5E 
+X-CRM114-Status: UNSURE (   9.06  )
+X-CRM114-Notice: Please train this message.
 X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -76,45 +75,38 @@ List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-12.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-8.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,
-	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1 autolearn=ham
-	autolearn_force=no version=4.0.1
+	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On 11/9/26 15:12, Chen-Yu Tsai wrote:
-> Several MT6397 (MT6391) PMIC regulator nodes in mt8173-elm.dtsi are
-> not actually used on either Elm or Hana according to the board
-> schematics. They may have been copied from the EVB dts.
+On Mon, 09 Nov 2026 22:12:27 +0800, Chen-Yu Tsai wrote:
+> This series aligns the regulators in the MT8173 Elm / Hana device trees
+> with the schematics and datasheets.
 > 
-> - buck_vgpu: Output pins are unconnected; GPU power is supplied by an
->    external DA9212 buck regulator instead.
-> - ldo_va28: Only connected to a decoupling capacitor for the PMIC's
->    internal audio codec and fuel gauge ADC blocks, both of which are
->    unused as both boards use an external ALC5650 codec and EC-managed
->    smart battery.
-> - ldo_vgp4: Only routed to a test point on Elm and an unpopulated
->    resistor on Hana.
-> - ldo_vibr: Output pins are unconnected.
+> The comparison and digging through datasheets was mostly done by an
+> agent. This was an experiment on my end to see if it could understand
+> schematics and datasheets and help with the tedious process of comparing
+> all the documents and device tree files. I think the overall results
+> were pretty good.
 > 
-> Keep these regulator nodes in place so that the regulator core still
-> considers them constrained and can disable any unused rails left on at
-> power-up (such as ldo_va28), but drop all their properties and unused
-> labels. This is meant to preserve prior behavior.
-> 
-> Checking the regulator nodes against the schematics, drafting the change
-> and reviewing it were done by an agent. Manually tested on a Hana
-> (Telesu) device.
-> 
-> Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
+> [...]
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Applied to v7.4-next/dts64, thanks!
 
-
-....but this patch does not apply cleanly, so I couldn't pick it - please resend.
+[2/5] arm64: dts: mediatek: mt8173-elm: Fix DA9212 compatible, node names and labels
+      commit: b94b23b176a4f358b91610399bcbedc6a85328c0
+[3/5] arm64: dts: mediatek: mt8173-elm: Fix DA9212 regulator names
+      commit: 2a3238d299a3568dca7bc8ffb6d284364c96c18a
+[4/5] arm64: dts: mediatek: mt8173-elm: Tighten MT6397 regulator voltage ranges
+      commit: e3c69f848f95979487d4230ce59ccc8efdc207d0
+[5/5] arm64: dts: mediatek: mt8173-elm: Tighten DA9212 regulator voltage ranges
+      commit: d3551416f5b73a7360e5f1c004a62eb174b82953
 
 Cheers,
 Angelo
+
+
 
