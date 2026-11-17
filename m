@@ -2,61 +2,81 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id E7217606A32C
-	for <linux-mediatek@archiver.kernel.org>; Tue, 17 Nov 2026 12:16:53 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 8F6A2606A31C
+	for <linux-mediatek@archiver.kernel.org>; Tue, 17 Nov 2026 12:22:23 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=pet95Ts2;
-	dkim=pass (2048-bit key) header.d=protonmail.com header.i=@protonmail.com header.a=rsa-sha256 header.s=protonmail3 header.b=gJDI6ysv
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=mLMKqYfm;
+	dkim=pass (2048-bit key) header.d=collabora.com header.i=@collabora.com header.a=rsa-sha256 header.s=mail header.b=ktwb49I3
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:From:
-	To:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Unsubscribe-Post:
-	List-Owner; bh=oytSVZw7ZCXwq1tGZIXRUB86K7ksbFjm2HjimDVfr+o=; b=pet95Ts2BIcGUr
-	DKQ8B4Gr7B+aBtIxKDUbyxy4YcYHpOtChfeOXrK78HxsQkI1JFn+Uhz4VFRlNG/YWfTCJaYC5UCKf
-	vtPOVUqEVpMwgOs23jlUwEzyrSa1GGSLQU6pGUbp9E+SP820QnR0EQKI8CZndfDcZtp4YWiTPkWVI
-	CMxK1sZVgfyFRvAC5IAfyZmM0n6OWh2nIQGkP1G5AqbJXke/RvgURgTPv0wRp//5vZX7quocy0tFj
-	Lk6jgCp8636Cv3/eADB5rLcGItsj+h4wdDC6bY2ascKdaHBsEEk0Uw6lYQSbdoRX1koaKfQdOuu7s
-	o00UmQ0Fyle/4HUATJjQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Unsubscribe-Post:List-Owner;
+	bh=EYOpW2xyp4wYDs/95GrYDxNW739hVA53XI7RSeqe3Ss=; b=mLMKqYfmIH0sY8NawdxZJaxX/p
+	WfVW/J1jvphXS1RCaQ103f28Ykwr88+HEBy0z2k0udQdZEdXbv+sFdIP8SgE254nRVJfr7x94JdoT
+	gpc3YdlX0snEA9x26JcJYVdsJ4zghxJnAxsSdJ6ExMWtJkm5U+afAX8eS3SgcsaK7xHfvTc8QXkFA
+	PGoQeKtLzMB9tIm6j1DcR5dJt7Y6EZrfOIDSKWB78AfqVo8joHrbmMzWxDhyH1k444zvOr+0Rn2lt
+	5QGuXeMKRuLR7nb02wKSTZNzEv0rOyX5NscAFXMPutCgGeOI7H68xM3KA//PKspIX6hCxvHnDRPN+
+	eIu56XkA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xTI7J-00000005bO3-2C8o;
-	Tue, 17 Nov 2026 12:16:53 +0000
-Received: from mail-10630.protonmail.ch ([79.135.106.30])
+	id 1xTICd-00000005bzW-1EAV;
+	Tue, 17 Nov 2026 12:22:23 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xTI7H-00000005bNQ-07oo;
-	Tue, 17 Nov 2026 12:16:52 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=protonmail.com;
-	s=protonmail3; t=1794917807; x=1795177007;
-	bh=oytSVZw7ZCXwq1tGZIXRUB86K7ksbFjm2HjimDVfr+o=;
-	h=Date:To:From:Cc:Subject:Message-ID:In-Reply-To:References:
-	 Feedback-ID:From:To:Cc:Date:Subject:Reply-To:Feedback-ID:
-	 Message-ID:BIMI-Selector;
-	b=gJDI6ysv+wdI+SDlxMrJWOWEKZ7phoEHfS5PmswVJTZOEbtbGVNS/lHQf4voXPOWT
-	 VtNIoujXPSw4Q0FNWnFI95wQmLKWv4AokZmi+TntaMonsy680wVcQKeUZ3SJ9aaW/N
-	 3qq1jAri2D+Co8fRTCSEm15wtrBo2RdWJW5L3lCxmucaWBCP71GUBZrh01bt7ircUZ
-	 qfMYJpEXpcRy18BE5QtSJJLmBwh4C94MfBCymT4Q4BTj02VrtAZOCHxOXnuoyX7KTB
-	 Gbxd1jmoyc8R6j32VqsogcA1XI3MXxIs7r9Kdb0ATJbe6U/xm1wk70D3Pv5pVdzDS7
-	 Ocu7hrTT8JrVg==
-Date: Tue, 17 Nov 2026 12:16:40 +0000
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-From: Roman Vivchar <rva333@protonmail.com>
-Cc: Srinivas Kandagatla <srini@kernel.org>, Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, Andrew-CT Chen <andrew-ct.chen@mediatek.com>, Lala Lin <lala.lin@mediatek.com>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH RESEND v5 3/4] nvmem: mtk-efuse: add CPU speedbin post-processing
-Message-ID: <HloHOTfn5uSaFV7GTvC6wE0WlkmHCnyVUIUmQ9LmSnsUGOXn6SZ6ilq-zC9KtWULMprm8ki_LR6qxwWLS0S6q5phg50aHxyE_xK4UzI57n0=@protonmail.com>
-In-Reply-To: <6935d7a4-2f91-4abf-81e9-f77c2b6c80d2@collabora.com>
-References: <20261117-6572-nvmem-v5-0-9b561a8a83e1@protonmail.com> <20261117-6572-nvmem-v5-3-9b561a8a83e1@protonmail.com> <b0fa129a-e9ad-4a7b-a2aa-2202bfa23232@collabora.com> <k8LLawty9o68P00hLr5LO1163o_m16f_vf8fBZvdD18nOatszy1i4Dp7DeC8Hv2--Q08YyZfhCRnQbVDps0lqB2zZrx-k_GxKUaqj6eT6r4=@protonmail.com> <6935d7a4-2f91-4abf-81e9-f77c2b6c80d2@collabora.com>
-Feedback-ID: 173184497:user:proton
-X-Pm-Message-ID: bf6f75e33c8727bbe33e0b1401f772d263752cae
+	id 1xTICZ-00000005byC-3Fm5;
+	Tue, 17 Nov 2026 12:22:21 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1794918136;
+	bh=tlK4X7iJfVxdWbikBhdNu8DWcD6//ek2zxb6rtNVeRM=;
+	h=From:Date:Subject:To:Cc:From;
+	b=ktwb49I38KXsD31YAQ5oqisSeLavEGHwgLnMRYO88DMuRMwl0NMgkJUnWLtnsmHfF
+	 6pl79lmyQhXanj9yThuk3Nb1P9WnGdxcZcIFJBs+uSk8usohffQoUwwHGcgYl6K7Q5
+	 QCgBlex+LTS14DQKdczCHopYymtGzJRIRF/QOEuYUVYIAEuG3U69oLm7HzTTaztS4j
+	 XTLzM8yb6jZw2xA8GKkTPz8b3FpgmmdINnP/yNPGwhj/idGbB8/8rQDGp0laZdFJD2
+	 /vDTHqdrgoyq3kwxwX7fNkNoO+teuS01bEGHq7OfUVyIgyCWe2J262/Zum5c6MPlQH
+	 WnLFcZepAUmaA==
+Received: from yukiji.home (unknown [100.64.0.131])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: laeyraud)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 93EF917E0311;
+	Tue, 17 Nov 2026 13:22:15 +0100 (CET)
+From: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
+Date: Tue, 17 Nov 2026 13:22:07 +0100
+Subject: [PATCH] arm64: dts: mediatek: mt8370: fix CPU map core ordering
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Message-Id: <20261117-mt8370-fix-cpu-map-core-order-v1-1-00c6c74c7629@collabora.com>
+X-B4-Tracking: v=1; b=H4sIAAAAAAAC/y2NywrDIBBFfyXMugOa0mjyKyULq9PWhY+OJgRC/
+ r3SdHkul3N2KMSeCkzdDkyrLz7FBvLSgX2b+CL0rjH0oh+klApD1Vcl8Ok3tHnBYDLaxISJHTE
+ KM97cSFpp0UNzZKb2/Pnv88lMn6Vl6jnCwxRqhhB8nbpIW8V/aoD5OL6djYh7oAAAAA==
+X-Change-ID: 20261117-mt8370-fix-cpu-map-core-order-0a95d9e87802
+To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: kernel@collabora.com, devicetree@vger.kernel.org, 
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, 
+ Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
+X-Mailer: b4 0.14.3
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1794918135; l=1923;
+ i=louisalexis.eyraud@collabora.com; s=20250113; h=from:subject:message-id;
+ bh=tlK4X7iJfVxdWbikBhdNu8DWcD6//ek2zxb6rtNVeRM=;
+ b=bL2y8Jmr77VlkoCdxT67HLHwyaSTFwIsIIP1lFZfF8tqFleRe+xGtbOjhaGfCjiP38Cl2l7nf
+ JBlw9sT3KRmBPIZllUFFTEl347UC3xHH11osVMDc3LKoLUg8KE97bTu
+X-Developer-Key: i=louisalexis.eyraud@collabora.com; a=ed25519;
+ pk=CHFBDB2Kqh4EHc6JIqFn69GhxJJAzc0Zr4e8QxtumuM=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261117_041651_253797_CF98EF6C 
-X-CRM114-Status: GOOD (  25.91  )
-X-Spam-Score: -2.6 (--)
+X-CRM114-CacheID: sfid-20261117_042220_029027_DF25659F 
+X-CRM114-Status: GOOD (  13.09  )
+X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -67,148 +87,70 @@ List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-12.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
-	DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,FREEMAIL_FORGED_FROMDOMAIN,
-	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=ham
+X-Spam-Status: No, score=-18.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,
+	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=ham
 	autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On Tuesday, November 17th, 2026 at 2:08 PM, AngeloGioacchino Del Regno <ang=
-elogioacchino.delregno@collabora.com> wrote:
+In mt8370.dtsi, the child list for the cluster0 node of cpu-map is
+overridden, to reflect that the MT8370 SoC, as being less powerful
+variant of MT8188 and MT8390 SoCs, has less ARM Cortex-A55 cores
+number than MT8188 and MT8390 (4 vs 6) but the same Cortex-A78 cores
+number.
 
-> On 11/17/26 13:02, Roman Vivchar wrote:
-> > Hi Angelo,
-> >
-> > On Tuesday, November 17th, 2026 at 1:56 PM, AngeloGioacchino Del Regno =
-<angelogioacchino.delregno@collabora.com> wrote:
-> >
-> >> On 11/17/26 12:33, Roman Vivchar via B4 Relay wrote:
-> >>> From: Roman Vivchar <rva333@protonmail.com>
-> >>>
-> >>> MediaTek SoCs are often released under the same marketing name, but w=
-ith
-> >>> different suffix for the speedbin. For example, mt6572m has 1 GHz lim=
-it,
-> >>> mt6572a - 1.2 GHz, mt6572w - 1.4 GHz.
-> >>>
-> >>> Since the speedbin is stored as a number in the efuse, add support fo=
-r
-> >>> converting it to the bitmask for opp-supported-hw usage in the DT.
-> >>>
-> >>> Signed-off-by: Roman Vivchar <rva333@protonmail.com>
-> >>> ---
-> >>>    drivers/nvmem/mtk-efuse.c | 19 +++++++++++++++++++
-> >>>    1 file changed, 19 insertions(+)
-> >>>
-> >>> diff --git a/drivers/nvmem/mtk-efuse.c b/drivers/nvmem/mtk-efuse.c
-> >>> index 980c29d01337..d2e5c69c580e 100644
-> >>> --- a/drivers/nvmem/mtk-efuse.c
-> >>> +++ b/drivers/nvmem/mtk-efuse.c
-> >>> @@ -70,6 +70,18 @@ static int mtk_efuse_gpu_speedbin_pp(void *context=
-, const char *id, int index,
-> >>>    =09return 0;
-> >>>    }
-> >>>
-> >>> +static int mtk_efuse_cpu_speedbin_pp(void *context, const char *id, =
-int index,
-> >>> +=09=09=09=09     unsigned int offset, void *data, size_t bytes)
-> >>
-> >> You can *literally* reuse mtk_efuse_gpu_speedbin_pp....
-> >
-> > No, I can't. On later SoCs CPU speedbin has different encoding.
-> > For example, on mt6768 it can be stored in either low or high 4 bits.
->=20
-> That's the part where you pass the right nbits in devicetree for the spee=
-dbin cell,
-> being it still 4 bits, that statement doesn't change the outcome.
->=20
-> > This is out of scope for this series, but I'd like if we kept this
-> > callback for the future SoCs.
->=20
-> All that the logic of your mtk_efuse_cpu_speedbin_pp is doing is assignin=
-g
->=20
-> BIT(val[0])
->=20
-> to val[0].
->=20
-> All that the logic of mtk_efuse_gpu_speedbin_pp is doing is assigning
->=20
-> BIT(val[0])
->=20
-> to val[0].
->=20
-> To me, that looks code duplication, and duplication is bad.
+How the cluster0 node override is done makes the core child nodes to be
+named in a non sequential way (core0 to core3, then core6 to core7).
+First, it breaks the cpu-map child nodes naming convention in the
+cpu-topology bindings. It also causes the arch_topology driver to skip
+the A78 core nodes during its devicetree parsing, leading to at least
+incorrect CPU capacity computation for them.
 
-This is true for this exact patch, but for newer SoC I have other code:
+So, modify the override so the A78 cores are seen as core4 and core5
+in the cluster0 node.
 
-if (val[0] & 0x0f)
-=09seg =3D val[0] & 0x0f;
-else
-=09seg =3D bitrev8(val[0]);
+Fixes: 49b07ed22e37 ("arm64: dts: mediatek: add support for MT8370 SoC")
+Signed-off-by: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
+---
+The patch has been tested on Mediatek Genio 510-EVK board, that
+integrates a MT8379 SoC with a kernel based on linux-next tree
+(tag: next-20261116)
+---
+ arch/arm64/boot/dts/mediatek/mt8370.dtsi | 12 ++++++++++--
+ 1 file changed, 10 insertions(+), 2 deletions(-)
 
-if (seg >=3D 16)
-=09return -EINVAL;
+diff --git a/arch/arm64/boot/dts/mediatek/mt8370.dtsi b/arch/arm64/boot/dts/mediatek/mt8370.dtsi
+index 7ac8b8d03494..3fa48f2e6a6a 100644
+--- a/arch/arm64/boot/dts/mediatek/mt8370.dtsi
++++ b/arch/arm64/boot/dts/mediatek/mt8370.dtsi
+@@ -16,8 +16,16 @@ cpus {
+ 
+ 		cpu-map {
+ 			cluster0 {
+-				/delete-node/ core4;
+-				/delete-node/ core5;
++				core4 {
++					cpu = <&cpu6>;
++				};
++
++				core5 {
++					cpu = <&cpu7>;
++				};
++
++				/delete-node/ core6;
++				/delete-node/ core7;
+ 			};
+ 		};
+ 	};
 
-if (bytes >=3D 4)
-=09put_unaligned_le32(BIT(seg), data);
-else if (bytes >=3D 2)
-=09put_unaligned_le16(BIT(seg), data);
-else if (seg < 8)
-=09val[0] =3D BIT(seg);
-else
-=09return -EINVAL;
-
-return 0;
-
-If you prefer using GPU post-processing callback in this series and
-adding CPU only when newer SoC support arrives, please let me know.
-
->=20
-> >
-> >>
-> >>> +{
-> >>> +=09u8 *val =3D data;
-> >>> +
-> >>> +=09if (val[0] >=3D 8)
-> >>> +=09=09return -EINVAL;
-> >>> +
-> >>> +=09val[0] =3D BIT(val[0]);
-> >>> +=09return 0;
-> >>> +}
-> >>> +
-> >>>    static void mtk_efuse_fixup_dt_cell_info(struct nvmem_device *nvme=
-m,
-> >>>    =09=09=09=09=09 struct nvmem_cell_info *cell)
-> >>>    {
-> >>> @@ -83,6 +95,13 @@ static void mtk_efuse_fixup_dt_cell_info(struct nv=
-mem_device *nvmem,
-> >>>    =09if (cell->nbits <=3D 3 &&
-> >>>    =09    strncmp(cell->name, "gpu-speedbin", min(sz, strlen("gpu-spe=
-edbin"))) =3D=3D 0)
-> >>>    =09=09cell->read_post_process =3D mtk_efuse_gpu_speedbin_pp;
-> >>> +
-> >>> +=09/*
-> >>> +=09 * On mobile SoCs, the CPU speedbin is a number. Convert it to
-> >>
-> >> Other SoCs have got the same efuse style as mobile SoCs: anyway, all M=
-ediaTek
-> >> SoCs (apart from networking ones) are (in a way or another) variants o=
-f the
-> >> mobile ones.
-> >
-> > They're not really variants, some of them have no direct mt81xx/83xx si=
-bling.
-> >
-> Noone looked hard to find the siblings for some of them - though there mi=
-ght be
-> one (and just one) that has no sibling :-)
-
-Some like mt6595/6795 are indeed very close to 8173. Though most SoCs are
-usually mix of mt81xx, like mt6768 includes mt8183, 8186 and 8192 IPs.
+---
+base-commit: 38c8be16846f10f3a710351357e4f4ace7254c8e
+change-id: 20261117-mt8370-fix-cpu-map-core-order-0a95d9e87802
 
 Best regards,
-Roman
+-- 
+Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
+
 
