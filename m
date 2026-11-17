@@ -2,92 +2,118 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 794F5606A336
-	for <linux-mediatek@archiver.kernel.org>; Tue, 17 Nov 2026 12:52:56 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 67073606A31C
+	for <linux-mediatek@archiver.kernel.org>; Tue, 17 Nov 2026 12:53:09 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=R89WYuJP;
-	dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com header.a=rsa-sha256 header.s=Intel header.b=Lv8QReDo
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=4akaz6Bm;
+	dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=EKe9psCt
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Unsubscribe-Post:List-Owner;
-	bh=f6uY2JVEGVtzYN21lOZWPDHJr2zwjadsZxpjqzELALE=; b=R89WYuJPMYrSQd2h5K1OO/K9xW
-	0g7fhUqLDS6crqXTH5MDZbthWpc26yF/bN5E+z6bzvFLvYIvdq++pKJeC4okS1CLHvixvqc0UPVGt
-	oB8mk7okQB2T8IoZA7FvXyPxKXhVc0keladJLq1iMyL4nszT8DmEsIpwZX4ImejIeljk7e6+2iBZv
-	aSX50CbWR2dfjCzSYU3DmULcwPSsufwAmSkwXqzQEopW4ksFby/OP5rFCzlLBaiDbPDvMUC/UfwFL
-	UGJ3wVFmcN0+7h8PLnbB12U53wB0Y9JtdUeQw2XqgSl+N3vMPOUUA4umAMkDIIFSbUblOuuneFIjM
-	3WdUt0vQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:References:Cc:To:From:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Unsubscribe-Post:
+	List-Owner; bh=u5l11zhalUIUwop5aprXHlkgo0BhYi2tAcgYsKF037s=; b=4akaz6BmFQL+ZQ
+	OoR3kpvTh6PvLStk9cIzcI6zQihcv/9kyP9teKCnVScHI4aZFRJXjQqRlzsGprZ+qCW1bS4eu4VMA
+	SnkAs3/WbkfciN3k699fYkRztGgxZ1yAYOL6t2W+xtK+x8N1aKPOczH799uG/IWm1FdFkFiJT2V6J
+	P8xz5SlJgFCJ1KEKFeLB26xtZ2T/KWJu3+ytesGiy6Nj6nrEfa1Zqna7A2O5uujIoQwkYNniBJAJ5
+	41oLvSi9Xj7iUo/LH9zYZbZQx9N8tEcNfyMMuiqfJVH6NiNPVpiwwOQqiFK4KSZ/9h4G+GbE8mBNW
+	CX0DbG5KEwpRH0pCHJ0g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xTIgB-00000005kWv-3ZS6;
-	Tue, 17 Nov 2026 12:52:55 +0000
-Received: from mgamail.intel.com ([198.175.65.11])
+	id 1xTIgP-00000005ke8-05R8;
+	Tue, 17 Nov 2026 12:53:09 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xTIg3-00000005kSF-1o12;
-	Tue, 17 Nov 2026 12:52:48 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
-  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
-  t=1794919968; x=1826455968;
-  h=date:from:to:cc:subject:message-id:references:
-   mime-version:content-transfer-encoding:in-reply-to;
-  bh=Q275WPfEwe6W7pcEp+TL6ULow3PdvnztyW6fJYb3THY=;
-  b=Lv8QReDo55QecuW63YPccindqIAJ9UUZ6mT/2BIl5WZGcyzoOJPlkEYM
-   GQ0tnfPDrtMWI+aLINZ/9fnKHU+FfOXH6/gtVPlWuVlWXWBffbYFIwjd/
-   pF3X+C5gSUsl9niFAHJAfdgFVZBQ53pP6ZRc6bl2nw8m5M1pNAvr3M/gE
-   hQ03BCEGAHdZ4LOEgrCKvB5BSO1J0LdFQGtC30Kwnz01G52SHeOZWHsu3
-   WhZa8miOfOSHKkeC7wq9T2ZJX+p+IybmstIXW30hEqQw/yUtrz/GLToAm
-   HbpZhAtKperQR9OPRIO5uzXixeT7HC/4ukybQTTD/VHWZuv5o6J6CVNp1
-   w==;
-X-CSE-ConnectionGUID: v3Ff7c5ETRu8Y6vn9FqQVA==
-X-CSE-MsgGUID: zrKwJ6doRgeCj/wyN02e4w==
-X-IronPort-AV: E=McAfee;i="6800,10657,11969"; a="3586368"
-X-IronPort-AV: E=Sophos;i="6.27,218,1787036400"; 
-   d="scan'208";a="3586368"
-Received: from orviesa007.jf.intel.com ([10.64.159.147])
-  by orvoesa103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 17 Nov 2026 04:52:46 -0800
-X-CSE-ConnectionGUID: zt3FFLAASBSXX040rUVezA==
-X-CSE-MsgGUID: c+7/hjrnTf+VX3mUHBpZ8w==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.27,218,1787036400"; 
-   d="scan'208";a="9768168"
-Received: from black.igk.intel.com ([10.91.253.5])
-  by orviesa007.jf.intel.com with ESMTP; 17 Nov 2026 04:52:42 -0800
-Received: by black.igk.intel.com (Postfix, from userid 1001)
-	id 3EBB499; Tue, 17 Nov 2026 13:52:41 +0100 (CET)
-Date: Tue, 17 Nov 2026 13:52:41 +0100
-From: "mika.westerberg@linux.intel.com" <mika.westerberg@linux.intel.com>
-To: Chunfeng Yun =?utf-8?B?KOS6keaYpeWzsCk=?= <Chunfeng.Yun@mediatek.com>
-Cc: "konrad.dybcio@oss.qualcomm.com" <konrad.dybcio@oss.qualcomm.com>,
-	"linux-usb@vger.kernel.org" <linux-usb@vger.kernel.org>,
-	"westeri@kernel.org" <westeri@kernel.org>,
-	"gregkh@linuxfoundation.org" <gregkh@linuxfoundation.org>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	"YehezkelShB@gmail.com" <YehezkelShB@gmail.com>,
-	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
-	"sven@kernel.org" <sven@kernel.org>,
-	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
-	"andreas.noever@gmail.com" <andreas.noever@gmail.com>,
-	"matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
-	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>
-Subject: Re: [PATCH v2 4/7] thunderbolt: add platform NHI driver
-Message-ID: <20261117125241.GA259790@black.igk.intel.com>
-References: <20261110114925.722014-1-chunfeng.yun@mediatek.com>
- <20261110114925.722014-5-chunfeng.yun@mediatek.com>
- <20261110143758.GC259790@black.igk.intel.com>
- <2807832e631dca98846d201b571f623210820268.camel@mediatek.com>
+	id 1xTIgK-00000005kb5-3ACX;
+	Tue, 17 Nov 2026 12:53:04 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by sea.source.kernel.org (Postfix) with ESMTP id 7B1F041263;
+	Tue, 17 Nov 2026 12:53:04 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1BE841F000C4;
+	Tue, 17 Nov 2026 12:52:59 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1794919984;
+	bh=u5l11zhalUIUwop5aprXHlkgo0BhYi2tAcgYsKF037s=;
+	h=Date:Subject:From:To:Cc:References:In-Reply-To;
+	b=EKe9psCtdF5PvPdLuGaQUBhfvPdRLE5ItUNrRZGiGUeGf+LA3UzCyAvfrijAe32UQ
+	 CaEzVXn1mzlrGzV5weGOwFb/TjlysHiYmZORHCugDD4mdFku191jr3j5NAvm78zNe7
+	 1aUoLsNx4ockMr+TEKl+F7nPYUk5A3dN2u6IT1MsLgClzsd0nrtlWv2KrTYmPy2M6N
+	 +TA+wNJ9xD21oY/dAb8X5u3MwfwhLpMRhqYCVyfP+XVyMjX/LIwk1yv0/2Sld5gl51
+	 jbRld3qk3bFk5C82IlP4vaZFPfUFIBsoY4UZAgzlErIYsDWoUbLZO/kEgZjEKTQewR
+	 rxl/rECPskutQ==
+Message-ID: <506611fb-3f68-4e9e-af28-29f701f22d52@kernel.org>
+Date: Tue, 17 Nov 2026 13:52:58 +0100
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <2807832e631dca98846d201b571f623210820268.camel@mediatek.com>
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261117_045247_547907_33C76B53 
-X-CRM114-Status: GOOD (  41.76  )
-X-Spam-Score: -4.2 (----)
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 1/4] dt-bindings: display: mediatek: dpi: Add
+ compatible for mt8167
+From: Krzysztof Kozlowski <krzk@kernel.org>
+To: Luca Leonardo Scorcia <l.scorcia@gmail.com>
+Cc: linux-mediatek@lists.infradead.org,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+ Philipp Zabel <p.zabel@pengutronix.de>,
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
+ David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>, CK Hu <ck.hu@mediatek.com>,
+ Jitao shi <jitao.shi@mediatek.com>, dri-devel@lists.freedesktop.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org
+References: <20260921113914.779393-1-l.scorcia@gmail.com>
+ <20260921113914.779393-2-l.scorcia@gmail.com>
+ <20260925-inventive-crystal-firefly-0deffe@quoll>
+Content-Language: en-US
+Autocrypt: addr=krzk@kernel.org; keydata=
+ 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
+In-Reply-To: <20260925-inventive-crystal-firefly-0deffe@quoll>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -98,195 +124,31 @@ List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-8.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=ham
-	autolearn_force=no version=4.0.1
+X-Spam-Status: No, score=-17.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,
+	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1
+	autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Hi,
+On 25/09/2026 15:24, Krzysztof Kozlowski wrote:
+> On Mon, Sep 21, 2026 at 01:38:55PM +0200, Luca Leonardo Scorcia wrote:
+>> MediaTek mt8167 SoC has two Digital Parallel Interface (DPI) blocks,
+>> one can be routed to a DPI display while the other is wired to the HDMI
+>> block. They are not compatible with any other device, so add a new
+>> compatible to describe them in the device tree.
+>>
+>> Signed-off-by: Luca Leonardo Scorcia <l.scorcia@gmail.com>
+>> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+>> ---
+>>  .../devicetree/bindings/display/mediatek/mediatek,dpi.yaml       | 1 +
+>>  1 file changed, 1 insertion(+)
+> 
+> Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
 
-On Tue, Nov 17, 2026 at 12:14:29PM +0000, Chunfeng Yun (云春峰) wrote:
-> On 二, 2026-11-10 at 15:37 +0100, Mika Westerberg wrote:
-> > On Tue, Nov 10, 2026 at 07:48:52PM +0800, Chunfeng Yun wrote:
-> > >  
-> > > -void nhi_enable_int_throttling(struct tb_nhi *nhi);
-> > >  void nhi_disable_interrupts(struct tb_nhi *nhi);
-> > >  irqreturn_t tb_nhi_isr(int irq, void *data);
-> > >  irqreturn_t tb_ring_msix(int irq, void *data);
-> > > diff --git a/drivers/thunderbolt/pci.c b/drivers/thunderbolt/pci.c
-> > > index 9379c598a221..698f47ec63da 100644
-> > > --- a/drivers/thunderbolt/pci.c
-> > > +++ b/drivers/thunderbolt/pci.c
-> > > @@ -736,4 +736,5 @@ static struct pci_driver nhi_driver = {
-> > >  	.shutdown = nhi_pci_shutdown,
-> > >  	.driver.pm = &tb_nhi_pm_ops,
-> > >  };
-> > > +
-> > 
-> > I guess this is unintented change?
-> > 
-> will drop it
-> 
-> > >  module_pci_driver(nhi_driver);
-> > > diff --git a/drivers/thunderbolt/platform.c
-> > > b/drivers/thunderbolt/platform.c
-> > > new file mode 100644
-> > > index 000000000000..3562b6c7ea7d
-> > > --- /dev/null
-> > > +++ b/drivers/thunderbolt/platform.c
-> > > @@ -0,0 +1,172 @@
-> > > +// SPDX-License-Identifier: GPL-2.0-only
-> > > +/*
-> > > + * Thunderbolt driver - NHI driver (Platform bus specific
-> > > implementation)
-> > > + *
-> > > + * Author: Chunfeng Yun <chunfeng.yun@mediatek.com>
-> > > + */
-> > > +
-> > > +#include <linux/acpi.h>
-> > > +#include <linux/interrupt.h>
-> > > +#include <linux/errno.h>
-> > > +#include <linux/of.h>
-> > > +#include <linux/platform_device.h>
-> > > +#include <linux/pm_runtime.h>
-> > > +#include <linux/pm_wakeirq.h>
-> > > +#include <linux/slab.h>
-> > > +
-> > > +#include "nhi.h"
-> > > +#include "tb.h"
-> > > +
-> > > +static int nhi_platform_init(struct tb_nhi *nhi)
-> > > +{
-> > > +	/* avoid device link fail for pcie tunnel */
-> > 
-> > Do you have the ACPI _DSD there in place? 
-> Yes, we use the same uefi as WoA which pass Windows HLK and usb-if
-> certitfication
-> 
-> > Then I don't think you need
-> > these. And "pcie" -> "PCIe" everywhere (except in code).
-> ACK
-> 
-> > 
-> > > +	pm_runtime_set_active(nhi->dev);
-> > > +	pm_runtime_get_noresume(nhi->dev);
-> > > +	pm_runtime_enable(nhi->dev);
-> > > +
-> > > +	device_set_wakeup_capable(nhi->dev, true);
-> > > +	device_enable_async_suspend(nhi->dev);
-> > 
-> > I also suggest not to enable all the fancy power management until you
-> > have
-> > the basic stuff like tunneling fully functional.
-> I'm not sure understand what you mean.
-> 
-> if you mean the function test:
-> I already test usb4net, usb3 tunnel, PCIe tunnel and dp tunnel data
-> transfers, and also runtime suspend/resume and system suspend/resume.
-> 
-> if you mean when to enable pm:
-> do you mean enable pm at the enable of tb_nhi_probe()?
-> 
-> +	pm_runtime_set_active(nhi->dev);
-> +	pm_runtime_get_noresume(nhi->dev);
-> +	pm_runtime_enable(nhi->dev);
-> 
-> these three line shall be put before nhi_select_cm(), otherwise, it
-> fail to link PCIe devices, and I will check it again.
-> 
-> +	device_set_wakeup_capable(nhi->dev, true);
-> +	device_enable_async_suspend(nhi->dev);
-> 
-> these two line can be put at the end of probe.
+And un-acked. Undocumented ABI.
 
-I meant device_enable_async_suspend() it's not stricly required and we
-don't do it elsewhere so I would leave it out now and then add it
-everywhere later.
-
-> 
-> if you have any suggestions, please describe more details, I will try
-> it.
-> 
-> > 
-> > > +
-> > > +	return 0;
-> > > +}
-> > > +
-> > > +static void nhi_platform_clear_wake_irq(void *dev)
-> > > +{
-> > > +	dev_pm_clear_wake_irq(dev);
-> > > +}
-> > > +
-> > > +static int nhi_platform_init_irq(struct tb_nhi *nhi)
-> > > +{
-> > > +	struct device *dev = nhi->dev;
-> > > +	int ret;
-> > > +
-> > > +	ret = devm_request_irq(dev, nhi->irq, tb_nhi_isr,
-> > > IRQF_NO_SUSPEND,
-> > > +			       dev_name(dev), nhi);
-> > > +	if (ret)
-> > > +		return dev_err_probe(dev, ret, "request irq
-> > > failed\n");
-> > 
-> > failed to request interrupt
-> > 
-> > Please be consistent with the rest of the driver.
-> ACK
-> > 
-> > > +
-> > > +	if (nhi->wake_irq) {
-> > > +		ret = dev_pm_set_dedicated_wake_irq(dev, nhi-
-> > > >wake_irq);
-> > > +		if (ret) {
-> > > +			return dev_err_probe(dev, ret, "set wake
-> > > irq %d failed\n", nhi->wake_irq);
-> > 
-> > Split this into 2 lines.
-> ACK
-> > 
-> > > +		}
-> > > +
-> > > +		dev_info(dev, "wake irq %d\n", nhi->wake_irq);
-> > 
-> > Remove this. The driver should be silent when it works. You can add
-> > debug
-> > but I don't think this is useful.
-> ACK
-> > 
-> > > +
-> > > +		ret = devm_add_action_or_reset(dev,
-> > > nhi_platform_clear_wake_irq, dev);
-> > 
-> > Can you pass dev_pm_clear_wake_irq directly here?
-> 
-> the parameter type do not match which cause build warning
-> 
-> kernel/mediatek/drivers/thunderbolt/platform.c:8:
-> kernel/mediatek/drivers/thunderbolt/platform.c: In function
-> 'nhi_platform_init_irq':
-> kernel/mediatek/drivers/thunderbolt/platform.c:53:53: error: passing
-> argument 2 of '__devm_add_action_or_reset' from incompatible pointer
-> type [-Werror=incompatible-pointer-types]
->    53 |                 ret = devm_add_action_or_reset(dev,
-> dev_pm_clear_wake_irq, dev);
->       |                                                    
-> ^~~~~~~~~~~~~~~~~~~~~
->       |                                                     |
->       |                                                     void
-> (*)(struct device *)
-> upstream/k7/kernel/mediatek/include/linux/device/devres.h:283:41: note:
-> in definition of macro 'devm_add_action_or_reset'
->   283 |         __devm_add_action_or_reset(dev, action, data, #action)
->       |                                         ^~~~~~
-> upstream/k7/kernel/mediatek/include/linux/device/devres.h:271:73: note:
-> expected 'void (*)(void *)' but argument is of type 'void (*)(struct
-> device *)'
->   271 | static inline int __devm_add_action_or_reset(struct device
-> *dev, void (*action)(void *),
-
-
-Oh right it has different prototyp so you need the wrapper. Then it's okay.
+Best regards,
+Krzysztof
 
