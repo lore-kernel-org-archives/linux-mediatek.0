@@ -2,11 +2,11 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id AA0CA606A32C
-	for <linux-mediatek@archiver.kernel.org>; Tue, 17 Nov 2026 11:37:10 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 07D23606A331
+	for <linux-mediatek@archiver.kernel.org>; Tue, 17 Nov 2026 11:37:11 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=KpFz5snl;
-	dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=cHqShPiH
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=3uE8dP6v;
+	dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=bmx5vI3N
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
@@ -14,72 +14,72 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	Content-Type:MIME-Version:Subject:Date:From:Content-ID:Content-Description:
 	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=X9HZqJeWaujFrx8RhVbz39RVLiUzLr7qnqhJVg3dmCc=; b=KpFz5snlt8+VOE/1rCiKBrt60+
-	TGi817tugJyOg4nVjwR3Tc7Rf18VpD1rC64xAyBpyI8i8HwcgeJhpemEjJSqsZDs8MRRRrDL+hYQ5
-	WTXqHcoDjj8yT8NIIgiOs3t4pZaRmC5HT5W/LJ3YS0pzxulTa5jstknBhrSBXU3CKegedLThC6LYN
-	KEu3BIk3EG406xWqYBqnCjv0goDOwhH/jdzEm/C1fqXMbMWF5zi07cUNghTMW48yx1nUhIWiBT5g+
-	9BzlRWF6EHlwQZ3mENTWUFQs3gspAnPWkgcPdDb9PcHhU17aQXaTCfL6dJM69gPM2l1HtHbNWl8F7
-	HRzROmEQ==;
+	bh=dxqcIqtWTxIZw43ZJIhJkSexxCStYIQHemKkftsp9Yg=; b=3uE8dP6v2f0lG9t3/hxiXVfBgL
+	1bUiwhzCDzgJYAZjo0GfeYrjzYbodhcyMEH+S57xRNCk1SEX4yOpnlwRruYVhhEDiCTOrRGzkLTKF
+	AriOg64+j2hTzbitW3qjKb4v0wyEK+ia2/QgtufnF7VojnNexCSa7hAuHES+ymuZOfIQuSpFMvQ/c
+	bbNxpevMonuR7vbo6n9JIsjLJhfZJlVlBzqXDoMcuvpWinlhcVRYZuO1S7FhD/kgJDhaRng8gOPmh
+	8Z63afR75JGP2HNPmoZB+bjnhmebHowtwWlteJeWVhzLXMOB4Y2L0gJK/ZngMnEo5wZ5OiqSHwiyF
+	Pd48Yvgw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xTHUs-00000005THn-0wyT;
+	id 1xTHUs-00000005TI3-1acL;
 	Tue, 17 Nov 2026 11:37:10 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xTHUb-00000005T4M-0Cme;
+	id 1xTHUb-00000005T4G-0CLr;
 	Tue, 17 Nov 2026 11:36:53 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id C84B4468EB;
+	by tor.source.kernel.org (Postfix) with ESMTP id 34C9063061;
 	Tue, 17 Nov 2026 11:36:52 +0000 (UTC)
 Authentication-Results: smtp.kernel.org; arc=none smtp.remote-ip=100.80.115.77
 ARC-Seal: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256; cv=none;
-	t=1794915412;
-	b=WhD54QDt6At7I85ME3JDOTi6RIJCAmScVrgvBFUDdz37ZmpUdHzDAoBmuhLSOmMc6JhT
-	 c8NivhW2zHF8wwP6r+ZTRLRjZvsrpZpPzZ4Zbd2yDdBsD3tgaa3OnqSR1HomG5vK5ruIT
-	 VhD84MhucCghjJoYyqsgRl4t6AS/gJurE/iwGMh4dZK5g3lJYZV4PD3YzCT8DYTHDXx7+
-	 HQz5U6nEP9jX7w05pz29cs971vGyGuut4V+20Kndx2MFyD6Yz5x+lQdTuJTi6Bx7p7qkW
-	 mJtKZ74OEGij/4DE/IlOgdkYAv+NplpCvM6Kn5DNBuaoqFypo430H83tmvn49KoTaAw==
+	t=1794915411;
+	b=yolpu5J+3qyNUE1/VtijjH5Q3Z0leTc2vSxmU8HQYPQSqxO0Iufps+7RcUnlnFyKthrv
+	 Y6dAeg3rzZtJLIfp6kWSQKReNIIW154+ChPGKb11wbbrwTb8B6cBaOL3d2Tiv9yjGxnLb
+	 WEBgH3Wqk3sfzaQ3CVgaC2RPOwNjTEaQ0w+b7kBy3cFi3ejZOgYjNSDEEb1D5hVw4t5+q
+	 0aVf1yKrPGuaYAHea3ATR9tI2kAiTQLpAU4SwU0dFkbXvPZESxE2aPgZ+4ssVHmrmxflx
+	 96cVcqvNDOFTirUhVTHCuMzsnE9a50EIyZLsK1rIobWtcq/qBmH60zUndqn/VWj2qlA==
 ARC-Message-Signature: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256;
-	c=relaxed/relaxed; t=1794915412;
+	c=relaxed/relaxed; t=1794915411;
 	h=DKIM-Signature:Received:From:Date:Subject:MIME-Version:Content-Type:
 	 Message-Id:References:In-Reply-To:To:Cc:X-Mailer:
 	 X-Developer-Signature:X-Developer-Key:X-Endpoint-Received:
 	 X-Original-From:Reply-To:Content-Transfer-Encoding;
-	bh=X9HZqJeWaujFrx8RhVbz39RVLiUzLr7qnqhJVg3dmCc=;
-	b=ixOhRf2NypzW3AFdrvWUAKkJoHq1mjL4RJztrPrIPcckCySs/ioXPPv8k4c0J2OgD0d9
-	 +dO4dUcAY/wY7kG7aYhhsHajjg5YJfqcw3neliDGAL3AtLfKTNOK+vCj0b0AZZMXjQ4Sb
-	 XFfqJX3UEOdjZosxp0TPm3jmmQNjG5wAhqCJtlL17wyhvfm9y1+rQfWcMz76ZG20n9y0A
-	 H0cq2lAhlLIgUhn0+C3W/ANMS5ycLNtXZ/xtGMMORjysZMfbMSnZuHC53NscMgeD9yuXC
-	 sHj3p9cEG+co/v73g1JEFrKlDWYnXQ0vDNy9pBChXXj/L47NYfsLnGzfIFiu8hQNssw==
+	bh=dxqcIqtWTxIZw43ZJIhJkSexxCStYIQHemKkftsp9Yg=;
+	b=qU3UGzxXjmNBs+SIoZ7j2QlwjDLVluCGS109GL1+Gcsq9l2a+sUGDIdXaUtlgqKmK+8b
+	 rZbHN908uJ+K5BrjdawIreZcK7Rxx6tSh3+wzBh3jR1hFvRhGpAdNqcULSFVSRmpO7f5l
+	 S7baQmdv5y8GV9pWHN+AiLfoPmAMvFWLFQXzdj8vdCWrwykTwdsOx/haZ4MnZRWS4RnZO
+	 wxL+q2J9euZqVe8F3SjkmqWX018qsWdT+doATiglw9NeM5J6hbbM/Oi1tb3K2yBPwNWLW
+	 4/Vnb8rAN0/Z45cbQEeDOr1wndktuyZcjdVB/05Vm9heDSH1ROLl0GpgGxa2JiJvFAw==
 ARC-Authentication-Results: i=1; smtp.kernel.org; 
 	arc=none smtp.remote-ip=100.80.115.77
 Received: from lkml.kernel.org (nexus.subspace.kernel.org [100.80.115.77])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.kernel.org (Postfix) with ESMTPS id B6CC31F000C6;
+	by smtp.kernel.org (Postfix) with ESMTPS id CD4D01F000C7;
 	Tue, 17 Nov 2026 11:36:50 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1794915412;
-	bh=X9HZqJeWaujFrx8RhVbz39RVLiUzLr7qnqhJVg3dmCc=;
+	s=k20260515; t=1794915411;
+	bh=dxqcIqtWTxIZw43ZJIhJkSexxCStYIQHemKkftsp9Yg=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To;
-	b=cHqShPiHP/FCJT3LLWhj1Mnbsrd29jCZGqJeDBM5g05NPxAg8wsrDu+ykyPbO69T4
-	 olhUa6ss3O9/YogWFd/LzfEFsdskWCAM6Wep1KQ1AcyCwShUd1TimsRZjSdJ+Kz2H/
-	 Rzn2k4/LA5drYktqqsAwrDyLNELI4Evm5vW1qEA8E5q2z87mjfl0/5ch5yXbIu3hhV
-	 gd8hUGNuGXAseMYf7JB9hUo16jNyNHHZJjdA7KqecnSE13aKHJQp/eJAub0Lxm2LPt
-	 8PYT8ki1eW4bBG8xd8hPsBKtL4UB1lwew6hq51kDAxWMipT6LNSmEQrTyPKLM5rvPc
-	 HIx9JE75o4JYA==
+	b=bmx5vI3NgMAOo1PO5+XWgVz378rfy4oAmOhDsR39phU2KL9Gqr8mV53Bh3hi11Kkz
+	 HFEmEt2Qgk1GVTfzs2rJZeO6Npi3q3v7mNjnk62lVoloKwnlmME7Et9P31S53Nzlmp
+	 B42+tKonzpdx02OO28qWBt2XRtVD72ylDYTcE4WN4TEO+QwNTm+2ZW96M/uLTTSRMF
+	 YVkRGAR28jwxM6lackJEp8KdsTblKO4uUJ6M7eZq0Yb1sgWQfNX0H65RoHoyIttWjE
+	 YJ7AAAijNL99C8VlCftdOBnz7cf3bHarewkBXGJIEXU5Yh4zqbGxxXl/AXEa+wUHAJ
+	 HEvCMOlTjlb7A==
 Received: from nexus.subspace.kernel.org (localhost [IPv6:::1])
-	by lkml.kernel.org (Postfix) with ESMTP id 450D84A819;
+	by lkml.kernel.org (Postfix) with ESMTP id 5C34F4A81D;
 	Tue, 17 Nov 2026 11:36:50 +0000 (UTC)
 From: Roman Vivchar via B4 Relay <devnull+rva333.protonmail.com@kernel.org>
-Date: Tue, 17 Nov 2026 13:33:22 +0200
-Subject: [PATCH RESEND v5 2/4] nvmem: mtk-efuse: add support for 32-bit
- aligned reads
+Date: Tue, 17 Nov 2026 13:33:23 +0200
+Subject: [PATCH RESEND v5 3/4] nvmem: mtk-efuse: add CPU speedbin
+ post-processing
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
-Message-Id: <20261117-6572-nvmem-v5-2-9b561a8a83e1@protonmail.com>
+Message-Id: <20261117-6572-nvmem-v5-3-9b561a8a83e1@protonmail.com>
 References: <20261117-6572-nvmem-v5-0-9b561a8a83e1@protonmail.com>
 In-Reply-To: <20261117-6572-nvmem-v5-0-9b561a8a83e1@protonmail.com>
 To: Srinivas Kandagatla <srini@kernel.org>, Rob Herring <robh@kernel.org>, 
@@ -93,11 +93,11 @@ Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
  Roman Vivchar <rva333@protonmail.com>
 X-Mailer: b4 0.15.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1794915409; l=2576;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1794915409; l=1737;
  i=rva333@protonmail.com; s=20260510; h=from:subject:message-id;
- bh=mDeWdFlgCV5LQ7V1Qel0v86EFQeD6sQC8dDyGhHzDrg=;
- b=kThR0pt7ntH1vuOsJ5KCQ19+F/lu3NmbHGIjqzow9PYU0aErAgxLhyzJ/n3G0Gt+qo+eWcRmN
- Y4MckRVVvcmB1EFSvQwG0bKcOL5x0ejq+a/B9plNo0M4SuTvFm7cVy0
+ bh=2fMHy4JxbvhP2Nx70MB1a2Zu4elW1Lbb73LR5vQKGOc=;
+ b=GEZYIJniMHkcE0LLN+BoXraYuM1xaVRYosLrMetE1QqhfWhM0dvsvNLsGoNwPP6fVcyCeuM75
+ ATyT/SPm6g5BpNXis2ddYoMCVVdfRp7NN/fMuEYTVwyCD6F3aWFEbvj
 X-Developer-Key: i=rva333@protonmail.com; a=ed25519;
  pk=zww/nWjBGoQ4POXCG0BV6fx2iuXK6jx77rsKPA5YK5Y=
 X-Endpoint-Received: by B4 Relay for rva333@protonmail.com/20260510 with
@@ -125,96 +125,55 @@ X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 
 From: Roman Vivchar <rva333@protonmail.com>
 
-Some MediaTek SoCs, such as mt6572, don't support 8-bit reads, leading
-to zeroes or garbage data. 32-bit aligned reads must be used instead.
+MediaTek SoCs are often released under the same marketing name, but with
+different suffix for the speedbin. For example, mt6572m has 1 GHz limit,
+mt6572a - 1.2 GHz, mt6572w - 1.4 GHz.
 
-Introduce a 'mtk_reg_read_aligned' helper to enforce 32-bit aligned
-register access. All reads will be performed by reading 4-byte words
-and masking them.
+Since the speedbin is stored as a number in the efuse, add support for
+converting it to the bitmask for opp-supported-hw usage in the DT.
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Signed-off-by: Roman Vivchar <rva333@protonmail.com>
 ---
- drivers/nvmem/mtk-efuse.c | 35 ++++++++++++++++++++++++++++++++++-
- 1 file changed, 34 insertions(+), 1 deletion(-)
+ drivers/nvmem/mtk-efuse.c | 19 +++++++++++++++++++
+ 1 file changed, 19 insertions(+)
 
 diff --git a/drivers/nvmem/mtk-efuse.c b/drivers/nvmem/mtk-efuse.c
-index 00a84ea963a8..980c29d01337 100644
+index 980c29d01337..d2e5c69c580e 100644
 --- a/drivers/nvmem/mtk-efuse.c
 +++ b/drivers/nvmem/mtk-efuse.c
-@@ -4,6 +4,7 @@
-  * Author: Andrew-CT Chen <andrew-ct.chen@mediatek.com>
-  */
+@@ -70,6 +70,18 @@ static int mtk_efuse_gpu_speedbin_pp(void *context, const char *id, int index,
+ 	return 0;
+ }
  
-+#include <linux/align.h>
- #include <linux/device.h>
- #include <linux/module.h>
- #include <linux/io.h>
-@@ -13,12 +14,37 @@
- 
- struct mtk_efuse_pdata {
- 	bool uses_post_processing;
-+	bool needs_aligned_read;
- };
- 
- struct mtk_efuse_priv {
- 	void __iomem *base;
- };
- 
-+static int mtk_reg_read_aligned(void *context,
-+				unsigned int reg, void *_val, size_t bytes)
++static int mtk_efuse_cpu_speedbin_pp(void *context, const char *id, int index,
++				     unsigned int offset, void *data, size_t bytes)
 +{
-+	struct mtk_efuse_priv *priv = context;
-+	u8 *val = _val;
-+	u32 i, pos, shift, val32;
++	u8 *val = data;
 +
-+	for (i = 0; i < bytes; i++, val++) {
-+		pos = reg + i;
++	if (val[0] >= 8)
++		return -EINVAL;
 +
-+		/*
-+		 * Read on 32-bit word boundary or if it's the first
-+		 * iteration
-+		 */
-+		if (i == 0 || IS_ALIGNED(pos, 4))
-+			val32 = readl(priv->base + (pos & ~3));
-+
-+		shift = (pos & 3) * 8;
-+		*val = (val32 >> shift) & 0xff;
-+	}
-+
++	val[0] = BIT(val[0]);
 +	return 0;
 +}
 +
- static int mtk_reg_read(void *context,
- 			unsigned int reg, void *_val, size_t bytes)
+ static void mtk_efuse_fixup_dt_cell_info(struct nvmem_device *nvmem,
+ 					 struct nvmem_cell_info *cell)
  {
-@@ -81,7 +107,12 @@ static int mtk_efuse_probe(struct platform_device *pdev)
- 	econfig.add_legacy_fixed_of_cells = true;
- 	econfig.stride = 1;
- 	econfig.word_size = 1;
--	econfig.reg_read = mtk_reg_read;
+@@ -83,6 +95,13 @@ static void mtk_efuse_fixup_dt_cell_info(struct nvmem_device *nvmem,
+ 	if (cell->nbits <= 3 &&
+ 	    strncmp(cell->name, "gpu-speedbin", min(sz, strlen("gpu-speedbin"))) == 0)
+ 		cell->read_post_process = mtk_efuse_gpu_speedbin_pp;
 +
-+	if (pdata->needs_aligned_read)
-+		econfig.reg_read = mtk_reg_read_aligned;
-+	else
-+		econfig.reg_read = mtk_reg_read;
-+
- 	econfig.size = resource_size(res);
- 	econfig.priv = priv;
- 	econfig.dev = dev;
-@@ -102,10 +133,12 @@ static int mtk_efuse_probe(struct platform_device *pdev)
++	/*
++	 * On mobile SoCs, the CPU speedbin is a number. Convert it to
++	 * a bitmask for supported-hw usage.
++	 */
++	if (strncmp(cell->name, "cpu-speedbin", min(sz, strlen("cpu-speedbin"))) == 0)
++		cell->read_post_process = mtk_efuse_cpu_speedbin_pp;
+ }
  
- static const struct mtk_efuse_pdata mtk_mt8186_efuse_pdata = {
- 	.uses_post_processing = true,
-+	.needs_aligned_read = false,
- };
- 
- static const struct mtk_efuse_pdata mtk_efuse_pdata = {
- 	.uses_post_processing = false,
-+	.needs_aligned_read = false,
- };
- 
- static const struct of_device_id mtk_efuse_of_match[] = {
+ static int mtk_efuse_probe(struct platform_device *pdev)
 
 -- 
 2.56.1
