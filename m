@@ -2,68 +2,90 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 1577F606A89C
-	for <linux-mediatek@archiver.kernel.org>; Tue, 17 Nov 2026 00:00:16 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 12A6C606A32A
+	for <linux-mediatek@archiver.kernel.org>; Tue, 17 Nov 2026 00:30:34 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=qnDRyllN;
-	dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=UiTeGyCY
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=H5YqtLoX;
+	dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com header.a=rsa-sha256 header.s=Intel header.b=bVa5B6Fk
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Date:Message-Id:From:Subject:Content-Transfer-Encoding:MIME-Version:
-	Content-Type:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Unsubscribe-Post:
-	List-Owner; bh=2wghTaLv3bd7cxoSQxpRSgUbdH9hiZjTo57P7TCO9lY=; b=qnDRyllNZKhTJs
-	XJwdD0eTJa1qBMrYtX2YbDz6X6vU4q6RIVq6C2p2OmsrOTdS5oXdwL6S4yJ+v5R/u78NR8+trjrUx
-	8XQd9pkokN170tM5s447FD4tcwYP61ZPUsHHtVYjGzEaYUh8woWba0MZceqWNPcyPdQNrt7KThFfm
-	DqN+YPhBO251GF2I3wd7P8eEZTYCteE1krCcK2qS4GmU2We31uJb4O8+Jsl80KyubMji5FWcI166P
-	bJS2DGNw3AgxzmCFgpEUJYdDTHqCzMm20XfoizyG2yDUxGqTotWsWutOfuj16ssg+nwz6TGhsFwNz
-	VeT1+fjgUW+UtTC4LwYQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Unsubscribe-Post:List-Owner;
+	bh=U2B/uabe/QmuXvbvHoYk8ZWVeldXL8jP6hg7gbVv3cw=; b=H5YqtLoXeYwuDZjeGqR2ATrQkE
+	qjI3cet9U93f8eYToej149ZWZh7kbRyMhKDUayWQvfI/l+z80TYJRJ4QxyTjIovkraz258JbIx8uy
+	7GAvsFjpNqeHzXBIuzz1Z8TroPN06eNPZe845SRjEYQDEbLdHRJ//Smqi2rssAt/JEx8267WwEHSr
+	kdP/qQaoBHm0G6cVuRjSXX5BEIUOnZDp5ubz8oFGU1/DHR7pveO/uY53RSaFeQ/laa7tsnW7l9mWU
+	B2KJO5mtKXLIhDakNPyRuUPAP3rXZml5ZN/gzOWE57rw+eXGskMCGkFvs4WVlXZr1P2xetIvJQ1eu
+	h+a8oOXQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xT6cR-00000004DtR-2p8x;
-	Tue, 17 Nov 2026 00:00:15 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1xT75l-00000004FJm-2dJ0;
+	Tue, 17 Nov 2026 00:30:33 +0000
+Received: from mgamail.intel.com ([198.175.65.18])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xT6cQ-00000004DtB-1jM9;
-	Tue, 17 Nov 2026 00:00:14 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id A514C6286C;
-	Tue, 17 Nov 2026 00:00:13 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 4C3D71F000CA;
-	Tue, 17 Nov 2026 00:00:13 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1794873613;
-	bh=2wghTaLv3bd7cxoSQxpRSgUbdH9hiZjTo57P7TCO9lY=;
-	h=Subject:From:Date:References:In-Reply-To:To:Cc;
-	b=UiTeGyCYpcbiQOHt/hLZ4Qfo3MvpY6j3jmb0EwgeJnBq3ZU6JiIh5gjRTeUAkyFm5
-	 kk36ipkaGNEQT8lOeEtcKmLFzr7hTNKW5HqxAWJRwR+VfPQgfwT90CLP2q4gNaoYBT
-	 jR8TcH9sgvhWvMmE+c43DrbxfrAgNpHbyuRHRTkkSN1b7U5mVOS+q64ES3TKkzyU+/
-	 sO3Nncj5dLxNqrrGZX9DMk3bCrfPE4GfblPCAAd059sk5xxgpDWf4i6U8Msstwej/P
-	 UUKdkIHZsBgiXbbeSd/Mx477ekwBkPB/RN+kQ9uV/tNK0lv4Wcy4aEMVGexayiyFsB
-	 TcY6z11uoiUdw==
-Received: from [10.30.226.235] (localhost [IPv6:::1])
-	by aws-us-west-2-korg-oddjob-rhel9-1.codeaurora.org (Postfix) with ESMTP id 3A31B391B06A;
-	Tue, 17 Nov 2026 00:00:13 +0000 (UTC)
-Content-Type: text/plain; charset="utf-8"
+	id 1xT75h-00000004FJJ-201N;
+	Tue, 17 Nov 2026 00:30:31 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1794875430; x=1826411430;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=8gVBDSdO3QnCkbysAcQxx5Ix2FP39pCUquIV8ycUM/c=;
+  b=bVa5B6FkZc3FATLee3gi6j+7zpToy7+A0TfEO9buYzgkHE7tC68MsftA
+   B/Jnp/ELJmlc3Ol8mj23D+WiGSDHGirFbwPeI5SZec8xWRlFc3oSzBvbq
+   iOsJfasWqIKu/tCfArKBkCEnF/VmgGz9wOaN6qXWO3fQEcMiuvM3S3qZo
+   dq1fXZUgDEjmqz2FROuK7Rn6h6bz8zwOQfzDgHVGcZ7+pcG9zOCc2TAP5
+   yRWtzq6pE43mG2ibcdSRHaJn8VwRrM4jCjPEon9RG2d4frmWtnggPdJqO
+   vUE0hZ5uWnnI9sNfnmgPMfwz/00MGYAJCOJHWb183Lt++/n3FWHrNvdf3
+   Q==;
+X-CSE-ConnectionGUID: yT63m84BR2WPfu4ajj9n/g==
+X-CSE-MsgGUID: S1Q2F6/TT3KYgYJ9lNXG8w==
+X-IronPort-AV: E=McAfee;i="6800,10657,11968"; a="3648161"
+X-IronPort-AV: E=Sophos;i="6.27,217,1787036400"; 
+   d="scan'208";a="3648161"
+Received: from orviesa008.jf.intel.com ([10.64.159.148])
+  by orvoesa110.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 16 Nov 2026 16:30:28 -0800
+X-CSE-ConnectionGUID: VAgfbtYiRm+5yRsw4auy4A==
+X-CSE-MsgGUID: fNNJQyq1Ri65VGTx7OzBtg==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.27,217,1787036400"; 
+   d="scan'208";a="9479561"
+Received: from lkp-server01.sh.intel.com (HELO 0caa9d2d175c) ([10.239.97.150])
+  by orviesa008.jf.intel.com with ESMTP; 16 Nov 2026 16:30:23 -0800
+Received: from kbuild by 0caa9d2d175c with local (Exim 4.98.2)
+	(envelope-from <lkp@intel.com>)
+	id 1xT75X-000000019f5-0w2K;
+	Tue, 17 Nov 2026 00:30:19 +0000
+Date: Tue, 17 Nov 2026 08:30:15 +0800
+From: kernel test robot <lkp@intel.com>
+To: Caleb James DeLisle <cjd@cjdns.fr>, netdev@vger.kernel.org
+Cc: llvm@lists.linux.dev, oe-kbuild-all@lists.linux.dev, andrew@lunn.ch,
+	olteanv@gmail.com, davem@davemloft.net, edumazet@google.com,
+	kuba@kernel.org, pabeni@redhat.com, robh@kernel.org,
+	krzk+dt@kernel.org, conor+dt@kernel.org, matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com, chester.a.unal@arinc9.com,
+	daniel@makrotopia.org, linux@armlinux.org.uk, arinc.unal@arinc9.com,
+	Landen.Chao@mediatek.com, dqfext@gmail.com, sean.wang@mediatek.com,
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, naseefkm@gmail.com,
+	b.larsson@gmx.com, Caleb James DeLisle <cjd@cjdns.fr>
+Subject: Re: [net-next v5 3/7] net: dsa: mediatek: add support for
+ passthrough mode
+Message-ID: <202611170845.l4X9RRsI-lkp@intel.com>
+References: <20261116183332.168858-4-cjd@cjdns.fr>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Subject: Re: [PATCH net-next v2] net: ethernet: mtk-star-emac: fix device_node
- leak in mtk_star_probe()
-From: patchwork-bot+netdevbpf@kernel.org
-Message-Id: <179487361177.250117.1599495795624921279.git-patchwork-notify@kernel.org>
-Date: Tue, 17 Nov 2026 00:00:11 +0000
-References: <1794455490000.585551.2561101329908158128@cmss.chinamobile.com>
-In-Reply-To: <1794455490000.585551.2561101329908158128@cmss.chinamobile.com>
-To: Xia Yan <yanxia@cmss.chinamobile.com>
-Cc: netdev@vger.kernel.org, nbd@nbd.name, lorenzo@kernel.org,
- andrew+netdev@lunn.ch, davem@davemloft.net, edumazet@kernel.org,
- kuba@kernel.org, pabeni@redhat.com, matthias.bgg@gmail.com,
- angelogioacchino.delregno@collabora.com, ot_yanqing.wang@mediatek.com,
- brgl@kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- yana06070@163.com
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20261116183332.168858-4-cjd@cjdns.fr>
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20261116_163029_931862_076D588C 
+X-CRM114-Status: GOOD (  10.60  )
+X-Spam-Score: -4.4 (----)
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -81,31 +103,31 @@ X-Spam-Status: No, score=-10.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Hello:
+Hi Caleb,
 
-This patch was applied to netdev/net-next.git (main)
-by Jakub Kicinski <kuba@kernel.org>:
+kernel test robot noticed the following build warnings:
 
-On Thu, 12 Nov 2026 11:51:30 +0800 you wrote:
-> mtk_star_probe() gets the PHY node from the "phy-handle" property
-> with of_parse_phandle(). The helper takes a reference on the node it
-> returns. The node is used by of_phy_connect() each time the netdevice
-> is opened.
-> 
-> That reference is never dropped. Every error return after the lookup
-> leaks it. Unbind leaks it as well: the driver is devm-only and has no
-> remove callback.
-> 
-> [...]
+[auto build test WARNING on 7ccc5e05043b1bb84326b19a2b05938d8f7a2ae6]
 
-Here is the summary with links:
-  - [net-next,v2] net: ethernet: mtk-star-emac: fix device_node leak in mtk_star_probe()
-    https://git.kernel.org/netdev/net-next/c/b78cbbb527ad
+url:    https://github.com/intel-lab-lkp/linux/commits/Caleb-James-DeLisle/net-dsa-mt7530-get-ctrl-phy-addr-using-a-function/20261116-183326
+base:   7ccc5e05043b1bb84326b19a2b05938d8f7a2ae6
+patch link:    https://lore.kernel.org/r/20261116183332.168858-4-cjd%40cjdns.fr
+patch subject: [net-next v5 3/7] net: dsa: mediatek: add support for passthrough mode
+config: arm-randconfig-1003-20261117 (https://download.01.org/0day-ci/archive/20261117/202611170845.l4X9RRsI-lkp@intel.com/config)
+compiler: clang version 17.0.6 (https://github.com/llvm/llvm-project 6009708b4367171ccdbf4b5905cb6a803753fe18)
+reproduce (this is a W=1 build): (https://download.01.org/0day-ci/archive/20261117/202611170845.l4X9RRsI-lkp@intel.com/reproduce)
 
-You are awesome, thank you!
+If you fix the issue in a separate patch/commit (i.e. not just a new version of
+the same patch/commit), kindly add following tags
+| Reported-by: kernel test robot <lkp@intel.com>
+| Closes: https://lore.kernel.org/oe-kbuild-all/202611170845.l4X9RRsI-lkp@intel.com/
+
+All warnings (new ones prefixed by >>):
+
+>> Warning: drivers/net/dsa/mt7530.c:1410 function parameter 'dp' not described in 'mt753x_upstream_port_index'
+>> Warning: drivers/net/dsa/mt7530.c:1410 function parameter 'dp' not described in 'mt753x_upstream_port_index'
+
 -- 
-Deet-doot-dot, I am a bot.
-https://korg.docs.kernel.org/patchwork/pwbot.html
-
-
+0-DAY CI Kernel Test Service
+https://github.com/intel/lkp-tests/wiki
 
