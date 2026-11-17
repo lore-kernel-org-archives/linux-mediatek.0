@@ -2,60 +2,68 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 08903606A323
-	for <linux-mediatek@archiver.kernel.org>; Tue, 17 Nov 2026 12:31:21 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id C2EF6606A334
+	for <linux-mediatek@archiver.kernel.org>; Tue, 17 Nov 2026 12:35:14 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=dHk7+JLu;
-	dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=MlnMQN4o
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=S0mq0Cs9;
+	dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=JQNZIf2I
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Unsubscribe-Post:
-	List-Owner; bh=B4BbyGDYOdxgrwH11x1TPj5dZD9FRkdewUB3279Jnp0=; b=dHk7+JLu2BLf/1
-	hPE7n/UDk51Y2Woqii9XpSvpe/lTnUDHO8UeYEeDrU0E3Uh1sf4iU8jUq054rN34DJftjmjFTMagn
-	sATzBIe0rHVFyMoVhbqnZV1O3HGfxh7BxQm/VWss8JFgr6oz1R1ha88ZZl5rNy2qNcoEuofB3UUAo
-	khN6d9Uj0KW39Zo9b3YcG4CoS9ebTTTH17LwGb3VS8irDpLPi+w2xwbtMQ9zctnvcgSOvm5ic55Mu
-	QlZYwh1tG+jPSfjK0axlVWcWeHLwfE62aNUL17GfHuZrJrfMRp7C+CaN9W138WFFNQIZySp9Yopsu
-	6A4uKCCeKKFXVKn78PTQ==;
+	List-Owner; bh=FTSv6ihte4nmTksdoeFy+3LI3u1ABgbMWkzngS5Y3BU=; b=S0mq0Cs9ZxV6ei
+	ZPbLGdFGDwhI3hxq0HcUVwMUow39ftf1ckqjxOM5TXHnqZbz6T0QFCNl+tvzl9BpWDyBzg0fee3im
+	jsefF3/xnYabUuhmhZAofxDFNpcQhz4v69YaQV4hSBpZqdeyWWD7/h2xFvPE/ntfNMYa8BVzlRvRJ
+	2ArhrTcNG3lgEed5nMyy+1miSAiDaeuH0PJzCaP0ag7sWTyKNYfw9rWrqfBZGLj98C87cI+Z+PC+M
+	OAS0zHB1d8o9/IooWIaU8Bb389nIBV2qfRo1BZ0NxiHVJnGyUKrjR12uDV7rtguMmVb6xtQ12l8WX
+	6wvRdBoAE0QmcM3hqtoQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xTILI-00000005d8u-27ML;
-	Tue, 17 Nov 2026 12:31:20 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1xTIP4-00000005dt6-2C2e;
+	Tue, 17 Nov 2026 12:35:14 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xTILG-00000005d8O-4AAV;
-	Tue, 17 Nov 2026 12:31:19 +0000
+	id 1xTIP3-00000005dsC-0qsl;
+	Tue, 17 Nov 2026 12:35:13 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id 7340C4607E;
-	Tue, 17 Nov 2026 12:31:18 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id E57EE1F000C4;
-	Tue, 17 Nov 2026 12:31:15 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id EB96741A14;
+	Tue, 17 Nov 2026 12:35:12 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 75AFD1F000C9;
+	Tue, 17 Nov 2026 12:35:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1794918678;
-	bh=B4BbyGDYOdxgrwH11x1TPj5dZD9FRkdewUB3279Jnp0=;
+	s=k20260515; t=1794918912;
+	bh=FTSv6ihte4nmTksdoeFy+3LI3u1ABgbMWkzngS5Y3BU=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To;
-	b=MlnMQN4oD+wELQv465iIaWTgpdJXpYlMIzOz4lMQTZVkQjj/lbakefSLwDiWtMwai
-	 oD9kmxFh51nfrOJg1hr5hEFzPc0azk9Cj9jLXeycBdPw4ysM1AmHfF9YraqfFdxKIT
-	 hAc6DRc6B71jDjRLwrJguq+YbWhviPQJfmtXZ8aSHQ4cEQP3WomqsJp6Y+V/Aqz79Y
-	 oESNoh6ZOkQjGkeehtCSuiGr6+j/OdroHJ95D2c25Msnb7x0/rDImo6+nGWTcYcGL8
-	 lDy1wjztW0glyZZu6q3IDnT1YjvAqTmEmT6d4ay9/EeINQPK52sp/vKsi1HClcL/Z1
-	 YxkdEArmTNSlg==
-Message-ID: <f860d2c6-25e3-495f-9cb5-d91d5585d969@kernel.org>
-Date: Tue, 17 Nov 2026 13:31:14 +0100
+	b=JQNZIf2IbBsGUpKxUwUAcUCUxQVjWtwoWj0mJ4JjI4DYkjwVhxDpvQVDbRQeRB27w
+	 nJMI4zwPQEAceaO16Bqy/qTL2txb1WD9G+4/rl7kkjo2HbApPCm5vh9gK+Rtnd3MlA
+	 NDfFO4fL8EW3lz6pxI6ZbVsKq7Hii95cnd5pgpMpdqjcMgkcPbWCSbk+x+5EtbvdUk
+	 GTQXqKs/byesNrEzbq6MIqinphBvDajiI8f5wIFBNQyqGPNd7PxXE+7q+HEsyri3VG
+	 MxGclWeovo4ZNDS4Sq59m8PTZV9ViR8QPt980suOySFAjBemp6liDub42ik0FgLX5Z
+	 h9zZVzxV2jh5w==
+Message-ID: <bbefcf0b-b31e-4f74-bf79-b0ccc983f62b@kernel.org>
+Date: Tue, 17 Nov 2026 13:35:06 +0100
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] arm64: dts: mediatek: mt8167: Add DRM nodes
+Subject: Re: [PATCH v2 4/4] arm64: dts: mediatek: mt8167: Add DRM nodes
 To: Luca Leonardo Scorcia <l.scorcia@gmail.com>,
  linux-mediatek@lists.infradead.org
 Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+ Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@gmail.com>,
+ Simona Vetter <simona@ffwll.ch>,
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
  Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
  Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
- <matthias.bgg@gmail.com>, devicetree@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
-References: <20261117122802.728987-1-l.scorcia@gmail.com>
+ <matthias.bgg@gmail.com>, CK Hu <ck.hu@mediatek.com>,
+ Jitao shi <jitao.shi@mediatek.com>, dri-devel@lists.freedesktop.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org
+References: <20260921113914.779393-1-l.scorcia@gmail.com>
+ <20260921113914.779393-5-l.scorcia@gmail.com>
 From: Krzysztof Kozlowski <krzk@kernel.org>
 Content-Language: en-US
 Autocrypt: addr=krzk@kernel.org; keydata=
@@ -101,7 +109,7 @@ Autocrypt: addr=krzk@kernel.org; keydata=
  K9bCVaboTA2T77QYkRcRJYSsO1alGX0ome/hMLD1daXlkrNUp1HWa3K4iytLRXjCSIorWiGs
  n+q3krnpXu3TFkA8qtOFZMdnIiFuiq1yLT8hptsV5xh1TA2nsVvSYiaCr3q4s4BKjS/KrLDb
  qoxzw8ISjdUp4pA85vb6YLCmb39NgidD+7PmAr65lBNveIFynTgsja1rRQ4=
-In-Reply-To: <20261117122802.728987-1-l.scorcia@gmail.com>
+In-Reply-To: <20260921113914.779393-5-l.scorcia@gmail.com>
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
 X-BeenThere: linux-mediatek@lists.infradead.org
@@ -122,23 +130,17 @@ X-Spam-Status: No, score=-17.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On 17/11/2026 13:26, Luca Leonardo Scorcia wrote:
+On 21/09/2026 13:38, Luca Leonardo Scorcia wrote:
 > Add all the DRM nodes required to get DSI and DPI to work on MT8167 SoC.
 > 
 > Signed-off-by: Luca Leonardo Scorcia <l.scorcia@gmail.com>
 > Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 > ---
-> Since the DPI patches have been applied to CK Hu's -next branch, this
-> patch is the sole leftover of the previous mt8167 display series [1].
-> I am resending it separately as it now contains an additional fix to the
-> disp_pwm clocks that it took me months to figure out and was causing
-> random missing display output.
-> 
 >  arch/arm64/boot/dts/mediatek/mt8167.dtsi | 369 +++++++++++++++++++++++
 >  1 file changed, 369 insertions(+)
 > 
 > diff --git a/arch/arm64/boot/dts/mediatek/mt8167.dtsi b/arch/arm64/boot/dts/mediatek/mt8167.dtsi
-> index 27cf32d7ae35..2bcdab2934f4 100644
+> index 27cf32d7ae35..a50bae4307c1 100644
 > --- a/arch/arm64/boot/dts/mediatek/mt8167.dtsi
 > +++ b/arch/arm64/boot/dts/mediatek/mt8167.dtsi
 > @@ -16,6 +16,22 @@
@@ -160,7 +162,8 @@ On 17/11/2026 13:26, Luca Leonardo Scorcia wrote:
 > +		rdma1 = &rdma1;
 > +		wdma0 = &wdma;
 
-You do not get own aliases. Where are these documented (and approved)?
+Folks, what is happening here? Why Mediatek is adding bunch of
+undocumented aliases? This should have never been accepted to Mediatek SoC.
 
 Best regards,
 Krzysztof
