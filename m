@@ -2,86 +2,86 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 85FF3606A333
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id A8225606A330
 	for <linux-mediatek@archiver.kernel.org>; Tue, 17 Nov 2026 17:31:30 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=IXap17Ty;
-	dkim=pass (2048-bit key) header.d=baylibre.com header.i=@baylibre.com header.a=rsa-sha256 header.s=google header.b=JzNlx/Bt
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=yU3ktoLV;
+	dkim=pass (2048-bit key) header.d=baylibre.com header.i=@baylibre.com header.a=rsa-sha256 header.s=google header.b=NCoRBhCf
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Unsubscribe-Post:
-	List-Owner; bh=gJuJ3fuAuVzPsFJO1Ot45ACKv5nIG75pwulMSwBfSL4=; b=IXap17TySe6MPo
-	j3nVSgs5bRRwFJEjN82EhBXmQXHd4SO6mXzaTqnXm3WER/AEHv8CcwLmmg2kCg4jmcv6d2xhd72Y8
-	Q5TROOdRSQRWULEOhLPks4QZl1AcjlMZNSthdhzn5Ed2ZedI8iMJNlx0S03hCBu6nicx/YsH6z47q
-	A5W3aqBp+wHpEq6qmv90N+SLUa5ZyVyKt+KbRPC5twhInW6MvWOMa2dnYUOjIsIs8TY3vlhxcR9sn
-	Rh4sc2w9Yp/CvAnK5H1xCURJPJmd4tc4NVohTf9WcsniQc/iow7UVxU+ba+t6TO0CnmZlrhCIsBFe
-	d4Izx1JJ0b7wAau1/MYw==;
+	List-Owner; bh=+5KzUYY/vcXfemi9waz3d6wiZ68aHIzdXI9cSdmvu0U=; b=yU3ktoLVY6jYNL
+	iQpOdpNeqBqNQWbUzBT3l5jypsJf/1Ue5bVodoMtZljc0XUZrDZyGkhKpdpYBmCS6kFTHtU60zl80
+	tCHb9e5vBmC2XaFUMVbaF7WpNUXEdQwJYyO66aNrUgapT8rWcAlN3GhCpwys0L8F4tbix7+8eX/Zp
+	On5MT/2HqhgQHirtwBTA6XzIFb6zhgI/KaNl90rQf2mDIJhotaRnba+FCw3Ey6LhS5Fed08uRPkzv
+	fiiIvy4MRla+maOLMMBZUANciXM9rRZJpjTjztLBEYCLlj7sBXndw+hlZIMvTnLvYv6kO51MmooA5
+	zu5H7GOdkSlmcemYJlMA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xTN1m-00000006a34-129c;
+	id 1xTN1m-00000006a3C-1U54;
 	Tue, 17 Nov 2026 17:31:30 +0000
-Received: from mail-wm1-x329.google.com ([2a00:1450:4864:20::329])
+Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xTN1c-00000006Zxe-2Qak
+	id 1xTN1e-00000006Zyw-1eLl
 	for linux-mediatek@lists.infradead.org;
 	Tue, 17 Nov 2026 17:31:23 +0000
-Received: by mail-wm1-x329.google.com with SMTP id 5b1f17b1804b1-4a214c5c4c0so1068105e9.3
-        for <linux-mediatek@lists.infradead.org>; Tue, 17 Nov 2026 09:31:19 -0800 (PST)
+Received: by mail-wm1-x32f.google.com with SMTP id 5b1f17b1804b1-4a1b07c3c5fso1165905e9.1
+        for <linux-mediatek@lists.infradead.org>; Tue, 17 Nov 2026 09:31:21 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=baylibre.com; s=google; t=1794936679; x=1795541479; darn=lists.infradead.org;
+        d=baylibre.com; s=google; t=1794936680; x=1795541480; darn=lists.infradead.org;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :content-type:mime-version:subject:date:from:from:to:cc:subject:date
          :message-id:reply-to:content-type;
-        bh=gJuJ3fuAuVzPsFJO1Ot45ACKv5nIG75pwulMSwBfSL4=;
-        b=JzNlx/Bt+oZEh4xGkNxW9EojO9qMV4+dO3sfF96JkxAoOrW8zY3PNix55Q42q1XMEm
-         BZMYubLozMvAAlTWQeJwVVxpx2UucTYfwL8lyouyCeMoCxVxMklSHRGT7YiHR2Zk4/tY
-         dTkEBGunojCKc/ZZ/G0sS2Eo9UDRkbyvQm2AtGmy4HIiaR5nADdenvlcmsfFZXKw452M
-         THAEf/Ks4PM6lxUqAWHdxW1xA/A6o8HpFNmCeCUT6cSTcJvElQ6TWfWc81Bvsp3njaco
-         qVKpfnMbutiAeya7T2u1qB+7cS8ZMOBWZ+HxVGFarEEo7f62oc15+jEtBwWbH1SfK9JM
-         c9KA==
+        bh=+5KzUYY/vcXfemi9waz3d6wiZ68aHIzdXI9cSdmvu0U=;
+        b=NCoRBhCfmfKs5hKYCTtgiuSZ0WhjPqEM88M/u3NFfsQjHQIihXCg/8RLV8QLKlLZDj
+         di/3Gwifv2n+au99OiQS5nLEm12cGeyMEd+qzuLbadA/oRjyu3oMRCTBC2FW+4recLE8
+         Q1E3kkbSWFfihnV+JdjMUcZ+nqur0sDNXxbyLHB45K6i9ET5i6G6qBmEuZwajIGsY2Az
+         DjdRx61hsufueVlusvTyj86mO7sXM+PlONLFOAV2CojVU5sqKZh6dbxvHmWjJBbfbfzF
+         xQwrMH1HSwtH8pBDy8t9+nIiHi7OuUuMuK1z8flcbm7yZL2sKhirO1Qz/iRYENqw3ABg
+         rbfQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1794936679; x=1795541479;
+        d=1e100.net; s=20260707; t=1794936680; x=1795541480;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :content-type:mime-version:subject:date:from:x-gm-gg
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
          :content-type;
-        bh=gJuJ3fuAuVzPsFJO1Ot45ACKv5nIG75pwulMSwBfSL4=;
-        b=wP6mNj3kHc8S33J0Im9PSziQCvqEni+uCR5s+dkJvT/L2DuS9BmdhjzdU8XmQCyYNl
-         wA3Zme0nLM+zKtbUG0/lqHUYQuleDZHlwsRrY3mkPkUxvSYaGsLrzSeEtsCPY1tENfTo
-         LojDjHz/5lPE6NzkgJe09rh43xtJMEVxfdbEYLyMsebnMzRPGi5W+nhfGRv4G5Q0OQ2y
-         a/lCQTiW3MB22YFo4SrskXi5SamvL5AJ9lwYimhJFHUmkq4oxXiJ4UbeFZ5lZNNyhmYr
-         jTAABj2j0lIyJIA+VvFBcnHQgdX2sNE3NMmQaWeOj1KeLOWXCUzh519Rp1aC4O5MsGlM
-         Tt8g==
-X-Forwarded-Encrypted: i=1; AL+hErGCh8YZ140lydBn4Xh68mJ7gIj+R2re1pLfR/B04bGC9oOQi3wVyh/eZAPfiknJaBWApLFHXIXfK2/zkZngLw==@lists.infradead.org
-X-Gm-Message-State: APuU4Z9E4qx4PztkhQsUI/uCtyj5OW3qVyfyVuTLNawUUcooRa3WwSmH
-	rD3zm5A9ZHYUrPEJUHyDjA7ZLtb5RqDLUEEdyEFonET0uhDhEo3TmEqTvc9jfVNm9Jw=
-X-Gm-Gg: AYBFou1Dpa3/tQuvg5sdYHGrlljeGn+7J3pvAtZSA1VbNi/o3NQHMxc5AfNKDm35l+8
-	+k0ENKLXspOhcMgei09+CQDBlNRKHwyq6HVft7WA7n8zE2KE7TWa8nfZXmISYzqa0cwT9n179ql
-	bs4Z2bvQRUaZG+q1ETFndn3tW4O7u6ZSzkRzCusSL2Mg1KTBioWpdBUAnTh4Aur506fRGwYmQ7Y
-	IX1bu8y5rhICOy9Ia7uUh5ZNPjO+gTtvJmDrgtSl4Q+aNa8f5oNQhuS1Ojl4byLszjfN6RcLiDs
-	BJzRRNAywcItsFRCGaArdpje/ty8P2IZ1DDemcDwZ2WLLa9Vj9VBe6pSc/2nmU+zLbNlLRMQSAi
-	8dFl90ywFAfnA8siJpP2yIjm1FSG5+pW1rZW6g8MNtMb7iv2Nu7JldlVMGuJbuapJLKH0SniHzL
-	J3PQIAnm7cJcSaxaxaTiFXHLRgCU0SB0X9t3C5Lobsapaj337oKELeR+dBt3wKIq/aY+gLJiZ1p
-	IybYqFHHdRnK34spZJhQnoygT7JT7uYQqduJPqaanzB01H15wXfbe7PKBcPDK88wtZOlaThML6T
-	28bQvpPibGzGGwh18ZU/o4AOLYu6HSkcnKDeFea46ejgjhU5Ou7bDIf8
-X-Received: by 2002:a05:600c:3547:b0:4b6:267a:dd6e with SMTP id 5b1f17b1804b1-4bb55a8a402mr298153595e9.28.1794936678575;
-        Tue, 17 Nov 2026 09:31:18 -0800 (PST)
+        bh=+5KzUYY/vcXfemi9waz3d6wiZ68aHIzdXI9cSdmvu0U=;
+        b=sDB741CWXWruvHjHPFFWo8ixvZgYlwhWGZaKdAa6Q5Eg3Pf+ni1XDAnwxRElZUzlQU
+         qeAf9LQmIOH61+dbwW8Gzb+m9oKD+aKwkuFfDYUkCo6+UPdT8doEhPTw05nbKIzAdo8M
+         dGbfREfZxbUFC9zbeG9Se+2Yb6sWV6QLxZu5W7h8Auo55u/jyBnnpRB1foatINPa/UO/
+         3PwgGlh71Z7/VcdBnpUVfCDa0v6SuOqld5TrRotzIDQdKEFz2KNT0NClrxwUG56BpOH3
+         0uJwdBd/8CXXuLo0wVnz0rgALBw8ZyalL7K9x4OV/KMx2EbgB61XTguzq7jLoZNpEbPA
+         4w9Q==
+X-Forwarded-Encrypted: i=1; AL+hErG0SSNWmYAjq8a9ThgavVwkKq6tmJgirqgaL6VnfsyGMnLlEArISEIE2alcE+YeERClevV81zJhZjzKdW0IQQ==@lists.infradead.org
+X-Gm-Message-State: APuU4Z9XgBmCaZ1J8HX6UymwhmT45DvmSyfnTWhQmwjjeT859BPqCH37
+	kxSp9oH8jSGGvoFuXJPAaShRrR75DIFOyOA5O8b0slPj9H79Jcuzh+mM3yIdFmdUSgQ=
+X-Gm-Gg: AYBFou14qTP9YBcmhsIH7c50dtsu4usCcOYlESQXULhBrya5ZfUH3Gnji4cmwdjzL5q
+	8pjjYs9Wg5UTN0E/PhLaLVHz+9HBBpvl0rNgophR6qFqiGEzPFgzoPMnCpM9SJavwUyundlQ4yW
+	+cYbBgvIGiRW3Dv4Wi3v6V3+PT12dmaIIOn+TpScFi5xrY0GGqP7Wp+39PWpBr3ZwFP0zyMoSmB
+	YDEW3GDJvO+nP75P8yM7pmmljOu6LNeVJniwnDuo36Iq+MKMJA9hZnO8w8Q1tG7K04Iut0rtIsA
+	WRqcaKykPZE+tROq3ELsL0TPMFL0qIzoWnNwHckARnvBzyU95A+FqW4Q0V15dkbn+lewvlYsQP7
+	WL+Dco1TesAVxVvBzWOCQlToL1o6/aGc+MS0QhAoPRuzvofmvz9/UwXJGSVYq65mgMmmkncNf+1
+	OHdmXyLlL4it0cWNlPeqsScDmiZFZHEUZf9jZtcNjoTUmnHcubsb4ej6VkeHT66EG8029JBpoEL
+	7mPwWVxXyTfC8dzR2oSSv3P2wRE/RpUxyKVJaDLx81V4ogeSLq+0DxX4P5tmhOY4gJCFIfah9Hx
+	8T/WGGu4e9ZRIDLMPhNRqeUP3CjiEUkL/91JjyDYM3HzChmHeNijVNox8LpaUbBwA9kOsb1+y2+
+	Xvw==
+X-Received: by 2002:a05:600c:3111:b0:4bb:6118:4c9a with SMTP id 5b1f17b1804b1-4bb61184db8mr281583825e9.30.1794936680498;
+        Tue, 17 Nov 2026 09:31:20 -0800 (PST)
 Received: from [127.0.1.1] (82-230-44-19.subs.proxad.net. [82.230.44.19])
-        by smtp.googlemail.com with ESMTPSA id 5b1f17b1804b1-4bb7ad9426asm46870735e9.4.2026.11.17.09.31.17
+        by smtp.googlemail.com with ESMTPSA id 5b1f17b1804b1-4bb7ad9426asm46870735e9.4.2026.11.17.09.31.18
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Tue, 17 Nov 2026 09:31:18 -0800 (PST)
+        Tue, 17 Nov 2026 09:31:19 -0800 (PST)
 From: Alexandre Mergnat <amergnat@baylibre.com>
-Date: Tue, 17 Nov 2026 17:31:04 +0000
-Subject: [PATCH 1/2] dt-bindings: interrupt-controller: Add MT8196 SMMU
- wrapper
+Date: Tue, 17 Nov 2026 17:31:05 +0000
+Subject: [PATCH 2/2] irqchip: Add MediaTek SMMU wrapper driver
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20261117-mt8196-smmu-wrapper-v1-1-229f04d9f693@baylibre.com>
+Message-Id: <20261117-mt8196-smmu-wrapper-v1-2-229f04d9f693@baylibre.com>
 References: <20261117-mt8196-smmu-wrapper-v1-0-229f04d9f693@baylibre.com>
 In-Reply-To: <20261117-mt8196-smmu-wrapper-v1-0-229f04d9f693@baylibre.com>
 To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
@@ -94,8 +94,8 @@ Cc: linux-arm-kernel@lists.infradead.org, devicetree@vger.kernel.org,
  Alexandre Mergnat <amergnat@baylibre.com>
 X-Mailer: b4 0.16.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261117_093120_654867_EC99E4DC 
-X-CRM114-Status: GOOD (  15.55  )
+X-CRM114-CacheID: sfid-20261117_093122_477842_D64838AE 
+X-CRM114-Status: GOOD (  22.98  )
 X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -115,111 +115,214 @@ X-Spam-Status: No, score=-18.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On MT8196, a MediaTek wrapper holds the integration settings of the
-multimedia SMMUv3 and merges its interrupts into one GIC line.
+On MT8196, each interrupt of the multimedia SMMUv3 must be acknowledged
+in a MediaTek wrapper, which otherwise keeps its GIC line asserted.
 
-Describe it as an interrupt controller, in its own node next to
-the SMMU.
+Add a driver for the wrapper as a chained interrupt controller.
 
 Signed-off-by: Alexandre Mergnat <amergnat@baylibre.com>
 ---
- .../mediatek,mt8196-smmu-wp.yaml                   | 70 ++++++++++++++++++++++
- MAINTAINERS                                        |  6 ++
- 2 files changed, 76 insertions(+)
+ MAINTAINERS                       |   1 +
+ drivers/irqchip/Kconfig           |  11 +++
+ drivers/irqchip/Makefile          |   1 +
+ drivers/irqchip/irq-mtk-smmu-wp.c | 145 ++++++++++++++++++++++++++++++++++++++
+ 4 files changed, 158 insertions(+)
 
-diff --git a/Documentation/devicetree/bindings/interrupt-controller/mediatek,mt8196-smmu-wp.yaml b/Documentation/devicetree/bindings/interrupt-controller/mediatek,mt8196-smmu-wp.yaml
-new file mode 100644
-index 000000000000..b841d9d0e3fc
---- /dev/null
-+++ b/Documentation/devicetree/bindings/interrupt-controller/mediatek,mt8196-smmu-wp.yaml
-@@ -0,0 +1,70 @@
-+# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
-+%YAML 1.2
-+---
-+$id: http://devicetree.org/schemas/interrupt-controller/mediatek,mt8196-smmu-wp.yaml#
-+$schema: http://devicetree.org/meta-schemas/core.yaml#
-+
-+title: MediaTek MT8196 SMMU Wrapper Interrupt Controller
-+
-+maintainers:
-+  - Alexandre Mergnat <amergnat@baylibre.com>
-+
-+description:
-+  The multimedia SMMUv3 of MT8196 is integrated with a wrapper block that
-+  collects the interrupt outputs of the SMMU into a single interrupt line.
-+  The wrapper latches each SMMU interrupt and keeps that line asserted
-+  until the latched interrupts are acknowledged in the wrapper. The
-+  wrapper also holds integration settings of the SMMU, such as clock
-+  gating and system level cache attributes.
-+
-+properties:
-+  compatible:
-+    const: mediatek,mt8196-mm-smmu-wp
-+
-+  reg:
-+    maxItems: 1
-+
-+  interrupts:
-+    maxItems: 1
-+
-+  interrupt-controller: true
-+
-+  '#interrupt-cells':
-+    const: 1
-+    description: |
-+      The SMMU interrupt source:
-+        0 - Global error
-+        1 - CMD_SYNC complete
-+        2 - Event queue not empty
-+        3 - PRI queue not empty
-+        4 - Performance monitor
-+        5 - RAS critical error
-+        6 - RAS error recovery
-+        7 - RAS fault handling
-+
-+  power-domains:
-+    maxItems: 1
-+
-+required:
-+  - compatible
-+  - reg
-+  - interrupts
-+  - interrupt-controller
-+  - '#interrupt-cells'
-+  - power-domains
-+
-+additionalProperties: false
-+
-+examples:
-+  - |
-+    #include <dt-bindings/interrupt-controller/arm-gic.h>
-+    #include <dt-bindings/power/mediatek,mt8196-power.h>
-+
-+    interrupt-controller@309e0000 {
-+        compatible = "mediatek,mt8196-mm-smmu-wp";
-+        reg = <0x309e0000 0x1000>;
-+        interrupts = <GIC_SPI 477 IRQ_TYPE_LEVEL_HIGH>;
-+        interrupt-controller;
-+        #interrupt-cells = <1>;
-+        power-domains = <&hfrpsys_hwv MT8196_POWER_DOMAIN_MM_INFRA1>;
-+    };
 diff --git a/MAINTAINERS b/MAINTAINERS
-index fe23913b1e43..5cc65a753ad2 100644
+index 5cc65a753ad2..36866ba47912 100644
 --- a/MAINTAINERS
 +++ b/MAINTAINERS
-@@ -17223,6 +17223,12 @@ F:	Documentation/devicetree/bindings/memory-controllers/mediatek,smi*
- F:	drivers/memory/mtk-smi.c
- F:	include/soc/mediatek/smi.h
+@@ -17228,6 +17228,7 @@ M:	Alexandre Mergnat <amergnat@baylibre.com>
+ L:	linux-mediatek@lists.infradead.org (moderated for non-subscribers)
+ S:	Maintained
+ F:	Documentation/devicetree/bindings/interrupt-controller/mediatek,mt8196-smmu-wp.yaml
++F:	drivers/irqchip/irq-mtk-smmu-wp.c
  
-+MEDIATEK SMMU WRAPPER INTERRUPT CONTROLLER DRIVER
-+M:	Alexandre Mergnat <amergnat@baylibre.com>
-+L:	linux-mediatek@lists.infradead.org (moderated for non-subscribers)
-+S:	Maintained
-+F:	Documentation/devicetree/bindings/interrupt-controller/mediatek,mt8196-smmu-wp.yaml
-+
  MEDIATEK SWITCH DRIVER
  M:	Chester A. Unal <chester.a.unal@arinc9.com>
- M:	Daniel Golle <daniel@makrotopia.org>
+diff --git a/drivers/irqchip/Kconfig b/drivers/irqchip/Kconfig
+index 2edf121c7841..2773515f1dd4 100644
+--- a/drivers/irqchip/Kconfig
++++ b/drivers/irqchip/Kconfig
+@@ -866,4 +866,15 @@ config IRQCHIP_XILINX_SMMU_CSR
+ 	  ZynqMP-class platforms where a vendor CSR block mediates SMMU
+ 	  interrupts.
+ 
++config MTK_SMMU_WP
++	bool "MediaTek SMMU wrapper interrupt controller"
++	depends on (ARCH_MEDIATEK && ARM64) || COMPILE_TEST
++	default ARCH_MEDIATEK && ARM64
++	select IRQ_DOMAIN
++	help
++	  Support for the wrapper block that MediaTek integrates
++	  with the multimedia SMMUv3 of MT8196.
++	  The interrupts of that SMMU do not work without this
++	  driver.
++
+ endmenu
+diff --git a/drivers/irqchip/Makefile b/drivers/irqchip/Makefile
+index eb539d41251e..573b6c06fe06 100644
+--- a/drivers/irqchip/Makefile
++++ b/drivers/irqchip/Makefile
+@@ -73,6 +73,7 @@ obj-$(CONFIG_BRCMSTB_L2_IRQ)		+= irq-brcmstb-l2.o
+ obj-$(CONFIG_KEYSTONE_IRQ)		+= irq-keystone.o
+ obj-$(CONFIG_MIPS_GIC)			+= irq-mips-gic.o
+ obj-$(CONFIG_MTK_IRQ)			+= irq-mtk-sysirq.o irq-mtk-cirq.o
++obj-$(CONFIG_MTK_SMMU_WP)		+= irq-mtk-smmu-wp.o
+ obj-$(CONFIG_ARCH_DIGICOLOR)		+= irq-digicolor.o
+ obj-$(CONFIG_ARCH_SA1100)		+= irq-sa11x0.o
+ obj-$(CONFIG_INGENIC_IRQ)		+= irq-ingenic.o
+diff --git a/drivers/irqchip/irq-mtk-smmu-wp.c b/drivers/irqchip/irq-mtk-smmu-wp.c
+new file mode 100644
+index 000000000000..6e5172d18b14
+--- /dev/null
++++ b/drivers/irqchip/irq-mtk-smmu-wp.c
+@@ -0,0 +1,145 @@
++// SPDX-License-Identifier: GPL-2.0-only
++/*
++ * MediaTek SMMU wrapper interrupt controller
++ *
++ * Copyright (C) 2026 BayLibre, SAS
++ *
++ * The wrapper latches each SMMUv3 interrupt source in IRQ_STA and keeps its
++ * single output line asserted while a latched source is not acknowledged.
++ * An acknowledgment clears every pending occurrence of the source, so each
++ * source is handled as an edge, acknowledged before its handler reads the
++ * SMMU state. No mask register is known.
++ */
++
++#include <linux/bitops.h>
++#include <linux/device.h>
++#include <linux/err.h>
++#include <linux/io.h>
++#include <linux/irq.h>
++#include <linux/irqchip.h>
++#include <linux/irqchip/chained_irq.h>
++#include <linux/irqdomain.h>
++#include <linux/platform_device.h>
++#include <linux/property.h>
++
++#define MTK_SMMU_WP_IRQ_STA		0x80
++#define MTK_SMMU_WP_IRQ_ACK		0x84
++#define MTK_SMMU_WP_IRQ_ACK_CNT		0x88
++#define MTK_SMMU_WP_IRQ_ACK_CNT_MASK	GENMASK(7, 0)
++
++#define MTK_SMMU_WP_NR_IRQS		8
++
++struct mtk_smmu_wp {
++	struct device		*dev;
++	void __iomem		*base;
++	struct irq_domain	*domain;
++};
++
++static void mtk_smmu_wp_ack_source(struct mtk_smmu_wp *wp, unsigned int src)
++{
++	writel_relaxed(BIT(src), wp->base + MTK_SMMU_WP_IRQ_ACK);
++	/* Flush the posted ACK before the SMMU is read */
++	readl(wp->base + MTK_SMMU_WP_IRQ_STA);
++}
++
++static void mtk_smmu_wp_irq_ack(struct irq_data *d)
++{
++	mtk_smmu_wp_ack_source(irq_data_get_irq_chip_data(d), d->hwirq);
++}
++
++static const struct irq_chip mtk_smmu_wp_chip = {
++	.name		= "mtk-smmu-wp",
++	.irq_ack	= mtk_smmu_wp_irq_ack,
++};
++
++static void mtk_smmu_wp_handler(struct irq_desc *desc)
++{
++	struct mtk_smmu_wp *wp = irq_desc_get_handler_data(desc);
++	struct irq_chip *chip = irq_desc_get_chip(desc);
++	unsigned long pending;
++	unsigned int src;
++
++	chained_irq_enter(chip, desc);
++
++	pending = readl_relaxed(wp->base + MTK_SMMU_WP_IRQ_STA);
++	for_each_set_bit(src, &pending, MTK_SMMU_WP_NR_IRQS) {
++		if (generic_handle_domain_irq(wp->domain, src)) {
++			/* Release an unused source, which would hold the line */
++			mtk_smmu_wp_ack_source(wp, src);
++			dev_warn_ratelimited(wp->dev, "unexpected source %u\n", src);
++		}
++	}
++
++	chained_irq_exit(chip, desc);
++}
++
++static int mtk_smmu_wp_map(struct irq_domain *d, unsigned int virq, irq_hw_number_t hwirq)
++{
++	irq_set_chip_and_handler(virq, &mtk_smmu_wp_chip, handle_edge_irq);
++	irq_set_chip_data(virq, d->host_data);
++	return 0;
++}
++
++static const struct irq_domain_ops mtk_smmu_wp_domain_ops = {
++	.map	= mtk_smmu_wp_map,
++	.xlate	= irq_domain_xlate_onecell,
++};
++
++static void mtk_smmu_wp_setup(struct mtk_smmu_wp *wp)
++{
++	u32 val;
++
++	/* Make each IRQ_ACK write clear every pending occurrence */
++	val = readl_relaxed(wp->base + MTK_SMMU_WP_IRQ_ACK_CNT);
++	val |= MTK_SMMU_WP_IRQ_ACK_CNT_MASK;
++	writel_relaxed(val, wp->base + MTK_SMMU_WP_IRQ_ACK_CNT);
++}
++
++static int mtk_smmu_wp_probe(struct platform_device *pdev, struct device_node *parent)
++{
++	struct irq_domain_info info = {
++		.fwnode		= dev_fwnode(&pdev->dev),
++		.size		= MTK_SMMU_WP_NR_IRQS,
++		.hwirq_max	= MTK_SMMU_WP_NR_IRQS,
++		.ops		= &mtk_smmu_wp_domain_ops,
++	};
++	struct device *dev = &pdev->dev;
++	struct mtk_smmu_wp *wp;
++	unsigned long pending;
++	unsigned int src;
++	int parent_irq;
++
++	wp = devm_kzalloc_obj(dev, *wp);
++	if (!wp)
++		return -ENOMEM;
++
++	wp->dev = dev;
++
++	wp->base = devm_platform_ioremap_resource(pdev, 0);
++	if (IS_ERR(wp->base))
++		return PTR_ERR(wp->base);
++
++	parent_irq = platform_get_irq(pdev, 0);
++	if (parent_irq < 0)
++		return parent_irq;
++
++	mtk_smmu_wp_setup(wp);
++
++	/* Release the sources that an earlier boot stage left latched */
++	pending = readl_relaxed(wp->base + MTK_SMMU_WP_IRQ_STA);
++	for_each_set_bit(src, &pending, MTK_SMMU_WP_NR_IRQS)
++		mtk_smmu_wp_ack_source(wp, src);
++
++	info.host_data = wp;
++	wp->domain = devm_irq_domain_instantiate(dev, &info);
++	if (IS_ERR(wp->domain))
++		return PTR_ERR(wp->domain);
++
++	irq_set_chained_handler_and_data(parent_irq, mtk_smmu_wp_handler, wp);
++
++	return 0;
++}
++
++IRQCHIP_PLATFORM_DRIVER_BEGIN(mtk_smmu_wp)
++IRQCHIP_MATCH("mediatek,mt8196-mm-smmu-wp", mtk_smmu_wp_probe)
++IRQCHIP_PLATFORM_DRIVER_END(mtk_smmu_wp)
 
 -- 
 2.43.0
