@@ -2,77 +2,117 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id CADD760A2613
-	for <linux-mediatek@archiver.kernel.org>; Tue, 17 Nov 2026 12:51:00 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id EFCA1606A88B
+	for <linux-mediatek@archiver.kernel.org>; Tue, 17 Nov 2026 12:52:47 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=KxEv3KDP;
-	dkim=pass (2048-bit key) header.d=collabora.com header.i=@collabora.com header.a=rsa-sha256 header.s=mail header.b=QAQUUQk2
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=DkwNrNSG;
+	dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=imuRLrSg
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Unsubscribe-Post:
-	List-Owner; bh=m//akQsPn9JtkIDkyJkoy5a2KvGmB9mNZhCGPYriT9M=; b=KxEv3KDP+Gojom
-	rvtmLLCwMX5NkLl6ogNNUZcqA2tVtSlpbhcoN4qAAzBZxSQLmXXQ4h2HSV50DVhHKR7qlBY/0+fAt
-	DNC0eeKLiwhjSSGaPJHlT7sO6SKoaSi2ANtFvSRM4Vx2o0w02+p3KbyKMAaevOMQqrIMSiv/FzTYp
-	gG5uAMyV5btqo0pcgfB2zHitqEq5h4oAVNhig6HNGwA7+KdvgzYdmchXfrO7VwZ/Q3D9beRtASdXi
-	+CIG1R8CqLWpQBqDPaqbKC3JGSJGJoMETDS0sRNtbEk0A5lfDbgmUMEsm0LYVUZsWO5f0jdFTlgp0
-	xVZcMtLsVtX9l63AFPAQ==;
+	List-Owner; bh=6o7TDKHkFTQmT81k6n559xmxvDMTMHvxHuzIWW6x61g=; b=DkwNrNSGmH4BfA
+	lm/GEHPqBwWXXzO3KUB+H/J8HuVG2YTtZzm9vBsqIWUmfmGpqi5q8XQeTvhKGHaRvDSTopKhaM8JP
+	hSDBMOMLzckOwGKfvqDhvDo0q1xrFmwKANvwZYLD5Hd68KOlCYplOrznhmz4xdzmgD/gAblH1ABm9
+	Gwp4H6S2KQeJQI4HLbho9Xx2Fi3DgLUP+MjIHcHC/kbAEKBy9RofyXVb4l526fMsJXs0+DdoXszyw
+	hzENF82av18VOg2gK2pBAEvovSFPzJQVWFatDYqNv8gHxzPBQS2SSPz3LusOeUICkB56VgaggKX2N
+	sp45zbXD50TXrtPDA5ig==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xTIeK-00000005jvx-1mro;
-	Tue, 17 Nov 2026 12:51:00 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1xTIg3-00000005kSU-1Ojj;
+	Tue, 17 Nov 2026 12:52:47 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xTIeE-00000005jsj-1hG6;
-	Tue, 17 Nov 2026 12:50:58 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1794919852;
-	bh=/NNQdnvNk7fbdVxY6HWPt8tiESYBlaF64MyDZxk6kR0=;
-	h=From:To:Cc:In-Reply-To:References:Subject:Date:From;
-	b=QAQUUQk2XnKGQnU7PdVPFu1sH89zSlyTMWLLxn0vnY9qL2Y88IyD3G4pQgZI/aeVn
-	 B4OvT0d49SQKGJlc5ZCZ6Y1PW1zXSR3nMlcc82y/xht5aWLwUNTTipNpCAMs8bn3On
-	 hrNLLc78iMilcMrfo7ofuWulPedX3ONL5tr/OB/3c9HmTMBlUvXD3KcnSIPuC5eBMQ
-	 dSSNmah1e6qkDxReXzxsaAeVgzTSdgBcegcMVSGu/zjUbJuU4aKt2tu4Mtr9axVRO7
-	 TTyS9yHCjitgjo8iQWiT06HOiCtpSxdpP0Q9611dXatIKLX51j6WpQGJczDF+Z51eD
-	 r5XHm26IhcGnA==
-Received: from IcarusMOD.eternityproject.eu (unknown [100.64.1.21])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 5E61417E0311;
-	Tue, 17 Nov 2026 13:50:51 +0100 (CET)
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-To: Neil Armstrong <neil.armstrong@linaro.org>, 
- Jessica Zhang <jesszhan0024@gmail.com>, 
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
- David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- David Lechner <dlechner@baylibre.com>
-Cc: dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org, 
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org
-In-Reply-To: <20261006-panel-himax-hx8279-vddp-v1-0-50d884b42aae@baylibre.com>
-References: <20261006-panel-himax-hx8279-vddp-v1-0-50d884b42aae@baylibre.com>
-Subject: Re: (subset) [PATCH 0/4] drm/panel: himax-hx8279: add VDDP supply
- for Startek KD070FHFID078
-Message-Id: <179491985132.188092.5906284430538056975.b4-ty@b4>
-Date: Tue, 17 Nov 2026 13:50:51 +0100
+	id 1xTIg2-00000005kSE-0Hos;
+	Tue, 17 Nov 2026 12:52:46 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by tor.source.kernel.org (Postfix) with ESMTP id 80A006347C;
+	Tue, 17 Nov 2026 12:52:45 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 77C541F000C4;
+	Tue, 17 Nov 2026 12:52:40 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1794919965;
+	bh=6o7TDKHkFTQmT81k6n559xmxvDMTMHvxHuzIWW6x61g=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To;
+	b=imuRLrSgXqkUdax43NRoAuK3Vpfg25+EvcIQ1nLwKxoCiVn1gGy9M+gLFAHP8JgQF
+	 cqiH91XQ9JiWpSbZlJdi6XiHyig75UmspQkg9AGvhtz4mG9RU4RrQyn+CWU9CbgTK4
+	 m5nh1f/C6sZw7/ikVovsaJQwKv1nPt45+TxGvt8BESnBXTwobjKxsC//R3NvMeRhtE
+	 UYPtzEIdYcmz07Zn0jGOqETJ2b7dO/j7qJWF+if4QhpBUFaDaiTVgOU7I0QLH+6H3/
+	 2yr53EQAvEH/87n2Dug+rFZxNbLTwKj6EPs9WT5XqTrcxgLYhY9DlBwnw8/43OhuRu
+	 Q7U5HD4vD48XQ==
+Message-ID: <3701981f-cdda-46a7-8079-de5479ae9c27@kernel.org>
+Date: Tue, 17 Nov 2026 13:52:38 +0100
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 1/4] dt-bindings: display: mediatek: dpi: Add
+ compatible for mt8167
+To: Luca Leonardo Scorcia <l.scorcia@gmail.com>,
+ linux-mediatek@lists.infradead.org
+Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+ Philipp Zabel <p.zabel@pengutronix.de>,
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
+ David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>, CK Hu <ck.hu@mediatek.com>,
+ Jitao shi <jitao.shi@mediatek.com>, dri-devel@lists.freedesktop.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org
+References: <20260921113914.779393-1-l.scorcia@gmail.com>
+ <20260921113914.779393-2-l.scorcia@gmail.com>
+From: Krzysztof Kozlowski <krzk@kernel.org>
+Content-Language: en-US
+Autocrypt: addr=krzk@kernel.org; keydata=
+ xsFNBFVDQq4BEAC6KeLOfFsAvFMBsrCrJ2bCalhPv5+KQF2PS2+iwZI8BpRZoV+Bd5kWvN79
+ cFgcqTTuNHjAvxtUG8pQgGTHAObYs6xeYJtjUH0ZX6ndJ33FJYf5V3yXqqjcZ30FgHzJCFUu
+ JMp7PSyMPzpUXfU12yfcRYVEMQrmplNZssmYhiTeVicuOOypWugZKVLGNm0IweVCaZ/DJDIH
+ gNbpvVwjcKYrx85m9cBVEBUGaQP6AT7qlVCkrf50v8bofSIyVa2xmubbAwwFA1oxoOusjPIE
+ J3iadrwpFvsZjF5uHAKS+7wHLoW9hVzOnLbX6ajk5Hf8Pb1m+VH/E8bPBNNYKkfTtypTDUCj
+ NYcd27tjnXfG+SDs/EXNUAIRefCyvaRG7oRYF3Ec+2RgQDRnmmjCjoQNbFrJvJkFHlPeHaeS
+ BosGY+XWKydnmsfY7SSnjAzLUGAFhLd/XDVpb1Een2XucPpKvt9ORF+48gy12FA5GduRLhQU
+ vK4tU7ojoem/G23PcowM1CwPurC8sAVsQb9KmwTGh7rVz3ks3w/zfGBy3+WmLg++C2Wct6nM
+ Pd8/6CBVjEWqD06/RjI2AnjIq5fSEH/BIfXXfC68nMp9BZoy3So4ZsbOlBmtAPvMYX6U8VwD
+ TNeBxJu5Ex0Izf1NV9CzC3nNaFUYOY8KfN01X5SExAoVTr09ewARAQABzSVLcnp5c3p0b2Yg
+ S296bG93c2tpIDxrcnprQGtlcm5lbC5vcmc+wsGPBBMBCgA5AhsDBgsJCAcDAgYVCAIJCgsE
+ FgIDAQIeAQIXgBYhBJvQfg4MUfjVlne3VBuTQ307QWKbBQJp2mE8AAoJEBuTQ307QWKbeaIP
+ /ihHTkTW4KsN/DQ945JJbyu5tI0J80Wue7QyyLPglyKfhgb5cLLNPpOC8cCIJsc7+W3i2P38
+ s2c1cOH6CYGE7E9ur3Vfme8NW2S2I/Z8VC7bZnzyS23wT17LrsdS/qCpx4o8U+pt/xdXDKph
+ EGRYrIEmMpUWvyYzyYKGIe25FtaayIIKpq8eZYyFcp2f/sG5IkOW5uZzHPMPdcm87jU7fyuQ
+ rAU2vx9r+ulUfQ/q9Z2roC/ode3l7t2pN7BCBCsUDp6JCrUyZrtT1e7EbA0ZRP3aOBNk2P2E
+ DQOgJGjGdO5Yx2Y9LFtltu6JbsBJHi1syGRX3AtQYOMc4Y1WGoeZJmMlvKj2ZqqXNkcWi2DS
+ IQEWB0uW6CqFsBBIMGDa+6OzdaVO/uAVXWDWml02Men3CILdI1MbVjoh8ECqYUY7OQ+JJvNN
+ vnliuq5WM3Ghd3jg/LZZrxXjdIginRHFQCjIJYLKpLZWm1/iDFedcfzqRNYmTtqscdCNHW41
+ oT3Z7BmO9xwdjuwBS6nmS6JJwkbf5Ot2QR4pB/DRU7ZwjT1qHe+9r9gF32wXVQatHNGK/VVu
+ sfwOnkdxCWkp/qb2gdQRmZh+SedStWshigH6sNfuHBloF/q+hjMRc8b2m326OZdrbSHwY1Sz
+ vti8Hn7n8NjdHO9LKB7BIdjkA9DA5WsqOuVCzsFNBFVDXDQBEADNkrQYSREUL4D3Gws46JEo
+ Z9HEQOKtkrwjrzlw/tCmqVzERRPvz2Xg8n7+HRCrgqnodIYoUh5WsU84N03KlLueMNsWLJBv
+ BaubYN4JuJIdRr4dS4oyF1/fQAQPHh8Thpiz0SAZFx6iWKB7Qrz3OrGCjTPcW6eiOMheesVS
+ 5hxietSmlin+SilmIAPZHx7n242u6kdHOh+/SyLImKn/dh9RzatVpUKbv34eP1wAGldWsRxb
+ f3WP9pFNObSzI/Bo3kA89Xx2rO2roC+Gq4LeHvo7ptzcLcrqaHUAcZ3CgFG88CnA6z6lBZn0
+ WyewEcPOPdcUB2Q7D/NiUY+HDiV99rAYPJztjeTrBSTnHeSBPb+qn5ZZGQwIdUW9YegxWKvX
+ XHTwB5eMzo/RB6vffwqcnHDoe0q7VgzRRZJwpi6aMIXLfeWZ5Wrwaw2zldFuO4Dt91pFzBSO
+ IpeMtfgb/Pfe/a1WJ/GgaIRIBE+NUqckM+3zJHGmVPqJP/h2Iwv6nw8U+7Yyl6gUBLHFTg2h
+ YnLFJI4Xjg+AX1hHFVKmvl3VBHIsBv0oDcsQWXqY+NaFahT0lRPjYtrTa1v3tem/JoFzZ4B0
+ p27K+qQCF2R96hVvuEyjzBmdq2esyE6zIqftdo4MOJho8uctOiWbwNNq2U9pPWmu4vXVFBYI
+ GmpyNPYzRm0QPwARAQABwsF2BBgBCgAgAhsMFiEEm9B+DgxR+NWWd7dUG5NDfTtBYpsFAmna
+ YUkACgkQG5NDfTtBYptX+BAApg32CkxwNucNEi8WfWA8oKkW0y8YDuY6ORMo9FWNGiT/OTy0
+ vyJrLocrpn86zwfjVp+eCrssPYh8eqJfnWqmYv6ACQtHPYzPZQ3mSo8H97Z01oUxITzCxpXm
+ ZkLgPIqtDPcC2E3dPM/fVxcyowM8XsaMA9wcsaUYrta8toOq2b9tKcjleKMfMrm0gQ9u7wUc
+ QbLkwj6TCLOwucb07GXzLTNF9PZmaDUpKAZjMjmrW+le+SFvQbhamx0rxLWPR0NWntXpbCn+
+ +ACch03p/JyTBVktxFsFyCt7pTPE1kEaeuXBTe/a2D9iQvRxRW19LvuO2e59/u1wYUiH/orz
+ wbIC2S4dBsPAPihL3ztOU1yE86GPyQtSE0kU+/7snnLt4QGi6PChf3t5gnNjAzjUUovO8rgI
+ c+5yN5heq5loYHgK6OQ9OlHzsPHO9e9MOQcKlFycs1pyijFGzDwdNUm/SchK8iWT2QApTx4A
+ K9bCVaboTA2T77QYkRcRJYSsO1alGX0ome/hMLD1daXlkrNUp1HWa3K4iytLRXjCSIorWiGs
+ n+q3krnpXu3TFkA8qtOFZMdnIiFuiq1yLT8hptsV5xh1TA2nsVvSYiaCr3q4s4BKjS/KrLDb
+ qoxzw8ISjdUp4pA85vb6YLCmb39NgidD+7PmAr65lBNveIFynTgsja1rRQ4=
+In-Reply-To: <20260921113914.779393-2-l.scorcia@gmail.com>
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
-X-Mailer: b4 0.16.0
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261117_045055_228780_6C04EC8E 
-X-CRM114-Status: UNSURE (   9.03  )
-X-CRM114-Notice: Please train this message.
-X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,32 +123,38 @@ List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-8.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-17.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,
-	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
+	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1
+	autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On Tue, 06 Oct 2026 15:25:00 -0500, David Lechner wrote:
-> The Startek KD070FHFID078 panel has a VDDP power input, which feeds its
-> DC-DC converter in addition to VDD and IOVCC. On the MediaTek Genio 520
-> and 720 EVKs, VDDP is switched by its own regulator, and on the Genio
-> 1200 EVK it comes from its own PMIC LDO, so it needs to be described and
-> enabled. The existing Genio 1200 EVK device tree also turned out to
-> describe the panel supplies incorrectly, so this series fixes that too.
+On 21/09/2026 13:38, Luca Leonardo Scorcia wrote:
+> MediaTek mt8167 SoC has two Digital Parallel Interface (DPI) blocks,
+> one can be routed to a DPI display while the other is wired to the HDMI
+> block. They are not compatible with any other device, so add a new
+> compatible to describe them in the device tree.
 > 
-> [...]
+> Signed-off-by: Luca Leonardo Scorcia <l.scorcia@gmail.com>
+> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> ---
+>  .../devicetree/bindings/display/mediatek/mediatek,dpi.yaml       | 1 +
+>  1 file changed, 1 insertion(+)
+> 
+> diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.yaml
+> index eb4f276e8dc4..6cd96a5cd4ae 100644
+> --- a/Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.yaml
+> +++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,dpi.yaml
+> @@ -21,6 +21,7 @@ properties:
+>        - enum:
+>            - mediatek,mt2701-dpi
+>            - mediatek,mt7623-dpi
+> +          - mediatek,mt8167-dpi
 
-Applied to v7.4-next/dts64, thanks!
+Turns out you bring here undocumented ABI. NAK.
 
-[3/4] arm64: dts: mediatek: mt8390-genio-common: add the panel vddp-supply
-      commit: 949fe0bd3a3a6ff0e4451ef38ef780f596d0089d
-[4/4] arm64: dts: mediatek: mt8395-genio-common: fix the panel supplies
-      commit: 036ce7562bef9a85d46ed6ba5b83ef4f5e60ad8b
-
-Cheers,
-Angelo
-
-
+Best regards,
+Krzysztof
 
