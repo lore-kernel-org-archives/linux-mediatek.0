@@ -2,119 +2,106 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 33678606A338
-	for <linux-mediatek@archiver.kernel.org>; Tue, 17 Nov 2026 19:12:11 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 127EB606A897
+	for <linux-mediatek@archiver.kernel.org>; Tue, 17 Nov 2026 19:16:12 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=Btuzt2fL;
-	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=Zcg1M05H
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=rjWNGeV4;
+	dkim=pass (2048-bit key) header.d=baylibre.com header.i=@baylibre.com header.a=rsa-sha256 header.s=google header.b=ZX+qUxBt
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
-	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
+	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
 	List-Unsubscribe-Post:List-Owner;
-	bh=vOL/Nw17lyMhYB+phC9VVdqxP1Km2LT+SN3+8ZuNcpE=; b=Btuzt2fLQNKeKL8/8zhjFNC+Lf
-	whItIfGaCck0K7YSwFxAust8hIc6wnxbKCrDmdo1CArhxNQnWiYZzgOlcdv+hO1YURz8twR8aFKOi
-	yQlRmpg+nCYM7t6cWsMnH3sPVyiV4v7jLfBEZi0ZX3nWDu97u8apLHe6WttaK+wRftGnDdH06bH36
-	/BKfG9TkZ8gK5WsV5QUbEZgkjwPGt3uvbfpn+dRfxibPpjiiNz2y+WMMfVvt61JBuUF9sJKhCtMqT
-	hEXdmJ37jp+EXXJyPaPJz+RrRLr+Bm1PHpnLtenwU7ekBW4Lx8nemoIWsxuxBGJe3VCdldI4n3Hlw
-	eERJ2KjQ==;
+	bh=saTeE4vmtn0WPySBkxUfsYGBUMOtngMCE/Ho+pVY+9E=; b=rjWNGeV4o+mFAxcn6twMhzzr9I
+	vd7POamaYH/QgQAAOaRJee9+7Exdp7BLafQBgPJZaKmqgRV0xffFYfIV75Ht6cf55ck0eNjYgatk6
+	NRjJk8L6ULjtXdejLqRxtFz8Fq7KFnU8unZbmvi56jrQpHnhxQX6eflLN0m8ZWsCeAk5u8BP3a5sz
+	F7Fk4fN08ZCxwAPHCNvP6d0CIZloqc34dp8wdayz8V0WU1Ooz12JUZ3/U40D9jBAHmQMXqkfSRK+J
+	OHELDNpvmq0mBpt2QGj8MfchMUT0UD0wQEco4oorUN9ADdZm+mJyTwN5pPbvSYMrdydTWOHiv3ReG
+	xU3FXIuQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xTObB-00000006pbN-0kbG;
-	Tue, 17 Nov 2026 19:12:09 +0000
-Received: from mail-ed1-x52d.google.com ([2a00:1450:4864:20::52d])
+	id 1xTOf5-00000006pyn-3LaW;
+	Tue, 17 Nov 2026 19:16:11 +0000
+Received: from mail-wm1-x331.google.com ([2a00:1450:4864:20::331])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xTOb7-00000006paK-0goi
+	id 1xTOf2-00000006pw1-2Tr1
 	for linux-mediatek@lists.infradead.org;
-	Tue, 17 Nov 2026 19:12:07 +0000
-Received: by mail-ed1-x52d.google.com with SMTP id 4fb4d7f45d1cf-6b757029223so304027a12.0
-        for <linux-mediatek@lists.infradead.org>; Tue, 17 Nov 2026 11:12:04 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1794942723; cv=none;
-        d=google.com; s=arc-20260327;
-        b=YD0NYRrfG5xlxNmLIckgOEMy+H7yfKdqdOkmqMucvksGbHMXsmC/oHahI8rLMlgZcB
-         yg+yUe8l1iRkJNIx1af0uF/XhWO46M0k2bpIK3yS9+8W8L32+j3ZMFnuGvI9uMPdh2J1
-         asXvBzpAAPMAmAtN9Grxht6te4BlqU7ugX3bcBdPIevaqic39xjU+iOjC31TlhnwBIYA
-         JImrlGR6Msf7V3kY4zzDb5DGj1z3Q/TslaY7hmG4hClk5gfz1vuXtxaajiK+cqn/3eHB
-         lSpKrBmSgycfLIj58h0LDhvtx3PJO7Jxlr2eQdJCK0q1BqcIVGLgNK6lxqAp6ArSGHbj
-         blYg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20260327;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:dkim-signature;
-        bh=vOL/Nw17lyMhYB+phC9VVdqxP1Km2LT+SN3+8ZuNcpE=;
-        fh=i+a+a+3QcZdt0f6jheEZygfuVp1cz/vW2pjdxa9jxqQ=;
-        b=TebolvQexKjEcG+KWi99e68DNDrknmSnUwAUVnvPMH2UUN04y9Ka9iIE0CB0kfZ8fF
-         DdN/xzAtdCL4M9zgDCFlVMZni2GEQxfzr0djNhlggUwev3fZWcApZIuFFvUWS8ojSs9v
-         Sxahw5U8j0TvP90a6soUoW610asWSTtPtY9b3jJ/vmua3QQhrLPZKQs54MbgzC0BrSID
-         LYFUTKoMT3m8L0C2bwTtVwVUWZ1BQjNyxwtyTXfQRmO0vjgjUC6e0cC+Ev3r6wWNIN0Y
-         UJh1FEL88spX4Va2JdvC1aCjpu10ZARzoWLGkyKvgWIVdREuoO+eixd/9xVNVIGqpf31
-         vLdQ==;
-        darn=lists.infradead.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
+	Tue, 17 Nov 2026 19:16:10 +0000
+Received: by mail-wm1-x331.google.com with SMTP id 5b1f17b1804b1-4a3517554f7so2386065e9.2
+        for <linux-mediatek@lists.infradead.org>; Tue, 17 Nov 2026 11:16:08 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20260707; t=1794942723; x=1795547523; darn=lists.infradead.org;
-        h=content-type:cc:to:subject:message-id:date:from:in-reply-to
-         :references:mime-version:from:to:cc:subject:date:message-id:reply-to
-         :content-type;
-        bh=vOL/Nw17lyMhYB+phC9VVdqxP1Km2LT+SN3+8ZuNcpE=;
-        b=Zcg1M05HUYXDtNS5hkvF65fcFQc5tqhpsOXlQa/Rd1aNYzaGyuTJEwQf0Q0tdeMZIx
-         msShCAREP11nT4hTIB7pMk/zqIv5gNQf/eSg9N+UkPTlcT8xzp9TrxG6OyJNDIklNPVH
-         SIWcYSXo0Iuilz5ih06f5KI0qjxWYS0gLC9EcaVkg8hbLLeeRs+tWBlcnD12tC92YIxl
-         J3FUodyabfNPxlTxCYai+GBvN4c1wD0jgneO0UfNvVUFEoqRoIuJOvd7jqMEviv3UnD1
-         VdguAagyyhxW7DMT8meA7NChuns7Ny8Cix74gX574ExoE++ewWRNDHbyl7kvwSS+MQwX
-         ncUg==
+        d=baylibre.com; s=google; t=1794942967; x=1795547767; darn=lists.infradead.org;
+        h=cc:to:content-transfer-encoding:content-type:mime-version
+         :message-id:date:subject:from:from:to:cc:subject:date:message-id
+         :reply-to:content-type;
+        bh=saTeE4vmtn0WPySBkxUfsYGBUMOtngMCE/Ho+pVY+9E=;
+        b=ZX+qUxBt3WiET5Tmp2lPC1qB1xZGfNiE18tiYGW4bCQgP+yYEhVUumo1j4o4fxWTqK
+         hhRm8G73dDs5iCd4y7JtjL1K1/ga14LRHid8wq6e7rTs2FM+drX/euzm9RIo8h/MTu7E
+         EFaYWqUlZDNPuov1M7RFJx3OZ1WV5xgeNtDaHofKccft41EOO61u3MWulp/ZObH3KDlz
+         0vGiL6ddW3wQROpT4By2eXFakasp+VPvFVwvUefldkF/OPtgYkfEyjUXivmgyTv1ShtX
+         7y6G55hYQywA0NDu2jcBz7Fdq5VbJ0Dw0JkKisKsOJG2vRE+kIgFlVknfhWr5x5bNYTR
+         q/wg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1794942723; x=1795547523;
-        h=content-type:cc:to:subject:message-id:date:from:in-reply-to
-         :references:mime-version:x-gm-gg:x-gm-message-state:from:to:cc
+        d=1e100.net; s=20260707; t=1794942967; x=1795547767;
+        h=cc:to:content-transfer-encoding:content-type:mime-version
+         :message-id:date:subject:from:x-gm-gg:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to:content-type;
-        bh=vOL/Nw17lyMhYB+phC9VVdqxP1Km2LT+SN3+8ZuNcpE=;
-        b=VwPgr4uF9ZpA9PblAD5zMErjCxJ/C4BsPZJHq4OjF+SgXL2AE4zXg45HXUL3cqu2YP
-         1r0F1nkmSo4KCMum4qTjJJhAXUt0dzSSAXHiv0uzauF8BZzV0dFBIMHYpjw1JQmPlS/x
-         c2HjIVwF6pnC1wL5VZrd2Qm3D6uKmO98wdzb0SS4/bmGXmpx3qbJjFHBVgfdbJMW8kXp
-         58cK779rjP2NaP5WK5PO06Q/DYvDgVZ0i3aAEjkATj6ofclGegMlAg93ZFX9O4KB9JXm
-         ztd2djpmf2iy7Nbrwafb/jXg7UuepRxra1HE9+Y8XN6giAUCYUlZvPJxICo+xhVthzE4
-         Hj7w==
-X-Gm-Message-State: APuU4Z9hiiLOW/BzWQZk6X2H4DnIsyz51gkWpwkK7HLBFU58AR0I+mXb
-	o+OcowRw+WqpAZSviUWQ8pgg6jxKxYbFG1Kj6y8nhoBdFRhV/xqjzAZNdeksozivRTs0wgPjY99
-	9hFraIvTRqZjDdHW5HatX1taWNC3XZow=
-X-Gm-Gg: AYBFou0W5yO1c5Guexlsgp7cOm/lObOrotP0dFTB9bqcODxKMFXVKazjjP+w9gEyn7F
-	KH9cJSgvOTXDz6eArPXNJyWlrrpmU+JLxLbAIuaJQ7/HvXEJ4dVj0wiGlnlZoj0H8B5+/Ansfw5
-	6+uoxfwKJ1W2xUDmaZ4VTedzfSK9nrD+RX2Ewn+ReA3e7Y0Ry8910Vc8X3fzhpa5uMcKNzSCHdU
-	8XRSI0ESVF7Ltte5qxprzeq2z6sk43AJdu12iquXcfQAP3Y3y4/WnyUB+c6pxZ3QDZQy7c2Pr71
-	i9tI7XKcFokkjjUiDd07zoxOwG/lj9h7ppiI5gAfEs99cxvlwq+vLNeQELLb3wkm88w8V0wQeSf
-	G1kQtmcpVetcSLszaBKBkogyFTstZIFO6r6I=
-X-Received: by 2002:a05:6402:2805:b0:6b8:7775:515b with SMTP id
- 4fb4d7f45d1cf-6b887e52cc5mr201512a12.8.1794942722510; Tue, 17 Nov 2026
- 11:12:02 -0800 (PST)
+        bh=saTeE4vmtn0WPySBkxUfsYGBUMOtngMCE/Ho+pVY+9E=;
+        b=A18r/aLYfood9sv9SbFWP5NzqK5D+j+//PhM2sYi2ldXAvIBT40Xph9NmZLwvHmuXx
+         qPvH+VXN/FxPzTg6C7Kv5MoPcMBvShOBwDi31VNcZkF2/b714hBKm3qaMks7dZ8ExT9D
+         7OKyJFUU9yxg/GcNI08ozkJ7j7MyxvwCq/SickdVYiJNPRvYCZvLLmAHZA2Biw3v1aNn
+         rvAnf4kvCTPv9cws5sddTPxVIrrfQWogopSvr3jJ521ceZcnVLnaSCtcmKFiqOJn+xcT
+         YdiO8y9MDG2J+uc0Ku/VgARSl6Iyi6spDqE7w0dFHDiT1CT7YBSn33gnha0/SnNnSt66
+         qy5Q==
+X-Forwarded-Encrypted: i=1; AL+hErEZD/1z5L/DCY04DOODJhEuvemn3L7uL07uEvomoXM1DOG0qnwLV/ygaStLAeoxij4tQGZs9IXLFnCsyJIzSg==@lists.infradead.org
+X-Gm-Message-State: APuU4Z9pmTmTN0udBfgTNCDwI7TZPO/hI3buy62DXiYrgKZJePm/vWB4
+	IryV55YhsJ2YSYqWRRzCYaQaZkcFrKfpci4q+vvNZVjy3pwCfLjitWZnkj2CIJnvQVU=
+X-Gm-Gg: AYBFou3ztvbhZrbHKI9yQwoBpKimSQAKkXKT3IeLhrAI2O8ILoJTT6iDFQjo/hQAWJ0
+	2Nn2Q5jxBci4jXtb1s2q9ICfeN01XonQZ4KTPwi8px6mS5WL4On61i2RJgYKjmrilazJ3Kw5BsG
+	BlbALTqs8USCp5YmGySVdtEPPt1uEHlhFjiKvKOSoENmHRB41VfXNeZkALdj8rR0REcgYrByJvH
+	XD0r3HQYSeX7PXXum2+e0YL2IFYfHTunnYpGteaOsOtqZlUiszKfirAbM+5nfQu/3XdaA78iWYX
+	9ghGP7WnlHQtSbG0z/Yg1ucSH5Xrtw9RKwr2j8AytOlsduFIIZI01F+qUGBhqV5lE3ndq/NXqoQ
+	6Cb3syTSjUm0p0AJxB/GWqu+2u6Fr3mFA+yCKAN4HU02KDFe8asQNqdyLYXYGyz3mMwfd/ZGYTh
+	eqlqP751Mo1bpDJEw04SDWW5ph0LY+Imm3GnIGRihwHg18ydmv+wWZqjZhWg5/I5Y/UItsd01VN
+	R/ltgh8s7ZdYXriT+bzcfMU1udv4jkYkhdnBf4SZYQXINgSFXvpRX+D5RTHiMnNLrNZr7NEFKlv
+	IpCYzzzGF0miUqB1O0i/E/W4QBr+JNXaBOjR/LhmepHrY3j0CPYXW0Qp
+X-Received: by 2002:a05:600c:8b8a:b0:4bb:52bd:a3c7 with SMTP id 5b1f17b1804b1-4bb7da2240amr3295515e9.6.1794942966666;
+        Tue, 17 Nov 2026 11:16:06 -0800 (PST)
+Received: from [127.0.1.1] (82-230-44-19.subs.proxad.net. [82.230.44.19])
+        by smtp.googlemail.com with ESMTPSA id 5b1f17b1804b1-4bb7d2b8032sm5658625e9.10.2026.11.17.11.16.05
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 17 Nov 2026 11:16:06 -0800 (PST)
+From: Alexandre Mergnat <amergnat@baylibre.com>
+Subject: [PATCH 0/3] clk: mediatek: Model MT8196 PWM source selectors
+Date: Tue, 17 Nov 2026 19:16:01 +0000
+Message-Id: <20261117-mt8196-pwm-clk-v1-0-d8725bcea9f4@baylibre.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-References: <20260921113914.779393-1-l.scorcia@gmail.com> <20260921113914.779393-2-l.scorcia@gmail.com>
- <3701981f-cdda-46a7-8079-de5479ae9c27@kernel.org> <CAORyz2+wF=VDTFkRFU7jBu-zNTW7T8mnPrJZAj8ZVD-Yyr2b6A@mail.gmail.com>
- <53298044-3595-4231-a498-d78052799727@kernel.org>
-In-Reply-To: <53298044-3595-4231-a498-d78052799727@kernel.org>
-From: Luca Leonardo Scorcia <l.scorcia@gmail.com>
-Date: Tue, 17 Nov 2026 20:11:50 +0100
-X-Gm-Features: AclHuK_tAaAmV8XPp2n_nIuVB_4g8FKHhKrmOBsZ4DZheY4_R5_9zza4TO_AcK8
-Message-ID: <CAORyz2J9HrKr5JU1rigB7apEUpHg-P_ke=STWz-_sn64afqQgA@mail.gmail.com>
-Subject: Re: [PATCH v2 1/4] dt-bindings: display: mediatek: dpi: Add
- compatible for mt8167
-To: Krzysztof Kozlowski <krzk@kernel.org>
-Cc: linux-mediatek@lists.infradead.org, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>, 
-	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>, 
-	Thomas Zimmermann <tzimmermann@suse.de>, David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
-	Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, CK Hu <ck.hu@mediatek.com>, 
-	Jitao shi <jitao.shi@mediatek.com>, dri-devel@lists.freedesktop.org, 
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+X-B4-Tracking: v=1; b=H4sIAPGn/GoC/y2Nyw7CIBQFf6VhLQkgD/FXTBc8LopKW4GqSdN/F
+ 63LSebMWVCBHKGgY7egDM9Y4jg0oLsOuYsZzoCjb4wYYZJSqnCqB6olnl4Ju/sNk0AFN4aAYgS
+ 10ZQhxPcveOo3LrO9gqvfyt/I8JjbU900ZE0B7MaUYj12QUoutdeaCLvXnjkmiaHCKy+95YIE7
+ q1UjqJ+XT8P9MwYvgAAAA==
+X-Change-ID: 20261117-mt8196-pwm-clk-0f154aa0e720
+To: Stephen Boyd <sboyd@kernel.org>, Brian Masney <bmasney+clk@redhat.com>, 
+ Jerome Brunet <jbrunet+clk@baylibre.com>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, Chen-Yu Tsai <wenst@chromium.org>, 
+ Laura Nao <laura.nao@collabora.com>
+Cc: Chris Chen <chris-qj.chen@mediatek.com>, linux-clk@vger.kernel.org, 
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, 
+ Alexandre Mergnat <amergnat@baylibre.com>
+X-Mailer: b4 0.16.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261117_111205_233960_2A7A1C8F 
-X-CRM114-Status: GOOD (  13.01  )
+X-CRM114-CacheID: sfid-20261117_111608_674908_3AC49317 
+X-CRM114-Status: UNSURE (   9.15  )
+X-CRM114-Notice: Please train this message.
 X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -126,40 +113,40 @@ List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-7.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
-	DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,FREEMAIL_FORGED_FROMDOMAIN,
-	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	MENTIONS_GIT_HOSTING,SPF_HELO_NONE,SPF_PASS autolearn=no
+X-Spam-Status: No, score=-18.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,
+	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=ham
 	autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-> bindings and DTS should be complete
+On MT8196, a PWM channel can run at the wrong period: on the test
+board, a 10 ms request on PWM1 gives a period of about 8 s. The
+clock driver does not model the selector that picks the input of
+each PWM channel clock, so the PWM driver can compute its counters
+for the wrong rate.
 
-Thank you for your patience, I understand now.
+Signed-off-by: Alexandre Mergnat <amergnat@baylibre.com>
+---
+Alexandre Mergnat (2):
+      clk: mediatek: clk-mtk: Add composite mux tables
+      clk: mediatek: Add MT8196 PWM source muxes
 
-According to the current mediatek-drm code, aliases are not really
-required unless there's multiple instances of the same block type [1].
-On mt8167 this only happens for the dpi1 block and the rdma1 block. It
-should be possible to introduce main display support without the
-aliases with a couple of changes:
+Chris Chen (1):
+      dt-bindings: clock: mediatek: Add MT8196 PWM muxes
 
-- rdma1 drives the secondary display pipeline; it can be omitted from
-the DTS while still having the primary display pipeline work;
-- dpi1 is used to drive HDMI output (not upstreamed yet). I can omit
-it from the DTS for now, adding only the dpi0 node.
+ drivers/clk/mediatek/clk-mt8196-peri_ao.c         | 38 ++++++++++++++++++++---
+ drivers/clk/mediatek/clk-mtk.c                    |  1 +
+ drivers/clk/mediatek/clk-mtk.h                    | 16 ++++++++++
+ include/dt-bindings/clock/mediatek,mt8196-clock.h |  5 +++
+ 4 files changed, 55 insertions(+), 5 deletions(-)
+---
+base-commit: f66469d9905b39d2c260a15d7d6db450f4db67c1
+change-id: 20261117-mt8196-pwm-clk-0f154aa0e720
 
-With this approach the DPI bindings would remain as submitted. Once an
-appropriate mechanism to describe the blocks' indexing is in place
-those two nodes can be reintroduced without having to change any other
-component.
-I have done a quick test on my devices and the approach seems to work.
+Best regards,
+--  
+Alexandre Mergnat <amergnat@baylibre.com>
 
-Please let me know if you can see any issue with this idea, meanwhile
-I'll run more rigorous device and DT tests.
-Thank you for your help
---
-Luca
-
-[1] https://github.com/torvalds/linux/blob/666539eecdf4db623f5e3c3e55cf9f2dfad24aa4/drivers/gpu/drm/mediatek/mtk_ddp_comp.c#L566
 
