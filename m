@@ -2,83 +2,109 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id BB278606A32F
-	for <linux-mediatek@archiver.kernel.org>; Wed, 18 Nov 2026 01:18:13 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 9A9B2606A881
+	for <linux-mediatek@archiver.kernel.org>; Wed, 18 Nov 2026 01:25:33 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=giFywzVS;
-	dkim=pass (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.a=rsa-sha256 header.s=dk header.b=Y3puSeKi
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=I2CzF4zX;
+	dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=Evf4aKWw
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:
-	Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date
-	:Subject:CC:To:From:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:Cc:To:Message-Id:Content-Type:MIME-Version:Subject:
+	Date:From:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
 	List-Unsubscribe-Post:List-Owner;
-	bh=49tbEmAm1n+2OY4VbP2oKpNpbmPBx0tcIkdRKCEQSJ4=; b=giFywzVSC3Jy9bCw94c2TkUBwa
-	NirzFCzlqfzaec0EbBJC5PlylbUoPZIUXkMd04sGfBMKt6vasiKf/8ONLkx+VePtVNLdw+0E6ByQe
-	KFR5y83JSMhVykMgoDTaicnFMQrLNj3F0weJ3b4PE+KiLyy0EglV7Alm0Y7REAQTuwGMl0Dhcb91e
-	H+JhsrWn/3dFgAGpj7crEIE3kViatY17/KVb2IwuqgJPRLfUoAU/bzhu3wmGsrV58K1o2YQbK1wy8
-	KfRizb2HhUyEoMISjb8KwA3DME26u00E+ewxu88QytQB1ii5I8z0e+iSZTadOiyipGbyDmDe0/4u1
-	QoLCm8FA==;
+	bh=savT1NQUMXc5EKxPUj2lCIipe5ZvsTIstXbCVAOb+ck=; b=I2CzF4zXtXgbrym/mi8qiRMEaD
+	yTJLya/ERvx2d4uZgodgrBMRInyTUEAy1r4gdC7/YxsGmUbj1KRm2sxd9QlJne1aHJIgIJ8w8kk4w
+	6ktXKtsuFjibnWqXAYtkPU7S9jTP7GMPqEHc51q1y3LHLYXbax5ZcfJDHg4WXGpKoAahKdgkzKub9
+	n9evOKIm9XgJdC01dzKBt774vK0anmbr8OgEqqNzBy6bWjlgFZ/MJfthPm/QB69jzsAGJpv6r8Ohx
+	67XLbMsd5X8LxxlvVAy31gMp20DvbxwhYnriKp+U7ZZG93KUia+6eKDUQXi7xeW1QCTndE9kw25Zt
+	YgDQiyzg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xTUJR-00000007QrQ-18kn;
-	Wed, 18 Nov 2026 01:18:13 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1xTUQX-00000007Rgw-0yTJ;
+	Wed, 18 Nov 2026 01:25:33 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xTUJP-00000007Qr0-2q8k
-	for linux-mediatek@lists.infradead.org;
-	Wed, 18 Nov 2026 01:18:12 +0000
-X-UUID: e9e0e16ce2ed11f1afed4741b24580c9-20261117
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Type:Content-Transfer-Encoding:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:CC:To:From; bh=49tbEmAm1n+2OY4VbP2oKpNpbmPBx0tcIkdRKCEQSJ4=;
-	b=Y3puSeKilZE3zyyAQIovboIYizt3V99xRcXZpnbd/BNKR5R0HPtHC4PUaEzi5TlXEr4FC/8UUPuMa0GXYNSzWXm31AGTN6nkpMYSaC5SLy2UdZgIxTJe1S6eaGM5ruOy7elEGz1dd1JhARj1ffZmwRbh83Xkj7Je5Sr6H6sVi/8=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.21,REQID:a5559ac4-4114-4d0d-b2b4-b7aa4513b10a,IP:0,U
-	RL:0,TC:0,Content:-25,EDM:-25,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACT
-	ION:release,TS:-50
-X-CID-META: VersionHash:b0318ac,CLOUDID:2d6dff30-f289-4656-bb36-27baf4489f11,B
-	ulkID:nil,BulkQuantity:0,SF:81|82|102|136|836|865|888|898,TC:-5,Content:0|
-	15|50|99,EDM:2|-100,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:nil,COL
-	:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 2,SSN|SDN
-X-CID-BAS: 2,SSN|SDN,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: e9e0e16ce2ed11f1afed4741b24580c9-20261117
-Received: from mtkmbs14n2.mediatek.inc [(172.21.101.76)] by mailgw01.mediatek.com
-	(envelope-from <michael.shih@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 198916648; Tue, 17 Nov 2026 18:18:08 -0700
-Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
- mtkmbs13n2.mediatek.inc (172.21.101.108) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.29; Wed, 18 Nov 2026 09:18:06 +0800
-Received: from mtksitap99.mediatek.inc (10.233.130.16) by
- mtkmbs13n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.2562.29 via Frontend Transport; Wed, 18 Nov 2026 09:18:06 +0800
-From: Michael Shih <michael.shih@mediatek.com>
-To: <nbd@nbd.name>, <lorenzo@kernel.org>
-CC: <linux-wireless@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
-	<kun.wu@mediatek.com>, <deren.wu@mediatek.com>, <sean.wang@mediatek.com>,
-	<quan.zhou@mediatek.com>, <ryder.lee@mediatek.com>, <leon.yen@mediatek.com>,
-	<litien.chang@mediatek.com>, <jb.tsai@mediatek.com>,
-	<eason.Lai@mediatek.com>, Michael Shih <michael.shih@mediatek.com>
-Subject: [PATCH v3] wifi: mt76: mt7928: Add MTK OUI support for nl80211 (ALOS support for wpa_supplicant to get MTK OUI)
-Date: Wed, 18 Nov 2026 09:17:58 +0800
-Message-ID: <20261118011758.1049815-1-michael.shih@mediatek.com>
-X-Mailer: git-send-email 2.45.2
-In-Reply-To: <20261118010310.1044193-1-michael.shih@mediatek.com>
-References: <20261118010310.1044193-1-michael.shih@mediatek.com>
+	id 1xTUQV-00000007RgL-2yBf;
+	Wed, 18 Nov 2026 01:25:31 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by tor.source.kernel.org (Postfix) with ESMTP id D69A260E11;
+	Wed, 18 Nov 2026 01:25:30 +0000 (UTC)
+Authentication-Results: smtp.kernel.org; arc=none smtp.remote-ip=100.80.115.77
+ARC-Seal: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256; cv=none;
+	t=1794965130;
+	b=FdFSA3OnyT04HXpSk9/nU7vXQbeDi3dTcPiqQkVt1tHVZICobQ/DRsjW6qCNYY23xERk
+	 SSWSTjslBqrrrgJOQrRTwXEn1rcFRcRVceQDQBef+RBFPq+ef9oXBMKMRXB0nyb2M7WFd
+	 xaQxqLxZTlW2gf+9lN7VO3tAGiSe6fyLugzkmhDTaItyDyZA9qdG9n6oYzOnOPkB58pLf
+	 L9nJd3hkQ2bzR1GsCVPoPxnXnFZeYrFmh3U11Jg5EDwj6q/Qvvu2EiJXBOM3L9I57Zmwh
+	 qVqN/QPx64thzh6TxoyiR4Y7D5G0xUO3hc64es/5UOxrNJsavXdqgE5optvLgrDl4mg==
+ARC-Message-Signature: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256;
+	c=relaxed/relaxed; t=1794965130;
+	h=DKIM-Signature:Received:From:Date:Subject:MIME-Version:Content-Type:
+	 Message-Id:X-B4-Tracking:X-Change-ID:To:Cc:X-Mailer:
+	 X-Developer-Signature:X-Developer-Key:X-Endpoint-Received:
+	 X-Original-From:Reply-To:Content-Transfer-Encoding;
+	bh=savT1NQUMXc5EKxPUj2lCIipe5ZvsTIstXbCVAOb+ck=;
+	b=CH9/rRnq6QiCKW21YlZ4AFjgHbMvgR6vYNWJJLhHXgB2H20B4o/z6KV2WfuwA4p0jTTA
+	 5UKncLAu2ncz1RC4Pwsfnn5DZc+Uk/IUZuBeoR4DjQGIZKIA566EMdynMZM2lgHPi9sDn
+	 +d2maUmQSGa6whu19gmcJqqwgAkOF466X24ZK2nMPpKsD2A1TA+UY639y5R+O3jfBPsfR
+	 gMIHBvpQ6wdSRo0hrmLHhjFv5RzX29AGDNA2t1jf8ZArHU7OodpNt/3Gk7mEu7thO8gNI
+	 EROysKXbOla1BCyMiYnMbmNww+BmNtJL7T6jQqTzMA6SgmCTIFLtK+MFbn2K1MAoFjQ==
+ARC-Authentication-Results: i=1; smtp.kernel.org; 
+	arc=none smtp.remote-ip=100.80.115.77
+Received: from lkml.kernel.org (nexus.subspace.kernel.org [100.80.115.77])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
+	(No client certificate requested)
+	by smtp.kernel.org (Postfix) with ESMTPS id 06ED71F000C4;
+	Wed, 18 Nov 2026 01:25:30 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1794965130;
+	bh=savT1NQUMXc5EKxPUj2lCIipe5ZvsTIstXbCVAOb+ck=;
+	h=From:Date:Subject:To:Cc:Reply-To;
+	b=Evf4aKWwXD6FnbomEzIViDwLr+j9kKcQ4QLt5ZsvWEkKZ2vp3zAzTEwdbBuSoeyzO
+	 eNMbPeVVcOUSefDgAMtzmMcgMBQmJbVYF1cww93S+aPtkGg3F57UVifiR0ezJKIqQA
+	 5NXuQra188K2VFVNjldDEoCHhPE0Iv6MbjGb6LIasAi90HlBtLb91GyMFjWB/E5FVL
+	 dPATX5jgSB3WSCY34CTQ3SRpkFF4jvloZRrmsARW9aM/UEAMC0djIg2EiRyLegUiTY
+	 INuu/GoP1qG1xQDVMEzwGUmhOrP2yprp/SzpkzTEz89TIqA5YlQfXMhbVAWWb2MlJV
+	 14M3VGRoW7ULg==
+Received: from nexus.subspace.kernel.org (localhost [IPv6:::1])
+	by lkml.kernel.org (Postfix) with ESMTP id 5D1B14AB8A;
+	Wed, 18 Nov 2026 01:25:29 +0000 (UTC)
+From: Zi-Hao Huang via B4 Relay <devnull+zi-hao.huang.mediatek.com@kernel.org>
+Date: Wed, 18 Nov 2026 09:25:18 +0800
+Subject: [PATCH] drm/mediatek: dsi: Don't let a signal cut the IRQ wait
+ short
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-MTK: N
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261117_171811_735032_0FD420CF 
-X-CRM114-Status: GOOD (  20.19  )
-X-Spam-Score: -2.1 (--)
+Content-Type: text/plain; charset="utf-8"
+Message-Id: <20261118-mtk-dsi-irq-wait-v1-1-205f25fac8b2@mediatek.com>
+X-B4-Tracking: v=1; b=H4sIAH3+/GoC/x3MzQpAUBBA4VfRrE2ZSciryGJyB5P83SuUvLub5
+ bc454Gg3jRAnTzg9bRg6xJBaQLdKMugaC4aOOOCiCqcjwldMDS/4yV2oHBeEouTgkuI2ea1t/t
+ fNu37fkZKzT5iAAAA
+X-Change-ID: 20261118-mtk-dsi-irq-wait-a24712ada627
+To: Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
+ Philipp Zabel <p.zabel@pengutronix.de>
+Cc: David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ shaoming chen <shaoming.chen@mediatek.com>, dri-devel@lists.freedesktop.org, 
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, 
+ Zi-Hao Huang <zi-hao.huang@mediatek.com>
+X-Mailer: b4 0.14.3
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1794965128; l=2609;
+ i=zi-hao.huang@mediatek.com; s=20261112; h=from:subject:message-id;
+ bh=mBD6dS6d064X8Z2NA64EwiPmxgRAZHmv32EB6c3egAE=;
+ b=h0n34iq4oweQpJL4Q1/996A0FU3QFKpqo/f4lya6mqbzxROzBIxyGIe0y5Q1hebLNaOvGCuh6
+ Uzd8VWv4YnTCLk29wrnRg3YlOT4kPhXxSEBsbUMS+exxPHW/ApTnAvr
+X-Developer-Key: i=zi-hao.huang@mediatek.com; a=ed25519;
+ pk=tbMIVegYSSBtz5MaQSUCX9RJO88MA/AI5cbmQKbaoIc=
+X-Endpoint-Received: by B4 Relay for zi-hao.huang@mediatek.com/20261112
+ with auth_id=1493
+X-Original-From: Zi-Hao Huang <zi-hao.huang@mediatek.com>
+Content-Transfer-Encoding: 7bit
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -88,221 +114,81 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Reply-To: zi-hao.huang@mediatek.com
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 X-Spam-Status: No, score=-18.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,
 	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,
-	USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=ham
+	autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Customer request MTK to support OUI for wpa supplicant.
+From: Zi-Hao Huang <zi-hao.huang@mediatek.com>
 
-Signed-off-by: Michael Shih <michael.shih@mediatek.com>
----
-v2: Added "CONFIG_MT792x_VENDOR_CMD" for Kconfig build flag
-v3: Fix commit message.
----
- drivers/net/wireless/mediatek/mt76/Kconfig    | 12 +++
- drivers/net/wireless/mediatek/mt76/Makefile   |  1 +
- drivers/net/wireless/mediatek/mt76/mt792x.h   |  5 ++
- .../net/wireless/mediatek/mt76/mt792x_core.c  |  2 +
- .../wireless/mediatek/mt76/mt792x_vendor.c    | 76 +++++++++++++++++++
- .../wireless/mediatek/mt76/mt792x_vendor.h    | 36 +++++++++
- 6 files changed, 132 insertions(+)
- create mode 100644 drivers/net/wireless/mediatek/mt76/mt792x_vendor.c
- create mode 100644 drivers/net/wireless/mediatek/mt76/mt792x_vendor.h
+mtk_dsi_wait_for_irq_done() waits for the DSI IRQ with
+wait_event_interruptible_timeout(). If it returns early, for example
+with -ERESTARTSYS when a signal is pending, both callers still treat the
+command as done, because they only handle a return value of 0 as a
+failure.
 
-diff --git a/drivers/net/wireless/mediatek/mt76/Kconfig b/drivers/net/wireless/mediatek/mt76/Kconfig
-index a4ece38f938d..24faee348d8d 100644
---- a/drivers/net/wireless/mediatek/mt76/Kconfig
-+++ b/drivers/net/wireless/mediatek/mt76/Kconfig
-@@ -33,6 +33,18 @@ config MT792x_LIB
- 	tristate
- 	select MT76_CONNAC_LIB
+On an MT8196 board this led to a hard lockup during shutdown. The wait
+returned before the IRQ arrived, the panel disable sequence went on and
+restarted video mode, and the late CMD_DONE interrupt was then handled
+by mtk_dsi_irq(). The handler writes RACK and loops until DSI_BUSY
+clears, but DSI_BUSY stays set while video mode is running, so the CPU
+never leaves the handler until the watchdog fires. Forcing the wait to
+return early reproduces the lockup every time, and it no longer
+happens once the wait cannot return early.
+
+The wait is made from the driver's own context to synchronise with the
+hardware, not on behalf of a userspace request, and it is bounded by its
+timeout. Use wait_event_timeout() so that it only ends on the IRQ or the
+timeout.
+
+wake_up_interruptible() cannot wake a task in uninterruptible sleep, so
+switch mtk_dsi_irq() to wake_up(). Without it every wait would last
+until its timeout.
+
+Fixes: dd5080a54df8 ("drm/mediatek: add dsi interrupt control")
+Signed-off-by: Zi-Hao Huang <zi-hao.huang@mediatek.com>
+---
+ drivers/gpu/drm/mediatek/mtk_dsi.c | 7 +++----
+ 1 file changed, 3 insertions(+), 4 deletions(-)
+
+diff --git a/drivers/gpu/drm/mediatek/mtk_dsi.c b/drivers/gpu/drm/mediatek/mtk_dsi.c
+index f82506e10fd5..1315dd31a834 100644
+--- a/drivers/gpu/drm/mediatek/mtk_dsi.c
++++ b/drivers/gpu/drm/mediatek/mtk_dsi.c
+@@ -627,9 +627,8 @@ static s32 mtk_dsi_wait_for_irq_done(struct mtk_dsi *dsi, u32 irq_flag,
+ 	unsigned long jiffies = msecs_to_jiffies(timeout);
+ 	struct drm_device *drm = dsi->bridge.dev;
  
-+config MT792x_VENDOR_CMD
-+	bool "MediaTek MT792x nl80211 vendor command support"
-+	depends on MT792x_LIB
-+	default y
-+	help
-+	  Advertise the MediaTek OUI (0x000CE7) nl80211 vendor command
-+	  interface, allowing user space (e.g. wpa_supplicant) to query
-+	  chip information. This is a read-only query interface and has no
-+	  effect unless a matching vendor command is issued from user space.
-+
-+	  Say N to disable the interface entirely.
-+
- config MT792x_USB
- 	tristate
- 	select MT76_USB
-diff --git a/drivers/net/wireless/mediatek/mt76/Makefile b/drivers/net/wireless/mediatek/mt76/Makefile
-index cacdd2b13d05..e7e75ab66fdd 100644
---- a/drivers/net/wireless/mediatek/mt76/Makefile
-+++ b/drivers/net/wireless/mediatek/mt76/Makefile
-@@ -40,6 +40,7 @@ mt76-connac-lib-y := mt76_connac_mcu.o mt76_connac_mac.o mt76_connac3_mac.o
- mt792x-lib-y := mt792x_core.o mt792x_mac.o mt792x_trace.o \
- 		mt792x_debugfs.o mt792x_dma.o
- mt792x-lib-$(CONFIG_ACPI) += mt792x_acpi_sar.o
-+mt792x-lib-$(CONFIG_MT792x_VENDOR_CMD) += mt792x_vendor.o
- mt792x-usb-y := mt792x_usb.o
+-	ret = wait_event_interruptible_timeout(dsi->irq_wait_queue,
+-					       dsi->irq_data & irq_flag,
+-					       jiffies);
++	ret = wait_event_timeout(dsi->irq_wait_queue,
++				 dsi->irq_data & irq_flag, jiffies);
+ 	if (ret == 0) {
+ 		drm_warn(drm, "Wait DSI IRQ(0x%08x) Timeout\n", irq_flag);
  
- obj-$(CONFIG_MT76x0_COMMON) += mt76x0/
-diff --git a/drivers/net/wireless/mediatek/mt76/mt792x.h b/drivers/net/wireless/mediatek/mt76/mt792x.h
-index 4753ec20fe0c..d0b985d7951c 100644
---- a/drivers/net/wireless/mediatek/mt76/mt792x.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt792x.h
-@@ -558,6 +558,11 @@ int mt792x_pm_stats(struct seq_file *s, void *data);
- int mt792x_pm_idle_timeout_set(void *data, u64 val);
- int mt792x_pm_idle_timeout_get(void *data, u64 *val);
- int mt792x_init_wiphy(struct ieee80211_hw *hw);
-+#if IS_ENABLED(CONFIG_MT792x_VENDOR_CMD)
-+void mt792x_vendor_register(struct ieee80211_hw *hw);
-+#else
-+static inline void mt792x_vendor_register(struct ieee80211_hw *hw) {}
-+#endif
- struct ieee80211_ops *
- mt792x_get_mac80211_ops(struct device *dev,
- 			const struct ieee80211_ops *mac80211_ops,
-diff --git a/drivers/net/wireless/mediatek/mt76/mt792x_core.c b/drivers/net/wireless/mediatek/mt76/mt792x_core.c
-index 1965e9de7099..b6183b2f5db0 100644
---- a/drivers/net/wireless/mediatek/mt76/mt792x_core.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt792x_core.c
-@@ -876,6 +876,8 @@ int mt792x_init_wiphy(struct ieee80211_hw *hw)
+@@ -656,7 +655,7 @@ static irqreturn_t mtk_dsi_irq(int irq, void *dev_id)
  
- 	hw->max_tx_fragments = 4;
+ 		mtk_dsi_mask(dsi, DSI_INTSTA, status, 0);
+ 		mtk_dsi_irq_data_set(dsi, status);
+-		wake_up_interruptible(&dsi->irq_wait_queue);
++		wake_up(&dsi->irq_wait_queue);
+ 	}
  
-+	mt792x_vendor_register(hw);
-+
- 	return 0;
- }
- EXPORT_SYMBOL_GPL(mt792x_init_wiphy);
-diff --git a/drivers/net/wireless/mediatek/mt76/mt792x_vendor.c b/drivers/net/wireless/mediatek/mt76/mt792x_vendor.c
-new file mode 100644
-index 000000000000..d1f1560d8641
---- /dev/null
-+++ b/drivers/net/wireless/mediatek/mt76/mt792x_vendor.c
-@@ -0,0 +1,76 @@
-+// SPDX-License-Identifier: ISC
-+/* Copyright (C) 2026 MediaTek Inc. */
-+
-+#include <linux/module.h>
-+#include <net/netlink.h>
-+#include <net/cfg80211.h>
-+
-+#include "mt792x.h"
-+#include "mt792x_vendor.h"
-+
-+static const struct nla_policy
-+mtk_vendor_chip_info_policy[MTK_VENDOR_ATTR_CHIP_INFO_MAX + 1] = {
-+	[MTK_VENDOR_ATTR_CHIP_INFO_ID]  = { .type = NLA_U32 },
-+	[MTK_VENDOR_ATTR_CHIP_INFO_OUI] = { .type = NLA_U32 },
-+};
-+
-+static int
-+mt792x_vendor_get_chip_info(struct wiphy *wiphy, struct wireless_dev *wdev,
-+			    const void *data, int data_len)
-+{
-+	struct ieee80211_hw *hw = wiphy_to_ieee80211_hw(wiphy);
-+	struct mt792x_phy *phy = mt792x_hw_phy(hw);
-+	struct sk_buff *skb;
-+
-+	/* reply payload: two u32 attributes */
-+	skb = cfg80211_vendor_cmd_alloc_reply_skb(wiphy,
-+						  2 * (nla_total_size(sizeof(u32))));
-+	if (!skb)
-+		return -ENOMEM;
-+
-+	if (nla_put_u32(skb, MTK_VENDOR_ATTR_CHIP_INFO_ID,
-+			phy->dev->mt76.rev) ||
-+	    nla_put_u32(skb, MTK_VENDOR_ATTR_CHIP_INFO_OUI,
-+			MTK_NL80211_VENDOR_ID)) {
-+		kfree_skb(skb);
-+		return -ENOBUFS;
-+	}
-+
-+	return cfg80211_vendor_cmd_reply(skb);
-+}
-+
-+static const struct wiphy_vendor_command mt792x_vendor_commands[] = {
-+	{
-+		.info = {
-+			.vendor_id = MTK_NL80211_VENDOR_ID,
-+			.subcmd    = MTK_NL80211_VENDOR_SUBCMD_GET_CHIP_INFO,
-+		},
-+		.flags = WIPHY_VENDOR_CMD_NEED_WDEV |
-+			 WIPHY_VENDOR_CMD_NEED_NETDEV,
-+		.doit    = mt792x_vendor_get_chip_info,
-+		.policy  = mtk_vendor_chip_info_policy,
-+		.maxattr = MTK_VENDOR_ATTR_CHIP_INFO_MAX,
-+	},
-+};
-+
-+static const struct nl80211_vendor_cmd_info mt792x_vendor_events[] = {
-+	[MTK_NL80211_VENDOR_EVENT_CHIP_INFO] = {
-+		.vendor_id = MTK_NL80211_VENDOR_ID,
-+		.subcmd    = MTK_NL80211_VENDOR_SUBCMD_GET_CHIP_INFO,
-+	},
-+};
-+
-+void mt792x_vendor_register(struct ieee80211_hw *hw)
-+{
-+	struct wiphy *wiphy = hw->wiphy;
-+
-+	wiphy->vendor_commands   = mt792x_vendor_commands;
-+	wiphy->n_vendor_commands = ARRAY_SIZE(mt792x_vendor_commands);
-+	wiphy->vendor_events     = mt792x_vendor_events;
-+	wiphy->n_vendor_events   = ARRAY_SIZE(mt792x_vendor_events);
-+
-+	dev_info(wiphy->dev.parent,
-+		 "mt792x: registered %u vendor cmd(s), OUI=0x%06x\n",
-+		 wiphy->n_vendor_commands, MTK_NL80211_VENDOR_ID);
-+}
-+EXPORT_SYMBOL_GPL(mt792x_vendor_register);
-diff --git a/drivers/net/wireless/mediatek/mt76/mt792x_vendor.h b/drivers/net/wireless/mediatek/mt76/mt792x_vendor.h
-new file mode 100644
-index 000000000000..ab728cfd0912
---- /dev/null
-+++ b/drivers/net/wireless/mediatek/mt76/mt792x_vendor.h
-@@ -0,0 +1,36 @@
-+/* SPDX-License-Identifier: ISC */
-+/* Copyright (C) 2026 MediaTek Inc. */
-+
-+#ifndef __MT792X_VENDOR_H
-+#define __MT792X_VENDOR_H
-+
-+/* MediaTek nl80211 vendor OUI (24-bit OUI placed in the low 24 bits).
-+ * This is the value advertised to user space (e.g. wpa_supplicant's
-+ * wiphy_info_handler) via NL80211_ATTR_VENDOR_DATA in the GET_WIPHY reply.
-+ */
-+#define MTK_NL80211_VENDOR_ID		0x000ce7
-+
-+/* vendor sub-commands (defined by the vendor) */
-+enum mtk_nl80211_vendor_subcmds {
-+	MTK_NL80211_VENDOR_SUBCMD_UNSPEC	= 0,
-+	MTK_NL80211_VENDOR_SUBCMD_GET_CHIP_INFO	= 1,
-+};
-+
-+/* vendor event indexes (used by cfg80211_vendor_event*) */
-+enum mtk_nl80211_vendor_events {
-+	MTK_NL80211_VENDOR_EVENT_CHIP_INFO	= 0,
-+};
-+
-+/* attributes carried in the GET_CHIP_INFO vendor command reply */
-+enum mtk_vendor_attr_chip_info {
-+	MTK_VENDOR_ATTR_CHIP_INFO_INVALID	= 0,
-+	MTK_VENDOR_ATTR_CHIP_INFO_ID		= 1,
-+	MTK_VENDOR_ATTR_CHIP_INFO_OUI		= 2,
-+
-+	/* keep last */
-+	__MTK_VENDOR_ATTR_CHIP_INFO_MAX,
-+	MTK_VENDOR_ATTR_CHIP_INFO_MAX =
-+		__MTK_VENDOR_ATTR_CHIP_INFO_MAX - 1,
-+};
-+
-+#endif /* __MT792X_VENDOR_H */
+ 	return IRQ_HANDLED;
+
+---
+base-commit: 067c5c24cef23d913b67eaaf71ae67e7169a6620
+change-id: 20261118-mtk-dsi-irq-wait-a24712ada627
+
+Best regards,
 -- 
-2.45.2
+Zi-Hao Huang <zi-hao.huang@mediatek.com>
+
 
 
