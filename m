@@ -2,108 +2,106 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 685FE60A2612
-	for <linux-mediatek@archiver.kernel.org>; Wed, 18 Nov 2026 15:39:42 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 3FDF3606A325
+	for <linux-mediatek@archiver.kernel.org>; Wed, 18 Nov 2026 16:18:03 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=ugtV16QF;
-	dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=Szd48X2e
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=MMM0gDyi;
+	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=YkKcKa96
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Cc:To:Message-Id:Content-Type:MIME-Version:Subject:
-	Date:From:Content-ID:Content-Description:Resent-Date:Resent-From:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
+	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
 	List-Unsubscribe-Post:List-Owner;
-	bh=ypJ08Z/cH9sdI6bgD8/7yWENIXEqxl6euoBHXQWcshE=; b=ugtV16QFzwsfKURngNAZsHM5Qr
-	8EmfLcsQtwhPuwbHbO2nvPatQYO8wYSVetDWQNJseAHWfrci9vRHnl5w6wZVJJhBBgwQX4RCfyxFY
-	Qc2NAdfuYnYWfbkyfQTKH/8eclOfB1DZvXy1GRhWgJCH1CBH1Uqrwx4VtPk4OzsE0OnuBYYweDLUv
-	u46Y4Z0yEStcjjVC30FekvcYL68gXevjN4QAGVU9uQZ+HgtNIJPAcn4ZRkkvTPJ/NSgaDwW3hCSA8
-	8vf1diD1z/L2M4+Vgwf2ztyDfVuwh49Bi/fH6B4sWWOLud0LmK7+dy68ibXXRRjoTwjRUrrlg1H84
-	kw6uOKRA==;
+	bh=ta3st23k7aJtViHx8b5Y0gwAd71zJE3W0PZkE87cjbA=; b=MMM0gDyixLKRxn3xOun866Qong
+	bhE3XBDIWr3qNnC72cmblijsMRkWv32E1zXRPj7InSrolTIaeF1/xqVBuXIaUk/ioDJqM6wnAcA9N
+	yw0w9xVlcOdYM2wUuhTjWWMEl4w+Zl1yeu/bt2QU6xPLVoybGhLTtzsY30lcFPL81r4D7GzKSXTh7
+	YYl5WaGr52Fjj3pbucUT9PDlJGt/8Iu8poFkFfACE0ECTj284eREhnTP0vRyzYndT/M8Q06ABNmr5
+	3FzhFvKdKTq5HtiafI0wBfz982q/nfPmU5uxK1TPFz6O4Yw12FosQwokEr+xUcIgkWf1Dpgy0PCjx
+	es1BB5Aw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xThl8-00000009KwP-0cpC;
-	Wed, 18 Nov 2026 15:39:42 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1xTiME-00000009RDX-3ifP;
+	Wed, 18 Nov 2026 16:18:02 +0000
+Received: from mail-wr1-x431.google.com ([2a00:1450:4864:20::431])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xThl6-00000009KvR-063J;
-	Wed, 18 Nov 2026 15:39:40 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id 5996442BB8;
-	Wed, 18 Nov 2026 15:39:39 +0000 (UTC)
-Authentication-Results: smtp.kernel.org; arc=none smtp.remote-ip=100.80.115.77
-ARC-Seal: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256; cv=none;
-	t=1795016379;
-	b=ZLWnXGDgZ8+uAIvPzM6FYaLwFJjmW2U3RUn4lNg51mpsgtumpwnHzAV6URKbzasV69aL
-	 f5JvHzHj79aaIkk+ESEhSgzENj1dtwPAsE1EV2NfF2fJpWh+pZyIpOnmVrslxhS9+Mp9S
-	 a1WEbM+Ky5b+yZ8uF6bhc+2AczzF1ItWx5YaHbrzDARJbLh1ksIXSDov12KhTIQ99VDkK
-	 XVm+3V1VGsiCozwQ4ONlYmoXTW9OILU2FBwHOBGhlIDaNAUuoRdTJSZj7pjq0OjSAGrkP
-	 dwgp08raTP+xX0SvvnN+oGigkYTpCdJI1F4kgpwFca55zWJvHsPklOuRExfbtUsIebg==
-ARC-Message-Signature: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256;
-	c=relaxed/relaxed; t=1795016379;
-	h=DKIM-Signature:Received:From:Date:Subject:MIME-Version:Content-Type:
-	 Message-Id:X-B4-Tracking:X-Change-ID:To:Cc:X-Mailer:
-	 X-Developer-Signature:X-Developer-Key:X-Endpoint-Received:
-	 X-Original-From:Reply-To:Content-Transfer-Encoding;
-	bh=ypJ08Z/cH9sdI6bgD8/7yWENIXEqxl6euoBHXQWcshE=;
-	b=wfXQaWJ7mCqNkyAwyJt2xns+mxhs1IM8vCKVPoHCOE41hqxhpOgvSH1npoyqAzTibANE
-	 XDGPSJdYdOdfyAtPMUUSI/S9jPMvomgIYkR1+h1ELdrXGnAB0ROmOwg7q3UdbYXRACIv0
-	 0HOvbk5sYc4edfYcaMAJJJAbzFyPoDI3E4PfnUPDvf4kNdwQRrmXPzG7hDKMoe3Io11Cj
-	 xfXCixbg0ZPggxuRpvSZQvNl6KN6U/TjMkzk3Zsbzjs/x/RICD/vL88VSb5LBX1YErqAP
-	 pK7jzaW4C3AhAhBPdkWcEtLniVbTtgZtRhL72DYYF7UDHF7stgOOGkWnSfA6QeNe7aQ==
-ARC-Authentication-Results: i=1; smtp.kernel.org; 
-	arc=none smtp.remote-ip=100.80.115.77
-Received: from lkml.kernel.org (nexus.subspace.kernel.org [100.80.115.77])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
-	(No client certificate requested)
-	by smtp.kernel.org (Postfix) with ESMTPS id 9D59E1F000C8;
-	Wed, 18 Nov 2026 15:39:38 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1795016379;
-	bh=ypJ08Z/cH9sdI6bgD8/7yWENIXEqxl6euoBHXQWcshE=;
-	h=From:Date:Subject:To:Cc:Reply-To;
-	b=Szd48X2epr/W7NQHXko7KLD7VBhdpWF7W8bMakDo30m+Ll4ypAFlbQKkLJlOAmcJn
-	 9g8BNXs6NmzdwiDaJsIgRWh4Sb9oxbBqTR8bqsfgGvxvffJ+BcEbe2UzpDSHodlnzJ
-	 8XQIuhPjB6R3b48ZiU4VG8Sqw9WJoBdvLVSGB6Cyff2lFwZNUkf61GC1lR9ydTeBuI
-	 GqZG/w8pFl+2MtLdQdwk1n0zvtxfY0h4n07X0qYGbeMFcSC9rqm/qsxw3YdDtF0R6J
-	 97QFvFOyhW2N5xeVmb4on1Ke17IymCef26r0yAknhosgiWSzsh5fU+Y1CtGA47RXsO
-	 4dYKobYxHC+vQ==
-Received: from nexus.subspace.kernel.org (localhost [IPv6:::1])
-	by lkml.kernel.org (Postfix) with ESMTP id 2D7FE4AE12;
-	Wed, 18 Nov 2026 15:39:38 +0000 (UTC)
-From: Ryan Leung via B4 Relay <devnull+untilscour.protonmail.com@kernel.org>
-Date: Wed, 18 Nov 2026 15:39:31 +0000
-Subject: [PATCH RESEND v4] wifi: mt76: mt7996: add thermal zone device
- registration
+	id 1xTiMC-00000009RBa-27Ay
+	for linux-mediatek@lists.infradead.org;
+	Wed, 18 Nov 2026 16:18:02 +0000
+Received: by mail-wr1-x431.google.com with SMTP id ffacd0b85a97d-49a92144733so549864f8f.0
+        for <linux-mediatek@lists.infradead.org>; Wed, 18 Nov 2026 08:17:58 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20260707; t=1795018677; x=1795623477; darn=lists.infradead.org;
+        h=cc:to:content-transfer-encoding:content-type:mime-version
+         :message-id:date:subject:from:from:to:cc:subject:date:message-id
+         :reply-to:content-type;
+        bh=ta3st23k7aJtViHx8b5Y0gwAd71zJE3W0PZkE87cjbA=;
+        b=YkKcKa96bH+weo+r00CKxtddjGQ2qdMC5B9cA67Rp0apGqxfbxq9IU3r5lo8PJWrvh
+         8+jHZwCbZdM4+UEWz4xhVEZuRQQcaT29Ob3TSA4GrZqsrBrXJm/VcRKHGxvQnYv8qtMa
+         D4c2w3PtQLbAwzvRUlAAJNeA7+KweZ4povwQ3e986XhIKYc7DFpaVkhkkDHVuW9zTsVf
+         4BsAMk+4r6l+qw0O8q/FJb0vPEs/ch9T9e6RpV+y1J5X00iNGGpngBKYVCplMywPzSHc
+         SEbUdcIQfA6fw9rXQu9hOrbkXIQ99yBQkN8Nqreus/YONncdV9ltYfGhRMgH543/tWBv
+         CHGQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20260707; t=1795018677; x=1795623477;
+        h=cc:to:content-transfer-encoding:content-type:mime-version
+         :message-id:date:subject:from:x-gm-gg:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to:content-type;
+        bh=ta3st23k7aJtViHx8b5Y0gwAd71zJE3W0PZkE87cjbA=;
+        b=BmfRPHZ6t3a07NyG3j5QK5AmU0eB2RHNxsBezfNpM3vcBSLsHUpU9OSed3Rfy56hlE
+         42dS2N/UthOL0nLddHSF4gRIjjV+9Abd4RufUAiqPF/UUhT0BjZBB5QEKwY6OjEi98l5
+         R3gkMgclEbqOSGIDePVBHAdjeaHOt8uXy7l/1mDbyau6bgt7HdFZx2B6EJRyOHueEfoi
+         ffAIVaAL+jQmB+xDRryvOXy4ePFFmG7cQU1nlhRXMcHZt3tnlAu+1DjtCF4Uhg33yVox
+         ncqaXkYOPpQILhCaxQpwTeBFz8WUQySfw25EiMHGPecuPPTUf3jy+DvupzRo710biXUp
+         Ob6Q==
+X-Forwarded-Encrypted: i=1; AL+hErGXnCGybAoO64ObRwreITpFjBHYX9YrvnP07MIxh1OqpJo/QG12iyDn6xdbY7GZeuc7mUtpzp0oPcHL5GBZ9Q==@lists.infradead.org
+X-Gm-Message-State: APuU4Z9I2oDN2zoBtJIyQfAgu8YQUBiXPLQX9EuSeHa7IBAYU0xatluO
+	eQPG/PiS/Y5zwgpQPYHjR2RPJ8UqzXCPrHoan9YcamRWyiI41dFDFfqZ
+X-Gm-Gg: AZFdTZdYnly/8HzT5wRUWkWXlmSSbJtcGVreynkwsfJn+iH6XO2y/HIU+bWXGGsjorG
+	KQMeyxpmvQXakgvT1wXshKydTx+uI9u/fjbGYhyYlI6tfhHPYeQx3glZNDCwRkGDe3WYADmiAYc
+	KrwhNfmY4U6WIpGH/GVT5fi8Xu9A8hy/GEWeE5BkCF9Ler49kl2nd6X0QBAbxqvr8u9hWnT61EN
+	IUvzk+L01wavsL2CjYLBGfPD4a4ekkiJX25hz91WSRz1j+kOXb6To/hgtKAZAv+/zT76oysZoC5
+	gBFAAivtaq3Q9xNfVTkJ+la+TEFI+f/EGiHO8iOmiY4vxl6Ex1aJp53/ds0uwD/4tfJ9NLpqVJ6
+	2iQn08Q/3DgpcDDQ//bgHynCGNqVQHcCMXemRRMiPIryxBU1Uw71kae+9Jo8lC2MuRJoYGpdnn6
+	pdIvMhorslM2e5fMDsu7iV5C0dxf535jJbLzpbq/jEwixTGb/e+ZrHvv5ThspPor+aV4tsxBQyu
+	9lBN1XIIStIKsS69qxNXKbkHsLhQqQUJeNeCP0YwfrMcpPj/UNVdoUB0drR4UzxT0pBNleny8mh
+	C0PmB4VMzgRb+3KVBkl17I0k0zF5eZ9u7ty6iWD4K7u1jdVQ7wcDQ/jqsK6wyYvHUlNpXokqvic
+	FV9UWC2FX6pT6CaFL51pypWgXIIW/eetB/Q==
+X-Received: by 2002:a05:6000:3104:b0:4a7:557:fcc with SMTP id ffacd0b85a97d-4a705665645mr5379933f8f.53.1795018676598;
+        Wed, 18 Nov 2026 08:17:56 -0800 (PST)
+Received: from [10.161.246.232] (host-164-37-100-34.net.onlyservers.com. [164.37.100.34])
+        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-4a65100bf42sm5329699f8f.1.2026.11.18.08.17.51
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 18 Nov 2026 08:17:56 -0800 (PST)
+From: Alexander Letuchiy <asalde.le1@gmail.com>
+Subject: [PATCH v2 0/2] pinctrl: mediatek: Add MT6895 support
+Date: Wed, 18 Nov 2026 19:17:35 +0300
+Message-Id: <20261118-pinctrl-mt6895-v2-0-0728c4eddcac@gmail.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
-Message-Id: <20261118-mt7996-thermal-zone-v4-1-fd26d2a55b0c@protonmail.com>
-X-B4-Tracking: v=1; b=H4sIALLG/WoC/yWNwQ7CIBBEf6XZsyQtaYr1bK892KPxQGGVNRYMo
- FEb/l3Q45vMvFkhoCcMsKtW8PikQM5maDcVKCPtBRnpzMBr3tWCc7ZE0fcdiwb9Im/s4ywy2Wg
- Uam604FvIy7vHM71+1iMchmkY93D65+ExX1HFoixNQyE6/y73KaUvkSbj744AAAA=
-X-Change-ID: 20260722-mt7996-thermal-zone-a1de7cb1d728
-To: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo@kernel.org>, 
- Ryder Lee <ryder.lee@mediatek.com>, Shayne Chen <shayne.chen@mediatek.com>, 
- Sean Wang <sean.wang@mediatek.com>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: linux-wireless@vger.kernel.org, linux-kernel@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
- Ryan Leung <untilscour@protonmail.com>
-X-Mailer: b4 0.16.0
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1795016378; l=4995;
- i=untilscour@protonmail.com; s=20260906; h=from:subject:message-id;
- bh=uvdd8eEFkrwV4Xyy+ziwLkkjmUbgGSFn3bMaGJTPF3w=;
- b=J0I2IvqJvGrgPUC4nnU+/Ex13oHDnooV/SeIF9rb5QhfKwF7JxDZBWJZkZrvpY0lOXZKmcPd9
- 4pSRuLmT6h9Ayyrvc33h2Kb5Omxi9Z9MTGSrZeEXH7b8cKeHTHjdzCm
-X-Developer-Key: i=untilscour@protonmail.com; a=ed25519;
- pk=eCaNcoQNRWYKZ9D7KbOGKvQVK2YFguJXZxglTtAR7Xk=
-X-Endpoint-Received: by B4 Relay for untilscour@protonmail.com/20260906
- with auth_id=1011
-X-Original-From: Ryan Leung <untilscour@protonmail.com>
 Content-Transfer-Encoding: 7bit
+X-B4-Tracking: v=1; b=H4sIAAAAAAAC/3WNQQ6DIBQFr2L+ujSAVKmr3qNxgRT1NwoGqGlju
+ HvFrrucZN68DYLxaAI0xQberBjQ2R34qQA9KjsYgo+dgVNeMUYlWdDq6Ccyx0peL0QKyTmndS+
+ Uhn20eNPj+wje2x+HV/c0OuZKNkYM0fnP8biy7P2Nr4xQ0tdUaCHKrmTqNswKp7N2M7QppS+y8
+ HwtvgAAAA==
+X-Change-ID: 20261108-pinctrl-mt6895-84822207f4ac
+To: Linus Walleij <linusw@kernel.org>, Rob Herring <robh@kernel.org>, 
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, 
+ Conor Dooley <conor+dt@kernel.org>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Sean Wang <sean.wang@kernel.org>
+Cc: linux-gpio@vger.kernel.org, devicetree@vger.kernel.org, 
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, 
+ Alexander Letuchiy <asalde.le1@gmail.com>
+X-Mailer: b4 0.15.2
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20261118_081800_569969_F50A9B78 
+X-CRM114-Status: GOOD (  11.37  )
+X-Spam-Score: -1.8 (-)
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -113,152 +111,60 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Reply-To: untilscour@protonmail.com
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-18.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,
-	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=ham
-	autolearn_force=no version=4.0.1
+X-Spam-Status: No, score=-15.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
+	DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,FREEMAIL_FORGED_FROMDOMAIN,
+	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,SPF_HELO_NONE,SPF_PASS,
+	USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-From: Ryan Leung <untilscour@protonmail.com>
+This series adds the pin controller of the MediaTek Dimensity 8000/8100
+(MT6895) SoC: the binding and a driver on top of the common Paris code.
 
-Register the mt7996 phy as a thermal zone sensor using
-devm_thermal_of_zone_register() so that device tree thermal-zones
-nodes can reference the Wi-Fi chip as a temperature source. This
-allows the kernel thermal governor to control external cooling
-devices such as PWM fans based on Wi-Fi chip temperature.
+The pinmux macro header and the pio node are part of v2
+of the MT6895 / Xiaomi Poco X4 GT initial support series [1].
 
-Registration is non-fatal: -ENODEV is returned when no
-thermal-sensors DT property references this device, which is the
-expected case on platforms without a thermal zone configured.
+The tables come from the MediaTek driver in the Xiaomi kernel source
+release [2]. They were checked field by field against that driver and
+against register dumps from the device running the vendor kernel.
 
-Unregister the thermal zone together with the existing cooling device
-when the phy is torn down, and on the hwmon registration failure path
-in the same init routine, so neither is left registered against a phy
-that is about to be freed. Clear both pointers after unregistering,
-since this init-time failure path can now run before the normal
-teardown path also unregisters the same phy, and without clearing them,
-that second call would unregister already-freed objects.
+Tested on a Xiaomi Poco X4 GT (xaga) on top of next-20261117: pinmux,
+pin configuration, GPIO and EINT.
 
-Signed-off-by: Ryan Leung <untilscour@protonmail.com>
+[1] https://patch.msgid.link/20261113-initial-mt6895-v2-0-4ab0aa9fa391@gmail.com
+[2] https://github.com/MiCode/Xiaomi_Kernel_OpenSource/tree/56ec519f6
+    (branch xaga-s-oss)
+
+Assisted-by: Claude:claude-opus-5-5
+
 ---
-Changes in v4:
-- Clear phy->tzone/phy->cdev in mt7996_unregister_thermal() after
-  unregistering, making it idempotent.
-- Link to v3: https://patch.msgid.link/20260810-mt7996-thermal-zone-v3-1-ae9d7cd6cde1@protonmail.com
-
-Changes in v3:
-- Unwind cdev/tzone registration in mt7996_thermal_init() on hwmon registration failure.
-- Link to v2: https://patch.msgid.link/20260810-mt7996-thermal-zone-v2-1-563dfbbf9175@protonmail.com
-
 Changes in v2:
-- Take phy->dev->mt76.mutex around mt7996_mcu_get_temperature()
-- Unregister phy->tzone explicitly in mt7996_unregister_thermal() before the phy is freed
-- Link to v1: https://patch.msgid.link/20260722-mt7996-thermal-zone-v1-1-88896e6e9985@protonmail.com
----
- drivers/net/wireless/mediatek/mt76/mt7996/init.c   | 40 +++++++++++++++++++++-
- drivers/net/wireless/mediatek/mt76/mt7996/mt7996.h |  1 +
- 2 files changed, 40 insertions(+), 1 deletion(-)
-
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/init.c b/drivers/net/wireless/mediatek/mt76/mt7996/init.c
-index cc94eade9950..e28fe357c9d7 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7996/init.c
-+++ b/drivers/net/wireless/mediatek/mt76/mt7996/init.c
-@@ -234,17 +234,42 @@ static const struct thermal_cooling_device_ops mt7996_thermal_ops = {
- 	.set_cur_state = mt7996_thermal_set_cur_throttle_state,
- };
- 
-+static int mt7996_thermal_get_temp(struct thermal_zone_device *tz, int *temp)
-+{
-+	struct mt7996_phy *phy = thermal_zone_device_priv(tz);
-+	int val;
-+
-+	mutex_lock(&phy->dev->mt76.mutex);
-+	val = mt7996_mcu_get_temperature(phy);
-+	mutex_unlock(&phy->dev->mt76.mutex);
-+	if (val < 0)
-+		return val;
-+
-+	*temp = val * 1000;
-+	return 0;
-+}
-+
-+static const struct thermal_zone_device_ops mt7996_tz_ops = {
-+	.get_temp = mt7996_thermal_get_temp,
-+};
-+
- static void mt7996_unregister_thermal(struct mt7996_phy *phy)
- {
- 	struct wiphy *wiphy = phy->mt76->hw->wiphy;
- 	char name[sizeof("cooling_deviceXXX")];
- 
-+	if (phy->tzone) {
-+		devm_thermal_of_zone_unregister(phy->dev->mt76.dev, phy->tzone);
-+		phy->tzone = NULL;
-+	}
-+
- 	if (!phy->cdev)
- 		return;
- 
- 	snprintf(name, sizeof(name), "cooling_device%d", phy->mt76->band_idx);
- 	sysfs_remove_link(&wiphy->dev.kobj, name);
- 	thermal_cooling_device_unregister(phy->cdev);
-+	phy->cdev = NULL;
- }
- 
- static int mt7996_thermal_init(struct mt7996_phy *phy)
-@@ -275,14 +300,27 @@ static int mt7996_thermal_init(struct mt7996_phy *phy)
- 	phy->throttle_temp[MT7996_CRIT_TEMP_IDX] = MT7996_CRIT_TEMP;
- 	phy->throttle_temp[MT7996_MAX_TEMP_IDX] = MT7996_MAX_TEMP;
- 
-+	phy->tzone = devm_thermal_of_zone_register(phy->dev->mt76.dev,
-+						   phy->mt76->band_idx, phy,
-+						   &mt7996_tz_ops);
-+	if (IS_ERR(phy->tzone)) {
-+		if (PTR_ERR(phy->tzone) != -ENODEV)
-+			dev_warn(phy->dev->mt76.dev,
-+				 "failed to register thermal zone %d: %ld\n",
-+				 phy->mt76->band_idx, PTR_ERR(phy->tzone));
-+		phy->tzone = NULL;
-+	}
-+
- 	if (!IS_REACHABLE(CONFIG_HWMON))
- 		return 0;
- 
- 	hwmon = devm_hwmon_device_register_with_groups(&wiphy->dev, name, phy,
- 						       mt7996_hwmon_groups);
- 
--	if (IS_ERR(hwmon))
-+	if (IS_ERR(hwmon)) {
-+		mt7996_unregister_thermal(phy);
- 		return PTR_ERR(hwmon);
-+	}
- 
- 	return 0;
- }
-diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/mt7996.h b/drivers/net/wireless/mediatek/mt76/mt7996/mt7996.h
-index da9958647b54..63154c338362 100644
---- a/drivers/net/wireless/mediatek/mt76/mt7996/mt7996.h
-+++ b/drivers/net/wireless/mediatek/mt76/mt7996/mt7996.h
-@@ -388,6 +388,7 @@ struct mt7996_phy {
- 
- 	struct ieee80211_sband_iftype_data iftype[NUM_NL80211_BANDS][NUM_NL80211_IFTYPES];
- 
-+	struct thermal_zone_device *tzone;
- 	struct thermal_cooling_device *cdev;
- 	u8 cdev_state;
- 	u8 throttle_state;
+- pinctrl-mt6895: pad mt6895_pull_type[] with entries for the virtual
+  EINT pins 227-246 to avoid an out-of-bounds read from
+  mtk_pinconf_bias_get_combo() (e.g. via debugfs pinconf-pins)
+  (Sashiko)
+- Rebased on next-20261117
+- Link to v1: https://patch.msgid.link/20261108-pinctrl-mt6895-v1-0-f704c443b31a@gmail.com
 
 ---
-base-commit: e1dd8486807c1acf9551250b7f81e116a21e6ad6
-change-id: 20260722-mt7996-thermal-zone-a1de7cb1d728
+Alexander Letuchiy (2):
+      dt-bindings: pinctrl: mediatek: Document MT6895 pin controller
+      pinctrl: mediatek: Add support for MT6895 pinctrl
+
+ .../bindings/pinctrl/mediatek,mt6895-pinctrl.yaml  |  228 ++
+ drivers/pinctrl/mediatek/Kconfig                   |   10 +
+ drivers/pinctrl/mediatek/Makefile                  |    1 +
+ drivers/pinctrl/mediatek/pinctrl-mt6895.c          | 1638 ++++++++++++
+ drivers/pinctrl/mediatek/pinctrl-mtk-mt6895.h      | 2717 ++++++++++++++++++++
+ 5 files changed, 4594 insertions(+)
+---
+base-commit: 7cfbf79c66c63e807ea452abf0546e6f6d6833a6
+change-id: 20261108-pinctrl-mt6895-84822207f4ac
 
 Best regards,
 --  
-Ryan Leung <untilscour@protonmail.com>
-
+Alexander Letuchiy <asalde.le1@gmail.com>
 
 
