@@ -2,77 +2,103 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 6C5D0606A336
-	for <linux-mediatek@archiver.kernel.org>; Wed, 18 Nov 2026 18:17:13 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 6935A606A32A
+	for <linux-mediatek@archiver.kernel.org>; Wed, 18 Nov 2026 18:35:12 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=xPs7Y3Sk;
-	dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=ESzuzTBO
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=Z1ybyNMc;
+	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=uFkf7XNP
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
 	List-Unsubscribe-Post:List-Owner;
-	bh=43NE97/+suR2lvMlOlQq/OVozCS12mum69E+yjyBLwU=; b=xPs7Y3SkcFFPYp6F/zJF3CN+b2
-	TLiJ1I+72f4j8iIEZZ69C97sDBAwluqROeUywysWKNFDhK5orF2TtXaAtWLj7sMAQd33R/vKjANIq
-	0ABa/mugf+a3BkZ3z133ZVLGfsGFElDOsRVIjJaJ0FaoLtX4aJY/MEwJHces99X7J+bxOXQPsF7yH
-	dCMGSoDQKQWmb3siZrxst21iKnsncMQEAyrMMY7EfD2hDwaYVV0Y0n061xqzGOAciXK9Ae4xFs9LZ
-	1C6IlAvO/hHR4kArwx3kr/2weqqMH3JCLlbZxThOGUd+s6wWEbz8yHaptlLYoWer6csyRspza+lII
-	MekKUxaw==;
+	bh=J1mE2/uvxHDBhyh7b8T/IYHmltMNQ44dSYQaeZ69JlY=; b=Z1ybyNMcEX/NvD+aRFPetkqNnw
+	NeY2VAq37fQCHvxJgPFZb7uey3ZmgM8G1gOAvMvIwr3eSwSOwBMb4NLJi4MCFpI5VV3+PwAwTHLUV
+	1IuhTotcMuXgUy1iyO6EvsV/hQ9tz8szdS4b5pWXar6ZkbToSXHd4jnk4yNgBRlVvzxAAvEiQtpQr
+	v6tj691Fctf2PQLzeDpjy9u+BO5izahVXtbYY1SxmNHCB8PgN5Z83BnEpdYNIIMY5T9KbJeZpKOqS
+	mDh9aazgugH4wY/NE4i4xVDL2ly4a9GO6ggzccjPQEFtlHd7EOM8Ezz3i5X0cgB1w0NirLTIk7iUa
+	Lcni4Shg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xTkDZ-00000009sOA-0deC;
-	Wed, 18 Nov 2026 18:17:13 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1xTkUy-00000009zWO-02VA;
+	Wed, 18 Nov 2026 18:35:12 +0000
+Received: from mail-dy1-x1333.google.com ([2607:f8b0:4864:20::1333])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xTkDX-00000009sNB-3Z08
+	id 1xTkUs-00000009zSy-48Di
 	for linux-mediatek@lists.infradead.org;
-	Wed, 18 Nov 2026 18:17:12 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 098CD6369C;
-	Wed, 18 Nov 2026 18:17:10 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9A8931F000C6;
-	Wed, 18 Nov 2026 18:17:05 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1795025829;
-	bh=43NE97/+suR2lvMlOlQq/OVozCS12mum69E+yjyBLwU=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=ESzuzTBOdkG4ZukOFhNH6zujywousEuGxMY42b71Y6toogP16WegXnUnOOwAu2xZM
-	 94LZk5i9vZhTnQXMXusP42QNdAlAe9KShFKOVk+B+6bhewI2T+RxcPnL/YG8kc0AXz
-	 2CM5e3dLzcfJeAeLi4ajfCEs0OgeRZdhvp0phDi97Jad8vI5sdxu2UG2Veh0u6eDEi
-	 EixE7c/90DvlK3vM7prJB2HR0cHe/IPJOWqcXbDCf5E3++orBQyflIVHoTC3fDAJD5
-	 Qx4f8tr5ICkQEvJf4wnJbU21ZSvJhLcYj8DtScqMT/nkgLgm7ZWIzbis6+ubU2ux/A
-	 MzFijBjpm1v4Q==
-Date: Wed, 18 Nov 2026 18:17:03 +0000
-From: Conor Dooley <conor@kernel.org>
-To: John Crispin <john@phrozen.org>
-Cc: Lorenzo Bianconi <lorenzo@kernel.org>, Lee Jones <lee@kernel.org>,
-	Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Linus Walleij <linusw@kernel.org>,
-	Bartosz Golaszewski <brgl@kernel.org>,
-	Ahmed Naseef <naseefkm@gmail.com>,
-	Benjamin Larsson <benjamin.larsson@genexis.eu>,
-	Christian Marangi <ansuelsmth@gmail.com>,
-	devicetree@vger.kernel.org, lei.dong@airoha.com,
-	Linqi.zhang@airoha.com, linux-gpio@vger.kernel.org,
-	linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org,
-	mfd@lists.linux.dev,
-	Mikhail Kshevetskiy <mikhail.kshevetskiy@iopsys.eu>,
-	Rajeev.kumar@airoha.com, upstream@airoha.com, Weifeng.xu@airoha.com,
-	zhengping.zhang@airoha.com
-Subject: Re: [PATCH v3 6/9] dt-bindings: pinctrl: airoha: add AN7589
-Message-ID: <20261118-refried-storm-d43378dd6a28@spud>
-References: <20261116174854.342912-1-john@phrozen.org>
- <20261116174854.342912-7-john@phrozen.org>
+	Wed, 18 Nov 2026 18:35:10 +0000
+Received: by mail-dy1-x1333.google.com with SMTP id 5a478bee46e88-380c28f9e35so95983eec.1
+        for <linux-mediatek@lists.infradead.org>; Wed, 18 Nov 2026 10:35:06 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20260707; t=1795026906; x=1795631706; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
+        bh=J1mE2/uvxHDBhyh7b8T/IYHmltMNQ44dSYQaeZ69JlY=;
+        b=uFkf7XNPlPMG0jkA3BWdUkzSASgttECqR86N6myjOxb9VMVzgIoOQ41d2rhoNPeHsu
+         UldWKJLbVgdVCVyPaJqXCPhKwzly8wgEArMWjcOnejcRWR/W3/XPoaZEMaosA76qjvzi
+         rbLNT0xlf1+rWh95QEUMkLnqat33YqgMxOj/TjFyqMKDMol9F4oL8taUZK8td17846s1
+         12FQhpw52GoXCg3fUqwIcKDH1wfhpHFsHmpJ2om0R9JRPsW+5b3pEj29yNt9gTplTzpt
+         yZIh5QAIopmxuDcfQa9njBvVe65TCMFV9+4syJxHQPYbCnI295uphumv5k3cAG/TC8f6
+         LGCg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20260707; t=1795026906; x=1795631706;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to:content-type;
+        bh=J1mE2/uvxHDBhyh7b8T/IYHmltMNQ44dSYQaeZ69JlY=;
+        b=wKdQEfKsb8xXz4CN4TQFCjgkX+p6G74ohfGN7fEF5RlPT1SYLmJ6lzFVhk7Z8c3OJJ
+         H3rfaRS2TgU6Kdy+aJoVCgavLGCx4mlXnlS34U4qURmT8LNwV4DCsU1p8z4WZ6g2faRM
+         tXbuNnSWUP7ZOR+IGKACTQ+6Lc3mAoQjPw42Ti26q/OzzLCNqkoTkSP4zFZl6erxvUOU
+         k8O2oiljQql3FqIoAtGlzfSzn3i+8U1c1tYM3OxWR3knYLOaFM0WIiqcD8WRcWtqxvVf
+         61ylSFN5FcSgTgph8bYZIHdaiWNkcTQaEl5+HT5GXXnGp/J+vX0TeTCIMd/ytQNUi2ux
+         yoaA==
+X-Forwarded-Encrypted: i=1; AL+hErHrMWWpCH122rfPyYfQR2dpPwJIYkXiyrj2Uku8nENCXfmtt1RpCi/MACYmplAYHXcL6wB5Ridd4jin3HzrxA==@lists.infradead.org
+X-Gm-Message-State: APuU4Z/KL31+zFgXK/HJqZ1RmGCwOIHDZeEd6xh/xgk8LsiTHF+Qx6Aw
+	3VH0k7MVY/EbVCrAdtmkmPKqFaj1fnNKJe39nbXure3XLxBmMRJuf/hu
+X-Gm-Gg: AZFdTZcGy/4YDWh82KdveKaGDWoXfhHOkTcxhSay2u6hoszWGPD7WSxxCXmf9DJGfJi
+	HEvkLtme4ZAHT+LRyhWPVNGweDqhNCjL8rlyqvtl08TTq/FPF8k+drhOvggS89wB8RDxi0b7Nuf
+	t/bc42wLzlltkJJI67llea6n0uCmVd5/2G2OBJzKoe8snjX0SZL9DhF613/YmLNyiiIg1VqSc/h
+	50nTo6GgimSZDfmT6J8yQYAkTEAQBQa0ycbonmnvFTjet6iXCRVu6HLcBRHa/cA+4cpC6/sJ8kk
+	7+taIiS19i+MpDpuqGl+AO1mfw5u3mBsA/6gxkqwiY+y/EBDkDtaPpEtuZROP2RSILvjSlePuEC
+	DABsqnWmvn9w0GEHhas5EujHEhfjzIMCCW6Aa96A7ke+CRrXIvSd+3dk4wvj6ByRwg6+lUHtAZP
+	0Uknt8hvJ1Oz9rNVwSr4iFuiGg5pSl0vSQ8MGi9V61Ie1wg4b1MJhxHKrokWGqh3iPzYQq3wHk7
+	O03v1woN4nLN+pxkxdZr9Bw9TgaobDTT4lstyGJ2Bjv85o3njKsz9EkhDq+n/WzRjH692VLedEn
+	WmMt/H2ByruFYEK70HNAWquE+DYS2QTNOIN/rO15bpkOddUxEfLqGXi+hpGDu2SI6IKv970acnc
+	mjZyu
+X-Received: by 2002:a05:7300:ae97:b0:382:2ae3:b1d0 with SMTP id 5a478bee46e88-383ee2228b7mr240375eec.13.1795026905715;
+        Wed, 18 Nov 2026 10:35:05 -0800 (PST)
+Received: from G7XWH7K1F3 ([2408:8256:2e80:7371:2c16:ada8:2d24:d03])
+        by smtp.gmail.com with ESMTPSA id 5a478bee46e88-382a73e0aa6sm9453348eec.19.2026.11.18.10.34.55
+        (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
+        Wed, 18 Nov 2026 10:35:05 -0800 (PST)
+From: Zhao Li <enderaoelyther@gmail.com>
+To: Felix Fietkau <nbd@nbd.name>,
+	Lorenzo Bianconi <lorenzo@kernel.org>,
+	Ryder Lee <ryder.lee@mediatek.com>
+Cc: Shayne Chen <shayne.chen@mediatek.com>,
+	Sean Wang <sean.wang@mediatek.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Peter Chiu <chui-hao.chiu@mediatek.com>,
+	linux-wireless@vger.kernel.org,
+	linux-kernel@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	stable@vger.kernel.org,
+	Zhao Li <enderaoelyther@gmail.com>
+Subject: [PATCH wireless] wifi: mt76: mt7996: restore the wcid flags on reassociation
+Date: Thu, 19 Nov 2026 02:34:38 +0800
+Message-ID: <20261118183438.44794-1-enderaoelyther@gmail.com>
+X-Mailer: git-send-email 2.56.1
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
-	protocol="application/pgp-signature"; boundary="Nod0t4s8ldmFfdkU"
-Content-Disposition: inline
-In-Reply-To: <20261116174854.342912-7-john@phrozen.org>
+Content-Transfer-Encoding: 8bit
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20261118_103507_148904_F233E391 
+X-CRM114-Status: GOOD (  11.43  )
+X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -83,62 +109,62 @@ List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-10.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,
-	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS autolearn=ham autolearn_force=no version=4.0.1
+X-Spam-Status: No, score=-15.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
+	DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,FREEMAIL_FORGED_FROMDOMAIN,
+	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
+	USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
---Nod0t4s8ldmFfdkU
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+On disassociation, mt7996_mac_sta_links_event() clears wcid.sta and
+sets wcid.sta_disabled. Nothing has cleared wcid.sta_disabled on
+reassociation since commit 13e2e9c6b348 ("wifi: mt76: mt7996: use
+mac80211 .sta_state op") started setting it. The ASSOC event used to set
+wcid.sta again only after the rate control commands, and no longer sets
+it at all, so wcid_to_sta() returns NULL for a reassociated station, and
+both mt7996_mcu_add_rate_ctrl() and mt7996_mcu_add_rate_ctrl_fixed()
+dereference it.
 
-On Mon, Nov 16, 2026 at 06:48:51PM +0100, John Crispin wrote:
-> Document the AN7589 pin controller. It lives under the GPIO system
-> controller and selects functions through a separate IOMUX syscon,
-> referenced by the airoha,iomux phandle. Every pin is a GPIO in mode 0.
->=20
-> The AN7589 has no chip SCU dependency and the vendor SDK carries no pull
-> or drive registers for it. Groups follow the SDK naming without its _grp
-> suffix. As in the other Airoha pin controller bindings, a function names
-> a block type, such as uart or i2c, and the group selects the instance. A
-> node selects one group, except for pcm_spi and pcie, whose groups carry
-> different signals of one device. The PON groups keep the working mode
-> only: the SDK encodes the driver reset sequence as extra pinctrl states,
-> which belongs in the consumer driver.
->=20
-> The pwm function routes a PWM channel to one of GPIO0 to GPIO15, with
-> one group per pin. The pin also needs its GPIO output enabled, so conf
-> nodes allow the GPIO direction and output level. Pull and drive
-> properties are not allowed, as no registers for them are known.
->=20
-> Signed-off-by: John Crispin <john@phrozen.org>
-> ---
-> Changes in v3:
-> - Move the IOMUX syscon compatible and the GPIO system controller to
->   patches of their own (Lee, Conor).
-> - Allow one group per node, except for pcm_spi and pcie, whose groups
->   carry different signals of one device (Conor).
-> - Fix the uart5 example, which listed uart5 and uart5_full together.
+Set wcid.sta and clear wcid.sta_disabled at the start of the ASSOC
+event, as for a first association.
 
-As discussed elsewhere,=20
-pw-bot: changes-requested
+Fixes: 13e2e9c6b348 ("wifi: mt76: mt7996: use mac80211 .sta_state op")
+Fixes: 28d519d0d493 ("wifi: mt76: Move RCU section in mt7996_mcu_add_rate_ctrl_fixed()")
+Cc: stable@vger.kernel.org
+Signed-off-by: Zhao Li <enderaoelyther@gmail.com>
+---
+Found by code review. Tested in a QEMU guest with KASAN and a test hook
+that reassociates a station through mt7996_sta_state() on a synthetic
+device whose firmware commands are captured: without this change the
+second association hit a NULL pointer dereference in
+mt7996_mcu_add_rate_ctrl(), with it the association completed.
 
-Thanks,
-Conor.
+No new W=1, sparse or smatch warnings.
 
---Nod0t4s8ldmFfdkU
-Content-Type: application/pgp-signature; name=signature.asc
+AI assistance was used.
 
------BEGIN PGP SIGNATURE-----
+ drivers/net/wireless/mediatek/mt76/mt7996/main.c | 4 ++++
+ 1 file changed, 4 insertions(+)
 
-iHUEABYKAB0WIQRh246EGq/8RLhDjO14tDGHoIJi0gUCav3rnwAKCRB4tDGHoIJi
-0mgMAQCtXqMjFyJDkPv8x2z7GuoGiMd4YO4oxN1j6Y64gK6v7wD/ctkEr5B5wNU4
-UN8LKSfygbDfpSW3r7urO7YQwtw7bAQ=
-=apU9
------END PGP SIGNATURE-----
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/main.c b/drivers/net/wireless/mediatek/mt76/mt7996/main.c
+index 9321c8146e2a..77f0664fe57c 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7996/main.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7996/main.c
+@@ -1491,6 +1491,10 @@ mt7996_mac_sta_links_event(struct mt7996_dev *dev, struct ieee80211_vif *vif,
+ 
+ 		switch (ev) {
+ 		case MT76_STA_EVENT_ASSOC:
++			/* Restore the station state that DISASSOC cleared */
++			msta_link->wcid.sta = 1;
++			msta_link->wcid.sta_disabled = 0;
++
+ 			err = mt7996_mcu_add_sta(dev, link_conf, link_sta,
+ 						 link, msta_link,
+ 						 CONN_STATE_CONNECT, true);
 
---Nod0t4s8ldmFfdkU--
+base-commit: 763b13f622e2758726e8e3ecaef819db8fa0430a
+-- 
+2.56.1
+
 
