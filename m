@@ -2,109 +2,86 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id D71A7606A333
-	for <linux-mediatek@archiver.kernel.org>; Wed, 18 Nov 2026 09:33:21 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 266A0606A32A
+	for <linux-mediatek@archiver.kernel.org>; Wed, 18 Nov 2026 11:10:58 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=Nrvnn5nz;
-	dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=Bk5aCbO9
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=S3jyx75K;
+	dkim=pass (2048-bit key) header.d=collabora.com header.i=@collabora.com header.a=rsa-sha256 header.s=mail header.b=UkM6G1KM
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Cc:To:Message-Id:Content-Type:MIME-Version:Subject:
-	Date:From:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
-	List-Unsubscribe-Post:List-Owner;
-	bh=kCnXMyre11QD19JOwanEa/37YHMkLU6RdrlXI8oh2j4=; b=Nrvnn5nz9PG+qj3+zwDWbgekH9
-	DBsaQ44CLrqaMM0Bg3yK8tKJmB446Ncp2+ALVpFAO5xsZ7kvL0lNLc0ObXi/LTx7t3Y0l8u7BcriG
-	hQKE3XEmkEi8uGTJlxJ9t2ad8Myg4CHlKGUuyRGt0vgGBBKpNjWMzxqEMwen/FJRN7sAD4oUxhvAy
-	Ek9oNQFvfNb8/ZfXjYx3HNSK8aaMBzUkRSQf3yw5sjHfMpu4YBpgv9bXtNokbnzy8hKeoFDvZPko2
-	lQFQwfoch3HXRb5h9wksEjQZjSwPyLnvHzJmBhDncpSdW1lIznW+zrALIqTi4x3xFs5g2SEjZkjA9
-	1TMwUe1w==;
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Unsubscribe-Post:
+	List-Owner; bh=8bqfpbBHkizT5LV4unUjsrB2ytVrIgjNmcwUFqqZaG0=; b=S3jyx75KXsr8RO
+	CfP7+dn8Wo5EBlGUNFIBFCvofE47DB2zY+fdBvYxDLlgLtqXX+FWaZ5mW+jD5kLZER0rMM2Xrs9Il
+	6rg1vV0Flspfr1QuYLPpDG/PXbYAsDe5q8XbIayMaE1k+3gEKJwnkuLXVT2i3yKflX/CRn4/WvlyX
+	f7o4H+Y205oCmLytNe/7G2dB/pgLLOfBWjcU7p3VQlY2wUQLCPJSkC07zXLS16mgnMQqF0hx5cNEs
+	MLjWn7B1+kw/6Dk1KQkDIsh4AmraigUaoXwdibgxx8UxTvF1A/k8g2JLMpUX52j72hRGetILZkxPc
+	1VEj1MfJB17WpYT7Zfrw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xTc2b-00000008ORx-2640;
-	Wed, 18 Nov 2026 09:33:21 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1xTdZ2-00000008gOD-2sJL;
+	Wed, 18 Nov 2026 11:10:56 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xTc2a-00000008ORJ-0VPW;
-	Wed, 18 Nov 2026 09:33:20 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 64FAE612AE;
-	Wed, 18 Nov 2026 09:33:19 +0000 (UTC)
-Authentication-Results: smtp.kernel.org; arc=none smtp.remote-ip=100.80.115.77
-ARC-Seal: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256; cv=none;
-	t=1794994399;
-	b=J14tAz5si/UN+C1jQ8txpIXsEyOov/CN4ui3P3zmS/P5O3YFTac7A1Moiv0gfk+fLWaO
-	 hjpr4R82TceH5pLv8CDonQr6u2RYQq62HuDbzWwkaHcQJ5VZbucWA9NKWyfnidBaukeU5
-	 i6c1aJzPbZkrDTg2KuRep31lHYR3MUhz/9BCzghqCyI5iXfEy3lOw4goqLiWiQviOjkCT
-	 rAeiYAU9Dpeo38lGGP8ka78/zn017n0x6vtu7kXUNZEhBhrcxSv9B+RfMgxP7lTAG0p1W
-	 6F8YJZ0iT//UAHHVkA+KK9TC9RmX3PlnGrSA7JKl8ZfQpxxHVz5wPl4tI0lYQA+7/wQ==
-ARC-Message-Signature: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256;
-	c=relaxed/relaxed; t=1794994399;
-	h=DKIM-Signature:Received:From:Date:Subject:MIME-Version:Content-Type:
-	 Message-Id:X-B4-Tracking:X-Change-ID:To:Cc:X-Mailer:
-	 X-Developer-Signature:X-Developer-Key:X-Endpoint-Received:
-	 X-Original-From:Reply-To:Content-Transfer-Encoding;
-	bh=kCnXMyre11QD19JOwanEa/37YHMkLU6RdrlXI8oh2j4=;
-	b=qLqKsVFJuUGRrY2Xr0JhhAMy7O5jaVEhTEFm8GM7kowYQnWCCC2ZVBvIayQVKr7Woqlf
-	 +zD8645Zubdzyw7/eL5LF9Hf0LK/uggFq+eWjq890j7xhjSJnyQzgspqWGFmi9K09Ezsh
-	 G6m5Dl8ryGRY49RduSE/ggJw12QEa1seRz2PZ92fKpHx1e0Ncf9GHF4EIG4+NDeyVWT1g
-	 yykEXKUx6xYM9dFnSbr+Ctma3sXNyvsK5oyGH3qFORDL1kOIBoQyxueX2S7B5YoBSC1+x
-	 r8A4LXlg27MZ7gyZG5LIbHfrseebpsRSp1TmDHP8Q/sF62lxviYObwvhzKH7CbX5ZKQ==
-ARC-Authentication-Results: i=1; smtp.kernel.org; 
-	arc=none smtp.remote-ip=100.80.115.77
-Received: from lkml.kernel.org (nexus.subspace.kernel.org [100.80.115.77])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
+	id 1xTdYy-00000008gNT-2Lcf;
+	Wed, 18 Nov 2026 11:10:55 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1795000249;
+	bh=C6+HY4ClMrV2fwaShVwciggPOYGg14zJs95/gfFRXeU=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=UkM6G1KMQCte1V3ulm2JnI7GWk61W6NCccHcxfvacoXdy3DBDgySwYYbXTgr1zAaO
+	 zQlhQ9XDFEHqknUNHUYQnocaHdLxWhmbM2qbfODwMKxNAlwP3CkwyGEn0aeY0MbQi4
+	 Z5NCIhWhIVRjQwGc8L/dt8WtbK2KDO2K/PN85ZGkPJBMq1f2EC4w/3KOXbk+ZUJtA5
+	 yoRuv0KYgMqnL0l1gnuVZdtfUhwx2Fz8wiei9ocHrTDnXIaP/TOR93AHvukBQhSBS+
+	 4XuCsItFKgZ3deLFJ/TxSB3HjMqn/CAVfXhCxpWdW+6MBkjXWRZJWeu4WFFVn/tMEv
+	 8DjZLR3oQgqPw==
+Received: from [100.64.1.21] (unknown [100.64.1.21])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.kernel.org (Postfix) with ESMTPS id 9DCA11F000C4;
-	Wed, 18 Nov 2026 09:33:18 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1794994399;
-	bh=kCnXMyre11QD19JOwanEa/37YHMkLU6RdrlXI8oh2j4=;
-	h=From:Date:Subject:To:Cc:Reply-To;
-	b=Bk5aCbO9TlBq4/G/hAOK93lKLYBC/DeiS6T4Wm4RJb9t1jdlV6Iu1Q8Z3li2nsMB2
-	 NgfBq5dYoNy/T8Bw8i2fN8XNg38cVRHklBZVH4k/ASxY3d0/xMJ/hkyxb6PJPuXtEH
-	 QvQqCS+Jmg28i4VrC/ZGmgJ/EqJrpvi3uSjAU70PDv6U7j0IprMmdDReqdQxOcI8HY
-	 vE4l/wte2ZHp0klPVwyknldmEXdSgYgHYCV0lNAObpRPXIEPU+xK9N83Ho2dNT3cUD
-	 HaFnj8NukBumTsGfk42oq0A1hO0Qov8VAP1uV8U4L3sAFVCElmIjR1vBeBD+6Qk2Oy
-	 Ekkbu28hB8VTg==
-Received: from nexus.subspace.kernel.org (localhost [IPv6:::1])
-	by lkml.kernel.org (Postfix) with ESMTP id F1FCE4ACC4;
-	Wed, 18 Nov 2026 09:33:17 +0000 (UTC)
-From: Zi-Hao Huang via B4 Relay <devnull+zi-hao.huang.mediatek.com@kernel.org>
-Date: Wed, 18 Nov 2026 17:33:11 +0800
-Subject: [PATCH v2] drm/mediatek: dsi: Don't let a signal cut the IRQ wait
- short
+	(Authenticated sender: kholk11)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 46C7617E07EC;
+	Wed, 18 Nov 2026 12:10:48 +0100 (CET)
+Message-ID: <779efc61-646d-4735-b54d-7bc7436385bd@collabora.com>
+Date: Wed, 18 Nov 2026 12:10:47 +0100
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Message-Id: <20261118-mtk-dsi-irq-wait-v2-1-8bda52993c6f@mediatek.com>
-X-B4-Tracking: v=1; b=H4sIANZw/WoC/32NTQ6CQAxGr0K6toY28hNX3sOwqEyRhgA6M0EN4
- e6OHMDle8n3vhWCetMA52wFr4sFm6cEfMig7WW6K5pLDJxzSUQ1jnFAFwzNP/ElFlH4VBGLk5I
- rSLOH187ee/LaJO4txNl/9oeFfvZPbCEk5LzouOikrW98GdWZRB2O7TxCs23bF6MjLaazAAAA
-X-Change-ID: 20261118-mtk-dsi-irq-wait-a24712ada627
-To: Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
- Philipp Zabel <p.zabel@pengutronix.de>
-Cc: David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- shaoming chen <shaoming.chen@mediatek.com>, dri-devel@lists.freedesktop.org, 
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org, 
- linux-arm-kernel@lists.infradead.org, 
- Zi-Hao Huang <zi-hao.huang@mediatek.com>, CK Hu <ck.hu@mediatek.com>
-X-Mailer: b4 0.14.3
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1794994396; l=2849;
- i=zi-hao.huang@mediatek.com; s=20261112; h=from:subject:message-id;
- bh=oSiLiwqCKkPp3lIKuiL5raZFKV28BSNXcVhbBi3SzXg=;
- b=vxu/8VdPlOJ1xHqEyJ64lB/7rEWbl4aMOvpjVViVoUm+YA7qopHYx1fIM4QO8RL6XUuWtY4CL
- sdTUiA0sJc2DCUsoRmyP0GpmHJ3PFqKaZ1F679Y91eWjGk/LZvKulA+
-X-Developer-Key: i=zi-hao.huang@mediatek.com; a=ed25519;
- pk=tbMIVegYSSBtz5MaQSUCX9RJO88MA/AI5cbmQKbaoIc=
-X-Endpoint-Received: by B4 Relay for zi-hao.huang@mediatek.com/20261112
- with auth_id=1493
-X-Original-From: Zi-Hao Huang <zi-hao.huang@mediatek.com>
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 4/4] arm64: dts: mediatek: mt8167: Add DRM nodes
+To: Krzysztof Kozlowski <krzk@kernel.org>,
+ Luca Leonardo Scorcia <l.scorcia@gmail.com>,
+ linux-mediatek@lists.infradead.org
+Cc: Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+ Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@gmail.com>,
+ Simona Vetter <simona@ffwll.ch>,
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>, CK Hu <ck.hu@mediatek.com>,
+ Jitao shi <jitao.shi@mediatek.com>, dri-devel@lists.freedesktop.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org
+References: <20260921113914.779393-1-l.scorcia@gmail.com>
+ <20260921113914.779393-5-l.scorcia@gmail.com>
+ <bbefcf0b-b31e-4f74-bf79-b0ccc983f62b@kernel.org>
+ <200ef6c1-eced-4c36-832d-3fb409aac866@collabora.com>
+ <5715e9e5-857d-4104-aedd-9662da0fc0ab@kernel.org>
+ <911e4163-8a2c-4ca2-8903-8d3ddb7266e8@collabora.com>
+ <600165c4-eaa7-4b1e-806c-63d3b97d5064@kernel.org>
+ <63da5790-984b-4760-8e92-85b5d2269b30@collabora.com>
+ <94ed1340-94bd-49ee-ba31-9bb63164c89a@kernel.org>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
+In-Reply-To: <94ed1340-94bd-49ee-ba31-9bb63164c89a@kernel.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20261118_031052_807847_3197170C 
+X-CRM114-Status: GOOD (  48.56  )
+X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -114,87 +91,161 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Reply-To: zi-hao.huang@mediatek.com
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-18.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-7.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,
-	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=ham
-	autolearn_force=no version=4.0.1
+	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS,USER_AGENT_SANE_1 autolearn=no autolearn_force=no
+	version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-From: Zi-Hao Huang <zi-hao.huang@mediatek.com>
+On 11/17/26 17:00, Krzysztof Kozlowski wrote:
+> On 17/11/2026 15:21, AngeloGioacchino Del Regno wrote:
+>>
+>>>>
+>>>> Any advice on how to possibly resolve this without rewriting the entire thing?
+>>>>
+>>>> Mapping that by mmio address in the driver seems too stupid/dirty/bad/etc.
+>>>
+>>> Driver needs that, so why exactly stupid?
+>>
+>> Really feels like going back to the days when devicetree was not a thing and all of
+>> the MMIOs (on ARM at least) were added into a mach file.
+> 
+> Well, adding an alias just to tell that device node with MMIO address
+> 0xdeadbeef is ID 0 is very similar, just placed differently. The
+> "aliases" are the mapping between MMIO and ID. Driver code also can do
+> the mapping between MMIO and ID.
+> 
+>>
+>>   >
+>>> You do not represent any
+>>> actual hardware information in DT with these aliases.
+>>
+>> That depends on how you see it (as in, on the point of view), really, because well
+>> technically the second ReadDMA IP is ... not the ... primary, as it's the secondary
+>> one - as much as the third DPI is not the primary one (even though DRM can make it
+>> so that it can be used as a primary output, but that's a software thing, not HW).
+>>
+>> So... well, with that point of view... those aliases *are* representing information
+>> about the hardware.
+>>
+>> But I know that you're not complaining just about this, and this reply is not a way
+>> to argue all that much, just a bit of thinking out loud.
+> 
+> Being simply "second" is not alone useful information. It's pointless,
+> it does not matter neither to hardware nor to drivers.
 
-mtk_dsi_wait_for_irq_done() waits for the DSI IRQ with
-wait_event_interruptible_timeout(). If it returns early, for example
-with -ERESTARTSYS when a signal is pending, both callers still treat the
-command as done, because they only handle a return value of 0 as a
-failure.
+Hmm... Sorry, but I disagree about this statement - it does matter in some cases.
 
-On an MT8196 board this led to a hard lockup during shutdown. The wait
-returned before the IRQ arrived, the panel disable sequence went on and
-restarted video mode, and the late CMD_DONE interrupt was then handled
-by mtk_dsi_irq(). The handler writes RACK and loops until DSI_BUSY
-clears, but DSI_BUSY stays set while video mode is running, so the CPU
-never leaves the handler until the watchdog fires. Forcing the wait to
-return early reproduces the lockup every time, and it no longer
-happens once the wait cannot return early.
+The driver's POV is of course out of context here, as we're talking about DT//HW.
 
-The wait synchronises the driver with the hardware, and it is bounded by
-its timeout. Use wait_event_timeout() so that it only ends on the IRQ or
-the timeout.
+(I know that you know, this is to avoid misunderstanding from anyone else reading
+this thread).
 
-wake_up_interruptible() cannot wake a task in uninterruptible sleep, so
-switch mtk_dsi_irq() to wake_up(). Without it every wait would last
-until its timeout.
+> If it matters,
+> then probably that "second" has some other meaning and it maps to an
+> actual hardware topology difference, then often it deserves its own
+> compatible or property, depending on the difference.
+> 
 
-Fixes: dd5080a54df8 ("drm/mediatek: add dsi interrupt control")
-Signed-off-by: Zi-Hao Huang <zi-hao.huang@mediatek.com>
-Reviewed-by: CK Hu <ck.hu@mediatek.com>
----
-Changes in v2:
-- Drop the remark that the wait is not made on behalf of userspace, since
-  a userspace backlight change can reach it (CK)
-- Collect Reviewed-by
-- Link to v1: https://lore.kernel.org/r/20261118-mtk-dsi-irq-wait-v1-1-205f25fac8b2@mediatek.com
----
- drivers/gpu/drm/mediatek/mtk_dsi.c | 7 +++----
- 1 file changed, 3 insertions(+), 4 deletions(-)
+This is a bit more complicated than that: "second" may or may not have another
+meaning, as in, it may or may not be topologically different in the whole context
+of the controller.
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_dsi.c b/drivers/gpu/drm/mediatek/mtk_dsi.c
-index f82506e10fd5..1315dd31a834 100644
---- a/drivers/gpu/drm/mediatek/mtk_dsi.c
-+++ b/drivers/gpu/drm/mediatek/mtk_dsi.c
-@@ -627,9 +627,8 @@ static s32 mtk_dsi_wait_for_irq_done(struct mtk_dsi *dsi, u32 irq_flag,
- 	unsigned long jiffies = msecs_to_jiffies(timeout);
- 	struct drm_device *drm = dsi->bridge.dev;
- 
--	ret = wait_event_interruptible_timeout(dsi->irq_wait_queue,
--					       dsi->irq_data & irq_flag,
--					       jiffies);
-+	ret = wait_event_timeout(dsi->irq_wait_queue,
-+				 dsi->irq_data & irq_flag, jiffies);
- 	if (ret == 0) {
- 		drm_warn(drm, "Wait DSI IRQ(0x%08x) Timeout\n", irq_flag);
- 
-@@ -656,7 +655,7 @@ static irqreturn_t mtk_dsi_irq(int irq, void *dev_id)
- 
- 		mtk_dsi_mask(dsi, DSI_INTSTA, status, 0);
- 		mtk_dsi_irq_data_set(dsi, status);
--		wake_up_interruptible(&dsi->irq_wait_queue);
-+		wake_up(&dsi->irq_wait_queue);
- 	}
- 
- 	return IRQ_HANDLED;
+Having different compatibles wouldn't do either, because having 10 compats for one
+IP which is 99.9% compatible if not for very very very very (add as many "very" as
+you wish here) small details that definitely don't deserve a new compatible... and
+besides, a driver parsing more than 90 compatible strings would be... how can I
+express that in professional words? :-)))
 
----
-base-commit: 067c5c24cef23d913b67eaaf71ae67e7169a6620
-change-id: 20261118-mtk-dsi-irq-wait-a24712ada627
+>>
+>>   >
+>>> You want to tell
+>>> drivers how drivers should behave - that's not a job for DT,
+>>
+>> I want to tell drivers what is the first or the second or the third hardware
+>> instance of the same IP, I don't want to tell drivers how drivers should behave
+>> from devicetree.
+>> The drivers are behaving differently with different hardware (read as: hardware
+>> that is *physically* located in front of something else, or somewhere else anyway)
+>> as in with different hardware instances.
+> 
+> Then alias is not the way to represent these differences.
+> 
 
-Best regards,
--- 
-Zi-Hao Huang <zi-hao.huang@mediatek.com>
+Are we opening a can of worms here?
 
+There are a bunch of (generic, yes, and I think acceptable-because-generic, right?)
+aliases for other devices like UART, I2C, SPI, etc which instance is actually
+represented by an alias - and this is *not* for HW, but rather for drivers' device
+node number consistency in the userspace (of course not just MTK, but all of them).
 
+That makes things a bit weird then when we assert that devicetree describes the HW
+and, compared to what we're analyzing in this specific MediaTek case (which does in
+a way describe hardware, as in hw instance number), the LS busses aliases are just
+software details in an inappropriate place (DT) at this point?
+
+I wonder if there's anything that can be done for that case, because then now I'm
+kind of sensing that there's something else that is fundamentally wrong and that
+1. Leads to confusion (not in experienced people usually, but not granted)
+2. May actually help resolving situations that are similar to this one
+
+I'm well aware that whatever comes out of this won't be for this round, nor for the
+next one, but rather something that may eventually take (a lot of) time to assess
+and address, but still.
+
+Mind you - I keep thinking out loud - but I believe sometimes this is what makes
+good (hopefully) ideas come to mind.
+
+>>
+>>> that's job
+>>> for driver data. Of course if there is smarter way than MMIO->ID, I am
+>>> all in.
+>>
+>> You can't imagine how much I was hoping for you to say something about an
+>> alternative solution to that.
+>>
+>> As I said, it feels a bit like pre-DT times, but what I get from you is that this
+>> is cleaner than just adding information about the real hardware instance number in
+>> devicetree (no that's not just MediaTek, qcom also had similar issues as you said).
+> 
+> Sure, I understand. This is an workaround and might be less applicable
+> here. It might be possible that your hardware needs a dedicated
+> property.
+
+I didn't check the others - but from what I remember, Qualcomm also has this kind
+of workaround somewhere (in some driver[s]) - so that pushes the count to two
+vendors, let alone the number of SoCs affected which is .. well, more than two :-)
+
+I wonder if someone (unfortunately not me or at least not in the next 6 months)
+should do ... well, something ... to fix this situation in a good way.
+
+Adding the same workaround to MediaTek would make the argument stronger when that
+someone actually gets to resolving this situation somehow.
+
+> Unfortunately, this cannot be a custom per-device alias.
+> 
+
+I will come up with some way (right now, I have no idea how) to get this situation
+addressed in MediaTek DRM, maybe it's going to be that MMIO address workaround, or
+maybe not, let's see what I can do here.
+
+Surely though, either way, that's not good news - not just because it's going to
+slow down the upstreaming by a whole lot - but mostly because it's all about
+adding one more workaround for something that is "left in the future-decisions-box"
+in the kernel.
+
+Having to do this makes me sad, and this is mostly because I have no other choice.
+
+I'm sure you know what I mean here, so I won't add any more words to this already
+long reply.
+
+P.S.: Luca, you don't need to add the aliases to your SoC, because there's only one
+instance of the display controller IPs that you're adding; for DSI1/2 DPI1/2 and
+those final outputs, I guess just leave them out for now and add just the first....
+
+Cheers,
+Angelo
 
