@@ -2,72 +2,120 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 597B1606A330
-	for <linux-mediatek@archiver.kernel.org>; Wed, 18 Nov 2026 12:32:49 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 17530606A320
+	for <linux-mediatek@archiver.kernel.org>; Wed, 18 Nov 2026 12:43:20 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=bOlWD/Kc;
-	dkim=pass (2048-bit key) header.d=collabora.com header.i=@collabora.com header.a=rsa-sha256 header.s=mail header.b=SvDp+UP5
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=GX51meep;
+	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=hpeFYIEk
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Unsubscribe-Post:
-	List-Owner; bh=70t0JbsHuE8RJx7WH4ijKksCN6kWqlzaDl4vSA3sy3U=; b=bOlWD/KcKMCPyA
-	2ys0MjHK00ahxpdO+HdWIQHj+G0Ctg6gfxBTQcQJ2UNCu5+sfd4vZOd+PLB10PRnfIiLbfhUhGPb5
-	m1wkUFyEoUOd+GhYVCakGfr7XEHasKT/ZQTIXcHwHzHCRN9V6BAiT4fXg8/D7KSbQaZUdOxj+eqKr
-	rebyRV/zyvxv2IRvd9p0B2xJLsqg9fCoV625luj8GuzBKcUS6F0A5BrvXfdvFajchKWH/kHxcYKD7
-	MsO986cZYPKnQhpJqT7PjVY65IPRNYh6LThjj1qkJMGmz2+X1VrDi6O/Hyr/wx/pppMwgXOMXueRz
-	14M5BZwiQL50zoNaCVpw==;
+	List-Owner; bh=ykhNTsChJJUlt1URM+zfzHn3YiACgwozf/JpK+p7y/w=; b=GX51meep9d4w17
+	En9G8z/ViP/J/ZT8n+Plc3iLOcMqNPF+iQc8zphblrMibr1TfvgFl7WZbQX2tvLjxLZDTgS7i22v7
+	+fxEucjM8hFyN7IDb6v6t5bV3LM/MaYHwUcTCVxSacOvE7dZVqXoLPC+9GI+rRllnfiJwuOAc/LDs
+	x51ugB7dn83HNxJkWN74B4112MXreypvQaHlPOgaPQ2q3VWPTnWN56mgN56Dw+bm4iDQBJpkPK+0Q
+	GJCi33Fjg8suichlRwf1X9adpLU+NNSbwlNWhmpi1qW0JfLC7waHi6K7EG8mBrMRGo/nr2JZFT4Kr
+	y8VFTN/izRHe9LzkybZA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xTeqH-00000008rNN-0Lzb;
-	Wed, 18 Nov 2026 12:32:49 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1xTf0R-00000008t9B-3L9Z;
+	Wed, 18 Nov 2026 12:43:19 +0000
+Received: from mail-pf1-x42b.google.com ([2607:f8b0:4864:20::42b])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xTeqE-00000008rMX-3O17;
-	Wed, 18 Nov 2026 12:32:48 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1795005163;
-	bh=wteOM9b+zSffSygch8OIiG1KfgGZxZdoiAbmq3MuSjM=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=SvDp+UP5rJzMgno0Rw8XcbVnIR40+0cLIXqM7U1qt3IvoBBtX2CdwLMBnu/tYrLNF
-	 mx5GHSS/udI8UNablyDlmu6mItAYAmbSedTYSLBpA/3xLvOHir/ePh2i/u2SpEZrso
-	 BiEILgdKCWwBVfpFn6xxjHKd6kMNF7/g/h1ozrDySkW9C92m8gPa2piQMIR9Z2u1Vu
-	 qoKszQboTwJwp+VHzXt36VZQko34CAbrYXI7rcTJatRUlhlSRqqxJJywt6OBYOX4LH
-	 vBmyoA7V3UtpZ7sAvCkXduXSnEyDUeF9umKgxRLI6uYaYBF1wACIvN1+OLc4gRPK5y
-	 wnd4uOyXf6swA==
-Received: from [100.64.1.21] (unknown [100.64.1.21])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange x25519)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id ADE5E17E052F;
-	Wed, 18 Nov 2026 13:32:42 +0100 (CET)
-Message-ID: <675eb0c5-96a1-4254-844e-234fb972d824@collabora.com>
-Date: Wed, 18 Nov 2026 13:32:42 +0100
+	id 1xTf0P-00000008t8p-1zJN
+	for linux-mediatek@lists.infradead.org;
+	Wed, 18 Nov 2026 12:43:18 +0000
+Received: by mail-pf1-x42b.google.com with SMTP id d2e1a72fcca58-8b5e5e64494so557541b3a.1
+        for <linux-mediatek@lists.infradead.org>; Wed, 18 Nov 2026 04:43:17 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1795005796; cv=none;
+        d=google.com; s=arc-20260327;
+        b=G4AfW7EW9ribV8AiAP/+ADqJvV4DEZ7Pbu2b789+XdemGqo4xYSdnC6KW2malKP/q/
+         wIh0vxbXQamDrUNpdBY0khZyHIjOMvKB8TycrNgUvkTpAPlnIucRyRRDePnKGKygY/m+
+         RcCnmU1QUbKbUjGr/z4PcZ9YWewIAiosQIVush3mM5UABBN3Vi9dgwatySP+TjYsr247
+         Ea5WL37cjAeDv5rVUvyx/td8GQeirJwFSCOSwaW7GbZIT+QnSvQCBeeCVshzFfH9s+PC
+         85htj8LfzXaXdQjsy2kh9ispX0qTPuxeFsIJVzcW4lqoTjtDH1elotQ/7hspvFdMyiRc
+         23fg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20260327;
+        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+         :in-reply-to:references:mime-version:dkim-signature;
+        bh=ykhNTsChJJUlt1URM+zfzHn3YiACgwozf/JpK+p7y/w=;
+        fh=2ZNBUBY4OGpWl32K/Se7iYqTnj3e6YzuDDqQsbHYpdM=;
+        b=JdRx5giRUGYZI2WCehBXks0FbC2OV4+5yNnsnPvmACIlSmYWbzrudtFxYiikuK5VI0
+         Nwz6edGHgU8/JptwgSSm7kdBZlA1zMLsI57ZwYVRwvnFuCiqREGnRbIjBQBaXBLzFjLx
+         /mruc3jPBp+VTQTy41Lnc4RzcW8eNNcsxYLRQkk24bUZCsOLU4wagDqTs4awGVFM3fzB
+         L6iVZhkuVIyCidXWulEXGRxpWTdOAlC7PCp2WFHhd+DVKpn4/pyqpwuzRsVGwzQSajXH
+         IEv9RmVCxcEZSo3CBamo4rKPrF/70P1Ud52UTdcgSc/tse1jMNgi/WGFSWDAVIGYNXQZ
+         ou7g==;
+        darn=lists.infradead.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20260707; t=1795005796; x=1795610596; darn=lists.infradead.org;
+        h=content-transfer-encoding:content-type:cc:to:subject:message-id
+         :date:from:in-reply-to:references:mime-version:from:to:cc:subject
+         :date:message-id:reply-to:content-type;
+        bh=ykhNTsChJJUlt1URM+zfzHn3YiACgwozf/JpK+p7y/w=;
+        b=hpeFYIEkRa0GV3eFAkROqKpYxAc6MRpLtseWJF4L+ZuEIkW4/8tYbO2J5VrF32LEoE
+         yRdF/9om7vIUV+JjEnnxVpnOgiOqMj2KMmoQJtsQ0ydNWcQkBPjskf5XKbyKLWPfxA/U
+         rLFniUFh5zKNPkA1ciqStJhy+c9q6janlG0gD9wUuGZKRRAEWgpX40FTfLKk0ss5StXQ
+         HCj8x910ngcI+4jek+jobVna3rTHCB9t/IxkpjhKWOaxupd0VUsCMlpZ590898T+Wsi/
+         5Tkb5PQAppxuA6hc+pwep3EF7o0sMPuR8uQPaCvfl0EFxEBm2uz/l4aaEe4w+Vn6PWov
+         Jtsw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20260707; t=1795005796; x=1795610596;
+        h=content-transfer-encoding:content-type:cc:to:subject:message-id
+         :date:from:in-reply-to:references:mime-version:x-gm-gg
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+         :content-type;
+        bh=ykhNTsChJJUlt1URM+zfzHn3YiACgwozf/JpK+p7y/w=;
+        b=EXEStWWAdWgHjpW94tSKC3Rh/HTV8GOvPbEQJ5qWuDwcdN9bf9SdqGSGo+y18Bp03m
+         Bw+MV3iBBYM/XkBGLxtqc6Bfig+ZNFNIBbD7UV46rxIUa3sjoh3FNEMnR4Ys4kw6Sboe
+         Yt5QEWQMKecB13Or5G/5Yt5CGs38jwv4AK7+cK5OiV5rck6UUq/CmZig655hajaaTziX
+         vrqxbGGAg9zQ6hW6/NJYiVos/ZOZEwVxunzAIBJr/RZXm7QQjA/WPfmUltB+cgItDFo+
+         QJmsOVOYb/IuXg4q5DHAHCujIfsEItRToxweX9mSmVlgOT3Q2kBMt6VqWo4WjPv9pCxi
+         Qfhg==
+X-Forwarded-Encrypted: i=1; AL+hErHUgl8iKXi8t/UcwB6THXHq7RQm9MDeTD3dtYNvb5VByfhQ1AOYM9ewyic9YT8IsecD6I/rKWp8ItUx3J3+AQ==@lists.infradead.org
+X-Gm-Message-State: APuU4Z9m4JQPIP+AppQ/J9++IESsM69pvDzowgf2SFAlCWEjkGJntG/S
+	XK33BjYbMrJGxHPSVSi7X3Ed7UHpYO5/ILJWhhGbzxNZf0HPFju4pJW3T+s1IS64+c55WQ5dLLo
+	UkrQQzyVZ8uZBAIa8SWeXF+U5z0EC9rA=
+X-Gm-Gg: AYBFou3yKHC8bpZPAwrg6UurHz8/1LT8yN3BFpSzEkxGPiAx7Yrs3lKPCW5mVN+InBq
+	fu6u3RB4vUY4/qUR8StWAkDbfdVQ2OauheJbDhOmAPPR+LxcoozFFf2HSI0raxEvsZ/lY5PpLYM
+	xamv7EdKPYdKwKLWF8vlGi2oM7tYeR2V7Y7FPhWgu4YGcNz6A9druwD6urZMhqR1ePSmIMSO04Q
+	ps1wIb0TB5XunXA92fRmIHak09LaNK8ye+6bg93Jt2nOvH0L3cZaD2MdSjT0IEt5Zi1K73kPMSy
+	woerA74LdbpRMfCRL2lrIKoQpSe4Mmr8Gm0ZF2dGnB4/80hnj2x2Vjsw0AvKYuwP7O9hMUV2KTh
+	CaOhjuI25Fait/Tf8v/sb2GS/lndoyA5z1q/BiMI=
+X-Received: by 2002:a05:6a21:798a:b0:3f9:6c37:4b43 with SMTP id
+ adf61e73a8af0-3fe8a0219femr2566464637.45.1795005796480; Wed, 18 Nov 2026
+ 04:43:16 -0800 (PST)
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2] drm/mediatek: dsi: Don't let a signal cut the IRQ wait
- short
-To: zi-hao.huang@mediatek.com, Chun-Kuang Hu <chunkuang.hu@kernel.org>,
- Philipp Zabel <p.zabel@pengutronix.de>
-Cc: David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
- Matthias Brugger <matthias.bgg@gmail.com>,
- shaoming chen <shaoming.chen@mediatek.com>, dri-devel@lists.freedesktop.org,
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, CK Hu <ck.hu@mediatek.com>
-References: <20261118-mtk-dsi-irq-wait-v2-1-8bda52993c6f@mediatek.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-In-Reply-To: <20261118-mtk-dsi-irq-wait-v2-1-8bda52993c6f@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+References: <20261115025635.40010-1-lucid_duck@justthetip.ca>
+ <CAHaeJsRTd5KjN9CsKDU-g8Ut-WfBuiKkTnkBSZ9hQSsr7P_HQA@mail.gmail.com> <173fc5e8010e9f01a9a11f0d98d0934c8b8ccc09.camel@mediatek.com>
+In-Reply-To: <173fc5e8010e9f01a9a11f0d98d0934c8b8ccc09.camel@mediatek.com>
+From: Chris <hoopyfrood42@gmail.com>
+Date: Wed, 18 Nov 2026 07:43:03 -0500
+X-Gm-Features: AclHuK_uO0t29yrPw6mmFLmOZoUGZqSgOHrTkJfrQJOhwlG-rwXsTHRJw0FHFNM
+Message-ID: <CAHaeJsTWY4UOgAmj-F18Mi8CKCMWvQ=d2S8dyF_fyaqiBcxPZA@mail.gmail.com>
+Subject: Re: [PATCH wireless v2] wifi: mt76: mt7925: get the survey airtime
+ from the firmware
+To: =?UTF-8?B?TWljaGFlbCBTaGloICjlj7LlkJvku7Ip?= <Michael.Shih@mediatek.com>
+Cc: "lucid_duck@justthetip.ca" <lucid_duck@justthetip.ca>, 
+	=?UTF-8?B?U2hheW5lIENoZW4gKOmZs+i7kuS4nik=?= <Shayne.Chen@mediatek.com>, 
+	"nbd@nbd.name" <nbd@nbd.name>, Ryder Lee <Ryder.Lee@mediatek.com>, 
+	"lorenzo@kernel.org" <lorenzo@kernel.org>, 
+	"linux-wireless@vger.kernel.org" <linux-wireless@vger.kernel.org>, Sean Wang <Sean.Wang@mediatek.com>, 
+	"floss@jetm.me" <floss@jetm.me>, 
+	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, 
+	=?UTF-8?B?RGVyZW4gV3UgKOatpuW+t+S7gSk=?= <Deren.Wu@mediatek.com>, 
+	"stable+noautosel@kernel.org" <stable+noautosel@kernel.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261118_043247_070859_3F480A73 
-X-CRM114-Status: GOOD (  25.64  )
-X-Spam-Score: -2.1 (--)
+X-CRM114-CacheID: sfid-20261118_044317_554885_148C28FB 
+X-CRM114-Status: GOOD (  17.98  )
+X-Spam-Score: -1.9 (-)
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -78,93 +126,71 @@ List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-17.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,
-	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1
-	autolearn=ham autolearn_force=no version=4.0.1
+X-Spam-Status: No, score=-2.9 required=3.0 tests=BAYES_00,DKIM_SIGNED,
+	DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,FREEMAIL_FORGED_FROMDOMAIN,
+	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS autolearn=no autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On 11/18/26 10:33, Zi-Hao Huang via B4 Relay wrote:
-> From: Zi-Hao Huang <zi-hao.huang@mediatek.com>
-> 
-> mtk_dsi_wait_for_irq_done() waits for the DSI IRQ with
-> wait_event_interruptible_timeout(). If it returns early, for example
-> with -ERESTARTSYS when a signal is pending, both callers still treat the
-> command as done, because they only handle a return value of 0 as a
-> failure.
-> 
-> On an MT8196 board this led to a hard lockup during shutdown. The wait
-> returned before the IRQ arrived, the panel disable sequence went on and
-> restarted video mode, and the late CMD_DONE interrupt was then handled
-> by mtk_dsi_irq().
+On Wed, Nov 18, 2026 at 2:23=E2=80=AFAM Michael Shih (=E5=8F=B2=E5=90=9B=E4=
+=BB=B2)
+<Michael.Shih@mediatek.com> wrote:
+>
+> Hi Chris,
+> Thanks for digging into this.
+> Short answer: on MT7925 the noise floor is not exposed to the host
+> today.
+>
+> For additional info, the MT7915 and MT7996 chips are for AP. While
+> MT7925/MT7928 are STA roles.
+>
+> I've also checked on our MT7925/MT7928 chip's FW, and here is what I
+> know:
+>
+> 1. It's not in GET_MIB_INFO.
+> Neither the MIB_INFO response nor the UNI MIB counter set carries a
+> noise / NF / IPI field =E2=80=94 they're CCA/ED/channel-idle time counter=
+s
+> only. That's consistent with what you saw: mt792x_phy_get_nf()
+> returning 0 is accurate, there's simply no MIB field to read.
+>
+> 2. Why reading IRPI directly gives zeros, and why IPI_EN "didn't stick"
+> + caused MCU timeouts.
+> The IRPI histogram registers and the IPI_EN control do exist on this
+> chip.
+>
+> Thanks.
+>
 
-This happens because of the hacks that you have downstream.
 
-With the restructured mediatek-drm adding proper support for MT8196's Display
-Controller architecture, what you're describing does not happen, because the
-tear down path is correct.
+Hi Michael,
 
-Regards,
-Angelo
+Thanks, that settles the MIB side: no noise field in GET_MIB_INFO, so
+mt792x_phy_get_nf() returning 0 is accurate, not a bug.
 
-> The handler writes RACK and loops until DSI_BUSY
-> clears, but DSI_BUSY stays set while video mode is running, so the CPU
-> never leaves the handler until the watchdog fires. Forcing the wait to
-> return early reproduces the lockup every time, and it no longer
-> happens once the wait cannot return early.
-> 
-> The wait synchronises the driver with the hardware, and it is bounded by
-> its timeout. Use wait_event_timeout() so that it only ends on the IRQ or
-> the timeout.
-> 
-> wake_up_interruptible() cannot wake a task in uninterruptible sleep, so
-> switch mtk_dsi_irq() to wake_up(). Without it every wait would last
-> until its timeout.
-> 
-> Fixes: dd5080a54df8 ("drm/mediatek: add dsi interrupt control")
-> Signed-off-by: Zi-Hao Huang <zi-hao.huang@mediatek.com>
-> Reviewed-by: CK Hu <ck.hu@mediatek.com>
-> ---
-> Changes in v2:
-> - Drop the remark that the wait is not made on behalf of userspace, since
->    a userspace backlight change can reach it (CK)
-> - Collect Reviewed-by
-> - Link to v1: https://lore.kernel.org/r/20261118-mtk-dsi-irq-wait-v1-1-205f25fac8b2@mediatek.com
-> ---
->   drivers/gpu/drm/mediatek/mtk_dsi.c | 7 +++----
->   1 file changed, 3 insertions(+), 4 deletions(-)
-> 
-> diff --git a/drivers/gpu/drm/mediatek/mtk_dsi.c b/drivers/gpu/drm/mediatek/mtk_dsi.c
-> index f82506e10fd5..1315dd31a834 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_dsi.c
-> +++ b/drivers/gpu/drm/mediatek/mtk_dsi.c
-> @@ -627,9 +627,8 @@ static s32 mtk_dsi_wait_for_irq_done(struct mtk_dsi *dsi, u32 irq_flag,
->   	unsigned long jiffies = msecs_to_jiffies(timeout);
->   	struct drm_device *drm = dsi->bridge.dev;
->   
-> -	ret = wait_event_interruptible_timeout(dsi->irq_wait_queue,
-> -					       dsi->irq_data & irq_flag,
-> -					       jiffies);
-> +	ret = wait_event_timeout(dsi->irq_wait_queue,
-> +				 dsi->irq_data & irq_flag, jiffies);
->   	if (ret == 0) {
->   		drm_warn(drm, "Wait DSI IRQ(0x%08x) Timeout\n", irq_flag);
->   
-> @@ -656,7 +655,7 @@ static irqreturn_t mtk_dsi_irq(int irq, void *dev_id)
->   
->   		mtk_dsi_mask(dsi, DSI_INTSTA, status, 0);
->   		mtk_dsi_irq_data_set(dsi, status);
-> -		wake_up_interruptible(&dsi->irq_wait_queue);
-> +		wake_up(&dsi->irq_wait_queue);
->   	}
->   
->   	return IRQ_HANDLED;
-> 
-> ---
-> base-commit: 067c5c24cef23d913b67eaaf71ae67e7169a6620
-> change-id: 20261118-mtk-dsi-irq-wait-a24712ada627
-> 
-> Best regards,
+On point 2, it looks like the explanation was cut off:
+
+> 2. Why reading IRPI directly gives zeros, and why IPI_EN "didn't stick"
+> + caused MCU timeouts.
+> The IRPI histogram registers and the IPI_EN control do exist on this
+> chip.
+
+The mail ends there. Could you send the rest? In particular:
+
+- Why do the IRPI bins read zero from the host? Is the histogram owned
+  or reset by the firmware, or does it need some other enable or bank
+  select first?
+- Is there a supported way for the host to turn on IPI collection on
+  MT7925 (a firmware command rather than a direct register write) that
+  won't trip the MCU timeouts we saw?
+- If there isn't one today, could it be added with the firmware change
+  you mentioned for tx time?
+
+A noise floor or IPI histogram is the one RF figure we can't get from
+MT7925 in monitor mode. I'm happy to test any firmware or driver change
+on an MT7925 USB adapter (Netgear A9000).
+
+Thanks,
+Chris
 
