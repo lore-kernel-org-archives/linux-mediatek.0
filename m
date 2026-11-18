@@ -2,113 +2,120 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 7006F60A2613
-	for <linux-mediatek@archiver.kernel.org>; Wed, 18 Nov 2026 19:24:59 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 668E9606FF54
+	for <linux-mediatek@archiver.kernel.org>; Wed, 18 Nov 2026 19:31:10 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=SadfRWUO;
-	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=ZHgYIYAM
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=blDans+3;
+	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=KFORJDXR
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:MIME-Version:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
+	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=EjJYvzFdvze5iPMTQvoCwzZHkwJLHlrVNoowatB6Euo=; b=SadfRWUOLP8Fd6V0kVJljlnPpR
-	a3AgxDUNJj5tiOYfn2xQosS50sVhOaovcdLMWFs6CxqxxME7YyZt8tcytA+tjtiBsdIsLDHMEVRTF
-	2ghpWp/jRSK/JWLihhpivtJGNAvrrGpJC9QzCDtfH1j97WlPwT1Zb20zOs0CZ8chMMVxyTwadsX3k
-	FoUgZM1ckQpoOZB7+jwj5AkK42OTgGmHrgO5dpGUghlcAe5PNxb6+F+tW5mmfIFAlWyqCDefcQMqf
-	BYW7vKf79YgdeYLrw19Nwk+bLuO8DhLkKunsGflJCtqJCeugXid+f/9Zy09vj0zOILJm15Xq/btLn
-	8jwRm/+g==;
+	bh=iAbjlXus0iw2LllxqZoryy58tCqmnnXTzlAaD4u02/I=; b=blDans+3SWe2kPyTpVqJsglIwK
+	zEDG/jdaIvGuoRPIRzu2d4Fwsho3rWKbndZEP0OdqreMTg2FZl/HRJgHNeTauBJcHllwZ8TduQ/VW
+	wzojDkea6PYd57GWXT1U8P2hgS8c//sh2iPOEBndHjnzXc30NAJWV84yr9F8rQNh5MmKifxj0Gupf
+	JT1RXbf09ZekjreEi9xcY2eZ0/mUSOkwEveY1QmzkuTxgVpv4gug1CH7gn4GX7RPmuNescckZxPsv
+	5PUPacp9GTRRQDTdTIP2qAdVPW0Rf4ZM+g7g+gQViXCplsK+YDf/O96z0XLQhC5Gr3ZVmLYRtCRrk
+	gQQ3EY/Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xTlH8-0000000A68b-4Bqa;
-	Wed, 18 Nov 2026 19:24:59 +0000
-Received: from mail-pj1-x102f.google.com ([2607:f8b0:4864:20::102f])
+	id 1xTlN8-0000000A6nq-0Kpa;
+	Wed, 18 Nov 2026 19:31:10 +0000
+Received: from mail-ej1-x62e.google.com ([2a00:1450:4864:20::62e])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xTlH5-0000000A67w-3lbK
+	id 1xTlN4-0000000A6mR-2IUQ
 	for linux-mediatek@lists.infradead.org;
-	Wed, 18 Nov 2026 19:24:57 +0000
-Received: by mail-pj1-x102f.google.com with SMTP id 98e67ed59e1d1-3b0ae87069dso707104a91.2
-        for <linux-mediatek@lists.infradead.org>; Wed, 18 Nov 2026 11:24:54 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1795029894; cv=none;
+	Wed, 18 Nov 2026 19:31:08 +0000
+Received: by mail-ej1-x62e.google.com with SMTP id a640c23a62f3a-c511cdd5a82so115807366b.3
+        for <linux-mediatek@lists.infradead.org>; Wed, 18 Nov 2026 11:31:05 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1795030264; cv=none;
         d=google.com; s=arc-20260327;
-        b=qQbB1k4h+nIDeMgMhST6I668BldVGm7d/YZJV8KDI9gCOLn1NyYUE1YP5AkRxbhSNM
-         9403AIr2jo+XjIpFqFMQ58tktJy2fkQg833u+womcwU/N+SL/2vwS8M7kR8LDu1upyWg
-         omYjZLSEqVpqKlQS7ou2w0qtXl8roPMTO0gW8WRSHTPRoLRaU+rNf4sAAoiKfWBNNdZD
-         epSDfyuxnVp8/l25cMLo8FPbDKDjCWrj+NLqhtr+R5/viHt4WLA66g70AVX+ZL8EW10E
-         xE4yzvgSC+UPTWpLOZ3vW9t1RNyeUyv0NcxOV33LIdVbzMOrGM89Zfh3CT3hnJfnPgJz
-         voLQ==
+        b=Xs4+nDuAgwitTt3Drx7oCrc0sML7+EZXe8WkDUGl+1pAOZP35osd4L3E9mm+rG5tgD
+         TyRQ33RVrB+mBljNhSMHCVRg97Mpfv1qnhH4drSCLU3VwBx+C+7w+H3qWNKfSypnLd4l
+         638BjFWKALEvd2sMvmETfjEtGZZoKYvSwNTp2y4Idzqxgz9wfvxbQaBg6lcoJ968+MB0
+         lTnfNgmkbQsuZGGKGlpzUgFajTUIkq8pEnLiZNchMLl2bsR6MWvg8G6o6ELOTdfxMGBs
+         f1YAn+EB2n4Ov4ly6/nTHK5NnBtkFScc/ab9F1LTaoy5PezMBHSAGHyo785H968Ns8WA
+         N7Jw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20260327;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
          :mime-version:dkim-signature;
-        bh=EjJYvzFdvze5iPMTQvoCwzZHkwJLHlrVNoowatB6Euo=;
-        fh=H3IeUBJlrhksLLVcyJSdzlg/KTvRbBJBYaS4xFY2eUE=;
-        b=Jtyy04l8Ipr9WLc1TJZhjsCoWf7ypzdJXuOt8a5LTJZi0zLi2U0rYXMrz0cFRedCYb
-         ygTwHs1ZIn1w3YbPHjoug0eW51f7LTR6Flb8WTxBV42Vs2aj50Hl99T3vR/PGYbRvaKH
-         9OQglfDTbks1pUa7J8o3fpGJYbEkeJ2uYxekGw+jJPOw72n7rhlBmgCxB61ro9LjstUp
-         4kYM5dmoLcXWjxTvNmw4ve5+zdArHMSWOM8lonnNOHBOnYdq65LUoYLHeSV/J3NEmCsN
-         FB04knqBBbps1K7Dl7dzX0A4ewnsTxIJSxry+VL2ObdiSwGqQ9Tj3bwc2ONlry5y96bB
-         PEPA==;
+        bh=iAbjlXus0iw2LllxqZoryy58tCqmnnXTzlAaD4u02/I=;
+        fh=dHdFPVc4z8nsw5DaF1jIpi+tzr5CB2bMEWdwbcAp05o=;
+        b=sgf0eCa8vioMYi60LO63LZ7oy2oSEvDW0RIf0KNuAEPBfx2PNKkIL938Ejg7zTeDSZ
+         FzbX9/EVQ2lqH4koSsr/ock8o1JmSO46H4qv+uyz1zmm3CKdBM/XVbeEuuQrMVp9pjiD
+         koPlHdN7emnXip9Ai911vj6U4gI4HKRMQxfYnDnmU+9+0dxUUOjzpCo/3f163d/ZH0L5
+         gbHF8FKV7rQYoE30a+dExGl1KKdGi74Gs8lq3uQgSdrKJZhtJVCRU0lI+BWZJkyEy0Cy
+         DkwyZBAEA6i0GgOcEZ9aQRo6ETjw7UA51pS+bH9KALJ38vqxwZS9RIOfVGSvPsAJSoxK
+         tFGw==;
         darn=lists.infradead.org
 ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20260707; t=1795029894; x=1795634694; darn=lists.infradead.org;
-        h=content-transfer-encoding:content-type:cc:to:subject:message-id
-         :date:from:mime-version:from:to:cc:subject:date:message-id:reply-to
+        d=gmail.com; s=20260707; t=1795030264; x=1795635064; darn=lists.infradead.org;
+        h=content-type:cc:to:subject:message-id:date:from:in-reply-to
+         :references:mime-version:from:to:cc:subject:date:message-id:reply-to
          :content-type;
-        bh=EjJYvzFdvze5iPMTQvoCwzZHkwJLHlrVNoowatB6Euo=;
-        b=ZHgYIYAMO9uwXwnOk2JzGzP0BSP/igsTyYedlQuYqMEdbqnLBj8c9HqDQ0gES29T+2
-         WpWjGK9yCJZ8MFsF3j2i5TK4zWjEsaRQhRk5rnIDsdzJSdUKNullzuxa88CcjcC+mAph
-         upYtgdx370uDZH4kf3RzTUR7nU+RfBe35z6/n5QAxPXH5EBPcJrYdkUc2MMhuHnqWpxV
-         Qz+BhNecbA4JX0Nv12msFHT1PR1VlsYBEQWCyXJ4N+7sHc7Zn1CfhqiQr4Rb3epfEsZN
-         3kDGWjsiULfxuCYWfK/BK6rzAEQflmnlThsbmFINZqnmFdeqFtFu1Z5XQHOQO2yEjfIZ
-         80tw==
+        bh=iAbjlXus0iw2LllxqZoryy58tCqmnnXTzlAaD4u02/I=;
+        b=KFORJDXR0tTk5KVgNDJhdCtuAgVz0rLNYE+jng1gmE4Y0jRUv69jgdCTjFELfQfeM+
+         8uKgygon64V4PDwFSAFiCMyrGk7uHrSTl+ZTxua/mY18dqqXgMOAUGLv3zi+HOxt/qwo
+         CiW9mJvIeFfcYz2uf/SWpy9nO8umxkbVU3PPxyXAb31axBDO57ktFk4P3Qa62W45wdu7
+         cz73KI4vF1CccipgC6op1rxRCzKthO2W1/2NWwxNXFKvRUie4hSlvYii6+hoKLMNJH75
+         epOmjqkJ44tdk45V6L2YICnFI+62cSpj4B7PzPDQ4r/4UjONdG6AxXqBl2ru1NKWQ5NJ
+         6p3Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1795029894; x=1795634694;
-        h=content-transfer-encoding:content-type:cc:to:subject:message-id
-         :date:from:mime-version:x-gm-gg:x-gm-message-state:from:to:cc
+        d=1e100.net; s=20260707; t=1795030264; x=1795635064;
+        h=content-type:cc:to:subject:message-id:date:from:in-reply-to
+         :references:mime-version:x-gm-gg:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to:content-type;
-        bh=EjJYvzFdvze5iPMTQvoCwzZHkwJLHlrVNoowatB6Euo=;
-        b=YaTLpCg1uuysEPsRJaO6RvyLNciCWcuVFu2dtSw4mEqi6G2WebjXc4clGbO5U6jRAs
-         TcvzWmsPZHxPBEhY/aXheV1hu4ygQR7IRPGkscZEPXEIdcCDsY7Uf6NgRhcG5bpd5pFe
-         yWIwFL3P1/ICN76KBRAED1nqnrhJtsOodgUEMJuce9eSrd+7CGP6scHZb1byCRuPVASD
-         mM45UtghArn299T9xOrjNS3pzf373nROC7e2wfW+sRwRuiPG2okuEw6rS+v2IrEpmDk/
-         LPUfTsWehVOo1pra4efZ5TOxwyC9J5n8ma526PrfjzNK/kF/PtJ9v13MaV9dU2Eq3iFi
-         GgeQ==
-X-Forwarded-Encrypted: i=1; AL+hErHbJThWKAp3/nt8wFblqW8IiarM2ksezQ2p5A+I1UVtqg+ByGCcyGg7H4Nbk2CTgtclCEp84lUCYIV7sJ0kqg==@lists.infradead.org
-X-Gm-Message-State: APuU4Z8KivpTNo8McTcIWy5cNo2EAD561BxRRKieriy4RRwe2C9k4Mm5
-	+NWsllRa8d4o0yvr0IMU3UNh1BwWLqLtzJI9PD56825zbwMZjYtN6UJgL1tferhKVeINj8scRMH
-	6CtbghhYKgM5XNpwJvOCo/2fjCs8AA24=
-X-Gm-Gg: AZFdTZfDq2buhA7OAXbB2r6qkeFVc8eLKj2eSdLYqgQYpyZNppXoVlamDZIy7Oli49t
-	sWnhHw0xqh1kNTYJugmr39/73Y85jH6qMorc8xVfE0EMjkgmF2Ar1hqsxlCRAMPc85nEDzHMX4e
-	9JgLmIcZlqKiyp+/K70vyDMNL5LQ7GwCXqJrCC69tf5tWHHUDax602OyYcjSF0vrHKp/Or8xh6o
-	iulwY4ohPnQAS1jY9is/jZqovC2dHP4I+GVz3zr6rnFO5gaGCgp1CDZibLqKsaXkr4gPb0bwW8t
-	ej85aqHp1JUZdLlaUOY6lIJQeEVmXg/ZXhIHVNILoiRRcOZZs//5y5g27Ad4rs1xgtYO9iN43pv
-	/Jlmbm233N+s+Ef9uyv3YQo0et3o8fJWWxrxlBQ==
-X-Received: by 2002:a17:90b:3890:b0:3ae:9944:3bf0 with SMTP id
- 98e67ed59e1d1-3b3d07bec9fmr3738908a91.34.1795029894222; Wed, 18 Nov 2026
- 11:24:54 -0800 (PST)
+        bh=iAbjlXus0iw2LllxqZoryy58tCqmnnXTzlAaD4u02/I=;
+        b=srlTEcN3p89q0oQnRjLWWCp5kF/bO4ffiR3ZHlRh4ygqF/4u8wlPza+0YpkW/Cw47W
+         tUai3UGXui1u3U8zwf39hb+emVtgLqBjL1bSbUKmkEYxaFY37pFvEyqjxT2E2uZK3wzw
+         mQJfPKDORHrsaRUkJAx1J66Ue68iMJTpYgQ2CFvzjZk+AJL/hsHfUnN8qpGgdEzrvueo
+         iN7254m2ZsAbM/QMoHsX7ffkIzh5wo64HJmzYyO7Uf2AuxBymLXIk73l7mtEooA2xYzN
+         6SS0MCg5bIMRNgRthkS1qEbuCNdbSxxnRBSRMy3/kpA4FkRBw51ENnLizvV1+Eskm8wp
+         m+hQ==
+X-Gm-Message-State: APuU4Z84hV29q7msQ60AtKmfV550YKJub8GcObycwmMJDmlRDfjwHEsz
+	UGlbypJmmemoxToW9KPzHJwtjw39t3YwlHrXGHKBi2m4/AXCxcS4l3FDQjbfQHmW5BXxZxIi1K2
+	WKaCNfsJ7Lr1z4nb+2D0j7FcTCy7dphA=
+X-Gm-Gg: AYBFou2y6kF+8hOtblCYG6zVmNFeIr0KoXqF1EtkLaV81Emm8mBnNxdTh1OzG5pOxgi
+	jbUsayegu1szC+BYD/XLn4it/1ZRfDCnK0Zibp6Mt7+m7xXbMYTtfuq8aLhgYO+B3CNiAxvCffg
+	sPEyIWvKO7C/rlPYSYctXHh3GA090TdQCt1vOa5l++/LGwTu4sHqzcqazRnYbkDgBTyYJd1pYN2
+	SAQb7aeKlnxF2SWOIUEKknwEPjDU0CZzb+IkHuB41QU4iORqK6kali6eeWMBv7NLTtaFuvAbGG1
+	ArbEMCMwyM/OBc0kPYz0ST51ZGU8BT8yCBLUE8+GDnsuG0nDjeCqmyb8C1xU+O2jo+24ojT6dXh
+	Q29SSqRRLJrzzIQq6yxK/nO+1XXN24+hq3b0=
+X-Received: by 2002:a17:907:f816:b0:c2e:317e:d711 with SMTP id
+ a640c23a62f3a-c510e398889mr303013866b.27.1795030263845; Wed, 18 Nov 2026
+ 11:31:03 -0800 (PST)
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-From: Chris <hoopyfrood42@gmail.com>
-Date: Wed, 18 Nov 2026 14:24:42 -0500
-X-Gm-Features: AclHuK_3EOv6FHAHbDp6-ErJ25zBqiU1yu-YUlfjEHlibePkPM2zLKcLWHf-JWM
-Message-ID: <CAHaeJsT7vfKnjwDhFicMUVraf7EeSVXSZVdt40ri3u-accUsFw@mail.gmail.com>
-Subject: =?UTF-8?Q?MT7925_=28USB=29_as_a_roaming_client=3A_130=E2=80=93350_ms_befor?=
-	=?UTF-8?Q?e_its_first_frame_on_the_new_channel_=28MT7921=3A_9_ms=29?=
-To: "michael.shih@mediatek.com" <michael.shih@mediatek.com>
-Cc: linux-wireless@vger.kernel.org, nbd@nbd.name, lorenzo@kernel.org, 
-	linux-mediatek@lists.infradead.org, 
-	"ryder.lee@mediatek.com" <ryder.lee@mediatek.com>, 
-	"shayne.chen@mediatek.com" <shayne.chen@mediatek.com>, 
-	"sean.wang@mediatek.com" <sean.wang@mediatek.com>, "deren.wu@mediatek.com" <deren.wu@mediatek.com>
+References: <20261105194426.1113050-1-l.scorcia@gmail.com> <20261118152346.GC98456@joneslee-macbookpro.roam.internal>
+In-Reply-To: <20261118152346.GC98456@joneslee-macbookpro.roam.internal>
+From: Luca Leonardo Scorcia <l.scorcia@gmail.com>
+Date: Wed, 18 Nov 2026 20:30:52 +0100
+X-Gm-Features: AclHuK-Q_ZR_eSDZWgs8r4i-RTkFZUMV5FI3ZV4LgWAQGQjLtUrjcLbEIObtllI
+Message-ID: <CAORyz2+7q3BTeW3NsaiwN9riAbHV0Q_tCm6bBV7RoiDeAbcLrg@mail.gmail.com>
+Subject: Re: [PATCH v12 0/8] Add support for MT6392 PMIC
+To: Lee Jones <lee@kernel.org>, Mark Brown <broonie@kernel.org>
+Cc: linux-mediatek@lists.infradead.org, 
+	Dmitry Torokhov <dmitry.torokhov@gmail.com>, Rob Herring <robh@kernel.org>, 
+	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, Sen Chu <sen.chu@mediatek.com>, 
+	Sean Wang <sean.wang@mediatek.com>, Macpaul Lin <macpaul.lin@mediatek.com>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	Liam Girdwood <lgirdwood@gmail.com>, Linus Walleij <linusw@kernel.org>, Val Packett <val@packett.cool>, 
+	Fabien Parent <parent.f@gmail.com>, Akari Tsuyukusa <akkun11.open@gmail.com>, 
+	Chen Zhong <chen.zhong@mediatek.com>, linux-input@vger.kernel.org, 
+	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	linux-pm@vger.kernel.org, mfd@lists.linux.dev, 
+	linux-arm-kernel@lists.infradead.org, linux-gpio@vger.kernel.org
 Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261118_112455_965961_B99C57DD 
-X-CRM114-Status: GOOD (  11.06  )
-X-Spam-Score: -1.9 (-)
+X-CRM114-CacheID: sfid-20261118_113106_600810_BFC99CC3 
+X-CRM114-Status: UNSURE (   9.75  )
+X-CRM114-Notice: Please train this message.
+X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -126,70 +133,22 @@ X-Spam-Status: No, score=-2.9 required=3.0 tests=BAYES_00,DKIM_SIGNED,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Hi Michael,
+> MFD looks okay now.  How many more Acks do you need?
+Still need the regulator Ack. Mark Brown provided an Ack for the first
+version (almost a year ago) of the regulator patch [1], but it was
+substantially modified in later revisions so I dropped that Ack.
+I'll move Mark Brown from Cc to To tag in this email for a gentle
+ping, I hope that's not against the ML etiquette.
 
-One more observation from our MT7925 testing, this time with the chip
-as a client roaming between two APs (802.11r).
+> NB: This patch-set looks split in two in my inbox?
+Now that you mention it, I see the split too. Weird, I sent it using
+git send-email as always. I can resend it if it's an issue.
 
-Setup
+Thank you
 
-Netgear A9000: MT7925, USB 0846:9072, mt7925u. Firmware: WM build
-20260605184805, HW/SW 0x8a108a10 (20260605184651a), from
-linux-firmware 20260319.
-Kernel 7.0.0-43-generic (Ubuntu). The mt76 modules are built from that
-kernel's tree with our local patches: the survey busy-time change from
-the earlier thread, plus two crash fixes. None of them touch
-association or channel handling.
-The roam is wpa_supplicant's SME (ROAM <bssid>): FT-PSK over the air,
-between two APs on one SSID and mobility domain, from ch 149 (5745
-MHz, 40 MHz) to ch 44 (5220 MHz, 40 MHz).
-For comparison, the same roam with an MT7921 (Comfast, USB 0e8d:7961,
-mt7921u, the same kernel and mt76 tree) and with the laptop's Intel
-Centrino 6200 (iwlwifi).
-Measured (mac80211's own log lines, times from the ROAM command):
+[1] https://lore.kernel.org/linux-mediatek/20261105195206.3440-5-l.scorcia@gmail.com/
 
-Step MT7925 (A9000) MT7921 (USB) Intel 6200
-disconnect from AP =E2=86=92 authenticate with 145=E2=80=93176 ms 51 ms 77 =
-ms
-authenticate with =E2=86=92 send auth 126=E2=80=93136 ms or 345=E2=80=93354=
- ms 9 ms 0 ms
-associated, from the ROAM command 382=E2=80=93635 ms 120 ms 115 ms
-The AP's answers (Authentication + Reassociation) 15=E2=80=9320 ms 6 ms 7 m=
-s
-The MT7925 figures come from 6 roams and 22 joins. The authenticate
-with =E2=86=92 send auth step was bimodal: about 130 ms or about 350 ms, ne=
-ver
-in between, and slow in 7 of the 22. The MT7921 and Intel figures come
-from one roam each.
-
-The step that stands out is authenticate with =E2=86=92 send auth: the time
-before the station can transmit its first frame on the new channel. On
-the MT7925 it is ~130 or ~350 ms. On the MT7921, over USB with the
-same driver family, it is 9 ms. So USB alone doesn't seem to explain
-it. Our guess is the driver's mgd_prepare_tx / remain-on-channel
-request, or the firmware's channel-context switch, but we haven't
-traced it.
-
-For a voice client this decides the result. The AP's part of the roam
-is 6=E2=80=9320 ms, but the MT7925 is not ready to transmit on the new chan=
-nel
-until ~400=E2=80=93600 ms after the roam starts, against ~120 ms for the
-MT7921.
-
-Questions
-
-Before granting the new channel to a station connecting to a BSS on
-another channel, does the MT7925 firmware wait for a scheduling slot,
-or run a calibration? Is the 130 / 350 ms split expected?
-Is there a faster path for a station reassociating to a known BSS,
-such as FT reassociation? For example, a firmware command or driver
-setting that avoids the full channel-context teardown and setup.
-Is ~150 ms for the teardown and setup (disconnect =E2=86=92 authenticate wi=
-th)
-expected for the MT7925 over USB, when the MT7921 takes ~50 ms?
-I'm happy to test firmware or driver changes, as with the earlier
-thread, and can send the full kernel timelines.
-
-Thanks,
-Chris
+--
+Luca Leonardo Scorcia
+l.scorcia@gmail.com
 
