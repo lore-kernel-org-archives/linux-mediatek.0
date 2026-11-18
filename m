@@ -2,120 +2,96 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 17530606A320
-	for <linux-mediatek@archiver.kernel.org>; Wed, 18 Nov 2026 12:43:20 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 6C5D4606A31C
+	for <linux-mediatek@archiver.kernel.org>; Wed, 18 Nov 2026 13:28:29 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=GX51meep;
-	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=hpeFYIEk
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=jTPrVn+s;
+	dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com header.a=rsa-sha256 header.s=Intel header.b=TQTCzxHa
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:MIME-Version:Message-ID:Date:References:In-Reply-To:Subject:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Unsubscribe-Post:
-	List-Owner; bh=ykhNTsChJJUlt1URM+zfzHn3YiACgwozf/JpK+p7y/w=; b=GX51meep9d4w17
-	En9G8z/ViP/J/ZT8n+Plc3iLOcMqNPF+iQc8zphblrMibr1TfvgFl7WZbQX2tvLjxLZDTgS7i22v7
-	+fxEucjM8hFyN7IDb6v6t5bV3LM/MaYHwUcTCVxSacOvE7dZVqXoLPC+9GI+rRllnfiJwuOAc/LDs
-	x51ugB7dn83HNxJkWN74B4112MXreypvQaHlPOgaPQ2q3VWPTnWN56mgN56Dw+bm4iDQBJpkPK+0Q
-	GJCi33Fjg8suichlRwf1X9adpLU+NNSbwlNWhmpi1qW0JfLC7waHi6K7EG8mBrMRGo/nr2JZFT4Kr
-	y8VFTN/izRHe9LzkybZA==;
+	List-Owner; bh=xrbOr3k8zHV2i5uttrL4VksfyxzivrA+exHcMjQwxoA=; b=jTPrVn+svSGPSo
+	UQdmUlYsjsXRjcoY3aXyIlayg63Ovmy7JHhzKGw+nFCzqYOOUDg1P/F2Ls7lppxX18BucJH3CA6DE
+	tyz/bWD72wsOcsd8r62Yomv26VHP/eAqGjguCLfZTTR5T4C+ocNiHnQzfHxu4WWHX4ZLhiutSt8Tx
+	QXFpFFluiE7gSkcXDUDQuFJvTJX5lC8ogrFSiHtoYDQKl94wMVVRzr4egbyoAIzoxZOE3PlXQPlx1
+	P6muRyr1G5dYvTTQGHWNh0TPMIvHE3yMm0OLO3exhiWqr03q+JMWcrnDEki+zYf4l21+5AuRt1Ijv
+	L8ksLUHO6JtUkm1haeZA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xTf0R-00000008t9B-3L9Z;
-	Wed, 18 Nov 2026 12:43:19 +0000
-Received: from mail-pf1-x42b.google.com ([2607:f8b0:4864:20::42b])
+	id 1xTfi7-00000008wO2-40v9;
+	Wed, 18 Nov 2026 13:28:27 +0000
+Received: from mgamail.intel.com ([198.175.65.15])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xTf0P-00000008t8p-1zJN
-	for linux-mediatek@lists.infradead.org;
-	Wed, 18 Nov 2026 12:43:18 +0000
-Received: by mail-pf1-x42b.google.com with SMTP id d2e1a72fcca58-8b5e5e64494so557541b3a.1
-        for <linux-mediatek@lists.infradead.org>; Wed, 18 Nov 2026 04:43:17 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1795005796; cv=none;
-        d=google.com; s=arc-20260327;
-        b=G4AfW7EW9ribV8AiAP/+ADqJvV4DEZ7Pbu2b789+XdemGqo4xYSdnC6KW2malKP/q/
-         wIh0vxbXQamDrUNpdBY0khZyHIjOMvKB8TycrNgUvkTpAPlnIucRyRRDePnKGKygY/m+
-         RcCnmU1QUbKbUjGr/z4PcZ9YWewIAiosQIVush3mM5UABBN3Vi9dgwatySP+TjYsr247
-         Ea5WL37cjAeDv5rVUvyx/td8GQeirJwFSCOSwaW7GbZIT+QnSvQCBeeCVshzFfH9s+PC
-         85htj8LfzXaXdQjsy2kh9ispX0qTPuxeFsIJVzcW4lqoTjtDH1elotQ/7hspvFdMyiRc
-         23fg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20260327;
-        h=content-transfer-encoding:cc:to:subject:message-id:date:from
-         :in-reply-to:references:mime-version:dkim-signature;
-        bh=ykhNTsChJJUlt1URM+zfzHn3YiACgwozf/JpK+p7y/w=;
-        fh=2ZNBUBY4OGpWl32K/Se7iYqTnj3e6YzuDDqQsbHYpdM=;
-        b=JdRx5giRUGYZI2WCehBXks0FbC2OV4+5yNnsnPvmACIlSmYWbzrudtFxYiikuK5VI0
-         Nwz6edGHgU8/JptwgSSm7kdBZlA1zMLsI57ZwYVRwvnFuCiqREGnRbIjBQBaXBLzFjLx
-         /mruc3jPBp+VTQTy41Lnc4RzcW8eNNcsxYLRQkk24bUZCsOLU4wagDqTs4awGVFM3fzB
-         L6iVZhkuVIyCidXWulEXGRxpWTdOAlC7PCp2WFHhd+DVKpn4/pyqpwuzRsVGwzQSajXH
-         IEv9RmVCxcEZSo3CBamo4rKPrF/70P1Ud52UTdcgSc/tse1jMNgi/WGFSWDAVIGYNXQZ
-         ou7g==;
-        darn=lists.infradead.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20260707; t=1795005796; x=1795610596; darn=lists.infradead.org;
-        h=content-transfer-encoding:content-type:cc:to:subject:message-id
-         :date:from:in-reply-to:references:mime-version:from:to:cc:subject
-         :date:message-id:reply-to:content-type;
-        bh=ykhNTsChJJUlt1URM+zfzHn3YiACgwozf/JpK+p7y/w=;
-        b=hpeFYIEkRa0GV3eFAkROqKpYxAc6MRpLtseWJF4L+ZuEIkW4/8tYbO2J5VrF32LEoE
-         yRdF/9om7vIUV+JjEnnxVpnOgiOqMj2KMmoQJtsQ0ydNWcQkBPjskf5XKbyKLWPfxA/U
-         rLFniUFh5zKNPkA1ciqStJhy+c9q6janlG0gD9wUuGZKRRAEWgpX40FTfLKk0ss5StXQ
-         HCj8x910ngcI+4jek+jobVna3rTHCB9t/IxkpjhKWOaxupd0VUsCMlpZ590898T+Wsi/
-         5Tkb5PQAppxuA6hc+pwep3EF7o0sMPuR8uQPaCvfl0EFxEBm2uz/l4aaEe4w+Vn6PWov
-         Jtsw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1795005796; x=1795610596;
-        h=content-transfer-encoding:content-type:cc:to:subject:message-id
-         :date:from:in-reply-to:references:mime-version:x-gm-gg
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
-         :content-type;
-        bh=ykhNTsChJJUlt1URM+zfzHn3YiACgwozf/JpK+p7y/w=;
-        b=EXEStWWAdWgHjpW94tSKC3Rh/HTV8GOvPbEQJ5qWuDwcdN9bf9SdqGSGo+y18Bp03m
-         Bw+MV3iBBYM/XkBGLxtqc6Bfig+ZNFNIBbD7UV46rxIUa3sjoh3FNEMnR4Ys4kw6Sboe
-         Yt5QEWQMKecB13Or5G/5Yt5CGs38jwv4AK7+cK5OiV5rck6UUq/CmZig655hajaaTziX
-         vrqxbGGAg9zQ6hW6/NJYiVos/ZOZEwVxunzAIBJr/RZXm7QQjA/WPfmUltB+cgItDFo+
-         QJmsOVOYb/IuXg4q5DHAHCujIfsEItRToxweX9mSmVlgOT3Q2kBMt6VqWo4WjPv9pCxi
-         Qfhg==
-X-Forwarded-Encrypted: i=1; AL+hErHUgl8iKXi8t/UcwB6THXHq7RQm9MDeTD3dtYNvb5VByfhQ1AOYM9ewyic9YT8IsecD6I/rKWp8ItUx3J3+AQ==@lists.infradead.org
-X-Gm-Message-State: APuU4Z9m4JQPIP+AppQ/J9++IESsM69pvDzowgf2SFAlCWEjkGJntG/S
-	XK33BjYbMrJGxHPSVSi7X3Ed7UHpYO5/ILJWhhGbzxNZf0HPFju4pJW3T+s1IS64+c55WQ5dLLo
-	UkrQQzyVZ8uZBAIa8SWeXF+U5z0EC9rA=
-X-Gm-Gg: AYBFou3yKHC8bpZPAwrg6UurHz8/1LT8yN3BFpSzEkxGPiAx7Yrs3lKPCW5mVN+InBq
-	fu6u3RB4vUY4/qUR8StWAkDbfdVQ2OauheJbDhOmAPPR+LxcoozFFf2HSI0raxEvsZ/lY5PpLYM
-	xamv7EdKPYdKwKLWF8vlGi2oM7tYeR2V7Y7FPhWgu4YGcNz6A9druwD6urZMhqR1ePSmIMSO04Q
-	ps1wIb0TB5XunXA92fRmIHak09LaNK8ye+6bg93Jt2nOvH0L3cZaD2MdSjT0IEt5Zi1K73kPMSy
-	woerA74LdbpRMfCRL2lrIKoQpSe4Mmr8Gm0ZF2dGnB4/80hnj2x2Vjsw0AvKYuwP7O9hMUV2KTh
-	CaOhjuI25Fait/Tf8v/sb2GS/lndoyA5z1q/BiMI=
-X-Received: by 2002:a05:6a21:798a:b0:3f9:6c37:4b43 with SMTP id
- adf61e73a8af0-3fe8a0219femr2566464637.45.1795005796480; Wed, 18 Nov 2026
- 04:43:16 -0800 (PST)
+	id 1xTfi3-00000008wNQ-2klD;
+	Wed, 18 Nov 2026 13:28:27 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1795008504; x=1826544504;
+  h=from:to:cc:subject:in-reply-to:references:date:
+   message-id:mime-version:content-transfer-encoding;
+  bh=9s0PP2tU8ramnQ9P7B7e47VS/Lqt+TFQgn/D6GHoCw4=;
+  b=TQTCzxHakyhpjr56MUARmMVSnFb0+hCrETk+0eSRWOwu9TsVbbrWvyFF
+   O/XEVgRcAiaX/hQpjUdGNP0yuI8EI3TfpHNl1ijQXyY+sCVi/OgN+ndSq
+   DJvje3SHbsXTElj0lgFkCCPvCNs4Pn/Ot59/dTzc+HSbWYzRXzeAkX7jz
+   zcIDLukkpV+NKYchWCcIyXZIeu7qfsi11fFQDNJKhHoorUjY7zl+8jpLl
+   PqHn0TgPRICu/YgbfuicUrvU75XoiDQPI00POQU4oD9Kd/aWNQti+Ml/H
+   tLu3CguqY4hv9tN8WBKf2WYJ34Y4vljg85794+jnCDz+oKjq/2IufEs0g
+   A==;
+X-CSE-ConnectionGUID: 8TQFqsy/QpyDbPKY5YSHsA==
+X-CSE-MsgGUID: VKRhTYK7Rdy6h2F+5wnFlA==
+X-IronPort-AV: E=McAfee;i="6800,10657,11969"; a="3818343"
+X-IronPort-AV: E=Sophos;i="6.27,219,1787036400"; 
+   d="scan'208";a="3818343"
+Received: from fmviesa001.fm.intel.com ([10.60.135.141])
+  by orvoesa107.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 18 Nov 2026 05:28:21 -0800
+X-CSE-ConnectionGUID: yZhr9dpARI60OAP4iow+yA==
+X-CSE-MsgGUID: +rfdIahmSKCYwfI5yMV7+A==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.27,219,1787036400"; 
+   d="scan'208";a="10544495"
+Received: from mkosciow-mobl1.ger.corp.intel.com (HELO localhost) ([10.245.244.187])
+  by smtpauth.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 18 Nov 2026 05:27:43 -0800
+From: Jani Nikula <jani.nikula@linux.intel.com>
+To: Uwe =?utf-8?Q?Kleine-K=C3=B6nig?= <u.kleine-koenig@baylibre.com>, David
+ Airlie
+ <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>
+Cc: Sasha Finkelstein <k@chaosmail.tech>, Maarten Lankhorst
+ <maarten.lankhorst@linux.intel.com>, Maxime Ripard <mripard@kernel.org>,
+ Thomas Zimmermann <tzimmermann@suse.de>, Andrzej Hajda
+ <andrzej.hajda@intel.com>, Neil Armstrong <neil.armstrong@linaro.org>,
+ Robert Foss <rfoss@kernel.org>, dri-devel@lists.freedesktop.org,
+ asahi@lists.linux.dev, linux-aspeed@lists.ozlabs.org,
+ linux-arm-kernel@lists.infradead.org, imx@lists.linux.dev,
+ linux-riscv@lists.infradead.org, etnaviv@lists.freedesktop.org,
+ linux-samsung-soc@vger.kernel.org, intel-gfx@lists.freedesktop.org,
+ intel-xe@lists.freedesktop.org, imagination@lists.freedesktop.org,
+ linux-mips@vger.kernel.org, lima@lists.freedesktop.org,
+ linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org,
+ linux-amlogic@lists.infradead.org, linux-arm-msm@vger.kernel.org,
+ freedreno@lists.freedesktop.org, nouveau@lists.freedesktop.org,
+ virtualization@lists.linux.dev, spice-devel@lists.freedesktop.org,
+ linux-renesas-soc@vger.kernel.org, linux-rockchip@lists.infradead.org,
+ linux-stm32@st-md-mailman.stormreply.com, linux-sunxi@lists.linux.dev,
+ linux-tegra@vger.kernel.org
+Subject: Re: [PATCH v1 9/9] drm: Unify coding style for *_device_id arrays
+In-Reply-To: <a2d5ce256b8ec150de4a6494c177b19693a33222.1795002467.git.ukleinek@kernel.org>
+Organization: Intel Finland Oy - BIC 0357606-4 - c/o Alberga Business Park,
+ 6 krs Bertel Jungin Aukio 5, 02600 Espoo, Finland
+References: <cover.1795002467.git.ukleinek@kernel.org>
+ <a2d5ce256b8ec150de4a6494c177b19693a33222.1795002467.git.ukleinek@kernel.org>
+Date: Wed, 18 Nov 2026 15:27:40 +0200
+Message-ID: <7692c160e418e7ad0528739fcc879b11fbac8ab0@intel.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-References: <20261115025635.40010-1-lucid_duck@justthetip.ca>
- <CAHaeJsRTd5KjN9CsKDU-g8Ut-WfBuiKkTnkBSZ9hQSsr7P_HQA@mail.gmail.com> <173fc5e8010e9f01a9a11f0d98d0934c8b8ccc09.camel@mediatek.com>
-In-Reply-To: <173fc5e8010e9f01a9a11f0d98d0934c8b8ccc09.camel@mediatek.com>
-From: Chris <hoopyfrood42@gmail.com>
-Date: Wed, 18 Nov 2026 07:43:03 -0500
-X-Gm-Features: AclHuK_uO0t29yrPw6mmFLmOZoUGZqSgOHrTkJfrQJOhwlG-rwXsTHRJw0FHFNM
-Message-ID: <CAHaeJsTWY4UOgAmj-F18Mi8CKCMWvQ=d2S8dyF_fyaqiBcxPZA@mail.gmail.com>
-Subject: Re: [PATCH wireless v2] wifi: mt76: mt7925: get the survey airtime
- from the firmware
-To: =?UTF-8?B?TWljaGFlbCBTaGloICjlj7LlkJvku7Ip?= <Michael.Shih@mediatek.com>
-Cc: "lucid_duck@justthetip.ca" <lucid_duck@justthetip.ca>, 
-	=?UTF-8?B?U2hheW5lIENoZW4gKOmZs+i7kuS4nik=?= <Shayne.Chen@mediatek.com>, 
-	"nbd@nbd.name" <nbd@nbd.name>, Ryder Lee <Ryder.Lee@mediatek.com>, 
-	"lorenzo@kernel.org" <lorenzo@kernel.org>, 
-	"linux-wireless@vger.kernel.org" <linux-wireless@vger.kernel.org>, Sean Wang <Sean.Wang@mediatek.com>, 
-	"floss@jetm.me" <floss@jetm.me>, 
-	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>, 
-	=?UTF-8?B?RGVyZW4gV3UgKOatpuW+t+S7gSk=?= <Deren.Wu@mediatek.com>, 
-	"stable+noautosel@kernel.org" <stable+noautosel@kernel.org>
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261118_044317_554885_148C28FB 
-X-CRM114-Status: GOOD (  17.98  )
-X-Spam-Score: -1.9 (-)
+X-CRM114-CacheID: sfid-20261118_052823_784778_3F9E283D 
+X-CRM114-Status: GOOD (  10.76  )
+X-Spam-Score: -4.3 (----)
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -126,71 +102,345 @@ List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-2.9 required=3.0 tests=BAYES_00,DKIM_SIGNED,
-	DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,FREEMAIL_FORGED_FROMDOMAIN,
-	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS autolearn=no autolearn_force=no version=4.0.1
+X-Spam-Status: No, score=-13.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
+	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On Wed, Nov 18, 2026 at 2:23=E2=80=AFAM Michael Shih (=E5=8F=B2=E5=90=9B=E4=
-=BB=B2)
-<Michael.Shih@mediatek.com> wrote:
+On Wed, 18 Nov 2026, Uwe Kleine-K=C3=B6nig <u.kleine-koenig@baylibre.com> w=
+rote:
+> These arrays already mostly match the most used and generally
+> recommended coding style. That is:
 >
-> Hi Chris,
-> Thanks for digging into this.
-> Short answer: on MT7925 the noise floor is not exposed to the host
-> today.
+>  - list terminators in a single line;
+>  - no comma after the list terminator;
+>  - a comma after an initializer if (and only if) the closing } is not
+>    directly following;
+>  - a space after an opening { and before a closing }, a single space in
+>    the list terminator (unless there is a comment);
+>  - proper tab indentation for multi-line initializers;
 >
-> For additional info, the MT7915 and MT7996 chips are for AP. While
-> MT7925/MT7928 are STA roles.
+> Adapt the offenders accordingly.
 >
-> I've also checked on our MT7925/MT7928 chip's FW, and here is what I
-> know:
->
-> 1. It's not in GET_MIB_INFO.
-> Neither the MIB_INFO response nor the UNI MIB counter set carries a
-> noise / NF / IPI field =E2=80=94 they're CCA/ED/channel-idle time counter=
-s
-> only. That's consistent with what you saw: mt792x_phy_get_nf()
-> returning 0 is accurate, there's simply no MIB field to read.
->
-> 2. Why reading IRPI directly gives zeros, and why IPI_EN "didn't stick"
-> + caused MCU timeouts.
-> The IRPI histogram registers and the IPI_EN control do exist on this
-> chip.
->
-> Thanks.
->
+> Signed-off-by: Uwe Kleine-K=C3=B6nig <u.kleine-koenig@baylibre.com>
+> ---
+>  drivers/gpu/drm/adp/adp-mipi.c                |   4 +-
+>  drivers/gpu/drm/adp/adp_drv.c                 |   4 +-
+>  .../gpu/drm/arm/display/komeda/komeda_drv.c   |   8 +-
+>  drivers/gpu/drm/arm/hdlcd_drv.c               |   4 +-
+>  drivers/gpu/drm/arm/malidp_drv.c              |   8 +-
+>  drivers/gpu/drm/armada/armada_crtc.c          |   2 +-
+>  drivers/gpu/drm/aspeed/aspeed_gfx_drv.c       |   2 +-
+>  drivers/gpu/drm/atmel-hlcdc/atmel_hlcdc_dc.c  |   4 +-
+>  .../drm/bridge/analogix/analogix-anx6345.c    |   4 +-
+>  .../drm/bridge/analogix/analogix-anx78xx.c    |   2 +-
+>  drivers/gpu/drm/bridge/analogix/anx7625.c     |   4 +-
+>  drivers/gpu/drm/bridge/chipone-icn6211.c      |   2 +-
+>  drivers/gpu/drm/bridge/chrontel-ch7033.c      |   2 +-
+>  drivers/gpu/drm/bridge/display-connector.c    |   2 +-
+>  drivers/gpu/drm/bridge/fsl-ldb.c              |  23 +-
+>  drivers/gpu/drm/bridge/imx/imx8mp-hdmi-pvi.c  |   7 +-
+>  .../drm/bridge/imx/imx8qxp-pixel-combiner.c   |   4 +-
+>  .../gpu/drm/bridge/imx/imx8qxp-pixel-link.c   |   4 +-
+>  drivers/gpu/drm/bridge/imx/imx8qxp-pxl2dpi.c  |   2 +-
+>  drivers/gpu/drm/bridge/imx/imx93-mipi-dsi.c   |   2 +-
+>  drivers/gpu/drm/bridge/imx/imx93-pdfc.c       |   4 +-
+>  drivers/gpu/drm/bridge/ite-it6263.c           |   2 +-
+>  drivers/gpu/drm/bridge/lontium-lt8912b.c      |   4 +-
+>  drivers/gpu/drm/bridge/lontium-lt9211.c       |   2 +-
+>  drivers/gpu/drm/bridge/lvds-codec.c           |   2 +-
+>  .../bridge/megachips-stdpxxxx-ge-b850v3-fw.c  |   4 +-
+>  drivers/gpu/drm/bridge/microchip-lvds.c       |   6 +-
+>  drivers/gpu/drm/bridge/nwl-dsi.c              |   2 +-
+>  drivers/gpu/drm/bridge/nxp-ptn3460.c          |   2 +-
+>  drivers/gpu/drm/bridge/parade-ps8622.c        |   6 +-
+>  drivers/gpu/drm/bridge/sii902x.c              |   2 +-
+>  drivers/gpu/drm/bridge/sii9234.c              |   2 +-
+>  drivers/gpu/drm/bridge/sil-sii8620.c          |   2 +-
+>  drivers/gpu/drm/bridge/tc358767.c             |   2 +-
+>  drivers/gpu/drm/bridge/tc358768.c             |   4 +-
+>  drivers/gpu/drm/bridge/tc358775.c             |   4 +-
+>  drivers/gpu/drm/bridge/tda998x_drv.c          |   2 +-
+>  drivers/gpu/drm/bridge/th1520-dw-hdmi.c       |   2 +-
+>  drivers/gpu/drm/bridge/thc63lvd1024.c         |   4 +-
+>  drivers/gpu/drm/bridge/ti-sn65dsi83.c         |   2 +-
+>  drivers/gpu/drm/bridge/ti-sn65dsi86.c         |   4 +-
+>  drivers/gpu/drm/bridge/ti-tfp410.c            |   2 +-
+>  drivers/gpu/drm/bridge/ti-tpd12s015.c         |   4 +-
+>  drivers/gpu/drm/bridge/waveshare-dsi.c        |   4 +-
+>  drivers/gpu/drm/etnaviv/etnaviv_gpu.c         |   2 +-
+>  drivers/gpu/drm/exynos/exynos5433_drm_decon.c |   6 +-
+>  drivers/gpu/drm/exynos/exynos7_drm_decon.c    |   2 +-
+>  drivers/gpu/drm/exynos/exynos_dp.c            |   2 +-
+>  drivers/gpu/drm/exynos/exynos_drm_fimc.c      |   2 +-
+>  drivers/gpu/drm/exynos/exynos_drm_fimd.c      |  33 +-
+>  drivers/gpu/drm/exynos/exynos_drm_g2d.c       |   2 +-
+>  drivers/gpu/drm/exynos/exynos_drm_gsc.c       |   2 +-
+>  drivers/gpu/drm/exynos/exynos_drm_rotator.c   |   2 +-
+>  drivers/gpu/drm/exynos/exynos_drm_scaler.c    |   2 +-
+>  drivers/gpu/drm/exynos/exynos_hdmi.c          |   5 +-
+>  drivers/gpu/drm/exynos/exynos_mixer.c         |  15 +-
+>  drivers/gpu/drm/fsl-dcu/fsl_dcu_drm_drv.c     |   2 +-
+>  drivers/gpu/drm/hisilicon/kirin/dw_drm_dsi.c  |   2 +-
+>  .../gpu/drm/hisilicon/kirin/kirin_drm_drv.c   |   7 +-
+>  .../drm/i915/display/intel_display_device.c   |   2 +-
+>  .../gpu/drm/i915/display/intel_lpe_audio.c    |   6 +-
+>  drivers/gpu/drm/i915/i915_pci.c               |   2 +-
+>  drivers/gpu/drm/imagination/pvr_drv.c         |   2 +-
+>  drivers/gpu/drm/imx/dc/dc-drv.c               |   2 +-
+>  drivers/gpu/drm/imx/dc/dc-ic.c                |   2 +-
+>  drivers/gpu/drm/imx/dc/dc-pe.c                |   2 +-
+>  drivers/gpu/drm/imx/dcss/dcss-drv.c           |   4 +-
+>  drivers/gpu/drm/imx/ipuv3/dw_hdmi-imx.c       |  11 +-
+>  drivers/gpu/drm/imx/ipuv3/imx-drm-core.c      |   4 +-
+>  drivers/gpu/drm/imx/ipuv3/imx-ldb.c           |   4 +-
+>  drivers/gpu/drm/imx/ipuv3/imx-tve.c           |   2 +-
+>  drivers/gpu/drm/imx/ipuv3/parallel-display.c  |   2 +-
+>  drivers/gpu/drm/ingenic/ingenic-drm-drv.c     |   2 +-
+>  drivers/gpu/drm/ingenic/ingenic-dw-hdmi.c     |   2 +-
+>  drivers/gpu/drm/ingenic/ingenic-ipu.c         |   2 +-
+>  drivers/gpu/drm/kmb/kmb_drv.c                 |   4 +-
+>  drivers/gpu/drm/lima/lima_drv.c               |   2 +-
+>  drivers/gpu/drm/logicvc/logicvc_drm.c         |   2 +-
+>  drivers/gpu/drm/mcde/mcde_drv.c               |   2 +-
+>  drivers/gpu/drm/mcde/mcde_dsi.c               |   2 +-
+>  drivers/gpu/drm/mediatek/mtk_cec.c            |   4 +-
+>  drivers/gpu/drm/mediatek/mtk_disp_ccorr.c     |  14 +-
+>  drivers/gpu/drm/mediatek/mtk_disp_color.c     |  20 +-
+>  drivers/gpu/drm/mediatek/mtk_disp_gamma.c     |  20 +-
+>  drivers/gpu/drm/mediatek/mtk_disp_merge.c     |   4 +-
+>  drivers/gpu/drm/mediatek/mtk_disp_ovl.c       |  50 ++-
+>  drivers/gpu/drm/mediatek/mtk_disp_rdma.c      |  26 +-
+>  drivers/gpu/drm/mediatek/mtk_dp.c             |   2 +-
+>  drivers/gpu/drm/mediatek/mtk_dpi.c            |   2 +-
+>  drivers/gpu/drm/mediatek/mtk_drm_drv.c        | 395 +++++++++++-------
+>  drivers/gpu/drm/mediatek/mtk_ethdr.c          |   4 +-
+>  drivers/gpu/drm/mediatek/mtk_hdmi_ddc.c       |   4 +-
+>  drivers/gpu/drm/mediatek/mtk_mdp_rdma.c       |   4 +-
+>  drivers/gpu/drm/meson/meson_drv.c             |  28 +-
+>  drivers/gpu/drm/meson/meson_dw_hdmi.c         |  24 +-
+>  drivers/gpu/drm/meson/meson_dw_mipi_dsi.c     |   2 +-
+>  drivers/gpu/drm/msm/adreno/adreno_device.c    |   2 +-
+>  drivers/gpu/drm/msm/disp/dpu1/dpu_kms.c       |  70 ++--
+>  drivers/gpu/drm/msm/disp/mdp5/mdp5_kms.c      |   6 +-
+>  drivers/gpu/drm/msm/dp/dp_display.c           |   2 +-
+>  drivers/gpu/drm/msm/dsi/dsi.c                 |   2 +-
+>  drivers/gpu/drm/msm/hdmi/hdmi.c               |   2 +-
+>  drivers/gpu/drm/msm/hdmi/hdmi_phy.c           |  38 +-
+>  drivers/gpu/drm/msm/msm_drv.c                 |   2 +-
+>  drivers/gpu/drm/msm/msm_mdss.c                |   2 +-
+>  drivers/gpu/drm/mxsfb/mxsfb_drv.c             |   6 +-
+>  drivers/gpu/drm/nouveau/nouveau_drm.c         |   2 +-
+>  drivers/gpu/drm/omapdrm/dss/dispc.c           |   2 +-
+>  drivers/gpu/drm/omapdrm/dss/dsi.c             |   8 +-
+>  drivers/gpu/drm/omapdrm/dss/dss.c             |   2 +-
+>  drivers/gpu/drm/omapdrm/dss/hdmi4.c           |   4 +-
+>  drivers/gpu/drm/omapdrm/dss/hdmi5.c           |   6 +-
+>  drivers/gpu/drm/omapdrm/dss/venc.c            |   8 +-
+>  drivers/gpu/drm/omapdrm/omap_dmm_tiler.c      |   2 +-
+>  drivers/gpu/drm/panel/panel-arm-versatile.c   |   4 +-
+>  drivers/gpu/drm/panel/panel-boe-himax8279d.c  |   4 +-
+>  .../drm/panel/panel-boe-th101mb31ig002-28a.c  |   4 +-
+>  .../gpu/drm/panel/panel-boe-tv101wum-nl6.c    |  47 ++-
+>  drivers/gpu/drm/panel/panel-dsi-cm.c          |   2 +-
+>  drivers/gpu/drm/panel/panel-edp.c             |   5 +-
+>  .../gpu/drm/panel/panel-feixin-k101-im2ba02.c |   2 +-
+>  .../drm/panel/panel-feiyang-fy07024di26a30d.c |   2 +-
+>  .../gpu/drm/panel/panel-focaltech-ota7290b.c  |   4 +-
+>  drivers/gpu/drm/panel/panel-himax-hx83102.c   |  47 ++-
+>  drivers/gpu/drm/panel/panel-ilitek-ili9882t.c |  17 +-
+>  drivers/gpu/drm/panel/panel-innolux-p079zca.c |  11 +-
+>  .../gpu/drm/panel/panel-jadard-jd9365da-h3.c  |  30 +-
+>  drivers/gpu/drm/panel/panel-jdi-lpm102a188a.c |   2 +-
+>  .../gpu/drm/panel/panel-jdi-lt070me05000.c    |   2 +-
+>  drivers/gpu/drm/panel/panel-khadas-ts050.c    |   4 +-
+>  .../drm/panel/panel-kingdisplay-kd097d04.c    |   2 +-
+>  drivers/gpu/drm/panel/panel-lg-lb035q02.c     |   4 +-
+>  drivers/gpu/drm/panel/panel-lg-sw43408.c      |   4 +-
+>  .../gpu/drm/panel/panel-lincolntech-lcd197.c  |   2 +-
+>  drivers/gpu/drm/panel/panel-lvds.c            |   4 +-
+>  .../drm/panel/panel-magnachip-d53e6ea8966.c   |   2 +-
+>  drivers/gpu/drm/panel/panel-nec-nl8048hl11.c  |   4 +-
+>  drivers/gpu/drm/panel/panel-novatek-nt35950.c |   2 +-
+>  drivers/gpu/drm/panel/panel-novatek-nt36523.c |   2 +-
+>  .../gpu/drm/panel/panel-novatek-nt36672a.c    |   2 +-
+>  drivers/gpu/drm/panel/panel-novatek-nt36850.c |   2 +-
+>  drivers/gpu/drm/panel/panel-novatek-nt37801.c |   2 +-
+>  .../drm/panel/panel-osd-osd101t2587-53ts.c    |   5 +-
+>  .../drm/panel/panel-panasonic-vvx10f034n00.c  |   2 +-
+>  drivers/gpu/drm/panel/panel-raydium-rm67191.c |   2 +-
+>  drivers/gpu/drm/panel/panel-renesas-r63419.c  |   2 +-
+>  drivers/gpu/drm/panel/panel-ronbo-rb070d30.c  |   2 +-
+>  .../gpu/drm/panel/panel-samsung-atna33xc20.c  |   2 +-
+>  drivers/gpu/drm/panel/panel-samsung-db7430.c  |   6 +-
+>  drivers/gpu/drm/panel/panel-samsung-s6d27a1.c |   4 +-
+>  drivers/gpu/drm/panel/panel-samsung-s6d7aa0.c |   6 +-
+>  .../panel/panel-samsung-s6e88a0-ams427ap24.c  |   2 +-
+>  .../panel/panel-samsung-s6e88a0-ams452ef01.c  |   2 +-
+>  drivers/gpu/drm/panel/panel-seiko-43wvf1g.c   |   5 +-
+>  .../gpu/drm/panel/panel-sharp-lq101r1sx01.c   |   2 +-
+>  .../gpu/drm/panel/panel-sharp-ls037v7dw01.c   |   4 +-
+>  .../gpu/drm/panel/panel-sharp-ls043t1le01.c   |   2 +-
+>  drivers/gpu/drm/panel/panel-simple.c          |  70 ++--
+>  .../gpu/drm/panel/panel-sitronix-st7789v.c    |  18 +-
+>  drivers/gpu/drm/panel/panel-sony-acx565akm.c  |   4 +-
+>  .../drm/panel/panel-startek-kd070fhfid015.c   |   2 +-
+>  drivers/gpu/drm/panel/panel-summit.c          |   2 +-
+>  drivers/gpu/drm/panel/panel-tdo-tl070wsh30.c  |   2 +-
+>  drivers/gpu/drm/panel/panel-tpo-td028ttec1.c  |   6 +-
+>  drivers/gpu/drm/panel/panel-tpo-td043mtea1.c  |   4 +-
+>  drivers/gpu/drm/panel/panel-tpo-tpg110.c      |   6 +-
+>  drivers/gpu/drm/panel/panel-visionox-r66451.c |   2 +-
+>  .../gpu/drm/panel/panel-visionox-rm69299.c    |  12 +-
+>  .../gpu/drm/panel/panel-widechips-ws2401.c    |   6 +-
+>  drivers/gpu/drm/panfrost/panfrost_drv.c       |  36 +-
+>  drivers/gpu/drm/panthor/panthor_drv.c         |   4 +-
+>  drivers/gpu/drm/pl111/pl111_versatile.c       |   4 +-
+>  drivers/gpu/drm/qxl/qxl_drv.c                 |   6 +-
+>  drivers/gpu/drm/renesas/rcar-du/rcar_cmm.c    |   6 +-
+>  drivers/gpu/drm/renesas/rcar-du/rcar_dsc.c    |   2 +-
+>  .../gpu/drm/renesas/rcar-du/rcar_dw_hdmi.c    |   2 +-
+>  .../gpu/drm/renesas/rz-du/rzg2l_mipi_dsi.c    |   6 +-
+>  .../gpu/drm/rockchip/analogix_dp-rockchip.c   |  12 +-
+>  drivers/gpu/drm/rockchip/cdn-dp-core.c        |   8 +-
+>  .../gpu/drm/rockchip/dw-mipi-dsi-rockchip.c   |  32 +-
+>  .../gpu/drm/rockchip/dw-mipi-dsi2-rockchip.c  |   2 +-
+>  drivers/gpu/drm/rockchip/dw_dp-rockchip.c     |   2 +-
+>  drivers/gpu/drm/rockchip/dw_hdmi-rockchip.c   |  32 +-
+>  .../gpu/drm/rockchip/dw_hdmi_qp-rockchip.c    |   6 +-
+>  drivers/gpu/drm/rockchip/inno_hdmi-rockchip.c |  12 +-
+>  drivers/gpu/drm/rockchip/rk3066_hdmi.c        |   2 +-
+>  drivers/gpu/drm/rockchip/rockchip_drm_drv.c   |   4 +-
+>  drivers/gpu/drm/rockchip/rockchip_lvds.c      |   6 +-
+>  drivers/gpu/drm/rockchip/rockchip_vop2_reg.c  |   4 +-
+>  drivers/gpu/drm/rockchip/rockchip_vop_reg.c   |  92 ++--
+>  drivers/gpu/drm/sitronix/st7571-i2c.c         |   2 +-
+>  drivers/gpu/drm/sitronix/st7571-spi.c         |   2 +-
+>  drivers/gpu/drm/sitronix/st7586.c             |   4 +-
+>  drivers/gpu/drm/sitronix/st7735r.c            |   4 +-
+>  drivers/gpu/drm/sprd/sprd_dpu.c               |   2 +-
+>  drivers/gpu/drm/sprd/sprd_drm.c               |   4 +-
+>  drivers/gpu/drm/sprd/sprd_dsi.c               |   2 +-
+>  drivers/gpu/drm/sti/sti_compositor.c          |   5 +-
+>  drivers/gpu/drm/sti/sti_drv.c                 |   4 +-
+>  drivers/gpu/drm/sti/sti_dvo.c                 |   2 +-
+>  drivers/gpu/drm/sti/sti_hda.c                 |   4 +-
+>  drivers/gpu/drm/sti/sti_hdmi.c                |   5 +-
+>  drivers/gpu/drm/sti/sti_hqvdp.c               |   2 +-
+>  drivers/gpu/drm/sti/sti_tvout.c               |   2 +-
+>  drivers/gpu/drm/sti/sti_vtg.c                 |   2 +-
+>  drivers/gpu/drm/stm/drv.c                     |   8 +-
+>  drivers/gpu/drm/stm/dw_mipi_dsi-stm.c         |   4 +-
+>  drivers/gpu/drm/stm/lvds.c                    |   2 +-
+>  drivers/gpu/drm/sun4i/sun4i_frontend.c        |   8 +-
+>  drivers/gpu/drm/sun4i/sun4i_hdmi_enc.c        |   6 +-
+>  drivers/gpu/drm/sun4i/sun6i_mipi_dsi.c        |  12 +-
+>  drivers/gpu/drm/sun4i/sun8i_dw_hdmi.c         |   2 +-
+>  drivers/gpu/drm/sun4i/sun8i_tcon_top.c        |   6 +-
+>  drivers/gpu/drm/sysfb/ofdrm.c                 |   4 +-
+>  drivers/gpu/drm/sysfb/simpledrm.c             |   4 +-
+>  drivers/gpu/drm/tegra/dc.c                    |   5 +-
+>  drivers/gpu/drm/tegra/dpaux.c                 |   2 +-
+>  drivers/gpu/drm/tegra/drm.c                   |  84 ++--
+>  drivers/gpu/drm/tegra/dsi.c                   |   2 +-
+>  drivers/gpu/drm/tegra/gr2d.c                  |   2 +-
+>  drivers/gpu/drm/tegra/hdmi.c                  |   2 +-
+>  drivers/gpu/drm/tegra/hub.c                   |   9 +-
+>  drivers/gpu/drm/tegra/nvdec.c                 |   2 +-
+>  drivers/gpu/drm/tegra/nvjpg.c                 |   2 +-
+>  drivers/gpu/drm/tegra/sor.c                   |   2 +-
+>  drivers/gpu/drm/tegra/vic.c                   |   2 +-
+>  drivers/gpu/drm/tidss/tidss_drv.c             |  12 +-
+>  drivers/gpu/drm/tilcdc/tilcdc_drv.c           |   6 +-
+>  drivers/gpu/drm/tiny/arcpgu.c                 |   4 +-
+>  drivers/gpu/drm/tiny/ili9225.c                |   4 +-
+>  drivers/gpu/drm/tiny/ili9486.c                |   2 +-
+>  drivers/gpu/drm/tiny/mi0283qt.c               |   4 +-
+>  drivers/gpu/drm/tiny/panel-mipi-dbi.c         |   4 +-
+>  drivers/gpu/drm/tiny/pixpaper.c               |   2 +-
+>  drivers/gpu/drm/tiny/repaper.c                |   4 +-
+>  drivers/gpu/drm/tiny/sharp-memory.c           |   4 +-
+>  drivers/gpu/drm/tve200/tve200_drv.c           |   2 +-
+>  drivers/gpu/drm/v3d/v3d_drv.c                 |   2 +-
+>  drivers/gpu/drm/vc4/vc4_crtc.c                |   2 +-
+>  drivers/gpu/drm/vc4/vc4_dpi.c                 |   2 +-
+>  drivers/gpu/drm/vc4/vc4_drv.c                 |   2 +-
+>  drivers/gpu/drm/vc4/vc4_dsi.c                 |   2 +-
+>  drivers/gpu/drm/vc4/vc4_hdmi.c                |   2 +-
+>  drivers/gpu/drm/vc4/vc4_hvs.c                 |   2 +-
+>  drivers/gpu/drm/vc4/vc4_txp.c                 |   2 +-
+>  drivers/gpu/drm/vc4/vc4_v3d.c                 |   2 +-
+>  drivers/gpu/drm/vc4/vc4_vec.c                 |   2 +-
+>  drivers/gpu/drm/verisilicon/vs_dc.c           |   2 +-
+>  drivers/gpu/drm/xlnx/zynqmp_dpsub.c           |   4 +-
+>  drivers/gpu/host1x/dev.c                      |  20 +-
+>  drivers/gpu/host1x/tegra114-mipi.c            |   2 +-
+>  drivers/gpu/ipu-v3/ipu-common.c               |   8 +-
+>  drivers/gpu/ipu-v3/ipu-pre.c                  |   4 +-
+>  drivers/gpu/ipu-v3/ipu-prg.c                  |   4 +-
+>  254 files changed, 1155 insertions(+), 940 deletions(-)
+
+How do you expect a patch of this size be merged?
+
+> diff --git a/drivers/gpu/drm/i915/display/intel_display_device.c b/driver=
+s/gpu/drm/i915/display/intel_display_device.c
+> index 055396f85e4a..6b51a5102201 100644
+> --- a/drivers/gpu/drm/i915/display/intel_display_device.c
+> +++ b/drivers/gpu/drm/i915/display/intel_display_device.c
+> @@ -1442,7 +1442,7 @@ static bool has_no_display(struct pci_dev *pdev)
+>  {
+>  	static const struct pci_device_id ids[] =3D {
+>  		INTEL_IVB_Q_IDS(INTEL_VGA_DEVICE, 0),
+> -		{}
+> +		{ }
+>  	};
+>=20=20
+>  	return pci_match_id(ids, pdev);
+> diff --git a/drivers/gpu/drm/i915/display/intel_lpe_audio.c b/drivers/gpu=
+/drm/i915/display/intel_lpe_audio.c
+> index ff2cf479d8e1..3d92cb307251 100644
+> --- a/drivers/gpu/drm/i915/display/intel_lpe_audio.c
+> +++ b/drivers/gpu/drm/i915/display/intel_lpe_audio.c
+> @@ -185,10 +185,10 @@ static bool lpe_audio_detect(struct intel_display *=
+display)
+>  	if (display->platform.valleyview || display->platform.cherryview) {
+>  		static const struct pci_device_id atom_hdaudio_ids[] =3D {
+>  			/* Baytrail */
+> -			{PCI_DEVICE(PCI_VENDOR_ID_INTEL, 0x0f04)},
+> +			{ PCI_DEVICE(PCI_VENDOR_ID_INTEL, 0x0f04) },
+>  			/* Braswell */
+> -			{PCI_DEVICE(PCI_VENDOR_ID_INTEL, 0x2284)},
+> -			{}
+> +			{ PCI_DEVICE(PCI_VENDOR_ID_INTEL, 0x2284) },
+> +			{ }
+>  		};
+>=20=20
+>  		if (!pci_dev_present(atom_hdaudio_ids)) {
+> diff --git a/drivers/gpu/drm/i915/i915_pci.c b/drivers/gpu/drm/i915/i915_=
+pci.c
+> index 84a7dc6ab5db..faceb3de4fa3 100644
+> --- a/drivers/gpu/drm/i915/i915_pci.c
+> +++ b/drivers/gpu/drm/i915/i915_pci.c
+> @@ -870,7 +870,7 @@ static const struct pci_device_id pciidlist[] =3D {
+>  	INTEL_ATS_M_IDS(INTEL_VGA_DEVICE, &ats_m_info),
+>  	INTEL_ARL_IDS(INTEL_VGA_DEVICE, &mtl_info),
+>  	INTEL_MTL_IDS(INTEL_VGA_DEVICE, &mtl_info),
+> -	{}
+> +	{ }
+
+Personally, I would *always* use {} instead of { }, and would rather not
+change.
+
+Across the tree, {} is slightly more common than { }. IMO changing them
+is pointless churn.
 
 
-Hi Michael,
+BR,
+Jani.
 
-Thanks, that settles the MIB side: no noise field in GET_MIB_INFO, so
-mt792x_phy_get_nf() returning 0 is accurate, not a bug.
 
-On point 2, it looks like the explanation was cut off:
-
-> 2. Why reading IRPI directly gives zeros, and why IPI_EN "didn't stick"
-> + caused MCU timeouts.
-> The IRPI histogram registers and the IPI_EN control do exist on this
-> chip.
-
-The mail ends there. Could you send the rest? In particular:
-
-- Why do the IRPI bins read zero from the host? Is the histogram owned
-  or reset by the firmware, or does it need some other enable or bank
-  select first?
-- Is there a supported way for the host to turn on IPI collection on
-  MT7925 (a firmware command rather than a direct register write) that
-  won't trip the MCU timeouts we saw?
-- If there isn't one today, could it be added with the firmware change
-  you mentioned for tx time?
-
-A noise floor or IPI histogram is the one RF figure we can't get from
-MT7925 in monitor mode. I'm happy to test any firmware or driver change
-on an MT7925 USB adapter (Netgear A9000).
-
-Thanks,
-Chris
+--=20
+Jani Nikula, Intel
 
