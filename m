@@ -2,95 +2,108 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 7087860A2618
-	for <linux-mediatek@archiver.kernel.org>; Wed, 18 Nov 2026 15:35:50 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 685FE60A2612
+	for <linux-mediatek@archiver.kernel.org>; Wed, 18 Nov 2026 15:39:42 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=EpFaeXTP;
-	dkim=pass (2048-bit key) header.d=collabora.com header.i=@collabora.com header.a=rsa-sha256 header.s=mail header.b=Fe2/18J1
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=ugtV16QF;
+	dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=Szd48X2e
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:Content-Type:
-	References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:Cc:To:Message-Id:Content-Type:MIME-Version:Subject:
+	Date:From:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
 	List-Unsubscribe-Post:List-Owner;
-	bh=vIXaxwabzQ8+Hyu7ckpupUBYG45/UINkuK4etw8/0xM=; b=EpFaeXTPczYkp/TK/MIUEJwAW8
-	MTM7A9aP2Iges6ErOzmB89GzTnsVDS/816a2de6Y3CBypYAgkuoM8rlxNmHYCyESxEosI8WUIWr+R
-	+l2nIRBUT9xAl8aT8qKr4LP/yhh8VSX57oftbM+enZcT3+EEQ9dZlhoP7jzoJoZi+dlKU50q0bZkz
-	dPLerWumNGkIv+fjpV3XNc4fZ8jdsMpUxmPSswQ9tPLkvPiJlzKabEUdQaOujBo9Y8FLJKqh58z1h
-	ImmkMwCZDBE4eyUOIr9rpXNag3kb/xtgQ9ZKy+rFM6bIGrPAweON8jE0VbJ5TZTY3P4v7cebhoLVK
-	9K0QswXw==;
+	bh=ypJ08Z/cH9sdI6bgD8/7yWENIXEqxl6euoBHXQWcshE=; b=ugtV16QFzwsfKURngNAZsHM5Qr
+	8EmfLcsQtwhPuwbHbO2nvPatQYO8wYSVetDWQNJseAHWfrci9vRHnl5w6wZVJJhBBgwQX4RCfyxFY
+	Qc2NAdfuYnYWfbkyfQTKH/8eclOfB1DZvXy1GRhWgJCH1CBH1Uqrwx4VtPk4OzsE0OnuBYYweDLUv
+	u46Y4Z0yEStcjjVC30FekvcYL68gXevjN4QAGVU9uQZ+HgtNIJPAcn4ZRkkvTPJ/NSgaDwW3hCSA8
+	8vf1diD1z/L2M4+Vgwf2ztyDfVuwh49Bi/fH6B4sWWOLud0LmK7+dy68ibXXRRjoTwjRUrrlg1H84
+	kw6uOKRA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xThhO-00000009KLH-0ffd;
-	Wed, 18 Nov 2026 15:35:50 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1xThl8-00000009KwP-0cpC;
+	Wed, 18 Nov 2026 15:39:42 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xThhI-00000009KHt-3zX5;
-	Wed, 18 Nov 2026 15:35:47 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1795016142;
-	bh=Pa+l9p/ldmFV5IzkC7e19kzsj1Gaw7fnpk5iOSUaRGQ=;
-	h=Subject:From:To:Cc:Date:In-Reply-To:References:From;
-	b=Fe2/18J1Y2lrX6s3KGi1hDkc4VGGUhXoV+T5mwr8GtCf1GSJ275r0E9kw3HxkjBO4
-	 UpG0xmlRDEL4FvKm/ZHIDsTvhV76dLuifnu3O+R67M9PmOOkdxc3Fusplve3aD9jQG
-	 LsOJ8nZaNGTwUkh2kG63o1krsjvpSuiq4t2uwHJJZSsEUb7HwbCcdPJt3NwTSyc6Ny
-	 j4o4Jj9AS1yyATJftwF2T9Xr7+iI3Rx0AX4rVdr/+qj23OWvVqgh/ApZlvHqnu6ivc
-	 8XZ8xOSfhB0dnwfU4NV+1eo0HZAb0J48OFnxFGJEuFJfe7/MqBI25X/SXnDiTWtx7x
-	 Ww+LNjbsQRX+A==
-Received: from [100.64.0.214] (unknown [100.64.0.214])
+	id 1xThl6-00000009KvR-063J;
+	Wed, 18 Nov 2026 15:39:40 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by sea.source.kernel.org (Postfix) with ESMTP id 5996442BB8;
+	Wed, 18 Nov 2026 15:39:39 +0000 (UTC)
+Authentication-Results: smtp.kernel.org; arc=none smtp.remote-ip=100.80.115.77
+ARC-Seal: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256; cv=none;
+	t=1795016379;
+	b=ZLWnXGDgZ8+uAIvPzM6FYaLwFJjmW2U3RUn4lNg51mpsgtumpwnHzAV6URKbzasV69aL
+	 f5JvHzHj79aaIkk+ESEhSgzENj1dtwPAsE1EV2NfF2fJpWh+pZyIpOnmVrslxhS9+Mp9S
+	 a1WEbM+Ky5b+yZ8uF6bhc+2AczzF1ItWx5YaHbrzDARJbLh1ksIXSDov12KhTIQ99VDkK
+	 XVm+3V1VGsiCozwQ4ONlYmoXTW9OILU2FBwHOBGhlIDaNAUuoRdTJSZj7pjq0OjSAGrkP
+	 dwgp08raTP+xX0SvvnN+oGigkYTpCdJI1F4kgpwFca55zWJvHsPklOuRExfbtUsIebg==
+ARC-Message-Signature: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256;
+	c=relaxed/relaxed; t=1795016379;
+	h=DKIM-Signature:Received:From:Date:Subject:MIME-Version:Content-Type:
+	 Message-Id:X-B4-Tracking:X-Change-ID:To:Cc:X-Mailer:
+	 X-Developer-Signature:X-Developer-Key:X-Endpoint-Received:
+	 X-Original-From:Reply-To:Content-Transfer-Encoding;
+	bh=ypJ08Z/cH9sdI6bgD8/7yWENIXEqxl6euoBHXQWcshE=;
+	b=wfXQaWJ7mCqNkyAwyJt2xns+mxhs1IM8vCKVPoHCOE41hqxhpOgvSH1npoyqAzTibANE
+	 XDGPSJdYdOdfyAtPMUUSI/S9jPMvomgIYkR1+h1ELdrXGnAB0ROmOwg7q3UdbYXRACIv0
+	 0HOvbk5sYc4edfYcaMAJJJAbzFyPoDI3E4PfnUPDvf4kNdwQRrmXPzG7hDKMoe3Io11Cj
+	 xfXCixbg0ZPggxuRpvSZQvNl6KN6U/TjMkzk3Zsbzjs/x/RICD/vL88VSb5LBX1YErqAP
+	 pK7jzaW4C3AhAhBPdkWcEtLniVbTtgZtRhL72DYYF7UDHF7stgOOGkWnSfA6QeNe7aQ==
+ARC-Authentication-Results: i=1; smtp.kernel.org; 
+	arc=none smtp.remote-ip=100.80.115.77
+Received: from lkml.kernel.org (nexus.subspace.kernel.org [100.80.115.77])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange secp256r1 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	(Authenticated sender: nicolas)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id C106C17E0564;
-	Wed, 18 Nov 2026 16:35:39 +0100 (CET)
-Message-ID: <41750a65530034b0dfb144f4c8c10bae3bbe60eb.camel@collabora.com>
-Subject: Re: [PATCH v12 01/10] dt-bindings: media: mediatek: decoder: Add
- MT8189 mediatek,vcodec-decoder
-From: Nicolas Dufresne <nicolas.dufresne@collabora.com>
-To: Rob Herring <robh@kernel.org>, Kyrie Wu <kyrie.wu@mediatek.com>
-Cc: Tiffany Lin <tiffany.lin@mediatek.com>, Andrew-CT Chen	
- <andrew-ct.chen@mediatek.com>, Yunfei Dong <yunfei.dong@mediatek.com>,
- Mauro Carvalho Chehab <mchehab@kernel.org>, Krzysztof Kozlowski
- <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>,  Matthias Brugger
- <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
- <angelogioacchino.delregno@collabora.com>,  Hans Verkuil
- <hverkuil@xs4all.nl>, Nathan Hebert <nhebert@chromium.org>, Arnd Bergmann
- <arnd@arndb.de>,  Irui Wang <irui.wang@mediatek.com>, George Sun
- <george.sun@mediatek.com>, linux-media@vger.kernel.org, 
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
- Neil Armstrong <neil.armstrong@linaro.org>, Andrzej Pietrasiewicz
- <andrzejtp2010@gmail.com>, Yilong Zhou	 <yilong.zhou@mediatek.com>
-Date: Wed, 18 Nov 2026 10:35:38 -0500
-In-Reply-To: <20261118152011.GA1714890-robh@kernel.org>
-References: <20261117085834.1464723-1-kyrie.wu@mediatek.com>
-	 <20261117085834.1464723-2-kyrie.wu@mediatek.com>
-	 <20261118152011.GA1714890-robh@kernel.org>
-Autocrypt: addr=nicolas.dufresne@collabora.com; prefer-encrypt=mutual;
- keydata=mDMEaCN2ixYJKwYBBAHaRw8BAQdAM0EHepTful3JOIzcPv6ekHOenE1u0vDG1gdHFrChD
- /e0J05pY29sYXMgRHVmcmVzbmUgPG5pY29sYXNAbmR1ZnJlc25lLmNhPoicBBMWCgBEAhsDBQsJCA
- cCAiICBhUKCQgLAgQWAgMBAh4HAheABQkJZfd1FiEE7w1SgRXEw8IaBG8S2UGUUSlgcvQFAmibrjo
- CGQEACgkQ2UGUUSlgcvQlQwD/RjpU1SZYcKG6pnfnQ8ivgtTkGDRUJ8gP3fK7+XUjRNIA/iXfhXMN
- abIWxO2oCXKf3TdD7aQ4070KO6zSxIcxgNQFtDFOaWNvbGFzIER1ZnJlc25lIDxuaWNvbGFzLmR1Z
- nJlc25lQGNvbGxhYm9yYS5jb20+iJkEExYKAEECGwMFCwkIBwICIgIGFQoJCAsCBBYCAwECHgcCF4
- AWIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCaCyyxgUJCWX3dQAKCRDZQZRRKWBy9ARJAP96pFmLffZ
- smBUpkyVBfFAf+zq6BJt769R0al3kHvUKdgD9G7KAHuioxD2v6SX7idpIazjzx8b8rfzwTWyOQWHC
- AAS0LU5pY29sYXMgRHVmcmVzbmUgPG5pY29sYXMuZHVmcmVzbmVAZ21haWwuY29tPoiZBBMWCgBBF
- iEE7w1SgRXEw8IaBG8S2UGUUSlgcvQFAmibrGYCGwMFCQll93UFCwkIBwICIgIGFQoJCAsCBBYCAw
- ECHgcCF4AACgkQ2UGUUSlgcvRObgD/YnQjfi4+L8f4fI7p1pPMTwRTcaRdy6aqkKEmKsCArzQBAK8
- bRLv9QjuqsE6oQZra/RB4widZPvphs78H0P6NmpIJ
-Organization: Collabora Canada
-Content-Type: multipart/signed; micalg="pgp-sha512";
-	protocol="application/pgp-signature"; boundary="=-39yOFI3IZD1p7uEEO9ym"
-User-Agent: Evolution 3.62.1 (3.62.1-1.fc45) 
+	by smtp.kernel.org (Postfix) with ESMTPS id 9D59E1F000C8;
+	Wed, 18 Nov 2026 15:39:38 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1795016379;
+	bh=ypJ08Z/cH9sdI6bgD8/7yWENIXEqxl6euoBHXQWcshE=;
+	h=From:Date:Subject:To:Cc:Reply-To;
+	b=Szd48X2epr/W7NQHXko7KLD7VBhdpWF7W8bMakDo30m+Ll4ypAFlbQKkLJlOAmcJn
+	 9g8BNXs6NmzdwiDaJsIgRWh4Sb9oxbBqTR8bqsfgGvxvffJ+BcEbe2UzpDSHodlnzJ
+	 8XQIuhPjB6R3b48ZiU4VG8Sqw9WJoBdvLVSGB6Cyff2lFwZNUkf61GC1lR9ydTeBuI
+	 GqZG/w8pFl+2MtLdQdwk1n0zvtxfY0h4n07X0qYGbeMFcSC9rqm/qsxw3YdDtF0R6J
+	 97QFvFOyhW2N5xeVmb4on1Ke17IymCef26r0yAknhosgiWSzsh5fU+Y1CtGA47RXsO
+	 4dYKobYxHC+vQ==
+Received: from nexus.subspace.kernel.org (localhost [IPv6:::1])
+	by lkml.kernel.org (Postfix) with ESMTP id 2D7FE4AE12;
+	Wed, 18 Nov 2026 15:39:38 +0000 (UTC)
+From: Ryan Leung via B4 Relay <devnull+untilscour.protonmail.com@kernel.org>
+Date: Wed, 18 Nov 2026 15:39:31 +0000
+Subject: [PATCH RESEND v4] wifi: mt76: mt7996: add thermal zone device
+ registration
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261118_073545_202990_C02B29D0 
-X-CRM114-Status: GOOD (  16.44  )
-X-Spam-Score: -2.1 (--)
+Content-Type: text/plain; charset="utf-8"
+Message-Id: <20261118-mt7996-thermal-zone-v4-1-fd26d2a55b0c@protonmail.com>
+X-B4-Tracking: v=1; b=H4sIALLG/WoC/yWNwQ7CIBBEf6XZsyQtaYr1bK892KPxQGGVNRYMo
+ FEb/l3Q45vMvFkhoCcMsKtW8PikQM5maDcVKCPtBRnpzMBr3tWCc7ZE0fcdiwb9Im/s4ywy2Wg
+ Uam604FvIy7vHM71+1iMchmkY93D65+ExX1HFoixNQyE6/y73KaUvkSbj744AAAA=
+X-Change-ID: 20260722-mt7996-thermal-zone-a1de7cb1d728
+To: Felix Fietkau <nbd@nbd.name>, Lorenzo Bianconi <lorenzo@kernel.org>, 
+ Ryder Lee <ryder.lee@mediatek.com>, Shayne Chen <shayne.chen@mediatek.com>, 
+ Sean Wang <sean.wang@mediatek.com>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: linux-wireless@vger.kernel.org, linux-kernel@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+ Ryan Leung <untilscour@protonmail.com>
+X-Mailer: b4 0.16.0
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1795016378; l=4995;
+ i=untilscour@protonmail.com; s=20260906; h=from:subject:message-id;
+ bh=uvdd8eEFkrwV4Xyy+ziwLkkjmUbgGSFn3bMaGJTPF3w=;
+ b=J0I2IvqJvGrgPUC4nnU+/Ex13oHDnooV/SeIF9rb5QhfKwF7JxDZBWJZkZrvpY0lOXZKmcPd9
+ 4pSRuLmT6h9Ayyrvc33h2Kb5Omxi9Z9MTGSrZeEXH7b8cKeHTHjdzCm
+X-Developer-Key: i=untilscour@protonmail.com; a=ed25519;
+ pk=eCaNcoQNRWYKZ9D7KbOGKvQVK2YFguJXZxglTtAR7Xk=
+X-Endpoint-Received: by B4 Relay for untilscour@protonmail.com/20260906
+ with auth_id=1011
+X-Original-From: Ryan Leung <untilscour@protonmail.com>
+Content-Transfer-Encoding: 7bit
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,58 +113,152 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Reply-To: untilscour@protonmail.com
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-15.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-18.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,
 	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=ham
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=ham
 	autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
---=-39yOFI3IZD1p7uEEO9ym
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+From: Ryan Leung <untilscour@protonmail.com>
 
-Le mercredi 18 novembre 2026 =C3=A0 09:20 -0600, Rob Herring a =C3=A9crit=
-=C2=A0:
-> On Tue, Nov 17, 2026 at 04:58:24PM +0800, Kyrie Wu wrote:
-> > Add compatible for video decoder on MT8189 platform. Compared with
-> > former ICs, the MT8189 decoder use iommu to instead of smmu, and
-> > use scp architecture, the frequency is only 406MHZ, and cannot reach
-> > more than 700MHZ. It uses two clocks named soc-vdec and vdec. At the
-> > same time, the decoder supports the vp9 decoding protocol for the first
-> > time in single IC.
-> >=20
-> > Signed-off-by: Kyrie Wu <kyrie.wu@mediatek.com>
-> > Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@coll=
-abora.com>
-> > Reviewed-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
-> > ---
-> >  .../media/mediatek,vcodec-subdev-decoder.yaml | 24 +++++++++++++++++--
-> >  1 file changed, 22 insertions(+), 2 deletions(-)
->=20
-> This patch should be based on this one:
->=20
-> https://lore.kernel.org/20261019212431.4109371-1-robh@kernel.org
+Register the mt7996 phy as a thermal zone sensor using
+devm_thermal_of_zone_register() so that device tree thermal-zones
+nodes can reference the Wi-Fi chip as a temperature source. This
+allows the kernel thermal governor to control external cooling
+devices such as PWM fans based on Wi-Fi chip temperature.
 
-Ack.
+Registration is non-fatal: -ENODEV is returned when no
+thermal-sensors DT property references this device, which is the
+expected case on platforms without a thermal zone configured.
 
->=20
-> Rob
+Unregister the thermal zone together with the existing cooling device
+when the phy is torn down, and on the hwmon registration failure path
+in the same init routine, so neither is left registered against a phy
+that is about to be freed. Clear both pointers after unregistering,
+since this init-time failure path can now run before the normal
+teardown path also unregisters the same phy, and without clearing them,
+that second call would unregister already-freed objects.
 
---=-39yOFI3IZD1p7uEEO9ym
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: This is a digitally signed message part
-Content-Transfer-Encoding: 7bit
+Signed-off-by: Ryan Leung <untilscour@protonmail.com>
+---
+Changes in v4:
+- Clear phy->tzone/phy->cdev in mt7996_unregister_thermal() after
+  unregistering, making it idempotent.
+- Link to v3: https://patch.msgid.link/20260810-mt7996-thermal-zone-v3-1-ae9d7cd6cde1@protonmail.com
 
------BEGIN PGP SIGNATURE-----
+Changes in v3:
+- Unwind cdev/tzone registration in mt7996_thermal_init() on hwmon registration failure.
+- Link to v2: https://patch.msgid.link/20260810-mt7996-thermal-zone-v2-1-563dfbbf9175@protonmail.com
 
-iHUEABYKAB0WIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCav3FygAKCRDZQZRRKWBy
-9J+DAP4gKGQQnQ/zLHxmgqQbgAGqlrumu2hJskKy01zGA4GVPAD/fm6R5hueQywc
-oui/a0M7xHVlfupp0bee2wjaGx+5QAE=
-=t7+b
------END PGP SIGNATURE-----
+Changes in v2:
+- Take phy->dev->mt76.mutex around mt7996_mcu_get_temperature()
+- Unregister phy->tzone explicitly in mt7996_unregister_thermal() before the phy is freed
+- Link to v1: https://patch.msgid.link/20260722-mt7996-thermal-zone-v1-1-88896e6e9985@protonmail.com
+---
+ drivers/net/wireless/mediatek/mt76/mt7996/init.c   | 40 +++++++++++++++++++++-
+ drivers/net/wireless/mediatek/mt76/mt7996/mt7996.h |  1 +
+ 2 files changed, 40 insertions(+), 1 deletion(-)
 
---=-39yOFI3IZD1p7uEEO9ym--
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/init.c b/drivers/net/wireless/mediatek/mt76/mt7996/init.c
+index cc94eade9950..e28fe357c9d7 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7996/init.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7996/init.c
+@@ -234,17 +234,42 @@ static const struct thermal_cooling_device_ops mt7996_thermal_ops = {
+ 	.set_cur_state = mt7996_thermal_set_cur_throttle_state,
+ };
+ 
++static int mt7996_thermal_get_temp(struct thermal_zone_device *tz, int *temp)
++{
++	struct mt7996_phy *phy = thermal_zone_device_priv(tz);
++	int val;
++
++	mutex_lock(&phy->dev->mt76.mutex);
++	val = mt7996_mcu_get_temperature(phy);
++	mutex_unlock(&phy->dev->mt76.mutex);
++	if (val < 0)
++		return val;
++
++	*temp = val * 1000;
++	return 0;
++}
++
++static const struct thermal_zone_device_ops mt7996_tz_ops = {
++	.get_temp = mt7996_thermal_get_temp,
++};
++
+ static void mt7996_unregister_thermal(struct mt7996_phy *phy)
+ {
+ 	struct wiphy *wiphy = phy->mt76->hw->wiphy;
+ 	char name[sizeof("cooling_deviceXXX")];
+ 
++	if (phy->tzone) {
++		devm_thermal_of_zone_unregister(phy->dev->mt76.dev, phy->tzone);
++		phy->tzone = NULL;
++	}
++
+ 	if (!phy->cdev)
+ 		return;
+ 
+ 	snprintf(name, sizeof(name), "cooling_device%d", phy->mt76->band_idx);
+ 	sysfs_remove_link(&wiphy->dev.kobj, name);
+ 	thermal_cooling_device_unregister(phy->cdev);
++	phy->cdev = NULL;
+ }
+ 
+ static int mt7996_thermal_init(struct mt7996_phy *phy)
+@@ -275,14 +300,27 @@ static int mt7996_thermal_init(struct mt7996_phy *phy)
+ 	phy->throttle_temp[MT7996_CRIT_TEMP_IDX] = MT7996_CRIT_TEMP;
+ 	phy->throttle_temp[MT7996_MAX_TEMP_IDX] = MT7996_MAX_TEMP;
+ 
++	phy->tzone = devm_thermal_of_zone_register(phy->dev->mt76.dev,
++						   phy->mt76->band_idx, phy,
++						   &mt7996_tz_ops);
++	if (IS_ERR(phy->tzone)) {
++		if (PTR_ERR(phy->tzone) != -ENODEV)
++			dev_warn(phy->dev->mt76.dev,
++				 "failed to register thermal zone %d: %ld\n",
++				 phy->mt76->band_idx, PTR_ERR(phy->tzone));
++		phy->tzone = NULL;
++	}
++
+ 	if (!IS_REACHABLE(CONFIG_HWMON))
+ 		return 0;
+ 
+ 	hwmon = devm_hwmon_device_register_with_groups(&wiphy->dev, name, phy,
+ 						       mt7996_hwmon_groups);
+ 
+-	if (IS_ERR(hwmon))
++	if (IS_ERR(hwmon)) {
++		mt7996_unregister_thermal(phy);
+ 		return PTR_ERR(hwmon);
++	}
+ 
+ 	return 0;
+ }
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7996/mt7996.h b/drivers/net/wireless/mediatek/mt76/mt7996/mt7996.h
+index da9958647b54..63154c338362 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7996/mt7996.h
++++ b/drivers/net/wireless/mediatek/mt76/mt7996/mt7996.h
+@@ -388,6 +388,7 @@ struct mt7996_phy {
+ 
+ 	struct ieee80211_sband_iftype_data iftype[NUM_NL80211_BANDS][NUM_NL80211_IFTYPES];
+ 
++	struct thermal_zone_device *tzone;
+ 	struct thermal_cooling_device *cdev;
+ 	u8 cdev_state;
+ 	u8 throttle_state;
+
+---
+base-commit: e1dd8486807c1acf9551250b7f81e116a21e6ad6
+change-id: 20260722-mt7996-thermal-zone-a1de7cb1d728
+
+Best regards,
+--  
+Ryan Leung <untilscour@protonmail.com>
+
+
 
