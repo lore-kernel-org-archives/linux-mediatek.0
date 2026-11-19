@@ -2,67 +2,71 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 230BB606CC6A
-	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Nov 2026 20:48:43 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 3E44460A2613
+	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Nov 2026 22:09:49 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=aB5GYrHf;
-	dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=nZm63OKl
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=X5ws4eIM;
+	dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=MhTYs61J
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Unsubscribe-Post:
-	List-Owner; bh=HzCI/OC/wj0bvnUWN/Wm9v2nEQ4J42ID8/rtjwSGIro=; b=aB5GYrHfRKLVKA
-	mR3m5sNxC/qWWb6v4StHkqDWktfWi/Dru6sEpxtVpGfJRpnxdGAWKm83AkxHqm9UMBhdoQS6gxHFV
-	01IurRK0/EDlq5fB6X5gyyjLCy4/DUBXq6pHGV9K/SAtvY2IQTpjImF5vWJHPDWT/SAKxUb9FPLLW
-	wx9da0mBfNiTtLxwm52fY8CElhGgN1pwRxv8lTWjWao4Km+Df29/1P6PbFsyGXypfRmB0Dgj1uM5t
-	WLxw+gOxs6p9SyhfXgqlBRFfu+hizHptbzXzWyeigSXmTfO7lRmj+LjFoDvkdptvUm81ME66G2qGZ
-	ad6kdBGiaK8vCXfZJL2g==;
+	List-Owner; bh=LJJJphSpkcmZiOiduY2/41Fd5r8y4RK3Bv3vN06K7oE=; b=X5ws4eIMqlmo9B
+	Ayw9URdfIrIKLrBT/qnZ2fuTzLiBRTnycy4r3159Tw0wm2dv66Rk/i2/3QlejlTmZS4B1+KFh4li+
+	oAKbppD7i5AEhDqWJnGmwMjTP0tGBAhPIPtQ/PJIyKk4lvbdXbJJHaYuJWitpidGn/zhalvXP1eV5
+	GiYn8iC/GZsqn9iplBLIZwCVmei/oCKsn+mvFAonPlyvdO5fNvKiiCjx7lkej+SgKhYkGvYDdkfuy
+	MWxOqnPKUC7uRza8sw38i8uo1IqPzEPAGJOQ4Dq6ZNvXcGJYeBug10kgFTaf+JhRKpkzMCVxrhZuV
+	VhO8ccGeHmpSFBm/n1BQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xU93i-0000000DPpL-3CyN;
-	Thu, 19 Nov 2026 20:48:42 +0000
+	id 1xUAKC-0000000DXvP-3P5c;
+	Thu, 19 Nov 2026 22:09:48 +0000
 Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xU93d-0000000DPjx-2yAE;
-	Thu, 19 Nov 2026 20:48:37 +0000
+	id 1xUAKB-0000000DXuw-0Tk4;
+	Thu, 19 Nov 2026 22:09:47 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id 38A2642A35;
-	Thu, 19 Nov 2026 20:48:37 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 486951F000D2;
-	Thu, 19 Nov 2026 20:48:35 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 860B14338B;
+	Thu, 19 Nov 2026 22:09:46 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2CB711F000D4;
+	Thu, 19 Nov 2026 22:09:45 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1795121317;
-	bh=HzCI/OC/wj0bvnUWN/Wm9v2nEQ4J42ID8/rtjwSGIro=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References;
-	b=nZm63OKl0ATBt4ksUjXeM7b59QCzmgtjwsvRMyaLIELZpwv7wRC91DyAzy4u9hmnY
-	 6ZdcREdyWGgCV7UAYOEyCC4/87guhOUYT30P+X8o7tXufj/g9ELAWs8PvvD9gyfzTH
-	 bhn2SvpLk/MFeCcxeW6jJsKWYsDxYoNVFjAZQ9Wa4BRg4tf7qFIxKeJ5Rl3YK/nXgu
-	 Jfc9gXo7JWGq3owhPv2MMH8mYtycD29OuNn5y3OJMtQzUDcWo8zThRPe82WqhEZ+bB
-	 /6hLiXgzTZ0mSDMdqdR+toz1dEDxV7qLCJmZ+w+qeuGit6JGDdobHKvmnUOBx1/wvA
-	 Q+8TY6rOQ0Lzg==
-From: Lee Jones <lee@kernel.org>
-To: lee@kernel.org,
-	Sean Wang <sean.wang@kernel.org>,
-	Linus Walleij <linusw@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	"Ryder.Lee" <ryder.lee@mediatek.com>,
-	linux-mediatek@lists.infradead.org,
-	linux-gpio@vger.kernel.org,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org
-Cc: stable@vger.kernel.org
-Subject: [PATCH v2 6/6] pinctrl: mediatek: Prevent divide-by-zero for pins with fixed drive strength
-Date: Thu, 19 Nov 2026 20:47:21 +0000
-Message-ID: <20261119204748.2558209-7-lee@kernel.org>
-X-Mailer: git-send-email 2.56.1.750.gf70dc682cf-goog
-In-Reply-To: <20261119204748.2558209-1-lee@kernel.org>
-References: <20261119204748.2558209-1-lee@kernel.org>
+	s=k20260515; t=1795126186;
+	bh=LJJJphSpkcmZiOiduY2/41Fd5r8y4RK3Bv3vN06K7oE=;
+	h=From:To:Cc:In-Reply-To:References:Subject:Date;
+	b=MhTYs61J8orzDyAmOl/as7tzaohrcDQ4G/1YszAcNynaZobkt8SIzmq6BznMynTgA
+	 jtrWZHHLykfcsb8Q1Oyjxrdte7Z+kl994ynu4hlUX40l2jqVSEVdbfg+hLxxndGqma
+	 507nvfMkrtqvNaeDtSemxgtjKcKAl3urAFxDSB/AZAyBn0mACBbAVxn8myLYl2nxEj
+	 vhltXhiltGJb2fTCjhuFeYtpyYVnZ9nFAB9aWcG2HOKtVAcfnq8DHiG3gZvOMAFoKI
+	 IMCroMXrA5n2vy3L5iolmp9qz/ujoKHVxLPXS3GIM6yLJnRkzDdyUKGqn2onKgoonx
+	 ZBgEoIYEwVVeQ==
+From: Mark Brown <broonie@kernel.org>
+To: Liam Girdwood <lgirdwood@gmail.com>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Alexandre Mergnat <amergnat@baylibre.com>
+Cc: linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org
+In-Reply-To: <20261113-rgp-91-mt6363-key-lock-v2-1-adbd48f0f830@baylibre.com>
+References: <20261113-rgp-91-mt6363-key-lock-v2-1-adbd48f0f830@baylibre.com>
+Subject: Re: [PATCH v2] regulator: mt6363: Serialize BUCK_TOP key access
+Message-Id: <179511291010.116416.9577252743085979937.b4-ty@b4>
+Date: Thu, 19 Nov 2026 18:28:30 +0000
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+X-Mailer: b4 0.17-dev
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1127; i=broonie@kernel.org;
+ h=from:subject:message-id; bh=JNdnc9gqp+eN6TQ5wBFxBkuYGTrKYyKoiaiGTpGAVQQ=;
+ b=owGbwMvMwCWm/754w+YLFp2Mp9WSGLL+Fy9/aJYiycW6fv6ZrlNlvwLv+uxcahdcKW36bEv9t
+ t6tPBtfdpSyMIhxMciKKbLEZXG/rC95vYbv4MI2mDmsTCBDGLg4BWAiMo6MDOvFS7N0dxY/1V14
+ ryLxee2rh4u3XKzZ4T49f87cPck3TS4z/DOw2rdzr7bK2VksV82fzH2Y45w4P3XG3atGDKuT3xz
+ /ZMAOAA==
+X-Developer-Key: i=broonie@kernel.org; a=openpgp;
+ fpr=3F2568AAC26998F9E813A1C5C3F436CA30F5D8EB
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,81 +77,43 @@ List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-18.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,
-	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=ham
-	autolearn_force=no version=4.0.1
+X-Spam-Status: No, score=-12.3 required=3.0 tests=BAYES_00,DATE_IN_PAST_03_06,
+	DKIMWL_WL_HIGH,DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,
+	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,
+	SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no
+	version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-mtk_drive[] only defines entries for DRV_GRP0 (1) through DRV_GRP4 (5),
-leaving mtk_drive[DRV_FIXED] (0) zero-initialised with min = 0, max = 0,
-step = 0, and scal = 0.  If mtk_pinconf_drive_set() or
-mtk_pinconf_drive_set_rev1() is called with arg = 0 on a pin with
-drv_n == DRV_FIXED, the range check (0 >= 0 && 0 <= 0) succeeds and
-!(arg % tb->step) divides by zero.  Similarly, mtk_pinconf_drive_get()
-and mtk_pinconf_drive_get_rev1() divide by tb->scal (0) if the pin has
-drive register fields defined.
+On Fri, 13 Nov 2026 05:29:02 +0000, Alexandre Mergnat wrote:
+> regulator: mt6363: Serialize BUCK_TOP key access
 
-Return -ENOTSUPP immediately when desc->drv_n == DRV_FIXED.
+Applied to
 
-Fixes: c28321979ba8 ("pinctrl: mediatek: add driving strength related support to pinctrl-mtk-common-v2.c")
-Closes: https://sashiko.dev/#/bug/linux-d3852d37-6806-4c41-a493-f249dd59d0c6
-Cc: stable@vger.kernel.org
-Signed-off-by: Lee Jones <lee@kernel.org>
----
+   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/regulator.git for-7.4
 
-v1 => v2: No changes
+Thanks!
 
- drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c | 12 ++++++++++++
- 1 file changed, 12 insertions(+)
+[1/1] regulator: mt6363: Serialize BUCK_TOP key access
+      https://git.kernel.org/broonie/regulator/c/b544ca82abb4
 
-diff --git a/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c b/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c
-index 95d0455f7d53..d0c2292a1bbf 100644
---- a/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c
-+++ b/drivers/pinctrl/mediatek/pinctrl-mtk-common-v2.c
-@@ -1040,6 +1040,9 @@ int mtk_pinconf_drive_set(struct mtk_pinctrl *hw,
- 	const struct mtk_drive_desc *tb;
- 	int err = -ENOTSUPP;
- 
-+	if (desc->drv_n == DRV_FIXED)
-+		return -ENOTSUPP;
-+
- 	tb = &mtk_drive[desc->drv_n];
- 	/* 4mA when (e8, e4) = (0, 0)
- 	 * 8mA when (e8, e4) = (0, 1)
-@@ -1069,6 +1072,9 @@ int mtk_pinconf_drive_get(struct mtk_pinctrl *hw,
- 	const struct mtk_drive_desc *tb;
- 	int err, val1, val2;
- 
-+	if (desc->drv_n == DRV_FIXED)
-+		return -ENOTSUPP;
-+
- 	tb = &mtk_drive[desc->drv_n];
- 
- 	err = mtk_hw_get_value(hw, desc, PINCTRL_PIN_REG_E4, &val1);
-@@ -1095,6 +1101,9 @@ int mtk_pinconf_drive_set_rev1(struct mtk_pinctrl *hw,
- 	const struct mtk_drive_desc *tb;
- 	int err = -ENOTSUPP;
- 
-+	if (desc->drv_n == DRV_FIXED)
-+		return -ENOTSUPP;
-+
- 	tb = &mtk_drive[desc->drv_n];
- 
- 	if ((arg >= tb->min && arg <= tb->max) && !(arg % tb->step)) {
-@@ -1116,6 +1125,9 @@ int mtk_pinconf_drive_get_rev1(struct mtk_pinctrl *hw,
- 	const struct mtk_drive_desc *tb;
- 	int err, val1;
- 
-+	if (desc->drv_n == DRV_FIXED)
-+		return -ENOTSUPP;
-+
- 	tb = &mtk_drive[desc->drv_n];
- 
- 	err = mtk_hw_get_value(hw, desc, PINCTRL_PIN_REG_DRV, &val1);
--- 
-2.56.1.750.gf70dc682cf-goog
+All being well this means that it will be integrated into the linux-next
+tree (usually sometime in the next 24 hours) and sent to Linus during
+the next merge window (or sooner if it is a bug fix), however if
+problems are discovered then the patch may be dropped or reverted.
+
+You may get further e-mails resulting from automated or manual testing
+and review of the tree, please engage with people reporting problems and
+send followup patches addressing any issues that are reported if needed.
+
+If any updates are required or you are submitting further changes they
+should be sent as incremental updates against current git, existing
+patches will not be replaced.
+
+Please add any relevant lists and maintainers to the CCs when replying
+to this mail.
+
+Thanks,
+Mark
 
 
