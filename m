@@ -2,76 +2,86 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 7277A606E4F0
-	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Nov 2026 20:22:54 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 57C5E606CC7F
+	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Nov 2026 20:47:59 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=wZsmIJco;
-	dkim=pass (2048-bit key, unprotected) header.d=justthetip.ca header.i=@justthetip.ca header.a=rsa-sha256 header.s=key1 header.b=EAMgXLdj
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=qELrywM3;
+	dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=XGzroEby
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Unsubscribe-Post:
-	List-Owner; bh=mgVpFkBiyzs2DPlioXUTpvfQdmQUI4RfrR5rU4gK4FQ=; b=wZsmIJconBIuaR
-	Jxjnz05fsnuKLYXtmcS9aZAkhIAa/1Aw4WAWLdSBuj0eVk3/leZpbDcq4SKzc0CqiSyntcDo67uVh
-	xUNlOKLB6Sw0+zPOHgyZ+fHAO6dhptalbKAl2MLB0yA5g4XJoPowalWw9F+yMZDwqd9YVs4jD5aqD
-	HAXNAMn1gryKUJOLLiLW9FnUBTTQ8F4Cu/S8OzNLZyT63dmeQTVp/BZNs1HY+UcKzJTFm3JcKtbra
-	s9+2Kcgttkc7KxaBi4bqR33wcQ0QWEq/7uqFCSoUbK282/9bthTp31Xs59g6YYkcvglkoxaG0L1QW
-	AsQUcP/i9b7+7m8lUG1A==;
+	Content-Type:MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Unsubscribe-Post:List-Owner;
+	bh=fjP62IC7BY5+fCteY4TlTF+5AyEq5vMalnJjs0i2F0k=; b=qELrywM3v5i5lPZDBVt7JraFru
+	xcDnupx21KB7O9an+wqCf5OtQJeGAGgOQyzI8WX4S9qORTzJEOiYag718LJf2fLnqy7BXuabtK2Md
+	FFNtYkUDV6wg+Xf54mAXxyIoxlc1XBqkjQ1xBHMBcjURekbJR1/fYBmUN82v9hepQswoTwPOOfpAv
+	VYro3G/QonDiTl8UlqjZF/9/9076xP6AufTp89qTk7QwC791xD2I/e9r7MNMcVdcolR/Bcl1/Yfy2
+	Mhe5tzfM6VzRI5TynxsYfr8fp0qMRGsYJ0HuJIdYs7FBdu6tHlTrB7+DmI41wMk3l0NrnXVo8jIsL
+	jJ2lbWCQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xU8ej-0000000DLcY-00ue;
-	Thu, 19 Nov 2026 20:22:53 +0000
-Received: from out-31.mta0.migadu.com ([2001:41d0:1004:224b::1f] helo=mta0.migadu.com)
+	id 1xU931-0000000DPTm-02Dh;
+	Thu, 19 Nov 2026 20:47:59 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xU8ea-0000000DLSy-2UZ4
-	for linux-mediatek@lists.infradead.org;
-	Thu, 19 Nov 2026 20:22:47 +0000
-X-Envelope-To: linux-mediatek@lists.infradead.org
-DKIM-Signature: a=rsa-sha256; bh=q96NL1S2dvdtT4JxbppSch+QLobZqj7yWTN8oU6f9xM=;
- c=simple/simple; d=justthetip.ca;
- h=from:to:subject:date:message-id:mime-version:content-type; s=key1;
- t=1795119762; v=1; x=1795724562;
- b=EAMgXLdjv8XLc/w9HINIl4KOdCUW3oowuctYznZYirkxYzkgSO1RmQZdO9BXVpOVK/y8DGt7
- EAWM2GmYFp67uBTpuGa7P+2/ueYrwp5S7EKdrwSqP4qQ81c9q5Mtn3nQSJpFqKFBBv7vkgRt0PD
- LWrYcVY7l5Uofj0T9TQiBrqTc1xUs6befcr0Ki55ywNXHLgOciQV/zGOSjatd7KRhr2DPxXGG2i
- 2gOE2z6ghVXe89kCqko2/cuwJtlqJcHChTdOOFVghJSAufwfODMrEtv6fDWZvIyi8qqX9VWdWaq
- P6q+3hmnobYIr2+XFm3+IIU6L2VxzEmYXLpOlAwMB7anw==
-X-Envelope-To: linux-mediatek@lists.infradead.org
-Received: by smtp.migadu.com with ESMTPS id d0be6c136bf3c826;
-	Thu, 19 Nov 2026 20:22:42 +0000
-X-Mizu-Trace-ID: d0be6c136bf3c826
-X-Migadu-Flow: FLOW_OUT
-From: Devin Wittmayer <lucid_duck@justthetip.ca>
-To: JB Tsai <jb.tsai@mediatek.com>
-Cc: jwboyer@kernel.org,
-	dwmw2@infradead.org,
-	ben@decadent.org.uk,
-	Felix Fietkau <nbd@nbd.name>,
-	Lorenzo Bianconi <lorenzo@kernel.org>,
-	linux-firmware@kernel.org,
-	linux-wireless@vger.kernel.org,
-	linux-mediatek@lists.infradead.org,
+	id 1xU92y-0000000DPT9-3zhk;
+	Thu, 19 Nov 2026 20:47:57 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by tor.source.kernel.org (Postfix) with ESMTP id 0C14260D31;
+	Thu, 19 Nov 2026 20:47:56 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 34BE11F000C0;
+	Thu, 19 Nov 2026 20:47:51 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1795121275;
+	bh=fjP62IC7BY5+fCteY4TlTF+5AyEq5vMalnJjs0i2F0k=;
+	h=From:To:Cc:Subject:Date;
+	b=XGzroEbyIqfu1F020pLEYGri2yRna/SmU4yPDMxz2Wqj/z1KN7rGZn0GSOLhpYq7L
+	 QSg6SjYUgyDMhMEKCg3+aNqudcIsmhBZDWrpZF0/t0mzfhT9gfQZo+Cs/wFoWTSu9x
+	 9EBLqWQ5E+u3MaXNR+uRwGns1MurwMZswQqv+e2FBKtY5mGdGDHx2vU3exEwnSoWZs
+	 juXbrdCssWoAxWX/jyKVWruN+nXmB6x1c/fHuySNxbYGVJn6HPlyDFlIslXaTWVP7x
+	 3no91nBAFXMzjJvLMlgGs9DhKqw8GAlTDwBGfufKDHr6XkdwkYPu2iLKJAmq7Ov3Dl
+	 egQy1lD7u+OLw==
+From: Lee Jones <lee@kernel.org>
+To: lee@kernel.org,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
 	linux-kernel@vger.kernel.org,
-	Sean Wang <sean.wang@mediatek.com>,
-	Chris Lu <chris.lu@mediatek.com>,
-	Quan Zhou <quan.zhou@mediatek.com>,
-	litien.chang@mediatek.com
-Subject: Re: [PATCH] linux-firmware: update firmware for MT7925 WiFi device
-Date: Thu, 19 Nov 2026 13:22:29 -0700
-Message-ID: <20261119202229.150946-1-lucid_duck@justthetip.ca>
-X-Mailer: git-send-email 2.56.1
-In-Reply-To: <20261020013839.523295-1-jb.tsai@mediatek.com>
-References: <20261020013839.523295-1-jb.tsai@mediatek.com>
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Cc: Aaron Kling <webgeek1234@gmail.com>,
+	Andreas Kemnade <andreas@kemnade.info>,
+	Bartosz Golaszewski <brgl@kernel.org>,
+	Daniel Golle <daniel@makrotopia.org>,
+	Hao Chang <ot_chhao.chang@mediatek.com>,
+	"H. Nikolaus Schaller" <hns@goldelico.com>,
+	Jonathan Hunter <jonathanh@nvidia.com>,
+	Linus Walleij <linusw@kernel.org>,
+	linux-gpio@vger.kernel.org,
+	linux-mips@vger.kernel.org,
+	linux-tegra@vger.kernel.org,
+	Maoguang Meng <maoguang.meng@mediatek.com>,
+	Nicolas Boichat <drinkcat@chromium.org>,
+	Olivier Louvignes <olivier@mgcrea.io>,
+	Paul Boddie <paul@boddie.org.uk>,
+	Paul Cercueil <paul@crapouillou.net>,
+	Qingliang Li <qingliang.li@mediatek.com>,
+	Rob Herring <robh@kernel.org>,
+	"Ryder.Lee" <ryder.lee@mediatek.com>,
+	Sam Shih <sam.shih@mediatek.com>,
+	Sean Wang <sean.wang@kernel.org>,
+	Thierry Reding <thierry.reding@kernel.org>,
+	Thierry Reding <treding@nvidia.com>,
+	zhouyanjie@wanyeetech.com
+Subject: [PATCH v2 0/6] pinctrl: Fix out-of-bounds accesses, divide-by-zero, and error handling
+Date: Thu, 19 Nov 2026 20:47:15 +0000
+Message-ID: <20261119204748.2558209-1-lee@kernel.org>
+X-Mailer: git-send-email 2.56.1.750.gf70dc682cf-goog
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261119_122245_197998_3E24D302 
-X-CRM114-Status: UNSURE (   8.12  )
-X-CRM114-Notice: Please train this message.
-X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,34 +92,74 @@ List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-8.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-13.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,
-	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
+	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no
+	version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On Tue, 20 Oct 2026 09:38:38 +0800, JB Tsai wrote:
-> File: mediatek/mt7925/WIFI_RAM_CODE_MT7925_1_1.bin
-> Version: 20261016233029
+These issues were reported by Sashiko.
 
-With this version, a NETGEAR A9000 (MT7925, USB 3.0) sometimes stops
-sending partway through an upload. Within about a minute the driver
-resets the chip and the connection drops.
+v1 => v2:
+ - Drop patches 05/10, 06/10, 07/10, and 10/10, already applied to pinctrl
+   for-next
+ - Drop patch 01/10 (sunxi) in favour of the broader Allwinner IRQ-bank
+   rework in flight (Andre, Sashiko)
+ - mediatek: Guard against NULL eint in mtk_eint_do_suspend() and
+   mtk_eint_do_resume() before resetting hw->eint to NULL on error (Sashiko)
 
-    one-minute uploads at USB 3.0    stalled
-    20261016                         6 of 21
-    20260813                         0 of 26
+v1: https://lore.kernel.org/all/20261103213002.1673560-1-lee@kernel.org/
 
-That is on two machines, an AMD mini PC and a Raspberry Pi 5. Only the
-firmware file changed between the two rows. On 20260813 we have seen
-the transmit queue stop like this only when an AP switched off one link
-of an MLO connection, never in a plain upload.
+Cc: Aaron Kling <webgeek1234@gmail.com>
+Cc: Andreas Kemnade <andreas@kemnade.info>
+Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: Bartosz Golaszewski <brgl@kernel.org>
+Cc: Daniel Golle <daniel@makrotopia.org>
+Cc: Hao Chang <ot_chhao.chang@mediatek.com>
+Cc: "H. Nikolaus Schaller" <hns@goldelico.com>
+Cc: Jonathan Hunter <jonathanh@nvidia.com>
+Cc: Linus Walleij <linusw@kernel.org>
+Cc: linux-arm-kernel@lists.infradead.org
+Cc: linux-gpio@vger.kernel.org
+Cc: linux-mediatek@lists.infradead.org
+Cc: linux-mips@vger.kernel.org
+Cc: linux-tegra@vger.kernel.org
+Cc: Maoguang Meng <maoguang.meng@mediatek.com>
+Cc: Matthias Brugger <matthias.bgg@gmail.com>
+Cc: Nicolas Boichat <drinkcat@chromium.org>
+Cc: Olivier Louvignes <olivier@mgcrea.io>
+Cc: Paul Boddie <paul@boddie.org.uk>
+Cc: Paul Cercueil <paul@crapouillou.net>
+Cc: Qingliang Li <qingliang.li@mediatek.com>
+Cc: Rob Herring <robh@kernel.org>
+Cc: "Ryder.Lee" <ryder.lee@mediatek.com>
+Cc: Sam Shih <sam.shih@mediatek.com>
+Cc: Sean Wang <sean.wang@kernel.org>
+Cc: Thierry Reding <thierry.reding@kernel.org>
+Cc: Thierry Reding <treding@nvidia.com>
+Cc: zhouyanjie@wanyeetech.com
 
-When the driver gives up, it logs:
+Lee Jones (6):
+  pinctrl: tegra186: Fix out-of-bounds register bank index for AON drive
+    groups
+  pinctrl: ingenic: Fix element type of x1600_sfc_funcs array
+  pinctrl: mediatek: mt7981: Add missing entries to mt7981_ant_sel_funcs
+  pinctrl: mediatek: Guard against NULL eint in mtk_eint_do_suspend()
+    and mtk_eint_do_resume()
+  pinctrl: mediatek: Clean up partially initialised hw->eint on error
+  pinctrl: mediatek: Prevent divide-by-zero for pins with fixed drive
+    strength
 
-    mt7925u_git 6-1:1.0: Message 00020016 (seq 5) timeout
-    mt7925u_git 6-1:1.0: timed out waiting for pending tx
+ drivers/pinctrl/mediatek/mtk-eint.c           |   6 ++
+ drivers/pinctrl/mediatek/pinctrl-mt7981.c     |   2 +-
+ .../pinctrl/mediatek/pinctrl-mtk-common-v2.c  |  24 ++++-
+ drivers/pinctrl/pinctrl-ingenic.c             |   2 +-
+ drivers/pinctrl/tegra/pinctrl-tegra186.c      | 102 +++++++++---------
+ 5 files changed, 79 insertions(+), 57 deletions(-)
 
-Devin
+-- 
+2.56.1.750.gf70dc682cf-goog
+
 
