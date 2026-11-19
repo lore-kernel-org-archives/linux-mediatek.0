@@ -2,68 +2,65 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 79600606A33D
-	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Nov 2026 16:26:57 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 9153160A2608
+	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Nov 2026 16:41:00 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=NDZVRjXW
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=YG5xHe2X;
+	dkim=pass (2048-bit key, unprotected) header.d=cjdns.fr header.i=@cjdns.fr header.a=rsa-sha256 header.s=dkim header.b=pDkUyqW0
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Unsubscribe-Post:List-Owner;
-	bh=0Q5O7wQWWp7G0PSZR747dT3nh3JKK2m5Y0byjfb03Bk=; b=NDZVRjXWorN76JcouM92vY+ZJ6
-	rmYpGVL0zHVZn39n2oG3rUvPFzM7q36m0HJhEJjTFIcJSgEHaDgvXVnTrVK6vdXurxY9gWKOAzs9a
-	w7TWeFSLV/BN4OZzOx067hhNmY6dG1Qix6F8SExfRapk0/F+ujmRH2l9wFZHQIBZOBbgLIKxxJ8ZS
-	LY7JNCi1O6/oMa4beEvL3X00nkw+paZRdI74iidzsKl0NpPD+LIqR6mhA/03kcjnrfJq1QhjtdOit
-	ldFtM/VgUV2XTCW/cIxUA4BciNrOWJ3PSaqRJPKBRsUsdgy3svZMTFE0aahO2aDYojUV5X674RLqP
-	Cgm9UC3A==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Unsubscribe-Post:
+	List-Owner; bh=ScFT/OtpxKSo3knUou8IYhnwGsI32WdaoJ4b5AsUsn0=; b=YG5xHe2XmFWV2h
+	l9f4exP9qNq8Pdp712fbGYTS95LzYPZGloeg/N3Gmrgg45OMjTpzB0b7/2TYDrQcKw6bTwbcdDhIm
+	M6aMMsJvT8m5RNf1s39k8t3KMZufH/xXJVYLhOgWxeI3kRz7DK6P6p/C4Rnc3E7KAnS+GdM6bMWkZ
+	OaH/L/dub2v27fgisXFUXv1jSFoSJgtdBqW2CvZIk77GvP84YkEszB6VLVpaLr9ygh2dWHt9Qt6gj
+	0amdKl/CgPniji8xZP1dgZDfQ+LJ7wpgQp1ozxCZmO7gP9wKFgGUeujX1Hsfe7CI2VKc+RlhGg2mL
+	btQvOHGDVsOB8RC9USJg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xU4yP-0000000CdKB-0XFb;
-	Thu, 19 Nov 2026 16:26:57 +0000
-Received: from pidgin.makrotopia.org ([2a07:2ec0:3002::65])
+	id 1xU5C0-0000000CgLi-0gZl;
+	Thu, 19 Nov 2026 16:41:00 +0000
+Received: from mail.cjdns.fr ([5.135.140.105])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xU4yK-0000000CdIa-4A8s;
-	Thu, 19 Nov 2026 16:26:55 +0000
-Received: from local
-	by pidgin.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256:X25519MLKEM768)
-	 (Exim 4.100.1)
-	(envelope-from <daniel@makrotopia.org>)
-	id 1xU4y2-000000007XY-2OT2;
-	Thu, 19 Nov 2026 16:26:34 +0000
-Date: Thu, 19 Nov 2026 16:26:23 +0000
-From: Daniel Golle <daniel@makrotopia.org>
-To: Hermes.Wu@ite.com.tw
-Cc: luca.ceresoli@bootlin.com, andrzej.hajda@intel.com,
-	neil.armstrong@linaro.org, rfoss@kernel.org,
-	Laurent.pinchart@ideasonboard.com, jonas@kwiboo.se,
-	jernej.skrabec@gmail.com, maarten.lankhorst@linux.intel.com,
-	mripard@kernel.org, tzimmermann@suse.de, airlied@gmail.com,
-	simona@ffwll.ch, matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com, allen.chen@ite.com.tw,
-	treapking@chromium.org, wenst@chromium.org,
-	dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
+	id 1xU5By-0000000CgKH-0PIN;
+	Thu, 19 Nov 2026 16:40:59 +0000
+Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id 6FB3057727C;
+	Thu, 19 Nov 2026 17:40:52 +0100 (CET)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=cjdns.fr; s=dkim;
+	t=1795106453; h=from:subject:date:message-id:to:cc:mime-version:
+	 content-transfer-encoding:in-reply-to:references;
+	bh=ScFT/OtpxKSo3knUou8IYhnwGsI32WdaoJ4b5AsUsn0=;
+	b=pDkUyqW05WKCxSsJVLoK9XaiqWAtEkKz6crQuWs/4qzCMnyvIe/weziSyHmWGqHNK9QbG1
+	smmYmdl3CqOpPj8TKaLg2y5DgQZFVO7Uwdi1EvzhS7j2q+qzV1XuXqbexgn1cmH3XQ246v
+	Lq+HPukbnQ0nTIL1JDctLARKxBVRu4NPPVpkDo4N0PNx37yRVjo1Gpvi/khb8TfvA+qDT4
+	nyDkRaJJd4YAk+COtLwSuAi047+E7IuPafoYqwDQxMzgxoZ++rQ/LACOFVEEn8WR+hZfrL
+	UA/tgQClPJfqUmgxu/DJthw+4BRSHc6roAOiVEBlDBuZurKURG6zKmiOgdQ+Uw==
+From: Caleb James DeLisle <cjd@cjdns.fr>
+To: linux-i2c@vger.kernel.org
+Cc: sr@denx.de,
+	andi.shyti@kernel.org,
+	matthias.bgg@gmail.com,
+	angelogioacchino.delregno@collabora.com,
+	linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH v8 08/14] drm/bridge: it6505: avoid division by zero in
- audio FS debug print
-Message-ID: <av8jL0W1vgdqPQhu@makrotopia.org>
-References: <cover.1790552614.git.daniel@makrotopia.org>
- <26ee2c94c42fb09c081201071cb5730c96c8c25b.1790552614.git.daniel@makrotopia.org>
- <179251509978.78870.2485132679226608837.b4-review@b4>
- <179481904178.211952.8076269834336042526@makrotopia.org>
- <9485b4a86b124cc3a528ca147609bf4c@ite.com.tw>
+	linux-mediatek@lists.infradead.org,
+	Caleb James DeLisle <cjd@cjdns.fr>
+Subject: [PATCH 1/2] i2c: mt7621: support big endian processors
+Date: Thu, 19 Nov 2026 16:40:39 +0000
+Message-Id: <20261119164040.2400580-2-cjd@cjdns.fr>
+In-Reply-To: <20261119164040.2400580-1-cjd@cjdns.fr>
+References: <20261119164040.2400580-1-cjd@cjdns.fr>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <9485b4a86b124cc3a528ca147609bf4c@ite.com.tw>
+Content-Transfer-Encoding: 8bit
+X-Last-TLS-Session-Version: TLSv1.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261119_082653_027270_615B13B9 
-X-CRM114-Status: GOOD (  22.04  )
-X-Spam-Score: -1.9 (-)
+X-CRM114-CacheID: sfid-20261119_084058_341656_BE912C38 
+X-CRM114-Status: GOOD (  11.70  )
+X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -74,40 +71,73 @@ List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-3.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=no
+X-Spam-Status: No, score=-15.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,
+	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=ham
 	autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On Wed, Nov 18, 2026 at 03:12:14AM +0000, Hermes.Wu@ite.com.tw wrote:
-> Hi Daniel, Luca,
-> 
-> On Mon, Nov 16, 2026 at 08:56:18AM +0000, Daniel Golle wrote:
-> > On Tue, Oct 20, 2026 at 06:51:39PM +0200, Luca Ceresoli wrote:
-> > > If you could share what that register is for, it would probably answer some
-> > > of those questions.
-> >
-> > I don't have documentation for it either, and with ITE gone there is
-> > nobody left to ask.
-> 
-> REG_AUDIO_INPUT_FREQ (0xBE) is a read-only input audio frequency
-> counter. The driver uses it to check whether the I2S BCLK is
-> present and changing, i.e. whether there is audio input.
+Data is copied to and from I2C by way of a pair of IOMEM registers.
+When sending, the data is copied to an intermediare buffer and then
+written to the registers. However, the data is nominally little endian
+but the registers are in CPU byte order. Make the buffer explicitly
+little endian and use little endian read/write to support I2C on big
+endian CPUs.
 
-Great to see you are actually still around, and thank you for confirming
-that we can drop the register read there.
+Signed-off-by: Caleb James DeLisle <cjd@cjdns.fr>
+---
+ drivers/i2c/busses/i2c-mt7621.c | 21 ++++++++++++++-------
+ 1 file changed, 14 insertions(+), 7 deletions(-)
 
-I was afraid the bouncing emails of the former driver maintainers would
-indicate the driver has now been orphaned. It'd hence be great if you
-can enlist yourself in the MAINTAINERS file for that driver.
+diff --git a/drivers/i2c/busses/i2c-mt7621.c b/drivers/i2c/busses/i2c-mt7621.c
+index 826abb9252e31..c79a47b293ef4 100644
+--- a/drivers/i2c/busses/i2c-mt7621.c
++++ b/drivers/i2c/busses/i2c-mt7621.c
+@@ -185,7 +185,8 @@ static int mtk_i2c_xfer(struct i2c_adapter *adap, struct i2c_msg *msgs,
+ 
+ 		/* transfer data */
+ 		for (len = pmsg->len, j = 0; len > 0; len -= 8, j += 8) {
+-			u32 data[2] = { };
++			__le32 data[2] = { };
++			u32 val;
+ 
+ 			page_len = (len >= 8) ? 8 : len;
+ 
+@@ -194,9 +195,12 @@ static int mtk_i2c_xfer(struct i2c_adapter *adap, struct i2c_msg *msgs,
+ 					SM0CTL1_READ : SM0CTL1_READ_LAST;
+ 			} else {
+ 				memcpy(data, &pmsg->buf[j], page_len);
+-				iowrite32(data[0], i2c->base + REG_SM0D0_REG);
+-				if (page_len > 4)
+-					iowrite32(data[1], i2c->base + REG_SM0D1_REG);
++				val = le32_to_cpu(data[0]);
++				iowrite32(val, i2c->base + REG_SM0D0_REG);
++				if (page_len > 4) {
++					val = le32_to_cpu(data[1]);
++					iowrite32(val, i2c->base + REG_SM0D1_REG);
++				}
+ 				cmd = SM0CTL1_WRITE;
+ 			}
+ 
+@@ -205,9 +209,12 @@ static int mtk_i2c_xfer(struct i2c_adapter *adap, struct i2c_msg *msgs,
+ 				goto err_timeout;
+ 
+ 			if (pmsg->flags & I2C_M_RD) {
+-				data[0] = ioread32(i2c->base + REG_SM0D0_REG);
+-				if (page_len > 4)
+-					data[1] = ioread32(i2c->base + REG_SM0D1_REG);
++				val = ioread32(i2c->base + REG_SM0D0_REG);
++				data[0] = cpu_to_le32(val);
++				if (page_len > 4) {
++					val = ioread32(i2c->base + REG_SM0D1_REG);
++					data[1] = cpu_to_le32(val);
++				}
+ 				memcpy(&pmsg->buf[j], data, page_len);
+ 			} else {
+ 				if (!(pmsg->flags & I2C_M_IGNORE_NAK)) {
+-- 
+2.39.5
 
-> > As for the logging, I don't think it is worth an extra i2c read and a
-> > division in the enable path, so in v9 I'll drop the read and the
-> > print from it6505_enable_audio() instead of guarding the division.
-> 
-> Fine with us, the value is only informational there.
-
-+1
 
