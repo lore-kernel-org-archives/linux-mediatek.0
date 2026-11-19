@@ -2,111 +2,70 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id A80EA606A333
-	for <linux-mediatek@archiver.kernel.org>; Wed, 18 Nov 2026 22:07:52 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 92D00606A31C
+	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Nov 2026 00:57:19 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=YWsyI7Z5;
-	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=CCH6y8Mp
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=PX0mvUQ2;
+	dkim=pass (2048-bit key, unprotected) header.d=justthetip.ca header.i=@justthetip.ca header.a=rsa-sha256 header.s=key1 header.b=CpcNuJ/w
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Unsubscribe-Post:
-	List-Owner; bh=eGiTz5a4RWzDfrU+6uE44Y9DQD7JN0lrvIFzNORDJ0I=; b=YWsyI7Z5IX2Hol
-	k3aNND7RNNj9YsAOzYLgnP4uwdqS34ootIJGNrk/9vdwqd/BsnufGPVfl18LK8hN9OBEcC0wNGhq1
-	wSLVGzk8zxu8OIvXFAvoAt54TjMlUZahT8eGlZ1Y29Ph9vLGvNrIhDs9Jj9RC02SewsrEAa1rbhGO
-	bACbrS7PdrISyi/SZx1Oue1XFzmjs30LV/JZRWitUGOk0hr64f8Y2xzRPF2xlhKvsTEKHF8+qz7TU
-	+DiI26x6eh8hX54Mw4L5vxvPW6ry5QHsskXWNHhlFUZSA62mTkF2K+r/wizml6emvAstl2Gtnwb+X
-	j+KfhJPNZ6ZG4KlETtxQ==;
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Unsubscribe-Post:List-Owner;
+	bh=xWgtswuu5voegshuaN7lrRpgJMW8L3MRLlTeWqoC8wQ=; b=PX0mvUQ2Uirmm/BrAbI2M3g75Z
+	KyB/5EwxUi+TBbkxmjKMTsCDQjYVVIG3jVKApUZ6eo1WlI7wNWg7EXCw8iPR8ub/26c/ysMmiZS3F
+	RG/eMA5ZMveMuJGzfeopJgcUF0j5l/GuGM8uenux/uiqjk4s8Xdw5Z0hkYrlqmamMpplUFTiBPTN7
+	7eNqNFQ14R+kshkod2+uBR01jIcpiSRsego1+q9rbG5/kxXhb+pW18twQToNFmJjaHFKf6X4qkC8Y
+	v/5/WbnBgDg0U3569VOeZZfxSEuA02UGUQovXIrGTeZp8XVQsaNsOsAqxUG6ZdqQ7m+/5dapVjg8b
+	8ace2GKQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xTnom-0000000AO4W-0lCq;
-	Wed, 18 Nov 2026 22:07:52 +0000
-Received: from mail-oo2-x0a.google.com ([2607:f8b0:4864:31::a])
+	id 1xTqSj-0000000AbgM-3vJl;
+	Thu, 19 Nov 2026 00:57:17 +0000
+Received: from out-96.mta0.migadu.com ([2001:41d0:1004:224b::60] helo=mta0.migadu.com)
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xTnoj-0000000AO3h-1gBL
+	id 1xTqSh-0000000Abfy-0GBt
 	for linux-mediatek@lists.infradead.org;
-	Wed, 18 Nov 2026 22:07:50 +0000
-Received: by mail-oo2-x0a.google.com with SMTP id 46e09a7af769-862ac6a951dso548814a34.1
-        for <linux-mediatek@lists.infradead.org>; Wed, 18 Nov 2026 14:07:48 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20260707; t=1795039668; x=1795644468; darn=lists.infradead.org;
-        h=content-transfer-encoding:content-type:in-reply-to:from
-         :content-language:references:cc:to:subject:user-agent:mime-version
-         :date:message-id:from:to:cc:subject:date:message-id:reply-to
-         :content-type;
-        bh=eGiTz5a4RWzDfrU+6uE44Y9DQD7JN0lrvIFzNORDJ0I=;
-        b=CCH6y8Mp2nom6NtzDtme9jPQZdKHEq/rzIyPD4kzZjQnDtsAU7ERt/o3vxFuzGL3Dw
-         mRvBJJvfTY7R3/CgjVTF8IVBya3al46Z3VqwovaKYzusAb6+7Gx/9auo0EdviOUL3g8R
-         noNLqsLdRKq6ajmNHJlNrKlDunu0gpbJqO+8a5dtnLK2Kc067xnOgQtzWlEkMYXKrb97
-         xfeUTEmm1y8Gr9lzoj1JgQMlKlZWyzS2gTmmorI4BBRuAkQlJ/+YuxS3umIco+HC7aeU
-         ZUgmnfVee3V3wjk3p7SAH8Ntn/2z6AVn9Mir4mnjndnq/JUX+v63xyPivAY2/w2wKBTB
-         ubog==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1795039668; x=1795644468;
-        h=content-transfer-encoding:content-type:in-reply-to:from
-         :content-language:references:cc:to:subject:user-agent:mime-version
-         :date:message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to:content-type;
-        bh=eGiTz5a4RWzDfrU+6uE44Y9DQD7JN0lrvIFzNORDJ0I=;
-        b=G72uZh51S9IKOkVNiV7+oftTql/dlf5uw8DCb89I30tFesbw5XG4Mr/W6YP/FMFpOk
-         zt6PzBIOfO3fnE6bs3KH5Y2htvcobSNYrO1gpfQwaJVodQej//JRc20hVTM+wKfy/fM7
-         6cLUg14rHbMTGh2FxOmhXu+lU7a0gjdpVBJQ7EWWSYvgXlLYIRvm77dj41TEN3470P0v
-         UYkg8o66IohHvUtbEP6pfKajguzKCJ125pn2KvRNjc4EcmbzFKnCO074znnSNGOk3Sl6
-         uoLs2m8io3z3KiVhtz2b7evLdbPVgDbtZT6b9eqNEt+7rRYyRuEGmycax2iqojR2FdSM
-         yLRA==
-X-Forwarded-Encrypted: i=1; AL+hErEdIR4bfW4qTDjtbWoUhyGZUqi7wPQQtkCq9ULZl/zRN3KYWASgwv4QanvbxxZs9Y9i9WlfVoTlHoHimTzsPQ==@lists.infradead.org
-X-Gm-Message-State: APuU4Z/EjDD0C840305vJ0EIoy1ZJTNaCXfF7sKZZRTpdRjHGsnZpu1M
-	1Aa0ogt0ys+dg6+mQGSiN20sqlgtzvx+YWVpPgFpEBVLtpzkg2XVwkzO
-X-Gm-Gg: AYBFou2vYiW7K0kySYO5YuM3quNef3t3/M7XAWqcZZTIgKX6CdGBTak5jQzvzRI5pEC
-	YnUAFRyE3Ih42LfjuC/5pBGR6CzWkE2rUtcTCM9fucLDBqI4377BX6P51VRYxBy3u+koJP/CoF0
-	ZGGX1pm0YRsqMYNbjhZ3W4UyzAF0Q4Kpt6WKu+qm+gcSWgh/n1nkiNvjA5Pl8O95+wZtsKsLrq7
-	nJ6+qWk6wlmVdBmr8EEK3Xrn1Bs/6kUJw3V4i/N0EOROJsbms+IWujWayPouT1VCH/2486ybL+B
-	odTXaxIVUl1RLRj5nYWfVeDM8eg2p6Y3vAp5imcL2Tu8Q8nHCd70N9jyrQfHTFmsnwXg6EmOIO0
-	x2x0Si3rvgcfpE+9xfeV4V0BYiNqJkgraKhHBydtdgaNeePzMshFT/JbE/IzMHoFRbawKxvpRET
-	XWKUFhOncDNMTBNdFs/LJDCIwZPtBuF6SMJfoUdW5Ku75Zq5tYIZzVZ3paULukgCLpuQzEcWOb7
-	yy8YCzs89/ZCy96XxQbkI/l0ParBSY2S6yZN6hKI4Wo63Qoc9R3StSlqtQ5r5pRaSDbmcOALUbQ
-	xsQlv1uQi6w3KATnDXk3cWLkpY1Rh2HwwTTPYQqYXGOtp6Y7+fazFtot+LEpoKPPWdIvwve6zHK
-	RCw7ykNapd/HxUrwnemf5dHkxF0FS2NBOiZ6jD7cvxg==
-X-Received: by 2002:a05:6830:3495:b0:829:9992:20f0 with SMTP id 46e09a7af769-862f08c9ce4mr4131980a34.28.1795039667975;
-        Wed, 18 Nov 2026 14:07:47 -0800 (PST)
-Received: from [10.10.18.223] (wsip-64-207-253-118.tu.ok.cox.net. [64.207.253.118])
-        by smtp.gmail.com with ESMTPSA id 46e09a7af769-862f021aae9sm3024029a34.18.2026.11.18.14.07.46
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 18 Nov 2026 14:07:47 -0800 (PST)
-Message-ID: <2fb4e011-8ee8-408b-8684-f3bb8e1ac624@gmail.com>
-Date: Wed, 18 Nov 2026 16:07:45 -0600
+	Thu, 19 Nov 2026 00:57:16 +0000
+X-Envelope-To: linux-mediatek@lists.infradead.org
+DKIM-Signature: a=rsa-sha256; bh=Xfkh/Wtbxs9DzeSqhMzPOXb3vEgBrjD1S7FQ0ecCs/E=;
+ c=simple/simple; d=justthetip.ca;
+ h=from:to:subject:date:message-id:mime-version:content-type; s=key1;
+ t=1795049830; v=1; x=1795654630;
+ b=CpcNuJ/wbL7oXaEIttpFzz0OSRlpCcTQdvE7YzYRc+/iyBbeA3b9sdMabc7aAznaUEYcQu1i
+ BD6iU3+KMjlVF2cuwBWvdVxhSPGfVFOWU15HiwClxAP/WGHH0LsoTtURtfLMbhPY4LdNR3i0ihx
+ T6PE/7riIcAsiNFwOFP9bVYsihYx/OTN8f+fW4/1kOM2LLFOuXu/ySm8H9HWwzoJUG74gG1/Xho
+ 2VE8n3IXdsH7JRoDYlySlMDKHeDjo00G23FPUrDhOc8fkz2rLuUDuE5fwGf/kp+TmtcY3RxZi9H
+ lX6QVdEQSsnPjAVHaaAuBO0QdT8Eizjb2wjnt0ERycZpw==
+X-Envelope-To: linux-mediatek@lists.infradead.org
+Received: by smtp.migadu.com with ESMTPS id 11d9fcbaf7dca7b1;
+	Thu, 19 Nov 2026 00:57:10 +0000
+X-Mizu-Trace-ID: 11d9fcbaf7dca7b1
+X-Migadu-Flow: FLOW_OUT
+From: Devin Wittmayer <lucid_duck@justthetip.ca>
+To: Felix Fietkau <nbd@nbd.name>,
+	Lorenzo Bianconi <lorenzo@kernel.org>,
+	Ryder Lee <ryder.lee@mediatek.com>
+Cc: Deren Wu <deren.wu@mediatek.com>,
+	Sean Wang <sean.wang@mediatek.com>,
+	Shayne Chen <shayne.chen@mediatek.com>,
+	Quan Zhou <quan.zhou@mediatek.com>,
+	Michael Lo <michael.lo@mediatek.com>,
+	James-LY Huang <james-ly.huang@mediatek.com>,
+	linux-wireless@vger.kernel.org,
+	linux-mediatek@lists.infradead.org
+Subject: [PATCH mt76-next v3] wifi: mt76: mt792x: tell mac80211 when a disconnect cancels its ROC
+Date: Wed, 18 Nov 2026 17:57:01 -0700
+Message-ID: <20261119005701.8154-1-lucid_duck@justthetip.ca>
+X-Mailer: git-send-email 2.56.1
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v5 0/2] iio: adc: add mt6397 PMIC AUXADC support
-To: Jonathan Cameron <jic23@kernel.org>,
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: David Lechner <dlechner@baylibre.com>, =?UTF-8?Q?Nuno_S=C3=A1?=
- <nuno.sa@analog.com>, Andy Shevchenko <andy@kernel.org>,
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
- Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
- <matthias.bgg@gmail.com>, Roman Vivchar <rva333@protonmail.com>,
- Luca Leonardo Scorcia <l.scorcia@gmail.com>, linux-iio@vger.kernel.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>,
- Andy Shevchenko <andriy.shevchenko@intel.com>
-References: <20261025-rbrue-suez-upstreaming-mt6397-auxadc-v5-0-5c3c7a5a1851@gmail.com>
- <89c8cadb-0ccb-4aac-9b95-89f355beb24a@collabora.com>
- <60eeaaf9-57db-4ca7-b4f5-bdec111dcdbb@collabora.com>
- <4c64aa52-2b75-427e-8f26-c2ef7fc5b822@gmail.com>
- <20261118215144.301c2467@jic23-hlaptop>
-Content-Language: en-US
-From: Ryan Brue <ryanbrue.dev@gmail.com>
-In-Reply-To: <20261118215144.301c2467@jic23-hlaptop>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261118_140749_485531_9790D803 
-X-CRM114-Status: UNSURE (   8.22  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20261118_165715_477823_F59E1920 
+X-CRM114-Status: GOOD (  13.02  )
 X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -118,27 +77,157 @@ List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-4.3 required=3.0 tests=BAYES_00,DKIM_SIGNED,
-	DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,FREEMAIL_FORGED_FROMDOMAIN,
-	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1 autolearn=no
+X-Spam-Status: No, score=-18.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,
+	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=ham
 	autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On 11/18/26 3:51 PM, Jonathan Cameron wrote:
-> That's indeed a common solution to cases where a binding header
-> is involved. So I'd do this - then chase with a patch next cycle
-> to use the define.
->
-> J
+A disconnect during a remain-on-channel (ROC) cancels the ROC in
+firmware without telling mac80211, which then waits for a ROC that is
+already gone. Scans fail, and after an AP deauth the station does not
+reconnect.
 
-I jumped the gun a bit and sent out v3 of the suez dts earlier today 
-with the proposed change [1]. Should be all ready for AngeloGioacchino.
+Tell mac80211 when the driver cancels a ROC that mac80211 started.
 
-[1] 
-https://lore.kernel.org/all/20261118-rbrue-suez-upstreaming-amazon-suez-dts-v3-1-c1a8b0febf35@gmail.com/
+Fixes: 41ac53c899bd ("wifi: mt76: mt7921: introduce chanctx support")
+Fixes: 5ed54896b6bd ("wifi: mt76: mt7921: fix a potential scan no APs")
+Fixes: c948b5da6bbe ("wifi: mt76: mt7925: add Mediatek Wi-Fi7 driver for mt7925 chips")
+Fixes: 45064d19fd3a ("wifi: mt76: mt7925: fix a potential association failure upon resuming")
+Signed-off-by: Devin Wittmayer <lucid_duck@justthetip.ca>
+---
+v3: rebased on Felix's mt76 branch, where v2 no longer applies after
+"wifi: mt76: mt7925: do not take iflist_mtx under the mutex".
 
-Thanks,
-Ryan Brue
+Tested on that branch with an MT7922, an MT7927 and an MT7925U, the
+MT7925U at USB 2.0 and 3.0:
+
+  disconnect while a ROC is held   without this         with it
+  AP deauth                        no reconnect, scans  back in 3.4 to
+                                   fail                 4.5 s
+  the station disconnects          scans fail           scan in 3.1 to
+                                                        3.5 s
+  the same, MT7925U on two links   no reconnect, scans  back in 9.0 to
+                                   fail                 9.6 s, 34 of 34
+
+Each cancelled ROC is reported once, and a P2P find ends its ROCs as
+before on all three chips.
+
+v2: https://lore.kernel.org/all/20261110005846.38432-1-lucid_duck@justthetip.ca/
+v1: https://lore.kernel.org/all/20261023014827.57411-1-lucid_duck@justthetip.ca/
+
+ drivers/net/wireless/mediatek/mt76/mt7921/main.c | 14 +++++++++++++-
+ drivers/net/wireless/mediatek/mt76/mt7925/main.c | 13 ++++++++++++-
+ 2 files changed, 25 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7921/main.c b/drivers/net/wireless/mediatek/mt76/mt7921/main.c
+index 09574d4417cd..58df080a342e 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7921/main.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7921/main.c
+@@ -381,6 +381,9 @@ void mt7921_roc_abort_sync(struct mt792x_dev *dev)
+ 	ieee80211_iterate_interfaces(mt76_hw(dev),
+ 				     IEEE80211_IFACE_ITER_RESUME_ALL,
+ 				     mt7921_roc_iter, (void *)phy);
++
++	if (phy->roc_notify)
++		ieee80211_remain_on_channel_expired(mt76_hw(dev));
+ }
+ EXPORT_SYMBOL_GPL(mt7921_roc_abort_sync);
+ 
+@@ -405,16 +408,21 @@ void mt7921_roc_work(struct work_struct *work)
+ 
+ static int mt7921_abort_roc(struct mt792x_phy *phy, struct mt792x_vif *vif)
+ {
++	bool aborted;
+ 	int err = 0;
+ 
+ 	timer_delete_sync(&phy->roc_timer);
+ 	cancel_work_sync(&phy->roc_work);
+ 
+ 	mt792x_mutex_acquire(phy->dev);
+-	if (test_and_clear_bit(MT76_STATE_ROC, &phy->mt76->state))
++	aborted = test_and_clear_bit(MT76_STATE_ROC, &phy->mt76->state);
++	if (aborted)
+ 		err = mt7921_mcu_abort_roc(phy, vif, phy->roc_token_id);
+ 	mt792x_mutex_release(phy->dev);
+ 
++	if (aborted && phy->roc_notify)
++		ieee80211_remain_on_channel_expired(phy->mt76->hw);
++
+ 	return err;
+ }
+ 
+@@ -430,6 +438,7 @@ static int mt7921_set_roc(struct mt792x_phy *phy,
+ 		return -EBUSY;
+ 
+ 	phy->roc_grant = false;
++	phy->roc_notify = type == MT7921_ROC_REQ_ROC;
+ 
+ 	err = mt7921_mcu_set_roc(phy, vif, chan, duration, type,
+ 				 ++phy->roc_token_id);
+@@ -471,6 +480,9 @@ static int mt7921_cancel_remain_on_channel(struct ieee80211_hw *hw,
+ 	struct mt792x_vif *mvif = (struct mt792x_vif *)vif->drv_priv;
+ 	struct mt792x_phy *phy = mt792x_hw_phy(hw);
+ 
++	/* mac80211 ends this ROC itself */
++	phy->roc_notify = false;
++
+ 	return mt7921_abort_roc(phy, mvif);
+ }
+ 
+diff --git a/drivers/net/wireless/mediatek/mt76/mt7925/main.c b/drivers/net/wireless/mediatek/mt76/mt7925/main.c
+index 975c564236f9..7ff95683d268 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt7925/main.c
++++ b/drivers/net/wireless/mediatek/mt76/mt7925/main.c
+@@ -569,6 +569,9 @@ void mt7925_roc_abort_sync(struct mt792x_dev *dev)
+ 	cancel_work(&phy->roc_work);
+ 
+ 	mt7925_roc_abort_all(phy, phy->roc_token_id);
++
++	if (phy->roc_notify)
++		ieee80211_remain_on_channel_expired(mt76_hw(dev));
+ }
+ EXPORT_SYMBOL_GPL(mt7925_roc_abort_sync);
+ 
+@@ -596,17 +599,22 @@ void mt7925_roc_work(struct work_struct *work)
+ static int mt7925_abort_roc(struct mt792x_phy *phy,
+ 			    struct mt792x_bss_conf *mconf)
+ {
++	bool aborted;
+ 	int err = 0;
+ 
+ 	timer_delete_sync(&phy->roc_timer);
+ 	cancel_work_sync(&phy->roc_work);
+ 
+ 	mt792x_mutex_acquire(phy->dev);
+-	if (test_and_clear_bit(MT76_STATE_ROC, &phy->mt76->state))
++	aborted = test_and_clear_bit(MT76_STATE_ROC, &phy->mt76->state);
++	if (aborted)
+ 		err = mt7925_mcu_abort_roc(phy, mconf->mt76.idx,
+ 					   phy->roc_token_id);
+ 	mt792x_mutex_release(phy->dev);
+ 
++	if (aborted && phy->roc_notify)
++		ieee80211_remain_on_channel_expired(phy->mt76->hw);
++
+ 	return err;
+ }
+ 
+@@ -721,6 +729,9 @@ static int mt7925_cancel_remain_on_channel(struct ieee80211_hw *hw,
+ 	struct mt792x_vif *mvif = (struct mt792x_vif *)vif->drv_priv;
+ 	struct mt792x_phy *phy = mt792x_hw_phy(hw);
+ 
++	/* mac80211 ends this ROC itself */
++	phy->roc_notify = false;
++
+ 	return mt7925_abort_roc(phy, &mvif->bss_conf);
+ }
+ 
+
+base-commit: e1b736d305e903b8a3e961d77bc392cab23ebc6a
+-- 
+2.56.1
+
 
