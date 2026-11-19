@@ -2,91 +2,84 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 46C27606A320
-	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Nov 2026 03:51:24 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 2E2A7606A330
+	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Nov 2026 03:54:40 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=aomCqgFk;
-	dkim=pass (1024-bit key) header.d=chromium.org header.i=@chromium.org header.a=rsa-sha256 header.s=google header.b=mzAdEKK3
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=I22C7qcF;
+	dkim=pass (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.a=rsa-sha256 header.s=dk header.b=pDabrebX
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:CC:To:From
+	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=Y7DHeu4nEWkVzcf2sVY8OIlNAFB3fB9C0wQws70L76k=; b=aomCqgFkXM1LFU31sVTcTJFLsi
-	axCSG1jwxyMh+9t9puJOLynkbgxWLEEFGfNVbiMJZs1wzsMnnfI9ykuAT/QCSMSzM0l0T+eOGnWv6
-	UtCz20WKBIH9lXBVgwnlKElDzjzeK9h2sYSySlYpRhD21VJy5y7wEc4vOjCteONXt5RzoevWx53VV
-	8Oi5fMYQKeKMgYVyR/KoZFVFpjUkHWiJRTTgJ4HpgeEOoLN4nHXhzE5DvPTs2INg4aS4NbtN0H+NK
-	j+FIHXpahAIh6pTvRXp30U74J8MhqqFLZ7HlWNYuNFZTDmoiOeIS/Xn0bmcFfaSC5G9REBbh2Mb9C
-	chTebt1Q==;
+	bh=mOW7wpw7pclv2woSYadjIG+K3Lf/RuEbJvV+kxBzPXI=; b=I22C7qcFTL/df2OILwS9hpPd0g
+	zo/vcMC01FPqvUcS94RNtALgamFArAUCT9OTdpk+5lpA99n7XtDf64AsmTKpblIzvl3LSS/qBnvXE
+	l/Gefy0jEYSWVDGDGAtAGvhKMhTOGsVUjRDK0p6y0VzdYfpkuvnYhs+dSeTlDyoMqIlN8JuUqmHig
+	vb5mOkYl/OcR3rXi1LQEGNsmRXdeOLz4fcuOcTMGDuIOmzl09dZLeY+Quk+8qXZ9ndOzHMxMSgZ7Q
+	db2HsayDKJXagd+YQcDhEMz+HFavmoSs6GPhYhXl7fDciezJi7ZNPGXUUP53F6X5Q8IM5oNjD29Jx
+	8Qo4JnkA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xTtBC-0000000AnHo-3OyJ;
-	Thu, 19 Nov 2026 03:51:22 +0000
-Received: from mail-dl1-x1232.google.com ([2607:f8b0:4864:20::1232])
+	id 1xTtEN-0000000AnWX-3kDg;
+	Thu, 19 Nov 2026 03:54:39 +0000
+Received: from mailgw01.mediatek.com ([216.200.240.184])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xTtB9-0000000AnH0-3KGa
+	id 1xTtEL-0000000AnW5-1KLu
 	for linux-mediatek@lists.infradead.org;
-	Thu, 19 Nov 2026 03:51:21 +0000
-Received: by mail-dl1-x1232.google.com with SMTP id a92af1059eb24-1b244fb7fffso1821981c88.1
-        for <linux-mediatek@lists.infradead.org>; Wed, 18 Nov 2026 19:51:19 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1795060278; x=1795665078; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
-        bh=Y7DHeu4nEWkVzcf2sVY8OIlNAFB3fB9C0wQws70L76k=;
-        b=mzAdEKK3N5mIL3IixFnkBAUYV1XybS+kLQwDmrVZK6TqSoIslPC3kO6ApTGUVveqly
-         p+Bx/4teWMr9akK1lJy3Qy3f1FcR30CU94o/N/cmhXwp7Ts8IwxjV/6QMGxhX50TWU1S
-         qktdr8GvZ55RTx0Q0whX76+KF/tbfPjRe0C+o=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1795060278; x=1795665078;
-        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
-         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
-         :message-id:reply-to:content-type;
-        bh=Y7DHeu4nEWkVzcf2sVY8OIlNAFB3fB9C0wQws70L76k=;
-        b=gibp905lcW9INHTFiptqzWBIeIEtYDL/sYJcJUTPQmIbfGPcIvbpYEU6yNuUga2DqI
-         WQXT5aWypvrEKGGlWcHXJhcwkh9OTRJcSo7TO7imD7QWLDX557IX0N1E1JFhNrLfml1U
-         oNQIzsE95VMunsIgdGkaCXI4q180ETxX25dshLxErIrEL820D2YOPOM9RUpYFfq9GWPH
-         XcPdxyv+dqXKOiMzuMppD8IOCCUkjd0ufsrTNFZyvFDQT6m60pqa4ZEA4JpJPhtyGRrz
-         TKXB5/f/xrt1kyE0xF63goEGNRneRwpyq26GQw9ffAV96os4ovK3H1z8Vz0SyN1ijAdI
-         o8lw==
-X-Forwarded-Encrypted: i=1; AL+hErEqs/+IWJuST6sdfQaHR5T1ksUjnq9d1ZzlcuA17pVJ+3bAmZdcugKiyBwsdVe2ek9ciE9nQfLICFqhZKH/AQ==@lists.infradead.org
-X-Gm-Message-State: APuU4Z8n3w122LKInBtDGWQd6cn0twienUdR85B2qTsGaVyL6CLondlO
-	9DHueD80yyFsPz41OVz4cegQy+wT+VGgeJR43pLbc5M/uub1qrzGe0+NfSw++75IXA+70/p341O
-	Z1mgoDg==
-X-Gm-Gg: AYBFou1wwc1bJml784iJ5aFd1g18fId2IXkjKZQhFshOUnDSFIgCrxbIyoQdOErwSHF
-	/tGQHAHiDFkJEU7DExUFc0Xw+aGh2JFm54HT8dSkG8ev2eeIrG+G4vHxgu+D/Y9euyhiXmt4xRl
-	zPEMhF+g/rB4RBEqKTzcZJAuPceFZn2SvCRl3rbKpPvmca7comxpRdPIoXvI/uHbvcynvFsT1GX
-	bFMz2ulLhjE9GX8A8Skkty3vIfxUTygwAKgs2txCaLNqc3q8dXR9eY9vL6t9Tv2h5l6yZ2QQHZ8
-	iVM/baH2nJNiC/RcnIeqYAtuvotX1j/3dAUfmwNK6YpPM+YjI0zhwW6HL8i+gnDErUVHipqfCdV
-	W+Q8Ub7yDwLxzQHpSvuYfVqAPketxtexXDn0B3akg9UFT0RNpOXu8ORToznCQhaoD4iTtGYH8Rb
-	QcOLpyVVviKjNXWHARI0YobpGkLR15tdkAxAMMFiasEq4RTk7U33Y9eCHrjXePYuRGpl/ugFlW3
-	zXrWyAFmIUN9THNBnraRaCVzLhQ3krz7cliN2L28Fe1KZpzG1j/gd+kQgvf78eDo3NP0a6HdJe6
-	ttWQEP4tCWhpzgFH7qoyDoD3vgCG7ZH4n1faa8fPLD6hrwHEnf++SxBUdGkGPA==
-X-Received: by 2002:a05:7022:ea8d:b0:1ae:59d6:91cd with SMTP id a92af1059eb24-1b543d0cb92mr4257326c88.38.1795060278321;
-        Wed, 18 Nov 2026 19:51:18 -0800 (PST)
-Received: from localhost ([2a00:79e0:203d:7:5ec1:f878:4926:ab53])
-        by smtp.gmail.com with UTF8SMTPSA id a92af1059eb24-1b5447c5b02sm10392500c88.6.2026.11.18.19.51.16
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Wed, 18 Nov 2026 19:51:17 -0800 (PST)
-From: Chen-Yu Tsai <wenst@chromium.org>
-To: Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: Chen-Yu Tsai <wenst@chromium.org>,
-	linux-mediatek@lists.infradead.org,
-	devicetree@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org
-Subject: [PATCH v2] arm64: dts: mediatek: mt8173-elm: Clean up unused MT6397 regulators
-Date: Thu, 19 Nov 2026 11:51:12 +0800
-Message-ID: <20261119035113.4046607-1-wenst@chromium.org>
-X-Mailer: git-send-email 2.56.1.708.g77570a6a1d-goog
+	Thu, 19 Nov 2026 03:54:38 +0000
+X-UUID: ed01f20ce3cc11f1afed4741b24580c9-20261118
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=MIME-Version:Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID; bh=mOW7wpw7pclv2woSYadjIG+K3Lf/RuEbJvV+kxBzPXI=;
+	b=pDabrebXJUxCMWehX64IETRX14jtV66wlrIxOlPbhrEt48/31phBfP5K+xXuwk1BRmvZL5I1eMr+Z7NrX/Eck5qlDfLYA5m3KG/CjzdBJhrfqq844TVlg0dmZWw61HlP55ott1gW/nicPlkyMcXY6wpSguzLvqmJQn2UHPWGfZw=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.3.21,REQID:c1ecacda-5ccf-4790-aac6-2ea34821ee04,IP:0,U
+	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
+	release,TS:0
+X-CID-META: VersionHash:b0318ac,CLOUDID:33fa7e66-4b51-4c95-bb1b-80ac6aad9c96,B
+	ulkID:nil,BulkQuantity:0,SF:80|81|82|83|102|836|865|888|898,TC:-5,Content:
+	0|15|50|99,EDM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:nil,COL:0
+	,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 2,SSN|SDN
+X-CID-BAS: 2,SSN|SDN,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
+X-UUID: ed01f20ce3cc11f1afed4741b24580c9-20261118
+Received: from mtkmbs09n1.mediatek.inc [(172.21.101.35)] by mailgw01.mediatek.com
+	(envelope-from <peter.wang@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 397002954; Wed, 18 Nov 2026 20:54:31 -0700
+Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
+ mtkmbs13n2.mediatek.inc (172.21.101.108) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.2562.29; Thu, 19 Nov 2026 11:54:29 +0800
+Received: from [10.233.130.16] (10.233.130.16) by mtkmbs13n2.mediatek.inc
+ (172.21.101.73) with Microsoft SMTP Server id 15.2.2562.29 via Frontend
+ Transport; Thu, 19 Nov 2026 11:54:29 +0800
+Message-ID: <403821fa1be0c7ec5c0b2c0235957bfa9818fd7e.camel@mediatek.com>
+Subject: Re: [PATCH v2 1/2] scsi: ufs-mediatek: use devm_regulator_get() for
+ the va09 regulator
+From: Peter Wang <peter.wang@mediatek.com>
+To: Xiangwu Lai <laixiangwu@cmss.chinamobile.com>,
+	<chaotian.jing@mediatek.com>
+CC: <chu.stanley@gmail.com>, <alim.akhtar@samsung.com>, <bvanassche@acm.org>,
+	<stanley.chu@mediatek.com>, <sashiko-bot@kernel.org>,
+	<linux-scsi@vger.kernel.org>, <linux-mediatek@lists.infradead.org>,
+	<linux-kernel@vger.kernel.org>
+Date: Thu, 19 Nov 2026 11:54:29 +0800
+In-Reply-To: <20261118032015.974-2-laixiangwu@cmss.chinamobile.com>
+References: <20261118032015.974-1-laixiangwu@cmss.chinamobile.com>
+	 <20261118032015.974-2-laixiangwu@cmss.chinamobile.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+User-Agent: Evolution 3.52.3-0ubuntu1.1 
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261118_195119_877660_AEE097F2 
-X-CRM114-Status: GOOD (  12.91  )
+X-CRM114-CacheID: sfid-20261118_195437_393203_4CE12BB4 
+X-CRM114-Status: GOOD (  15.78  )
 X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -98,106 +91,49 @@ List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-18.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-10.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,
-	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=ham
+	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY autolearn=ham
 	autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Several MT6397 (MT6391) PMIC regulator nodes in mt8173-elm.dtsi are
-not actually used on either Elm or Hana according to the board
-schematics. They may have been copied from the EVB dts.
+On Wed, 2026-11-18 at 11:20 +0800, Xiangwu Lai wrote:
+> ufs_mtk_init_va09_pwr_ctrl() obtains the va09 regulator with
+> regulator_get() but the reference is never released with
+> regulator_put(), neither on driver unbind nor on probe failure. The
+> other regulators handled by this driver (dvfsrc-vcore) are already
+> obtained with devm_regulator_get_optional().
+>=20
+> Use devm_regulator_get() so that the reference is released
+> automatically when the UFS device is detached.
+>=20
+> This alone is not enough, though: ufs_mtk_init() powers the M-PHY on,
+> which enables the va09 regulator, and nothing powers it off again on
+> the way out -- the variant operations have no .exit callback and
+> ufshcd_pltfrm_remove() only resumes the device.=C2=A0 The devm release
+> would then hit WARN_ON(regulator->enable_count) in _regulator_put()
+> and leak the enable reference.
+>=20
+> Balance the use count by adding an .exit callback which powers the
+> M-PHY off, in the same spirit as the .exit callbacks of ufs-exynos
+> and ufs-qcom.=C2=A0 ufshcd_hba_exit() invokes it both on driver unbind an=
+d
+> on ufshcd_init() failure after the variant init, so the enable count
+> is always balanced by the time devm releases the regulator.=C2=A0 It
+> relies on the state tracking in ufs_mtk_mphy_power_on() and is a
+> no-op if the M-PHY was never powered on.
+>=20
+> Fixes: cf137b3ea49a ("scsi: ufs-mediatek: Support VA09 regulator
+> operations")
+> Signed-off-by: Xiangwu Lai <laixiangwu@cmss.chinamobile.com>
+> ---
 
-- buck_vgpu: Output pins are unconnected; GPU power is supplied by an
-  external DA9212 buck regulator instead.
-- ldo_va28: Only connected to a decoupling capacitor for the PMIC's
-  internal audio codec and fuel gauge ADC blocks, both of which are
-  unused as both boards use an external ALC5650 codec and EC-managed
-  smart battery.
-- ldo_vgp4: Only routed to a test point on Elm and an unpopulated
-  resistor on Hana.
-- ldo_vibr: Output pins are unconnected.
+Hi Xiangwu,
 
-Keep these regulator nodes in place so that the regulator core still
-considers them constrained and can disable any unused rails left on at
-power-up (such as ldo_va28), but drop all their properties and unused
-labels. This is meant to preserve prior behavior.
+Thanks for fix this bug.
+Reviewed-by: Peter Wang <peter.wang@mediatek.com>
 
-Checking the regulator nodes against the schematics, drafting the change
-and reviewing it were done by an agent. Manually tested on a Hana
-(Telesu) device.
-
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Signed-off-by: Chen-Yu Tsai <wenst@chromium.org>
----
-Changes since v1:
-- Rebased (so "arm64: dts: mediatek: mt8173-elm-hana: Unmark trackpad
-  supply as always-on" is not applied)
-
- arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi | 26 ++++++--------------
- 1 file changed, 8 insertions(+), 18 deletions(-)
-
-diff --git a/arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi b/arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi
-index 1b8f1b6fd788..ac5e9e387294 100644
---- a/arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi
-+++ b/arch/arm64/boot/dts/mediatek/mt8173-elm.dtsi
-@@ -988,12 +988,8 @@ mt6397_vcore_reg: buck_vcore {
- 				regulator-always-on;
- 			};
- 
--			mt6397_vgpu_reg: buck_vgpu {
--				regulator-name = "vgpu";
--				regulator-min-microvolt = < 700000>;
--				regulator-max-microvolt = <1350000>;
--				regulator-ramp-delay = <12500>;
--				regulator-enable-ramp-delay = <115>;
-+			buck_vgpu {
-+				/* unused */
- 			};
- 
- 			mt6397_vdrm_reg: buck_vdrm {
-@@ -1017,8 +1013,8 @@ mt6397_vtcxo_reg: ldo_vtcxo {
- 				regulator-always-on;
- 			};
- 
--			mt6397_va28_reg: ldo_va28 {
--				regulator-name = "va28";
-+			ldo_va28 {
-+				/* unused */
- 			};
- 
- 			mt6397_vcama_reg: ldo_vcama {
-@@ -1079,11 +1075,8 @@ mt6397_vgp3_reg: ldo_vgp3 {
- 				regulator-enable-ramp-delay = <218>;
- 			};
- 
--			mt6397_vgp4_reg: ldo_vgp4 {
--				regulator-name = "vgp4";
--				regulator-min-microvolt = <1200000>;
--				regulator-max-microvolt = <3300000>;
--				regulator-enable-ramp-delay = <218>;
-+			ldo_vgp4 {
-+				/* unused */
- 			};
- 
- 			mt6397_vgp5_reg: ldo_vgp5 {
-@@ -1101,11 +1094,8 @@ mt6397_vgp6_reg: ldo_vgp6 {
- 				regulator-always-on;
- 			};
- 
--			mt6397_vibr_reg: ldo_vibr {
--				regulator-name = "vibr";
--				regulator-min-microvolt = <1300000>;
--				regulator-max-microvolt = <3300000>;
--				regulator-enable-ramp-delay = <218>;
-+			ldo_vibr {
-+				/* unused */
- 			};
- 		};
- 
--- 
-2.56.1.708.g77570a6a1d-goog
 
 
