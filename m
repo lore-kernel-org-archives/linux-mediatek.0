@@ -2,85 +2,130 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 4667C606A61D
-	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Nov 2026 17:11:01 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 0E053606A326
+	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Nov 2026 19:02:14 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=vTL1hyDo;
-	dkim=pass (2048-bit key) header.d=google.com header.i=@google.com header.a=rsa-sha256 header.s=20260707 header.b=FD/h+kr4
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=Gun+WQwp;
+	dkim=pass (2048-bit key) header.d=ndufresne-ca.20260707.gappssmtp.com header.i=@ndufresne-ca.20260707.gappssmtp.com header.a=rsa-sha256 header.s=20260707 header.b=QeEtewbL
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:From:
-	Subject:Message-ID:Mime-Version:Date:Reply-To:Content-Transfer-Encoding:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:Content-Type:
+	References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=ZcdeY/+hHuFAVss5RJRa1CDo+Jz02VmFH4BdGyYa5KQ=; b=vTL1hyDolWRkwWELpV8hV+zPVs
-	lq0dFIiH35q/It4wYwc4CzAD9qcfueg7zdj4bv+WgmIcFI3r+JyeaL1Qd3Qjh0gHOAI5Ct6iOUZ8/
-	RlJlju5xssS5/mqcsx10oh8Th1uSytmyu0fSH32gtP27iqAjsLnHLVApD90gpGDC0LAJSo7ujZgnb
-	5ZhjhsuJop37fHyC284bRH3XxgCIbFlj0lzoRm0evittV6+rsgOQeUj3PbUb4/vObvgnohG0vvhk/
-	jfBu2iq69LOw0RXHdM7AdMYqYZ9m6lVp6OJp7UVDILgJr+WsEgMxWdbhKevBz35BLwht/a9e2m9tR
-	Ox50geLQ==;
+	bh=hKkPpNGKPc9dB0PHZyw3/Ep3fUq1c/BlK7UqcWPEb1A=; b=Gun+WQwpLzLQIZhdNyvsCOx1aQ
+	c5vooyKNxu/eLY/ys0cVjd1EJUM3x6yYg6qte7waTCpGqJpxuB+HzAQDeMVkCwtsTPPINwGPUmXed
+	iRJnt9eov56+zlFA44RggOiXMeK/vMOkDyytdbglVMG76PXhygV8lVg2yxFzm415wYI852aFbwJ5T
+	+n4hE0vGbWPIF9SxwFXI9HF/jX9HIhPowJ1+81jQ/2285ycWj5PyiCG4Smygcfp7dfY/f8HEkeacl
+	Tp8m86Vs+Mo2B7FoWN1JZxG3nru1ZHK5cZuKgDwfrDV9ESXMiARvXLjwCS2sM8UGdopN2qRt3RYCa
+	0wfcYrLQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xU5f2-0000000CnpF-49C1;
-	Thu, 19 Nov 2026 17:11:00 +0000
-Received: from mail-dl1-x1246.google.com ([2607:f8b0:4864:20::1246])
+	id 1xU7Oc-0000000D8ew-2uzZ;
+	Thu, 19 Nov 2026 19:02:10 +0000
+Received: from mail-ua1-x92a.google.com ([2607:f8b0:4864:20::92a])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xU5f0-0000000CnoA-2IcM
+	id 1xU7OZ-0000000D8dQ-0yt6
 	for linux-mediatek@lists.infradead.org;
-	Thu, 19 Nov 2026 17:10:59 +0000
-Received: by mail-dl1-x1246.google.com with SMTP id a92af1059eb24-1b29df78132so2593672c88.1
-        for <linux-mediatek@lists.infradead.org>; Thu, 19 Nov 2026 09:10:57 -0800 (PST)
+	Thu, 19 Nov 2026 19:02:09 +0000
+Received: by mail-ua1-x92a.google.com with SMTP id a1e0cc1a2514c-9950a7530d9so65099241.2
+        for <linux-mediatek@lists.infradead.org>; Thu, 19 Nov 2026 11:02:06 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=google.com; s=20260707; t=1795108257; x=1795713057; darn=lists.infradead.org;
-        h=content-type:cc:to:from:subject:message-id:mime-version:date:from
-         :to:cc:subject:date:message-id:reply-to:content-type;
-        bh=ZcdeY/+hHuFAVss5RJRa1CDo+Jz02VmFH4BdGyYa5KQ=;
-        b=FD/h+kr4B5hqPvqZuMc3+U1h8Vq/SYxqe4Cj4l1nMQtjB9f7ysxfkSUnyKhe3UP3Ia
-         i9/kCZFfcxy+lLXu9zk9Z2MXAz9bsdBL7wbe6bi7JkUYV00upVjbNe6t5wKvExjE4dJT
-         vrPxKaZwPJjmXH6uBZrp98ufG/y83/wOGRNwJVyppwmL2oHWBziZfFhcYol+Sf+bafk8
-         H8Uz63/k3oV/G+A5G9ux9pTQAR0RgkeueiDKe0ZfH7607NEVMSTjsIIPQ/nTCSyyc9F7
-         PCUOhAduK19VwkA5GwnUTUBZJJsfQMhcJd6DZ2BRSuMkr0m0NLT1H8W+3QGN47cLfyQg
-         0lrA==
+        d=ndufresne-ca.20260707.gappssmtp.com; s=20260707; t=1795114926; x=1795719726; darn=lists.infradead.org;
+        h=mime-version:user-agent:content-type:autocrypt:references
+         :in-reply-to:date:cc:to:from:subject:message-id:from:to:cc:subject
+         :date:message-id:reply-to:content-type;
+        bh=hKkPpNGKPc9dB0PHZyw3/Ep3fUq1c/BlK7UqcWPEb1A=;
+        b=QeEtewbLp7vZT3bRfBjRClglXbpd8bTR5F9BMK/1nAo8gCTmD7jVnYZ01Oz+EbMJ0K
+         SO9YoBJZ4loqclsBHUlWK0ovuXP1w46NVHoflCxaWg+MggLnjLHj4Oysu6wMI+PrDf7D
+         UKEHN/d8B5jwthUvTvHDmM7cI0azIW2vBjfVbNPOcsm33i5CFEd/Wv1nA+LwhaBH7zRU
+         mUoMx+Xayl0CNJbm5tfWwMjxHRhHGPZmIy0ugxwMd/pIWYNkRwFgOy8IzY+sT9pwf1Mp
+         69c44vIBOsalahYU3esqF/M+1QqpdA2619jR+sYwgTCCW1Y/RMgTz6oikxI/5Ace6zm0
+         SSyQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1795108257; x=1795713057;
-        h=content-type:cc:to:from:subject:message-id:mime-version:date
+        d=1e100.net; s=20260707; t=1795114926; x=1795719726;
+        h=mime-version:user-agent:content-type:autocrypt:references
+         :in-reply-to:date:cc:to:from:subject:message-id:x-gm-gg
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
          :content-type;
-        bh=ZcdeY/+hHuFAVss5RJRa1CDo+Jz02VmFH4BdGyYa5KQ=;
-        b=F/TCNHQbp8RJzfMg5CjmeG/pyO8eYWszLRMPPHKc0mikLYWgZcS6tOGdxMfad7UgdW
-         jng2XGQSiDWblgiEQI5XhlT+zXQHJtiwhZvDeB9V5hPBjLTkbMTvXd5KzRu7l9hUpH+l
-         CzAr7tNdZ8s6zifT79DJsj9jQ/6ry5C7LXyvM0nGzIVx9ZJ8BRb2eRN8SgfdZbWXclFi
-         9ey3h+MdObtwLLo3d8d5JkQgN0XPa2TTTx6CJt3+0f/3NJrlL4jXCAskdCbasVmWs77Y
-         pK2JStFt0gKhnHUF4XO7a1pbblmRWJdzGKqMgwoFUZQM6qbkxX/wQQalakZ7VZQjbi3t
-         j3Fw==
-X-Forwarded-Encrypted: i=1; AL+hErGkJWnmiOiYbsc5w8mZiu4wJiQ6gjkZn/6naopzaRk0IgeNVsmb3M8B+qu/aYyrmy3i9y4SnQvEiTfgZM0Cog==@lists.infradead.org
-X-Gm-Message-State: APuU4Z9pHgp+h4uWLrvjdr/n7mrLn9o2oGA0dcaeRptDfbw7HUNsMUiJ
-	8sw9wjCFziuVn++5tSVLQCnYZ1eXTQWrBfUYPUsOcfNSE7CanztJyUqa/XY4hKd4Bkp7OJF/rXv
-	QcRUU8yxNvA==
-X-Received: from dlev8.prod.google.com ([2002:a05:701b:4648:b0:1a7:450c:8b47])
- (user=irogers job=prod-delivery.src-stubby-dispatcher) by 2002:a05:7022:ea8d:b0:163:c5eb:d42f
- with SMTP id a92af1059eb24-1b5567c02b5mr259999c88.5.1795108256626; Thu, 19
- Nov 2026 09:10:56 -0800 (PST)
-Date: Thu, 19 Nov 2026 09:10:53 -0800
+        bh=hKkPpNGKPc9dB0PHZyw3/Ep3fUq1c/BlK7UqcWPEb1A=;
+        b=PRRamxH4A0OM/5pjOogXiYjKcWj5Yre1Toc25rccac14e3JIFuuGuC2MziRdPqK1zS
+         suyG4gxokh1B870R21J8rJoyc/svBLL0QY5QTAl8EH07VAqhTTiD7Xe4OAOnnvtR57tE
+         Dl/sURukbT6oFBqEsrRsMx1l50keL1lobSZGOn22hnnf7dWckhWwGzPiR+tojuPmiQJi
+         ZCuLJBheydq7MaHPQ910KqYorzQ0ZVxtphdSTtFbXD3HVpxBWVkCjfSyRc0UG0Y+AIEi
+         t3bDxEJRGpMBbsmq1O8NO767263+FK3Osem3sC8ZxbAwRijSVY/cSr9J5nOAQgwoLVBC
+         TQEg==
+X-Forwarded-Encrypted: i=1; AL+hErGYytC1bxyCpZcxOp4dZIh5HHrmPAUmpIPt+sQlVblghm6WCdW0qmKiyaLfR7i0xTiPEcxiYMteCY+2IiDLwg==@lists.infradead.org
+X-Gm-Message-State: APuU4Z/qoDDusRSrQFZRzN3Z3H8S9n+oHYsdqSBPenVLTYlT+uHtTk72
+	1HP4tR5ItoRteLzQCrm+bPnKLNHLiDyLse0W62NPmwzsmyGrzEV41I8AowHaseHCwFg=
+X-Gm-Gg: AZFdTZe9SBxh/M/4N7RGJUYfmJdl7iSBRZUwghWKVdn1zv3O+rsNufDLDvRbfBQoNzI
+	FgpI8MuO2JxMGMLV46/ORSHtOPNrlVzVFV9j1RxccwQZWs2DUmOw+mf3Ssjx0yftZODsT4p5o67
+	F+EZISppcEdY9OahhQi5bEEWotQQfBTQYfzODrbKSxYoNcvbnlFdAx7DNP763rmHUaj/SpwbPmV
+	5r+AIpC30+GYARWi7sxsdKza4MATZcNIgqY/iuBzlv+FgK63IdYgHHrDRajaHf2Vi8PgFKvnYEI
+	pktheAotyDSf9scGCTIj1WODb3uziqLPirypy87bxuyCAxqeeOoFARxh1B5ENhOYN3klbAx0UFt
+	kuRm+RqPmMManHr7Cr4jYZUw/hDp2ySQog4qmCZW7VmwEvJYzNREWqXncmsHO1l6TicOqwQaso2
+	nZDPxGh54lv2GrHx4ynSvGszDVw9MD7bJMKrljHlHmtjOVRgzgK3QH492VphWtgJOQ9AYIfnJm+
+	7xZ7UbRi1b2yomhvef6VSqZDaaUroI6RhXLFhreJ/PkwXWw7qE7hqiWEjP/SdVhqdpNAQMdH/yy
+	OGJEDrGUIAF+psyRL0W2HoYIpX3cSjBf7sNwGYmP1EPdssv1E86n3UU=
+X-Received: by 2002:a05:6122:c88:b0:5ca:f811:25ac with SMTP id 71dfb90a1353d-5ee8aefbb61mr486259e0c.14.1795114925522;
+        Thu, 19 Nov 2026 11:02:05 -0800 (PST)
+Received: from ?IPv6:2606:6d00:11:8ec9::c41? ([2606:6d00:11:8ec9::c41])
+        by smtp.gmail.com with ESMTPSA id a1e0cc1a2514c-99e6df8a28dsm809462241.4.2026.11.19.11.02.02
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 19 Nov 2026 11:02:04 -0800 (PST)
+Message-ID: <84fd9703862c225d63d973cf170b06ab7a962312.camel@ndufresne.ca>
+Subject: Re: [PATCH v2 6/6] staging: media: cedrus: Use
+ devm_of_reserved_mem_device_init()
+From: Nicolas Dufresne <nicolas@ndufresne.ca>
+To: Mukesh Ojha <mukesh.ojha@oss.qualcomm.com>, Daniel Scally	
+ <dan.scally@ideasonboard.com>, Jacopo Mondi
+ <jacopo.mondi@ideasonboard.com>,  Mauro Carvalho Chehab	
+ <mchehab@kernel.org>, Eddie James <eajames@linux.ibm.com>, Joel Stanley	
+ <joel@jms.id.au>, Andrew Jeffery <andrew@codeconstruct.com.au>, Minghsiu
+ Tsai	 <minghsiu.tsai@mediatek.com>, Houlong Wei <houlong.wei@mediatek.com>,
+  Andrew-CT Chen <andrew-ct.chen@mediatek.com>, Tiffany Lin
+ <tiffany.lin@mediatek.com>, Yunfei Dong	 <yunfei.dong@mediatek.com>,
+ Matthias Brugger <matthias.bgg@gmail.com>,  AngeloGioacchino Del Regno
+ <angelogioacchino.delregno@collabora.com>, Joseph Liu <kwliu@nuvoton.com>,
+ Marvin Lin <kflin@nuvoton.com>,  Dmitry Osipenko
+ <dmitry.osipenko@collabora.com>, Maxime Ripard <mripard@kernel.org>, Paul
+ Kocialkowski	 <paulk@sys-base.io>, Greg Kroah-Hartman
+ <gregkh@linuxfoundation.org>,  Chen-Yu Tsai <wens@kernel.org>, Jernej
+ Skrabec <jernej.skrabec@gmail.com>, Samuel Holland	 <samuel@sholland.org>
+Cc: Ryan Chen <ryan_chen@aspeedtech.com>, Billy Tsai
+ <billy_tsai@aspeedtech.com>, 	linux-media@vger.kernel.org,
+ linux-kernel@vger.kernel.org, 	openbmc@lists.ozlabs.org,
+ linux-arm-kernel@lists.infradead.org, 	linux-aspeed@lists.ozlabs.org,
+ linux-mediatek@lists.infradead.org, 	kernel@collabora.com,
+ linux-staging@lists.linux.dev, linux-sunxi@lists.linux.dev
+Date: Thu, 19 Nov 2026 14:02:01 -0500
+In-Reply-To: <20260902200703.2016410-7-mukesh.ojha@oss.qualcomm.com>
+References: <20260902200703.2016410-1-mukesh.ojha@oss.qualcomm.com>
+	 <20260902200703.2016410-7-mukesh.ojha@oss.qualcomm.com>
+Autocrypt: addr=nicolas@ndufresne.ca; prefer-encrypt=mutual;
+ keydata=mDMEaCN2ixYJKwYBBAHaRw8BAQdAM0EHepTful3JOIzcPv6ekHOenE1u0vDG1gdHFrChD
+ /e0J05pY29sYXMgRHVmcmVzbmUgPG5pY29sYXNAbmR1ZnJlc25lLmNhPoicBBMWCgBEAhsDBQsJCA
+ cCAiICBhUKCQgLAgQWAgMBAh4HAheABQkJZfd1FiEE7w1SgRXEw8IaBG8S2UGUUSlgcvQFAmibrjo
+ CGQEACgkQ2UGUUSlgcvQlQwD/RjpU1SZYcKG6pnfnQ8ivgtTkGDRUJ8gP3fK7+XUjRNIA/iXfhXMN
+ abIWxO2oCXKf3TdD7aQ4070KO6zSxIcxgNQFtDFOaWNvbGFzIER1ZnJlc25lIDxuaWNvbGFzLmR1Z
+ nJlc25lQGNvbGxhYm9yYS5jb20+iJkEExYKAEECGwMFCwkIBwICIgIGFQoJCAsCBBYCAwECHgcCF4
+ AWIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCaCyyxgUJCWX3dQAKCRDZQZRRKWBy9ARJAP96pFmLffZ
+ smBUpkyVBfFAf+zq6BJt769R0al3kHvUKdgD9G7KAHuioxD2v6SX7idpIazjzx8b8rfzwTWyOQWHC
+ AAS0LU5pY29sYXMgRHVmcmVzbmUgPG5pY29sYXMuZHVmcmVzbmVAZ21haWwuY29tPoiZBBMWCgBBF
+ iEE7w1SgRXEw8IaBG8S2UGUUSlgcvQFAmibrGYCGwMFCQll93UFCwkIBwICIgIGFQoJCAsCBBYCAw
+ ECHgcCF4AACgkQ2UGUUSlgcvRObgD/YnQjfi4+L8f4fI7p1pPMTwRTcaRdy6aqkKEmKsCArzQBAK8
+ bRLv9QjuqsE6oQZra/RB4widZPvphs78H0P6NmpIJ
+Content-Type: multipart/signed; micalg="pgp-sha512";
+	protocol="application/pgp-signature"; boundary="=-Zy5+UcnjO9CPStg5/eKL"
+User-Agent: Evolution 3.62.1 (3.62.1-1.fc45) 
 X-Archived-By: <archiver.kernel.org>
-Mime-Version: 1.0
-X-Mailer: git-send-email 2.56.1.708.g77570a6a1d-goog
-Message-ID: <20261119171053.1537233-1-irogers@google.com>
-Subject: [PATCH] drm/mediatek: Initialize ret in mtk_drm_of_ddp_path_build()
-From: Ian Rogers <irogers@google.com>
-To: Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>, 
-	David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, 
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	llvm@lists.linux.dev, Elkin Cruz <elkin@google.com>, Ian Rogers <irogers@google.com>
-Content-Type: text/plain; charset="UTF-8"
+MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261119_091058_583142_31F3F7C8 
-X-CRM114-Status: GOOD (  11.47  )
-X-Spam-Score: -9.5 (---------)
+X-CRM114-CacheID: sfid-20261119_110207_319647_84AC6B17 
+X-CRM114-Status: UNSURE (   7.87  )
+X-CRM114-Notice: Please train this message.
+X-Spam-Score: -1.9 (-)
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -91,47 +136,38 @@ List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-26.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIMWL_WL_MED,DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,
-	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT,
-	USER_IN_DEF_DKIM_WL autolearn=ham autolearn_force=no version=4.0.1
+X-Spam-Status: No, score=-8.9 required=3.0 tests=BAYES_00,DKIM_SIGNED,
+	DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
+	INCLUDES_CR_TRAILER,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS
+	autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-of_graph_is_present() returns true when a port or ports node exists in
-Device Tree even if it has zero enabled endpoint children. In that
-case, for_each_endpoint_of_node() in mtk_drm_of_ddp_path_build()
-executes zero iterations and 'if (ret)' evaluates an uninitialized
-stack variable, aborting probe with stack garbage.
+--=-Zy5+UcnjO9CPStg5/eKL
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-Initialize ret to 0.
+Le jeudi 03 septembre 2026 =C3=A0 01:37 +0530, Mukesh Ojha a =C3=A9crit=C2=
+=A0:
+> Use the devres-managed devm_of_reserved_mem_device_init() instead of
+> the manual of_reserved_mem_device_init()/of_reserved_mem_device_release()
+> pair, letting the device resource manager handle cleanup automatically.
+>=20
+> Signed-off-by: Mukesh Ojha <mukesh.ojha@oss.qualcomm.com>
 
-Found via Clang -Wconditional-uninitialized on an x86_64 allyesconfig
-build. Verified by building drivers/gpu/drm/mediatek/mtk_drm_drv.o
-with LLVM=1 W=1 (-Werror) and -Wconditional-uninitialized; not
-runtime-tested on MediaTek SoC hardware.
+Reviewed-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
 
-Fixes: 4c932840db1d ("drm/mediatek: Implement OF graphs support for display paths")
-Signed-off-by: Ian Rogers <irogers@google.com>
----
- drivers/gpu/drm/mediatek/mtk_drm_drv.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+--=-Zy5+UcnjO9CPStg5/eKL
+Content-Type: application/pgp-signature; name="signature.asc"
+Content-Description: This is a digitally signed message part
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.c b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-index a8bf0690756a..4b15b90b11d7 100644
---- a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-+++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
-@@ -1006,7 +1006,7 @@ static int mtk_drm_of_ddp_path_build(struct device *dev, struct device_node *nod
- 	struct device_node *ep_node;
- 	struct of_endpoint of_ep;
- 	bool output_present[MAX_CRTC] = { false };
--	int ret;
-+	int ret = 0;
- 
- 	for_each_endpoint_of_node(node, ep_node) {
- 		ret = of_graph_parse_endpoint(ep_node, &of_ep);
--- 
-2.56.1.708.g77570a6a1d-goog
+-----BEGIN PGP SIGNATURE-----
 
+iHUEABYKAB0WIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCav9HqQAKCRDZQZRRKWBy
+9KPMAP43HkphsVrqQTwGITR+0glsiS4Fp5Wyse7t/ZPwvyRH2gEA4/6BFP8fPbe6
+9p9JGy6Ck2BZu8qjXZw4UU8oUtkiJgI=
+=GZdK
+-----END PGP SIGNATURE-----
+
+--=-Zy5+UcnjO9CPStg5/eKL--
 
