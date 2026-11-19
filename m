@@ -2,121 +2,99 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 34FAF606A325
-	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Nov 2026 12:49:12 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 923A6606A324
+	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Nov 2026 12:49:36 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=4dKeBdFX;
-	dkim=pass (2048-bit key) header.d=bootlin.com header.i=@bootlin.com header.a=rsa-sha256 header.s=dkim header.b=mteItAuJ
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=yIJtwVxB;
+	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=leZm7fKL
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Message-ID:Date:References:In-Reply-To:Subject:Cc:
-	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Unsubscribe-Post:
-	List-Owner; bh=FrqcePVIbKpJOlr0CwwEXmHuYmHa3yUMeo1BTUrWcl0=; b=4dKeBdFXUiCXzd
-	nNw9giNsHfyXHdbkT9uMfGZQwOhmnkbNcus3ECGoDItYPjqaUDxXSQMtO/QrQc4Vp2YtJVjITXvjf
-	l9ejYMkwVmAPtSHJdNoE5hodXfKlkO7c3OkUKPCO5hv7xBR2RWUyYeOt3WOhngOqM0Axg/MmBh6tS
-	v1a5PtOutGWfIYXyw0/qncaj77nw4TMGp7tAPZbTerA0HykrQZ35INnVmPSm5sWCNo7CbkcKThtYF
-	8Gi5Q9lVpNkoD7flZxgQw6M7aeb1Q+4p9RLbG44WNOVKyXyXwDwSvLpFgyPfA13D933C5XxX/26v9
-	hEtLss9kEHA98zhjMVVg==;
+	MIME-Version:Message-Id:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Unsubscribe-Post:List-Owner;
+	bh=Jl9oyBMBlY4JXOrQAW23CuXlJczhQJcy241+h238qgg=; b=yIJtwVxBQy5BD9jB14Gp4xro68
+	mUIj0dDHaWZKnHVaPRfRxqKp9LxlX4Mxa2EhGkxoSnJ/5Go8qFh4fm9PwcHhkR05VIyMYMzwcy/u3
+	NPkEUFuav98QCQos9bhbgE6Ov2+jAy2drX7ZnuzKZjTJgz4RE0gvBKantwOpC+bzpJMuej7pcYBMk
+	dTKSZipVuyldGpQ2509ebFvsIbdJb4MNYdc/rs/jrAerUJrlLDNXNv0yVqtaT5FzmSFdxMLX2d59+
+	dWVDPz7NHRxJ237+9mZF2e4F0WtYhp66aAKfGjxfdvYt0RyCc9P6VT8p7K8VTWnBi7hplXrAUQGLv
+	0OQsfZpw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xU1Zf-0000000BvNA-3r2m;
-	Thu, 19 Nov 2026 12:49:11 +0000
-Received: from smtpout-02.galae.net ([185.246.84.56])
+	id 1xU1a4-0000000BvX5-1GIt;
+	Thu, 19 Nov 2026 12:49:36 +0000
+Received: from mail-dy1-x132c.google.com ([2607:f8b0:4864:20::132c])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xU1Zb-0000000BvKx-0tOg;
-	Thu, 19 Nov 2026 12:49:08 +0000
-Received: from smtpout-01.galae.net (smtpout-01.galae.net [212.83.139.233])
-	by smtpout-02.galae.net (Postfix) with ESMTPS id 7A16E1A1711;
-	Thu, 19 Nov 2026 12:49:04 +0000 (UTC)
-Received: from mail.galae.net (mail.galae.net [212.83.136.155])
-	by smtpout-01.galae.net (Postfix) with ESMTPS id 3F14960237;
-	Thu, 19 Nov 2026 12:49:04 +0000 (UTC)
-Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id CC49311BC0673;
-	Thu, 19 Nov 2026 13:48:02 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=dkim;
-	t=1795092535; h=from:subject:date:message-id:to:cc:mime-version:content-type:
-	 content-transfer-encoding:in-reply-to:references;
-	bh=FrqcePVIbKpJOlr0CwwEXmHuYmHa3yUMeo1BTUrWcl0=;
-	b=mteItAuJBxCXIm6o7Tz4CiCkaMG9jXhvMU2sSQLnSpwBcZpG8f2MBEvcJ1Bx2lQIvEFPHc
-	cDtQgbCpT1F3jW229XoKlV3ReW5mnP/ABdent9sCr/5183826BqbllILfT90L05VaHMgtP
-	dUJUiAyMuYUR1NhbdpZFwHZONdW4QU9si+WZSm1qV6DhZI6XlaK2xQVRCAOzwBKLP1wBFh
-	3qw4wVp4q47Ts1Jsp/lIRy+UYxCPzeFEV89KDKzTVDondoVzVYjpyUCZKV/Oz4GxrsbGus
-	YTBzHCONs5aDQShHm1+BnPAiQ9L4baKhNKmb68Cs/uKC0//BXan270Bf1Uz6BQ==
-From: Miquel Raynal <miquel.raynal@bootlin.com>
-To: James Hilliard <james.hilliard1@gmail.com>
-Cc: Richard Weinberger <richard@nod.at>,  Vignesh Raghavendra
- <vigneshr@ti.com>,  linux-mtd@lists.infradead.org,
-  linux-kernel@vger.kernel.org,  Greg Kroah-Hartman
- <gregkh@linuxfoundation.org>,  Srinivas Kandagatla <srini@kernel.org>,
-  Tze Yee Ng <tze.yee.ng@altera.com>,  Richard Cochran
- <richardcochran@gmail.com>,  Jonathan Lemon <jonathan.lemon@gmail.com>,
-  Vadim Fedorenko <vadim.fedorenko@linux.dev>,  Yuqiang Sun
- <izaiahsun@gmail.com>,  Amit Kumar Mahapatra
- <amit.kumar-mahapatra@amd.com>,  Luca Ceresoli
- <luca.ceresoli@bootlin.com>,  Bernhard Frauendienst
- <kernel@nospam.obeliks.de>,  "Gustavo A. R. Silva"
- <gustavoars@kernel.org>,  Kees Cook <kees@kernel.org>,
-  linux-hardening@vger.kernel.org,  Arseniy Krasnov
- <AVKrasnov@sberdevices.ru>,  Boris Brezillon <bbrezillon@kernel.org>,
-  Brian Norris <computersforpeace@gmail.com>,  Jernej Skrabec
- <jernej.skrabec@gmail.com>,  linux-arm-kernel@lists.infradead.org,
-  linux-sunxi@lists.linux.dev,  Samuel Holland <samuel@sholland.org>,
-  Chen-Yu Tsai <wens@kernel.org>,  David Woodhouse <dwmw2@infradead.org>,
-  Thomas Gleixner <tglx@kernel.org>,  Vitaly Wool <vitalywool@gmail.com>,
-  David Woodhouse <David.Woodhouse@intel.com>,  Russell King
- <rmk+kernel@arm.linux.org.uk>,  Mike Rapoport <rppt@kernel.org>,
-  Alexandre Torgue <alexandre.torgue@foss.st.com>,  Christophe Kerello
- <christophe.kerello@st.com>,  Maxime Coquelin <mcoquelin.stm32@gmail.com>,
-  Jason Roberts <jason.e.roberts@intel.com>,  Boris Brezillon
- <boris.brezillon@collabora.com>,  Michal Simek <michal.simek@amd.com>,
-  Mason Yang <masonccyang@mxic.com.tw>,  Ramuthevar Vadivel Murugan
- <vadivel.muruganx.ramuthevar@linux.intel.com>,  Lucas Stach
- <dev@lynxeye.de>,  Dmitry Osipenko <digetx@gmail.com>,  Jonathan Hunter
- <jonathanh@nvidia.com>,  linux-tegra@vger.kernel.org,  Stefan Agner
- <stefan@agner.ch>,  Thierry Reding <thierry.reding@kernel.org>,
-  AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-  Jorge Ramirez-Ortiz <jorge.ramirez@oss.qualcomm.com>,
-  linux-mediatek@lists.infradead.org,  Matthias Brugger
- <matthias.bgg@gmail.com>,  Heiko Stuebner <heiko@sntech.de>,
-  linux-rockchip@lists.infradead.org,  Yifeng Zhao
- <yifeng.zhao@rock-chips.com>,  Alexandre Belloni
- <alexandre.belloni@bootlin.com>,  Claudiu Beznea
- <claudiu.beznea@tuxon.dev>,  Nicolas Ferre <nicolas.ferre@microchip.com>,
-  Keguang Zhang <keguang.zhang@gmail.com>,  linux-mips@vger.kernel.org,
-  Shan-Chun Hung <schung@nuvoton.com>,  Jacky Huang <ychuang3@nuvoton.com>,
-  Fabio Estevam <festevam@gmail.com>,  Frank Li <Frank.Li@nxp.com>,
-  imx@lists.linux.dev,  Pengutronix Kernel Team <kernel@pengutronix.de>,
-  Sascha Hauer <s.hauer@pengutronix.de>,  Han Xu <han.xu@nxp.com>,
-  linux-renesas-soc@vger.kernel.org,  Wolfram Sang
- <wsa+renesas@sang-engineering.com>,  Jerome Brunet <jbrunet@baylibre.com>,
-  Kevin Hilman <khilman@baylibre.com>,  Liang Yang
- <liang.yang@amlogic.com>,  linux-amlogic@lists.infradead.org,  Martin
- Blumenstingl <martin.blumenstingl@googlemail.com>,  Neil Armstrong
- <neil.armstrong@linaro.org>,  linux-arm-msm@vger.kernel.org,  Manivannan
- Sadhasivam <mani@kernel.org>,  Broadcom internal kernel review list
- <bcm-kernel-feedback-list@broadcom.com>,  Kamal Dasu
- <kamal.dasu@broadcom.com>,  Piotr Wojtaszczyk
- <piotr.wojtaszczyk@timesys.com>,  Vladimir Zapolskiy <vz@mleia.com>,
-  Harvey Hunt <harveyhuntnexus@gmail.com>,  Paul Cercueil
- <paul@crapouillou.net>,  Maxim Levitsky <maximlevitsky@gmail.com>
-Subject: Re: [PATCH v5 00/58] mtd: rawnand: retain chip and controller state
- across removal
-In-Reply-To: <20261115-submit-rawnand-retained-handle-lifetime-v1-v5-0-cbc49c5c5e74@gmail.com>
-	(James Hilliard's message of "Sun, 15 Nov 2026 23:29:15 -0700")
-References: <20261115-submit-rawnand-retained-handle-lifetime-v1-v5-0-cbc49c5c5e74@gmail.com>
-User-Agent: mu4e 1.12.12; emacs 30.2
-Date: Thu, 19 Nov 2026 13:48:02 +0100
-Message-ID: <87v75tc7i5.fsf@bootlin.com>
+	id 1xU1a2-0000000BvVm-1E3Y
+	for linux-mediatek@lists.infradead.org;
+	Thu, 19 Nov 2026 12:49:35 +0000
+Received: by mail-dy1-x132c.google.com with SMTP id 5a478bee46e88-381f65e4e4bso3388158eec.0
+        for <linux-mediatek@lists.infradead.org>; Thu, 19 Nov 2026 04:49:34 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20260707; t=1795092573; x=1795697373; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
+        bh=Jl9oyBMBlY4JXOrQAW23CuXlJczhQJcy241+h238qgg=;
+        b=leZm7fKLy7oSvjzRK6T/nuRxpmigtgZr8GTXo9YOHKO4SSdD5lY+MOgrUf8YbOIg0A
+         t+jLtwX8kTsdKF7nCvJR5In72qLV7+uchCJV0nz/O4EFj3P7RyoWzwgIsZUwq0mjhWsk
+         lnlKMYJNtUvQ3Ei71RU6KNCrVflUNbHORLhGQT/yE/20wMhwr3uM2R/+8+AmoQUhusJj
+         sQxM/AjPVFWBKWFudpSVE1ypB8w510jxMTfl54rUasN28eMyVRHh709+r0UO92OBGv4r
+         rrEmeFbDxnliWiIoXne70l3PWcrH+w1wjCpRxoUJfYGeP0XkoorflIZFz7V6fuUNmiao
+         m/ig==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20260707; t=1795092573; x=1795697373;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to:content-type;
+        bh=Jl9oyBMBlY4JXOrQAW23CuXlJczhQJcy241+h238qgg=;
+        b=NW1g5P+bVhh+5S7bUoIymSaIpAmR+oNfnxHviolyWNVTtC9sX0ul1zSqdq0im8oPyX
+         pwcmd58lacFKlJpyLr+JW850+fUi0K+I08jiiZTS7pGUvM8uQv62VPhIEgomiS824qNk
+         gt9UMq58RDmWNSKEaZrmSyyOM1gYmnXjbpVTHY27E4PwKZUei8tckBAuZ9RM+1xWIuUG
+         L8Jz4jxkomlCW8z4sgjdnWi4hP76dCogZ9L7WfCrStMOmAdRuwzMy4FLvulJI7/UTzWY
+         rlbD4B6RhHDSZJ90SccSL0vPKjsPAtMOMvL30luThpJP3YkN1RVEiQQFJ7Ecj6U4N7Mm
+         COGA==
+X-Forwarded-Encrypted: i=1; AL+hErGDxRmQi7cztCg+niBTlfeaFy8wfLxjHxdtKZsPOTXJWP5SL+w1DXlQIfs+VjF8l/JRNDYzMEB78GZ07lS++g==@lists.infradead.org
+X-Gm-Message-State: APuU4Z+keb/XRD34MyDWwN6tMvm5eLg3TB5U1KfM+NFDvLw0zs+Dixmf
+	gerqfuvZboSHFXKkKF/qhxQ1KnvC5wOL+YXyQ6Zy/pqNgLK0virZYYZb
+X-Gm-Gg: AZFdTZdpB4lc7ILG2V+P61Ihs2WgSan5NztrRnS1/rLessV7PgDwIQ9FnlkniOVDHVh
+	Bp54vsLGbGPUnbsQ8QfoTgvSe1Kpr3l3/uwTP+GvvgvO1HxAyanuAcjsmD7/oEyCWuBYBlNdVh9
+	rXp488QrvDwTJ57QhQFNHFisehRQ4xcD62RQn14/mMeCEsNlP3XmlxcN7MExdNEBkq1HvGeya4L
+	ulXtX7aa+T1lRbmP0xuCeW9D5cfh1OEtnDPN9wmkDgNsELb4NdOi3I3J04orehX6/VmJQnWNK1C
+	lBxBACv3Lkk7Nq8Y6o6760E490g5aGYr1ilmRGWnT8l7h7IJ/hqIZ6RJSjxDk7roImwO9U+/Qpm
+	R7ewyvr07PX6BEZXhPcex/OfJVx0xc1kZH2bl2VzYGPS6J8ELf7qDgO5DfPg4Q6e1rwXU/bsKr/
+	DJOKJCpOBT0yTVXOjozRryRVbJE1AC3ZB0M3KqfyBanczKHVDHMbZFQE3nqMNJMIbE0K2engLPn
+	iOulI7DLPNHrX5pBVUJkRTsPWdbPFA16L8amT3kZzMdksFkXULXwflg/6NMLspreePt3TYIIbLq
+	EAkGbNjcbMVKzHdRe9Q04WAtpE6PG+HEM9xn+veuTN8HxkXO+uqk6UyQF3Ki2j3aGtNvLcMVfyg
+	=
+X-Received: by 2002:a05:7301:1a14:b0:382:5dd0:3bb2 with SMTP id 5a478bee46e88-3827fe7882bmr4750485eec.9.1795092573428;
+        Thu, 19 Nov 2026 04:49:33 -0800 (PST)
+Received: from csl-conti-dell7858.ntu.edu.sg ([155.69.195.57])
+        by smtp.gmail.com with ESMTPSA id 5a478bee46e88-382a7bc05cfsm17909542eec.26.2026.11.19.04.49.30
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Thu, 19 Nov 2026 04:49:32 -0800 (PST)
+From: Maoyi Xie <maoyixie.tju@gmail.com>
+To: Felix Fietkau <nbd@nbd.name>,
+	Lorenzo Bianconi <lorenzo@kernel.org>,
+	Ryder Lee <ryder.lee@mediatek.com>
+Cc: Shayne Chen <shayne.chen@mediatek.com>,
+	Sean Wang <sean.wang@mediatek.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	linux-wireless@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org,
+	stable@vger.kernel.org
+Subject: [PATCH] wifi: mt76: sdio: check the RX packet length in mt76s_rx_run_queue()
+Date: Thu, 19 Nov 2026 20:49:28 +0800
+Message-Id: <20261119124928.1398520-1-maoyixie.tju@gmail.com>
+X-Mailer: git-send-email 2.34.1
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-Last-TLS-Session-Version: TLSv1.3
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261119_044907_408309_11A5BFE7 
-X-CRM114-Status: GOOD (  22.87  )
+X-CRM114-CacheID: sfid-20261119_044934_331562_23D56816 
+X-CRM114-Status: GOOD (  11.95  )
 X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -128,86 +106,53 @@ List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-5.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,
-	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS autolearn=no autolearn_force=no version=4.0.1
+X-Spam-Status: No, score=-15.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
+	DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,FREEMAIL_FORGED_FROMDOMAIN,
+	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
+	USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Hi James,
+mt76s_rx_run_queue() reads the packets that the chip announced in the
+interrupt status into one buffer. It then takes the length of each
+packet from the first word of the packet and does not compare it with
+the bytes read. A larger length can make the driver read TX status
+records past the end of the buffer and build an skb that extends past
+it.
 
-On 15/11/2026 at 23:29:15 -07, James Hilliard <james.hilliard1@gmail.com> w=
-rote:
+Stop at a packet that does not fit in the bytes read.
 
-> An MTD handle can outlive controller unbind. Its metadata and NAND locks
-> must remain valid, including when a writable file closes and calls sync,
-> while further hardware access must be rejected after disconnection.
->
-> This builds on earlier MTD removal-lifetime work. Commit 19bfa9ebebb5
-> ("mtd: use refcount to prevent corruption") added MTD reference counting
-> [0], but retaining an MTD reference does not by itself retain the
-> driver-owned allocation containing the master. The read/unbind discussion
-> also covered raw NAND [1] and draining active operations [2]. Tze Yee Ng's
-> SPI-NOR series addresses the corresponding SPI-NOR paths [3].
->
-> Following Greg's review [7], separate class-device data from the MTD
-> backing allocation. Delete the device's interfaces and drain NVMEM and
-> class PM callbacks before releasing backing data. Bare device references
-> retain an independently allocated device, whose type, PM dispatch and
-> final release are built in even when MTD is modular. NVMEM similarly
-> disconnects and drains provider and layout callbacks before unregister
-> returns; retained consumers keep core-owned metadata and receive -ENODEV
-> on subsequent access.
->
-> Introduce opt-in backing-object ownership for MTD masters. Registered
-> nodes and acquired MTD handles retain the chip, while nested partitions
-> also retain their parent metadata. Unregister first so removal notifiers
-> can finish I/O, then disconnect raw NAND and drain admitted operations.
-> Hardware resources can be released without waiting for open files to clos=
-e.
->
-> Virtual concatenations serialize publication and removal across physical
-> controllers. Disconnect and drain a published concatenation before any
-> component can disappear, then release its component references. An old
-> handle keeps the disconnected virtual device, independently of a later
-> replacement.
->
-> Run NAND and controller-specific cleanup during disconnection, while
-> the controller driver is still bound. Snapshot the OOB layout in core-own=
-ed
-> data before publication so metadata queries remain valid without driver
-> callbacks. The NAND core frees retained chip and controller allocations;
-> the final MTD put never calls back into the controller module. Ordinary
-> MTD and NVMEM handles retain the NAND core that implements their
-> operations, rather than the hardware driver.
->
-> Share allocation ownership across the raw-NAND drivers, including
-> partially published probes. Shared controllers remain allocated until
-> their last retained chip is released. R852 allocates a new chip for each
-> card, and NDFC allocates controller state per binding.
->
-> Based on NAND next at 30daaf3e7897, with Tze Yee Ng's module-reference
-> ordering fix [4], Karl Mehltretter's OTP cleanup fix [6], and the separat=
-ely
-> posted registration, operation-locking and controller probe/teardown fixes
-> identified by the prerequisite metadata. TLA+ models and their assumptions
-> and coverage limits are available in [5].
+Found with a CodeQL-based static analysis tool that we are developing.
+Reproduced in a userspace harness under ASan, which reports no such
+read with this patch. Not tested on hardware, only compile-tested with
+W=1 on next-20261116.
 
-While lifetime issues are a real concern in the kernel, please note that
-in general, removing or unbinding the flash controller driver is not a
-practical operation. While highly unlikely, this is possible though. But
-I am not going to sacrifice all the devm_ calls in favor of reinstating
-manual error handling just for that. If there is a way, it must be
-different.
+Fixes: dacf0acfe2ce ("mt76: sdio: extend sdio module to support CONNAC2")
+Cc: stable@vger.kernel.org
+Signed-off-by: Maoyi Xie <maoyixie.tju@gmail.com>
+---
+I used an LLM to help write the harness and this patch.
 
-Also, this kind of contribution can only be done if you *understand*
-what you are doing. Getting the big picture here is not optional.
+ drivers/net/wireless/mediatek/mt76/sdio_txrx.c | 2 ++
+ 1 file changed, 2 insertions(+)
 
-Maybe the problem is MTD refcounting? Maybe the problem is the devm_
-orderging? I don't know, I haven't looked in depth at all the
-patches. But the current approach is clearly not acceptable.
+diff --git a/drivers/net/wireless/mediatek/mt76/sdio_txrx.c b/drivers/net/wireless/mediatek/mt76/sdio_txrx.c
+index 3f314e8e1e69f92..86dd1165d2c7f1f 100644
+--- a/drivers/net/wireless/mediatek/mt76/sdio_txrx.c
++++ b/drivers/net/wireless/mediatek/mt76/sdio_txrx.c
+@@ -127,6 +127,8 @@ mt76s_rx_run_queue(struct mt76_dev *dev, enum mt76_rxq_id qid,
+ 
+ 		/* parse rxd to get the actual packet length */
+ 		len = le32_get_bits(rxd[0], GENMASK(15, 0));
++		if (len > end - buf)
++			break;
+ 
+ 		/* Optimized path for TXS */
+ 		if (!dev->drv->rx_check || dev->drv->rx_check(dev, buf, len)) {
 
-Thanks,
-MIqu=C3=A8l
+base-commit: 7e1392a42ea288d70a266f6553fe06f57f8647ea
+-- 
+2.34.1
+
 
