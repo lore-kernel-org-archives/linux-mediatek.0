@@ -2,73 +2,103 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id DA54C60A261A
-	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Nov 2026 19:11:00 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 0AD3C606A320
+	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Nov 2026 19:58:04 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=B90w2JFz;
-	dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=G7wO+0Jd
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=v5lNBu/m;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=luettge.info header.i=@luettge.info header.a=rsa-sha256 header.s=strato-dkim-0002 header.b=jXKIjbTf;
+	dkim=fail reason="signature verification failed" header.d=luettge.info header.i=@luettge.info header.a=ed25519-sha256 header.s=strato-dkim-0003 header.b=HKdzcOdR
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
 	List-Unsubscribe-Post:List-Owner;
-	bh=RmdpddYozjJPVb6GiCDyPK6GgcDok35FRFm3gKsU32s=; b=B90w2JFz1BWOaGzOBftvDNHS0I
-	c/ppKQ+lHq9Bfe0uMUTpnwabNkEQOb9HzjPnbJvMZf1dX2rc84RFPlu52Bd2R8hINsxpPG0tuO9vB
-	yYSG9vH6eXKiGdrAG6NTp1AhbmxC4hrxH5Us1WfwRXruq5KLGPKUeAXCgKQTHkb/H8aXT8WUX6IfT
-	lJeciXhzUGQEOrWP3VTSM5LAqjIl3pajvEJQAT/i5vUx7XqPtRSOCOjza7X1005f1jmyserQ3jkkF
-	kdlNUMZgYxGGgHG/OjHzpm5pEFFb4kxYVwBos67OMs5KMSYbQyxdxA+TKTTswn+hcWAviHPDkpdyw
-	atwASlXA==;
+	bh=nGBIgDKKhrzOzPkOrERoddHzzuuvyGa6BOpHmaod6Y8=; b=v5lNBu/m9+/I7hY2CCw/otnqWK
+	TVpR1WOmkd28OADkkasaKCDbvsXd7TFKkOp5Yusa/iRgAeiCVtbSyG6oIupzbfZ9qdqVAIDAMa8on
+	AFgA2YCWzI9jhsEVI4cazyYWXpHVtLj6jcmOerb/SV8CNjwjnaDYiZB48LGLJhdGmtWM0ku+gTk7l
+	AVyuVwwy/xJDEifilhkzNPz0NaC1VzBIgGmu7ptVxFiGLe3F/uKSvj2QdYxF9nIb+azZuunp78pbd
+	bD5sYQhfHyS4UhDaHQDjRqmCGmM0a/NqHfUkfa4Vp+minQ1MUmJfbliB1lOy6ubrImuT6106Ntaku
+	ZsSMq95w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xU7XA-0000000DAT4-2Oy5;
-	Thu, 19 Nov 2026 19:11:00 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1xU8Gf-0000000DIPJ-1GXQ;
+	Thu, 19 Nov 2026 19:58:03 +0000
+Received: from mo4-p01-ob.smtp.rzone.de ([85.215.255.52])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xU7X8-0000000DAS9-25Ne;
-	Thu, 19 Nov 2026 19:10:58 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id C793347217;
-	Thu, 19 Nov 2026 19:10:57 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 82B461F000C8;
-	Thu, 19 Nov 2026 19:10:57 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1795115457;
-	bh=RmdpddYozjJPVb6GiCDyPK6GgcDok35FRFm3gKsU32s=;
-	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=G7wO+0JdhpiJYvZZBUE7uwCeGyUhReO7BHSnwt+i9vFE/Zvid9NCxYAsqXULdhs33
-	 GMMofY/ROk5vYToVnE3QVvmF8pcXUjkIVC6yODjq9kZtk4DBNE0DRpgnG7DxRrXPw0
-	 NdNBquIzspf4qJGYfCiH/fCYh3khzvSwRdmwZw6QzVJOtVM/TIbnAgrA+wm5vMrFuG
-	 D1o6OEss5IDWm0KP6WjMRzDoKSjLR4oqQhI5GUi/oV/+7HA6DpIznFxeMsbDomJ5nX
-	 kTrad4OnLMeRfEWRuXy7YhWtVpB5nBxM4P/9qq/n4OlikvR6pue9U7rGlNcCKOpdFb
-	 Fl6D+NDyceImQ==
-Date: Thu, 19 Nov 2026 13:10:55 -0600
-From: Rob Herring <robh@kernel.org>
-To: Tiffany Lin <tiffany.lin@mediatek.com>,
-	Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
-	Yunfei Dong <yunfei.dong@mediatek.com>,
-	Mauro Carvalho Chehab <mchehab@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>,
-	Conor Dooley <conor+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Hans Verkuil <hverkuil@kernel.org>,
-	Chen-Yu Tsai <wenst@chromium.org>,
-	Allen-KH Cheng <allen-kh.cheng@mediatek.com>
-Cc: Kyrie Wu <kyrie.wu@mediatek.com>, linux-media@vger.kernel.org,
-	devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH] media: dt-bindings: mediatek,vcodec-subdev-decoder: Fix
- child node if/then schemas
-Message-ID: <20261119191055.GA3803102-robh@kernel.org>
-References: <20261019212431.4109371-1-robh@kernel.org>
+	id 1xU8Gc-0000000DIOb-2HcM
+	for linux-mediatek@lists.infradead.org;
+	Thu, 19 Nov 2026 19:58:00 +0000
+ARC-Seal: i=1; a=rsa-sha256; t=1795118254; cv=none;
+    d=strato.com; s=strato-dkim-0002;
+    b=U1NpDYQB0AWlRP8e6jZu97cHEFnnHtPldl0owiyBaczESw+XPZ4cjZWjRg+Zr+CpLd
+    33idBclWFhZJaLw4ROSdKwPH+EbzR0T6HBx42y2J8qHq/L1ycnLiBRVLF/nADI8dJ8jL
+    wYG/5Sv8t/iFtlIOmC5KRJFGLnxYsSKfYzbvfGwKO7ZK14SMBP1hCES1KR3BmW3BYnQE
+    HVsuXWVRuDokrqkEHWjpKOwyRR6YiYoYXZ5sK2AcWkY+s2IK8eK2ZO475u4S93CLQVt9
+    FQyU3jOHrc8n9dig3Tvzj56rQdevbh06SwAUxemn+k/VPaJ4JCR6qB0cTSbuA+OqaMXy
+    9Rqw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; t=1795118254;
+    s=strato-dkim-0002; d=strato.com;
+    h=Message-ID:Date:Subject:Cc:To:From:Cc:Date:From:Subject:Sender;
+    bh=nGBIgDKKhrzOzPkOrERoddHzzuuvyGa6BOpHmaod6Y8=;
+    b=ckvHJj2DPEnI81MweSZILp6hMsTLEDaGKlC/+Havdmgywdazdlh4X8QzwbzUpMdxO0
+    j46x1dk76psQYQhBsIDTC57ArQn2OJrBbcNICMOJ7Nx3SEmwzyhyv5p4W6DurpEzHMbB
+    EXe6oqzcHrg7EwOdt0s+aGuoh382+gC/La1tfXOp8zMYDJFxxXacNO3nWMOAdeDwak1A
+    IE4M/3NFqgvLuAhxfbvTXyvTIv+ejWpTuFjJQE/feW42OsjXgJV5Qv6kAiAtOqEttahq
+    9zU97bVPkyjZTTop+wwo8mXoqrA4u0joF4bRxTdZVBPkyYLEfTnu2dsAz9EAJUAoCuyl
+    20Zg==
+ARC-Authentication-Results: i=1; strato.com;
+    arc=none;
+    dkim=none
+X-RZG-CLASS-ID: mo01
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; t=1795118254;
+    s=strato-dkim-0002; d=luettge.info;
+    h=Message-ID:Date:Subject:Cc:To:From:Cc:Date:From:Subject:Sender;
+    bh=nGBIgDKKhrzOzPkOrERoddHzzuuvyGa6BOpHmaod6Y8=;
+    b=jXKIjbTfjjvWgiKmpRLRt42LCL0gRzZdRNPpjDXgufzfSF2gvqxHRAqsubD9lOH43h
+    3TAw/Fub4XRw45X2PrWOhqHOXHOJRpV9CJbzY9Vl98iiGjPXVXMHKICSvy2Pw2UtZ2dn
+    NTMcM46V4j16tkZ/6QFnLtI1F7Tuzxlxtr32/5Wr+gB0K55Y3rP0EoBEWY/MzDWKS65u
+    e7SwAxMPFMp+GB3AJJmY9ze6Lrd2r9vMVrvjkqiuJFaSlqK4TXYpa/YqnANNXxM+85mq
+    H+gTq7R6jQZoOdupPi2KX7DVFszZXUKHDCp22F/TZ6LnpmiLAL7JKW1m4KuwiA0SPLFV
+    UR3A==
+DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; t=1795118254;
+    s=strato-dkim-0003; d=luettge.info;
+    h=Message-ID:Date:Subject:Cc:To:From:Cc:Date:From:Subject:Sender;
+    bh=nGBIgDKKhrzOzPkOrERoddHzzuuvyGa6BOpHmaod6Y8=;
+    b=HKdzcOdRy8buVCczAn03W2gvxoZXNKMlVO0noRj46+FE8Jy/da41kwoZSiovc658I4
+    QcbVVbvAL9dKraiJ9VAw==
+X-RZG-AUTH: ":ImUBeVOId+pOILSccbq5ALmheyGcr8lFeaRcD5zyRilB8L88+U77HCjw5pzwRZGaqiACruARGosmlo0cOphz9Iqm/dM9tdnaLGA="
+Received: from Prime
+    by smtp.strato.de (RZmta 55.6.3 AUTH)
+    with ESMTPSA id Lfda502AJJvYakN
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256 bits))
+	(Client did not present a certificate);
+    Thu, 19 Nov 2026 20:57:34 +0100 (CET)
+From: =?iso-8859-1?Q?Niels_L=FCttge?= <niels@luettge.info>
+To: <nbd@nbd.name>,
+	<lorenzo@kernel.org>,
+	<sean.wang@mediatek.com>
+Cc: <linux-wireless@vger.kernel.org>,
+	<linux-mediatek@lists.infradead.org>
+Subject: [PATCH] wifi: mt76: mt7921: handle BSS_CHANGED_TXPOWER and update txpower_cur
+Date: Thu, 19 Nov 2026 20:57:33 +0100
+Message-ID: <006901dd7860$37a75690$a6f603b0$@luettge.info>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20261019212431.4109371-1-robh@kernel.org>
+Content-Type: multipart/mixed;
+	boundary="----=_NextPart_000_006A_01DD7868.996C81E0"
+X-Mailer: Microsoft Outlook 16.0
+Thread-Index: Ad14X9B/QmKsIe4cQBWC8T7FvdeTiw==
+Content-Language: de
+X-Antivirus: Norton (VPS 261119-2, 19.11.2026), Outbound message
+X-Antivirus-Status: Clean
+Content-Transfer-Encoding: 7bit
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20261119_115758_841325_F0DE7413 
+X-CRM114-Status: UNSURE (   5.88  )
+X-CRM114-Notice: Please train this message.
+X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -79,142 +109,108 @@ List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-15.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,
-	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=ham
+X-Spam-Status: No, score=-3.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=no
 	autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On Mon, Oct 19, 2026 at 04:24:29PM -0500, Rob Herring (Arm) wrote:
-> The if/then schemas in mediatek,vcodec-subdev-decoder are all at the
-> wrong level as they apply to child nodes. The clock-names schemas
-> applies to the parent node, but the clock-names properties are in the
-> child nodes. Move the clock-names definitions to the child node
-> clock-names property. This exposes that the MT8186 clocks are not
-> documented, so add them as well.
-> 
-> The interrupts if/then schema is never true as the parent compatible
-> will never match the child compatible. The subschema also belongs in the
-> child node.
-> 
-> Fixes: 3fbf1eac01b5 ("media: dt-bindings: media: mediatek: vcodec: Adds decoder dt-bindings for lat soc")
-> Closes: https://sashiko.dev/#/bug/linux-5ab90035-1914-412f-8310-097fb05bda15
-> Fixes: 355e9472ccb0 ("media: dt-bindings: media: mediatek: vcodec: adapt to the 'clock-names' of different platforms")
-> Closes: https://sashiko.dev/#/bug/linux-caa6adb1-38de-4889-9517-2beede7c8f96
-> Signed-off-by: Rob Herring (Arm) <robh@kernel.org>
-> ---
->  .../media/mediatek,vcodec-subdev-decoder.yaml | 77 ++++++++-----------
->  1 file changed, 31 insertions(+), 46 deletions(-)
+This is a multipart message in MIME format.
 
-Ping! This one needs to be applied before 2 other series posted.
+------=_NextPart_000_006A_01DD7868.996C81E0
+Content-Type: text/plain;
+	charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 
-> 
-> diff --git a/Documentation/devicetree/bindings/media/mediatek,vcodec-subdev-decoder.yaml b/Documentation/devicetree/bindings/media/mediatek,vcodec-subdev-decoder.yaml
-> index d1d209cbbd43..6033ecffd707 100644
-> --- a/Documentation/devicetree/bindings/media/mediatek,vcodec-subdev-decoder.yaml
-> +++ b/Documentation/devicetree/bindings/media/mediatek,vcodec-subdev-decoder.yaml
-> @@ -135,8 +135,26 @@ patternProperties:
->          maxItems: 5
->  
->        clock-names:
-> -        minItems: 4
-> -        maxItems: 5
-> +        oneOf:
-> +          - description: MT8186 clocks
-> +            items:
-> +              - const: vdec-sel
-> +              - const: vdec-soc-vdec
-> +              - const: vdec
-> +              - const: vdec-top
-> +          - description: MT8192 clocks
-> +            items:
-> +              - const: sel
-> +              - const: soc-vdec
-> +              - const: soc-lat
-> +              - const: vdec
-> +              - const: top
-> +          - description: MT8195 clocks
-> +            items:
-> +              - const: sel
-> +              - const: vdec
-> +              - const: lat
-> +              - const: top
->  
->        assigned-clocks:
->          maxItems: 1
-> @@ -159,6 +177,17 @@ patternProperties:
->  
->      additionalProperties: false
->  
-> +    if:
-> +      properties:
-> +        compatible:
-> +          contains:
-> +            enum:
-> +              - mediatek,mtk-vcodec-core
-> +              - mediatek,mtk-vcodec-lat
-> +    then:
-> +      required:
-> +        - interrupts
-> +
->  required:
->    - compatible
->    - reg
-> @@ -166,50 +195,6 @@ required:
->    - mediatek,scp
->    - ranges
->  
-> -if:
-> -  properties:
-> -    compatible:
-> -      contains:
-> -        enum:
-> -          - mediatek,mtk-vcodec-core
-> -          - mediatek,mtk-vcodec-lat
-> -
-> -then:
-> -  required:
-> -    - interrupts
-> -
-> -allOf:
-> -  - if:
-> -      properties:
-> -        compatible:
-> -          contains:
-> -            enum:
-> -              - mediatek,mt8192-vcodec-dec
-> -    then:
-> -      properties:
-> -        clock-names:
-> -          items:
-> -            - const: sel
-> -            - const: soc-vdec
-> -            - const: soc-lat
-> -            - const: vdec
-> -            - const: top
-> -
-> -  - if:
-> -      properties:
-> -        compatible:
-> -          contains:
-> -            enum:
-> -              - mediatek,mt8195-vcodec-dec
-> -    then:
-> -      properties:
-> -        clock-names:
-> -          items:
-> -            - const: sel
-> -            - const: vdec
-> -            - const: lat
-> -            - const: top
-> -
->  additionalProperties: false
->  
->  examples:
-> -- 
-> 2.53.0
-> 
-> 
+Hi!
+
+Currently, mt7921 ignores BSS_CHANGED_TXPOWER in =
+mt7921_bss_info_changed(),
+so runtime TX power limits configured via nl80211/iw (e.g. "iw dev <if>
+set txpower limit <mbm>") have no effect in AP or STA mode.
+
+On hardware like MT7922, running at the full regulatory limit (e.g. 23 =
+dBm)
+pushes tmac values above the EEPROM calibration limits visible in
+txpower_sku. This causes PA overdrive/saturation, severe throughput
+degradation, and thermal overheating=97which eventually wedges the =
+firmware
+and driver (MCU timeouts) so badly that only a hard reboot / power cycle
+can recover the device, with no way for users or hostapd to reduce TX
+power at runtime.
+
+Furthermore, mt76_connac_mcu_rate_txpower_band() never updates
+phy->txpower_cur, causing mt76_get_txpower() ("iw dev <if> info") to
+always report a static 3.00 dBm regardless of the actual configured
+TX power.
+
+Fix both issues by:
+1. Handling BSS_CHANGED_TXPOWER in mt7921_bss_info_changed(), refreshing
+=A0=A0 the CLC country power table via mt7921_mcu_set_clc() before =
+calling
+=A0=A0 mt76_connac_mcu_set_rate_txpower() so both downward and upward =
+runtime
+=A0=A0 TX power adjustments take effect immediately on MT7921/MT7922 =
+firmware.
+2. Updating phy->txpower_cur in mt76_connac_mcu_rate_txpower_band().
+
+Tested on:
+- Hardware: Compulab fitlet2 with MediaTek MT7922 (RZ616, PCIe =
+14c3:0616)
+- Mode: 5 GHz 80 MHz AP mode (hostapd, regdom DE)
+- Kernel: Linux 7.0.0 (also verified on 6.8.0)
+- Firmware: WM Firmware Build 20250523103234 (and 20231120)
+- OS: Linux Mint 22.3
+
+Analyzed and fixed with AI support.=20
+
+Tested on MT7922 (PCIe) in 5 GHz 80 MHz AP mode.
+
+Best regards,
+
+Niels
+
+---------------------------------------------
+Niels Luettge
+mailto:niels@luettge.info
+---------------------------------------------
+
+
+
+------=_NextPart_000_006A_01DD7868.996C81E0
+Content-Type: application/octet-stream;
+	name="mt7921-txpower-fix-upstream.patch"
+Content-Transfer-Encoding: quoted-printable
+Content-Disposition: attachment;
+	filename="mt7921-txpower-fix-upstream.patch"
+
+--- a/drivers/net/wireless/mediatek/mt76/mt7921/main.c=0A=
++++ b/drivers/net/wireless/mediatek/mt76/mt7921/main.c=0A=
+@@ -719,6 +719,12 @@=0A=
+ 	if (changed & (BSS_CHANGED_QOS | BSS_CHANGED_BEACON_ENABLED))=0A=
+ 		mt7921_mcu_set_tx(dev, vif);=0A=
+ =0A=
++	if (changed & BSS_CHANGED_TXPOWER) {=0A=
++		hw->conf.power_level =3D info->txpower > 0 ? info->txpower : 0;=0A=
++		mt7921_mcu_set_clc(dev, dev->mt76.alpha2, dev->country_ie_env);=0A=
++		mt76_connac_mcu_set_rate_txpower(&dev->mphy);=0A=
++	}=0A=
++=0A=
+ 	if (changed & BSS_CHANGED_PS)=0A=
+ 		mt7921_mcu_uni_bss_ps(dev, vif);=0A=
+ =0A=
+--- a/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c=0A=
++++ b/drivers/net/wireless/mediatek/mt76/mt76_connac_mcu.c=0A=
+@@ -2179,6 +2179,7 @@=0A=
+ 	tx_power =3D 2 * phy->hw->conf.power_level;=0A=
+ 	if (!tx_power)=0A=
+ 		tx_power =3D 127;=0A=
++	phy->txpower_cur =3D tx_power;=0A=
+ =0A=
+ 	if (band =3D=3D NL80211_BAND_2GHZ) {=0A=
+ 		n_chan =3D ARRAY_SIZE(chan_list_2ghz);=0A=
+
+------=_NextPart_000_006A_01DD7868.996C81E0--
+
 
