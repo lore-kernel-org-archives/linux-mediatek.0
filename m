@@ -2,83 +2,71 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id B8634606A320
-	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Nov 2026 08:36:39 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id E935C606A320
+	for <linux-mediatek@archiver.kernel.org>; Thu, 19 Nov 2026 10:04:47 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=2OubsANJ;
-	dkim=pass (1024-bit key, unprotected) header.d=mediatek.com header.i=@mediatek.com header.a=rsa-sha256 header.s=dk header.b=fH1ocq9V
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=ORDjAzri;
+	dkim=pass (2048-bit key) header.d=disroot.org header.i=@disroot.org header.a=rsa-sha256 header.s=mail header.b=bIJ0EY4+
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:CC:To:From
-	:Subject:Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Unsubscribe-Post:List-Owner;
-	bh=AqkzVLGrEHHH2cGeDiEnwkkdjUHz1gM1+JaYx+muEzU=; b=2OubsANJoTe3sO3MHc6v3XXdvq
-	wtFERUdO0JTPmcsHNCtjdrgeOChL8PAQBVTT6wWFN6mgvECK/pyq/jv/ktxlRny6H3ABm4UX+Bn6j
-	j4pBZ5zcHq010Xzs4W2zZW+Z9pnIfs7TsD+OyOGmiSCZZ+qNPeSfuxTOiNqg+QaQ99xOUwiY6R0Dj
-	u/UK2RGHMu61TImxbtJQX/I0WnvmNoas5grQR+oisd/uTLS8A4tBqpBq6xnRxss8ZL1zJAwvr5HJT
-	YPM3ODX9Q1Z7m/IqVkaw+EUjPLFe0tY+dDg7kldxXnJihsLoGzER1wJxIB+BfCa5YsoGOfYltZoLi
-	u0a4Lsdg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
+	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Unsubscribe-Post:
+	List-Owner; bh=JJGLYPHzddrv19l+Wt/RsAOZQA+9iUUhc2s8/QuRBZA=; b=ORDjAzridwBO/V
+	uhB62x1l+HuyC7SBRnp6qwgLCalPM5VErlMyCt/5i/KFscni7z+gVe3BZCczFzBu2frOsBkgp4Xlq
+	0rCFIP6Xx7ocRBAw3kw1R20Uj7vH2+gBUU7+FXG8fp7uXxQ5jTaKbX6BHw8Xx3fU5omNSEc/sd4HH
+	Pcc1POaZZU+YCeb+73tuIyePYP1yFGb9Df2o94+GwAS6kWkTkIIftnSr6SorRzAWDmmUNLetzLgPJ
+	xUx/qCjUnvGoCpRZbKQzuDRS3Vbz6xkdv0cEOliCIvl1wXyo6bY949awAZ7Kpj944GFTlnyCogAvm
+	qReC7Vek9PPWhf94Ou1g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xTxdH-0000000BC0A-217H;
-	Thu, 19 Nov 2026 08:36:39 +0000
-Received: from mailgw01.mediatek.com ([216.200.240.184])
+	id 1xTz0Z-0000000BTkE-2LRH;
+	Thu, 19 Nov 2026 10:04:47 +0000
+Received: from layka.disroot.org ([178.21.23.139])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xTxdE-0000000BBzX-23yV
-	for linux-mediatek@lists.infradead.org;
-	Thu, 19 Nov 2026 08:36:37 +0000
-X-UUID: 513ca560e3f411f1afed4741b24580c9-20261119
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=MIME-Version:Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Date:CC:To:From:Subject:Message-ID; bh=AqkzVLGrEHHH2cGeDiEnwkkdjUHz1gM1+JaYx+muEzU=;
-	b=fH1ocq9V370zm2BPfFIJE9Y0IgYyVcW3q/J8HQ8tOV3YBFwbyF0U4jMdrkbJnz2J8jkvJmUFTfJHs4qYRDMpISj247y88/a9DCwLf8KFPe3o8SjLTlG9rmSGgPTUVZdrONHPhEag+l8NLl9kI924W760ANBW4vIItKPJULSPiM8=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.21,REQID:338785cd-84f8-47a8-90e9-01b784af3d7c,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:b0318ac,CLOUDID:a2f91031-f289-4656-bb36-27baf4489f11,B
-	ulkID:nil,BulkQuantity:0,SF:80|81|82|83|102|836|865|888|898,TC:-5,Content:
-	0|15|50|99,EDM:-3,IP:nil,URL:99|1,File:130,RT:0,Bulk:nil,QS:nil,BEC:nil,CO
-	L:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 2,SSN|SDN
-X-CID-BAS: 2,SSN|SDN,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR,TF_CID_SPAM_ULS
-X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: 513ca560e3f411f1afed4741b24580c9-20261119
-Received: from mtkmbs13n1.mediatek.inc [(172.21.101.193)] by mailgw01.mediatek.com
-	(envelope-from <peter.wang@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1827495572; Thu, 19 Nov 2026 01:36:29 -0700
-Received: from mtkmbs13n2.mediatek.inc (172.21.101.108) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.29; Thu, 19 Nov 2026 16:36:27 +0800
-Received: from [10.233.130.16] (10.233.130.16) by mtkmbs13n2.mediatek.inc
- (172.21.101.73) with Microsoft SMTP Server id 15.2.2562.29 via Frontend
- Transport; Thu, 19 Nov 2026 16:36:27 +0800
-Message-ID: <2a83ef7d6fd36085ff4140a894f51e0a9c50caac.camel@mediatek.com>
-Subject: Re: [PATCH v3 2/2] scsi: ufs-mediatek: restore the M-PHY power
- state when va09 disable fails
-From: Peter Wang <peter.wang@mediatek.com>
-To: Xiangwu Lai <laixiangwu@cmss.chinamobile.com>,
-	<chaotian.jing@mediatek.com>
-CC: <chu.stanley@gmail.com>, <alim.akhtar@samsung.com>, <bvanassche@acm.org>,
-	<sashiko-bot@kernel.org>, <linux-scsi@vger.kernel.org>,
-	<linux-mediatek@lists.infradead.org>, <linux-kernel@vger.kernel.org>
-Date: Thu, 19 Nov 2026 16:36:27 +0800
-In-Reply-To: <20261119071611.117-3-laixiangwu@cmss.chinamobile.com>
-References: <20261119071611.117-1-laixiangwu@cmss.chinamobile.com>
-	 <20261119071611.117-3-laixiangwu@cmss.chinamobile.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-User-Agent: Evolution 3.52.3-0ubuntu1.1 
+	id 1xTz0W-0000000BTjP-2XHX;
+	Thu, 19 Nov 2026 10:04:46 +0000
+Received: from mail01.layka.lan (localhost [127.0.0.1])
+	by disroot.org (Postfix) with ESMTP id 1B39D80BE4;
+	Thu, 19 Nov 2026 11:04:41 +0100 (CET)
+X-Virus-Scanned: SPAM Filter at disroot.org
+Received: from layka.disroot.org ([127.0.0.1])
+ by localhost (disroot.org [127.0.0.1]) (amavis, port 10024) with ESMTP
+ id CwzlICTmi4r9; Thu, 19 Nov 2026 11:04:40 +0100 (CET)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=disroot.org; s=mail;
+	t=1795082680; bh=JJGLYPHzddrv19l+Wt/RsAOZQA+9iUUhc2s8/QuRBZA=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References;
+	b=bIJ0EY4+XIAASk4SLBZy8dy4H/Ry3xo38MZDSvT1Hjo+i6dgyDZ7X7IhTqXwCOKoH
+	 YrFGvCEgNBraIpbpIgRxgzWxIy3GMH3c0BZ4C2Q+3w96UAZsnaqMTD+W+RMgApCifj
+	 ZvDXByOjb1sFXMFsqARxOv6jEpuEugcgN7PrwOM+il3aZch17EFmgmGg6wyvnF5zdD
+	 UBs4YBQoT4F6dGWe0lgV908l/D10QgzZrnYISC7vdQzOdAvJJP1SB0J0llXxm6bbjL
+	 OrqdWjfH1nEMlTshteWqyqQ6AwborlBTis2moIYGxrwkf/MqADB9x9202G7atQjYo5
+	 htrkMgUkkGnvQ==
+From: Florian Maurer <fmaurer@disroot.org>
+To: Lorenzo Bianconi <lorenzo@kernel.org>
+Cc: Florian Maurer <fmaurer@disroot.org>,
+	Felix Fietkau <nbd@nbd.name>,
+	Ryder Lee <ryder.lee@mediatek.com>,
+	Shayne Chen <shayne.chen@mediatek.com>,
+	Sean Wang <sean.wang@mediatek.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	linux-wireless@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH] wifi: mt76: npu: fix RX packet reassembly across NAPI polls
+Date: Thu, 19 Nov 2026 10:04:20 +0000
+Message-ID: <20261119100421.1963265-1-fmaurer@disroot.org>
+In-Reply-To: <20261117-mt76-npu-fixes-v1-1-11bf744747f2@kernel.org>
+References: <20261117-mt76-npu-fixes-v1-1-11bf744747f2@kernel.org>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-X-MTK: N
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261119_003636_562330_FC84D0D2 
-X-CRM114-Status: GOOD (  14.90  )
+X-CRM114-CacheID: sfid-20261119_020444_960666_3CB40945 
+X-CRM114-Status: UNSURE (   7.62  )
+X-CRM114-Notice: Please train this message.
 X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -93,52 +81,23 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 X-Spam-Status: No, score=-10.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,
 	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY autolearn=ham
-	autolearn_force=no version=4.0.1
+	SPF_HELO_NONE,SPF_PASS autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On Thu, 2026-11-19 at 15:16 +0800, Xiangwu Lai wrote:
-> In ufs_mtk_mphy_power_on(), the power-off path tears the M-PHY down
-> in
-> two steps before regulator_disable() is called: phy_power_off() puts
-> the PHY PLL and its clocks down, and ufs_mtk_va09_pwr_ctrl() asks the
-> firmware to drop the VA09 supply.=C2=A0 If regulator_disable() then fails=
-,
-> the M-PHY stays physically off while host->mphy_powered_on is left
-> set, so the next power-on attempt bails out through the
-> !(on ^ host->mphy_powered_on) check and never powers the M-PHY back
-> up, leaving the UFS host with an unpowered PHY (I/O timeouts,
-> controller lockups).
->=20
-> Simply forcing mphy_powered_on to false would trade this for two more
-> problems.=C2=A0 First, the regulator core drops the consumer enable count
-> only after a successful disable, so the count stays at 1, the next
-> power-on raises it to 2 and it never returns to zero: va09 is then
-> never physically disabled and the devm-acquired regulator would hit
-> WARN_ON(enable_count) again on release.=C2=A0 Second, when the power-off
-> fails during ufs_mtk_suspend(), the error recovery in
-> __ufshcd_wl_suspend() runs ufshcd_host_reset_and_restore() without
-> powering the M-PHY back on, which would run against an unpowered PHY.
-> (Both points were raised by the Sashiko AI review of v2.)
->=20
-> Since the va09 regulator stays enabled when its disable fails,
-> restore
-> the M-PHY power state instead: power the PHY back on through
-> ufs_mtk_va09_pwr_ctrl() and phy_power_on() and leave mphy_powered_on
-> set.=C2=A0 The next power-off attempt then retries the full sequence and
-> the enable count stays balanced.
->=20
-> Found by code inspection while reviewing the va09 error paths of the
-> driver; the failure has not been observed on real hardware.
->=20
-> Suggested-by: Peter Wang <peter.wang@mediatek.com>
-> Link: https://lore.kernel.org/r/sashiko-outbox-220026@kernel.org
-> Fixes: cf137b3ea49a ("scsi: ufs-mediatek: Support VA09 regulator
-> operations")
-> Signed-off-by: Xiangwu Lai <laixiangwu@cmss.chinamobile.com>
-> ---
+On Tue, Nov 17, 2026 at 02:43:46PM +0100, Lorenzo Bianconi wrote:
+> Tested-by: Florian Maurer <fmaurer@disroot.org>
 
-Reviewed-by: Peter Wang <peter.wang@mediatek.com>
+Thanks for posting. I ran the posted patch on mt76 467ae2e3
+(W1700K, kernel 6.18.55) for another hour of iperf3.
+There are no oops, no page_pool warning, no refill or skb failure.
 
+Tested-by: Florian Maurer <fmaurer@disroot.org>
+
+The missing rx slots from my mail of Nov 16 are still there (232 frames
+without LAST on their last slot, 7 unreadable tx-free events), but that
+is not caused by this patch. I will send the [BUG] report separately.
+
+Thanks,
+Florian
 
