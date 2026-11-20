@@ -2,10 +2,10 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id D9105606A336
-	for <linux-mediatek@archiver.kernel.org>; Fri, 20 Nov 2026 00:03:49 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 0CEE6606A337
+	for <linux-mediatek@archiver.kernel.org>; Fri, 20 Nov 2026 00:04:05 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=LBTZPE+H
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=DjtVKu7g
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
@@ -13,27 +13,27 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=w/ED5GzwMsQqvzSvdU5jIiuxw2t+L7/vsfzIdgE6A2Q=; b=LBTZPE+HH3EiNlmJ8gRyFzPSb8
-	6FZ7DDzGWM4Z0lU0T1drJBfGLqLJzs01w0L1bsKpYBQurQHWThal8LHMc0ZT1kmUzcb4F5brcOETp
-	A8MFVZ4Q8hTdo9ko7WVhXdP2qxwDahj7PBdiMUBPA7N9EbYSFW9Bv6hfV8fdLhhdPj9ph1bjdspZj
-	W9oBwlNMloCWSxnU3f5KenpFPA+Q4pidhSHUsUwO0n+rpHdwQVhE1Lv9pkEKJIedqx2J9I1bI3KPC
-	NbGPKkLeqeICdDlRXI9CL+ESmsFdMsCkQnDvunss81aUuTZZ1MkL8m1/CESdCLo5eHNTeNLO6X0p/
-	AD3Ime7g==;
+	bh=Bs+9STUWdF4VN/Op7ocuJ+kHlbmIYCqA3ZkhThCuG/c=; b=DjtVKu7grOhV6y5ZiIAe1dtDUb
+	LzmN5Z7ECGnStgL4WsmrAtWrxoUGP+t1yTPAZj4OD/0VxdfYmQLtJ0okdEO8FUheJaQ4rprqDqqTQ
+	vt90aZd5Uqpjt6TKj6d4lZekoYKO/NBOORa8w1z2FKR7QRdAOaVhRj6NRIjxxMe5D8h9zH2zcXS7r
+	RmPD9nyIxJvSV9brI3Wvk8eXenjmAn+c/denY+5Xyug4R/o05qY5vLUJWrQzyYgBbRJiBhEoz4DlO
+	F/MqZPV9q0kYIXHsgAaadT2wgyaEHC76CaAyemjJ2aCIXLDNK8WCC1PM9rx2BxFriziUR817HM/Nn
+	ygvugEPw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xUC6X-0000000DhwG-26Ky;
-	Fri, 20 Nov 2026 00:03:49 +0000
+	id 1xUC6m-0000000Di1z-3Ab3;
+	Fri, 20 Nov 2026 00:04:04 +0000
 Received: from pidgin.makrotopia.org ([2a07:2ec0:3002::65])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xUC6V-0000000Dhve-0A5s;
-	Fri, 20 Nov 2026 00:03:48 +0000
+	id 1xUC6j-0000000Di0R-2otY;
+	Fri, 20 Nov 2026 00:04:02 +0000
 Received: from local
 	by pidgin.makrotopia.org with esmtpsa (TLS1.3:TLS_AES_256_GCM_SHA384:256:X25519MLKEM768)
 	 (Exim 4.100.1)
 	(envelope-from <daniel@makrotopia.org>)
-	id 1xUC6P-00000000297-0Y27;
-	Fri, 20 Nov 2026 00:03:41 +0000
-Date: Fri, 20 Nov 2026 00:03:32 +0000
+	id 1xUC6f-0000000029T-0cKO;
+	Fri, 20 Nov 2026 00:03:57 +0000
+Date: Fri, 20 Nov 2026 00:03:48 +0000
 From: Daniel Golle <daniel@makrotopia.org>
 To: Neil Armstrong <neil.armstrong@linaro.org>,
 	Dmitry Baryshkov <lumag@kernel.org>, Robert Foss <rfoss@kernel.org>,
@@ -52,9 +52,9 @@ Cc: Chen-Yu Tsai <wenst@chromium.org>, Jiaxin Yu <jiaxin.yu@mediatek.com>,
 	dri-devel@lists.freedesktop.org, linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org
-Subject: [PATCH v9 07/14] drm/bridge: it6505: avoid division by zero in pixel
- clock calculation
-Message-ID: <8e1ee42b7861ccaff9c14aaca1390c3f094b2b22.1795132452.git.daniel@makrotopia.org>
+Subject: [PATCH v9 08/14] drm/bridge: it6505: drop the audio input FS debug
+ print
+Message-ID: <2b939c53c4aee37140945201b0c41b74f0e432ae.1795132452.git.daniel@makrotopia.org>
 References: <cover.1795132452.git.daniel@makrotopia.org>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
@@ -62,8 +62,8 @@ Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
 In-Reply-To: <cover.1795132452.git.daniel@makrotopia.org>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261119_160347_077853_BBDDEF6F 
-X-CRM114-Status: GOOD (  10.44  )
+X-CRM114-CacheID: sfid-20261119_160401_717584_B9B5349D 
+X-CRM114-Status: GOOD (  11.91  )
 X-Spam-Score: -1.9 (-)
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -82,39 +82,46 @@ X-Spam-Status: No, score=-13.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-it6505_calc_video_info() checks the sum of the three pixel clock
-counter samples for zero before dividing it by 3, so sums of 1 or 2
-truncate to 0 and the following pixel clock calculation divides by
-zero. Divide first and check the result.
+it6505_enable_audio() reads REG_AUDIO_INPUT_FREQ only to print the
+measured audio sample rate, dividing by the readback. The register is
+a read-only counter of the input audio frequency, which the driver
+otherwise only uses to check whether an I2S bit clock is present. It
+reads back 0 when no audio clock has been latched, and it6505_read()
+returns a negative errno on i2c failure, while the arguments of the
+debug print are evaluated even with debug output disabled.
+
+The value is only informational in the enable path and remains
+accessible through the regmap debugfs interface, so drop the read and
+the print instead of guarding the division.
 
 Fixes: b5c84a9edcd4 ("drm/bridge: add it6505 driver")
 Signed-off-by: Daniel Golle <daniel@makrotopia.org>
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Tested-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com> # Steelix Chromebook
-Reviewed-by: Luca Ceresoli <luca.ceresoli@bootlin.com>
 ---
- drivers/gpu/drm/bridge/ite-it6505.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+ drivers/gpu/drm/bridge/ite-it6505.c | 4 ----
+ 1 file changed, 4 deletions(-)
 
 diff --git a/drivers/gpu/drm/bridge/ite-it6505.c b/drivers/gpu/drm/bridge/ite-it6505.c
-index 434a4fa39a911..9357996c2eb38 100644
+index 9357996c2eb38..17f4f6497b34d 100644
 --- a/drivers/gpu/drm/bridge/ite-it6505.c
 +++ b/drivers/gpu/drm/bridge/ite-it6505.c
-@@ -753,12 +753,13 @@ static void it6505_calc_video_info(struct it6505 *it6505)
- 		sum += rddata;
- 	}
+@@ -1606,7 +1606,6 @@ static void it6505_disable_audio(struct it6505 *it6505)
+ static void it6505_enable_audio(struct it6505 *it6505)
+ {
+ 	struct device *dev = it6505->dev;
+-	int regbe;
  
-+	sum /= 3;
-+
- 	if (sum == 0) {
- 		DRM_DEV_DEBUG_DRIVER(dev, "calc video timing error");
- 		return;
- 	}
+ 	DRM_DEV_DEBUG_DRIVER(dev, "start");
+ 	it6505_disable_audio(it6505);
+@@ -1624,9 +1623,6 @@ static void it6505_enable_audio(struct it6505 *it6505)
+ 			AUDIO_FIFO_RESET);
+ 	it6505_set_bits(it6505, REG_AUDIO_SRC_CTRL, AUDIO_FIFO_RESET, 0x00);
+ 	it6505_set_bits(it6505, REG_RESET_CTRL, AUDIO_RESET, 0x00);
+-	regbe = it6505_read(it6505, REG_AUDIO_INPUT_FREQ);
+-	DRM_DEV_DEBUG_DRIVER(dev, "regbe:0x%02x audio input fs: %d.%d kHz",
+-			     regbe, 6750 / regbe, (6750 % regbe) * 10 / regbe);
+ 	it6505_set_bits(it6505, REG_DATA_MUTE_CTRL, EN_AUD_MUTE, 0x00);
+ }
  
--	sum /= 3;
- 	pclk = 13500 * 2048 / sum;
- 	it6505->video_info.clock = pclk;
- 	it6505->video_info.hdisplay = hdew;
 -- 
 2.56.1
 
