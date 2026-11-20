@@ -2,94 +2,76 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id B3602606A325
-	for <linux-mediatek@archiver.kernel.org>; Fri, 20 Nov 2026 08:24:52 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id A5F3B60A2602
+	for <linux-mediatek@archiver.kernel.org>; Fri, 20 Nov 2026 08:26:53 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=eUg53yTS;
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=nbd.name header.i=@nbd.name header.a=rsa-sha256 header.s=20160729 header.b=LkCZd4aq
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=b3caRDib;
+	dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=GKo+RNWT
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Unsubscribe-Post:
-	List-Owner; bh=TVhqHj4b/4yJzMbCX+4Vp5uwHBdGbT6mxVN1GiCIdAk=; b=eUg53yTSTZ4KeV
-	1qb7KcKEBAS1UMw/RHipqgNgXKLjrR2eVmJqgLnVKEsblG87/YA6NGq7mvAZzOHnl9sv2V3BjcQrb
-	1FobYPnUXaOesDrRQXp8N9LEAstglIG2cWAq6LrfJkwHR94Zxy181vuncJFxBdv3WZ6IEP99uDfxT
-	2XVS9qFH+xM3DV81UmOUk5FnziBJMgy/zNJKag381wEHNMAJHcLXAol/DyIvHN/C061hA2maH4FXk
-	wNQYywswsBFFZGd+PU7hC9MXqDfN0MfzJ6YF2fnbuLA0qdyStA9Q/gftixAYPc2MvbNyaE04XXhgy
-	LDIZSKbuAs6pAiSCfcwg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Unsubscribe-Post:List-Owner;
+	bh=aV8jtS66Tt+1KtEPhn6QzwtWLg4RKOLbiueDjLgm9B8=; b=b3caRDibllCrcfkmGR1HCFIj6E
+	+xwb93W6wC+fC7tEbjx1VSHvM/1gVmuVTTpnVv6ya7szeg6lJdt+hqNjrPlH1ojB3XzMOgFqSwIjO
+	2V5qlt20nMEKUET0990j/2nanRFy7Wlwe6WObF7zLf55z7LExoMHZNzsh+zi+taam99Cm8m7d3Fi4
+	WAnbxhu/L1Hlcqz2jJyhUag+PjqwmH86cDOLT5+T0+L8uFKVUOB0scDc3eQ6Owaw41e6bXgueL1zl
+	wX2brtxCg0YgIC+O1l+MgVECtSPX28w/NsTBr+IeFx0KDHy1jkag/tJA5cRhppgLY6FVh+suwLMiA
+	Y7YJgX1w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xUJvO-0000000EKRv-3QGn;
-	Fri, 20 Nov 2026 08:24:52 +0000
-Received: from nbd.name ([46.4.11.11])
+	id 1xUJxN-0000000EKlm-1dHB;
+	Fri, 20 Nov 2026 08:26:53 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xUJvA-0000000EKPb-02wa
-	for linux-mediatek@lists.infradead.org;
-	Fri, 20 Nov 2026 08:24:43 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=nbd.name;
-	s=20160729; h=Content-Transfer-Encoding:Content-Type:In-Reply-To:From:
-	References:Cc:To:Subject:MIME-Version:Date:Message-ID:Sender:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
-	List-Subscribe:List-Post:List-Owner:List-Archive;
-	bh=TVhqHj4b/4yJzMbCX+4Vp5uwHBdGbT6mxVN1GiCIdAk=; b=LkCZd4aqqwsW01mziztNbpMrTq
-	7eAdoAIpFUNvBIU0OJC/mCdwHbBhVMcN+M1EQugkaZlWCJLXeXyaAy+AZ3VLPRGLTbg9UPsV5iFJd
-	8leBY3S/Q/XYq0V29Igb3Nnn21bAKKjwmZuzmyir6CkMnE97EyMo6O1qkhS42TWdre2Q=;
-Received: from p54a4360c.dip0.t-ipconnect.de ([84.164.54.12] helo=nf.local)
-	by ds12 with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
-	(Exim 4.96)
-	(envelope-from <nbd@nbd.name>)
-	id 1xUJv0-005tL7-2Q;
-	Fri, 20 Nov 2026 09:24:26 +0100
-Message-ID: <c28aba9d-9401-4834-8d45-b0156012a670@nbd.name>
-Date: Fri, 20 Nov 2026 09:24:26 +0100
+	id 1xUJxI-0000000EKlI-1cpX;
+	Fri, 20 Nov 2026 08:26:51 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by tor.source.kernel.org (Postfix) with ESMTP id 70484613F6;
+	Fri, 20 Nov 2026 08:26:47 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 091C61F000C6;
+	Fri, 20 Nov 2026 08:26:43 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1795163207;
+	bh=aV8jtS66Tt+1KtEPhn6QzwtWLg4RKOLbiueDjLgm9B8=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To;
+	b=GKo+RNWTBbECnl7ztHjJyXNwuCG7vyB8iV2U3YYG7U+do5cDoPmPsdnGuttViBrDE
+	 8vvLJNEObbOgOFUoLma2I/pHKteMokeQRLjYMjIKoBl/cMq7wS2xzv9hc1BKEp65Pi
+	 UePeSHjxMFqGcBjrq7TFkwPhjjalKwChgjJ1euFTM4nDv31QHdcYa9l0Z5BeL/uyFw
+	 0v531AMxmI3PmIJjalsKkNJYninErCi3AbFEVAYDaW5wgZ64sW1jCMv4x2Y7ZNK2qM
+	 We+efUDFUQPi5D/Hx2uAAIO1OVqe9Sa9ZrcBOUAoP9wR/FC4qUdUvr+kB+S1Ur0Mm0
+	 1cZlQJ89zFA5g==
+Date: Fri, 20 Nov 2026 10:26:41 +0200
+From: "westeri@kernel.org" <westeri@kernel.org>
+To: Chunfeng Yun =?utf-8?B?KOS6keaYpeWzsCk=?= <Chunfeng.Yun@mediatek.com>
+Cc: "mika.westerberg@linux.intel.com" <mika.westerberg@linux.intel.com>,
+	"konrad.dybcio@oss.qualcomm.com" <konrad.dybcio@oss.qualcomm.com>,
+	"linux-usb@vger.kernel.org" <linux-usb@vger.kernel.org>,
+	"gregkh@linuxfoundation.org" <gregkh@linuxfoundation.org>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	"YehezkelShB@gmail.com" <YehezkelShB@gmail.com>,
+	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+	"sven@kernel.org" <sven@kernel.org>,
+	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
+	"andreas.noever@gmail.com" <andreas.noever@gmail.com>,
+	"matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
+	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>
+Subject: Re: [PATCH v2 4/7] thunderbolt: add platform NHI driver
+Message-ID: <20261120082641.GB833643@thinkpad>
+References: <20261110114925.722014-1-chunfeng.yun@mediatek.com>
+ <20261110114925.722014-5-chunfeng.yun@mediatek.com>
+ <20261110143758.GC259790@black.igk.intel.com>
+ <2807832e631dca98846d201b571f623210820268.camel@mediatek.com>
+ <20261117125241.GA259790@black.igk.intel.com>
+ <39fed6e12d60f439e0f07f3012d675f1c85d2b84.camel@mediatek.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3] wifi: mt76: mt7928: Add MTK OUI support for nl80211
- (ALOS support for wpa_supplicant to get MTK OUI)
-To: Michael Shih <michael.shih@mediatek.com>, lorenzo@kernel.org
-Cc: linux-wireless@vger.kernel.org, linux-mediatek@lists.infradead.org,
- kun.wu@mediatek.com, deren.wu@mediatek.com, sean.wang@mediatek.com,
- quan.zhou@mediatek.com, ryder.lee@mediatek.com, leon.yen@mediatek.com,
- litien.chang@mediatek.com, jb.tsai@mediatek.com, eason.Lai@mediatek.com
-References: <20261118010310.1044193-1-michael.shih@mediatek.com>
- <20261118011758.1049815-1-michael.shih@mediatek.com>
-Content-Language: en-US
-From: Felix Fietkau <nbd@nbd.name>
-Autocrypt: addr=nbd@nbd.name; keydata=
- xsDiBEah5CcRBADIY7pu4LIv3jBlyQ/2u87iIZGe6f0f8pyB4UjzfJNXhJb8JylYYRzIOSxh
- ExKsdLCnJqsG1PY1mqTtoG8sONpwsHr2oJ4itjcGHfn5NJSUGTbtbbxLro13tHkGFCoCr4Z5
- Pv+XRgiANSpYlIigiMbOkide6wbggQK32tC20QxUIwCg4k6dtV/4kwEeiOUfErq00TVqIiEE
- AKcUi4taOuh/PQWx/Ujjl/P1LfJXqLKRPa8PwD4j2yjoc9l+7LptSxJThL9KSu6gtXQjcoR2
- vCK0OeYJhgO4kYMI78h1TSaxmtImEAnjFPYJYVsxrhay92jisYc7z5R/76AaELfF6RCjjGeP
- wdalulG+erWju710Bif7E1yjYVWeA/9Wd1lsOmx6uwwYgNqoFtcAunDaMKi9xVQW18FsUusM
- TdRvTZLBpoUAy+MajAL+R73TwLq3LnKpIcCwftyQXK5pEDKq57OhxJVv1Q8XkA9Dn1SBOjNB
- l25vJDFAT9ntp9THeDD2fv15yk4EKpWhu4H00/YX8KkhFsrtUs69+vZQwc0cRmVsaXggRmll
- dGthdSA8bmJkQG5iZC5uYW1lPsJgBBMRAgAgBQJGoeQnAhsjBgsJCAcDAgQVAggDBBYCAwEC
- HgECF4AACgkQ130UHQKnbvXsvgCgjsAIIOsY7xZ8VcSm7NABpi91yTMAniMMmH7FRenEAYMa
- VrwYTIThkTlQzsFNBEah5FQQCACMIep/hTzgPZ9HbCTKm9xN4bZX0JjrqjFem1Nxf3MBM5vN
- CYGBn8F4sGIzPmLhl4xFeq3k5irVg/YvxSDbQN6NJv8o+tP6zsMeWX2JjtV0P4aDIN1pK2/w
- VxcicArw0VYdv2ZCarccFBgH2a6GjswqlCqVM3gNIMI8ikzenKcso8YErGGiKYeMEZLwHaxE
- Y7mTPuOTrWL8uWWRL5mVjhZEVvDez6em/OYvzBwbkhImrryF29e3Po2cfY2n7EKjjr3/141K
- DHBBdgXlPNfDwROnA5ugjjEBjwkwBQqPpDA7AYPvpHh5vLbZnVGu5CwG7NAsrb2isRmjYoqk
- wu++3117AAMFB/9S0Sj7qFFQcD4laADVsabTpNNpaV4wAgVTRHKV/kC9luItzwDnUcsZUPdQ
- f3MueRJ3jIHU0UmRBG3uQftqbZJj3ikhnfvyLmkCNe+/hXhPu9sGvXyi2D4vszICvc1KL4RD
- aLSrOsROx22eZ26KqcW4ny7+va2FnvjsZgI8h4sDmaLzKczVRIiLITiMpLFEU/VoSv0m1F4B
- FtRgoiyjFzigWG0MsTdAN6FJzGh4mWWGIlE7o5JraNhnTd+yTUIPtw3ym6l8P+gbvfoZida0
- TspgwBWLnXQvP5EDvlZnNaKa/3oBes6z0QdaSOwZCRA3QSLHBwtgUsrT6RxRSweLrcabwkkE
- GBECAAkFAkah5FQCGwwACgkQ130UHQKnbvW2GgCeMncXpbbWNT2AtoAYICrKyX5R3iMAoMhw
- cL98efvrjdstUfTCP2pfetyN
-In-Reply-To: <20261118011758.1049815-1-michael.shih@mediatek.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261120_002436_218655_81CF2397 
-X-CRM114-Status: UNSURE (   4.07  )
-X-CRM114-Notice: Please train this message.
-X-Spam-Score: -2.1 (--)
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <39fed6e12d60f439e0f07f3012d675f1c85d2b84.camel@mediatek.com>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -100,22 +82,38 @@ List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-10.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,
-	USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=4.0.1
+X-Spam-Status: No, score=-5.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,
+	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS autolearn=no autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
 Hi,
 
-On 18.11.26 02:17, Michael Shih wrote:
-> Customer request MTK to support OUI for wpa supplicant.
+On Fri, Nov 20, 2026 at 08:16:27AM +0000, Chunfeng Yun (云春峰) wrote:
+> > > +	device_set_wakeup_capable(nhi->dev, true);
+> > > +	device_enable_async_suspend(nhi->dev);
+> > > 
+> > > these two line can be put at the end of probe.
+> > 
+> > I meant device_enable_async_suspend() it's not stricly required and
+> > we
+> > don't do it elsewhere so I would leave it out now and then add it
+> > everywhere later.
 > 
-> Signed-off-by: Michael Shih <michael.shih@mediatek.com>
-What is this supposed to be used for?
+> I look at the PCI core code, seems it already enables async suspend for
+> every PCI device during device enumeration by default.
+> 
+>  see: pci_pm_init() (drivers/pci/pci.c)
+> 
+> Unlike the PCI bus, the platform bus does not automatically enable it
+> for platform devices, but for usb devices, usually enable it because
+> the standardized tree topology with well-defined dependencies.
+> 
+> Due to we explicitly create dev-link with xHCI/PCIe controller devices,
+> it is safe to enable it, then keep the same way as thunderbolt/pci.c
+> does.
 
-Thanks,
-
-- Felix
+Okay works for me then.
 
