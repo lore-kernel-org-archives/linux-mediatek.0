@@ -2,118 +2,108 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id E6014606A33B
-	for <linux-mediatek@archiver.kernel.org>; Fri, 20 Nov 2026 19:56:50 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 275A760A2605
+	for <linux-mediatek@archiver.kernel.org>; Fri, 20 Nov 2026 20:05:24 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=xKb3/x+7;
-	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=EGL0EanX
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=LaaZ7xBD;
+	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=sDYGS9tU
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
-	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Unsubscribe-Post:
-	List-Owner; bh=UsF4enTkpz+cKFEUMfo1tkSb8SS+Yf2yjxyk1f8Cx00=; b=xKb3/x+7cul1cw
-	IQP2Zu9BVqYNcnWQnkfPwfLGKWhSqm0C6FJDHbL9ckkqY2MGJhPaIxeoIOJgmI/PZUht2IePBa816
-	YluLU29eVcqHLNce3/l8y2+Jl/PvoWJlFeSQkDIfuhMS0QDRgmLuoCaIltKnzdIrciwqPjZb8zkMd
-	NQX3SsRCvTeWJPm/zuWEKuOkfsHHbqLP326AsiDGtr6woCPZg33dlMMo9HV9VjEicJ8r9uauGBf4e
-	L+juFHa8HMFJrPb2HKYZ+WvSDPGaqg9jVfkQaEceibiJuE8UtjgoaWK4GyN4ppFqtpTVOmVMisIIN
-	fOQ/e75Tv0oni8HirNbQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:Message-Id:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:
+	Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+	:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Unsubscribe-Post:List-Owner;
+	bh=T9Xx4usP8rm74KCRP+cc35Zk5oNMrUUP5XG8xRlvNZA=; b=LaaZ7xBDaDf4+75PUDo2ntv7KE
+	ThM6CdwcyyNGrpO9gFTE6NGSn0G8ASsBsRMv5nOsTyGKel1Dh8MNwwfoViMQEj+KJgcgY9RoIlVuv
+	41JJY0QAopUpMUuTrnnvdPNxpdSFgYruBGcDakvLrfxIdxuYb9baIGHh+FQLiFmpv0tuaPdSRlBba
+	ju5pZycgpLExwzzDQ4BszyrotlDHaltG6VH+i/RFkMnfPdOXPVctimvMQr5ly+8IOPDnUakZ9Mu9a
+	vY6QC57SNYhpApO7MVQosmF6CMKrda0p3fVBjWbyzYNgVzMmcj8EJRczTLVPkt2MIOW/8iHFQoSf0
+	ShPAfTCQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xUUj4-0000000GA8x-2U6V;
-	Fri, 20 Nov 2026 19:56:50 +0000
-Received: from mail-oo2-x05.google.com ([2607:f8b0:4864:31::5])
+	id 1xUUrL-0000000GBa1-2rXY;
+	Fri, 20 Nov 2026 20:05:23 +0000
+Received: from mail-oa1-x2b.google.com ([2001:4860:4864:20::2b])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xUUi9-0000000G9Px-0w3K
+	id 1xUUrH-0000000GBYj-3TLe
 	for linux-mediatek@lists.infradead.org;
-	Fri, 20 Nov 2026 19:56:21 +0000
-Received: by mail-oo2-x05.google.com with SMTP id 46e09a7af769-862a1dbb516so245147a34.0
-        for <linux-mediatek@lists.infradead.org>; Fri, 20 Nov 2026 11:55:53 -0800 (PST)
+	Fri, 20 Nov 2026 20:05:21 +0000
+Received: by mail-oa1-x2b.google.com with SMTP id 586e51a60fabf-4b0348a4c79so905501fac.0
+        for <linux-mediatek@lists.infradead.org>; Fri, 20 Nov 2026 12:05:19 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20260707; t=1795204552; x=1795809352; darn=lists.infradead.org;
-        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
-         :content-type:mime-version:subject:date:from:from:to:cc:subject:date
-         :message-id:reply-to:content-type;
-        bh=UsF4enTkpz+cKFEUMfo1tkSb8SS+Yf2yjxyk1f8Cx00=;
-        b=EGL0EanXZfA2bewqmhmPD0XckVs80Coh3B979OOuTt5//mlj0XvNcV0P6dSFOQ/ecE
-         hguM9XatTdqsht/wbKogZ1UBLtJ7YWMtFcD9dEHRiuLOz/WJ+PIRjuWPAVRiYNqEtMEL
-         3ZqW7ojjQtZoCXkRuVDFx7w4Z35L2fTgVDvBlUqJ8PktYz/idLnIL2Tp0rOl8jKqqazx
-         QsVPUg83OlWs+GqxpMwA12m1xYBo9MB3Vm1MDMyWIu2Tc63zZ/zD8jWwgNMT12U83LKw
-         Z+McwhJGexQRQz0/QMbZNJcoRvAIA/4xxX6b3W5myWHbZYxH5EGZ9crtYTLVXuXv9I8y
-         73/g==
+        d=gmail.com; s=20260707; t=1795205118; x=1795809918; darn=lists.infradead.org;
+        h=cc:to:message-id:content-transfer-encoding:content-type
+         :mime-version:subject:date:from:from:to:cc:subject:date:message-id
+         :reply-to:content-type;
+        bh=T9Xx4usP8rm74KCRP+cc35Zk5oNMrUUP5XG8xRlvNZA=;
+        b=sDYGS9tUIkpfLQ2TABnAvK6KkAblfCwqrC/jsRJtjLDnbmPcDOIZwLtAOxCDCcHKBT
+         fBYFf9YEqqTE022KCN3tdx2jo/K/2LoBxJgPUE/61pLOx4cS/pRPgFLbh9gJ/+MlxBf1
+         LhiI+fCBiqwo+IWhVlilLRvrA22jp4RbXFMYTQOoDMN+Ol5vdLCI3PWYlQ3aqw6Y5SgG
+         OFyGJnoi6CKTDiFK1Hx4OXRFKTj/pffbrpIaNaZIHXoGcowZkW/Jm3LKBaS3jTRbQTUd
+         lvQ/IuGmxk9KyqXw5LuJyjUFAs4b8x+dFYhQmwtJj+QRHVrorbmwpIvZaSKdFGeuWUSm
+         yK+g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1795204552; x=1795809352;
-        h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
-         :content-type:mime-version:subject:date:from:x-gm-gg
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
-         :content-type;
-        bh=UsF4enTkpz+cKFEUMfo1tkSb8SS+Yf2yjxyk1f8Cx00=;
-        b=h4+NijJJx0KI86hfnaVrrlsCoea6VKsh5GBdLr+QWi46EjCakONwC8Cjh6rElGqQ2f
-         z/kxKZmG9zlLf64dR47Jv2EVZxFjvAUdFZecDafAVS0OFkDz1XF8ulGgoEldtg3DY9Z9
-         vnHurLlTBnSx5sOPxjmM7wRZeZ1KKTM4RTs1oTwf/UF6IlUHD8r7jVTSTurtZ2CuEOHA
-         lHUxDipkz3OcS73eWoUltUj+HH/iheJ2cDiLZ5IxgKa542ClUW/DnZeOMUy8cdt80QNZ
-         /PPji2cxqQ8ZDHWlCfYFhChBB5O5Dg3fNFK3YNXlrtUXD1ZJ4R1f78vpFHWoBsqdN/qh
-         XoQg==
-X-Forwarded-Encrypted: i=1; AL+hErEW09KAKRvUupCQJ/KpaCcFkalyy/ilzIkRIbVXw88P1yXVARYVuzgTgTLBxApwXIxsxZW2+wdaaPFJN4XxKw==@lists.infradead.org
-X-Gm-Message-State: APuU4Z8buDw7dpEuriOj4+h+XwfPPlzzHAtTUNA/9DUxy0UWHxeea6tn
-	YRqi77SfibFfkzG1hxYo5x/qCxVapj9/rt+9eDHKI3G9q1jCNXPnRvGnQj/X6Ju+T2pgnA==
-X-Gm-Gg: AYBFou1F2qzc2OLDBK5zfWk55X4xQPOMAoXM3iZs5lERDf7SYI6VfgO5iTGntagwP9n
-	09tPbmR4vbhwqD13D6P3e3W+sRvnrEjKLamfEzj7cb/tVwehLkFjitVqA/zNH1RInEq6nqbWL8o
-	nQgiEisup+z7iyORVid+VKs24ysny7ejeaT4F3luknbXpE0c14xn5Q+wCAeH68/7cZjpmBZ2X1/
-	ttxJzRSXYXA5LL+JnoaFEF0vweWl/Z01Z8IYDR3xzDG5x1CXcJTthMvqFREqP4iK5EYk0Rj/8Jt
-	X87K5rkjln3S9B7Dax/I9jOr0nWY9nSkhWoc30Q/pIK/IJC+W3fTK6hSESiNFcJvL0OlVZkN0eP
-	ZpCCQcd9dmQWoAAGo7OU4j2ALryJfRhjI2XDj9Qs9uUTmUFhjSFxFg2oanNh7d1K38utx/Ju2u8
-	wanm03YKXJLXfDDvH9HQkDKJlRrjkxq3kF/wH1FRzZ+iEApC3LfgpDKn/hwCBndfdzQR4t/ry0M
-	Eh3Wx7QwdUEITwWUHXU7jWiginvkK0sqAtUIVPwg8ctzZ61MTq/vmxeVIpaAe5OhtISlQliM1S4
-	r7L4efzLlM/n7Wm7u1qAo+UFwaGJRVkvMc6K3ZOfdy7SmiWzEhLLbv1+VvyD3AkNXamadanNVKv
-	LTapNK0iQN4wvjuF0BPU=
-X-Received: by 2002:a05:6830:2303:b0:862:a48e:24d7 with SMTP id 46e09a7af769-8631595152bmr4939139a34.23.1795204552390;
-        Fri, 20 Nov 2026 11:55:52 -0800 (PST)
+        d=1e100.net; s=20260707; t=1795205118; x=1795809918;
+        h=cc:to:message-id:content-transfer-encoding:content-type
+         :mime-version:subject:date:from:x-gm-gg:x-gm-message-state:from:to
+         :cc:subject:date:message-id:reply-to:content-type;
+        bh=T9Xx4usP8rm74KCRP+cc35Zk5oNMrUUP5XG8xRlvNZA=;
+        b=MX6LP3U95j+BRaBZMVB7rv2eqQfRvMjemksJ1wr+BdkSCtl6egg45f8Nuys5VmMrha
+         Rqhi3moPfjCxzpNTyCQfa4Ft0AUTPs8eBup8BI88gzrrQbaQ/hwgjE692jHFZgA6JIRC
+         qq1WMPhS61yKj6IYx14W9zcWwaCWVCd9KZE9vB9cPGzoC3bQ1YQAjUr/IYQSCWCD7sNr
+         +6suY+6xWsO7x4Bkm0OLfm1Objn+ucep9qh+ImdlwHMSEzADm5G6mAHL/werEC8JI/xk
+         sY6OpKW2RbrV6pOTcp462IYqSkPNK0FKceyoVlaxLVyzC5RMgg93ZUWa3v15dU3ozp5l
+         eYSA==
+X-Forwarded-Encrypted: i=1; AL+hErExrFDt5OUQppwo5FDrTnrXY3tfdqEODD4TI+c8YW1HdT+Zy9IOMlUYFe/LSmzlN1Y15pPfNULTop3uZ0Ii/g==@lists.infradead.org
+X-Gm-Message-State: APuU4Z+nyqtza+QBRgw4Yg3NGuiLdFGcHlp1OIq/LEKefmX9NQ4qYNWn
+	fXlJrbquOnTNMqS1NIs9cRb2C18dizF4BBHgBk8VH1kgYPlppVOCwMnn
+X-Gm-Gg: AZFdTZe/+AE1DXwow9BuwPIJ2kU1LINOZLHTaZi26+uL3DDE7I2HbjFbH68wmKZr7jl
+	nmQ9TRaC2LKjYWoZQtAQ7/c1l/kMeaq1Huc2BK3Z8sMdgyVwxIXoxAiK1l4lzI8DaGHr9QICbvw
+	x7FVRup+Lg7cTDXkCgoCWYKT9x+D1AruWDh9rEA/zhmdAXc/8LvcxrW/1Hcpg6qLotn3j5iKd1d
+	eox+QC/LevEoQmt4fYFPMyZH1S46ga3BSxEsAiHSnaz6XxkOCOBJFh1QA+7WdarTGYm8/T0zu9U
+	XRH/1knmUTYeEgV7eYfhb1CN2hGLmr8/79HH1YPFpQmc+sUNsfql7MduLVTZhFXFJsJTZTM33JT
+	ogJ5ej9X+pk6WW9dIVH0fTZ5c+PkMlpLrMTlujz4JgnQH8kHkF1obY10YNfaBhu3GAK64i1I0MZ
+	VNAAs6/AwytG3xtddZ8A9zCp7ULB2vgcFzjSIgmtDQykCMu1lCTiufwY6mi9mro/m84cLOfo3al
+	zEWOiyolSSbNpWzuKy59LOYmwwX7DaPV8aUMs2PM0w4ZaJ7mwR188I7dgD8D/UlxgQe9afo5MlI
+	qW8yGYck+1BFPZDXLxzVsUC8ejL5XGqc1KuH2032D0V4kSxRLW6m0Okzs/GQmWwt4BQGLvAClZu
+	GfNbFV7gMjJHhxp0/Qyw=
+X-Received: by 2002:a05:6870:4db:b0:4ad:8d9f:98a3 with SMTP id 586e51a60fabf-4bc87de13e3mr3153094fac.35.1795205118467;
+        Fri, 20 Nov 2026 12:05:18 -0800 (PST)
 Received: from [10.10.18.223] (wsip-64-207-253-118.tu.ok.cox.net. [64.207.253.118])
-        by smtp.gmail.com with ESMTPSA id 46e09a7af769-863168dcf38sm2703953a34.9.2026.11.20.11.55.50
+        by smtp.gmail.com with ESMTPSA id 586e51a60fabf-4bc5edc52aasm4122200fac.4.2026.11.20.12.05.16
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 20 Nov 2026 11:55:51 -0800 (PST)
+        Fri, 20 Nov 2026 12:05:17 -0800 (PST)
 From: Ryan Brue <ryanbrue.dev@gmail.com>
-Date: Fri, 20 Nov 2026 13:55:41 -0600
-Subject: [PATCH 7/8] media: mtk-mdp: Refuse a format change once buffers
- are allocated
+Date: Fri, 20 Nov 2026 14:05:16 -0600
+Subject: [PATCH] drm/mediatek: ovl: Report coverage blending on older SoCs
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20261120-rbrue-suez-upstreaming-mtk-vcodec-mdp-fixes-v1-7-877dea14c3d0@gmail.com>
-References: <20261120-rbrue-suez-upstreaming-mtk-vcodec-mdp-fixes-v1-0-877dea14c3d0@gmail.com>
-In-Reply-To: <20261120-rbrue-suez-upstreaming-mtk-vcodec-mdp-fixes-v1-0-877dea14c3d0@gmail.com>
-To: Tiffany Lin <tiffany.lin@mediatek.com>, 
- Andrew-CT Chen <andrew-ct.chen@mediatek.com>, 
- Yunfei Dong <yunfei.dong@mediatek.com>, 
- Mauro Carvalho Chehab <mchehab@kernel.org>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Hans Verkuil <hverkuil@kernel.org>, 
- Minghsiu Tsai <minghsiu.tsai@mediatek.com>, 
- Houlong Wei <houlong.wei@mediatek.com>, 
- Enric Balletbo i Serra <eballetbo@kernel.org>, 
- Eizan Miyamoto <eizan@chromium.org>, 
- Francois Buergisser <fbuergisser@chromium.org>
-Cc: Nicolas Dufresne <nicolas.dufresne@collabora.com>, 
- Youngjoon Lee <getfeus@gmail.com>, linux-media@vger.kernel.org, 
+Message-Id: <20261120-rbrue-suez-mtk-ovl-coverage-v1-1-35040085fc37@gmail.com>
+X-B4-Tracking: v=1; b=H4sIAAAAAAAA/x3MUQrCMAwG4KuEPC9ghkjtVcSHtv7OoK6SuiKO3
+ V3wO8C3coMbGkda2dGtWZ05kg7E5ZbmCWIXjsTjbjyoahDPvkDagq8833ep/SGldniaIHoMRTW
+ nkHXPA/HLcbXPfz+dt+0HCGu2Qm0AAAA=
+X-Change-ID: 20261118-rbrue-suez-mtk-ovl-coverage-198c11ba8b14
+To: Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
+ Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@gmail.com>, 
+ Simona Vetter <simona@ffwll.ch>, Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, 
  linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, 
- Mauro Carvalho Chehab <mchehab+huawei@kernel.org>, 
  Ryan Brue <ryanbrue.dev@gmail.com>
 X-Mailer: b4 0.14.3
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1795204536; l=1946;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1795205116; l=4367;
  i=ryanbrue.dev@gmail.com; s=20260906; h=from:subject:message-id;
- bh=kJaFb9TDiCBW9wH5WEhVxXJkX3lfruWKRoGStsnFGKg=;
- b=PCPt45813EoOYNHjxRgmlOVKVszumvKZjt/ednF2qJK8wPlqgWFtSes8GV7N82tDxXhjIVjXf
- 8Y/vKnhc0YNCkSxZuIIevgZmBuoRH+twcsRDuNmFFFjAm9j2qLjIYA0
+ bh=h4Tvd2gLk6BmOFdUxw3JC3W2Yz6nDyqzW/jYqV5h1bo=;
+ b=jygRYnIZ6A4BG1IGZuzzTo8JDeciKHrqpHygmrw7zjCsTulx4jjcQ4bzto4hZFbM6Q7yhLwFt
+ 4qkyVhGaLPOCo2whLDjeAKzLnJWJLoLWJ/JFUVijZG41BSFtOvQ8ye8
 X-Developer-Key: i=ryanbrue.dev@gmail.com; a=ed25519;
  pk=KsUvVaP//v/2q+ZBuacc7cLbsyEYn+AD71Sn28oZWKo=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261120_115553_352811_BF86CE5C 
-X-CRM114-Status: GOOD (  12.86  )
+X-CRM114-CacheID: sfid-20261120_120520_535955_9A36E25E 
+X-CRM114-Status: GOOD (  15.60  )
 X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -133,55 +123,108 @@ X-Spam-Status: No, score=-15.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-VIDIOC_S_FMT stores the new format in the frame before it checks whether
-the queue is streaming, so a refused change still takes effect: a client
-switching a streaming CAPTURE queue from NV12M to YUV420M gets -EBUSY,
-and the next frame is set up for three planes in buffers that have two.
-And the check is for streaming only, so a format set after
-VIDIOC_REQBUFS can need more than the buffers already allocated.
+Since commit 860e748bddcc ("drm: ensure blend mode supported if pixel
+format with alpha exposed"), every OVL plane on MT2701, MT8167, MT8173
+and MT8183 warns at boot:
 
-Check first, and refuse once the queue has buffers, as vb2_is_busy()
-does for other drivers, logging it at debug level since any client can
-trigger it.
+  [drm] [PLANE:37:plane-0] pixel format with alpha exposed but blend
+  mode not setup. Please fix.
 
-Fixes: c8eb2d7e8202 ("[media] media: Add Mediatek MDP Driver")
+These OVLs expose ARGB formats but don't have blend_modes in their driver
+data, so no "pixel blend mode" property is created. They can't blend
+premultiplied pixels: mtk_ovl_fmt_convert() always selects the
+non-premultiplied color formats for them, which is the DRM "Coverage"
+equation. Since commit 9813e158d13d ("drm/drm_blend: allow blend mode
+property without PREMULTI") a coverage-only property is allowed, so
+advertise it and drop the comment saying it couldn't be created.
+
+The plane state now defaults to Coverage instead of Pre-multiplied. Both
+are non-zero, so mtk_ovl_layer_config() programs the same registers as
+before.
+
+Tested on MT8173 (Amazon Fire HD 10 2017). The warning is gone, every
+plane reports a "pixel blend mode" of Coverage, and the OVL0 layer
+registers are unchanged.
+
 Signed-off-by: Ryan Brue <ryanbrue.dev@gmail.com>
 ---
- drivers/media/platform/mediatek/mdp/mtk_mdp_m2m.c | 12 ++++++------
- 1 file changed, 6 insertions(+), 6 deletions(-)
+Since 7.3, MT8173 and the other OVLs without premultiplied alpha log
+"pixel format with alpha exposed but blend mode not setup" for every
+plane at boot. They blend in coverage mode, and the blend mode helper
+now accepts a coverage-only property, so this patch advertises that.
+No register changes; tested on MT8173 (Amazon Fire HD 10 2017).
 
-diff --git a/drivers/media/platform/mediatek/mdp/mtk_mdp_m2m.c b/drivers/media/platform/mediatek/mdp/mtk_mdp_m2m.c
-index e0627127430b..1be0f44fe1b2 100644
---- a/drivers/media/platform/mediatek/mdp/mtk_mdp_m2m.c
-+++ b/drivers/media/platform/mediatek/mdp/mtk_mdp_m2m.c
-@@ -698,6 +698,12 @@ static int mtk_mdp_m2m_s_fmt_mplane(struct file *file, void *fh,
- 
- 	mtk_mdp_dbg(2, "[%d] type:%d", ctx->id, f->type);
- 
-+	vq = v4l2_m2m_get_vq(ctx->m2m_ctx, f->type);
-+	if (vb2_is_busy(vq)) {
-+		dev_dbg(&ctx->mdp_dev->pdev->dev, "queue %d busy\n", f->type);
-+		return -EBUSY;
-+	}
-+
- 	frame = mtk_mdp_ctx_get_frame(ctx, f->type);
- 	fmt = mtk_mdp_try_fmt_mplane(ctx, f);
- 	if (!fmt) {
-@@ -706,12 +712,6 @@ static int mtk_mdp_m2m_s_fmt_mplane(struct file *file, void *fh,
- 	}
- 	frame->fmt = fmt;
- 
--	vq = v4l2_m2m_get_vq(ctx->m2m_ctx, f->type);
--	if (vb2_is_streaming(vq)) {
--		dev_info(&ctx->mdp_dev->pdev->dev, "queue %d busy", f->type);
--		return -EBUSY;
--	}
--
- 	pix_mp = &f->fmt.pix_mp;
- 	for (i = 0; i < frame->fmt->num_planes; i++) {
- 		frame->payload[i] = pix_mp->plane_fmt[i].sizeimage;
+This patch was developed with the help of an LLM.
+---
+ drivers/gpu/drm/mediatek/mtk_disp_ovl.c | 13 +++++++------
+ 1 file changed, 7 insertions(+), 6 deletions(-)
 
+diff --git a/drivers/gpu/drm/mediatek/mtk_disp_ovl.c b/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
+index 5445870716f9..81a4143f294d 100644
+--- a/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
++++ b/drivers/gpu/drm/mediatek/mtk_disp_ovl.c
+@@ -412,12 +412,8 @@ static unsigned int mtk_ovl_fmt_convert(struct mtk_disp_ovl *ovl,
+ 	 * and supports premultiplied color formats, such as OVL_CON_CLRFMT_PARGB8888.
+ 	 *
+ 	 * Check blend_modes in the driver data to see if premultiplied mode is supported.
+-	 * If not, use coverage mode instead to set it to the supported color formats.
+-	 *
+-	 * Current DRM assumption is that alpha is default premultiplied, so the bitmask of
+-	 * blend_modes must include BIT(DRM_MODE_BLEND_PREMULTI). Otherwise, mtk_plane_init()
+-	 * will get an error return from drm_plane_create_blend_mode_property() and
+-	 * state->base.pixel_blend_mode should not be used.
++	 * If not, the hardware only blends in coverage mode, which is the only mode
++	 * those platforms advertise.
+ 	 */
+ 	if (ovl->data->blend_modes & BIT(DRM_MODE_BLEND_PREMULTI))
+ 		blend_mode = state->base.pixel_blend_mode;
+@@ -667,6 +663,7 @@ static const struct mtk_disp_ovl_data mt2701_ovl_driver_data = {
+ 	.gmc_bits = 8,
+ 	.layer_nr = 4,
+ 	.fmt_rgb565_is_0 = false,
++	.blend_modes = BIT(DRM_MODE_BLEND_COVERAGE),
+ 	.formats = mt8173_formats,
+ 	.num_formats = ARRAY_SIZE(mt8173_formats),
+ };
+@@ -677,6 +674,7 @@ static const struct mtk_disp_ovl_data mt8167_ovl_driver_data = {
+ 	.layer_nr = 4,
+ 	.fmt_rgb565_is_0 = true,
+ 	.smi_id_en = true,
++	.blend_modes = BIT(DRM_MODE_BLEND_COVERAGE),
+ 	.formats = mt8173_formats,
+ 	.num_formats = ARRAY_SIZE(mt8173_formats),
+ };
+@@ -686,6 +684,7 @@ static const struct mtk_disp_ovl_data mt8173_ovl_driver_data = {
+ 	.gmc_bits = 8,
+ 	.layer_nr = 4,
+ 	.fmt_rgb565_is_0 = true,
++	.blend_modes = BIT(DRM_MODE_BLEND_COVERAGE),
+ 	.formats = mt8173_formats,
+ 	.num_formats = ARRAY_SIZE(mt8173_formats),
+ };
+@@ -695,6 +694,7 @@ static const struct mtk_disp_ovl_data mt8183_ovl_driver_data = {
+ 	.gmc_bits = 10,
+ 	.layer_nr = 4,
+ 	.fmt_rgb565_is_0 = true,
++	.blend_modes = BIT(DRM_MODE_BLEND_COVERAGE),
+ 	.formats = mt8173_formats,
+ 	.num_formats = ARRAY_SIZE(mt8173_formats),
+ };
+@@ -704,6 +704,7 @@ static const struct mtk_disp_ovl_data mt8183_ovl_2l_driver_data = {
+ 	.gmc_bits = 10,
+ 	.layer_nr = 2,
+ 	.fmt_rgb565_is_0 = true,
++	.blend_modes = BIT(DRM_MODE_BLEND_COVERAGE),
+ 	.formats = mt8173_formats,
+ 	.num_formats = ARRAY_SIZE(mt8173_formats),
+ };
+
+---
+base-commit: aebb7274476403040d582c61478df8f4a7bf9cd3
+change-id: 20261118-rbrue-suez-mtk-ovl-coverage-198c11ba8b14
+
+Best regards,
 -- 
-2.56.0
+Ryan Brue <ryanbrue.dev@gmail.com>
 
 
