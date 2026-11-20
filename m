@@ -2,87 +2,87 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id C9B1B606A6E2
-	for <linux-mediatek@archiver.kernel.org>; Fri, 20 Nov 2026 19:56:41 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id E6014606A33B
+	for <linux-mediatek@archiver.kernel.org>; Fri, 20 Nov 2026 19:56:50 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=z3Hccc0q;
-	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=klm3j6ku
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=xKb3/x+7;
+	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=EGL0EanX
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Unsubscribe-Post:
-	List-Owner; bh=EOjCMewlxD7RB8eWSeGbzOtyaQZdrsyJsL/ch7K8e+A=; b=z3Hccc0qGphLIJ
-	29a/v8cnKm7N92fnWTxRYyes48gsoU13TnaEarLsuLq2YCvse4SJrFK0J5mN9I4gaCPr0/xTa6RZJ
-	Bfp5Aoi0Na+USG4VHIsteVHEAX4z6jGKhSXWqyyRpG7KFkwRE1Uqw61hmJ6aPAdf7yqvbQz5FQjs5
-	gWjguUfpFoCuewA/FhLeyp1Ucklak6OIpLOIBT9i6C+XiqAcdpD98Waga2QuzZTHMWdD0WH6idbB8
-	A6SjxplDWwGvtrUWUgFCXdneWsqRthQ3CKur90iJRLpVFXAyX/uHaX69iB0d+y6iQ7/f1k9j9YWie
-	NVst3n5eKLhma8eqESIg==;
+	List-Owner; bh=UsF4enTkpz+cKFEUMfo1tkSb8SS+Yf2yjxyk1f8Cx00=; b=xKb3/x+7cul1cw
+	IQP2Zu9BVqYNcnWQnkfPwfLGKWhSqm0C6FJDHbL9ckkqY2MGJhPaIxeoIOJgmI/PZUht2IePBa816
+	YluLU29eVcqHLNce3/l8y2+Jl/PvoWJlFeSQkDIfuhMS0QDRgmLuoCaIltKnzdIrciwqPjZb8zkMd
+	NQX3SsRCvTeWJPm/zuWEKuOkfsHHbqLP326AsiDGtr6woCPZg33dlMMo9HV9VjEicJ8r9uauGBf4e
+	L+juFHa8HMFJrPb2HKYZ+WvSDPGaqg9jVfkQaEceibiJuE8UtjgoaWK4GyN4ppFqtpTVOmVMisIIN
+	fOQ/e75Tv0oni8HirNbQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xUUiv-0000000GA2r-1Zdw;
-	Fri, 20 Nov 2026 19:56:41 +0000
-Received: from mail-ot1-x344.google.com ([2607:f8b0:4864:20::344])
+	id 1xUUj4-0000000GA8x-2U6V;
+	Fri, 20 Nov 2026 19:56:50 +0000
+Received: from mail-oo2-x05.google.com ([2607:f8b0:4864:31::5])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xUUi7-0000000G9Mx-07AS
+	id 1xUUi9-0000000G9Px-0w3K
 	for linux-mediatek@lists.infradead.org;
-	Fri, 20 Nov 2026 19:56:15 +0000
-Received: by mail-ot1-x344.google.com with SMTP id 46e09a7af769-86288992de5so1002813a34.1
-        for <linux-mediatek@lists.infradead.org>; Fri, 20 Nov 2026 11:55:50 -0800 (PST)
+	Fri, 20 Nov 2026 19:56:21 +0000
+Received: by mail-oo2-x05.google.com with SMTP id 46e09a7af769-862a1dbb516so245147a34.0
+        for <linux-mediatek@lists.infradead.org>; Fri, 20 Nov 2026 11:55:53 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20260707; t=1795204550; x=1795809350; darn=lists.infradead.org;
+        d=gmail.com; s=20260707; t=1795204552; x=1795809352; darn=lists.infradead.org;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :content-type:mime-version:subject:date:from:from:to:cc:subject:date
          :message-id:reply-to:content-type;
-        bh=EOjCMewlxD7RB8eWSeGbzOtyaQZdrsyJsL/ch7K8e+A=;
-        b=klm3j6kuF20vyznN2kJRapOOiJN73gbV8c62EfI6aIzTv6izKdmluekc9RYG0OxwyL
-         UcGDSKBt+NpEOkA9G7d8WKYBWpItGy1TMKEct0GIJu8TaGvdLIcJYSM9LZ5973FEfpIr
-         4iiIBw78FlnQYl+Ubc3iR/rnMMEYjQP8vTpDAxI8BvkIBl6OwUMst4Zm2bGQPpQVkoDZ
-         TWXZOJsgFQblNhZKPID4f+UdNZjv5iPDVjlU8/2F+A+i8ZOYCBzSANsCSvkPxFzdvm+4
-         CMKk0eLrXGeGRZC47IqnDvRepIYLDhgEaavKqNXFxx8ZQ/w6jDxZOjTHjKIqBeJYmkPC
-         eUWw==
+        bh=UsF4enTkpz+cKFEUMfo1tkSb8SS+Yf2yjxyk1f8Cx00=;
+        b=EGL0EanXZfA2bewqmhmPD0XckVs80Coh3B979OOuTt5//mlj0XvNcV0P6dSFOQ/ecE
+         hguM9XatTdqsht/wbKogZ1UBLtJ7YWMtFcD9dEHRiuLOz/WJ+PIRjuWPAVRiYNqEtMEL
+         3ZqW7ojjQtZoCXkRuVDFx7w4Z35L2fTgVDvBlUqJ8PktYz/idLnIL2Tp0rOl8jKqqazx
+         QsVPUg83OlWs+GqxpMwA12m1xYBo9MB3Vm1MDMyWIu2Tc63zZ/zD8jWwgNMT12U83LKw
+         Z+McwhJGexQRQz0/QMbZNJcoRvAIA/4xxX6b3W5myWHbZYxH5EGZ9crtYTLVXuXv9I8y
+         73/g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1795204550; x=1795809350;
+        d=1e100.net; s=20260707; t=1795204552; x=1795809352;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :content-type:mime-version:subject:date:from:x-gm-gg
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
          :content-type;
-        bh=EOjCMewlxD7RB8eWSeGbzOtyaQZdrsyJsL/ch7K8e+A=;
-        b=CBHD6u/QFvykIel4vY7k8CzDnloV2ZRIs2EkygXeBytFCeiiaAgarGBsT5daWJoPYO
-         i/oFc5J1eMI777UGJZ84oZSSXfTNAdYDlkFi6GORQA4hOebJtrlGEKKJe1uXf+5fZxJ8
-         mOS4mgHJvZ90bzZZBslsCD5YbyvUOAoIgK0/QmhKd/qcREAfuUrzBsL7q2lm2+Iyt3h1
-         Ax9srA8JagqRdkMgcDBjBXn8p/aZPlOZiOzKVn61349ci/X216AjbXRXcVaoNu6CyP4n
-         tggVzwyBIoYD0TiTwi/JEgFZu1ousBSdqEslIcIzHby+XWIa2UdMQi6r86KxmxjFdzFZ
-         N6/A==
-X-Forwarded-Encrypted: i=1; AL+hErHigNsgyfbh6R5irwnTNKPzd0fX1xQ50pi8y5W/QQb64GrS/SVfftdKqzaYdQegzlR6aOmnK7lkUoJimDiqIQ==@lists.infradead.org
-X-Gm-Message-State: APuU4Z+FfHYgX5oh+/PqKBd1H5X+zlhfSfpAlKm1uGkwTosJnLAapQ2l
-	FUAYj+3dJD6ufTtjnXpmdX7BpnJDu9hIeZXhkoihvBsImdDNynBQmn2s
-X-Gm-Gg: AYBFou2j1IyKrj/tUDgBlTOTBdZqOUXXrmdEzAuQKF1LvbZ619GllEHbWSVVQaUNdkQ
-	CZuBPK2m9z5oe+P0HbaLm5BAMuK2N594KaAAMF1n5Yfe6sD7gz7xxAwVclp9iVlMC+WuqKGKN+G
-	OHliinPfXZQzgEUG9CG9N8rj4ElD9qnfu4/EvIIA7vwZD5ZxdVWBl0VVHsu9EZgdnPf1bi4pXfq
-	UiwVRQi4i8H7ahaWe4HCp9ZRpcSzjj4DTWVohK0zLuOG6dqg8QH+vaD4II8YKGCGGTSXj/Pk7zX
-	BJWfLtbUv4CJ/fg3SB7y3+lsqSO1fRNHMMZj0TbsUIKbcohh9g0i2tV1YOagBL6HSvppAXLmV00
-	0cycGhqEvy95YeDfpx24pQUyB3Cerf7I7Zkem/2yIcEFGBkiR3eVYg77wRwX1rce43LUDjO+OpD
-	4dreW0jxkOZJ+/rlmBghaPkyC9nMWsvaJyTwtnaGh6GnvyKaiK0D0EcuQvnFSVSpGnxqgPk7Vn0
-	QgzhFz0uGNj/yFpzo/m9/dY+aXw+Ty9xgFpkOx2iknWbzhrtpkhQqs8TNVoyU0Os6bdWKYHZKHf
-	IiAjaljng0K2XobyuAZxp5mE9jGXMdgd3FvCcJuszuIu3erwkIhJvopmkIDWR1C8GW3rms9j5Cl
-	w1f68W71XCmB+BnECfXWoZcl0os6mDcxp/lOKvfRJ
-X-Received: by 2002:a05:6830:2543:b0:847:b333:229f with SMTP id 46e09a7af769-86309211342mr4517824a34.19.1795204550100;
-        Fri, 20 Nov 2026 11:55:50 -0800 (PST)
+        bh=UsF4enTkpz+cKFEUMfo1tkSb8SS+Yf2yjxyk1f8Cx00=;
+        b=h4+NijJJx0KI86hfnaVrrlsCoea6VKsh5GBdLr+QWi46EjCakONwC8Cjh6rElGqQ2f
+         z/kxKZmG9zlLf64dR47Jv2EVZxFjvAUdFZecDafAVS0OFkDz1XF8ulGgoEldtg3DY9Z9
+         vnHurLlTBnSx5sOPxjmM7wRZeZ1KKTM4RTs1oTwf/UF6IlUHD8r7jVTSTurtZ2CuEOHA
+         lHUxDipkz3OcS73eWoUltUj+HH/iheJ2cDiLZ5IxgKa542ClUW/DnZeOMUy8cdt80QNZ
+         /PPji2cxqQ8ZDHWlCfYFhChBB5O5Dg3fNFK3YNXlrtUXD1ZJ4R1f78vpFHWoBsqdN/qh
+         XoQg==
+X-Forwarded-Encrypted: i=1; AL+hErEW09KAKRvUupCQJ/KpaCcFkalyy/ilzIkRIbVXw88P1yXVARYVuzgTgTLBxApwXIxsxZW2+wdaaPFJN4XxKw==@lists.infradead.org
+X-Gm-Message-State: APuU4Z8buDw7dpEuriOj4+h+XwfPPlzzHAtTUNA/9DUxy0UWHxeea6tn
+	YRqi77SfibFfkzG1hxYo5x/qCxVapj9/rt+9eDHKI3G9q1jCNXPnRvGnQj/X6Ju+T2pgnA==
+X-Gm-Gg: AYBFou1F2qzc2OLDBK5zfWk55X4xQPOMAoXM3iZs5lERDf7SYI6VfgO5iTGntagwP9n
+	09tPbmR4vbhwqD13D6P3e3W+sRvnrEjKLamfEzj7cb/tVwehLkFjitVqA/zNH1RInEq6nqbWL8o
+	nQgiEisup+z7iyORVid+VKs24ysny7ejeaT4F3luknbXpE0c14xn5Q+wCAeH68/7cZjpmBZ2X1/
+	ttxJzRSXYXA5LL+JnoaFEF0vweWl/Z01Z8IYDR3xzDG5x1CXcJTthMvqFREqP4iK5EYk0Rj/8Jt
+	X87K5rkjln3S9B7Dax/I9jOr0nWY9nSkhWoc30Q/pIK/IJC+W3fTK6hSESiNFcJvL0OlVZkN0eP
+	ZpCCQcd9dmQWoAAGo7OU4j2ALryJfRhjI2XDj9Qs9uUTmUFhjSFxFg2oanNh7d1K38utx/Ju2u8
+	wanm03YKXJLXfDDvH9HQkDKJlRrjkxq3kF/wH1FRzZ+iEApC3LfgpDKn/hwCBndfdzQR4t/ry0M
+	Eh3Wx7QwdUEITwWUHXU7jWiginvkK0sqAtUIVPwg8ctzZ61MTq/vmxeVIpaAe5OhtISlQliM1S4
+	r7L4efzLlM/n7Wm7u1qAo+UFwaGJRVkvMc6K3ZOfdy7SmiWzEhLLbv1+VvyD3AkNXamadanNVKv
+	LTapNK0iQN4wvjuF0BPU=
+X-Received: by 2002:a05:6830:2303:b0:862:a48e:24d7 with SMTP id 46e09a7af769-8631595152bmr4939139a34.23.1795204552390;
+        Fri, 20 Nov 2026 11:55:52 -0800 (PST)
 Received: from [10.10.18.223] (wsip-64-207-253-118.tu.ok.cox.net. [64.207.253.118])
-        by smtp.gmail.com with ESMTPSA id 46e09a7af769-863168dcf38sm2703953a34.9.2026.11.20.11.55.47
+        by smtp.gmail.com with ESMTPSA id 46e09a7af769-863168dcf38sm2703953a34.9.2026.11.20.11.55.50
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Fri, 20 Nov 2026 11:55:48 -0800 (PST)
+        Fri, 20 Nov 2026 11:55:51 -0800 (PST)
 From: Ryan Brue <ryanbrue.dev@gmail.com>
-Date: Fri, 20 Nov 2026 13:55:40 -0600
-Subject: [PATCH 6/8] media: mtk-mdp: Check buffer plane sizes against the
- format
+Date: Fri, 20 Nov 2026 13:55:41 -0600
+Subject: [PATCH 7/8] media: mtk-mdp: Refuse a format change once buffers
+ are allocated
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20261120-rbrue-suez-upstreaming-mtk-vcodec-mdp-fixes-v1-6-877dea14c3d0@gmail.com>
+Message-Id: <20261120-rbrue-suez-upstreaming-mtk-vcodec-mdp-fixes-v1-7-877dea14c3d0@gmail.com>
 References: <20261120-rbrue-suez-upstreaming-mtk-vcodec-mdp-fixes-v1-0-877dea14c3d0@gmail.com>
 In-Reply-To: <20261120-rbrue-suez-upstreaming-mtk-vcodec-mdp-fixes-v1-0-877dea14c3d0@gmail.com>
 To: Tiffany Lin <tiffany.lin@mediatek.com>, 
@@ -104,16 +104,16 @@ Cc: Nicolas Dufresne <nicolas.dufresne@collabora.com>,
  Mauro Carvalho Chehab <mchehab+huawei@kernel.org>, 
  Ryan Brue <ryanbrue.dev@gmail.com>
 X-Mailer: b4 0.14.3
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1795204536; l=1915;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1795204536; l=1946;
  i=ryanbrue.dev@gmail.com; s=20260906; h=from:subject:message-id;
- bh=IrqYTU3e5VqOahizLwVLW6h+Y6jhsQAYsNliTerO8J0=;
- b=qQWo0793DmfQdxc0mRZsUo2XgpH9ekHbX/QzCsnhkM4TZTvhzCPSNce9IlDNfTxS2wUYX/mtP
- oK4WhQpcAJBAc49I2moR4k4xzsWXEfrHUNZkSfjcbjG589F3v1ZY2cE
+ bh=kJaFb9TDiCBW9wH5WEhVxXJkX3lfruWKRoGStsnFGKg=;
+ b=PCPt45813EoOYNHjxRgmlOVKVszumvKZjt/ednF2qJK8wPlqgWFtSes8GV7N82tDxXhjIVjXf
+ 8Y/vKnhc0YNCkSxZuIIevgZmBuoRH+twcsRDuNmFFFjAm9j2qLjIYA0
 X-Developer-Key: i=ryanbrue.dev@gmail.com; a=ed25519;
  pk=KsUvVaP//v/2q+ZBuacc7cLbsyEYn+AD71Sn28oZWKo=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261120_115551_203217_A480C37B 
-X-CRM114-Status: GOOD (  11.68  )
+X-CRM114-CacheID: sfid-20261120_115553_352811_BF86CE5C 
+X-CRM114-Status: GOOD (  12.86  )
 X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -133,54 +133,53 @@ X-Spam-Status: No, score=-15.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-queue_setup() ignores the number of planes and their sizes that come with
-VIDIOC_CREATE_BUFS and always answers with the current format, so a
-client can allocate buffers too small for it, which v4l2-compliance
-reports:
+VIDIOC_S_FMT stores the new format in the frame before it checks whether
+the queue is streaming, so a refused change still takes effect: a client
+switching a streaming CAPTURE queue from NV12M to YUV420M gets -EBUSY,
+and the next frame is set up for three planes in buffers that have two.
+And the check is for streaming only, so a format set after
+VIDIOC_REQBUFS can need more than the buffers already allocated.
 
-  fail: v4l2-test-buffers.cpp(872): q.create_bufs(node, 1, &fmt) != EINVAL
-
-Refuse a request with a different number of planes or a plane smaller
-than the format needs, as vb2 expects of queue_setup(), and check each
-buffer's planes in buf_prepare() as well.
+Check first, and refuse once the queue has buffers, as vb2_is_busy()
+does for other drivers, logging it at debug level since any client can
+trigger it.
 
 Fixes: c8eb2d7e8202 ("[media] media: Add Mediatek MDP Driver")
 Signed-off-by: Ryan Brue <ryanbrue.dev@gmail.com>
 ---
- drivers/media/platform/mediatek/mdp/mtk_mdp_m2m.c | 13 +++++++++++++
- 1 file changed, 13 insertions(+)
+ drivers/media/platform/mediatek/mdp/mtk_mdp_m2m.c | 12 ++++++------
+ 1 file changed, 6 insertions(+), 6 deletions(-)
 
 diff --git a/drivers/media/platform/mediatek/mdp/mtk_mdp_m2m.c b/drivers/media/platform/mediatek/mdp/mtk_mdp_m2m.c
-index a40bcf61b7ca..e0627127430b 100644
+index e0627127430b..1be0f44fe1b2 100644
 --- a/drivers/media/platform/mediatek/mdp/mtk_mdp_m2m.c
 +++ b/drivers/media/platform/mediatek/mdp/mtk_mdp_m2m.c
-@@ -546,6 +546,15 @@ static int mtk_mdp_m2m_queue_setup(struct vb2_queue *vq,
- 	int i;
+@@ -698,6 +698,12 @@ static int mtk_mdp_m2m_s_fmt_mplane(struct file *file, void *fh,
  
- 	frame = mtk_mdp_ctx_get_frame(ctx, vq->type);
-+	if (*num_planes) {
-+		if (*num_planes != frame->fmt->num_planes)
-+			return -EINVAL;
-+		for (i = 0; i < frame->fmt->num_planes; i++)
-+			if (sizes[i] < frame->payload[i])
-+				return -EINVAL;
-+		return 0;
+ 	mtk_mdp_dbg(2, "[%d] type:%d", ctx->id, f->type);
+ 
++	vq = v4l2_m2m_get_vq(ctx->m2m_ctx, f->type);
++	if (vb2_is_busy(vq)) {
++		dev_dbg(&ctx->mdp_dev->pdev->dev, "queue %d busy\n", f->type);
++		return -EBUSY;
 +	}
 +
- 	*num_planes = frame->fmt->num_planes;
- 	for (i = 0; i < frame->fmt->num_planes; i++)
- 		sizes[i] = frame->payload[i];
-@@ -563,6 +572,10 @@ static int mtk_mdp_m2m_buf_prepare(struct vb2_buffer *vb)
+ 	frame = mtk_mdp_ctx_get_frame(ctx, f->type);
+ 	fmt = mtk_mdp_try_fmt_mplane(ctx, f);
+ 	if (!fmt) {
+@@ -706,12 +712,6 @@ static int mtk_mdp_m2m_s_fmt_mplane(struct file *file, void *fh,
+ 	}
+ 	frame->fmt = fmt;
  
- 	frame = mtk_mdp_ctx_get_frame(ctx, vb->vb2_queue->type);
- 
-+	for (i = 0; i < frame->fmt->num_planes; i++)
-+		if (vb2_plane_size(vb, i) < frame->payload[i])
-+			return -EINVAL;
-+
- 	if (!V4L2_TYPE_IS_OUTPUT(vb->vb2_queue->type)) {
- 		for (i = 0; i < frame->fmt->num_planes; i++)
- 			vb2_set_plane_payload(vb, i, frame->payload[i]);
+-	vq = v4l2_m2m_get_vq(ctx->m2m_ctx, f->type);
+-	if (vb2_is_streaming(vq)) {
+-		dev_info(&ctx->mdp_dev->pdev->dev, "queue %d busy", f->type);
+-		return -EBUSY;
+-	}
+-
+ 	pix_mp = &f->fmt.pix_mp;
+ 	for (i = 0; i < frame->fmt->num_planes; i++) {
+ 		frame->payload[i] = pix_mp->plane_fmt[i].sizeimage;
 
 -- 
 2.56.0
