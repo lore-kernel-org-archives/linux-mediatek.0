@@ -2,76 +2,70 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id A5F3B60A2602
-	for <linux-mediatek@archiver.kernel.org>; Fri, 20 Nov 2026 08:26:53 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id B513A606A32A
+	for <linux-mediatek@archiver.kernel.org>; Fri, 20 Nov 2026 08:40:21 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=b3caRDib;
-	dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=GKo+RNWT
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=WuZyg+Lm;
+	dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=hK4CLmUU
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
-	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=aV8jtS66Tt+1KtEPhn6QzwtWLg4RKOLbiueDjLgm9B8=; b=b3caRDibllCrcfkmGR1HCFIj6E
-	+xwb93W6wC+fC7tEbjx1VSHvM/1gVmuVTTpnVv6ya7szeg6lJdt+hqNjrPlH1ojB3XzMOgFqSwIjO
-	2V5qlt20nMEKUET0990j/2nanRFy7Wlwe6WObF7zLf55z7LExoMHZNzsh+zi+taam99Cm8m7d3Fi4
-	WAnbxhu/L1Hlcqz2jJyhUag+PjqwmH86cDOLT5+T0+L8uFKVUOB0scDc3eQ6Owaw41e6bXgueL1zl
-	wX2brtxCg0YgIC+O1l+MgVECtSPX28w/NsTBr+IeFx0KDHy1jkag/tJA5cRhppgLY6FVh+suwLMiA
-	Y7YJgX1w==;
+	bh=OCZTGaCFLCsYJTt74vJ9dAjfbmceFOVIaPHdnU3R0Vg=; b=WuZyg+LmgleavMYj0KYt+xkv9j
+	MddZD8es1J6QEEnhrNG9YawoXZbysgZNNpYkQory5kpOZSZodg3YJqtUhQs5XbTV02tQ8F/MWHt4I
+	2wbRdSumOGG8iET+WcJPqZRxekc/maLD8+MYWvrfjt1SHez+RlhD45aqLy9DtPNHNoSVf882nsT+7
+	BZ0ZhEwVvt4dJ4YNcMp5VxpqtYQm7yjPLbhkA8ju5RbA7v/0mXoPXIGiZBAkKipRxMqVq84Zn9aUM
+	i7zFXL5Iz0GXEYob3uF0KjqMFaH0T+OwG5Fq1S3ZP2S3WpBd2wZu7ApcY+sHxmPODkuuL45rV3s2l
+	q26Z3YZA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xUJxN-0000000EKlm-1dHB;
-	Fri, 20 Nov 2026 08:26:53 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1xUKAO-0000000EMAe-1ccK;
+	Fri, 20 Nov 2026 08:40:20 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xUJxI-0000000EKlI-1cpX;
-	Fri, 20 Nov 2026 08:26:51 +0000
+	id 1xUKA9-0000000EM7x-1TDc;
+	Fri, 20 Nov 2026 08:40:06 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 70484613F6;
-	Fri, 20 Nov 2026 08:26:47 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 091C61F000C6;
-	Fri, 20 Nov 2026 08:26:43 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id E48D7434E2;
+	Fri, 20 Nov 2026 08:40:03 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 6E8601F000C4;
+	Fri, 20 Nov 2026 08:40:03 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1795163207;
-	bh=aV8jtS66Tt+1KtEPhn6QzwtWLg4RKOLbiueDjLgm9B8=;
+	s=k20260515; t=1795164003;
+	bh=OCZTGaCFLCsYJTt74vJ9dAjfbmceFOVIaPHdnU3R0Vg=;
 	h=Date:From:To:Cc:Subject:References:In-Reply-To;
-	b=GKo+RNWTBbECnl7ztHjJyXNwuCG7vyB8iV2U3YYG7U+do5cDoPmPsdnGuttViBrDE
-	 8vvLJNEObbOgOFUoLma2I/pHKteMokeQRLjYMjIKoBl/cMq7wS2xzv9hc1BKEp65Pi
-	 UePeSHjxMFqGcBjrq7TFkwPhjjalKwChgjJ1euFTM4nDv31QHdcYa9l0Z5BeL/uyFw
-	 0v531AMxmI3PmIJjalsKkNJYninErCi3AbFEVAYDaW5wgZ64sW1jCMv4x2Y7ZNK2qM
-	 We+efUDFUQPi5D/Hx2uAAIO1OVqe9Sa9ZrcBOUAoP9wR/FC4qUdUvr+kB+S1Ur0Mm0
-	 1cZlQJ89zFA5g==
-Date: Fri, 20 Nov 2026 10:26:41 +0200
-From: "westeri@kernel.org" <westeri@kernel.org>
-To: Chunfeng Yun =?utf-8?B?KOS6keaYpeWzsCk=?= <Chunfeng.Yun@mediatek.com>
-Cc: "mika.westerberg@linux.intel.com" <mika.westerberg@linux.intel.com>,
-	"konrad.dybcio@oss.qualcomm.com" <konrad.dybcio@oss.qualcomm.com>,
-	"linux-usb@vger.kernel.org" <linux-usb@vger.kernel.org>,
-	"gregkh@linuxfoundation.org" <gregkh@linuxfoundation.org>,
+	b=hK4CLmUUEefRTCa/OduHAYiA83k5mlUlmHSUBtKKg7nZA4S2PvxBY/e4UTwS8V7T5
+	 je1tgSp1qsPINAFW5QCWTaEH0w2HUPDd1VZj0GiLhRmm1eue4P6r7BrbmxlgoUvX+t
+	 2PcgcUtGwuGAJyqfHz1zwhiIDCyhjJpiGSlAswOhoFK2L3RQ7O13fPUI1l03TLvEhn
+	 H6pZzf6mxVyxNtfmo6LDWRnE46tPFoybx1BYDQ9PHXYe2atLS38oQPThXTtyM+kN6o
+	 bouNadSyplwf1BuA/5tXz+lGxqpwlvD2nbrS838wBdbeHZRBnCnLYOAGzNZuVAfb5S
+	 V2SzsSnUcBIqw==
+Date: Fri, 20 Nov 2026 09:40:01 +0100
+From: Lorenzo Bianconi <lorenzo@kernel.org>
+To: Maoyi Xie <maoyixie.tju@gmail.com>
+Cc: Felix Fietkau <nbd@nbd.name>, Ryder Lee <ryder.lee@mediatek.com>,
+	Shayne Chen <shayne.chen@mediatek.com>,
+	Sean Wang <sean.wang@mediatek.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
 	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	"YehezkelShB@gmail.com" <YehezkelShB@gmail.com>,
-	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
-	"sven@kernel.org" <sven@kernel.org>,
-	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
-	"andreas.noever@gmail.com" <andreas.noever@gmail.com>,
-	"matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
-	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>
-Subject: Re: [PATCH v2 4/7] thunderbolt: add platform NHI driver
-Message-ID: <20261120082641.GB833643@thinkpad>
-References: <20261110114925.722014-1-chunfeng.yun@mediatek.com>
- <20261110114925.722014-5-chunfeng.yun@mediatek.com>
- <20261110143758.GC259790@black.igk.intel.com>
- <2807832e631dca98846d201b571f623210820268.camel@mediatek.com>
- <20261117125241.GA259790@black.igk.intel.com>
- <39fed6e12d60f439e0f07f3012d675f1c85d2b84.camel@mediatek.com>
+	linux-wireless@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org, stable@vger.kernel.org
+Subject: Re: [PATCH] wifi: mt76: sdio: check the RX packet length in
+ mt76s_rx_run_queue()
+Message-ID: <awAHYUeQXyiItg_3@lore-qca>
+References: <20261119124928.1398520-1-maoyixie.tju@gmail.com>
+ <av8osemFMD6C2EdK@lore-qca>
+ <CAHPEe=FFgzM3L9aiBNczg2AQ4JiG-p+eFKLemjrOMzekuBmHpg@mail.gmail.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="IyzNOabBFX4ct+Jl"
 Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <39fed6e12d60f439e0f07f3012d675f1c85d2b84.camel@mediatek.com>
+In-Reply-To: <CAHPEe=FFgzM3L9aiBNczg2AQ4JiG-p+eFKLemjrOMzekuBmHpg@mail.gmail.com>
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,31 +83,65 @@ X-Spam-Status: No, score=-5.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Hi,
+--IyzNOabBFX4ct+Jl
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-On Fri, Nov 20, 2026 at 08:16:27AM +0000, Chunfeng Yun (云春峰) wrote:
-> > > +	device_set_wakeup_capable(nhi->dev, true);
-> > > +	device_enable_async_suspend(nhi->dev);
-> > > 
-> > > these two line can be put at the end of probe.
-> > 
-> > I meant device_enable_async_suspend() it's not stricly required and
-> > we
-> > don't do it elsewhere so I would leave it out now and then add it
-> > everywhere later.
-> 
-> I look at the PCI core code, seems it already enables async suspend for
-> every PCI device during device enumeration by default.
-> 
->  see: pci_pm_init() (drivers/pci/pci.c)
-> 
-> Unlike the PCI bus, the platform bus does not automatically enable it
-> for platform devices, but for usb devices, usually enable it because
-> the standardized tree topology with well-defined dependencies.
-> 
-> Due to we explicitly create dev-link with xHCI/PCIe controller devices,
-> it is safe to enable it, then keep the same way as thunderbolt/pci.c
-> does.
+On Nov 20, Maoyi Xie wrote:
+> Hi Lorenzo,
+>=20
+> On Thu, Nov 19, 2026 at 05:49:53PM +0100, Lorenzo Bianconi wrote:
+> > I do not think this patch is correct since we actually consume just len=
+ -
+> > MT_SKB_HEAD_LEN bytes at most, right? I guess we should add something s=
+imilar
+> > to the patch below, what do you think?
+>=20
+> Thanks for looking at this.
+>=20
+> The fragment is len - MT_SKB_HEAD_LEN bytes, yes. But
+> mt76s_build_rx_skb() first copies up to MT_SKB_HEAD_LEN bytes from buf
+> into the skb head, so a frame still needs all len bytes between buf and
+> end.
 
-Okay works for me then.
+ack, you right.
+
+>=20
+> > +     if (data_len > len && data_len - len > buf_len)
+> > +             return NULL;
+>=20
+> The caller passes buf_len =3D round_up(data_len + 4, 4), so this check
+> never triggers. With it applied, my harness still reports the same
+> reads past the buffer.
+>=20
+> Also, rx_check() runs before mt76s_build_rx_skb(). For a TXS frame,
+> mt7921_rx_check() and mt7615_rx_check() walk the records up to
+> rxd + len / 4, which a check in mt76s_build_rx_skb() cannot cover.
+>=20
+> So I think we should keep the check before rx_check(), as in this
+> patch. Frames that fit are not affected, and the loop already ends at
+> a frame that does not fit.
+
+ack, I agree. Thx for fixing it.
+
+Regards,
+Lorenzo
+
+>=20
+> Thanks,
+> Maoyi
+
+--IyzNOabBFX4ct+Jl
+Content-Type: application/pgp-signature; name=signature.asc
+
+-----BEGIN PGP SIGNATURE-----
+
+iHUEABYKAB0WIQTquNwa3Txd3rGGn7Y6cBh0uS2trAUCawAHYQAKCRA6cBh0uS2t
+rE6BAP4shk3MXabjlp0caLHfRwygk6zb5Nhlb27aRWMLHkUiCgEAnhJKQlsfCUb7
+nC8etWnjWA8G6qYx7kV1eLKJ4sptcA0=
+=ELHR
+-----END PGP SIGNATURE-----
+
+--IyzNOabBFX4ct+Jl--
 
