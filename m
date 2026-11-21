@@ -2,11 +2,11 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 74322606A320
-	for <linux-mediatek@archiver.kernel.org>; Sat, 21 Nov 2026 12:42:41 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 20FA3606A32A
+	for <linux-mediatek@archiver.kernel.org>; Sat, 21 Nov 2026 12:42:56 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=sOQduf1B;
-	dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=echgHL+0
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=isyksC27;
+	dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=b3XdX+k7
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
@@ -14,36 +14,36 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	:Cc:To:From:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=LLtVvNcvdiWE9Bm0C9C4fhNTth/wg7FRqwbs/4Sj6Dk=; b=sOQduf1BO+AJ87fy+JxD1RXyyk
-	m9ZA6dKPuiY3ymPU1OBWWgFGNG+HKr6/S4MfdH5KEHjjkXhjsUd1FLzxc2oOVsVvpxwoTPAsFZxQy
-	95fCgUQ13w7FHJZTPObTmjNyLstrJ/fv/LMLyHUqOyU4AlQmAQaFubCSfZTYDh3y/0tMBt6cD7v6L
-	eXL3Ddv0WG+eAI0n5q7r0rW3zakMhPl0Ca5v2iIsX4kiXoujs9ZjYg5Rr2kB8ulPQ0Zf9BrduIoyY
-	NavZne3qLZA6A0Jae0s7evd0YmVVu/lspfkxbm798+xO6t1DdUTL8mXnqJJiGtsRQCvlO7pq8BQVs
-	RWtAplrQ==;
+	bh=mjG+VkWrf8qqhbRhT1SH5x21Ugamo0ZOZzv95akdBEw=; b=isyksC27ZQQdWaRaTzptpg88GL
+	c5bO+QmnYQXQavgzfVMNGBT5iFpnMbaybj6tk01zxkpWKi6z0H2AV7v0Ti6qDQtK0BgytKw0PkcAH
+	JbBdpxDqY6MMfQ0bjVyp0uInDNaO+LgfcvTvLAe99A9bwIaSwnZ00N7swScjp2LT3rT1audhdu8U6
+	fqhbANfG6Dyt7z5KLvhoC8Z/QB7nxl1orTSn3JEFdVQ6AOQnmOv44zeG8vNLIIJ9m+IWCNKpJmSLl
+	bnGEc/K9DRwLGDjjbf8rTb3hLQbf3urZs3zoseGbgHuiMPDhEOAyJOAqRDTTUk3IeusUVBCH68HRL
+	Pivg/X4g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xUkQT-0000000HC2L-0jJi;
-	Sat, 21 Nov 2026 12:42:41 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1xUkQh-0000000HC8D-3U5r;
+	Sat, 21 Nov 2026 12:42:55 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xUkQH-0000000HBxs-3Cr0;
-	Sat, 21 Nov 2026 12:42:29 +0000
+	id 1xUkQJ-0000000HBz1-3K2I;
+	Sat, 21 Nov 2026 12:42:31 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 3897C605D0;
+	by tor.source.kernel.org (Postfix) with ESMTP id 0377960EE8;
+	Sat, 21 Nov 2026 12:42:31 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 83EBA1F000C0;
 	Sat, 21 Nov 2026 12:42:29 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7FFC81F000C4;
-	Sat, 21 Nov 2026 12:42:27 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1795264948;
-	bh=LLtVvNcvdiWE9Bm0C9C4fhNTth/wg7FRqwbs/4Sj6Dk=;
+	s=k20260515; t=1795264950;
+	bh=mjG+VkWrf8qqhbRhT1SH5x21Ugamo0ZOZzv95akdBEw=;
 	h=Subject:From:To:Cc:Date:In-Reply-To:References;
-	b=echgHL+0OoagPMZ9zwm/xjZ2yloMB9WT+OohPiIJP8INhpDnZJEydHCfxrUVUKR2V
-	 FqQW6sGNyudsW3Qike7vYm6BhXmZF9oYOuETY3IzAbAxqKMo/P1cAPRfdGbUpm+Iyl
-	 +P+ZBuE2xe+09QDS5NAAUG6vQo1JljJeJ/C2/p2Cl63FSRTQatNKEurCR8cmcMoKPI
-	 O4jher4tqa4P8cTMP4TJ/xUdZ8X456gXCfZbBmh0KK0AJcb9eRRRCPbi6N5+NPuZvS
-	 9ThOelBVoQqBrdqyjrKIl/4jqDNuhJ1YCPdIqIb8r/IINgA/1I9Taun7T1OS2ZYi3x
-	 RLN4jeZLprsmA==
-Subject: Re: [PATCH net-next v12 3/6] net: wwan: t9xx: Add control DMA interface
+	b=b3XdX+k7g1qeuHfzDQJ2iRYOka0gRH4z7tMVXXpWPkqQHaVgrj5LqgxEIQ1/97Okr
+	 km+kFLy/0aLmfzY0ZWlOQLjrAY26XFqIYLEb8QKkJTEONOi42uEE3BQOfaaTNPHGWl
+	 OOM35ISdapwx4EMXgrue9MxTdv55K8IkCCIDWId3kvxBW1Ts5acWFXEliUwyWvLUPc
+	 6lr3bpT9r74G99o54jliKym8RApKu4hxYmUVTjkmCdqQBtinP+bCmjzERGusjpzNJF
+	 F1H6Fn0e8Fs4Xxc1CiFdsAVEcDc7ATCALsFEB3QL3bT3PKJkrfZOx/FnIdM1MN7xDA
+	 V18GYmjwwfdXQ==
+Subject: Re: [PATCH net-next v12 4/6] net: wwan: t9xx: Add control port
 From: netdev-bot+sashiko@kernel.org
 To: jackbb_wu@compal.com
 Cc: loic.poulain@oss.qualcomm.com, ryazanov.s.a@gmail.com,
@@ -55,11 +55,11 @@ Cc: loic.poulain@oss.qualcomm.com, ryazanov.s.a@gmail.com,
  edumazet@kernel.org, linux-kernel@vger.kernel.org, netdev@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
  linux-doc@vger.kernel.org
-Date: Sat, 21 Nov 2026 12:42:27 +0000
-Message-ID: <179526494702.3135.6051033006782624225@kernel.org>
-In-Reply-To: <20261117-t9xx_driver_v1-v12-3-e181b616b820@compal.com>
-References: <20261117-t9xx_driver_v1-v12-3-e181b616b820@compal.com>
-X-sashiko-severity: Medium
+Date: Sat, 21 Nov 2026 12:42:29 +0000
+Message-ID: <179526494911.3135.1691599071652469894@kernel.org>
+In-Reply-To: <20261117-t9xx_driver_v1-v12-4-e181b616b820@compal.com>
+References: <20261117-t9xx_driver_v1-v12-4-e181b616b820@compal.com>
+X-sashiko-severity: Low
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
 X-Archived-By: <archiver.kernel.org>
@@ -81,249 +81,223 @@ X-Spam-Status: No, score=-10.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Thank you for your contribution! Sashiko AI review found 4 potential
-issue(s) to consider.
+Thank you for your contribution! Sashiko AI review found more severe
+issue(s) in other patches of this series. This mail is only an FYI, in case
+you want to address the nit picks below when you respin.
 
-Critical: 0 · High: 0 · Medium: 3 · Low: 1
+Low priority / nit picks for your consideration:
 
-If you believe none of the issues are legitimate, please reply to each
-issue of Medium severity or higher and explain why the AI is wrong.
-If any of them are legitimate and you plan to respin, please let patchwork
-know by including "pw-bot: cr" as a separate line at the end of your reply
-(one such reply per series is enough).
-
-- [Medium] In mtk_cldma_rxq_free()
-  (drivers/net/wwan/t9xx/pcie/mtk_cldma.c), the final ring-drain loop…
-- [Medium] mtk_cldma_hw_recovery() runs from mtk_cldma_start_xfer() when
-  one TX queue's UL start-address register reads 0.
-- [Medium] The driver says the CLDMA 'can lose its queue state, which
-  leaves zero addresses' (comment in mtk_cldma_drv_init()).
-- [Low] The patch adds TRB_CMD_STOP and TRB_CMD_RECOVER to the shared
-  enum mtk_trb_cmd_type in mtk_ctrl_plane.h, but nothing implements them.
+- [Low] Two comments added in this patch give conflicting meanings for
+  -EBUSY, and neither matches mtk_ch_status_check().
+- [Low] The struct mtk_port comment (drivers/net/wwan/t9xx/mtk_port.h)
+  says tx_seq and rx_seq "are reset while the channel is disabled, so…
+- [Low] mtk_port_rx_dispatch() (drivers/net/wwan/t9xx/mtk_port.c) picks
+  the target port from the channel field of the received CCCI header,…
 
 --
 
-net: wwan: t9xx: Add control DMA interface
+net: wwan: t9xx: Add control port
 
-This adds the CLDMA (Cross Layer DMA) control-plane transport for the
-t9xx WWAN driver. It covers the GPD ring handling for the TX and RX
-queues, the reset and re-arm logic for an instance, and a TRB service
-layer. Probe now attaches the transport context through the new
-mtk_pci_dev_init()/mtk_pci_dev_exit() hooks.
+This patch adds the port I/O layer and the port manager to the t9xx WWAN
+driver. The port table is built from a static config, TRBs are sent to
+CLDMA, and received data is dispatched to ports. struct trb gets a kref,
+and TX sequence numbers are stamped when a TRB is handed to CLDMA.
 
-> diff --git a/drivers/net/wwan/t9xx/pcie/mtk_cldma.c b/drivers/net/wwan/t9xx/pcie/mtk_cldma.c
+> diff --git a/drivers/net/wwan/t9xx/mtk_port.c b/drivers/net/wwan/t9xx/mtk_port.c
 > new file mode 100644
-> index 0000000000000..c0bafb39e4f5a
+> index 0000000000000..eb5ea6741ed7f
 > --- /dev/null
-> +++ b/drivers/net/wwan/t9xx/pcie/mtk_cldma.c
-> @@ -0,0 +1,1207 @@
+> +++ b/drivers/net/wwan/t9xx/mtk_port.c
+> @@ -0,0 +1,641 @@
 
 [ ... ]
 
-> +static void mtk_cldma_rx_done_work(struct work_struct *work)
+> +static int mtk_port_rx_dispatch(struct sk_buff *skb, void *priv)
 > +{
 
 [ ... ]
 
-> +	ret = mtk_cldma_check_rx_req(drv_info, rxq);
-> +	if (!ret)
-> +		goto again;
-> +
-> +	/* -ENXIO means the queue has no start address programmed, which is
-> +	 * exactly what a restart installs, so consume need_restart first.
-> +	 * Only the resume below is skipped in that case.
+> +	channel = FIELD_GET(MTK_HDR_FLD_CHN, le32_to_cpu(ccci_h->status));
+> +	/* A CLDMA instance carries the channels of one peer only (sAP or MD),
+> +	 * the peer of the port that armed this queue.
 > +	 */
-> +	mutex_lock(&drv_info->rearm_lock);
-> +	if (!atomic_read(&rxq->need_exit)) {
-> +		if (atomic_xchg(&rxq->need_restart, 0)) {
-> +			if (!mtk_cldma_rxq_restart(drv_info, rxq)) {
-> +				atomic_set(&rxq->need_restart, 1);
-> +				mutex_unlock(&drv_info->rearm_lock);
-> +				goto again;
-> +			}
-> +		} else if (ret != -ENXIO) {
-> +			mtk_cldma_resume_queue(drv_info, DIR_RX, rxq->rxqno);
-> +		}
+> +	if (MTK_PEER_ID(channel) == MTK_PEER_ID(port->info.rx_ch))
+> +		port = mtk_port_search_by_id(port_mngr, channel);
+> +	else
+> +		port = NULL;
+> +	if (unlikely(!port)) {
+> +		dev_warn_ratelimited(port_mngr->ctrl_blk->mdev->dev,
+> +				     "Failed to find port by channel:%d\n", channel);
+> +		goto drop_data;
 > +	}
-> +	mutex_unlock(&drv_info->rearm_lock);
 > +
-> +	if (ret == -ENXIO)
-> +		goto out;
-
-[Severity: Medium]
-What brings this RX queue back when mtk_cldma_check_rx_req() returns
--ENXIO and need_restart is clear?
-
-mtk_cldma_check_rx_req() treats a zero SO_CUR_ADDR as lost state:
-
-    curr_addr = mtk_cldma_get_rx_curr_addr(drv_info, rxq->rxqno);
-    if (unlikely(!curr_addr))
-        return -ENXIO;
-
-The comment in mtk_cldma_drv_init() also says the device "can lose its
-queue state, which leaves zero addresses".
-
-In that case this worker skips the resume and goes to out. That path
-unmasks XFER_DONE and returns. It does not set need_restart, restart
-the queue or schedule any recovery.
-
-An RX engine with no address should not raise another XFER_DONE, so
-nothing reruns this worker. The only lost-state recovery is in the TX
-submit path:
-
-    mtk_cldma_start_xfer()
-        if (unlikely(!val))
-            mtk_cldma_hw_recovery()
-
-Could RX on this CLDMA instance stay stuck until the host happens to
-submit a TX on the same instance? On CLDMA0 (the SAP control channel),
-host TX may be rare after the handshake. Unsolicited device-to-host
-control messages could then sit there indefinitely.
-
-This depends on SO_CUR_ADDR reading 0 after the state is lost, which
-the driver's own comments say can happen.
-
-[ ... ]
-
-> +static void mtk_cldma_rxq_free(struct cldma_drv_info *drv_info, u32 rxqno)
-> +{
-
-[ ... ]
-
-> +	/* free rx req resource */
-> +	for (i = 0; i < rxq->nr_gpds; i++) {
-> +		req = rxq->req_pool + rxq->free_idx;
-> +		if (!(req->gpd->rx_gpd.gpd_flags & CLDMA_GPD_FLAG_HWO) &&
-> +		    le16_to_cpu(req->gpd->rx_gpd.data_recv_len)) {
-> +			if (!mtk_cldma_rx_skb_adjust(mdev, req)) {
-> +				rxq->rx_done(req->skb, rxq->arg);
-> +				req->skb = NULL;
-> +			}
-> +		}
-
-[Severity: Medium]
-Can req->skb be NULL when this loop reaches mtk_cldma_rx_skb_adjust()?
-
-In mtk_cldma_rx_done_work(), if both the reload and the recycle
-dma_map_single() fail, the slot is left empty:
-
-    dev_kfree_skb_any(rx_skb);
-    req->skb = NULL;
-    req->data_dma_addr = 0;
-    goto out_retry;
-
-The leading refill for an empty slot (the !req->skb branch) can also
-fail and jump to out_retry. The cancel_work_sync() earlier in
-mtk_cldma_rxq_free() can then cancel the requeued retry before the
-slot is refilled.
-
-mtk_cldma_rx_skb_adjust() dereferences req->skb unconditionally:
-
-    req->skb->len = 0;
-    skb_reset_tail_pointer(req->skb);
-    skb_put(req->skb, recv_len);
-
-mtk_cldma_rx_skb_adjust() already zeroed data_recv_len for that slot.
-To get here, the device would have to write a non-zero data_recv_len
-into a GPD with HWO clear, which it does not own. The driver already
-treats data_recv_len as device-controlled and clamps it against mtu.
-
-If that happens, would closing the channel oops on a NULL skb? Would a
-req->skb check here, like the one at the top of the loop in
-mtk_cldma_rx_done_work(), be enough?
-
-[ ... ]
-
-> +/* The device reported a zero TX start address: it lost its queue state. */
-> +static int mtk_cldma_hw_recovery(struct cldma_drv_info *drv_info, u32 qno)
-> +{
-> +	u64 val;
+> +	mtk_port_check_rx_seq(port, ccci_h);
+> +	port->rx_seq = FIELD_GET(MTK_HDR_FLD_SEQ, le32_to_cpu(ccci_h->status));
 > +
-> +	dev_err(drv_info->mdev->dev,
-> +		"CLDMA%d lost its queue state, re-initializing\n",
-> +		drv_info->hw_id);
-> +
-> +	mtk_cldma_rearm_queues(drv_info);
+> +	ret = mtk_port_get_ops(port->info.type)->recv(port, skb);
 
-[Severity: Medium]
-Is it safe to re-arm the whole instance here without a stop or a
-mtk_cldma_drv_reset() first?
+[Severity: Low]
+Can two RX workers update the same port->rx_seq at the same time here?
 
-mtk_cldma_txq_free() and mtk_cldma_rxq_free() both reset the IP before
-they call mtk_cldma_rearm_queues(). Here, the only evidence is that
-one TX queue's UL start address read back as zero.
+The target port comes from the channel in the CCCI header. The only
+filter is the peer ID. The queue that delivered the packet (the port
+passed in as priv, i.e. rxq->arg) is not used for the lookup.
 
-mtk_cldma_rearm_queues() then does three things:
+Each RX queue has its own rx_done_work. mtk_cldma_dev_init() creates
+drv_info->wq like this:
 
-  - mtk_cldma_drv_init() read-modify-writes UL_CFG and SO_CFG (the GPD
-    format bits) and other IP-global registers.
+    flag = WQ_UNBOUND | WQ_MEM_RECLAIM | WQ_HIGHPRI;
+    drv_info->wq = alloc_workqueue("cldma%d_workq_%s", flag, 0, hw_id, mdev->dev_str);
 
-  - On every published TX queue with tx_started set, it reprograms the
-    start address and issues UL_START.
+So work items for different RX queues of the same CLDMA are not ordered.
+Later in the series CLDMA1 serves RXQ(0) for MDCTRL, RXQ(2) for MBIM and
+RXQ(5) for AT.
 
-  - On every published RX queue, it sets need_restart, so
-    mtk_cldma_rx_done_work() later reprograms SO_START_ADDR and issues
-    SO_START.
+Suppose the device puts a packet whose header names channel B on queue A's
+ring. Queue A's worker then runs mtk_port_check_rx_seq(), does the plain
+store to port B's rx_seq, and calls port B's ->recv(). Queue B's worker
+may be doing the same thing at that moment.
 
-What if a zero read on one queue does not mean the whole instance was
-reset? Sibling TX and RX engines could still be running when they get
-these CFG writes and START commands.
+That seems to conflict with the comment in struct mtk_port:
 
-On TX, a START at the GPD currently being sent could resend or cut
-that control message. On RX, a restart could lose or corrupt the frame
-being written.
+    rx_seq only from the rx_done
+    callback of the one queue serving this channel.
 
-If the hardware only reads zero after a full IP reset, the other
-engines are already idle and this does not apply. For comparison, the
-t7xx driver re-initializes in a similar way without a stop, but only
-reprograms the affected queue.
+Should dispatch reject packets whose channel does not belong to the
+delivering queue? Or should rx_seq be protected some other way?
 
 [ ... ]
 
-> diff --git a/drivers/net/wwan/t9xx/pcie/mtk_trans_ctrl.c b/drivers/net/wwan/t9xx/pcie/mtk_trans_ctrl.c
-> new file mode 100644
-> index 0000000000000..3650878128a27
-> --- /dev/null
-> +++ b/drivers/net/wwan/t9xx/pcie/mtk_trans_ctrl.c
-> @@ -0,0 +1,614 @@
-
-[ ... ]
-
-> +int mtk_pcie_hif_submit_skb(struct mtk_md_dev *mdev, struct sk_buff *skb, bool force_send)
+> +int mtk_port_ch_enable(struct mtk_port *port)
 > +{
-> +	struct mtk_ctrl_blk *ctrl_blk = mdev->ctrl_blk;
-> +	struct mtk_ctrl_trans *trans;
-> +	struct queue_info *que;
+> +	struct mtk_port_mngr *port_mngr = port->port_mngr;
+> +	struct trb_open_priv *trb_open_priv;
+> +	struct sk_buff *skb;
 > +	struct trb *trb;
 > +	int ret;
 > +
-> +	trans = ctrl_blk->ctrl_hw_priv;
-> +	trb = (struct trb *)skb->cb;
-> +
-> +	if (trb->cmd == TRB_CMD_STOP || trb->cmd == TRB_CMD_RECOVER) {
-> +		trb->trb_complete(skb);
-> +		return 0;
-> +	}
+> +	/* The modem restarts its sequence numbering with the channel, and
+> +	 * the first packet after it is not checked.
+> +	 */
+> +	port->tx_seq = 0;
+> +	port->rx_seq = MTK_INVALID_RX_SEQ;
 
 [Severity: Low]
-TRB_CMD_STOP and TRB_CMD_RECOVER are added to enum mtk_trb_cmd_type in
-mtk_ctrl_plane.h, but nothing implements them. The commit message does
-not mention them either.
+Is the struct mtk_port comment right about when these counters are reset?
 
-Here they complete immediately and never set trb->status. They also
-skip the trans->available check and submit_lock.
-mtk_cldma_trb_process() rejects them in any case:
+    Both are reset
+    while the channel is disabled, so neither needs a lock.
 
-    if (!(trb->cmd > TRB_CMD_MIN && trb->cmd < TRB_CMD_STOP))
-        return -EINVAL;
+The reset happens at the start of mtk_port_ch_enable(), before the ENABLE
+trb is submitted. The channel is not always disabled at that point.
 
-A caller trying to stop or recover a queue would get a successful
-completion, with whatever status was left in skb->cb, while the queue
-keeps running.
+The ENABLE can complete with -EBUSY in two places:
 
-No caller in the series issues these commands yet. Could they be
-dropped, or rejected with something like -EOPNOTSUPP until they are
-implemented?
+- mtk_ch_status_check(), when usr_cnt is already >= 1
+- mtk_cldma_open(), when the queues already exist
+
+In either case the RX queue is already armed with rxq->arg == port.
+mtk_port_rx_dispatch() may be running this store at the same time:
+
+    port->rx_seq = FIELD_GET(MTK_HDR_FLD_SEQ, le32_to_cpu(ccci_h->status));
+
+There is also a second case. An earlier ENABLE that timed out may still be
+queued, along with its compensating DISABLE. That pair can arm the queue
+for a short time while a new ->enable() resets the counters.
+
+These are plain unsigned short accesses with no READ_ONCE() or
+WRITE_ONCE(). A late store from RX dispatch could undo the reset. The
+first packet of the new session would then be checked against a stale
+rx_seq and log a spurious "seq num out-of-order" warning.
+
+Likewise, a TX left in flight from an earlier session could be stamped
+with a tx_seq while the reset is happening.
+
+[ ... ]
+
+> diff --git a/drivers/net/wwan/t9xx/mtk_port_io.c b/drivers/net/wwan/t9xx/mtk_port_io.c
+> new file mode 100644
+> index 0000000000000..48fdadf96f00f
+> --- /dev/null
+> +++ b/drivers/net/wwan/t9xx/mtk_port_io.c
+> @@ -0,0 +1,236 @@
+
+[ ... ]
+
+> +static void mtk_port_internal_enable(struct mtk_port *port)
+> +{
+> +	int ret;
+> +
+> +	if (test_bit(PORT_S_ENABLE, &port->status))
+> +		return;
+> +
+> +	ret = mtk_port_ch_enable(port);
+> +	if (ret && ret != -EBUSY) {
+
+[ ... ]
+
+> +	set_bit(PORT_S_WR, &port->status);
+> +	set_bit(PORT_S_ENABLE, &port->status);
+> +}
+> +
+> +static void mtk_port_internal_disable(struct mtk_port *port)
+> +{
+
+[ ... ]
+
+> +	ret = mtk_port_ch_disable(port);
+> +	/* -EBUSY is reported too: every queue has a single port, so a refused
+> +	 * DISABLE means its user count was already zero.
+> +	 */
+
+[Severity: Low]
+Does this comment match what mtk_ch_status_check() does? The DISABLE path
+there is:
+
+	case TRB_CMD_DISABLE:
+		if (trans->usr_cnt[que->hif_id][que->txqno] > 0) {
+			trans->usr_cnt[que->hif_id][que->txqno]--;
+			if (!trans->usr_cnt[que->hif_id][que->txqno])
+				break;
+		}
+		trb->status = -EBUSY;
+
+So -EBUSY comes back in two cases: when the count was zero, and when the
+count was decremented but is still above zero.
+
+mtk_port_ch_enable() has its own comment about -EBUSY:
+
+    /* -EBUSY means another user already owns the queue, and the
+     * geometry it reports is that queue's - also valid here.
+     */
+
+This assumes a queue can have more than one owner, which conflicts with
+the "single port" claim above. Following that comment,
+mtk_port_internal_enable() treats an ENABLE that returns -EBUSY (usr_cnt
+1->2) as success and sets PORT_S_WR and PORT_S_ENABLE.
+
+The later DISABLE then takes usr_cnt from 2 to 1 and gets -EBUSY.
+mtk_cldma_close() never runs, and the RX queue stays armed with rxq->arg
+pointing at the port.
+
+Even with one port per queue, a leftover count can come from either of
+two failures:
+
+- An ENABLE times out and the compensating mtk_port_ch_disable() fails in
+  __dev_alloc_skb(). The ENABLE is still queued and later raises usr_cnt
+  to 1.
+- mtk_port_internal_disable() clears PORT_S_ENABLE, but the DISABLE skb
+  cannot be allocated, so usr_cnt stays at 1.
+
+If one owner per queue is meant to be an invariant, should an ENABLE that
+returns -EBUSY be treated as success? If not, should this comment and the
+one in mtk_port_ch_enable() be reconciled?
+
+> +	if (ret)
+> +		dev_warn(port->port_mngr->ctrl_blk->mdev->dev,
+> +			 "Failed to disable channel for port(%s): %d\n",
+> +			 port->info.name, ret);
+> +}
 
 -- 
 Sashiko AI review · https://netdev-ai.bots.linux.dev/sashiko/#/patchset/20261117-t9xx_driver_v1-v12-0-e181b616b820%40compal.com
