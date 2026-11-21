@@ -2,46 +2,46 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id E7441606A320
-	for <linux-mediatek@archiver.kernel.org>; Sat, 21 Nov 2026 23:27:54 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 1E36B606A320
+	for <linux-mediatek@archiver.kernel.org>; Sat, 21 Nov 2026 23:28:07 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=pgfXc6XW;
-	dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=g2eFaUs4
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=guDefusT;
+	dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=VpBjouCj
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Unsubscribe-Post:
-	List-Owner; bh=YFsCL2i1V6NyqpaP2q7D3KQnFi8V3ctySjIQMW+KeOM=; b=pgfXc6XW/mMHP6
-	fx16QUoYz5tduHiaCwwbFLEvvDmglwRCJ+JnLlzlGUbuVRiZJsYhZZ9Eis2MW7u5NjIix3NDUgPj3
-	ICA1mJXaM/VUxCYgJsRv+90MiONjCrCO9WcvnUZitUWz+Wn/SqUjH2sjNR+wyP9WcsCWbW4pxmSeK
-	7FLbH7UgLGJGKmb2UF4BZkhlhz6MiQmDmHxk6fPZ53syarUfkGfBB1ylGubi24U2HSdUyNl7ZEBcL
-	KdGgUZIwd5mUOYaNrsXIUFvwB18uqzsicfNbhmlH0/7CThAgBsREKw1Pq59pQkiPfAAkD04KgJOXI
-	mkA17cakd+0e0KdaYKCA==;
+	List-Owner; bh=uNHo+Sfo4SO6w4MKR8YizO7/Dz3BQ3/Jvkiq3N5ai4Y=; b=guDefusTRN3J3L
+	NMohSeUA+ldaAgjo75osWYemG3R7i2hZE9RoWhIJXOornssw3QspcXYfLPbX/AUR+iiFtmoYN8kTx
+	Axqzk3V6SM3kuUBGR68z1sAUBxcg4mowsU9Mu6hUbn4hC1m519g90MqHsEBjyMllFET95OwytCNb4
+	wclJ1C6f4yIT8xKg/CNIecUPUoD46NJdkvS9BNunKVpKhh7N9bXbsjTVlHXpRgkyVBydrpZY8X8ae
+	ehlB2PUbAzwywV24Pd6uXOqve/Kck1StddKfEGVJZnXWKvmrVdzz+I+16dt5YBQ3SVM+LLSUNTT7b
+	5us/5H0KlxZdWCWLvv8w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xUuUs-00000000UDS-2mRd;
-	Sat, 21 Nov 2026 23:27:54 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1xUuV4-00000000UJa-3Iny;
+	Sat, 21 Nov 2026 23:28:06 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xUuTx-00000000Tlg-17rn;
-	Sat, 21 Nov 2026 23:26:57 +0000
+	id 1xUuTy-00000000TmM-2MDK;
+	Sat, 21 Nov 2026 23:26:58 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id B2E6E61DFF;
-	Sat, 21 Nov 2026 23:26:56 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 992C81F0089F;
-	Sat, 21 Nov 2026 23:26:55 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 5257B45971;
+	Sat, 21 Nov 2026 23:26:58 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 638161F000E6;
+	Sat, 21 Nov 2026 23:26:57 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1795303616;
-	bh=YFsCL2i1V6NyqpaP2q7D3KQnFi8V3ctySjIQMW+KeOM=;
+	s=k20260515; t=1795303618;
+	bh=uNHo+Sfo4SO6w4MKR8YizO7/Dz3BQ3/Jvkiq3N5ai4Y=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References;
-	b=g2eFaUs4bdYjMV1wgATf2eobd8R8mA2xt3gbCTtYNYWLp/n29YUvLmG1fEiBnt2Qh
-	 eZNYnTVHe5qQ/e8RyiP7ebE7f5VZh+4DPu8oJU1CPanyArLb4ow99LSm6qlQFN7gyj
-	 l+/WmLMpL4RuYvRt0e+NF+SvWenoLuk/iJ/9hBU8dIf4ryRpH/Hjwv+V8IB2UXO+2b
-	 2xh8Y11P4I/1VBEJSjNaMNqGMGxz2qoet7QdDQ/1qDJYdcxFlThq8Mumau4nrEOIsa
-	 gVzNcbTKK/zSX8ffyz7yGBftoo3sM5o0mBzERa1qu4ASJlkFAKD+N1zGlx5mNxvapT
-	 3LOxSYnUb2NTw==
+	b=VpBjouCjqQQeI8P4RhYDWkheQLduY2KtRgjsuneT/skyQuzN+Cm9NkbngYx/vyJiM
+	 Dbef+S20RA8XkAFHAsU9ksaA8j/sCG5zW85U1NFq0MWh8X97oL1TsaCv1iFTt+RQVo
+	 lsPCPanYr0ZSGw8muAC/4zCt20iLBmOl1TGD/vJC+p05bYANijE+GKcgmCUxPXetrS
+	 xsjcjlkhy44JYXELUhjjES+3aWYs0MdolvWpAwqxSTl9oXmqBngsHCqd8iBT2cb9BC
+	 dq7nXqV95PUR8YrBkhhv5rxUTCg7Yk94OLRfVMYqyE/V9qbq0LTj383Rl1/CDZYzL6
+	 QhjMB35gwuJDA==
 From: Jakub Kicinski <kuba@kernel.org>
 To: ansuelsmth@gmail.com
 Cc: Jakub Kicinski <kuba@kernel.org>,
@@ -74,12 +74,12 @@ Cc: Jakub Kicinski <kuba@kernel.org>,
 	linux-mediatek@lists.infradead.org,
 	llvm@lists.linux.dev,
 	zhengping.zhang@airoha.com
-Subject: Re: [PATCH net-next v22 13/15] dt-bindings: net: pcs: Document support for Airoha Ethernet PCS
-Date: Sat, 21 Nov 2026 15:26:54 -0800
-Message-ID: <20261121232654.1365615-1-kuba@kernel.org>
+Subject: Re: [PATCH net-next v22 15/15] net: airoha: add phylink support
+Date: Sat, 21 Nov 2026 15:26:56 -0800
+Message-ID: <20261121232656.1365664-1-kuba@kernel.org>
 X-Mailer: git-send-email 2.56.1
-In-Reply-To: <20261117123956.11981-14-ansuelsmth@gmail.com>
-References: <20261117123956.11981-14-ansuelsmth@gmail.com>
+In-Reply-To: <20261117123956.11981-16-ansuelsmth@gmail.com>
+References: <20261117123956.11981-16-ansuelsmth@gmail.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
@@ -104,194 +104,251 @@ X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 This is an AI-generated review of your patch. The human sending this
 email has considered the AI review valid, or at least plausible.
 ---
-dt-bindings: net: pcs: Document support for Airoha Ethernet PCS
+net: airoha: add phylink support
 
-This adds a DT binding for the Airoha AN7581 PCS blocks on the Ethernet,
-PON, PCIe and USB serdes ports. It follows the new PCS provider model,
-where consumers reference the PCS through #pcs-cells.
+This adds phylink support for each GDM port. GDM1 is limited to the
+internal interface mode, and GDM2/3/4 use a PCS referenced through the
+pcs-handle property. The ethtool link_ksettings ops now go through
+phylink, and GDM4 TX/RX fragment sizes are set on link up.
 
-> diff --git a/Documentation/devicetree/bindings/net/pcs/airoha,pcs.yaml b/Documentation/devicetree/bindings/net/pcs/airoha,pcs.yaml
-> new file mode 100644
-> index 0000000000000..9c1d116c1b016
-> --- /dev/null
-> +++ b/Documentation/devicetree/bindings/net/pcs/airoha,pcs.yaml
+> diff --git a/drivers/net/ethernet/airoha/airoha_eth.c b/drivers/net/ethernet/airoha/airoha_eth.c
+> index 044ad0302ef35..e41dfad58b258 100644
+> --- a/drivers/net/ethernet/airoha/airoha_eth.c
+> +++ b/drivers/net/ethernet/airoha/airoha_eth.c
 
 [ ... ]
 
-> +description:
-> +  Airoha AN7581 SoC expose multiple Physical Coding Sublayer (PCS) for
-> +  the various Serdes port supporting different Media Independent Interface
-> +  (10BASE-R, USXGMII, 2500BASE-X, 1000BASE-X, SGMII).
+> @@ -3752,6 +3790,155 @@ bool airoha_is_valid_gdm_dev(struct airoha_eth *eth,
+>  	return false;
+>  }
+>  
+> +/* Nothing to do in MAC, everything is handled in PCS */
+> +static void airoha_mac_config(struct phylink_config *config, unsigned int mode,
+> +			      const struct phylink_link_state *state)
+> +{
+> +}
+> +
+> +static void airoha_mac_link_up(struct phylink_config *config, struct phy_device *phy,
+> +			       unsigned int mode, phy_interface_t interface,
+> +			       int speed, int duplex, bool tx_pause, bool rx_pause)
+> +{
+> +	struct airoha_gdm_dev *dev = container_of(config, struct airoha_gdm_dev,
+> +						  phylink_config);
+> +	struct airoha_gdm_port *port = dev->port;
+> +	struct airoha_eth *eth = dev->eth;
+> +	u32 frag_size_tx, frag_size_rx;
+> +
+> +	/* TX/RX frag is configured only for GDM4 */
+> +	if (port->id != AIROHA_GDM4_IDX)
+> +		return;
+
+[Severity: Medium]
+Should tx_pause and rx_pause be applied somewhere in airoha_mac_link_up()?
+
+airoha_setup_phylink() advertises MAC_ASYM_PAUSE | MAC_SYM_PAUSE on every
+GDM port. However, airoha_mac_link_up() returns right away for GDM1-3 and
+only writes fragment sizes for GDM4.
+
+Nothing in drivers/net/ethernet/airoha uses tx_pause, rx_pause or
+GDM_INGRESS_FC_EN_MASK.
+
+The only flow control setup on this path is in airoha_pcs_config():
+
+drivers/net/pcs/airoha/pcs-airoha-common.c:airoha_pcs_config() {
+    ...
+	/* Configure Flow Control on XFI */
+	regmap_update_bits(maps->pcs_mac, AIROHA_PCS_XFI_MAC_XFI_GIB_CFG,
+			   AIROHA_PCS_XFI_TX_FC_EN | AIROHA_PCS_XFI_RX_FC_EN,
+			   permit_pause_to_mac ?
+				AIROHA_PCS_XFI_TX_FC_EN | AIROHA_PCS_XFI_RX_FC_EN :
+				0);
+    ...
+}
+
+permit_pause_to_mac reflects whether pause autoneg is enabled. It is not
+the result negotiated with the link partner.
+
+With the default MLO_PAUSE_AN, XFI TX/RX flow control ends up enabled even
+when the partner does not support pause. With pause forced on and autoneg
+off, it ends up disabled while phylink reports pause as on.
+
+Can the hardware flow control state differ from what phylink resolved and
+reports?
+
+Also, only get/set_link_ksettings were moved to phylink in
+airoha_ethtool_ops. These are not wired up:
+
+  get/set_pauseparam (phylink_ethtool_get/set_pauseparam())
+  nway_reset (phylink_ethtool_nway_reset())
+  ndo_eth_ioctl (phylink_mii_ioctl())
+
+Is that intended, given the commit message says "now that we fully support
+phylink"?
+
+[ ... ]
+
+> +static int airoha_setup_phylink(struct net_device *netdev)
+> +{
+> +	struct airoha_gdm_dev *dev = netdev_priv(netdev);
+> +	struct device_node *np = netdev->dev.of_node;
+> +	struct airoha_gdm_port *port = dev->port;
+> +	struct phylink_config *config;
+> +	phy_interface_t phy_mode;
+> +	struct phylink *phylink;
+> +	int err;
+> +
+> +	err = of_get_phy_mode(np, &phy_mode);
+> +	if (err) {
+> +		dev_err(&netdev->dev, "incorrect phy-mode\n");
+> +		return err;
+> +	}
+
+[Severity: Medium]
+Does this stop DTs that follow the current airoha,en7581-eth.yaml binding
+from probing?
+
+The binding's ^ethernet@[1-4]$ and ^ethernet@[0-5]$ patternProperties
+only require reg and compatible. The binding example has no phy-mode,
+fixed-link or pcs-handle. That example is ethernet@1, plus ethernet@4
+with eth-port children @0 and @1.
+
+With this patch, a missing phy-mode on any enabled GDM or eth-port node
+propagates up:
+
+airoha_probe()
+  airoha_alloc_gdm_port()
+    airoha_alloc_gdm_device()
+      return airoha_setup_phylink(netdev);
+        of_get_phy_mode() fails
+
+airoha_probe() then runs the error_napi_stop teardown, so every port is
+lost, GDM1 included. Before this patch the driver never called
+of_get_phy_mode(), and such DTs probed fine.
+
+A similar problem shows up in airoha_dev_open():
+
+	err = phylink_of_phy_connect(dev->phylink, netdev->dev.of_node, 0);
+	if (err) {
+		netdev_err(netdev, "could not attach PHY: %d\n", err);
+		return err;
+	}
+
+Suppose a node has phy-mode but no phy-handle, fixed-link, SFP or in-band
+managed mode. Phylink is then in MLO_AN_PHY, and
+phylink_fwnode_phy_connect() returns -ENODEV. Won't ndo_open now fail
+where it used to succeed?
+
+The commit message implies that GDM2/3/4 need pcs-handle. The code means
+GDM1 needs phy-mode = "internal" plus fixed-link, because only
+PHY_INTERFACE_MODE_INTERNAL is in supported_interfaces. The ethernet
+binding describes neither. The series updates the PCS binding but not
+this one.
+
+Should airoha,en7581-eth.yaml be updated too? Alternatively, should the
+driver fall back (for example to internal on GDM1) when phy-mode is
+absent?
+
+The in-tree en7581.dtsi gdm1 node already has phy-mode = "internal" and
+fixed-link, so in-tree boards still work.
+
+> +
+> +	config = &dev->phylink_config;
+> +	config->dev = &netdev->dev;
+> +	config->type = PHYLINK_NETDEV;
+
+[ ... ]
+
+> +	} else {
+> +		config->mac_capabilities = MAC_ASYM_PAUSE | MAC_SYM_PAUSE |
+> +					   MAC_10 | MAC_100 | MAC_1000 |
+> +					   MAC_2500FD | MAC_5000FD | MAC_10000FD;
+
+[Severity: Medium]
+MAC_10, MAC_100 and MAC_1000 include MAC_10HD, MAC_100HD and MAC_1000HD.
+That means phylink will advertise and accept half duplex. Is half duplex
+actually supported on these ports?
+
+Nothing seems to configure duplex:
+
+  airoha_mac_link_up() ignores its duplex argument
+  airoha_pcs_link_up() never reads duplex
+  the Airoha PCS get_state helpers hard code DUPLEX_FULL
+  airoha_pcs_ops has no .pcs_validate to strip half duplex modes
+
+So a PHY that links half duplex with a half-duplex-only partner would
+leave the GDM/PCS running full duplex.
+
+Separately, USXGMII is in supported_interfaces and MAC_10 is advertised.
+In the out-of-band branch of airoha_pcs_link_up(), the USXGMII/10GBASE-R
+speed switch has no SPEED_10 case:
+
+drivers/net/pcs/airoha/pcs-airoha-common.c:airoha_pcs_link_up() {
+    ...
+		if (interface == PHY_INTERFACE_MODE_USXGMII ||
+		    interface == PHY_INTERFACE_MODE_10GBASER) {
+			...
+			case SPEED_100:
+				rate_adapt = AIROHA_PCS_HSGMII_RATE_ADPT_FORCE_RATE_ADAPT_MODE_100;
+				mode = AIROHA_PCS_USXGMII_MODE_100;
+				break;
+			default:
+				/* Not supported */
+				return;
+			}
+    ...
+	if (data->link_up)
+		data->link_up(priv, port->index);
+
+	/* BPI BMI enable */
+	regmap_clear_bits(maps->pcs_mac, AIROHA_PCS_XFI_MAC_XFI_GIB_CFG,
+			  AIROHA_PCS_XFI_RXMPI_STOP |
+			  AIROHA_PCS_XFI_RXMBI_STOP |
+			  AIROHA_PCS_XFI_TXMPI_STOP |
+			  AIROHA_PCS_XFI_TXMBI_STOP);
+}
+
+When a USXGMII PHY resolves to 10M, this returns before data->link_up().
+It also returns before the MPI/MBI STOP bits set by pre_config/link_down
+are cleared.
+
+Would phylink then report carrier up while the XFI datapath stays stopped
+and the USXGMII mode register keeps its old speed?
+
+> +
+> +		config->num_possible_pcs = fwnode_phylink_pcs_count(dev_fwnode(config->dev));
+> +		config->fill_available_pcs = airoha_fill_available_pcs;
 
 [Severity: Low]
-This isn't a bug, but should 10BASE-R be 10GBASE-R here? The commit
-message has the same typo:
+The commit message says:
 
-  (10BASE-R, USXGMII, 2500BASE-X, 1000BASE-X, SGMII).
+    These needs to be defined in the GDM port node using the pcs-handle
+    property.
 
-The driver later in the series sets PHY_INTERFACE_MODE_10GBASER in
-airoha_pcs_probe().
+Is that accurate? fwnode_phylink_pcs_count() returns 0 when there is no
+pcs-handle, and phylink_fill_available_pcs() then returns early:
 
-[ ... ]
+	if (!config->num_possible_pcs)
+		return 0;
 
-> +  airoha,scu:
-> +    $ref: /schemas/types.yaml#/definitions/phandle
-> +    description: phandle to the SCU node required to configure
-> +      the serdes line to the correct interface mode.
+phylink_create() then succeeds with SGMII, 1000BASE-X, 2500BASE-X,
+10GBASE-R and USXGMII in supported_interfaces but no PCS at all. There is
+no error or warning.
 
-[Severity: Medium]
-Is a bare SCU phandle the right interface for selecting the serdes mode?
+Can the port then report carrier up from the PHY while the SerDes is
+never configured? Should a missing pcs-handle on GDM2/3/4 be rejected
+here?
 
-The SCU already offers this as a generic PHY provider. In
-clock/airoha,en7523-scu.yaml:
+Also, config->dev is &netdev->dev. When sub-ports exist, its of_node is
+the airoha,eth-port child. So pcs-handle is read from the child node, not
+from "the GDM port node".
 
-  '#phy-cells':
-    description:
-      The first cell indicates the serdes phy number, see [2] for the
-      available serdes port.
-    const: 1
+The commit message also leaves out the new GDM4 code in
+airoha_mac_link_up():
 
-In drivers/clk/clk-en7523.c, en7581_serdes_phy_set_mode() handles
-PHY_MODE_ETHERNET. It writes the REG_NP_SCU_SSTR XSI0/XSI1 select bits
-while holding priv->lock.
+  it writes speed-dependent TX/RX fragment sizes into
+  REG_FE_GDM4_TMBI_FRAG and REG_FE_GDM4_RMBI_FRAG
+  it picks the SGMII1 or SGMII0 fields based on dev->nbq == 1
+  it serializes the writes with the new port->link_lock mutex
 
-The PCS driver later in the series writes the same bits through this
-phandle, using its own regmap, in airoha_pcs_setup_scu_pcie():
-
-    regmap_update_bits(priv->scu, AIROHA_SCU_SSTR,
-                       AIROHA_SCU_PCIE_XSI0_SEL,
-                       xsi_sel);
-
-Doesn't that leave two unsynchronized read-modify-write paths on the
-same SCU register?
-
-Probing looks like a problem too. airoha_pcs_probe() does:
-
-    priv->scu = syscon_regmap_lookup_by_phandle(dev->of_node,
-                                                "airoha,scu");
-
-The scuclk node in the example has only the compatible
-"airoha,en7581-scu". It isn't a "syscon", and nothing registers it with
-of_syscon_register_regmap().
-
-Won't the lookup return -EPROBE_DEFER on every attempt? If so, the
-eth/pon/pcie PCS never probes when the DT follows the example.
-
-The phandle also has no cells. That means the dual-lane pcie node can't
-say which SCU serdes port each PCS instance drives.
-
-Could the binding use something like this instead of airoha,scu plus
-phys: false?
-
-    phys = <&scuclk AIROHA_SCU_SERDES_PCIE1>,
-           <&scuclk AIROHA_SCU_SERDES_PCIE2>;
-
-The usb variant already uses phys.
-
-[ ... ]
-
-> +  - if:
-> +      properties:
-> +        compatible:
-> +          contains:
-> +            const: airoha,an7581-pcs-pcie
-> +
-> +    then:
-> +      properties:
-> +        reg:
-
-[ ... ]
-
-> +        phys: false
-> +
-> +        "#pcs-cells":
-> +          const: 1
-
-[Severity: Medium]
-With #pcs-cells set to 1, a MAC that uses one of the PCIe serdes PCS
-instances has to write pcs-handle = <&pcs N>. Will the consumer schema
-accept that?
-
-ethernet-controller.yaml still has:
-
-  pcs-handle:
-    $ref: /schemas/types.yaml#/definitions/phandle-array
-    items:
-      maxItems: 1
-
-That allows only the phandle in each entry. airoha,en7581-eth.yaml
-references ethernet-controller.yaml# for its ethernet@N subnodes. A GMAC
-node with pcs-handle = <&pcs_pcie 0> would then fail dtbs_check.
-
-At runtime, fwnode_parse_pcsspec() in drivers/net/pcs/pcs.c parses the
-"#pcs-cells" argument. airoha_pcs_xlate() rejects a PCIe specifier when
-nargs != 1.
-
-No patch in the series changes ethernet-controller.yaml. Its pcs-handle
-description also still refers to a PCS PHY device on an MDIO bus.
-
-[ ... ]
-
-> +      required:
-> +        - phys
-> +
-> +additionalProperties: false
-
-[Severity: Medium]
-Should resets and reset-names be documented here? The driver later in
-the series requests them in airoha_pcs_probe():
-
-    priv->rsts[0].id = "mac";
-    priv->rsts[1].id = "phy";
-    ret = devm_reset_control_bulk_get_optional_exclusive(dev,
-                                    ARRAY_SIZE(priv->rsts),
-                                    priv->rsts);
-
-airoha_pcs_setup_scu() then asserts and deasserts these resets on every
-interface setup.
-
-The SCU reset controller has matching lines in
-include/dt-bindings/reset/airoha,en7581-reset.h. Examples are
-EN7581_XSI_PHY_RST, EN7581_XPON_PHY_RST and EN7581_XPON_MAC_RST.
-
-Because of additionalProperties: false, a DT that provides these resets
-fails validation. A DT that passes validation has no resets, so the reset
-sequence in airoha_pcs_setup_scu() does nothing.
-
-Wouldn't the PCS then stay in whatever state the bootloader or the
-previous interface mode left it in?
-
-[ ... ]
-
-> +    pcs@1fa04000 {
-> +      compatible = "airoha,an7581-pcs-pcie";
-> +      reg = <0x1fa04000 0x1000>,
-
-[ ... ]
-
-> +            <0x1fa5a000 0x1000>,
-> +            <0x1fa5b000 0x1000>,
-> +            <0x1fa5c000 0x1000>;
-
-[Severity: Medium]
-Do these ranges overlap the existing PCIe PHY? In
-arch/arm64/boot/dts/airoha/en7581.dtsi, the pciephy: phy@1fa5a000 node
-is enabled and claims the same blocks:
-
-    reg = <0x0 0x1fa5a000 0x0 0xfff>,
-          <0x0 0x1fa5b000 0x0 0xfff>,
-          <0x0 0x1fa5c000 0x0 0xfff>, ...
-    reg-names = "csr-2l", "pma0", "pma1", ...
-
-airoha_pcie_phy_probe() and airoha_pcs_init_named_regmap() both map these
-ranges with devm_platform_ioremap_resource_byname(), which requests the
-memory region.
-
-Won't the driver that probes second fail with -EBUSY?
-
-That would also rule out mixed setups, such as PCIe on one lane and
-Ethernet on the other, because both need the shared csr-2l/pma blocks.
-
-This variant also sets phys: false. The PCS therefore can't hand the
-analog/PMA side to the PHY that owns it, the way the usb variant does.
+Could the commit message describe this as well?
 
