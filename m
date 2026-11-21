@@ -2,113 +2,59 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 0C454606A337
-	for <linux-mediatek@archiver.kernel.org>; Sat, 21 Nov 2026 17:56:11 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id D4280606A686
+	for <linux-mediatek@archiver.kernel.org>; Sat, 21 Nov 2026 20:22:02 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=qUcVqUtN;
-	dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=Imk7jC9S
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=GEdFIjvU;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=W2FuDmHU
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Cc:To:Message-Id:Content-Type:MIME-Version:Subject:
-	Date:From:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Message-ID:Date
+	:To:From:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=md8GbRzRNRYozgNCXp9C52wGnVSgk6I5/bfSCAjMp6I=; b=qUcVqUtNkM64IH+ThH26WcfJqz
-	+1588OYPRNYpKYrES7fhAv6tiSpPT5BekrTTBCu3S40kR5fnzAxI+4DwqZOzAmqdrh3DdulhqaPfl
-	irULseCwrqjJ3kKhYRwWl8lPrKaQy50So9AsaGa8zTCE/ZKM7E8CV8c95wtByg4XaODugOSxbArLf
-	4iuZCGkrLqcjihoTPqNvFVhVculXip0PqTipWYqSbyTsoIxSBHZI+cOiQLlDtG0x1a3j+rRdgn50I
-	6dUcIlh8E6IQKSImzQHzvxkbnuQs+akyFR3cOHXh4Qx3McrtCYWyunfpyZ81OTe0qusEuBun5sVgC
-	QsdPb68A==;
+	bh=AHUQMxgVMnTXxKbmEWmbNVYVHdBgjW37+wv9A15XjEA=; b=GEdFIjvUVmcNquxoYXyKCfMTze
+	THgjXs1LBttEaL6ujJ34vpAqjhuA24PPD9YC2v+gOmW+WBCrRX/hwRSvxU7pzzPBuRD5MQLefJiBY
+	NW5aw38DWB2R4gyEgeiOX7cq2lqIbd1a+BsBC+RP86RyvreQMeL67ivePAnxJqXMT5hbSpoHGG2q/
+	b9FwWWnKUq7l5FEQ8DSs+zVBtE69NNJGe0VEeMV9Y9jTGLp0bp8mjPUX/eesdlnkJ8fD86ZTCBoSf
+	+b1jsQQQutYpLuDPQW6N88ii+Rq4fZ9Oo8U1SkSrpUvNq1qMsanuC5AWjtZlQDFw5nE7r/W34jfnb
+	M+AYe91w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xUpJq-000000001g9-2iIn;
-	Sat, 21 Nov 2026 17:56:10 +0000
+	id 1xUrb0-00000000BHw-2Lae;
+	Sat, 21 Nov 2026 20:22:02 +0000
 Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xUpJp-000000001fv-3h4B;
-	Sat, 21 Nov 2026 17:56:09 +0000
+	id 1xUraz-00000000BH1-1b38;
+	Sat, 21 Nov 2026 20:22:01 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id 838F343C2F;
-	Sat, 21 Nov 2026 17:56:08 +0000 (UTC)
-Authentication-Results: smtp.kernel.org; arc=none smtp.remote-ip=100.80.115.77
-ARC-Seal: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256; cv=none;
-	t=1795283768;
-	b=O6+fmCkAjdi1VhJNVPqpmo6Gg+r2jd2IaGMY9w6TJSfVZjLKuPzn6EK6/dI7pyBtDC2u
-	 m/W7icIjETwSpIcn5FqXpkFP9wzQKv9Z9Vn5EBVhPQmk9l51Ji34ayOdN9iNhIFInuZt9
-	 e0uupMcmS+TaUFZQrkmzkYJhNE9kAq4muAU6HH4vugnImYIJklJs9GzxPfZ/O2AI3WXsO
-	 ul9RkAOx7z2UsHjVGzgn36Itv8gj8s3xDDF8WwhJhg6AsOMwAh2bpPPo+lGPQV6iel5Zs
-	 NtRdBcqjBuxQwiRL5JjP+2DnCIJgfJMhLgH+nmLFxvVksjLbTHkQwVlFyT+TlvVXkaw==
-ARC-Message-Signature: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256;
-	c=relaxed/relaxed; t=1795283768;
-	h=DKIM-Signature:Received:From:Date:Subject:MIME-Version:Content-Type:
-	 Message-Id:X-B4-Tracking:X-Change-ID:To:Cc:X-Mailer:
-	 X-Developer-Signature:X-Developer-Key:X-Endpoint-Received:
-	 X-Original-From:Reply-To:Content-Transfer-Encoding;
-	bh=md8GbRzRNRYozgNCXp9C52wGnVSgk6I5/bfSCAjMp6I=;
-	b=lBfGKucgIAsxAZCzTS4ndulxyxE73cV9r2P+ApMAVrtLMW/dJisy8jPrQCD2ftcp2zps
-	 /0liGNffMmTFXbBSJUrEzhXJyoo+S3hOTpq1nb6RNJcumC1rl9+ohG+FLgZ79MDWoujNK
-	 epD6A5eLJF/RarNH2K9eEct3533uQ6Bki5uQUbmClORj01n+dJcLY1uSWfOsC4NHCcPbL
-	 jDyo7wEOaqF6frAUEmjdVFHvQ2BSCBcxcwAHx0UfQD1JmaRmmNM2kXGHdTiXIdJPa6AXs
-	 28EJ3eVoKavVuu4GR9xPAQVHzgbfMO2S5U81S0XNjk+vTR3fPZcpwGnmnkqM9IP7q2g==
-ARC-Authentication-Results: i=1; smtp.kernel.org; 
-	arc=none smtp.remote-ip=100.80.115.77
-Received: from lkml.kernel.org (nexus.subspace.kernel.org [100.80.115.77])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
-	(No client certificate requested)
-	by smtp.kernel.org (Postfix) with ESMTPS id E37DD1F000C0;
-	Sat, 21 Nov 2026 17:56:07 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 3DD7743D95;
+	Sat, 21 Nov 2026 20:22:00 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2BF041F000C0;
+	Sat, 21 Nov 2026 20:21:59 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1795283768;
-	bh=md8GbRzRNRYozgNCXp9C52wGnVSgk6I5/bfSCAjMp6I=;
-	h=From:Date:Subject:To:Cc:Reply-To;
-	b=Imk7jC9SbEpGJAwppV5RF8Dt92jjD8SJkGQTV+kMeKAuXi+W4aLPugMl3WLw/t4yP
-	 S4zNkXSYisDdPFjWxWO1z97GULzaLAg+mJyzZeX83GP+28skCB8SjbJ5JsWWI2uVsP
-	 azMXROl5Y78ph4mZqpZ8QdY4V6a7/08RPZAteaahh/mvw/ptjGq94IzOopXNm5HFbv
-	 9NIsYC8sTOYopPw0+dolB/xCa1T0HMcHKuojJk2WYIlT7W620UKcD+Wufd8vMDvZoR
-	 xE6Uq+uGF1fvXNSdg+wOqH3uSkKxFPfeOSvEvT3GCUeHsh3vJc2U1SS08WjRmJFM35
-	 g4SyRmf+wgfvQ==
-Received: from nexus.subspace.kernel.org (localhost [IPv6:::1])
-	by lkml.kernel.org (Postfix) with ESMTP id 448ED4BD31;
-	Sat, 21 Nov 2026 17:56:07 +0000 (UTC)
-From: Roman Vivchar via B4 Relay <devnull+rva333.protonmail.com@kernel.org>
-Date: Sat, 21 Nov 2026 19:55:54 +0200
-Subject: [PATCH v2] dt-bindings: gpu: arm,mali-utgard: add mt6572
+	s=k20260515; t=1795292520;
+	bh=AHUQMxgVMnTXxKbmEWmbNVYVHdBgjW37+wv9A15XjEA=;
+	h=Subject:From:To:Cc:Date:In-Reply-To:References;
+	b=W2FuDmHUppm5SPhv9G08NORlp7OkTi/kNvsUtOkx6P0tjFmnH63ZM7hfnlR29q+Gl
+	 LxbSs34ywhFlbB3wCS9gqyYsJo03tPku2kV3YTzA3/h8dz/DYi4s4m8eQN9NakQ7kO
+	 cuu7d/VVWPqOEiHpMDigzvDGKXKW2OrTT5tekoBjkINl/OHLfEeHm8qGq9lBVxNxY6
+	 q1lldf3d7or+ng9Wzf3Blt/lGriTCIleeLonaZKFL60xZYbr1ZEU8a40rPqAZXceRe
+	 kaxCnps21folpZ+nIByCksYl8EFwVwQ1ZPJfcqNGj/7coMbSoNTgNIoHyASCpzsylh
+	 h7MUsdCIwj+Nw==
+Subject: Re: [PATCH net-next v7 1/3] net: ethernet: mtk_eth_soc: fix the RX
+From: netdev-bot+sashiko@kernel.org
+To: sandeeph@loljews.com
+Date: Sat, 21 Nov 2026 20:21:58 +0000
+Message-ID: <179529251869.3135.16945484998995426880@kernel.org>
+In-Reply-To: <patch-295a65477d87017ff5b65482ffae46fb@loljews.com>
+References: <patch-295a65477d87017ff5b65482ffae46fb@loljews.com>
+X-sashiko-severity: Low
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Message-Id: <20261121-6572-dt-mali-v2-1-1c3925ec7ad1@protonmail.com>
-X-B4-Tracking: v=1; b=H4sIAAAAAAAC/3WNyw6CMBBFf4XM2jFtCS9X/Idh0ZZBxgAlbSUaw
- r8LuHZ5knPPXSGQZwpwS1bwtHBgN+2gLgnYXk8PQm53BiVULkopMM8KhW3EUQ+MpalSI7NKC0u
- wT2ZPHb/P3L35cXiZJ9l4NA6j5xCd/5x/izy8P+lFosTOVKLMVWE6ldazd9FNo+bhat0IzbZtX
- z4eTkK/AAAA
-X-Change-ID: 20260810-6572-dt-mali-8b93b159a0ce
-To: David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
- Maarten Lankhorst <maarten.lankhorst@linux.intel.com>, 
- Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>, 
- Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
- Conor Dooley <conor+dt@kernel.org>, 
- Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
- Heiko Stuebner <heiko@sntech.de>
-Cc: dri-devel@lists.freedesktop.org, devicetree@vger.kernel.org, 
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
- linux-mediatek@lists.infradead.org, 
- Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>, 
- Roman Vivchar <rva333@protonmail.com>
-X-Mailer: b4 0.15.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1795283760; l=1233;
- i=rva333@protonmail.com; s=20260510; h=from:subject:message-id;
- bh=yarHUuGiHB5XDU5bIl2bWj8HreokggBNwjoTqcPSgT4=;
- b=aJF+XCEDjuAMvu1RDuLpBiDhOE3GNfJOGS8hGr/Vthvh9jCrPLfytowdDMsZZYu2JMsUjnYUt
- jcgdVQwbtEkDUvOJi/KLujbbBe5DSGFPRFwrlMSUrdInKFA/Sh+RBPX
-X-Developer-Key: i=rva333@protonmail.com; a=ed25519;
- pk=zww/nWjBGoQ4POXCG0BV6fx2iuXK6jx77rsKPA5YK5Y=
-X-Endpoint-Received: by B4 Relay for rva333@protonmail.com/20260510 with
- auth_id=777
-X-Original-From: Roman Vivchar <rva333@protonmail.com>
-Content-Transfer-Encoding: 7bit
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -118,50 +64,58 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Reply-To: rva333@protonmail.com
+Cc: mason-cw.chang@mediatek.com, linux-kernel@vger.kernel.org, angelogioacchino.delregno@collabora.com, andrew+netdev@lunn.ch, netdev@vger.kernel.org, linux@armlinux.org.uk, daniel@makrotopia.org, edumazet@kernel.org, linux-mediatek@lists.infradead.org, matthias.bgg@gmail.com, kuba@kernel.org, pabeni@redhat.com, lorenzo@kernel.org, davem@davemloft.net, linux-arm-kernel@lists.infradead.org, nbd@nbd.name
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,
-	FREEMAIL_REPLYTO_END_DIGIT,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
+X-Spam-Status: No, score=-3.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=no
+	autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-From: Roman Vivchar <rva333@protonmail.com>
+Thank you for your contribution! Sashiko AI review found more severe
+issue(s) in other patches of this series. This mail is only an FYI, in case
+you want to address the nit picks below when you respin.
 
-Add a compatible string for the mt6572 Mali-400 MP1 GPU.
+Low priority / nit picks for your consideration:
 
-Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
-Signed-off-by: Roman Vivchar <rva333@protonmail.com>
----
-Changes in v2:
-- Pick Krzysztof's ack, resend
-- Link to v1: https://patch.msgid.link/20260810-6572-dt-mali-v1-1-fb908627bf23@protonmail.com
----
- Documentation/devicetree/bindings/gpu/arm,mali-utgard.yaml | 1 +
- 1 file changed, 1 insertion(+)
+- [Low] The patch subject "net: ethernet: mtk_eth_soc: fix the RX" does
+  not say what is being fixed and reads like a cut-off sentence.
 
-diff --git a/Documentation/devicetree/bindings/gpu/arm,mali-utgard.yaml b/Documentation/devicetree/bindings/gpu/arm,mali-utgard.yaml
-index c8d0d9192d92..6bdbab82126c 100644
---- a/Documentation/devicetree/bindings/gpu/arm,mali-utgard.yaml
-+++ b/Documentation/devicetree/bindings/gpu/arm,mali-utgard.yaml
-@@ -27,6 +27,7 @@ properties:
-               - allwinner,sun8i-h3-mali
-               - allwinner,sun8i-r40-mali
-               - allwinner,sun50i-a64-mali
-+              - mediatek,mt6572-mali
-               - rockchip,rk3036-mali
-               - rockchip,rk3066-mali
-               - rockchip,rk3128-mali
+--
 
----
-base-commit: 8cd9520d35a6c38db6567e97dd93b1f11f185dc6
-change-id: 20260810-6572-dt-mali-8b93b159a0ce
+net: ethernet: mtk_eth_soc: fix the RX
 
-Best regards,
---  
-Roman Vivchar <rva333@protonmail.com>
+This commit resets dma_addr to DMA_MAPPING_ERROR at the start of every
+iteration of the mtk_poll_rx() loop. Before this change, a descriptor
+that took the release_desc path without a new mapping could be re-armed
+with high address bits left over from the previous descriptor. On
+MTK_36BIT_DMA SoCs with DRAM above 4 GiB, the hardware would then DMA
+to the wrong address.
 
+> net: ethernet: mtk_eth_soc: fix the RX
 
+[Severity: Low]
+This isn't a bug, but the subject doesn't say what is being fixed. It
+also reads like a sentence that was cut off.
+
+The body describes a specific defect. In mtk_poll_rx(), dma_addr
+carries over from the previous loop iteration. A descriptor can reach
+release_desc without a new buffer being mapped:
+
+  - no netdev for the source port
+  - MTK_RESETTING is set
+  - the refill allocation or mapping fails
+
+In those cases rxd2 gets the previous descriptor's high address bits,
+while rxd1 still holds the current descriptor's low bits.
+
+None of this shows up in the shortlog, and stable and patchwork tooling
+rely on the shortlog. Could the subject be made more descriptive, for
+example:
+
+  net: ethernet: mtk_eth_soc: reset RX dma_addr for every descriptor
+
+-- 
+Sashiko AI review · https://netdev-ai.bots.linux.dev/sashiko/#/patchset/patch-7d2c457e68de6b53b7348d1bdbeadcec%40loljews.com
 
