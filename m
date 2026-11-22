@@ -2,54 +2,55 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 38720606A320
-	for <linux-mediatek@archiver.kernel.org>; Sun, 22 Nov 2026 11:09:52 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 65BC6606A32A
+	for <linux-mediatek@archiver.kernel.org>; Sun, 22 Nov 2026 11:10:01 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=eCLtgV+D;
-	dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=LIFn8aYN
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=RLRd7wU6;
+	dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=VqTCOIYg
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Unsubscribe-Post:
-	List-Owner; bh=hDiLfLkVi2BJOFHCEI42KT0ixsZ7jOa65OfeACjeJko=; b=eCLtgV+DyzofNM
-	SUPxn7BWg2FHcxxV9TVJOuUh+1pyjPJFQSLE+kQtzRVsWYrz/IXnp2VXpkkjHUh+RUR4iyj5gsMuI
-	T0Lp+W9gLrvHOCu7wDUdB/qnGtqRnxt/ASAxvEqUFkhF+X7+BcVJm91OTQB6T1IgY9PzWeOw9dfvw
-	XGBACC+5I5ct2sM6fmjuxkkH3aVsUkh0yb6ZiwMZ4VOLSh04fvC0Cs/YM3o7jTIFxx4l207YGDGKB
-	dHnV1BcoKWZjRs2y3zzjSbJW9Y8z1HHtKEsw32v4mvhtd1JN8Jt4rc7gmYVmpIOjGyrPRei0YDRN0
-	MGhLG4DKq/pw8CHl+6uQ==;
+	List-Owner; bh=iPkAHXq9kHCijdQVDkRSkzsGpRx+BYkqVu4mfSObAl8=; b=RLRd7wU6wJMh1r
+	cqNzFlWVItb1Nsx9dWV3LayVnoPQlmhfEVhHD9/s6vaPnINquaRekVNXMtWIezeL2PtfJACzDv9ed
+	nyFjtfVaV2UH9SV1JhmcKhAUAfXtv0KTfMy/QYW/cVpw3t1dXcEwgVx542EETEPHn1P+zfRBPFOHd
+	GMDlGXMQf//kPMaCGqSOOX2g8OTXHjjUHh4qRqkne1jqguK+MoQlzSkBKp4VLjVkm6sZ7Pno/OLE5
+	wyf2y4iuU4w4ee5XHKmPnK3snWT2PPGe3rAwBAjTjt17F8Yx7znz6UJ5kTk2atJ6Mrj2JUmGpVTT7
+	i4hxrlDRlS5BYaYeSNUA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xV5SB-000000010QV-3xCO;
-	Sun, 22 Nov 2026 11:09:51 +0000
+	id 1xV5SL-000000010U2-0OWO;
+	Sun, 22 Nov 2026 11:10:01 +0000
 Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xV5S5-000000010OV-2Il9;
-	Sun, 22 Nov 2026 11:09:45 +0000
+	id 1xV5S8-000000010PU-01IV;
+	Sun, 22 Nov 2026 11:09:48 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id 5066944E18;
-	Sun, 22 Nov 2026 11:09:45 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id AADD31F000C4;
-	Sun, 22 Nov 2026 11:09:44 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id BE6D04244C;
+	Sun, 22 Nov 2026 11:09:47 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 243761F000C4;
+	Sun, 22 Nov 2026 11:09:46 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1795345785;
-	bh=hDiLfLkVi2BJOFHCEI42KT0ixsZ7jOa65OfeACjeJko=;
+	s=k20260515; t=1795345787;
+	bh=iPkAHXq9kHCijdQVDkRSkzsGpRx+BYkqVu4mfSObAl8=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc;
-	b=LIFn8aYN/dt9xjsGkVCkqHecP4zc9h6t8cujdyOlgUUnvI1ycb6xa4ipu7SP2vxiX
-	 e4iWqp22cF1CoIh9n0U880rxW4wsSCZCU1nyPBC8uemrl676AaPYC5fXi2RRStkuPg
-	 VkLnYNFvMShcWoAA3jdDrh0temXrQgSaESHCnVpw18j+N58KWToQ7VVnWXJIRd/E3Q
-	 mqZ2OjrxlJNzn8js3hUEOQO+4BEp0Pg0F4bIuwZgipKgjQ31L9C+0JHPIn1pD4gMyC
-	 MROL4ADcwCWj0ZvSiQSteCnUDrYwbp2J0YF4OnhzZcHHN5a1vYEJwFBOcb7KxN08oa
-	 GF4ot9kFJNDBQ==
+	b=VqTCOIYgkK547wymhySSSZvHC4hs+M6RaQ8W2SQOfPA2sEPCTV13YpsJ0xvzFLBwq
+	 N5YCqWTBnbHjaziO0MFCT6dK89c6siP0/XuNRLrFdFIYfy7pWpMbdAx2mLmb7HYuP9
+	 OYp3Zd9Xgdb38yC+HYdwMslpxb2bcy3i5g+U3O/a5cIQdyAHfSB5br2+CsQUGQnXTW
+	 VL7eO77kynrpRf7S7efC6GykbDoNl1PK7kJl9Ns1gaQ7/NFdLmA+neCrqseyIO3EY7
+	 Fp0lyJ17PCaGS/pQh3N/clk6QLi8o9b8/Rm8CRP2qXe0ZZtTTiPMemSo4fMj1QjWmT
+	 WWiE4/Xxwpd0A==
 From: Lorenzo Bianconi <lorenzo@kernel.org>
-Date: Sun, 22 Nov 2026 12:09:14 +0100
-Subject: [PATCH 1/2] wifi: mt76: npu: acquire queue lock running npu napi
+Date: Sun, 22 Nov 2026 12:09:15 +0100
+Subject: [PATCH 2/2] wifi: mt76: npu: do not run mt76_npu_queue_cleanup()
+ for not allocated queues
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20261122-mt76-npu-fixes-v1-1-8d8876b91970@kernel.org>
+Message-Id: <20261122-mt76-npu-fixes-v1-2-8d8876b91970@kernel.org>
 References: <20261122-mt76-npu-fixes-v1-0-8d8876b91970@kernel.org>
 In-Reply-To: <20261122-mt76-npu-fixes-v1-0-8d8876b91970@kernel.org>
 To: Felix Fietkau <nbd@nbd.name>, Ryder Lee <ryder.lee@mediatek.com>, 
@@ -77,124 +78,47 @@ X-Spam-Status: No, score=-18.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-The NPU RX NAPI path updates the ring indices (head/tail/queued) and the
-pending reassembly state in mt76_npu_fill_rx_queue() and
-mt76_npu_rx_process_entry() without taking q->lock, while the cleanup and
-reset paths do. A NAPI poll racing with a queue reset/cleanup can
-therefore corrupt the ring. Protect the ring bookkeeping with q->lock in
-both helpers, and drop the lock before calling rx_skb() and
-mt76_rx_poll_complete() since those can sleep.
+mt76_npu_deinit() unconditionally calls mt76_npu_queue_cleanup() on the
+NPU RX queues, even when the NPU is not active and the queues were never
+allocated. In that case q->lock was never initialized by
+mt76_dma_alloc_queue() and mt76_npu_queue_cleanup() takes a zeroed,
+uninitialized spinlock. This is caught by CONFIG_DEBUG_SPINLOCK ("bad
+magic") and lockdep, and is reachable on any mt76 device once
+CONFIG_MT76_NPU is enabled, not just on NPU-capable ones.
 
-Move the dma_idx update out of mt76_npu_rx_process_entry() into
-mt76_npu_fill_rx_queue(), after the ring has been refilled, so slots are
-handed back to the NPU only once they point to new buffers. Updating
-dma_idx as soon as a frame is dequeued lets the NPU DMA into descriptors
-that still reference buffers already passed up the stack (or still owned
-by a partially reassembled frame), leading to memory corruption under RX
-load. Add the missing write barrier before the dma_idx update so the new
-descriptor addresses are visible to the NPU before it may reuse the
-slots.
+Only call mt76_npu_queue_cleanup() when the queue was actually allocated,
+i.e. when ndesc is set, matching the check already present in
+mt76_dma_rx_cleanup(). Since mt76_dma_alloc_queue() initializes q->lock
+before setting ndesc, a non-zero ndesc guarantees the lock is valid.
+
+Run the cleanup while still holding dev->mutex so it is serialized with
+the rest of the NPU teardown, keeping the dev->mutex -> q->lock order used
+by mt76_npu_rx_queue_init().
 
 Fixes: 7fb554b1b623 ("wifi: mt76: Introduce the NPU generic layer")
 Signed-off-by: Lorenzo Bianconi <lorenzo@kernel.org>
 ---
- drivers/net/wireless/mediatek/mt76/npu.c | 37 +++++++++++++++++++++++++-------
- 1 file changed, 29 insertions(+), 8 deletions(-)
+ drivers/net/wireless/mediatek/mt76/npu.c | 8 +++++---
+ 1 file changed, 5 insertions(+), 3 deletions(-)
 
 diff --git a/drivers/net/wireless/mediatek/mt76/npu.c b/drivers/net/wireless/mediatek/mt76/npu.c
-index 3ca83985376d..fbefc86001ff 100644
+index fbefc86001ff..af5bc3da26ab 100644
 --- a/drivers/net/wireless/mediatek/mt76/npu.c
 +++ b/drivers/net/wireless/mediatek/mt76/npu.c
-@@ -18,6 +18,8 @@ int mt76_npu_fill_rx_queue(struct mt76_dev *dev, struct mt76_queue *q)
- {
- 	int nframes = 0;
+@@ -554,8 +554,10 @@ void mt76_npu_deinit(struct mt76_dev *dev)
+ 	if (ppe_dev)
+ 		airoha_ppe_put_dev(ppe_dev);
  
-+	spin_lock_bh(&q->lock);
-+
- 	while (q->queued < q->ndesc - 1) {
- 		struct airoha_npu_rx_dma_desc *desc = (void *)q->desc;
- 		struct mt76_queue_entry *e = &q->entry[q->head];
-@@ -40,6 +42,11 @@ int mt76_npu_fill_rx_queue(struct mt76_dev *dev, struct mt76_queue *q)
- 		nframes++;
- 	}
+-	mutex_unlock(&dev->mutex);
++	if (dev->q_rx[MT_RXQ_NPU0].ndesc)
++		mt76_npu_queue_cleanup(dev, &dev->q_rx[MT_RXQ_NPU0]);
++	if (dev->q_rx[MT_RXQ_NPU1].ndesc)
++		mt76_npu_queue_cleanup(dev, &dev->q_rx[MT_RXQ_NPU1]);
  
-+	wmb();
-+	Q_WRITE(q, dma_idx, q->tail);
-+
-+	spin_unlock_bh(&q->lock);
-+
- 	return nframes;
+-	mt76_npu_queue_cleanup(dev, &dev->q_rx[MT_RXQ_NPU0]);
+-	mt76_npu_queue_cleanup(dev, &dev->q_rx[MT_RXQ_NPU1]);
++	mutex_unlock(&dev->mutex);
  }
- 
-@@ -70,9 +77,13 @@ static int mt76_npu_rx_process_entry(struct napi_struct *napi)
- 	enum mt76_rxq_id qid = napi - dev->napi;
- 	struct mt76_queue *q = &dev->q_rx[qid];
- 	struct airoha_npu_rx_dma_desc *desc = (void *)q->desc;
--	int nframes = q->pending;
-+	int nframes, ret = 0;
-+	struct sk_buff *skb;
- 	u32 info = 0;
- 
-+	spin_lock_bh(&q->lock);
-+
-+	nframes = q->pending;
- 	do {
- 		struct mt76_queue_entry *e = &q->entry[q->tail];
- 		u32 ctrl = READ_ONCE(desc[q->tail].ctrl);
-@@ -80,12 +91,14 @@ static int mt76_npu_rx_process_entry(struct napi_struct *napi)
- 
- 		if (!q->queued) {
- 			q->pending = nframes;
--			return -EBUSY;
-+			ret = -EBUSY;
-+			goto error_unlock;
- 		}
- 
- 		if (!FIELD_GET(NPU_RX_DMA_DESC_DONE_MASK, ctrl)) {
- 			q->pending = nframes;
--			return -EBUSY;
-+			ret = -EBUSY;
-+			goto error_unlock;
- 		}
- 
- 		dma_rmb();
-@@ -102,8 +115,10 @@ static int mt76_npu_rx_process_entry(struct napi_struct *napi)
- 
- 		if (!q->rx_head) {
- 			q->rx_head = napi_build_skb(e->buf, q->buf_size);
--			if (!q->rx_head)
--				return -ENOMEM;
-+			if (!q->rx_head) {
-+				ret = -ENOMEM;
-+				goto error_unlock;
-+			}
- 
- 			__skb_put(q->rx_head, len);
- 			skb_reset_mac_header(q->rx_head);
-@@ -123,14 +138,20 @@ static int mt76_npu_rx_process_entry(struct napi_struct *napi)
- 		q->queued--;
- 	} while (--nframes > 0);
- 
--	dev->drv->rx_skb(dev, qid, q->rx_head, &info);
--	mt76_rx_poll_complete(dev, qid, napi);
-+	skb = q->rx_head;
- 	q->rx_head = NULL;
- 	q->pending = 0;
- 
--	Q_WRITE(q, dma_idx, q->tail);
-+	spin_unlock_bh(&q->lock);
-+
-+	dev->drv->rx_skb(dev, qid, skb, &info);
-+	mt76_rx_poll_complete(dev, qid, napi);
- 
- 	return 0;
-+
-+error_unlock:
-+	spin_unlock_bh(&q->lock);
-+	return ret;
- }
- 
- void mt76_npu_check_ppe(struct mt76_dev *dev, struct sk_buff *skb,
 
 -- 
 2.56.1
