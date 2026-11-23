@@ -2,68 +2,79 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 373DE606A331
-	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Nov 2026 09:42:16 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 10DD260A2605
+	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Nov 2026 09:50:02 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=Ifhkm1GU;
-	dkim=pass (2048-bit key) header.d=collabora.com header.i=@collabora.com header.a=rsa-sha256 header.s=mail header.b=Su5MkqYw
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=YB6JVt4p;
+	dkim=pass (2048-bit key) header.d=collabora.com header.i=@collabora.com header.a=rsa-sha256 header.s=mail header.b=bFm2De2+
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Unsubscribe-Post:
-	List-Owner; bh=tsSv8AXKdn74dLQqZ+Pw+96MlkzYgFsnQpQ9ZDWK5PU=; b=Ifhkm1GUEHFZmk
-	f/RTi5ExZ2zreFA/irhMrjhq75j4ngxAEajO4O+rMpH5HGjQOpXwCyEhJ0T/T8Oi/u4luoz+H+sMp
-	7BBXWPgd/dxhMvAGAESExwxP8bHvN5GJ9wQDqYd58Hf2Hha4wQ3F51IEFgL4LUjN5pQexwjRFAFcQ
-	jtaYpFotOokmmPyJ4butowRHAT5bchMQjglXyIw06nW2Kr8H3hIq/yhAAuFaH1nxsgmFOYTFRdGUL
-	zUY2tAXGznnowdGXsjm1cSZYKhdxwubDIpisQN3PcxSZiXWbwspjB82nNJNONNQeirkpFkGYZzQfI
-	n0d15kFbBev0tf5TFOfQ==;
+	List-Owner; bh=+9PCTbh71L1HM3bKlGiIOaVmykcBeQmvpI3vljck9JA=; b=YB6JVt4pA86/Ik
+	V22E+zRKhhXdCwEKOFPwZfn3bCBnPlHKUSeGBYnSnCcQqbZ4BJLe3GzKex9jOsyF64Gn9XQXIo+g/
+	G4XzqZgwgRhKcSw4x91XNvM4B3UCPY99kEXTbXStRZz9VMKd7ObE0zaRZeP3i+sjI1z8D51pr9FxY
+	gWcaqYgbvEa7W5lH3uwRS4o4qDbdne5k2JqCOAMH0jnt6ktd52Y3kUm0vLFpmVUBbUwY48EuHzy+p
+	AP2IfffvmCtiAjRINJd/lCKSiz3es3VoLRgP8R++LT6lc0pkpxm9yh0UoRmzbRMJBq6h0nI/0e+6+
+	N8lAzs/Uxa7bXEZ9FXlQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xVQYx-00000002nBl-3fz8;
-	Mon, 23 Nov 2026 09:42:15 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1xVQgT-00000002pJM-2Bez;
+	Mon, 23 Nov 2026 09:50:01 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xVQYs-00000002n7l-15n2;
-	Mon, 23 Nov 2026 09:42:13 +0000
+	id 1xVQgO-00000002pE4-3UW7;
+	Mon, 23 Nov 2026 09:49:58 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1795426923;
-	bh=S24fkSd1EQP4rOBdYiQSTxbzQ48LBCI/965cSSyCzRc=;
+	s=mail; t=1795427395;
+	bh=qDlQ72Vc7Hc/VU08uITBDl9vO+AOoQTLBFQhPb/BZh4=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=Su5MkqYwPsO9vse+8XqNW5Uhvk5SiJLPabfmUZfHNJsWpR57AYGiuf0lo10BcXv90
-	 Ezt1PCg43uVdg3RErbBCm4JMQ2Oa6oQ253vvGTomD+v3jtIlbNdlXo6qpB5cnopg0N
-	 ubd7BSovGhNtLNnn36XotKtX5BE6gOebZOKo1uBWCFXMZ3eFaO87iQkNQju2oeSxan
-	 J7skIs4UOf5DSUkfeZS88sKLnFZYFGKmVAcDqrrfBODQfGz5HVJslfv1SXK6HX5i4Q
-	 T3HhltHfr9HnMVrhYXDrmOmKQiKvyn1LNysZ/ReLKoLd68HSJGPX0//028EVAVdj3n
-	 mQtY9CoGPRpTQ==
+	b=bFm2De2+DX6rpDbSTnze1A9rSRSqcnUXretTh32/Cn7I2RwdAEgrER/L4mivzh9xL
+	 hRdrV2rdAkTMcCIe4Eo9oyWwOoNQMJX8aG188briw+qLRAVDGfxaqO5ESMYsvncL45
+	 xXLiDVaNc0XBiNKBv7R2ruM3/NdVD7h5FTYRVBV+iAmdAAS4y86KMKzTD5LqmJYItx
+	 umsbfw6IFNS8mNWp/5iufwz98gKEmde2YZnXUM4cgJg7298j7Qb1vbyljEE0k75wTZ
+	 tYd36wNlizoEd6o5rq/jQ3r0MBJjyxl9U7qf9hkmNvkCvzjoBrZ9uaK5HIuAatTDOx
+	 781Ab+hMHvKxg==
 Received: from [100.64.1.21] (unknown [100.64.1.21])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange x25519)
+	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id A516917E04F7;
-	Mon, 23 Nov 2026 10:42:03 +0100 (CET)
-Message-ID: <f6c16695-35b9-4d59-bb3d-fc247e2c278c@collabora.com>
-Date: Mon, 23 Nov 2026 10:42:03 +0100
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 249EF17E0CD7;
+	Mon, 23 Nov 2026 10:49:54 +0100 (CET)
+Message-ID: <d367dd8e-d712-49c5-a2ae-30a9b3a41d35@collabora.com>
+Date: Mon, 23 Nov 2026 10:49:53 +0100
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2] regulator: mt6363: Serialize BUCK_TOP key access
-To: Alexandre Mergnat <amergnat@baylibre.com>,
- Liam Girdwood <lgirdwood@gmail.com>, Mark Brown <broonie@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>
-Cc: linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org
-References: <20261113-rgp-91-mt6363-key-lock-v2-1-adbd48f0f830@baylibre.com>
+Subject: Re: [PATCH v2 4/9] watchdog: mediatek: Add support for MT6895
+To: Alexander Letuchiy <asalde.le1@gmail.com>, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
+ <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ Sean Wang <sean.wang@mediatek.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Jiri Slaby <jirislaby@kernel.org>, Wim Van Sebroeck
+ <wim@linux-watchdog.org>, Guenter Roeck <linux@roeck-us.net>,
+ Daniel Lezcano <daniel.lezcano@kernel.org>, Thomas Gleixner
+ <tglx@kernel.org>, Mattijs Korpershoek <mkorpershoek@kernel.org>,
+ Dmitry Torokhov <dmitry.torokhov@gmail.com>, Kees Cook <kees@kernel.org>,
+ Tony Luck <tony.luck@intel.com>, "Guilherme G. Piccoli" <gpiccoli@igalia.com>
+Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-serial@vger.kernel.org, linux-watchdog@vger.kernel.org,
+ linux-input@vger.kernel.org, phone-devel@vger.kernel.org
+References: <20261113-initial-mt6895-v2-0-4ab0aa9fa391@gmail.com>
+ <20261113-initial-mt6895-v2-4-4ab0aa9fa391@gmail.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Content-Language: en-US
-In-Reply-To: <20261113-rgp-91-mt6363-key-lock-v2-1-adbd48f0f830@baylibre.com>
+In-Reply-To: <20261113-initial-mt6895-v2-4-4ab0aa9fa391@gmail.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261123_014212_700849_AF16C4A7 
-X-CRM114-Status: GOOD (  10.33  )
+X-CRM114-CacheID: sfid-20261123_014957_205108_17B90D22 
+X-CRM114-Status: GOOD (  10.51  )
 X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -83,22 +94,15 @@ X-Spam-Status: No, score=-12.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On 11/13/26 06:29, Alexandre Mergnat wrote:
-> The bits that select the FAST mode of the bucks only accept writes
-> while the BUCK_TOP key is unlocked. mt6363_regulator_set_mode() unlocks
-> the key, updates the bit and locks the key again, but the regulator
-> core only locks the buck being changed. When two bucks change mode at
-> the same time, one of them can lock the key between the unlock and
-> the mode write of the other. The PMIC then ignores that write, and
-> regulator_set_mode() returns 0 while the buck stays in its previous
-> mode. mt6363_va15_set_voltage_sel() unlocks and locks the same key,
-> so it can also lock it during a buck mode change.
+On 11/13/26 20:05, Alexander Letuchiy wrote:
+> Add the compatible for the watchdog of the MediaTek MT6895 (Dimensity
+> 8000/8100) SoC. Its watchdog registers are the same as on the other
+> supported SoCs.
 > 
-> Hold a mutex from each unlock of the key to its relock, in the FAST bit
-> writes and in the VA15 voltage setter.
+> The TOPRGU reset layout of MT6895 is not known yet, so the entry has no
+> match data and no reset controller is registered.
 > 
-> Fixes: 3c36965df808 ("regulator: Add support for MediaTek MT6363 SPMI PMIC Regulators")
-> Signed-off-by: Alexandre Mergnat <amergnat@baylibre.com>
+> Signed-off-by: Alexander Letuchiy <asalde.le1@gmail.com>
 
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
