@@ -2,83 +2,81 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id D03E1606A332
-	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Nov 2026 15:31:15 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 02B44606A31A
+	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Nov 2026 15:32:42 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=pCyUMU4C;
-	dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=OhHvVIeL
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=uCpp+WMM;
+	dkim=pass (2048-bit key) header.d=collabora.com header.i=@collabora.com header.a=rsa-sha256 header.s=mail header.b=oxpUA6gT
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Unsubscribe-Post:
-	List-Owner; bh=5Zmzfenaqe/ABUcz0D1nvMINiY0TPaqXO2ZTdLBhjRU=; b=pCyUMU4CyG9gk7
-	dfeZA1OKfGRxM0JohVpbR8+NmPfmelLR3/PunTn25GAlB0CWA5+WaQpfhjm6/5evdh2wu/dBvYDmJ
-	7bOuWdoQ6Ej3+nW2YwRN1ZIsms+j8QAEldH6VeLsRUz1Bj+79D3D1G2m4iNT6yj3Jash2om0/wYrv
-	wY/x7eLKLL5ZeLVvj/8wgEQypUv4VSX36h69MGfh0uZAxnnNp3afNrfdkUUzTAGVNtJiAr+RHgnIT
-	ibZeN+HXPT4lRzQ4G+LlA961bFExg1cGblWDYsJ1cCoJyaCrVxr89189OEHvaJBqbstXt4fNSavdp
-	0Rv1yoN/254xd+G+gb9Q==;
+	List-Owner; bh=TUoXyOddWAz9fDDOvSA9MQNAlA1i/4mOf8DBtcxzgh8=; b=uCpp+WMMayrUNY
+	442RYyciZkA2xseH/rMdiVcak21kDqz3RymmstK5rA4gw5oozjET8m7NcT5kJnQbz70UW3Y4Cfp3u
+	FCn74XHtfIqXEQpoYRFw+ri3iknCcaeodwat9TI5m6PffJXAGiEFYp/XN6yIDLbT75o0AetDedo60
+	ZXyIiGNYIw+BNYUnlwj8fPDigLPthvgyz3tPf+/4pOhA/UuVrS7KOAJ4BgQ7xqg6idj4766KJCQYj
+	cSUALG46YPX+GFS2PFprHcOCe2LXMEAi/Vg7irn5dFej5+lDGCtmWNXSZGoXOlJq1snwBYLiru6HQ
+	yEYYlL8+3Eupfv3dMjig==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xVW0h-00000003zjB-2MvI;
-	Mon, 23 Nov 2026 15:31:15 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1xVW25-00000004084-2qPL;
+	Mon, 23 Nov 2026 15:32:41 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xVW0g-00000003zib-1V4A
-	for linux-mediatek@lists.infradead.org;
-	Mon, 23 Nov 2026 15:31:14 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id D3C9045676
-	for <linux-mediatek@lists.infradead.org>; Mon, 23 Nov 2026 15:31:13 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 92B801F0093E
-	for <linux-mediatek@lists.infradead.org>; Mon, 23 Nov 2026 15:31:13 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1795447873;
-	bh=5Zmzfenaqe/ABUcz0D1nvMINiY0TPaqXO2ZTdLBhjRU=;
-	h=References:In-Reply-To:From:Date:Subject:To:Cc;
-	b=OhHvVIeLj+E8jjACmZyxOQsE9LLq2TL2ftClvwugpxsJm1tg23lNcFLQd0SGWplHc
-	 TWzlhIBDKuLOhLGZrVly6pVMQ6oWBArpvHDqz5nVxf0svxcdqjylyUoSeyh7z6xyhF
-	 SQRLZ3bux7XcahS8tWzmVdaMc/RcYAbrfHXlzehjfQ3//xvRaSpcALvlJPajTkIdRH
-	 CSmNEyCORb08sPFGiybftPt3O04fBgs9GzWRqKMudgC6VFdJaNPvO400OdzCN1jt/U
-	 c4GOc9ynGtjbcKSXfGhJGFfckZq5SwXYVbgZi5/ymHi48yEFdJXlUmDNBNce7RSqHQ
-	 nDPq2gL7TL3RQ==
-Received: by mail-dl1-f45.google.com with SMTP id a92af1059eb24-15ea896ddc8so5736621c88.0
-        for <linux-mediatek@lists.infradead.org>; Mon, 23 Nov 2026 07:31:13 -0800 (PST)
-X-Gm-Message-State: APuU4Z9puBQg2XANchG2M84VS6sFRhHJi7/XBfiyz2oiPzRRbi9FUiV/
-	SQkJixxU0nNbJyZg/xkPm6Zp4NxgsM4K9nbTjE1SR00Wb+QFYNIx6JBD0brnboJRDsX/tOvsj7M
-	UqtDH0IUvvf1mgqqPjHY2nY3VULYDjw==
-X-Received: by 2002:a05:701b:2810:b0:143:5cb4:30 with SMTP id
- a92af1059eb24-1b5567b3391mr10425170c88.3.1795447872711; Mon, 23 Nov 2026
- 07:31:12 -0800 (PST)
+	id 1xVW21-0000000405G-1MMo;
+	Mon, 23 Nov 2026 15:32:40 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
+	s=mail; t=1795447955;
+	bh=Xnfpy4WZddREfPMFIPPX8OEnArv8MmFD/FqHyNhM8A4=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+	b=oxpUA6gTTlQ1KCGpEDK20y7rEzaVPpHuOF9j38OC1nadLKfNvr6/E0GsI+E4D9XWa
+	 pWpbQl77q8I2HMLzwpeyX1gN4yJVZrBTy1pImc0YfrRIE+ftdOplZBCCjmSNbBCyio
+	 YjrkTPxcrab8wN2YD68HFmOZsNw5881nZAlKZvJAqzeEiWHmd0GK2wN3TUsKZ58EUb
+	 c5/YGgpB6ClcDmH2zfNBRRcJM8zCBOjcTcxGwkSR8DzpfyUwEscAZXyDCZXJwMPZRb
+	 JGYF5QkiRbUK2b5CZVa53+1LnzNlhqZJIt5l5mOl5KtxxaopvCowxOdaqWW4XI7Vcu
+	 WS4z6Fg5M/4ug==
+Received: from [100.64.1.21] (unknown [100.64.1.21])
+	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	(No client certificate requested)
+	(Authenticated sender: kholk11)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 3640F17E031C;
+	Mon, 23 Nov 2026 16:32:34 +0100 (CET)
+Message-ID: <cc4675f9-0923-4918-9867-05db05b5ceb2@collabora.com>
+Date: Mon, 23 Nov 2026 16:32:33 +0100
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-References: <20261010115539.9237-1-l.scorcia@gmail.com> <20261010115539.9237-6-l.scorcia@gmail.com>
-In-Reply-To: <20261010115539.9237-6-l.scorcia@gmail.com>
-From: Chun-Kuang Hu <chunkuang.hu@kernel.org>
-Date: Mon, 23 Nov 2026 15:30:57 +0000
-X-Gmail-Original-Message-ID: <CAAOTY_9N7q8vSOM1R-i0JzidoSnVmf7E99KKi458NGU=WTSnCA@mail.gmail.com>
-X-Gm-Features: Aa3M54qyF59hFKqLYZAT2WpV4wdT_KYkLyV_ony0INzG1Z9OlyFKt_7T9Q9dDAQ
-Message-ID: <CAAOTY_9N7q8vSOM1R-i0JzidoSnVmf7E99KKi458NGU=WTSnCA@mail.gmail.com>
-Subject: Re: [PATCH 5/7] drm/mediatek: mtk_hdmi: Set tz_disabled for mt8167
-To: Luca Leonardo Scorcia <l.scorcia@gmail.com>
-Cc: linux-mediatek@lists.infradead.org, 
-	Chunfeng Yun <chunfeng.yun@mediatek.com>, Vinod Koul <vkoul@kernel.org>, 
-	Neil Armstrong <neil.armstrong@linaro.org>, Manivannan Sadhasivam <mani@kernel.org>, 
-	Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Stephen Boyd <sboyd@kernel.org>, 
-	Brian Masney <bmasney+clk@redhat.com>, Jerome Brunet <jbrunet+clk@baylibre.com>, 
-	Chun-Kuang Hu <chunkuang.hu@kernel.org>, Philipp Zabel <p.zabel@pengutronix.de>, 
-	David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
-	Nicolas Frattaroli <nicolas.frattaroli@collabora.com>, Chen-Yu Tsai <wenst@chromium.org>, 
-	Fabien Parent <fparent@baylibre.com>, CK Hu <ck.hu@mediatek.com>, 
-	chunhui dai <chunhui.dai@mediatek.com>, linux-arm-kernel@lists.infradead.org, 
-	linux-phy@lists.infradead.org, devicetree@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, linux-clk@vger.kernel.org, 
-	dri-devel@lists.freedesktop.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v3 2/7] dt-bindings: serial: mediatek,uart: Add compatible
+ for MT6895
+To: Alexander Letuchiy <asalde.le1@gmail.com>, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
+ <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ Sean Wang <sean.wang@mediatek.com>,
+ Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+ Jiri Slaby <jirislaby@kernel.org>, Daniel Lezcano
+ <daniel.lezcano@kernel.org>, Thomas Gleixner <tglx@kernel.org>,
+ Mattijs Korpershoek <mkorpershoek@kernel.org>,
+ Dmitry Torokhov <dmitry.torokhov@gmail.com>, Kees Cook <kees@kernel.org>,
+ Tony Luck <tony.luck@intel.com>, "Guilherme G. Piccoli" <gpiccoli@igalia.com>
+Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
+ linux-serial@vger.kernel.org, linux-input@vger.kernel.org,
+ phone-devel@vger.kernel.org, Conor Dooley <conor.dooley@microchip.com>
+References: <20261123-initial-mt6895-v3-0-95c46597e63d@gmail.com>
+ <20261123-initial-mt6895-v3-2-95c46597e63d@gmail.com>
+From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Content-Language: en-US
+In-Reply-To: <20261123-initial-mt6895-v3-2-95c46597e63d@gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20261123_073237_539626_94B83EBE 
+X-CRM114-Status: UNSURE (   7.81  )
+X-CRM114-Notice: Please train this message.
+X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -89,31 +87,22 @@ List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-15.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-12.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,
 	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,MAILING_LIST_MULTI,
-	MENTIONS_GIT_HOSTING,SPF_HELO_NONE,SPF_PASS autolearn=ham
+	SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1 autolearn=ham
 	autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Luca Leonardo Scorcia <l.scorcia@gmail.com> =E6=96=BC 2026=E5=B9=B410=E6=9C=
-=8810=E6=97=A5=E9=80=B1=E5=85=AD =E4=B8=8A=E5=8D=8811:56=E5=AF=AB=E9=81=93=
-=EF=BC=9A
->
-> Just like mt2701, MediaTek mt8167 does not require an ARM supervisor mode
-> call to toggle HDMI output.
+On 11/23/26 12:18, Alexander Letuchiy wrote:
+> Add a compatible string for the UART of the MediaTek MT6895 (Dimensity
+> 8000/8100) SoC. It works with the existing driver through the
+> mediatek,mt6577-uart fallback.
+> 
+> Acked-by: Conor Dooley <conor.dooley@microchip.com>
+> Signed-off-by: Alexander Letuchiy <asalde.le1@gmail.com>
 
-Applied to mediatek-drm-fixes [1], thanks.
+Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 
-[1] https://git.kernel.org/pub/scm/linux/kernel/git/chunkuang.hu/linux.git/=
-log/?h=3Dmediatek-drm-fixes
-
-Regards,
-Chun-Kuang.
-
->
-> Fixes: 511cf7d12331 ("drm/mediatek: hdmi: Add MT8167 configuration")
-> Signed-off-by: Luca Leonardo Scorcia <l.scorcia@gmail.com>
-> ---
 
