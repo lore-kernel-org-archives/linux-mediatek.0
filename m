@@ -2,70 +2,117 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 17879606A327
-	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Nov 2026 16:11:58 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 41883606A335
+	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Nov 2026 16:16:15 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=jx2J29eL;
-	dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=I7cdb4vd
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=jPG9cucz;
+	dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=m8imrA8i
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Message-ID:Date
-	:Cc:To:From:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Unsubscribe-Post:List-Owner;
-	bh=CuV1HgSyHeqmHnQ6X0W8EKjH6rdyvaViJZVeUHENJ3o=; b=jx2J29eL5EfXNF0i/8kBS1RcN9
-	Om7C9GzBiCfehzQQz8H15/qySjAl6Bq8TOQA3G1LJNnq6/PT/So2e6BMSIF5NXTimc/Qo/OP50qg6
-	XM3D+eoKEm/AheYQ3k0WpMqe8IG3/ir/vAN1ZaGApfrv9hmXPRtc9mh/XiQ8M/YT8gxT4f7xQ80aS
-	pZsNfBksWt3/IjnxEbTkwokYxZl+1x6KfWilVRE5QhWSEhCwhK19DIW9DdMZcYBBppUy96wBOfXeY
-	0tWbD8algiEsC5Vb8VK2Td+40numePibMenIuYmOQ/0D6v9aVFosQD9RAFuS6vobQbLCLl6ApOl/w
-	GR6R8SZw==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Unsubscribe-Post:
+	List-Owner; bh=YYr57DK+rVapxGe+Fv0tthvj0JGQUKvoMSxaOupn0Ys=; b=jPG9cuczRrT//G
+	aSjQ4A8GM819OeNE0l+26+/EStwMEDdRy5jrIqicm4HD54NQBH93o2FUcvC59lePOsdDrcKyqyD92
+	snEuavC17ADqXQmgUcAexC+V+l4PUOPny3b5B4FtiFQpyiB3/TZzSgNO/a1OPyCZEz65kfEWHwYil
+	8JapCcjhdde/+V60B/q/1nv2oSDI+81J8ulADq10Ae1hUhGiu0mq/Je/C9SGQba0MO26zrOkst8y9
+	M83dSWjMZAf3yKwwfiLHfwLZ2nDX6ZiBHuEtZxnuywo7/Ck6llLAb8kIXBo90BDuxbwc7Za+UDPF1
+	thCBX0wwJhJMhAsUTHvA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xVWe5-000000049Ux-3JHi;
-	Mon, 23 Nov 2026 16:11:57 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1xVWiE-00000004AD1-3gRr;
+	Mon, 23 Nov 2026 16:16:14 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xVWe3-000000049UG-3266;
-	Mon, 23 Nov 2026 16:11:55 +0000
+	id 1xVWiD-00000004ACi-3dQP;
+	Mon, 23 Nov 2026 16:16:14 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id 3D7E743213;
-	Mon, 23 Nov 2026 16:11:55 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 89A5E1F000C0;
-	Mon, 23 Nov 2026 16:11:53 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 4FE5461199;
+	Mon, 23 Nov 2026 16:16:13 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 1C0751F000C4;
+	Mon, 23 Nov 2026 16:16:06 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1795450315;
-	bh=CuV1HgSyHeqmHnQ6X0W8EKjH6rdyvaViJZVeUHENJ3o=;
-	h=Subject:From:To:Cc:Date:In-Reply-To:References;
-	b=I7cdb4vdNUK3v3piY+BZlJjEe9R4MEyMtBgnxanHlmElStgvqGfQY7m05L2McBrOR
-	 VP+sk9kRQ+s6g7KtRfwY1IGa/cRy5HXcbrKutTfHWiHSdpSGmhzT2snp63v0kVxoPP
-	 D61kJ8ra9i6aLDn7pdM82YRC39mtoLm+pEdt28w6iLFn2sYZknfRXOwISv/FM3j447
-	 d8OreZirnkqEWu7JNN9y41OAQcEAUcPYoV2mGz3YuP8hvByYVXaDF5jhMXpDRAwBDK
-	 98UKa8QcdVSbM0GLaB87W8AMcxgfQMC03x9D4Rc++I920eQzGHmX5MGcXkTqRzy2mZ
-	 WIcA6ugK5QGbA==
-Subject: Re: [PATCH net-next 2/2] dt-bindings: net: dsa: Flag unexpected
- ethernet ports
-From: netdev-bot+sashiko@kernel.org
-To: krzysztof.kozlowski@oss.qualcomm.com
-Cc: hauke@hauke-m.de, andrew@lunn.ch, olteanv@gmail.com, davem@davemloft.net,
- edumazet@kernel.org, kuba@kernel.org, pabeni@redhat.com, robh@kernel.org,
- krzk+dt@kernel.org, conor+dt@kernel.org, matthias.bgg@gmail.com,
- angelogioacchino.delregno@collabora.com, woojung.huh@microchip.com,
- UNGLinuxDriver@microchip.com, jensemil.schulzostergaard@microchip.com,
- ansuelsmth@gmail.com, arinc.unal@arinc9.com, Landen.Chao@mediatek.com,
- dqfext@gmail.com, sean.wang@mediatek.com, daniel@makrotopia.org,
- marex@denx.de, john@phrozen.org, netdev@vger.kernel.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-Date: Mon, 23 Nov 2026 16:11:53 +0000
-Message-ID: <179545031306.3135.11482802242328622537@kernel.org>
-In-Reply-To: <20261122160907.200727-4-krzysztof.kozlowski@oss.qualcomm.com>
-References: <20261122160907.200727-4-krzysztof.kozlowski@oss.qualcomm.com>
-X-sashiko-severity: High
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
+	s=k20260515; t=1795450572;
+	bh=YYr57DK+rVapxGe+Fv0tthvj0JGQUKvoMSxaOupn0Ys=;
+	h=Date:Subject:To:Cc:References:From:In-Reply-To;
+	b=m8imrA8iWmv9csK4/PiuU/o2o/1fxsqLjFyWYfxBftOqKzHyDkww8gjozFBE/z/zT
+	 rDhglexK8MMa/7/pbqw294rpn/LeE3anoDVtgu29PhZEewZkZ00SYAn5LrTwDtDCgX
+	 W5Vo2j0EC+5gIYTVFpgr38VqmnQ9ujCowRpPIW5k3Ud2DqMm9Tz5tNr0v9PfoAEKo2
+	 K6UiLcQbDr5ry7EuXeFBaB6rUKt59B6mWGlT7fVhH0CMlKl8gWhHKOgAtd03FOf31t
+	 X+mFhqaNLx2Y+QLHSV5E2Sv+UZfwXTcjgtN3fgVx9Fx3svF6xgzaPh2KQEEgb9QuAC
+	 9IjEmx8EXzc+w==
+Message-ID: <c7f6ec19-d536-4006-9298-44199ec294e0@kernel.org>
+Date: Mon, 23 Nov 2026 17:16:04 +0100
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 1/2] dt-bindings: display: mediatek: dpi: Add
+ compatible for mt8167
+To: Luca Leonardo Scorcia <l.scorcia@gmail.com>,
+ linux-mediatek@lists.infradead.org
+Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Chun-Kuang Hu <chunkuang.hu@kernel.org>,
+ Philipp Zabel <p.zabel@pengutronix.de>, David Airlie <airlied@gmail.com>,
+ Simona Vetter <simona@ffwll.ch>,
+ Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
+ Maxime Ripard <mripard@kernel.org>, Thomas Zimmermann <tzimmermann@suse.de>,
+ Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
+ Conor Dooley <conor+dt@kernel.org>, Matthias Brugger
+ <matthias.bgg@gmail.com>, CK Hu <ck.hu@mediatek.com>,
+ Jitao shi <jitao.shi@mediatek.com>, dri-devel@lists.freedesktop.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org
+References: <20261123085840.8687-1-l.scorcia@gmail.com>
+ <20261123085840.8687-2-l.scorcia@gmail.com>
+From: Krzysztof Kozlowski <krzk@kernel.org>
+Content-Language: en-US
+Autocrypt: addr=krzk@kernel.org; keydata=
+ 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
+In-Reply-To: <20261123085840.8687-2-l.scorcia@gmail.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -76,104 +123,26 @@ List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-10.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-12.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,
-	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS autolearn=ham autolearn_force=no version=4.0.1
+	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1 autolearn=ham
+	autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Thank you for your contribution! Sashiko AI review found 1 potential
-issue(s) to consider.
+On 23/11/2026 09:57, Luca Leonardo Scorcia wrote:
+> MediaTek mt8167 SoC has two Digital Parallel Interface (DPI) blocks,
+> one can be routed to a DPI display while the other is wired to the HDMI
+> block. They are not compatible with any other device, so add a new
+> compatible to describe them in the device tree.
+> 
+> Signed-off-by: Luca Leonardo Scorcia <l.scorcia@gmail.com>
+> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+> ---
 
-Critical: 0 · High: 1 · Medium: 0 · Low: 0
+Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
 
-If you believe none of the issues are legitimate, please reply to each
-issue of Medium severity or higher and explain why the AI is wrong.
-If any of them are legitimate and you plan to respin, please let patchwork
-know by including "pw-bot: cr" as a separate line at the end of your reply
-(one such reply per series is enough).
-
-- [High] The fix is incomplete because it skips a sibling DSA binding
-  that has the exact defect described in the commit message.
-
---
-
-dt-bindings: net: dsa: Flag unexpected ethernet ports
-
-Several DSA bindings reference dsa.yaml ports, use "additionalProperties:
-true", and limit their port node pattern to a subset of unit addresses.
-Because of that, port nodes with any other unit address pass validation
-without a warning. The patch drops the unit address from the pattern and
-limits the port reg value with a maximum instead.
-
-[ ... ]
-
-> diff --git a/Documentation/devicetree/bindings/net/dsa/qca8k.yaml b/Documentation/devicetree/bindings/net/dsa/qca8k.yaml
-> index 167398ab253aa..3840b336bdb93 100644
-> --- a/Documentation/devicetree/bindings/net/dsa/qca8k.yaml
-> +++ b/Documentation/devicetree/bindings/net/dsa/qca8k.yaml
-> @@ -75,13 +75,15 @@ patternProperties:
->      type: object
->      additionalProperties: true
->      patternProperties:
-> -      "^(ethernet-)?port@[0-6]$":
-> +      "^(ethernet-)?port@":
->          type: object
->          description: Ethernet switch ports
->  
->          $ref: dsa-port.yaml#
->  
->          properties:
-> +          reg:
-> +            maximum: 6
-
-[Severity: High]
-Was renesas,rzn1-a5psw.yaml left out of this conversion on purpose? It
-looks like it has the same problem the commit message describes. It
-references dsa.yaml ports, its ethernet-ports node uses
-additionalProperties: true, and its port pattern still limits the unit
-address:
-
-Documentation/devicetree/bindings/net/dsa/renesas,rzn1-a5psw.yaml:
-
-allOf:
-  - $ref: dsa.yaml#/$defs/ethernet-ports
-...
-  ethernet-ports:
-    type: object
-    additionalProperties: true
-    patternProperties:
-      "^(ethernet-)?port@[0-4]$":
-
-Under a renesas,rzn1-a5psw switch, a node such as port@5 or port@7 does
-not match this pattern. It does match the generic
-"^(ethernet-)?port@[0-9a-f]+$" pattern in dsa.yaml, so only the generic
-dsa-port.yaml checks apply and it passes validation. This hardware only
-has ports 0-4 (4 ports plus 1 CPU port).
-
-Would the same change used here for qca8k.yaml work for that file too,
-i.e. "^(ethernet-)?port@" plus reg: maximum: 4?
-
-nxp,netc-switch.yaml has a weaker form of the same gap:
-
-  ethernet-ports:
-    type: object
-    patternProperties:
-      "^ethernet-port@[0-9a-f]$":
-        type: object
-        $ref: dsa-port.yaml#
-
-A node named port@1 (no ethernet- prefix) or ethernet-port@10 does not
-match this pattern. Instead it matches the
-'^(ethernet-)?port@[0-9a-f]+$' pattern in ethernet-switch.yaml, which is
-reached through $ref: dsa.yaml# and only applies type: object.
-
-Such a node skips the NETC port schema, including dsa-port.yaml and its
-unevaluatedProperties: false, and passes without a warning.
-
-Should this patch cover nxp,netc-switch.yaml as well?
-
--- 
-Sashiko AI review · https://netdev-ai.bots.linux.dev/sashiko/#/patchset/20261122160907.200727-3-krzysztof.kozlowski%40oss.qualcomm.com
+Best regards,
+Krzysztof
 
