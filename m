@@ -2,102 +2,60 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id A2BE0606A32C
-	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Nov 2026 23:25:02 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id A2962606A322
+	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Nov 2026 23:35:28 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=jHPgQk2Y;
-	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=htrT8TXc
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=RfGhdEDp;
+	dkim=pass (2048-bit key, unprotected) header.d=proton.me header.i=@proton.me header.a=rsa-sha256 header.s=protonmail2 header.b=xaALiAL2
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Subject:Cc:To:From:
-	Message-ID:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	Content-Type:MIME-Version:Message-ID:Subject:Cc:From:To:Date:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
 	List-Unsubscribe-Post:List-Owner;
-	bh=MNWlDqY5Q61g7lNZmof1nMmtIa+WfJ4+kLyYstNyQbg=; b=jHPgQk2YD9otfdDr302VOUiqel
-	q/Llzc38TAKBN9OJn2b+GAtLfUf8oiKyyLYeRbQdlTotaWp+LFlg6VaKR3oM6BP0VLSi/pQO11aho
-	8YoAxa6Q7MPhMT7Uw0ia4yOmgZIQR28BJv4fElfd7gne9IbmQwW/7HxSQRT0sPnR3q5y0P52fJYYh
-	dXwmbmSTlpuzEDWhuu8wxDcZYvn98Ki50eLXAime+fzzvCIfxiksuZenevQi2K1cAXyH2Ilvsn4jR
-	2n7iVyRnfjV/7CpNOkQzdUF032yli2HDNdbHQK80NgFloUjb6YPWYuOg6IoJqmY+fWSCuM2r5dh0k
-	jI7F45CA==;
+	bh=NLGt+82W3KE3HDzPcL9X/IIWUp24W85Da+NyWDIrhZk=; b=RfGhdEDpoIJFz/Aw6Ws9Mhu45a
+	AYq3oTXIfqHrFjvq6PLYwc/TvV3ck4QBn9Kxk7e+wjm0tKSKlwBgateyuDQOQZ7QQwu+3d7R/9iRC
+	Jlx1VMz08pIK3eZ5+Vd+X8FZ925XFDjr7w94FYd2z+TgKohaEBc3X3X6ZrKAtTW8c8ru4ne0r4q3w
+	SrMJzMO9HJBFXksKLK5P1/7oiEn9CzM5EvNBfXOqELo3xPxie0/lNneSi906lLFkdTyC6kHPg1X6v
+	n13fQ+CV9GVfpzhJq1OUW9Uo7Ca7RHVcMIgex1nPHvQLGO/oYjbI6bXq4o9TL8N9ihF7NM0ev62RP
+	O/wePy9Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xVdPC-00000005A62-1ZKx;
-	Mon, 23 Nov 2026 23:25:02 +0000
-Received: from mail-dl1-x1229.google.com ([2607:f8b0:4864:20::1229])
+	id 1xVdZG-00000005AyJ-3SeQ;
+	Mon, 23 Nov 2026 23:35:27 +0000
+Received: from mail-106121.protonmail.ch ([79.135.106.121])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xVdP9-00000005A4k-2FoI
+	id 1xVdZD-00000005AxH-3BD7
 	for linux-mediatek@lists.infradead.org;
-	Mon, 23 Nov 2026 23:25:01 +0000
-Received: by mail-dl1-x1229.google.com with SMTP id a92af1059eb24-1b244fb7fffso3587833c88.1
-        for <linux-mediatek@lists.infradead.org>; Mon, 23 Nov 2026 15:24:59 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20260707; t=1795476299; x=1796081099; darn=lists.infradead.org;
-        h=content-disposition:content-transfer-encoding:content-type
-         :mime-version:references:in-reply-to:subject:cc:to:from:message-id
-         :date:from:to:cc:subject:date:message-id:reply-to:content-type;
-        bh=MNWlDqY5Q61g7lNZmof1nMmtIa+WfJ4+kLyYstNyQbg=;
-        b=htrT8TXc+RbqH4+5HMQjlgQiRU/aPRUERBRpsfaUeNxpzzjohJa6QEzmu3807pxw2m
-         JZrNDvTB7gfk4V7N7L2fNZoXTgvRi/V9o2TifdUQsh7ofhatqUZR5NLsqwkzJuZwkvL6
-         ys2bgYLM7tzTYWsfmZOL0kZTFnUxdGst+cUqSWIsNU7Xf9bivv8C7+8O1Nl3FG1nZQ3b
-         x/uXSZNJjeMz2FgmEz8vVdCt8grFuxlzKFaiQWfjB7t4YVYVQ8DUdC778wjuwJHUxKTN
-         IlxpQiq8SaFpt9bJi6NguZDukNvHwZg5U1Y9CLWxlNCa3qLtzVt22tDdf3GTC/x98Wlx
-         tniw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1795476299; x=1796081099;
-        h=content-disposition:content-transfer-encoding:content-type
-         :mime-version:references:in-reply-to:subject:cc:to:from:message-id
-         :date:x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
-         :reply-to:content-type;
-        bh=MNWlDqY5Q61g7lNZmof1nMmtIa+WfJ4+kLyYstNyQbg=;
-        b=UqEBWMJx7JFdWcADOgJN/cQXI5nSY54kmmZmXmINiok6FVYXWbp6U5QUewx6at5q5e
-         EzXR8hH8+pkfAjcYrRf2owMkUytO8rFHAtKMca/1UwpeVn90T/vzBBl6ku8Qp4l8FjlD
-         fy9GDUJ7NCFI3S5NVNvZ3YHHqzbmDkV3FxG9NQC76jK10LrfEE+SKU67bAya+F3C1YGX
-         7vV1C4JtwuATgKoBk16glhuOmNkJknRgIe54Sc2eyqEa7j4BM5mkqSbSLZCY1lDGbiVD
-         tAY9NMYtxg57Qr6XnmdR0eadO7GNTpWHzn8F0W/lbg7N3jvJ4WpVkjcefCPYwNdkciwU
-         ODaA==
-X-Forwarded-Encrypted: i=1; AL+hErHpfQWVL0qNJQFdfBqHoZ2y6fcAt4OBAXNKwVaEt/IHnRuqx12aNzsTwTp2ps/hifwnubglR+l7EvHE1i/jGQ==@lists.infradead.org
-X-Gm-Message-State: APuU4Z92lppSnD5W+OJlfKKCU+jyb8/OVKbGCmLTskf5m8mLgvu+VpZj
-	txYeJh8hcv2jUXNDE2TTjGfq/qO5ueS281QqspGMASEXXEX44AUB/jxg
-X-Gm-Gg: AZFdTZckfE0+Gw/sd+1tYJHHFHHNRTqrvqH18j2Tq3iPvAN+9gYo6Iu0eh1Lmki2AU5
-	zrcejMrOw+bu6ObK0enDC0idJ7ero81numUhztQnfKBskjqdzbZRkul0V/U1KoQsSxYh8GyLWuD
-	Wia8pXtX9ZLvIXwkXSB/RM3JBMZ8tKTJmGyQ6zTfanRyKeSJ9zgJ+Q+fEanLdonMLriplJLXlmr
-	zj+0FEpsZKNXGfjaWMI48zz/TDGSmDfXgwCZQf/kqXp+Y+1PeY1+YfqKr7nF3XZc3T0wf8flzeG
-	LMKATA9EeDn0LU7lH1rv7SO+cU9bNNPst0o07JiUO1NeY5cN9g4JpJBbYgc5DcCwmGCGXpjoKoD
-	TBDODbnpeZcZ7pS5+NZzp+DyY7/zFfQgH5EJu3sUhfzS4g3CXsNYHZwAkBg3kZ0UVCOthfLfqQI
-	gXCmcO2U74EMetvo6Ty1SeIekmwepWx42XrOsHPkLBSPOUcilUnfKNS+x9psf8lQ0Zt8H8m73et
-	UgKKOE3Vtb8qReafsGepZt4qvl7MzEpLspaPOkxE2m/JKs5kCPES9ve2pt9BJD32MZu2dc2QM7V
-	a7gyUH0rBT+Njm/N096IqRb1p1qD8slOlgMTtmY2akXOzlSeWWaHNf6Cl2HwpUtL2/f8l411GlR
-	c9hq4h09E3rGb2Y4=
-X-Received: by 2002:a05:7022:2209:b0:1b2:43ac:d3a3 with SMTP id a92af1059eb24-1b5568b9e59mr16444195c88.24.1795476298544;
-        Mon, 23 Nov 2026 15:24:58 -0800 (PST)
-Received: from localhost ([2a00:79e0:2ebe:8:4121:d698:201c:9274])
-        by smtp.gmail.com with ESMTPSA id a92af1059eb24-1b556847fdasm34835125c88.13.2026.11.23.15.24.57
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 23 Nov 2026 15:24:57 -0800 (PST)
-Date: Mon, 23 Nov 2026 15:24:56 -0800
-Message-ID: <a545ef5377ee473829c3780e94d107e5@gmail.com>
-From: Dmitry Torokhov <dmitry.torokhov@gmail.com>
-To: Luca Leonardo Scorcia <l.scorcia@gmail.com>
-Cc: linux-input@vger.kernel.org,
-	Hans de Goede <hansg@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	linux-kernel@vger.kernel.org,
-	linux-arm-kernel@lists.infradead.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH] Input: goodix - sync the irq controller while starting firmware
-In-Reply-To: <CAORyz2LNRfnvbCLe+49A5kAF4NSi0zuYdpd95+7=Hx=KQh0B1g@mail.gmail.com>
-References: <20261020122712.526797-1-l.scorcia@gmail.com> <avZiZoGO4jXjIP7D@google.com> <CAORyz2LNRfnvbCLe+49A5kAF4NSi0zuYdpd95+7=Hx=KQh0B1g@mail.gmail.com>
+	Mon, 23 Nov 2026 23:35:25 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=proton.me;
+	s=protonmail2; t=1795476920; x=1795736120;
+	bh=NLGt+82W3KE3HDzPcL9X/IIWUp24W85Da+NyWDIrhZk=;
+	h=Date:To:From:Cc:Subject:Message-ID:Feedback-ID:From:To:Cc:Date:
+	 Subject:Reply-To:Feedback-ID:Message-ID:BIMI-Selector;
+	b=xaALiAL2CIWkOcX1hWLCn+0TmRq376S6HkcTQrnts+1DuQjIIQz+x0Kq4ERfnle03
+	 t59OI59ZhTIyXPknohE5JrezetoX2QtmUiYIuRLQI5dBRD2jNbXACIwZOECeavsSzN
+	 4QuPWeMabUtCYNtJft0RmyCA5AL9pICfmCY88iIIfQVBD6/sBJFa94TmLw+6D1klKG
+	 HHOChx4M1Rymdn3Hk/A+6QDO2Nps2I7EjeKSjb9Ef7UxZMsIi/S/cTiGMPjovLu8W0
+	 8u+wCuNfd/QkWbKxFX4xT4kTqIA5j5bFGmz08WfgVBoiMLFRqBf9590Nm41VLJ/rWq
+	 1y5tncS/mhoRA==
+Date: Mon, 23 Nov 2026 23:35:13 +0000
+To: linux-bluetooth@vger.kernel.org
+From: Kyle Pepper <cochcoder@proton.me>
+Cc: luiz.dentz@gmail.com, marcel@holtmann.org, sean.wang@mediatek.com, matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com, linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: [PATCH v3] Bluetooth: request LE data length for MT7922
+Message-ID: <20261123233502.222664-1-cochcoder@proton.me>
+Feedback-ID: 97716137:user:proton
+X-Pm-Message-ID: 6d0fe0c689de7908f39ef01930f83cbefd9de001
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261123_152459_584927_E6D50AB1 
-X-CRM114-Status: GOOD (  21.46  )
-X-Spam-Score: -2.1 (--)
+X-CRM114-CacheID: sfid-20261123_153524_455960_CF9D74E9 
+X-CRM114-Status: GOOD (  16.52  )
+X-Spam-Score: -2.8 (--)
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -108,51 +66,237 @@ List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-2.9 required=3.0 tests=BAYES_00,DKIM_SIGNED,
-	DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,FREEMAIL_FORGED_FROMDOMAIN,
-	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS autolearn=no autolearn_force=no version=4.0.1
+X-Spam-Status: No, score=-15.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,
+	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=ham
+	autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Hi Luca,
+MT7922 USB firmware can accept maximum LE suggested default data lengths
+without negotiating a larger transmit data length on a new connection.
+On an ASUS G614PR with USB ID 0489:e0f6 and firmware 20260724143815,
+ASHA playback remains choppy until an explicit LE Set Data Length request.
+A request on the same Cochlear Nucleus 8 connection raises delivery from
+21.5 to 50 audio SDUs/s and reduces peak outstanding packets from 32 to 3.
 
-On Mon, Nov 16, 2026 at 07:53:58PM +0100, Luca Leonardo Scorcia wrote:
-> > There is call to goodix_int_sync() right after call to
-> > goodix_start_firmware(). Is it still needed if we call it here? I think
-> > the vendor drivers does not do it.
->
-> Hi,
-> unfortunately yes, it's needed right there on the Lenovo Tab E7.
-> Without it, the REG_SW_WDT right after it fails with the error "Error
-> reading 1 bytes from 0x8041: -6".
-> The vendor sources for this device [1] show the call to
-> goodix_int_sync exactly between the two interactions with the WDT
-> register.
->
-> Actually, in the same sources I see no trace of a second
-> goodix_int_sync after firmware has loaded, so the existing call could
-> be moved a little earlier instead of introducing a duplicated new one.
-> I tested moving the existing call on my device and it works just as
-> fine (basically, my patch + commenting out the existing call at the
-> end of goodix_firmware_upload.
->
-> Which vendor sources are you using for your reference?
+Set a quirk for MT7922 in USB setup and request the current suggested
+defaults after successful remote feature exchange on central-role links.
+Require local and remote DLE support and the LE Set Data Length command.
+Keep suggested-default initialization and PHY negotiation unchanged.
 
-Sorry for not being clear. I was looking at the same vendor driver you
-linked to, and I was asking whether the second goodix_int_sync() at the
-end of goodix_firmware_upload() was still needed once we call it inside
-goodix_start_firmware(), since the vendor driver only does it once.
+Do not restrict the workaround to the tested firmware build or OEM USB
+ID: the affected firmware range has not been confirmed. Other MediaTek
+chips do not enable the quirk. The request also applies to 1M peers that
+support DLE, and ordinary link-layer negotiation determines the result.
 
-Since moving the call works on your device, please send a v2 that calls
-goodix_int_sync() inside goodix_start_firmware() and removes the second
-goodix_int_sync() call at the end of goodix_firmware_upload(). Also,
-please change goodix_start_firmware() to take struct goodix_ts_data *ts
-directly and use a local "struct i2c_client *client = ts->client;" temp
-instead of going through i2c_get_clientdata().
+Hold a connection reference while queued and revalidate its membership,
+state, role and capabilities before sending. Release the reference on
+completion, cancellation or queue failure. A failed optional request
+does not reject connection setup.
 
-Thanks.
+Assisted-by: OpenCode:gpt-6.1-sol
+Assisted-by: Codex
 
--- 
-Dmitry
+Signed-off-by: Kyle Pepper <cochcoder@proton.me>
+---
+Changes in v3: move personal correspondence out of the commit message; no s=
+ource changes.
+Previous version: https://lore.kernel.org/linux-bluetooth/20261123221206.21=
+5119-1-cochcoder@proton.me/
+
+Hi Luiz,=20
+Since there hasn't been a response from
+the MediaTek folks in over 5 weeks I've gone
+ahead and prepared this v2 quirk patch that=20
+will work for USB MT7922 controllers.
+Thanks,=20
+Kyle Pepper
+
+Contingency revision: MediaTek has been asked about a firmware fix and its
+affected scope. No reply has been received as of November 23. This does
+not establish that a firmware fix is unavailable or that every MT7922
+firmware release is affected. A firmware fix remains preferable.
+
+Changes in v2:
+- Match MT7922 in USB setup, without a firmware-build or OEM USB-ID gate.
+- Remove firmware-header matching and its setup-time clear/recheck logic.
+- Rebase on current bluetooth-next; retain guarded referenced queue work.
+
+Previous patch:
+https://lore.kernel.org/linux-bluetooth/20261016170122.27119-1-cochcoder@pr=
+oton.me/
+Luiz requested checking firmware-fix plans and avoiding a single-build
+gate unless MediaTek confirms an image-specific regression. This v2 is
+prepared in case a validated firmware fix is not forthcoming; his reply
+is conditional guidance, not an Acked-by or approval of this revision.
+
+Historical evidence: manual same-link request on 0489:e0f6 with firmware
+20260724143815 gave 21.5 -> 50 SDUs/s. Automatic requests worked in the
+local patched 7.2.9 stack. No new hardware result is claimed for v2, for
+other firmware/OEM boards, or for vanilla upstream. Suspend/resume,
+other profiles, native concurrency and power regressions remain untested.
+
+Local validation on base ffb95458a0f7: GCC and Clang baseline/candidate
+builds each compile four Bluetooth objects with W=3D1 and zero warnings.
+82 source-extracted ASan/UBSan controls pass; the baseline and five
+mutation controls detect missing behavior and guards. LeakSanitizer is
+disabled because the command runner uses ptrace; these are model tests.
+Source-only strict checkpatch is clean. Stock full-mail checkpatch flags
+the retained Assisted-by trailers as BAD_SIGN_OFF. No checker is changed
+or attribution removed; remote CI and human-signed mail remain unchecked.
+
+No introducing kernel commit has been established for this firmware bug,
+so no Fixes or stable tag is inferred. No extra patch/MR dependency.
+Human review and DCO sign-off are required before publication.
+
+AI assistance: the retained request/queue implementation originated with
+OpenCode:gpt-6.1-sol. Codex adapted matching, rebased it, and prepared this
+message, review notes and offline validation in response to Luiz's review.
+
+ drivers/bluetooth/btmtk.c        |  4 +++
+ include/net/bluetooth/hci.h      |  5 +++
+ include/net/bluetooth/hci_sync.h |  1 +
+ net/bluetooth/hci_event.c        |  8 +++++
+ net/bluetooth/hci_sync.c         | 58 ++++++++++++++++++++++++++++++++
+ 5 files changed, 76 insertions(+)
+
+diff --git a/drivers/bluetooth/btmtk.c b/drivers/bluetooth/btmtk.c
+index 1b3dab0d1..1869815cc 100644
+--- a/drivers/bluetooth/btmtk.c
++++ b/drivers/bluetooth/btmtk.c
+@@ -1858,6 +1858,10 @@ int btmtk_usb_setup(struct hci_dev *hdev)
+=20
+ =09btmtk_data->dev_id =3D dev_id;
+=20
++=09/* MT7922 needs per-link requests despite suggested defaults. */
++=09if (dev_id =3D=3D 0x7922)
++=09=09hci_set_quirk(hdev, HCI_QUIRK_NEEDS_LE_SET_DATA_LEN);
++
+ =09err =3D btmtk_register_coredump(hdev, btmtk_data->drv_name, fw_version)=
+;
+ =09if (err < 0)
+ =09=09bt_dev_err(hdev, "Failed to register coredump (%d)", err);
+diff --git a/include/net/bluetooth/hci.h b/include/net/bluetooth/hci.h
+index efb85c781..85a4931e5 100644
+--- a/include/net/bluetooth/hci.h
++++ b/include/net/bluetooth/hci.h
+@@ -348,6 +348,11 @@ enum {
+ =09 */
+ =09HCI_QUIRK_BROKEN_READ_ENC_KEY_SIZE,
+=20
++=09/* The controller needs an explicit LE Set Data Length request for
++=09 * each central-role connection despite accepting suggested defaults.
++=09 */
++=09HCI_QUIRK_NEEDS_LE_SET_DATA_LEN,
++
+ =09/*
+ =09 * When this quirk is set, the reserved bits of Primary/Secondary_PHY
+ =09 * inside the LE Extended Advertising Report events are discarded.
+diff --git a/include/net/bluetooth/hci_sync.h b/include/net/bluetooth/hci_s=
+ync.h
+index 509ec4161..eab827dfa 100644
+--- a/include/net/bluetooth/hci_sync.h
++++ b/include/net/bluetooth/hci_sync.h
+@@ -195,6 +195,7 @@ int hci_le_read_remote_features(struct hci_conn *conn);
+=20
+ int hci_acl_change_pkt_type(struct hci_conn *conn, u16 pkt_type);
+ int hci_le_set_phy(struct hci_conn *conn, u8 tx_phys, u8 rx_phys, u16 phy_=
+opts);
++int hci_le_set_data_len(struct hci_conn *conn);
+ int hci_le_set_cig_params_sync(struct hci_dev *hdev, u8 cig_id);
+ int hci_le_create_big_sync(struct hci_conn *conn, struct bt_iso_qos_ext *q=
+os,
+ =09=09=09   u8 num_bis);
+diff --git a/net/bluetooth/hci_event.c b/net/bluetooth/hci_event.c
+index b6c7f9a9f..7ef2c4d19 100644
+--- a/net/bluetooth/hci_event.c
++++ b/net/bluetooth/hci_event.c
+@@ -7436,6 +7436,14 @@ static void hci_le_remote_feat_complete_evt(struct h=
+ci_dev *hdev, void *data,
+ =09=09=09 */
+ =09=09=09conn->le_tx_def_phys &=3D ~HCI_LE_SET_PHY_HDT;
+ =09=09=09conn->le_rx_def_phys &=3D ~HCI_LE_SET_PHY_HDT;
++
++=09=09=09if (hci_test_quirk(hdev, HCI_QUIRK_NEEDS_LE_SET_DATA_LEN) &&
++=09=09=09    conn->role =3D=3D HCI_ROLE_MASTER &&
++=09=09=09    (hdev->commands[33] & BIT(6)) &&
++=09=09=09    (hdev->le_features[0] & HCI_LE_DATA_LEN_EXT) &&
++=09=09=09    (conn->le_features[0] & HCI_LE_DATA_LEN_EXT) &&
++=09=09=09    hdev->le_def_tx_len > 27)
++=09=09=09=09hci_le_set_data_len(conn);
+ =09=09}
+=20
+ =09=09if (conn->state =3D=3D BT_CONFIG) {
+diff --git a/net/bluetooth/hci_sync.c b/net/bluetooth/hci_sync.c
+index 2e88af51b..ac82aa085 100644
+--- a/net/bluetooth/hci_sync.c
++++ b/net/bluetooth/hci_sync.c
+@@ -9286,3 +9286,61 @@ int hci_le_eks_oppt_encrypt(struct hci_conn *conn)
+=20
+ =09return err;
+ }
++
++static void le_set_data_len_complete(struct hci_dev *hdev, void *data, int=
+ err)
++{
++=09struct hci_conn *conn =3D data;
++
++=09bt_dev_dbg(hdev, "err %d", err);
++=09if (err && err !=3D -ECANCELED && err !=3D -ENODEV)
++=09=09bt_dev_warn(hdev, "Failed to set LE data length (%d)", err);
++=09hci_conn_put(conn);
++}
++
++static int hci_le_set_data_len_sync(struct hci_dev *hdev, void *data)
++{
++=09struct hci_conn *conn =3D data;
++=09struct hci_cp_le_set_data_len cp;
++
++=09hci_dev_lock(hdev);
++
++=09if (!hci_conn_valid(hdev, conn) || conn->type !=3D LE_LINK ||
++=09    conn->role !=3D HCI_ROLE_MASTER ||
++=09    (conn->state !=3D BT_CONNECTED && conn->state !=3D BT_CONFIG)) {
++=09=09hci_dev_unlock(hdev);
++=09=09return -ECANCELED;
++=09}
++
++=09/* Use the current suggested defaults, including later host changes. */
++=09if (!hci_test_quirk(hdev, HCI_QUIRK_NEEDS_LE_SET_DATA_LEN) ||
++=09    !(hdev->commands[33] & BIT(6)) ||
++=09    !(hdev->le_features[0] & HCI_LE_DATA_LEN_EXT) ||
++=09    !(conn->le_features[0] & HCI_LE_DATA_LEN_EXT) ||
++=09    hdev->le_def_tx_len <=3D 27) {
++=09=09hci_dev_unlock(hdev);
++=09=09return 0;
++=09}
++
++=09cp.handle =3D cpu_to_le16(conn->handle);
++=09cp.tx_len =3D cpu_to_le16(hdev->le_def_tx_len);
++=09cp.tx_time =3D cpu_to_le16(hdev->le_def_tx_time);
++
++=09hci_dev_unlock(hdev);
++
++=09return __hci_cmd_sync_status(hdev, HCI_OP_LE_SET_DATA_LEN,
++=09=09=09=09     sizeof(cp), &cp, HCI_CMD_TIMEOUT);
++}
++
++int hci_le_set_data_len(struct hci_conn *conn)
++{
++=09struct hci_dev *hdev =3D conn->hdev;
++=09int err;
++
++=09err =3D hci_cmd_sync_queue_once(hdev, hci_le_set_data_len_sync,
++=09=09=09=09      hci_conn_get(conn),
++=09=09=09=09      le_set_data_len_complete);
++=09if (err)
++=09=09hci_conn_put(conn);
++
++=09return (err =3D=3D -EEXIST) ? 0 : err;
++}
+
+base-commit: ffb95458a0f70dcab620eee0ecf5ef7750971b2f
+
 
