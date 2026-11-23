@@ -2,86 +2,86 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id CA025606A32E
-	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Nov 2026 11:19:07 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 271F1606A682
+	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Nov 2026 11:19:18 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=QVeKjfwQ;
-	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=xhjtcNpV
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=00x7kGBk;
+	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=hNBNIjjH
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Unsubscribe-Post:
-	List-Owner; bh=YQ8N9lrkCBm6g5O+8A22MhXclICDJr3w2WLdfhFanRo=; b=QVeKjfwQexJ4CW
-	nWrurXiLiSgEMR26xWe6Hup3dWnIO/9fYy1mJjY9Yv2lY30KPWmdUVQP7IUlYk0qKYlhZj8ga+xWX
-	cWFkEAaqlV4HmrToxvGmdslSbdI6CWk+RGxAdSsKgAops66TtLdtobDXrX4931mu+Sc8jMnAwmlFy
-	bEMokMbXoqHIbtmynPGrKOfLbr4l8MzTyNC9E3vF6/MmC6EIi7sTDVFpzUCkmSNeqaD7ib1bFTHM9
-	2pu67gwNZSKTp3QtnmwaxoXkoS2cJ/F4o+BzWWuU21Lt5xcMzRspaRsF81ewGqw2QnuIhKELoH/U9
-	nbEKPVFf4nKV5qA5eviA==;
+	List-Owner; bh=EtVDEEY+1Q2B+PJRdO/nFO/tm1fJ8wXwnQSpYA2WKh8=; b=00x7kGBkMZLzHM
+	eTw4+uniAakV76BFpyO1R/xSN5Tk/R6aAqjE3t6kxkzE3sihzQqO6VQEJKiTIKK6SFu/JpUFanHSg
+	aLkgj+YE+2QQDju9tFFWWCMnNHySrgWvaBzKGEHbaVoQ5LoaIFIOdrwT6Hi/vBegZhaXtqyz5K2H1
+	bGlJyVFT2H/+MpIr6JMKPHHhQJ11XrXOcz/uvJdY+fBt9Qipoz617isi8rmgVkI4wcGS9naqSzt2K
+	0pRByqE7exsLxzTJg7EymddaHLmLO15jVvx8i8+ERNFeLijC6OY0fQcOTFb0HaxhnIBwy59DfxaaN
+	Cli9sBAMHm0PA4V2ZUJQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xVS4h-000000036ib-1xuT;
-	Mon, 23 Nov 2026 11:19:07 +0000
-Received: from mail-ej1-x62c.google.com ([2a00:1450:4864:20::62c])
+	id 1xVS4r-000000036tg-1KhB;
+	Mon, 23 Nov 2026 11:19:17 +0000
+Received: from mail-ej1-x62f.google.com ([2a00:1450:4864:20::62f])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xVS4c-000000036dR-28mo
+	id 1xVS4f-000000036fZ-3FHD
 	for linux-mediatek@lists.infradead.org;
-	Mon, 23 Nov 2026 11:19:04 +0000
-Received: by mail-ej1-x62c.google.com with SMTP id a640c23a62f3a-c50a4a2132cso438890966b.3
-        for <linux-mediatek@lists.infradead.org>; Mon, 23 Nov 2026 03:19:02 -0800 (PST)
+	Mon, 23 Nov 2026 11:19:07 +0000
+Received: by mail-ej1-x62f.google.com with SMTP id a640c23a62f3a-c515369b627so266676666b.1
+        for <linux-mediatek@lists.infradead.org>; Mon, 23 Nov 2026 03:19:05 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20260707; t=1795432741; x=1796037541; darn=lists.infradead.org;
+        d=gmail.com; s=20260707; t=1795432744; x=1796037544; darn=lists.infradead.org;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :content-type:mime-version:subject:date:from:from:to:cc:subject:date
          :message-id:reply-to:content-type;
-        bh=YQ8N9lrkCBm6g5O+8A22MhXclICDJr3w2WLdfhFanRo=;
-        b=xhjtcNpVL1+7E0Se6oCnT0KcQPo5nXJ5We+u/oLKGIRwFO3ilKRxhHq/xnPUYkra2n
-         R6G4Sa0DDE1dlIOGp8kJR0TQ/qDPKLtxxTqqHaoDsrIOw3Ak22tk1OBOLsOxSYT6NfoA
-         jaJkdUdJXfjfxTaA6oXUzNn52Uf9Z06UV21lWzYIv21bDZgDzmySh3298FDr3JGs0K1v
-         l+tSeLBQw4XiOkAQTNHXmyqwLpKwWP7RxSjF39ZZTR4PRVORLe1YUxgGTlRyeHqHMxzr
-         NjZ4+VtqBfAs4JWOo4IhBJB14qIUk+VNNbzvnQOkrrbVwAgl9xqGxLitUDSD0qlyksEH
-         Yf2w==
+        bh=EtVDEEY+1Q2B+PJRdO/nFO/tm1fJ8wXwnQSpYA2WKh8=;
+        b=hNBNIjjHDf1h9uz7FssokQkBwIb0cYfapK9y7DE9WWqVMyNX/UfHRFp0fG4/hgValf
+         o6NL7H3oVCQCnDrshtCfnd+0Pfp6gp8V6ueMXFrea8ygNUDcKxfrLBhz2KlupWEmuAGL
+         FyY79TGGGpZZG7Po+4N6yV324hp9M6rv+epdOQkeyKNgtFEtKFKJTOzGLCh5H5qChxN2
+         2uU8j9IriPuxIEuqMi3C70mRd3kwYpjWxbY/j8BZkwfE2L+p6+GiWtt5dBPW8TLkxoM8
+         UxKFi6F6f0aDzSBog1yW1SRrD6jckc74XmAh6s3RtFDbNGcKobsl5N6d2eesliAwf/y6
+         FinA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1795432741; x=1796037541;
+        d=1e100.net; s=20260707; t=1795432744; x=1796037544;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :content-type:mime-version:subject:date:from:x-gm-gg
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
          :content-type;
-        bh=YQ8N9lrkCBm6g5O+8A22MhXclICDJr3w2WLdfhFanRo=;
-        b=FJO5oPFO5s8UKCyg6DeUcC5JCcOGhh2Im+X+SXFF+b9yw3L0tCbgLMOsqz+VqnHnmG
-         tIz5Vu8b9b7PwXbrOvc0vEjQ4GlS51Hqq9ROKFFikpZFnqB9QkxdSXBBnXk5BqFDoilM
-         XFg3a2orT8zyY9Rnkz1rGGIw94q+rdEcz26xt+wW/wP+yamsOmVkG2j/yaK1Ces8WgKZ
-         vJyBx6oozyWeK8Mm7e6Hz5UWE2Zyu39PICDBKqXd51MFSDEw9v1QWqIVSmG2jHxYT48w
-         D8vjfUHpAxQk4/Y7fa7T88wi77KJTDUIf5eluwxpZRKND/GWEmw8LM596D4QcYRnvSGp
-         3Bcw==
-X-Forwarded-Encrypted: i=1; AL+hErE8AxshdII32hwLzBsRXSihEJuLuolzAhiZnxvTmbvF4MlL9wXMYB+L50NRybnJOeXOd871KXZWZZLjV3pSUA==@lists.infradead.org
-X-Gm-Message-State: APuU4Z+5IAvhlM7TYeeiEEKMryXHOeNg74Q5cJe/vDQJIqRI7lADQNyv
-	nTpxXz5Ou7V/1XoScOMkrLJ9/ID+1MBpaDoAI/9xBLQ2ATFIk1hIdBmN
-X-Gm-Gg: AZFdTZe8IE3W9eTVumuugbQEl9ZCGgV0S40a/w5Sw0tHFrO2Kb3zfI7lyj8eHoaCsvu
-	oMvrw1rFCJ7kGmCzQ7OtFSaF72/ir/GnqoMsqO/x1Shim8znTMCW0Qrv5qzO9PtBavg4jhTifAG
-	Br8Li2bd92G2Z5WKzr0fXgR4xDA2BTyFQRfVVZwMptSFlXfzYEedrnOSPzHhgAIqsapli9H9mms
-	Bo2WRqWN7AUSX1apr52RvnvKbI6vQNenDNVzmBR6MmaPZm84BK/VW3MmF+dtDqqRxBchK6JuDxI
-	rrYsHvLn/3FiDWtjo45lKJhHyMi/pFHKTgbL44aCyJyOFxVcirT4FOGWn5QY1v32JI/0luDBBEw
-	I1HbCWozWMMwtxyJIwm55TDNq3FSUywFgQqYrJpy7epEevTXACi8/Gk7AZa3pRO4Z1r8w26AsK1
-	SSyKWYutPAzQsqnea6uHAtg0SdPYHiiyY+0C6deKj4JySVJ1NHxDsqe/SmnwHSMK64oD6PD6/9r
-	dNnk8YMAxZR2Y+D5CygXrAIXtJaPHuwOMb+3sULwpXpQBfJd50HC8AChCtDx3n+49DZRxzwbJqr
-	TB4nTFNDjlIXs6xOs2NhmuwYnLXqs1Pu6CQZsAglNIyLLsYCpAsSZk+CnmnAJnqPdw==
-X-Received: by 2002:a17:907:3e1c:b0:c51:53bb:8d70 with SMTP id a640c23a62f3a-c5153bb8ed8mr586385266b.16.1795432740595;
-        Mon, 23 Nov 2026 03:19:00 -0800 (PST)
+        bh=EtVDEEY+1Q2B+PJRdO/nFO/tm1fJ8wXwnQSpYA2WKh8=;
+        b=dC8T6lzRPY+XKAbiouR74Z7h4zShn3MOda7oDieyrnZaToTwxHc9i6ubTZKoG7ViQ2
+         tBZdX7GiJsFNJRF6ynm6h7q5wMNJFIAWwcKZmqxyqymhEaTnqcP9Eyg5jXF089oIWJ5v
+         USzhZr0YSCqq6mr4MVyLlberAWcKi91BubkIHb/d5kSX81CPtXeS/n9livHlainAehLW
+         v3hLvLv7iS8dzdQmbod/b1cn/Pm9nROLWt/DUBcvHMSsmsIWlZE0se5dwAEUHwnVItqr
+         pvRzn92J83kurvaiqHMkjr63jBU2rjowAdbdW/z8d8cvIelHQvzGBe0fzHri3RgvhGxx
+         +6NA==
+X-Forwarded-Encrypted: i=1; AL+hErFidy57SHS6xm3tOspiIjLGKEI2UEqRtgZ2US23Y/6rCLvrY7Nr2tdP1Ka1FZVDe77qRcjvPwPAi4CF+JvQgQ==@lists.infradead.org
+X-Gm-Message-State: APuU4Z+XP2lD3OgK5F0GGfdU2UVI09JunFNGyiN3ADmWTT/BnpGWRxad
+	/p1Rgirihw0MZcG0CbEKwdGdcHUjC8q+64DXfCU4tm4cwXUWXYsOeQzz
+X-Gm-Gg: AZFdTZfKRPjiF1mLzFAXSctmCzRNxOTESqatpm+l0+gja4o5M93LPtlBqpigGErIk0d
+	ktsQ9eef69/k5lSRb5FrUXqlN0ysgfBIBTpA7wL/4ZkKekWOuYnRtJ4GHtO3SvCPOhHBgs8G91s
+	3a63S0u0GXN/dCq6aLaywvA/Wje6LxBd+U8BYBPA0ORNGfEP397l/ozFSqjTj1LTu2Upzbw5xvg
+	7+rU5KHVzSZfifD2of4sRUlD7OqDtTxb0kjhlQ4JlbvrN0+zJnJeir55s2MMlRMlwgv9coLFt7p
+	sQ2mZJXkXUUIacuFiYk5FBn7K3BX5obIJPU97QngyV3M+xhMJ5HoNyzvfGgmTH+zfg4rk9P/XQq
+	Lvshon+flClv0za7EoACk1OgAFnFjEGXk8JiFaOLVyZp2ninQ+jCjP3G+mHNPzwF5MGYXripgrA
+	ErRZXxNCO15m6epc7YgY+YreiIpwvhT5ZQoqXMVa+jskn9v9cZiKIc3gH38c2ecuH3t/SMVBErx
+	qBOU3MxtksZUMZbXEiNl/cSRxlJiP8V2GYwrMBECO/mpoDH8tM10oqUgSVZifaY1wk/E+/gn4yi
+	mMc0R9Q3Xej9NNgQkBXQso9PGELiERCRcgLwZYIHQMUklQfce29wSoo6duErpfn0ZA==
+X-Received: by 2002:a17:907:948e:b0:c51:3b09:f7f8 with SMTP id a640c23a62f3a-c513b09f8eamr826376566b.25.1795432744060;
+        Mon, 23 Nov 2026 03:19:04 -0800 (PST)
 Received: from [10.120.183.232] ([50.7.123.82])
-        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-c513afc679bsm392442266b.63.2026.11.23.03.18.58
+        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-c513afc679bsm392442266b.63.2026.11.23.03.19.00
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 23 Nov 2026 03:19:00 -0800 (PST)
+        Mon, 23 Nov 2026 03:19:03 -0800 (PST)
 From: Alexander Letuchiy <asalde.le1@gmail.com>
-Date: Mon, 23 Nov 2026 14:18:34 +0300
-Subject: [PATCH v3 1/7] dt-bindings: arm: mediatek: Add MT6895 and Xiaomi
- Poco X4 GT
+Date: Mon, 23 Nov 2026 14:18:35 +0300
+Subject: [PATCH v3 2/7] dt-bindings: serial: mediatek,uart: Add compatible
+ for MT6895
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20261123-initial-mt6895-v3-1-95c46597e63d@gmail.com>
+Message-Id: <20261123-initial-mt6895-v3-2-95c46597e63d@gmail.com>
 References: <20261123-initial-mt6895-v3-0-95c46597e63d@gmail.com>
 In-Reply-To: <20261123-initial-mt6895-v3-0-95c46597e63d@gmail.com>
 To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, 
@@ -100,13 +100,12 @@ To: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>,
 Cc: devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
  linux-serial@vger.kernel.org, linux-input@vger.kernel.org, 
- phone-devel@vger.kernel.org, 
- Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>, 
+ phone-devel@vger.kernel.org, Conor Dooley <conor.dooley@microchip.com>, 
  Alexander Letuchiy <asalde.le1@gmail.com>
 X-Mailer: b4 0.15.2
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261123_031902_580091_881CA9FD 
-X-CRM114-Status: UNSURE (   9.23  )
+X-CRM114-CacheID: sfid-20261123_031905_907326_27E9A17A 
+X-CRM114-Status: UNSURE (   9.60  )
 X-CRM114-Notice: Please train this message.
 X-Spam-Score: -1.9 (-)
 X-BeenThere: linux-mediatek@lists.infradead.org
@@ -127,31 +126,28 @@ X-Spam-Status: No, score=-15.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Add the compatible for the MediaTek MT6895 (Dimensity 8000/8100) SoC,
-along with the Xiaomi xaga board based on it, which is sold as Xiaomi
-Poco X4 GT, Redmi Note 11T Pro/Pro+ and Redmi K50i.
+Add a compatible string for the UART of the MediaTek MT6895 (Dimensity
+8000/8100) SoC. It works with the existing driver through the
+mediatek,mt6577-uart fallback.
 
-Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
+Acked-by: Conor Dooley <conor.dooley@microchip.com>
 Signed-off-by: Alexander Letuchiy <asalde.le1@gmail.com>
 ---
- Documentation/devicetree/bindings/arm/mediatek.yaml | 4 ++++
- 1 file changed, 4 insertions(+)
+ Documentation/devicetree/bindings/serial/mediatek,uart.yaml | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/Documentation/devicetree/bindings/arm/mediatek.yaml b/Documentation/devicetree/bindings/arm/mediatek.yaml
-index 26f096587631..13e5c31cecba 100644
---- a/Documentation/devicetree/bindings/arm/mediatek.yaml
-+++ b/Documentation/devicetree/bindings/arm/mediatek.yaml
-@@ -72,6 +72,10 @@ properties:
-               - archermind,mt6797-x20-dev
-               - mediatek,mt6797-evb
-           - const: mediatek,mt6797
-+      - items:
-+          - enum:
-+              - xiaomi,xaga
-+          - const: mediatek,mt6895
-       - items:
-           - enum:
-               - bananapi,bpi-r64
+diff --git a/Documentation/devicetree/bindings/serial/mediatek,uart.yaml b/Documentation/devicetree/bindings/serial/mediatek,uart.yaml
+index 5bd8a8853ae0..a3969cfdea7e 100644
+--- a/Documentation/devicetree/bindings/serial/mediatek,uart.yaml
++++ b/Documentation/devicetree/bindings/serial/mediatek,uart.yaml
+@@ -35,6 +35,7 @@ properties:
+               - mediatek,mt6795-uart
+               - mediatek,mt6797-uart
+               - mediatek,mt6893-uart
++              - mediatek,mt6895-uart
+               - mediatek,mt7622-uart
+               - mediatek,mt7623-uart
+               - mediatek,mt7629-uart
 
 -- 
 2.56.0
