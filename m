@@ -2,86 +2,73 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id D4C50606A321
-	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Nov 2026 10:05:32 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 7B4CC606A31A
+	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Nov 2026 10:10:00 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=wRFiLPht;
-	dkim=pass (2048-bit key) header.d=collabora.com header.i=@collabora.com header.a=rsa-sha256 header.s=mail header.b=Fy4TrY6T
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=k4hc0Sd6;
+	dkim=pass (2048-bit key) header.d=collabora.com header.i=@collabora.com header.a=rsa-sha256 header.s=mail header.b=BBePDjYT
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Unsubscribe-Post:
-	List-Owner; bh=dRuT4N91hHE9iRqRCs95W/ga15XeLCIhv2rAxfMU6cg=; b=wRFiLPhtvn5xca
-	hwBP2mSSwLAqJ39J0eENT1V1uNRi0BxKVCsIvDtwDrpEflR3V7AqTloB7hyVINUvRvBoLwRHwHNsN
-	a/ETdUtw/WjVc0Ob5iFraTl7pbg6GNxKfwO+uOo1T1FAaOZN0+tk5kDDyaWfklAOYXs3lg9P0JP+J
-	Z/cbZTgT6WYi9yzqHg7f+t0PSx8PZRsZHhEwDrG1v8TJbXIJAw2XdeRVL2slxh8MrV3yhc5l/A3TV
-	MT+BUih79yJNq2J5Ghy8kI/7hFoiG9pBAvlmLdraiL/Q6PhvkcOUNKcvilKbgN0YrtLKqsO7KoJGl
-	UEoM+yhbRWg5zrxyuolA==;
+	List-Owner; bh=QzNSZ0iFhRlTWtyDOwGZYClX/oRnKCvUibKarAhFQB8=; b=k4hc0Sd6zRF65l
+	IRfR1Uy9WV5V6HDMhm/Hmhh3RHHiT84voyRdeB3Du5BeHnA9ruR4IVhFxfPbBlxTu3+H/+Wuw7miE
+	N/boy/gDDMwjFWiGwW1MbvVKY8sGOyn2be+AXop0ipADVYkjeTVpGICvoRGtwA8Nor/0Uj8691gZt
+	rsSFiEcWhFcqF+TZmNGv8jk40vl/pwuBAQJ8McjYTcwTOjKPLQKbUhR/10xGVBXi2ByE2fcv9Fyoc
+	7048/O7BFXo6tTloJS/4upsAy/lclXQMQw5C2J0Agf7lCuli9GuwxkLMIrKZTV+We1ER/7I9cjc1d
+	OkFJrr1RbchrrBNx4b3g==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xVQvU-00000002tSG-2K6D;
-	Mon, 23 Nov 2026 10:05:32 +0000
+	id 1xVQzo-00000002uNc-0a1M;
+	Mon, 23 Nov 2026 10:10:00 +0000
 Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xVQvR-00000002tOv-18Cj;
-	Mon, 23 Nov 2026 10:05:31 +0000
+	id 1xVQzk-00000002uLi-1e99;
+	Mon, 23 Nov 2026 10:09:58 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1795428326;
-	bh=a1/XioPUQOk/Y+CGy7Ob4OJm/x2Pd/UgMyEWsylmoiU=;
+	s=mail; t=1795428593;
+	bh=dNcePiAUgVfMdRA+1roMRiVaEzWyrtTb8Npu/FK/EqY=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=Fy4TrY6TmXh/ljo+lsHC4WaWEu3NPgVkyxOLpm54IQha82S/0hNWaowDfWqbOZ9Q9
-	 7c5OKwrgrF9RTFGykd3PuoR0dW/b/oI2aG0DtAEUJF63bU9wpv52bLBXd3/rGicn0O
-	 FQHJVomaKIwGtUsxz83Kjhy4HYSMH+R3eCWU7TnpgKtkjnjYILzWyPnwh+g7+mkM5L
-	 G+/HPAoTC+Rq3S31aumUL7381kXn3vNC7FnA9A4cbjMc1Ie9KfUdRLwedlyG5Ur1KD
-	 xGqgkRIL3FlM+yXwz62bKtI566fz7CR5vWDQ1/VMFNvXud8H7pzlF/u5yTK7b5NPyV
-	 J29BH1iSf8yFQ==
+	b=BBePDjYTm0dnzUEMQr71rXFyP6MEJNcQCEHXVkw+Y+2PQzAUn64znCBUpQ9mg6Mpu
+	 dhAobMTj0w62AYUcNRJt06xPjX65TlHXbUDYzBlBXTVrIkavKW2w4e+KiJ3PerXLuN
+	 Hb3qwOPAWaMKgfqUtPbw2yHYOsod19W46F8NOLQDZGoTamlm4gtKZ8Zybzsi8m2brb
+	 LCO24l9X5yzZZoFZsiz/B/FZQutp25a6WYXxTDEZivbrwlMeSnOHjHiV2FSVM1Nm1f
+	 O0b/2h9yaVSaxXm0MviW9R9SbPssuMWCixe/JZLTc+rdKeXlnkATT3FTgKkyrCRARN
+	 SiOj3NT1LKw+Q==
 Received: from [100.64.1.21] (unknown [100.64.1.21])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange x25519)
+	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id E9C5517E007F;
-	Mon, 23 Nov 2026 11:05:25 +0100 (CET)
-Message-ID: <33cf13e4-6df0-45f8-b621-ffe3f43419c9@collabora.com>
-Date: Mon, 23 Nov 2026 11:05:25 +0100
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 274FC17E021B;
+	Mon, 23 Nov 2026 11:09:53 +0100 (CET)
+Message-ID: <05e5b03e-16f7-4e5b-b6ad-f946b2560ccf@collabora.com>
+Date: Mon, 23 Nov 2026 11:09:52 +0100
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 27/46] dt-bindings: display: mediatek: Introduce
- Digital Video Output HW
-To: =?UTF-8?B?Q0sgSHUgKOiDoeS/iuWFiSk=?= <ck.hu@mediatek.com>,
- "chunkuang.hu@kernel.org" <chunkuang.hu@kernel.org>
-Cc: "robh@kernel.org" <robh@kernel.org>,
- "tzimmermann@suse.de" <tzimmermann@suse.de>,
- "simona@ffwll.ch" <simona@ffwll.ch>, "mripard@kernel.org"
- <mripard@kernel.org>, "kernel@collabora.com" <kernel@collabora.com>,
- "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
- "maarten.lankhorst@linux.intel.com" <maarten.lankhorst@linux.intel.com>,
- "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>,
- "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "conor+dt@kernel.org" <conor+dt@kernel.org>,
- "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
- "krzk+dt@kernel.org" <krzk+dt@kernel.org>,
- "p.zabel@pengutronix.de" <p.zabel@pengutronix.de>,
- "airlied@gmail.com" <airlied@gmail.com>,
- =?UTF-8?B?SnVzdGluIFllaCAo6JGJ6Iux6IyCKQ==?= <Justin.Yeh@mediatek.com>,
- "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
- "linux-arm-kernel@lists.infradead.org"
- <linux-arm-kernel@lists.infradead.org>,
- =?UTF-8?B?SmFzb24tSkggTGluICjmnpfnnb/npaUp?= <Jason-JH.Lin@mediatek.com>
-References: <20260714114414.184512-1-angelogioacchino.delregno@collabora.com>
- <20260714114414.184512-28-angelogioacchino.delregno@collabora.com>
- <98cde7319f539cab9f72ec370d309b26569889c9.camel@mediatek.com>
+Subject: Re: [PATCH v2 1/3] clk: mediatek: mt7629: move clock counts out of DT
+ bindings
+To: Chuanhong Guo <gch981213@gmail.com>, Stephen Boyd <sboyd@kernel.org>,
+ Brian Masney <bmasney+clk@redhat.com>,
+ Jerome Brunet <jbrunet+clk@baylibre.com>, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
+ <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>
+Cc: linux-clk@vger.kernel.org, linux-mediatek@lists.infradead.org,
+ devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
+ linux-arm-kernel@lists.infradead.org
+References: <20261120-b4-mt7629-rtc-v2-0-cd877cd496ae@gmail.com>
+ <20261120-b4-mt7629-rtc-v2-1-cd877cd496ae@gmail.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Content-Language: en-US
-In-Reply-To: <98cde7319f539cab9f72ec370d309b26569889c9.camel@mediatek.com>
+In-Reply-To: <20261120-b4-mt7629-rtc-v2-1-cd877cd496ae@gmail.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261123_020529_489063_5F9B49E5 
-X-CRM114-Status: GOOD (  19.11  )
+X-CRM114-CacheID: sfid-20261123_020957_083647_8388AA19 
+X-CRM114-Status: GOOD (  13.78  )
 X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -101,95 +88,84 @@ X-Spam-Status: No, score=-17.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On 11/20/26 03:17, CK Hu (胡俊光) wrote:
-> On Tue, 2026-07-14 at 13:43 +0200, AngeloGioacchino Del Regno wrote:
->> Add documentation for the Digital Video Output (DVO) IP found in
->> the newer generation SoCs MT8196, MT8189 and their variants.
->>
->> This is effectively a more capable block replacing the DisplayPort
->> Interface (DPI/DP_INTF) one found in older SoCs.
->>
->> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
->> ---
->>   .../display/mediatek/mediatek,mt8196-dvo.yaml | 143 ++++++++++++++++++
->>   1 file changed, 143 insertions(+)
->>   create mode 100644 Documentation/devicetree/bindings/display/mediatek/mediatek,mt8196-dvo.yaml
->>
->> diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,mt8196-dvo.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,mt8196-dvo.yaml
->> new file mode 100644
->> index 000000000000..b38960327ca1
->> --- /dev/null
->> +++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,mt8196-dvo.yaml
+On 11/20/26 15:41, Chuanhong Guo wrote:
+> The clock counts used by clk-mt7629.c size the clock provider arrays.
+> They are driver implementation details rather than clock IDs used by
+> device tree consumers.
 > 
-> This file would include multiple SoC dvo, so it's better to use mediatek,dvo.yaml.
-
-Devicetree bindings maintainers will disagree with this statement ;-)
-
+> Move CLK_TOP_NR_CLK, CLK_INFRA_NR_CLK, CLK_PERI_NR_CLK and
+> CLK_APMIXED_NR_CLK into the driver. Keep their values and all clock IDs
+> unchanged.
 > 
->> @@ -0,0 +1,143 @@
->> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
->> +%YAML 1.2
->> +---
->> +$id: https://urldefense.com/v3/__http://devicetree.org/schemas/display/mediatek/mediatek,mt8196-dvo.yaml*__;Iw!!CTRNKA9wMg0ARbw!n3pk94kKoN-7zfem5SHfJn_ixDmAleFOW2dJwmZ8W5gJz-iEQGAN6yOkpupaMXAvAlr3KfAndB5Fjy57tNXsxA_uvNy3$
->> +$schema: https://urldefense.com/v3/__http://devicetree.org/meta-schemas/core.yaml*__;Iw!!CTRNKA9wMg0ARbw!n3pk94kKoN-7zfem5SHfJn_ixDmAleFOW2dJwmZ8W5gJz-iEQGAN6yOkpupaMXAvAlr3KfAndB5Fjy57tNXsxNztWOiH$
->> +
->> +title: MediaTek Digital Video Output (DVO) Controller
->> +
->> +maintainers:
->> +  - AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
->> +
->> +description:
->> +  The MediaTek Digital Video Output (DVO) hardware provides 120-bits (4P) data,
->> +  video timing and info data for the Embedded DisplayPort, hardware-abstracting
-> 
->  From the compatible listed below, DVO not only for eDP, but also DP, right?
-> 
+> Signed-off-by: Chuanhong Guo <gch981213@gmail.com>
 
-Yeah, on MT8189 it's also for DP.
+If you migrate clk-mt7629 to mtk_clk_simple_{probe,remove}, you will realize that
+the CLK_xxxx_NR_CLK definitions are completely useless, and you'll be able to
+remove those.
 
->> +  the previous generation Display Port Interface (DPI/DP_INTF) blocks, other
->> +  than providing new capabilities.
-> 
-> No new capability? But what you list below is new capability or the same as DPI/DP_INTF?
-> 
+Check other MediaTek clock drivers about how to migrate.
 
-The new capabilities include PSR and MSO, other than the 4T1R in output (as DP_INTF
-did support that but only for very specific configurations).
-
->> +  This hardware block supports 1/2/4 pixels per iteration in both its input and
->> +  output and provides 8/10-bit RGB, YUV422 and YUV444 data formats in output,
->> +  other than supporting input/output video window cropping and padding.
->> +  Digital Video Output also provides Panel Self Refresh (PSR) and Multi-SST
->> +  Operation (MSO) features for eDP 1.3/1.4.
->> +
->> +properties:
->> +  compatible:
->> +    enum:
->> +      - mediatek,mt8189-dp-dvo
->> +      - mediatek,mt8189-edp-dvo
-> 
-> This series is so large, so it's better to drop any thing that is not related to mt8196 and you could add them back later.
-
-Are you sure you want me to drop that?
-
-It's just 10 lines of code and some platform data really, I don't think it's all
-that much to justify dropping it?
+In any case, NR_CLK is always the same as ARRAY_SIZE(that_clock_array)....
 
 Cheers,
 Angelo
 
+> ---
+>   drivers/clk/mediatek/clk-mt7629.c      | 5 +++++
+>   include/dt-bindings/clock/mt7629-clk.h | 4 ----
+>   2 files changed, 5 insertions(+), 4 deletions(-)
 > 
-> Regards,
-> CK
-> 
->> +      - mediatek,mt8196-edp-dvo
->> +
->> +  reg:
->> +    maxItems: 1
->> +
->> +  interrupts:
->> +    maxItems: 1
->> +
->>
+> diff --git a/drivers/clk/mediatek/clk-mt7629.c b/drivers/clk/mediatek/clk-mt7629.c
+> index e154771b1b8b..517c43b19f18 100644
+> --- a/drivers/clk/mediatek/clk-mt7629.c
+> +++ b/drivers/clk/mediatek/clk-mt7629.c
+> @@ -17,6 +17,11 @@
+>   
+>   #include <dt-bindings/clock/mt7629-clk.h>
+>   
+> +#define CLK_TOP_NR_CLK		108
+> +#define CLK_INFRA_NR_CLK		6
+> +#define CLK_PERI_NR_CLK		22
+> +#define CLK_APMIXED_NR_CLK		7
+> +
+>   #define MT7629_PLL_FMAX		(2500UL * MHZ)
+>   #define CON0_MT7629_RST_BAR	BIT(24)
+>   
+> diff --git a/include/dt-bindings/clock/mt7629-clk.h b/include/dt-bindings/clock/mt7629-clk.h
+> index ad8e6d7f0154..cff9a02e8302 100644
+> --- a/include/dt-bindings/clock/mt7629-clk.h
+> +++ b/include/dt-bindings/clock/mt7629-clk.h
+> @@ -115,7 +115,6 @@
+>   #define CLK_TOP_CRYPTO_SEL		105
+>   #define CLK_TOP_SGMII_REF_1_SEL		106
+>   #define CLK_TOP_10M_SEL			107
+> -#define CLK_TOP_NR_CLK			108
+>   
+>   /* INFRACFG */
+>   #define CLK_INFRA_MUX1_SEL		0
+> @@ -124,7 +123,6 @@
+>   #define CLK_INFRA_DEVAPC_PD		3
+>   #define CLK_INFRA_APXGPT_PD		4
+>   #define CLK_INFRA_SEJ_PD		5
+> -#define CLK_INFRA_NR_CLK		6
+>   
+>   /* PERICFG */
+>   #define CLK_PERIBUS_SEL			0
+> @@ -149,7 +147,6 @@
+>   #define CLK_PERI_NFI_PD			19
+>   #define CLK_PERI_NFIECC_PD		20
+>   #define CLK_PERI_FLASH_PD		21
+> -#define CLK_PERI_NR_CLK			22
+>   
+>   /* APMIXEDSYS */
+>   #define CLK_APMIXED_ARMPLL		0
+> @@ -159,7 +156,6 @@
+>   #define CLK_APMIXED_ETH2PLL		4
+>   #define CLK_APMIXED_SGMIPLL		5
+>   #define CLK_APMIXED_MAIN_CORE_EN	6
+> -#define CLK_APMIXED_NR_CLK		7
+>   
+>   /* SSUSBSYS */
+>   #define CLK_SSUSB_U2_PHY_1P_EN		0
 > 
 
