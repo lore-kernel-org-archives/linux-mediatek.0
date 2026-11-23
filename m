@@ -2,112 +2,62 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 916F4606A327
-	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Nov 2026 11:59:23 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 3D30D606A31F
+	for <linux-mediatek@archiver.kernel.org>; Mon, 23 Nov 2026 12:00:55 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=vOsBGsAq;
-	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=E+SC12mi
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=b5XpHfDM;
+	dkim=pass (2048-bit key) header.d=protonmail.com header.i=@protonmail.com header.a=rsa-sha256 header.s=protonmail3 header.b=ghMx/3dg
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:References:To:
-	From:Subject:Cc:Message-Id:Date:Content-Type:Content-Transfer-Encoding:
-	Mime-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Subject:Cc:From:
+	To:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Unsubscribe-Post:
-	List-Owner; bh=1jrfyM8AKRsXsQr/mDzcRHfpMeGCqxxnp8QiMrGkGyA=; b=vOsBGsAqbvil8c
-	zaD4WNJNzEgOhCFuO1jGM/jwLtCWwPnaU1Y9ZLAm/MCiCZGxehR8AVgPjCit78iTPYVuTEXnYeeD2
-	jCXJ9FyUNoGEnwv4aZkcBU1SotHznqWyUOZ0jyK8V6aKPN6rFzcHXvZHxhkpVxsY7TvArlllFlJ7/
-	hg0kfo9p1zwG5mmUqjU/MmtclqOLF28c6cQDMp8p1lRVSgRx+91cCHM11qQAcKXoylFIwHdbeAb0z
-	c2spllllS6ijjfa2o9/fmeABxDMESbyo9RpBzkpuiFYQjNr+YCXkqVdH4Ziickhltynm2EGAHA6Dm
-	FND+4IjYHsb3ZyXz5hUQ==;
+	List-Owner; bh=z8qg3U6Qej1tpAsWPfwFQnfSv2z3+luuDln9nLU+vFA=; b=b5XpHfDMV4L2TX
+	rFjThFhcAE3gVnipcJHnuO7IrMJXPVnXYiIdHxqzJf0oKxzErB/53Ml2RFrr22jbpjx6y3GDTnHv1
+	NimnfktIfyY773HdFoamH/WxE8P//HWHAk7aBWgmcslcaP2vsCVxxFOJ2F2JtfwCxjqWowGBX9Q/Q
+	06sE6/pUyO3aBl9I1uHRJeVHd4LjYeIdhUL1t3ZaMo1DAIWnpZ58B42oW5tHOqvqiFaZGH7GezUX/
+	H2E7Ubd+SOGYlP/ZZWW1g6NPcYd1txbtO0iZpRLNe9f3VV5hmmNNKM4krTsv3moeAR+d93C5In9JA
+	vzTvt9tQuRbbmGfuo2Dg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xVShf-00000003GCr-19fD;
-	Mon, 23 Nov 2026 11:59:23 +0000
-Received: from mail-ed1-x535.google.com ([2a00:1450:4864:20::535])
+	id 1xVSj8-00000003GWP-4273;
+	Mon, 23 Nov 2026 12:00:54 +0000
+Received: from mail-4322.protonmail.ch ([185.70.43.22])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xVShb-00000003GBO-2Ar0
+	id 1xVSj5-00000003GVN-0B74
 	for linux-mediatek@lists.infradead.org;
-	Mon, 23 Nov 2026 11:59:21 +0000
-Received: by mail-ed1-x535.google.com with SMTP id 4fb4d7f45d1cf-6b876afbb86so3936582a12.3
-        for <linux-mediatek@lists.infradead.org>; Mon, 23 Nov 2026 03:59:18 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20260707; t=1795435157; x=1796039957; darn=lists.infradead.org;
-        h=in-reply-to:references:to:from:subject:cc:message-id:date
-         :content-type:content-transfer-encoding:mime-version:from:to:cc
-         :subject:date:message-id:reply-to:content-type;
-        bh=1jrfyM8AKRsXsQr/mDzcRHfpMeGCqxxnp8QiMrGkGyA=;
-        b=E+SC12mifgLLxpWaAho6n9AlQnnzNaOr3eLRAjNi8O/uBGDONqvjreHUIVemII6zt1
-         IbTHGObqrJ/AcKN0Wd9iLuNPyc4wUMwdkxjC2i65TaVcao1U8hanG7EI0UmPtN80nrRq
-         5t3ou277FsdXmcg61C543ZN0tkinonoNlIAx33reeKR+MOwrCLux3sSDNxY2QFz+s8B0
-         dEQvhwPDqi0EN+su+hwn004hjtbKI9KOoMHL0TxhFIx0xx4IIPkw5eZIES47iWgxpKK9
-         RBf8+mpPiH74e/lahG71gA6m7vYqwztiqESk4ZrOGsMr7YDYVFBZgoajeb1yJD5QU0v8
-         vRrA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1795435157; x=1796039957;
-        h=in-reply-to:references:to:from:subject:cc:message-id:date
-         :content-type:content-transfer-encoding:mime-version:x-gm-gg
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
-         :content-type;
-        bh=1jrfyM8AKRsXsQr/mDzcRHfpMeGCqxxnp8QiMrGkGyA=;
-        b=La50ovpqbLcu1PwBDpdUDFv1cRjrY90Paas2YM1iIXHdybl26VNvonZrXqYes6ya00
-         FxI8HJ70cv4NIX+2igYMQloIKcKVagW9Bos4YmSYVedY5zi9qbCPwyIeOe1BUVIDwk9r
-         3HsyPzWw1bw9exlLlX/VdJWgK7WmKTn/7zPnXWBreT4M5Xm3azx/Y7ZYNnePPUi7jK4X
-         AFOXnUB7sw0xwp1w+3ySPev5L2laT1WMzwKa6rnhLTln7OXEsBDM7EnKkdKrNFOiDEzJ
-         opFiBaP+ZJAgqMTePfiycQdiZJtXzD1LFIG8BLhUrZ1ubrXtxB00PgY/BI9KEHGAm5M4
-         Sy5w==
-X-Forwarded-Encrypted: i=1; AL+hErF4+qUtrkpn7cbW3VXzOp65n0vY0jq7Ogq2kSQQb70z8frfGYA29hE4eHdHEGjjTs7Y/RQCGablThUpPopJrQ==@lists.infradead.org
-X-Gm-Message-State: APuU4Z/dSTEfYEuLAFrStq8Xc7kxn3i1GIC3KRuzke7P48FWGWlZ8YG6
-	Jy98r4HkLS6NgQwm80FCUHeTP02Oc65cG7BxHwdoeY6CvduCBJdA030y
-X-Gm-Gg: AZFdTZfwbGrcKFiJ41UjAqGx42Nfd04oYzj2+MhxBhXybxM2D44rt3PysNAXcwuw7r9
-	cH+oNSw4Zgi/sYnPyO5tSKIt8eCf6uzdM6vmShNGoZQKFPNK8yW+UZEC7LQx+6Sz2NRaPDQuliO
-	gnpgVUOZe/b+JtNqBLmp92j/fH9FaGYRhVOk8qPpGzvk/oaBX7pE1g09pHWodW3hLVEyp3yT/XI
-	C/Jy7zV42rTXDsfJXGlrDcrRdWQTIHfyE5hCIf/H4J0YTyydLGZ08icsAhWxqjLxO3gpCNb8bpP
-	S3SMj2YbbQfZTlzKqZXeJ24d0LzKVL7QRp0gfIk47Arq6tTVWpuIhOv3CIhOek6+DQJdNmPZgYg
-	I8iIiaXqYA5PbdIQeAz4QwjuLChTYJYB28QGWz6z2ISETQ2pf93MoGudGn9ehYoo6XXfz+oZWQK
-	fguN/tMprrkZZD6R1e/myZBaCP09jnhWpfEa7q0HYuCeu0rM911X2gumFhrVUkiqCCxMfKGxGAR
-	o71z89ed8kXJb7t/BhYljLVunJgj4tKYGh0eRJ/6czsjr1VANZS5HnXs5R697MkoRTKlPQ3Q2Tg
-	ZQT8RUR+Ju6wQIo8CK/uosJYv9OHyCtJWtGsqV8hDdWGiEzPc8IGIzOU
-X-Received: by 2002:a17:907:9306:b0:c3e:e677:5608 with SMTP id a640c23a62f3a-c513a5da8d0mr870341966b.12.1795435157410;
-        Mon, 23 Nov 2026 03:59:17 -0800 (PST)
-Received: from localhost ([50.7.123.82])
-        by smtp.gmail.com with ESMTPSA id a640c23a62f3a-c513ae68a9asm395946466b.30.2026.11.23.03.59.14
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Mon, 23 Nov 2026 03:59:17 -0800 (PST)
+	Mon, 23 Nov 2026 12:00:53 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=protonmail.com;
+	s=protonmail3; t=1795435247; x=1795694447;
+	bh=z8qg3U6Qej1tpAsWPfwFQnfSv2z3+luuDln9nLU+vFA=;
+	h=Date:To:From:Cc:Subject:Message-ID:In-Reply-To:References:
+	 Feedback-ID:From:To:Cc:Date:Subject:Reply-To:Feedback-ID:
+	 Message-ID:BIMI-Selector;
+	b=ghMx/3dg2zSJoKg0v4LkFmgAUSKTrtj4meQAd2seNAMRVfXTtmg1YxOln2MsOhJlr
+	 pZGQa6rX0m2gnWgBQZr0GnHkW51Uh6dus3KW6oDJP1LHR5h+om9Rnq2NCkdIBWOE/8
+	 VeloCQFtp7ed9geyWVbdZ9wDa7ruV5BigJpoA5oILwc4s2/bH/mjKPF2MQxfRiih+2
+	 n9PswQ7IuYeiLNfRF/i8581MXOhqX3quSCwkCxG9hDeLDxcAcZ74+t/dX+fZ0Hc4Rv
+	 RoKM1I4noQ3HNHsVbUzMsOek23H/M+TLbuaMJS46Ptt+q8hkAoAChVm7bXXc2eY1+k
+	 kse3Sh7kLUc8g==
+Date: Mon, 23 Nov 2026 12:00:40 +0000
+To: Alexander Letuchiy <asalde.le1@gmail.com>
+From: Roman Vivchar <rva333@protonmail.com>
+Cc: Rob Herring <robh@kernel.org>, Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Sean Wang <sean.wang@mediatek.com>, Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Jiri Slaby <jirislaby@kernel.org>, Daniel Lezcano <daniel.lezcano@kernel.org>, Thomas Gleixner <tglx@kernel.org>, Mattijs Korpershoek <mkorpershoek@kernel.org>, Dmitry Torokhov <dmitry.torokhov@gmail.com>, Kees Cook <kees@kernel.org>, Tony Luck <tony.luck@intel.com>, "Guilherme G. Piccoli" <gpiccoli@igalia.com>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-serial@vger.kernel.org, linux-input@vger.kernel.org, phone-devel@vger.kernel.org
+Subject: Re: [PATCH v3 7/7] arm64: dts: mediatek: Add Xiaomi Poco X4 GT
+Message-ID: <cYX8v2leizSJfWjS_2dbkU2i6ApgjEKmgar6xjZopFQipSXW6YZNgjexWomHucqKghaTzW7oO5GN_jeNBM1MBy0u7aEDR2ygQ1s7x_L2jpA=@protonmail.com>
+In-Reply-To: <20261123-initial-mt6895-v3-7-95c46597e63d@gmail.com>
+References: <20261123-initial-mt6895-v3-0-95c46597e63d@gmail.com> <20261123-initial-mt6895-v3-7-95c46597e63d@gmail.com>
+Feedback-ID: 173184497:user:proton
+X-Pm-Message-ID: 9176670b887ca86ce9dd7243954764b2d1874340
 X-Archived-By: <archiver.kernel.org>
-Mime-Version: 1.0
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: quoted-printable
-Content-Type: text/plain; charset=UTF-8
-Date: Mon, 23 Nov 2026 14:59:13 +0300
-Message-Id: <DN2KN6PFHOXG.1EWK1XUHY7IKK@gmail.com>
-Cc: "Rob Herring" <robh@kernel.org>, "Krzysztof Kozlowski"
- <krzk+dt@kernel.org>, "Conor Dooley" <conor+dt@kernel.org>, "Matthias
- Brugger" <matthias.bgg@gmail.com>, "AngeloGioacchino Del Regno"
- <angelogioacchino.delregno@collabora.com>, "Sean Wang"
- <sean.wang@mediatek.com>, "Greg Kroah-Hartman"
- <gregkh@linuxfoundation.org>, "Jiri Slaby" <jirislaby@kernel.org>, "Daniel
- Lezcano" <daniel.lezcano@kernel.org>, "Thomas Gleixner" <tglx@kernel.org>,
- "Mattijs Korpershoek" <mkorpershoek@kernel.org>, "Dmitry Torokhov"
- <dmitry.torokhov@gmail.com>, "Kees Cook" <kees@kernel.org>, "Tony Luck"
- <tony.luck@intel.com>, "Guilherme G. Piccoli" <gpiccoli@igalia.com>,
- <devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
- <linux-arm-kernel@lists.infradead.org>,
- <linux-mediatek@lists.infradead.org>, <linux-serial@vger.kernel.org>,
- <linux-input@vger.kernel.org>, <phone-devel@vger.kernel.org>, "Krzysztof
- Kozlowski" <krzysztof.kozlowski@oss.qualcomm.com>, "Conor Dooley"
- <conor.dooley@microchip.com>
-Subject: Re: [PATCH v3 0/7] arm64: mediatek: Add initial MT6895 and Xiaomi
- Poco X4 GT support
-From: "Alexander Letuchiy" <asalde.le1@gmail.com>
-To: "Roman Vivchar" <rva333@protonmail.com>, "Alexander Letuchiy"
- <asalde.le1@gmail.com>
-X-Mailer: aerc 0.22.0-0-gc2f86b7abde3
-References: <20261123-initial-mt6895-v3-0-95c46597e63d@gmail.com>
- <ckJZtdZ4-fPzsa3vkozNyEYYUbG9qd134hYb0hHEuq2nL8WMAR1PS87OpDfXrkU-E-85rsG1I4V99_M41j6-ewkD_41XPguDel3z8z0lmMk=@protonmail.com>
-In-Reply-To: <ckJZtdZ4-fPzsa3vkozNyEYYUbG9qd134hYb0hHEuq2nL8WMAR1PS87OpDfXrkU-E-85rsG1I4V99_M41j6-ewkD_41XPguDel3z8z0lmMk=@protonmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261123_035919_573805_4CC531B8 
-X-CRM114-Status: GOOD (  16.69  )
-X-Spam-Score: -1.9 (-)
+X-CRM114-CacheID: sfid-20261123_040052_153234_C7B118BD 
+X-CRM114-Status: GOOD (  20.91  )
+X-Spam-Score: -2.5 (--)
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -118,52 +68,130 @@ List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-2.9 required=3.0 tests=BAYES_00,DKIM_SIGNED,
+X-Spam-Status: No, score=-12.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
 	DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,FREEMAIL_FORGED_FROMDOMAIN,
-	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS autolearn=no autolearn_force=no version=4.0.1
+	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=ham
+	autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Hi Roman,
+On Monday, November 23rd, 2026 at 1:20 PM, Alexander Letuchiy <asalde.le1@g=
+mail.com> wrote:
 
-On Mon Nov 23, 2026 at 2:41 PM MSK, Roman Vivchar wrote:
-> > Bootloader dependency
-> > ---------------------
-> > This was tested with a modified LK bootloader that is not public.
+> Add a device tree for the Xiaomi xaga board, which is sold as Xiaomi
+> Poco X4 GT, Redmi Note 11T Pro/Pro+ and Redmi K50i. It enables a serial
+> console on UART0 and the volume down key on the SoC keypad. The power
+> and volume up keys are connected to the MT6363 PMIC, which isn't
+> supported yet.
 >=20
-> How are other xaga users supposed to boot the kernel? You might want to
-> port uniLoader instead, or if you're on an old enough security patch you
-> can even replace stock LK with U-Boot. U-Boot chainloading is also
-> possible.
-
-Right now I am replacing the stock LK with a modified one that knows
-how to handle mainline DTs without expecting downstream Android nodes.
-
-In an ideal world, I would like to replace LK directly with U-Boot as
-you suggested, though U-Boot chainloading or uniLoader are also valid
-options. Luckily, the security patch level isn't really a concern here =E2=
-=80=94
-xaga is already EOL and hasn't received official firmware updates for a
-while, so LK replacement works across the final stock builds. I
-definitely plan to look into a proper open bootloader setup for other
-users in the future.
-
-> > Firmware behaviour
-> > ------------------
-> > Two things in the stock TF-A affect what the DT describes, but not the
-> > DT itself:
-> >=20
-> >  - TF-A rejects CPU_SUSPEND for about the first 40 seconds after boot.
-> >    The vendor kernel lifts this earlier with a SiP call, so with this
-> >    series the idle states only start to be used after that time.
+> The DT only describes the memory that Linux itself uses, which is the
+> ramoops region. The bootloader updates the /memory node and adds the
+> firmware carveouts to /reserved-memory, so their addresses are not
+> hardcoded here. This DT must not be booted with a bootloader that does
+> not do this, as Linux would then use memory owned by the firmware.
 >=20
-> It might be worth porting upstream TF-A too.
+> The ramoops zone sizes place the console zone at the offset where the
+> bootloader expects to find it.
+>=20
+> Signed-off-by: Alexander Letuchiy <asalde.le1@gmail.com>
+> ---
+>  arch/arm64/boot/dts/mediatek/Makefile              |  1 +
+>  .../arm64/boot/dts/mediatek/mt6895-xiaomi-xaga.dts | 87 ++++++++++++++++=
+++++++
+>  2 files changed, 88 insertions(+)
+>=20
+> diff --git a/arch/arm64/boot/dts/mediatek/Makefile b/arch/arm64/boot/dts/=
+mediatek/Makefile
+> index a86fb313b1a9..d73489149ab5 100644
+> --- a/arch/arm64/boot/dts/mediatek/Makefile
+> +++ b/arch/arm64/boot/dts/mediatek/Makefile
+> @@ -6,6 +6,7 @@ dtb-$(CONFIG_ARCH_MEDIATEK) +=3D mt6795-evb.dtb
+>  dtb-$(CONFIG_ARCH_MEDIATEK) +=3D mt6795-sony-xperia-m5.dtb
+>  dtb-$(CONFIG_ARCH_MEDIATEK) +=3D mt6797-evb.dtb
+>  dtb-$(CONFIG_ARCH_MEDIATEK) +=3D mt6797-x20-dev.dtb
+> +dtb-$(CONFIG_ARCH_MEDIATEK) +=3D mt6895-xiaomi-xaga.dtb
+>  dtb-$(CONFIG_ARCH_MEDIATEK) +=3D mt7622-rfb1.dtb
+>  dtb-$(CONFIG_ARCH_MEDIATEK) +=3D mt7622-bananapi-bpi-r64.dtb
+>  dtb-$(CONFIG_ARCH_MEDIATEK) +=3D mt7981b-cudy-wr3000-v1.dtb
+> diff --git a/arch/arm64/boot/dts/mediatek/mt6895-xiaomi-xaga.dts b/arch/a=
+rm64/boot/dts/mediatek/mt6895-xiaomi-xaga.dts
+> new file mode 100644
+> index 000000000000..7bfe0d438803
+> --- /dev/null
+> +++ b/arch/arm64/boot/dts/mediatek/mt6895-xiaomi-xaga.dts
+> @@ -0,0 +1,87 @@
+> +// SPDX-License-Identifier: (GPL-2.0 OR MIT)
+> +/*
+> + * Copyright (C) 2026 Alexander Letuchiy <asalde.le1@gmail.com>
+> + */
+> +
+> +/dts-v1/;
+> +#include <dt-bindings/input/input.h>
+> +
+> +#include "mt6895.dtsi"
+> +
+> +/ {
+> +=09model =3D "Xiaomi Poco X4 GT";
+> +=09compatible =3D "xiaomi,xaga", "mediatek,mt6895";
+> +=09chassis-type =3D "handset";
+> +
+> +=09aliases {
+> +=09=09serial0 =3D &uart0;
+> +=09};
+> +
+> +=09chosen {
+> +=09=09stdout-path =3D "serial0:921600n8";
+> +=09};
+> +
+> +=09memory@40000000 {
+> +=09=09device_type =3D "memory";
+> +=09=09/* The size will be filled in by the bootloader */
+> +=09=09reg =3D <0x0 0x40000000 0 0>;
+> +=09};
+> +
+> +=09reserved-memory {
+> +=09=09ranges;
+> +=09=09#address-cells =3D <2>;
+> +=09=09#size-cells =3D <2>;
+> +
+> +=09=09/* The firmware carveouts are added by the bootloader. */
+> +
+> +=09=09ramoops@48090000 {
+> +=09=09=09compatible =3D "ramoops";
+> +=09=09=09reg =3D <0 0x48090000 0 0xe0000>;
+> +=09=09=09no-map;
+> +=09=09=09console-size =3D <0x40000>;
+> +=09=09=09ftrace-size =3D <0x10000>;
+> +=09=09=09pmsg-size =3D <0x10000>;
+> +=09=09=09record-size =3D <0x10000>;
+> +=09=09};
+> +=09};
+> +};
+> +
+> +&keypad {
+> +=09debounce-delay-ms =3D <32>;
+> +=09keypad,num-columns =3D <1>;
+> +=09keypad,num-rows =3D <1>;
+> +=09linux,keymap =3D <MATRIX_KEY(0, 0, KEY_VOLUMEDOWN)>;
+> +=09pinctrl-0 =3D <&keypad_pins>;
+> +=09pinctrl-names =3D "default";
+> +
+> +=09status =3D "okay";
+> +};
 
-Agreed, upstreaming TF-A support for MT6895 is also something I plan to
-look into eventually, which would let us drop the reliance on the stock
-TF-A quirks altogether.
+Nit: vendor,property should go after pinctrl.
+
+debounce-delay-ms
+pinctrl-0
+pinctrl-names
+keypad,*
+linux,keymap
+
+status
+
+P.S. scripts/dtc/dt-check-style --mode stricter can be handy.
 
 Best regards,
-Alexander
+Roman
 
