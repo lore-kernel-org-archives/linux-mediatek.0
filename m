@@ -2,70 +2,80 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id B4207606A322
-	for <linux-mediatek@archiver.kernel.org>; Tue, 24 Nov 2026 11:21:47 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id A1D2D606A339
+	for <linux-mediatek@archiver.kernel.org>; Tue, 24 Nov 2026 11:25:00 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=HFsEGvDo;
-	dkim=pass (2048-bit key) header.d=collabora.com header.i=@collabora.com header.a=rsa-sha256 header.s=mail header.b=mR9sDyMn
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=atv3o35X;
+	dkim=pass (2048-bit key) header.d=collabora.com header.i=@collabora.com header.a=rsa-sha256 header.s=mail header.b=HKidqfUD
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Unsubscribe-Post:
-	List-Owner; bh=eykty3oSoGJNJdXFXeVz8CWaTenWGSavrnXua+sfRF8=; b=HFsEGvDo/TCV6P
-	mOJEIwgIfkoLir7H52YXwVcJaxJdSAIcvgnhW+ftmiMPFIm9IkojjkDMVjYLZvn65seoLV8w3o6Do
-	v6HNYI+gLhYnlzGQtqjrOZI37megHEqu3LD65yvP0Na6tyJ+7i9wyGL0vYTOb80kg4sXtwzeuhrye
-	0TQju12XTitI+WSdV2sl7O7/A1LqiI5zsZWpWDHzAdEAzcFB5aCMHnUaXpCnVhUeyXVZbnwQ9Z+wl
-	MqYl20CZICxq0kxTz8tlUemeooBKQ7ARPWzYvjDdFoXAnA3JR/g2YgPp31iiqNHsVcKY8RwQnvVkI
-	6vAsfnV+EHNbaP7tCmCg==;
+	List-Owner; bh=fKJgwndBmVk1QjSgTESMXqKkxhnqis7hXIoriLN6iH8=; b=atv3o35XqqpHUT
+	hnvWFgkZEwAPUO47WPgJ8rRb7KXu3bGfiLGuwkS6YVT+ycwzlIV1WRki2La54/NNq7wtfuo7VhZh+
+	0O3FwBLTd1f4Y/8ef1QJHu9C8ILQIXXbMGDjzjsxNnqe8NujiEow8/uFMWz+7gUSl0mjku07lmxxk
+	H2XDM8DHgfe4ABo3kt2qeMtupmYMdz3NvDAutqDy2djWGv+YjTl1qWA9CBEh1tTqm6AS2HhXhEq+5
+	4Fex3cZolMdywuXUDVHrlHphd/t68zzF0j+PGii/88+1tvxbR1N43GU19l40nhqC5Ot+hJya9dJIA
+	4cZOuVTzHuHV8+3s44tw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xVoao-00000006LCL-2KZE;
-	Tue, 24 Nov 2026 11:21:47 +0000
+	id 1xVodw-00000006Ltl-0xMX;
+	Tue, 24 Nov 2026 11:25:00 +0000
 Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xVoaF-00000006KWc-0jWw;
-	Tue, 24 Nov 2026 11:21:21 +0000
+	id 1xVodu-00000006LsC-0kff;
+	Tue, 24 Nov 2026 11:24:59 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1795519268;
-	bh=X92meWCIe2idWIvdqkPIsxNMMdDXuDPGPKHlu8WtMvU=;
+	s=mail; t=1795519496;
+	bh=m+QktASoilhpAu5jCWRlhhnUzEWwf0rcN1O0jXft81Y=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=mR9sDyMno2ncuDBWp1CXjOfdhq2+FvMOYrlLG1QM5AiNIstJ2Fh5FFKfTDgw811W+
-	 CqrrGgaUUaojO/WET+fhKLVzyMvGvX6gvzFyqx5VLJAsnwpWFwEWZ3Tll8ZZe0WkDu
-	 RJtbOKK2pRbB6rdnaFtq814ERrnL3aGAJhVc57tY+YhN5fnTBfp9Sipycb/fVpeb6c
-	 YQ3atOJeiT5eIydbtYUk/aho8TJUm2G0lwYTsU+vx0PnhdkNF4BfeviWXd9dyMcH03
-	 kYwYE9dBAQfROwvA+qZf5QDuOXP6j0egDeTAmES2mQ0UjpLbBIRh1R4K+EhP5ty+17
-	 KF0Ebeg0cztAA==
+	b=HKidqfUD0IcjQxD6en+YNVjDJQ0sI43LaDJhDB2jeA6MFVDhqieRSvJGtqAvlrm8j
+	 +52M527PJXxwiGZtMN3RayKqMMnNMndXcnxUJTlZwIkMViAPUATAD3pCIrSFrakjO0
+	 w46uiz9bTgr6VDfkzRk250nOJ9QZ76purJlAcs+O31yD848ID2sqwPtkLjT5r70FGC
+	 2MtYpQV2w/WXbtUMNtX9BM0FUjzAPHaKlwEDuH85pnf/s3umOlQuw6lb1FNfnnxGX5
+	 Oac5GfU7x+yUJj0F3WmEtxU0jlEa0CAHnhveouDy319G1PKxaB515gni9AIJXZg+Da
+	 y/9Na3NcTKD3g==
 Received: from [100.64.1.21] (unknown [100.64.1.21])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+	 key-exchange x25519)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 8D79617E0309;
-	Tue, 24 Nov 2026 12:21:08 +0100 (CET)
-Message-ID: <c4dcf958-34bf-4000-91b6-d13c12814f8f@collabora.com>
-Date: Tue, 24 Nov 2026 12:21:08 +0100
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 7FF3C17E0309;
+	Tue, 24 Nov 2026 12:24:55 +0100 (CET)
+Message-ID: <56cca340-b7b8-4e6a-adbb-887864cc14b1@collabora.com>
+Date: Tue, 24 Nov 2026 12:24:55 +0100
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2] Input: goodix - sync the irq controller while starting
- firmware
-To: Luca Leonardo Scorcia <l.scorcia@gmail.com>,
- linux-mediatek@lists.infradead.org
-Cc: Hans de Goede <hansg@kernel.org>,
- Dmitry Torokhov <dmitry.torokhov@gmail.com>,
- Matthias Brugger <matthias.bgg@gmail.com>, linux-input@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org
-References: <20261124085058.128173-1-l.scorcia@gmail.com>
+Subject: Re: [PATCH v2] drm/mediatek: dsi: Don't let a signal cut the IRQ wait
+ short
+To: =?UTF-8?B?Q0sgSHUgKOiDoeS/iuWFiSk=?= <ck.hu@mediatek.com>,
+ =?UTF-8?B?WmktaGFvIEh1YW5nICjpu4PmopPosaop?= <Zi-hao.Huang@mediatek.com>,
+ "ryanbrue.dev@gmail.com" <ryanbrue.dev@gmail.com>
+Cc: "chunkuang.hu@kernel.org" <chunkuang.hu@kernel.org>,
+ "simona@ffwll.ch" <simona@ffwll.ch>,
+ "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>,
+ "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+ "airlied@gmail.com" <airlied@gmail.com>,
+ "linux-arm-kernel@lists.infradead.org"
+ <linux-arm-kernel@lists.infradead.org>,
+ "p.zabel@pengutronix.de" <p.zabel@pengutronix.de>,
+ "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+ "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
+ =?UTF-8?B?U2hhb21pbmcgQ2hlbiAo6ZmI57uN5piOKQ==?= <shaoming.chen@mediatek.com>
+References: <20261119033634.1844084-1-zi-hao.huang@mediatek.com>
+ <fe208c0c-cea4-4e56-8283-e242ac1cd2ae@gmail.com>
+ <65140b86aed23f307f8552be8bc5ae13f1de1874.camel@mediatek.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Content-Language: en-US
-In-Reply-To: <20261124085058.128173-1-l.scorcia@gmail.com>
+In-Reply-To: <65140b86aed23f307f8552be8bc5ae13f1de1874.camel@mediatek.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261124_032113_509062_1E1A2E1D 
-X-CRM114-Status: GOOD (  20.46  )
+X-CRM114-CacheID: sfid-20261124_032458_387346_41397987 
+X-CRM114-Status: GOOD (  15.72  )
 X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -77,88 +87,66 @@ List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-22.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-12.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,
-	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,SPF_HELO_NONE,SPF_PASS,
-	USER_AGENT_SANE_1 autolearn=ham autolearn_force=no version=4.0.1
+	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1 autolearn=ham
+	autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On 11/24/26 09:46, Luca Leonardo Scorcia wrote:
-> On the Lenovo Tab E7 (TB-7104F), which has a Goodix GT-912 touch screen,
-> the touch screen fails to come online after loading firmware, printing
-> the error "Error reading 1 bytes from 0x8041: -6".
+On 11/24/26 06:54, CK Hu (胡俊光) wrote:
+> On Mon, 2026-11-23 at 18:31 -0600, Ryan Brue wrote:
+>> External email : Please do not click links or open attachments until you have verified the sender or the content.
+>>
+>>
+>> On Thu, Nov 19, 2026 at 11:36:34AM +0800, Zi-Hao Huang wrote:
+>>   > I'm not sure the trigger is specific to our downstream driver.
+>>
+>> I hit the same lockup on MT8173 (Amazon Fire HD 10 2017) with the
+>> upstream driver. v7.4-rc4, whose only DSI change is "drm/mediatek: dsi:
+>> force command mode in mtk_dsi_poweron()" from the mediatek tree, and the
+>> mainline NT51021 panel driver, which also sets prepare_prev_first and
+>> sends display off and enter sleep from .unprepare.
+>>
+>> The trigger for me was suspend under Plasma. logind's PrepareForSleep
+>> makes KWin turn the display off, and the session is frozen while KWin's
+>> commit is still in the panel's unprepare. The freezer's fake signal ends
+>> the interruptible wait with -ERESTARTSYS, mtk_dsi_host_send_cmd() takes
+>> that for success, and the late CMD_DONE lands in mtk_dsi_irq()'s
+>> DSI_BUSY loop. After the watchdog reset, MT8173's last-PC latch showed
+>> CPU0 at mtk_dsi_irq+0x84, the DSI_INTSTA read in that loop.
+>>
+>> With only mediatek-drm.ko changed, suspending through logind with a GPU
+>> benchmark running: without the patch 5 of 6 suspends reset the board
+>> (about one in three without the load); with this v2, 0 of 10, with no
+>> DSI IRQ or vblank timeouts, and the panel's power-down still takes 270ms.
+>>
+>> The wake_up() hunk matters. With only the wait changed, every command
+>> waited out its 2s timeout and the panel's power-down took 10.4s.
+>>
+>> Tested-by: Ryan Brue <ryanbrue.dev@gmail.com> # MT8173, NT51021
+>>
+>> I actually had a similar fix ready to go, and found your patch, so thank
+>> you :)
 > 
-> Comparing the upstream code with the Android stock sources, the existing
-> call to goodix_int_sync should be moved between the upload of the firmware
-> and the watchdog restart. With this change the touchscreen is correctly
-> detected and working.
+> The upstream driver has this problem, and this patch fix it,
+> so I would apply this patch first.
 > 
-> Signed-off-by: Luca Leonardo Scorcia <l.scorcia@gmail.com>
 
-Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+CK, okay, apply it.
 
-> ---
-> Relevant bit of the stock source driver at [1].
+Beware though, this will block at every frame and lower performance quite a bit.
+
+Cheers,
+Angelo
+
+> Regards,
+> CK
 > 
-> Credits for noticing the issue and finding its cause go to matemiller992
-> on the postmarketOS forums, I cannot provide tags as he wants to stay
-> anonymous.
+>>
+>> Best regards,
+>> Ryan Brue
 > 
-> Patch tested on the Lenovo Tab E7 (TB-7104F).
-> 
-> Changes in v2:
-> - Instead of adding a second call to goodix_int_sync, move the existing
->    one;
-> - Simplify the access to the necessary arguments/parameters.
-> 
-> v1: [2]
-> 
-> [1] https://github.com/lscorcia/linux-lenovo-tb7104f/blob/2dad69c9f28611ac6d3db2f1ee11b480a60d83ee/kernel-4.4/drivers/input/touchscreen/mediatek/gt912_p98996/gt9xx_driver.c#L1529
-> [2] https://lore.kernel.org/linux-mediatek/20261020122712.526797-1-l.scorcia@gmail.com/
-> 
->   drivers/input/touchscreen/goodix_fwupload.c | 13 +++++++------
->   1 file changed, 7 insertions(+), 6 deletions(-)
-> 
-> diff --git a/drivers/input/touchscreen/goodix_fwupload.c b/drivers/input/touchscreen/goodix_fwupload.c
-> index 888da7538c06..642a632d363c 100644
-> --- a/drivers/input/touchscreen/goodix_fwupload.c
-> +++ b/drivers/input/touchscreen/goodix_fwupload.c
-> @@ -153,8 +153,9 @@ static int goodix_enter_upload_mode(struct i2c_client *client)
->   	return 0;
->   }
->   
-> -static int goodix_start_firmware(struct i2c_client *client)
-> +static int goodix_start_firmware(struct goodix_ts_data *ts)
->   {
-> +	struct i2c_client *client = ts->client;
->   	int error;
->   	u8 val;
->   
-> @@ -168,6 +169,10 @@ static int goodix_start_firmware(struct i2c_client *client)
->   	if (error)
->   		return error;
->   
-> +	error = goodix_int_sync(ts);
-> +	if (error)
-> +		return error;
-> +
->   	error = goodix_i2c_read(client, GOODIX_REG_SW_WDT, &val, 1);
->   	if (error)
->   		return error;
-> @@ -249,11 +254,7 @@ static int goodix_firmware_upload(struct goodix_ts_data *ts)
->   	if (error)
->   		return error;
->   
-> -	error = goodix_start_firmware(ts->client);
-> -	if (error)
-> -		return error;
-> -
-> -	error = goodix_int_sync(ts);
-> +	error = goodix_start_firmware(ts);
->   	if (error)
->   		return error;
->   
 
 
