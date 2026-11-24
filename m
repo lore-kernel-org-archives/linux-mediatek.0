@@ -2,11 +2,11 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id D1744606A31E
-	for <linux-mediatek@archiver.kernel.org>; Tue, 24 Nov 2026 14:30:54 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 2D4F4606A32C
+	for <linux-mediatek@archiver.kernel.org>; Tue, 24 Nov 2026 14:33:48 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=w1xYrh2e;
-	dkim=pass (2048-bit key) header.d=fooishbar.org header.i=@fooishbar.org header.a=rsa-sha256 header.s=google header.b=ghR46TcC
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=WmNvPpVj;
+	dkim=pass (2048-bit key) header.d=fooishbar.org header.i=@fooishbar.org header.a=rsa-sha256 header.s=google header.b=mMQuqSN7
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
@@ -14,90 +14,91 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=kFSlcrGHGfKA+EfrnFhI9X/nm4JGlc6mNtmuQxk7pQQ=; b=w1xYrh2eTfTdVdZOwN3BCKf4mA
-	0ujpl1Rg/UdYP/JSgbsoG4L+IQnXmIuoCFqlD2Dvnctxpg7Mi89TrDKm1CclzKz0unBH+R3GOUjUu
-	2dkiTl5moGHjQ2CXb71+zpWkL59lV6zBAHrFz0/Kga2XIlykm3i7KN+8ORetNlBjNTemSEydsgBnQ
-	nl3/YlTgQjh+z9c/EU6Rg0xXX9YDgba/wiDN0nIrqtYXE8RO/6cT1lSPgA6nyJIIJfeWB84al5KqJ
-	kk3nwAQKtW4VGH+YGyLwqDYEJhrKbbf2F1vWg+6AFgKOjQH9H8MeUrhMkik2BT1thtUfk8dviWv33
-	jnh+UYbA==;
+	bh=RUxbFCgX/qZgkllCLWhh1DGi6P1IWH5bzGO/fNRQRnI=; b=WmNvPpVj33SAcOdpus1Tdwg7MA
+	CdU/RO89mBkHoHnOaX6AVkWo9m7Fkrt2fD0VCzjFbWJXM4s83xJ3gwzymqH3s1PfsroVkrklXV1z+
+	OgvgZ5pCOJXT9RRZUn7XxX7HkDYKUz2WgEwMXWMOM5unc3GnDMsk2CjZlhylU1OUf5sC0kKhauKYu
+	/IHsAYv2kZQeJfn+j3w8nMv4JTke8+V4SxPE7n1jWZYufZ8PZCwyIcpDsLevXKqU1EiwA6uZJJtX+
+	bDi2NpuhU7UiYn/Lqk+a+C52bBvHIlkigInWKTawcZwQk0EJNXLDXIuSD2zumfD2PtMbDdvKq22vX
+	Eh1yyYXQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xVrXq-00000006ko8-2Eym;
-	Tue, 24 Nov 2026 14:30:54 +0000
-Received: from mail-pf1-x432.google.com ([2607:f8b0:4864:20::432])
+	id 1xVrad-00000006lkS-15QF;
+	Tue, 24 Nov 2026 14:33:47 +0000
+Received: from mail-pj1-x102d.google.com ([2607:f8b0:4864:20::102d])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xVrXe-00000006kmg-2Cd5
+	id 1xVraX-00000006lf6-1lOJ
 	for linux-mediatek@lists.infradead.org;
-	Tue, 24 Nov 2026 14:30:53 +0000
-Received: by mail-pf1-x432.google.com with SMTP id d2e1a72fcca58-8c70c2ab5a2so1772366b3a.3
-        for <linux-mediatek@lists.infradead.org>; Tue, 24 Nov 2026 06:30:42 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1795530641; cv=none;
+	Tue, 24 Nov 2026 14:33:45 +0000
+Received: by mail-pj1-x102d.google.com with SMTP id 98e67ed59e1d1-3b0ae87069dso1876508a91.2
+        for <linux-mediatek@lists.infradead.org>; Tue, 24 Nov 2026 06:33:41 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1795530820; cv=none;
         d=google.com; s=arc-20260327;
-        b=oqhgsRdNI+KSW/ySe2th9lujI9sLCMlLYB09sULPxcHOLyg5P3mtyR2kLV0nX4ySps
-         enAZPlFPBA5Q6c1pLAN7iJ1IRAR23z1Wp6mfVgtRC9+7usCaNhWoZfhGAXlAGdx4N7lz
-         I5EId1ActeRqJz2/l/YrxHXSLbEJ/vUJNF5GlYexiZFfjuaZeyBCQTG1rbb5hLHeJLGF
-         Yuk8A4tz75Cis5aJF6O0E+Vzl+5GVTgKGvMJ1MR8ViAYLlC6H3QOMsJpb0ELtH4x99St
-         US6+efI3nwC2Zdmz+uedZdsByfI9xTyTEd47BtQBPYMWQwpVU9MdMDAd+toz5lbrArqN
-         SETA==
+        b=a1BEP07R4G/2sAECGrMIVOY22owtAIyrNFHMyLDA/YIbDHtrlc6QzGim89B7Hed6v2
+         A7YX6VRKkHxB6N0JiKZiEKIxjTxbNTjbs7FUODuaDMTkBKw+pvMoBmAHxkRXxbRiJDRJ
+         MPZY+83yrTe70EDVRL0rTGFctFisuPMiQ5yxlAGtZAt03IjAaZXMDIOi0W1EuYLMwm8i
+         UoNIFZHHMYGZ/Eu0fcKIGyja557RiLeOpBzrIE93/1Q/zfvm29KuvKzA0KnDihrJl732
+         NxkHLbUiIFdPlpzx3mPL4XnHYxxPvhQIq6XAVzkkmR1i1MJYpKamD46vaSv18imLUUup
+         oGvg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20260327;
         h=cc:to:subject:message-id:date:from:in-reply-to:references
          :mime-version:dkim-signature;
-        bh=kFSlcrGHGfKA+EfrnFhI9X/nm4JGlc6mNtmuQxk7pQQ=;
-        fh=AdRLswYt3nesobxcLPw6j6u0RNRFFCSQBekZTSvIyUU=;
-        b=FmF6sNkMPNF4TMqy/V2FGIgJUzoYDUYng9A2c80HRkOTcYFMULh6nucpIsJAXPWbIu
-         2fKRtxuR4IaQFSWJOQwV5JpzSHIj/eWgGkqBm0WSBysE0CM/CuM6BhE9qXPP1Sdm0ryx
-         xNp+0Z7YgffT/B9kQMJK41WTpxrMnM5OkOULE9ggwmX6mbHYVLgujf2OBDW/Cg4jN5if
-         C3PW+qdfDoy2lxfv1TQUZ5KZPHJOjzbs+US1CakEBkYnOqvncdgHsgRmF5lNDjdDoLAk
-         GUaMqk1OwQYw4IuElWV1H5nVsI9D6OQwOTk7LAiL5nCiiHHfKjzcN7CixAJSsYxrlxQh
-         Eibw==;
+        bh=RUxbFCgX/qZgkllCLWhh1DGi6P1IWH5bzGO/fNRQRnI=;
+        fh=zzluCqz71FwAyK5xKaGQq/FVpvX4borOFt63v1faiHQ=;
+        b=WqJ6CcOIuKMOww3VM6cjqOWQE648LAtnATzF0uXC3jrXUPnQEBO20XMvcV0zbvx1yV
+         lLJFEux+DQY0yJfO4wW4RmuG7pv0M2kJyra8hPBdogsZsspyPMnK+9BEaQ/s6Rk1UoCG
+         hsHV6B5MGdz48EizcUN7+pygD/EHaiWFs7gFjuRBDSZ9vcgw3F3bLl/uVlO2ibGujt7c
+         ZqYBLR9Ua6hxb1cdnl0uHHQhJktlcKjmVPPfa66hVTnKCSeHNwqik/UpEospMGaGIl9S
+         QCatKnbEoO+iYN2COJAVGydZPnNAq/aq5uWHaqkUJUIR16ptHmekGMagiTKZvhJpPLWO
+         PUBA==;
         darn=lists.infradead.org
 ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=fooishbar.org; s=google; t=1795530641; x=1796135441; darn=lists.infradead.org;
+        d=fooishbar.org; s=google; t=1795530820; x=1796135620; darn=lists.infradead.org;
         h=content-type:cc:to:subject:message-id:date:from:in-reply-to
          :references:mime-version:from:to:cc:subject:date:message-id:reply-to
          :content-type;
-        bh=kFSlcrGHGfKA+EfrnFhI9X/nm4JGlc6mNtmuQxk7pQQ=;
-        b=ghR46TcC8/7HLczdx5CqXQMMXZTbsy/vE//gfXmLkJZrxCupjqwgtrrOHa2xjsNvPr
-         JsEJxiFO5ug8otb4gfce0OZfnFUTE9DrExn99ixPk9xLQPNVn38yfIeA83sNpkBQtQ5T
-         9NjPO8HBcWyCQRilJCYM4t9MAAs81HKWk3j88z0xnudH5flv1WrC/7p9YmVuiWqhJibx
-         d/W4y3Qk52e7k0dH2XA5pDR97hbfa4hBvqeH3GYGlHWHLYYeMjKPEdqkZCs0i+gYwUbV
-         4lx1ZFott1mKqxms/JM5gpnntYMVM6Y5L5Zw0zlv83YTdevLBOcq6jsfLoAKlmkGkvlT
-         +N4Q==
+        bh=RUxbFCgX/qZgkllCLWhh1DGi6P1IWH5bzGO/fNRQRnI=;
+        b=mMQuqSN70izrpDThpR/xN9G3phfFqgpqbgIBm903iNKu0M7qb0OpzppB8jfI0f+O45
+         KmyeijsocxsQkS5LEAyvCAa0zvgo9sd4I5M8wrBpwafcojK2KY102wmnkihOb8QdOIzs
+         PFLdYjWXW70NMWvDOxoM/8DBCheSihPs+3SzQ7Ad/UJ2wAOLaJrc1rrQIH0zvEVtzfgB
+         Z+lJYSOkbrMv8Zt69vUSnBuBTMNmcwJODBGMMnM8zEmtkmK1XSkV7zhX8ekM/5cdo4CH
+         PVIPOMMY6/Gp7zbtqPjbLlAolHLqcZ14+ahwoL5jE+01zhCpw2u8J0ViExYYX9732RA7
+         3ixw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1795530641; x=1796135441;
+        d=1e100.net; s=20260707; t=1795530820; x=1796135620;
         h=content-type:cc:to:subject:message-id:date:from:in-reply-to
          :references:mime-version:x-gm-gg:x-gm-message-state:from:to:cc
          :subject:date:message-id:reply-to:content-type;
-        bh=kFSlcrGHGfKA+EfrnFhI9X/nm4JGlc6mNtmuQxk7pQQ=;
-        b=PdJaGKud4WVvo3r1+uDGPrXhHkJW9KpTsC2tQFYxD6nVjSiT1u/GXM6VMQCpyXjSJk
-         gDCQj1xHSBOHBuFTDaoyCFJw1rUF/fJEPtG2W5qZYCKvBCTNjgjHhGL1s1V4lLUHt5f+
-         taUUY+EpKuU2HsxBza9eE7Szim37Z9EU+zdOdsSUoA7p377fD1Q9VCErJhtqkMtOUNsx
-         fmeLfhp3EUjIKJ/vvTX4liLQDA44XC+P/kV9kWiPi5v79ZhMVGpOP6+27csNggB+nxXB
-         OyPNisnzNNvR3OdeShFy8ViV5V5DXOrm0elXGdV4IfXjYtw/RoDcKvftcnO/9IuhfH0m
-         revQ==
-X-Forwarded-Encrypted: i=1; AL+hErGHxKdIk8E3wD/tqlIjbDpyozzyWh5ZZXazNkcnV4YE6VS8kN1SJYE1eg9XTKUl7FhwiUkiBXJJWJmDwdGlwQ==@lists.infradead.org
-X-Gm-Message-State: APuU4Z9es8jZZGzq1/5uilq/4kBWFgxnYTAgyr2kE2ziD61hKRUKZtrv
-	T8IugWjrzgq4Naz4EMa5ovXL0U3l1vUggZIzvAAsNP2zVJWHa3E0SnlXTIbqYA17e+eMgjm7w/4
-	KTpH9jNLh5yHBBNO+Yi6ODZxWU1XVKqfOz7VgsgBapQ==
-X-Gm-Gg: AZFdTZeSvJbFqcEbOo3/CVtKQNS9F9UfjLqo6POeGqH2G+dL2Yho15jtCTS/EZd5UZL
-	pfS+Gjet9JSQ7eAsipVZMsXu3h855KywV/kpi/se3WBwiRUgCgbP5SYk+/nqSoT0+RznVIsxs0x
-	Jlqb91ufiyz0bQYdul+TlNygMHW5CRBK3uDmndMEFJHg2nFFAgtKnmJZQMRbYz6LWUhrpfhY7TA
-	PSJGclspzqZ+fqeHeAHECKV8/Fou2q33utLDsu6qXgm+y4H++hQvP9cQ1eeCBtY8GWrdaNoffda
-	LHePmY3x7E+fXQ3zDBVoNWXiha5+q3vDvIZdf/epfTdepUrpHq2daiNck07BuR11yJMF1G/XcCw
-	p2zd6f/jBVzldQ6xBby0zdhp9Z4dolvs3XA==
-X-Received: by 2002:a05:6a20:2589:b0:3f9:797f:3869 with SMTP id
- adf61e73a8af0-4014d359938mr14437260637.47.1795530641542; Tue, 24 Nov 2026
- 06:30:41 -0800 (PST)
+        bh=RUxbFCgX/qZgkllCLWhh1DGi6P1IWH5bzGO/fNRQRnI=;
+        b=EIiimzP55PD/ibRyzHqE2CLnh2/71DED2OMkzQVFhZkDEurFCtvN2CSJBji0PXAmyT
+         qCh9aFpaKNbXbZf8WGKx+964tQS8kSttruqf3W+b2Ox3iO+rGMuhRv6+ad9fecANGH15
+         TApz66UPg38ad0yiXwcmROW5h3g5REiiNVBXnmSx33kyibp9dk3Z4hVQJbWJjePI57+R
+         FxFMOXliDdgbGNBz8x7IcDGwFZ46GXlNSnEZQAzJ+zBYyLuTnHZGGFVAixtY9MGlHivx
+         xeY46x6GsbPGtvezjR6uMlRSGE6L04Z3BUnnD1SNul7Xif8nYce2en121GHOjBNUO8Ux
+         MkAQ==
+X-Forwarded-Encrypted: i=1; AL+hErGRm77A3gjS0BoJJNUnL6iEgm7hWQTRnVtgzTu/swdooAlUSileChHnBBf4seDp5b8Lf1mhaY3eEGp/tAeT9w==@lists.infradead.org
+X-Gm-Message-State: APuU4Z+AmHOw0/c22tzkycAOf8L4cXACsToRCrQAuuatWbO5bR9y9+On
+	Py6FioqACw55Gb2arPlME43xEOl2pwUI43ymOafsP2mBjCBiLEMCyGp8t2ziRyRRnZ5K4xZBDAZ
+	QPCRLOXdG7FKzF5+l0pAzkoQhZFSDwqnIjvU66qELzA==
+X-Gm-Gg: AZFdTZf3O7x856Xb3ilzMiky9Hd4iF9PKoHKroLpeLmnSiSm3Es59wNdMvhusOwzegt
+	oneGJcD6mURzMgLB+M7JZIQT7yD2blP6SlAgQwdRQbJZeaDN/KsnEIw6rwgSiytrmWGee3fWZ1O
+	CuxF7NlnYDc2F45VTpfBg0p5h5ENEYxL6zEdZMaJvC46qY4uChXTHu37laXvSTNgX7fvXmA3K9n
+	XiZMyfZUDEzJEbl6bQgn5HLICztqQUfGXxAK1fN766IATsOs4o8ZewCLyajTLugMUXY2rMr/0fd
+	jQf4h0Tq/AmaGAoIAzJLjwnT2CVViDCK+fA0ZwCRR4U3gSq4qwgfMda4a9u6w2srR6e/6heMFWd
+	SWvtMjWDOEz+RLwkNKxOWzb4cTRgqltLO/A==
+X-Received: by 2002:a17:90b:2f8c:b0:3a2:b16d:928b with SMTP id
+ 98e67ed59e1d1-3b41c95aec8mr12847695a91.46.1795530820492; Tue, 24 Nov 2026
+ 06:33:40 -0800 (PST)
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-References: <20260714114414.184512-1-angelogioacchino.delregno@collabora.com> <20260714114414.184512-4-angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20260714114414.184512-4-angelogioacchino.delregno@collabora.com>
+References: <20260714114414.184512-1-angelogioacchino.delregno@collabora.com> <20260714114414.184512-32-angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20260714114414.184512-32-angelogioacchino.delregno@collabora.com>
 From: Daniel Stone <daniel@fooishbar.org>
-Date: Tue, 24 Nov 2026 14:30:29 +0000
-X-Gm-Features: Aa3M54oeKn_H5KtwYJP7Cgtm4lKr9C1ncfB30nHv_jvzqMcIUhZDyb3veHGchVg
-Message-ID: <CAPj87rOEtG9JqJsEZkatqrWUkerO9Xx93MBUrXXChJwCokE0Vw@mail.gmail.com>
-Subject: Re: [PATCH v2 03/46] drm/mediatek: Export OVL Blend function
+Date: Tue, 24 Nov 2026 14:33:29 +0000
+X-Gm-Features: Aa3M54oxOcYmQorjTkd5D-GkJnjfCGVao0VGN1bH7KpMt9eEOWMLLFoUmIq_rhA
+Message-ID: <CAPj87rMW6c0BMELjn70vsc+mkMxegDbSgQC-8BEDGspFyxzW2Q@mail.gmail.com>
+Subject: Re: [PATCH v2 31/46] drm/mediatek: Add support for Display Layer
+ Blender component
 To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Cc: chunkuang.hu@kernel.org, p.zabel@pengutronix.de, airlied@gmail.com, 
 	simona@ffwll.ch, maarten.lankhorst@linux.intel.com, mripard@kernel.org, 
@@ -105,12 +106,12 @@ Cc: chunkuang.hu@kernel.org, p.zabel@pengutronix.de, airlied@gmail.com,
 	matthias.bgg@gmail.com, dri-devel@lists.freedesktop.org, 
 	linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, 
 	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	justin.yeh@mediatek.com, jason-jh.lin@mediatek.com, kernel@collabora.com, 
-	Paul-pl Chen <paul-pl.chen@mediatek.com>, Nancy Lin <nancy.lin@mediatek.com>
+	justin.yeh@mediatek.com, jason-jh.lin@mediatek.com, kernel@collabora.com
 Content-Type: text/plain; charset="UTF-8"
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261124_063042_568279_96D4A26A 
-X-CRM114-Status: GOOD (  14.13  )
+X-CRM114-CacheID: sfid-20261124_063344_530694_2BCB86CE 
+X-CRM114-Status: UNSURE (   9.76  )
+X-CRM114-Notice: Please train this message.
 X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -131,30 +132,34 @@ X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 
 Hi Angelo,
 
-On Tue, 14 Jul 2026 at 12:44, AngeloGioacchino Del Regno
+On Tue, 14 Jul 2026 at 12:46, AngeloGioacchino Del Regno
 <angelogioacchino.delregno@collabora.com> wrote:
-> +unsigned int mtk_ovl_get_blend_mode(struct mtk_plane_state *state, unsigned int blend_modes)
+> +#define DISP_REG_OVL_BLD_L0_CLR                        0x20c
+> +#  define OVL_BLD_BGCLR_BLACK                  0xff000000
+> +#  define OVL_BLD_BGCLR_RED                    0xffff0000
+
+We probably don't need a #define for every ARGB8888 colour tbh. :)
+
+> +void mtk_blender_config(struct mtk_ddp_comp *comp, unsigned int w,
+> +                            unsigned int h, unsigned int vrefresh,
+> +                            unsigned int bpc, struct cmdq_pkt *cmdq_pkt)
 > +{
-> +       unsigned int blend_mode = DRM_MODE_BLEND_COVERAGE;
+> +       struct mtk_disp_blender *priv = dev_get_drvdata(comp->dev);
+> +       u32 val;
+> +
+> +       /* Set ROI for this Blender */
+> +       val = ((h & GENMASK(15, 0)) << 16) | (w & GENMASK(15, 0));
+> +       writel(val, priv->regs + DISP_REG_OVL_BLD_ROI_SIZE);
 > +
 > +       /*
-> +        * For the platforms where OVL_CON_CLRFMT_MAN is defined in the hardware data sheet
-> +        * and supports premultiplied color formats, such as OVL_CON_CLRFMT_PARGB888
-> +        * and supports premultiplied color formats, such as OVL_CON_CLRFMT_PARGB8888.
-> +        *
-> +        * Check blend_modes in the driver data to see if premultiplied mode is supported.
-> +        * If not, use coverage mode instead to set it to the supported color formats.
-> +        *
-> +        * Current DRM assumption is that alpha is default premultiplied, so the bitmask of
-> +        * blend_modes must include BIT(DRM_MODE_BLEND_PREMULTI). Otherwise, mtk_plane_init()
-> +        * will get an error return from drm_plane_create_blend_mode_property() and
-> +        * state->base.pixel_blend_mode should not be used.
+> +        * Set both background color and constant layer color to Opaque Black
+> +        * (ARGB) for eventual Alpha Blending to be effective
 > +        */
+> +       writel(OVL_BLD_BGCLR_BLACK, priv->regs + DISP_REG_OVL_BLD_BGCLR_CLR);
+> +       writel(OVL_BLD_BGCLR_BLACK, priv->regs + DISP_REG_OVL_BLD_L0_CLR);
 
-This hasn't been true since 9813e158d13d. I know this series predates
-that, and this is just existing code, but it's another instance of
-'lie to userspace and fix stuff up behind its back' which we should
-get rid of ASAP please.
+Would you believe that this does not in fact need to be black, as it's
+been configurable since 4c684596cde4?
 
 Cheers,
 Daniel
