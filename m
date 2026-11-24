@@ -2,54 +2,55 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id BB787606A327
-	for <linux-mediatek@archiver.kernel.org>; Tue, 24 Nov 2026 14:43:35 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 42CDA606A32C
+	for <linux-mediatek@archiver.kernel.org>; Tue, 24 Nov 2026 14:45:41 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=P1o8HMCi;
-	dkim=pass (2048-bit key) header.d=collabora.com header.i=@collabora.com header.a=rsa-sha256 header.s=mail header.b=B2KRURmV
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=RnHcAzVI;
+	dkim=pass (2048-bit key) header.d=collabora.com header.i=@collabora.com header.a=rsa-sha256 header.s=mail header.b=VdNM4JMq
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Unsubscribe-Post:
-	List-Owner; bh=Mbpbveztx44WinZd0OoXNduwiZpW+0sT5m096jfRZC0=; b=P1o8HMCiKpEd+E
-	dnohCdOF25eRsPlCPmeNssMzQeAJ+G1AEh5wWtKN3PRblDzFTvJslIxBOiTkGo8wtB6Eq1cnuj9D+
-	wvkfNPTkbjnDK6oeQGFOOJdsy4tcw2xG+VV9XqLvZfG2eSjwxAXvxsh5G35ESvYQwtLktBfzbMumQ
-	b07CBZdw2hI9YbNxjn1aUJ9BL14bbv/jqB+gdcnkR8FMu0ivwZOYWP5wRAOHroZ2QDaeszXSuu0xy
-	NBNAB86uZbW6rWCBoKbO8x4BmJeKNdCOHm1/cNVLZJ7cJIzd7kr/lHT5Qrr7ZehY65e64VF/kZuIG
-	8NdVVnRRjUyxFnKZwXcQ==;
+	List-Owner; bh=TUdvVe4K11yxE9evuX/HwtIfhtCx4ySLff82ZWhij0Y=; b=RnHcAzVIK5UgQQ
+	Z3FSKyh9bzDvuM7hctoYsqUbqPaopcPG8r6Gpmu9JsXbel7SQwij5FPrtWkxJNAJu7tR+U0+VfUx4
+	zKWiZtQ9ZUqK4D87/+RuSM6pyjESvvfQl7EaeC/qemV7gduID2k/uuBJ+Nbrp1Uc78z1SaJNsW55S
+	wsKLfPXbYz0oqs5JARInRxc8VOUOE2hCl6ZQa4KUT/gEsAs/8MvhVMQMYvm4d9MCYS/AB7uNEx624
+	UTioztxsz00BTBVg1ztJ5+MQrTPO7tn0uthC2JQklW30I0+hQ6+0ZyJYPd+vmecio3dFH/6GrFf5F
+	x4hq67H9j22Q63eBJQnQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xVrk7-00000006nGU-1NpW;
-	Tue, 24 Nov 2026 14:43:35 +0000
-Received: from bali.collaboradmins.com ([148.251.105.195])
+	id 1xVrm8-00000006o6n-48Yf;
+	Tue, 24 Nov 2026 14:45:40 +0000
+Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xVrk0-00000006nDH-1QcK;
-	Tue, 24 Nov 2026 14:43:33 +0000
+	id 1xVrm6-00000006o61-0bNM;
+	Tue, 24 Nov 2026 14:45:39 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1795531406;
-	bh=+xcAFVyfZjCXw78iH5eaRb7q+NmVOvWAJooUbJ43vpY=;
+	s=mail; t=1795531535;
+	bh=tHoKvhwF6A9T51xIenBUaT/9sNVdCw5DlAXYhy5j/Jg=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=B2KRURmVMnzlSfh/3guyYTv0j1AWRjCGZuabqe/B3OntHxn9B6dKAJlHu3SsD0SmX
-	 LVx7ce9h7L/4YDDzakQDdcWAV5/SuxSmQdgV9W4q9R3Q/+FadUwYCgwbpDXfwx/tTL
-	 YDOcAga1u2SeU8oIAoUCrt+yi1oenovqKr0WL994FrkADzRCCR7p1TGPJ3rSPs7lhg
-	 DohKMBp6gc3i+Tye2dAgBd45g8euDbjJaI5s2Yrds/IbAWjjsiKDXGXkqveYe/14NK
-	 idOJPckaCha8mz4XAFBjFkKfjPJgAsyYB5ypR+h02NteusfcQz7da1fm/ePzS4rn08
-	 aAf3b6kdgfguw==
+	b=VdNM4JMq1hqbGTjm3zvuGBEqN1rw1I2PzJOMuy8fKLsiFyo+yhp0z+23IIxxvYMmo
+	 9Q72OnZE0XYoWs4phW1UwDX3pAMuNmdvLKZ787eP5IuRx0jfl5inKeoZ0B+zazkaOA
+	 SBQAWWI2hzvlDWAlIwu15W0UK0S/A8akEmqHAWEVxRWJ5SfGIFYmWNAVuJDwcxZ/P4
+	 0lkpCl5qMxP/p5JaCvoeLBat51+osntHgJa1k0KUE04xznza4gxxj6G9ZN+EbtPlTo
+	 g5wlSov76Yg/XZa8ya2rPM6jBIixghlVh2gEYsYPufQ58YEUgaHCb+sapzBsMp6e8S
+	 7YhqhSPfauqCA==
 Received: from [100.64.1.21] (unknown [100.64.1.21])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange x25519)
+	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 4C90117E09ED;
-	Tue, 24 Nov 2026 15:43:25 +0100 (CET)
-Message-ID: <05cb7522-7894-43b1-8bf5-96a1a3792289@collabora.com>
-Date: Tue, 24 Nov 2026 15:43:24 +0100
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id F199117E0CA0;
+	Tue, 24 Nov 2026 15:45:34 +0100 (CET)
+Message-ID: <0e279c15-c76f-4068-834f-84c0895f50c6@collabora.com>
+Date: Tue, 24 Nov 2026 15:45:34 +0100
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 03/46] drm/mediatek: Export OVL Blend function
+Subject: Re: [PATCH v2 31/46] drm/mediatek: Add support for Display Layer
+ Blender component
 To: Daniel Stone <daniel@fooishbar.org>
 Cc: chunkuang.hu@kernel.org, p.zabel@pengutronix.de, airlied@gmail.com,
  simona@ffwll.ch, maarten.lankhorst@linux.intel.com, mripard@kernel.org,
@@ -58,19 +59,18 @@ Cc: chunkuang.hu@kernel.org, p.zabel@pengutronix.de, airlied@gmail.com,
  dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
  devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, justin.yeh@mediatek.com,
- jason-jh.lin@mediatek.com, kernel@collabora.com,
- Paul-pl Chen <paul-pl.chen@mediatek.com>, Nancy Lin <nancy.lin@mediatek.com>
+ jason-jh.lin@mediatek.com, kernel@collabora.com
 References: <20260714114414.184512-1-angelogioacchino.delregno@collabora.com>
- <20260714114414.184512-4-angelogioacchino.delregno@collabora.com>
- <CAPj87rOEtG9JqJsEZkatqrWUkerO9Xx93MBUrXXChJwCokE0Vw@mail.gmail.com>
+ <20260714114414.184512-32-angelogioacchino.delregno@collabora.com>
+ <CAPj87rMW6c0BMELjn70vsc+mkMxegDbSgQC-8BEDGspFyxzW2Q@mail.gmail.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Content-Language: en-US
-In-Reply-To: <CAPj87rOEtG9JqJsEZkatqrWUkerO9Xx93MBUrXXChJwCokE0Vw@mail.gmail.com>
+In-Reply-To: <CAPj87rMW6c0BMELjn70vsc+mkMxegDbSgQC-8BEDGspFyxzW2Q@mail.gmail.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261124_064328_848212_65921511 
-X-CRM114-Status: GOOD (  16.81  )
+X-CRM114-CacheID: sfid-20261124_064538_361993_77952C67 
+X-CRM114-Status: GOOD (  13.00  )
 X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -90,38 +90,43 @@ X-Spam-Status: No, score=-7.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On 11/24/26 15:30, Daniel Stone wrote:
+On 11/24/26 15:33, Daniel Stone wrote:
 > Hi Angelo,
 > 
-> On Tue, 14 Jul 2026 at 12:44, AngeloGioacchino Del Regno
+> On Tue, 14 Jul 2026 at 12:46, AngeloGioacchino Del Regno
 > <angelogioacchino.delregno@collabora.com> wrote:
->> +unsigned int mtk_ovl_get_blend_mode(struct mtk_plane_state *state, unsigned int blend_modes)
+>> +#define DISP_REG_OVL_BLD_L0_CLR                        0x20c
+>> +#  define OVL_BLD_BGCLR_BLACK                  0xff000000
+>> +#  define OVL_BLD_BGCLR_RED                    0xffff0000
+> 
+> We probably don't need a #define for every ARGB8888 colour tbh. :)
+> 
+>> +void mtk_blender_config(struct mtk_ddp_comp *comp, unsigned int w,
+>> +                            unsigned int h, unsigned int vrefresh,
+>> +                            unsigned int bpc, struct cmdq_pkt *cmdq_pkt)
 >> +{
->> +       unsigned int blend_mode = DRM_MODE_BLEND_COVERAGE;
+>> +       struct mtk_disp_blender *priv = dev_get_drvdata(comp->dev);
+>> +       u32 val;
+>> +
+>> +       /* Set ROI for this Blender */
+>> +       val = ((h & GENMASK(15, 0)) << 16) | (w & GENMASK(15, 0));
+>> +       writel(val, priv->regs + DISP_REG_OVL_BLD_ROI_SIZE);
 >> +
 >> +       /*
->> +        * For the platforms where OVL_CON_CLRFMT_MAN is defined in the hardware data sheet
->> +        * and supports premultiplied color formats, such as OVL_CON_CLRFMT_PARGB888
->> +        * and supports premultiplied color formats, such as OVL_CON_CLRFMT_PARGB8888.
->> +        *
->> +        * Check blend_modes in the driver data to see if premultiplied mode is supported.
->> +        * If not, use coverage mode instead to set it to the supported color formats.
->> +        *
->> +        * Current DRM assumption is that alpha is default premultiplied, so the bitmask of
->> +        * blend_modes must include BIT(DRM_MODE_BLEND_PREMULTI). Otherwise, mtk_plane_init()
->> +        * will get an error return from drm_plane_create_blend_mode_property() and
->> +        * state->base.pixel_blend_mode should not be used.
+>> +        * Set both background color and constant layer color to Opaque Black
+>> +        * (ARGB) for eventual Alpha Blending to be effective
 >> +        */
+>> +       writel(OVL_BLD_BGCLR_BLACK, priv->regs + DISP_REG_OVL_BLD_BGCLR_CLR);
+>> +       writel(OVL_BLD_BGCLR_BLACK, priv->regs + DISP_REG_OVL_BLD_L0_CLR);
 > 
-> This hasn't been true since 9813e158d13d. I know this series predates
-> that, and this is just existing code, but it's another instance of
-> 'lie to userspace and fix stuff up behind its back' which we should
-> get rid of ASAP please.
+> Would you believe that this does not in fact need to be black, as it's
+> been configurable since 4c684596cde4?
+> 
 
-Hey Daniel,
-
-thanks for that - it's coming just at the right moment, I think. :-)
+Heh, that's nice - I wrote this code also before the bg color property got
+introduced, thanks! :-D
 
 Cheers,
 Angelo
+
 
