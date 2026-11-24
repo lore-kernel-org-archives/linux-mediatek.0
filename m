@@ -2,106 +2,75 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 4A373606A31E
-	for <linux-mediatek@archiver.kernel.org>; Tue, 24 Nov 2026 06:26:34 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 199C5606A31E
+	for <linux-mediatek@archiver.kernel.org>; Tue, 24 Nov 2026 08:27:09 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=km6AYjVc;
-	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=bZAnhFj9
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=iJeBKEYm;
+	dkim=pass (1024-bit key, unprotected) header.d=mail.zgclab.edu.cn header.i=@mail.zgclab.edu.cn header.a=rsa-sha256 header.s=dkim header.b=JKHq5xUU
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
-	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
 	List-Unsubscribe-Post:List-Owner;
-	bh=k13cl8AnOgXOYxh9rMCZd+VqMKK57TsIjB6ASgYtOw4=; b=km6AYjVc2xHhryN11JWsoouIc1
-	Y8Imc88TQy9NCx2MdcoXSGCDz+md1yjiTv66pUbXdbvMrKmOVl7FNjYxHotQztquzKT6zaktNgzl+
-	UNfG69Ydjwh+vyD+4y/IkutXqboti428RaGsE3tgTteiw2pGPuhcTQYT/1OrOuIRKG0gsHLtWUcb1
-	E6fXLP1GWIcJMVKqm/FiYp1s9yZvJtqoMqyWoqUxjrBGNJzPa3XFmx7PYXC0zHTfdk0Ne01EtHFgl
-	zRDl0GPLpxbdhuKOKogLyCctqR05gde5tqbcKB9fbifGXcfTxZ2gtXqllqDlq+uyeoXkuiOV+Ny9r
-	3oqC0F1Q==;
+	bh=ZWW4JoTl6P7PwiqYC1DkrQQs0nLQlzJs5F139zXifZc=; b=iJeBKEYm03zs0NhTWvQkDczZFe
+	qQkGvF/VSqY3RUQ9d4B++6esEeXRXeMygCQgrrEV2v4eaWP5Ab5rordmmGtgEclfCkrHSYhzB/em3
+	Bn3gJFw/6Yjtp0pkHwMp4/LjokLn/dxi/sduWD99bTLxa6crUb+kcPWoS56k3yDNuYaBZM+sp+iO3
+	44+2/EVsdyFtWYrMt4gUdPjE07HBxuZmcqJ7WbfV2LxpKc7LC2xbbovvhxkvB6fs6bsap7QChCb/h
+	W+HJZDzsX2TI1BcHHQp9CKQhsw4rVlKslyPJeoRiPtBJdqRVzJazyut9NgIBEESg4GB+IrFwtrPf8
+	KO1j1TOw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xVjz7-00000005eUq-3YzK;
-	Tue, 24 Nov 2026 06:26:33 +0000
-Received: from mail-dy1-x1335.google.com ([2607:f8b0:4864:20::1335])
-	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xVjz2-00000005eU4-15LD
-	for linux-mediatek@lists.infradead.org;
-	Tue, 24 Nov 2026 06:26:30 +0000
-Received: by mail-dy1-x1335.google.com with SMTP id 5a478bee46e88-380c28f9e35so5318760eec.1
-        for <linux-mediatek@lists.infradead.org>; Mon, 23 Nov 2026 22:26:27 -0800 (PST)
+	id 1xVlro-00000005t10-2gQK;
+	Tue, 24 Nov 2026 08:27:08 +0000
+Received: from zg8tndyumtaxlji0oc4xnzya.icoremail.net ([46.101.248.176])
+	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
+	id 1xVlrj-00000005szP-2g1H;
+	Tue, 24 Nov 2026 08:27:07 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20260707; t=1795501587; x=1796106387; darn=lists.infradead.org;
-        h=in-reply-to:content-disposition:content-type:mime-version
-         :references:message-id:subject:cc:to:from:date:from:to:cc:subject
-         :date:message-id:reply-to:content-type;
-        bh=k13cl8AnOgXOYxh9rMCZd+VqMKK57TsIjB6ASgYtOw4=;
-        b=bZAnhFj9D2naQZFjNvuE6o0Mimt4M4gbKcArGMcn/l7ssqJcSt0ELPdy/PIZIz9Dmv
-         qNax6T07Q3W6Kb8BIa9tmcrOAB92R46SD8JBDSCl79XpOsaXzUHYwq2MJpx5Z2wk9QqJ
-         IEw5RJuokDWQwFsGlBSKnEhiztnwm4dPwTee7n6hEsw4x4gg3Q241zkxj7WGcaIDlG8/
-         eSTDUrPvyEaypnKR9LkU0j8IK2gwRa+Z6fbpKnhJ+QEtUdurmGHTgVnvVxwVZWtFeQ4g
-         Q4mnbLCHMetWtVacgr6fZbKU9aG5e6ig0cnovZB61t72qybTrwgr8YIvFupKdyBwcLQW
-         Sjvw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1795501587; x=1796106387;
-        h=in-reply-to:content-disposition:content-type:mime-version
-         :references:message-id:subject:cc:to:from:date:x-gm-gg
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
-         :content-type;
-        bh=k13cl8AnOgXOYxh9rMCZd+VqMKK57TsIjB6ASgYtOw4=;
-        b=LxgukpdON4I5s9xdNTNmVcEbYQc6IaOg0Nm/+bCYHTICaRXUiou8zSmQiYcPIzmxC8
-         FiTn5WsdIvH2cBmWB5ZhT6JbcQHJMb5YEl3+hQBCqrI8NjoMVL6vQJZLS1b5bK14ongA
-         PPwJijQxvIyuxz0PHRk69TEopRuttmQQCkq22ZBmLXXg+kSh1NMeoAmivPa+G67aHBok
-         v/8Pa09GZ+VQxcre0OAmC1oRYWzVwHV03u9JO6UHB3zxLPxZcDRkmnNzv/cMkolSmi/9
-         xKgFHde30X6UrKOsMLrbLoNYMc8Y0/E/Splmu7021qGPz6Dx/kMfEwXVilV6qMiWG/cH
-         lUbQ==
-X-Forwarded-Encrypted: i=1; AL+hErHMr4biepyVzpIziImEFaOwN2emL2DMy8bZN6xT21hqd50V2XatO7ISAfld7NaIGMtU+mATWwjc0YhCJyEv6A==@lists.infradead.org
-X-Gm-Message-State: APuU4Z/08gvtB5LRtDHkUE3pBEa/aE664Ui5jnSyLvnikDWw3d8ziFlq
-	P8L5cgUzXU4G1bHhYv573EOSsiY2CXD9OsNOs0GpF8pB16bkIl6GOW/o
-X-Gm-Gg: AZFdTZeX1IZSdPugCLbzGeI9ePBVjk7di5f1Qq9JoXmtNWaBdLuXa/V64xbvk9b6nr1
-	C1IQP2QxvrSYEL1XqE5eBAC3nHWWX90Gf+L2d9Z2UNiOh3g0cfTorb5KNCoGcVXo24PqJv9uOvX
-	44utVUYe/f6Z698DCWgydB/mVWj5+RZhnt9iGtgKQCOu7zILchgLhDq4adLq/eVQc4AhnaeDVYU
-	jZtBUCtY+bOhasuCOByKrQKmTXV5WfqXz3fQ5PKQ4JNarZ5S9l58ZbKCeNzHEuxCZS6s6YvkJ3m
-	8y0AnFv9SmGGfRM0N/GNodGgO32s22Cs/TsbiIcfOHBGYSJH9YuO43Vxtf+5S8oJXeJbrNGWNwk
-	Hr4O2fUFI4smI3ABlpyFfgTEnCXMjRN+72sqJmiByS23OpPdZysvXdWE+Barj7aU3lJGUCFA0Bs
-	V1MvyJE5Tjyt7DRDbezdQwBXweqh/z6XYUDrWiZtnFkH/ymDBWkNbIbpzbHux3RkSRGgLNy3KeE
-	za7ToCFfHB6ZePCPUKgKtOr7LnGuUz8WJM7n5E93QH02o5ZtlwlQrp0hYMOoYiMDZJh71pqd1jZ
-	fesohx9J3HcyelI8IVqhTNUW5BC438T4xWFj1390PI3qP699Y9CtcCzTThAacFhUuM33oGjB
-X-Received: by 2002:a05:693c:880c:20b0:386:ab85:a011 with SMTP id 5a478bee46e88-386ab85a718mr6427409eec.27.1795501586545;
-        Mon, 23 Nov 2026 22:26:26 -0800 (PST)
-Received: from google.com ([2a00:79e0:2ebe:8:ee3b:b892:771b:3bc7])
-        by smtp.gmail.com with ESMTPSA id 5a478bee46e88-385646633d0sm72739389eec.3.2026.11.23.22.26.24
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Mon, 23 Nov 2026 22:26:25 -0800 (PST)
-Date: Mon, 23 Nov 2026 22:26:22 -0800
-From: Dmitry Torokhov <dmitry.torokhov@gmail.com>
-To: Alexander Letuchiy <asalde.le1@gmail.com>
-Cc: Rob Herring <robh@kernel.org>, 
-	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Sean Wang <sean.wang@mediatek.com>, 
-	Greg Kroah-Hartman <gregkh@linuxfoundation.org>, Jiri Slaby <jirislaby@kernel.org>, 
-	Daniel Lezcano <daniel.lezcano@kernel.org>, Thomas Gleixner <tglx@kernel.org>, 
-	Mattijs Korpershoek <mkorpershoek@kernel.org>, Kees Cook <kees@kernel.org>, Tony Luck <tony.luck@intel.com>, 
-	"Guilherme G. Piccoli" <gpiccoli@igalia.com>, devicetree@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-serial@vger.kernel.org, 
-	linux-input@vger.kernel.org, phone-devel@vger.kernel.org, 
-	Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
-Subject: Re: [PATCH v3 4/7] dt-bindings: input: mediatek,mt6779-keypad: Add
- compatible for MT6895
-Message-ID: <awUuAzGu3ZoADKyB@google.com>
-References: <20261123-initial-mt6895-v3-0-95c46597e63d@gmail.com>
- <20261123-initial-mt6895-v3-4-95c46597e63d@gmail.com>
+	d=mail.zgclab.edu.cn; s=dkim; h=Received:From:To:Cc:Subject:Date:
+	Message-ID:MIME-Version:Content-Type:Content-Transfer-Encoding;
+	bh=ZWW4JoTl6P7PwiqYC1DkrQQs0nLQlzJs5F139zXifZc=; b=JKHq5xUU9sdS8
+	Zp70roUs3cHHhASnmFbYI2V7Cyl/6QIU82WmpEDivRnXAiaSXpXClXVRZHO07X/g
+	7b+EiTztWHoVpToBXOy+hHoF5aNDLbWW6JSgLMIc0zRDnviSND/Qx+rSxv7m7sEx
+	F30AMkl2lBHiHOPQVzMoG1JyjYwskA=
+Received: from mt7530_series_00.eml (unknown [58.206.202.11])
+	by web2 (Coremail) with SMTP id yQQGZQAXRGg4SgVrg7NjAQ--.65249S2;
+	Tue, 24 Nov 2026 16:26:33 +0800 (CST)
+From: Haoran Wang <wanghr2026@mail.zgclab.edu.cn>
+To: chester.a.unal@arinc9.com, daniel@makrotopia.org, andrew@lunn.ch, olteanv@gmail.com
+Cc: davem@davemloft.net, edumazet@kernel.org, kuba@kernel.org, pabeni@redhat.com, matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com, netdev@vger.kernel.org, linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: [PATCH net 0/5] net: dsa: mt7530: fix regulator disable on teardown and error paths
+Date: Tue, 24 Nov 2026 16:25:57 +0800
+Message-ID: <179550875789.4156.361477684651496992@mail.zgclab.edu.cn>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20261123-initial-mt6895-v3-4-95c46597e63d@gmail.com>
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: 8bit
+X-CM-TRANSID: yQQGZQAXRGg4SgVrg7NjAQ--.65249S2
+X-Coremail-Antispam: 1UD129KBjvJXoW7Kr4DZFy5tr4xKF47ur1rWFg_yoW8Xw4Dpr
+	y7Wasayr4DWFyI9a9xC3WIvFW5XrZ3CrWfJwn7K3yDtw1YyF18tr1vya48ua47GrZ7Aw4S
+	yF4kAry8uFsrZaDanT9S1TB71UUUUU7qnTZGkaVYY2UrUUUUjbIjqfuFe4nvWSU5nxnvy2
+	9KBjDU0xBIdaVrnRJUUUBlb7Iv0xC_Kw4lb4IE77IF4wAFF20E14v26r4j6ryUM7CY07I2
+	0VC2zVCF04k26cxKx2IYs7xG6rWj6s0DM7CIcVAFz4kK6r1j6r18M28lY4IEw2IIxxk0rw
+	A2F7IY1VAKz4vEj48ve4kI8wA2z4x0Y4vE2Ix0cI8IcVAFwI0_JFI_Gr1l84ACjcxK6xII
+	jxv20xvEc7CjxVAFwI0_Gr0_Cr1l84ACjcxK6I8E87Iv67AKxVW8Jr0_Cr1UM28EF7xvwV
+	C2z280aVCY1x0267AKxVW8Jr0_Cr1UM2vYz4IE04k24VAvwVAKI4IrM2AIxVAIcxkEcVAq
+	07x20xvEncxIr21l5I8CrVACY4xI64kE6c02F40Ex7xfMcIj6xIIjxv20xvE14v26r1j6r
+	18McIj6I8E87Iv67AKxVWUJVW8JwAm72CE4IkC6x0Yz7v_Jr0_Gr1lF7xvr2IY64vIr41l
+	FIxGxcIEc7CjxVA2Y2ka0xkIwI1lc7CjxVAaw2AFwI0_Jw0_GFylc2xSY4AK67AK6r43Mx
+	AIw28IcxkI7VAKI48JMxC20s026xCaFVCjc4AY6r1j6r4UMI8I3I0E5I8CrVAFwI0_Jr0_
+	Jr4lx2IqxVCjr7xvwVAFwI0_JrI_JrWlx4CE17CEb7AF67AKxVWUtVW8ZwCIc40Y0x0EwI
+	xGrwCI42IY6xIIjxv20xvE14v26r1j6r1xMIIF0xvE2Ix0cI8IcVCY1x0267AKxVW8JVWx
+	JwCI42IY6xAIw20EY4v20xvaj40_Jr0_JF4lIxAIcVC2z280aVAFwI0_Jr0_Gr1lIxAIcV
+	C2z280aVCY1x0267AKxVW8JVW8JrUvcSsGvfC2KfnxnUUI43ZEXa7IU5pVbJUUUUU==
+X-CM-SenderInfo: pzdqwxbusqjlo62juzldeovvfxof0/1tbiAgIBD2sFSC8EeAAAs7
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261123_222628_306342_C80BF02B 
-X-CRM114-Status: GOOD (  10.44  )
-X-Spam-Score: -2.1 (--)
+X-CRM114-CacheID: sfid-20261124_002704_631209_9020A47B 
+X-CRM114-Status: UNSURE (   6.63  )
+X-CRM114-Notice: Please train this message.
+X-Spam-Score: -2.8 (--)
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -112,26 +81,48 @@ List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-7.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
-	DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,FREEMAIL_FORGED_FROMDOMAIN,
-	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=no
-	autolearn_force=no version=4.0.1
+X-Spam-Status: No, score=-10.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,
+	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On Mon, Nov 23, 2026 at 02:18:37PM +0300, Alexander Letuchiy wrote:
-> Add a compatible string for the keypad of the MediaTek MT6895 (Dimensity
-> 8000/8100) SoC. Its registers are the same as on MT6779, so it works
-> with the existing driver through the mediatek,mt6779-keypad fallback.
-> 
-> Acked-by: Krzysztof Kozlowski <krzysztof.kozlowski@oss.qualcomm.com>
-> Reviewed-by: Mattijs Korpershoek <mkorpershoek@kernel.org>
-> Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-> Signed-off-by: Alexander Letuchiy <asalde.le1@gmail.com>
+mt7530_setup() enables the core and io regulators, but they were not
+always disabled again:
 
-Applied, thank you.
+ - the disable lived in the driver's remove() callback instead of the
+   matching teardown callback, so a switch whose sibling failed to set
+   up was torn down without reaching remove() and kept its regulators
+   enabled, and
 
--- 
-Dmitry
+ - the error paths in mt7530_setup() and mt753x_setup() returned without
+   disabling the regulators, leaving the rails enabled and making the
+   regulator core warn when devres later put an enabled regulator. The
+   common case is mt7530_setup_irq() returning -EPROBE_DEFER, which
+   re-enabled the rails on every re-probe.
+
+This series splits the original patch into five small, independently
+obvious changes, as requested by Andrew Lunn:
+
+  1. Move the disable from remove() to teardown().
+  2. Factor the disable into mt7530_disable_pwrs().
+  3. Register the GPIO controller last so it is not published across a
+     failed setup.
+  4. Disable the regulators on every mt7530_setup() error path.
+  5. Do the same for mt753x_setup(), moving the mdio irq teardown to the
+     end.
+
+
+Haoran Wang (5):
+  net: dsa: mt7530: disable regulators on switch teardown
+  net: dsa: mt7530: factor out mt7530_disable_pwrs()
+  net: dsa: mt7530: register the GPIO controller last in setup
+  net: dsa: mt7530: disable regulators on setup failure
+  net: dsa: mt7530: disable regulators on mt753x_setup() failure
+
+ drivers/net/dsa/mt7530-mdio.c | 14 +-------
+ drivers/net/dsa/mt7530.c      | 60 +++++++++++++++++++++++++----------
+ 2 files changed, 45 insertions(+), 29 deletions(-)
+
 
