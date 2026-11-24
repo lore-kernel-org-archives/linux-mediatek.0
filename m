@@ -2,37 +2,37 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 04B9A606A33C
-	for <linux-mediatek@archiver.kernel.org>; Tue, 24 Nov 2026 09:41:28 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 19452606A681
+	for <linux-mediatek@archiver.kernel.org>; Tue, 24 Nov 2026 09:41:27 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=MJ0MK+8p
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=ptybYbTu
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Unsubscribe-Post:
-	List-Owner; bh=8VaSaMbZoWGk+/ii61YiLhIWHCLEy76/DK7RhQ+sqYE=; b=MJ0MK+8pRCMRT3
-	rtfgfRKfkPFeYdPp22KHLsxWL5MgEHa0ZKVQo3cLBMoo0o7yRBn6ddwVVrdqkryMfU+iUCay3ph9b
-	V261ILrzTUDRyLMXXzuKaokvtIS423QCCl596WemSrHcQ9qmrq4XYtbtBb5unMiv8PnlsdlniBb8e
-	+jpqfcIEwGqVC5Oc/nLFeNvO+4V6Jqj5AdaW+3aMPNQdHzNr5Rr2UoEfex8T8IQJbpqn911XDBeWn
-	SouOqPbGiYQBnsxTqcTfXH1aQ7c/gUAs6m788BDwSNMkxrYmYxKQrYFu3PeqUElK/hIQ6jS0iPCNQ
-	rsg8h5IZ9Kx06PofpVCQ==;
+	List-Owner; bh=9bcEZ4e/7ni52kWsELoQjyQIotM+LGhCx2OzH0/KNHs=; b=ptybYbTuYn+vWq
+	TxtiNbkrHUf6TsXh+6N3kppXtwIKyLhhiFBWqXkYOOlpeso0VprZFP6Lr7ipg9655M/BAMFqTOgkR
+	LLzQ3o0tkxTFehclO25LA9fol52qoIhXn6cgq4gyXi04g9pnwPCETQ9WD3fBWbVBJ/jQK5aP95mzW
+	XBcTrKzawa3HjeHKHbgaf0pSQt2hRVie5RyD6vyodyxM3D8zwZW2PXO7Iyjfgw/eHAJi8VPI3XJ4J
+	MsTJY4EQ68C1GDnZ2qV41yLgSgsNXPupIaWxUA6o9GKpkK52+2g1ZluItPhHkH4LEu/F5iTSZK9YP
+	TlaOxldw4osKIuloYt2w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xVn1j-000000065XR-00j0;
-	Tue, 24 Nov 2026 09:41:27 +0000
+	id 1xVn1i-000000065Vk-1JAZ;
+	Tue, 24 Nov 2026 09:41:26 +0000
 Received: from nbd.name ([46.4.11.11])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xVn1d-000000065QW-2CT1
+	id 1xVn1d-000000065QL-0Xok
 	for linux-mediatek@lists.infradead.org;
-	Tue, 24 Nov 2026 09:41:25 +0000
+	Tue, 24 Nov 2026 09:41:23 +0000
 Received: from [2a04:4540:1403:dffc:4a09:a431:737f:f29f] (helo=bertha10..)
 	by ds12 with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.96)
 	(envelope-from <john@phrozen.org>)
-	id 1xVn1N-007e57-24;
-	Tue, 24 Nov 2026 10:41:05 +0100
+	id 1xVn1M-007e57-2Z;
+	Tue, 24 Nov 2026 10:41:04 +0100
 From: John Crispin <john@phrozen.org>
 To: Lorenzo Bianconi <lorenzo@kernel.org>,
 	Lee Jones <lee@kernel.org>,
@@ -56,9 +56,9 @@ Cc: Ahmed Naseef <naseefkm@gmail.com>,
 	upstream@airoha.com,
 	Weifeng.xu@airoha.com,
 	zhengping.zhang@airoha.com
-Subject: [PATCH v4 4/9] pinctrl: airoha: mux a requested GPIO through the IOMUX
-Date: Tue, 24 Nov 2026 10:40:54 +0100
-Message-Id: <20261124094059.3882014-5-john@phrozen.org>
+Subject: [PATCH v4 2/9] pinctrl: airoha: add per pin mode field mux
+Date: Tue, 24 Nov 2026 10:40:52 +0100
+Message-Id: <20261124094059.3882014-3-john@phrozen.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20261124094059.3882014-1-john@phrozen.org>
 References: <20261124094059.3882014-1-john@phrozen.org>
@@ -66,8 +66,8 @@ X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261124_014121_569231_C7B5D74B 
-X-CRM114-Status: GOOD (  11.71  )
+X-CRM114-CacheID: sfid-20261124_014121_190359_63FDB512 
+X-CRM114-Status: GOOD (  18.03  )
 X-Spam-Score: -1.9 (-)
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -86,64 +86,155 @@ X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On a SoC with an IOMUX block every pin turns into a GPIO with one mode
-value, mode 0 on the AN7589. Add that value to struct
-airoha_pinctrl_iomux and write it when gpiolib requests a pin, so no
-SoC needs a gpio function with one group per pin.
+Newer Airoha SoCs select the function of a pin through a mode field in
+a dedicated IOMUX block instead of through function specific bits in
+the chip SCU. The AN7589 has a 4 bit field per pin, eight pins per 32
+bit register. A group can then need one register write per pin, and
+the two entry regmap[] of a function group cannot carry that.
 
-Without an IOMUX the callback does nothing, so the existing SoCs keep
-their explicit gpio functions and their behavior.
+Let a function group supply a pin_modes[] array, parallel to the pins
+of the group. When it is set, set_mux writes each mode into the IOMUX
+regmap and then applies the regmap[] entries of the group, so a group
+can combine its pin modes with a register write in the GPIO block.
+
+A SoC with an IOMUX describes it in its match data with struct
+airoha_pinctrl_iomux, which holds the width of the mode field. Probe
+then takes the regmap from the airoha,iomux phandle.
+
+No functional change for the existing SoCs.
 
 Signed-off-by: John Crispin <john@phrozen.org>
 ---
- drivers/pinctrl/airoha/airoha-common.h  |  1 +
- drivers/pinctrl/airoha/pinctrl-airoha.c | 14 ++++++++++++++
- 2 files changed, 15 insertions(+)
+ drivers/pinctrl/airoha/airoha-common.h  | 14 ++++++++
+ drivers/pinctrl/airoha/pinctrl-airoha.c | 48 +++++++++++++++++++++++++
+ 2 files changed, 62 insertions(+)
 
 diff --git a/drivers/pinctrl/airoha/airoha-common.h b/drivers/pinctrl/airoha/airoha-common.h
-index 7a0cb8924e71..adfce89493f0 100644
+index 850e733db15a..7a0cb8924e71 100644
 --- a/drivers/pinctrl/airoha/airoha-common.h
 +++ b/drivers/pinctrl/airoha/airoha-common.h
-@@ -111,6 +111,7 @@ extern const struct airoha_gpiochip_regs airoha_gpiochip_regs_64;
+@@ -49,6 +49,12 @@
+ 		.group_size = ARRAY_SIZE(table##_func_group),		\
+ 	}
  
- struct airoha_pinctrl_iomux {
- 	u8 mode_bits;
-+	u8 gpio_mode;
++#define PINCTRL_MODE_FUNC_GROUP(id, table)				\
++	{								\
++		.name = id,						\
++		.pin_modes = table##_modes,				\
++	}
++
+ #define PINCTRL_CONF_DESC(p, offset, mask)				\
+ 	{								\
+ 		.pin = p,						\
+@@ -75,6 +81,7 @@ struct airoha_pinctrl_func_group {
+ 		u32 val;
+ 	} regmap[2];
+ 	int regmap_size;
++	const u8 *pin_modes;
  };
  
+ struct airoha_pinctrl_func {
+@@ -102,6 +109,10 @@ struct airoha_gpiochip_regs {
+ 
+ extern const struct airoha_gpiochip_regs airoha_gpiochip_regs_64;
+ 
++struct airoha_pinctrl_iomux {
++	u8 mode_bits;
++};
++
  struct airoha_pinctrl_confs_info {
+ 	const struct airoha_pinctrl_conf *confs;
+ 	unsigned int num_confs;
+@@ -126,6 +137,8 @@ struct airoha_pinctrl {
+ 	const struct airoha_pinctrl_confs_info *confs_info;
+ 
+ 	struct regmap *chip_scu;
++	struct regmap *iomux;
++	const struct airoha_pinctrl_iomux *iomux_info;
+ 	struct regmap *regmap;
+ 
+ 	struct gpio_chip gpiochip;
+@@ -135,6 +148,7 @@ struct airoha_pinctrl {
+ 
+ struct airoha_pinctrl_match_data {
+ 	const char *chip_scu_compatible;
++	const struct airoha_pinctrl_iomux *iomux_info;
+ 	const char *pinctrl_name;
+ 	struct module *pinctrl_owner;
+ 	const struct airoha_gpiochip_regs *gpio_regs;
 diff --git a/drivers/pinctrl/airoha/pinctrl-airoha.c b/drivers/pinctrl/airoha/pinctrl-airoha.c
-index c879e3009ee8..917fd948a9dc 100644
+index 5ae29e80da69..615b48a056c4 100644
 --- a/drivers/pinctrl/airoha/pinctrl-airoha.c
 +++ b/drivers/pinctrl/airoha/pinctrl-airoha.c
-@@ -430,6 +430,19 @@ static int airoha_pinmux_set_pin_modes(struct airoha_pinctrl *pinctrl,
- 	return 0;
+@@ -401,6 +401,35 @@ static int airoha_pinctrl_add_gpiochip(struct airoha_pinctrl *pinctrl,
  }
  
-+static int airoha_pinmux_gpio_request_enable(struct pinctrl_dev *pctrl_dev,
-+					     struct pinctrl_gpio_range *range,
-+					     unsigned int pin)
+ /* pinmux callbacks */
++static int airoha_pinmux_set_pin_mode(struct airoha_pinctrl *pinctrl,
++				      unsigned int pin, u8 mode)
 +{
-+	struct airoha_pinctrl *pinctrl = pinctrl_dev_get_drvdata(pctrl_dev);
++	unsigned int mode_bits = pinctrl->iomux_info->mode_bits;
++	unsigned int modes_per_reg = sizeof(u32) * BITS_PER_BYTE / mode_bits;
++	unsigned int shift = (pin % modes_per_reg) * mode_bits;
++	unsigned int reg = (pin / modes_per_reg) * sizeof(u32);
 +
-+	if (!pinctrl->iomux_info)
-+		return 0;
++	return regmap_update_bits(pinctrl->iomux, reg,
++				  GENMASK(mode_bits - 1, 0) << shift,
++				  mode << shift);
++}
 +
-+	return airoha_pinmux_set_pin_mode(pinctrl, pin,
-+					  pinctrl->iomux_info->gpio_mode);
++static int airoha_pinmux_set_pin_modes(struct airoha_pinctrl *pinctrl,
++				       const struct group_desc *grp,
++				       const u8 *modes)
++{
++	int i, err;
++
++	for (i = 0; i < grp->grp.npins; i++) {
++		err = airoha_pinmux_set_pin_mode(pinctrl, grp->grp.pins[i],
++						 modes[i]);
++		if (err)
++			return err;
++	}
++
++	return 0;
 +}
 +
  static int airoha_pinmux_set_mux(struct pinctrl_dev *pctrl_dev,
  				 unsigned int selector,
  				 unsigned int group)
-@@ -510,6 +523,7 @@ static const struct pinmux_ops airoha_pmxops = {
- 	.get_functions_count = pinmux_generic_get_function_count,
- 	.get_function_name = pinmux_generic_get_function_name,
- 	.get_function_groups = pinmux_generic_get_function_groups,
-+	.gpio_request_enable = airoha_pinmux_gpio_request_enable,
- 	.gpio_set_direction = airoha_pinmux_set_direction,
- 	.set_mux = airoha_pinmux_set_mux,
- 	.strict = true,
+@@ -431,6 +460,15 @@ static int airoha_pinmux_set_mux(struct pinctrl_dev *pctrl_dev,
+ 		if (strcmp(group->name, grp->grp.name))
+ 			continue;
+ 
++		if (group->pin_modes) {
++			int err;
++
++			err = airoha_pinmux_set_pin_modes(pinctrl, grp,
++							  group->pin_modes);
++			if (err)
++				return err;
++		}
++
+ 		for (j = 0; j < group->regmap_size; j++) {
+ 			switch (group->regmap[j].mux) {
+ 			case AIROHA_FUNC_PWM_EXT_MUX:
+@@ -824,6 +862,16 @@ int airoha_pinctrl_probe(struct platform_device *pdev)
+ 
+ 	pinctrl->chip_scu = map;
+ 
++	if (data->iomux_info) {
++		map = syscon_regmap_lookup_by_phandle(dev->of_node,
++						      "airoha,iomux");
++		if (IS_ERR(map))
++			return PTR_ERR(map);
++
++		pinctrl->iomux = map;
++		pinctrl->iomux_info = data->iomux_info;
++	}
++
+ 	/* Init pinctrl desc struct */
+ 	pinctrl->desc.name = data->pinctrl_name;
+ 	pinctrl->desc.owner = data->pinctrl_owner;
 -- 
 2.34.1
 
