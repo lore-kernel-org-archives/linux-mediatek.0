@@ -2,80 +2,87 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id A1D2D606A339
-	for <linux-mediatek@archiver.kernel.org>; Tue, 24 Nov 2026 11:25:00 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id E44AD606A322
+	for <linux-mediatek@archiver.kernel.org>; Tue, 24 Nov 2026 11:30:32 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=atv3o35X;
-	dkim=pass (2048-bit key) header.d=collabora.com header.i=@collabora.com header.a=rsa-sha256 header.s=mail header.b=HKidqfUD
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=waXXJiYZ;
+	dkim=pass (2048-bit key) header.d=collabora.com header.i=@collabora.com header.a=rsa-sha256 header.s=mail header.b=Vwsy8IRY
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Unsubscribe-Post:
-	List-Owner; bh=fKJgwndBmVk1QjSgTESMXqKkxhnqis7hXIoriLN6iH8=; b=atv3o35XqqpHUT
-	hnvWFgkZEwAPUO47WPgJ8rRb7KXu3bGfiLGuwkS6YVT+ycwzlIV1WRki2La54/NNq7wtfuo7VhZh+
-	0O3FwBLTd1f4Y/8ef1QJHu9C8ILQIXXbMGDjzjsxNnqe8NujiEow8/uFMWz+7gUSl0mjku07lmxxk
-	H2XDM8DHgfe4ABo3kt2qeMtupmYMdz3NvDAutqDy2djWGv+YjTl1qWA9CBEh1tTqm6AS2HhXhEq+5
-	4Fex3cZolMdywuXUDVHrlHphd/t68zzF0j+PGii/88+1tvxbR1N43GU19l40nhqC5Ot+hJya9dJIA
-	4cZOuVTzHuHV8+3s44tw==;
+	List-Owner; bh=x4iAMBhsUqAiaUCQj/SSCDJ/lo5qATWvSvv8yn5M/Yc=; b=waXXJiYZKB3Ln+
+	OTajF9z6Hz1hDXKVy8e/wQyCHoh22aeOUe04AG+hx9XVkWfiGr0++4XwaBS7G9BY6SiPlykOc4QzD
+	ZnHntUJrUK4ZLHTK+cReVkXaVQmKZXlT+lpqEcomFAI/yLHKoqq++DkkFN3Y3c6A2b/e68w6JbFXB
+	EoBzuIXS5M8gPyh3/HjxhcNKKSGL5XZm/F0EbTKmaHTseUhQWU3p2rQTZ14CKjxEXo3HqlxdSiI3M
+	ssQ8jtLpnYXcern+kbTHBJs5CaAp3s2SYTBVMCtj/V7Kzg/HMuQIMwJnmu3GHtk3/NlPsrvQ40lvQ
+	4rYYtT/LGVVZoX4k9rwg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xVodw-00000006Ltl-0xMX;
-	Tue, 24 Nov 2026 11:25:00 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1xVojI-00000006MPs-2IT1;
+	Tue, 24 Nov 2026 11:30:32 +0000
+Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xVodu-00000006LsC-0kff;
-	Tue, 24 Nov 2026 11:24:59 +0000
+	id 1xVojC-00000006MOt-1njg;
+	Tue, 24 Nov 2026 11:30:28 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1795519496;
-	bh=m+QktASoilhpAu5jCWRlhhnUzEWwf0rcN1O0jXft81Y=;
+	s=mail; t=1795519824;
+	bh=8tQgckJyHzwBcIyuNBAxi4U/A6ePfJobteegYPxxY6U=;
 	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=HKidqfUD0IcjQxD6en+YNVjDJQ0sI43LaDJhDB2jeA6MFVDhqieRSvJGtqAvlrm8j
-	 +52M527PJXxwiGZtMN3RayKqMMnNMndXcnxUJTlZwIkMViAPUATAD3pCIrSFrakjO0
-	 w46uiz9bTgr6VDfkzRk250nOJ9QZ76purJlAcs+O31yD848ID2sqwPtkLjT5r70FGC
-	 2MtYpQV2w/WXbtUMNtX9BM0FUjzAPHaKlwEDuH85pnf/s3umOlQuw6lb1FNfnnxGX5
-	 Oac5GfU7x+yUJj0F3WmEtxU0jlEa0CAHnhveouDy319G1PKxaB515gni9AIJXZg+Da
-	 y/9Na3NcTKD3g==
+	b=Vwsy8IRY0BgH0NLhGJzFsARXKAW/OZOSc2UR1I7YTb39swVau6FG+iFAWiXFsFCAT
+	 glS/+s6UF8gppkUh99mztcjrzEsLgKVAVfdySOuW8ynKaq8RCV3HqOG2xMYAZ/US5Y
+	 S8kpIAhpIu8vHFk5CmzUBWITG2lPOqCx4m/STzuG1+NTmrBt6b156TN7cPjjtpFqE4
+	 HU9BYdeIUSXcq+GWlgvGWa3J98ZoNvAO7XvTrTtbUW5uD0AOjkhBo1XtA3lGqTmdUs
+	 x6F3HtXcT9ruEk+tCVjGlOailmTqMtzSQl37XAPy9FC69uTSSvo6kbJPlyLmxtD32d
+	 aWLnBUx5/y4VA==
 Received: from [100.64.1.21] (unknown [100.64.1.21])
 	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange x25519)
+	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 7FF3C17E0309;
-	Tue, 24 Nov 2026 12:24:55 +0100 (CET)
-Message-ID: <56cca340-b7b8-4e6a-adbb-887864cc14b1@collabora.com>
-Date: Tue, 24 Nov 2026 12:24:55 +0100
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id 850F217E010E;
+	Tue, 24 Nov 2026 12:30:23 +0100 (CET)
+Message-ID: <dd19d7e8-456c-48f1-baf0-3494081e23ad@collabora.com>
+Date: Tue, 24 Nov 2026 12:30:23 +0100
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2] drm/mediatek: dsi: Don't let a signal cut the IRQ wait
- short
+Subject: Re: [PATCH v2 27/46] dt-bindings: display: mediatek: Introduce
+ Digital Video Output HW
 To: =?UTF-8?B?Q0sgSHUgKOiDoeS/iuWFiSk=?= <ck.hu@mediatek.com>,
- =?UTF-8?B?WmktaGFvIEh1YW5nICjpu4PmopPosaop?= <Zi-hao.Huang@mediatek.com>,
- "ryanbrue.dev@gmail.com" <ryanbrue.dev@gmail.com>
-Cc: "chunkuang.hu@kernel.org" <chunkuang.hu@kernel.org>,
- "simona@ffwll.ch" <simona@ffwll.ch>,
- "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>,
+ "chunkuang.hu@kernel.org" <chunkuang.hu@kernel.org>
+Cc: "conor+dt@kernel.org" <conor+dt@kernel.org>,
+ "robh@kernel.org" <robh@kernel.org>,
+ "tzimmermann@suse.de" <tzimmermann@suse.de>,
+ "simona@ffwll.ch" <simona@ffwll.ch>, "mripard@kernel.org"
+ <mripard@kernel.org>, "kernel@collabora.com" <kernel@collabora.com>,
  "linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
- "airlied@gmail.com" <airlied@gmail.com>,
- "linux-arm-kernel@lists.infradead.org"
- <linux-arm-kernel@lists.infradead.org>,
- "p.zabel@pengutronix.de" <p.zabel@pengutronix.de>,
  "linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+ "dri-devel@lists.freedesktop.org" <dri-devel@lists.freedesktop.org>,
+ "devicetree@vger.kernel.org" <devicetree@vger.kernel.org>,
+ =?UTF-8?B?SmFzb24tSkggTGluICjmnpfnnb/npaUp?= <Jason-JH.Lin@mediatek.com>,
+ "krzk+dt@kernel.org" <krzk+dt@kernel.org>,
+ "p.zabel@pengutronix.de" <p.zabel@pengutronix.de>,
+ "maarten.lankhorst@linux.intel.com" <maarten.lankhorst@linux.intel.com>,
+ "airlied@gmail.com" <airlied@gmail.com>,
+ =?UTF-8?B?SnVzdGluIFllaCAo6JGJ6Iux6IyCKQ==?= <Justin.Yeh@mediatek.com>,
  "matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
- =?UTF-8?B?U2hhb21pbmcgQ2hlbiAo6ZmI57uN5piOKQ==?= <shaoming.chen@mediatek.com>
-References: <20261119033634.1844084-1-zi-hao.huang@mediatek.com>
- <fe208c0c-cea4-4e56-8283-e242ac1cd2ae@gmail.com>
- <65140b86aed23f307f8552be8bc5ae13f1de1874.camel@mediatek.com>
+ "linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>
+References: <20260714114414.184512-1-angelogioacchino.delregno@collabora.com>
+ <20260714114414.184512-28-angelogioacchino.delregno@collabora.com>
+ <98cde7319f539cab9f72ec370d309b26569889c9.camel@mediatek.com>
+ <33cf13e4-6df0-45f8-b621-ffe3f43419c9@collabora.com>
+ <3ab396c26424834e9fa591a86ba7ff8f5561f847.camel@mediatek.com>
 From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
 Content-Language: en-US
-In-Reply-To: <65140b86aed23f307f8552be8bc5ae13f1de1874.camel@mediatek.com>
+In-Reply-To: <3ab396c26424834e9fa591a86ba7ff8f5561f847.camel@mediatek.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261124_032458_387346_41397987 
-X-CRM114-Status: GOOD (  15.72  )
+X-CRM114-CacheID: sfid-20261124_033027_543434_C6942243 
+X-CRM114-Status: GOOD (  24.59  )
 X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -87,66 +94,144 @@ List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-12.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-17.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,
-	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1 autolearn=ham
-	autolearn_force=no version=4.0.1
+	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1
+	autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On 11/24/26 06:54, CK Hu (胡俊光) wrote:
-> On Mon, 2026-11-23 at 18:31 -0600, Ryan Brue wrote:
->> External email : Please do not click links or open attachments until you have verified the sender or the content.
+On 11/24/26 07:13, CK Hu (胡俊光) wrote:
+> On Mon, 2026-11-23 at 11:05 +0100, AngeloGioacchino Del Regno wrote:
+>> On 11/20/26 03:17, CK Hu (胡俊光) wrote:
+>>> On Tue, 2026-07-14 at 13:43 +0200, AngeloGioacchino Del Regno wrote:
+>>>> Add documentation for the Digital Video Output (DVO) IP found in
+>>>> the newer generation SoCs MT8196, MT8189 and their variants.
+>>>>
+>>>> This is effectively a more capable block replacing the DisplayPort
+>>>> Interface (DPI/DP_INTF) one found in older SoCs.
+>>>>
+>>>> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+>>>> ---
+>>>>    .../display/mediatek/mediatek,mt8196-dvo.yaml | 143 ++++++++++++++++++
+>>>>    1 file changed, 143 insertions(+)
+>>>>    create mode 100644 Documentation/devicetree/bindings/display/mediatek/mediatek,mt8196-dvo.yaml
+>>>>
+>>>> diff --git a/Documentation/devicetree/bindings/display/mediatek/mediatek,mt8196-dvo.yaml b/Documentation/devicetree/bindings/display/mediatek/mediatek,mt8196-dvo.yaml
+>>>> new file mode 100644
+>>>> index 000000000000..b38960327ca1
+>>>> --- /dev/null
+>>>> +++ b/Documentation/devicetree/bindings/display/mediatek/mediatek,mt8196-dvo.yaml
+>>>
+>>> This file would include multiple SoC dvo, so it's better to use mediatek,dvo.yaml.
 >>
->>
->> On Thu, Nov 19, 2026 at 11:36:34AM +0800, Zi-Hao Huang wrote:
->>   > I'm not sure the trigger is specific to our downstream driver.
->>
->> I hit the same lockup on MT8173 (Amazon Fire HD 10 2017) with the
->> upstream driver. v7.4-rc4, whose only DSI change is "drm/mediatek: dsi:
->> force command mode in mtk_dsi_poweron()" from the mediatek tree, and the
->> mainline NT51021 panel driver, which also sets prepare_prev_first and
->> sends display off and enter sleep from .unprepare.
->>
->> The trigger for me was suspend under Plasma. logind's PrepareForSleep
->> makes KWin turn the display off, and the session is frozen while KWin's
->> commit is still in the panel's unprepare. The freezer's fake signal ends
->> the interruptible wait with -ERESTARTSYS, mtk_dsi_host_send_cmd() takes
->> that for success, and the late CMD_DONE lands in mtk_dsi_irq()'s
->> DSI_BUSY loop. After the watchdog reset, MT8173's last-PC latch showed
->> CPU0 at mtk_dsi_irq+0x84, the DSI_INTSTA read in that loop.
->>
->> With only mediatek-drm.ko changed, suspending through logind with a GPU
->> benchmark running: without the patch 5 of 6 suspends reset the board
->> (about one in three without the load); with this v2, 0 of 10, with no
->> DSI IRQ or vblank timeouts, and the panel's power-down still takes 270ms.
->>
->> The wake_up() hunk matters. With only the wait changed, every command
->> waited out its 2s timeout and the panel's power-down took 10.4s.
->>
->> Tested-by: Ryan Brue <ryanbrue.dev@gmail.com> # MT8173, NT51021
->>
->> I actually had a similar fix ready to go, and found your patch, so thank
->> you :)
+>> Devicetree bindings maintainers will disagree with this statement ;-)
 > 
-> The upstream driver has this problem, and this patch fix it,
-> so I would apply this patch first.
+> Oh, it seems many mediatek display binding document should change file name.
 > 
 
-CK, okay, apply it.
+Yeah, but changing file names should be an ABI breakage (is it?), so we just avoid
+adding more "wrong" files :-)
 
-Beware though, this will block at every frame and lower performance quite a bit.
+>>
+>>>
+>>>> @@ -0,0 +1,143 @@
+>>>> +# SPDX-License-Identifier: (GPL-2.0-only OR BSD-2-Clause)
+>>>> +%YAML 1.2
+>>>> +---
+>>>> +$id: https://urldefense.com/v3/__http://devicetree.org/schemas/display/mediatek/mediatek,mt8196-dvo.yaml*__;Iw!!CTRNKA9wMg0ARbw!n3pk94kKoN-7zfem5SHfJn_ixDmAleFOW2dJwmZ8W5gJz-iEQGAN6yOkpupaMXAvAlr3KfAndB5Fjy57tNXsxA_uvNy3$
+>>>> +$schema: https://urldefense.com/v3/__http://devicetree.org/meta-schemas/core.yaml*__;Iw!!CTRNKA9wMg0ARbw!n3pk94kKoN-7zfem5SHfJn_ixDmAleFOW2dJwmZ8W5gJz-iEQGAN6yOkpupaMXAvAlr3KfAndB5Fjy57tNXsxNztWOiH$
+>>>> +
+>>>> +title: MediaTek Digital Video Output (DVO) Controller
+>>>> +
+>>>> +maintainers:
+>>>> +  - AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+>>>> +
+>>>> +description:
+>>>> +  The MediaTek Digital Video Output (DVO) hardware provides 120-bits (4P) data,
+>>>> +  video timing and info data for the Embedded DisplayPort, hardware-abstracting
+>>>
+>>>   From the compatible listed below, DVO not only for eDP, but also DP, right?
+>>>
+>>
+>> Yeah, on MT8189 it's also for DP.
+> 
+> So the description should be:
+> 
+> The MediaTek Digital Video Output (DVO) hardware provides 120-bits (4P) data,
+> video timing and info data for the (Embedded) DisplayPort
+> 
+>>
+>>>> +  the previous generation Display Port Interface (DPI/DP_INTF) blocks, other
+>>>> +  than providing new capabilities.
+>>>
+>>> No new capability? But what you list below is new capability or the same as DPI/DP_INTF?
+>>>
+>>
+>> The new capabilities include PSR and MSO, other than the 4T1R in output (as DP_INTF
+>> did support that but only for very specific configurations).
+> 
+> My English is not good. I just thought 'other than' means 'not'.
+> 
+
+Haha, no worries!!
+
+>>
+>>>> +  This hardware block supports 1/2/4 pixels per iteration in both its input and
+>>>> +  output and provides 8/10-bit RGB, YUV422 and YUV444 data formats in output,
+>>>> +  other than supporting input/output video window cropping and padding.
+>>>> +  Digital Video Output also provides Panel Self Refresh (PSR) and Multi-SST
+>>>> +  Operation (MSO) features for eDP 1.3/1.4.
+>>>> +
+>>>> +properties:
+>>>> +  compatible:
+>>>> +    enum:
+>>>> +      - mediatek,mt8189-dp-dvo
+>>>> +      - mediatek,mt8189-edp-dvo
+>>>
+>>> This series is so large, so it's better to drop any thing that is not related to mt8196 and you could add them back later.
+>>
+>> Are you sure you want me to drop that?
+>>
+>> It's just 10 lines of code and some platform data really, I don't think it's all
+>> that much to justify dropping it?
+> 
+> If you keep mt8189 compatible here, you should describe what's the difference of these compatible.
+> Maybe every reviewer see this would ask you again because this series is for mt8196.
+> Remove them is much easier. If you keep them, introduce them.
+
+I understand what you're trying to do here, thank you.
+
+Adding a simple phrase in the commit description for this binding saying what is
+the difference between 8196 and 8189 shouldn't be a big deal though...
+
+Removing the MT8189 code takes more time compared to just adding a phrase here! :-)
 
 Cheers,
 Angelo
 
+> 
 > Regards,
 > CK
 > 
 >>
->> Best regards,
->> Ryan Brue
+>> Cheers,
+>> Angelo
+>>
+>>>
+>>> Regards,
+>>> CK
+>>>
+>>>> +      - mediatek,mt8196-edp-dvo
+>>>> +
+>>>> +  reg:
+>>>> +    maxItems: 1
+>>>> +
+>>>> +  interrupts:
+>>>> +    maxItems: 1
+>>>> +
+>>>>
+>>>
 > 
-
 
