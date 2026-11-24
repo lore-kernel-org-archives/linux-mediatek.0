@@ -2,37 +2,37 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 5841A606A33A
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 35E87606A688
 	for <linux-mediatek@archiver.kernel.org>; Tue, 24 Nov 2026 09:41:27 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=ejj3npze
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=1fJ9eGAC
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	MIME-Version:References:In-Reply-To:Message-Id:Date:Subject:Cc:To:From:
 	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Unsubscribe-Post:
-	List-Owner; bh=5Y+EU8L83TEHj4ood5A6BMTvfAl0Hd2iC+y5jCYSZnQ=; b=ejj3npzek4l+qY
-	0q0Z2kabNL8OL/W4CkLGY+5xLcvZf7w98yS8g76WageGM25cGvlP0MfCCIlpW6QS4RohlQFy648jj
-	2+k2RdrHNKyW4tPQbo8PWxIz3BNRyIBrWGv9aFIiVXcBZ/vLM94vLouVhTyqIGgHdVU/ekiffVTgb
-	Mq+rJKXdy1jrpMy76EdE3672UEtdalPcW50o9Xk/NVLQyfULUF4jYpxWNh/We2mAxDu9EHVs7rvjl
-	MMTv98jue7MeiGMdeKKxPDCM4p+GWMVpo5jDqVmPO9mNJ9XmG02wyUZmudw2DPC0XAZAypG3fnPaf
-	7AjVwRgOJn6mMA7rDnYg==;
+	List-Owner; bh=v8mYkHbL0rYWnPLab7kWkuqKyftq+o+R4jpWEkQvtLQ=; b=1fJ9eGAC2Fpldr
+	Z2d78OYhi7ivR3z+1ZzYidZ+4zmjDhtglcuS2xpTG/zyPScx3CwHzhEFfzSYQiZDEtm+F6kQCUex0
+	bLs2qSWDIPKNSsV3y2t6FA01WoOaRlQMW1dhw0dQtiPQP1avx6qxsu5WKK+JyFl2dq4fpsCrECquh
+	SACD+DWuumXYQorXB5BUXk8gdfl6HsG2wujWraGwRlM2Yd5zsRtmbIyIxjioZwj/yLuliYtAJkgKO
+	IByVGAc4pkrfkiFtCdx5ubEJqV2eDYq8lDstClpiGkpdksWDQETIUPhiqfTlsAXPlcwBTAHClhFQa
+	4GHEmdNBLF6MiFzt1uMA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xVn1i-000000065WY-2fW3;
+	id 1xVn1i-000000065W5-26KH;
 	Tue, 24 Nov 2026 09:41:26 +0000
 Received: from nbd.name ([46.4.11.11])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xVn1e-000000065Qc-0Guk
+	id 1xVn1d-000000065Qw-1yqf
 	for linux-mediatek@lists.infradead.org;
 	Tue, 24 Nov 2026 09:41:24 +0000
 Received: from [2a04:4540:1403:dffc:4a09:a431:737f:f29f] (helo=bertha10..)
 	by ds12 with esmtpsa  (TLS1.3) tls TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
 	(Exim 4.96)
 	(envelope-from <john@phrozen.org>)
-	id 1xVn1N-007e57-0i;
-	Tue, 24 Nov 2026 10:41:05 +0100
+	id 1xVn1O-007e57-2y;
+	Tue, 24 Nov 2026 10:41:06 +0100
 From: John Crispin <john@phrozen.org>
 To: Lorenzo Bianconi <lorenzo@kernel.org>,
 	Lee Jones <lee@kernel.org>,
@@ -55,10 +55,11 @@ Cc: Ahmed Naseef <naseefkm@gmail.com>,
 	Rajeev.kumar@airoha.com,
 	upstream@airoha.com,
 	Weifeng.xu@airoha.com,
-	zhengping.zhang@airoha.com
-Subject: [PATCH v4 3/9] pinctrl: airoha: make the chip SCU optional
-Date: Tue, 24 Nov 2026 10:40:53 +0100
-Message-Id: <20261124094059.3882014-4-john@phrozen.org>
+	zhengping.zhang@airoha.com,
+	Conor Dooley <conor.dooley@microchip.com>
+Subject: [PATCH v4 7/9] dt-bindings: mfd: airoha: add AN7589 GPIO system controller
+Date: Tue, 24 Nov 2026 10:40:57 +0100
+Message-Id: <20261124094059.3882014-8-john@phrozen.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20261124094059.3882014-1-john@phrozen.org>
 References: <20261124094059.3882014-1-john@phrozen.org>
@@ -66,8 +67,8 @@ X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261124_014122_500555_89DDAF1F 
-X-CRM114-Status: GOOD (  13.68  )
+X-CRM114-CacheID: sfid-20261124_014121_511325_8C80313A 
+X-CRM114-Status: GOOD (  15.38  )
 X-Spam-Score: -1.9 (-)
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -86,69 +87,112 @@ X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-A SoC that muxes every pin through the IOMUX block and describes no
-pin configuration has no use for the chip SCU. Skip the lookup when
-the match data names no chip SCU compatible, instead of handing a
-NULL compatible to syscon_regmap_lookup_by_compatible().
+Document the AN7589 GPIO system controller. It is a syscon with the
+pin controller as its child node. The block also holds the PWM
+controller, which a later series adds.
 
-No functional change for the existing SoCs, which all name one.
-
-Reviewed-by: Lorenzo Bianconi <lorenzo@kernel.org>
 Signed-off-by: John Crispin <john@phrozen.org>
+Acked-by: Conor Dooley <conor.dooley@microchip.com>
 ---
+Changes in v4:
+- Add the Acked-by of Conor.
+- Commit message: the PWM controller is no longer named a second
+  child, as it gets no child node (Conor).
+
 Changes in v3:
-- Add the Reviewed-by of Lorenzo.
+- New patch, split out of the pinctrl binding (Lee, Conor).
+- Name the PWM controller, the second child of the block, in the
+  commit message (Conor).
 
-Changes in v2:
-- Look up the airoha,chip-scu phandle before the check for a chip
-  SCU compatible (Lorenzo).
+ .../mfd/airoha,an7589-gpio-sysctl.yaml        | 66 +++++++++++++++++++
+ MAINTAINERS                                   |  1 +
+ 2 files changed, 67 insertions(+)
+ create mode 100644 Documentation/devicetree/bindings/mfd/airoha,an7589-gpio-sysctl.yaml
 
- drivers/pinctrl/airoha/pinctrl-airoha.c | 25 +++++++++++++++++++------
- 1 file changed, 19 insertions(+), 6 deletions(-)
-
-diff --git a/drivers/pinctrl/airoha/pinctrl-airoha.c b/drivers/pinctrl/airoha/pinctrl-airoha.c
-index 615b48a056c4..c879e3009ee8 100644
---- a/drivers/pinctrl/airoha/pinctrl-airoha.c
-+++ b/drivers/pinctrl/airoha/pinctrl-airoha.c
-@@ -833,6 +833,22 @@ static const struct pinctrl_ops airoha_pctlops = {
- 	.dt_free_map = pinconf_generic_dt_free_map,
- };
- 
-+static struct regmap *
-+airoha_pinctrl_chip_scu(struct device *dev,
-+			const struct airoha_pinctrl_match_data *data)
-+{
-+	struct regmap *map;
+diff --git a/Documentation/devicetree/bindings/mfd/airoha,an7589-gpio-sysctl.yaml b/Documentation/devicetree/bindings/mfd/airoha,an7589-gpio-sysctl.yaml
+new file mode 100644
+index 000000000000..0785b61bdda3
+--- /dev/null
++++ b/Documentation/devicetree/bindings/mfd/airoha,an7589-gpio-sysctl.yaml
+@@ -0,0 +1,66 @@
++# SPDX-License-Identifier: (GPL-2.0 OR BSD-2-Clause)
++%YAML 1.2
++---
++$id: http://devicetree.org/schemas/mfd/airoha,an7589-gpio-sysctl.yaml#
++$schema: http://devicetree.org/meta-schemas/core.yaml#
 +
-+	map = syscon_regmap_lookup_by_phandle(dev->of_node, "airoha,chip-scu");
-+	if (!IS_ERR_OR_NULL(map))
-+		return map;
++title: Airoha AN7589 GPIO System Controller
 +
-+	if (!data->chip_scu_compatible)
-+		return NULL;
++maintainers:
++  - John Crispin <john@phrozen.org>
 +
-+	return syscon_regmap_lookup_by_compatible(data->chip_scu_compatible);
-+}
++description:
++  Airoha AN7589 SoC GPIO system controller which provides a register map
++  for controlling the GPIO and pins of the SoC.
 +
- int airoha_pinctrl_probe(struct platform_device *pdev)
- {
- 	const struct airoha_pinctrl_match_data *data;
-@@ -853,12 +869,9 @@ int airoha_pinctrl_probe(struct platform_device *pdev)
- 	if (IS_ERR(pinctrl->regmap))
- 		return PTR_ERR(pinctrl->regmap);
- 
--	map = syscon_regmap_lookup_by_phandle(pdev->dev.of_node, "airoha,chip-scu");
--	if (IS_ERR_OR_NULL(map)) {
--		map = syscon_regmap_lookup_by_compatible(data->chip_scu_compatible);
--		if (IS_ERR(map))
--			return PTR_ERR(map);
--	}
-+	map = airoha_pinctrl_chip_scu(dev, data);
-+	if (IS_ERR(map))
-+		return PTR_ERR(map);
- 
- 	pinctrl->chip_scu = map;
- 
++properties:
++  compatible:
++    items:
++      - const: airoha,an7589-gpio-sysctl
++      - const: syscon
++      - const: simple-mfd
++
++  reg:
++    maxItems: 1
++
++  pinctrl:
++    type: object
++    $ref: /schemas/pinctrl/airoha,an7589-pinctrl.yaml
++    description:
++      Child node definition for AN7589 Pin controller
++
++required:
++  - compatible
++  - reg
++
++additionalProperties: false
++
++examples:
++  - |
++    #include <dt-bindings/interrupt-controller/arm-gic.h>
++
++    system-controller@1fbf0200 {
++      compatible = "airoha,an7589-gpio-sysctl", "syscon", "simple-mfd";
++      reg = <0x1fbf0200 0x100>;
++
++      pinctrl {
++        compatible = "airoha,an7589-pinctrl";
++        airoha,iomux = <&iomux>;
++
++        interrupt-parent = <&gic>;
++        interrupts = <GIC_SPI 82 IRQ_TYPE_LEVEL_HIGH>;
++
++        gpio-controller;
++        #gpio-cells = <2>;
++
++        interrupt-controller;
++        #interrupt-cells = <2>;
++
++        mmc-pins {
++          mux {
++            function = "emmc";
++            groups = "emmc";
++          };
++        };
++      };
++    };
+diff --git a/MAINTAINERS b/MAINTAINERS
+index c6396842f6c3..93eb6bdb077e 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -22269,6 +22269,7 @@ PIN CONTROLLER - AIROHA
+ M:	Lorenzo Bianconi <lorenzo@kernel.org>
+ L:	linux-mediatek@lists.infradead.org (moderated for non-subscribers)
+ S:	Maintained
++F:	Documentation/devicetree/bindings/mfd/airoha,an7589-gpio-sysctl.yaml
+ F:	Documentation/devicetree/bindings/pinctrl/airoha,an7589-pinctrl.yaml
+ F:	Documentation/devicetree/bindings/pinctrl/airoha,en7581-pinctrl.yaml
+ F:	drivers/pinctrl/airoha/pinctrl-airoha.c
 -- 
 2.34.1
 
