@@ -2,92 +2,97 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 319E7606A326
-	for <linux-mediatek@archiver.kernel.org>; Tue, 24 Nov 2026 16:38:12 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 40FC2606A33D
+	for <linux-mediatek@archiver.kernel.org>; Tue, 24 Nov 2026 18:22:37 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=CzqLI43M;
-	dkim=pass (2048-bit key) header.d=collabora.com header.i=@collabora.com header.a=rsa-sha256 header.s=mail header.b=Q8lzSdZq
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=1cYmhRKo;
+	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=ZzzyARYY
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:Content-Type:
-	References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:Reply-To:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=TDfQrDs0VJJpLswhqOkr8Amdn3FxE2RvcuAwVP6cJFo=; b=CzqLI43MkrmjRsdPXu+bnY2bBT
-	jfUoNekhSd/+yHP9mmiiHI25YqkJsMz1j6zkysOLCogxPs3O3u676i7EwMYrq73M2O1LXjsaDAlUc
-	gohpQPpg/IYdRYRO66Yz6ncGQbvjSu26hGJ81NY/dUlfAZJYi+GEp09g9gOyH1Z2cwOIGlUpB2Ju2
-	w0CdOJw+EmYAuZ32bBIuKzmN5lYcRp7dhoiyGbQ9TAa/WgQ6kWf5MPUcM78UO4WeHS4jHpEwv7vGd
-	aNbBTLWnb3GJwlrnHqjt4Ru4VF5mvrJsTlaOd+iyAZsXhpOp8+YpdQ/euyqt4TRgarfw0Oqy0UoS4
-	0DkwxSYA==;
+	bh=lp2V1CD3UzTfS8SfEqnuM0AkFNXDFtv8aXVUJV8xgrM=; b=1cYmhRKo8LpQ1e8o+vRySSyCQr
+	DClooAPM8K0BQ+4flKLwmiPUuj7xHA2qsoxjg34oFuTtnOHE96/J9NurptEfvTwcNlWUBtoYRQLHH
+	4/GYq5v5NFM5541ax12Y8oLinqKVCJPTRB+z0nePpOsEJ+99IVmleg25lyPatgcsoNyGfWaGuvkUr
+	UQOEkbvFusOOJg7OOrRoRAy0lYa+31UtwdSRijJ1ibvAox8eTH2b6uR1fK8nY/HnLxcfsbdcf+9Si
+	NYDI3q6XUzbMdeet3XkeSeutbYsEIKMzpiRbd2tWVS6Q4Vp3bibQsb6iQajPseC7BdOejqBzaWh+0
+	h9mS7i9A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xVtX1-000000078oE-3c2c;
-	Tue, 24 Nov 2026 16:38:11 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1xVvA4-00000007UHV-3hmG;
+	Tue, 24 Nov 2026 18:22:36 +0000
+Received: from mail-dl1-x122f.google.com ([2607:f8b0:4864:20::122f])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xVtWx-000000078nM-0kFI;
-	Tue, 24 Nov 2026 16:38:09 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1795538284;
-	bh=/QZ+irOHsWaC/ChJazv1fX2AjDKuXTFkIcL1lxRycPM=;
-	h=Subject:From:To:Cc:Date:In-Reply-To:References:From;
-	b=Q8lzSdZqNQsy2LbpNePfKX8KQh7pIMERWPxdBSw3wkx1WOgtvWjSMVDtbLtNHhKi8
-	 uYKj8/MoSIcaW0v1BzkTok23qLTkyBt1VBkqtjhOsNXLjSD5akpLoNf53w3rntaSS0
-	 BUS5vp2VWLxZ2BhPxrgyzeGD0TPj7s5mB2D3L2Ovc3gS9DSZlD7736/uhb5P9l3yGb
-	 Dpz83spNUgC2jGlmUPwf2QclEoWAATsQolBSTA806m2YM/hbvtumvbFlr9/gLoskP1
-	 5ls7Ph35rDMM9wi6OQXmsaZMhN7eUET5A8crPpoCFPnbVGTGpJvarj5bZo7WI+ISU0
-	 lgDxI5zAa0VLw==
-Received: from [100.64.0.214] (unknown [100.64.0.214])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange secp256r1 server-signature RSA-PSS (4096 bits) server-digest SHA256)
-	(No client certificate requested)
-	(Authenticated sender: nicolas)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id 8700617E005B;
-	Tue, 24 Nov 2026 17:38:02 +0100 (CET)
-Message-ID: <871fa86e8a524f7d3ae7a0ac54adf57f14eaa187.camel@collabora.com>
-Subject: Re: [PATCH 4/8] media: mtk-mdp: Round MT21C sources up to whole
- tiles
-From: Nicolas Dufresne <nicolas.dufresne@collabora.com>
-To: Ryan Brue <ryanbrue.dev@gmail.com>, Tiffany Lin
- <tiffany.lin@mediatek.com>,  Andrew-CT Chen <andrew-ct.chen@mediatek.com>,
- Yunfei Dong <yunfei.dong@mediatek.com>, Mauro Carvalho Chehab	
- <mchehab@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Hans
- Verkuil <hverkuil@kernel.org>, Minghsiu Tsai	 <minghsiu.tsai@mediatek.com>,
- Houlong Wei <houlong.wei@mediatek.com>, Enric Balletbo i Serra
- <eballetbo@kernel.org>, Eizan Miyamoto <eizan@chromium.org>, Francois
- Buergisser	 <fbuergisser@chromium.org>
-Cc: Youngjoon Lee <getfeus@gmail.com>, linux-media@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org, Mauro Carvalho Chehab
-	 <mchehab+huawei@kernel.org>
-Date: Tue, 24 Nov 2026 11:38:00 -0500
-In-Reply-To: <20261120-rbrue-suez-upstreaming-mtk-vcodec-mdp-fixes-v1-4-877dea14c3d0@gmail.com>
-References: <20261120-rbrue-suez-upstreaming-mtk-vcodec-mdp-fixes-v1-0-877dea14c3d0@gmail.com>
-	 <20261120-rbrue-suez-upstreaming-mtk-vcodec-mdp-fixes-v1-4-877dea14c3d0@gmail.com>
-Autocrypt: addr=nicolas.dufresne@collabora.com; prefer-encrypt=mutual;
- keydata=mDMEaCN2ixYJKwYBBAHaRw8BAQdAM0EHepTful3JOIzcPv6ekHOenE1u0vDG1gdHFrChD
- /e0J05pY29sYXMgRHVmcmVzbmUgPG5pY29sYXNAbmR1ZnJlc25lLmNhPoicBBMWCgBEAhsDBQsJCA
- cCAiICBhUKCQgLAgQWAgMBAh4HAheABQkJZfd1FiEE7w1SgRXEw8IaBG8S2UGUUSlgcvQFAmibrjo
- CGQEACgkQ2UGUUSlgcvQlQwD/RjpU1SZYcKG6pnfnQ8ivgtTkGDRUJ8gP3fK7+XUjRNIA/iXfhXMN
- abIWxO2oCXKf3TdD7aQ4070KO6zSxIcxgNQFtDFOaWNvbGFzIER1ZnJlc25lIDxuaWNvbGFzLmR1Z
- nJlc25lQGNvbGxhYm9yYS5jb20+iJkEExYKAEECGwMFCwkIBwICIgIGFQoJCAsCBBYCAwECHgcCF4
- AWIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCaCyyxgUJCWX3dQAKCRDZQZRRKWBy9ARJAP96pFmLffZ
- smBUpkyVBfFAf+zq6BJt769R0al3kHvUKdgD9G7KAHuioxD2v6SX7idpIazjzx8b8rfzwTWyOQWHC
- AAS0LU5pY29sYXMgRHVmcmVzbmUgPG5pY29sYXMuZHVmcmVzbmVAZ21haWwuY29tPoiZBBMWCgBBF
- iEE7w1SgRXEw8IaBG8S2UGUUSlgcvQFAmibrGYCGwMFCQll93UFCwkIBwICIgIGFQoJCAsCBBYCAw
- ECHgcCF4AACgkQ2UGUUSlgcvRObgD/YnQjfi4+L8f4fI7p1pPMTwRTcaRdy6aqkKEmKsCArzQBAK8
- bRLv9QjuqsE6oQZra/RB4widZPvphs78H0P6NmpIJ
-Organization: Collabora Canada
-Content-Type: multipart/signed; micalg="pgp-sha512";
-	protocol="application/pgp-signature"; boundary="=-Ap9Z8iPA9oUAx81PJBIK"
-User-Agent: Evolution 3.62.1 (3.62.1-1.fc45) 
+	id 1xVv9y-00000007UGW-4C4H
+	for linux-mediatek@lists.infradead.org;
+	Tue, 24 Nov 2026 18:22:35 +0000
+Received: by mail-dl1-x122f.google.com with SMTP id a92af1059eb24-1b5786e099cso2825274c88.0
+        for <linux-mediatek@lists.infradead.org>; Tue, 24 Nov 2026 10:22:30 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20260707; t=1795544550; x=1796149350; darn=lists.infradead.org;
+        h=in-reply-to:content-disposition:content-type:mime-version
+         :references:message-id:subject:cc:to:from:date:from:to:cc:subject
+         :date:message-id:reply-to:content-type;
+        bh=lp2V1CD3UzTfS8SfEqnuM0AkFNXDFtv8aXVUJV8xgrM=;
+        b=ZzzyARYYl6ppFv2mSKgwhSxPvM/7Us20eqAW1Y5bfAgAGxlUZ5tSTs1INFCFg/7MiI
+         aqOGU3l7ypHgZcGPwe0T88siE+H5KESxB4pgcxU2UXQbjiHrQLLBL5xz9bpfBpLZvWyT
+         rFA+B/tgWYVf0L67j6gwFdHn14nXs3KfE0zwKei4CdbirZyN8UYJTp9DqzVUfZzlYucl
+         VW1UwIZz3DSWbUF/OlaYufuhesGimJ3ewX2zB7Hsv+GWDq/SaTa10oX2dltys02AqoyI
+         svHpwij45E5f+jwIE6Luwk+PkR6NGTR20cPFMBf5zDBffsW/Z1oDf2OL72BGqSM8X8f2
+         zZ8Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20260707; t=1795544550; x=1796149350;
+        h=in-reply-to:content-disposition:content-type:mime-version
+         :references:message-id:subject:cc:to:from:date:x-gm-gg
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+         :content-type;
+        bh=lp2V1CD3UzTfS8SfEqnuM0AkFNXDFtv8aXVUJV8xgrM=;
+        b=UqpB+5b4H0OrWZXl4ZhWKF9QXY13hhCkTNgvtqm4lWddanpOnX7iGEg4VRTZkP4WU0
+         nBzZJeHjpCJWvJHVXFjkvAzftuJWOdaZbIeqYks1oaqznxB+4isZmbdDvfEafUU2s/YH
+         VJONbe3xvxlyVc1bpuFVCYx9gltbOERhm3eTdjiT+orFoGWITQQAxFfOnnmGyyKnP+v3
+         bRcLH0GNcgfkWWovKmoKQ0rwKJCpN+NXki3T0N82/75ds9g2cA+x/ihjNoHRkyuU+Tr7
+         cNjFfWSrpmngxbccZrLzHFbAmDd9v2+dHd+n3LB1NnCgf1m1Yved4fz6NnqqkHfjL3Du
+         vHnA==
+X-Gm-Message-State: APuU4Z/hzGMKF0F+L40MJFbtFncxhcMr7JMMPhBY6Co6awohkI4WUfZb
+	1ntjuMHFIJ8Em7CZi7IvyMHj/uX+RSWIZuICu9XxtkSQ7TPDGRI5emBL
+X-Gm-Gg: AZFdTZdrgOoLYrWyAl7cJ3qkxHp+x7718nL5wm0dpUX1TLt3VPCfrfA4QHfwZs+j7VJ
+	0CAFuAlTDAYybgGd7xZfaBjYVwvIgiq+gB6BtF68IOazNSe7DOV7KamXq+jstC+ApcaVd/KnbQr
+	C4ntFZ09hi420nnC60wqYx3kJ1TtBRzGkpr0Qh8np9gIpxg1oPigmPvIBpAlHAkSEZIgjDmnWvc
+	5p5JtjUrGY5wwRymzV8NB/PtQtxgj89Byz7+D5WvxVZE8MwFpCuDa67AFKTUomLJ+M1R8qwXZyx
+	OGHfXnbLIC6i75G/10okYgiiiE3CMpusvMOXSRK4l2LFdCIla5jerX3eCjvR+GYBC5GF4/i2b4d
+	hddJxjyPxcwYCpGtdZCj0TV/6tJp5OwR2UUbZ3YUUZJ+TtiG0hAWG8K5YTQ/KrsncRMAJPQ5Soy
+	wFKDsqCNS7A+nbXArruJm4QIpZv26eeeBeDHSxou/eq/QC1yNJpqfeFzlwpIKYOzR7OBq3++Q59
+	ipPpyNGSzrft+P6rho52licYuKyslVxXePDdiJ+uG2Gg9DRs6XOpOZUaVj+J52vj5dMgkxpFIZv
+	WUKwfb6sFe1zsUmF0d4hlhXZivGdyFS3O9d23oLp4Pvd7KMlv7NAJIut85Qc6oEMw1hoZVxXyll
+	MafJz/KYkw9UjGrE/UA==
+X-Received: by 2002:a05:7022:3a83:b0:184:992:c9ec with SMTP id a92af1059eb24-1b55693aaabmr20326331c88.38.1795544549929;
+        Tue, 24 Nov 2026 10:22:29 -0800 (PST)
+Received: from google.com ([2a00:79e0:2ebe:8:ee3b:b892:771b:3bc7])
+        by smtp.gmail.com with ESMTPSA id a92af1059eb24-1b5567ff27bsm40472836c88.6.2026.11.24.10.22.26
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Tue, 24 Nov 2026 10:22:27 -0800 (PST)
+Date: Tue, 24 Nov 2026 10:22:24 -0800
+From: Dmitry Torokhov <dmitry.torokhov@gmail.com>
+To: Luca Leonardo Scorcia <l.scorcia@gmail.com>
+Cc: linux-mediatek@lists.infradead.org, Hans de Goede <hansg@kernel.org>, 
+	Matthias Brugger <matthias.bgg@gmail.com>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, linux-input@vger.kernel.org, linux-kernel@vger.kernel.org, 
+	linux-arm-kernel@lists.infradead.org
+Subject: Re: [PATCH v2] Input: goodix - sync the irq controller while
+ starting firmware
+Message-ID: <awXV3Y080rMLw_VO@google.com>
+References: <20261124085058.128173-1-l.scorcia@gmail.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20261124085058.128173-1-l.scorcia@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261124_083807_423087_55BECC5D 
-X-CRM114-Status: GOOD (  17.18  )
+X-CRM114-CacheID: sfid-20261124_102233_144364_B69FC4EE 
+X-CRM114-Status: GOOD (  11.28  )
 X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -99,69 +104,28 @@ List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-15.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,
-	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=ham
+X-Spam-Status: No, score=-7.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
+	DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,FREEMAIL_FORGED_FROMDOMAIN,
+	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=no
 	autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
---=-Ap9Z8iPA9oUAx81PJBIK
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+On Tue, Nov 24, 2026 at 09:46:22AM +0100, Luca Leonardo Scorcia wrote:
+> On the Lenovo Tab E7 (TB-7104F), which has a Goodix GT-912 touch screen,
+> the touch screen fails to come online after loading firmware, printing
+> the error "Error reading 1 bytes from 0x8041: -6".
+> 
+> Comparing the upstream code with the Android stock sources, the existing
+> call to goodix_int_sync should be moved between the upload of the firmware
+> and the watchdog restart. With this change the touchscreen is correctly
+> detected and working.
+> 
+> Signed-off-by: Luca Leonardo Scorcia <l.scorcia@gmail.com>
 
-Le vendredi 20 novembre 2026 =C3=A0 13:55 -0600, Ryan Brue a =C3=A9crit=C2=
-=A0:
-> MT21C, the MT8173 decoder's output, is laid out in tiles of 16x32
-> pixels, and the MDP firmware refuses a source of a size that is not a
-> whole number of them: converting a 1280x720 picture fails with -EINVAL
-> for every frame, while 1280x736, the decoder's own buffer size, works.
-> The alignment was 16x16, so 720 lines passed the format check.
->=20
-> Align MT21C to 16x32. mtk_mdp_bound_align_image() already rounds a size
-> up to the alignment, so a source covers its picture, and the visible
-> part is the crop rectangle.
->=20
-> Fixes: c8eb2d7e8202 ("[media] media: Add Mediatek MDP Driver")
+Applied, thank you.
 
-Is this commit in stable? If so you should CC stable.
-
-> Signed-off-by: Ryan Brue <ryanbrue.dev@gmail.com>
-
-Reviewed-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
-
-> ---
->  drivers/media/platform/mediatek/mdp/mtk_mdp_m2m.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
->=20
-> diff --git a/drivers/media/platform/mediatek/mdp/mtk_mdp_m2m.c b/drivers/=
-media/platform/mediatek/mdp/mtk_mdp_m2m.c
-> index d2813890cceb..34d02de4453d 100644
-> --- a/drivers/media/platform/mediatek/mdp/mtk_mdp_m2m.c
-> +++ b/drivers/media/platform/mediatek/mdp/mtk_mdp_m2m.c
-> @@ -40,7 +40,7 @@ struct mtk_mdp_pix_limit {
-> =20
->  static struct mtk_mdp_pix_align mtk_mdp_size_align =3D {
->  =09.org_w=09=09=09=3D 16,
-> -=09.org_h=09=09=09=3D 16,
-> +=09.org_h=09=09=09=3D 32,
->  =09.target_w=09=09=3D 2,
->  =09.target_h=09=09=3D 2,
->  };
-
---=-Ap9Z8iPA9oUAx81PJBIK
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: This is a digitally signed message part
-Content-Transfer-Encoding: 7bit
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCawW9aAAKCRDZQZRRKWBy
-9I6LAP97J054sBtnp+eLh55dXZmQlNt8Cj6YYU+GZPToghAE0AEA+FmJ/e9Hv+dy
-mWFFrQT47bJIutO025aeyEtaLq0Fuw4=
-=EFQo
------END PGP SIGNATURE-----
-
---=-Ap9Z8iPA9oUAx81PJBIK--
+-- 
+Dmitry
 
