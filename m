@@ -2,76 +2,104 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 5F042606A335
-	for <linux-mediatek@archiver.kernel.org>; Tue, 24 Nov 2026 15:01:05 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 822D7606A327
+	for <linux-mediatek@archiver.kernel.org>; Tue, 24 Nov 2026 16:09:59 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=Px+UdDxV;
-	dkim=pass (2048-bit key) header.d=collabora.com header.i=@collabora.com header.a=rsa-sha256 header.s=mail header.b=pQ0nXaTV
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=rLaP2tSc;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=infradead.org header.i=@infradead.org header.a=rsa-sha256 header.s=desiato.20200630 header.b=bnzVPn5y;
+	dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com header.a=rsa-sha256 header.s=Intel header.b=OUnoJ/YX
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
-	Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Unsubscribe-Post:
-	List-Owner; bh=asbWuIn9ePuDPZMHSTApP9g/ewv2TUXo/89WnF//TCg=; b=Px+UdDxVumUvRG
-	Xpeh+t/fyErq7/4lR4qZBtOQ/3vFmpG+LHGM+IU0JicMZP+LUgC1yY5Xy9MIlndltWxclVGRsEE+f
-	HyY5NKsAX+u3oiWNdaPpyrlf/b9/ImqDjIIPLXVpnbOBQZ12I6fexFMcUK9hJR/uzdZEVuv9HbJio
-	X0PYg5xXjes/7wT8xAq7RtoMnRENTh0omnvuR+c4UXW3vh+Beb83DgYykBkF0JdLHENcnbobcLE0i
-	2AXLUUD4Gvq3bqJBUb5fn3cE/cZhxvgdJAJj6D4khnEmxKU5A/5KA8JxRVrBzYNeK7wHG/LwVRljE
-	BBLG10APTc3/A2YsEZ5w==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Unsubscribe-Post:List-Owner;
+	bh=qi4Yj6pbHk09P0l9D1zx/PEYjia67PzFjcJgaaMSSPg=; b=rLaP2tScodp+AD/GAEm608uW4f
+	ctvcG7/CFdTT6XASc3Pe3l0x2K4isyCD1RrA1Sk5NFxUxI3KnwkGH8hTzKIaGoXY6Y8vyxQVd+BnX
+	gurPlIIlzQOzlI0ZjOjTOmhcjT4G7T5v3+RN+JPYb5pzcTJiEeWa2RhP1PdczolgVMGYLyIVEp9MZ
+	5P8TFoomCk+l+QiWhiGG9hISGGKr/nlUYExrT/UQIEoGC3SeDTSqXDZXWYCkuCO1dNq512PulTxEj
+	ZfL/5yCdyHIPLTYkmkpcX5cwxCjZIbM6T3U+OC3M7e3lW5CGlGlmdG39ASM+3addDEl/ghHlPm9bx
+	C5tXqXLA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xVs13-00000006ptU-0S4q;
-	Tue, 24 Nov 2026 15:01:05 +0000
-Received: from bali.collaboradmins.com ([2a01:4f8:201:9162::2])
+	id 1xVt5j-000000073rg-0xDy;
+	Tue, 24 Nov 2026 16:09:59 +0000
+Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xVs10-00000006psd-2lre;
-	Tue, 24 Nov 2026 15:01:04 +0000
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1795532460;
-	bh=dJcc5I0Ky/5T2QAptsnn0SzrB5NzoLMHaxiGnakhfhc=;
-	h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
-	b=pQ0nXaTVwLs9PqqU6CwULXvJgEIqxRyY5bxvW5uexTE19pWE+hs+oH0u+3jukYvE9
-	 y0RiUNk/bwYIkXTnHDceGFq6aIG3JnXjEQq5rEedFvSGZjxUcFFcLA5+xWhKG7epWR
-	 qJLqxwsM9GYg9ZtH7cMqOvV3Z9od6sWkRCszde6pNbSSG/lngu/Fq5abAGKsFyZn/D
-	 WrQFyIUZCLRCFlhW9InQy5vEfRgd/MIhHhirkWQeuRJRHThwYc5GAajSaEHCEFX+OU
-	 cEXN+KgSbk/KVER94bTmr227lVs7lsLPh1T4v74ZsYxB8iBJcQhpxg1TQYcCXPrlQX
-	 AO3PveeJUDSQw==
-Received: from [100.64.1.21] (unknown [100.64.1.21])
-	(using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
-	 key-exchange x25519)
-	(No client certificate requested)
-	(Authenticated sender: kholk11)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id A22CE17E09ED;
-	Tue, 24 Nov 2026 16:00:59 +0100 (CET)
-Message-ID: <14a4f698-8739-45c6-8904-496ac61e73c9@collabora.com>
-Date: Tue, 24 Nov 2026 16:00:59 +0100
+	id 1xVt5h-000000073qz-072t;
+	Tue, 24 Nov 2026 16:09:57 +0000
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+	d=infradead.org; s=desiato.20200630; h=In-Reply-To:Content-Type:MIME-Version:
+	References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description;
+	bh=qi4Yj6pbHk09P0l9D1zx/PEYjia67PzFjcJgaaMSSPg=; b=bnzVPn5yhDT/Z0e2OYFTtUORIm
+	amMQJBaUY7vhGcyubTehrEap4CvrQHAMINjh4WlHAb8Zn/Xfem41uteFxjtxFGR77rFenCO5pRPHg
+	c7Q9Ao+jqLeGeZAaSvLPFM+ROPmHneBEqfvFl9OeLu6C9p4QXmICkf6wpeo1Lx+NwUIg+5c1R1ByS
+	S2HLwKckrXQt36dmjNU7HQS+VpJID7qUmOxDRkkZtJT6LwhkpGGo6o6on9GN/hi0jzRmi6IrXXCxp
+	ied8rt1Fj8Dki7BOWL6uc3JObCANg/Cw0ojII8aSzatQ08r9v1KkprGB59C5Mu7t2d2gPzq31yvgX
+	hDAgBqkg==;
+Received: from mgamail.intel.com ([198.175.65.19])
+	by desiato.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
+	id 1xVt5d-00000004Jxa-33LS;
+	Tue, 24 Nov 2026 16:09:55 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1795536593; x=1827072593;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:in-reply-to;
+  bh=gayD7OSdqafDU/mqu/hlADeyIK427sH2qeIvaFiiZ0s=;
+  b=OUnoJ/YXCraTzxbSpuFwx952diEf8JjPaSt8WJ2cBbMtH8blYhXudSdW
+   6Uh/Xq/CEirt1VnMYiYdGBnvn8anwGYvpkkWit5ajSIf4oaes/SU54oA3
+   NGVAC8k4xaQb17XQxsc2cvhxQGgcXQ6GTlC5BtIroWl2YVfm2w0teSAI8
+   ZYBSzycLPjN9cYAMepnnub8xpGDYxqenfmbiF8Z3Wt20W+VagsvEsAB52
+   ENb7YJDjSh3/B2EQUtmlypoKjYnOdjJeAIMA8aej7MS7G6lB5GT9Bd28p
+   FdXt6v6ApgopgQC9d5oJfp9ovONEn6wTYucODgoAJwFWxkOP9dgbJsf/d
+   g==;
+X-CSE-ConnectionGUID: 5QhGv/Y5S3S4dQ0Jf9mxRQ==
+X-CSE-MsgGUID: CljCMIhNTxOJwBUwgKZmmw==
+X-IronPort-AV: E=McAfee;i="6800,10657,11976"; a="4437692"
+X-IronPort-AV: E=Sophos;i="6.27,231,1787036400"; 
+   d="scan'208";a="4437692"
+Received: from fmviesa010.fm.intel.com ([10.60.135.150])
+  by orvoesa111.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 24 Nov 2026 08:01:16 -0800
+X-CSE-ConnectionGUID: WBpAHBCHS06bR/JrcUcn8g==
+X-CSE-MsgGUID: H+vAR1eYT2WfIrk1s1p53w==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.27,231,1787036400"; 
+   d="scan'208";a="12188596"
+Received: from black.igk.intel.com ([10.91.253.5])
+  by fmviesa010.fm.intel.com with ESMTP; 24 Nov 2026 08:00:40 -0800
+Received: by black.igk.intel.com (Postfix, from userid 1001)
+	id 9A6E194; Tue, 24 Nov 2026 17:00:38 +0100 (CET)
+Date: Tue, 24 Nov 2026 17:00:38 +0100
+From: Mika Westerberg <mika.westerberg@linux.intel.com>
+To: Chunfeng Yun <chunfeng.yun@mediatek.com>
+Cc: Mika Westerberg <westeri@kernel.org>,
+	Andreas Noever <andreas.noever@gmail.com>,
+	Konrad Dybcio <konrad.dybcio@oss.qualcomm.com>,
+	Sven Peter <sven@kernel.org>,
+	Yehezkel Bernat <YehezkelShB@gmail.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Greg Kroah-Hartman <gregkh@linuxfoundation.org>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	linux-kernel@vger.kernel.org, linux-usb@vger.kernel.org,
+	linux-arm-kernel@lists.infradead.org,
+	linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH v3 7/8] thunderbolt: Decouple the waiting time of
+ TB_PORT_UNPLUGGED and TB_PORT_UP
+Message-ID: <20261124160038.GR229695@black.igk.intel.com>
+References: <20261123113705.2297329-1-chunfeng.yun@mediatek.com>
+ <20261123113705.2297329-8-chunfeng.yun@mediatek.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 33/46] drm/mediatek: Add support for Display Controller
- exDMA component
-To: Daniel Stone <daniel@fooishbar.org>
-Cc: chunkuang.hu@kernel.org, p.zabel@pengutronix.de, airlied@gmail.com,
- simona@ffwll.ch, maarten.lankhorst@linux.intel.com, mripard@kernel.org,
- tzimmermann@suse.de, robh@kernel.org, krzk+dt@kernel.org,
- conor+dt@kernel.org, matthias.bgg@gmail.com,
- dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org,
- devicetree@vger.kernel.org, linux-kernel@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, justin.yeh@mediatek.com,
- jason-jh.lin@mediatek.com, kernel@collabora.com
-References: <20260714114414.184512-1-angelogioacchino.delregno@collabora.com>
- <20260714114414.184512-34-angelogioacchino.delregno@collabora.com>
- <CAPj87rO9saEC34+5NiYK8xyZiNytrVgOcszoY5uc7BpL=M4WTg@mail.gmail.com>
-From: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Content-Language: en-US
-In-Reply-To: <CAPj87rO9saEC34+5NiYK8xyZiNytrVgOcszoY5uc7BpL=M4WTg@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+In-Reply-To: <20261123113705.2297329-8-chunfeng.yun@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261124_070102_901496_D87C0A89 
-X-CRM114-Status: GOOD (  27.45  )
-X-Spam-Score: -2.1 (--)
+X-CRM114-CacheID: sfid-20261124_160954_105048_9A691EEA 
+X-CRM114-Status: GOOD (  27.34  )
+X-Spam-Score: -2.3 (--)
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -82,87 +110,65 @@ List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-7.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,
-	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,USER_AGENT_SANE_1 autolearn=no autolearn_force=no
-	version=4.0.1
+X-Spam-Status: No, score=-13.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
+	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On 11/24/26 15:28, Daniel Stone wrote:
-> Hi,
+On Mon, Nov 23, 2026 at 07:36:54PM +0800, Chunfeng Yun wrote:
+> When USB4 is woke up by device disconnect, no need wait for 2s,
+> usually the phase2~4 takes at most about 200ms, and enters to
+
+usually phases 2-4 take at most..
+
+The 200ms is not from the spec though? It's empirical right on your
+hardhware?
+
+> TB_PORT_CONNECTING, if it is still in TB_PORT_UNPLUGGED after 400ms,
+> treat it as disconnected.
 > 
-> On Tue, 14 Jul 2026 at 12:45, AngeloGioacchino Del Regno
-> <angelogioacchino.delregno@collabora.com> wrote:
->> +void mtk_exdma_layer_config(struct device *dev, unsigned int idx,
->> +                                struct mtk_plane_state *state,
->> +                                struct cmdq_pkt *cmdq_pkt)
->> +{
->> +       struct mtk_disp_exdma *priv = dev_get_drvdata(dev);
->> +       struct mtk_plane_pending_state *pending = &state->pending;
->> +       const struct drm_format_info *fmt_info = drm_format_info(pending->format);
->> +       const u32 blend_mode = mtk_ovl_get_blend_mode(state, MTK_OVL_SUPPORT_BLEND_MODES);
->> +       const bool csc_enable = (fmt_info) ? fmt_info->is_yuv : false;
->> +       u32 val;
->> +
->> +       if (!pending->enable || pending->height == 0 || pending->width == 0 ||
->> +           pending->x > OVL_EXDMA_MAX_SIZE || pending->y > OVL_EXDMA_MAX_SIZE) {
+> Signed-off-by: Chunfeng Yun <chunfeng.yun@mediatek.com>
+> ---
+> v3: fix code style
+> ---
+>  drivers/thunderbolt/switch.c | 8 +++++---
+>  1 file changed, 5 insertions(+), 3 deletions(-)
 > 
-> Definitely don't do this please. If exdma is asked to do something it
-> can't (and I'm assuming that these last two checks are intended to be
-> on w/h rather than x/y?), then you need to reject that in
-> atomic_check. Getting here with pending->enable == true and then not
-> enabling it, is not OK.
-> 
-
-That was done because mediatek-drm isn't in the best shape, and atomic_check is too
-late for this check... adding support for those components is done on top of a big
-restructuring, which still is not complete, as the entire mediatek-drm driver can,
-and needs to, improve quite a bit.
-
-(P.S.: yes the check was to be done on w/h)
-
-That said, I think at this point the best I can do, without going for continuing
-the entire restructuring here (I have no time for that right now, sorry) is to
-duplicate this check in .atomic_check(), so that when the entire thing will be
-ready, the right thing is already there waiting for the additional check to be
-simply removed.
-
-I have to recheck if there's anything "fast" I can do to make this completely
-right without double checks, but I'm afraid I can't.
-
-> Relatedly, most of mtk_plane_pending_state should be deleted as
-> duplicative of drm_plane_state and it would be great to see a patch
-> series very soon to clean that up.
-
-Again, I agree mediatek-drm needs a rather big cleanup.
-
-Lately, upstream has been a bit slow in reviewing etc for many reasons, which is
-why this series has been there for months now (though things are getting unblocked
-lately at least for this specific series, so that's good).
-
-Anyway - let me see what I can do, but I can't make *big* promises - the only thing
-I can say is that further *big* cleanups/restructuring is something I can do in the
-next iteration (after the partial restructuring that is done in this series gets
-merged, but definitely not in this series) whenever I can find some time to.
-
-I'm all for making things perfect, but I only have two hands, unfortunately :-(
-
-> It's been that way for the last 10
-> years, with seemingly no discussion ever of why it exists (my guess is
-> that it's a holdover from pre-atomic code), but no reason to
-> perpetuate the badness.
-
-It's there because the mediatek-drm codebase still nowadays has lots of technical
-debt, and because there is this GCE//CMDQ programming that adds up to make things
-slightly more complicated.
-
-> 
-> Same comment applies for the blender.
-
-Noted.
-
-Cheers,
-Angelo
+> diff --git a/drivers/thunderbolt/switch.c b/drivers/thunderbolt/switch.c
+> index 97e3fd8cdc0c..0da5b7ee4c29 100644
+> --- a/drivers/thunderbolt/switch.c
+> +++ b/drivers/thunderbolt/switch.c
+> @@ -489,8 +489,9 @@ int tb_port_state(struct tb_port *port)
+>   * Wait up to 2 seconds for a port to reach state TB_PORT_UP. If
+>   * wait_if_unplugged is set then we also wait if the port is in state
+>   * TB_PORT_UNPLUGGED (it takes a while for the device to be registered after
+> - * switch resume). Otherwise we only wait if a device is registered but the link
+> - * has not yet been established.
+> + * router resume, Wait at most 400 ms for link to start connecting,
+> + * if timeout, means the device is disconnected). Otherwise we only wait
+> + * if a device is registered but the link has not yet been established.
+>   *
+>   * Return:
+>   * * %0 - If the port is not connected or failed to reach
+> @@ -500,6 +501,7 @@ int tb_port_state(struct tb_port *port)
+>   */
+>  int tb_wait_for_port(struct tb_port *port, bool wait_if_unplugged)
+>  {
+> +	int unplugged_retries = 4;
+>  	int retries = 20;
+>  	int state;
+>  	if (!port->cap_phy) {
+> @@ -519,7 +521,7 @@ int tb_wait_for_port(struct tb_port *port, bool wait_if_unplugged)
+>  			return 0;
+>  
+>  		case TB_PORT_UNPLUGGED:
+> -			if (wait_if_unplugged) {
+> +			if (wait_if_unplugged && unplugged_retries--) {
+>  				/* used during resume */
+>  				tb_port_dbg(port,
+>  					    "is unplugged (state: 7), retrying...\n");
+> -- 
+> 2.45.2
 
