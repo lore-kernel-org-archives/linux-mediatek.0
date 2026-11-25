@@ -2,70 +2,72 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id C894F606A333
-	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Nov 2026 18:34:59 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 0C527606A321
+	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Nov 2026 18:35:33 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=Ulw6NpiM;
-	dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=AccAoIpv
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=WwlJMfJi;
+	dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=Se44L7Q4
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
 	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Unsubscribe-Post:
-	List-Owner; bh=TWsUZ4Yx/ugCrzDX8uSHJCRajgVZgocX3xB6kXa9XWw=; b=Ulw6NpiMm2zm5N
-	omH2mh1nIh4nQK2SykeQ/TUzVjVgp75AZ+YzMnBhwchkIO+SDA5L4D7XJgFCtYxV4Keb11fLTYSOQ
-	vl8lIxTYFWzelOSrhSnJB7v32emF+FsLYQe8XizEAv1pQLGEMJ6vaosY6+wpS3v1o74ZT7Ts9ZEUw
-	CFfWRnTxSHZUyJ3CvE4dmCaCB5Sj3b/LpR18J6ggGL/CK073oFX/g1NildoDsPf7zRRT6qjGs17jK
-	iOAYOOSmy19qoCNR3JnNtsMWaYs460T6nFNRs1r2TluHQUXL7RoBna0gH56Q1C4+qOF3EASoGtCuH
-	lKgYEvPkVUQK1xp26Bjw==;
+	List-Owner; bh=9xVD7bdz9+WmMAUxY10TyWuzNNqlkKipL2zUO5K9vKY=; b=WwlJMfJiJaliVL
+	c0SAxePK+oIfOO1o6mTJ53ujP3SvWi99dL3SHB1SUAvV2sUQTZNUPgzvP3itvowmE2Kry+GNh59L1
+	lbBAZZ59CS0VKBezQEaGdRlNQEYYocYBMLjuURzHpDVqETa0auGlj6gMJ9sfrwq3FTwiRJ8cfjfBL
+	LFakrohYRkOS5iOz0g1yg3iASdK4N3TtGnSHYnx+8umcrxShcGVeo7R3ZJ1XHxPoeUr+7f8r1koX7
+	KYyW6dDlz2riIREPU/3GtFPVEpwfetQgk2xcPQybxWb4eoi/1Ml3umm5LCmKAZGlhtAxX9tAnS2MV
+	TvZs35Yb2fDz27r4uzdg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xWHpb-0000000B1Cc-209T;
-	Wed, 25 Nov 2026 18:34:59 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1xWHq8-0000000B1LY-37Lt;
+	Wed, 25 Nov 2026 18:35:32 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xWHpZ-0000000B1BT-2UTm
+	id 1xWHq6-0000000B1KV-06aq
 	for linux-mediatek@lists.infradead.org;
-	Wed, 25 Nov 2026 18:34:57 +0000
+	Wed, 25 Nov 2026 18:35:32 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id C56BA621F3
-	for <linux-mediatek@lists.infradead.org>; Wed, 25 Nov 2026 18:34:56 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 2258C1F000D8
-	for <linux-mediatek@lists.infradead.org>; Wed, 25 Nov 2026 18:34:56 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id C6F45460D4
+	for <linux-mediatek@lists.infradead.org>; Wed, 25 Nov 2026 18:35:29 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8B5231F000D0
+	for <linux-mediatek@lists.infradead.org>; Wed, 25 Nov 2026 18:35:29 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1795631696;
-	bh=TWsUZ4Yx/ugCrzDX8uSHJCRajgVZgocX3xB6kXa9XWw=;
+	s=k20260515; t=1795631729;
+	bh=9xVD7bdz9+WmMAUxY10TyWuzNNqlkKipL2zUO5K9vKY=;
 	h=References:In-Reply-To:From:Date:Subject:To:Cc;
-	b=AccAoIpvu7+qzRklPC93AUQnIoHA9P4c6asbAvajc/yCDHHiq7yfcr/0QRdyTgXZI
-	 A2OjQon8kfLMRWiYcWm8rA782St9VLQJhdvuodRi4WUnfSiRqBmPibjwAzJMEZ2eJH
-	 wWDzp5Fpe7W6kJCLsjxBFGsOjugVcENSk/rjwTiRgmW97BDFjcQzL+T2p5R6kSEQXu
-	 ik3BgM9ATnL0YL427gGWegyLvBKlWAsWNIOkoJLZONkQ/Wnfx8IDVSkRUR2hXM6iwT
-	 xBugMWnFATHYbWXkw3UAU1SoMkNLa1icZP0HmyMLA1Dd33FQs2kOMogk008U1qqHWJ
-	 SSDzWrFG88vMg==
-Received: by mail-lf1-f44.google.com with SMTP id 2adb3069b0e04-5be3cff0f6cso4029194e87.0
-        for <linux-mediatek@lists.infradead.org>; Wed, 25 Nov 2026 10:34:56 -0800 (PST)
-X-Forwarded-Encrypted: i=1; AL+hErG+c1rp94zXX/bpovIXvUFymcUl1VCnHyCc+5inYZsMN9AuTA+ZlVvLKXQXHi4U7JubGks09D8fRgn8Q2onUg==@lists.infradead.org
-X-Gm-Message-State: APuU4Z9lA+LB380ggXkTUR8qxoC6MqHlCKKOKNsg3t2MBrvcdYs//3zR
-	wyiEcbWqPFgP7ov52d9eP8gyI1DPboc6ciD8yTvmAlxEY3M+Kvbs/Ex6a10vLZ/LcwIOTwYEAyh
-	0c8BmuwBM19Jhc+Z+K2+LgjWtYl0EWy0=
-X-Received: by 2002:a05:6512:85ca:20b0:5c1:5970:ae1f with SMTP id
- 2adb3069b0e04-5c1bc863452mr4167518e87.63.1795631694900; Wed, 25 Nov 2026
- 10:34:54 -0800 (PST)
+	b=Se44L7Q4cJUXGUkTEzWkUfaYZtmSE6mglSqozkwjpXGe25j0WfPbfVDEuR+zdqMSo
+	 +o2GmmVafalPbZPHZPxBFUmdC3o/h2ruPQT2dDO3Zv1pg28lG0J5weslKOmg+EwG+Z
+	 NNRKA16MLuY2hkb/A7a4lIJzuioAVut7n9LtTYVzU7H4zOY66qVzTsyyJ1wp+nHVqm
+	 PzW6MG9aopLXb/fzYrO924LnIfnCOlSdXmhm7j3qXS5BDdLN30oJsQJhI5GiyM+2dz
+	 nGQc8G9kJew6QqIDQPjbb43XIFb6PzaB1cS2Hp51up7jhxHOBGEhY/qP6Gv9WiigSj
+	 SYQ1O3gm/GHMA==
+Received: by mail-lf1-f51.google.com with SMTP id 2adb3069b0e04-5c14470729eso5666673e87.2
+        for <linux-mediatek@lists.infradead.org>; Wed, 25 Nov 2026 10:35:29 -0800 (PST)
+X-Forwarded-Encrypted: i=1; AL+hErFE5OvuxW5q324KBFyQuqxcOiRQzUJVrie8Ie+xZWv257cbX4XUCjnM1MelpKafbYHUxdjjG5qFxofoLfXj7w==@lists.infradead.org
+X-Gm-Message-State: APuU4Z857Bkj2FUNtqODFbrz20JPZdWGfmJ+DaLalyTbgqj8lDJxq5Fv
+	8l+z74u8illLqWzfHLbiLtoi178YDGdrip1X+9zT7ggW2DeulFkGl59UHtJixZCLJAZHMuOUofh
+	DuawPyJ+T9XNdafWyS2g2dJ6ptgI0UE8=
+X-Received: by 2002:a05:6512:3ca7:b0:5c1:57c1:bc89 with SMTP id
+ 2adb3069b0e04-5c1bc8c6d32mr5057176e87.65.1795631728358; Wed, 25 Nov 2026
+ 10:35:28 -0800 (PST)
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-References: <20261119204748.2558209-1-lee@kernel.org> <20261119204748.2558209-4-lee@kernel.org>
-In-Reply-To: <20261119204748.2558209-4-lee@kernel.org>
+References: <20261119204748.2558209-1-lee@kernel.org> <20261119204748.2558209-5-lee@kernel.org>
+In-Reply-To: <20261119204748.2558209-5-lee@kernel.org>
 From: Linus Walleij <linusw@kernel.org>
-Date: Wed, 25 Nov 2026 19:34:43 +0100
-X-Gmail-Original-Message-ID: <CAD++jL=uCDqb0XJSVdzzMDNrxXYxB9KgJKqEh61mjAKhusMmQw@mail.gmail.com>
-X-Gm-Features: Aa3M54qdnjbrThHpc_O_xCS8rqPK1pjBvtoIqC7wMcjPKsfTBJLGOdyvo3aqDng
-Message-ID: <CAD++jL=uCDqb0XJSVdzzMDNrxXYxB9KgJKqEh61mjAKhusMmQw@mail.gmail.com>
-Subject: Re: [PATCH v2 3/6] pinctrl: mediatek: mt7981: Add missing entries to mt7981_ant_sel_funcs
+Date: Wed, 25 Nov 2026 19:35:15 +0100
+X-Gmail-Original-Message-ID: <CAD++jLmPs3MxaRvk3+csA5wwx04ccaYF=DqC61Twb+b+Q5Ys+A@mail.gmail.com>
+X-Gm-Features: Aa3M54pSiUm-Sabn52M6gTOmNq3pyFFBJdM-jwrYQTrlBs-ynEpBtUVfQzaBT0w
+Message-ID: <CAD++jLmPs3MxaRvk3+csA5wwx04ccaYF=DqC61Twb+b+Q5Ys+A@mail.gmail.com>
+Subject: Re: [PATCH v2 4/6] pinctrl: mediatek: Guard against NULL eint in
+ mtk_eint_do_suspend() and mtk_eint_do_resume()
 To: Lee Jones <lee@kernel.org>
 Cc: Sean Wang <sean.wang@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Sam Shih <sam.shih@mediatek.com>, 
-	Daniel Golle <daniel@makrotopia.org>, Rob Herring <robh@kernel.org>, 
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+	Maoguang Meng <maoguang.meng@mediatek.com>, Hao Chang <ot_chhao.chang@mediatek.com>, 
+	Qingliang Li <qingliang.li@mediatek.com>, Nicolas Boichat <drinkcat@chromium.org>, 
 	linux-mediatek@lists.infradead.org, linux-gpio@vger.kernel.org, 
 	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
 	stable@vger.kernel.org
@@ -90,18 +92,17 @@ X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 
 On Thu, Nov 19, 2026 at 9:48=E2=80=AFPM Lee Jones <lee@kernel.org> wrote:
 
-> mt7981_ant_sel_pins[] defines 14 pins (pins 14..25, 34, and 35), all of
-> which select ANT_SEL at function mux mode 6, but mt7981_ant_sel_funcs[]
-> only contains 12 entries.  When mtk_pinmux_set_mux() iterates over
-> grp->grp.npins (14), it reads two int elements past the end of
-> mt7981_ant_sel_funcs[].
+> mtk_paris_pinctrl_probe() treats mtk_build_eint() failure as non-fatal,
+> logging a warning and completing probe with hw->eint left as NULL
+> whenever EINT initialisation is skipped or fails.  However, the system
+> sleep callbacks pass pctl->eint unconditionally to
+> mtk_eint_do_suspend() and mtk_eint_do_resume(), both of which
+> dereference eint without checking for NULL.
 >
-> Add the two missing mode 6 entries to mt7981_ant_sel_funcs[] so its
-> length matches mt7981_ant_sel_pins[].
+> Return 0 early from mtk_eint_do_suspend() and mtk_eint_do_resume() when
+> eint is NULL.
 >
-> Fixes: 6c83b2d94fcc ("pinctrl: add mt7981 pinctrl driver")
-> Closes: https://sashiko.dev/#/bug/linux-6233f285-1487-4d2d-afe3-d4ce3c445=
-054
+> Fixes: 5c0904488a20 ("pinctrl: mediatek: Add pm_ops to pinctrl-paris")
 > Cc: stable@vger.kernel.org
 > Signed-off-by: Lee Jones <lee@kernel.org>
 
