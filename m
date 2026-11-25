@@ -2,11 +2,11 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id E68DF606A31E
-	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Nov 2026 09:27:49 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id A7A31606A31E
+	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Nov 2026 09:27:57 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=lGUwj5zv;
-	dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=U8Yz4UDn
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=vXvfWX5t;
+	dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=K9frEIov
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
@@ -14,36 +14,37 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	:Cc:To:From:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=x4sbsn2ixDTBDtUwxa1hBX1Qz+G2nxms7ydHl051tRo=; b=lGUwj5zvCoioXnN3Qp115XZWCo
-	7XizabddUQPbmRnLu9xKDXGege0kdRZvxEKH5OqlvWy88udzhBvpkkVHa9BqmqH7ehr6gVaIMo9uw
-	zC2rfgI5HiUyHuEJB6zgVIh5krDnlu0mtPatUqU24AGOH1be+zVDz8AUxOvV8I+DEGTH/rxNShq5N
-	CM7ZBHAs5AwTTICT2X3w2gpXFjYxm6/HAHGdAWTFOA9RVkm7YAi9XCg7CbjLV48hgtx7dFsLREMVK
-	ScPW8ZLfSaHu5xKsBM3wwZH3WjTOiruG58ZePYhyb21e6FCSRx2jWJnYV8yTEErS09NPJb1vOULh6
-	wJhr2Ciw==;
+	bh=4uoskY1EG7VAfNz08KwlvC9A41XTvME1bf3Oqeq2F30=; b=vXvfWX5tK59JgMeXMUIKel77TJ
+	idtvj9pbfyVC3/27oS5RsOPhTEIAonFgEWNvSX1K1+x/jE69O2xW3p41v44Xe8BqZfUAX7oBD6qnt
+	2uPy+B9zopzvfUzU3lmV6sTCHDlJ5NPiDUGyicR4sBg8aj+MEQmwjsjc8NjOAqhbdNgqHvgPbcPnZ
+	8TuTskFhM2f6ztE9LGTxsDOlqDYg6cO3X1yHUDlGRZVc9tgCjMfrsrP5uDaCYmSiz9TSq/+xA40N9
+	cmvUxSttJWmDU95V56NIJs0TbPSP1YJipp/GAHoTAsb0hmwdb8JnTM9ljIat9IM0y9e6cud6l/bRg
+	od55qIWQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xW9I5-00000009HVv-2gap;
-	Wed, 25 Nov 2026 09:27:49 +0000
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+	id 1xW9ID-00000009HZe-1eQ7;
+	Wed, 25 Nov 2026 09:27:57 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xW9HY-00000009HQT-1ubi;
-	Wed, 25 Nov 2026 09:27:17 +0000
+	id 1xW9Ha-00000009HRQ-3Rxf;
+	Wed, 25 Nov 2026 09:27:29 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id EB13340F9A;
-	Wed, 25 Nov 2026 09:27:15 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id C87451F000C0;
-	Wed, 25 Nov 2026 09:27:14 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 93A39601EE;
+	Wed, 25 Nov 2026 09:27:17 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 85F951F000D4;
+	Wed, 25 Nov 2026 09:27:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1795598835;
-	bh=x4sbsn2ixDTBDtUwxa1hBX1Qz+G2nxms7ydHl051tRo=;
+	s=k20260515; t=1795598837;
+	bh=4uoskY1EG7VAfNz08KwlvC9A41XTvME1bf3Oqeq2F30=;
 	h=Subject:From:To:Cc:Date:In-Reply-To:References;
-	b=U8Yz4UDnsTUxU2NTt180uQ56FBgsICpzdchsQS4dHXdghrMSe7JPYmFYljDHsabvS
-	 scI4PVOyTx4hrtfoIXcUXgkf4zgGD2gXwFY+9IsWbkkgqUguZPTpMy8h/F/7N+vFEQ
-	 k7zYVs+7kLtlqbcNczk8mTu3dcbp6zPNvc2sJZAVO14/i4IlZfRNJSv+R8isKAqX50
-	 zpk2mRTT4LPKhi5ThoECw/0XhbHe/lsNhQHfFPfUTJxRDOmiazBFM/lYAlOgr1bzY+
-	 yi8AniGqv3ZcKcq23F1DIJy0FvELf3zL0naomyFczybZdHYt64Dj0JNhXGuQUOcs17
-	 5ECUZzRehtFWw==
-Subject: Re: [PATCH net 1/5] net: dsa: mt7530: disable regulators on switch teardown
+	b=K9frEIovzSE8Eg54wK7g6G21X9W4+yTlJ4tZtlpzS4o9SeKmc7MkZeZYt+AUWnbpZ
+	 X/ckwT7EQs1JzCGsXhW6Fu2I2Bw5x2nnVCNo+D1m7tfsW2aKMq2m2S6hi4cpW9qLk7
+	 ispD0DapAdic8h/rCUJAvf2qeUe2Pa5rWRZ+3159xjjnQlnj/OHh+4kIWbS3pTF0/0
+	 Y/2NbPfQD+p2dRYespYbGDOKuFA656Wsu28a2PNpJNV+nEj7AkcZoqNu9mg4xh80dh
+	 DMOlv7Ze4Q69IemonLRKap99Vf6F510HIySvuoeD4s4qp7NpAhwFekcj1wf8SUqD//
+	 UFu/HEFKN2nnA==
+Subject: Re: [PATCH net 5/5] net: dsa: mt7530: disable regulators on
+ mt753x_setup() failure
 From: netdev-bot+sashiko@kernel.org
 To: wanghr2026@mail.zgclab.edu.cn
 Cc: chester.a.unal@arinc9.com, daniel@makrotopia.org, andrew@lunn.ch,
@@ -52,11 +53,11 @@ Cc: chester.a.unal@arinc9.com, daniel@makrotopia.org, andrew@lunn.ch,
  angelogioacchino.delregno@collabora.com, netdev@vger.kernel.org,
  linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
  linux-kernel@vger.kernel.org
-Date: Wed, 25 Nov 2026 09:27:14 +0000
-Message-ID: <179559883437.3135.6979042989700533423@kernel.org>
-In-Reply-To: <179550875789.4156.10993765506582806373@mail.zgclab.edu.cn>
-References: <179550875789.4156.10993765506582806373@mail.zgclab.edu.cn>
-X-sashiko-severity: Medium
+Date: Wed, 25 Nov 2026 09:27:16 +0000
+Message-ID: <179559883613.3135.7444939334405682827@kernel.org>
+In-Reply-To: <179550875790.4156.14185923394520188230@mail.zgclab.edu.cn>
+References: <179550875790.4156.14185923394520188230@mail.zgclab.edu.cn>
+X-sashiko-severity: High
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
 X-Archived-By: <archiver.kernel.org>
@@ -81,7 +82,7 @@ X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 Thank you for your contribution! Sashiko AI review found 2 potential
 issue(s) to consider.
 
-Critical: 0 · High: 0 · Medium: 1 · Low: 1
+Critical: 0 · High: 1 (1) · Medium: 0 · Low: 1
 
 If you believe none of the issues are legitimate, please reply to each
 issue of Medium severity or higher and explain why the AI is wrong.
@@ -89,137 +90,156 @@ If any of them are legitimate and you plan to respin, please let patchwork
 know by including "pw-bot: cr" as a separate line at the end of your reply
 (one such reply per series is enough).
 
-- [Medium] mt753x_teardown() now switches off the MT7530 core and IO
-  supplies, but setup registered several interfaces with devm on…
-- [Low] The commit message understates and partly mischaracterizes what
-  the patch changes.
+- [High] In mt753x_setup() (drivers/net/dsa/mt7530.c), the new error
+  paths turn off the MT7530 core/io regulators while devm still keeps…
+- [Low] net: dsa: mt7530: inaccurate Fixes tag for mt753x_setup()
+  regulator leak
+
+Pre-existing issues:
+- [High] This problem wasn't introduced by this patch, but it sits on the
+  failure path the patch reworks.
 
 --
 
-net: dsa: mt7530: disable regulators on switch teardown
+net: dsa: mt7530: disable regulators on mt753x_setup() failure
 
-This patch moves the MT7530 core and io regulator disable from
-mt7530_remove() into mt753x_teardown(), after the stats polling work is
-cancelled. The aim is to balance the enable in mt7530_setup() for switches
-that are torn down without the driver reaching remove().
-
-> Move the regulator disable from mt7530_remove() to mt753x_teardown(),
-> after the stats polling work is cancelled so that no poll can run against
-> an unpowered switch. This is a plain code movement, with the error
-> reporting kept for now and cleaned up in a later patch.
->
-> A switch in a multi-switch tree whose sibling fails to set up is torn
-> down without its driver reaching remove(), so its regulators were left
-> enabled until now.
-
-[Severity: Low]
-Is "a plain code movement" accurate? The patch seems to change more than
-the message says.
-
-On the remove path, the old mt7530_remove() disabled the supplies before
-mt7530_remove_common()->dsa_unregister_switch(). The whole DSA teardown
-therefore ran against an unpowered switch. With this patch, power is cut
-last, from mt753x_teardown().
-
-The leak can also happen with a single switch, not only in multi-switch
-trees. dsa_switch_setup() calls ops->teardown on its error path when tag
-protocol setup or user MII bus setup fails:
-
-net/dsa/dsa.c:dsa_switch_setup() {
-    ...
-teardown:
-	if (ds->ops->teardown)
-		ds->ops->teardown(ds);
-    ...
-}
-
-dsa_tree_setup() also tears down the switches when dsa_tree_setup_ports(),
-dsa_tree_setup_conduit() or dsa_tree_setup_lags() fails.
-
-In each of these cases probe fails and remove() never runs. The leaked
-enable then triggers WARN_ON(regulator->enable_count) in _regulator_put()
-when devres releases the regulator.
-
-There is one more case. In a multi-switch tree that never finished setting
-up, the old mt7530_remove() disabled regulators that had never been
-enabled. That hit the regulator core's "unbalanced disables" warning, and
-this patch fixes it as a side effect.
-
-Could the commit message mention these cases and the change in ordering on
-the remove path?
+This patch sends the failure paths in mt753x_setup() that come after
+sw_setup() to a shared error label. That label disables the MT7530 core
+and io regulators. The mdio irq teardown after a create_sgmii() failure
+moves into the same error path.
 
 > diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
-> index d5a199293f78a..c2f12ae2c6d7b 100644
+> index 1ac4ac1a05664..963d145341759 100644
 > --- a/drivers/net/dsa/mt7530.c
 > +++ b/drivers/net/dsa/mt7530.c
-> @@ -3237,9 +3237,22 @@ static void
->  mt753x_teardown(struct dsa_switch *ds)
->  {
->  	struct mt7530_priv *priv = ds->priv;
-> +	int ret;
+> @@ -3223,11 +3223,11 @@ mt753x_setup(struct dsa_switch *ds)
 >  
->  	if (priv->bus)
->  		cancel_delayed_work_sync(&priv->stats_work);
-> +
-> +	if (priv->id == ID_MT7530) {
-> +		ret = regulator_disable(priv->core_pwr);
-> +		if (ret < 0)
-> +			dev_err(priv->dev,
-> +				"Failed to disable core power: %d\n", ret);
-> +
-> +		ret = regulator_disable(priv->io_pwr);
-> +		if (ret < 0)
-> +			dev_err(priv->dev, "Failed to disable io pwr: %d\n",
-> +				ret);
-> +	}
->  }
+>  	ret = mt7530_setup_irq(priv);
+>  	if (ret)
+> -		return ret;
+> +		goto err_disable_pwrs;
+>  
+>  	ret = mt7530_setup_mdio(priv);
+>  	if (ret)
+> -		return ret;
+> +		goto err_disable_pwrs;
 
-[Severity: Medium]
-After this, the switch has no power but is still bound. What happens to the
-interfaces that setup registered with devm on priv->dev?
+[Severity: Low]
+Is b8f126a8d543 the right commit for the Fixes tag?
 
-mt7530_setup_irq():
-	ret = devm_regmap_add_irq_chip_fwnode(dev, dev_fwnode(dev),
-					      priv->regmap, irq,
-					      IRQF_ONESHOT,
-					      0, &mt7530_regmap_irq_chip,
-					      &irq_data);
+In b8f126a8d543, mt7530_switch_ops.setup pointed straight at
+mt7530_setup(). There was no mt753x_setup() wrapper and nothing ran
+after sw_setup(). The wrapper came with 88bdef8be9f6 ("net: dsa:
+mt7530: Extend device data ready for adding a new hardware"), and
+at that point it only did:
 
-mt7530_setup_mdio():
-	ret = devm_of_mdiobus_register(dev, bus, mnp);
+	return priv->info->sw_setup(ds);
 
-mt7530_setup_gpio():
-	return devm_gpiochip_add_data(dev, gc, priv);
+This patch now unwinds the fallible steps after sw_setup(), which are
+mt7530_setup_irq() and mt7530_setup_mdio(). Those steps seem to have
+come in with ba751e28d442 ("net: dsa: mt7530: add interrupt support").
+That commit is where the early returns that leave the regulators on
+were added.
 
-Neither mt753x_teardown() nor the DSA core undoes these, so they stay live
-until the driver unbinds.
+With the Fixes tag pointing at the initial driver, the stable tooling
+will try to apply this to kernels that have neither mt753x_setup() nor
+these failure paths. Should the tag be this instead?
 
-Take the case this commit targets: an MT7530 in a multi-switch tree whose
-sibling fails setup. It goes through
+Fixes: ba751e28d442 ("net: dsa: mt7530: add interrupt support")
 
-dsa_tree_setup_switches()->dsa_tree_teardown_switches()->mt753x_teardown()
+[Severity: High]
+Can these new gotos power off the switch while things that need power
+are still registered?
 
-and stays bound with power off.
+When mt753x_setup() reaches this point, mt7530_setup() has already
+returned 0. If the DT node has "gpio-controller", the GPIO controller is
+already published:
 
-GPIO consumers such as gpio-leds on the switch LED pins would keep calling
-mt7530_gpio_set() and mt7530_gpio_get(). regmap reports success, but the
-writes are lost and the reads return garbage.
+mt7530_setup()
+    mt7530_setup_gpio()
+        return devm_gpiochip_add_data(dev, gc, priv);
 
-The parent IRQ also stays requested. If the line asserts while the switch
-has no power, regmap_irq_thread() would run against dead hardware. Every
-nested source is masked, so it returns IRQ_NONE. That repeats until
-spurious interrupt detection disables the line.
+Suppose mt7530_setup_irq() then fails, for example with -EPROBE_DEFER
+from of_irq_get(). The commit message calls this the common case. In
+that case mt7530_disable_pwrs() turns off the rails and the gpiochip
+stays registered.
 
-Before this patch the rails stayed on in this case. On the normal remove()
-path the patch actually makes the unpowered window shorter.
+If mt7530_setup_mdio() fails instead, the regmap-irq chip from
+devm_regmap_add_irq_chip_fwnode() in mt7530_setup_irq() also stays
+registered. Its parent IRQ stays requested and TOP_SIG_CTRL_NORMAL stays
+set.
 
-The root cause is older: devm registrations in ->setup outlive ->teardown.
-The later patch "disable regulators on mt753x_setup() failure" has the same
-pattern. It powers off after a mt7530_setup_mdio() or create_sgmii()
-failure, while the devm IRQ chip and MDIO bus are still registered.
+Nothing on these paths unregisters them. Only devres unwinding removes
+them:
 
-Should teardown also unregister these interfaces? Or should the regulators
-stay enabled until remove()?
+- With a single switch, devres unwinds after dsa_register_switch() fails
+  and probe returns.
+- In a multi-switch tree, this switch's probe may already have returned
+  0 and the tree setup runs from a sibling's probe. Then devres never
+  unwinds here, and the switch stays bound against unpowered hardware.
+
+The earlier patch in this series, "net: dsa: mt7530: register the GPIO
+controller last in setup", says:
+
+    This becomes important in the next patch, where
+    the failure paths disable the regulators and return an error, so the
+    controller must not be registered across a failed setup.
+
+Doesn't this patch make that state reachable again on the
+mt7530_setup_irq() and mt7530_setup_mdio() failure paths? Only ID_MT7530
+is affected, because mt7530_disable_pwrs() returns early for the other
+variants.
+
+Could the regulator-dependent registrations (the gpiochip, and ideally
+the irq chip and MDIO bus) happen after every fallible step in
+mt753x_setup()? Alternatively, could they be undone explicitly before
+mt7530_disable_pwrs() is called?
+
+[ ... ]
+
+> @@ -3239,15 +3239,23 @@ mt753x_setup(struct dsa_switch *ds)
+>  	if (priv->create_sgmii)
+>  		ret = priv->create_sgmii(priv);
+>  
+> -	if (ret && priv->irq_domain)
+> -		mt7530_free_mdio_irq(priv);
+> +	if (ret)
+> +		goto err_free_irq;
+
+[Severity: High]
+This is a pre-existing issue, but it sits on the failure path this patch
+reworks. Can a failed create_sgmii() leave priv->ports[5].sgmii_pcs
+dangling, and then have it freed a second time?
+
+Take mt7531_create_sgmii() in drivers/net/dsa/mt7530-mdio.c with
+p5_sgmii set, where port5 succeeds and port6 fails:
+
+	if (ret && i)
+		mtk_pcs_lynxi_destroy(priv->ports[5].sgmii_pcs);
+
+	return ret;
+
+This frees the port5 PCS but does not clear the pointer. Port6 can fail
+in devm_kzalloc_obj(), in devm_regmap_init(), or when
+mtk_pcs_lynxi_create() returns NULL.
+
+With a single switch, probe fails and devres frees priv.
+
+In a multi-switch tree, the MT7531 can register before the tree is
+complete, so its probe returns 0. mt753x_setup() then runs later from a
+sibling's probe via dsa_tree_setup()->dsa_switch_setup(). If
+create_sgmii() fails there, the MT7531 stays bound with the stale
+pointer. On a later unbind this runs:
+
+mt7530_remove()
+	for (i = 0; i < 2; ++i)
+		mtk_pcs_lynxi_destroy(priv->ports[5 + i].sgmii_pcs);
+
+Is the port5 PCS kfree()d a second time here? Setting
+priv->ports[5].sgmii_pcs = NULL after the destroy in
+mt7531_create_sgmii() would avoid it.
+
+[ ... ]
 
 -- 
 Sashiko AI review · https://netdev-ai.bots.linux.dev/sashiko/#/patchset/179550875789.4156.361477684651496992%40mail.zgclab.edu.cn
