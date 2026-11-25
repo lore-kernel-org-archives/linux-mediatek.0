@@ -2,102 +2,102 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id E907B606A33D
-	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Nov 2026 16:29:53 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 5DCD4606A68D
+	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Nov 2026 16:30:03 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=nv0tLomG;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=infradead.org header.i=@infradead.org header.a=rsa-sha256 header.s=desiato.20200630 header.b=H5R20M5+;
-	dkim=pass (2048-bit key) header.d=thegoodpenguin-co-uk.20260707.gappssmtp.com header.i=@thegoodpenguin-co-uk.20260707.gappssmtp.com header.a=rsa-sha256 header.s=20260707 header.b=JEPU9J/P
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=au6NvJjl;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=infradead.org header.i=@infradead.org header.a=rsa-sha256 header.s=desiato.20200630 header.b=WaGkw86w;
+	dkim=pass (2048-bit key) header.d=thegoodpenguin-co-uk.20260707.gappssmtp.com header.i=@thegoodpenguin-co-uk.20260707.gappssmtp.com header.a=rsa-sha256 header.s=20260707 header.b=rL50TBMR
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Unsubscribe-Post:
-	List-Owner; bh=SPkEQFnlch3M826K1nbOsToo0QTPVL1AgbPrEWQdOnU=; b=nv0tLomGoKSaRb
-	dLMgtYPxoyo8bpKuyTgPcvGqznxIKlhOkKM8FV0ccBq/GtI7NpzC5vpxYaYC8SQigLmG7Hds0R8S9
-	Qg0uhrUP4TPu5ctOPrz1JuOz5pP/6brvJMQdfL3TyfTPyp+iRo5Dub40mFqSM52a5bTHy8GsePVrU
-	7bomQAJYQoVJ0/2HFfsuDpH93eoqdLKEFD1qMlaxhwtS8qaTQ9d6+cDNNKC3sCZ/uosW4BbmGsh1Z
-	LFIzp/Dbv/3QgOVMnA1qs3oPmC3/p+XU4k0A90GNGUsfl/SI/SXZoLJNpZIaavDaEpUFcpla9lQoK
-	tczw+w7Md8uj/x1nkaJQ==;
+	List-Owner; bh=AFDbeCHQMCzywmdZtzco98P0xWzZOKchEiBzgROq0f4=; b=au6NvJjldw2+xS
+	GVvfwU7egcz/GyTg90N/vZ11vl22DXL5tHxgbz3XWDyAHs3E9geJCeRIr5FYbNLhTvHYR0HIxtcSP
+	/rMdHbLgXnGT0BIsfoEPymos5iEuhm6dHnJXa3TcmX3GgwSttYhd8v+f9GoXL02mOsCtl3+HOEpIZ
+	9Ef+GD8/bZcJj0w8zpQZumx3sMkPY4WlX5fDXuo6nRA/46NU9+/SPxmCy0mJTMJZHyt3NQOz9K6El
+	BDdFo1PsqPwtyiMgBE3Qw5AjQ6jzB2eUNGe33T2zIbPgELimSJ9FxJdkiOTbzigjyiexlii4vML04
+	ZKUso0oIKwTlwj7ydj5A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xWFsX-0000000AYnv-1Zi0;
-	Wed, 25 Nov 2026 16:29:53 +0000
+	id 1xWFsg-0000000AYy5-4AnL;
+	Wed, 25 Nov 2026 16:30:03 +0000
 Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xWFre-0000000AYUM-0kq8
+	id 1xWFrU-0000000AYT7-3NNH
 	for linux-mediatek@bombadil.infradead.org;
 	Wed, 25 Nov 2026 16:29:13 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=infradead.org; s=desiato.20200630; h=Cc:To:In-Reply-To:References:
 	Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Sender:Reply-To:Content-ID:Content-Description;
-	bh=SPkEQFnlch3M826K1nbOsToo0QTPVL1AgbPrEWQdOnU=; b=H5R20M5+rbJUP6m6jcZigcYeb+
-	CyIroOVLNMyQNh6yKteBrsnWmjxv6mEAl066Puw0mahKbHKtcYYs+93QEGvuNO0UCjgWGwOO9YDwL
-	kEwW9dkh6yVjq22rnQq7Fuedmgeh3mRhLrWSrE+KrjJ1mH7lcXE6QEP5vusRAMyFSoKbbFOFLx969
-	Ravtdk70TKY59N/GVtLXnennpKM++OMoBdVdOoqrYolQ+4JXo392C6wxu8fjqpMqDtZ2/dhmH2wTE
-	tApD06UbXBexunnMRSxGoGaWsH4dJbK5VvHiInKV01wcrF1vNY7i0KyjmD2Z8Q3M5jyiucs4aEEK7
-	kqbNc/5g==;
-Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e])
+	bh=AFDbeCHQMCzywmdZtzco98P0xWzZOKchEiBzgROq0f4=; b=WaGkw86w3WFbWE5+h1XdQaB18v
+	dVugpGttsFdn5fgml8TVqgQhKZPLyB7kToYZh/E7AS6V6MeFRWNg1AOjt5Cg6Onqxg1y7DqgCIFQ7
+	PbfZKaFMp9G9mEKtS7+YqM/6xPf2KVg3truQVHcfaat6bd26olymdZ0395ejz1o/gYTcrd/eYMhva
+	4nxxk0s6acUgtb6nKo1KouKm7WyIUV5AhSOpsWENWiYffIbUt9wSZ0NaBW1TCiTja1IpxRSOFmKik
+	c1W9PrOZAIajhjcGRQoWkGYsvSqkRFBEalanB0sXmgK4sXTFfTL1pihleY7MgbCbuNCtEvqI9/K4j
+	JKLx9RzQ==;
+Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c])
 	by desiato.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xWFrZ-00000005Wyw-0rw5
+	id 1xWFrN-00000005Wsg-2ZJb
 	for linux-mediatek@lists.infradead.org;
-	Wed, 25 Nov 2026 16:28:55 +0000
-Received: by mail-wm1-x32e.google.com with SMTP id 5b1f17b1804b1-4bb6ba3b244so61731835e9.3
-        for <linux-mediatek@lists.infradead.org>; Wed, 25 Nov 2026 08:28:52 -0800 (PST)
+	Wed, 25 Nov 2026 16:28:43 +0000
+Received: by mail-wm1-x32c.google.com with SMTP id 5b1f17b1804b1-4bb70074ab2so64610825e9.0
+        for <linux-mediatek@lists.infradead.org>; Wed, 25 Nov 2026 08:28:40 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=thegoodpenguin-co-uk.20260707.gappssmtp.com; s=20260707; t=1795624131; x=1796228931; darn=lists.infradead.org;
+        d=thegoodpenguin-co-uk.20260707.gappssmtp.com; s=20260707; t=1795624119; x=1796228919; darn=lists.infradead.org;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :content-type:mime-version:subject:date:from:from:to:cc:subject:date
          :message-id:reply-to:content-type;
-        bh=SPkEQFnlch3M826K1nbOsToo0QTPVL1AgbPrEWQdOnU=;
-        b=JEPU9J/PjmzkYfjhDK/ZmH6xkL03Gis4WMRmijr4BfcrsYUkI50YO62b9Dik0nlLR7
-         6rVxQTr/UKM3p11TSFjCmstCTEdAHMtwigZSP6upf+AwzGYwevFU+JWjcUuH4qXDQ1dI
-         tSEdZIYynHes2BaWp6RBUGJZvNmt1eb0IMSNNvyU92i1g39hVf8tLaMDFDyVPLkSnjs9
-         YB/FnFmZcGfqQ1UY+/FZqRIozDacJ39o7ft/0QN/xwpcfwJMHbUvOZIBOrFX3q3ROEfb
-         DNrFZywvuMBbqiRNuCbL1WkXur53y8njDEQVRy62MzTzGZPdQMh3icFKm7ZtitbEvMoT
-         GWKA==
+        bh=AFDbeCHQMCzywmdZtzco98P0xWzZOKchEiBzgROq0f4=;
+        b=rL50TBMR+CdRxrtlIKePzz1kb9Fj1EyA/NjbLj8ghD2cY+GUc/QSE01MBjAL089E43
+         4GZpe9Bc1P6aer0dSaHXGnawgDCE6qAZN2Yij25tKEaI87eGIg6mJvMsADEMTIG9H8Io
+         p3pzFGp6OnDIRf6R9ldCaU/1DqF0j/Frj1YeZMz2sINWtnp5nFhxj9OTycxGskhEIAFw
+         9FvGyY7bNLdthUR25r3jDsOUh8xf0jqJHZ+yLd0CxgfBY1UreUq/eVMjxjQM1wbwQopQ
+         3uHUGH1N3P9PYyS3348hFvCl+jZFXeBuiK4HGLBeEr5C+Om2zg3Lcasx/VZAtEdUxB3j
+         gmuQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1795624131; x=1796228931;
+        d=1e100.net; s=20260707; t=1795624119; x=1796228919;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :content-type:mime-version:subject:date:from:x-gm-gg
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
          :content-type;
-        bh=SPkEQFnlch3M826K1nbOsToo0QTPVL1AgbPrEWQdOnU=;
-        b=nm6l7TkBo5vJdeGuVgvaRveFB5VVq4BRfCVSKRy1ZebrnZtS3+ihjz55ZJ1cxZTAUT
-         /K0O8LBB8AkfUvEHaG/8PpX19TfUT8/8beZuf1IeE9aS39rY/sSdGyUTxcS4QKigp8wV
-         6LIUSSiI+PzupA+SIQ9LxKstluJXuA9+s6Cc8Aym4UE3qax6EVz3uW1sh0zPhfheCtOE
-         adU3hrXmKUFg9234P7cRicDOPbl3lVtP8+gZsGSZMi7ArT5IEjbIQwq/CoURIZHn5VjU
-         W9nkznEWvRTfeMC9oyI9OqR9ZCVAQ3ROEFLRCTIqhwSfrxzbRsRqfIpNTiVRODGLcma2
-         DU9g==
-X-Forwarded-Encrypted: i=1; AL+hErGtGSHN0t5Qa5r2ANlkyrkeAsVf7pmRdiaozVFoBzE9hydHxHEUjIkpNkS3VL94gY8tWoF66uxBukNfNm6VLg==@lists.infradead.org
-X-Gm-Message-State: APuU4Z8vMw4Y/J8+VtT8o1/7jCl68wML5/xUYZv1JtEc13U9hMH73CzX
-	Gjgokf6EiMTlfMaFxn4kD4Dx62DwUWmRmhaT8sWYC1FySKYVZplVs8QZFC0rRBDaNBc=
-X-Gm-Gg: AZFdTZeKF3Cqiygkb4WMY9hWrl4L3FiFpwmK1Edzfk7OY89m7doZO+kheVEMj5PI+kT
-	TALSJztRg3aQmXwI/yMI7Pt7CQoPn6tMYArdeKCI0e6weKmti05k/PqxYsFGZM7h6DGh3vrBvHZ
-	YUsvUmeL2qt2x72o2TDZ8R36UroGiK/NzP/Ilm/mcQc2uKmQ3c8ZQdMOCwlQokD0KPlUJmmfgKf
-	3bkDfNV/ECBOa4nt8X84Csw5NH29ldYp+Vet5zwcugOvL32IpUOlDJKvgaAKlQznLu28uWDrB6U
-	6CwJAj/5V7KLYOMEpmXY9J4SEK7iPwtOCHrcOij2z+I3meDlV5t3hR1uYi26591PMgWaSLeYUi9
-	rbyu1GPZ6ng9OYdCp+YXevshUAoRHf8tt1g6hVsrgtMocZL1xPxMyW5Bhf8HskC2KzzOSkjkILq
-	QTwuRSMFN74NfGQMVoEZwjb7uQ/I/Kh53GPbmnS4aKHIsAL74hxowB12vQhSb0jfOgfeInV5Q0P
-	VSEV/msCa/HYy0m/z0J/wJ0J1hasaXUrRFRZxdtexVy3qqwoMCR+pkGhYvPyECMpHNo3kMpbEZo
-	S0VfJR84aObLKAFz8R32hjK2T3PSoxj88aPqlnwmhFCO8w==
-X-Received: by 2002:a05:600c:3b91:b0:4bb:7e4e:de53 with SMTP id 5b1f17b1804b1-4bb8881059bmr449301605e9.12.1795624131341;
-        Wed, 25 Nov 2026 08:28:51 -0800 (PST)
+        bh=AFDbeCHQMCzywmdZtzco98P0xWzZOKchEiBzgROq0f4=;
+        b=L4P+akK3txM2M4yKuGuzy0jCOYvpCEcYATx24MSb0Xc6Gj+DHtiQdIQ8G2Kg7yjBHq
+         KKC796Yh5ingOOn0ecGeuwuL5RMXHQc9m4pDi0a5thEnorE6Km5C6qWFSGCe61fVQ2P6
+         bgkqmbiWbYGpUksBR1dVIejWmYDg9ZAjgDsbYsTKtbp5qnWTKryudAqqAMu6xnpIL9lj
+         7h8u24T4SCOlUXvV5ksVcO68Org+DqoYIQoNM+/VgIlnAXib3n7FI3tLhuGSXGEuo58F
+         gMTCfamfuf/BvsqEziBJlAd0Wluol/agbe43a+rHiKbYFf1uajDKkIWn6DaH6/nl9oT7
+         JYQQ==
+X-Forwarded-Encrypted: i=1; AL+hErHkqnKQal8EVWQSfZqcgy6S6RFtu1gemoriSXWxVaYj3JehfaQCedoyo28gL3MVr/Ggoam2tD0qkH5nUH9bYw==@lists.infradead.org
+X-Gm-Message-State: APuU4Z8/QhxO/iXDfcCxA8vPYbccPDFFMozgJvDVzN4VYEX+cMQuZikl
+	EJaO0CzWjnY84Mer9TXkJwegWTMPPxBI80JYocrHrixX6cdehkc/2TH+k0/S16MpHi0=
+X-Gm-Gg: AZFdTZevcP/x9ks0LwnuGF5tzBl3hGnrxLbNJyXIYbzdYTBO+i3+wWW0i8q1spSV6JO
+	T4F6/Glw7Nz+LDsgfOlhL4fRnVZm3rCH16+GfyfeXawqFGNGkobbSng6JwKwIYCxPtyxPF14SUf
+	DBjZ1lAicR8bYzHUC1/22lwZP007PKi9OZyncTh7jRwP+y+Z3Cmss+wtMbXFZqwpimnMGpSj9Rv
+	SgaqJCvqfBhE1WGiTzKGTCptTdIGAVZ34MIx9Brw9Rxd6TD6bziizsDWsnvvEheyrwxedKqIuBJ
+	OdCPgvJfcMeLIs6QD7dIlcslyK0T/HUhlWs3zCVkyf1up+orsy1CRg5DUxV6BPwLwKxHpblkRzP
+	0JZrNKeQcfq4C4mHDzehnCmt/3jgGkYlaJesdpA7AFIHUveVvWqL30Ih9xm9o2/vsSXNlyA/0OT
+	ywNqmVj2hs4oAmtpINY5XTit6AUWp45kv0sXnlbZGLjXDL2ZoSV6UWeby1fK1heYFg2oXo0bNRs
+	/Yk+OdHERcr65nV3DMWIFvhxqhz0rUglRPcVaMGh3lUEvgckepVatGEWV3RnQU6TL2VWbevyl5S
+	8yXEGRke7mi22kqx9tvn1hlgdYQfs1e1G5SgBxC5MEDN9A==
+X-Received: by 2002:a05:600c:5246:b0:4bb:6de4:2f7c with SMTP id 5b1f17b1804b1-4bb8881c5bdmr384806975e9.20.1795624119085;
+        Wed, 25 Nov 2026 08:28:39 -0800 (PST)
 Received: from [10.42.0.1] ([2a00:23c7:1d1a:9c01:f716:ba19:8aaa:f1c2])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-4bb853368d3sm527336375e9.1.2026.11.25.08.28.49
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-4bb853368d3sm527336375e9.1.2026.11.25.08.28.36
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 25 Nov 2026 08:28:50 -0800 (PST)
+        Wed, 25 Nov 2026 08:28:38 -0800 (PST)
 From: Pawel Zalewski <pzalewski@thegoodpenguin.co.uk>
-Date: Wed, 25 Nov 2026 16:28:32 +0000
-Subject: [PATCH 06/10] mtd: nand: raw: Unify list terminator for
- *_device_id lists
+Date: Wed, 25 Nov 2026 16:28:27 +0000
+Subject: [PATCH 01/10] mtd: maps: pismo: Use named initializers for
+ i2c_device_id
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20261125-acpi-mtd-v1-6-42ad2f645bee@thegoodpenguin.co.uk>
+Message-Id: <20261125-acpi-mtd-v1-1-42ad2f645bee@thegoodpenguin.co.uk>
 References: <20261125-acpi-mtd-v1-0-42ad2f645bee@thegoodpenguin.co.uk>
 In-Reply-To: <20261125-acpi-mtd-v1-0-42ad2f645bee@thegoodpenguin.co.uk>
 To: Miquel Raynal <miquel.raynal@bootlin.com>, 
@@ -158,16 +158,16 @@ Cc: linux-mtd@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
  Pawel Zalewski <pzalewski@thegoodpenguin.co.uk>, 
  =?utf-8?q?Uwe_Kleine-K=C3=B6nig?= <u.kleine-koenig@baylibre.com>
 X-Mailer: b4 0.16.0
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1795624113; l=29220;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1795624113; l=851;
  i=pzalewski@thegoodpenguin.co.uk; s=20260430; h=from:subject:message-id;
- bh=ogN35igAdmAQARye14kV66pF9fX/X8mhynfCot9vq2s=;
- b=oqaHJS7K80qz+dmd+raQd0Nore7mYsZ6gc0u74j64TH1P5RCZOKkGJLKTUxPoK8ViqzdSqlca
- deOA5tfWovZAaO4GYpcDMpVN67tLZKuOMU004zmRiX6cVSRFyI5reBS
+ bh=IHAi0qeArnt0Dz3MPX/pMNLkcr4ipLn3XGqru6V8PMg=;
+ b=FYYb5NZv5bMag5GUq5jhUZI3EA/wssPu4IODYyOGaefHzIx0GqzM1xxUbS1yXt9hVm+9RShR6
+ U7w6XKaTkOyAdXUAkIbyQhY8qzilz1ISb3JVyfa0dct/S0WrrapbtfS
 X-Developer-Key: i=pzalewski@thegoodpenguin.co.uk; a=ed25519;
  pk=vHq4n9IonORH2GTzLv8r6CWAFHzgfBuNkQPXA8NSly0=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261125_162853_298524_DA55EE4E 
-X-CRM114-Status: GOOD (  18.51  )
+X-CRM114-CacheID: sfid-20261125_162841_765349_23B730C1 
+X-CRM114-Status: GOOD (  15.72  )
 X-Spam-Score: 0.0 (/)
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -186,756 +186,33 @@ X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIM_SIGNED,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
+Use a designated initializer for the i2c_device_id fields which makes the
+code more readable and consistent with how lists are initialized in the
+rest of the kernel code base.
+
 Unify the list terminator to have a single space between the brackets and
-no trailing comma. This change doesn't introduce any diffs between
-pre/post to the compiled binaries of the modified drivers and just aligns
-these to the common style with other *_device_id arrays.
+no trailing comma.
 
 Signed-off-by: Pawel Zalewski <pzalewski@thegoodpenguin.co.uk>
 ---
- drivers/mtd/nand/raw/ams-delta.c                      | 7 ++-----
- drivers/mtd/nand/raw/arasan-nand-controller.c         | 2 +-
- drivers/mtd/nand/raw/atmel/nand-controller.c          | 4 ++--
- drivers/mtd/nand/raw/atmel/pmecc.c                    | 4 ++--
- drivers/mtd/nand/raw/brcmnand/bcm6368_nand.c          | 2 +-
- drivers/mtd/nand/raw/brcmnand/bcmbca_nand.c           | 2 +-
- drivers/mtd/nand/raw/brcmnand/brcmnand.c              | 2 +-
- drivers/mtd/nand/raw/brcmnand/brcmstb_nand.c          | 2 +-
- drivers/mtd/nand/raw/brcmnand/iproc_nand.c            | 2 +-
- drivers/mtd/nand/raw/cadence-nand-controller.c        | 3 ++-
- drivers/mtd/nand/raw/davinci_nand.c                   | 2 +-
- drivers/mtd/nand/raw/denali_dt.c                      | 2 +-
- drivers/mtd/nand/raw/fsl_elbc_nand.c                  | 2 +-
- drivers/mtd/nand/raw/fsl_ifc_nand.c                   | 2 +-
- drivers/mtd/nand/raw/fsl_upm.c                        | 2 +-
- drivers/mtd/nand/raw/fsmc_nand.c                      | 2 +-
- drivers/mtd/nand/raw/gpio.c                           | 2 +-
- drivers/mtd/nand/raw/gpmi-nand/gpmi-nand.c            | 2 +-
- drivers/mtd/nand/raw/hisi504_nand.c                   | 2 +-
- drivers/mtd/nand/raw/ingenic/ingenic_nand_drv.c       | 2 +-
- drivers/mtd/nand/raw/ingenic/jz4725b_bch.c            | 2 +-
- drivers/mtd/nand/raw/ingenic/jz4740_ecc.c             | 2 +-
- drivers/mtd/nand/raw/ingenic/jz4780_bch.c             | 2 +-
- drivers/mtd/nand/raw/intel-nand-controller.c          | 2 +-
- drivers/mtd/nand/raw/loongson-nand-controller.c       | 2 +-
- drivers/mtd/nand/raw/lpc32xx_mlc.c                    | 2 +-
- drivers/mtd/nand/raw/lpc32xx_slc.c                    | 2 +-
- drivers/mtd/nand/raw/marvell_nand.c                   | 4 ++--
- drivers/mtd/nand/raw/meson_nand.c                     | 2 +-
- drivers/mtd/nand/raw/mpc5121_nfc.c                    | 2 +-
- drivers/mtd/nand/raw/mtk_nand.c                       | 2 +-
- drivers/mtd/nand/raw/mxc_nand.c                       | 2 +-
- drivers/mtd/nand/raw/mxic_nand.c                      | 2 +-
- drivers/mtd/nand/raw/ndfc.c                           | 2 +-
- drivers/mtd/nand/raw/nuvoton-ma35d1-nand-controller.c | 2 +-
- drivers/mtd/nand/raw/omap_elm.c                       | 2 +-
- drivers/mtd/nand/raw/orion_nand.c                     | 2 +-
- drivers/mtd/nand/raw/pasemi_nand.c                    | 2 +-
- drivers/mtd/nand/raw/pl35x-nand-controller.c          | 2 +-
- drivers/mtd/nand/raw/plat_nand.c                      | 2 +-
- drivers/mtd/nand/raw/qcom_nandc.c                     | 2 +-
- drivers/mtd/nand/raw/rockchip-nand-controller.c       | 2 +-
- drivers/mtd/nand/raw/sh_flctl.c                       | 2 +-
- drivers/mtd/nand/raw/socrates_nand.c                  | 2 +-
- drivers/mtd/nand/raw/stm32_fmc2_nand.c                | 2 +-
- drivers/mtd/nand/raw/sunxi_nand.c                     | 2 +-
- drivers/mtd/nand/raw/technologic-nand-controller.c    | 2 +-
- drivers/mtd/nand/raw/tegra_nand.c                     | 2 +-
- drivers/mtd/nand/raw/vf610_nfc.c                      | 2 +-
- drivers/mtd/nand/raw/xway_nand.c                      | 2 +-
- 50 files changed, 55 insertions(+), 57 deletions(-)
+ drivers/mtd/maps/pismo.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/mtd/nand/raw/ams-delta.c b/drivers/mtd/nand/raw/ams-delta.c
-index d6c3ed0f858c..99260764d8ac 100644
---- a/drivers/mtd/nand/raw/ams-delta.c
-+++ b/drivers/mtd/nand/raw/ams-delta.c
-@@ -413,9 +413,7 @@ static void gpio_nand_remove(struct platform_device *pdev)
+diff --git a/drivers/mtd/maps/pismo.c b/drivers/mtd/maps/pismo.c
+index b0310fddcaa3..babb6d367623 100644
+--- a/drivers/mtd/maps/pismo.c
++++ b/drivers/mtd/maps/pismo.c
+@@ -250,8 +250,8 @@ static int pismo_probe(struct i2c_client *client)
+ }
  
- #ifdef CONFIG_OF
- static const struct of_device_id gpio_nand_of_id_table[] = {
--	{
--		/* sentinel */
--	},
+ static const struct i2c_device_id pismo_id[] = {
+-	{ "pismo" },
+-	{ },
++	{ .name = "pismo" },
 +	{ }
  };
- MODULE_DEVICE_TABLE(of, gpio_nand_of_id_table);
- #endif
-@@ -423,9 +421,8 @@ MODULE_DEVICE_TABLE(of, gpio_nand_of_id_table);
- static const struct platform_device_id gpio_nand_plat_id_table[] = {
- 	{
- 		.name	= "ams-delta-nand",
--	}, {
--		/* sentinel */
- 	},
-+	{ }
- };
- MODULE_DEVICE_TABLE(platform, gpio_nand_plat_id_table);
+ MODULE_DEVICE_TABLE(i2c, pismo_id);
  
-diff --git a/drivers/mtd/nand/raw/arasan-nand-controller.c b/drivers/mtd/nand/raw/arasan-nand-controller.c
-index 7ff57abf61f7..6f36de9f0b99 100644
---- a/drivers/mtd/nand/raw/arasan-nand-controller.c
-+++ b/drivers/mtd/nand/raw/arasan-nand-controller.c
-@@ -1497,7 +1497,7 @@ static const struct of_device_id anfc_ids[] = {
- 	{
- 		.compatible = "arasan,nfc-v3p10",
- 	},
--	{}
-+	{ }
- };
- MODULE_DEVICE_TABLE(of, anfc_ids);
- 
-diff --git a/drivers/mtd/nand/raw/atmel/nand-controller.c b/drivers/mtd/nand/raw/atmel/nand-controller.c
-index 24bf93409364..2651d5d40f77 100644
---- a/drivers/mtd/nand/raw/atmel/nand-controller.c
-+++ b/drivers/mtd/nand/raw/atmel/nand-controller.c
-@@ -1985,7 +1985,7 @@ static const struct of_device_id __maybe_unused atmel_ebi_csa_regmap_of_ids[] =
- 		.compatible = "microchip,sam9x60-sfr",
- 		.data = &sam9x60_ebi_csa,
- 	},
--	{ /* sentinel */ },
-+	{ }
- };
- 
- static int atmel_nand_attach_chip(struct nand_chip *chip)
-@@ -2584,7 +2584,7 @@ static const struct of_device_id atmel_nand_controller_of_ids[] = {
- 		.compatible = "atmel,sama5d2-nand",
- 		.data = &atmel_rm9200_nand_caps,
- 	},
--	{ /* sentinel */ },
-+	{ }
- };
- MODULE_DEVICE_TABLE(of, atmel_nand_controller_of_ids);
- 
-diff --git a/drivers/mtd/nand/raw/atmel/pmecc.c b/drivers/mtd/nand/raw/atmel/pmecc.c
-index 37ce23d526b3..c825996810c0 100644
---- a/drivers/mtd/nand/raw/atmel/pmecc.c
-+++ b/drivers/mtd/nand/raw/atmel/pmecc.c
-@@ -921,7 +921,7 @@ static struct atmel_pmecc_caps sama5d2_caps = {
- static const struct of_device_id __maybe_unused atmel_pmecc_legacy_match[] = {
- 	{ .compatible = "atmel,sama5d4-nand", &sama5d4_caps },
- 	{ .compatible = "atmel,sama5d2-nand", &sama5d2_caps },
--	{ /* sentinel */ }
-+	{ }
- };
- 
- struct atmel_pmecc *devm_atmel_pmecc_get(struct device *userdev)
-@@ -973,7 +973,7 @@ static const struct of_device_id atmel_pmecc_match[] = {
- 	{ .compatible = "atmel,at91sam9g45-pmecc", &at91sam9g45_caps },
- 	{ .compatible = "atmel,sama5d4-pmecc", &sama5d4_caps },
- 	{ .compatible = "atmel,sama5d2-pmecc", &sama5d2_caps },
--	{ /* sentinel */ }
-+	{ }
- };
- MODULE_DEVICE_TABLE(of, atmel_pmecc_match);
- 
-diff --git a/drivers/mtd/nand/raw/brcmnand/bcm6368_nand.c b/drivers/mtd/nand/raw/brcmnand/bcm6368_nand.c
-index 51b1125d036b..d5316357a2f4 100644
---- a/drivers/mtd/nand/raw/brcmnand/bcm6368_nand.c
-+++ b/drivers/mtd/nand/raw/brcmnand/bcm6368_nand.c
-@@ -111,7 +111,7 @@ static int bcm6368_nand_probe(struct platform_device *pdev)
- 
- static const struct of_device_id bcm6368_nand_of_match[] = {
- 	{ .compatible = "brcm,nand-bcm6368" },
--	{},
-+	{ }
- };
- MODULE_DEVICE_TABLE(of, bcm6368_nand_of_match);
- 
-diff --git a/drivers/mtd/nand/raw/brcmnand/bcmbca_nand.c b/drivers/mtd/nand/raw/brcmnand/bcmbca_nand.c
-index 674fcda05bb1..42aee603e8b6 100644
---- a/drivers/mtd/nand/raw/brcmnand/bcmbca_nand.c
-+++ b/drivers/mtd/nand/raw/brcmnand/bcmbca_nand.c
-@@ -106,7 +106,7 @@ static int bcmbca_nand_probe(struct platform_device *pdev)
- 
- static const struct of_device_id bcmbca_nand_of_match[] = {
- 	{ .compatible = "brcm,nand-bcm63138" },
--	{},
-+	{ }
- };
- MODULE_DEVICE_TABLE(of, bcmbca_nand_of_match);
- 
-diff --git a/drivers/mtd/nand/raw/brcmnand/brcmnand.c b/drivers/mtd/nand/raw/brcmnand/brcmnand.c
-index 78937498cc02..220d47acf852 100644
---- a/drivers/mtd/nand/raw/brcmnand/brcmnand.c
-+++ b/drivers/mtd/nand/raw/brcmnand/brcmnand.c
-@@ -3241,7 +3241,7 @@ static const struct of_device_id __maybe_unused brcmnand_of_match[] = {
- 	{ .compatible = "brcm,brcmnand-v7.1" },
- 	{ .compatible = "brcm,brcmnand-v7.2" },
- 	{ .compatible = "brcm,brcmnand-v7.3" },
--	{},
-+	{ }
- };
- MODULE_DEVICE_TABLE(of, brcmnand_of_match);
- 
-diff --git a/drivers/mtd/nand/raw/brcmnand/brcmstb_nand.c b/drivers/mtd/nand/raw/brcmnand/brcmstb_nand.c
-index 8ed64613fda5..850f8ae3dc1c 100644
---- a/drivers/mtd/nand/raw/brcmnand/brcmstb_nand.c
-+++ b/drivers/mtd/nand/raw/brcmnand/brcmstb_nand.c
-@@ -11,7 +11,7 @@
- 
- static const struct of_device_id brcmstb_nand_of_match[] = {
- 	{ .compatible = "brcm,brcmnand" },
--	{},
-+	{ }
- };
- MODULE_DEVICE_TABLE(of, brcmstb_nand_of_match);
- 
-diff --git a/drivers/mtd/nand/raw/brcmnand/iproc_nand.c b/drivers/mtd/nand/raw/brcmnand/iproc_nand.c
-index f2ef3b7a0943..64aca9e45848 100644
---- a/drivers/mtd/nand/raw/brcmnand/iproc_nand.c
-+++ b/drivers/mtd/nand/raw/brcmnand/iproc_nand.c
-@@ -128,7 +128,7 @@ static int iproc_nand_probe(struct platform_device *pdev)
- 
- static const struct of_device_id iproc_nand_of_match[] = {
- 	{ .compatible = "brcm,nand-iproc" },
--	{},
-+	{ }
- };
- MODULE_DEVICE_TABLE(of, iproc_nand_of_match);
- 
-diff --git a/drivers/mtd/nand/raw/cadence-nand-controller.c b/drivers/mtd/nand/raw/cadence-nand-controller.c
-index e19ceb2d5dfc..0bfa1fc4a0e1 100644
---- a/drivers/mtd/nand/raw/cadence-nand-controller.c
-+++ b/drivers/mtd/nand/raw/cadence-nand-controller.c
-@@ -3255,7 +3255,8 @@ static const struct of_device_id cadence_nand_dt_ids[] = {
- 	{
- 		.compatible = "cdns,hp-nfc",
- 		.data = &cadence_nand_default
--	}, {}
-+	},
-+	{ }
- };
- 
- MODULE_DEVICE_TABLE(of, cadence_nand_dt_ids);
-diff --git a/drivers/mtd/nand/raw/davinci_nand.c b/drivers/mtd/nand/raw/davinci_nand.c
-index 20aebe101e8d..41ede6b55e01 100644
---- a/drivers/mtd/nand/raw/davinci_nand.c
-+++ b/drivers/mtd/nand/raw/davinci_nand.c
-@@ -530,7 +530,7 @@ static const struct mtd_ooblayout_ops hwecc4_large_ooblayout_ops = {
- static const struct of_device_id davinci_nand_of_match[] = {
- 	{.compatible = "ti,davinci-nand", },
- 	{.compatible = "ti,keystone-nand", },
--	{},
-+	{ }
- };
- MODULE_DEVICE_TABLE(of, davinci_nand_of_match);
- 
-diff --git a/drivers/mtd/nand/raw/denali_dt.c b/drivers/mtd/nand/raw/denali_dt.c
-index 01733238dac9..77312ef6f36e 100644
---- a/drivers/mtd/nand/raw/denali_dt.c
-+++ b/drivers/mtd/nand/raw/denali_dt.c
-@@ -74,7 +74,7 @@ static const struct of_device_id denali_nand_dt_ids[] = {
- 		.compatible = "socionext,uniphier-denali-nand-v5b",
- 		.data = &denali_uniphier_v5b_data,
- 	},
--	{ /* sentinel */ }
-+	{ }
- };
- MODULE_DEVICE_TABLE(of, denali_nand_dt_ids);
- 
-diff --git a/drivers/mtd/nand/raw/fsl_elbc_nand.c b/drivers/mtd/nand/raw/fsl_elbc_nand.c
-index c655d27bc4cc..64cf21daf34a 100644
---- a/drivers/mtd/nand/raw/fsl_elbc_nand.c
-+++ b/drivers/mtd/nand/raw/fsl_elbc_nand.c
-@@ -989,7 +989,7 @@ static void fsl_elbc_nand_remove(struct platform_device *pdev)
- 
- static const struct of_device_id fsl_elbc_nand_match[] = {
- 	{ .compatible = "fsl,elbc-fcm-nand", },
--	{}
-+	{ }
- };
- MODULE_DEVICE_TABLE(of, fsl_elbc_nand_match);
- 
-diff --git a/drivers/mtd/nand/raw/fsl_ifc_nand.c b/drivers/mtd/nand/raw/fsl_ifc_nand.c
-index d5d0c7c7bfba..396cf2a90baa 100644
---- a/drivers/mtd/nand/raw/fsl_ifc_nand.c
-+++ b/drivers/mtd/nand/raw/fsl_ifc_nand.c
-@@ -1108,7 +1108,7 @@ static const struct of_device_id fsl_ifc_nand_match[] = {
- 	{
- 		.compatible = "fsl,ifc-nand",
- 	},
--	{}
-+	{ }
- };
- MODULE_DEVICE_TABLE(of, fsl_ifc_nand_match);
- 
-diff --git a/drivers/mtd/nand/raw/fsl_upm.c b/drivers/mtd/nand/raw/fsl_upm.c
-index 8896720be505..3f24efd5ce64 100644
---- a/drivers/mtd/nand/raw/fsl_upm.c
-+++ b/drivers/mtd/nand/raw/fsl_upm.c
-@@ -249,7 +249,7 @@ static void fun_remove(struct platform_device *ofdev)
- 
- static const struct of_device_id of_fun_match[] = {
- 	{ .compatible = "fsl,upm-nand" },
--	{},
-+	{ }
- };
- MODULE_DEVICE_TABLE(of, of_fun_match);
- 
-diff --git a/drivers/mtd/nand/raw/fsmc_nand.c b/drivers/mtd/nand/raw/fsmc_nand.c
-index eee00c6f43e0..40e5f6004c25 100644
---- a/drivers/mtd/nand/raw/fsmc_nand.c
-+++ b/drivers/mtd/nand/raw/fsmc_nand.c
-@@ -1220,7 +1220,7 @@ static SIMPLE_DEV_PM_OPS(fsmc_nand_pm_ops, fsmc_nand_suspend, fsmc_nand_resume);
- static const struct of_device_id fsmc_nand_id_table[] = {
- 	{ .compatible = "st,spear600-fsmc-nand" },
- 	{ .compatible = "stericsson,fsmc-nand" },
--	{}
-+	{ }
- };
- MODULE_DEVICE_TABLE(of, fsmc_nand_id_table);
- 
-diff --git a/drivers/mtd/nand/raw/gpio.c b/drivers/mtd/nand/raw/gpio.c
-index 63853d7a8104..552a8b09b934 100644
---- a/drivers/mtd/nand/raw/gpio.c
-+++ b/drivers/mtd/nand/raw/gpio.c
-@@ -178,7 +178,7 @@ static const struct nand_controller_ops gpio_nand_ops = {
- #ifdef CONFIG_OF
- static const struct of_device_id gpio_nand_id_table[] = {
- 	{ .compatible = "gpio-control-nand" },
--	{}
-+	{ }
- };
- MODULE_DEVICE_TABLE(of, gpio_nand_id_table);
- 
-diff --git a/drivers/mtd/nand/raw/gpmi-nand/gpmi-nand.c b/drivers/mtd/nand/raw/gpmi-nand/gpmi-nand.c
-index 019df54c4bb0..b0ba72530d6c 100644
---- a/drivers/mtd/nand/raw/gpmi-nand/gpmi-nand.c
-+++ b/drivers/mtd/nand/raw/gpmi-nand/gpmi-nand.c
-@@ -2778,7 +2778,7 @@ static const struct of_device_id gpmi_nand_id_table[] = {
- 	{ .compatible = "fsl,imx6sx-gpmi-nand", .data = &gpmi_devdata_imx6sx, },
- 	{ .compatible = "fsl,imx7d-gpmi-nand", .data = &gpmi_devdata_imx7d,},
- 	{ .compatible = "fsl,imx8qxp-gpmi-nand", .data = &gpmi_devdata_imx8qxp, },
--	{}
-+	{ }
- };
- MODULE_DEVICE_TABLE(of, gpmi_nand_id_table);
- 
-diff --git a/drivers/mtd/nand/raw/hisi504_nand.c b/drivers/mtd/nand/raw/hisi504_nand.c
-index c5063d681476..4eec071826e7 100644
---- a/drivers/mtd/nand/raw/hisi504_nand.c
-+++ b/drivers/mtd/nand/raw/hisi504_nand.c
-@@ -847,7 +847,7 @@ static SIMPLE_DEV_PM_OPS(hisi_nfc_pm_ops, hisi_nfc_suspend, hisi_nfc_resume);
- 
- static const struct of_device_id nfc_id_table[] = {
- 	{ .compatible = "hisilicon,504-nfc" },
--	{}
-+	{ }
- };
- MODULE_DEVICE_TABLE(of, nfc_id_table);
- 
-diff --git a/drivers/mtd/nand/raw/ingenic/ingenic_nand_drv.c b/drivers/mtd/nand/raw/ingenic/ingenic_nand_drv.c
-index 631db0e93a36..9a08d4778d1a 100644
---- a/drivers/mtd/nand/raw/ingenic/ingenic_nand_drv.c
-+++ b/drivers/mtd/nand/raw/ingenic/ingenic_nand_drv.c
-@@ -541,7 +541,7 @@ static const struct of_device_id ingenic_nand_dt_match[] = {
- 	{ .compatible = "ingenic,jz4740-nand", .data = &jz4740_soc_info },
- 	{ .compatible = "ingenic,jz4725b-nand", .data = &jz4725b_soc_info },
- 	{ .compatible = "ingenic,jz4780-nand", .data = &jz4780_soc_info },
--	{},
-+	{ }
- };
- MODULE_DEVICE_TABLE(of, ingenic_nand_dt_match);
- 
-diff --git a/drivers/mtd/nand/raw/ingenic/jz4725b_bch.c b/drivers/mtd/nand/raw/ingenic/jz4725b_bch.c
-index 2d0e0a2192ae..8fcf0fa51e4c 100644
---- a/drivers/mtd/nand/raw/ingenic/jz4725b_bch.c
-+++ b/drivers/mtd/nand/raw/ingenic/jz4725b_bch.c
-@@ -277,7 +277,7 @@ static const struct ingenic_ecc_ops jz4725b_bch_ops = {
- 
- static const struct of_device_id jz4725b_bch_dt_match[] = {
- 	{ .compatible = "ingenic,jz4725b-bch", .data = &jz4725b_bch_ops },
--	{},
-+	{ }
- };
- MODULE_DEVICE_TABLE(of, jz4725b_bch_dt_match);
- 
-diff --git a/drivers/mtd/nand/raw/ingenic/jz4740_ecc.c b/drivers/mtd/nand/raw/ingenic/jz4740_ecc.c
-index 54e377754a6c..d2dc3c435197 100644
---- a/drivers/mtd/nand/raw/ingenic/jz4740_ecc.c
-+++ b/drivers/mtd/nand/raw/ingenic/jz4740_ecc.c
-@@ -179,7 +179,7 @@ static const struct ingenic_ecc_ops jz4740_ecc_ops = {
- 
- static const struct of_device_id jz4740_ecc_dt_match[] = {
- 	{ .compatible = "ingenic,jz4740-ecc", .data = &jz4740_ecc_ops },
--	{},
-+	{ }
- };
- MODULE_DEVICE_TABLE(of, jz4740_ecc_dt_match);
- 
-diff --git a/drivers/mtd/nand/raw/ingenic/jz4780_bch.c b/drivers/mtd/nand/raw/ingenic/jz4780_bch.c
-index 12b5b0484fe9..ced16093b692 100644
---- a/drivers/mtd/nand/raw/ingenic/jz4780_bch.c
-+++ b/drivers/mtd/nand/raw/ingenic/jz4780_bch.c
-@@ -252,7 +252,7 @@ static const struct ingenic_ecc_ops jz4780_bch_ops = {
- 
- static const struct of_device_id jz4780_bch_dt_match[] = {
- 	{ .compatible = "ingenic,jz4780-bch", .data = &jz4780_bch_ops },
--	{},
-+	{ }
- };
- MODULE_DEVICE_TABLE(of, jz4780_bch_dt_match);
- 
-diff --git a/drivers/mtd/nand/raw/intel-nand-controller.c b/drivers/mtd/nand/raw/intel-nand-controller.c
-index cfb4b231e067..b26307be3265 100644
---- a/drivers/mtd/nand/raw/intel-nand-controller.c
-+++ b/drivers/mtd/nand/raw/intel-nand-controller.c
-@@ -724,7 +724,7 @@ static void ebu_nand_remove(struct platform_device *pdev)
- 
- static const struct of_device_id ebu_nand_match[] = {
- 	{ .compatible = "intel,lgm-ebunand" },
--	{}
-+	{ }
- };
- MODULE_DEVICE_TABLE(of, ebu_nand_match);
- 
-diff --git a/drivers/mtd/nand/raw/loongson-nand-controller.c b/drivers/mtd/nand/raw/loongson-nand-controller.c
-index 320d009ebf8c..dda70973863d 100644
---- a/drivers/mtd/nand/raw/loongson-nand-controller.c
-+++ b/drivers/mtd/nand/raw/loongson-nand-controller.c
-@@ -1003,7 +1003,7 @@ static const struct of_device_id loongson_nand_match[] = {
- 		.compatible = "loongson,ls2k1000-nand-controller",
- 		.data = &ls2k1000_nand_data,
- 	},
--	{ /* sentinel */ }
-+	{ }
- };
- MODULE_DEVICE_TABLE(of, loongson_nand_match);
- 
-diff --git a/drivers/mtd/nand/raw/lpc32xx_mlc.c b/drivers/mtd/nand/raw/lpc32xx_mlc.c
-index a54c14134f75..947953801000 100644
---- a/drivers/mtd/nand/raw/lpc32xx_mlc.c
-+++ b/drivers/mtd/nand/raw/lpc32xx_mlc.c
-@@ -874,7 +874,7 @@ static int lpc32xx_nand_suspend(struct platform_device *pdev, pm_message_t pm)
- 
- static const struct of_device_id lpc32xx_nand_match[] = {
- 	{ .compatible = "nxp,lpc3220-mlc" },
--	{ /* sentinel */ },
-+	{ }
- };
- MODULE_DEVICE_TABLE(of, lpc32xx_nand_match);
- 
-diff --git a/drivers/mtd/nand/raw/lpc32xx_slc.c b/drivers/mtd/nand/raw/lpc32xx_slc.c
-index 9c5412dd3891..7389f57d8d71 100644
---- a/drivers/mtd/nand/raw/lpc32xx_slc.c
-+++ b/drivers/mtd/nand/raw/lpc32xx_slc.c
-@@ -993,7 +993,7 @@ static int lpc32xx_nand_suspend(struct platform_device *pdev, pm_message_t pm)
- 
- static const struct of_device_id lpc32xx_nand_match[] = {
- 	{ .compatible = "nxp,lpc3220-slc" },
--	{ /* sentinel */ },
-+	{ }
- };
- MODULE_DEVICE_TABLE(of, lpc32xx_nand_match);
- 
-diff --git a/drivers/mtd/nand/raw/marvell_nand.c b/drivers/mtd/nand/raw/marvell_nand.c
-index 32035c8d43b8..ceea85b25a61 100644
---- a/drivers/mtd/nand/raw/marvell_nand.c
-+++ b/drivers/mtd/nand/raw/marvell_nand.c
-@@ -3138,7 +3138,7 @@ static const struct platform_device_id marvell_nfc_platform_ids[] = {
- 		.name = "pxa3xx-nand",
- 		.driver_data = (kernel_ulong_t)&marvell_pxa3xx_nfc_legacy_caps,
- 	},
--	{ /* sentinel */ },
-+	{ }
- };
- MODULE_DEVICE_TABLE(platform, marvell_nfc_platform_ids);
- 
-@@ -3172,7 +3172,7 @@ static const struct of_device_id marvell_nfc_of_ids[] = {
- 		.compatible = "marvell,pxa3xx-nand",
- 		.data = &marvell_pxa3xx_nfc_legacy_caps,
- 	},
--	{ /* sentinel */ },
-+	{ }
- };
- MODULE_DEVICE_TABLE(of, marvell_nfc_of_ids);
- 
-diff --git a/drivers/mtd/nand/raw/meson_nand.c b/drivers/mtd/nand/raw/meson_nand.c
-index b2a9d4043019..61aa83955b9d 100644
---- a/drivers/mtd/nand/raw/meson_nand.c
-+++ b/drivers/mtd/nand/raw/meson_nand.c
-@@ -1539,7 +1539,7 @@ static const struct of_device_id meson_nfc_id_table[] = {
- 		.compatible = "amlogic,meson-axg-nfc",
- 		.data = &meson_axg_data,
- 	},
--	{}
-+	{ }
- };
- MODULE_DEVICE_TABLE(of, meson_nfc_id_table);
- 
-diff --git a/drivers/mtd/nand/raw/mpc5121_nfc.c b/drivers/mtd/nand/raw/mpc5121_nfc.c
-index 75a97f735ee3..4bfb6befe519 100644
---- a/drivers/mtd/nand/raw/mpc5121_nfc.c
-+++ b/drivers/mtd/nand/raw/mpc5121_nfc.c
-@@ -814,7 +814,7 @@ static void mpc5121_nfc_remove(struct platform_device *op)
- 
- static const struct of_device_id mpc5121_nfc_match[] = {
- 	{ .compatible = "fsl,mpc5121-nfc", },
--	{},
-+	{ }
- };
- MODULE_DEVICE_TABLE(of, mpc5121_nfc_match);
- 
-diff --git a/drivers/mtd/nand/raw/mtk_nand.c b/drivers/mtd/nand/raw/mtk_nand.c
-index 8f943b53b016..8e9d35894471 100644
---- a/drivers/mtd/nand/raw/mtk_nand.c
-+++ b/drivers/mtd/nand/raw/mtk_nand.c
-@@ -1499,7 +1499,7 @@ static const struct of_device_id mtk_nfc_id_table[] = {
- 		.compatible = "mediatek,mt7622-nfc",
- 		.data = &mtk_nfc_caps_mt7622,
- 	},
--	{}
-+	{ }
- };
- MODULE_DEVICE_TABLE(of, mtk_nfc_id_table);
- 
-diff --git a/drivers/mtd/nand/raw/mxc_nand.c b/drivers/mtd/nand/raw/mxc_nand.c
-index 52fe64f4355a..d42a8ff5db9f 100644
---- a/drivers/mtd/nand/raw/mxc_nand.c
-+++ b/drivers/mtd/nand/raw/mxc_nand.c
-@@ -1390,7 +1390,7 @@ static const struct of_device_id mxcnd_dt_ids[] = {
- 	{ .compatible = "fsl,imx25-nand", .data = &imx25_nand_devtype_data, },
- 	{ .compatible = "fsl,imx51-nand", .data = &imx51_nand_devtype_data, },
- 	{ .compatible = "fsl,imx53-nand", .data = &imx53_nand_devtype_data, },
--	{ /* sentinel */ }
-+	{ }
- };
- MODULE_DEVICE_TABLE(of, mxcnd_dt_ids);
- 
-diff --git a/drivers/mtd/nand/raw/mxic_nand.c b/drivers/mtd/nand/raw/mxic_nand.c
-index f07770f9a424..5c04803b4172 100644
---- a/drivers/mtd/nand/raw/mxic_nand.c
-+++ b/drivers/mtd/nand/raw/mxic_nand.c
-@@ -567,7 +567,7 @@ static void mxic_nfc_remove(struct platform_device *pdev)
- 
- static const struct of_device_id mxic_nfc_of_ids[] = {
- 	{ .compatible = "mxic,multi-itfc-v009-nand-controller", },
--	{},
-+	{ }
- };
- MODULE_DEVICE_TABLE(of, mxic_nfc_of_ids);
- 
-diff --git a/drivers/mtd/nand/raw/ndfc.c b/drivers/mtd/nand/raw/ndfc.c
-index d7b119028a71..86b31c9e377a 100644
---- a/drivers/mtd/nand/raw/ndfc.c
-+++ b/drivers/mtd/nand/raw/ndfc.c
-@@ -248,7 +248,7 @@ static void ndfc_remove(struct platform_device *ofdev)
- 
- static const struct of_device_id ndfc_match[] = {
- 	{ .compatible = "ibm,ndfc", },
--	{}
-+	{ }
- };
- MODULE_DEVICE_TABLE(of, ndfc_match);
- 
-diff --git a/drivers/mtd/nand/raw/nuvoton-ma35d1-nand-controller.c b/drivers/mtd/nand/raw/nuvoton-ma35d1-nand-controller.c
-index 1a36b227ddeb..ceb1ad14482d 100644
---- a/drivers/mtd/nand/raw/nuvoton-ma35d1-nand-controller.c
-+++ b/drivers/mtd/nand/raw/nuvoton-ma35d1-nand-controller.c
-@@ -1007,7 +1007,7 @@ static void ma35_nand_remove(struct platform_device *pdev)
- 
- static const struct of_device_id ma35_nand_of_match[] = {
- 	{ .compatible = "nuvoton,ma35d1-nand-controller" },
--	{},
-+	{ }
- };
- MODULE_DEVICE_TABLE(of, ma35_nand_of_match);
- 
-diff --git a/drivers/mtd/nand/raw/omap_elm.c b/drivers/mtd/nand/raw/omap_elm.c
-index 6736dac26b2d..1530a0f6d621 100644
---- a/drivers/mtd/nand/raw/omap_elm.c
-+++ b/drivers/mtd/nand/raw/omap_elm.c
-@@ -548,7 +548,7 @@ static SIMPLE_DEV_PM_OPS(elm_pm_ops, elm_suspend, elm_resume);
- static const struct of_device_id elm_of_match[] = {
- 	{ .compatible = "ti,am3352-elm" },
- 	{ .compatible = "ti,am64-elm" },
--	{},
-+	{ }
- };
- MODULE_DEVICE_TABLE(of, elm_of_match);
- #endif
-diff --git a/drivers/mtd/nand/raw/orion_nand.c b/drivers/mtd/nand/raw/orion_nand.c
-index dfa49ad1f55e..2767fa4102f6 100644
---- a/drivers/mtd/nand/raw/orion_nand.c
-+++ b/drivers/mtd/nand/raw/orion_nand.c
-@@ -205,7 +205,7 @@ static void orion_nand_remove(struct platform_device *pdev)
- #ifdef CONFIG_OF
- static const struct of_device_id orion_nand_of_match_table[] = {
- 	{ .compatible = "marvell,orion-nand", },
--	{},
-+	{ }
- };
- MODULE_DEVICE_TABLE(of, orion_nand_of_match_table);
- #endif
-diff --git a/drivers/mtd/nand/raw/pasemi_nand.c b/drivers/mtd/nand/raw/pasemi_nand.c
-index 09409b703d93..aef2cb002315 100644
---- a/drivers/mtd/nand/raw/pasemi_nand.c
-+++ b/drivers/mtd/nand/raw/pasemi_nand.c
-@@ -225,7 +225,7 @@ static const struct of_device_id pasemi_nand_match[] =
- 	{
- 		.compatible   = "pasemi,localbus-nand",
- 	},
--	{},
-+	{ }
- };
- 
- MODULE_DEVICE_TABLE(of, pasemi_nand_match);
-diff --git a/drivers/mtd/nand/raw/pl35x-nand-controller.c b/drivers/mtd/nand/raw/pl35x-nand-controller.c
-index cb7eb29a182a..cdf87f2550c2 100644
---- a/drivers/mtd/nand/raw/pl35x-nand-controller.c
-+++ b/drivers/mtd/nand/raw/pl35x-nand-controller.c
-@@ -1192,7 +1192,7 @@ static void pl35x_nand_remove(struct platform_device *pdev)
- 
- static const struct of_device_id pl35x_nand_of_match[] = {
- 	{ .compatible = "arm,pl353-nand-r2p1" },
--	{},
-+	{ }
- };
- MODULE_DEVICE_TABLE(of, pl35x_nand_of_match);
- 
-diff --git a/drivers/mtd/nand/raw/plat_nand.c b/drivers/mtd/nand/raw/plat_nand.c
-index 915ea5361592..bf02a5c41ad1 100644
---- a/drivers/mtd/nand/raw/plat_nand.c
-+++ b/drivers/mtd/nand/raw/plat_nand.c
-@@ -159,7 +159,7 @@ static void plat_nand_remove(struct platform_device *pdev)
- 
- static const struct of_device_id plat_nand_match[] = {
- 	{ .compatible = "gen_nand" },
--	{},
-+	{ }
- };
- MODULE_DEVICE_TABLE(of, plat_nand_match);
- 
-diff --git a/drivers/mtd/nand/raw/qcom_nandc.c b/drivers/mtd/nand/raw/qcom_nandc.c
-index abca02f54d74..52682adfa950 100644
---- a/drivers/mtd/nand/raw/qcom_nandc.c
-+++ b/drivers/mtd/nand/raw/qcom_nandc.c
-@@ -2295,7 +2295,7 @@ static const struct of_device_id qcom_nandc_of_match[] = {
- 		.compatible = "qcom,sdx55-nand",
- 		.data = &sdx55_nandc_props,
- 	},
--	{}
-+	{ }
- };
- MODULE_DEVICE_TABLE(of, qcom_nandc_of_match);
- 
-diff --git a/drivers/mtd/nand/raw/rockchip-nand-controller.c b/drivers/mtd/nand/raw/rockchip-nand-controller.c
-index dbc195db9ef0..c7292a22db8b 100644
---- a/drivers/mtd/nand/raw/rockchip-nand-controller.c
-+++ b/drivers/mtd/nand/raw/rockchip-nand-controller.c
-@@ -1370,7 +1370,7 @@ static const struct of_device_id rk_nfc_id_table[] = {
- 		.compatible = "rockchip,rv1108-nfc",
- 		.data = &nfc_v8_cfg
- 	},
--	{ /* sentinel */ }
-+	{ }
- };
- MODULE_DEVICE_TABLE(of, rk_nfc_id_table);
- 
-diff --git a/drivers/mtd/nand/raw/sh_flctl.c b/drivers/mtd/nand/raw/sh_flctl.c
-index 7d7bbf764555..c870a12b5f85 100644
---- a/drivers/mtd/nand/raw/sh_flctl.c
-+++ b/drivers/mtd/nand/raw/sh_flctl.c
-@@ -1083,7 +1083,7 @@ static struct flctl_soc_config flctl_sh7372_config = {
- static const struct of_device_id of_flctl_match[] = {
- 	{ .compatible = "renesas,shmobile-flctl-sh7372",
- 				.data = &flctl_sh7372_config },
--	{},
-+	{ }
- };
- MODULE_DEVICE_TABLE(of, of_flctl_match);
- 
-diff --git a/drivers/mtd/nand/raw/socrates_nand.c b/drivers/mtd/nand/raw/socrates_nand.c
-index a5125e0c8cdb..b3f39617b70f 100644
---- a/drivers/mtd/nand/raw/socrates_nand.c
-+++ b/drivers/mtd/nand/raw/socrates_nand.c
-@@ -220,7 +220,7 @@ static const struct of_device_id socrates_nand_match[] =
- 	{
- 		.compatible   = "abb,socrates-nand",
- 	},
--	{},
-+	{ }
- };
- 
- MODULE_DEVICE_TABLE(of, socrates_nand_match);
-diff --git a/drivers/mtd/nand/raw/stm32_fmc2_nand.c b/drivers/mtd/nand/raw/stm32_fmc2_nand.c
-index 56c34328ce24..e0b90364569c 100644
---- a/drivers/mtd/nand/raw/stm32_fmc2_nand.c
-+++ b/drivers/mtd/nand/raw/stm32_fmc2_nand.c
-@@ -2143,7 +2143,7 @@ static const struct of_device_id stm32_fmc2_nfc_match[] = {
- 		.compatible = "st,stm32mp25-fmc2-nfc",
- 		.data = &stm32_fmc2_nfc_mp25_data,
- 	},
--	{}
-+	{ }
- };
- MODULE_DEVICE_TABLE(of, stm32_fmc2_nfc_match);
- 
-diff --git a/drivers/mtd/nand/raw/sunxi_nand.c b/drivers/mtd/nand/raw/sunxi_nand.c
-index 38e67d350300..f3e1a9a03b59 100644
---- a/drivers/mtd/nand/raw/sunxi_nand.c
-+++ b/drivers/mtd/nand/raw/sunxi_nand.c
-@@ -2809,7 +2809,7 @@ static const struct of_device_id sunxi_nfc_ids[] = {
- 		.compatible = "allwinner,sun50i-h616-nand-controller",
- 		.data = &sunxi_nfc_h616_caps,
- 	},
--	{ /* sentinel */ }
-+	{ }
- };
- MODULE_DEVICE_TABLE(of, sunxi_nfc_ids);
- 
-diff --git a/drivers/mtd/nand/raw/technologic-nand-controller.c b/drivers/mtd/nand/raw/technologic-nand-controller.c
-index 56d257fc2c2a..0e365168e10b 100644
---- a/drivers/mtd/nand/raw/technologic-nand-controller.c
-+++ b/drivers/mtd/nand/raw/technologic-nand-controller.c
-@@ -203,7 +203,7 @@ static void ts72xx_nand_remove(struct platform_device *pdev)
- 
- static const struct of_device_id ts72xx_id_table[] = {
- 	{ .compatible = "technologic,ts7200-nand" },
--	{ /* sentinel */ }
-+	{ }
- };
- MODULE_DEVICE_TABLE(of, ts72xx_id_table);
- 
-diff --git a/drivers/mtd/nand/raw/tegra_nand.c b/drivers/mtd/nand/raw/tegra_nand.c
-index 199b3a8e552a..72edc6d8d771 100644
---- a/drivers/mtd/nand/raw/tegra_nand.c
-+++ b/drivers/mtd/nand/raw/tegra_nand.c
-@@ -1268,7 +1268,7 @@ static const struct dev_pm_ops tegra_nand_pm = {
- 
- static const struct of_device_id tegra_nand_of_match[] = {
- 	{ .compatible = "nvidia,tegra20-nand" },
--	{ /* sentinel */ }
-+	{ }
- };
- MODULE_DEVICE_TABLE(of, tegra_nand_of_match);
- 
-diff --git a/drivers/mtd/nand/raw/vf610_nfc.c b/drivers/mtd/nand/raw/vf610_nfc.c
-index 6ab3c440eac7..cc080cbe89e3 100644
---- a/drivers/mtd/nand/raw/vf610_nfc.c
-+++ b/drivers/mtd/nand/raw/vf610_nfc.c
-@@ -719,7 +719,7 @@ static int vf610_nfc_write_oob(struct nand_chip *chip, int page)
- 
- static const struct of_device_id vf610_nfc_dt_ids[] = {
- 	{ .compatible = "fsl,vf610-nfc", .data = (void *)NFC_VFC610 },
--	{ /* sentinel */ }
-+	{ }
- };
- MODULE_DEVICE_TABLE(of, vf610_nfc_dt_ids);
- 
-diff --git a/drivers/mtd/nand/raw/xway_nand.c b/drivers/mtd/nand/raw/xway_nand.c
-index a946d4d2cff4..14d5ca28c8d5 100644
---- a/drivers/mtd/nand/raw/xway_nand.c
-+++ b/drivers/mtd/nand/raw/xway_nand.c
-@@ -250,7 +250,7 @@ static void xway_nand_remove(struct platform_device *pdev)
- 
- static const struct of_device_id xway_nand_match[] = {
- 	{ .compatible = "lantiq,nand-xway" },
--	{},
-+	{ }
- };
- 
- static struct platform_driver xway_nand_driver = {
 
 -- 
 2.53.0
