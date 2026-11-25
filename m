@@ -2,99 +2,116 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 4452D606A682
-	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Nov 2026 06:18:51 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 24378606A99B
+	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Nov 2026 06:27:42 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=mZu+myhe;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=infradead.org header.i=@infradead.org header.a=rsa-sha256 header.s=casper.20170209 header.b=gdCETiT8;
-	dkim=pass (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.a=rsa-sha256 header.s=dk header.b=I5Ym7PCJ
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=vLBxRkLD;
+	dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=GDrNdTRK
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From:Reply-To:
-	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
-	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
+	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
+	Content-Transfer-Encoding:Cc:To:In-Reply-To:References:Message-Id:
+	Content-Type:MIME-Version:Subject:Date:From:Content-ID:Content-Description:
+	Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=sBCW/1+hC6LenyMex4ykRMV0Vc6X6yOWotOMEDTxmWo=; b=mZu+myheh0Q9kr+Way037Fuu6b
-	7ERRiBO0xMa/ZEde3vdaKvv+PMtnSo3czjmySwmxolZpR3vtNqJvhftQjUzU+R26DLYA3OUa2GOF4
-	ytXE+YC3uUs7ylo+PetLqE9miXpn2qQNyBs3axx7GdZaKB37HAN3/JPMiXGZ01LiebVWgzVoL4xtr
-	SZgo8eXguM8B41x3FmcLBXw101hrJpjIjqcaRFmdstXx3BCjT4Sh5qDfQoFiM7AMCsiXWzzb7QQtu
-	0gC22bx9id1urY/cda/cLD5KMgBOB7+1qJOO79MXYSntBf1svuUdVQIVsUuG+Nbteyas956JquS8M
-	Ieb3pL3w==;
+	bh=Wq/CsLeOaCNni5DP6DJOa3Z+MAQ6SwcdPNThAhwhRHc=; b=vLBxRkLDpI2dW+1s4U7A2ec4nR
+	5ccY+cikbSo81nkUYL1G2kYWhKusM0c8B1fXIV9iYzKVeyqYfM0kNW1Ia6GIM0leqy7+lGFFYkQgG
+	75Tn+bppHAD/PZQd18B+gdKOgCKVeC17w4h0Pc+3db7LTc6Jjlq7OwM6eYPtuV02apG72FMkYFz+k
+	5N/WCHd1iBNSd/Y+4bq5SUuGz3nmpqdJshOsJKZqDCCp65Za9Gxg67rkKSBTp6Jp7GlvCZ1K8Ybgm
+	e1aAPdn8X6yTZkX6qePwIG+LuhA8bqUGT/m7dhNxxebWjbpvKpnSXrOC0z9/cSGVAlDIt4csiS2NK
+	kYuRE17w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xW6L9-00000008cEj-1Jo7;
-	Wed, 25 Nov 2026 06:18:49 +0000
-Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
+	id 1xW6Tl-00000008fdA-3Smp;
+	Wed, 25 Nov 2026 06:27:41 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xW6JM-00000008ZFs-0SCf;
-	Wed, 25 Nov 2026 06:16:56 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=casper.20170209; h=Content-Transfer-Encoding:Content-Type:
-	MIME-Version:Message-ID:Date:Subject:CC:To:From:Sender:Reply-To:Content-ID:
-	Content-Description:In-Reply-To:References;
-	bh=sBCW/1+hC6LenyMex4ykRMV0Vc6X6yOWotOMEDTxmWo=; b=gdCETiT8Vdp+tX/iI9ACFMxxkH
-	ysSAK0QImoq48vbCHrHGiNIWynoEfYZGuL7eQsr11nO7dJd7ZWlHeZlyGvOuxgO59EzkNv955GN1D
-	K1LSOMt3Ik1T2PZwve8mwKJCVeuYYn0i46eYIe4CpnxHphC/Rpyp4E3YmN9hIweCm+nd/ijGboM4H
-	YbCF0LmIIFIpn0aP/n9ScvFuwOB1DX9s4yolj4VSBBGLr02saKezDrPLRfGIo0GZrBpVT4cQsqgnP
-	BxhGGfoNayT2jCt/wuzwn6wsg8ZRcesFirHe+iVHlFHBGV8oMe6PnVR0hfjTZytSSeFYTkKB8rw11
-	mEWWMmPg==;
-Received: from mailgw02.mediatek.com ([216.200.240.185])
-	by casper.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xW6JE-00000005q34-0BWJ;
-	Wed, 25 Nov 2026 06:16:53 +0000
-X-UUID: bd0fb352e89711f1acbe4559397dec65-20261124
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
-	h=Content-Transfer-Encoding:Content-Type:MIME-Version:Message-ID:Date:Subject:CC:To:From; bh=sBCW/1+hC6LenyMex4ykRMV0Vc6X6yOWotOMEDTxmWo=;
-	b=I5Ym7PCJsL5W15FtvnV+qiH81l0ajlelJ4kQln2338qJbtrGfIEtdsj05hfUGjpNldW9L+v8aot/XUucZCVF6b1GI/l9TrkN/xtVa29W7zdpxEVjDuGJcA49JMe2i0qojGTUE37sUFTE/CUSG1jtd6droqiWe2aPIKCnp0HddP8=;
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.21,REQID:aece0a35-5cf9-4281-9266-dccea7d69f9c,IP:0,U
-	RL:0,TC:0,Content:0,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION:
-	release,TS:0
-X-CID-META: VersionHash:b0318ac,CLOUDID:4cf9f2bd-9e04-43bc-9c07-a2d8d8315d7e,B
-	ulkID:nil,BulkQuantity:0,SF:102|136|836|865|888|898,TC:-5,Content:0|15|52|
-	99,EDM:-3|-100,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:nil,COL:0,OS
-	I:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 2,SSN|SDN
-X-CID-BAS: 2,SSN|SDN,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: bd0fb352e89711f1acbe4559397dec65-20261124
-Received: from mtkmbs14n2.mediatek.inc [(172.21.101.76)] by mailgw02.mediatek.com
-	(envelope-from <kyrie.wu@mediatek.com>)
-	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
-	with ESMTP id 1906672785; Tue, 24 Nov 2026 23:16:23 -0700
-Received: from mtkmbs11n2.mediatek.inc (172.21.101.187) by
- mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.56; Wed, 25 Nov 2026 14:16:21 +0800
-Received: from gcnsap21.gcn.mediatek.inc (10.17.81.22) by
- mtkmbs11n2.mediatek.inc (172.21.101.73) with Microsoft SMTP Server id
- 15.2.2562.56 via Frontend Transport; Wed, 25 Nov 2026 14:16:20 +0800
-From: Kyrie Wu <kyrie.wu@mediatek.com>
-To: Mauro Carvalho Chehab <mchehab@kernel.org>, Rob Herring <robh@kernel.org>,
-	Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley <conor+dt@kernel.org>,
-	Matthias Brugger <matthias.bgg@gmail.com>, AngeloGioacchino Del Regno
-	<angelogioacchino.delregno@collabora.com>, Bin Liu <bin.liu@mediatek.com>,
-	kyrie wu <kyrie.wu@mediatek.corp-partner.google.com>, Hans Verkuil
-	<hverkuil@kernel.org>, irui wang <irui.wang@mediatek.com>, Nicolas Dufresne
-	<nicolas.dufresne@collabora.com>, <linux-media@vger.kernel.org>,
-	<devicetree@vger.kernel.org>, <linux-kernel@vger.kernel.org>,
-	<linux-arm-kernel@lists.infradead.org>, <linux-mediatek@lists.infradead.org>
-CC: Kyrie Wu <kyrie.wu@mediatek.com>
-Subject: [PATCH v20 00/15] media: mediatek: jpeg: add MT8196 JPEG support
-Date: Wed, 25 Nov 2026 14:16:03 +0800
-Message-ID: <20261125061618.2544386-1-kyrie.wu@mediatek.com>
-X-Mailer: git-send-email 2.43.0
+	id 1xW6TZ-00000008fYs-2pUn;
+	Wed, 25 Nov 2026 06:27:29 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by sea.source.kernel.org (Postfix) with ESMTP id 6E2504589B;
+	Wed, 25 Nov 2026 06:27:29 +0000 (UTC)
+Authentication-Results: smtp.kernel.org; arc=none smtp.remote-ip=100.80.115.77
+ARC-Seal: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256; cv=none;
+	t=1795588049;
+	b=gnwLB2HTEip39pDh1BrIjR9m7VOpsBuUJIEIb9SY/D8my7E3ZADhLEJr8ON5JEJ1lm0A
+	 Ee5lIQVs1MfgQTsZsue+hTffPm2XrDyyjWVpoKjrINQFVslmFZBrwuZh74hvh1oynI+e1
+	 TZXkPzoLN1Yskrm/p7U7/OUTfVAzznCVttEtks6wHe7FbZaTbJoUdO3YyK7k0Jml8p6nq
+	 thIKaioXLSVy1iJ49P/PunImn+5h/TwlGjcMX6yTUtiIj7Ae+8Nxk+jvc7z5nmgD8L8bj
+	 txyWM4U/gJkRPyWzqnXJLp09RCMIamVNBy2vrpSdwPmcbzRX10SaebPB/tnBHJSY2Aw==
+ARC-Message-Signature: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256;
+	c=relaxed/relaxed; t=1795588049;
+	h=DKIM-Signature:Received:From:Date:Subject:MIME-Version:Content-Type:
+	 Message-Id:References:In-Reply-To:To:Cc:X-Mailer:
+	 X-Developer-Signature:X-Developer-Key:X-Endpoint-Received:
+	 X-Original-From:Reply-To:Content-Transfer-Encoding;
+	bh=Wq/CsLeOaCNni5DP6DJOa3Z+MAQ6SwcdPNThAhwhRHc=;
+	b=iN9dmAqnjFXNWsjUveQF1l0WkDUrEq3wS479P5RjJ9SZiKO1mjf3DlWBzdmJMIRVnZti
+	 C2LgVNCPpEWie6IRnRDz4POjuplDZNrtJ2vHJtYfrE1bjizYO7uoVVh6PanbVOHfvo0Dd
+	 ZCqsaFHxm5rVMFERJaUwcNrv9xlxvkAb+j/3hrxR/8RJ6KLqeSocjRvVUykz57nkFQF7v
+	 dD45kVla7WlKZPdxfNi4eI8n5WjT86V5iJe0hFeJqWD1ZjmKbt4DnsKL8p8Oom0RfxtkH
+	 tTwX9pVHG1Myi1QswDqbHTyu0T+cFQtB3oYK/enODEBIau4HIfiQ4c2aPjnIfr73IaQ==
+ARC-Authentication-Results: i=1; smtp.kernel.org; 
+	arc=none smtp.remote-ip=100.80.115.77
+Received: from lkml.kernel.org (nexus.subspace.kernel.org [100.80.115.77])
+	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
+	(No client certificate requested)
+	by smtp.kernel.org (Postfix) with ESMTPS id C9B5D1F000D2;
+	Wed, 25 Nov 2026 06:27:20 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1795588049;
+	bh=Wq/CsLeOaCNni5DP6DJOa3Z+MAQ6SwcdPNThAhwhRHc=;
+	h=From:Date:Subject:References:In-Reply-To:To:Cc:Reply-To;
+	b=GDrNdTRKmXOXxR6fp3Q9PBz9JCJzmo2g2XGOFpI4+FQSDh0zyCFCwD6sXNoDJhbpS
+	 LdVG4YX2SMtblWHwco9ykqit9fQIKlKp18FJR2YM7OjTB8/pMp9HGUcgo4+AWRaBO+
+	 aeZ3poKxsXpjN6J5LryWfXrCkf9R1xagHhAXxK+j6IZWk8tLPON/9UD/sCW+ZI/IlA
+	 T+05hUtjSZyg5GLUPjyFVlrnqs+JFJpeEp2m1wm29j8yiBmeXDJb1/5I8FNMe5B47R
+	 tOpFzmzXh3unTEkontv+GsLlIsR6d1jjyOjgEhreHcCTwZxj2IQPjCHZx0tjh1hnKS
+	 GuwU0oimt+GZg==
+Received: from nexus.subspace.kernel.org (localhost [IPv6:::1])
+	by lkml.kernel.org (Postfix) with ESMTP id 5951A4CD58;
+	Wed, 25 Nov 2026 06:27:20 +0000 (UTC)
+From: Jack Wu via B4 Relay <devnull+jackbb_wu.compal.com@kernel.org>
+Date: Wed, 25 Nov 2026 14:27:15 +0800
+Subject: [PATCH net-next v13 2/6] net: wwan: t9xx: Add control plane
+ transaction layer framework
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: 8bit
-X-MTK: N
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261125_061648_788714_87745770 
-X-CRM114-Status: GOOD (  14.88  )
-X-Spam-Score: -2.1 (--)
+Content-Type: text/plain; charset="utf-8"
+Message-Id: <20261125-t9xx_driver_v1-v13-2-92d9be5fb51e@compal.com>
+References: <20261125-t9xx_driver_v1-v13-0-92d9be5fb51e@compal.com>
+In-Reply-To: <20261125-t9xx_driver_v1-v13-0-92d9be5fb51e@compal.com>
+To: Loic Poulain <loic.poulain@oss.qualcomm.com>, 
+ Sergey Ryazanov <ryazanov.s.a@gmail.com>, 
+ Johannes Berg <johannes@sipsolutions.net>, 
+ Andrew Lunn <andrew+netdev@lunn.ch>, 
+ "David S. Miller" <davem@davemloft.net>, Jakub Kicinski <kuba@kernel.org>, 
+ Paolo Abeni <pabeni@redhat.com>, Jack Wu <jackbb_wu@compal.com>, 
+ Wen-Zhi Huang <wen-zhi.huang@mediatek.com>, 
+ Shi-Wei Yeh <shi-wei.yeh@mediatek.com>, 
+ Minano Tseng <Minano.tseng@mediatek.com>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Simon Horman <horms@kernel.org>, Jonathan Corbet <corbet@lwn.net>, 
+ Shuah Khan <skhan@linuxfoundation.org>, Robert Yu <robert_yu@compal.com>, 
+ Jeff Chang <Jeff_Chang@compal.com>, Eric Dumazet <edumazet@kernel.org>, 
+ Eric Dumazet <edumazet@kernel.org>
+Cc: linux-kernel@vger.kernel.org, netdev@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+ linux-doc@vger.kernel.org
+X-Mailer: b4 0.15.2
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1795588037; l=4358;
+ i=jackbb_wu@compal.com; s=20260526; h=from:subject:message-id;
+ bh=zSDBqT4BY6TNZmOsjeeRLHg7Yj+X8Pi/vmZtc8ZE+0E=;
+ b=DcAWWsz0XFyJu6JgGBTXZFTnyI1gkyWKf3vGJJxS9+XOIB5Tt7DAO18zLrZzbIJuEz2YssdVb
+ iQOj+N69tzrDFOHdbFwauqsvB29vx5ODTLa6K00FWVodZMH1hnl5yBe
+X-Developer-Key: i=jackbb_wu@compal.com; a=ed25519;
+ pk=VH1prTWixNl8OEUPPSfII3p46MzJpQN8J3+ecE1tZXg=
+X-Endpoint-Received: by B4 Relay for jackbb_wu@compal.com/20260526 with
+ auth_id=793
+X-Original-From: Jack Wu <jackbb_wu@compal.com>
+Content-Transfer-Encoding: 7bit
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,199 +121,169 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
+Reply-To: jackbb_wu@compal.com
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-13.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-18.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,
-	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY,USER_AGENT_GIT autolearn=ham
+	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=ham
 	autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-From: Kyrie Wu (吴晗) <kyrie.wu@mediatek.com>
+From: Jack Wu <jackbb_wu@compal.com>
 
-This series fixes multi-core JPEG buffer handling, resolution changes,
-streaming stop and clock management, and adds MT8196 JPEG decoder and
-encoder support. The MT8196 support includes compatible strings and
-SMMU stream-ID configuration through the shared JPEG syscon.
+Introduce the control plane and transaction layer framework
+for the T9XX WWAN driver. This patch adds the core data
+structures (mtk_ctrl_blk, mtk_ctrl_trans) and initialization
+entry points that subsequent patches build upon.
 
-Review scope and tags in v20:
-In v19, I folded the SMMU property changes already present in v18 patch 12
-into the previously reviewed compatible patches, v19 patches 10 and 11.
-I also removed the Reviewed-by tags from Krzysztof Kozlowski and
-AngeloGioacchino Del Regno. The word "agreed" in the v19 cover was
-incorrect: it did not reflect reviewer consent to that scope/tag change.
+The control plane block (ctrl_blk) starts out with only the
+device back-pointer and an opaque pointer to the transport
+context; later patches add the port layer and FSM hooks to
+it. The actual DMA engine and TX/RX service
+implementations are added in subsequent patches, and
+mtk_ctrl_init() and mtk_ctrl_exit() get their first callers
+there, in pcie/mtk_trans_ctrl.c.
 
-This revision separates those scopes:
-- v19 patch 10 becomes v20 patch 10 (decoder compatibles only) and
-  v20 patch 11 (decoder SMMU phandle and its conditional requirement).
-- v19 patch 11 becomes v20 patch 12 (encoder compatibles only) and
-  v20 patch 13 (encoder SMMU phandle, conditional requirement and both
-  parent/child iommus stream-ID descriptions).
-
-The diffs and commit descriptions of v20 patches 10 and 12 match the
-reviewed v18 compatible-only patches exactly. Their Krzysztof Kozlowski
-and AngeloGioacchino Del Regno Reviewed-by tags are restored only for
-that unchanged scope. Those tags are not carried onto the SMMU changes.
-
-Patch 9 uses the common mfd/syscon.yaml binding, per Rob Herring's review,
-in place of the standalone JPEG SMMU schema.
-Patches 9, 11 and 13 carry only the existing Signed-off-by and require
-fresh DT review. All other Reviewed-by tags present in the published
-v19 patches are retained. Patch 5 additionally carries
-AngeloGioacchino Del Regno's new public Reviewed-by after review of the
-multi-core power-management change.
-
-Historical testing reported for v18 (not rerun for v19 or v20):
-The v18 series was tested on MT8196 with tast. JPEG encoding and
-decoding worked.
-
-Patches 1-8 contain JPEG driver fixes.
-Patch 9 adds the MT8196 JPEG SMMU compatible to the common syscon binding.
-Patches 10 and 12 contain the reviewed decoder and encoder compatibles.
-Patches 11 and 13 contain decoder and encoder SMMU properties.
-Patch 14 adds the driver compatible strings for MT8196.
-Patch 15 adds jpeg smmu sid setting.
+Signed-off-by: Jack Wu <jackbb_wu@compal.com>
 ---
-Changes in v20 (relative to v19):
---Rebased on mainline 8d7fe9885c62fc9a95bf55d9db244d9672a8aadc.
---Bound the dynamic core count in the existing multi-core branch before
-  assigning max_hw_count, preserving the existing probe structure.
---Correct patch 5's dispatch-versus-hardware-completion description;
-  add AngeloGioacchino Del Regno's public Reviewed-by. No PM code change.
---Correct patch 6's description: restart the done-queue scan after each
-  expected frame and release consecutive completed frames in order.
---Use the common syscon binding for the MT8196 JPEG SMMU compatible,
-  remove the standalone schema and its MAINTAINERS file entry, and keep
-  the existing JPEG media-binding coverage.
---Split the decoder and encoder binding changes into the reviewed
-  compatible-only scopes and independent SMMU property patches, with
-  the exact review-tag ownership described above. The series has 15 patches.
+ drivers/net/wwan/t9xx/Makefile              |  1 +
+ drivers/net/wwan/t9xx/mtk_ctrl_plane.c      | 45 +++++++++++++++++++++++++++++
+ drivers/net/wwan/t9xx/mtk_ctrl_plane.h      | 19 ++++++++++++
+ drivers/net/wwan/t9xx/mtk_dev.h             |  3 ++
+ drivers/net/wwan/t9xx/pcie/mtk_trans_ctrl.h | 15 ++++++++++
+ 5 files changed, 83 insertions(+)
 
-Changes in v19 (relative to v18; patch numbers below refer to v19):
---Rebased on mainline 23c62304dde29abe92013d85910d03a77dada35d.
---Initialize hw_rdy before populating children to preserve probe counts.
---Drain ready queues before waiting for in-flight buffers at STREAMOFF.
---Reject component suspend with -EBUSY while hardware is active; restore
-  M2M scheduling on failure and use pm_ptr() for component PM operations.
---Publish decoder completion metadata before arming the timeout.
---Keep queue-format updates under CAPTURE STREAMOFF locking and check
-  SOURCE_CHANGE state before comparing resolutions.
---Unlink prepared buffers before arming timeout or starting hardware.
---Introduce the shared SMMU schema before complete MT8196 decoder and
-  encoder bindings, including their required smmu-config phandles.
---Clarify MT8196 SMMU stream IDs in encoder iommus descriptions and use
-  the soc binding prefix for the shared SMMU schema patch.
---Complete SMMU initialization before allocating a child index and
-  publishing child pointers, preserving parent state on probe failure.
---Update descriptions. v19 removed Reviewed-by tags from the changed
-  code patches 7, 8 and 13 and from the combined binding patches 10 and
-  11. The handling of the binding scope and tags is corrected in v20.
+diff --git a/drivers/net/wwan/t9xx/Makefile b/drivers/net/wwan/t9xx/Makefile
+index 0eb5fb1be0e2..65b3c1f70c36 100644
+--- a/drivers/net/wwan/t9xx/Makefile
++++ b/drivers/net/wwan/t9xx/Makefile
+@@ -3,4 +3,5 @@
+ obj-$(CONFIG_MTK_T9XX) += mtk_t9xx.o
+ 
+ mtk_t9xx-y := \
++	mtk_ctrl_plane.o \
+ 	pcie/mtk_pci.o
+diff --git a/drivers/net/wwan/t9xx/mtk_ctrl_plane.c b/drivers/net/wwan/t9xx/mtk_ctrl_plane.c
+new file mode 100644
+index 000000000000..b755b6f03a72
+--- /dev/null
++++ b/drivers/net/wwan/t9xx/mtk_ctrl_plane.c
+@@ -0,0 +1,45 @@
++// SPDX-License-Identifier: GPL-2.0-only
++/*
++ * Copyright (c) 2022, MediaTek Inc.
++ */
++
++#include <linux/device.h>
++
++#include "mtk_ctrl_plane.h"
++
++/**
++ * mtk_ctrl_init() - Initialize the control plane block.
++ * @mdev: Pointer to the MTK modem device.
++ *
++ * Allocates and initializes the control plane block
++ * associated with @mdev.  Runs once per bind; the allocation is
++ * devres managed and is released at unbind, not by
++ * mtk_ctrl_exit().
++ *
++ * Return: 0 on success, -ENOMEM on allocation failure.
++ */
++int mtk_ctrl_init(struct mtk_md_dev *mdev)
++{
++	struct mtk_ctrl_blk *ctrl_blk;
++
++	ctrl_blk = devm_kzalloc_obj(mdev->dev, *ctrl_blk);
++	if (!ctrl_blk)
++		return -ENOMEM;
++
++	ctrl_blk->mdev = mdev;
++	mdev->ctrl_blk = ctrl_blk;
++
++	return 0;
++}
++
++/**
++ * mtk_ctrl_exit() - Clean up the control plane block.
++ * @mdev: Pointer to the MTK modem device.
++ *
++ * Clears the control plane block pointer. The allocation
++ * itself is managed by devres and freed on driver detach.
++ */
++void mtk_ctrl_exit(struct mtk_md_dev *mdev)
++{
++	mdev->ctrl_blk = NULL;
++}
+diff --git a/drivers/net/wwan/t9xx/mtk_ctrl_plane.h b/drivers/net/wwan/t9xx/mtk_ctrl_plane.h
+new file mode 100644
+index 000000000000..16b60eeb0aaf
+--- /dev/null
++++ b/drivers/net/wwan/t9xx/mtk_ctrl_plane.h
+@@ -0,0 +1,19 @@
++/* SPDX-License-Identifier: GPL-2.0-only
++ *
++ * Copyright (c) 2022, MediaTek Inc.
++ */
++
++#ifndef __MTK_CTRL_PLANE_H__
++#define __MTK_CTRL_PLANE_H__
++
++#include "mtk_dev.h"
++
++struct mtk_ctrl_blk {
++	struct mtk_md_dev *mdev;
++	void *ctrl_hw_priv;
++};
++
++int mtk_ctrl_init(struct mtk_md_dev *mdev);
++void mtk_ctrl_exit(struct mtk_md_dev *mdev);
++
++#endif /* __MTK_CTRL_PLANE_H__ */
+diff --git a/drivers/net/wwan/t9xx/mtk_dev.h b/drivers/net/wwan/t9xx/mtk_dev.h
+index d969a04d4413..fe2cd8c95719 100644
+--- a/drivers/net/wwan/t9xx/mtk_dev.h
++++ b/drivers/net/wwan/t9xx/mtk_dev.h
+@@ -26,11 +26,14 @@ enum mtk_dev_evt_d2h {
+ 	DEV_EVT_D2H_ASYNC_HS_NOTIFY_MD	= BIT(6),
+ };
+ 
++struct mtk_ctrl_blk;
++
+ /* mtk_md_dev defines the structure of MTK modem device */
+ struct mtk_md_dev {
+ 	struct device *dev;
+ 	void *hw_priv;
+ 	u32 hw_ver;
++	struct mtk_ctrl_blk *ctrl_blk;
+ };
+ 
+ #endif /* __MTK_DEV_H__ */
+diff --git a/drivers/net/wwan/t9xx/pcie/mtk_trans_ctrl.h b/drivers/net/wwan/t9xx/pcie/mtk_trans_ctrl.h
+new file mode 100644
+index 000000000000..1827cb1d4959
+--- /dev/null
++++ b/drivers/net/wwan/t9xx/pcie/mtk_trans_ctrl.h
+@@ -0,0 +1,15 @@
++/* SPDX-License-Identifier: GPL-2.0-only
++ *
++ * Copyright (c) 2022, MediaTek Inc.
++ */
++
++#ifndef __MTK_TRANS_CTRL_H__
++#define __MTK_TRANS_CTRL_H__
++
++#include "../mtk_dev.h"
++
++struct mtk_ctrl_trans {
++	struct mtk_md_dev *mdev;
++};
++
++#endif
 
-Changes in v18 (relative to v17):
---Keep suspend/resume callbacks and clock ownership on multi-hw component
-  devices. Leave single-hw callbacks on the master, and wait for the active
-  job before disabling component clocks.
---Add a standalone DT binding patch for mediatek,smmu-config and the
-  dedicated MT8196 JPEG SMMU configuration syscon at 0x38d0000.
-
-Changes in v17 (relative to v16):
---Rebased on top of the latest media tree
-
-Changes in v16 (relative to v15):
---Set max_hw_count from the DT child count and update hw_rdy from child hardware probes in patch 1.
---Fix patch 2 commit message wording per review.
---Rework patch 6 commit message per review.
---Remove redundant devm_clk_bulk_get() calls in patch 5 per review comments.
---Use %pe to print smmu_regmap error pointer in patch 12 to fix media-ci/static warnings.
-
-Changes in v15 (relative to v14):
---Rebased on top of the latest media tree
-
-Changes in v14 (relative to v13):
---Rebased on top of the latest media tree
-
-Changes in v13 (relative to v12):
---Rebased on top of the latest media tree
---fix kernel rebot build warnings in patch 5
-
-Changes in v12 (relative to v11):
---Rebased on top of the latest media tree
---Some modifications for patch v11's review comments.
---add reviewer to commit messages
-
-Changes in v11 (relative to v10):
---Rebased on top of the latest media tree
---add reviewer to commit messages
-
-Changes in v10 (relative to v9):
---Rebased on top of the latest media tree
-
-Changes in v9 (relative to v8):
---Rebased on top of the latest media tree
-
-Changes in v8 (relative to v7):
---Rebased on top of the latest media tree
-
-Changes in v7 (relative to v6):
---Rebased on top of the latest media tree
-
-Changes in v6 (relative to v5):
---reorder the patches set.
---fix commit message of patch 1-8.
-
-Changes in v5 (relative to v4):
---fix kernel robot build errors for patch 4.
---add reviewer for patch 1 and patch 2.
-
-Changes in v4 (relative to v3):
---change patch subject of jpeg encoder and decoder compatible.
-
-Changes in v3 (relative to v2):
---refactor smmu sid setting function interface
---Some modifications for patch v2's review comments.
-
-Changes in v2 (relative to v1):
---refine jpeg dt-bindings for MT8196
---optimize software code to manage jpeg HW count
---refactor smmu sid setting function interface
---Some modifications for patch v1's review comments.
-
-Kyrie Wu (15):
-  media: mediatek: jpeg: fix jpeg cores' amounts setting
-  media: mediatek: jpeg: fix jpeg buffer payload size setting
-  media: mediatek: jpeg: fix buffer structure size and layout
-  media: mediatek: jpeg: Fix buffer completion on multi-core streaming
-    stop
-  media: mediatek: jpeg: Fix multi-core clk suspend and resume setting
-  media: mediatek: jpeg: fix buffer state update timing
-  media: mediatek: jpeg: fix resolution change event handling in decoder
-  media: mediatek: jpeg: fix remove buffer removal timing for multi-core
-  dt-bindings: mfd: syscon: Add MT8196 JPEG SMMU compatible
-  media: dt-bindings: mediatek,jpeg: Add mediatek, mt8196-jpgdec
-    compatible
-  dt-bindings: media: mediatek,jpeg: Add MT8196 decoder SMMU
-    configuration
-  media: dt-bindings: mediatek,jpeg: Add mediatek, mt8196-jpgenc
-    compatible
-  dt-bindings: media: mediatek,jpeg: Add MT8196 encoder SMMU
-    configuration
-  media: mediatek: jpeg: add jpeg compatible
-  media: mediatek: jpeg: add jpeg smmu sid setting
-
- .../media/mediatek,mt8195-jpegdec.yaml        |  24 ++-
- .../media/mediatek,mt8195-jpegenc.yaml        |  39 +++-
- .../devicetree/bindings/mfd/syscon.yaml       |   1 +
- MAINTAINERS                                   |   1 +
- .../platform/mediatek/jpeg/mtk_jpeg_core.c    | 169 +++++++++++++-----
- .../platform/mediatek/jpeg/mtk_jpeg_core.h    |  19 +-
- .../platform/mediatek/jpeg/mtk_jpeg_dec_hw.c  |  96 +++++++++-
- .../platform/mediatek/jpeg/mtk_jpeg_enc_hw.c  |  94 +++++++++-
- 8 files changed, 377 insertions(+), 66 deletions(-)
-
-
-base-commit: 8d7fe9885c62fc9a95bf55d9db244d9672a8aadc
 -- 
-2.51.0.windows.2
+2.34.1
+
 
 
