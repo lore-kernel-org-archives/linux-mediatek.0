@@ -2,102 +2,102 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 5DCD4606A68D
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 7BED6606A332
 	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Nov 2026 16:30:03 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=au6NvJjl;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=infradead.org header.i=@infradead.org header.a=rsa-sha256 header.s=desiato.20200630 header.b=WaGkw86w;
-	dkim=pass (2048-bit key) header.d=thegoodpenguin-co-uk.20260707.gappssmtp.com header.i=@thegoodpenguin-co-uk.20260707.gappssmtp.com header.a=rsa-sha256 header.s=20260707 header.b=rL50TBMR
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=aWhPhmBv;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=infradead.org header.i=@infradead.org header.a=rsa-sha256 header.s=desiato.20200630 header.b=NoP6ICN+;
+	dkim=pass (2048-bit key) header.d=thegoodpenguin-co-uk.20260707.gappssmtp.com header.i=@thegoodpenguin-co-uk.20260707.gappssmtp.com header.a=rsa-sha256 header.s=20260707 header.b=MZPSosC3
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Unsubscribe-Post:
-	List-Owner; bh=AFDbeCHQMCzywmdZtzco98P0xWzZOKchEiBzgROq0f4=; b=au6NvJjldw2+xS
-	GVvfwU7egcz/GyTg90N/vZ11vl22DXL5tHxgbz3XWDyAHs3E9geJCeRIr5FYbNLhTvHYR0HIxtcSP
-	/rMdHbLgXnGT0BIsfoEPymos5iEuhm6dHnJXa3TcmX3GgwSttYhd8v+f9GoXL02mOsCtl3+HOEpIZ
-	9Ef+GD8/bZcJj0w8zpQZumx3sMkPY4WlX5fDXuo6nRA/46NU9+/SPxmCy0mJTMJZHyt3NQOz9K6El
-	BDdFo1PsqPwtyiMgBE3Qw5AjQ6jzB2eUNGe33T2zIbPgELimSJ9FxJdkiOTbzigjyiexlii4vML04
-	ZKUso0oIKwTlwj7ydj5A==;
+	List-Owner; bh=E/Paw5QZ9QxbXxzyBtlunqj4eITAuJB1YG4IYSSOnm4=; b=aWhPhmBvDSfGbp
+	/6BZbIF7yK1dUqoXuYYn7iOxprqBxVUMIu/wBm0181Eqpp2yCsM5NAh8Hri4npKrUOIJH7hI2wFqM
+	HxG82TxsqK18NQMX1wxWadVaU3vzqNGCaAZS5QNN0CXx+cidV76NCWTMctU7eK5oP888EBmfduzJT
+	JYdQ2+avqCsxPinLhvEAO5H49PxNZ8u1/3bv2sKulICoKWzfqvf8FxHFQiI5jcJTDwcPrGlIPfb7M
+	tAg7MRNT6RnKQbOk8PwwY2CqvY9D7sLQGTD08rTBZr2JYflAyUX35a7qZ9cKjc7HbZ3cAOqQNyUcc
+	E2oxlVlxtanRafFUqakA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xWFsg-0000000AYy5-4AnL;
+	id 1xWFsh-0000000AYyE-0M7z;
 	Wed, 25 Nov 2026 16:30:03 +0000
 Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xWFrU-0000000AYT7-3NNH
+	id 1xWFrU-0000000AYT9-4A7A
 	for linux-mediatek@bombadil.infradead.org;
 	Wed, 25 Nov 2026 16:29:13 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=infradead.org; s=desiato.20200630; h=Cc:To:In-Reply-To:References:
 	Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Sender:Reply-To:Content-ID:Content-Description;
-	bh=AFDbeCHQMCzywmdZtzco98P0xWzZOKchEiBzgROq0f4=; b=WaGkw86w3WFbWE5+h1XdQaB18v
-	dVugpGttsFdn5fgml8TVqgQhKZPLyB7kToYZh/E7AS6V6MeFRWNg1AOjt5Cg6Onqxg1y7DqgCIFQ7
-	PbfZKaFMp9G9mEKtS7+YqM/6xPf2KVg3truQVHcfaat6bd26olymdZ0395ejz1o/gYTcrd/eYMhva
-	4nxxk0s6acUgtb6nKo1KouKm7WyIUV5AhSOpsWENWiYffIbUt9wSZ0NaBW1TCiTja1IpxRSOFmKik
-	c1W9PrOZAIajhjcGRQoWkGYsvSqkRFBEalanB0sXmgK4sXTFfTL1pihleY7MgbCbuNCtEvqI9/K4j
-	JKLx9RzQ==;
+	bh=E/Paw5QZ9QxbXxzyBtlunqj4eITAuJB1YG4IYSSOnm4=; b=NoP6ICN+Gj4F8TfT3WoDr4bcQ/
+	SL2o3k/eM6a82SWlywvfSzBEdQ8vdwMZhQiWvalNwQ9InHo1nDw6fP8wIX1PnB0NXwDLpKU6kzHOE
+	b/W55yxlH4P2nQ94jFIJmKeOjMgr+4atcemGGMaaYZWlSeAIZ0HHCcXJfBBAJDe2igMB7Kf7ifYIW
+	T1H3B6WwjEr/0lHYAe+o1/LUQkhO5jv14fSJ5afhr7/wVjKPSuRdziCYKtKgQVzuSNw73TxRZNj69
+	xiPH7j4l4WX8GZf01MiFMan0KNFo6/n3GbTzmxP2GrEZmvoPgnrY1zr+VGbFhJAvXZnbldOStTbx5
+	sUJTtb6Q==;
 Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c])
 	by desiato.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xWFrN-00000005Wsg-2ZJb
+	id 1xWFrP-00000005WtY-0nw3
 	for linux-mediatek@lists.infradead.org;
-	Wed, 25 Nov 2026 16:28:43 +0000
-Received: by mail-wm1-x32c.google.com with SMTP id 5b1f17b1804b1-4bb70074ab2so64610825e9.0
-        for <linux-mediatek@lists.infradead.org>; Wed, 25 Nov 2026 08:28:40 -0800 (PST)
+	Wed, 25 Nov 2026 16:28:45 +0000
+Received: by mail-wm1-x32c.google.com with SMTP id 5b1f17b1804b1-4a2000d5fb1so34879485e9.1
+        for <linux-mediatek@lists.infradead.org>; Wed, 25 Nov 2026 08:28:42 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=thegoodpenguin-co-uk.20260707.gappssmtp.com; s=20260707; t=1795624119; x=1796228919; darn=lists.infradead.org;
+        d=thegoodpenguin-co-uk.20260707.gappssmtp.com; s=20260707; t=1795624122; x=1796228922; darn=lists.infradead.org;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :content-type:mime-version:subject:date:from:from:to:cc:subject:date
          :message-id:reply-to:content-type;
-        bh=AFDbeCHQMCzywmdZtzco98P0xWzZOKchEiBzgROq0f4=;
-        b=rL50TBMR+CdRxrtlIKePzz1kb9Fj1EyA/NjbLj8ghD2cY+GUc/QSE01MBjAL089E43
-         4GZpe9Bc1P6aer0dSaHXGnawgDCE6qAZN2Yij25tKEaI87eGIg6mJvMsADEMTIG9H8Io
-         p3pzFGp6OnDIRf6R9ldCaU/1DqF0j/Frj1YeZMz2sINWtnp5nFhxj9OTycxGskhEIAFw
-         9FvGyY7bNLdthUR25r3jDsOUh8xf0jqJHZ+yLd0CxgfBY1UreUq/eVMjxjQM1wbwQopQ
-         3uHUGH1N3P9PYyS3348hFvCl+jZFXeBuiK4HGLBeEr5C+Om2zg3Lcasx/VZAtEdUxB3j
-         gmuQ==
+        bh=E/Paw5QZ9QxbXxzyBtlunqj4eITAuJB1YG4IYSSOnm4=;
+        b=MZPSosC3V5O5dC04J1ZSxw3/loMWtyUiDFlIpVyjr6QBRdE2G/1CGyWCQyAKeX3kek
+         aZPFAEBT7c/QZKkZmHAP0b0n00SA9EP/qnY2xVuGQLx5d9wbKevhgraLIZHcPA4iVKIZ
+         BqAIbwf+VBL7b5AmTVtVwE1UUtg90QSwwIg5ebxA8HZ3cE9z6KN2I5BMktXs7Pvr58BV
+         EUzvMG95yWEzd579L5wMBITL5RgF2MgVhtTs5FWzHyzlkWrUeAPMS+jc+j7UWH3JVLEG
+         FACNnf7btGwiCcTsAokmbTKes6yOF9apbnuCpmIx6fM7lbUWads66MR7Bi76oIsiGV1D
+         H+BA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1795624119; x=1796228919;
+        d=1e100.net; s=20260707; t=1795624122; x=1796228922;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :content-type:mime-version:subject:date:from:x-gm-gg
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
          :content-type;
-        bh=AFDbeCHQMCzywmdZtzco98P0xWzZOKchEiBzgROq0f4=;
-        b=L4P+akK3txM2M4yKuGuzy0jCOYvpCEcYATx24MSb0Xc6Gj+DHtiQdIQ8G2Kg7yjBHq
-         KKC796Yh5ingOOn0ecGeuwuL5RMXHQc9m4pDi0a5thEnorE6Km5C6qWFSGCe61fVQ2P6
-         bgkqmbiWbYGpUksBR1dVIejWmYDg9ZAjgDsbYsTKtbp5qnWTKryudAqqAMu6xnpIL9lj
-         7h8u24T4SCOlUXvV5ksVcO68Org+DqoYIQoNM+/VgIlnAXib3n7FI3tLhuGSXGEuo58F
-         gMTCfamfuf/BvsqEziBJlAd0Wluol/agbe43a+rHiKbYFf1uajDKkIWn6DaH6/nl9oT7
-         JYQQ==
-X-Forwarded-Encrypted: i=1; AL+hErHkqnKQal8EVWQSfZqcgy6S6RFtu1gemoriSXWxVaYj3JehfaQCedoyo28gL3MVr/Ggoam2tD0qkH5nUH9bYw==@lists.infradead.org
-X-Gm-Message-State: APuU4Z8/QhxO/iXDfcCxA8vPYbccPDFFMozgJvDVzN4VYEX+cMQuZikl
-	EJaO0CzWjnY84Mer9TXkJwegWTMPPxBI80JYocrHrixX6cdehkc/2TH+k0/S16MpHi0=
-X-Gm-Gg: AZFdTZevcP/x9ks0LwnuGF5tzBl3hGnrxLbNJyXIYbzdYTBO+i3+wWW0i8q1spSV6JO
-	T4F6/Glw7Nz+LDsgfOlhL4fRnVZm3rCH16+GfyfeXawqFGNGkobbSng6JwKwIYCxPtyxPF14SUf
-	DBjZ1lAicR8bYzHUC1/22lwZP007PKi9OZyncTh7jRwP+y+Z3Cmss+wtMbXFZqwpimnMGpSj9Rv
-	SgaqJCvqfBhE1WGiTzKGTCptTdIGAVZ34MIx9Brw9Rxd6TD6bziizsDWsnvvEheyrwxedKqIuBJ
-	OdCPgvJfcMeLIs6QD7dIlcslyK0T/HUhlWs3zCVkyf1up+orsy1CRg5DUxV6BPwLwKxHpblkRzP
-	0JZrNKeQcfq4C4mHDzehnCmt/3jgGkYlaJesdpA7AFIHUveVvWqL30Ih9xm9o2/vsSXNlyA/0OT
-	ywNqmVj2hs4oAmtpINY5XTit6AUWp45kv0sXnlbZGLjXDL2ZoSV6UWeby1fK1heYFg2oXo0bNRs
-	/Yk+OdHERcr65nV3DMWIFvhxqhz0rUglRPcVaMGh3lUEvgckepVatGEWV3RnQU6TL2VWbevyl5S
-	8yXEGRke7mi22kqx9tvn1hlgdYQfs1e1G5SgBxC5MEDN9A==
-X-Received: by 2002:a05:600c:5246:b0:4bb:6de4:2f7c with SMTP id 5b1f17b1804b1-4bb8881c5bdmr384806975e9.20.1795624119085;
-        Wed, 25 Nov 2026 08:28:39 -0800 (PST)
+        bh=E/Paw5QZ9QxbXxzyBtlunqj4eITAuJB1YG4IYSSOnm4=;
+        b=mf0xJpTmkX9ptCSGfGu9c35FDLZzKjGe9SD1K6JeKBx8gm7vrddJfOTuIlrrT8qrhg
+         0FhblnVdNAQ0L3GjmTB2LPF0OU1KPpN0ZR4XLfQ/pZIsx+fr9zRdQF7RJqH7Bft7VyKC
+         fgtrow/iugO3LgK4LG04bPyPdNqDWZ5H3Xp17ww/2FpTEkY4LPOZS7tqntYbOEor5DXP
+         DeMw2zRGf0j4OKohVSBfhWGIUiWJdrIgAf4S/HKUs2y1K2/czbbLEClkwFFsmVAGnK9l
+         /y3C9GYzkFZWA+Uv86o+6zfTpLc8aZGzYzZUgdo08z/yJvOyYwSCZsuISrxbQ5DWWvp4
+         iVSQ==
+X-Forwarded-Encrypted: i=1; AL+hErHp3cR5Sk768fwEzrHluJ5wKj6VVqcq2uyDwq13JFQyBPID3zaeBsKdmYY8rHAdb3U+1+yJPAdOR+NtUG1NtQ==@lists.infradead.org
+X-Gm-Message-State: APuU4Z9eahA8+ZuiFTs3Ye/yF0mclaRvy0XdqK2IhQ33d9IKzAPNpzgQ
+	uU1HbNwyST7VfBRYQB7dGiBRcpircElxgR0ShTmzQYjhs/7IyZ+GF81QcYNPUXWpCZ0=
+X-Gm-Gg: AZFdTZcliqKOKu/UKg7AS1CVSIWbVDWUk/2X1bdJkZyfjPTwpZI8KRxDPjtYELxvgyI
+	LR8LsjVckL5HLW+62va/By2cazTmzEuDnlfjqoZIbArs+A/4Bm+Q4/6Vz/Q4hyUKCDxOgmN/aqp
+	0WqoQ/PLxca9MgHKumIaXFUyt8AHT5wcjNscjp3OOdaLK54mECElkp731/N0PnAVkMYSFIMQ+/o
+	UKLrmgca8F8Ot9I86eJim6KtfyZjNzgGnGyD1efhp2VnzDbyBxTD2Z/brHXCPvJjhnq8DTosMg/
+	0LyNg1FUjGnW84yj7fXmaY9HyE3YMttNKdGWSrTL5jyN4GVioio7iC6ZpyfFl+LBfsvp31ClUmd
+	4YH1N+Mz1IaQDNFTiGD2peJzj7zwNanjgo+F2a0fPuH080DHCafl1bghCidXycfKqN+qx3yXDOB
+	IX7APmmPIxpsEmnEKfSgO0Gw/2Nju5qHeSd1RB+clLYVAAPKP+pbN6HjJ1vhxlncsv845j4Eh80
+	KjTPGRgZgH/M85acytTYhE+uMnzo6dzEEh3Xznqr5jAWorw/145T36BtZQiJtp3s2tEpW3gSAX6
+	lD0YbXaWXNiM24c94ZTLxQX/YPfFLvxYbbqfSWIDlsIHuQ==
+X-Received: by 2002:a05:600c:3b8a:b0:4a3:59c9:a754 with SMTP id 5b1f17b1804b1-4bb8892da25mr367205855e9.22.1795624121613;
+        Wed, 25 Nov 2026 08:28:41 -0800 (PST)
 Received: from [10.42.0.1] ([2a00:23c7:1d1a:9c01:f716:ba19:8aaa:f1c2])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-4bb853368d3sm527336375e9.1.2026.11.25.08.28.36
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-4bb853368d3sm527336375e9.1.2026.11.25.08.28.39
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 25 Nov 2026 08:28:38 -0800 (PST)
+        Wed, 25 Nov 2026 08:28:41 -0800 (PST)
 From: Pawel Zalewski <pzalewski@thegoodpenguin.co.uk>
-Date: Wed, 25 Nov 2026 16:28:27 +0000
-Subject: [PATCH 01/10] mtd: maps: pismo: Use named initializers for
- i2c_device_id
+Date: Wed, 25 Nov 2026 16:28:28 +0000
+Subject: [PATCH 02/10] mtd: spi-nor: Use named initializers for
+ spi_device_id
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20261125-acpi-mtd-v1-1-42ad2f645bee@thegoodpenguin.co.uk>
+Message-Id: <20261125-acpi-mtd-v1-2-42ad2f645bee@thegoodpenguin.co.uk>
 References: <20261125-acpi-mtd-v1-0-42ad2f645bee@thegoodpenguin.co.uk>
 In-Reply-To: <20261125-acpi-mtd-v1-0-42ad2f645bee@thegoodpenguin.co.uk>
 To: Miquel Raynal <miquel.raynal@bootlin.com>, 
@@ -158,16 +158,16 @@ Cc: linux-mtd@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
  Pawel Zalewski <pzalewski@thegoodpenguin.co.uk>, 
  =?utf-8?q?Uwe_Kleine-K=C3=B6nig?= <u.kleine-koenig@baylibre.com>
 X-Mailer: b4 0.16.0
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1795624113; l=851;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1795624113; l=4183;
  i=pzalewski@thegoodpenguin.co.uk; s=20260430; h=from:subject:message-id;
- bh=IHAi0qeArnt0Dz3MPX/pMNLkcr4ipLn3XGqru6V8PMg=;
- b=FYYb5NZv5bMag5GUq5jhUZI3EA/wssPu4IODYyOGaefHzIx0GqzM1xxUbS1yXt9hVm+9RShR6
- U7w6XKaTkOyAdXUAkIbyQhY8qzilz1ISb3JVyfa0dct/S0WrrapbtfS
+ bh=oSYQ7Bs6TY9Bq0it7ME4AMa1HN8RgNqdeSRr8O3thOM=;
+ b=ZzYcsPDU1eT9Urm3wkVmXrHRSn8lYS47jYwodaBWVXhHbdUtk3xdzrjUw2pFBpCbVfZ0+gfNR
+ dIrCrr0zs9uAk13TU8rgxCJLHxUgZjH9xPYqCVfddGmUaS8ISdiG+oY
 X-Developer-Key: i=pzalewski@thegoodpenguin.co.uk; a=ed25519;
  pk=vHq4n9IonORH2GTzLv8r6CWAFHzgfBuNkQPXA8NSly0=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261125_162841_765349_23B730C1 
-X-CRM114-Status: GOOD (  15.72  )
+X-CRM114-CacheID: sfid-20261125_162843_170847_DD7BADF7 
+X-CRM114-Status: GOOD (  17.24  )
 X-Spam-Score: 0.0 (/)
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -186,32 +186,127 @@ X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIM_SIGNED,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Use a designated initializer for the i2c_device_id fields which makes the
+Use a designated initializer for the spi_device_id fields which makes the
 code more readable and consistent with how lists are initialized in the
 rest of the kernel code base.
 
-Unify the list terminator to have a single space between the brackets and
-no trailing comma.
+Put every list item on a new line and unify the list terminator to have
+a single space between the brackets and no trailing comma.
 
 Signed-off-by: Pawel Zalewski <pzalewski@thegoodpenguin.co.uk>
 ---
- drivers/mtd/maps/pismo.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ drivers/mtd/spi-nor/core.c | 77 +++++++++++++++++++++++++++++++++-------------
+ 1 file changed, 55 insertions(+), 22 deletions(-)
 
-diff --git a/drivers/mtd/maps/pismo.c b/drivers/mtd/maps/pismo.c
-index b0310fddcaa3..babb6d367623 100644
---- a/drivers/mtd/maps/pismo.c
-+++ b/drivers/mtd/maps/pismo.c
-@@ -250,8 +250,8 @@ static int pismo_probe(struct i2c_client *client)
- }
+diff --git a/drivers/mtd/spi-nor/core.c b/drivers/mtd/spi-nor/core.c
+index a04d22d2e2e1..a76c669000d8 100644
+--- a/drivers/mtd/spi-nor/core.c
++++ b/drivers/mtd/spi-nor/core.c
+@@ -3662,42 +3662,75 @@ static const struct spi_device_id spi_nor_dev_ids[] = {
+ 	 * hack around the fact that the SPI core does not provide uevent
+ 	 * matching for .of_match_table
+ 	 */
+-	{"spi-nor"},
++	{ .name = "spi-nor" },
  
- static const struct i2c_device_id pismo_id[] = {
--	{ "pismo" },
+ 	/*
+ 	 * Entries not used in DTs that should be safe to drop after replacing
+ 	 * them with "spi-nor" in platform data.
+ 	 */
+-	{"s25sl064a"},	{"w25x16"},	{"m25p10"},	{"m25px64"},
++	{ .name = "s25sl064a" },
++	{ .name = "w25x16" },
++	{ .name = "m25p10" },
++	{ .name = "m25px64" },
+ 
+ 	/*
+ 	 * Entries that were used in DTs without "jedec,spi-nor" fallback and
+ 	 * should be kept for backward compatibility.
+ 	 */
+-	{"at25df321a"},	{"at25df641"},	{"at26df081a"},
+-	{"mx25l4005a"},	{"mx25l1606e"},	{"mx25l6405d"},	{"mx25l12805d"},
+-	{"mx25l25635e"},{"mx66l51235l"},
+-	{"n25q064"},	{"n25q128a11"},	{"n25q128a13"},	{"n25q512a"},
+-	{"s25fl256s1"},	{"s25fl512s"},	{"s25sl12801"},	{"s25fl008k"},
+-	{"s25fl064k"},
+-	{"sst25vf040b"},{"sst25vf016b"},{"sst25vf032b"},{"sst25wf040"},
+-	{"m25p40"},	{"m25p80"},	{"m25p16"},	{"m25p32"},
+-	{"m25p64"},	{"m25p128"},
+-	{"w25x80"},	{"w25x32"},	{"w25q32"},	{"w25q32dw"},
+-	{"w25q80bl"},	{"w25q128"},	{"w25q256"},
++	{ .name = "at25df321a" },
++	{ .name = "at25df641" },
++	{ .name = "at26df081a" },
++	{ .name = "mx25l4005a" },
++	{ .name = "mx25l1606e" },
++	{ .name = "mx25l6405d" },
++	{ .name = "mx25l12805d" },
++	{ .name = "mx25l25635e" },
++	{ .name = "mx66l51235l" },
++	{ .name = "n25q064" },
++	{ .name = "n25q128a11" },
++	{ .name = "n25q128a13" },
++	{ .name = "n25q512a" },
++	{ .name = "s25fl256s1" },
++	{ .name = "s25fl512s" },
++	{ .name = "s25sl12801" },
++	{ .name = "s25fl008k" },
++	{ .name = "s25fl064k" },
++	{ .name = "sst25vf040b" },
++	{ .name = "sst25vf016b" },
++	{ .name = "sst25vf032b" },
++	{ .name = "sst25wf040" },
++	{ .name = "m25p40" },
++	{ .name = "m25p80" },
++	{ .name = "m25p16" },
++	{ .name = "m25p32" },
++	{ .name = "m25p64" },
++	{ .name = "m25p128" },
++	{ .name = "w25x80" },
++	{ .name = "w25x32" },
++	{ .name = "w25q32" },
++	{ .name = "w25q32dw" },
++	{ .name = "w25q80bl" },
++	{ .name = "w25q128" },
++	{ .name = "w25q256" },
+ 
+ 	/* Flashes that can't be detected using JEDEC */
+-	{"m25p05-nonjedec"},	{"m25p10-nonjedec"},	{"m25p20-nonjedec"},
+-	{"m25p40-nonjedec"},	{"m25p80-nonjedec"},	{"m25p16-nonjedec"},
+-	{"m25p32-nonjedec"},	{"m25p64-nonjedec"},	{"m25p128-nonjedec"},
++	{ .name = "m25p05-nonjedec" },
++	{ .name = "m25p10-nonjedec" },
++	{ .name = "m25p20-nonjedec" },
++	{ .name = "m25p40-nonjedec" },
++	{ .name = "m25p80-nonjedec" },
++	{ .name = "m25p16-nonjedec" },
++	{ .name = "m25p32-nonjedec" },
++	{ .name = "m25p64-nonjedec" },
++	{ .name = "m25p128-nonjedec" },
+ 
+ 	/* Everspin MRAMs (non-JEDEC) */
+-	{ "mr25h128" }, /* 128 Kib, 40 MHz */
+-	{ "mr25h256" }, /* 256 Kib, 40 MHz */
+-	{ "mr25h10" },  /*   1 Mib, 40 MHz */
+-	{ "mr25h40" },  /*   4 Mib, 40 MHz */
++	{ .name = "mr25h128" }, /* 128 Kib, 40 MHz */
++	{ .name = "mr25h256" }, /* 256 Kib, 40 MHz */
++	{ .name = "mr25h10" },  /*   1 Mib, 40 MHz */
++	{ .name = "mr25h40" },  /*   4 Mib, 40 MHz */
+ 
 -	{ },
-+	{ .name = "pismo" },
 +	{ }
  };
- MODULE_DEVICE_TABLE(i2c, pismo_id);
+ MODULE_DEVICE_TABLE(spi, spi_nor_dev_ids);
+ 
+@@ -3707,7 +3740,7 @@ static const struct of_device_id spi_nor_of_table[] = {
+ 	 * JEDEC READ ID opcode (0x9F). Use this, if possible.
+ 	 */
+ 	{ .compatible = "jedec,spi-nor" },
+-	{ /* sentinel */ },
++	{ }
+ };
+ MODULE_DEVICE_TABLE(of, spi_nor_of_table);
  
 
 -- 
