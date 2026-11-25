@@ -2,188 +2,159 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 929AE606A32C
-	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Nov 2026 16:01:08 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id D05AE606A321
+	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Nov 2026 16:29:27 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=zf4bDKdC;
-	dkim=pass (2048-bit key) header.d=NXP1.onmicrosoft.com header.i=@NXP1.onmicrosoft.com header.a=rsa-sha256 header.s=selector1-NXP1-onmicrosoft-com header.b=h/azBYeY
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=R3V/aqMm;
+	dkim=pass (2048-bit key) header.d=thegoodpenguin-co-uk.20260707.gappssmtp.com header.i=@thegoodpenguin-co-uk.20260707.gappssmtp.com header.a=rsa-sha256 header.s=20260707 header.b=ox4qw2Bl
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:In-Reply-To:
-	Content-Transfer-Encoding:Content-Type:References:Message-ID:Subject:Cc:To:
-	From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Unsubscribe-Post:
-	List-Owner; bh=ktvN5VccKKw5i08DfYGBrc6a93lAsKwOjSIw93pxbgM=; b=zf4bDKdC5CbXzv
-	Qd2hdi6QhFHdCNaCkiwp6oigyTtRBvw5TDMvr3shy/NRHO2YEvS9AlrxehW5SlucHyQgedu++Pl3i
-	VgidW5SOUlZAoktdDv0kzbnIotLBbZDUT2J4MyTBpCK83aH2r9L6TpRL/FC7fdXxUJ8cr+SNCNFxY
-	MOxGemDzUk3SyYMnx0N4U/7MF3xsyZ32j7+/fpa/AIEteiHoANS3Fv4/vNG30l2SSgNJ0SYznGc8W
-	sj2WkKOKLHqZPenR224wnF+WYEOEVDe8gqw6M/eYv/c8pdsmJzqaCEJIsP2JCIpop2GWPyy/fDw/x
-	geOhqYZLgZl+BYG4EpWQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
+	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	List-Unsubscribe-Post:List-Owner;
+	bh=F33PfOK0msjzeBxtvP6gRqlD2SQxJhJCJJqwD2eVgsE=; b=R3V/aqMm0ypZnZBb7OzMFgNzUE
+	CYCvRZmDnVZr0kRIweRdo5haky9UjxoXG7Rc0MszM0mjsffkwzV6D8Sjrnkp3wniX7ZexsEQqfYqU
+	bbQnnMcD08ziI6NL6kn0Eeeky202aoP8a93CKFn4pmhWRl8E7ogRpNYeypy269P7QCpcVl1235+M3
+	nAPIZIemP9stZQwhcOETrjzcKfsP0aJiuatLpdNPM2V2ZIHCkbsGx3kQqwUSlgYzD8bGcehtS51pc
+	/Oq9RRz5tl8dEAGGJTP4twe/Zcffta7VZ+miupVxc0CLch20hDg4PW+aoaLE9TccH2s3IeRyRTY1M
+	oUQrxW/A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xWFQi-0000000ATuY-1GfY;
-	Wed, 25 Nov 2026 16:01:08 +0000
-Received: from mail-swedencentralazlp170130007.outbound.protection.outlook.com ([2a01:111:f403:c202::7] helo=GVXPR05CU001.outbound.protection.outlook.com)
+	id 1xWFs7-0000000AYaN-29M4;
+	Wed, 25 Nov 2026 16:29:27 +0000
+Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xWFQe-0000000ATtf-38Dx;
-	Wed, 25 Nov 2026 16:01:06 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=pmIj9F7X+uSbDI69ts8l+L17FdfkPyAkEMqn0dG9KuEgTOpGQR4sLVBesiXE6Zh16s65V/0vIDmqxxaLiyGdKgz+W0OhQn4kuQRt+IFqsFnxeYohPQfgerROvksO3vtG0sHdeEm5t1xzUuxB6o/iFO5GQPb87vWWP0H6aQPJEcJpzoyVMqKqB6qYXuCRNFuMqMwSXL6gK7DSOoWd936Ik+SDp0GCX77J79UQx4r/G2AldQ0uoBouPjE4r81AXTg6MPcWNM7daIP54aTaSsaBWYU/V72Ko9gDtEY0Ls6BQaXkmYV+v8JeUwMM3gqnxEiKWJQ3HP2b+daUVvj3yi+w+A==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=ktvN5VccKKw5i08DfYGBrc6a93lAsKwOjSIw93pxbgM=;
- b=RmBadnbGD6ubpSeXBZRTHudoe/4pa8ym/tOBPcmnV+pH72LbHyhyJ9h0BM9I7GXOfoyUMawXvh/lOjKK0hggK+E6g6aPNG/IupJ4rsYixX3o2rX1I396V0+wTMueod/0AHefCdgLep5k+f8IHayVanxJoEa0U+xKp/005XHPtZ98zcN5KebVxCaO9wB01CrWFjcEjHQAKNsrk1Zlyhp1O8gpKIIJAjLd6XQ7qCWY/LEapNvDc9k8pO2hTmaMKN5u1UYxCH2tP0df9Kl/bSaCUGU9tg/S6HiEaFGjS2zK9VPgQU8YyQ+B7xdVOeWEWnXoF6QHMGhzUDGJUFQHdeH0Hg==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=oss.nxp.com; dmarc=pass action=none header.from=oss.nxp.com;
- dkim=pass header.d=oss.nxp.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=NXP1.onmicrosoft.com;
- s=selector1-NXP1-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=ktvN5VccKKw5i08DfYGBrc6a93lAsKwOjSIw93pxbgM=;
- b=h/azBYeY457SocdCvH02G8TmyoWt0WoUAjQCniOSPa0qnOj+/OQEhAxTzPSQa2H3QFfNeN74abwxWeS6wrsmgU4ODQlAm11KMozXzO/6WlXGv6IfeNnxTSlrFdU5O6Wt1elgD9OY7Jn4NDIOeqTHP8qbwmZr+T6OEyZPmAnon6W2vrJ0so5yGKXrg1mjmmYFOBFBXF4yzOsFNwwXUsNHYtIgHWO30EgI22008WGYQxjGUvHlkziRW72uFiokrHwASTwUq+jZN6p/F4mw1t8GQHIWZSub0Jc9HJku2XA0AmYdCqZ7LvPySNkMRyLs3YP1YdZpzaHZ64HtGEZyVksyzw==
-Authentication-Results: mx.microsoft.com 1; dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=oss.nxp.com;
-Received: from MI3PR04MB12438.eurprd04.prod.outlook.com (2603:10a6:290:76::14)
- by GVXPR04MB9735.eurprd04.prod.outlook.com (2603:10a6:150:118::12) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.662.6; Wed, 25 Nov
- 2026 16:00:55 +0000
-Received: from MI3PR04MB12438.eurprd04.prod.outlook.com
- ([fe80::c715:c32:8bb1:b70b]) by MI3PR04MB12438.eurprd04.prod.outlook.com
- ([fe80::c715:c32:8bb1:b70b%4]) with mapi id 15.21.0662.004; Wed, 25 Nov 2026
- 16:00:55 +0000
-Date: Wed, 25 Nov 2026 10:00:32 -0600
-From: Frank Li <Frank.li@oss.nxp.com>
-To: "Rafael J. Wysocki (Intel)" <rafael@kernel.org>
-Cc: Ulf Hansson <ulf.hansson@oss.qualcomm.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Heiko Stuebner <heiko@sntech.de>, Ulf Hansson <ulfh@kernel.org>,
-	Rodrigo Vivi <rodrigo.vivi@intel.com>,
-	Matthew Auld <matthew.auld@intel.com>,
-	Hans de Goede <hansg@kernel.org>,
-	Patrik Jakobsson <patrik.r.jakobsson@gmail.com>,
-	Peter Ujfalusi <peter.ujfalusi@linux.intel.com>,
-	Mark Brown <broonie@kernel.org>,
-	Pierre-Louis Bossart <pierre-louis.bossart@linux.dev>,
-	Ranjani Sridharan <ranjani.sridharan@linux.intel.com>,
-	Yong Wu <yong.wu@mediatek.com>, Will Deacon <will@kernel.org>,
-	Tomasz Figa <tfiga@chromium.org>, Marek Vasut <marex@denx.de>,
-	Michael Tretter <m.tretter@pengutronix.de>,
-	Sakari Ailus <sakari.ailus@linux.intel.com>,
-	Hans Verkuil <hverkuil@kernel.org>,
-	"open list:POWER MANAGEMENT CORE" <linux-pm@vger.kernel.org>,
-	open list <linux-kernel@vger.kernel.org>,
-	"moderated list:ARM/Mediatek SoC support:Keyword:mediatek" <linux-arm-kernel@lists.infradead.org>,
-	"moderated list:ARM/Mediatek SoC support:Keyword:mediatek" <linux-mediatek@lists.infradead.org>,
-	"open list:ARM/Rockchip SoC support:Keyword:b[Rr]ock[Cc]hipb" <linux-rockchip@lists.infradead.org>,
-	imx@lists.linux.dev, Frank Li <Frank.Li@nxp.com>,
-	Jani Nikula <jani.nikula@linux.intel.com>,
-	Joonas Lahtinen <joonas.lahtinen@linux.intel.com>,
-	Tvrtko Ursulin <tursulin@ursulin.net>,
-	Maarten Lankhorst <maarten.lankhorst@linux.intel.com>,
-	Maxime Ripard <mripard@kernel.org>,
-	Thomas Hellstrom <thomas.hellstrom@linux.intel.com>,
-	Simona Vetter <simona@ffwll.ch>, David Airlie <airlied@gmail.com>,
-	Matthew Brost <matthew.brost@intel.com>,
-	Thomas Zimmermann <tzimmermann@suse.de>,
-	Alessio Belle <alessio.belle@imgtec.com>,
-	Luigi Santivetti <luigi.santivetti@imgtec.com>,
-	Liam Girdwood <lgirdwood@gmail.com>,
-	Jaroslav Kysela <perex@perex.cz>, Takashi Iwai <tiwai@suse.com>,
-	Bard Liao <yung-chuan.liao@linux.intel.com>,
-	Kai Vehmanen <kai.vehmanen@linux.intel.com>,
-	Robin Murphy <robin.murphy@arm.com>,
-	Mauro Carvalho Chehab <mchehab@kernel.org>,
-	Dafna Hirschfeld <dafna@fastmail.com>,
-	Laurent Pinchart <laurent.pinchart@ideasonboard.com>,
-	Daniel Baluta <daniel.baluta@nxp.com>,
-	Vijendar Mukunda <Vijendar.Mukunda@amd.com>,
-	dri-devel@lists.freedesktop.org, imagination@lists.freedesktop.org,
-	intel-gfx@lists.freedesktop.org, intel-xe@lists.freedesktop.org,
-	iommu@lists.linux.dev, linux-media@vger.kernel.org,
-	linux-sound@vger.kernel.org, sound-open-firmware@alsa-project.org
-Subject: Re: [PATCH v3 2/2] PM: runtime: fix stub pm_runtime_get_if_in_use()
- for !CONFIG_PM
-Message-ID: <awcGINOZKcD-cTvy@SMW015318>
-References: <20261117173738.1073856-1-Frank.Li@oss.nxp.com>
- <20261117173738.1073856-2-Frank.Li@oss.nxp.com>
- <CAPx+jO9RwkpSKwq6vq00uoXK-mcovJ2LMH7b_ByRnxOUj8nH8w@mail.gmail.com>
- <CAJZ5v0jsnLjEBxa1R4Q3hZLZKrCUW0xSE9SqLB8bd4tNAhXTAQ@mail.gmail.com>
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <CAJZ5v0jsnLjEBxa1R4Q3hZLZKrCUW0xSE9SqLB8bd4tNAhXTAQ@mail.gmail.com>
-X-ClientProxiedBy: PH8P220CA0050.NAMP220.PROD.OUTLOOK.COM
- (2603:10b6:510:2d9::24) To MI3PR04MB12438.eurprd04.prod.outlook.com
- (2603:10a6:290:76::14)
+	id 1xWFrR-0000000AYOq-3e14
+	for linux-mediatek@lists.infradead.org;
+	Wed, 25 Nov 2026 16:29:07 +0000
+Received: by mail-wm1-x32f.google.com with SMTP id 5b1f17b1804b1-4a5b2be99a8so51024885e9.2
+        for <linux-mediatek@lists.infradead.org>; Wed, 25 Nov 2026 08:28:37 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=thegoodpenguin-co-uk.20260707.gappssmtp.com; s=20260707; t=1795624116; x=1796228916; darn=lists.infradead.org;
+        h=cc:to:content-transfer-encoding:content-type:mime-version
+         :message-id:date:subject:from:from:to:cc:subject:date:message-id
+         :reply-to:content-type;
+        bh=F33PfOK0msjzeBxtvP6gRqlD2SQxJhJCJJqwD2eVgsE=;
+        b=ox4qw2BldEcNONUt17NbqI0nV1dJjcKUMhc9qmEf4LQM3U/t20BZhnH2iQBaO5CoN0
+         6XMxHSPT7krkyCoUkqXHFXSjwEOnFgnKMnyAtNE7RUibp7b83Ot5miVCtM4PIu7RRhJ8
+         raJg/v4I8Coea1GrFB52qTYoU1opvz/W5t/x1ef1mMA2gq8QlFDvHcHfNvZ+4wkE7k16
+         yPDMfRRdu8V3urBui+kMMg2PtVMClhiwCm1/TpJFCE03zsErXilnqqPYsVVbk3b/4d08
+         SipEmpeBpEd4rcGs+YTAmFKIZtKo8ZhH+ndQjN6t1PvU9anWwCzWXdOnrh1DiQTQrSFK
+         27ow==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20260707; t=1795624116; x=1796228916;
+        h=cc:to:content-transfer-encoding:content-type:mime-version
+         :message-id:date:subject:from:x-gm-gg:x-gm-message-state:from:to:cc
+         :subject:date:message-id:reply-to:content-type;
+        bh=F33PfOK0msjzeBxtvP6gRqlD2SQxJhJCJJqwD2eVgsE=;
+        b=0rAUdeZJoo1BhVt3w1KjLDRhQBXntgmJclrnFFV0etomnhAGtQnbZqNcb4mNliDITf
+         4HPPYeMtWP9PeQ3RVxd1eq45G5cLryEahELMpwQqNT6YrA3jbfd9RrA8f8xnnbEbnWR/
+         ox1bjLCTA9u6JSDcwCZ1o2fpy/LrUeSQycOotkDGn2iSszdV5QZVll/wicUMLI0+kGcR
+         bRrH1aOdOu9/oGfNJc7ufxSJWUn9RH2nX0Djw0xp1r8+Y4O8ePrwVV5KfLVjKD3jjFxH
+         Uu4O0pxC81mmqDfLcRmoL8OD8HvZ9FNDWiHaZKrQkpYpyhErO2CgG+K3nf6bkoOSMl3c
+         WiEA==
+X-Forwarded-Encrypted: i=1; AL+hErGAE7RYFnTAKcMjNIsnhRaXbHQYPgcl6nHubpPag14/ZmSTUf0kDCdUEGJnPJmk1tHA1fbQdrA0FnGddkL07A==@lists.infradead.org
+X-Gm-Message-State: APuU4Z/UEm5klqS/HZRqDK2Zd3HUijFNLcbI0iC+4K2tpDs1yop7/ltM
+	Kk4Thh22A6tCbw8Hckh0y3GY6c3UAy3i1aTrNU2t4UGJts6azBINswrwK5J36O09kLk=
+X-Gm-Gg: AZFdTZccFk6jQT2xB2GrHsu2eyWZwS/Y79YpyEv1aVCyjfzDoGQgqD6N4Z0iuujwE6U
+	EGLp2hLct8l8FAptFGbGDz5WnKRoJuyTtbbcikugr637/AFmxCBcMjkrovjcR///+IhZrb/3TFj
+	uQOvbZnAJJ3lMS8YiOb6h701dQ7NsoooDhVg3oRWRLTSHuaR6e3scdCQFlZMfItF7WFws2Yjkse
+	xja0sc+pbuA0DnEZcqOi7dluag4q4o9A9mfuw2LnIw7ahToGIaUhLUDSupYz5EeefglVtBA1sB/
+	Th5hZDCu5M4wWp+SSt5Uxcmb3s3uWOJ3GJDVB73Wxx64ThXpQP4ZevtXn9Qoe+SQJTlx//3FJzp
+	WSSG8Nd4HhJQ37OB1jMmmtmoHkXLHdW9KHQ4PgLrG18CqnVn5UPEF1H+vDCG0Yz8JDJErTUolVk
+	9BfwHXyKAx4UxUI5lh/sH/YpEtM2pCLQ+DO7jtFkEI2JTp3yT3Xn0htI3F3ZDFpFhU4w13TTmU7
+	Xo6rbWQMQl958sodhl9ULDmyRc5sGQT8Z4WczTmv7x+eJHwqFj+w8KH5skipWcPPQFGxZHg9SdY
+	wr4PTNihNVx40qbhiXZ9pwoc/L2ZYQF9+Sdjs2t9rihgNZafXeGG5B3gZMNu+sc+obE=
+X-Received: by 2002:a05:600c:5395:b0:4a3:5a98:c279 with SMTP id 5b1f17b1804b1-4bb8880e599mr376023745e9.8.1795624116009;
+        Wed, 25 Nov 2026 08:28:36 -0800 (PST)
+Received: from [10.42.0.1] ([2a00:23c7:1d1a:9c01:f716:ba19:8aaa:f1c2])
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-4bb853368d3sm527336375e9.1.2026.11.25.08.28.33
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Wed, 25 Nov 2026 08:28:35 -0800 (PST)
+From: Pawel Zalewski <pzalewski@thegoodpenguin.co.uk>
+Subject: [PATCH 00/10] mtd: use desginated initializers in *_device_id
+ arrays
+Date: Wed, 25 Nov 2026 16:28:26 +0000
+Message-Id: <20261125-acpi-mtd-v1-0-42ad2f645bee@thegoodpenguin.co.uk>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: MI3PR04MB12438:EE_|GVXPR04MB9735:EE_
-X-MS-Office365-Filtering-Correlation-Id: 957e1111-1b15-4336-235b-08df4b0d49b5
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;ARA:13230040|1800799024|19092799006|23010399003|376014|7416014|366016|6133799003|261009223027099003|18002099003|22082099003|4143699003|11063799006|10067099003|56012099006|261102123227099003|261026121527099003|261021123027099003|261026140227099003|261022105027099003|261022115727099003|261022075727099003|261021121427099003|261028144727099003;
-X-Microsoft-Antispam-Message-Info: NqBWBKjhmOlNIW2l15T7ZmpE7lXkQLhngmyGCozcsWjz/umSbddPpn3j6gNlEvAwg7RZ1x5kK2dp0eC5iS7u84Ok4QDPkpChN3aXXEsJgrWc21iW+W5Tf7R7zhEUWY9CZo1/YCE0iD/1deZokcFFTvF5lSYza1HTCrnQfUa4E5/qFhB6Ux7niCbjkweNs0CM8g5yrJhiO0uSKsL0XAI2HSYikcTfrIYQcMKai60kVy9YpVfK0oB9fnj9Y6IPLx01aZVyWK+XcHGVAI4ihaH4AaYqAxQ1KwP/ps8JliH7XbbNNXUD+QWf/RAjjXJXAb5Aa0zgCZLtugH0Kl1sLJjkmB2J6kZIBAgZ3qv3XPgLUYeWBDiiqsA3VkWKx5+0Sg9V9Ic+nRNJcd6TymwFjYBmBJZju/VpSTF5zkx5o+jL2Lk4N3qtzsjjY9Cg9YGSuTM6AXmPKDhMMe39HG5hLzXQcyrf5I+//tFMHY/7JGtwuwO7y4l6tMsVFOCdcHcxPGPdRPJgqFjNck8CWbgirDVTGIhp22wGPA411n9dIHlBz2K/fzFtj/HrvTDfsb4v+mJufC6xnPpMPOkyWE2Y+QrAFJcoef8v58kZWypy4HjFgfASf6s922FUvBDmulhvHLomkEQFspG6eA1Eyn52Ox8K4A==
-X-Forefront-Antispam-Report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:MI3PR04MB12438.eurprd04.prod.outlook.com;PTR:;CAT:NONE;SFS:(13230040)(1800799024)(19092799006)(23010399003)(376014)(7416014)(366016)(6133799003)(261009223027099003)(18002099003)(22082099003)(4143699003)(11063799006)(10067099003)(56012099006)(261102123227099003)(261026121527099003)(261021123027099003)(261026140227099003)(261022105027099003)(261022115727099003)(261022075727099003)(261021121427099003)(261028144727099003);DIR:OUT;SFP:1101;
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?VXJLWWU4NFJaek5MQWVPRkdYNVZ3Z2ZxdkgzTjkrY0wwbHpaMDk2OXd3ckwy?=
- =?utf-8?B?Q05JSk9EQ0JNWTYrU2ZXZ3hVV2tDQk96R3pockd5bWdVMjRoTGFvNDMvMEhN?=
- =?utf-8?B?VHZwN1hZQnUzYjlnb3M5QzFXY2lzZXo5WkdPSFRFREo2MDd2ZEsrZGNoMWtD?=
- =?utf-8?B?WEdjOGZTZG5NWkgvaXU4Zlg4MHZBVEFrWVJ0bHVXQjU1bGJrSklMSmlYQ3hH?=
- =?utf-8?B?eUsrTUhxZUN6UWx6VFNKd2w2aVV5N3ptUWdtcThWNVR5MTAvN2cxaEJISEJ4?=
- =?utf-8?B?N2pNNWpmRG1xVk53RFZUV2Jxbjlnbm54RndXekFIa1R1aDV3VFQ3dnZEbTY1?=
- =?utf-8?B?NHp2L0dxV3lqWnJQeERrNzc4eWFQaFhZUkxuTXJGSjhYZFNvUGZXMHI2UWtS?=
- =?utf-8?B?bEg2NXhnTzVFcnpGWE1ZaWlhTDNtMVZRN3VvRGx1aHpQQ2E0VTREbDhLaSt0?=
- =?utf-8?B?U0sreGFXUWtOVTBMYnVQSHdCdW5PRENrZkJZSEsvdC9QTWl6ZEFzNFRkUTFu?=
- =?utf-8?B?cnBHbHJoOXhDd1RXVFozdnJFMzNXa0JNQ2JvMEpneC9QdE9vN1o2R3FXYktr?=
- =?utf-8?B?V1BQdHBhdGxpQUdnZ3hHeUlESGY4UGt0aFJha0Jtc2ZTN2RINHhqYW13czZL?=
- =?utf-8?B?aXIxektFMnZzdUZrQnk3b3FJVXJwZ0dDTEFsa1kxVytDdS9xZUYvcnl4N3JP?=
- =?utf-8?B?NmJXRCt0eUtRTFJFcTRWN0FQTUxVcFFESjBkenVGdEJhTVB5R0UvUmJyZ1o1?=
- =?utf-8?B?Z0NBNlh2aXRCSU85ZzVCOVJScGtUYUFOOFp3ZVk1TE0wbkkzcUhMbHBtWmRO?=
- =?utf-8?B?VVhlT3pZaUR4dDVhK2Y2RGZwSTk4RTRxSGFhbFlaU2JzVGRodVVGdjgySGow?=
- =?utf-8?B?dmRzcSs2cWI4NGU2SC9GTlBGbXJscnRNUUR4WWZJSFE2Z0ZpT2hPSUxPNzdi?=
- =?utf-8?B?RnRBZ0J5bTF1VXhXRnNESEVoZms3bnNFMnlBbzBxc0V0bFI5V05UYisyUzJq?=
- =?utf-8?B?VzU0WnhBdDF0bDc3Z1VNT2diOTY5VjV6SmcyMnp1TExPYy83eVo1d0FaQVZT?=
- =?utf-8?B?LzRDb24rbU5Gb1VIc1B5SXVYSTVoa0NIQ25ORWd0d1I2aVZ5eEZrVVVPVEpR?=
- =?utf-8?B?ZlFicEFoSXVVSGtkcC9pK0p0N3Vac0w3Y3p0TTJGSzZ1Y0s2ZWxkMERQc3B3?=
- =?utf-8?B?VFFDSjVUd3FzbmpWWkJlN2Yxb3VESDhBaldxM2drWXRJMDYvNW9Nd0R3aHlj?=
- =?utf-8?B?blh2dXhkUnQ5VVpQN0EwM2piNWREakNEUm1lUzNaVGZZMWVibitoN2Z0N0VV?=
- =?utf-8?B?b1FIVWtLdDFzTVNXTmdCMnV2SnI5ZW1Xc0lyUUhrY3gxNDlaSkpSMU1UUXN1?=
- =?utf-8?B?TFl0NUFyM1poN2dPYjhBV290azVRK3d0S3BvRTJpWW90VEtQaUg0OGVtVVFE?=
- =?utf-8?B?QmhDTE13WVVIV0hpL1RWQVVBRzhSc1ozN1RhZnRXQTVXZzlaZHlja05aRWs2?=
- =?utf-8?B?aGh1MXh3eEJrRStkWHluY3ZmS2w1bTlCR1hjc1BPcWFEaUJKUmxEa3JXODJH?=
- =?utf-8?B?M0tEM0s2Mk9YZlZwRHRwVDBCZ29iRUJHbUxUWWZlb2VyL2tvTSsxSHczTHM1?=
- =?utf-8?B?a2tKUno3eGRSTndPNERRL0MwTVB6d2g5NU5LZTJ4QXZJc2xOTWI4NDhmUVdF?=
- =?utf-8?B?OENiWkFKUy9adGJ0dnk2bDQySDY4cWgranhoeXlYSno5MGluanpSdUNtU3Uy?=
- =?utf-8?B?Z1k2UkVCZXR3VUVTTENjdmRmU3BCUXF5OXl5VnJ1a2Urb0ZPNzJVWTRMSW1H?=
- =?utf-8?B?cWViN2hPQ2lxZTVFKytuZEhoRzVnUWxMbTVhWWhyRFlpYXRzNjYxbDJKTVZQ?=
- =?utf-8?B?UHllWHJ1Q2huNG53bDNRc3RmQ0t4U01MWENPUFdxSld2K1JTZnVXWFloM2o1?=
- =?utf-8?B?K2l6Y1BuYVRYQ3lrZUF2WEhBSVdwSndOd2lTRHNkbUtDMUdoQnhvRWdaajZv?=
- =?utf-8?B?UXZNR0hUMTJQbk1raHVrYlNydU81NE1DczBQMFhPT3Z6aGQwWTV6cE9PMXA5?=
- =?utf-8?B?NDREK1AwWEJ4T0lmYVBZa09XTnhIZjIvdFV5NnZ4cHN6YWJoZEVrZ3pXSERO?=
- =?utf-8?B?RWpZdVhzWVE4ellSUEpucEpOazlLOHBMWm9sSzRKQWJnVWVOMUFEVjM5Qzd2?=
- =?utf-8?B?M1hFVkdEOXlmTXNvMWFyNDNZb3RucDV5Yk5JdXM0ZXhxQms0UUZNV0pUNUJG?=
- =?utf-8?B?Z1haM2pZWGFvMFVLNE8vYXhKUlpTa0MvczR1NnRCMU55ZzNtd3NGR3pHMWxV?=
- =?utf-8?B?cFJQNDhJSXJHcndLc0hzWmsxMkhiNkZrR3JTVXJlalptWlVOZ2w4aW9WaHBv?=
- =?utf-8?Q?YXIYGIKmiKf3QIwT+239zOqXBAYHTZf2JhrA3?=
-X-OriginatorOrg: oss.nxp.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 957e1111-1b15-4336-235b-08df4b0d49b5
-X-MS-Exchange-CrossTenant-AuthSource: MI3PR04MB12438.eurprd04.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 25 Nov 2026 16:00:55.5685
- (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 686ea1d3-bc2b-4c6f-a92c-d99c5c301635
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: VgMtB6ytRFYj0OYuxVXIxz51RwRfWFTz5mK3PWZkD9as33wlRmsMShOkak5WEW9bVHktNzisSswo0u/bJdDMHFxpaliSDcQy9+T6Ip+EXQXT3yAIR1wZWsV88yf8OVW3
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: GVXPR04MB9735
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+X-B4-Tracking: v=1; b=H4sIAAAAAAAC/yXMQQqAIBCF4avErBPUSqirRAvTqSbIQi2C6O5ZL
+ T/437sgoCcM0GQXeDwo0OoSRJ6BmbQbkZFNBsmlEkIWTJuN2BIt4zgoXXHLy9pCyjePA53fVdv
+ 9Dns/o4nvHu77AVc++4JsAAAA
+X-Change-ID: 20261123-acpi-mtd-0ef6a50d049d
+To: Miquel Raynal <miquel.raynal@bootlin.com>, 
+ Richard Weinberger <richard@nod.at>, Vignesh Raghavendra <vigneshr@ti.com>, 
+ Pratyush Yadav <pratyush@kernel.org>, Michael Walle <mwalle@kernel.org>, 
+ Takahiro Kuwano <takahiro.kuwano@infineon.com>, 
+ Vladimir Zapolskiy <vz@mleia.com>, Robert Jarzmik <robert.jarzmik@free.fr>, 
+ Alexander Usyskin <alexander.usyskin@intel.com>, 
+ Joern Engel <joern@lazybastard.org>, 
+ Madhavan Srinivasan <maddy@linux.ibm.com>, 
+ Michael Ellerman <mpe@ellerman.id.au>, Nicholas Piggin <npiggin@gmail.com>, 
+ "Christophe Leroy (CS GROUP)" <chleroy@kernel.org>, 
+ "Ritesh Harjani (IBM)" <ritesh.list@gmail.com>, 
+ Shrikanth Hegde <sshegde@linux.ibm.com>, 
+ Michal Simek <michal.simek@amd.com>, 
+ Nicolas Ferre <nicolas.ferre@microchip.com>, 
+ Alexandre Belloni <alexandre.belloni@bootlin.com>, 
+ Claudiu Beznea <claudiu.beznea@tuxon.dev>, 
+ Brian Norris <computersforpeace@gmail.com>, 
+ Kamal Dasu <kamal.dasu@broadcom.com>, 
+ Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>, 
+ William Zhang <william.zhang@broadcom.com>, 
+ Anand Gore <anand.gore@broadcom.com>, 
+ Kursad Oney <kursad.oney@broadcom.com>, 
+ Florian Fainelli <florian.fainelli@broadcom.com>, 
+ =?utf-8?q?Rafa=C5=82_Mi=C5=82ecki?= <rafal@milecki.pl>, 
+ Ray Jui <rjui@broadcom.com>, Scott Branden <sbranden@broadcom.com>, 
+ Han Xu <han.xu@nxp.com>, Paul Cercueil <paul@crapouillou.net>, 
+ Harvey Hunt <harveyhuntnexus@gmail.com>, 
+ Keguang Zhang <keguang.zhang@gmail.com>, 
+ Piotr Wojtaszczyk <piotr.wojtaszczyk@timesys.com>, 
+ Liang Yang <liang.yang@amlogic.com>, 
+ Neil Armstrong <neil.armstrong@linaro.org>, 
+ Kevin Hilman <khilman@baylibre.com>, Jerome Brunet <jbrunet@baylibre.com>, 
+ Martin Blumenstingl <martin.blumenstingl@googlemail.com>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Frank Li <Frank.Li@nxp.com>, Sascha Hauer <s.hauer@pengutronix.de>, 
+ Pengutronix Kernel Team <kernel@pengutronix.de>, 
+ Fabio Estevam <festevam@gmail.com>, Manivannan Sadhasivam <mani@kernel.org>, 
+ Heiko Stuebner <heiko@sntech.de>, 
+ Maxime Coquelin <mcoquelin.stm32@gmail.com>, 
+ Alexandre Torgue <alexandre.torgue@foss.st.com>, 
+ Chen-Yu Tsai <wens@kernel.org>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
+ Samuel Holland <samuel@sholland.org>, Stefan Agner <stefan@agner.ch>, 
+ Lucas Stach <dev@lynxeye.de>, Thierry Reding <thierry.reding@kernel.org>, 
+ Jonathan Hunter <jonathanh@nvidia.com>, Jacky Huang <ychuang3@nuvoton.com>, 
+ Shan-Chun Hung <schung@nuvoton.com>, 
+ Tudor Ambarus <tudor.ambarus@linaro.org>, Linus Walleij <linusw@kernel.org>, 
+ Kyungmin Park <kyungmin.park@samsung.com>
+Cc: linux-mtd@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
+ linuxppc-dev@lists.ozlabs.org, imx@lists.linux.dev, 
+ linux-mips@vger.kernel.org, linux-amlogic@lists.infradead.org, 
+ linux-kernel@vger.kernel.org, linux-mediatek@lists.infradead.org, 
+ linux-arm-msm@vger.kernel.org, linux-rockchip@lists.infradead.org, 
+ linux-stm32@st-md-mailman.stormreply.com, linux-sunxi@lists.linux.dev, 
+ linux-tegra@vger.kernel.org, 
+ Pawel Zalewski <pzalewski@thegoodpenguin.co.uk>, 
+ =?utf-8?q?Uwe_Kleine-K=C3=B6nig?= <u.kleine-koenig@baylibre.com>
+X-Mailer: b4 0.16.0
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1795624113; l=7528;
+ i=pzalewski@thegoodpenguin.co.uk; s=20260430; h=from:subject:message-id;
+ bh=5meG2QA5zHmWMtBw+F49CrqQgn4FVKx2LdaJonRgfn8=;
+ b=VsRd3x/iYztgIPcpTxO4VQupjJr1Sy2+c/9eTKQar8LJIPG9KJ1ebtAJORbrWf8vSzuEg1YpX
+ faQork5qqUYCOdbRXiu56hLw5mIk8BvbvFb2W3hRkqwPWXFxr+5Gj8A
+X-Developer-Key: i=pzalewski@thegoodpenguin.co.uk; a=ed25519;
+ pk=vHq4n9IonORH2GTzLv8r6CWAFHzgfBuNkQPXA8NSly0=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261125_080104_946686_78B7CF80 
-X-CRM114-Status: GOOD (  28.49  )
-X-Spam-Score: -1.0 (-)
+X-CRM114-CacheID: sfid-20261125_082846_217213_BAB0F523 
+X-CRM114-Status: GOOD (  14.12  )
+X-Spam-Score: -1.9 (-)
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -194,172 +165,152 @@ List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-13.9 required=3.0 tests=BAYES_00,DKIM_SIGNED,
+X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIM_SIGNED,
 	DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
 	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS autolearn=ham autolearn_force=no version=4.0.1
+	SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On Wed, Nov 25, 2026 at 04:53:35PM +0100, Rafael J. Wysocki (Intel) wrote:
-> On Wed, Nov 25, 2026 at 4:07 PM Ulf Hansson
-> <ulf.hansson@oss.qualcomm.com> wrote:
-> >
-> > On Tue, Nov 17, 2026 at 6:38 PM <Frank.Li@oss.nxp.com> wrote:
-> > >
-> > > From: Frank Li <Frank.Li@nxp.com>
-> > >
-> > > The stub for pm_runtime_get_if_in_use() under !CONFIG_PM currently
-> > > returns -EINVAL.  The real implementation returns:
-> > >   1  - device is active and its usage counter is non-zero (bumped)
-> > >   0  - device is not in use or not active (counter not bumped)
-> > >  -EINVAL - runtime PM disabled for this device
-> > >
-> > > When CONFIG_PM is not set every device is permanently "active" and
-> > > always considered "in use", so the stub must return 1, mirroring
-> > > __pm_runtime_resume() which already returns 1 in the same build.
-> > >
-> > > Returning -EINVAL breaks callers that test the return value with
-> > > comparisons other than "!= 0 / == 0":
-> > >
-> > > drivers/gpu/drm/i915/intel_runtime_pm.c:
-> > >   if (intel_runtime_pm_get_if_in_use(rpm))
-> > >   which wraps to: ret = pm_runtime_get_if_in_use(); return ret > 0;
-> > >   With -EINVAL the wrapper returns false, causing an incorrect error
-> > >   path in the GT fence revocation code.
-> > >
-> > > drivers/gpu/drm/xe/xe_pm.c:
-> > >   if (pm_runtime_get_if_in_use(xe->drm.dev) > 0)
-> > >   With -EINVAL the condition is false; xe_pm_runtime_get_if_in_use()
-> > >   returns false, so callers believe the device is not usable.
-> > >
-> > > drivers/gpu/drm/gma500/power.c:
-> > >   return pm_runtime_get_if_in_use(dev) == 1;
-> > >   -EINVAL != 1, so the helper always returns false when !CONFIG_PM.
-> > >
-> > > drivers/gpu/drm/imagination/pvr_power.c:
-> > >   if (pm_runtime_get_if_in_use(...) <= 0)
-> > >   -EINVAL <= 0 is true, so the driver always takes the "requeue" error
-> > >   path instead of proceeding with the active device.
-> > >
-> > > sound/soc/sof/debug.c:
-> > >   if (pm_runtime_get_if_in_use(sdev->dev) == 1)
-> > >   -EINVAL != 1, so d3_prevented is never set, corrupting exception
-> > >   debug accounting.
-> > >
-> > > drivers/iommu/mtk_iommu.c:
-> > >   if (pm_runtime_get_if_in_use(dom->plat_dev->dev) <= 0)
-> > >   -EINVAL <= 0 skips the TLB flush, leaving stale IOMMU mappings.
-> > >
-> > > drivers/iommu/rockchip-iommu.c:
-> > >   Three call sites use WARN_ON_ONCE(err < 0) or similar patterns.
-> > >   -EINVAL < 0 triggers a spurious WARNING on every call.
-> > >
-> > > drivers/media/i2c/isl7998x.c:
-> > >   if (pm_runtime_get_if_in_use(dev) <= 0)  (two call sites)
-> > >   -EINVAL <= 0 causes the driver to always skip register programming
-> > >   when !CONFIG_PM.
-> > >
-> > > drivers/media/platform/rockchip/rkisp1/rkisp1-debug.c:
-> > >   if (pm_runtime_get_if_in_use(dev) <= 0)  (two call sites)
-> > >   -EINVAL <= 0 prevents any debug statistics from being collected.
-> > >
-> > > Fixes: a436b6a19f57 ("PM / runtime: Add new helper for conditional usage count incrementation")
-> > > Fixes: 3b85b7bcccf4 ("drm/xe: Fix display runtime_pm handling")
-> > > Fixes: 672c473576ca ("drm/gma500: Rewrite power management code")
-> > > Fixes: b30289e7fa92 ("ASoC: SOF: Fix runtime pm usage counter balance after fw exception")
-> > > Fixes: c0b57581b73b ("iommu/mediatek: Add power-domain operation")
-> > > Fixes: 51ef2be546e2 ("media: i2c: isl7998x: Add driver for Intersil ISL7998x")
-> > > Signed-off-by: Frank Li <Frank.Li@nxp.com>
-> > > ---
-> > > Change in v3
-> > > - drop tag: cbb819c363c5 ("media: rkisp1: debug: Collect input status by sampling ISP_FLAGS_SHD")
-> > > selected PM at arch config
-> > > - drop tag: 0f181d3cf7d9 ("iommu/rockchip: Add runtime PM support")
-> > > selected PM at arch config
-> > > - drop tag: 9d58aa46291d ("drm/i915: Fix the GT fence revocation runtime PM logic")
-> > > guard by CONFIG_PM
-> > > - drop tag 727538a4bbff ("drm/imagination: Implement power management")
-> > > depend on PM
-> > > `
-> > > Change in v2
-> > > - new patches.
-> > >
-> > > Cc: "Rafael J. Wysocki" <rafael@kernel.org>
-> > > Cc: linux-pm@vger.kernel.org
-> > > Cc: Jani Nikula <jani.nikula@linux.intel.com>
-> > > Cc: Joonas Lahtinen <joonas.lahtinen@linux.intel.com>
-> > > Cc: Rodrigo Vivi <rodrigo.vivi@intel.com>
-> > > Cc: Tvrtko Ursulin <tursulin@ursulin.net>
-> > > Cc: Maarten Lankhorst <maarten.lankhorst@linux.intel.com>
-> > > Cc: Maxime Ripard <mripard@kernel.org>
-> > > Cc: "Thomas Hellstrom" <thomas.hellstrom@linux.intel.com>
-> > > Cc: Simona Vetter <simona@ffwll.ch>
-> > > Cc: David Airlie <airlied@gmail.com>
-> > > Cc: Matthew Brost <matthew.brost@intel.com>
-> > > Cc: Thomas Zimmermann <tzimmermann@suse.de>
-> > > Cc: Patrik Jakobsson <patrik.r.jakobsson@gmail.com>
-> > > Cc: Alessio Belle <alessio.belle@imgtec.com>
-> > > Cc: Luigi Santivetti <luigi.santivetti@imgtec.com>
-> > > Cc: Liam Girdwood <lgirdwood@gmail.com>
-> > > Cc: Mark Brown <broonie@kernel.org>
-> > > Cc: Jaroslav Kysela <perex@perex.cz>
-> > > Cc: Takashi Iwai <tiwai@suse.com>
-> > > Cc: Bard Liao <yung-chuan.liao@linux.intel.com>
-> > > Cc: Pierre-Louis Bossart <pierre-louis.bossart@linux.dev>
-> > > Cc: Peter Ujfalusi <peter.ujfalusi@linux.intel.com>
-> > > Cc: Kai Vehmanen <kai.vehmanen@linux.intel.com>
-> > > Cc: Robin Murphy <robin.murphy@arm.com>
-> > > Cc: Yong Wu <yong.wu@mediatek.com>
-> > > Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-> > > Cc: Matthias Brugger <matthias.bgg@gmail.com>
-> > > Cc: Heiko Stuebner <heiko@sntech.de>
-> > > Cc: Mauro Carvalho Chehab <mchehab@kernel.org>
-> > > Cc: Dafna Hirschfeld <dafna@fastmail.com>
-> > > Cc: Laurent Pinchart <laurent.pinchart@ideasonboard.com>
-> > > Cc: Michael Tretter <m.tretter@pengutronix.de>
-> > > Cc: Daniel Baluta <daniel.baluta@nxp.com>
-> > > Cc: Will Deacon <will@kernel.org>
-> > > Cc: Vijendar Mukunda <Vijendar.Mukunda@amd.com>
-> > > Cc: dri-devel@lists.freedesktop.org
-> > > Cc: imagination@lists.freedesktop.org
-> > > Cc: intel-gfx@lists.freedesktop.org
-> > > Cc: intel-xe@lists.freedesktop.org
-> > > Cc: iommu@lists.linux.dev
-> > > Cc: linux-arm-kernel@lists.infradead.org
-> > > Cc: linux-mediatek@lists.infradead.org
-> > > Cc: linux-media@vger.kernel.org
-> > > Cc: linux-rockchip@lists.infradead.org
-> > > Cc: linux-sound@vger.kernel.org
-> > > Cc: sound-open-firmware@alsa-project.org
-> > > Cc: imx@lists.linux.dev
-> > > ---
-> > >  include/linux/pm_runtime.h | 2 +-
-> > >  1 file changed, 1 insertion(+), 1 deletion(-)
-> > >
-> > > diff --git a/include/linux/pm_runtime.h b/include/linux/pm_runtime.h
-> > > index de9e7518ecef2..1d983fe55a16a 100644
-> > > --- a/include/linux/pm_runtime.h
-> > > +++ b/include/linux/pm_runtime.h
-> > > @@ -276,7 +276,7 @@ static inline int pm_schedule_suspend(struct device *dev, unsigned int delay)
-> > >  }
-> > >  static inline int pm_runtime_get_if_in_use(struct device *dev)
-> > >  {
-> > > -       return -EINVAL;
-> > > +       return 1;
-> >
-> > This should be return 0, as we did not bump the usage count.
->
-> This is kind of moot because there is no usage counter.
->
-> However, the caller may always take the opportunistic "in use" path
-> because there are no potential costs related to it.
+This series is converting lists that contain the *_device_id structs,
+to make use of named initializers (which they do not use currently).
+This work is part of the on going effort in the kernel associated with
+device-ids [1]
 
-When !CONFIG_PM, all device is active state, which should be equal to bump
-usage count case.
+The plan is to convert *_device_id::driver_data to have an anonymous
+union, like it was introduced for PCI and I2C device ID tables.
+The goal is to increase type-safety (most of the existing casts are gone),
+to improve readability and to make use intent a bit more clear:
 
-And it'd better return the same value of pm_runtime_get().
+```
+union {
+	kernel_ulong_t driver_data;
+	const void *driver_data_ptr;
+}
+```
 
-Frank
+But for that to work all lists containing the structs need to use named
+initializers first to avoid triggering -Wmissing-braces for that field.
+This effort is split per every subsystem into:
+- pre-clean-ups that convert the lists to use named initializers
+  (which is this series)
+- actual implementations that make some of the modules use the new
+  driver_data_ptr member (which is not needed in the mtd subsystem)
+
+That way the task can be fragmented into manageable and independent chunks
+of work and makes this effort easier to review.
+
+Patches 1-3 implement the named initializer change.
+Patched 4-10 are just churn to unify the list termination and can be dropped.
+
+[1] https://lore.kernel.org/all/cover.1780048925.git.u.kleine-koenig@baylibre.com
+
+Signed-off-by: Pawel Zalewski <pzalewski@thegoodpenguin.co.uk>
+---
+Pawel Zalewski (10):
+      mtd: maps: pismo: Use named initializers for i2c_device_id
+      mtd: spi-nor: Use named initializers for spi_device_id
+      mtd: maps: int0800: Use named initializers for acpi_device_id
+      mtd: spi-nor: Unify of_device_id list terminator
+      mtd: devices: Unify *_device_id list terminator.
+      mtd: nand: raw: Unify list terminator for *_device_id lists
+      mtd: hyperbus: Unify list terminator for *_device_id lists
+      mtd: maps: Unify list terminator for of_device_id lists
+      mtd: nand: Unify list terminator for *_device_id lists
+      mtd: parsers: Unify list terminator for of_device_id lists
+
+ drivers/mtd/devices/docg3.c                        |  2 +-
+ drivers/mtd/devices/mchp23k256.c                   |  4 +-
+ drivers/mtd/devices/mchp48l640.c                   |  4 +-
+ drivers/mtd/devices/mtd_dataflash.c                |  8 +--
+ drivers/mtd/devices/mtd_intel_dg.c                 |  4 +-
+ drivers/mtd/devices/phram.c                        |  2 +-
+ drivers/mtd/devices/powernv_flash.c                |  2 +-
+ drivers/mtd/devices/spear_smi.c                    |  2 +-
+ drivers/mtd/devices/st_spi_fsm.c                   |  2 +-
+ drivers/mtd/hyperbus/hbmc-am654.c                  |  2 +-
+ drivers/mtd/hyperbus/rpc-if.c                      |  2 +-
+ drivers/mtd/maps/int0800.c                         |  2 +-
+ drivers/mtd/maps/lantiq-flash.c                    |  2 +-
+ drivers/mtd/maps/physmap-versatile.c               |  4 +-
+ drivers/mtd/maps/pismo.c                           |  4 +-
+ drivers/mtd/maps/sun_uflash.c                      |  2 +-
+ drivers/mtd/nand/ecc-mtk.c                         |  2 +-
+ drivers/mtd/nand/ecc-mxic.c                        |  2 +-
+ drivers/mtd/nand/ecc-realtek.c                     |  2 +-
+ drivers/mtd/nand/onenand/onenand_omap2.c           |  2 +-
+ drivers/mtd/nand/onenand/onenand_samsung.c         |  3 +-
+ drivers/mtd/nand/raw/ams-delta.c                   |  7 +-
+ drivers/mtd/nand/raw/arasan-nand-controller.c      |  2 +-
+ drivers/mtd/nand/raw/atmel/nand-controller.c       |  4 +-
+ drivers/mtd/nand/raw/atmel/pmecc.c                 |  4 +-
+ drivers/mtd/nand/raw/brcmnand/bcm6368_nand.c       |  2 +-
+ drivers/mtd/nand/raw/brcmnand/bcmbca_nand.c        |  2 +-
+ drivers/mtd/nand/raw/brcmnand/brcmnand.c           |  2 +-
+ drivers/mtd/nand/raw/brcmnand/brcmstb_nand.c       |  2 +-
+ drivers/mtd/nand/raw/brcmnand/iproc_nand.c         |  2 +-
+ drivers/mtd/nand/raw/cadence-nand-controller.c     |  3 +-
+ drivers/mtd/nand/raw/davinci_nand.c                |  2 +-
+ drivers/mtd/nand/raw/denali_dt.c                   |  2 +-
+ drivers/mtd/nand/raw/fsl_elbc_nand.c               |  2 +-
+ drivers/mtd/nand/raw/fsl_ifc_nand.c                |  2 +-
+ drivers/mtd/nand/raw/fsl_upm.c                     |  2 +-
+ drivers/mtd/nand/raw/fsmc_nand.c                   |  2 +-
+ drivers/mtd/nand/raw/gpio.c                        |  2 +-
+ drivers/mtd/nand/raw/gpmi-nand/gpmi-nand.c         |  2 +-
+ drivers/mtd/nand/raw/hisi504_nand.c                |  2 +-
+ drivers/mtd/nand/raw/ingenic/ingenic_nand_drv.c    |  2 +-
+ drivers/mtd/nand/raw/ingenic/jz4725b_bch.c         |  2 +-
+ drivers/mtd/nand/raw/ingenic/jz4740_ecc.c          |  2 +-
+ drivers/mtd/nand/raw/ingenic/jz4780_bch.c          |  2 +-
+ drivers/mtd/nand/raw/intel-nand-controller.c       |  2 +-
+ drivers/mtd/nand/raw/loongson-nand-controller.c    |  2 +-
+ drivers/mtd/nand/raw/lpc32xx_mlc.c                 |  2 +-
+ drivers/mtd/nand/raw/lpc32xx_slc.c                 |  2 +-
+ drivers/mtd/nand/raw/marvell_nand.c                |  4 +-
+ drivers/mtd/nand/raw/meson_nand.c                  |  2 +-
+ drivers/mtd/nand/raw/mpc5121_nfc.c                 |  2 +-
+ drivers/mtd/nand/raw/mtk_nand.c                    |  2 +-
+ drivers/mtd/nand/raw/mxc_nand.c                    |  2 +-
+ drivers/mtd/nand/raw/mxic_nand.c                   |  2 +-
+ drivers/mtd/nand/raw/ndfc.c                        |  2 +-
+ .../mtd/nand/raw/nuvoton-ma35d1-nand-controller.c  |  2 +-
+ drivers/mtd/nand/raw/omap_elm.c                    |  2 +-
+ drivers/mtd/nand/raw/orion_nand.c                  |  2 +-
+ drivers/mtd/nand/raw/pasemi_nand.c                 |  2 +-
+ drivers/mtd/nand/raw/pl35x-nand-controller.c       |  2 +-
+ drivers/mtd/nand/raw/plat_nand.c                   |  2 +-
+ drivers/mtd/nand/raw/qcom_nandc.c                  |  2 +-
+ drivers/mtd/nand/raw/rockchip-nand-controller.c    |  2 +-
+ drivers/mtd/nand/raw/sh_flctl.c                    |  2 +-
+ drivers/mtd/nand/raw/socrates_nand.c               |  2 +-
+ drivers/mtd/nand/raw/stm32_fmc2_nand.c             |  2 +-
+ drivers/mtd/nand/raw/sunxi_nand.c                  |  2 +-
+ drivers/mtd/nand/raw/technologic-nand-controller.c |  2 +-
+ drivers/mtd/nand/raw/tegra_nand.c                  |  2 +-
+ drivers/mtd/nand/raw/vf610_nfc.c                   |  2 +-
+ drivers/mtd/nand/raw/xway_nand.c                   |  2 +-
+ drivers/mtd/nand/spi/core.c                        |  4 +-
+ drivers/mtd/parsers/afs.c                          |  2 +-
+ drivers/mtd/parsers/bcm47xxpart.c                  |  2 +-
+ drivers/mtd/parsers/bcm63xxpart.c                  |  2 +-
+ drivers/mtd/parsers/brcm_u-boot.c                  |  2 +-
+ drivers/mtd/parsers/parser_imagetag.c              |  2 +-
+ drivers/mtd/parsers/parser_trx.c                   |  2 +-
+ drivers/mtd/parsers/qcomsmempart.c                 |  2 +-
+ drivers/mtd/parsers/redboot.c                      |  2 +-
+ drivers/mtd/parsers/scpart.c                       |  2 +-
+ drivers/mtd/parsers/tplink_safeloader.c            |  2 +-
+ drivers/mtd/spi-nor/controllers/hisi-sfc.c         |  2 +-
+ drivers/mtd/spi-nor/controllers/nxp-spifi.c        |  2 +-
+ drivers/mtd/spi-nor/core.c                         | 77 +++++++++++++++-------
+ 85 files changed, 153 insertions(+), 123 deletions(-)
+---
+base-commit: b6a9fa34ce4187cb69d3c588a4bbffc31ce5db8f
+change-id: 20261123-acpi-mtd-0ef6a50d049d
+
+Best regards,
+--  
+Pawel Zalewski <pzalewski@thegoodpenguin.co.uk>
 
 
