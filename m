@@ -2,48 +2,48 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 03628606A331
-	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Nov 2026 10:59:27 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 4687B606A321
+	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Nov 2026 11:00:30 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=pUu5IIpG;
-	dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=fZqT4Y+W
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=bVz1lGuo;
+	dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=X6UjeW8B
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
 	Content-Type:In-Reply-To:From:References:To:Subject:MIME-Version:Date:
 	Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From
 	:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Unsubscribe-Post:
-	List-Owner; bh=fKA8BFLGdwVjzSEcP9TB5OaODNCZi8nQaBdamkoL5gM=; b=pUu5IIpGJr4p1r
-	qZ4gd+Iu1Dfl29/C9V4tzy1OWUdS2VZW7BtmQv1YCWagrjdI+sOrb/oG5o+fxz/rNgyjQaCsB4uwB
-	c7feMfCSNsoXHAOtveTuT/g83RAlhdf+Cto17X8uT2greA8IBcnzBb8cRQrwnYxQkKmgcNRS5GKV7
-	oMw2RbwPvNc2pK3VSLsyu4Ycmt2tpZDWybU+caGi+sYS0SMCP2pr5kuex479ec2NTN1OkRBPvxgxh
-	gusZqEua22dtA3fokDI9rqL4U1OzxMsafKim/QmsgtE4hWdkhlraYq/78oqGTUh5Huj3N9ITD80Rd
-	i1ltNsEAasPKG6WufUxA==;
+	List-Owner; bh=HeX4///rOlH1tIBpuqP1Mn4ZFEs/LFO1AOU+Qc04LJ4=; b=bVz1lGuoUO9sLl
+	ZimfWVPUEcLRrWptaC6BSanjRkegVqqBNIAy3D4AZhoO8SVrkO06WQq+H/Fl9nk5arao85mJeke49
+	Tnd9aI9RhkqpJXWw53UqEMn4szWwCktKUi3sgnBTNxW7S32ubwIBeFlUq5I5Ow+EeuWXqcFzAg7TR
+	uyd3WRKS5pEGr0Zi+jn7FJLqX5MJwAqS9Owu/47EX4zdVkh4kUREQgMFvbJFlnkm4KyHr47P9TQq2
+	nvUdsQwCK30Api0tPvy5ck707Wvi1aiXtFDifoucTunodk+mfVp4j8WrjFg4yD6qjkcf0u4lHuyni
+	F1EQVwWLUnHclNg47pog==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xWAik-00000009Wwx-2oTc;
-	Wed, 25 Nov 2026 10:59:26 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1xWAjl-00000009X6a-43Fd;
+	Wed, 25 Nov 2026 11:00:29 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xWAij-00000009WwK-30k1;
-	Wed, 25 Nov 2026 10:59:25 +0000
+	id 1xWAjk-00000009X6E-3KJH;
+	Wed, 25 Nov 2026 11:00:28 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id 7758A40B71;
-	Wed, 25 Nov 2026 10:59:25 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 7236E1F000C0;
-	Wed, 25 Nov 2026 10:59:19 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id EED57613FC;
+	Wed, 25 Nov 2026 11:00:27 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id C681A1F000C0;
+	Wed, 25 Nov 2026 11:00:20 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1795604364;
-	bh=fKA8BFLGdwVjzSEcP9TB5OaODNCZi8nQaBdamkoL5gM=;
+	s=k20260515; t=1795604427;
+	bh=HeX4///rOlH1tIBpuqP1Mn4ZFEs/LFO1AOU+Qc04LJ4=;
 	h=Date:Subject:To:References:From:In-Reply-To;
-	b=fZqT4Y+W6Ev/Ih99QzPAtBImX2Ne4q0CdhL4POHSaBLNGEK6nF8HOZSLpbO1X8K01
-	 Q5xzdAZBUSPSzIMJX8VdQ980dCRtBrevcY5VKUrz/xkrfoVbr816XApV+G337DHIqJ
-	 EvGlnPrKAqU6aSvI7WeeNboVmSdonsCWOYZG+KKU2G8DcvPWhvIgNgQuqTtxUza/OD
-	 9Et22BIbcucuv3pH2nZWchAVCzmOvMv/BFxD6HpKJOn7/4E4LJcaTYdeFe01UdkyJN
-	 dQPhZprYXBjrKN3BWRhNlaQzbnj/XABqLpSluS5uvaPPUyyi+kY/xjy8WIeKvOnkbS
-	 /X+ASzcAC7rIA==
-Message-ID: <180e1abc-9463-4973-9cf0-a6e8c86e17fa@kernel.org>
-Date: Wed, 25 Nov 2026 11:59:17 +0100
+	b=X6UjeW8B8PkyBag81NMH/Y8rZ+E72CcOASTBtAh8GO2m9OTQlityLOeo1D5yRNyqt
+	 Brw8A+ViCAgFLfeU1Nv2qWWNwQooOttSL6D1tpfCNWUFdmLXDL0W4awZhhp8i9n+Wl
+	 /X0mjr8JVvsprrSaQ+F/yMx95+a04l1lJuyxSw8GDHcxYGkDgZ/1Dp7Z0RUTvvf6PY
+	 4xm7978sV7mZAfvyHdkgUjs1rPflaeYd2hx0+xmctMI9qfyYj6MtdYWKzBPKVyR5XM
+	 6UyCq6HMVLrCezuZoCOE8bLqF1+sdxV799lhwoOSTtNbSNwGoJFlCbMfnF++sWbIlL
+	 thwbhg0lE893A==
+Message-ID: <249e203c-7163-49d2-b893-af742b189eba@kernel.org>
+Date: Wed, 25 Nov 2026 12:00:17 +0100
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
@@ -121,105 +121,31 @@ List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-17.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-7.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,
-	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1
-	autolearn=ham autolearn_force=no version=4.0.1
+	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS,USER_AGENT_SANE_1 autolearn=no autolearn_force=no
+	version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
 On 25/11/2026 07:00, Echo Zhang wrote:
-> Add the VCP transport used by MMDVFS to map AP and firmware shared
-> memory, manage feature power references and send IPI commands.
-> 
-> Wait for VCP readiness and handle the selected MMUP or VCP READY
-> notification to initialize firmware after boot and resume. Serialize
-> IPI transactions while shared memory and acknowledgment state are in
-> use.
-> 
-> Signed-off-by: Echo Zhang <echo.zhang@mediatek.com>
-> ---
->  drivers/soc/mediatek/mmdvfs/Makefile          |    2 +
->  drivers/soc/mediatek/mmdvfs/mmdvfs-clk.c      |   39 +-
->  drivers/soc/mediatek/mmdvfs/mmdvfs-core.c     |  272 +++--
->  drivers/soc/mediatek/mmdvfs/mmdvfs-internal.h |  160 ++-
->  drivers/soc/mediatek/mmdvfs/mmdvfs-up-priv.h  |   57 +
->  drivers/soc/mediatek/mmdvfs/mmdvfs-up.c       |  275 +++++
->  .../soc/mediatek/mmdvfs/mmdvfs-vcp-memory.h   |  104 ++
->  drivers/soc/mediatek/mmdvfs/mmdvfs-vcp.c      | 1075 +++++++++++++++++
->  include/soc/mediatek/mmdvfs.h                 |   66 +-
->  9 files changed, 1846 insertions(+), 204 deletions(-)
->  create mode 100644 drivers/soc/mediatek/mmdvfs/mmdvfs-up-priv.h
->  create mode 100644 drivers/soc/mediatek/mmdvfs/mmdvfs-up.c
->  create mode 100644 drivers/soc/mediatek/mmdvfs/mmdvfs-vcp-memory.h
->  create mode 100644 drivers/soc/mediatek/mmdvfs/mmdvfs-vcp.c
-> 
-> diff --git a/drivers/soc/mediatek/mmdvfs/Makefile b/drivers/soc/mediatek/mmdvfs/Makefile
-> index 33a280827006..16ecee30bff6 100644
-> --- a/drivers/soc/mediatek/mmdvfs/Makefile
-> +++ b/drivers/soc/mediatek/mmdvfs/Makefile
-> @@ -4,3 +4,5 @@ obj-$(CONFIG_MTK_MMDVFS) += mtk-mmdvfs.o
->  
->  mtk-mmdvfs-y += mmdvfs-core.o
->  mtk-mmdvfs-y += mmdvfs-clk.o
-> +mtk-mmdvfs-y += mmdvfs-up.o
-> +mtk-mmdvfs-y += mmdvfs-vcp.o
-> diff --git a/drivers/soc/mediatek/mmdvfs/mmdvfs-clk.c b/drivers/soc/mediatek/mmdvfs/mmdvfs-clk.c
-> index 114f3148cf46..b9025427782d 100644
-> --- a/drivers/soc/mediatek/mmdvfs/mmdvfs-clk.c
-> +++ b/drivers/soc/mediatek/mmdvfs/mmdvfs-clk.c
-> @@ -15,7 +15,6 @@
->  #include <linux/of.h>
->  #include <linux/of_platform.h>
->  #include <linux/platform_device.h>
-> -#include <linux/pm_runtime.h>
-
-Srsly, you just added this. So you add buggy code just to fix it...
-
-
->  #include <linux/property.h>
->  #include <linux/slab.h>
->  #include <linux/string.h>
-> @@ -27,9 +26,18 @@
->  
->  static const char *mmdvfs_get_clkdev_name(const char *name, char *buf, size_t size)
->  {
-> +	int ret;
 > +
->  	if (strlen(name) < MMDVFS_CLKDEV_CON_ID_MAX)
->  		return name;
->  
-> +	if (str_has_prefix(name, "mmdvfs-vcp-")) {
-> +		ret = snprintf(buf, size, "mmdvfs-v-%s",
-> +			       name + strlen("mmdvfs-vcp-"));
-> +		if (ret > 0 && ret < (int)size)
-> +			return buf;
+> +	if (bootmode < UNKNOWN_BOOT)
+> +		return;
+> +
+> +	np_chosen = of_find_node_by_path("/chosen");
+> +	if (!np_chosen) {
+> +		bootmode = NORMAL_BOOT;
+> +		return;
 > +	}
 > +
->  	return NULL;
->  }
->  
-> @@ -66,7 +74,7 @@ static int mmdvfs_set_rate(struct clk_hw *hw, unsigned long rate,
->  
->  	data = mmdvfs->data;
->  
-> -	if (!data->init_done)
-> +	if (!READ_ONCE(data->init_done))
->  		return -EPROBE_DEFER;
->  
->  	if (!mmdvfs_is_valid_user_id(user->id) ||
-> @@ -76,12 +84,6 @@ static int mmdvfs_set_rate(struct clk_hw *hw, unsigned long rate,
->  		return -EINVAL;
->  	}
->  
-> -	if (rate == 0) {
-> -		mmdvfs_dbg(mmdvfs->dev, "Zero rate request for user %s\n",
-> -			   user->name);
-> -		return 0;
-> -	}
+> +	tag = (struct tag_bootmode *)of_get_property(np_chosen, "atag,boot", NULL);
 
-NAK, this is just random coding, without any architectural oversight.
+NAK, stop sending us downstream.
+
+>  
+
 
 Best regards,
 Krzysztof
