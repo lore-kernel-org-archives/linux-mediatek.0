@@ -2,66 +2,115 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id A7A31606A31E
-	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Nov 2026 09:27:57 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 67BDF606A332
+	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Nov 2026 10:55:15 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=vXvfWX5t;
-	dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=K9frEIov
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=Sy8ZvQhb;
+	dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=HMR+lxB9
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Message-ID:Date
-	:Cc:To:From:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Unsubscribe-Post:List-Owner;
-	bh=4uoskY1EG7VAfNz08KwlvC9A41XTvME1bf3Oqeq2F30=; b=vXvfWX5tK59JgMeXMUIKel77TJ
-	idtvj9pbfyVC3/27oS5RsOPhTEIAonFgEWNvSX1K1+x/jE69O2xW3p41v44Xe8BqZfUAX7oBD6qnt
-	2uPy+B9zopzvfUzU3lmV6sTCHDlJ5NPiDUGyicR4sBg8aj+MEQmwjsjc8NjOAqhbdNgqHvgPbcPnZ
-	8TuTskFhM2f6ztE9LGTxsDOlqDYg6cO3X1yHUDlGRZVc9tgCjMfrsrP5uDaCYmSiz9TSq/+xA40N9
-	cmvUxSttJWmDU95V56NIJs0TbPSP1YJipp/GAHoTAsb0hmwdb8JnTM9ljIat9IM0y9e6cud6l/bRg
-	od55qIWQ==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:In-Reply-To:From:References:To:Subject:MIME-Version:Date:
+	Message-ID:Reply-To:Cc:Content-ID:Content-Description:Resent-Date:Resent-From
+	:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Unsubscribe-Post:
+	List-Owner; bh=3T+PgBhGAeiyiJXoesZjBC+dalaU5f+v7s903e1CpXs=; b=Sy8ZvQhbgraKto
+	pxeiB+lGP+Uewgycx+m/NoiqGDKn4bX3X2bYAqvoBMUKq4fav3HJnNE6jPenef2Z2AyPoqOO/7Z8+
+	QoW5uFNbkt/ysgY5FtXS1P4FScQV7HgkPpMzTenXNegKicdfc3T6kVgmC55k2NRhuIL8u0OtBwh2w
+	ZVVSRt2YKiRjlX61muelfethQ92tIZQ9O+M0DjHhONUoAvbq8RV40oxA98QOpaZpfjBbCueVbUQRn
+	Bzd+5zY9k3+qAefcyXDyNW92S+F9Ncfs7oDZh2js72NMzINXNQU6h0hQ3s8L97vRXPMTk21qx2Lk9
+	YI6EMYSZKqB4NJPuU1NQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xW9ID-00000009HZe-1eQ7;
-	Wed, 25 Nov 2026 09:27:57 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1xWAeh-00000009WCl-0O1z;
+	Wed, 25 Nov 2026 10:55:15 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xW9Ha-00000009HRQ-3Rxf;
-	Wed, 25 Nov 2026 09:27:29 +0000
+	id 1xWAee-00000009WC9-2Vtj;
+	Wed, 25 Nov 2026 10:55:12 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 93A39601EE;
-	Wed, 25 Nov 2026 09:27:17 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 85F951F000D4;
-	Wed, 25 Nov 2026 09:27:16 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id A12B461B50;
+	Wed, 25 Nov 2026 10:55:11 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id E651A1F000C4;
+	Wed, 25 Nov 2026 10:55:05 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1795598837;
-	bh=4uoskY1EG7VAfNz08KwlvC9A41XTvME1bf3Oqeq2F30=;
-	h=Subject:From:To:Cc:Date:In-Reply-To:References;
-	b=K9frEIovzSE8Eg54wK7g6G21X9W4+yTlJ4tZtlpzS4o9SeKmc7MkZeZYt+AUWnbpZ
-	 X/ckwT7EQs1JzCGsXhW6Fu2I2Bw5x2nnVCNo+D1m7tfsW2aKMq2m2S6hi4cpW9qLk7
-	 ispD0DapAdic8h/rCUJAvf2qeUe2Pa5rWRZ+3159xjjnQlnj/OHh+4kIWbS3pTF0/0
-	 Y/2NbPfQD+p2dRYespYbGDOKuFA656Wsu28a2PNpJNV+nEj7AkcZoqNu9mg4xh80dh
-	 DMOlv7Ze4Q69IemonLRKap99Vf6F510HIySvuoeD4s4qp7NpAhwFekcj1wf8SUqD//
-	 UFu/HEFKN2nnA==
-Subject: Re: [PATCH net 5/5] net: dsa: mt7530: disable regulators on
- mt753x_setup() failure
-From: netdev-bot+sashiko@kernel.org
-To: wanghr2026@mail.zgclab.edu.cn
-Cc: chester.a.unal@arinc9.com, daniel@makrotopia.org, andrew@lunn.ch,
- olteanv@gmail.com, davem@davemloft.net, edumazet@kernel.org, kuba@kernel.org,
- pabeni@redhat.com, matthias.bgg@gmail.com,
- angelogioacchino.delregno@collabora.com, netdev@vger.kernel.org,
- linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org,
- linux-kernel@vger.kernel.org
-Date: Wed, 25 Nov 2026 09:27:16 +0000
-Message-ID: <179559883613.3135.7444939334405682827@kernel.org>
-In-Reply-To: <179550875790.4156.14185923394520188230@mail.zgclab.edu.cn>
-References: <179550875790.4156.14185923394520188230@mail.zgclab.edu.cn>
-X-sashiko-severity: High
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
+	s=k20260515; t=1795604111;
+	bh=3T+PgBhGAeiyiJXoesZjBC+dalaU5f+v7s903e1CpXs=;
+	h=Date:Subject:To:References:From:In-Reply-To;
+	b=HMR+lxB9DpYGJdlMSiwTyypb8XN0TBuITla3qPw7hwHp4VeL0Ul2htvUZLPrifSxM
+	 5NuE6u2yPcrrSB5hbZWu8M1qnIFZVbjGlku0+o8f1CFiu6w6qCBfR232d7Pe3rTDzu
+	 XJCSM49gC6mR0Jpy9ilKnd8nBEYNr3L8vDVajsAjh4i1ZP8kgkHMN/pywZ9HCDo9nC
+	 e6DfPpZTAwH0OQitvZf1/87I8rDF65hEbFw8+EdlnPrg++M1CEmv6dZLa2hjiwzFz5
+	 26YToi+XTpjfn6Z4i2xdHWs6zRux06lfU2A1py1Cv9xAdKogZh4nO6JDh9NqNYfsid
+	 9/hBHeqrXmaGQ==
+Message-ID: <647d4527-dd99-4f1e-98ff-a6a5317560e6@kernel.org>
+Date: Wed, 25 Nov 2026 11:54:58 +0100
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 3/7] soc: mediatek: add MMDVFS core driver
+To: Echo Zhang <echo.zhang@mediatek.com>, Rob Herring <robh@kernel.org>,
+ Krzysztof Kozlowski <krzk+dt@kernel.org>, Conor Dooley
+ <conor+dt@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>,
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+ Stephen Boyd <sboyd@kernel.org>, Brian Masney <bmasney+clk@redhat.com>,
+ Jerome Brunet <jbrunet+clk@baylibre.com>,
+ Nathan Chancellor <nathan@kernel.org>,
+ Nick Desaulniers <ndesaulniers@google.com>, Bill Wendling
+ <morbo@google.com>, Justin Stitt <justinstitt@google.com>,
+ MMDVFS Team <linux-mediatek@lists.infradead.org>, kyrie.wu@mediatek.com,
+ ming-fan.chen@mediatek.com, devicetree@vger.kernel.org,
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
+ linux-clk@vger.kernel.org, llvm@lists.linux.dev
+References: <20261125060037.649659-1-echo.zhang@mediatek.com>
+ <20261125060037.649659-4-echo.zhang@mediatek.com>
+From: Krzysztof Kozlowski <krzk@kernel.org>
+Content-Language: en-US
+Autocrypt: addr=krzk@kernel.org; keydata=
+ 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
+In-Reply-To: <20261125060037.649659-4-echo.zhang@mediatek.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -72,175 +121,82 @@ List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-10.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-17.4 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,
-	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS autolearn=ham autolearn_force=no version=4.0.1
+	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_SANE_1
+	autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Thank you for your contribution! Sashiko AI review found 2 potential
-issue(s) to consider.
+On 25/11/2026 07:00, Echo Zhang wrote:
+> Add the common MediaTek MMDVFS driver framework.
+> 
+> The core driver handles device probing, SoC data selection, clock provider
+> registration, power-management notification, and dispatch to the
+> microprocessor transport used for runtime performance voting.
 
-Critical: 0 · High: 1 (1) · Medium: 0 · Low: 1
+I don't get why DVFS driver is a soc driver. This should use proper
+Linux subsystems and be placed there.
 
-If you believe none of the issues are legitimate, please reply to each
-issue of Medium severity or higher and explain why the AI is wrong.
-If any of them are legitimate and you plan to respin, please let patchwork
-know by including "pw-bot: cr" as a separate line at the end of your reply
-(one such reply per series is enough).
-
-- [High] In mt753x_setup() (drivers/net/dsa/mt7530.c), the new error
-  paths turn off the MT7530 core/io regulators while devm still keeps…
-- [Low] net: dsa: mt7530: inaccurate Fixes tag for mt753x_setup()
-  regulator leak
-
-Pre-existing issues:
-- [High] This problem wasn't introduced by this patch, but it sits on the
-  failure path the patch reworks.
-
---
-
-net: dsa: mt7530: disable regulators on mt753x_setup() failure
-
-This patch sends the failure paths in mt753x_setup() that come after
-sw_setup() to a shared error label. That label disables the MT7530 core
-and io regulators. The mdio irq teardown after a create_sgmii() failure
-moves into the same error path.
-
-> diff --git a/drivers/net/dsa/mt7530.c b/drivers/net/dsa/mt7530.c
-> index 1ac4ac1a05664..963d145341759 100644
-> --- a/drivers/net/dsa/mt7530.c
-> +++ b/drivers/net/dsa/mt7530.c
-> @@ -3223,11 +3223,11 @@ mt753x_setup(struct dsa_switch *ds)
+> 
+> Signed-off-by: Echo Zhang <echo.zhang@mediatek.com>
+> ---
+>  drivers/soc/mediatek/Kconfig                  |  19 +
+>  drivers/soc/mediatek/Makefile                 |   1 +
+>  drivers/soc/mediatek/mmdvfs/Makefile          |   6 +
+>  drivers/soc/mediatek/mmdvfs/mmdvfs-clk.c      | 462 ++++++++++++++
+>  drivers/soc/mediatek/mmdvfs/mmdvfs-core.c     | 581 ++++++++++++++++++
+>  drivers/soc/mediatek/mmdvfs/mmdvfs-internal.h | 305 +++++++++
+>  include/soc/mediatek/mmdvfs.h                 |  72 +++
+>  7 files changed, 1446 insertions(+)
+>  create mode 100644 drivers/soc/mediatek/mmdvfs/Makefile
+>  create mode 100644 drivers/soc/mediatek/mmdvfs/mmdvfs-clk.c
+>  create mode 100644 drivers/soc/mediatek/mmdvfs/mmdvfs-core.c
+>  create mode 100644 drivers/soc/mediatek/mmdvfs/mmdvfs-internal.h
+>  create mode 100644 include/soc/mediatek/mmdvfs.h
+> 
+> diff --git a/drivers/soc/mediatek/Kconfig b/drivers/soc/mediatek/Kconfig
+> index d7293977f06e..bb273a4461f0 100644
+> --- a/drivers/soc/mediatek/Kconfig
+> +++ b/drivers/soc/mediatek/Kconfig
+> @@ -60,6 +60,25 @@ config MTK_REGULATOR_COUPLER
+>  	default ARCH_MEDIATEK
+>  	depends on REGULATOR
 >  
->  	ret = mt7530_setup_irq(priv);
->  	if (ret)
-> -		return ret;
-> +		goto err_disable_pwrs;
->  
->  	ret = mt7530_setup_mdio(priv);
->  	if (ret)
-> -		return ret;
-> +		goto err_disable_pwrs;
+> +config MTK_MMDVFS
+> +	tristate "MediaTek MMDVFS support"
+> +	depends on ARCH_MEDIATEK || COMPILE_TEST
+> +	depends on MTK_VCP_RPROC
 
-[Severity: Low]
-Is b8f126a8d543 the right commit for the Fixes tag?
+Does not exist.
 
-In b8f126a8d543, mt7530_switch_ops.setup pointed straight at
-mt7530_setup(). There was no mt753x_setup() wrapper and nothing ran
-after sw_setup(). The wrapper came with 88bdef8be9f6 ("net: dsa:
-mt7530: Extend device data ready for adding a new hardware"), and
-at that point it only did:
+> +	help
+> +	  Say yes here to add support for the MediaTek Multimedia Dynamic
+> +	  Voltage and Frequency Scaling controller. The controller provides
+> +	  virtual clocks for multimedia hardware blocks and coordinates
+> +	  performance votes with platform voltage resources.
+> +
 
-	return priv->info->sw_setup(ds);
+...
 
-This patch now unwinds the fallible steps after sw_setup(), which are
-mt7530_setup_irq() and mt7530_setup_mdio(). Those steps seem to have
-come in with ba751e28d442 ("net: dsa: mt7530: add interrupt support").
-That commit is where the early returns that leave the regulators on
-were added.
+> +/* Logging macros */
+> +#define mmdvfs_dbg(dev, fmt, args...) \
+> +	dev_dbg(dev, "[mmdvfs] " fmt, ##args)
+> +#define mmdvfs_info(dev, fmt, args...) \
+> +	dev_info(dev, "[mmdvfs] " fmt, ##args)
+> +#define mmdvfs_warn(dev, fmt, args...) \
+> +	dev_warn(dev, "[mmdvfs] " fmt, ##args)
+> +#define mmdvfs_err(dev, fmt, args...) \
+> +	dev_err(dev, "[mmdvfs] " fmt, ##args)
+> +
 
-With the Fixes tag pointing at the initial driver, the stable tooling
-will try to apply this to kernels that have neither mt753x_setup() nor
-these failure paths. Should the tag be this instead?
+No, do not reimplement standard Linux kernel APIs/frameworks.
 
-Fixes: ba751e28d442 ("net: dsa: mt7530: add interrupt support")
+This applies EVERYWHERE here.
 
-[Severity: High]
-Can these new gotos power off the switch while things that need power
-are still registered?
 
-When mt753x_setup() reaches this point, mt7530_setup() has already
-returned 0. If the DT node has "gpio-controller", the GPIO controller is
-already published:
 
-mt7530_setup()
-    mt7530_setup_gpio()
-        return devm_gpiochip_add_data(dev, gc, priv);
-
-Suppose mt7530_setup_irq() then fails, for example with -EPROBE_DEFER
-from of_irq_get(). The commit message calls this the common case. In
-that case mt7530_disable_pwrs() turns off the rails and the gpiochip
-stays registered.
-
-If mt7530_setup_mdio() fails instead, the regmap-irq chip from
-devm_regmap_add_irq_chip_fwnode() in mt7530_setup_irq() also stays
-registered. Its parent IRQ stays requested and TOP_SIG_CTRL_NORMAL stays
-set.
-
-Nothing on these paths unregisters them. Only devres unwinding removes
-them:
-
-- With a single switch, devres unwinds after dsa_register_switch() fails
-  and probe returns.
-- In a multi-switch tree, this switch's probe may already have returned
-  0 and the tree setup runs from a sibling's probe. Then devres never
-  unwinds here, and the switch stays bound against unpowered hardware.
-
-The earlier patch in this series, "net: dsa: mt7530: register the GPIO
-controller last in setup", says:
-
-    This becomes important in the next patch, where
-    the failure paths disable the regulators and return an error, so the
-    controller must not be registered across a failed setup.
-
-Doesn't this patch make that state reachable again on the
-mt7530_setup_irq() and mt7530_setup_mdio() failure paths? Only ID_MT7530
-is affected, because mt7530_disable_pwrs() returns early for the other
-variants.
-
-Could the regulator-dependent registrations (the gpiochip, and ideally
-the irq chip and MDIO bus) happen after every fallible step in
-mt753x_setup()? Alternatively, could they be undone explicitly before
-mt7530_disable_pwrs() is called?
-
-[ ... ]
-
-> @@ -3239,15 +3239,23 @@ mt753x_setup(struct dsa_switch *ds)
->  	if (priv->create_sgmii)
->  		ret = priv->create_sgmii(priv);
->  
-> -	if (ret && priv->irq_domain)
-> -		mt7530_free_mdio_irq(priv);
-> +	if (ret)
-> +		goto err_free_irq;
-
-[Severity: High]
-This is a pre-existing issue, but it sits on the failure path this patch
-reworks. Can a failed create_sgmii() leave priv->ports[5].sgmii_pcs
-dangling, and then have it freed a second time?
-
-Take mt7531_create_sgmii() in drivers/net/dsa/mt7530-mdio.c with
-p5_sgmii set, where port5 succeeds and port6 fails:
-
-	if (ret && i)
-		mtk_pcs_lynxi_destroy(priv->ports[5].sgmii_pcs);
-
-	return ret;
-
-This frees the port5 PCS but does not clear the pointer. Port6 can fail
-in devm_kzalloc_obj(), in devm_regmap_init(), or when
-mtk_pcs_lynxi_create() returns NULL.
-
-With a single switch, probe fails and devres frees priv.
-
-In a multi-switch tree, the MT7531 can register before the tree is
-complete, so its probe returns 0. mt753x_setup() then runs later from a
-sibling's probe via dsa_tree_setup()->dsa_switch_setup(). If
-create_sgmii() fails there, the MT7531 stays bound with the stale
-pointer. On a later unbind this runs:
-
-mt7530_remove()
-	for (i = 0; i < 2; ++i)
-		mtk_pcs_lynxi_destroy(priv->ports[5 + i].sgmii_pcs);
-
-Is the port5 PCS kfree()d a second time here? Setting
-priv->ports[5].sgmii_pcs = NULL after the destroy in
-mt7531_create_sgmii() would avoid it.
-
-[ ... ]
-
--- 
-Sashiko AI review · https://netdev-ai.bots.linux.dev/sashiko/#/patchset/179550875789.4156.361477684651496992%40mail.zgclab.edu.cn
+Best regards,
+Krzysztof
 
