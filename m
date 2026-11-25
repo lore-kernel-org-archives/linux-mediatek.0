@@ -2,102 +2,85 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 7BED6606A332
-	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Nov 2026 16:30:03 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 1B1E0606A332
+	for <linux-mediatek@archiver.kernel.org>; Wed, 25 Nov 2026 16:30:21 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=aWhPhmBv;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=infradead.org header.i=@infradead.org header.a=rsa-sha256 header.s=desiato.20200630 header.b=NoP6ICN+;
-	dkim=pass (2048-bit key) header.d=thegoodpenguin-co-uk.20260707.gappssmtp.com header.i=@thegoodpenguin-co-uk.20260707.gappssmtp.com header.a=rsa-sha256 header.s=20260707 header.b=MZPSosC3
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=KW6Jpdw/;
+	dkim=pass (2048-bit key) header.d=thegoodpenguin-co-uk.20260707.gappssmtp.com header.i=@thegoodpenguin-co-uk.20260707.gappssmtp.com header.a=rsa-sha256 header.s=20260707 header.b=gteAu1N8
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Unsubscribe-Post:
-	List-Owner; bh=E/Paw5QZ9QxbXxzyBtlunqj4eITAuJB1YG4IYSSOnm4=; b=aWhPhmBvDSfGbp
-	/6BZbIF7yK1dUqoXuYYn7iOxprqBxVUMIu/wBm0181Eqpp2yCsM5NAh8Hri4npKrUOIJH7hI2wFqM
-	HxG82TxsqK18NQMX1wxWadVaU3vzqNGCaAZS5QNN0CXx+cidV76NCWTMctU7eK5oP888EBmfduzJT
-	JYdQ2+avqCsxPinLhvEAO5H49PxNZ8u1/3bv2sKulICoKWzfqvf8FxHFQiI5jcJTDwcPrGlIPfb7M
-	tAg7MRNT6RnKQbOk8PwwY2CqvY9D7sLQGTD08rTBZr2JYflAyUX35a7qZ9cKjc7HbZ3cAOqQNyUcc
-	E2oxlVlxtanRafFUqakA==;
+	List-Owner; bh=OnNdjklB4uWYTn3msQzxTr6Lo2LMKVqTjQIZzgFKEJ4=; b=KW6Jpdw/ne4msU
+	pHrZ3rGBevpGLKrKs84YHAl8PAAeNnrDADgxRyhDn/M2qXUcGR3GISpSsmw3A1E9VobPTfXtH1PPe
+	BUbYjhXf95PEJ9JypT9RcnDePGqKasatrbTUZnEtLxRWYBDvkkM1eBoW6FOtFNIp7jbw2/y1RpeC7
+	HuHe3nxqcemTsKqHtiiYECR2mupdwi4PGGAyriSdDwY+6uHqvOVV5Gn2Uoqv7JPlcFLH2+VQ/lU8l
+	EhcnphNyLUIppctyAm4v7jY94qrkC6mkIbx7vxT5my1BPpaJDFjzzpUC/CeKwechGJl7xELcMPv4p
+	EEEeJgeGZEos811PM1jw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xWFsh-0000000AYyE-0M7z;
-	Wed, 25 Nov 2026 16:30:03 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1xWFsy-0000000AZIR-2uh8;
+	Wed, 25 Nov 2026 16:30:20 +0000
+Received: from mail-wm1-f49.google.com ([209.85.128.49])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xWFrU-0000000AYT9-4A7A
-	for linux-mediatek@bombadil.infradead.org;
-	Wed, 25 Nov 2026 16:29:13 +0000
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Cc:To:In-Reply-To:References:
-	Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Sender:Reply-To:Content-ID:Content-Description;
-	bh=E/Paw5QZ9QxbXxzyBtlunqj4eITAuJB1YG4IYSSOnm4=; b=NoP6ICN+Gj4F8TfT3WoDr4bcQ/
-	SL2o3k/eM6a82SWlywvfSzBEdQ8vdwMZhQiWvalNwQ9InHo1nDw6fP8wIX1PnB0NXwDLpKU6kzHOE
-	b/W55yxlH4P2nQ94jFIJmKeOjMgr+4atcemGGMaaYZWlSeAIZ0HHCcXJfBBAJDe2igMB7Kf7ifYIW
-	T1H3B6WwjEr/0lHYAe+o1/LUQkhO5jv14fSJ5afhr7/wVjKPSuRdziCYKtKgQVzuSNw73TxRZNj69
-	xiPH7j4l4WX8GZf01MiFMan0KNFo6/n3GbTzmxP2GrEZmvoPgnrY1zr+VGbFhJAvXZnbldOStTbx5
-	sUJTtb6Q==;
-Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c])
-	by desiato.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xWFrP-00000005WtY-0nw3
+	id 1xWFrU-0000000AYSz-2tgj
 	for linux-mediatek@lists.infradead.org;
-	Wed, 25 Nov 2026 16:28:45 +0000
-Received: by mail-wm1-x32c.google.com with SMTP id 5b1f17b1804b1-4a2000d5fb1so34879485e9.1
-        for <linux-mediatek@lists.infradead.org>; Wed, 25 Nov 2026 08:28:42 -0800 (PST)
+	Wed, 25 Nov 2026 16:29:27 +0000
+Received: by mail-wm1-f49.google.com with SMTP id 5b1f17b1804b1-4a3517554f7so54800875e9.2
+        for <linux-mediatek@lists.infradead.org>; Wed, 25 Nov 2026 08:28:47 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=thegoodpenguin-co-uk.20260707.gappssmtp.com; s=20260707; t=1795624122; x=1796228922; darn=lists.infradead.org;
+        d=thegoodpenguin-co-uk.20260707.gappssmtp.com; s=20260707; t=1795624126; x=1796228926; darn=lists.infradead.org;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :content-type:mime-version:subject:date:from:from:to:cc:subject:date
          :message-id:reply-to:content-type;
-        bh=E/Paw5QZ9QxbXxzyBtlunqj4eITAuJB1YG4IYSSOnm4=;
-        b=MZPSosC3V5O5dC04J1ZSxw3/loMWtyUiDFlIpVyjr6QBRdE2G/1CGyWCQyAKeX3kek
-         aZPFAEBT7c/QZKkZmHAP0b0n00SA9EP/qnY2xVuGQLx5d9wbKevhgraLIZHcPA4iVKIZ
-         BqAIbwf+VBL7b5AmTVtVwE1UUtg90QSwwIg5ebxA8HZ3cE9z6KN2I5BMktXs7Pvr58BV
-         EUzvMG95yWEzd579L5wMBITL5RgF2MgVhtTs5FWzHyzlkWrUeAPMS+jc+j7UWH3JVLEG
-         FACNnf7btGwiCcTsAokmbTKes6yOF9apbnuCpmIx6fM7lbUWads66MR7Bi76oIsiGV1D
-         H+BA==
+        bh=OnNdjklB4uWYTn3msQzxTr6Lo2LMKVqTjQIZzgFKEJ4=;
+        b=gteAu1N8khpLVy2UlIcycbYuUImTFZGisLUpl25ob1nfBmIDoRsSGPNnc98Q0F9LRv
+         VIlFVVJ83afD+d6fqITzXm26UU2rO95jSf+4zD9y7BIAubRbyVGSn1+OsU76jsptv1En
+         X9e9mTMbfH6w+Ekphfz+h9jUTKP1FSswKAJ7UrJHXNM+IhjYTK5OghDMlJSjhS8FK4IL
+         /FtdAeBxeVoIGjOhTnObrXxA7Z+J+1tt08ok69dPK8GUT0FDBQhyXM6AJM9cjFTiV2yo
+         VRCF3o0IhByQdmE9fzw7onJS2hxCELwn9BU18c3aE+KayUq7nmrLjHYmrdFuZ5mJwCvq
+         2dvQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1795624122; x=1796228922;
+        d=1e100.net; s=20260707; t=1795624126; x=1796228926;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :content-type:mime-version:subject:date:from:x-gm-gg
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
          :content-type;
-        bh=E/Paw5QZ9QxbXxzyBtlunqj4eITAuJB1YG4IYSSOnm4=;
-        b=mf0xJpTmkX9ptCSGfGu9c35FDLZzKjGe9SD1K6JeKBx8gm7vrddJfOTuIlrrT8qrhg
-         0FhblnVdNAQ0L3GjmTB2LPF0OU1KPpN0ZR4XLfQ/pZIsx+fr9zRdQF7RJqH7Bft7VyKC
-         fgtrow/iugO3LgK4LG04bPyPdNqDWZ5H3Xp17ww/2FpTEkY4LPOZS7tqntYbOEor5DXP
-         DeMw2zRGf0j4OKohVSBfhWGIUiWJdrIgAf4S/HKUs2y1K2/czbbLEClkwFFsmVAGnK9l
-         /y3C9GYzkFZWA+Uv86o+6zfTpLc8aZGzYzZUgdo08z/yJvOyYwSCZsuISrxbQ5DWWvp4
-         iVSQ==
-X-Forwarded-Encrypted: i=1; AL+hErHp3cR5Sk768fwEzrHluJ5wKj6VVqcq2uyDwq13JFQyBPID3zaeBsKdmYY8rHAdb3U+1+yJPAdOR+NtUG1NtQ==@lists.infradead.org
-X-Gm-Message-State: APuU4Z9eahA8+ZuiFTs3Ye/yF0mclaRvy0XdqK2IhQ33d9IKzAPNpzgQ
-	uU1HbNwyST7VfBRYQB7dGiBRcpircElxgR0ShTmzQYjhs/7IyZ+GF81QcYNPUXWpCZ0=
-X-Gm-Gg: AZFdTZcliqKOKu/UKg7AS1CVSIWbVDWUk/2X1bdJkZyfjPTwpZI8KRxDPjtYELxvgyI
-	LR8LsjVckL5HLW+62va/By2cazTmzEuDnlfjqoZIbArs+A/4Bm+Q4/6Vz/Q4hyUKCDxOgmN/aqp
-	0WqoQ/PLxca9MgHKumIaXFUyt8AHT5wcjNscjp3OOdaLK54mECElkp731/N0PnAVkMYSFIMQ+/o
-	UKLrmgca8F8Ot9I86eJim6KtfyZjNzgGnGyD1efhp2VnzDbyBxTD2Z/brHXCPvJjhnq8DTosMg/
-	0LyNg1FUjGnW84yj7fXmaY9HyE3YMttNKdGWSrTL5jyN4GVioio7iC6ZpyfFl+LBfsvp31ClUmd
-	4YH1N+Mz1IaQDNFTiGD2peJzj7zwNanjgo+F2a0fPuH080DHCafl1bghCidXycfKqN+qx3yXDOB
-	IX7APmmPIxpsEmnEKfSgO0Gw/2Nju5qHeSd1RB+clLYVAAPKP+pbN6HjJ1vhxlncsv845j4Eh80
-	KjTPGRgZgH/M85acytTYhE+uMnzo6dzEEh3Xznqr5jAWorw/145T36BtZQiJtp3s2tEpW3gSAX6
-	lD0YbXaWXNiM24c94ZTLxQX/YPfFLvxYbbqfSWIDlsIHuQ==
-X-Received: by 2002:a05:600c:3b8a:b0:4a3:59c9:a754 with SMTP id 5b1f17b1804b1-4bb8892da25mr367205855e9.22.1795624121613;
-        Wed, 25 Nov 2026 08:28:41 -0800 (PST)
+        bh=OnNdjklB4uWYTn3msQzxTr6Lo2LMKVqTjQIZzgFKEJ4=;
+        b=xP2KCicJDZbpWLYEzf2es8/FCoCHNJjpeLfVkIuORnZBUq5Wpmk2K9+fiEny5vdniN
+         mg0L1J8ozGOIKXQI72QkUhkssg3AO9TARCRB2PwIDmqaFkE/1n6A1Gky5841AgtWg4GV
+         wg7sN+g+0avFtgRtNc1CTZ/++t0BZlWtAVZNwg4JN96ctM+eRhClS/WATB3TpxfDeGEr
+         tk/lcJ6m76GRo9Stn66dV2pYg1Irq7t51OCy1riOTH17jQGvmDG08esPZQZ84R36jHeN
+         67OlMdCJfVV0WeeTfgTjDCxNAlJScEMDA+02gwCWwYWkA2Kd/+PcHoOCxKuxVlZMs12k
+         dOEA==
+X-Forwarded-Encrypted: i=1; AL+hErE49cGWQv8A6Mg85zwBFgt8+tGtIf8+s71J+k7yB3WhxAvR7Ox4Ac/o0qrEr592mXZtJqbBGdoGL+9Up+M07w==@lists.infradead.org
+X-Gm-Message-State: APuU4Z+gHarrXorBylb4gXI5hFQzcQXxDfESqIMH/zps4/ddCH7J/apA
+	uH84uo1MqQ+JSVuO50zKFapJeYSPsf2cwvd8XE60IvwSUHyPcx9fIK/OJlDnfdyPzPE=
+X-Gm-Gg: AZFdTZdMbs0WG0Y9/7zLMM+JPaKTyOlFs2/FMJxE/PkQExVXgUjDGhRPJkcdRJjBtvT
+	ZEjGlkH4cZgCUVHaCn97hFzOr2wZdKCVw7/NbcLBJTJtpRGVfnuAzNyRjFG6SONYex54blIXGpy
+	MiuzfYLp3duZnUZmqNx3xF3nyAWDfW8zr/Ja410/Y7t6zo1iJ1h6tdwxVaRi1Q5aM+WndlWatgv
+	us3ooKfU61Z3BUWwfYlPysDLgGuvKcKL2a8FZANXo1ymuMufvuchICc2yXG8spdcplNjDZkdzu/
+	5wEjHYDe1/17JmQySCIineOMFllVwlDLndSKq5v8F8IU8WFHMvpzwx9qP1lTPOfA3G0lqzNE/8V
+	7MPrtZ+MC3TLtO6BvxH6Ln9WurCoUTAeHw80LJIlKjjIexgfCRdsg4Srr98BTAUOlcDrPKmI0zl
+	rlOWizphLJ551aZPQrrx0EIZSUecng3qcEMabHPIAjsPrY9x/rLzRPCdqwDr07H8AP3WjjespNM
+	Mn3QlSj/+4vSyJuxQMaYZFYEQA988u01nBkmAWYgvBA+A18Fhstb33UcBFEEf0Cpu/QoZwrdEUJ
+	kWrInFLOpD5J/RtAr2aUUmSXAoL70hHvi/+ml6heB1cf6g==
+X-Received: by 2002:a05:600c:34c9:b0:4a3:5d64:df91 with SMTP id 5b1f17b1804b1-4bb88810d28mr405948895e9.18.1795624126434;
+        Wed, 25 Nov 2026 08:28:46 -0800 (PST)
 Received: from [10.42.0.1] ([2a00:23c7:1d1a:9c01:f716:ba19:8aaa:f1c2])
-        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-4bb853368d3sm527336375e9.1.2026.11.25.08.28.39
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-4bb853368d3sm527336375e9.1.2026.11.25.08.28.44
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 25 Nov 2026 08:28:41 -0800 (PST)
+        Wed, 25 Nov 2026 08:28:46 -0800 (PST)
 From: Pawel Zalewski <pzalewski@thegoodpenguin.co.uk>
-Date: Wed, 25 Nov 2026 16:28:28 +0000
-Subject: [PATCH 02/10] mtd: spi-nor: Use named initializers for
- spi_device_id
+Date: Wed, 25 Nov 2026 16:28:30 +0000
+Subject: [PATCH 04/10] mtd: spi-nor: Unify of_device_id list terminator
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20261125-acpi-mtd-v1-2-42ad2f645bee@thegoodpenguin.co.uk>
+Message-Id: <20261125-acpi-mtd-v1-4-42ad2f645bee@thegoodpenguin.co.uk>
 References: <20261125-acpi-mtd-v1-0-42ad2f645bee@thegoodpenguin.co.uk>
 In-Reply-To: <20261125-acpi-mtd-v1-0-42ad2f645bee@thegoodpenguin.co.uk>
 To: Miquel Raynal <miquel.raynal@bootlin.com>, 
@@ -158,17 +141,17 @@ Cc: linux-mtd@lists.infradead.org, linux-arm-kernel@lists.infradead.org,
  Pawel Zalewski <pzalewski@thegoodpenguin.co.uk>, 
  =?utf-8?q?Uwe_Kleine-K=C3=B6nig?= <u.kleine-koenig@baylibre.com>
 X-Mailer: b4 0.16.0
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1795624113; l=4183;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1795624113; l=1549;
  i=pzalewski@thegoodpenguin.co.uk; s=20260430; h=from:subject:message-id;
- bh=oSYQ7Bs6TY9Bq0it7ME4AMa1HN8RgNqdeSRr8O3thOM=;
- b=ZzYcsPDU1eT9Urm3wkVmXrHRSn8lYS47jYwodaBWVXhHbdUtk3xdzrjUw2pFBpCbVfZ0+gfNR
- dIrCrr0zs9uAk13TU8rgxCJLHxUgZjH9xPYqCVfddGmUaS8ISdiG+oY
+ bh=pw1yVugjZoJ1sYzSavbjoh9EtNi40KpLFcyq3KxCgNo=;
+ b=kcHPBXNDukNV21LLTOphkMkZzHhEUE3GVm5MT4GkuuM2LkB9EPUAINUu71xJWBBbyUPxGyGvR
+ NyJA9ZKxwfTBYz6TriU3QIhP5Egb+QnpqA24EfhtbypOZI53FKPwK0u
 X-Developer-Key: i=pzalewski@thegoodpenguin.co.uk; a=ed25519;
  pk=vHq4n9IonORH2GTzLv8r6CWAFHzgfBuNkQPXA8NSly0=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261125_162843_170847_DD7BADF7 
-X-CRM114-Status: GOOD (  17.24  )
-X-Spam-Score: 0.0 (/)
+X-CRM114-CacheID: sfid-20261125_082913_688405_D0BFFFE5 
+X-CRM114-Status: GOOD (  16.20  )
+X-Spam-Score: -1.9 (-)
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -186,127 +169,42 @@ X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIM_SIGNED,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Use a designated initializer for the spi_device_id fields which makes the
-code more readable and consistent with how lists are initialized in the
-rest of the kernel code base.
-
-Put every list item on a new line and unify the list terminator to have
-a single space between the brackets and no trailing comma.
+Unify the list terminator to have a single space between the brackets and
+no trailing comma. This change doesn't introduce any diffs between
+pre/post to the compiled binaries of the modified drivers and just aligns
+these to the common style with other *_device_id arrays.
 
 Signed-off-by: Pawel Zalewski <pzalewski@thegoodpenguin.co.uk>
 ---
- drivers/mtd/spi-nor/core.c | 77 +++++++++++++++++++++++++++++++++-------------
- 1 file changed, 55 insertions(+), 22 deletions(-)
+ drivers/mtd/spi-nor/controllers/hisi-sfc.c  | 2 +-
+ drivers/mtd/spi-nor/controllers/nxp-spifi.c | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/drivers/mtd/spi-nor/core.c b/drivers/mtd/spi-nor/core.c
-index a04d22d2e2e1..a76c669000d8 100644
---- a/drivers/mtd/spi-nor/core.c
-+++ b/drivers/mtd/spi-nor/core.c
-@@ -3662,42 +3662,75 @@ static const struct spi_device_id spi_nor_dev_ids[] = {
- 	 * hack around the fact that the SPI core does not provide uevent
- 	 * matching for .of_match_table
- 	 */
--	{"spi-nor"},
-+	{ .name = "spi-nor" },
+diff --git a/drivers/mtd/spi-nor/controllers/hisi-sfc.c b/drivers/mtd/spi-nor/controllers/hisi-sfc.c
+index 4f6631950a5b..01048ca46a60 100644
+--- a/drivers/mtd/spi-nor/controllers/hisi-sfc.c
++++ b/drivers/mtd/spi-nor/controllers/hisi-sfc.c
+@@ -474,7 +474,7 @@ static void hisi_spi_nor_remove(struct platform_device *pdev)
  
- 	/*
- 	 * Entries not used in DTs that should be safe to drop after replacing
- 	 * them with "spi-nor" in platform data.
- 	 */
--	{"s25sl064a"},	{"w25x16"},	{"m25p10"},	{"m25px64"},
-+	{ .name = "s25sl064a" },
-+	{ .name = "w25x16" },
-+	{ .name = "m25p10" },
-+	{ .name = "m25px64" },
- 
- 	/*
- 	 * Entries that were used in DTs without "jedec,spi-nor" fallback and
- 	 * should be kept for backward compatibility.
- 	 */
--	{"at25df321a"},	{"at25df641"},	{"at26df081a"},
--	{"mx25l4005a"},	{"mx25l1606e"},	{"mx25l6405d"},	{"mx25l12805d"},
--	{"mx25l25635e"},{"mx66l51235l"},
--	{"n25q064"},	{"n25q128a11"},	{"n25q128a13"},	{"n25q512a"},
--	{"s25fl256s1"},	{"s25fl512s"},	{"s25sl12801"},	{"s25fl008k"},
--	{"s25fl064k"},
--	{"sst25vf040b"},{"sst25vf016b"},{"sst25vf032b"},{"sst25wf040"},
--	{"m25p40"},	{"m25p80"},	{"m25p16"},	{"m25p32"},
--	{"m25p64"},	{"m25p128"},
--	{"w25x80"},	{"w25x32"},	{"w25q32"},	{"w25q32dw"},
--	{"w25q80bl"},	{"w25q128"},	{"w25q256"},
-+	{ .name = "at25df321a" },
-+	{ .name = "at25df641" },
-+	{ .name = "at26df081a" },
-+	{ .name = "mx25l4005a" },
-+	{ .name = "mx25l1606e" },
-+	{ .name = "mx25l6405d" },
-+	{ .name = "mx25l12805d" },
-+	{ .name = "mx25l25635e" },
-+	{ .name = "mx66l51235l" },
-+	{ .name = "n25q064" },
-+	{ .name = "n25q128a11" },
-+	{ .name = "n25q128a13" },
-+	{ .name = "n25q512a" },
-+	{ .name = "s25fl256s1" },
-+	{ .name = "s25fl512s" },
-+	{ .name = "s25sl12801" },
-+	{ .name = "s25fl008k" },
-+	{ .name = "s25fl064k" },
-+	{ .name = "sst25vf040b" },
-+	{ .name = "sst25vf016b" },
-+	{ .name = "sst25vf032b" },
-+	{ .name = "sst25wf040" },
-+	{ .name = "m25p40" },
-+	{ .name = "m25p80" },
-+	{ .name = "m25p16" },
-+	{ .name = "m25p32" },
-+	{ .name = "m25p64" },
-+	{ .name = "m25p128" },
-+	{ .name = "w25x80" },
-+	{ .name = "w25x32" },
-+	{ .name = "w25q32" },
-+	{ .name = "w25q32dw" },
-+	{ .name = "w25q80bl" },
-+	{ .name = "w25q128" },
-+	{ .name = "w25q256" },
- 
- 	/* Flashes that can't be detected using JEDEC */
--	{"m25p05-nonjedec"},	{"m25p10-nonjedec"},	{"m25p20-nonjedec"},
--	{"m25p40-nonjedec"},	{"m25p80-nonjedec"},	{"m25p16-nonjedec"},
--	{"m25p32-nonjedec"},	{"m25p64-nonjedec"},	{"m25p128-nonjedec"},
-+	{ .name = "m25p05-nonjedec" },
-+	{ .name = "m25p10-nonjedec" },
-+	{ .name = "m25p20-nonjedec" },
-+	{ .name = "m25p40-nonjedec" },
-+	{ .name = "m25p80-nonjedec" },
-+	{ .name = "m25p16-nonjedec" },
-+	{ .name = "m25p32-nonjedec" },
-+	{ .name = "m25p64-nonjedec" },
-+	{ .name = "m25p128-nonjedec" },
- 
- 	/* Everspin MRAMs (non-JEDEC) */
--	{ "mr25h128" }, /* 128 Kib, 40 MHz */
--	{ "mr25h256" }, /* 256 Kib, 40 MHz */
--	{ "mr25h10" },  /*   1 Mib, 40 MHz */
--	{ "mr25h40" },  /*   4 Mib, 40 MHz */
-+	{ .name = "mr25h128" }, /* 128 Kib, 40 MHz */
-+	{ .name = "mr25h256" }, /* 256 Kib, 40 MHz */
-+	{ .name = "mr25h10" },  /*   1 Mib, 40 MHz */
-+	{ .name = "mr25h40" },  /*   4 Mib, 40 MHz */
- 
--	{ },
+ static const struct of_device_id hisi_spi_nor_dt_ids[] = {
+ 	{ .compatible = "hisilicon,fmc-spi-nor"},
+-	{ /* sentinel */ }
 +	{ }
  };
- MODULE_DEVICE_TABLE(spi, spi_nor_dev_ids);
+ MODULE_DEVICE_TABLE(of, hisi_spi_nor_dt_ids);
  
-@@ -3707,7 +3740,7 @@ static const struct of_device_id spi_nor_of_table[] = {
- 	 * JEDEC READ ID opcode (0x9F). Use this, if possible.
- 	 */
- 	{ .compatible = "jedec,spi-nor" },
--	{ /* sentinel */ },
+diff --git a/drivers/mtd/spi-nor/controllers/nxp-spifi.c b/drivers/mtd/spi-nor/controllers/nxp-spifi.c
+index 30fe2d414f07..71ee50eb1a71 100644
+--- a/drivers/mtd/spi-nor/controllers/nxp-spifi.c
++++ b/drivers/mtd/spi-nor/controllers/nxp-spifi.c
+@@ -440,7 +440,7 @@ static void nxp_spifi_remove(struct platform_device *pdev)
+ 
+ static const struct of_device_id nxp_spifi_match[] = {
+ 	{.compatible = "nxp,lpc1773-spifi"},
+-	{ /* sentinel */ }
 +	{ }
  };
- MODULE_DEVICE_TABLE(of, spi_nor_of_table);
+ MODULE_DEVICE_TABLE(of, nxp_spifi_match);
  
 
 -- 
