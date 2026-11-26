@@ -2,101 +2,103 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id C5823606A329
-	for <linux-mediatek@archiver.kernel.org>; Thu, 26 Nov 2026 00:53:21 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id E7E54606A685
+	for <linux-mediatek@archiver.kernel.org>; Thu, 26 Nov 2026 00:53:31 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=dIcpvaOe;
-	dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=f0v4haXp
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=I86Ku5E1;
+	dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=bP0iFo9e
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
-	Cc:To:From:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=FnYWH85VdSRHZN+nvi/clH5gT1Faosi93zXA3ZngnAM=; b=dIcpvaOeP39h7WVDZIzd1rs8Pt
-	ha2e0l9TC8q9uGU72z1kBzK9L3ECgEsab6n8ocpt4PLXCdQlEUPre86dQUIwWKrt6Sj87icjMmEw2
-	GWGVxTKLSai9UQmNeVkIVZnLgYXq7V6OmsFo6yzR/8Ujgi8h2LW067jiXQQcF6dYIGfHrns4dJRdu
-	YmmoZM2lnuKaMCl+FTdi8EfXiU4QKfO95q4PEsS3q/hQAL6S5dDSjZwkmFIigJ8K6TUh6+qX3kfOo
-	F969MIRATW7ryoRu5Obc7MNd+k5t2ueewUd/TjGA2kJDzY5pUcQco8fOC0OARXqXcFOh6O1ZOAy4E
-	ui1jp4qw==;
+	bh=+/bIrVInONR+XJXRCb4gtlY7/LMelusfalrzxxtW9MM=; b=I86Ku5E1MJ9yC/KMTpF9sYlF7J
+	ZM8yfIHb/cZBPBpDYKFBFbqJZtpu7aVwRnOnbAoPngHSHPm2utGBCHEiiZnVcHJ7HLyDurUT5b0io
+	BL2so3+g7rUN80CoJkBihVJP1BtdAgctB3hYNocwq6fzZPrgXDQjN1F4Y2szBxpCjV9I4jBzctYub
+	noGRff+iq++RhR6XhZR3eWOUBHvCMvv6B+8HGnBnuIxBTYoJHebEo/ur/3YOFkQ0ulQ70sv9bnTXm
+	iMsw4t17YEJvJ4YRgww2MCMJvYNBlNEFExPBNRCUmmPyozETCn/iuCFgQLLPZwJTDMLSJ4YO2bWK8
+	V4hhFj3A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xWNjl-0000000BiAF-27Vu;
-	Thu, 26 Nov 2026 00:53:21 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1xWNjv-0000000BiFM-2p2b;
+	Thu, 26 Nov 2026 00:53:31 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xWNjk-0000000Bi9A-02uD;
-	Thu, 26 Nov 2026 00:53:20 +0000
+	id 1xWNjm-0000000BiAf-35W1;
+	Thu, 26 Nov 2026 00:53:22 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 183B3601C1;
-	Thu, 26 Nov 2026 00:53:19 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id D646A61EDD;
+	Thu, 26 Nov 2026 00:53:21 +0000 (UTC)
 Authentication-Results: smtp.kernel.org; arc=none smtp.remote-ip=100.80.115.77
 ARC-Seal: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256; cv=none;
-	t=1795654398;
-	b=YIRiuTG2NzjzRMXGUJOb8ohNY3gKpN1m7zlGZM2tXm+hrpuZrT/A1zTI2wiAhvJt9pU6
-	 PuO9xi1lp8SEPATOvxemqg8bqVSDI9A6jjtHQSTDUTU2QOdMKJnbPOwO8qUU0xX8Gca4D
-	 oMBBB5Fk4Y/O6I8Jf2a8XrwDloh+9RKmhDE+AwKSvQbIzWCiu0nOv7md0/6IbvcIzmOFm
-	 g/bHEf/KLlEcEkqbvYarkYyGFlUVbYSmFvyi4S4A4o3GZU6Q3s9EOGbNpQOhhQCE/QRQT
-	 9/SzaIam3GxZm2trFhR+0c4M35q1jC5aU9Q55NQ3T/xOezpLSpa6njIt8KlNfKyRykQ==
+	t=1795654401;
+	b=S9uosQGiVKHcS0QYQaTCgqC1tVxQEJiz0jV4YhZ2mjZAQuyBxkHDXrglugnMse3ildQ6
+	 PkxtRlzATU/6x1emi+bHZD2Xq9hjF4HtzFAFGhx5CscPLSGR3cx9jktfiE7v6HoRE/F2m
+	 oYpvfk9bx0mX1kCRjVwZI90fQaIvOxrFaOX5AOnOkg+ZACc2HS3WcDGUfZjw3kmbfoGxa
+	 eqyBfBtDU6BiGNRIGKvebehS+yh1JOgHXtu4WfVLdAPPb93s4Po6siInIUPhqGoKcFx09
+	 /gPCZSmyka7vmBiOQIdX4MDEwctY7oIuygDOSehhPPVrEoPyixdCzTM81xI7iwa11rg==
 ARC-Message-Signature: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256;
-	c=relaxed/relaxed; t=1795654398;
+	c=relaxed/relaxed; t=1795654401;
 	h=DKIM-Signature:Received:From:To:Cc:Subject:Date:Message-Id:
-	 MIME-Version:Content-Type:Content-Transfer-Encoding:X-Mailer:
+	 In-Reply-To:References:MIME-Version:Content-Type:X-Mailer:
 	 X-Developer-Signature:X-Developer-Key:X-Endpoint-Received:
-	 X-Original-From:Reply-To;
-	bh=FnYWH85VdSRHZN+nvi/clH5gT1Faosi93zXA3ZngnAM=;
-	b=ZIfz5C/zuWKv4EPzR/r6yUdSTljtxxGzCnXIeAvYaaqidFCyAAPovbAkBXETeIS1NPQ6
-	 grX1NlI5JXHS/egbcW4Ra7x0fTHX2WGsDHlXD2PZLr2a7IE1T9CYieLYRAgIRet88kwx+
-	 GP/bTXw/hnEX+xuVyYErJcIxRhlVnSYFbSdlmI8Y3/xcGlv3e7Ctl/Pt1IKyEQAqE9+9R
-	 13aJt0VSvIzcNBJO9fmvfaJzdYyndgVml3mYaedhw33unSfwgrcPo+BYx0lrwQiYb+ZRK
-	 7FZoNGjEIQuzvjllS7q/c9ns8NxswEvf01d4kdWG5IjgY6dACHjRpOKFo2FCR0+Mp8w==
+	 X-Original-From:Reply-To:Content-Transfer-Encoding;
+	bh=+/bIrVInONR+XJXRCb4gtlY7/LMelusfalrzxxtW9MM=;
+	b=i6C2fhDUMj6sMwJEbRYK/m92yJpQLyQig4r0PSmD/CO7adSZQt4oZuZym+RSTg8xjqgx
+	 kHEUXLkVQqTFv/DMWACJvxLgvmHVRofbJ6Hffwrm0EDLMD0wv989RQ/kg7ZkJLCN+G7iH
+	 AObJIiyfsqOoqk3TavIXwgAvF4Z1fDFXQwc37GZ3kjIO/lMFTUvWHovbWf51KRydD88AV
+	 CupC1cBNE6oCbOsc22EfeTzMeiA1fFwIf8gl8K+K1l9FBevvRPsE7BnhQo6rbpywHu45v
+	 pz+jM1CiVPcXP2TcGaKOWEVyQkrIWNAQ67t1RXLt9CSwSjfO33n7mfTO/+827rlx1OQ==
 ARC-Authentication-Results: i=1; smtp.kernel.org; 
 	arc=none smtp.remote-ip=100.80.115.77
 Received: from lkml.kernel.org (nexus.subspace.kernel.org [100.80.115.77])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.kernel.org (Postfix) with ESMTPS id 6AC311F000C0;
+	by smtp.kernel.org (Postfix) with ESMTPS id 84EA01F000C4;
 	Thu, 26 Nov 2026 00:53:16 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1795654398;
-	bh=FnYWH85VdSRHZN+nvi/clH5gT1Faosi93zXA3ZngnAM=;
-	h=From:To:Cc:Subject:Date:Reply-To;
-	b=f0v4haXp+bHJtWDvxpOFgZNMngtuwWHfjH77DxiFJ/eYsMelZSECDW5dCGyfWEFn8
-	 gZGyUdL4nZQXNVO+LNmAwqDLzJQEy3owbBBYbYEc1lUdz/5yOYbKcPS8IH3gkIUEZL
-	 ICUshexMEpnVMfLytvlXzbLVPaq6i9xEiJyRfENCcpWEkk5WkBBDVZ3plcDxyZSQEN
-	 exWbQEXvf4rZS/skmpffqjRSiIhldORcLiVIDKMUkI0K86DTCtKxDJMIy8j47kATRx
-	 tkz0OHYWWWY0wrGcaT1pxGLurIKUpVn2ZrFh0E793S1aIRgYdW3yNzyWo0+1rvx0Q7
-	 c3Iwo7AJKqXIA==
+	s=k20260515; t=1795654401;
+	bh=+/bIrVInONR+XJXRCb4gtlY7/LMelusfalrzxxtW9MM=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:Reply-To;
+	b=bP0iFo9eAe6OMf9UKKjrS4i6bGXdfOYPavF2qPUhbQ9Edxd0E0qWYIYGA7QP2BRzc
+	 A25pD3vuVCLf+j5dNaAJU8gOjh5xP5EvwT+fvxtsoevIqXFksh2KFd4vVFKcCScOt8
+	 EtT6UEzXUkuU+CVHEhJUoak7Z8f5dz/Gk9MfUnPJNpMF3YNH7BSTuko2D7VUkbSHhk
+	 AhfCP31s2NBofLfKeBMldphbCNSr0036uUizWf2O49ll2787w6Cb+l6xrn8CAwVreT
+	 sOaTpsJMAVdGLC6KRT/UTLRJ29hp8QyROGBHrNRnuHGpQMOkUla+nkMWl6e9GUEtoU
+	 Vp4lyQXxoSE8g==
 Received: from nexus.subspace.kernel.org (localhost [IPv6:::1])
-	by lkml.kernel.org (Postfix) with ESMTP id BCD314D11C;
-	Thu, 26 Nov 2026 00:53:15 +0000 (UTC)
+	by lkml.kernel.org (Postfix) with ESMTP id 0F4464D121;
+	Thu, 26 Nov 2026 00:53:16 +0000 (UTC)
 From: Ilia Snezhkov via B4 Relay <devnull+iasnezhkov.gmail.com@kernel.org>
 To: broonie@kernel.org, lgirdwood@gmail.com
 Cc: perex@perex.cz, tiwai@suse.com, matthias.bgg@gmail.com, 
  angelogioacchino.delregno@collabora.com, linux-sound@vger.kernel.org, 
  linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
  linux-kernel@vger.kernel.org
-Subject: [PATCH v2 0/2] ASoC: mediatek: mtk-btcvsd: fix 0xdeadfeed check
- and bt_sram_addr bounds
-Date: Thu, 26 Nov 2026 00:53:14 +0000
-Message-Id: <20261126005314.71606-1-iasnezhkov@gmail.com>
+Subject: [PATCH v2 2/2] ASoC: mediatek: mtk-btcvsd: bound bt_sram_addr[]
+ writes in mtk_btcvsd_write_to_bt()
+Date: Thu, 26 Nov 2026 00:53:16 +0000
+Message-Id: <20261126005314.71606-3-iasnezhkov@gmail.com>
+In-Reply-To: <20261126005314.71606-1-iasnezhkov@gmail.com>
+References: <20261126005314.71606-1-iasnezhkov@gmail.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
 X-Mailer: b4 0.16.0
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1795654394; l=1430;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1795654395; l=2237;
  i=iasnezhkov@gmail.com; s=mindone2026; h=from:subject:message-id;
- bh=x5ID1NUyDxYewEijuwziJ4VLj2wpR1LC5OkbG06mBwA=;
- b=In6UhFWhii9n4hlSRerstvYRzmXPkYxqcFJTQLbDdeGZLXxZAE5TcoTib6ZnxCTFYZr29YWaT
- ixKnNQGulV9B7b9LMNc9zyddSLC4gqTkhpp7+iVg9JQkBgQY+/s4snx
+ bh=9ux9uWFLOH2k0sXAf5BIFccI/VfvFaqk+pxBS8OV1FQ=;
+ b=sxViQTOIXvR9gTPR1kuw9wCzmYkm5MD0oresoHVsiSj8O4Gd+jsjJWH8N42jQz1v1X3BMCUEX
+ dCBA1zT8fh0DHQKBL/He63v5rchZsgNHdPJMlR63kJMpTtpDya30zIN
 X-Developer-Key: i=iasnezhkov@gmail.com; a=ed25519;
  pk=hQgXfiWi4ukk2jh4BHu1vRVhg9BUivo//AFp50AKMag=
 X-Endpoint-Received: by B4 Relay for iasnezhkov@gmail.com/mindone2026 with
  auth_id=1643
 X-Original-From: Ilia Snezhkov <iasnezhkov@gmail.com>
+Content-Transfer-Encoding: 7bit
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -108,45 +110,69 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Reply-To: iasnezhkov@gmail.com
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-13.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-18.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,
-	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no
-	version=4.0.1
+	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=ham
+	autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-This two-patch v2 series addresses two safety issues in
-sound/soc/mediatek/common/mtk-btcvsd.c:
+From: Ilia Snezhkov <iasnezhkov@gmail.com>
 
-1. Check the live *bt->bt_reg_pkt_w register for 0xdeadfeed under tx_lock
-   in btcvsd_tx_clean_buffer() (after skipping the empty num_valid_addr
-   case), matching mtk_btcvsd_read_from_bt() and mtk_btcvsd_write_to_bt().
-2. Bound bt_sram_addr[] writes in mtk_btcvsd_write_to_bt() against
-   ARRAY_SIZE(bt->tx->buffer_info.bt_sram_addr) to prevent an
-   out-of-bounds write past the 20-entry array.
+bt->tx->buffer_info.bt_sram_addr[] has a fixed capacity of 20 entries,
+but mtk_btcvsd_write_to_bt() unconditionally increments num_valid_addr
+and writes bt_sram_addr[next_idx] whenever a new SRAM offset is seen.
 
-Changes in v2:
-- Replaced the ineffective check on cached virtual addresses
-  bt_sram_addr[i] with a check on the live *bt->bt_reg_pkt_w register
-  (returning 0 early when num_valid_addr == 0).
-- Dropped the unrelated Fixes: d067b3378a78 tag; kept only
-  Fixes: 4bd8597dc36c.
-- Added patch 2/2 fixing the unbounded bt_sram_addr[] write spotted
-  while auditing mtk_btcvsd_write_to_bt().
-- Link to v1: https://lore.kernel.org/r/20261125234830.94895-1-iasnezhkov@gmail.com
+If more than 20 distinct SRAM offsets are ever observed (for instance
+during BT subsystem resets or corrupted register reads), this writes
+out of bounds past bt_sram_addr[19] into adjacent fields of
+struct mtk_btcvsd_snd_hw_info and surrounding memory.
+
+Check next_idx against ARRAY_SIZE(bt->tx->buffer_info.bt_sram_addr)
+under tx_lock before storing the address and advancing num_valid_addr.
 
 Found and drafted with an AI coding assistant while bringing up MT6789.
 
-Ilia Snezhkov (2):
-  ASoC: mediatek: mtk-btcvsd: check bt_reg_pkt_w for 0xdeadfeed in
-    btcvsd_tx_clean_buffer()
-  ASoC: mediatek: mtk-btcvsd: bound bt_sram_addr[] writes in
-    mtk_btcvsd_write_to_bt()
+Fixes: 4bd8597dc36c ("ASoC: mediatek: add btcvsd driver")
+Signed-off-by: Ilia Snezhkov <iasnezhkov@gmail.com>
+---
+ sound/soc/mediatek/common/mtk-btcvsd.c | 19 +++++++++++++------
+ 1 file changed, 13 insertions(+), 6 deletions(-)
 
- sound/soc/mediatek/common/mtk-btcvsd.c | 28 ++++++++++++++++++++------
- 1 file changed, 22 insertions(+), 6 deletions(-)
-
+diff --git a/sound/soc/mediatek/common/mtk-btcvsd.c b/sound/soc/mediatek/common/mtk-btcvsd.c
+index 752856a..362d608 100644
+--- a/sound/soc/mediatek/common/mtk-btcvsd.c
++++ b/sound/soc/mediatek/common/mtk-btcvsd.c
+@@ -466,15 +466,22 @@ static int mtk_btcvsd_write_to_bt(struct mtk_btcvsd_snd *bt,
+ 	}
+ 	if (new_ap_addr_tx) {
+ 		unsigned int next_idx;
++		bool stored = false;
+ 
+ 		scoped_guard(spinlock_irqsave, &bt->tx_lock) {
+-			bt->tx->buffer_info.num_valid_addr++;
+-			next_idx = bt->tx->buffer_info.num_valid_addr - 1;
+-			bt->tx->buffer_info.bt_sram_addr[next_idx] = ap_addr_tx;
++			next_idx = bt->tx->buffer_info.num_valid_addr;
++			if (next_idx < ARRAY_SIZE(bt->tx->buffer_info.bt_sram_addr)) {
++				bt->tx->buffer_info.bt_sram_addr[next_idx] = ap_addr_tx;
++				bt->tx->buffer_info.num_valid_addr = next_idx + 1;
++				stored = true;
++			}
+ 		}
+-		dev_info(bt->dev, "%s(), new ap_addr_tx = 0x%lx, num_valid_addr %d\n",
+-			 __func__, ap_addr_tx,
+-			 bt->tx->buffer_info.num_valid_addr);
++		if (stored)
++			dev_info(bt->dev, "%s(), new ap_addr_tx = 0x%lx, num_valid_addr %u\n",
++				 __func__, ap_addr_tx, next_idx + 1);
++		else
++			dev_warn_once(bt->dev, "%s(), bt_sram_addr table full\n",
++				      __func__);
+ 	}
+ 
+ 	if (bt->tx->mute)
 -- 
 2.54.0 (Apple Git-157)
 
