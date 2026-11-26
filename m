@@ -2,102 +2,108 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 401B0606A326
-	for <linux-mediatek@archiver.kernel.org>; Thu, 26 Nov 2026 03:11:03 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id DFEA2606A6AD
+	for <linux-mediatek@archiver.kernel.org>; Thu, 26 Nov 2026 03:15:49 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=kwuQ1Aa2;
-	dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=IVqAuRGR
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=sToIlH8A;
+	dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=aV5HkW0A
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	Content-Transfer-Encoding:Cc:To:Message-Id:Content-Type:MIME-Version:Subject:
+	Date:From:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
 	List-Unsubscribe-Post:List-Owner;
-	bh=Xcd8RAsEVEjiV3LkvRveg5qq9poJ0EgfM91ZZy4Bye8=; b=kwuQ1Aa2AnYSNDCAmxjdhpKrtq
-	sT8QhNYXL3DA1ZgGHp+/W6skiUQC8bs3IxmQhVyZ4lKI31r4iWCE6rVnUKnzRq4okR2TgtmqafZJ1
-	MTyENw4txJykKVTEhTRvKTBjYcUhjfifAFmlXTDrQj0fLdvFnPwejuCn8BJQ8eKCCTWELHDvoZ3LV
-	T6d5Qou+xCL9IbjaXykmdytdfqgf+qHkwKODOV3O+So+LN9BMNqXFLPdDF/uL9N+OZ0ll6UrhlmK4
-	6zNWqB0qvBaIGVDu819bT1smWxjkzxM4NKCev5o5qJ+HuJU3tJ4vtA5zY/7P3rD4RoeaF81J9+dCt
-	Phn3GqZw==;
+	bh=ZSmv7LTcmbL4aQ49F7az28aiJc5rqxHA7rjPOy2NtXg=; b=sToIlH8AuZ+YsMvK9LSP1XuJFm
+	+cAfGJtK+nHf0VdhPwRPUTbzD2xeXEjAPddqjcNPe7/fGeNFwAIk/npYraTSe0ZnS/qnns3QYNu/O
+	VmgGngWDVJQnOcLEc1Oy6IqbkyMG3uDauJnu9xWD9jkb+5AfZoRhy95kneXk/HZkHaWfJ54X5D5Nx
+	gPTjoKpGml4xo59kki0DFgwzJw4T6FptJLeu594pCohAH0HPbIvPBfdWGAzwt0kgTtGwe5t0a+hTe
+	SRrVxrMcQ5XppiLGoBMmqs6Ko6mnbeBY4/eMBQwCLu7BFbOOn5PgyEh1It5XmKqMu/neADHTq/Zuk
+	1C0ilkiw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xWPsz-0000000ByWl-0rgS;
-	Thu, 26 Nov 2026 03:11:01 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1xWPxd-0000000BzUM-1kev;
+	Thu, 26 Nov 2026 03:15:49 +0000
+Received: from tor.source.kernel.org ([172.105.4.254])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xWPsf-0000000ByC5-13gl;
-	Thu, 26 Nov 2026 03:10:43 +0000
+	id 1xWPxa-0000000BzTx-0oMj;
+	Thu, 26 Nov 2026 03:15:47 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id B2A6261D90;
-	Thu, 26 Nov 2026 03:10:40 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 56E9460180;
+	Thu, 26 Nov 2026 03:15:45 +0000 (UTC)
 Authentication-Results: smtp.kernel.org; arc=none smtp.remote-ip=100.80.115.77
 ARC-Seal: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256; cv=none;
-	t=1795662640;
-	b=dOrREV5Ci6fkLAGRQIxsdmR4QonSBlcngjcLBrV7VfKOFvP64zrF1oR7sAswpQvw7nmj
-	 srcvO9KftLkK6w5s06MkggPePTcwNpl60+3EIfpZ/Kj3YUH+N+9M6iVpB1TymjME2061d
-	 SFts5n9+RXj8MK4t3BflnLjnHK1spm/K6BzN7+HhLe1U54Vu7EIQBTkdxnbPVhOHLmOVn
-	 wAGR2nxrAlA8PmUFLa7ZNmGgcKwNBs1/LZJ9sunwZYXt4EWqGSXex0KWXBYyEUGQ2rgkt
-	 7c1jocfq1rSTyAMZwfg6vHIwxkdVKgxTit9zpfxNMH+5pHXnivSb6WTEpa2fmRVeQCA==
+	t=1795662945;
+	b=gyWjPmjtNxkrrR2p22uOGZSozQf0Cg3kyEuuzoDTjb1iNi+nmDY2POyU1nsO/VaaPOGs
+	 RY+UKHFseAL+YYqslUqkd0U34NkHd1lkc2IyWp2EubMpIFurOngI6V0TpVP9CfjfIXD1B
+	 tVdqQalrZG26bQFSD6YNa53UIpCKoArr4whWD7bH8OogRY+xLyAUta8Y9OgxA4UfHl+hX
+	 ssdXkBg2/h4O73UvA3jqiLuBIIBUFPv2Sfk/iylf/7gOv54DMfLDySfln7zVSlrXb2kq/
+	 DqYdhXkrqvbrjjvQmUHiaQs4Kxgb1REcHQD0knKlPHFYcDOyhrD6FRZhuF4uV8TXP1g==
 ARC-Message-Signature: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256;
-	c=relaxed/relaxed; t=1795662640;
-	h=DKIM-Signature:Received:From:To:Cc:Subject:Date:Message-Id:
-	 In-Reply-To:References:MIME-Version:Content-Type:X-Mailer:
+	c=relaxed/relaxed; t=1795662945;
+	h=DKIM-Signature:Received:From:Date:Subject:MIME-Version:Content-Type:
+	 Message-Id:X-B4-Tracking:X-Change-ID:To:Cc:X-Mailer:
 	 X-Developer-Signature:X-Developer-Key:X-Endpoint-Received:
 	 X-Original-From:Reply-To:Content-Transfer-Encoding;
-	bh=Xcd8RAsEVEjiV3LkvRveg5qq9poJ0EgfM91ZZy4Bye8=;
-	b=rYKedey3thgCd7t7OvFQP/12PA708DXTgL4KLCsVShQdEzpqTFqVfnC/5EGA3NcYQ6q7
-	 rt9RGa7zgaDC+p/toNEt68nuSKO+AViyblkX8RcSoKF7+88u4TIWwXIC5xInbZOk1twXo
-	 56wagsmWpYrZNeOFrsBFA8hpGEawBRziZD8BJz3eHBaDBWRfBQrswzl/TvvoPZUUwWspj
-	 0nuGhz2KUnZRnWeV2ggyUOEEblktJnNv7WJzhOv5obOUU4Vl1R6hPKJCHaiWEVQbIjm9/
-	 i+oFBXds8mMTepkHMdCapq6mB/RnFz0gaIe3QUaaZpfaBWQxOeOB4tEZLIyTsdIwT4w==
+	bh=ZSmv7LTcmbL4aQ49F7az28aiJc5rqxHA7rjPOy2NtXg=;
+	b=e0wEDc2O6npA+5zaZTsw1bfMhEzYZElcL6yjtr0e+mUDn6R76YxOxifulKC2sAQIcGgg
+	 zQVvlzxti6OwroL4TQYxb6AljGZhJHv6suF/AKmDmMWKqWH7fQUSY8QLbmlOjKQytanB4
+	 TYsQcuoFOREYSAOB8V+e7xIy4BdCVcjFgzvtvA15QS5ya9ft9u4VHALqsJg6/Dq2GFa35
+	 mV0OYJJgdG9xBf1XFIzhBMlUhneW9bJ2y4qcC39AYAM+uEMbJSLkLvJPW7TSyibWDGzh1
+	 pexdkYGMDMsRwSFDt0mSTKVMj61KdVTJeR1BxuJ3f6/4nDzh9CA0TRdkCZBE7v/a/JA==
 ARC-Authentication-Results: i=1; smtp.kernel.org; 
 	arc=none smtp.remote-ip=100.80.115.77
 Received: from lkml.kernel.org (nexus.subspace.kernel.org [100.80.115.77])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.kernel.org (Postfix) with ESMTPS id B946E1F00A36;
-	Thu, 26 Nov 2026 03:10:18 +0000 (UTC)
+	by smtp.kernel.org (Postfix) with ESMTPS id 8E3291F000C6;
+	Thu, 26 Nov 2026 03:15:43 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1795662640;
-	bh=Xcd8RAsEVEjiV3LkvRveg5qq9poJ0EgfM91ZZy4Bye8=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:Reply-To;
-	b=IVqAuRGRiTbcsAr37s+CpxPcaj9LlcJBmzTTCoRTpJctgZH8dzYM4HpOgDWRDy+Uw
-	 QCuIOXhqRpkdsGU/Wtpz7/eaOa6qNl/vFHFEyDUxlNvQEVuBpOcUyLchJ1PHO1bFWJ
-	 /LaDl3On/FwXHrr0EuRFnhC92pFbahRUqid08w0wp12fnJ/dGDlZBvCMtO4mXSAUiG
-	 q+9CEBxGsBZgFdWn08Zrc7tA/FMI9f/WgI6OGLwLcsojfwzuaMFhmj4aHkYQWN7PlS
-	 k8QTmIjJ95fO2L3jIerT4WidJGOZGDLn73RsjSgwCghGPLWSPnsdBrWjOEpiN3OSzq
-	 iOT19vL+6akYw==
+	s=k20260515; t=1795662945;
+	bh=ZSmv7LTcmbL4aQ49F7az28aiJc5rqxHA7rjPOy2NtXg=;
+	h=From:Date:Subject:To:Cc:Reply-To;
+	b=aV5HkW0AhFeiFTdi4TKO+lq2HxkFlp76nZBHcstkJES39wzzJi48sEoOB3pbKqJdJ
+	 Xjb4ULlqLI1zUWSuuww42UA75MuMhmcAzuMG26UOh9EzKPcWrqgyxjZ9Lg87CRydEc
+	 tmFXCEWzd08rgSqPWpMP9gP4hPFW6VNIiNqfBsfOHXwSlWcZCl58nx1whvxmpyjBep
+	 zya7c1GOHEb41xUHMdRNX45qBc1DcylyWXgKkjgqoLe8+uAKP57XlxEHO5f4BG47TP
+	 LrXRcutedPAsWbz6GX5xjRKMErbpc4neaoEblyamE+J/Te2LGmTZMK+EQCgfXxsVIX
+	 dpQAVFlsG8yyw==
 Received: from nexus.subspace.kernel.org (localhost [IPv6:::1])
-	by lkml.kernel.org (Postfix) with ESMTP id 593754D1FE;
-	Thu, 26 Nov 2026 03:10:15 +0000 (UTC)
-From: Ilia Snezhkov via B4 Relay <devnull+iasnezhkov.gmail.com@kernel.org>
-To: jic23@kernel.org, dlechner@baylibre.com, nuno.sa@analog.com, 
- andy@kernel.org
-Cc: matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com, 
- linux-iio@vger.kernel.org, linux-mediatek@lists.infradead.org, 
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: [PATCH v2 2/3] iio: adc: mt6359: fix MT6357 ISENSE/VCDT and MT6358
- VCDT request bits
-Date: Thu, 26 Nov 2026 03:10:15 +0000
-Message-Id: <20261126031013.27701-3-iasnezhkov@gmail.com>
-In-Reply-To: <20261126031013.27701-1-iasnezhkov@gmail.com>
-References: <20261126031013.27701-1-iasnezhkov@gmail.com>
+	by lkml.kernel.org (Postfix) with ESMTP id 202774D1C9;
+	Thu, 26 Nov 2026 03:15:43 +0000 (UTC)
+From: Hank Liou via B4 Relay <devnull+hank.liou.mediatek.com@kernel.org>
+Date: Thu, 26 Nov 2026 11:15:43 +0800
+Subject: [PATCH] drm/mediatek: dp: Disable HPD IRQ before cancelling
+ debounce timer
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
-X-Mailer: b4 0.16.0
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1795662614; l=2570;
- i=iasnezhkov@gmail.com; s=mindone2026; h=from:subject:message-id;
- bh=Tm2foiR76Y5F+c07n1fWMZO/zetnJqISUTM3KZbbJ1Y=;
- b=3GIxGW63svjr+l/NjC6o6Ty65Pl/a8/SpLlAM/aXmKmB3+dXDCsTdEHbDIw+FkQx862VMUgYV
- exOlE95VR5BDNrC+pr8EEnInI5ddM/FAWiCw8tlqTfAvuOC3ELz/Vgs
-X-Developer-Key: i=iasnezhkov@gmail.com; a=ed25519;
- pk=hQgXfiWi4ukk2jh4BHu1vRVhg9BUivo//AFp50AKMag=
-X-Endpoint-Received: by B4 Relay for iasnezhkov@gmail.com/mindone2026 with
- auth_id=1643
-X-Original-From: Ilia Snezhkov <iasnezhkov@gmail.com>
+Message-Id: <20261126-mtk-dp-hpd-irq-v1-1-0b8663980732@mediatek.com>
+X-B4-Tracking: v=1; b=H4sIAF6kB2sC/x3MQQqAIBBA0avErBvIgSy6SrSoHGuIyjQiEO+et
+ HyL/yME9sIBuiKC50eCnEeGKguY1/FYGMVkA1WklSKN+72hcbg6g+IvrO3cTto2xJohR86zlfc
+ f9kNKHzLLnKdgAAAA
+X-Change-ID: 20261126-mtk-dp-hpd-irq-5fc8b6f72e6e
+To: Chun-Kuang Hu <chunkuang.hu@kernel.org>, 
+ Philipp Zabel <p.zabel@pengutronix.de>
+Cc: David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ CK Hu <ck.hu@mediatek.com>, Jitao Shi <jitao.shi@mediatek.com>, 
+ dri-devel@lists.freedesktop.org, linux-mediatek@lists.infradead.org, 
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ Hank Liou <hank.liou@mediatek.com>
+X-Mailer: b4 0.14.3
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1795662942; l=1945;
+ i=hank.liou@mediatek.com; s=20261126; h=from:subject:message-id;
+ bh=l8xHL6bFv9F0w89mKejFr4yktC399A1FMDm4H5KqRU4=;
+ b=GMsAhPoL7vpG1VsZ4mqOsHWU7s0UrcQwn0VDsAGlTrnk2NTX+fHABoTmEUf+xrjgHTZSOx5qV
+ 8qi+ncW7drhCPh3Y5V+fsYw6ylYT6RVz4Z9L86R0hWFvc5cCKTeJoHC
+X-Developer-Key: i=hank.liou@mediatek.com; a=ed25519;
+ pk=oQN2zU+HMrJQgqX4bhL5CVRrBmac4amZ/53yK20L/6M=
+X-Endpoint-Received: by B4 Relay for hank.liou@mediatek.com/20261126 with
+ auth_id=1646
+X-Original-From: Hank Liou <hank.liou@mediatek.com>
 Content-Transfer-Encoding: 7bit
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -108,7 +114,7 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Reply-To: iasnezhkov@gmail.com
+Reply-To: hank.liou@mediatek.com
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 X-Spam-Status: No, score=-18.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,
@@ -118,55 +124,56 @@ X-Spam-Status: No, score=-18.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-From: Ilia Snezhkov <iasnezhkov@gmail.com>
+From: Hank Liou <hank.liou@mediatek.com>
 
-mt6357_auxadc_ch_desc[] sets req_bit to 0 for both ISENSE and VCDT, and
-mt6358_auxadc_ch_desc[] sets req_bit to 0 for VCDT. Bit 0 of
-PMIC_AUXADC_RQST0 triggers BATADC (ADC0) rather than ISENSE (ADC1) or
-VCDT (ADC2), so polling the ready bit of ADC1/ADC2 times out unless the
-channel was triggered externally.
+mtk_dp_remove() cancels debounce_timer with timer_delete_sync(), but the
+HPD interrupt that re-arms it from mtk_dp_hpd_event_thread() is
+requested with devm_request_threaded_irq() and stays enabled until
+devres runs after .remove returns. An HPD falling edge between the
+timer cancellation and the IRQ release re-arms the timer, which can
+then expire after the driver has been unbound, when the struct mtk_dp
+that embeds it may already be freed.
 
-Use the actual hardware request bits in PMIC_AUXADC_RQST0: bit 1 for
-MT6357 ISENSE and bit 2 for MT6357/MT6358 VCDT (matching MT6363 VCDT
-and the MediaTek PMIC AUXADC hardware registers).
+Disable the IRQ first, which also waits for a running hard or threaded
+handler, then cancel the timer. Do this before the runtime PM calls so
+the interrupt is quiesced while the hardware is still powered.
 
-Fixes: 3587914bf61d ("iio: adc: Add support for MediaTek MT6357/8/9 Auxiliary ADC")
-Signed-off-by: Ilia Snezhkov <iasnezhkov@gmail.com>
+Fixes: 4652e95e7ea6 ("drm/mediatek: dp: Add hpd debounce")
+Signed-off-by: Hank Liou <hank.liou@mediatek.com>
 ---
-Changes in v2:
-- Move AI coding assistant note below ---. No code changes.
+Fix the ordering of the HPD IRQ disable and the debounce timer cancellation in mtk_dp_remove().
+---
+ drivers/gpu/drm/mediatek/mtk_dp.c | 7 +++++--
+ 1 file changed, 5 insertions(+), 2 deletions(-)
 
-Found and drafted with an AI coding assistant.
-
- drivers/iio/adc/mt6359-auxadc.c | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
-
-diff --git a/drivers/iio/adc/mt6359-auxadc.c b/drivers/iio/adc/mt6359-auxadc.c
-index 54c9048..4a66253 100644
---- a/drivers/iio/adc/mt6359-auxadc.c
-+++ b/drivers/iio/adc/mt6359-auxadc.c
-@@ -224,8 +224,8 @@ static const struct iio_chan_spec mt6357_auxadc_channels[] = {
+diff --git a/drivers/gpu/drm/mediatek/mtk_dp.c b/drivers/gpu/drm/mediatek/mtk_dp.c
+index 974c4fff6..7a5e380fd 100644
+--- a/drivers/gpu/drm/mediatek/mtk_dp.c
++++ b/drivers/gpu/drm/mediatek/mtk_dp.c
+@@ -2865,10 +2865,13 @@ static void mtk_dp_remove(struct platform_device *pdev)
+ {
+ 	struct mtk_dp *mtk_dp = platform_get_drvdata(pdev);
  
- static const struct mtk_pmic_auxadc_chan mt6357_auxadc_ch_desc[] = {
- 	MTK_PMIC_ADC_CHAN(BATADC, PMIC_AUXADC_RQST0, 0, PMIC_AUXADC_IMP0, 8, 128, 3, 1),
--	MTK_PMIC_ADC_CHAN(ISENSE, PMIC_AUXADC_RQST0, 0, PMIC_AUXADC_IMP0, 8, 128, 3, 1),
--	MTK_PMIC_ADC_CHAN(VCDT, PMIC_AUXADC_RQST0, 0, PMIC_AUXADC_IMP0, 8, 8, 1, 1),
-+	MTK_PMIC_ADC_CHAN(ISENSE, PMIC_AUXADC_RQST0, 1, PMIC_AUXADC_IMP0, 8, 128, 3, 1),
-+	MTK_PMIC_ADC_CHAN(VCDT, PMIC_AUXADC_RQST0, 2, PMIC_AUXADC_IMP0, 8, 8, 1, 1),
- 	MTK_PMIC_ADC_CHAN(BAT_TEMP, PMIC_AUXADC_RQST0, 3, PMIC_AUXADC_IMP0, 8, 8, 1, 1),
- 	MTK_PMIC_ADC_CHAN(CHIP_TEMP, PMIC_AUXADC_RQST0, 4, PMIC_AUXADC_IMP0, 8, 8, 1, 1),
- 	MTK_PMIC_ADC_CHAN(ACCDET, PMIC_AUXADC_RQST0, 5, PMIC_AUXADC_IMP0, 8, 8, 1, 1),
-@@ -271,7 +271,7 @@ static const struct iio_chan_spec mt6358_auxadc_channels[] = {
- 
- static const struct mtk_pmic_auxadc_chan mt6358_auxadc_ch_desc[] = {
- 	MTK_PMIC_ADC_CHAN(BATADC, PMIC_AUXADC_RQST0, 0, PMIC_AUXADC_IMP0, 8, 128, 3, 1),
--	MTK_PMIC_ADC_CHAN(VCDT, PMIC_AUXADC_RQST0, 0, PMIC_AUXADC_IMP0, 8, 8, 1, 1),
-+	MTK_PMIC_ADC_CHAN(VCDT, PMIC_AUXADC_RQST0, 2, PMIC_AUXADC_IMP0, 8, 8, 1, 1),
- 	MTK_PMIC_ADC_CHAN(BAT_TEMP, PMIC_AUXADC_RQST0, 3, PMIC_AUXADC_IMP0, 8, 8, 2, 1),
- 	MTK_PMIC_ADC_CHAN(CHIP_TEMP, PMIC_AUXADC_RQST0, 4, PMIC_AUXADC_IMP0, 8, 8, 1, 1),
- 	MTK_PMIC_ADC_CHAN(ACCDET, PMIC_AUXADC_RQST0, 5, PMIC_AUXADC_IMP0, 8, 8, 1, 1),
++	if (mtk_dp->data->bridge_type != DRM_MODE_CONNECTOR_eDP) {
++		disable_irq(mtk_dp->irq);
++		timer_delete_sync(&mtk_dp->debounce_timer);
++	}
++
+ 	pm_runtime_put(&pdev->dev);
+ 	pm_runtime_disable(&pdev->dev);
+-	if (mtk_dp->data->bridge_type != DRM_MODE_CONNECTOR_eDP)
+-		timer_delete_sync(&mtk_dp->debounce_timer);
+ 	platform_device_unregister(mtk_dp->phy_dev);
+ 	if (mtk_dp->audio_pdev)
+ 		platform_device_unregister(mtk_dp->audio_pdev);
+
+---
+base-commit: ebb7a8dc1e74c705daffe11c2faf38ec2628f838
+change-id: 20261126-mtk-dp-hpd-irq-5fc8b6f72e6e
+
+Best regards,
 -- 
-2.54.0 (Apple Git-157)
+Hank Liou <hank.liou@mediatek.com>
 
 
 
