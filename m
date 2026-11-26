@@ -2,102 +2,67 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 6DE1A606A321
-	for <linux-mediatek@archiver.kernel.org>; Thu, 26 Nov 2026 00:54:54 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 6B01E606A321
+	for <linux-mediatek@archiver.kernel.org>; Thu, 26 Nov 2026 01:16:59 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=k3OL16da;
-	dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=BbUHrtif
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=UT9pnBu7;
+	dkim=pass (2048-bit key, unprotected) header.d=kuvshynov.xyz header.i=@kuvshynov.xyz header.a=rsa-sha256 header.s=key1 header.b=CNESYQo4
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
-	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:
-	Message-Id:Date:Subject:Cc:To:From:Content-ID:Content-Description:Resent-Date
-	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:To:Cc:Date:Message-Id:
+	Subject:Mime-Version:Content-Type:From:Reply-To:Content-Transfer-Encoding:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
 	List-Unsubscribe-Post:List-Owner;
-	bh=K5FFI394OFMdGPEkQA4YWLY4c1CiFl6MzB/Tecc86+Y=; b=k3OL16daFczvDkCEwnZcuYd7Rg
-	E18Tf9ZbbHv2bMoABm068JT5SP47UxlgJNmib+rhCWxy2AFONzYAjQ/rQ2KvY/9rJVy2k+aHRWsFT
-	3U8iRlJHoIrxRUE/RNvTjrTsqVSqW9q+SdGMegMtp0G/SS84cgb5gjz/02fGraMbNtEGIzZ8WwxpV
-	xz6UM4yPX+XW2SrYhi3vs6tzPLv25NIzUgki3IlraaZ4ztqfUHoRNYRu4JpjTs0uvPRhJvLqkf4GR
-	2pw17KMcJoXtoSZZkzW+IAzHJu41o8ob8ea2EDp42i4FJi8wu81QhJK4FeC09jEGgpxy1R5ObKv/f
-	w61Ymgsw==;
+	bh=oi8L3kEVdXFewp+18FjkZTFUKoDHI4eCKkTLgjW+C28=; b=UT9pnBu7fAY0IKb6eCdoFciz2H
+	hf1kdg1bnAycms1Xqmpwyz2gXs5A3rqkANYSWTvfQYFwEb/qeyKwKA246A+IfqD5gHHg9uAqby48J
+	n0KEhYOeORWcIs8jCrBSOhf/E5bPO+wa/ze3ZDRNnV1nGGb942EsLbtZtN+GE898arPJl9VVMBh7V
+	PlNPKJ+WFHQxVuC1aZ1XI0gbnh5PjuUB1AFGYIpy3rJtMznHkSVXxTwBpuZPtL9wbo1Z4C77wosoe
+	AfgA961sCPEoE7sFrKdbyRS0lBmQCJ5t8OPKddgbJe6CCAcfuaF3P0g+14fqunz27D07fi8i24Npk
+	0ZvLEqZQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xWNlF-0000000BjHR-2zMk;
-	Thu, 26 Nov 2026 00:54:53 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1xWO6c-0000000Bml4-3LT1;
+	Thu, 26 Nov 2026 01:16:59 +0000
+Received: from out-160.mta0.migadu.com ([2001:41d0:1004:224b::a0] helo=mta0.migadu.com)
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xWNkA-0000000BiOa-0Bsw;
-	Thu, 26 Nov 2026 00:53:48 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id BD65E41836;
-	Thu, 26 Nov 2026 00:53:45 +0000 (UTC)
-Authentication-Results: smtp.kernel.org; arc=none smtp.remote-ip=100.80.115.77
-ARC-Seal: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256; cv=none;
-	t=1795654425;
-	b=P2GRev9w+pw6kufLVx6cMjQNB7FEHa+7e9E7EBa1zcpJutLO+CA5oEpy3JH/uECShcty
-	 mzb/MMMGgoBPBFLpAyBO5gzjoENyzEro0xFLaAcHanWtjB9MZpJaJspZ1sCbv00lTVOKQ
-	 jVQd9+u4MkBpaxfJW9Zll9276VmWC1ltmhoQXgp6giMoV2HtvsFvx2fAungqsWVUXFesg
-	 a4k6AVfVaRRUDuLMfvtGLME2eeTNu21ouBcOm1cwIfgNSuKEAYwshsouflD8YYLbpd/hJ
-	 GiMYK5yv07DEZsXuaNDd83tX9YnDl75tqDNuM5TDFILXJ+Uydoa50kSgiIWtXDXpTDg==
-ARC-Message-Signature: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256;
-	c=relaxed/relaxed; t=1795654425;
-	h=DKIM-Signature:Received:From:To:Cc:Subject:Date:Message-Id:
-	 In-Reply-To:References:MIME-Version:Content-Type:X-Mailer:
-	 X-Developer-Signature:X-Developer-Key:X-Endpoint-Received:
-	 X-Original-From:Reply-To:Content-Transfer-Encoding;
-	bh=K5FFI394OFMdGPEkQA4YWLY4c1CiFl6MzB/Tecc86+Y=;
-	b=nkWFsG8fEQmmhulMCMn1VGoDVd93uy8FUDWn6B/k2q0MmqYuTFkzfbZmr0vJgW7is3M+
-	 ZwdFJQOj3YJz9oHRjPrHep81zmMWI3nzVAp0r4VOHeyloTHRreZsohah1LOgBvHcd11KC
-	 rTVp4f3Pa18eknrY970YHzlFwQ2s78QwZiCA2LblFelOrlzPROPPF+t6V423hI2T2Yr1v
-	 Hnub2W6eUBbQ0vdb7K/InEchio8x6goDKUvKg2vw+pu8JzRSIddExSuV2KWwKEHZRkcQD
-	 BWxlj4dpPjMDsFHdiiNEnvLnwScBfkfwgNNXg6PCsD5tZuBW0HmsYLAMCGvsZ4pwE6Q==
-ARC-Authentication-Results: i=1; smtp.kernel.org; 
-	arc=none smtp.remote-ip=100.80.115.77
-Received: from lkml.kernel.org (nexus.subspace.kernel.org [100.80.115.77])
-	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
-	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
-	(No client certificate requested)
-	by smtp.kernel.org (Postfix) with ESMTPS id 62A681F0156C;
-	Thu, 26 Nov 2026 00:53:32 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1795654425;
-	bh=K5FFI394OFMdGPEkQA4YWLY4c1CiFl6MzB/Tecc86+Y=;
-	h=From:To:Cc:Subject:Date:In-Reply-To:References:Reply-To;
-	b=BbUHrtifF5icG0LhBs+/2UsinfE4jMNI35oTTERicdeXLUbY0yzAoW/D3eQ1ROtEx
-	 iwjoasmXUDbz7Z7lLlK3DNA57VBve0rKKWKALnbErojUsFHSGmOT5mjSzpSi8kUeTm
-	 Ain1n7kHF5eY1TpLLeLrH/7B7JPQ54SEy6x7Tcbe63AuFH3c0idUFTMClx1x15fBli
-	 A0prV77s3iLtL9DG+VmvPd5AHscYM8X656pE9zEx9GIwIo4WEHYpCj1wrX7tKyoIRA
-	 qKs9eyT2gllRGTG0Y82lVafzYfpEWd3tu5GCMz7AqiqX/vLqeut6if/n5zqz86Vex8
-	 Zj3k/A4sDCm+g==
-Received: from nexus.subspace.kernel.org (localhost [IPv6:::1])
-	by lkml.kernel.org (Postfix) with ESMTP id 37DA24D148;
-	Thu, 26 Nov 2026 00:53:27 +0000 (UTC)
-From: Ilia Snezhkov via B4 Relay <devnull+iasnezhkov.gmail.com@kernel.org>
-To: jic23@kernel.org, dlechner@baylibre.com, nuno.sa@analog.com, 
- andy@kernel.org
-Cc: matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com, 
- linux-iio@vger.kernel.org, linux-mediatek@lists.infradead.org, 
- linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: [PATCH 1/3] iio: adc: mt6359: divide scale by ADC resolution
-Date: Thu, 26 Nov 2026 00:53:27 +0000
-Message-Id: <20261126005326.71926-2-iasnezhkov@gmail.com>
-In-Reply-To: <20261126005326.71926-1-iasnezhkov@gmail.com>
-References: <20261126005326.71926-1-iasnezhkov@gmail.com>
+	id 1xWO5S-0000000Bli8-07NK
+	for linux-mediatek@lists.infradead.org;
+	Thu, 26 Nov 2026 01:15:52 +0000
+X-Envelope-To: linux-mediatek@lists.infradead.org
+DKIM-Signature: a=rsa-sha256; bh=bKWYXtTykQ2RQx49uZp3M7P5xNOMavMZbAVdvl7Ufnc=;
+ c=simple/simple; d=kuvshynov.xyz;
+ h=from:to:subject:date:message-id:mime-version:content-type; s=key1;
+ t=1795655740; v=1; x=1796260540;
+ b=CNESYQo4cyXhI8H/6G/Egd4Ev0HAxWc44xD07+4FGZYY+bcFBK9GNrJ2GNdQigmeAzdPb8R3
+ ty8Jczs7p4zFiGR2RPRmBSbSlfe8ovXSIbtLyYsd4roTE8/dPiAUm9psNnZ7Y1D+1XcYTgEZ3ZU
+ +RM2ovfy8tyMRAlSa87ml/opBfni4Vc+lUq2DfWTNx0rrNclwT4htQMOdtCsMB2efDSgTj+O+oY
+ MCV4iB7oX3ZxsqD4pghzRNO/fx2/LaWPIXfo3mrNlMlU4z5IP1iPD5s4ufssomY+RNNjFXx+OeH
+ 6pBywqkipaVJ3wvHGa10McCeTJ9XZn2ul4FJauxG79qLQ==
+X-Envelope-To: linux-mediatek@lists.infradead.org
+Received: by mta12.migadu.com with ESMTPS id 4dfbe5a5a5d9201a;
+	Thu, 26 Nov 2026 01:15:40 +0000
+X-Mizu-Trace-ID: 4dfbe5a5a5d9201a
+X-Migadu-Flow: FLOW_OUT
+From: Yurii Kuvshynov <yurii@kuvshynov.xyz>
+Content-Type: multipart/mixed;
+	boundary="Apple-Mail=_7A4153F3-D5ED-4F94-BCA9-D27A04A9E22F"
 X-Archived-By: <archiver.kernel.org>
-MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-X-Mailer: b4 0.16.0
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1795654406; l=1939;
- i=iasnezhkov@gmail.com; s=mindone2026; h=from:subject:message-id;
- bh=7vl4u01SgEwCwc9gl97LuugAuG8wvcClmhuIXz5B3VY=;
- b=M8ELTrNymnSSBWnP8gL6gLxOjdl2/HKVLecz/v7T5ncHp45P7pIx1mRuN2Oe8O5ic9rZfd5TL
- 0UqwEjBwP4nCH1dmLbKyCuBz49O1aoUzCyYUkdxvixwGZbEItLupanh
-X-Developer-Key: i=iasnezhkov@gmail.com; a=ed25519;
- pk=hQgXfiWi4ukk2jh4BHu1vRVhg9BUivo//AFp50AKMag=
-X-Endpoint-Received: by B4 Relay for iasnezhkov@gmail.com/mindone2026 with
- auth_id=1643
-X-Original-From: Ilia Snezhkov <iasnezhkov@gmail.com>
-Content-Transfer-Encoding: 7bit
+Mime-Version: 1.0 (Mac OS X Mail 16.0 \(3901.200.71.1.16\))
+Subject: [BUG] mt7921e: MT7922 firmware hangs on S3 resume if the AP rekeyed
+ the GTK during a WoWLAN suspend
+Message-Id: <FF47DB7A-4653-4ACA-8323-3C8B0043463F@kuvshynov.xyz>
+Date: Thu, 26 Nov 2026 02:15:29 +0100
+Cc: linux-mediatek@lists.infradead.org,
+ nbd@nbd.name,
+ lorenzo@kernel.org,
+ ryder.lee@mediatek.com,
+ shayne.chen@mediatek.com,
+ sean.wang@mediatek.com
+To: linux-wireless@vger.kernel.org
+X-Mailer: Apple Mail (2.3901.200.71.1.16)
+X-Spam-Note: CRM114 run bypassed due to message size (190811 bytes)
+X-Spam-Score: 0.4 (/)
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -107,66 +72,2183 @@ List-Post: <mailto:linux-mediatek@lists.infradead.org>
 List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
-Reply-To: iasnezhkov@gmail.com
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-18.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-5.3 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,
-	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=ham
+	FROM_SUSPICIOUS_NTLD,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
+	SPF_HELO_NONE,SPF_PASS,T_PDS_OTHER_BAD_TLD autolearn=no
 	autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-From: Ilia Snezhkov <iasnezhkov@gmail.com>
 
-mt6359_auxadc_read_raw() returns raw ADC counts for IIO_CHAN_INFO_RAW
-(12-bit or 15-bit depending on the channel), and returns only
-(r_ratio.numerator * vref_mV) / r_ratio.denominator for
-IIO_CHAN_INFO_SCALE without dividing by the ADC full-scale range
-(1 << chan->scan_type.realbits).
+--Apple-Mail=_7A4153F3-D5ED-4F94-BCA9-D27A04A9E22F
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain;
+	charset=us-ascii
 
-As a result, iio_read_channel_processed() and userspace consumers
-multiplying raw * scale obtain millivolt values that are 4096x (12-bit)
-or 32768x (15-bit) too large.
+Hi,
 
-Include the 1 << chan->scan_type.realbits divisor in
-IIO_CHAN_INFO_SCALE: shift r_ratio.denominator left by realbits for
-IIO_VAL_FRACTIONAL when denominator > 1 (r_ratio.denominator is u8 and
-realbits is at most 15, so the result fits comfortably in int), and
-return IIO_VAL_FRACTIONAL_LOG2 with realbits otherwise so channels with
-denominator == 1 use an exact shift and unpopulated descriptors (such
-as MT6357 VDCXO where denominator == 0) cannot trigger division by zero.
+If the AP performs a group key (GTK) rekey while an MT7922 is in S3 with
+WoWLAN armed, the firmware stops answering MCU commands on the first key
+install after resume. The driver's chip reset then fails in a loop, =
+reboot
+hangs, and the card stays dead across warm reboots until power is =
+physically
+removed. Reproduced on 5 GHz and 6 GHz; never seen without a rekey =
+during the
+suspend.
 
-Found and drafted with an AI coding assistant.
+Setup
+  Board:     ASRock B650I Lightning WiFi, BIOS 4.10 (2026-02-09)
+  Device:    MT7922 [14c3:0616], subsystem 14c3:0616, ASIC rev 79220010
+  Firmware:  HW/SW 0x8a108a10 build 20260724143257a,
+             WM ____000000 build 20260724143402
+             (linux-firmware 20261019, latest available)
+  Kernel:    7.3.5-arch1-1 (Arch Linux), mem_sleep =3D deep (S3)
+  Cmdline:   nowatchdog nvme_load=3DYES loglevel=3D3 (no mt7921e/ASPM =
+parameters;
+             disable_aspm=3DN)
+  Userspace: NetworkManager 1.58.1 + wpa_supplicant;
+             wifi.powersave =3D 2 (off), wifi.wake-on-wlan =3D magic
+             (iw phy: "WoWLAN is enabled: wake up on magic packet")
+  AP:        ASUS TUF-BE9400, firmware 3.0.0.6.102_58501; Wi-Fi 7 mode =
+and
+             MLO disabled on the client network. WPA2/WPA3-Personal, =
+CCMP,
+             PMF; the STA uses SAE.
+             5 GHz BSS 36:c5:99:ea:67:e9 (5200 MHz, 80 MHz)
+             6 GHz BSS 36:c5:99:ea:67:ea (6295 MHz)
+             Group key rekey interval 3600 s (default, =
+wpa_gtk_rekey=3D3600).
 
-Fixes: 3587914bf61d ("iio: adc: Add support for MediaTek MT6357/8/9 Auxiliary ADC")
-Signed-off-by: Ilia Snezhkov <iasnezhkov@gmail.com>
----
- drivers/iio/adc/mt6359-auxadc.c | 5 +++--
- 1 file changed, 3 insertions(+), 2 deletions(-)
+Steps
+  1. Associate with WoWLAN magic-packet armed (5 or 6 GHz).
+  2. systemctl suspend (S3) and stay asleep across an AP group rekey.
+     A 4-minute suspend spanning the rekey time is enough.
+  3. Resume. NetworkManager deauthenticates and reassociates.
 
-diff --git a/drivers/iio/adc/mt6359-auxadc.c b/drivers/iio/adc/mt6359-auxadc.c
-index 88b0e26..54c9048 100644
---- a/drivers/iio/adc/mt6359-auxadc.c
-+++ b/drivers/iio/adc/mt6359-auxadc.c
-@@ -772,11 +772,12 @@ static int mt6359_auxadc_read_raw(struct iio_dev *indio_dev,
- 		*val = desc->r_ratio.numerator * cinfo->vref_mV;
- 
- 		if (desc->r_ratio.denominator > 1) {
--			*val2 = desc->r_ratio.denominator;
-+			*val2 = (int)desc->r_ratio.denominator << chan->scan_type.realbits;
- 			return IIO_VAL_FRACTIONAL;
- 		}
- 
--		return IIO_VAL_INT;
-+		*val2 = chan->scan_type.realbits;
-+		return IIO_VAL_FRACTIONAL_LOG2;
- 	}
- 
- 	scoped_guard(mutex, &adc_dev->lock) {
--- 
-2.54.0 (Apple Git-157)
+Expected
+  Link comes back.
+
+Actual
+  ~3 s after association a key install times out and the MCU never =
+recovers:
+
+    21:27:57 PM: suspend exit
+    21:28:01 wlan0: associated
+    21:28:04 mt7921e 0000:0a:00.0: Message 00020003 (seq 14) timeout
+    21:28:04 wlan0: failed to set key (1, ff:ff:ff:ff:ff:ff) to hardware =
+(-110)
+    21:28:06 mt7921e 0000:0a:00.0: MCU is not ready for firmware =
+download
+    21:28:06 mt7921e 0000:0a:00.0: Loading firmware patch: =
+mediatek/WIFI_MT7922_patch_mcu_1_1_hdr.bin
+    21:28:09 mt7921e 0000:0a:00.0: Message 00000010 (seq 1) timeout
+    21:28:09 mt7921e 0000:0a:00.0: Failed to get patch semaphore
+    ... repeats for 40+ minutes, with "chip reset failed" every few =
+attempts
+        and Message 00020001 / 00020002 / 000046ed timeouts in between
+
+  The failing key index varies (1, 2 =3D GTK; 4 =3D IGTK seen in a later =
+retry).
+  A reboot then hangs with the reset loop still running. After a warm =
+reboot
+  the card does not probe until power is removed:
+
+    mt7921e 0000:0a:00.0: enabling device (0000 -> 0002)
+    mt7921e 0000:0a:00.0: driver own failed
+    mt7921e 0000:0a:00.0: probe with driver mt7921e failed with error -5
+
+Tests (same AP; the AP rekeyed at hh:25:38 every hour)
+  Band asleep  Sleep                Rekey during sleep  Result
+  6 GHz        12:21-17:20 (5 h)    yes (5)             hang
+  6 GHz        19:45-21:27 (1.7 h)  yes (2)             hang
+  6 GHz        22:49-22:52 (3 min)  no                  OK
+  6 GHz        23:23-23:28 (4 min)  yes (23:25:38)      hang; =
+reassociated on
+                                                        5 GHz and still =
+hung
+  5 GHz        23:40-00:45 (65 min) yes                 hang
+  6 GHz        01:23-01:28 (4 min)  no (AP rekey set    OK
+                                    to 0, wpa_gtk_rekey=3D0)
+
+  The damage happens during the suspend: in the 23:23 test the STA =
+rejoined a
+  different band after resume and the first key install still timed out.
+  No MCU timeouts ever occur at runtime: hours associated on 6 GHz with
+  hourly rekeys handled by the host (wpa_supplicant "Group rekeying
+  completed") and ASPM enabled are clean. A previous AP that never =
+rekeyed
+  survived WoWLAN suspends of up to 18 h.
+
+  This suggests the firmware's GTK rekey offload during WoWLAN leaves =
+the MCU
+  in a state that hangs on the next STA_REC key update.
+
+Workaround
+  Disabling group key rotation on the AP (wpa_gtk_rekey=3D0).
+
+Separately, the unbounded reset loop blocks reboot; a bounded number of
+retries would at least let the machine restart.
+
+Attached:
+  kernel-failing-boot.log.gz        full kernel log of the boot with the =
+21:27 resume
+  resume-window-nm-wpa-kernel.log   kernel + NetworkManager + =
+wpa_supplicant, 19:40-21:30
+  first-failure-and-warm-reboot-probe.log
+                                    kernel log of the 17:20 resume, plus =
+mt7921e
+                                    lines from the two warm reboots =
+after it
+  tests-A-C-kernel-nm-wpa.log.gz    the 22:49 (OK) and 23:23 (hang) =
+tests
+  test-B-kernel-nm-wpa.log.gz       the 23:40 5 GHz test (hang)
+  hardware.txt                      DMI, lspci -nnvk, kernel cmdline
+
+I can test patches or collect more data.
+
+Thanks,
+Yurii Kuvshynov
+
+
+--Apple-Mail=_7A4153F3-D5ED-4F94-BCA9-D27A04A9E22F
+Content-Disposition: attachment;
+	filename=kernel-failing-boot.log.gz
+Content-Type: application/x-gzip;
+	x-unix-mode=0644;
+	name="kernel-failing-boot.log.gz"
+Content-Transfer-Encoding: base64
+
+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
+cXI6TrTHia/Ni6OWD+ddocr+w6en4zfqYdmMugA8+HR6+HZcyY33oGwUvd4DWXzQsi2yZOwefShb
+7ublzZHX43q0nAL0udH7sOv49v9x8PzmV9H1qxwfzMPbG83wSL+UzQKXn8bZ+2Ij8HitGxvYO4I9
++/bZy9XU/HZ7s+Uz12yQ3f/u27u2xu446hfflAzuycuX/7p7Vo6D2Hbuj0NZEnB7ggJ7pvXJ8a/y
+5/73v/9nPnk2fXNyWH9cvj+ZHz66Gh8xjxanbQyDL8fT5sXxtE9+90TJmKF9PgH3S4jfn4ecxlvz
+eU/14qgK+3AIN05F3nRtiwMqvpxzHN4ecfPhMc9OyqtBZ8eXk58efH32cfwiHSbn06PJcNcT2N96
+GISGCfFWJwHe2DT/l29+2s85GBiG8Nj9ZfPhKC2DWN2Cz6c+30IVPNrVmw5XduuCnp2tYgjKvtK5
+6PXZ29cHbOVTjs/YXEGQtx3H3568mBx8PRIzGew4lMmQJ8lNjtLEHU7C+F+YgJkkMzm2E3M0Sbn8
+ATftgOiOJj5O/DAxx5PBLaCvf3zzV67/+eMa/7jGP67xj2v84xr/uEbOa0RPMn+/YMtlimsDG7q/
+je58y5m9q5PgV6ef3zuazc7vYz7zm8+9uXGd/On0cG8yzr1MXHeKujV7Nu7B1pb4Nxez2b+Lx3xV
+QkmX532dL4OsZ3QfvHi58N2s9B3vzd5Nz+fjD8ZLGsz1Jd3HQP/jH88mP58sZoBrg1p2vpSLWdmP
+dn062r8XLYPL6fznOe2n096t84uT08ufy7vTi6Jdvvq5yKy+N78/ubfoMpQt7otfenVd2pdnk6MS
+zYSCXtsge/aPJ09NOXFqdtn9s799/sOiLU35+fP3V70w9h8///vyifL8okTIFW7GGz9bnMG1atbP
+341Pl1Xc04Hrg3Yw/VCgrvMgJt//eLA6th7z+U8WWiwfXF6Ae11ynMr7NpMv0nZaP3b+/rx81l75
+sAkUK/H07NfJ2fHxl5slUR/sqT7YUX2wpfpg0/GDf6u5785+fbAMJRtlc/V+9vmh1+fjX8zmqyTk
+zlW9/+zJgx9Pfntlav/5+pfVtHzudz++LMSVcxXKTGh+8qYcLVs6zB8WB2hNho/+97O/VoSnp6Qy
+/3r8b/n0Et41XsLq1I1x4GZ5j4aPBoMzjnVR4FfntKO116O1yNFajtG669E65Ggdx2j99Wg9crSe
+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
+wCWKVYipOQVeyKdR0Lb9PzJ5kBLFvwYA
+--Apple-Mail=_7A4153F3-D5ED-4F94-BCA9-D27A04A9E22F
+Content-Disposition: attachment;
+	filename=resume-window-nm-wpa-kernel.log
+Content-Type: application/octet-stream;
+	x-unix-mode=0644;
+	name="resume-window-nm-wpa-kernel.log"
+Content-Transfer-Encoding: 7bit
+
+2026-11-25T19:45:26+01:00 yurii-b650ilightningwifi kernel: input: Microsoft X-Box 360 pad 0 as /devices/virtual/input/input44
+2026-11-25T19:45:34+01:00 yurii-b650ilightningwifi NetworkManager[690]: <info>  [1795632334.5300] manager: sleep: sleep requested (sleeping: no  enabled: yes)
+2026-11-25T19:45:34+01:00 yurii-b650ilightningwifi NetworkManager[690]: <info>  [1795632334.5301] device (enp11s0): state change: unavailable -> unmanaged (reason 'unmanaged-nm-disabled', managed-type: 'full')
+2026-11-25T19:45:34+01:00 yurii-b650ilightningwifi NetworkManager[690]: <info>  [1795632334.5355] device (p2p-dev-wlan0): state change: disconnected -> unmanaged (reason 'unmanaged-nm-disabled', managed-type: 'full')
+2026-11-25T19:45:34+01:00 yurii-b650ilightningwifi NetworkManager[690]: <info>  [1795632334.5356] manager: NetworkManager state is now DISABLED (ASLEEP)
+2026-11-25T19:45:34+01:00 yurii-b650ilightningwifi systemd-sleep[11974]: Successfully froze unit 'user.slice'.
+2026-11-25T19:45:34+01:00 yurii-b650ilightningwifi systemd-sleep[11974]: Performing sleep operation 'suspend'...
+2026-11-25T19:45:34+01:00 yurii-b650ilightningwifi kernel: PM: suspend entry (deep)
+2026-11-25T19:45:34+01:00 yurii-b650ilightningwifi kernel: Filesystems sync: 0.017 seconds
+2026-11-25T21:27:57+01:00 yurii-b650ilightningwifi kernel: Freezing user space processes
+2026-11-25T21:27:57+01:00 yurii-b650ilightningwifi kernel: Freezing user space processes completed (elapsed 0.001 seconds)
+2026-11-25T21:27:57+01:00 yurii-b650ilightningwifi kernel: OOM killer disabled.
+2026-11-25T21:27:57+01:00 yurii-b650ilightningwifi kernel: Freezing remaining freezable tasks
+2026-11-25T21:27:57+01:00 yurii-b650ilightningwifi kernel: Freezing remaining freezable tasks completed (elapsed 0.001 seconds)
+2026-11-25T21:27:57+01:00 yurii-b650ilightningwifi kernel: printk: Suspending console(s) (use no_console_suspend to debug)
+2026-11-25T21:27:57+01:00 yurii-b650ilightningwifi kernel: amdgpu 0000:03:00.0: MODE1 reset
+2026-11-25T21:27:57+01:00 yurii-b650ilightningwifi kernel: amdgpu 0000:03:00.0: GPU mode1 reset
+2026-11-25T21:27:57+01:00 yurii-b650ilightningwifi kernel: amdgpu 0000:03:00.0: GPU smu mode1 reset
+2026-11-25T21:27:57+01:00 yurii-b650ilightningwifi kernel: ACPI: PM: Preparing to enter system sleep state S3
+2026-11-25T21:27:57+01:00 yurii-b650ilightningwifi kernel: ACPI: PM: Saving platform NVS memory
+2026-11-25T21:27:57+01:00 yurii-b650ilightningwifi kernel: Disabling non-boot CPUs ...
+2026-11-25T21:27:57+01:00 yurii-b650ilightningwifi kernel: smpboot: CPU 5 is now offline
+2026-11-25T21:27:57+01:00 yurii-b650ilightningwifi kernel: smpboot: CPU 4 is now offline
+2026-11-25T21:27:57+01:00 yurii-b650ilightningwifi kernel: smpboot: CPU 3 is now offline
+2026-11-25T21:27:57+01:00 yurii-b650ilightningwifi kernel: smpboot: CPU 2 is now offline
+2026-11-25T21:27:57+01:00 yurii-b650ilightningwifi kernel: smpboot: CPU 1 is now offline
+2026-11-25T21:27:57+01:00 yurii-b650ilightningwifi kernel: ACPI: PM: Low-level resume complete
+2026-11-25T21:27:57+01:00 yurii-b650ilightningwifi kernel: ACPI: PM: Restoring platform NVS memory
+2026-11-25T21:27:57+01:00 yurii-b650ilightningwifi kernel: AMD-Vi: Virtual APIC enabled
+2026-11-25T21:27:57+01:00 yurii-b650ilightningwifi kernel: AMD-Vi: Virtual APIC enabled
+2026-11-25T21:27:57+01:00 yurii-b650ilightningwifi kernel: LVT offset 0 assigned for vector 0x400
+2026-11-25T21:27:57+01:00 yurii-b650ilightningwifi kernel: Enabling non-boot CPUs ...
+2026-11-25T21:27:57+01:00 yurii-b650ilightningwifi kernel: smpboot: Booting Node 0 Processor 1 APIC 0x1
+2026-11-25T21:27:57+01:00 yurii-b650ilightningwifi kernel: CPU1 is up
+2026-11-25T21:27:57+01:00 yurii-b650ilightningwifi kernel: smpboot: Booting Node 0 Processor 2 APIC 0x2
+2026-11-25T21:27:57+01:00 yurii-b650ilightningwifi kernel: CPU2 is up
+2026-11-25T21:27:57+01:00 yurii-b650ilightningwifi kernel: smpboot: Booting Node 0 Processor 3 APIC 0x3
+2026-11-25T21:27:57+01:00 yurii-b650ilightningwifi kernel: CPU3 is up
+2026-11-25T21:27:57+01:00 yurii-b650ilightningwifi kernel: smpboot: Booting Node 0 Processor 4 APIC 0x4
+2026-11-25T21:27:57+01:00 yurii-b650ilightningwifi kernel: CPU4 is up
+2026-11-25T21:27:57+01:00 yurii-b650ilightningwifi kernel: smpboot: Booting Node 0 Processor 5 APIC 0x5
+2026-11-25T21:27:57+01:00 yurii-b650ilightningwifi kernel: CPU5 is up
+2026-11-25T21:27:57+01:00 yurii-b650ilightningwifi kernel: ACPI: PM: Waking up from system sleep state S3
+2026-11-25T21:27:57+01:00 yurii-b650ilightningwifi kernel: pcieport 0000:00:02.1: PME: Spurious native interrupt!
+2026-11-25T21:27:57+01:00 yurii-b650ilightningwifi kernel: pcieport 0000:00:02.1: PME: Spurious native interrupt!
+2026-11-25T21:27:57+01:00 yurii-b650ilightningwifi kernel: xhci-pci-prom21 0000:0d:00.0: xHC error in resume, USBSTS 0x401, Reinit
+2026-11-25T21:27:57+01:00 yurii-b650ilightningwifi kernel: usb usb6: root hub lost power or was reset
+2026-11-25T21:27:57+01:00 yurii-b650ilightningwifi kernel: usb usb7: root hub lost power or was reset
+2026-11-25T21:27:57+01:00 yurii-b650ilightningwifi kernel: amdgpu 0000:0f:00.0: [drm] PCIE GART of 1024M enabled (table at 0x000000F41FC00000).
+2026-11-25T21:27:57+01:00 yurii-b650ilightningwifi kernel: amdgpu 0000:0f:00.0: PSP is resuming...
+2026-11-25T21:27:57+01:00 yurii-b650ilightningwifi kernel: amdgpu 0000:0f:00.0: reserve 0xa00000 from 0xf41e000000 for PSP TMR
+2026-11-25T21:27:57+01:00 yurii-b650ilightningwifi kernel: nvme nvme0: D3 entry latency set to 10 seconds
+2026-11-25T21:27:57+01:00 yurii-b650ilightningwifi kernel: amdgpu 0000:0f:00.0: RAS: optional ras ta ucode is not available
+2026-11-25T21:27:57+01:00 yurii-b650ilightningwifi kernel: amdgpu 0000:0f:00.0: RAP: optional rap ta ucode is not available
+2026-11-25T21:27:57+01:00 yurii-b650ilightningwifi kernel: amdgpu 0000:0f:00.0: SECUREDISPLAY: optional securedisplay ta ucode is not available
+2026-11-25T21:27:57+01:00 yurii-b650ilightningwifi kernel: amdgpu 0000:0f:00.0: SMU is resuming...
+2026-11-25T21:27:57+01:00 yurii-b650ilightningwifi kernel: amdgpu 0000:0f:00.0: SMU is resumed successfully!
+2026-11-25T21:27:57+01:00 yurii-b650ilightningwifi kernel: amdgpu 0000:0f:00.0: kiq ring mec 2 pipe 1 q 0
+2026-11-25T21:27:57+01:00 yurii-b650ilightningwifi kernel: nvme nvme0: 6/0/0 default/read/poll queues
+2026-11-25T21:27:57+01:00 yurii-b650ilightningwifi kernel: amdgpu 0000:0f:00.0: [drm] DMUB hardware initialized: version=0x05003700
+2026-11-25T21:27:57+01:00 yurii-b650ilightningwifi kernel: amdgpu 0000:0f:00.0: ring gfx_0.0.0 uses VM inv eng 0 on hub 0
+2026-11-25T21:27:57+01:00 yurii-b650ilightningwifi kernel: amdgpu 0000:0f:00.0: ring gfx_0.1.0 uses VM inv eng 1 on hub 0
+2026-11-25T21:27:57+01:00 yurii-b650ilightningwifi kernel: amdgpu 0000:0f:00.0: ring comp_1.0.0 uses VM inv eng 4 on hub 0
+2026-11-25T21:27:57+01:00 yurii-b650ilightningwifi kernel: amdgpu 0000:0f:00.0: ring comp_1.1.0 uses VM inv eng 5 on hub 0
+2026-11-25T21:27:57+01:00 yurii-b650ilightningwifi kernel: amdgpu 0000:0f:00.0: ring comp_1.2.0 uses VM inv eng 6 on hub 0
+2026-11-25T21:27:57+01:00 yurii-b650ilightningwifi kernel: amdgpu 0000:0f:00.0: ring comp_1.3.0 uses VM inv eng 7 on hub 0
+2026-11-25T21:27:57+01:00 yurii-b650ilightningwifi kernel: amdgpu 0000:0f:00.0: ring comp_1.0.1 uses VM inv eng 8 on hub 0
+2026-11-25T21:27:57+01:00 yurii-b650ilightningwifi kernel: amdgpu 0000:0f:00.0: ring comp_1.1.1 uses VM inv eng 9 on hub 0
+2026-11-25T21:27:57+01:00 yurii-b650ilightningwifi kernel: amdgpu 0000:0f:00.0: ring comp_1.2.1 uses VM inv eng 10 on hub 0
+2026-11-25T21:27:57+01:00 yurii-b650ilightningwifi kernel: amdgpu 0000:0f:00.0: ring comp_1.3.1 uses VM inv eng 11 on hub 0
+2026-11-25T21:27:57+01:00 yurii-b650ilightningwifi kernel: amdgpu 0000:0f:00.0: ring kiq_0.2.1.0 uses VM inv eng 12 on hub 0
+2026-11-25T21:27:57+01:00 yurii-b650ilightningwifi kernel: amdgpu 0000:0f:00.0: ring sdma0 uses VM inv eng 13 on hub 0
+2026-11-25T21:27:57+01:00 yurii-b650ilightningwifi kernel: amdgpu 0000:0f:00.0: ring vcn_dec_0 uses VM inv eng 0 on hub 8
+2026-11-25T21:27:57+01:00 yurii-b650ilightningwifi kernel: amdgpu 0000:0f:00.0: ring vcn_enc_0.0 uses VM inv eng 1 on hub 8
+2026-11-25T21:27:57+01:00 yurii-b650ilightningwifi kernel: amdgpu 0000:0f:00.0: ring vcn_enc_0.1 uses VM inv eng 4 on hub 8
+2026-11-25T21:27:57+01:00 yurii-b650ilightningwifi kernel: amdgpu 0000:0f:00.0: ring jpeg_dec uses VM inv eng 5 on hub 8
+2026-11-25T21:27:57+01:00 yurii-b650ilightningwifi kernel: amdgpu 0000:0f:00.0: [drm] Cannot find any crtc or sizes
+2026-11-25T21:27:57+01:00 yurii-b650ilightningwifi kernel: amdgpu 0000:0f:00.0: [drm] Cannot find any crtc or sizes
+2026-11-25T21:27:57+01:00 yurii-b650ilightningwifi kernel: nvme nvme1: 6/0/0 default/read/poll queues
+2026-11-25T21:27:57+01:00 yurii-b650ilightningwifi kernel: amdgpu 0000:03:00.0: [drm] PCIE GART of 512M enabled (table at 0x00000083DAB00000).
+2026-11-25T21:27:57+01:00 yurii-b650ilightningwifi kernel: amdgpu 0000:03:00.0: PSP is resuming...
+2026-11-25T21:27:57+01:00 yurii-b650ilightningwifi kernel: amdgpu 0000:03:00.0: RAP: optional rap ta ucode is not available
+2026-11-25T21:27:57+01:00 yurii-b650ilightningwifi kernel: amdgpu 0000:03:00.0: SECUREDISPLAY: optional securedisplay ta ucode is not available
+2026-11-25T21:27:57+01:00 yurii-b650ilightningwifi kernel: amdgpu 0000:03:00.0: SMU is resuming...
+2026-11-25T21:27:57+01:00 yurii-b650ilightningwifi kernel: ata2: SATA link down (SStatus 0 SControl 300)
+2026-11-25T21:27:57+01:00 yurii-b650ilightningwifi kernel: ata1: SATA link down (SStatus 0 SControl 300)
+2026-11-25T21:27:57+01:00 yurii-b650ilightningwifi kernel: ata4: SATA link down (SStatus 0 SControl 300)
+2026-11-25T21:27:57+01:00 yurii-b650ilightningwifi kernel: ata3: SATA link down (SStatus 0 SControl 300)
+2026-11-25T21:27:57+01:00 yurii-b650ilightningwifi kernel: amdgpu 0000:03:00.0: SMU is resumed successfully!
+2026-11-25T21:27:57+01:00 yurii-b650ilightningwifi kernel: amdgpu 0000:03:00.0: program CP_MES_CNTL : 0x4000000
+2026-11-25T21:27:57+01:00 yurii-b650ilightningwifi kernel: amdgpu 0000:03:00.0: program CP_MES_CNTL : 0xc000000
+2026-11-25T21:27:57+01:00 yurii-b650ilightningwifi kernel: amdgpu 0000:03:00.0: [drm] DMUB hardware initialized: version=0x0A005000
+2026-11-25T21:27:57+01:00 yurii-b650ilightningwifi kernel: usb 6-12: reset high-speed USB device number 4 using xhci-pci-prom21
+2026-11-25T21:27:57+01:00 yurii-b650ilightningwifi kernel: HDR SB:48 02 00 09 83 d8 3c 68 35 51 81 f2 1d 89 09 3a
+2026-11-25T21:27:57+01:00 yurii-b650ilightningwifi kernel: HDR SB:3d 47 40 1f 03 00 00 1f 03 1f 03 00 00 00 00 00
+2026-11-25T21:27:57+01:00 yurii-b650ilightningwifi kernel: HDR SB:48 02 00 09 83 d8 3c 68 35 51 81 f2 1d 89 09 3a
+2026-11-25T21:27:57+01:00 yurii-b650ilightningwifi kernel: HDR SB:3d 47 40 1f 03 00 00 1f 03 1f 03 00 00 00 00 00
+2026-11-25T21:27:57+01:00 yurii-b650ilightningwifi kernel: amdgpu 0000:03:00.0: ring gfx_0.0.0 uses VM inv eng 0 on hub 0
+2026-11-25T21:27:57+01:00 yurii-b650ilightningwifi kernel: amdgpu 0000:03:00.0: ring comp_1.0.0 uses VM inv eng 1 on hub 0
+2026-11-25T21:27:57+01:00 yurii-b650ilightningwifi kernel: amdgpu 0000:03:00.0: ring comp_1.1.0 uses VM inv eng 4 on hub 0
+2026-11-25T21:27:57+01:00 yurii-b650ilightningwifi kernel: amdgpu 0000:03:00.0: ring comp_1.0.1 uses VM inv eng 7 on hub 0
+2026-11-25T21:27:57+01:00 yurii-b650ilightningwifi kernel: amdgpu 0000:03:00.0: ring comp_1.1.1 uses VM inv eng 8 on hub 0
+2026-11-25T21:27:57+01:00 yurii-b650ilightningwifi kernel: amdgpu 0000:03:00.0: ring sdma0 uses VM inv eng 9 on hub 0
+2026-11-25T21:27:57+01:00 yurii-b650ilightningwifi kernel: amdgpu 0000:03:00.0: ring sdma1 uses VM inv eng 10 on hub 0
+2026-11-25T21:27:57+01:00 yurii-b650ilightningwifi kernel: amdgpu 0000:03:00.0: ring vcn_unified_0 uses VM inv eng 0 on hub 8
+2026-11-25T21:27:57+01:00 yurii-b650ilightningwifi kernel: amdgpu 0000:03:00.0: ring jpeg_dec uses VM inv eng 1 on hub 8
+2026-11-25T21:27:57+01:00 yurii-b650ilightningwifi kernel: usb 6-6: WARN: invalid context state for evaluate context command.
+2026-11-25T21:27:57+01:00 yurii-b650ilightningwifi kernel: usb 6-6: reset full-speed USB device number 3 using xhci-pci-prom21
+2026-11-25T21:27:57+01:00 yurii-b650ilightningwifi kernel: usb 6-5: WARN: invalid context state for evaluate context command.
+2026-11-25T21:27:57+01:00 yurii-b650ilightningwifi kernel: usb 6-5: reset full-speed USB device number 2 using xhci-pci-prom21
+2026-11-25T21:27:57+01:00 yurii-b650ilightningwifi kernel: OOM killer enabled.
+2026-11-25T21:27:57+01:00 yurii-b650ilightningwifi kernel: Restarting tasks: Starting
+2026-11-25T21:27:57+01:00 yurii-b650ilightningwifi kernel: Restarting tasks: Done
+2026-11-25T21:27:57+01:00 yurii-b650ilightningwifi kernel: efivarfs: resyncing variable state
+2026-11-25T21:27:57+01:00 yurii-b650ilightningwifi systemd-sleep[11974]: System returned from sleep operation 'suspend'.
+2026-11-25T21:27:57+01:00 yurii-b650ilightningwifi kernel: efivarfs: finished resyncing variable state
+2026-11-25T21:27:57+01:00 yurii-b650ilightningwifi kernel: random: crng reseeded on system resumption
+2026-11-25T21:27:57+01:00 yurii-b650ilightningwifi kernel: PM: suspend exit
+2026-11-25T21:27:57+01:00 yurii-b650ilightningwifi kernel: Bluetooth: hci0: HW/SW Version: 0x008a008a, Build Time: 20260724143815
+2026-11-25T21:27:57+01:00 yurii-b650ilightningwifi systemd-sleep[11974]: Successfully thawed unit 'user.slice'.
+2026-11-25T21:27:57+01:00 yurii-b650ilightningwifi NetworkManager[690]: <info>  [1795638477.8807] manager: sleep: wake requested (sleeping: yes  enabled: yes)
+2026-11-25T21:27:57+01:00 yurii-b650ilightningwifi NetworkManager[690]: <info>  [1795638477.8928] device (wlan0): state change: activated -> unmanaged (reason 'unmanaged-nm-disabled', managed-type: 'full')
+2026-11-25T21:27:57+01:00 yurii-b650ilightningwifi NetworkManager[690]: <info>  [1795638477.8930] dhcp4 (wlan0): canceled DHCP transaction
+2026-11-25T21:27:57+01:00 yurii-b650ilightningwifi NetworkManager[690]: <info>  [1795638477.8930] dhcp4 (wlan0): activation: beginning transaction (timeout in 45 seconds)
+2026-11-25T21:27:57+01:00 yurii-b650ilightningwifi NetworkManager[690]: <info>  [1795638477.8930] dhcp4 (wlan0): state changed no lease
+2026-11-25T21:27:57+01:00 yurii-b650ilightningwifi kernel: wlan0: deauthenticating from 36:c5:99:ea:67:ea by local choice (Reason: 3=DEAUTH_LEAVING)
+2026-11-25T21:27:57+01:00 yurii-b650ilightningwifi kernel: pci_bus 0000:06: Allocating resources
+2026-11-25T21:27:57+01:00 yurii-b650ilightningwifi NetworkManager[690]: <info>  [1795638477.9188] manager: NetworkManager state is now CONNECTED_GLOBAL
+2026-11-25T21:27:58+01:00 yurii-b650ilightningwifi kernel: Bluetooth: hci0: Device setup in 167174 usecs
+2026-11-25T21:27:58+01:00 yurii-b650ilightningwifi kernel: Bluetooth: hci0: HCI Enhanced Setup Synchronous Connection command is advertised, but not supported.
+2026-11-25T21:27:58+01:00 yurii-b650ilightningwifi wpa_supplicant[900]: wlan0: CTRL-EVENT-DISCONNECTED bssid=36:c5:99:ea:67:ea reason=3 locally_generated=1
+2026-11-25T21:27:58+01:00 yurii-b650ilightningwifi wpa_supplicant[900]: wlan0: CTRL-EVENT-DSCP-POLICY clear_all
+2026-11-25T21:27:58+01:00 yurii-b650ilightningwifi wpa_supplicant[900]: wlan0: PMKSA-CACHE-REMOVED 36:c5:99:ea:67:ea 0
+2026-11-25T21:27:58+01:00 yurii-b650ilightningwifi NetworkManager[690]: <info>  [1795638478.0515] device (enp11s0): state change: unmanaged -> unavailable (reason 'managed', managed-type: 'external')
+2026-11-25T21:27:58+01:00 yurii-b650ilightningwifi kernel: Realtek Internal NBASE-T PHY r8169-0-b00:00: attached PHY driver (mii_bus:phy_addr=r8169-0-b00:00, irq=MAC)
+2026-11-25T21:27:58+01:00 yurii-b650ilightningwifi NetworkManager[690]: <info>  [1795638478.2325] device (wlan0): state change: unmanaged -> unavailable (reason 'managed', managed-type: 'external')
+2026-11-25T21:27:58+01:00 yurii-b650ilightningwifi kernel: r8169 0000:0b:00.0 enp11s0: Link is Down
+2026-11-25T21:27:58+01:00 yurii-b650ilightningwifi wpa_supplicant[900]: p2p-dev-wlan0: CTRL-EVENT-DSCP-POLICY clear_all
+2026-11-25T21:27:58+01:00 yurii-b650ilightningwifi wpa_supplicant[900]: p2p-dev-wlan0: CTRL-EVENT-DSCP-POLICY clear_all
+2026-11-25T21:27:58+01:00 yurii-b650ilightningwifi wpa_supplicant[900]: nl80211: deinit ifname=p2p-dev-wlan0 disabled_11b_rates=0
+2026-11-25T21:27:58+01:00 yurii-b650ilightningwifi wpa_supplicant[900]: wlan0: Do not deauthenticate as part of interface deinit since WoWLAN is enabled
+2026-11-25T21:27:58+01:00 yurii-b650ilightningwifi NetworkManager[690]: <info>  [1795638478.3074] device (wlan0): set-hw-addr: set MAC address to CE:F2:FD:20:05:00 (scanning)
+2026-11-25T21:27:58+01:00 yurii-b650ilightningwifi kernel: Bluetooth: hci0: AOSP extensions version v1.00
+2026-11-25T21:27:58+01:00 yurii-b650ilightningwifi kernel: Bluetooth: hci0: AOSP quality report is supported
+2026-11-25T21:27:58+01:00 yurii-b650ilightningwifi kernel: Bluetooth: MGMT ver 1.23
+2026-11-25T21:27:58+01:00 yurii-b650ilightningwifi wpa_supplicant[900]: wlan0: CTRL-EVENT-DSCP-POLICY clear_all
+2026-11-25T21:27:58+01:00 yurii-b650ilightningwifi wpa_supplicant[900]: nl80211: deinit ifname=wlan0 disabled_11b_rates=0
+2026-11-25T21:27:58+01:00 yurii-b650ilightningwifi NetworkManager[690]: <info>  [1795638478.4706] device (p2p-dev-wlan0): state change: unmanaged -> unavailable (reason 'managed', managed-type: 'external')
+2026-11-25T21:27:58+01:00 yurii-b650ilightningwifi NetworkManager[690]: <warn>  [1795638478.4706] device (p2p-dev-wlan0): error setting IPv4 forwarding to '0': Resource temporarily unavailable
+2026-11-25T21:27:58+01:00 yurii-b650ilightningwifi NetworkManager[690]: <info>  [1795638478.4711] manager: NetworkManager state is now CONNECTED_LOCAL
+2026-11-25T21:27:58+01:00 yurii-b650ilightningwifi wpa_supplicant[900]: PKCS11 provider not present
+2026-11-25T21:27:58+01:00 yurii-b650ilightningwifi NetworkManager[690]: <info>  [1795638478.4875] device (wlan0): supplicant interface state: internal-starting -> disconnected
+2026-11-25T21:27:58+01:00 yurii-b650ilightningwifi NetworkManager[690]: <info>  [1795638478.4876] device (p2p-dev-wlan0): state change: unavailable -> unmanaged (reason 'unmanaged-link-not-init', managed-type: 'removed')
+2026-11-25T21:27:58+01:00 yurii-b650ilightningwifi NetworkManager[690]: <info>  [1795638478.4877] Wi-Fi P2P device controlled by interface wlan0 created
+2026-11-25T21:27:58+01:00 yurii-b650ilightningwifi NetworkManager[690]: <info>  [1795638478.4878] manager: (p2p-dev-wlan0): new 802.11 Wi-Fi P2P device (/org/freedesktop/NetworkManager/Devices/6)
+2026-11-25T21:27:58+01:00 yurii-b650ilightningwifi NetworkManager[690]: <info>  [1795638478.4879] device (p2p-dev-wlan0): state change: unmanaged -> unavailable (reason 'managed', managed-type: 'external')
+2026-11-25T21:27:58+01:00 yurii-b650ilightningwifi NetworkManager[690]: <warn>  [1795638478.4879] device (p2p-dev-wlan0): error setting IPv4 forwarding to '0': Success
+2026-11-25T21:27:58+01:00 yurii-b650ilightningwifi NetworkManager[690]: <info>  [1795638478.4881] device (wlan0): state change: unavailable -> disconnected (reason 'supplicant-available', managed-type: 'full')
+2026-11-25T21:27:58+01:00 yurii-b650ilightningwifi NetworkManager[690]: <info>  [1795638478.4882] device (p2p-dev-wlan0): state change: unavailable -> disconnected (reason 'none', managed-type: 'full')
+2026-11-25T21:28:01+01:00 yurii-b650ilightningwifi NetworkManager[690]: <info>  [1795638481.3031] policy: auto-activating connection 'ASUS_MONSTER' (0bc1822e-12e0-486a-a972-4802fbbebc90)
+2026-11-25T21:28:01+01:00 yurii-b650ilightningwifi NetworkManager[690]: <info>  [1795638481.3033] device (wlan0): Activation: starting connection 'ASUS_MONSTER' (0bc1822e-12e0-486a-a972-4802fbbebc90)
+2026-11-25T21:28:01+01:00 yurii-b650ilightningwifi NetworkManager[690]: <info>  [1795638481.3033] device (wlan0): state change: disconnected -> prepare (reason 'none', managed-type: 'full')
+2026-11-25T21:28:01+01:00 yurii-b650ilightningwifi NetworkManager[690]: <info>  [1795638481.3033] manager: NetworkManager state is now CONNECTING
+2026-11-25T21:28:01+01:00 yurii-b650ilightningwifi NetworkManager[690]: <info>  [1795638481.3269] device (wlan0): set-hw-addr: reset MAC address to DC:56:7B:38:6D:8B (preserve)
+2026-11-25T21:28:01+01:00 yurii-b650ilightningwifi NetworkManager[690]: <info>  [1795638481.3414] device (wlan0): state change: prepare -> config (reason 'none', managed-type: 'full')
+2026-11-25T21:28:01+01:00 yurii-b650ilightningwifi NetworkManager[690]: <info>  [1795638481.3415] device (wlan0): Activation: (wifi) access point 'ASUS_MONSTER' has security, but secrets are required.
+2026-11-25T21:28:01+01:00 yurii-b650ilightningwifi NetworkManager[690]: <info>  [1795638481.3415] device (wlan0): state change: config -> need-auth (reason 'none', managed-type: 'full')
+2026-11-25T21:28:01+01:00 yurii-b650ilightningwifi NetworkManager[690]: <info>  [1795638481.3416] device (wlan0): supplicant interface state: disconnected -> interface_disabled
+2026-11-25T21:28:01+01:00 yurii-b650ilightningwifi NetworkManager[690]: <info>  [1795638481.3416] device (p2p-dev-wlan0): supplicant management interface state: disconnected -> interface_disabled
+2026-11-25T21:28:01+01:00 yurii-b650ilightningwifi NetworkManager[690]: <info>  [1795638481.3418] device (wlan0): state change: need-auth -> prepare (reason 'none', managed-type: 'full')
+2026-11-25T21:28:01+01:00 yurii-b650ilightningwifi NetworkManager[690]: <info>  [1795638481.3419] device (wlan0): state change: prepare -> config (reason 'none', managed-type: 'full')
+2026-11-25T21:28:01+01:00 yurii-b650ilightningwifi NetworkManager[690]: <info>  [1795638481.3419] device (wlan0): Activation: (wifi) connection 'ASUS_MONSTER' has security, and secrets exist.  No new secrets needed.
+2026-11-25T21:28:01+01:00 yurii-b650ilightningwifi NetworkManager[690]: <info>  [1795638481.3419] Config: added 'ssid' value 'ASUS_MONSTER'
+2026-11-25T21:28:01+01:00 yurii-b650ilightningwifi NetworkManager[690]: <info>  [1795638481.3419] Config: added 'scan_ssid' value '1'
+2026-11-25T21:28:01+01:00 yurii-b650ilightningwifi NetworkManager[690]: <info>  [1795638481.3419] Config: added 'bgscan' value 'simple:30:-65:300'
+2026-11-25T21:28:01+01:00 yurii-b650ilightningwifi NetworkManager[690]: <info>  [1795638481.3420] Config: added 'key_mgmt' value 'WPA-PSK WPA-PSK-SHA256 FT-PSK SAE FT-SAE'
+2026-11-25T21:28:01+01:00 yurii-b650ilightningwifi NetworkManager[690]: <info>  [1795638481.3420] Config: added 'psk' value '<hidden>'
+2026-11-25T21:28:01+01:00 yurii-b650ilightningwifi NetworkManager[690]: <info>  [1795638481.3453] device (wlan0): supplicant interface state: interface_disabled -> disconnected
+2026-11-25T21:28:01+01:00 yurii-b650ilightningwifi NetworkManager[690]: <info>  [1795638481.3453] device (wlan0): Activation: (wifi) disconnected during association, retrying connection
+2026-11-25T21:28:01+01:00 yurii-b650ilightningwifi NetworkManager[690]: <info>  [1795638481.3453] device (p2p-dev-wlan0): supplicant management interface state: interface_disabled -> disconnected
+2026-11-25T21:28:01+01:00 yurii-b650ilightningwifi NetworkManager[690]: <info>  [1795638481.3462] device (wlan0): supplicant interface state: disconnected -> inactive
+2026-11-25T21:28:01+01:00 yurii-b650ilightningwifi NetworkManager[690]: <info>  [1795638481.3462] device (p2p-dev-wlan0): supplicant management interface state: disconnected -> inactive
+2026-11-25T21:28:01+01:00 yurii-b650ilightningwifi wpa_supplicant[900]: wlan0: SME: Trying to authenticate with 36:c5:99:ea:67:ea (SSID='ASUS_MONSTER' freq=6295 MHz)
+2026-11-25T21:28:01+01:00 yurii-b650ilightningwifi kernel: wlan0: authenticate with 36:c5:99:ea:67:ea (local address=dc:56:7b:38:6d:8b)
+2026-11-25T21:28:01+01:00 yurii-b650ilightningwifi NetworkManager[690]: <info>  [1795638481.3853] device (wlan0): supplicant interface state: inactive -> authenticating
+2026-11-25T21:28:01+01:00 yurii-b650ilightningwifi NetworkManager[690]: <info>  [1795638481.3853] device (p2p-dev-wlan0): supplicant management interface state: inactive -> authenticating
+2026-11-25T21:28:01+01:00 yurii-b650ilightningwifi kernel: wlan0: send auth to 36:c5:99:ea:67:ea (try 1/3)
+2026-11-25T21:28:01+01:00 yurii-b650ilightningwifi wpa_supplicant[900]: wlan0: SME: Trying to authenticate with 36:c5:99:ea:67:ea (SSID='ASUS_MONSTER' freq=6295 MHz)
+2026-11-25T21:28:01+01:00 yurii-b650ilightningwifi kernel: wlan0: authenticate with 36:c5:99:ea:67:ea (local address=dc:56:7b:38:6d:8b)
+2026-11-25T21:28:01+01:00 yurii-b650ilightningwifi kernel: wlan0: send auth to 36:c5:99:ea:67:ea (try 1/3)
+2026-11-25T21:28:01+01:00 yurii-b650ilightningwifi wpa_supplicant[900]: wlan0: PMKSA-CACHE-ADDED 36:c5:99:ea:67:ea 0
+2026-11-25T21:28:01+01:00 yurii-b650ilightningwifi wpa_supplicant[900]: wlan0: Trying to associate with 36:c5:99:ea:67:ea (SSID='ASUS_MONSTER' freq=6295 MHz)
+2026-11-25T21:28:01+01:00 yurii-b650ilightningwifi NetworkManager[690]: <info>  [1795638481.3978] device (wlan0): supplicant interface state: authenticating -> associating
+2026-11-25T21:28:01+01:00 yurii-b650ilightningwifi NetworkManager[690]: <info>  [1795638481.3978] device (p2p-dev-wlan0): supplicant management interface state: authenticating -> associating
+2026-11-25T21:28:01+01:00 yurii-b650ilightningwifi kernel: wlan0: authenticated
+2026-11-25T21:28:01+01:00 yurii-b650ilightningwifi kernel: wlan0: associate with 36:c5:99:ea:67:ea (try 1/3)
+2026-11-25T21:28:01+01:00 yurii-b650ilightningwifi kernel: wlan0: RX AssocResp from 36:c5:99:ea:67:ea (capab=0x1511 status=0 aid=4)
+2026-11-25T21:28:01+01:00 yurii-b650ilightningwifi wpa_supplicant[900]: wlan0: Associated with 36:c5:99:ea:67:ea
+2026-11-25T21:28:01+01:00 yurii-b650ilightningwifi wpa_supplicant[900]: wlan0: CTRL-EVENT-SUBNET-STATUS-UPDATE status=0
+2026-11-25T21:28:01+01:00 yurii-b650ilightningwifi kernel: wlan0: associated
+2026-11-25T21:28:04+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Message 00020003 (seq 14) timeout
+2026-11-25T21:28:04+01:00 yurii-b650ilightningwifi kernel: wlan0: failed to set key (1, ff:ff:ff:ff:ff:ff) to hardware (-110)
+2026-11-25T21:28:06+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: MCU is not ready for firmware download
+2026-11-25T21:28:06+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Loading firmware patch: mediatek/WIFI_MT7922_patch_mcu_1_1_hdr.bin
+2026-11-25T21:28:09+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Message 00000010 (seq 1) timeout
+2026-11-25T21:28:09+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Failed to get patch semaphore
+2026-11-25T21:28:11+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: MCU is not ready for firmware download
+2026-11-25T21:28:11+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Loading firmware patch: mediatek/WIFI_MT7922_patch_mcu_1_1_hdr.bin
+2026-11-25T21:28:14+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Message 00000010 (seq 3) timeout
+2026-11-25T21:28:14+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Failed to get patch semaphore
+2026-11-25T21:28:16+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: MCU is not ready for firmware download
+2026-11-25T21:28:16+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Loading firmware patch: mediatek/WIFI_MT7922_patch_mcu_1_1_hdr.bin
+2026-11-25T21:28:19+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Message 00000010 (seq 5) timeout
+2026-11-25T21:28:19+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Failed to get patch semaphore
+2026-11-25T21:28:21+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: MCU is not ready for firmware download
+2026-11-25T21:28:21+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Loading firmware patch: mediatek/WIFI_MT7922_patch_mcu_1_1_hdr.bin
+2026-11-25T21:28:25+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Message 00000010 (seq 7) timeout
+2026-11-25T21:28:25+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Failed to get patch semaphore
+2026-11-25T21:28:25+01:00 yurii-b650ilightningwifi kernel: audit: type=1326 audit(1795638505.285:2): auid=1000 uid=1000 gid=1001 ses=2 pid=13017 comm="file" exe="/usr/bin/file" sig=31 arch=c000003e syscall=102 compat=0 ip=0x7f5e8fced5fb code=0x0
+2026-11-25T21:28:25+01:00 yurii-b650ilightningwifi kernel: audit: type=1326 audit(1795638505.487:3): auid=1000 uid=1000 gid=1001 ses=2 pid=13053 comm="file" exe="/usr/bin/file" sig=31 arch=c000003e syscall=102 compat=0 ip=0x7faacbeed5fb code=0x0
+2026-11-25T21:28:26+01:00 yurii-b650ilightningwifi NetworkManager[690]: <warn>  [1795638506.9222] device (wlan0): Activation: (wifi) association took too long
+2026-11-25T21:28:26+01:00 yurii-b650ilightningwifi NetworkManager[690]: <info>  [1795638506.9222] device (wlan0): state change: config -> need-auth (reason 'none', managed-type: 'full')
+2026-11-25T21:28:26+01:00 yurii-b650ilightningwifi NetworkManager[690]: <warn>  [1795638506.9223] device (wlan0): Activation: (wifi) asking for new secrets
+2026-11-25T21:28:26+01:00 yurii-b650ilightningwifi NetworkManager[690]: <info>  [1795638506.9225] device (wlan0): state change: need-auth -> prepare (reason 'none', managed-type: 'full')
+2026-11-25T21:28:26+01:00 yurii-b650ilightningwifi NetworkManager[690]: <info>  [1795638506.9226] device (wlan0): state change: prepare -> config (reason 'none', managed-type: 'full')
+2026-11-25T21:28:27+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: MCU is not ready for firmware download
+2026-11-25T21:28:27+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Loading firmware patch: mediatek/WIFI_MT7922_patch_mcu_1_1_hdr.bin
+2026-11-25T21:28:30+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Message 00000010 (seq 10) timeout
+2026-11-25T21:28:30+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Failed to get patch semaphore
+2026-11-25T21:28:32+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: MCU is not ready for firmware download
+2026-11-25T21:28:32+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Loading firmware patch: mediatek/WIFI_MT7922_patch_mcu_1_1_hdr.bin
+2026-11-25T21:28:35+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Message 00000010 (seq 12) timeout
+2026-11-25T21:28:35+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Failed to get patch semaphore
+2026-11-25T21:28:38+01:00 yurii-b650ilightningwifi wpa_supplicant[900]: wlan0: WPA: Key negotiation completed with 36:c5:99:ea:67:ea [PTK=CCMP GTK=CCMP]
+2026-11-25T21:28:38+01:00 yurii-b650ilightningwifi wpa_supplicant[900]: wlan0: CTRL-EVENT-CONNECTED - Connection to 36:c5:99:ea:67:ea completed [id=0 id_str=]
+2026-11-25T21:28:38+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Message 00020003 (seq 13) timeout
+2026-11-25T21:28:38+01:00 yurii-b650ilightningwifi kernel: wlan0: failed to set key (4, ff:ff:ff:ff:ff:ff) to hardware (-110)
+2026-11-25T21:28:40+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: MCU is not ready for firmware download
+2026-11-25T21:28:40+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Loading firmware patch: mediatek/WIFI_MT7922_patch_mcu_1_1_hdr.bin
+2026-11-25T21:28:43+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Message 00000010 (seq 15) timeout
+2026-11-25T21:28:43+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Failed to get patch semaphore
+2026-11-25T21:28:45+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: MCU is not ready for firmware download
+2026-11-25T21:28:45+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Loading firmware patch: mediatek/WIFI_MT7922_patch_mcu_1_1_hdr.bin
+2026-11-25T21:28:48+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Message 00000010 (seq 2) timeout
+2026-11-25T21:28:48+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Failed to get patch semaphore
+2026-11-25T21:28:51+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Message 00020003 (seq 3) timeout
+2026-11-25T21:28:53+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: MCU is not ready for firmware download
+2026-11-25T21:28:53+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Loading firmware patch: mediatek/WIFI_MT7922_patch_mcu_1_1_hdr.bin
+2026-11-25T21:28:56+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Message 00000010 (seq 5) timeout
+2026-11-25T21:28:56+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Failed to get patch semaphore
+2026-11-25T21:28:58+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: MCU is not ready for firmware download
+2026-11-25T21:28:58+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Loading firmware patch: mediatek/WIFI_MT7922_patch_mcu_1_1_hdr.bin
+2026-11-25T21:29:01+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Message 00000010 (seq 7) timeout
+2026-11-25T21:29:01+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Failed to get patch semaphore
+2026-11-25T21:29:01+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: chip reset failed
+2026-11-25T21:29:01+01:00 yurii-b650ilightningwifi kernel: wlan0: Driver requested disconnection from AP 36:c5:99:ea:67:ea
+2026-11-25T21:29:04+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Message 00020001 (seq 9) timeout
+2026-11-25T21:29:07+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Message 00020001 (seq 13) timeout
+2026-11-25T21:29:09+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: MCU is not ready for firmware download
+2026-11-25T21:29:09+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Loading firmware patch: mediatek/WIFI_MT7922_patch_mcu_1_1_hdr.bin
+2026-11-25T21:29:12+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Message 00000010 (seq 2) timeout
+2026-11-25T21:29:12+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Failed to get patch semaphore
+2026-11-25T21:29:14+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: MCU is not ready for firmware download
+2026-11-25T21:29:14+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Loading firmware patch: mediatek/WIFI_MT7922_patch_mcu_1_1_hdr.bin
+2026-11-25T21:29:17+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Message 00000010 (seq 4) timeout
+2026-11-25T21:29:17+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Failed to get patch semaphore
+2026-11-25T21:29:20+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Message 00020003 (seq 7) timeout
+2026-11-25T21:29:23+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Message 00020002 (seq 8) timeout
+2026-11-25T21:29:26+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: MCU is not ready for firmware download
+2026-11-25T21:29:26+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Loading firmware patch: mediatek/WIFI_MT7922_patch_mcu_1_1_hdr.bin
+2026-11-25T21:29:29+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Message 00000010 (seq 10) timeout
+2026-11-25T21:29:29+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Failed to get patch semaphore
+2026-11-25T21:29:31+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: MCU is not ready for firmware download
+2026-11-25T21:29:31+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Loading firmware patch: mediatek/WIFI_MT7922_patch_mcu_1_1_hdr.bin
+2026-11-25T21:29:34+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Message 00000010 (seq 12) timeout
+2026-11-25T21:29:34+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Failed to get patch semaphore
+2026-11-25T21:29:37+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Message 00020002 (seq 13) timeout
+2026-11-25T21:29:39+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: MCU is not ready for firmware download
+2026-11-25T21:29:39+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Loading firmware patch: mediatek/WIFI_MT7922_patch_mcu_1_1_hdr.bin
+2026-11-25T21:29:42+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Message 00000010 (seq 15) timeout
+2026-11-25T21:29:42+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Failed to get patch semaphore
+2026-11-25T21:29:44+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: MCU is not ready for firmware download
+2026-11-25T21:29:44+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Loading firmware patch: mediatek/WIFI_MT7922_patch_mcu_1_1_hdr.bin
+2026-11-25T21:29:47+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Message 00000010 (seq 2) timeout
+2026-11-25T21:29:47+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Failed to get patch semaphore
+2026-11-25T21:29:50+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Message 00020003 (seq 5) timeout
+2026-11-25T21:29:52+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: MCU is not ready for firmware download
+2026-11-25T21:29:52+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Loading firmware patch: mediatek/WIFI_MT7922_patch_mcu_1_1_hdr.bin
+2026-11-25T21:29:55+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Message 00000010 (seq 9) timeout
+2026-11-25T21:29:55+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Failed to get patch semaphore
+2026-11-25T21:29:57+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: MCU is not ready for firmware download
+2026-11-25T21:29:57+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Loading firmware patch: mediatek/WIFI_MT7922_patch_mcu_1_1_hdr.bin
+
+--Apple-Mail=_7A4153F3-D5ED-4F94-BCA9-D27A04A9E22F
+Content-Disposition: attachment;
+	filename=first-failure-and-warm-reboot-probe.log
+Content-Type: application/octet-stream;
+	x-unix-mode=0644;
+	name="first-failure-and-warm-reboot-probe.log"
+Content-Transfer-Encoding: 7bit
+
+2026-11-25T17:20:40+01:00 yurii-b650ilightningwifi kernel: Freezing user space processes
+2026-11-25T17:20:40+01:00 yurii-b650ilightningwifi kernel: Freezing user space processes completed (elapsed 0.001 seconds)
+2026-11-25T17:20:40+01:00 yurii-b650ilightningwifi kernel: OOM killer disabled.
+2026-11-25T17:20:40+01:00 yurii-b650ilightningwifi kernel: Freezing remaining freezable tasks
+2026-11-25T17:20:40+01:00 yurii-b650ilightningwifi kernel: Freezing remaining freezable tasks completed (elapsed 0.001 seconds)
+2026-11-25T17:20:40+01:00 yurii-b650ilightningwifi kernel: printk: Suspending console(s) (use no_console_suspend to debug)
+2026-11-25T17:20:40+01:00 yurii-b650ilightningwifi kernel: amdgpu 0000:03:00.0: MODE1 reset
+2026-11-25T17:20:40+01:00 yurii-b650ilightningwifi kernel: amdgpu 0000:03:00.0: GPU mode1 reset
+2026-11-25T17:20:40+01:00 yurii-b650ilightningwifi kernel: amdgpu 0000:03:00.0: GPU smu mode1 reset
+2026-11-25T17:20:40+01:00 yurii-b650ilightningwifi kernel: ACPI: PM: Preparing to enter system sleep state S3
+2026-11-25T17:20:40+01:00 yurii-b650ilightningwifi kernel: ACPI: PM: Saving platform NVS memory
+2026-11-25T17:20:40+01:00 yurii-b650ilightningwifi kernel: Disabling non-boot CPUs ...
+2026-11-25T17:20:40+01:00 yurii-b650ilightningwifi kernel: smpboot: CPU 5 is now offline
+2026-11-25T17:20:40+01:00 yurii-b650ilightningwifi kernel: smpboot: CPU 4 is now offline
+2026-11-25T17:20:40+01:00 yurii-b650ilightningwifi kernel: smpboot: CPU 3 is now offline
+2026-11-25T17:20:40+01:00 yurii-b650ilightningwifi kernel: smpboot: CPU 2 is now offline
+2026-11-25T17:20:40+01:00 yurii-b650ilightningwifi kernel: smpboot: CPU 1 is now offline
+2026-11-25T17:20:40+01:00 yurii-b650ilightningwifi kernel: ACPI: PM: Low-level resume complete
+2026-11-25T17:20:40+01:00 yurii-b650ilightningwifi kernel: ACPI: PM: Restoring platform NVS memory
+2026-11-25T17:20:40+01:00 yurii-b650ilightningwifi kernel: AMD-Vi: Virtual APIC enabled
+2026-11-25T17:20:40+01:00 yurii-b650ilightningwifi kernel: AMD-Vi: Virtual APIC enabled
+2026-11-25T17:20:40+01:00 yurii-b650ilightningwifi kernel: LVT offset 0 assigned for vector 0x400
+2026-11-25T17:20:40+01:00 yurii-b650ilightningwifi kernel: Enabling non-boot CPUs ...
+2026-11-25T17:20:40+01:00 yurii-b650ilightningwifi kernel: smpboot: Booting Node 0 Processor 1 APIC 0x1
+2026-11-25T17:20:40+01:00 yurii-b650ilightningwifi kernel: CPU1 is up
+2026-11-25T17:20:40+01:00 yurii-b650ilightningwifi kernel: smpboot: Booting Node 0 Processor 2 APIC 0x2
+2026-11-25T17:20:40+01:00 yurii-b650ilightningwifi kernel: CPU2 is up
+2026-11-25T17:20:40+01:00 yurii-b650ilightningwifi kernel: smpboot: Booting Node 0 Processor 3 APIC 0x3
+2026-11-25T17:20:40+01:00 yurii-b650ilightningwifi kernel: CPU3 is up
+2026-11-25T17:20:40+01:00 yurii-b650ilightningwifi kernel: smpboot: Booting Node 0 Processor 4 APIC 0x4
+2026-11-25T17:20:40+01:00 yurii-b650ilightningwifi kernel: CPU4 is up
+2026-11-25T17:20:40+01:00 yurii-b650ilightningwifi kernel: smpboot: Booting Node 0 Processor 5 APIC 0x5
+2026-11-25T17:20:40+01:00 yurii-b650ilightningwifi kernel: CPU5 is up
+2026-11-25T17:20:40+01:00 yurii-b650ilightningwifi kernel: ACPI: PM: Waking up from system sleep state S3
+2026-11-25T17:20:40+01:00 yurii-b650ilightningwifi kernel: pcieport 0000:00:02.1: PME: Spurious native interrupt!
+2026-11-25T17:20:40+01:00 yurii-b650ilightningwifi kernel: pcieport 0000:00:02.1: PME: Spurious native interrupt!
+2026-11-25T17:20:40+01:00 yurii-b650ilightningwifi kernel: amdgpu 0000:0f:00.0: [drm] PCIE GART of 1024M enabled (table at 0x000000F41FC00000).
+2026-11-25T17:20:40+01:00 yurii-b650ilightningwifi kernel: amdgpu 0000:0f:00.0: PSP is resuming...
+2026-11-25T17:20:40+01:00 yurii-b650ilightningwifi kernel: xhci-pci-prom21 0000:0d:00.0: xHC error in resume, USBSTS 0x401, Reinit
+2026-11-25T17:20:40+01:00 yurii-b650ilightningwifi kernel: usb usb6: root hub lost power or was reset
+2026-11-25T17:20:40+01:00 yurii-b650ilightningwifi kernel: usb usb7: root hub lost power or was reset
+2026-11-25T17:20:40+01:00 yurii-b650ilightningwifi kernel: nvme nvme0: D3 entry latency set to 10 seconds
+2026-11-25T17:20:40+01:00 yurii-b650ilightningwifi kernel: amdgpu 0000:0f:00.0: reserve 0xa00000 from 0xf41e000000 for PSP TMR
+2026-11-25T17:20:40+01:00 yurii-b650ilightningwifi kernel: nvme nvme0: 6/0/0 default/read/poll queues
+2026-11-25T17:20:40+01:00 yurii-b650ilightningwifi kernel: nvme nvme1: 6/0/0 default/read/poll queues
+2026-11-25T17:20:40+01:00 yurii-b650ilightningwifi kernel: amdgpu 0000:0f:00.0: RAS: optional ras ta ucode is not available
+2026-11-25T17:20:40+01:00 yurii-b650ilightningwifi kernel: amdgpu 0000:0f:00.0: RAP: optional rap ta ucode is not available
+2026-11-25T17:20:40+01:00 yurii-b650ilightningwifi kernel: amdgpu 0000:0f:00.0: SECUREDISPLAY: optional securedisplay ta ucode is not available
+2026-11-25T17:20:40+01:00 yurii-b650ilightningwifi kernel: amdgpu 0000:0f:00.0: SMU is resuming...
+2026-11-25T17:20:40+01:00 yurii-b650ilightningwifi kernel: amdgpu 0000:0f:00.0: SMU is resumed successfully!
+2026-11-25T17:20:40+01:00 yurii-b650ilightningwifi kernel: amdgpu 0000:0f:00.0: kiq ring mec 2 pipe 1 q 0
+2026-11-25T17:20:40+01:00 yurii-b650ilightningwifi kernel: amdgpu 0000:0f:00.0: [drm] DMUB hardware initialized: version=0x05003700
+2026-11-25T17:20:40+01:00 yurii-b650ilightningwifi kernel: amdgpu 0000:0f:00.0: ring gfx_0.0.0 uses VM inv eng 0 on hub 0
+2026-11-25T17:20:40+01:00 yurii-b650ilightningwifi kernel: amdgpu 0000:0f:00.0: ring gfx_0.1.0 uses VM inv eng 1 on hub 0
+2026-11-25T17:20:40+01:00 yurii-b650ilightningwifi kernel: amdgpu 0000:0f:00.0: ring comp_1.0.0 uses VM inv eng 4 on hub 0
+2026-11-25T17:20:40+01:00 yurii-b650ilightningwifi kernel: amdgpu 0000:0f:00.0: ring comp_1.1.0 uses VM inv eng 5 on hub 0
+2026-11-25T17:20:40+01:00 yurii-b650ilightningwifi kernel: amdgpu 0000:0f:00.0: ring comp_1.2.0 uses VM inv eng 6 on hub 0
+2026-11-25T17:20:40+01:00 yurii-b650ilightningwifi kernel: amdgpu 0000:0f:00.0: ring comp_1.3.0 uses VM inv eng 7 on hub 0
+2026-11-25T17:20:40+01:00 yurii-b650ilightningwifi kernel: amdgpu 0000:0f:00.0: ring comp_1.0.1 uses VM inv eng 8 on hub 0
+2026-11-25T17:20:40+01:00 yurii-b650ilightningwifi kernel: amdgpu 0000:0f:00.0: ring comp_1.1.1 uses VM inv eng 9 on hub 0
+2026-11-25T17:20:40+01:00 yurii-b650ilightningwifi kernel: amdgpu 0000:0f:00.0: ring comp_1.2.1 uses VM inv eng 10 on hub 0
+2026-11-25T17:20:40+01:00 yurii-b650ilightningwifi kernel: amdgpu 0000:0f:00.0: ring comp_1.3.1 uses VM inv eng 11 on hub 0
+2026-11-25T17:20:40+01:00 yurii-b650ilightningwifi kernel: amdgpu 0000:0f:00.0: ring kiq_0.2.1.0 uses VM inv eng 12 on hub 0
+2026-11-25T17:20:40+01:00 yurii-b650ilightningwifi kernel: amdgpu 0000:0f:00.0: ring sdma0 uses VM inv eng 13 on hub 0
+2026-11-25T17:20:40+01:00 yurii-b650ilightningwifi kernel: amdgpu 0000:0f:00.0: ring vcn_dec_0 uses VM inv eng 0 on hub 8
+2026-11-25T17:20:40+01:00 yurii-b650ilightningwifi kernel: amdgpu 0000:0f:00.0: ring vcn_enc_0.0 uses VM inv eng 1 on hub 8
+2026-11-25T17:20:40+01:00 yurii-b650ilightningwifi kernel: amdgpu 0000:0f:00.0: ring vcn_enc_0.1 uses VM inv eng 4 on hub 8
+2026-11-25T17:20:40+01:00 yurii-b650ilightningwifi kernel: amdgpu 0000:0f:00.0: ring jpeg_dec uses VM inv eng 5 on hub 8
+2026-11-25T17:20:40+01:00 yurii-b650ilightningwifi kernel: amdgpu 0000:0f:00.0: [drm] Cannot find any crtc or sizes
+2026-11-25T17:20:40+01:00 yurii-b650ilightningwifi kernel: amdgpu 0000:0f:00.0: [drm] Cannot find any crtc or sizes
+2026-11-25T17:20:40+01:00 yurii-b650ilightningwifi kernel: amdgpu 0000:03:00.0: [drm] PCIE GART of 512M enabled (table at 0x00000083DAB00000).
+2026-11-25T17:20:40+01:00 yurii-b650ilightningwifi kernel: amdgpu 0000:03:00.0: PSP is resuming...
+2026-11-25T17:20:40+01:00 yurii-b650ilightningwifi kernel: amdgpu 0000:03:00.0: RAP: optional rap ta ucode is not available
+2026-11-25T17:20:40+01:00 yurii-b650ilightningwifi kernel: amdgpu 0000:03:00.0: SECUREDISPLAY: optional securedisplay ta ucode is not available
+2026-11-25T17:20:40+01:00 yurii-b650ilightningwifi kernel: amdgpu 0000:03:00.0: SMU is resuming...
+2026-11-25T17:20:40+01:00 yurii-b650ilightningwifi kernel: ata1: SATA link down (SStatus 0 SControl 300)
+2026-11-25T17:20:40+01:00 yurii-b650ilightningwifi kernel: ata3: SATA link down (SStatus 0 SControl 300)
+2026-11-25T17:20:40+01:00 yurii-b650ilightningwifi kernel: ata2: SATA link down (SStatus 0 SControl 300)
+2026-11-25T17:20:40+01:00 yurii-b650ilightningwifi kernel: ata4: SATA link down (SStatus 0 SControl 300)
+2026-11-25T17:20:40+01:00 yurii-b650ilightningwifi kernel: amdgpu 0000:03:00.0: SMU is resumed successfully!
+2026-11-25T17:20:40+01:00 yurii-b650ilightningwifi kernel: amdgpu 0000:03:00.0: program CP_MES_CNTL : 0x4000000
+2026-11-25T17:20:40+01:00 yurii-b650ilightningwifi kernel: amdgpu 0000:03:00.0: program CP_MES_CNTL : 0xc000000
+2026-11-25T17:20:40+01:00 yurii-b650ilightningwifi kernel: usb 6-12: reset high-speed USB device number 4 using xhci-pci-prom21
+2026-11-25T17:20:40+01:00 yurii-b650ilightningwifi kernel: amdgpu 0000:03:00.0: [drm] DMUB hardware initialized: version=0x0A005000
+2026-11-25T17:20:40+01:00 yurii-b650ilightningwifi kernel: HDR SB:48 02 00 09 83 d8 3c 68 35 51 81 f2 1d 89 09 3a
+2026-11-25T17:20:40+01:00 yurii-b650ilightningwifi kernel: HDR SB:3d 47 40 1f 03 00 00 1f 03 1f 03 00 00 00 00 00
+2026-11-25T17:20:40+01:00 yurii-b650ilightningwifi kernel: HDR SB:48 02 00 09 83 d8 3c 68 35 51 81 f2 1d 89 09 3a
+2026-11-25T17:20:40+01:00 yurii-b650ilightningwifi kernel: HDR SB:3d 47 40 1f 03 00 00 1f 03 1f 03 00 00 00 00 00
+2026-11-25T17:20:40+01:00 yurii-b650ilightningwifi kernel: amdgpu 0000:03:00.0: ring gfx_0.0.0 uses VM inv eng 0 on hub 0
+2026-11-25T17:20:40+01:00 yurii-b650ilightningwifi kernel: amdgpu 0000:03:00.0: ring comp_1.0.0 uses VM inv eng 1 on hub 0
+2026-11-25T17:20:40+01:00 yurii-b650ilightningwifi kernel: amdgpu 0000:03:00.0: ring comp_1.1.0 uses VM inv eng 4 on hub 0
+2026-11-25T17:20:40+01:00 yurii-b650ilightningwifi kernel: amdgpu 0000:03:00.0: ring comp_1.0.1 uses VM inv eng 7 on hub 0
+2026-11-25T17:20:40+01:00 yurii-b650ilightningwifi kernel: amdgpu 0000:03:00.0: ring comp_1.1.1 uses VM inv eng 8 on hub 0
+2026-11-25T17:20:40+01:00 yurii-b650ilightningwifi kernel: amdgpu 0000:03:00.0: ring sdma0 uses VM inv eng 9 on hub 0
+2026-11-25T17:20:40+01:00 yurii-b650ilightningwifi kernel: amdgpu 0000:03:00.0: ring sdma1 uses VM inv eng 10 on hub 0
+2026-11-25T17:20:40+01:00 yurii-b650ilightningwifi kernel: amdgpu 0000:03:00.0: ring vcn_unified_0 uses VM inv eng 0 on hub 8
+2026-11-25T17:20:40+01:00 yurii-b650ilightningwifi kernel: amdgpu 0000:03:00.0: ring jpeg_dec uses VM inv eng 1 on hub 8
+2026-11-25T17:20:40+01:00 yurii-b650ilightningwifi kernel: usb 6-5: WARN: invalid context state for evaluate context command.
+2026-11-25T17:20:40+01:00 yurii-b650ilightningwifi kernel: usb 6-5: reset full-speed USB device number 2 using xhci-pci-prom21
+2026-11-25T17:20:40+01:00 yurii-b650ilightningwifi kernel: usb 6-6: WARN: invalid context state for evaluate context command.
+2026-11-25T17:20:40+01:00 yurii-b650ilightningwifi kernel: usb 6-6: reset full-speed USB device number 3 using xhci-pci-prom21
+2026-11-25T17:20:40+01:00 yurii-b650ilightningwifi kernel: OOM killer enabled.
+2026-11-25T17:20:40+01:00 yurii-b650ilightningwifi kernel: Restarting tasks: Starting
+2026-11-25T17:20:40+01:00 yurii-b650ilightningwifi kernel: Restarting tasks: Done
+2026-11-25T17:20:40+01:00 yurii-b650ilightningwifi kernel: efivarfs: resyncing variable state
+2026-11-25T17:20:40+01:00 yurii-b650ilightningwifi kernel: efivarfs: finished resyncing variable state
+2026-11-25T17:20:40+01:00 yurii-b650ilightningwifi kernel: random: crng reseeded on system resumption
+2026-11-25T17:20:40+01:00 yurii-b650ilightningwifi kernel: PM: suspend exit
+2026-11-25T17:20:40+01:00 yurii-b650ilightningwifi kernel: Bluetooth: hci0: HW/SW Version: 0x008a008a, Build Time: 20260724143815
+2026-11-25T17:20:40+01:00 yurii-b650ilightningwifi kernel: wlan0: deauthenticating from 36:c5:99:ea:67:ea by local choice (Reason: 3=DEAUTH_LEAVING)
+2026-11-25T17:20:40+01:00 yurii-b650ilightningwifi kernel: pci_bus 0000:06: Allocating resources
+2026-11-25T17:20:40+01:00 yurii-b650ilightningwifi kernel: Bluetooth: hci0: Device setup in 166153 usecs
+2026-11-25T17:20:40+01:00 yurii-b650ilightningwifi kernel: Bluetooth: hci0: HCI Enhanced Setup Synchronous Connection command is advertised, but not supported.
+2026-11-25T17:20:41+01:00 yurii-b650ilightningwifi kernel: Realtek Internal NBASE-T PHY r8169-0-b00:00: attached PHY driver (mii_bus:phy_addr=r8169-0-b00:00, irq=MAC)
+2026-11-25T17:20:41+01:00 yurii-b650ilightningwifi kernel: input: Microsoft X-Box 360 pad 1 as /devices/virtual/input/input63
+2026-11-25T17:20:41+01:00 yurii-b650ilightningwifi kernel: r8169 0000:0b:00.0 enp11s0: Link is Down
+2026-11-25T17:20:41+01:00 yurii-b650ilightningwifi kernel: Bluetooth: hci0: AOSP extensions version v1.00
+2026-11-25T17:20:41+01:00 yurii-b650ilightningwifi kernel: Bluetooth: hci0: AOSP quality report is supported
+2026-11-25T17:20:41+01:00 yurii-b650ilightningwifi kernel: Bluetooth: MGMT ver 1.23
+2026-11-25T17:20:44+01:00 yurii-b650ilightningwifi kernel: wlan0: authenticate with 36:c5:99:ea:67:ea (local address=dc:56:7b:38:6d:8b)
+2026-11-25T17:20:44+01:00 yurii-b650ilightningwifi kernel: wlan0: send auth to 36:c5:99:ea:67:ea (try 1/3)
+2026-11-25T17:20:44+01:00 yurii-b650ilightningwifi kernel: wlan0: authenticate with 36:c5:99:ea:67:ea (local address=dc:56:7b:38:6d:8b)
+2026-11-25T17:20:44+01:00 yurii-b650ilightningwifi kernel: wlan0: send auth to 36:c5:99:ea:67:ea (try 1/3)
+2026-11-25T17:20:44+01:00 yurii-b650ilightningwifi kernel: wlan0: authenticated
+2026-11-25T17:20:44+01:00 yurii-b650ilightningwifi kernel: wlan0: associate with 36:c5:99:ea:67:ea (try 1/3)
+2026-11-25T17:20:44+01:00 yurii-b650ilightningwifi kernel: wlan0: RX AssocResp from 36:c5:99:ea:67:ea (capab=0x1511 status=0 aid=2)
+2026-11-25T17:20:44+01:00 yurii-b650ilightningwifi kernel: wlan0: associated
+2026-11-25T17:20:47+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Message 00020003 (seq 7) timeout
+2026-11-25T17:20:47+01:00 yurii-b650ilightningwifi kernel: wlan0: failed to set key (2, ff:ff:ff:ff:ff:ff) to hardware (-110)
+2026-11-25T17:20:49+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: MCU is not ready for firmware download
+2026-11-25T17:20:49+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Loading firmware patch: mediatek/WIFI_MT7922_patch_mcu_1_1_hdr.bin
+2026-11-25T17:20:52+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Message 00000010 (seq 9) timeout
+2026-11-25T17:20:52+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Failed to get patch semaphore
+2026-11-25T17:20:54+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: MCU is not ready for firmware download
+2026-11-25T17:20:54+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Loading firmware patch: mediatek/WIFI_MT7922_patch_mcu_1_1_hdr.bin
+2026-11-25T17:20:57+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Message 00000010 (seq 11) timeout
+2026-11-25T17:20:57+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Failed to get patch semaphore
+2026-11-25T17:20:59+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: MCU is not ready for firmware download
+2026-11-25T17:20:59+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Loading firmware patch: mediatek/WIFI_MT7922_patch_mcu_1_1_hdr.bin
+2026-11-25T17:21:02+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Message 00000010 (seq 13) timeout
+2026-11-25T17:21:02+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Failed to get patch semaphore
+2026-11-25T17:21:05+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: MCU is not ready for firmware download
+2026-11-25T17:21:05+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Loading firmware patch: mediatek/WIFI_MT7922_patch_mcu_1_1_hdr.bin
+2026-11-25T17:21:08+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Message 00000010 (seq 15) timeout
+2026-11-25T17:21:08+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Failed to get patch semaphore
+2026-11-25T17:21:10+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: MCU is not ready for firmware download
+2026-11-25T17:21:10+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Loading firmware patch: mediatek/WIFI_MT7922_patch_mcu_1_1_hdr.bin
+2026-11-25T17:21:13+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Message 00000010 (seq 3) timeout
+2026-11-25T17:21:13+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Failed to get patch semaphore
+2026-11-25T17:21:15+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: MCU is not ready for firmware download
+2026-11-25T17:21:15+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Loading firmware patch: mediatek/WIFI_MT7922_patch_mcu_1_1_hdr.bin
+2026-11-25T17:21:18+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Message 00000010 (seq 5) timeout
+2026-11-25T17:21:18+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Failed to get patch semaphore
+2026-11-25T17:21:21+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Message 00020003 (seq 6) timeout
+2026-11-25T17:21:21+01:00 yurii-b650ilightningwifi kernel: wlan0: failed to set key (5, ff:ff:ff:ff:ff:ff) to hardware (-110)
+2026-11-25T17:21:23+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: MCU is not ready for firmware download
+2026-11-25T17:21:23+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Loading firmware patch: mediatek/WIFI_MT7922_patch_mcu_1_1_hdr.bin
+2026-11-25T17:21:26+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Message 00000010 (seq 8) timeout
+2026-11-25T17:21:26+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Failed to get patch semaphore
+2026-11-25T17:21:29+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Message 00020003 (seq 9) timeout
+2026-11-25T17:21:31+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: MCU is not ready for firmware download
+2026-11-25T17:21:31+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Loading firmware patch: mediatek/WIFI_MT7922_patch_mcu_1_1_hdr.bin
+2026-11-25T17:21:34+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Message 00000010 (seq 11) timeout
+2026-11-25T17:21:34+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Failed to get patch semaphore
+2026-11-25T17:21:36+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: MCU is not ready for firmware download
+2026-11-25T17:21:36+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Loading firmware patch: mediatek/WIFI_MT7922_patch_mcu_1_1_hdr.bin
+2026-11-25T17:21:39+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Message 00000010 (seq 13) timeout
+2026-11-25T17:21:39+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Failed to get patch semaphore
+2026-11-25T17:21:41+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: MCU is not ready for firmware download
+2026-11-25T17:21:41+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Loading firmware patch: mediatek/WIFI_MT7922_patch_mcu_1_1_hdr.bin
+2026-11-25T17:21:44+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Message 00000010 (seq 1) timeout
+2026-11-25T17:21:44+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Failed to get patch semaphore
+2026-11-25T17:21:44+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: chip reset failed
+2026-11-25T17:21:47+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Message 00020001 (seq 2) timeout
+2026-11-25T17:21:47+01:00 yurii-b650ilightningwifi kernel: wlan0: Driver requested disconnection from AP 36:c5:99:ea:67:ea
+2026-11-25T17:21:50+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Message 00020001 (seq 6) timeout
+2026-11-25T17:21:53+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: MCU is not ready for firmware download
+2026-11-25T17:21:53+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Loading firmware patch: mediatek/WIFI_MT7922_patch_mcu_1_1_hdr.bin
+2026-11-25T17:21:56+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Message 00000010 (seq 11) timeout
+2026-11-25T17:21:56+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Failed to get patch semaphore
+2026-11-25T17:21:59+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: MCU is not ready for firmware download
+2026-11-25T17:21:59+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Loading firmware patch: mediatek/WIFI_MT7922_patch_mcu_1_1_hdr.bin
+2026-11-25T17:22:02+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Message 00000010 (seq 13) timeout
+2026-11-25T17:22:02+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Failed to get patch semaphore
+2026-11-25T17:22:04+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: MCU is not ready for firmware download
+2026-11-25T17:22:04+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Loading firmware patch: mediatek/WIFI_MT7922_patch_mcu_1_1_hdr.bin
+2026-11-25T17:22:07+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Message 00000010 (seq 15) timeout
+2026-11-25T17:22:07+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Failed to get patch semaphore
+2026-11-25T17:22:09+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: MCU is not ready for firmware download
+2026-11-25T17:22:09+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Loading firmware patch: mediatek/WIFI_MT7922_patch_mcu_1_1_hdr.bin
+2026-11-25T17:22:12+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Message 00000010 (seq 2) timeout
+2026-11-25T17:22:12+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Failed to get patch semaphore
+2026-11-25T17:22:14+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: MCU is not ready for firmware download
+2026-11-25T17:22:14+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Loading firmware patch: mediatek/WIFI_MT7922_patch_mcu_1_1_hdr.bin
+2026-11-25T17:22:17+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Message 00000010 (seq 4) timeout
+2026-11-25T17:22:17+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Failed to get patch semaphore
+2026-11-25T17:22:19+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: MCU is not ready for firmware download
+2026-11-25T17:22:19+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Loading firmware patch: mediatek/WIFI_MT7922_patch_mcu_1_1_hdr.bin
+2026-11-25T17:22:22+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Message 00000010 (seq 6) timeout
+2026-11-25T17:22:22+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Failed to get patch semaphore
+2026-11-25T17:22:24+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: MCU is not ready for firmware download
+2026-11-25T17:22:24+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Loading firmware patch: mediatek/WIFI_MT7922_patch_mcu_1_1_hdr.bin
+2026-11-25T17:22:27+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Message 00000010 (seq 9) timeout
+2026-11-25T17:22:27+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Failed to get patch semaphore
+2026-11-25T17:22:29+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: MCU is not ready for firmware download
+2026-11-25T17:22:29+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Loading firmware patch: mediatek/WIFI_MT7922_patch_mcu_1_1_hdr.bin
+2026-11-25T17:22:32+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Message 00000010 (seq 11) timeout
+2026-11-25T17:22:32+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Failed to get patch semaphore
+2026-11-25T17:22:34+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: MCU is not ready for firmware download
+2026-11-25T17:22:34+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Loading firmware patch: mediatek/WIFI_MT7922_patch_mcu_1_1_hdr.bin
+2026-11-25T17:22:37+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Message 00000010 (seq 13) timeout
+2026-11-25T17:22:37+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Failed to get patch semaphore
+2026-11-25T17:22:39+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: MCU is not ready for firmware download
+2026-11-25T17:22:39+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Loading firmware patch: mediatek/WIFI_MT7922_patch_mcu_1_1_hdr.bin
+2026-11-25T17:22:42+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Message 00000010 (seq 15) timeout
+2026-11-25T17:22:42+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Failed to get patch semaphore
+2026-11-25T17:22:42+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: chip reset failed
+2026-11-25T17:22:45+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Message 00020001 (seq 1) timeout
+2026-11-25T17:22:48+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Message 00020001 (seq 5) timeout
+2026-11-25T17:22:51+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Message 00020003 (seq 7) timeout
+2026-11-25T17:22:54+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Message 00020002 (seq 8) timeout
+2026-11-25T17:22:56+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: MCU is not ready for firmware download
+2026-11-25T17:22:56+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Loading firmware patch: mediatek/WIFI_MT7922_patch_mcu_1_1_hdr.bin
+2026-11-25T17:23:00+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Message 00000010 (seq 10) timeout
+2026-11-25T17:23:00+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Failed to get patch semaphore
+2026-11-25T17:23:02+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: MCU is not ready for firmware download
+2026-11-25T17:23:02+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Loading firmware patch: mediatek/WIFI_MT7922_patch_mcu_1_1_hdr.bin
+2026-11-25T17:23:05+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Message 00000010 (seq 12) timeout
+2026-11-25T17:23:05+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Failed to get patch semaphore
+2026-11-25T17:23:08+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Message 00020002 (seq 13) timeout
+2026-11-25T17:23:10+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: MCU is not ready for firmware download
+2026-11-25T17:23:10+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Loading firmware patch: mediatek/WIFI_MT7922_patch_mcu_1_1_hdr.bin
+2026-11-25T17:23:13+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Message 00000010 (seq 15) timeout
+2026-11-25T17:23:13+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Failed to get patch semaphore
+2026-11-25T17:23:15+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: MCU is not ready for firmware download
+2026-11-25T17:23:15+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Loading firmware patch: mediatek/WIFI_MT7922_patch_mcu_1_1_hdr.bin
+2026-11-25T17:23:18+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Message 00000010 (seq 2) timeout
+2026-11-25T17:23:18+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Failed to get patch semaphore
+2026-11-25T17:23:21+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Message 00020003 (seq 5) timeout
+2026-11-25T17:23:23+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: MCU is not ready for firmware download
+2026-11-25T17:23:23+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Loading firmware patch: mediatek/WIFI_MT7922_patch_mcu_1_1_hdr.bin
+2026-11-25T17:23:26+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Message 00000010 (seq 9) timeout
+2026-11-25T17:23:26+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Failed to get patch semaphore
+2026-11-25T17:23:28+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: MCU is not ready for firmware download
+2026-11-25T17:23:28+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Loading firmware patch: mediatek/WIFI_MT7922_patch_mcu_1_1_hdr.bin
+2026-11-25T17:23:31+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Message 00000010 (seq 11) timeout
+2026-11-25T17:23:31+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Failed to get patch semaphore
+2026-11-25T17:23:33+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: MCU is not ready for firmware download
+2026-11-25T17:23:33+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Loading firmware patch: mediatek/WIFI_MT7922_patch_mcu_1_1_hdr.bin
+2026-11-25T17:23:36+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Message 00000010 (seq 13) timeout
+2026-11-25T17:23:36+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Failed to get patch semaphore
+2026-11-25T17:23:38+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: MCU is not ready for firmware download
+2026-11-25T17:23:38+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Loading firmware patch: mediatek/WIFI_MT7922_patch_mcu_1_1_hdr.bin
+2026-11-25T17:23:41+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Message 00000010 (seq 15) timeout
+2026-11-25T17:23:41+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Failed to get patch semaphore
+2026-11-25T17:23:43+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: MCU is not ready for firmware download
+2026-11-25T17:23:43+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Loading firmware patch: mediatek/WIFI_MT7922_patch_mcu_1_1_hdr.bin
+2026-11-25T17:23:46+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Message 00000010 (seq 2) timeout
+2026-11-25T17:23:46+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Failed to get patch semaphore
+2026-11-25T17:23:48+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: MCU is not ready for firmware download
+2026-11-25T17:23:48+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Loading firmware patch: mediatek/WIFI_MT7922_patch_mcu_1_1_hdr.bin
+2026-11-25T17:23:51+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Message 00000010 (seq 4) timeout
+2026-11-25T17:23:51+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Failed to get patch semaphore
+2026-11-25T17:23:51+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: chip reset failed
+2026-11-25T17:23:51+01:00 yurii-b650ilightningwifi kernel: amdgpu 0000:03:00.0: VM memory stats for proc steamwebhelper(31217) task steamwebhe:cs0(31201) is non-zero when fini
+2026-11-25T17:23:51+01:00 yurii-b650ilightningwifi kernel: amdgpu 0000:03:00.0: VM memory stats for proc steamwebhelper(31237) task steamwebhe:cs0(31231) is non-zero when fini
+2026-11-25T17:23:54+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Message 00020001 (seq 5) timeout
+2026-11-25T17:23:57+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Message 00020001 (seq 9) timeout
+2026-11-25T17:24:00+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: MCU is not ready for firmware download
+2026-11-25T17:24:00+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Loading firmware patch: mediatek/WIFI_MT7922_patch_mcu_1_1_hdr.bin
+2026-11-25T17:24:03+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Message 00000010 (seq 13) timeout
+2026-11-25T17:24:03+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Failed to get patch semaphore
+2026-11-25T17:24:05+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: MCU is not ready for firmware download
+2026-11-25T17:24:05+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Loading firmware patch: mediatek/WIFI_MT7922_patch_mcu_1_1_hdr.bin
+2026-11-25T17:24:08+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Message 00000010 (seq 15) timeout
+2026-11-25T17:24:08+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Failed to get patch semaphore
+2026-11-25T17:24:11+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Message 00020002 (seq 1) timeout
+2026-11-25T17:24:13+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: MCU is not ready for firmware download
+2026-11-25T17:24:13+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Loading firmware patch: mediatek/WIFI_MT7922_patch_mcu_1_1_hdr.bin
+2026-11-25T17:24:16+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Message 00000010 (seq 3) timeout
+2026-11-25T17:24:16+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Failed to get patch semaphore
+2026-11-25T17:24:18+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: MCU is not ready for firmware download
+2026-11-25T17:24:18+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Loading firmware patch: mediatek/WIFI_MT7922_patch_mcu_1_1_hdr.bin
+2026-11-25T17:24:21+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Message 00000010 (seq 5) timeout
+2026-11-25T17:24:21+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Failed to get patch semaphore
+2026-11-25T17:24:23+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: MCU is not ready for firmware download
+2026-11-25T17:24:23+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Loading firmware patch: mediatek/WIFI_MT7922_patch_mcu_1_1_hdr.bin
+2026-11-25T17:24:26+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Message 00000010 (seq 8) timeout
+2026-11-25T17:24:26+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Failed to get patch semaphore
+2026-11-25T17:24:28+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: MCU is not ready for firmware download
+2026-11-25T17:24:28+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Loading firmware patch: mediatek/WIFI_MT7922_patch_mcu_1_1_hdr.bin
+2026-11-25T17:24:31+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Message 00000010 (seq 10) timeout
+2026-11-25T17:24:31+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Failed to get patch semaphore
+2026-11-25T17:24:32+01:00 yurii-b650ilightningwifi kernel: hid-steam 0003:28DE:1304.0002: Steam Controller 'FXA99615006C3' connected
+2026-11-25T17:24:32+01:00 yurii-b650ilightningwifi kernel: input: Wireless Steam Controller as /devices/pci0000:00/0000:00:02.1/0000:05:00.0/0000:06:0c.0/0000:0d:00.0/usb6/6-5/6-5:1.2/0003:28DE:1304.0002/input/input64
+2026-11-25T17:24:32+01:00 yurii-b650ilightningwifi kernel: input: Steam Controller Motion Sensors as /devices/pci0000:00/0000:00:02.1/0000:05:00.0/0000:06:0c.0/0000:0d:00.0/usb6/6-5/6-5:1.2/0003:28DE:1304.0002/input/input65
+2026-11-25T17:24:32+01:00 yurii-b650ilightningwifi kernel: amdgpu 0000:03:00.0: VM memory stats for proc steam(31262) task steam:cs0(31150) is non-zero when fini
+2026-11-25T17:24:32+01:00 yurii-b650ilightningwifi kernel: amdgpu 0000:03:00.0: VM memory stats for proc Xwayland(30936) task Xwayland:cs0(30933) is non-zero when fini
+2026-11-25T17:24:32+01:00 yurii-b650ilightningwifi kernel: amdgpu 0000:03:00.0: VM memory stats for proc Xwayland(30935) task Xwayland:cs0(30934) is non-zero when fini
+2026-11-25T17:24:32+01:00 yurii-b650ilightningwifi kernel: amdgpu 0000:03:00.0: VM memory stats for proc mangoapp(30985) task mangoapp:cs0(30959) is non-zero when fini
+2026-11-25T17:24:34+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Message 00020002 (seq 11) timeout
+2026-11-25T17:24:36+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: MCU is not ready for firmware download
+2026-11-25T17:24:36+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Loading firmware patch: mediatek/WIFI_MT7922_patch_mcu_1_1_hdr.bin
+2026-11-25T17:24:39+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Message 00000010 (seq 14) timeout
+2026-11-25T17:24:39+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Failed to get patch semaphore
+2026-11-25T17:24:41+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: MCU is not ready for firmware download
+2026-11-25T17:24:41+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Loading firmware patch: mediatek/WIFI_MT7922_patch_mcu_1_1_hdr.bin
+2026-11-25T17:24:44+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Message 00000010 (seq 1) timeout
+2026-11-25T17:24:44+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Failed to get patch semaphore
+2026-11-25T17:24:46+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: MCU is not ready for firmware download
+2026-11-25T17:24:46+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Loading firmware patch: mediatek/WIFI_MT7922_patch_mcu_1_1_hdr.bin
+2026-11-25T17:24:49+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Message 00000010 (seq 3) timeout
+2026-11-25T17:24:49+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Failed to get patch semaphore
+2026-11-25T17:24:51+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: MCU is not ready for firmware download
+2026-11-25T17:24:51+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Loading firmware patch: mediatek/WIFI_MT7922_patch_mcu_1_1_hdr.bin
+2026-11-25T17:24:54+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Message 00000010 (seq 5) timeout
+2026-11-25T17:24:54+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Failed to get patch semaphore
+2026-11-25T17:24:54+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: chip reset failed
+2026-11-25T17:24:57+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Message 000046ed (seq 6) timeout
+2026-11-25T17:24:57+01:00 yurii-b650ilightningwifi kernel: HDR SB:5e 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+2026-11-25T17:24:57+01:00 yurii-b650ilightningwifi kernel: HDR SB:00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+2026-11-25T17:24:57+01:00 yurii-b650ilightningwifi kernel: amdgpu 0000:03:00.0: VM memory stats for proc Xorg(9847) task Xorg:cs0(9799) is non-zero when fini
+2026-11-25T17:24:58+01:00 yurii-b650ilightningwifi kernel: EXT4-fs (nvme1n1): unmounting filesystem 94459444-9f26-4baa-a911-97aa54b0141a.
+2026-11-25T17:24:59+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: MCU is not ready for firmware download
+2026-11-25T17:24:59+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Loading firmware patch: mediatek/WIFI_MT7922_patch_mcu_1_1_hdr.bin
+2026-11-25T17:25:02+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Message 00000010 (seq 8) timeout
+2026-11-25T17:25:02+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Failed to get patch semaphore
+2026-11-25T17:25:04+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: MCU is not ready for firmware download
+2026-11-25T17:25:04+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Loading firmware patch: mediatek/WIFI_MT7922_patch_mcu_1_1_hdr.bin
+2026-11-25T17:25:07+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Message 00000010 (seq 10) timeout
+2026-11-25T17:25:07+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Failed to get patch semaphore
+2026-11-25T17:25:10+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Message 000046ed (seq 11) timeout
+2026-11-25T17:25:12+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: MCU is not ready for firmware download
+2026-11-25T17:25:12+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Loading firmware patch: mediatek/WIFI_MT7922_patch_mcu_1_1_hdr.bin
+2026-11-25T17:25:15+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Message 00000010 (seq 13) timeout
+2026-11-25T17:25:15+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Failed to get patch semaphore
+2026-11-25T17:25:17+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: MCU is not ready for firmware download
+2026-11-25T17:25:17+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Loading firmware patch: mediatek/WIFI_MT7922_patch_mcu_1_1_hdr.bin
+2026-11-25T17:25:20+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Message 00000010 (seq 15) timeout
+2026-11-25T17:25:20+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Failed to get patch semaphore
+2026-11-25T17:25:23+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Message 000046ed (seq 1) timeout
+2026-11-25T17:25:25+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: MCU is not ready for firmware download
+2026-11-25T17:25:25+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Loading firmware patch: mediatek/WIFI_MT7922_patch_mcu_1_1_hdr.bin
+2026-11-25T17:25:28+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Message 00000010 (seq 3) timeout
+2026-11-25T17:25:28+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Failed to get patch semaphore
+2026-11-25T17:25:30+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: MCU is not ready for firmware download
+2026-11-25T17:25:30+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Loading firmware patch: mediatek/WIFI_MT7922_patch_mcu_1_1_hdr.bin
+2026-11-25T17:25:33+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Message 00000010 (seq 5) timeout
+2026-11-25T17:25:33+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Failed to get patch semaphore
+2026-11-25T17:25:36+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Message 000046ed (seq 6) timeout
+2026-11-25T17:25:38+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: MCU is not ready for firmware download
+2026-11-25T17:25:38+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Loading firmware patch: mediatek/WIFI_MT7922_patch_mcu_1_1_hdr.bin
+2026-11-25T17:25:41+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Message 00000010 (seq 8) timeout
+2026-11-25T17:25:41+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Failed to get patch semaphore
+2026-11-25T17:25:43+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: MCU is not ready for firmware download
+2026-11-25T17:25:43+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Loading firmware patch: mediatek/WIFI_MT7922_patch_mcu_1_1_hdr.bin
+2026-11-25T17:25:46+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Message 00000010 (seq 10) timeout
+2026-11-25T17:25:46+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Failed to get patch semaphore
+2026-11-25T17:25:49+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Message 000046ed (seq 11) timeout
+2026-11-25T17:25:51+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: MCU is not ready for firmware download
+2026-11-25T17:25:51+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Loading firmware patch: mediatek/WIFI_MT7922_patch_mcu_1_1_hdr.bin
+2026-11-25T17:25:54+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Message 00000010 (seq 13) timeout
+2026-11-25T17:25:54+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Failed to get patch semaphore
+2026-11-25T17:25:56+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: MCU is not ready for firmware download
+2026-11-25T17:25:56+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Loading firmware patch: mediatek/WIFI_MT7922_patch_mcu_1_1_hdr.bin
+2026-11-25T17:25:59+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Message 00000010 (seq 15) timeout
+2026-11-25T17:25:59+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Failed to get patch semaphore
+2026-11-25T17:25:59+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: chip reset failed
+2026-11-25T17:26:02+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: Message 000046ed (seq 1) timeout
+== warm reboot 44e4a03e556a4d57aabaf803eedd976f
+2026-11-25T17:27:55+01:00 yurii-b650ilightningwifi kernel: Linux version 7.3.5-arch1-1 (linux@archlinux) (gcc (GCC) 16.2.1 20260810, GNU ld (GNU Binutils) 2.47) #1 SMP PREEMPT_DYNAMIC Tue, 17 Nov 2026 22:28:33 +0000
+2026-11-25T17:28:00+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: enabling device (0000 -> 0002)
+2026-11-25T17:28:01+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: driver own failed
+2026-11-25T17:28:01+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: probe with driver mt7921e failed with error -5
+== warm reboot d61bd1a510054677ac15b1e4a0d07e22
+2026-11-25T17:28:58+01:00 yurii-b650ilightningwifi kernel: Linux version 7.3.5-arch1-1 (linux@archlinux) (gcc (GCC) 16.2.1 20260810, GNU ld (GNU Binutils) 2.47) #1 SMP PREEMPT_DYNAMIC Tue, 17 Nov 2026 22:28:33 +0000
+2026-11-25T17:29:03+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: enabling device (0000 -> 0002)
+2026-11-25T17:29:04+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: driver own failed
+2026-11-25T17:29:04+01:00 yurii-b650ilightningwifi kernel: mt7921e 0000:0a:00.0: probe with driver mt7921e failed with error -5
+
+--Apple-Mail=_7A4153F3-D5ED-4F94-BCA9-D27A04A9E22F
+Content-Disposition: attachment;
+	filename=hardware.txt
+Content-Type: text/plain;
+	x-unix-mode=0644;
+	name="hardware.txt"
+Content-Transfer-Encoding: quoted-printable
+
+board_vendor: ASRock
+board_name: B650I Lightning WiFi
+bios_version: 4.10
+bios_date: 02/09/2026
+0a:00.0 Network controller [0280]: MEDIATEK Corp. MT7922 802.11ax PCI =
+Express Wireless Network Adapter [14c3:0616]
+	Subsystem: MEDIATEK Corp. MT7922 802.11ax PCI Express Wireless =
+Network Adapter [14c3:0616]
+	Flags: bus master, fast devsel, latency 0, IRQ 105, IOMMU group =
+21
+	Memory at df600000 (64-bit, prefetchable) [size=3D1M]
+	Memory at df700000 (64-bit, non-prefetchable) [size=3D32K]
+	Capabilities: [80] Express Endpoint, IntMsgNum 0
+	Capabilities: [e0] MSI: Enable+ Count=3D1/32 Maskable+ 64bit+
+	Capabilities: [f8] Power Management version 3
+	Capabilities: [100] Vendor Specific Information: ID=3D1556 Rev=3D1=
+ Len=3D008 <?>
+	Capabilities: [108] Latency Tolerance Reporting
+	Capabilities: [110] L1 PM Substates
+	Capabilities: [200] Advanced Error Reporting
+	Kernel driver in use: mt7921e
+	Kernel modules: mt7921e
+
+BOOT_IMAGE=3D/@/boot/vmlinuz-linux =
+root=3DUUID=3D2f70b749-2e17-4abe-b681-8113b2789512 rw rootflags=3Dsubvol=3D=
+@ nowatchdog nvme_load=3DYES =
+resume=3DUUID=3Da50b6269-3a21-40b3-a48f-ea442e839bb3 loglevel=3D3
+
+--Apple-Mail=_7A4153F3-D5ED-4F94-BCA9-D27A04A9E22F
+Content-Disposition: attachment;
+	filename=tests-A-C-kernel-nm-wpa.log.gz
+Content-Type: application/x-gzip;
+	x-unix-mode=0644;
+	name="tests-A-C-kernel-nm-wpa.log.gz"
+Content-Transfer-Encoding: base64
+
+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
+--Apple-Mail=_7A4153F3-D5ED-4F94-BCA9-D27A04A9E22F
+Content-Disposition: attachment;
+	filename=test-B-kernel-nm-wpa.log.gz
+Content-Type: application/x-gzip;
+	x-unix-mode=0644;
+	name="test-B-kernel-nm-wpa.log.gz"
+Content-Transfer-Encoding: base64
+
+H4sIAOaCB2sCA+y9a3vbOLIu+v38Cqw1H9rebcm8X7TGay9ZkhOtWLbGspPMZOfoAUnQ5lgi2STl
+Sz/7x58qkNTNkjsJQTrTZ7k7NklReAtAoVAFFKoUSTFastxS9GtF7ah2R5F+leSOJJHnRRIELcfQ
+pWAW3N5lYRDePgZ+QO5ZErJZh5wH4eKJPLAkDaKQmG21rbdo4t7JLZkczPDD/8JbfnVIDm5dlxy8
+6/UOiWy0lbZMFICWLFk6Iu8ubsjMg0/h7ym8ngWz9JAobc08JH+RyWQ0JuOrwWA0vp72/37RHQ17
+5HrBjohskovogRdEFKWjWB1VJb9K8PP/KD9er140n9PQI0A465DTy8vr6XDUfTc4Of6vYyeKsuOH
+Odbp9xavGUng0cnNzbB/ovim5Jia3VKYbLY06jCAseSWJcuqo5iWrcsKSR75N/wZvU1P0oXzEM1O
+/ouE0SPN3DsvuiXhw5xNZxH1Tv4+mJCEpYs5y8unuuQYimG3VKrILU1y1BbVLL/FqKYpzFJtx1HJ
+LLqdsQc2O1GrtMGTZRyn8SzIoDz3nngsY24G3dwhf+mfdsgjTfArBPp9kbKklcbUZcRZpFN8Pa2C
+fDq8nLTiJHoIPOaR+O45DVw6I1fdEZnTuFO5aGYpUod8mbM5kZ6krZ/WxiPbh5+vhEye0wxeBxJq
+Q6cv0f0C3WMPATQuMAJLHphXFwnyiwawbZ811AAA5W+j+802AH3JAVT2m+IAqrxEV2QvR+/2xkNy
+8XFSG7bMtrH9xmruvGx3R1KkJrse8ORNEiyZmQ3xPkJt8b4FyKzBBkC8LRJseUlCvdyHQNvY6ia2
+RzNaE7j6EtxWFa2Znkco/SW60UizA5C5je37RlM19/0d6E6DPI947ksSGpJ69svZxnbqnvBuabxO
+gvuSBM/0FSShpkpD8eoWot9spelLPc8rSain0uwlImu40v5LEvhAr6/SfHBvIfqN6nPyS43eUj2Y
+aesa3xtNjlDWNjpjTn1NjsW7W4iWJDfJZ4C3pcT6rl/n4PK9F53s+/Xw2cVncjB4Yu4iY6QfpNSZ
+sUMCRurSKqbw94FVgeiOh70OmWQ0C1wCFu8sJUEYZAGdBb9XI575QYcMzobkQWnLMnGeSXfOErCq
+QzJitzRLWOillQFQXzmRnkCfYxr0RK6/KG1p+UzWyPV4dBaEdHYe3eaPHRynZDLCLoYnlu3Z3uoJ
+UfnX8SnyNhkNRt3r6yt4ZFo6KG6yRQaTq2u89zTZZbZFhhfD66t+8YZF4cnVxTvEUhXbxi8ACYMH
+FmYFCapiefi4SvUTGnrRvEPcJLzlfUa8KGSVG/SKzaMHRoDjTbVDRqPhJSLdspMv0tParLKaTQ4U
+3RidHhI/ieYExwsumFQig4+5JKejGHo7kQWOtO2qa9tVX5tbfOaVVZeV+qu+E1l01S+iLIfF5TVs
+AP1FAzC2IoNJuaV8oH0QWv2tXjB2EVHYzCuJeyCb9XfCLuAa+c/arrllrEbA2hR7oMta7ZXfgy2w
++v3RsLOSvlpbglkOig2zduVSu5MrXEo+hdeG5Lx8j3wKzoLjXQ+P+MRPtLYsEUk5luxjpKAyGSNo
+0eSZpLMoS0kcxYsZzZjXIcqxUqXsLHU75IymGbme9HD+DpyEom5AFinWaDy8rlx8n6/CM4+olq20
+NVUmo/e/oxrisjSNkurctog9aIxtbb7UrjivrTRncnLyn0JH3g6G31wZL9hdjPI+g76axn5ITnBg
+cYUdhuzTFLesls+1sg2qII2ur6743gXRCYykJGApOVCJHzxBV/5KFPJAkwBVyv9AAogiHR4RZxHM
+slyY2MvPeUlp1W2dcfca97hCP7hdFCz6RWqZXzvk0ykhn3qE3PRa8I/k9+P8/tM1IaIZbM0aX8ny
++hhso8f5CkxNHc7SJMNJBEnGsY9KKsm3yHiProbWUm/NohdPPaktusF5wXmD88uaG/yGS753pySm
+t8DzfpQQL0hAhOFoiOGzKoVPwBpLGMENWRhVODwq0QrV7w8nH5YmpkGZVSxRGsxXvapGLJpDYIXR
+ZPZMMj6Y3Tvm3qeLOe6gw5tuPhS93Lr0qmNdTfrjjYX2swE3wvBG0cjBg6SQ7nl38qF7WB3s86R/
+vQWmmorFwc56CCYXYKRLRmRI4KdcqiHdEdznSzayKoCYM/izscp/dsZNUixf5jU3/ogYvoIkhJj+
+VsuoZ2aXE2NKg0F3vRt2EDO8uD5H9wZVMhRLTMtMtrpJLlpG0qTq5U9eVPbMyMu3DMsuKjvqYx0n
+8SwIM5aUlVXIaHIGXy4k8GEtxOhlZc/ONlq+N77hb79kA34nouWH28QMBiUx9rcNEHE8Oeqdvdsi
+pl8So/4RMXk3iSPm/Xiw3TK9JTHWN7YM/ugiumn8optOlwNE20OMLJkKvCtcjn08620Rw+0/gLC1
+rvSHLQPDTFV1STvTTAHEnL672h5N6nd3kyieuR6PlC1ilGU3cQbWvo1napIzeTdJcs/SNoQe/gFZ
+s91NAuXMS2IGZ8uWkTeJieNeNI/79U03n8anm8Qop8aSZ4yG5cyLllFOy+nA6G92U288+nR+1atx
+It5BTDGaZMMebBPTPxu+UxolpmBgpds1Nonpn3W7DRPTLRnYOu2+bJl+w8QUPGN3e9I2Mb3RBWmU
+Z7pK2U3GZst0L/mfGokZvZ+Mt4hZapI9q5DABTHvBpMuXiiSLumqZpH/vU5aPS0jlcQM9LxluDgh
+Od1r8Jp4oTcZbRFjLyWw0vREibuKW8SUaqesDxo2hYYfryZbxJRqp7wl9Lpz75pbyc1NlIpdqp0w
+xDeIGQ1G15eX59LKVKl/aNul2qmZvW0V4tPlx2bljN0tidH+qJtEE7NaReNWfb50Ms/X8GlWrtag
+I5+Wr9bwS1lWv4rE5kb8fmyTLrEZZcz+Krjek73Yss+K3bD8UvWFYk9er7dvrNqcGZbVKLa+wtYl
+n4lt8+Gr2Iyt+ptJtiMUmxvnr2B7K2xPUsVic1v8FWx3he1Kqim2zcevt7mzwnYkTez45pb2fmxD
+WmKbtmaLHWPcsH6Fz9UVn6ui25zb0a9gKytsRdKcRsf3qs192bXUJrGZv+I1X9IkodjcKN6LrThL
+mYqXqt5gvRVHX2Hrhqc2iq2usDXD9hrFllbYCqWNtjld8hpcWo7dKPaqvymjjt8otrLC1qghtt7c
+ynsFW15hy5JrNlrvFa/BJdPEyha0Pfdj2yteg0tFbL25qfkKNlthM1kXO765ZfkKtrfC9uRmZYvt
+rrBdzW90jNnOCtvRTKdRbLrCpppWrc0vInJxM+oSd8NtxY8WYaWN8jN6jzWhJIw8tkb+/mPBq0ME
+lapz2R9M+93r7oF0SOhsFrnog7b08gMMXfMt7uUnBC/vuvGodR3MWUKGl2QcoYsKlC9Z1Qs+x6E/
+vRgNyQF142AaeOgh6n8ld/AlwrxbhmfpM3gof620JDC8RKQv0tcOoXHgAhBRlaNlCAJVPSLU8xKW
+ptxTND/hdETeTYZEaimqAGh5HVp9DVpeQitaS9cFrJ5dXE8nV73p5ccrcuAsAIcfuA+S3+DqdhY5
+dMZvFOL5M/x3WCumvY5pk1n0SHjcAQGoud8QP0BwMOr2rw+56xBGgdgc/0EIz+f8WtA2dODhoJAl
+RbEUSSYOTVmH96dX3Slslz+WY5XOzHCpyTX7Y+HOYxbFUYeM6FMbI0Xw0Aoxde/RQatDCJFrKB+F
+Ky9cXPkXi3k7L5fEINCKGnTqod8LluQLLR/L3SJfaPnZXcKol0O4USKyfN7+WOaLChBiCIRYr8Ia
+iCCILsy8jyhqjNLLHT8EtBmXdHdRBle3/FkVwPGoAzOhA3c0Pyx2xW4DGOMJTPlhlNKHUoHqvOZ5
+3TgFLxyvG6ZgLSaI7b8JBWtBOcpgHA1TsBYcowyK0SwFu2aohinY4bPcLAVrETqWoSmapWAtUsQy
+QkTTFCwjNiwjNTRMAX15WKAKBcXh5fUzCMtDffSBBjNu2aLiOe4NCy2sWmCrKMpwsolpQh+CJFvk
+J3uLzzGUlkMTRu5o4j3CRRUol0fhihaJy/BEjR+EzGv9M/B9rsnMaXrPtdrih5+CcJ/dGX64enzE
+nwfejE1D+EC2Zck2bFuTVFvWZJuElVrjH1HI8kN1aaWYXoT0R91cN9thvMvbUbUEMA5HVJVdiPL+
+sAfVEC/Qzpm9QJTrWqCAOuZmByFsHmfPlY4/RQ98KP2OPZ5mNMn4qGLUveMqfJWy8/MUxfITX8TJ
+Wapa3XlBhOwOEyfvCRNXG+T+wGx1Qb4SCq02yP0xyOqCfCXqV02Qr4WbqgvylThPtUHuj6xUD2Rt
+YnAYBhkipSxbxDm89McyQQz2ZVgAHuWSEyYdmISLo3RBSBbhSkupLvR2otlGg3CqAtXTVbNhSFVq
+GlBtGFCTVU1rGFNpGE9vCi9XxKCCmm4aTYNaNWJyETeNWeLGiw65uJrikbiOJdsKCZMpPESrYeoE
+WdoxiidgGxQ3SC2/q7S8WIIP5g7zMPivUbDtMTwmqaLoiiWRhNPkKZZhKmShGIqsaZVQofAW34Pr
+vIqR79OdyP9LkWxT1hVRmF+krzCpyDBkVKIBI7fgvyplf8jNSfd/gliTm/AeSApLC3u9SbgVPmcZ
+S1Ly7xvE/vsReQxmM+LgO2kKbJhFPMh1foK/0pn8OAnCDGxvqB5xFr4PhWJwU/IrmDDwB69hElTx
+PCE803VT0g1yQgzLkhWLOM9ZtTHex+gTz8QFywvXGdK7Yvu+CEqBU4WtqZJGDqLEYwmScoRHCHVN
+A3uXwx/x1qNJtW1clBet/WQUI2xFhnJEZMM0TUU2BJKRRn6GKy24H359ftohcE1JuJgTq13Nq2A2
+c6h7Tzj53Ni94OK8AwO90goSDwoi80lhFqQZNMM8cuDl7JncJtEizkOytwm5jjK+scd39SxZs3Sj
+0j7/OJoF7jMH7hTTUZXiUIOmiyxqYbS0Di4KuPcdaLWD31kSHR6RO0bjXN52orC49RPGOpHvV4oZ
+cX4D3fz+E4WPwxNDOyKX2EUnUgsYfRSEl84/mZulJzDx4qbPiXHEey49qTSv+VlCcSGucPTATtJt
+1ZaXwWBgMlfUQmUSCASia1ksyLTsDuYXzibVhMhzSOeBS8bQH/MYes9fzCoxQ+LCnF+UFqAcuAtY
+gkFZ8rj/vRsSzOMZm0Nr8bXidmWw8gfLhqkJOsHlvcI3/3iElkL/OeF6AMj/lcJzYojFhykhSnAA
+w6ScIhWd1SOZeGxGnwmeR5qn7WrGc/5zDbNeHPEZkEcVCjMS+eQadLuUk1NEUhGCdbXwGkCBGrnY
+ebUB8S7DwoAd3TxaGIDNFgyhUpjDvMWMJS0WokhGLi16LUiJDOUXy+7VSeh6/1xwDiG3LAJ9AWZy
+nFrgs6lPw2iRTWeM+icyCK11dq0UFAdqzRsTw+1kHDu9C/wMh4RKcl1qjjcyJyNDE8F1ppRTerL+
+UMjgWZLDWevnoAkkxfDqbxMwQcEk1DTe9kHyG26YSNgVMegUS3FcfGBU5oUUa5FPnstGwEcgyxZu
+RtLgdxD56L3k4b6SG4UZ8GVV2bmxq1R9N0lWDEnTDMXkJ6qr7Sbd+yxEqtYi5oIZlUfeK7VJrjjy
+IaPoOonyqR6dPqWngyn8xFkCwxqvDlsvH1VLKBSm0QzIc6MZNB/xFvP5c+nYJRvSky4JsSrYLQUl
+zc3RyJcsewbbUkBsrNxBrhcl6Ib2EHCHR568SavmPbrBUHcxy36Ym1RVszTLxGgnFTmpCMMM6pJ7
+h1IkfZ6jrAWFZ3h8Ceo2TGl8qaQSxqjf+hiAoRBBzUs+yG0gQISaBXMwQnAQi0AJHpKUO6eCYuV1
+MMyZJCmg4S7gbthHJ9UESfA6uBneAKDcNKDSNKC6BmhbDQBqwgFzF9zcw5cMP77vk8HZFZSuaIZu
+msyniqJr1KdH+FyBDyq1a7t9PRwNrjrkAWRyBPbYkypxN2v5RCJg1conCr9VTloy3uNfYYInS90W
+w33kl9JnjxQyJdXwbNVXdG9LEFmWrMPMpqqSWlUQ9coQstAPuUI5i6KYHKT3QRwzD6zkXAld00rz
++S7jPv5gLv+2gEnxud0mpmlpbcsgp9FtNBqOJ+RgFv/zBIPIamq1UAoYT5Sv2d7gAtkIpeMwzJUQ
+nCTAqnvIFQ9ycAPIh3mcfCS2Cur5x2vQvX2Qw6Dk0TQFYx5qjzN7zj/Yg7YgAGUfQKVF53MMFMxX
+OElwfX66tgL34ZTguoQyyv9q8FdVBEF5L6Bkxcqx+IVWgMrvTklFjYSHJO4UHDl/pEGGqxw4Tkqf
+3krrR6Dl3fLFAMAY5AoOaHK4jFT0EMdmyTT/xlF+g7+OyO0CTP7pHVjb5TX/fUTw7NxGybhEVWm5
+KWZ8aAYPjEwyVJ9On3FNuUNGS5j9by1DgZKHgEKTulmlZRawk8M0QPN0UtqspMubDOj5uJiFLEE0
+ftZqHrjQgxV9c7BeGdTmo0I2KzwI7yho6x45Jl1o4TnPeDE8vZqIausrUNCSEHNpAD9cPrDEn0WP
+mzQMT8enaBp9HA0+D2Gwh7NKPk4fR5Nedzx4DUNIU8pbTYkc7Ubx83H6SONbNPkSGNxJyu3gKWd4
+Ekd5nM2UonH0e+XjMhv9ygcfP4GJlUUJeTo+E1b6fINrCiSwb7wAn6FmEhYBhU+Bu0FhhwnHC/K5
+5zRviqqzm4+z22QRx1HCp+LPk+7HAfEZzTD6MPp8yB3yy5NlEmCyfLbmDQ6WUu7Qmv5SPwkKkDCZ
+DBrF1ACz+/Fzk5h4gAoxW7gFGcWordUPqq2Dvg8U3agf01rH/MdoNG0GV5EQd7xMa0Q+sOc0V+2a
+62WLE9GLQE2JZi2U3E1TgN5c2yQUu+pLIsjBh48jPm0ciqHnKc1ALZ7mWucX5WuHEN00jsrnfEUv
+fwycUAOijkVbeJp2A5E/BqWwBkSDI9rbdeSPge9rQMQcB7ImWVuI/LGk1FFH+yu6Cr1oVZu3KrFq
+QJRlDqlJW5D8Oam49rwPU+GY+nZX8ufAsGJattTzc4hyvOJxa5ky8yhf5X7KF79x80XRLKn0Fsjt
+kF/caB5TzKDyC8lPDlfz5gi8KVj/HTDPfbqYZR2w1EzDAq0lxAU89C2Uq+WrCD1cqADrOuYKXbII
+8aVKRP+dzmmHOAyagptmQej5i1mlIs8nI5Lm4jT37AcVUEBCvFG0CLNXvEQMXccYwoWPCDCArmiK
+ZQl0EOEUcG3uTcn4eDbpkDNgqhTsNjJHorDruANWigZGuJjN/Gref/MYncL44ViJrwKSq+ffWUh0
+YhuS9JkYLb78Py5zDZEDn84DXDPD4XfEF8ZneINbYDBD8vQeeF8twPYYbDccqGAuEp62L0X3mrls
+3v0KoqzlMRaT89OrI34WGR0IfTAejjj949EN8RLgwaRdbWmyXQZ5WO05r36UqmU7QUYeAy+7e1m6
+ZlUt/JaFmOgRWmeBJmC6hmGIKhsqwHMbrf1sBk9R/apQPFNSK14kcZSyzcpIYsveqMx2FJjKbMTX
+a/M15q2fzdylfuUWwzxSMBqCyNsJZQqEKqKAwLibbddNJB/gGiz6QGPN4NpH700+1aNHvVl9R/39
+utPRpE6voxH2DcwkjIRRq3AVCUGnARmXot6iSdUSP+UxfubBbVKsnMhLj6rnfCE4/Q9iEajqzEtA
+xGNsBe4W9h/wpptEacqdz/mblWbP3gBdPVuF9y3cgqLkRh7OXSL8cmDO6pDTBB5jiYuYpAyXhmjy
+nDtyAXMKmRJBAV0d3n0RhKZTcfy0i1NNfyl8Dgs++YtM/qKQv6jkLxr5iy6gmaIFfIitJHPAI2JU
+jmuxbKHc2zTyeRyNQkFIV1s95EAzTMluy+ZyB6qaWlYcDFdl0L0kSftwrCq6rSmm8mHt5PaBomi2
+9mHl/I2VViXT/ECSR/S0PiKyaSsS3Eb5rWZb8D66kOC1bnwgTgoanK3oimF9WEbgOSLwHXdOW+WD
+SpXx2EM2j/20IyrbM9pL8/kyz6WDFkQhKGXFGp2KiCO2Oq6/DNR08XHCV0cwm+D+8BmYqBeU48Iu
+O2yMFstfnry05SKEAznYdG1vjppd4RzIAfc1rU4J6DHBE98DTnf7+Ev2ylwBZT23X8RZK/4CrPA9
+bv2aBQyQH2/IvbGgTeQ8sh8P5nREMi5K8LTDh+B0SU8lQf4UJflWHt9oorPZc7Ec4LA0W2bh49aw
+vwjzhU8CguSpmK+rhrm4uu7xPXloAAW/LdtHeNID75cFV/JAHFxvhM8Yn03h0fnw4sMxXF5d3lwP
+eKr6yI1mJLfaqiXR7XY2vRo5R0F3kXdn4+mHwdXF4By4EMHATqTQ7mAllL7vUTWniG8C/794iVEh
+fgYi0AG/HjLowkP/z+W0gQwcsgyGDMj7hZM+p+Sg3EI+FACUPcfshCec4Q8OYPbUDc1QdZjZFbMj
+H/KDHBk7WXfC5K9OC3XvRMJJtNphiuyO4emTKVRvg+uL5+Q2Ams9hMb+xadBMk3vaMJ+aQbQoeHt
+FH81hIfLLNPHIG2qftyHgh+Cawgwjh4BsRguUVIJ1Y0X6H1SuqQsQWbU86rtEu8rGUzHReVM9GcJ
+YzyF8NkwT3XLo++ipViGR5INzZKkD5UGuBsH8V2cazHkPaCMMe4dxj0qNsHQWaTPF9NWi2FSu9K0
+BaV3yKDXHZVaEVsFcWDLbNAH6MS+9mEeCtSDuTwI+foC+cLDkkqtqgGpesvAo5tBRlHsgZKCsJwW
+6qKBUwUKgz8dZ94TGE79z6D4ZOXqOQwC5xnHAUHvJBLPaIarn5Uc42Hmd1D5yi/IPxfzuBXFoI8U
+niC44lBa4xgQsfwGHoYkxYt4csFHxTLF81mVlLH3i1vGz1omq4Evt+Gb74I8TTQ3VfixidZqfpWq
+n41bAsuGCvYHTtYPwHdzGhOXhnjaFw8Y5k5+dJMk0fVVsPBRU/XNVenXKrtBT6VlLhp4RikHQYHW
+ZeVJgZq7KBKfQe+5xXNtd3MBac14fIDp5WR4MIrQl62IV3UotOjVbke9pXdvb4E9cIoTByTruTTv
+js5zOywFKcNFF57XhM5wf1sEyI38xFREPRFHRP7PdHI67SwFF9az1yGXk+X2IC4Qky+SZPBASwJi
+mg9xKwAGDzq4CTvpglbbQUFySiYSmahkopGJLiy2dR5NnI8/7pyXLOKMJNEC1xgFzWJ8CnGSAKOv
+PwahFz0WZ1uRjv9AgR4yZAeaPHP3WPLvsRuchJGbpP+e7zYz3mWUOIvqNA1vQSXiioylSMVSWm4C
+8UbYQWz1pi4dBkzybjzgp6zzxTAoAY8Hngni9zZUUGq/G8tm+/P7ntQeS7iFesEeCddfsbL8pEEt
+cDLCyU3A2QinIJzSANxYao8U1WwGafLpZtI03ORTvzlM5JKLj00gme3xp6tJM0g3Y0lqGq7/NpjW
+m2AO3qSy8ttgfrp4k8pab4J5/iaVVd4C03oTzLcZOurbYL5RZa03wXybympvg/lGlbXeBPNtKqu/
+DeYbVdZ6E8y3qazxNpif379JZa03wZx0G6wsr2K9xvbVp/Oayz+tp3zcLLrCDarTfBXnCzbaV3Kw
+Z6vmsOp+FRlfjKWuZHXwrNb2OmNKvgyeMhZ6zOvxzRzSnYxHpIfLP/B3wm7RrzMlo8mQDPpX5P34
+c+v6OWbVEh7vJyuMHvnxlCSapbxl2Psit9Tk/bhXXo9HA9IdXGFTsh6NaRHZ8fz6ivTHvaq7Wxtr
+bFlE8r4AMqs5NsduMF0rqsOPJfDCS94iX4KIFAHT0RdMpX6xxve1IWCVcWDXN5sGdvIae03X2Fvm
+yWkKeFfaMK95Anxllc7HKIK3NEvAWj4h+S0IWEto5PlvQYBlrDWB6zdMgxhvAEBaooCCgRknMClo
+R9Y862vuEgDFuDPK071KvMYo4YtoN3TGJS5MQPz0mEBKlDVK7B2UWEhLA5TIG21C37BN5La8RolT
+UiKvU6JBqTir5hoK5j4WC48VW82sOQ/KLUn9KhaGbG6RldLeX2VFqxswH+Ge765EjOc3B+xb0rps
+KY9MEUPDY3RxwkTTASrZX9a8c/j+aV8iffUO+KivutHMEwiovC0jK7sZWfsqFmMvU/nb85Zg4CY7
+U/lp5KPytvJR2Scf9ZbEvoqF2SMf2cqpsG7AkpWNFSs7gllZaVouqT8NK2s/DSXWT0TJ+vD2mh7e
+1r7hLZDjrVfGtreaMeoGLMf2mnmlCx7brwH7rrKu+yh16j6cDlYGXCuX0sg1vU0Fc06Dcsxqq287
+UtSdI0WWvorF2Mu4bMW4TDjjqg0wjNoow8hr041pS84OIe9KehNCHihR1yhhO6cbuRFKNiY+Jr3d
+xCdvTHxMflNK1gw3prwpJWsijqlvSom2Ron2ppToa5Tob0qJsUaJ8aaUmGuUmG9FibxaW5WQEtN6
+fVIusjLcxGmWMDoXOD+XlJx2r1YZfj3fW1vmklRxM2YJt0txVsStG5Ywja0b7gXcsW7o+s0BN7Zu
+uOzYptSUElDRlTaGV3jnHKdrQVD4sHFo6PEQYxhPYR4Uxwxloy2Rd9fwOn/pSTYIPzqOCXHW1kDJ
+gYtb0TOe7UoHE1yWlRyFZ5RTlZ2lHP5Lra8r23LI/iY51I8eQ+GSSHlFNIiub2NyQXkruaD8JHJB
+eSu5UPMMo26MHFPXd1kEKtcl+Mg5z1NUDYSqEequyXuzax2/tq5dR1dWizUNMdY6urY9gCW/Dhh9
+97A1BQ7bEu7qcrQGZq3AbN6aNbTjzgEqk75SwxhV/9RzN6+dXIoG6mi7RIOGwqFu0SC/0OtdumIl
+qgrmW7lZLmpCYdCWYl7TvA61JG9HX8qSJSl5X4rtRG23cba+XcyNs1y6Cq6yobYlWfuOsbk9qpRd
+Q1PZGJqyAuNZsV4ZmppwrbrmzX59w21KU33trUx7/ZXxYYjbg9Zf16nF70Hrf6RT17UHXQLXudyv
+N60vN+SpYGwPC/3tLE3jlYFhCq7vXiZ1amJSowEmNZpmUmPDBeLNuUfbxz3WV7EYNXei1nQn6j9R
+J+r7OtH+Khaj5k7Um+5E4yfqRGNfJ9KvYjG+RdkwBctxowHuMZrmHvMn4h5zH/c4X8ViNKYb7wUs
+2ZWu2JUKZlezAXY1m2ZX6ydiV2sfu7pfxWLU3IlW053o/kSd6O7rRO+rWIy9IsBeiQBbsAhwG+Ae
+t2nu8X4i7vH2cY9AO917lXusFfdYgrnHa4B7vEa5p6ElOHO5uKI7ZkeXVKPJVWpz9yr1+gKH+FXq
+htZwmrD0azdE6WoTw1UBUt7FHoq13KsWyx50N3us2U1GTVvEdNcGNZhpaxYbTwgnlDHpG6yN1W4F
+O6vVW+Z2LFnZ5U2qSDVxkLPJQZu2k7itfmc3u6xbTJIvml2cTTeGJai8ApXVukCXQWP4Fq3Ysvfx
+f02bwQ1Z87WbYN72Pom58/SFqtbpPODtFtnrhoN4wek1sHHhvYFwrt3gY9sss1v7M8BiqY9l2G4/
+KWvlugSXqjBZzXb5Sa2bJqZoPynWAHuyN2DP2i1Kf9PHWHXfwlPS3+kp2dTBUn+3ZrF2nlZuAFnb
+PjosTnXyd49+fe3AsEgvSb+Bsei/gV+kv+E5KBtv4jno7/Yc1Lkoz/vScgT3pdxAX8pv0Jer45GG
+tiNoFS7J1GMylehbEkdbDUjNFz0glZfj33JXPOOJh6udZ1aHSnXHeF0Rr6H/1BeDUF31n+oLt0VL
+0CaatTEVhwNqa/1oNt6P2ot+VFb9qNTUj1oD/ag13Y+rY8T6zkPea3NjDf1o7JgUVwoONzm+ioWr
+vQeNpiOR1Bs0R94KWqk7VoOjfYm+xSUvwo+IHO1L0Bp5ZYnReNQa8WFjlkG7ixR6PAEdP6hwfvGh
+u0yBWuSIHF79jUi1wZ02C9drFq7fLNygWbizZuHeNQv3XjhcEM3niw7pM58uZlmZyBhlc4dcJzRM
+Z5gAVgTCqFuWfn1+SoLwgc4CL0/5G0ezwH3ukBn9/ZnMI69S+P9JbzIs8s1nIOnXkr9XKXUWODSj
+ZbJpomKK2jxLabt6b6P85NPhzeR0LTFvlYIXqeNGCdvI8xuyxzy7p09dRrw8fTa86KeNIN0tnDpw
+PJ6hdq06VUAG/W6PjHod8pElHezltlQxZfoDTTbTyhfPSBSzPKN3pda/YNk5dfBqWDJ6xZStqxLL
+8XpH0zueFpqcEFmxBBUeJ1EWuZiA4oTcXJx3Twfngz7pDceTyweN9LrneCUIaxHO8ApaP0uo7wcu
+wdzWj/kBSS+XfVWg5m4Ww28a0luGmTxATM/jKMSrDIUoT1xbVpggG1eq2OB6g6PGZ9NR73q8AvDp
+PJg9C8rby7M2l3ONqJTAGDnfpe4dm8LUxqacuVKWoTZpaNApWbVk48xSpJWgIFfdEchY319LMLNM
+EGHbfhGeQHIERHn+DmS6XG5oGtmR3gjZdCyMC4jIZsPIniYXq56m3yiyJTOz4DBLbRTZtlVFz5Ft
+p2Fkn/tzvQEyXfJ2w8iW6rFy3ansaNHRQB5uKU2cDopKFMOEpsTBwLAf33ULPagevMLWL1JGgb6e
+poEzqwlsVRlCPVCwO3DnglGQngTRr9DWR+jEfRLC9HqE+bPyS7G7i43U23/repfAuR1TpaS7mGVQ
+E5qR0Wh4iXv4LA9VeIRaQ0qUI2IdVTNUCwiVq1YUNOcoSY+IqrRwax4D0sqWbElk9P53eGOBtkcV
+NJe3MB/fneLwACqP0foHJEvdFqNJNU3r49kEjOMgvSe/LaIMBrSHf6dG26hmeuTlYlktrmjlWnzG
+Q3yAXpoEDMwSXVbIgSbZRq5yiUmC1+NfQA01ZckDNFshINnKq4OJEI9rgAoH7EWLGdiEIA+THHrp
+UWIu3Zrh0hSMLL+sqqWt6mrp4iurrEMWKdZortBRqXYgOQeSawdSciBFJJAK4/k+iOM1HCmvkCTX
+jaMoHEetG8dQ6wbQ6wYweUsZdbeUmfeIWTeOJdUNoPGKWEbdOFbdAG5eEVYzjp2Pebvunqc5hzl1
+4zhyzQB5zlKJCa7IC6mveRxI8+S6gSqeQPiWqhg1I7j5pO9KdTeWK2t1I+h5VfTaq6IrdSMYbu0I
+dQ9D17N4d3h1A1k5C1t23UBOseIp1Q6U662OWjeQndfIrr1Gdq4h23JtQIWhxjy3NNTwUqzVtBNw
+6QXELxsAdOUlIFzWD7g6z+ALWZQM4w4Zh+N8Xwh314WV1iF+tAg9IhXLYKmwFRxspWk8xy269L5D
+yqaA26ep++zOcC2kfHjEnwbejE1DeKxIlm6ChahopOJO7ctduyE8E7lrNxyTwGNhlu5c7FEMRdY0
+chAlHm5u20dQN9uUdSVf/MGgsSGjSaVFoMyNpzOsYTjFPU/qecmU07KLINlQrRU9xlFJoThyrhGw
+FbMkWyTOThoMXVeNemnojQlLETZIcRHxrboG6XCC0PuGZqgLv0PeL7HTdVemg/UGKnsAaeV0VYId
+jbHiWXTPwp01VxXTsJY1t46IaRmaKrLiN/3xN7A/IMuSBrLGEAi9Q+bcXAw/H8Pf88te91yk8NmB
+9bkv1Cnhf5KS/LmTkvxPFqo/aRaqhtImlTCNdexewB0d6/nNATfbsTVH7i8x9jbyet6FOkJ2/1nj
+kf8pgmj92YMN/08sXJHATYRq/VNHEv3zBrr8n7QsgmeYhjKYlDCNNehewAYatO6DukuMPa3prRSt
+ugF3ROPR62jNfSp0U0GI6jtS+xJjbyO/OApdFXjKubIAX7lKayt3gnzrSqV+QUxNiPoSUc0dGFzf
+rBfRWCE6eR29mutoLhG9pYVbL6K1PEoiSWXqQvjt1Y9sLweoshqeRjE4a0WWVwHK1iSD3Ai0XEJT
+Sdq2dmuGXoYpsox1gejXhi6voUs1rN3sgZJrXLXZA6k0t16zRoHSXPsqf9i+rl8j5Nu0r9pc+6rN
+t6/65u2r7a608FXANUh9V5cKtCz2QMk12hRrkEZztTOar525G9KpEZL+YS1N0ZBOc33o7K6d8FW7
+NUhvN6Twda41SLYbUvjq0xqkv6sPBVrce6DkGm3tPZBKc1b2igJZ2l1p4bbvVu71vkTi6JElJM1o
+xojHYhZ6KYnCjeOvYpOED2/DKMEDwkHoRknC3Gz2TKj3wJIsSJlHhvM58wIk54pRLwhZmpbxw8SG
+dv2jyvuVK8/DSfTOJ8u4EUdlQA94Imz5hMc17Y76rY8BtO7laHRDYpb4UTKnocvKE6fpKghbJU+p
+5Bn7LovIIoype0+SKMr8lARzesvwzDd6XSZ07qftdlvgJiswTtfzCmgetoncJtEiJpLYXevdILLY
+7eLdIIrANeC9zaWKXWjeDSKOt9X9NdGFgWj7QQyBi5x7QUyxq8a7QSyxy7W7QWxRIPIrfSJLAlHU
+BlBe6XpZFogiN4KiNIKiNoKiNYKiN4JiNIJi1o1S+gXuQVHEupXuQVHFRo/Zg6KJVeb3oOhi1fc9
+KIZYj4A9KKZYz7Y9KJZYN7Y9KLZYR7Y9OqUk1s1sD4os1v1qD4oi1tdqD4oq1hNqD4om1iVpD4ou
+Nl1rveOFvooiisec11EUsVnj6u199jqKLjYW2B4UQ+yqzB4UU2wamD0oltiMJXtQbLH5NPYY+pLY
+nA97UGSx2QL2oFQaleXS2DLJgc9otkhYSg6kJ0UzdNNkPlUUXaM+PULHkcMOGY+vyMVn8u6afNG/
+kmGXvOuScQ9+Tx+642FPBD2rEOoJm9M4xorzjAzVVujOEsby5dUgSzwyZ/Moee4Qw1AM64MIuj8G
+SbagM4LtIILgcW/Y6o+6ZUzfNPKzR5ow4kQLXL/MQ1riJzzQ7yU5mHwaXl6fn1Y6fbhEgQKhLDx9
+nYeUWfoO8R9T072VD1H+yMoffSUHhjaqRsX5x2sS+T5GF5YITdPgNiyC5z8wN4M/0pMmVRvILPF5
+15Hh6YR4LINy8VArr48lO75/WLX4Yzr3pstY/QUAR+Rr0X+RyIFCHBrep0dEWy5HH+OTw0pLxGVU
+8ZSRIqB+lixSRL9nz8gxlc7Ef2DPeeB7Z0bdezw4Lij8/WOU3CNxLOuQLJjj8eJ5PHWCLD3Bc840
+jMIOCNZDftafn8A9UVQYBu49y4p7qXxNqtR7/iJlHS4oyAGM5mUGAbOtVTvYjPH1b5MgA7kzntEM
+9yKwPZNSLglIerAGMaLuXRCystdFISwZgKbP8znLksAVxAHdVYFAM4lpkrKE/PKkS/YvgiBOMcQE
+mdFnKJhnnbhlIUPAAye9PSwzEpQdDnpEEWmVHMzpP0HwKJpejQMikmJc0sUMYOa/tTxGPTw0Lqh6
+G8XfPzs85rHwgh3/N0HFJjTwQIlKi8Bl8W/EYaF7N6fJPaGhR1I2y+UmfXjSZeWpkoEA8zHw1m3L
+jRcbGSlQqwq9wMXdTupmwQOMHtzu7I1vqiZ9YjyLwNaJ2tGgQyYwpVGeY+oxyO54nH5VFQ2mvAKm
+iQVTXq2ZLhbMehXMEA2mvgJmVpPV8QImuzHfbT9dZBkwHU3JcRFK5zgu5ojjPFhQDwo95t/Jf0si
+stgg6BYJX8afrk6/NlKx84vPCHaxVTO5xpqdVarZKIJJNEpao0cK2sFjMJuBxCKLNBcjDFU40mvJ
+ue9Epaw2KehAmMeJ8IwzoA6DDGQJehOA/kP8hP22AFH5jNlQHAqq3urJAdeeCMY/AotNVqqZiROY
+Hin8tRRdOpYNXZeKWRIjeRMcKymPGE7SO5oIstUuorD1EAGTBDNWWGrLqVluV5KTWTyfuokz5UG4
+RpOza0kuYl/3g7RI+3f3mFTLl7KVIspLADMKw9x2ETNz0rsXy13LtIVFRPoDngm+9Z/4mnIoGGwy
+mRB/Rm8xr8ERqmp0NmMzXufUpSHxeGsKr2P3fS/Xx/G53JZUSeZ86IKdxRWGWYT8aJB3Tgx/J93r
+buXsZDvI0I6NnPVJMI9nPH8Q6oh85sB4ZegnJ7rFsbUx7BP3swvd30gaZj4KmlsSz1G5wfhpoLfM
+QHOexyRGlW22mGPfZCR9SoEtUnhEvTlJvZTQGCy3SksFbhqQuyjlWQSAXCFlyQLLUgSWpQosSxNY
+ll69LJpRaPV8pMDMctMfdY9lVSXUoWCi4CzyX9x3lvvRklw5yu9luA+S34hmk1k8b8XRrJofFVCi
+/CAllnBK1B+jRBHfJtoPUiK+TYDb+jej0d8rFmMIKOYJuH5653pbWwtPOD+8h4FBenkCmFm1pCJ7
+YDCJISZ+xOluNZ8frdYq8YNwMUcDXK4B/851+Zw751mYZUXyfVcnOGcsly6e4Cn5bREk9+lq4bZw
+3a7mxPWv0/RKDfi8hoXPcMopUdsyGYR36FXskckiZskkZpVTgeI/GTMi5tUtdDoebfWIBN5HFnpR
+ciJ7hoO34yTyFm52gn18RBzX6/P3T4gJOlItlKQZX0oGk8hPTtQjUlIA8LnJcMH74EQWg14UL57N
+VhAjGi586uIeWNIh50G4eILmU9t6iybunQxWHbJEC1hCDN56M3U2uKxS0qWFQ+SW1OG+4dhf+ICz
+jbBSC7NvuW0ioDlg3v8EhlIU/pKR+zB6JNkdI3R2GyVBdgdSDvd+zscj/je7C1Ku/BwVVgbaPPBh
+Wwwd3z/i1DpGnPKmI06pf8QpDY84pc4Rp9Qy4pQ6RtyueU1rZvrWvm/6VmvA/+k0p5+z6bUa8JvU
+nNSfRnNS31SOq/XLcbVhOa6+Ise1qhJXrUWOqzVqTtpPojlpP43mpL3piNPqH3FawyNOq3PEabWM
+OK1+zWnpnFnv9L2E+Z7pW68BH7AlfqyZN/AdBbAob9wawLbUNLlRNa1ge/2n0SH0N5Voev0STW9Y
+ouk7JVrBfVVlj16LRFuWKuer/KIEWivGf0k0V+StQxp1yLX9aN8j3oz6yNgUPAomz7TkbcEj12gf
+/iv2h1kfGU0ajcZPI/CNNxX4Rv0C32hY4Bu7VVhPiMA3ahH4y1LlGqxG8yexGs2fxmo033TImfUP
+ObPhIWfWOeTMWobcslRD7Ihzo4RtuJzj5IonNRLoDVa6NsKLKW+waXEooSJqWnhuYhPlPVFOpOuk
+4AgXgBdYkoabRhdjdN8k48kxOuWV7Jt3TyWBkWTu1J1HKc+celrEPL667hH0Nnyk9+gBG83JRBMO
+stZYYPTCK5JwiJRlGT/kl5/X4olQ0aF4HUdBHNkmN1DnA9m0dUMzVN0+FE4MndEEpoBFjBREISNz
+6Me7I/Ks3h8RWS5itpHwAbTkSk5s3Hey5UMxLD/NuOMRjsYvXjL/up6nEEygGQ2BBu6ID5+Cyh5W
+498cY7g6IlXQgoWDSGhLfKDsog+PisyDEE8lVjp0BlIixJOCUCj3o4bbNJoxkgFvt6KHanPAd7a1
+70idVQPA/z5IWHyxOHZaTJGV5G2AIULpI3k/7BP2wFPgFoLwoHdI/jtIAvIhSoOQNiV8gaKKULxO
+KG6xTohblF6lWC+J4uk8P3awOtv5O3JIyDI8NMlfIcUrBFNJV+yaPWmPDZGJQSfsFr2myVW0yFZH
+asYPlUz7q/F5PQUPw1YaZAty2R2RgyH8PhRT7o6WHnd7H8SmmO6+G0y6xZ9/+2iDVjl3ou5cHw9B
+sqko2yoNsXngJkCpB4Ost0gSbPsEpAOulWCGbsnRJE2qdgRsDeIm9vipGEaT2TOf8kWBJCx1swRP
+n6swBcIMjOduQiEq4LLo0WltRU9Gp93aCocmKeRLfr6ketFD4L70DnTROzy24SQR9VyaZh0Rx4f4
+SdUpV6LQ5uHHykmap3I+0EwwQ2xbNY+IahqGqR+2/hMeypZtarZ+RFqyLkuWpVbTq9ZOl9L0Hk+D
+pcsFxEr24nlEvVw7mMcBtFMrCMnnti7ZxMVIwT4/xppWRQC6V4WSX04Xwczjh/IJXWQRNxdoHlAA
+v4OntTtEN3zFljXPsagHjeyrjDnMlGyF6gp1VaZqlmxZjvlLFeJ+Tx9p3CkPZS94ZIw4AjH5e5pV
+4pk+m0d83GQ0uWVZvgJyASKH4FroYjYTcmS+7adu8hyLCpmwLLcoFpdQc8mL7SLoxHyW+GnR4Efk
+d7AHvJNnDNnsp8DQQfaMd2ICSgS3Uzz3L+jE+ioQQjlmXowTmE4GZ8OO5wgE2ho6fQpyB89nfsAx
+IjNb1T1VVT3VkCxXlnzdBxFkG0yDQaMZv/wJajzCyRrjyICikcRRkk9HCEt6XbBoZRnaQaWe42uq
+ZDuepYCQcC3X0zVflQ3m6YpiWxaVHU/7c7XHJ553KS1X+rBZxssmobZiS4pqW0w2XM02TWgRW/Jt
+m2m+TZlsurpOfV39czXJZcyb4epytMYhAEZ0WfMdH6Zpn2qG7+im40sm9S2HeZbmqI5laI5syvKf
+qzk228CSKTUcVdE0F8SG4zLJMwzFoj5wiWJqiszgM9v0/rRSo7McMpsNQ5nv6r7jOEzSdc/yLY9S
+3dI1U9VsW5NN6uigdJhKpYYZjzD74ojeBm6xz9khSkc17Y4pVTI0rrqTDtYSczxwnXSQJFGSgko3
+m+VHxNci9VTeZNFbcr6Z64MS00pxq3R9k6M8KVXoUqU7jqADpbMgvCfQgSE5mExACcbEHmRSbGsQ
+VaoWpwmrZ7T076ze2l6zkLb9g/0rxXDZxv6VTDe3jMH+luogZGP7St6/faUKAV/uXp0P+gL3rXjZ
+m9tW3ckVGHZCCt7cn+pKMBPbMliH1TqkiH6S07nVHpthUNygCDNzvB5u5njdGekYvZWOgVr8h5tT
++KnaUYzeoCPJXaWNTifrsVOUiouyrTIi1g6com5H8FpCH6XVWueD3JYlknM0+bKz5l9xnRwq01qv
+XUsWEMpm7dh4Q/Lmj4a85W0MeVmVtO0hr9RBSGNDnoMvh/wkY3S+zuTjRfUByiE2R/5HOntgZFKE
+qBQCsCkBzj6f2rYh65Ks9UWIgE2Cd7cTGUWLlP2hXFDa8vF6LPjj9XDax+tb6ygxjGOoHf4DiaEU
+EsPqDzrIiTiSlXWJoTZVUzCBnYgm3ltWVhMrHjdw1sQj1M42Cjkpb8pJuejxL9/SZptSs6g01La6
+qP+ZWFTd0Wvqeq8ZfyIW/cPKmvWxqLrFombBokpdLCoqCku9E/vPNBa0HeyhrbOH/ScaC39Y2Wr+
+1Fnq4vaqH6C/8vWklzvWFPkkXTCwnXKdQbVspW1YBhm9/70K4hpAAY/hwHCL0t/64WGM3Wd3xlL8
+2JRUy7E8xzKtI/5R4M3YNITPLEvWbcmUJcNWSJgKo27yGGS4UYZePuvtAlTXJ4C0LQFkFQJIrUsA
+aX8WuaDvGCr6xlBR/kSC4Y9rq9bHpPoWk9oFk2p1MaleX10M/gLUQpakohr6djVKu71yPYzqNpnx
+Dat5qvjVvLUwa/WqGu7sfj3U6CLksWNz+Vt1tRq4IPZ2lJ6n8/WiOQ2qzR9lDo2iXI/xXWe2yqYB
+ZVdLprGFUPgX5Fl0D3BZHJAOl3CabWmV4D4lQca4rxVzubcYHoMoQBNGvRYPp+kBdwCYZBvSfW2V
+y9hTdpxEiEVuabyqpKrU16I53vFLUF2uhvpkGcfzeYf07ph7D7Cffv1MimQuoNLENE3RmyCM+Acx
+0JKKcBHntZlmDP2I6GxG8ColwPyMpAsXZqkU5EqlrZtFSI55YogipTPyDpZbpVCS+xLS5HaBnotp
+p1phJKdQAEUsfAiSKESiKtP0/nI0ODmuWsr14Gp0MsNzK1VLCh/mbIpeLSd/H0x+pLDcVd/7In+F
+eWPJXCAt5tRjBPSZ5HglQtpVEYprohhKW2nJ/LwOSRZhmCf2KA8OYKhjcvDruDsiv3Zv+sNr0poM
+zocXN5/hfjzuXo0ur0hrOOqSX4fjAfl1Mur2PsCfQa93ORqTX99d3FyfT8ivl+PBxWRyDl/qwa/T
+8w+gK/zau7mCm8H52c31EF86G/YvFSiofwG/P4wu4ZXz4Wnv6u/j68ng+ma8dTsdn9+8G15M+OOz
+/nACwOPe1QC+PP70t5vu+fD673Apyx+A7F//djW46F32gcbr8QheOf3HcAx/zv+hkV8//4P8+g8o
+BH5PrgH1dHw2PbvqjgafLq+g0NPrM3jnwylUaXR5QX69uR7ltHSveu+HHweHVTtjmc0HeyHA6wVI
+GBB5LUOr3NNXq07NU1W1BZwquKbcBxJPEZTnCqqU2suLALbkNmSRmsyNZmBB7jonQGRDetL0qk2D
+Z+JCLBwTQwHgX/d96z8r94IT+62E4X6Km7V8mLLOJyMCfIby/hYqCApjRtF6rgr0twVb4GGTDKN0
+/zNyuN+hx3y6mGWFLyJ3+gdrq188veZPK1dxgpAADepiTKEXyRhm5ccIgK4wkwDOnNDGRVfDWwn3
+TXgmn/DlyuiDp7hQuQoWQUPy2AvS+2PnubVYBN6x4puSY2p2S2Gy2dKow6BQS25Zsqw6imnZoKS0
+201QQnXJMRTDbqlUkVua5Kgtqll+i1FNU5il2o6jCqDkitF8QWaj23EqIWeYCWHC3xUNM6Yw1d8A
+Viq65MkMm7Oeoh9pLLzQ62AOIksMvefowsoFOdjL/w1yMaQzMK0xWRk54Bw2i24P64QRXIcF0Ew+
+5NZDDlBD+R9pws1vQQDbTJM3v5gO5uITae+BlgdGJFYGs7TgkkHglmsq6EGeihBS/LjLKcw6DETw
+OXuAXuC2VZk76wgMvDlUDmZ3L+A+lS7/uFfeLwX4RZQN5nH2fHIMAMfuDKT+MV8hmOLp4B87arSz
+YZbsmJ9IE9AKy6LRgbBkxlGEWclENDJomgQ0UnLxgL+XR+1yB+YJw7Aw/ITdN7b4hLkL7iA/ZzQF
+DRFMgVQUiZeTn4ygU5okAZ7dzJXWwzclasknZU7WUouZsGwRC+CUM6hlipLlGwa/aEGzAwONBZxT
+CKimLuNmqMhK7m7FSrsNijsFevlFTjkLQddmaYUDszvbzIMGWeBqzT1XrKmXMx1Uxp3niRd5sCeG
+qVerNVnrn7m4AwJ0+yvaSNybF4mgC0Alc5amfKErSJfZkdo1pMuM793Uqpovcycf7JK6wnqqi3NP
+WTroAQE2UFrDWP3G8dPgsBVZyT3N2GAjisP6rsErWmSUEHdRdC9KdYE6bStF1dPMPQQeizD9OPxZ
+beW9634lB/PFLAtad4x6HfIMPUT4cekwIiSOcI08jIS4zXDk00X6Dc7N8jEm3mtzmqfOIm1v5n3U
+hWwg/oF7rqRTd8MjX9H8DfdcRYBH/i5CNtxzpZV7rrzlnisGfOme+2Fyqiv6rkLl7ytUVvLN2Tt4
+Z+/mrPbNm7M/gP5HPcssb6NnDdnY6Fl5d89Wp2Sja/VV1xpbXWuKQV/27Sew6kC+p9P+voAsP1D6
+ptf1iHkBvWb3YBC5bTEAL+OC8Z8dhSvfvIE/924xr/PDLZ3mq9IsiUAslrEK1paqYcK4izzyf6aT
+02l73BtK7Xdj2WyDyJy2u9fjzwRDEuxcIP9uanhxy3P/R8RfhPzc51rgUCG1XmroV91rkh8qc/lE
+ncf36o1vRKBcR3E0i26foV6eh4XCBOIJaKciMpz6Sh5To8hjah4KhwvWQ+oU2+O4j1bG5DoYjkl/
+OOldfhxc/R2jv6Knt/RkYiZcuNOsHtwpmqrDXU/auaRXjcBSkyfzeRDxZL/oMNg/6wlin1fh0uB3
+gNMVTbEs4VDLwRnExOExz4pJRCJ/xYyuUTh9kKfSVPpPcpBGrqJN86eHzVEik7/ezl0gQynoWN41
+SIRC/hrcTR/MgoTiukECVPLXOI2h3lpBAtw1CK+Rv6bzxRo83DUIr5O/ei5bsaI3bxDcAAb0n9YZ
+sLxrkAgTOsCb0xULLu8aJMIif31wQSLoBQ2rmwaJsMlf/xmz2xUVa3dNiiWQkHOWrrHF8k48FWcs
+dxT/eDq8nORhNj+e9a6F4+SxB7vXlyOCSB0iy2pr8PlalhVVVVvowUocDEWEOqOs2ppmHqF2BbeK
+Cpq9hQ6vbcngfyXMDA4U6seScizLVYh91d3BW8znz+t+Drr4KRmUWpo4yA6glQcPuAADj17x5KgG
+d50sUmS6EXcGJP/AGKAH16N/HBIfdEr0dQmjZVD2neuL1fBHgxEZ9Hq4UIpAcQK6GCZYF69aTa66
+TUE9zLkuhUiKociaRt6dHsHMNsO9vPSoGN7lK3bLCbIj9KXJoxluPBdO20doBhhthippo6VlYi3t
+MtJaPVTPumf8hxwU76NbqXiZ8657dc3dUEdrptIOgmCY5/Sc1SSOls5e2EgE/p3k9T4ip90rvLa0
+UU3QCPgYeNkdUXQD+j0l7/r9K0M4WtnzkZ9XMncC5t6LzzWA6bppc7B319cbWO2a2jHnJZg5iQtv
+5N7GsipLpnLEn95uPa2JjHFvOOC0YN05ZxexDslBbrLTbG2c9bun/OqwrlYpo/30RzenxA+SOT/0
+8RBQMp6MO+WqxQlQ1JUkvQ5L88vH3gWY32mGuTyI9JWc4XoewadLej4WiyeDix5IqLaskv4Armzy
+cQBESuRqGWpUVWuYiCYouANviqf4pvM5BonPu8j3URtZfQZa+eaH9RCDyv/dbznmkll8dsTjQS4y
+9vJDyT0iXFt/+TVXOI1XXeiUKC52aRIak4ySBUZuLWdY+kCDGXK7+Ll80Lu5GvSHk/F59+9rVKTo
+YMC8II1n9LlBesBGLYNLB/5yEfBk2fwK9Bq+4z/u/lxVl5+XTqfw4fLZ5hcMC0cozMmS1rYAXvyE
+PBndYJsF6xHS19ze/62u6bfotx5G035Q20pbtZUNKqAN+iAxtLbUlusiYtx63x8NydnVOUjxy4sa
+dd8CEGXyHU08LgPXatuMXM61j8G76afu8JrHfY0WGZEXKflfMH1zDSz31mjhMHM1SZ4WHg1TN8lc
+PELHOooq1dcdGHFqcrXMZwHDot/jT3C4tcDyS9GNsHwgwVd6feLSmC+8w9emz1MYUeFiRtH3iNRI
+qfIvQ6n6r0EpjsRW9+fngFJo98ZTmLqnvYvrc4IL95pUz7r9Pjy3Ot697+G/Dunm8cVB6qq2YUu6
+UeQCARl8S5NMCMZ1lMGsXaxzgab84azP95n4cQRnubHVIXIDO2fv6tg5e1fsnJEvG7tJX4U0H/U8
+fjQ3X4/C0rHsGrQtoh2RyXsSQy/BDZhSvZv85j2xjghfqILpYDEt17E18TtVaL6gRizxBC2LFHjk
+4wimS3QnvCU8MwtXyutBRpV7Ku+ElpuBlndAa03VWn4BbTZV65fQVs3QaEG9bGu7AdSXdZXrZmzc
+WFmE8C7zpq8MK6sedL6h4jF3/6DaBax+r0h+Pxqtp2nIl8CW/jz5slR1nK0K3nDXqNNu75LPLski
+5EkV4rlwpBc5s7Rvzpml/njOrIIUtW1oRcasdapWmbLkKrDFmdYcK89NdeA70iGap3ESzGnyvD8/
+1XdWLk7Y9AEqh0lnpl7qdmTTNslocj3tT3oEHuAbxdpLuaQQMubttAzVn9YqU2s7+ato0pNh1tQY
+PE3ZOh98W46yH4P2f9Q9qRrcD7onyWqPuydZmg13qqEN0D3J2LmaXI3Afe5J+j6zQyTcH7gnVYP6
+Hvek8OEV36SayFj6Jkkbvkl7PBFqIqLwTSrdIUL6EAAFwV2DJCy9k9TXvZNqgl96J6mveyfVBP9t
+3kk1gS+9k6QN76RmWXDpnaRPlTXvJLhrkIjSO0ld905SG22HpW+SuuGbVAsR3+4TVA3npU+QpLSu
+uuP33cF5S5KspUeQISuyYhJSegSpSluS7dwjSCo8giTuEaQcS/axYggn9Y/dZspjf3hQhj3FDJRV
+FuJq10ER8UN8P9XrdlKNttztZMPH40zb4eNxppU+HuSAv73P5aQaObmbAPCX9oc+J+p+nxMR7P7S
+5wSrnXuc4FVNsCt/E1mxuL9Jv3+lCwfLe/wbnU0qQn2fs4mIRtzlbJKPvG1nk/xpTWRsOJvkPL3f
+2wQHWG+/t4kIer7d2wTsBtWswXDI6QDRMfWiKHHYbEYcHhkxjyYFL2TJgn0Vj/v9Xi5q4eWi7fBy
+0WqwqDBnNJD2RHNJx2dz6cnXZFbIPlzJgX4i16Mr4fA8Hdaaz0j6XT4aVbGr+KtUwxbvr1KRnu93
+8BAy132rg4faltt6XUR8j4OHEMBvcvCoVxQWG+kNOCgI6iLtX4PSol3Vf5l21X92Su+D3/K9oTlz
+iULiIGZEJr9VQ6rg1KA269SgNuLUoAp3apBVV/oqpPleOjVg2TVMyXhIe+XUIK87NSg7nBoU8cpY
+BZ8GYcjy97o0CEB+xZtCawZ6V631ZqCVHdBGM9DqDmizqb7+TkcOkX0tf583h8i+/l6XDpGdvQO7
+7pENszfIFGW3VFFqBt/tuCOrNcPi6r/H3O91nxGEzEJ3+qpbWu3Y8n4hXhP2XrchvT7gq8J/Zzyq
+2Tb/ubx5/C1vnrpMkx4NsVn9IARawmfCvVgw3ilQl1bCjGNQiXmyJEnv9jqSop3hDpHZIWchD6bI
+cfk63UGXv1wGWlolv3JnUcj+9+FRsauDPFh8mccPgvsqJBax1YrYXTVk2uL/VgmlN9thIyibUVNT
+r+eSNrZzSS+b+UvRBLsTTxn780dXJtH6/yE3yDu4wdrgBrOmpl7PuCZLcsEX5jZfFCnXvoUpKpnS
+0LEke44ZidP712OpfnORaayD6TrN3AgszTFeH09OLfjmde8yz6rQj26LIPT9fWFwvxOtBWhrl6UH
+qvTkM2e1tP+I4B6Aj0bDSzS2k90pjb4Z3HXjdYmu7PaakwqvuWpuGnsquram2iZ3jCaZw2h2Yki4
+wE4OwuiRPkeL7KSab8T3pE18w6zXsiW2NzPGyu1EsQXHaSyiYMzuVJSslcejZjQDXp+T3xZBct8h
+pf9kGsxRJqWLNGahKFCzWVD8hWhusIwwuFF7IQDyTgBTHADUoK/yQODPBNoNDInnMtOPzEdtFHqp
+sLaiaZrdJdHi9i63GLBHAjfISu/hGdgO2Z0wPLpcZDY0MgpOyV2UZqVDQgF5IEMtueNNtW14zAia
+chH0DUnqm0xOL6oGOTWPpRKWMJcFRWqrkDvOiOo14xgEb5mO6Rj9Ro5jqD8MZ7aoZoK8VkObfwza
+j/xTdk7eOCHKA5nEColVYfKlyUEpNzso13HrY6ufQx9Rd+gj6oY+YlepJOa6HfIEpmuGGXeSaCnV
+dMnXRqW6JTnNuganWmMNapWcr2F3S5mm/JTN9nOMG23HuNHWx40i1dU/2hZ3W3V1k1ZjDd6Mu09L
+7lZ/ymb7Obhb38Hd+gZ371qx0UT0j77F3XZd3aTXWIMf4W4h2L2Su7V/uWYz+Md8SVEqlhT17Uos
+c6ZUrYVRpRan11dnk065PDajDpuBLewx+hAtkijlH3hEJllCwxSvFNk281ylhT4OqviBogPmIUld
+CjzhEeeZzEE9ysiBau88m/p95MEg8iM8rJIn/ChhDzvoyYyaM8eKfLgFFs1TUn9LFtcaCcuTkbiJ
+qypunnouXcxB8b+NkiC7m9eIvFzxTFOPe/fOi1SCaY2g2SIpE2rS9Dl0cTvCpYnXRD39hDGSxhQ+
+z+ByB6T+g7nUrnJR55HJ8B2mgM891McwgmVyUHxnp3Wm/0+O9Z8nx7peZ451vans3t8FlCfDbOXB
+ElpJFGXtNE/8hTUsg3lvOtpXrt0kizDzJplwVHKFqILGxnJgrqoxwXZa4LkibNEii/nR8sbFKQFD
+YKZ44EiuTEiv8GNNeW7pPMP0cf7CsRck8/A2qRXjlmXZc70I8W2L3rIwawal5STRI/RmQ2jsCRSY
+hrDS9K5WpHvc/H/yasUoB56fuveCgW4wXSgNQVCA6OEpjmd7MhLqP5LpEA/24L4yGdM0fYwSD6bx
+3xYgFrjPe5lLdpmWOt8BF4Z+FiWP6JexE/wTnc3EI7OMLGJCF1mU68HdxAHpj9GIBk/MXeR++GcB
+/oqSOQVS+M0kVyu6y++No0DA4B88xUX62UJn46YCqIP3x85za7EIvGPl7FRuqT1b3Z3fUjjcN1gC
+zVBia5oO/7SW7QOU5lDaojYg2ialuuZIsibTZiihuuQYimG3VKrILU1y1BbVLL/FqKYpzFJtxxHR
+O1eMqzMEBgdMYOQ8cumMePMW91oqDOBUPMotaM1jUNXjTHjh+fp/P3oMZxH1UmFKU1G8SN1pq+gh
+1wnXx35aEwRSv45TDxsNQb+75Qe/oKvLuAXRbDEXz1Fjmt2RG6ic8JKv2BxoF9spWxD5vF4L9XlH
+fGQ19QJmt2flskIuLFpzGuO5KPaAYUI8Cs0XkrPh2aVgtPOPYJjyvdECI43ce5aJBfnbgsEknd0V
+KhEydJIf9Zo955mnl2qEWGDoKjT78rPP/cU8JpMaqgdanwe9FACLDEI3eeYHzY/7rLwUzB8wva3h
+wCUun/JoMkXO61oqeUZzXe4KA+NhBluYHuYijKgNlPdRmoUYYrDOqpSq8eUiixdQlwVXIQQjXo9H
+ZNy7IiNG00XCmyol6X2A08gRWYRzhrZ7mGdczxdOkbD8foIhCkDWnMzzb3utKK1K0IjesyVV4wiE
+5XMFehb3gXiuvmIx5ohHxBp6ZANvkjsInvLoTMUGxSkFHA/n+gR1HxAemEY9qQV43TJpBjfHGmKc
+FJD211E0qwXgJsZQroJnqQXo9eQjTWZ4Tr4OduDzUp+CCUlTVki3RBTSCK1OBHq/wO7lsYnWtca2
+OITx5WT4GWROmiIn/Q3dneqC+pCHSu0zZ3FbM8Z1gnseYjH4OgZi5Gs2nB1wZw2eZ4FbioQLDCEg
+Em0Eog3GOWc7P9e+5kGSREl6RNKQxuldBPMEy9x2sbPmzbkK6OG5LL56jvoMKmzwoQDCMGxU2cyj
+CNeZcRbwg1v/22er/Ov5t7E85p38W1lIDfThYbwqpMH3a6DKx436KmRhAcIGztnNZFBurQseOOsL
+pk3vuKzPmj3epNC23ArPx2v1BdwZowmOVsB5HzjQTSgbypl5iFu039rHaEsPnkCqpCe4yHxcxiI7
+Zn6A/x5okh4vMdDCxG+1LNdXDE1zWpojwS/F8lu2apktw7NMQ9Ilz90Z7fvHpNF/57tNpaYlUtC9
+HCIi5OhSq6YYGx16pL+uYL+pfl2SdjmB5gQ9lmZ4kvYNCVp2Ba694Lo3Hyi4H1F0y8ZijIDVWNDP
+nnkzTK4+4Gr9Iv4pOuTiAX8vz13zYfYDXbQ+nmF+Pi62ntFZjFaX3DsXnAorX+BKE7ZJ3h5gZXgL
+N/uZRtCm7OA6/xXKjdwbZbXKIlQh60UzL56BCtsFq4hjlqv1gvRY6L09er+o4v9I6f8RnG/xTSJg
+SsLsOOJeYIz8noKWinFQkny78yiPgUxUUfXca3EIBnhpblQFOANhkeLw/gZjQ4hbl2ZpqM2gX2W+
+QUYXMG7JPOeRFL1FyljZwlpvr84prPW+aSIThrZLgxG1e76teFUZot76hgEMRW4vLsNcEgwDpQos
+P4jcDJ5qbR09c/kdOYDi9ZaktRTrcHkwPMVwe9685aEU+K8ZzpxtsFoXT214UoWgReq4UcI66+ml
+QvZYbgIXOYF5KITW3A9aPk0z9w4n1iqoc3TFBgiM5Xis5LclZJ6ZJN/KgGlkvjstzjdDdT0eylnV
+JdtWDeuepI80RlNnwxtZbROYxQP0s33utGTCnjJcZO7IhLpJlKad1fcnkyrkuJ47pe6c5KcMpA7J
+sudubyTlft5wtT8TUOU+DXCvyKerbi2IEVCfgnwnzXAzaim5YKjDgC/QsEfxLfRJnadc5gwn/QtC
+PQp6WZJWIaM4NDLukUnM6D2y7PrRkOJk+3HspvF9snGMQ6kCGwfBkzZN584iJeWhE1nLAxSfwjPc
+gln3yudhzB1M7ZAUQbJ3xiMSgJ+HzljmH5KeJIV3QE4XD52aMj6hRWGlhldc/NeSTajz2jJFEUQc
+hBeK6Mm4n9ddr6m63cUTfAfdl15reKUS+lV3fE7GoxtAGw9BpwcdABNV/L8tVcE5CKa0IwKNHDwx
+r/QkhSeyoVqaRIDhowd/xjOhJWKouHvMiQDdx4vmNAhJTN17VFuBJtkoaKoLCyWMMCDXv7UkRZY7
+y9D7qPuCJuK1AOozTI82cRkYGX6AR6DTPCEhu13MKN9I9Yrdhkra+WzBMlCG7jpFeG8MmdquJh8u
+Bted9Uho47Pp6fnN4Pry8vo9rkBnkQtS0qfzYPYsiPb3vWE5k6KELc5boaSZFzsxa8FmBGLmvg5k
+Rp9rgThXet1x3SCT3mUtEPmy9Bofk19S4GDQjDH9nOQoluf5mkmZb7uMmr8IxnpkYYo5h1xJtQxd
+ptTxXN/WHE+irun7kuGaimZ5jmy5hiRVQk8s2bAL2ezkkfdYdofRB6/PLVnRT4+I7XYM/KhDWYeq
+HQcmw8/DPjE0+YgMr/6GEZNroeCfi7kTldmNUvKFp1+EdgEBbSh5FO0jkj0tz13NoeQOuY++iqYm
+jGU55aks0DvDy1dkkMYqQGns6bJsEdlsSZKO0Wn6VzoBWwnsjDyfUwpcECVoy4RexDUCqwO/2EoV
+AWnXiNrpZPBqFaT7h/mUzjFS+aSHxwfzk2uvZEH4/pIvGE+PVQQnL1c690d7+mGEMb1F6kWWfH56
+RR42CRfbON2Pw55Qip+U9SLJwZw+YeIl8tAb36SHQiDKMPMfR+eX3T78mXQ/DgS3S4nxbnhWU8kX
+o6GIhk9Db3rn0SkOzdl6tlr5B4LfCUF9j4EnQem6pdP8ABpLooivtEXEnQVgjNeFfBYleAg0ImEU
+ttIwimJuoYqG89+kef03a16ObNRa340pT3mLKe+1Jnd4qJ+NIMQHUZwWMYSnHoxsbH7MxBtHIfTA
+1AmgOHzlS/7O19pG2zpt6hvQtqZz37kBaCvvPx1PPpWZxTo815tF8d8ROcWUmTzSaAcTYhoSKKuy
+plqyLmDB6H2/1eWD4B0LWRK4PB/OcX98FLvzE/UP44tYy/giea8fp9iwx3iIXS7Wl9S6qTRFUKnV
+TaUlgsrae9wWQaUhhMou6V4POXHfyZPykkJ5PeaNsn6jbtMuFbSbddJu1ku7VSftVr2023XSbtdK
+u1rJbp1npq3IZShaWoSirU9p2I3XnYD1kSzzVsIriiTJUrVOgWl3mtB4Ns13tDpFLk2+qLq5YFs7
+DtrlInQJjFvoTunMNQyFwAMUpD2ljyFjF7iWiX6qfG22e96zMOggdCKbRossPZGhE59k7Rim9vV/
+hzxweQffq5dA+EnzraGcHgnpkV6QUzsRd/F6ezjNEwAsEnX47ykPKf4k1Q7J5UTaqR2HoOtXQkaB
+C9WSrQbwzpIozEpAuwHAcxgoiEXrUIXK1vteLchYmxWKUO6qXAeBy+YWQaFSB4XYPyKIU2sj7nKR
+iSBQq69/3zPqxXeRmIbUxWsL5R7lMiM2Dx0CbzMPt7vvjz8Nz4bT0TWqEVP+2XTuLqYy/HfnJW0w
+pcXT9MKAtqgs4b+9BrSim1Q8HZ9G5GwrUXiHTOEnT869lxpN2jUcjW8lZvD5Wmv5KTngQatD+bCT
+x/fD7ZVVeL9vCaVBkuPHPFFVlHh8DwM3l/mSYJv8bREV1x1cLtzpa2b8oIPhMm5cvh4H6iiPAYMr
+k/5skfLobjyBV/G9dpX2WluAOb0YjMnBILvDjzIymOOmOnTbId8Bl3f6u/0wDnQGukV0VpvfAJcF
+Lk0zkTDfsYn7hxgXLHuMkvviHOMXw8Igf39FL97/JOSLbNq6oRmqYbQV1Za+br1ODlaugzpIq5Z6
+iE4jaeEx3W63yYEDhHcsTfEMyzNbTKJmS7M8A7hShlvFNCzKPIOa/mED5IMK4BWn1jqE++ZvFrB1
+28ZXj8jxIk2OZ4Gz/TJ+2vaOFalV+iE8BNlz+aUdpRdfsO0WEt+Ko0doPvrA+Ffqrb4mK19LH4kv
+0pOum4pimKZGfekr15fLs4Y5062kv7eMzfQLb4Pyg1/a9RKsa9ZXngQAt5E7a1f5Ycfy3muUijT3
+wi4fEPeOhrflJvcBysxDlGj/vg/53+um1v5KvDBtzW+TPOJhB29PivQGR6VsTlgazVAYJ26r4ImT
+9HmOZ6ZrJlBXX+HCxL8PZiDvPgWts4DcgZrDOTChqERhLIn9e4NCadS+hcZP3Yu3I9EArixcYYo1
+JDyYEoAycjHqZvOleN4nuUpxjZ+F3O8a/bbzMlrUS2ftNKpZHuu2vL8OOOP9Xq0WTjlpNlEVc39V
+Lh/SMiDKj1Ukekjrr4KpqvurcM3ovFodMH53A5XQXmGpT1BWtUogNU1UQnmlEo80rFgJKKGJSqzk
+/LZcL91gnOdCbOKH+bb9f6x/mB8ZQ/umblq1XbSifP+5SS2+x0Nip29Djv61zKOXLn0zywdLtv3/
+2rva5sRxZf1XdPdLSN2YWJJtbJ+TU0WAyaQ2yVCBzOzW1BTXgEl8A5i1YWayv/5Kss1beLGxJHtv
+zTmbSYDE/bRa3VK3Wt2v7hvFAiosVY74dqInH21GOnwZzJItUHRboPmx0U68z7MEyploKHBNYJWx
+Tzx3mjR45/uzvjN4XZ4AXfrB8yWt2j50w9e5P9vW6fim6SUUPnZkhiWgGNxoMkUbXZve9WUPGdLj
+qsV02WYbVALXCYkjeLZKyVacMFyQHfrZRTwEQ4WdhoAzev+Ijb5wbvQj3KwYIPzQAv1JA4+yMlTb
+YqgeldFggajE715Piz8b+2egMqppVn/ouMpINR1F05GlmCMDKRAhBHXVdVTdFA7dWleFOE841odl
+fCarPiDRqA20buLWYA/iAs6xb8WawWxcSDj7sv0OPJMANhnBFdKsGhx/znuWL6/duM547r5GtR3p
+zdaH63qnpXRB++OfUUa5oir9KAS+rP7PPowTrCsTz+v1F6E9e3nr0Q7JV5t/dQG84K+r+3ojF8xD
+ue13tLgYWXNpzVuhItVUjSg84VVZao4zoA1saVFvhV4FiyvqgN+IwlTXFKa6SeM3wTDpOkcclWHf
+3rSiLDDCPhANAB209BugyMSfBbSqx9qkp7Gbwuw6gX942U3gEuRxGsI/BHiMluD2ZkrZoBsHoa8A
+x+hZWZPSgLeOgmd4CfaoXbMTeG5YGviGehD+OmTCwapWWGnww0P7sOVN4YvlZcWEg1znWlFy8kZm
+s02z3p2A2N3PN3VCjSZYhElc2gb+eBi/d+X5/z1xJxfJSzqANlm/op+4oRoVjSq1EHXTrK3vSOdk
+I0RvW7nJprS7mGbej+Jce475gsyepynd5YRkY9R9erjs1tub1SouAKzuysGtcRqYWlXFeM2o/xg7
+Uzoi8eYrvvgTkgnP6mWzDhmgUm+f77tXwhWYsS6xBBoVlkm7YcI4xJRVatq5YNw0MBlFlqAdd0mO
+kG6HlUDFmbOGMyc2/jSWL6KUhUvPdV12+fyS7JbVyxjEOajE8ozzHEQPwLq9TMQmxy/hx0UNry+6
+Sy7cufLyQ6F+CHsBiOMB6CuqHXMfXBu2pdlGyzZrduuaGANQYS0hCfmT4P6YOT2qhGOPPGX+1bRq
+397VplhmBGz9Njd67d8bHaJts7j+NGv+TYt5uafRSC0Cy8RohwiW8NZu47LZFSUQ07mhLIMjW4Ee
+CXgjVW+j9qoIUFy6g4VrV5gZQ0lkQTSw9Qh9ZYZm9KBA2WtS19CnNqv6uQQeElDbHJTauvxwgmkm
+blxa+DkJRIHb9neNJqLTtlr0NTEzZ+oZDa2E/oLd93QnZJUm+2diDta4FS0O7biRTxFwXamzsvzt
+92Khtu5M+AQz0k+wFJztdlr2cYLVk2wzw2eDRvfxTml9bj10lcfWTfPTvdL4WH+4abHl4ar5ePu5
+9chuJ1w1Pj09dB//BM549uKgq2aLG5SNISOQXmgr5DGgBd5WzoABbj7+DX444f7ciZwjURBZuQJI
+N6trahVrVE9nrK1HdLNFib3T7aODeuep07v/9NDpth7PQEXtD6CJkKtA5KqKZho0v7SGyE8qGvX7
+bn9gqeeioRvvTczRI5B/CB9cIpanG5OM6LePoZNsnYgLLyR7wh+g8enhodXo3j7ciEVkIP3Izjxw
+d+zNmw1bN+zatY1N22ja5jWx8vQXg++u4CE0oXVsAmSO+coQvYnUwwpYoQ88B04UHZix6MCWAr44
+9NgiKgp9AfoLWquP7HnnIWCpdG50vlEtgJF9sesp2eoqxFK+lEMExJcmi47iUZ/hq45wre84qoPN
+kWn1tQv1grFDF6JZaLMVBsz6g8g07ixVzRddRgdt284tf6GXlB2WCPjdHm8FfLLsY1ZGHo7uvFdT
+uFxribnTcv8TDKGRyhDu34dsmkFazTAxgy7tHVAF4MFnfnjyNhWhBLtI+GrENyTIUkkm9FkYesMz
+8N0ZL9wtJgrAQpSxtwEIFoCi/0xxLCGErFMboWorhk6+qQVAenXfepPnyXwJ6ku7rrQ7v4P4u9L5
+WEe6AT502budeov+SL4VgHUWvi5h/vvFI29O/3PG2//60u4ojfpDo3UnmEFdPSEkubE6HI9J8gUM
+U5mujVVtuGC3g5ww9Ace+z1a5XkevG06WxKRn7hWixn9QxOxc9+yQTcaqTktSzZ/od1JaKnf6Com
+NuyBbluW7Tq2UbNdC1Q6ndvm1daCMSJb4ysdERj3H/8+aXlLzhljYKmQjFl/mdhpuhoOmMfUZx7T
+0Db7PHCELln82N6EDM8OCGSWAbjzaJXj5DJNS823c10bTkJdIlhOu9b8+H9pQUm14ADL3M1d+/73
+Tp2svI2PLaXebLaaO5hReRNdm1jxCiV7VqXWXUtVYTZDs6mYTFWTZViwnSFY83vH3OFvz+ajEueo
+Oo9/gDql9+iGsyi7dQe9gTNz+rSOjQ4hG4VFeIVV4HjDK5UHiPckA/d/Izu+tkFbPwX8F2054EZX
+ThZB9DGkVce6T6ACVaSBya5KxBimRfax+Qg617ZmAhUB8geqBUwMhibAA2CQf3WgQ2BCMEIADoFp
+0V/ADgeKeAi0GtBUAEdAxYx08vP6O8l/v3j8xeMvHn/x+IvHXzzK5LFPPIhXENdvsmlo9+nptglW
+SSNRLh3r9j4egocb8mkeepn2Rmj33gjJ2htFWyN4EoZDXkE94X64h33eBNdyPjpP1w8t8q1b7z51
+lKd2s95tLfnlMNhLyQ55M/GlXbfB7+4bmLrP/jzeS9Ja6WN3/0iCr+3u71eNxn0b3MQ/fBM4unFi
+AXEuFRpcTo5YdnrOK+hf6QYceMNeOA+uToKX0nOinbXMWkYvb+UURUddMeoCYO4IBnfmrPUabZGm
+g0rchjYK6y8C93ztzks1EQjtUe2ze7FjmgswjTCB39Y9798kcneq+1qIXPB6Nuix/ITUd+v2noxy
+Ra5F5Re0FXBnbUL13WePpb+DeeBMQyfS3Aot/ucv6PgDTY8vgIWCoWo19A7q+hhHHZ5Y1/aLZfAP
+WqgKDZM2tYWWRd4fDMHMnQ53BzOymvU7b+Kxqdb9A7D6cFSHEAYV8qUA9RwMrye0cKgz/E47BoZR
+CjmXhS31uGmYZS/lGrdcQ+UEU9a+7H+6L2S+D9u+P/7gB+7zGe0uHq5MDutzS+sTkvdevMEL+WQ8
+Jkj9GUgqp9By3lGGe21ZzutfrEn5dMzuzQgeyZqxysWkGWrbyYrR8FKJJ4UGKGKWAB4QdWFnctMh
+aD50xALVjKMZiyddmJVgkTSthtNgP+G+bEnQn3pdVg58LVuyaKvZ69x2W6JR6UcSibPd4eWLbT29
+lqXtLWbLfYdQ2jpGOLO0bu4+Xdd3JVngjAWzx14/buz34g2pB9L3iUXeKJMdf77e4xob3Enfs47t
+x+jWBNGt1PuhP17M3fOjEMxTIKScDbiq6eZalvLG/WjZVaG4cmXVUnIloToUT8YMVd3D2NErEqvf
+JnsO09VMdaiaCqT/aBBhxUSGq/Q1a6AOtGHfGPaFswJTyUhAXRe+bKBUbHCt71IEA5zrvPBlwUjF
+Avd6L1yZgHpqJjjXfeHLRjpZiKj/wpcPM42lzbaH1IyTG0zG8TjiQJKdojcFSCVrt2EZ1JEdhFxJ
+fWzcgtaUyGlAxNFhBDtv08FL4E/J7mU9GEsbdlHf1FuPVkQXfmi9gGULYb5DUf/Uaa87/kmHgu+w
+uusEJy+lv2gb6vkbIAacMMO6H+xvjXwSsfub+27crGJXu830z3xodekV8WX38vaHXv3uZtWrYuRM
+vPEbJ9SPHxqf7u9Bt/tnmj4VeUik74aRh0okgHfhIE3lVZJIQ0bV1LC57vqNXXcWf0saplAbyN5g
+AbCpD5LryzZ4c9/FS7nDs9IUmNzYNq98g6XtXr6l0PLUcRZ2yugEb46s1Df8t7eaZWesltKRb952
+6td3rSbxOzt3rVb7JGBJZwk2Nb9ibL6rSjMK/L9dMmjenIxT6AbVcEwG/V0XkdOptd1g5AcT6tlE
+GuOzTtleVFIipCH6s/fXH1PRS8xC+54u6uxRRO3oyXllSCid53nmh2UDJ7J0kIXUBipZqJYnIKtH
+G11VtTXdxmbqRweu+zcdDzreIJzRQy1i7alMXHEPXjtvrbhjZ0aPKChLcMehTnbSnz7ds3JZhG6i
+YFUurAQu7SXKjgToW8x8zZ3wNRT7dLGjNQu86fyVamIYH1FRTy30x24lPAcVdsxB+6Czt3rJ1J77
+xCT2F8+5SO+sVXj/qdmC0V187s++aT+xEnQinx9OFrxo1Bvt28iitJnzH6evu/T4OTZwsR2LrHUH
+86HWcb5TUrOxM6fmEjx87oCJO/GDtzzPbzJdpA8mjplCe36BRvspBBsGN/tjw8mM9Q+jDwN6smL5
+o9FmR92cD9ZEPRiLejAS9WDI8cGrOXfn/1DG7nd3TNVmQftmvTvMyPP4R7IvjpqXcZ7V9fum8tmz
+weco9A7q7dvG+3JB5Xnu3ecuFRw9R1Zp3or3PKU1uP2AuC+0aQxQf2rrTnB2Cq2pUDW/Jv/Spz8Q
+G0tYaEd7CgIcRmOk/oR56BCsbIIvZmLRogQtyokWyUCLE7Q4J1osA62WoNVyotVkoNUTtHpOtHp+
+tCuD+cVhuS+LOEuX+27j58vAU2b0izwewXgjNYw3Uj8/NuJ6ht40XhAuwFPnutPtMAMFL4hFp4Gc
+PBAWYZ9+GTYIqJV6WfTB2A/ncU4VoU0rv+XexMVUamKp7Cyw/XUYTL6BduO2BW7qj9TuA3qP637Z
+CKoyZ16GQ9aCn1F74g8a/NBgP51XueNpd9p0ijJ5Rr1fuZOIS3MRfhzGRTR71Z8jDbpq/A4Zc4qk
+e/+YhzzN02f/0Ng6jn19srdwp4M3lqZFdupQ5eGj72T0sd6xgT+jsQuyOwjIHJo7YEErpEfbsznY
+UdIzH5fGpXqpJjlmlzSr7nLmj8fgr4W7cEVw2N7gcCaGw520O63G02Oredtp39X/XEPBivG4Qy8k
+u8g3mXjun0RrzjoJ2qJtLTD3X9yJvXp/AbYbn7gDshWaeTOX7N/+AqogG9i8f7petWJdOwGwk8Of
+K2IBdVXFNZU/Bsbp8+hnj7yqqlEC6ud7AuM7MRvPZDPgT9m6IJQy3EEZCqZMfbge3Mm0Jof0Lq51
+OaTRDtKGHNJ4B+maLFnDd6RNWbJ+T9qSJev3pKEqS9g7aIvWbGLAiU1Bu60KEkw8HE6cHWSxYLLf
+B9Pe0B30DlhwUxxlsq/sqYdsuHDacL8RF0T7f2fuMx3y/SbcFLRhaDhTuqMbebTgzvQNDIL5gDpr
+Idk0hP80mstNPJS2icf7XVAdokMeqImb9WveHigW4oFS195QdBt8qT8+0Hzt72RTydp5zt2f86TH
+MpGgSwsZskSB+KM474k/g0U4TbhkThMW4zTNHUyeWe/WwZj29hz6P6a0UBS7rk1WgE4j6tgCsKqe
+5ySkySKEZBGCcggdmwbCHNuE2CzwnwNnAhrt3n2r02s8dO+AHZ2p0P9JozcQRC+LO11XqUetcrGw
+UW1+KjQlnLlEjE+d6yQpa7qY9F16orJgTdy3Ist5yOetOnIyxZOrjvziMfVUlh+VwSljI1AOaSgn
+LINTRglqsriWEqDAxx1WSwJVOWEJvO0wLqbkd92hHFcZp3IZ+fjJ0YJkFLTlX1JPsRxi/sthRB6i
+hP4L+a299DX+9NcSO2P/Mddo0pyg+J4jy7O0aQWbYLPiKI+nNv18SVLuyPvuBKOQDfvbdMCUzAk8
+5jmzGXfK03enY0fH/IE7XwQsL4id/e9NlebD1YhsIMMXQo0newmZgOicP7HBIGAptiFrkEFNQZiw
+StyC2WZd+uxUNrK+f56WlnA8P37+4vwg4A8lyGeH/v721pfLzhfwOdrH2ywuYzr06wJcL7zxEHS9
+iWsDSlKtIQ1q2IQnpa6kuKmgq2QcqibcKBAR33n54by6u6+8vBHLv+/Oiwh4SK8dK7+xup7I9VqI
+GG7eV+4Z0Lt8NF7X/Nhorxdlkg+FQ50oWVC36h35UbkjsTiwZeSuzpHdiMSVqYbuViHvPRUe+28g
+qpY/ePGZ0jwyNbABvmq26k/dj727Vv3z7cPNOVfLtn0FFhrEduHtC7A8TKjIC7Dp8aUslNi87axq
+JfZp46SrXdXDqYSucCS48Vvv2Z3SDYE7vIIisXUabaX96e628ScYEPUJeoQ4b3rr7QgeW/efPh9r
+SCBAcS0TamkuTnLtUb3kw0q/u3XGc/cV3MY908HDdb3TUrqg/fFPEJjQsBRV6VOvjNYfnc+dAd3Y
+0Q+HgUcvyFYmntfrL0J79vLWo3Xfrjb/6gJ4wV9X9/XGSTBTDrdVhQaCxztRFzzYbGRiJ7fPnFwQ
+TwxaBHD6Sq1G0/8xPYVGqmbM2fXwn0U3rt9HFy4axAbeaOpM3KsNOMs7hD0I+z1q8TaK8+ZEEHPc
+9Jm531g/WXWpGXEl6aHpquRoDJX41uTFF//LXf2BzoP9V0P4KQ3C2DzSQ3dHB13csus1+/raNgz6
+L7LIVp2MACWfSztOLevAi1Kqsg65iO0p68BnyhWtZHyVK/UcxhbCaa/zF7YA7OaG1jR9z422n5vo
+BgVRSbYXZwVBR35AHjOMb5KeqWcsYOUvAvL3a71g1rkVLA6sZvZX7j41drorp83P9u+NDoRxcX1C
+lBpi1uJ7OhfKugZ144SukGRSKcsI4962hMLxHtOc9AU+aEqAQgZdodbhvSYF7sT/TlTsXDRztW9x
+ld82aidsDqLEhHFUQnklkMh4DQgzEkZ9vd7Lu3GnVZSJfa2SGfwOfeXSD54vaTWBoRu+zv3Z5SbZ
+y2ZcN9I4l8DD/xebe5ibdDY3DusKHnVDPe7ipKhfuTJJyvK3M4QmuXIET7RAuzlLV/I44URDfDjR
+UBXpFlwV9Sabfl9J4ppbVTe3an2r/QE0EXIViFxV0UzDURyrhshPKhr1+25/YKnCoeMjdZF3VQ/9
+h/DBpXSonAmUsQrz7cONWEQ1TT3iHEanxlvuYbPBGqVes0apTdu8Jpod3+IUPISmebRefeaiqzJE
+b6bsx+KwNYZYGbJv2VbAFyeM8nKJBxuFm8mrwJ2HgLJLT9W8YGfUWTgj+4rGTskuRmG9b0shAjNf
+I+j3LcYlAubUDFo6D9bR/cxqkpTLWpsW/Geaml24d5ia/Sv9pqGhR12JoXF/euG8CmifO+rEJG9P
+WYZGVQJfUWsqmy5GZEKf0YOvM0DTttwtJgrAQpSxtwEIFoCi/0xxLCGEHq3IZGPVVgyyr1fVAiC9
+um+9yfNkvgT1pV1X2p3fQfxd6XysI90AH7rs3U69RX8k3wrAOgtflzD//eKRN6f/EQzD0monhJQ2
+bPjxmBJfwGYqA7Ox9gwXLNVzrY/1BU1Zi/q7r0yRROQnrqiFj76u593GMLfVlQiT2+bldOSHjlU6
+9y0bdKOpSLybjfO8nW0xHXoT6rZ5tbVujsge/MogrIP7j3+ftMpvNwNNgyTKyknasQ0HzDXrM9ds
+aJt9sbuNmoXNrNYrEiJrALCReSQR6Mm6zxP7lrBDmojK9sE72p06UUdfuNHR99fsFzP7SyKY9RSn
+erO5I8HJ2ZXglI/o2kQ43GNa2CxIrdKmmvUwbivTkWrxqgusRKyntqzlDf+Awg15PO/oDMqjOpm7
+lDuHupRr3NX3WJdyh+cID3mjz97yfEk3dY38ybxmIejG2XJOUkycGHLalJq8icgXBpXQ/QtA/RzE
+OeJ5SMbcjRxvHPWxptFt4qCCCroAo5G9+d85/Y3lnekKobnzgMPMyXDjKSmsQGt7vLG7aCMvmDCq
+9OL92HeG/OnekaeyhO+E1MyZD17Ib7tDOqVeL7/cfrjt3XfJ36Ie+6w3GSx6kPz/ZRhU+94Ob02H
+3IRP/gfVSPjogOzzUvywnArPZCowNsmkmDizFz/Y4WnouBhh56UrRNiGCGFrh4RtyBV2rmy9L+26
+Tdudgqn77M+joMdaX4g9a+LXdvf3q0bjvg1u4h++8Qa2ZttXlwiU9SsOOze6K+hfyYKpAm/YC+fB
+1UnwTlkCDq0A6SnuXwH0E1cAw1ZhEUYhP13+RoFg0kQYhdpe2eenmMkoEHJGQcI2SijsGp8ULaNW
+taCR8oh8FUImMvNf6T9g7L/3gE6Ht+3A7YUn6OCb98CaKQeWlY+n03HtcE/wqNYkng/zhi7rfJjg
+tkQYVeuQUbWkGlVY0AoKS7iCQiErKEQHpA3lLqGwoCUUlnAJhUJUG2qHpC1XtxEqRtp56YqQNtLl
+xkfyU8wq7FpBwq6VT9hY5bPbsNQqtFCtJFldvPkyc2R1ScCSIqtLPIrMWV3iIfHL6hKPNVVW1+kw
+tp2uCIb1jZ7rKR49wfuqI1zrO47qYHNkWn3tAl4wJf5G6/SMx8oq1WUZmmLxwW5cFidqOMUqM5QK
+d3TTT5lGz/9nYRc85nxj3/kpZlzIcUG7NlzCXRvWZcc0sdxdGy5o14ZLuGvTVNmxFk2uZuclN3jx
+Zkk1U0Y5D4mkmEpUaWhVGnBlnOlWluVz1NvHcygIacz17AnG/rR6SH6GEJKHFoNicg6MEuYcGIJy
+DvCB0Zeac2AUlHNglDDnwBCUc6AfErYhV9gFabZeOs2u5T9Xz7jvyk8xk7AJuUI0Oz9dIcI25O67
+8lPMKmyrIGFb5RM2REJOPeABaeclmVHauU/xTpR2XrpCpF0TIm18SNo1udIuSLdhCXUbidHtA8JG
+clUbFaTaqISqjWpyna/8FLMKuyDNRiXUbIzkOl/5KWYUNi5Is3EJNRvXZDtfWK5m5yV3NA5a4xlL
+XosMmgfGUFD4Ex0iKebCl3aIJN8LBujoHbNa/ijjiaZBh+UzDbomN4spP8WMpkE3ChK2UUJhW3JP
+uvNTzCRs01aRCGOy35aY+e/InDS98tPlP70IJlPuNiM/xYzTC6rFCDsvXRHChlhujDc/xazCFrMX
+Qoc4NAuaX2b55heCckNP+SlmnF8IFyNshEsobENu6Ck/xazCLkizUQk1G0O5oaf8FDMKGxek2biE
+mo0N2XtCLFezcUGajUuo2RqUvSfU5Gq2VpBmayXU7OOxwlTp/joyqqZF746nSvenIdp+4A3JLKlM
+F+PxOWshPp7baXL9eYNGku4opMHNr9usk6nbrMkzaJwuAaQoMbJyFV9RH6qurhtDVXUQHtEPqDgX
+RKviEjT1NqB3vMDEH7q2bPmmaSaYX2ZZ7aYhukHwjvqZ+bk8eix0+kzcuu8Wz0QrYxHMVc3IqDBF
+XNWpAJg77q925lSrEe2fqoNK3P07us5HlOWccMY6pIwW42pSsCqaUj+8wB3T3inxXTTw2/rN0d8k
+cndqdc/yyOXQ9FlVATtS9ryY+cOj6Hz55kZRg26q6WsexduTXS3ooo/SlrvhzQPk06yU8wbCPNKl
+JR5Outffe6df9MihY9KPQXJp1mfyPtWHKYLnOhJC8hBFvRhvMC9dEd6gbsoO6ukyz/4s8kdFCDs/
+Xf7CtvLfdckY1MtPMauw9YKErZdQ2KbcoJ4l91TfKuhU3yrhqb4l6FT/QCzHknusT8gVpNqwhKoN
+TckF6/KTzChtVJBuoxLqNsJyMyryU8wq7IJUG5VQtZEpN9UzP8WMwsYFaTYuoWZjIZptHBA2lqvZ
+2BCR13vI4SjmWN8q4bG+Jf1Y35J7rG8VdKxvlfBY3+IWdjSNqsWq+L0LO7pz5eWHQvv8Rcf59/VG
+0vWPSqzVsut1Gzbt5ge7YdgaVdaBM6Xkz0+By91hkXp2aok/xLRsXcjdtgOX+q380doTVU5H5VM5
+XZe9Mdd1qVNYrxUk7LLVJNTV/HHkbKnOHChmETYlh7kcrRkqrkJTr30Ds7EzJwKfKGNvuvhpE3kr
+0aEVfeP1q7aWgAPpeKw3vyJjMgRkVM754dxa6CKcBszbyXu7FblEwNx6evPg4ZSVRjs0+zGv3pmN
++oPyoX5712rSzIMrBarqDnJFxCA40BVi6mpyh96U6gVzoJjRshZyUMGBroi5BZHUuSXmXMQ8MLdk
+HotQcgXZLVhCuyXoWEQ9JG3JlsSSqj2oIMOFSmi4BJ3CoAOTC8k1JaggU4JKaEqQ5BNWDiSzSluu
+KcEFmRJcQlOC5R7ocqCYcW7hgiwJLqElwabsuBGWa0i0gjRbK6Fma3KDFhqWmrzLgWLWuYXFnqFQ
+EkI6hxyKPmhWQQpjlU9hdCT1iJoDxYwzWNeKEbaulVDYNblnvhxIZpV2Qaqtl061Ic+afqkqznMg
+mUnaUO4RBSymZCEHukImlxhToh+aXDW5k8sqSNolNCViWpWgA8KGci0JLEi1YQlVW0ynEu2QsOVq
+NixIs2EJNVtMoxLjgLCRXM1GBWk2KqFmi2lUYh4StlzNRgVpNiqhZmMkdXMsKKauHphcUoPqsKCg
+OixhUB0KCqrDQztCqVH1/OSORj5hhgC6N50t5mTUvEHgh/5oDv5Qrv2fABsqYWQIVOCE4DLKSgwv
+v3vBfOGML9kfRf9iawd1KDd3nZLExWhQ6a6LUEyG3DNIKPX6BSVnFiRss4TCTo3JmQyfZ4sYEo4h
+fb4n1Cd+8MYyiEM2ErPAH5CXrjP54fZf3PHMDSoQW9TNcsLXtU/sQaiST8zaeTScU+VvN/DBjxd3
+SnicegWire1Fq5vp0abee714Q4VRooCxjcxmy4ZY1arUhNmgwz5q+NN54I/HbgDOPvxRtywD6qpq
+NPAZ2FdxLBOI2JR/SUr1vaO6bspnAy8aW/Uy/m6rqArjFzob8PiFYauD5Yth9Mki7BuXhqLTLxtW
+0eUOvteXCU3lwNk7hu59dqWg405DPwgL5Q/m4e+EyV6BGt6Y49H0RqYlYHpnw/fHD+eNbPWHFaii
+WgwxeS9CqSKtVCiNPSj1wlFOnOmz78xmFUjgxCiT92KUBi5+LP3guWJqZjKM5CUDVzORAGytP7qa
+MgpBZfp94sIpPLfBYjrxF9N5tLgS4/dGVGICLE3TyZemWCNCTOs7juJYhKZVcxxd66tQg071FCSp
+LvXUVKtaQ/pajcc52eaEA2fsvi/150S1CaNbO4SbqKTfqtTf8i3F/Tkn4+CMFbpPeV/9L/n4XQVA
+7oylLfy4Xt46j9g/Nh9B59rW6a4q/X8cKGYht5OiDuXmieWnmHFDfjzxIt3EgmSFVjHRmIGzIH8N
+Orc33dbj/QUIXxZzpt100pNZFUxoDfQduqsX5AfqJfQD9dMqfG9cPcxcyDwV3ZSzwaiiGjpU3nfD
+hG7ffTxoRek1VYVIWSFr0fy9FQ3IMvfdHe4yorohNzEvP8WsysxPfBjC2jfg/vSY7lbi6uK7BrUg
+j14vnUePbBVKreTJgWKmCYbyXzg+Sdj56QoRdiE2+mS607GpIgiJsXWp4QTeaOpM3KsNOCC5at6D
+sN+jLUrCK/UUBHzTQ/NTzDrNzYKmeQltGoSS00Pzk8wobViQUYMlNGrQkJwemp9kVmkXpNuwhLot
+qCusfkDaSK5uo4J0G5VQt8W0hUWHhC1XtZEloq7lIduVu/nqidMrL10R0wtrcpMG81PMOL3ykjua
+/EFIcMzF0wwaPznmQOIaZy+GRv1uH+rd24cbbtRiKk2facrQdRbzF3c6J78yd+nR4cwJ5rQx2qqo
+VuzkhN6UvPjif7mrP1BFc6c7K2nlBZbdiTuR3h4nLovzxo3TdUH/H4MRknGHJwQA
+--Apple-Mail=_7A4153F3-D5ED-4F94-BCA9-D27A04A9E22F
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain;
+	charset=us-ascii
 
 
 
+
+--Apple-Mail=_7A4153F3-D5ED-4F94-BCA9-D27A04A9E22F--
 
