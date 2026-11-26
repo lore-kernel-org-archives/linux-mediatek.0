@@ -2,74 +2,76 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 4D8E9606A31E
-	for <linux-mediatek@archiver.kernel.org>; Thu, 26 Nov 2026 19:56:47 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id DF87F606A32F
+	for <linux-mediatek@archiver.kernel.org>; Thu, 26 Nov 2026 20:51:57 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=KN9NajxH;
-	dkim=pass (2048-bit key, unprotected) header.d=justthetip.ca header.i=@justthetip.ca header.a=rsa-sha256 header.s=key1 header.b=klb3IJ5R
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=tybWFiBT;
+	dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=OLhcE1N1
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:
+	Content-Type:MIME-Version:Date:Message-Id:Subject:References:In-Reply-To:Cc:
 	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Unsubscribe-Post:
-	List-Owner; bh=hy9l76kJSdlGPxuskTIu/Sf3zHIbanodiZ2WuGUccuQ=; b=KN9NajxHNXXlGJ
-	375g8ZU2r641FyzbA7818ClW4Il+cnIDWXWgHeAkfpnMyJmMAzDOnrnH8FtcBw7B7oZ8kdVksYz2T
-	6CUenjTe3Si5yWXU0dn3uRI3AfJZq6Mmz83MhTQzK+gk31YRQu8MiSeWwGBGcIPWCdODXhR/4anPg
-	G1JkXPm6fAHigpEu2Y7wqulsLl7AcWJOWOSGLaHE7LaoaTVO65bEbK8igkgrp49Gnm9coDf44C8ay
-	WcsInOvrBLAuw0Q8l52+rlNpLe/dsoGItCkD0qC3C09vs++WweeihrkgL2V0ZJFujKx18Cmndjegj
-	2jP0iFDj8j2xSLGW6caA==;
+	List-Owner; bh=KKiKSlRn1CU7D8BEs2u/rf46yHaLNGj8ZGPqKJfIU74=; b=tybWFiBTtoMpW6
+	wffOvYQdu9hx9IYoFgvzORxDc3XiuHFPUGKEsita6QgwI3kEKRjIOQl8+C2KJ5MNvMWuKFjfmcmsL
+	MZIGbmInDjWJ+9B89RE6ZRx9PgE7VAHnqpq36QnOGCHzFsJXzPmckK58ng/dLiYNxLS9fSeDHQdmT
+	3FuQoXCMp53qWsVxolm3b+FzLgMoqXQcIf2wgG7pEmfsbVJt7+onlAS22rdc6Ltvrud3UuMvQ9hk0
+	P6NJmmn+UxFZl2iQBsWv5ZPOj+Xl+fadnzxZFCcWLcgwsoM1OmD1YnsWCypNtO6OV8Pej43eIpfn1
+	mr4Zjgi7fwiMqpYVzR5Q==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xWfaJ-0000000EP8j-0BeP;
-	Thu, 26 Nov 2026 19:56:47 +0000
-Received: from out-199.mta1.migadu.com ([95.215.58.199] helo=mta1.migadu.com)
+	id 1xWgRh-0000000EW9a-2iNY;
+	Thu, 26 Nov 2026 20:51:57 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xWfaF-0000000EP6u-2hnF
-	for linux-mediatek@lists.infradead.org;
-	Thu, 26 Nov 2026 19:56:45 +0000
-X-Envelope-To: linux-mediatek@lists.infradead.org
-DKIM-Signature: a=rsa-sha256; bh=hy9l76kJSdlGPxuskTIu/Sf3zHIbanodiZ2WuGUccuQ=;
- c=simple/simple; d=justthetip.ca;
- h=from:to:subject:date:message-id:mime-version:content-type; s=key1;
- t=1795723000; v=1; x=1796327800;
- b=klb3IJ5Rf2HTMMeUaxauBqfXsZyuMR6Dz00SWAhO+oGUkpEt1wXeyKEkQu/rln+wlmhXfrjf
- kWuOtLSMihY5Zl8gp/Z5FyM/WaiJXJxX0XLKAeJdnO/iKIezzQtRChxomnAjpnJF2UkTplsTAYA
- J0qaU3WFUpX16hVNKVYA2MtDxfMm6q0cReMuoS21TJwmuMoiIYUiJN/WO3z91XIHwM6FFBViKn/
- id244JelvvPTE/57oU9+q0+4yJ3EFsvJ5wXwQV+1yNt2sB10oIvqO4H9aDsrpsItYe4EeeHdAAP
- 12tn5rxYboYkyAO+Ahsb+hs395C57L45WK8nnWKQRnm4w==
-X-Envelope-To: linux-mediatek@lists.infradead.org
-Received: by smtp.migadu.com with ESMTPS id f9e9ceb29dc6adb0;
-	Thu, 26 Nov 2026 19:56:39 +0000
-X-Mizu-Trace-ID: f9e9ceb29dc6adb0
-X-Migadu-Flow: FLOW_OUT
-From: Devin Wittmayer <lucid_duck@justthetip.ca>
-To: Felix Fietkau <nbd@nbd.name>,
-	Lorenzo Bianconi <lorenzo@kernel.org>,
-	Ryder Lee <ryder.lee@mediatek.com>
-Cc: Sean Wang <sean.wang@mediatek.com>,
-	Javier Tia <floss@jetm.me>,
-	Marcin FM <marcin@lgic.pl>,
-	=?UTF-8?q?=E5=BC=A0=E6=97=AD=E6=B6=B5?= <Loong.0x00@gmail.com>,
-	Deren Wu <deren.wu@mediatek.com>,
-	Shayne Chen <shayne.chen@mediatek.com>,
-	linux-wireless@vger.kernel.org,
-	linux-mediatek@lists.infradead.org
-Subject: Re: [PATCH wireless] wifi: mt76: mt7925: fix MT7927 receive loss after a channel switch
-Date: Thu, 26 Nov 2026 12:56:28 -0700
-Message-ID: <20261126195628.18471-1-lucid_duck@justthetip.ca>
-X-Mailer: git-send-email 2.56.1
-In-Reply-To: <20261013023810.256061-1-lucid_duck@justthetip.ca>
-References: <20261013023810.256061-1-lucid_duck@justthetip.ca>
+	id 1xWgRg-0000000EW9D-3h7K;
+	Thu, 26 Nov 2026 20:51:56 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by sea.source.kernel.org (Postfix) with ESMTP id 603624093B;
+	Thu, 26 Nov 2026 20:51:56 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id C897D1F000C1;
+	Thu, 26 Nov 2026 20:51:52 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1795726315;
+	bh=KKiKSlRn1CU7D8BEs2u/rf46yHaLNGj8ZGPqKJfIU74=;
+	h=From:To:Cc:In-Reply-To:References:Subject:Date;
+	b=OLhcE1N1RgeWA4OTzqUAP7J1YyEASOA9RiMC9OEhRUGtodDF/N4mQyBT6AoyzHuLL
+	 FplKTLpI9vzhrtynjOW9xxK7YmuOy+vF8HquYkaDzNnxEQKDNdCHOWbX2sprVlXsky
+	 VvWLFHow0135Nw3TUzZTvPtvJAMBCU9Oo/b4MB5cYR/yDtEQ2GkVkbW+Rc0AHKvii8
+	 Xv4svOWn7uTdUFTHbwxPhpU8gwoADN956HcaX78PHvdWkY8XpBGlLRVs3IpmOzAFPn
+	 hpd17q4PGuoZG1NiZm5H9JLbLwUg1CDioa3elf61LpkvdUFFFgMHkwa3a5dv3Ki/S5
+	 tsTxi1FyXukdw==
+From: Mark Brown <broonie@kernel.org>
+To: Liam Girdwood <lgirdwood@gmail.com>, Jaroslav Kysela <perex@perex.cz>, 
+ Takashi Iwai <tiwai@suse.com>, Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Nathan Chancellor <nathan@kernel.org>, 
+ Nick Desaulniers <ndesaulniers@google.com>, 
+ Bill Wendling <morbo@google.com>, Justin Stitt <justinstitt@google.com>, 
+ linux-sound@vger.kernel.org, linux-kernel@vger.kernel.org, 
+ linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org, 
+ llvm@lists.linux.dev, Christian Marangi <ansuelsmth@gmail.com>
+Cc: kernel test robot <lkp@intel.com>
+In-Reply-To: <20261124231245.271869-1-ansuelsmth@gmail.com>
+References: <20261124231245.271869-1-ansuelsmth@gmail.com>
+Subject: Re: [PATCH] ASoC: airoha: fix objtool warning with memif probe
+ loop
+Message-Id: <179571856562.838304.2203550575744012531.b4-ty@b4>
+Date: Thu, 26 Nov 2026 18:42:45 +0000
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261126_115644_143758_362696AB 
-X-CRM114-Status: UNSURE (   6.03  )
-X-CRM114-Notice: Please train this message.
-X-Spam-Score: -2.1 (--)
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+X-Mailer: b4 0.17-dev
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1133; i=broonie@kernel.org;
+ h=from:subject:message-id; bh=3JMk+PWdk5sr2Qtcs5FeE7WS0AzMKSIzn5yM4hGxNww=;
+ b=owGbwMvMwCWm/754w+YLFp2Mp9WSGLI5Zj+bsH+igWQy93avXdLH3wReeLXrcGbX3SmaYXPMm
+ DIOpvb/6yhlYRDjYpAVU2SJy+J+WV/yeg3fwYVtMHNYmUCGMHBxCsBExD8xMqwtKdz1YInQRO41
+ /2Qb2352eu4OnM0ZUXFn66vf+9L+n5vM8L8y8IfQk6V+lyUOdeZI+bWFX9RMNVJtUM24diI73Un
+ iCz8A
+X-Developer-Key: i=broonie@kernel.org; a=openpgp;
+ fpr=3F2568AAC26998F9E813A1C5C3F436CA30F5D8EB
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -80,19 +82,43 @@ List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-8.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-13.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,
-	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
+	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,MENTIONS_GIT_HOSTING,
+	SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no
+	version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On Mon, 12 Oct 2026 19:38:10 -0700, Devin Wittmayer wrote:
-> When the access point announces a channel switch, an MT7927 stays
-> connected but stops receiving until it reconnects.
+On Wed, 25 Nov 2026 00:12:43 +0100, Christian Marangi wrote:
+> ASoC: airoha: fix objtool warning with memif probe loop
 
-Gentle ping. This still applies cleanly to wireless and to mt76-fixes.
-Is there anything you'd like changed?
+Applied to
 
-Devin
+   https://git.kernel.org/pub/scm/linux/kernel/git/broonie/sound.git for-7.5
+
+Thanks!
+
+[1/1] ASoC: airoha: fix objtool warning with memif probe loop
+      https://git.kernel.org/broonie/sound/c/61914cb2002a
+
+All being well this means that it will be integrated into the linux-next
+tree (usually sometime in the next 24 hours) and sent to Linus during
+the next merge window (or sooner if it is a bug fix), however if
+problems are discovered then the patch may be dropped or reverted.
+
+You may get further e-mails resulting from automated or manual testing
+and review of the tree, please engage with people reporting problems and
+send followup patches addressing any issues that are reported if needed.
+
+If any updates are required or you are submitting further changes they
+should be sent as incremental updates against current git, existing
+patches will not be replaced.
+
+Please add any relevant lists and maintainers to the CCs when replying
+to this mail.
+
+Thanks,
+Mark
+
 
