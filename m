@@ -2,107 +2,93 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id E8A3A606A32D
-	for <linux-mediatek@archiver.kernel.org>; Thu, 26 Nov 2026 09:18:22 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 97519606A31E
+	for <linux-mediatek@archiver.kernel.org>; Thu, 26 Nov 2026 09:22:16 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=c0pSaCkL;
-	dkim=pass (1024-bit key) header.d=chromium.org header.i=@chromium.org header.a=rsa-sha256 header.s=google header.b=A1rrdMvP
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=dk7p4xb8;
+	dkim=pass (2048-bit key) header.d=intel.com header.i=@intel.com header.a=rsa-sha256 header.s=Intel header.b=Zg0CSego
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Unsubscribe-Post:
-	List-Owner; bh=YJ7q/+GsupT2Rad40vkEUvwwqt01kPVk/F4EqfpxWnw=; b=c0pSaCkLhDo2PP
-	BGMCka7aTg+S9UGmSshn80LHjbIqLPwWOroD4K/voipy8Mpffy176qobgtlL9tn1bhlbcSusYWc1h
-	+y899jTTLJvUydPgSsuR+433mQ1BFO09d4w54S0HrfjV6ttw3Y/QCkId5WjsfaM+FHMJGH7fg5SUk
-	8CwPAiV7tkCHmVs+V+ykNdrqZ3ss+IfGoPCE6GYdm+rJhEuPSB7nZ0vI3p7W6Y8EKvE0wuMsCmgnq
-	IKh6Wzuh955kfvhZqoM0YnLLnP/Kqa38KEwvZF6i0auIErPyT2FKSVWz7EmYT8gzFqUwZxu6dD9H8
-	S5WE9bS8HRwCcvpnZgIg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:Message-ID:
+	Subject:Cc:To:From:Date:Reply-To:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Unsubscribe-Post:List-Owner;
+	bh=WsVj4KD5V6xD96iJwBwjksOcEJnqev9LYjORmDnLPlc=; b=dk7p4xb8NqQQT0JzvNFjdvs4nj
+	xLaQJBoqAE9PsI+xJdTxfpUou/4KP6QEIjFg92Eyd8an72x5TVl+LOFHUoMMtwIUEBTAK1okI7G6E
+	zUd+5VlBQV2U3rI1tA8hqLP6VcVHbfQ2D8n0N02FJDKPsJ4QdslVzYlkOY6yuYxs5iIpg8ej85kfQ
+	lpvTHfmhWhrBtugeZWG1+HkVjyY4ih8Atkj6Um+LEDFBFMcflpOtlkHL/K3lCqHkO6q6i/I9b2a1L
+	C8f7ytPVgpdLLCgAodzRxZDfQkYfKF4qpBl+clcLJ89v75ePH4I73FH1XqOvekpFuq3jer3m/7lsg
+	lmuZzeLQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xWVcT-0000000CVod-1gYo;
-	Thu, 26 Nov 2026 09:18:21 +0000
-Received: from mail-pf1-x429.google.com ([2607:f8b0:4864:20::429])
+	id 1xWVgG-0000000CXrz-16JI;
+	Thu, 26 Nov 2026 09:22:16 +0000
+Received: from mgamail.intel.com ([192.198.163.11])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xWVcP-0000000CVo8-2jHa
-	for linux-mediatek@lists.infradead.org;
-	Thu, 26 Nov 2026 09:18:18 +0000
-Received: by mail-pf1-x429.google.com with SMTP id d2e1a72fcca58-8c4cc85a315so4570239b3a.0
-        for <linux-mediatek@lists.infradead.org>; Thu, 26 Nov 2026 01:18:17 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1795684697; x=1796289497; darn=lists.infradead.org;
-        h=content-transfer-encoding:content-type:cc:to:subject:message-id
-         :date:from:in-reply-to:references:mime-version:from:to:cc:subject
-         :date:message-id:reply-to:content-type;
-        bh=YJ7q/+GsupT2Rad40vkEUvwwqt01kPVk/F4EqfpxWnw=;
-        b=A1rrdMvPVxCtaJ1hDLd+HYBYZPst3ATmdeE+M2JBsoc4yWbVSc5GMl7zCsCIpDPwCY
-         H64GCpJygPqRgEDxv5Ooq1ytzGs6KCrl/1wzIqrKCESY13PpWuf4DHi3w9kadgnUxgWp
-         pbfUH93YV57sK4GjCwVvSKU4kLLZW3dAbG4nU=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1795684697; x=1796289497;
-        h=content-transfer-encoding:content-type:cc:to:subject:message-id
-         :date:from:in-reply-to:references:mime-version:x-gm-gg
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
-         :content-type;
-        bh=YJ7q/+GsupT2Rad40vkEUvwwqt01kPVk/F4EqfpxWnw=;
-        b=JPTxgkRZ+r7OBg/dSSACIb9HtE8jBHioJCsolSzr45SyH38z0dk2YZKM44nfRZPoE/
-         9pU0Z8veNIMvhS1HAA2Uk5pOqh3HVJKnV/2mmfS5ch0J1Uvjo39IJbTX5YLcF5UQKOTT
-         PhDQviov6XV9m+JpuN0fjQawI745BqMqKnMKTbI30R8xHTil6/eMmyXohmMJyrYWWxzf
-         HzEJ1srJJCJt+2O2XxZG1AMPxXRv5+6gXU152HkFhbKVmelyw6szaF2Pmyhsn5WIzYtE
-         Od9L4E8s2LctBer9KCosQvho/68D+dZ37Pg0JCrYWGT+Kod1w8rdcmeMa2oBlU+2BygW
-         MTuA==
-X-Forwarded-Encrypted: i=1; AL+hErEoYqyxKm2+YE7S2LLNNwOlchIitYQtHin2351bLhnmNkNJyduQ3UdBULPTqL0lW14wT0ND3EvsXsJ4FkRYHw==@lists.infradead.org
-X-Gm-Message-State: APuU4Z9faRmDfDgmkscnOJeafHdh3gbat3/w0f06NYG/VxQNFELIupdo
-	7ZOjqC2zict0iBn6uRk1IqPfKZnpuWvoxEEraBFin6S72+1PKzP1sZylHY2LXzZ1ZNlMMzK7IY6
-	xzCHRlg==
-X-Gm-Gg: AZFdTZfe5ANSHC9AdnOrDZe5fadH+0/UpFHlR4OA1ddiZB51KX1Z6e3SjqE99Iymksk
-	LdO6SGFeWwQlAuzKrNnFFoSkYzTj9QcSpg2yLN6X5omoA1hCj/CHUnVcCPNEi6Q5+ZarE/jaL33
-	3CJ5q2aR5HQV6Dm8V6NjwYmNFryns6WxajoXoAdnsOWIZ/qLA6TLqq4r5yb+OLxmi6lv8K+vo8Z
-	hHKej5AYjSh4ASniewDautsPRUapp12bdUSDO6caAJU1sV8q6NqxkfLiJ4mhLdg5MCtqZg8GYtB
-	qML7p6/N9f9W8Wvc+RXH/+0Sy8p8D0xrE9jzO/oJ1sNS0a5RvHwueUgzTMDlSWUINJ0h8hGwK7e
-	zjD1Hjp7wb9KjveYe4OxS99dyi7lj+3OK5NmsuO8ij6E6BlQiC+AjLqAWW7L9dvoBx3Yysj8+vE
-	r8lJccbLvOE+HdBuLH1x0TQibYdS1efPcJCJsJkA4qm52DomyIsjLuds+U0/gzfMh5FrCtq/P4L
-	nSqSDd6O5Pppxk5VZ+rOwpjXuEwr7x/JrLNLhTgnyiQ5t7sBngFNKLA1TqJ6ZcDUYtXOn431pty
-	/fTLhkwncSp/Jg4aAoDLPMhlpVYLL54bXJivHc3NeYB65X1GrlAgCQS63deLlegQmIs=
-X-Received: by 2002:a05:6372:a810:b0:3e0:c5c9:d55e with SMTP id adf61e73a8af0-4014e45acd4mr17295614637.63.1795684696852;
-        Thu, 26 Nov 2026 01:18:16 -0800 (PST)
-Received: from mail-dy1-f171.google.com (mail-dy1-f171.google.com. [74.125.82.171])
-        by smtp.gmail.com with ESMTPSA id d2e1a72fcca58-8cc4eb26293sm6911671b3a.16.2026.11.26.01.18.16
-        for <linux-mediatek@lists.infradead.org>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 26 Nov 2026 01:18:16 -0800 (PST)
-Received: by mail-dy1-f171.google.com with SMTP id 5a478bee46e88-33fb4680717so2092176eec.1
-        for <linux-mediatek@lists.infradead.org>; Thu, 26 Nov 2026 01:18:16 -0800 (PST)
-X-Forwarded-Encrypted: i=1; AL+hErHSUQ0kPFkPolfBWvzJFpEN2t9gBsPKldEbUVhrM5y100D2yUoHOjgIeaiK0sAMVnhLbl98WoR+s/w24ebBPQ==@lists.infradead.org
-X-Received: by 2002:a05:693c:8859:b0:386:b826:3f9 with SMTP id
- 5a478bee46e88-386b82605b9mr10045446eec.7.1795684694765; Thu, 26 Nov 2026
- 01:18:14 -0800 (PST)
+	id 1xWVfz-0000000CXmE-2UgV;
+	Thu, 26 Nov 2026 09:22:14 +0000
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+  t=1795684920; x=1827220920;
+  h=date:from:to:cc:subject:message-id:references:
+   mime-version:content-transfer-encoding:in-reply-to;
+  bh=/hUGbjPNZAXU3qQnNIV8GlX5cXk7v+mn0wYdmIzb0eU=;
+  b=Zg0CSegoJ2OhgJTD3Ve0KUfczCp8BOIHNaZBpF2MVNJ/JmHGQXTys2nY
+   WHtRsxaSqt5AMH1dJGW/0/mQUPa+NEHP0p7AVUZJ7+BqLzc3xMLHa8YcI
+   kZt9b+y/Pc390RgQ9YoWTloAIcq7FH/XNHxd1B/NumkpcYko4d4CYEdBK
+   d9UYzW1Z2+IIcholYO02AGJEMmGDgj4cELePlJgN8G77WwnY9n0U6unVG
+   ukUBmAlhlYKYwzxL0zgDPPz7OQzv8tW/T5WkdscjytDNo4Pllut2OWFFz
+   nnsHGCnvF4AyHs51N788e399TpQZf8KHCrnR5KQhMtT39aMf4f+eiZTlp
+   g==;
+X-CSE-ConnectionGUID: NvlBYV8lTbamFdqLPv3Wdw==
+X-CSE-MsgGUID: AEW6HnaKRdqxCwJWkTVq8Q==
+X-IronPort-AV: E=McAfee;i="6800,10657,11977"; a="4498455"
+X-IronPort-AV: E=Sophos;i="6.27,234,1787036400"; 
+   d="scan'208";a="4498455"
+Received: from fmviesa004.fm.intel.com ([10.60.135.144])
+  by fmvoesa105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384; 26 Nov 2026 01:21:58 -0800
+X-CSE-ConnectionGUID: jqxrnSvsRzmWjcz3YEn4gQ==
+X-CSE-MsgGUID: l+VlTFImRlOObP/9iDbUMQ==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.27,234,1787036400"; 
+   d="scan'208";a="12122503"
+Received: from black.igk.intel.com ([10.91.253.5])
+  by fmviesa004.fm.intel.com with ESMTP; 26 Nov 2026 01:21:54 -0800
+Received: by black.igk.intel.com (Postfix, from userid 1001)
+	id 5CCAA98; Thu, 26 Nov 2026 10:21:53 +0100 (CET)
+Date: Thu, 26 Nov 2026 10:21:53 +0100
+From: "mika.westerberg@linux.intel.com" <mika.westerberg@linux.intel.com>
+To: Chunfeng Yun =?utf-8?B?KOS6keaYpeWzsCk=?= <Chunfeng.Yun@mediatek.com>
+Cc: "konrad.dybcio@oss.qualcomm.com" <konrad.dybcio@oss.qualcomm.com>,
+	"linux-usb@vger.kernel.org" <linux-usb@vger.kernel.org>,
+	"westeri@kernel.org" <westeri@kernel.org>,
+	"gregkh@linuxfoundation.org" <gregkh@linuxfoundation.org>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	"YehezkelShB@gmail.com" <YehezkelShB@gmail.com>,
+	"linux-kernel@vger.kernel.org" <linux-kernel@vger.kernel.org>,
+	"sven@kernel.org" <sven@kernel.org>,
+	"linux-arm-kernel@lists.infradead.org" <linux-arm-kernel@lists.infradead.org>,
+	"andreas.noever@gmail.com" <andreas.noever@gmail.com>,
+	"matthias.bgg@gmail.com" <matthias.bgg@gmail.com>,
+	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>
+Subject: Re: [PATCH v3 7/8] thunderbolt: Decouple the waiting time of
+ TB_PORT_UNPLUGGED and TB_PORT_UP
+Message-ID: <20261126092153.GN191152@black.igk.intel.com>
+References: <20261123113705.2297329-1-chunfeng.yun@mediatek.com>
+ <20261123113705.2297329-8-chunfeng.yun@mediatek.com>
+ <20261124160038.GR229695@black.igk.intel.com>
+ <269e96946472c8562657fa1b40f24a17ee52b447.camel@mediatek.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-References: <20260714114414.184512-1-angelogioacchino.delregno@collabora.com> <20260714114414.184512-23-angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20260714114414.184512-23-angelogioacchino.delregno@collabora.com>
-From: Fei Shao <fshao@chromium.org>
-Date: Thu, 26 Nov 2026 17:17:37 +0800
-X-Gmail-Original-Message-ID: <CAC=S1nhLFoHcCCPT8KzfeGR=_FE_-WXXjttWL8N9j5RyXdbdTw@mail.gmail.com>
-X-Gm-Features: Aa3M54qPRICfCIh7RUjjGiJ_0TC4b-0YY-WXywPDgZZ0L82ERU6OYtXByrL3V2k
-Message-ID: <CAC=S1nhLFoHcCCPT8KzfeGR=_FE_-WXXjttWL8N9j5RyXdbdTw@mail.gmail.com>
-Subject: Re: [PATCH v2 22/46] soc: mediatek: mtk-mmsys: Migrate to new
- Multimedia DDP HW indexing
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: chunkuang.hu@kernel.org, p.zabel@pengutronix.de, airlied@gmail.com, 
-	simona@ffwll.ch, maarten.lankhorst@linux.intel.com, mripard@kernel.org, 
-	tzimmermann@suse.de, robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org, 
-	matthias.bgg@gmail.com, dri-devel@lists.freedesktop.org, 
-	linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	justin.yeh@mediatek.com, jason-jh.lin@mediatek.com, kernel@collabora.com
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <269e96946472c8562657fa1b40f24a17ee52b447.camel@mediatek.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261126_011817_819872_FC025F7E 
-X-CRM114-Status: GOOD (  21.45  )
-X-Spam-Score: -2.1 (--)
+X-CRM114-CacheID: sfid-20261126_012159_659755_5E4E90A6 
+X-CRM114-Status: GOOD (  20.43  )
+X-Spam-Score: -4.2 (----)
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -113,92 +99,42 @@ List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-15.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,
-	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=ham
+X-Spam-Status: No, score=-3.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=no
 	autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On Tue, Jul 14, 2026 at 7:45=E2=80=AFPM AngeloGioacchino Del Regno
-<angelogioacchino.delregno@collabora.com> wrote:
->
-> The mediatek-drm driver is ready to switch to the new Multimedia
-> Subsystem Display Controller HW indexing.
->
-> Perform the switch by:
->  - Adding new "from_comp_inst" and "to_comp_inst" members in the
->    Multimedia Subsystem HW Routes structure (mtk_mmsys_routes);
->  - Changing the MMSYS_ROUTE() macro to use those, which performs
->    the migration of all SoCs in one go (as all of them use this
->    macro to declare their route entries);
->  - Adding new mtk_mmsys_hw_connect() and mtk_mmsys_hw_disconnect()
->    functions, making use of the new HW Component Type-Instance
->    indexing.
->
-> Unfortunately, this change needs to go along with the related one
-> in the mediatek-drm driver, otherwise functionality of the Display
-> Controller will regress.
->
-> The only way to make this possible in two steps is to duplicate
-> all of the routes structure arrays for all of the SoCs, which
-> would result in a total of around ~1200 lines changed twice, and
-> that ignores the big increase in size for this driver during the
-> migration process so, in order to avoid useless bloat, I opted
-> for an inter-dependency between the two changes: mediatek-drm
-> and mtk-mmsys.
->
-> Acked-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora=
-.com>
-> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@coll=
-abora.com>
-> ---
->  drivers/soc/mediatek/mtk-mmsys.c       | 99 ++++++++++++++++++++------
->  drivers/soc/mediatek/mtk-mmsys.h       | 15 ++--
->  include/linux/soc/mediatek/mtk-mmsys.h | 16 ++---
->  3 files changed, 90 insertions(+), 40 deletions(-)
->
-[snip]
-> +void mtk_mmsys_hw_connect(struct device *dev,
-> +                         enum mtk_ddp_comp_type src_type, u8 src_hw_inst=
-_id,
-> +                         enum mtk_ddp_comp_type dst_type, u8 dst_hw_inst=
-_id)
->  {
->         struct mtk_mmsys *mmsys =3D dev_get_drvdata(dev);
->         const struct mtk_mmsys_routes *routes =3D mmsys->data->routes;
-> -       int i;
->
-> -       for (i =3D 0; i < mmsys->data->num_routes; i++)
-> -               if (cur =3D=3D routes[i].from_comp && next =3D=3D routes[=
-i].to_comp)
-> -                       mtk_mmsys_update_bits(mmsys, routes[i].addr, rout=
-es[i].mask,
-> -                                             routes[i].val, NULL);
-> +       for (int i =3D 0; i < mmsys->data->num_routes; i++) {
-> +               if (src_type !=3D routes[i].from_comp_type ||
-> +                   src_hw_inst_id !=3D routes[i].from_comp_inst ||
-> +                   dst_type !=3D routes[i].to_comp_type ||
-> +                   dst_hw_inst_id !=3D routes[i].to_comp_inst)
-> +                       continue;
->
-> -       if (mmsys->data->vsync_len)
-> -               mtk_mmsys_update_bits(mmsys, MT8188_VDO1_MIXER_VSYNC_LEN,=
- GENMASK(31, 0),
-> -                                     mmsys->data->vsync_len, NULL);
+On Thu, Nov 26, 2026 at 08:48:54AM +0000, Chunfeng Yun (云春峰) wrote:
+> On 二, 2026-11-24 at 17:00 +0100, Mika Westerberg wrote:
+> > On Mon, Nov 23, 2026 at 07:36:54PM +0800, Chunfeng Yun wrote:
+> > > When USB4 is woke up by device disconnect, no need wait for 2s,
+> > > usually the phase2~4 takes at most about 200ms, and enters to
+> > 
+> > usually phases 2-4 take at most..
+> > 
+> > The 200ms is not from the spec though? It's empirical right on your
+> > hardhware?
+> 
+> Yes, you are right. The ~200ms is empirical based on testing on our
+> hardware with various USB4 docks and devices, rather than a hard limit
+> from the spec.
+> 
+> In the USB4 spec, the lane adapter stays in CLd (TB_PORT_UNPLUGGED)
+> throughout Phases 2-4 until it sends LT_Resume at the end of Phase 4 to
+> enter Training (TB_PORT_CONNECTING), and the spec does not define an
+> overall maximum timeout for Phases 2-4. At the protocol level, Phase 2
+> (tConnectRx), Phase 3 (AT transactions), and Phase 4 (tLTPhase4 and
+> Broadcast RT transactions) only take tens of milliseconds; in practice,
+> the ~100-200ms delay mainly comes from partner router wake-up, re-timer
+> initialization, etc.
+> 
+> So I doubled that empirical ~200ms to 400ms as a safety margin.
+> 
+> I will clarify in the commit message that this is an empirical value in
+> v4. Do you think 400ms is fine here, or would you prefer 500ms to leave
+> a bit more margin for active cables and older Thunderbolt switches?
 
-The refactor drops this vsync_len register write block, leaving MT8188
-VDOSYS1 unconfigured.
-Is this intentional? Otherwise please mention it in the commit message.
-
-Regards,
-Fei
-
-> +               mtk_mmsys_update_bits(mmsys, routes[i].addr, routes[i].ma=
-sk, routes[i].val, NULL);
-> +               dev_dbg(dev, "Connected %u-%u to %u-%u\n",
-> +                       src_type, src_hw_inst_id, dst_type, dst_hw_inst_i=
-d);
-> +       }
+This has been working fine so far so no need.
 
