@@ -2,11 +2,11 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id A1640606A31C
-	for <linux-mediatek@archiver.kernel.org>; Thu, 26 Nov 2026 06:25:45 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 56CFC606A31E
+	for <linux-mediatek@archiver.kernel.org>; Thu, 26 Nov 2026 06:26:01 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=v71yTkdY;
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=chromium.org header.i=@chromium.org header.a=rsa-sha256 header.s=google header.b=al0wZWTR
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=bwVyTHIs;
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=chromium.org header.i=@chromium.org header.a=rsa-sha256 header.s=google header.b=STbFTdMg
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:To:In-Reply-To:
@@ -14,73 +14,73 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	Subject:Date:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=HNRVcWsUwEqRjHp3GCePDYV+jK31QihzT78TeRmMmIA=; b=v71yTkdYRK165FVhrDGB/+kWyR
-	+sE7oePGjQQihfvpZpP1Ml8aR16e84f7XIHrIuZIxrR353+BO9If+f50mB7P/CpLj/qb8djJrv6O3
-	+Of15W/dSuXU8jHT96wNDirJWqnpLnwtx83rUwljRloKujLTZ46uyW9qV8tLj3Emv1/vhA2QaUXEB
-	zvqpPXCDHIUEJXE4FHH6639PGmd9brClmaaQXhDYQig7Q9MTk/6LYp4ZaXanw/I1TYgtbr5UEeST4
-	0vwxRafV+jEIXukXDTIqHkE2hXKKbNDa7THcYQFoQ85AH7+5Bi4WTetNVcJJl6mC9+89SqZD6IuXz
-	t/W9ZHXg==;
+	bh=VZe39WaA8R6UeVIikLXAN07ESOsxBSo6V3fin9PGn8M=; b=bwVyTHIsHcOuJe3T0YZhKbOJsy
+	bBbHdAB9QMu01Iibguq53N4QykfANPI3YiEu+M9bqMIzehcG7uwhNO5I8kAClpU3YZcQkpRAuyLHg
+	NhQaY7U+O+c3X4yfOW5FCej6KVL/exZ+8kQl54p3eV5egOqB5mT8+DVb2Z1/tr+Tsiugpp2TGp437
+	jfx/eOdvK4l8MP7fSaW1Xp9XGaUCRErKyf/0Jpjc7rxLbkp6uR77TR3crtYQg6+Uwh+i2njFabsgX
+	5JpzrMgkt6GHenhjUyfPvQERebVeZ2aQPKkRSW88sOTlACwxn2lsUIB/DkD42dx1gJ+O6CWcgZVDu
+	39HAABeQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xWSvR-0000000CBZ0-0MTE;
-	Thu, 26 Nov 2026 06:25:45 +0000
-Received: from mail-dl1-x122f.google.com ([2607:f8b0:4864:20::122f])
+	id 1xWSvg-0000000CBh2-4ADE;
+	Thu, 26 Nov 2026 06:26:00 +0000
+Received: from mail-dl1-x1229.google.com ([2607:f8b0:4864:20::1229])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xWSuz-0000000CBGQ-3GWy
+	id 1xWSv9-0000000CBOM-0d98
 	for linux-mediatek@lists.infradead.org;
-	Thu, 26 Nov 2026 06:25:20 +0000
-Received: by mail-dl1-x122f.google.com with SMTP id a92af1059eb24-1b3acec6677so10090348c88.1
-        for <linux-mediatek@lists.infradead.org>; Wed, 25 Nov 2026 22:25:17 -0800 (PST)
+	Thu, 26 Nov 2026 06:25:30 +0000
+Received: by mail-dl1-x1229.google.com with SMTP id a92af1059eb24-1ae58d17cd9so7385846c88.1
+        for <linux-mediatek@lists.infradead.org>; Wed, 25 Nov 2026 22:25:26 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1795674317; x=1796279117; darn=lists.infradead.org;
+        d=chromium.org; s=google; t=1795674325; x=1796279125; darn=lists.infradead.org;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :content-type:mime-version:subject:date:from:from:to:cc:subject:date
          :message-id:reply-to:content-type;
-        bh=HNRVcWsUwEqRjHp3GCePDYV+jK31QihzT78TeRmMmIA=;
-        b=al0wZWTRJCjBBm2ZOljQeFEPIawGgGwEIOUTUyxuut7CSup939KfuRITNl7OGBJ5zE
-         Dn+hqsRGy4LD7BzKXeJ/bwYMTrSdyYCbwlnVBzc3/XUQenU5YDTlovHqgIKGqF1llYNm
-         ilYfgXPqYK/hiRbXF3oKeqE/AsJOZVR0prg9U=
+        bh=VZe39WaA8R6UeVIikLXAN07ESOsxBSo6V3fin9PGn8M=;
+        b=STbFTdMgASb8Ai8A9R/1ILZQkY0kOOqJVZ9hZZUq94Q0mDqnT1Ui0+E3arSzeNdwfl
+         aBsDc7QFOhu5UVfSWNaV2DEUThSH843w/AivT5DVNIuDSWT4XLaKOyZ73r9wjIKQXG7Z
+         lZZIJyD3cZksFu/56ZgZ7F1aTlECM7B3iGR6k=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1795674317; x=1796279117;
+        d=1e100.net; s=20260707; t=1795674325; x=1796279125;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :content-type:mime-version:subject:date:from:x-gm-gg
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
          :content-type;
-        bh=HNRVcWsUwEqRjHp3GCePDYV+jK31QihzT78TeRmMmIA=;
-        b=nGijnndb08tE2E2NewxXxjj/uUXhm1RHsedi3JYeYZuU5+HAqNC6IKD4btviFDznNk
-         SVtSZ9qXZgqMbU6dFDULBuulpjdR5bMOH9dwRcrMVy6OdugIHXgGMCn02UBbFeZExHkQ
-         nN7/6XC3XrCTdwFGmBn5R6iUExwahzW/ZFDaaP846Oq38PNrfRShGvgScPix5jKHvVaL
-         gnrGMCinbqORmx5yYmwtNmpAMPZLspwJVqPK9YcGU9a/LxSfazfA36mu4jtcvix8NS/Z
-         PEj9FNb0lUGVxv2XKK6ZGEoBwZwXIAvdRotEMFDvGpKfUPd4uuEj/4KGkIU4FZX301ZR
-         bEFQ==
-X-Forwarded-Encrypted: i=1; AL+hErEj8n90RJ8qHiPqAkRc7+IZ1UMyW+YsX1u04lcK/uEgcsUkqG45uObSFl/shzjU4W6mTSmgryVWW6Q5Cq+KwA==@lists.infradead.org
-X-Gm-Message-State: APuU4Z8Ui96x7+jbLoti4T+mBri/ly87fUyRV2P7OELJXflGd/BjkHr7
-	d+C2SVm0RgGN9sKBwW6Se5w4pOtMMjwZm8K8tp8QbdfyLX0iEuIJWs51m7weQMhEIH6P5XBBIt2
-	GAcxFkQ==
-X-Gm-Gg: AZFdTZdXi8ZTzxnjovxevsZGPZsdZrYaiogrZEHer3rDbIOcG/IEcW3qeHY5C99kkSB
-	xivZ1GpDmURcjpwC1yI6SdnYOadRaHDL3NxevPZ7MsY7B84nCWFQowqptcFHc9Fu4ys3NZhnDu2
-	4SlQ8zI1d9mV2E0FTMtnxuEYSxvy9pbdnJaJEq4djWo/4DBWw8IrDCtsnPEvlXSFPQJeAufSErZ
-	QxTRDBKtt9mrudrCoaXPQ/FEyJK6f6WMnijXn6uJqvPX6EFiSXCugTGgK4OKN8iga1KVkmYDEfx
-	xjdK2i88vWUTWWGddNbmp6hWSTTPnlyEOwolPj8KjYzKSJJbnwFsZkGN0Pu0SeRSYH6bt2fkvRZ
-	kUDB66vikIdxFAMknkIUF6Qp4DS4SpTIVP3uuRK8/m93wXt6jNuqo6h3mi5oA2/6Zfh85U+rE03
-	AfFisqUi5FhhkQWYO4iVoQmz1rxJJG6+EffCnHL7/c9+IhM618ZejL0UntXm/blzJ9rSevL/bBp
-	HST4acGCwtrXeOj5NxFqQJA4fU7SYdl/VEbNHVNP6YtdPVkF6RoKt0ki5Q5exarrchDNzMGz9dW
-	DcdilqU7tRpc5z8Q9EF8Sj/NxHEyUN12Wy+QzV0vDFZJgJtF7vy9pxaOer2me52UJRCaNvN//4Z
-	SqVqYeKLphoal/ktFVLaiiA==
-X-Received: by 2002:a05:7022:3a8c:b0:1b5:3490:d715 with SMTP id a92af1059eb24-1b55691e0camr20072859c88.34.1795674317094;
-        Wed, 25 Nov 2026 22:25:17 -0800 (PST)
+        bh=VZe39WaA8R6UeVIikLXAN07ESOsxBSo6V3fin9PGn8M=;
+        b=yobgB23iEIYoMw1BV93dlEB61sxM2203kA62rzrOAKBkKMRzafm8AgBUpbwkJlC5uO
+         BaxkPYLcR1XxL15pKquntQ1SyQ1GYLtQeF1WgXwgcdG8A3BBHIQgh0fU1rz0CYsk2QcR
+         5FzPZqBzik73HYzfhmdDzIWj76A+uO9cnyzV7LiIKh0fErucRcqRcd2mykig7sp6l33d
+         fowscUqGfeQflPQwSWoy3H/jpgQF0wYJbMGKV2x/Sdfm2iEV9ezD5fB8nJGAkubcz8sp
+         ILCEP8WRtsPCby4y69m1pX4qUzv/Wo2g3s9ismItjIB2JLH44tW0z2Fbn/xVV9wIMeMA
+         ld9g==
+X-Forwarded-Encrypted: i=1; AL+hErGnKeLlf4jT8WAKjRu+/tcgy8FLAUMjq76HXXRyFzlbIjurGgJlYYZ9JAgMB5VNsosuGIosKooDw5hoLExfbw==@lists.infradead.org
+X-Gm-Message-State: APuU4Z9ggZNPFUzazMk8mA60uSsyqaUqK+qO6/ylmc3/JzMISJuSPbnk
+	4bctpCwBYFnug/EEnNoM+knXyS4iIKCX+39cEzUjNXa48Z4FHow7FU49X7xsSZE3FYSkkCb2GA1
+	2DdG7/w==
+X-Gm-Gg: AZFdTZf8rIxsVxRXm3jQMSRNfjug10MnLiL83OUt6X8uSGC7rwXFCCXp+uKlFAyF5nm
+	uXfhVTNz0z39OYqNhxwR4vQ4TcK+bwnK8wU+Ur/ihKYPJM3Q0LI+ZkPZ7SM+VLu1A7+ZUm4aNqx
+	/uiMf5317EVnUObqu9zBeMvPIA1WY985CD9blXMhJ3k02NmaL56gPCCfQgJ8JdFtFTSD+kYp/k9
+	gcCZQ7DAxxDlkT7gsyTu8S6j0trSt+5AhEwLCwwc9Y3NrVNNVu5G7OyO76XVopYM+7qNh9Jg/DW
+	XsWMtwRF6PDRFDZ4+NVYwyI3XAyYa9CHk63RBCFJHsfa0HSBIN63oLT4/caByFi273RUdmxN7AK
+	lLjxAHQmbYII7E4TnMO/W1cmNLSXybW4TmDlmjJpAY2xXHba1CHbdCybyTZzLzmZej1kQ17d2XG
+	qOWkRYIPxgOAxVJEuP4JXn/RAElfTo2FUhIwEUmiS4i1meuP6frXMGOQ7qPesoD8v0DjeQUoiN7
+	yetdDsQY85dEuVoAN1z0mMdOYoDZZv5G1npVj7PSaEDQ6KNviQe0KzckISEupwirgLThHfZQ1x0
+	g87/ZKBnYCKrkbEETKhChjzRGo3vyJZJSen8MJb95xlgSuGliJ4c+HTKWFp+8BnMnneuYYXaG6+
+	COxt9UGeGo2BYDFgasY3JNA==
+X-Received: by 2002:a05:7022:7f01:b0:15e:9126:c60f with SMTP id a92af1059eb24-1b5568bb55cmr17922707c88.29.1795674325489;
+        Wed, 25 Nov 2026 22:25:25 -0800 (PST)
 Received: from fshao-cloudtop.c.googlers.com (123.142.199.104.bc.googleusercontent.com. [104.199.142.123])
-        by smtp.gmail.com with ESMTPSA id a92af1059eb24-1b56ef9fd16sm36793186c88.4.2026.11.25.22.25.09
+        by smtp.gmail.com with ESMTPSA id a92af1059eb24-1b56ef9fd16sm36793186c88.4.2026.11.25.22.25.17
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 25 Nov 2026 22:25:16 -0800 (PST)
+        Wed, 25 Nov 2026 22:25:25 -0800 (PST)
 From: Fei Shao <fshao@chromium.org>
-Date: Thu, 26 Nov 2026 14:23:49 +0800
-Subject: [PATCH 7/8] accel/ivpu: Use DEFINE_DRM_ACCEL_FOPS()
+Date: Thu, 26 Nov 2026 14:23:50 +0800
+Subject: [PATCH 8/8] drm/mediatek: Expose GEM memory usage stats via fdinfo
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20261126-drm-fops-show-fdinfo-v1-7-7cb1d1a5d6ef@chromium.org>
+Message-Id: <20261126-drm-fops-show-fdinfo-v1-8-7cb1d1a5d6ef@chromium.org>
 References: <20261126-drm-fops-show-fdinfo-v1-0-7cb1d1a5d6ef@chromium.org>
 In-Reply-To: <20261126-drm-fops-show-fdinfo-v1-0-7cb1d1a5d6ef@chromium.org>
 To: David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
@@ -89,9 +89,8 @@ To: David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
  Oded Gabbay <ogabbay@kernel.org>
 X-Mailer: b4 0.16.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261125_222518_548856_B61E7DE2 
-X-CRM114-Status: UNSURE (   9.39  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20261125_222527_849354_EEA84287 
+X-CRM114-Status: GOOD (  10.00  )
 X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -111,34 +110,34 @@ X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-DEFINE_DRM_ACCEL_FOPS() now wires .show_fdinfo to drm_show_fdinfo() by
-default (evaluating to NULL when CONFIG_PROC_FS is disabled). Migrate
-the driver to use DEFINE_DRM_ACCEL_FOPS().
+Set .show_fdinfo to drm_show_memory_stats() to report standard GEM
+memory usage stats in /proc/<pid>/fdinfo/<fd> via DEFINE_DRM_GEM_FOPS().
 
 Signed-off-by: Fei Shao <fshao@chromium.org>
 ---
- drivers/accel/ivpu/ivpu_drv.c | 8 +-------
- 1 file changed, 1 insertion(+), 7 deletions(-)
+ drivers/gpu/drm/mediatek/mtk_drm_drv.c | 2 ++
+ 1 file changed, 2 insertions(+)
 
-diff --git a/drivers/accel/ivpu/ivpu_drv.c b/drivers/accel/ivpu/ivpu_drv.c
-index 28cb18dcfa9b..933edc272f05 100644
---- a/drivers/accel/ivpu/ivpu_drv.c
-+++ b/drivers/accel/ivpu/ivpu_drv.c
-@@ -609,13 +609,7 @@ int ivpu_shutdown(struct ivpu_device *vdev)
- 	return ret;
- }
+diff --git a/drivers/gpu/drm/mediatek/mtk_drm_drv.c b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+index a8bf0690756a..9d646740c468 100644
+--- a/drivers/gpu/drm/mediatek/mtk_drm_drv.c
++++ b/drivers/gpu/drm/mediatek/mtk_drm_drv.c
+@@ -18,6 +18,7 @@
+ #include <drm/drm_atomic_helper.h>
+ #include <drm/drm_drv.h>
+ #include <drm/drm_fbdev_dma.h>
++#include <drm/drm_file.h>
+ #include <drm/drm_fourcc.h>
+ #include <drm/drm_gem.h>
+ #include <drm/drm_gem_dma_helper.h>
+@@ -607,6 +608,7 @@ static const struct drm_driver mtk_drm_driver = {
+ 	DRM_FBDEV_DMA_DRIVER_OPS,
  
--static const struct file_operations ivpu_fops = {
--	.owner = THIS_MODULE,
--	DRM_ACCEL_FOPS,
--#ifdef CONFIG_PROC_FS
--	.show_fdinfo = drm_show_fdinfo,
--#endif
--};
-+DEFINE_DRM_ACCEL_FOPS(ivpu_fops);
+ 	.fops = &mtk_drm_fops,
++	.show_fdinfo = drm_show_memory_stats,
  
- static int ivpu_gem_prime_handle_to_fd(struct drm_device *dev, struct drm_file *file_priv,
- 				       u32 handle, u32 flags, int *prime_fd)
+ 	.name = DRIVER_NAME,
+ 	.desc = DRIVER_DESC,
 
 -- 
 2.56.1.839.g22a8290db9-goog
