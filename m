@@ -2,76 +2,76 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id EF402606A31E
-	for <linux-mediatek@archiver.kernel.org>; Thu, 26 Nov 2026 00:54:26 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 877BB606A31E
+	for <linux-mediatek@archiver.kernel.org>; Thu, 26 Nov 2026 00:54:43 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=bsakQWnm;
-	dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=FD1oC7Of
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=ZnRZJCmU;
+	dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=hVulpL0t
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
-	Cc:To:From:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=p+xXsZjiaXoOEz9qBEyk4TJitPlTvM0wfvW8yye6/+I=; b=bsakQWnm9Jzpx2PAVP0FtsD+CW
-	A/mhHabL7ZdomrdTPZZmgIm2+X/b+82kUCHE/kfj2hIB3nTSC59iBbJFP8xgGX4cjnw1iuErFcJJu
-	obTsq9X2IztTi1gukFy5w2f0tmR8p34euJn1mzgF/3MAKQHO3yOQZ85EW3bVYvgZB9MvQdj0Ghw3y
-	Wfwx1y8J2Lkymv4cDNlsQ0MoOfiwUrGO7YG2NJzAhIYCVcHH9sSAXrtL909pSmElk3LNA/rtAcgA1
-	yI50bk/o3VcQfRPZyB5DtH6HViNOX0XG12VK531H7Zgog/Sg/1l/9HgsWIc3PSBBkdYv4zcP580SX
-	2nFX6Brg==;
+	bh=C7fC3wgsum3SPXPZYAvK25HkQx81CPAOUehXA+0wjt0=; b=ZnRZJCmUJxpacmLugBgzo/Frnr
+	sZrT1jTF1G8IHfu/HxvVzlj0gcYZoBOeGVBAsB3tcrReyhRTfYseLAibo/A/+FMYpHwVs6HRlfakA
+	HyeNGQizRWrnWRZcKVgzl2sZdp543XCcWR2hgmw2uDiGBkFOcg7kuRybJdGArRkPU6So9vGLHLjX1
+	wB4bgOz8FLwZ+4niwO7AwxeaXdvc2vWg6EzumMKJlYVgd5vAy2cVXTEoopiULVe31tu4LtBrqFW+B
+	2mO6J+A8xVAVbWcaJzvH0nifU83HAKtq8/2nYf8ILAA+1JClhbX4GJzSHFSUjNMoJVBSVyUs3ngDE
+	LWyUR4nA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xWNko-0000000Biu3-1xm2;
-	Thu, 26 Nov 2026 00:54:26 +0000
-Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+	id 1xWNl5-0000000Bj7g-0oyW;
+	Thu, 26 Nov 2026 00:54:43 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xWNk9-0000000BiON-1p8k
+	id 1xWNkA-0000000BiOY-0OzE
 	for linux-mediatek@lists.infradead.org;
 	Thu, 26 Nov 2026 00:53:47 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id DE67862165;
-	Thu, 26 Nov 2026 00:53:44 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 5DB0446522;
+	Thu, 26 Nov 2026 00:53:45 +0000 (UTC)
 Authentication-Results: smtp.kernel.org; arc=none smtp.remote-ip=100.80.115.77
 ARC-Seal: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256; cv=none;
-	t=1795654424;
-	b=y9EsrpbSud89XRA6b7RcJ1kyCCm+/rTEHCNBP2sUAyIxsim/1bh/REL5xbi0qbpUTVAV
-	 x6NzXtBaWQK+dMPjFb5iNCgLVrWt/RrL3oIYw/pyfDM2jrMxcWdJ4arTZJZ1PE8PgQS87
-	 ZKJWU8U+yxx1k5vqlULMqP5TeqVbF+vuaOs748fIQl2XnzxGPPkRpw15Zn9SJXPQ1F74S
-	 cPmlK6leCCBt/h27qxi8vuT/k64seLAgFhrgaIz8yPjG19AdgLlMCHASR7v1HUyKBh9fa
-	 sqJ6KlAef2vooOsCtus/6DKuJp1HcTg5F4CpfmCPstrTsG3tDdGpCvvzDao7+QyYFsw==
+	t=1795654425;
+	b=xqOPALzez/kgA7WE7kUsvRcziWj7i6KL/LwywPbFSugjJqKdwsIeJWDi80yTBUtvk7go
+	 2w5A2VRyFIjgLhjUM5AXbxcxbQ1xf57ned80oCp4btOQZjCoWAsu12XuIFBQ5k8MUxU0p
+	 6/kpPYqgCciyeQO25DtOduEn2f5lwqaBRnYKYvYxvz6NJq8dVN5qhMz/6b8tHHVEpeUYh
+	 9ZN/xt9gwS4WiDp/LuJqVo5ECuSE8YZhZrJvUrfy744WvMV1oHAZ0DBemvu/hYDWBU8d5
+	 JE5+/HI+VA153s5de4cZ4dlMdoL0gohi+Y3yu1wpRMhtmzFmJ1gMjV9jW18RPKmp+8w==
 ARC-Message-Signature: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256;
-	c=relaxed/relaxed; t=1795654424;
+	c=relaxed/relaxed; t=1795654425;
 	h=DKIM-Signature:Received:From:To:Cc:Subject:Date:Message-Id:
-	 MIME-Version:Content-Type:Content-Transfer-Encoding:X-Mailer:
+	 In-Reply-To:References:MIME-Version:Content-Type:X-Mailer:
 	 X-Developer-Signature:X-Developer-Key:X-Endpoint-Received:
-	 X-Original-From:Reply-To;
-	bh=p+xXsZjiaXoOEz9qBEyk4TJitPlTvM0wfvW8yye6/+I=;
-	b=xKTD+ZhOOoYyMWr/cfFf3Hy4OQ/DaV1MRqld44w9x3PjgECL57VVACfbnEDhahr4TpVg
-	 id5ovcvyZ/zKpJQnFQJNVNEvtEet2jzis8Bn/rjE+SW+vKHtr/SrrGHI0SPGiNeaELY22
-	 A36/hNDJyF1PE/qDlgigQuyocgFGJUsXzVPSmBtvMf4A9M/KbxkFkre6vv6lTcdE7h+Cg
-	 Ha3iFftJbmBDbrFLhiZEkopDojbxxGVOhG5qVWtmuh19HkzHzukgtPPFA9OtB1uYpiEVD
-	 R0rLEy6NXg0VG+gXXcQF4dV9Iic364Yyurrle9GY9NiTpPSpangESF2JQUVtmGaJHPw==
+	 X-Original-From:Reply-To:Content-Transfer-Encoding;
+	bh=C7fC3wgsum3SPXPZYAvK25HkQx81CPAOUehXA+0wjt0=;
+	b=bB81w99L8xb7QQViu7tMdU8OApmep5OSpqbia/+pD9ysp3hVaU/3MGPBZ10hK9NwIpou
+	 3RGWd6nSrZV1np1sG9gBQBr9Boe12LswShFGXfPQhPpI3LHvLYEHz3Li82xZZu3PXKSKF
+	 kdtwJ/SxpHg+LmbgjmFZh+DC8NCGGZlnA52SxrnkNsEWDWl5uWFhnZ4cuYmK8lpUwrWtT
+	 bb4SCjtZZ8JWNI+NVX3SDN0T9mHk9KA4BLjGPeKYzd7smL+et7nv9VRWxCU3eCiKEMLNk
+	 7Zc8OIUhd0sCBc/qO3Og4qt6B+Q3zbXhGK8SVBjJbZUk2NIFTHPnWiriBzpEH6v2ADg==
 ARC-Authentication-Results: i=1; smtp.kernel.org; 
 	arc=none smtp.remote-ip=100.80.115.77
 Received: from lkml.kernel.org (nexus.subspace.kernel.org [100.80.115.77])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.kernel.org (Postfix) with ESMTPS id 224601F01805;
-	Thu, 26 Nov 2026 00:53:33 +0000 (UTC)
+	by smtp.kernel.org (Postfix) with ESMTPS id 651B41F000C4;
+	Thu, 26 Nov 2026 00:53:35 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1795654424;
-	bh=p+xXsZjiaXoOEz9qBEyk4TJitPlTvM0wfvW8yye6/+I=;
-	h=From:To:Cc:Subject:Date:Reply-To;
-	b=FD1oC7OfpCfDcw0EAeDV+2RBkt1epTjJODIk5zoicbEezGTQLraO5DyoQRoV6z8Fm
-	 B25xaAY1G3GU8UID2vxiPxEYEWVb0J1GiIAX2ERcTuORFi7nBRzQ8TnkJCVLrJfChs
-	 1wVAg/LsYmWbNEU8DTeFJ4e2fWa3osb06vwKyhaMEucJc6QFMvYWmX00uLF3Jj9K7m
-	 4Zi++hvdkb76obHvPMV3Me5q66pS3VHzqqwmfY8DpWtHlIhIMV+RKg3wiQrn1HLrvE
-	 tkLTIENqXiKK2yYVBi3WO++dYM8V3QAaNs8IC3vuJzhYdg7l+uZAG8OY2xnfzthPRd
-	 kDIRUW04lL6ww==
+	s=k20260515; t=1795654425;
+	bh=C7fC3wgsum3SPXPZYAvK25HkQx81CPAOUehXA+0wjt0=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:Reply-To;
+	b=hVulpL0tjmoagAex2Z8QVjTDAZTMiJ7mT2llQFP/yIQtwXPSML9z2n10Dxxs1Buj1
+	 WMkoi41xrwyjBww1KvrHPNQxPl/ZuEjsUb5As1CT3aN+eoixkgykYDWz7YXj8nqVN3
+	 3/C/nyivp4zODRyukHL+1v+qQyhx6S5iUtVeoR2YgWBQ3MQpdNuIHY7ky2JqAC9FHX
+	 qH7t5WrRnUZYlavKZTbIhjxrxTxIPw7d5UsuI/dIez1n2l9G0SMN/5j3/ejZC7NwFp
+	 h2NyFVR+gJgXt3MJ+/t34WgaAxnQbW4K0H2sCJQYPx6o0qnpwTAPVymlOHDz8Wbc0S
+	 Drie9mEAgXgTA==
 Received: from nexus.subspace.kernel.org (localhost [IPv6:::1])
-	by lkml.kernel.org (Postfix) with ESMTP id 6429F4D153;
+	by lkml.kernel.org (Postfix) with ESMTP id C84B04D15F;
 	Thu, 26 Nov 2026 00:53:30 +0000 (UTC)
 From: Ilia Snezhkov via B4 Relay <devnull+iasnezhkov.gmail.com@kernel.org>
 To: peter.wang@mediatek.com, stanley.chu@mediatek.com, 
@@ -79,25 +79,27 @@ To: peter.wang@mediatek.com, stanley.chu@mediatek.com,
 Cc: matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com, 
  louisalexis.eyraud@collabora.com, linux-scsi@vger.kernel.org, 
  linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: [PATCH 0/3] scsi: ufs: mediatek: pre-UniPro-1.8 adapt and clock
- scaling fixes
-Date: Thu, 26 Nov 2026 00:53:29 +0000
-Message-Id: <20261126005329.72010-1-iasnezhkov@gmail.com>
+Subject: [PATCH 3/3] scsi: ufs: mediatek: round scalable clock bounds to
+ clk_round_rate()
+Date: Thu, 26 Nov 2026 00:53:32 +0000
+Message-Id: <20261126005329.72010-4-iasnezhkov@gmail.com>
+In-Reply-To: <20261126005329.72010-1-iasnezhkov@gmail.com>
+References: <20261126005329.72010-1-iasnezhkov@gmail.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
 X-Mailer: b4 0.16.0
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1795654409; l=1254;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1795654409; l=2887;
  i=iasnezhkov@gmail.com; s=mindone2026; h=from:subject:message-id;
- bh=iEJQHKPytlPgQrAMYjID34D1fho6DWUFdxsNjm1zibI=;
- b=SnyT9H1v+r+1O+qvMYQeOuPjOSqeOFEVKHzccLAm8A6DFpfvEFDNxZfCPcyiOEJMTSot9SSVh
- Nd0WFobSctWD8RzzdBXfKhq36bBM5MVBqDIPTsVEO+bOa9odDuszUog
+ bh=mD8c7Hrg16FM5GVQm6mflwliUTbJKeKdxA7+pMxBwPY=;
+ b=icOI0pOOqC02NuGMr9RZfkRCctWnCrr3ty5yflwBN3AYW/idYojMNH1DD9jivfRBx8aAHsB5b
+ H99BG076G07ClhinycvRB7CVNxN3BZd/utNVmZvoVj+X10rvIiRZB2Z
 X-Developer-Key: i=iasnezhkov@gmail.com; a=ed25519;
  pk=hQgXfiWi4ukk2jh4BHu1vRVhg9BUivo//AFp50AKMag=
 X-Endpoint-Received: by B4 Relay for iasnezhkov@gmail.com/mindone2026 with
  auth_id=1643
 X-Original-From: Ilia Snezhkov <iasnezhkov@gmail.com>
+Content-Transfer-Encoding: 7bit
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -109,38 +111,91 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Reply-To: iasnezhkov@gmail.com
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-13.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-18.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,
-	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no
-	version=4.0.1
+	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=ham
+	autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-This series fixes three bugs in the MediaTek UFS host driver observed on
-MT6789 (UFS 2.2, pre-UniPro-1.8, HS-G3 rate B, no ufs_fde clock):
+From: Ilia Snezhkov <iasnezhkov@gmail.com>
 
-1. Skip ufshcd_dme_configure_adapt() when host->hw_ver.major < 3 so
-   pre-UniPro-1.8 hosts do not fail DME-SET on PA_TXHSADAPTTYPE (0x15d4)
-   and discard negotiated power-mode parameters on every gear change.
-2. Allow _ufs_mtk_clk_scale() to switch ufs_sel when the optional
-   ufs_fde clock is absent, matching ufs_mtk_is_clk_scale_ready().
-3. Round clki->max_freq and clki->min_freq with clk_round_rate() during
-   ufs_mtk_init_clocks() (keeping clki->curr_freq synchronized and
-   preserving min < max <= U32_MAX) so PLL-derived clocks whose rounded
-   rate differs from the nominal DT frequency can scale back up in
-   ufshcd_devfreq_target().
+ufshcd_devfreq_target() determines scale_up via an exact equality check
+against clki->max_freq after rounding the target frequency. When a DT
+freq-table-hz lists a nominal value that a PLL-derived clock cannot hit
+exactly (for example, msdcpll_d2 on MT6789 delivers 191999939 Hz for a
+192000000 Hz DT maximum), clk_round_rate() produces a rate that never
+equals clki->max_freq, so devfreq scales down once and can never scale
+back up.
+
+Round clki->max_freq and clki->min_freq with clk_round_rate() in
+ufs_mtk_init_clocks() for ufs_sel (and ufs_fde when present) before
+ufshcd_devfreq_init() builds the OPP table from those bounds, keeping
+clki->curr_freq synchronized with the rounded bound and skipping the
+adjustment if rounding fails, overflows u32, or collapses min >= max.
 
 Found on hardware and drafted with an AI coding assistant.
 
-Ilia Snezhkov (3):
-  scsi: ufs: mediatek: skip PA_TXHSADAPTTYPE on pre-UniPro-1.8 hosts
-  scsi: ufs: mediatek: allow clock scaling when ufs_fde is absent
-  scsi: ufs: mediatek: round scalable clock bounds to clk_round_rate()
+Fixes: b7dbc686f60b ("scsi: ufs: ufs-mediatek: Support clk-scaling to optimize power consumption")
+Signed-off-by: Ilia Snezhkov <iasnezhkov@gmail.com>
+---
+ drivers/ufs/host/ufs-mediatek.c | 35 +++++++++++++++++++++++++++++++++
+ 1 file changed, 35 insertions(+)
 
- drivers/ufs/host/ufs-mediatek.c | 58 +++++++++++++++++++++++++--------
- 1 file changed, 45 insertions(+), 13 deletions(-)
-
+diff --git a/drivers/ufs/host/ufs-mediatek.c b/drivers/ufs/host/ufs-mediatek.c
+index 09b7993..b4fa2b9 100644
+--- a/drivers/ufs/host/ufs-mediatek.c
++++ b/drivers/ufs/host/ufs-mediatek.c
+@@ -967,6 +967,37 @@ static u32 ufs_mtk_get_ufs_hci_version(struct ufs_hba *hba)
+ 	return hba->ufs_version;
+ }
+ 
++static void ufs_mtk_round_clk_freq(struct ufs_hba *hba,
++				   struct ufs_clk_info *clki)
++{
++	long max_rounded, min_rounded;
++
++	if (!clki->clk || !clki->max_freq || !clki->min_freq)
++		return;
++
++	max_rounded = clk_round_rate(clki->clk, clki->max_freq);
++	min_rounded = clk_round_rate(clki->clk, clki->min_freq);
++	if (max_rounded <= 0 || min_rounded <= 0 ||
++	    min_rounded >= max_rounded || max_rounded > U32_MAX)
++		return;
++
++	if (max_rounded != clki->max_freq) {
++		dev_dbg(hba->dev, "%s: max_freq %u rounds to %ld\n",
++			clki->name, clki->max_freq, max_rounded);
++		if (clki->curr_freq == clki->max_freq)
++			clki->curr_freq = max_rounded;
++		clki->max_freq = max_rounded;
++	}
++
++	if (min_rounded != clki->min_freq) {
++		dev_dbg(hba->dev, "%s: min_freq %u rounds to %ld\n",
++			clki->name, clki->min_freq, min_rounded);
++		if (clki->curr_freq == clki->min_freq)
++			clki->curr_freq = min_rounded;
++		clki->min_freq = min_rounded;
++	}
++}
++
+ /**
+  * ufs_mtk_init_clocks - Init mtk driver private clocks
+  *
+@@ -1022,6 +1053,10 @@ static void ufs_mtk_init_clocks(struct ufs_hba *hba)
+ 		return;
+ 	}
+ 
++	ufs_mtk_round_clk_freq(hba, host->mclk.ufs_sel_clki);
++	if (host->mclk.ufs_fde_clki)
++		ufs_mtk_round_clk_freq(hba, host->mclk.ufs_fde_clki);
++
+ 	/*
+ 	 * Default get vcore if dts have these settings.
+ 	 * No matter clock scaling support or not. (may disable by customer)
 -- 
 2.54.0 (Apple Git-157)
 
