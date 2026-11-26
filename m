@@ -2,11 +2,11 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id EFED2606A682
-	for <linux-mediatek@archiver.kernel.org>; Thu, 26 Nov 2026 06:24:30 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 42C71606A32E
+	for <linux-mediatek@archiver.kernel.org>; Thu, 26 Nov 2026 06:24:46 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=fYpTWX0m;
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=chromium.org header.i=@chromium.org header.a=rsa-sha256 header.s=google header.b=DZqO8ojU
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=M/oZBKSh;
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=chromium.org header.i=@chromium.org header.a=rsa-sha256 header.s=google header.b=P9ShnWq0
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:To:In-Reply-To:
@@ -14,74 +14,73 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	Subject:Date:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=1d5rRHIyLnLkkI5kSP1hcdlsa/voBQeRYBRgutIn/lg=; b=fYpTWX0mw+aU5+OAPYGGTHzDfS
-	SuZGvaBxbAi5mOuf9UHz3hZ6r4sh1yZR8kIfzfa5G33bRhyKr/t1E+K1RaiMrSKR3Sc47zwncG4Oh
-	wtlq6boIXdnhPGyuxMUjrzOpQN05Ct/SnZtBqOb/dNXV70weJdAN8vLwbulijiRK/szjnpkirYt3L
-	hm2r9rGnXIYxqtk2YwAe7mhBht8Q67EGCaDlPXesj0Gg9mkpMXcJvlpcLkwEBIU4l0APKvmdAihws
-	pYaHXW444Sj9otMzt0hbYL5jkviahDkinVGBLqxHAsgl0jMmHQxsB8JLzIZMG7lYatnq9tRukfJGz
-	FXKzUfOg==;
+	bh=ePKddXgsQ/sIOcUIgiDq+rw3pTmufgmB0dzzvy5WTTU=; b=M/oZBKShjuCNeWRERfyglhZ9+w
+	l+qOQPGpyg1clTP6ahowkouQlfsUE14msfg8UtBBHGNCviigKy/3bgtHIeCoJgBzr0FdKTtjEhst2
+	170nYnPjzDouQQPtxLPqLyePH+q36XkGehe+MDTQ/KtkG2PEgsq6EjEbvsxXdpH6ezky/2jp3Zr7P
+	eJ4DuauimHfJKEjG0+v3qLeZ0Pdl9x45uXNchmQJfrrSjPgqOcqjWUAo/QzBRgg89z21wWSg8/+w6
+	BWeS2MeDpvNPaZP6K+Srvulbr4Jqu8ivymPvMQayNbverkFTdRrBmNqH8Tig86EBrHbxF84GmP3WM
+	OuF1Oftg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xWSuE-0000000CArv-2xd2;
-	Thu, 26 Nov 2026 06:24:30 +0000
-Received: from mail-dl1-x1233.google.com ([2607:f8b0:4864:20::1233])
+	id 1xWSuT-0000000CAyk-45so;
+	Thu, 26 Nov 2026 06:24:45 +0000
+Received: from mail-dl1-x122c.google.com ([2607:f8b0:4864:20::122c])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xWSuC-0000000CAr4-2pwO
+	id 1xWSuK-0000000CAuI-3isW
 	for linux-mediatek@lists.infradead.org;
-	Thu, 26 Nov 2026 06:24:29 +0000
-Received: by mail-dl1-x1233.google.com with SMTP id a92af1059eb24-1a2af4c8d00so5976397c88.0
-        for <linux-mediatek@lists.infradead.org>; Wed, 25 Nov 2026 22:24:28 -0800 (PST)
+	Thu, 26 Nov 2026 06:24:39 +0000
+Received: by mail-dl1-x122c.google.com with SMTP id a92af1059eb24-1b3b4944a0eso5039750c88.0
+        for <linux-mediatek@lists.infradead.org>; Wed, 25 Nov 2026 22:24:36 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1795674268; x=1796279068; darn=lists.infradead.org;
+        d=chromium.org; s=google; t=1795674276; x=1796279076; darn=lists.infradead.org;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :content-type:mime-version:subject:date:from:from:to:cc:subject:date
          :message-id:reply-to:content-type;
-        bh=1d5rRHIyLnLkkI5kSP1hcdlsa/voBQeRYBRgutIn/lg=;
-        b=DZqO8ojU6WBZh88gd6ic7J56CIykRTrG0794JAcIXrlary/j6z+U77lhPleFspwMKk
-         Mx02WmYsWWWLLacUZRoKNYuTqqDA+te75XgaziiGBcI7V4aaw3IkxNcpYJwlRsKthLQO
-         UX6HXCJrnls8GnthW6+GnerBN9+hx2cuKEtMg=
+        bh=ePKddXgsQ/sIOcUIgiDq+rw3pTmufgmB0dzzvy5WTTU=;
+        b=P9ShnWq0bQd/KEir1StgDNH1tRAF+3V4oixYdLWeUyHSJdHTLtEWcmbJ0e0G1ZiwxH
+         Qf870k+SUwn3Tu8uZx+N+FSUDOh3l1ZBTOdezVlDZHSCo9bwtf/cb383kepzQJj14i1s
+         I29nsydi1i/VSGr1Ij2G7OAlTEa12gGdNb1W4=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1795674268; x=1796279068;
+        d=1e100.net; s=20260707; t=1795674276; x=1796279076;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :content-type:mime-version:subject:date:from:x-gm-gg
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
          :content-type;
-        bh=1d5rRHIyLnLkkI5kSP1hcdlsa/voBQeRYBRgutIn/lg=;
-        b=fJThz0Fj/eWeYjz5klddaqsf7DlI+zqR693sixo4awIREzUkIa1WiTpVV4d1RkbzHv
-         Fc4Klcwac6Z6BCqYTxlrIEYZRIZ4wmFXxrGXjJg+f/Kq9HXIZ2q6GwVsE2C6WAwBAoew
-         7peyol5+rTpYh+x6wW+G1qTjkT4z5JYpLMMou9Gdyx10AApGu1oNNF9lWIgwayl4HOzJ
-         hOpsuJmYk7EU1YhOiPgwkaWGTkUuze0GBAzoy4pH/sTD5fKCGmnjYI1foJ+cLu6j6g7H
-         b0n/vCSXJKjvfETiUDIOyqwax6u8kfJ1EvZC93qQP0iec0qrmLrd73HSC1Q0bFnW1ZJG
-         TupA==
-X-Forwarded-Encrypted: i=1; AL+hErEdnKtyZ5FnPGkRFa/YHrIr5Vhep+a2Rs4Fpa8zU6fpoZtYW/OzDaQieoi4ax2Alv4qSCKBZruH57AHKpocTQ==@lists.infradead.org
-X-Gm-Message-State: APuU4Z+WJd9CWt0mPtWmYgxLUOBFNIxu++6DMYtmB3lHdwRgdhZuwory
-	r6NFjZsYcxqiLH4asCHVJWe1pk5CVCYx3exs8ACo0AlIdwyAR1TTM5MeRRuubAcL95BhVLZkK6O
-	2IQr2Rw==
-X-Gm-Gg: AZFdTZc+QaYie4vV0J6VNvTf9gx/HF1tg1gstgCb/tK7dbfL1ob8UB1xm8cHYBueFBp
-	GdmCfm7FKzXTzmQfEnMpWa02EGMYjiQQ2EOyoX321njhM36jRFTSfr3pk5cIFHdsSzttarSvLVR
-	/JlveuP78kQ6+78FXu0mmCr/SWuN9v3h2ZVe0rrfYeJj3T3BZ+QKXdXg/58pwtbpcYI5oo32aH+
-	wLSnmq0rl9lwTggyCFg1LCF6tOoE7pAUh2K5zO6T2akmtlYmg1wMAVkIDWQqz+kaX7/KWjWuozq
-	6kmxpcVSH1LvAOJpu/pbFNrgnKUzCYQ6VkcA54VJlqGoEHHdIKZKIB8MEN9zb21n7ILByHjBqfo
-	o74OX5yCI18n1HtbkTDoFQcKc0UqUczbp11XEptvQRSNtawo0/dQ2koQkgbPGmdVHpzzLeqv8yP
-	HLrhFcy/qdo4psm2WuAZYHy94xxTmjekcXBSHuevDZgkE7xgTHMj50xppouOk+KxXum4FvtN85u
-	zcCaCRA72D+WU6JFFU5825I7yiuqTAqtCTajg6awymGFEO+9VYigRb9gxBz6xzynJ4sRli2VGb6
-	W3mjmcFvHbd0I1RkXo1RQi8WjzVAfRipn7Ww9MDWRaoUhFI5eC1FLo/LvrKvaBZlrzVBAweIDZA
-	WhmBKC8CLUk1reXVFNYDYYg==
-X-Received: by 2002:a05:7022:290:b0:1b5:283:79c8 with SMTP id a92af1059eb24-1b5567a6eb4mr19652296c88.4.1795674267942;
-        Wed, 25 Nov 2026 22:24:27 -0800 (PST)
+        bh=ePKddXgsQ/sIOcUIgiDq+rw3pTmufgmB0dzzvy5WTTU=;
+        b=bmhyFzn6zDbrOmsYyI3ar11oXWUJdWmb6K1PWf0VEQYyFbaJrzRKcEHhXpqMGeqfCg
+         EbLOn2mH3OzX/PArivsctUFKYWjricw+oOF7ZBge7PCZe8i3ISceEVqK9AuvM/XIFRrz
+         OwP+q2L39UkL2xMgQl0bQCqtRqgaugLxVa1goED9VYmTPXBPuuc7Ndww77GzUFthodxW
+         qYmwstQ93fYJMMGpamdCYvPv7V+Zp9UVDKYwVAoqkk6GTTcfrmuWPR6e1vQ6HafqnGu7
+         Eq4wupVIwOuhqE/BT9qCMk+U752JyJ6nDteR9fyvNW+95djk4y97w160ZR+0S4Jf/EFN
+         vAQw==
+X-Forwarded-Encrypted: i=1; AL+hErHi4hox9ec46BGA8O/krHVW2/G5wfhzoTZyoasgFvc9RHuGu3corFE+mInz2F9+COdYCHoTvFI90C9carv20w==@lists.infradead.org
+X-Gm-Message-State: APuU4Z9R7yuo3Dk8khjRWdQHlTLj8VmNycAdHQib7YPGCF4M3c4w36Ko
+	vXN6k6+pm48HzD4cWJ0SYnkrG4aoZzJIs5Ii+IomJwd2/IzfLYv3oBmbbDaw9Ju6uWFz/O1M/QY
+	yLuRuPg==
+X-Gm-Gg: AZFdTZcin4O9R91NwRubBq+HKMRbXPLIglKRzUWw3tXV1MszzrcsSdrgbIBLgUjHrag
+	lVr1FA3/3ehsn3ehMnAUgKc30/ZSimA0AdyFUu+KadaRT0IpH9MCjnqb1WoU6WWCcYP9nsvgqVB
+	9IuxKb1Y83J3fg+7oI9rpN7pYtZQTvKg5WWgXQnNwuVtztE6zHvRRHhJi6BrH/A/+I3/qnTGh/+
+	wVwywzpI9DeeHFedDZir6I8oCsEvh8SUb410hn7Nm7D4wJbr1CzYXGrnkcLVmKUMKYDJ4hyL1Jv
+	0KH062WaJe2VjOaoLDv1H7mlA/4hZF+GzoL3G8NCTXBz6rwjrgbzjD+6Q+H4MHo1jgrWEjLh8+v
+	l0edBKXD+Ojq2maFn/mmtR4FsrSNQNhyLB+xnnRERzHYAuu8KQc3F/Ho75syDuUjia+a2N9Y6JD
+	LD0hh3iCwqntoDnkwkm9vW1o/Z4TMeYsaKWgFt6CCorMq+jg1ozX5g7ZOztjV00sdMcO3t6w3Bb
+	CF3Dgh2S/Z7y81PTHieJQ+/Pu+kSgTlX0lnPZQkICz+Dn/2UuNOpKU5CXv6Nw7W0gl5L1e6JNVK
+	FAVZ8o52zjqR/gYOEs8O4afmgVzt3fXnSWwlIdat8EnTuAHmXkiZNWSpTkMJxuuh8xFQpl8Sg2N
+	HITc+FzhSzLpYXDiNUhQ86A==
+X-Received: by 2002:a05:701b:4585:10b0:1b5:8f22:9803 with SMTP id a92af1059eb24-1b58f229b6bmr2042435c88.1.1795674276127;
+        Wed, 25 Nov 2026 22:24:36 -0800 (PST)
 Received: from fshao-cloudtop.c.googlers.com (123.142.199.104.bc.googleusercontent.com. [104.199.142.123])
-        by smtp.gmail.com with ESMTPSA id a92af1059eb24-1b56ef9fd16sm36793186c88.4.2026.11.25.22.24.20
+        by smtp.gmail.com with ESMTPSA id a92af1059eb24-1b56ef9fd16sm36793186c88.4.2026.11.25.22.24.28
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 25 Nov 2026 22:24:27 -0800 (PST)
+        Wed, 25 Nov 2026 22:24:35 -0800 (PST)
 From: Fei Shao <fshao@chromium.org>
-Date: Thu, 26 Nov 2026 14:23:43 +0800
-Subject: [PATCH 1/8] drm/file: Define drm_show_fdinfo as NULL when
- CONFIG_PROC_FS is disabled
+Date: Thu, 26 Nov 2026 14:23:44 +0800
+Subject: [PATCH 2/8] drm: Wire drm_show_fdinfo() into default fops helpers
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20261126-drm-fops-show-fdinfo-v1-1-7cb1d1a5d6ef@chromium.org>
+Message-Id: <20261126-drm-fops-show-fdinfo-v1-2-7cb1d1a5d6ef@chromium.org>
 References: <20261126-drm-fops-show-fdinfo-v1-0-7cb1d1a5d6ef@chromium.org>
 In-Reply-To: <20261126-drm-fops-show-fdinfo-v1-0-7cb1d1a5d6ef@chromium.org>
 To: David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
@@ -90,9 +89,8 @@ To: David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
  Oded Gabbay <ogabbay@kernel.org>
 X-Mailer: b4 0.16.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261125_222428_734083_2FD7556F 
-X-CRM114-Status: UNSURE (   8.61  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20261125_222437_211242_0D699210 
+X-CRM114-Status: GOOD (  11.45  )
 X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -112,53 +110,61 @@ X-Spam-Status: No, score=-16.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Define drm_show_fdinfo() as NULL when CONFIG_PROC_FS is disabled
-(matching drm_compat_ioctl() and drm_gem_get_unmapped_area()) and guard
-its definition. This prepares for simplifying .show_fdinfo assignment in
-the DEFINE_DRM_*_FOPS() helpers.
+Wire drm_show_fdinfo() into DEFINE_DRM_*_FOPS() in the DRM headers, so
+drivers using the default fops helpers support showing standard fdinfo
+out of the box.
 
 Signed-off-by: Fei Shao <fshao@chromium.org>
 ---
- drivers/gpu/drm/drm_file.c | 2 ++
- include/drm/drm_file.h     | 4 ++++
- 2 files changed, 6 insertions(+)
+ include/drm/drm_accel.h          | 1 +
+ include/drm/drm_gem.h            | 2 ++
+ include/drm/drm_gem_dma_helper.h | 1 +
+ 3 files changed, 4 insertions(+)
 
-diff --git a/drivers/gpu/drm/drm_file.c b/drivers/gpu/drm/drm_file.c
-index ec820686b302..bcc1b47616c0 100644
---- a/drivers/gpu/drm/drm_file.c
-+++ b/drivers/gpu/drm/drm_file.c
-@@ -961,6 +961,7 @@ void drm_show_memory_stats(struct drm_printer *p, struct drm_file *file)
- }
- EXPORT_SYMBOL(drm_show_memory_stats);
+diff --git a/include/drm/drm_accel.h b/include/drm/drm_accel.h
+index 20a665ec6f16..1f3088002e52 100644
+--- a/include/drm/drm_accel.h
++++ b/include/drm/drm_accel.h
+@@ -48,6 +48,7 @@
+ 	static const struct file_operations name = {\
+ 		.owner		= THIS_MODULE,\
+ 		DRM_ACCEL_FOPS,\
++		.show_fdinfo	= drm_show_fdinfo,\
+ 	}
  
-+#ifdef CONFIG_PROC_FS
- /**
-  * drm_show_fdinfo - helper for drm file fops
-  * @m: output stream
-@@ -1003,6 +1004,7 @@ void drm_show_fdinfo(struct seq_file *m, struct file *f)
- 	drm_dev_exit(idx);
- }
- EXPORT_SYMBOL(drm_show_fdinfo);
-+#endif
+ #if IS_ENABLED(CONFIG_DRM_ACCEL)
+diff --git a/include/drm/drm_gem.h b/include/drm/drm_gem.h
+index 56dd15921c7a..d0c30bf23e58 100644
+--- a/include/drm/drm_gem.h
++++ b/include/drm/drm_gem.h
+@@ -43,6 +43,7 @@
+ #ifdef CONFIG_TRANSPARENT_HUGEPAGE
+ #include <drm/drm_device.h>
+ #endif
++#include <drm/drm_file.h>
+ #include <drm/drm_vma_manager.h>
  
- /**
-  * drm_file_err - log process name, pid and client_name associated with a drm_file
-diff --git a/include/drm/drm_file.h b/include/drm/drm_file.h
-index 6ee70ad65e1f..6fc3d7060f30 100644
---- a/include/drm/drm_file.h
-+++ b/include/drm/drm_file.h
-@@ -525,7 +525,11 @@ void drm_print_memory_stats(struct drm_printer *p,
- 			    const char *region);
+ struct iosys_map;
+@@ -501,6 +502,7 @@ struct drm_gem_object {
+ 	static const struct file_operations name = {\
+ 		.owner		= THIS_MODULE,\
+ 		DRM_GEM_FOPS,\
++		.show_fdinfo	= drm_show_fdinfo,\
+ 	}
  
- void drm_show_memory_stats(struct drm_printer *p, struct drm_file *file);
-+#ifdef CONFIG_PROC_FS
- void drm_show_fdinfo(struct seq_file *m, struct file *f);
-+#else
-+#define drm_show_fdinfo NULL
-+#endif
- 
- struct file *mock_drm_getfile(struct drm_minor *minor, unsigned int flags);
- 
+ #ifdef CONFIG_TRANSPARENT_HUGEPAGE
+diff --git a/include/drm/drm_gem_dma_helper.h b/include/drm/drm_gem_dma_helper.h
+index f2678e7ecb98..3fc22b426070 100644
+--- a/include/drm/drm_gem_dma_helper.h
++++ b/include/drm/drm_gem_dma_helper.h
+@@ -267,6 +267,7 @@ unsigned long drm_gem_dma_get_unmapped_area(struct file *filp,
+ 		.read		= drm_read,\
+ 		.llseek		= noop_llseek,\
+ 		.mmap		= drm_gem_mmap,\
++		.show_fdinfo	= drm_show_fdinfo,\
+ 		.fop_flags = FOP_UNSIGNED_OFFSET, \
+ 		DRM_GEM_DMA_UNMAPPED_AREA_FOPS \
+ 	}
 
 -- 
 2.56.1.839.g22a8290db9-goog
