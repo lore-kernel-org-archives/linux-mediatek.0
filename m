@@ -2,57 +2,56 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 7EDD6606A32E
-	for <linux-mediatek@archiver.kernel.org>; Thu, 26 Nov 2026 19:11:14 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id B4C40606A32C
+	for <linux-mediatek@archiver.kernel.org>; Thu, 26 Nov 2026 19:11:26 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=oMrlzRhW;
-	dkim=pass (2048-bit key) header.d=bootlin.com header.i=@bootlin.com header.a=rsa-sha256 header.s=dkim header.b=Rcje2CF+
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=3wBpMo1E;
+	dkim=pass (2048-bit key) header.d=bootlin.com header.i=@bootlin.com header.a=rsa-sha256 header.s=dkim header.b=Mmv91+qO
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Unsubscribe-Post:
-	List-Owner; bh=u/go77fGa6BBlrSXB/4W1ywT2MY9Zfsd5kv0omZx16A=; b=oMrlzRhWRb9RSY
-	mnhojROj3u39AdROt025shfrhlWcoiGFieihK5xYPnAnd+0RpVM8BqzAwjgheHEZ7neLcjx36WLRO
-	FZVDDHTsSCBG7HaVwbQtcln0fB5Y/daZe+JMjDFUjShyyyQXokkGHEo1GSNuPVh91ZZFBCLXX1D3H
-	eGCSIvpFMm6IU41j7b8o49AttLdiskmNpLMvkMoegEfNq0f3z75kIZ+0816V3N4zZtIiONXS62jAa
-	GFi/jHj4OjiUTdZJXRf9keMdl44ntiTyDRkPywjCs+wBedUyMnVbE02DrZ3tiw1WYmpxjguRDQMA8
-	HkR6/cRrjGFUFoAf8Kjw==;
+	List-Owner; bh=/M+HfMNi3TcbhGwOrAuJ9bcXyilkjFKwqsxMBnv5EpI=; b=3wBpMo1EoAkafJ
+	GtAPrHnDH7sv54X8lE6t9BTVgJYBioIsK2e5OkLoTPCJZpNUGexPyyELosfCjZ60WEiJaCS98GUYp
+	zXNkGOkc0sz2ScmLIppnAoqGhPouGhelnxsCc3uRKm+Rh/7mbvH+JgdGBGC5QJJOkeAIrlDgttiMh
+	/vW7s5h+npKmMndb97VlB+QV5vCdYjGBlLcSAWPv81lcZiKCOpCTxerQGunAo/hZ3V7I/XR5T3Hqh
+	ZpQ8DAkamMRGPIWL7X5MYTiqcLDgnVApXI193yXxTJU2sNsUVNTlLtcVUZ97NwBQ+9pVtbWYJjDjE
+	dv4f3Jp/2b+IaQqip8wQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xWesE-0000000EEJi-0yao;
-	Thu, 26 Nov 2026 19:11:14 +0000
-Received: from smtpout-03.galae.net ([185.246.85.4])
+	id 1xWesQ-0000000EEUE-1aNg;
+	Thu, 26 Nov 2026 19:11:26 +0000
+Received: from smtpout-02.galae.net ([185.246.84.56])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xWes4-0000000EEEA-0siw
-	for linux-mediatek@lists.infradead.org;
-	Thu, 26 Nov 2026 19:11:05 +0000
+	id 1xWes9-0000000EEHM-3YBS;
+	Thu, 26 Nov 2026 19:11:11 +0000
 Received: from smtpout-01.galae.net (smtpout-01.galae.net [212.83.139.233])
-	by smtpout-03.galae.net (Postfix) with ESMTPS id 906F64E417B3
-	for <linux-mediatek@lists.infradead.org>; Thu, 26 Nov 2026 19:11:01 +0000 (UTC)
+	by smtpout-02.galae.net (Postfix) with ESMTPS id 2C8E81A181E;
+	Thu, 26 Nov 2026 19:11:08 +0000 (UTC)
 Received: from mail.galae.net (mail.galae.net [212.83.136.155])
-	by smtpout-01.galae.net (Postfix) with ESMTPS id 5B33D60558;
-	Thu, 26 Nov 2026 19:11:01 +0000 (UTC)
-Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id AD73111E691BE;
-	Thu, 26 Nov 2026 20:10:52 +0100 (CET)
+	by smtpout-01.galae.net (Postfix) with ESMTPS id 0073F60558;
+	Thu, 26 Nov 2026 19:11:08 +0000 (UTC)
+Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id D7E7211E691C2;
+	Thu, 26 Nov 2026 20:10:59 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=dkim;
-	t=1795720255; h=from:subject:date:message-id:to:cc:mime-version:content-type:
+	t=1795720262; h=from:subject:date:message-id:to:cc:mime-version:content-type:
 	 content-transfer-encoding:in-reply-to:references;
-	bh=u/go77fGa6BBlrSXB/4W1ywT2MY9Zfsd5kv0omZx16A=;
-	b=Rcje2CF+Rc768pJDqRn1xd37LOi2ZIWrxvd33CG/i9GDTQ0Z/EJe+AolhDRapjXHvUkKU4
-	PSHE1y7kkqv/OUQU/TIc4jMD2rQuT2wjnvS2u/sgriHXlls4JIwSW3Ni3kXsnhZ5bWctyb
-	nVdjMtMlYHzTl6mJsuxFo+Y2XheJr/bn3+JDUH4frs4MhtQ0PVyyWNH3QUyOEkumCYUHLT
-	J0yKXlJrC/JniAPkCb1q4N3041OYRixmtCFzrNTdlRI6B4dgEFz9twZ3CTLF0vycvS49RY
-	IJ6ZdCUiipuYtudozCl6ZJP9t+Top9GY6XCEdTgXKkVPyGe5Gd08u85xMdREUg==
+	bh=/M+HfMNi3TcbhGwOrAuJ9bcXyilkjFKwqsxMBnv5EpI=;
+	b=Mmv91+qOiLKrIGNBpZKd6M+eVyf+7sO0JRHY0vUhU+ENb3oO0WfPB99X2BHhnbihfSmm0J
+	v6V2vLx93smS0GkTp1XPcMcMunQA9ifroOL8gmYvVJO8lBDcWRPrpiAlWz9Wf6hfglZxGr
+	Bup9d9XxjNiyms+qumpmt0iiXT416j/CPONuMU5HusooMDcIRhECS3iAej4+nHqIi1LNEH
+	zRUurl+UTTCfPacswOM94xvnPc/Y4DO5w1CaDoIowe9ficpWxPNb/T5N7QqZS3U+q+dTSO
+	VbT5eemGG7ygC7Tic7RdvcnGwM99CX+AF3C6NtKCAnuzA9VJZLg3wPaZKSWTwA==
 From: Miquel Raynal <miquel.raynal@bootlin.com>
-Date: Thu, 26 Nov 2026 20:10:20 +0100
-Subject: [PATCH 01/12] spi: amd: Validate the dummy buswidth
+Date: Thu, 26 Nov 2026 20:10:21 +0100
+Subject: [PATCH 02/12] spi: amlogic-spifc-a1: Fix a typo in a macro
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20261126-macronix-upstreaming-spi-driver-fixes-v1-1-ca8e924cca1b@bootlin.com>
+Message-Id: <20261126-macronix-upstreaming-spi-driver-fixes-v1-2-ca8e924cca1b@bootlin.com>
 References: <20261126-macronix-upstreaming-spi-driver-fixes-v1-0-ca8e924cca1b@bootlin.com>
 In-Reply-To: <20261126-macronix-upstreaming-spi-driver-fixes-v1-0-ca8e924cca1b@bootlin.com>
 To: Raju Rangoju <Raju.Rangoju@amd.com>, 
@@ -75,9 +74,8 @@ Cc: Thomas Petazzoni <thomas.petazzoni@bootlin.com>,
 X-Mailer: b4 0.14.3
 X-Last-TLS-Session-Version: TLSv1.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261126_111104_397386_ADD920D5 
-X-CRM114-Status: UNSURE (   8.87  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20261126_111110_019632_3FD906F0 
+X-CRM114-Status: GOOD (  11.04  )
 X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -97,28 +95,44 @@ X-Spam-Status: No, score=-18.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-The driver clocks the dummy phase with the data buswidth. Reject
-operations asking for a different dummy buswidth.
+Correct the macro name: sycles -> cycles.
 
 Signed-off-by: Miquel Raynal <miquel.raynal@bootlin.com>
 ---
- drivers/spi/spi-amd.c | 3 +++
- 1 file changed, 3 insertions(+)
+ drivers/spi/spi-amlogic-spifc-a1.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
-diff --git a/drivers/spi/spi-amd.c b/drivers/spi/spi-amd.c
-index d3953de255be..0c56d5b2a6db 100644
---- a/drivers/spi/spi-amd.c
-+++ b/drivers/spi/spi-amd.c
-@@ -459,6 +459,9 @@ static bool amd_spi_supports_op(struct spi_mem *mem,
- 	if (op->cmd.buswidth > 1 || op->addr.buswidth > 4)
- 		return false;
+diff --git a/drivers/spi/spi-amlogic-spifc-a1.c b/drivers/spi/spi-amlogic-spifc-a1.c
+index 388bd2472dc0..c7cccc8de6dc 100644
+--- a/drivers/spi/spi-amlogic-spifc-a1.c
++++ b/drivers/spi/spi-amlogic-spifc-a1.c
+@@ -43,7 +43,7 @@
+ #define SPIFC_A1_USER_CTRL2_REG		0x208
+ #define SPIFC_A1_USER_DUMMY_ENABLE	BIT(31)
+ #define SPIFC_A1_USER_DUMMY_MODE	GENMASK(30, 29)
+-#define SPIFC_A1_USER_DUMMY_CLK_SYCLES	GENMASK(28, 23)
++#define SPIFC_A1_USER_DUMMY_CLK_CYCLES	GENMASK(28, 23)
  
-+	if (op->dummy.nbytes && op->dummy.buswidth != op->data.buswidth)
-+		return false;
-+
- 	/* AMD SPI controllers support quad mode only for read operations */
- 	if (amd_is_spi_read_cmd(op->cmd.opcode) || amd_is_spi_write_cmd(op->cmd.opcode)) {
- 		if (op->data.buswidth > 4)
+ #define SPIFC_A1_USER_CTRL3_REG		0x20c
+ #define SPIFC_A1_USER_DIN_ENABLE	BIT(31)
+@@ -90,7 +90,7 @@
+ #define SPIFC_A1_USER_DUMMY(op) ( \
+ 	SPIFC_A1_USER_DUMMY_ENABLE | \
+ 	FIELD_PREP(SPIFC_A1_USER_DUMMY_MODE, ilog2((op)->dummy.buswidth)) | \
+-	FIELD_PREP(SPIFC_A1_USER_DUMMY_CLK_SYCLES, (op)->dummy.nbytes << 3))
++	FIELD_PREP(SPIFC_A1_USER_DUMMY_CLK_CYCLES, (op)->dummy.nbytes << 3))
+ 
+ #define SPIFC_A1_TSLCH_VAL	FIELD_PREP(SPIFC_A1_TSLCH, 1)
+ #define SPIFC_A1_TCLSH_VAL	FIELD_PREP(SPIFC_A1_TCLSH, 1)
+@@ -195,7 +195,7 @@ static void amlogic_spifc_a1_set_dummy(struct amlogic_spifc_a1 *spifc,
+ {
+ 	u32 val = readl(spifc->base + SPIFC_A1_USER_CTRL2_REG);
+ 
+-	val &= ~(SPIFC_A1_USER_DUMMY_MODE | SPIFC_A1_USER_DUMMY_CLK_SYCLES);
++	val &= ~(SPIFC_A1_USER_DUMMY_MODE | SPIFC_A1_USER_DUMMY_CLK_CYCLES);
+ 	val |= dummy_cfg;
+ 	writel(val, spifc->base + SPIFC_A1_USER_CTRL2_REG);
+ }
 
 -- 
 2.56.0
