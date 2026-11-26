@@ -2,11 +2,11 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 73A7A606A338
-	for <linux-mediatek@archiver.kernel.org>; Thu, 26 Nov 2026 06:24:47 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 010D9606A31E
+	for <linux-mediatek@archiver.kernel.org>; Thu, 26 Nov 2026 06:25:02 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=MtX4pAhX;
-	dkim=fail reason="signature verification failed" (1024-bit key) header.d=chromium.org header.i=@chromium.org header.a=rsa-sha256 header.s=google header.b=ck6/iRYO
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=4c7xAUxZ;
+	dkim=fail reason="signature verification failed" (1024-bit key) header.d=chromium.org header.i=@chromium.org header.a=rsa-sha256 header.s=google header.b=eH/6iqG2
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Cc:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:To:In-Reply-To:
@@ -14,73 +14,73 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	Subject:Date:From:Reply-To:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=8r10h3LnRLt9vjVGGqIH+e89aRk+gTjmWUgpe6jQIHI=; b=MtX4pAhXcvzekiaTTxWXq4tzP+
-	3C7JkT7WxwdzcTn1Piv62lLGUaJE6+vNoTbbs8LlzhO+S0wt3/nAOMkI1EQwzjMFvY4UUG2Quw+WX
-	prCUpd7os+0RKEfF3VBihCbTSadjvvS5EYY+N/tWsUe0M3yW1+5CWAiWCFELkEoDA57knU9G5Ltf8
-	EpxtLGSvdLd5FjpV52JYZIOSIAGhpRs8ljkiReXkKnjwjpx+nOUxmXhoCpyv9IJJCOdTVAQ5esKmV
-	UY+I2xIG9WTNXjcKCVwqtSaTHr1OhcaPQvdC9y/orOy9z6A8h+m36xb4gkBnmWypXewl0+apUtMcD
-	EhhSZb9w==;
+	bh=jXfP+BBaRmFRvRsRkzl26nbPuaGAtebafKyAvaeF1Hk=; b=4c7xAUxZHnaayGj2eorlRTBVI/
+	HXh8p7I7npH45/VepXSqzx2g8tTpmuR8MEHDkkBxtwMKMUKzOGbiFY7GbEfryNT5ho6XU8/Rv3N+t
+	LQ5GAHdmc/RFXaT5IvDuFQ/tSumKma0LNjwdjuJG1DPONE+sgYbj2DzASDisxMgtekjVbLJcyv+ra
+	mLShVuBAk4a8A4eirFqXWwi3L0n+45cc8UWpXdy2pGxpVKJ0eafcW92pbOH5T+ymDNLmD5CDrSyUD
+	f/TYmXQ7VolMHnmommWfZf1alz7B3Q4uQ/38gDT8yzYJoqoHt30lSTBo8hxnkS+7YnjuHYtMmBrDh
+	VjJIVc0w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xWSuV-0000000CB0G-0bbY;
-	Thu, 26 Nov 2026 06:24:47 +0000
-Received: from mail-dl1-x1233.google.com ([2607:f8b0:4864:20::1233])
+	id 1xWSuj-0000000CB9t-2Jmt;
+	Thu, 26 Nov 2026 06:25:01 +0000
+Received: from mail-dl1-x122e.google.com ([2607:f8b0:4864:20::122e])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xWSuS-0000000CAxZ-3z8J
+	id 1xWSub-0000000CB4O-1Oid
 	for linux-mediatek@lists.infradead.org;
-	Thu, 26 Nov 2026 06:24:46 +0000
-Received: by mail-dl1-x1233.google.com with SMTP id a92af1059eb24-1a3c08d6928so9890020c88.0
-        for <linux-mediatek@lists.infradead.org>; Wed, 25 Nov 2026 22:24:44 -0800 (PST)
+	Thu, 26 Nov 2026 06:24:55 +0000
+Received: by mail-dl1-x122e.google.com with SMTP id a92af1059eb24-1a3c08d6928so9890162c88.0
+        for <linux-mediatek@lists.infradead.org>; Wed, 25 Nov 2026 22:24:53 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1795674284; x=1796279084; darn=lists.infradead.org;
+        d=chromium.org; s=google; t=1795674292; x=1796279092; darn=lists.infradead.org;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :content-type:mime-version:subject:date:from:from:to:cc:subject:date
          :message-id:reply-to:content-type;
-        bh=8r10h3LnRLt9vjVGGqIH+e89aRk+gTjmWUgpe6jQIHI=;
-        b=ck6/iRYOZ2/S4xwsA9R5+VCGXc4xUeGuV1aonI3DpX3wc8hQgk/1y2gd5QblIwZOnq
-         BSsdKW+NpeqiKR79FczxgNKY43ODttjJnZFdQTG3YNA+7zWErhuMpO9IqmY0wxphwWUC
-         hASQ+d5UiGQvLsfqigaGCgqQhgzZtP7vzNIhQ=
+        bh=jXfP+BBaRmFRvRsRkzl26nbPuaGAtebafKyAvaeF1Hk=;
+        b=eH/6iqG27nNX/lMiqRJgtpabMRnKd9mcsUEBySIkQqtC36pRg3QXjx23pyE2j6B6OI
+         pOMiAEw/WSQb6Yb2YE20/FES76fCfWZCkjwcqvxMsjpy/XK5ejlyt9HE8Bm2E3rO1UBE
+         rQPRefOAE7sWMCY88if5RaXmUb1n4UcFfi7Tw=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1795674284; x=1796279084;
+        d=1e100.net; s=20260707; t=1795674292; x=1796279092;
         h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
          :content-type:mime-version:subject:date:from:x-gm-gg
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
          :content-type;
-        bh=8r10h3LnRLt9vjVGGqIH+e89aRk+gTjmWUgpe6jQIHI=;
-        b=1gkBGNaHa9VeUY79QC5T/eGEmW1pw4mQnQFE0LbpUKQby33zMQ1w8EHRwMsEEZigsW
-         O0hgKRRkIZJ+pMKcT5VyCk9/eks2T/T/WWoz0A7KqlaPetrEJgLJ/5ocoux6/UCGaZPz
-         6ASVWbA6ToQ4segAI0epKKnQz6fhAWDYt6WAWbiIuIzmjkfJv3kwEPTg3dm/8fVbbso9
-         RozPSvJzf4AdhpP4/D4RikKH0Wqnn546D5P7pGdti1MGak7rhtUNgCyXy8f16zB+hVji
-         6sqWbWPsVA9AqgH43GtptylTD0U9OWhMW5mXUCeiB3dBjP0xvCPacd5BN1pcQ8H4QmIT
-         p7lg==
-X-Forwarded-Encrypted: i=1; AL+hErFlPuIgAhMIz/1YIL2T3ekym7l6enmfA3LuIicRhoH9iQReUYzc4DyFdIwJ4oOu+RKkEaZJtPt/r/dHi1vv4g==@lists.infradead.org
-X-Gm-Message-State: APuU4Z8LZtVNuwDG3xdfZDPBVbu9/sAIT5fGeobDo69bc+7QMzdVIp5M
-	x31k6ACe9oAya99dWuEmvXTNW3GbWvJ+SfVJwZjZtjA7e39tv3gnisFMMFeYkUNxAqJYHcKknPt
-	hz3mkwQ==
-X-Gm-Gg: AZFdTZcLNMSKADYNihu0KDj/e/xb4+T9f3CVof1eGcU8aCCV8RoSud6wN8i4eUkfumY
-	50VgRP7U3ZdHxJzVC3sy+OkptXVJNsb+mGX02n3qwRgEKgxSbOilOLfyUvfqGAT9taY9TZ1ARaJ
-	Gv5PrTI+IpUtE6hLRn0uqQHtmDdR15Slpt9F5LwmDSdKZ4nwZNiJzKxHv9iJaiXT7BFJAr+91bh
-	JegXjlajsG+xWUXnUc2XJ2j962J1mvZuez5DxxbSseZ0j1CJjuPSz/anFj4WmJ/RsQp6+Y/ng8D
-	HTUOjeRDrSviQdMH5oss17tdI61o3JPnZeUfSJc49yw0mOcziEJtEFgykkl7FfnYcVaf/h4Myr2
-	vsz3LuIByaz4Yl5X78kXm3XEgromP/WGqbqYRRASpjYSdnzMehbHzVLQKfyuoCqNZY88dQIIfxX
-	Ny9A4yikbeca3vfvoFJOLkh6W9VTdFWA3/KsK0KyPE4fWWdQ6dnG2GfMuHbJJ3YDbiP6qYV8AzP
-	lKhrWsJQlp4DIKmRA25lIHTg1EGD0YuK8MNSgWRhqpY2CkqIVtLTBkHNaBrqD1aAeGp/iitP2kN
-	o2Yixk1rh5YXFe1xffJgr3WfIvCZtM6PFqBsJkQnXtp8JJsBPlzltUmWVdQzo//+s+fQxcK6VRt
-	+n2PxD4/NL5V5EGdPjx8Drw==
-X-Received: by 2002:a05:701a:cc82:20b0:1b5:5a81:d388 with SMTP id a92af1059eb24-1b55a81ddfdmr16361341c88.4.1795674284302;
-        Wed, 25 Nov 2026 22:24:44 -0800 (PST)
+        bh=jXfP+BBaRmFRvRsRkzl26nbPuaGAtebafKyAvaeF1Hk=;
+        b=HVHbonVXjxWoM/Bsl7rFtQcVzKSyCv78t8Qe3B9rGS+7pXCkU1Jg49hEoXjTnDyslu
+         GtbOPmgz4RiuWy4ZUKE6MHKn4e21FEVs5N+V58fBz+boeH5IfGTeTLer/SGNSDHNCyvZ
+         LeYj4tLbqXAjf++CQlNjzRgovX/J/oTBIx/Gphi574dSM8ozm0VlSJa4KRxqpJEuWJ5o
+         ++S4+HBs06A3o3KXvHkVKD58ObCEw3afp9AXabqI748XR4+rzSrAHCDwBC8zqt/pgel/
+         xc/9HMp4GWxMH2KpOMNKFEhBHSJZt90b0iLzAFcf5YuzDgyQ8VrHqCfgDKpAd+HBdMr1
+         aqXw==
+X-Forwarded-Encrypted: i=1; AL+hErHGsQ34VT3JmwTDJwK/kWTR+Hcr4AhdXEKKiip4d6T3dEoXVpGtOFnMMKEv1xfG7B3uzLIBxPTnXFA3zD0pcg==@lists.infradead.org
+X-Gm-Message-State: APuU4Z+PVwAegrZyeLimWnkuHcZMGnhLDMXC2aAqG6/Bf4QiPruj7Sfo
+	y82xOxfO2ABKf6o34/Ob27J6Oyup0Zsuwmt0ymwfZRRSyEsGb7PT6QGrk71FnBdYGmPGFQvFZWr
+	cc3X1YA==
+X-Gm-Gg: AZFdTZeXoU7GD8MZmZEl3MnOVVf4FcegvzqZgnzIGByh1G/n39DDac83Ywr4lLczjps
+	isR/WfL5wOMhYw38jhFPsvp+gRow8LIBBoHMYJfz7JYUpLviza6KR3Nrto1xMIKpaDzO810UTJR
+	Q710taBGnZa8X6wJxOfemxOZeI5eKJUkmRZGNBaIO7zrENR1K6dWYdTaI+iDigUl3OcnSQeEqOl
+	Uvev/nA8s2uI37FNQJXrJXyCvqyo9nNjUXfg6QwYVjktZSFc8W2K9n8S0UULPvc8wmJeZCWVdnl
+	xy/64I8e1N/EsslnemmQAZYak8LSavTSz2v+lhhqgFFM6+75RsBs3M1jcS2PoQX0Rr5ISjnQA4C
+	HTETKyY+HV4Yc9rQ5Yv3V5xEH1C0fBOZ2B/xjCazXLZZQkYbmPMh0Z40/8zrrxqN9VCWuAtRWI+
+	JIY2VNHB0OLJVGN8NT9Ns3S+vtWs3jKGEd+AaHQlHDuyFgjPzVcK+cgX5159d07GPBgRlOfDKJO
+	bpCnsAv/zA240rv1rXDuflSKTnqJQCylZkfSgeMX6emAotllDD2gprBg2WwvO/XfkbBCkuxUW4f
+	+2nuFZEfAvl/Yr4sUfEyDakdTG7VcZdyyNhzHcHBiDZYhKGagGxIDhvynavXG6IWO6PlFfgg0Bg
+	CX+upGpdql0b379b9KALBqQ==
+X-Received: by 2002:a05:7022:28b:20b0:1ac:f84d:4036 with SMTP id a92af1059eb24-1b55686f9bamr17794762c88.9.1795674292446;
+        Wed, 25 Nov 2026 22:24:52 -0800 (PST)
 Received: from fshao-cloudtop.c.googlers.com (123.142.199.104.bc.googleusercontent.com. [104.199.142.123])
-        by smtp.gmail.com with ESMTPSA id a92af1059eb24-1b56ef9fd16sm36793186c88.4.2026.11.25.22.24.36
+        by smtp.gmail.com with ESMTPSA id a92af1059eb24-1b56ef9fd16sm36793186c88.4.2026.11.25.22.24.44
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Wed, 25 Nov 2026 22:24:43 -0800 (PST)
+        Wed, 25 Nov 2026 22:24:52 -0800 (PST)
 From: Fei Shao <fshao@chromium.org>
-Date: Thu, 26 Nov 2026 14:23:45 +0800
-Subject: [PATCH 3/8] drm/etnaviv: Use DEFINE_DRM_GEM_FOPS()
+Date: Thu, 26 Nov 2026 14:23:46 +0800
+Subject: [PATCH 4/8] drm/msm: Use DEFINE_DRM_GEM_FOPS()
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20261126-drm-fops-show-fdinfo-v1-3-7cb1d1a5d6ef@chromium.org>
+Message-Id: <20261126-drm-fops-show-fdinfo-v1-4-7cb1d1a5d6ef@chromium.org>
 References: <20261126-drm-fops-show-fdinfo-v1-0-7cb1d1a5d6ef@chromium.org>
 In-Reply-To: <20261126-drm-fops-show-fdinfo-v1-0-7cb1d1a5d6ef@chromium.org>
 To: David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>, 
@@ -89,7 +89,7 @@ To: David Airlie <airlied@gmail.com>, Simona Vetter <simona@ffwll.ch>,
  Oded Gabbay <ogabbay@kernel.org>
 X-Mailer: b4 0.16.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261125_222445_000702_15F62446 
+X-CRM114-CacheID: sfid-20261125_222453_939144_98E08D6A 
 X-CRM114-Status: GOOD (  10.03  )
 X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-mediatek@lists.infradead.org
@@ -115,14 +115,14 @@ default. Migrate the driver to use DEFINE_DRM_GEM_FOPS().
 
 Signed-off-by: Fei Shao <fshao@chromium.org>
 ---
- drivers/gpu/drm/etnaviv/etnaviv_drv.c | 6 +-----
+ drivers/gpu/drm/msm/msm_drv.c | 6 +-----
  1 file changed, 1 insertion(+), 5 deletions(-)
 
-diff --git a/drivers/gpu/drm/etnaviv/etnaviv_drv.c b/drivers/gpu/drm/etnaviv/etnaviv_drv.c
-index ec1352c1b09f..93869e8f3f96 100644
---- a/drivers/gpu/drm/etnaviv/etnaviv_drv.c
-+++ b/drivers/gpu/drm/etnaviv/etnaviv_drv.c
-@@ -494,11 +494,7 @@ static void etnaviv_show_fdinfo(struct drm_printer *p, struct drm_file *file)
+diff --git a/drivers/gpu/drm/msm/msm_drv.c b/drivers/gpu/drm/msm/msm_drv.c
+index 3675df277f6a..06d997a7a237 100644
+--- a/drivers/gpu/drm/msm/msm_drv.c
++++ b/drivers/gpu/drm/msm/msm_drv.c
+@@ -898,11 +898,7 @@ static void msm_show_fdinfo(struct drm_printer *p, struct drm_file *file)
  	drm_show_memory_stats(p, file);
  }
  
@@ -133,8 +133,8 @@ index ec1352c1b09f..93869e8f3f96 100644
 -};
 +DEFINE_DRM_GEM_FOPS(fops);
  
- static const struct drm_driver etnaviv_drm_driver = {
- 	.driver_features    = DRIVER_GEM | DRIVER_RENDER,
+ #define DRIVER_FEATURES_GPU ( \
+ 		DRIVER_GEM | \
 
 -- 
 2.56.1.839.g22a8290db9-goog
