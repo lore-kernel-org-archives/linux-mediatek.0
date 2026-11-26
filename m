@@ -2,11 +2,11 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 34A84606A31E
-	for <linux-mediatek@archiver.kernel.org>; Thu, 26 Nov 2026 21:53:41 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 1687F606A32A
+	for <linux-mediatek@archiver.kernel.org>; Thu, 26 Nov 2026 22:19:56 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=C01CPMz0;
-	dkim=pass (2048-bit key) header.d=ndufresne-ca.20260707.gappssmtp.com header.i=@ndufresne-ca.20260707.gappssmtp.com header.a=rsa-sha256 header.s=20260707 header.b=q/xdJ61i
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=cEsayba7;
+	dkim=pass (2048-bit key) header.d=ndufresne-ca.20260707.gappssmtp.com header.i=@ndufresne-ca.20260707.gappssmtp.com header.a=rsa-sha256 header.s=20260707 header.b=eRco/R1g
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:Content-Type:
@@ -14,82 +14,78 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=env9OD6WJ5uGqN3vphpmLPvAyZWACc9jYsEiViZZwfI=; b=C01CPMz0SiYWLa7qT9lNJddtWj
-	4HH8S/x2MkXcY258k6mmi+OO082uiwVs50kPtyY3N3il86gl/5NCeZMmY/gCo3VR6RSRSzM5zNTJp
-	uFzPiAeDTvd51hpYCgGcRsy+EqRcXOkpkiSMlYWYK6wb6OeTcraIamBMWTefi3l291ASt+BfMxg8T
-	3A+Kb2FxGElzjKI+V1uXSpBfzRpKp03fUPLHL+Sa+pfFdbrgDLeL7E6IjXtPupf8c1sV8nKh5drgm
-	gR3HfJ38KGD3l3HUAkxhxdokW9Gz3mUCHqtNfNjUFFqJinhmFIZi4154sSMqbrRu2FEOwXjO/Fqtf
-	RwCrJzBQ==;
+	bh=/gSiBV6drlTbocMgCCg5biesF+T1YQl3nT64qn/PW44=; b=cEsayba74LTK7PiIVIB2Kpc0jR
+	msaOPbFg4iW388KfNlhYswZa6X+pvCu09Y5Eyqw2+GGbkF18bHjk9931Gkx7QEnSp6EcpIBsSCifl
+	sxYPa9l+C2nhNq/f098Yb2c9FqiTBIokhMT+nUOjWqW0LtMmT/63cKSdHwaD7GDbo9lf+rjqne96S
+	XbupXlvV8Kl4fTc5fWlu+bpWka4DkBicr9lN77pJannqpYxRZ7CR7Vj0WENfDi+8exXBl+fIK0Yo5
+	9jhWXF/IRg7l+b10/NhfNBQ4IXvbEBQmX1glZx+5WxLPDR9R2o+tMNFQIp8uXK8Vz/PJLqDg3+s8o
+	PzCfnQfA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xWhPP-0000000Ebmd-30ln;
-	Thu, 26 Nov 2026 21:53:39 +0000
-Received: from mail-qk1-x72b.google.com ([2607:f8b0:4864:20::72b])
+	id 1xWhoo-0000000EcZd-2EMR;
+	Thu, 26 Nov 2026 22:19:54 +0000
+Received: from mail-qk1-x72f.google.com ([2607:f8b0:4864:20::72f])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xWhPL-0000000Ebkq-3d9o
+	id 1xWhol-0000000EcYg-3YDX
 	for linux-mediatek@lists.infradead.org;
-	Thu, 26 Nov 2026 21:53:38 +0000
-Received: by mail-qk1-x72b.google.com with SMTP id af79cd13be357-94999a08973so683363485a.0
-        for <linux-mediatek@lists.infradead.org>; Thu, 26 Nov 2026 13:53:35 -0800 (PST)
+	Thu, 26 Nov 2026 22:19:53 +0000
+Received: by mail-qk1-x72f.google.com with SMTP id af79cd13be357-943e8d35f74so730516885a.0
+        for <linux-mediatek@lists.infradead.org>; Thu, 26 Nov 2026 14:19:51 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=ndufresne-ca.20260707.gappssmtp.com; s=20260707; t=1795730014; x=1796334814; darn=lists.infradead.org;
+        d=ndufresne-ca.20260707.gappssmtp.com; s=20260707; t=1795731590; x=1796336390; darn=lists.infradead.org;
         h=mime-version:user-agent:content-type:autocrypt:references
          :in-reply-to:date:cc:to:from:subject:message-id:from:to:cc:subject
          :date:message-id:reply-to:content-type;
-        bh=env9OD6WJ5uGqN3vphpmLPvAyZWACc9jYsEiViZZwfI=;
-        b=q/xdJ61i5yWw2N/eUrXQiuuXn6WzzGIdYG1YOFDqP6kopo+EpUkfi05ZJppHJa6A79
-         qHgkOaW52CpdWzSm2kScoEIjoGewXQB4tTeLOxuHXjvqRJL95UR3KdnewEQXKms50eX8
-         Ec5Lrz/3/fRtIywuOK4sVYkyeAl8P8+EkjZM1wqFD20TTBXlGj69CrThQEZ76dlne6ns
-         Q/5ipJoGzDSIC1u9Z6p0PZzxenE7L/s1MScwr8iJPvgz1n8XsdasDWHZ889PFr6rmFZ7
-         L+o7k0yalIw9R4DHCQ5+ahSF7ewsLxMtlzG79lnKFdSors+4DaJVCScOJlE0MvyZ6X7D
-         xoIg==
+        bh=/gSiBV6drlTbocMgCCg5biesF+T1YQl3nT64qn/PW44=;
+        b=eRco/R1g7FZj/eRzXm24JBcAikUgEe0EC8tT+kOWCrpttFsCbVC8W8dHkGQvmZh5aG
+         pgs1aqN/6/d+7e2hcDKm9n6+gLOq2YzS3XvpMA0C5sooTQpZw9cWWIQ3XNdxnkzH1jC5
+         yoyyKwt5qyJ6jUacA6pCZzEAN7WyPw9YdSiDJUe8e991OZhI4rMdCuMTKl7wxPyLvDzc
+         f1t0y3RQ0BjapWD3IfDlaoIuj+BM02JdIMR36JP0onMndw4/jjlwMHhjes2gu9jmWfRm
+         SsdCsdSvTFvQuJvXaGYeV2PATxgftuBVo/Q1sr8oPtS/ruiTWL4VUP+2e/q993UfJPcU
+         qqSg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1795730014; x=1796334814;
+        d=1e100.net; s=20260707; t=1795731590; x=1796336390;
         h=mime-version:user-agent:content-type:autocrypt:references
          :in-reply-to:date:cc:to:from:subject:message-id:x-gm-gg
          :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
          :content-type;
-        bh=env9OD6WJ5uGqN3vphpmLPvAyZWACc9jYsEiViZZwfI=;
-        b=vum7L5m0bApY+TPt2h3N3oCGGXRGT5flP19b9woH46L45ZmphR+l7MfbZ89FSLeWeA
-         07czXD7vmv3fe/2ni7UooUV8j+AcYkPqHIJStgOrFQ3Tvv/NVFLwrdmnu+i8Zt1fu5xR
-         CylGxnXikAhOIIYooUVXzIArmnb4lfl8xKZwjWk5Kdgq5b/NpKjnVJlyumhIwZQtlgFy
-         R7RAp7zgwFz+lPVFrCFy5syVXG6BQHDia77UK/5Bx77UdBHYn2jUVkHDTpC3tmaaUncU
-         KAsaY/1Z5/sn18c2xRCOWgjIqzanI+8HNai35baDkpsnfB87m6AFNSdouF3bwxMuNVVY
-         LytQ==
-X-Forwarded-Encrypted: i=1; AL+hErGFmpb+OP0cSBdAcGz/Za6QnriW8AYFToYQ9ad70bAKpPThuEIPvzgpuO9VwaV2xiX/aszwvXpUOnk6pJRJKw==@lists.infradead.org
-X-Gm-Message-State: APuU4Z9oiHr0hy2BpfwK6KRvlJG7i5MdJDOwHe0f8cLpH7ds8c6OZw8C
-	ocXNWJEeGCeE0L2alDW8rRY0P1h4waJTp4ysjGirZmmaVtkvp7FXLQEiVwOv/w3Wd/1/wZrJEAP
-	ekkWr
-X-Gm-Gg: AZFdTZcH0Jj1ujl+I0BQTnWhE9S2VtcrCjefeR55abxfCq0mNTGgqv4jxT9kL1DmhKQ
-	91A4yWvyaMprmcnMLs0c6xGqU+zn+tsENgwoUPbZiHe7HAkf0e4oke31qf5OoE+ApyjAxUcIse1
-	kAHYf3770vv+he/4gz1tU7hQR4l+V6xRrj+mgaC8Ua2T65xghuE0/XAt8xYRK5Kk0ScoyjIZb8D
-	K+RJ1ZaMzGJGNGYrc3PCz8fAlkNbvQm7RsNYRl8e+gGYxNfgv71QDd2KAadruj1P1B7QPn87x3a
-	mxO2F6wTrYjPZHretkfydgVNV27Dr/SdvasqM45KRpc0umqTXIFUhAbrdzxXt9Yhp4TsPXv/jYB
-	Q0fjSfO5q3U6rnQJVx3UwL2IiMaElNFFsI1BbDhXsYdR4WnKNWVFmiIdu0zeEew+qe0o2TShayf
-	bQJXBjs0cQuVMyVurciu77yiiQDpRiD/eV2T1OijdrPDVnCuX/i/j/Qxs2iNttlYvtO9U+29lZ3
-	vquj6uq9p6ZV12YZzpLayUg4SyB8tsvxoyL/MEDOx1rwhGmhLGa+bgGx+GW/Rl3JVzUv7S0cbbL
-	EGhz1aAUXlxDOJRet8nc7VbNv2kCKhrZD1aEH1O+8Qu2sIgC6NNvPcY=
-X-Received: by 2002:a05:620a:6011:b0:93c:c1e8:6504 with SMTP id af79cd13be357-949ba9555e2mr3721601785a.23.1795730014488;
-        Thu, 26 Nov 2026 13:53:34 -0800 (PST)
+        bh=/gSiBV6drlTbocMgCCg5biesF+T1YQl3nT64qn/PW44=;
+        b=HTnJxen7SRGbWQeQA0DZwB4xDRTt47EXReU1j0EZazQgl0Lxlk2+7vdsK+q8B1Y01r
+         XaBYYfnjL9mLGT4W4yQg7Yv6GpYVMeyAU8ziucxajbX/5vRp5fN/9uwYi5HM9MgJ+wMz
+         Ynbfj71PE4JwKNpOcsDDbzs4i7gvEn5toj82xToegRoaAMTByLDxmzhic+dmqI3K8zlR
+         GnZKxsfQwILuDWf8gNe0AAIoqIyToifR20lO5eSxsgTAf6EYZPBgeNX3T3ygBXWrtyc6
+         6mCsC6jRA2GQIp0aZuulzvQifmSmkJ2nfOmdHWzlHwBiLV6pB48PSqAChgkeuRhxZDGi
+         hVsA==
+X-Forwarded-Encrypted: i=1; AL+hErGblVpv4w/cZLPseq9wMP0h/t5VYuXi0klF1FcGcSaDPQUUIAyYhmfHELfgANbaAsQMway4ZhZCulqZRPsnHQ==@lists.infradead.org
+X-Gm-Message-State: APuU4Z/hE4CssV2XrSRsyChiedSXnfoQ9H7C7GA+NFloVPyUFcA6q0vf
+	ZZLSAwg8KluUZf1vqf2SdtGiZtuKU/4hzJmhgtuRUUcdHWkDg1misqvVqi9VgcSKMKU=
+X-Gm-Gg: AZFdTZehp6gaqIzpHOx4G9SLSMKIGPGrZfO2mBx1ErgNUW8aFZjGxGv5KeNfCO5Les/
+	35aANV4wvrSx26V3eIcb+ZH7UCtFU+aTr6i7liahnzXAf80mIbashuZLOgg3kWv7k3KCBRhLYtq
+	lFGF+N2QDF0vviaJbH4wu6MMuAmN1uXEum4XGmz8fQ/TLL0NH/tKfd5AEfaNAORg/eh48pF4YUP
+	D904m/CZnXhMgzKqkUoKeULvuuoM9QNv5abPb/zhStZHAGqc35k820cxAQfBoD2YPii8U64mGHz
+	F6PEAw0r/Pu1fCaExb5kBqyUB3LcCPy4HGLz3H8IhTdjbLI6y7yt3wrhHrRit8+RysbFu2RfXgr
+	qgPuNo5s9uhMquOPTSicU8EEqwCfZZx8en3U9ghoVqNtbZHjoFl4ogmEs8pQYarlcYZ/Eja4De4
+	zki/8P6VgFL1zW/+4lAMhFL+6snj9dEa8DAXlXPVnD5MXQ4UAxRaXsPtLDp/sdlx52WD5WcKbxX
+	W1CRIeRSfPQtq3fKdBHU8GEMA0RVViq2N2DP8c/C9IXCPAGROOXFuN8rs2poQh4TuzPzCQx2x90
+	yVj88ZS6oXgDuS/xvintSBuHH/aiI9YwMm9g5wMrvkeL4weglIgt3rA=
+X-Received: by 2002:a05:620a:3188:b0:947:3673:f902 with SMTP id af79cd13be357-949ba9e9297mr3983731285a.55.1795731590418;
+        Thu, 26 Nov 2026 14:19:50 -0800 (PST)
 Received: from ?IPv6:2606:6d00:11:8ec9::c41? ([2606:6d00:11:8ec9::c41])
-        by smtp.gmail.com with ESMTPSA id af79cd13be357-949bb349db3sm1654907285a.7.2026.11.26.13.53.32
+        by smtp.gmail.com with ESMTPSA id af79cd13be357-94a09477acfsm454257385a.32.2026.11.26.14.19.48
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 26 Nov 2026 13:53:33 -0800 (PST)
-Message-ID: <a7e72cdb67e7ab8578b9ce44a4817ba35d1f822b.camel@ndufresne.ca>
-Subject: Re: [PATCH] media: mediatek: vcodec: NUL-terminate debugfs input
+        Thu, 26 Nov 2026 14:19:49 -0800 (PST)
+Message-ID: <c2ac221b70cc33e550f550ab21c1a5a5967d4676.camel@ndufresne.ca>
+Subject: Re: [PATCH] media: mediatek: vcodec: Free encoder controls when
+ setup fails
 From: Nicolas Dufresne <nicolas@ndufresne.ca>
-To: Jiale Yao <yaojiale02@163.com>, Tiffany Lin <tiffany.lin@mediatek.com>, 
- Andrew-CT Chen <andrew-ct.chen@mediatek.com>, Yunfei Dong
- <yunfei.dong@mediatek.com>, Mauro Carvalho Chehab	 <mchehab@kernel.org>,
- Matthias Brugger <matthias.bgg@gmail.com>,  AngeloGioacchino Del Regno
- <angelogioacchino.delregno@collabora.com>, Hans Verkuil
- <hverkuil@kernel.org>, linux-media@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org
-Cc: stable@vger.kernel.org
-Date: Thu, 26 Nov 2026 16:53:32 -0500
-In-Reply-To: <20261029053024.2526059-1-yaojiale02@163.com>
-References: <20261029053024.2526059-1-yaojiale02@163.com>
+To: Wentao Liang <vulab@iscas.ac.cn>, tiffany.lin@mediatek.com, 
+	andrew-ct.chen@mediatek.com, yunfei.dong@mediatek.com
+Cc: mchehab@kernel.org, linux-media@vger.kernel.org, 
+	linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
+	linux-kernel@vger.kernel.org, stable@vger.kernel.org
+Date: Thu, 26 Nov 2026 17:19:48 -0500
+In-Reply-To: <20261103083533.1176842-1-vulab@iscas.ac.cn>
+References: <20261103083533.1176842-1-vulab@iscas.ac.cn>
 Autocrypt: addr=nicolas@ndufresne.ca; prefer-encrypt=mutual;
  keydata=mDMEaCN2ixYJKwYBBAHaRw8BAQdAM0EHepTful3JOIzcPv6ekHOenE1u0vDG1gdHFrChD
  /e0J05pY29sYXMgRHVmcmVzbmUgPG5pY29sYXNAbmR1ZnJlc25lLmNhPoicBBMWCgBEAhsDBQsJCA
@@ -104,13 +100,13 @@ Autocrypt: addr=nicolas@ndufresne.ca; prefer-encrypt=mutual;
  ECHgcCF4AACgkQ2UGUUSlgcvRObgD/YnQjfi4+L8f4fI7p1pPMTwRTcaRdy6aqkKEmKsCArzQBAK8
  bRLv9QjuqsE6oQZra/RB4widZPvphs78H0P6NmpIJ
 Content-Type: multipart/signed; micalg="pgp-sha512";
-	protocol="application/pgp-signature"; boundary="=-DlJB1J9haeeqeVzf+bdm"
+	protocol="application/pgp-signature"; boundary="=-v7c+rvNTZeeZDaQiPqM0"
 User-Agent: Evolution 3.62.1 (3.62.1-1.fc45) 
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261126_135335_941763_E425F9D8 
-X-CRM114-Status: GOOD (  14.54  )
+X-CRM114-CacheID: sfid-20261126_141952_022184_7C498FBB 
+X-CRM114-Status: GOOD (  14.45  )
 X-Spam-Score: -1.9 (-)
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -129,62 +125,69 @@ X-Spam-Status: No, score=-13.9 required=3.0 tests=BAYES_00,DKIM_SIGNED,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
---=-DlJB1J9haeeqeVzf+bdm
+--=-v7c+rvNTZeeZDaQiPqM0
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 
-Le jeudi 29 octobre 2026 =C3=A0 13:30 +0800, Jiale Yao a =C3=A9crit=C2=A0:
-> mtk_vdec_dbgfs_write() allows userspace to overwrite every byte in the
-> persistent debugfs buffer. The read handler later searches that buffer wi=
-th
-> strstr(), which can read past its end when no NUL remains.
+Le mardi 03 novembre 2026 =C3=A0 08:35 +0000, Wentao Liang a =C3=A9crit=C2=
+=A0:
+> mtk_vcodec_enc_ctrls_setup() can fail after creating some controls. On
+> that error, fops_vcodec_open() jumps past the control handler cleanup and
+> frees the context, leaking the handler's controls and allocation.
 >=20
-> Reserve one byte and terminate the copied input at the updated file
-> position before releasing the debugfs lock.
+> Use the same control handler cleanup as the later m2m context creation
+> failure, and remove the now-unused label. No m2m context is released on
+> this path because its initialization has not been attempted yet.
 >=20
-> Fixes: 5e488a4fd859 ("media: mediatek: vcodec: Add a debugfs file to get =
-different useful information")
+> Fixes: 4e855a6efa54 ("[media] vcodec: mediatek: Add Mediatek V4L2 Video E=
+ncoder Driver")
 > Cc: stable@vger.kernel.org
-> Signed-off-by: Jiale Yao <yaojiale02@163.com>
-
-Reviewed-by: Nicolas Dufresne <nicolas.dufresne@collabora.com>
-
+> Assisted-by: DeepSeek-V4.1-Flash and OpenAI Codex
+> Signed-off-by: Wentao Liang <vulab@iscas.ac.cn>
 > ---
->  .../media/platform/mediatek/vcodec/common/mtk_vcodec_dbgfs.c | 5 ++++-
->  1 file changed, 4 insertions(+), 1 deletion(-)
+>  .../platform/mediatek/vcodec/encoder/mtk_vcodec_enc_drv.c      | 3 +--
+>  1 file changed, 1 insertion(+), 2 deletions(-)
 >=20
-> diff --git a/drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_dbg=
-fs.c b/drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_dbgfs.c
-> index 2da11521fc7b..8528534e41ef 100644
-> --- a/drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_dbgfs.c
-> +++ b/drivers/media/platform/mediatek/vcodec/common/mtk_vcodec_dbgfs.c
-> @@ -77,8 +77,11 @@ static ssize_t mtk_vdec_dbgfs_write(struct file *filp,=
- const char __user *ubuf,
->  =09struct mtk_vcodec_dbgfs *dbgfs =3D &vcodec_dev->dbgfs;
-> =20
->  =09mutex_lock(&dbgfs->dbgfs_lock);
-> -=09dbgfs->buf_size =3D simple_write_to_buffer(dbgfs->dbgfs_buf, sizeof(d=
-bgfs->dbgfs_buf),
-> +=09dbgfs->buf_size =3D simple_write_to_buffer(dbgfs->dbgfs_buf,
-> +=09=09=09=09=09=09 sizeof(dbgfs->dbgfs_buf) - 1,
->  =09=09=09=09=09=09 ppos, ubuf, count);
-> +=09if (dbgfs->buf_size > 0)
-> +=09=09dbgfs->dbgfs_buf[*ppos] =3D '\0';
->  =09mutex_unlock(&dbgfs->dbgfs_lock);
->  =09if (dbgfs->buf_size > 0)
->  =09=09return count;
+> diff --git a/drivers/media/platform/mediatek/vcodec/encoder/mtk_vcodec_en=
+c_drv.c b/drivers/media/platform/mediatek/vcodec/encoder/mtk_vcodec_enc_drv=
+.c
+> index 4e4541b2fc8e..dd47feea6acd 100644
+> --- a/drivers/media/platform/mediatek/vcodec/encoder/mtk_vcodec_enc_drv.c
+> +++ b/drivers/media/platform/mediatek/vcodec/encoder/mtk_vcodec_enc_drv.c
+> @@ -140,7 +140,7 @@ static int fops_vcodec_open(struct file *file)
+>  =09ret =3D mtk_vcodec_enc_ctrls_setup(ctx);
+>  =09if (ret) {
+>  =09=09mtk_v4l2_venc_err(ctx, "Failed to setup controls() (%d)", ret);
+> -=09=09goto err_ctrls_setup;
+> +=09=09goto err_m2m_ctx_init;
+>  =09}
+>  =09ctx->m2m_ctx =3D v4l2_m2m_ctx_init(dev->m2m_dev_enc, ctx,
+>  =09=09=09=09=09 &mtk_vcodec_enc_queue_init);
+> @@ -191,7 +191,6 @@ static int fops_vcodec_open(struct file *file)
+>  =09v4l2_m2m_ctx_release(ctx->m2m_ctx);
+>  err_m2m_ctx_init:
+>  =09v4l2_ctrl_handler_free(&ctx->ctrl_hdl);
+> -err_ctrls_setup:
 
---=-DlJB1J9haeeqeVzf+bdm
+Fix mtk_vcodec_enc_ctrls_setup() instead.
+
+Nicolas
+
+>  =09v4l2_fh_del(&ctx->fh, file);
+>  =09v4l2_fh_exit(&ctx->fh);
+>  =09kfree(ctx);
+
+--=-v7c+rvNTZeeZDaQiPqM0
 Content-Type: application/pgp-signature; name="signature.asc"
 Content-Description: This is a digitally signed message part
 
 -----BEGIN PGP SIGNATURE-----
 
-iHUEABYKAB0WIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCawiqXAAKCRDZQZRRKWBy
-9HvlAQC+KcPKwSaD7Ix8GCPtMRz0njYszGlIhj94VYNm0BjnnQEA8O7IpD79HTUk
-JcUCeKPKDEyp+qT34NJFPS+wfxGcZwY=
-=kTt2
+iHUEABYKAB0WIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCawiwhAAKCRDZQZRRKWBy
+9OypAQDmjeaO3tv2K1mt6YGlWFssP0QrnOt96UUjRwEVvDQy0AD+NPHYtKJ2HV/T
+EhM1Fwjl1AFFmsIQcqTGIoFBfxMBkgw=
+=EM4e
 -----END PGP SIGNATURE-----
 
---=-DlJB1J9haeeqeVzf+bdm--
+--=-v7c+rvNTZeeZDaQiPqM0--
 
