@@ -2,11 +2,11 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id C39BC606A69A
-	for <linux-mediatek@archiver.kernel.org>; Thu, 26 Nov 2026 00:54:02 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 6158F606A323
+	for <linux-mediatek@archiver.kernel.org>; Thu, 26 Nov 2026 00:54:06 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=PWg/yYiX;
-	dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=CVoSkYA4
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=aJP/CQV7;
+	dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=A+6Jj6Z/
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
@@ -14,63 +14,63 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	Message-Id:Date:Subject:Cc:To:From:Content-ID:Content-Description:Resent-Date
 	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=uU22h3jpaXKv8VPx4Lx9G4sdjfw/2Tu7j5+Bo/KJuE4=; b=PWg/yYiX4d3me+vPZ59VsdBcWe
-	QVj42R0G2Sjx5snPZk4I9dWONBCfjQMxfk+gLQ+IXc/UuiagQfGeZ/tPr+zd7P8/9qp2vGc6TcKEh
-	oAvah8lJCEfZYsAiJaUZ4/uwigGdYvHsEUMSFQ3uDQhvohTZ7Zryg+LXqAdHCXrrG8R/tK6QNvrHV
-	2/hu+J87e56K7/uEe3y0hpr8h/90dFJZg2NrtC6MX+j3OUGfbG4k67ze6599OxpHuWc3cdmxXWMvg
-	HUaP9dlRRBEbW3fmCmbXvLesM3p2Wu54WVwD5+ZdtslowsmVseljg6u7sH/TpFw2yztckVzgn7WAg
-	p5qQqFkA==;
+	bh=9Aotji1bql8zF+cwWe5ycVMLLsexz6kp97BBy83KPIc=; b=aJP/CQV7MlaahAMMkyyZtClVOw
+	OOCq5gbvEBnHDvT6GB4sWaYXFHeVevfoJEXGXZ+r04EalC1iN93+mswiSmGPmDbtZnJJu4OOqtwiX
+	lki9JJulRahhDJN8o76L/hFlSISnPwV0nutQKUYLwbu+EjE7NFzbJSclfqX9Zk+wHg6M2HzRjExAN
+	UkJ7Jc2Q+WcqSvFP8tMVIUrWrZVURsaNDkiuZDQrP8xgAW8g0FVpZ33bdyo1r58d2oka7vWCs4hwD
+	VC/foBEndXspoF5AVNzXJglbnGOi+dg8kQ7pbhW7HVx2+Yn6u2JbHlFQLeZjwG8GtyOYJyOypYKb9
+	FzTWlpcg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xWNkQ-0000000BiZE-16il;
-	Thu, 26 Nov 2026 00:54:02 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1xWNkT-0000000Bid5-3yb0;
+	Thu, 26 Nov 2026 00:54:05 +0000
+Received: from sea.source.kernel.org ([172.234.252.31])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xWNk1-0000000BiIn-23Hk;
-	Thu, 26 Nov 2026 00:53:37 +0000
+	id 1xWNk3-0000000BiK4-1txN;
+	Thu, 26 Nov 2026 00:53:39 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id E4A1862165;
-	Thu, 26 Nov 2026 00:53:36 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id E88024359C;
+	Thu, 26 Nov 2026 00:53:38 +0000 (UTC)
 Authentication-Results: smtp.kernel.org; arc=none smtp.remote-ip=100.80.115.77
 ARC-Seal: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256; cv=none;
-	t=1795654416;
-	b=U4eNpPdWjFR3iu4pk9HnKg1T7Nxnc+2ibWelBNLQouIg5XMkJNa2Q6gbb8+sKT1L+kdV
-	 oyYKTbY98LqCH/LObfL/2sPfzpajYI6pgc2XECM1lofMGbTqMeC8lEXgJ5uCJ8k9zEeA8
-	 uIJ0pm+Xp8ypzCinobrLlQ6VOTV+KMd957cCyU9rL1o7va3iscqZwyEWxzi7uCZUqtQKK
-	 0nGlFEDOGu9FL56rBXrjP+w1mmY6GuDU/LatOx/XJ40zD1qZ89Yv/brj2oYLdbs4EMLzA
-	 Ds1Gsv8+2Hzhd1GJlKY6Xe7kfM6GsE4MNZTiCF7urP9lVEow2vjM3uGm+aHzs1Iy70A==
+	t=1795654418;
+	b=d6QfRXjSrvvItr/6+cadxAKZsoG7FrUwCzpclttemOKQEJ70+s5UbJvPpbmFtFGnlYoS
+	 lDVOpy3EOaU3Z0ExN26PZkRbszVRdvCh0POPhvpVqVAX//scVCNGXVV5rv9IE4LXXxAST
+	 H7Kfe2mr3M5USIep+kBW1sDQsSu6cc3LoATytkMcrfPsHGBThSsjSS8KsMPT/YWlls0hF
+	 SaHQVpTqqhD6qv+bOkxWEbawVU/Ts6MPOLoB+PAQOJzU3aPo5+VjUP4PWzQvBk0xRflTw
+	 5CvCCLdbaQv1K7RlvSJE1a+ZNBZ9IHVLmdIhbOARus7lQnONE5j6TbZwgCs7PZaixWw==
 ARC-Message-Signature: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256;
-	c=relaxed/relaxed; t=1795654416;
+	c=relaxed/relaxed; t=1795654418;
 	h=DKIM-Signature:Received:From:To:Cc:Subject:Date:Message-Id:
 	 In-Reply-To:References:MIME-Version:Content-Type:X-Mailer:
 	 X-Developer-Signature:X-Developer-Key:X-Endpoint-Received:
 	 X-Original-From:Reply-To:Content-Transfer-Encoding;
-	bh=uU22h3jpaXKv8VPx4Lx9G4sdjfw/2Tu7j5+Bo/KJuE4=;
-	b=iQydiiG/GbQihixLE0A+IaCibQHxTFLJtwsrdVTA3MXf53lhijtZ1vjx6aD61NLsUjAe
-	 j8tPBbAAZmtno3dJWSm5MWPOrT0Iyy3tpIYOGrVr8eaBOxVkDWa9Z/Vm4aUDvqrwvQ/32
-	 hkP86MsFjy8T1RRPLJmVmtxAuxRoLz9B7mRaQtEsjdq1vIqk7mBND+g+eqLZNYJW0o+qX
-	 Yzpef88RspVJpQXIbSbPRRqEnH9eUv3jtNXq8/j4LU/2CY9VkkLka8BdnjXfCnO7ELpd2
-	 Vk2cSYkcT9noNvxj0eYhiL0wz+Wmc79snq/gw8+6FadHncQfab1Hk80arBlZT/eEzfw==
+	bh=9Aotji1bql8zF+cwWe5ycVMLLsexz6kp97BBy83KPIc=;
+	b=KWQ4qk7Zibmd0PFylKjhXmIX7xYYgBAEvjSUTjaoZI4orCDEkXPVDKs14ob+9+8RbOZ7
+	 onMo90rMcaaWgxvDVG1ghgCQen7flUwyjpdK4h7iccJhH1kC4xHwhSj/+51TKV7uNmNtg
+	 fVO+nwdutZ3LqQ11c9FUxmihnsqOizrDqRFBoDrVpCMPm294KYTNlHzDmEoZ+ZRByYYb1
+	 XROVs1nYQSAi36VA74dZAsC/3RfTYA7K7eoaQ6PbgSWI0LO7Tq21Ue6PrW7FbnNtVmBED
+	 tx1sv3VHaLLTDoZrXztPu+hG9cTSlBPHdUFJcHUzYYzLqnbJeOP5/Rgfko/xpGpYLxw==
 ARC-Authentication-Results: i=1; smtp.kernel.org; 
 	arc=none smtp.remote-ip=100.80.115.77
 Received: from lkml.kernel.org (nexus.subspace.kernel.org [100.80.115.77])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.kernel.org (Postfix) with ESMTPS id 8D8B31F000CF;
-	Thu, 26 Nov 2026 00:53:27 +0000 (UTC)
+	by smtp.kernel.org (Postfix) with ESMTPS id 7F3F61F000D4;
+	Thu, 26 Nov 2026 00:53:23 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1795654416;
-	bh=uU22h3jpaXKv8VPx4Lx9G4sdjfw/2Tu7j5+Bo/KJuE4=;
+	s=k20260515; t=1795654418;
+	bh=9Aotji1bql8zF+cwWe5ycVMLLsexz6kp97BBy83KPIc=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:Reply-To;
-	b=CVoSkYA4VTpjKgnbLGSLGd3+mjugv5vPoCrVeBkXpqUksIUBIVaLt1Z1rnjmkAtFA
-	 p8fhrSXzvEc3KD1rNjsiPWzWYlHzB3ieKAf4AJg7KGw2okvB6cQoZDvJIhMxAPFBPZ
-	 y6wQYpEpu/gP/+Eii8MvxE86cyNe5/x9mWOdE4qE++6Szm2qBp8gVHNkBda5k7pqcw
-	 tNdyr9u9G7pspwrWen7diFMJAfRZoro8bwq7fBTP9vlITo10yRmHlKcPP8JGlwJVwF
-	 Si1Wie9UPDV43ZgvFIqRFtsb5m+qnYw/gBLm9G5XUybiljl3s/ogLIDTPvadSeY/Rs
-	 IBvhbUbAhVoJw==
+	b=A+6Jj6Z/9PXSgpr2AaDPkLXxvjSaLnwhCyGp1VaPVt6arcGVt0aDUEwzEIF+aknEd
+	 8XNhIOwppq6ui/9h/CkwVuxBpWosc7WzjI3qh2AO4Sip4MdLu+nCgQVA19nUC9JpEd
+	 vyZD8HMhIIGqyuY+WCP1voFhDwVGYWNEZAv881M7r5VqoVbe/T5qQPXrOPIqejCiRR
+	 ZoQIiqGrkVPTuaOjvDh5jj+OMM4gLxXuKj5Ye0Pl3fySXVaF4VQgrZWNX0S7fgxt2n
+	 oMDKSCfhcqo9fY24qdJAgcsltbGaYVR2O9ywManIUWocS9Jej54gPMcq7MTEqpUg20
+	 OW7r/dbVqcZ/Q==
 Received: from nexus.subspace.kernel.org (localhost [IPv6:::1])
-	by lkml.kernel.org (Postfix) with ESMTP id 6E2624D140;
+	by lkml.kernel.org (Postfix) with ESMTP id 074694D134;
 	Thu, 26 Nov 2026 00:53:23 +0000 (UTC)
 From: Ilia Snezhkov via B4 Relay <devnull+iasnezhkov.gmail.com@kernel.org>
 To: daniel.lezcano@linaro.org, rafael@kernel.org, rui.zhang@intel.com, 
@@ -78,21 +78,21 @@ To: daniel.lezcano@linaro.org, rafael@kernel.org, rui.zhang@intel.com,
 Cc: matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com, 
  linux-pm@vger.kernel.org, linux-mediatek@lists.infradead.org, 
  linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: [PATCH 4/4] thermal/drivers/mediatek/lvts_thermal: skip sensors
- without a thermal zone in IRQ
-Date: Thu, 26 Nov 2026 00:53:25 +0000
-Message-Id: <20261126005321.71799-5-iasnezhkov@gmail.com>
+Subject: [PATCH 1/4] thermal/drivers/mediatek/lvts_thermal: write
+ LVTS_CALSCALE in lvts_ctrl_configure()
+Date: Thu, 26 Nov 2026 00:53:22 +0000
+Message-Id: <20261126005321.71799-2-iasnezhkov@gmail.com>
 In-Reply-To: <20261126005321.71799-1-iasnezhkov@gmail.com>
 References: <20261126005321.71799-1-iasnezhkov@gmail.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 X-Mailer: b4 0.16.0
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1795654402; l=1531;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1795654401; l=1283;
  i=iasnezhkov@gmail.com; s=mindone2026; h=from:subject:message-id;
- bh=GQljtqYQ6lcHw8R3VtJICUMkx+Xq1lALWiNrkmGHLgg=;
- b=DH/AUAWu5lnGqPy8+N3l9XPuuvdXd1jikIKHLwpyiWTax2zPR9JKcsvnhDQ2Z0kSFmJa1+W52
- S6YPolMrjUSAe9bNSFd6DBmtwUbgjzO1f7yZdbaIP+h96n3Oxg60u20
+ bh=DfpU2QqoC6gb2t4TCCBuYupqgxwpLO6QVGeUXzAFNXc=;
+ b=2bySduS9R3VaEm073Or1qqjPHuTmVrGNaFcC5OQ3+Hzxz0rBhNpPxGJrdIyjy0OFVMdrBP23H
+ VOVIOeoOk4oA+ttzyrJlMXKFNcbVolhIaKRP+68BAlRlYpSfVYocuvB
 X-Developer-Key: i=iasnezhkov@gmail.com; a=ed25519;
  pk=hQgXfiWi4ukk2jh4BHu1vRVhg9BUivo//AFp50AKMag=
 X-Endpoint-Received: by B4 Relay for iasnezhkov@gmail.com/mindone2026 with
@@ -120,43 +120,36 @@ X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 
 From: Ilia Snezhkov <iasnezhkov@gmail.com>
 
-lvts_ctrl_start() skips sensors absent from valid_sensor_mask as well as
-sensors whose thermal zone is not present in the device tree (-ENODEV),
-leaving lvts_ctrl->sensors[i].tz as NULL.
+lvts_ctrl_configure() assigns 0x300 and LVTS_CALSCALE_CONF (0x300) to
+the local variable `value`, then immediately overwrites `value` with the
+LVTS_MSRCTL0 filter setting without ever writing LVTS_CALSCALE (0x0048).
 
-lvts_ctrl_irq_handler(), however, loops over all four sensor slots and
-passes lvts_ctrl->sensors[i].tz unconditionally to
-thermal_zone_device_update(), which dereferences tz immediately if a
-status bit for an unpopulated sensor slot is set in LVTS_MONINTSTS.
-
-Check lvts_ctrl->sensors[i].tz before calling
-thermal_zone_device_update() while still acknowledging the status bit
-with W1C.
+Remove the dead duplicate assignment and write LVTS_CALSCALE_CONF to
+LVTS_CALSCALE(lvts_ctrl->base), matching the comment above it and
+MediaTek's downstream soc_temp_lvts initialization sequence.
 
 Found and drafted with an AI coding assistant.
 
 Fixes: f5f633b18234 ("thermal/drivers/mediatek: Add the Low Voltage Thermal Sensor driver")
 Signed-off-by: Ilia Snezhkov <iasnezhkov@gmail.com>
 ---
- drivers/thermal/mediatek/lvts_thermal.c | 5 +++--
- 1 file changed, 3 insertions(+), 2 deletions(-)
+ drivers/thermal/mediatek/lvts_thermal.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/drivers/thermal/mediatek/lvts_thermal.c b/drivers/thermal/mediatek/lvts_thermal.c
-index f0b7caa..5fc87a8 100644
+index 350fffd..e034c6c 100644
 --- a/drivers/thermal/mediatek/lvts_thermal.c
 +++ b/drivers/thermal/mediatek/lvts_thermal.c
-@@ -588,8 +588,9 @@ static irqreturn_t lvts_ctrl_irq_handler(struct lvts_ctrl *lvts_ctrl)
- 		if (!(value & masks[i]))
- 			continue;
+@@ -1197,8 +1197,8 @@ static int lvts_ctrl_configure(struct device *dev, struct lvts_ctrl *lvts_ctrl)
+ 	/*
+ 	 * LVTS_CALSCALE : ADC voltage round
+ 	 */
+-	value = 0x300;
+ 	value = LVTS_CALSCALE_CONF;
++	writel(value, LVTS_CALSCALE(lvts_ctrl->base));
  
--		thermal_zone_device_update(lvts_ctrl->sensors[i].tz,
--					   THERMAL_TRIP_VIOLATED);
-+		if (lvts_ctrl->sensors[i].tz)
-+			thermal_zone_device_update(lvts_ctrl->sensors[i].tz,
-+						   THERMAL_TRIP_VIOLATED);
- 		iret = IRQ_HANDLED;
- 	}
- 
+ 	/*
+ 	 * LVTS_MSRCTL0 : Sensor filtering strategy
 -- 
 2.54.0 (Apple Git-157)
 
