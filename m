@@ -2,102 +2,105 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 2423A606A329
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 20877606A326
 	for <linux-mediatek@archiver.kernel.org>; Thu, 26 Nov 2026 03:10:55 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=WN9zNxYz;
-	dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=hxaNfQAp
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=I0i3igZe;
+	dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=Dm6bE+3p
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
-	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
-	Cc:To:From:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:References:In-Reply-To:
+	Message-Id:Date:Subject:Cc:To:From:Content-ID:Content-Description:Resent-Date
+	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=Bg/82IN4Wy87wOHHZSyJO4FokdznUSuBCgBZuEyTglo=; b=WN9zNxYzf52Iaw8an62q1JUMpu
-	ZTEC00hcpBLbr2mBZHDeVUE3s8XAagHMVKrKxQgKlHT5Ce4IVVg44t63fJx6t73kU8Ide4Sa9poBy
-	M+shTPoloDPtPdJ/d1kiZmsNB8QSmsKtVtfXl/9K+URKUscfyg2KC+gLOsjIyeY78aPyMVTMiUyom
-	dYEDnSzCz+nnvaFVw1Dmu/bQEoMGfuNLKDslv3Zf+c2XMZyznHORH7YHofg/RVo/cvRYUKUgexwu2
-	9roZzS37wdJ4Gg26c1uT8bJAup7Q5tn6HaS+y0BRuXTh8xspiJePKA6JpTJh58DGUh1BqARyDK6hb
-	+MMcMLpw==;
+	bh=AzVBp8V02xdvD1PAYYydGq6b1gRqHEclSPYHpIQmkxc=; b=I0i3igZeACwDogG2FOiwQ+Dpc7
+	OtblJ3TehcNIn4ZA7SW/uYgSGe3Kq4Qsj4sqzjahIuuMcr8NVQMNYw2+b6D4E0ecBcLkF5uZE3v2/
+	YO32onSNakC8fEsYdinw9VjbEdFf63QSiFNkwgQImps4FW3yTc/8Oixfke7chJ5QgRKXfcp5+Ydrx
+	7z5Blob7Bq8JGoKPNXaGBMthqPficyZWaWGey9/ei2xhl/4fFfc1J6/CNSMqzjLXqxA56P94qcthS
+	MaCSJUxfxJuwXdhkUqj3ByR4KoTIl1aMgd+PqqLINa/bT9Vf2/50I6PvztAUjJHy3AnHdtDZr4joI
+	YShM5y5A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xWPss-0000000ByL4-2iUj;
+	id 1xWPss-0000000ByKu-2F10;
 	Thu, 26 Nov 2026 03:10:54 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xWPsO-0000000By4q-0xav
-	for linux-mediatek@lists.infradead.org;
-	Thu, 26 Nov 2026 03:10:24 +0000
+	id 1xWPsK-0000000By2M-3Nqc;
+	Thu, 26 Nov 2026 03:10:21 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 774BE61B0E;
-	Thu, 26 Nov 2026 03:10:23 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id 0937D61AE5;
+	Thu, 26 Nov 2026 03:10:19 +0000 (UTC)
 Authentication-Results: smtp.kernel.org; arc=none smtp.remote-ip=100.80.115.77
 ARC-Seal: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256; cv=none;
-	t=1795662622;
-	b=zxuzlPLdkrZMu0H6eNNh/QUsy8q+jRP6uhpcAj/ZxG4PJ4l3zxhiPA80aTe5q32zwxH0
-	 fSKA5QY9kChnvli6GzToJtbzxuHQWjwHMmruRkqYFawibp/GJx6kau2+8rygfKWKyT/He
-	 H07wYP/GvjQxUBqmFwA430duJ8zm09Z5gZBbHwwfbr8BZ8aL2Wvwyqvz7sG2M432gQfMN
-	 wmDl6oIL5l3ZM3Tg2RYnWqgdx4Xo2oQJ6hl1CAVE1iOVPwPu8o9Ky+TfE/PLLxI+ncLBh
-	 QJuez0YQtlZ1T9Qb6jiXgrBbHP32eqDQuVUlyBJtPRjKRmvwaScTc2mJbAi+8HcHtYQ==
+	t=1795662618;
+	b=0rFSG9LMIFrfVH/zRJmFflcmF6acKAOHspKqN71YRYGdJj7fiSL1BeoBAYbqCW/VUU+d
+	 kJFT1DChU8SyY9YABqO4vQKCfsYHMygruGxd26lqCD5OiT9daGM9TTlhSFddS+zDdL2gU
+	 9Yge36/hx55rLzKVW/ncwzsGNZbJwgId6bNgV9x91MH4IKKhpQBEwHcK6M1o4ELt45fc6
+	 9tDrcSQ8Kd/AmwpTaual/rhlyFoFH6WVYEzsqMrF9ITL8djQlbF0EUa1ZakeJAo0DtEFO
+	 tQ4zcDUaeC2KTsF8FJUFQAmAIrygHMSVPGkxWdx9ASgjT1psPkcejA0vqhjCYRIZHRA==
 ARC-Message-Signature: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256;
-	c=relaxed/relaxed; t=1795662622;
+	c=relaxed/relaxed; t=1795662618;
 	h=DKIM-Signature:Received:From:To:Cc:Subject:Date:Message-Id:
-	 MIME-Version:Content-Type:Content-Transfer-Encoding:X-Mailer:
+	 In-Reply-To:References:MIME-Version:Content-Type:X-Mailer:
 	 X-Developer-Signature:X-Developer-Key:X-Endpoint-Received:
-	 X-Original-From:Reply-To;
-	bh=Bg/82IN4Wy87wOHHZSyJO4FokdznUSuBCgBZuEyTglo=;
-	b=Qdx9hE/XN9L5n4hInv0f1UeOQZtFq8WpHZxT9M+7n0N0cIe5O8SYgQ6+MCrqdJEsY9BU
-	 Sdnm0m8W+KFgKpDrGzvUHFrkjgnEp5W7STjndWaf/YckvJv8TdLfcDb9W4EEMwUfwGnNZ
-	 rqqgPHUbppeQYV+2l5M6IakKJqn0bisno4d2yFSO8bvmJesrVhE+F2RTyz4SNDoYHp0Kh
-	 Jo3s1HV/M2nD8L5qMMwXDkgWUddbEJsWIuvQL81ZpljKWN+66J2pGlJ5O/n0RHE7kSQ6v
-	 Jcg9O5kJKwcqwy2w81y5oj7j94S4F1WYKJHSc8mfGUs0q/u6Lfq9ehPhyFI0AXV1v2w==
+	 X-Original-From:Reply-To:Content-Transfer-Encoding;
+	bh=AzVBp8V02xdvD1PAYYydGq6b1gRqHEclSPYHpIQmkxc=;
+	b=gRlf5yBEK9D2t4Pw/b7R4lUytWk1yj72NO3Tx1fP7qZgx5ZDdNYwYtD39FHl8nYtDD+6
+	 ZEFZX2E1vgaQjKknAz5iYrWZUtOPw5V9JgsRCpC8Nk4T8JdopTm8rNA2fEYzu/r3htfQJ
+	 9uJXHzrdqFsBZgevEPvtHDuJPoh6YywN1TwnG7bJt3vcP8/e29DDACOLKFBVyX667HC98
+	 8qG5mZ6F66WmNZ7elUX8rwEvJGaG23NQ6HgvfzkT0b/PpRZ3/pEnRxUYcybjRXdeJJ/KA
+	 aeK2uNt0OZSjIU7GHWfaVxQoYJ2zHoUm1oGpv5o9emyE7lBaPpE+6NNA8B9N7adwKew==
 ARC-Authentication-Results: i=1; smtp.kernel.org; 
 	arc=none smtp.remote-ip=100.80.115.77
 Received: from lkml.kernel.org (nexus.subspace.kernel.org [100.80.115.77])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.kernel.org (Postfix) with ESMTPS id EDA221F000E1;
-	Thu, 26 Nov 2026 03:10:09 +0000 (UTC)
+	by smtp.kernel.org (Postfix) with ESMTPS id 6C71E1F000CA;
+	Thu, 26 Nov 2026 03:10:04 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1795662622;
-	bh=Bg/82IN4Wy87wOHHZSyJO4FokdznUSuBCgBZuEyTglo=;
-	h=From:To:Cc:Subject:Date:Reply-To;
-	b=hxaNfQApg25Q3JPTU6Ev9V4az6aGqvdCs0ciMn+DlKmO7RBYZm6dwQVEacJAhAzci
-	 CpnHGsPbPs3N93N7I1sD4OsJPrTRbSACx/ExLjzfZNxa0orsHQlwrW2wNzwrgpRh3q
-	 ejDDTgAGL59HbkUspDgDGBO0ckO7BdLHj/sESnhK0Ctxc9HmjSp7RWBTKp+00QXvP3
-	 brVlhaqrkH7PnvCjD5ulr/po4wiuzsvCzUB3hv69jBkRLsGDGhxumJCAyVn4x0zpVv
-	 eb37kvKeSBQ92mL/WJJ6m6lryS7T8EMSsrp7/eLHReXcJuu8SQYC5pzIhmWRip4GjT
-	 6xro3ngpr48Xg==
+	s=k20260515; t=1795662618;
+	bh=AzVBp8V02xdvD1PAYYydGq6b1gRqHEclSPYHpIQmkxc=;
+	h=From:To:Cc:Subject:Date:In-Reply-To:References:Reply-To;
+	b=Dm6bE+3poryaAWZxRbfOpTVaQLLtoes/XIohvYqCls2MiLLAb2NqmS7Au93Tma2Zq
+	 Pj+MrkJvZxJbEsF80aY5bkrZosVsjDFEa0MYApZm0GrZqCoyFCRG08ftf+cPQ6on/s
+	 +QTIndf1B2SXQ1e05Mj9fI1fGBcDI5RTRQhupxxGIC7UBD62h6DfLmUKUzuD1/2b0b
+	 a6A81AvQ8Ppay7//0vo7ik737pw4XcBfWGvhMf5ve1NBisa+6c0nNcf+ykVw3WRnow
+	 THjaNjuhZq7Qpl1GPD50lucPg33S+pXsFkSJpoJKXFra1PG0bmP2INGJAOs7yt3Tvw
+	 5FWGCnt+dPgVg==
 Received: from nexus.subspace.kernel.org (localhost [IPv6:::1])
-	by lkml.kernel.org (Postfix) with ESMTP id 7F39F4D1D9;
-	Thu, 26 Nov 2026 03:10:09 +0000 (UTC)
+	by lkml.kernel.org (Postfix) with ESMTP id EE4904D1DD;
+	Thu, 26 Nov 2026 03:10:03 +0000 (UTC)
 From: Ilia Snezhkov via B4 Relay <devnull+iasnezhkov.gmail.com@kernel.org>
-To: peter.wang@mediatek.com, stanley.chu@mediatek.com, 
- martin.petersen@oracle.com, James.Bottomley@HansenPartnership.com
-Cc: matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com, 
- louisalexis.eyraud@collabora.com, linux-scsi@vger.kernel.org, 
- linux-mediatek@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: [PATCH v2 0/3] scsi: ufs: mediatek: pre-UniPro-1.8 adapt and clock
- scaling fixes
-Date: Thu, 26 Nov 2026 03:10:08 +0000
-Message-Id: <20261126031008.27506-1-iasnezhkov@gmail.com>
+To: matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com, 
+ robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org, 
+ broonie@kernel.org
+Cc: flora.fu@mediatek.com, amergnat@baylibre.com, leilk.liu@mediatek.com, 
+ me@adomerle.pw, devicetree@vger.kernel.org, linux-spi@vger.kernel.org, 
+ linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
+ linux-kernel@vger.kernel.org
+Subject: [PATCH v3 2/4] soc: mediatek: mtk-pmic-pwrap: Skip WDT source and
+ init on arbiter SoCs
+Date: Thu, 26 Nov 2026 03:10:03 +0000
+Message-Id: <20261126031001.27288-3-iasnezhkov@gmail.com>
+In-Reply-To: <20261126031001.27288-1-iasnezhkov@gmail.com>
+References: <20261126031001.27288-1-iasnezhkov@gmail.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
 X-Mailer: b4 0.16.0
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1795662608; l=1580;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1795662602; l=3028;
  i=iasnezhkov@gmail.com; s=mindone2026; h=from:subject:message-id;
- bh=BP06CLJVlJGdEHSpJcnNEfsWqrVwVf9F4B3gDHXexkk=;
- b=SOfVrfsX0so2wDlCf+TkdENLwrZyjD50wLxT6xdQB9Ovl06EZ84fiR2Y41EcTjnkOn218D1FZ
- iQSybmFGuTCCrcJ4DRGcFE34imQJlfBhGdO0Ba4PepOGZVehCGmH9n6
+ bh=kmTOzYxW78eOCC/oq6zgHXWDuldBs96hmayhgT5xr94=;
+ b=XnE64xGk1/3ejwmRWpsc69rVihvwtSkCvqbIymy+W8gukuwrH4PEuRa+tlxCx+teR7ZuDq07v
+ ErffP9ath3fBM18yREC1EWrds7AWv5VKQgEbvX1DZs1LdFg+145cB/W
 X-Developer-Key: i=iasnezhkov@gmail.com; a=ed25519;
  pk=hQgXfiWi4ukk2jh4BHu1vRVhg9BUivo//AFp50AKMag=
 X-Endpoint-Received: by B4 Relay for iasnezhkov@gmail.com/mindone2026 with
  auth_id=1643
 X-Original-From: Ilia Snezhkov <iasnezhkov@gmail.com>
+Content-Transfer-Encoding: 7bit
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -109,46 +112,84 @@ List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Reply-To: iasnezhkov@gmail.com
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-13.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-18.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,
-	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no
-	version=4.0.1
+	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=ham
+	autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-This series fixes three bugs in the MediaTek UFS host driver observed on
-MT6789 (UFS 2.2, pre-UniPro-1.8, HS-G3 rate B, no ufs_fde clock):
+From: Ilia Snezhkov <iasnezhkov@gmail.com>
 
-1. Skip ufshcd_dme_configure_adapt() when host->hw_ver.major < 3 so
-   pre-UniPro-1.8 hosts do not fail DME-SET on PA_TXHSADAPTTYPE (0x15d4)
-   on every power-mode change.
-2. Allow _ufs_mtk_clk_scale() to switch ufs_sel when the optional
-   ufs_fde clock is absent, matching ufs_mtk_is_clk_scale_ready().
-3. Round clki->max_freq and clki->min_freq with clk_round_rate() during
-   ufs_mtk_init_clocks() so PLL-derived clocks whose rounded rate
-   differs from the nominal DT frequency can scale back up in
-   ufshcd_devfreq_target().
+Commit 9d498d0b4043 ("soc: mediatek: pwrap: add arbiter capability")
+added PWRAP_CAP_ARB for PMIF-SPI arbiter SoCs (MT6873, MT8195, and the
+upcoming MT6789), where the bootloader already initializes the wrapper
+and the watchdog registers (PWRAP_WDT_UNIT, PWRAP_WDT_SRC_EN, and
+PWRAP_WDT_SRC_EN_1) are absent from the per-SoC register tables.
 
-Changes since v1:
-- Patch 1: corrected Fixes tag to 7212d624f863 ("scsi: ufs: host:
-  mediatek: Fix PWM mode switch issue") and clarified mainline behavior
-  after d3eba21c7170 vs older stable kernels.
-- Patch 3: use IS_ERR_OR_NULL(clki->clk) and cast max_rounded to u64
-  before comparing with U32_MAX to avoid 32-bit -Wtype-limits warnings.
-- Moved AI assistant disclosure out of commit logs (below --- and in
-  this cover letter).
+However, pwrap_probe() only guarded PWRAP_WDT_UNIT with
+!HAS_CAP(wrp->master->caps, PWRAP_CAP_ARB), leaving the writes to
+PWRAP_WDT_SRC_EN and PWRAP_WDT_SRC_EN_1 unconditional. Because omitted
+entries in static const int regs[] default to 0, those writes land at
+offset 0x0 (PWRAP_INIT_DONE2) and overwrite it with wdt_src
+(0xffffffff) on every probe. Similarly, falling into pwrap_init() on
+PWRAP_CAP_ARB SoCs would write legacy non-arbiter registers whose
+offsets also default to 0x0.
 
-Found on hardware and drafted with an AI coding assistant.
+Extend the !HAS_CAP(wrp->master->caps, PWRAP_CAP_ARB) guard in
+pwrap_probe() to cover PWRAP_WDT_SRC_EN, PWRAP_WDT_SRC_EN_1, and the
+cold pwrap_init() fallback.
 
-Ilia Snezhkov (3):
-  scsi: ufs: mediatek: skip PA_TXHSADAPTTYPE on pre-UniPro-1.8 hosts
-  scsi: ufs: mediatek: allow clock scaling when ufs_fde is absent
-  scsi: ufs: mediatek: round scalable clock bounds to clk_round_rate()
+Fixes: 9d498d0b4043 ("soc: mediatek: pwrap: add arbiter capability")
+Signed-off-by: Ilia Snezhkov <iasnezhkov@gmail.com>
+---
+New in v3 (caught during v2 review). Drafted with an AI coding assistant.
 
- drivers/ufs/host/ufs-mediatek.c | 58 +++++++++++++++++++++++++--------
- 1 file changed, 45 insertions(+), 13 deletions(-)
+ drivers/soc/mediatek/mtk-pmic-wrap.c | 21 ++++++++++++---------
+ 1 file changed, 12 insertions(+), 9 deletions(-)
 
+diff --git a/drivers/soc/mediatek/mtk-pmic-wrap.c b/drivers/soc/mediatek/mtk-pmic-wrap.c
+index 9067718..6b0d462 100644
+--- a/drivers/soc/mediatek/mtk-pmic-wrap.c
++++ b/drivers/soc/mediatek/mtk-pmic-wrap.c
+@@ -2533,7 +2533,8 @@ static int pwrap_probe(struct platform_device *pdev)
+ 	 * The PMIC could already be initialized by the bootloader.
+ 	 * Skip initialization here in this case.
+ 	 */
+-	if (!pwrap_readl(wrp, PWRAP_INIT_DONE2)) {
++	if (!HAS_CAP(wrp->master->caps, PWRAP_CAP_ARB) &&
++	    !pwrap_readl(wrp, PWRAP_INIT_DONE2)) {
+ 		ret = pwrap_init(wrp);
+ 		if (ret) {
+ 			dev_dbg(wrp->dev, "init failed with %d\n", ret);
+@@ -2554,16 +2555,18 @@ static int pwrap_probe(struct platform_device *pdev)
+ 	}
+ 
+ 	/* Initialize watchdog, may not be done by the bootloader */
+-	if (!HAS_CAP(wrp->master->caps, PWRAP_CAP_ARB))
++	if (!HAS_CAP(wrp->master->caps, PWRAP_CAP_ARB)) {
+ 		pwrap_writel(wrp, 0xf, PWRAP_WDT_UNIT);
+ 
+-	/*
+-	 * Since STAUPD was not used on mt8173 platform,
+-	 * so STAUPD of WDT_SRC which should be turned off
+-	 */
+-	pwrap_writel(wrp, wrp->master->wdt_src, PWRAP_WDT_SRC_EN);
+-	if (HAS_CAP(wrp->master->caps, PWRAP_CAP_WDT_SRC1))
+-		pwrap_writel(wrp, wrp->master->wdt_src, PWRAP_WDT_SRC_EN_1);
++		/*
++		 * Since STAUPD was not used on mt8173 platform,
++		 * so STAUPD of WDT_SRC which should be turned off
++		 */
++		pwrap_writel(wrp, wrp->master->wdt_src, PWRAP_WDT_SRC_EN);
++		if (HAS_CAP(wrp->master->caps, PWRAP_CAP_WDT_SRC1))
++			pwrap_writel(wrp, wrp->master->wdt_src,
++				     PWRAP_WDT_SRC_EN_1);
++	}
+ 
+ 	if (HAS_CAP(wrp->master->caps, PWRAP_CAP_ARB))
+ 		pwrap_writel(wrp, 0x3, PWRAP_TIMER_EN);
 -- 
 2.54.0 (Apple Git-157)
 
