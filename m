@@ -2,148 +2,84 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 93D65606A32C
-	for <linux-mediatek@archiver.kernel.org>; Thu, 26 Nov 2026 17:40:41 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id D8007606A321
+	for <linux-mediatek@archiver.kernel.org>; Thu, 26 Nov 2026 19:11:04 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=Pw7LqTSf;
-	dkim=pass (2048-bit key) header.d=thegoodpenguin-co-uk.20260707.gappssmtp.com header.i=@thegoodpenguin-co-uk.20260707.gappssmtp.com header.a=rsa-sha256 header.s=20260707 header.b=VxHay0ay
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=rPvSdN8B;
+	dkim=pass (2048-bit key) header.d=bootlin.com header.i=@bootlin.com header.a=rsa-sha256 header.s=dkim header.b=oj4WkvGj
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
-	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:
+	Content-Transfer-Encoding:Content-Type:MIME-Version:Message-Id:Date:Subject:
+	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
 	List-Unsubscribe-Post:List-Owner;
-	bh=WnUI0hkBPpSkdO9GvSJqBbk00QrZu2iiDVFhG7JTP+o=; b=Pw7LqTSfcapsKTPA8JTFUSdBkF
-	c2vWW1EPCFtjTGKRr+7Q2dUp/T89JWFpsbgg66fK7E1Ss9vb5R41327BzIOfQNLMgumBthXyc8qOr
-	qpiENaeZnO/XI+QCg9uid59ibeFiVWIwcAApFW4sxUwVIEqxblBpLSCEedy2/yeLeIIGFaHTA1tak
-	cx/hVwJQz5xZu/UC72ZEB25xo73Oz4wdPam47mb8ENFvmPmyFhJjyJ3eEDmc4rUOa4JQxKo2PpJBu
-	ki3+xkQIeI6XP9MoprsmFT6P1rfwx9YBDYUgcJcmto6h7pAmVlMgpBhvcAvtWsJ0xa6aklje+BD8V
-	rkBm6APg==;
+	bh=fejE54wjl8pNmBwZZ3oMj7oENLwjgt5QRFDy7wYzURY=; b=rPvSdN8BYoICY2/PxoOJy0Xwnx
+	S1HAVZ0KQMWNvIw89sq2gHPQbbRNkawLF+TPH+GwnWOJHimT6kskV3cxl0BzC59jvRCo1qYxHr7Sb
+	49t8a0gkcDhY6gG9p9QGSXf6VPU72k0zSln+RMOxUapNUDOB8/h0atj1FUXRkOIDySMEb+zvd8SYd
+	p/yrKRmYgCeBFpmtjMhg6WtAUGoZHMZWGh+bkKKdT5TPRW1K2XHuvcIYg5uGqKSHZgIhDKuV1jpun
+	epo0a3L3ip2Yb1haSWY0f//pyC2i1aW2h7gVIwQt6pInTqxqdCmtugWWSDJmiwjOAWiPb82XPpYpe
+	u1v3Zt6A==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xWdSb-0000000E5YN-0VSq;
-	Thu, 26 Nov 2026 17:40:41 +0000
-Received: from mail-qv1-xf2d.google.com ([2607:f8b0:4864:20::f2d])
+	id 1xWes0-0000000EEE7-1sYW;
+	Thu, 26 Nov 2026 19:11:02 +0000
+Received: from smtpout-02.galae.net ([185.246.84.56])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xWdST-0000000E5Vo-22RF
-	for linux-mediatek@lists.infradead.org;
-	Thu, 26 Nov 2026 17:40:39 +0000
-Received: by mail-qv1-xf2d.google.com with SMTP id 6a1803df08f44-92107df3f13so68474306d6.3
-        for <linux-mediatek@lists.infradead.org>; Thu, 26 Nov 2026 09:40:32 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1795714831; cv=none;
-        d=google.com; s=arc-20260327;
-        b=KvhU7BzK3RZ4UDu11vaUQ/0xQ/S2Pjn9/nczo/eHACPKIYrl+pI2vLZY4D8wBuwqgP
-         ruD6ITm9XPcy0z46gFfR1ouVjkeZy6tpN07sWqyIaskgIVzJ9aqu9Q/GuD2zTetZK6iE
-         4b2exLhxnlY3CCOXexkgeuYHnMEW7G4BAUveD/Lhk5Rn+uMiLYIroT3YhpbNIKSZ7YP2
-         Wc8iR3y1jUp7fOifRgAi/F4lXFQJxvZFcTp0x9Bt8Tp4VGQH/Mlpn6t7XTK6j05VuclQ
-         38eFa1keiQAKWIGhjuoMx9dxIFLqax3mpbi6yztwyMoUShVfkarYiMiiSQl3VpKycWIy
-         Lhiw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20260327;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:dkim-signature;
-        bh=WnUI0hkBPpSkdO9GvSJqBbk00QrZu2iiDVFhG7JTP+o=;
-        fh=enDipwNc5kJfjY69bggdCGyJsxrvnRpdrhruzF5cLJ8=;
-        b=EXdeI+asqM6qKNYxOQyhM4rkRwPZiWvjZWg8BN8G8fS4aEAFGXcWSgV31vuVsOBsnB
-         ZYPIq/drPzn5vJpO5uE1vt4cwoDW33KNvQeyYziR6t0BB5H17+1bUoBRilPmwfUuLnUY
-         YsADrR7gli59V0dkHtgwVbhKtb25XSbh5OeKdt6z1LJs8nHqR6IPxuFlZxvRkYGdwwK8
-         CLhvg/tp0wsaUfY9GwXOF16Y3khYsCcRhq9kpLUBuF0izEOVXXF/pUGFmlib6mdbyIBo
-         HKWd9PBapXaq4JHSDZ+1WkDR6mKNAbt0tR/sGK/v8b+Xxwmj9FhU9WtrLafRRiW5bMxX
-         OHZw==;
-        darn=lists.infradead.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=thegoodpenguin-co-uk.20260707.gappssmtp.com; s=20260707; t=1795714831; x=1796319631; darn=lists.infradead.org;
-        h=content-type:cc:to:subject:message-id:date:from:in-reply-to
-         :references:mime-version:from:to:cc:subject:date:message-id:reply-to
-         :content-type;
-        bh=WnUI0hkBPpSkdO9GvSJqBbk00QrZu2iiDVFhG7JTP+o=;
-        b=VxHay0ayWMBkPrR0IZBE3l2e6MsS1rFkyEQdtc0XVyFRu7C9YzynpPlxsiZlnxe+yk
-         SohBf2dEGbu5BA+fZl6132ElL65aad9Rt8XKBfCtQKneMQRrkygkzaoWZfHqgjGiIa6P
-         Uss8KKmAAz7zSDbQR6jxKltr4nY8Y2OZceahiMR6Ou5ztvl2m7E/M0hc5/t7gT3nfT1b
-         eHlvvbvFgyHe94z2CGyxC6laN5eachos4FMm5CTC3wf7h+ooxXKrv1DAlq/YtdVw4jaO
-         EDUvA8BlpDbdFDN4He3pCNdsaECBMqSyR3N17zfy0jZ2KeeRtBVH9GEgSNn8vi05qM4H
-         p57A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1795714831; x=1796319631;
-        h=content-type:cc:to:subject:message-id:date:from:in-reply-to
-         :references:mime-version:x-gm-gg:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to:content-type;
-        bh=WnUI0hkBPpSkdO9GvSJqBbk00QrZu2iiDVFhG7JTP+o=;
-        b=L2iyQVmr9HeGe0fHwtFhhBOd75eerNXRmFrymKFjjwd02uYxOaOvsLrVMkWNoyCn4O
-         DkSF6YuqOLDCHCLj3si6j8c8Zcyi9yGiOCcehBWkuLQEnVGTqAKiaCmMOp18e7JFj6S+
-         SoceXc5nc5P6Sj4tMHcO8VgPbvhob80EtrIHGznmqBQNN2TjFHB5DyJApK+z16TBA8JT
-         PPjn6uHtovLgq88B4+TD2ZRQ3sCvyTKfZTzeLFpC1KwCyk5VHncs74XPCqoc7D7jnNJ+
-         sf4Ja4BfQRykrrdApV3IeCU85PwllOcfXSAqpDJR5diuLheiwBfgvySCNrQKz7wMB6q4
-         /EbA==
-X-Forwarded-Encrypted: i=1; AL+hErHxwqx5S5dNqyN8VS7jKl6azRPtPNECDkfEonIAga8h3LyCI6gQq0xjpoWYMNsPxoMfJDtavvViHxeNOp1iLw==@lists.infradead.org
-X-Gm-Message-State: APuU4Z9RvjkFG+ohdryOCHAIReTc9jDoHFpk6WLhJ9EfFxbhuyMwwiXE
-	Pvs//hKPWNyb6eX26q+H+84yDTCYEplO2Oep1m8pfX2H3VqeS43MEMZLuN+G2v3NB7YIIGD1rrH
-	S7BMcVDfeEy+8qdnvV+WIqzWb7gwcR8YV1vB9X3yRyw==
-X-Gm-Gg: AZFdTZdfUDnPfw0CW2JO8y8vECevXZXO/3K355vi+bLbtk7942ELafYehTmrMNgyeSw
-	31rJJt8HbSJTvF8ys5Se2rP04veZ7M4M0DehGXbE5E4lQAAdsBofWGk2zfuhW0UUPQgtuaRcit3
-	IDGb75XXnVDH4vtipSNJylOdmLyry/NDe8oUhYTwNqLyVSev1k3EuHMRPyCq7vkyASCvdImE3rF
-	yjrBD6q/YfehqwfJRdRGlicQ/ykYWEARvGP9dENRvbZNUII4/TAHXK+tBGYQZRrfsq8kFXBPIE4
-	U5XwRPdIB6y7gTFWHWukPwYmXrRDtCcCOHDp0OzIJqua7hAP3WanTeC1vgO8ELPja/wtVgKnbtW
-	nxg0r8gegXjR6KHqqa+oR4nEOTiRszwsQm030HrVd3M0o67g7qtXeAR42sZIdmpQKIoS2LHU=
-X-Received: by 2002:a05:6214:3c9d:b0:91c:9316:f4e8 with SMTP id
- 6a1803df08f44-92134baab8amr374316166d6.54.1795714831544; Thu, 26 Nov 2026
- 09:40:31 -0800 (PST)
+	id 1xWerx-0000000EEDK-2yMG;
+	Thu, 26 Nov 2026 19:10:59 +0000
+Received: from smtpout-01.galae.net (smtpout-01.galae.net [212.83.139.233])
+	by smtpout-02.galae.net (Postfix) with ESMTPS id 523021A181E;
+	Thu, 26 Nov 2026 19:10:54 +0000 (UTC)
+Received: from mail.galae.net (mail.galae.net [212.83.136.155])
+	by smtpout-01.galae.net (Postfix) with ESMTPS id 24F0360558;
+	Thu, 26 Nov 2026 19:10:54 +0000 (UTC)
+Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id AC92C11E691C1;
+	Thu, 26 Nov 2026 20:10:36 +0100 (CET)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=dkim;
+	t=1795720248; h=from:subject:date:message-id:to:cc:mime-version:content-type:
+	 content-transfer-encoding; bh=fejE54wjl8pNmBwZZ3oMj7oENLwjgt5QRFDy7wYzURY=;
+	b=oj4WkvGjpbEtCXPXvNYdoiZmxVhE6DjkCqZq0eOfEiUFId5EcyjXmi4+P6Koqyi5JkVTKe
+	M7A+g43HhTLnx2u5ekqs+lz94vuYcuMxDNgxPmy5+iJcNdkM/uBGv1ugIK4TgXOR8r6Nf3
+	kXb0wpd2BGkBxjUnK0aMg0qZ8dQIrlsWhKIFkcOT5HpHHp3wRXW1u3fMqO5cQc5Bj6+CpA
+	rR1z5AOoNbbiNUiJTHsqRfSfqir6IXN9J9KvjrXzbAJ2bDqlIC1SlbnQ6BfNU7GKqAE8Uq
+	QehLkdjxDtvfc486eBghnDQ5cah8AN3WtAhVwur1im9H/KCTC9hloLnpMF1xDQ==
+From: Miquel Raynal <miquel.raynal@bootlin.com>
+Subject: [PATCH 00/12] spi: Misc fixes around the dummy buswidth handling
+Date: Thu, 26 Nov 2026 20:10:19 +0100
+Message-Id: <20261126-macronix-upstreaming-spi-driver-fixes-v1-0-ca8e924cca1b@bootlin.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-References: <20261125-acpi-mtd-v1-0-42ad2f645bee@thegoodpenguin.co.uk>
- <awcZcuSbse5g3FWK@monoceros> <87v75jyiw2.fsf@bootlin.com> <awg4ubbFu0FksThB@monoceros>
- <87a4mvwv1b.fsf@bootlin.com>
-In-Reply-To: <87a4mvwv1b.fsf@bootlin.com>
-From: Pawel Zalewski <pzalewski@thegoodpenguin.co.uk>
-Date: Thu, 26 Nov 2026 17:40:20 +0000
-X-Gm-Features: Aa3M54pTYXahjqTv7_MT1I1wEAeHDvmXQpnCEn41MhhclxuSVrfOIbrke1NKz3k
-Message-ID: <CAA6zWZKPY-wjq_sbheLBK-k1b6rCdXs353b7j-fTYB6vTGLmGA@mail.gmail.com>
-Subject: Re: [PATCH 00/10] mtd: use desginated initializers in *_device_id arrays
-To: Miquel Raynal <miquel.raynal@bootlin.com>
-Cc: =?UTF-8?Q?Uwe_Kleine=2DK=C3=B6nig?= <u.kleine-koenig@baylibre.com>, 
-	Richard Weinberger <richard@nod.at>, Vignesh Raghavendra <vigneshr@ti.com>, Pratyush Yadav <pratyush@kernel.org>, 
-	Michael Walle <mwalle@kernel.org>, Takahiro Kuwano <takahiro.kuwano@infineon.com>, 
-	Vladimir Zapolskiy <vz@mleia.com>, Robert Jarzmik <robert.jarzmik@free.fr>, 
-	Alexander Usyskin <alexander.usyskin@intel.com>, Joern Engel <joern@lazybastard.org>, 
-	Madhavan Srinivasan <maddy@linux.ibm.com>, Michael Ellerman <mpe@ellerman.id.au>, 
-	Nicholas Piggin <npiggin@gmail.com>, "Christophe Leroy (CS GROUP)" <chleroy@kernel.org>, 
-	"Ritesh Harjani (IBM)" <ritesh.list@gmail.com>, Shrikanth Hegde <sshegde@linux.ibm.com>, 
-	Michal Simek <michal.simek@amd.com>, Nicolas Ferre <nicolas.ferre@microchip.com>, 
-	Alexandre Belloni <alexandre.belloni@bootlin.com>, Claudiu Beznea <claudiu.beznea@tuxon.dev>, 
-	Brian Norris <computersforpeace@gmail.com>, Kamal Dasu <kamal.dasu@broadcom.com>, 
-	Broadcom internal kernel review list <bcm-kernel-feedback-list@broadcom.com>, 
-	William Zhang <william.zhang@broadcom.com>, Anand Gore <anand.gore@broadcom.com>, 
-	Kursad Oney <kursad.oney@broadcom.com>, Florian Fainelli <florian.fainelli@broadcom.com>, 
-	=?UTF-8?B?UmFmYcWCIE1pxYJlY2tp?= <rafal@milecki.pl>, 
-	Ray Jui <rjui@broadcom.com>, Scott Branden <sbranden@broadcom.com>, Han Xu <han.xu@nxp.com>, 
-	Paul Cercueil <paul@crapouillou.net>, Harvey Hunt <harveyhuntnexus@gmail.com>, 
-	Keguang Zhang <keguang.zhang@gmail.com>, Piotr Wojtaszczyk <piotr.wojtaszczyk@timesys.com>, 
-	Liang Yang <liang.yang@amlogic.com>, Neil Armstrong <neil.armstrong@linaro.org>, 
-	Kevin Hilman <khilman@baylibre.com>, Jerome Brunet <jbrunet@baylibre.com>, 
-	Martin Blumenstingl <martin.blumenstingl@googlemail.com>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Frank Li <Frank.Li@nxp.com>, 
-	Sascha Hauer <s.hauer@pengutronix.de>, Pengutronix Kernel Team <kernel@pengutronix.de>, 
-	Fabio Estevam <festevam@gmail.com>, Manivannan Sadhasivam <mani@kernel.org>, Heiko Stuebner <heiko@sntech.de>, 
-	Maxime Coquelin <mcoquelin.stm32@gmail.com>, Alexandre Torgue <alexandre.torgue@foss.st.com>, 
-	Chen-Yu Tsai <wens@kernel.org>, Jernej Skrabec <jernej.skrabec@gmail.com>, 
-	Samuel Holland <samuel@sholland.org>, Stefan Agner <stefan@agner.ch>, Lucas Stach <dev@lynxeye.de>, 
-	Thierry Reding <thierry.reding@kernel.org>, Jonathan Hunter <jonathanh@nvidia.com>, 
-	Jacky Huang <ychuang3@nuvoton.com>, Shan-Chun Hung <schung@nuvoton.com>, 
-	Tudor Ambarus <tudor.ambarus@linaro.org>, Linus Walleij <linusw@kernel.org>, 
-	Kyungmin Park <kyungmin.park@samsung.com>, linux-mtd@lists.infradead.org, 
-	linux-arm-kernel@lists.infradead.org, linuxppc-dev@lists.ozlabs.org, 
-	imx@lists.linux.dev, linux-mips@vger.kernel.org, 
-	linux-amlogic@lists.infradead.org, linux-kernel@vger.kernel.org, 
-	linux-mediatek@lists.infradead.org, linux-arm-msm@vger.kernel.org, 
-	linux-rockchip@lists.infradead.org, linux-stm32@st-md-mailman.stormreply.com, 
-	linux-sunxi@lists.linux.dev, linux-tegra@vger.kernel.org
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+X-B4-Tracking: v=1; b=H4sIAAAAAAAC/yWNQQ6DMAwEvxL5XFclVED5SsUhBEN9SEJtQEiIv
+ zcqx5mVZg9QEiaF1hwgtLFyihmKmwH/cXEi5CEz2IetisJWGJyXFHnHddZFyAWOE+rMOAhvJDj
+ yTor9qxybsa8bV5eQW7PQf8ipd3ex0HfNd8sloXdK6FMIvLRmq+9PFF9Cd54/hr90GKMAAAA=
+X-Change-ID: 20261126-macronix-upstreaming-spi-driver-fixes-b93f8fb78a73
+To: Raju Rangoju <Raju.Rangoju@amd.com>, 
+ Krishnamoorthi M <krishnamoorthi.m@amd.com>, 
+ Mark Brown <broonie@kernel.org>, CL Wang <cl634@andestech.com>, 
+ Nicolas Ferre <nicolas.ferre@microchip.com>, 
+ Alexandre Belloni <alexandre.belloni@bootlin.com>, 
+ Claudiu Beznea <claudiu.beznea@tuxon.dev>, 
+ Yang Shen <shenyang39@huawei.com>, 
+ Matthias Brugger <matthias.bgg@gmail.com>, 
+ AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
+ Michal Simek <michal.simek@amd.com>
+Cc: Thomas Petazzoni <thomas.petazzoni@bootlin.com>, 
+ Cheng Ming Lin <linchengming884@gmail.com>, 
+ Alvin Zhou <alvinzhou@mxic.com.tw>, 
+ Cheng Ming Lin <chengminglin@mxic.com.tw>, linux-spi@vger.kernel.org, 
+ linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
+ linux-mediatek@lists.infradead.org, linux-riscv@lists.infradead.org, 
+ Miquel Raynal <miquel.raynal@bootlin.com>
+X-Mailer: b4 0.14.3
+X-Last-TLS-Session-Version: TLSv1.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261126_094033_650548_28CD7DB6 
-X-CRM114-Status: GOOD (  10.60  )
-X-Spam-Score: -1.9 (-)
+X-CRM114-CacheID: sfid-20261126_111057_886508_100B5304 
+X-CRM114-Status: UNSURE (   9.62  )
+X-CRM114-Notice: Please train this message.
+X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -154,22 +90,59 @@ List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-3.9 required=3.0 tests=BAYES_00,DKIM_SIGNED,
-	DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=no
+X-Spam-Status: No, score=-18.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,
+	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=ham
 	autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-> Let me know what you intend to do.
-I might as well address the nitpick since we are refactoring already,
-so please wait for v2.
+While working on the dummy.nbytes -> dummy.ncycles conversion and
+especially the conversion of the spi controller drivers, I realized
+there were many misuses of the buswidth (plus some misc enhancements).
 
-> Not related but since you were removing the /* sentinel */ comment
-> sometimes, when do we get rid of those extra entries entirely?
-I don't really know if there are any plans for that, I certainly will
-not attempt that anytime soon.
+This series is sometimes limiting the dummy buswidth to be the same as
+the data buswidth, which means I am now flagging controllers (or at
+least drivers) which I believe do not support 1-1-2, 1-1-4 or 1-1-8
+transfers. This is required to avoid issues on the number of dummy
+cycles on controllers handling the dummy phase as an amount of data
+("bytes"). For the controllers managing cycles we now have a much
+cleaner alternative, which will be implemented in a following series.
 
-Thanks,
-Pawel
+Signed-off-by: Miquel Raynal <miquel.raynal@bootlin.com>
+---
+Miquel Raynal (12):
+      spi: amd: Validate the dummy buswidth
+      spi: amlogic-spifc-a1: Fix a typo in a macro
+      spi: atcspi200: Validate the dummy buswidth
+      spi: ath79: Validate the dummy buswidth
+      spi: atmel-quadspi: Drop redundant address buswidth check
+      spi: atmel-quadspi: Reject SDR address with DDR data
+      spi: atmel-quadspi: Advertise DTR for the octal controller
+      spi: hisi-sfc-v3xx: Validate the dummy buswidth
+      spi: mtk-nor: Validate the dummy buswidth
+      spi: sg2044-nor: Validate the dummy buswidth
+      spi: ti-qspi: Validate the dummy buswidth
+      spi: zynq-qspi: Validate the dummy buswidth
+
+ drivers/spi/atmel-quadspi.c        |  6 +++++-
+ drivers/spi/spi-amd.c              |  3 +++
+ drivers/spi/spi-amlogic-spifc-a1.c |  6 +++---
+ drivers/spi/spi-atcspi200.c        | 13 +++++++++++++
+ drivers/spi/spi-ath79.c            |  3 ++-
+ drivers/spi/spi-hisi-sfc-v3xx.c    |  3 +++
+ drivers/spi/spi-mtk-nor.c          |  3 +++
+ drivers/spi/spi-sg2044-nor.c       | 13 +++++++++++++
+ drivers/spi/spi-ti-qspi.c          | 13 +++++++++++++
+ drivers/spi/spi-zynq-qspi.c        |  4 ++++
+ 10 files changed, 62 insertions(+), 5 deletions(-)
+---
+base-commit: 19d1b4de6d37bccecc3ad9144d279f1baa405eb1
+change-id: 20261126-macronix-upstreaming-spi-driver-fixes-b93f8fb78a73
+
+Best regards,
+-- 
+Miquel Raynal <miquel.raynal@bootlin.com>
+
 
