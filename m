@@ -2,115 +2,106 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 70AD4606A336
-	for <linux-mediatek@archiver.kernel.org>; Thu, 26 Nov 2026 09:33:33 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id EFCAB606A339
+	for <linux-mediatek@archiver.kernel.org>; Thu, 26 Nov 2026 10:01:16 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=Ag9LHdZk;
-	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=yctRHugk
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=QnpcVMZR;
+	dkim=pass (1024-bit key) header.d=chromium.org header.i=@chromium.org header.a=rsa-sha256 header.s=google header.b=Z4AlVUDG
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Type:Cc:To:Subject:
-	Message-ID:Date:From:In-Reply-To:References:MIME-Version:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
-	List-Unsubscribe-Post:List-Owner;
-	bh=JGbTvmGYxAXv1/EcBwgvim0eodoihEUYoQ15lt3DIkM=; b=Ag9LHdZkqI+izpcQ7LWuCVdN3X
-	oNEUlmb3rYp4MhFODEXYhBrOQawB26KqaGpX0FTCO+KujN1nWKyNRK0zuk2CeHL4DLtOsdynudx+a
-	nMcMy5mb4YX7F3XqAEUgI7kRFuPnT7CDhBq5XD4PCtoKJnlL2n13eo6/vOwrkYmfaweEuDlE34+yk
-	RtxI0McXbz/vF+0Gb+caSRbXLh8I7QD1Z700kY0yQ0edHDFSJm1WYjYR4lkyZz4Qlqi96fbxlLCez
-	7R37/eEKoaqtiL6I7ylWnhuU6BHpQ7N6scXHCG8M93Zyxx7+6BYtDUKGE8sSaUDBK2J0w9pNYTMod
-	omJW2vcg==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
+	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Unsubscribe-Post:
+	List-Owner; bh=aPAOj8/sEiImf5Q5w0lmK7mWVF1uN6/NWzG/i3miSOs=; b=QnpcVMZRKrTnaI
+	+RatrF5tutc7KD4bE7rKvijxqGeZKaXrZpqETrJX6VvxLmCbujvB+oWq0qccTejCMH00dHLejtkdp
+	lvlMDAKj9po2LfiUloaB/1jqEtvZGvHIOSU6ojkAJZrtUF2AXwsOUufkOFGXY89uWOc3KvVXcOV5s
+	bMi4CfDIxaUywrRA3XTcBHBBSsL8slrlupKJeuv0tzSAAtEZUOi+hNjNEu/ebDZQrfqM4/oZ/ImyT
+	hfw5uKKS+DoVPhN3K329T9E1VcYePKPyTaIfa0AS63XJ6fdPSU4k6CGSHa6HpAq1gQAgV6bEM4/Es
+	BVJF9iMAtqvezAOdjXHQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xWVrA-0000000CZej-46QF;
-	Thu, 26 Nov 2026 09:33:33 +0000
-Received: from mail-ed1-x52b.google.com ([2a00:1450:4864:20::52b])
+	id 1xWWI0-0000000CgpJ-2pZV;
+	Thu, 26 Nov 2026 10:01:16 +0000
+Received: from mail-pg1-x52d.google.com ([2607:f8b0:4864:20::52d])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xWVr9-0000000CZda-0R4Y
+	id 1xWWHx-0000000CgoA-2Ywe
 	for linux-mediatek@lists.infradead.org;
-	Thu, 26 Nov 2026 09:33:32 +0000
-Received: by mail-ed1-x52b.google.com with SMTP id 4fb4d7f45d1cf-6b8b20b2538so7848098a12.3
-        for <linux-mediatek@lists.infradead.org>; Thu, 26 Nov 2026 01:33:30 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1795685609; cv=none;
-        d=google.com; s=arc-20260327;
-        b=lKemuYXQFL13n+p3qxfp9bhqfq4U1+10N0WCnIb9/cuQTZKUMTbcFLD48xQSX9ssPe
-         wfydnBp/bYqOX1MWcHmIC7/Yqxxa4JzG6rTz3k/tF9MY6EeSvN7LCp/0JI/PVQOW8ZMq
-         iKCKtL5GnbMkQ+ADAs2sVXZPAO6wDUXluUcC+cK7fD4A6Lx3MEZCUnU/nYMjYtptvIqI
-         jV/oWQekD50gaftGD7jXaBU8fnDp3n4JyCpAEdiDQZj/fKZx/Kgscsd/E03hcxBJ5WNI
-         ECP0A1EPtGDyugYOT2hpgoDguR81T1UAGCO1DDNj6doEdpEETpX7hDjxMIItRqfkjGLr
-         scrg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20260327;
-        h=cc:to:subject:message-id:date:from:in-reply-to:references
-         :mime-version:dkim-signature;
-        bh=JGbTvmGYxAXv1/EcBwgvim0eodoihEUYoQ15lt3DIkM=;
-        fh=5ibTsgZYBOkN1xxqgcE3ROfKS4KMAGJ5hUKcyn3BR9E=;
-        b=qEl2n+yYHgTZx2MJOxWFFfrwR2VIVo38DuWCqoWvXlIrQOfXbHeVRfwCuUef12++oA
-         +1/O3BskAPxflAtwbMqC3VKFGahoePNxU0lrl6KUKQdfAQ8Go1kgLDh78sYxTPa0gS0U
-         ADYx0l0/2RRUEeCukyKuiVso9K8K3M6raPvWi48v4J4L+13mMI1DdVZgRRIyOClAARV+
-         Im0CbM0SpJm+u/nr6GwOkoOtvqg6lm/ib7nhxuem/p6s8+eFCioW7pUxC/qwkfjPBUaC
-         NUpKlmWwGOXsiiiMMTPMrbmwoJUR0J5oQGXOQt1v6vQY0sLpZW3eEjIzb19VUN/d1Xa5
-         JQKw==;
-        darn=lists.infradead.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
+	Thu, 26 Nov 2026 10:01:14 +0000
+Received: by mail-pg1-x52d.google.com with SMTP id 41be03b00d2f7-cde1479f76fso3772104a12.0
+        for <linux-mediatek@lists.infradead.org>; Thu, 26 Nov 2026 02:01:13 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20260707; t=1795685608; x=1796290408; darn=lists.infradead.org;
-        h=content-type:cc:to:subject:message-id:date:from:in-reply-to
-         :references:mime-version:from:to:cc:subject:date:message-id:reply-to
-         :content-type;
-        bh=JGbTvmGYxAXv1/EcBwgvim0eodoihEUYoQ15lt3DIkM=;
-        b=yctRHugkuxuIadvoZTCsNqbhTkiuJHxh9cHZCQoc0mD4Izy0AbRM8tXdTBQMTTYKv0
-         gaVTjN9nM0HbelkgLxInbd7/cdl/Dw7PsjKdeT41gJ/N1OdLo0bD2eN13UQJA/CxA7Ej
-         fl3X6uysKFod0eplfNo7yD7mrslIb23+EVEyVzAAGxyN155c3y3hxJ2RaL0iJ8nUhHya
-         Buzd7OFEE9HaaRLOGP9AMYf34ZOS7dKkpAaBc3PJC6Wb8auAEpatql+6xMEFwWO9Ek45
-         pREUKf/mUCd4hL6D2F1wzdszRJ4jpcCDRLtRPRuWUEmf7g5M+Bueud/hB5AsZ+retzQ4
-         mEtw==
+        d=chromium.org; s=google; t=1795687272; x=1796292072; darn=lists.infradead.org;
+        h=content-transfer-encoding:content-type:cc:to:subject:message-id
+         :date:from:in-reply-to:references:mime-version:from:to:cc:subject
+         :date:message-id:reply-to:content-type;
+        bh=aPAOj8/sEiImf5Q5w0lmK7mWVF1uN6/NWzG/i3miSOs=;
+        b=Z4AlVUDGQ8tZbHlLKUhOBncfI5YWkBb9rkSs99wtbhrwg+jaPGCaqYIIGwQllWL+L1
+         DimJ87fqcabAtt/De11oM+uQDL/x38g5oJYCVmpBFhbiKokBVy3r423exr0D16lOb+BU
+         Rm774UIeeLWFN1ibTZd95Q/tRN++Le8Wo4xJI=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1795685608; x=1796290408;
-        h=content-type:cc:to:subject:message-id:date:from:in-reply-to
-         :references:mime-version:x-gm-gg:x-gm-message-state:from:to:cc
-         :subject:date:message-id:reply-to:content-type;
-        bh=JGbTvmGYxAXv1/EcBwgvim0eodoihEUYoQ15lt3DIkM=;
-        b=sSSbOujo0vTr4WalF/O5hei1QNSFD4p0qTff46E9FLJQ2ffvyL4Rk/VwuCpdQofkRG
-         jelj3A+hhdsWAYyTluAsKySnTwMEAYBuYiZ+hr3wTj5X/pCun2r1axVW1DpCOGpcLTsq
-         7IGfukyVjd1bSg9bMYrz4lWxG703v+XvQXOLkYf753YV8Z1XbAM/ZdcnxGzQQDgFq4zo
-         5yxbY/LoKcymal/1+aQBWlThlFJ0sAn9jH5tT8y9F9UTZB7X/KFog9zPj2wma9HtS+No
-         WK14orhGm+S8/10Jr66TZXxirYfphjRNm2W1krA+vhMxO0BdXQZphMzAB4/ZbgWARUMS
-         c43w==
-X-Forwarded-Encrypted: i=1; AL+hErEDKxCq/GLv33dwHMsuuosA4i4tBdzcpjnVk4TgpXjcvpFM2ZxnToOSD2K1GsSMl7nU5GKWpB0SFIZRqNy8Iw==@lists.infradead.org
-X-Gm-Message-State: APuU4Z/VRYy+JQ5GX6b6tWShRn0WQR/AVEm4iJOM07H0FX6Rkq/h70tw
-	M5p/NqEiJY+FbZvhMVwoBYEjYPo22Wq8t5+tWNQdfhWZswswGMz+yRw1hFie4wWnDZtIN7E0xmX
-	V4mufROjXQpv/5XbrtB1x5fVOFpPQBO4=
-X-Gm-Gg: AZFdTZeHWRxvrOEBk4sb8FgqMlTKEdaYBaUSkxrq8t3OpdRkbXZirvYomShtm37LNJp
-	u+Us+QuALX4DNe3cM8IT99d+ol6S3N0i7VrqcKtg95NHNYVvPYSbPGgZrCH62sFiIY6Aiu2oBfF
-	GI8GUj6jdiIWDJsNY7wdHV9meDD1Fb6Z0q4b/FBxrxbbIxIi/hPaxFfWz+qKd63Xr81bV429W8B
-	08O6KgETL0bz6p2q4z4Nt0pJuExrbuc+6GO01T/4RCz5ghtUxjgyhxvL4t4Cwqp0fex6zVbvBhq
-	zm9up2NA37WKf8iPyK3plTmP7Nj8lat0h6VPMez4pfVjjKZNv0j9qaN8YrzRAzHd4zgfRv9e6gB
-	MfQOThfWlOV+PIK5dsIjNno19oB+A1JQMU9I=
-X-Received: by 2002:a05:6402:400d:b0:6b3:f891:c2d4 with SMTP id
- 4fb4d7f45d1cf-6ba37ea5360mr13616725a12.29.1795685607957; Thu, 26 Nov 2026
- 01:33:27 -0800 (PST)
+        d=1e100.net; s=20260707; t=1795687272; x=1796292072;
+        h=content-transfer-encoding:content-type:cc:to:subject:message-id
+         :date:from:in-reply-to:references:mime-version:x-gm-gg
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+         :content-type;
+        bh=aPAOj8/sEiImf5Q5w0lmK7mWVF1uN6/NWzG/i3miSOs=;
+        b=zhvi0+mp2Sa8hF59EdxZ1c4IUysFG4dz+xiWfNImPGH3NnzzTlRHnezLAAFP3pN6I1
+         5S1yYP1NAqyJ1GHrQ3pbNC3w7krH5FNOSKdWSOF7xXPfaqBVm4bUjofuogr1ik9oUNvF
+         a4vDodpzwvvqqqh2LKMnL4UKiTYqHjQ97c37D6XkhGvutn8r7KPvhhLSkO5yUgFY+BSj
+         dLmskRVLnknVhFFJvQoOBJIZqxBOS1uOkmcS5R4co6brdqzNcxWQtHNe6joGLFrCvmQy
+         voRx2NWzx/AUCLuobAIto4ykvyNL/2wktk7JwMpq8CJyMgt+pY7PQN4uuiYZkjzyTn7p
+         U1KA==
+X-Forwarded-Encrypted: i=1; AL+hErHquGfI28BCcoBlTX9pVnNNtzaCofxtZvewAzCxne5hJq+rFFBgamENMMvIMv6f1NlRqnqR3ltASsxGXPtivQ==@lists.infradead.org
+X-Gm-Message-State: APuU4Z/b7FHxCHT4vI8twZ7HcTGLxdBYZ1m6TSDYxYG+GZm3Cx4XvrKM
+	dERmnEnNUvP99dUVD3+SxLAty8Ufb6Sj2WO1bqkIz7jRZxZ1KnrVegtO1nkx7rZ9n7mrzxvlrt5
+	gxecepg==
+X-Gm-Gg: AZFdTZcviCxCjlPf/MAupSRGtVoPptYqPENmxABQge/8+BIUt9hbr3dcg/hD9rCoGxj
+	72K7yg9TE2F3t5/ycjRdC57GCRAW3uiBNYKt/F0oheeXfSxf099qg6FfN33aCCYTyNT2zovLTAO
+	W2WJJYqHtucBkra3bK/ze4Pow1LRU+OJaHzCOFxCkKXrBcaUs57jjHckv/8THNYcAVK3Dy9WAYH
+	r958VJbLxEAaKK3UvBKSHNlp0TjRyfYbxJADVi2vo93R0cefxoCH0G/gBxEGdbCz5BNNVta+Gps
+	DyfExRiFmDmYVs6n0UgDUTwKxAd51gGiBIeL+s8qOBJsXcdThPMyGtc5lbNkNyGapMOK4qrbvWB
+	zUWO4Ay91lG/zSDL2LqPw5xXC01VAbpcttkVZdglfhFhaCnQNquDaGWhyexthT/VRlmJDQu28W9
+	spGSvPfF2CRGZqyIFyx3IFKSKzqPWKq+2zWcEIoAj1ufQzj1wq9Zt6rgWBd2Q1gaVD47O/nsQ+w
+	YfmDKEBAidBZjJtbObw5rR4RVE1z6ib3q8rrbRTDLR/D5V0LgHHkNky4bUB4PZCWMY8hpLdziC6
+	1rkFrCsGfHXfYZxZTMW7QkrLQSCWb9fHYk6BsFNQxEXiKl0IkROpwigAfsPHXO/RsBc=
+X-Received: by 2002:a17:90b:3c11:b0:3ac:8fff:5a1b with SMTP id 98e67ed59e1d1-3b41c905970mr19929843a91.34.1795687272338;
+        Thu, 26 Nov 2026 02:01:12 -0800 (PST)
+Received: from mail-dy1-f172.google.com (mail-dy1-f172.google.com. [74.125.82.172])
+        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-3b44b21e19fsm12067652a91.0.2026.11.26.02.01.11
+        for <linux-mediatek@lists.infradead.org>
+        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+        Thu, 26 Nov 2026 02:01:12 -0800 (PST)
+Received: by mail-dy1-f172.google.com with SMTP id 5a478bee46e88-38190551625so13316499eec.1
+        for <linux-mediatek@lists.infradead.org>; Thu, 26 Nov 2026 02:01:11 -0800 (PST)
+X-Forwarded-Encrypted: i=1; AL+hErGsEzF/Out8YjP0QomxNYWUwCuLVPuPdy9yjyt+mnl/P96uLavLF0UiSrh/yLkdwudGDilaKhCbvTtaxGLRBw==@lists.infradead.org
+X-Received: by 2002:a05:7300:e9cf:10b0:386:e571:4bb4 with SMTP id
+ 5a478bee46e88-386e5715040mr399450eec.13.1795687269562; Thu, 26 Nov 2026
+ 02:01:09 -0800 (PST)
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-References: <20261125-timer-mediatek-gpt-irq-order-v2-1-e9e793bd87d4@gmail.com>
-In-Reply-To: <20261125-timer-mediatek-gpt-irq-order-v2-1-e9e793bd87d4@gmail.com>
-From: Luca Leonardo Scorcia <l.scorcia@gmail.com>
-Date: Thu, 26 Nov 2026 10:33:16 +0100
-X-Gm-Features: Aa3M54pI24nQZXDlYenmTwMKyRI5daIxAw0Ak8m40BV3tPU-M9NeeIVYIMbKRNc
-Message-ID: <CAORyz2LXi4vpwb2dEiq8R8t7x6nUk-DBUNs9t-cCrP7rUodbHw@mail.gmail.com>
-Subject: Re: [PATCH v2] clocksource/drivers/timer-mediatek: Enable the GPT irq
- before registering
-To: Ryan Brue <ryanbrue.dev@gmail.com>
-Cc: Daniel Lezcano <daniel.lezcano@kernel.org>, Thomas Gleixner <tglx@kernel.org>, 
-	Matthias Brugger <matthias.bgg@gmail.com>, 
-	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, 
-	Daniel Lezcano <daniel.lezcano@oss.qualcomm.com>, Chen-Yu Tsai <wenst@chromium.org>, 
+References: <20260714114414.184512-1-angelogioacchino.delregno@collabora.com> <20260714114414.184512-36-angelogioacchino.delregno@collabora.com>
+In-Reply-To: <20260714114414.184512-36-angelogioacchino.delregno@collabora.com>
+From: Fei Shao <fshao@chromium.org>
+Date: Thu, 26 Nov 2026 18:00:31 +0800
+X-Gmail-Original-Message-ID: <CAC=S1nj8rJ0WJp7DcO68zyejSvzFhhB5Q_q+_jKY2itMAJ64eA@mail.gmail.com>
+X-Gm-Features: Aa3M54r8mZgCPYkjyk_HhGWN4kbWoWQVSbV0f4Pj7KzdyzjM_U47c8LDiim4nPQ
+Message-ID: <CAC=S1nj8rJ0WJp7DcO68zyejSvzFhhB5Q_q+_jKY2itMAJ64eA@mail.gmail.com>
+Subject: Re: [PATCH v2 35/46] drm/mediatek: Add support for Display Output
+ Processor component
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
+Cc: chunkuang.hu@kernel.org, p.zabel@pengutronix.de, airlied@gmail.com, 
+	simona@ffwll.ch, maarten.lankhorst@linux.intel.com, mripard@kernel.org, 
+	tzimmermann@suse.de, robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org, 
+	matthias.bgg@gmail.com, dri-devel@lists.freedesktop.org, 
+	linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, 
 	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	linux-mediatek@lists.infradead.org
+	justin.yeh@mediatek.com, jason-jh.lin@mediatek.com, kernel@collabora.com
 Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261126_013331_156754_2D5D05C4 
-X-CRM114-Status: UNSURE (   9.92  )
-X-CRM114-Notice: Please train this message.
+X-CRM114-CacheID: sfid-20261126_020113_683488_CE9B4B16 
+X-CRM114-Status: GOOD (  14.17  )
 X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -122,25 +113,64 @@ List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-7.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
-	DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,FREEMAIL_FORGED_FROMDOMAIN,
-	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=no
+X-Spam-Status: No, score=-15.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,
+	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=ham
 	autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-> Enable the interrupt before registering the clock event. The IRQ line
-> stays disabled until enable_irq(), so the handler still can't run before
-> the clock event is set up. With the bit set, the timer that
-> mtk_gpt_setup() leaves running could latch an interrupt that
-> registration doesn't acknowledge, the kind of pending interrupt that
-> commit fc686d0037d7 ("clockevents/drivers/mtk: Fix spurious interrupt
-> leading to crash") acknowledges in mtk_gpt_enable_irq(). So stop the
-> timer before enabling the interrupt, until the core programs an event.
+On Tue, Jul 14, 2026 at 7:46=E2=80=AFPM AngeloGioacchino Del Regno
+<angelogioacchino.delregno@collabora.com> wrote:
+>
+> Add support for the Display Output Processor hardware component,
+> found in the MediaTek Kompanio Ultra MT8196, Genio Pro 5100 MT8894,
+> Dimensity 9400 MT6991 and others.
+>
+> This hardware handles the post-stage of pixel processing in the
+> layer overlaying process and is also capable of performing gamma
+> correction, ensuring that the per-pixel values are within the
+> expected gamma range.
+>
+> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@coll=
+abora.com>
+> ---
+>  drivers/gpu/drm/mediatek/Makefile           |   1 +
+>  drivers/gpu/drm/mediatek/mtk_ddp_comp.c     |  14 ++
+>  drivers/gpu/drm/mediatek/mtk_disp_drv.h     |  14 ++
+>  drivers/gpu/drm/mediatek/mtk_disp_outproc.c | 247 ++++++++++++++++++++
+>  drivers/gpu/drm/mediatek/mtk_drm_drv.c      |   3 +
+>  drivers/gpu/drm/mediatek/mtk_drm_drv.h      |   1 +
+>  include/linux/soc/mediatek/mtk-mmsys.h      |   1 +
+>  7 files changed, 281 insertions(+)
+>  create mode 100644 drivers/gpu/drm/mediatek/mtk_disp_outproc.c
+>
+[snip]
+> +       priv->irq =3D platform_get_irq_optional(pdev, 0);
+> +       if (priv->irq > 0) {
+> +               ret =3D devm_request_irq(dev, priv->irq, mtk_outproc_irq_=
+handler,
+> +                                      IRQF_NO_AUTOEN, dev_name(dev), pri=
+v);
+> +               if (ret)
+> +                       return dev_err_probe(dev, ret, "Failed to request=
+ irq\n");
+> +       }
 
-Tested-by: Luca Leonardo Scorcia <l.scorcia@gmail.com> # MT8167 Sony PSC Mini
---
-Luca Leonardo Scorcia
-l.scorcia@gmail.com
+platform_get_irq_optional() can return error codes that need to be
+handled; otherwise, mtk_outproc_bind()/unbind() will pass the negative
+values to enable_irq()/disable_irq():
+
+ret =3D platform_get_irq_optional(pdev, 0);
+if (ret < 0 && ret !=3D -ENXIO)
+    return dev_err_probe(dev, ret, "Failed to get irq\n");
+if (ret > 0) {
+    priv->irq =3D ret;
+    ret =3D devm_request_irq(dev, priv->irq, ...);
+    ...
+}
+
+Regards,
+Fei
 
