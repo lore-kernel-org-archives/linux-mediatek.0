@@ -2,58 +2,56 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 7E8DF606A329
-	for <linux-mediatek@archiver.kernel.org>; Thu, 26 Nov 2026 19:11:44 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 37CCF606A31C
+	for <linux-mediatek@archiver.kernel.org>; Thu, 26 Nov 2026 19:11:50 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=Azd0Awx8;
-	dkim=pass (2048-bit key) header.d=bootlin.com header.i=@bootlin.com header.a=rsa-sha256 header.s=dkim header.b=iZSSBUOA
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=atNAWt/i;
+	dkim=pass (2048-bit key) header.d=bootlin.com header.i=@bootlin.com header.a=rsa-sha256 header.s=dkim header.b=oVdgznY4
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Unsubscribe-Post:
-	List-Owner; bh=toteBFJ4ezZ5aPGYGIb4HRCJ6xMk4nB0klctz7NUA/U=; b=Azd0Awx8y25jwL
-	3auAyC8foCK5sR3sgNg5ZzfNhMJi5qn86Pfxv9t+qKUhOyGvL1A4wgBedWxEtdgqT3ChF2zjlyiCt
-	5YGATJOt/dv3Vkt3WSfyzPtDEgWia2w9i8eAcGw/Sfsec/VhCNV87SK9alCSxLk0JIOnFW3qKfs9W
-	dwv6IRHSZxT6lWyPMRvRUk3j4ZHQBDoI/gnr5UOb1SGDZw9DgasKZgvRUqQbNSdLOjAwb0vPhXE+i
-	iuiDE8syET8dhvexufzHw/Pa4pjiPL4yAvtwYzyzKbz8gLU+nxuT4M/AqBu1H0q15TcGYuN/lHCgR
-	ork34qq9Gg270EPWw3Dw==;
+	List-Owner; bh=MVolsYhpJ+LMj7zbkMJO+vkL7gKe8OaboFkkUgoisuU=; b=atNAWt/iE3P1Qx
+	7gcIp7BKv7/NlDZmYbDyj+ZLnFX/+7l+6KXqsDjtTyOgsDV6D8zBaDIw1w926vLr5290Je3yWULv9
+	jFIiL3vveCG3V3GfcMfNrOXB1TRXe7PruiQ3AkoZP4aBTD2sDk7d4zwdO4wWsNe/15R7c6Bl8K+UH
+	2+bYxsEWy4MG51JmuFy/978a9xNv6wRMu+kbUNfoaWomouyiwe9d3oU+V3OiQ/JP/frsqVcGUs0EE
+	eCOP0Piqt5nuasD+12Z6pzJq67osheRZhK7ADyJKiA8kwS9tauFIOpSaKmDlBUGkkiPTLWaEA7cU/
+	5rm1oIGK8gKR0lDW08DQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xWesh-0000000EEp8-3toe;
-	Thu, 26 Nov 2026 19:11:44 +0000
+	id 1xWesn-0000000EEys-3Juv;
+	Thu, 26 Nov 2026 19:11:49 +0000
 Received: from smtpout-03.galae.net ([185.246.85.4])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xWesN-0000000EEPO-0c2d
-	for linux-mediatek@lists.infradead.org;
-	Thu, 26 Nov 2026 19:11:25 +0000
+	id 1xWesQ-0000000EESn-1sDY;
+	Thu, 26 Nov 2026 19:11:29 +0000
 Received: from smtpout-01.galae.net (smtpout-01.galae.net [212.83.139.233])
-	by smtpout-03.galae.net (Postfix) with ESMTPS id 9B0A94E417B3;
-	Thu, 26 Nov 2026 19:11:21 +0000 (UTC)
+	by smtpout-03.galae.net (Postfix) with ESMTPS id 67C0C4E417B7;
+	Thu, 26 Nov 2026 19:11:24 +0000 (UTC)
 Received: from mail.galae.net (mail.galae.net [212.83.136.155])
-	by smtpout-01.galae.net (Postfix) with ESMTPS id 6ED9F60558;
-	Thu, 26 Nov 2026 19:11:21 +0000 (UTC)
-Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id BF9BB11E691C1;
-	Thu, 26 Nov 2026 20:11:16 +0100 (CET)
+	by smtpout-01.galae.net (Postfix) with ESMTPS id 3501B60558;
+	Thu, 26 Nov 2026 19:11:24 +0000 (UTC)
+Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id C2BCB11E691C8;
+	Thu, 26 Nov 2026 20:11:19 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=dkim;
-	t=1795720279; h=from:subject:date:message-id:to:cc:mime-version:content-type:
+	t=1795720282; h=from:subject:date:message-id:to:cc:mime-version:content-type:
 	 content-transfer-encoding:in-reply-to:references;
-	bh=toteBFJ4ezZ5aPGYGIb4HRCJ6xMk4nB0klctz7NUA/U=;
-	b=iZSSBUOATQ0jf1GSEgkGedTsY3xVjj9Bmqth01IcKq0iQ5mxaCAvDTZ2oZBEMHvKK8eSfL
-	lKd47wn3dz0W70XIZFmbZEYi43A5vXuREUiMFDNNCKfxyDcvfp/sj4SBAdrNAYxl1F96vU
-	CGPFbMNmgVObZJwnfTw6uJyDDrJJgHICdBxbrTsEBqHfPvnihrAsiqnxpU5QuBniTx8N+J
-	YGSxrhud2yXi52gEmySDfY45KsLc5GXM438WDyFioSFYJXotT8uTv+5YVfuyaHfiba2QaI
-	6ltbJQM+wMQ91dltcnXfr1mJjX3ms+Q/ai9dKeo9eYi3Z5zi39hyU+RXd9BnSw==
+	bh=MVolsYhpJ+LMj7zbkMJO+vkL7gKe8OaboFkkUgoisuU=;
+	b=oVdgznY4cncQO4LxIA6PTOarFbIKnztq2WlsXPDdjaXbCXY8e+CWlxwH+vVgyNHkBmDt3s
+	5GBmPDFWdispnQDzsXqSWMrVzAQdgmN2aDXhQY2rBBgaw6spmrya+oGNMo5VK40RCapoXw
+	ekJ7zxGX6B6ePRDG6koDzptHe5rdJelTZM+sMZIxxE5cOeD01jg4W2KLawu7mIZjZr96U2
+	GaIwIQ8s/C2pttrfvpOnp2wKzpqxuzL2+E+JuUVzoFM5kmpHmgOOb4vK7xNjwZhSSCiYE4
+	hGPkphcrkDgjfXSf4VOQl0c/tJBL9nkMMZB/VJGWSZPWTsIiWznDcX37vlkthw==
 From: Miquel Raynal <miquel.raynal@bootlin.com>
-Date: Thu, 26 Nov 2026 20:10:24 +0100
-Subject: [PATCH 05/12] spi: atmel-quadspi: Drop redundant address buswidth
- check
+Date: Thu, 26 Nov 2026 20:10:25 +0100
+Subject: [PATCH 06/12] spi: atmel-quadspi: Reject SDR address with DDR data
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20261126-macronix-upstreaming-spi-driver-fixes-v1-5-ca8e924cca1b@bootlin.com>
+Message-Id: <20261126-macronix-upstreaming-spi-driver-fixes-v1-6-ca8e924cca1b@bootlin.com>
 References: <20261126-macronix-upstreaming-spi-driver-fixes-v1-0-ca8e924cca1b@bootlin.com>
 In-Reply-To: <20261126-macronix-upstreaming-spi-driver-fixes-v1-0-ca8e924cca1b@bootlin.com>
 To: Raju Rangoju <Raju.Rangoju@amd.com>, 
@@ -76,8 +74,9 @@ Cc: Thomas Petazzoni <thomas.petazzoni@bootlin.com>,
 X-Mailer: b4 0.14.3
 X-Last-TLS-Session-Version: TLSv1.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261126_111123_472531_019BFEE4 
-X-CRM114-Status: GOOD (  10.91  )
+X-CRM114-CacheID: sfid-20261126_111127_496846_8D32357B 
+X-CRM114-Status: UNSURE (   9.50  )
+X-CRM114-Notice: Please train this message.
 X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -97,29 +96,30 @@ X-Spam-Status: No, score=-18.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-spi_mem_check_op() rejects an address phase with a non-zero byte count
-and a zero buswidth, so op->addr.buswidth is always set when
-op->addr.nbytes is non-zero. Drop the redundant condition in
-atmel_qspi_sama7g5_set_cfg().
+The controller enables DDR only when the address, dummy and data phases
+are DDR. If the address phase is SDR while the data phase is DDR, the
+data phase would be sent in SDR, corrupting the transfer. Reject that
+combination in ->supports_op().
 
 Signed-off-by: Miquel Raynal <miquel.raynal@bootlin.com>
 ---
- drivers/spi/atmel-quadspi.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ drivers/spi/atmel-quadspi.c | 3 +++
+ 1 file changed, 3 insertions(+)
 
 diff --git a/drivers/spi/atmel-quadspi.c b/drivers/spi/atmel-quadspi.c
-index 762a3fb0fca8..c53e0488dcb6 100644
+index c53e0488dcb6..4f3ceef67b40 100644
 --- a/drivers/spi/atmel-quadspi.c
 +++ b/drivers/spi/atmel-quadspi.c
-@@ -712,7 +712,7 @@ static int atmel_qspi_sama7g5_set_cfg(struct atmel_qspi *aq,
- 					      op->dummy.buswidth);
- 	}
+@@ -487,6 +487,9 @@ static bool atmel_qspi_supports_op(struct spi_mem *mem,
+ 	if (!spi_mem_default_supports_op(mem, op))
+ 		return false;
  
--	if (op->addr.buswidth && op->addr.nbytes) {
-+	if (op->addr.nbytes) {
- 		ifr |= FIELD_PREP(QSPI_IFR_ADDRL_SAMA7G5, op->addr.nbytes - 1) |
- 		       QSPI_IFR_ADDREN;
- 		iar = FIELD_PREP(QSPI_IAR_ADDR, op->addr.val);
++	if (!op->addr.dtr && op->data.dtr)
++		return false;
++
+ 	if (aq->caps->octal) {
+ 		if (atmel_qspi_sama7g5_find_mode(op) < 0)
+ 			return false;
 
 -- 
 2.56.0
