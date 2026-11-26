@@ -2,11 +2,11 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id EDCC0606A327
-	for <linux-mediatek@archiver.kernel.org>; Thu, 26 Nov 2026 03:10:58 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 401B0606A326
+	for <linux-mediatek@archiver.kernel.org>; Thu, 26 Nov 2026 03:11:03 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=g64RqxYf;
-	dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=QVkW/SK3
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=kwuQ1Aa2;
+	dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=IVqAuRGR
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
@@ -14,63 +14,63 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	Message-Id:Date:Subject:Cc:To:From:Content-ID:Content-Description:Resent-Date
 	:Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=8I57ZSU/sW/OUbXh5CAZCyvQxIaUbucbzW2WFatF0oc=; b=g64RqxYfWaCS/bQn/hbc4eloI9
-	Ry4wVurSU7dk1SSfvqFBOBnIBQxNkDRVHjiSW406C8aUpDH24ACkmQtfsoeg5EYVhBEZzJKwIh1X4
-	WaEn2agwpHjKXy6lnLvJucX0aVzHwwik9VHWdpUNAzPWb0GQbk5tq6IedODWubboX2o2X/9p6hL2o
-	RWyc6FubHennOndgnRE/BcuK7MmO1Tq686LKmVESCvtXF8G1JCJEdtIwKKgr1je1QSa6BFesbpdYm
-	bahvIsejkyzdpJ1/OFpnwRD6EwdarOpc40xQVSoksqfH099ix+tg4ZyL2q+Y8+ke9+w4jVveXBWGm
-	qoTA6STA==;
+	bh=Xcd8RAsEVEjiV3LkvRveg5qq9poJ0EgfM91ZZy4Bye8=; b=kwuQ1Aa2AnYSNDCAmxjdhpKrtq
+	sT8QhNYXL3DA1ZgGHp+/W6skiUQC8bs3IxmQhVyZ4lKI31r4iWCE6rVnUKnzRq4okR2TgtmqafZJ1
+	MTyENw4txJykKVTEhTRvKTBjYcUhjfifAFmlXTDrQj0fLdvFnPwejuCn8BJQ8eKCCTWELHDvoZ3LV
+	T6d5Qou+xCL9IbjaXykmdytdfqgf+qHkwKODOV3O+So+LN9BMNqXFLPdDF/uL9N+OZ0ll6UrhlmK4
+	6zNWqB0qvBaIGVDu819bT1smWxjkzxM4NKCev5o5qJ+HuJU3tJ4vtA5zY/7P3rD4RoeaF81J9+dCt
+	Phn3GqZw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xWPsw-0000000BySS-25m6;
-	Thu, 26 Nov 2026 03:10:58 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1xWPsz-0000000ByWl-0rgS;
+	Thu, 26 Nov 2026 03:11:01 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xWPsc-0000000ByBM-2BjG;
-	Thu, 26 Nov 2026 03:10:38 +0000
+	id 1xWPsf-0000000ByC5-13gl;
+	Thu, 26 Nov 2026 03:10:43 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id 3AE6C407B1;
-	Thu, 26 Nov 2026 03:10:38 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id B2A6261D90;
+	Thu, 26 Nov 2026 03:10:40 +0000 (UTC)
 Authentication-Results: smtp.kernel.org; arc=none smtp.remote-ip=100.80.115.77
 ARC-Seal: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256; cv=none;
-	t=1795662637;
-	b=fx1dJhAU4N3MmDZrpXYk2s574iMR6P179VzbnnCcgTrBLn6Dz7agv2F44dilAsV+HCbV
-	 Vgaani4vI5iYMKwi6vIdw3fycbWCh9LTfluBvMlF3i9wZARUD+km7pdPf9n+6TbLkXIev
-	 wlLc1XTD6lwnerUMtJvulfg30DRu0vYxpe/BQpHu44vxAgO/DUcfzL32hGXLarQ3gjcdC
-	 o6t00FkEAplwZdqB9FJb4taO8WYQLFnF2ve6Nweedzj3bnlkHFHGDSsGhR5RpT4XUqMsb
-	 Ciyau3GCE26x+t9HkGpRsXmbD4DCTnb1ggJOB8XbL05CktzsCIL00q2TCXdShvbuu2A==
+	t=1795662640;
+	b=dOrREV5Ci6fkLAGRQIxsdmR4QonSBlcngjcLBrV7VfKOFvP64zrF1oR7sAswpQvw7nmj
+	 srcvO9KftLkK6w5s06MkggPePTcwNpl60+3EIfpZ/Kj3YUH+N+9M6iVpB1TymjME2061d
+	 SFts5n9+RXj8MK4t3BflnLjnHK1spm/K6BzN7+HhLe1U54Vu7EIQBTkdxnbPVhOHLmOVn
+	 wAGR2nxrAlA8PmUFLa7ZNmGgcKwNBs1/LZJ9sunwZYXt4EWqGSXex0KWXBYyEUGQ2rgkt
+	 7c1jocfq1rSTyAMZwfg6vHIwxkdVKgxTit9zpfxNMH+5pHXnivSb6WTEpa2fmRVeQCA==
 ARC-Message-Signature: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256;
-	c=relaxed/relaxed; t=1795662637;
+	c=relaxed/relaxed; t=1795662640;
 	h=DKIM-Signature:Received:From:To:Cc:Subject:Date:Message-Id:
 	 In-Reply-To:References:MIME-Version:Content-Type:X-Mailer:
 	 X-Developer-Signature:X-Developer-Key:X-Endpoint-Received:
 	 X-Original-From:Reply-To:Content-Transfer-Encoding;
-	bh=8I57ZSU/sW/OUbXh5CAZCyvQxIaUbucbzW2WFatF0oc=;
-	b=J+3c1duk27jr7Aa84lJ7z1P1JgE7glOcgOvxlbylDQDbEoY+Mx39i6+5a65EWgAZkKhI
-	 Iwynfo7gjfiguiDVY83wrAFjb+bPPhxEd5X9vjrJ/sUJfdx5EAzRlnhjt81PY0bsK4fYN
-	 agRHFjWUAsXJr8GWKk7LbHZltZLjec8L/r/quiyBmtx3MuVUK68vs+G+zrQ0hw4/F2djY
-	 +bUqfSuFBFSF9g5WxoYU1FVm6Gp/LU0MntJ7JK+T/z1xVJXCTMMxJY1urBl4QpB4sUe9l
-	 uOP3aIl134rRN0Ab0H2ntnGV67tyPrZ+YnSkyZP6Va0qV02HYhbCLFyKY8vQUjwLzzA==
+	bh=Xcd8RAsEVEjiV3LkvRveg5qq9poJ0EgfM91ZZy4Bye8=;
+	b=rYKedey3thgCd7t7OvFQP/12PA708DXTgL4KLCsVShQdEzpqTFqVfnC/5EGA3NcYQ6q7
+	 rt9RGa7zgaDC+p/toNEt68nuSKO+AViyblkX8RcSoKF7+88u4TIWwXIC5xInbZOk1twXo
+	 56wagsmWpYrZNeOFrsBFA8hpGEawBRziZD8BJz3eHBaDBWRfBQrswzl/TvvoPZUUwWspj
+	 0nuGhz2KUnZRnWeV2ggyUOEEblktJnNv7WJzhOv5obOUU4Vl1R6hPKJCHaiWEVQbIjm9/
+	 i+oFBXds8mMTepkHMdCapq6mB/RnFz0gaIe3QUaaZpfaBWQxOeOB4tEZLIyTsdIwT4w==
 ARC-Authentication-Results: i=1; smtp.kernel.org; 
 	arc=none smtp.remote-ip=100.80.115.77
 Received: from lkml.kernel.org (nexus.subspace.kernel.org [100.80.115.77])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.kernel.org (Postfix) with ESMTPS id BC1F41F00A3D;
+	by smtp.kernel.org (Postfix) with ESMTPS id B946E1F00A36;
 	Thu, 26 Nov 2026 03:10:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1795662637;
-	bh=8I57ZSU/sW/OUbXh5CAZCyvQxIaUbucbzW2WFatF0oc=;
+	s=k20260515; t=1795662640;
+	bh=Xcd8RAsEVEjiV3LkvRveg5qq9poJ0EgfM91ZZy4Bye8=;
 	h=From:To:Cc:Subject:Date:In-Reply-To:References:Reply-To;
-	b=QVkW/SK3tBZmz0rsnMGMmstnmuABn7tjLllWWak4OV7XwXjvMqcrntgsLV7t/tj4M
-	 ygGLt39TW99ARIRhbAo0ygRxtB06Q5gC8SpaKF+myhG8rFzgHDvvXEPEI/zWECD5eS
-	 akoqrzHWqDI4XXJb3Cbac+liYOeLTumLt5zOUioiYOlWvH2fwK46Nd1Qvu3SSvuUgz
-	 FwBcEzZ6YiDDvuFKUW2nGiY5Ie2IxS4L2ivjh3tYI1XuC/Re6ZRxKF/1glMdxC5En6
-	 D+F2iLc4VtHae73+aLyZIzhddnwVdjaz4c1ZW86ero4Sjy3LUh5qgaogztsA54JpBh
-	 ZRvImjkBPZTjQ==
+	b=IVqAuRGRiTbcsAr37s+CpxPcaj9LlcJBmzTTCoRTpJctgZH8dzYM4HpOgDWRDy+Uw
+	 QCuIOXhqRpkdsGU/Wtpz7/eaOa6qNl/vFHFEyDUxlNvQEVuBpOcUyLchJ1PHO1bFWJ
+	 /LaDl3On/FwXHrr0EuRFnhC92pFbahRUqid08w0wp12fnJ/dGDlZBvCMtO4mXSAUiG
+	 q+9CEBxGsBZgFdWn08Zrc7tA/FMI9f/WgI6OGLwLcsojfwzuaMFhmj4aHkYQWN7PlS
+	 k8QTmIjJ95fO2L3jIerT4WidJGOZGDLn73RsjSgwCghGPLWSPnsdBrWjOEpiN3OSzq
+	 iOT19vL+6akYw==
 Received: from nexus.subspace.kernel.org (localhost [IPv6:::1])
-	by lkml.kernel.org (Postfix) with ESMTP id 7910B4D202;
+	by lkml.kernel.org (Postfix) with ESMTP id 593754D1FE;
 	Thu, 26 Nov 2026 03:10:15 +0000 (UTC)
 From: Ilia Snezhkov via B4 Relay <devnull+iasnezhkov.gmail.com@kernel.org>
 To: jic23@kernel.org, dlechner@baylibre.com, nuno.sa@analog.com, 
@@ -78,21 +78,21 @@ To: jic23@kernel.org, dlechner@baylibre.com, nuno.sa@analog.com,
 Cc: matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com, 
  linux-iio@vger.kernel.org, linux-mediatek@lists.infradead.org, 
  linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
-Subject: [PATCH v2 3/3] iio: adc: mt6359: fix MT6358 VBAT impedance
- resistance ratio
-Date: Thu, 26 Nov 2026 03:10:16 +0000
-Message-Id: <20261126031013.27701-4-iasnezhkov@gmail.com>
+Subject: [PATCH v2 2/3] iio: adc: mt6359: fix MT6357 ISENSE/VCDT and MT6358
+ VCDT request bits
+Date: Thu, 26 Nov 2026 03:10:15 +0000
+Message-Id: <20261126031013.27701-3-iasnezhkov@gmail.com>
 In-Reply-To: <20261126031013.27701-1-iasnezhkov@gmail.com>
 References: <20261126031013.27701-1-iasnezhkov@gmail.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 X-Mailer: b4 0.16.0
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1795662614; l=1349;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1795662614; l=2570;
  i=iasnezhkov@gmail.com; s=mindone2026; h=from:subject:message-id;
- bh=JtIaf+aptgsdQNrjuZzOWwJGJsMlugQHaT8ZbxTFbT8=;
- b=eGLXWpH2yraGWz+KNJrogA0lqnF2eVewr9fxOtNOMs9Xshy/+DKsMdIEp3d1TMGUw+k2IuUqQ
- Dg/dFyXh6SODzWb4u5e9wR74AnpUW6wFFS6oy+mIc4RJYDD8OvK/0OX
+ bh=Tm2foiR76Y5F+c07n1fWMZO/zetnJqISUTM3KZbbJ1Y=;
+ b=3GIxGW63svjr+l/NjC6o6Ty65Pl/a8/SpLlAM/aXmKmB3+dXDCsTdEHbDIw+FkQx862VMUgYV
+ exOlE95VR5BDNrC+pr8EEnInI5ddM/FAWiCw8tlqTfAvuOC3ELz/Vgs
 X-Developer-Key: i=iasnezhkov@gmail.com; a=ed25519;
  pk=hQgXfiWi4ukk2jh4BHu1vRVhg9BUivo//AFp50AKMag=
 X-Endpoint-Received: by B4 Relay for iasnezhkov@gmail.com/mindone2026 with
@@ -120,14 +120,15 @@ X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 
 From: Ilia Snezhkov <iasnezhkov@gmail.com>
 
-On MT6358 (and MT6366), both BATADC and the battery impedance VBAT
-channel use a 3/1 voltage divider (5400 mV full scale with 1800 mV
-VREF). mt6358_auxadc_ch_desc[PMIC_AUXADC_CHAN_VBAT] erroneously uses
-7/2 (copied from MT6359), over-reporting VBAT impedance readings by
-16.7%.
+mt6357_auxadc_ch_desc[] sets req_bit to 0 for both ISENSE and VCDT, and
+mt6358_auxadc_ch_desc[] sets req_bit to 0 for VCDT. Bit 0 of
+PMIC_AUXADC_RQST0 triggers BATADC (ADC0) rather than ISENSE (ADC1) or
+VCDT (ADC2), so polling the ready bit of ADC1/ADC2 times out unless the
+channel was triggered externally.
 
-Change MT6358 VBAT r_ratio from 7/2 to 3/1 to match MT6358 BATADC and
-hardware.
+Use the actual hardware request bits in PMIC_AUXADC_RQST0: bit 1 for
+MT6357 ISENSE and bit 2 for MT6357/MT6358 VCDT (matching MT6363 VCDT
+and the MediaTek PMIC AUXADC hardware registers).
 
 Fixes: 3587914bf61d ("iio: adc: Add support for MediaTek MT6357/8/9 Auxiliary ADC")
 Signed-off-by: Ilia Snezhkov <iasnezhkov@gmail.com>
@@ -137,22 +138,33 @@ Changes in v2:
 
 Found and drafted with an AI coding assistant.
 
- drivers/iio/adc/mt6359-auxadc.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ drivers/iio/adc/mt6359-auxadc.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
 diff --git a/drivers/iio/adc/mt6359-auxadc.c b/drivers/iio/adc/mt6359-auxadc.c
-index 4a66253..915378c 100644
+index 54c9048..4a66253 100644
 --- a/drivers/iio/adc/mt6359-auxadc.c
 +++ b/drivers/iio/adc/mt6359-auxadc.c
-@@ -285,7 +285,7 @@ static const struct mtk_pmic_auxadc_chan mt6358_auxadc_ch_desc[] = {
- 	MTK_PMIC_ADC_CHAN(VGPU_TEMP, PMIC_AUXADC_RQST1, 10, PMIC_AUXADC_IMP0, 8, 8, 1, 1),
+@@ -224,8 +224,8 @@ static const struct iio_chan_spec mt6357_auxadc_channels[] = {
  
- 	/* Battery impedance channels */
--	MTK_PMIC_ADC_CHAN(VBAT, 0, 0, PMIC_AUXADC_IMP0, 8, 128, 7, 2),
-+	MTK_PMIC_ADC_CHAN(VBAT, 0, 0, PMIC_AUXADC_IMP0, 8, 128, 3, 1),
- };
+ static const struct mtk_pmic_auxadc_chan mt6357_auxadc_ch_desc[] = {
+ 	MTK_PMIC_ADC_CHAN(BATADC, PMIC_AUXADC_RQST0, 0, PMIC_AUXADC_IMP0, 8, 128, 3, 1),
+-	MTK_PMIC_ADC_CHAN(ISENSE, PMIC_AUXADC_RQST0, 0, PMIC_AUXADC_IMP0, 8, 128, 3, 1),
+-	MTK_PMIC_ADC_CHAN(VCDT, PMIC_AUXADC_RQST0, 0, PMIC_AUXADC_IMP0, 8, 8, 1, 1),
++	MTK_PMIC_ADC_CHAN(ISENSE, PMIC_AUXADC_RQST0, 1, PMIC_AUXADC_IMP0, 8, 128, 3, 1),
++	MTK_PMIC_ADC_CHAN(VCDT, PMIC_AUXADC_RQST0, 2, PMIC_AUXADC_IMP0, 8, 8, 1, 1),
+ 	MTK_PMIC_ADC_CHAN(BAT_TEMP, PMIC_AUXADC_RQST0, 3, PMIC_AUXADC_IMP0, 8, 8, 1, 1),
+ 	MTK_PMIC_ADC_CHAN(CHIP_TEMP, PMIC_AUXADC_RQST0, 4, PMIC_AUXADC_IMP0, 8, 8, 1, 1),
+ 	MTK_PMIC_ADC_CHAN(ACCDET, PMIC_AUXADC_RQST0, 5, PMIC_AUXADC_IMP0, 8, 8, 1, 1),
+@@ -271,7 +271,7 @@ static const struct iio_chan_spec mt6358_auxadc_channels[] = {
  
- static const u16 mt6358_auxadc_regs[] = {
+ static const struct mtk_pmic_auxadc_chan mt6358_auxadc_ch_desc[] = {
+ 	MTK_PMIC_ADC_CHAN(BATADC, PMIC_AUXADC_RQST0, 0, PMIC_AUXADC_IMP0, 8, 128, 3, 1),
+-	MTK_PMIC_ADC_CHAN(VCDT, PMIC_AUXADC_RQST0, 0, PMIC_AUXADC_IMP0, 8, 8, 1, 1),
++	MTK_PMIC_ADC_CHAN(VCDT, PMIC_AUXADC_RQST0, 2, PMIC_AUXADC_IMP0, 8, 8, 1, 1),
+ 	MTK_PMIC_ADC_CHAN(BAT_TEMP, PMIC_AUXADC_RQST0, 3, PMIC_AUXADC_IMP0, 8, 8, 2, 1),
+ 	MTK_PMIC_ADC_CHAN(CHIP_TEMP, PMIC_AUXADC_RQST0, 4, PMIC_AUXADC_IMP0, 8, 8, 1, 1),
+ 	MTK_PMIC_ADC_CHAN(ACCDET, PMIC_AUXADC_RQST0, 5, PMIC_AUXADC_IMP0, 8, 8, 1, 1),
 -- 
 2.54.0 (Apple Git-157)
 
