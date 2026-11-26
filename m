@@ -2,107 +2,68 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 463C8606A31C
-	for <linux-mediatek@archiver.kernel.org>; Thu, 26 Nov 2026 11:06:33 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 483D7606A338
+	for <linux-mediatek@archiver.kernel.org>; Thu, 26 Nov 2026 11:44:25 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=nlQ8DwUg;
-	dkim=pass (1024-bit key) header.d=chromium.org header.i=@chromium.org header.a=rsa-sha256 header.s=google header.b=Z92sl3Sy
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=UmV2Kx1m;
+	dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=I5KR91DZ
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	Content-Type:Cc:To:Subject:Message-ID:Date:From:In-Reply-To:References:
-	MIME-Version:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
-	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Unsubscribe-Post:
-	List-Owner; bh=i/lQFYYSgifKwpBl4Z4gLxmp/LsgZ8d5yEoRR702v7k=; b=nlQ8DwUgOvY2vj
-	JqILcuz6Ch3gfHNX3nocyejbrBf1mhKf/CfNZw0vP7KKrMAluk5yB7AquB0/FJpUdgOcDen3gHrCH
-	odHj27mYk2p+DHftBFUNTv8kY38Auvcran5s7wPFcuc8VFwmx1sSoBP0TPolulHzd0rh6W75+sij5
-	XqIHMrj4qIGgjuVU5Tdw/mfJfWt/THzR/02PaF/leMuYxZny4jRSXbNSnEwqsBzM3mlKWMz7bTxHj
-	Fe32Ixy8RDffsnLQGu/XqjeA1CCWLf9iAWIeeCllL9zQFB2imegrlGZEIse86K/IHMHL9JQiZJHSX
-	U0mQkWXt3p5MwgFbhX9Q==;
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:In-Reply-To:Content-Type:
+	MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Reply-To:
+	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	List-Unsubscribe-Post:List-Owner;
+	bh=GPBJLsJh7gQ+qJXgr4h2BZwP0qjmmcfqj8Qsq6esC70=; b=UmV2Kx1mHAv/kTSCIsO5TpMxbi
+	9OmAB9bshUfWUoor2VIDMq52KTRkKeHtLIPjrdK1hf7+PsdCAdjgLDB2IdVbFSd1D9217lImmojbd
+	G+afOX1SkA5rsjDZxpw/ouEmTz1BJ90WMCGdInkgiZEzdOD0T/Uek7z7cOyfvXccAgUouT5YiXWOH
+	rNBmnSxHXWQ0/Y0HoF4ErJClLdxcdm0C4MyP0b4X9PBfbLVJA2ly1TSe0aXkVNFSM1NFVB6kAYwuJ
+	p6EO1wEuYtxnHehYgeWk6252+7gh+irYIWZEWXD5u08TQes61YFVtsAOPnbq3gJOtdZxvtSIGID9C
+	krxXpvaA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xWXJB-0000000ConU-053B;
-	Thu, 26 Nov 2026 11:06:33 +0000
-Received: from mail-pg1-x52a.google.com ([2607:f8b0:4864:20::52a])
+	id 1xWXto-0000000D2t4-0QST;
+	Thu, 26 Nov 2026 11:44:24 +0000
+Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xWXJ7-0000000Coma-0diO
-	for linux-mediatek@lists.infradead.org;
-	Thu, 26 Nov 2026 11:06:31 +0000
-Received: by mail-pg1-x52a.google.com with SMTP id 41be03b00d2f7-cc758830601so5150347a12.2
-        for <linux-mediatek@lists.infradead.org>; Thu, 26 Nov 2026 03:06:28 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=chromium.org; s=google; t=1795691188; x=1796295988; darn=lists.infradead.org;
-        h=content-transfer-encoding:content-type:cc:to:subject:message-id
-         :date:from:in-reply-to:references:mime-version:from:to:cc:subject
-         :date:message-id:reply-to:content-type;
-        bh=i/lQFYYSgifKwpBl4Z4gLxmp/LsgZ8d5yEoRR702v7k=;
-        b=Z92sl3SyOT4kk/yUvKEBSsQddxe3XG94YatCZCagMc4od/jnNZTpsBe1huVtkO5tCe
-         P/nxh89u9skSlEGuVxI7YSAZ7QWM/HhJIi9kjs9dQj5sh5GLhsudD54EGx6fxlhLAnry
-         31x0zCyCwji9eTKwh+GiSdHiYHOj1gMZ5ofPw=
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1795691188; x=1796295988;
-        h=content-transfer-encoding:content-type:cc:to:subject:message-id
-         :date:from:in-reply-to:references:mime-version:x-gm-gg
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
-         :content-type;
-        bh=i/lQFYYSgifKwpBl4Z4gLxmp/LsgZ8d5yEoRR702v7k=;
-        b=byMtjpWylOLYXhc5HeXUWURDk+rvGBuQr+wBfAqiL4ZVgoMnCgjfqzODuYgnR4JHix
-         N+KAcBvWu/JDRUWQPtg0oxNdZsnJhlCixEYKsnS5BtK07PMT3L2EMgb1T7fj3ZBjuTA7
-         kAXFJKKNjMBo0B/llAAX0Hqwv6koPKSIKN/7XM/9BCsuy3f5nyTgh1tpzCLYvx+zoNRH
-         UOD+aa7KpDA+C7KTPLijh2ogvvSSkwDsYkmqM0680/kW6uZMyy6pnYUbVuDYEbF5POGH
-         phqZ1d85A2cFQO9GD1WuwEdWw0SCw4qrB6p9TIA8IVTcDfcD6QgvDhZY5+lY5rRQ4Rw0
-         jrNA==
-X-Forwarded-Encrypted: i=1; AL+hErFn9uaSUQGBGeuRT0KjC90CIS9ae+D+mgWHnbBsUFU1fcmDvQCBlQs1nc/LfhIQLxSmhGfqimzVOzNVL81U4g==@lists.infradead.org
-X-Gm-Message-State: APuU4Z/Cp81qegcQZHmqjkC6/h/mL9uZ0LXdmdfdnPXGidSnNmuLQ5Ho
-	8JEdFZfpP2XkPUGlDQYVwaAG/Yxrqg+ChoGDx0MDZZ8UcTDJnCLTXhFotRQsEXNwIh81X+LYzJ1
-	d5aRVyw==
-X-Gm-Gg: AZFdTZcbpbapD4eO/P2mTjtxSZV6Sy4EdswiPX2ODmTAcHf0R6gb0sjdcjONE6ovyYU
-	ZJWhntbq6ENygmP9VnFbddP259zAWCobN/VCb1lQt4zSBlysb+iR/9qtZj5hKkSnuHJJhZ0s+vY
-	z41IqFFmQRjwJuDy5ZR0BPJvNHS4r3K6eGXxVrWXjm2GNuzNRyiuM511VSba6T8g3NzZrNJm5pR
-	iNeTWTzeRCR2I1YpUsnejJaKGIRzS8cik0TWZJDUJ9MjHTsb3ZSi0fNKj8Dn+i6joJozr8zof3y
-	fPyC41Rfc/AU1N7rPFvx3Uwmme+B56PrcBILcXxGGzefoDvLnR/zAxZ0+cMHE8agZR0jJibo2J8
-	+l8Y7nljKQfSFN9urn1n9CuJ13s7stokDaG1UqMsaMcfZFduaAYjoAsL6uaE4mi0bB4Q6R2A+Kj
-	eX+Jti95J2Vo7FJ3y3Eo7eL/0NP+fIuUq+Srynb4Y7oJIUP5Q3z2SmP1cg5FfDqVJFVqhKbtpz3
-	ZylpxT+56h1XM67A4ubr2gLL3SwApqM3gcSv0shfQPym7Mw5neEjBeMqeZjBxtG/YDF1FBew0gL
-	aLmgK27bUOhq+xisQuN4MvJ4/ePAZI1RFQSDyNpmXtn4IQNHP2IqxYUZ+OTBufy9S5Q=
-X-Received: by 2002:a05:6a20:b720:b0:40a:5b71:5a4c with SMTP id adf61e73a8af0-40a5b715aa7mr1097476637.44.1795691188098;
-        Thu, 26 Nov 2026 03:06:28 -0800 (PST)
-Received: from mail-dy1-f173.google.com (mail-dy1-f173.google.com. [74.125.82.173])
-        by smtp.gmail.com with ESMTPSA id 41be03b00d2f7-cde6d0332bfsm10925990a12.22.2026.11.26.03.06.27
-        for <linux-mediatek@lists.infradead.org>
-        (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
-        Thu, 26 Nov 2026 03:06:27 -0800 (PST)
-Received: by mail-dy1-f173.google.com with SMTP id 5a478bee46e88-3282db206d3so2593041eec.0
-        for <linux-mediatek@lists.infradead.org>; Thu, 26 Nov 2026 03:06:27 -0800 (PST)
-X-Forwarded-Encrypted: i=1; AL+hErH/bzaP0diqSOgO51fpwUjWOJWfA0ydwRm4+7t2HqOWlumL/OBthOZmH4kfwNOGbOFdfRhUD+mz+qYFLJreMA==@lists.infradead.org
-X-Received: by 2002:a05:7301:240a:b0:386:cd71:b714 with SMTP id
- 5a478bee46e88-386cd71ce89mr5908411eec.35.1795691185712; Thu, 26 Nov 2026
- 03:06:25 -0800 (PST)
+	id 1xWXtn-0000000D2sh-0zwx;
+	Thu, 26 Nov 2026 11:44:23 +0000
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+	by sea.source.kernel.org (Postfix) with ESMTP id 057A941196;
+	Thu, 26 Nov 2026 11:44:23 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id E60BF1F000C6;
+	Thu, 26 Nov 2026 11:44:19 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+	s=k20260515; t=1795693462;
+	bh=GPBJLsJh7gQ+qJXgr4h2BZwP0qjmmcfqj8Qsq6esC70=;
+	h=Date:From:To:Cc:Subject:References:In-Reply-To;
+	b=I5KR91DZ584LXSWHTtNd251Xc4KwiWYJ4AJRKVkJ1r0D3SY+CrS6hjK0ZdPxO5jcv
+	 zAp9f0i9i1SS6WnX2UkCWgy5XqFkqWskW3j87+iGXSBDb+wi+llCR1rYKEjuIWV4PP
+	 z61qtaLQefh0EyX7acLiYvq74cDIP+qycIP1IJMsHBh4Y30MYrHlmuxMbIE5UsJhN7
+	 OKeGpvBVZBngzFO5O5QA4O3UjAq0DhLMCG0Dy21gA0PbqV7gMwsjkZX9jBijwXU1XI
+	 +PkoElwyIKWl6JtcrzS0G6ZQ9OjM5Ylpoji0CCYNHI1Fi389eDBo8gi7PDPAxQdqDf
+	 wbFqknnn+UOSw==
+Date: Thu, 26 Nov 2026 11:44:17 +0000
+From: Mark Brown <broonie@kernel.org>
+To: iasnezhkov@gmail.com
+Cc: matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
+	robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org,
+	flora.fu@mediatek.com, amergnat@baylibre.com,
+	leilk.liu@mediatek.com, me@adomerle.pw, devicetree@vger.kernel.org,
+	linux-spi@vger.kernel.org, linux-mediatek@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: Re: [PATCH v2 3/3] dt-bindings: spi: mediatek,spi-mt65xx: Add
+ compatible for MT6789
+Message-ID: <f42a3782-35d4-4bb1-8c72-0dc56b8e0642@sirena.org.uk>
+References: <20261126000711.16163-1-iasnezhkov@gmail.com>
+ <20261126000711.16163-4-iasnezhkov@gmail.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-References: <20260714114414.184512-1-angelogioacchino.delregno@collabora.com> <20260714114414.184512-37-angelogioacchino.delregno@collabora.com>
-In-Reply-To: <20260714114414.184512-37-angelogioacchino.delregno@collabora.com>
-From: Fei Shao <fshao@chromium.org>
-Date: Thu, 26 Nov 2026 19:05:47 +0800
-X-Gmail-Original-Message-ID: <CAC=S1ngQC33xKiYRYT1qq1jqJj+7yveiwu1CQrouv8Ud+dPtfQ@mail.gmail.com>
-X-Gm-Features: Aa3M54q46fTI_3jhRSfuxLJf-vqFgr66vNyr9HYUTk_fEMF24HCMszULS2t_YS0
-Message-ID: <CAC=S1ngQC33xKiYRYT1qq1jqJj+7yveiwu1CQrouv8Ud+dPtfQ@mail.gmail.com>
-Subject: Re: [PATCH v2 36/46] drm/mediatek: mtk_crtc: Dynamically find
- suitable CRTC DMA device
-To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Cc: chunkuang.hu@kernel.org, p.zabel@pengutronix.de, airlied@gmail.com, 
-	simona@ffwll.ch, maarten.lankhorst@linux.intel.com, mripard@kernel.org, 
-	tzimmermann@suse.de, robh@kernel.org, krzk+dt@kernel.org, conor+dt@kernel.org, 
-	matthias.bgg@gmail.com, dri-devel@lists.freedesktop.org, 
-	linux-mediatek@lists.infradead.org, devicetree@vger.kernel.org, 
-	linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org, 
-	justin.yeh@mediatek.com, jason-jh.lin@mediatek.com, kernel@collabora.com
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261126_030630_816752_88DF2180 
-X-CRM114-Status: GOOD (  26.33  )
-X-Spam-Score: -2.1 (--)
+Content-Type: multipart/signed; micalg=pgp-sha512;
+	protocol="application/pgp-signature"; boundary="C66k9UD0zapb3tpO"
+Content-Disposition: inline
+In-Reply-To: <20261126000711.16163-4-iasnezhkov@gmail.com>
+X-Cookie: Sank heaven for leetle curls.
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -113,117 +74,47 @@ List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-15.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+X-Spam-Status: No, score=-5.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,
-	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS autolearn=ham
-	autolearn_force=no version=4.0.1
+	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS autolearn=no autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On Tue, Jul 14, 2026 at 7:46=E2=80=AFPM AngeloGioacchino Del Regno
-<angelogioacchino.delregno@collabora.com> wrote:
->
-> Now that the vblank and config components are being dynamically
-> selected, the only hardcoded strategy that is left is selecting
-> a DMA device for a CRTC that is being created.
->
-> In order to support pipelines including an embedded multimedia
-> controller (like MDP3) chained with the display controller and
-> pipelines chaining multiple display controllers together, stop
-> assuming that the first component in the pipeline is suited to
-> do DMA operations and implement support to dynamically find not
-> only a suitable DMA device, but also the best one.
->
-> This finds the first device that provides DMA and the first one
-> that is also behind an IOMMU.
->
-> The criteria for selecting the best device is to prefer a DMA
-> device behind an IOMMU; if not found, the first DMA capable
-> one is selected instead.
->
-> Signed-off-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@coll=
-abora.com>
-> ---
->  drivers/gpu/drm/mediatek/mtk_crtc.c | 68 ++++++++++++++++++++++++-----
->  1 file changed, 56 insertions(+), 12 deletions(-)
->
-> diff --git a/drivers/gpu/drm/mediatek/mtk_crtc.c b/drivers/gpu/drm/mediat=
-ek/mtk_crtc.c
-> index 3cb2d1a28987..16c9ff2cfe32 100644
-> --- a/drivers/gpu/drm/mediatek/mtk_crtc.c
-> +++ b/drivers/gpu/drm/mediatek/mtk_crtc.c
-> @@ -1132,6 +1132,60 @@ struct device *mtk_crtc_dma_dev_get(struct drm_crt=
-c *crtc)
->         return mtk_crtc->dma_dev;
->  }
->
-> +static int mtk_crtc_find_suitable_dma_dev(struct mtk_drm_private *priv,
-> +                                         struct mtk_crtc *mtk_crtc,
-> +                                         const struct mtk_drm_path_defin=
-ition *path)
-> +{
-> +       struct mtk_ddp_comp *dma_comp =3D NULL, *dma_comp_mmu =3D NULL;
-> +       int i;
-> +
-> +       for (i =3D 0; i < mtk_crtc->ddp_comp_nr; i++) {
-> +               const struct mtk_drm_comp_definition *cdef =3D path[i].co=
-mp;
 
-`path` points to a single `mtk_drm_path_definition`, did you mean
-`&path->comp[i]`? Or use `mtk_crtc->ddp_comp[i]` directly here since
-patch 38/46 switches to it anyway.
+--C66k9UD0zapb3tpO
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-> +               struct mtk_ddp_comp *comp;
-> +
-> +               comp =3D mtk_ddp_comp_find_by_id(&priv->hlist,
-> +                                              cdef->type, cdef->inst_id)=
-;
-> +               if (!comp)
-> +                       continue;
-> +
-> +               /*
-> +                * Check if this is a legacy OVL_ADAPTOR component and, i=
-f so, this
-> +                * has to forcefully be the DMA device for this CRTC: ass=
-ign it to
-> +                * dma_comp_mmu to force that.
-> +                */
-> +               if (comp->type =3D=3D MTK_DISP_OVL_ADAPTOR) {
-> +                       dma_comp_mmu =3D comp;
-> +                       break;
-> +               }
-> +
-> +               if (!comp->dev || !comp->dev->of_node)
-> +                       continue;
-> +
-> +               /* Find the first device provides DMA... */
-> +               if (!dma_comp) {
-> +                       if (of_property_present(comp->dev->of_node, "#dma=
--cells"))
-> +                               dma_comp =3D comp;
-> +               }
-> +
-> +               /* ...and check if that device is also behind an IOMMU */
-> +               if (!of_property_present(comp->dev->of_node, "iommus"))
-> +                       continue;
+On Thu, Nov 26, 2026 at 12:07:14AM +0000, Ilia Snezhkov via B4 Relay wrote:
+> From: Arseniy Velikanov <me@adomerle.pw>
+>=20
+> Add the SPI controller compatible for the MediaTek MT6789 SoC with
+> mediatek,mt6893-spi as its fallback compatible, addressing v1 review
+> feedback that MT6789 SPI is programming-model compatible with MT6893
+> without requiring a driver change.
 
-Checking `#dma-cells` (a dmaengine provider property) and unscoped
-`iommus` can be fragile: if the leading plane reader has no `iommus`,
-this loop keeps scanning and can pick a downstream non-plane block
-that has `iommus`.
-Maybe filter by `mtk_ddp_comp_layer_nr(comp, i)` to skip non-plane
-components instead:
+Please submit patches using subject lines reflecting the style for the
+subsystem, this makes it easier for people to identify relevant patches.
+Look at what existing commits in the area you're changing are doing and
+make sure your subject lines visually resemble what they're doing.
+There's no need to resubmit to fix this alone.
 
-if (!mtk_ddp_comp_layer_nr(comp, i))
-    continue;
-if (!dma_comp)
-    dma_comp =3D comp;
-if (of_property_present(comp->dev->of_node, "iommus")) {
-    dma_comp_mmu =3D comp;
-    break;
-}
+--C66k9UD0zapb3tpO
+Content-Type: application/pgp-signature; name="signature.asc"
 
-Regards,
-Fei
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAABCgAdFiEEreZoqmdXGLWf4p/qJNaLcl1Uh9AFAmsIG5AACgkQJNaLcl1U
+h9DVLgf9ESvlliyKURSSkiS05SjNzqq0K0AUAZ+Lw1hNyfPT1cQbMLU6KGxATUFk
+aRW2i5ZdLBxZ/ZI75fPxOZpHGGX6yvY45i7bo8L66kHm5zk32j3zZGOJm6XT+O+H
+k0sxzD0y3YOiSmF0ba7Nb0WTwNX9lS70ws5v4f6/CmrESq3U51r/vpEQfv3e25gb
+sj4XZo7W9B2Bf2Bh48BLMfMZoWvHbw1k81oEw2pv7JY17v+s8zklfaL5ot4N3nwH
+7XIuIpNiVMRb0gdHLWBCYavSy2+pM/KPRkgtzgcNXhHx8TUxTvzhyLevA9HY3Lky
+LRlR90pFAqH7HtnmRnaTkE42bnRqRg==
+=FF7l
+-----END PGP SIGNATURE-----
+
+--C66k9UD0zapb3tpO--
 
