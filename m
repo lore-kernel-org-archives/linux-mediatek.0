@@ -2,11 +2,11 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id DB913606A333
-	for <linux-mediatek@archiver.kernel.org>; Thu, 26 Nov 2026 00:33:22 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 1E768606A31E
+	for <linux-mediatek@archiver.kernel.org>; Thu, 26 Nov 2026 00:33:32 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=tRexkwpZ;
-	dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=C+vq4J0G
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=K27PaS8/;
+	dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=kF996sml
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
@@ -14,83 +14,81 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	Cc:To:From:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
 	List-Unsubscribe-Post:List-Owner;
-	bh=XKO1A7l/UzAx1PvR/i1+cXwRXwIwmnNN/v1HN2cfFf0=; b=tRexkwpZvdJPJz1CVLethQRug2
-	2fZi743d6z57wsAAix7T/7iLint0qBCuLotqpWH0FuJMAV8WAztY39RX+QUr2vnT8HDxIpP70Eb7X
-	EmyQHI4k855ueRMt9GfWZiKG9Z7KGrRThUKrE+JnO9OeB2ZitdtZvpeE80YR7HvvI8OeZcXNQ8Nh/
-	k+v2f39crjWftPAh5V0cuIrHMCjvWHcFciGUesVRCNVxxGo1E0us228QHhlRWe11wiO71Gkkfw+Pf
-	h7ZXlJ/pM5BZF/BEPNkHeWVK6W3f4m6lk5STzwVcI5UlR8/vvRH9tfBvJL3VANORrM2SVHGYX+7Zo
-	ZLHCqYGA==;
+	bh=QvMJOhFakPcL4F+qx6uzaaYRnxvtYK5E3EhTI8tmZKM=; b=K27PaS8/6VER/V8hOXIltmF9/w
+	lrC5/18r/KMALpUOXFN93zJvoOX0RrjWUg6EV65FHhIZVRGyP+tuqsn+uiVVDWCa3kPIGC2sAjyk5
+	Gc9Vt4so5E1ohnA9625kCdxFSSqPjMhK/ihGszkqCDAfatZAM54UHGAOF/8UeEKJLdXMWuYY8nm/x
+	ow7RyCY+0fuw/GDYmWS2Zll8B7YkY6KkLWQqCH3LLzWJIGbw3wmMIAITwKs8+82hU1fF3UzTXHBTA
+	p+VtEsfcbefnsdUmsq09UszS9+D8KgKgV6wNx0Ra3p0cSvosKpL3+Ut/1/zSD8JCXJG7VitvNk9BB
+	HBT9bJZg==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xWNQP-0000000Bezf-2YcJ;
-	Thu, 26 Nov 2026 00:33:21 +0000
-Received: from sea.source.kernel.org ([172.234.252.31])
+	id 1xWNQZ-0000000Bf4J-3WMs;
+	Thu, 26 Nov 2026 00:33:31 +0000
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xWNQO-0000000BezG-0vaY;
-	Thu, 26 Nov 2026 00:33:20 +0000
+	id 1xWNQS-0000000Bf0X-0tkF;
+	Thu, 26 Nov 2026 00:33:24 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id A61A7405F1;
-	Thu, 26 Nov 2026 00:33:19 +0000 (UTC)
+	by tor.source.kernel.org (Postfix) with ESMTP id A819B61ECF;
+	Thu, 26 Nov 2026 00:33:22 +0000 (UTC)
 Authentication-Results: smtp.kernel.org; arc=none smtp.remote-ip=100.80.115.77
 ARC-Seal: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256; cv=none;
-	t=1795653199;
-	b=rrjDfoaYGP3LtecrsEX6l2RmtpUguk8xxCpCs5+Qk1IF45g685D9Fa1/fUs8cguoYsav
-	 drv8uDv4Rr1pdUZBf8kski7RhYAPJsiMRoR/GaDIkD+an7ax183R0C3+VqmURzPwFL8lo
-	 KfGOvmbovi04S55AO1hKIFb1eX4pA5Hou4E/uuQNRcqgoemLV7R+QvTsEg2xHQe/HNEoO
-	 WH7mblpa/YmiqTYLYAxntJJwSb8t+5VN9HzFE5aeD+CI4msZRZOGZT37YlMrRKLTm5gPZ
-	 AF5gjgTzYj5D9L6p55ZrA/939pHVhmtxVqch3az6nD0E/mmOtAMwVs0zOFOE5+akMUw==
+	t=1795653202;
+	b=Lnro5f6OwnHz42H1dXVcEwT2EDEUphyxP26ZCTxJUa6k1ULHc3Z13bEGZ7yWUyNXpGUH
+	 S9CNIPwqvgwYHOjvnnV6Sz2lWyhCPiVpwDWn5c8d/1Qzz/6uHdd+rB8eH4qGK0ZsjSZdF
+	 7ry2nO8gdfQ+ZZodpK7A0OSzA16W7XXrJLEGIRbm6ytigGH4jF6DLkMExwEY+beLwEYWS
+	 SbLjUVFnaJBVbBGWfpWgfhpI70gZnltqej123TNW5rVqdDYF8C/HQ4XNdjgiIOohx/qTB
+	 Z5bHDWS8QLqJgt0HMdSWuIJb4Sr4HTwV4WvOLACxU3HfBJ5sUWpRK1OB5ZQCfGaqcng==
 ARC-Message-Signature: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256;
-	c=relaxed/relaxed; t=1795653199;
+	c=relaxed/relaxed; t=1795653202;
 	h=DKIM-Signature:Received:From:To:Cc:Subject:Date:Message-Id:
 	 MIME-Version:Content-Type:X-Mailer:X-Developer-Signature:
 	 X-Developer-Key:X-Endpoint-Received:X-Original-From:Reply-To:
 	 Content-Transfer-Encoding;
-	bh=XKO1A7l/UzAx1PvR/i1+cXwRXwIwmnNN/v1HN2cfFf0=;
-	b=2MiPQdssy+RwseH8oCuHDQUjHBOM4xdTH90E7JykhsaiGvDDfQOJpmyyO7kR0wetH35t
-	 Z4jepM0QkKkY3DxJgE3ZSyhsLlxJRT32VR/byuT7yu1aXu5afL/kjOH2aJgwXzPxASBf0
-	 NGjnF9oIJ6bDLOU5EJpXwICI2+uAnwCXuhRbGsMebH9f3ywN5FifpJFyLf98u57dQJt2a
-	 l0UIfsnWT6IRoX150LI3CtDYJUfgs37HVEE+SjRxvAYNHOFDNFJPJ6gqct2Lgi3mjT8ZR
-	 JIGH+liK0fqGeo09rAhcxdR6/6oa2Jm59EXT5/s9OB+aBv2r2NwslpV3+4nASZLPoLw==
+	bh=QvMJOhFakPcL4F+qx6uzaaYRnxvtYK5E3EhTI8tmZKM=;
+	b=F+XTi5CBM6mkqza1uZMHiJLcDvohoFnnT9xGzVWNftP7R568ZOXow0bgtY+j/DhCX0ZP
+	 C9svfNlqmMikDItvhfwk0/gX6hue7i+5yeXi6ty0mWh/RQnW9m5+5OpBgs47zrovu7Ibf
+	 Hllj6hg4ntkxGA3oIRFEUWTTJuAgAteXZjecwWWFqqwsx//w/U6CYTt+nIT88yBzjPpr4
+	 PihjmxVENmoCV5p4wZ4m4hBYybMtoYutT2GCVjHJiWV/JGRxdvQkfTJRuX1t0bK7XVuKz
+	 qJqm+RKrVP+aLyi4cNdF95T7Cb6HdBDrnvfW+btfWlo3AkgdDwbjdN66hVZA6EWi0Fw==
 ARC-Authentication-Results: i=1; smtp.kernel.org; 
 	arc=none smtp.remote-ip=100.80.115.77
 Received: from lkml.kernel.org (nexus.subspace.kernel.org [100.80.115.77])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.kernel.org (Postfix) with ESMTPS id 534E11F000CA;
-	Thu, 26 Nov 2026 00:33:12 +0000 (UTC)
+	by smtp.kernel.org (Postfix) with ESMTPS id E163B1F000C0;
+	Thu, 26 Nov 2026 00:33:15 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1795653199;
-	bh=XKO1A7l/UzAx1PvR/i1+cXwRXwIwmnNN/v1HN2cfFf0=;
+	s=k20260515; t=1795653202;
+	bh=QvMJOhFakPcL4F+qx6uzaaYRnxvtYK5E3EhTI8tmZKM=;
 	h=From:To:Cc:Subject:Date:Reply-To;
-	b=C+vq4J0GO3OKlvCUWfjrfJ4ujgbNNop9lC2jvTUeHeU3t2G4esLCz/E27c/n6DLW6
-	 HVbFAGkY3aaCG77bomZRISXMOsVyvdn+GvL0co1hoVi3IUtWoWOrq9jlUXVhNEaaFX
-	 NqtsqA9cidgeHx33yWbb4inQF6GJM6ueoe5H8gMM8mAfcRFlzBiIxHmidOFRsPuvRH
-	 L4YkGmCO8KmRyY6sODY4h4zmWo9Hs8zku2oIXOfEIYxXNmo238I7eU0CuvDz9KMQDa
-	 bdf9f1090Yc6Dy4Bg2uOkaxWaLqAbKbLXSfI+s73JjItjKQ78tx5XXv82J1IkIkO+g
-	 ji6epheMPNEsw==
+	b=kF996sml7XULg/eXZv6SVRtoUqqIxbny8RXxFadJWQvCuUwQsR77bvosbqNFR+fUc
+	 yWZJMiN217dJt2/ymO7uQHr8RCe2Y6IRDdyd5OXywS/g/QqMrS/+mCAPd6IdybR+bF
+	 f5azS/4iFFZTcURYX0nAqODTa0IXn0efN2Ilf+UbUiJQRplmBrOf6YriZVN5WhpQds
+	 t5jvoDdR48NiUSWOpyLlw3NivcB5+5ge8zMWtCZ4/ZZ9AYMRO5yrcEs9NcXzEBWzmm
+	 wrK3/RL9v0SiFRYGiYXTEI/tQ/oKS+QqbOejXxpxWBnOrZYuNeGFuARZFTB+tOoBkT
+	 0sCdqXyNgRGhg==
 Received: from nexus.subspace.kernel.org (localhost [IPv6:::1])
-	by lkml.kernel.org (Postfix) with ESMTP id DA40C4D107;
-	Thu, 26 Nov 2026 00:33:11 +0000 (UTC)
+	by lkml.kernel.org (Postfix) with ESMTP id 78EF64D108;
+	Thu, 26 Nov 2026 00:33:15 +0000 (UTC)
 From: Ilia Snezhkov via B4 Relay <devnull+iasnezhkov.gmail.com@kernel.org>
-To: chunkuang.hu@kernel.org, p.zabel@pengutronix.de
-Cc: airlied@gmail.com, simona@ffwll.ch, matthias.bgg@gmail.com, 
- angelogioacchino.delregno@collabora.com, dri-devel@lists.freedesktop.org, 
- linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
- linux-kernel@vger.kernel.org
-Subject: [PATCH] drm/mediatek: dsi: return tx_len for write transfers in
- mtk_dsi_host_transfer()
-Date: Thu, 26 Nov 2026 00:33:11 +0000
-Message-Id: <20261126003311.49008-1-iasnezhkov@gmail.com>
+To: broonie@kernel.org
+Cc: matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com, 
+ linux-spi@vger.kernel.org, linux-mediatek@lists.infradead.org, 
+ linux-arm-kernel@lists.infradead.org, linux-kernel@vger.kernel.org
+Subject: [PATCH] spi: mt65xx: avoid division by zero when speed_hz is zero
+Date: Thu, 26 Nov 2026 00:33:14 +0000
+Message-Id: <20261126003314.49090-1-iasnezhkov@gmail.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 X-Mailer: b4 0.16.0
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1795653191; l=1225;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1795653194; l=1286;
  i=iasnezhkov@gmail.com; s=mindone2026; h=from:subject:message-id;
- bh=d9GTUwGLxs30Q2Foqvf23WnszilxicEoDpegYZ+sWi4=;
- b=/fZZBXK5jnT5BP/TtqUfZI5IQwPDnaE4fgeIwJ9Z81lnWz9ZALqBGiVUqXmoMC5TSkjDvWuQq
- N7m4jW48yBhAzS3lOhi2PIxBquPw7E7OhOKlcgfZqaWuypo5wDlZ/VF
+ bh=EATIDf77MiZZ99Ojdza/GsLWfdou7DzHCfNg7tDlYcg=;
+ b=m7g3ptY0Ru5dhWfJGTBqNbiQNerQr4f2yzwodq/jQ8gf+QSArAGoVHVqHF7s32M3MRClM0Hf2
+ hIs6EkndoZdCrsClfyjPaDDv6MQjUW3jvMI+SPbRtejjwvQytiEty2X
 X-Developer-Key: i=iasnezhkov@gmail.com; a=ed25519;
  pk=hQgXfiWi4ukk2jh4BHu1vRVhg9BUivo//AFp50AKMag=
 X-Endpoint-Received: by B4 Relay for iasnezhkov@gmail.com/mindone2026 with
@@ -118,38 +116,37 @@ X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 
 From: Ilia Snezhkov <iasnezhkov@gmail.com>
 
-Per struct mipi_dsi_host_ops .transfer() documentation in
-include/drm/drm_mipi_dsi.h, on success .transfer() must return the
-number of bytes transmitted for write packets or the number of bytes
-received for read packets.
+spi-mt65xx does not set host->max_speed_hz, so if a slave device omits
+spi-max-frequency in DT and a transfer leaves speed_hz unset,
+__spi_validate() passes speed_hz == 0 to mtk_spi_prepare_transfer().
 
-mtk_dsi_host_transfer() currently sets recv_cnt = 0 for non-read
-messages, returning 0 instead of msg->tx_len. Callers checking for short
-writes against msg->tx_len observe a spurious 0-byte transfer.
+Because 0 < mdata->spi_clk_hz / 2 is true, DIV_ROUND_UP(mdata->spi_clk_hz,
+speed_hz) divides by zero (undefined behavior; on arm64 udiv returns 0,
+which then underflows sck_time - 1 to 0xffff).
 
-Return msg->tx_len on successful write transfers.
+Guard the division on speed_hz != 0 so zero speed falls back to div = 1.
 
 Found and drafted with an AI coding assistant.
 
-Fixes: 21898816831f ("drm/mediatek: add dsi transfer function")
+Fixes: a568231f4632 ("spi: mediatek: Add spi bus for Mediatek MT8173")
 Signed-off-by: Ilia Snezhkov <iasnezhkov@gmail.com>
 ---
- drivers/gpu/drm/mediatek/mtk_dsi.c | 2 +-
+ drivers/spi/spi-mt65xx.c | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/drivers/gpu/drm/mediatek/mtk_dsi.c b/drivers/gpu/drm/mediatek/mtk_dsi.c
-index f82506e..e2179b4 100644
---- a/drivers/gpu/drm/mediatek/mtk_dsi.c
-+++ b/drivers/gpu/drm/mediatek/mtk_dsi.c
-@@ -1156,7 +1156,7 @@ static ssize_t mtk_dsi_host_transfer(struct mipi_dsi_host *host,
- 		goto restore_dsi_mode;
+diff --git a/drivers/spi/spi-mt65xx.c b/drivers/spi/spi-mt65xx.c
+index 8b4deef..2baea0c 100644
+--- a/drivers/spi/spi-mt65xx.c
++++ b/drivers/spi/spi-mt65xx.c
+@@ -509,7 +509,7 @@ static void mtk_spi_prepare_transfer(struct spi_controller *host,
+ 	u32 div, sck_time, reg_val;
+ 	struct mtk_spi *mdata = spi_controller_get_devdata(host);
  
- 	if (!MTK_DSI_HOST_IS_READ(msg->type)) {
--		recv_cnt = 0;
-+		recv_cnt = msg->tx_len;
- 		goto restore_dsi_mode;
- 	}
- 
+-	if (speed_hz < mdata->spi_clk_hz / 2)
++	if (speed_hz && speed_hz < mdata->spi_clk_hz / 2)
+ 		div = DIV_ROUND_UP(mdata->spi_clk_hz, speed_hz);
+ 	else
+ 		div = 1;
 -- 
 2.54.0 (Apple Git-157)
 
