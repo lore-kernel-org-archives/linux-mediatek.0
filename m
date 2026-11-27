@@ -2,11 +2,11 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 8D1B3606A323
-	for <linux-mediatek@archiver.kernel.org>; Fri, 27 Nov 2026 02:50:07 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id AA187606A31C
+	for <linux-mediatek@archiver.kernel.org>; Fri, 27 Nov 2026 02:55:25 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=2E2KPBzL;
-	dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=PwEoHput
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=LBgIEXQV;
+	dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=FlzZrQMS
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:Reply-To:List-Subscribe:
 	List-Help:List-Post:List-Archive:List-Unsubscribe:List-Id:
@@ -14,82 +14,84 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	Cc:To:From:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
 	List-Unsubscribe-Post:List-Owner;
-	bh=2X8lINQUPwlfkcaoAYlh4FWfsAegOZJi9VEYSrxjRA8=; b=2E2KPBzLcYKgdjRaMoMUB72EJM
-	X/I4U1KFRbn+zaxwyhkte/qeItEIHBiUpzZlgs+p611azcHDe3do1oT60x3GhS0yk5We+E6ltfOvd
-	z182sxvIuUzHH+EZqLtvX3V2UjAe/SWwmRMOGCJkL2t3fTj/PZ5a3jgjpcs0J3+55y7jqaDJGJi5U
-	YgM1nh78dDX7kOA32SKi5W40COjKSTZsJabfW4vsbOgfJ9qcJKgR9q9IzeE0KG7P6+JfKbC2jA5p9
-	mPFL9/FjCSAeQu0n78BdjdKmfl6iAe3zCrhJn5oNQyRFb8ZHvaZOVPGIRylig5FdwqCpaZ9zqmj+W
-	FHzXohKQ==;
+	bh=iuAZy1Xqdh6yRTzJc6FLUzIwcR1MgTN4XofneJJ+eTc=; b=LBgIEXQVWfQYa/0VOVQkzq/qJq
+	26gVnPuZqnJsh9h9AwwSKgV3aN3e8ESkHpLP4fzPMmNg+asDrFhkHBlQEvZBXLh+r6R3YAf5A1eN1
+	M6pOA3XzlbfGAb+WqAMck7Qoye1bAnMyDvxhQmZLCf5PP3l9QUpjLwEyi9bY9eocQGJXEohDTiUWP
+	/ttvhM0oU4k1/oqVpYMK0ry7dUzgo/QU0yWPghCjZWxWJoOHO5/zjH5YmG3vy9KJRMtbKgpu9W6Xm
+	FmBi+sQK40EbEH3dcDiXwFy+8g1odCDeiIu6pd0BX2xqEwUu5Wmw8AJXN0zBlFDK1nGjva6/4KBqR
+	DK6n/sgw==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xWm2J-0000000Enww-10uJ;
-	Fri, 27 Nov 2026 02:50:07 +0000
+	id 1xWm7R-0000000EoK9-0ncB;
+	Fri, 27 Nov 2026 02:55:25 +0000
 Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xWm2H-0000000EnwV-2RgM;
-	Fri, 27 Nov 2026 02:50:05 +0000
+	id 1xWm7P-0000000EoJw-0YOQ;
+	Fri, 27 Nov 2026 02:55:23 +0000
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by sea.source.kernel.org (Postfix) with ESMTP id DF83A45317;
-	Fri, 27 Nov 2026 02:50:03 +0000 (UTC)
+	by sea.source.kernel.org (Postfix) with ESMTP id 8DF0F43A1C;
+	Fri, 27 Nov 2026 02:55:22 +0000 (UTC)
 Authentication-Results: smtp.kernel.org; arc=none smtp.remote-ip=100.80.115.77
 ARC-Seal: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256; cv=none;
-	t=1795747803;
-	b=l4GUq02r983sILgWP3Qk6zWpUqMuBdT5m/lE00J+MUfgP5uJGOWSV4DNQKU5PgugecbO
-	 EsL14eht8yojZdTgu/7PlZlAMfR+wJKlRedbbUI1hSm+hm1T510vdgaC/13P8sMy2p7zv
-	 1oeOG39SbVExgRlsSrX7yIl3C5h2devwdes8B36ldMbD9aB/GBdJpPZNxWxSG5EIx3Ji2
-	 Yl8Vhc4WwPExEacpCekJwsp2OC8qObkRqJh8mlPmWF2Dezys78YJnV7hE4O6Fk/Cau/6V
-	 1OaA1TDtautWBS8XgqjLNTvDfO0BrGxhdoRx0MnIjxLFXC1FrRiGpHfMV+FAW7jHV+Q==
+	t=1795748122;
+	b=wnuMqB6vezTLGQXhbZZK5xd/b9z29BhJFTN0YJf1IhrjK0ESOrme+MORZTumWScqG1g/
+	 tKtUWoJVWyAoO+Og5Z5Xb6CIu1KbWlBuQvGy0J7CT5gYXvgGq+U2R0f2jq+4tlToTQBd6
+	 xcgwIKnEYn/3TUliWNZ4HX3rRstxGY38xCArDHxV4HYBGik2M+ZUdwHwS7Xmnw0DTjOmX
+	 dVGDrvEbgF1nSM2LozR5GXDdSQqLz00SY67mMsyaxp/E8CiRK6K6Kmv3+ELnRl3ZPRzsr
+	 Trl+TUB+IqefVC7FoFujEv9yMvHXOwrCQ+PGrWjoB6rTHsPP6J1CnN8682cnQdd4DLQ==
 ARC-Message-Signature: i=1; d=kernel.org; s=arc20260519; a=rsa-sha256;
-	c=relaxed/relaxed; t=1795747803;
+	c=relaxed/relaxed; t=1795748122;
 	h=DKIM-Signature:Received:From:To:Cc:Subject:Date:Message-Id:
 	 MIME-Version:Content-Type:X-Mailer:X-Developer-Signature:
 	 X-Developer-Key:X-Endpoint-Received:X-Original-From:Reply-To:
 	 Content-Transfer-Encoding;
-	bh=2X8lINQUPwlfkcaoAYlh4FWfsAegOZJi9VEYSrxjRA8=;
-	b=ASN2iZ8pk1DtSdaEA4E3ODG9zTn+APBmCDxF7F8Vp8Lmb2ZWfKxNcSC6oq1pevIIUGvK
-	 nXPyORIs4CdXJhwNGeIsGWFqo92hoeXw4BFVYl7IbQyHp/75qNUSRBkkFRso2J+MpisMO
-	 vgUKDeLWucE31f6ipEbuN8M2HHrLe/sd0P8G5XkNx6DbU16BPvc5uijys0G2q0CAo9/u1
-	 kpXtSFEXGLv09lkTJDNKcZaY414ApYhT34GYd5DRblmTOTWVUVz/1tIVvax92ln3rai1l
-	 +Hn0AJCBwkP0zfs7YvztKenKai4dByJZAZLVBchcjriNAMGmCDnmqUJ3XIgx0wj1v/g==
+	bh=iuAZy1Xqdh6yRTzJc6FLUzIwcR1MgTN4XofneJJ+eTc=;
+	b=zDSrVkdi7z0t0G5ioYP7UgryPaLyLGCI1N+E5uk/e1lE63l0ctpXXSyfgxkRJ3SRWxCp
+	 Zg5ScBWGnyUTIASVxbEay7F2FBwwPleMEEDgIBNG3jmFK5tOc7u/M46tpMKnXs/wy8p8P
+	 dCz4LgktPmeIWnkX5VOdJtkIC23Z8BPojDKP+Niq5E1GutSYP51Aw2dac2mDmkJuBfr32
+	 Ai+qZe+d3phMh2HI+eZ5E1BwzRN5XuuZZ+NMV+KBbhfzuqpqZNmqvJkJMlFPFbHMAXkr8
+	 ZMLsluYn7Bt4Y2JxJHYjEtzakJ1HwQ71kJi4/jwBtSE6ezx3ynAoQqqYhHgvOb8stlA==
 ARC-Authentication-Results: i=1; smtp.kernel.org; 
 	arc=none smtp.remote-ip=100.80.115.77
 Received: from lkml.kernel.org (nexus.subspace.kernel.org [100.80.115.77])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.kernel.org (Postfix) with ESMTPS id 3197B1F000C1;
-	Fri, 27 Nov 2026 02:50:00 +0000 (UTC)
+	by smtp.kernel.org (Postfix) with ESMTPS id 7EBEA1F000C1;
+	Fri, 27 Nov 2026 02:55:18 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1795747803;
-	bh=2X8lINQUPwlfkcaoAYlh4FWfsAegOZJi9VEYSrxjRA8=;
+	s=k20260515; t=1795748122;
+	bh=iuAZy1Xqdh6yRTzJc6FLUzIwcR1MgTN4XofneJJ+eTc=;
 	h=From:To:Cc:Subject:Date:Reply-To;
-	b=PwEoHputZUrSoC/suScLk4e3ZgactoXgmM5L4ZN/dpEaUQpia4t/2pl42xJr009Cc
-	 MyoGcFnu3r/r0d7+yKQUxFqt1pMMXKdhRkYZZU+7xi/OrTEKJh7zDFNgfHuw6LgFIh
-	 zxb/30rZLa/3BvEDR1e6/k+ALKdiutaQKkk2Oa6cGT6++9IRVeySCfvZ25VBM+NXSi
-	 q5UvKn4xD3gqnpWzRL2zDSyPaCzfygx2XnCoiMhPbSu0J7gV5r6X5CU93ge2vrB97G
-	 DBFlAHFNS4FQUBWheNcrXgeJNkg3DTdRydl/Os2PnTvXAo/WnYuC+jlzIp+AYx+zae
-	 TuAFNHmnc5V9w==
+	b=FlzZrQMSP4GEYnaRkphNzlGd2PrGhIF1hxM6ZaZMoHMMiV+XLA0oCyf7QZTOgSXgG
+	 UzsRNLOVcD/2zGbyW5p9EMyPg78OJKJk0j0Ut90jme/0OvmJRqRXBhrCwBia5E2kiX
+	 dWKXyEwouvzE7vMmQW6Aai7t9a5kJSxMqo8JawmoLINoAIVivNEqwD2WGP/CizxWcG
+	 6QL14PH8dnopeWzrapRKGAxk9T07Clmy76b94Cw+05EscgVYzyVOkLSIz/uTSVijoL
+	 bJHankXIg7gF14YJ8V/xj4JrsYss4n8DO1SMOt72hl7F9mbgsz6ZWESPcqA2C9abU/
+	 ANs3Q2pnd1zvA==
 Received: from nexus.subspace.kernel.org (localhost [IPv6:::1])
-	by lkml.kernel.org (Postfix) with ESMTP id A40424B4DA;
-	Fri, 27 Nov 2026 02:49:59 +0000 (UTC)
+	by lkml.kernel.org (Postfix) with ESMTP id 119354B506;
+	Fri, 27 Nov 2026 02:55:18 +0000 (UTC)
 From: Ilia Snezhkov via B4 Relay <devnull+iasnezhkov.gmail.com@kernel.org>
-To: broonie@kernel.org
+To: jic23@kernel.org, dlechner@baylibre.com, nuno.sa@analog.com, 
+ andy@kernel.org
 Cc: matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com, 
- Roman Vivchar <rva333@protonmail.com>, linux-spi@vger.kernel.org, 
+ Roman Vivchar <rva333@protonmail.com>, linux-iio@vger.kernel.org, 
  linux-mediatek@lists.infradead.org, linux-arm-kernel@lists.infradead.org, 
  linux-kernel@vger.kernel.org
-Subject: [PATCH v2] spi: mt65xx: set host->max_speed_hz in probe
-Date: Fri, 27 Nov 2026 02:49:58 +0000
-Message-Id: <20261127024958.8686-1-iasnezhkov@gmail.com>
+Subject: [PATCH v3] iio: adc: mt6359: fix MT6357 ISENSE/VCDT and MT6358
+ VCDT request bits
+Date: Fri, 27 Nov 2026 02:55:17 +0000
+Message-Id: <20261127025517.9548-1-iasnezhkov@gmail.com>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 X-Mailer: b4 0.16.0
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1795747798; l=2087;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1795748117; l=3085;
  i=iasnezhkov@gmail.com; s=mindone2026; h=from:subject:message-id;
- bh=BHEc+LMfLY+B72htL0cr2zKEFVE9SAYFoEO0zNM8fBc=;
- b=DBC5DI8rLzSjNB7e94V8D1QT17kFycbLd5NUg1CceltKs4S3ZJvIEDGJUjybmYKQNV8H70PKs
- Ypvz0G2lGCzDQsCq6+T5dew+szLokLaPehr+AAD1u1rH0Ynt2fNyw5X
+ bh=sgnrCZ+8Z//7Mp3+Z+qP8xX1lnU0T/jKoMNWsjR4WBQ=;
+ b=rflaVb0IGQS4gPK+YmA2daDAOB0IbN1vK/rxQnjDU93P5Zxtf2yfEfCf4dbL6oL3xV40eow2U
+ /7NHIzV4Oe8Di4zKE1Dv3iY9iHJ1F9altNO/+FoS4aC6hUrl7DBh2QJ
 X-Developer-Key: i=iasnezhkov@gmail.com; a=ed25519;
  pk=hQgXfiWi4ukk2jh4BHu1vRVhg9BUivo//AFp50AKMag=
 X-Endpoint-Received: by B4 Relay for iasnezhkov@gmail.com/mindone2026 with
@@ -117,55 +119,61 @@ X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 
 From: Ilia Snezhkov <iasnezhkov@gmail.com>
 
-spi-mt65xx leaves host->max_speed_hz unset (0). When a client device
-omits spi-max-frequency in DT, spi_setup() keeps spi->max_speed_hz == 0,
-and transfers or spi-mem ops without an explicit speed reach
-mtk_spi_prepare_transfer() with speed_hz == 0 and mtk_spi_transfer_wait()
-with mem->spi->max_speed_hz == 0, causing division by zero in both
-DIV_ROUND_UP(mdata->spi_clk_hz, speed_hz) and
-div_u64(ms, mem->spi->max_speed_hz).
+mt6357_auxadc_ch_desc[] sets req_bit to 0 for both ISENSE and VCDT, and
+mt6358_auxadc_ch_desc[] sets req_bit to 0 for VCDT. Bit 0 of
+PMIC_AUXADC_RQST0 triggers BATADC (ADC0) rather than ISENSE (ADC1) or
+VCDT (ADC2), so polling the ready bit of ADC1/ADC2 times out unless the
+channel was triggered externally.
 
-Validate that spi_clk_hz is at least 2 Hz and set host->max_speed_hz to
-mdata->spi_clk_hz / 2 (the controller's maximum SCK rate at div = 1,
-sck_time = 1) so the SPI core populates spi->max_speed_hz,
-xfer->speed_hz, and op->max_freq for all transfer paths.
+Use the actual hardware request bits in PMIC_AUXADC_RQST0: bit 1 for
+MT6357 ISENSE and bit 2 for MT6357/MT6358 VCDT (matching MT6363 VCDT
+and the MediaTek PMIC AUXADC hardware registers).
 
-Fixes: a568231f4632 ("spi: mediatek: Add spi bus for Mediatek MT8173")
-Suggested-by: Roman Vivchar <rva333@protonmail.com>
+Fixes: 3587914bf61d ("iio: adc: Add support for MediaTek MT6357/8/9 Auxiliary ADC")
+Reviewed-by: Roman Vivchar <rva333@protonmail.com>
+Tested-by: Roman Vivchar <rva333@protonmail.com> # mt6358
 Signed-off-by: Ilia Snezhkov <iasnezhkov@gmail.com>
 ---
+Changes in v3:
+- Drop patch 1/3 (scale divisor), which duplicated Roman Vivchar's
+  earlier series (20261117-6768-6358-fixes-v2-3).
+- Drop patch 3/3 (MT6358 VBAT impedance ratio) for now until
+  mt6358_read_imp() timeout on mainline MT6358 is investigated.
+- Carry Reviewed-by and Tested-by from Roman Vivchar.
+- Link to v2: https://lore.kernel.org/r/20261126031013.27701-1-iasnezhkov@gmail.com
+
 Changes in v2:
-- Set host->max_speed_hz = mdata->spi_clk_hz / 2 in mtk_spi_probe()
-  (and reject spi_clk_hz < 2) instead of only guarding speed_hz in
-  mtk_spi_prepare_transfer(), covering mtk_spi_transfer_wait() as well
-  (suggested by Roman Vivchar).
-- Move AI coding assistant disclosure below ---.
-- Link to v1: https://lore.kernel.org/r/20261126003314.49090-1-iasnezhkov@gmail.com
+- Move AI coding assistant note below ---. No code changes.
 
 Found and drafted with an AI coding assistant.
 
- drivers/spi/spi-mt65xx.c | 8 ++++++++
- 1 file changed, 8 insertions(+)
+ drivers/iio/adc/mt6359-auxadc.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
-diff --git a/drivers/spi/spi-mt65xx.c b/drivers/spi/spi-mt65xx.c
-index 8b4deef..7e94b4d 100644
---- a/drivers/spi/spi-mt65xx.c
-+++ b/drivers/spi/spi-mt65xx.c
-@@ -1285,6 +1285,14 @@ static int mtk_spi_probe(struct platform_device *pdev)
- 	}
+diff --git a/drivers/iio/adc/mt6359-auxadc.c b/drivers/iio/adc/mt6359-auxadc.c
+index 88b0e26..0e7f9b8 100644
+--- a/drivers/iio/adc/mt6359-auxadc.c
++++ b/drivers/iio/adc/mt6359-auxadc.c
+@@ -224,8 +224,8 @@ static const struct iio_chan_spec mt6357_auxadc_channels[] = {
  
- 	mdata->spi_clk_hz = clk_get_rate(mdata->spi_clk);
-+	if (mdata->spi_clk_hz < 2) {
-+		clk_disable_unprepare(mdata->spi_clk);
-+		clk_disable_unprepare(mdata->spi_hclk);
-+		return dev_err_probe(dev, -EINVAL, "invalid spi-clk rate %u\n",
-+				     mdata->spi_clk_hz);
-+	}
-+
-+	host->max_speed_hz = mdata->spi_clk_hz / 2;
+ static const struct mtk_pmic_auxadc_chan mt6357_auxadc_ch_desc[] = {
+ 	MTK_PMIC_ADC_CHAN(BATADC, PMIC_AUXADC_RQST0, 0, PMIC_AUXADC_IMP0, 8, 128, 3, 1),
+-	MTK_PMIC_ADC_CHAN(ISENSE, PMIC_AUXADC_RQST0, 0, PMIC_AUXADC_IMP0, 8, 128, 3, 1),
+-	MTK_PMIC_ADC_CHAN(VCDT, PMIC_AUXADC_RQST0, 0, PMIC_AUXADC_IMP0, 8, 8, 1, 1),
++	MTK_PMIC_ADC_CHAN(ISENSE, PMIC_AUXADC_RQST0, 1, PMIC_AUXADC_IMP0, 8, 128, 3, 1),
++	MTK_PMIC_ADC_CHAN(VCDT, PMIC_AUXADC_RQST0, 2, PMIC_AUXADC_IMP0, 8, 8, 1, 1),
+ 	MTK_PMIC_ADC_CHAN(BAT_TEMP, PMIC_AUXADC_RQST0, 3, PMIC_AUXADC_IMP0, 8, 8, 1, 1),
+ 	MTK_PMIC_ADC_CHAN(CHIP_TEMP, PMIC_AUXADC_RQST0, 4, PMIC_AUXADC_IMP0, 8, 8, 1, 1),
+ 	MTK_PMIC_ADC_CHAN(ACCDET, PMIC_AUXADC_RQST0, 5, PMIC_AUXADC_IMP0, 8, 8, 1, 1),
+@@ -271,7 +271,7 @@ static const struct iio_chan_spec mt6358_auxadc_channels[] = {
  
- 	if (mdata->dev_comp->no_need_unprepare) {
- 		clk_disable(mdata->spi_clk);
+ static const struct mtk_pmic_auxadc_chan mt6358_auxadc_ch_desc[] = {
+ 	MTK_PMIC_ADC_CHAN(BATADC, PMIC_AUXADC_RQST0, 0, PMIC_AUXADC_IMP0, 8, 128, 3, 1),
+-	MTK_PMIC_ADC_CHAN(VCDT, PMIC_AUXADC_RQST0, 0, PMIC_AUXADC_IMP0, 8, 8, 1, 1),
++	MTK_PMIC_ADC_CHAN(VCDT, PMIC_AUXADC_RQST0, 2, PMIC_AUXADC_IMP0, 8, 8, 1, 1),
+ 	MTK_PMIC_ADC_CHAN(BAT_TEMP, PMIC_AUXADC_RQST0, 3, PMIC_AUXADC_IMP0, 8, 8, 2, 1),
+ 	MTK_PMIC_ADC_CHAN(CHIP_TEMP, PMIC_AUXADC_RQST0, 4, PMIC_AUXADC_IMP0, 8, 8, 1, 1),
+ 	MTK_PMIC_ADC_CHAN(ACCDET, PMIC_AUXADC_RQST0, 5, PMIC_AUXADC_IMP0, 8, 8, 1, 1),
 -- 
 2.54.0 (Apple Git-157)
 
