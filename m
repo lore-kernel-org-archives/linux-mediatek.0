@@ -2,72 +2,72 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 823CD606A33F
-	for <linux-mediatek@archiver.kernel.org>; Fri, 27 Nov 2026 14:25:50 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 6C3BC606B426
+	for <linux-mediatek@archiver.kernel.org>; Fri, 27 Nov 2026 14:26:06 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=BCZdgZoN;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=infradead.org header.i=@infradead.org header.a=rsa-sha256 header.s=casper.20170209 header.b=hMlctCZn;
-	dkim=pass (2048-bit key) header.d=bootlin.com header.i=@bootlin.com header.a=rsa-sha256 header.s=dkim header.b=kGsF5AxB
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=ukbZKAiC;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=infradead.org header.i=@infradead.org header.a=rsa-sha256 header.s=casper.20170209 header.b=I7lOXtPq;
+	dkim=pass (2048-bit key) header.d=bootlin.com header.i=@bootlin.com header.a=rsa-sha256 header.s=dkim header.b=iYhTyubi
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Unsubscribe-Post:
-	List-Owner; bh=l/15886dKnKp6gPMgY9uT99zHLf7znFw9ejlkvdaZy0=; b=BCZdgZoNbvbZdH
-	XtwxR2Ly5b/AcTYuYbKcuZO/67hxwOGUyJS0eyngeCGtQcwm3c/YDcxMRmgzldyXR6Ngua7TL5zRa
-	yicsRqDeQzGhrQ35C/v2191gbefWQBeVRMVj3E1tgL1B23bC5QYTYfH+6JhpRBRrriOIwBqtWbgii
-	129Y01qVPJJiqteF3aYhsxrPa3q85J9YSZhNncRu65xwDAXDc/6NGRRQphzaFqOnK9x3C4DaZp2Nc
-	hK6wxZbpD/w8VU0utfyz5rev2KUm6ZeUJktSCr5Q0qCMWtWIXTTaSj1NPwewq51UXptkjnjlrgN/E
-	wOiE+E5Dr/xpG0MPSezg==;
+	List-Owner; bh=AyWE+t1jQM06xzjS0D79QahZuOEjGLIi+nV7A0Efk90=; b=ukbZKAiCW8fuv+
+	/dNUYIGDrJSPC+Ua5DG6B3qqnT3AFu7CmHzuHJHQXTtJHkSC7XTARapDNP9k4tRxnMJMhLWbIXLIl
+	Id2a9XA+KN8jXtHUl6ilXGZoPCnaR4bK/jxLvkcGljyHEqHnpG8L2Zeujcot35r9ttT4IzeVtvpY3
+	quBxylt1N4fnAABMmkC8YTYDtPPEb7mwomVrSI3rlSQFTRb4jJ3nS2FKXWI3YpiPfUjpXkoYBO8eK
+	euz+W9AUbfeRSBUt/iWHVEoEgGVzdqSsPjP+M2wcXqGPdhNhb+Wmx0Yxundvj11nmOpOgZCqFmtKE
+	TZ9zVZ3D5xTGY3/9gWGQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xWwtZ-0000000GQKQ-11l1;
-	Fri, 27 Nov 2026 14:25:49 +0000
+	id 1xWwtp-0000000GQwR-2xxe;
+	Fri, 27 Nov 2026 14:26:05 +0000
 Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xWwsS-0000000GOQF-1r0X;
-	Fri, 27 Nov 2026 14:24:40 +0000
+	id 1xWwsp-0000000GPHJ-3NZe;
+	Fri, 27 Nov 2026 14:25:09 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=infradead.org; s=casper.20170209; h=Cc:To:In-Reply-To:References:Message-Id
 	:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:Sender
 	:Reply-To:Content-ID:Content-Description;
-	bh=l/15886dKnKp6gPMgY9uT99zHLf7znFw9ejlkvdaZy0=; b=hMlctCZnuz4JyhEbZypzQH7iQZ
-	Rh0UF9Fxvoa1XUBTlqGD6yZvItvLuA8LPwBagw4zZHMqyyAXiUUd04cM5Z4Gxv2tNscbXsf7QFv9a
-	l82nYApRVEzuDus4uSCEA673c+oVyoK3diiN1klhDZKcQdZrLy0Y0stTOQHGbZirfi4MqQXRwRjMA
-	QeKy+8Kk6Gs+6vq7ZLSjuQPd8cjHyTm+maGU8rxxL9NfSFKrZXUUorS+2YZYFkY2OwvDyPNkdsFh6
-	D6ut4BVeDg0PExm05h8Y2xOhxj4/Fd81gKXctLMEgZQ7I1OGnOg6hWqAAB+1hUudzQvREHMsh7P2V
-	rULCORHw==;
-Received: from smtpout-04.galae.net ([185.171.202.116])
+	bh=AyWE+t1jQM06xzjS0D79QahZuOEjGLIi+nV7A0Efk90=; b=I7lOXtPq2DwlkhN6I1dBHImg4X
+	Aso5LC/htYuqnpCTlSHFUK+CnJf6TvsQmi0m3/U7dfGDSfkfyGVKw+K/6KR4yqLT48VAW9gtf+syb
+	CNWnxTjOAKo0HshLu2XSc4oyoGAeHBvm1w/kvUlz0uYML8enmjmls1RL9bVFQ7lwO9OQpeA8lnWU0
+	jGIg3PPiVFqq5esb8/j8sFdM16Z70GeBkpgz6TrDxVid7FeYAdxK3HJQL5lSOPVVb5/T4sdamH59m
+	/MYlc/XHNm/xUwyJbizkpQmDpWQRpqig05cKls5uueMM4aM2+fJJ7MrHzzwxHrOAiyTKGRD1uHULF
+	ZOsZUJIw==;
+Received: from smtpout-03.galae.net ([185.246.85.4])
 	by casper.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xWwsP-0000000FX5Y-05tq;
-	Fri, 27 Nov 2026 14:24:39 +0000
+	id 1xWwsk-0000000FXsS-45cG;
+	Fri, 27 Nov 2026 14:25:02 +0000
 Received: from smtpout-01.galae.net (smtpout-01.galae.net [212.83.139.233])
-	by smtpout-04.galae.net (Postfix) with ESMTPS id 4BC12C2AC50;
-	Fri, 27 Nov 2026 14:24:44 +0000 (UTC)
+	by smtpout-03.galae.net (Postfix) with ESMTPS id 2B4114E417CE;
+	Fri, 27 Nov 2026 14:24:58 +0000 (UTC)
 Received: from mail.galae.net (mail.galae.net [212.83.136.155])
-	by smtpout-01.galae.net (Postfix) with ESMTPS id 7992D6049C;
-	Fri, 27 Nov 2026 14:24:35 +0000 (UTC)
-Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id 9FBB711E68FFA;
-	Fri, 27 Nov 2026 15:24:27 +0100 (CET)
+	by smtpout-01.galae.net (Postfix) with ESMTPS id EAD216049C;
+	Fri, 27 Nov 2026 14:24:57 +0000 (UTC)
+Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id A109311E68FF9;
+	Fri, 27 Nov 2026 15:24:45 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=dkim;
-	t=1795789472; h=from:subject:date:message-id:to:cc:mime-version:content-type:
+	t=1795789491; h=from:subject:date:message-id:to:cc:mime-version:content-type:
 	 content-transfer-encoding:in-reply-to:references;
-	bh=l/15886dKnKp6gPMgY9uT99zHLf7znFw9ejlkvdaZy0=;
-	b=kGsF5AxBn8Rt2DEwGlOWei3yUYq4TV1ZPi4qIPPHbmd6eelpv0mn1xbA+O0+dGwhY0pfK7
-	O4OwZIp/z2P+n6XRQdP3puDumWjXAMqCKBmsqF6x/5TOzwGL/q4QWJ4HI6NySSUru5UKwg
-	/lmJaFMaTkGqeFtOfb5wM3vrtMgyQ1iZU/xGMCDHfOjH2mj6YNkumLoY67HK0nKH9MNB3x
-	wMZf/+++3cDKfUD9EroH9uwfH/ZLm4l6uVDLmUzCFpknODt6ftJJ5V1MtDj37SJBWArfUE
-	aVRxGvdI57fv+avy18hAS2Kd2HzRYepJF/CDBRtDl5803yDLPE5CswKuWXlyew==
+	bh=AyWE+t1jQM06xzjS0D79QahZuOEjGLIi+nV7A0Efk90=;
+	b=iYhTyubiDIwXjPh8z4yCi8Tp5QLBms/5mf5UVSazYSfG7jYL8kvX12KYSqelsXHx02ZYgT
+	QUFX4RxgyHRmnBa2A2S0U6uaao9ThPkfBUMeVReQAF2aR8YHtVShehVdR4L9DL8S9QTWP3
+	As1DHAWm3E360QU3aT/KsOhMve8juKpr+9GFEdSYZ0az+Berg32tUhlTyU8v86yyVD0sXp
+	c11lMlR4XwlFjnKDk8Nbs6SuYFQzG632H8b5ifTkv+4ejfU7aIH8u4p+qyWoA1aLewlvnr
+	re/icJkPJviqAv7LZLClwO/6crDYnRsotsCyk1QMsR9ZMr+0GzHX83FgXq5k6Q==
 From: Miquel Raynal <miquel.raynal@bootlin.com>
-Date: Fri, 27 Nov 2026 15:22:31 +0100
-Subject: [PATCH RFC v2 09/35] spi: amlogic-spifc-a4: Consume dummy cycles
+Date: Fri, 27 Nov 2026 15:22:34 +0100
+Subject: [PATCH RFC v2 12/35] spi: cadence-qspi: Consume dummy cycles
  directly
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20261127-macronix-upstreaming-spi-mem-cycles-v2-9-5c93f5e5d630@bootlin.com>
+Message-Id: <20261127-macronix-upstreaming-spi-mem-cycles-v2-12-5c93f5e5d630@bootlin.com>
 References: <20261127-macronix-upstreaming-spi-mem-cycles-v2-0-5c93f5e5d630@bootlin.com>
 In-Reply-To: <20261127-macronix-upstreaming-spi-mem-cycles-v2-0-5c93f5e5d630@bootlin.com>
 To: Mark Brown <broonie@kernel.org>, Liang Yang <liang.yang@amlogic.com>, 
@@ -107,8 +107,8 @@ Cc: Thomas Petazzoni <thomas.petazzoni@bootlin.com>,
 X-Mailer: b4 0.14.3
 X-Last-TLS-Session-Version: TLSv1.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261127_142437_155140_AD5C4B51 
-X-CRM114-Status: GOOD (  12.26  )
+X-CRM114-CacheID: sfid-20261127_142459_087099_B0831277 
+X-CRM114-Status: GOOD (  15.25  )
 X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -134,79 +134,132 @@ dummy_cycles capability and use op->dummy.ncycles directly.
 
 Signed-off-by: Miquel Raynal <miquel.raynal@bootlin.com>
 ---
- drivers/spi/spi-amlogic-spifc-a4.c | 29 +++++------------------------
- 1 file changed, 5 insertions(+), 24 deletions(-)
+ drivers/spi/spi-cadence-quadspi.c | 48 +++++++++++++++------------------------
+ 1 file changed, 18 insertions(+), 30 deletions(-)
 
-diff --git a/drivers/spi/spi-amlogic-spifc-a4.c b/drivers/spi/spi-amlogic-spifc-a4.c
-index 16346f50c7d9..9b658ed1a580 100644
---- a/drivers/spi/spi-amlogic-spifc-a4.c
-+++ b/drivers/spi/spi-amlogic-spifc-a4.c
-@@ -148,7 +148,6 @@
- #define SFC_MAX_CS_NUM			2
- 
- /* SPI-FLASH R/W operation cmd */
--#define SPIFLASH_RD_OCTALIO		0xcb
- #define SPIFLASH_RD_OCTAL		0x8b
- #define SPIFLASH_RD_QUADIO		0xeb
- #define SPIFLASH_RD_QUAD		0x6b
-@@ -334,23 +333,9 @@ static int aml_sfc_send_addr(struct aml_sfc *sfc, const struct spi_mem_op *op)
- 	return 0;
+diff --git a/drivers/spi/spi-cadence-quadspi.c b/drivers/spi/spi-cadence-quadspi.c
+index 44d96b8cf8f0..df7c04e0e2d2 100644
+--- a/drivers/spi/spi-cadence-quadspi.c
++++ b/drivers/spi/spi-cadence-quadspi.c
+@@ -410,20 +410,6 @@ static unsigned int cqspi_calc_rdreg(const struct spi_mem_op *op)
+ 	return rdreg;
  }
  
--static bool aml_sfc_is_xio_op(const struct spi_mem_op *op)
+-static unsigned int cqspi_calc_dummy(const struct spi_mem_op *op)
 -{
--	switch (op->cmd.opcode) {
--	case SPIFLASH_RD_OCTALIO:
--	case SPIFLASH_RD_QUADIO:
--	case SPIFLASH_RD_DUALIO:
--		return true;
--	default:
--		break;
--	}
+-	unsigned int dummy_clk;
 -
--	return false;
+-	if (!op->dummy.nbytes)
+-		return 0;
+-
+-	dummy_clk = op->dummy.nbytes * (8 / op->dummy.buswidth);
+-	if (op->cmd.dtr)
+-		dummy_clk /= 2;
+-
+-	return dummy_clk;
 -}
 -
- static int aml_sfc_send_cmd_addr_dummy(struct aml_sfc *sfc, const struct spi_mem_op *op)
+ static int cqspi_wait_idle(struct cqspi_st *cqspi)
  {
--	u32 dummy_cycle, cmd;
-+	u32 cmd;
+ 	const unsigned int poll_idle_retry = 3;
+@@ -549,7 +535,6 @@ static int cqspi_command_read(struct cqspi_flash_pdata *f_pdata,
+ 	size_t n_rx = op->data.nbytes;
+ 	unsigned int rdreg;
+ 	unsigned int reg;
+-	unsigned int dummy_clk;
+ 	size_t read_len;
+ 	int status;
+ 
+@@ -574,12 +559,11 @@ static int cqspi_command_read(struct cqspi_flash_pdata *f_pdata,
+ 	rdreg = cqspi_calc_rdreg(op);
+ 	writel(rdreg, reg_base + CQSPI_REG_RD_INSTR);
+ 
+-	dummy_clk = cqspi_calc_dummy(op);
+-	if (dummy_clk > CQSPI_DUMMY_CLKS_MAX)
++	if (op->dummy.ncycles > CQSPI_DUMMY_CLKS_MAX)
+ 		return -EOPNOTSUPP;
+ 
+-	if (dummy_clk)
+-		reg |= (dummy_clk & CQSPI_REG_CMDCTRL_DUMMY_MASK)
++	if (op->dummy.ncycles)
++		reg |= (op->dummy.ncycles & CQSPI_REG_CMDCTRL_DUMMY_MASK)
+ 		     << CQSPI_REG_CMDCTRL_DUMMY_LSB;
+ 
+ 	reg |= BIT(CQSPI_REG_CMDCTRL_RD_EN_LSB);
+@@ -696,7 +680,6 @@ static int cqspi_read_setup(struct cqspi_flash_pdata *f_pdata,
+ {
+ 	struct cqspi_st *cqspi = f_pdata->cqspi;
+ 	void __iomem *reg_base = cqspi->iobase;
+-	unsigned int dummy_clk = 0;
+ 	unsigned int reg;
  	int ret;
+ 	u8 opcode;
+@@ -714,13 +697,11 @@ static int cqspi_read_setup(struct cqspi_flash_pdata *f_pdata,
+ 	reg |= cqspi_calc_rdreg(op);
  
- 	ret = aml_sfc_send_cmd(sfc, op);
-@@ -361,13 +346,8 @@ static int aml_sfc_send_cmd_addr_dummy(struct aml_sfc *sfc, const struct spi_mem
- 	if (ret)
- 		return ret;
+ 	/* Setup dummy clock cycles */
+-	dummy_clk = cqspi_calc_dummy(op);
+-
+-	if (dummy_clk > CQSPI_DUMMY_CLKS_MAX)
++	if (op->dummy.ncycles > CQSPI_DUMMY_CLKS_MAX)
+ 		return -EOPNOTSUPP;
  
--	if (op->dummy.nbytes) {
--		/*  Dummy buswidth configuration is not supported */
--		if (aml_sfc_is_xio_op(op))
--			dummy_cycle = op->dummy.nbytes * 8 / op->data.buswidth;
--		else
--			dummy_cycle = op->dummy.nbytes * 8;
--		cmd = CMD_DUMMY(sfc->cs_sel, dummy_cycle - 1);
-+	if (op->dummy.ncycles) {
-+		cmd = CMD_DUMMY(sfc->cs_sel, op->dummy.ncycles - 1);
- 		return regmap_write(sfc->regmap_base, SFC_CMD, cmd);
+-	if (dummy_clk)
+-		reg |= (dummy_clk & CQSPI_REG_RD_INSTR_DUMMY_MASK)
++	if (op->dummy.ncycles)
++		reg |= (op->dummy.ncycles & CQSPI_REG_RD_INSTR_DUMMY_MASK)
+ 		       << CQSPI_REG_RD_INSTR_DUMMY_LSB;
+ 
+ 	writel(reg, reg_base + CQSPI_REG_RD_INSTR);
+@@ -1523,16 +1504,14 @@ static bool cqspi_supports_mem_op(struct spi_mem *mem,
+ 	bool all_true, all_false;
+ 
+ 	/*
+-	 * op->dummy.dtr is required for converting nbytes into ncycles.
+-	 * Also, don't check the dtr field of the op phase having zero nbytes.
++	 * The controller only supports operations where all phases use the
++	 * same DTR mode.
+ 	 */
+ 	all_true = op->cmd.dtr &&
+ 		   (!op->addr.nbytes || op->addr.dtr) &&
+-		   (!op->dummy.nbytes || op->dummy.dtr) &&
+ 		   (!op->data.nbytes || op->data.dtr);
+ 
+-	all_false = !op->cmd.dtr && !op->addr.dtr && !op->dummy.dtr &&
+-		    !op->data.dtr;
++	all_false = !op->cmd.dtr && !op->addr.dtr && !op->data.dtr;
+ 
+ 	if (all_true) {
+ 		/* Right now we only support 8-8-8 DTR mode. */
+@@ -1550,6 +1529,13 @@ static bool cqspi_supports_mem_op(struct spi_mem *mem,
+ 		return false;
  	}
  
-@@ -803,7 +783,7 @@ static int aml_sfc_exec_op(struct spi_mem *mem, const struct spi_mem_op *op)
++	/*
++	 * The controller has no separate dummy buswidth: the dummy phase is
++	 * clocked with the address buswidth.
++	 */
++	if (op->dummy.ncycles && op->dummy.buswidth != op->addr.buswidth)
++		return false;
++
+ 	return spi_mem_default_supports_op(mem, op);
+ }
  
- 	dev_dbg(sfc->dev, "cmd:0x%02x - addr:%08llX@%d:%u - dummy:%d:%u - data:%d:%u",
- 		op->cmd.opcode, op->addr.val, op->addr.buswidth, op->addr.nbytes,
--		op->dummy.buswidth, op->dummy.nbytes, op->data.buswidth, op->data.nbytes);
-+		op->dummy.buswidth, op->dummy.ncycles, op->data.buswidth, op->data.nbytes);
- 
- 	ret = aml_sfc_pre_transfer(sfc, DEFAULT_PULLUP_CYCLE, CS_SETUP_CYCLE);
- 	if (ret)
-@@ -1057,6 +1037,7 @@ static int aml_sfc_ecc_finish_io_req(struct nand_device *nand,
- 
- static const struct spi_controller_mem_caps aml_sfc_mem_caps = {
- 	.ecc = true,
+@@ -1739,12 +1725,14 @@ static const struct spi_controller_mem_ops cqspi_mem_ops = {
+ static const struct spi_controller_mem_caps cqspi_mem_caps = {
+ 	.dtr = true,
+ 	.per_op_freq = true,
 +	.dummy_cycles = true,
  };
  
- static const struct nand_ecc_engine_ops aml_sfc_ecc_engine_ops = {
+ static const struct spi_controller_mem_caps cqspi_am654_mem_caps = {
+ 	.dtr = true,
+ 	.per_op_freq = true,
+ 	.no_cs_assertion = true,
++	.dummy_cycles = true,
+ };
+ 
+ static int cqspi_setup_flash(struct cqspi_st *cqspi)
 
 -- 
 2.56.0
