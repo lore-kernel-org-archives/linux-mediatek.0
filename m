@@ -2,74 +2,71 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 2CC216070F5D
-	for <linux-mediatek@archiver.kernel.org>; Fri, 27 Nov 2026 14:29:16 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id A719F606C719
+	for <linux-mediatek@archiver.kernel.org>; Fri, 27 Nov 2026 14:29:46 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=vO2HxwuT;
-	dkim=fail reason="signature verification failed" (2048-bit key) header.d=infradead.org header.i=@infradead.org header.a=rsa-sha256 header.s=desiato.20200630 header.b=lMdjm0Aa;
-	dkim=pass (2048-bit key) header.d=bootlin.com header.i=@bootlin.com header.a=rsa-sha256 header.s=dkim header.b=udHo41LZ
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=0PU1NXl9;
+	dkim=fail reason="signature verification failed" (2048-bit key) header.d=infradead.org header.i=@infradead.org header.a=rsa-sha256 header.s=casper.20170209 header.b=vsSvQtW0;
+	dkim=pass (2048-bit key) header.d=bootlin.com header.i=@bootlin.com header.a=rsa-sha256 header.s=dkim header.b=H5EZ9cMT
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Unsubscribe-Post:
-	List-Owner; bh=PzsT2/vnTOLgeC13FDUQXpv3y/kUea2jI2GTpmgE9eM=; b=vO2HxwuTbHTuty
-	C5Rs/F8a78S3YVfgDPixeN9D4YIhMZ5tbi9nqBKOTWn9B59oAaqURUmZaePcalpULwHPR7JHQKoaL
-	r+cXTmEbHe+Bsm9tooghnxE5bk4R3Nco7HxNofzy/i5/3YgcSnaAd8lZx7K++Sg06SS/yDtDiw3r4
-	4pvmVfJmWVC77Q8zB/OrhswNYOtJabg3ToQTdq+M2dsbz7h+Px1Y8hoSVe5FRbfKbVpNUZe4j81dY
-	5kr41rCoQiqqwmvwhy29fzUIX9rZ6IzkA4rG3GgDGwAf5GbwaXXDf6uF2aPkk2SzMpUo1WPtWjzle
-	K8EL/Zx9Dq986MtbHqKg==;
+	List-Owner; bh=k46uZYQ2ESt/gYiB8AP/kZeA93Cegpvn1/Ee8Gyu4sI=; b=0PU1NXl9+OWCKu
+	0k8GXFo0KbEgn7qYKiNO3p8Q2ucXy5XYdh07mbPAc9uWPLgCbOYJb6PC9DGdzmKZvtrEiMh68MQo6
+	3iGByRQZPCi9syBhjoxEcE06Iw5W9cpMszsP+Wa5QQgrMYMA+ZV+nDAAFG4dgRgPL0hPnxlGP5e5e
+	RHfSRNpICTky8wOn3O4um0jCKI2/mjb1w4u7CB8nKPG13epOPBmKlHgWSpnRAaWuC8OvTObUVqkRb
+	UuShu7vHcB11rTuk4Ydu8VBu+BHbXhZE3KtJuN/zvtMZQPtXuGArLS3tIyZ4mDsM9D/XgXMZe4m3P
+	4lI53HkZgP8iozYlqRhQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xWwwt-0000000GVua-3Z0l;
-	Fri, 27 Nov 2026 14:29:15 +0000
-Received: from desiato.infradead.org ([2001:8b0:10b:1:d65d:64ff:fe57:4e05])
+	id 1xWwxO-0000000GWT8-0Bob;
+	Fri, 27 Nov 2026 14:29:46 +0000
+Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xWwvE-0000000GTlj-3kJO
-	for linux-mediatek@bombadil.infradead.org;
-	Fri, 27 Nov 2026 14:27:32 +0000
+	id 1xWwvh-0000000GUsH-3Psh;
+	Fri, 27 Nov 2026 14:28:01 +0000
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
-	d=infradead.org; s=desiato.20200630; h=Cc:To:In-Reply-To:References:
-	Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
-	From:Sender:Reply-To:Content-ID:Content-Description;
-	bh=PzsT2/vnTOLgeC13FDUQXpv3y/kUea2jI2GTpmgE9eM=; b=lMdjm0AaER7/pbSWvzxzL2h63X
-	GZ8k0gNJ10WLvS2ZdvI701iroW8Nb09uRGWJ+Z68Z6dkk5M6Y3ZufgYFE4reoRPaNAUSIggzRwrGZ
-	oeBmXx3Go1IVAinhu2sALeauLUs5Oj/S8X1lYlUnRlR9xank7Q1qKcNwG8tP5a005A11FkcIWqcuD
-	Yl7MeeCapN4LXotAfoCgoL4S5M4EZhWJvU8Q6re7z/WBfnRFBSHe9bsu0MYVfDvvjBx/hnglU3ZN2
-	scyOcwe3WvA9amBfxhrFqSo33G1lCyFkHVdzDdNpcUOhWfVtXqdkYJMkO1eovv+bT6UR6X4a3pDVr
-	zao+YA1g==;
-Received: from smtpout-02.galae.net ([185.246.84.56])
-	by desiato.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xWwv9-00000007o3K-2k7Y
-	for linux-mediatek@lists.infradead.org;
-	Fri, 27 Nov 2026 14:27:31 +0000
+	d=infradead.org; s=casper.20170209; h=Cc:To:In-Reply-To:References:Message-Id
+	:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:From:Sender
+	:Reply-To:Content-ID:Content-Description;
+	bh=k46uZYQ2ESt/gYiB8AP/kZeA93Cegpvn1/Ee8Gyu4sI=; b=vsSvQtW0LcRJ6fN2iz9jMpNv3j
+	yQK9Cp+2FWLwLgkBMcuynjhni6eelo7sDcggezMFSV8b/LMEf6L86B2VoLjaRSc2VgePGQvcMkHbQ
+	lzC3M/yeu3YmAqQtpTfwy5+etu7P9rd4hVr+GvDIy3x6hLgfRnqp5TQx8wDkq2QNMH+SdR3K2nicQ
+	1dxZ3WeExLZOo29dTOaxduGIk3pPwM3xingM6u0Q3GENPvhQMHGCKcgsNCOqQc52yFHQsO8t+ykPy
+	1E2j++Sz8dn3Bdd7bxfTnKqdWiQJ5Q7Su9eVxpbpTXb/j3oYUwU1jFdih9YdM0KQygUS3XH4POX0G
+	pFevfXUg==;
+Received: from smtpout-03.galae.net ([185.246.85.4])
+	by casper.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
+	id 1xWwvW-0000000FcXB-3bk8;
+	Fri, 27 Nov 2026 14:28:00 +0000
 Received: from smtpout-01.galae.net (smtpout-01.galae.net [212.83.139.233])
-	by smtpout-02.galae.net (Postfix) with ESMTPS id B08251A183F;
-	Fri, 27 Nov 2026 14:27:26 +0000 (UTC)
+	by smtpout-03.galae.net (Postfix) with ESMTPS id 12C424E417CC;
+	Fri, 27 Nov 2026 14:27:50 +0000 (UTC)
 Received: from mail.galae.net (mail.galae.net [212.83.136.155])
-	by smtpout-01.galae.net (Postfix) with ESMTPS id 825CB6049C;
-	Fri, 27 Nov 2026 14:27:26 +0000 (UTC)
-Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id 04CC211E69021;
-	Fri, 27 Nov 2026 15:27:14 +0100 (CET)
+	by smtpout-01.galae.net (Postfix) with ESMTPS id D77706049C;
+	Fri, 27 Nov 2026 14:27:49 +0000 (UTC)
+Received: from [127.0.0.1] (localhost [127.0.0.1]) by localhost (Mailerdaemon) with ESMTPSA id D310F11E68FF9;
+	Fri, 27 Nov 2026 15:27:41 +0100 (CET)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=bootlin.com; s=dkim;
-	t=1795789642; h=from:subject:date:message-id:to:cc:mime-version:content-type:
+	t=1795789666; h=from:subject:date:message-id:to:cc:mime-version:content-type:
 	 content-transfer-encoding:in-reply-to:references;
-	bh=PzsT2/vnTOLgeC13FDUQXpv3y/kUea2jI2GTpmgE9eM=;
-	b=udHo41LZ9pUYk5V1GKFBsW+tpcv8NEvbhIdv1MV7PCqO9109uFbTupw+GGlpLp4jY0jUNc
-	8m+eKM5zExD2ih/EIGrU3+JoJ8HjqcVBNvsxBzTVSoYjikEcax9o94bun1EBRzj4Dgl9er
-	R3Ne/Rmgyh9Z1UEMsL8hTkFQ97NmuwtSmKbPC7xpSOXEHWHiLiPE6vAWniqV6lCW7PrzpP
-	fQuJovv/7NBZYLkytUwsR+IF9dlAnOdttrpygKXOk/aBWIRzzizFgPBE/seqiHsrVXAUoC
-	fp89ZOlDp0u7aUFZRg9hxGo1GrSFPklJCBEECRWRTrr2cxGxVvNCqgFX8wppLQ==
+	bh=k46uZYQ2ESt/gYiB8AP/kZeA93Cegpvn1/Ee8Gyu4sI=;
+	b=H5EZ9cMTMbqjjfd4NGRWP+p9KrOohx/GRpirD8CaXFKwmc+8lEFHH5eFB2jcNGCCu2ycEM
+	KxeyRbQoGg6x8fwOJ/uB9TyejjCrlt379CcPUKRNeuGdXoVLSG6TUixsAp7MwdsI9uGXeM
+	x2Nnn4nAThqL0lIdVoDC2xHPcil/LOtkTRC0pRX01+WDXmkGC3M/p+CytciONYPQ0qgChH
+	7DdkRW10qFFPsCYpSu8OJj9ZSLcHaJm0SQRLrgj8xOtChijjk/Up47YA4Vg4KEXI6dx9FA
+	SVX0xrRMN64kt68prbzFdVFChBUaQxOUwPucbqP7wdV5BrElw8Ya8cc+nOoLHg==
 From: Miquel Raynal <miquel.raynal@bootlin.com>
-Date: Fri, 27 Nov 2026 15:22:52 +0100
-Subject: [PATCH RFC v2 30/35] spi: stm32-ospi: Reject excessive dummy cycle
- counts
+Date: Fri, 27 Nov 2026 15:22:55 +0100
+Subject: [PATCH RFC v2 33/35] spi: wpcm-fiu: Drop redundant checks
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20261127-macronix-upstreaming-spi-mem-cycles-v2-30-5c93f5e5d630@bootlin.com>
+Message-Id: <20261127-macronix-upstreaming-spi-mem-cycles-v2-33-5c93f5e5d630@bootlin.com>
 References: <20261127-macronix-upstreaming-spi-mem-cycles-v2-0-5c93f5e5d630@bootlin.com>
 In-Reply-To: <20261127-macronix-upstreaming-spi-mem-cycles-v2-0-5c93f5e5d630@bootlin.com>
 To: Mark Brown <broonie@kernel.org>, Liang Yang <liang.yang@amlogic.com>, 
@@ -109,9 +106,10 @@ Cc: Thomas Petazzoni <thomas.petazzoni@bootlin.com>,
 X-Mailer: b4 0.14.3
 X-Last-TLS-Session-Version: TLSv1.3
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261127_142727_612198_83D64CCB 
-X-CRM114-Status: GOOD (  11.24  )
-X-Spam-Score: -0.2 (/)
+X-CRM114-CacheID: sfid-20261127_142750_951876_F6C7E59E 
+X-CRM114-Status: UNSURE (   8.16  )
+X-CRM114-Notice: Please train this message.
+X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -125,45 +123,33 @@ Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
 X-Spam-Status: No, score=-18.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
 	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,
 	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,INCLUDES_PATCH,
-	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT
-	autolearn=unavailable autolearn_force=no version=4.0.1
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=ham
+	autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-The controller stores the number of dummy cycles in a 5-bit field.
-Prevent field corruption by adding a proper ->supports_op() callback.
+The core already sanitizes the spi-mem operations, these checks are
+redundant so let's drop them.
 
 Signed-off-by: Miquel Raynal <miquel.raynal@bootlin.com>
 ---
- drivers/spi/spi-stm32-ospi.c | 14 ++++++++++----
- 1 file changed, 10 insertions(+), 4 deletions(-)
+ drivers/spi/spi-wpcm-fiu.c | 3 ---
+ 1 file changed, 3 deletions(-)
 
-diff --git a/drivers/spi/spi-stm32-ospi.c b/drivers/spi/spi-stm32-ospi.c
-index bf42f46ce194..30d48ee1be21 100644
---- a/drivers/spi/spi-stm32-ospi.c
-+++ b/drivers/spi/spi-stm32-ospi.c
-@@ -772,11 +772,17 @@ static int stm32_ospi_setup(struct spi_device *spi)
- 	return 0;
- }
+diff --git a/drivers/spi/spi-wpcm-fiu.c b/drivers/spi/spi-wpcm-fiu.c
+index 884e5042bad5..4142fd894adb 100644
+--- a/drivers/spi/spi-wpcm-fiu.c
++++ b/drivers/spi/spi-wpcm-fiu.c
+@@ -323,9 +323,6 @@ static bool wpcm_fiu_supports_op(struct spi_mem *mem, const struct spi_mem_op *o
+ 	if (!spi_mem_default_supports_op(mem, op))
+ 		return false;
  
--/*
-- * No special host constraint, so use default spi_mem_default_supports_op
-- * to check supported mode.
-- */
-+static bool stm32_ospi_supports_op(struct spi_mem *mem,
-+				   const struct spi_mem_op *op)
-+{
-+	if (op->dummy.ncycles > FIELD_MAX(TCR_DCYC_MASK))
-+		return false;
-+
-+	return spi_mem_default_supports_op(mem, op);
-+}
-+
- static const struct spi_controller_mem_ops stm32_ospi_mem_ops = {
-+	.supports_op	= stm32_ospi_supports_op,
- 	.exec_op	= stm32_ospi_exec_op,
- 	.dirmap_create	= stm32_ospi_dirmap_create,
- 	.dirmap_read	= stm32_ospi_dirmap_read,
+-	if (op->cmd.dtr || op->addr.dtr || op->dummy.dtr || op->data.dtr)
+-		return false;
+-
+ 	if (op->cmd.buswidth > 1 || op->addr.buswidth > 1 ||
+ 	    op->dummy.buswidth > 1 || op->data.buswidth > 1)
+ 		return false;
 
 -- 
 2.56.0
