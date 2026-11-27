@@ -2,57 +2,57 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id A30CA606A31E
-	for <linux-mediatek@archiver.kernel.org>; Fri, 27 Nov 2026 16:02:49 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id DA846606A31C
+	for <linux-mediatek@archiver.kernel.org>; Fri, 27 Nov 2026 16:02:53 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=w7lGoVrk;
-	dkim=pass (2048-bit key) header.d=collabora.com header.i=@collabora.com header.a=rsa-sha256 header.s=mail header.b=irrRBx1e
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=Sz7RcMQ/;
+	dkim=pass (2048-bit key) header.d=collabora.com header.i=@collabora.com header.a=rsa-sha256 header.s=mail header.b=oD8EpM4H
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Cc:To:In-Reply-To:References
 	:Message-Id:Content-Transfer-Encoding:Content-Type:MIME-Version:Subject:Date:
 	From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Unsubscribe-Post:
-	List-Owner; bh=GtTI4H7/p5ukT6tYB3onQgsNbuPUVbCpuIyK8k4GxeY=; b=w7lGoVrkBl1vRx
-	HFYNxFXNEcnxvDgc22E7Ch2LHtRR+NNwIhcs7lTMWuEXLW2120INlyVQ+fbIgBJtRbDN7PFYrmWJo
-	H6FCcpaMeOGEoxD8C/f0lRECe+MhudqtBnAFbsziLkwPry51MFCl6J+iO01Gqz8vTobsX+fCGrpKB
-	YsrHOHYJhNgqqTb/mSk9he+WG4K58q/O+Wmxv7jp9rZ/YFYVxYL6OJMPY1SkkEoYMwkte4q8dvlNL
-	uMxhyMPPqHjjSQYgbc3NWHO4D7fWSgXl/GDOZFfMZVGp2a1hR1kX2l+DvKoHYJb2lw5GfNrvM8tex
-	ZkUOKdFNOEb0SI25U21A==;
+	List-Owner; bh=d1iWSGi7QtNHLyP+bmfRuFtqadXveS2JDuZ8jqUHNFs=; b=Sz7RcMQ/eKAAkj
+	Az6zJ3YNhV9/Nd6RYsEwR6NoSTfFnaAnZpdQcXE56rpzAUsrFgQTa1VwRUqe1TsvXCvBnrhbPNqPb
+	XWK7QhnSoRaYBlTWv8YYRrTMCVwBMB4frlJYCq28dq6L0suAYJZYzySA3psMYD83I5mJB4cGul69P
+	HDmzTbtWAxgbVhaokmOOBLLXlEjDk1x2r+CjM6VSnpyFqBwvURxKtbm1A7S5tySB+4J89TtKdgkdt
+	rA042+CA58mhoBRRNhQXpzBLMXrUVTEpFbswcXhEckYRxRvlSHeUqN/Ri6pgz+3+0z6Eexcd5RS44
+	DhmPcX7Y+wc7lyPDkLnQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xWyPR-0000000GyNb-1Uv8;
-	Fri, 27 Nov 2026 16:02:49 +0000
+	id 1xWyPV-0000000GyR4-23Ob;
+	Fri, 27 Nov 2026 16:02:53 +0000
 Received: from bali.collaboradmins.com ([148.251.105.195])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xWyNL-0000000Gx2M-0Qxg;
-	Fri, 27 Nov 2026 16:00:43 +0000
+	id 1xWyNN-0000000Gx3M-3Pp3;
+	Fri, 27 Nov 2026 16:00:44 +0000
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=collabora.com;
-	s=mail; t=1795795237;
-	bh=9XODURj1/aPQjhdAIHQAM+FlqP2MtikTuvlHQ/OgkaU=;
+	s=mail; t=1795795239;
+	bh=ByL684X2Vnb9P9DlVQ5rYaQEzQJC6mcaaHtBDTMfkSI=;
 	h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
-	b=irrRBx1edGYiDyHBAASb84OcIqRdNpySEFIVHAWdHBDOFGpgyeXOe65pOd7MAmjH+
-	 U5rsvoarr75Q3N3mpN2qIqZseGOCkCBH5mFbzGmYzcH683PIGszDCEK3FHQREGBFVf
-	 2LzgdZdODJO0eFZCYCxWGW8wSz7gEeSbsmARaALKlyKQ1Qlk4+dtoypcd+UUdQsksr
-	 SncCPkVNmEFjxXb5hznt4QpyAVYP5OBiMJs/9WO/I1CKrGMLMEsY0T1zaOHM23UvkS
-	 YZ1RS5TZUaYGlgm6NGANcc2sgUICljTJHnNfjXwnP1+0BCqyIFgFpyDh9BxWfCPfjX
-	 8cxnFmZyi22Tw==
+	b=oD8EpM4Ht1SSgZAdhSLoB+uw9i8F3BtRJPpj8TU2nIyt9oUpU8VJhRNuQDMxlZhT5
+	 SKXn1T3t2q4xt6FWdRUPwmVsmK1ZQYkGiso2aOktDIbjdAe3GVSF1jWpACFsoEcaHP
+	 put51NyfxisRFSUx5lHG7EMcxxtIeOzBQV2/Aobj/SBOk9eOP/GIVuA4i1OQwXREeG
+	 +FjtT2tCPnehosifOEYP2XlCysH2xL22hC0NN8J37ZnGzXFkjUWxAiMBMnPBuYyzJ2
+	 MOGVjMHR4TbCwpYKRo7G89YD7gSxKrh1jbRfgChM6q5FX9tO0E6f9EEboIJ4P/DCyE
+	 oKQj71SLAWNuQ==
 Received: from yukiji.home (unknown [100.64.0.131])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange x25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
 	(No client certificate requested)
 	(Authenticated sender: laeyraud)
-	by bali.collaboradmins.com (Postfix) with ESMTPSA id F229117E0BA9;
-	Fri, 27 Nov 2026 17:00:35 +0100 (CET)
+	by bali.collaboradmins.com (Postfix) with ESMTPSA id AC92217E057D;
+	Fri, 27 Nov 2026 17:00:38 +0100 (CET)
 From: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
-Date: Fri, 27 Nov 2026 17:00:13 +0100
-Subject: [PATCH v16 10/23] scsi: ufs: mediatek: Rework the crypt-boost
- stuff
+Date: Fri, 27 Nov 2026 17:00:15 +0100
+Subject: [PATCH v16 12/23] scsi: ufs: mediatek: Remove undocumented
+ downstream reset cruft
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
-Message-Id: <20261127-mt8196-ufs-v16-10-6f2568f7c119@collabora.com>
+Content-Transfer-Encoding: 7bit
+Message-Id: <20261127-mt8196-ufs-v16-12-6f2568f7c119@collabora.com>
 References: <20261127-mt8196-ufs-v16-0-6f2568f7c119@collabora.com>
 In-Reply-To: <20261127-mt8196-ufs-v16-0-6f2568f7c119@collabora.com>
 To: Chunfeng Yun <chunfeng.yun@mediatek.com>, Vinod Koul <vkoul@kernel.org>, 
@@ -78,16 +78,16 @@ Cc: kernel@collabora.com, linux-arm-kernel@lists.infradead.org,
  Nicolas Frattaroli <nicolas.frattaroli@collabora.com>, 
  Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
 X-Mailer: b4 0.14.3
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1795795222; l=4252;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1795795222; l=2332;
  i=louisalexis.eyraud@collabora.com; s=20250113; h=from:subject:message-id;
- bh=t+EX1zo42dcM7+KTo8uLwNF/1DfFs3i+4+N5UTCySt0=;
- b=YyNEmUf3FM2ks2sBgByG3NB+O0JG/jdzvenGC5svvVt/lXjXRg2uJeGVhOH1FHQYxmAMwr7te
- WiDjOawX3UmCJmTFvdDtpA/smB03pW5RSGkvbZdZaVF7E5+i5a0NnVR
+ bh=+A3NldqSEBf9ebZ6WybS45DAMnLDsRhXDpWr1MsfjRg=;
+ b=frZ/5q9Tr8kTYFlxwRLhp+vDsG4WK2NJ6LiST2MFt4LmOYeBUP+koiRrb4OPVnQe5hRUlSH8B
+ gz9vnX1nbppCxZidyHmLzOTAPmK+lck0Jltv/AOZtu4z5qAHCwU6YLb
 X-Developer-Key: i=louisalexis.eyraud@collabora.com; a=ed25519;
  pk=CHFBDB2Kqh4EHc6JIqFn69GhxJJAzc0Zr4e8QxtumuM=
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261127_080041_672701_BBF80E9C 
-X-CRM114-Status: GOOD (  14.24  )
+X-CRM114-CacheID: sfid-20261127_080042_019291_88772B54 
+X-CRM114-Status: GOOD (  14.03  )
 X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
@@ -109,144 +109,74 @@ X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 
 From: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
 
-I don't know whether the crypt-boost functionality as it is currently
-implemented is even appropriate for mainline. It might be better done in
-some generic way. But what I do know is that I can rework the code to
-make it less obtuse.
+The MediaTek UFS host driver's probe function allows using a
+ti,syscon-reset as a reset, without going through the appropriate
+abstractions, or by documenting this in the binding at all.
 
-Prefix the boost stuff with the appropriate vendor prefix, remove the
-pointless clock wrappers, and rework the function.
+Remove this, it's downstream code and does not belong here.
 
 Reviewed-by: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>
-Reviewed-by: Peter Wang (王信友) <peter.wang@mediatek.com>
 Signed-off-by: Nicolas Frattaroli <nicolas.frattaroli@collabora.com>
+Reviewed-by: Chaotian Jing <chaotian.jing@mediatek.com>
 Signed-off-by: Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>
 ---
- drivers/ufs/host/ufs-mediatek.c | 88 +++++++++++++++--------------------------
- 1 file changed, 31 insertions(+), 57 deletions(-)
+ drivers/ufs/host/ufs-mediatek.c | 33 +++------------------------------
+ 1 file changed, 3 insertions(+), 30 deletions(-)
 
 diff --git a/drivers/ufs/host/ufs-mediatek.c b/drivers/ufs/host/ufs-mediatek.c
-index 177e406cbc5f..41c477f5d5f3 100644
+index b68c5c0c0e8f..e768afdbc3be 100644
 --- a/drivers/ufs/host/ufs-mediatek.c
 +++ b/drivers/ufs/host/ufs-mediatek.c
-@@ -617,21 +617,6 @@ static int ufs_mtk_mphy_power_on(struct ufs_hba *hba, bool on)
- 	return 0;
- }
- 
--static int ufs_mtk_get_host_clk(struct device *dev, const char *name,
--				struct clk **clk_out)
--{
--	struct clk *clk;
--	int err = 0;
--
--	clk = devm_clk_get(dev, name);
--	if (IS_ERR(clk))
--		err = PTR_ERR(clk);
--	else
--		*clk_out = clk;
--
--	return err;
--}
--
- static void ufs_mtk_boost_crypt(struct ufs_hba *hba, bool boost)
+@@ -2490,38 +2490,12 @@ MODULE_DEVICE_TABLE(of, ufs_mtk_of_match);
+ static int ufs_mtk_probe(struct platform_device *pdev)
  {
- 	struct ufs_mtk_host *host = ufshcd_get_variant(hba);
-@@ -688,64 +673,53 @@ static void ufs_mtk_boost_crypt(struct ufs_hba *hba, bool boost)
- 	clk_disable_unprepare(cfg->clk_crypt_mux);
- }
+ 	int err;
+-	struct device *dev = &pdev->dev, *phy_dev = NULL;
+-	struct device_node *reset_node, *phy_node = NULL;
+-	struct platform_device *reset_pdev, *phy_pdev = NULL;
+-	struct device_link *link;
+ 	struct ufs_hba *hba;
++	struct platform_device *phy_pdev = NULL;
++	struct device *dev = &pdev->dev, *phy_dev = NULL;
++	struct device_node *phy_node = NULL;
+ 	struct ufs_mtk_host *host;
  
--static int ufs_mtk_init_host_clk(struct ufs_hba *hba, const char *name,
--				 struct clk **clk)
--{
--	int ret;
--
--	ret = ufs_mtk_get_host_clk(hba->dev, name, clk);
--	if (ret) {
--		dev_info(hba->dev, "%s: failed to get %s: %d", __func__,
--			 name, ret);
+-	reset_node = of_find_compatible_node(NULL, NULL,
+-					     "ti,syscon-reset");
+-	if (!reset_node) {
+-		dev_notice(dev, "find ti,syscon-reset fail\n");
+-		goto skip_reset;
+-	}
+-	reset_pdev = of_find_device_by_node(reset_node);
+-	if (!reset_pdev) {
+-		dev_notice(dev, "find reset_pdev fail\n");
+-		goto skip_reset;
+-	}
+-	link = device_link_add(dev, &reset_pdev->dev,
+-		DL_FLAG_AUTOPROBE_CONSUMER);
+-	put_device(&reset_pdev->dev);
+-	if (!link) {
+-		dev_notice(dev, "add reset device_link fail\n");
+-		goto skip_reset;
+-	}
+-	/* supplier is not probed */
+-	if (link->status == DL_STATE_DORMANT) {
+-		err = -EPROBE_DEFER;
+-		goto out;
 -	}
 -
--	return ret;
--}
--
- static void ufs_mtk_init_boost_crypt(struct ufs_hba *hba)
- {
- 	struct ufs_mtk_host *host = ufshcd_get_variant(hba);
- 	struct ufs_mtk_crypt_cfg *cfg;
- 	struct device *dev = hba->dev;
--	struct regulator *reg;
- 	u32 volt;
-+	int ret;
+-skip_reset:
+ 	/* find phy node */
+ 	phy_node = of_parse_phandle(dev->of_node, "phys", 0);
  
--	host->crypt = devm_kzalloc_obj(dev, *(host->crypt));
--	if (!host->crypt)
--		goto disable_caps;
-+	cfg = devm_kzalloc_obj(dev, *cfg);
-+	if (!cfg)
-+		return;
+@@ -2567,7 +2541,6 @@ static int ufs_mtk_probe(struct platform_device *pdev)
  
--	reg = devm_regulator_get_optional(dev, "dvfsrc-vcore");
--	if (IS_ERR(reg)) {
--		dev_info(dev, "failed to get dvfsrc-vcore: %ld",
--			 PTR_ERR(reg));
--		goto disable_caps;
-+	cfg->reg_vcore = devm_regulator_get_optional(dev, "dvfsrc-vcore");
-+	if (IS_ERR(cfg->reg_vcore)) {
-+		dev_err(dev, "Failed to get dvfsrc-vcore: %pe\n", cfg->reg_vcore);
-+		return;
- 	}
- 
--	if (of_property_read_u32(dev->of_node, "boost-crypt-vcore-min",
--				 &volt)) {
--		dev_info(dev, "failed to get boost-crypt-vcore-min");
--		goto disable_caps;
-+	ret = of_property_read_u32(dev->of_node, "mediatek,boost-crypt-vcore-min",
-+				   &volt);
-+	if (ret) {
-+		dev_err(dev, "Failed to get mediatek,boost-crypt-vcore-min: %pe\n",
-+			ERR_PTR(ret));
-+		return;
- 	}
-+	cfg->vcore_volt = volt;
- 
--	cfg = host->crypt;
--	if (ufs_mtk_init_host_clk(hba, "crypt_mux",
--				  &cfg->clk_crypt_mux))
--		goto disable_caps;
-+	cfg->clk_crypt_mux = devm_clk_get(dev, "crypt_mux");
-+	if (IS_ERR(cfg->clk_crypt_mux)) {
-+		dev_err(dev, "Failed to get clock crypt_mux: %pe\n", cfg->clk_crypt_mux);
-+		return;
-+	}
- 
--	if (ufs_mtk_init_host_clk(hba, "crypt_lp",
--				  &cfg->clk_crypt_lp))
--		goto disable_caps;
-+	cfg->clk_crypt_lp = devm_clk_get(dev, "crypt_lp");
-+	if (IS_ERR(cfg->clk_crypt_lp)) {
-+		dev_err(dev, "Failed to get clock crypt_lp: %pe\n", cfg->clk_crypt_lp);
-+		return;
-+	}
- 
--	if (ufs_mtk_init_host_clk(hba, "crypt_perf",
--				  &cfg->clk_crypt_perf))
--		goto disable_caps;
-+	cfg->clk_crypt_perf = devm_clk_get(dev, "crypt_perf");
-+	if (IS_ERR(cfg->clk_crypt_perf)) {
-+		dev_err(dev, "Failed to get clock crypt_perf: %pe\n", cfg->clk_crypt_perf);
-+		return;
-+	}
- 
--	cfg->reg_vcore = reg;
--	cfg->vcore_volt = volt;
-+	host->crypt = cfg;
- 	host->caps |= UFS_MTK_CAP_BOOST_CRYPT_ENGINE;
--
--disable_caps:
--	return;
+ out:
+ 	of_node_put(phy_node);
+-	of_node_put(reset_node);
+ 	return err;
  }
  
- static void ufs_mtk_init_host_caps(struct ufs_hba *hba)
 
 -- 
 2.56.1
