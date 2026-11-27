@@ -2,11 +2,11 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 63E76606A31C
-	for <linux-mediatek@archiver.kernel.org>; Fri, 27 Nov 2026 01:10:50 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 47011606A324
+	for <linux-mediatek@archiver.kernel.org>; Fri, 27 Nov 2026 01:14:37 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=JDdwputD;
-	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=oj0vkI1a
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=rvFEjorP;
+	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=vjeG8enD
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Message-ID:Date:Content-Type
@@ -14,65 +14,65 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=HZ2sCqXwwWM570Uzj7/jKB0ciamWJ56LEpgiUf6Er7s=; b=JDdwputDR0hPAS/8eXv9CoY61M
-	IM+gNWsUS1I1bbVqDCW11nJQIxPS0LVqSJnDJUACr0XJKyL4t+bGQ9BOU2mEdoeC+f9GDMnU8nOeX
-	dM0xUh8zv92RofAX5Uu2BrylEcltvc/P4CoYy9h9TyuM0rNAdXbNwsuVkzkVjo27HzIM+0+AukbtF
-	E8dJv0WCAycngKG4Albiyz97u0e0Tx+yIc51bOyj1ebUICWyhr1P7lh3b+5/26ZYlO4nS9aodh1fw
-	+gIoF3nrE6drK885ke0/xkvbVVbdnhpZfVTKeA5ATOXCeNDIDpmyA1daKf1rNCK2XiTJpJHKYAbCN
-	UKsvb2Gw==;
+	bh=4QuyiSQPiIDTfEJTEpYvEBkj4Se4WoY6XU6KWrukd4U=; b=rvFEjorPMwB+fe78nU93V+3gCz
+	qNbYkOMj+HdRT1eTKiZrj5xflwie5BtNCadpyrg0fY5UOxUE3ujSJ9Z0ynQiDyrVMcpH6HnSWa5L9
+	8aNmAk6wUjcfk12u9E2QTNy6Vd37zRtNOCfOJqeC5BxbhDEPHZKKMKVr71WaTPVHgtYmG+vFJm2il
+	jGZ+jTiMFxlvLx3R1z3TY4md+upLIf5s1HFSFuDLu/TChIlUD/380RKDUZ2SOi43ju2JUjdy0uY/j
+	MsZuPqrobJf0K4pVjcOczPAo6TGmP43uC9xuCPYmV1wBSaWsLZ+HFRCj0rFs5e20+hZqk7xYJcviG
+	SCLjQRHA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xWkUD-0000000EiY5-2We7;
-	Fri, 27 Nov 2026 01:10:49 +0000
-Received: from mail-pl1-x62e.google.com ([2607:f8b0:4864:20::62e])
+	id 1xWkXs-0000000EieB-4AoH;
+	Fri, 27 Nov 2026 01:14:36 +0000
+Received: from mail-pg1-x532.google.com ([2607:f8b0:4864:20::532])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xWkUB-0000000EiXk-3ahm
+	id 1xWkXq-0000000Eidp-1BxS
 	for linux-mediatek@lists.infradead.org;
-	Fri, 27 Nov 2026 01:10:49 +0000
-Received: by mail-pl1-x62e.google.com with SMTP id d9443c01a7336-2f0481b35c9so43271835ad.0
-        for <linux-mediatek@lists.infradead.org>; Thu, 26 Nov 2026 17:10:46 -0800 (PST)
+	Fri, 27 Nov 2026 01:14:35 +0000
+Received: by mail-pg1-x532.google.com with SMTP id 41be03b00d2f7-cd6028ff33fso3810028a12.0
+        for <linux-mediatek@lists.infradead.org>; Thu, 26 Nov 2026 17:14:33 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20260707; t=1795741846; x=1796346646; darn=lists.infradead.org;
+        d=gmail.com; s=20260707; t=1795742073; x=1796346873; darn=lists.infradead.org;
         h=message-id:date:content-type:references:in-reply-to:subject:cc:to
          :from:from:to:cc:subject:date:message-id:reply-to:content-type;
-        bh=HZ2sCqXwwWM570Uzj7/jKB0ciamWJ56LEpgiUf6Er7s=;
-        b=oj0vkI1aCzvZ4lzx2kzwbQaDktqOeebfkt6al7UMtNqCKmP2aqXUchumArfi3pOgh7
-         EbCIkV7PWNNIPYusJ2c1aip8SnzWTPGbtF+YUBTpIj4hTxFI745mzFs2R8yunZ31vunf
-         ggyLJkOf0zg2CkLlDO/hbCMC95ymHXWHKZxIMeDMi+YzW3s8kaSBdHI/9wNpLf/WGxq9
-         YVN/elg3bzWMlbVx0gATvoe6aPyUdeh2YQyvpa17XLFf1JiA9Bc9AlqDfHV4Om3W+C/M
-         M32K581+ABZvSWfCO9RrNa/UKUUuM+0g/WLkBRb83rt4G9/Flus05vnsTNnYjCnxncv/
-         7a3w==
+        bh=4QuyiSQPiIDTfEJTEpYvEBkj4Se4WoY6XU6KWrukd4U=;
+        b=vjeG8enDm8MDWaLvmCGvcMBtCVp4IIAtSM5u1Gq14twIC/S0gpcNZyFR4ml0CfFd3v
+         eN+a3BPXgLUfbTTSlFdUc5sOEw/+DRfYIov8U5jhaWrOkihAgHYKo9rKbXuNqNPbaoXI
+         +drf9YnDkkiHC6DuBAH6unsv5+maf5EyFk7wvvAwIzdOc1REKJNUHEyvMz4ZFPKvmu/v
+         voAZPu0v2SZy7kUKg4S9zFR7GeWJ04GZBUtEHXbYczfNOSZ4NEUigbTqGgw23GTjrySb
+         DiBWVwocpbdUi2MRMzFTjYV7wQq7xUdc06rGSyPGa8pQTqIGhxkTBwbAlKrHH8zD2yo2
+         il1Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1795741846; x=1796346646;
+        d=1e100.net; s=20260707; t=1795742073; x=1796346873;
         h=message-id:date:content-type:references:in-reply-to:subject:cc:to
          :from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
          :reply-to:content-type;
-        bh=HZ2sCqXwwWM570Uzj7/jKB0ciamWJ56LEpgiUf6Er7s=;
-        b=DFWcdF4kwCwHSNZSHG5WVDMWpeEFomc/LZ05ukGmcMD9g0hDWRfW45yoL14OrbsW8K
-         NZIIitzpiOUfSoI12Kp1sdOG6sxIXdw7MAwplx+sA1ZG+8ZgxCqjUUlg6tqkLBgD9AMv
-         uXBkuhRp7X35rBVQFCzNTvZsf+f9UFFnbnA8rbUT7kKzXoiGKomYBp+pF+7GeRAh2mLs
-         5Vqu/9KYp8r1t40OYhfUMoIttosKoxQ3kcrZstuTohcgGoq3WuJRmHFvLg0c7WEpL9dC
-         v6pm9mLzvuyGmM+vijePC8/WRiEJXX1wG98myREgWpfwB2A/iHQ8OPIWmme1IED7I0Iu
-         LjeA==
-X-Forwarded-Encrypted: i=1; AL+hErHlHIlAv5dZ+0LbOt/jrXMp3B2fE+U84KhxmrG0z5hUCBlUBQqD2bKQaDr2NkL0zYOhI8uMX2Yg/SolD9IVig==@lists.infradead.org
-X-Gm-Message-State: APuU4Z/8NzA0v8aLIqMnLUYdlXeZbxyk1oNQqWl3+xfwjsUyow6CrbkC
-	X9J5Hqz+a8SGTJcShHI7ps13QOD5kDOKBuTCKj0SBNFeVFqYNkghVgFQhlFQ8aX1A2XTtF30
-X-Gm-Gg: AZFdTZcE7EdrYw5ijgLt+9szXb5weMsAsycvZh6vVUB4TzXKSOvWvTQ+puvbqrB3peV
-	eaSVAjXNq14g3fMkyZXSYATm1Y5ki5gLicXc4qkPImNNJppeKcbp4AnkHc9ejxOL2Am5zBxEX6d
-	hLP5ZekgzyEY3ibazKn9FgB6OGVmwMVSirs67bHaI8AO6sEk6zQkro2b2GKcT3cAWz8jbH6d8LD
-	dlRH+n1QPkTtbL1+N6WHz6Qovn76KB81Vd7ehY3IadR8/novlaRWvc2bfHwWhsGxBEwCil75/9Z
-	KRMe26WNiU1thyu26Nz0kxDQdVDXCcmclEh9J5OPvSgBEtrOa+wSY1cJg77ke/cwuYukQJuaJNW
-	Lrp4wPXtwfEgrbEps+5RO4/RySlUEQFiTcl0xrBtWx4GJnQGbHzaOrNKG7DrwGhBlUuHbI2RtCs
-	HT6gI1XlXo7jhWQRWyzzWRJbjLpxA+YkFcuHx8lMRERXHk39rBxzRiRjdsZuo/JjTDpoUy2FbAh
-	IRLcaqalDsIW+RG9lFEuc4iOjNYT0CZsyAKH050NcD8rAjhwjt9TUG01IqPDHn+WkU5X5928ZuH
-	kwWC89ai1Afvb3iI1cmNni14DcbLyrIiP9t8/Jx1Qo/HKWL8aN4fLnn+gfzYgP+ilzGJcPUlr4A
-	9
-X-Received: by 2002:a17:903:19e7:b0:2e9:9a19:c54 with SMTP id d9443c01a7336-2f03f24206fmr190172495ad.50.1795741846137;
-        Thu, 26 Nov 2026 17:10:46 -0800 (PST)
+        bh=4QuyiSQPiIDTfEJTEpYvEBkj4Se4WoY6XU6KWrukd4U=;
+        b=M6GIJbG2j8eOCByyyZklHwTSIUgppo9WXAFObBIvx/yHq9OeQBvKtkQwgD+SfbRy5L
+         /CVCsWIe6dpFt7Euv1rZ67cV8cc/aIR9XuyupkZgmpzbTHEtP+9uOwIK9IJI4TfA/Pt6
+         RL2yg9o9wVETVGRXpvALrdm3XadVTNdwcuVkG+ig3B4xWTPqyDFQquqjHL643oMqwn6E
+         pqqTHrOUAh1lsJUDwUGgKWJDRzin7UuKUSVW4+S+9oSq/tZPAjAXWFcyvnkb6GmmrpHV
+         cEJTfhVtevxxLxv7uzwMUJLRGazUjZlB/SQtTrYbAkzQFVMW4kIGF1UYRVL2E3g7bwjF
+         FIGA==
+X-Forwarded-Encrypted: i=1; AL+hErGnj4+8DXxkr8jD7hzVr/T5C9qGMHbKMvVEhJBqSIsWO6dzRgGtcqAUUIcM9GeJoJTXpMgPE4z9NcORpvmo7A==@lists.infradead.org
+X-Gm-Message-State: APuU4Z/aGXbCQ+r3t3JNJn0kWC9mB8daSefFS/6jbs8kap3SrFNpOsd7
+	XIBSR2R+my8qf441NZ7TNokjTLLI4J4pEvNk9vBYyuMENw5zcfsYVyWI9rGWFdWwq06yaQmE
+X-Gm-Gg: AZFdTZftWUshQV3eaTfjVIYijv3zk5P5vwvbCkv7xaKRcVmFRZ4q3GLL8l8XmLIADd0
+	3ZZbZVCjx4blBXkuJWKBR/sRpPOjn9KV8JZ9MY17nJNsFxu/6PvVY/boIKRroRNOzuTZFLsEEeZ
+	ZMZymmPS4GVHuc+AL1mT8eLTG7EfeYTaOqY/5ItEVMmudOhG8KkbzECHq/JfCUdUmtnMrIQXJOZ
+	0Fsa5dI5SUBrCITsQgepuCHRO4t/ZI7hx8PDSVDgWuFdDWUjwpzfI0sPaxY+z6ueDizKj/UVHXl
+	fcF+ECV0dr2rYocpYw5a3XuDBhbXX5OvFbCaAxj50QNWAxaJo9XUvAnQxoP4yKr4lxhagz/ORfH
+	ySE2iafEgfhodIWoco4OorkrUbtGz/x7uoxXeRvGLKgPLekc1z+3pqxFft+Qco/UW9XP4vLVgQb
+	1K2Q4dmwTDsZVsblorouKMLR5QeLMdRhhprap4o9vUQxJJ7S4BprzIY5GEqOqgJtR4tNOCTtqat
+	p9gIDV90spW54ZyXmkH57ipmvkndKeHiCp3A7HlCl0clrMIleJMp93MvsTHJ4+v96S5icfDbFGb
+	uwuaRUqH0vWpIX4srDUwaUsf4j6OngG6rF78Tf7IfJ24VnOJPvsrJe12uqOxKDcLqGCdPJJty2Q
+	DpI7v4qasVnACWeIpk5ek
+X-Received: by 2002:a17:90b:1a90:b0:3b0:9941:8d42 with SMTP id 98e67ed59e1d1-3b41c92a1c0mr20960400a91.33.1795742073166;
+        Thu, 26 Nov 2026 17:14:33 -0800 (PST)
 Received: from mac.lan (114-45-165-38.dynamic-ip.hinet.net. [114.45.165.38])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-2f03f1207f1sm110189725ad.64.2026.11.26.17.10.43
+        by smtp.gmail.com with ESMTPSA id 98e67ed59e1d1-3b41ad0b2c4sm35005235a91.4.2026.11.26.17.14.30
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 26 Nov 2026 17:10:45 -0800 (PST)
+        Thu, 26 Nov 2026 17:14:32 -0800 (PST)
 From: Ilia Snezhkov <iasnezhkov@gmail.com>
 To: Peter Wang <peter.wang@mediatek.com>
 Cc: stanley.chu@mediatek.com, martin.petersen@oracle.com,
@@ -80,18 +80,18 @@ Cc: stanley.chu@mediatek.com, martin.petersen@oracle.com,
  angelogioacchino.delregno@collabora.com, louisalexis.eyraud@collabora.com,
  linux-scsi@vger.kernel.org, linux-mediatek@lists.infradead.org,
  linux-kernel@vger.kernel.org
-Subject: Re: [PATCH v2 2/3] scsi: ufs: mediatek: allow clock scaling when
- ufs_fde is absent
-In-Reply-To: <7b7d94ab4283b82aec13eae3f9c1d2e77873d88f.camel@mediatek.com>
+Subject: Re: [PATCH v2 3/3] scsi: ufs: mediatek: round scalable clock bounds
+ to clk_round_rate()
+In-Reply-To: <00ba0aec941a72c8401eab7c3d4036caa2ae8aee.camel@mediatek.com>
 References: <20261126031008.27506-1-iasnezhkov@gmail.com>
- <20261126031008.27506-3-iasnezhkov@gmail.com>
- <7b7d94ab4283b82aec13eae3f9c1d2e77873d88f.camel@mediatek.com>
+ <20261126031008.27506-4-iasnezhkov@gmail.com>
+ <00ba0aec941a72c8401eab7c3d4036caa2ae8aee.camel@mediatek.com>
 Content-Type: text/plain; charset=UTF-8
-Date: Fri, 27 Nov 2026 09:10:41 +0800
-Message-ID: <179574184161.52486.4990124402659702610@gmail.com>
+Date: Fri, 27 Nov 2026 09:14:28 +0800
+Message-ID: <179574206826.56397.7920531590189565888@gmail.com>
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261126_171047_931114_C549183A 
-X-CRM114-Status: UNSURE (   4.87  )
+X-CRM114-CacheID: sfid-20261126_171434_350184_E697776E 
+X-CRM114-Status: UNSURE (   5.14  )
 X-CRM114-Notice: Please train this message.
 X-Spam-Score: 2.2 (++)
 X-BeenThere: linux-mediatek@lists.infradead.org
@@ -115,24 +115,31 @@ X-Archived-By: <archiver.kernel.org>
 
 Hi Peter,
 
-No — this patch does not change whether UFSHCD_CAP_CLK_SCALING is
-enabled.
+It is not a missing hardware calibration — it comes directly from the
+fractional-N PLL PCW quantization against the 26 MHz reference crystal
+(clk26m).
 
-ufs_mtk_is_clk_scale_ready() only checks ufs_sel, ufs_sel_max_src, and
-ufs_sel_min_src, so on any platform (including MT6789) whose DT
-provides those three clocks, UFSHCD_CAP_CLK_SCALING is already enabled
-today and devfreq already runs. Platforms that omit ufs_sel_{min,max}_src
-still have UFSHCD_CAP_CLK_SCALING cleared as before.
+On MT6789, msdcpll has pcwbits = 22 and pcwibits = 8 (14 fractional
+bits, 2^14 = 16384), with VCO range 1500..3800 MHz, and ufs_sel_max_src
+is msdcpll_d2 (msdcpll / 2). To target msdcpll = 384 MHz (msdcpll_d2 =
+192 MHz) at postdiv = 4, VCO = 1536 MHz, so the required multiplier is:
 
-What was broken without this patch is that when a DT provides ufs_sel
-and its min/max sources without ufs_fde, _ufs_mtk_clk_scale() returned
-early on `!fde_clki`, so ufs_sel never actually switched parents while
-ufshcd still treated the scaling transition as successful and updated
-clki->curr_freq.
+  1536 / 26 = 768 / 13 = 59 + 1/13
 
-With this change, MT6789's already-enabled clock scaling actually
-switches ufs_sel between 26 MHz (tck_26m_mx9) and 192 MHz (msdcpll_d2)
-as intended.
+Because 1/13 is a non-terminating binary fraction, no integer PCW value
+can represent 384 MHz exactly in 14 fractional bits:
+
+  pcw = 0xec4ec (967916) -> vco = 1535999512 Hz -> msdcpll = 383999878 Hz -> msdcpll_d2 = 191999939 Hz (-61 Hz)
+  pcw = 0xec4ed (967917) -> vco = 1536001099 Hz -> msdcpll = 384000275 Hz -> msdcpll_d2 = 192000137 Hz (+137 Hz)
+
+(With postdiv = 8, VCO = 3072 MHz = 26 MHz * (118 + 2/13), the closest
+PCW values give 191999939 Hz and 192000038 Hz — still never exactly
+192000000 Hz.)
+
+So the CCF __mtk_pll_recalc_rate() / clk_round_rate() result for
+msdcpll_d2 is deterministically 191999939 Hz, which never matches a
+nominal 192000000 Hz entry in freq-table-hz under ufshcd_devfreq_target()'s
+exact `freq == clki->max_freq` check.
 
 Best regards,
 Ilia
