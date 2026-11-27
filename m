@@ -2,113 +2,183 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 3E503606A329
-	for <linux-mediatek@archiver.kernel.org>; Thu, 26 Nov 2026 22:33:47 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 89336606A31E
+	for <linux-mediatek@archiver.kernel.org>; Fri, 27 Nov 2026 00:07:04 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=BbDjKG1j;
-	dkim=pass (2048-bit key) header.d=ndufresne-ca.20260707.gappssmtp.com header.i=@ndufresne-ca.20260707.gappssmtp.com header.a=rsa-sha256 header.s=20260707 header.b=QU5T6eVR
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=vNB23bi0;
+	dkim=pass (1024-bit key) header.d=mediatek.com header.i=@mediatek.com header.a=rsa-sha256 header.s=dk header.b=s4H0IUBb;
+	dkim=pass (1024-bit key) header.d=mediateko365.onmicrosoft.com header.i=@mediateko365.onmicrosoft.com header.a=rsa-sha256 header.s=selector2-mediateko365-onmicrosoft-com header.b=qhzOZS6Q
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:Content-Type:
-	References:In-Reply-To:Date:Cc:To:From:Subject:Message-ID:Reply-To:
-	Content-Transfer-Encoding:Content-ID:Content-Description:Resent-Date:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
+	Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:
+	Message-ID:Date:Subject:CC:To:From:Reply-To:Content-Description:Resent-Date:
 	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
 	List-Unsubscribe-Post:List-Owner;
-	bh=VAuiL2sK9KgcCNS1LCu1ZR6hGD2zR58kg8DLcx9J16M=; b=BbDjKG1jMBQB2PyRe26xyLk1CD
-	z1ApmowTB1tyi1JpBbjH7FOyyp1D4q0QhI2LO6GoxFx8fw1T8Buq6HqCCbF6urA4TVO4udEpKTaiy
-	+C6q5hV9w6xP+Z39cKFAISNtYPBENjkXGZkiyfkUWMyI32eZyk1e7p4Vc0JZqWBBWVdoK7CNgtKcg
-	P1bXu9kxOKGvHc9ZOYeJl80oEk6FqGADM0jSyKXBZEenSMgpvUq8MX9k96QyXWz63HWzRX9ZGWI9d
-	CctRrbw4ktm236zuCkP25DBJKSkehGMRnfwDuzhLmtYBCJT/QheN4qsALmpZluNh7pQ1fXG17AFWc
-	x2w6neAA==;
+	bh=M6G7t75C9om7yZ3s0Cp9MieazeyLPmoODxSGq8PTP5Y=; b=vNB23bi06VcPXWZ8HKozKPtzKz
+	oUX8LeCA7cXQjxaD7+EUkOgj5w2Fe/Q6vtpRYv/cYQgHHIs5pjnAGKHb+ZJkNjzBSCIQCWmKODyH3
+	T7oR2HlIs+RFrB1MDVGbsoIhuPmlxTiwXZVz82Aq+6plR3CbwUc5yyR+1fq+KGurF6U94/BhttgNk
+	oQtMBlMl1yMUCDvjkDvkxatjnJ7Ald+ZneJjveMNILvNwtM71zNjBXsx1ugmFsmKJGD2oStB+N0dQ
+	HIeS6QxR+nuZ4P87YX49R3W4kAXyGwM49W65f5A5thDItZP088mBi9KMf6/tg+6DWkp3O6g5mb1P5
+	FKXEgLog==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xWi2E-0000000EdFe-2cNC;
-	Thu, 26 Nov 2026 22:33:46 +0000
-Received: from mail-qk1-x72c.google.com ([2607:f8b0:4864:20::72c])
+	id 1xWjUU-0000000EgWJ-3Ff2;
+	Fri, 27 Nov 2026 00:07:02 +0000
+Received: from mailgw02.mediatek.com ([216.200.240.185])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xWi2B-0000000EdEn-3fv8
+	id 1xWjUR-0000000EgVh-2bRW
 	for linux-mediatek@lists.infradead.org;
-	Thu, 26 Nov 2026 22:33:45 +0000
-Received: by mail-qk1-x72c.google.com with SMTP id af79cd13be357-93f20b304c0so670996885a.3
-        for <linux-mediatek@lists.infradead.org>; Thu, 26 Nov 2026 14:33:43 -0800 (PST)
+	Fri, 27 Nov 2026 00:07:00 +0000
+X-UUID: 7303dd3ce9f611f1a170bf5142e12a73-20261126
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=mediatek.com; s=dk;
+	h=MIME-Version:Content-Transfer-Encoding:Content-ID:Content-Type:In-Reply-To:References:Message-ID:Date:Subject:CC:To:From; bh=M6G7t75C9om7yZ3s0Cp9MieazeyLPmoODxSGq8PTP5Y=;
+	b=s4H0IUBbPbB7ig/p68god5tSZG5ytw6da7kIrhHNpN5FPmLLRYR97eq8ESoRT+gAox4rBQX3uD7N/V3+v3MU8xkCjJNETULYnLss5k68JcNrofxqruavQzLUJjDkVLDOmFBIsCVaDikTQpnExkNnPQF1E4lVJ6K8L+BzcHh9oF8=;
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.3.21,REQID:42495f55-10fd-4a18-a7e4-902a65827afa,IP:0,U
+	RL:0,TC:0,Content:-5,EDM:0,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
+	:release,TS:-5
+X-CID-META: VersionHash:b0318ac,CLOUDID:a6f1d666-4b51-4c95-bb1b-80ac6aad9c96,B
+	ulkID:nil,BulkQuantity:0,SF:80|81|82|83|102|110|111|836|865|888|898,TC:-5,
+	Content:0|15|50|99,EDM:-3,IP:nil,URL:0,File:130,RT:0,Bulk:nil,QS:nil,BEC:n
+	il,COL:0,OSI:0,OSA:0,AV:0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 2,SSN|SDN
+X-CID-BAS: 2,SSN|SDN,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
+X-UUID: 7303dd3ce9f611f1a170bf5142e12a73-20261126
+Received: from mtkmbs13n2.mediatek.inc [(172.21.101.108)] by mailgw02.mediatek.com
+	(envelope-from <michael.shih@mediatek.com>)
+	(musrelay.mediatek.com ESMTP with TLSv1.2 ECDHE-RSA-AES256-GCM-SHA384 256/256)
+	with ESMTP id 2045775528; Thu, 26 Nov 2026 17:06:52 -0700
+Received: from mtkmbs10n2.mediatek.inc (172.21.101.183) by
+ mtkmbs10n1.mediatek.inc (172.21.101.34) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.2562.56; Fri, 27 Nov 2026 08:06:50 +0800
+Received: from SI4PR04CU001.outbound.protection.outlook.com (172.21.101.237)
+ by mtkmbs10n2.mediatek.inc (172.21.101.183) with Microsoft SMTP Server id
+ 15.2.2562.56 via Frontend Transport; Fri, 27 Nov 2026 08:06:50 +0800
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=b0dB7rHjb8ZirQrGvliRYvtBS7r+bOW4EjK4NfHlCB2YkWXyJE7NRJK3dNj3zEvOQ6vcQXHTAf1PsnyY4HnAj83InQxZka1SYJTT0MeF5nYiVRggM/51WmZpqwcBLt6kZ+pyrYqTIz7OOExP87NOzCmKBT1nE7ZzODwX8BlP7BIkrScLq6e8n1VHvqtuQDtz4+9aRoXf4paajNZzPdglz8K4hmjL0rl0qWHtZcgwI3eK65AzlgEviY+5fum2LFxl28Mp8D6veWEtJ9svD7wLINu/Tne6hSYfhhe0pxGPuVY4qfkVyJl8YeaZOtsY1us53F6rFmlH2AwNY8ya9+fstQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=M6G7t75C9om7yZ3s0Cp9MieazeyLPmoODxSGq8PTP5Y=;
+ b=Bk5bsBKs6NdPvQvZVf6mxvrdaEYNYau+An5mKK+9Qs7j9cikIQFTHsgk3hgBS1XdYOXELlEOHnodtUbYw/VGk5ZsrQ8RRv5QCtEySNHeTublh0XPkBsc+KEgaSG4F2WLN58wBgb4/++O0PUiXmX7J/qiemtdxkkBN3AUOMgvpKkYiFg1u8QWnnAi0j1tsz3bRA30SkpswvNKE+DLSS5MBC66wZxAO96QmSNPTOvDza7m5NGrasILor1RV3FO5Pz7ReENvUyYZu1rdcwaiE3+SCnnd1zUVZvP4z7dlyfzxke5R9XhzbBLmSWqIvnw3Qy8mekPWXYffUyZhjIUh98crQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=mediatek.com; dmarc=pass action=none header.from=mediatek.com;
+ dkim=pass header.d=mediatek.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=ndufresne-ca.20260707.gappssmtp.com; s=20260707; t=1795732423; x=1796337223; darn=lists.infradead.org;
-        h=mime-version:user-agent:content-type:autocrypt:references
-         :in-reply-to:date:cc:to:from:subject:message-id:from:to:cc:subject
-         :date:message-id:reply-to:content-type;
-        bh=VAuiL2sK9KgcCNS1LCu1ZR6hGD2zR58kg8DLcx9J16M=;
-        b=QU5T6eVR6U2DN7M+u2GEL7pGG/IhUWzMywHmlTxNEdRpA5ztGDrg8iL/Tr045793gU
-         TRBasWXFfUjieLwhmLLpkEQMNo/7yYsfOU6ZuZ6fWKvA2+IHivvjhB9VxonF1reZhWls
-         te+DstatgIaI8X/WTfUX3HUpuxXKxBP2cotAm1ARBQXDJUJNxpKwMHJ6PLkH0K14s2i6
-         Ev41k3E17QXZPcU5f1umFFugcRITrgLrH6hbmgCmj9/jrVkUQY6apZvr750egY6Hi2Xh
-         pd3bLjO1E1UStZxZEibGmuWMSFuVUVV0Lr33HgqAZdEkVZyDVcz7O8/QpPrk6OPxwndP
-         KynQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1795732423; x=1796337223;
-        h=mime-version:user-agent:content-type:autocrypt:references
-         :in-reply-to:date:cc:to:from:subject:message-id:x-gm-gg
-         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
-         :content-type;
-        bh=VAuiL2sK9KgcCNS1LCu1ZR6hGD2zR58kg8DLcx9J16M=;
-        b=F7b3TLtpd/22cMDIdvxp+Kw1dOHV1kbhnBcGllyhozy1WB2br4B0ezYYsPiHlnoyap
-         hPXSF/+291AaTE37yTKJ3FEAXi2VHDevjsUO0XYEhK/Fu5gnjNF/ffxjHT2ixUDOgfa3
-         GRgi6oDncWxCT8KvVOV7oF1t88YlbgrqcyUE2z+lnHjMiERr7Ju7yl3YDLxBql/HjO6C
-         0q36MvLGMEpUf2SvS036wQmQl2pFin+q5CvOfaVnNrA6k8/SvuKSs5JBJ8xzIDisdrcM
-         NPL2BPrJXiNbaB7yydel3R6YHzbTtkc/pI+wtqitgEpPyAwcME9jxpt0R2PGCeFYDMXK
-         Zx+A==
-X-Forwarded-Encrypted: i=1; AL+hErHp/k0jsj5I/5LpsHqMhZzybw7qA2WpVnZr4pRm/w38RMdILP6ja9G37xtRVLr2BZskx6aBp3Nar4JNBm7mWw==@lists.infradead.org
-X-Gm-Message-State: APuU4Z+mhACqyZLpIRIAmUTsAjvimk2x9qHnmJKDzaUxCdZGEKVrMKov
-	41uNcizLIfsiImGXWtmFIh5vBgOV6ojB9kRHmlMOr86zndjs0SYEaFfzbAEMQwfa49U=
-X-Gm-Gg: AZFdTZd7R6n2SNWNzkLobCS2IA1obokKRY+I4l7MwB8jPaF735CI2NoztYdKQi16ttr
-	fqHyWKxWSHJs8/ySA3qebyKBWVzDft05IrmANMygDeu//jloXYoPlnA4hqPW/6drisuPEyCdpUw
-	taLPKPGHPe9QvKauAYzn3nm/1z8g0a6U3BjZo8H29SrCzDeqOPR6lwSqc+WTCGMBbN0RLp6lfxr
-	pXHfAjSZt6EBwMMFg8qulPFZA9a8hHG2vkfggyQzJ1bn5V5+0HuhSh4o9JGM6AAF11kufDHdO6y
-	fBg3M3RGkyTLE/a9USCZcyus23CLbLYtahM4URZV5KDO7j8oQRFzgf82qhIo4MEV7pnI2mWi6J5
-	AGrGQfsWvh3VJR25ajOahueYzPelGPSCjThTt/a4aHF5vVCPk3gfCvhAUyod7x2BGtKbAIomgVA
-	q/lAu+/X+7Znb66YNHrtV0pou5+TasWIRdsfDb5PQH3k+b+GwF/FQAA5CrZ9UtP0q+x7l8n1/II
-	3Ic/u2MFwGWzEyCajQKWiccsiZDBoLHe5HRG4q7+X2yOQrUJJNT8wdLZQZFi4yvvJrKz0XiVhkK
-	f8g+MhOXE3FD5Dx0LQ/zI0d7gprwsqLMO4CyfBDTlcM0rHpeE+FpmGQ=
-X-Received: by 2002:a05:620a:459f:b0:948:48b8:6736 with SMTP id af79cd13be357-949ba965a61mr3942304285a.16.1795732422570;
-        Thu, 26 Nov 2026 14:33:42 -0800 (PST)
-Received: from ?IPv6:2606:6d00:11:8ec9::c41? ([2606:6d00:11:8ec9::c41])
-        by smtp.gmail.com with ESMTPSA id af79cd13be357-949bb41a341sm1681380685a.37.2026.11.26.14.33.41
-        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Thu, 26 Nov 2026 14:33:41 -0800 (PST)
-Message-ID: <c0fc91738531352473bb7c830c4a1b6fb928bf60.camel@ndufresne.ca>
-Subject: Re: [PATCH] media: mediatek: mdp3: Fix potential use-after-free on
- SCP removal
-From: Nicolas Dufresne <nicolas@ndufresne.ca>
-To: Guangshuo Li <liguangshuo@mail.sdu.edu.cn>, Mauro Carvalho Chehab	
- <mchehab@kernel.org>, Matthias Brugger <matthias.bgg@gmail.com>, 
- AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>, Moudy
- Ho <moudy.ho@mediatek.com>
-Cc: linux-media@vger.kernel.org, linux-kernel@vger.kernel.org, 
-	linux-arm-kernel@lists.infradead.org, linux-mediatek@lists.infradead.org
-Date: Thu, 26 Nov 2026 17:33:40 -0500
-In-Reply-To: <20261107-0d0c29e10a-media-mediatek-mdp3-1@mail.sdu.edu.cn>
-References: <20261107-0d0c29e10a-media-mediatek-mdp3-1@mail.sdu.edu.cn>
-Autocrypt: addr=nicolas@ndufresne.ca; prefer-encrypt=mutual;
- keydata=mDMEaCN2ixYJKwYBBAHaRw8BAQdAM0EHepTful3JOIzcPv6ekHOenE1u0vDG1gdHFrChD
- /e0J05pY29sYXMgRHVmcmVzbmUgPG5pY29sYXNAbmR1ZnJlc25lLmNhPoicBBMWCgBEAhsDBQsJCA
- cCAiICBhUKCQgLAgQWAgMBAh4HAheABQkJZfd1FiEE7w1SgRXEw8IaBG8S2UGUUSlgcvQFAmibrjo
- CGQEACgkQ2UGUUSlgcvQlQwD/RjpU1SZYcKG6pnfnQ8ivgtTkGDRUJ8gP3fK7+XUjRNIA/iXfhXMN
- abIWxO2oCXKf3TdD7aQ4070KO6zSxIcxgNQFtDFOaWNvbGFzIER1ZnJlc25lIDxuaWNvbGFzLmR1Z
- nJlc25lQGNvbGxhYm9yYS5jb20+iJkEExYKAEECGwMFCwkIBwICIgIGFQoJCAsCBBYCAwECHgcCF4
- AWIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCaCyyxgUJCWX3dQAKCRDZQZRRKWBy9ARJAP96pFmLffZ
- smBUpkyVBfFAf+zq6BJt769R0al3kHvUKdgD9G7KAHuioxD2v6SX7idpIazjzx8b8rfzwTWyOQWHC
- AAS0LU5pY29sYXMgRHVmcmVzbmUgPG5pY29sYXMuZHVmcmVzbmVAZ21haWwuY29tPoiZBBMWCgBBF
- iEE7w1SgRXEw8IaBG8S2UGUUSlgcvQFAmibrGYCGwMFCQll93UFCwkIBwICIgIGFQoJCAsCBBYCAw
- ECHgcCF4AACgkQ2UGUUSlgcvRObgD/YnQjfi4+L8f4fI7p1pPMTwRTcaRdy6aqkKEmKsCArzQBAK8
- bRLv9QjuqsE6oQZra/RB4widZPvphs78H0P6NmpIJ
-Content-Type: multipart/signed; micalg="pgp-sha512";
-	protocol="application/pgp-signature"; boundary="=-Wo+4Av8llfy936qRJ+9C"
-User-Agent: Evolution 3.62.1 (3.62.1-1.fc45) 
+ d=mediateko365.onmicrosoft.com; s=selector2-mediateko365-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=M6G7t75C9om7yZ3s0Cp9MieazeyLPmoODxSGq8PTP5Y=;
+ b=qhzOZS6QwzH0yPR4mLqWfsLQQ4XLB5L3ZbV+ho1+pTPr3nQrLA66iL9MEDQKliO8lRfyaCoPmmrCPTr5D/Gp/D3lsSz5ZMBm4iUuEotdiHUFsCFHYUZu3nVQKgGQ/kcwsGkHlSh1/5h8aQU7QPbf3K1VFQwOOrAy+mT2OjCWnHw=
+Received: from TYZPR03MB5742.apcprd03.prod.outlook.com (2603:1096:400:8f::9)
+ by SG2PR03MB6684.apcprd03.prod.outlook.com with HTTP via P2P; Fri, 27 Nov
+ 2026 00:06:45 +0000
+Received: from TYZPR03MB5742.apcprd03.prod.outlook.com
+ ([fe80::ffd:f333:4ece:dfbc]) by TYZPR03MB5742.apcprd03.prod.outlook.com
+ ([fe80::ffd:f333:4ece:dfbc%5]) with mapi id 15.21.0662.007; Fri, 27 Nov 2026
+ 00:06:45 +0000
+From: =?utf-8?B?TWljaGFlbCBTaGloICjlj7LlkJvku7Ip?= <Michael.Shih@mediatek.com>
+To: "nbd@nbd.name" <nbd@nbd.name>, "lorenzo@kernel.org" <lorenzo@kernel.org>
+CC: =?utf-8?B?RWFzb24gTGFpICjos7TmmJPogZYp?= <Eason.Lai@mediatek.com>,
+	=?utf-8?B?S3VuIFd1ICjlkLPorLnoh7Mp?= <kun.wu@mediatek.com>, Ryder Lee
+	<Ryder.Lee@mediatek.com>, =?utf-8?B?UXVhbiBaaG91ICjlkajlhagp?=
+	<Quan.Zhou@mediatek.com>, =?utf-8?B?RGVyZW4gV3UgKOatpuW+t+S7gSk=?=
+	<Deren.Wu@mediatek.com>, =?utf-8?B?TGl0aWVuIENoYW5nICjlvLXnq4vlhbgp?=
+	<Litien.Chang@mediatek.com>, "linux-wireless@vger.kernel.org"
+	<linux-wireless@vger.kernel.org>, Sean Wang <Sean.Wang@mediatek.com>,
+	=?utf-8?B?TGVvbiBZZW4gKOmhj+iJr+WEkik=?= <Leon.Yen@mediatek.com>,
+	"linux-mediatek@lists.infradead.org" <linux-mediatek@lists.infradead.org>,
+	=?utf-8?B?SkIgVHNhaSAo6JSh5b+X5b2sKQ==?= <Jb.Tsai@mediatek.com>
+Subject: Re: [PATCH v6 2/2] wifi: mt76: mt7925: support per-channel survey
+ dump during scan
+Thread-Topic: [PATCH v6 2/2] wifi: mt76: mt7925: support per-channel survey
+ dump during scan
+Thread-Index: AQHddkNbL6a1le0dXki/MD03jnFH/bc+1DIAgAJFpYA=
+Date: Fri, 27 Nov 2026 00:06:44 +0000
+Message-ID: <a865eaf5c06a8f8953313e62c074d0a2e1cfd621.camel@mediatek.com>
+References: <20261112075558.1813785-2-michael.shih@mediatek.com>
+	 <20261117032530.470475-1-michael.shih@mediatek.com>
+	 <20261117032530.470475-3-michael.shih@mediatek.com>
+	 <2ea4dc91-9235-4b54-ad7e-0fcefcb933e5@nbd.name>
+In-Reply-To: <2ea4dc91-9235-4b54-ad7e-0fcefcb933e5@nbd.name>
+Accept-Language: zh-TW, en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-ms-traffictypediagnostic: TYZPR03MB5742:EE_|SG2PR03MB6684:EE_
+x-ms-publictraffictype: Email
+client-request-id: e5de864b-8ee0-4e77-9c58-8afab3c653f4
+request-id: 7085ecac-ae15-4bd9-7309-08df4c1a52b0
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;ARA:13230040|376014|1800799024|366016|11063799006|4143699003|18002099003|22082099003|56012099006|10067099003|261022105027099003|261028144727099003|261026121527099003|261026140227099003;
+x-microsoft-antispam-message-info: x4Mdhxs4F6UhRf0W9al6MMweYIF2zXyZ0N4DO3bic05/G/QRqJVdupcaIIdkAxqpzkxACh2fXmxuvZGx4QfVL1LeHrpFQCFXTkTV3rKw/UFDaRMfOtFsj+31QbTZTY0U6K/dqKNC+WMuWCYBtia3Bl1i0xVlejyrqRXgM80hLyh+nt0vm47+wqy91uS9WEd7XMt1OwQTYAb65kKDe+56gliNfWlpQh2F7QDjAShnOAb8k1EQmaFI/3RwZ+32yvqumb6rk/F3KgqERAFzMU1qSacvrWYjR1nnwVxSNthYVQQ0xa8KmNF+ufgIrQAuS0juF6CDUoKNAbPUFxUSpbpagaF3w9Z1qX4EbYm9m6NQ0jZQX6TCUHpRQv/7TKfpLji7N1Z/goHTmHQfC0/Xn1p5NsUxFz9RvA2X3izxK+uOwsroS7Fgwemk+8U8AJjy30TDB9YWW7YnMNQiS324yXcPswFID9Zv2uyacmrYbrQD81ZeN24xTDkCVpoqel7O0kKb2HBiqUp3usVnDO5AJf4+vYeTxyAlv4NOXkoybATyHnOLYlxvJjbjCaLJwN6F10ewQkxkRPVlQOR/ECD8clhoLFu5qi2y87AdyN5iJHkPOekhwvguEAVpNyTPTUwKNkWoqQE07R659OgVvmLzv5+S0qF0zmBNK/kfQueEE9ABXyg=
+x-forefront-antispam-report: CIP:255.255.255.255;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:;PTR:;CAT:NONE;SFS:(13230040)(376014)(1800799024)(366016)(11063799006)(4143699003)(18002099003)(22082099003)(56012099006)(10067099003)(261022105027099003)(261028144727099003)(261026121527099003)(261026140227099003);DIR:OUT;SFP:1101;
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?utf-8?B?VVdQVzFLZXhFQi96MWlkT0RVU0syRFNCMy95b09CeTlCWmhmTEI0REhpQXkr?=
+ =?utf-8?B?OTdtTFJUQ1RuRjgwZEV4MElyL3UrcStodUE1L0gvWWFmbzh6dTFtS1l2eVJl?=
+ =?utf-8?B?K1Y0enhBQ3dVcWVBSWJPb2Z3VVJUTndsTDMvMWphY3VmRUgyNTlIVS9sMkpF?=
+ =?utf-8?B?VVo3c24zWTYxZ0hOb2cxTEQ1VGk2UllGV2YwMjc2REVseUMrVkJaOUdOOGQ2?=
+ =?utf-8?B?NTlSVWFGL28wSGV5dmh0eTZwME00czlZSEpVZUUvYXNGZ3VNbERmTWFsMzEw?=
+ =?utf-8?B?cEwxNkxFZjU4cng2NFJPUEZPRWtuNUNlQXB3VXB6b3R4cCtEbkRHS0s3a3Jj?=
+ =?utf-8?B?bmlqeWJoY1hTbWpZV0lNc0NuWVVtSnZwLzl2bEtVUTljNzZubS8xUzRFTDls?=
+ =?utf-8?B?QllzQSs3N09GdHpVTUVWNFNkdTIwSUw5V2NBNk1NUHZVOEkyYSs2QjhFVnhP?=
+ =?utf-8?B?Y2R0NlNzbzQvTU9qaGd5dytRWGZzc0R6K2QyMzI1Z3haMGZmZkhFU0tOMFRo?=
+ =?utf-8?B?eGhMR256MzNXR0VnT1dZRTFEZWpndnFsZkNKS0EyV1RiZnVUc0dRMXpMUldt?=
+ =?utf-8?B?VjNsWEJtRTFML0hmRnNScjRqZzB3UXdIMmxaQWJNZks2L1NUU0VjM3VPQy9W?=
+ =?utf-8?B?RThOUTNjWU1rQkNHbzF4ZlIraGRmTHk3QzdFVEgwRDJjRTI3RzkyY01LVytk?=
+ =?utf-8?B?Z3NkSlluSmlHL3F4WXlVYnc4YlJxbUhOQUZZaEhHOGZneEhFaGZIdG5BekMx?=
+ =?utf-8?B?bkJVL2ZkYTdVaWhNNEJyOExvRDNZaEVVR1RmVGFYQVZ0V2U5U01ZV1BuU0ph?=
+ =?utf-8?B?OTFhc0lKait4QTY0VDhzazhyeHVCZlpnY3NvSlZXdDBzcXRWRWwwNEhHZW1Y?=
+ =?utf-8?B?VFRxTVhQbHNSTmlmSE90Sk4xNkNFR1AzOG41bWVEbWZPMUUxYlVHN0h5M3ZW?=
+ =?utf-8?B?QndGL2pKNGlzZ0NlWjN5bll2VE1Db2lXSzlzZ2k0RUJpRmVoKzUwOUQyWU5W?=
+ =?utf-8?B?cXFJRGJOaXhJazgzOGFRUTlPRVM4UjdPVzdCWW5EL3dmS0NJRkJZQm9CaUdV?=
+ =?utf-8?B?anVCdEZ1Z0kvb2p6KzhNTEJPL0ZmaStiM1dza2xXZFRQaUhxZGltL2lsZldh?=
+ =?utf-8?B?TnFFemwrbFprQi9iTmoycnc1Z2tXYXUrU0Q1Z3I0NDBXdEw5YWFkVGl6UWNB?=
+ =?utf-8?B?S0RBV3Y0SXdCRnBOMG1hd2J6dzJjT3Iza3ErRytHVVBzeHNzQ2J0K3JQNFMz?=
+ =?utf-8?B?ZWM5RzVLcUl0TWRXbm5zZDhsT1AyOGdkREt4OFF1bDhkbi9lQkk1VnVLTkgy?=
+ =?utf-8?B?K3ZDS2xYelE3Yzc0OUhjOU4yZnNjS25kc2V0aVdGbEkrYVJ4b2VTdkFPcDBj?=
+ =?utf-8?B?RzBPbTZiaVBVWkVtZmduYTZFK2ZpSEV1amlDQXQ1Snk4L2QrSU1FTmV3ajhM?=
+ =?utf-8?B?djNDZjh1TGNjU05GTEJIcUtEUHlhcGdFbmh3U1ZJWWpUUlIwS1lKTGE4b0Fr?=
+ =?utf-8?B?SS9odlNMaDJKREdLS3oyaktpZHJQYXNKYzNnbTJXcUFZUStNeDd3NHRRakxv?=
+ =?utf-8?B?Zy9mUWtOZ3JyVnA2VUN6a3NKVFBNeEFzT0NJZkRyRzVJV3I0YllqTmtlblhU?=
+ =?utf-8?B?KzBWaXZYR0pYcnUwTEZyRXJjY0ZmMU1GdFpZZmtLQ2hkTi80U21zVVM4blpD?=
+ =?utf-8?B?QjNYOUhnRkx2RFdHZ2lsNHR5aTIvbnJFeVNQZ0YrZFJUYXdxTERvMlhTTDZQ?=
+ =?utf-8?B?UlB2cU8ydG0zQ2Y0MkZCOTRIdHlNSFJ0cEFJUlZaQU43T0NBVFRWaWQ3ckk5?=
+ =?utf-8?B?WjYwTTRxVCt2S3MzZEVyNDNxekNBeVp0TmZLajYrYzArQjRUbll4ZFYwRHk1?=
+ =?utf-8?B?TEhJUnl3MDhDWURZa0R5a2xhdWMwOXZuWFdORUMxbWZFUWxaTURmR2FLSjFi?=
+ =?utf-8?B?WkgwZVZGYWNpY2l6MWpMbHBPendRRE1Qd3lVRFlDTlFKM1Q5VUpjbnRoNFFW?=
+ =?utf-8?B?bFVLalhlcExnL2M0R1JwQk9lczM4RzBRVTBCZ1dtWmFKVHFRZ3lBQXZnK1dy?=
+ =?utf-8?B?ZUJweUprelVOM0FkNjZIbnQ3T2xva0NtWGJ2U3pwMm16QVdIaTRUc1ZNYmlH?=
+ =?utf-8?B?eWVKQjFudDZKeS9sRVhONTM0Z21oTHRDeE04SCtQQWxqRU9tYWd3MlRWQUNN?=
+ =?utf-8?B?U004T1M4TUFTK2JERkl5NDNUSTdQSGJBWFVnSFZLbEViYW81Z2NnMzIwTzUw?=
+ =?utf-8?B?amFCWkdzTUtPd042QVV0RTNrZmM3MGIvWEQ5SlZvNzkrb2pxN0pMQnNLRGND?=
+ =?utf-8?B?Z1lUYnpxTjRoV2tBdXN6WUgwY25nd01POWNDUVZHUy9NYi9qWHBFWm4rc3ZH?=
+ =?utf-8?Q?Jm2Im2FY4e87OhrQ=3D?=
+Content-Type: text/plain; charset="utf-8"
+Content-ID: <A53733EABD96EC44AD871F8CDDFF0E18@apcprd03.prod.outlook.com>
+Content-Transfer-Encoding: base64
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
+X-Exchange-RoutingPolicyChecked: Tx7pco6SB3y/+A/8cBQA2DX57ZnDHhlq+cT5+equpVhFHWlkTn2CYsSAcQ81/xLpmQGCU/A77BC3vN7FapCTa9SokSapyTO9Xi6aPstsEtl5OsLMICKKyOFOv1gdZf+jf+hLV+WNN0LUwVcx4NNW0H2qC2SbE1HE01krgGPz23g6r/J1fMw+vZpjxB2iPDDV9V7Aim5pOc5vIWy8xjPtVbPSLFYp3hpPSeX9DtoZW6SG+E7/6Yek6TDUNGfN5Uk/y5J1l/1VrIbP6bSaBkKFBoiYJPKmNU/rCfM4V2VxRtI4U5Z4gqQKccuXiEjtazWrIhG5MgE6uARzSvL0M5Qm5Q==
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: TYZPR03MB5742.apcprd03.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 7085ecac-ae15-4bd9-7309-08df4c1a52b0
+X-MS-Exchange-CrossTenant-originalarrivaltime: 27 Nov 2026 00:06:44.9835
+ (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: a7687ede-7a6b-4ef6-bace-642f677fbe31
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: BxHNBXQ3zpImfKMWXGVW9Gf3zrb57l93oxLladW/RsOPyOsv28rRwAVLhr5ddAcOwvEgQjXj89tmZ2WedzJFM8bfKgmZetMgv79dG+lp0x0=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SG2PR03MB6684
+X-MTK: N
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261126_143343_996598_C0323514 
-X-CRM114-Status: GOOD (  21.48  )
-X-Spam-Score: -1.9 (-)
+X-CRM114-CacheID: sfid-20261126_160659_679840_B1564105 
+X-CRM114-Status: GOOD (  11.28  )
+X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -119,377 +189,28 @@ List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-13.9 required=3.0 tests=BAYES_00,DKIM_SIGNED,
-	DKIM_VALID,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_NONE,
-	SPF_PASS autolearn=ham autolearn_force=no version=4.0.1
+X-Spam-Status: No, score=-5.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
+	DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,HEADER_FROM_DIFFERENT_DOMAINS,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,UNPARSEABLE_RELAY
+	autolearn=no autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
---=-Wo+4Av8llfy936qRJ+9C
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-Hi,
-
-
-Le samedi 07 novembre 2026 =C3=A0 14:54 +0800, Guangshuo Li a =C3=A9crit=C2=
-=A0:
-> MDP contexts can outlive the SCP driver whose data they use for VPU
-> teardown. Unregistering only the V4L2 parent neither disconnects the
-> video node nor finishes these sessions.
->=20
-> Link MDP to SCP and disconnect the video node before draining jobs and
-> closing every VPU session. Release hardware dependencies during remove,
-> while retaining the software state for the last open file. Balance the
-> remoteproc references on session shutdown and failed initialization.
->=20
-> This issue was found by our static analysis tool under development.
->=20
-> Fixes: 61890ccaefaf ("media: platform: mtk-mdp3: add MediaTek MDP3 driver=
-")
-> Signed-off-by: Guangshuo Li <liguangshuo@mail.sdu.edu.cn>
-
-Moudy, can you help with review please. Meanwhile there is enough sashiko
-complaints for me to skip.
-
-Nicolas
-
-> ---
-> Validation: Changed-object compilation passed with W=3D1 in the recorded
-> configuration. No hardware/kernel runtime test or full linked-kernel
-> build.
-> OpenAI Codex assisted with source review, patch implementation and
-> commit-message drafting. The submitter has reviewed the changes.
->=20
->  .../platform/mediatek/mdp3/mtk-mdp3-core.c    | 84 ++++++++++++++-----
->  .../platform/mediatek/mdp3/mtk-mdp3-core.h    |  1 +
->  .../platform/mediatek/mdp3/mtk-mdp3-m2m.c     | 34 ++++++--
->  .../platform/mediatek/mdp3/mtk-mdp3-m2m.h     |  3 +-
->  .../platform/mediatek/mdp3/mtk-mdp3-vpu.c     |  2 +-
->  5 files changed, 96 insertions(+), 28 deletions(-)
->=20
-> diff --git a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.c b/drive=
-rs/media/platform/mediatek/mdp3/mtk-mdp3-core.c
-> index f412aadb5996..9fe42181a08c 100644
-> --- a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.c
-> +++ b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.c
-> @@ -108,6 +108,7 @@ int mdp_vpu_get_locked(struct mdp_dev *mdp)
->  err_init_vpu:
->  =09mdp_vpu_unregister(mdp);
->  err_reg_vpu:
-> +=09rproc_shutdown(mdp->rproc_handle);
->  err_load_vpu:
->  =09mdp->vpu_count--;
->  =09return ret;
-> @@ -118,19 +119,24 @@ void mdp_vpu_put_locked(struct mdp_dev *mdp)
->  =09if (--mdp->vpu_count =3D=3D 0) {
->  =09=09mdp_vpu_dev_deinit(&mdp->vpu);
->  =09=09mdp_vpu_unregister(mdp);
-> +=09=09rproc_shutdown(mdp->rproc_handle);
->  =09}
->  }
-> =20
-> -void mdp_video_device_release(struct video_device *vdev)
-> +static void mdp_hardware_cleanup(struct mdp_dev *mdp)
->  {
-> -=09struct mdp_dev *mdp =3D (struct mdp_dev *)video_get_drvdata(vdev);
->  =09int i;
-> =20
-> +=09flush_workqueue(mdp->job_wq);
-> +=09flush_workqueue(mdp->clock_wq);
-> +
->  =09for (i =3D 0; i < mdp->mdp_data->pp_used; i++)
->  =09=09if (mdp->cmdq_clt[i])
->  =09=09=09cmdq_mbox_destroy(mdp->cmdq_clt[i]);
-> =20
-> +=09mdp_vpu_shared_mem_free(&mdp->vpu);
->  =09scp_put(mdp->scp);
-> +=09mdp->scp =3D NULL;
-> =20
->  =09destroy_workqueue(mdp->job_wq);
->  =09destroy_workqueue(mdp->clock_wq);
-> @@ -151,10 +157,16 @@ void mdp_video_device_release(struct video_device *=
-vdev)
->  =09=09if (!IS_ERR_OR_NULL(m))
->  =09=09=09mtk_mutex_put(m);
->  =09}
-> +}
-> +
-> +void mdp_video_device_release(struct video_device *vdev)
-> +{
-> +=09struct mdp_dev *mdp =3D video_get_drvdata(vdev);
-> =20
-> -=09mdp_vpu_shared_mem_free(&mdp->vpu);
->  =09v4l2_m2m_release(mdp->m2m_dev);
-> +=09ida_destroy(&mdp->mdp_ida);
->  =09kfree(mdp);
-> +=09video_device_release(vdev);
->  }
-> =20
->  static void mdp_put_device(void *_dev)
-> @@ -213,11 +225,45 @@ static int mdp_mm_subsys_deploy(struct mdp_dev *mdp=
-, enum mdp_infra_id id)
->  =09return 0;
->  }
-> =20
-> +static int mdp_get_scp(struct mdp_dev *mdp)
-> +{
-> +=09struct device_node *node;
-> +=09struct platform_device *scp_pdev;
-> +=09struct device_link *link;
-> +=09int ret =3D -EPROBE_DEFER;
-> +
-> +=09node =3D of_parse_phandle(mdp->pdev->dev.of_node, "mediatek,scp", 0);
-> +=09if (node) {
-> +=09=09scp_pdev =3D of_find_device_by_node(node);
-> +=09=09of_node_put(node);
-> +=09} else {
-> +=09=09scp_pdev =3D __get_pdev_by_id(mdp->pdev, NULL, MDP_INFRA_SCP);
-> +=09}
-> +=09if (!scp_pdev)
-> +=09=09return -EPROBE_DEFER;
-> +
-> +=09link =3D device_link_add(&mdp->pdev->dev, &scp_pdev->dev,
-> +=09=09=09       DL_FLAG_AUTOREMOVE_CONSUMER);
-> +=09if (!link) {
-> +=09=09ret =3D -ENOMEM;
-> +=09=09goto err_put;
-> +=09}
-> +=09if (!device_is_bound(&scp_pdev->dev))
-> +=09=09goto err_put;
-> +
-> +=09mdp->scp =3D platform_get_drvdata(scp_pdev);
-> +=09if (mdp->scp)
-> +=09=09return 0;
-> +
-> +err_put:
-> +=09put_device(&scp_pdev->dev);
-> +=09return ret;
-> +}
-> +
->  static int mdp_probe(struct platform_device *pdev)
->  {
->  =09struct device *dev =3D &pdev->dev;
->  =09struct mdp_dev *mdp;
-> -=09struct platform_device *mm_pdev;
->  =09struct resource *res;
->  =09int ret, i, mutex_id;
-> =20
-> @@ -285,27 +331,16 @@ static int mdp_probe(struct platform_device *pdev)
->  =09=09goto err_destroy_job_wq;
->  =09}
-> =20
-> -=09mdp->scp =3D scp_get(pdev);
-> -=09if (!mdp->scp) {
-> -=09=09mm_pdev =3D __get_pdev_by_id(pdev, NULL, MDP_INFRA_SCP);
-> -=09=09if (WARN_ON(!mm_pdev)) {
-> -=09=09=09dev_err(&pdev->dev, "Could not get scp device\n");
-> -=09=09=09ret =3D -ENODEV;
-> -=09=09=09goto err_destroy_clock_wq;
-> -=09=09}
-> -=09=09mdp->scp =3D platform_get_drvdata(mm_pdev);
-> -=09}
-> -
-> -=09if (!mdp->scp) {
-> -=09=09ret =3D -EPROBE_DEFER;
-> +=09ret =3D mdp_get_scp(mdp);
-> +=09if (ret)
->  =09=09goto err_destroy_clock_wq;
-> -=09}
-> =20
->  =09mdp->rproc_handle =3D scp_get_rproc(mdp->scp);
->  =09dev_dbg(&pdev->dev, "MDP rproc_handle: %p", mdp->rproc_handle);
-> =20
->  =09mutex_init(&mdp->vpu_lock);
->  =09mutex_init(&mdp->m2m_lock);
-> +=09INIT_LIST_HEAD(&mdp->contexts);
-> =20
->  =09for (i =3D 0; i < mdp->mdp_data->pp_used; i++) {
->  =09=09mdp->cmdq_clt[i] =3D cmdq_mbox_create(dev, i);
-> @@ -373,10 +408,19 @@ static int mdp_probe(struct platform_device *pdev)
->  static void mdp_remove(struct platform_device *pdev)
->  {
->  =09struct mdp_dev *mdp =3D platform_get_drvdata(pdev);
-> +=09struct video_device *vdev =3D mdp->m2m_vdev;
-> =20
-> -=09v4l2_device_unregister(&mdp->v4l2_dev);
-> +=09if (!vdev) {
-> +=09=09kfree(mdp);
-> +=09=09return;
-> +=09}
-> =20
-> -=09dev_dbg(&pdev->dev, "%s driver unloaded\n", pdev->name);
-> +=09/* Keep the software state until removal and all open files finish. *=
-/
-> +=09get_device(&vdev->dev);
-> +=09mdp_m2m_device_unregister(mdp);
-> +=09mdp_hardware_cleanup(mdp);
-> +=09v4l2_device_unregister(&mdp->v4l2_dev);
-> +=09put_device(&vdev->dev);
->  }
-> =20
->  static int __maybe_unused mdp_suspend(struct device *dev)
-> diff --git a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.h b/drive=
-rs/media/platform/mediatek/mdp3/mtk-mdp3-core.h
-> index 05cade1d098e..cf9662bd2792 100644
-> --- a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.h
-> +++ b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-core.h
-> @@ -134,6 +134,7 @@ struct mdp_dev {
->  =09struct v4l2_m2m_dev=09=09=09*m2m_dev;
->  =09/* synchronization protect for m2m device operation */
->  =09struct mutex=09=09=09=09m2m_lock;
-> +=09struct list_head=09=09=09contexts;
->  =09atomic_t=09=09=09=09suspended;
->  =09refcount_t=09=09=09=09job_count;
->  };
-> diff --git a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-m2m.c b/driver=
-s/media/platform/mediatek/mdp3/mtk-mdp3-m2m.c
-> index ad3ae89c231c..ce0efe15866d 100644
-> --- a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-m2m.c
-> +++ b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-m2m.c
-> @@ -490,7 +490,7 @@ static int mdp_m2m_queue_init(void *priv,
->  =09src_vq->buf_struct_size =3D sizeof(struct v4l2_m2m_buffer);
->  =09src_vq->timestamp_flags =3D V4L2_BUF_FLAG_TIMESTAMP_COPY;
->  =09src_vq->dev =3D &ctx->mdp_dev->pdev->dev;
-> -=09src_vq->lock =3D &ctx->ctx_lock;
-> +=09src_vq->lock =3D &ctx->mdp_dev->m2m_lock;
-> =20
->  =09ret =3D vb2_queue_init(src_vq);
->  =09if (ret)
-> @@ -504,7 +504,7 @@ static int mdp_m2m_queue_init(void *priv,
->  =09dst_vq->buf_struct_size =3D sizeof(struct v4l2_m2m_buffer);
->  =09dst_vq->timestamp_flags =3D V4L2_BUF_FLAG_TIMESTAMP_COPY;
->  =09dst_vq->dev =3D &ctx->mdp_dev->pdev->dev;
-> -=09dst_vq->lock =3D &ctx->ctx_lock;
-> +=09dst_vq->lock =3D &ctx->mdp_dev->m2m_lock;
-> =20
->  =09return vb2_queue_init(dst_vq);
->  }
-> @@ -577,6 +577,11 @@ static int mdp_m2m_open(struct file *file)
->  =09=09goto err_free_ctx;
->  =09}
-> =20
-> +=09if (!video_is_registered(vdev)) {
-> +=09=09ret =3D -ENODEV;
-> +=09=09goto err_unlock_mutex;
-> +=09}
-> +
->  =09ret =3D ida_alloc(&mdp->mdp_ida, GFP_KERNEL);
->  =09if (ret < 0)
->  =09=09goto err_unlock_mutex;
-> @@ -593,7 +598,6 @@ static int mdp_m2m_open(struct file *file)
->  =09ctx->fh.ctrl_handler =3D &ctx->ctrl_handler;
->  =09v4l2_fh_add(&ctx->fh, file);
-> =20
-> -=09mutex_init(&ctx->ctx_lock);
->  =09ctx->m2m_ctx =3D v4l2_m2m_ctx_init(mdp->m2m_dev, ctx, mdp_m2m_queue_i=
-nit);
->  =09if (IS_ERR(ctx->m2m_ctx)) {
->  =09=09dev_err(dev, "Failed to initialize m2m context\n");
-> @@ -609,8 +613,6 @@ static int mdp_m2m_open(struct file *file)
->  =09=09goto err_release_m2m_ctx;
->  =09}
-> =20
-> -=09mutex_unlock(&mdp->m2m_lock);
-> -
->  =09/* Default format */
->  =09default_format.type =3D V4L2_BUF_TYPE_VIDEO_OUTPUT_MPLANE;
->  =09default_format.fmt.pix_mp.width =3D limit->out_limit.wmin;
-> @@ -620,6 +622,9 @@ static int mdp_m2m_open(struct file *file)
->  =09default_format.type =3D V4L2_BUF_TYPE_VIDEO_CAPTURE_MPLANE;
->  =09mdp_m2m_s_fmt_mplane(file, &ctx->fh, &default_format);
-> =20
-> +=09list_add_tail(&ctx->list, &mdp->contexts);
-> +=09mutex_unlock(&mdp->m2m_lock);
-> +
->  =09dev_dbg(dev, "%s:[%d]", __func__, ctx->id);
-> =20
->  =09return 0;
-> @@ -647,6 +652,7 @@ static int mdp_m2m_release(struct file *file)
->  =09struct device *dev =3D &mdp->pdev->dev;
-> =20
->  =09mutex_lock(&mdp->m2m_lock);
-> +=09list_del(&ctx->list);
->  =09v4l2_m2m_ctx_release(ctx->m2m_ctx);
->  =09if (mdp_m2m_ctx_is_state_set(ctx, MDP_VPU_INIT))
->  =09=09mdp_vpu_put_locked(mdp);
-> @@ -727,7 +733,25 @@ int mdp_m2m_device_register(struct mdp_dev *mdp)
-> =20
->  void mdp_m2m_device_unregister(struct mdp_dev *mdp)
->  {
-> +=09struct mdp_m2m_ctx *ctx;
-> +
-> +=09mutex_lock(&mdp->m2m_lock);
->  =09video_unregister_device(mdp->m2m_vdev);
-> +=09v4l2_m2m_suspend(mdp->m2m_dev);
-> +
-> +=09list_for_each_entry(ctx, &mdp->contexts, list) {
-> +=09=09vb2_queue_error(v4l2_m2m_get_src_vq(ctx->m2m_ctx));
-> +=09=09vb2_queue_error(v4l2_m2m_get_dst_vq(ctx->m2m_ctx));
-> +=09=09v4l2_m2m_streamoff(NULL, ctx->m2m_ctx,
-> +=09=09=09=09   V4L2_BUF_TYPE_VIDEO_OUTPUT_MPLANE);
-> +=09=09v4l2_m2m_streamoff(NULL, ctx->m2m_ctx,
-> +=09=09=09=09   V4L2_BUF_TYPE_VIDEO_CAPTURE_MPLANE);
-> +=09=09if (mdp_m2m_ctx_is_state_set(ctx, MDP_VPU_INIT)) {
-> +=09=09=09mdp_vpu_put_locked(mdp);
-> +=09=09=09atomic_andnot(MDP_VPU_INIT, &ctx->curr_param.state);
-> +=09=09}
-> +=09}
-> +=09mutex_unlock(&mdp->m2m_lock);
->  }
-> =20
->  void mdp_m2m_job_finish(struct mdp_m2m_ctx *ctx)
-> diff --git a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-m2m.h b/driver=
-s/media/platform/mediatek/mdp3/mtk-mdp3-m2m.h
-> index dfc59e5b3b87..f473f5f20aa2 100644
-> --- a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-m2m.h
-> +++ b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-m2m.h
-> @@ -27,6 +27,7 @@ struct mdp_m2m_ctrls {
->  };
-> =20
->  struct mdp_m2m_ctx {
-> +=09struct list_head=09=09=09list;
->  =09u32=09=09=09=09id;
->  =09struct mdp_dev=09=09=09*mdp_dev;
->  =09struct v4l2_fh=09=09=09fh;
-> @@ -36,8 +37,6 @@ struct mdp_m2m_ctx {
->  =09u32=09=09=09=09frame_count[MDP_M2M_MAX];
-> =20
->  =09struct mdp_frameparam=09=09curr_param;
-> -=09/* synchronization protect for mdp m2m context */
-> -=09struct mutex=09=09=09ctx_lock;
->  };
-> =20
->  int mdp_m2m_device_register(struct mdp_dev *mdp);
-> diff --git a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-vpu.c b/driver=
-s/media/platform/mediatek/mdp3/mtk-mdp3-vpu.c
-> index 67f3001153ae..c1fd639930e5 100644
-> --- a/drivers/media/platform/mediatek/mdp3/mtk-mdp3-vpu.c
-> +++ b/drivers/media/platform/mediatek/mdp3/mtk-mdp3-vpu.c
-> @@ -62,7 +62,7 @@ void mdp_vpu_shared_mem_free(struct mdp_vpu_dev *vpu)
->  {
->  =09struct device *dev;
-> =20
-> -=09if (IS_ERR_OR_NULL(vpu))
-> +=09if (IS_ERR_OR_NULL(vpu) || !vpu->scp)
->  =09=09return;
-> =20
->  =09dev =3D scp_get_device(vpu->scp);
->=20
-> base-commit: 05441d697f7f9a927264f4058cbbc6a03dfcac9d
-
---=-Wo+4Av8llfy936qRJ+9C
-Content-Type: application/pgp-signature; name="signature.asc"
-Content-Description: This is a digitally signed message part
-
------BEGIN PGP SIGNATURE-----
-
-iHUEABYKAB0WIQTvDVKBFcTDwhoEbxLZQZRRKWBy9AUCawizxAAKCRDZQZRRKWBy
-9HTSAQCdw6kGRzy5B9+zXqQyV6Ynggd/rTVkgWVWQNpWAi2INgEAnB8jCbkkM0v6
-MPp3EnFDNhhmxlGQsiF3CnGD5qAX7gA=
-=PsR4
------END PGP SIGNATURE-----
-
---=-Wo+4Av8llfy936qRJ+9C--
+SGkgRmVsaXgsDQoNCigxKSBUaGUgY2hhbm5lbC1pZGxlIGNvdW50ZXIgaW4gRlcgd2FzIGluIHNs
+b3QgdW5pdHMgKG9uZSBzbG90ID0gOSB1cyksDQpidXQgdGhlIGZpcm13YXJlIGFscmVhZHkgc2Nh
+bGVzIGl0IHRvIG1pY3Jvc2Vjb25kcyBiZWZvcmUgcmVwb3J0aW5nIHRvDQpEcml2ZXIuwqANCldo
+aWxlIHRoZSAnYnVzeScgdGltZSBzdGF0cyB3ZXJlIGFscmVhZHkgcHJvdmlkZWQgaW4gcmVhbCBt
+aWNyby0NCnNlY29uZHMuDQoNClNvIHRoaXMgcGFydCBmb3IgJ2J1c3kgKyBpZGxlJyBzaG91bGQg
+YmUgYWN0dWFsIHRpbWUuDQoNCigyKSBZZXMsIHlvdSBhcmUgcmlnaHQgYWJvdXQgdGhlIE1MTyBi
+YW5kIDAgYW5kIGJhbmQgMSBpc3N1ZSBmb3IgdGhlDQpzY2FuIGRvbmUgcmVwb3J0IGZyb20gb3Vy
+IEZXLiAgSSB3aWxsIGZpeCB0aGlzIHBhcnQgYW5kIGxldCB5b3Uga25vdw0KZm9yIG5ldyB1cGRh
+dGVzIG9uY2Ugc3VibWl0dGVkIHRvIHVwc3RyZWFtIGFnYWluLg0KDQpUaGFua3MsDQpNaWNoYWVs
+Lg0KDQoNCj4gSGksDQo+IEkndmUgdGVzdGVkIGEgcmViYXNlZCB2ZXJzaW9uIG9mIHRoaXMgcGF0
+Y2ggd2l0aCBmaXJtd2FyZSAyMDI2MDgxMw0KPiBhbmQgDQo+IGZvdW5kIGEgZmV3IGRpc2NyZXBh
+bmNpZXM6DQo+IA0KPiAtIHRoZSBpZGxlIGNvdW50ZXIgc2VlbXMgdG8gY291bnQgc2xvdHMgb2Yg
+YWJvdXQgOCB1cywgbm90DQo+IG1pY3Jvc2Vjb25kcywgDQo+IHNvIGJ1c3kgKyBpZGxlIGdpdmVz
+IGFib3V0IDEvOCBvZiByZWFsIHRpbWUuDQo+IC0gdGhlIGNvZGUgYWx3YXlzIHF1ZXJpZXMgYmFu
+ZMKgMC4gV2l0aCBNTE8sIHRoZSBmaXJtd2FyZSBwdXRzIHRoZQ0KPiBzZWNvbmQgDQo+IGxpbmsg
+b24gYmFuZCAxLCBzbyB0aGF0IGxpbmsncyBhaXJ0aW1lIGlzIG1pc3NlZC4NCj4gDQo+IFRoYW5r
+cywNCj4gDQo+IC0gRmVsaXgNCg0K
 
