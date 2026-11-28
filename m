@@ -2,98 +2,72 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 5E6DC606A324
-	for <linux-mediatek@archiver.kernel.org>; Sat, 28 Nov 2026 15:17:55 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 4560B606A321
+	for <linux-mediatek@archiver.kernel.org>; Sat, 28 Nov 2026 17:15:56 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=ArwCxD63;
-	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=WvHJCEKA
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=Re0OJwb2;
+	dkim=pass (2048-bit key, unprotected) header.d=justthetip.ca header.i=@justthetip.ca header.a=rsa-sha256 header.s=key1 header.b=Cs68EPJy
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
-	MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
-	Reply-To:Content-Type:Content-ID:Content-Description:Resent-Date:Resent-From:
+	Content-Type:MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:
+	To:From:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
 	Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Unsubscribe-Post:
-	List-Owner; bh=boJHVtZaNd2Ip0sYxyQoGj4OCG9SDHvMT5R5+mkI9p4=; b=ArwCxD63GfK3W2
-	GHQ52Cj8NXT6LV5Uu7WBJ0Ht/4K3Gb/EHElcJGPjKkzs/njjRRoSIHKoyBBuofWOqNVUYJ6UUZTaX
-	bt9FACIoh34sWCglJJZQ8Nw37nAUwRNk7n2WYdMfdmrK1s2CppCWR2GXfpls2ZqGrPPdpYammT56a
-	K20D6kcFFu3D8Lfw433wrOYM6ki6hZOYooOYIS5YYaH5BoWTm/OAqwUN2NL7ptVkF2cQkZDFQ4trM
-	6/eUGrcajmiwa3MJxRtnrszxdX7X7QqmsQf4xu/bn83/G0nei8fQ0dpf2piPj2Xsi2q3g5XFFtfu3
-	wjkXicJbXPHauX6WTRyg==;
+	List-Owner; bh=oqDemX6ZwjJ1i6EL+hJchHNeErURI1NTJiCawPmRbL4=; b=Re0OJwb2ciH5xL
+	E/om7fhSF7Y/635LfaGl1EWu6IZALpGS93wVotJeqDSMqBE8TG+BbjvebPWs31H8LvMWXetAg0Ewo
+	htVunKCGvw9eAOmyUdes/+dx6p1Q5WIB8cATKnGwPpoZNLYNry7A+gbVqWY6gebmxxP/TH1YpEos0
+	ytwXXpxBisrDqqLyZoBIMa5dnaXH1on1l95uLz6XSCuUYoZGE8wABfuhPvkSc9pkZhOr6voGOC1m9
+	DJUNml5S3lA3m2QBawRyJrJ1yNV1N5bm2KgBvWLnYWopgLNTnNzuxv/a44CzTRR0SGJdEWE+NCfkw
+	X2WHR7c3goTn+VFjg7KQ==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xXKBX-00000000uTf-0OMG;
-	Sat, 28 Nov 2026 15:17:55 +0000
-Received: from mail-pl1-x633.google.com ([2607:f8b0:4864:20::633])
+	id 1xXM1h-000000010Ww-04Vd;
+	Sat, 28 Nov 2026 17:15:53 +0000
+Received: from out-230.mta1.migadu.com ([2001:41d0:203:375::e6] helo=mta1.migadu.com)
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xXKBU-00000000uT0-1z1T
+	id 1xXM1d-000000010WB-2ay5
 	for linux-mediatek@lists.infradead.org;
-	Sat, 28 Nov 2026 15:17:53 +0000
-Received: by mail-pl1-x633.google.com with SMTP id d9443c01a7336-2efddf749e5so37801145ad.1
-        for <linux-mediatek@lists.infradead.org>; Sat, 28 Nov 2026 07:17:52 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20260707; t=1795879072; x=1796483872; darn=lists.infradead.org;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:from:to:cc:subject:date
-         :message-id:reply-to:content-type;
-        bh=boJHVtZaNd2Ip0sYxyQoGj4OCG9SDHvMT5R5+mkI9p4=;
-        b=WvHJCEKAvOJjl5MZ2obA6KP1BLk2w6fXI6Bp37p6AAWfelq8QcfYp2hliFzB5BunWS
-         iVDt+jU+mEeBMTX/BmMV1zNvi7YUCRhjbUu5gHNPHaYEOKMM6Jqen8V76y6Cq3fVJxwy
-         4g1RF1hDYW0PPdFpj3LM0qa1MQBdXXcXvsz+bAlLbWYdglDjOSQqJXxRWYZK5e+UfQh9
-         sJAuBtc9KAWVOeOnbbO7dTt+rDehxwYNwgbZ/O6ndI5pPqYdr1vDe5NybkehJBkqpZoA
-         H1DYEOwuU8cQ+h1qAaQkExpf8TSAoczjZev0B/ZLRxaPjgrnMuz450CdzfcLdkUG+9e8
-         HgMg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1795879072; x=1796483872;
-        h=content-transfer-encoding:mime-version:references:in-reply-to
-         :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
-         :to:cc:subject:date:message-id:reply-to:content-type;
-        bh=boJHVtZaNd2Ip0sYxyQoGj4OCG9SDHvMT5R5+mkI9p4=;
-        b=qr09ueQSrYUG2kSub1pRaUX/iHeAy72dgY9TPSTv/neAPAsA/yGHi725BhhIaFFAmx
-         kPWXIFDU417a+0g09a7Nf5k0SQW7XYgaOQD1uAdzc4PZPiSj7YY2oJcz6rGR1cDj3S6A
-         FEHWEhkw3g/Ccy/qg978EhXL6VP/8VvPy5ouyeAPsBVIPH03K4V1QvzyeuDcITrEQXFT
-         v0W1G1S37vH6s8XopoU5mblmOEEZF7k8AMkHO3DNXDr2r328ROpyS5xUQQSFucj81JLo
-         psw/Gb/pEHMyv5t6fH1FB4v6F1v06nPbBgHumaUAQYmRX4gqUTtw/E+2SRZf93xihjtn
-         D9cg==
-X-Forwarded-Encrypted: i=1; AL+hErGnSCIa7ha62HqG+0ddk6Aa4UdxJYpsTuIdEVFvya5VUz236Y1lqSK/QuYIiM6rhOah2EEAgBofu7pbR/aAXw==@lists.infradead.org
-X-Gm-Message-State: APuU4Z8TelrzHtEytJPpVuSy4N263fn9Fsu03A3EMrX1nXAkKJLkm96u
-	GgcRbimskTuyYIZpSB05PaqsDjLXNaQ4XRzZrmLi9U1tnkDbN4mCOQmc
-X-Gm-Gg: AZFdTZfm2SanyQRUS569+hoPPPUwTEsujdYg0n648fQ8k/bajuDmuA6pqM9tgs/9+v7
-	Labf9HKqMNA8CCZGz+X7CPniw4ELwsxaiW4vOIBexYYmrOClodjyeVGA7sLP7riwyjrZkZgprqJ
-	ew5mjs0wkvVdAZkr468wpNuFqIDhFcUEh7OhDJB8YIpRHIU3huFOif0wGC952pvzAjWDUS1Seo4
-	I/y8FqYYLQpdHxMg1XcJjPJNJaDxBzVNfgpEQSyrwkihp2GMu+nVACu4aLZ5n2R6SKfQWZr7nfD
-	tklpQ8E7QxcrVdFOGWqJbeozdTmlYcr3tp5+0H4c4M9nLoHEAapDNQKhYe5aR+vfBkm6UNBxyAc
-	870aOv2ke8kO6fjbzml/ihzkVPxV/2NejqNUbjulx1mzoXdwrRsKj/IRdQzqJb5XhBUA0/Ux/+t
-	2T/7ZeDs0f3Hcx7SWgzGV5hMa6a6yw8k4OvziDJd576WRmfZx4LBVXEI+uya4hnm8j6pDhNPYvm
-	PuKytCzJ7pGaRPhSj5mHNQ7Vuld7fVwaIUBVB/MHQX4eMox1XwWOIzTkrpklmNCAsN7wNwqKEhs
-	pUJBQloJjUVrd8Wi/k96jOnMpjxLaqh/++Sr4KKkBsGKn42YeQ1L/NOQCKZ5u2hZEK8cMjG6sBQ
-	4O+QlSajQgA4fcJETEzXQO6TaI6pmArqeVBgrEDGTHz2V32y8
-X-Received: by 2002:a17:903:244b:b0:2e5:457d:6c20 with SMTP id d9443c01a7336-2f031f7a49emr234013155ad.23.1795879071469;
-        Sat, 28 Nov 2026 07:17:51 -0800 (PST)
-Received: from localhost.localdomain ([2405:201:301c:f8cd:241f:982d:147f:bf76])
-        by smtp.gmail.com with ESMTPSA id d9443c01a7336-2f03f0c6e50sm138078425ad.13.2026.11.28.07.17.48
-        (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
-        Sat, 28 Nov 2026 07:17:50 -0800 (PST)
-From: Aryan Sinha <sinha.aryan03@gmail.com>
-To: Mark Brown <broonie@kernel.org>
-Cc: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
-	Matthias Brugger <matthias.bgg@gmail.com>,
-	linux-spi@vger.kernel.org,
-	linux-mediatek@lists.infradead.org,
-	linux-kernel@vger.kernel.org
-Subject: Re: [PATCH 0/6] arm64: dts: mediatek: Add MT8189 Skywalker based Tarkin Chromebook
-Date: Sat, 28 Nov 2026 20:47:32 +0530
-Message-ID: <20261128151743.17053-1-sinha.aryan03@gmail.com>
-X-Mailer: git-send-email 2.46.0
-In-Reply-To: <9ec63a02-b5bc-4053-a57e-73fd8d290531@sirena.org.uk>
-References: <9ec63a02-b5bc-4053-a57e-73fd8d290531@sirena.org.uk>
+	Sat, 28 Nov 2026 17:15:51 +0000
+X-Envelope-To: linux-mediatek@lists.infradead.org
+DKIM-Signature: a=rsa-sha256; bh=oqDemX6ZwjJ1i6EL+hJchHNeErURI1NTJiCawPmRbL4=;
+ c=simple/simple; d=justthetip.ca;
+ h=from:to:subject:date:message-id:mime-version:content-type; s=key1;
+ t=1795886145; v=1; x=1796490945;
+ b=Cs68EPJyuIZX9t3Dpp60ahWgHJL/k1hg6kT16PVxXMoRPYlbHYMWNXthlV0xukuicE+5VIp9
+ P3myz1ZdA2FEkyefQammwGg8ku7utM7ABqLC9B8EeL7AWRkix6ldY4m54IgcdkwpJcAPW3aCoyw
+ CWl/05tZBwFnFumv+AstjeegUpuCtXfn7Rg+ug2AoRETwtinNnvOZ5VvWevsONpqobovX0wpxnG
+ hnep951DAviroMEmH/sPzxUB+EyYe9mOArVz1IbDCfQa0vx/F3+3xeOatQlqChHL/mzxyod6lYm
+ 897QQrEcwkfQMbhW5qkpZgkjq2SfmkoM/rCCwk42Emk7A==
+X-Envelope-To: linux-mediatek@lists.infradead.org
+Received: by smtp.migadu.com with ESMTPS id a2901eb0e4d21435;
+	Sat, 28 Nov 2026 17:15:45 +0000
+X-Mizu-Trace-ID: a2901eb0e4d21435
+X-Migadu-Flow: FLOW_OUT
+From: Devin Wittmayer <lucid_duck@justthetip.ca>
+To: martin@rfdeck.de
+Cc: Aaron Beckendorf <albecken@mtu.edu>,
+	Felix Fietkau <nbd@nbd.name>,
+	Lorenzo Bianconi <lorenzo@kernel.org>,
+	Ryder Lee <ryder.lee@mediatek.com>,
+	Shayne Chen <shayne.chen@mediatek.com>,
+	Sean Wang <sean.wang@mediatek.com>,
+	linux-wireless@vger.kernel.org,
+	linux-mediatek@lists.infradead.org
+Subject: Re: [PATCH v2] wifi: mt76: connac: honour injected HT/VHT rate and bandwidth
+Date: Sat, 28 Nov 2026 10:15:34 -0700
+Message-ID: <20261128171534.98125-1-lucid_duck@justthetip.ca>
+X-Mailer: git-send-email 2.56.1
+In-Reply-To: <20261128113158.Horde.SfK8gVRYJBkGjFr0f3N_Xrz@mail.your-server.de>
+References: <20261104142737.186484-1-albecken@mtu.edu> <20261128113158.Horde.SfK8gVRYJBkGjFr0f3N_Xrz@mail.your-server.de>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261128_071752_510024_0FC22428 
-X-CRM114-Status: UNSURE (   8.34  )
+X-CRM114-CacheID: sfid-20261128_091550_085655_CAA35148 
+X-CRM114-Status: UNSURE (   5.70  )
 X-CRM114-Notice: Please train this message.
-X-Spam-Score: -1.9 (-)
+X-Spam-Score: -2.1 (--)
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -104,22 +78,26 @@ List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-5.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
-	DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,FREEMAIL_FORGED_FROMDOMAIN,
-	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=no autolearn_force=no
-	version=4.0.1
+X-Spam-Status: No, score=-8.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
+	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,
+	HEADER_FROM_DIFFERENT_DOMAINS,MAILING_LIST_MULTI,SPF_HELO_NONE,
+	SPF_PASS,USER_AGENT_GIT autolearn=ham autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On Sat, Nov 28, 2026 at 02:39 PM UTC, Mark Brown wrote:
-> This doesn't apply against current code, please check and resend.
+On Sat, 28 Nov 2026 11:31:58 +0100, martin@rfdeck.de wrote:
+> Maybe set the fixed rate for all injected frames
+> (IEEE80211_TX_CTL_INJECTED), not only for mgmt and multicast, and take
+> the GI from IEEE80211_TX_RC_SHORT_GI?
 
-Sorry about that, the dts patches depend on the Genio 520/720-EVK series
-which is not merged yet. I have resent the SPI binding on its own with the
-subject fixed, it applies to your tree now. The rest will go to the
-MediaTek folks without you in Cc.
+I have patches on top of v2 that do both, and they also cover legacy
+rates and LDPC/STBC. With them, injected unicast data goes out at the
+requested rate on 5 GHz too. Without them I see the same as you, on an
+MT7921AU and an MT7922.
 
-Thanks,
-Aryan
+I've been working on this for a while. I'm doing the last tests now and
+will post the series with the results soon.
+
+Thanks for testing,
+Devin
 
