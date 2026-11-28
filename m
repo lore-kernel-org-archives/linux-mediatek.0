@@ -2,67 +2,108 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 30D8F606A33C
-	for <linux-mediatek@archiver.kernel.org>; Sat, 28 Nov 2026 12:36:14 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 68728606A325
+	for <linux-mediatek@archiver.kernel.org>; Sat, 28 Nov 2026 14:15:04 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=Hx1pi85Q;
-	dkim=pass (2048-bit key) header.d=kernel.org header.i=@kernel.org header.a=rsa-sha256 header.s=k20260515 header.b=n/puXPBr
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=3uOIeKEI;
+	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=TnBm/QP9
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
-	:List-Post:List-Archive:List-Unsubscribe:List-Id:MIME-Version:
-	Content-Transfer-Encoding:Content-Type:References:In-Reply-To:Message-ID:Date
-	:Cc:To:From:Subject:Reply-To:Content-ID:Content-Description:Resent-Date:
-	Resent-From:Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:
+	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
+	MIME-Version:Message-ID:Date:Subject:Cc:To:From:Reply-To:Content-Type:
+	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
 	List-Unsubscribe-Post:List-Owner;
-	bh=e4tEpL5eqWttsGZfNF3g5fGUTnRitHzItkaZ9VIiO+w=; b=Hx1pi85QJisdcoqALkMWdd4+sq
-	XscWgLSNG/2gRq0ia2sc7xpkkfD0TzoE7kdziVtrLjJSu3/GP5sh8nnarxU/flRYix7WBzEBylQGY
-	YIOtUTUMiwbpLZMdcshFPewo8K6aiDvTNc8tZWXqXP7dfBXcdZRJJRadx0+jhpmPyEdDd5aYZpdRt
-	tf/l4xeggbS2yDGuPXP0tYa/tFd55M01GG7y0opkzBbhMPwpM4h4bRepASk+UvdFWi9k5ka2oFiV4
-	dlHsQaVjtkumJvPvdIbJH0VlCvYAAzQ3/crnNHa0GeWW7+LEQqXPorFXtEC2MnTNEdTlJWjPhx9QN
-	LiY8cq4w==;
+	bh=ovt3whWqdaT1jywj9I1uBt0fMRtj7mzqaOeqp3btgZw=; b=3uOIeKEISe9OfCtNO6lou+rpmJ
+	p4fPvAk4AzyyWfumnkwfezmXoUmcEgFlOPLuQYHJxtj02IS7gx8pJasC9EDEHpaW4e6NpEvCpbb1H
+	87/g0k9kxq12i4SXdb22G43Pt2PJFeDwwcJmjMk0U05ckGncyNTFGCB4CfNxCDOJC+dzWtEG2E7ua
+	5niSKGspi4bRHnnRBrhEyVQg7eYAEnXleNF+Lqe1X51DhQna6xmrXqlO4Pr4zowH6OVobKPP8sUIG
+	Fjx+GHFx0e8Xmcd8JQYI4Ck9XkkO9CPFlDQEwPRpm5hGi46FR4RoDPm3LPUO6tvHmmddtoGIdHUyb
+	xKamPjyA==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xXHf3-00000000lA3-3JWr;
-	Sat, 28 Nov 2026 12:36:13 +0000
-Received: from tor.source.kernel.org ([172.105.4.254])
+	id 1xXJCe-00000000p18-2aVu;
+	Sat, 28 Nov 2026 14:15:00 +0000
+Received: from mail-dy1-x132a.google.com ([2607:f8b0:4864:20::132a])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xXHf2-00000000l9q-0tG8;
-	Sat, 28 Nov 2026 12:36:12 +0000
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
-	by tor.source.kernel.org (Postfix) with ESMTP id 81D3C60E47;
-	Sat, 28 Nov 2026 12:36:11 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 5C6461F000C1;
-	Sat, 28 Nov 2026 12:36:10 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
-	s=k20260515; t=1795869371;
-	bh=e4tEpL5eqWttsGZfNF3g5fGUTnRitHzItkaZ9VIiO+w=;
-	h=Subject:From:To:Cc:Date:In-Reply-To:References;
-	b=n/puXPBrrDA+MLP/N4C//9HByS6mFgpyNbxhZfoGCJA3AFXPDxVGi1ASDcSy+UyyJ
-	 UE7CZfNgHzyuluk/QXbHKEOujurk04uOhLQRTtxfmRFfklML9rNDhQQreogcDUh1dg
-	 nKGwM4nEmzjfcKJ6j7YtD1YMefnRezf1m2WQdOKdlGISBW0BnEd1HBdg+LusQtjSyw
-	 DXBa6FrgVK7pHmlMvtUAY0vq4m66WDvw1XhZLAZ+xRFw5h/0ZJoDjtgi0P8mi79GQG
-	 k3e8/9UPIFGaqqEzZ6M+Fy3yMCGJ31PIHbLIiYGPFEnmTQddd2jt4sBhYwl5+phL8u
-	 xQLTqReVxLUug==
-Subject: Re: [PATCH net v2] net: ethernet: mtk_wed: fix double free in
- mtk_wed_rx_reset
-From: netdev-bot+sashiko@kernel.org
-To: hujy652@gmail.com
-Cc: nbd@nbd.name, lorenzo@kernel.org, andrew+netdev@lunn.ch,
- davem@davemloft.net, edumazet@kernel.org, kuba@kernel.org, pabeni@redhat.com,
- matthias.bgg@gmail.com, angelogioacchino.delregno@collabora.com,
- sujuan.chen@mediatek.com, netdev@vger.kernel.org,
- linux-kernel@vger.kernel.org, linux-arm-kernel@lists.infradead.org,
- linux-mediatek@lists.infradead.org, sashiko-bot@kernel.org,
- stable@vger.kernel.org
-Date: Sat, 28 Nov 2026 12:36:09 +0000
-Message-ID: <179586936991.3135.11080392761968621173@kernel.org>
-In-Reply-To: <20261127-doublefree-v2-1-c0c6d3da3b52@gmail.com>
-References: <20261127-doublefree-v2-1-c0c6d3da3b52@gmail.com>
-X-sashiko-severity: Medium
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
+	id 1xXJCb-00000000p0M-2oty
+	for linux-mediatek@lists.infradead.org;
+	Sat, 28 Nov 2026 14:14:59 +0000
+Received: by mail-dy1-x132a.google.com with SMTP id 5a478bee46e88-3866a784546so12516846eec.0
+        for <linux-mediatek@lists.infradead.org>; Sat, 28 Nov 2026 06:14:57 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20260707; t=1795875296; x=1796480096; darn=lists.infradead.org;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
+        bh=ovt3whWqdaT1jywj9I1uBt0fMRtj7mzqaOeqp3btgZw=;
+        b=TnBm/QP9G1KLIpw9xeAa3KObFh0V9htzQQnUZi+v53EBoT4W412ahI71Gb65Jb6bjG
+         nNYNzo7M9uVfAFWfDGATCmKCuKk1owR6TOSALTy6FQ9N04rqbJRfM+wS1aQCyPcb8WTh
+         WN7xsC+sWMQD464yM757GHyl0bc8Z+/+ISN/FjI6Iv2kXpw6Y2PHy77EzHnEfwJh7E17
+         wRqyoczz4SbIoaYx5dwUS5KNadG8S8Mm+rvuqx4kKeXAxVPyCt+ptdDEUuS1eXjNGjc3
+         rydMlhJuvbb/SXqvTAf+BkXHpPQniNe6jYD9RLboJKYvyAHsrye7aulEr8pbORhqTmUV
+         N0lw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20260707; t=1795875296; x=1796480096;
+        h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+         :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to:content-type;
+        bh=ovt3whWqdaT1jywj9I1uBt0fMRtj7mzqaOeqp3btgZw=;
+        b=joHbxq0NMVMck/Om5EP3bPS5+PygroMCEUjtjlV/RiDLll1mmIknYjIelT8kLx43k6
+         IIkDQ7MrBWdxmJVfycoxPJ2oZpei71yI17sFXlCjiY2ain8FQVEP78wdqmsmQ3560rUy
+         gOAeoP+eMMKruNojzm9T71nwq2fPHjD/W0YHnjZzzO6VypdkGS9skRlG/yCA/FfuPb1e
+         1Cn7zk9O+wArmWtrSRwx0mkweUNPSPu7blvLVQ5knVgSj6mJJ4m6Pwi/qgnDKe/6281q
+         OEmJZh3oRdDAOU7XNU38OAfV2k1/LvqoGJu5G8tBDtV/llqSNOChIGL2Po3j3md3OrD2
+         oB9g==
+X-Forwarded-Encrypted: i=1; AL+hErFabRnPPF5zxCvPOeIO2jdUJ2/NzAdcxgz1VSQa2NAHRoRB16Y+U6CO+/5AF3BW9N4QvImvsQ+0r+13iAkNJQ==@lists.infradead.org
+X-Gm-Message-State: APuU4Z/8MUaWSnTxBw7il86Dyt8I0955yLGHICRX2sj+XCTfZ1yqzJjP
+	pCDP3DjrXQQmQ8EwqU4uOtY8n+KtkLQ3Rcn8QaJNG66YWHEvxO19lfb5
+X-Gm-Gg: AZFdTZebQKKSE6ukWmd9E5Z6nlPVqTRxrBtx5MYenaLG+7efokvuyPvkgPrOLqFF1yf
+	hj60UpX8NquC433+6eUMdI55xOmjFLaTmjeBD6S9YLgDCA8bWqn5kd1lxjXOOwr3U/ugsPXR1mn
+	ayJW8HMKBRN1SocDcx1K4DeQaI2M0/Hr09BjqaZD6Yngd2eeL0qfy6YMiVmxRC9Y5JWaXZeMZHv
+	W44ZSkqxUoBpbIQOpO5YUI7W1um4QVH+3ueJGECSJ2JFGgu5dB7s2lWnemngEIsVKX/+RamoCDm
+	a5xiF9FSpleQUmHesMeCWcXpm21HdTCrLboSkaQku8iAaD3O3do8bUawzz5yoaK01I9aIZr/iWC
+	l493E9C14QodqOe1JCqg8aE2JBEYaKtJYaMsbgJtM/X76Fl4OSc9cJhMYnbLbZ4p5+7ci3BfY+L
+	FRdfYq9HlQ4K+gfteaXO/uz+Me1PV5Pu/qRK7qGddDVDRALrfclu2IFovNqkdYxsFCagCoY03pJ
+	lz7ELeKJ0pXnNwOAc+n5CstYHr+fcHCDEJUUMKgx2MXLiSOaVKI4+Rz8ae+sIWhCJD0GlmjH8Ev
+	cfYDqBqeW0sEVI+Q5peIFcg5b0wOLmJdnSZAeKruj0cjalfoKu/hS7npodQ08KKWNvqLMtHh1id
+	mpTALmDTaTAc//UBcyyBN7dRsp+B7
+X-Received: by 2002:a05:693c:6010:b0:385:849b:7899 with SMTP id 5a478bee46e88-385849b7adamr31917186eec.4.1795875295880;
+        Sat, 28 Nov 2026 06:14:55 -0800 (PST)
+Received: from localhost.localdomain ([2405:201:301c:f8cd:241f:982d:147f:bf76])
+        by smtp.gmail.com with ESMTPSA id 5a478bee46e88-385666e7f59sm87185893eec.6.2026.11.28.06.14.49
+        (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
+        Sat, 28 Nov 2026 06:14:55 -0800 (PST)
+From: Aryan Sinha <sinha.aryan03@gmail.com>
+To: AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	Rob Herring <robh@kernel.org>,
+	Krzysztof Kozlowski <krzk+dt@kernel.org>,
+	Conor Dooley <conor+dt@kernel.org>,
+	Mark Brown <broonie@kernel.org>,
+	Tzung-Bi Shih <tzungbi@kernel.org>,
+	Benson Leung <bleung@chromium.org>
+Cc: Leilk Liu <leilk.liu@mediatek.com>,
+	Sean Wang <sean.wang@mediatek.com>,
+	Louis-Alexis Eyraud <louisalexis.eyraud@collabora.com>,
+	Chen-Yu Tsai <wenst@chromium.org>,
+	devicetree@vger.kernel.org,
+	linux-spi@vger.kernel.org,
+	linux-mediatek@lists.infradead.org,
+	linux-arm-kernel@lists.infradead.org,
+	chrome-platform@lists.linux.dev,
+	linux-kernel@vger.kernel.org,
+	Aryan Sinha <sinha.aryan03@gmail.com>
+Subject: [PATCH 0/6]  arm64: dts: mediatek: Add MT8189 Skywalker based Tarkin Chromebook
+Date: Sat, 28 Nov 2026 19:44:24 +0530
+Message-ID: <20261128141443.13065-1-sinha.aryan03@gmail.com>
+X-Mailer: git-send-email 2.46.0
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
+X-CRM114-CacheID: sfid-20261128_061457_749618_E3425FC9 
+X-CRM114-Status: GOOD (  13.77  )
+X-Spam-Score: -1.9 (-)
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -73,155 +114,113 @@ List-Help: <mailto:linux-mediatek-request@lists.infradead.org?subject=help>
 List-Subscribe: <http://lists.infradead.org/mailman/listinfo/linux-mediatek>,
  <mailto:linux-mediatek-request@lists.infradead.org?subject=subscribe>
 Sender: "Linux-mediatek" <linux-mediatek-bounces@lists.infradead.org>
-X-Spam-Status: No, score=-10.9 required=3.0 tests=BAYES_00,DKIMWL_WL_HIGH,
-	DKIM_SIGNED,DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,
-	HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	SPF_HELO_NONE,SPF_PASS autolearn=ham autolearn_force=no version=4.0.1
+X-Spam-Status: No, score=-10.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
+	DKIM_VALID,DKIM_VALID_AU,DKIM_VALID_EF,FREEMAIL_FORGED_FROMDOMAIN,
+	FREEMAIL_FROM,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_PATCH,
+	MAILING_LIST_MULTI,SPF_HELO_NONE,SPF_PASS,USER_AGENT_GIT autolearn=ham
+	autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Thank you for your contribution! Sashiko AI review found 1 potential
-issue(s) to consider.
+This series adds initial support for Tarkin, an ASUS Chromebook (CM1405,
+CM1406) on Google's MT8189 (Kompanio 540) Skywalker platform.
 
-Critical: 0 · High: 0 · Medium: 1 (1) · Low: 0
+It builds on the MT8189 base support from the Genio 520/720-EVK series
+and adds:
 
-If you believe none of the issues are legitimate, please reply to each
-issue of Medium severity or higher and explain why the AI is wrong.
-If any of them are legitimate and you plan to respin, please let patchwork
-know by including "pw-bot: cr" as a separate line at the end of your reply
-(one such reply per series is enough).
+ - an MT8189 compatible to the MediaTek SPI binding (same IPM design as
+   MT6991) and the six SPI controllers in mt8189.dtsi, needed for the
+   EC on SPI0
+ - a label for the MT8189 watchdog, so Chromebooks can disable its
+   external reset like Geralt and Cherry do
+ - the Tarkin board compatible
+ - the Skywalker platform dtsi and the Tarkin board dts
+ - Tarkin in the ChromeOS hardware prober, for its second source
+   trackpad
 
-- [Medium] The commit message describes a different bug from the one the
-  new `dev->rx_buf_ring.desc = NULL` line fixes, and the only Fixes: tag…
+- Tested on an ASUS Chromebook CM1405
 
-Pre-existing issues:
-- [Medium] mtk_wed_rx_reset() frees the RX buffer-manager resources only
-  on full success.
+Not included yet, since the SoC side is not upstream: display, GPU,
+audio, USB, UFS and PCIe.
 
---
+The Skywalker and Tarkin device trees are based on the ChromeOS kernel's
+mt8189-skywalker.dtsi and mt8189-skywalker-tarkin.dts.
 
-net: ethernet: mtk_wed: fix double free in mtk_wed_rx_reset
+This series depends on the Genio 520/720-EVK series [1], which adds
+mt8189.dtsi, and on what that series depends on:
 
-mtk_wed_free_rx_buffer() already calls mtk_wed_hwrro_free_buffer(), so
-this patch removes the second mtk_wed_hwrro_free_buffer() call in
-mtk_wed_rx_reset(). It also sets dev->rx_buf_ring.desc, dev->hw_rro.desc
-and dev->hw_rro.pages to NULL after they are freed, so the existing NULL
-checks work.
+ - MT8189 system and base clock controllers v6 [2], applied to
+   v7.4-next/clk
+ - net/stmmac: Add Mediatek MT8189 support, v5 applied to net-next
+ - the MT8189 pinmux header [3] and timer binding [4], still pending
 
-Link: https://sashiko.dev/#/map/216156
+[1] https://lore.kernel.org/linux-mediatek/20260924-add-mediatek-genio-520-720-evk-v3-0-2ec5c80677d4@collabora.com/
+[2] https://lore.kernel.org/linux-mediatek/20260904-mt8189-clocks-system-base-v6-0-5df247f56938@collabora.com/
+[3] https://lore.kernel.org/linux-mediatek/20251205064357.13591-1-ot_cathy.xu@mediatek.com/
+[4] https://lore.kernel.org/linux-mediatek/20250825033136.7705-1-zhanzhan.ge@mediatek.com/
 
-> diff --git a/drivers/net/ethernet/mediatek/mtk_wed.c b/drivers/net/ethernet/mediatek/mtk_wed.c
-> index 0bae252477987..0f215dd3d2d44 100644
-> --- a/drivers/net/ethernet/mediatek/mtk_wed.c
-> +++ b/drivers/net/ethernet/mediatek/mtk_wed.c
+Aryan Sinha (6):
+  dt-bindings: spi: mediatek,spi-mt65xx: Add MT8189
+  arm64: dts: mediatek: mt8189: Add SPI controllers
+  arm64: dts: mediatek: mt8189: Add watchdog label
+  dt-bindings: arm: mediatek: Add Google Tarkin
+  arm64: dts: mediatek: Add MT8189 Skywalker platform based Tarkin
+  platform/chrome: of_hw_prober: Support trackpad probing on Tarkin
 
-[ ... ]
+ .../devicetree/bindings/arm/mediatek.yaml     |   4 +
+ .../bindings/spi/mediatek,spi-mt65xx.yaml     |   1 +
+ arch/arm64/boot/dts/mediatek/Makefile         |   1 +
+ .../dts/mediatek/mt8189-skywalker-tarkin.dts  |  62 +++
+ .../boot/dts/mediatek/mt8189-skywalker.dtsi   | 453 ++++++++++++++++++
+ arch/arm64/boot/dts/mediatek/mt8189.dtsi      |  86 +++-
+ .../platform/chrome/chromeos_of_hw_prober.c   |   4 +
+ 7 files changed, 610 insertions(+), 1 deletion(-)
+ create mode 100644 arch/arm64/boot/dts/mediatek/mt8189-skywalker-tarkin.dts
+ create mode 100644 arch/arm64/boot/dts/mediatek/mt8189-skywalker.dtsi
 
-> @@ -896,6 +898,7 @@ mtk_wed_free_rx_buffer(struct mtk_wed_device *dev)
->  	dev->wlan.release_rx_buf(dev);
->  	dma_free_coherent(dev->hw->dev, dev->rx_buf_ring.size * sizeof(*desc),
->  			  desc, dev->rx_buf_ring.desc_phys);
-> +	dev->rx_buf_ring.desc = NULL;
 
-[Severity: Medium]
-Does this line fix an older bug than the one the Fixes: tag names?
-
-The commit message describes the duplicated mtk_wed_hwrro_free_buffer()
-call. Removing that call is enough to fix that bug. The only tag is:
-
-    Fixes: 1543b8ff02f0 ("net: ethernet: mtk_wed: add wed 3.0 reset support")
-
-The stale rx_buf_ring.desc pointer goes back further, to b08134c6e109
-("net: ethernet: mtk_wed: add mtk_wed_rx_reset routine"). That commit added
-the mtk_wed_free_rx_buffer() call at the end of mtk_wed_rx_reset() and
-moved mtk_wed_rx_buffer_alloc() into mtk_wed_start(). It also affects WED
-v2 (MT7986/MT7915).
-
-Before this patch, rx_buf_ring.desc stays dangling after a reset until the
-next successful mtk_wed_start(). There are two ways the restart can be
-skipped.
-
-The first is mt7915_dma_start() with wed_reset=true returning early:
-
-drivers/net/wireless/mediatek/mt76/mt7915/dma.c:mt7915_dma_start() {
-    ...
-		ret = mt7915_mcu_wed_enable_rx_stats(dev);
-		if (ret)
-			return ret;
-
-		mtk_wed_device_start(&dev->mt76.mmio.wed, wed_irq_mask);
-    ...
-}
-
-The second is mtk_wed_start() bailing out when dma_alloc_coherent() fails
-in mtk_wed_rx_buffer_alloc().
-
-In either case, a later detach runs the free path again on the stale
-pointer:
-
-__mtk_wed_detach()
-  mtk_wed_free_rx_rings()
-    mtk_wed_free_rx_buffer()
-      dev->wlan.release_rx_buf(dev);
-      dma_free_coherent(..., desc, ...);
-
-With only 1543b8ff02f0 tagged, would stable trees that have b08134c6e109
-but not the hwrro code (such as 6.6.y) miss this part of the fix?
-
-Would it make sense to add a Fixes: tag for b08134c6e109 and describe the
-reset->detach double free in the commit message?
-
-Also, the commit message says dev->hw_rro.page, but the field is
-dev->hw_rro.pages.
-
->  
->  	mtk_wed_hwrro_free_buffer(dev);
->  }
-> @@ -1722,7 +1725,6 @@ mtk_wed_rx_reset(struct mtk_wed_device *dev)
->  				   false);
->  	}
->  	mtk_wed_free_rx_buffer(dev);
-> -	mtk_wed_hwrro_free_buffer(dev);
->  
->  	return 0;
->  }
-
-[Severity: Medium]
-This is a pre-existing issue and was not introduced by this patch.
-mtk_wed_rx_reset() only reaches mtk_wed_free_rx_buffer() if every step
-succeeds. Both mtk_wed_mcu_send_msg() state change calls return early on
-error:
-
-	ret = mtk_wed_mcu_send_msg(wo, MTK_WED_MODULE_ID_WO,
-				   MTK_WED_WO_CMD_CHANGE_STATE, &val,
-				   sizeof(val), true);
-	if (ret)
-		return ret;
-
-mtk_wed_reset_dma() then ignores the return value:
-
-	if (mtk_wed_get_rx_capa(dev))
-		mtk_wed_rx_reset(dev);
-
-After that, the WLAN reset flow calls mtk_wed_device_start() again. On
-mt7915 this goes through
-mt7915_dma_reset()->mt7915_dma_enable()->mt7915_dma_start().
-
-mtk_wed_start() always calls mtk_wed_rx_buffer_alloc(). That function
-overwrites the live pointers without releasing them first:
-
-	dev->rx_buf_ring.desc = desc;
-	dev->rx_buf_ring.desc_phys = desc_phys;
-	dev->wlan.init_rx_buf(dev, dev->wlan.rx_npkt);
-
-mtk_wed_hwrro_buffer_alloc() overwrites dev->hw_rro.pages and
-dev->hw_rro.desc in the same way.
-
-If a firmware message fails during SER recovery, can this leak the old
-rx_buf_ring coherent ring? The same question applies to the hw_rro mapped
-pages, page_list and coherent ring, and to the RX buffers taken by the
-first init_rx_buf() call.
-
+base-commit: 05441d697f7f9a927264f4058cbbc6a03dfcac9d
+prerequisite-patch-id: 7aeee7d452186b3bc1c11722b7ddb7dfbae7d396
+prerequisite-patch-id: 7f2d960cde2f0e0a307721150e83b7b05b9a60d7
+prerequisite-patch-id: f383e7157010179243963badff8c663d0ca21592
+prerequisite-patch-id: 742dfe3c56d88bad5dbdae49b34ecf8639db1bdb
+prerequisite-patch-id: 9c9c64b8b3879f230ba18a0d11cbeb584ce2977c
+prerequisite-patch-id: 7b1af194800ee6075aeb7933e2b55ac57e1dc5e2
+prerequisite-patch-id: 8c8e59354c22f2fa141599efaddc1d28da97c910
+prerequisite-patch-id: 560ea66d94464ee05a72499d1bd8adb3830fe9d0
+prerequisite-patch-id: def65116008ad75bae741bacc67552227446449d
+prerequisite-patch-id: 226e61bec983c3cdd39a64d0b5aa64994c6873c4
+prerequisite-patch-id: 988df54e8bb41d0cc56104398da9c8f669eef878
+prerequisite-patch-id: 9a3f954e6efaed40f57a23e721505f5e2abf538e
+prerequisite-patch-id: ac2ae94b727d7e4f2576601e09ed481248e6c099
+prerequisite-patch-id: 5cf430a386ebd823b14ad79aa05e8b723510f2e8
+prerequisite-patch-id: 49a0b4ca405cfbc9854dea09df664f60c7467fb9
+prerequisite-patch-id: 998d0587e6bb0ee244afeb5344cd3e9438d933ca
+prerequisite-patch-id: c23a23ce86063191e84218c496151104c270bead
+prerequisite-patch-id: 9c596a2b6b48b1c646e2aa6fdb12c2fc853f44f2
+prerequisite-patch-id: f0978bcc3be8c1986a00e41aab540c911508ae07
+prerequisite-patch-id: 8ce69ea826d8ebdb9103dab20941b018a10ef230
+prerequisite-patch-id: 7f544c1d5400bb2f6e964f53eeaacb52878bfce9
+prerequisite-patch-id: e2027aa2ac9d98bc9bc577dc0ef5bcb664380c51
+prerequisite-patch-id: 29b5901b08e6c967da57d83d90fdcac50657e4ad
+prerequisite-patch-id: 4442d5bd4b04a393301f974a3aaeabef7a693aac
+prerequisite-patch-id: c6be163e56e8187c47e4ee6adbab4c7877b5b5e9
+prerequisite-patch-id: 12f43414850b4a72ba37967ff7f765e426abd9e5
+prerequisite-patch-id: 9b00d856ced9bea88911a5af4d5e5dd003e66b15
+prerequisite-patch-id: 967e506aa16b20c211cb74080f83e38a7dffecd1
+prerequisite-patch-id: 2943831ea7bc0c4075580adf69e033f9057f4b19
+prerequisite-patch-id: cedfd27a6d86ef771ea29570d7aeaa1de6700d76
+prerequisite-patch-id: d71281b728b70a0c3e6628fcf667df5fce81f2de
+prerequisite-patch-id: f08f0f9abf6ddb4856e6f83f09afbd9a6bd58c69
+prerequisite-patch-id: 547ff4e2a908f87e94fff37f8e0a5cd7b6a06deb
+prerequisite-patch-id: 3b288113483ca2c4181fcc1141f03c4dfc05c43e
+prerequisite-patch-id: a7497035d432d4454a9e9ddf09b4dbef89a060ed
+prerequisite-patch-id: 26b2574fc9d0ead6e8ab193fca387cf6e816dce4
+prerequisite-patch-id: 29c372cf76fc379b8fbc48a1418ab7be81fc9a72
+prerequisite-patch-id: cbb095d95655a5f03ec66e163313544cb6f684ef
+prerequisite-patch-id: 85b0f64a1f172ffb61a5c2f1f312c6e1b9413162
+prerequisite-patch-id: e72c5ab13c8fd89d6ccb022ce6c8d6ebc9400a3b
 -- 
-Sashiko AI review · https://netdev-ai.bots.linux.dev/sashiko/#/patchset/20261127-doublefree-v2-1-c0c6d3da3b52%40gmail.com
+2.46.0
+
 
