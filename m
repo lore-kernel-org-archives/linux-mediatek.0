@@ -2,11 +2,11 @@ Received: from bombadil.infradead.org (bombadil.infradead.org [198.137.202.133])
 	(using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
 	 key-exchange X25519 server-signature ECDSA (prime256v1) server-digest SHA256)
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id ABA28606A321
-	for <linux-mediatek@archiver.kernel.org>; Sat, 28 Nov 2026 11:51:04 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id A8783606A31C
+	for <linux-mediatek@archiver.kernel.org>; Sat, 28 Nov 2026 12:26:17 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=A8VydHLZ;
-	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=DQK7+wsr
+	dkim=pass (2048-bit key) header.d=lists.infradead.org header.i=@lists.infradead.org header.a=rsa-sha256 header.s=bombadil.20210309 header.b=L/GaWCSk;
+	dkim=pass (2048-bit key) header.d=gmail.com header.i=@gmail.com header.a=rsa-sha256 header.s=20260707 header.b=S+Kcu4y4
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	d=lists.infradead.org; s=bombadil.20210309; h=Sender:List-Subscribe:List-Help
 	:List-Post:List-Archive:List-Unsubscribe:List-Id:Content-Transfer-Encoding:
@@ -14,89 +14,89 @@ DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
 	Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
 	Resent-To:Resent-Cc:Resent-Message-ID:In-Reply-To:References:
 	List-Unsubscribe-Post:List-Owner;
-	bh=LZ8hFklFj23uso66AQMaU2wGtHVr+hqP0S/37cpp9so=; b=A8VydHLZDbEb7qlFRdYhYLQnyl
-	s8++5Z7U1jgXp5TvM2vQQzTqLXrFHHAo/w0/6YIr5jFRb7P0blOi6NX23OqiaDBYgN3fS5IhkH1Xo
-	+bivhQPxlv4N6Zclk4OTC6gUrTtMMgcIV1aBE/xJZvoXKIS9YlvAyTaUcVbVDdBNZnNbw0wJYBLq+
-	S4E9RsJ0ZP7Hlv7DWJCSW/f+fu6XajFcSKF7mmE00huRDCYJXqOnNfA2GbMmzemHE71KMv7hLNwMf
-	rEkWgH3TZGP3f27ZzR3p0EYi4UsVBXu/lXxASvXKoLzUNCZAoCh2ujfD0rnwdowXIcqNSHHEiBlJa
-	5XhysvCw==;
+	bh=yom6P11rX/hdhy2NNJS3Jns2I9Z56P2y3ixdK/nEUpo=; b=L/GaWCSkMwd0UNwzkAXzxIYi+9
+	MXk7qyzUAx/Pd3F6T4QudXWKQjLKob4WuG7R4s1cIOZ09s+OOsSHEEUANk7K5A8MDOplFrIdC0QZ1
+	fWkn8Y5zfpOW1JsMTifmPL0gui0AF3WP9S/9jTTAtQZoQeY4srE7NKt9pfD+9unfrUM3gVn4i35YY
+	FD0l0/U2wETuV5RFjXGE2FxoN84rN4vI81dvY2x8loHrL6jvfYPdoQGAo1tIKQWg4B72CNwXYTJ3n
+	bBvDhIx+Bt8nmlXItxohss/boClHJaP6M7b0c5mCtN3OpiPuENyqPC7eMhR8fDB7t77x/gdTubVi1
+	dLS6NG+w==;
 Received: from localhost ([::1] helo=bombadil.infradead.org)
 	by bombadil.infradead.org with esmtp (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xXGxK-00000000j6Y-1ohd;
-	Sat, 28 Nov 2026 11:51:02 +0000
-Received: from mail-wr1-x42a.google.com ([2a00:1450:4864:20::42a])
+	id 1xXHVQ-00000000kVl-1ASK;
+	Sat, 28 Nov 2026 12:26:16 +0000
+Received: from mail-wm1-x32b.google.com ([2a00:1450:4864:20::32b])
 	by bombadil.infradead.org with esmtps (Exim 4.100.1 #2 (Red Hat Linux))
-	id 1xXGxF-00000000j5R-1OBv
+	id 1xXHVN-00000000kUy-0uFa
 	for linux-mediatek@lists.infradead.org;
-	Sat, 28 Nov 2026 11:51:00 +0000
-Received: by mail-wr1-x42a.google.com with SMTP id ffacd0b85a97d-491971ac844so7821333f8f.2
-        for <linux-mediatek@lists.infradead.org>; Sat, 28 Nov 2026 03:50:56 -0800 (PST)
+	Sat, 28 Nov 2026 12:26:14 +0000
+Received: by mail-wm1-x32b.google.com with SMTP id 5b1f17b1804b1-4a3517554f7so80631335e9.2
+        for <linux-mediatek@lists.infradead.org>; Sat, 28 Nov 2026 04:26:12 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=gmail.com; s=20260707; t=1795866655; x=1796471455; darn=lists.infradead.org;
+        d=gmail.com; s=20260707; t=1795868771; x=1796473571; darn=lists.infradead.org;
         h=content-transfer-encoding:mime-version:message-id:date:subject:cc
          :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
-        bh=LZ8hFklFj23uso66AQMaU2wGtHVr+hqP0S/37cpp9so=;
-        b=DQK7+wsrURcdxGuzgS/t0glsXEEAGgn70TVV4x82YLgdY4FAFgzafb11G5yRT54gRc
-         b7EG1PAJxQ8X4PXzRbb90kpD3MvhYvUoO6lHTBzLKDunBF0pT2VGLaojpRgPnK7OmRuU
-         Shv5ZpyxSFhB1C06YnlOfo6Szy9ewDodZwcbiAhFgHnO9p1o67aBLGNKn3KVV6cEh92L
-         hCjSR/UNIETiZPC2WpS5J2APoid42iglIaB+E14UE1xtOpL4S+zCqymv6cylyhCCikqm
-         9vHGVsIzAjQ4hgiuY9+yqMX6dmUaNiBRzwnbohmQOAJets/CmJkD3aIhiLIXurUzgFAi
-         W6aQ==
+        bh=yom6P11rX/hdhy2NNJS3Jns2I9Z56P2y3ixdK/nEUpo=;
+        b=S+Kcu4y4KCqCCmgIeCItuxc6YV17Lbkn7r0rf/WhIu5v8mDUdydIeDQive5kUuoF9W
+         s8Y+RlLqVesoIdm83o6fGat/rVBOaQ/i+aJm9b14cBET0AQ30fiV7XtNvy5F0XHcJm9W
+         wh8g9qdZuuXIv1WaEJEeRav/QyOgmtCCDhLmZFxAy1POTl628cJHduqOmMK7MIjz1XBT
+         6rcp1q2aekjWhMBOD70wWr1Ru134xgIac9StahPxWP6eFoQz2GFVaFwJ70BHOi0AZahs
+         1Bt3KjQlWel4IaF7JDdI0K1NXlGTmtpN3gpJSV2a4zKmNB9wylmJt36OaEkpqvdPpIN2
+         PkfQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
-        d=1e100.net; s=20260707; t=1795866655; x=1796471455;
+        d=1e100.net; s=20260707; t=1795868771; x=1796473571;
         h=content-transfer-encoding:mime-version:message-id:date:subject:cc
          :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
          :message-id:reply-to:content-type;
-        bh=LZ8hFklFj23uso66AQMaU2wGtHVr+hqP0S/37cpp9so=;
-        b=a9cIQzle1b7jND0DeN7tgoIEQ83/CPDuBisMc62fHdOJUcluyiWs6RTLs9zaHl/Vwe
-         u/ZhksAd1pI9bf+FlIN3PaoDEzJ/OobjAXh0DAhOrtrMTj1eh9bYoFt+rVichYp36gte
-         sjnXWPFRPeO12kNa+Y7Iya/YK6TwcTin7pBCncXPsTIGjTHa23DA88qwDtRAsArf4jp6
-         QhwR8tiZVIu3qxguFfjBrvqa2LDt480N2p22MHBPvQDx7lDxvgCc3+dN8EYGOWkPwqrS
-         mHRV0DrTbT194WSnZLvPbphDvX8Gn9/Jp9WOsr/FEnIiUZlbKefxCIZZGvq2gCbOonZe
-         yi0Q==
-X-Forwarded-Encrypted: i=1; AL+hErGac24CgG3426fDvcj/DuwBZEGZiTuZMXQ0jeWWqNc7fX8tuoAtw4Ii7q9hjgTGd+SL5HzJbx2GJJmb3lo/XQ==@lists.infradead.org
-X-Gm-Message-State: APuU4Z+jnneP8cdbk8AuRTGOFOTPnKUZdOgHfYjbuV99HkpsV3RJ3e18
-	atBnf2Y7Ih/XiwoNulRzwozB2L4s6q71IGn++lBSeyBWYX121Mz9A8lf
-X-Gm-Gg: AZFdTZf3I3fN+xyf0kekNRTZO+qfTa73MZGdWDgebXYsO7yvEpGCLaIOHmt85b7GpGl
-	frpbhwQx+Ctj0u8wGA8GSmVdjZMYQ53oiGLUDLHrzAQwtKoP2SKCXyFzg35gDe1DdsUY0lcKlL+
-	RBF0ZHg9LApmLXAE9vyFz+5l3YzR35eoADkioqYdjshCEBenHQqJzgy8Jao9ZDngyMveKsC7qcs
-	Ml7myYM8WiC0rN9spPZWgTxo+mlf0nycDVdak0HN1sJGTbBbfkM9F/JCnBZWJgBXHX45E1JCZhR
-	rQQKVXT2xfd9slePsVglxe0eeNqO4fDhQFkY3SJY1NKWUeLut7yCYJpaQWtm45mwQ5tF1f08fyp
-	TtMPEGMZXqcoFOnYd0w+lB/S/oDwT1YjLVNbgcPN8OLWP3A+e4GhRetNaG5waFlzvJc3gUJxqeU
-	ZgIB43XYfeGrEzef8IlOFg174KEeiH3T9iz/CjhNgVo3ddqrsIkgUYZ3kikadoOLi9GW2PIELlA
-	jxqaNcgZ9dsFoq16MC1bXEphi8+YxzOSWltTFHjlEpeS/nuFaRKB0d3mQpRaIWy9UElKdXnsflt
-	uXMjqYRBw6/IpRjj2leavgE/ypGOhO+/H6BrV9Y=
-X-Received: by 2002:a05:6000:470c:b0:4a7:557:fc0 with SMTP id ffacd0b85a97d-4abb225fb4bmr52266863f8f.32.1795866654635;
-        Sat, 28 Nov 2026 03:50:54 -0800 (PST)
-Received: from DebianTestingKDE-VM ([213.16.57.213])
-        by smtp.gmail.com with ESMTPSA id ffacd0b85a97d-4ab6b110c50sm51953284f8f.37.2026.11.28.03.50.53
+        bh=yom6P11rX/hdhy2NNJS3Jns2I9Z56P2y3ixdK/nEUpo=;
+        b=c69ecJIESzD42RtR620uXsN1C7fCwoNlvkYydSFNlIPOnlxmICkHmuBtqTajH4XeNy
+         IlkmFlD/w4+rHpgz2Rix8sEYJMuSWz5wN7swUIlTCrDnuFb9iUKMHk6OOZ3QlEIV1biA
+         JXlz0tCzd1xIU0+2wodl2P4FZOZZAY/E0ql2El15Rf/c0LzgFKzwOy7GItEI7tcyQJFN
+         rTq1ReWCVRSCYChB8MEnzOsMth/gQsytQ2xUfCvVnJpBWkivaQrxEvCT18exFlpBk1UF
+         IoTgi69nluOqsGHKrwVFWFqyYp0yxs+Wc3blbZisdioVoNdgyBOtJ+liLJ+7fSqmO7Ce
+         ul0A==
+X-Forwarded-Encrypted: i=1; AL+hErFoahH9j/+FS0Fe6yk2h1C0tg3QtELCVuk3h5Hf+TqdEiqt2cBMKq4QLtMfCNMCAZvQaCbUeh9AsYsEAOSzqQ==@lists.infradead.org
+X-Gm-Message-State: APuU4Z842iHzdbgPdAd7ZXxhFeF2OKUbB31m3iyKijhIiEVUwAlRPll0
+	KUfwar0dcnaenkLoDQHZrty/s6uXZ4mtp8Wgzf4E82ka6ikSTFI2El/x
+X-Gm-Gg: AZFdTZfaND+W8WAA+6e4ajrV0miX2mjkLZzncGaLnFenlLpAMLqv9O7NJSJU5Jm+P4Z
+	lC+yLxk6BC78qYWbDSiT6/svsiQsHL0Rq6IidObOSx78ooYMFDAcdMWMeV2j4fboKgTgS0vMGzV
+	K89K/cka7EyuggsAHTeeDRyfq+k43Fjq475gslEYRwXzLs5A2Pi7o1O/x8iU4DfDD5ptonROCBu
+	/6Bsb+fOJmpTPLR7Kfpj5a8WXSVdsRKAQN2CMWJue9gmY0fqaYzyUkPjbj1oP79S7lVc5dtoC+n
+	HGzLOOMCmIO8shszGdhn3Je3zmZi/o5H/07xUwwMQVdq5lllJGZdu1rTgzfudN7QrdtgoQstNWE
+	VDiwAfgVk9wqGXJh1Wl3KyNoH2E8OFICuZWERVrjRL+jYcPfJQYxuZZHNbqFV1YPhqNO8n6ciFH
+	0Ul2QM4WBLH63HTcif0XrDob+G5AqwZBMaNHGvg8ySHOfwCaVB5PcIaU4Vu0v3KOdZ2KdYM9HmT
+	t28/h2qLLIwdw5UBbiyrVnanH9tCepG8YzDVBSz2BAgdnsfAUETvFUQ/1QxLtyaDn6+LgfvrXCe
+	V/ipUxo8XWVHx0jFaEw3jcEE4XXg3NEQlpeZ4IG5vLrgIGs1vA2wwBxcr75v+hRlLo0bN1vLMg=
+	=
+X-Received: by 2002:a05:600c:8210:b0:4bb:6a2d:b438 with SMTP id 5b1f17b1804b1-4bb88786c81mr553027325e9.0.1795868770988;
+        Sat, 28 Nov 2026 04:26:10 -0800 (PST)
+Received: from kidala-computer.. (ip-109-41-112-86.web.vodafone.de. [109.41.112.86])
+        by smtp.gmail.com with ESMTPSA id 5b1f17b1804b1-4bb906635c7sm502815995e9.2.2026.11.28.04.26.08
         (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
-        Sat, 28 Nov 2026 03:50:54 -0800 (PST)
-From: Valentin Berezhnoy <dreyksmail@gmail.com>
-To: linux-wireless@vger.kernel.org
-Cc: nbd@nbd.name,
-	lorenzo@kernel.org,
-	ryder.lee@mediatek.com,
-	shayne.chen@mediatek.com,
-	sean.wang@mediatek.com,
-	matthias.bgg@gmail.com,
-	angelogioacchino.delregno@collabora.com,
+        Sat, 28 Nov 2026 04:26:09 -0800 (PST)
+From: Oleh Shcherba <scherbaoleg4@gmail.com>
+To: Felix Fietkau <nbd@nbd.name>,
+	Lorenzo Bianconi <lorenzo@kernel.org>,
+	Ryder Lee <ryder.lee@mediatek.com>
+Cc: Shayne Chen <shayne.chen@mediatek.com>,
+	Sean Wang <sean.wang@mediatek.com>,
+	Matthias Brugger <matthias.bgg@gmail.com>,
+	AngeloGioacchino Del Regno <angelogioacchino.delregno@collabora.com>,
+	linux-wireless@vger.kernel.org,
 	linux-kernel@vger.kernel.org,
 	linux-arm-kernel@lists.infradead.org,
 	linux-mediatek@lists.infradead.org,
-	Valentin Berezhnoy <dreyksmail@gmail.com>
-Subject: [PATCH mt76] wifi: mt76: reorder RX frames when WED does not handle RX
-Date: Sat, 28 Nov 2026 13:50:48 +0200
-Message-ID: <20261128115048.84165-1-dreyksmail@gmail.com>
-X-Mailer: git-send-email 2.53.0
+	Oleh Shcherba <scherbaoleg4@gmail.com>
+Subject: [PATCH] wifi: mt76: do not mask negative MCU command ids
+Date: Sat, 28 Nov 2026 13:25:41 +0100
+Message-ID: <20261128122541.6670-1-scherbaoleg4@gmail.com>
+X-Mailer: git-send-email 2.43.0
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-CRM114-Version: 20100106-BlameMichelson ( TRE 0.9.0 (BSD) ) MR-646709E3 
-X-CRM114-CacheID: sfid-20261128_035059_504072_3D72FE47 
-X-CRM114-Status: UNSURE (   8.74  )
-X-CRM114-Notice: Please train this message.
-X-Spam-Score: 1.2 (+)
+X-CRM114-CacheID: sfid-20261128_042613_302103_8895E316 
+X-CRM114-Status: GOOD (  12.22  )
+X-Spam-Score: -1.9 (-)
 X-BeenThere: linux-mediatek@lists.infradead.org
 X-Mailman-Version: 2.1.34
 Precedence: list
@@ -115,55 +115,74 @@ X-Spam-Status: No, score=-15.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-mt76_rx_poll_complete() skips mt76_rx_aggr_reorder() whenever
-mtk_wed_device_active() is true. MT7622 WED v1 offloads TX only:
-mtk_wed_get_rx_capa() is false, the RX rings stay with the host and
-mt7915 does not set up WED RX offload. So on MT7622 + MT7915 with
-mt7915e wed_enable=1, nothing reorders the frames of an RX Block Ack
-session.
+Commit 1ffc90633ad6 ("wifi: mt76: mark an MCU command that only reads")
+clears BIT(30) of every command id before it reaches the driver. mt7603
+sends its legacy commands as negative ids, and a small negative int has
+bit 30 set by its sign. Clearing it turns -MCU_CMD_FW_SCATTER (0xffffff12)
+into 0xbfffff12, so mt7603_mcu_skb_send_msg() no longer matches it and
+queues the firmware image to MCU_PORT_QUEUE instead of MCU_PORT_QUEUE_FW.
+The firmware never starts and probe fails:
 
-Out-of-order frames then reach mt76_check_ccmp_pn() first, and those
-with a lower packet number are marked as replays. Since commit
-1c5ed3eb68a9 ("wifi: mt76: free a replayed 802.3 frame with all
-its subframes") drops such 802.3 frames, 5 GHz uploads from a client
-fell from 814-840 Mbit/s to 378-593 Mbit/s, with 5031-7630 TCP
-retransmissions per run instead of 583-822. Debug counters marked
-2171 single and 5661 A-MSDU 802.3 frames out of 228603.
+  mt76_wmac 10300000.wmac: Timeout waiting for firmware to initialize
+  mt76_wmac 10300000.wmac: probe with driver mt76_wmac failed with error -5
 
-Check mtk_wed_get_rx_capa() as well before bypassing the reordering.
-The bypass stays where WED handles RX (MT7986 WED v2 with WO,
-MT7988/MT7996 WED v3 with HWRRO), and the NPU path is unchanged. With
-this change, at most 16 single and no A-MSDU frames out of 757567
-were marked, as with WED detached, and uploads reached 826-859 Mbit/s
-with 66-157 retransmissions per run.
+Only handle the READ flag of non-negative command ids.
 
-Fixes: 4f831d18d12d ("wifi: mt76: mt7915: enable WED RX support")
-Assisted-by: LLM
-Signed-off-by: Valentin Berezhnoy <dreyksmail@gmail.com>
+Fixes: 1ffc90633ad6 ("wifi: mt76: mark an MCU command that only reads")
+Signed-off-by: Oleh Shcherba <scherbaoleg4@gmail.com>
 ---
-Measured on an MT7622 + MT7915 router with OpenWrt 25.12.
+ drivers/net/wireless/mediatek/mt76/mcu.c  | 6 +++---
+ drivers/net/wireless/mediatek/mt76/mt76.h | 6 ++++++
+ 2 files changed, 9 insertions(+), 3 deletions(-)
 
-This patch was prepared with the help of an AI assistant and reviewed
-by the submitter.
-
- drivers/net/wireless/mediatek/mt76/mac80211.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
-
-diff --git a/drivers/net/wireless/mediatek/mt76/mac80211.c b/drivers/net/wireless/mediatek/mt76/mac80211.c
-index 33f2bd5..4e56de3 100644
---- a/drivers/net/wireless/mediatek/mt76/mac80211.c
-+++ b/drivers/net/wireless/mediatek/mt76/mac80211.c
-@@ -1751,7 +1751,8 @@ void mt76_rx_poll_complete(struct mt76_dev *dev, enum mt76_rxq_id q,
+diff --git a/drivers/net/wireless/mediatek/mt76/mcu.c b/drivers/net/wireless/mediatek/mt76/mcu.c
+index 4f3471b..4dc287e 100644
+--- a/drivers/net/wireless/mediatek/mt76/mcu.c
++++ b/drivers/net/wireless/mediatek/mt76/mcu.c
+@@ -59,7 +59,7 @@ int mt76_mcu_send_and_get_msg(struct mt76_dev *dev, int cmd, const void *data,
+ 	struct sk_buff *skb;
  
- 	while ((skb = __skb_dequeue(&dev->rx_skb[q])) != NULL) {
- 		mt76_check_sta(dev, skb);
--		if (mtk_wed_device_active(&dev->mmio.wed) ||
-+		if ((mtk_wed_device_active(&dev->mmio.wed) &&
-+		     mtk_wed_get_rx_capa(&dev->mmio.wed)) ||
- 		    mt76_npu_device_active(dev))
- 			__skb_queue_tail(&frames, skb);
- 		else
+ 	if (dev->mcu_ops->mcu_send_msg)
+-		return dev->mcu_ops->mcu_send_msg(dev, cmd & ~MT76_MCU_CMD_READ,
++		return dev->mcu_ops->mcu_send_msg(dev, mt76_mcu_cmd_strip(cmd),
+ 						  data, len, wait_resp);
+ 
+ 	skb = mt76_mcu_msg_alloc(dev, data, len);
+@@ -74,14 +74,14 @@ int mt76_mcu_skb_send_and_get_msg(struct mt76_dev *dev, struct sk_buff *skb,
+ 				  int cmd, bool wait_resp,
+ 				  struct sk_buff **ret_skb)
+ {
+-	bool read = cmd & MT76_MCU_CMD_READ;
++	bool read = cmd >= 0 && (cmd & MT76_MCU_CMD_READ);
+ 	unsigned int retry = 0;
+ 	struct sk_buff *orig_skb = NULL;
+ 	unsigned long expires;
+ 	bool lost = false;
+ 	int ret, seq;
+ 
+-	cmd &= ~MT76_MCU_CMD_READ;
++	cmd = mt76_mcu_cmd_strip(cmd);
+ 
+ 	if (ret_skb)
+ 		*ret_skb = NULL;
+diff --git a/drivers/net/wireless/mediatek/mt76/mt76.h b/drivers/net/wireless/mediatek/mt76/mt76.h
+index d635df2..237057c 100644
+--- a/drivers/net/wireless/mediatek/mt76/mt76.h
++++ b/drivers/net/wireless/mediatek/mt76/mt76.h
+@@ -272,6 +272,12 @@ struct mt76_queue {
+  */
+ #define MT76_MCU_CMD_READ	BIT(30)
+ 
++/* mt7603 uses negative command ids, do not mask them */
++static inline int mt76_mcu_cmd_strip(int cmd)
++{
++	return cmd < 0 ? cmd : cmd & ~MT76_MCU_CMD_READ;
++}
++
+ struct mt76_mcu_ops {
+ 	unsigned int max_retry;
+ 	u32 headroom;
 -- 
-2.53.0
+2.43.0
 
 
